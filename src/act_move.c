@@ -116,7 +116,7 @@ static bool is_hyrule_room( ROOM_INDEX_DATA *room )
  * who is moving, so nobody can hold a door open for anybody else:
  *
  *   - its entrance: coming in from outside the dungeon needs the
- *     previous dungeon's Triforce piece (or the complete Triforce,
+ *     previous dungeon's Triforce piece (or The Triforce, made whole,
  *     which is all nine);
  *   - its guardian's chamber: coming in from inside the dungeon,
  *     anywhere but the treasure room behind it, needs the previous
@@ -135,21 +135,8 @@ static bool is_hyrule_room( ROOM_INDEX_DATA *room )
 #define HYRULE_PIECE_FIRST_VNUM     30400
 #define HYRULE_PIECE_LAST_VNUM      30408
 
-typedef struct hyrule_dungeon_gate
-{
-    int         level;
-    int         first_room;
-    int         last_room;
-    int         entrance;
-    int         boss_room;
-    int         goal_room;
-    int         entry_need;     /* 0: nothing */
-    const char *entry_refusal;
-    int         boss_need;      /* 0: nothing */
-    int         boss_also;      /* another object that will do, or 0 */
-    const char *boss_refusal;
-} HYRULE_DUNGEON_GATE;
-
+/* HYRULE_DUNGEON_GATE is in merc.h: the dungeon maps and compasses in
+   hyrule.c read the same rows through hyrule_dungeon_gate(). */
 static const HYRULE_DUNGEON_GATE hyrule_progress_gate[] =
 {
     { 1, 30400, 30417, 30401, 30413, 30414,
@@ -223,7 +210,18 @@ static const HYRULE_DUNGEON_GATE hyrule_progress_gate[] =
       "fits.  The Magical Key from Level 8's treasure chest turns it.\n\r" },
 };
 
-static bool hyrule_carries( CHAR_DATA *ch, int vnum )
+/* One dungeon's row of the table, by its level (1-9), or NULL. */
+const HYRULE_DUNGEON_GATE *hyrule_dungeon_gate( int level )
+{
+    size_t i;
+
+    for ( i = 0; i < sizeof(hyrule_progress_gate) / sizeof(hyrule_progress_gate[0]); i++ )
+        if ( hyrule_progress_gate[i].level == level )
+            return &hyrule_progress_gate[i];
+    return NULL;
+}
+
+bool hyrule_carries( CHAR_DATA *ch, int vnum )
 {
     OBJ_DATA *obj;
     OBJ_DATA *inner;
@@ -242,7 +240,7 @@ static bool hyrule_carries( CHAR_DATA *ch, int vnum )
             if ( inner->pIndexData != NULL && inner->pIndexData->vnum == vnum )
                 return true;
     }
-    /* The complete Triforce is all nine pieces at once. */
+    /* The Triforce, made whole, is all nine pieces at once. */
     if ( vnum >= HYRULE_PIECE_FIRST_VNUM && vnum <= HYRULE_PIECE_LAST_VNUM )
         return hyrule_carries( ch, OBJ_VNUM_HYRULE_TRIFORCE );
     return false;
@@ -347,7 +345,7 @@ static void charge_hyrule_door_repair( CHAR_DATA *ch )
     long charge;
     int receipt_vnum;
 
-    if ( IS_NPC(ch) || IS_IMMORTAL(ch) || ch->in_room == NULL
+    if ( IS_NPC(ch) || IS_TRUSTED(ch, LEVEL_IMMORTAL) || ch->in_room == NULL
     ||   ch->in_room->vnum < HYRULE_REPAIR_ROOM_FIRST
     ||   ch->in_room->vnum > HYRULE_REPAIR_ROOM_LAST )
         return;
@@ -387,6 +385,53 @@ static bool hyrule_room_has_guardian( ROOM_INDEX_DATA *room )
             return true;
     }
     return false;
+}
+
+/*
+ * Hyrule's hidden ways are not doors. A cracked wall, a bush, an Armos, a
+ * block, the lake and the hungry Goriya each open only to the act the NES
+ * asked for -- BOMB, BURN, PUSH, PLAY, FEED -- with the tool in hand
+ * (hyrule.c and act_obj.c), and until then the exit is secret. OPEN by its
+ * keyword, PICK, DOORBASH and UNLOCK would each walk round that, so they
+ * ask here first; so does a shutter, which opens when the room's enemies
+ * are dead and not before.
+ */
+static bool hyrule_seal_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *room,
+                                 EXIT_DATA *pexit )
+{
+    const char *keyword;
+
+    if ( !is_hyrule_room(room) || pexit == NULL || pexit->keyword == NULL
+    ||   IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+        return false;
+
+    keyword = pexit->keyword;
+    if ( IS_SET(pexit->exit_info, EX_CLOSED)
+    &&   is_name( "shutter", keyword ) && hyrule_room_has_guardian(room) )
+    {
+        send_to_char( "The shutter is sealed fast, and will not open while enemies remain here.\n\r", ch );
+        return true;
+    }
+    if ( !IS_SET(pexit->exit_info, EX_SECRET) )
+        return false;
+
+    if ( is_name( "bomb", keyword ) || is_name( "cracked", keyword )
+    ||   is_name( "triforce", keyword ) )
+        send_to_char( "Your hands find only stone. A cracked surface like that wants a bomb.\n\r", ch );
+    else if ( is_name( "burn", keyword ) )
+        send_to_char( "Branches and leaves knot over it. A candle's flame would clear them.\n\r", ch );
+    else if ( is_name( "armos", keyword ) || is_name( "block", keyword )
+         ||   is_name( "grave", keyword ) )
+        send_to_char( "There is no handle to it. Something here has to be pushed aside.\n\r", ch );
+    else if ( is_name( "bracelet", keyword ) )
+        send_to_char( "The stone over it is far too heavy to shift without a Power Bracelet.\n\r", ch );
+    else if ( is_name( "recorder", keyword ) )
+        send_to_char( "Water fills the way. Only a certain melody will drain it.\n\r", ch );
+    else if ( is_name( "hungry", keyword ) )
+        send_to_char( "A hungry Goriya plants itself in the way. It wants feeding, not opening.\n\r", ch );
+    else
+        send_to_char( "You find no way to open it with your hands.\n\r", ch );
+    return true;
 }
 
 static void open_hyrule_shutter( ROOM_INDEX_DATA *room, EXIT_DATA *pexit,
@@ -655,6 +700,10 @@ void do_look( CHAR_DATA *ch, char *argument )
         show_char_to_char_1( victim, ch );
         return;
     }
+
+    /* A Hyrule dungeon map draws its floor plan, and a compass points. */
+    if ( hyrule_look_tool( ch, arg1 ) )
+        return;
 
     for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
     {
@@ -995,7 +1044,7 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
         if ( is_name( "triforce", pexit->keyword )
         &&   !has_complete_hyrule_triforce( ch ) )
         {
-            send_to_char( "Only the complete Triforce of Wisdom can open the way.\n\r", ch );
+            send_to_char( "Only one who carries all eight pieces of the Triforce of Wisdom can open the way.\n\r", ch );
             return;
         }
         if ( IS_SET(pexit->exit_info, EX_CLOSED)
@@ -1008,6 +1057,9 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
             act( "The $d opens with a heavy stone scrape.",
                  ch, NULL, pexit->keyword, TO_ROOM );
         }
+        /* Not even a ghost slips a shutter while the room's enemies live. */
+        if ( hyrule_seal_refuses( ch, in_room, pexit ) )
+            return;
     }
 
     if ( IS_SET(pexit->exit_info, EX_CLOSED)
@@ -1245,6 +1297,9 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     charge_hyrule_door_repair( ch );
 
     do_look( ch, "auto" );
+
+    /* A money cave's moblin pays as you walk in, once (hyrule.c). */
+    hyrule_enter_room( ch );
 
     /* Bank room entry hint */
     if ( !IS_NPC(ch) && IS_SET(ch->in_room->room_flags2, ROOM2_BANK) )
@@ -1846,6 +1901,8 @@ void do_open( CHAR_DATA *ch, char *argument )
 	EXIT_DATA *pexit_rev;
 
 	pexit = ch->in_room->exit[door];
+	if ( hyrule_seal_refuses( ch, ch->in_room, pexit ) )
+	    return;
 	if ( !IS_SET(pexit->exit_info, EX_CLOSED) )
 	    { send_to_char( "It's already open.\n\r",      ch ); return; }
 	if (  IS_SET(pexit->exit_info, EX_LOCKED) ||
@@ -2021,6 +2078,15 @@ void do_close( CHAR_DATA *ch, char *argument )
 
 
 
+/* A key that opens Hyrule's small-key doors: the dungeons' own, and the
+   two the shops sell. The Magical Key opens them too, and is never used up. */
+static bool is_hyrule_small_key( int vnum )
+{
+    return vnum == HYRULE_SMALL_KEY_VNUM
+        || vnum == OBJ_VNUM_HYRULE_SHOP_KEY
+        || vnum == OBJ_VNUM_HYRULE_SHOP_KEY_CHEAP;
+}
+
 bool has_key( CHAR_DATA *ch, int key )
 {
     OBJ_DATA *obj;
@@ -2031,7 +2097,8 @@ bool has_key( CHAR_DATA *ch, int key )
 	    return true;
 	if ( key == HYRULE_SMALL_KEY_VNUM
 	&&   obj->pIndexData != NULL
-	&&   obj->pIndexData->vnum == HYRULE_MAGICAL_KEY_VNUM )
+	&&   ( obj->pIndexData->vnum == HYRULE_MAGICAL_KEY_VNUM
+	    || is_hyrule_small_key( obj->pIndexData->vnum ) ) )
 	    return true;
     }
 
@@ -2049,7 +2116,7 @@ static void consume_hyrule_small_key( CHAR_DATA *ch, int key )
     for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
     {
         if ( obj->pIndexData != NULL
-        &&   obj->pIndexData->vnum == HYRULE_SMALL_KEY_VNUM )
+        &&   is_hyrule_small_key( obj->pIndexData->vnum ) )
         {
             extract_obj( obj );
             send_to_char( "The small key vanishes into the dungeon lock.\n\r", ch );
@@ -2161,6 +2228,8 @@ void do_doorbash( CHAR_DATA *ch, char *argument )
         EXIT_DATA *pexit_rev;
 
         pexit = ch->in_room->exit[door];
+        if ( hyrule_seal_refuses( ch, ch->in_room, pexit ) )
+            return;
         if ( !IS_SET(pexit->exit_info, EX_CLOSED) )
             { send_to_char( "It's not closed.\n\r", ch ); return; }
         if ( IS_SET(pexit->exit_info, EX_WIZLOCKED) )
@@ -2260,6 +2329,8 @@ void do_unlock( CHAR_DATA *ch, char *argument )
 	EXIT_DATA *pexit_rev;
 
 	pexit = ch->in_room->exit[door];
+	if ( hyrule_seal_refuses( ch, ch->in_room, pexit ) )
+	    return;
 	if ( !IS_SET(pexit->exit_info, EX_CLOSED) )
 	    { send_to_char( "It's not closed.\n\r",        ch ); return; }
 	if ( pexit->key < 0 )
@@ -2391,6 +2462,8 @@ void do_pick( CHAR_DATA *ch, char *argument )
 	EXIT_DATA *pexit_rev;
 
 	pexit = ch->in_room->exit[door];
+	if ( hyrule_seal_refuses( ch, ch->in_room, pexit ) )
+	    return;
 	if ( !IS_SET(pexit->exit_info, EX_CLOSED) && !IS_IMMORTAL(ch))
 	    { send_to_char( "It's not closed.\n\r",        ch ); return; }
 	if ( pexit->key < 0 && !IS_IMMORTAL(ch))

@@ -4061,85 +4061,8 @@ async def get_best_gear(
         if source is None:
             continue
         source_label, item_level, values, _rank = source
-
-        # Score: damage first, toughness after, by the class's weights.
-        score = 0.0
-        breakdown = []
+        score, breakdown = gear_item_score(obj, item_type_num, slot, values, weights)
         affects_decoded = decode_applies(obj.affects)
-
-        for aff in obj.affects:
-            loc_id = aff.get('location', 0)
-            val = aff.get('modifier', 0)
-            loc_name = APPLY_LOCATIONS.get(loc_id, '').lower()
-
-            if loc_name.startswith("save vs") and "save vs spell" in weights:
-                # A save is better the lower it goes -- saves_spell()
-                # subtracts saving_throw -- so a positive one is a penalty.
-                # All five saves move the one saving_throw in affect_modify,
-                # so they share a weight.
-                w = weights["save vs spell"]
-                s_ = val * -w
-                score += s_
-                breakdown.append(f"{loc_name.title()}: {val} x -{w} = {s_:.1f}")
-            elif loc_name in weights:
-                w = weights[loc_name]
-                s_ = val * w
-                score += s_
-                breakdown.append(f"{loc_name.title()}: {val} x {w} = {s_:.1f}")
-            elif loc_name == 'armor class':
-                # Negative AC is good in ROM.
-                s_ = val * -1.0
-                score += s_
-                breakdown.append(f"AC: {val} x -1 = {s_:.1f}")
-
-        if item_type_num == ITEM_TYPE_WEAPON:
-            try:
-                d_num = int(values[1])
-                d_size = int(values[2])
-                avg_dam = d_num * (d_size + 1) / 2.0
-                # A weapon's own damage, scaled by how much this class
-                # fights in melee (its damroll weight): it dominates a
-                # fighter's score and barely moves a caster's.
-                wdw = weights.get("damroll", 1.0) * 0.5
-                s_ = avg_dam * wdw
-                score += s_
-                breakdown.append(
-                    f"Dmg: {d_num}d{d_size} (avg {avg_dam:.1f}) x {wdw:g} = {s_:.1f}")
-            except (IndexError, TypeError, ValueError):
-                pass
-
-        # Permanent affects from the object's F records -- the Master
-        # Sword's haste, the Red Ring's sanctuary. Haste is a third swing
-        # every round, worth roughly ten damroll to a fighter and scaled by
-        # how much this class fights in melee; sanctuary halves every blow,
-        # counted as two hundred hit points' worth of toughness.
-        for bit in getattr(obj, "affect_bits", None) or []:
-            if bit.get("where") != "A":
-                continue
-            granted = decode_flags(bit.get("bits", "0"), AFFECTED_FLAGS)
-            if "haste" in granted:
-                w = weights.get("damroll", 1.0) * 10
-                score += w
-                breakdown.append(f"Haste while worn: one more swing a round = {w:.1f}")
-            if "sanctuary" in granted:
-                w = weights.get("hit points", 0.15) * 200
-                score += w
-                breakdown.append(f"Sanctuary while worn: half damage taken = {w:.1f}")
-
-        # An armour piece's own AC is values[0..3], counted the way
-        # apply_ac() counts it in that slot.
-        if item_type_num == ITEM_TYPE_ARMOR:
-            try:
-                armour = sum(int(v) for v in values[:4]) / 4.0
-            except (TypeError, ValueError):
-                armour = 0.0
-            if armour:
-                times = GEAR_AC_MULTIPLIER.get(slot, 1)
-                score += armour * times
-                breakdown.append(
-                    f"Armour: {armour:g} average x {times} on {slot} = {armour * times:g}")
-        if not breakdown:
-            breakdown.append("No bonuses: it fills the slot and nothing more")
 
         best_items[slot].append({
             "score": round(score, 2),
@@ -4170,6 +4093,90 @@ async def get_best_gear(
         result[label] = items[:limit]
 
     return result
+
+
+def gear_item_score(obj, item_type_num: int, slot: str, values, weights) -> tuple[float, list]:
+    """One item's Gear Finder score and how it was reached: damage first,
+    toughness after, by the class's weights. Also what
+    tests/test_hyrule_boss_drops.py measures Hyrule's drop tables with, so
+    the drops are judged exactly as the finder judges everything else."""
+    score = 0.0
+    breakdown = []
+
+    for aff in obj.affects:
+        loc_id = aff.get('location', 0)
+        val = aff.get('modifier', 0)
+        loc_name = APPLY_LOCATIONS.get(loc_id, '').lower()
+
+        if loc_name.startswith("save vs") and "save vs spell" in weights:
+            # A save is better the lower it goes -- saves_spell()
+            # subtracts saving_throw -- so a positive one is a penalty.
+            # All five saves move the one saving_throw in affect_modify,
+            # so they share a weight.
+            w = weights["save vs spell"]
+            s_ = val * -w
+            score += s_
+            breakdown.append(f"{loc_name.title()}: {val} x -{w} = {s_:.1f}")
+        elif loc_name in weights:
+            w = weights[loc_name]
+            s_ = val * w
+            score += s_
+            breakdown.append(f"{loc_name.title()}: {val} x {w} = {s_:.1f}")
+        elif loc_name == 'armor class':
+            # Negative AC is good in ROM.
+            s_ = val * -1.0
+            score += s_
+            breakdown.append(f"AC: {val} x -1 = {s_:.1f}")
+
+    if item_type_num == ITEM_TYPE_WEAPON:
+        try:
+            d_num = int(values[1])
+            d_size = int(values[2])
+            avg_dam = d_num * (d_size + 1) / 2.0
+            # A weapon's own damage, scaled by how much this class
+            # fights in melee (its damroll weight): it dominates a
+            # fighter's score and barely moves a caster's.
+            wdw = weights.get("damroll", 1.0) * 0.5
+            s_ = avg_dam * wdw
+            score += s_
+            breakdown.append(
+                f"Dmg: {d_num}d{d_size} (avg {avg_dam:.1f}) x {wdw:g} = {s_:.1f}")
+        except (IndexError, TypeError, ValueError):
+            pass
+
+    # Permanent affects from the object's F records -- the Master
+    # Sword's haste, the Red Ring's sanctuary. Haste is a third swing
+    # every round, worth roughly ten damroll to a fighter and scaled by
+    # how much this class fights in melee; sanctuary halves every blow,
+    # counted as two hundred hit points' worth of toughness.
+    for bit in getattr(obj, "affect_bits", None) or []:
+        if bit.get("where") != "A":
+            continue
+        granted = decode_flags(bit.get("bits", "0"), AFFECTED_FLAGS)
+        if "haste" in granted:
+            w = weights.get("damroll", 1.0) * 10
+            score += w
+            breakdown.append(f"Haste while worn: one more swing a round = {w:.1f}")
+        if "sanctuary" in granted:
+            w = weights.get("hit points", 0.15) * 200
+            score += w
+            breakdown.append(f"Sanctuary while worn: half damage taken = {w:.1f}")
+
+    # An armour piece's own AC is values[0..3], counted the way
+    # apply_ac() counts it in that slot.
+    if item_type_num == ITEM_TYPE_ARMOR:
+        try:
+            armour = sum(int(v) for v in values[:4]) / 4.0
+        except (TypeError, ValueError):
+            armour = 0.0
+        if armour:
+            times = GEAR_AC_MULTIPLIER.get(slot, 1)
+            score += armour * times
+            breakdown.append(
+                f"Armour: {armour:g} average x {times} on {slot} = {armour * times:g}")
+    if not breakdown:
+        breakdown.append("No bonuses: it fills the slot and nothing more")
+    return score, breakdown
 
 
 # --- Leveling advisor -------------------------------------------------

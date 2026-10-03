@@ -66,6 +66,40 @@ MANIP_TOOL = {11: "needs a lit candle", 12: "needs a bomb",
               13: "needs an instrument", 14: "needs bait"}
 PUZZLE_CURRENT_ROOM = 9
 
+# Hyrule's hidden ways are not doors. The exit is secret until the NES's
+# act opens it -- BOMB, BURN, PUSH, PLAY or FEED at the object lying in the
+# room, with the tool in hand -- and OPEN by its keyword is refused
+# (hyrule_seal_refuses in src/act_move.c). The exit's keyword starts with
+# the word that names the seal; this is what a route has to say instead of
+# "open <keyword>", and what it needs. See Plan 7 in wiki/hyrule-area.md.
+HYRULE_SEALS = {
+    "bomb": ("bomb cracked", "needs a bomb, which it uses up"),
+    "cracked": ("bomb cracked", "needs a bomb, which it uses up"),
+    "burn": ("burn bush", "needs a lit candle"),
+    "armos": ("push armos", ""),
+    "grave": ("push gravestone", ""),
+    "block": ("push block", ""),
+    "bracelet": ("push stone", "needs the Power Bracelet"),
+    "recorder": ("play recorder", "needs the Recorder"),
+    "hungry": ("feed goriya", "needs bait"),
+    "triforce": ("bomb cracked", "needs all eight Triforce pieces and a bomb"),
+}
+
+
+HYRULE_ROOMS = range(30200, 30800)
+
+# Portals that let only the carrier of an object through (value[4]), named
+# for the route rather than by vnum.
+NEEDED_OBJECTS = {30276: "the Power Bracelet", 30411: "the raft",
+                  30412: "the stepladder"}
+
+
+def seal_for(from_vnum, lock, keyword):
+    """(command, need) for a Hyrule seal, or None for an ordinary door."""
+    if from_vnum not in HYRULE_ROOMS or lock != 4 or not keyword:
+        return None
+    return HYRULE_SEALS.get(keyword.split()[0].lower())
+
 
 def load_portals():
     """Ways through: room -> [(verb, keyword, destination, cost, label)].
@@ -112,7 +146,7 @@ def load_portals():
             if kind == 1:
                 cost = "costs 500 gold"
             elif kind == 6 and need > 0:
-                cost = f"needs object {need}"
+                cost = f"needs {NEEDED_OBJECTS.get(need, f'object {need}')}"
 
             portals[int(h.group(1))] = ("enter", keyword, dest, cost,
                                         h.group(3).strip())
@@ -352,7 +386,11 @@ def to_commands(rooms, path):
 
         _, lock, keyword = rooms[from_vnum]["exits"][door]
 
-        if lock != 0:
+        seal = seal_for(from_vnum, lock, keyword)
+        if seal is not None:
+            flush()
+            out.append(seal[0])
+        elif lock != 0:
             flush()
             # The loader forces lock 4 on anything keyworded "secret", and
             # a keyworded door has to be opened by that word, not by
@@ -395,7 +433,11 @@ def describe(rooms, path):
             continue
 
         _, lock, keyword = rooms[from_vnum]["exits"][door]
-        if lock != 0:
+        seal = seal_for(from_vnum, lock, keyword)
+        if seal is not None:
+            flush()
+            steps.append(seal[0] + (f" ({seal[1]})" if seal[1] else ""))
+        elif lock != 0:
             flush()
             word = keyword.split()[0] if keyword else DIRNAME[door]
             steps.append(f"open {word}")

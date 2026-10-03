@@ -569,7 +569,7 @@ the host's local policy before opting in or attacking another player.
 
 ## Hyrule: First Quest
 
-Hyrule is a generated 443-room campaign modeled after the first quest of the
+Hyrule is a generated 447-room campaign modeled after the first quest of the
 original Legend of Zelda. It contains a 128-room overworld, nine dungeons and
 cellars, level-scaled progression, canonical bosses and enemies, hidden
 interactions, dungeon maps and compasses, boss keys, the Triforce route, and
@@ -599,13 +599,25 @@ return portals.
   can wield, which hastens its wielder.
 - The Red Ring of Hyrule lies in Death Mountain's deepest cellar; worn, it
   gives sanctuary and takes a fifth off all damage. `combine triforce` joins
-  the nine pieces into the complete Triforce, worn in the light slot, which
+  the nine pieces into The Triforce, worn in the light slot, which
   shows you what a level 59 hero with holy light would see. `help ganon` has
   the details.
-- A dungeon map reveals layout information.
-- A dungeon compass gives the general direction toward that dungeon's boss.
-- Candles, bombs, arrows, keys, rafts, ladders, recorders, and room actions are
-  part of progression. Read descriptions and inspect inventory carefully.
+- A dungeon map, looked at or read, draws its floor plan: where you stand, the
+  guardian's chamber, the locked Triforce chest, and what the guardian's door
+  needs. Its compass, inside its own dungeon, names the first step toward the
+  Triforce chest and how many rooms away it and the guardian are.
+- Hidden ways open only to the NES's act with its tool: BOMB a cracked wall
+  (each blast uses a bomb), BURN a bush with a lit candle, PUSH an Armos or a
+  gravestone, PLAY the Recorder at Level 7's lake. OPEN will not shift them.
+- Every Hyrule item does something: bombs, the bow and arrows (a rupee a
+  shot), boomerangs, candles, bait, the Recorder, the Magical Rod and Book,
+  potions, keys, rings and the Magical Shield. `help hyrule items` lists them.
+- The caves keep the NES's rules, once per character: the money caves pay as
+  you walk in, the take-any caves give a Heart Container or a red potion, and
+  the White and Magical Swords want 5 and 12 hearts (`hearts`). `help hyrule
+  secrets` has them all.
+- Every guardian also drops two pieces of a five-piece armour table, each a
+  little better than anything else a character of its band can find.
 - Other weapons and spells can wound Ganon, but no normal attack can kill him.
   Normal strikes with the wielded Silver Arrow still use full weapon mastery
   and deal at least 10% of his maximum health after defenses.

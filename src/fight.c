@@ -37,7 +37,6 @@
  */
 #define HYRULE_FAIRY_VNUM       30216
 #define HYRULE_OLD_MAN_VNUM     30228
-#define HYRULE_ZELDA_VNUM       30338
 #define HYRULE_REPAIR_MAN_VNUM  30344
 #define HYRULE_GAMBLER_VNUM     30345
 #define HYRULE_TIER_FIRST       31000
@@ -165,13 +164,23 @@ static int apply_hyrule_relic_damage_reduction( CHAR_DATA *victim, int dam,
     original_damage = dam;
     if ( wears_object_vnum(victim, OBJ_VNUM_HYRULE_RED_RING) )
         dam = dam * 80 / 100;
-    else if ( wears_object_vnum(victim, OBJ_VNUM_HYRULE_BLUE_RING) )
+    else if ( wears_object_vnum(victim, OBJ_VNUM_HYRULE_BLUE_RING)
+         ||   wears_object_vnum(victim, OBJ_VNUM_HYRULE_SHOP_BLUE_RING) )
         dam = dam * 90 / 100;
 
-    if ( wears_object_vnum(victim, OBJ_VNUM_HYRULE_MIRROR_SHIELD)
-        && dam_type != DAM_NONE && dam_type != DAM_BASH
+    /* The Mirror Shield and the shops' Magical Shield both turn magic and
+       fire; one shield slot, so the two never add together. */
+    if ( dam_type != DAM_NONE && dam_type != DAM_BASH
         && dam_type != DAM_PIERCE && dam_type != DAM_SLASH )
-        dam = dam * 85 / 100;
+    {
+        OBJ_DATA *shield = get_eq_char( victim, WEAR_SHIELD );
+
+        if ( wears_object_vnum(victim, OBJ_VNUM_HYRULE_MIRROR_SHIELD) )
+            dam = dam * 85 / 100;
+        else if ( shield != NULL && shield->pIndexData != NULL
+             &&   IS_HYRULE_MAGICAL_SHIELD(shield->pIndexData->vnum) )
+            dam = dam * 90 / 100;
+    }
 
     return original_damage > 0 ? UMAX(1, dam) : dam;
 }
@@ -259,11 +268,14 @@ static bool is_hyrule_ganon( CHAR_DATA *victim )
 }
 
 /*
- * Hyrule's people who are not enemies: the old men with their hints, the
- * door-repair man and the gambler, Princess Zelda and the fountain fairies.
- * They are level 50 or more so nothing in their band can hurt them, which
- * also made them the best experience in Hyrule for anyone who could. The
- * merchants are shopkeepers and protected already.
+ * Hyrule's people who are not enemies: every old man and old woman, the
+ * moblins of the money caves, the merchants, the potion sellers, the
+ * door-repair men and gamblers, Princess Zelda and the fountain fairies --
+ * each a record of their own in HYRULE_NPC_FIRST-LAST. They are level 50
+ * or more so nothing in their band can hurt them, which also made them the
+ * best experience in Hyrule for anyone who could. The old single records
+ * (the old man, the repair man, the gambler, the fairy) are kept in the
+ * test in case a reset of an older area file still loads one.
  */
 static bool is_hyrule_bystander( CHAR_DATA *victim )
 {
@@ -272,7 +284,8 @@ static bool is_hyrule_bystander( CHAR_DATA *victim )
     if ( victim == NULL || !IS_NPC(victim) || victim->pIndexData == NULL )
         return false;
     vnum = victim->pIndexData->vnum;
-    return vnum == HYRULE_OLD_MAN_VNUM
+    return ( vnum >= HYRULE_NPC_FIRST && vnum <= HYRULE_NPC_LAST )
+        || vnum == HYRULE_OLD_MAN_VNUM
         || vnum == HYRULE_REPAIR_MAN_VNUM
         || vnum == HYRULE_GAMBLER_VNUM
         || vnum == HYRULE_ZELDA_VNUM
@@ -1636,7 +1649,12 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 
     if ( !dummy_absorb( ch, victim, dam, dt )
     &&   !is_invulnerable( victim ) )
+    {
 	victim->hit -= dam;
+	/* A wound ends a Hyrule kill streak (hyrule_note_kill). */
+	if ( dam > 0 && victim != ch )
+	    hyrule_note_wound( victim );
+    }
     if ( IS_NPC(victim) && victim->pIndexData != NULL )
     {
         if ( victim->hit < 1
@@ -2802,6 +2820,10 @@ void make_corpse( CHAR_DATA *ch )
     if ( IS_NPC(ch) && ch->pIndexData != NULL )
         hyrule_enemy_drop( corpse, ch->pIndexData->vnum );
 
+    /* A Hyrule guardian leaves two pieces of its drop table (hyrule.c). */
+    if ( IS_NPC(ch) )
+        hyrule_boss_drops( ch, corpse );
+
     /* Seasonal event drops: 15% chance a killed NPC drops a seasonal item. */
     if ( IS_NPC(ch) )
     {
@@ -3106,7 +3128,11 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
       death_cry( victim );
       make_corpse( victim );
       if ( IS_NPC(victim) )
+      {
         reward_hyrule_hero_tunic( ch, victim );
+        /* "10th enemy has the bomb" (hyrule.c). */
+        hyrule_note_kill( ch, victim );
+      }
     }
 
     victim->battleticks = 0;
@@ -5675,6 +5701,11 @@ void do_shoot( CHAR_DATA *ch, char *argument )
 	send_to_char( "You need to wield a bow to shoot.\n\r", ch );
 	return;
     }
+
+    /* Hyrule's bow and boomerangs shoot at an enemy in the room, without
+       the Archery skill; the lag is paid before the blow (hyrule.c). */
+    if ( hyrule_shoot( ch, obj, arg ) )
+	return;
 
     if ( is_silver_arrow_weapon(obj) )
     {

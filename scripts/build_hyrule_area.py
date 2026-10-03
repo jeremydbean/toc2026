@@ -43,14 +43,25 @@ OPPOSITE_DIRECTIONS = {
     "up": "down", "down": "up",
 }
 
-NEW_MOBILE_VNUMS = set(range(30338, 30346))
+NEW_MOBILE_VNUMS = set(range(30338, 30346)) | set(range(30346, 30450))
 NEW_OBJECT_VNUMS = (
     set(range(30500, 30515))
     | {30520}
     | set(range(30530, 30591))
     | set(range(30591, 30650))     # heart containers, drops, keys, chests
+    | set(range(30649, 30700))     # the Magical Sword, boss drops, bombs, the bomb bag
     | {30408}                      # the ninth piece, the Triforce of Power
 )
+
+# Everyone who is not an enemy has a record of their own, written from the
+# "npcs" table of data/hyrule_mob_prose.json: each dungeon and cave old man,
+# old woman, merchant, potion seller, door-repair man, gambler, fountain
+# fairy and moblin, and Zelda. Their vnums are in the table; src/merc.h
+# names the range (HYRULE_NPC_FIRST-LAST) so is_hyrule_bystander() covers
+# them all.
+NPC_VNUM_FIRST = 30346
+NPC_VNUM_LAST = 30449
+ZELDA_VNUM = 30338
 
 BOSS_MOBS = {
     1: 30222, 2: 30218, 3: 30305, 4: 30307, 5: 30309,
@@ -67,39 +78,36 @@ BOSS_NAMES = {
     30316: "ashen Gleeok", 30225: "Ganon",
 }
 
-# Characters who are not enemies keep the one catalog record they always had.
-NPC_MOBS = {
-    "old_man": 30228,
-    "princess_zelda": 30338,
-    "fairy": 30216,
-}
+# The manifest's non-enemy entities. Old men and fairies are a person per
+# room (npc_key below); Zelda keeps her one record.
+NPC_KINDS = {"old_man", "princess_zelda", "fairy"}
 
 # The catalog records that used to be spawned as ordinary enemies. Each is
 # replaced by the per-band records generated from ENEMY_TYPES, so the old
 # single-level record is dropped rather than left behind unspawned. 30335-
 # 30337 (peahat, armos, the shared hazard) were generated here before.
+# 30216 (the fairy) and 30228 (the old man) were one record shared by every
+# fountain and every old man's room; each is a person of their own now.
 RETIRED_MOBILE_VNUMS = {
     30200, 30201, 30202, 30203, 30205, 30206, 30207, 30208,
-    30211, 30212, 30213, 30214, 30215, 30217, 30219, 30220, 30221,
+    30211, 30212, 30213, 30214, 30215, 30216, 30217, 30219, 30220, 30221,
+    30228,
     30300, 30301, 30302, 30304, 30306, 30308, 30310, 30312,
     30315, 30317, 30318, 30320, 30321, 30322, 30323, 30327,
     30328, 30329, 30330, 30335, 30336, 30337,
 }
 
-SHOP_KEEPERS = {
-    "regular_bomb": 30339,
-    "regular_candle": 30340,
-    "deluxe_shield": 30341,
-    "deluxe_ring": 30342,
-    "potion": 30343,
-}
+# The NES stock, shop by shop kind. Every shop of a kind has its own
+# merchant (npcs "merchant:<guide coordinate>", "potion:<...>"), who sells
+# this and buys nothing.
 SHOP_INVENTORY = {
-    30339: [30541, 30542, 30543],
-    30340: [30544, 30545, 30546],
-    30341: [30547, 30548, 30549],
-    30342: [30550, 30551, 30552],
-    30343: [30553, 30554],
+    "regular_bomb": [30541, 30695, 30543],      # Shield 130, Bombs 20, Arrows 80
+    "regular_candle": [30544, 30545, 30546],    # Shield 160, Key 100, Blue Candle 60
+    "deluxe_shield": [30547, 30548, 30549],     # Shield 90, Bait 100, Heart 10
+    "deluxe_ring": [30550, 30551, 30552],       # Key 80, Blue Ring 250, Bait 60
+    "potion": [30553, 30554],                   # Blue Potion 40, Red Potion 68
 }
+SHOP_NPC_PREFIX = {"shop": "merchant", "potion_shop": "potion"}
 
 PUZZLE_OBJECTS = {
     "bomb": {"north": 30502, "east": 30503, "south": 30504, "west": 30505, "down": 30509},
@@ -109,7 +117,30 @@ PUZZLE_OBJECTS = {
     "push": 30513,
     "armos": 30514,
     "bracelet": 30564,
+    "grave": 30697,         # HYRULE_GRAVESTONE_VNUM
 }
+
+# Take any one you want: a Heart Container or the red potion. The same
+# Heart Container lies on the P6 dock. src/hyrule.c's claim table lets each
+# character take one, once.
+TAKE_ANY_OFFER = (30501, 30554)
+
+# The dungeon old men who sell a bigger bomb bag (Levels 5 and 7).
+BOMB_BAG_SELLERS = ("old_man:L5:D7", "old_man:L7:A4")
+
+
+def shop_stock(manifest: dict[str, Any]) -> dict[int, list[int]]:
+    """Keeper vnum -> what they sell, for the G resets and #SHOPS."""
+    stock: dict[int, list[int]] = {}
+    for room in manifest["overworld"]["rooms"]:
+        for landmark in room["landmarks"]:
+            if landmark["type"] in {"shop", "potion_shop"}:
+                keeper = npc_vnum(
+                    f"{SHOP_NPC_PREFIX[landmark['type']]}:{landmark['zelda_coordinate']}")
+                stock[keeper] = list(SHOP_INVENTORY[landmark["shop_kind"]])
+    for key in BOMB_BAG_SELLERS:
+        stock[npc_vnum(key)] = [30696]          # HYRULE_BOMB_BAG_VNUM
+    return stock
 
 # The gear chests. Stage 0 is the Wooden Sword cave; stage N sits in Level
 # N's map room. The catalog gear runs one piece per level, 1 to 70, and each
@@ -416,6 +447,30 @@ def thin_population(entities: dict[str, int]) -> dict[str, int]:
     return counts
 
 
+def guide_coordinate(coordinate: str) -> str:
+    """A manifest coordinate the way a printed guide writes it: rows count
+    from the north there, so H1 (the start) is H8."""
+    return f"{coordinate[0]}{9 - int(coordinate[1:])}"
+
+
+_NPC_TABLE: dict[str, dict[str, Any]] | None = None
+
+
+def npc_table() -> dict[str, dict[str, Any]]:
+    """The people of Hyrule, from data/hyrule_mob_prose.json's npcs."""
+    global _NPC_TABLE
+    if _NPC_TABLE is None:
+        _NPC_TABLE = load_json(DEFAULT_MOB_PROSE)["npcs"]
+    return _NPC_TABLE
+
+
+def npc_vnum(key: str) -> int:
+    try:
+        return int(npc_table()[key]["vnum"])
+    except KeyError:
+        raise KeyError(f"data/hyrule_mob_prose.json has no npc {key!r}") from None
+
+
 def world_spawns(room: dict[str, Any], bands: dict[int, tuple[int, int]]) -> dict[int, int]:
     """Mobile vnum -> count for one overworld screen.
 
@@ -425,8 +480,10 @@ def world_spawns(room: dict[str, Any], bands: dict[int, tuple[int, int]]) -> dic
     band = band_index(room["recommended_level"], bands)
     spawns: Counter[int] = Counter()
     for kind, count in room["entities"].items():
-        if kind in NPC_MOBS:
-            spawns[NPC_MOBS[kind]] += count
+        if kind == "fairy":
+            spawns[npc_vnum(f"fairy:{guide_coordinate(room['coordinate'])}")] += 1
+        elif kind == "princess_zelda":
+            spawns[ZELDA_VNUM] += 1
         elif kind in ENEMY_TYPES:
             spawns[tier_vnum(kind, band)] += count
     return dict(spawns)
@@ -441,8 +498,10 @@ def dungeon_spawns(level: int, room: dict[str, Any]) -> dict[int, int]:
     for kind, count in thin_population(enemies).items():
         spawns[tier_vnum(kind, level)] += count
     for kind, count in room["entities"].items():
-        if kind in NPC_MOBS:
-            spawns[NPC_MOBS[kind]] += 1
+        if kind == "old_man":
+            spawns[npc_vnum(f"old_man:L{level}:{room['coordinate']}")] += 1
+        elif kind == "princess_zelda":
+            spawns[ZELDA_VNUM] += 1
         elif kind not in ENEMY_TYPES:
             raise ValueError(f"Level {level} {room['coordinate']}: no mobile for {kind!r}")
     return dict(spawns)
@@ -455,13 +514,25 @@ def manifest_bands(manifest: dict[str, Any]) -> dict[int, tuple[int, int]]:
     }
 
 
+def enemy_text(mob_prose: dict[str, Any], kind: str, band: int) -> dict[str, str]:
+    """One kind's text in one band: every band of a kind is written on its
+    own, so a Death Mountain lynel is not an overworld one."""
+    try:
+        text = mob_prose["enemies"][kind][str(band)]
+    except KeyError:
+        raise KeyError(
+            f"data/hyrule_mob_prose.json has no enemy entry for {kind} in band {band}"
+        ) from None
+    description = text["description"]
+    if "\n" not in description:
+        description = wrap_description(description)
+    return {"long": text["long"], "description": description}
+
+
 def enemy_records(manifest: dict[str, Any], mob_prose: dict[str, Any]) -> str:
     bands = manifest_bands(manifest)
-    missing = sorted(set(ENEMY_TYPES) - set(mob_prose["enemies"]))
-    if missing:
-        raise KeyError(f"data/hyrule_mob_prose.json has no enemy entry for {missing}")
     return "\n".join(
-        enemy_record(kind, band, bands, mob_prose["enemies"][kind])
+        enemy_record(kind, band, bands, enemy_text(mob_prose, kind, band))
         for kind, band in enemy_tiers(manifest)
     )
 
@@ -735,6 +806,259 @@ BOSS_WEAPON_BASELINES = {
     8: (49.0, "(Flaming) A Light Saber, glitter.are, level 50"),
     9: (54.0, "the Power of the world, crypt.are, level 54"),
 }
+
+
+# --------------------------------------------------------------------------
+# What each guardian drops besides its key, Heart Container, weapon and
+# Heart Guard: five armour pieces, two of which fall at random each kill
+# (hyrule_boss_drops() in src/hyrule.c, rolled in make_corpse). Each sits at
+# the top of the band and scores a little above the best piece any other
+# source gives a character of that level in that slot, measured with the
+# Gear Finder's own scoring (get_best_gear in webadmin/server.py, warrior
+# weights). The baselines are recorded beside each piece and
+# tests/test_hyrule_boss_drops.py measures the world again.
+# --------------------------------------------------------------------------
+
+BOSS_DROP_FIRST = 30650
+BOSS_DROPS_PER_GUARDIAN = 5
+BOSS_DROPS_PER_KILL = 2
+WEAR_SLOT_FLAG = {
+    "finger": "B", "neck": "C", "body": "D", "head": "E", "legs": "F", "feet": "G",
+    "hands": "H", "arms": "I", "shield": "J", "about": "K", "waist": "L", "wrist": "M",
+}
+APPLY_CODES = {"strength": 1, "dexterity": 2, "constitution": 5, "hit points": 13,
+               "hitroll": 18, "damroll": 19, "save vs spell": 24}
+
+
+@dataclass(frozen=True)
+class DropPiece:
+    slot: str
+    keywords: str
+    short: str
+    armour: int
+    affects: tuple[tuple[str, int], ...]
+    baseline: str           # the best piece it was measured against: score, name
+    lore: str
+
+
+BOSS_DROPS: dict[int, tuple[DropPiece, ...]] = {
+    1: (
+        DropPiece("body", "aquamentus scale coat green", "a coat of Aquamentus scale", 4,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 13)), "21.0 a Rebel jumpsuit",
+                  "Green scales the size of a palm, stitched to soft leather."),
+        DropPiece("head", "horn crested helm aquamentus", "a horn-crested helm", 2,
+                  (("save vs spell", -2), ("hit points", 19)), "7.6 the propeller hat",
+                  "A light cap of hide with the young dragon's horn rising from its brow."),
+        DropPiece("hands", "dragonclaw gloves claw", "a pair of dragonclaw gloves", 2,
+                  (("hitroll", 1), ("damroll", 1), ("strength", 1), ("hit points", 14)),
+                  "14.0 swordsman's gloves",
+                  "Gloves tipped with the dragon's own claws, filed blunt for the fingers."),
+        DropPiece("about", "eagle feather cloak", "an Eagle-feather cloak", 2,
+                  (("hitroll", 2), ("damroll", 2), ("dexterity", 1)), "19.5 a commoner's piwafwi",
+                  "Brown and white feathers from the Eagle's own eyrie, sewn in rows."),
+        DropPiece("shield", "green scale buckler", "a green scale buckler", 2,
+                  (("save vs spell", -2), ("hit points", 36)), "9.0 an arsenal buckler",
+                  "A small round shield faced with one great green scale. Fire runs off it."),
+    ),
+    2: (
+        DropPiece("body", "dodongo hide jerkin", "a Dodongo-hide jerkin", 7,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 22)),
+                  "31.25 a Standard military battle armor",
+                  "Grey, pebbled hide so thick it stands up on its own."),
+        DropPiece("legs", "pebbled hide leggings", "a pair of pebbled-hide leggings", 4,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 4)),
+                  "15.5 a pair of Roman-style leggings",
+                  "Leggings of Dodongo hide, stiff at first and comfortable for ever after."),
+        DropPiece("feet", "dodongo stompers boots", "a pair of Dodongo stompers", 3,
+                  (("hitroll", 2), ("damroll", 2), ("dexterity", 2), ("hit points", 28)),
+                  "24.75 some snakeskin boots",
+                  "Wide, heavy boots made from the soles of the beast's own feet."),
+        DropPiece("waist", "crescent buckled belt moon", "a crescent-buckled belt", 3,
+                  (("hitroll", 2), ("damroll", 2), ("hit points", 12)), "19.75 a quick sheathe",
+                  "A plain belt with a silver buckle shaped like the Moon's crescent."),
+        DropPiece("finger", "smoke grey moonstone ring", "a smoke-grey moonstone ring", 3,
+                  (("hitroll", 1), ("damroll", 1), ("save vs spell", -2), ("hit points", 6)),
+                  "11.75 a dwarven golden ring",
+                  "A moonstone clouded grey, as though smoke had been trapped inside it."),
+    ),
+    3: (
+        DropPiece("legs", "thornvine greaves", "a pair of thornvine greaves", 6,
+                  (("hitroll", 2), ("damroll", 2), ("hit points", 23)),
+                  "30.5 a pair of blackened steel greaves",
+                  "Greaves woven from Manhandla's thorned vine, hard as iron and still green."),
+        DropPiece("about", "manhandla petal mantle", "a mantle of Manhandla's petals", 6,
+                  (("hitroll", 1), ("damroll", 1), ("dexterity", 3), ("hit points", 25)),
+                  "26.0 the cloak of the psionic",
+                  "Four great petals, dried and joined at the collar, that rustle as you walk."),
+        DropPiece("hands", "four bloom gauntlets", "a pair of four-bloom gauntlets", 5,
+                  (("hitroll", 2), ("damroll", 2), ("strength", 2), ("hit points", 3)),
+                  "24.75 the Titanic Horns of Capricon",
+                  "Gauntlets with a closed flower-bud on each knuckle that snaps open in a fight."),
+        DropPiece("wrist", "manji cross bracer", "a Manji-cross bracer", 5,
+                  (("hitroll", 1), ("damroll", 1), ("dexterity", 3), ("hit points", 14)),
+                  "17.25 bracers of defence",
+                  "A bracer stamped with the turning four-armed cross of the Manji."),
+        DropPiece("head", "flower crowned helm", "a flower-crowned helm", 6,
+                  (("hitroll", 1), ("damroll", 1), ("save vs spell", -4), ("hit points", 8)),
+                  "21.5 a Roman combat helmet",
+                  "A helm ringed with a crown of hard red petals."),
+    ),
+    4: (
+        DropPiece("body", "twin dragon hauberk gleeok", "a twin-dragon hauberk", 13,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 10)), "46.0 a bearskin coat",
+                  "Mail of overlapping dragon scales, two necks worked in silver across the chest."),
+        DropPiece("shield", "coiled snake shield", "a coiled-snake shield", 9,
+                  (("hitroll", 2), ("damroll", 2), ("save vs spell", -5), ("hit points", 15)),
+                  "27.95 a small round shield",
+                  "A kite shield whose boss is a coiled serpent, mouth open and fangs bare."),
+        DropPiece("arms", "fang vambraces", "a pair of fang vambraces", 6,
+                  (("hitroll", 2), ("damroll", 2), ("strength", 1)),
+                  "21.25 some platinum arm bands",
+                  "Vambraces ridged with a row of the Gleeok's lesser fangs."),
+        DropPiece("head", "twin horned helm", "a twin-horned helm", 9,
+                  (("hitroll", 1), ("damroll", 1), ("save vs spell", -5), ("hit points", 7)),
+                  "27.5 a great war helmet",
+                  "A helm with two swept-back horns, one from each of the Snake's heads."),
+        DropPiece("legs", "serpent scale greaves", "a pair of serpent-scale greaves", 9,
+                  (("hitroll", 2), ("damroll", 2), ("hit points", 30)), "37.5 etched steel leggings",
+                  "Greaves of fine green scale that ripple like water when you move."),
+    ),
+    5: (
+        DropPiece("body", "urchin spine mail", "a coat of urchin-spine mail", 16,
+                  (("hitroll", 2), ("damroll", 2), ("hit points", 33)),
+                  "66.65 some Black velvet robes",
+                  "Mail of Digdogger's spines laid flat; it hums faintly when struck."),
+        DropPiece("hands", "spined gauntlets", "a pair of spined gauntlets", 8,
+                  (("hitroll", 2), ("damroll", 2), ("strength", 3)), "28.75 obsidian gauntlets",
+                  "Gauntlets studded with short urchin spines along the knuckles."),
+        DropPiece("arms", "lizard hide armguards", "a pair of lizard-hide armguards", 8,
+                  (("hitroll", 2), ("damroll", 2), ("strength", 3)),
+                  "29.25 black steel vambraces",
+                  "Armguards of mottled lizard hide, cool to the touch in any heat."),
+        DropPiece("feet", "sand lizard boots", "a pair of sand-lizard boots", 8,
+                  (("hitroll", 2), ("damroll", 2), ("dexterity", 4), ("hit points", 18)),
+                  "29.5 Lamorak's spurs",
+                  "Light boots that grip loose sand and stone alike."),
+        DropPiece("about", "frilled lizard cloak", "a frilled lizard cloak", 11,
+                  (("hitroll", 1), ("damroll", 1), ("dexterity", 1)),
+                  "28.5 an armored shirt of chainmail",
+                  "A cloak with a stiff frill at the collar that rises when danger is near."),
+    ),
+    6: (
+        DropPiece("wrist", "amber eye bracer gohma", "a bracer set with an amber eye", 10,
+                  (("hitroll", 3), ("damroll", 3), ("dexterity", 3)), "34.55 a white bracer",
+                  "A bracer whose single amber stone seems to follow whatever moves."),
+        DropPiece("shield", "gohma carapace shield", "Gohma's carapace shield", 13,
+                  (("hitroll", 3), ("damroll", 3), ("save vs spell", -2)),
+                  "35.25 a dented tower shield",
+                  "A curved plate of the great crab's shell, harder than any forged shield."),
+        DropPiece("head", "dragon crested helm", "a dragon-crested helm", 13,
+                  (("hitroll", 1), ("damroll", 1), ("save vs spell", -2)), "32.5 a wolf helm",
+                  "A full helm with a dragon's crest, the Dragon dungeon's own emblem."),
+        DropPiece("finger", "unblinking eye ring", "an unblinking eye ring", 10,
+                  (("hitroll", 2), ("damroll", 2), ("save vs spell", -5)), "25.95 a sapphire ring",
+                  "A ring holding a tiny red lens that never closes."),
+        DropPiece("feet", "pincer toed boots", "a pair of pincer-toed boots", 10,
+                  (("hitroll", 3), ("damroll", 3), ("dexterity", 2)),
+                  "33.25 a pair of mithril boots",
+                  "Boots capped with curved shell at the toes, for a sure grip on wet stone."),
+    ),
+    7: (
+        DropPiece("body", "demon scale plate", "a suit of demon-scale plate", 23,
+                  (("hitroll", 7), ("damroll", 7), ("hit points", 21)),
+                  "122.5 Knights of the Silver Hand Full Plate",
+                  "Plate of the old dragon's darkened scales, each one scarred by a hundred fights."),
+        DropPiece("head", "chipped horn crown", "a chipped-horn crown", 15,
+                  (("hitroll", 2), ("damroll", 2), ("save vs spell", -8)),
+                  "46.0 an ancient Ranger Lord's Stetson",
+                  "A crown cut from the ancient Aquamentus's horn, chipped where blades struck it."),
+        DropPiece("hands", "demonclaw gauntlets", "a pair of demonclaw gauntlets", 11,
+                  (("hitroll", 4), ("damroll", 4), ("strength", 2)), "44.5 Gauntlets of Bravery",
+                  "Heavy gauntlets with black claws for fingertips."),
+        DropPiece("legs", "ancient scale greaves", "a pair of ancient-scale greaves", 15,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 10)),
+                  "37.5 etched steel leggings",
+                  "Greaves of scale gone almost black with age."),
+        DropPiece("about", "demon wing cloak", "a demon-wing cloak", 15,
+                  (("dexterity", 4),), "31.5 an oiled cloak",
+                  "A cloak of leathery wing that folds itself about you when you stand still."),
+    ),
+    8: (
+        DropPiece("body", "ashen dragon plate", "a suit of ashen dragon plate", 26,
+                  (("hitroll", 9), ("damroll", 9), ("hit points", 4)), "143.0 Divine Breast Plate",
+                  "Plate of grey, ash-dulled scale, still warm from four centuries of fire."),
+        DropPiece("shield", "four crowned lion shield", "the four-crowned lion shield", 17,
+                  (("hitroll", 4), ("damroll", 4), ("save vs spell", -10), ("hit points", 15)),
+                  "52.85 a Ceresian kite",
+                  "A lion's head on a field of ash, four crowns above it for the four heads."),
+        DropPiece("waist", "lion head girdle", "a lion-head girdle", 13,
+                  (("hitroll", 4), ("damroll", 4), ("hit points", 34)), "48.75 a rib bone belt",
+                  "A broad girdle fastened by a bronze lion's head."),
+        DropPiece("wrist", "ash grey dragon bracer", "an ash-grey dragon bracer", 13,
+                  (("hitroll", 5), ("damroll", 5), ("dexterity", 2)), "51.0 an elven bracelet",
+                  "A bracer of ashen scale that leaves a smudge of soot on the skin."),
+        DropPiece("arms", "ember armguards", "a pair of ember armguards", 13,
+                  (("hitroll", 2), ("damroll", 2), ("strength", 1)),
+                  "29.25 black steel vambraces",
+                  "Armguards with a seam of live ember glowing along each edge."),
+    ),
+    9: (
+        DropPiece("hands", "ganon black gauntlets", "Ganon's black gauntlets", 14,
+                  (("hitroll", 4), ("damroll", 4), ("strength", 3)), "49.75 battle gloves",
+                  "Gauntlets of black iron sized for a boar-king's hands, cinched to fit yours."),
+        DropPiece("legs", "boar hide greaves", "a pair of boar-hide greaves", 19,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 7)), "44.5 some corduroys",
+                  "Greaves of coarse blue hide, bristling at every seam."),
+        DropPiece("arms", "ganon arm plates", "Ganon's arm plates", 14,
+                  (("hitroll", 5), ("damroll", 5), ("strength", 1)), "52.5 titanic arm plates",
+                  "Arm plates etched with the Triforce of Power, the lower triangle blackened."),
+        DropPiece("waist", "girdle of power", "the girdle of Power", 14,
+                  (("hitroll", 5), ("damroll", 5), ("hit points", 17)), "54.0 a combat belt",
+                  "A girdle of gold links, its clasp a single dark triangle."),
+        DropPiece("wrist", "trident chased bracer", "a trident-chased bracer", 14,
+                  (("hitroll", 5), ("damroll", 5), ("dexterity", 1)), "51.0 an elven bracelet",
+                  "A black bracer chased with the shape of Ganon's trident."),
+    ),
+}
+
+
+def boss_drop_vnum(level: int, index: int) -> int:
+    return BOSS_DROP_FIRST + (level - 1) * BOSS_DROPS_PER_GUARDIAN + index
+
+
+def boss_drop_level(level: int, bands: dict[int, tuple[int, int]]) -> int:
+    """Each piece is at the top of its band; Ganon's at 58, below the
+    Master Sword's 59 ceiling of Death Mountain."""
+    return 58 if level == 9 else bands[level][1]
+
+
+def boss_drop_records(manifest: dict[str, Any]) -> list[str]:
+    bands = manifest_bands(manifest)
+    records = []
+    for dungeon in manifest["dungeons"]:
+        level = dungeon["level"]
+        title = dungeon["title"].removeprefix("The ")
+        guardian = BOSS_NAMES[BOSS_MOBS[level]]
+        item_level = boss_drop_level(level, bands)
+        for index, piece in enumerate(BOSS_DROPS[level]):
+            applies = "\n".join(
+                f"A\n{APPLY_CODES[name]} {value}" for name, value in piece.affects)
+            lore = textwrap.fill(
+                f"{piece.lore} It fell from {guardian}, guardian of "
+                f"{'Death Mountain' if level == 9 else 'the ' + title}.",
+                width=DESCRIPTION_WIDTH)
+            armour = piece.armour
+            records.append(object_record(
+                boss_drop_vnum(level, index), piece.keywords, piece.short,
+                f"{piece.short[0].upper()}{piece.short[1:]} lies here.",
+                "leather" if piece.slot in {"about", "waist", "feet", "hands"} else "steel",
+                f"9 G A{WEAR_SLOT_FLAG[piece.slot]}",
+                f"{armour} {armour} {armour} {armour} 0",
+                item_level, 6 if piece.slot in {"body", "shield"} else 2,
+                item_level * item_level * 5,
+                f"E\n{piece.keywords}~\n{lore}\n~\n{applies}",
+            ))
+    return records
 
 
 # --------------------------------------------------------------------------
@@ -1025,69 +1349,40 @@ def mobile_record(
 AHMV ABCDEFGHIJK M 0"""
 
 
+# What each kind of person is made of. Everyone is ACT_IS_NPC and
+# ACT_SENTINEL; the rest are the flags the catalog's own shopkeepers and old
+# man always carried. is_hyrule_bystander() in src/fight.c keeps all of
+# them out of every fight, whatever their level.
+NPC_BODIES = {
+    "moblin": ("pig", 50, "ABMV"),
+    "fairy": ("elf", 50, "ABMV"),
+    "zelda": ("human", 70, "AB"),
+}
+
+
+def npc_role(key: str) -> str:
+    return key.split(":", 1)[0]
+
+
 def new_mobile_records() -> str:
-    return "\n".join([
-        mobile_record(
-            30338, "princess zelda", "Princess Zelda",
-            "Princess Zelda waits beside the completed Triforce.",
-            "Zelda stands free at last, the light of the Triforce reflected in her eyes.", 70,
-            act_flags="AB",
-        ),
-        mobile_record(
-            30339, "hyrule merchant bombs arrows", "a Hyrule merchant",
-            "A Hyrule merchant displays shields, bombs, and arrows.",
-            "The cave merchant watches over a carefully priced spread of adventuring supplies.",
-            50, act_flags="ABMV",
-        ),
-        mobile_record(
-            30340, "hyrule merchant candle key", "a Hyrule merchant",
-            "A Hyrule merchant displays a candle, a key, and a shield.",
-            "The cave merchant waits patiently beside three familiar wares.",
-            50, act_flags="ABMV",
-        ),
-        mobile_record(
-            30341, "hyrule merchant deluxe shield", "a secret Hyrule merchant",
-            "A secret Hyrule merchant offers hard-won supplies.",
-            "This merchant's hidden grotto offers a better bargain than the open caves.",
-            50, act_flags="ABMV",
-        ),
-        mobile_record(
-            30342, "hyrule merchant blue ring", "a blue-ring merchant",
-            "A blue-ring merchant guards rare equipment.",
-            "The merchant gestures proudly toward a blue ring and two practical supplies.",
-            50, act_flags="ABMV",
-        ),
-        mobile_record(
-            30343, "hyrule potion woman", "an old potion woman",
-            "An old woman waits silently behind two colored potions.",
-            "She studies visitors for proof that the royal family sent them.",
-            50, act_flags="ABMV",
-        ),
-        mobile_record(
-            30344, "hyrule door repair elder", "a stern old man",
-            "A stern old man waits beside a freshly repaired door.",
-            "He keeps a precise ledger of every visitor who has paid the repair charge.",
-            50, act_flags="ABMV",
-        ),
-        mobile_record(
-            30345, "hyrule money game elder gambler", "a gambling old man",
-            # Plain newlines. fread_string() turns every newline it
-            # reads into the game's own line ending as it goes, so
-            # spelling that ending out here handed it a second
-            # carriage return to pass along -- invisible while this
-            # file was CRLF, and not once it was not.
-            "An old man waits behind three concealed rupee signs.",
-            "He offers the same risky money-making game found across the\n"
-            "First Quest: three signs, one choice, and no way to tell them\n"
-            "apart.\n"
-            "\n"
-            "Type GAMBLE to play.  Each go costs 10 rupees, and the sign you\n"
-            "pick either pays you 50 or 20 rupees, or takes another 20 or 40\n"
-            "off you.  All four outcomes are equally likely, so the house edge\n"
-            "is real and patience is not a strategy.",
-            50, act_flags="ABMV",
-        ),
-    ])
+    """Hyrule's people, one record each, from the npcs table.
+
+    Descriptions are plain prose wrapped here. Plain newlines matter:
+    fread_string() turns every newline it reads into the game's own line
+    ending as it goes, so spelling that ending out handed it a second
+    carriage return to pass along.
+    """
+    records = []
+    for key, npc in sorted(npc_table().items(), key=lambda item: item[1]["vnum"]):
+        vnum = int(npc["vnum"])
+        if vnum != ZELDA_VNUM and not NPC_VNUM_FIRST <= vnum <= NPC_VNUM_LAST:
+            raise ValueError(f"npc {key} vnum {vnum} is outside {NPC_VNUM_FIRST}-{NPC_VNUM_LAST}")
+        race, level, act_flags = NPC_BODIES.get(npc_role(key), ("human", 50, "ABMV"))
+        records.append(mobile_record(
+            vnum, npc["keywords"], npc["short"], npc["long"],
+            wrap_description(npc["description"]), level, race=race, act_flags=act_flags,
+        ))
+    return "\n".join(records)
 
 
 # obj->cost is copper; Hyrule quotes itself in rupees, which are gold.
@@ -1124,6 +1419,49 @@ def object_record(
     if extras:
         record += "\n" + extras.strip()
     return record
+
+
+# What the shops sell, and what each of it is for (Plan 6 and Plan 8 in
+# wiki/hyrule-area.md). src/hyrule.c gives each its use.
+HYRULE_BOMBS_VNUM = 30695
+HYRULE_BOMB_BAG_VNUM = 30696
+HYRULE_GRAVESTONE_VNUM = 30697
+MAGICAL_SWORD_VNUM = 30649
+MAGICAL_SWORD_LEVEL = 38
+MAGICAL_SWORD_DICE = (11, 5)
+MAGICAL_SWORD_ROLLS = 3        # hitroll and damroll
+MAGICAL_SHIELD_LORE = (
+    "E\nmagical shield~\nA broad shield whose face is worked with a red cross and a golden bird.\n"
+    "Held, it turns aside a tenth of any fire or magic thrown at you -- a\n"
+    "guardian's fireballs, a wizzrobe's beam -- though the Mirror Shield,\n"
+    "which does more, cannot be carried with it. Beware the like like.\n~")
+SMALL_KEY_LORE = (
+    "E\nkey small~\nA small key for Hyrule's dungeon doors. UNLOCK a locked door with it\n"
+    "and the lock keeps it. It stays with you when you leave the game.\n~")
+BAIT_LORE = (
+    "E\nbait enemy food~\nStrong-smelling bait. FEED it to the hungry Goriya in the Demon's\n"
+    "halls, which eats it, or FEED BAIT anywhere else to set it down: the\n"
+    "enemies in the room forget you and turn to the smell for a while, and you\n"
+    "pick the bait up again. A guardian is not fooled.\n~")
+
+
+def magical_sword_record() -> str:
+    """The NES Magical Sword, under the graveyard's loose gravestone.
+
+    The Master Sword is Ganon's now, so the grave holds the sword that was
+    there first: better than the White Sword and short of the Dragon
+    guardian's eye-lance, for a character with twelve hearts.
+    """
+    count, size = MAGICAL_SWORD_DICE
+    return object_record(
+        MAGICAL_SWORD_VNUM, "magical sword blade grave", "the Magical Sword",
+        "The Magical Sword lies here, its blade faintly blue.", "steel",
+        "5 ABGUV AN", f"1 {count} {size} 3 D", MAGICAL_SWORD_LEVEL, 15, 20000,
+        f"E\nmagical sword~\nThe sword that slept beneath the old graveyard while the Master Sword\n"
+        f"went to Ganon. The old man who keeps it gives it only to one with\n"
+        f"twelve hearts: see HEARTS.\n~\n"
+        f"A\n18 {MAGICAL_SWORD_ROLLS}\nA\n19 {MAGICAL_SWORD_ROLLS}",
+    )
 
 
 def silver_arrow_object_record() -> str:
@@ -1222,7 +1560,10 @@ A 0 0 {AFF_HASTE_FLAG}"""
 
 
 def triforce_record() -> str:
-    """The complete Triforce, a light: WEAR puts it in the light slot.
+    """The Triforce, whole: a light, so WEAR puts it in the light slot.
+
+    It is named just "The Triforce" wherever it is shown -- the owner's
+    wish -- and never "the complete Triforce".
 
     Worn there it gives the sight of a level 59 character with HOLYLIGHT
     on -- triforce_sight() in src/handler.c. value[2] 999 is the light
@@ -1242,9 +1583,9 @@ gods who hide themselves above that.
 ~"""
     return object_record(
         30286,
-        "triforce complete golden triangles",
-        "the complete Triforce",
-        "The complete Triforce floats here, radiant with golden power.",
+        "triforce golden triangles",
+        "The Triforce",
+        "The Triforce floats here, radiant with golden power.",
         "gold",
         "1 ABGIV A",
         "0 0 999 0 0",
@@ -1419,7 +1760,7 @@ def piece_record(level: int, band: tuple[int, int], title: str) -> str:
     lore = textwrap.fill(
         f"This is {origin}. It is one of nine Triforce pieces, one from each of "
         f"Hyrule's dungeon guardians: eight of Wisdom, and Ganon's Power. {use} "
-        "With all nine in hand, type COMBINE TRIFORCE to make the complete Triforce.",
+        "With all nine in hand, type COMBINE TRIFORCE to make the Triforce.",
         width=DESCRIPTION_WIDTH,
     )
     return object_record(
@@ -1470,26 +1811,25 @@ def chain_records(manifest: dict[str, Any]) -> list[str]:
     return records
 
 
-def map_art(dungeon: dict[str, Any]) -> str:
-    rooms = {room["coordinate"]: room for room in dungeon["rooms"]}
-    major_sources = {cellar["source_coordinate"] for cellar in dungeon["cellars"]}
-    symbols = {
-        dungeon["entrance_coordinate"]: "E",
-        dungeon["map_coordinate"]: "M",
-        dungeon["compass_coordinate"]: "C",
-        dungeon["boss_coordinate"]: "B",
-        dungeon["goal_coordinate"]: "T",
-    }
-    for coordinate in major_sources:
-        symbols.setdefault(coordinate, "I")
-    lines = [f"Level {dungeon['level']} - {dungeon['title']}", "N", "^"]
+
+PLAN_KEYWORD = "hyrule-floor-plan"
+
+
+def map_plan(dungeon: dict[str, Any]) -> str:
+    """The floor plan src/hyrule.c draws a map from: eight rows of eight
+    room vnums, north row first and 0 for no room, then the map room and
+    the compass room, then each block-stair cellar and the room above it.
+    The guardian, the treasure room and what the guardian's door needs come
+    from the dungeon's row of hyrule_progress_gate, not from here."""
+    rooms = {room["coordinate"]: room["vnum"] for room in dungeon["rooms"]}
+    lines = []
     for row in range(8, 0, -1):
-        line = []
-        for column in range(8):
-            coordinate = f"{chr(ord('A') + column)}{row}"
-            line.append(symbols.get(coordinate, "#" if coordinate in rooms else " "))
-        lines.append(" ".join(line).rstrip())
-    lines.append("E entrance  M map  C compass  I item  B boss  T goal")
+        lines.append(" ".join(
+            str(rooms.get(f"{chr(ord('A') + column)}{row}", 0)) for column in range(8)))
+    lines.append(f"map {rooms[dungeon['map_coordinate']]} "
+                 f"compass {rooms[dungeon['compass_coordinate']]}")
+    for cellar in dungeon["cellars"]:
+        lines.append(f"cellar {cellar['vnum']} above {cellar['source_vnum']}")
     return "\n".join(lines)
 
 
@@ -1500,9 +1840,17 @@ def map_object_record(dungeon: dict[str, Any], compass: bool) -> str:
     kind = "compass" if compass else "map"
     opcode = 91 if compass else 90
     values = f"{opcode} {dungeon['boss_vnum']} {dungeon['first_room_vnum']} {dungeon['last_room_vnum']} {level}"
-    extras = ""
-    if not compass:
-        extras = f"E\n{dungeon['title'].lower()} map parchment~\n{map_art(dungeon)}\n~"
+    if compass:
+        extras = (
+            f"E\n{title.lower()} compass~\n"
+            + textwrap.fill(
+                f"A brass compass whose needle knows only the halls of Level {level}. "
+                "LOOK at it inside that dungeon and it points the first step toward "
+                "the Triforce chest, and says how many rooms away the chest is, and "
+                "the guardian's chamber on the way.", width=DESCRIPTION_WIDTH)
+            + "\n~")
+    else:
+        extras = f"E\n{PLAN_KEYWORD}~\n{map_plan(dungeon)}\n~"
     return object_record(
         vnum,
         f"level {level} {title.lower()} dungeon {kind}",
@@ -1659,7 +2007,8 @@ def new_object_records(manifest: dict[str, Any]) -> str:
         object_record(30507, "pool recorder melody", "a still pool", "The water waits for an ancient melody.", "water", "31 UV 0", "13 0 5 1 9"),
         object_record(30508, "hungry goriya guardian", "a hungry Goriya guardian", "A hungry Goriya refuses to leave the doorway.", "flesh", "31 UV 0", "14 0 0 1 9"),
         object_record(30509, "cracked floor opening", "a cracked stone floor", "Fine cracks mark a concealed descent.", "stone", "31 UV 0", "12 0 5 1 9"),
-        object_record(30510, "ten rupees gold money coins", "10 rupees", "Ten rupees gleam here.", "gold", "20 0 A", "10 2 0 0 0", 1, 0, 10),
+        # The money caves pay as you walk in (hyrule.c), so no pile lies on
+        # their floors; these two are the dungeon cellars' rupees.
         object_record(30511, "thirty rupees gold money coins", "30 rupees", "Thirty rupees gleam here.", "gold", "20 0 A", "30 2 0 0 0", 1, 0, 30),
         object_record(30512, "hundred rupees gold money coins", "100 rupees", "One hundred rupees gleam here.", "gold", "20 0 A", "100 2 0 0 0", 1, 0, 100),
         object_record(30513, "movable stone block", "a movable stone block", "Scrape marks show that this block can be pushed.", "stone", "31 UV 0", "4 0 5 1 9"),
@@ -1713,23 +2062,45 @@ def new_object_records(manifest: dict[str, Any]) -> str:
         object_record(30538, "raft level four crossing", "a waiting dungeon raft", "A raft waits at the water's edge.", "wood", "30 GOV 0", f"6 {level_four['entrance_vnum']} 0 0 30411"),
         object_record(30539, "raft heart crossing", "a waiting heart raft", "A raft waits to cross the open water.", "wood", "30 GOV 0", "6 30657 0 0 30411"),
         object_record(30540, "stepladder heart crossing", "a narrow water crossing", "A gap in the water can be crossed with the stepladder.", "water", "30 GOV 0", "6 30658 0 0 30412"),
-        object_record(30541, "magical shield shop", "a Magical Shield", "A Magical Shield is displayed for 130 rupees.", "steel", "9 N AJ", "5 5 5 3 0", 15, 8, 130, "A\n17 -5"),
-        object_record(30542, "bombs bomb satchel shop", "a satchel of bombs", "A bomb satchel is displayed for 20 rupees.", "leather", "15 N AO", "BCEFHIJ A 0 0 0", 5, 2, 20),
-        object_record(30543, "arrows arrow quiver shop", "a quiver of arrows", "A quiver of arrows is displayed for 80 rupees.", "wood", "8 N AO", "0 0 0 0 0", 8, 2, 80),
-        object_record(30544, "magical shield shop", "a Magical Shield", "A Magical Shield is displayed for 160 rupees.", "steel", "9 N AJ", "5 5 5 3 0", 15, 8, 160, "A\n17 -5"),
-        object_record(30545, "key small shop", "a small key", "A small key is displayed for 100 rupees.", "iron", "18 N A", "0 0 0 0 0", 1, 1, 100),
-        object_record(30546, "blue candle shop", "a Blue Candle", "A Blue Candle is displayed for 60 rupees.", "wax", "1 N AO", "0 0 999 0 0", 5, 2, 60),
-        object_record(30547, "magical shield bargain shop", "a Magical Shield", "A Magical Shield is displayed for 90 rupees.", "steel", "9 N AJ", "5 5 5 3 0", 20, 8, 90, "A\n17 -5"),
-        object_record(30548, "food bait shop", "enemy bait", "Enemy bait is displayed for 100 rupees.", "meat", "19 N A", "H 0 0 0 0", 20, 3, 100),
+        object_record(30541, "magical shield shop", "a Magical Shield", "A Magical Shield is displayed for 130 rupees.", "steel", "9 N AJ", "5 5 5 3 0", 15, 8, 130, f"{MAGICAL_SHIELD_LORE}\nA\n17 -5"),
+        object_record(30543, "arrows arrow quiver shop", "a quiver of arrows", "A quiver of arrows is displayed for 80 rupees.", "wood", "8 N AO", "0 0 0 0 0", 8, 2, 80,
+                      "E\narrows arrow quiver~\nA quiver of arrows for the bow. Wield the bow and SHOOT an enemy in the\n"
+                      "room: each arrow costs a rupee, as it always did, and the quiver is\n"
+                      "never empty while you can pay. An arrow is what finishes Gohma, and\n"
+                      "one is all a pols voice can stand.\n~"),
+        object_record(30544, "magical shield shop", "a Magical Shield", "A Magical Shield is displayed for 160 rupees.", "steel", "9 N AJ", "5 5 5 3 0", 15, 8, 160, f"{MAGICAL_SHIELD_LORE}\nA\n17 -5"),
+        object_record(30545, "key small shop", "a small key", "A small key is displayed for 100 rupees.", "iron", "18 N A", "0 0 0 0 0", 1, 1, 100, SMALL_KEY_LORE),
+        object_record(30546, "blue candle shop", "a Blue Candle", "A Blue Candle is displayed for 60 rupees.", "wax", "1 N AO", "0 0 999 0 0", 5, 2, 60,
+                      "E\nblue candle~\nA candle that never burns down. Hold it as a light, BURN a bush with it\n"
+                      "to find what the bush hides, or BURN an enemy for a lick of flame.\n~"),
+        object_record(30547, "magical shield bargain shop", "a Magical Shield", "A Magical Shield is displayed for 90 rupees.", "steel", "9 N AJ", "5 5 5 3 0", 20, 8, 90, f"{MAGICAL_SHIELD_LORE}\nA\n17 -5"),
+        object_record(30548, "food bait shop", "enemy bait", "Enemy bait is displayed for 100 rupees.", "meat", "19 N A", "H 0 0 0 0", 20, 3, 100, BAIT_LORE),
         object_record(30549, "heart recovery shop", "a Recovery Heart", "A Recovery Heart is displayed for 10 rupees.", "crystal", "10 N AO", "10 28 0 0 0", 1, 1, 10),
-        object_record(30550, "key small bargain shop", "a small key", "A small key is displayed for 80 rupees.", "iron", "18 N A", "0 0 0 0 0", 1, 1, 80),
-        object_record(30551, "blue ring shop", "the Blue Ring", "The Blue Ring is displayed for 250 rupees.", "gold", "9 N AB", "5 5 5 3 0", 24, 1, 250, "A\n13 15"),
-        object_record(30552, "food bait bargain shop", "enemy bait", "Enemy bait is displayed for 60 rupees.", "meat", "19 N A", "H 0 0 0 0", 20, 3, 60),
-        object_record(30553, "blue life potion medicine shop", "a blue Life Potion", "A blue Life Potion is displayed for 40 rupees.", "glass", "10 N AO", "30 28 28 81 0", 1, 2, 40),
-        object_record(30554, "red second potion medicine shop", "a red 2nd Potion", "A red 2nd Potion is displayed for 68 rupees.", "glass", "10 N AO", "30 81 81 81 0", 1, 2, 68),
+        object_record(30550, "key small bargain shop", "a small key", "A small key is displayed for 80 rupees.", "iron", "18 N A", "0 0 0 0 0", 1, 1, 80, SMALL_KEY_LORE),
+        object_record(30551, "blue ring shop", "the Blue Ring", "The Blue Ring is displayed for 250 rupees.", "gold", "9 N AB", "5 5 5 3 0", 24, 1, 250,
+                      "E\nblue ring~\nA plain blue band. Worn, it takes a tenth off every blow you suffer,\n"
+                      "as the Blue Ring of Hyrule does; two rings never add together, and only\n"
+                      "the stronger ward counts.\n~\nA\n13 15"),
+        object_record(30552, "food bait bargain shop", "enemy bait", "Enemy bait is displayed for 60 rupees.", "meat", "19 N A", "H 0 0 0 0", 20, 3, 60, BAIT_LORE),
+        object_record(30553, "blue life potion medicine shop", "a blue Life Potion", "A blue Life Potion is displayed for 40 rupees.", "glass", "10 N AO", "30 28 28 0 0", 1, 2, 40,
+                      "E\nblue life potion~\nQUAFF it and it heals you twice over.\n~"),
+        object_record(30554, "red second potion medicine shop", "a red 2nd Potion", "A red 2nd Potion is displayed for 68 rupees.", "glass", "10 N AO", "30 28 28 0 0", 1, 2, 68,
+                      "E\nred second potion~\nThe 2nd Potion: QUAFF it and it heals you twice over, and what is left\n"
+                      "in the bottle turns blue -- a blue Life Potion, for later.\n~"),
+        object_record(HYRULE_BOMBS_VNUM, "bombs bomb four", "four bombs", "Four round black bombs are displayed for 20 rupees.", "iron", "8 N A", "4 0 0 0 0", 1, 2, 20,
+                      "E\nbombs bomb~\nFour bombs to a purchase. BOMB a cracked wall or rock to open it, or\n"
+                      "BOMB an enemy for a blast of fire; each uses one bomb. Dodongo swallows\n"
+                      "one whole. Your bag carries eight, and the old men of Levels 5 and 7\n"
+                      "sell room for four more each.\n~"),
+        object_record(HYRULE_BOMB_BAG_VNUM, "bag bomb bigger satchel", "a bigger bomb bag", "A bigger bomb bag hangs from a peg, priced at 100 rupees.", "leather", "8 N A", "0 0 0 0 0", 1, 1, 100,
+                      "E\nbag bomb bigger~\nBUY it and your bag carries four more bombs, for good; the old man\n"
+                      "keeps the bag and stitches the room into yours.\n~"),
+        object_record(HYRULE_GRAVESTONE_VNUM, "gravestone grave headstone loose", "a loose gravestone", "One gravestone sits askew on its slab, as though it could be pushed.", "stone", "31 UV 0", "4 0 5 1 9"),
+        magical_sword_record(),
     ])
     objects.extend(ganon_relic_records())
     objects.extend(boss_weapon_record(level) for level in sorted(BOSS_WEAPONS))
+    objects.extend(boss_drop_records(manifest))
     objects.extend(drop_records(manifest))
     objects.extend(chain_records(manifest))
     return "\n".join(objects)
@@ -1898,126 +2269,112 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
                     puzzle_vnum["down"] if isinstance(puzzle_vnum, dict) else puzzle_vnum
                 )
 
-    cave_specs = [
-        (30650, "H1", "wooden_sword_cave", 30219, None),
-        (30651, "K8", "white_sword_cave", 30251, None),
-        # The Hero's Grave. The Master Sword lay here until Ganon took it;
-        # he carries it now, and the grave is a place to learn so.
-        (30652, "B6", "master_sword_grave", None, "push"),
-        (30653, "O8", "letter_cave", 30500, None),
-        (30654, "L1", "heart_cave_bomb", 30501, "bomb"),
-        (30655, "M6", "heart_cave_mountain", 30501, "bomb"),
-        (30656, "H4", "heart_cave_burn", 30501, "burn"),
-        (30657, "P6", "heart_island", 30501, "portal"),
-        (30658, "P3", "heart_ledge", 30501, "portal"),
-        (30659, "E2", "secret_return_tree", 30211, "burn"),
-        (30674, "E6", "power_bracelet_alcove", 30276, "armos"),
-    ]
-    for vnum, coordinate, prose_key, object_vnum, puzzle in cave_specs:
-        rooms[vnum] = RoomSpec(
-            vnum, prose.name("special", prose_key),
-            prose.description("special", prose_key),
-            "ADN", 11, objects=[] if object_vnum is None else [object_vnum],
-        )
-        world_vnum = world_vnums[coordinate]
-        if puzzle == "portal":
-            rooms[world_vnum].objects.append(30539 if coordinate == "P6" else 30540)
-            rooms[vnum].exits["up"] = ExitSpec(world_vnum)
-        else:
-            locks = 4 if puzzle else 0
-            add_two_way_exit(rooms, world_vnum, "down", vnum, locks=locks, keyword=f"{puzzle or 'cave'} opening")
-            if puzzle:
-                puzzle_vnum = PUZZLE_OBJECTS[puzzle]
-                rooms[world_vnum].puzzles.append(
-                    puzzle_vnum["down"] if isinstance(puzzle_vnum, dict) else puzzle_vnum
-                )
+    def open_from_screen(world_vnum: int, cave_vnum: int, puzzle: str | None,
+                         keyword: str, direction: str = "down") -> None:
+        """A cave below a screen. A puzzle makes the way secret until the
+        NES's act opens it (see hyrule_seal_refuses in src/act_move.c)."""
+        add_two_way_exit(rooms, world_vnum, direction, cave_vnum,
+                         locks=4 if puzzle else 0, keyword=keyword)
+        if puzzle:
+            puzzle_vnum = PUZZLE_OBJECTS[puzzle]
+            rooms[world_vnum].puzzles.append(
+                puzzle_vnum[direction] if isinstance(puzzle_vnum, dict) else puzzle_vnum)
 
-    money_objects = {10: 30510, 30: 30511, 100: 30512}
+    def cave(vnum: int, group: str, prose_key: str, objects: list[int],
+             people: list[str]) -> RoomSpec:
+        rooms[vnum] = RoomSpec(
+            vnum, prose.name(group, prose_key), prose.description(group, prose_key),
+            "ADN", 11, objects=objects,
+            entities={str(npc_vnum(key)): 1 for key in people},
+        )
+        return rooms[vnum]
+
+    # The named caves: each keeps its NES prize and the person who keeps it.
+    cave_specs = [
+        (30650, "H1", "wooden_sword_cave", [30219], None, "cave:H8"),
+        (30651, "K8", "white_sword_cave", [30251], None, "cave:K1"),
+        # The Hero's Grave: Ganon took the Master Sword long ago, and the
+        # Magical Sword sleeps here as it did on the NES.
+        (30652, "B6", "master_sword_grave", [MAGICAL_SWORD_VNUM], "grave", "cave:B3"),
+        (30653, "O8", "letter_cave", [30500], None, "cave:O1"),
+        (30659, "E2", "secret_return_tree", [30211], "burn", None),
+        (30674, "E6", "power_bracelet_alcove", [30276], "armos", None),
+    ]
+    for vnum, coordinate, prose_key, objects, puzzle, person in cave_specs:
+        cave(vnum, "special", prose_key, objects, [person] if person else [])
+        open_from_screen(world_vnums[coordinate], vnum, puzzle, f"{puzzle or 'cave'} opening")
+
+    # Take any one you want, and the Heart Container on the P6 dock. The
+    # island and the dock are reached by raft and stepladder, from objects
+    # on the shore rather than an exit.
+    crossings = {"P6": 30539, "P3": 30540}
+    for room in manifest["overworld"]["rooms"]:
+        for landmark in room["landmarks"]:
+            if landmark["type"] not in {"take_any", "heart"}:
+                continue
+            guide = landmark["zelda_coordinate"]
+            vnum = landmark["room_vnum"]
+            if landmark["type"] == "take_any":
+                cave(vnum, "special", f"take_any:{guide}", list(TAKE_ANY_OFFER),
+                     [f"take_any:{guide}"])
+            else:
+                cave(vnum, "special", "heart_ledge", [TAKE_ANY_OFFER[0]], [])
+            world_vnum = room["vnum"]
+            if room["coordinate"] in crossings:
+                rooms[world_vnum].objects.append(crossings[room["coordinate"]])
+                rooms[vnum].exits["up"] = ExitSpec(world_vnum)
+            else:
+                open_from_screen(world_vnum, vnum, landmark.get("puzzle"),
+                                 f"{landmark.get('puzzle') or 'cave'} opening")
+
+    # The old men and old women who sell or give a hint.
+    for room in manifest["overworld"]["rooms"]:
+        for landmark in room["landmarks"]:
+            if landmark["type"] != "hint":
+                continue
+            guide = landmark["zelda_coordinate"]
+            cave(landmark["room_vnum"], "special", f"hint:{guide}", [], [f"hint:{guide}"])
+            open_from_screen(room["vnum"], landmark["room_vnum"], landmark.get("puzzle"),
+                             f"{landmark.get('puzzle') or 'open'} hint cave")
+
+    # It's a secret to everybody: the moblin pays as you walk in, once per
+    # character (hyrule_enter_room in src/hyrule.c), so nothing lies here.
     for room in manifest["overworld"]["rooms"]:
         for landmark in room["landmarks"]:
             if landmark["type"] != "rupee":
                 continue
-            cave_vnum = landmark["room_vnum"]
-            amount = landmark["amount"]
+            guide = landmark["zelda_coordinate"]
             puzzle = landmark.get("puzzle")
-            prose_key = f"rupee_{puzzle or 'open'}"
-            rooms[cave_vnum] = RoomSpec(
-                cave_vnum,
-                prose.name("special", prose_key),
-                prose.description("special", prose_key),
-                "ADN", 11, objects=[money_objects[amount]],
-            )
-            world_vnum = room["vnum"]
-            add_two_way_exit(
-                rooms, world_vnum, "down", cave_vnum,
-                locks=4 if puzzle else 0,
-                keyword=f"{puzzle or 'hidden'} rupee grotto",
-            )
-            if puzzle:
-                puzzle_vnum = PUZZLE_OBJECTS[puzzle]
-                rooms[world_vnum].puzzles.append(
-                    puzzle_vnum["down"] if isinstance(puzzle_vnum, dict) else puzzle_vnum
-                )
+            cave(landmark["room_vnum"], "special", f"rupee:{guide}", [], [f"moblin:{guide}"])
+            open_from_screen(room["vnum"], landmark["room_vnum"], puzzle,
+                             f"{puzzle or 'hidden'} rupee grotto")
 
     for room in manifest["overworld"]["rooms"]:
         for landmark in room["landmarks"]:
             if landmark["type"] not in {"shop", "potion_shop"}:
                 continue
-            shop_kind = landmark["shop_kind"]
-            shop_vnum = landmark["room_vnum"]
-            keeper_vnum = SHOP_KEEPERS[shop_kind]
+            guide = landmark["zelda_coordinate"]
+            keeper = f"{SHOP_NPC_PREFIX[landmark['type']]}:{guide}"
+            cave(landmark["room_vnum"], "special", f"{landmark['type']}:{guide}", [], [keeper])
             puzzle = landmark.get("puzzle")
-            if landmark["type"] == "potion_shop":
-                prose_key = "potion_shop"
-            else:
-                prose_key = "shop_secret" if puzzle else "shop"
-            rooms[shop_vnum] = RoomSpec(
-                shop_vnum,
-                prose.name("special", prose_key),
-                prose.description("special", prose_key),
-                "ADN", 11, entities={str(keeper_vnum): 1},
-            )
-            world_vnum = room["vnum"]
-            direction = landmark.get("direction", "down")
-            add_two_way_exit(
-                rooms, world_vnum, direction, shop_vnum,
-                locks=4 if puzzle else 0,
-                keyword=f"{puzzle or 'open'} shop entrance",
-            )
-            if puzzle:
-                puzzle_vnum = PUZZLE_OBJECTS[puzzle]
-                rooms[world_vnum].puzzles.append(
-                    puzzle_vnum[direction] if isinstance(puzzle_vnum, dict) else puzzle_vnum
-                )
+            open_from_screen(room["vnum"], landmark["room_vnum"], puzzle,
+                             f"{puzzle or 'open'} shop entrance",
+                             landmark.get("direction", "down"))
 
-    attraction_keepers = {"door_repair": 30344, "gamble": 30345, "warp_hall": None}
+    attraction_people = {"door_repair": "repair", "gamble": "gambler", "warp_hall": None}
     for room in manifest["overworld"]["rooms"]:
         for landmark in room["landmarks"]:
             attraction_type = landmark["type"]
-            if attraction_type not in attraction_keepers:
+            if attraction_type not in attraction_people:
                 continue
-            keeper_vnum = attraction_keepers[attraction_type]
-            attraction_vnum = landmark["room_vnum"]
-            rooms[attraction_vnum] = RoomSpec(
-                attraction_vnum,
-                prose.name("special", attraction_type),
-                prose.description("special", attraction_type),
-                "ADN", 11,
-                objects=[route["object_vnum"] for route in landmark.get("routes", [])],
-                entities={} if keeper_vnum is None else {str(keeper_vnum): 1},
-            )
-            world_vnum = room["vnum"]
-            puzzle = landmark.get("puzzle")
-            add_two_way_exit(
-                rooms, world_vnum, "down", attraction_vnum,
-                locks=4 if puzzle else 0,
-                keyword=f"{puzzle or 'open'} {attraction_type.replace('_', ' ')} entrance",
-            )
-            if puzzle:
-                puzzle_vnum = PUZZLE_OBJECTS[puzzle]
-                rooms[world_vnum].puzzles.append(
-                    puzzle_vnum["down"] if isinstance(puzzle_vnum, dict) else puzzle_vnum
-                )
+            guide = landmark["zelda_coordinate"]
+            person = attraction_people[attraction_type]
+            cave(landmark["room_vnum"], "special", f"{attraction_type}:{guide}",
+                 [route["object_vnum"] for route in landmark.get("routes", [])],
+                 [f"{person}:{guide}"] if person else [])
+            open_from_screen(room["vnum"], landmark["room_vnum"], landmark.get("puzzle"),
+                             f"{landmark.get('puzzle') or 'open'} "
+                             f"{attraction_type.replace('_', ' ')} entrance")
 
     rooms[world_vnums["D4"]].objects.append(30225)
     rooms[world_vnums["J5"]].objects.append(30225)
@@ -2146,6 +2503,7 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
     lines: list[str] = []
     boss_room_to_level = {dungeon["boss_vnum"]: dungeon["level"] for dungeon in manifest["dungeons"]}
     resonance_rooms = {manifest["dungeons"][4]["boss_vnum"]: 30430}
+    stock = shop_stock(manifest)
     mobile_limits = Counter(
         int(entity_vnum)
         for room in rooms.values()
@@ -2159,7 +2517,7 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
                 lines.append(
                     f"M 0 {entity_vnum} {mobile_limits[int(entity_vnum)]} {room.vnum}"
                 )
-                for stock_vnum in SHOP_INVENTORY.get(int(entity_vnum), []):
+                for stock_vnum in stock.get(int(entity_vnum), []):
                     lines.append(f"G 1 {stock_vnum} 100")
                 if room.vnum in boss_room_to_level and int(entity_vnum) == BOSS_MOBS[boss_room_to_level[room.vnum]]:
                     level = boss_room_to_level[room.vnum]
@@ -2183,6 +2541,12 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
                     # random area-reset traps, pick lock and doorbash cannot
                     # turn a progression gate into a dead end or a way round.
                     state = 3
+                elif exit_spec.locks == 4:
+                    # A Hyrule seal -- a cracked wall, a bush, an Armos, a
+                    # block, the lake, the hungry Goriya -- is secret until
+                    # the NES's act opens it. Reset as a plain closed door,
+                    # anybody could OPEN it by its direction.
+                    state = 4
                 else:
                     state = 2 if exit_spec.locks == LOCKED_DOOR else 1
                 lines.append(f"D 0 {room.vnum} {DIRECTION_NUMBERS[direction]} {state}")
@@ -2202,34 +2566,15 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def render_shops() -> str:
+def render_shops(manifest: dict[str, Any]) -> str:
+    """Every keeper sells at the price on the sign and buys nothing (the
+    five buy types are 0), so no shop is a way to turn Hyrule into coin."""
     lines = [
         f"{keeper_vnum} 0 0 0 0 0 100 75 0 23"
-        for keeper_vnum in sorted(SHOP_INVENTORY)
+        for keeper_vnum in sorted(shop_stock(manifest))
     ]
     lines.append("0")
     return "\n".join(lines)
-
-
-# The catalog's old man stood "at a counter here, selling drinks", which is
-# what fifteen dungeon rooms showed beside a description of him between two
-# fires with a hint. Stats and flags are the catalog's; is_hyrule_bystander()
-# in fight.c is what keeps his level 50 from being farmed.
-OLD_MAN_RECORD = """#30228
-old man sage~
-An old man~
-An old man stands between the fires, waiting to share what he knows.
-~
-A white-bearded old man in a long red robe. He has been down here far longer
-than anyone should be, and he speaks only to pass on a warning or a secret.
-~
-human~
-ABMV DF 0 S
-50 25 15d10+4400 1d1+0 5d8+37 16
-0 0 0 0
-0 0 0 0
-8 8 1 0
-AHMV ABCDEFGHIJK M 0"""
 
 
 def remove_tier_records(body: str) -> str:
@@ -2251,7 +2596,8 @@ def render_specials(retained: str, manifest: dict[str, Any]) -> str:
         if len(fields) >= 2 and fields[0] == "M" and fields[1].isdigit():
             vnum = int(fields[1])
             if (vnum in RETIRED_MOBILE_VNUMS or vnum in BOSS_SPECIALS
-                    or TIER_VNUM_FIRST <= vnum <= TIER_VNUM_LAST):
+                    or TIER_VNUM_FIRST <= vnum <= TIER_VNUM_LAST
+                    or NPC_VNUM_FIRST <= vnum <= NPC_VNUM_LAST):
                 continue
         if line.strip() == "S":
             continue
@@ -2260,6 +2606,12 @@ def render_specials(retained: str, manifest: dict[str, Any]) -> str:
         f"M {vnum} {special} Load to: {BOSS_NAMES[vnum]}"
         for vnum, special in sorted(BOSS_SPECIALS.items())
     )
+    # The fountain fairies restore whoever rests at their pond.
+    lines.extend(
+        f"M {npc['vnum']} spec_hyrule_fairy Load to: {npc['short']}"
+        for key, npc in sorted(npc_table().items())
+        if npc_role(key) == "fairy"
+    )
     lines.extend(enemy_specials(manifest))
     lines.append("S")
     return "\n".join(line for line in lines if line)
@@ -2267,9 +2619,11 @@ def render_specials(retained: str, manifest: dict[str, Any]) -> str:
 
 def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_PROSE,
                mob_prose_path: Path = DEFAULT_MOB_PROSE) -> None:
+    global _NPC_TABLE
     manifest = load_json(manifest_path)
     prose = Prose(load_json(prose_path))
     mob_prose = load_json(mob_prose_path)
+    _NPC_TABLE = mob_prose["npcs"]
     original = area_path.read_text(encoding="utf-8")
     header = original[:original.index("#MOBILES")].rstrip()
     mobile_body = strip_section_terminator(section(original, "#MOBILES", "#OBJECTS"), "#0")
@@ -2278,12 +2632,14 @@ def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_
 
     mobile_body = remove_records(mobile_body, NEW_MOBILE_VNUMS | RETIRED_MOBILE_VNUMS)
     mobile_body = remove_tier_records(mobile_body)
-    mobile_body = replace_record(mobile_body, NPC_MOBS["old_man"], OLD_MAN_RECORD)
     for level, (mob_level, hit_points, damage) in BOSS_STATS.items():
         mobile_body = restat_mobile(mobile_body, BOSS_MOBS[level], mob_level, hit_points, damage)
         text = mob_prose["bosses"][str(level)]
+        description = text["description"]
+        if "\n" not in description:
+            description = wrap_description(description)
         mobile_body = redescribe_mobile(
-            mobile_body, BOSS_MOBS[level], text["long"], text["description"],
+            mobile_body, BOSS_MOBS[level], text["long"], description,
             text.get("short"))
     mobile_body = rearm_mobile(mobile_body, GANON_VNUM, GANON_ARMOR)
     object_body = remove_records(object_body, NEW_OBJECT_VNUMS)
@@ -2313,7 +2669,7 @@ def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_
         f"#ROOMS\n{room_body}\n#0\n\n"
         f"#SPECIALS\n{render_specials(specials_body, manifest)}\n\n"
         f"#RESETS\n{resets}\n\n"
-        f"#SHOPS\n{render_shops()}\n\n#$\n"
+        f"#SHOPS\n{render_shops(manifest)}\n\n#$\n"
     )
     area_path.write_text(output, encoding="utf-8", newline="\n")
     print(f"Wrote {area_path} with {len(rooms)} rooms and {len(resets.splitlines()) - 1} resets.")

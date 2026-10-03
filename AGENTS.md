@@ -184,11 +184,21 @@ Current October 2026 Python baseline:
 
 ```text
 100 listed area entries
-2,427 mobiles
-3,623 objects
-7,783 rooms
-0 critical, 12 warning, 1,539 information findings
+2,495 mobiles
+3,670 objects
+7,787 rooms
+0 critical, 12 warning, 1,584 information findings
 ```
+
+Hyrule's NES pass (October 2026) moved all three. Mobiles rose by 68: the
+78 people of Hyrule became a record each, replacing nine shared ones, and
+Level 6's band lost its only gel, whose room was really an old man's.
+Objects rose by 47 and information findings by exactly 45: the guardians'
+drop tables are five pieces each, made by `make_corpse` like the enemy
+drop potions, so they count as `object-has-no-source`; the rest are the
+Magical Sword, bombs, the bigger bomb bag and a gravestone, less the
+bottomless bomb satchel and the money caves' rupee piles. The four rooms
+are the hint caves.
 
 The mobile count rose by about ninety when Hyrule's enemies became one
 generated record per kind per level band (see `wiki/hyrule-area.md`).
@@ -197,7 +207,7 @@ Hyrule's bosses gained Heart Containers and its enemies random drops: the
 27 drop potions are made by `make_corpse`, not by a reset, so they count as
 `object-has-no-source` exactly as Ganon's relics always have. Eighteen more
 came with the dungeon chain -- eight guardian keys, nine chests and the
-Triforce of Power -- and one more finding, the complete Triforce, which
+Triforce of Power -- and one more finding, The Triforce, which
 COMBINE makes and nothing places.
 
 The information count fell from 1,571 when 176 resets that had been
@@ -215,7 +225,7 @@ manual gameplay checks.
 
 **The full suite takes about 35 minutes, and the maintainer does not want it
 run routinely.** Around 109 of its tests each boot a real server that parses
-every area file (the generated Hyrule alone is 443 rooms and 1,706 resets),
+every area file (the generated Hyrule alone is 447 rooms and 1,519 resets),
 and `tests/live_mud.py`'s `drain(n)` sleeps its whole window rather than
 returning when output arrives -- roughly eight minutes of the total is
 waiting for replies that already landed. `tests/test_bank_interest.py` waits
@@ -610,7 +620,31 @@ two against each other and the chests. Pieces are treasure, not keys,
 because `save.c` drops keys at quit; they are NODROP so one character cannot
 carry another through. `reset_area` refills and relocks Hyrule's chests
 even with players about, since Hyrule is one area. `COMBINE TRIFORCE` is the
-only way to the complete Triforce.
+only way to The Triforce.
+
+**The NES machinery lives in `src/hyrule.c`** (October 2026; the plan is
+"The NES Pass: Plan" in `wiki/hyrule-area.md`). Four rules to keep:
+
+- **A Hyrule seal is not a door.** Bomb walls, bushes, Armos, blocks, the
+  lake and the hungry Goriya are exits reset secret (`D` state 4) that only
+  the NES's act with its tool opens. `hyrule_seal_refuses()` in
+  `act_move.c` is asked by OPEN, PICK, DOORBASH and UNLOCK; a new way of
+  opening an exit must ask it too. `reset_area` leaves an opened seal open
+  while anyone is in Hyrule, because its puzzle object only comes back with
+  an `O` reset, which waits for the area to empty -- resealing first would
+  shut a way with nothing left to open it by.
+- **What pays once pays each character once.** `pcdata->hyrule_secrets`
+  is saved as `HyruleSecrets` under **case 'H'**, a bit per money cave,
+  take-any cave, Heart Container and bomb bag; the bit layout is at the top
+  of hyrule.c's secrets section and must not be renumbered.
+- **Every person is a record of their own**, generated from the `npcs`
+  table of `data/hyrule_mob_prose.json` into `HYRULE_NPC_FIRST`-`LAST`;
+  `is_hyrule_bystander()` covers the range. Add a person there, not by
+  reusing someone else's vnum.
+- **Tables mirrored in C** -- the money caves' rooms and sums, the claims,
+  the guardians for the drop tables, the potion shop rooms -- are held to
+  the generator by `tests/test_hyrule_progression.py`,
+  `tests/test_hyrule_nes.py` and `tests/test_hyrule_boss_drops.py`.
 
 Hyrule workflow:
 

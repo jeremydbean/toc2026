@@ -254,6 +254,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "roulette",	do_roulette,	POS_STANDING,	 0,  LOG_NORMAL, 1 },
     { "poker",		do_poker,	POS_STANDING,	 0,  LOG_NORMAL, 1 },
     { "heal",		do_heal,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
+    { "hearts",		do_hearts,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "hold",		do_wear,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "list",		do_list,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "lock",		do_lock,	POS_RESTING,	 0,  LOG_NORMAL, 1 },

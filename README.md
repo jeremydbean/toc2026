@@ -45,7 +45,7 @@ documentation.
 - A native C server with the traditional ROM command loop, combat, magic,
   skills, quests, guilds, remorts, economy, banks, gambling, mounts, ranged
   combat, traps, scripts, seasons, and immortal tools.
-- A world loaded from `area/area.lst`, including the generated 443-room Hyrule
+- A world loaded from `area/area.lst`, including the generated 447-room Hyrule
   campaign with all nine First Quest dungeons.
 - Advanced in-game `compare` analysis that models a player's complete loadout,
   class, guild, level, skills, spells, and selected gameplay focus.

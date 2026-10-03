@@ -605,6 +605,9 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 	fprintf( fp, "StashMax %d\n", ch->pcdata->stash_max );
     if ( ch->pcdata->no_oracle )
 	fprintf( fp, "NoOracle %d\n", ch->pcdata->no_oracle );
+    /* Hyrule's once-per-character secrets (hyrule.c); read under 'H'. */
+    if ( ch->pcdata->hyrule_secrets != 0 )
+	fprintf( fp, "HyruleSecrets %lu\n", ch->pcdata->hyrule_secrets );
     if ( ch->pcdata->stash_links != NULL
     &&   ch->pcdata->stash_links[0] != '\0' )
 	fprintf( fp, "StashLinks %s~\n", ch->pcdata->stash_links );
@@ -983,7 +986,16 @@ void fwrite_obj( CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest )
      * deliberate storage, not a twink trick. The owner does not want the
      * limit; losing a character's gear is the worse outcome by far.
      */
-    if ( obj->item_type == ITEM_KEY
+    /*
+     * Hyrule's small keys are kept, as on the NES: two of them are bought
+     * in its shops for 80 and 100 rupees, and a purchase that vanished at
+     * the next quit would be money thrown away.
+     */
+    if ( ( obj->item_type == ITEM_KEY
+        && !( obj->pIndexData != NULL
+           && ( obj->pIndexData->vnum == 30227
+             || obj->pIndexData->vnum == OBJ_VNUM_HYRULE_SHOP_KEY
+             || obj->pIndexData->vnum == OBJ_VNUM_HYRULE_SHOP_KEY_CHEAP ) ) )
     ||   (obj->item_type == ITEM_MAP && !obj->value[0]))
 	return;
 
@@ -1740,6 +1752,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	case 'H':
 	    KEY( "Hitroll",	ch->hitroll,		(sh_int)(fread_number( fp )) );
 	    KEY( "Hit",		ch->hitroll,		(sh_int)(fread_number( fp )) );
+	    KEY( "HyruleSecrets", ch->pcdata->hyrule_secrets,
+		 (unsigned long) fread_long( fp ) & 0xffffffffUL );
 
 	    if ( !str_cmp( word, "HpManaMove" ) || !str_cmp(word,"HMV"))
 	    {

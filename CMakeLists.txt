@@ -44,6 +44,7 @@ set(SRC_FILES
     src/gmcp.c
     src/handler.c
     src/hunt.c
+    src/hyrule.c
     src/interp.c
     src/list.c
     src/magic.c

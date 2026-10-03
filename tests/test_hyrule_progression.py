@@ -34,16 +34,20 @@ from scripts.build_hyrule_area import (
     BOSS_WEAPONS,
     ENEMY_TYPES,
     GEAR_STAGES,
-    NPC_MOBS,
+    NPC_VNUM_FIRST,
+    NPC_VNUM_LAST,
+    ZELDA_VNUM,
     ROOM_ENEMY_CAP,
     SHOP_INVENTORY,
-    SHOP_KEEPERS,
     TIER_VNUM_FIRST,
     TIER_VNUM_LAST,
     band_index,
     build_area,
     dungeon_spawns,
     manifest_bands,
+    npc_table,
+    npc_vnum,
+    shop_stock,
     weapon_score,
     world_spawns,
 )
@@ -407,7 +411,8 @@ class HyruleProgressionTests(unittest.TestCase):
 
         # Every enemy that spawns in Hyrule is one of the generated records,
         # apart from the bosses and the people who are not enemies at all.
-        allowed = set(BOSS_MOBS.values()) | set(NPC_MOBS.values()) | set(SHOP_INVENTORY) | {30344, 30345}
+        allowed = (set(BOSS_MOBS.values()) | {ZELDA_VNUM}
+                   | set(range(NPC_VNUM_FIRST, NPC_VNUM_LAST + 1)))
         stray = {
             reset.arg1 for reset in self.resets
             if reset.command == "M"
@@ -949,10 +954,19 @@ class HyruleProgressionTests(unittest.TestCase):
         """The old men are level 50 so nothing in Level 1 can hurt them,
         which made them the best experience in Hyrule for anyone who could."""
         fight = Path("src/fight.c").read_text(encoding="utf-8")
-        for name, vnum in (("OLD_MAN", NPC_MOBS["old_man"]), ("ZELDA", NPC_MOBS["princess_zelda"]),
-                           ("FAIRY", NPC_MOBS["fairy"]), ("REPAIR_MAN", 30344), ("GAMBLER", 30345)):
-            self.assertIn(f"#define HYRULE_{name}_VNUM", fight)
-            self.assertIn(str(vnum), fight.split(f"#define HYRULE_{name}_VNUM", 1)[1].split("\n", 1)[0])
+        merc = Path("src/merc.h").read_text(encoding="utf-8")
+        # Everyone is a person of their own now, in one vnum range that
+        # merc.h names and is_hyrule_bystander() covers.
+        for name, vnum in (("HYRULE_NPC_FIRST", NPC_VNUM_FIRST), ("HYRULE_NPC_LAST", NPC_VNUM_LAST),
+                           ("HYRULE_ZELDA_VNUM", ZELDA_VNUM)):
+            self.assertRegex(merc, rf"#define {name}\s+{vnum}\b")
+        bystander = fight.split("static bool is_hyrule_bystander(", 1)[1].split("\n}", 1)[0]
+        self.assertIn("vnum >= HYRULE_NPC_FIRST && vnum <= HYRULE_NPC_LAST", bystander)
+        self.assertIn("HYRULE_ZELDA_VNUM", bystander)
+        outside = sorted(
+            key for key, npc in npc_table().items()
+            if npc["vnum"] != ZELDA_VNUM and not NPC_VNUM_FIRST <= npc["vnum"] <= NPC_VNUM_LAST)
+        self.assertEqual([], outside)
         safe = fight.split("bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim )", 1)[1].split("\n}\n", 1)[0]
         self.assertIn("is_hyrule_bystander(victim)", safe)
         self.assertGreaterEqual(fight.count("is_hyrule_bystander(victim)"), 2,
@@ -1135,13 +1149,14 @@ class HyruleProgressionTests(unittest.TestCase):
             "O8": (30653, 30500),
             "E6": (30674, 30276),
         }
-        # The Hero's Grave still opens under the B6 headstone, but the
-        # Master Sword is Ganon's now: the grave holds nothing.
+        # The Hero's Grave opens under the B6 headstone. The Master Sword is
+        # Ganon's now; the grave holds the NES's Magical Sword again.
         self.assertTrue(any(
             exit_data.to_room == 30652
             for exit_data in self.parser.rooms[self.world["B6"]["vnum"]].exits
         ))
         self.assertNotIn(30200, self.parser.rooms[30652].objects)
+        self.assertIn(30649, self.parser.rooms[30652].objects)
         for coordinate, (cave_vnum, object_vnum) in canonical_caves.items():
             with self.subTest(coordinate=coordinate):
                 self.assertTrue(any(
@@ -1159,7 +1174,13 @@ class HyruleProgressionTests(unittest.TestCase):
             "N6": (30, "bomb"), "N5": (30, "armos"),
             "O4": (10, "armos"), "P8": (100, None),
         }
-        money_vnums = {10: 30510, 30: 30511, 100: 30512}
+        # The moblin pays as you walk in, once per character (hyrule.c), so
+        # no pile lies on the floor to be taken again at every reset; the
+        # C table must name the same rooms and sums as the manifest.
+        hyrule_c = Path("src/hyrule.c").read_text(encoding="utf-8")
+        table = hyrule_c.split("hyrule_money_caves[] =", 1)[1].split("};", 1)[0]
+        paid = {int(room): int(rupees)
+                for room, rupees in re.findall(r"\{\s*(\d+),\s*(\d+)\s*\}", table)}
         for coordinate, (amount, puzzle) in expected_rupees.items():
             landmark = next(
                 item for item in self.world[coordinate]["landmarks"]
@@ -1167,16 +1188,19 @@ class HyruleProgressionTests(unittest.TestCase):
             )
             with self.subTest(coordinate=coordinate):
                 self.assertEqual(landmark.get("puzzle"), puzzle)
-                self.assertIn(
-                    money_vnums[amount],
-                    self.parser.rooms[landmark["room_vnum"]].objects,
-                )
+                self.assertEqual(paid.get(landmark["room_vnum"]), amount)
+                cave = self.parser.rooms[landmark["room_vnum"]]
+                self.assertEqual([], [v for v in cave.objects if self.parser.objects[v].item_type == "20"])
+                self.assertIn(npc_vnum(f"moblin:{landmark['zelda_coordinate']}"), [
+                    vnum for vnum, mob in self.parser.mobiles.items()
+                    if landmark["room_vnum"] in mob.spawn_rooms])
+        self.assertEqual(len(paid), 14)
 
         self.assertIn(30211, self.parser.rooms[30659].objects)
         self.assertEqual(self.parser.objects[30211].values[1], "15068")
         level_nine_goal = self.dungeons[9]["goal_vnum"]
         self.assertIn(30217, self.parser.rooms[level_nine_goal].objects)
-        # The complete Triforce is made with COMBINE, never found.
+        # The Triforce is made with COMBINE, never found.
         self.assertNotIn(30286, self.parser.rooms[level_nine_goal].objects)
         self.assertFalse(self.object_is_sourced(30286))
         self.assertIn(CHESTS[9], self.parser.rooms[level_nine_goal].objects)
@@ -1211,7 +1235,8 @@ class HyruleProgressionTests(unittest.TestCase):
         puzzle_objects = {"bomb": 30509, "burn": 30506, "armos": 30514}
         for coordinate, landmark in services:
             shop_vnum = landmark["room_vnum"]
-            keeper_vnum = SHOP_KEEPERS[landmark["shop_kind"]]
+            prefix = "potion" if landmark["type"] == "potion_shop" else "merchant"
+            keeper_vnum = npc_vnum(f"{prefix}:{landmark['zelda_coordinate']}")
             world_room = self.parser.rooms[self.world[coordinate]["vnum"]]
             direction = landmark.get("direction", "down")
             with self.subTest(coordinate=coordinate, shop_kind=landmark["shop_kind"]):
@@ -1234,19 +1259,19 @@ class HyruleProgressionTests(unittest.TestCase):
         # and the object-section reader in tools/costs_to_copper.py had
         # stopped 85 objects short of noticing.
         expected_rupees = {
-            30541: 130, 30542: 20, 30543: 80,
+            30541: 130, 30695: 20, 30543: 80,
             30544: 160, 30545: 100, 30546: 60,
             30547: 90, 30548: 100, 30549: 10,
             30550: 80, 30551: 250, 30552: 60,
             30553: 40, 30554: 68,
         }
-        stocked = [v for inventory in SHOP_INVENTORY.values() for v in inventory]
+        stocked = sorted({v for inventory in SHOP_INVENTORY.values() for v in inventory})
         self.assertEqual(
             {v: self.parser.objects[v].cost for v in stocked},
             {v: rupees * COPPER_PER_GOLD for v, rupees in expected_rupees.items()},
             "a shop price has drifted from the rupees its description quotes",
         )
-        for keeper_vnum, inventory in SHOP_INVENTORY.items():
+        for keeper_vnum, inventory in shop_stock(self.manifest).items():
             with self.subTest(keeper_vnum=keeper_vnum):
                 self.assertTrue(set(inventory).issubset(self.parser.mobiles[keeper_vnum].drops))
             for object_vnum in inventory:
@@ -1261,12 +1286,20 @@ class HyruleProgressionTests(unittest.TestCase):
             for line in shop_section.splitlines()
             if line and line.split()[0].isdigit() and int(line.split()[0])
         }
-        self.assertEqual(shop_keepers, set(SHOP_INVENTORY))
+        self.assertEqual(shop_keepers, set(shop_stock(self.manifest)))
         self.assertTrue({30226, 30227, 30228}.isdisjoint(shop_keepers))
 
+        # The potion sellers want the Letter: by their rooms, in hyrule.c.
         runtime = Path("src/act_obj.c").read_text(encoding="utf-8")
-        self.assertIn("HYRULE_POTION_KEEPER_VNUM 30343", runtime)
-        self.assertIn("HYRULE_LETTER_VNUM        30500", runtime)
+        self.assertIn("hyrule_keeper_refuses( keeper, ch )", runtime)
+        hyrule_c = Path("src/hyrule.c").read_text(encoding="utf-8")
+        self.assertIn("OBJ_VNUM_HYRULE_LETTER", hyrule_c.split("bool hyrule_keeper_refuses(", 1)[1])
+        potion_rooms = sorted(landmark["room_vnum"] for _, landmark in services
+                              if landmark["type"] == "potion_shop")
+        merc = Path("src/merc.h").read_text(encoding="utf-8")
+        self.assertRegex(merc, rf"#define HYRULE_POTION_SHOP_FIRST\s+{potion_rooms[0]}\b")
+        self.assertRegex(merc, rf"#define HYRULE_POTION_SHOP_LAST\s+{potion_rooms[-1]}\b")
+        self.assertEqual(potion_rooms, list(range(potion_rooms[0], potion_rooms[-1] + 1)))
 
     def test_door_repairs_gambling_and_warp_halls_match_first_quest(self) -> None:
         expected_repairs = {
@@ -1295,7 +1328,7 @@ class HyruleProgressionTests(unittest.TestCase):
             with self.subTest(kind="repair", coordinate=coordinate):
                 self.assertEqual(landmark["puzzle"], puzzle)
                 self.assertIn(puzzle_objects[puzzle], world_room.objects)
-                self.assertIn(30344, [
+                self.assertIn(npc_vnum(f"repair:{landmark['zelda_coordinate']}"), [
                     mobile_vnum
                     for mobile_vnum, mobile in self.parser.mobiles.items()
                     if landmark["room_vnum"] in mobile.spawn_rooms
@@ -1312,7 +1345,8 @@ class HyruleProgressionTests(unittest.TestCase):
                 self.assertEqual(landmark.get("puzzle"), puzzle)
                 if puzzle:
                     self.assertIn(puzzle_objects[puzzle], world_room.objects)
-                self.assertIn(landmark["room_vnum"], self.parser.mobiles[30345].spawn_rooms)
+                gambler = npc_vnum(f"gambler:{landmark['zelda_coordinate']}")
+                self.assertIn(landmark["room_vnum"], self.parser.mobiles[gambler].spawn_rooms)
 
         for coordinate, destinations in expected_warps.items():
             landmark = next(

@@ -4,7 +4,7 @@ Every dungeon: kill the guardian, take its key, unlock the door behind it,
 unlock and open the chest there, and the Triforce piece and the treasure
 are inside. The dungeons go in order -- the next entrance wants the piece,
 the next guardian's chamber wants the treasure -- and the nine pieces
-COMBINE into the complete Triforce.
+COMBINE into The Triforce.
 
 A level 58 hero does the walking, so nothing in the early dungeons attacks;
 an immortal sets the scene and is the bypass case.
@@ -33,6 +33,11 @@ PIECES = range(30400, 30409)
 MANIFEST = json.loads((ROOT / "data" / "hyrule_first_quest.json").read_text(encoding="utf-8"))
 WORLD = {room["coordinate"]: room["vnum"] for room in MANIFEST["overworld"]["rooms"]}
 DUNGEONS = {dungeon["level"]: dungeon for dungeon in MANIFEST["dungeons"]}
+# Every room has a name of its own now; read the Eagle's treasure room's
+# from the prose rather than hard-coding one that may be rewritten.
+PROSE = json.loads((ROOT / "data" / "hyrule_room_prose.json").read_text(encoding="utf-8"))
+TREASURE_ROOM_NAME = PROSE["dungeons"][
+    f"L1:{DUNGEONS[1]['goal_coordinate']}"]["name"]
 
 
 def run(client, command: str, settle: float = 1.5) -> str:
@@ -78,14 +83,14 @@ class DungeonChainTests(unittest.TestCase):
                 run(god, f"transfer zchainhero {lair}", settle=2.0)
 
                 locked = run(hero, "east", settle=2.0)
-                self.assertNotIn("Treasure Chamber", locked,
+                self.assertNotIn(TREASURE_ROOM_NAME, locked,
                                  f"the treasure room starts locked:\n{locked}")
                 looted = run(hero, "get key corpse", settle=2.0)
                 self.assertIn("eagle's key", looted.lower(), looted)
                 opened = run(hero, "unlock east", settle=1.5) + run(hero, "open east", settle=1.5)
                 self.assertNotIn("lack the key", opened, opened)
                 inside = run(hero, "east", settle=2.0)
-                self.assertIn("Treasure Chamber", inside, looted + opened + inside)
+                self.assertIn(TREASURE_ROOM_NAME, inside, looted + opened + inside)
 
                 shut = run(hero, "open chest", settle=1.5)
                 self.assertIn("locked", shut.lower(), f"the chest starts locked:\n{shut}")
@@ -154,9 +159,9 @@ class DungeonChainTests(unittest.TestCase):
 
                 give(god, "zcombhero", 30408, "power")
                 made = run(hero, "combine triforce", settle=2.0)
-                self.assertIn("complete Triforce", made, made)
+                self.assertIn("The Triforce, blazing", made, made)
                 carried = run(hero, "inventory", settle=1.5)
-                self.assertIn("complete Triforce", carried, carried)
+                self.assertIn("The Triforce", carried, carried)
                 self.assertNotIn("Triforce shard", carried, carried)
                 self.assertNotIn("Triforce of Power", carried, carried)
 

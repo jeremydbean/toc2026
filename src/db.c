@@ -2251,7 +2251,18 @@ void reset_area( AREA_DATA *pArea )
  
             if ( ( pexit = pRoomIndex->exit[pReset->arg2] ) == NULL )
                 break;
- 
+
+            /*
+             * A Hyrule seal that somebody has opened -- a bombed wall, a
+             * burned bush -- stays open while anybody is in Hyrule. The
+             * object it was opened at only comes back with an 'O' reset,
+             * which waits for the area to empty; resealing the way before
+             * that would leave it shut with nothing to open it by.
+             */
+            if ( pReset->arg3 == 4 && pArea->nplayer > 0
+            &&   IS_HYRULE_ROOM_VNUM(pRoomIndex->vnum) )
+                break;
+
             switch ( pReset->arg3 )
             {
             case 0:

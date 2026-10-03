@@ -225,6 +225,7 @@ DECLARE_DO_FUN( do_jail		);
 DECLARE_DO_FUN( do_join		);
 DECLARE_DO_FUN( do_jump		);
 DECLARE_DO_FUN( do_heal		);
+DECLARE_DO_FUN( do_hearts	);
 DECLARE_DO_FUN(	do_help		);
 DECLARE_DO_FUN( do_hero		);
 DECLARE_DO_FUN( do_heroquest    );

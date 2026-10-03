@@ -1791,6 +1791,11 @@ Successful and missed shots can improve ARCHERY.  The current bow system does
 not require or consume a separate ammunition object, and it does not support
 ranged attacks against players.
 
+Hyrule's own bow and boomerangs shoot at an enemy in the same room, and need
+no ARCHERY.  The bow wants a quiver of arrows carried, and each arrow costs
+a rupee; a boomerang comes back to your hand and stuns what it hits.  See
+HYRULE ITEMS.
+
 Hyrule's Silver Arrow is a special exception.  A level 54 or higher character
 who has it wielded can use SHOOT GANON in Ganon's room after he reaches one hit
 point and flashes bright red.  This finishing shot does not require ARCHERY
@@ -1826,9 +1831,10 @@ Carry what you need in hand, worn or in a bag (not the stash).
 Each guardian is a hard fight for its band: alone, plan to be well above
 it or bring friends.  A lost piece or treasure comes back from the same
 chest after the next reset, when the guardian has a new key.  Pieces cannot
-be dropped, given or sold.  COMBINE TRIFORCE joins all nine.
+be dropped, given or sold.  COMBINE TRIFORCE joins all nine.  Each dungeon's
+map and compass show you the way (HYRULE ITEMS).
 
-See also: GANON, COMBINE, RECALL
+See also: GANON, COMBINE, RECALL, HYRULE ITEMS, HYRULE SECRETS, HEARTS
 ~
 
 0 GANON RELICS 'MASTER SWORD' TRIFORCE 'RED RING'~
@@ -1858,7 +1864,7 @@ The Golden Key opens Zelda's chamber and Ganon's great chest in it, which
 holds the ninth piece, the Triforce of Power, and the Master Sword (level
 58): the finest blade a mortal can carry, which hastens its wielder.
 
-With all nine pieces, COMBINE TRIFORCE makes the complete Triforce (level
+With all nine pieces, COMBINE TRIFORCE makes The Triforce itself (level
 58).  WEAR it and it takes your light slot, and you see what a level 59
 hero with HOLYLIGHT would see: the invisible, the hidden and the dark --
 but not gods hidden above that.  It counts as every piece at every door.
@@ -2957,33 +2963,123 @@ See also: SPELLGROUP, SPELLS, GAIN
 ~
 
 0 BOMB BURN FEED PLAY~
-Syntax: bomb <target>
-        burn <target>
+Syntax: bomb <cracked surface|creature>
+        burn <bush|creature>
         feed <guardian>
+        feed bait
         play <instrument>
 
-Some area puzzles react to a specific tool. BURN requires a lit candle and
-can reveal passages hidden by vegetation. BOMB requires a carried bomb bag
-and opens specially marked cracked surfaces or damages Dodongo. PLAY uses a Recorder, whistle,
-or ocarina to trigger a nearby musical puzzle. FEED consumes suitable enemy
-bait when a hungry guardian blocks the way.
+Hyrule's hidden ways open only to the act the NES asked for, with the tool
+in hand; OPEN, PICK, DOORBASH and UNLOCK will not shift them.
 
-These commands only affect objects designed for that interaction. Examine
-the room and its objects for clues. Some Hyrule stones also require the Power
-Bracelet before PUSH can move them.
+BOMB uses up one of your bombs (the arrow shops sell four for 20 rupees).
+At a cracked wall or rock it opens the way; at a creature it is a blast of
+fire, and Dodongo swallows one whole and loses half his health.
+BURN needs a lit candle in your light slot: a bush burns away to show what
+it hid, and a creature takes a lick of flame (the Red Candle burns hotter).
+PLAY needs the Recorder itself: it drains Level 7's lake, shrinks a
+Digdogger to a third of its health, and out on the open land calls a
+whirlwind to the next dungeon whose Triforce piece you carry.
+FEED gives bait to the hungry Goriya, who eats it.  FEED BAIT anywhere else
+sets it down: the room's enemies forget you and turn to the smell for a
+while, and you keep the bait.  A guardian is not fooled.
+PUSH moves an Armos, a gravestone or a block; the warp stones also need the
+Power Bracelet.
 
-See also: FLIP, MOVE, PULL, PUSH, TURN, LOOK
+See also: HYRULE ITEMS, HYRULE SECRETS, PUSH, SHOOT, LOOK
 ~
 
 0 GAMBLE~
-Syntax: gamble
+Syntax: gamble left|middle|right
 
-GAMBLE plays the money-making game inside one of Hyrule's five gambling
-caves. It costs 10 rupees to choose a concealed sign. The result may award 20
-or 50 rupees, or demand another 20 or 40. The command only works in those
-First Quest rooms.
+GAMBLE plays the old man's money-making game in one of Hyrule's five
+gambling caves, as the NES played it.  You need 10 rupees.  Three rupee
+signs lie face down: one wins 20 or 50 rupees, one loses 10, and one loses
+10 or 40, laid out at random.  Pick one and all three are turned.
 
-See also: BET, SLOTS
+Over many games it pays nothing either way, a game wins at most 50 and
+loses at most 40, and each costs a round of lag.  It is not the casino and
+does not count toward the casino's achievements.
+
+See also: HYRULE SECRETS, BET, SLOTS
+~
+
+0 HEARTS~
+Syntax: hearts
+
+Shows how many hearts you have, counted the NES way: 3 to start, one for
+each guardian of Hyrule's Levels 1 to 8 you have defeated, and one for each
+Heart Container you have taken from a "take any one you want" cave or the
+dock east of Lake Hylia -- 16 at most.
+
+The old man at the top of the waterfall gives the White Sword to a hero of
+5 hearts, and the old man beneath the graveyard's loose gravestone gives the
+Magical Sword to one of 12.
+
+See also: HYRULE SECRETS, HYRULE ITEMS
+~
+
+0 'HYRULE SECRETS' 'TAKE ANY' 'MONEY CAVE' 'DOOR REPAIR'~
+Hyrule's caves keep the NES's rules, and what pays out once pays each
+character once, for good:
+
+  Money caves (14)    "It's a secret to everybody": the moblin pays 10, 30
+                      or 100 rupees as you first walk in, and never again.
+  Door repairs (9)    "Pay me for the door repair charge": 20 rupees, once.
+  Money games (5)     GAMBLE LEFT, MIDDLE or RIGHT.  See GAMBLE.
+  Take any one (4)    A Heart Container or a red potion.  Take one, and the
+                      other is refused; the Heart Container is a heart.
+  The dock heart      A Heart Container on a dock, reached by stepladder.
+  White Sword         5 hearts.  Magical Sword: 12 hearts.  See HEARTS.
+  Hint caves          Two old women sell hints: GIVE them rupees (one takes
+                      10, 30 or 50, the other 5, 10 or 20).  Two old men
+                      give theirs free.
+  Bomb bags           The old men of Levels 5 and 7 each sell room for four
+                      more bombs, 100 rupees: BUY BAG.
+  Potion shops        The old woman sells only to someone carrying Princess
+                      Zelda's Letter, from the old man in the north-east.
+  Fountains           The great fairies restore anyone not fighting.
+
+The swords, the Letter and the Power Bracelet are given one at a time: lose
+yours and the cave will give you another.
+
+See also: HEARTS, GAMBLE, HYRULE ITEMS, HYRULE
+~
+
+0 'HYRULE ITEMS' 'DUNGEON MAP' COMPASS 'BLUE RING' 'MAGICAL SHIELD'~
+What Hyrule's tools do:
+
+  Dungeon map     LOOK or READ it: the dungeon's floor plan, @ where you
+                  stand, the guardian's chamber, the Triforce chest, and
+                  what the guardian's door needs.
+  Compass         Inside its dungeon: the first step toward the Triforce
+                  chest, and how many rooms away it and the guardian are.
+  Bombs           BOMB a cracked wall, or an enemy.  Each uses one.
+  Bow + arrows    Wield the bow, carry a quiver: SHOOT an enemy in the room.
+                  Each arrow costs a rupee; no Archery needed.  An arrow
+                  kills a pols voice outright and finishes Gohma.
+  Boomerangs      Wield one and SHOOT: it stuns an enemy out of the fight
+                  until struck again, and kills a keese or a gel outright.
+  Candles         A light; BURN a bush or an enemy.
+  Bait            FEED a hungry Goriya, or FEED BAIT to calm a room.
+  Recorder        PLAY it.  See BOMB.
+  Magical Rod     ZAP it; it never runs dry.  With the Magic Book carried,
+                  its blast bursts into flame as well.
+  Potions         The red 2nd Potion heals twice and turns blue; the blue
+                  Life Potion heals twice.
+  Small keys      Each opens one locked door, and keeps through a quit.
+                  The Magical Key opens them all and is never used up.
+  Blue Ring       Takes a tenth off every blow, as the Blue Ring of Hyrule
+                  does.  Rings never add together.
+  Magical Shield  Takes a tenth off fire and magic (not with the Mirror
+                  Shield, which does more).
+  Power Bracelet  Strength while worn, and it moves the warp stones.
+  Raft, stepladder  The crossings, from the docks and the gaps.
+
+Each guardian also leaves two pieces of a five-piece drop table, each a
+little better than anything else a character of its band can find.
+
+See also: HYRULE SECRETS, BOMB, SHOOT, HEARTS, HYRULE
 ~
 
 0 CLIMB~
@@ -3065,7 +3161,7 @@ inventory again.  The default is for combine to be on.
 
 COMBINE <item> makes something whole from its parts instead.  The one
 recipe is COMBINE TRIFORCE, which joins the nine Hyrule Triforce pieces,
-carried in hand or loose in your inventory, into the complete Triforce.
+carried in hand or loose in your inventory, into The Triforce.
 See HYRULE.
 
 See also: INVENTORY, COMPACT, BRIEF
