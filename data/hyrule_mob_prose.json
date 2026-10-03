@@ -1,0 +1,203 @@
+{
+  "_comment": [
+    "Mobile text for area/hyrule.are, read by scripts/build_hyrule_area.py.",
+    "enemies: keyed by ENEMY_TYPES kind; every band of a kind shares it.",
+    "bosses: keyed by dungeon level; replaces the retained record's long",
+    "and description lines (and its short name, where one is given).",
+    "'long' is one line; 'description' is pre-wrapped at 75 columns.",
+    "Written from the NES game; see wiki/hyrule-area.md for the sources."
+  ],
+  "enemies": {
+    "red_octorok": {
+      "long": "A red octorok scuttles about on stubby legs, snout puckered to spit.",
+      "description": "A squat, red, octopus-like creature on four stubby legs, its snout a\nshort tube that puckers and swells. It wanders in short, jerky bursts,\nstops, turns to face its prey and spits a hard round stone. A shield\nturns the stones aside. Red octoroks are slow and easily beaten."
+    },
+    "blue_octorok": {
+      "long": "A blue octorok darts across the grass, spitting stones as it goes.",
+      "description": "A blue, octopus-like creature on four stubby legs with a tubular\nsnout. Tougher and quicker than its red cousin, it zigzags about in\nfast little runs, wheels to face whoever comes near and spits a hard\nstone with real force. It takes several blows before it pops into a\npuff of smoke."
+    },
+    "red_moblin": {
+      "long": "A red moblin, a doglike brute with a spear, sniffs the air for prey.",
+      "description": "A hulking, doglike humanoid with a pig's snout, floppy ears and a\nbristling red hide. It stalks the forest paths in a lumbering gait and\nhurls crude spears at anything that crosses its line of sight. Its\nhide is thick but not thick enough to turn a good sword."
+    },
+    "blue_moblin": {
+      "long": "A blue moblin hefts a spear and grunts, its piggish snout twitching.",
+      "description": "A big, doglike brute with a pig's snout and a blue-grey hide tougher\nthan any red moblin's. It patrols the deep woods in pairs and packs,\nthrowing spear after spear in straight lines, and it takes several\nhard blows to bring down. Some of its kind keep secret caves full of\nrupees and give them away, so long as nobody tells."
+    },
+    "red_tektite": {
+      "long": "A red tektite crouches on long jointed legs, ready to spring.",
+      "description": "A one-eyed, spiderlike creature with a round red body and four long,\njointed legs. It crouches, then flings itself into the air in high,\nunpredictable leaps, landing hard and springing off again before a\nblade can find it. Its single eye never stops watching."
+    },
+    "blue_tektite": {
+      "long": "A blue tektite bobs on its springy legs, its single eye unblinking.",
+      "description": "A round blue body slung between four long, jointed legs, with one\nstaring eye in the middle. It leaps further and more often than the\nred kind, bounding across the rocks in long arcs and dropping onto\nwhoever stands beneath. Catching it mid-crouch is the trick."
+    },
+    "red_leever": {
+      "long": "A red leever spins up out of the sand, whirling like a drill.",
+      "description": "A spiny, plantlike creature that lives beneath the sand and bores up\nto the surface with a spinning hiss. Red leevers rise near anyone who\nwalks the dunes, charge straight across the ground, then dive back\nunder and come up somewhere else. They are weak, but they never stop."
+    },
+    "blue_leever": {
+      "long": "A blue leever churns through the sand, spinning toward its prey.",
+      "description": "A spinning, cactus-like thing that burrows through sand and soil. The\nblue kind is tougher than the red, wanders the open ground for longer\nbefore it sinks, and turns to chase whoever it senses. Its spinning\nbody rasps like a millstone, and a stroke that lands must land hard."
+    },
+    "red_lynel": {
+      "long": "A red lynel paws the earth, a sword in its hand and fire in its eye.",
+      "description": "A great four-legged beast with the body of a horse and the torso,\nmane and face of a lion, armoured and carrying a heavy sword. Lynels\nroam the high mountain paths and hurl blades of force from their\nswords at anything in their line. Even the red ones are among the\nmost dangerous beasts of the overworld."
+    },
+    "blue_lynel": {
+      "long": "A blue lynel stamps its hooves and levels its sword at you.",
+      "description": "A centaur-like monster with a lion's head and mane, a horse's body\nand blue-scaled armour over its chest. It charges the mountain\ntracks and flings beams of force from its sword, and its hide shrugs\noff weak blows. Blue lynels are the strongest beasts that walk the\nopen land of Hyrule."
+    },
+    "peahat": {
+      "long": "A peahat whirls through the air on spinning petals.",
+      "description": "A great flower whose petals spin like the blades of a top, lifting it\noff the ground to whirl and dip over the fields. While it spins it is\nnearly impossible to hurt, and it bumps into whatever it chases. Only\nwhen it slows and settles to rest can a blade cut it down."
+    },
+    "zora": {
+      "long": "A zora surfaces in the water, its throat glowing with a fireball.",
+      "description": "A finned, scaly fish-man with a wide mouth and a crest of green fins.\nIt hides beneath rivers and lakes, rises without warning, spits a\nball of fire at whoever stands on the bank, and sinks out of sight\nbefore the answer can reach it. A shield can turn its fireballs."
+    },
+    "ghini": {
+      "long": "A ghini drifts between the graves, its one eye fixed on the living.",
+      "description": "A pale, sheet-like ghost with a single round eye and a grinning\nmouth. It floats through the graveyard passing through stone as if it\nwere mist, and drifts after whoever disturbs the dead. Touching a\ngrave can wake more of them. Strike down the first ghost of a\ngraveyard and the lesser ones are said to vanish with it."
+    },
+    "armos": {
+      "long": "An armos statue stands motionless, spear raised, eyes of stone.",
+      "description": "A stone knight with a spear and shield, carved to stand guard over\nold places. Most armos statues are only stone; some wake when\ntouched, turn red or blue with sudden life, and march stiffly after\nthe one who disturbed them. Under some of them, secrets lie hidden\nin the earth: a stair, a coin cache, a bracelet."
+    },
+    "falling_rock": {
+      "long": "Loose boulders come bouncing down the mountainside toward you.",
+      "description": "Not a beast at all but the mountain itself, shedding stones. Rocks\nbreak loose from the heights and bound down the slopes in long\nhigh arcs, smashing anyone they land on before shattering into\ngravel. They cannot be fought, only dodged or outrun, and the clatter\nnever stops for long."
+    },
+    "keese": {
+      "long": "A keese flutters about on leathery wings, darting and pausing.",
+      "description": "A small black bat with one round eye on its face. Keese roost in the\ndark corners of dungeons and swarm out in jittery flights, darting,\nstopping, then darting again in a new direction. A single blow kills\none, but there are always more of them than there seem to be."
+    },
+    "gel": {
+      "long": "A tiny gel quivers on the floor, hopping in short bursts.",
+      "description": "A small, dark blob of living jelly no bigger than a fist. Gels creep\nand hop in short bursts across dungeon floors, and one that touches\nyou clings and slows you down. They are what is left when a zol is\ncut in two, and a single stroke ends one."
+    },
+    "zol": {
+      "long": "A zol, a large blob of green jelly, slides wetly toward you.",
+      "description": "A big, quivering mound of green slime with two dull eyes. It slides\nacross the floor in sudden hops and engulfs whatever it reaches.\nStrike it with a weak blade and it splits into two small gels that\nkeep coming; strike it hard enough and it bursts outright."
+    },
+    "bubble": {
+      "long": "A bubble, a flaming skull, bounces from wall to wall.",
+      "description": "A grinning skull wreathed in flickering blue flame. It bounces around\nthe room in straight lines, caroming off the walls, and no weapon can\nharm it. Its touch leaves a creeping numbness in the sword arm, and\nthose it brushes find for a while that they cannot use their blade."
+    },
+    "rope": {
+      "long": "A rope slithers along the floor, its forked tongue flicking.",
+      "description": "A red-and-orange snake that coils and slithers slowly about the\ndungeon floor. The moment its prey lines up with it, a rope lunges in\na straight, lightning-fast charge. It is easily killed, but its bite\nis sharper than its size suggests."
+    },
+    "stalfos": {
+      "long": "A stalfos rattles to its feet, clutching a rusty sword.",
+      "description": "A skeleton warrior, bones yellow with age, holding a notched sword\nand sometimes a battered shield. It hops and lurches about the room in\nrandom directions, slashing at anyone it blunders into. It falls\napart in a clatter when struck hard enough, and some carry the key\nto the next locked door."
+    },
+    "red_goriya": {
+      "long": "A red goriya grins, a wooden boomerang cocked to throw.",
+      "description": "A doglike humanoid in red armour with a long snout and pointed ears.\nIt paces the dungeon halls and hurls a boomerang that spins out in a\nstraight line and curves back to its hand, striking on the way out\nand on the way home. Goriyas come in pairs and in packs."
+    },
+    "blue_goriya": {
+      "long": "A blue goriya snarls and readies a heavy boomerang.",
+      "description": "A doglike warrior in blue armour, stronger and more stubborn than the\nred kind. Its boomerang flies farther and hits harder, and it takes\nseveral solid blows to fell. Goriyas are fond of food, and one is said\nto guard a passage in the Demon's labyrinth until it is fed."
+    },
+    "wallmaster": {
+      "long": "A great hand slides out of the wall, fingers grasping.",
+      "description": "A huge, disembodied hand that lurks inside dungeon walls. It slides\nout along the floor toward whoever stands near the edge of a room,\nsnatches them up, and carries them all the way back to the entrance\nof the dungeon. Keep to the middle of the room and keep moving."
+    },
+    "vire": {
+      "long": "A vire hops along the floor, its leathery blue wings folded.",
+      "description": "A horned, blue, batlike demon with a wide grin and folded wings. It\nhops across the floor in high bounds and drops onto its prey. Strike\nit and it bursts apart into two red keese that flutter off to keep\nthe fight going. It is worth finishing the bats as well."
+    },
+    "like_like": {
+      "long": "A like like squats here, a tube of flesh with a gaping mouth.",
+      "description": "A thick, tubelike mass of ribbed, pinkish flesh with a gaping mouth\nat its top. It creeps slowly toward its prey and swallows whatever\nit touches whole, chewing at it from inside. Anyone it engulfs is\nspat out again, but often without their shield, which it eats. Kill\nit quickly, or keep your distance."
+    },
+    "pols_voice": {
+      "long": "A pols voice hops about, its long ears twitching at every sound.",
+      "description": "A round, ghostly white creature with huge rabbitlike ears and a\nhalf-smile. It bounces about the room in long, floaty hops and is\nhard to wound with a blade. It cannot stand loud noise, and an arrow\nends it at once; that is the arrow's secret power."
+    },
+    "gibdo": {
+      "long": "A gibdo shuffles forward, trailing its rotting wrappings.",
+      "description": "A mummy wrapped head to foot in yellowed, rotting linen. Gibdos\nshuffle slowly but relentlessly through the tombs of the dungeons,\nreaching for the living, and they take a great deal of punishment\nbefore they fall. Fire is said to make short work of their wraps."
+    },
+    "red_darknut": {
+      "long": "A red darknut advances, its great shield held squarely before it.",
+      "description": "A knight in full red plate armour, carrying a sword and a broad\nshield. It marches about the room and always turns to face its foe,\nand its shield turns aside any blow or arrow from the front. Only a\nstroke from the side or from behind will bite. Red darknuts are the\nlesser of their order, and still dangerous."
+    },
+    "blue_darknut": {
+      "long": "A blue darknut marches toward you, shield up, sword ready.",
+      "description": "A towering knight in blue plate with a heavy sword and a shield that\nno blow from the front can pass. It is faster, tougher and harder\nhitting than the red kind, turning to keep its shield between it and\nany attacker. Get to its side or its back, or do not fight it at all."
+    },
+    "red_wizzrobe": {
+      "long": "A red wizzrobe flickers into being, wand raised to cast.",
+      "description": "A sorcerer in an orange-red robe and hood, face hidden in shadow. It\nvanishes and reappears in a new spot beside or in line with its\nprey, looses a beam of magic from its wand, and vanishes again. It\nis only vulnerable in the moment it is visible. Strike then."
+    },
+    "blue_wizzrobe": {
+      "long": "A blue wizzrobe glides through the wall, wand crackling.",
+      "description": "A robed and hooded sorcerer in blue, the deadlier of its kind. It\ndrifts about the room, flickers through solid walls, and casts beams\nof magic in straight lines as it comes. It is hard to pin down and\nharder to escape, and its spells strike through a shield."
+    },
+    "red_lanmola": {
+      "long": "A red lanmola bursts up through the sand, its segments rippling.",
+      "description": "A great centipede of armoured red segments that tunnels through sand\nand loose earth. It erupts from the ground, races across the room in\na writhing line, and dives back down. Only its head can be wounded,\nand each segment lost seems to make it faster."
+    },
+    "blue_lanmola": {
+      "long": "A blue lanmola surges out of the sand, a blur of segments.",
+      "description": "A long, many-segmented centipede in blue armour, far faster than the\nred kind. It bursts up out of the floor, streaks around the room so\nquickly the eye can barely follow, and plunges back into the sand.\nOnly its head is soft, and it grows faster as it loses its tail."
+    },
+    "patra": {
+      "long": "A patra hovers here, a great eye ringed by circling smaller eyes.",
+      "description": "A giant floating eye surrounded by a ring of eight smaller eyes that\ncircle it endlessly, sometimes swinging out wide to strike. The\nlittle eyes must be destroyed before the great eye can be hurt.\nPatras guard the deepest halls of Death Mountain, and one of them\nis said to have the map."
+    },
+    "dodongo": {
+      "long": "A dodongo lumbers about, a stocky dinosaur with a thick hide.",
+      "description": "A stout, rhinoceros-like reptile with tough grey hide and a huge\nmouth. It stomps slowly back and forth, too thick-skinned for most\nweapons to hurt. Set a bomb in its path and it will swallow it, and\nthe blast inside does what no sword can. The smoke of a bomb also\nstuns it long enough to strike."
+    },
+    "digdogger": {
+      "long": "A digdogger rolls about, a great spiked ball with a single eye.",
+      "description": "A huge, spiny urchin with a single great eye at its center. It bounces\nand rolls about the room, shrugging off blows from any weapon. It\nhates one certain kind of sound: play the recorder, and it shrinks\nand splits into smaller, faster urchins that can be struck down."
+    },
+    "blade_trap": {
+      "long": "A spiked blade trap rests in the corner, waiting to slide.",
+      "description": "A block of spiked iron set into the corner of a dungeon room. It sits\nstill until something crosses its line, then shoots across the floor\nat terrible speed, slams into its partner or the far wall, and grinds\nslowly back to its place. It cannot be destroyed, only avoided."
+    }
+  },
+  "bosses": {
+    "1": {
+      "short": "Aquamentus",
+      "long": "Aquamentus, a horned green dragon, rears on its ledge and roars.",
+      "description": "A great green dragon with a single sharp horn on its head, standing\non its hind legs at the far end of the chamber. Aquamentus shuffles\nback and forth along its ledge, never leaving it, and opens its jaws\nto spit three fireballs at once in a spreading fan. Its scaly body\nshrugs off most blows; its horned head is its only weakness. Guardian\nof the Eagle, it bars the way to the first shard of wisdom, and it\nleaves a heart container behind when it falls."
+    },
+    "2": {
+      "long": "Dodongo, a huge triceratops-like beast, stomps toward you.",
+      "description": "An enormous, stocky dinosaur with a thick, armoured hide and a mouth\nwide enough to swallow a man. Dodongo lumbers back and forth across\nits lair, too tough for any sword. Yet it dislikes smoke: it will\nswallow a bomb set in its path, and the blast inside shakes it to its\ncore, and the smoke of a bomb stuns it long enough for a blade to\nbite. Guardian of the Moon, it leaves a heart container behind."
+    },
+    "3": {
+      "long": "Manhandla, a monstrous four-headed flower, writhes toward you.",
+      "description": "A giant carnivorous plant with a thick central bulb and four snapping\nflower heads, one on each side. Manhandla glides about the room\nspitting fireballs from every mouth, and each head can be cut away on\nits own. As its heads fall it grows faster and wilder, until the last\none ricochets about the chamber at frightening speed. A well-placed\nbomb can take more than one head at once. Guardian of the Manji, it\nleaves a heart container behind."
+    },
+    "4": {
+      "long": "Gleeok, a two-headed dragon, rears and spits fire from both jaws.",
+      "description": "A massive dragon with two long, snakelike necks, each ending in a\nhorned, fire-spitting head. Gleeok stays planted against the north\nwall while its necks writhe and its heads spit fireballs. Hack at a\nhead long enough and it tears free and flies about the room on its\nown, still spitting fire. When the last head is severed, the beast\ncollapses. Guardian of the Snake, it leaves a heart container."
+    },
+    "5": {
+      "long": "Digdogger, a giant one-eyed urchin, rolls ponderously about.",
+      "description": "An enormous, spiny urchin with one great staring eye, bouncing slowly\nabout its den while blows glance off its spines. It hates a certain\nkind of sound: in the old tales the recorder's song makes it shrink\nand split into smaller, faster urchins a blade can reach. Here it is\nsimply a long, hard fight against a hide like a pincushion. Guardian\nof the Lizard, it leaves a heart container behind."
+    },
+    "6": {
+      "long": "Gohma, a giant crab with one great eye, scuttles side to side.",
+      "description": "A huge, armoured, crablike monster with great pincers and a single\nenormous eye set in its shell. Gohma scuttles back and forth along\nthe north side of its nest and spits fireballs. Blades and spells\ncan wear it down, but its eye snaps shut against any finishing blow\nthat is not an arrow: carry a bow, or the Silver Arrow, to end it.\nGuardian of the Dragon, it leaves a heart container behind."
+    },
+    "7": {
+      "long": "An ancient Aquamentus, scarred and horned, guards the Demon's lair.",
+      "description": "An older, larger Aquamentus, its green scales gone dark and its horn\nchipped by a hundred battles. Like its young kin it paces a ledge at\nthe end of its hall and spits three fireballs at a time in a\nspreading fan, but its hide is tougher and its fire hotter. Only its\nhorned head can be wounded. Guardian of the Demon, it bars the way\nto the seventh shard of wisdom and leaves a heart container behind."
+    },
+    "8": {
+      "long": "An ashen Gleeok, four heads swaying, fills the lair with flame.",
+      "description": "A colossal dragon with four long necks, its scales gone grey as ash\nfrom centuries of its own fire. The ashen Gleeok stays fixed to the\nnorth wall while four horned heads strike and spit fireballs in every\ndirection. Each head can be hacked free, and each one that falls\nflies loose about the chamber, still spitting flame. Only when all\nfour are severed does the beast die. Guardian of the Lion, it keeps\nthe last shard of wisdom and leaves a heart container behind."
+    },
+    "9": {
+      "long": "Ganon, the Prince of Darkness, lurks unseen in the dark.",
+      "description": "A towering, boarlike demon with blue hide, tusks and a black trident:\nGanon, the Prince of Darkness, bearer of the Triforce of Power. He\nblinks out of sight and reappears elsewhere in the dark, hurling\nfireballs at whoever stands against him, and any wound he is left\nalone with closes. At his hip hangs a sword that was never his: the\nMaster Sword, taken from the hero's grave. Ordinary weapons can wound\nhim but never kill him. Beaten down, he collapses flashing red, and a\nlevel 54+ hero must wield the Silver Arrow and SHOOT GANON to end it."
+    }
+  }
+}

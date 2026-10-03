@@ -102,7 +102,7 @@ DIRECT_DUNGEON_ITEMS = {
 }
 EXTRA_MAJOR_ITEMS = {
     8: [("E7", "Magical Key Cellar", 30416)],
-    9: [("A7", "Silver Arrow Cellar", 30218), ("H8", "Red Ring Cellar", 30261)],
+    9: [("A7", "Silver Arrow Cellar", 30218), ("H8", "Red Ring Cellar", 30579)],
 }
 STAIR_PAIRS = {
     5: [("C8", "A2")],
@@ -189,7 +189,7 @@ OVERWORLD_LANDMARKS: dict[str, list[dict[str, Any]]] = {
     "N2": [{"type": "dungeon", "level": 8, "puzzle": "burn"}],
     "F8": [{"type": "dungeon", "level": 9, "puzzle": "bomb"}],
     "K8": [{"type": "cave", "name": "White Sword Cave", "item": 30251}],
-    "B6": [{"type": "cave", "name": "Master Sword Grave", "item": 30200}],
+    "B6": [{"type": "cave", "name": "Hero's Grave"}],
     "O8": [{"type": "cave", "name": "Letter Cave", "item": 30500}],
     "E6": [{"type": "secret", "name": "Power Bracelet Armos", "item": 30276,
             "puzzle": "armos"}],

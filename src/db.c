@@ -1102,7 +1102,48 @@ void load_objects( FILE *fp )
                 pObjIndex->affected     = paf;
                 top_affect++;
             }
- 
+
+            /*
+             * ROM 2.4's affect-bit record:
+             *
+             *     F
+             *     A <location> <modifier> <affected_by bits>
+             *
+             * An object affect that sets a bit while the object is worn --
+             * the Master Sword's haste, the Red Ring's sanctuary.
+             * equip_char and unequip_char already apply and lift the
+             * bitvector of every prototype affect, and unequip_char puts
+             * back any bit a spell, the race or another worn item still
+             * grants, so nothing else needs to know where it came from.
+             * Only 'A' (affected_by) is understood; anything else is
+             * read past and reported.
+             */
+            else if ( letter_inner == 'F' )
+            {
+                AFFECT_DATA *paf;
+                char where;
+                long bits;
+
+                where                   = fread_letter( fp );
+                paf                     = alloc_perm( sizeof(*paf) );
+                paf->type               = -1;
+                paf->level              = pObjIndex->level;
+                paf->duration           = -1;
+                paf->location           = (sh_int)(fread_number( fp ));
+                paf->modifier           = (sh_int)(fread_number( fp ));
+                bits                    = fread_flag( fp );
+                paf->bitvector          = 0;
+                paf->bitvector2         = 0;
+                if ( where == 'A' )
+                    paf->bitvector      = (int)bits;
+                else
+                    bug( "Load_objects: vnum %d has an F record that is not 'A'.",
+                         vnum );
+                paf->next               = pObjIndex->affected;
+                pObjIndex->affected     = paf;
+                top_affect++;
+            }
+
             else if ( letter_inner == 'E' )
             {
                 EXTRA_DESCR_DATA *ed;

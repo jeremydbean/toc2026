@@ -2180,9 +2180,13 @@ void spell_dispel_magic( int sn, int level, CHAR_DATA *ch, void *vo )
         found = true;
     }
 
+    /* A racial or innate aura can be dispelled; one that something the
+       victim is wearing gives -- the Red Ring of Hyrule -- lasts as long
+       as it is worn. */
     if (IS_AFFECTED(victim,AFF_SANCTUARY)
 	&& !saves_dispel(level, victim->level,-1)
-	&& !is_affected(victim,skill_lookup("sanctuary")))
+	&& !is_affected(victim,skill_lookup("sanctuary"))
+	&& !equipment_grants_affect(victim, AFF_SANCTUARY))
     {
 	REMOVE_BIT(victim->affected_by,AFF_SANCTUARY);
         act("The white aura around $n's body vanishes.",
@@ -3396,6 +3400,13 @@ void spell_identify( int sn, int level, CHAR_DATA *ch, void *vo )
                 affect_loc_name( paf->location ), paf->modifier );
             send_to_char( buf, ch );
         }
+	/* An F record: a bit the object gives for as long as it is worn. */
+	if ( paf->bitvector != 0 )
+	{
+            snprintf( buf, sizeof(buf), "Grants %s while worn.\n\r",
+                affect_bit_name( paf->bitvector ) );
+            send_to_char( buf, ch );
+	}
     }
 
     for ( paf = obj->affected; paf != NULL; paf = paf->next )
@@ -4247,7 +4258,10 @@ void spell_slow( int sn, int level, CHAR_DATA *ch, void *vo )
            sn1 = skill_lookup("haste");
            affect_strip( victim, sn1);
            send_to_char("You feel yourself slow down.", victim);
-           REMOVE_BIT(victim->affected_by,AFF_HASTE);
+           /* The spell goes; haste that a wielded Master Sword gives
+              stays for as long as it is wielded. */
+           if ( !equipment_grants_affect( victim, AFF_HASTE ) )
+               REMOVE_BIT(victim->affected_by,AFF_HASTE);
 
            if( victim != ch )
            send_to_char("Ok.\n\r",ch);

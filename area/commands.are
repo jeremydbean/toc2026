@@ -1800,7 +1800,7 @@ cannot deliver the final blow.
 See also: ARCHERY, WIELD, SCAN
 ~
 
-0 GANON HYRULE RELICS~
+0 GANON HYRULE RELICS 'MASTER SWORD' TRIFORCE 'RED RING'~
 Hyrule is entered through the arcade cabinet in the Games Room, on the
 university campus.  ENTER CABINET and the screen takes you.
 
@@ -1819,25 +1819,36 @@ dungeon itself; the start screen is the safest place in Hyrule.
   Level 3  14-20    Level 6  33-40     Level 9  53-59
 
 Every dungeon's guardian is a hard fight for its band, and every one
-carries a weapon worth having at that level.  Whatever you find in a place
-can be used at that place's level -- except the Master Sword, which waits
-in the graveyard for a hero of level 58.
+carries a weapon worth having at that level; the first eight leave a Heart
+Container too.  Whatever you find in a place can be used at that place's
+level.  Ordinary enemies sometimes drop rupees, a heart, a bottled fairy or
+a clock-flask: QUAFF the last three.
 
-Ganon can be wounded normally, but at one hit point he flashes red, becomes
-stunned, and can only be finished by a level 54 or higher character wielding
-the Silver Arrow and typing SHOOT GANON.
+Ganon is a fight for a group.  He blinks about the dark hurling fireballs
+that no parry stops, and his wounds close if he is left alone.  He can be
+wounded normally, but at one hit point he flashes red, becomes stunned, and
+can only be finished by a level 54 or higher character wielding the Silver
+Arrow and typing SHOOT GANON.
 
-Defeating Ganon puts the Golden Key and one random mortal relic in his corpse:
+The Red Ring of Hyrule (level 58) lies in Death Mountain's deepest cellar.
+Worn, it gives sanctuary and takes a fifth off all damage you take.
+
+Defeating Ganon puts the Golden Key, his trident and the Master Sword in his
+corpse.  The Master Sword (level 58) is the finest blade a mortal can carry,
+and it hastens whoever wields it.  He also leaves one random relic:
 
   Hero's Tunic, level 54 - heals after personally killing an NPC
   Blue Ring of Hyrule, level 54 - reduces all incoming damage by 10 percent
   Pegasus Boots, level 55 - reduce movement spent traveling on foot by 25 percent
   Mirror Shield, level 56 - reduces nonphysical damage by 15 percent
-  Red Ring of Hyrule, level 58 - reduces all incoming damage by 20 percent
 
 Only the strongest Blue or Red Ring ward applies, even if two rings are worn.
 The Mirror Shield can combine with one Ring ward. EXAMINE each relic for its
 exact limits, and COMPARE understands these special effects.
+
+Beyond Ganon lies the complete Triforce (level 58).  WEAR it and it takes
+your light slot, and you see what a level 59 hero with HOLYLIGHT would see:
+the invisible, the hidden and the dark -- but not gods hidden above that.
 
 See also: SHOOT, COMPARE, EXAMINE, RECALL
 ~

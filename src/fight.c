@@ -43,15 +43,32 @@
 #define HYRULE_TIER_FIRST       31000
 #define HYRULE_TIER_LAST        32459
 #define HYRULE_KIND_BASE        30200
+/* Kinds that leave nothing behind: a blade trap and a falling boulder. */
+#define HYRULE_BLADE_TRAP_KIND  30337
+#define HYRULE_BOULDER_KIND     30226
+#define HYRULE_BANDS            9
 
+/*
+ * One of these, at random, beside the Master Sword Ganon always carries.
+ * The Red Ring of Hyrule is not here: it lies in Death Mountain's cellar,
+ * where the NES keeps it, so it is found rather than rolled for.
+ */
 static const int hyrule_ganon_loot_vnums[] =
 {
     OBJ_VNUM_HYRULE_HEROS_TUNIC,
     OBJ_VNUM_HYRULE_BLUE_RING,
-    OBJ_VNUM_HYRULE_RED_RING,
     OBJ_VNUM_HYRULE_MIRROR_SHIELD,
     OBJ_VNUM_HYRULE_PEGASUS_BOOTS
 };
+
+/*
+ * A Hyrule enemy's rupee drop by band, in rupees -- gold coins. The NES
+ * drops a single rupee or a blue five; these start there and climb with
+ * the band so a drop stays worth stooping for, while staying well under
+ * what an ordinary mobile of that level carries (load_mobiles).
+ */
+static const int hyrule_rupee_drop[HYRULE_BANDS] =
+    { 1, 1, 2, 3, 5, 8, 12, 20, 30 };
 
 /* command procedures needed */
 DECLARE_DO_FUN(do_emote         );
@@ -2630,6 +2647,47 @@ static void add_coin_piles_to_corpse( OBJ_DATA *corpse, long amount,
     }
 }
 
+/*
+ * What a Hyrule enemy leaves behind, in the NES's spirit: most leave
+ * nothing, some a rupee or a blue five, a heart now and then, more
+ * rarely a fairy, and once in a long while a clock. The heart, fairy and
+ * clock are one object per band (OBJ_VNUM_HYRULE_*_FIRST + band - 1),
+ * written by scripts/build_hyrule_area.py and levelled to that band.
+ *
+ *   rupees 15%   five rupees 5%   heart 12%   fairy 3%   clock 1%
+ */
+static void hyrule_enemy_drop( OBJ_DATA *corpse, int vnum )
+{
+    int band;
+    int kind;
+    int roll;
+    long rupees;
+
+    if ( corpse == NULL || vnum < HYRULE_TIER_FIRST || vnum > HYRULE_TIER_LAST )
+        return;
+
+    kind = hyrule_enemy_kind( vnum );
+    if ( kind == HYRULE_BLADE_TRAP_KIND || kind == HYRULE_BOULDER_KIND )
+        return;
+
+    band = ( vnum - HYRULE_TIER_FIRST ) % 10 + 1;
+    if ( band < 1 || band > HYRULE_BANDS )
+        return;
+
+    roll = number_percent();
+    rupees = hyrule_rupee_drop[band - 1];
+    if ( roll <= 15 )
+        add_coin_piles_to_corpse( corpse, rupees, TYPE_GOLD );
+    else if ( roll <= 20 )
+        add_coin_piles_to_corpse( corpse, rupees * 5, TYPE_GOLD );
+    else if ( roll <= 32 )
+        add_loot_to_corpse( corpse, OBJ_VNUM_HYRULE_HEART_FIRST + band - 1 );
+    else if ( roll <= 35 )
+        add_loot_to_corpse( corpse, OBJ_VNUM_HYRULE_FAIRY_FIRST + band - 1 );
+    else if ( roll == 36 )
+        add_loot_to_corpse( corpse, OBJ_VNUM_HYRULE_CLOCK_FIRST + band - 1 );
+}
+
 void make_corpse( CHAR_DATA *ch )
 {
     char buf[MAX_STRING_LENGTH];
@@ -2737,6 +2795,9 @@ void make_corpse( CHAR_DATA *ch )
             bug( "Make_corpse: missing Hyrule Ganon loot vnum %d.",
                  loot_vnum );
     }
+
+    if ( IS_NPC(ch) && ch->pIndexData != NULL )
+        hyrule_enemy_drop( corpse, ch->pIndexData->vnum );
 
     /* Seasonal event drops: 15% chance a killed NPC drops a seasonal item. */
     if ( IS_NPC(ch) )

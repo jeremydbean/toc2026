@@ -39,6 +39,7 @@ DECLARE_SPEC_FUN(       spec_breath_frost       );
 DECLARE_SPEC_FUN(       spec_breath_gas         );
 DECLARE_SPEC_FUN(       spec_breath_lightning   );
 DECLARE_SPEC_FUN(       spec_dominion_ward      );
+DECLARE_SPEC_FUN(       spec_ganon              );
 DECLARE_SPEC_FUN(       spec_training_dummy     );
 DECLARE_SPEC_FUN(       spec_cast_adept         );
 DECLARE_SPEC_FUN(       spec_cast_cleric        );
@@ -230,6 +231,7 @@ const   struct  spec_type       spec_table      [ ] =
     { "spec_breath_dispel",     spec_breath_dispel      },
     { "spec_breath_lightning",  spec_breath_lightning   },
     { "spec_dominion_ward",     spec_dominion_ward      },
+    { "spec_ganon",             spec_ganon              },
     { "spec_training_dummy",    spec_training_dummy     },
     { "spec_cast_adept",        spec_cast_adept         },
     { "spec_cast_cleric",       spec_cast_cleric        },
@@ -487,6 +489,117 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
 
     return false;
+}
+
+/*
+ * Ganon, at the top of Death Mountain.
+ *
+ * In the NES he blinks out of sight, reappears somewhere else in the
+ * room and throws fireballs, and leaving the room undoes every wound you
+ * gave him. Both are here:
+ *
+ *   - Every mobile pulse (four seconds) he vanishes and hurls
+ *     GANON_FIREBALLS fireballs, each at a random player in the fight --
+ *     anybody fighting him or grouped with somebody who is. A fireball
+ *     is a spell blow (dt below TYPE_HIT), so no parry, dodge or shield
+ *     turns it; sanctuary halves it, the Red Ring takes a fifth and the
+ *     Mirror Shield three twentieths, as with any other fire. His melee
+ *     is ordinary, and a level 59 with every defence learned turns
+ *     aside most of it: the fireballs are the fight.
+ *
+ *   - Out of a fight he heals a tenth of his health each pulse, so the
+ *     Silver Arrow's tenths cannot be banked by running out to rest and
+ *     coming back. Not once he has collapsed: a stunned Ganon (one hit
+ *     point and AFF2_NO_RECOVER) stays down for the finishing shot.
+ *
+ * The numbers were sized against a level 59 with every defence learned,
+ * sanctuary, the Red Ring and about 4,000 hit points, landing the ten
+ * Silver Arrow blows that bring him down at a little under one and a half
+ * a round through his parry and dodge. Alone that hero is dead in about
+ * four rounds and wins roughly one fight in twenty; a group of three or
+ * four splits the fireballs, finishes him in six or seven rounds, and
+ * wins nearly every time. See wiki/hyrule-area.md.
+ */
+#define GANON_FIREBALLS          2
+#define GANON_FIREBALL_MIN    1600
+#define GANON_FIREBALL_MAX    2200
+#define GANON_REGEN_DIVISOR     10
+
+static bool ganon_may_target( CHAR_DATA *mob, CHAR_DATA *victim )
+{
+    if ( victim == mob || IS_NPC(victim) || victim->in_room != mob->in_room )
+	return false;
+    if ( victim->position <= POS_STUNNED || !can_see( mob, victim ) )
+	return false;
+    return victim->fighting == mob
+	|| ( mob->fighting != NULL && is_same_group( victim, mob->fighting ) );
+}
+
+static CHAR_DATA *ganon_pick_target( CHAR_DATA *mob )
+{
+    CHAR_DATA *rch;
+    int count = 0;
+    int pick;
+
+    for ( rch = mob->in_room->people; rch != NULL; rch = rch->next_in_room )
+	if ( ganon_may_target( mob, rch ) )
+	    count++;
+    if ( count == 0 )
+	return NULL;
+
+    pick = number_range( 1, count );
+    for ( rch = mob->in_room->people; rch != NULL; rch = rch->next_in_room )
+	if ( ganon_may_target( mob, rch ) && --pick == 0 )
+	    return rch;
+    return NULL;
+}
+
+bool spec_ganon( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
+{
+    CHAR_DATA *victim;
+    int sn;
+    int i;
+
+    UNUSED_PARAM(ch);
+    UNUSED_PARAM(arg);
+
+    if ( cmd != NULL || mob->in_room == NULL )
+	return false;
+
+    if ( mob->fighting == NULL || mob->position != POS_FIGHTING )
+    {
+	if ( mob->position > POS_STUNNED
+	&&   !IS_AFFECTED2(mob, AFF2_NO_RECOVER)
+	&&   mob->hit < mob->max_hit )
+	{
+	    mob->hit = UMIN( mob->max_hit,
+			     mob->hit + UMAX( 1, mob->max_hit / GANON_REGEN_DIVISOR ) );
+	    if ( mob->hit == mob->max_hit )
+		act( "The darkness folds in on itself, and every wound Ganon bore is gone.",
+		     mob, NULL, NULL, TO_ROOM );
+	}
+	return false;
+    }
+
+    if ( ( sn = skill_lookup( "fireball" ) ) < 0 )
+	return false;
+
+    for ( i = 0; i < GANON_FIREBALLS; i++ )
+    {
+	if ( mob->in_room == NULL || mob->position != POS_FIGHTING
+	||   ( victim = ganon_pick_target( mob ) ) == NULL )
+	    break;
+
+	if ( i == 0 )
+	    act( "Ganon blinks out of sight, and reappears somewhere else in the dark!",
+		 mob, NULL, NULL, TO_ROOM );
+	act( "Ganon hurls a ball of fire straight at you!", mob, NULL, victim, TO_VICT );
+	act( "Ganon hurls a ball of fire at $N!", mob, NULL, victim, TO_NOTVICT );
+	damage( mob, victim,
+		number_range( GANON_FIREBALL_MIN, GANON_FIREBALL_MAX ),
+		sn, DAM_FIRE );
+    }
+    return true;
 }
 
 bool spec_cast_adept( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )

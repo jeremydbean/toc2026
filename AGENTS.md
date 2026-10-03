@@ -48,7 +48,8 @@ Maintained documentation:
   `~`-terminated strings.
 - Do not hand-edit generated Hyrule output for a lasting change. Update
   `data/hyrule_first_quest.json`, `data/hyrule_room_prose.json` (room names
-  and descriptions) and/or the generator, regenerate, and test.
+  and descriptions), `data/hyrule_mob_prose.json` (enemy and boss text)
+  and/or the generator, regenerate, and test.
 - Work with existing uncommitted user changes. Never discard, reset, or rewrite
   unrelated work.
 
@@ -184,13 +185,17 @@ Current October 2026 Python baseline:
 ```text
 100 listed area entries
 2,427 mobiles
-3,570 objects
+3,605 objects
 7,783 rooms
-0 critical, 12 warning, 1,511 information findings
+0 critical, 12 warning, 1,538 information findings
 ```
 
 The mobile count rose by about ninety when Hyrule's enemies became one
 generated record per kind per level band (see `wiki/hyrule-area.md`).
+Objects rose by thirty-five, and information findings by twenty-seven, when
+Hyrule's bosses gained Heart Containers and its enemies random drops: the
+27 drop potions are made by `make_corpse`, not by a reset, so they count as
+`object-has-no-source` exactly as Ganon's relics always have.
 
 The information count fell from 1,571 when 176 resets that had been
 commented out as "(removed: room/obj does not exist)" went back in; every
@@ -547,12 +552,43 @@ contact effects in `src/fight.c` find their kind through
 `HYRULE_TIER_LAST` there must match `TIER_VNUM_FIRST`/`TIER_VNUM_LAST` in
 the generator. The manifest's encounters are the NES cast; the generator
 thins crowded rooms to at most three. Bosses keep their vnums (the
-achievements name them) and only their stat lines are generated. Every
-item a player can get sits at or below the band it is found in -- the
-generator rewrites the retained catalog's levels and stats from the bands
--- except the Master Sword, kept at 58 on purpose. The old men, Zelda and
-the other non-combatants are refused by `is_hyrule_bystander()` in
-`is_safe`, so their high levels cannot be farmed.
+achievements name them); their stat lines are generated, and their room
+lines and descriptions, like every enemy's, come from
+`data/hyrule_mob_prose.json`. Every item a player can get sits at or below
+the band it is found in -- the generator rewrites the retained catalog's
+levels and stats from the bands. The Master Sword (level 58) is Ganon's,
+and must stay the best weapon a mortal can get anywhere at 59 or below;
+`tests/test_hyrule_progression.py` measures it against the whole world.
+The old men, Zelda and the other non-combatants are refused by
+`is_hyrule_bystander()` in `is_safe`, so their high levels cannot be
+farmed.
+
+**Worn powers are ROM `F` records.** `load_objects` reads
+`F` / `A <location> <modifier> <bits>` and puts the bits on the prototype
+affect; the Master Sword's haste and the Red Ring's sanctuary are the two
+users. `equip_char`/`unequip_char` already apply and lift prototype
+bitvectors and restore what spells or other gear still grant. A spell that
+strips a bit by hand -- dispel magic on sanctuary, slow on haste -- must ask
+`equipment_grants_affect()` first. The dashboard parser keeps them in
+`Object.affect_bits`, apart from `affects`, which every caller reads as
+stat applies, and `tools/costs_to_copper.py` and `tools/reprice_by_level.py`
+step over it -- a reader that stops at an unknown trailer loses every
+object after it, which `tests/test_shop_prices.py` catches. `fread_flag` reads no minus sign, so an infinite light is
+written 999 (`create_object` makes it -1).
+
+**The Triforce is holy sight, capped at 59.** `triforce_sight()` in
+`handler.c` is asked wherever `PLR_HOLYLIGHT` grants sight, and
+`sight_trust()` -- `get_trust` raised to `TRIFORCE_SIGHT_LEVEL` for the
+wearer -- is what sight compares against a wizinvis or cloak level. Add a
+new holylight check and it needs both; `tests/test_hyrule_progression.py`
+fails on a `PLR_HOLYLIGHT` sight test that does not also ask the Triforce.
+
+**Ganon needs a group, and `spec_ganon` is why.** His fireballs are spell
+blows no parry stops, two every four seconds at random members of the
+fight; his melee barely matters. Retune him with the simulation described
+in `wiki/hyrule-area.md`, not by feel: the Silver Arrow's tenth-of-health
+floor fixes the fight's length, so his damage per pulse is what decides
+who wins.
 
 Hyrule workflow:
 

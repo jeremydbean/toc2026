@@ -10,6 +10,43 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- **Hyrule's endgame: the Master Sword is Ganon's, Ganon needs a group,
+  and the Red Ring and Triforce have their powers.**
+  - The **Master Sword** (level 58) no longer lies in the B6 graveyard;
+    Ganon carries it, so it lands in his corpse. At 13d9 +5/+5 it scores
+    70.0 (average damage plus damroll) against 63.5 for Ganon's trident,
+    the best weapon a mortal could otherwise get anywhere, and 54.0 for the
+    best outside Hyrule. It hastens whoever wields it.
+  - **Ganon** is level 64 with 30,000 hit points and armour -400, and
+    `spec_ganon` replaces his necromancer's spells: every four seconds he
+    blinks to another spot and throws two 1,600-2,200 fireballs at random
+    members of the fight, which no parry stops, and out of a fight he heals
+    a tenth a pulse. Simulated against a level 59 with every defence,
+    sanctuary, the Red Ring and 4,000 hit points, a solo hero wins about one
+    fight in twenty and a group of three or four nine in ten or better. The
+    Silver Arrow rule, the relics and the achievements are unchanged.
+  - The **Red Ring of Hyrule** lies in Death Mountain's Red Ring Cellar, in
+    place of the catalog's plain red ring, instead of being one of Ganon's
+    five random relics (four now). Worn, it gives sanctuary as well as its
+    20% ward.
+  - The **complete Triforce** is a light. Worn in the light slot it gives
+    the sight of a level 59 character with HOLYLIGHT on -- through
+    darkness, blindness, invisibility, hiding and shadowmeld, and through
+    wizinvis or incognito up to 59 and no higher. `triforce_sight()` and
+    `sight_trust()` in `handler.c` are asked wherever holylight grants
+    sight.
+  - **Worn powers use ROM 2.4 `F` records**, which `load_objects` reads
+    now. Slow and dispel magic leave a worn haste or sanctuary alone, and
+    IDENTIFY says "Grants haste while worn."
+  - **Drops.** The first eight bosses leave a Heart Container at the top of
+    their band; ordinary enemies sometimes leave rupees, a recovery heart, a
+    bottled fairy or a clock-flask (a potion of haste), one of each per band.
+  - **Every room, enemy and boss description** was rewritten from the NES
+    game; the old men's hints are carved into their rooms. Enemy and boss
+    text lives in the new `data/hyrule_mob_prose.json`. Level 1's guardian
+    is plain "Aquamentus", the one-horned dragon. The B6 grave is "The
+    Hero's Grave", and the Mudlet map is rebuilt for it.
+
 - **COMPARE, rebuilt: which gear makes you hit harder.** The old command
   blended five indexes (damage, spells, survival, leveling, utility) under
   a weighted "profile" and printed twenty-odd lines; it is now two numbers.
