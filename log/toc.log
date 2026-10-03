@@ -28049,3 +28049,34 @@ Sat Oct  3 13:34:09 2026 :: Log Alaric [29003]: n
 Sat Oct  3 13:34:09 2026 :: Log Alaric [0]: moved to 29004 (Center Tunnelway)
 Sat Oct  3 13:34:12 2026 :: Log Alaric [29004]: prac
 Sat Oct  3 13:34:15 2026 :: Log Alaric [29004]: kill gu
+Sat Oct  3 13:35:06 2026 :: Log Alaric [29004]: prac
+Sat Oct  3 13:35:41 2026 :: Log Alaric [29004]: get ke cor
+Sat Oct  3 13:35:42 2026 :: Log Alaric [29004]: unl north
+Sat Oct  3 13:35:44 2026 :: Log Alaric [29004]: on
+Sat Oct  3 13:35:44 2026 :: Log Alaric [29004]: n
+Sat Oct  3 13:35:44 2026 :: Log Alaric [0]: moved to 29201 (Heroes Hall)
+Sat Oct  3 13:35:45 2026 :: Log Alaric [29201]: n
+Sat Oct  3 13:35:45 2026 :: Log Alaric [0]: moved to 29202 (Hall of Past Heroes)
+Sat Oct  3 13:35:49 2026 :: Log Alaric [29202]: e
+Sat Oct  3 13:35:51 2026 :: Log Alaric [29202]: unl east
+Sat Oct  3 13:35:57 2026 :: Log Alaric [29202]: w
+Sat Oct  3 13:35:57 2026 :: Log Alaric [0]: moved to 29203 (Passage to the Maze)
+Sat Oct  3 13:35:57 2026 :: Log Alaric [29203]: w
+Sat Oct  3 13:35:57 2026 :: Log Alaric [0]: moved to 29204 (Twist in the Maze)
+Sat Oct  3 13:35:59 2026 :: Log Alaric [29204]: scan
+Sat Oct  3 13:36:03 2026 :: Log Alaric [29204]: e
+Sat Oct  3 13:36:03 2026 :: Log Alaric [0]: moved to 29203 (Passage to the Maze)
+Sat Oct  3 13:36:04 2026 :: Log Alaric [29203]: e
+Sat Oct  3 13:36:04 2026 :: Log Alaric [0]: moved to 29202 (Hall of Past Heroes)
+Sat Oct  3 13:36:04 2026 :: Log Alaric [29202]: recal
+Sat Oct  3 13:36:07 2026 :: Log Alaric [29202]: s
+Sat Oct  3 13:36:07 2026 :: Log Alaric [0]: moved to 29201 (Heroes Hall)
+Sat Oct  3 13:36:11 2026 :: Log Alaric [29201]: recal
+Sat Oct  3 13:36:12 2026 :: Log Alaric [29201]: s
+Sat Oct  3 13:36:12 2026 :: Log Alaric [0]: moved to 29004 (Center Tunnelway)
+Sat Oct  3 13:36:13 2026 :: Log Alaric [29004]: recal
+Sat Oct  3 13:36:16 2026 :: Log Alaric [29004]: kill gu
+Sat Oct  3 13:37:09 2026 :: Sock.sinaddr:  178.156.185.231
+Sat Oct  3 13:37:09 2026 :: EOF encountered on read.
+Sat Oct  3 13:39:22 2026 :: Log Alaric [29004]: prac
+Sat Oct  3 13:39:31 2026 :: Log Alaric [29004]: wake
