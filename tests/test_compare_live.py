@@ -74,6 +74,37 @@ class CompareLive(unittest.TestCase):
                 out = me.command("compare defense upgrades finger", 4.0)
                 self.assertIn("tougher", out)
 
+                # Quit for real: a dropped socket leaves the character
+                # link-dead in the game, and logging back in reconnects to
+                # that copy rather than reading the patched file.
+                me.send("quit")
+                self.assertTrue(me.wait_closed())
+
+            # The moonray sword is cursed: nothing can replace it, and the
+            # search says so rather than "nothing beats it".
+            with mud.connect(timeout=120) as me:
+                login(me, ME, PW)
+                out = me.command("compare upgrades wield", 4.0)
+                self.assertIn("will not come off", out)
+                me.send("quit")
+                self.assertTrue(me.wait_closed())
+
+            # Chest loot counts: at 59 the best blade there is waits in
+            # Ganon's great chest, not on a mob. A fresh warrior, so no
+            # curse is in the way; strength goes in the file, because the
+            # sword weighs more than base strength can wield.
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zcmpchest", PW)
+                client.send("quit")
+                client.wait_closed()
+            patch_player_file(mud, "Zcmpchest", Levl=59, Cla=3, Room=4207,
+                              Attr="22 13 13 20 20")
+            with mud.connect(timeout=120) as me:
+                login(me, "Zcmpchest", PW)
+                out = me.command("compare upgrades wield", 4.0)
+                self.assertIn("Master Sword", out)
+                self.assertIn("great chest", out)
+
 
 if __name__ == "__main__":
     unittest.main()

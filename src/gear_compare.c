@@ -1546,7 +1546,9 @@ static void gear_send_profile( CHAR_DATA *ch, const GEAR_PROFILE *profile )
 typedef struct gear_upgrade
 {
     OBJ_INDEX_DATA *pObj;
-    MOB_INDEX_DATA *pMob;
+    MOB_INDEX_DATA *pMob;           /* who carries it, or NULL for a chest */
+    OBJ_INDEX_DATA *pContainer;     /* the chest it sits in */
+    ROOM_INDEX_DATA *pRoom;         /* where the chest is */
     AREA_DATA *area;
     int level;
     int slot;
@@ -1652,7 +1654,10 @@ static void gear_object_from_index( OBJ_DATA *obj, OBJ_INDEX_DATA *pObj,
         obj->level = pObj->level;
         return;
     }
-    if ( pMob->pShop != NULL )
+    /* No carrier (a chest): nothing to take a level from. */
+    if ( pMob == NULL )
+        level = 0;
+    else if ( pMob->pShop != NULL )
         level = (pObj->item_type == ITEM_WEAPON
                  || pObj->item_type == ITEM_ARMOR) ? 10 : 0;
     else
@@ -1721,7 +1726,8 @@ static void gear_keep_upgrade( GEAR_UPGRADE *list, int *count,
         {
             if ( found->score < list[i].score
                 || (found->score == list[i].score
-                    && found->pMob->level >= list[i].pMob->level) )
+                    && (found->pMob != NULL ? found->pMob->level : 999)
+                       >= (list[i].pMob != NULL ? list[i].pMob->level : 999)) )
                 return;
             for ( ; i < *count - 1; i++ )
                 list[i] = list[i + 1];
@@ -1741,23 +1747,84 @@ static void gear_keep_upgrade( GEAR_UPGRADE *list, int *count,
     list[at] = *found;
 }
 
-/*
- * Every piece of gear a mobile carries or wears, through the same
- * measurement as COMPARE, in place of what this character wears in the
- * slot it would go to.  Only what they could put on today counts.
- */
-static void gear_find_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
-                                int only_group, bool defense,
-                                GEAR_UPGRADE best[][GEAR_UPGRADE_TOP],
-                                int found[] )
+/* Whether a room may hold loot for this character: not staff-only, and
+   not Mud School past newbie level. */
+static bool gear_room_open( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoom )
 {
-    static GEAR_SLOT_STATE states[GEAR_GROUP_COUNT][2];
+    if ( pRoom == NULL )
+        return true;
+    if ( IS_SET( pRoom->room_flags, ROOM_IMP_ONLY | ROOM_GODS_ONLY ) )
+        return false;
+    if ( IS_SET( pRoom->room_flags, ROOM_NEWBIES_ONLY )
+        && ch->level > LEVEL_NEWBIE )
+        return false;
+    return true;
+}
+
+/* Whether some mobile carries this key or some room holds it -- a locked
+   chest whose key nobody can have is storage, not loot. */
+static bool gear_key_obtainable( int key_vnum )
+{
     AREA_DATA *pArea;
     RESET_DATA *pReset;
-    MOB_INDEX_DATA *pMob;
-    ROOM_INDEX_DATA *pRoom;
+
+    if ( key_vnum <= 0 )
+        return true;
+    for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
+        for ( pReset = pArea->reset_first; pReset != NULL;
+              pReset = pReset->next )
+            if ( (pReset->command == 'G' || pReset->command == 'E'
+                  || pReset->command == 'O')
+                && pReset->arg1 == key_vnum )
+                return true;
+    return false;
+}
+
+/*
+ * Where each container on a floor is placed.  reset_area fills a P reset
+ * by finding the container anywhere in the world, so the P need not follow
+ * its O -- Ganon's great chest is placed four hundred resets before the
+ * Master Sword is put in it.  Built once per search.
+ */
+#define GEAR_MAX_CHESTS 2048
+
+typedef struct gear_chest_place
+{
+    int vnum;
+    ROOM_INDEX_DATA *room;
+} GEAR_CHEST_PLACE;
+
+static int gear_collect_chests( GEAR_CHEST_PLACE *places, int max )
+{
+    AREA_DATA *pArea;
+    RESET_DATA *pReset;
     OBJ_INDEX_DATA *pObj;
-    OBJ_DATA candidate;
+    int count = 0;
+
+    for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
+        for ( pReset = pArea->reset_first; pReset != NULL;
+              pReset = pReset->next )
+        {
+            if ( pReset->command != 'O' || count >= max )
+                continue;
+            pObj = get_obj_index( pReset->arg1 );
+            if ( pObj == NULL || pObj->item_type != ITEM_CONTAINER )
+                continue;
+            places[count].vnum = pObj->vnum;
+            places[count].room = get_room_index( pReset->arg3 );
+            count++;
+        }
+    return count;
+}
+
+/* Score one candidate in every slot it fits, keeping the winners. */
+static void gear_consider( CHAR_DATA *ch, const GEAR_PROFILE *profile,
+                           int only_group, bool defense,
+                           GEAR_SLOT_STATE states[][2], OBJ_DATA *candidate,
+                           const GEAR_UPGRADE *source,
+                           GEAR_UPGRADE best[][GEAR_UPGRADE_TOP],
+                           int found[] )
+{
     GEAR_LOADOUT loadout;
     GEAR_RESULT result;
     GEAR_UPGRADE entry;
@@ -1766,6 +1833,61 @@ static void gear_find_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
     int g;
     int side;
     int slot;
+
+    for ( g = 0; g < GEAR_GROUP_COUNT; g++ )
+    {
+        if ( (only_group >= 0 && g != only_group)
+            || !gear_item_fits( candidate, gear_groups[g].first ) )
+            continue;
+        for ( side = 0; side < 2; side++ )
+        {
+            slot = side == 0 ? gear_groups[g].first : gear_groups[g].second;
+            if ( slot < 0 )
+                break;
+            if ( !gear_item_usable( ch, candidate, slot, why, sizeof( why ) ) )
+                continue;
+            gear_put_on( ch, &states[g][side].base, candidate, slot, &loadout );
+            gear_measure( ch, profile, &loadout, &result );
+            score = gear_score( profile, &result, &states[g][side].now, defense );
+            if ( score <= GEAR_EVEN )
+                continue;
+            entry = *source;
+            entry.level = candidate->level;
+            entry.slot = slot;
+            entry.score = score;
+            gear_describe_gain( profile, &result, &states[g][side].now,
+                                entry.gain, sizeof( entry.gain ) );
+            gear_keep_upgrade( best[g], &found[g], &entry );
+        }
+    }
+}
+
+/*
+ * Every piece of gear a mobile carries, wears or sells, and every piece put
+ * in a chest that sits in a room -- Ganon's great chest holds the Master
+ * Sword -- through the same measurement as COMPARE, in place of what this
+ * character wears in the slot it would go to.  Only what they could put on
+ * today counts.
+ */
+static void gear_find_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
+                                int only_group, bool defense,
+                                GEAR_UPGRADE best[][GEAR_UPGRADE_TOP],
+                                int found[] )
+{
+    static GEAR_SLOT_STATE states[GEAR_GROUP_COUNT][2];
+    static GEAR_CHEST_PLACE chests[GEAR_MAX_CHESTS];
+    AREA_DATA *pArea;
+    RESET_DATA *pReset;
+    MOB_INDEX_DATA *pMob;
+    ROOM_INDEX_DATA *pRoom;
+    OBJ_INDEX_DATA *pObj;
+    OBJ_INDEX_DATA *pChest;
+    ROOM_INDEX_DATA *pChestRoom;
+    OBJ_DATA candidate;
+    GEAR_UPGRADE source;
+    int chest_count;
+    int c;
+    int g;
 
     for ( g = 0; g < GEAR_GROUP_COUNT; g++ )
     {
@@ -1778,6 +1900,8 @@ static void gear_find_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
                                &states[g][1] );
     }
 
+    chest_count = gear_collect_chests( chests, GEAR_MAX_CHESTS );
+
     for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
     {
         pMob = NULL;
@@ -1785,10 +1909,43 @@ static void gear_find_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
         for ( pReset = pArea->reset_first; pReset != NULL;
               pReset = pReset->next )
         {
+            memset( &source, 0, sizeof( source ) );
+            source.area = pArea;
+
             if ( pReset->command == 'M' )
             {
                 pMob = get_mob_index( pReset->arg1 );
                 pRoom = get_room_index( pReset->arg3 );
+                continue;
+            }
+            if ( pReset->command == 'P' )
+            {
+                pObj = get_obj_index( pReset->arg1 );
+                pChest = get_obj_index( pReset->arg3 );
+                pChestRoom = NULL;
+                for ( c = 0; c < chest_count; c++ )
+                    if ( chests[c].vnum == pReset->arg3 )
+                    {
+                        pChestRoom = chests[c].room;
+                        break;
+                    }
+                if ( pObj == NULL || pChest == NULL || pChestRoom == NULL
+                    || pObj->level == -1
+                    || IS_SET( pObj->extra_flags, ITEM_ROT_DEATH )
+                    || !gear_room_open( ch, pChestRoom )
+                    || (IS_SET( pChest->value[1], CONT_LOCKED )
+                        && !gear_key_obtainable( pChest->value[2] ))
+                    || (pObj->item_type != ITEM_LIGHT
+                        && gear_natural_wear_flag( pObj->wear_flags ) == 0) )
+                    continue;
+                gear_object_from_index( &candidate, pObj, NULL );
+                if ( candidate.level > ch->level )
+                    continue;
+                source.pObj = pObj;
+                source.pContainer = pChest;
+                source.pRoom = pChestRoom;
+                gear_consider( ch, profile, only_group, defense, states,
+                               &candidate, &source, best, found );
                 continue;
             }
             if ( pReset->command != 'G' && pReset->command != 'E' )
@@ -1800,39 +1957,10 @@ static void gear_find_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
             gear_object_from_index( &candidate, pObj, pMob );
             if ( candidate.level > ch->level )
                 continue;
-
-            for ( g = 0; g < GEAR_GROUP_COUNT; g++ )
-            {
-                if ( (only_group >= 0 && g != only_group)
-                    || !gear_item_fits( &candidate, gear_groups[g].first ) )
-                    continue;
-                for ( side = 0; side < 2; side++ )
-                {
-                    slot = side == 0 ? gear_groups[g].first
-                                     : gear_groups[g].second;
-                    if ( slot < 0 )
-                        break;
-                    if ( !gear_item_usable( ch, &candidate, slot, why,
-                                            sizeof( why ) ) )
-                        continue;
-                    gear_put_on( ch, &states[g][side].base, &candidate, slot,
-                                 &loadout );
-                    gear_measure( ch, profile, &loadout, &result );
-                    score = gear_score( profile, &result,
-                                        &states[g][side].now, defense );
-                    if ( score <= GEAR_EVEN )
-                        continue;
-                    entry.pObj = pObj;
-                    entry.pMob = pMob;
-                    entry.area = pArea;
-                    entry.level = candidate.level;
-                    entry.slot = slot;
-                    entry.score = score;
-                    gear_describe_gain( profile, &result, &states[g][side].now,
-                                        entry.gain, sizeof( entry.gain ) );
-                    gear_keep_upgrade( best[g], &found[g], &entry );
-                }
-            }
+            source.pObj = pObj;
+            source.pMob = pMob;
+            gear_consider( ch, profile, only_group, defense, states,
+                           &candidate, &source, best, found );
         }
     }
 }
@@ -1843,9 +1971,14 @@ static void gear_upgrade_source( const GEAR_UPGRADE *u, char *out,
     char area[128];
 
     quest_area_name( u->area->name, area, sizeof( area ) );
-    snprintf( out, size, "%s %s in %s",
-              u->pMob->pShop != NULL ? "sold by" : "from",
-              u->pMob->short_descr, area );
+    if ( u->pMob == NULL )
+        snprintf( out, size, "in %s in %s, %s",
+                  u->pContainer != NULL ? u->pContainer->short_descr : "a chest",
+                  u->pRoom != NULL ? u->pRoom->name : "somewhere", area );
+    else
+        snprintf( out, size, "%s %s in %s",
+                  u->pMob->pShop != NULL ? "sold by" : "from",
+                  u->pMob->short_descr, area );
 }
 
 static void gear_send_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
@@ -1910,6 +2043,16 @@ static void gear_send_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
 
     if ( found[g] == 0 )
     {
+        /* A cursed piece blocks every candidate with "won't come off";
+           say that, rather than claim nothing in the world is better. */
+        if ( (worn != NULL && IS_OBJ_STAT( worn, ITEM_NOREMOVE ))
+            && (gear_groups[g].second < 0
+                || (other != NULL && IS_OBJ_STAT( other, ITEM_NOREMOVE ))) )
+        {
+            act( "$p will not come off, so nothing can take its place.",
+                 ch, worn, NULL, TO_CHAR );
+            return;
+        }
         send_to_char( "Nothing you can get today beats it.\n\r", ch );
         return;
     }

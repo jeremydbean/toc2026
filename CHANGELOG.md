@@ -136,6 +136,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **COMPARE UPGRADES and the website's Gear Finder count chest loot.** The
+  Master Sword now waits in Ganon's great chest, and both only counted gear
+  a mobile carries. A chest counts where it stands in a room (the website
+  also requires the room to be reachable on foot) and any key a locked one
+  needs can itself be had. When the piece you wear is cursed, COMPARE
+  UPGRADES now says it will not come off instead of claiming nothing in
+  the world is better.
+
 - **A failed reopen of the spare file handle could crash the next save.**
   `fpReserve` is closed before every file write and reopened after; if a
   reopen ever failed it stayed NULL, and the next `fclose(NULL)` crashed,
