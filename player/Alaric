@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791058222
+LogO 1791058515
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,7 +15,7 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 264430
+Plyd 264723
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
@@ -109,7 +109,7 @@ CasinoWon  51
 CasinoLost 304
 Exp  126260
 Act  4261068
-AfBy 524800
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -134,7 +134,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  4
+Pos  8
 Prac 6
 Trai 1
 Save  -6
@@ -191,7 +191,6 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'fly'  15   0   0   0     524288          0
 End
 
 #O
@@ -939,7 +938,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 360
+Time 355
 Cost 0
 Cond 100
 Repd 0
