@@ -4305,8 +4305,8 @@ void spell_animate_parts( int sn, int level, CHAR_DATA *ch, void *vo )
       dam = dice(level,6);
     break;
     case OBJ_VNUM_SEVERED_HEART:
-      send_to_char("A bleeding heart fly's up and...bleeds on you?\n\r",victim);
-      act("A bleeding heart fly's up and...bleeds on $N.",ch,NULL,victim,TO_ROOM);
+      send_to_char("A bleeding heart flies up and...bleeds on you?\n\r",victim);
+      act("A bleeding heart flies up and...bleeds on $N.",ch,NULL,victim,TO_ROOM);
       dam = dice(level,10);
     break;
     case OBJ_VNUM_SEVERED_ARM:

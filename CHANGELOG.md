@@ -16,6 +16,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   Undead Cleric (up to 45,000) were broken the same way. The fields are
   `int` now, and the area loader stopped clamping a mobile's hit dice at
   32,767. `tests/test_big_hit_points.py`.
+- **The typo archive, second pass.** The first pass fixed every report
+  where the player named the place; the same misspellings were still
+  elsewhere in the world: "desperatly", "brige", "jewlery", "what use to
+  be" (eight rooms of ruined Midgaard and beyond), "shiney" (and a shiny
+  sword that only answered to "sword"), "it's known uses", "a bleeding
+  heart fly's up", "the moss ... give off" and "comes to life and
+  ATTACK!". `tests/test_reported_typos.py` now holds every reported slip
+  and fails if one comes back.
 - **The old bug reports, second pass.** Every report in the archive the
   first pass did not fix was checked against today's code; most were
   fixed long since. These were still live (`tests/test_old_bug_reports.py`):
