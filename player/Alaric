@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791047373
+LogO 1791051196
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 257176
+Plyd 257404
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 4207
-HMV  1165 1165 1462 1462 264 320
-NewGold 126
-NewPlat 140
-NewCopp 235
-NewSilv 163
+Room 29004
+HMV  983 1165 1462 1462 320 320
+NewGold 139
+NewPlat 144
+NewCopp 268
+NewSilv 187
 BankCP 196864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 943
+AchKills 946
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -107,7 +107,7 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  125792
+Exp  125804
 Act  4261068
 AfBy 512
 Comm 24576
@@ -166,7 +166,7 @@ Sk 78 'torment'
 Sk 30 'axe'
 Sk 100 'dagger'
 Sk 25 'flail'
-Sk 91 'mace'
+Sk 93 'mace'
 Sk 35 'polearm'
 Sk 97 'shield block'
 Sk 30 'spear'
@@ -430,10 +430,10 @@ Lev  32
 Cost 23000000
 Cond 100
 Repd 1
-Affect -1 32 -1 -1 5 0 0
-Affect -1 32 -1 -13 12 0 0
-Affect -1 32 -1 -15 13 0 0
 Affect -1 32 -1 -3 22 0 0
+Affect -1 32 -1 -15 13 0 0
+Affect -1 32 -1 -13 12 0 0
+Affect -1 32 -1 -1 5 0 0
 End
 
 #O
@@ -851,8 +851,8 @@ Lev  50
 Cost 20000000
 Cond 95
 Repd 0
-Affect -1 50 -1 -3 2 0 0
 Affect -1 50 -1 -17 14 0 0
+Affect -1 50 -1 -3 2 0 0
 End
 
 #O
@@ -895,9 +895,9 @@ Lev  29
 Cost 30000000
 Cond 100
 Repd 0
-Affect -1 29 -1 -4 2 0 0
-Affect -1 29 -1 -1 1 0 0
 Affect -1 29 -1 -4 1 0 0
+Affect -1 29 -1 -1 1 0 0
+Affect -1 29 -1 -4 2 0 0
 End
 
 #O
@@ -978,7 +978,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 478
+Time 475
 Cost 0
 Cond 100
 Repd 0

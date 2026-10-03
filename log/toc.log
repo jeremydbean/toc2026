@@ -29183,3 +29183,26 @@ Sat Oct  3 18:10:11 2026 :: Log Alaric [29004]: kill gu
 Sat Oct  3 18:11:22 2026 :: Sock.sinaddr:  178.156.189.113
 Sat Oct  3 18:11:22 2026 :: EOF encountered on read.
 Sat Oct  3 18:11:33 2026 :: Log Alaric [29004]: l
+Sat Oct  3 18:13:03 2026 :: Log Alaric [29004]: idea Reanalyze the scaling costs of repair. I have a level 46 Shield of the Round Table that was damaged. The repair cost was 265 platinum. This is an unrealistic amount of platinum to have for repairing multiple pieces of gear at end game. Even going to low level areas, a single mob kill typically only gives a single platinum as a reward.
+Sat Oct  3 18:13:05 2026 :: Log Alaric [29004]: who
+Sat Oct  3 18:13:06 2026 :: Log Alaric [29004]: score
+Sat Oct  3 18:13:14 2026 :: Log Alaric [29004]: who
+Sat Oct  3 18:13:16 2026 :: Log Alaric [29004]: score
+Sat Oct  3 18:13:18 2026 :: Log Alaric [29004]: l
+Sat Oct  3 18:13:20 2026 :: Log Alaric [29004]: s
+Sat Oct  3 18:13:20 2026 :: Log Alaric [0]: moved to 29003 (Grand Foyer)
+Sat Oct  3 18:13:20 2026 :: Log Alaric [29003]: s
+Sat Oct  3 18:13:20 2026 :: Log Alaric [0]: moved to 29002 (Inside Korzath's Private Fortress)
+Sat Oct  3 18:13:22 2026 :: Log Alaric [29002]: n
+Sat Oct  3 18:13:22 2026 :: Log Alaric [0]: moved to 29003 (Grand Foyer)
+Sat Oct  3 18:13:22 2026 :: Log Alaric [29003]: ne
+Sat Oct  3 18:13:22 2026 :: Log Alaric [0]: moved to 29060 (Corridor)
+Sat Oct  3 18:13:23 2026 :: Log Alaric [29060]: kill ch
+Sat Oct  3 18:16:27 2026 :: Sock.sinaddr:  3.20.63.178
+Sat Oct  3 18:16:28 2026 :: EOF encountered on read.
+Sat Oct  3 18:16:29 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 18:16:34 2026 :: Log Alaric [29060]: e
+Sat Oct  3 18:16:34 2026 :: Log Alaric [0]: moved to 29061 (Corridor)
+Sat Oct  3 18:16:34 2026 :: Log Alaric [29061]: close west
+Sat Oct  3 18:16:34 2026 :: Log Alaric [29061]: kill gu
+Sat Oct  3 18:17:07 2026 :: Log Alaric [29061]: kill gu
