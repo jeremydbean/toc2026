@@ -28516,3 +28516,17 @@ Sat Oct  3 14:47:45 2026 :: Loading Farslayer's playerfile
 Sat Oct  3 14:47:47 2026 :: Farslayer@pool-71-117-172-247.prvdri.fios.verizon.net has connected.
 Sat Oct  3 14:48:12 2026 :: Sock.sinaddr:  52.87.72.16
 Sat Oct  3 14:48:13 2026 :: EOF encountered on read.
+Sat Oct  3 14:51:14 2026 :: Log Farslayer: drop all
+Sat Oct  3 14:51:28 2026 :: Farslayer has achieved level 2!
+Sat Oct  3 14:52:17 2026 :: Farslayer did a remove all.
+Sat Oct  3 14:53:18 2026 :: Sock.sinaddr:  52.15.147.27
+Sat Oct  3 14:53:18 2026 :: EOF encountered on read.
+Sat Oct  3 14:53:22 2026 :: Log Farslayer: drop cloak
+Sat Oct  3 14:53:22 2026 :: Log Farslayer: drop cloak
+Sat Oct  3 14:54:08 2026 :: [DELETE] Character is contemplating deletion.
+Sat Oct  3 14:54:11 2026 :: [DELETE] Character self-deleted.
+Sat Oct  3 14:54:11 2026 :: Farslayer has quit.
+Sat Oct  3 14:54:11 2026 :: [QUIT] Player rejoined the real world.
+Sat Oct  3 14:54:22 2026 :: Sock.sinaddr:  71.117.172.247
+Sat Oct  3 14:54:24 2026 :: Loading Farslayer's playerfile
+Sat Oct  3 14:54:59 2026 :: Farslayer@pool-71-117-172-247.prvdri.fios.verizon.net new player.

@@ -1,7 +1,7 @@
 #PLAYER
 Name Farslayer~
-Id   10321
-LogO 1791038819
+Id   21916
+LogO 1791039310
 Vers 4
 Prom ~
 Ignoring  ~
@@ -15,19 +15,19 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 1
-Plyd 169
+Plyd 46
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 3713
-HMV  50 50 100 100 100 100
+Room 3700
+HMV  20 20 100 100 100 100
 NewGold 0
 NewPlat 0
 NewCopp 0
 NewSilv 0
 BankCP 0
-IntTime 1791038701
+IntTime 1791039310
 IntTotal 0
 Dcount 0
 SavedOnce 1
@@ -41,7 +41,7 @@ AchExplore 0
 AchMaps 0
 AchCompass 0
 AchTriforce 0
-Achv visit-mud-school 1791038685
+Achv visit-mud-school 1791039302
 LastOut  0
 SesLogin 0
 SesDur   0
@@ -79,6 +79,7 @@ Color 15 6
 Color 16 6
 Pos  8
 Prac 5
+Trai 3
 Save  -1
 Alig  -750
 Hit   2
@@ -91,8 +92,8 @@ Titl  the Apprentice of Magic~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 50 100 100
-Cond 0 45 45
+HMVP 20 100 100
+Cond 0 48 48
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -128,7 +129,6 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 197 0 0
 End
 
 #O
