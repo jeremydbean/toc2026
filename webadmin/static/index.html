@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark">
     <title>Times of Chaos Admin</title>
-    <link rel="stylesheet" href="/static/app.css?v=14">
+    <link rel="stylesheet" href="/static/app.css?v=17">
     <link rel="stylesheet" href="/static/theme-dragon.css?v=2">
     <script src="/static/command-sequence.js?v=1" defer></script>
     <script src="/static/console-output.js?v=1" defer></script>
-    <script src="/static/app.js?v=25" defer></script>
+    <script src="/static/app.js?v=26" defer></script>
 </head>
 <body>
     <div class="app-shell">
@@ -66,6 +66,44 @@
 
         <main class="workspace" id="workspace">
             <section class="view is-active" id="overview-view" data-title="Overview">
+                <section class="mudlet-card" aria-labelledby="mudlet-card-title">
+                    <div class="mudlet-card-art" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" width="64" height="64" focusable="false">
+                            <circle cx="32" cy="32" r="29" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.55"/>
+                            <circle cx="32" cy="32" r="21" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.35"/>
+                            <path d="M32 9 L38 32 L32 55 L26 32 Z" fill="currentColor" opacity="0.9"/>
+                            <path d="M9 32 L32 27 L55 32 L32 37 Z" fill="currentColor" opacity="0.45"/>
+                            <circle cx="32" cy="32" r="3.5" fill="var(--bg)" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="mudlet-card-body">
+                        <span class="eyebrow">Recommended client</span>
+                        <h2 id="mudlet-card-title">Play Times of Chaos in Mudlet</h2>
+                        <p>
+                            Mudlet is free for Windows, macOS and Linux. Connect once and our interface
+                            installs itself: a map that draws the world as you walk, clickable exits and
+                            click-to-walk, a tabbed chat window, your target's health, a quest tracker and
+                            who else is online.
+                        </p>
+                        <ul class="mudlet-features" aria-label="What you get">
+                            <li>Auto-mapper</li>
+                            <li>Click to walk</li>
+                            <li>Chat tabs</li>
+                            <li>Quest tracker</li>
+                            <li>Target health</li>
+                        </ul>
+                        <ol class="mudlet-steps">
+                            <li><span>1</span>Download and install Mudlet.</li>
+                            <li><span>2</span>New profile, server and port: <code class="mono" id="mudlet-address">toc.jeremybean.com 9000</code></li>
+                            <li><span>3</span>Connect. The Times of Chaos package installs on its own.</li>
+                        </ol>
+                        <div class="mudlet-actions">
+                            <a class="button button-primary mudlet-download" href="https://www.mudlet.org/download/" target="_blank" rel="noopener noreferrer">Download Mudlet</a>
+                            <a class="button button-secondary" href="/client">Or play in your browser</a>
+                        </div>
+                    </div>
+                </section>
+
                 <div class="section-heading">
                     <div>
                         <span class="eyebrow">Current world</span>

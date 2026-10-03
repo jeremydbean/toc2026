@@ -782,6 +782,13 @@
             state.config = await api("/api/config");
             byId("version-label").textContent = `Web admin ${state.config.version || ""}`.trim();
             byId("runtime-endpoint").textContent = state.config.mud_endpoint || "-";
+            // The Mudlet card names the address a player types into a new
+            // profile: the public host name and the game port.
+            const mudletAddress = byId("mudlet-address");
+            if (mudletAddress && state.config.mud_endpoint_host) {
+                const port = String(state.config.mud_endpoint || "").split(":").pop();
+                mudletAddress.textContent = `${state.config.mud_endpoint_host} ${port || "9000"}`;
+            }
             const updateButton = document.querySelector('[data-operation="update"]');
             if (updateButton) {
                 updateButton.disabled = !state.config.update_available;

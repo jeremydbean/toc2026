@@ -2115,3 +2115,140 @@ label textarea {
     border-color: #4caf50;
     color: #4caf50;
 }
+
+/* The Mudlet recommendation at the top of the Overview. Built from the
+   theme tokens, so the dragon theme recolours it like everything else. */
+.mudlet-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 22px;
+    align-items: start;
+    margin-bottom: 22px;
+    padding: 24px 26px;
+    border: 1px solid var(--border-strong);
+    border-radius: calc(var(--radius) * 2);
+    background:
+        radial-gradient(120% 140% at 0% 0%, color-mix(in srgb, var(--teal) 16%, transparent) 0%, transparent 55%),
+        linear-gradient(160deg, var(--surface) 0%, var(--bg) 100%);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+}
+
+.mudlet-card::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--teal), transparent);
+    opacity: 0.8;
+}
+
+.mudlet-card-art {
+    display: grid;
+    place-items: center;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    background: color-mix(in srgb, var(--teal) 10%, var(--bg));
+    color: var(--teal);
+}
+
+.mudlet-card h2 {
+    margin: 2px 0 8px;
+    font-size: 1.45rem;
+    line-height: 1.25;
+}
+
+.mudlet-card p {
+    max-width: 68ch;
+    margin: 0 0 14px;
+    color: var(--muted);
+}
+
+.mudlet-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+}
+
+.mudlet-features li {
+    padding: 3px 11px;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--teal) 8%, transparent);
+    color: var(--text);
+    font-size: 0.85rem;
+}
+
+.mudlet-steps {
+    display: grid;
+    gap: 7px;
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+}
+
+.mudlet-steps li {
+    position: relative;
+    min-height: 24px;
+    padding-left: 34px;
+    color: var(--text);
+    line-height: 24px;
+}
+
+.mudlet-steps li span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: var(--bg);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.mudlet-steps code {
+    white-space: nowrap;
+    padding: 1px 7px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg);
+}
+
+.mudlet-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.mudlet-download {
+    padding-inline: 20px;
+    font-weight: 700;
+}
+
+@media (max-width: 760px) {
+    .mudlet-card {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+        padding: 18px 16px;
+    }
+
+    .mudlet-card-art {
+        width: 64px;
+        height: 64px;
+    }
+
+    .mudlet-actions .button {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+}
