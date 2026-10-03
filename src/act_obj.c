@@ -5778,6 +5778,65 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
      return;
 }
 
+/*
+ * What one kill of a mobile at this level pays, on average, in copper:
+ * the expected value of the coin load_mobiles rolls for a mobile with no
+ * wealth of its own (number_range(1, n) averages (1 + n) / 2). Keep it in
+ * step with those tiers in src/db.c.
+ */
+static double coin_per_kill_copper( int level )
+{
+    double l = (double)UMAX( 1, level );
+    double cs = (double)COPPER_PER_SILVER;
+    double cg = (double)COPPER_PER_GOLD;
+    double cp = (double)COPPER_PER_PLATINUM;
+
+    if ( level < 5 )
+        return (1 + 2 * l) / 2;
+    if ( level < 10 )
+        return (1 + 2 * l) / 2 * cs + (1 + 4 * l) / 2;
+    if ( level < 20 )
+        return (1 + l) / 2 * cg + (1 + 2 * l) / 2 * cs + (1 + 8 * l) / 2;
+    if ( level < 30 )
+        return (1 + 2 * l) / 2 * cg + (1 + 4 * l) / 2 * cs + (1 + 16 * l) / 2;
+    if ( level < 50 )
+        return (1 + 3 * l) / 2 * cg + (1 + 6 * l) / 2 * cs + (1 + 12 * l) / 2;
+    return (1 + (double)(level / 2)) / 2 * cp + (1 + 4 * l) / 2 * cg
+        + (1 + 8 * l) / 2 * cs + (1 + 4 * l) / 2;
+}
+
+/*
+ * What REPAIR charges, in copper: REPAIR_KILLS kills' worth of coin at the
+ * item's level for a full repair from nothing, in proportion to the damage.
+ *
+ * It used to be (100 - condition) * level * 5 gold, which ignores how coin
+ * is actually earned: a level 46 shield broken past zero cost 265
+ * platinum -- three hundred and seventy-odd kills at that level, for one
+ * piece, and a reported reason the game felt unplayable at the top. A
+ * repair is upkeep, not a purchase: AGENTS.md prices a new piece at about
+ * forty kills, so mending one should be a few.
+ */
+#define REPAIR_KILLS 4.0
+
+static long repair_cost_copper( OBJ_DATA *obj )
+{
+    double damage;
+    double cost;
+
+    damage = ( 100.0 - (double)obj->condition ) / 100.0;
+    /* Flagged damaged but still reading full condition, or a dent too
+       small to count, still costs something; a piece broken far past zero
+       costs at most half again a full repair. */
+    damage = URANGE( 0.1, damage, 1.5 );
+    cost = coin_per_kill_copper( obj->level ) * REPAIR_KILLS * damage;
+    if ( cost < 10.0 )
+        cost = 10.0;
+    /* An immortal can set a level to anything: keep it inside a long. */
+    if ( cost > (double)(LONG_MAX / 2) )
+        cost = (double)(LONG_MAX / 2);
+    return (long)cost;
+}
+
 void do_repair( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
@@ -5825,26 +5884,11 @@ void do_repair( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    cost = ((long)(100 - obj->condition) * (long)obj->level) * 5L;
+    cost = repair_cost_copper( obj );
 
-    /* Flagged damaged but still reading full condition: the arithmetic
-       gives nothing, and a free repair is not the intent. */
-    if ( cost <= 0 )
-        cost = UMAX( 10, obj->level * 10 );
+    format_price( cost, price, sizeof(price) );
 
-    /* An immortal can set a condition or a level to anything, and the
-       quote is multiplied up into copper below. Keep it inside what a
-       price can sensibly read, and inside what a long can hold once it
-       is in copper -- which is the tighter of the two where long is 32
-       bits. */
-    if ( cost > 1000000L )
-        cost = 1000000L;
-    if ( cost > LONG_MAX / COPPER_PER_GOLD )
-        cost = LONG_MAX / COPPER_PER_GOLD;
-
-    format_price( cost * (long)COPPER_PER_GOLD, price, sizeof(price) );
-
-    if(!has_enough_gold(ch, cost)) {
+    if(!has_enough_copper(ch, cost)) {
         snprintf(buf, sizeof(buf),
                 "Repairing %s costs %s, which is more than you are carrying.  "
                 "It has been repaired %d times now.\n\r",
@@ -5860,7 +5904,7 @@ void do_repair( CHAR_DATA *ch, char *argument )
        owner's rule.  The old "breaks it on the 25th repair" path, which
        extracted the object outright, is gone. */
     {
-	add_money(ch,cost*-1);
+	spend_copper( ch, cost );
         obj->condition = 100;
 
         /* check_shield_block files a dented shield's armour values down a

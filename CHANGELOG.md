@@ -136,6 +136,21 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Repairs cost a few kills, not a few hundred.** Reported in game: a
+  level 46 shield broken past use quoted 265 platinum, which is about 377
+  kills at that level, for one piece. REPAIR charged (100 - condition) x
+  level x 5 gold, blind to how coin is earned. It now charges four kills'
+  worth of the coin an equal-level mob carries (the expected value of
+  `load_mobiles`' roll) for a full repair, in proportion to the damage, so
+  the same shield costs about three platinum. Paid through the copper
+  helpers. HELP REPAIR no longer says items break after two dozen repairs;
+  nothing has broken that way for a while.
+- **"isarm".** Reported in game: HEROIC GRIP's message, and the
+  won't-budge message for a cursed weapon, printed "isarm". A C hex escape
+  takes every hex digit after it, so the colour code `\x0C` swallowed the
+  "d" of "disarm" into one byte. `tests/test_hex_escapes.py` now fails on
+  any escape that runs into a hex letter, in every source file.
+
 - **COMPARE UPGRADES and the website's Gear Finder count chest loot.** The
   Master Sword now waits in Ganon's great chest, and both only counted gear
   a mobile carries. A chest counts where it stands in a room (the website

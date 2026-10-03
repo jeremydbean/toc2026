@@ -103,6 +103,27 @@ class RepairTests(unittest.TestCase):
             cost_line[0], r"\d+\s*[pgsc]\b",
             "the price should name denominations, not a bare number")
 
+    def test_a_broken_high_level_piece_costs_a_few_kills_not_hundreds(self) -> None:
+        """Reported in game: a level 46 shield broken past zero quoted 265
+        platinum, three hundred and seventy-odd kills at that level. A full
+        repair is about four kills' worth of a level 46 mob's coin now --
+        a few platinum."""
+        with LiveMud() as mud:
+            staff(mud, "Zrepaircost", SMITHY_ROOM, gold=500000)
+            with mud.connect(timeout=120) as client:
+                login(client, "Zrepaircost", PASSWORD)
+                run(client, "load obj 4619")
+                run(client, "set obj helmet level 46")
+                run(client, "set obj helmet condition 0")
+                said = run(client, "repair helmet", settle=2.0)
+
+        cost_line = [l for l in said.splitlines() if "cost you" in l.lower()]
+        self.assertTrue(cost_line, said)
+        plat = re.search(r"(\d+)p\b", cost_line[0])
+        platinum = int(plat.group(1)) if plat else 0
+        self.assertGreaterEqual(platinum, 1, cost_line[0])
+        self.assertLessEqual(platinum, 10, cost_line[0])
+
     def test_repair_restores_armour_filed_down_by_damage(self) -> None:
         """A dented shield loses a point of AC and two thirds of its worth.
 
@@ -112,7 +133,7 @@ class RepairTests(unittest.TestCase):
         -- never past -- the prototype it was made from.
         """
         with LiveMud() as mud:
-            # A level 25 helmet at condition 20 quotes 10,000 gold.
+            # Plenty of coin: the quote is a few kills at the helmet's level.
             staff(mud, "Zrepairac", SMITHY_ROOM, gold=50000)
             with mud.connect(timeout=120) as client:
                 login(client, "Zrepairac", PASSWORD)
