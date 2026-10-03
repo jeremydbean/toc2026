@@ -32853,3 +32853,7 @@ Sat Oct  3 21:56:22 2026 ::  INIT OK
 Sat Oct  3 21:56:22 2026 :: ROM is ready to rock on port 9000.
 Sat Oct  3 21:56:22 2026 :: Automated backup complete.
 Sat Oct  3 21:56:22 2026 :: Daily backup complete.
+Sat Oct  3 21:59:58 2026 :: Sock.sinaddr:  3.212.128.62
+Sat Oct  3 21:59:59 2026 :: EOF encountered on read.
+Sat Oct  3 22:01:36 2026 :: Sock.sinaddr:  81.19.219.199
+Sat Oct  3 22:01:47 2026 :: Sock.sinaddr:  185.223.235.2
