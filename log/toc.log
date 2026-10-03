@@ -26123,3 +26123,47 @@ Sat Oct  3 00:45:43 2026 :: Oracle: Alaric prayed from room 9522 (Inside the Nor
 Sat Oct  3 00:46:37 2026 :: Log Alaric [8]: say Does a players proficiency in a weapon help with reducing damage of that same type of damage from a mobile, or increase it's chancing of being able to parryy, dodge, or block it?
 Sat Oct  3 00:46:37 2026 :: Log Alaric [8]: asked the Oracle: Does a players proficiency in a weapon help with reducing damage of that same type of damage from a mobile, or increase it's chancing of being able to parryy, dodge, or block it?
 Sat Oct  3 00:46:41 2026 :: Oracle answered Alaric in room 8: Weapon proficiency increases your damage output with that weapon, not your defense; parry, dodge, and block are separate defensive skills unrelated to what you wield.
+Sat Oct  3 00:46:52 2026 :: Log Alaric [8]: say done
+Sat Oct  3 00:46:52 2026 :: Log Alaric [0]: moved to 9522 (Inside the Northern Gate of New Thalos)
+Sat Oct  3 00:48:06 2026 :: Log Alaric [9522]: on
+Sat Oct  3 00:48:06 2026 :: Log Alaric [9522]: n
+Sat Oct  3 00:48:06 2026 :: Log Alaric [0]: moved to 9667 (Outside the Northern Gate of New Thalos)
+Sat Oct  3 00:48:08 2026 :: Log Alaric [9667]: n
+Sat Oct  3 00:48:08 2026 :: Log Alaric [0]: moved to 9781 (On the Plains)
+Sat Oct  3 00:48:08 2026 :: Log Alaric [9781]: n
+Sat Oct  3 00:48:08 2026 :: Log Alaric [0]: moved to 9782 (On the Plains)
+Sat Oct  3 00:48:09 2026 :: Log Alaric [9782]: n
+Sat Oct  3 00:48:09 2026 :: Log Alaric [0]: moved to 9783 (Edge of the forest)
+Sat Oct  3 00:48:09 2026 :: Log Alaric [9783]: n
+Sat Oct  3 00:48:09 2026 :: Log Alaric [0]: moved to 64 (Misty Clearing)
+Sat Oct  3 00:48:10 2026 :: Log Alaric [64]: n
+Sat Oct  3 00:48:10 2026 :: Log Alaric [0]: moved to 29001 (Entrance to the Fortress)
+Sat Oct  3 00:48:11 2026 :: Log Alaric [29001]: n
+Sat Oct  3 00:48:11 2026 :: Log Alaric [0]: moved to 29002 (Inside Korzath's Private Fortress)
+Sat Oct  3 00:48:12 2026 :: Log Alaric [29002]: n
+Sat Oct  3 00:48:12 2026 :: Log Alaric [0]: moved to 29003 (Grand Foyer)
+Sat Oct  3 00:48:13 2026 :: Log Alaric [29003]: ne
+Sat Oct  3 00:48:13 2026 :: Log Alaric [0]: moved to 29060 (Corridor)
+Sat Oct  3 00:48:14 2026 :: Log Alaric [29060]: kill ch
+Sat Oct  3 00:49:12 2026 :: Log Alaric [29060]: get ke cor
+Sat Oct  3 00:49:12 2026 :: Log Alaric [29060]: unl east
+Sat Oct  3 00:49:12 2026 :: Log Alaric [29060]: oe
+Sat Oct  3 00:49:13 2026 :: Log Alaric [29060]: e
+Sat Oct  3 00:49:13 2026 :: Log Alaric [0]: moved to 29061 (Corridor)
+Sat Oct  3 00:49:17 2026 :: Log Alaric [29061]: close west
+Sat Oct  3 00:49:18 2026 :: Log Alaric [29061]: kill gu
+Sat Oct  3 00:50:10 2026 :: Sock.sinaddr:  178.156.189.113
+Sat Oct  3 00:50:11 2026 :: EOF encountered on read.
+Sat Oct  3 00:50:23 2026 :: Log Alaric [29061]: kill gu
+Sat Oct  3 00:50:26 2026 :: Log Alaric [29061]: prac
+Sat Oct  3 00:50:35 2026 :: Log Alaric [29061]: torm
+Sat Oct  3 00:50:42 2026 :: Log Alaric [29061]: torm
+Sat Oct  3 00:50:42 2026 :: Log Alaric [29061]: torm
+Sat Oct  3 00:50:45 2026 :: Log Alaric [29061]: torm
+Sat Oct  3 00:51:15 2026 :: Log Alaric [29061]: l
+Sat Oct  3 00:51:16 2026 :: Log Alaric [29061]: s
+Sat Oct  3 00:51:16 2026 :: Log Alaric [0]: moved to 29062 (Corridor)
+Sat Oct  3 00:51:19 2026 :: Log Alaric [29062]: get all
+Sat Oct  3 00:51:19 2026 :: Log Alaric [29062]: s
+Sat Oct  3 00:51:19 2026 :: Log Alaric [0]: moved to 29063 (Corridor)
+Sat Oct  3 00:51:21 2026 :: Log Alaric [29063]: kill gu
