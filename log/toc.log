@@ -30920,3 +30920,120 @@ Sat Oct  3 19:47:56 2026 :: EOF encountered on read.
 Sat Oct  3 19:48:11 2026 :: Log Alaric [4210]: where
 Sat Oct  3 19:48:12 2026 :: Log Alaric [4210]: wake
 Sat Oct  3 19:48:12 2026 :: Log Alaric [4210]: where
+Sat Oct  3 19:48:15 2026 :: Log Alaric [4210]: sleep
+Sat Oct  3 19:48:53 2026 :: Log Alaric [4210]: who
+Sat Oct  3 19:48:55 2026 :: Log Alaric [4210]: score
+Sat Oct  3 19:49:04 2026 :: Log Alaric [4210]: prac
+Sat Oct  3 19:49:11 2026 :: Log Alaric [4210]: sl
+Sat Oct  3 19:50:08 2026 :: Log Alaric [4210]: who
+Sat Oct  3 19:50:09 2026 :: Log Alaric [4210]: wake
+Sat Oct  3 19:50:10 2026 :: Log Alaric [4210]: s
+Sat Oct  3 19:50:10 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sat Oct  3 19:50:10 2026 :: Log Alaric [4203]: s
+Sat Oct  3 19:50:10 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sat Oct  3 19:50:10 2026 :: Log Alaric [4202]: e
+Sat Oct  3 19:50:10 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sat Oct  3 19:50:10 2026 :: Log Alaric [4201]: e
+Sat Oct  3 19:50:10 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sat Oct  3 19:50:11 2026 :: Log Alaric [2427]: n
+Sat Oct  3 19:50:11 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sat Oct  3 19:50:11 2026 :: Log Alaric [2404]: n
+Sat Oct  3 19:50:11 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sat Oct  3 19:50:13 2026 :: Log Alaric [2401]: r e 8
+Sat Oct  3 19:50:13 2026 :: Log Alaric [0]: moved to 2403 (Eastern Oak Tree Square.)
+Sat Oct  3 19:50:13 2026 :: Log Alaric [0]: moved to 2420 (Battle Road)
+Sat Oct  3 19:50:13 2026 :: Log Alaric [0]: moved to 2421 (Battle Road)
+Sat Oct  3 19:50:13 2026 :: Log Alaric [0]: moved to 2422 (Battle Road)
+Sat Oct  3 19:50:13 2026 :: Log Alaric [0]: moved to 2423 (Battle Road)
+Sat Oct  3 19:50:13 2026 :: Log Alaric [0]: moved to 2424 (Battle Road)
+Sat Oct  3 19:50:13 2026 :: Log Alaric [0]: moved to 2425 (Gate to Citadel of War on Battle Road)
+Sat Oct  3 19:50:13 2026 :: Log Alaric [0]: moved to 2426 (Inside the Eastern Gates of Dresden.)
+Sat Oct  3 19:50:14 2026 :: Log Alaric [2426]: oe
+Sat Oct  3 19:50:17 2026 :: Log Alaric [2426]: r e 25
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 2440 (Outside the Eastern Gates of Dresden.)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 3503 (City Entrance)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 3502 (The Cross Roads)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 3525 (Along the Eastern Road)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 3526 (Along the Eastern Road)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 3527 (The Checkpoint)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 3528 (Along the Eastern Road)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 3529 (Along the Eastern Road)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 3530 (Near the Sands of Sorrow)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 3531 (Near the Sands of Sorrow)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 3532 (On the Outskirts of New Thalos)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 42 (On the Outskirts of New Thalos)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 9669 (Outside the West Gate of New Thalos)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 9523 (Inside the West Gate of New Thalos)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 9524 (West Main Street)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 9525 (West Main Street)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 9526 (West Main Street)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 9509 (The Western Market Square)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 9506 (The Center of Market Square)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 9517 (The Eastern Market Square)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 9527 (East Main Street)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 9528 (East Main Street)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 9529 (East Main Street)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 9530 (East Main Street)
+Sat Oct  3 19:50:17 2026 :: Log Alaric [0]: moved to 9531 (Inside the Eastern Gate of New Thalos)
+Sat Oct  3 19:50:18 2026 :: Log Alaric [9531]: oe
+Sat Oct  3 19:50:19 2026 :: Log Alaric [9531]: r e 6
+Sat Oct  3 19:50:19 2026 :: Log Alaric [0]: moved to 9668 (Outside the Eastern Gate of New Thalos)
+Sat Oct  3 19:50:19 2026 :: Log Alaric [0]: moved to 9790 (On a road)
+Sat Oct  3 19:50:19 2026 :: Log Alaric [0]: moved to 9791 (On a road)
+Sat Oct  3 19:50:19 2026 :: Log Alaric [0]: moved to 9792 (On a road)
+Sat Oct  3 19:50:19 2026 :: Log Alaric [0]: moved to 9793 (On a road)
+Sat Oct  3 19:50:19 2026 :: Log Alaric [0]: moved to 9794 (Near the shore)
+Sat Oct  3 19:50:20 2026 :: Log Alaric [9794]: r n 6
+Sat Oct  3 19:50:20 2026 :: Log Alaric [0]: moved to 41 (The new pier)
+Sat Oct  3 19:50:20 2026 :: Log Alaric [0]: moved to 16000 (Beginning of the Pier)
+Sat Oct  3 19:50:20 2026 :: Log Alaric [0]: moved to 16001 (Along the Pier)
+Sat Oct  3 19:50:20 2026 :: Log Alaric [0]: moved to 16002 (Along the Pier)
+Sat Oct  3 19:50:20 2026 :: Log Alaric [0]: moved to 16003 (Along the Pier)
+Sat Oct  3 19:50:20 2026 :: Log Alaric [0]: moved to 16004 (A Turn at the Pier)
+Sat Oct  3 19:50:21 2026 :: Log Alaric [16004]: e
+Sat Oct  3 19:50:21 2026 :: Log Alaric [0]: moved to 16005 (Plankway to the Royal Eagle)
+Sat Oct  3 19:50:22 2026 :: Log Alaric [16005]: u
+Sat Oct  3 19:50:22 2026 :: Log Alaric [0]: moved to 16021 (Entrance to the Royal Eagle - Main Deck)
+Sat Oct  3 19:50:22 2026 :: Log Alaric [16021]: s
+Sat Oct  3 19:50:22 2026 :: Log Alaric [0]: moved to 16016 (Main Deck of the Royal Eagle - Port)
+Sat Oct  3 19:50:23 2026 :: Log Alaric [16016]: e
+Sat Oct  3 19:50:23 2026 :: Log Alaric [0]: moved to 16017 (Main Deck of the Royal Eagle)
+Sat Oct  3 19:50:23 2026 :: Log Alaric [16017]: s
+Sat Oct  3 19:50:25 2026 :: Log Alaric [16017]: door south
+Sat Oct  3 19:50:30 2026 :: Log Alaric [16017]: s
+Sat Oct  3 19:50:30 2026 :: Log Alaric [0]: moved to 16074 (Hidden Room)
+Sat Oct  3 19:50:30 2026 :: Log Alaric [16074]: e
+Sat Oct  3 19:50:30 2026 :: Log Alaric [0]: moved to 16075 (Hidden Room)
+Sat Oct  3 19:50:34 2026 :: Log Alaric [16075]: quaff fl
+Sat Oct  3 19:50:37 2026 :: Log Alaric [16075]: eq
+Sat Oct  3 19:50:39 2026 :: Log Alaric [16075]: i
+Sat Oct  3 19:50:44 2026 :: Log Alaric [16075]: e
+Sat Oct  3 19:50:44 2026 :: Log Alaric [0]: moved to 16076 (Treasure Room)
+Sat Oct  3 19:50:44 2026 :: Log Alaric [16076]: kill as
+Sat Oct  3 19:51:26 2026 :: Log Alaric [16076]: torm
+Sat Oct  3 19:51:28 2026 :: Log Alaric [16076]: torm
+Sat Oct  3 19:51:48 2026 :: Log Alaric [16076]: torm
+Sat Oct  3 19:52:03 2026 :: Log Alaric [16076]: torm
+Sat Oct  3 19:52:12 2026 :: Log Alaric [16076]: flee
+Sat Oct  3 19:52:12 2026 :: Log Alaric [16076]: flee
+Sat Oct  3 19:52:13 2026 :: Log Alaric [16076]: flee
+Sat Oct  3 19:52:13 2026 :: Log Alaric [0]: moved to 16075 (Hidden Room)
+Sat Oct  3 19:52:13 2026 :: Log Alaric [16075]: flee
+Sat Oct  3 19:52:13 2026 :: Log Alaric [16075]: flee
+Sat Oct  3 19:52:13 2026 :: Log Alaric [16075]: flee
+Sat Oct  3 19:52:14 2026 :: Log Alaric [16075]: flee
+Sat Oct  3 19:52:14 2026 :: Log Alaric [16075]: recal
+Sat Oct  3 19:52:14 2026 :: Log Alaric [0]: moved to 4517 (Hallway.)
+Sat Oct  3 19:52:16 2026 :: Log Alaric [4517]: recal
+Sat Oct  3 19:52:18 2026 :: Log Alaric [4517]: recal
+Sat Oct  3 19:52:18 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sat Oct  3 19:52:18 2026 :: Log Alaric [4207]: recal
+Sat Oct  3 19:52:19 2026 :: Log Alaric [4207]: e
+Sat Oct  3 19:52:19 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sat Oct  3 19:52:20 2026 :: Log Alaric [4202]: n
+Sat Oct  3 19:52:20 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sat Oct  3 19:52:20 2026 :: Log Alaric [4203]: n
+Sat Oct  3 19:52:20 2026 :: Log Alaric [0]: moved to 4210 (Room of Peace and Healing.)
+Sat Oct  3 19:52:21 2026 :: Log Alaric [4210]: sleep
+Sat Oct  3 19:53:01 2026 :: Sock.sinaddr:  178.156.185.127
+Sat Oct  3 19:53:02 2026 :: EOF encountered on read.
