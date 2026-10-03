@@ -11031,11 +11031,26 @@ void spellup_listen( CHAR_DATA *ch, const char *argument )
 /*
  * spellup -- plant Hermie in the current room.
  */
+/* mobile_update counts a mobile's timer down once every PULSE_MOBILE. */
+#define SPELLUP_TICKS_PER_MINUTE ( 60 * PULSE_PER_SECOND / PULSE_MOBILE )
+#define SPELLUP_MAX_MINUTES      1440
+
+/* Give her a lifespan: mobile_update counts the timer down and sends her
+   home at zero. UPDATE_ALWAYS, because mobile_update skips an empty
+   area, and she should leave on time whether anybody is there or not. */
+static void spellup_set_minutes( CHAR_DATA *mob, int minutes )
+{
+    mob->timer = (sh_int)( minutes * SPELLUP_TICKS_PER_MINUTE );
+    SET_BIT( mob->act, ACT_UPDATE_ALWAYS );
+}
+
 void do_spellup( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
+    char arg[MAX_INPUT_LENGTH];
     MOB_INDEX_DATA *idx;
     CHAR_DATA *mob;
+    int minutes = 0;
 
     if ( ch->in_room == NULL )
     {
@@ -11043,9 +11058,32 @@ void do_spellup( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( spellup_mob_in_room( ch->in_room ) != NULL )
+    /* spellup <minutes>: she leaves on her own when they run out. */
+    one_argument( argument, arg );
+    if ( arg[0] != '\0' )
     {
-        send_to_char( "She is already standing right here.\n\r", ch );
+        if ( !is_number( arg ) || strlen( arg ) > 5
+            || ( minutes = atoi( arg ) ) < 1 || minutes > SPELLUP_MAX_MINUTES )
+        {
+            snprintf( buf, sizeof(buf),
+                "Syntax: spellup [minutes]   (1 to %d; leave it off and she stays until purged)\n\r",
+                SPELLUP_MAX_MINUTES );
+            send_to_char( buf, ch );
+            return;
+        }
+    }
+
+    if ( ( mob = spellup_mob_in_room( ch->in_room ) ) != NULL )
+    {
+        if ( minutes == 0 )
+        {
+            send_to_char( "She is already standing right here.\n\r", ch );
+            return;
+        }
+        spellup_set_minutes( mob, minutes );
+        snprintf( buf, sizeof(buf), "%s will stay %d more minute%s.\n\r",
+            mob->short_descr, minutes, minutes == 1 ? "" : "s" );
+        send_to_char( buf, ch );
         return;
     }
 
@@ -11060,18 +11098,29 @@ void do_spellup( CHAR_DATA *ch, char *argument )
 
     mob = create_mobile( idx );
     char_to_room( mob, ch->in_room );
+    if ( minutes > 0 )
+        spellup_set_minutes( mob, minutes );
 
     act( "The air warms, and $n steps out of it with a notebook under $s arm.",
         mob, NULL, NULL, TO_ROOM );
     act( "$n says 'Say my name and I will read you the list.  Look at me for the details.'",
         mob, NULL, NULL, TO_ROOM );
 
-    snprintf( buf, sizeof(buf), "%s is now taking requests here.\n\r",
-              mob->short_descr );
+    if ( minutes > 0 )
+        snprintf( buf, sizeof(buf), "%s is now taking requests here for %d minute%s.\n\r",
+                  mob->short_descr, minutes, minutes == 1 ? "" : "s" );
+    else
+        snprintf( buf, sizeof(buf), "%s is now taking requests here.\n\r",
+                  mob->short_descr );
     send_to_char( buf, ch );
 
-    snprintf( buf, sizeof(buf), "Spellup: %s placed in room %d by %s.",
-        mob->short_descr, ch->in_room->vnum, ch->name );
+    if ( minutes > 0 )
+        snprintf( buf, sizeof(buf), "Spellup: %s placed in room %d by %s for %d minute%s.",
+            mob->short_descr, ch->in_room->vnum, ch->name,
+            minutes, minutes == 1 ? "" : "s" );
+    else
+        snprintf( buf, sizeof(buf), "Spellup: %s placed in room %d by %s.",
+            mob->short_descr, ch->in_room->vnum, ch->name );
     log_string( buf );
     wizinfo( buf, LEVEL_IMMORTAL );
 }

@@ -5163,11 +5163,14 @@ See also: RESTORE, EMPOWER
 ~
 
 66 SPELLUP SPELLPURGE HERMIE~
-Syntax: spellup
+Syntax: spellup [minutes]
 Syntax: spellpurge
 
 Spellup places Hermie the Angel -- Herbie's girlfriend -- in your current
-room.  She stays there, taking requests, until somebody removes her.
+room.  With no number she stays there, taking requests, until somebody
+removes her.  With a number of minutes (1 to 1440) she leaves on her own
+when they run out; SPELLUP <minutes> where she already stands sets how
+much longer she stays.
 
 Players talk to her with SAY.  Saying her name, or 'menu', 'list', 'hello'
 or 'help', makes her read out her list; after that they say either the

@@ -883,6 +883,12 @@ void mobile_update( void )
 	{
 	  if(--ch->timer <= 0)
 	  {
+	    /* Hermie, placed with SPELLUP <minutes>, says goodbye her way. */
+	    if ( IS_NPC(ch) && ch->pIndexData != NULL
+	    &&   ch->pIndexData->vnum == MOB_VNUM_SPELLUP )
+		act("$n closes her notebook, blows a kiss to the room, and is gone.",
+		    ch,NULL,NULL,TO_ROOM);
+	    else
 	    act("$n's time on the mortal plane is at an end.",ch,NULL,NULL,TO_ROOM);
 	    extract_char(ch, true);
 	    continue;

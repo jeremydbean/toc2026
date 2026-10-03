@@ -243,5 +243,28 @@ class SpellupMobTests(unittest.TestCase):
                 self.assertIn("none of her anywhere", after)
 
 
+    def test_she_can_be_placed_for_a_set_time(self) -> None:
+        """SPELLUP <minutes>: she leaves on her own when they run out, and
+        again with a number where she stands resets how long she stays."""
+        with LiveMud() as mud:
+            immortal(mud, "Zspelltime")
+            with mud.connect(timeout=120) as client:
+                login(client, "Zspelltime", PASSWORD)
+                self.assertIn("Syntax: spellup [minutes]",
+                              run(client, "spellup 0", settle=1.5))
+                self.assertIn("Syntax: spellup [minutes]",
+                              run(client, "spellup 99999", settle=1.5))
+
+                placed = run(client, "spellup 1", settle=2.0)
+                self.assertIn("for 1 minute", placed)
+                self.assertIn("will stay 1 more minute",
+                              run(client, "spellup 1", settle=1.5))
+
+                # A minute is fifteen mobile updates of four seconds each.
+                goodbye = client.drain(75.0)
+                self.assertIn("blows a kiss to the room", goodbye)
+                self.assertNotIn("Hermie", run(client, "look", settle=1.5))
+
+
 if __name__ == "__main__":
     unittest.main()
