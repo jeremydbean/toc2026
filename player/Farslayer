@@ -1,7 +1,7 @@
 #PLAYER
 Name Farslayer~
 Id   21916
-LogO 1791039753
+LogO 1791040103
 Vers 4
 Prom ~
 Ignoring  ~
@@ -14,17 +14,17 @@ PsiGrant 0
 PsiSpec ~
 PsiKnown ~
 Cast none
-Levl 1
-Plyd 489
+Levl 2
+Plyd 839
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 3714
-HMV  20 20 43 100 100 100
+Room 3713
+HMV  13 28 40 122 119 119
 NewGold 0
 NewPlat 0
-NewCopp 6
+NewCopp 8
 NewSilv 0
 BankCP 0
 IntTime 1791039310
@@ -34,15 +34,16 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 3
+AchKills 4
 AchQuests 0
-AchDeaths 0
+AchDeaths 1
 AchExplore 0
 AchMaps 0
 AchCompass 0
 AchTriforce 0
 Achv first-kill 1791039658
 Achv visit-mud-school 1791039302
+Achv first-death 1791039860
 LastOut  0
 SesLogin 0
 SesDur   0
@@ -52,7 +53,7 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  3730
+Exp  4462
 Act  65788
 Comm 24576
 Mounted 0
@@ -79,21 +80,22 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 3
+Prac 5
+Trai 1
 Save  -1
 Alig  -750
-Hit   2
+Hit   -2
 Dam   2
-ACs 89 89 89 99
+ACs 88 87 87 99
 Attr 13 13 16 13 13
 AMod 0 0 0 0 0
 Pass FarZsfmbOukHE~
-Titl  the Apprentice of Magic~
+Titl  the Spell Student~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 20 100 100
-Cond 0 40 40
+HMVP 28 122 106
+Cond 0 35 35
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -129,7 +131,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 192 0 0
+Val  0 0 188 0 0
 End
 
 #O
@@ -155,7 +157,7 @@ Vnum 3701
 Nest 0
 Wear 16
 Cost 0
-Cond 100
+Cond 99
 Repd 0
 End
 
@@ -198,7 +200,7 @@ End
 #O
 Vnum 3708
 Nest 0
-Wear -1
+Wear 8
 Cost 0
 Cond 100
 Repd 0
@@ -208,6 +210,24 @@ End
 
 #O
 Vnum 3713
+Nest 0
+Wear 14
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3707
+Nest 0
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3712
 Nest 0
 Wear -1
 Cost 0
