@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790991197
+LogO 1790991523
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 246021
+Plyd 246347
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 4210
-HMV  987 1205 1462 1462 370 370
-NewGold 55
-NewPlat 43
-NewCopp 67
-NewSilv 113
+Room 2497
+HMV  695 1165 1462 1462 233 370
+NewGold 66
+NewPlat 47
+NewCopp 94
+NewSilv 133
 BankCP 346864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 858
+AchKills 859
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -107,7 +107,7 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  125482
+Exp  125512
 Act  4261068
 AfBy 512
 Comm 24576
@@ -134,16 +134,16 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  4
+Pos  8
 Prac 8
 Trai 2
-Save  -3
-Alig  896
-Hit   40
-Dam   46
-ACs -168 -177 -136 -16
+Save  -7
+Alig  902
+Hit   42
+Dam   48
+ACs -157 -167 -124 -5
 Attr 22 13 12 16 15
-AMod 8 10 10 2 14
+AMod 7 10 10 2 14
 Pass Al3w9zuAlwpyY~
 Titl  the Heroine of the Third Order~
 Pnts 0
@@ -166,7 +166,7 @@ Sk 78 'torment'
 Sk 30 'axe'
 Sk 100 'dagger'
 Sk 25 'flail'
-Sk 58 'mace'
+Sk 62 'mace'
 Sk 35 'polearm'
 Sk 97 'shield block'
 Sk 30 'spear'
@@ -182,7 +182,7 @@ Sk 95 'kick'
 Sk 100 'parry'
 Sk 1 'rescue'
 Sk 100 'second attack'
-Sk 85 'third attack'
+Sk 87 'third attack'
 Sk 88 'fast healing'
 Sk 80 'recall'
 Sk 75 'smite'
@@ -539,7 +539,7 @@ End
 #O
 Vnum 9213
 Nest 0
-Wear -1
+Wear 10
 Lev  22
 Cost 55660000
 Cond 100
@@ -924,7 +924,7 @@ End
 #O
 Vnum 29209
 Nest 0
-Wear 10
+Wear -1
 Lev  51
 Cost 20000000
 Cond 100
@@ -999,7 +999,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 663
+Time 658
 Cost 0
 Cond 100
 Repd 0
