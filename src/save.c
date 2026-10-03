@@ -1757,12 +1757,12 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 
 	    if ( !str_cmp( word, "HpManaMove" ) || !str_cmp(word,"HMV"))
 	    {
-		ch->hit		= (sh_int)(fread_number( fp ));
-		ch->max_hit	= (sh_int)(fread_number( fp ));
-		ch->mana	= (sh_int)(fread_number( fp ));
-		ch->max_mana	= (sh_int)(fread_number( fp ));
-		ch->move	= (sh_int)(fread_number( fp ));
-		ch->max_move	= (sh_int)(fread_number( fp ));
+		ch->hit		= (int)(fread_number( fp ));
+		ch->max_hit	= (int)(fread_number( fp ));
+		ch->mana	= (int)(fread_number( fp ));
+		ch->max_mana	= (int)(fread_number( fp ));
+		ch->move	= (int)(fread_number( fp ));
+		ch->max_move	= (int)(fread_number( fp ));
 		fMatch = true;
 		break;
 	    }
@@ -2186,12 +2186,12 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
 
     	     if (!str_cmp(word,"HMV"))
     	     {
-    	     	pet->hit	= (sh_int)(fread_number(fp));
-    	     	pet->max_hit	= (sh_int)(fread_number(fp));
-    	     	pet->mana	= (sh_int)(fread_number(fp));
-    	     	pet->max_mana	= (sh_int)(fread_number(fp));
-    	     	pet->move	= (sh_int)(fread_number(fp));
-		pet->max_move	= (sh_int)(fread_number(fp));
+		pet->hit	= (int)(fread_number(fp));
+		pet->max_hit	= (int)(fread_number(fp));
+		pet->mana	= (int)(fread_number(fp));
+		pet->max_mana	= (int)(fread_number(fp));
+		pet->move	= (int)(fread_number(fp));
+		pet->max_move	= (int)(fread_number(fp));
     	     	fMatch = true;
     	     	break;
     	     }

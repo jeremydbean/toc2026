@@ -1662,7 +1662,7 @@ void spell_cure_critical( int sn, int level, CHAR_DATA *ch, void *vo )
     heal /=3;
     }
 
-    victim->hit = (sh_int)(UMIN( victim->hit + heal, victim->max_hit ));
+    victim->hit = (int)(UMIN( victim->hit + heal, victim->max_hit ));
     update_pos( victim );
     send_to_char( "You feel better!\n\r", victim );
     if ( ch != victim )
@@ -1706,7 +1706,7 @@ void spell_cure_light( int sn, int level, CHAR_DATA *ch, void *vo )
     int heal;
 
     heal = dice(1, 8) + level / 3;
-    victim->hit = (sh_int)(UMIN( victim->hit + heal, victim->max_hit ));
+    victim->hit = (int)(UMIN( victim->hit + heal, victim->max_hit ));
     update_pos( victim );
     send_to_char( "You feel better!\n\r", victim );
     if ( ch != victim )
@@ -1753,7 +1753,7 @@ void spell_cure_serious( int sn, int level, CHAR_DATA *ch, void *vo )
     heal /=5;
     }
 
-    victim->hit = (sh_int)(UMIN( victim->hit + heal, victim->max_hit ));
+    victim->hit = (int)(UMIN( victim->hit + heal, victim->max_hit ));
     update_pos( victim );
     send_to_char( "You feel better!\n\r", victim );
     if ( ch != victim )
@@ -2704,10 +2704,10 @@ void spell_energy_drain( int sn, int level, CHAR_DATA *ch, void *vo )
     else
     {
 	gain_exp( victim, 0 - 2 * number_range( level/3, level / 2 ) );
-	victim->mana	= (sh_int)(victim->mana - victim->mana * .15);
-	victim->move	= (sh_int)(victim->move - victim->move * .15);
+	victim->mana	= (int)(victim->mana - victim->mana * .15);
+	victim->move	= (int)(victim->move - victim->move * .15);
 	dam		 = dice(3, ch->level/3);
-	ch->hit = (sh_int)UMIN( ch->max_hit, ch->hit + dam / 2 );
+	ch->hit = (int)UMIN( ch->max_hit, ch->hit + dam / 2 );
     }
 
     send_to_char("You feel your life slipping away!\n\r",victim);
@@ -3204,7 +3204,7 @@ void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
     heal /=3;
     }
 
-    victim->hit = (sh_int)(UMIN( victim->hit + heal, victim->max_hit ));
+    victim->hit = (int)(UMIN( victim->hit + heal, victim->max_hit ));
     update_pos( victim );
     send_to_char( "A warm feeling fills your body.\n\r", victim );
     if ( ch != victim )
@@ -3680,7 +3680,7 @@ void spell_mana_convert( int sn, int level, CHAR_DATA *ch, void *vo )
 	   else
 		  ch->hit -= dice(8, 5);
 
-	   ch->mana = (sh_int)(UMIN( ch->mana + vitalize, ch->max_mana));
+	   ch->mana = (int)(UMIN( ch->mana + vitalize, ch->max_mana));
 	   send_to_char("Power flows into you.\n\r", ch);
 	   return;
 	 }
@@ -3714,7 +3714,7 @@ void spell_mana_convert( int sn, int level, CHAR_DATA *ch, void *vo )
 
 	  vitalize = number_range( vitalize / 2, (vitalize + ch->level/4)*2 );
 
-	   ch->mana = (sh_int)(UMIN( ch->mana + vitalize, ch->max_mana));
+	   ch->mana = (int)(UMIN( ch->mana + vitalize, ch->max_mana));
 	   ch->move = 0;
 	   send_to_char("Power flows into you.\n\r", ch);
 	   return;
@@ -4015,7 +4015,7 @@ void spell_refresh( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     UNUSED_PARAM(sn);
     CHAR_DATA *victim = (CHAR_DATA *) vo;
-    victim->move = (sh_int)(UMIN( victim->move + level, victim->max_move ));
+    victim->move = (int)(UMIN( victim->move + level, victim->max_move ));
     if (victim->max_move == victim->move)
 	send_to_char("You feel fully refreshed!\n\r",victim);
     else
@@ -4111,7 +4111,7 @@ void spell_restore_mana( int sn, int level, CHAR_DATA *ch, void *vo )
 
   vitalize = dice(5,10);
 
-  victim->mana = (sh_int)(UMIN( victim->mana + vitalize, victim->max_mana));
+  victim->mana = (int)(UMIN( victim->mana + vitalize, victim->max_mana));
   send_to_char("A pulse of energy surges through your body.\n\r",victim);
   return;
 }

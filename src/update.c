@@ -2616,8 +2616,8 @@ void do_lycanthropy(CHAR_DATA *ch, char *argument)
       mob->level        = (sh_int)(UMIN(ch->level,dice(10,  ch->level/5) ));
       if(mob->level > 55)
 	mob->level = 55;
-      mob->hit          = (sh_int)(dice(ch->level, ch->were_shape.hp));
-      mob->max_hit      = (sh_int)(dice(ch->level, ch->were_shape.hp));
+      mob->hit          = (int)(dice(ch->level, ch->were_shape.hp));
+      mob->max_hit      = (int)(dice(ch->level, ch->were_shape.hp));
       for(ac = 0; ac < 4; ac++)
 	 mob->armor[ac] = ch->armor[ac] * 3/4;
 

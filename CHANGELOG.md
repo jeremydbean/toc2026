@@ -8,6 +8,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- **Ganon no longer collapses to one hit point from a punch.** Hit points,
+  mana and moves were `sh_int`, so Ganon's 36,000 wrapped negative when he
+  spawned and the first blow counted as fatal. The ashen Gleeok and the
+  Undead Cleric (up to 45,000) were broken the same way. The fields are
+  `int` now, and the area loader stopped clamping a mobile's hit dice at
+  32,767. `tests/test_big_hit_points.py`.
+- **Death traps are off the Mudlet starter map.** You find one yourself;
+  the mapper learns it from GMCP when you walk in, and no exit on the
+  shipped map leads to one.
+
 ### Changed
 
 - **Hyrule's NES pass: people of their own, maps that help, the caves'

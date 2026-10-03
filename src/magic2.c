@@ -487,7 +487,7 @@ void do_project( CHAR_DATA *ch, char *argument )
     if ( !psionic_switch_into(ch, victim) )
     {
         extract_char( victim, true );
-        ch->mana = (sh_int)(UMIN(ch->max_mana, ch->mana + 25));
+        ch->mana = (int)(UMIN(ch->max_mana, ch->mana + 25));
         send_to_char( "Your spirit cannot separate from your body.\n\r", ch );
         return;
     }
@@ -662,7 +662,7 @@ void do_mindleech( CHAR_DATA *ch, char *argument )
         psionic_start_combat( ch, victim );
         victim->mana -= drain;
         /* Caster absorbs half the drained mana. */
-        ch->mana = (sh_int)(UMIN( ch->max_mana, ch->mana + drain / 2 ));
+        ch->mana = (int)(UMIN( ch->max_mana, ch->mana + drain / 2 ));
         act( "You reach into $N's mind and siphon away their mental energy!", ch, NULL, victim, TO_CHAR );
         act( "$n reaches into your mind, draining your mental energy!", ch, NULL, victim, TO_VICT );
         act( "$n's eyes glow as $e leeches $N's mental energy.", ch, NULL, victim, TO_NOTVICT );
@@ -818,7 +818,7 @@ void do_enervate( CHAR_DATA *ch, char *argument )
     if ( move_drain > 0 )
     {
         victim->move -= move_drain;
-        ch->move = (sh_int)(UMIN( ch->max_move, ch->move + move_drain / 2 ));
+        ch->move = (int)(UMIN( ch->max_move, ch->move + move_drain / 2 ));
     }
 
     /* Deal HP damage and absorb half as healing. */
@@ -841,7 +841,7 @@ void do_enervate( CHAR_DATA *ch, char *argument )
 
     /* Heal only from damage that actually passed saves, defenses, and immunity. */
     actual_damage = UMAX( 0, victim_hit_before - victim->hit );
-    ch->hit = (sh_int)(UMIN( ch->max_hit, ch->hit + actual_damage / 2 ));
+    ch->hit = (int)(UMIN( ch->max_hit, ch->hit + actual_damage / 2 ));
 
     check_improve(ch, gsn_enervate, true, 4);
     WAIT_STATE(ch, skill_table[gsn_enervate].beats);
@@ -2694,7 +2694,7 @@ void spell_vampiric_touch( int sn, int level, CHAR_DATA *ch, void *vo )
     }
 
     dam		 = dice(5, ch->level/3);
-    ch->hit = (sh_int)UMIN( ch->max_hit, ch->hit + dam / 2 );
+    ch->hit = (int)UMIN( ch->max_hit, ch->hit + dam / 2 );
 
     act("$n's hand touches you, devouring your life force.",ch,
        NULL,victim,TO_VICT);
@@ -3600,9 +3600,9 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
       if ( !IS_NPC(ch) && ch->pcdata != NULL )
       {
 	penalty = UMAX(25, 2 * ch->level);
-	ch->max_hit = (sh_int)UMAX(1, ch->max_hit - penalty);
-	ch->max_mana = (sh_int)UMAX(1, ch->max_mana - penalty);
-	ch->max_move = (sh_int)UMAX(1, ch->max_move - penalty);
+	ch->max_hit = (int)UMAX(1, ch->max_hit - penalty);
+	ch->max_mana = (int)UMAX(1, ch->max_mana - penalty);
+	ch->max_move = (int)UMAX(1, ch->max_move - penalty);
 	ch->pcdata->perm_hit = (sh_int)UMAX(1, ch->pcdata->perm_hit - penalty);
 	ch->pcdata->perm_mana = (sh_int)UMAX(1, ch->pcdata->perm_mana - penalty);
 	ch->pcdata->perm_move = (sh_int)UMAX(1, ch->pcdata->perm_move - penalty);
@@ -4079,10 +4079,10 @@ static CHAR_DATA *raise_undead( CHAR_DATA *ch, OBJ_DATA *corpse,
 
     victim->level = (sh_int) URANGE( 1, level, ch->level );
 
-    victim->max_hit = (sh_int)( dice( hp_dice, 8 )
+    victim->max_hit = (int)( dice( hp_dice, 8 )
                               + ch->max_hit * grade / 400 );
     if ( corpse != NULL )
-        victim->max_hit = (sh_int)( victim->max_hit * 3 / 2 );
+        victim->max_hit = (int)( victim->max_hit * 3 / 2 );
     victim->hit = victim->max_hit;
 
     victim->armor[AC_PIERCE] = (sh_int)( 100 - victim->level * 2 );

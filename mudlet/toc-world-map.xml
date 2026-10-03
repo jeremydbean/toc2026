@@ -1443,13 +1443,11 @@
    <coord x="0" y="-1" z="-1" />
    <exit direction="east" target="721" />
    <exit direction="up" target="719" />
-   <exit direction="down" target="724" />
   </room>
   <room id="721" area="10" title="Hanging on the Rope Bridge" environment="6">
    <coord x="1" y="-1" z="-1" />
    <exit direction="west" target="720" />
    <exit direction="up" target="722" />
-   <exit direction="down" target="724" />
   </room>
   <room id="722" area="10" title="The Chasm" environment="12">
    <coord x="1" y="-1" z="0" />
@@ -1459,9 +1457,6 @@
   <room id="723" area="10" title="Inside the Inviting Hut" environment="1">
    <coord x="-4" y="0" z="-1" />
    <exit direction="east" target="718" />
-  </room>
-  <room id="724" area="10" title="The Yawning Depths" environment="9">
-   <coord x="0" y="-1" z="-2" />
   </room>
   <room id="725" area="10" title="The Green Field Before Camelot" environment="3">
    <coord x="2" y="-1" z="0" />
@@ -30672,12 +30667,7 @@
   </room>
   <room id="18111" area="46" title="An extremely hot room" environment="1">
    <coord x="-3" y="19" z="1" />
-   <exit direction="east" target="18112" />
    <exit direction="south" target="18110" />
-  </room>
-  <room id="18112" area="46" title="A Fiery Room" environment="1">
-   <coord x="-2" y="19" z="1" />
-   <exit direction="west" target="18111" />
   </room>
   <room id="18113" area="46" title="Inside the smokey tower" environment="1">
    <coord x="-1" y="15" z="1" />
@@ -33258,22 +33248,19 @@
   <room id="24254" area="19" title="Above The Molten Lava" environment="10">
    <coord x="0" y="-6" z="-4" />
   </room>
-  <room id="24255" area="19" title="Burnt Alive In The Molten Lava" environment="1">
-   <coord x="10" y="0" z="0" />
-  </room>
   <room id="24256" area="19" title="An Old Stone Road" environment="4">
    <coord x="0" y="-1" z="0" />
    <exit direction="north" target="24201" />
    <exit direction="west" target="5379" />
   </room>
   <room id="24257" area="19" title="At the Top of the Bell" environment="1">
-   <coord x="18" y="0" z="0" />
+   <coord x="10" y="0" z="0" />
   </room>
   <room id="24258" area="19" title="At the Pearly White Gates" environment="1">
-   <coord x="26" y="0" z="0" />
+   <coord x="18" y="0" z="0" />
   </room>
   <room id="24259" area="19" title="A Ledge Above the Lava" environment="1">
-   <coord x="34" y="0" z="0" />
+   <coord x="26" y="0" z="0" />
   </room>
   <room id="24300" area="15" title="The Stone Door" environment="1">
    <coord x="0" y="0" z="0" />
@@ -34314,9 +34301,6 @@
    <coord x="16" y="-2" z="0" />
    <exit direction="east" target="25003" />
   </room>
-  <room id="25014" area="62" title="Your doom, READ THE SIGN!" environment="9">
-   <coord x="24" y="0" z="0" />
-  </room>
   <room id="25015" area="62" title="Onward and Upward" environment="6">
    <coord x="-5" y="5" z="0" />
    <exit direction="north" target="25016" />
@@ -34378,136 +34362,136 @@
    <exit direction="northeast" target="25022" />
   </room>
   <room id="25027" area="62" title="Before the Gates" environment="1">
-   <coord x="32" y="0" z="0" />
+   <coord x="24" y="0" z="0" />
    <exit direction="north" target="25028" />
   </room>
   <room id="25028" area="62" title="Inside the Keep" environment="1">
-   <coord x="32" y="1" z="0" />
+   <coord x="24" y="1" z="0" />
    <exit direction="north" target="25038" />
    <exit direction="east" target="25031" />
    <exit direction="south" target="25027" />
    <exit direction="west" target="25029" />
   </room>
   <room id="25029" area="62" title="A Marble hallway" environment="1">
-   <coord x="31" y="1" z="0" />
+   <coord x="23" y="1" z="0" />
    <exit direction="east" target="25028" />
    <exit direction="northwest" target="25030" />
   </room>
   <room id="25030" area="62" title="Entrance to the Mines" environment="1">
-   <coord x="30" y="2" z="0" />
+   <coord x="22" y="2" z="0" />
    <exit direction="down" target="25048" />
    <exit direction="southeast" target="25029" />
   </room>
   <room id="25031" area="62" title="The Grand Hall" environment="1">
-   <coord x="33" y="1" z="0" />
+   <coord x="25" y="1" z="0" />
    <exit direction="north" target="25037" />
    <exit direction="east" target="25032" />
    <exit direction="west" target="25028" />
   </room>
   <room id="25032" area="62" title="A Hallway" environment="1">
-   <coord x="34" y="1" z="0" />
+   <coord x="26" y="1" z="0" />
    <exit direction="east" target="25033" />
    <exit direction="west" target="25031" />
   </room>
   <room id="25033" area="62" title="A juncture" environment="1">
-   <coord x="35" y="1" z="0" />
+   <coord x="27" y="1" z="0" />
    <exit direction="north" target="25035" />
    <exit direction="south" target="25034" />
    <exit direction="west" target="25032" />
   </room>
   <room id="25034" area="62" title="Balin's Watch" environment="1">
-   <coord x="35" y="0" z="0" />
+   <coord x="27" y="0" z="0" />
    <exit direction="north" target="25033" />
   </room>
   <room id="25035" area="62" title="Behind the Glass Wall" environment="1">
-   <coord x="35" y="2" z="0" />
+   <coord x="27" y="2" z="0" />
    <exit direction="south" target="25033" />
   </room>
   <room id="25036" area="62" title="A tidy room" environment="1">
-   <coord x="34" y="2" z="0" />
+   <coord x="26" y="2" z="0" />
    <exit direction="west" target="25037" />
   </room>
   <room id="25037" area="62" title="A Bend in the Hallway" environment="1">
-   <coord x="33" y="2" z="0" />
+   <coord x="25" y="2" z="0" />
    <exit direction="east" target="25036" />
    <exit direction="south" target="25031" />
   </room>
   <room id="25038" area="62" title="The Audience hall" environment="1">
-   <coord x="32" y="2" z="0" />
+   <coord x="24" y="2" z="0" />
    <exit direction="north" target="25039" />
    <exit direction="south" target="25028" />
    <exit direction="northeast" target="25040" />
   </room>
   <room id="25039" area="62" title="A Passageway up" environment="1">
-   <coord x="32" y="3" z="0" />
+   <coord x="24" y="3" z="0" />
    <exit direction="south" target="25038" />
    <exit direction="up" target="25043" />
   </room>
   <room id="25040" area="62" title="Before Balin's door" environment="1">
-   <coord x="33" y="3" z="0" />
+   <coord x="25" y="3" z="0" />
    <exit direction="east" target="25041" />
    <exit direction="southwest" target="25038" />
   </room>
   <room id="25041" area="62" title="Offices" environment="1">
-   <coord x="34" y="3" z="0" />
+   <coord x="26" y="3" z="0" />
    <exit direction="north" target="25042" />
    <exit direction="west" target="25040" />
   </room>
   <room id="25042" area="62" title="Balin's Room" environment="1">
-   <coord x="34" y="4" z="0" />
+   <coord x="26" y="4" z="0" />
    <exit direction="south" target="25041" />
   </room>
   <room id="25043" area="62" title="The Entry hall" environment="1">
-   <coord x="32" y="3" z="1" />
+   <coord x="24" y="3" z="1" />
    <exit direction="east" target="25044" />
    <exit direction="down" target="25039" />
   </room>
   <room id="25044" area="62" title="A twist in the hallway" environment="1">
-   <coord x="33" y="3" z="1" />
+   <coord x="25" y="3" z="1" />
    <exit direction="west" target="25043" />
    <exit direction="northeast" target="25045" />
   </room>
   <room id="25045" area="62" title="Outside the Offices" environment="1">
-   <coord x="34" y="4" z="1" />
+   <coord x="26" y="4" z="1" />
    <exit direction="south" target="25046" />
    <exit direction="southwest" target="25044" />
   </room>
   <room id="25046" area="62" title="Offices of the King" environment="1">
-   <coord x="34" y="3" z="1" />
+   <coord x="26" y="3" z="1" />
    <exit direction="north" target="25045" />
    <exit direction="southwest" target="25047" />
   </room>
   <room id="25047" area="62" title="The Kings Chambers" environment="1">
-   <coord x="33" y="2" z="1" />
+   <coord x="25" y="2" z="1" />
    <exit direction="northeast" target="25046" />
   </room>
   <room id="25048" area="62" title="Entrance to the Mines" environment="1">
-   <coord x="30" y="2" z="-1" />
+   <coord x="22" y="2" z="-1" />
    <exit direction="south" target="25049" />
    <exit direction="up" target="25030" />
   </room>
   <room id="25049" area="62" title="Mines" environment="1">
-   <coord x="30" y="1" z="-1" />
+   <coord x="22" y="1" z="-1" />
    <exit direction="north" target="25048" />
    <exit direction="east" target="25050" />
    <exit direction="south" target="25053" />
   </room>
   <room id="25050" area="62" title="Mines" environment="1">
-   <coord x="31" y="1" z="-1" />
+   <coord x="23" y="1" z="-1" />
    <exit direction="south" target="25052" />
    <exit direction="west" target="25049" />
    <exit direction="northwest" target="25051" />
   </room>
   <room id="25051" area="62" title="Dead End" environment="1">
-   <coord x="31" y="2" z="-1" />
+   <coord x="23" y="2" z="-1" />
    <exit direction="southeast" target="25050" />
   </room>
   <room id="25052" area="62" title="Dead End" environment="1">
-   <coord x="31" y="0" z="-1" />
+   <coord x="23" y="0" z="-1" />
    <exit direction="north" target="25050" />
   </room>
   <room id="25053" area="62" title="Mines" environment="1">
-   <coord x="30" y="0" z="-1" />
+   <coord x="22" y="0" z="-1" />
    <exit direction="north" target="25049" />
    <exit direction="south" target="25054" />
    <exit direction="west" target="25060" />
@@ -34516,38 +34500,38 @@
    <exit direction="southwest" target="25057" />
   </room>
   <room id="25054" area="62" title="Dead End" environment="1">
-   <coord x="30" y="-1" z="-1" />
+   <coord x="22" y="-1" z="-1" />
    <exit direction="north" target="25053" />
   </room>
   <room id="25055" area="62" title="Mines" environment="1">
-   <coord x="32" y="1" z="-1" />
+   <coord x="24" y="1" z="-1" />
    <exit direction="north" target="25056" />
    <exit direction="northwest" target="25053" />
   </room>
   <room id="25056" area="62" title="Dead End" environment="1">
-   <coord x="32" y="2" z="-1" />
+   <coord x="24" y="2" z="-1" />
    <exit direction="south" target="25055" />
   </room>
   <room id="25057" area="62" title="Dead End" environment="1">
-   <coord x="29" y="-1" z="-1" />
+   <coord x="21" y="-1" z="-1" />
    <exit direction="northeast" target="25053" />
   </room>
   <room id="25058" area="62" title="Dead End" environment="1">
-   <coord x="29" y="1" z="-1" />
+   <coord x="21" y="1" z="-1" />
    <exit direction="southeast" target="25053" />
   </room>
   <room id="25059" area="62" title="Dead End" environment="1">
-   <coord x="28" y="1" z="-1" />
+   <coord x="20" y="1" z="-1" />
    <exit direction="south" target="25060" />
   </room>
   <room id="25060" area="62" title="Rubble" environment="1">
-   <coord x="29" y="0" z="-1" />
+   <coord x="21" y="0" z="-1" />
    <exit direction="north" target="25059" />
    <exit direction="east" target="25053" />
    <exit direction="south" target="25061" />
   </room>
   <room id="25061" area="62" title="Dead End" environment="1">
-   <coord x="28" y="-1" z="-1" />
+   <coord x="20" y="-1" z="-1" />
    <exit direction="north" target="25060" />
   </room>
   <room id="25062" area="62" title="A beautiful place" environment="1">
@@ -38314,11 +38298,7 @@
   </room>
   <room id="29490" area="92" title="Subterranean Cavern" environment="12">
    <coord x="29" y="-1" z="0" />
-   <exit direction="west" target="29491" />
    <exit direction="northeast" target="29489" />
-  </room>
-  <room id="29491" area="92" title="Watery Grave" environment="9">
-   <coord x="28" y="-1" z="0" />
   </room>
   <room id="29492" area="92" title="Subterranean Cavern" environment="12">
    <coord x="29" y="1" z="0" />

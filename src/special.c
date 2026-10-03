@@ -1241,7 +1241,7 @@ bool spec_executioner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 		act("$n says '$N isn't worth the trouble to kill!'",
 						mob, NULL, victim, TO_NOTVICT);
  
-		victim->hit = (sh_int)(victim->hit * 0.10);
+		victim->hit = (int)(victim->hit * 0.10);
 		if (victim->hit < 1)
 		victim->hit = 1;
 	}
@@ -3271,8 +3271,8 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	 {
 	   ch->pcdata->perm_hit = (sh_int)UMAX(1,
 	       ch->pcdata->perm_hit - 20);
-	   ch->max_hit = (sh_int)UMAX(1, ch->max_hit - 20);
-	   ch->hit = (sh_int)URANGE(1, ch->hit - 20, ch->max_hit);
+	   ch->max_hit = (int)UMAX(1, ch->max_hit - 20);
+	   ch->hit = (int)URANGE(1, ch->hit - 20, ch->max_hit);
 	   send_to_char("You have lost some hit points.\n\r",ch);
 	   found = true;
 	 }

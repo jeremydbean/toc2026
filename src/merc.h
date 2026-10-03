@@ -1847,7 +1847,7 @@ struct  mob_index_data
     sh_int              alignment;
     sh_int              level;
     sh_int              hitroll;
-    sh_int              hit[3];
+    int                 hit[3];     /* int: a boss's bonus can top 32,767 */
     sh_int              mana[3];
     sh_int              damage[3];
     sh_int              ac[4];
@@ -1930,12 +1930,14 @@ struct  char_data
     time_t              last_note;
     sh_int              timer;
     sh_int              wait;
-    sh_int              hit;
-    sh_int              max_hit;
-    sh_int              mana;
-    sh_int              max_mana;
-    sh_int              move;
-    sh_int              max_move;
+    /* int, not sh_int: a guardian with 36,000 hit points wrapped to a
+       negative number at 32,767 and fell to the first blow. */
+    int                 hit;
+    int                 max_hit;
+    int                 mana;
+    int                 max_mana;
+    int                 move;
+    int                 max_move;
     sh_int              battleticks;
     long                new_platinum;
     long                new_gold;

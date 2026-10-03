@@ -1023,7 +1023,7 @@ void mob_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 	    help->level = victim->level - 5;
 	    if(victim->level < 51 )
 	     {
-	       help->max_hit = (sh_int)(victim->max_hit * 3 / 2);
+	       help->max_hit = (int)(victim->max_hit * 3 / 2);
 	       help->hit = help->max_hit;
 	     }
 	    else
@@ -1845,9 +1845,9 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 				 victim->position = POS_STANDING;
 
 
-				victim->hit    = (sh_int)(victim->max_hit * 3 / 4);
-				victim->mana   = (sh_int)(victim->max_mana * 3 / 4);
-				victim->move   = (sh_int)(victim->max_move * 3 / 4);
+				victim->hit    = (int)(victim->max_hit * 3 / 4);
+				victim->mana   = (int)(victim->max_mana * 3 / 4);
+				victim->move   = (int)(victim->max_move * 3 / 4);
 
 				REMOVE_BIT(victim->affected_by2, AFF2_DIVINE_PROT);
 				affect_strip(victim,skill_lookup("divine protection") );

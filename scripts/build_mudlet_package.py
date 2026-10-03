@@ -48,12 +48,19 @@ def load_world_rooms():
     output byte-identical between runs and between machines.
     """
     sys.path.insert(0, str(ROOT))
-    from webadmin.area_parser import AreaParser  # pylint: disable=import-outside-toplevel
+    from webadmin.area_parser import (  # pylint: disable=import-outside-toplevel
+        ROOM_FLAGS, AreaParser, decode_flags)
 
     parser = AreaParser(ROOT / "area")
     parser.parse_all()
 
-    rooms = dict(parser.rooms)
+    # Death traps stay off the starter map: you should find one the hard
+    # way, not read it off the atlas. Exits into them are dropped with them
+    # (build_map_bytes skips any exit whose target is not on the map), so
+    # nothing points at the gap either. GMCP still sends the room when you
+    # walk into one, so the mapper learns it then -- the owner's rule.
+    rooms = {vnum: room for vnum, room in parser.rooms.items()
+             if "deathtrap" not in decode_flags(room.room_flags, ROOM_FLAGS)}
     missing = STARTER_ROOM_IDS - rooms.keys()
     if missing:
         raise RuntimeError(f"Mud School starter rooms are missing: {sorted(missing)}")

@@ -53,6 +53,15 @@ static int16_t fread_sh_int( FILE *fp )
     return clamp_sh_int_from_long( fread_number( fp ) );
 }
 
+/* One read, then the bound: URANGE is a macro and would read the file
+   up to three times. */
+static int fread_hit_die( FILE *fp, int lo, int hi )
+{
+    int value = fread_number( fp );
+
+    return URANGE( lo, value, hi );
+}
+
 
  
 /*
@@ -876,12 +885,13 @@ void load_mobiles( FILE *fp )
 
         pMobIndex->hitroll              = UMAX(pMobIndex->level/2,pMobIndex->hitroll);
  
-        /* read hit dice */
-        pMobIndex->hit[DICE_NUMBER]     = fread_sh_int( fp );
+        /* read hit dice -- full ints, bounded: fread_sh_int clamped the
+           bonus at 32,767, and a guardian's 35,912 came out as that. */
+        pMobIndex->hit[DICE_NUMBER]     = fread_hit_die( fp, 0, 10000 );
         /* 'd'          */                fread_letter( fp );
-        pMobIndex->hit[DICE_TYPE]       = fread_sh_int( fp );
+        pMobIndex->hit[DICE_TYPE]       = fread_hit_die( fp, 0, 10000 );
         /* '+'          */                fread_letter( fp );
-        pMobIndex->hit[DICE_BONUS]      = fread_sh_int( fp );
+        pMobIndex->hit[DICE_BONUS]      = fread_hit_die( fp, -100000, 1000000 );
  
         /* read mana dice */
         pMobIndex->mana[DICE_NUMBER]    = fread_sh_int( fp );
@@ -2732,11 +2742,11 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
     mob->level             = pMobIndex->level;
     mob->hitroll           = pMobIndex->hitroll;
     mob->damroll           = pMobIndex->damage[DICE_BONUS];
-    mob->max_hit           = (sh_int)(dice(pMobIndex->hit[DICE_NUMBER],
+    mob->max_hit           = (int)(dice(pMobIndex->hit[DICE_NUMBER],
                                pMobIndex->hit[DICE_TYPE])
                            + pMobIndex->hit[DICE_BONUS]);
     mob->hit               = mob->max_hit;
-    mob->max_mana          = (sh_int)(dice(pMobIndex->mana[DICE_NUMBER],
+    mob->max_mana          = (int)(dice(pMobIndex->mana[DICE_NUMBER],
                                pMobIndex->mana[DICE_TYPE])
                            + pMobIndex->mana[DICE_BONUS]);
     mob->mana              = mob->max_mana;

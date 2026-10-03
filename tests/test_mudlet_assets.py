@@ -229,6 +229,20 @@ assert(#calls == 0, "teardown must be safe")
         self.assertEqual(room_ids, set(rooms), "atlas does not cover every room")
         self.assertGreater(len(room_ids), 7000)
 
+        # ...except death traps, which a player finds for themselves, and
+        # no exit on the map leads into one.
+        from webadmin.area_parser import (  # noqa: E402
+            ROOM_FLAGS, AreaParser, decode_flags)
+        parser = AreaParser(ROOT / "area")
+        parser.parse_all()
+        traps = {vnum for vnum, room in parser.rooms.items()
+                 if "deathtrap" in decode_flags(room.room_flags, ROOM_FLAGS)}
+        self.assertTrue(traps, "expected the world to have death traps")
+        self.assertFalse(traps & room_ids, "a death trap is on the starter map")
+        targets = {int(e.attrib["target"]) for room in room_nodes
+                   for e in room.findall("exit")}
+        self.assertFalse(traps & targets, "an exit on the map leads into a death trap")
+
         # Mudlet gives each area its own coordinate space, so uniqueness is
         # per area, not global.
         seen = {}
