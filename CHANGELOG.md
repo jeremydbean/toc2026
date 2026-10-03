@@ -16,6 +16,26 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   Undead Cleric (up to 45,000) were broken the same way. The fields are
   `int` now, and the area loader stopped clamping a mobile's hit dice at
   32,767. `tests/test_big_hit_points.py`.
+- **The old bug reports, second pass.** Every report in the archive the
+  first pass did not fix was checked against today's code; most were
+  fixed long since. These were still live (`tests/test_old_bug_reports.py`):
+  - TELL or REPLY to a Mud School monster could crash the game: their race
+    sets the bit PLR_AFK shares, and the AFK branch read the mobile's
+    player data, which it has none of.
+  - A curse or sleep cast on a player already fighting something flagged
+    nobody, so their first blow back made *them* WANTED. The caster
+    answers for it now, from a wand or a spell alike.
+  - FLEE and wimpy never chose southeast or southwest -- a room whose only
+    ways out were those said PANIC every time. Flee gets eight tries now,
+    keeping its old odds.
+  - Moving up or down announced "has arrived from the down"; it says
+    "from below" and "from above", for runners, riders, the shoved and
+    arrows too.
+  - The mahogany door in the chess house locked only on the inside, so
+    the vase's silver key was never needed; it locks from both sides.
+  - The Halloween elite vampire guards were neutral; they are evil.
+  - HELP GET explains `get 2.potion bag`; "some dark metal bracers"; the
+    hunter's "Ye shall DIE!" closes its quote; despair's grammar.
 - **Heroes are never too full to eat.** Hunger stands still from level 51,
   and stood still wherever it was: a hero who levelled sated, or was
   RESTOREd (which sets it to 100), could never eat food, a pill or a

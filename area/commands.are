@@ -3361,10 +3361,13 @@ Syntax: get <object> <container>
 Syntax: take <object>
 Syntax: get all
 Syntax: get all.<keyword>
+Syntax: get <number>.<keyword> [container]
 
 GET (or TAKE) picks up an object from the ground, from a container, or
 from a corpse.  'get all' picks up everything available; 'get all.sword'
-takes all items named "sword".
+takes all items named "sword".  With several alike, a number picks one:
+'get potion bag' takes the first potion listed, 'get 2.potion bag' the
+second, and so on.
 
 See also: DROP, PUT, INVENTORY
 ~

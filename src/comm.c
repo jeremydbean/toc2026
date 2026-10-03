@@ -2064,7 +2064,7 @@ void write_prompt( DESCRIPTOR_DATA *d )
 
     prompt_buf[0] = '\0';
 
-    if ( IS_SET(display->act, PLR_AFK) )
+    if ( !IS_NPC(display) && IS_SET(display->act, PLR_AFK) )
         prompt_append_text( prompt_buf, sizeof(prompt_buf), "[*AFK*] " );
 
     for ( src = pattern; src != NULL && *src != '\0'; ++src )

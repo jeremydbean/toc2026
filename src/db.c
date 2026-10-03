@@ -5028,7 +5028,10 @@ int number_door( void )
 {
     int door;
  
-    while ( ( door = number_mm() & (8-1) ) > 9)
+    /* Ten directions, so four bits and a retry above 9. It was & 7,
+       which never chose southeast or southwest: FLEE and wimpy from a
+       room whose only ways out were those said PANIC every time. */
+    while ( ( door = number_mm() & 15 ) > 9 )
         ;
  
     return door;

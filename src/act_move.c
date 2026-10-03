@@ -1273,17 +1273,19 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     {
        if (!IS_NPC(ch))
        {
+	 /* arrive_dir_name, not "the" + dir_name: going up you arrive
+	    from below, and "from the down" is what the old way printed. */
 	 if ( runner == 1 )
-	    act( "$n arrives in a cloud of dust from the $T.", ch,
-		  NULL, dir_name[rev_dir[door]], TO_ROOM );
+	    act( "$n arrives in a cloud of dust from $T.", ch,
+		  NULL, arrive_dir_name[door], TO_ROOM );
 	 else if (ch->pcdata->arrive[0] != '\0')
 	 {
 	    act( ch->pcdata->arrive, ch, dir_name[rev_dir[door]],
 				arrive_dir_name[door], TO_ROOM );
 	 }
 	 else
-	  act( "$n has arrived from the $t.", ch, dir_name[rev_dir[door]],
-					  NULL, TO_ROOM );
+	  act( "$n has arrived from $T.", ch, NULL,
+					  arrive_dir_name[door], TO_ROOM );
        }
        else
 	 act( race_table[ch->race].arrive, ch, dir_name[rev_dir[door]],
@@ -1291,8 +1293,8 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     }
 
     if(shove)
-	 act( "$n has been shoved into the room from the $t.", ch,
-		  dir_name[rev_dir[door]], NULL, TO_ROOM );
+	 act( "$n has been shoved into the room from $T.", ch,
+		  NULL, arrive_dir_name[door], TO_ROOM );
 
     charge_hyrule_door_repair( ch );
 
@@ -4802,9 +4804,9 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
 
     if( !IS_SET(ch->act, PLR_WIZINVIS) )
     {
-      snprintf(buf, sizeof(buf), "$n rides in from the $T on %s.",
+      snprintf(buf, sizeof(buf), "$n rides in from $T on %s.",
         ch->pet->short_descr ? ch->pet->short_descr : ch->pet->name);
-      act( buf , ch, NULL, dir_name[rev_dir[door]], TO_ROOM );
+      act( buf , ch, NULL, arrive_dir_name[door], TO_ROOM );
     }
 
     do_look( ch, "auto" );

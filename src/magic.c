@@ -604,10 +604,16 @@ void do_cast( CHAR_DATA *ch, char *argument )
         for ( vch = ch->in_room->people; vch; vch = vch_next )
         {
             vch_next = vch->next_in_room;
-	    if ( victim == vch && victim->fighting == NULL )
+	    /* The caster answers for it whether or not the target was
+	       already fighting something else: with the check behind the
+	       fighting test, a curse or a sleep thrown at a player busy
+	       with a mobile flagged nobody, and that player's first blow
+	       back at the caster flagged them instead. */
+	    if ( victim == vch )
 	    {
 		check_killer( ch, victim );
-		multi_hit( victim, ch, TYPE_UNDEFINED );
+		if ( victim->fighting == NULL )
+		    multi_hit( victim, ch, TYPE_UNDEFINED );
 		break;
 	    }
 	}
@@ -700,7 +706,7 @@ void obj_cast_spell( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DA
 	for ( vch = ch->in_room->people; vch; vch = vch_next )
 	{
 	    vch_next = vch->next_in_room;
-	    if ( victim == vch && victim->fighting == NULL )
+	    if ( victim == vch )
 	    {
 		/*
 		 * The user of the wand, staff or scroll started this, so
@@ -708,10 +714,12 @@ void obj_cast_spell( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DA
 		 * Without it a spell that does no damage (curse, blindness,
 		 * sleep) let the victim's first return blow reach
 		 * check_killer first, and the player who was attacked was
-		 * the one flagged WANTED.
+		 * the one flagged WANTED. That holds when the victim is
+		 * already fighting something else, too.
 		 */
 		check_killer( ch, victim );
-		multi_hit( victim, ch, TYPE_UNDEFINED );
+		if ( victim->fighting == NULL )
+		    multi_hit( victim, ch, TYPE_UNDEFINED );
 		break;
 	    }
 	}

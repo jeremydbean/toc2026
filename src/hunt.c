@@ -748,7 +748,7 @@ void hunt_victim(CHAR_DATA *ch, int ANNOY)
 			ch, NULL, ch->hunting, TO_NOTVICT);
 		    act("$n glares at you and says, 'Ye shall DIE!'",
 			ch, NULL, ch->hunting, TO_VICT);
-		    act("You tell $N 'Ye shall DIE!", ch, NULL, ch->hunting, TO_CHAR);
+		    act("You tell $N 'Ye shall DIE!'", ch, NULL, ch->hunting, TO_CHAR);
 		    do_murder(ch, ch->hunting->name);      /* was do_kill, Walker */
 		}
 		return;

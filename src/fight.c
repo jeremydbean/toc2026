@@ -124,6 +124,7 @@ extern const WERE_FORM were_types[];
 
 extern const    int16_t  rev_dir[];
 extern const    char *  dir_name[];
+extern char * const     arrive_dir_name[];
 extern void     do_start_hunting args( ( CHAR_DATA *hunter, CHAR_DATA *target, int ANNOY ) );
 extern void     do_stop_hunting  args( ( CHAR_DATA *ch, char *args) );
 
@@ -4875,7 +4876,9 @@ void do_flee( CHAR_DATA *ch, char *argument )
     }
 */
     was_in = ch->in_room;
-    for ( attempt = 0; attempt < 6; attempt++ )
+    /* Eight tries at a random one of ten directions: about the odds the
+       old six tries at eight gave, now that SE and SW can be drawn. */
+    for ( attempt = 0; attempt < 8; attempt++ )
     {
 	EXIT_DATA *pexit;
 	int door;
@@ -4892,7 +4895,7 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	{
 	  act("$N is overcome with a feeling of despair and flees the battle.",ch,
 	    NULL,victim,TO_NOTVICT);
-	  act("You are overcome with a feeling of despair and flees the battle.",ch,
+	  act("You are overcome with a feeling of despair and flee the battle.",ch,
 	    NULL,victim,TO_VICT);
 	  act("$N is overcome with a feeling of despair and flees the battle.",ch,
 	    NULL,victim,TO_CHAR);
@@ -5866,8 +5869,8 @@ void do_shoot( CHAR_DATA *ch, char *argument )
 
       if(number_percent () > 25)
       {
-	act( "You are struck by an arrow from the $T.", victim,
-			  NULL, dir_name[rev_dir[door1]], TO_CHAR );
+	act( "You are struck by an arrow from $T.", victim,
+			  NULL, arrive_dir_name[door1], TO_CHAR );
       }
       else
 	 send_to_char("An arrow slams into you!\n\r",victim);

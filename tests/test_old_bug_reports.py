@@ -58,7 +58,11 @@ class SourceTests(unittest.TestCase):
     def test_a_wand_user_answers_for_the_attack(self) -> None:
         """[4208] Attacked, but the victim got the killer flag."""
         body = code(function_body(read("src", "magic.c"), "void obj_cast_spell("))
-        retaliate = body.split("victim->fighting == NULL", 1)[1]
+        # The check sits ahead of the fighting test now, so a target
+        # already busy with something else still flags the user.
+        retaliate = body.split("if ( victim == vch )", 1)[1]
+        self.assertLess(retaliate.index("check_killer( ch, victim )"),
+                        retaliate.index("victim->fighting == NULL"))
         self.assertLess(retaliate.index("check_killer( ch, victim )"),
                         retaliate.index("multi_hit( victim, ch"))
 
@@ -132,6 +136,41 @@ class SourceTests(unittest.TestCase):
         self.assertNotIn('"Closed door"', exits)
         self.assertEqual(exits.count("closed_exit_label( pexit"), 2)
 
+    def test_a_tell_to_a_mobile_reads_no_player_data(self) -> None:
+        """[4209] AFK and REPLY: PLR_AFK is a mobile's ACT_NOALIGN bit,
+        every Mud School monster carries it, and TELL or REPLY to one read
+        victim->pcdata -- which a mobile has none of."""
+        comm = code(read("src", "act_comm.c"))
+        self.assertNotIn("if (IS_SET(victim->act,PLR_AFK))", comm)
+        self.assertEqual(comm.count("!IS_NPC(victim) && IS_SET(victim->act,PLR_AFK)"), 2)
+
+    def test_the_caster_answers_even_when_the_target_is_busy(self) -> None:
+        """[4208] "I was attacked, but I got the killer flag." check_killer
+        sat behind victim->fighting == NULL in both casting paths."""
+        magic = code(read("src", "magic.c"))
+        self.assertNotIn("victim == vch && victim->fighting == NULL", magic)
+        for signature in ("void do_cast(", "void obj_cast_spell("):
+            body = code(function_body(magic, signature))
+            loop = body.split("if ( victim == vch )", 1)[1]
+            self.assertLess(loop.index("check_killer( ch, victim )"),
+                            loop.index("victim->fighting == NULL"), signature)
+
+    def test_flee_can_take_every_direction(self) -> None:
+        """[4208] "wimpy doesn't work": number_door was & 7, so SE and SW
+        were never drawn and a room whose only exits were those said
+        PANIC every time."""
+        body = code(function_body(read("src", "db.c"), "int number_door( void )"))
+        self.assertIn("number_mm() & 15 ) > 9", body)
+
+    def test_arrivals_say_above_and_below(self) -> None:
+        """[4207] Arrival lines were "the" plus a direction: going up you
+        arrived "from the down"."""
+        for name in ("act_move.c", "const.c", "fight.c"):
+            source = code(read("src", name))
+            self.assertNotIn("from the $t", source, name)
+            self.assertNotIn("from the $T", source, name)
+        self.assertNotIn("'Ye shall DIE!\"", read("src", "hunt.c"))
+
     def test_balance_states_the_rate_interest_pays(self) -> None:
         self.assertIn("0.25% per real day", read("src", "act_obj.c"))
         self.assertIn("BANK_INTEREST_DIVISOR  400L", read("src", "update.c"))
@@ -177,6 +216,27 @@ class AreaDataTests(unittest.TestCase):
             record = text.split("\n#57\n", 1)[1].replace("\r", "")
             self.assertTrue(record.startswith("salir "), name)
 
+    def test_the_chess_door_is_locked_from_both_sides(self) -> None:
+        """[24301] The mahogany door locked on the inside only, so from the
+        hall the vase's silver key was never needed."""
+        for room, direction in ((24300, 0), (24301, 2)):
+            exit_data = [e for e in self.parser.rooms[room].exits
+                         if e.direction == direction][0]
+            self.assertEqual(exit_data.key_vnum, 24301, room)
+        locks = {(r.arg1, r.arg2, r.arg3) for r in self.resets("chess.are")
+                 if r.command == "D"}
+        self.assertIn((24300, 0, 2), locks)
+        self.assertIn((24301, 2, 2), locks)
+
+    def test_the_halloween_vampires_are_evil(self) -> None:
+        """[2436] "The vampires are of good alignment": the elite guards
+        4444-4451 were left neutral when the rest turned evil."""
+        text = read("area", "limbo_halloween.are")
+        mobs = text.split("#MOBILES", 1)[1].split("#OBJECTS", 1)[0]
+        for vnum in range(4444, 4452):
+            record = mobs.split("\n#%d\n" % vnum, 1)[1].split("\n#", 1)[0]
+            self.assertIn("ACGTV DFN -800 M", record, vnum)
+
     def test_the_mud_school_gate_answers_to_door(self) -> None:
         north = [e for e in self.parser.rooms[3721].exits if e.direction == 0][0]
         self.assertEqual(north.keyword.split(), ["gate", "door"])
@@ -220,6 +280,13 @@ class OldReportsLiveTests(unittest.TestCase):
                 exits = self.run_command(client, "exits")
                 self.assertRegex(exits, r"East\s+- \[\d+\] Closed door", exits)
                 self.assertNotRegex(exits, r"West\s+- \[\d+\] Closed", exits)
+
+                # TELL to a Mud School monster: they carry the bit PLR_AFK
+                # shares, and the AFK branch read a mobile's pcdata.
+                self.run_command(client, "goto 3716")
+                self.run_command(client, "tell gremlin hello")
+                self.assertIn("You have", self.run_command(client, "worth"),
+                              "the game survived a tell to a mobile")
 
                 # Mud School's gate is called a gate, and answers to door.
                 self.run_command(client, "goto 3721")

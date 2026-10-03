@@ -729,7 +729,7 @@ collar.  Don't cause trouble around him, he will not like his victims
 stolen away.
 ~
 human~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
 CDEFIKNQS ABLN EJK HIM
@@ -750,7 +750,7 @@ His fangs are polished with silver and his smouldering eyes
 burn fear into the hearts of men, and lust into the hearts of women.
 ~
 human~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
 CDEFIKNQS ABLN EJK HIM
@@ -771,7 +771,7 @@ Hair bulges from inside his shirt and trousers.  His snout is wet and gleaming.
 He howls at the moon and sharpens his claws as the drools in your direction.
 ~
 dwarf~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -15 -14 -14 -10
 CDEFIKNQS ABLN EJK HIM
@@ -792,7 +792,7 @@ and incredibly frightening.  He hasn't noticed you yet, and you look
 away trying to avoid his red burning gaze.
 ~
 dwarf~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
 CDEFIKNQS ABLN EJK HIM
@@ -813,7 +813,7 @@ woman is held in his arms, unconscious, with a small trickle of blood
 running from her neck.  He gazes at you and you freeze in terror.
 ~
 elf~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
 CDEFIKNQS ABLN EJK HIM
@@ -834,7 +834,7 @@ and incredibly frightening.  He hasn't noticed you yet, and you look
 away trying to avoid his red burning gaze.
 ~
 elf~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
 CDEFIKNQS ABLN EJK HIM
@@ -855,7 +855,7 @@ shirt.  His black, silk cape is lined with a brilliant red. He smiles charmingly
 at you and asks you to be dinner.
 ~
 hobbit~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
 CDEFIKNQS ABLN EKJ MHI
@@ -876,7 +876,7 @@ and incredibly frightening.  He hasn't noticed you yet, and you look
 away trying to avoid his red burning gaze.
 ~
 hobbit~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
 CDEFIKNQS ABLN EKJ MHI

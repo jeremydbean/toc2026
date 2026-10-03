@@ -2658,7 +2658,9 @@ void do_tell( CHAR_DATA *ch, char *argument )
   	return;
     }
 
-    if (IS_SET(victim->act,PLR_AFK))
+    /* !IS_NPC first: PLR_AFK is a mobile's ACT_NOALIGN bit, which every
+       Mud School monster carries, and a mobile has no pcdata. */
+    if (!IS_NPC(victim) && IS_SET(victim->act,PLR_AFK))
     {
         if (victim->pcdata->afk_msg != NULL)
         {
@@ -2753,7 +2755,9 @@ void do_reply( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if (IS_SET(victim->act,PLR_AFK))
+    /* !IS_NPC first: PLR_AFK is a mobile's ACT_NOALIGN bit, which every
+       Mud School monster carries, and a mobile has no pcdata. */
+    if (!IS_NPC(victim) && IS_SET(victim->act,PLR_AFK))
     {
         if (victim->pcdata->afk_msg != NULL)
         {

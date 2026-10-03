@@ -85,7 +85,7 @@ const	struct	race_type	race_table	[]		=
 	0, 		0, 		0,
 	0, 		0, 		0,
 	0, 		0,
-	"$n arrives from the $t.",
+	"$n arrives from $T.",
 	"$n leaves $t."
     },
 
@@ -266,7 +266,7 @@ const	struct	race_type	race_table	[]		=
 	0,              0,      OFF_KICK|OFF_BASH|OFF_CRUSH,
 	0,              0, 	0,
 	A|G|N|V,        A|C|D|E|F|J|K,
-	"Clip Clop, Clip Clop comes from the $t as $n arrives.",
+	"Clip Clop, Clip Clop comes from $T as $n arrives.",
 	"$n rears back on two legs then gallops off $t"
      },
 
@@ -409,7 +409,7 @@ const	struct	race_type	race_table	[]		=
         RES_MENTAL,
         VULN_DROWNING|VULN_LIGHT|VULN_HOLY|VULN_SILVER,
 	A|C|D|H, D|E|H|J|K|V,
-	"A mist floats in from the $t and $n materializes in front of you.",
+	"A mist floats in from $T and $n materializes in front of you.",
 	"$n melts into the shape of a small bat and flies off $t."
     },
 
