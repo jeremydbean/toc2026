@@ -26964,3 +26964,7 @@ Sat Oct  3 02:05:24 2026 :: Log Alaric [0]: moved to 4210 (Room of Peace and Hea
 Sat Oct  3 02:05:24 2026 :: Log Alaric [4210]: sleep
 Sat Oct  3 02:06:22 2026 :: Sock.sinaddr:  5.161.194.92
 Sat Oct  3 02:06:22 2026 :: EOF encountered on read.
+Sat Oct  3 02:09:03 2026 :: Log Alaric [4210]: who
+Sat Oct  3 02:10:42 2026 :: Log Alaric [4210]: gr
+Sat Oct  3 02:11:27 2026 :: Sock.sinaddr:  18.116.205.62
+Sat Oct  3 02:11:27 2026 :: EOF encountered on read.
