@@ -1,9 +1,9 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1791055243
+LogO 1791055570
 Vers 4
-Prom code%c~
+Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring  ~
 Race dwarf~
 Sex  1
@@ -14,17 +14,17 @@ PsiGrant 0
 PsiSpec ~
 PsiKnown ~
 Cast none
-Levl 4
-Plyd 1302
+Levl 5
+Plyd 1629
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 2423
-HMV  56 56 130 130 89 114
+Room 111
+HMV  67 67 142 142 66 120
 NewGold 99
 NewPlat 4
-NewCopp 18
+NewCopp 35
 NewSilv 1
 BankCP 0
 IntTime 1791054012
@@ -34,15 +34,17 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 18
+AchKills 23
 AchQuests 0
 AchDeaths 0
 AchExplore 0
 AchMaps 0
 AchCompass 0
 AchTriforce 0
+Achv level-5 1791055385
 Achv first-kill 1791054159
 Achv visit-mud-school 1791053973
+Achv visit-smurf 1791055506
 Achv carry-one-platinum 1791054979
 Achv four-denominations 1791055231
 LastOut  1791055183
@@ -54,8 +56,8 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  10489
-Act  65740
+Exp  11844
+Act  65788
 AfBy 512
 Comm 24576
 Mounted 0
@@ -82,22 +84,22 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 8
+Prac 9
 Trai 1
 Save  -8
-Alig  -4
+Alig  -15
 Hit   9
 Dam   2
-ACs 71 70 70 79
-Attr 14 13 13 12 19
-AMod 0 0 0 0 0
+ACs 69 68 68 79
+Attr 14 14 13 12 19
+AMod 0 10 10 0 10
 Pass TrjPUdRVdu8MY~
-Titl  the Fighter~
+Titl  the Soldier~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 56 130 118
-Cond 0 26 26
+HMVP 67 142 124
+Cond 0 21 21
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -135,9 +137,9 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'   0   7 -20  17          0          0
-AffD 'bless'  17  45  -7  24          0          0
-AffD 'bless'  18  45   7  18          0          0
+AffD 'armor'   0   2 -20  17          0          0
+AffD 'bless'  15  40  -7  24          0          0
+AffD 'bless'  17  40   7  18          0          0
 End
 
 #O
@@ -147,7 +149,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 178 0 0
+Val  0 0 173 0 0
 End
 
 #O
@@ -218,6 +220,55 @@ End
 Vnum 3705
 Nest 0
 Wear 3
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 4444
+Nest 0
+Wear -1
+Lev  40
+Cost 23000000
+Cond 100
+Repd 0
+Affect -1 40 -1 1 20 0 0
+End
+
+#O
+Vnum 2803
+Nest 0
+Wear -1
+Lev  7
+Cost 36000
+Cond 100
+Repd 0
+Affect -1 7 -1 4 22 0 0
+End
+
+#O
+Vnum 3709
+Nest 0
+Wear 9
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3710
+Nest 0
+Wear 10
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3715
+Nest 0
+Wear 17
 Cost 0
 Cond 100
 Repd 0
