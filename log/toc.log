@@ -28686,3 +28686,19 @@ Sat Oct  3 16:44:20 2026 :: Log Alaric [0]: moved to 29062 (Corridor)
 Sat Oct  3 16:44:21 2026 :: Log Alaric [29062]: kill gu
 Sat Oct  3 16:45:00 2026 :: Sock.sinaddr:  178.156.184.20
 Sat Oct  3 16:45:00 2026 :: EOF encountered on read.
+Sat Oct  3 16:50:05 2026 :: Sock.sinaddr:  3.133.226.214
+Sat Oct  3 16:50:05 2026 :: EOF encountered on read.
+Sat Oct  3 16:50:14 2026 :: Log Alaric [29062]: l
+Sat Oct  3 16:50:16 2026 :: Log Alaric [29062]: kill gu
+Sat Oct  3 16:50:30 2026 :: Log Alaric [29062]: door west
+Sat Oct  3 16:50:31 2026 :: Log Alaric [29062]: w
+Sat Oct  3 16:50:32 2026 :: Log Alaric [29062]: n
+Sat Oct  3 16:50:32 2026 :: Log Alaric [0]: moved to 29061 (Corridor)
+Sat Oct  3 16:50:34 2026 :: Log Alaric [29061]: (refused) kki
+Sat Oct  3 16:50:36 2026 :: Log Alaric [29061]: kill gu
+Sat Oct  3 16:50:52 2026 :: Log Alaric [29061]: s
+Sat Oct  3 16:50:52 2026 :: Log Alaric [0]: moved to 29062 (Corridor)
+Sat Oct  3 16:50:53 2026 :: Log Alaric [29062]: kill gu
+Sat Oct  3 16:50:57 2026 :: Log Alaric [29062]: n
+Sat Oct  3 16:50:57 2026 :: Log Alaric [0]: moved to 29061 (Corridor)
+Sat Oct  3 16:50:57 2026 :: Log Alaric [29061]: kill he
