@@ -38,6 +38,25 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   were scored as level -1, usable by anyone, with no dice), no rot-death or
   corpse-destroyed gear, nothing from staff rooms or Mud School past
   newbie level, and each pick names the mob that drops or sells it.
+- **Aliases can run several commands.** `alias prep wear all;get all
+  corpse` runs both, in order, up to ten per alias. The first runs at once
+  and the rest wait at the front of the input buffer, so each pays its own
+  lag exactly as typed input does, and each is logged under its own name,
+  so `password`, `delete` and `remort` inside an alias still never write
+  their arguments to a watched player's log. `\;` is a literal semicolon.
+  Whatever is typed after the alias goes on its last command. An alias's
+  commands are never expanded as aliases again, which is the whole
+  recursion limit; they are not counted as input spam, and `!` repeats the
+  alias rather than its last command. Defining one now refuses a name with
+  a space in it (it would have loaded back as a different alias) and drops
+  any tilde, which would have cut the player file short.
+- **Portal and astral walk may leave a no-recall room but never enter one;
+  jail stops both.** Portal already worked that way. Astral walk refused
+  its own starting room too, so a psionic in a no-recall room could not
+  walk out though a mage beside them could open a portal. Gate, summon,
+  teleport, shift, earth travel and word of recall are unchanged. One
+  HELP ASTRAL WALK gave the syntax as `astral walk <target>`, which takes
+  "walk" for the target and always fails; it is `astral <target>`.
 
 ### Fixed
 
@@ -54,6 +73,33 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `tests/test_fread_key_cases.py` checks that every one of the 226 keys
   in `fread_char`, `fread_pet` and `fread_obj` is read in its own letter's
   case -- the mistake that once hung logins. All pass today.
+- **Infravision can be learned outside the mage guild.** It sat only in
+  "enhancement" and "guild enhancement", both sold by mage-guild trainers,
+  and "necro enhancement", so a mage in any other guild -- and a cleric,
+  thief or warrior outside the mage guild -- reached the spell's level
+  with nobody to sell it. A one-spell group, NIGHT VISION (1 train for
+  mages and clerics, 2 for thieves and warriors), is sold and practised by
+  the four class guildmasters in Dresden, who take any guild. Which
+  classes have the spell, and when, is unchanged. The other class spells
+  locked behind a guild were left alone: that is the guild system's
+  design, not the same one-line gap.
+- **A title you set survives a level-up.** `advance_level` put the class
+  title back every level. A chosen title is now remembered (`TitleSet`,
+  read under case 'T'), kept through levels and remorts, and `title
+  default` returns to the class title; `title` alone shows which you have.
+  Old player files load as automatic, as they behaved before. Jail and
+  hero-quest titles stay replaceable by the next level, as they were.
+- **The elixir vendor is back in Elemental Canyon.** Mob 9238 kept his
+  shop but lost his reset in April, which also handed his anti-cyclops
+  elixirs to a mountain climber. He stands in the Mountainside Tombs
+  (9203) again, where the original reset put him, the last stop before
+  the cyclops, with the elixir as his stock; the climber keeps his.
+- **Quest Zone room 20306 is a jail room again,** like the other nine
+  riddle rooms (`BDKN`). The zone itself still has no entrance.
+- Two format-truncation warnings in STASH's listing: the "Shared with"
+  line is appended in pieces rather than through a 512-byte line buffer
+  that could cut it, and the upgrade price buffer is sized to what
+  `format_price` writes.
 
 - **Five signature relics have their powers back.** The winged boots and
   the black feathered wings fly again, the robe of invisibility is worn

@@ -966,21 +966,22 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	   51,     CLASS_WARRIOR,     GUILD_ANY,
 	   {
 	    "shield block",     "parry",            "kick",
-	    "rescue",           "disarm"
+	    "rescue",           "disarm",           "infravision"
 	   },
 	   {
-          NULL
-        }
+	    "night vision"
+	   }
     },
     {   /* 33 thief non-guild */
 	   52,     CLASS_THIEF,     GUILD_ANY,
 	   {
 	    "backstab",        "sneak",          "pick lock",
-	    "steal",           "search",         "hide"
+	    "steal",           "search",         "hide",
+	    "infravision"
 	   },
 	   {
-          NULL
-        }
+	    "night vision"
+	   }
     },
     {   /* 34 cleric */
 	   53,     CLASS_CLERIC,     GUILD_ANY,
@@ -989,11 +990,11 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	  "cause light",     "cure serious",     "bless",
           "refresh",	     "armor",            "scrolls",
           "staves", 	     "spiritual hammer", "flamestrike",
-	  "locate object"
+	  "locate object",   "infravision"
 	   },
 	   {
-          NULL
-        }
+	    "night vision"
+	   }
     },
     {   /* 35 Gioli <mage> */
 	   54,     CLASS_MAGE,     GUILD_ANY,
@@ -1002,11 +1003,11 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	   "refresh",        "armor",            "fly",
 	   "faerie fire",    "giant strength",   "burning hands",
 	   "shield",         "identify",         "lightning bolt",
-	   "wands",	     "scrolls", 
+	   "wands",	     "scrolls",          "infravision"
 	   },
 	   {
-          NULL
-        }
+	    "night vision"
+	   }
     },
     {   /* 36 nomad gm */
 	   55,     CLASS_ANY,     GUILD_ANY,
@@ -4253,6 +4254,23 @@ const   struct  group_type      group_table     [MAX_GROUP]     =
 	{
 	  "call lightning",  "control weather",  "faerie fire",
 	  "faerie fog",      "lightning bolt"
+	}
+    },
+
+    /*
+     * Infravision on its own, for the classes that have it at a level they
+     * can reach. Every other group holding it sits behind the mage guild
+     * ("enhancement", "guild enhancement") or the necromancer's own
+     * trainer, so a mage, cleric, thief or warrior in any other guild could
+     * reach level 8-16 and never be offered it anywhere. The class
+     * guildmasters in Dresden (mobs 51-54), who admit any guild, sell this.
+     * Ratings match the spell's own; the necromancer keeps "necro
+     * enhancement" and the monk never has the spell.
+     */
+    {
+	"night vision",           { 1, 1, 2, 2, -1, -1 },
+	{
+	  "infravision"
 	}
     },
 };

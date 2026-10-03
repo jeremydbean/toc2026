@@ -919,7 +919,7 @@ ATTACK          BEGUILING        BENEDICTIONS      COMBAT
 CREATION        CURATIVE         DETECTION         DRACONIAN
 ELEMENTAL       ENCHANTMENT      ENHANCEMENT       HARMFUL
 HEALING         LIFE-UNDEATH     MALADICTIONS      PROTECTIVE
-TRANSPORT       WEATHERSPELLS
+TRANSPORT       WEATHERSPELLS    NIGHT VISION
 
 Note that occasionally you find a spell included in a spellgroup but
 not available to members of your class at mortal levels.  This is done
@@ -1119,8 +1119,27 @@ Trainers are:  Tranis for M/M
 	       Creole for ?/M
 	 and   Marilith for Necro
 
-See also: SPELLGROUP, GAIN
+Infravision alone is also sold as NIGHT VISION, in any guild.
 
+See also: SPELLGROUP, GAIN, NIGHT VISION
+
+~
+
+-1 'NIGHT VISION'~
+This group holds a single spell, Infravision, and is open to mages,
+clerics, thieves and warriors whatever guild they are in:
+
+Cost: Mage 1, Cleric 1, Thief 2, Warrior 2 trains
+
+Trainers are the class guildmasters in Dresden, who teach their class
+in any guild: Gioli the magician for mages, the missionary of Devota for
+clerics, the ninja master for thieves and Kalak the blacksmith for
+warriors. Each will practise the spell too.
+
+Necromancers learn Infravision in the necro enhancement group, from
+Marilith (see ENHANCEMENT).
+
+See also: INFRAVISION, ENHANCEMENT, SPELLGROUP, GAIN
 ~
 
 -1 HARMFUL~

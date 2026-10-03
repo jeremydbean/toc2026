@@ -917,7 +917,10 @@ This spell enables the target character to see in the dark.
 Minimum level depends on your primary class and is:
 Mage:8  Cleric:10   Thief:13   Warrior:16   Monk: N/A   Necromancer:9
 
-See also: DETECT HIDDEN, CONTINUAL LIGHT, DETECTION
+Any mage, cleric, thief or warrior can gain it, whatever their guild,
+from their class guildmaster in Dresden as the NIGHT VISION group.
+
+See also: DETECT HIDDEN, CONTINUAL LIGHT, DETECTION, NIGHT VISION
 ~
 
 0 INVIS 'MASS INVIS'~
@@ -1076,6 +1079,9 @@ portal <target character>'.  This spell allows transport of multiple
 characters, depending on the level of the caster, and is used primarily
 to transport groups.  The portal will disappear after some time or when
 a set number of people have entered it based on the level of the caster.
+
+A portal can be opened out of a no-recall room, but never to a target
+standing in one; nobody can open one into or out of a jail.
 
 To see what is on the other side of a portal, look in <portal name>.
 To use a portal to go to this other place, enter <portal name>.  Most

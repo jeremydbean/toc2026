@@ -2776,6 +2776,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      SET_BIT(ch->act,PLR_NOFOLLOW);
      free_string(ch->pcdata->title);
      ch->pcdata->title = str_dup(" is (HERO QUESTING) <Nochanneled>");
+     ch->pcdata->title_custom = false;   /* a level-up may replace it */
  
      send_to_char("You now embark on a quest for the honor of becoming a Hero.\n\r",ch);
      send_to_char("Your tasks will not be easy. Remember to check the help file on\n\r",ch);
@@ -2982,6 +2983,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      send_info(buf);
      free_string(ch->pcdata->title);
      ch->pcdata->title = str_dup(" has not lived up to the challenge!");
+     ch->pcdata->title_custom = false;   /* a level-up may replace it */
      REMOVE_BIT(ch->imm_flags, IMM_MAGIC);
      REMOVE_BIT(ch->act, PLR_NOFOLLOW);
      save_char_obj(ch);
