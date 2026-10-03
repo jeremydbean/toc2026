@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791069496
+LogO 1791069818
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 53
-Plyd 270635
+Plyd 270957
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 16005
-HMV  894 1178 1409 1429 313 325
-NewGold 256
-NewPlat 372
-NewCopp 1367
-NewSilv 546
+Room 4210
+HMV  916 1178 1399 1429 325 325
+NewGold 269
+NewPlat 377
+NewCopp 1400
+NewSilv 571
 BankCP 196864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 1009
+AchKills 1011
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -108,9 +108,9 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  146771
+Exp  146830
 Act  4261068
-AfBy 568
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -144,7 +144,7 @@ Hit   35
 Dam   55
 ACs -177 -190 -143 1
 Attr 22 13 12 16 15
-AMod 9 3 11 7 8
+AMod 9 8 11 7 8
 Pass Al3w9zuAlwpyY~
 Titl  the Knight of the Castle~
 Pnts 0
@@ -192,10 +192,6 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'ego whip'   0   4  -5   3          0          0
-AffD 'detect hidden'  46   0   0   0         32          0
-AffD 'detect magic'  48   0   0   0         16          0
-AffD 'detect invis'  50   0   0   0          8          0
 End
 
 #O
@@ -912,7 +908,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 258
+Time 253
 Cost 0
 Cond 100
 Repd 0
