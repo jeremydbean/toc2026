@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791051522
+LogO 1791051802
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 257730
+Plyd 258010
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 29062
-HMV  1117 1165 1462 1462 320 320
-NewGold 149
-NewPlat 147
-NewCopp 294
-NewSilv 206
+Room 16004
+HMV  1165 1165 1452 1462 320 320
+NewGold 179
+NewPlat 156
+NewCopp 370
+NewSilv 261
 BankCP 196864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 949
+AchKills 956
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -191,6 +191,7 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
+AffD 'mindbar'   0   4   0   0          0          0
 End
 
 #O
@@ -978,7 +979,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 470
+Time 465
 Cost 0
 Cond 100
 Repd 0

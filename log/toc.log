@@ -29322,3 +29322,66 @@ Sat Oct  3 18:22:07 2026 :: Log Alaric [16003]: n
 Sat Oct  3 18:22:07 2026 :: Log Alaric [0]: moved to 16004 (A Turn at the Pier)
 Sat Oct  3 18:22:07 2026 :: Log Alaric [16004]: kill pi
 Sat Oct  3 18:22:17 2026 :: Log Alaric [16004]: k
+Sat Oct  3 18:22:25 2026 :: Log Alaric [16004]: k
+Sat Oct  3 18:22:29 2026 :: Log Alaric [16004]: k
+Sat Oct  3 18:22:43 2026 :: Log Alaric [16004]: l
+Sat Oct  3 18:22:45 2026 :: Log Alaric [16004]: kill sa
+Sat Oct  3 18:23:34 2026 :: Log Alaric [16004]: s
+Sat Oct  3 18:23:34 2026 :: Log Alaric [0]: moved to 16003 (Along the Pier)
+Sat Oct  3 18:23:34 2026 :: Log Alaric [16003]: kill sa
+Sat Oct  3 18:23:39 2026 :: Log Alaric [16003]: n
+Sat Oct  3 18:23:39 2026 :: Log Alaric [0]: moved to 16004 (A Turn at the Pier)
+Sat Oct  3 18:23:41 2026 :: Log Alaric [16004]: e
+Sat Oct  3 18:23:41 2026 :: Log Alaric [0]: moved to 16005 (Plankway to the Royal Eagle)
+Sat Oct  3 18:23:43 2026 :: Log Alaric [16005]: u
+Sat Oct  3 18:23:43 2026 :: Log Alaric [0]: moved to 16021 (Entrance to the Royal Eagle - Main Deck)
+Sat Oct  3 18:23:45 2026 :: Log Alaric [16021]: e
+Sat Oct  3 18:23:45 2026 :: Log Alaric [0]: moved to 16022 (Main Deck)
+Sat Oct  3 18:23:46 2026 :: Log Alaric [16022]: s
+Sat Oct  3 18:23:46 2026 :: Log Alaric [0]: moved to 16017 (Main Deck of the Royal Eagle)
+Sat Oct  3 18:23:50 2026 :: Log Alaric [16017]: os
+Sat Oct  3 18:23:52 2026 :: Log Alaric [16017]: door south
+Sat Oct  3 18:23:57 2026 :: Log Alaric [16017]: quaff true
+Sat Oct  3 18:23:57 2026 :: Log Alaric [16017]: os
+Sat Oct  3 18:23:59 2026 :: Log Alaric [16017]: s
+Sat Oct  3 18:23:59 2026 :: Log Alaric [0]: moved to 16074 (Hidden Room)
+Sat Oct  3 18:24:00 2026 :: Log Alaric [16074]: scan
+Sat Oct  3 18:24:03 2026 :: Log Alaric [16074]: e
+Sat Oct  3 18:24:03 2026 :: Log Alaric [0]: moved to 16075 (Hidden Room)
+Sat Oct  3 18:24:03 2026 :: Log Alaric [16075]: scan
+Sat Oct  3 18:24:08 2026 :: Log Alaric [16075]: e
+Sat Oct  3 18:24:08 2026 :: Log Alaric [0]: moved to 16076 (Treasure Room)
+Sat Oct  3 18:24:08 2026 :: Log Alaric [16076]: look ass
+Sat Oct  3 18:24:09 2026 :: Log Alaric [16076]: kill as
+Sat Oct  3 18:24:19 2026 :: Log Alaric [16076]: torm
+Sat Oct  3 18:24:28 2026 :: Log Alaric [16076]: torm
+Sat Oct  3 18:24:36 2026 :: Log Alaric [16076]: torm
+Sat Oct  3 18:24:39 2026 :: Log Alaric [16076]: wear exc
+Sat Oct  3 18:24:45 2026 :: Log Alaric [16076]: torm
+Sat Oct  3 18:24:53 2026 :: Log Alaric [16076]: bers
+Sat Oct  3 18:25:12 2026 :: Log Alaric [16076]: i
+Sat Oct  3 18:25:14 2026 :: Log Alaric [16076]: quaff flyy
+Sat Oct  3 18:25:15 2026 :: Log Alaric [16076]: wear mace
+Sat Oct  3 18:25:18 2026 :: Log Alaric [16076]: torm
+Sat Oct  3 18:25:29 2026 :: Log Alaric [16076]: torm
+Sat Oct  3 18:25:31 2026 :: Log Alaric [16076]: torm
+Sat Oct  3 18:25:42 2026 :: Log Alaric [16076]: torm
+Sat Oct  3 18:25:44 2026 :: Log Alaric [16076]: torm
+Sat Oct  3 18:25:56 2026 :: Log Alaric [16076]: torm
+Sat Oct  3 18:26:02 2026 :: Log Alaric [16076]: scan
+Sat Oct  3 18:26:02 2026 :: Log Alaric [16076]: get exc
+Sat Oct  3 18:26:03 2026 :: Log Alaric [16076]: wear exc
+Sat Oct  3 18:26:06 2026 :: Log Alaric [16076]: get mace
+Sat Oct  3 18:26:11 2026 :: Log Alaric [16076]: flee
+Sat Oct  3 18:26:11 2026 :: Log Alaric [0]: moved to 16075 (Hidden Room)
+Sat Oct  3 18:26:13 2026 :: Log Alaric [16075]: recal
+Sat Oct  3 18:26:13 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sat Oct  3 18:26:14 2026 :: Log Alaric [4207]: e
+Sat Oct  3 18:26:14 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sat Oct  3 18:26:14 2026 :: Log Alaric [4202]: n
+Sat Oct  3 18:26:14 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sat Oct  3 18:26:15 2026 :: Log Alaric [4203]: n
+Sat Oct  3 18:26:15 2026 :: Log Alaric [0]: moved to 4210 (Room of Peace and Healing.)
+Sat Oct  3 18:26:15 2026 :: Log Alaric [4210]: sleep
+Sat Oct  3 18:26:36 2026 :: Sock.sinaddr:  3.212.128.62
+Sat Oct  3 18:26:37 2026 :: EOF encountered on read.
