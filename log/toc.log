@@ -28498,3 +28498,21 @@ Sat Oct  3 14:43:44 2026 :: Sock.sinaddr:  71.117.172.247
 Sat Oct  3 14:43:45 2026 :: Loading Look's playerfile
 Sat Oct  3 14:44:10 2026 :: Loading Farslayer's playerfile
 Sat Oct  3 14:44:40 2026 :: Farslayer@pool-71-117-172-247.prvdri.fios.verizon.net new player.
+Sat Oct  3 14:46:46 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sat Oct  3 14:46:50 2026 :: Log WebAdmin: fsave
+Sat Oct  3 14:46:56 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sat Oct  3 14:46:59 2026 :: EOF encountered on read.
+Sat Oct  3 14:46:59 2026 :: Closing link to Eclipse.
+Sat Oct  3 14:46:59 2026 :: Received signal 15; saving players and shutting down.
+Sat Oct  3 14:46:59 2026 :: Closing link to Farslayer.
+Sat Oct  3 14:46:59 2026 :: Closing link to Alaric.
+Sat Oct  3 14:46:59 2026 :: Normal termination of game.
+Sat Oct  3 14:47:00 2026 ::  INIT OK 
+Sat Oct  3 14:47:00 2026 :: ROM is ready to rock on port 9000.
+Sat Oct  3 14:47:01 2026 :: Automated backup complete.
+Sat Oct  3 14:47:01 2026 :: Daily backup complete.
+Sat Oct  3 14:47:36 2026 :: Sock.sinaddr:  71.117.172.247
+Sat Oct  3 14:47:45 2026 :: Loading Farslayer's playerfile
+Sat Oct  3 14:47:47 2026 :: Farslayer@pool-71-117-172-247.prvdri.fios.verizon.net has connected.
+Sat Oct  3 14:48:12 2026 :: Sock.sinaddr:  52.87.72.16
+Sat Oct  3 14:48:13 2026 :: EOF encountered on read.
