@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791057716
+LogO 1791057978
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 263924
+Plyd 264186
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 16076
-HMV  657 1129 1391 1432 166 311
+Room 4210
+HMV  1056 1129 1432 1432 311 311
 NewGold 94
 NewPlat 173
 NewCopp 46
@@ -107,7 +107,7 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  126270
+Exp  126260
 Act  4261068
 AfBy 524856
 Comm 24576
@@ -134,7 +134,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
+Pos  4
 Prac 6
 Trai 1
 Save  -6
@@ -191,10 +191,10 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'detect hidden'   0   8   0   0         32          0
-AffD 'detect magic'   0   8   0   0         16          0
-AffD 'detect invis'   0   8   0   0          8          0
-AffD 'fly'  16  10   0   0     524288          0
+AffD 'detect hidden'   0   3   0   0         32          0
+AffD 'detect magic'   0   3   0   0         16          0
+AffD 'detect invis'   0   3   0   0          8          0
+AffD 'fly'  16   5   0   0     524288          0
 End
 
 #O
@@ -942,7 +942,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 370
+Time 365
 Cost 0
 Cond 100
 Repd 0
@@ -1012,7 +1012,7 @@ Nest 0
 Wear 11
 Lev  1
 Cost 100000
-Cond 88
+Cond 77
 Repd 10
 Val  2 2 4 0 0
 End
@@ -1250,16 +1250,6 @@ Repd 0
 Spell 1 'detect invis'
 Spell 2 'detect magic'
 Spell 3 'detect hidden'
-End
-
-#O
-Vnum 2803
-Nest 0
-Wear -1
-Lev  7
-Cost 36000
-Cond 100
-Repd 0
 End
 
 #STASH
