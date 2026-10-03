@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791068632
+LogO 1791068911
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 53
-Plyd 269771
+Plyd 270050
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 29210
-HMV  6758 6948 8552 8589 87 1880
-NewGold 146
-NewPlat 331
-NewCopp 897
-NewSilv 349
+HMV  6041 6948 8357 8589 215 1880
+NewGold 170
+NewPlat 340
+NewCopp 955
+NewSilv 392
 BankCP 196864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 1001
+AchKills 1003
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -108,7 +108,7 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  143939
+Exp  144672
 Act  4261068
 AfBy 3678848
 AfBy2 4104
@@ -170,7 +170,7 @@ Sk 100 'dagger'
 Sk 25 'flail'
 Sk 100 'mace'
 Sk 35 'polearm'
-Sk 98 'shield block'
+Sk 99 'shield block'
 Sk 30 'spear'
 Sk 100 'sword'
 Sk 30 'whip'
@@ -193,26 +193,26 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'empower'   0   9   0   0          0          0
-AffD 'sanctuary'   0   9   0   0        128          0
-AffD 'haste'   0   9   4   2    2097152          0
-AffD 'fly'   0   9   0   0     524288          0
-AffD 'pass door'   0   9   0   0    1048576          0
-AffD 'protection evil'   0   9   0   0       8192          0
-AffD 'fire shield'   0   9   0   0          0          8
-AffD 'divine protection'   0   9   0   0          0       4096
-AffD 'giant strength'   0   9  15   1          0          0
-AffD 'empower'   0   9  15   3          0          0
-AffD 'empower'   0   9  15   4          0          0
-AffD 'empower'   0   9  11   2          0          0
-AffD 'empower'   0   9  15   5          0          0
-AffD 'empower'   0   9  20  18          0          0
-AffD 'empower'   0   9  20  19          0          0
-AffD 'empower'   0   9 -100  17          0          0
-AffD 'titanic'   0   9 5770  13          0          0
-AffD 'titanic'   0   9 7160  12          0          0
-AffD 'titanic'   0   9 1555  14          0          0
-AffD 'titanic'   0   9  50  16          0          0
+AffD 'empower'   0   4   0   0          0          0
+AffD 'sanctuary'   0   4   0   0        128          0
+AffD 'haste'   0   4   4   2    2097152          0
+AffD 'fly'   0   4   0   0     524288          0
+AffD 'pass door'   0   4   0   0    1048576          0
+AffD 'protection evil'   0   4   0   0       8192          0
+AffD 'fire shield'   0   4   0   0          0          8
+AffD 'divine protection'   0   4   0   0          0       4096
+AffD 'giant strength'   0   4  15   1          0          0
+AffD 'empower'   0   4  15   3          0          0
+AffD 'empower'   0   4  15   4          0          0
+AffD 'empower'   0   4  11   2          0          0
+AffD 'empower'   0   4  15   5          0          0
+AffD 'empower'   0   4  20  18          0          0
+AffD 'empower'   0   4  20  19          0          0
+AffD 'empower'   0   4 -100  17          0          0
+AffD 'titanic'   0   4 5770  13          0          0
+AffD 'titanic'   0   4 7160  12          0          0
+AffD 'titanic'   0   4 1555  14          0          0
+AffD 'titanic'   0   4  50  16          0          0
 End
 
 #O
@@ -811,7 +811,7 @@ Vnum 3715
 Nest 0
 Wear 17
 Cost 0
-Cond 48
+Cond 47
 Repd 1
 End
 
@@ -929,7 +929,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 273
+Time 268
 Cost 0
 Cond 100
 Repd 0
@@ -965,7 +965,7 @@ Nest 0
 Wear 12
 Lev  8
 Cost 10000000
-Cond 61
+Cond 56
 Repd 0
 Val  4 5 3 0 0
 End
