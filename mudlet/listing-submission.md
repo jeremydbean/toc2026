@@ -30,8 +30,8 @@ Suggested short description:
       visible exits for mapper tracking.
 - [x] A full-world MMP map ships all 7,781 rooms across 92 areas, laid out
       per area with no two rooms sharing a square.
-- [x] The official package embeds a mapper and HP, mana, movement, and
-      experience gauges.
+- [x] The official package embeds a mapper and an experience gauge (the
+      prompt carries hit points, mana and moves).
 - [x] `Client.Map` is sent before `Client.GUI` as recommended by Mudlet.
 - [x] `Client.GUI` provides automatic installation and semantic-versioned
       updates from the public repository.

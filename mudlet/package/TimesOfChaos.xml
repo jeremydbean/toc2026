@@ -54,7 +54,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.5.1"
+tocMudlet.version = "1.5.2"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -1269,38 +1269,54 @@ local function styleGauge(gauge, first, second)
     font-size: 10pt; font-weight: 600; qproperty-alignment: 'AlignCenter';]], P.text))
 end
 
+-- Each part of the interface is built on its own. One that fails -- an
+-- older or newer Mudlet whose Geyser does not take some argument -- used
+-- to stop buildUI there, and since install() registers the GMCP handlers
+-- after building, nothing past the failure was drawn and nothing was ever
+-- fed: a player saw the top bars and Mudlet's own map, and no sidebar.
+-- Now the rest is still built and handled, and the failure is printed.
+tocMudlet.uiErrors = {}
+
+local function guard(name, build)
+  local ok, err = pcall(build)
+  if not ok then
+    table.insert(tocMudlet.uiErrors, name .. ": " .. tostring(err))
+    if cecho then
+      cecho(string.format(
+        "\n<red>Times of Chaos GUI: the %s failed to build: %s<reset>\n",
+        name, tostring(err)))
+    end
+  end
+end
+
 function tocMudlet.buildUI()
+  tocMudlet.uiErrors = {}
   setBorderTop(58)
   setBorderRight(360)
   setBorderBottom(34)
 
+  guard("top background", function()
   tocMudlet.ui.topBackground = Geyser.Label:new({
     name = "tocMudlet.topBackground", x = 0, y = 0,
     width = "100%-360px", height = 58,
   })
   tocMudlet.ui.topBackground:setStyleSheet(string.format(
     "background:%s;border-bottom:1px solid %s;", P.panel, P.border))
+  end)
 
-  tocMudlet.ui.gauges = Geyser.HBox:new({
-    name = "tocMudlet.gauges", x = 8, y = 6,
-    width = "100%-376px", height = 34,
-  })
-  tocMudlet.ui.hp = Geyser.Gauge:new({name = "tocMudlet.hp"}, tocMudlet.ui.gauges)
-  tocMudlet.ui.mana = Geyser.Gauge:new({name = "tocMudlet.mana"}, tocMudlet.ui.gauges)
-  tocMudlet.ui.move = Geyser.Gauge:new({name = "tocMudlet.move"}, tocMudlet.ui.gauges)
-  tocMudlet.ui.exp = Geyser.Gauge:new({name = "tocMudlet.exp"}, tocMudlet.ui.gauges)
-  styleGauge(tocMudlet.ui.hp, P.hp1, P.hp2)
-  styleGauge(tocMudlet.ui.mana, P.mana1, P.mana2)
-  styleGauge(tocMudlet.ui.move, P.move1, P.move2)
-  -- EXP is a green progress bar that fills across the level, like the
-  -- xp bar in an MMO; the enemy's health lives in the Target strip,
-  -- not up here beside your own vitals.
-  styleGauge(tocMudlet.ui.exp, P.exp1, P.exp2)
-  setGauge(tocMudlet.ui.hp, 0, 1, "HP")
-  setGauge(tocMudlet.ui.mana, 0, 1, "MANA")
-  setGauge(tocMudlet.ui.move, 0, 1, "MOVE")
-  tocMudlet.ui.exp:setValue(0, 1, "EXP")
+  -- HP, mana and moves used to sit here as three bars; the game's own
+  -- prompt already shows them, and the owner asked for them to go. EXP
+  -- fills across the level, like the xp bar in an MMO.
+  guard("experience bar", function()
+    tocMudlet.ui.exp = Geyser.Gauge:new({
+      name = "tocMudlet.exp", x = 8, y = 6,
+      width = "100%-376px", height = 34,
+    })
+    styleGauge(tocMudlet.ui.exp, P.exp1, P.exp2)
+    tocMudlet.ui.exp:setValue(0, 1, "EXP")
+  end)
 
+  guard("lag bar", function()
   -- When you can act again: a thin bar under the vitals that empties as
   -- the lag runs out. Empty means ready. The game sends the remainder
   -- only when it changes; the bar drains itself in between.
@@ -1316,7 +1332,9 @@ function tocMudlet.buildUI()
       P.text))
   end)
   tocMudlet.ui.lag:setValue(0, 1, "")
+  end)
 
+  guard("sidebar background", function()
   tocMudlet.ui.rightBackground = Geyser.Label:new({
     name = "tocMudlet.rightBackground", x = -360, y = 0,
     width = 360, height = "100%",
@@ -1344,7 +1362,9 @@ function tocMudlet.buildUI()
     P.background, P.text, P.border))
   tocMudlet.ui.affects:echo(string.format(
     [[<span style="color:%s">No spells on you</span>]], P.muted))
+  end)
 
+  guard("sidebar strips", function()
   -- The map keeps the top half and the chat takes the bottom. A chat
   -- window is the thing a player reads while walking, so it wants to
   -- be beside the map rather than buried behind it.
@@ -1377,12 +1397,16 @@ function tocMudlet.buildUI()
     [[<span style="color:%s">Quest: ready</span>]], P.muted))
   tocMudlet.ui.online:echo(string.format(
     [[<span style="color:%s">Online: waiting for the game</span>]], P.muted))
+  end)
 
+  guard("map", function()
   tocMudlet.ui.mapper = Geyser.Mapper:new({
     name = "tocMudlet.mapper", x = -350, y = 208,
     width = 340, height = "66%-208px",
   })
+  end)
 
+  guard("chat panes and tabs", function()
   -- Three consoles in one place, one shown at a time.
   local paneGeometry = { x = -350, y = "66%", width = 340,
                          height = "34%-80px", autoWrap = true,
@@ -1413,7 +1437,9 @@ function tocMudlet.buildUI()
     label:setClickCallback(function() tocMudlet.showPane(tab[1]) end)
     tocMudlet.ui.tabs[tab[1]] = label
   end
+  end)
 
+  guard("achievement toast", function()
   -- An achievement is rare and worth stopping for, so it is drawn
   -- over the map rather than scrolling past in the chat.
   tocMudlet.ui.toast = Geyser.Label:new({
@@ -1423,7 +1449,9 @@ function tocMudlet.buildUI()
     background:%s;color:%s;border:2px solid #ffd479;border-radius:6px;
     padding:4px 10px;]], P.panel, P.text))
   tocMudlet.ui.toast:hide()
+  end)
 
+  guard("exit buttons", function()
   -- Clickable exits, sitting left of the sidebar on the bottom bar.
   local exitBar = Geyser.HBox:new({
     name = "tocMudlet.exitBar", x = -660, y = -34, width = 296, height = 34,
@@ -1438,7 +1466,9 @@ function tocMudlet.buildUI()
     button:hide()
     tocMudlet.exitButtons[slot] = button
   end
+  end)
 
+  guard("chat", function()
   tocMudlet.showPane("chat")
   pcall(function() tocMudlet.ui.chat:setColor(P.background) end)
   tocMudlet.ui.chat:setFontSize(9)
@@ -1447,7 +1477,9 @@ function tocMudlet.buildUI()
   end
   tocMudlet.ui.chat:decho(string.format("<%s>Channels appear here.\n",
     rgbOf(P.muted)))
+  end)
 
+  guard("map hint", function()
   tocMudlet.ui.mapHint = Geyser.Label:new({
     name = "tocMudlet.mapHint", x = -350, y = -42,
     width = 340, height = 32,
@@ -1456,7 +1488,9 @@ function tocMudlet.buildUI()
     background:%s;color:%s;border:1px solid %s;border-radius:5px;
     qproperty-alignment:'AlignCenter';]], P.background, P.muted, P.border))
   tocMudlet.ui.mapHint:echo("GMCP mapper · <b>tocgui off</b> hides this interface")
+  end)
 
+  guard("location bar", function()
   tocMudlet.ui.location = Geyser.Label:new({
     name = "tocMudlet.location", x = 0, y = -34,
     width = "100%-360px", height = 34,
@@ -1465,6 +1499,9 @@ function tocMudlet.buildUI()
     background:%s;color:%s;border-top:1px solid %s;padding:6px 12px;
     qproperty-alignment:'AlignVCenter';]], P.panel, P.text, P.border))
   tocMudlet.ui.location:echo("Waiting for room information...")
+  end)
+
+  return #tocMudlet.uiErrors == 0
 end
 
 function tocMudlet.teardownUI()
@@ -1617,8 +1654,8 @@ local function register(event, callback)
 end
 
 function tocMudlet.install()
-  setupEnvironmentColours()
-  tocMudlet.buildUI()
+  pcall(setupEnvironmentColours)
+  pcall(tocMudlet.buildUI)
   register("gmcp.Char.Vitals", function() tocMudlet.onVitals() end)
   register("gmcp.Char.Status", function() tocMudlet.onStatus() end)
   register("gmcp.Char.Affects", function() tocMudlet.onAffects() end)

@@ -136,6 +136,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Mudlet 1.5.2: one failing part no longer hides the whole interface.**
+  The owner saw only the top bars and Mudlet's own map: `buildUI` stopped
+  at the first part that failed, and `install()` registered the GMCP
+  handlers after it, so the sidebar, chat, tabs and exits were never drawn
+  or fed. Each part is built on its own now, a failure is printed in red
+  with its error, and the handlers are registered whatever happened. The
+  HP, mana and move bars are gone, at the owner's request -- the prompt
+  shows them; the EXP bar and the lag bar stay.
+- **Stealth and shadowmeld are invisible without holylight.** No roll on
+  each look, so nothing blinks in and out; only holylight and the worn
+  Triforce see either. A stealthed mobile that is fighting shows itself.
+
 - **Repairs cost a few kills, not a few hundred.** Reported in game: a
   level 46 shield broken past use quoted 265 platinum, which is about 377
   kills at that level, for one piece. REPAIR charged (100 - condition) x

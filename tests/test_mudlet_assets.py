@@ -142,6 +142,28 @@ assert(#calls == 0, "teardown must be safe")
                                 text=True, capture_output=True, check=False)
         self.assertEqual(result.returncode, 0, result.stderr)
 
+    def test_one_failing_part_cannot_take_the_interface_down(self) -> None:
+        """Reported by the owner: only the top bars and Mudlet's own map
+        showed. buildUI stopped at the first part that failed, and install()
+        registered the GMCP handlers after it, so nothing past the failure
+        was drawn or fed. Each part is guarded now, a failure is printed,
+        and the handlers are registered whatever the build did."""
+        script = self.package_script()
+        build = script.split("function tocMudlet.buildUI()")[1].split(
+            "function tocMudlet.teardownUI()")[0]
+        for part in ("experience bar", "sidebar strips", "map",
+                     "chat panes and tabs", "exit buttons", "location bar"):
+            self.assertIn('guard("%s", function()' % part, build)
+        install = script.split("function tocMudlet.install()")[1].split(
+            "\nend\n")[0]
+        self.assertIn("pcall(tocMudlet.buildUI)", install)
+        self.assertLess(install.index("pcall(tocMudlet.buildUI)"),
+                        install.index('register("gmcp.Char.Vitals"'))
+        # The HP, mana and move bars are gone; the prompt shows them.
+        self.assertNotIn('name = "tocMudlet.hp"', build)
+        self.assertNotIn('name = "tocMudlet.mana"', build)
+        self.assertIn('name = "tocMudlet.exp"', build)
+
     @unittest.skipUnless(shutil.which("lua"), "Lua interpreter is not installed")
     def test_package_lua_compiles(self) -> None:
         result = subprocess.run(
