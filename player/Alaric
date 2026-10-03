@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791069193
+LogO 1791069496
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,16 +15,16 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 53
-Plyd 270332
+Plyd 270635
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 2401
-HMV  5060 1178 8113 1429 178 325
+Room 16005
+HMV  894 1178 1409 1429 313 325
 NewGold 256
 NewPlat 372
-NewCopp 1163
+NewCopp 1367
 NewSilv 546
 BankCP 196864075
 IntTime 1790989084
@@ -192,10 +192,10 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'ego whip'   0   9  -5   3          0          0
-AffD 'detect hidden'  46   5   0   0         32          0
-AffD 'detect magic'  49   5   0   0         16          0
-AffD 'detect invis'  50   5   0   0          8          0
+AffD 'ego whip'   0   4  -5   3          0          0
+AffD 'detect hidden'  46   0   0   0         32          0
+AffD 'detect magic'  48   0   0   0         16          0
+AffD 'detect invis'  50   0   0   0          8          0
 End
 
 #O
@@ -912,7 +912,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 263
+Time 258
 Cost 0
 Cond 100
 Repd 0
@@ -1175,28 +1175,6 @@ Cond 99
 Repd 0
 Affect -1 51 -1 20 14 0 0
 Affect -1 51 -1 4 23 0 0
-End
-
-#O
-Vnum 29213
-Nest 0
-Wear -1
-Lev  51
-Cost 50000000
-Cond 100
-Repd 0
-Affect -1 51 -1 1 3 0 0
-End
-
-#O
-Vnum 29214
-Nest 0
-Wear -1
-Lev  51
-Cost 40000000
-Cond 83
-Repd 0
-Affect -1 51 -1 1 22 0 0
 End
 
 #STASH
