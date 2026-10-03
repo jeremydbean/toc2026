@@ -1,7 +1,7 @@
 #PLAYER
 Name Farslayer~
 Id   21916
-LogO 1791039310
+LogO 1791039409
 Vers 4
 Prom ~
 Ignoring  ~
@@ -15,7 +15,7 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 1
-Plyd 46
+Plyd 145
 ListRemorts ~
 NumRemorts 0
 Note 0
@@ -93,7 +93,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 20 100 100
-Cond 0 48 48
+Cond 0 45 45
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -129,6 +129,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
+Val  0 0 197 0 0
 End
 
 #O
