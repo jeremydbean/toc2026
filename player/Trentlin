@@ -1,9 +1,9 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1791054066
+LogO 1791054389
 Vers 4
-Prom ~
+Prom < %h/%H %v/%V %e tnl>%c~
 Ignoring  ~
 Race dwarf~
 Sex  1
@@ -15,16 +15,16 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 1
-Plyd 125
+Plyd 448
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 3758
-HMV  20 20 100 100 100 100
+Room 3712
+HMV  11 20 100 100 96 96
 NewGold 0
 NewPlat 0
-NewCopp 0
+NewCopp 4
 NewSilv 0
 BankCP 0
 IntTime 1791054012
@@ -34,13 +34,14 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 0
+AchKills 2
 AchQuests 0
 AchDeaths 0
 AchExplore 0
 AchMaps 0
 AchCompass 0
 AchTriforce 0
+Achv first-kill 1791054159
 Achv visit-mud-school 1791053973
 LastOut  0
 SesLogin 0
@@ -51,8 +52,8 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  0
-Act  65788
+Exp  2981
+Act  65740
 AfBy 512
 Comm 24576
 Mounted 0
@@ -80,13 +81,12 @@ Color 15 6
 Color 16 6
 Pos  8
 Prac 5
-Trai 3
 Save  -8
 Alig  0
 Hit   9
 Dam   2
-ACs 95 95 95 99
-Attr 14 13 12 12 15
+ACs 74 74 74 79
+Attr 14 13 12 12 18
 AMod 0 0 0 0 0
 Pass TrjPUdRVdu8MY~
 Titl  the Swordpupil~
@@ -94,7 +94,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 20 100 100
-Cond 0 46 46
+Cond 0 41 41
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -129,8 +129,9 @@ Gr 'mage basics'
 Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
-AffD 'bless'  23  65  -7  24          0          0
-AffD 'bless'  24  65   7  18          0          0
+AffD 'armor'   0  22 -20  17          0          0
+AffD 'bless'  21  60  -7  24          0          0
+AffD 'bless'  21  60   7  18          0          0
 End
 
 #O
@@ -140,7 +141,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 198 0 0
+Val  0 0 193 0 0
 End
 
 #O
@@ -168,6 +169,16 @@ Wear 16
 Cost 0
 Cond 100
 Repd 0
+End
+
+#O
+Vnum 3712
+Nest 0
+Wear 13
+Cost 0
+Cond 100
+Repd 0
+Affect -1 0 -1 -4 14 0 0
 End
 
 #END

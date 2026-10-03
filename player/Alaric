@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791054144
+LogO 1791054322
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 260352
+Plyd 260530
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 4210
-HMV  735 1140 1404 1462 194 328
-NewGold 88
-NewPlat 165
-NewCopp 77
-NewSilv 100
+Room 29062
+HMV  856 1129 1430 1432 300 311
+NewGold 102
+NewPlat 169
+NewCopp 113
+NewSilv 126
 BankCP 196864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 959
+AchKills 963
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -137,13 +137,13 @@ Color 16 6
 Pos  8
 Prac 6
 Trai 1
-Save  -3
+Save  -6
 Alig  1000
-Hit   38
-Dam   52
-ACs -135 -144 -101 25
+Hit   35
+Dam   53
+ACs -158 -169 -124 5
 Attr 22 13 12 16 15
-AMod 9 10 11 3 9
+AMod 8 10 10 7 9
 Pass Al3w9zuAlwpyY~
 Titl  the Heroine of the Third Order~
 Pnts 0
@@ -191,10 +191,10 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'fly'   0  10   0   0     524288          0
-AffD 'detect hidden'   0   8   0   0         32          0
-AffD 'detect magic'  23   8   0   0         16          0
-AffD 'detect invis'  32   8   0   0          8          0
+AffD 'fly'   0   7   0   0     524288          0
+AffD 'detect hidden'   0   5   0   0         32          0
+AffD 'detect magic'  20   5   0   0         16          0
+AffD 'detect invis'  32   5   0   0          8          0
 End
 
 #O
@@ -907,17 +907,6 @@ Affect -1 35 -1 -1 18 0 0
 End
 
 #O
-Vnum 10059
-Nest 0
-Wear 3
-Lev  33
-Cost 40000000
-Cond 71
-Repd 0
-Affect -1 33 -1 13 17 0 0
-End
-
-#O
 Vnum 717
 Nest 0
 Wear 15
@@ -953,7 +942,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 427
+Time 425
 Cost 0
 Cond 100
 Repd 0
@@ -1031,7 +1020,7 @@ End
 #O
 Vnum 29207
 Nest 0
-Wear -1
+Wear 16
 Lev  51
 Cost 20000000
 Cond 100
@@ -1054,7 +1043,7 @@ End
 Vnum 700
 Nest 0
 ExtF 3146818
-Wear 16
+Wear -1
 Lev  48
 Cost 25000000
 Cond 100
@@ -1077,23 +1066,13 @@ End
 #O
 Vnum 16030
 Nest 0
-Wear -1
+Wear 3
 Lev  52
 Cost 25600000
 Cond 100
 Repd 0
 Affect -1 52 -1 -9 14 0 0
 Affect -1 52 -1 -1 13 0 0
-End
-
-#O
-Vnum 16031
-Nest 0
-Wear -1
-Lev  52
-Cost 0
-Cond 99
-Repd 0
 End
 
 #O
@@ -1219,6 +1198,17 @@ Lev  39
 Cost 200000000
 Cond 100
 Repd 0
+End
+
+#O
+Vnum 10059
+Nest 0
+Wear -1
+Lev  33
+Cost 40000000
+Cond 71
+Repd 0
+Affect -1 33 -1 13 17 0 0
 End
 
 #END
