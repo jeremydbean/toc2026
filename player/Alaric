@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791047100
+LogO 1791047373
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 256903
+Plyd 257176
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 29068
-HMV  1165 1165 1462 1462 320 320
-NewGold 72
-NewPlat 119
-NewCopp 105
-NewSilv 66
+Room 4207
+HMV  1165 1165 1462 1462 264 320
+NewGold 126
+NewPlat 140
+NewCopp 235
+NewSilv 163
 BankCP 196864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 938
+AchKills 943
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -92,12 +92,12 @@ Achv visit-emerald-forest 1790982178
 Achv visit-underdark 1790903709
 Achv visit-new-thalos 1790818086
 Achv visit-korzath-fortress 1790899622
-LastOut  1790993773
-SesLogin 1790985789
-SesDur   7984
-SesExpG  341
+LastOut  1791047373
+SesLogin 1791045368
+SesDur   2005
+SesExpG  -1
 SesLvlG  0
-SesKill  22
+SesKill  31
 SesPK    0
 SesDead  0
 SesQuest 0
@@ -109,7 +109,7 @@ CasinoWon  51
 CasinoLost 304
 Exp  125792
 Act  4261068
-AfBy 524800
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -191,7 +191,6 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'fly'   0   2   0   0     524288          0
 End
 
 #O
@@ -516,6 +515,17 @@ Cost 100000
 Cond 100
 Repd 10
 Val  2 2 4 0 0
+End
+
+#O
+Vnum 29209
+Nest 1
+Wear -1
+Lev  51
+Cost 20000000
+Cond 100
+Repd 0
+Affect -1 51 -1 4 22 0 0
 End
 
 #O
@@ -914,17 +924,6 @@ Affect -1 35 -1 -1 18 0 0
 End
 
 #O
-Vnum 29209
-Nest 0
-Wear -1
-Lev  51
-Cost 20000000
-Cond 100
-Repd 0
-Affect -1 51 -1 4 22 0 0
-End
-
-#O
 Vnum 10059
 Nest 0
 Wear 3
@@ -979,7 +978,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 483
+Time 478
 Cost 0
 Cond 100
 Repd 0
