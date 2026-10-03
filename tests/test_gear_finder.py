@@ -222,6 +222,26 @@ class GearFinderTests(unittest.TestCase):
         self.assertEqual(listed[0]["level"], 30)
         self.assertIn("5d7", " ".join(listed[0]["score_breakdown"]))
 
+    def test_permanent_haste_and_sanctuary_count(self) -> None:
+        """An F record's haste or sanctuary is worth something: the Master
+        Sword's haste and the Red Ring's sanctuary used to score nothing."""
+        from dataclasses import replace
+
+        plain = replace(item(40, 9, "AB", affects=[(19, 2)]), carried_by=[1])
+        warded = replace(item(41, 9, "AB", affects=[(19, 2)]), carried_by=[1],
+                         affect_bits=[{"where": "A", "location": 0,
+                                       "modifier": 0, "bits": "H"}])
+        hasted = replace(item(42, 9, "AB", affects=[(19, 2)]), carried_by=[1],
+                         affect_bits=[{"where": "A", "location": 0,
+                                       "modifier": 0, "bits": "V"}])
+        result = self.find_world([plain, warded, hasted], {1: self.mob(1, 40)})
+        ranked = [i["vnum"] for i in result["Left Finger"]]
+        self.assertEqual(ranked[-1], 40)
+        self.assertIn(41, ranked[:2])
+        self.assertIn(42, ranked[:2])
+        breakdown = " ".join(result["Left Finger"][0]["score_breakdown"])
+        self.assertTrue("Haste" in breakdown or "Sanctuary" in breakdown)
+
     # ---- the Oracle's live grounding --------------------------------
     def test_oracle_context_describes_gear_and_obtainable_bis(self) -> None:
         from webadmin import server

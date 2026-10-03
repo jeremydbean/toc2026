@@ -4011,6 +4011,24 @@ async def get_best_gear(
             except (IndexError, TypeError, ValueError):
                 pass
 
+        # Permanent affects from the object's F records -- the Master
+        # Sword's haste, the Red Ring's sanctuary. Haste is a third swing
+        # every round, worth roughly ten damroll to a fighter and scaled by
+        # how much this class fights in melee; sanctuary halves every blow,
+        # counted as two hundred hit points' worth of toughness.
+        for bit in getattr(obj, "affect_bits", None) or []:
+            if bit.get("where") != "A":
+                continue
+            granted = decode_flags(bit.get("bits", "0"), AFFECTED_FLAGS)
+            if "haste" in granted:
+                w = weights.get("damroll", 1.0) * 10
+                score += w
+                breakdown.append(f"Haste while worn: one more swing a round = {w:.1f}")
+            if "sanctuary" in granted:
+                w = weights.get("hit points", 0.15) * 200
+                score += w
+                breakdown.append(f"Sanctuary while worn: half damage taken = {w:.1f}")
+
         # An armour piece's own AC is values[0..3], counted the way
         # apply_ac() counts it in that slot.
         if item_type_num == ITEM_TYPE_ARMOR:
