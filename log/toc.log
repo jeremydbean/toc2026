@@ -27343,3 +27343,76 @@ Sat Oct  3 12:46:22 2026 :: Sock.sinaddr:  178.156.187.238
 Sat Oct  3 12:46:22 2026 :: EOF encountered on read.
 Sat Oct  3 12:51:27 2026 :: Sock.sinaddr:  3.12.251.153
 Sat Oct  3 12:51:27 2026 :: EOF encountered on read.
+Sat Oct  3 12:56:32 2026 :: Sock.sinaddr:  52.87.72.16
+Sat Oct  3 12:56:33 2026 :: EOF encountered on read.
+Sat Oct  3 12:57:24 2026 :: Sock.sinaddr:  208.126.22.104
+Sat Oct  3 12:57:27 2026 :: Loading Alaric's playerfile
+Sat Oct  3 12:57:28 2026 :: Alaric@208.126.22.104 has connected.
+Sat Oct  3 12:57:36 2026 :: Log Alaric [4207]: moved to 4207 (Before the Altar.)
+Sat Oct  3 12:57:38 2026 :: Log Alaric [4207]: who
+Sat Oct  3 12:57:41 2026 :: Log Alaric [4207]: i
+Sat Oct  3 12:57:44 2026 :: Log Alaric [4207]: eq
+Sat Oct  3 12:57:45 2026 :: Log Alaric [4207]: wake
+Sat Oct  3 12:57:46 2026 :: Log Alaric [4207]: l
+Sat Oct  3 12:57:56 2026 :: Log Alaric [4207]: (refused) 3
+Sat Oct  3 12:57:56 2026 :: Log Alaric [4207]: (refused) 3
+Sat Oct  3 12:57:57 2026 :: Log Alaric [4207]: (refused) 3
+Sat Oct  3 12:57:58 2026 :: Log Alaric [4207]: e
+Sat Oct  3 12:57:58 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sat Oct  3 12:57:58 2026 :: Log Alaric [4202]: e
+Sat Oct  3 12:57:58 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sat Oct  3 12:57:59 2026 :: Log Alaric [4201]: e
+Sat Oct  3 12:57:59 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sat Oct  3 12:58:00 2026 :: Log Alaric [2427]: n
+Sat Oct  3 12:58:00 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sat Oct  3 12:58:00 2026 :: Log Alaric [2404]: n
+Sat Oct  3 12:58:00 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sat Oct  3 12:58:04 2026 :: Log Alaric [2401]: r e 8
+Sat Oct  3 12:58:04 2026 :: Log Alaric [0]: moved to 2403 (Eastern Oak Tree Square.)
+Sat Oct  3 12:58:04 2026 :: Log Alaric [0]: moved to 2420 (Battle Road)
+Sat Oct  3 12:58:04 2026 :: Log Alaric [0]: moved to 2421 (Battle Road)
+Sat Oct  3 12:58:04 2026 :: Log Alaric [0]: moved to 2422 (Battle Road)
+Sat Oct  3 12:58:04 2026 :: Log Alaric [0]: moved to 2423 (Battle Road)
+Sat Oct  3 12:58:04 2026 :: Log Alaric [0]: moved to 2424 (Battle Road)
+Sat Oct  3 12:58:04 2026 :: Log Alaric [0]: moved to 2425 (Gate to Citadel of War on Battle Road)
+Sat Oct  3 12:58:04 2026 :: Log Alaric [0]: moved to 2426 (Inside the Eastern Gates of Dresden.)
+Sat Oct  3 12:58:06 2026 :: Log Alaric [2426]: oe
+Sat Oct  3 12:58:08 2026 :: Log Alaric [2426]: r e 19
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 2440 (Outside the Eastern Gates of Dresden.)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 3503 (City Entrance)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 3502 (The Cross Roads)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 3525 (Along the Eastern Road)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 3526 (Along the Eastern Road)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 3527 (The Checkpoint)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 3528 (Along the Eastern Road)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 3529 (Along the Eastern Road)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 3530 (Near the Sands of Sorrow)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 3531 (Near the Sands of Sorrow)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 3532 (On the Outskirts of New Thalos)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 42 (On the Outskirts of New Thalos)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 9669 (Outside the West Gate of New Thalos)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 9523 (Inside the West Gate of New Thalos)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 9524 (West Main Street)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 9525 (West Main Street)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 9526 (West Main Street)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 9509 (The Western Market Square)
+Sat Oct  3 12:58:08 2026 :: Log Alaric [0]: moved to 9506 (The Center of Market Square)
+Sat Oct  3 12:58:11 2026 :: Log Alaric [9506]: r n 6
+Sat Oct  3 12:58:11 2026 :: Log Alaric [0]: moved to 9515 (The Northern Market Square)
+Sat Oct  3 12:58:11 2026 :: Log Alaric [0]: moved to 9518 (Sultan's Walk)
+Sat Oct  3 12:58:11 2026 :: Log Alaric [0]: moved to 9519 (Sultan's Walk)
+Sat Oct  3 12:58:11 2026 :: Log Alaric [0]: moved to 9520 (Sultan's Walk)
+Sat Oct  3 12:58:11 2026 :: Log Alaric [0]: moved to 9521 (Sultan's Walk)
+Sat Oct  3 12:58:11 2026 :: Log Alaric [0]: moved to 9522 (Inside the Northern Gate of New Thalos)
+Sat Oct  3 12:58:12 2026 :: Log Alaric [9522]: on
+Sat Oct  3 12:58:13 2026 :: Log Alaric [9522]: r n 9
+Sat Oct  3 12:58:13 2026 :: Log Alaric [0]: moved to 9667 (Outside the Northern Gate of New Thalos)
+Sat Oct  3 12:58:13 2026 :: Log Alaric [0]: moved to 9781 (On the Plains)
+Sat Oct  3 12:58:13 2026 :: Log Alaric [0]: moved to 9782 (On the Plains)
+Sat Oct  3 12:58:13 2026 :: Log Alaric [0]: moved to 9783 (Edge of the forest)
+Sat Oct  3 12:58:13 2026 :: Log Alaric [0]: moved to 64 (Misty Clearing)
+Sat Oct  3 12:58:13 2026 :: Log Alaric [0]: moved to 29001 (Entrance to the Fortress)
+Sat Oct  3 12:58:13 2026 :: Log Alaric [0]: moved to 29002 (Inside Korzath's Private Fortress)
+Sat Oct  3 12:58:13 2026 :: Log Alaric [0]: moved to 29003 (Grand Foyer)
+Sat Oct  3 12:58:13 2026 :: Log Alaric [0]: moved to 29004 (Center Tunnelway)
+Sat Oct  3 12:58:15 2026 :: Log Alaric [29004]: kill gu
