@@ -1242,10 +1242,15 @@ it. `load_char_obj` grants it to anyone at `REMORTS_FOR_SHADOWMELD` who
 holds none, which carries the characters who earned it when it was a flat
 flag.
 
-**Against players it is stealth, not hide.** `concealment_chance()` in
-`handler.c` is the one place the roll and its weather modifiers live, and
-both skills go through it, so the two cannot drift. Detect hidden does
-not beat it; holylight does, from the shortcut above. Faerie fog strips
+**Stealth and shadowmeld are invisible without holylight -- no roll.**
+The owner's rule (2026-10-03). `can_see` used to roll a concealment
+chance against the weather on every look, so a stealthed level 20 in
+daylight was seen seven looks in ten and blinked in and out between two
+LOOKs. Now only holylight and the Triforce, from the shortcut above, see
+either; detect hidden does not. Getting the bit is still a skill roll,
+made when STEALTH or SHADOWMELD is used, and a stealthed mobile that is
+fighting shows itself, as a hiding one does. `tests/test_mob_stealth.py`
+pins all of it; do not reintroduce a per-look roll. Faerie fog strips
 it, `damage()` breaks it for the attacker (which covers spells, where
 `multi_hit` covers only melee), WHERE omits a melded character and
 DANGER SENSE counts them, all exactly as they do for stealth.

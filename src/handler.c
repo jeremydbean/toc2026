@@ -2995,35 +2995,6 @@ bool can_see_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 
 
 /*
- * How likely a concealed character is to go unnoticed.
- *
- * Stealth and shadowmeld both roll this, so the two cannot drift apart --
- * shadowmeld is stealth that holds while you stay put. The modifiers are
- * the hour and the weather: there is less to hide in at noon under a
- * cloudless sky than at midnight in the rain.
- */
-static int concealment_chance( const CHAR_DATA *victim, int sn )
-{
-    int chance = get_skill( victim, sn );
-
-    if ( weather_info.sunlight == SUN_RISE || weather_info.sunlight == SUN_SET )
-        chance -= 10;
-    if ( weather_info.sunlight == SUN_LIGHT )
-        chance -= 20;
-    if ( weather_info.sunlight == SUN_DARK )
-        chance += 10;
-
-    if ( weather_info.sky == SKY_RAINING || weather_info.sky == SKY_CLOUDY )
-        chance += 10;
-    if ( weather_info.sky == SKY_CLOUDLESS )
-        chance -= 10;
-    if ( weather_info.sky == SKY_LIGHTNING )
-        chance += 15;
-
-    return chance;
-}
-
-/*
  * The complete Triforce, worn in the light slot, gives its wearer the
  * sight of a level TRIFORCE_SIGHT_LEVEL character with HOLYLIGHT on:
  * through darkness, blindness, invisibility, hiding, stealth and
@@ -3194,19 +3165,24 @@ bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
     &&   !IS_AFFECTED(ch, AFF_DETECT_INVIS ) )
 	return false;
 
+    /*
+     * Stealth and shadowmeld are invisibility without a counter: only
+     * holylight and the Triforce, in the shortcut above, see through
+     * them. The owner's rule. They used to roll concealment_chance on
+     * every look, so a stealthed level 20 in daylight was visible seven
+     * looks in ten and blinked in and out between two LOOKs.
+     *
+     * Whether you get the bit at all is still a skill roll -- STEALTH and
+     * SHADOWMELD roll when used -- and striking ends both (damage() for
+     * stealth, the meld rules for shadowmeld). A stealthed mobile that is
+     * fighting shows itself, as a hiding one does, so a player can always
+     * see what is attacking them.
+     */
     if ( IS_AFFECTED2(victim, AFF2_STEALTH)
-    &&   number_percent() < concealment_chance( victim, gsn_stealth ) )
+    &&   !( IS_NPC(victim) && victim->fighting != NULL ) )
 	return false;
 
-    /*
-     * Against another player shadowmeld is stealth: the same roll against
-     * the same weather, and detect hidden does not beat it. Holylight
-     * does, from the shortcut above. The !IS_NPC guard is for a builder
-     * who sets the bit on a mobile -- get_skill has no answer for this sn
-     * on a mob and would read an uninitialised local.
-     */
-    if ( IS_AFFECTED2(victim, AFF2_SHADOWMELD) && !IS_NPC(victim)
-    &&   number_percent() < concealment_chance( victim, gsn_shadowmeld ) )
+    if ( IS_AFFECTED2(victim, AFF2_SHADOWMELD) )
 	return false;
 
     if ( IS_AFFECTED(victim, AFF_HIDE)

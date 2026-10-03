@@ -2,10 +2,10 @@
 
 Shadowmeld is stealth with the timer taken off and the room nailed
 down: sit, sleep, read, and it holds. Moving ends it, VIS ends it, and
-so does swinging at somebody. Against another player it rolls exactly
-as stealth does, weather and all, and detect hidden does not beat it;
-holylight does. Mobiles cannot see a melded character at all, which is
-the point -- it is the one state that is safe to leave the keyboard in.
+so does swinging at somebody. Nobody sees a melded character -- no
+roll, and detect hidden does not beat it -- except through holylight
+or the Triforce. Mobiles never see one, which is the point: it is the
+one state that is safe to leave the keyboard in.
 
 It is an ordinary skill. Nothing teaches it and no guildmaster sells
 it, so it is held only by a character who has taken their fourth
@@ -271,15 +271,20 @@ class ShadowmeldSourceTests(unittest.TestCase):
         # The remort count is no longer the gate; holding the skill is.
         self.assertNotIn("REMORTS_FOR_SHADOWMELD", body)
 
-    def test_players_roll_against_it_exactly_as_they_do_stealth(self) -> None:
-        """Detect hidden used to beat it. It does not any more."""
-        body = self.handler.split("bool can_see(")[1]
-        self.assertIn("concealment_chance( victim, gsn_stealth )", body)
-        self.assertIn("concealment_chance( victim, gsn_shadowmeld )", body)
+    def test_nobody_sees_it_without_holylight(self) -> None:
+        """No roll: the owner's rule is that stealth and shadowmeld are
+        invisible without holylight. Detect hidden does not beat either."""
+        body = self.handler.split("bool can_see(")[1].split("bool can_see_obj(")[0]
+        self.assertNotIn("concealment_chance(", body)
+        self.assertIn("if ( IS_AFFECTED2(victim, AFF2_SHADOWMELD) )\n\treturn false;",
+                      body.replace("\r\n", "\n"))
         self.assertNotIn(
             "IS_AFFECTED2(victim, AFF2_SHADOWMELD)\n    &&   !IS_AFFECTED(ch, AFF_DETECT_HIDDEN)",
             body,
         )
+        # Holylight and the Triforce are asked before either.
+        self.assertLess(body.index("triforce_sight( ch )"),
+                        body.index("AFF2_SHADOWMELD) )"))
 
     def test_a_later_remort_never_costs_the_skill(self) -> None:
         act_info = (ROOT / "src" / "act_info.c").read_text(encoding="utf-8")
