@@ -2469,7 +2469,10 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
         wizinfo(log_buf,LEVEL_IMMORTAL);
         wizinfo_same_host( d, ch );
 
-	if ( IS_HERO(ch) )
+	/* Staff only, by trust. This was IS_HERO -- level 51 -- while every
+	   IMOTD topic is level 60 or more, so each hero logging in was told
+	   "No help on that word." before the MOTD. */
+	if ( IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
 	{
 	    do_help( ch, "imotd" );
 	    d->connected = CON_READ_IMOTD;

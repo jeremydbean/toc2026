@@ -7266,18 +7266,18 @@ A small key for Hyrule's dungeon doors. UNLOCK a locked door with it
 and the lock keeps it. It stays with you when you leave the game.
 ~
 #30551
-blue ring shop~
-the Blue Ring~
-The Blue Ring is displayed for 250 rupees.~
+blue ring hyrule shop~
+the Blue Ring of Hyrule~
+The Blue Ring of Hyrule is displayed for 250 rupees.~
 gold~
 9 N AB
 5 5 5 3 0
-24 1 2500000 P
+45 1 2500000 P
 E
-blue ring~
-A plain blue band. Worn, it takes a tenth off every blow you suffer,
-as the Blue Ring of Hyrule does; two rings never add together, and only
-the stronger ward counts.
+blue ring hyrule~
+The Blue Ring of Hyrule, a sapphire band. Worn, it takes a tenth off
+every blow you suffer, 10 percent. Worn with the Red Ring the two wards
+stack, but only one of each ring may be worn.
 ~
 A
 13 15
@@ -7395,26 +7395,6 @@ A
 13 100
 A
 24 -2
-#30578
-blue ring hyrule wisdom ganon relic~
-the Blue Ring of Hyrule~
-A blue ring shines here with a cool protective light.~
-gold~
-9 G AB
-8 8 8 6 0
-54 1 160000000 P
-E
-blue ring hyrule wisdom~
-The sapphire band turns danger aside with quiet wisdom. While worn, it reduces
-all damage you take by 10 percent. Its ward does not stack with the Red Ring or
-a second Blue Ring; only the strongest ring ward applies.
-~
-A
-13 60
-A
-12 40
-A
-24 -1
 #30579
 red ring hyrule power relic~
 the Red Ring of Hyrule~
@@ -7427,9 +7407,9 @@ E
 red ring hyrule power~
 The ruby band holds the hard-won power of Death Mountain, and lies in its
 deepest cellar. While worn, it wraps you in sanctuary for as long as it is
-on your finger, and it reduces all damage you take by 20 percent. Its ward
-does not stack with the Blue Ring or a second Red Ring; only the strongest
-ring ward applies.
+on your finger, and it reduces all damage you take by 20 percent. Worn with
+the Blue Ring of Hyrule the two wards stack, but only one Red Ring may be
+worn.
 ~
 A
 5 2
@@ -7451,7 +7431,7 @@ E
 mirror shield hyrule light~
 The shield's flawless face turns sorcery and elemental force back toward the
 dark. While worn, it reduces nonphysical damage by 15 percent. This protection
-can combine with one Blue or Red Ring ward.
+combines with the Blue and Red Rings' wards.
 ~
 A
 24 -4

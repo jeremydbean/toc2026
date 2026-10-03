@@ -50,12 +50,13 @@
 /*
  * One of these, at random, beside the Master Sword Ganon always carries.
  * The Red Ring of Hyrule is not here: it lies in Death Mountain's cellar,
- * where the NES keeps it, so it is found rather than rolled for.
+ * where the NES keeps it, so it is found rather than rolled for. Nor is
+ * the Blue Ring of Hyrule: it is the one the ring shop sells, and by
+ * Ganon the Red Ring is the better ward.
  */
 static const int hyrule_ganon_loot_vnums[] =
 {
     OBJ_VNUM_HYRULE_HEROS_TUNIC,
-    OBJ_VNUM_HYRULE_BLUE_RING,
     OBJ_VNUM_HYRULE_MIRROR_SHIELD,
     OBJ_VNUM_HYRULE_PEGASUS_BOOTS
 };
@@ -161,11 +162,13 @@ static int apply_hyrule_relic_damage_reduction( CHAR_DATA *victim, int dam,
     if ( victim == NULL || IS_NPC(victim) || dam <= 0 )
         return dam;
 
+    /* The Red Ring takes a fifth and the Blue a tenth, and worn together
+       they stack -- 28 percent in all. Only one of each can be worn
+       (unique_ring_twin), so neither ever counts twice. */
     original_damage = dam;
     if ( wears_object_vnum(victim, OBJ_VNUM_HYRULE_RED_RING) )
         dam = dam * 80 / 100;
-    else if ( wears_object_vnum(victim, OBJ_VNUM_HYRULE_BLUE_RING)
-         ||   wears_object_vnum(victim, OBJ_VNUM_HYRULE_SHOP_BLUE_RING) )
+    if ( wears_object_vnum(victim, OBJ_VNUM_HYRULE_BLUE_RING) )
         dam = dam * 90 / 100;
 
     /* The Mirror Shield and the shops' Magical Shield both turn magic and

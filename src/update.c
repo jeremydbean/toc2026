@@ -816,6 +816,16 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
 	if(iCond == 0 && ch->pcdata->condition[iCond] > 0)
 	  --ch->pcdata->condition[iCond];
 
+	/* A hero neither hungers nor fills, so hunger and thirst stand
+	   still -- and used to stand still wherever they were. A hero who
+	   levelled while sated, or was RESTOREd (which sets them to 100),
+	   was "too full to eat" for good: no food, no pills, no training
+	   cakes. Hold them at a middling value instead, which reads as
+	   neither hungry nor full; -1 (never hungry) is left alone. */
+	if ( ( iCond == COND_FULL || iCond == COND_THIRST )
+	&&   ch->pcdata->condition[iCond] != -1 )
+	  ch->pcdata->condition[iCond] = HERO_CONDITION;
+
 	return;
     }
 

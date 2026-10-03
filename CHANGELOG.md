@@ -16,6 +16,21 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   Undead Cleric (up to 45,000) were broken the same way. The fields are
   `int` now, and the area loader stopped clamping a mobile's hit dice at
   32,767. `tests/test_big_hit_points.py`.
+- **Heroes are never too full to eat.** Hunger stands still from level 51,
+  and stood still wherever it was: a hero who levelled sated, or was
+  RESTOREd (which sets it to 100), could never eat food, a pill or a
+  training cake again. Hunger and thirst now sit at a middling value for a
+  hero, and EAT never refuses one for fullness. (Alaric's report.)
+- **No "No help on that word" at login.** Heroes were shown the immortal
+  MOTD, whose topics are all staff-only; it is for immortals by trust now.
+  And every login printed the MOTD command's own help ("Syntax: motd")
+  instead of the message of the day, because that entry loaded first and
+  hid the real one; the MOTD and IMOTD command entries are gone, and the
+  real IMOTD is level 60 so every immortal sees it. (Alaric's report.)
+- **One Blue Ring of Hyrule, and it stacks with the Red.** The ring shop's
+  Blue Ring is the Blue Ring of Hyrule, level 45, taking a tenth off every
+  blow; Ganon no longer rolls a second one. Worn together the Red and Blue
+  wards stack to 28 percent, and only one of each may be worn.
 - **Ganon is a hard fight, not an execution.** With his hit points finally
   holding, his fireballs (1,400-1,900, two every four seconds, no parry)
   out-damaged a level 59's whole health in one pulse through sanctuary,

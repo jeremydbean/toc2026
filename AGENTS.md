@@ -185,13 +185,15 @@ Current October 2026 Python baseline:
 ```text
 100 listed area entries
 2,495 mobiles
-3,669 objects
+3,668 objects
 7,787 rooms
-0 critical, 12 warning, 1,583 information findings
+0 critical, 12 warning, 1,582 information findings
 ```
 
-Removing the catalog's unplaced plain red ring (`30261`) took one object
-and one `object-has-no-source` finding off in October 2026.
+Removing the catalog's unplaced plain red ring (`30261`) and Ganon's copy
+of the Blue Ring of Hyrule (`30578`, the shop's ring now carries the name)
+took two objects and two `object-has-no-source` findings off in October
+2026.
 
 Hyrule's NES pass (October 2026) moved all three. Mobiles rose by 68: the
 78 people of Hyrule became a record each, replacing nine shared ones, and

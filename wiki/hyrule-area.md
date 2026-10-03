@@ -533,13 +533,12 @@ on**, and no more:
 ### Ganon Relics
 
 Ganon's corpse contains his crown, his trident and the Golden Key, plus
-exactly one random relic from this table. All four random rewards
+exactly one random relic from this table. All three random rewards
 are usable below the immortal level boundary:
 
 | Relic | Vnum | Level | Slot | Unique effect |
 | --- | ---: | ---: | --- | --- |
 | Hero's Tunic | `30577` | 54 | Body | Restores up to 5% maximum hp after the wearer personally kills an NPC, capped at twice the victim's level |
-| Blue Ring of Hyrule | `30578` | 54 | Finger | Reduces all incoming damage by 10% |
 | Pegasus Boots | `30581` | 55 | Feet | Reduces movement spent traveling on foot by 25%, with a minimum cost of one |
 | Mirror Shield | `30580` | 56 | Shield | Reduces nonphysical damage by 15% |
 
@@ -550,9 +549,10 @@ It is found now, not rolled for: it lies in Death Mountain's Red Ring Cellar
 incoming damage by 20%, and it gives permanent sanctuary while worn through an
 `F` record (`A 0 0 H`), applied and lifted like the Master Sword's haste.
 
-Blue and Red Ring wards use the strongest single value; wearing two does not
-stack their percentage reduction. The Mirror Shield is a separate ward and can
-combine with one Ring. Pegasus Boots do not reduce a mount's movement cost.
+The Blue and Red Ring wards stack, multiplying to 28 percent worn together,
+but only one of each may be worn: WEAR refuses a second (`unique_ring_twin`
+in `handler.c`, keyed on `IS_UNIQUE_RING_VNUM`) and COMPARE never suggests
+one. The Mirror Shield is a separate ward and combines with both. Pegasus Boots do not reduce a mount's movement cost.
 The advanced `compare` model includes every relic passive and lists active
 relic effects in its projected loadouts; it already reads object affect bits,
 so it counts the sword's haste and the ring's sanctuary as well.
@@ -751,7 +751,7 @@ as `open <keyword>`, so a published route stays honest.
 | Raft, Stepladder | The crossings; the stepladder is worn armour too |
 | Magical Key | Opens every small-key door without being used up |
 | Small key | Opens one small-key door; kept through a quit now |
-| Blue Ring (shop) | Takes 10% off every blow, as the relic does; rings never stack |
+| Blue Ring of Hyrule (shop, `30551`, level 45) | Takes 10% off every blow; stacks with the Red Ring, one of each. Ganon used to roll a level 54 copy (`30578`); it was removed in October 2026, the Red Ring being the better ward by then |
 | Magical Shield | Armour and saves; takes 10% off fire and magic, not with the Mirror Shield |
 | Heart Container | Held for hit points; a taken one counts as a heart |
 | Fairy, heart, clock | Drops, as before |

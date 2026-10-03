@@ -57,6 +57,8 @@ NEW_OBJECT_VNUMS = (
 # nothing placed it after that and no saved character held one, so the
 # owner had it removed rather than leave a second red ring in VNUM.
 RETIRED_OBJECT_VNUMS = {30261}
+# 30578, Ganon's Blue Ring of Hyrule, sits inside NEW_OBJECT_VNUMS and is
+# simply no longer written: the shop's ring (30551) took its name.
 
 # Everyone who is not an enemy has a record of their own, written from the
 # "npcs" table of data/hyrule_mob_prose.json: each dungeon and cave old man,
@@ -1907,30 +1909,9 @@ A
 A
 24 -2""",
         ),
-        object_record(
-            30578,
-            "blue ring hyrule wisdom ganon relic",
-            "the Blue Ring of Hyrule",
-            "A blue ring shines here with a cool protective light.",
-            "gold",
-            "9 G AB",
-            "8 8 8 6 0",
-            54,
-            1,
-            16000,
-            """E
-blue ring hyrule wisdom~
-The sapphire band turns danger aside with quiet wisdom. While worn, it reduces
-all damage you take by 10 percent. Its ward does not stack with the Red Ring or
-a second Blue Ring; only the strongest ring ward applies.
-~
-A
-13 60
-A
-12 40
-A
-24 -1""",
-        ),
+        # 30578, a Blue Ring of Hyrule Ganon rolled for, is gone: the
+        # ring shop's Blue Ring (30551) is the Blue Ring of Hyrule, and by
+        # Ganon the Red Ring is the better ward anyway (the owner's call).
         object_record(
             30579,
             "red ring hyrule power relic",
@@ -1946,9 +1927,9 @@ A
 red ring hyrule power~
 The ruby band holds the hard-won power of Death Mountain, and lies in its
 deepest cellar. While worn, it wraps you in sanctuary for as long as it is
-on your finger, and it reduces all damage you take by 20 percent. Its ward
-does not stack with the Blue Ring or a second Red Ring; only the strongest
-ring ward applies.
+on your finger, and it reduces all damage you take by 20 percent. Worn with
+the Blue Ring of Hyrule the two wards stack, but only one Red Ring may be
+worn.
 ~
 A
 5 2
@@ -1974,7 +1955,7 @@ A 0 0 {AFF_SANCTUARY_FLAG}""",
 mirror shield hyrule light~
 The shield's flawless face turns sorcery and elemental force back toward the
 dark. While worn, it reduces nonphysical damage by 15 percent. This protection
-can combine with one Blue or Red Ring ward.
+combines with the Blue and Red Rings' wards.
 ~
 A
 24 -4
@@ -2092,10 +2073,10 @@ def new_object_records(manifest: dict[str, Any]) -> str:
         object_record(30548, "food bait shop", "enemy bait", "Enemy bait is displayed for 100 rupees.", "meat", "19 N A", "H 0 0 0 0", 20, 3, 100, BAIT_LORE),
         object_record(30549, "heart recovery shop", "a Recovery Heart", "A Recovery Heart is displayed for 10 rupees.", "crystal", "10 N AO", "10 28 0 0 0", 1, 1, 10),
         object_record(30550, "key small bargain shop", "a small key", "A small key is displayed for 80 rupees.", "iron", "18 N A", "0 0 0 0 0", 1, 1, 80, SMALL_KEY_LORE),
-        object_record(30551, "blue ring shop", "the Blue Ring", "The Blue Ring is displayed for 250 rupees.", "gold", "9 N AB", "5 5 5 3 0", 24, 1, 250,
-                      "E\nblue ring~\nA plain blue band. Worn, it takes a tenth off every blow you suffer,\n"
-                      "as the Blue Ring of Hyrule does; two rings never add together, and only\n"
-                      "the stronger ward counts.\n~\nA\n13 15"),
+        object_record(30551, "blue ring hyrule shop", "the Blue Ring of Hyrule", "The Blue Ring of Hyrule is displayed for 250 rupees.", "gold", "9 N AB", "5 5 5 3 0", 45, 1, 250,
+                      "E\nblue ring hyrule~\nThe Blue Ring of Hyrule, a sapphire band. Worn, it takes a tenth off\n"
+                      "every blow you suffer, 10 percent. Worn with the Red Ring the two wards\n"
+                      "stack, but only one of each ring may be worn.\n~\nA\n13 15"),
         object_record(30552, "food bait bargain shop", "enemy bait", "Enemy bait is displayed for 60 rupees.", "meat", "19 N A", "H 0 0 0 0", 20, 3, 60, BAIT_LORE),
         object_record(30553, "blue life potion medicine shop", "a blue Life Potion", "A blue Life Potion is displayed for 40 rupees.", "glass", "10 N AO", "30 28 28 0 0", 1, 2, 40,
                       "E\nblue life potion~\nQUAFF it and it heals you twice over.\n~"),

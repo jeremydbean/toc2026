@@ -1347,17 +1347,6 @@ Sep 2026
 See also: NEWS, MOTD, RECALL, AQUEST, REMORT, REPAIR
 ~
 
-0 MOTD~
-Syntax: motd
-
-Reprints the message of the day that is shown each time you log in.
-The MOTD is used to announce urgent news, maintenance warnings, or
-temporary game changes that affect all players.  If you miss it on
-login you can review it at any time with this command.
-
-See also: CHANGES, NEWS, RULES
-~
-
 0 NEWS~
 Syntax: news
 
@@ -1851,13 +1840,13 @@ Ganon carries the Golden Key, his crown and his trident, and leaves one
 random relic:
 
   Hero's Tunic, level 54 - heals after personally killing an NPC
-  Blue Ring of Hyrule, level 54 - reduces all incoming damage by 10 percent
   Pegasus Boots, level 55 - walking on foot costs 25 percent fewer moves
   Mirror Shield, level 56 - reduces nonphysical damage by 15 percent
 
-Only the strongest Blue or Red Ring ward applies, even if two rings are worn.
-The Mirror Shield can combine with one Ring ward.  EXAMINE each relic for its
-exact limits, and COMPARE understands these special effects.
+The Blue Ring of Hyrule (level 45, from the ring shop) takes a tenth off all
+damage.  The Red and Blue Rings stack -- 28 percent worn together -- but only
+one of each may be worn.  The Mirror Shield adds its own ward on top.  EXAMINE
+each relic for its exact limits, and COMPARE understands these special effects.
 
 The Golden Key opens Zelda's chamber and Ganon's great chest in it, which
 holds the ninth piece, the final Triforce piece, and the Master Sword (level
@@ -3068,8 +3057,8 @@ What Hyrule's tools do:
                   Life Potion heals twice.
   Small keys      Each opens one locked door, and keeps through a quit.
                   The Magical Key opens them all and is never used up.
-  Blue Ring       Takes a tenth off every blow, as the Blue Ring of Hyrule
-                  does.  Rings never add together.
+  Blue Ring       The Blue Ring of Hyrule (level 45) takes a tenth off
+                  every blow; it stacks with the Red Ring, one of each.
   Magical Shield  Takes a tenth off fire and magic (not with the Mirror
                   Shield, which does more).
   Power Bracelet  Strength while worn, and it moves the warp stones.
@@ -5883,16 +5872,6 @@ Requires training in the enervate psionic skill.
 See also: MINDLEECH, EGO WHIP, TORMENT
 ~
 
-60 IMOTD~
-Syntax: imotd
-
-Displays the Immortal Message of the Day, which contains important notices
-and updates specifically for immortal staff members.  This message is shown
-automatically when an immortal logs in.
-
-See also: MOTD, NEWS, JOBS
-~
-
 64 IPORTAL~
 Syntax: iportal <target> [timer] [description]
 
@@ -6319,14 +6298,6 @@ GKICK immediately disconnects all non-immortal players from the game.
 Use for emergencies or immediately before scheduled reboots.
 
 See also: REBOOT, SHUTDOWN, WIZLOCK
-~
-
-60 IMOTD~
-Syntax: imotd
-
-IMOTD displays the immortal message-of-the-day.
-
-See also: MOTD
 ~
 
 62 INVIS~

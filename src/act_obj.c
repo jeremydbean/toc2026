@@ -3057,7 +3057,10 @@ void do_eat( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	if ( !IS_NPC(ch) && ch->pcdata->condition[COND_FULL] > 40 )
+	/* Heroes never fill (gain_condition), so they are never too
+	   full: a pill or a training cake is not a meal. */
+	if ( !IS_NPC(ch) && ch->level < LEVEL_HERO
+	&&   ch->pcdata->condition[COND_FULL] > 40 )
 	{
 	    send_to_char( "You are too full to eat more.\n\r", ch );
 	    return;
@@ -3398,6 +3401,15 @@ void wear_obj( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace )
 
     if ( CAN_WEAR( obj, ITEM_WEAR_FINGER ) )
     {
+	OBJ_DATA *twin;
+
+	if ( ( twin = unique_ring_twin( ch, obj, -1 ) ) != NULL )
+	{
+	    act( "You already wear $p, and only one may be worn.",
+		 ch, twin, NULL, TO_CHAR );
+	    return;
+	}
+
 	if ( get_eq_char( ch, WEAR_FINGER_L ) != NULL
 	&&   get_eq_char( ch, WEAR_FINGER_R ) != NULL
 	&&   !remove_obj( ch, WEAR_FINGER_L, fReplace )

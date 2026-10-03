@@ -3071,6 +3071,33 @@ OBJ_DATA *equipment_affect_source( const CHAR_DATA *ch, int bit )
 }
 
 /*
+ * The copy of a one-of-each ring (IS_UNIQUE_RING_VNUM) the character
+ * already wears on a finger other than slot, or NULL. Pass -1 to look at
+ * both fingers. WEAR refuses a second, and COMPARE never suggests one.
+ */
+OBJ_DATA *unique_ring_twin( CHAR_DATA *ch, OBJ_DATA *obj, int slot )
+{
+    static const int fingers[] = { WEAR_FINGER_L, WEAR_FINGER_R };
+    OBJ_DATA *worn;
+    size_t i;
+
+    if ( ch == NULL || obj == NULL || obj->pIndexData == NULL
+    ||   !IS_UNIQUE_RING_VNUM( obj->pIndexData->vnum ) )
+	return NULL;
+
+    for ( i = 0; i < sizeof(fingers) / sizeof(fingers[0]); i++ )
+    {
+	if ( fingers[i] == slot )
+	    continue;
+	worn = get_eq_char( ch, fingers[i] );
+	if ( worn != NULL && worn != obj && worn->pIndexData != NULL
+	&&   worn->pIndexData->vnum == obj->pIndexData->vnum )
+	    return worn;
+    }
+    return NULL;
+}
+
+/*
  * Whether something worn grants this bit. Spells that strip a bit by
  * hand (dispel magic on sanctuary, slow on haste) ask this first, so the
  * Red Ring's sanctuary and the Master Sword's haste last exactly as long

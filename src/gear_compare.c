@@ -396,6 +396,11 @@ static bool gear_item_usable( CHAR_DATA *ch, OBJ_DATA *obj, int slot,
         snprintf( reason, reason_size, "made for another race" );
         return false;
     }
+    if ( unique_ring_twin( ch, obj, slot ) != NULL )
+    {
+        snprintf( reason, reason_size, "only one may be worn" );
+        return false;
+    }
     if ( obj->wear_loc == slot )
         return true;
     if ( ch->class == CLASS_MONK && obj->item_type == ITEM_WEAPON
@@ -1103,7 +1108,11 @@ static void gear_measure( CHAR_DATA *ch, const GEAR_PROFILE *profile,
     result->affected_by = loadout->affected_by;
     result->affected_by2 = loadout->affected_by2;
 
-    if ( loadout->hyrule_red_ring_count > 0 )
+    /* As apply_hyrule_relic_damage_reduction: the two rings stack. */
+    if ( loadout->hyrule_red_ring_count > 0
+    &&   loadout->hyrule_blue_ring_count > 0 )
+        result->relic_damage_reduction = 28;
+    else if ( loadout->hyrule_red_ring_count > 0 )
         result->relic_damage_reduction = 20;
     else if ( loadout->hyrule_blue_ring_count > 0 )
         result->relic_damage_reduction = 10;

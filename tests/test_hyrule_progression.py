@@ -543,9 +543,15 @@ class HyruleProgressionTests(unittest.TestCase):
             if reset.command == "P" and reset.arg3 in holder_band:
                 found.setdefault(reset.arg1, set()).add(holder_band[reset.arg3])
 
+        # One deliberate exception, the owner's call (October 2026): the
+        # ring shop's Blue Ring of Hyrule is level 45, bought early and
+        # saved for later, since its ward stacks with the Red Ring's.
+        above_band_by_design = {30551: 45}
         too_high = []
         for vnum, found_in in sorted(found.items()):
             obj = self.parser.objects[vnum]
+            if above_band_by_design.get(vnum) == obj.level:
+                continue
             for band in found_in:
                 if obj.level > bands[band][1]:
                     too_high.append((vnum, obj.short_desc, obj.level, band, bands[band]))
@@ -1450,7 +1456,6 @@ class HyruleProgressionTests(unittest.TestCase):
     def test_ganon_guarantees_one_random_mortal_relic(self) -> None:
         relics = {
             30577: (54, "D", {(5, 2), (13, 100), (24, -2)}, "5 percent"),
-            30578: (54, "B", {(13, 60), (12, 40), (24, -1)}, "10 percent"),
             30579: (58, "B", {(5, 2), (13, 100), (24, -3)}, "20 percent"),
             30580: (56, "J", {(24, -4), (17, -5)}, "15 percent"),
             30581: (55, "G", {(2, 2), (14, 150)}, "25 percent"),
@@ -1479,11 +1484,20 @@ class HyruleProgressionTests(unittest.TestCase):
         )[1].split("};", 1)[0]
         for constant in (
             "obj_vnum_hyrule_heros_tunic",
-            "obj_vnum_hyrule_blue_ring",
             "obj_vnum_hyrule_mirror_shield",
             "obj_vnum_hyrule_pegasus_boots",
         ):
             self.assertEqual(loot_table.count(constant), 1)
+        # The Blue Ring of Hyrule is the ring shop's, not a roll: one blue
+        # ring in the world, with the ward, and Ganon's copy gone.
+        self.assertEqual(loot_table.count("obj_vnum_hyrule_blue_ring"), 0)
+        self.assertNotIn(30578, self.parser.objects)
+        blue = self.parser.objects[30551]
+        self.assertEqual(blue.short_desc, "the Blue Ring of Hyrule")
+        self.assertIn("10 percent", " ".join(
+            " ".join(d["description"].split()) for d in blue.extra_descr))
+        self.assertIn("#define OBJ_VNUM_HYRULE_BLUE_RING     30551",
+                      Path("src/merc.h").read_text(encoding="latin-1"))
         # The Red Ring is found, not rolled for: it lies in Death
         # Mountain's Red Ring Cellar, where the NES keeps it.
         self.assertEqual(loot_table.count("obj_vnum_hyrule_red_ring"), 0)

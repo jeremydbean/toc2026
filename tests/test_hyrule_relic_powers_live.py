@@ -29,6 +29,7 @@ TRIFORCE = 30286
 LETTER = 30500          # Princess Zelda's letter: "A sealed royal letter"
 MASTER_SWORD = 30200
 RED_RING = 30579
+BLUE_RING = 30551     # the ring shop's Blue Ring of Hyrule
 CLOCK_FLASK = 30628     # the Death Mountain clock-flask: a potion of haste
 
 
@@ -157,6 +158,20 @@ class WornPowersTests(unittest.TestCase):
                 run(hero, "remove ring", settle=2.0)
                 self.assertNotIn("sanctuary", affected_by(god, "zswordhand"))
                 self.assertNotIn("'sanctuary'", run(hero, "affect", settle=1.5))
+
+                # One of each ring: a second Blue Ring is refused, the Red
+                # Ring beside it is not (their wards stack).
+                for _ in range(2):
+                    run(god, f"load obj {BLUE_RING}")
+                    run(god, "give blue zswordhand")
+                self.assertIn("You wear the Blue Ring of Hyrule",
+                              run(hero, "wear blue", settle=2.0))
+                second = run(hero, "wear blue", settle=2.0)
+                self.assertIn("only one may be worn", second)
+                self.assertIn("You wear the Red Ring of Hyrule",
+                              run(hero, "wear red", settle=2.0))
+                run(hero, "remove blue", settle=1.5)
+                run(hero, "remove red", settle=1.5)
 
                 # Haste from a spell outlasts the sword.
                 quaffed = run(hero, "quaff clock", settle=2.0)

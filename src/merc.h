@@ -1265,7 +1265,11 @@ const char *default_prompt_text args( ( void ) );
 #define OBJ_VNUM_HYRULE_SILVER_ARROW 30218
 #define HYRULE_SILVER_ARROW_LEVEL      54
 #define OBJ_VNUM_HYRULE_HEROS_TUNIC  30577
-#define OBJ_VNUM_HYRULE_BLUE_RING     30578
+#define OBJ_VNUM_HYRULE_BLUE_RING     30551   /* the ring shop's; Ganon's 30578 is gone */
+/* One of each may be worn: the Red and Blue Rings' wards stack with each
+   other, so a second of the same would be a free extra ward. */
+#define IS_UNIQUE_RING_VNUM(v)  ( (v) == OBJ_VNUM_HYRULE_RED_RING \
+                              || (v) == OBJ_VNUM_HYRULE_BLUE_RING )
 #define OBJ_VNUM_HYRULE_RED_RING      30579
 #define OBJ_VNUM_HYRULE_MIRROR_SHIELD 30580
 #define OBJ_VNUM_HYRULE_PEGASUS_BOOTS 30581
@@ -1349,7 +1353,6 @@ const char *default_prompt_text args( ( void ) );
 #define OBJ_VNUM_HYRULE_ARROWS            30543
 #define OBJ_VNUM_HYRULE_SHOP_KEY          30545
 #define OBJ_VNUM_HYRULE_SHOP_KEY_CHEAP    30550
-#define OBJ_VNUM_HYRULE_SHOP_BLUE_RING    30551
 #define OBJ_VNUM_HYRULE_BLUE_POTION       30553
 #define OBJ_VNUM_HYRULE_RED_POTION        30554
 #define OBJ_VNUM_HYRULE_MAGICAL_SWORD     30649
@@ -1725,6 +1728,7 @@ typedef struct hyrule_dungeon_gate
 #define COND_DRUNK                    0
 #define COND_FULL                     1
 #define COND_THIRST                   2
+#define HERO_CONDITION               24    /* where a hero's hunger and thirst sit */
 
 /* Positions. */
 #define POS_DEAD                      0
@@ -3132,6 +3136,7 @@ bool    triforce_sight  ( const CHAR_DATA *ch );
 int     sight_trust     ( const CHAR_DATA *ch );
 bool    equipment_grants_affect ( const CHAR_DATA *ch, int bit );
 OBJ_DATA *equipment_affect_source ( const CHAR_DATA *ch, int bit );
+OBJ_DATA *unique_ring_twin        ( CHAR_DATA *ch, OBJ_DATA *obj, int slot );
 #define MAX_GEAR_AFFECTS 12
 int     equipment_affects       ( const CHAR_DATA *ch, const char **names,
                                   OBJ_DATA **sources, int max );
