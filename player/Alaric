@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791060370
+LogO 1791060621
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 266571
+Plyd 266822
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 4210
-HMV  1154 1154 1432 1432 311 311
+Room 16075
+HMV  6701 6924 8374 8592 959 1866
 NewGold 4
 NewPlat 171
 NewCopp 16
@@ -109,7 +109,8 @@ CasinoWon  51
 CasinoLost 304
 Exp  126232
 Act  4261068
-AfBy 568
+AfBy 3678912
+AfBy2 4104
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -134,16 +135,16 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  4
+Pos  8
 Prac 6
 Trai 1
 Save  -7
 Alig  1000
-Hit   37
-Dam   53
+Hit   67
+Dam   83
 ACs -176 -188 -141 -3
 Attr 22 13 12 16 15
-AMod 8 10 10 7 8
+AMod 23 25 25 22 23
 Pass Al3w9zuAlwpyY~
 Titl  the Heroine of the Third Order~
 Pnts 0
@@ -191,9 +192,31 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'detect hidden'   0   2   0   0         32          0
-AffD 'detect magic'   0   2   0   0         16          0
-AffD 'detect invis'  33   2   0   0          8          0
+AffD 'berserk'   0   4 100  17         64          0
+AffD 'berserk'   0   4  10  19         64          0
+AffD 'berserk'  31   4  10  18         64          0
+AffD 'titanic'   0  55  50  16          0          0
+AffD 'titanic'   0  55 1555  14          0          0
+AffD 'titanic'   0  55 7160  12          0          0
+AffD 'titanic'   0  55 5770  13          0          0
+AffD 'empower'   0  55 -100  17          0          0
+AffD 'empower'   0  55  20  19          0          0
+AffD 'empower'   0  55  20  18          0          0
+AffD 'empower'   0  55  15   5          0          0
+AffD 'empower'   0  55  11   2          0          0
+AffD 'empower'   0  55  15   4          0          0
+AffD 'empower'   0  55  15   3          0          0
+AffD 'giant strength'   0  55  15   1          0          0
+AffD 'divine protection'   0  55   0   0          0       4096
+AffD 'fire shield'   0  55   0   0          0          8
+AffD 'protection evil'   0  55   0   0       8192          0
+AffD 'pass door'   0  55   0   0    1048576          0
+AffD 'fly'   0  55   0   0     524288          0
+AffD 'haste'   0  55   4   2    2097152          0
+AffD 'sanctuary'   0  55   0   0        128          0
+AffD 'empower'   0  55   0   0          0          0
+AffD 'fly'   1   7   0   0     524288          0
+AffD 'mindbar'   1   4   0   0          0          0
 End
 
 #O
@@ -950,7 +973,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 325
+Time 320
 Cost 0
 Cond 100
 Repd 0
@@ -1068,16 +1091,6 @@ Lev  52
 Cost 24090000
 Cond 98
 Repd 0
-End
-
-#O
-Vnum 3091
-Nest 0
-Wear -1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'fly'
 End
 
 #O
