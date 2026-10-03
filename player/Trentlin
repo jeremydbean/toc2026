@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1791055915
+LogO 1791056200
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring  ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 5
-Plyd 1974
+Plyd 2259
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 123
-HMV  67 67 142 142 120 120
+Room 2507
+HMV  67 67 142 142 26 120
 NewGold 99
 NewPlat 4
-NewCopp 84
-NewSilv 1
+NewCopp 114
+NewSilv 7
 BankCP 0
 IntTime 1791054012
 IntTotal 0
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 30
+AchKills 31
 AchQuests 0
 AchDeaths 0
 AchExplore 0
@@ -44,9 +44,11 @@ AchTriforce 0
 Achv level-5 1791055385
 Achv first-kill 1791054159
 Achv visit-mud-school 1791053973
+Achv visit-casino 1791056149
 Achv visit-smurf 1791055506
 Achv carry-one-platinum 1791054979
 Achv four-denominations 1791055231
+Achv visit-froboz 1791055958
 LastOut  1791055183
 SesLogin 0
 SesDur   0
@@ -56,7 +58,7 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  12990
+Exp  13443
 Act  65740
 AfBy 512
 Comm 24576
@@ -87,7 +89,7 @@ Pos  8
 Prac 9
 Trai 1
 Save  -8
-Alig  -22
+Alig  -21
 Hit   9
 Dam   2
 ACs 87 88 88 99
@@ -99,7 +101,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 67 142 124
-Cond 0 16 16
+Cond 0 11 11
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -137,8 +139,8 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'bless'  14  35  -7  24          0          0
-AffD 'bless'  17  35   7  18          0          0
+AffD 'bless'  14  30  -7  24          0          0
+AffD 'bless'  15  30   7  18          0          0
 End
 
 #O
@@ -148,7 +150,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 168 0 0
+Val  0 0 163 0 0
 End
 
 #O
@@ -193,7 +195,7 @@ Vnum 3708
 Nest 0
 Wear 8
 Cost 0
-Cond 99
+Cond 98
 Repd 0
 End
 
