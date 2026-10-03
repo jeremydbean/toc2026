@@ -293,6 +293,11 @@ def read_objects(text: str) -> list[dict]:
                 if letter == "A":
                     stream.number()
                     stream.number()
+                elif letter == "F":           # where, location, modifier, bits
+                    stream.letter()
+                    stream.number()
+                    stream.number()
+                    stream.token()
                 elif letter in ("E", "T"):
                     stream.string()
                     stream.string()

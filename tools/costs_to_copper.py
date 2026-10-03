@@ -173,6 +173,11 @@ def cost_spans(text: str) -> tuple[list[tuple[int, int, int]], list[str]]:
                 if letter == "A":
                     stream.number()
                     stream.number()
+                elif letter == "F":           # where, location, modifier, bits
+                    stream.letter()
+                    stream.number()
+                    stream.number()
+                    stream.token()
                 elif letter in ("E", "T"):
                     stream.string()
                     stream.string()

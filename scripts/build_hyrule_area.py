@@ -5,6 +5,8 @@ What is generated, and from where:
 - Rooms and resets come from ``data/hyrule_first_quest.json`` (the NES
   topology, the enemies each NES screen or room shows, the level bands)
   and their names and prose from ``data/hyrule_room_prose.json``.
+- What the enemies and the bosses look like -- their room line and their
+  description -- comes from ``data/hyrule_mob_prose.json``.
 - Every enemy that fights is generated here, as one record per kind per
   level band (see ENEMY_TYPES), so a keese in Level 1 and a keese on Death
   Mountain are different mobiles statted for their own band.
@@ -30,6 +32,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST = ROOT / "data" / "hyrule_first_quest.json"
 DEFAULT_PROSE = ROOT / "data" / "hyrule_room_prose.json"
+DEFAULT_MOB_PROSE = ROOT / "data" / "hyrule_mob_prose.json"
 DEFAULT_AREA = ROOT / "area" / "hyrule.are"
 
 DIRECTION_NUMBERS = {
@@ -45,6 +48,7 @@ NEW_OBJECT_VNUMS = (
     set(range(30500, 30515))
     | {30520}
     | set(range(30530, 30591))
+    | set(range(30591, 30630))     # heart containers and enemy drops
 )
 
 BOSS_MOBS = {
@@ -145,8 +149,6 @@ class EnemyType:
     race: str
     keywords: str
     short: str
-    long: str
-    description: str
     rank: float          # where in its band it sits: 0 bottom, 1 top
     hp: float = 1.0      # hit points against an ordinary mobile of its level
     damage: float = 1.0  # damage against an ordinary mobile of its level
@@ -160,223 +162,118 @@ ENEMY_TYPES: dict[str, EnemyType] = {
     # The overworld.
     "red_octorok": EnemyType(
         0, "fish", "octorok red", "a red octorok",
-        "A red octorok waddles through the grass, cheeks puffed with a rock.",
-        "A squat red creature on four stubby legs, all mouth and bulging eyes.\n"
-        "It spits stones with surprising force, then waddles off to find a\n"
-        "better angle.", 0.0, 0.8, 0.8, 6, size="S"),
+        0.0, 0.8, 0.8, 6, size="S"),
     "blue_octorok": EnemyType(
         1, "fish", "octorok blue", "a blue octorok",
-        "A blue octorok turns its snout toward you and spits.",
-        "Bigger and steadier than its red cousins, the blue octorok plants its\n"
-        "stubby legs and fires stone after stone without hurrying.",
         0.35, 1.0, 1.0, 6, size="S"),
     "red_moblin": EnemyType(
         2, "pig", "moblin red", "a red moblin",
-        "A red moblin stalks between the trees with a spear on its shoulder.",
-        "A dog-faced brute in a ragged loincloth, the moblin carries a\n"
-        "bundle of crude spears and throws them with more strength than aim.",
         0.3, 1.0, 1.0, 2),
     "blue_moblin": EnemyType(
         3, "pig", "moblin blue", "a blue moblin",
-        "A blue moblin snorts and lowers its spear.",
-        "Heavier and meaner than the red moblins, this one has thrown a great\n"
-        "many spears and learned from the ones that missed.",
         0.6, 1.15, 1.1, 2),
     "red_tektite": EnemyType(
         122, "insect", "tektite red spider", "a red tektite",
-        "A red tektite crouches on its spindly legs, ready to spring.",
-        "A one-eyed hopping spider with legs like bent wire. It bounds from\n"
-        "rock to rock in great unpredictable arcs.",
-        0.1, 0.7, 0.8, 10, "F", "S"),
+        0.1, 0.7, 0.8, 10, off="F", size="S"),
     "blue_tektite": EnemyType(
         5, "insect", "tektite blue spider", "a blue tektite",
-        "A blue tektite bobs on its long legs, watching you with its one eye.",
-        "Larger than the red kind and far more patient, the blue tektite waits\n"
-        "until you are close before it leaps.",
-        0.45, 0.9, 0.9, 10, "F", "S"),
+        0.45, 0.9, 0.9, 10, off="F", size="S"),
     "red_leever": EnemyType(
         6, "insect", "leever red sand", "a red leever",
-        "A red leever spins up out of the sand in a spray of grit.",
-        "A burrowing thing like a spinning thistle of hard red leaves. It\n"
-        "surfaces beside its prey, whirls at them and sinks away again.",
         0.2, 0.9, 0.9, 22, size="S"),
     "blue_leever": EnemyType(
         7, "insect", "leever blue sand", "a blue leever",
-        "A blue leever rises from the sand and whirls toward you.",
-        "The blue leevers burrow deeper and surface harder than the red, and\n"
-        "they do not give up the chase.",
         0.55, 1.1, 1.0, 22, size="S"),
     "red_lynel": EnemyType(
         127, "horse", "lynel red centaur lion", "a red lynel",
-        "A red lynel paces the rocks, sword drawn and mane bristling.",
-        "A lion's head on a horse's body, with a man's arms that hold a broad\n"
-        "sword and a shield. Lynels throw their swords like spears.",
-        0.8, 1.3, 1.2, 3, "K", "L"),
+        0.8, 1.3, 1.2, 3, off="K", size="L"),
     "blue_lynel": EnemyType(
         8, "horse", "lynel blue centaur lion", "a blue lynel",
-        "A blue lynel stamps a hoof and raises its sword.",
-        "The blue lynels are the terror of the high country: tireless, armoured\n"
-        "in hide like iron, and never far from the next of their kind.",
-        1.0, 1.5, 1.3, 3, "K", "L"),
+        1.0, 1.5, 1.3, 3, off="K", size="L"),
     "peahat": EnemyType(
         135, "plant", "peahat spinning flower", "a peahat",
-        "A peahat skims over the ground on whirling petals.",
-        "A thorny flower whose petals spin like a rotor, carrying it just out\n"
-        "of reach. It is easiest to strike when it settles to rest.",
-        0.4, 0.9, 0.9, 1, "F"),
+        0.4, 0.9, 0.9, 1, off="F"),
     "zora": EnemyType(
         121, "fish", "zola zora river", "a Zola",
-        "A Zola surfaces in the water, its eyes fixed on you.",
-        "A finned water-dweller with a wide, sullen mouth. It rises, spits a\n"
-        "ball of fire, and sinks out of sight before the steam clears.",
         0.45, 0.9, 1.1, 6),
     "ghini": EnemyType(
         130, "undead", "ghini ghost", "a ghini",
-        "A ghini drifts among the headstones, one great eye wide open.",
-        "A pale, round ghost with a single staring eye and stubby arms. It\n"
-        "rises from the graves of those who were disturbed.",
         0.7, 1.2, 1.0, 5),
     "armos": EnemyType(
         136, "modron", "armos knight statue", "an Armos knight",
-        "An Armos knight has stirred from its pedestal and lumbers forward.",
-        "A stone soldier carved to stand guard forever. Touch one, and it\n"
-        "wakes, and it remembers its orders.",
         0.85, 1.4, 1.2, 8, size="L"),
     "falling_rock": EnemyType(
         26, "modron", "boulder rock falling", "a tumbling boulder",
-        "A boulder bounds down the slope toward you.",
-        "A loose block of mountain rock, bouncing down the slope in great\n"
-        "unstoppable leaps.", 0.5, 0.8, 1.2, 8, size="L"),
+        0.5, 0.8, 1.2, 8, size="L"),
     # The dungeons.
     "keese": EnemyType(
         11, "bat", "keese bat", "a keese",
-        "A keese flutters in jerky circles near the ceiling.",
-        "A black cave bat with ragged wings. It darts in sudden zigzags and\n"
-        "never holds still long enough to strike cleanly.",
-        0.0, 0.5, 0.7, 10, "F", "T"),
+        0.0, 0.5, 0.7, 10, off="F", size="T"),
     "gel": EnemyType(
         100, "unique", "gel slime", "a gel",
-        "A small gel quivers on the flagstones.",
-        "A blob of dark jelly no bigger than a fist. It creeps in fits and\n"
-        "starts and clings to whatever it touches.",
         0.0, 0.45, 0.6, 12, size="T"),
     "zol": EnemyType(
         13, "unique", "zol slime", "a zol",
-        "A zol heaves itself across the floor, trembling.",
-        "A great quivering mound of slime. Cut it and it splits into gels, as\n"
-        "if it had never been one creature at all.",
         0.3, 1.0, 0.9, 14),
     "bubble": EnemyType(
         104, "undead", "bubble skull flame", "a bubble",
-        "A flaming skull bubble bounces from wall to wall.",
-        "A grinning skull wreathed in flickering light. Its touch leaves a\n"
-        "chill that loosens the grip on a sword.",
-        0.3, 0.6, 0.7, 29, "F", "S"),
+        0.3, 0.6, 0.7, 29, off="F", size="S"),
     "rope": EnemyType(
         102, "snake", "rope snake", "a rope",
-        "A rope coils on the floor, tongue flickering.",
-        "A red snake that idles until it catches sight of prey, then hurls\n"
-        "itself straight at it.", 0.3, 0.8, 0.9, 10, size="S"),
+        0.3, 0.8, 0.9, 10, size="S"),
     "stalfos": EnemyType(
         12, "undead", "stalfos skeleton", "a stalfos",
-        "A stalfos skeleton rattles forward, sword raised.",
-        "The bones of a long-dead soldier, held together by the dungeon's\n"
-        "old malice and still remembering how to fence.",
         0.4, 1.0, 1.0, 3),
     "red_goriya": EnemyType(
         14, "goblin", "goriya red", "a red goriya",
-        "A red goriya hefts a boomerang and grins.",
-        "A dog-like goblin in a red tunic. It throws its boomerang, ducks, and\n"
-        "catches it again on the way back.",
         0.4, 1.0, 1.0, 7),
     "blue_goriya": EnemyType(
         112, "goblin", "goriya blue", "a blue goriya",
-        "A blue goriya spins a boomerang around one claw.",
-        "Tougher than the red goriyas, and quicker with the boomerang.",
         0.7, 1.15, 1.1, 7),
     "wallmaster": EnemyType(
         101, "undead", "wallmaster hand", "a wallmaster",
-        "A great disembodied hand creeps along the wall.",
-        "A huge grey hand that slides out of the stonework. Whatever it seizes\n"
-        "it carries back to the dungeon's entrance.",
         0.55, 1.0, 0.9, 8),
     "vire": EnemyType(
         106, "bat", "vire bat demon", "a vire",
-        "A vire hops across the room on leathery wings.",
-        "A blue imp with bat wings and a wicked grin. Strike it, and it\n"
-        "bursts into a flurry of keese.", 0.6, 1.0, 1.0, 10),
+        0.6, 1.0, 1.0, 10),
     "like_like": EnemyType(
         15, "unique", "like likelike tube", "a like like",
-        "A like like squats here, a wet tube of hungry flesh.",
-        "A pulsing column of flesh with a mouth at the top. It swallows what\n"
-        "it can, and it is fondest of shields.",
         0.6, 1.2, 0.8, 14),
     "pols_voice": EnemyType(
         108, "rabbit", "pols voice", "a pols voice",
-        "A pols voice bounds about, its great ears twitching at every sound.",
-        "A ghostly rabbit-eared thing that bounces from wall to wall. Loud\n"
-        "noises hurt it more than any blade.",
         0.6, 1.0, 1.0, 15),
     "gibdo": EnemyType(
         19, "undead", "gibdo mummy", "a gibdo",
-        "A gibdo shambles forward in rotting wrappings.",
-        "A mummy bound in grave linen, slow and patient and terribly strong.",
         0.7, 1.25, 1.0, 8, special="spec_cast_undead"),
     "red_darknut": EnemyType(
         20, "human", "darknut red knight", "a red darknut",
-        "A red darknut advances behind its shield, sword levelled.",
-        "A knight in red armour with a shield that turns any blow struck from\n"
-        "the front. Its sword arm never tires.",
-        0.8, 1.3, 1.1, 3, "K"),
+        0.8, 1.3, 1.1, 3, off="K"),
     "blue_darknut": EnemyType(
         115, "human", "darknut blue knight", "a blue darknut",
-        "A blue darknut bars the way, shield high.",
-        "The blue darknuts are the dungeon's elite guard: heavier armour,\n"
-        "harder blows and no fear at all.",
-        1.0, 1.5, 1.2, 3, "K"),
+        1.0, 1.5, 1.2, 3, off="K"),
     "red_wizzrobe": EnemyType(
         110, "human", "wizzrobe red wizard", "a red wizzrobe",
-        "A red wizzrobe flickers into view, wand already raised.",
-        "A robed sorcerer who vanishes and reappears beside its prey to loose\n"
-        "a bolt of magic.", 0.7, 0.9, 1.2, 19, special="spec_cast_mage"),
+        0.7, 0.9, 1.2, 19, special="spec_cast_mage"),
     "blue_wizzrobe": EnemyType(
         21, "human", "wizzrobe blue wizard", "a blue wizzrobe",
-        "A blue wizzrobe glides forward, trailing sparks from its wand.",
-        "The blue wizzrobes walk through their own spells and blink from place\n"
-        "to place across a room.", 0.9, 1.0, 1.3, 19, special="spec_cast_mage"),
+        0.9, 1.0, 1.3, 19, special="spec_cast_mage"),
     "red_lanmola": EnemyType(
         117, "centipede", "lanmola red centipede", "a red lanmola",
-        "A red lanmola writhes across the floor in a rush of segments.",
-        "A great centipede of armoured segments that races around the room\n"
-        "faster than the eye can follow.", 0.8, 1.3, 1.1, 10, "H", "L"),
+        0.8, 1.3, 1.1, 10, off="H", size="L"),
     "blue_lanmola": EnemyType(
         17, "centipede", "lanmola blue centipede", "a blue lanmola",
-        "A blue lanmola coils and uncoils, segment over segment.",
-        "Longer, harder and faster than the red kind.",
-        1.0, 1.5, 1.2, 10, "H", "L"),
+        1.0, 1.5, 1.2, 10, off="H", size="L"),
     "patra": EnemyType(
         118, "unique", "patra eye", "a patra",
-        "A patra hangs in the air, ringed by a whirl of lesser eyes.",
-        "A great floating eye at the heart of a spinning cloud of smaller ones.\n"
-        "The ring tightens and widens as it hunts.",
-        1.0, 2.0, 1.3, 19, "F", "L"),
+        1.0, 2.0, 1.3, 19, off="F", size="L"),
     "dodongo": EnemyType(
         18, "lizard", "dodongo dinosaur", "a dodongo",
-        "A dodongo lumbers about on short thick legs.",
-        "A rhinoceros-sized lizard with a hide no sword can cut. It swallows\n"
-        "anything that looks edible, which is how most die.",
         1.0, 1.75, 1.1, 10, size="L"),
     "digdogger": EnemyType(
         109, "unique", "digdogger urchin", "a digdogger",
-        "A digdogger rolls slowly around the room, spines twitching.",
-        "A giant sea urchin with a single eye in its middle. It hates certain\n"
-        "sounds, and shrinks when it hears them.",
         1.0, 1.75, 1.1, 8, size="L"),
     "blade_trap": EnemyType(
         137, "modron", "blade trap spiked", "a blade trap",
-        "A spiked blade trap waits in the corner, ready to slam across the floor.",
-        "A block of iron set with blades, it lies still until something moves\n"
-        "in its line and then it slams across the room.",
         0.5, 0.8, 1.2, 1),
 }
 
@@ -445,7 +342,9 @@ def stat_fields(level: int, hit_points: float, damage: float) -> tuple[str, str,
             level // 2)
 
 
-def enemy_record(kind: str, band: int, bands: dict[int, tuple[int, int]]) -> str:
+def enemy_record(kind: str, band: int, bands: dict[int, tuple[int, int]],
+                 text: dict[str, str]) -> str:
+    """One generated enemy. `text` is its entry in hyrule_mob_prose.json."""
     enemy = ENEMY_TYPES[kind]
     level = tier_level(kind, band, bands)
     hit_dice, damage_dice, hitroll = stat_fields(
@@ -460,9 +359,9 @@ def enemy_record(kind: str, band: int, bands: dict[int, tuple[int, int]]) -> str
     return f"""#{tier_vnum(kind, band)}
 {keywords}~
 {enemy.short}~
-{enemy.long}
+{text["long"]}
 ~
-{enemy.description}
+{text["description"]}
 ~
 {enemy.race}~
 ABF 0 0 S
@@ -550,9 +449,15 @@ def manifest_bands(manifest: dict[str, Any]) -> dict[int, tuple[int, int]]:
     }
 
 
-def enemy_records(manifest: dict[str, Any]) -> str:
+def enemy_records(manifest: dict[str, Any], mob_prose: dict[str, Any]) -> str:
     bands = manifest_bands(manifest)
-    return "\n".join(enemy_record(kind, band, bands) for kind, band in enemy_tiers(manifest))
+    missing = sorted(set(ENEMY_TYPES) - set(mob_prose["enemies"]))
+    if missing:
+        raise KeyError(f"data/hyrule_mob_prose.json has no enemy entry for {missing}")
+    return "\n".join(
+        enemy_record(kind, band, bands, mob_prose["enemies"][kind])
+        for kind, band in enemy_tiers(manifest)
+    )
 
 
 def enemy_specials(manifest: dict[str, Any]) -> list[str]:
@@ -587,9 +492,24 @@ def enemy_tiers(manifest: dict[str, Any]) -> list[tuple[str, int]]:
 # Levels sit a little above the top of their dungeon's band; hit points are
 # several times an ordinary mobile of that level, weighted by how hard the
 # boss is in the NES game -- Aquamentus and Dodongo are the gentle ones,
-# Gohma and the four-headed Gleeok are not, and Ganon is Ganon. Only the
-# stat line is rewritten: names, flags, resistances and Ganon's silver
+# Gohma and the four-headed Gleeok are not, and Ganon is Ganon. The stat
+# line is rewritten, and the room line and description come from
+# data/hyrule_mob_prose.json; names, flags, resistances and Ganon's silver
 # vulnerability stay as the catalog has them.
+#
+# Ganon is sized to need a group. Solo, a level 59 lands the ten Silver
+# Arrow blows that bring him down at a little under one and a half a round
+# through his parry and dodge (a level 64 parries and dodges a level 59 35%
+# of the time each), so the fight lasts about seven rounds. His melee is
+# ordinary and a hero with every defence turns most of it aside; what
+# kills is spec_ganon in src/special.c: every four seconds two fireballs
+# of 1,600-2,200 at random members of the fight, which no parry stops.
+# Against a hero with about 4,000 hit points, sanctuary and the Red Ring
+# that is roughly 1,500 a pulse after wards -- dead in about four rounds,
+# winning about one fight in twenty. A group of three or four splits the
+# fire and wins nearly always. GANON_ARMOR is the file value, times ten
+# in game: -400 shaves about 80 off each ordinary blow, while the Silver
+# Arrow's tenth of his health is taken after armour and is untouched.
 # --------------------------------------------------------------------------
 
 BOSS_STATS = {
@@ -602,8 +522,48 @@ BOSS_STATS = {
     6: (43, 8500, 57),    # Gohma
     7: (49, 9500, 63),    # Aquamentus again, older and harder
     8: (55, 15000, 73),   # Gleeok, four heads
-    9: (62, 20000, 85),   # Ganon
+    9: (64, 30000, 350),  # Ganon -- see above, and spec_ganon
 }
+GANON_VNUM = 30225
+GANON_ARMOR = -40
+# Spec_funs the generator owns rather than retains: Ganon's fireballs and
+# his healing out of a fight replace the necromancer's spell list he had.
+BOSS_SPECIALS = {GANON_VNUM: "spec_ganon"}
+
+
+def redescribe_mobile(body: str, vnum: int, long: str, description: str,
+                      short: str | None = None) -> str:
+    """Replace a retained mobile's room line and description.
+
+    A record opens "#vnum", keywords~, short~, long~, description~; the
+    keywords stay as the catalog has them, and the short name too unless
+    one is given.
+    """
+    pattern = re.compile(rf"(?ms)^#{vnum}\r?\n.*?(?=^#\d+\r?$|\Z)")
+    record = pattern.search(body)
+    if not record:
+        raise ValueError(f"missing mobile record {vnum}")
+    keywords, old_short, _, _, rest = record.group(0).split("~", 4)
+    short = old_short if short is None else f"\n{short}"
+    text = f"{keywords}~{short}~\n{long}\n~\n{description}\n~{rest}"
+    return body[:record.start()] + text + body[record.end():]
+
+
+def rearm_mobile(body: str, vnum: int, armour: int) -> str:
+    """Set a retained mobile's four armour classes (the line after its
+    stat line), in the file's units: the game multiplies them by ten."""
+    record = re.compile(rf"(?ms)^#{vnum}\r?\n.*?(?=^#\d+\r?$|\Z)").search(body)
+    if not record:
+        raise ValueError(f"missing mobile record {vnum}")
+    armour_line = re.compile(
+        r"(?m)^(-?\d+ -?\d+ \d+d\d+\+-?\d+ \d+d\d+\+-?\d+ \d+d\d+\+-?\d+ -?\d+\n)"
+        r"-?\d+ -?\d+ -?\d+ -?\d+$"
+    )
+    match = armour_line.search(body, record.start(), record.end())
+    if not match:
+        raise ValueError(f"missing armour line for mobile {vnum}")
+    line = f"{match.group(1)}{armour} {armour} {armour} {armour}"
+    return body[:match.start()] + line + body[match.end():]
 
 
 def restat_mobile(body: str, vnum: int, level: int, hit_points: int, damage: int) -> str:
@@ -745,8 +705,8 @@ BOSS_WEAPON_BASELINES = {
 # level 17 boomerang in Level 1 -- so their level, values and (for the
 # gear chests and Heart Guards) cost are rewritten here from the bands.
 #
-# The Master Sword keeps level 58 and its stats: it is the NES's late-game
-# sword, found early and usable late, and that level was asked for.
+# The Master Sword keeps level 58, the NES's late-game sword; it is now
+# Ganon's, and written whole by master_sword_record().
 # --------------------------------------------------------------------------
 
 def armor_values(level: int) -> str:
@@ -803,8 +763,10 @@ ITEM_LEVELS = {
     30415: ItemLevel(48, armor_values(48)),           # the Magic Book
     30416: ItemLevel(48),                             # the Magical Key
     30407: ItemLevel(46),
-    # Level 9, band 53-59.
-    30261: ItemLevel(56),                             # red ring, cellar
+    # Level 9, band 53-59: the Silver Arrow (54), the Red Ring of Hyrule
+    # (58) and the Master Sword (58) are written whole further down. The
+    # catalog's plain "red ring" (30261) used to fill the Red Ring Cellar;
+    # it is no longer placed, and keeps its record for anyone holding one.
 }
 
 
@@ -1149,6 +1111,210 @@ require the ARCHERY skill, and does not consume the Silver Arrow.
     )
 
 
+# --------------------------------------------------------------------------
+# The Master Sword.
+#
+# Ganon carries it, so it lands in his corpse in his chamber. It is meant
+# to be the best weapon a mortal can get anywhere in the game, and the
+# comparison is the one the boss weapons use -- average damage
+# (value[1] * (value[2] + 1) / 2) plus damroll -- against every weapon at
+# or below level 59 that a mortal can get, from a mobile, a room, a
+# container, a shop or a quest. The best of those was Ganon's own trident
+# at 63.5; outside Hyrule it was the Power of the world at 54.0. 13d9 with
+# +5/+5 scores 70.0. Its other gift is haste for as long as it is wielded,
+# an F record that equip_char and unequip_char apply and lift.
+# --------------------------------------------------------------------------
+
+MASTER_SWORD_VNUM = 30200
+MASTER_SWORD_LEVEL = 58
+MASTER_SWORD_DICE = (13, 9)
+MASTER_SWORD_HITROLL = 5
+MASTER_SWORD_DAMROLL = 5
+# The best weapon a mortal could otherwise get, and the best outside
+# Hyrule, as measured above: (score, what it is).
+MASTER_SWORD_BASELINES = (
+    (63.5, "the Trident of Ganon, hyrule.are, level 59"),
+    (54.0, "the Power of the world, crypt.are, level 54"),
+)
+# ROM's F record: where (A, affected_by), location, modifier, bits.
+AFF_SANCTUARY_FLAG = "H"
+AFF_HASTE_FLAG = "V"
+
+
+def master_sword_score() -> float:
+    count, size = MASTER_SWORD_DICE
+    return count * (size + 1) / 2 + MASTER_SWORD_DAMROLL
+
+
+def master_sword_record() -> str:
+    count, size = MASTER_SWORD_DICE
+    description = f"""E
+master sword blade evil's bane~
+The Master Sword, the blade of evil's bane, forged to oppose the darkest
+powers of Hyrule. Ganon took it from the hero's grave and wore it at his
+hip, and it has waited there for a hand worthy of it.
+While you wield it you move with the speed of the wind: it hastens you
+for as long as it is in your hand, and the haste goes when it does.
+~
+A
+18 {MASTER_SWORD_HITROLL}
+A
+19 {MASTER_SWORD_DAMROLL}
+F
+A 0 0 {AFF_HASTE_FLAG}"""
+    return object_record(
+        MASTER_SWORD_VNUM,
+        "master sword blade triforce",
+        "the Master Sword",
+        "The Master Sword rests here, its sacred blade shining with golden light.",
+        "steel",
+        "5 ABGHKUV AN",
+        f"1 {count} {size} 3 DE",
+        MASTER_SWORD_LEVEL,
+        20,
+        50000,
+        description,
+    )
+
+
+def triforce_record() -> str:
+    """The complete Triforce, a light: WEAR puts it in the light slot.
+
+    Worn there it gives the sight of a level 59 character with HOLYLIGHT
+    on -- triforce_sight() in src/handler.c. value[2] 999 is the light
+    that never burns down: create_object turns it into -1, which the
+    tick's burn-down skips. (-1 cannot be written in the file itself:
+    fread_flag does not read a minus sign.)
+    """
+    description = """E
+triforce triangles~
+Three golden triangles join as one, embodying Power, Wisdom, and Courage.
+Wear it and it rises to hover at your shoulder, lighting the way, and the
+world shows you everything: what is invisible, hidden or cloaked in the
+dark, as a level 59 hero with holy light would see it -- though not the
+gods who hide themselves above that.
+~"""
+    return object_record(
+        30286,
+        "triforce complete golden triangles",
+        "the complete Triforce",
+        "The complete Triforce floats here, radiant with golden power.",
+        "gold",
+        "1 ABGIV A",
+        "0 0 999 0 0",
+        58,
+        1,
+        50000,
+        description,
+    )
+
+
+# --------------------------------------------------------------------------
+# What the bosses and the enemies leave behind.
+#
+# Each of the first eight bosses drops a Heart Container, as in the NES:
+# a hold-slot crystal at the top of its band giving twice that level in
+# hit points, and from the Lizard on a point of constitution as well. The
+# boss weapons and Heart Guards are above; the Triforce shard is in the
+# room beyond the boss, where the NES keeps it.
+#
+# Ordinary enemies drop at random, rolled in make_corpse (src/fight.c):
+# rupees (gold coins), a heart, a fairy or a clock, one object of each
+# per band at the vnums below. src/merc.h names the same three bases.
+# --------------------------------------------------------------------------
+
+BOSS_HEART_CONTAINER_FIRST = 30591
+DROP_HEART_FIRST = 30600
+DROP_FAIRY_FIRST = 30610
+DROP_CLOCK_FIRST = 30620
+# Spell slots (const.c SLOT()): cure light, cure serious, cure critical,
+# heal, haste.
+SLOT_CURE_LIGHT, SLOT_CURE_SERIOUS, SLOT_CURE_CRITICAL = 16, 61, 15
+SLOT_HEAL, SLOT_HASTE = 28, 502
+# A heart is a small heal and a fairy a large one, each growing with the
+# band: (spell, spell, spell), zero for none.
+HEART_SPELLS = {
+    1: (SLOT_CURE_LIGHT, 0, 0), 2: (SLOT_CURE_LIGHT, 0, 0),
+    3: (SLOT_CURE_SERIOUS, 0, 0), 4: (SLOT_CURE_SERIOUS, 0, 0),
+    5: (SLOT_CURE_CRITICAL, 0, 0), 6: (SLOT_CURE_CRITICAL, 0, 0),
+    7: (SLOT_HEAL, 0, 0), 8: (SLOT_HEAL, 0, 0),
+    9: (SLOT_HEAL, SLOT_CURE_CRITICAL, 0),
+}
+FAIRY_SPELLS = {
+    1: (SLOT_CURE_SERIOUS, SLOT_CURE_SERIOUS, 0),
+    2: (SLOT_CURE_SERIOUS, SLOT_CURE_SERIOUS, 0),
+    3: (SLOT_CURE_CRITICAL, SLOT_CURE_CRITICAL, 0),
+    4: (SLOT_CURE_CRITICAL, SLOT_CURE_CRITICAL, 0),
+    5: (SLOT_HEAL, SLOT_CURE_CRITICAL, 0),
+    6: (SLOT_HEAL, SLOT_CURE_CRITICAL, 0),
+    7: (SLOT_HEAL, SLOT_HEAL, 0), 8: (SLOT_HEAL, SLOT_HEAL, 0),
+    9: (SLOT_HEAL, SLOT_HEAL, SLOT_HEAL),
+}
+
+
+def boss_heart_container_record(dungeon_level: int, band: tuple[int, int],
+                                title: str) -> str:
+    low, high = band
+    hit_points = 2 * high
+    extras = f"A\n13 {hit_points}"
+    if dungeon_level >= 5:
+        extras += "\nA\n5 1"                # APPLY_CON
+    extras = (
+        f"E\nheart container~\n"
+        f"The heart of the {title}'s guardian, crystallised. Held, it beats in\n"
+        f"time with your own and lends you its strength.\n~\n{extras}"
+    )
+    return object_record(
+        BOSS_HEART_CONTAINER_FIRST + dungeon_level - 1,
+        f"heart container {title.lower()} crystal",
+        f"the {title}'s Heart Container",
+        "A pulsing Heart Container floats here, red as a living heart.",
+        "crystal", "9 AG AO", "0 0 0 0 0",
+        high, 1, high * high * 5, extras,
+    )
+
+
+def drop_potion_record(vnum: int, band: tuple[int, int], keywords: str,
+                       short: str, long: str, spells: tuple[int, int, int],
+                       cost: int, lore: str) -> str:
+    low, high = band
+    return object_record(
+        vnum, keywords, short, long, "glass", "10 A AO",
+        f"{high} {spells[0]} {spells[1]} {spells[2]} 0",
+        low, 1, cost, f"E\n{keywords}~\n{lore}\n~",
+    )
+
+
+def drop_records(manifest: dict[str, Any]) -> list[str]:
+    records = []
+    for dungeon in manifest["dungeons"]:
+        level = dungeon["level"]
+        band = tuple(dungeon["recommended_levels"])
+        title = dungeon["title"].removeprefix("The ")
+        if level <= 8:
+            records.append(boss_heart_container_record(level, band, title))
+        records.append(drop_potion_record(
+            DROP_HEART_FIRST + level - 1, band, f"heart recovery {title.lower()}",
+            "a recovery heart", "A small red heart glows here, beating faintly.",
+            HEART_SPELLS[level], 2 * level,
+            "A little red heart, the kind that spills from a fallen enemy.\n"
+            "QUAFF it and it melts into you, closing a few wounds."))
+        records.append(drop_potion_record(
+            DROP_FAIRY_FIRST + level - 1, band, f"fairy bottled {title.lower()}",
+            "a bottled fairy", "A tiny fairy flutters here, trapped in a glass.",
+            FAIRY_SPELLS[level], 10 * level,
+            "A fairy caught in a glass, glowing pink. QUAFF it and she is\n"
+            "free, and her thanks closes a great many wounds."))
+        records.append(drop_potion_record(
+            DROP_CLOCK_FIRST + level - 1, band, f"clock flask {title.lower()}",
+            "a clock-flask", "A small golden clock lies here, its hands stopped.",
+            (SLOT_HASTE, 0, 0), 8 * level,
+            "A golden clock whose face is a stopper. In the old tales a clock\n"
+            "froze every enemy where it stood; QUAFF this and time is yours,\n"
+            "and for a while you move twice for every step they take."))
+    return records
+
+
 def map_art(dungeon: dict[str, Any]) -> str:
     rooms = {room["coordinate"]: room for room in dungeon["rooms"]}
     major_sources = {cellar["source_coordinate"] for cellar in dungeon["cellars"]}
@@ -1258,18 +1424,22 @@ A
             58,
             1,
             24000,
-            """E
+            f"""E
 red ring hyrule power~
-The ruby band holds the hard-won power of Death Mountain. While worn, it
-reduces all damage you take by 20 percent. Its ward does not stack with the
-Blue Ring or a second Red Ring; only the strongest ring ward applies.
+The ruby band holds the hard-won power of Death Mountain, and lies in its
+deepest cellar. While worn, it wraps you in sanctuary for as long as it is
+on your finger, and it reduces all damage you take by 20 percent. Its ward
+does not stack with the Blue Ring or a second Red Ring; only the strongest
+ring ward applies.
 ~
 A
 5 2
 A
 13 100
 A
-24 -3""",
+24 -3
+F
+A 0 0 {AFF_SANCTUARY_FLAG}""",
         ),
         object_record(
             30580,
@@ -1405,6 +1575,7 @@ def new_object_records(manifest: dict[str, Any]) -> str:
     ])
     objects.extend(ganon_relic_records())
     objects.extend(boss_weapon_record(level) for level in sorted(BOSS_WEAPONS))
+    objects.extend(drop_records(manifest))
     return "\n".join(objects)
 
 
@@ -1574,7 +1745,9 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
     cave_specs = [
         (30650, "H1", "wooden_sword_cave", 30219, None),
         (30651, "K8", "white_sword_cave", 30251, None),
-        (30652, "B6", "master_sword_grave", 30200, "push"),
+        # The Hero's Grave. The Master Sword lay here until Ganon took it;
+        # he carries it now, and the grave is a place to learn so.
+        (30652, "B6", "master_sword_grave", None, "push"),
         (30653, "O8", "letter_cave", 30500, None),
         (30654, "L1", "heart_cave_bomb", 30501, "bomb"),
         (30655, "M6", "heart_cave_mountain", 30501, "bomb"),
@@ -1588,7 +1761,7 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
         rooms[vnum] = RoomSpec(
             vnum, prose.name("special", prose_key),
             prose.description("special", prose_key),
-            "ADN", 11, objects=[object_vnum],
+            "ADN", 11, objects=[] if object_vnum is None else [object_vnum],
         )
         world_vnum = world_vnums[coordinate]
         if puzzle == "portal":
@@ -1823,8 +1996,11 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
                     level = boss_room_to_level[room.vnum]
                     lines.append(f"G 1 {BOSS_GEAR[level]} 100")
                     lines.append(f"G 1 {BOSS_WEAPONS[level].vnum} 100")
+                    if level <= 8:
+                        lines.append(f"G 1 {BOSS_HEART_CONTAINER_FIRST + level - 1} 100")
                     if level == 9:
                         lines.append(f"G 1 {GANON_GOLDEN_KEY_VNUM} 100")
+                        lines.append(f"G 1 {MASTER_SWORD_VNUM} 100")
         for object_vnum in room.objects:
             lines.append(f"O 0 {object_vnum} 0 {room.vnum}")
         for puzzle_vnum in room.puzzles:
@@ -1905,6 +2081,9 @@ def render_specials(retained: str, manifest: dict[str, Any]) -> str:
             vnum = int(fields[1])
             if vnum in RETIRED_MOBILE_VNUMS or TIER_VNUM_FIRST <= vnum <= TIER_VNUM_LAST:
                 continue
+            if vnum in BOSS_SPECIALS:
+                fields[2] = BOSS_SPECIALS[vnum]
+                line = " ".join(fields)
         if line.strip() == "S":
             continue
         lines.append(line.rstrip())
@@ -1913,9 +2092,11 @@ def render_specials(retained: str, manifest: dict[str, Any]) -> str:
     return "\n".join(line for line in lines if line)
 
 
-def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_PROSE) -> None:
+def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_PROSE,
+               mob_prose_path: Path = DEFAULT_MOB_PROSE) -> None:
     manifest = load_json(manifest_path)
     prose = Prose(load_json(prose_path))
+    mob_prose = load_json(mob_prose_path)
     original = area_path.read_text(encoding="utf-8")
     header = original[:original.index("#MOBILES")].rstrip()
     mobile_body = strip_section_terminator(section(original, "#MOBILES", "#OBJECTS"), "#0")
@@ -1927,8 +2108,15 @@ def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_
     mobile_body = replace_record(mobile_body, NPC_MOBS["old_man"], OLD_MAN_RECORD)
     for level, (mob_level, hit_points, damage) in BOSS_STATS.items():
         mobile_body = restat_mobile(mobile_body, BOSS_MOBS[level], mob_level, hit_points, damage)
+        text = mob_prose["bosses"][str(level)]
+        mobile_body = redescribe_mobile(
+            mobile_body, BOSS_MOBS[level], text["long"], text["description"],
+            text.get("short"))
+    mobile_body = rearm_mobile(mobile_body, GANON_VNUM, GANON_ARMOR)
     object_body = remove_records(object_body, NEW_OBJECT_VNUMS)
     object_body = replace_record(object_body, 30218, silver_arrow_object_record())
+    object_body = replace_record(object_body, MASTER_SWORD_VNUM, master_sword_record())
+    object_body = replace_record(object_body, 30286, triforce_record())
     for dungeon in manifest["dungeons"]:
         object_body = replace_record(object_body, 30479 + dungeon["level"], map_object_record(dungeon, False))
         object_body = replace_record(object_body, 30488 + dungeon["level"], map_object_record(dungeon, True))
@@ -1940,7 +2128,7 @@ def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_
 
     output = (
         f"{header}\n\n#MOBILES\n{mobile_body}\n{new_mobile_records()}\n"
-        f"{enemy_records(manifest)}\n#0\n\n"
+        f"{enemy_records(manifest, mob_prose)}\n#0\n\n"
         f"#OBJECTS\n{object_body}\n{new_object_records(manifest)}\n#0\n\n"
         f"#ROOMS\n{room_body}\n#0\n\n"
         f"#SPECIALS\n{render_specials(specials_body, manifest)}\n\n"
@@ -1956,12 +2144,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--area", type=Path, default=DEFAULT_AREA)
     parser.add_argument("--prose", type=Path, default=DEFAULT_PROSE)
+    parser.add_argument("--mob-prose", type=Path, default=DEFAULT_MOB_PROSE)
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    build_area(args.manifest.resolve(), args.area.resolve(), args.prose.resolve())
+    build_area(args.manifest.resolve(), args.area.resolve(), args.prose.resolve(),
+               args.mob_prose.resolve())
 
 
 if __name__ == "__main__":

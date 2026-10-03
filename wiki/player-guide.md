@@ -583,8 +583,16 @@ return portals.
 - The dungeons climb from Level 1 (character levels 2-8) to Death Mountain
   (53-59), and the land around each dungeon matches it. What you find in a
   place -- chest gear, a boss's Heart Guard and weapon, a shop's wares -- is
-  usable at that place's level. The Master Sword is the exception: found in
-  the graveyard, wielded at level 58.
+  usable at that place's level. The first eight guardians also leave a Heart
+  Container, and ordinary enemies sometimes drop rupees, a heart, a bottled
+  fairy or a clock-flask (quaff the last three).
+- Ganon is a fight for a group: he blinks about the dark throwing fireballs no
+  parry stops, and heals if left alone. He carries the Master Sword, level 58,
+  the finest blade a mortal can wield, which hastens its wielder.
+- The Red Ring of Hyrule lies in Death Mountain's deepest cellar; worn, it
+  gives sanctuary and takes a fifth off all damage. The complete Triforce,
+  beyond Ganon, is worn in the light slot and shows you what a level 59 hero
+  with holy light would see. `help ganon` has the details.
 - A dungeon map reveals layout information.
 - A dungeon compass gives the general direction toward that dungeon's boss.
 - Candles, bombs, arrows, keys, rafts, ladders, recorders, and room actions are

@@ -523,7 +523,7 @@ void show_char_to_char( CHAR_DATA *list, CHAR_DATA *ch )
 
 	if ( !IS_NPC(rch)
 	&&   IS_SET(rch->act, PLR_WIZINVIS)
-	&&   get_trust( ch ) < rch->invis_level )
+	&&   sight_trust( ch ) < rch->invis_level )
 	    continue;
 
 	if ( can_see( ch, rch ) )
@@ -545,7 +545,8 @@ void show_char_to_char( CHAR_DATA *list, CHAR_DATA *ch )
 bool check_blind( CHAR_DATA *ch )
 {
 
-    if (!IS_NPC(ch) && IS_SET(ch->act,PLR_HOLYLIGHT))
+    if (!IS_NPC(ch)
+    &&  (IS_SET(ch->act,PLR_HOLYLIGHT) || triforce_sight(ch)))
 	return true;
 
     if ( IS_AFFECTED(ch, AFF_BLIND) )
@@ -1576,6 +1577,7 @@ void do_read (CHAR_DATA *ch, char *argument )
 
     if ( !IS_NPC(ch)
         && !IS_SET(ch->act, PLR_HOLYLIGHT)
+        && !triforce_sight( ch )
         && room_is_dark( ch->in_room )
         && !IS_AFFECTED(ch, AFF_INFRARED) )
     {
@@ -4094,6 +4096,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
 
     if ( !IS_NPC(ch)
     &&   !IS_SET(ch->act, PLR_HOLYLIGHT)
+    &&   !triforce_sight( ch )
     &&   room_is_dark( ch->in_room ) && !IS_AFFECTED(ch,AFF_INFRARED))
     {
 	send_to_char( "It's really dark here. You can't see much.\n\r", ch );

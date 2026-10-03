@@ -1055,6 +1055,10 @@ class Object:
     condition: str
     extra_descr: List[Dict[str, str]] = field(default_factory=list)
     affects: List[Dict[str, int]] = field(default_factory=list)
+    # ROM 2.4 "F" records: an affect that sets an affected_by bit while
+    # the object is worn ({"where": "A", "location", "modifier", "bits"}).
+    # Kept apart from `affects`, which every caller reads as stat applies.
+    affect_bits: List[Dict[str, Any]] = field(default_factory=list)
     area_file: str = ""
     area_name: str = ""
     carried_by: List[int] = field(default_factory=list)  # Mob vnums that carry this
@@ -1586,6 +1590,7 @@ class AreaParser:
                     # Parse extra descriptions and affects
                     extra_descr = []
                     affects = []
+                    affect_bits = []
                     
                     while i < len(lines):
                         line = lines[i].strip()
@@ -1607,6 +1612,22 @@ class AreaParser:
                                     location = int(affect_line[0])
                                     modifier = int(affect_line[1])
                                     affects.append({"location": location, "modifier": modifier})
+                                except ValueError:
+                                    pass
+                            i += 1
+                        elif line == 'F':
+                            # load_objects: F, then "<where> <location>
+                            # <modifier> <bits>" as four tokens.
+                            i += 1
+                            bit_line = lines[i].split()
+                            if len(bit_line) >= 4:
+                                try:
+                                    affect_bits.append({
+                                        "where": bit_line[0],
+                                        "location": int(bit_line[1]),
+                                        "modifier": int(bit_line[2]),
+                                        "bits": bit_line[3],
+                                    })
                                 except ValueError:
                                     pass
                             i += 1
@@ -1633,6 +1654,7 @@ class AreaParser:
                         condition=condition,
                         extra_descr=extra_descr,
                         affects=affects,
+                        affect_bits=affect_bits,
                         area_file=area_file,
                         area_name=area_name
                     )

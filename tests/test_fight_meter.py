@@ -108,8 +108,12 @@ class OnlineRosterTests(unittest.TestCase):
                      "AFF2_STEALTH", "AFF2_SHADOWMELD", "AFF_HIDE",
                      "AFF_INVISIBLE", "AFF_DETECT_HIDDEN", "AFF_DETECT_INVIS"):
             self.assertIn(term, self.rule, term)
-        # Trust, the way wizi is decided everywhere else.
-        self.assertIn("get_trust( ch ) < wch->invis_level", self.rule)
+        # Trust, the way wizi is decided everywhere else -- read through
+        # sight_trust(), which is get_trust() raised to level 59 only for
+        # a wearer of the Triforce, exactly as can_see() reads it.
+        self.assertIn("sight_trust( ch ) < wch->invis_level", self.rule)
+        sight = body(self.handler, "int sight_trust(")
+        self.assertIn("get_trust(", sight)
 
     def test_holylight_sees_through_concealment_but_not_wizi(self) -> None:
         holy = self.rule.index("PLR_HOLYLIGHT")

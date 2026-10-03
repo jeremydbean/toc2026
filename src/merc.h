@@ -1257,6 +1257,20 @@ const char *default_prompt_text args( ( void ) );
 #define OBJ_VNUM_HYRULE_RED_RING      30579
 #define OBJ_VNUM_HYRULE_MIRROR_SHIELD 30580
 #define OBJ_VNUM_HYRULE_PEGASUS_BOOTS 30581
+/* The Master Sword: Ganon carries it, and it hastens whoever wields it
+   through an F record on the object (see load_objects). */
+#define OBJ_VNUM_HYRULE_MASTER_SWORD  30200
+/* The complete Triforce, beyond Ganon's chamber. It is a light, and worn
+   in the light slot it gives the sight of a level TRIFORCE_SIGHT_LEVEL
+   character with HOLYLIGHT on -- see triforce_sight() in handler.c. */
+#define OBJ_VNUM_HYRULE_TRIFORCE      30286
+#define TRIFORCE_SIGHT_LEVEL          59
+/* What a Hyrule enemy can leave in its corpse (make_corpse in fight.c).
+   Each is one object per level band, at FIRST + band - 1, and
+   scripts/build_hyrule_area.py writes them at the same vnums. */
+#define OBJ_VNUM_HYRULE_HEART_FIRST   30600
+#define OBJ_VNUM_HYRULE_FAIRY_FIRST   30610
+#define OBJ_VNUM_HYRULE_CLOCK_FIRST   30620
 
 /* An ordinary bag, which MIRROR RESTORE renames and enlarges for the
    kit it is handing back. */
@@ -2954,6 +2968,9 @@ int     get_obj_weight  ( OBJ_DATA *obj );
 bool    room_is_dark    ( ROOM_INDEX_DATA *pRoomIndex );
 bool    room_is_private ( ROOM_INDEX_DATA *pRoomIndex );
 bool    can_enter_private_room ( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex );
+bool    triforce_sight  ( const CHAR_DATA *ch );
+int     sight_trust     ( const CHAR_DATA *ch );
+bool    equipment_grants_affect ( const CHAR_DATA *ch, int bit );
 bool    can_see         ( CHAR_DATA *ch, const CHAR_DATA *victim );
 bool    online_can_list ( CHAR_DATA *ch, const CHAR_DATA *wch );
 bool    can_see_obj     ( CHAR_DATA *ch, const OBJ_DATA *obj );

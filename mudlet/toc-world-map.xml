@@ -39249,7 +39249,7 @@
    <exit direction="east" target="30281" />
    <exit direction="south" target="30264" />
   </room>
-  <room id="30281" area="45" title="The Master Sword Grave" environment="3">
+  <room id="30281" area="45" title="The Hero's Grave" environment="3">
    <coord x="-8" y="5" z="0" />
    <exit direction="south" target="30265" />
    <exit direction="west" target="30280" />

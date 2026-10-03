@@ -3024,6 +3024,84 @@ static int concealment_chance( const CHAR_DATA *victim, int sn )
 }
 
 /*
+ * The complete Triforce, worn in the light slot, gives its wearer the
+ * sight of a level TRIFORCE_SIGHT_LEVEL character with HOLYLIGHT on:
+ * through darkness, blindness, invisibility, hiding, stealth and
+ * shadowmeld, and through the wizinvis or incognito of anybody at or
+ * below that level -- and no further. Every place holylight grants
+ * sight asks this beside PLR_HOLYLIGHT, and sight_trust() is the level
+ * those places compare against a wizinvis or cloak level.
+ *
+ * Players only. A mobile never wears its way into seeing a melded
+ * character, which is the one thing shadowmeld promises.
+ */
+bool triforce_sight( const CHAR_DATA *ch )
+{
+    OBJ_DATA *light;
+
+    if ( ch == NULL || IS_NPC(ch) )
+	return false;
+
+    light = get_eq_char( (CHAR_DATA *) ch, WEAR_LIGHT );
+    return light != NULL && light->pIndexData != NULL
+	&& light->pIndexData->vnum == OBJ_VNUM_HYRULE_TRIFORCE;
+}
+
+/*
+ * The trust a character's eyes count at: their own, raised to
+ * TRIFORCE_SIGHT_LEVEL while they wear the Triforce. Only sight uses
+ * this -- commands and permissions still ask get_trust().
+ */
+int sight_trust( const CHAR_DATA *ch )
+{
+    int trust = get_trust( (CHAR_DATA *) ch );
+
+    if ( triforce_sight( ch ) )
+	trust = UMAX( trust, TRIFORCE_SIGHT_LEVEL );
+    return trust;
+}
+
+/*
+ * Whether something the character is wearing grants this affected_by
+ * bit, through an object affect's bitvector or an ITEM2_ADD_* flag.
+ * Spells that strip a bit by hand (dispel magic on sanctuary, slow on
+ * haste) ask this first, so the Red Ring's sanctuary and the Master
+ * Sword's haste last exactly as long as they are worn.
+ */
+bool equipment_grants_affect( const CHAR_DATA *ch, int bit )
+{
+    OBJ_DATA *obj;
+    AFFECT_DATA *paf;
+
+    if ( ch == NULL )
+	return false;
+
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    {
+	if ( obj->wear_loc == WEAR_NONE )
+	    continue;
+	if ( obj->pIndexData != NULL )
+	    for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
+		if ( IS_SET(paf->bitvector, bit) )
+		    return true;
+	for ( paf = obj->affected; paf != NULL; paf = paf->next )
+	    if ( IS_SET(paf->bitvector, bit) )
+		return true;
+	if ( IS_OBJ_STAT(obj, ITEM_ADD_AFFECT) )
+	{
+	    if ( bit == AFF_INVISIBLE && IS_OBJ_STAT2(obj, ITEM2_ADD_INVIS) )
+		return true;
+	    if ( bit == AFF_DETECT_INVIS
+	    &&   IS_OBJ_STAT2(obj, ITEM2_ADD_DETECT_INVIS) )
+		return true;
+	    if ( bit == AFF_FLYING && IS_OBJ_STAT2(obj, ITEM2_ADD_FLY) )
+		return true;
+	}
+    }
+    return false;
+}
+
+/*
  * True if char can see victim.
  */
 /*
@@ -3041,15 +3119,16 @@ bool online_can_list( CHAR_DATA *ch, const CHAR_DATA *wch )
 	return false;
 
     if ( IS_SET(wch->act, PLR_WIZINVIS)
-    &&   get_trust( ch ) < wch->invis_level )
+    &&   sight_trust( ch ) < wch->invis_level )
 	return false;
 
     if ( IS_SET(wch->act, PLR_CLOAKED)
     &&   ch->in_room != wch->in_room
-    &&   get_trust( ch ) < wch->cloak_level )
+    &&   sight_trust( ch ) < wch->cloak_level )
 	return false;
 
-    if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_HOLYLIGHT) )
+    if ( !IS_NPC(ch)
+    &&   ( IS_SET(ch->act, PLR_HOLYLIGHT) || triforce_sight( ch ) ) )
 	return true;
 
     if ( IS_AFFECTED2(wch, AFF2_STEALTH) || IS_AFFECTED2(wch, AFF2_SHADOWMELD) )
@@ -3074,7 +3153,7 @@ bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
 
     if ( !IS_NPC(victim)
     &&   IS_SET(victim->act, PLR_WIZINVIS)
-    &&   get_trust( ch ) < victim->invis_level )
+    &&   sight_trust( ch ) < victim->invis_level )
 	return false;
 
     if ( IS_NPC(ch) && IS_AFFECTED2(victim, AFF2_GHOST))
@@ -3083,7 +3162,7 @@ bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
     if ( !IS_NPC(victim)
     &&   IS_SET(victim->act, PLR_CLOAKED)
     &&   ch->in_room != victim->in_room
-    &&   get_trust( ch ) < victim->cloak_level )
+    &&   sight_trust( ch ) < victim->cloak_level )
 	return false;
 
     /*
@@ -3096,7 +3175,8 @@ bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
     if ( IS_AFFECTED2(victim, AFF2_SHADOWMELD) && IS_NPC(ch) )
 	return false;
 
-    if ( (!IS_NPC(ch) && IS_SET(ch->act, PLR_HOLYLIGHT))
+    if ( (!IS_NPC(ch)
+          && ( IS_SET(ch->act, PLR_HOLYLIGHT) || triforce_sight( ch ) ))
     ||   (IS_NPC(ch) && IS_IMMORTAL(ch)))
 	return true;
 
@@ -3145,7 +3225,8 @@ bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
  */
 bool can_see_obj( CHAR_DATA *ch, const OBJ_DATA *obj )
 {
-    if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_HOLYLIGHT) )
+    if ( !IS_NPC(ch)
+    &&   ( IS_SET(ch->act, PLR_HOLYLIGHT) || triforce_sight( ch ) ) )
         return true;
 
     if ( IS_SET(obj->extra_flags,ITEM_VIS_DEATH))

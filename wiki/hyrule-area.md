@@ -16,7 +16,7 @@ the useful Hyrule mobile and object catalog.
 | Recall | Blocked only inside the nine dungeons (`30400-30645`) |
 | Level range | `1-59` |
 | Canonical geometry | 128 overworld screens plus 246 dungeon rooms and cellars |
-| Generated area size | 443 rooms and 1,464 reset records |
+| Generated area size | 443 rooms and 1,472 reset records |
 
 There is no walking exit from the main world into Hyrule. Players arrive by
 entering the arcade cabinet, matching the intended "teleported into Zelda"
@@ -38,11 +38,18 @@ source chain is:
    `special` entries for caves, shops, and secrets. Descriptions are one
    paragraph; the generator wraps them at 75 columns and prefixes dungeon names
    with `Level N: `. A missing entry stops the build.
-3. `scripts/build_hyrule_area.py` combines those with the retained area
+3. `data/hyrule_mob_prose.json` holds what the enemies and bosses look like:
+   each enemy kind's room line and description (shared by every band of that
+   kind), and each boss's room line and description, written from the NES
+   game. A kind with no entry stops the build.
+4. `scripts/build_hyrule_area.py` combines those with the retained area
    catalog and writes `area/hyrule.are`. It also owns every enemy record, the
-   bosses' stat lines, and the boss weapons.
-4. `tests/test_hyrule_progression.py` checks geometry, placement, progression,
-   reachability, resets, services, and generation idempotence.
+   bosses' stat lines, the boss weapons, the Master Sword, the Triforce, the
+   Heart Containers, and the enemy drops.
+5. `tests/test_hyrule_progression.py` checks geometry, placement, progression,
+   reachability, resets, services, and generation idempotence;
+   `tests/test_hyrule_relic_powers_live.py` plays the worn powers in a running
+   game.
 
 The manifest itself is built by `scripts/build_hyrule_manifest.py`. Its image
 diagnostics come from:
@@ -70,7 +77,7 @@ Examples:
 | `N7` | `N2` | Level 8 |
 | `F1` | `F8` | Level 9 |
 | `K1` | `K8` | White Sword |
-| `B3` | `B6` | Master Sword |
+| `B3` | `B6` | Hero's Grave (the Master Sword's, now empty) |
 | `O1` | `O8` | Letter |
 | `E3` | `E6` | Power Bracelet |
 
@@ -127,10 +134,12 @@ found, and its stats are rescaled to that level (`ITEM_LEVELS`,
   Candle 42, the Magic Book and Magical Key 48, and each Triforce shard the
   bottom of its dungeon's band.
 - A shop item takes the lowest band it is sold in.
-- The Master Sword is the deliberate exception: found in the graveyard (a band
-  6 screen) and kept at level 58, the NES's late-game sword.
+- The Master Sword is level 58 and Ganon carries it, so it sits inside Death
+  Mountain's band. It used to lie in the B6 graveyard, a band 6 screen, as the
+  one item above its band; the grave is still there and holds nothing now.
 - The Silver Arrow stays at level 54 (`HYRULE_SILVER_ARROW_LEVEL`), inside
-  Death Mountain's band; the relics stay at 54-58.
+  Death Mountain's band; the relics stay at 54-58, and the Red Ring of Hyrule
+  (58) lies in Death Mountain's Red Ring Cellar.
 
 `tests/test_hyrule_progression.py` walks every room, mobile, and container
 source and fails on an item above its source's band, and on any sourced weapon
@@ -187,25 +196,124 @@ and a weapon (`BOSS_WEAPONS`) through `G` resets.
 | 6 | Gohma | 43 | 8,500 | Gohma eye-lance 7d10, +3/+1 | 40 | 39.5 | 33.5, a two-handed sword |
 | 7 | ancient Aquamentus | 49 | 9,500 | Demon's dragonbone sword 9d9, +4/+4 | 46 | 49.0 | 42.0, A Glaive-Guisarme |
 | 8 | ashen Gleeok | 55 | 15,000 | Lion's four-crowned axe 10d9, +9/+6 | 52 | 56.0 | 49.0, a flaming Light Saber |
-| 9 | Ganon | 62 | 20,000 | Trident of Ganon 11d10, +9/+3 | 59 | 63.5 | 54.0, the Power of the world |
+| 9 | Ganon | 64 | 30,000 | Trident of Ganon 11d10, +9/+3 | 59 | 63.5 | 54.0, the Power of the world |
 
 "Best existing" is the best weapon a character of that level could otherwise
 carry: every mobile-carried weapon in the world at or below the weapon's level,
 scored as `value[1] * (value[2] + 1) / 2` plus damroll with the dashboard
 parser, and Hyrule's own re-levelled weapons where they beat it. Each
-boss weapon sits 10-20% above that mark, and the test holds it there. The
-Master Sword (level 58, 62.5) stays Hyrule's signature blade; Ganon's trident
-edges it by one point at level 59.
+boss weapon sits 10-20% above that mark, and the test holds it there.
+
+The first eight bosses also drop a Heart Container, as in the NES: a hold-slot
+crystal at the top of the band giving twice that level in hit points, and from
+the Lizard (Level 5) on a point of constitution. Ganon leaves none. Boss text
+-- room line and description -- comes from `data/hyrule_mob_prose.json`, and
+Level 1's guardian is plain "Aquamentus" now, the one-horned NES dragon rather
+than the catalog's "Three-headed Aquamentus".
+
+### The Master Sword
+
+Ganon carries the Master Sword (`30200`, level 58) beside his trident, so it
+lands in his corpse in his chamber. It is the best weapon a mortal can get
+anywhere in the game, measured the boss-weapon way against every weapon at or
+below level 59 that a mortal can get -- from a mobile, a room, a container, a
+shop, or a quest reward:
+
+| Weapon | Level | Dice | Hit/Dam | Score |
+| --- | ---: | --- | --- | ---: |
+| The Master Sword (now) | 58 | 13d9 | +5/+5 | 70.0 |
+| Trident of Ganon | 59 | 11d10 | +9/+3 | 63.5 |
+| The Master Sword (before) | 58 | 13d8 | +3/+4 | 62.5 |
+| Lion's four-crowned axe | 52 | 10d9 | +9/+6 | 56.0 |
+| The Power of the world (crypt.are), best outside Hyrule | 54 | 8d10 | +9/+10 | 54.0 |
+
+Its weapon flags are sharp and vorpal (it was flaming and sharp; Ganon resists
+magic, and a flaming blade's fire is magic to him). Its unique gift is haste
+while wielded: an `F` record on the object, `A 0 0 V`. `load_objects` reads
+ROM 2.4's `F` records now (`F` then `A <location> <modifier> <bits>`); only
+`A`, the affected_by word, is understood. `equip_char` sets the bit and
+`unequip_char` lifts it and then puts back whatever a spell, the race or other
+worn gear still grants, so a hasted character who takes the sword off stays
+hasted. Slow and dispel magic ask `equipment_grants_affect()` before stripping
+haste or sanctuary by hand, so worn powers last exactly as long as they are
+worn. IDENTIFY lists them as "Grants haste while worn."
+
+### Ganon's Fight
+
+Ganon is meant to need a group: a solo level 59 with maximum stats should very
+likely lose, and three or four should win. The numbers:
+
+- **Level 64, 30,000 hit points, armour -40 (-400 in game), average blow 350
+  (5d55+210), sanctuary and haste as before.** Level 64 parries and dodges a
+  level 59 35% of the time each (`min(30, level) + level - 59`), so about four
+  in ten blows land. The armour shaves about 80 off each ordinary blow; the
+  Silver Arrow's tenth of his health is taken after armour, so it is untouched.
+- **`spec_ganon` (`src/special.c`) replaces the necromancer's spell list.**
+  Every mobile pulse (four seconds) he blinks to another spot in the dark and
+  throws two fireballs of 1,600-2,200, each at a random player in the fight:
+  anyone fighting him or grouped with someone who is. A fireball is a spell
+  blow, so parry, dodge and shield block do nothing; sanctuary halves it, the
+  Red Ring takes a fifth and the Mirror Shield three twentieths. His melee is
+  ordinary, and a hero with every defence learned turns most of it aside --
+  the fireballs are the fight.
+- **Left alone, he heals.** Out of a fight he recovers a tenth of his health
+  every pulse, as the NES Ganon is whole again when you come back, so the
+  Silver Arrow's tenths cannot be banked by running out to rest. A collapsed
+  Ganon (one hit point, `AFF2_NO_RECOVER`) does not heal: the finishing shot
+  still waits.
+
+The silver-arrow rule is unchanged, and it is what fixes the length of the
+fight: ten landed Silver Arrow blows bring him to one hit point whatever his
+hit points are. A level 59 with haste and second and third attack swings about
+3.75 times a round, lands about 1.5 of those through his defences, and so needs
+about seven rounds. A Monte Carlo of `fight.c`'s formulas, with a hero of
+4,000 hit points, every defence, sanctuary and the Red Ring:
+
+| Party | Wins | Median rounds |
+| --- | ---: | ---: |
+| Solo, Silver Arrow | 5% | 4 |
+| Solo, with a relic Mirror Shield too | 19% | 4 |
+| Solo, 5,000 hit points | 37% | 6 |
+| Three: arrow-tank, cleric, damage | 90% | 7 |
+| Four: arrow-tank, cleric, two damage | 97% | 7 |
+| Four, two Silver Arrows | 100% | 4 |
+
+Solo the hero takes about 1,500 a pulse after wards and is dead in about four
+rounds; a group splits the fire and kills him faster. A hero without
+sanctuary takes twice that and lasts one pulse. A live probe with a fresh
+level 59 holding sanctuary, the Red Ring and the Silver Arrow went from 3,877
+to 434 hit points in three pulses and died with Ganon still "wounded".
 
 Death Mountain requires all eight Triforce shards before its bombed entrance
 can be used. Ganon drops Golden Key `30243`; that key opens Zelda's room, which
 contains the complete Triforce `30286` and return portal `30217`.
 
+### The Complete Triforce
+
+The complete Triforce (`30286`, level 58) is an `ITEM_LIGHT`, so WEAR puts it
+in the light slot. Its `value[2]` is 999, which `create_object` turns into the
+-1 that never burns down (the file cannot say -1: `fread_flag` reads no minus
+sign). Worn there it gives **the sight of a level 59 character with HOLYLIGHT
+on**, and no more:
+
+- `triforce_sight(ch)` in `src/handler.c` is the one test: a player, wearing
+  object `OBJ_VNUM_HYRULE_TRIFORCE` in `WEAR_LIGHT`. Every place holylight
+  grants sight asks it beside `PLR_HOLYLIGHT`: `can_see`, `can_see_obj`, the
+  online roster, `check_blind`, and the dark-room checks in LOOK, READ and SCAN.
+- `sight_trust(ch)` is `get_trust` raised to `TRIFORCE_SIGHT_LEVEL` (59) for
+  the wearer, and is what `can_see`, the roster and the room listing compare
+  against a wizinvis or cloak level. A wearer sees wizinvis 59 and nothing
+  above it, exactly as a level 59 with holylight would. Permissions still ask
+  `get_trust`.
+- Mobiles never get it, so the shadowmeld rule holds: the meld check stays
+  above the `IS_NPC(ch) && IS_IMMORTAL(ch)` shortcut, and against players a
+  wearer finds a melded character as holylight does.
+
 ### Ganon Relics
 
-Ganon's corpse contains his fixed crown and Golden Key plus exactly one random
-relic from this table. All five random rewards are usable below the immortal
-level boundary:
+Ganon's corpse contains his crown, his trident, the Golden Key and the Master
+Sword, plus exactly one random relic from this table. All four random rewards
+are usable below the immortal level boundary:
 
 | Relic | Vnum | Level | Slot | Unique effect |
 | --- | ---: | ---: | --- | --- |
@@ -213,13 +321,46 @@ level boundary:
 | Blue Ring of Hyrule | `30578` | 54 | Finger | Reduces all incoming damage by 10% |
 | Pegasus Boots | `30581` | 55 | Feet | Reduces movement spent traveling on foot by 25%, with a minimum cost of one |
 | Mirror Shield | `30580` | 56 | Shield | Reduces nonphysical damage by 15% |
-| Red Ring of Hyrule | `30579` | 58 | Finger | Reduces all incoming damage by 20% |
+
+The **Red Ring of Hyrule** (`30579`, level 58, finger) used to be a fifth entry.
+It is found now, not rolled for: it lies in Death Mountain's Red Ring Cellar
+(`30645`), where the NES keeps it, in place of the catalog's plain red ring
+(`30261`, still in the catalog for anyone who holds one). It reduces all
+incoming damage by 20%, and it gives permanent sanctuary while worn through an
+`F` record (`A 0 0 H`), applied and lifted like the Master Sword's haste.
 
 Blue and Red Ring wards use the strongest single value; wearing two does not
 stack their percentage reduction. The Mirror Shield is a separate ward and can
 combine with one Ring. Pegasus Boots do not reduce a mount's movement cost.
 The advanced `compare` model includes every relic passive and lists active
-relic effects in its projected loadouts.
+relic effects in its projected loadouts; it already reads object affect bits,
+so it counts the sword's haste and the ring's sanctuary as well.
+
+### What Enemies Drop
+
+Ordinary enemies drop at random, rolled in `make_corpse` (`hyrule_enemy_drop()`
+in `src/fight.c`), in the NES's spirit. A blade trap or a falling boulder
+leaves nothing.
+
+| Roll | Drop |
+| ---: | --- |
+| 15% | Rupees (gold coins): 1, 1, 2, 3, 5, 8, 12, 20, 30 by band |
+| 5% | Five times that, the NES's blue rupee |
+| 12% | A recovery heart: a potion of cure light (bands 1-2), cure serious (3-4), cure critical (5-6), heal (7-8), heal and cure critical (9) |
+| 3% | A bottled fairy: two cure serious, two cure critical, heal and cure critical, two heals, then three heals |
+| 1% | A clock-flask: a potion of haste, the clock's "everything stops but you" |
+| 64% | Nothing |
+
+The heart, fairy and clock are one potion per band at
+`OBJ_VNUM_HYRULE_HEART_FIRST` (`30600`), `_FAIRY_FIRST` (`30610`) and
+`_CLOCK_FIRST` (`30620`) plus band - 1, at the bottom of the band to drink and
+cast at its top. The rupee drops start at the NES's single rupee and stay well
+under the coin an ordinary mobile of the band carries; at band 1 a rupee is
+worth far more than a level 5 mobile's silver, which is what keeps Hyrule's
+own rupee prices -- a 20-rupee bomb bag -- about forty kills away. Bombs are
+not dropped: the bomb bag is a tool BOMB never uses up, so a second one is
+worth nothing. These potions have no reset source, so the area health check
+counts them under `object-has-no-source`, like the relics before them.
 
 ## Maps And Compasses
 
@@ -381,7 +522,14 @@ The Hyrule tests verify:
 - level bands that climb from Level 1 to 59 without gaps, and enemies statted
   inside the band they stand in
 - each boss out-levelling its band and outlasting the one before, and carrying
-  a weapon 10-20% better than the best existing one at that level
+  a weapon 10-20% better than the best existing one at that level, and the
+  first eight a Heart Container at the top of their band
+- the Master Sword carried by Ganon and beating every weapon a mortal can get
+  anywhere in the world at level 59 or below, with haste as an `F` record
+- the Red Ring in Death Mountain's cellar with sanctuary, and the Triforce a
+  light whose sight is wired into every holylight check
+- Ganon's level, armour, hit points and `spec_ganon`, and the enemy drop
+  potions present for every band at the vnums `src/merc.h` names
 - room names free of grid labels, `Level N:` naming confined to the dungeons,
   and descriptions that fit a terminal and do not list occupants
 - live-population reset caps, including a single Ganon across empty-area resets
@@ -411,7 +559,26 @@ the crossing count or progression route.
 The room prose was written from the NES screens and rooms with the manifest's
 facts in hand -- terrain read off each screen's enemies, doors, stairs, block
 cellars, and landmarks. It is approximate by design: the room shapes and old
-men's hints are paraphrased from the game, not transcribed.
+men's hints are paraphrased from the game, not transcribed. An old man's hint
+is written into his room as words carved or scratched there, so the room
+describes a place rather than an occupant.
+
+The October 2026 rewrite of every room, enemy and boss description drew on
+the sources that would load. Walkthrough sites mostly refuse automated
+readers, so this is a record of what was actually used:
+
+| Source | Result |
+| --- | --- |
+| legendsoflocalization.com, First Quest text comparison | Loaded; the NES wording of every old man, cave and shop line and which dungeon each hint belongs to |
+| zeldauniverse.net walkthrough, all nine levels, shops, heart containers | Loaded; room-by-room detail (its Level 6 and 8 boss notes were muddled and not used) |
+| zeldadungeon.net walkthrough | Index only; every level page 403 |
+| nesmaps.com | Map pages load but carry no text; one level page is a bot check |
+| Wikipedia | General summary only |
+| strategywiki.org, gamefaqs.gamespot.com, zeldawiki.wiki, neoseeker | 403, raw MediaWiki variants included |
+| zelda.fandom.com and other Fandom wikis | 402 |
+| web.archive.org, ign.com | Refused by the fetch tool |
+
+What none of them covered was written from knowledge of the game.
 
 ## Related Documentation
 

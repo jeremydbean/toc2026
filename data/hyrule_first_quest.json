@@ -2343,8 +2343,7 @@
         "landmarks": [
           {
             "type": "cave",
-            "name": "Master Sword Grave",
-            "item": 30200
+            "name": "Hero's Grave"
           }
         ]
       },
@@ -9273,7 +9272,7 @@
           "vnum": 30645,
           "source_coordinate": "H8",
           "source_vnum": 30643,
-          "item_vnum": 30261
+          "item_vnum": 30579
         }
       ],
       "stair_links": [

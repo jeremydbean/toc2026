@@ -9,7 +9,16 @@ from pathlib import Path
 
 from scripts.build_hyrule_area import (
     BOSS_GEAR,
+    BOSS_HEART_CONTAINER_FIRST,
     BOSS_MOBS,
+    DROP_CLOCK_FIRST,
+    DROP_FAIRY_FIRST,
+    DROP_HEART_FIRST,
+    GANON_ARMOR,
+    GANON_VNUM,
+    MASTER_SWORD_BASELINES,
+    MASTER_SWORD_VNUM,
+    master_sword_score,
     BOSS_STATS,
     BOSS_WEAPON_BASELINES,
     BOSS_WEAPONS,
@@ -498,8 +507,8 @@ class HyruleProgressionTests(unittest.TestCase):
 
         Every place an item comes from -- a room, a boss or shopkeeper, a
         chest -- has a band, and the item must be usable at the top of
-        it. The Master Sword is the one deliberate exception: the NES's
-        late-game sword, found in the graveyard and kept at level 58.
+        it. The Master Sword used to be the one exception, a level 58
+        sword in a band 6 graveyard; Ganon carries it now, inside his band.
         """
         bands = manifest_bands(self.manifest)
         room_band = self.room_bands()
@@ -522,13 +531,12 @@ class HyruleProgressionTests(unittest.TestCase):
         too_high = []
         for vnum, found_in in sorted(found.items()):
             obj = self.parser.objects[vnum]
-            if vnum == 30200:
-                continue
             for band in found_in:
                 if obj.level > bands[band][1]:
                     too_high.append((vnum, obj.short_desc, obj.level, band, bands[band]))
         self.assertEqual([], too_high)
         self.assertEqual(self.parser.objects[30200].level, 58)
+        self.assertEqual(found[30200], {9}, "the Master Sword is Ganon's")
 
         # The first things a new character can pick up.
         self.assertLessEqual(self.parser.objects[30219].level, 3, "the Wooden Sword")
@@ -545,12 +553,19 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertTrue(bands[9][0] <= arrow_level <= bands[9][1])
 
     def test_nothing_found_outdoes_its_bands_boss_weapon(self) -> None:
-        """The boss weapons stay best in slot after the re-levelling."""
+        """The boss weapons stay best in slot after the re-levelling.
+
+        The one exception is the Master Sword, which Ganon carries beside
+        his trident and which is meant to beat every weapon in the game;
+        test_the_master_sword_is_the_best_weapon_a_mortal_can_get holds
+        it to that instead.
+        """
         bands = manifest_bands(self.manifest)
         better = []
         for obj in self.parser.objects.values():
             if (obj.area_file != "hyrule.are" or obj.item_type != "5"
                     or obj.vnum in {weapon.vnum for weapon in BOSS_WEAPONS.values()}
+                    or obj.vnum == MASTER_SWORD_VNUM
                     or not self.object_is_sourced(obj.vnum)):
                 continue
             affects = {affect["location"]: affect["modifier"] for affect in obj.affects}
@@ -559,6 +574,207 @@ class HyruleProgressionTests(unittest.TestCase):
                 if bands[level][0] <= obj.level <= bands[level][1] and score >= weapon_score(weapon):
                     better.append((obj.vnum, obj.short_desc, obj.level, score, level))
         self.assertEqual([], better)
+
+    def obtainable_weapons(self, max_level: int) -> list[tuple[float, int, str, str]]:
+        """(score, vnum, name, area) for every weapon a mortal can get at or
+        below max_level: from a mobile, a room, a container or a shop
+        anywhere in the world, or as a quest reward."""
+        quest = Path("src/quest.c").read_text(encoding="latin-1")
+        quest_rewards = {
+            int(line.split()[2]) for line in quest.splitlines()
+            if line.startswith("#define QUEST_ITEM") and line.split()[2].isdigit()
+        }
+        direct = set(quest_rewards)
+        containers: dict[int, set[int]] = {}
+        for resets in self.parser.resets.values():
+            for reset in resets:
+                if reset.command in {"O", "G", "E"}:
+                    direct.add(reset.arg1)
+                elif reset.command == "P":
+                    containers.setdefault(reset.arg1, set()).add(reset.arg3)
+
+        def sourced(vnum: int, seen: frozenset[int] = frozenset()) -> bool:
+            if vnum in direct:
+                return True
+            return any(container not in seen and sourced(container, seen | {vnum})
+                       for container in containers.get(vnum, ()))
+
+        weapons = []
+        for obj in self.parser.objects.values():
+            if obj.item_type != "5" or not 0 <= obj.level <= max_level:
+                continue
+            if not sourced(obj.vnum):
+                continue
+            try:
+                average = int(obj.values[1]) * (int(obj.values[2]) + 1) / 2
+            except (ValueError, IndexError):
+                continue
+            damroll = sum(affect["modifier"] for affect in obj.affects
+                          if affect["location"] == 19)
+            weapons.append((average + damroll, obj.vnum, obj.short_desc, obj.area_file))
+        return sorted(weapons, reverse=True)
+
+    def test_the_master_sword_is_the_best_weapon_a_mortal_can_get(self) -> None:
+        """Ganon carries it, and nothing a mortal can get anywhere beats it.
+
+        The comparison is the boss weapons': average damage plus damroll,
+        against every weapon at or below level 59 from any mobile, room,
+        container, shop or quest in the world -- Ganon's trident included.
+        """
+        sword = self.parser.objects[MASTER_SWORD_VNUM]
+        ganon = self.parser.mobiles[GANON_VNUM]
+        self.assertIn(MASTER_SWORD_VNUM, ganon.drops)
+        self.assertEqual(
+            [reset.command for reset in self.resets
+             if reset.command in {"O", "G", "E", "P"} and reset.arg1 == MASTER_SWORD_VNUM],
+            ["G"], "Ganon is the only source")
+        self.assertEqual(sword.level, 58)
+        self.assertIn("N", sword.wear_flags)
+
+        weapons = self.obtainable_weapons(59)
+        best, best_vnum, _, _ = weapons[0]
+        self.assertEqual(best_vnum, MASTER_SWORD_VNUM, weapons[:3])
+        self.assertEqual(best, master_sword_score())
+        runner_up = weapons[1]
+        self.assertEqual(runner_up[1], BOSS_WEAPONS[9].vnum, "the trident is next")
+        self.assertEqual(runner_up[0], MASTER_SWORD_BASELINES[0][0])
+        outside = next(weapon for weapon in weapons if weapon[3] != "hyrule.are")
+        self.assertEqual(outside[0], MASTER_SWORD_BASELINES[1][0], outside)
+        # Best by a clear margin over the trident, without running away.
+        self.assertGreaterEqual(best, runner_up[0] * 1.05)
+        self.assertLessEqual(best, runner_up[0] * 1.20)
+
+        # Its gift: haste while wielded, as a ROM F record.
+        self.assertIn({"where": "A", "location": 0, "modifier": 0, "bits": "V"},
+                      sword.affect_bits)
+        lore = " ".join(" ".join(ed["description"].split()) for ed in sword.extra_descr)
+        self.assertIn("hastens you", lore)
+
+    def test_worn_affect_bits_load_and_come_off_with_the_item(self) -> None:
+        """The F record the Master Sword and Red Ring use, end to end."""
+        db = Path("src/db.c").read_text(encoding="latin-1")
+        loader = db.split("void load_objects( FILE *fp )", 1)[1].split("\n}", 1)[0]
+        self.assertIn("letter_inner == 'F'", loader)
+        self.assertIn("paf->bitvector      = (int)bits;", loader)
+        handler = Path("src/handler.c").read_text(encoding="latin-1")
+        unequip = handler.split("void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )", 1)[1]
+        unequip = unequip.split("\n}", 1)[0]
+        # Lifting a worn bit puts back any a spell or other gear still gives.
+        self.assertIn("removed_primary |= paf->bitvector;", unequip)
+        self.assertIn("restore_character_affect_bits( ch, removed_primary", unequip)
+        magic = Path("src/magic.c").read_text(encoding="latin-1")
+        self.assertIn("!equipment_grants_affect(victim, AFF_SANCTUARY)", magic)
+        self.assertIn("!equipment_grants_affect( victim, AFF_HASTE )", magic)
+
+    def test_the_red_ring_lies_in_death_mountain_and_gives_sanctuary(self) -> None:
+        ring = self.parser.objects[30579]
+        self.assertIn({"where": "A", "location": 0, "modifier": 0, "bits": "H"},
+                      ring.affect_bits)
+        cellar_rooms = {cellar["vnum"] for cellar in self.dungeons[9]["cellars"]}
+        sources = [reset for reset in self.resets
+                   if reset.command in {"O", "G", "E", "P"} and reset.arg1 == 30579]
+        self.assertEqual(len(sources), 1)
+        self.assertEqual(sources[0].command, "O")
+        self.assertIn(sources[0].arg3, cellar_rooms)
+        guidance = " ".join(" ".join(ed["description"].split()) for ed in ring.extra_descr)
+        self.assertIn("sanctuary", guidance)
+        self.assertIn("20 percent", guidance)
+
+    def test_the_triforce_is_worn_as_a_light_and_gives_holy_sight(self) -> None:
+        triforce = self.parser.objects[30286]
+        self.assertEqual(triforce.item_type, "1", "WEAR puts a light in the light slot")
+        self.assertEqual(triforce.values[2], "999", "create_object makes 999 a light that never burns down")
+        self.assertLessEqual(triforce.level, 59)
+
+        merc = Path("src/merc.h").read_text(encoding="latin-1")
+        self.assertIn("#define OBJ_VNUM_HYRULE_TRIFORCE      30286", merc)
+        self.assertIn("#define TRIFORCE_SIGHT_LEVEL          59", merc)
+        handler = Path("src/handler.c").read_text(encoding="latin-1")
+        sight = handler.split("bool triforce_sight( const CHAR_DATA *ch )", 1)[1]
+        sight = sight.split("\n}", 1)[0]
+        self.assertIn("IS_NPC(ch)", sight, "players only: no mobile sees through a meld")
+        self.assertIn("WEAR_LIGHT", sight)
+        self.assertIn("OBJ_VNUM_HYRULE_TRIFORCE", sight)
+        trust = handler.split("int sight_trust( const CHAR_DATA *ch )", 1)[1].split("\n}", 1)[0]
+        self.assertIn("UMAX( trust, TRIFORCE_SIGHT_LEVEL )", trust)
+
+        # Every place holylight grants sight asks the Triforce too, and the
+        # wizinvis and incognito levels are read against the sight trust.
+        can_see = handler.split("bool can_see( CHAR_DATA *ch", 1)[1].split("\n}", 1)[0]
+        self.assertIn("sight_trust( ch ) < victim->invis_level", can_see)
+        self.assertIn("sight_trust( ch ) < victim->cloak_level", can_see)
+        self.assertIn("triforce_sight( ch )", can_see)
+        can_see_obj = handler.split("bool can_see_obj(", 1)[1].split("\n}", 1)[0]
+        self.assertIn("triforce_sight( ch )", can_see_obj)
+        for path in ("src/act_info.c", "src/act_move.c", "src/handler.c"):
+            source = Path(path).read_text(encoding="latin-1")
+            for index, line in enumerate(source.splitlines()):
+                if "PLR_HOLYLIGHT" in line and ("IS_SET(ch->act" in line):
+                    window = "\n".join(source.splitlines()[index:index + 3])
+                    if "SET_BIT" in line or "REMOVE_BIT" in line or "IS_IMMORTAL" in line \
+                            or '"On"' in line:
+                        continue
+                    with self.subTest(path=path, line=index + 1):
+                        self.assertIn("triforce_sight", window)
+
+    def test_bosses_drop_heart_containers_in_their_band(self) -> None:
+        bands = manifest_bands(self.manifest)
+        for level in range(1, 9):
+            vnum = BOSS_HEART_CONTAINER_FIRST + level - 1
+            container = self.parser.objects[vnum]
+            boss = self.parser.mobiles[BOSS_MOBS[level]]
+            applies = {affect["location"]: affect["modifier"] for affect in container.affects}
+            with self.subTest(level=level):
+                self.assertIn(vnum, boss.drops)
+                self.assertEqual(container.level, bands[level][1])
+                self.assertEqual(applies.get(13), 2 * bands[level][1])
+                self.assertEqual(applies.get(5, 0), 1 if level >= 5 else 0)
+                self.assertIn("O", container.wear_flags)
+        self.assertNotIn(BOSS_HEART_CONTAINER_FIRST + 8, self.parser.objects,
+                         "Ganon leaves no Heart Container, as in the NES")
+
+    def test_enemy_drops_exist_for_every_band_and_match_fight_c(self) -> None:
+        merc = Path("src/merc.h").read_text(encoding="latin-1")
+        for name, first in (("HEART", DROP_HEART_FIRST), ("FAIRY", DROP_FAIRY_FIRST),
+                            ("CLOCK", DROP_CLOCK_FIRST)):
+            self.assertIn(f"#define OBJ_VNUM_HYRULE_{name}_FIRST   {first}", merc)
+        bands = manifest_bands(self.manifest)
+        for level in range(1, 10):
+            for first in (DROP_HEART_FIRST, DROP_FAIRY_FIRST, DROP_CLOCK_FIRST):
+                obj = self.parser.objects[first + level - 1]
+                with self.subTest(level=level, vnum=obj.vnum):
+                    self.assertEqual(obj.item_type, "10", "a potion: QUAFF it")
+                    self.assertTrue(bands[level][0] <= obj.level <= bands[level][1])
+                    self.assertEqual(int(obj.values[0]), bands[level][1])
+        fight = Path("src/fight.c").read_text(encoding="latin-1")
+        drop = fight.split("static void hyrule_enemy_drop(", 1)[1].split("\n}", 1)[0]
+        for name in ("HEART", "FAIRY", "CLOCK"):
+            self.assertIn(f"OBJ_VNUM_HYRULE_{name}_FIRST + band - 1", drop)
+        self.assertIn("TYPE_GOLD", drop, "rupees are gold coins")
+        self.assertIn("hyrule_enemy_drop( corpse, ch->pIndexData->vnum )", fight)
+        rupees = fight.split("static const int hyrule_rupee_drop[HYRULE_BANDS] =", 1)[1]
+        rupees = [int(value) for value in rupees.split("{", 1)[1].split("}", 1)[0].split(",")]
+        self.assertEqual(len(rupees), 9)
+        self.assertEqual(rupees, sorted(rupees), "drops climb with the band")
+
+    def test_ganon_is_a_fight_for_a_group(self) -> None:
+        ganon = self.parser.mobiles[GANON_VNUM]
+        level, hit_points, damage = BOSS_STATS[9]
+        self.assertEqual(ganon.level, level)
+        # The file's armour; load_mobiles multiplies it by ten.
+        self.assertEqual(ganon.ac, [GANON_ARMOR] * 4)
+        self.assertGreaterEqual(hit_points, 30000)
+        self.assertGreaterEqual(damage, 300)
+        specials = Path("area/hyrule.are").read_text(encoding="latin-1")
+        self.assertIn(f"M {GANON_VNUM} spec_ganon", specials)
+        self.assertNotIn(f"M {GANON_VNUM} spec_cast_necro", specials)
+        special = Path("src/special.c").read_text(encoding="latin-1")
+        self.assertIn('{ "spec_ganon",             spec_ganon              }', special)
+        spec = special.split("bool spec_ganon(", 1)[1].split("\nbool ", 1)[0]
+        self.assertIn("DAM_FIRE", spec)
+        self.assertIn("AFF2_NO_RECOVER", spec, "a collapsed Ganon must not heal")
+        self.assertIn("can_see( mob, victim )", special.split("static bool ganon_may_target", 1)[1],
+                      "a melded character is never a target")
 
     def test_hyrule_bystanders_cannot_be_attacked(self) -> None:
         """The old men are level 50 so nothing in Level 1 can hurt them,
@@ -691,7 +907,7 @@ class HyruleProgressionTests(unittest.TestCase):
 
         expected_cellar_items = {
             1: {30222}, 3: {30411}, 4: {30412}, 5: {30413},
-            6: {30245}, 7: {30414}, 8: {30415, 30416}, 9: {30218, 30261},
+            6: {30245}, 7: {30414}, 8: {30415, 30416}, 9: {30218, 30579},
         }
         for level, object_vnums in expected_cellar_items.items():
             actual = {cellar["item_vnum"] for cellar in self.dungeons[level]["cellars"]}
@@ -751,10 +967,16 @@ class HyruleProgressionTests(unittest.TestCase):
 
         canonical_caves = {
             "K8": (30651, 30251),
-            "B6": (30652, 30200),
             "O8": (30653, 30500),
             "E6": (30674, 30276),
         }
+        # The Hero's Grave still opens under the B6 headstone, but the
+        # Master Sword is Ganon's now: the grave holds nothing.
+        self.assertTrue(any(
+            exit_data.to_room == 30652
+            for exit_data in self.parser.rooms[self.world["B6"]["vnum"]].exits
+        ))
+        self.assertNotIn(30200, self.parser.rooms[30652].objects)
         for coordinate, (cave_vnum, object_vnum) in canonical_caves.items():
             with self.subTest(coordinate=coordinate):
                 self.assertTrue(any(
@@ -1038,11 +1260,18 @@ class HyruleProgressionTests(unittest.TestCase):
         for constant in (
             "obj_vnum_hyrule_heros_tunic",
             "obj_vnum_hyrule_blue_ring",
-            "obj_vnum_hyrule_red_ring",
             "obj_vnum_hyrule_mirror_shield",
             "obj_vnum_hyrule_pegasus_boots",
         ):
             self.assertEqual(loot_table.count(constant), 1)
+        # The Red Ring is found, not rolled for: it lies in Death
+        # Mountain's Red Ring Cellar, where the NES keeps it.
+        self.assertEqual(loot_table.count("obj_vnum_hyrule_red_ring"), 0)
+        red_ring_cellar = next(
+            cellar for cellar in self.dungeons[9]["cellars"]
+            if cellar["name"] == "Red Ring Cellar"
+        )
+        self.assertIn(30579, self.parser.rooms[red_ring_cellar["vnum"]].objects)
         corpse_source = fight_source.split(
             "void make_corpse( char_data *ch )", 1
         )[1].split("void death_cry", 1)[0]

@@ -33,7 +33,7 @@ TARGET   := merc
 
 all: $(TARGET)
 
-hyrule-area: data/hyrule_first_quest.json scripts/build_hyrule_area.py
+hyrule-area: data/hyrule_first_quest.json data/hyrule_room_prose.json data/hyrule_mob_prose.json scripts/build_hyrule_area.py
 	$(PYTHON) scripts/build_hyrule_area.py
 
 hyrule-manifest: scripts/build_hyrule_manifest.py
