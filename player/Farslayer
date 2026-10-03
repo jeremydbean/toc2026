@@ -1,7 +1,7 @@
 #PLAYER
 Name Farslayer~
-Id   10321
-LogO 1791038701
+Id   21916
+LogO 1791040939
 Vers 4
 Prom ~
 Ignoring  ~
@@ -14,44 +14,46 @@ PsiGrant 0
 PsiSpec ~
 PsiKnown ~
 Cast none
-Levl 1
-Plyd 51
+Levl 3
+Plyd 1675
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 3700
-HMV  20 20 100 100 100 100
+Room 4216
+HMV  36 36 144 144 112 112
 NewGold 0
 NewPlat 0
-NewCopp 0
+NewCopp 16
 NewSilv 0
 BankCP 0
-IntTime 1791038701
+IntTime 1791039310
 IntTotal 0
 Dcount 0
 SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 0
+AchKills 8
 AchQuests 0
-AchDeaths 0
+AchDeaths 2
 AchExplore 0
 AchMaps 0
 AchCompass 0
 AchTriforce 0
-Achv visit-mud-school 1791038685
-LastOut  0
-SesLogin 0
-SesDur   0
-SesExpG  0
-SesLvlG  0
-SesKill  0
+Achv first-kill 1791039658
+Achv visit-mud-school 1791039302
+Achv first-death 1791039860
+LastOut  1791040939
+SesLogin 1791039302
+SesDur   1637
+SesExpG  6742
+SesLvlG  3
+SesKill  8
 SesPK    0
-SesDead  0
+SesDead  2
 SesQuest 0
-Exp  0
+Exp  6742
 Act  65788
 Comm 24576
 Mounted 0
@@ -77,23 +79,20 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
-Prac 5
+Pos  5
+Prac 7
 Trai 3
-Save  -1
 Alig  -750
-Hit   2
-Dam   2
-ACs 95 95 95 99
-Attr 13 13 13 13 13
+ACs 100 100 100 100
+Attr 13 13 16 13 13
 AMod 0 0 0 0 0
 Pass FarZsfmbOukHE~
-Titl  the Apprentice of Magic~
+Titl  the Scholar of Magic~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 20 100 100
-Cond 0 48 48
+HMVP 36 144 112
+Cond 0 22 22
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -103,7 +102,7 @@ Sk 1 'fly'
 Sk 1 'giant strength'
 Sk 1 'identify'
 Sk 1 'lightning bolt'
-Sk 1 'magic missile'
+Sk 26 'magic missile'
 Sk 1 'refresh'
 Sk 1 'shield'
 Sk 10 'axe'
@@ -116,46 +115,10 @@ Sk 3 'sword'
 Sk 20 'whip'
 Sk 1 'scrolls'
 Sk 1 'wands'
-Sk 50 'recall'
+Sk 62 'recall'
 Gr 'rom basics'
 Gr 'mage basics'
 Gr 'mage default'
-End
-
-#O
-Vnum 3716
-Nest 0
-Wear 0
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3703
-Nest 0
-Wear 5
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3704
-Nest 0
-Wear 11
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3701
-Nest 0
-Wear 16
-Cost 0
-Cond 100
-Repd 0
 End
 
 #END

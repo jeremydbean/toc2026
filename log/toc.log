@@ -28498,3 +28498,67 @@ Sat Oct  3 14:43:44 2026 :: Sock.sinaddr:  71.117.172.247
 Sat Oct  3 14:43:45 2026 :: Loading Look's playerfile
 Sat Oct  3 14:44:10 2026 :: Loading Farslayer's playerfile
 Sat Oct  3 14:44:40 2026 :: Farslayer@pool-71-117-172-247.prvdri.fios.verizon.net new player.
+Sat Oct  3 14:46:46 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sat Oct  3 14:46:50 2026 :: Log WebAdmin: fsave
+Sat Oct  3 14:46:56 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sat Oct  3 14:46:59 2026 :: EOF encountered on read.
+Sat Oct  3 14:46:59 2026 :: Closing link to Eclipse.
+Sat Oct  3 14:46:59 2026 :: Received signal 15; saving players and shutting down.
+Sat Oct  3 14:46:59 2026 :: Closing link to Farslayer.
+Sat Oct  3 14:46:59 2026 :: Closing link to Alaric.
+Sat Oct  3 14:46:59 2026 :: Normal termination of game.
+Sat Oct  3 14:47:00 2026 ::  INIT OK 
+Sat Oct  3 14:47:00 2026 :: ROM is ready to rock on port 9000.
+Sat Oct  3 14:47:01 2026 :: Automated backup complete.
+Sat Oct  3 14:47:01 2026 :: Daily backup complete.
+Sat Oct  3 14:47:36 2026 :: Sock.sinaddr:  71.117.172.247
+Sat Oct  3 14:47:45 2026 :: Loading Farslayer's playerfile
+Sat Oct  3 14:47:47 2026 :: Farslayer@pool-71-117-172-247.prvdri.fios.verizon.net has connected.
+Sat Oct  3 14:48:12 2026 :: Sock.sinaddr:  52.87.72.16
+Sat Oct  3 14:48:13 2026 :: EOF encountered on read.
+Sat Oct  3 14:51:14 2026 :: Log Farslayer: drop all
+Sat Oct  3 14:51:28 2026 :: Farslayer has achieved level 2!
+Sat Oct  3 14:52:17 2026 :: Farslayer did a remove all.
+Sat Oct  3 14:53:18 2026 :: Sock.sinaddr:  52.15.147.27
+Sat Oct  3 14:53:18 2026 :: EOF encountered on read.
+Sat Oct  3 14:53:22 2026 :: Log Farslayer: drop cloak
+Sat Oct  3 14:53:22 2026 :: Log Farslayer: drop cloak
+Sat Oct  3 14:54:08 2026 :: [DELETE] Character is contemplating deletion.
+Sat Oct  3 14:54:11 2026 :: [DELETE] Character self-deleted.
+Sat Oct  3 14:54:11 2026 :: Farslayer has quit.
+Sat Oct  3 14:54:11 2026 :: [QUIT] Player rejoined the real world.
+Sat Oct  3 14:54:22 2026 :: Sock.sinaddr:  71.117.172.247
+Sat Oct  3 14:54:24 2026 :: Loading Farslayer's playerfile
+Sat Oct  3 14:54:59 2026 :: Farslayer@pool-71-117-172-247.prvdri.fios.verizon.net new player.
+Sat Oct  3 14:58:22 2026 :: Sock.sinaddr:  54.167.223.174
+Sat Oct  3 14:58:23 2026 :: EOF encountered on read.
+Sat Oct  3 15:03:26 2026 :: Sock.sinaddr:  178.156.189.113
+Sat Oct  3 15:03:27 2026 :: EOF encountered on read.
+Sat Oct  3 15:04:20 2026 :: Farslayer killed by the kobold at 3713
+Sat Oct  3 15:07:41 2026 :: Farslayer has achieved level 2!
+Sat Oct  3 15:08:30 2026 :: Sock.sinaddr:  3.212.128.62
+Sat Oct  3 15:08:30 2026 :: EOF encountered on read.
+Sat Oct  3 15:13:35 2026 :: Sock.sinaddr:  5.161.117.52
+Sat Oct  3 15:13:36 2026 :: EOF encountered on read.
+Sat Oct  3 15:13:41 2026 :: Farslayer has achieved level 3!
+Sat Oct  3 15:18:40 2026 :: Sock.sinaddr:  3.133.226.214
+Sat Oct  3 15:18:41 2026 :: EOF encountered on read.
+Sat Oct  3 15:19:15 2026 :: Farslayer killed by the kobold at 3713
+Sat Oct  3 15:22:19 2026 :: Farslayer has quit.
+Sat Oct  3 15:22:19 2026 :: [QUIT] Player rejoined the real world.
+Sat Oct  3 15:23:43 2026 :: Sock.sinaddr:  178.156.189.249
+Sat Oct  3 15:23:43 2026 :: EOF encountered on read.
+Sat Oct  3 15:28:48 2026 :: Sock.sinaddr:  5.161.61.238
+Sat Oct  3 15:28:48 2026 :: EOF encountered on read.
+Sat Oct  3 15:33:53 2026 :: Sock.sinaddr:  5.161.113.195
+Sat Oct  3 15:33:54 2026 :: EOF encountered on read.
+Sat Oct  3 15:38:57 2026 :: Sock.sinaddr:  178.156.181.172
+Sat Oct  3 15:38:57 2026 :: EOF encountered on read.
+Sat Oct  3 15:44:03 2026 :: Sock.sinaddr:  5.161.215.244
+Sat Oct  3 15:44:03 2026 :: EOF encountered on read.
+Sat Oct  3 15:49:08 2026 :: Sock.sinaddr:  178.156.181.172
+Sat Oct  3 15:49:08 2026 :: EOF encountered on read.
+Sat Oct  3 15:54:13 2026 :: Sock.sinaddr:  54.87.112.51
+Sat Oct  3 15:54:13 2026 :: EOF encountered on read.
+Sat Oct  3 15:59:18 2026 :: Sock.sinaddr:  3.20.63.178
+Sat Oct  3 15:59:18 2026 :: EOF encountered on read.
