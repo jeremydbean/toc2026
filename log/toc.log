@@ -26811,3 +26811,22 @@ Sat Oct  3 01:52:31 2026 :: Log Alaric [4207]: e
 Sat Oct  3 01:52:31 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
 Sat Oct  3 01:52:31 2026 :: Log Alaric [4202]: n
 Sat Oct  3 01:52:31 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sat Oct  3 01:52:31 2026 :: Log Alaric [4203]: n
+Sat Oct  3 01:52:31 2026 :: Log Alaric [0]: moved to 4210 (Room of Peace and Healing.)
+Sat Oct  3 01:52:32 2026 :: Log Alaric [4210]: sleep
+Sat Oct  3 01:55:06 2026 :: Log Alaric [4210]: who
+Sat Oct  3 01:55:37 2026 :: Log Alaric [4210]: score
+Sat Oct  3 01:55:47 2026 :: Log Alaric [4210]: eq
+Sat Oct  3 01:55:53 2026 :: Log Alaric [4210]: (refused) prayy
+Sat Oct  3 01:55:55 2026 :: Log Alaric [4210]: pray
+Sat Oct  3 01:55:56 2026 :: Log Alaric [4210]: wake
+Sat Oct  3 01:55:57 2026 :: Log Alaric [4210]: pray
+Sat Oct  3 01:55:57 2026 :: Log Alaric [0]: moved to 8 (The Oracle's Sanctum)
+Sat Oct  3 01:55:57 2026 :: Oracle: Alaric prayed from room 4210 (Room of Peace and Healing.) and entered her sanctum.
+Sat Oct  3 01:56:14 2026 :: Sock.sinaddr:  3.212.128.62
+Sat Oct  3 01:56:14 2026 :: EOF encountered on read.
+Sat Oct  3 01:56:21 2026 :: Log Alaric [8]: say What advantages does a player gain from having a high dexterity stat?
+Sat Oct  3 01:56:21 2026 :: Log Alaric [8]: asked the Oracle: What advantages does a player gain from having a high dexterity stat?
+Sat Oct  3 01:56:26 2026 :: Oracle answered Alaric in room 8: High dexterity improves your armor class, attack speed, and success with skills like dodge and parry; thieves especially benefit, but warriors like you gain defensive edge too.
+Sat Oct  3 01:56:50 2026 :: Log Alaric [8]: say done
+Sat Oct  3 01:56:50 2026 :: Log Alaric [0]: moved to 4210 (Room of Peace and Healing.)
