@@ -212,7 +212,7 @@ Hyrule's bosses gained Heart Containers and its enemies random drops: the
 27 drop potions are made by `make_corpse`, not by a reset, so they count as
 `object-has-no-source` exactly as Ganon's relics always have. Eighteen more
 came with the dungeon chain -- eight guardian keys, nine chests and the
-Triforce of Power -- and one more finding, The Triforce, which
+final Triforce piece -- and one more finding, The Triforce, which
 COMBINE makes and nothing places.
 
 The information count fell from 1,571 when 176 resets that had been

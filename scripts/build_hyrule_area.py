@@ -587,7 +587,8 @@ def enemy_tiers(manifest: dict[str, Any]) -> list[tuple[str, int]]:
 # parries and dodges a level 59 35% of the time each), so the fight lasts
 # about seven rounds. What hurts is spec_ganon in src/special.c: every
 # four seconds two fireballs of 300-420 at random members of the fight,
-# which no parry stops -- 150-210 each through sanctuary.
+# which no parry stops -- 150-210 each through sanctuary, less with the
+# Red Ring's fifth and the Blue Ring's tenth.
 #
 # They were 1,400-1,900, sized against a 4,000 hit point hero, and
 # nobody met them until October 2026: Ganon's hit points overflowed a
@@ -1942,7 +1943,7 @@ A 0 0 {AFF_SANCTUARY_FLAG}""",
         ),
         object_record(
             30580,
-            "mirror shield hyrule light ganon relic",
+            "mirror shield hyrule light relic",
             "the Mirror Shield",
             "A polished Mirror Shield reflects an impossible point of light.",
             "silver",
@@ -1964,7 +1965,7 @@ A
         ),
         object_record(
             30581,
-            "pegasus boots hyrule speed ganon relic",
+            "pegasus boots hyrule speed relic",
             "the Pegasus Boots",
             "A pair of wing-crested boots waits here, light as air.",
             "leather",

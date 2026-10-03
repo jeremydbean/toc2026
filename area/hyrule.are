@@ -122,13 +122,13 @@ Ganon~
 Ganon, the Prince of Darkness, lurks unseen in the dark.
 ~
 A towering, boarlike demon with blue hide, tusks and a black trident:
-Ganon, the Prince of Darkness, bearer of the Triforce of Power. He
-blinks out of sight and reappears elsewhere in the dark, hurling
-fireballs at whoever stands against him, and any wound he is left
-alone with closes. At his hip hangs a sword that was never his: the
-Master Sword, taken from the hero's grave. Ordinary weapons can wound
-him but never kill him. Beaten down, he collapses flashing red, and a
-level 54+ hero must wield the Silver Arrow and SHOOT GANON to end it.
+Ganon, the Prince of Darkness, bearer of the Triforce of Power. He blinks
+out of sight and reappears elsewhere in the dark, hurling fireballs at
+whoever stands against him, and any wound he is left alone with closes.
+Behind him stands the great chest that holds the Master Sword, taken from
+the hero's grave. Ordinary weapons can wound him but never kill him. Beaten
+down, he collapses flashing red, and a level 54+ hero must wield the Silver
+Arrow and SHOOT GANON to end it.
 ~
 pig~
 ABFMRV CDFHJQUV -800 S
@@ -849,7 +849,7 @@ a grave-dusted old man~
 A grave-dusted old man rises from the dust under the grave and says, "Master using it and you can have this."
 ~
 Grave dirt clings to his robe and hair, and he seems more at home among the
-dead than the living. The finest blade anyone may carry now, the Magical
+dead than the living. The finest blade this grave can give, the Magical
 Sword, lies before him, for the Master Sword belongs to Ganon these days.
 He will not hand it to a beginner. Count your hearts against his reckoning:
 he wants to see 12 before he lets it go. Until then he sits in the dark
@@ -7420,7 +7420,7 @@ A
 F
 A 0 0 H
 #30580
-mirror shield hyrule light ganon relic~
+mirror shield hyrule light relic~
 the Mirror Shield~
 A polished Mirror Shield reflects an impossible point of light.~
 silver~
@@ -7438,7 +7438,7 @@ A
 A
 17 -5
 #30581
-pegasus boots hyrule speed ganon relic~
+pegasus boots hyrule speed relic~
 the Pegasus Boots~
 A pair of wing-crested boots waits here, light as air.~
 leather~

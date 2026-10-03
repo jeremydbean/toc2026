@@ -631,7 +631,7 @@
     },
     "9": {
       "long": "Ganon, the Prince of Darkness, lurks unseen in the dark.",
-      "description": "A towering, boarlike demon with blue hide, tusks and a black trident:\nGanon, the Prince of Darkness, bearer of the Triforce of Power. He\nblinks out of sight and reappears elsewhere in the dark, hurling\nfireballs at whoever stands against him, and any wound he is left\nalone with closes. At his hip hangs a sword that was never his: the\nMaster Sword, taken from the hero's grave. Ordinary weapons can wound\nhim but never kill him. Beaten down, he collapses flashing red, and a\nlevel 54+ hero must wield the Silver Arrow and SHOOT GANON to end it."
+      "description": "A towering, boarlike demon with blue hide, tusks and a black trident: Ganon, the Prince of Darkness, bearer of the Triforce of Power. He blinks out of sight and reappears elsewhere in the dark, hurling fireballs at whoever stands against him, and any wound he is left alone with closes. Behind him stands the great chest that holds the Master Sword, taken from the hero's grave. Ordinary weapons can wound him but never kill him. Beaten down, he collapses flashing red, and a level 54+ hero must wield the Silver Arrow and SHOOT GANON to end it."
     }
   },
   "npcs": {
@@ -780,7 +780,7 @@
       "keywords": "old man swordkeeper gravekeeper",
       "short": "a grave-dusted old man",
       "long": "A grave-dusted old man rises from the dust under the grave and says, \"Master using it and you can have this.\"",
-      "description": "Grave dirt clings to his robe and hair, and he seems more at home among the dead than the living. The finest blade anyone may carry now, the Magical Sword, lies before him, for the Master Sword belongs to Ganon these days. He will not hand it to a beginner. Count your hearts against his reckoning: he wants to see 12 before he lets it go. Until then he sits in the dark under the stone you pushed aside, patient as the dead above."
+      "description": "Grave dirt clings to his robe and hair, and he seems more at home among the dead than the living. The finest blade this grave can give, the Magical Sword, lies before him, for the Master Sword belongs to Ganon these days. He will not hand it to a beginner. Count your hearts against his reckoning: he wants to see 12 before he lets it go. Until then he sits in the dark under the stone you pushed aside, patient as the dead above."
     },
     "cave:O1": {
       "vnum": 30366,

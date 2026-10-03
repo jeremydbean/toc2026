@@ -42,6 +42,28 @@ class RetiredObjectTableTests(unittest.TestCase):
                           f"{retired} would be swapped for a missing {replacement}")
 
 
+class BoughtItemTests(unittest.TestCase):
+    def test_a_bought_copy_is_not_shop_stock(self) -> None:
+        """Hyrule's shop prototypes carry ITEM_INVENTORY, every copy sold
+        kept it, and make_corpse destroys inventory items: a player who
+        died lost everything they had bought, a 250-rupee Blue Ring
+        included. do_buy clears it on the copy, and loading clears it
+        from what a player already carries."""
+        obj_c = (ROOT / "src" / "act_obj.c").read_text(encoding="latin-1")
+        buy = obj_c.split("obj = create_object( obj->pIndexData, -1 * obj->level );", 1)[1]
+        self.assertLess(buy.index("REMOVE_BIT( obj->extra_flags, ITEM_INVENTORY );"),
+                        buy.index("obj_to_char( obj, ch );"))
+        save = (ROOT / "src" / "save.c").read_text(encoding="latin-1")
+        self.assertIn("if ( ch != NULL && !IS_NPC(ch) )\n\t\t\tREMOVE_BIT( obj->extra_flags, ITEM_INVENTORY );",
+                      save.replace("\r\n", "\n"))
+
+    def test_an_old_blue_ring_is_raised_to_its_level(self) -> None:
+        """30551 was a level 24 ring with no ward; a copy saved then keeps
+        its level, so loading raises it with the ward it gained."""
+        save = (ROOT / "src" / "save.c").read_text(encoding="latin-1")
+        self.assertIn("obj->pIndexData->vnum == OBJ_VNUM_HYRULE_BLUE_RING", save)
+
+
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class RetiredObjectLiveTests(unittest.TestCase):
     def test_a_retired_satchel_comes_back_as_bombs(self) -> None:

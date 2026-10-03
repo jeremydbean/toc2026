@@ -48,7 +48,8 @@
 #define HYRULE_BANDS            9
 
 /*
- * One of these, at random, beside the Master Sword Ganon always carries.
+ * One of these, at random, in Ganon's corpse beside his crown, trident and
+ * Golden Key (the Master Sword is in his great chest, 30648).
  * The Red Ring of Hyrule is not here: it lies in Death Mountain's cellar,
  * where the NES keeps it, so it is found rather than rolled for. Nor is
  * the Blue Ring of Hyrule: it is the one the ring shop sells, and by

@@ -405,7 +405,8 @@ likely lose, and three or four should win. The numbers:
   throws two fireballs of 300-420, each at a random player in the fight:
   anyone fighting him or grouped with someone who is. A fireball is a spell
   blow, so parry, dodge and shield block do nothing; sanctuary halves it, the
-  Red Ring takes a fifth and the Mirror Shield three twentieths. His melee is
+  Red Ring takes a fifth, the Blue Ring a further tenth, and the Mirror
+  Shield three twentieths. His melee is
   ordinary, and a hero with every defence learned turns most of it aside --
   the fireballs are the fight.
 - **Left alone, he heals.** Out of a fight he recovers a tenth of his health
@@ -532,8 +533,8 @@ on**, and no more:
 
 ### Ganon Relics
 
-Ganon's corpse contains his crown, his trident and the Golden Key, plus
-exactly one random relic from this table. All three random rewards
+Ganon's corpse contains his crown, his trident and the Golden Key, two
+pieces of his drop table, and exactly one random relic from this table. All three random rewards
 are usable below the immortal level boundary:
 
 | Relic | Vnum | Level | Slot | Unique effect |
@@ -980,7 +981,7 @@ The Hyrule tests verify:
 - each boss out-levelling its band and outlasting the one before, and carrying
   a weapon 10-20% better than the best existing one at that level, and the
   first eight a Heart Container at the top of their band
-- the Master Sword carried by Ganon and beating every weapon a mortal can get
+- the Master Sword in Ganon's great chest (`30648`), beating every weapon a mortal can get
   anywhere in the world at level 59 or below, with haste as an `F` record
 - the Red Ring in Death Mountain's cellar with sanctuary, and the Triforce a
   light whose sight is wired into every holylight check

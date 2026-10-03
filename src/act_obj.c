@@ -4689,7 +4689,15 @@ void do_buy( CHAR_DATA *ch, char *argument )
     gain_copper(keeper, cost);
 
     if(IS_SET( obj->extra_flags, ITEM_INVENTORY ) )
+    {
         obj = create_object( obj->pIndexData, -1 * obj->level );
+        /* ITEM_INVENTORY means "the shop's endless stock". Hyrule's
+           shop items carry it on the prototype, so every copy sold kept
+           it -- and make_corpse destroys inventory items, so a player
+           who died lost everything they had bought. The bought copy is
+           the player's. */
+        REMOVE_BIT( obj->extra_flags, ITEM_INVENTORY );
+    }
     else
         obj_from_char( obj );
 

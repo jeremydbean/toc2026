@@ -2518,6 +2518,18 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 		    }
 		    if ( swapped )
 			reset_swapped_object( obj );
+		    /* Bought before do_buy cleared it: shop stock's
+		       ITEM_INVENTORY on a player's own item meant it was
+		       destroyed when they died. Never a player's. */
+		    if ( ch != NULL && !IS_NPC(ch) )
+			REMOVE_BIT( obj->extra_flags, ITEM_INVENTORY );
+		    /* The Blue Ring of Hyrule was a level 24 ring with no
+		       ward until October 2026; a copy bought then keeps its
+		       saved level, so it is raised with the ward it gained. */
+		    if ( obj->pIndexData != NULL
+		    &&   obj->pIndexData->vnum == OBJ_VNUM_HYRULE_BLUE_RING
+		    &&   obj->level < obj->pIndexData->level )
+			obj->level = obj->pIndexData->level;
 		    if (make_new)
 		    {
 			int wear;

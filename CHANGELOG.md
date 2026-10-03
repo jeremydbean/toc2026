@@ -16,6 +16,19 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   Undead Cleric (up to 45,000) were broken the same way. The fields are
   `int` now, and the area loader stopped clamping a mobile's hit dice at
   32,767. `tests/test_big_hit_points.py`.
+- **Things bought in Hyrule survive their owner's death.** Hyrule's shop
+  items carry the shop-stock flag on the item itself, every copy sold kept
+  it, and a corpse destroys shop stock -- so dying lost everything a player
+  had bought there, the 250-rupee Blue Ring included. A bought copy is the
+  player's now, and the flag comes off anything a player already carries
+  at login. A Blue Ring of Hyrule bought when it was level 24 is raised to
+  45 with the ward it gained.
+- **Hyrule's text caught up.** Ganon's description no longer has the
+  Master Sword at his hip (it is in the great chest behind him); the Mirror
+  Shield and Pegasus Boots no longer answer to "ganon", like the Tunic and
+  Red Ring; the grave's Magical Sword is no longer "the finest blade anyone
+  may carry"; help and the guides name the Blue Ring's ward with the
+  others and list everything Ganon's corpse holds.
 - **A retired item is swapped for its replacement at login, not dropped.**
   The Hyrule NES pass took the shops' satchel of bombs (30542) out of the
   world, and Alaric's four were dropped the next time he logged in, with a

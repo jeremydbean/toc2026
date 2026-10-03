@@ -508,8 +508,9 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  *     GANON_FIREBALLS fireballs, each at a random player in the fight --
  *     anybody fighting him or grouped with somebody who is. A fireball
  *     is a spell blow (dt below TYPE_HIT), so no parry, dodge or shield
- *     turns it; sanctuary halves it, the Red Ring takes a fifth and the
- *     Mirror Shield three twentieths, as with any other fire. His melee
+ *     turns it; sanctuary halves it, the Red Ring takes a fifth, the
+ *     Blue Ring a further tenth, and the Mirror Shield three twentieths,
+ *     as with any other fire. His melee
  *     is ordinary, and a level 59 with every defence learned turns
  *     aside most of it: the fireballs are the fight.
  *

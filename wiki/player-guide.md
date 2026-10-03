@@ -627,7 +627,8 @@ return portals.
   room to deliver the final blow. This special shot always lands, requires no
   Archery skill, and does not consume the Arrow. `Look ganon` repeats the
   instruction during this vulnerable phase.
-- Ganon's corpse always contains the Golden Key and one random mortal relic:
+- Ganon's corpse always contains the Golden Key, his crown and trident, two
+  pieces of his drop table, and one random mortal relic:
   the Hero's Tunic, Mirror Shield, or Pegasus Boots. Their levels range from
   54 through 56, and each has a real defensive, recovery, or travel passive
   described by `examine` and modeled by `compare`. The Red Ring of Hyrule is
