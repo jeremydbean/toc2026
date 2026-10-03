@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791032703
+LogO 1791032989
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,7 +15,7 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 249053
+Plyd 249339
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
@@ -107,7 +107,7 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  125649
+Exp  125657
 Act  4261068
 AfBy 512
 Comm 24576
@@ -184,7 +184,7 @@ Sk 1 'rescue'
 Sk 100 'second attack'
 Sk 87 'third attack'
 Sk 88 'fast healing'
-Sk 79 'door bash'
+Sk 86 'door bash'
 Sk 80 'recall'
 Sk 75 'smite'
 Gr 'rom basics'
@@ -988,7 +988,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 612
+Time 607
 Cost 0
 Cond 100
 Repd 0
