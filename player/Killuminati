@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1791062659
+LogO 1791063141
 Vers 4
 Desc You see something very special about him.
 ~
@@ -18,14 +18,14 @@ PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,m
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6424258
+Plyd 6424740
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 StashMax 500
 Scro 0
 Room 30615
-HMV  26093 30130 30000 30000 30000 30000
+HMV  26233 30130 30000 30000 30000 30000
 NewGold 212
 NewPlat 2503030
 NewCopp 361
@@ -436,7 +436,7 @@ Vnum 20305
 Nest 0
 Wear -1
 Lev  1
-Time 136
+Time 128
 Cost 96000
 Cond 100
 Repd 0
@@ -597,18 +597,6 @@ Cond 100
 Repd 0
 Val  0 0 -1 0 0
 Affect -1 58 -1 -5 17 0 0
-End
-
-#O
-Vnum 16
-Nest 0
-ShD  the guts of Ganon~
-Desc A steaming pile of Ganon's entrails is lying here.~
-Wear -1
-Time 5
-Cost 0
-Cond 25
-Repd 0
 End
 
 #O

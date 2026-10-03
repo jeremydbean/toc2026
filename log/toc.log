@@ -32765,3 +32765,39 @@ Sat Oct  3 21:28:41 2026 :: Log Alaric [29211]: n
 Sat Oct  3 21:28:41 2026 :: Log Alaric [0]: moved to 29212 (Twist in the Maze)
 Sat Oct  3 21:28:41 2026 :: Log Alaric [29212]: kill sk
 Sat Oct  3 21:28:52 2026 :: Log Alaric [29212]: look sh
+Sat Oct  3 21:29:29 2026 :: Sock.sinaddr:  54.87.112.51
+Sat Oct  3 21:29:29 2026 :: EOF encountered on read.
+Sat Oct  3 21:29:43 2026 :: Log Alaric [29212]: l i cor
+Sat Oct  3 21:29:45 2026 :: Log Alaric [29212]: get dark cor
+Sat Oct  3 21:29:46 2026 :: Log Alaric [29212]: l
+Sat Oct  3 21:29:48 2026 :: Log Alaric [29212]: get shad cor
+Sat Oct  3 21:29:49 2026 :: Log Alaric [29212]: comp shad
+Sat Oct  3 21:29:53 2026 :: Log Alaric [29212]: drop shad
+Sat Oct  3 21:29:55 2026 :: Log Alaric [29212]: sac sh
+Sat Oct  3 21:29:56 2026 :: Log Alaric [29212]: scan
+Sat Oct  3 21:29:56 2026 :: Log Alaric [29212]: l
+Sat Oct  3 21:29:58 2026 :: Log Alaric [29212]: kill mad
+Sat Oct  3 21:30:03 2026 :: Log Alaric [29212]: worth
+Sat Oct  3 21:31:02 2026 :: Log Alaric [29212]: bers
+Sat Oct  3 21:31:17 2026 :: Log Alaric [29212]: l i cor
+Sat Oct  3 21:31:21 2026 :: Log Alaric [29212]: sac cor
+Sat Oct  3 21:31:23 2026 :: Log Alaric [29212]: l
+Sat Oct  3 21:31:26 2026 :: Log Alaric [29212]: look mad
+Sat Oct  3 21:31:29 2026 :: Log Alaric [29212]: torm
+Sat Oct  3 21:32:08 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sat Oct  3 21:32:12 2026 :: Log WebAdmin: fsave
+Sat Oct  3 21:32:18 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sat Oct  3 21:32:21 2026 :: Received signal 15; saving players and shutting down.
+Sat Oct  3 21:32:21 2026 :: Closing link to Alaric.
+Sat Oct  3 21:32:21 2026 :: Closing link to Killuminati.
+Sat Oct  3 21:32:21 2026 :: Normal termination of game.
+Sat Oct  3 21:32:22 2026 ::  INIT OK 
+Sat Oct  3 21:32:22 2026 :: ROM is ready to rock on port 9000.
+Sat Oct  3 21:32:22 2026 :: Automated backup complete.
+Sat Oct  3 21:32:22 2026 :: Daily backup complete.
+Sat Oct  3 21:32:35 2026 :: Sock.sinaddr:  208.126.22.104
+Sat Oct  3 21:32:40 2026 :: Loading Alaric's playerfile
+Sat Oct  3 21:32:41 2026 :: Alaric@208.126.22.104 has connected.
+Sat Oct  3 21:34:00 2026 :: Log Alaric [29212]: moved to 29212 (Twist in the Maze)
+Sat Oct  3 21:34:00 2026 :: Sock.sinaddr:  194.195.210.47
+Sat Oct  3 21:34:12 2026 :: Log Alaric [29212]: bug After logging in, players are seeing the following message, "No help on that word". The mud is attempting to force them to read a help file that doesn't exist immediately upon login. This is prior to the MOTD help file being shown.
