@@ -151,7 +151,7 @@ assert(#calls == 0, "teardown must be safe")
         script = self.package_script()
         build = script.split("function tocMudlet.buildUI()")[1].split(
             "function tocMudlet.teardownUI()")[0]
-        for part in ("experience bar", "sidebar strips", "map",
+        for part in ("vitals bars", "sidebar strips", "map",
                      "chat panes and tabs", "exit buttons", "location bar"):
             self.assertIn('guard("%s", function()' % part, build)
         install = script.split("function tocMudlet.install()")[1].split(
@@ -159,10 +159,16 @@ assert(#calls == 0, "teardown must be safe")
         self.assertIn("pcall(tocMudlet.buildUI)", install)
         self.assertLess(install.index("pcall(tocMudlet.buildUI)"),
                         install.index('register("gmcp.Char.Vitals"'))
-        # The HP, mana and move bars are gone; the prompt shows them.
-        self.assertNotIn('name = "tocMudlet.hp"', build)
-        self.assertNotIn('name = "tocMudlet.mana"', build)
-        self.assertIn('name = "tocMudlet.exp"', build)
+        # HP, mana, endurance and EXP sit across the top, in one row --
+        # the owner's rule: vitals on top, never in the sidebar (x < 0).
+        top = build.split('guard("vitals bars", function()')[1].split(
+            "  end)\n")[0]
+        for gauge in ("hp", "mana", "move", "exp"):
+            self.assertIn('{name = "tocMudlet.%s"}, tocMudlet.ui.gauges' % gauge, top)
+        self.assertIn('name = "tocMudlet.gauges", x = 8, y = 6', top)
+        sidebar = build.split('guard("sidebar background", function()')[1]
+        for gauge in ("hp", "mana", "move"):
+            self.assertNotIn('"tocMudlet.%s"' % gauge, sidebar)
 
     @unittest.skipUnless(shutil.which("lua"), "Lua interpreter is not installed")
     def test_package_lua_compiles(self) -> None:

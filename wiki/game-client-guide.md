@@ -12,9 +12,8 @@ use `toc.jeremybean.com`; for local development, use `localhost`. Leave
 server advertises the official interface and the full-world map when GMCP
 is negotiated, and a changed package version updates existing installations.
 
-The interface includes an experience bar (hit points, mana and moves are
-already in the game's prompt), character status, room status, and an
-embedded mapper. Each part is built on its own: if one fails in some
+The interface includes HP, mana, endurance, and experience gauges across
+the top, character status, room status, and an embedded mapper. Each part is built on its own: if one fails in some
 Mudlet version, the rest still appears and the failure is printed in the
 main window. `Room.Info` adds rooms as they are
 visited and refreshes the room name, area, terrain, and visible directional

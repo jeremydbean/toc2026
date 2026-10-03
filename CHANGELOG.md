@@ -16,6 +16,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   Undead Cleric (up to 45,000) were broken the same way. The fields are
   `int` now, and the area loader stopped clamping a mobile's hit dice at
   32,767. `tests/test_big_hit_points.py`.
+- **Mudlet 1.5.3: HP, mana, endurance and EXP are back across the top.**
+  1.5.2 took the first three away on a misreading -- the owner wanted
+  vitals kept out of the sidebar, not off the screen. They are one row on
+  top again, as they were, with moves labelled END as the game calls them.
 - **Death traps are off the Mudlet starter map.** You find one yourself;
   the mapper learns it from GMCP when you walk in, and no exit on the
   shipped map leads to one.

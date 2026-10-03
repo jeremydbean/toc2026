@@ -54,7 +54,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.5.2"
+tocMudlet.version = "1.5.3"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -677,7 +677,7 @@ function tocMudlet.onVitals()
     vitals.maxhp or vitals.maxhealth, "HP")
   setGauge(tocMudlet.ui.mana, vitals.mana, vitals.maxmana, "MANA")
   setGauge(tocMudlet.ui.move, vitals.moves or vitals.move,
-    vitals.maxmoves or vitals.maxmove, "MOVE")
+    vitals.maxmoves or vitals.maxmove, "END")
   local toLevel = number(vitals.tnl)
   if tocMudlet.ui.exp then
     -- Fill across the current level (0-100 from the server), not across
@@ -1304,15 +1304,26 @@ function tocMudlet.buildUI()
     "background:%s;border-bottom:1px solid %s;", P.panel, P.border))
   end)
 
-  -- HP, mana and moves used to sit here as three bars; the game's own
-  -- prompt already shows them, and the owner asked for them to go. EXP
-  -- fills across the level, like the xp bar in an MMO.
-  guard("experience bar", function()
-    tocMudlet.ui.exp = Geyser.Gauge:new({
-      name = "tocMudlet.exp", x = 8, y = 6,
+  -- HP, mana, endurance and EXP across the top. The owner wants them
+  -- here and nowhere else: vitals do not go in the sidebar. EXP fills
+  -- across the level, like the xp bar in an MMO; the enemy's health
+  -- lives in the Target strip, not up here beside your own.
+  guard("vitals bars", function()
+    tocMudlet.ui.gauges = Geyser.HBox:new({
+      name = "tocMudlet.gauges", x = 8, y = 6,
       width = "100%-376px", height = 34,
     })
+    tocMudlet.ui.hp = Geyser.Gauge:new({name = "tocMudlet.hp"}, tocMudlet.ui.gauges)
+    tocMudlet.ui.mana = Geyser.Gauge:new({name = "tocMudlet.mana"}, tocMudlet.ui.gauges)
+    tocMudlet.ui.move = Geyser.Gauge:new({name = "tocMudlet.move"}, tocMudlet.ui.gauges)
+    tocMudlet.ui.exp = Geyser.Gauge:new({name = "tocMudlet.exp"}, tocMudlet.ui.gauges)
+    styleGauge(tocMudlet.ui.hp, P.hp1, P.hp2)
+    styleGauge(tocMudlet.ui.mana, P.mana1, P.mana2)
+    styleGauge(tocMudlet.ui.move, P.move1, P.move2)
     styleGauge(tocMudlet.ui.exp, P.exp1, P.exp2)
+    setGauge(tocMudlet.ui.hp, 0, 1, "HP")
+    setGauge(tocMudlet.ui.mana, 0, 1, "MANA")
+    setGauge(tocMudlet.ui.move, 0, 1, "END")
     tocMudlet.ui.exp:setValue(0, 1, "EXP")
   end)
 

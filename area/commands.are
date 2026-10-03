@@ -148,8 +148,7 @@ for toc.jeremybean.com on port 9000.  In Mudlet's profile settings, leave
 server will offer the official interface and the world atlas automatically.
 
 WHAT THE INTERFACE SHOWS
-  EXP       An experience bar across the top; HP, mana and moves are in
-            the prompt.
+  Gauges    HP, mana, endurance, and experience, across the top.
   Identity  Your name, level, race, and class.
   Affects   What is currently on you, shortest duration first, so the one
             about to lapse is the one you see.  Five ticks or less turns
