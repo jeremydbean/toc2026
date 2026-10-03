@@ -1,7 +1,7 @@
 #PLAYER
 Name Farslayer~
 Id   21916
-LogO 1791040760
+LogO 1791040939
 Vers 4
 Prom ~
 Ignoring  ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 3
-Plyd 1496
+Plyd 1675
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
 Room 4216
-HMV  19 36 115 144 112 112
+HMV  36 36 144 144 112 112
 NewGold 0
 NewPlat 0
 NewCopp 16
@@ -44,14 +44,14 @@ AchTriforce 0
 Achv first-kill 1791039658
 Achv visit-mud-school 1791039302
 Achv first-death 1791039860
-LastOut  0
-SesLogin 0
-SesDur   0
-SesExpG  0
-SesLvlG  0
-SesKill  0
+LastOut  1791040939
+SesLogin 1791039302
+SesDur   1637
+SesExpG  6742
+SesLvlG  3
+SesKill  8
 SesPK    0
-SesDead  0
+SesDead  2
 SesQuest 0
 Exp  6742
 Act  65788
@@ -92,7 +92,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 36 144 112
-Cond 0 25 25
+Cond 0 22 22
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
