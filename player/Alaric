@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790989100
+LogO 1790989398
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 243924
+Plyd 244222
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 29066
-HMV  1205 1205 1252 1462 370 370
-NewGold 47
-NewPlat 43
-NewCopp 364
-NewSilv 162
+Room 29004
+HMV  904 1205 1291 1462 370 370
+NewGold 56
+NewPlat 45
+NewCopp 386
+NewSilv 177
 BankCP 346864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 853
+AchKills 855
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -107,7 +107,7 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  125404
+Exp  125428
 Act  4261068
 AfBy 512
 Comm 24576
@@ -138,7 +138,7 @@ Pos  8
 Prac 8
 Trai 2
 Save  -3
-Alig  862
+Alig  878
 Hit   40
 Dam   46
 ACs -168 -177 -136 -16
@@ -166,7 +166,7 @@ Sk 78 'torment'
 Sk 30 'axe'
 Sk 100 'dagger'
 Sk 25 'flail'
-Sk 43 'mace'
+Sk 47 'mace'
 Sk 35 'polearm'
 Sk 97 'shield block'
 Sk 30 'spear'
@@ -854,17 +854,6 @@ Affect -1 50 -1 -17 14 0 0
 End
 
 #O
-Vnum 29207
-Nest 0
-Wear 16
-Lev  51
-Cost 20000000
-Cond 100
-Repd 0
-Affect -1 51 -1 -8 14 0 0
-End
-
-#O
 Vnum 29274
 Nest 0
 Wear -1
@@ -1010,10 +999,21 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 698
+Time 693
 Cost 0
 Cond 100
 Repd 0
+End
+
+#O
+Vnum 29207
+Nest 0
+Wear 16
+Lev  51
+Cost 20000000
+Cond 100
+Repd 0
+Affect -1 51 -1 -8 14 0 0
 End
 
 #STASH
