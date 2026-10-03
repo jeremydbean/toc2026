@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791057414
+LogO 1791057716
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 263622
+Plyd 263924
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 4210
-HMV  943 1129 1432 1432 311 311
+Room 16076
+HMV  657 1129 1391 1432 166 311
 NewGold 94
 NewPlat 173
 NewCopp 46
@@ -107,9 +107,9 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  126260
+Exp  126270
 Act  4261068
-AfBy 512
+AfBy 524856
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -134,7 +134,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  4
+Pos  8
 Prac 6
 Trai 1
 Save  -6
@@ -162,7 +162,7 @@ Alias ow open west~
 Sk 76 'mindbar'
 Sk 75 'mind leech'
 Sk 75 'telekinesis'
-Sk 81 'torment'
+Sk 84 'torment'
 Sk 30 'axe'
 Sk 100 'dagger'
 Sk 25 'flail'
@@ -191,6 +191,10 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
+AffD 'detect hidden'   0   8   0   0         32          0
+AffD 'detect magic'   0   8   0   0         16          0
+AffD 'detect invis'   0   8   0   0          8          0
+AffD 'fly'  16  10   0   0     524288          0
 End
 
 #O
@@ -938,7 +942,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 375
+Time 370
 Cost 0
 Cond 100
 Repd 0
@@ -1201,16 +1205,6 @@ Spell 1 'fly'
 End
 
 #O
-Vnum 3091
-Nest 0
-Wear -1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'fly'
-End
-
-#O
 Vnum 3092
 Nest 0
 Wear -1
@@ -1259,15 +1253,13 @@ Spell 3 'detect hidden'
 End
 
 #O
-Vnum 3092
+Vnum 2803
 Nest 0
 Wear -1
-Cost 31000
+Lev  7
+Cost 36000
 Cond 100
 Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
 End
 
 #STASH
