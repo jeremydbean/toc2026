@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791068911
+LogO 1791069193
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 53
-Plyd 270050
+Plyd 270332
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 29210
-HMV  6041 6948 8357 8589 215 1880
-NewGold 170
-NewPlat 340
-NewCopp 955
-NewSilv 392
+Room 2401
+HMV  5060 1178 8113 1429 178 325
+NewGold 256
+NewPlat 372
+NewCopp 1163
+NewSilv 546
 BankCP 196864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 1003
+AchKills 1009
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -108,10 +108,9 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  144672
+Exp  146771
 Act  4261068
-AfBy 3678848
-AfBy2 4104
+AfBy 568
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -141,11 +140,11 @@ Prac 10
 Trai 2
 Save  -3
 Alig  1000
-Hit   55
-Dam   75
-ACs -277 -290 -243 -99
+Hit   35
+Dam   55
+ACs -177 -190 -143 1
 Attr 22 13 12 16 15
-AMod 24 23 26 22 23
+AMod 9 3 11 7 8
 Pass Al3w9zuAlwpyY~
 Titl  the Knight of the Castle~
 Pnts 0
@@ -178,7 +177,7 @@ Sk 1 'bash'
 Sk 74 'berserk'
 Sk 1 'disarm'
 Sk 75 'heroic grip'
-Sk 98 'dodge'
+Sk 99 'dodge'
 Sk 100 'enhanced damage'
 Sk 95 'kick'
 Sk 100 'parry'
@@ -193,26 +192,10 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'empower'   0   4   0   0          0          0
-AffD 'sanctuary'   0   4   0   0        128          0
-AffD 'haste'   0   4   4   2    2097152          0
-AffD 'fly'   0   4   0   0     524288          0
-AffD 'pass door'   0   4   0   0    1048576          0
-AffD 'protection evil'   0   4   0   0       8192          0
-AffD 'fire shield'   0   4   0   0          0          8
-AffD 'divine protection'   0   4   0   0          0       4096
-AffD 'giant strength'   0   4  15   1          0          0
-AffD 'empower'   0   4  15   3          0          0
-AffD 'empower'   0   4  15   4          0          0
-AffD 'empower'   0   4  11   2          0          0
-AffD 'empower'   0   4  15   5          0          0
-AffD 'empower'   0   4  20  18          0          0
-AffD 'empower'   0   4  20  19          0          0
-AffD 'empower'   0   4 -100  17          0          0
-AffD 'titanic'   0   4 5770  13          0          0
-AffD 'titanic'   0   4 7160  12          0          0
-AffD 'titanic'   0   4 1555  14          0          0
-AffD 'titanic'   0   4  50  16          0          0
+AffD 'ego whip'   0   9  -5   3          0          0
+AffD 'detect hidden'  46   5   0   0         32          0
+AffD 'detect magic'  49   5   0   0         16          0
+AffD 'detect invis'  50   5   0   0          8          0
 End
 
 #O
@@ -929,22 +912,10 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 268
+Time 263
 Cost 0
 Cond 100
 Repd 0
-End
-
-#O
-Vnum 3092
-Nest 0
-Wear -1
-Cost 31000
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
 End
 
 #O
@@ -1204,6 +1175,28 @@ Cond 99
 Repd 0
 Affect -1 51 -1 20 14 0 0
 Affect -1 51 -1 4 23 0 0
+End
+
+#O
+Vnum 29213
+Nest 0
+Wear -1
+Lev  51
+Cost 50000000
+Cond 100
+Repd 0
+Affect -1 51 -1 1 3 0 0
+End
+
+#O
+Vnum 29214
+Nest 0
+Wear -1
+Lev  51
+Cost 40000000
+Cond 83
+Repd 0
+Affect -1 51 -1 1 22 0 0
 End
 
 #STASH
