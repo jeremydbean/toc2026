@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1791054685
+LogO 1791054913
 Vers 4
 Prom < %h/%H %v/%V %e tnl>%c~
 Ignoring  ~
@@ -14,17 +14,17 @@ PsiGrant 0
 PsiSpec ~
 PsiKnown ~
 Cast none
-Levl 3
-Plyd 744
+Levl 4
+Plyd 972
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 3713
-HMV  32 46 110 120 99 108
+Room 3712
+HMV  56 56 128 130 114 114
 NewGold 0
 NewPlat 0
-NewCopp 12
+NewCopp 14
 NewSilv 0
 BankCP 0
 IntTime 1791054012
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 6
+AchKills 13
 AchQuests 0
 AchDeaths 0
 AchExplore 0
@@ -52,7 +52,7 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  6672
+Exp  9131
 Act  65740
 AfBy 512
 Comm 24576
@@ -80,22 +80,22 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 7
+Prac 8
 Trai 1
 Save  -8
 Alig  0
 Hit   9
 Dam   2
 ACs 71 70 70 79
-Attr 14 13 12 12 19
+Attr 14 13 13 12 19
 AMod 0 0 0 0 0
 Pass TrjPUdRVdu8MY~
-Titl  the Sentry~
+Titl  the Fighter~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 46 120 112
-Cond 0 36 36
+HMVP 56 130 118
+Cond 0 31 31
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -130,9 +130,9 @@ Gr 'mage basics'
 Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
-AffD 'armor'   0  17 -20  17          0          0
-AffD 'bless'  20  55  -7  24          0          0
-AffD 'bless'  20  55   7  18          0          0
+AffD 'armor'   0  12 -20  17          0          0
+AffD 'bless'  19  50  -7  24          0          0
+AffD 'bless'  18  50   7  18          0          0
 End
 
 #O
@@ -142,7 +142,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 188 0 0
+Val  0 0 183 0 0
 End
 
 #O
