@@ -186,7 +186,7 @@ Current October 2026 Python baseline:
 2,427 mobiles
 3,570 objects
 7,783 rooms
-0 critical, 12 warning, 1,512 information findings
+0 critical, 12 warning, 1,511 information findings
 ```
 
 The mobile count rose by about ninety when Hyrule's enemies became one
@@ -365,7 +365,13 @@ Commands added or revived in September 2026, and where they live:
   already know; `gainlist` beside it marks what you already have.
 - `alias` / `unalias` live in `src/act_comm.c`; expansion is in
   `src/interp.c` and must not leave a trailing space, or commands that read
-  their whole argument (`goto`) fail on it.
+  their whole argument (`goto`) fail on it. An alias may hold up to
+  `ALIAS_MAX_COMMANDS` commands split on `;` (`\;` is literal): the first
+  runs at once and `queue_alias_input()` in `src/comm.c` puts the rest at
+  the front of `d->inbuf`, counted by `d->alias_queued`, so lag applies
+  between them and each is logged by its own name. A line that came out of
+  an alias is never alias-expanded again -- that is the recursion limit --
+  and is exempt from the input-spam count and from `!`.
 
 ## C Change Rules
 

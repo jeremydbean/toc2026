@@ -3698,6 +3698,41 @@ void do_alias( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* A tilde ends a string in the player file, and one inside the alias
+       would cut it short and misalign everything read after it. */
+    smash_tilde( argument );
+
+    /* The name is saved as one word ahead of the text; a quoted name with
+       a space in it would load back as a different alias. */
+    {
+        const char *p;
+
+        for ( p = arg; *p != '\0'; p++ )
+            if ( isspace( (unsigned char)*p ) || *p == '~' )
+            {
+                send_to_char( "An alias name is one word.\n\r", ch );
+                return;
+            }
+    }
+
+    {
+        int commands = alias_split( argument, NULL, 0 );
+
+        if ( commands <= 0 )
+        {
+            send_to_char( "An alias needs a command to run.\n\r", ch );
+            return;
+        }
+        if ( commands > ALIAS_MAX_COMMANDS )
+        {
+            snprintf( buf, sizeof(buf),
+                "An alias can hold at most %d commands; that one has %d.\n\r",
+                ALIAS_MAX_COMMANDS, commands );
+            send_to_char( buf, ch );
+            return;
+        }
+    }
+
     /* Replace an existing one, otherwise take the first free slot. */
     free_slot = -1;
     for ( slot = 0; slot < MAX_ALIASES; slot++ )

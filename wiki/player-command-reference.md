@@ -222,8 +222,8 @@ an irreversible action.
 | `color` | Configure color |
 | `damagenumbers` | Toggle numeric damage display |
 | `prompt` | Configure the command prompt |
-| `alias` | Manage server-side aliases |
-| `description`, `title` | Customize character presentation |
+| `alias` | Manage server-side aliases; one may run up to ten commands separated by `;` |
+| `description`, `title` | Customize character presentation; a title you set stays through levels until `title default` |
 | `afk` | Toggle away status |
 
 `AUTOGOLD` takes currency directly from a defeated mobile's corpse when

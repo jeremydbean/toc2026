@@ -613,6 +613,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
         REMOVE_BIT(victim->comm, COMM_NOTITLE);
         free_string(victim->pcdata->title);
         victim->pcdata->title = str_dup(" the Jailbird.");
+        victim->pcdata->title_custom = false;
         SET_BIT(victim->act, PLR_EXCON );
         send_to_char( "You have been released from Jail.\n\r",victim );
         snprintf(buf, sizeof(buf),"%s released from Jail.\n\r",victim->name);
@@ -634,6 +635,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
         SET_BIT(victim->comm, COMM_NOTITLE);
         free_string(victim->pcdata->title);
         victim->pcdata->title = str_dup(" . (JAILED)");
+        victim->pcdata->title_custom = false;
         REMOVE_BIT(victim->act, PLR_WARNED );
         REMOVE_BIT(victim->act, PLR_EXCON );
         send_to_char( "GO TO JAIL, do not pass GO, do not collect $200.\n\r", victim);
@@ -5453,6 +5455,8 @@ void do_string( CHAR_DATA *ch, char *argument )
 	    }
 
 	    set_title( victim, arg3 );
+	    /* Set by hand, so a level-up must not take it away. */
+	    victim->pcdata->title_custom = true;
 	    snprintf(buf, sizeof(buf),"New title now in place on %s.\n\r",victim->name);
 	    send_to_char(buf,ch);
 	    return;

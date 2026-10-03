@@ -222,11 +222,13 @@ typedef struct script_loop_prepoll_payload
 #define MAX_SOCIALS             512
 #define MAX_SKILL               232
 #define TRAIL_LEN               10
-#define MAX_GROUP               56
+#define MAX_GROUP               57
 #define MAX_IN_GROUP            20
 #define MAX_CLASS               6
 #define MAX_PC_RACE             6
 #define MAX_ALIASES             20
+#define ALIAS_MAX_COMMANDS      10   /* commands one alias may hold */
+#define ALIAS_MAX_QUEUED        20   /* alias lines waiting in one inbuf */
 #define MAX_HUNTERS             50
 /* How far a questing streak can lift the point reward, in percent.
    See quest_streak_bonus() for the curve that climbs to it. */
@@ -516,6 +518,16 @@ struct  descriptor_data
     char                inbuf           [4 * MAX_INPUT_LENGTH];
     char                incomm          [MAX_INPUT_LENGTH];
     char                inlast          [MAX_INPUT_LENGTH];
+    /*
+     * A multi-command alias runs its first command at once and puts the
+     * rest at the front of inbuf, so they wait out lag exactly as typed
+     * input does. alias_queued counts those lines (always the first ones
+     * in inbuf); incomm_from_alias says the line now in incomm is one of
+     * them, so it is neither alias-expanded again, nor counted as spam,
+     * nor remembered for '!'.
+     */
+    sh_int              alias_queued;
+    bool                incomm_from_alias;
     int                 repeat;
     sh_int              login_attempts;
     char * outbuf;
@@ -2051,6 +2063,11 @@ struct  pc_data
     int                 recall_vnum;
     long                recall_set_at;        /* unix time it was last moved */
 
+    /* The player chose their title with TITLE, so a level-up must not
+       replace it with the class title. TITLE DEFAULT clears it. Saved as
+       TitleSet under case 'T'; an old file without it reads as false. */
+    bool                title_custom;
+
     long                bank_interest_time;   /* unix timestamp of last interest payment */
     long                bank_interest_total;  /* lifetime interest earned, in copper */
 
@@ -2661,6 +2678,7 @@ void    record_logout   ( const char *name, const char *host,
 
 /* act_info.c */
 void    set_title       ( CHAR_DATA *ch, char *title );
+void    set_class_title ( CHAR_DATA *ch, bool force );
 
 /* achievements.c */
 void    achievement_check_state ( CHAR_DATA *ch, bool announce );
@@ -2724,6 +2742,8 @@ void    add_platinum       (CHAR_DATA *ch, long amount);
 
 /* comm.c */
 void    show_string     ( struct descriptor_data *d, char *input);
+bool    queue_alias_input ( DESCRIPTOR_DATA *d,
+                            char (*lines)[MAX_INPUT_LENGTH], int count );
 void    close_socket    ( DESCRIPTOR_DATA *dclose );
 void    write_to_buffer ( DESCRIPTOR_DATA *d, const char *txt, int length );
 void    do_check_psi    ( CHAR_DATA *ch, char *argument );
@@ -2998,7 +3018,10 @@ void script_event_unsubscribe( script_event_callback callback, void *context );
 void script_event_emit( script_event_type type, void *payload );
 
 /* interp.c */
+extern  bool    interp_from_alias;
 void    interpret       ( CHAR_DATA *ch, char *argument );
+int     alias_split     ( const char *body,
+                          char (*out)[MAX_INPUT_LENGTH], int max );
 bool    check_specials  ( CHAR_DATA *ch, DO_FUN *cmd, char *arg);
 bool    is_number       ( char *arg );
 int     number_argument ( char *argument, char *arg );

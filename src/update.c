@@ -328,9 +328,9 @@ void advance_level( CHAR_DATA *ch, bool is_advance )
 	return;
 
 
-    snprintf( buf, sizeof(buf), "the %s",
-        title_table [ch->class] [ch->level] [ch->sex == SEX_FEMALE ? 1 : 0] );
-    set_title( ch, buf );
+    /* Only a title the class handed out moves with the level; one the
+       player chose with TITLE stays put. */
+    set_class_title( ch, false );
 
     guild = ch->pcdata->guild;
 

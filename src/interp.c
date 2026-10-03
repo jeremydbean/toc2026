@@ -594,16 +594,93 @@ static int social_exact_index( const char *name )
 }
 
 
+/*
+ * Set by the game loop for exactly one interpret() call: the line came out
+ * of an alias, so it is run as written and never expanded again. That one
+ * rule is the whole recursion limit -- an alias cannot reach another alias,
+ * or itself, so no chain of them can grow.
+ */
+bool interp_from_alias = FALSE;
+
+
+/*
+ * Split an alias body into its commands.
+ *
+ * A semicolon separates commands and a backslash before one ("\;") keeps
+ * it as a literal semicolon. Each command is trimmed, empty ones are
+ * skipped, and anything that cannot be typed (a newline from a hand-edited
+ * player file) becomes a space, so no command can smuggle a line break
+ * into the input buffer. At most `max' commands are written to `out',
+ * each short enough to pass back through read_from_buffer whole; `out'
+ * may be NULL to count only.
+ *
+ * Returns how many non-empty commands the body holds, which may be more
+ * than `max'.
+ */
+int alias_split( const char *body, char (*out)[MAX_INPUT_LENGTH], int max )
+{
+    char seg[MAX_INPUT_LENGTH];
+    size_t len = 0;
+    int count = 0;
+    const char *p;
+
+    if ( body == NULL )
+        return 0;
+
+    for ( p = body; ; p++ )
+    {
+        if ( *p == '\0' || *p == ';' )
+        {
+            size_t start = 0;
+
+            while ( len > 0 && isspace( (unsigned char)seg[len - 1] ) )
+                len--;
+            seg[len] = '\0';
+            while ( seg[start] != '\0' && isspace( (unsigned char)seg[start] ) )
+                start++;
+
+            if ( seg[start] != '\0' )
+            {
+                if ( out != NULL && count < max )
+                    toc_strlcpy( out[count], seg + start, MAX_INPUT_LENGTH );
+                count++;
+            }
+
+            len = 0;
+            if ( *p == '\0' )
+                break;
+            continue;
+        }
+
+        if ( *p == '\\' && p[1] == ';' )
+            p++;
+
+        /* Room for the line ending read_from_buffer needs, and its own
+           MAX_INPUT_LENGTH - 2 cut-off, which would announce itself. */
+        if ( len < MAX_INPUT_LENGTH - 3 )
+            seg[len++] = isprint( (unsigned char)*p ) ? *p : ' ';
+    }
+
+    return count;
+}
+
+
 void interpret( CHAR_DATA *ch, char *argument )
 {
     char command[MAX_INPUT_LENGTH];
     char logline[MAX_INPUT_LENGTH];
     bool watched;
+    bool from_alias;
     char buf[MAX_INPUT_LENGTH];
     int cmd;
     int trust;
     int counter;
     bool found;
+
+    /* Read once and clear, so a command this one runs on somebody else
+       (FORCE, ORDER) is not mistaken for alias output too. */
+    from_alias = interp_from_alias;
+    interp_from_alias = FALSE;
 
     /*
      * Strip leading spaces.
@@ -659,9 +736,10 @@ void interpret( CHAR_DATA *ch, char *argument )
       argument = one_argument( argument, command );
 
     /*
-     * Check for aliases
+     * Check for aliases. Not for a line an alias produced: that is the
+     * recursion limit (see interp_from_alias).
      */
-    if (!IS_NPC(ch))
+    if ( !IS_NPC(ch) && ch->pcdata != NULL && !from_alias )
         for (counter=0; counter<MAX_ALIASES; counter++)
         {
             char * ptr;
@@ -670,22 +748,59 @@ void interpret( CHAR_DATA *ch, char *argument )
             &&    ch->pcdata->alias[counter].second != NULL )
 		if ( !str_cmp(command, ptr) )
 		{
-                    snprintf(buf, sizeof(buf), "%s %s", ch->pcdata->alias[counter].second,
-                             argument);
+		    char parts[ALIAS_MAX_COMMANDS][MAX_INPUT_LENGTH];
+		    int  count;
+		    int  last;
 
-		    /* Used bare, `argument' is empty and the join leaves a
-		       trailing space. Commands that read their whole
-		       argument rather than tokenising it then fail on it:
-		       do_goto hands "4108 " to find_location, is_number()
-		       says no because of the space, and an alias for a
-		       room vnum reports "No place like that around." */
+		    count = alias_split( ch->pcdata->alias[counter].second,
+					 parts, ALIAS_MAX_COMMANDS );
+		    if ( count <= 0 )
 		    {
-			size_t end = strlen( buf );
+			send_to_char( "That alias has no command in it.\n\r", ch );
+			return;
+		    }
+		    if ( count > ALIAS_MAX_COMMANDS )
+			count = ALIAS_MAX_COMMANDS;
 
-			while ( end > 0 && isspace((unsigned char)buf[end - 1]) )
-			    buf[--end] = '\0';
+		    /* Whatever was typed after the alias goes on its last
+		       command, as it always went on its only one. Never a
+		       trailing space when nothing was typed: commands that
+		       read their whole argument rather than tokenising it
+		       fail on one -- do_goto hands "4108 " to find_location,
+		       is_number() says no because of the space, and an alias
+		       for a room vnum reports "No place like that around." */
+		    last = count - 1;
+		    {
+			size_t end = strlen( argument );
+
+			while ( end > 0 && isspace((unsigned char)argument[end - 1]) )
+			    end--;
+
+			if ( end > 0 )
+			{
+			    char joined[MAX_INPUT_LENGTH];
+
+			    snprintf( joined, sizeof(joined), "%s %.*s",
+				      parts[last], (int)UMIN( end, (size_t)MAX_INPUT_LENGTH ),
+				      argument );
+			    /* Same bound alias_split keeps, so a queued line
+			       is never cut by read_from_buffer. */
+			    joined[MAX_INPUT_LENGTH - 3] = '\0';
+			    toc_strlcpy( parts[last], joined, MAX_INPUT_LENGTH );
+			}
 		    }
 
+		    /* The rest wait in the input buffer and come back through
+		       here one per pulse, each logged by its own name and
+		       each paying its own lag. Linkdead (FORCE on somebody
+		       with no connection) there is no buffer to wait in, and
+		       only the first runs. */
+		    if ( count > 1 && ch->desc != NULL
+		    &&   !queue_alias_input( ch->desc, parts + 1, count - 1 ) )
+			send_to_char( "Too much is already waiting to run; only "
+				      "the first command of that alias ran.\n\r", ch );
+
+		    toc_strlcpy( buf, parts[0], sizeof(buf) );
 		    argument = one_argument( buf, command );
 		    break;
                 }

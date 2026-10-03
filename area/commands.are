@@ -2502,12 +2502,25 @@ type: alias <alias name>.
 
 There is a max of 20 aliases per character.
 
-An alias stands for one command, followed by whatever you type after it.
-The game does not split an alias on semicolons: an alias saved as
-"north;east" (typed as north\;east in the browser client) is sent as one
-word and answered with Huh?.  To send several commands at once, use your
-client: the browser client sends commands separated by semicolons one
-after another, and Mudlet has aliases of its own.
+An alias may hold up to 10 commands separated by semicolons.  They run in
+order, one at a time, exactly as if you had typed them: a command that
+leaves you waiting (a bash, a spell) makes the next one wait too.
+Whatever you type after the alias goes on the end of its last command.
+
+e.g.: alias prep wear all;get all corpse;sacrifice corpse
+      alias kb kill;bash
+      kb orc                  (kill, then bash orc)
+
+Write \; for a semicolon that belongs inside a command rather than
+between two.  The browser client splits what you type on semicolons
+itself, so there type the alias with \; between its commands:
+      alias ne north\;east
+
+An alias cannot run another alias: a command that comes out of an alias
+is run as written, even if it has an alias's name.  If one of its
+commands shows you more than a screen, the next command ends the paging
+just as typing it would.  Typing ! repeats the alias, not its last
+command.
 
 See also: COMMANDS, HELP
 ~
@@ -4199,14 +4212,19 @@ See also: TIME, TICK
 
 0 TITLE~
 Syntax: title <string>
+        title default
+        title
 
 Sets your title to a given string.  TITLE is available from level 3;
 before that the game answers Huh?.  A title is cut at 45 characters.
 
-The game supplies a title when your character is created and when you
-advance a level.  You can use TITLE to set your title to something else,
-but advancing a level puts your class's title back, so set yours again
-after you level.
+The game supplies your class's title when your character is created, and
+moves it along each time you advance a level.  Once you set a title of
+your own it stays: levelling and remorting leave it alone.
+
+TITLE DEFAULT gives you back your class's title for your level, and from
+then on it changes as you level again.  TITLE on its own shows your
+current title and whether it is yours or your class's.
 
 See also: DESCRIPTION, SCORE, WHO
 ~
@@ -5682,12 +5700,15 @@ See also: TELL, GOSSIP, GROUP
 ~
 
 0 'ASTRAL WALK' ASTRAL~
-Syntax: astral walk <target>
+Syntax: astral <target>
 
 ASTRAL WALK is a psionic travel ability that teleports you to another
 character anywhere in the world.  The target must be visible to you and
 not in a protected room (private, safe, immortal-only, etc.).  The spell
 costs 70 mana and requires training in the astral_walk psionic skill.
+
+It can take you out of a no-recall room, but never into one; a jail holds
+you either way.
 
 If successful, you (and your pet if nearby) shimmer and appear next to
 the target.  If you fail your concentration check, you lose a small amount

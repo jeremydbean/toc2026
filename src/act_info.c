@@ -3184,15 +3184,53 @@ void set_title( CHAR_DATA *ch, char *title )
 }
 
 
+/*
+ * The title a character's class gives them at their level -- the one a
+ * level-up hands out. A title the player chose themselves outranks it:
+ * pass force to replace that too (creation, TITLE DEFAULT).
+ */
+void set_class_title( CHAR_DATA *ch, bool force )
+{
+    char buf[MAX_STRING_LENGTH];
+    int level;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+	return;
+
+    if ( ch->pcdata->title_custom && !force )
+	return;
+
+    if ( ch->class < 0 || ch->class >= MAX_CLASS )
+	return;
+
+    level = URANGE( 0, ch->level, MAX_LEVEL );
+    snprintf( buf, sizeof(buf), "the %s",
+        title_table [ch->class] [level] [ch->sex == SEX_FEMALE ? 1 : 0] );
+    set_title( ch, buf );
+    if ( force )
+	ch->pcdata->title_custom = false;
+}
+
+
 
 void do_title( CHAR_DATA *ch, char *argument )
 {
+    char buf[MAX_STRING_LENGTH];
+
     if ( IS_NPC(ch) )
 	return;
 
     if ( argument[0] == '\0' )
     {
-	send_to_char( "Change your title to what?\n\r", ch );
+	snprintf( buf, sizeof(buf),
+	    "Your title is:%s\n\r"
+	    "%s\n\r"
+	    "TITLE <text> sets your own; TITLE DEFAULT goes back to your class title.\n\r",
+	    ch->pcdata->title,
+	    ch->pcdata->title_custom
+		? "You chose it, so it stays when you level."
+		: "It is your class title, and changes as you level." );
+	send_to_char( buf, ch );
 	return;
     }
 
@@ -3207,12 +3245,23 @@ void do_title( CHAR_DATA *ch, char *argument )
       return;
     }
 
+    if ( !str_cmp( argument, "default" ) )
+    {
+	set_class_title( ch, true );
+	snprintf( buf, sizeof(buf),
+	    "Your title is your class title again:%s\n\r", ch->pcdata->title );
+	send_to_char( buf, ch );
+	return;
+    }
 
     if ( strlen(argument) > 45 )
 	argument[45] = '\0';
 
     smash_tilde( argument );
     set_title( ch, argument );
+    /* A title you chose is yours until you say otherwise; advance_level
+       only hands out the class title to characters who never picked one. */
+    ch->pcdata->title_custom = true;
     send_to_char( "Ok.\n\r", ch );
 }
 
@@ -5312,8 +5361,13 @@ void do_remort( CHAR_DATA *ch, char *arg)
    }
    REMOVE_BIT(ch->act, PLR_BOUGHT_PET);
    REMOVE_BIT(ch->act, PLR_WANTED);
-   snprintf(buf, sizeof(buf), "the %s", title_table[ch->class][1][(ch->sex == SEX_FEMALE? 1 : 0)]);
-   set_title(ch, buf);
+   /* A title the player chose survives a remort as it survives a
+      level-up; only the class title is reset for the new life. */
+   if ( !ch->pcdata->title_custom )
+   {
+      snprintf(buf, sizeof(buf), "the %s", title_table[ch->class][1][(ch->sex == SEX_FEMALE? 1 : 0)]);
+      set_title(ch, buf);
+   }
 
 
    /* What the character had practised shadowmeld to. Every other skill

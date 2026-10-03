@@ -20,6 +20,9 @@ This psionic skill carries you to another character much like GATE.  It cannot
 cross into private, deadly, jailed, no-recall, or no-teleport rooms, and
 targets protected by NOSUMMON cannot be followed.
 
+Unlike GATE it can take you out of a no-recall room, though never into one;
+a jail holds you either way.
+
 A mobile whose mind is immune to mental attack cannot be fixed upon at all,
 and a mentally resistant one may shrug off the pull.  Ordinary minds cannot
 resist it, so a practiced walker reaches the target reliably.

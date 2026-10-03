@@ -792,6 +792,8 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 	if (ch->pcdata->depart[0] != '\0')
 		fprintf( fp, "Dprt %s~\n", ch->pcdata->depart);
 	fprintf( fp, "Titl %s~\n",	ch->pcdata->title	);
+	if ( ch->pcdata->title_custom )
+	    fprintf( fp, "TitleSet 1\n" );
 	fprintf( fp, "Pnts %d\n",   	ch->pcdata->points      );
 	fprintf( fp, "TSex %d\n",	ch->pcdata->true_sex	);
 	fprintf( fp, "LLev %d\n",	ch->pcdata->last_level	);
@@ -1243,6 +1245,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     }
     ch->pcdata->recall_vnum             = 0;
     ch->pcdata->recall_set_at           = 0;
+    ch->pcdata->title_custom            = false;
     ch->pcdata->list_remorts            = str_dup( "" );
     ch->pcdata->num_remorts             = 0;
     for (stat =0; stat < MAX_STATS; stat++)
@@ -1949,6 +1952,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "Trai",	ch->train,		(sh_int)(fread_number( fp )) );
 	    KEY( "Trust",	ch->trust,		(sh_int)(fread_number( fp )) );
 	    KEY( "Tru",		ch->trust,		(sh_int)(fread_number( fp )) );
+	    KEY( "TitleSet",	ch->pcdata->title_custom, fread_number( fp ) != 0 );
 
 	    if ( !str_cmp( word, "Title" )  || !str_cmp( word, "Titl"))
 	    {

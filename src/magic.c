@@ -5112,6 +5112,12 @@ void spell_portal( int sn, int level, CHAR_DATA *ch, void *vo )
 }
     else
     {
+    /*
+     * Portal and astral walk may leave a no-recall room but never enter
+     * one; jail stops both. So the target's room is refused for
+     * ROOM_NO_RECALL and the caster's is deliberately not -- only for
+     * ROOM_JAIL. Gate and summon keep no-recall on both sides.
+     */
     if ( ( victim = get_char_world( ch, target_name ) ) == NULL
     ||   victim == ch
     ||   victim->in_room == NULL

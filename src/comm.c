@@ -909,6 +909,7 @@ void game_loop_unix( int control )
             {
                 nanny( d, d->incomm );
                 d->incomm[0] = '\0';
+                d->incomm_from_alias = FALSE;
                 continue;
             }
 
@@ -931,16 +932,32 @@ void game_loop_unix( int control )
                 }
             }
 
-            /* Handle pager continuation */
-            if ( d->showstr_point )
+            /* Handle pager continuation. A line an alias queued is a
+               command, not an answer to "[Hit Return to continue]": it
+               ends the pager exactly as typing a command there would,
+               and then runs, rather than being swallowed by it. */
+            if ( d->showstr_point && !d->incomm_from_alias )
             {
                 show_string( d, d->incomm );
             }
             else
             {
+                if ( d->showstr_point )
+                {
+                    if ( d->showstr_head )
+                    {
+                        free_mem( d->showstr_head,
+                            clamp_size_to_int( strlen(d->showstr_head) + 1u ) );
+                        d->showstr_head = NULL;
+                    }
+                    d->showstr_point = NULL;
+                }
+                interp_from_alias = d->incomm_from_alias;
                 interpret( ch, d->incomm );
+                interp_from_alias = FALSE;
             }
             d->incomm[0] = '\0';
+            d->incomm_from_alias = FALSE;
         }
 
         {
@@ -1497,6 +1514,7 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
         write_to_buffer( d,
             "\n\rThat line was too long to read at all.  Try a shorter one.\n\r", 0 );
         d->inbuf[0] = '\0';
+        d->alias_queued = 0;    /* whatever an alias queued went with it */
         iStart = 0;
     }
 
@@ -1565,6 +1583,7 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
 bool read_from_buffer( DESCRIPTOR_DATA *d )
 {
     int i, j, k;
+    bool from_alias;
 
     /*
      * Hold horses if pending command already.
@@ -1580,6 +1599,13 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
 
     if ( d->inbuf[i] == '\0' )
 	return FALSE;
+
+    /* Alias lines are always the first in the buffer: queue_alias_input
+       puts them there. */
+    from_alias = ( d->alias_queued > 0 );
+    if ( from_alias )
+        d->alias_queued--;
+    d->incomm_from_alias = from_alias;
 
     /*
      * Canonical input processing.
@@ -1624,8 +1650,12 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
 
     /*
      * Deal with bozos with #repeat 1000 ...
+     *
+     * Not for a line an alias queued: "n;n;n;n" is one thing the player
+     * typed, and is bounded by ALIAS_MAX_COMMANDS. The alias itself,
+     * typed over and over, is still counted like anything else typed.
      */
-    if ( k > 1 || d->incomm[0] == '!' )
+    if ( !from_alias && ( k > 1 || d->incomm[0] == '!' ) )
     {
     	if ( d->incomm[0] != '!' && strcmp( d->incomm, d->inlast ) )
 	{
@@ -1664,12 +1694,16 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
     }
 
     /*
-     * Do '!' substitution.
+     * Do '!' substitution. An alias's own commands are left out of it,
+     * so '!' repeats the alias the player typed, not its last command.
      */
-    if ( d->incomm[0] == '!' )
-        safe_strcpy( d->incomm, sizeof(d->incomm), d->inlast );
-    else
-        safe_strcpy( d->inlast, sizeof(d->inlast), d->incomm );
+    if ( !from_alias )
+    {
+        if ( d->incomm[0] == '!' )
+            safe_strcpy( d->incomm, sizeof(d->incomm), d->inlast );
+        else
+            safe_strcpy( d->inlast, sizeof(d->inlast), d->incomm );
+    }
 
     /*
      * Shift the input buffer.
@@ -1678,6 +1712,58 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
 	i++;
     for ( j = 0; ( d->inbuf[j] = d->inbuf[i+j] ) != '\0'; j++ )
 	;
+    return TRUE;
+}
+
+
+/*
+ * Put the rest of a multi-command alias at the front of the input buffer,
+ * ahead of anything else already typed, so it runs next and one line per
+ * pulse -- which is how lag (WAIT_STATE) comes to apply between them, just
+ * as it does between lines the player types. All or nothing: a partly
+ * queued alias is worse than a refused one. Returns FALSE when there is no
+ * room, either in the buffer or under ALIAS_MAX_QUEUED.
+ *
+ * The lines come from alias_split, which leaves no line break or other
+ * unprintable byte in them and keeps each short enough for
+ * read_from_buffer.
+ */
+bool queue_alias_input( DESCRIPTOR_DATA *d,
+                        char (*lines)[MAX_INPUT_LENGTH], int count )
+{
+    char queued[sizeof(d->inbuf)];
+    size_t used = 0;
+    size_t have;
+    int n;
+
+    if ( d == NULL || lines == NULL || count <= 0 )
+        return TRUE;
+
+    if ( d->alias_queued + count > ALIAS_MAX_QUEUED )
+        return FALSE;
+
+    for ( n = 0; n < count; n++ )
+    {
+        size_t len = strlen( lines[n] );
+
+        if ( len == 0 || len > MAX_INPUT_LENGTH - 3 )
+            return FALSE;
+        if ( used + len + 1 >= sizeof(queued) )
+            return FALSE;
+        memcpy( queued + used, lines[n], len );
+        used += len;
+        queued[used++] = '\n';
+    }
+
+    have = strlen( d->inbuf );
+    /* Leave read_from_descriptor its two bytes of headroom, or it would
+       take a full buffer for an overlong line and throw it all away. */
+    if ( have + used >= sizeof(d->inbuf) - 2 )
+        return FALSE;
+
+    memmove( d->inbuf + used, d->inbuf, have + 1 );
+    memcpy( d->inbuf, queued, used );
+    d->alias_queued = (sh_int)( d->alias_queued + count );
     return TRUE;
 }
 
@@ -2794,10 +2880,7 @@ case CON_DEFAULT_CHOICE:
 	        ch->move    = ch->max_move;
 	        ch->train    = 3;
 	        ch->practice = 5;
-                snprintf( buf, sizeof(buf), "the %s",
-                    title_table [ch->class] [ch->level]
-                    [ch->sex == SEX_FEMALE ? 1 : 0] );
-                set_title( ch, buf );
+                set_class_title( ch, true );
 	        do_outfit(ch,"");
 	        char_to_room( ch, get_room_index( ROOM_VNUM_SCHOOL ) );
 	        send_to_char("\n\r",ch);

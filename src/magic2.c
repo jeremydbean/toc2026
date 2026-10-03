@@ -1167,12 +1167,19 @@ void do_astral_walk( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /*
+     * Portal and astral walk may leave a no-recall room but never enter
+     * one; jail stops both. So the origin passes block_no_recall = false
+     * (jail, death traps, private rooms and the rest still refuse, from
+     * the helper's own list) and the destination passes true. Gate,
+     * summon, teleport, shift and the rest keep no-recall on both sides.
+     */
     victim = get_char_world( ch, arg );
     if ( victim == NULL
     ||   victim == ch
     ||   IS_IMMORTAL(victim)
     ||   (victim != NULL && victim->in_room == ch->in_room)
-    ||   psionic_remote_room_blocked(ch, ch->in_room, false, true)
+    ||   psionic_remote_room_blocked(ch, ch->in_room, false, false)
     ||   psionic_remote_room_blocked(ch, victim != NULL ? victim->in_room : NULL,
                                      true, true)
     ||   (victim != NULL

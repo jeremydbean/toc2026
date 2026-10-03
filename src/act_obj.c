@@ -704,14 +704,19 @@ static void stash_show( CHAR_DATA *ch )
         stash_link_report( ch, shared, sizeof(shared) );
         if ( shared[0] != '\0' )
         {
-            snprintf( line, sizeof(line), "\n\rShared with: %s\n\r", shared );
-            toc_strlcat( out, line, sizeof(out) );
+            /* Appended in pieces: the list can be longer than one input
+               line, and staging it in `line' cut it short. */
+            toc_strlcat( out, "\n\rShared with: ", sizeof(out) );
+            toc_strlcat( out, shared, sizeof(out) );
+            toc_strlcat( out, "\n\r", sizeof(out) );
         }
     }
 
     if ( ch->pcdata->stash_max < STASH_SLOTS_MAX )
     {
-        char price[MAX_INPUT_LENGTH];
+        /* format_price writes at most four short denominations, so this
+           is generous, and small enough that `line' always holds it. */
+        char price[64];
 
         format_price( stash_upgrade_copper( ch ), price, sizeof(price) );
         snprintf( line, sizeof(line),
