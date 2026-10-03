@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791053734
+LogO 1791054144
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 259942
+Plyd 260352
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 4210
-HMV  949 1150 1462 1462 328 328
-NewGold 74
-NewPlat 160
-NewCopp 43
-NewSilv 75
+HMV  735 1140 1404 1462 194 328
+NewGold 88
+NewPlat 165
+NewCopp 77
+NewSilv 100
 BankCP 196864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 958
+AchKills 959
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -107,7 +107,7 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  125774
+Exp  126274
 Act  4261068
 AfBy 524856
 Comm 24576
@@ -134,16 +134,16 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  4
+Pos  8
 Prac 6
 Trai 1
 Save  -3
-Alig  1005
-Hit   41
-Dam   49
-ACs -130 -141 -96 20
+Alig  1000
+Hit   38
+Dam   52
+ACs -135 -144 -101 25
 Attr 22 13 12 16 15
-AMod 9 10 11 3 13
+AMod 9 10 11 3 9
 Pass Al3w9zuAlwpyY~
 Titl  the Heroine of the Third Order~
 Pnts 0
@@ -191,10 +191,10 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'detect hidden'   0   3   0   0         32          0
-AffD 'detect magic'   0   3   0   0         16          0
-AffD 'detect invis'  23   3   0   0          8          0
-AffD 'fly'  34   3   0   0     524288          0
+AffD 'fly'   0  10   0   0     524288          0
+AffD 'detect hidden'   0   8   0   0         32          0
+AffD 'detect magic'  23   8   0   0         16          0
+AffD 'detect invis'  32   8   0   0          8          0
 End
 
 #O
@@ -666,16 +666,6 @@ Repd 0
 End
 
 #O
-Vnum 16006
-Nest 0
-Wear 1
-Lev  43
-Cost 22600000
-Cond 100
-Repd 0
-End
-
-#O
 Vnum 29049
 Nest 0
 Wear 0
@@ -928,16 +918,6 @@ Affect -1 33 -1 13 17 0 0
 End
 
 #O
-Vnum 4618
-Nest 0
-Wear 8
-Lev  39
-Cost 200000000
-Cond 100
-Repd 0
-End
-
-#O
 Vnum 717
 Nest 0
 Wear 15
@@ -973,22 +953,10 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 435
+Time 427
 Cost 0
 Cond 100
 Repd 0
-End
-
-#O
-Vnum 3092
-Nest 0
-Wear -1
-Cost 31000
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
 End
 
 #O
@@ -1072,38 +1040,6 @@ Affect -1 51 -1 -8 14 0 0
 End
 
 #O
-Vnum 3092
-Nest 0
-Wear -1
-Cost 31000
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
-End
-
-#O
-Vnum 3091
-Nest 0
-Wear -1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'fly'
-End
-
-#O
-Vnum 3091
-Nest 0
-Wear -1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'fly'
-End
-
-#O
 Vnum 3737
 Nest 0
 Wear 11
@@ -1124,6 +1060,71 @@ Cost 25000000
 Cond 100
 Repd 0
 Affect -1 48 -1 3 20 0 0
+End
+
+#O
+Vnum 16026
+Nest 0
+Wear -1
+Lev  52
+Cost 21720000
+Cond 100
+Repd 0
+Spell 3 'bless'
+Affect -1 52 -1 -1 14 0 0
+End
+
+#O
+Vnum 16030
+Nest 0
+Wear -1
+Lev  52
+Cost 25600000
+Cond 100
+Repd 0
+Affect -1 52 -1 -9 14 0 0
+Affect -1 52 -1 -1 13 0 0
+End
+
+#O
+Vnum 16031
+Nest 0
+Wear -1
+Lev  52
+Cost 0
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 16051
+Nest 0
+Wear -1
+Lev  51
+Cost 24360000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 16032
+Nest 0
+Wear 8
+Lev  52
+Cost 0
+Cond 100
+Repd 0
+Affect -1 52 -1 -4 5 0 0
+End
+
+#O
+Vnum 16033
+Nest 0
+Wear 1
+Lev  52
+Cost 24090000
+Cond 100
+Repd 0
 End
 
 #STASH
@@ -1196,6 +1197,26 @@ Nest 0
 Wear -1
 Lev  50
 Cost 900000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 16006
+Nest 0
+Wear -1
+Lev  43
+Cost 22600000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 4618
+Nest 0
+Wear -1
+Lev  39
+Cost 200000000
 Cond 100
 Repd 0
 End
