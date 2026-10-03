@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791036089
+LogO 1791036412
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 252439
+Plyd 252762
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 4
-HMV  1140 1140 1462 1462 259 370
-NewGold 31
-NewPlat 270
-NewCopp 56
-NewSilv 95
+Room 29065
+HMV  1098 1165 1462 1462 367 370
+NewGold 63
+NewPlat 42
+NewCopp 136
+NewSilv 150
 BankCP 196864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 894
+AchKills 903
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -107,7 +107,7 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  125785
+Exp  125787
 Act  4261068
 AfBy 512
 Comm 24576
@@ -137,11 +137,11 @@ Color 16 6
 Pos  8
 Prac 6
 Trai 1
-Save  -6
+Save  -7
 Alig  1000
-Hit   40
+Hit   42
 Dam   48
-ACs -137 -146 -103 3
+ACs -157 -167 -124 -5
 Attr 22 13 12 16 15
 AMod 7 10 10 2 14
 Pass Al3w9zuAlwpyY~
@@ -184,7 +184,7 @@ Sk 1 'rescue'
 Sk 100 'second attack'
 Sk 89 'third attack'
 Sk 88 'fast healing'
-Sk 88 'door bash'
+Sk 89 'door bash'
 Sk 80 'recall'
 Sk 75 'smite'
 Gr 'rom basics'
@@ -977,20 +977,18 @@ End
 #O
 Vnum 703
 Nest 0
-ExtF 67109890
-Wear -1
+Wear 11
 Lev  47
-Cost 6666666
-Cond 0
-Repd 0
-Val  11 12 12 -1 0
+Cost 20000000
+Cond 100
+Repd 1
 End
 
 #O
 Vnum 48
 Nest 0
 Wear -1
-Time 557
+Time 552
 Cost 0
 Cond 100
 Repd 0
