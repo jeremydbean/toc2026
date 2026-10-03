@@ -25654,3 +25654,44 @@ Fri Oct  2 23:54:16 2026 :: Sock.sinaddr:  18.116.205.62
 Fri Oct  2 23:54:16 2026 :: EOF encountered on read.
 Fri Oct  2 23:59:21 2026 :: Sock.sinaddr:  3.20.63.178
 Fri Oct  2 23:59:21 2026 :: EOF encountered on read.
+Sat Oct  3 00:02:59 2026 :: Sock.sinaddr:  208.126.22.104
+Sat Oct  3 00:03:05 2026 :: Loading Alaric's playerfile
+Sat Oct  3 00:03:08 2026 :: Alaric@208.126.22.104 has connected.
+Sat Oct  3 00:03:09 2026 :: Log Alaric [713]: moved to 713 (The Forest Arden)
+Sat Oct  3 00:03:17 2026 :: Log Alaric [713]: ex
+Sat Oct  3 00:03:22 2026 :: Log Alaric [713]: e
+Sat Oct  3 00:03:22 2026 :: Log Alaric [0]: moved to 719 (The Chasm)
+Sat Oct  3 00:03:23 2026 :: Log Alaric [719]: ex
+Sat Oct  3 00:03:26 2026 :: Log Alaric [719]: d
+Sat Oct  3 00:03:26 2026 :: Log Alaric [0]: moved to 720 (Hanging on the Rope Bridge)
+Sat Oct  3 00:03:27 2026 :: Log Alaric [720]: ex
+Sat Oct  3 00:03:29 2026 :: Log Alaric [720]: e
+Sat Oct  3 00:03:29 2026 :: Log Alaric [0]: moved to 721 (Hanging on the Rope Bridge)
+Sat Oct  3 00:03:31 2026 :: Log Alaric [721]: ex
+Sat Oct  3 00:03:33 2026 :: Log Alaric [721]: u
+Sat Oct  3 00:03:33 2026 :: Log Alaric [0]: moved to 722 (The Chasm)
+Sat Oct  3 00:03:33 2026 :: Log Alaric [722]: ex
+Sat Oct  3 00:03:34 2026 :: Log Alaric [722]: e
+Sat Oct  3 00:03:34 2026 :: Log Alaric [0]: moved to 725 (The Green Field Before Camelot)
+Sat Oct  3 00:03:35 2026 :: Log Alaric [725]: ex
+Sat Oct  3 00:03:36 2026 :: Log Alaric [725]: e
+Sat Oct  3 00:03:36 2026 :: Log Alaric [0]: moved to 726 (The Western Gate of Camelot)
+Sat Oct  3 00:03:39 2026 :: Log Alaric [726]: where gal
+Sat Oct  3 00:04:26 2026 :: Sock.sinaddr:  3.212.128.62
+Sat Oct  3 00:04:26 2026 :: EOF encountered on read.
+Sat Oct  3 00:05:53 2026 :: Log Alaric [726]: who
+Sat Oct  3 00:06:22 2026 :: Log Alaric [726]: open east
+Sat Oct  3 00:06:22 2026 :: Log Alaric [726]: east
+Sat Oct  3 00:06:22 2026 :: Log Alaric [0]: moved to 741 (Victory Road and Knights Way)
+Sat Oct  3 00:06:24 2026 :: Log Alaric [741]: north
+Sat Oct  3 00:06:24 2026 :: Log Alaric [0]: moved to 742 (Knights Way before the stables)
+Sat Oct  3 00:06:24 2026 :: Log Alaric [742]: north
+Sat Oct  3 00:06:24 2026 :: Log Alaric [0]: moved to 745 (Corner of Knight's Way and Squire's Run)
+Sat Oct  3 00:06:25 2026 :: Log Alaric [745]: east
+Sat Oct  3 00:06:25 2026 :: Log Alaric [0]: moved to 750 (Squire's Run)
+Sat Oct  3 00:06:25 2026 :: Log Alaric [750]: east
+Sat Oct  3 00:06:25 2026 :: Log Alaric [0]: moved to 755 (Squire's Run at the North Gate)
+Sat Oct  3 00:06:25 2026 :: Log Alaric [755]: open north
+Sat Oct  3 00:06:25 2026 :: Log Alaric [755]: north
+Sat Oct  3 00:06:25 2026 :: Log Alaric [0]: moved to 756 (The Great Northern Gate of Camelot)
+Sat Oct  3 00:06:30 2026 :: Log Alaric [756]: scan

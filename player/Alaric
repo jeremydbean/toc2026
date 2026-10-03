@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790985240
+LogO 1790985832
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,12 +15,12 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 240609
+Plyd 240656
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 713
+Room 726
 HMV  1190 1190 1462 1462 377 377
 NewGold 9
 NewPlat 33
@@ -186,7 +186,7 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'fly'  49   9   0   0     524288          0
+AffD 'fly'  48   8   0   0     524288          0
 End
 
 #O
@@ -426,10 +426,10 @@ Lev  32
 Cost 23000000
 Cond 100
 Repd 1
-Affect -1 32 -1 -3 22 0 0
-Affect -1 32 -1 -15 13 0 0
-Affect -1 32 -1 -13 12 0 0
 Affect -1 32 -1 -1 5 0 0
+Affect -1 32 -1 -13 12 0 0
+Affect -1 32 -1 -15 13 0 0
+Affect -1 32 -1 -3 22 0 0
 End
 
 #O
@@ -604,8 +604,8 @@ Lev  46
 Cost 19350000
 Cond 100
 Repd 0
-Affect -1 46 -1 2 24 0 0
 Affect -1 46 -1 -1 14 0 0
+Affect -1 46 -1 2 24 0 0
 End
 
 #O
@@ -616,9 +616,9 @@ Lev  46
 Cost 19350000
 Cond 100
 Repd 1
-Affect -1 46 -1 -4 18 0 0
-Affect -1 46 -1 -5 1 0 0
 Affect -1 46 -1 -1 1 0 0
+Affect -1 46 -1 -5 1 0 0
+Affect -1 46 -1 -4 18 0 0
 End
 
 #O
@@ -871,8 +871,8 @@ Lev  50
 Cost 20000000
 Cond 100
 Repd 0
-Affect -1 50 -1 -17 14 0 0
 Affect -1 50 -1 -3 2 0 0
+Affect -1 50 -1 -17 14 0 0
 End
 
 #O
@@ -936,9 +936,9 @@ Lev  29
 Cost 30000000
 Cond 100
 Repd 0
-Affect -1 29 -1 -4 1 0 0
-Affect -1 29 -1 -1 1 0 0
 Affect -1 29 -1 -4 2 0 0
+Affect -1 29 -1 -1 1 0 0
+Affect -1 29 -1 -4 1 0 0
 End
 
 #O
