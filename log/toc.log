@@ -32867,3 +32867,14 @@ Sat Oct  3 22:20:20 2026 :: Sock.sinaddr:  5.161.73.160
 Sat Oct  3 22:20:20 2026 :: EOF encountered on read.
 Sat Oct  3 22:25:25 2026 :: Sock.sinaddr:  34.198.201.66
 Sat Oct  3 22:25:25 2026 :: EOF encountered on read.
+Sat Oct  3 22:30:29 2026 :: Sock.sinaddr:  3.212.128.62
+Sat Oct  3 22:30:30 2026 :: EOF encountered on read.
+Sat Oct  3 22:30:31 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sat Oct  3 22:30:35 2026 :: Log WebAdmin: fsave
+Sat Oct  3 22:30:41 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sat Oct  3 22:30:44 2026 :: Received signal 15; saving players and shutting down.
+Sat Oct  3 22:30:44 2026 :: Normal termination of game.
+Sat Oct  3 22:30:45 2026 ::  INIT OK 
+Sat Oct  3 22:30:45 2026 :: ROM is ready to rock on port 9000.
+Sat Oct  3 22:30:45 2026 :: Automated backup complete.
+Sat Oct  3 22:30:45 2026 :: Daily backup complete.
