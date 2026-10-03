@@ -27416,3 +27416,203 @@ Sat Oct  3 12:58:13 2026 :: Log Alaric [0]: moved to 29002 (Inside Korzath's Pri
 Sat Oct  3 12:58:13 2026 :: Log Alaric [0]: moved to 29003 (Grand Foyer)
 Sat Oct  3 12:58:13 2026 :: Log Alaric [0]: moved to 29004 (Center Tunnelway)
 Sat Oct  3 12:58:15 2026 :: Log Alaric [29004]: kill gu
+Sat Oct  3 13:00:13 2026 :: Log Alaric [29004]: prac
+Sat Oct  3 13:00:19 2026 :: Log Alaric [29004]: s
+Sat Oct  3 13:00:19 2026 :: Log Alaric [0]: moved to 29003 (Grand Foyer)
+Sat Oct  3 13:00:19 2026 :: Log Alaric [29003]: s
+Sat Oct  3 13:00:19 2026 :: Log Alaric [0]: moved to 29002 (Inside Korzath's Private Fortress)
+Sat Oct  3 13:00:19 2026 :: Log Alaric [29002]: s
+Sat Oct  3 13:00:19 2026 :: Log Alaric [0]: moved to 29001 (Entrance to the Fortress)
+Sat Oct  3 13:00:20 2026 :: Log Alaric [29001]: s
+Sat Oct  3 13:00:20 2026 :: Log Alaric [0]: moved to 64 (Misty Clearing)
+Sat Oct  3 13:00:21 2026 :: Log Alaric [64]: s
+Sat Oct  3 13:00:21 2026 :: Log Alaric [0]: moved to 9783 (Edge of the forest)
+Sat Oct  3 13:00:23 2026 :: Log Alaric [9783]: s
+Sat Oct  3 13:00:23 2026 :: Log Alaric [0]: moved to 9782 (On the Plains)
+Sat Oct  3 13:00:28 2026 :: Log Alaric [9782]: s
+Sat Oct  3 13:00:28 2026 :: Log Alaric [0]: moved to 9781 (On the Plains)
+Sat Oct  3 13:00:28 2026 :: Log Alaric [9781]: s
+Sat Oct  3 13:00:28 2026 :: Log Alaric [0]: moved to 9667 (Outside the Northern Gate of New Thalos)
+Sat Oct  3 13:00:32 2026 :: Log Alaric [9667]: n
+Sat Oct  3 13:00:32 2026 :: Log Alaric [0]: moved to 9781 (On the Plains)
+Sat Oct  3 13:00:32 2026 :: Log Alaric [9781]: n
+Sat Oct  3 13:00:32 2026 :: Log Alaric [0]: moved to 9782 (On the Plains)
+Sat Oct  3 13:00:32 2026 :: Log Alaric [9782]: n
+Sat Oct  3 13:00:32 2026 :: Log Alaric [0]: moved to 9783 (Edge of the forest)
+Sat Oct  3 13:00:32 2026 :: Log Alaric [9783]: n
+Sat Oct  3 13:00:32 2026 :: Log Alaric [0]: moved to 64 (Misty Clearing)
+Sat Oct  3 13:00:33 2026 :: Log Alaric [64]: n
+Sat Oct  3 13:00:33 2026 :: Log Alaric [0]: moved to 29001 (Entrance to the Fortress)
+Sat Oct  3 13:00:33 2026 :: Log Alaric [29001]: n
+Sat Oct  3 13:00:33 2026 :: Log Alaric [0]: moved to 29002 (Inside Korzath's Private Fortress)
+Sat Oct  3 13:00:34 2026 :: Log Alaric [29002]: n
+Sat Oct  3 13:00:34 2026 :: Log Alaric [0]: moved to 29003 (Grand Foyer)
+Sat Oct  3 13:00:37 2026 :: Log Alaric [29003]: ne
+Sat Oct  3 13:00:37 2026 :: Log Alaric [0]: moved to 29060 (Corridor)
+Sat Oct  3 13:00:39 2026 :: Log Alaric [29060]: kill ch
+Sat Oct  3 13:00:58 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:09 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:09 2026 :: Log Alaric [29060]: close eas
+Sat Oct  3 13:01:12 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:12 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:14 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:17 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:18 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:21 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:21 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:24 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:24 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:27 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:27 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:30 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:31 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:34 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:34 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:37 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:37 2026 :: Sock.sinaddr:  5.161.73.160
+Sat Oct  3 13:01:37 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:37 2026 :: EOF encountered on read.
+Sat Oct  3 13:01:37 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:38 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:38 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:38 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:38 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:39 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:39 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:39 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:39 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:40 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:40 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:40 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:40 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:41 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:41 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:41 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:41 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:42 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:42 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:42 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:42 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:43 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:43 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:43 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:43 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:44 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:44 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:44 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:44 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:45 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:45 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:45 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:45 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:46 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:46 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:46 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:46 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:47 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:47 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:47 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:47 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:48 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:48 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:48 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:48 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:49 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:49 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:49 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:49 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:50 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:50 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:50 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:50 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:51 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:51 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:51 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:51 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:52 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:52 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:52 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:52 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:53 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:53 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:53 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:53 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:54 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:54 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:54 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:54 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:55 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:55 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:55 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:55 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:56 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:56 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:56 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:56 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:57 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:57 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:57 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:57 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:58 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:58 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:58 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:58 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:59 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:59 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:01:59 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:01:59 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:02:00 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:02:00 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:02:00 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:02:00 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:02:01 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:02:01 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:02:01 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:02:01 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:02:02 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:02:02 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:02:02 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:02:02 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:02:03 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:02:03 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:02:03 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:02:03 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:02:04 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:02:04 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:02:04 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:02:04 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:02:05 2026 :: Log Alaric [29060]: sc
+Sat Oct  3 13:03:18 2026 :: Log Alaric [29060]: wake
+Sat Oct  3 13:03:18 2026 :: Log Alaric [29060]: wake
+Sat Oct  3 13:03:20 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:03:23 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:03:23 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:03:26 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:03:26 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:03:27 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:03:31 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:03:31 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:03:32 2026 :: Log Alaric [29060]: wake
+Sat Oct  3 13:03:34 2026 :: Log Alaric [29060]: prac
+Sat Oct  3 13:03:44 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:03:47 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:03:47 2026 :: Log Alaric [29060]: wake
+Sat Oct  3 13:03:49 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:03:52 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:03:52 2026 :: Log Alaric [29060]: wake
+Sat Oct  3 13:03:52 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:03:55 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:03:55 2026 :: Log Alaric [29060]: wake
+Sat Oct  3 13:03:56 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:03:59 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:03:59 2026 :: Log Alaric [29060]: wake
+Sat Oct  3 13:03:59 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:04:02 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:04:02 2026 :: Log Alaric [29060]: wake
+Sat Oct  3 13:04:03 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:04:06 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:04:06 2026 :: Log Alaric [29060]: wake
+Sat Oct  3 13:04:06 2026 :: Log Alaric [29060]: door east
+Sat Oct  3 13:04:09 2026 :: Log Alaric [29060]: close east
+Sat Oct  3 13:04:09 2026 :: Log Alaric [29060]: wake
+Sat Oct  3 13:04:10 2026 :: Log Alaric [29060]: door east
