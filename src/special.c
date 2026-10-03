@@ -40,6 +40,8 @@ DECLARE_SPEC_FUN(       spec_breath_gas         );
 DECLARE_SPEC_FUN(       spec_breath_lightning   );
 DECLARE_SPEC_FUN(       spec_dominion_ward      );
 DECLARE_SPEC_FUN(       spec_ganon              );
+DECLARE_SPEC_FUN(       spec_hyrule_guardian    );
+DECLARE_SPEC_FUN(       spec_hyrule_patra       );
 DECLARE_SPEC_FUN(       spec_training_dummy     );
 DECLARE_SPEC_FUN(       spec_cast_adept         );
 DECLARE_SPEC_FUN(       spec_cast_cleric        );
@@ -232,6 +234,8 @@ const   struct  spec_type       spec_table      [ ] =
     { "spec_breath_lightning",  spec_breath_lightning   },
     { "spec_dominion_ward",     spec_dominion_ward      },
     { "spec_ganon",             spec_ganon              },
+    { "spec_hyrule_guardian",   spec_hyrule_guardian    },
+    { "spec_hyrule_patra",      spec_hyrule_patra       },
     { "spec_training_dummy",    spec_training_dummy     },
     { "spec_cast_adept",        spec_cast_adept         },
     { "spec_cast_cleric",       spec_cast_cleric        },
@@ -512,17 +516,16 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  *     coming back. Not once he has collapsed: a stunned Ganon (one hit
  *     point and AFF2_NO_RECOVER) stays down for the finishing shot.
  *
- * The numbers were sized against a level 59 with every defence learned,
- * sanctuary, the Red Ring and about 4,000 hit points, landing the ten
- * Silver Arrow blows that bring him down at a little under one and a half
- * a round through his parry and dodge. Alone that hero is dead in about
- * four rounds and wins roughly one fight in twenty; a group of three or
- * four splits the fireballs, finishes him in six or seven rounds, and
- * wins nearly every time. See wiki/hyrule-area.md.
+ * The numbers come from a simulation of fight.c's formulas against a
+ * player model fitted to the live player files (see wiki/hyrule-area.md
+ * and scripts/build_hyrule_area.py's BOSS_VOLLEYS). A level 59 with the
+ * Silver Arrow, sanctuary and the Red Ring wins about one fight in ten
+ * alone even at 4,000 hit points; a group of three carrying two Silver
+ * Arrows wins nine in ten, and four nearly always.
  */
 #define GANON_FIREBALLS          2
-#define GANON_FIREBALL_MIN    1600
-#define GANON_FIREBALL_MAX    2200
+#define GANON_FIREBALL_MIN    1400
+#define GANON_FIREBALL_MAX    1900
 #define GANON_REGEN_DIVISOR     10
 
 static bool ganon_may_target( CHAR_DATA *mob, CHAR_DATA *victim )
@@ -600,6 +603,180 @@ bool spec_ganon( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 		sn, DAM_FIRE );
     }
     return true;
+}
+
+/*
+ * The other eight guardians of Hyrule, each with the attack the NES gave
+ * it, in the style of spec_ganon: every mobile pulse a volley of spell
+ * blows at random members of the fight, which no parry stops and which
+ * sanctuary halves. Three of them change as they are hurt:
+ *
+ *   - Manhandla spits from however many of its four heads are left;
+ *   - Gleeok's heads tear free and fly loose below half its health;
+ *   - Digdogger splits in two below half, each half rolling for half.
+ *
+ * The counts and damage are BOSS_VOLLEYS in scripts/build_hyrule_area.py,
+ * sized by the same simulation as Ganon so that a lone character at the
+ * top of the dungeon's band usually loses, one six levels above usually
+ * wins, and a group of three at the band usually wins (wiki/hyrule-area.md
+ * has the numbers). tests/test_hyrule_progression.py holds the two tables
+ * together.
+ */
+typedef struct hyrule_guardian_volley
+{
+    int         vnum;
+    int         count;
+    int         dam_min;
+    int         dam_max;
+    int         dam_type;
+    const char *noun;           /* the skill whose name the blow carries */
+    const char *volley;         /* to the room, once a pulse */
+    const char *to_vict;
+    const char *to_notvict;
+} HYRULE_GUARDIAN_VOLLEY;
+
+static const HYRULE_GUARDIAN_VOLLEY hyrule_guardian_volleys[] =
+{
+    { 30222, 3,   4,   6, DAM_FIRE, "fireball",
+      "Aquamentus rears back and spits a fan of three fireballs!",
+      "A fireball from the fan streaks straight at you!",
+      "A fireball from the fan streaks at $N!" },
+    { 30218, 1,  22,  31, DAM_BASH, "bash",
+      "Dodongo lowers its great head and charges!",
+      "Dodongo tramples you underfoot!",
+      "Dodongo tramples $N underfoot!" },
+    { 30305, 4,   9,  13, DAM_FIRE, "fireball",
+      "Manhandla's heads snap open and spit fire every way at once!",
+      "A spitting head finds you!",
+      "A spitting head finds $N!" },
+    { 30307, 2,  39,  55, DAM_FIRE, "fireball",
+      "Gleeok's two heads weave on their long necks and spit fire!",
+      "A gout of fire from a Gleeok head hits you!",
+      "A gout of fire from a Gleeok head hits $N!" },
+    { 30309, 1,  48,  67, DAM_BASH, "bash",
+      "Digdogger rolls its great spiny bulk across the den!",
+      "Digdogger's spines roll right over you!",
+      "Digdogger's spines roll right over $N!" },
+    { 30223, 1,  32,  45, DAM_FIRE, "fireball",
+      "Gohma's great eye snaps open, and a bolt of fire lances out!",
+      "The bolt from Gohma's eye sears you!",
+      "The bolt from Gohma's eye sears $N!" },
+    { 30314, 3,  26,  36, DAM_FIRE, "fireball",
+      "The ancient Aquamentus spits a roaring fan of three fireballs!",
+      "A fireball from the fan streaks straight at you!",
+      "A fireball from the fan streaks at $N!" },
+    { 30316, 4,  24,  34, DAM_FIRE, "fireball",
+      "The ashen Gleeok's four heads rear back and spit fire!",
+      "A gout of fire from a Gleeok head hits you!",
+      "A gout of fire from a Gleeok head hits $N!" },
+};
+
+bool spec_hyrule_guardian( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
+{
+    const HYRULE_GUARDIAN_VOLLEY *volley = NULL;
+    CHAR_DATA *victim;
+    char buf[MAX_STRING_LENGTH];
+    int count;
+    int dam_min;
+    int dam_max;
+    int sn;
+    int i;
+    size_t n;
+
+    UNUSED_PARAM(ch);
+    UNUSED_PARAM(arg);
+
+    if ( cmd != NULL || mob->in_room == NULL || mob->pIndexData == NULL
+    ||   mob->fighting == NULL || mob->position != POS_FIGHTING )
+	return false;
+
+    for ( n = 0; n < sizeof(hyrule_guardian_volleys) / sizeof(hyrule_guardian_volleys[0]); n++ )
+	if ( hyrule_guardian_volleys[n].vnum == mob->pIndexData->vnum )
+	{
+	    volley = &hyrule_guardian_volleys[n];
+	    break;
+	}
+    if ( volley == NULL || ( sn = skill_lookup( volley->noun ) ) < 0 )
+	return false;
+
+    count = volley->count;
+    dam_min = volley->dam_min;
+    dam_max = volley->dam_max;
+
+    if ( mob->pIndexData->vnum == 30305 )
+    {
+	/* Manhandla: a head falls with each quarter of its health. */
+	int heads = URANGE( 1, ( 4 * mob->hit + mob->max_hit - 1 ) / UMAX( 1, mob->max_hit ), 4 );
+
+	snprintf( buf, sizeof(buf),
+		  heads == 1 ? "Manhandla's last head whirls about the chamber, spitting fire!"
+			     : "Manhandla's %d remaining heads snap open and spit fire!",
+		  heads );
+	act( buf, mob, NULL, NULL, TO_ROOM );
+    }
+    else if ( ( mob->pIndexData->vnum == 30307 || mob->pIndexData->vnum == 30316 )
+    &&        mob->hit * 2 < mob->max_hit )
+	act( "Severed Gleeok heads fly loose about the chamber, still spitting fire!",
+	     mob, NULL, NULL, TO_ROOM );
+    else if ( mob->pIndexData->vnum == 30309 && mob->hit * 2 < mob->max_hit )
+    {
+	/* Digdogger has split: two smaller urchins, each half the weight. */
+	act( "Digdogger has split in two, and both smaller urchins roll at you!",
+	     mob, NULL, NULL, TO_ROOM );
+	count = 2;
+	dam_min = UMAX( 1, dam_min / 2 );
+	dam_max = UMAX( dam_min, dam_max / 2 );
+    }
+    else
+	act( volley->volley, mob, NULL, NULL, TO_ROOM );
+
+    for ( i = 0; i < count; i++ )
+    {
+	if ( mob->in_room == NULL || mob->position != POS_FIGHTING
+	||   ( victim = ganon_pick_target( mob ) ) == NULL )
+	    break;
+	act( volley->to_vict, mob, NULL, victim, TO_VICT );
+	act( volley->to_notvict, mob, NULL, victim, TO_NOTVICT );
+	damage( mob, victim, number_range( dam_min, dam_max ), sn, volley->dam_type );
+    }
+    return true;
+}
+
+/*
+ * A patra: a great eye at the heart of a ring of smaller ones that orbit
+ * it and lash at everything near. Each pulse in a fight, the ring strikes
+ * every player fighting it for half its level to its level.
+ */
+bool spec_hyrule_patra( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
+{
+    CHAR_DATA *rch;
+    CHAR_DATA *rch_next;
+    int sn;
+    bool struck = false;
+
+    UNUSED_PARAM(ch);
+    UNUSED_PARAM(arg);
+
+    if ( cmd != NULL || mob->in_room == NULL
+    ||   mob->fighting == NULL || mob->position != POS_FIGHTING
+    ||   ( sn = skill_lookup( "magic missile" ) ) < 0 )
+	return false;
+
+    for ( rch = mob->in_room->people; rch != NULL; rch = rch_next )
+    {
+	rch_next = rch->next_in_room;
+	if ( !ganon_may_target( mob, rch ) )
+	    continue;
+	if ( !struck )
+	    act( "The ring of eyes orbiting $n tightens and lashes outward!",
+		 mob, NULL, NULL, TO_ROOM );
+	struck = true;
+	damage( mob, rch, number_range( UMAX( 1, mob->level / 2 ), UMAX( 1, mob->level ) ),
+		sn, DAM_ENERGY );
+	if ( mob->in_room == NULL || mob->position != POS_FIGHTING )
+	    break;
+    }
+    return struck;
 }
 
 bool spec_cast_adept( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )

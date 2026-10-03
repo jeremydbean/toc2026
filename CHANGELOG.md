@@ -10,6 +10,45 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- **Hyrule's dungeons are done in order, and every guardian keeps a key.**
+  - Each guardian drops its dungeon's key. The key opens the magical door
+    into the room behind the guardian and the locked chest in it; the chest
+    holds the dungeon's Triforce piece and its treasure. Ganon's Golden Key
+    opens Zelda's chamber and his great chest, which holds the ninth piece,
+    the Triforce of Power, and the Master Sword -- no longer in his corpse.
+  - Entering a dungeon needs the previous dungeon's piece, and reaching its
+    guardian needs the previous dungeon's treasure: boomerang, Magical
+    Boomerang, raft, stepladder, bow, Recorder, Red Candle, Magical Key. The
+    bow moves from Level 1 to Level 5 and the Recorder from Level 5 to Level
+    6, so each arrives just before the dungeon the NES uses it in. Both gates
+    are asked of the character moving (`hyrule_progress_gate` in
+    `act_move.c`, by walking and by portal); staff pass by trust.
+  - `COMBINE TRIFORCE` joins the nine pieces into the complete Triforce,
+    which is no longer lying in Zelda's chamber. COMBINE alone still toggles
+    the inventory display.
+  - The Triforce pieces and the Magical Key were keys in the item tables,
+    and keys are not saved when you quit; they are treasure now. Pieces
+    cannot be dropped, given or sold. A guardian's key does not crumble in
+    its corpse.
+  - Hyrule's chests relock and refill at every area reset, players or not,
+    and every container standing in a room is relocked when a reset refills
+    it, as ROM 2.4 did.
+  - Every guardian is resized by simulation against a player model fitted
+    to the live player files, and has its NES attack: Aquamentus's fan of
+    fireballs, Dodongo's charge, Manhandla's heads, Gleeok's heads,
+    Digdogger's split, Gohma's eye. Patras lash with their orbiting eyes.
+    Alone at the top of the band a character loses; six levels above, or
+    three together, they win. Ganon's fireballs come down to 1,400-1,900
+    and his hit points go up to 36,000: a group wants two Silver Arrows.
+  - HELP HYRULE has the order as a table, every refusal says what is
+    needed and where it comes from, and the old man's cave says it too.
+  - **Every locked door in Hyrule was a trap.** The generator wrote keyed
+    doors as exit type 5, which `load_resets` turns into a trapped door at
+    every reset, so unlocking one with its key went off four times in five
+    -- a needle, a teleport, sleep. Keyed doors are type 2 now (pickproof).
+    `wiki/area-building-guide.md`'s door tables listed values the code does
+    not have, and are corrected.
+
 - **Hyrule's endgame: the Master Sword is Ganon's, Ganon needs a group,
   and the Red Ring and Triforce have their powers.**
   - The **Master Sword** (level 58) no longer lies in the B6 graveyard;

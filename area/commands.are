@@ -1800,57 +1800,70 @@ cannot deliver the final blow.
 See also: ARCHERY, WIELD, SCAN
 ~
 
-0 GANON HYRULE RELICS 'MASTER SWORD' TRIFORCE 'RED RING'~
+0 HYRULE DUNGEONS 'HYRULE ORDER'~
 Hyrule is entered through the arcade cabinet in the Games Room, on the
-university campus.  ENTER CABINET and the screen takes you.
+university campus.  ENTER CABINET and the screen takes you.  RECALL works
+on the overworld but not inside the nine numbered dungeons.
 
-RECALL works in Hyrule's overworld -- the map, the sword caves, the shops,
-the repair rooms and the Lost Woods -- so you are never stranded there.  It
-does not work inside the nine numbered dungeons.  Walk out of those the way
-you came in.
+The nine dungeons are done IN ORDER, and every one works the same way:
+  - you need the previous dungeon's Triforce piece to enter it;
+  - inside, the way to its guardian needs the previous dungeon's treasure;
+  - the guardian drops a key.  UNLOCK the door behind it, then UNLOCK and
+    OPEN the chest there: it holds this dungeon's piece and its treasure.
+Carry what you need in hand, worn or in a bag (not the stash).
 
-The dungeons climb in order.  Level 1 suits a character fresh from school,
-each level after it asks for about six more, and Death Mountain is for
-levels 53 to 59.  The land around each dungeon is about as dangerous as the
-dungeon itself; the start screen is the safest place in Hyrule.
+  Level  Levels  To enter     Before the guardian   Chest holds
+  1      2-8     --           --                    piece 1, boomerang
+  2      8-14    piece 1      a boomerang           piece 2, Mag. Boomerang
+  3      14-20   piece 2      Mag. Boomerang        piece 3, raft
+  4      20-27   piece 3+raft the raft              piece 4, stepladder
+  5      27-33   piece 4      the stepladder        piece 5, bow
+  6      33-40   piece 5      the bow               piece 6, Recorder
+  7      40-46   piece 6      the Recorder          piece 7, Red Candle
+  8      46-52   piece 7      the Red Candle        piece 8, Magical Key
+  9      53-59   pieces 1-8   the Magical Key       piece 9, Master Sword
 
-  Level 1   2-8     Level 4  20-27     Level 7  40-46
-  Level 2   8-14    Level 5  27-33     Level 8  46-52
-  Level 3  14-20    Level 6  33-40     Level 9  53-59
+Each guardian is a hard fight for its band: alone, plan to be well above
+it or bring friends.  A lost piece or treasure comes back from the same
+chest after the next reset, when the guardian has a new key.  Pieces cannot
+be dropped, given or sold.  COMBINE TRIFORCE joins all nine.
 
-Every dungeon's guardian is a hard fight for its band, and every one
-carries a weapon worth having at that level; the first eight leave a Heart
-Container too.  Whatever you find in a place can be used at that place's
-level.  Ordinary enemies sometimes drop rupees, a heart, a bottled fairy or
-a clock-flask: QUAFF the last three.
+See also: GANON, COMBINE, RECALL
+~
 
+0 GANON RELICS 'MASTER SWORD' TRIFORCE 'RED RING'~
 Ganon is a fight for a group.  He blinks about the dark hurling fireballs
 that no parry stops, and his wounds close if he is left alone.  He can be
 wounded normally, but at one hit point he flashes red, becomes stunned, and
 can only be finished by a level 54 or higher character wielding the Silver
-Arrow and typing SHOOT GANON.
+Arrow and typing SHOOT GANON.  The Silver Arrow lies in one of Death
+Mountain's cellars; a group does best with two.
 
-The Red Ring of Hyrule (level 58) lies in Death Mountain's deepest cellar.
+The Red Ring of Hyrule (level 58) lies in Death Mountain's other cellar.
 Worn, it gives sanctuary and takes a fifth off all damage you take.
 
-Defeating Ganon puts the Golden Key, his trident and the Master Sword in his
-corpse.  The Master Sword (level 58) is the finest blade a mortal can carry,
-and it hastens whoever wields it.  He also leaves one random relic:
+Ganon carries the Golden Key, his crown and his trident, and leaves one
+random relic:
 
   Hero's Tunic, level 54 - heals after personally killing an NPC
   Blue Ring of Hyrule, level 54 - reduces all incoming damage by 10 percent
-  Pegasus Boots, level 55 - reduce movement spent traveling on foot by 25 percent
+  Pegasus Boots, level 55 - walking on foot costs 25 percent fewer moves
   Mirror Shield, level 56 - reduces nonphysical damage by 15 percent
 
 Only the strongest Blue or Red Ring ward applies, even if two rings are worn.
-The Mirror Shield can combine with one Ring ward. EXAMINE each relic for its
+The Mirror Shield can combine with one Ring ward.  EXAMINE each relic for its
 exact limits, and COMPARE understands these special effects.
 
-Beyond Ganon lies the complete Triforce (level 58).  WEAR it and it takes
-your light slot, and you see what a level 59 hero with HOLYLIGHT would see:
-the invisible, the hidden and the dark -- but not gods hidden above that.
+The Golden Key opens Zelda's chamber and Ganon's great chest in it, which
+holds the ninth piece, the Triforce of Power, and the Master Sword (level
+58): the finest blade a mortal can carry, which hastens its wielder.
 
-See also: SHOOT, COMPARE, EXAMINE, RECALL
+With all nine pieces, COMBINE TRIFORCE makes the complete Triforce (level
+58).  WEAR it and it takes your light slot, and you see what a level 59
+hero with HOLYLIGHT would see: the invisible, the hidden and the dark --
+but not gods hidden above that.  It counts as every piece at every door.
+
+See also: HYRULE, SHOOT, COMBINE, COMPARE, EXAMINE
 ~
 
 0 PICK~
@@ -3033,6 +3046,7 @@ See also: PROMPT, COMPACT, BRIEF
 
 0 COMBINE~
 Syntax: combine
+Syntax: combine <item>
 
 If combine is on, you will see like items in your inventory combined on
 a single line.  The number of items of that type you have will be shown in
@@ -3048,6 +3062,11 @@ with combine on you would see:
 
 If combine is on, typing combine again turns it off, showing you the long
 inventory again.  The default is for combine to be on.
+
+COMBINE <item> makes something whole from its parts instead.  The one
+recipe is COMBINE TRIFORCE, which joins the nine Hyrule Triforce pieces,
+carried in hand or loose in your inventory, into the complete Triforce.
+See HYRULE.
 
 See also: INVENTORY, COMPACT, BRIEF
 ~

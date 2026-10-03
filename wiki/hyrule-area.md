@@ -16,7 +16,7 @@ the useful Hyrule mobile and object catalog.
 | Recall | Blocked only inside the nine dungeons (`30400-30645`) |
 | Level range | `1-59` |
 | Canonical geometry | 128 overworld screens plus 246 dungeon rooms and cellars |
-| Generated area size | 443 rooms and 1,472 reset records |
+| Generated area size | 443 rooms and 1,497 reset records |
 
 There is no walking exit from the main world into Hyrule. Players arrive by
 entering the arcade cabinet, matching the intended "teleported into Zelda"
@@ -114,6 +114,81 @@ six screens from the start. The manifest builder needs reference images that
 are not committed, so when the bands change, apply `LEVEL_BANDS` and
 `world_level()` to the checked-in JSON as well.
 
+### The Order Of The Dungeons
+
+The nine dungeons are done in order, and each one needs something only the
+one before it gives. Every dungeon works the same way:
+
+1. **Entering** it from outside needs the previous dungeon's Triforce piece.
+2. **Inside**, the way into the guardian's chamber needs the previous
+   dungeon's treasure.
+3. **The guardian** drops its dungeon's key. The key opens the locked door
+   into the room behind the guardian, and the locked chest in that room.
+4. **The chest** holds this dungeon's Triforce piece and its treasure: the
+   piece opens the next dungeon, and the treasure gets you through it.
+
+Both gates are asked of the character moving, never of a door, so nobody can
+hold the way open for anybody else. They are `hyrule_progress_gate` in
+`src/act_move.c`, asked by `move_char` and by `do_enter` (portals), and they
+pass if the character carries the item: in hand, worn, or one bag down. The
+stash does not count. Staff pass by trust, and a pet or charmed follower is
+asked about its master. Every dungeon room is `ROOM_NO_RECALL`, so gate,
+summon, portal, astral walk, teleport, shift and earth travel cannot land
+in one, and `goto` and `transfer` are staff commands.
+
+| Level | To enter | Obstacle before the guardian (needs) | Guardian's chest | Why it is faithful |
+| --- | --- | --- | --- | --- |
+| 1: The Eagle | nothing | none | Piece 1 + the boomerang (`30232`) | The boomerang is the Eagle's: a Goriya drops it in the NES. The bow stays where the NES keeps it, until Level 5 needs it (below). |
+| 2: The Moon | Piece 1 | Dodongo's door is held by a lever across a pit; a thrown boomerang trips it (the boomerang or the Magical Boomerang) | Piece 2 + the Magical Boomerang (`30410`) | The Magical Boomerang is the Moon's treasure. The NES boomerang fetches and strikes what you cannot reach. |
+| 3: The Manji | Piece 2 | Manhandla's lever is across a chasm only the Magical Boomerang reaches | Piece 3 + the raft (`30411`) | The raft is the Manji's treasure, and the Magical Boomerang's whole point in the NES is its range. |
+| 4: The Snake | Piece 3, and the raft to reach the island | Black water floods the hall before the Gleeok: the raft | Piece 4 + the stepladder (`30412`) | NES exactly: the raft carries you to Level 4's island, and the stepladder is the Snake's treasure. |
+| 5: The Lizard | Piece 4 | A one-square moat across Digdogger's doorway: the stepladder | Piece 5 + the bow (`30222`) | NES exactly for the stepladder, which bridges one-square gaps. The bow moves here from Level 1, so it arrives just before the guardian it exists for. |
+| 6: The Dragon | Piece 5 | Gohma's eye is armoured against everything but an arrow: the bow | Piece 6 + the Recorder (`30413`) | NES exactly: a bow and arrow beat Gohma, and Gohma still takes only an arrow's finishing blow. The Recorder moves here from Level 5, one dungeon later, so it is in hand for Level 7, where the NES uses it. |
+| 7: The Demon | Piece 6, and the Recorder's song to drain the lake (as before) | Two Digdoggers block the way to the guardian; the Recorder shrinks them | Piece 7 + the Red Candle (`30414`) | NES exactly: the Recorder drains Level 7's lake and shrinks Digdogger, and the Red Candle is the Demon's treasure. |
+| 8: The Lion | Piece 7, and a candle to burn the bush (as before) | The way to the guardian is utterly dark: the Red Candle | Piece 8 + the Magical Key (`30416`) | NES: the Red Candle lights dark rooms and burns Level 8's bush; the Magical Key is the Lion's treasure. |
+| 9: Death Mountain | Piece 8 (and all eight pieces and a bomb at the door, as before) | The doors before Ganon's lair: the Magical Key | Great chest: piece 9, the Triforce of Power (`30408`), + the Master Sword (`30200`) | NES: the Magical Key opens every lock in the last dungeons. The Silver Arrow that finishes Ganon is in Death Mountain's own cellar, where the NES keeps it, before his lair; the Red Ring is in its other cellar. |
+
+After Ganon, `COMBINE TRIFORCE` joins the nine pieces into the complete
+Triforce (see below). The complete Triforce counts as every piece, so its
+holder can walk back into any dungeon.
+
+The Magical Rod (Level 6) and the Magic Book (Level 8) stay in their cellars
+as loot the chain does not need; the cellars whose treasure moved to a chest
+hold rupees instead.
+
+**Nothing in the chain can be lost for good.** A guardian repops with a fresh
+key at every area reset, and its chest relocks and refills at the same reset,
+players or no players (`reset_area` makes an exception for Hyrule's chests,
+since Hyrule is a single area and would otherwise refill nothing while anyone
+was in it). So a character who dies, junks or sells a piece or a treasure
+redoes the previous dungeon and has it again. Every treasure room also holds
+its dungeon's way home -- the returning light, or Zelda's portal -- so being
+locked in behind a door is not possible either.
+
+The guardian's door is exit type 2 (pickproof) with a `D` reset of state 3,
+magical like the golden door: its key opens it, and no pick, doorbash or random
+trap gets round it. Small-key doors are type 2 with state 2. Neither may be
+type 5, which `load_resets` resets as a trapped door; until 2026-10 every keyed
+door in Hyrule was one.
+
+**Pieces are NODROP; treasures are not.** A piece is the proof of having
+done a dungeon, so it cannot be given, dropped, put in a container or sold:
+otherwise one character could carry another through. A treasure only gets
+you past an obstacle inside a dungeon you already earned your way into, so
+trading one skips nothing, and a lost one comes back from the chest. Keys,
+pieces and treasures carry no rot-death, inventory or meltdrop flag, and a
+guardian's key does not crumble in the corpse the way an ordinary key does.
+A key is not saved when you quit, like every key in the game; the guardian
+has another after the next reset.
+
+**Entry levels.** There is no minimum level at any door. The gates already
+make the order strict, and each dungeon's band is a warning in its own
+right: its guardian is sized to beat a lone character at the top of the band.
+A floor (say, the band's bottom less two) would stop a level 10 trailing a
+level 50 friend into Death Mountain for the experience, but it would also
+stop a lower member of a group that has earned every piece together. It is
+easy to add to `hyrule_progress_gate`; it is the owner's call.
+
 ### Item Levels
 
 Every item a player can get sits at or below the band of the place it is first
@@ -134,9 +209,12 @@ found, and its stats are rescaled to that level (`ITEM_LEVELS`,
   Candle 42, the Magic Book and Magical Key 48, and each Triforce shard the
   bottom of its dungeon's band.
 - A shop item takes the lowest band it is sold in.
-- The Master Sword is level 58 and Ganon carries it, so it sits inside Death
+- The Master Sword is level 58 and lies in Ganon's great chest, inside Death
   Mountain's band. It used to lie in the B6 graveyard, a band 6 screen, as the
   one item above its band; the grave is still there and holds nothing now.
+- Each guardian's key and chest are at the bottom of its dungeon's band, and
+  the treasures in the chests are all at or below it (the bow, level 6, sits in
+  Level 5's chest; the Recorder, level 30, in Level 6's).
 - The Silver Arrow stays at level 54 (`HYRULE_SILVER_ARROW_LEVEL`), inside
   Death Mountain's band; the relics stay at 54-58, and the Red Ring of Hyrule
   (58) lies in Death Mountain's Red Ring Cellar.
@@ -181,22 +259,22 @@ The overworld already asked for at most two of anything and is unchanged.
 
 ### Bosses And Their Weapons
 
-Bosses keep their catalog records and achievements; only the stat line is
-generated (`BOSS_STATS`). Each sits a few levels above its band, with hit
-points weighted by how hard it is in the NES game. Each carries its Heart Guard
-and a weapon (`BOSS_WEAPONS`) through `G` resets.
+Bosses keep their catalog records and achievements; their stat lines are
+generated (`BOSS_STATS`), and each has an NES attack (`BOSS_VOLLEYS`, see
+Guardian Fights below). Each carries its Heart Guard, a weapon
+(`BOSS_WEAPONS`) and its dungeon's key through `G` resets.
 
 | Level | Boss | Boss level | Hit points | Weapon | Weapon level | Avg + damroll | Best existing |
 | --- | --- | ---: | ---: | --- | ---: | ---: | --- |
-| 1 | Aquamentus | 10 | 650 | Aquamentus horn-spear 3d6, +2 hit +1 dam | 8 | 11.5 | 10.0, the large mace |
-| 2 | Dodongo | 16 | 1,250 | Dodongo tail-club 4d8, +2/+2 | 14 | 20.0 | 17.0, an icy dagger |
-| 3 | Manhandla | 23 | 2,400 | Manhandla bloom-whip 6d9, +2/+2 | 20 | 32.0 | 28.0, a barbed whip |
-| 4 | Gleeok | 30 | 4,000 | Gleeok twin-fang glaive 7d8, +3/+2 | 27 | 33.5 | 28.0, a barbed whip |
-| 5 | Digdogger | 36 | 6,000 | Digdogger urchin flail 7d9, +3/+2 | 33 | 37.0 | 32.0, Hyrule's White Sword (level 30) |
-| 6 | Gohma | 43 | 8,500 | Gohma eye-lance 7d10, +3/+1 | 40 | 39.5 | 33.5, a two-handed sword |
-| 7 | ancient Aquamentus | 49 | 9,500 | Demon's dragonbone sword 9d9, +4/+4 | 46 | 49.0 | 42.0, A Glaive-Guisarme |
-| 8 | ashen Gleeok | 55 | 15,000 | Lion's four-crowned axe 10d9, +9/+6 | 52 | 56.0 | 49.0, a flaming Light Saber |
-| 9 | Ganon | 64 | 30,000 | Trident of Ganon 11d10, +9/+3 | 59 | 63.5 | 54.0, the Power of the world |
+| 1 | Aquamentus | 10 | 820 | Aquamentus horn-spear 3d6, +2 hit +1 dam | 8 | 11.5 | 10.0, the large mace |
+| 2 | Dodongo | 16 | 2,200 | Dodongo tail-club 4d8, +2/+2 | 14 | 20.0 | 17.0, an icy dagger |
+| 3 | Manhandla | 23 | 3,400 | Manhandla bloom-whip 6d9, +2/+2 | 20 | 32.0 | 28.0, a barbed whip |
+| 4 | Gleeok | 30 | 6,000 | Gleeok twin-fang glaive 7d8, +3/+2 | 27 | 33.5 | 28.0, a barbed whip |
+| 5 | Digdogger | 36 | 16,800 | Digdogger urchin flail 7d9, +3/+2 | 33 | 37.0 | 32.0, Hyrule's White Sword (level 30) |
+| 6 | Gohma | 43 | 20,000 | Gohma eye-lance 7d10, +3/+1 | 40 | 39.5 | 33.5, a two-handed sword |
+| 7 | ancient Aquamentus | 49 | 30,000 | Demon's dragonbone sword 9d9, +4/+4 | 46 | 49.0 | 42.0, A Glaive-Guisarme |
+| 8 | ashen Gleeok | 55 | 33,000 | Lion's four-crowned axe 10d9, +9/+6 | 52 | 56.0 | 49.0, a flaming Light Saber |
+| 9 | Ganon | 64 | 36,000 | Trident of Ganon 11d10, +9/+3 | 59 | 63.5 | 54.0, the Power of the world |
 
 "Best existing" is the best weapon a character of that level could otherwise
 carry: every mobile-carried weapon in the world at or below the weapon's level,
@@ -213,8 +291,9 @@ than the catalog's "Three-headed Aquamentus".
 
 ### The Master Sword
 
-Ganon carries the Master Sword (`30200`, level 58) beside his trident, so it
-lands in his corpse in his chamber. It is the best weapon a mortal can get
+The Master Sword (`30200`, level 58) lies in Ganon's great chest in Zelda's
+chamber, beside the ninth Triforce piece; the Golden Key Ganon drops opens both
+the chamber and the chest. It is the best weapon a mortal can get
 anywhere in the game, measured the boss-weapon way against every weapon at or
 below level 59 that a mortal can get -- from a mobile, a room, a container, a
 shop, or a quest reward:
@@ -243,14 +322,14 @@ worn. IDENTIFY lists them as "Grants haste while worn."
 Ganon is meant to need a group: a solo level 59 with maximum stats should very
 likely lose, and three or four should win. The numbers:
 
-- **Level 64, 30,000 hit points, armour -40 (-400 in game), average blow 350
+- **Level 64, 36,000 hit points, armour -40 (-400 in game), average blow 350
   (5d55+210), sanctuary and haste as before.** Level 64 parries and dodges a
   level 59 35% of the time each (`min(30, level) + level - 59`), so about four
   in ten blows land. The armour shaves about 80 off each ordinary blow; the
   Silver Arrow's tenth of his health is taken after armour, so it is untouched.
 - **`spec_ganon` (`src/special.c`) replaces the necromancer's spell list.**
   Every mobile pulse (four seconds) he blinks to another spot in the dark and
-  throws two fireballs of 1,600-2,200, each at a random player in the fight:
+  throws two fireballs of 1,400-1,900, each at a random player in the fight:
   anyone fighting him or grouped with someone who is. A fireball is a spell
   blow, so parry, dodge and shield block do nothing; sanctuary halves it, the
   Red Ring takes a fifth and the Mirror Shield three twentieths. His melee is
@@ -266,31 +345,93 @@ The silver-arrow rule is unchanged, and it is what fixes the length of the
 fight: ten landed Silver Arrow blows bring him to one hit point whatever his
 hit points are. A level 59 with haste and second and third attack swings about
 3.75 times a round, lands about 1.5 of those through his defences, and so needs
-about seven rounds. A Monte Carlo of `fight.c`'s formulas, with a hero of
-4,000 hit points, every defence, sanctuary and the Red Ring:
+about seven rounds.
 
-| Party | Wins | Median rounds |
-| --- | ---: | ---: |
-| Solo, Silver Arrow | 5% | 4 |
-| Solo, with a relic Mirror Shield too | 19% | 4 |
-| Solo, 5,000 hit points | 37% | 6 |
-| Three: arrow-tank, cleric, damage | 90% | 7 |
-| Four: arrow-tank, cleric, two damage | 97% | 7 |
-| Four, two Silver Arrows | 100% | 4 |
+The fireballs were first sized against a hero of 4,000 hit points. Against the
+player model fitted to the live player files (Guardian Fights, below) that was
+too much for an ordinary group, so they came down to 1,400-1,900 and his hit
+points went up to 36,000 to stay above the ashen Gleeok's. With every level 59
+holding sanctuary, the arrow-holder the Red Ring:
 
-Solo the hero takes about 1,500 a pulse after wards and is dead in about four
-rounds; a group splits the fire and kills him faster. A hero without
-sanctuary takes twice that and lasts one pulse. A live probe with a fresh
-level 59 holding sanctuary, the Red Ring and the Silver Arrow went from 3,877
-to 434 hit points in three pulses and died with Ganon still "wounded".
+| Party | Wins |
+| --- | ---: |
+| Solo, Silver Arrow, a typical 59 | 0% |
+| Solo, Silver Arrow, 4,000 hit points | 10% |
+| Three: arrow-tank, cleric, a second arrow | 90% |
+| Three: arrow-tank, cleric, damage | 26% |
+| Four: arrow-tank, cleric, a second arrow, damage | 98% |
+
+A group wants two Silver Arrows: the arrow's tenth of his health is what ends
+the fight, and the second arrow halves its length. Both cellars refill at each
+reset, so a group can arm itself over two visits.
 
 Death Mountain requires all eight Triforce shards before its bombed entrance
-can be used. Ganon drops Golden Key `30243`; that key opens Zelda's room, which
-contains the complete Triforce `30286` and return portal `30217`.
+can be used. Ganon drops Golden Key `30243`, Death Mountain's guardian key;
+it opens Zelda's room and Ganon's great chest in it (`30648`), which holds the
+Triforce of Power `30408` and the Master Sword. The room's portal `30217`
+leads home.
+
+### Guardian Fights
+
+Every guardian is sized so that **a lone character at the top of the band
+usually loses, one six levels above usually wins, and a group of three at the
+band usually wins.** The sizes come from a Monte Carlo of `fight.c`'s
+formulas: `one_hit`'s to-hit and damage, NPC parry and dodge
+(`min(30, level) + level - victim`), the player's parry, dodge and shield
+block, sanctuary, armour's damage reduction and the mobile's damroll scaled by
+its skill. The player model is fitted to the live player files -- the 80th
+percentile of each four-level bucket, "geared for the band":
+
+| | Formula | Level 8 | Level 33 | Level 52 |
+| --- | --- | ---: | ---: | ---: |
+| Hit points | `8 + 10L + 0.3L^2` | 107 | 665 | 1,339 |
+| Hitroll | `0.02L^2 + 0.1L + 5` | 7 | 30 | 64 |
+| Damroll | `0.012L^2 + 0.95L - 6` | 2 | 38 | 76 |
+| Armour | `60 - 4.5L` | 24 | -88 | -174 |
+
+Second attack from level 10, third from 25, haste from 30, enhanced damage
+from 20, sanctuary alone from 30 or with a cleric from 15, a weapon averaging
+`0.8L + 2`, and damage scaled by 2.5 to match the training yard's board (a
+level 50 warrior there lands about 650 a round). The group is a tank, a cleric
+who heals the lowest each round, and a damage dealer.
+
+Each guardian has the attack the NES gave it, in `spec_hyrule_guardian`
+(`src/special.c`): every four seconds a volley of spell blows at random members
+of the fight that no parry stops. Manhandla spits from however many of its four
+heads are left, Gleeok's heads fly loose below half its health, and Digdogger
+splits in two below half, each half rolling for half. A patra, Death Mountain's
+orbiting eye, lashes everyone fighting it each pulse (`spec_hyrule_patra`).
+
+| Level | Guardian | Level | Hit points | Blow | Volley a pulse | Solo, top of band | Solo, six above | Three, top of band | Three, mid-band |
+| --- | --- | ---: | ---: | ---: | --- | ---: | ---: | ---: | ---: |
+| 1 | Aquamentus | 10 | 820 | 10 | 3 fireballs 4-6 | 0% (8) | 88% (14) | 100% | 100% |
+| 2 | Dodongo | 16 | 2,200 | 19 | a charge 22-31 | 0% (14) | 87% (20) | 100% | 100% |
+| 3 | Manhandla | 23 | 3,400 | 30 | 4 heads 9-13 | 0% (20) | 88% (26) | 100% | 100% |
+| 4 | Gleeok | 30 | 6,000 | 64 | 2 heads 39-55 | 0% (27) | 90% (33) | 100% | 100% |
+| 5 | Digdogger | 36 | 16,800 | 40 | a roll 48-67 | 0% (33) | 87% (39) | 100% | 100% |
+| 6 | Gohma | 43 | 20,000 | 27 | the eye 32-45 | 0% (40) | 89% (46) | 100% | 100% |
+| 7 | ancient Aquamentus | 49 | 30,000 | 66 | 3 fireballs 26-36 | 0% (46) | 85% (52) | 100% | 100% |
+| 8 | ashen Gleeok | 55 | 33,000 | 80 | 4 heads 24-34 | 0% (52) | 88% (58) | 100% | 100% |
+
+Each was set as strong as the brief allows: its hit points bisected to where
+the character six levels above wins about seven times in eight. The model is
+kind to groups -- a cleric's sanctuary on everybody and a heal every round --
+so a real group will find these harder than the last two columns say. Gohma
+keeps her catalog sanctuary and haste, Aquamentus his sanctuary and Dodongo its
+haste, which is why Gohma's blow is light. The breath weapons four of them had
+went: dragon breath hits for an eighth of the breather's own hit points, which
+at these sizes would be a thousand a breath.
 
 ### The Complete Triforce
 
-The complete Triforce (`30286`, level 58) is an `ITEM_LIGHT`, so WEAR puts it
+Nobody finds the complete Triforce (`30286`, level 58): it is made.
+`COMBINE TRIFORCE` -- the COMBINE command's one recipe, `combine_recipes` in
+`src/act_info.c` -- takes the nine pieces from the inventory, one from each
+guardian's chest, and gives the Triforce in their place; with fewer it says
+how many you carry. `COMBINE` alone is still the inventory display toggle it
+always was. The Triforce counts as every piece at every dungeon door.
+
+The complete Triforce is an `ITEM_LIGHT`, so WEAR puts it
 in the light slot. Its `value[2]` is 999, which `create_object` turns into the
 -1 that never burns down (the file cannot say -1: `fread_flag` reads no minus
 sign). Worn there it gives **the sight of a level 59 character with HOLYLIGHT
@@ -311,8 +452,8 @@ on**, and no more:
 
 ### Ganon Relics
 
-Ganon's corpse contains his crown, his trident, the Golden Key and the Master
-Sword, plus exactly one random relic from this table. All four random rewards
+Ganon's corpse contains his crown, his trident and the Golden Key, plus
+exactly one random relic from this table. All four random rewards
 are usable below the immortal level boundary:
 
 | Relic | Vnum | Level | Slot | Unique effect |
@@ -530,6 +671,14 @@ The Hyrule tests verify:
   light whose sight is wired into every holylight check
 - Ganon's level, armour, hit points and `spec_ganon`, and the enemy drop
   potions present for every band at the vnums `src/merc.h` names
+- every dungeon's key, magical door and locked chest, with the piece and the
+  treasure inside and nowhere else; the gate table forming one chain from 1 to
+  9 out of those chests; every guardian's volley matching `BOSS_VOLLEYS`; and
+  COMBINE's recipe being exactly the nine pieces
+- in a running game (`tests/test_hyrule_dungeon_chain_live.py`): the Eagle's
+  key, door, chest and prize; a refusal at Level 2's entrance and its
+  guardian's chamber, passing once the item is carried, and staff passing
+  without it; and COMBINE TRIFORCE from eight pieces (refused) and nine
 - room names free of grid labels, `Level N:` naming confined to the dungeons,
   and descriptions that fit a terminal and do not list occupants
 - live-population reset caps, including a single Ganon across empty-area resets

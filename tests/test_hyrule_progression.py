@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import tempfile
 import unittest
@@ -10,7 +11,16 @@ from pathlib import Path
 from scripts.build_hyrule_area import (
     BOSS_GEAR,
     BOSS_HEART_CONTAINER_FIRST,
+    BOSS_KEYS,
     BOSS_MOBS,
+    BOSS_SPECIALS,
+    BOSS_VOLLEYS,
+    CHESTS,
+    DUNGEON_TREASURE,
+    ENTRY_NEEDS,
+    GUARDIAN_ALSO,
+    GUARDIAN_NEEDS,
+    PIECE_VNUMS,
     DROP_CLOCK_FIRST,
     DROP_FAIRY_FIRST,
     DROP_HEART_FIRST,
@@ -615,7 +625,8 @@ class HyruleProgressionTests(unittest.TestCase):
         return sorted(weapons, reverse=True)
 
     def test_the_master_sword_is_the_best_weapon_a_mortal_can_get(self) -> None:
-        """Ganon carries it, and nothing a mortal can get anywhere beats it.
+        """Ganon's great chest holds it, and nothing a mortal can get
+        anywhere beats it.
 
         The comparison is the boss weapons': average damage plus damroll,
         against every weapon at or below level 59 from any mobile, room,
@@ -623,11 +634,11 @@ class HyruleProgressionTests(unittest.TestCase):
         """
         sword = self.parser.objects[MASTER_SWORD_VNUM]
         ganon = self.parser.mobiles[GANON_VNUM]
-        self.assertIn(MASTER_SWORD_VNUM, ganon.drops)
+        self.assertNotIn(MASTER_SWORD_VNUM, ganon.drops)
         self.assertEqual(
-            [reset.command for reset in self.resets
+            [(reset.command, reset.arg3) for reset in self.resets
              if reset.command in {"O", "G", "E", "P"} and reset.arg1 == MASTER_SWORD_VNUM],
-            ["G"], "Ganon is the only source")
+            [("P", CHESTS[9])], "Ganon's great chest is the only source")
         self.assertEqual(sword.level, 58)
         self.assertIn("N", sword.wear_flags)
 
@@ -649,6 +660,164 @@ class HyruleProgressionTests(unittest.TestCase):
                       sword.affect_bits)
         lore = " ".join(" ".join(ed["description"].split()) for ed in sword.extra_descr)
         self.assertIn("hastens you", lore)
+
+    def test_every_dungeon_runs_key_door_chest(self) -> None:
+        """Kill the guardian, take its key, unlock the door behind it,
+        unlock the chest there: the piece and the treasure are inside."""
+        fight = Path("src/fight.c").read_text(encoding="latin-1")
+        self.assertIn("!IS_HYRULE_BOSS_KEY(obj->pIndexData->vnum)", fight,
+                      "a guardian's key must not crumble in the corpse")
+        sources: dict[int, list[tuple[str, int]]] = {}
+        for reset in self.resets:
+            if reset.command in {"O", "G", "E", "P"}:
+                sources.setdefault(reset.arg1, []).append((reset.command, reset.arg3))
+        self.assertEqual(len(set(BOSS_KEYS.values())), 9, "one key per dungeon")
+        for level, dungeon in self.dungeons.items():
+            key, chest_vnum = BOSS_KEYS[level], CHESTS[level]
+            boss = self.parser.mobiles[BOSS_MOBS[level]]
+            boss_room = self.parser.rooms[dungeon["boss_vnum"]]
+            goal = self.parser.rooms[dungeon["goal_vnum"]]
+            chest = self.parser.objects[chest_vnum]
+            with self.subTest(level=level):
+                self.assertIn(key, boss.drops)
+                self.assertEqual(self.parser.objects[key].item_type, "18")
+                for flag in "NPR":   # inventory, rot-death, meltdrop
+                    self.assertNotIn(flag, self.parser.objects[key].extra_flags)
+                # The door between the lair and the treasure room, both ways.
+                door = next(e for e in boss_room.exits if e.to_room == goal.vnum)
+                back = next(e for e in goal.exits if e.to_room == boss_room.vnum)
+                for side, room in ((door, boss_room), (back, goal)):
+                    self.assertEqual((side.locks, side.key_vnum), (2, key),
+                                     "pickproof; lock 5 resets as a trapped door")
+                    resets = [r.arg3 for r in self.resets if r.command == "D"
+                              and r.arg1 == room.vnum and r.arg2 == side.direction]
+                    self.assertEqual(resets, [3], "locked, and magical like the golden door")
+                # The chest: closed, locked, pickproof, keyed, in the room.
+                self.assertEqual(chest.item_type, "15")
+                self.assertEqual(chest.values[1], "ABCD")
+                self.assertEqual(int(chest.values[2]), key)
+                self.assertEqual(sources[chest_vnum], [("O", goal.vnum)])
+                self.assertNotIn("A", chest.wear_flags, "nobody carries the chest off")
+                # Its prize: the piece and the treasure, and nowhere else.
+                for prize in (PIECE_VNUMS[level], DUNGEON_TREASURE[level]):
+                    self.assertEqual(sources[prize], [("P", chest_vnum)], prize)
+                    for flag in "NPR":
+                        self.assertNotIn(flag, self.parser.objects[prize].extra_flags)
+                piece = self.parser.objects[PIECE_VNUMS[level]]
+                self.assertEqual(piece.item_type, "8", "saved on quit, unlike a key")
+                self.assertIn("H", piece.extra_flags, "a piece cannot be handed on")
+                lore = " ".join(" ".join(e["description"].split()) for e in piece.extra_descr)
+                self.assertIn("one of nine", lore)
+                self.assertIn("COMBINE TRIFORCE", lore)
+                self.assertNotEqual(self.parser.objects[DUNGEON_TREASURE[level]].item_type, "18",
+                                    "a treasure is saved when you quit")
+        # load_resets makes every reset of a lock 5 exit a trapped door, so
+        # none of Hyrule's doors may use it.
+        trapped = sorted((room.vnum, e.direction) for room in self.hyrule_rooms.values()
+                         for e in room.exits if e.locks == 5)
+        self.assertEqual([], trapped)
+        self.assertEqual(BOSS_KEYS[9], 30243, "Ganon's key is the Golden Key")
+        self.assertEqual(DUNGEON_TREASURE[9], MASTER_SWORD_VNUM)
+        self.assertEqual(PIECE_VNUMS[9], 30408)
+
+        db = Path("src/db.c").read_text(encoding="latin-1")
+        reset_p = db.split("case 'P':", 2)[2].split("case 'G':", 1)[0]
+        self.assertIn("IS_HYRULE_CHEST(pObjToIndex->vnum)", reset_p,
+                      "Hyrule's chests refill with players about")
+        self.assertIn("obj_to->value[1] = obj_to->pIndexData->value[1];", reset_p,
+                      "and close and lock again when they do")
+
+    def gate_rows(self) -> dict[int, list[str]]:
+        source = Path("src/act_move.c").read_text(encoding="latin-1")
+        table = source.split("hyrule_progress_gate[] =", 1)[1].split("};", 1)[0]
+        rows = {}
+        for chunk in table.split("{ ")[1:]:
+            fields = [field.strip() for field in
+                      re.sub(r'(?:"[^"]*"\s*)+', "STR ", chunk.split("},", 1)[0]).replace(
+                          "\n", " ").split(",")]
+            fields = [field for field in fields if field]
+            rows[int(fields[0])] = fields
+        return rows
+
+    def test_the_dungeons_form_one_unbroken_chain(self) -> None:
+        """Each dungeon's entrance asks for the previous piece, and its
+        guardian's chamber for the previous treasure -- both of which are
+        in the previous guardian's chest."""
+        rows = self.gate_rows()
+        self.assertEqual(sorted(rows), list(range(1, 10)))
+        chest_contents: dict[int, set[int]] = {}
+        for reset in self.resets:
+            if reset.command == "P":
+                chest_contents.setdefault(reset.arg3, set()).add(reset.arg1)
+        for level, dungeon in self.dungeons.items():
+            (number, first, last, entrance, boss, goal,
+             entry_need, entry_text, boss_need, boss_also, boss_text) = rows[level]
+            with self.subTest(level=level):
+                self.assertEqual(
+                    [int(first), int(last), int(entrance), int(boss), int(goal)],
+                    [dungeon["first_room_vnum"], dungeon["last_room_vnum"],
+                     dungeon["entrance_vnum"], dungeon["boss_vnum"], dungeon["goal_vnum"]])
+                if level == 1:
+                    self.assertEqual((entry_need, boss_need), ("0", "0"))
+                    continue
+                self.assertEqual(int(entry_need), ENTRY_NEEDS[level])
+                self.assertEqual(int(boss_need), GUARDIAN_NEEDS[level])
+                self.assertEqual(int(boss_also), GUARDIAN_ALSO.get(level, 0))
+                self.assertEqual(entry_text, "STR")
+                self.assertEqual(boss_text, "STR")
+                # Both come out of the previous dungeon's chest.
+                previous = chest_contents[CHESTS[level - 1]]
+                self.assertIn(int(entry_need), previous)
+                self.assertIn(int(boss_need), previous)
+        move = Path("src/act_move.c").read_text(encoding="latin-1")
+        move_char = move.split("void move_char(", 1)[1].split("\n}", 1)[0]
+        enter = move.split("void do_enter(", 1)[1].split("\n}", 1)[0]
+        self.assertIn("hyrule_gate_refuses( ch, in_room, to_room )", move_char)
+        self.assertIn("hyrule_gate_refuses( ch, ch->in_room, to_room )", enter)
+        gate = move.split("bool hyrule_gate_refuses(", 1)[1].split("\n}", 1)[0]
+        self.assertIn("IS_TRUSTED(subject, LEVEL_IMMORTAL)", gate)
+        self.assertIn("subject = subject->master", gate)
+
+    def test_every_dungeon_room_blocks_magical_arrival(self) -> None:
+        """Gate, summon, portal, astral walk and teleport refuse a no-recall
+        destination, so the only ways into a dungeon are the gated ones."""
+        no_recall = "N"   # ROOM_NO_RECALL
+        for level, dungeon in self.dungeons.items():
+            for vnum in range(dungeon["first_room_vnum"], dungeon["last_room_vnum"] + 1):
+                with self.subTest(vnum=vnum):
+                    self.assertIn(no_recall, self.parser.rooms[vnum].room_flags)
+
+    def test_guardian_volleys_match_the_specials(self) -> None:
+        special = Path("src/special.c").read_text(encoding="latin-1")
+        table = special.split("hyrule_guardian_volleys[] =", 1)[1].split("};", 1)[0]
+        found = {
+            int(vnum): (int(count), int(low), int(high))
+            for vnum, count, low, high in re.findall(
+                r"\{\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d+),", table)
+        }
+        expected = {BOSS_MOBS[level]: BOSS_VOLLEYS[level] for level in range(1, 9)}
+        self.assertEqual(found, expected)
+        count, low, high = BOSS_VOLLEYS[9]
+        self.assertIn(f"#define GANON_FIREBALLS          {count}", special)
+        self.assertIn(f"#define GANON_FIREBALL_MIN    {low}", special)
+        self.assertIn(f"#define GANON_FIREBALL_MAX    {high}", special)
+        area = Path("area/hyrule.are").read_text(encoding="latin-1")
+        for vnum, name in BOSS_SPECIALS.items():
+            with self.subTest(vnum=vnum):
+                self.assertIn(f"M {vnum} {name}", area)
+                self.assertIn(f'"{name}"', special)
+
+    def test_combine_makes_the_triforce_from_nine_pieces(self) -> None:
+        info = Path("src/act_info.c").read_text(encoding="latin-1")
+        recipes = info.split("combine_recipes[] =", 1)[1].split("};", 1)[0]
+        self.assertIn('"triforce", OBJ_VNUM_HYRULE_TRIFORCE', recipes)
+        self.assertEqual(
+            sorted(int(v) for v in re.findall(r"\b(30[0-9]{3})\b", recipes)),
+            sorted(PIECE_VNUMS.values()))
+        combine = info.split("void do_combine(", 1)[1].split("\n}", 1)[0]
+        self.assertIn("COMM_COMBINE", combine, "COMBINE alone still toggles the list")
+        commands = Path("area/commands.are").read_text(encoding="latin-1")
+        self.assertIn("COMBINE TRIFORCE", commands)
 
     def test_worn_affect_bits_load_and_come_off_with_the_item(self) -> None:
         """The F record the Master Sword and Red Ring use, end to end."""
@@ -898,16 +1067,12 @@ class HyruleProgressionTests(unittest.TestCase):
                 self.assertIn(dungeon["compass_vnum"], self.parser.rooms[compass_room["vnum"]].objects)
 
     def test_major_items_are_in_their_canonical_rooms(self) -> None:
-        direct_items = {(1, "D4"): 30232, (2, "D4"): 30410}
-        for (level, coordinate), object_vnum in direct_items.items():
-            room = next(
-                room for room in self.dungeons[level]["rooms"] if room["coordinate"] == coordinate
-            )
-            self.assertIn(object_vnum, self.parser.rooms[room["vnum"]].objects)
-
+        # The dungeon treasures are in the guardians' chests now (see
+        # test_every_dungeon_runs_key_door_chest); the cellars that held
+        # one hold rupees, and the rest keep the NES's loot.
         expected_cellar_items = {
-            1: {30222}, 3: {30411}, 4: {30412}, 5: {30413},
-            6: {30245}, 7: {30414}, 8: {30415, 30416}, 9: {30218, 30579},
+            1: {30511}, 3: {30511}, 4: {30511}, 5: {30512},
+            6: {30245}, 7: {30512}, 8: {30415, 30512}, 9: {30218, 30579},
         }
         for level, object_vnums in expected_cellar_items.items():
             actual = {cellar["item_vnum"] for cellar in self.dungeons[level]["cellars"]}
@@ -1011,7 +1176,10 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertEqual(self.parser.objects[30211].values[1], "15068")
         level_nine_goal = self.dungeons[9]["goal_vnum"]
         self.assertIn(30217, self.parser.rooms[level_nine_goal].objects)
-        self.assertIn(30286, self.parser.rooms[level_nine_goal].objects)
+        # The complete Triforce is made with COMBINE, never found.
+        self.assertNotIn(30286, self.parser.rooms[level_nine_goal].objects)
+        self.assertFalse(self.object_is_sourced(30286))
+        self.assertIn(CHESTS[9], self.parser.rooms[level_nine_goal].objects)
         self.assertEqual(self.parser.objects[30217].values[1], "15068")
         self.assertEqual(self.manifest["post_ganon"]["vnum"], level_nine_goal)
 

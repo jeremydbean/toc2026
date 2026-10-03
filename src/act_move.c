@@ -108,9 +108,204 @@ static bool is_hyrule_room( ROOM_INDEX_DATA *room )
         && room->vnum <= HYRULE_ROOM_MAX;
 }
 
+/*
+ * The order of Hyrule's dungeons.
+ *
+ * Each dungeon is done in turn, and each needs something only the one
+ * before it gives. Two gates per dungeon, both asked of the character
+ * who is moving, so nobody can hold a door open for anybody else:
+ *
+ *   - its entrance: coming in from outside the dungeon needs the
+ *     previous dungeon's Triforce piece (or the complete Triforce,
+ *     which is all nine);
+ *   - its guardian's chamber: coming in from inside the dungeon,
+ *     anywhere but the treasure room behind it, needs the previous
+ *     dungeon's treasure.
+ *
+ * Every boss drops its dungeon's key; the key opens the treasure room
+ * behind the boss and the chest in it, and the chest holds the piece and
+ * the treasure the next dungeon asks for. scripts/build_hyrule_area.py
+ * places all of it and wiki/hyrule-area.md has the plan as a table;
+ * tests/test_hyrule_progression.py holds this table to both.
+ *
+ * Carrying means in the inventory, worn, or one bag down -- never the
+ * stash, which is not on the character. Staff pass by trust, and a pet or
+ * a charmed follower is asked about its master.
+ */
+#define HYRULE_PIECE_FIRST_VNUM     30400
+#define HYRULE_PIECE_LAST_VNUM      30408
+
+typedef struct hyrule_dungeon_gate
+{
+    int         level;
+    int         first_room;
+    int         last_room;
+    int         entrance;
+    int         boss_room;
+    int         goal_room;
+    int         entry_need;     /* 0: nothing */
+    const char *entry_refusal;
+    int         boss_need;      /* 0: nothing */
+    int         boss_also;      /* another object that will do, or 0 */
+    const char *boss_refusal;
+} HYRULE_DUNGEON_GATE;
+
+static const HYRULE_DUNGEON_GATE hyrule_progress_gate[] =
+{
+    { 1, 30400, 30417, 30401, 30413, 30414,
+      0, NULL,
+      0, 0, NULL },
+    { 2, 30418, 30435, 30418, 30435, 30434,
+      30400,
+      "A seal shaped like the Triforce bars the way into the Moon. It opens\n\r"
+      "only for one who carries the first Triforce piece, from Level 1: The\n\r"
+      "Eagle.  Hyrule's dungeons are done in order.\n\r",
+      30232, 30410,
+      "A lever on the far side of a pit holds Dodongo's door shut. Throw a\n\r"
+      "boomerang to trip it -- the one in Level 1's treasure chest.\n\r" },
+    { 3, 30436, 30454, 30437, 30449, 30451,
+      30401,
+      "A seal shaped like the Triforce bars the way into the Manji. It opens\n\r"
+      "only for one who carries the second Triforce piece, from Level 2: The\n\r"
+      "Moon.  Hyrule's dungeons are done in order.\n\r",
+      30410, 0,
+      "A chasm far too wide for a thrown stick lies before Manhandla's door,\n\r"
+      "and its lever is on the far side.  Only the Magical Boomerang from\n\r"
+      "Level 2's treasure chest flies far enough to trip it.\n\r" },
+    { 4, 30455, 30475, 30456, 30470, 30474,
+      30402,
+      "A seal shaped like the Triforce bars the way into the Snake. It opens\n\r"
+      "only for one who carries the third Triforce piece, from Level 3: The\n\r"
+      "Manji.  Hyrule's dungeons are done in order.\n\r",
+      30411, 0,
+      "Black water floods the hall before the Gleeok's lair.  The water is too\n\r"
+      "deep to cross without the raft from Level 3's treasure chest.\n\r" },
+    { 5, 30476, 30499, 30476, 30489, 30493,
+      30403,
+      "A seal shaped like the Triforce bars the way into the Lizard. It opens\n\r"
+      "only for one who carries the fourth Triforce piece, from Level 4: The\n\r"
+      "Snake.  Hyrule's dungeons are done in order.\n\r",
+      30412, 0,
+      "A one-square moat cuts across Digdogger's doorway, too wide to jump.\n\r"
+      "The stepladder from Level 4's treasure chest would bridge it.\n\r" },
+    { 6, 30500, 30525, 30501, 30519, 30524,
+      30404,
+      "A seal shaped like the Triforce bars the way into the Dragon. It opens\n\r"
+      "only for one who carries the fifth Triforce piece, from Level 5: The\n\r"
+      "Lizard.  Hyrule's dungeons are done in order.\n\r",
+      30222, 0,
+      "Gohma's eye is armoured against everything but an arrow, and you have\n\r"
+      "no bow to loose one.  The bow is in Level 5's treasure chest.\n\r" },
+    { 7, 30526, 30559, 30527, 30546, 30547,
+      30405,
+      "A seal shaped like the Triforce bars the way into the Demon. It opens\n\r"
+      "only for one who carries the sixth Triforce piece, from Level 6: The\n\r"
+      "Dragon.  Hyrule's dungeons are done in order.\n\r",
+      30413, 0,
+      "Two Digdoggers roll back and forth across the way to the Demon's\n\r"
+      "guardian, and no blade moves them.  Only the Recorder from Level 6's\n\r"
+      "treasure chest shrinks them.\n\r" },
+    { 8, 30560, 30586, 30562, 30574, 30578,
+      30406,
+      "A seal shaped like the Triforce bars the way into the Lion. It opens\n\r"
+      "only for one who carries the seventh Triforce piece, from Level 7: The\n\r"
+      "Demon.  Hyrule's dungeons are done in order.\n\r",
+      30414, 0,
+      "The way to the Lion's guardian is utterly, unnaturally dark.  You need\n\r"
+      "the Red Candle from Level 7's treasure chest to light it.\n\r" },
+    { 9, 30587, 30645, 30590, 30607, 30615,
+      30407,
+      "A seal shaped like the Triforce bars the way into Death Mountain. It\n\r"
+      "opens only for one who carries the eighth Triforce piece, from Level 8:\n\r"
+      "The Lion.  Hyrule's dungeons are done in order.\n\r",
+      30416, 0,
+      "The doors before Ganon's lair are sealed with a lock no small key\n\r"
+      "fits.  The Magical Key from Level 8's treasure chest turns it.\n\r" },
+};
+
+static bool hyrule_carries( CHAR_DATA *ch, int vnum )
+{
+    OBJ_DATA *obj;
+    OBJ_DATA *inner;
+
+    if ( vnum <= 0 )
+        return true;
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    {
+        if ( obj->pIndexData == NULL )
+            continue;
+        if ( obj->pIndexData->vnum == vnum )
+            return true;
+        if ( obj->item_type != ITEM_CONTAINER )
+            continue;
+        for ( inner = obj->contains; inner != NULL; inner = inner->next_content )
+            if ( inner->pIndexData != NULL && inner->pIndexData->vnum == vnum )
+                return true;
+    }
+    /* The complete Triforce is all nine pieces at once. */
+    if ( vnum >= HYRULE_PIECE_FIRST_VNUM && vnum <= HYRULE_PIECE_LAST_VNUM )
+        return hyrule_carries( ch, OBJ_VNUM_HYRULE_TRIFORCE );
+    return false;
+}
+
+/*
+ * Whether Hyrule's order refuses this move, and if so say why. from may
+ * be NULL (a character placed with no room to come from is never asked).
+ */
+bool hyrule_gate_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
+                          ROOM_INDEX_DATA *to )
+{
+    const HYRULE_DUNGEON_GATE *gate = NULL;
+    CHAR_DATA *subject = ch;
+    bool from_inside;
+    size_t i;
+
+    if ( ch == NULL || from == NULL || to == NULL )
+        return false;
+
+    for ( i = 0; i < sizeof(hyrule_progress_gate) / sizeof(hyrule_progress_gate[0]); i++ )
+        if ( to->vnum == hyrule_progress_gate[i].entrance
+        ||   to->vnum == hyrule_progress_gate[i].boss_room )
+        {
+            gate = &hyrule_progress_gate[i];
+            break;
+        }
+    if ( gate == NULL )
+        return false;
+
+    /* A pet or a charmed follower goes where its master may. */
+    if ( IS_NPC(subject) && subject->master != NULL )
+        subject = subject->master;
+    if ( IS_NPC(subject) || IS_TRUSTED(subject, LEVEL_IMMORTAL) )
+        return false;
+
+    from_inside = from->vnum >= gate->first_room && from->vnum <= gate->last_room;
+
+    if ( to->vnum == gate->entrance && !from_inside
+    &&   gate->entry_need != 0 && !hyrule_carries( subject, gate->entry_need ) )
+    {
+        send_to_char( gate->entry_refusal, ch );
+        return true;
+    }
+
+    if ( to->vnum == gate->boss_room && from_inside
+    &&   from->vnum != gate->goal_room && gate->boss_need != 0
+    &&   !hyrule_carries( subject, gate->boss_need )
+    &&   ( gate->boss_also == 0 || !hyrule_carries( subject, gate->boss_also ) ) )
+    {
+        send_to_char( gate->boss_refusal, ch );
+        return true;
+    }
+
+    return false;
+}
+
 static bool has_complete_hyrule_triforce( CHAR_DATA *ch )
 {
     int vnum;
+
+    if ( has_key( ch, OBJ_VNUM_HYRULE_TRIFORCE ) )
+        return true;
 
     for ( vnum = HYRULE_TRIFORCE_FIRST_VNUM;
           vnum <= HYRULE_TRIFORCE_LAST_VNUM; vnum++ )
@@ -867,6 +1062,13 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 	    ? "Somebody is already training in the yard.  Wait for them to "
 	      "come out.\n\r"
 	    : "That room is private right now.\n\r", ch );
+	runner = 2;
+	return;
+    }
+
+    /* Hyrule's dungeons are done in order: see hyrule_progress_gate. */
+    if ( hyrule_gate_refuses( ch, in_room, to_room ) )
+    {
 	runner = 2;
 	return;
     }
@@ -3622,6 +3824,11 @@ void do_enter( CHAR_DATA *ch, char *argument )
      send_to_char( "That room is private right now.\n\r", ch );
      return;
    }
+
+   /* A portal is a way into a dungeon too -- the raft to the Snake's
+      island is one -- so Hyrule's order asks it the same question. */
+   if ( hyrule_gate_refuses( ch, ch->in_room, to_room ) )
+     return;
 
    switch( obj->value[0])
    {

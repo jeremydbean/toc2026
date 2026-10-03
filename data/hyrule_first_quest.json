@@ -3911,9 +3911,7 @@
           "entities": {
             "red_goriya": 2
           },
-          "items": [
-            30232
-          ],
+          "items": [],
           "role": "room"
         },
         {
@@ -3992,9 +3990,7 @@
             }
           },
           "entities": {},
-          "items": [
-            30400
-          ],
+          "items": [],
           "role": "goal"
         },
         {
@@ -4037,11 +4033,11 @@
       ],
       "cellars": [
         {
-          "name": "Bow Cellar",
+          "name": "Rupee Cellar",
           "vnum": 30417,
           "source_coordinate": "B6",
           "source_vnum": 30415,
-          "item_vnum": 30222
+          "item_vnum": 30511
         }
       ],
       "stair_links": []
@@ -4312,9 +4308,7 @@
           "entities": {
             "blue_goriya": 1
           },
-          "items": [
-            30410
-          ],
+          "items": [],
           "role": "room"
         },
         {
@@ -4478,9 +4472,7 @@
             }
           },
           "entities": {},
-          "items": [
-            30401
-          ],
+          "items": [],
           "role": "goal"
         },
         {
@@ -4909,9 +4901,7 @@
             }
           },
           "entities": {},
-          "items": [
-            30402
-          ],
+          "items": [],
           "role": "goal"
         },
         {
@@ -4956,11 +4946,11 @@
       ],
       "cellars": [
         {
-          "name": "Raft Cellar",
+          "name": "Rupee Cellar",
           "vnum": 30454,
           "source_coordinate": "A2",
           "source_vnum": 30438,
-          "item_vnum": 30411
+          "item_vnum": 30511
         }
       ],
       "stair_links": []
@@ -5419,19 +5409,17 @@
             }
           },
           "entities": {},
-          "items": [
-            30403
-          ],
+          "items": [],
           "role": "goal"
         }
       ],
       "cellars": [
         {
-          "name": "Stepladder Cellar",
+          "name": "Rupee Cellar",
           "vnum": 30475,
           "source_coordinate": "C5",
           "source_vnum": 30464,
-          "item_vnum": 30412
+          "item_vnum": 30511
         }
       ],
       "stair_links": []
@@ -5864,9 +5852,7 @@
             }
           },
           "entities": {},
-          "items": [
-            30404
-          ],
+          "items": [],
           "role": "goal"
         },
         {
@@ -5962,11 +5948,11 @@
       ],
       "cellars": [
         {
-          "name": "Recorder Cellar",
+          "name": "Rupee Cellar",
           "vnum": 30499,
           "source_coordinate": "B8",
           "source_vnum": 30497,
-          "item_vnum": 30413
+          "item_vnum": 30512
         }
       ],
       "stair_links": [
@@ -6552,9 +6538,7 @@
             }
           },
           "entities": {},
-          "items": [
-            30405
-          ],
+          "items": [],
           "role": "goal"
         }
       ],
@@ -7072,9 +7056,7 @@
             }
           },
           "entities": {},
-          "items": [
-            30406
-          ],
+          "items": [],
           "role": "goal"
         },
         {
@@ -7321,11 +7303,11 @@
       ],
       "cellars": [
         {
-          "name": "Red Candle Cellar",
+          "name": "Rupee Cellar",
           "vnum": 30559,
           "source_coordinate": "C7",
           "source_vnum": 30550,
-          "item_vnum": 30414
+          "item_vnum": 30512
         }
       ],
       "stair_links": [
@@ -7764,9 +7746,7 @@
             }
           },
           "entities": {},
-          "items": [
-            30407
-          ],
+          "items": [],
           "role": "goal"
         },
         {
@@ -7907,11 +7887,11 @@
           "item_vnum": 30415
         },
         {
-          "name": "Magical Key Cellar",
+          "name": "Rupee Cellar",
           "vnum": 30586,
           "source_coordinate": "E7",
           "source_vnum": 30583,
-          "item_vnum": 30416
+          "item_vnum": 30512
         }
       ],
       "stair_links": [

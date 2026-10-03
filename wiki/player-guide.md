@@ -586,13 +586,22 @@ return portals.
   usable at that place's level. The first eight guardians also leave a Heart
   Container, and ordinary enemies sometimes drop rupees, a heart, a bottled
   fairy or a clock-flask (quaff the last three).
-- Ganon is a fight for a group: he blinks about the dark throwing fireballs no
-  parry stops, and heals if left alone. He carries the Master Sword, level 58,
-  the finest blade a mortal can wield, which hastens its wielder.
+- The dungeons are done in order. Each needs the previous dungeon's Triforce
+  piece to enter and its treasure to reach the guardian; the guardian drops a
+  key to the locked room behind it, where a locked chest holds this dungeon's
+  piece and treasure. `help hyrule` has the whole chain. Every guardian is
+  sized to beat a lone character at the top of its band: go well above it,
+  or go with friends.
+- Ganon is a fight for a group, ideally with two Silver Arrows: he blinks
+  about the dark throwing fireballs no parry stops, and heals if left alone.
+  His Golden Key opens Zelda's chamber and the great chest there, which holds
+  the ninth piece and the Master Sword, level 58, the finest blade a mortal
+  can wield, which hastens its wielder.
 - The Red Ring of Hyrule lies in Death Mountain's deepest cellar; worn, it
-  gives sanctuary and takes a fifth off all damage. The complete Triforce,
-  beyond Ganon, is worn in the light slot and shows you what a level 59 hero
-  with holy light would see. `help ganon` has the details.
+  gives sanctuary and takes a fifth off all damage. `combine triforce` joins
+  the nine pieces into the complete Triforce, worn in the light slot, which
+  shows you what a level 59 hero with holy light would see. `help ganon` has
+  the details.
 - A dungeon map reveals layout information.
 - A dungeon compass gives the general direction toward that dungeon's boss.
 - Candles, bombs, arrows, keys, rafts, ladders, recorders, and room actions are

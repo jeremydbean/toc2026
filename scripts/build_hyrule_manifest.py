@@ -88,20 +88,21 @@ MAP_ROOMS = {1: "C4", 2: "D3", 3: "D4", 4: "B6", 5: "C4", 6: "B7", 7: "A7", 8: "
 COMPASS_ROOMS = {1: "D3", 2: "D2", 3: "B3", 4: "C2", 5: "D5", 6: "A2", 7: "C3", 8: "E3", 9: "F5"}
 
 MAJOR_ITEMS = {
-    1: ("B6", "Bow Cellar", 30222),
-    3: ("A2", "Raft Cellar", 30411),
-    4: ("C5", "Stepladder Cellar", 30412),
-    5: ("B8", "Recorder Cellar", 30413),
+    1: ("B6", "Rupee Cellar", 30511),
+    3: ("A2", "Rupee Cellar", 30511),
+    4: ("C5", "Rupee Cellar", 30511),
+    5: ("B8", "Rupee Cellar", 30512),
     6: ("B8", "Magical Rod Cellar", 30245),
-    7: ("C7", "Red Candle Cellar", 30414),
+    7: ("C7", "Rupee Cellar", 30512),
     8: ("B1", "Magic Book Cellar", 30415),
 }
-DIRECT_DUNGEON_ITEMS = {
-    (1, "D4"): 30232,
-    (2, "D4"): 30410,
-}
+# The dungeon treasures -- boomerang, raft, stepladder and the rest -- and
+# the Triforce pieces are in each guardian's chest, placed by
+# scripts/build_hyrule_area.py (DUNGEON_CHAIN); the cellars that held a
+# treasure hold rupees instead.
+DIRECT_DUNGEON_ITEMS: dict[tuple[int, str], int] = {}
 EXTRA_MAJOR_ITEMS = {
-    8: [("E7", "Magical Key Cellar", 30416)],
+    8: [("E7", "Rupee Cellar", 30512)],
     9: [("A7", "Silver Arrow Cellar", 30218), ("H8", "Red Ring Cellar", 30579)],
 }
 STAIR_PAIRS = {
@@ -754,8 +755,6 @@ def build_dungeons(reference: Path, entity_data: dict[str, Any], unmatched: list
                 items.append(30488 + level)
             if (level, coordinate) in DIRECT_DUNGEON_ITEMS:
                 items.append(DIRECT_DUNGEON_ITEMS[(level, coordinate)])
-            if coordinate == GOALS[level] and level < 9:
-                items.append(30399 + level)
             if (
                 detected.get("fire", 0) >= 2
                 and not room_entities
