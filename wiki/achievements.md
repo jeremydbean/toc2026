@@ -74,7 +74,7 @@ are not true deaths and do not advance the lifetime death counter.
 Maps, compasses, and Triforce shards are remembered when acquired, even if the
 item is later spent, dropped, or stored. On migration, currently carried items
 are scanned recursively, so items inside bags also count. The Master Sword,
-Silver Arrow, and complete Triforce achievements require possession when the
+Silver Arrow, and Triforce (COMBINE) achievements require possession when the
 state is evaluated.
 
 Economy balance milestones use exact copper value across all denominations.

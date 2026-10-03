@@ -16,7 +16,7 @@ the useful Hyrule mobile and object catalog.
 | Recall | Blocked only inside the nine dungeons (`30400-30645`) |
 | Level range | `1-59` |
 | Canonical geometry | 128 overworld screens plus 246 dungeon rooms and cellars |
-| Generated area size | 443 rooms and 1,497 reset records |
+| Generated area size | 447 rooms and 1,519 reset records |
 
 There is no walking exit from the main world into Hyrule. Players arrive by
 entering the arcade cabinet, matching the intended "teleported into Zelda"
@@ -148,8 +148,8 @@ in one, and `goto` and `transfer` are staff commands.
 | 8: The Lion | Piece 7, and a candle to burn the bush (as before) | The way to the guardian is utterly dark: the Red Candle | Piece 8 + the Magical Key (`30416`) | NES: the Red Candle lights dark rooms and burns Level 8's bush; the Magical Key is the Lion's treasure. |
 | 9: Death Mountain | Piece 8 (and all eight pieces and a bomb at the door, as before) | The doors before Ganon's lair: the Magical Key | Great chest: piece 9, the Triforce of Power (`30408`), + the Master Sword (`30200`) | NES: the Magical Key opens every lock in the last dungeons. The Silver Arrow that finishes Ganon is in Death Mountain's own cellar, where the NES keeps it, before his lair; the Red Ring is in its other cellar. |
 
-After Ganon, `COMBINE TRIFORCE` joins the nine pieces into the complete
-Triforce (see below). The complete Triforce counts as every piece, so its
+After Ganon, `COMBINE TRIFORCE` joins the nine pieces into The Triforce
+(see below). The Triforce counts as every piece, so its
 holder can walk back into any dungeon.
 
 The Magical Rod (Level 6) and the Magic Book (Level 8) stay in their cellars
@@ -225,10 +225,17 @@ that matches its band's boss weapon.
 
 ### Hyrule's Bystanders
 
-The old men, the door-repair man, the gambler, Princess Zelda, and the fountain
-fairies are level 10-70 and fight nobody. `is_hyrule_bystander()` in
-`src/fight.c` makes them safe from attacks and spells alike, so they cannot be
-farmed for experience. The merchants were already safe as shopkeepers.
+Everyone in Hyrule who is not an enemy is a person of their own: 78 records
+from the `npcs` table of `data/hyrule_mob_prose.json`, vnums `30346-30423`
+(`HYRULE_NPC_FIRST`-`LAST` in `src/merc.h` reserve `30346-30449`), plus Zelda
+at `30338`. Seventeen dungeon old men, four cave old men, four take-any old
+men, four hint-givers, fourteen moblins, twelve merchants, seven potion
+sellers, nine door-repair men, five gamblers and two fountain fairies. The
+old catalog records they replaced -- one old man (`30228`) for every old man's
+room, one fairy (`30216`) for both fountains, one keeper per shop kind
+(`30339-30345`) -- are retired. They are level 50-70 and fight nobody:
+`is_hyrule_bystander()` in `src/fight.c` covers the whole range, so they are
+safe from attacks and spells alike and cannot be farmed for experience.
 
 ### Enemies
 
@@ -281,6 +288,72 @@ carry: every mobile-carried weapon in the world at or below the weapon's level,
 scored as `value[1] * (value[2] + 1) / 2` plus damroll with the dashboard
 parser, and Hyrule's own re-levelled weapons where they beat it. Each
 boss weapon sits 10-20% above that mark, and the test holds it there.
+
+### Boss Drop Tables
+
+Besides its key, Heart Container, weapon and Heart Guard, every guardian has
+five armour pieces (`BOSS_DROPS` in the generator, vnums `30650-30694`), and
+two of them, chosen at random, fall in its corpse each kill
+(`hyrule_boss_drops()` in `src/hyrule.c`, called from `make_corpse`). Each is at
+the top of its band (Ganon's at 58) and was sized against the best piece any
+other source gives a warrior of that level in that slot, by the Gear Finder's
+own scoring (`gear_item_score` in `webadmin/server.py`);
+`tests/test_hyrule_boss_drops.py` measures the world again and keeps every piece
+above that mark and within a quarter of it.
+
+| Guardian | Piece | Slot | Armour | Applies | Score | Best elsewhere |
+| --- | --- | --- | ---: | --- | ---: | --- |
+| Aquamentus (8) | coat of Aquamentus scale | body | 4 | +1/+1, +13 hp | 22.6 | 21.0 a Rebel jumpsuit |
+| | horn-crested helm | head | 2 | -2 save, +19 hp | 8.6 | 7.6 the propeller hat |
+| | dragonclaw gloves | hands | 2 | +1/+1, +1 str, +14 hp | 15.3 | 14.0 swordsman's gloves |
+| | Eagle-feather cloak | about | 2 | +2/+2, +1 dex | 21.0 | 19.5 a commoner's piwafwi |
+| | green scale buckler | shield | 2 | -2 save, +36 hp | 10.0 | 9.0 an arsenal buckler |
+| Dodongo (14) | Dodongo-hide jerkin | body | 7 | +1/+1, +22 hp | 33.4 | 31.25 a Standard military battle armor |
+| | pebbled-hide leggings | legs | 4 | +1/+1, +4 hp | 16.8 | 15.5 Roman-style leggings |
+| | Dodongo stompers | feet | 3 | +2/+2, +2 dex, +28 hp | 26.6 | 24.75 snakeskin boots |
+| | crescent-buckled belt | waist | 3 | +2/+2, +12 hp | 21.4 | 19.75 a quick sheathe |
+| | smoke-grey moonstone ring | finger | 3 | +1/+1, -2 save, +6 hp | 13.0 | 11.75 a dwarven golden ring |
+| Manhandla (20) | thornvine greaves | legs | 6 | +2/+2, +23 hp | 32.6 | 30.5 blackened steel greaves |
+| | mantle of Manhandla's petals | about | 6 | +1/+1, +3 dex, +25 hp | 28.0 | 26.0 the cloak of the psionic |
+| | four-bloom gauntlets | hands | 5 | +2/+2, +2 str, +3 hp | 26.6 | 24.75 the Titanic Horns of Capricon |
+| | Manji-cross bracer | wrist | 5 | +1/+1, +3 dex, +14 hp | 18.8 | 17.25 bracers of defence |
+| | flower-crowned helm | head | 6 | +1/+1, -4 save, +8 hp | 23.2 | 21.5 a Roman combat helmet |
+| Gleeok (27) | twin-dragon hauberk | body | 13 | +1/+1, +10 hp | 49.0 | 46.0 a bearskin coat |
+| | coiled-snake shield | shield | 9 | +2/+2, -5 save, +15 hp | 30.0 | 27.95 a small round shield |
+| | fang vambraces | arms | 6 | +2/+2, +1 str | 24.5 | 21.25 platinum arm bands |
+| | twin-horned helm | head | 9 | +1/+1, -5 save, +7 hp | 29.4 | 27.5 a great war helmet |
+| | serpent-scale greaves | legs | 9 | +2/+2, +30 hp | 40.0 | 37.5 etched steel leggings |
+| Digdogger (33) | coat of urchin-spine mail | body | 16 | +2/+2, +33 hp | 70.6 | 66.65 Black velvet robes |
+| | spined gauntlets | hands | 8 | +2/+2, +3 str | 31.5 | 28.75 obsidian gauntlets |
+| | lizard-hide armguards | arms | 8 | +2/+2, +3 str | 31.5 | 29.25 black steel vambraces |
+| | sand-lizard boots | feet | 8 | +2/+2, +4 dex, +18 hp | 31.6 | 29.5 Lamorak's spurs |
+| | frilled lizard cloak | about | 11 | +1/+1, +1 dex | 31.0 | 28.5 an armored shirt of chainmail |
+| Gohma (40) | bracer set with an amber eye | wrist | 10 | +3/+3, +3 dex | 37.0 | 34.55 a white bracer |
+| | Gohma's carapace shield | shield | 13 | +3/+3, -2 save | 37.8 | 35.25 a dented tower shield |
+| | dragon-crested helm | head | 13 | +1/+1, -2 save | 34.8 | 32.5 a wolf helm |
+| | unblinking eye ring | finger | 10 | +2/+2, -5 save | 28.0 | 25.95 a sapphire ring |
+| | pincer-toed boots | feet | 10 | +3/+3, +2 dex | 36.0 | 33.25 mithril boots |
+| ancient Aquamentus (46) | demon-scale plate | body | 23 | +7/+7, +21 hp | 129.2 | 122.5 Knights of the Silver Hand Full Plate |
+| | chipped-horn crown | head | 15 | +2/+2, -8 save | 49.2 | 46.0 an ancient Ranger Lord's Stetson |
+| | demonclaw gauntlets | hands | 11 | +4/+4, +2 str | 48.0 | 44.5 Gauntlets of Bravery |
+| | ancient-scale greaves | legs | 15 | +1/+1, +10 hp | 40.0 | 37.5 etched steel leggings |
+| | demon-wing cloak | about | 15 | +4 dex | 34.0 | 31.5 an oiled cloak |
+| ashen Gleeok (52) | ashen dragon plate | body | 26 | +9/+9, +4 hp | 150.8 | 143.0 Divine Breast Plate |
+| | four-crowned lion shield | shield | 17 | +4/+4, -10 save, +15 hp | 56.0 | 52.85 a Ceresian kite |
+| | lion-head girdle | waist | 13 | +4/+4, +34 hp | 51.8 | 48.75 a rib bone belt |
+| | ash-grey dragon bracer | wrist | 13 | +5/+5, +2 dex | 55.0 | 51.0 an elven bracelet |
+| | ember armguards | arms | 13 | +2/+2, +1 str | 31.5 | 29.25 black steel vambraces |
+| Ganon (58) | Ganon's black gauntlets | hands | 14 | +4/+4, +3 str | 53.5 | 49.75 battle gloves |
+| | boar-hide greaves | legs | 19 | +1/+1, +7 hp | 47.4 | 44.5 some corduroys |
+| | Ganon's arm plates | arms | 14 | +5/+5, +1 str | 56.5 | 52.5 titanic arm plates |
+| | the girdle of Power | waist | 14 | +5/+5, +17 hp | 57.4 | 54.0 a combat belt |
+| | trident-chased bracer | wrist | 14 | +5/+5, +1 dex | 55.0 | 51.0 an elven bracelet |
+
+"+1/+1" is hitroll and damroll. The score is the Gear Finder's warrior score;
+"best elsewhere" is the top of the Finder's list for that slot at the piece's
+level, the drop itself excluded since a make_corpse drop has no reset source
+the Finder can see. For the same reason the area health check counts the 45
+pieces under `object-has-no-source`, as it does the enemy-drop potions.
 
 The first eight bosses also drop a Heart Container, as in the NES: a hold-slot
 crystal at the top of the band giving twice that level in hit points, and from
@@ -422,16 +495,18 @@ haste, which is why Gohma's blow is light. The breath weapons four of them had
 went: dragon breath hits for an eighth of the breather's own hit points, which
 at these sizes would be a thousand a breath.
 
-### The Complete Triforce
+### The Triforce
 
-Nobody finds the complete Triforce (`30286`, level 58): it is made.
+Nobody finds The Triforce (`30286`, level 58): it is made. It is named just
+"The Triforce", capital T, wherever it is shown -- its short description,
+COMBINE's messages, its achievement and HELP -- never "the complete Triforce".
 `COMBINE TRIFORCE` -- the COMBINE command's one recipe, `combine_recipes` in
 `src/act_info.c` -- takes the nine pieces from the inventory, one from each
 guardian's chest, and gives the Triforce in their place; with fewer it says
 how many you carry. `COMBINE` alone is still the inventory display toggle it
 always was. The Triforce counts as every piece at every dungeon door.
 
-The complete Triforce is an `ITEM_LIGHT`, so WEAR puts it
+The Triforce is an `ITEM_LIGHT`, so WEAR puts it
 in the light slot. Its `value[2]` is 999, which `create_object` turns into the
 -1 that never burns down (the file cannot say -1: `fread_flag` reads no minus
 sign). Worn there it gives **the sight of a level 59 character with HOLYLIGHT
@@ -498,10 +573,184 @@ The heart, fairy and clock are one potion per band at
 cast at its top. The rupee drops start at the NES's single rupee and stay well
 under the coin an ordinary mobile of the band carries; at band 1 a rupee is
 worth far more than a level 5 mobile's silver, which is what keeps Hyrule's
-own rupee prices -- a 20-rupee bomb bag -- about forty kills away. Bombs are
-not dropped: the bomb bag is a tool BOMB never uses up, so a second one is
-worth nothing. These potions have no reset source, so the area health check
-counts them under `object-has-no-source`, like the relics before them.
+own rupee prices -- four bombs for 20 rupees -- about forty kills away. Bombs
+are not a random drop. Level 8's old man says why: the tenth Hyrule enemy you
+kill in a row without taking a wound leaves you a bomb (`hyrule_note_kill`,
+reset by any wound in `damage()`), as the NES's kill streak did. These potions
+have no reset source, so the area health check counts them under
+`object-has-no-source`, like the relics before them.
+
+## The NES Pass: Plan (October 2026)
+
+This is the plan the October 2026 pass was built to, written before the
+code. Each part says what changes, where it lives, and the anti-exploit
+rule where there is one. Coordinates are written the guide way (`H8` is the
+start screen) with the manifest's in brackets where they differ.
+
+### Plan 1: Personal Prose
+
+- **Rooms.** No two rooms read alike. The duplicated names go (eight
+  "Treasure Chamber"s, six "Hidden Cellar"s, and four other pairs), the six
+  old-man rooms that all opened "Two fires burn in" are rewritten, and the
+  caves stop sharing text: today fourteen money caves share four entries,
+  twelve shops three, seven potion shops one, nine door repairs one, five
+  money games one and four warp halls one. Each gets its own entry in
+  `data/hyrule_room_prose.json`, keyed `<kind>:<guide coordinate>`
+  (`rupee:B8`, `shop:G7`, `potion_shop:I8`, `door_repair:D7`, `gamble:A2`,
+  `warp_hall:D3`, `take_any:H5`, `hint:A8`), and a missing one stops the
+  build. The one deliberate exception is the two mazes: the Lost Woods and
+  Lost Hills repeat their screen because that is the puzzle.
+- **Enemies.** Every enemy kind is written once per band it appears in --
+  127 entries, `enemies.<kind>.<band>` in `data/hyrule_mob_prose.json` --
+  so a band 9 lynel on Death Mountain is scarred, ash-dark and old, and a
+  band 5 one is not. A missing pair stops the build.
+- **People.** Everyone who is not an enemy gets a record of their own
+  instead of sharing one: each dungeon old man, each cave old man and old
+  woman, each merchant, each potion seller, each door-repair man, each
+  gambler, both fountain fairies and Zelda. They live in the `npcs` table
+  of `data/hyrule_mob_prose.json`, each with its own vnum from `30346` up,
+  and an old man's room line carries the NES words he says.
+  `is_hyrule_bystander()` covers the whole NPC range, so none of them can be
+  farmed.
+- **Hints in the right rooms.** Checked against the sources: Level 2's old
+  man (Dodongo dislikes smoke) was missing and stands in its north-east
+  hollow (`D2` [`D7`]); Level 6 has two (Gohma's eye at `C7` [`C2`],
+  fairies at `D1` [`D8`]); Level 7's `A5` [`A4`] man sells a bigger bomb
+  bag rather than repeating Level 5's Digdogger hint; Level 8's two hints
+  were swapped; and in Level 9 "go to the next room" belongs to `G1`
+  [`G8`], beside the stair it means, and "eyes of skull" to `D5` [`D4`].
+
+### Plan 2: Maps And Compasses That Tell You Something
+
+The nine maps and compasses already lie where the NES put them: every one
+was checked against the sources by its position relative to the entrance
+(table below, under Maps And Compasses). What changes is what they say.
+
+- **The map** (`LOOK`, `EXAMINE` or `READ` it) draws its dungeon's floor
+  plan from a plan the generator writes into the map: every room, and
+  between neighbouring rooms what joins them -- an open way, a door shut
+  now, or `!` for the way into the guardian's chamber. Bomb walls stay
+  hidden until bombed, as on the NES map. It marks the entrance, the map
+  and compass rooms, the cellar stairs, the guardian's chamber (`B`) and the
+  locked treasure room (`T`), and under the plan names what the guardian's
+  door needs ("the bow, from Level 5's chest") and that the guardian carries
+  the chest's key. Inside its own dungeon it shows `@` where you stand, or
+  the room above you in a cellar.
+- **The compass**, inside its own dungeon, names the first step of the
+  shortest path to the Triforce chest -- north, up the stair, or at a bare
+  wall that needs a bomb -- and how many rooms away the chest is, and the
+  guardian's chamber on the way. Outside its dungeon it will not settle.
+  The path is breadth first over that dungeon's own exits, computed in C
+  (`hyrule.c`), never leaving the dungeon's vnum range.
+- Both read the dungeon's row of `hyrule_progress_gate`, so a map cannot
+  disagree with the gate it describes.
+
+### Plan 3: Boss Drop Tables
+
+Each guardian keeps its Heart Guard, weapon, Heart Container and key, and
+gains a table of five armour pieces across slots its Heart Guard does not
+fill. Each kill drops two of the five at random, rolled in `make_corpse`
+beside the enemy drops (`hyrule_boss_drops()`); Ganon drops two of his as
+well as his relic. Every piece is at the top of its band (Ganon's at 58)
+and scores 5-20% above the best piece any other source gives at that level
+in that slot, measured with the Gear Finder's own scoring (`get_best_gear`
+in `webadmin/server.py`, warrior weights); `tests/test_hyrule_boss_drops.py`
+holds them in that window. Vnums `30650-30694`, five per guardian in level
+order.
+
+### Plan 4: The Silver Arrow
+
+It stays where it is, because that is where the NES keeps it: Level 9's
+item cellar under the far-west wizzrobe room (`A2` [`A7`]). The NES route is
+the one the manifest already has -- stairs from `F1` [`F8`] behind the "go
+to the next room" old man, west through the Patra room, its stair up to
+`A3` [`A6`], bomb north into `A2` [`A7`], kill the wizzrobes and push the
+centre block. Every other Level 9 landmark the sources place (map, compass,
+Red Ring stair, Ganon, Zelda) sits on the same grid at the same spot, which
+is what makes the arrow's position trustworthy.
+
+### Plan 5: Secret Caves, Old Men And Their Rules
+
+Anything that pays out once is remembered per character in one saved
+field, `HyruleSecrets` (`pcdata->hyrule_secrets`, under `case 'H'` in
+`fread_char`), a bit per cave.
+
+| Cave (guide) | NES | MUD rule |
+| --- | --- | --- |
+| 14 "It's a secret to everybody" caves | A moblin gives 10, 30 or 100 rupees | The moblin pays as you walk in, once per character for each cave. No rupee pile lies on the floor, so nothing refills at a reset. |
+| 9 door repairs | "Pay me for the door repair charge": 20 rupees | Unchanged: charged on entry, once per character for each cave (the hidden receipt). |
+| 5 money-making games | Pick one of three rupee signs | NES odds: one sign wins 20 or 50, one loses 10, one loses 10 or 40, at random; you need 10 rupees. Its expectation is nothing either way, the stake is bounded at 50, and it no longer counts toward the casino achievements, so neither the coin nor the achievements can be farmed. `GAMBLE LEFT|MIDDLE|RIGHT`, and each game costs a round of lag. |
+| 7 potion shops | The old woman wants the Letter | Unchanged: she sells only to someone carrying the Letter. |
+| 4 "Take any one you want" (`H5`, `L8`, `M3`, `P3`) | A Heart Container or a red potion | Take one and the other is refused, once per character for each cave. These were plain heart caves. |
+| Heart Container on the `P6` dock | Lying on the dock, by stepladder | Taken once per character. |
+| White Sword (`K1`) | Needs 5 hearts | Needs 5 hearts (below). |
+| Magical Sword (`B3` grave) | Needs 12 hearts | The grave holds the Magical Sword again (the Master Sword stays Ganon's): level 38, 11d5 +3/+3, between the White Sword and Gohma's eye-lance. Needs 12 hearts. |
+| Hint caves `A8` (open) and `K2` (behind the waterfall) | "Pay me and I'll talk" | GIVE her 10, 30 or 50 rupees at `A8`: 10 is not enough, 30 buys the Lost Woods route, 50 buys only "boy, you're rich". GIVE 5, 10 or 20 at `K2`, where only 20 buys "go up, up, the mountain ahead". She keeps what she is paid, as on the NES; any other sum is handed back. |
+| Hint caves `F8` (open) and `M2` (under an Armos) | "Meet the old man at the grave"; "secret is in the tree at the dead-end" | An old man says it. |
+| Level 5 and Level 7 bomb bags | "I bet you'd like to have more bombs": 100 rupees | `GET BAG` pays 100 for four more bombs' room, once each per character. |
+
+**Hearts.** The NES counts hearts, and the MUD has hit points, so a heart is
+counted the NES way: 3 to start, one for each of the Level 1-8 guardians you
+have defeated (their achievements), and one for each Heart Container taken
+from a take-any cave or the `P6` dock -- 16 at most, as on the NES. `HEARTS`
+shows the count. The swords give a copy to each character who qualifies,
+one at a time, and a copy is worth nothing to a shop, so neither cave is a
+sword mine.
+
+### Plan 6: Shops
+
+The stock is the NES's, already right: candle shops (`G7`, `M1`, `O6`)
+Magical Shield 160, Key 100, Blue Candle 60; arrow shops (`E5`, `F3`, `K5`,
+`P7`) Shield 130, Bombs 20, Arrows 80; shield shops (`C2`, `G3`, `G5`, `N5`)
+Shield 90, Bait 100, Heart 10; the ring shop (`E4`) Key 80, Blue Ring 250,
+Bait 60; potion shops Blue Potion 40, Red Potion 68. What changes is that
+every one of them now does something (Plan 8). Shops sell and never buy.
+
+### Plan 7: Entrances
+
+Every hidden way is secret until it is opened by the NES's act with the
+NES's tool, and nothing else opens it: OPEN by keyword, PICK, DOORBASH and
+UNLOCK are refused with a hint at what it needs, and a shutter stays shut
+while its room's enemies live (`hyrule_seal_refuses()` in `act_move.c`).
+
+| Way in | Needs |
+| --- | --- |
+| Cracked wall or rock (`BOMB CRACKED`) | A bomb, which it uses up |
+| Bush or tree (`BURN BUSH`) | A lit candle in the light slot |
+| Armos statue, grave, block (`PUSH`) | Nothing |
+| Warp stone (`PUSH STONE`) | The Power Bracelet |
+| Level 4 dock, `P3` dock (`ENTER RAFT`) | The raft |
+| `P6` dock (`ENTER CROSSING`) | The stepladder |
+| Level 7's lake (`PLAY RECORDER`) | The Recorder itself, not any whistle |
+| Level 9 (`BOMB CRACKED`) | All eight Triforce pieces and a bomb |
+
+`tools/build_directions.py` writes these as the act and what it needs, not
+as `open <keyword>`, so a published route stays honest.
+
+### Plan 8: What Every Item Does
+
+| Item | What it does |
+| --- | --- |
+| Wooden, White, Magical Sword | Weapons; the White and Magical need hearts |
+| Boomerang, Magical Boomerang | Wielded weapons; `SHOOT <enemy>` throws it: light damage and the enemy is stunned out of the fight for a moment; a keese or gel dies outright. The Magical one hits harder. |
+| Bow + Arrows | `SHOOT <enemy>` in the room, with the bow wielded and the quiver carried: bow damage plus your damroll, a rupee a shot, no Archery skill needed. An arrow kills a pols voice outright and finishes Gohma. |
+| Bombs | `BOMB` a cracked wall (uses one), or `BOMB <enemy>` for fire damage (uses one); Dodongo swallows one for half its health. Four to a purchase; the bag holds 8, 12 or 16. |
+| Blue and Red Candle | Light; `BURN` a bush; `BURN <enemy>` for fire damage (the Red Candle burns hotter) |
+| Bait | `FEED` the hungry Goriya (used up), or `FEED BAIT` to set it down: the room's enemies stop fighting and turn to it for a while (kept; never a guardian) |
+| Recorder | Drains Level 7's lake, shrinks Digdogger (a third of its health), and on the overworld its whirlwind carries you to the next dungeon whose Triforce piece you carry |
+| Magical Rod | A wand of acid blast; with the Magic Book carried its blast bursts into flame as well |
+| Magic Book | Held armour; the Rod's fire |
+| Letter | The potion shops sell only to its carrier |
+| Blue and Red Potion | Two heals; the red turns blue when drunk, as on the NES |
+| Power Bracelet | +2 strength worn; moves the warp stones |
+| Raft, Stepladder | The crossings; the stepladder is worn armour too |
+| Magical Key | Opens every small-key door without being used up |
+| Small key | Opens one small-key door; kept through a quit now |
+| Blue Ring (shop) | Takes 10% off every blow, as the relic does; rings never stack |
+| Magical Shield | Armour and saves; takes 10% off fire and magic, not with the Mirror Shield |
+| Heart Container | Held for hit points; a taken one counts as a heart |
+| Fairy, heart, clock | Drops, as before |
+| Fountain fairy | Restores everyone at her pond who is not fighting |
 
 ## Maps And Compasses
 
@@ -519,10 +768,55 @@ Every dungeon contains one generated map and compass:
 | 8 | `30487` in `30580` | `30496` in `30568` |
 | 9 | `30488` in `30628` | `30497` in `30618` |
 
-`read <map>` prints the dungeon silhouette and marks the entrance, map,
-compass, item cellars, boss, and goal. `read <compass>` reports the first
-general direction and approximate route distance to the boss. Routing stays
-inside that dungeon's generated vnum range and understands stair passages.
+Every one of them is where the NES put it. Checked against the sources by
+position relative to the entrance (the walkthroughs' grids are cropped, so the
+offset is the robust measure): Level 1's map 3 north, compass 2 north 1 east;
+Level 2's 2 north 2 east and 1 north 2 east; Level 3's 3 north and 2 north 2
+west; Level 4's 5 north and 1 north 1 east; Level 5's 3 north and 4 north 1
+east; Level 6's 6 north and 1 north 1 west; Level 7's 6 north 1 west and 2
+north 1 east; Level 8's 5 north and 2 north 1 east; Level 9's in the Patra room
+at the far east and in the skull's right eye.
+
+`LOOK`, `EXAMINE` or `READ` the map (`hyrule_show_map()` in `src/hyrule.c`) and
+it draws the floor plan the generator wrote into it (the `hyrule-floor-plan`
+extra description: eight rows of room vnums, the map and compass rooms, and
+each cellar with the room above it):
+
+```
+Level 2: The Moon -- the dungeon map              N
+
+      T+B
+        !
+        o o
+        + |
+        o+o
+        |
+        o-o
+        |
+        o-o
+        +
+        o+M
+        |
+    o+o-o+C
+      | |
+      @-o
+  @ you    E entrance    M map    C compass    S stair to a cellar
+  B the guardian's chamber    T the Triforce chest
+  - | an open way    + a shut door    ! the way to the guardian
+  ! The way to the guardian needs a small boomerang, from Level 1's chest.
+  T The chest is locked; the guardian carries its key.
+```
+
+Between rooms it shows what is there now: an open way, a door shut now, or
+`!` for the way into the guardian's chamber; a bomb wall stays hidden until it
+is bombed. `@` marks you inside the map's own dungeon (the room above, in a
+cellar). The compass (`hyrule_show_compass()`) names the first step of the
+shortest path to the Triforce chest -- breadth first over the dungeon's own
+exits, stairs and cellars, never leaving its vnum range -- and how many rooms
+away the chest and the guardian's chamber are; a first step through an
+unbombed wall it calls "the bare wall". Outside its dungeon the needle will
+not settle. Both read the guardian, the treasure room and the gate from the
+dungeon's row of `hyrule_progress_gate`.
 
 Map values use opcode `90`; compass values use opcode `91`. Values 1-4 contain
 the boss vnum, first room, last room, and dungeon level.
@@ -531,7 +825,7 @@ the boss vnum, first room, last room, and dungeon level.
 
 The permanent achievement catalog tracks arrival at screen `H1`, discovery of
 all nine dungeon entrances, all maps and compasses, all eight Triforce shards,
-the Master Sword, the Silver Arrow, the complete Triforce, each principal
+the Master Sword, the Silver Arrow, The Triforce, each principal
 dungeon boss, Ganon, and reaching Princess Zelda. Finishing all nine boss
 achievements awards the `Hero of Hyrule` meta achievement.
 
@@ -545,24 +839,30 @@ for command syntax, migration rules, and save behavior.
 
 The generated overworld includes the complete major First Quest service set:
 
-- 14 secret rupee caves with their original 10, 30, or 100 rupee rewards
+- 14 secret money caves with their original 10, 30, or 100 rupee rewards
 - 7 regular item shops and 5 hidden deluxe shops
 - 7 potion shops, gated by Princess Zelda's Letter
 - 9 one-time 20-rupee door-repair charges
 - 5 money-making games using the `gamble` command
 - 4 Power Bracelet warp halls with the original west, center, and east routes
-- 5 overworld Heart Containers and 2 Fairy Fountains
-- Wooden, White, and Master Sword caves, the Letter, and the Power Bracelet
+- 4 "take any one you want" caves and the Heart Container on the `P6` dock
+- 4 hint caves, 2 Fairy Fountains
+- Wooden, White, and Magical Sword caves, the Letter, and the Power Bracelet
+
+All of it checked against the sources screen for screen (see Plan 5); the
+take-any caves were plain heart caves and the four hint caves were missing.
+The rules each cave follows, and what stops each from being farmed, are in
+Plan 5 above. In short: the money caves pay on entry once per character
+(`HyruleSecrets`); door repairs charge once per character per cave (a hidden,
+non-droppable receipt); the money game is the NES's, with nothing to gain on
+average and nothing counted toward the casino; the take-any and dock Heart
+Containers are once per character and count as hearts; the swords, the Letter
+and the Power Bracelet are a copy each, one at a time, worthless to a shop.
 
 The regular shops source bombs and the Blue Candle inside Hyrule, so early
 secrets do not depend on equipment imported from another area. Shop inventory
 uses the original item groupings and prices. Potion shops offer the 40-rupee
 Life Potion and 68-rupee 2nd Potion only while the character carries the Letter.
-
-Door-repair rooms charge at most 20 rupees on the first visit. A hidden,
-non-droppable receipt records payment separately for each location and survives
-normal player saves. The gambling rooms charge 10 rupees and choose among the
-First Quest-style positive and negative outcomes.
 
 Warp stones require the Power Bracelet. Their route permutations are:
 
@@ -577,12 +877,16 @@ Warp stones require the Power Bracelet. Their route permutations are:
 
 | Command | Requirement | First Quest use |
 | --- | --- | --- |
-| `burn <target>` | Blue or Red Candle | Bushes, shops, hearts, repairs, Level 8 |
-| `bomb <target>` | Bomb satchel or bomb bag | Rock walls, caves, Dodongo, Level 9 |
-| `play <instrument>` | Recorder, whistle, or ocarina | Level 7 entrance and Digdogger |
-| `feed <guardian>` | Enemy bait | Hungry Goriya |
-| `push <target>` | Context dependent | Blocks, Armos, sword grave, warp stones |
-| `gamble` | 10 rupees in a money game | First Quest gambling caves |
+| `burn <target>` | A lit Blue or Red Candle in the light slot | Bushes, shops, hearts, repairs, Level 8; an enemy for fire |
+| `bomb <target>` | A bomb, used up | Rock walls, caves, Level 9; an enemy for fire, Dodongo for half his health |
+| `play recorder` | The Recorder itself | Level 7's lake, Digdogger, the whirlwind |
+| `feed <guardian>`, `feed bait` | Enemy bait | Hungry Goriya; calming a room |
+| `push <target>` | Context dependent | Blocks, Armos, the gravestone, warp stones |
+| `gamble left\|middle\|right` | 10 rupees in a money game | First Quest gambling caves |
+| `shoot <enemy>` | The bow and a quiver (a rupee a shot), or a boomerang | Pols voice, Gohma, stunning |
+| `give <n> gold <old woman>` | 10/30/50 or 5/10/20 rupees | The two "pay me and I'll talk" caves |
+| `buy bag` | 100 rupees | The Level 5 and Level 7 bomb bags |
+| `hearts` | -- | The heart count the swords ask for |
 
 Puzzle objects use `ITEM_MANIPULATION` type `31`. Generated overworld targets
 use a zero destination plus dynamic-target flag `value[4] = 9`, allowing one
@@ -591,8 +895,14 @@ opcodes 12, 11, 13, and 14 respectively.
 
 Runtime rules add the behaviors the area format cannot express alone:
 
-- Hyrule small keys are consumed; the Magical Key is reusable.
-- Shutters open when aggressive room guardians are defeated.
+- Hyrule small keys -- the dungeons' own and the two the shops sell -- are
+  consumed by the lock and kept through a quit; the Magical Key is reusable.
+- Shutters open when aggressive room guardians are defeated, and nothing
+  opens them before: not OPEN, PICK, DOORBASH or a ghost's pass door.
+- A puzzle's way is secret (`D` reset state 4) until its act opens it, and an
+  opened way stays open while anyone is in Hyrule: the area's `D` resets skip
+  a sealed exit with players about, because its puzzle object only returns
+  with an `O` reset when the area is empty (`reset_area` in `src/db.c`).
 - Dodongo takes bomb damage.
 - Gohma requires a bow or Silver Arrow for the finishing hit.
 - Ganon can be wounded by ordinary weapons, spells, poison, and lingering
@@ -707,10 +1017,10 @@ the crossing count or progression route.
 
 The room prose was written from the NES screens and rooms with the manifest's
 facts in hand -- terrain read off each screen's enemies, doors, stairs, block
-cellars, and landmarks. It is approximate by design: the room shapes and old
-men's hints are paraphrased from the game, not transcribed. An old man's hint
-is written into his room as words carved or scratched there, so the room
-describes a place rather than an occupant.
+cellars, and landmarks. It is approximate by design: the room shapes are
+paraphrased from the game, not transcribed. Since the NES pass an old man's
+hint is his own room line -- he says it, in the NES's few words -- and the
+room describes the place; a room never lists its occupants.
 
 The October 2026 rewrite of every room, enemy and boss description drew on
 the sources that would load. Walkthrough sites mostly refuse automated
@@ -728,6 +1038,31 @@ readers, so this is a record of what was actually used:
 | web.archive.org, ign.com | Refused by the fetch tool |
 
 What none of them covered was written from knowledge of the game.
+
+The NES pass (October 2026, the plan above) checked every cave, shop, map,
+compass and the Silver Arrow again. What loaded that time:
+
+| Source | Result |
+| --- | --- |
+| tartarus.rpgclassics.com, Zelda 1 shrine | Loaded; the best overworld source, on the same A-P / 1-8 grid with H8 the start: every cave, shop and price |
+| en.wikibooks.org, the Zelda walkthrough (raw wikitext) | Loaded; room by room for Levels 1-9, screen by screen for the overworld; the four hint caves and how each opens |
+| nintendoforever.com | Loaded through the fetch tool; an item legend per dungeon, on grids cropped to each dungeon |
+| zeldauniverse.net | Loaded; the Level 9 route to the Silver Arrow |
+| legendsoflocalization.com | Loaded; every English line |
+| zeldacentral.com, thonky.com, Wikipedia | Loaded; general only |
+| strategywiki.org, zeldadungeon.net, gamefaqs.gamespot.com, zeldawiki.wiki | 403 |
+| zelda.fandom.com and its archive | 402 (the Level 2 waterfall prices came from a search summary of it, moderate confidence) |
+| nesmaps.com | A bot check; no content |
+
+The overworld agreed with the manifest screen for screen: all 14 money caves,
+9 door repairs, 5 money games, 16 shops and potion shops and their stock, and
+the swords, the Letter and the Power Bracelet. It did not have the four
+"take any one you want" caves (they were plain heart caves) or the four hint
+caves, and several old men's words were in the wrong rooms (Plan 1). Every
+dungeon's map, compass and item cellar matched by its offset from the
+entrance, and in Level 9 every landmark the sources place -- map, compass,
+Red Ring stair, Ganon, Zelda and the Silver Arrow stair -- sits at the
+manifest's own coordinates.
 
 ## Related Documentation
 

@@ -108,14 +108,25 @@ class DamageAlwaysCostsLag(unittest.TestCase):
         )
 
     def test_the_bomb_stays_fixed(self) -> None:
-        """Half a target's maximum hit points, no roll, nothing spent."""
+        """Half Dodongo's maximum hit points, no roll -- so never free.
+
+        Since October 2026 BOMB at a creature is hyrule_bomb_creature() in
+        src/hyrule.c (do_bomb hands it the victim), and a bomb is used up
+        by every blast. The lag and the spent bomb must both come before
+        any blow, Dodongo's or anybody's.
+        """
         act_obj = (ROOT / "src" / "act_obj.c").read_text(encoding="utf-8")
         body = act_obj.split("void do_bomb(")[1].split(chr(10) + "void ")[0]
-        after = body[body.index("victim->max_hit / 2"):]
-        self.assertLess(
-            after.index("WAIT_STATE"), after.index("return;"),
-            "the bomb takes half a target's maximum hit points for free",
-        )
+        self.assertIn("hyrule_bomb_creature( ch, victim )", body)
+        self.assertNotIn("damage(", body, "do_bomb deals its own damage again")
+        hyrule = (ROOT / "src" / "hyrule.c").read_text(encoding="utf-8")
+        bomb = hyrule.split("bool hyrule_bomb_creature(")[1].split(chr(10) + "}")[0]
+        self.assertIn("victim->max_hit / 2", bomb)
+        first_blow = bomb.index("damage(")
+        self.assertLess(bomb.index("WAIT_STATE"), first_blow,
+                        "the bomb takes half a target's maximum hit points for free")
+        self.assertLess(bomb.index("hyrule_use_bomb( ch )"), first_blow,
+                        "a bomb thrown at a creature is not used up")
 
     def test_the_monks_missed_nerve_strike_is_left_alone(self) -> None:
         """Deliberate: a monk carries no weapon, and this pays for it.

@@ -192,6 +192,11 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	return;
     }
 
+    /* A Hyrule cave's gift -- a sword, the Letter, a take-any cave's Heart
+       Container -- is given as a copy, once or one at a time (hyrule.c). */
+    if ( container == NULL && hyrule_claim( ch, obj ) )
+	return;
+
     if ( obj->item_type == ITEM_MONEY
     &&   query_carry_coins( ch, obj->value[0] ) > can_carry_w( ch ) )
     {
@@ -2159,6 +2164,9 @@ void do_give( CHAR_DATA *ch, char *argument )
 	    if(ch->new_gold < amount) {
 		send_to_char("You don't have enough gold.\n\r",ch);
 		return;
+	    } else if ( hyrule_paid_to_talk( ch, victim, amount ) ) {
+		/* "Pay me and I'll talk": a rupee is a gold coin (hyrule.c). */
+		return;
 	    } else {
 		adjust_coin_balance(ch, -amount, TYPE_GOLD);
 		adjust_coin_balance(victim, amount, TYPE_GOLD);
@@ -3896,6 +3904,7 @@ void do_quaff( CHAR_DATA *ch, char *argument )
 	int sn2    = obj->value[2];
 	int sn3    = obj->value[3];
 	int olevel = obj->value[0];
+	int vnum   = obj->pIndexData != NULL ? obj->pIndexData->vnum : 0;
 
 	extract_obj( obj );
 
@@ -3904,6 +3913,9 @@ void do_quaff( CHAR_DATA *ch, char *argument )
 	obj_cast_spell( sn2, olevel, ch, ch, NULL );
 	if ( ch->in_room == NULL ) return;
 	obj_cast_spell( sn3, olevel, ch, ch, NULL );
+	if ( ch->in_room == NULL ) return;
+	/* Hyrule's red potion turns blue when drunk. */
+	hyrule_after_quaff( ch, vnum );
     }
     return;
 }
@@ -4219,8 +4231,15 @@ void do_zap( CHAR_DATA *ch, char *argument )
 	    obj_cast_spell( wand->value[3], wand->value[0], ch, victim, obj );
 	    if ( ch->in_room == NULL ) return;  /* ch died (e.g. spell reflect) */
 	    check_improve(ch,gsn_wands,true,2);
+	    /* Hyrule's Rod, with the Magic Book: the blast bursts into flame. */
+	    hyrule_after_zap( ch, victim, wand );
+	    if ( ch->in_room == NULL ) return;
 	}
     }
+
+    /* The Magical Rod is the NES's, and never runs dry. */
+    if ( hyrule_rod_is_endless( wand ) )
+	return;
 
     if ( --wand->value[2] <= 0 )
     {
@@ -4461,9 +4480,6 @@ void do_steal( CHAR_DATA *ch, char *argument )
 /*
  * Shopping commands.
  */
-#define HYRULE_POTION_KEEPER_VNUM 30343
-#define HYRULE_LETTER_VNUM        30500
-
 static bool object_list_has_vnum( OBJ_DATA *list, int vnum )
 {
     OBJ_DATA *obj;
@@ -4497,15 +4513,9 @@ CHAR_DATA *find_keeper( CHAR_DATA *ch )
 	return NULL;
     }
 
-    if ( !IS_NPC(ch)
-    &&   keeper->pIndexData != NULL
-    &&   keeper->pIndexData->vnum == HYRULE_POTION_KEEPER_VNUM
-    &&   !object_list_has_vnum( ch->carrying, HYRULE_LETTER_VNUM ) )
-    {
-        act( "$n silently points to a royal seal. You need Princess Zelda's letter.",
-             keeper, NULL, ch, TO_VICT );
+    /* Hyrule's potion sellers want Princess Zelda's Letter (hyrule.c). */
+    if ( hyrule_keeper_refuses( keeper, ch ) )
         return NULL;
-    }
 
 /*  Undesirables.
     if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_WANTED) )
@@ -4643,6 +4653,10 @@ void do_buy( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* A full bomb bag, or a bigger bag already bought (hyrule.c). */
+    if ( hyrule_buy_refuses( ch, obj ) )
+	return;
+
     roll = number_percent();
     if (!IS_NPC(ch) && roll < ch->pcdata->learned[gsn_haggle]) {
 	cost -= obj->cost / 2 * roll / 100;
@@ -4673,6 +4687,8 @@ void do_buy( CHAR_DATA *ch, char *argument )
     obj_to_char( obj, ch );
     if(cost < obj->cost)
 	obj->cost = cost;
+    /* A bigger bomb bag becomes room in yours; bombs join your bombs. */
+    hyrule_bought( ch, obj );
     return;
 }
 
@@ -5169,6 +5185,7 @@ void do_burn( CHAR_DATA *ch, char *argument )
 {
     OBJ_DATA *target;
     OBJ_DATA *candle;
+    CHAR_DATA *victim;
 
     if ( argument[0] == '\0' )
     {
@@ -5177,7 +5194,8 @@ void do_burn( CHAR_DATA *ch, char *argument )
     }
 
     target = get_puzzle_target( ch, argument, PUZZLE_BURN );
-    if ( target == NULL )
+    victim = target == NULL ? get_char_room( ch, argument ) : NULL;
+    if ( target == NULL && victim == NULL )
     {
         send_to_char( "You find nothing there that a candle can burn.\n\r", ch );
         return;
@@ -5197,6 +5215,13 @@ void do_burn( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* BURN <enemy>: the candle's flame as a weapon (hyrule.c). */
+    if ( victim != NULL )
+    {
+        hyrule_burn_creature( ch, victim, candle );
+        return;
+    }
+
     if ( trigger_puzzle_manipulation( ch, target ) )
     {
         act( "You touch $p with the candle flame, revealing a hidden passage!",
@@ -5207,10 +5232,16 @@ void do_burn( CHAR_DATA *ch, char *argument )
     }
 }
 
+/*
+ * BOMB. Bombs are Hyrule's (four to a purchase, hyrule.c) and each blast
+ * uses one, as on the NES: a cracked wall or rock opens to one, and at a
+ * creature it is a blast of fire -- Dodongo swallows it and loses half
+ * his health. The lag is paid inside hyrule_bomb_creature, before the
+ * blow; the puzzle path deals no damage.
+ */
 void do_bomb( CHAR_DATA *ch, char *argument )
 {
     OBJ_DATA *target;
-    OBJ_DATA *bomb_bag;
     CHAR_DATA *victim;
 
     if ( argument[0] == '\0' )
@@ -5219,44 +5250,28 @@ void do_bomb( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    bomb_bag = find_carried_puzzle_tool( ch, "bomb", ITEM_CONTAINER );
-    victim = get_char_room( ch, argument );
-    if ( victim != NULL && IS_NPC(victim) && victim->pIndexData != NULL
-    &&   victim->pIndexData->vnum == 30218 )
-    {
-        if ( bomb_bag == NULL )
-        {
-            send_to_char( "You need a bomb bag to do that.\n\r", ch );
-            return;
-        }
-        act( "You roll a bomb beneath $N. The explosion tears through its hide!",
-             ch, NULL, victim, TO_CHAR );
-        act( "$n rolls a bomb beneath $N. The explosion fills the chamber!",
-             ch, NULL, victim, TO_ROOM );
-        damage( ch, victim, UMAX( 1, victim->max_hit / 2 ),
-                TYPE_UNDEFINED, DAM_FIRE );
-        /* Half its maximum hit points, no roll and nothing consumed: the
-           only thing standing between this and a one-command kill is the
-           lag. */
-        WAIT_STATE( ch, PULSE_VIOLENCE );
-        return;
-    }
-
     target = get_puzzle_target( ch, argument, PUZZLE_BOMB );
     if ( target == NULL )
     {
+        victim = get_char_room( ch, argument );
+        if ( victim != NULL )
+        {
+            hyrule_bomb_creature( ch, victim );
+            return;
+        }
         send_to_char( "You find no cracked surface to bomb there.\n\r", ch );
         return;
     }
 
-    if ( bomb_bag == NULL )
+    if ( hyrule_bombs_carried( ch ) <= 0 )
     {
-        send_to_char( "You need a bomb bag to do that.\n\r", ch );
+        send_to_char( "You have no bombs. The arrow shops sell four for 20 rupees.\n\r", ch );
         return;
     }
 
     if ( trigger_puzzle_manipulation( ch, target ) )
     {
+        hyrule_use_bomb( ch );
         act( "You set a bomb beside $p and dive aside. The blast opens a passage!",
              ch, target, NULL, TO_CHAR );
         act( "$n bombs $p, and the blast opens a passage!",
@@ -5288,6 +5303,16 @@ void do_play( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* In Hyrule the tune is the Recorder's own, from Level 6's chest: any
+       whistle with "recorder" in its name will not drain the lake. */
+    if ( IS_HYRULE_ROOM_VNUM(ch->in_room->vnum)
+    &&   ( instrument->pIndexData == NULL
+        || instrument->pIndexData->vnum != OBJ_VNUM_HYRULE_RECORDER ) )
+    {
+        send_to_char( "Nothing in Hyrule answers that tune. It wants the Recorder itself.\n\r", ch );
+        return;
+    }
+
     for ( target = ch->in_room->contents; target != NULL;
           target = target->next_content )
     {
@@ -5296,16 +5321,19 @@ void do_play( CHAR_DATA *ch, char *argument )
             break;
     }
 
-    if ( target == NULL )
-    {
-        send_to_char( "The melody fades without an answer.\n\r", ch );
-        return;
-    }
-
     act( "You play $p, and an ancient melody fills the room.",
          ch, instrument, NULL, TO_CHAR );
     act( "$n plays $p, and an ancient melody fills the room.",
          ch, instrument, NULL, TO_ROOM );
+
+    if ( target == NULL )
+    {
+        /* No lake: it shrinks Digdogger, or calls the whirlwind. */
+        if ( !IS_HYRULE_ROOM_VNUM(ch->in_room->vnum) || !hyrule_play_recorder( ch ) )
+            send_to_char( "The melody fades without an answer.\n\r", ch );
+        return;
+    }
+
     if ( trigger_puzzle_manipulation( ch, target ) )
         extract_obj( target );
 }
@@ -5322,13 +5350,20 @@ void do_feed( CHAR_DATA *ch, char *argument )
     }
 
     target = get_puzzle_target( ch, argument, PUZZLE_FEED );
+    bait = find_carried_puzzle_tool( ch, "bait", ITEM_FOOD );
     if ( target == NULL )
     {
+        /* FEED BAIT with no hungry Goriya: set it down and the room's
+           enemies turn to it (hyrule.c). The bait is kept. */
+        if ( bait != NULL && is_name( argument, "bait" ) )
+        {
+            hyrule_set_bait( ch, bait );
+            return;
+        }
         send_to_char( "Nobody here seems interested in your provisions.\n\r", ch );
         return;
     }
 
-    bait = find_carried_puzzle_tool( ch, "bait", ITEM_FOOD );
     if ( bait == NULL )
     {
         send_to_char( "You need food suitable for bait.\n\r", ch );
@@ -6122,13 +6157,27 @@ static void casino_record_total( CHAR_DATA *ch, bool winnings, long amount )
     achievement_check_economy( ch, true );
 }
 
+/*
+ * "Let's play money making game." The NES game, as the NES played it:
+ * you need 10 rupees, and of the old man's three rupee signs one wins 20
+ * or 50, one loses 10, and the third loses 10 or 40, laid out at random.
+ * Its expectation is nothing either way -- (35 - 10 - 25) / 3 -- and a
+ * game wins at most 50 and loses at most 40, so there is nothing to farm.
+ * It is not the casino and does not count toward the casino's
+ * achievements, whose totals are gross and would reward sheer volume. Each
+ * game costs a round of lag.
+ */
 void do_gamble( CHAR_DATA *ch, char *argument )
 {
+    static const char *const sides[3] = { "left", "middle", "right" };
     char buf[MAX_STRING_LENGTH];
-    int result;
-    long loss;
-
-    UNUSED_PARAM(argument);
+    char arg[MAX_INPUT_LENGTH];
+    int signs[3];
+    int winner;
+    int loser;
+    int pick;
+    int value;
+    int i;
 
     if ( IS_NPC(ch) )
     {
@@ -6142,36 +6191,53 @@ void do_gamble( CHAR_DATA *ch, char *argument )
         send_to_char( "There is no Hyrule money-making game here.\n\r", ch );
         return;
     }
+
+    one_argument( argument, arg );
+    pick = -1;
+    for ( i = 0; i < 3; i++ )
+        if ( arg[0] != '\0' && !str_prefix( arg, sides[i] ) )
+            pick = i;
+    if ( pick < 0 )
+    {
+        send_to_char( "\"Let's play money making game.\" Three rupee signs lie face down:\n\r"
+                      "GAMBLE LEFT, GAMBLE MIDDLE or GAMBLE RIGHT. One wins 20 or 50 rupees,\n\r"
+                      "one loses 10, and one loses 10 or 40. You need 10 rupees to play.\n\r", ch );
+        return;
+    }
     if ( !has_enough_gold( ch, 10 ) )
     {
         send_to_char( "You need 10 rupees to play.\n\r", ch );
         return;
     }
 
-    add_money( ch, -10 );
-    result = number_range( 0, 3 );
-    if ( result == 0 || result == 1 )
+    winner = number_range( 0, 2 );
+    loser = ( winner + number_range( 1, 2 ) ) % 3;
+    for ( i = 0; i < 3; i++ )
+        signs[i] = -10;
+    signs[winner] = number_bits( 1 ) ? 50 : 20;
+    signs[3 - winner - loser] = number_bits( 1 ) ? -40 : -10;
+    value = signs[pick];
+
+    WAIT_STATE( ch, PULSE_VIOLENCE );
+    snprintf( buf, sizeof(buf),
+              "You turn the %s sign. The three read: %+d   %+d   %+d.\n\r",
+              sides[pick], signs[0], signs[1], signs[2] );
+    send_to_char( buf, ch );
+    if ( value > 0 )
     {
-        long payout = result == 0 ? 50 : 20;
-        add_money( ch, payout );
-        casino_record_total( ch, true, payout - 10 );
-        snprintf( buf, sizeof(buf),
-                  "You choose a hidden rupee sign and win %ld rupees!\n\r", payout );
-        send_to_char( buf, ch );
+        add_money( ch, value );
+        snprintf( buf, sizeof(buf), "You win %d rupees.\n\r", value );
     }
     else
     {
-        long requested_loss = result == 2 ? 20 : 40;
-        loss = UMIN( query_gold(ch), requested_loss );
+        long loss = UMIN( query_gold(ch), (long) -value );
+
         if ( loss > 0 )
             add_money( ch, -loss );
-        casino_record_total( ch, false, 10 + loss );
-        snprintf( buf, sizeof(buf),
-                  "You choose a hidden rupee sign and lose %ld more rupees.\n\r", loss );
-        send_to_char( buf, ch );
+        snprintf( buf, sizeof(buf), "You lose %ld rupees.\n\r", loss );
     }
-    act( "$n chooses one of the old man's concealed rupee signs.",
-         ch, NULL, NULL, TO_ROOM );
+    send_to_char( buf, ch );
+    act( "$n turns one of the old man's rupee signs.", ch, NULL, NULL, TO_ROOM );
 }
 
 void do_slots( CHAR_DATA *ch, char *argument )

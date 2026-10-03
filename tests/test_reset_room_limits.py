@@ -36,8 +36,9 @@ SKIP = skip_reason()
 WATCHED_ROOM = 30201          # earliest peahat room, asks for two
 WATCHED_INTENT = 2
 DRAINED_ROOMS = (30286, 30309, 30311)   # later rooms, six peahats between them
-# The peahat's room line, from data/hyrule_mob_prose.json.
-MOB_LONG_DESC = "A peahat whirls through the air on spinning petals."
+# The Level 4 band peahat's room line, from data/hyrule_mob_prose.json
+# (enemies.peahat."4": every band of a kind has its own text).
+MOB_LONG_DESC = "A sturdy peahat skims low over the meadow, petals blurring in the sun."
 
 IMMORTAL_LEVEL = 70
 PASSWORD = "Ziprepoppw"

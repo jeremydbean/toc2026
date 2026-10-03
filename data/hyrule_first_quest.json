@@ -35,7 +35,14 @@
         "entities": {
           "peahat": 2
         },
-        "landmarks": []
+        "landmarks": [
+          {
+            "type": "hint",
+            "hint": "pay",
+            "room_vnum": 30330,
+            "zelda_coordinate": "A8"
+          }
+        ]
       },
       {
         "coordinate": "B1",
@@ -66,7 +73,8 @@
             "type": "rupee",
             "amount": 30,
             "puzzle": "bomb",
-            "room_vnum": 30661
+            "room_vnum": 30661,
+            "zelda_coordinate": "B8"
           }
         ]
       },
@@ -140,7 +148,8 @@
         "landmarks": [
           {
             "type": "dungeon",
-            "level": 3
+            "level": 3,
+            "zelda_coordinate": "E8"
           }
         ]
       },
@@ -164,7 +173,14 @@
           "blue_leever": 1,
           "peahat": 1
         },
-        "landmarks": []
+        "landmarks": [
+          {
+            "type": "hint",
+            "hint": "talk",
+            "room_vnum": 30332,
+            "zelda_coordinate": "F8"
+          }
+        ]
       },
       {
         "coordinate": "G1",
@@ -229,7 +245,8 @@
           {
             "type": "cave",
             "name": "Wooden Sword Cave",
-            "item": 30219
+            "item": 30219,
+            "zelda_coordinate": "H8"
           }
         ]
       },
@@ -359,8 +376,10 @@
         },
         "landmarks": [
           {
-            "type": "heart",
-            "puzzle": "bomb"
+            "type": "take_any",
+            "puzzle": "bomb",
+            "zelda_coordinate": "L8",
+            "room_vnum": 30654
           }
         ]
       },
@@ -550,7 +569,8 @@
             "type": "rupee",
             "amount": 100,
             "puzzle": "burn",
-            "room_vnum": 30662
+            "room_vnum": 30662,
+            "zelda_coordinate": "C7"
           }
         ]
       },
@@ -623,7 +643,8 @@
           {
             "type": "secret_return",
             "puzzle": "burn",
-            "destination": 15068
+            "destination": 15068,
+            "zelda_coordinate": "E7"
           },
           {
             "type": "potion_shop",
@@ -728,7 +749,8 @@
             "type": "rupee",
             "amount": 30,
             "puzzle": "bomb",
-            "room_vnum": 30665
+            "room_vnum": 30665,
+            "zelda_coordinate": "H7"
           }
         ]
       },
@@ -868,7 +890,8 @@
             "type": "rupee",
             "amount": 100,
             "puzzle": "burn",
-            "room_vnum": 30669
+            "room_vnum": 30669,
+            "zelda_coordinate": "L7"
           }
         ]
       },
@@ -926,7 +949,8 @@
           {
             "type": "dungeon",
             "level": 8,
-            "puzzle": "burn"
+            "puzzle": "burn",
+            "zelda_coordinate": "N7"
           }
         ]
       },
@@ -1031,7 +1055,8 @@
             "type": "rupee",
             "amount": 10,
             "puzzle": "burn",
-            "room_vnum": 30660
+            "room_vnum": 30660,
+            "zelda_coordinate": "B6"
           }
         ]
       },
@@ -1193,7 +1218,8 @@
             "type": "rupee",
             "amount": 10,
             "puzzle": "burn",
-            "room_vnum": 30664
+            "room_vnum": 30664,
+            "zelda_coordinate": "G6"
           }
         ]
       },
@@ -1341,7 +1367,8 @@
             "type": "rupee",
             "amount": 10,
             "puzzle": "burn",
-            "room_vnum": 30668
+            "room_vnum": 30668,
+            "zelda_coordinate": "L6"
           }
         ]
       },
@@ -1448,7 +1475,9 @@
         "landmarks": [
           {
             "type": "heart",
-            "requires": 30412
+            "requires": 30412,
+            "zelda_coordinate": "P6",
+            "room_vnum": 30658
           }
         ]
       },
@@ -1517,7 +1546,8 @@
           {
             "type": "dungeon",
             "level": 7,
-            "puzzle": "recorder"
+            "puzzle": "recorder",
+            "zelda_coordinate": "C5"
           }
         ]
       },
@@ -1537,7 +1567,8 @@
         },
         "landmarks": [
           {
-            "type": "fairy_fountain"
+            "type": "fairy_fountain",
+            "zelda_coordinate": "D5"
           }
         ]
       },
@@ -1588,7 +1619,8 @@
           {
             "type": "dungeon",
             "level": 4,
-            "requires": 30411
+            "requires": 30411,
+            "zelda_coordinate": "F5"
           }
         ]
       },
@@ -1642,8 +1674,10 @@
         },
         "landmarks": [
           {
-            "type": "heart",
-            "puzzle": "burn"
+            "type": "take_any",
+            "puzzle": "burn",
+            "zelda_coordinate": "H5",
+            "room_vnum": 30656
           }
         ]
       },
@@ -1677,7 +1711,8 @@
             "type": "rupee",
             "amount": 30,
             "puzzle": "burn",
-            "room_vnum": 30667
+            "room_vnum": 30667,
+            "zelda_coordinate": "I5"
           }
         ]
       },
@@ -1880,7 +1915,8 @@
             "type": "rupee",
             "amount": 10,
             "puzzle": "armos",
-            "room_vnum": 30672
+            "room_vnum": 30672,
+            "zelda_coordinate": "O5"
           }
         ]
       },
@@ -2097,7 +2133,8 @@
         "landmarks": [
           {
             "type": "dungeon",
-            "level": 1
+            "level": 1,
+            "zelda_coordinate": "H4"
           }
         ]
       },
@@ -2144,7 +2181,8 @@
         },
         "landmarks": [
           {
-            "type": "fairy_fountain"
+            "type": "fairy_fountain",
+            "zelda_coordinate": "J4"
           }
         ]
       },
@@ -2218,7 +2256,8 @@
         "landmarks": [
           {
             "type": "dungeon",
-            "level": 2
+            "level": 2,
+            "zelda_coordinate": "M4"
           }
         ]
       },
@@ -2247,7 +2286,8 @@
             "type": "rupee",
             "amount": 30,
             "puzzle": "armos",
-            "room_vnum": 30671
+            "room_vnum": 30671,
+            "zelda_coordinate": "N4"
           }
         ]
       },
@@ -2343,7 +2383,8 @@
         "landmarks": [
           {
             "type": "cave",
-            "name": "Hero's Grave"
+            "name": "Hero's Grave",
+            "zelda_coordinate": "B3"
           }
         ]
       },
@@ -2364,7 +2405,8 @@
         "landmarks": [
           {
             "type": "dungeon",
-            "level": 6
+            "level": 6,
+            "zelda_coordinate": "C3"
           }
         ]
       },
@@ -2442,7 +2484,8 @@
             "type": "secret",
             "name": "Power Bracelet Armos",
             "item": 30276,
-            "puzzle": "armos"
+            "puzzle": "armos",
+            "zelda_coordinate": "E3"
           }
         ]
       },
@@ -2571,7 +2614,8 @@
             "type": "rupee",
             "amount": 30,
             "puzzle": "burn",
-            "room_vnum": 30666
+            "room_vnum": 30666,
+            "zelda_coordinate": "I3"
           }
         ]
       },
@@ -2680,8 +2724,10 @@
         },
         "landmarks": [
           {
-            "type": "heart",
-            "puzzle": "bomb"
+            "type": "take_any",
+            "puzzle": "bomb",
+            "zelda_coordinate": "M3",
+            "room_vnum": 30655
           }
         ]
       },
@@ -2720,7 +2766,8 @@
             "type": "rupee",
             "amount": 30,
             "puzzle": "bomb",
-            "room_vnum": 30670
+            "room_vnum": 30670,
+            "zelda_coordinate": "N3"
           }
         ]
       },
@@ -2760,8 +2807,10 @@
         "entities": {},
         "landmarks": [
           {
-            "type": "heart",
-            "requires": 30411
+            "type": "take_any",
+            "requires": 30411,
+            "zelda_coordinate": "P3",
+            "room_vnum": 30657
           }
         ]
       },
@@ -2874,7 +2923,8 @@
             "type": "rupee",
             "amount": 30,
             "puzzle": "bomb",
-            "room_vnum": 30663
+            "room_vnum": 30663,
+            "zelda_coordinate": "D2"
           }
         ]
       },
@@ -3064,7 +3114,14 @@
         "entities": {
           "red_tektite": 2
         },
-        "landmarks": []
+        "landmarks": [
+          {
+            "type": "hint",
+            "hint": "pay",
+            "room_vnum": 30331,
+            "zelda_coordinate": "K2"
+          }
+        ]
       },
       {
         "coordinate": "L7",
@@ -3124,7 +3181,15 @@
         "entities": {
           "armos": 1
         },
-        "landmarks": []
+        "landmarks": [
+          {
+            "type": "hint",
+            "hint": "talk",
+            "room_vnum": 30333,
+            "zelda_coordinate": "M2",
+            "puzzle": "armos"
+          }
+        ]
       },
       {
         "coordinate": "N7",
@@ -3397,7 +3462,8 @@
           {
             "type": "dungeon",
             "level": 9,
-            "puzzle": "bomb"
+            "puzzle": "bomb",
+            "zelda_coordinate": "F1"
           }
         ]
       },
@@ -3511,7 +3577,8 @@
           {
             "type": "cave",
             "name": "White Sword Cave",
-            "item": 30251
+            "item": 30251,
+            "zelda_coordinate": "K1"
           }
         ]
       },
@@ -3532,7 +3599,8 @@
         "landmarks": [
           {
             "type": "dungeon",
-            "level": 5
+            "level": 5,
+            "zelda_coordinate": "L1"
           }
         ]
       },
@@ -3609,7 +3677,8 @@
           {
             "type": "cave",
             "name": "Letter Cave",
-            "item": 30500
+            "item": 30500,
+            "zelda_coordinate": "O1"
           }
         ]
       },
@@ -3629,7 +3698,8 @@
           {
             "type": "rupee",
             "amount": 100,
-            "room_vnum": 30673
+            "room_vnum": 30673,
+            "zelda_coordinate": "P1"
           }
         ]
       }
@@ -4456,7 +4526,7 @@
             }
           },
           "entities": {
-            "gel": 1
+            "old_man": 1
           },
           "items": [],
           "role": "room"
@@ -6082,7 +6152,7 @@
             }
           },
           "entities": {
-            "gel": 1
+            "old_man": 1
           },
           "items": [],
           "role": "room"

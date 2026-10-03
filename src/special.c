@@ -42,6 +42,7 @@ DECLARE_SPEC_FUN(       spec_dominion_ward      );
 DECLARE_SPEC_FUN(       spec_ganon              );
 DECLARE_SPEC_FUN(       spec_hyrule_guardian    );
 DECLARE_SPEC_FUN(       spec_hyrule_patra       );
+DECLARE_SPEC_FUN(       spec_hyrule_fairy       );
 DECLARE_SPEC_FUN(       spec_training_dummy     );
 DECLARE_SPEC_FUN(       spec_cast_adept         );
 DECLARE_SPEC_FUN(       spec_cast_cleric        );
@@ -236,6 +237,7 @@ const   struct  spec_type       spec_table      [ ] =
     { "spec_ganon",             spec_ganon              },
     { "spec_hyrule_guardian",   spec_hyrule_guardian    },
     { "spec_hyrule_patra",      spec_hyrule_patra       },
+    { "spec_hyrule_fairy",      spec_hyrule_fairy       },
     { "spec_training_dummy",    spec_training_dummy     },
     { "spec_cast_adept",        spec_cast_adept         },
     { "spec_cast_cleric",       spec_cast_cleric        },
@@ -747,6 +749,21 @@ bool spec_hyrule_guardian( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
  * it and lash at everything near. Each pulse in a fight, the ring strikes
  * every player fighting it for half its level to its level.
  */
+/*
+ * A fountain fairy of Hyrule: as on the NES, the pond restores whoever
+ * comes to it -- every pulse, everyone at her pond who is not fighting is
+ * made whole (hyrule_fairy_restores in hyrule.c).
+ */
+bool spec_hyrule_fairy( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
+{
+    UNUSED_PARAM(ch);
+    UNUSED_PARAM(arg);
+
+    if ( cmd != NULL || mob->in_room == NULL )
+	return false;
+    return hyrule_fairy_restores( mob );
+}
+
 bool spec_hyrule_patra( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 {
     CHAR_DATA *rch;

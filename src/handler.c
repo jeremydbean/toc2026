@@ -2995,7 +2995,7 @@ bool can_see_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 
 
 /*
- * The complete Triforce, worn in the light slot, gives its wearer the
+ * The Triforce, made whole and worn in the light slot, gives its wearer the
  * sight of a level TRIFORCE_SIGHT_LEVEL character with HOLYLIGHT on:
  * through darkness, blindness, invisibility, hiding, stealth and
  * shadowmeld, and through the wizinvis or incognito of anybody at or

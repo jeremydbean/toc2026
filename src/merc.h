@@ -1272,7 +1272,7 @@ const char *default_prompt_text args( ( void ) );
 /* The Master Sword: Ganon carries it, and it hastens whoever wields it
    through an F record on the object (see load_objects). */
 #define OBJ_VNUM_HYRULE_MASTER_SWORD  30200
-/* The complete Triforce, made with COMBINE TRIFORCE from the nine pieces
+/* The Triforce (shown as just that), made with COMBINE TRIFORCE from the nine pieces
    (do_combine in act_info.c). It is a light, and worn
    in the light slot it gives the sight of a level TRIFORCE_SIGHT_LEVEL
    character with HOLYLIGHT on -- see triforce_sight() in handler.c. */
@@ -1301,6 +1301,84 @@ const char *default_prompt_text args( ( void ) );
 #define IS_HYRULE_CHEST(vnum) \
     ( (vnum) >= OBJ_VNUM_HYRULE_CHEST_FIRST \
    && (vnum) <= OBJ_VNUM_HYRULE_CHEST_LAST )
+
+/* Hyrule as a whole: its rooms, its overworld screens, and its people
+   (scripts/build_hyrule_area.py writes the people from the npcs table of
+   data/hyrule_mob_prose.json; is_hyrule_bystander() in fight.c keeps every
+   one of them out of every fight). */
+#define IS_HYRULE_ROOM_VNUM(vnum)  ( (vnum) >= 30200 && (vnum) <= 30799 )
+#define HYRULE_OVERWORLD_FIRST     30200
+#define HYRULE_OVERWORLD_LAST      30327
+#define HYRULE_POTION_SHOP_FIRST   30692
+#define HYRULE_POTION_SHOP_LAST    30698
+#define HYRULE_NPC_FIRST           30346
+#define HYRULE_NPC_LAST            30449
+#define HYRULE_ZELDA_VNUM          30338
+#define HYRULE_PIECE_VNUM(level)   ( 30399 + (level) )
+/* Enemies are generated once per kind per band at TIER + kind * 10 +
+   band - 1; a kind is named by the catalog record it used to be. */
+#define HYRULE_TIER_FIRST_VNUM     31000
+#define HYRULE_TIER_LAST_VNUM      32459
+#define HYRULE_KIND_FROM_TIER(vnum) ( 30200 + ( (vnum) - HYRULE_TIER_FIRST_VNUM ) / 10 )
+#define HYRULE_KIND_KEESE          30211
+#define HYRULE_KIND_GIBDO          30219
+#define HYRULE_KIND_GEL            30300
+#define HYRULE_KIND_POLS_VOICE     30308
+#define HYRULE_KIND_DIGDOGGER      30309
+#define HYRULE_DODONGO_VNUM        30218
+
+/* A dungeon's map and compass: ITEM_MAP with this in value[0] and the
+   dungeon's level in value[4] (hyrule.c draws and points them). */
+#define HYRULE_DUNGEON_MAP         90
+#define HYRULE_DUNGEON_COMPASS     91
+
+/* What the caves, the shops and the chests hold, and what hyrule.c gives
+   each its use. */
+#define OBJ_VNUM_HYRULE_WOODEN_SWORD      30219
+#define OBJ_VNUM_HYRULE_BOW               30222
+#define OBJ_VNUM_HYRULE_BOOMERANG         30232
+#define OBJ_VNUM_HYRULE_MAGICAL_ROD       30245
+#define OBJ_VNUM_HYRULE_WHITE_SWORD       30251
+#define OBJ_VNUM_HYRULE_POWER_BRACELET    30276
+#define OBJ_VNUM_HYRULE_MAGICAL_BOOMERANG 30410
+#define OBJ_VNUM_HYRULE_RECORDER          30413
+#define OBJ_VNUM_HYRULE_RED_CANDLE        30414
+#define OBJ_VNUM_HYRULE_MAGIC_BOOK        30415
+#define OBJ_VNUM_HYRULE_LETTER            30500
+#define OBJ_VNUM_HYRULE_HEART_CONTAINER   30501
+#define OBJ_VNUM_HYRULE_ARROWS            30543
+#define OBJ_VNUM_HYRULE_SHOP_KEY          30545
+#define OBJ_VNUM_HYRULE_SHOP_KEY_CHEAP    30550
+#define OBJ_VNUM_HYRULE_SHOP_BLUE_RING    30551
+#define OBJ_VNUM_HYRULE_BLUE_POTION       30553
+#define OBJ_VNUM_HYRULE_RED_POTION        30554
+#define OBJ_VNUM_HYRULE_MAGICAL_SWORD     30649
+#define OBJ_VNUM_HYRULE_BOMBS             30695
+#define OBJ_VNUM_HYRULE_BOMB_BAG          30696
+#define IS_HYRULE_MAGICAL_SHIELD(vnum) \
+    ( (vnum) == 30541 || (vnum) == 30544 || (vnum) == 30547 )
+/* Each guardian's drop table: five pieces at FIRST + (level - 1) * 5. */
+#define OBJ_VNUM_HYRULE_BOSS_DROP_FIRST   30650
+#define HYRULE_BOSS_DROPS_PER_GUARDIAN    5
+#define HYRULE_BOSS_DROPS_PER_KILL        2
+
+/* One row of Hyrule's dungeon order, hyrule_progress_gate in act_move.c:
+   where the dungeon is, and what its two gates ask for. The maps and
+   compasses (hyrule.c) read the same rows. */
+typedef struct hyrule_dungeon_gate
+{
+    int         level;
+    int         first_room;
+    int         last_room;
+    int         entrance;
+    int         boss_room;
+    int         goal_room;
+    int         entry_need;     /* 0: nothing */
+    const char *entry_refusal;
+    int         boss_need;      /* 0: nothing */
+    int         boss_also;      /* another object that will do, or 0 */
+    const char *boss_refusal;
+} HYRULE_DUNGEON_GATE;
 
 /* An ordinary bag, which MIRROR RESTORE renames and enlarges for the
    kit it is handing back. */
@@ -2010,6 +2088,12 @@ struct  pc_data
     unsigned long       achievement_hyrule_maps;
     unsigned long       achievement_hyrule_compasses;
     unsigned long       achievement_triforce_shards;
+    /* Hyrule's once-per-character secrets: money caves, Heart Containers,
+       take-any choices, bigger bomb bags (hyrule.c). Saved as
+       HyruleSecrets under case 'H'. */
+    unsigned long       hyrule_secrets;
+    /* Hyrule enemies killed in a row without a wound; not saved. */
+    int                 hyrule_streak;
     int                 trail[TRAIL_LEN];
     sh_int              trail_head;
     sh_int              exp_bonus;       /* cumulative % bonus to exp gains (e.g. 50 = +50%) */
@@ -3009,6 +3093,39 @@ bool    room_is_private ( ROOM_INDEX_DATA *pRoomIndex );
 bool    can_enter_private_room ( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex );
 bool    hyrule_gate_refuses ( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
                               ROOM_INDEX_DATA *to );
+const HYRULE_DUNGEON_GATE *hyrule_dungeon_gate ( int level );
+bool    hyrule_carries  ( CHAR_DATA *ch, int vnum );
+
+/* hyrule.c */
+bool    hyrule_is_dungeon_tool ( const OBJ_DATA *obj );
+void    hyrule_show_map        ( CHAR_DATA *ch, OBJ_DATA *obj );
+void    hyrule_show_compass    ( CHAR_DATA *ch, OBJ_DATA *obj );
+bool    hyrule_look_tool       ( CHAR_DATA *ch, char *argument );
+void    hyrule_enter_room      ( CHAR_DATA *ch );
+int     hyrule_hearts          ( CHAR_DATA *ch );
+bool    hyrule_claim           ( CHAR_DATA *ch, OBJ_DATA *obj );
+int     hyrule_bombs_carried   ( CHAR_DATA *ch );
+int     hyrule_bomb_capacity   ( CHAR_DATA *ch );
+bool    hyrule_use_bomb        ( CHAR_DATA *ch );
+bool    hyrule_buy_refuses     ( CHAR_DATA *ch, OBJ_DATA *obj );
+bool    hyrule_bought          ( CHAR_DATA *ch, OBJ_DATA *obj );
+bool    hyrule_bomb_creature   ( CHAR_DATA *ch, CHAR_DATA *victim );
+bool    hyrule_shoot           ( CHAR_DATA *ch, OBJ_DATA *weapon, char *argument );
+void    hyrule_burn_creature   ( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *candle );
+bool    hyrule_set_bait        ( CHAR_DATA *ch, OBJ_DATA *bait );
+bool    hyrule_play_recorder   ( CHAR_DATA *ch );
+void    hyrule_after_quaff     ( CHAR_DATA *ch, int vnum );
+bool    hyrule_rod_is_endless  ( const OBJ_DATA *wand );
+void    hyrule_after_zap       ( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *wand );
+bool    hyrule_paid_to_talk    ( CHAR_DATA *ch, CHAR_DATA *victim, int amount );
+bool    hyrule_keeper_refuses  ( CHAR_DATA *keeper, CHAR_DATA *ch );
+void    hyrule_boss_drops      ( CHAR_DATA *boss, OBJ_DATA *corpse );
+void    hyrule_note_kill       ( CHAR_DATA *ch, CHAR_DATA *victim );
+void    hyrule_note_wound      ( CHAR_DATA *victim );
+bool    hyrule_fairy_restores  ( CHAR_DATA *fairy );
+
+/* achievements.c, beside the others */
+bool    achievement_has_key    ( const CHAR_DATA *ch, const char *key );
 bool    triforce_sight  ( const CHAR_DATA *ch );
 int     sight_trust     ( const CHAR_DATA *ch );
 bool    equipment_grants_affect ( const CHAR_DATA *ch, int bit );

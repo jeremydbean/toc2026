@@ -1,6 +1,6 @@
 """Hyrule's worn powers, in a running game.
 
-The complete Triforce is a light, and worn in the light slot it gives the
+The Triforce, made whole, is a light, and worn in the light slot it gives the
 sight of a level 59 character with HOLYLIGHT on: through invisibility and
 the wizinvis of anybody at or below 59, and no further. The Master Sword
 hastens whoever wields it and the Red Ring of Hyrule wraps its wearer in
@@ -34,7 +34,7 @@ CLOCK_FLASK = 30628     # the Death Mountain clock-flask: a potion of haste
 
 def run(client, command: str, settle: float = 1.5) -> str:
     # Swallow what arrived since the last command first -- "Ztrigod gives
-    # you the complete Triforce" names the god the look must not see.
+    # you The Triforce" names the god the look must not see.
     client.drain(0.5)
     mark = len(client.transcript)
     client.send(command)

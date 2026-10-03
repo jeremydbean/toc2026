@@ -1,164 +1,598 @@
 {
   "_comment": [
     "Mobile text for area/hyrule.are, read by scripts/build_hyrule_area.py.",
-    "enemies: keyed by ENEMY_TYPES kind; every band of a kind shares it.",
+    "enemies: keyed by ENEMY_TYPES kind, then by level band; every band is written on its own.",
     "bosses: keyed by dungeon level; replaces the retained record's long",
     "and description lines (and its short name, where one is given).",
-    "'long' is one line; 'description' is pre-wrapped at 75 columns.",
+    "npcs: everyone who is not an enemy, one record each, with its vnum: old_man:L<level>:<room>,",
+    "cave:/take_any:/hint:/moblin:/merchant:/potion:/repair:/gambler:/fairy:<guide coordinate>, zelda.",
+    "'long' is one line; descriptions are plain prose the generator wraps at 75 columns.",
     "Written from the NES game; see wiki/hyrule-area.md for the sources."
   ],
   "enemies": {
     "red_octorok": {
-      "long": "A red octorok scuttles about on stubby legs, snout puckered to spit.",
-      "description": "A squat, red, octopus-like creature on four stubby legs, its snout a\nshort tube that puckers and swells. It wanders in short, jerky bursts,\nstops, turns to face its prey and spits a hard round stone. A shield\nturns the stones aside. Red octoroks are slow and easily beaten."
+      "1": {
+        "long": "A young red octorok waddles through the grass, snout twitching.",
+        "description": "Barely the size of a cooking pot, this red octorok still has the soft, blotchy skin of a hatchling, and grass seed clings to its stubby legs. It blunders about the meadows near the Eagle's gate in short, aimless spurts, often turning the wrong way before it remembers to aim. When it does, it puffs its tube of a snout and spits a pebble that any shield will knock aside. A couple of honest blows end it."
+      },
+      "2": {
+        "long": "A red octorok squats by the water, gulping down pebbles to spit.",
+        "description": "This octorok has filled out since it hatched, its red hide gone glossy from long days wallowing in the shallows by the river landing. It keeps a cheek full of red-flecked stones scooped from the lakeside grass and swaggers between the bushes as if it owned the field. It stops, swivels squarely toward whoever comes near and fires, but its aim is still poor and a raised shield sends the stones skipping away."
+      },
+      "3": {
+        "long": "A mossy red octorok lurks among the ferns, its snout aimed outward.",
+        "description": "Moss has crept into the creases of this octorok's leathery red skin, and its four legs are stained green from wading forest streams and lake margins. It has learned to wait in cover rather than wander, lying still among ferns or reeds until something passes into its line, then rising to spit a stone hard enough to crack bark. Strike from the side while it is turning; a shield held forward takes the stones well enough."
+      },
+      "4": {
+        "long": "A mud-caked red octorok wades the shallows, cheeks bulging with stones.",
+        "description": "Broad as a barrel and caked in grey river mud that dries to a crust on its back, this octorok has grown fat on the frogs and fish of the lakeshore below the Snake's island. Old scars from fishing hooks pucker its lips. It no longer wanders much; it holds a stretch of bank and spits volleys of stones that leave craters in the turf. A shield still turns them, though each one jars the arm to the shoulder."
+      },
+      "5": {
+        "long": "A salt-crusted red octorok braces against the sea wind on the cliff edge.",
+        "description": "Sea spray has bleached this old octorok's hide to a blotchy rust and left a white rime of salt in every wrinkle. It squats at the very lip of the eastern cliffs, legs splayed against the gusts, and gargles brine before it spits, so its stones fly wet and fast. Years of buffeting have made it heavy and hard to shift. Keep a shield up and close the distance, because it will not chase you into the open grass."
+      },
+      "6": {
+        "long": "A grizzled red octorok crouches in the windblown grass, snout flared.",
+        "description": "The wind off the southeastern coast has flattened the grass around this octorok into a nest, and it has sat in that nest long enough to grow huge and sour. One eye is clouded white, the other sharp. Its snout is ringed with calluses from spitting, and it picks the roundest, heaviest stones from the scatter at its feet. A shield stops them, but they come in quick pairs now, and it wheels to face you faster than a young one."
+      },
+      "7": {
+        "long": "A huge red octorok broods on the grassy bluff above the breaking waves.",
+        "description": "This must be among the oldest octoroks in Hyrule, its red gone dark as dried blood and its four legs thick as fence posts. Barnacle scars and old sword cuts map its back. It guards the bluff outside the coastal cave as patiently as a stone, motionless until something steps into line, and then it spits rocks that whistle. Shields still turn them, but only just, and it takes a long, hard fight to bring it down."
+      }
     },
     "blue_octorok": {
-      "long": "A blue octorok darts across the grass, spitting stones as it goes.",
-      "description": "A blue, octopus-like creature on four stubby legs with a tubular\nsnout. Tougher and quicker than its red cousin, it zigzags about in\nfast little runs, wheels to face whoever comes near and spits a hard\nstone with real force. It takes several blows before it pops into a\npuff of smoke."
+      "2": {
+        "long": "A blue octorok scuttles along the damp riverbank, snout working.",
+        "description": "This one is barely grown, its blue hide still soft and speckled with river silt from the landing where it hatched. It scuttles in short bursts along the wet stones near the crescent gate, stops dead, swivels its stubby snout and spits a pebble before scampering off again. Its aim is wild and its stones are small, and a raised shield turns every one of them aside with a dull click."
+      },
+      "3": {
+        "long": "A blue octorok wheels about in the long grass and spits a stone.",
+        "description": "Grass stains streak the belly of this quick blue octorok, and burrs cling to the folds of its four short legs. It favours open meadow and the banks near the docks, where it can run in fast zigzags, wheel around to face a traveller and fire a hard grey stone straight down the line of its snout. Step out of that line and it must turn before it can shoot again, which buys a moment to strike."
+      },
+      "4": {
+        "long": "A blue octorok squats on the lake shingle, its snout puckering.",
+        "description": "Lake Hylia has fattened this octorok on whatever washes up along the shingle, and its blue skin has a wet, oily sheen marked with thorn scratches from the brambles inland. It is heavier than its young cousins and does not flinch from a blade, taking blow after blow while it pumps out stones that crack against rock. A shield held square still stops them, though the impact numbs the arm."
+      },
+      "5": {
+        "long": "A blue octorok clings to the cliff edge, crusted white with salt.",
+        "description": "Sea wind has scoured this octorok to a faded slate blue, and a rime of dried salt crusts its rubbery hide around the eyes and snout. It lives on the cliff tops where gulls wheel, and it has learned to spit its stones downwind so the gale carries them farther and faster than any shot on the lowland grass. Only a shield turned to meet them will stop them, and it needs many heavy cuts to fall."
+      },
+      "6": {
+        "long": "A blue octorok lurks among the tide pools, barnacles on its back.",
+        "description": "Barnacles have taken root along the back of this old octorok, and one of its four legs ends in a healed stump from some fight among the tide pools of the southeastern coast. It moves in a rolling, lopsided scuttle but has lost none of its speed, and the stones it spits are lumps of beach rock that ring off a shield like a hammer on an anvil. It shrugs off blows that would burst younger kin."
+      },
+      "7": {
+        "long": "A huge blue octorok guards the path amid a litter of spat stones.",
+        "description": "The largest of its kind for leagues, this octorok has grown a hide so dark it is nearly black, rippled with old scars where swords once bit and failed to finish it. It holds a stretch of the southern paths as its own and has spat so many stones there that they lie scattered like hail. Each shot comes out with the force of a sling bullet, and only a raised shield keeps a skull whole against it."
+      }
     },
     "red_moblin": {
-      "long": "A red moblin, a doglike brute with a spear, sniffs the air for prey.",
-      "description": "A hulking, doglike humanoid with a pig's snout, floppy ears and a\nbristling red hide. It stalks the forest paths in a lumbering gait and\nhurls crude spears at anything that crosses its line of sight. Its\nhide is thick but not thick enough to turn a good sword."
+      "3": {
+        "long": "A red moblin gnaws a bone among the knotted roots of the thicket.",
+        "description": "This one is barely grown, its red bristles still patchy over pink hide and its ears too big for its head. It has made a nest of snapped arrows and stolen bones beneath the thicket's knotted roots and guards it with a short, crooked spear. When it spots a stranger it yaps, rears back and hurls the spear in a straight line, and a raised shield turns the throw aside with a dull clack."
+      },
+      "4": {
+        "long": "A red moblin squats beside a cold firepit, sharpening a spear shaft.",
+        "description": "Heavier through the shoulders than the thicket whelps, this brute has the churned leaf mould of the southern woods caked to its knees and soot from old cookfires smeared across its snout. A torn ear hangs in a ragged flap. It hunts in short, stamping patrols between the orderly trees, and it carries a bundle of spears on its back so that it can throw one after another down any open lane."
+      },
+      "5": {
+        "long": "A red moblin crouches on the mossy trail, ears pricked toward the spring.",
+        "description": "Moss stains streak the red fur of this lean, long-legged hunter, which has learned that wounded travellers limp north along the fairy path toward the healing spring. It waits beside the trail with its snout low, then rises and flings spears with a practised overhand snap. Old sword cuts have healed white across its belly, and it keeps its distance from anyone carrying a shield, circling to find an open side."
+      },
+      "6": {
+        "long": "A red moblin stalks between identical trunks, spear cocked to throw.",
+        "description": "Owl feathers are knotted into the coarse mane of this grizzled moblin, a trophy habit picked up in the endless sameness of the Lost Woods. Its hide has darkened to the colour of dried blood and is crosshatched with scars. It knows every looping path here and uses them, vanishing behind one trunk and reappearing at another to send a heavy spear whistling straight along the trail toward the unwary."
+      },
+      "7": {
+        "long": "A red moblin prowls the dark pines, resin matted into its bristles.",
+        "description": "Pine resin has glued this old moblin's bristles into stiff black spikes, and needles cling all over its hide like a second pelt. It is taller than any village door, gaunt and grey around the jowls, with one eye clouded white. In the gloom under the pines it hunts by smell, snorting, and when it catches a scent it hurls long iron-tipped spears hard enough to splinter a sapling, though a shield still stops them."
+      },
+      "8": {
+        "long": "A red moblin stands guard by the lone dry bush, snout raised to the cold.",
+        "description": "The largest and oldest of its kind in the eastern forest, this moblin has a back bowed by age and arms like knotted oak. Its red fur has faded to rust and is bald in patches where old burns healed badly. It guards the quiet clearing as if it knew what lies beneath the square-cut stone, and it throws its spears in quick pairs, the second aimed where a dodging traveller is likely to step."
+      }
     },
     "blue_moblin": {
-      "long": "A blue moblin hefts a spear and grunts, its piggish snout twitching.",
-      "description": "A big, doglike brute with a pig's snout and a blue-grey hide tougher\nthan any red moblin's. It patrols the deep woods in pairs and packs,\nthrowing spear after spear in straight lines, and it takes several\nhard blows to bring down. Some of its kind keep secret caves full of\nrupees and give them away, so long as nobody tells."
+      "3": {
+        "long": "A blue moblin stalks the forest trail, a fresh spear on its shoulder.",
+        "description": "A young blue moblin, its hide still patchy where grey-blue bristles have yet to come in, and its spear a raw sapling with a flaked stone head lashed on. It walks the trails near the ring of trees with a bully's swagger, grunting at shadows, and hurls spears in straight lines as soon as anything moves on the path ahead. Stepping aside from the throw leaves it fumbling for another shaft."
+      },
+      "4": {
+        "long": "A blue moblin sniffs at the leaf mould, spear held low and ready.",
+        "description": "Leaf mould cakes the clawed feet of this blue moblin, and a broken arrowhead is still lodged in the thick skin of one shoulder. It ranges the southern woods with its pack, snuffling for scent along the rows of trees, then straightening to fling a spear that flies flat and true. It takes several solid blows before it drops, and it bellows to its kin the moment it is hurt."
+      },
+      "5": {
+        "long": "A blue moblin crashes through the undergrowth, snout to the wind.",
+        "description": "Pine sap and torn moss mat the coarse blue-grey hide of this moblin, a seasoned hunter with one ear notched and a necklace of teeth around its thick neck. It knows the tangled western woods better than any traveller and doubles back on its own tracks to come at prey from behind. Its spears are iron-tipped now, thrown hard enough to split a sapling, and it will not stop chasing once it has a scent."
+      },
+      "6": {
+        "long": "A blue moblin waits in the green gloom, a spear drawn back to throw.",
+        "description": "Grey has crept into the muzzle of this hulking moblin, and moss grows in the deep scars that cross its back like the furrows of a plough. It haunts the darkest parts of the forest where the canopy shuts out the sky, standing so still among the trunks that it seems one of them until the first spear leaves its hand. A blow that would fell a red moblin barely makes this one grunt."
+      },
+      "7": {
+        "long": "A blue moblin chieftain gnaws a bone beside a cold campfire.",
+        "description": "A massive old moblin, broad as a door, with a hide gone the colour of slate and an iron collar riveted round its neck as a mark of rank. It lords over the hollow where its kin camp, and it keeps the best spears for itself, long heavy shafts it throws in straight lines with frightening speed. Only patience and many hard blows bring it down, and it fights on long after its pack has fled."
+      }
     },
     "red_tektite": {
-      "long": "A red tektite crouches on long jointed legs, ready to spring.",
-      "description": "A one-eyed, spiderlike creature with a round red body and four long,\njointed legs. It crouches, then flings itself into the air in high,\nunpredictable leaps, landing hard and springing off again before a\nblade can find it. Its single eye never stops watching."
+      "1": {
+        "long": "A red tektite hops clumsily between the crags, legs splayed wide.",
+        "description": "Hardly bigger than a hen, this young tektite has a glossy red shell and legs that still seem a size too long for it. It lives among the brown crags just west of the quiet field, leaping in short, erratic hops and sometimes landing on its back before righting itself. Its one eye watches every movement. Wait for it to come down and hit it then, because in the air it will not stay still long enough."
+      },
+      "3": {
+        "long": "A red tektite clings to the cliff edge above the glittering lake.",
+        "description": "Lake spray has left a pale crust of dried silt along the joints of this tektite's legs, and its shell is a deep, weathered red. It springs between the cliff tops and the hushed grove in high, unpredictable arcs, and its landings leave paired dents in the rock. It is not fast on the ground, so the moment after it touches down, while it crouches for the next leap, is when a sword will find it."
+      },
+      "4": {
+        "long": "A red tektite bounds over the rolling hills, landing with a heavy thump.",
+        "description": "Its shell is scored with deep scratches from years of landing on the gouged rock of the scarred cliffs, and the red has darkened toward maroon. It is the size of a large dog and leaps so high it is lost against the sky for a moment before crashing down. It prefers to drop directly onto its prey. A careful fighter steps aside from the shadow and strikes while its legs are still bent from the landing."
+      },
+      "5": {
+        "long": "A red tektite crouches on a high boulder, its single eye glinting.",
+        "description": "On the heights above the candle merchant's hollow the tektites grow old and broad, and this one has a shell as wide as a cart wheel, pocked and patched with lichen. Tallow smoke drifting from the cave mouth has stained its legs grey. It has pounded the rock here into a field of dents and leaps with fearsome reach, but it still must crouch before each spring, and that pause is its weakness."
+      }
     },
     "blue_tektite": {
-      "long": "A blue tektite bobs on its springy legs, its single eye unblinking.",
-      "description": "A round blue body slung between four long, jointed legs, with one\nstaring eye in the middle. It leaps further and more often than the\nred kind, bounding across the rocks in long arcs and dropping onto\nwhoever stands beneath. Catching it mid-crouch is the trick."
+      "2": {
+        "long": "A blue tektite bounces from boulder to boulder across the stone field.",
+        "description": "A small blue tektite, its body no larger than a melon and its legs still thin and wobbly at the joints. Grey grit from the boulders it lands on dusts its shell. It leaps farther than its red cousins, but it lands clumsily and often has to scrabble for its footing, and those few heartbeats while it crouches to gather itself are the time to strike before it springs away again."
+      },
+      "3": {
+        "long": "A blue tektite springs along the craggy ridge, dislodging loose stones.",
+        "description": "Wind off the southern ridge has bleached this tektite's shell from deep blue to the pale shade of a winter sky, and one of its legs bends at a crooked angle where it once broke and mended. It is quick and confident now, sailing in long arcs over the jagged brown rock and dropping onto whatever moves below. Wait for it to settle on its haunches before swinging, because in the air it is nearly impossible to hit."
+      }
     },
     "red_leever": {
-      "long": "A red leever spins up out of the sand, whirling like a drill.",
-      "description": "A spiny, plantlike creature that lives beneath the sand and bores up\nto the surface with a spinning hiss. Red leevers rise near anyone who\nwalks the dunes, charge straight across the ground, then dive back\nunder and come up somewhere else. They are weak, but they never stop."
+      "3": {
+        "long": "A small red leever bores up through the sand, spinning with a hiss.",
+        "description": "This leever is young, its spines still soft and pinkish at the tips and its whorl of leaves no wider than a hand. It lives in the damp sand by the lake, where wet grains cling to it and clot between its spines. It surfaces close to anyone who crosses the flats, scuttles straight at them along the ground, then screws itself back down and rises somewhere else. It is feeble alone, but it keeps coming back."
+      },
+      "4": {
+        "long": "A red leever corkscrews out of a burrow hole and rushes across the sand.",
+        "description": "Wind-scoured and hard, this leever has the dull brick colour of the southern sands, and its spines are worn blunt from boring through grit. It rises with a dry rattle rather than a hiss, charges in a straight line across the ripples and vanishes before a counterstroke can land. Watch the burrow holes that open and close around you; the next one to bulge is where it will surface. Strike as it climbs out."
+      },
+      "5": {
+        "long": "A rust-red leever whirls up from the basin floor near the Lizard's gate.",
+        "description": "Stained the same deep rust as the hidden basin where it lives, this leever is broad at the crown and heavy enough to leave a trench where it drags itself. Its spines are long and hooked, and fine red dust streams off them when it spins. It guards the sand before the Lizard's door as if it knew what lay inside, surfacing beside travellers, charging, then sinking again. Patience and a ready blade wear it down."
+      },
+      "6": {
+        "long": "A great red leever rises out of the dunes, spines rattling in the wind.",
+        "description": "Old and enormous, this leever has grown a ragged collar of dead leaves around its spinning crown, bleached almost white by the sun on the southern dunes. It surfaces with a roar of sand, and the whorls it leaves behind take a long while to fill. It charges harder than its smaller kin and burrows faster, so it is rarely above ground for long. Stand still, wait for the sand to bulge, and hit hard the instant it appears."
+      }
     },
     "blue_leever": {
-      "long": "A blue leever churns through the sand, spinning toward its prey.",
-      "description": "A spinning, cactus-like thing that burrows through sand and soil. The\nblue kind is tougher than the red, wanders the open ground for longer\nbefore it sinks, and turns to chase whoever it senses. Its spinning\nbody rasps like a millstone, and a stroke that lands must land hard."
+      "3": {
+        "long": "A blue leever spins up out of the loose sand, needles bristling.",
+        "description": "A squat, thorny drum of blue-green flesh no taller than a boot, its spines still soft and pale at the tips. Pale sand pours off it as it surfaces. It spins in place for a moment as if getting its bearings, then rolls after the nearest footfall with a gritty hum. Unlike the red kind it does not sink again quickly, so there is time to meet it with steady blows rather than chase it from hole to hole."
+      },
+      "4": {
+        "long": "A blue leever whirls through the dunes, leaving a spiral furrow behind.",
+        "description": "Its spines are long and hardened now, worn to a polish by years of grinding through the dune strip, and its blue skin has bleached almost white on the side it keeps toward the sun. It surfaces near the stone soldiers and below the hills alike, wherever the sand runs soft, and it pursues anyone it senses with dogged patience. It burrows only after a long chase, so standing ground against it is wiser than running."
+      },
+      "9": {
+        "long": "A blue leever grinds up through frost-crusted sand atop Spectacle Rock.",
+        "description": "Nothing that lives this high on Death Mountain stays small, and this leever is as broad as a cartwheel, its spines thick as arrows and rimed with frost. Thin summit air has darkened its hide to slate blue. It boils out of the sand drifted against Spectacle Rock with a noise like a millstone, and it chases relentlessly before it ever thinks of burrowing. Only heavy, committed strokes do it any harm."
+      }
     },
     "red_lynel": {
-      "long": "A red lynel paws the earth, a sword in its hand and fire in its eye.",
-      "description": "A great four-legged beast with the body of a horse and the torso,\nmane and face of a lion, armoured and carrying a heavy sword. Lynels\nroam the high mountain paths and hurl blades of force from their\nswords at anything in their line. Even the red ones are among the\nmost dangerous beasts of the overworld."
+      "5": {
+        "long": "A red lynel prowls the western crags, its sword scraping the rock.",
+        "description": "Lean and restless, this red lynel is young enough that its mane is still more fuzz than flame, and its sword is a plain notched blade a little too long for its arm. Claw marks on the crags at the western edge are its own, scored while it sharpened hooves and steel. It charges along straight tracks and flings beams of force from its sword at anything in line. Even young, it is deadlier than most things on the plains."
+      },
+      "6": {
+        "long": "A battle-worn red lynel thunders along the ridge, mane like a torch.",
+        "description": "Powerful and scarred, this red lynel has a mane of deep copper that the thin mountain wind whips about like flame, and its breastplate is gouged with the marks of old fights near the Dragon's gate. It knows every pass and terrace of the high ridges and charges down them with terrible speed. The beams from its sword reach across whole slopes. Fight it with a shield ready and strike while it turns to charge again."
+      }
     },
     "blue_lynel": {
-      "long": "A blue lynel stamps its hooves and levels its sword at you.",
-      "description": "A centaur-like monster with a lion's head and mane, a horse's body\nand blue-scaled armour over its chest. It charges the mountain\ntracks and flings beams of force from its sword, and its hide shrugs\noff weak blows. Blue lynels are the strongest beasts that walk the\nopen land of Hyrule."
+      "5": {
+        "long": "A blue lynel prowls the wet rocks, spray beading on its blue scales.",
+        "description": "This lynel is young for its kind, its lion's mane still short and dark and its blue scale armour bright and unmarked. It roams the spray-soaked rocks below the White Sword falls and the bluffs at the meadow's western edge, restless and quick to charge. It points its sword and looses beams of force along straight lines, and its thick hide turns aside weak blows. Even this young, it is one of the deadliest things in the open."
+      },
+      "6": {
+        "long": "A blue lynel paces the broken terraces, sword raised against the wind.",
+        "description": "Wind and grit have dulled the blue scales on this lynel's chest to the colour of slate, and its mane is matted with mountain dust. Long scars cross its flanks where something once fought it and lost. It patrols the gorges and shelves of the western highlands in tireless circuits, its hooves sinking deep into the dust. Its sword throws bright beams down any straight line of rock, and only heavy blows get through its hide."
+      },
+      "8": {
+        "long": "A massive blue lynel stands watch on the high ledge, mane streaming.",
+        "description": "Broader across the shoulders than any horse, this lynel wears blue scale that has been cracked and regrown so often it lies in uneven ridges. Its mane has gone grey at the roots, and one tusk is snapped short. It holds the high meadows near Spectacle Rock as its own and charges anything that climbs into view, flinging sword beams long before it closes. Its hide shrugs off all but the strongest steel."
+      },
+      "9": {
+        "long": "An ancient blue lynel stands on the summit, frost glinting in its mane.",
+        "description": "Frost rimes the mane of this ancient lynel, and its scale armour has darkened to the colour of a storm sky after untold years on the summit of Death Mountain. Its eyes are pale and terribly calm. It moves little, but when it does it crosses the saddle of Spectacle Rock in a few strides, and the beams from its sword split boulders. Its hide is like iron; only the finest blade and many blows will fell it."
+      }
     },
     "peahat": {
-      "long": "A peahat whirls through the air on spinning petals.",
-      "description": "A great flower whose petals spin like the blades of a top, lifting it\noff the ground to whirl and dip over the fields. While it spins it is\nnearly impossible to hurt, and it bumps into whatever it chases. Only\nwhen it slows and settles to rest can a blade cut it down."
+      "2": {
+        "long": "A small peahat spins up from the flowers, wobbling as it rises.",
+        "description": "This peahat is a young bloom, its petals still pale yellow and slightly crumpled, and it spins unevenly so that it lurches and dips over the flowered slope at the foot of Death Mountain. It rises a little way, drifts toward whatever moves, and bumps clumsily into it. While its petals whirl no blade can catch it. It tires quickly, though, and when it settles to rest it can be cut down with ease."
+      },
+      "3": {
+        "long": "A peahat whirls over the flower field, petals humming like a top.",
+        "description": "Bright orange petals ring the green heart of this peahat, and pollen streams from it in a gold haze as it spins. It rises from the fields in a long lazy spiral, swoops low over the grass, and rams anyone who stands in its path. Steel simply rings off the spinning petals. Patience is the answer: sooner or later its spin slows, it drops to the grass, and in that moment it is helpless against a sword."
+      },
+      "4": {
+        "long": "A sturdy peahat skims low over the meadow, petals blurring in the sun.",
+        "description": "This peahat has thick, waxy petals of deep gold edged with brown, and a stem stiffened into a short woody shaft from years of spinning. It hunts across the meadows and the lake isle with a purposeful whirr, rising high, then diving to batter whoever it finds. It is untouchable in the air. Only when its petals slow and it sinks onto the grass to rest can a weapon find it, so stay clear and wait."
+      },
+      "5": {
+        "long": "A peahat wheels above the field, its petals singed along the edges.",
+        "description": "Its petals were singed long ago by the black powder smoke drifting from the bomb merchant's cave, so the outer ring is brown and curled while the inner ring blazes red. It flies higher and faster than the peahats of the gentler fields and stays aloft longer before resting. Swords cannot touch it while it whirls. Keep moving, let it overshoot, and strike in the brief moment after it lands."
+      },
+      "6": {
+        "long": "A ragged peahat fights the mountain wind, its torn petals spinning.",
+        "description": "Mountain gales have torn the petals of this peahat into ragged strips, and it spins with a harsh flapping sound instead of a hum. Grit from the windswept shelves has scoured its colour to a faded rust. It is old and heavy and lets the wind carry it in long sweeps before dropping on its prey. No blade can touch it while it turns, but it must land to rest at last, and then it is as vulnerable as any flower."
+      },
+      "8": {
+        "long": "A giant peahat spins above the high meadow, petals beating the air.",
+        "description": "Broad as a cartwheel, this ancient peahat has petals thick as leather and a dark, knotted heart scarred by blades that caught it on the ground. It rides the updraughts over the highland meadows near Spectacle Rock and comes down like a falling millstone. While it spins nothing harms it. It lands to rest less often than its younger kin, so be ready the moment it settles, and strike before it lifts away."
+      }
     },
     "zora": {
-      "long": "A zora surfaces in the water, its throat glowing with a fireball.",
-      "description": "A finned, scaly fish-man with a wide mouth and a crest of green fins.\nIt hides beneath rivers and lakes, rises without warning, spits a\nball of fire at whoever stands on the bank, and sinks out of sight\nbefore the answer can reach it. A shield can turn its fireballs."
+      "2": {
+        "long": "A zora pokes its finned head up from the shallows, then sinks.",
+        "description": "A young zora, its scales still a bright lake green and its fin crest small and soft. It keeps to the open water off Lake Hylia's southern shore, surfacing with a ripple, hanging there a moment with its throat beginning to glow, then spitting a small fireball before diving. Its aim is poor and its fire is weak, and a shield raised toward the water turns it easily. Strike while its head is up."
+      },
+      "3": {
+        "long": "A zora rises among the cattails, a fireball kindling in its throat.",
+        "description": "Reed fronds and river weed hang from the gill frills of this zora, and its scales have a muddy brown cast from the streams and backwaters it favours. It surfaces among the cattails without a sound, spits a ball of fire at the bank and slides under again, popping up a short way off. Only while its head is above the water can a blade or arrow reach it, so a patient fighter waits for the glow."
+      },
+      "4": {
+        "long": "A zora surfaces in the dark water, spitting a hissing fireball.",
+        "description": "Deep dark water has given this zora a bruised, blue-black colour and eyes like polished coins, and an old wound has left a ragged gap in its crest. It hunts the western and eastern reaches of Lake Hylia, rising farther from shore than its younger kin so that only a long reach can answer it. Its fireballs come hot and quick, and a shield turned toward the water is the surest defence."
+      },
+      "5": {
+        "long": "A zora rears up from the foaming pool beneath the roaring falls.",
+        "description": "Cold mountain water and the endless hammer of the falls have made this zora lean and powerful, its scales a pale, icy grey-green and its fins torn to lace by the current. It surfaces in the spray at the foot of the cascade, where the mist hides its glowing throat until the fireball is already flying. A shield stops the shot, but it sinks fast and resurfaces somewhere else in the white water."
+      }
     },
     "ghini": {
-      "long": "A ghini drifts between the graves, its one eye fixed on the living.",
-      "description": "A pale, sheet-like ghost with a single round eye and a grinning\nmouth. It floats through the graveyard passing through stone as if it\nwere mist, and drifts after whoever disturbs the dead. Touching a\ngrave can wake more of them. Strike down the first ghost of a\ngraveyard and the lesser ones are said to vanish with it."
+      "6": {
+        "long": "A ghini glides between the leaning headstones, its single eye wide.",
+        "description": "Grey as the lichen on the old headstones, this ghini drifts low over the graveyard by the western mountains, the hem of its sheet-like body fraying into mist. Its one eye is round and staring, and its grin never changes. It slides through stone as easily as through air and follows anyone who disturbs a grave. Touching the headstones wakes more of its kind, but strike down the first ghini and the lesser ones fade with it."
+      }
     },
     "armos": {
-      "long": "An armos statue stands motionless, spear raised, eyes of stone.",
-      "description": "A stone knight with a spear and shield, carved to stand guard over\nold places. Most armos statues are only stone; some wake when\ntouched, turn red or blue with sudden life, and march stiffly after\nthe one who disturbed them. Under some of them, secrets lie hidden\nin the earth: a stair, a coin cache, a bracelet."
+      "3": {
+        "long": "An armos knight stands on the lakeside rise, lichen on its shield.",
+        "description": "Lake damp has crept into this stone soldier, greening its shield with lichen and softening the edges of its carved face. It looks like a mere carving until a hand touches it; then colour floods into the stone and it lurches forward on stiff legs, jabbing its spear as it marches. It is slow and clumsy so soon after waking, and blows land on it freely while it finds its feet."
+      },
+      "4": {
+        "long": "An armos knight stands on the windy ridge, its spear chipped.",
+        "description": "Wind and blown sand have scoured this armos statue until its features are barely there, and the tip of its spear has chipped away to a blunt point. It waits on the high ground with infinite patience. Laying a hand on it wakes it: the stone flushes red, grit pours from its joints, and it stamps after the one who disturbed it in short jerky strides. Whatever lay hidden at its base is exposed once it moves."
+      },
+      "5": {
+        "long": "An armos knight keeps its silent watch, blank eyes on the horizon.",
+        "description": "Tall and broad-shouldered, this is one of the old armos of the highlands, its stone weathered to a deep grey and its shield cracked across the face where something struck it long ago. Touched, it wakes with a grinding of stone on stone and turns a hard, cold blue, then marches with an older knight's speed and purpose. It takes a great deal of punishment to break, and some of these statues hide a stair beneath their feet."
+      }
     },
     "falling_rock": {
-      "long": "Loose boulders come bouncing down the mountainside toward you.",
-      "description": "Not a beast at all but the mountain itself, shedding stones. Rocks\nbreak loose from the heights and bound down the slopes in long\nhigh arcs, smashing anyone they land on before shattering into\ngravel. They cannot be fought, only dodged or outrun, and the clatter\nnever stops for long."
+      "4": {
+        "long": "Loose stones skitter down the brown slopes in short bouncing hops.",
+        "description": "Small rocks and clods of hard brown earth shake loose from the rim of the ravine and come down the slope in quick, low hops. None is larger than a melon, yet each one hits like a thrown brick and breaks apart into grit on impact. Nothing about them can be fought or turned; a sword passes through empty air where a stone was a heartbeat ago. Watch the rim, wait for a gap and run."
+      },
+      "5": {
+        "long": "Boulders the size of barrels thunder down the avalanche slope.",
+        "description": "The slope here is always moving, and the rocks that come down it are big as barrels, spinning end over end in long arcs that leave dents in the boulders they strike. Dust hangs in the air after each one passes, so the next is half hidden until it lands. No weapon touches them and no shield stops them; the only answer is to read the bounce and step out of the place it will land."
+      },
+      "6": {
+        "long": "A great boulder rolls along the rumbling gully, cracking stone.",
+        "description": "Frost cracks the unstable cliff above the gully, and it lets go of slabs as large as a cart, which hit the floor, bounce high and slam down again in a shower of sparks and splinters. The gully floor is grooved from years of them. They are not alive and cannot be wounded, only dodged by timing, since the walls leave little room to step aside and every rumble overhead means another is coming."
+      },
+      "7": {
+        "long": "Massive boulders crash over the crest in a ceaseless rockfall.",
+        "description": "High on the crest the wind is bitter and the scree is rimed with frost, and the peaks above shed boulders as tall as a man that come leaping over the edge in great booming arcs. Each impact shakes the ground and pocks it with fresh craters. Nothing living could stand against them and no blade or spell will slow them; a traveller can only watch the sky, count the bounces and run between them."
+      }
     },
     "keese": {
-      "long": "A keese flutters about on leathery wings, darting and pausing.",
-      "description": "A small black bat with one round eye on its face. Keese roost in the\ndark corners of dungeons and swarm out in jittery flights, darting,\nstopping, then darting again in a new direction. A single blow kills\none, but there are always more of them than there seem to be."
+      "1": {
+        "long": "A keese flits in jerky circles near the ceiling of the Eagle's halls.",
+        "description": "A tiny bat no bigger than a hand, its leathery wings still thin enough to show the torchlight through them. It roosts in the cracks of the Eagle's stonework and bursts out whenever a door opens, fluttering in a nervous zigzag, stopping in midair and lurching off in a new direction. One clean swing of a sword ends it, though the timing is harder than it looks when it never flies straight."
+      },
+      "2": {
+        "long": "A keese hangs from a groove in the ceiling, its single eye blinking.",
+        "description": "This keese has the pale, washed look of something that has lived its whole short life in the damp beneath the Moon's crescent gate, its fur beaded with condensation. It drops from its perch in a sudden spiral, darts in close, hangs a heartbeat and then flings itself sideways. It is fragile, and a single hit will drop it, but its jittering path makes it a hard target to land."
+      },
+      "3": {
+        "long": "A keese swoops low and erratic, its wingbeats a dry papery rustle.",
+        "description": "Its black fur has a faint blue tinge from the cold flickers that haunt the Manji's chambers, and a nick is missing from one wing where a blade once came close. It gathers with its kind along the galleries and spills out in a ragged swarm, each bat zigzagging on its own mad course. Any blow will kill it, so the trick is only to be where it pauses rather than where it was."
+      },
+      "4": {
+        "long": "A keese drips from the rafters and darts toward the light.",
+        "description": "Water seeps from the stone throughout the Snake's halls, and this keese has grown slick and bedraggled in it, its wings stained with green slime and its round eye filmed. It lives among the dripping rafters and drops when warm bodies pass below, flapping in sharp unpredictable dashes. It goes down to a single solid hit but tends to come in from above, where a sword arm is slowest to reach."
+      },
+      "5": {
+        "long": "A keese erupts from a crypt niche in a shower of grave dust.",
+        "description": "Grave dust powders this keese grey, and it reeks of the old linen it nests in among the Lizard's tombs. Larger than the bats of shallower dungeons, with a wingspan as wide as a forearm, it bursts from crypt niches in a cloud of grit and flits across the room in stuttering bursts. Its body is still frail and one blow finishes it, but it is bolder now and dives straight at faces."
+      },
+      "6": {
+        "long": "A keese circles through the smoke, its wings scorched at the edges.",
+        "description": "Soot from the Dragon's braziers has blackened this keese twice over, and the trailing edges of its wings are crisped and curled by heat. It hunts in the drifting smoke near the ceiling, where its dark body nearly vanishes, then drops in a jagged spiral and veers off just short of a raised blade. It still dies to a single good hit, but finding it in that haze is the real fight."
+      },
+      "7": {
+        "long": "A keese skims the moat in a crazed zigzag, its eye glinting red.",
+        "description": "Something in the Demon's depths has twisted this keese: its single eye glows a sullen red and its fangs have grown long enough to show outside its lips. It skims the moats and corridors in sudden lunges, stopping dead and swerving, always a little faster than expected. One cut will kill it as surely as any bat, yet it comes in numbers and harries anyone already pinned down."
+      },
+      "8": {
+        "long": "A keese wheels high in the echoing dark, shrieking as it turns.",
+        "description": "Old and large for its kind, this keese has a ragged, moth-eaten look, its wings patched with scar tissue and its fur gone rusty brown in the Lion's dry halls. Its shriek bounces off the vaulted ceilings and makes it hard to tell where it is until it is already diving. It flies its erratic course with a veteran's cunning, but its body is as frail as ever and one blow brings it down."
+      },
+      "9": {
+        "long": "A keese bursts from the murk of Death Mountain in a stuttering dive.",
+        "description": "Ash from the mountain's heart has settled into the fur of this keese, and it smells of brimstone and old stone. It is the largest bat in Hyrule, near the size of a crow, its leathery wings stiffened by the heat that rises through Ganon's lair. Its flight is wild and lurching, pausing in midair before it dives again, and though a single solid stroke still kills it, it seldom offers one."
+      }
     },
     "gel": {
-      "long": "A tiny gel quivers on the floor, hopping in short bursts.",
-      "description": "A small, dark blob of living jelly no bigger than a fist. Gels creep\nand hop in short bursts across dungeon floors, and one that touches\nyou clings and slows you down. They are what is left when a zol is\ncut in two, and a single stroke ends one."
+      "1": {
+        "long": "A tiny gel wobbles between the pillars, leaving a faint wet trail.",
+        "description": "A drop of dark jelly no larger than a plum, this gel jiggles between the pillars of the Eagle with a sound like a wet kiss. It hops in short, clumsy bursts and sometimes rolls over entirely. If it reaches you it clings to a boot and slows your steps until you scrape it off. It is the leftover half of a split zol, and one stroke of anything sharp ends it in a splash."
+      },
+      "2": {
+        "long": "A gel quivers in a pool of drippings, gathering itself for a hop.",
+        "description": "Water dripping from the Moon's cracked ceilings has thinned this gel to a murky, half-clear blue, and bits of grit float suspended inside it. It lurks in slime pools where it is hard to see until it moves, then springs out in a series of quick, low hops. It sticks to whatever it touches and drags at the legs. Like every gel it was born when a zol was cut apart, and a single clean blow disperses it."
+      },
+      "4": {
+        "long": "A slick green gel bounces along the wet floor in quick little hops.",
+        "description": "This gel has taken on the green tint of the Snake's algae-coated floors and slides as much as it hops, skating across the slick stones faster than it should. Its skin is a little tougher than a newborn gel's, beaded with condensation. It hurls itself at ankles and clings fast, weighing down every step. It is still only the half of a zol that was cut in two, and a solid hit splatters it across the floor."
+      },
+      "6": {
+        "long": "A sour-smelling gel trembles in the corner of the cell, thick and dark.",
+        "description": "Heat from the Dragon's depths has made this gel thick and sticky as boiled sugar, and it gives off a sour, fermented reek. It is darker than its cousins, nearly black, and it moves in slow, heavy hops that land with a smack. When it fastens onto a leg it is hard to shake off and drags each step to a crawl. It came from a zol cut in half, and though it has grown dense, one firm blow still bursts it."
+      },
+      "9": {
+        "long": "A dense gel heaves itself across the ashy stones toward the warmth.",
+        "description": "Ash has worked its way through this gel until it is the dull grey of wet cement, and it has gorged in the choked crossways of Death Mountain until it sags like a sack of wet sand. It hops slowly but relentlessly, and its touch clamps like a hand around the ankle. Like all its kind it began as a zol split in two. A clean blow still ends one, but it takes a strong arm to cut through."
+      }
     },
     "zol": {
-      "long": "A zol, a large blob of green jelly, slides wetly toward you.",
-      "description": "A big, quivering mound of green slime with two dull eyes. It slides\nacross the floor in sudden hops and engulfs whatever it reaches.\nStrike it with a weak blade and it splits into two small gels that\nkeep coming; strike it hard enough and it bursts outright."
+      "3": {
+        "long": "A zol quivers in a slick puddle, two dull eyes rolling toward you.",
+        "description": "A young zol, roughly the size of a sheep, its green jelly still clear enough to show the grit and pebbles it has swallowed. It leaves wet streaks across the Manji's floors as it lurches forward in short hops, pausing between each as if listening. A weak sword stroke only divides it into two gels that keep pressing in, while a strong cut bursts it in one spray of slime."
+      },
+      "5": {
+        "long": "A zol slumps against a scraped block, oozing slowly across the floor.",
+        "description": "Grey dust from the Lizard's stonework has settled into this zol's skin until it looks like a mound of mouldy pea soup. It is heavier and slower to rouse than the Manji's slimes, but once it moves it hops in sudden long bounds that cover half a room. Its outer skin has thickened, so a feeble cut splits it into two gels that carry on the fight, and only a forceful blow breaks the whole of it at once."
+      },
+      "6": {
+        "long": "A zol rises from the cistern's scum, dripping in thick green ropes.",
+        "description": "Bred in the stagnant cisterns of the Dragon, this zol has grown huge and dark, almost black at its heart, with flecks of ash floating in its jelly like trapped insects. It smells of standing water and old smoke. It lunges in heavy, slapping hops and tries to swallow its prey whole. Strike it lightly and the halves crawl apart as two gels; strike with real weight and it bursts across the walls."
+      },
+      "8": {
+        "long": "A zol bulges across the crossway, its jelly streaked with old gore.",
+        "description": "This vast old zol fills the corridor like a dropped sack of grain, its surface wrinkled and leathery, its eyes sunk deep and filmed over. Rust from the Lion's iron doors has tinted it a sickly orange-green. It moves less often than younger slimes, but when it hops it lands with a wet thud that shakes the floor. Anything short of a mighty stroke merely halves it into a pair of gels, which then come on twice as fast."
+      },
+      "9": {
+        "long": "A zol heaves itself up the slimy stair, swollen and dark as a bruise.",
+        "description": "Under Death Mountain the zols grow fat on whatever falls into the dark, and this one is the size of a wagon, its jelly clouded black-green and threaded with shreds of old cloth. Volcanic grit gives its skin a rough, crusted rind. It surges forward in great hopping lurches and engulfs anything it reaches. Only the strongest blades burst it outright; a lesser blow splits it into gels that swarm."
+      }
     },
     "bubble": {
-      "long": "A bubble, a flaming skull, bounces from wall to wall.",
-      "description": "A grinning skull wreathed in flickering blue flame. It bounces around\nthe room in straight lines, caroming off the walls, and no weapon can\nharm it. Its touch leaves a creeping numbness in the sword arm, and\nthose it brushes find for a while that they cannot use their blade."
+      "3": {
+        "long": "A bubble skitters off the walls, its skull wreathed in cold blue fire.",
+        "description": "A small skull, yellowed and cracked along the crown, wrapped in a pale wisp of blue flame that gives off no heat at all. It rebounds around the Manji's chambers in straight lines, clicking its jaw as it goes. No sword can break it, and its touch sends a cold numbness into the sword arm that makes a blade impossible to swing for a while, so the only sense is to stay out of its path."
+      },
+      "4": {
+        "long": "A bubble ricochets around the antechamber, its flames crackling.",
+        "description": "Damp from the Snake's seeping walls hisses and steams where it meets this bubble's flame, so it travels in a faint cloud of vapour. The skull at its heart is greenish with mould, its teeth chipped from countless collisions with stone. It caroms from wall to wall at a steady pace, untouchable by any blade, and a brush with it leaves the sword arm too numb and heavy to strike until the curse fades."
+      },
+      "6": {
+        "long": "A bubble careens down the hall, trailing sparks of blue flame.",
+        "description": "The braziers of the Dragon's halls have fed this bubble's fire until it burns a fierce, bright blue, and the skull inside has gone black with soot. It moves faster than the skulls of shallower dungeons and turns corners off the walls with hardly a pause. Swords pass through its flame without effect. Its touch curses the arm that holds the blade, and in these narrow passages that is often worse than a wound."
+      },
+      "7": {
+        "long": "A bubble glides along the moat, its skull flame tinged with red.",
+        "description": "A broad, horned skull, perhaps once some beast's, sits in the middle of this bubble's flame, which flickers blue at the core and a sickly red at the edges. It bounds around the Demon's chambers in hard straight lines and seems drawn toward whoever is busiest fighting. Steel will not harm it at all. A single touch makes the sword hand go dead and useless, and the numbness lasts long enough to matter."
+      },
+      "8": {
+        "long": "A bubble drifts through the crossway, its old skull grinning wide.",
+        "description": "Age has worn this skull smooth and polished, so that it gleams through a steady, low blue flame like a lamp behind glass. It patrols the Lion's crossways and tombs at unhurried, perfect angles, bouncing from wall to wall as if it had memorised the room. Nothing kills it, so seasoned travellers simply time their crossing. Those who misjudge it find their sword arm cursed and slack for a long while after."
+      },
+      "9": {
+        "long": "A bubble streaks between the walls in a roaring halo of dark flame.",
+        "description": "In Ganon's halls under Death Mountain the bubbles burn with a dark violet fire, and this one's skull is cracked through, with ash glowing in the seams. It hurtles around the room at a frightening speed, ringing off stone like a struck bell, and no weapon can destroy it. Its curse is the strongest of all, deadening the sword arm completely, and this deep beneath the mountain a disarmed traveller rarely lasts long."
+      }
     },
     "rope": {
-      "long": "A rope slithers along the floor, its forked tongue flicking.",
-      "description": "A red-and-orange snake that coils and slithers slowly about the\ndungeon floor. The moment its prey lines up with it, a rope lunges in\na straight, lightning-fast charge. It is easily killed, but its bite\nis sharper than its size suggests."
+      "2": {
+        "long": "A rope coils in the corner, tongue flicking at the cool moonstone air.",
+        "description": "A slender young snake, barely an arm's length, banded red and orange with a blue sheen picked up from the Moon's stones. It wanders the floor in slow, unsure loops, sometimes chasing its own tail. The moment its prey stands in a straight line with it, though, it shoots forward in a sudden charge. A single good cut finishes it, but its fangs are sharp enough to sting badly."
+      },
+      "7": {
+        "long": "A rope slithers among papery shed skins, eyes fixed on the doorway.",
+        "description": "This rope has molted many times in the Demon's halls, and the skins it left lie heaped around it like crumpled parchment. It is long and heavy now, its bands faded to the dull orange of old embers, and a scar crosses its snout. It glides about in patient circles until its prey lines up along a row or a column of the floor, and then it charges straight in, faster than any arrow, with a bite that can drop a careless warrior."
+      }
     },
     "stalfos": {
-      "long": "A stalfos rattles to its feet, clutching a rusty sword.",
-      "description": "A skeleton warrior, bones yellow with age, holding a notched sword\nand sometimes a battered shield. It hops and lurches about the room in\nrandom directions, slashing at anyone it blunders into. It falls\napart in a clatter when struck hard enough, and some carry the key\nto the next locked door."
+      "1": {
+        "long": "A stalfos lurches across the tiles, its jaw clacking loosely.",
+        "description": "A short, light skeleton whose bones are still pale and whose joints are bound with rotting cord, newly risen from the Eagle's ossuary. It carries a chipped short sword and no shield at all. It hops in aimless directions, stumbling against walls and swinging wildly at anything it bumps into, and a solid blow scatters it across the floor. Now and then one carries a small iron key that clatters loose when it falls."
+      },
+      "7": {
+        "long": "A stalfos hops between heaped bones, swinging a blackened blade.",
+        "description": "Old beyond counting, this stalfos has bones stained the brown of strong tea and etched with the Demon's jagged sigils, as though something carved its mark into it before raising it. Iron rivets pin a cracked collarbone. It still hops in the restless, sideways way of its kind, but each landing is followed by a heavy cut from a blackened longsword, and it takes many strong blows before it clatters apart. Some carry keys."
+      }
     },
     "red_goriya": {
-      "long": "A red goriya grins, a wooden boomerang cocked to throw.",
-      "description": "A doglike humanoid in red armour with a long snout and pointed ears.\nIt paces the dungeon halls and hurls a boomerang that spins out in a\nstraight line and curves back to its hand, striking on the way out\nand on the way home. Goriyas come in pairs and in packs."
+      "1": {
+        "long": "A scrawny red goriya practises throws with a chipped wooden boomerang.",
+        "description": "Lanky and not yet grown into its long snout, this goriya wears red armour a size too big, the straps knotted to keep it on. Its boomerang is plain wood, chipped at one tip where it has struck the Eagle's walls too often. It yips and paces the guardrooms, hurling the boomerang in a straight line that curves home again, stinging on both legs of the trip. A few blows send it whimpering to the floor."
+      },
+      "2": {
+        "long": "A red goriya crouches by the sooty wall, boomerang balanced on a claw.",
+        "description": "Soot from the Moon's smoky torches streaks the red armour of this goriya, and its ears are notched from old squabbles over scraps. It has learned to throw low and to step aside as the boomerang comes back, so the hard wood skims along the floor at ankle height. It hunts in a pack and sniffs the air whenever someone carrying food passes. Strike between its throws, while its hand is empty."
+      },
+      "7": {
+        "long": "A grizzled red goriya patrols the moat's edge, its boomerang notched.",
+        "description": "Damp from the Demon's moats, this veteran goriya has grey fur creeping along its muzzle and red plate dented by decades of fights. Its boomerang is iron-shod and scored with tally marks. It lopes the halls of the labyrinth with its pack at its heels and throws without seeming to aim, the weapon whirring out in a line and swinging back to strike again. It hungers constantly and snaps at anything that smells of meat."
+      }
     },
     "blue_goriya": {
-      "long": "A blue goriya snarls and readies a heavy boomerang.",
-      "description": "A doglike warrior in blue armour, stronger and more stubborn than the\nred kind. Its boomerang flies farther and hits harder, and it takes\nseveral solid blows to fell. Goriyas are fond of food, and one is said\nto guard a passage in the Demon's labyrinth until it is fed."
+      "2": {
+        "long": "A young blue goriya spins a heavy boomerang idly around one claw.",
+        "description": "New to its blue armour, this goriya is stockier and twice as stubborn as the red ones of the Moon, though it still fumbles its catches now and then. The boomerang it carries is heavier and flies farther, nicking the walls of the hall it guards. It throws in long straight lines and waits for the weapon to swing back. It takes several firm blows to put down, and it sniffs hopefully at anyone carrying a meal."
+      },
+      "7": {
+        "long": "A hulking blue goriya growls from the barracks door, boomerang raised.",
+        "description": "Built like a wrestler and greying at the muzzle, this blue goriya wears armour patched with plates stripped from fallen adventurers. Its boomerang is a heavy thing of bone and iron that howls as it flies and cracks stone on the return. It barks orders through the Demon's barracks and cuffs anything slow to obey. It is famously greedy, and in this labyrinth one of its kind is said to refuse to budge until someone feeds it."
+      }
     },
     "wallmaster": {
-      "long": "A great hand slides out of the wall, fingers grasping.",
-      "description": "A huge, disembodied hand that lurks inside dungeon walls. It slides\nout along the floor toward whoever stands near the edge of a room,\nsnatches them up, and carries them all the way back to the entrance\nof the dungeon. Keep to the middle of the room and keep moving."
+      "1": {
+        "long": "A wallmaster's pale fingers creep from the wall, feeling for a foot.",
+        "description": "A pallid, bluish hand the size of a small table, its knuckles grimy with the Eagle's dungeon dust and its nails cracked. It is new to its work and slow, sliding out from the wall in jerky lunges and groping blindly along the edge of the room. If it closes on someone it lifts them up and carries them all the way back to the dungeon's entrance, so the safest ground is the middle of the floor."
+      },
+      "7": {
+        "long": "A wallmaster slides across the floor, its black nails scraping stone.",
+        "description": "Huge and grey-green as a drowned thing, this hand bears scars across the palm and nails grown long and black as horn. It has haunted the Demon's walls so long that it moves with an eerie patience, slipping out of the stone far from where it vanished and closing around anyone foolish enough to linger near the walls. Its prisoners are hauled back to the dungeon's entrance. Strike its fingers, and keep moving."
+      }
     },
     "vire": {
-      "long": "A vire hops along the floor, its leathery blue wings folded.",
-      "description": "A horned, blue, batlike demon with a wide grin and folded wings. It\nhops across the floor in high bounds and drops onto its prey. Strike\nit and it bursts apart into two red keese that flutter off to keep\nthe fight going. It is worth finishing the bats as well."
+      "4": {
+        "long": "A vire bounds along the moat's edge, grinning with all its teeth.",
+        "description": "A small, wiry vire whose blue hide is still smooth and whose horns are only stubs. Damp from the Snake's moat clings to its folded wings. It hops in tall, eager bounds and tries to land on its prey's head. Cut it and it splits apart into two red keese that flit and flutter wildly through the air, and a fight is not won until both bats are swatted down too, however erratic their flight."
+      },
+      "6": {
+        "long": "A vire perches in a taloned corner, wings hunched, claws clicking.",
+        "description": "Ash has dulled this vire's blue skin to the colour of slate, and its horns curl back into thick, ridged hooks. It has torn its wings on the Dragon's stonework and no longer bothers to open them, preferring to bound from the floor in great leaps and drop onto anyone below. A blow that lands bursts it into a pair of red keese, each as vicious as their parent, which must be hunted down in turn."
+      },
+      "9": {
+        "long": "A vire hangs from a belfry beam, grinning down with blackened fangs.",
+        "description": "The vires of Death Mountain roost in its watchtowers and grow monstrous there, with horns long as daggers and a wingspan that brushes both walls of a corridor. This one is crusted with soot and the scars of old fights. It drops from above in crushing leaps rather than hopping. When struck it bursts into two red keese, swifter and angrier than any lower down, and they must be finished as well."
+      }
     },
     "like_like": {
-      "long": "A like like squats here, a tube of flesh with a gaping mouth.",
-      "description": "A thick, tubelike mass of ribbed, pinkish flesh with a gaping mouth\nat its top. It creeps slowly toward its prey and swallows whatever\nit touches whole, chewing at it from inside. Anyone it engulfs is\nspat out again, but often without their shield, which it eats. Kill\nit quickly, or keep your distance."
+      "4": {
+        "long": "A like like creeps across the damp flagstones, its maw slowly flexing.",
+        "description": "Pale and soft, this like like is still small enough that its rim barely reaches a grown person's chest, and its ribbed flesh has the clammy grey sheen of the Snake's wet stones. It shuffles toward the warmth of a living body with a sucking sound. Whatever it touches it draws in whole and chews, and when it spits a victim out again it keeps the shield. Strike fast and often before it can close its mouth around you."
+      },
+      "6": {
+        "long": "A bloated like like blocks the doorway, its ribbed sides heaving.",
+        "description": "Swollen thick as a hogshead, this like like has the dull red colouring of the Dragon's heated halls, and old shield rims show through its translucent belly like bones. It wedges itself in doorways and stairwells where travellers cannot slip past, then lurches forward to swallow them. Its gut softens metal and wood alike, so a shield taken inside rarely comes out. Fight it from a distance, or hit hard and step back."
+      },
+      "9": {
+        "long": "A huge ash-grey like like gapes in the gloom, its throat working.",
+        "description": "Ash from Death Mountain's fires has settled into every fold of this ancient like like, so it looks carved from grey stone until it moves. It stands taller than a man and wider than a doorway, and the halls it haunts are littered with half-digested shields it has spat out. It slides toward prey with frightening speed for its bulk and engulfs in one motion. Keep your shield away from that maw and cut it down quickly."
+      }
     },
     "pols_voice": {
-      "long": "A pols voice hops about, its long ears twitching at every sound.",
-      "description": "A round, ghostly white creature with huge rabbitlike ears and a\nhalf-smile. It bounces about the room in long, floaty hops and is\nhard to wound with a blade. It cannot stand loud noise, and an arrow\nends it at once; that is the arrow's secret power."
+      "5": {
+        "long": "A pols voice bounces through the gallery, ears flinching at every echo.",
+        "description": "Round and milk-white, this pols voice has enormous floppy ears that twitch toward every drip and footstep in the Lizard's echoing galleries. It moves in long, lazy hops that carry it nearly to the ceiling, smiling vaguely all the while. Swords seem to slide through it without much effect. It dreads loud noise, and the surest cure for one is a single arrow, which pops it like a bubble."
+      },
+      "8": {
+        "long": "A plump pols voice springs out of its burrow, long ears laid back.",
+        "description": "Larger and greyer than the pale ones of shallower dungeons, this pols voice has lived so long in the Lion's warrens that its ears have grown longer than its body, dragging and scarred at the tips. It bounds in great arcs and lands heavily enough to shake dust from the walls. Blades barely mark it, and it seems to grin at the effort. Noise sets it shaking, and one well-placed arrow still brings it down at once."
+      }
     },
     "gibdo": {
-      "long": "A gibdo shuffles forward, trailing its rotting wrappings.",
-      "description": "A mummy wrapped head to foot in yellowed, rotting linen. Gibdos\nshuffle slowly but relentlessly through the tombs of the dungeons,\nreaching for the living, and they take a great deal of punishment\nbefore they fall. Fire is said to make short work of their wraps."
+      "5": {
+        "long": "A gibdo shuffles through the tomb, flaking linen at every step.",
+        "description": "Wrappings the colour of old parchment hang loose from this gibdo, and dark embalming resin has leaked through them in long brown stains. It walks the Lizard's tombs and embalming halls at a steady, untiring shuffle, arms outstretched, and soaks up blow after blow as though a blade were a fly. A torch or a flame will catch its dry linen and do more than an hour of hacking ever could."
+      },
+      "8": {
+        "long": "A gibdo lurches forward, its blackened wrappings bound in iron.",
+        "description": "Centuries in the Lion's dungeon have turned this gibdo's linen nearly black, and someone long ago bound iron bands around its chest and limbs as though to hold the thing together. It is taller than the mummies of the Lizard's tombs and moves with a heavier tread, swinging its arms in slow, crushing arcs. It can absorb a frightful amount of steel before falling, but its wraps still burn fiercely."
+      }
     },
     "red_darknut": {
-      "long": "A red darknut advances, its great shield held squarely before it.",
-      "description": "A knight in full red plate armour, carrying a sword and a broad\nshield. It marches about the room and always turns to face its foe,\nand its shield turns aside any blow or arrow from the front. Only a\nstroke from the side or from behind will bite. Red darknuts are the\nlesser of their order, and still dangerous."
+      "3": {
+        "long": "A red darknut tramps the hall, turning its shield toward every sound.",
+        "description": "This darknut's red plate is new and unscratched, though it fits poorly and clanks at the joints, as if the knight inside had not finished growing into it. It marches stiffly about the Manji's halls on a fixed patrol and wheels to face any movement. Its broad shield turns away blows and arrows from the front without fail. Wait for it to turn away on its rounds, then strike at the side or from behind."
+      },
+      "8": {
+        "long": "A scarred red darknut stands guard, its battered shield never lowered.",
+        "description": "Countless fights have hammered the red plate of this darknut into a patchwork of dents, rivets and mended seams, and its helm bears a lion stamped crudely on the brow. It no longer patrols blindly; it pivots with the grace of a long-trained soldier, keeping its great shield squarely toward the threat. Blows from the front glance off uselessly. Only a quick step to its flank, or a strike from behind, will find a gap."
+      }
     },
     "blue_darknut": {
-      "long": "A blue darknut marches toward you, shield up, sword ready.",
-      "description": "A towering knight in blue plate with a heavy sword and a shield that\nno blow from the front can pass. It is faster, tougher and harder\nhitting than the red kind, turning to keep its shield between it and\nany attacker. Get to its side or its back, or do not fight it at all."
+      "4": {
+        "long": "A blue darknut guards the moat crossing, shield squared to the door.",
+        "description": "Water from the Snake's moats has rusted the rivets of this darknut's blue plate, leaving orange streaks down its greaves, but the armour is still sound and the shield on its arm has not a single dent on its face. It marches with a soldier's discipline, pivoting to keep that shield toward any threat, and blows from the front ring off uselessly. Circle to its flank or back, where the plate is thinner, and strike there."
+      }
     },
     "red_wizzrobe": {
-      "long": "A red wizzrobe flickers into being, wand raised to cast.",
-      "description": "A sorcerer in an orange-red robe and hood, face hidden in shadow. It\nvanishes and reappears in a new spot beside or in line with its\nprey, looses a beam of magic from its wand, and vanishes again. It\nis only vulnerable in the moment it is visible. Strike then."
+      "6": {
+        "long": "A red wizzrobe winks into being beside the ember-lit wall, wand aimed.",
+        "description": "Its orange-red robe is patterned with flame shapes stitched in black thread, the Dragon's mark, and embers seem to drift out from beneath the hood. It vanishes, appears again beside its prey or in a straight line with it, fires a beam from its wand, and is gone. Only in the brief instant it stands solid can a blade touch it, so hold position, watch the floor, and strike when it appears."
+      },
+      "9": {
+        "long": "A red wizzrobe flashes into sight amid scorch rings, then fades again.",
+        "description": "This wizzrobe has teleported about Death Mountain for so long that it leaves scorched rings on the floor wherever it lands, and its robe has burned to a deep, smoky crimson. It reappears instantly, always square in line with its target, looses a searing beam and vanishes before the echo fades. It can be wounded only while visible, and it is visible for barely a breath, so a swift and steady hand is needed."
+      }
     },
     "blue_wizzrobe": {
-      "long": "A blue wizzrobe glides through the wall, wand crackling.",
-      "description": "A robed and hooded sorcerer in blue, the deadlier of its kind. It\ndrifts about the room, flickers through solid walls, and casts beams\nof magic in straight lines as it comes. It is hard to pin down and\nharder to escape, and its spells strike through a shield."
+      "6": {
+        "long": "A blue wizzrobe drifts out of a scorched wall, its wand sparking.",
+        "description": "Its blue robe is singed along the hem by the Dragon's ash and embers, and the hood hangs low over a face that is only a pair of pale lights. It drifts steadily across the room, passing through solid walls as if they were mist, and whenever its target lines up with it, it fires a straight beam of magic from its wand. Shields do little against those beams. Strike it as it slides past, before it fades into the stone."
+      },
+      "9": {
+        "long": "A blue wizzrobe slides through a rune-scored wall, robes trailing frost.",
+        "description": "Centuries in Ganon's own mountain have faded this sorcerer's robe to the grey-blue of a glacier, and frost forms on the stones wherever it passes. Burnt runes glow faintly along its sleeves. It walks through the walls of Death Mountain without slowing, launching beam after beam in straight lines, and those beams punch through any shield. It must be cut down while it crosses open floor, because no wall stops it."
+      }
     },
     "red_lanmola": {
-      "long": "A red lanmola bursts up through the sand, its segments rippling.",
-      "description": "A great centipede of armoured red segments that tunnels through sand\nand loose earth. It erupts from the ground, races across the room in\na writhing line, and dives back down. Only its head can be wounded,\nand each segment lost seems to make it faster."
+      "9": {
+        "long": "A red lanmola tears up through the red sand, segments clattering.",
+        "description": "Its plates are the colour of rust and old blood, each one notched and chipped from grinding through the packed red sand of Death Mountain's hollows. It is slower than its blue cousin but still frighteningly quick, erupting from the floor to race around the chamber in a writhing line before plunging under again. Swords glance off its body; only its head can be wounded, and losing segments makes it faster."
+      }
     },
     "blue_lanmola": {
-      "long": "A blue lanmola surges out of the sand, a blur of segments.",
-      "description": "A long, many-segmented centipede in blue armour, far faster than the\nred kind. It bursts up out of the floor, streaks around the room so\nquickly the eye can barely follow, and plunges back into the sand.\nOnly its head is soft, and it grows faster as it loses its tail."
+      "9": {
+        "long": "A blue lanmola erupts from the furrowed sand in a spray of grit.",
+        "description": "Each segment of this centipede is as wide as a shield and lacquered a deep, glassy blue, and the head is crowned with a ring of curved mandibles scored by countless fights. It lives in the sand pits deep inside Death Mountain, bursting up, racing around the walls faster than an arrow, and diving under again. Its armoured body shrugs off blows; only the head can be hurt, and every segment it loses makes it quicker."
+      }
     },
     "patra": {
-      "long": "A patra hovers here, a great eye ringed by circling smaller eyes.",
-      "description": "A giant floating eye surrounded by a ring of eight smaller eyes that\ncircle it endlessly, sometimes swinging out wide to strike. The\nlittle eyes must be destroyed before the great eye can be hurt.\nPatras guard the deepest halls of Death Mountain, and one of them\nis said to have the map."
+      "9": {
+        "long": "A patra hovers in the dusty air, ringed by a whirl of lesser eyes.",
+        "description": "A great bloodshot eye the size of a cartwheel floats in the dust of Death Mountain's deepest halls, its lid cracked and scarred from countless battles. Eight smaller eyes wheel about it in a tight ring, then suddenly swing out in a wide loop to strike anyone near. The great eye cannot be harmed while its guardians circle. Destroy the small eyes one by one, then strike the centre while it is defenceless."
+      }
     },
     "dodongo": {
-      "long": "A dodongo lumbers about, a stocky dinosaur with a thick hide.",
-      "description": "A stout, rhinoceros-like reptile with tough grey hide and a huge\nmouth. It stomps slowly back and forth, too thick-skinned for most\nweapons to hurt. Set a bomb in its path and it will swallow it, and\nthe blast inside does what no sword can. The smoke of a bomb also\nstuns it long enough to strike."
+      "5": {
+        "long": "A dodongo stomps along its own deep tracks, snorting through its nose.",
+        "description": "A young dodongo, still knee-high to a horse, with a hide the colour of wet slate and a mouth that seems too large for the rest of it. It plods the length of the Lizard's hall over and over until the floor is worn into grooves. Swords bounce off its thick skin, but it is greedy and stupid, and a lit bomb dropped in its path will be gulped down whole and explode inside its belly."
+      },
+      "7": {
+        "long": "A dodongo grinds its jaws in a smoke-stained den, scales blackened.",
+        "description": "Older and twice the bulk of the Lizard's dodongos, this one wears scales scorched black by every bomb it has ever swallowed, and the walls of its den carry the same soot. Its tail drags a heavy furrow behind it. It is warier now and will sometimes nose a bomb aside, yet it cannot resist one placed just ahead of its jaws. The blast stuns it in a haze of smoke, and that is the moment a blade can finally bite."
+      }
     },
     "digdogger": {
-      "long": "A digdogger rolls about, a great spiked ball with a single eye.",
-      "description": "A huge, spiny urchin with a single great eye at its center. It bounces\nand rolls about the room, shrugging off blows from any weapon. It\nhates one certain kind of sound: play the recorder, and it shrinks\nand splits into smaller, faster urchins that can be struck down."
+      "7": {
+        "long": "A digdogger rolls through the sand pit, its single great eye unblinking.",
+        "description": "This vast urchin fills half the hollow, its spines as long as spears and crusted with the sand of the pit it wallows in. A single bloodshot eye glares from its centre and follows every movement. It rolls and rebounds off the walls of the Demon's chambers, and swords and arrows simply glance from its hide. One sound unsettles it: the notes of a recorder make it shrivel and split into small, quick urchins that can be killed."
+      }
     },
     "blade_trap": {
-      "long": "A spiked blade trap rests in the corner, waiting to slide.",
-      "description": "A block of spiked iron set into the corner of a dungeon room. It sits\nstill until something crosses its line, then shoots across the floor\nat terrible speed, slams into its partner or the far wall, and grinds\nslowly back to its place. It cannot be destroyed, only avoided."
+      "1": {
+        "long": "A blade trap sits in its corner, a squat block of spiked iron.",
+        "description": "A small iron block studded with short spikes, its surface flecked with fresh rust and stamped with the Eagle's outspread wings. It rests in the corner until someone steps into its row or column, then shoots out along the floor, strikes the far side with a clang and creeps back to its place. No weapon dents it. The only answer is to cross its line quickly, or not at all."
+      },
+      "2": {
+        "long": "A blade trap waits at the end of a worn groove in the floor.",
+        "description": "The trap here has slid along the same track so often that it has carved a shallow groove into the Moon's pale stone floor, and a crescent is etched into its flat top. Its spikes are dull but heavy. It springs into motion the moment anything crosses in front of it, crossing the room faster than a running man, then slowly grinds home. Blades and arrows simply ring off it; the trick is timing, not force."
+      },
+      "3": {
+        "long": "A blade trap gleams in the corner, its spikes freshly honed.",
+        "description": "Someone keeps these Manji traps in good repair, for this one's spikes are bright and newly filed, and the four-armed cross of the Manji is cut deep into each face. It sits waiting in a corner until prey crosses its path, then hurls itself across the floor and smashes into its partner with a noise that rings through the halls. Nothing breaks it. Watch its line, then dash across after it begins its slow return."
+      },
+      "4": {
+        "long": "A blade trap rests at the end of the gauntlet, spikes beaded with damp.",
+        "description": "Moisture from the Snake's moat has beaded on this trap's spikes and left green streaks down its sides, and a coiled serpent is embossed on its top. It is larger than the traps of shallower dungeons and faster to trigger, lunging along the gauntlet the instant a foot enters its row. It slams into the opposite wall and then crawls back. It cannot be harmed by any weapon, so the gauntlet must be crossed with timing."
+      },
+      "6": {
+        "long": "A blade trap lurks in the soot-dark corner, spikes glowing faintly.",
+        "description": "Heat from the Dragon's lower halls has blued the iron of this trap and left its spikes faintly warm to the eye. Soot fills the grooves of the dragon carved on its face. It lies dormant until something enters its line, then shoots out with a hiss of scorched air, collides with the far wall or its twin, and retreats in a slow, grinding crawl. No blow can damage it; it can only be outrun or waited out."
+      },
+      "7": {
+        "long": "A blade trap squats in the corridor's corner, its spikes notched.",
+        "description": "This trap's spikes are notched and bent from long years of slamming into the Demon's stone, and the horned demon face cast into its side has been half worn away. It is heavy enough that the whole corridor trembles when it fires. It waits motionless until prey crosses its row or column, then rockets forward, rebounds, and slides back to its corner. It is indestructible, and wise travellers do not try."
+      },
+      "9": {
+        "long": "A blade trap waits on the stair landing, its spikes black with age.",
+        "description": "Ancient iron, black with age and crusted with volcanic ash, forms the great spiked block that guards this stairwell inside Death Mountain. Its spikes are as long as daggers and its corners have been ground round. It triggers at the slightest movement in its line and hurtles across with a roar like a rockslide, then drags itself back with a long, grating moan. No weapon has ever marked it; it is passed by speed alone."
+      }
     }
   },
   "bosses": {
@@ -198,6 +632,561 @@
     "9": {
       "long": "Ganon, the Prince of Darkness, lurks unseen in the dark.",
       "description": "A towering, boarlike demon with blue hide, tusks and a black trident:\nGanon, the Prince of Darkness, bearer of the Triforce of Power. He\nblinks out of sight and reappears elsewhere in the dark, hurling\nfireballs at whoever stands against him, and any wound he is left\nalone with closes. At his hip hangs a sword that was never his: the\nMaster Sword, taken from the hero's grave. Ordinary weapons can wound\nhim but never kill him. Beaten down, he collapses flashing red, and a\nlevel 54+ hero must wield the Silver Arrow and SHOOT GANON to end it."
+    }
+  },
+  "npcs": {
+    "zelda": {
+      "vnum": 30338,
+      "keywords": "princess zelda",
+      "short": "Princess Zelda",
+      "long": "Princess Zelda stands free at last, the Triforce of Wisdom shining in her hands.",
+      "description": "She is pale from her long captivity and her gown is torn at the hem, but she holds herself like the princess she is, and her eyes are clear and steady. She broke the Triforce of Wisdom into eight pieces and hid them to keep them from Ganon, and now they are gathered again because of you. She thanks you warmly and gravely, without ceremony, and promises that Hyrule will remember who walked through Death Mountain to bring her home."
+    },
+    "old_man:L1:A4": {
+      "vnum": 30346,
+      "keywords": "old man sage whitebeard",
+      "short": "a white-bearded old man",
+      "long": "A white-bearded old man sits between the twin fires and says, \"Eastmost peninsula is the secret.\"",
+      "description": "His beard is so long and white that he has tucked the end of it into his belt to keep it from the flames on either side of him. He speaks slowly, as though every word costs him something, and he says only the one thing. Ask what he means and he turns his face east, lifts a finger a little toward the north where the land runs out into the water, then rubs finger and thumb together like a man counting coins. Whatever waits out there, he thinks it worth a hundred rupees."
+    },
+    "old_man:L2:D7": {
+      "vnum": 30347,
+      "keywords": "old man sage sooty",
+      "short": "a soot-streaked old man",
+      "long": "A soot-streaked old man coughs into his sleeve and wheezes, \"Dodongo dislikes smoke.\"",
+      "description": "Soot has settled into every wrinkle of his face, and he coughs whenever the fires beside him gutter. He has lived too long beside smoke to love it, and he swears the horned beast called Dodongo shares his opinion. Feed the creature something that smokes and bursts, he hints, patting an empty pouch at his hip, and it will do to itself what no blade could ever manage. He seems to find the thought funny, and laughs until the coughing takes him again."
+    },
+    "old_man:L3:C6": {
+      "vnum": 30348,
+      "keywords": "old man sage squinter",
+      "short": "a squinting old man",
+      "long": "A squinting old man leans close and asks, \"Did you get the sword from the old man on top of the waterfall?\"",
+      "description": "He squints at everyone, and at you he squints hardest, measuring the blade you carry against some better one he has in mind. A kinsman of his keeps a white sword in a cave high up where the river tumbles out of the hills, he says, and gives it only to those whose hearts are many enough to bear it. He asks after that old man as though after a brother he has not seen in years, and looks disappointed if you have not yet made the climb."
+    },
+    "old_man:L4:A8": {
+      "vnum": 30349,
+      "keywords": "old man sage damp",
+      "short": "a damp-robed old man",
+      "long": "A damp-robed old man wrings out his sleeve and murmurs, \"Walk into the waterfall.\"",
+      "description": "His robe is wet to the knees and never seems to dry, though the fires on either side of him burn hot enough. He will not say where he has been, only that a curtain of falling water is not always a wall. Somewhere in the hills the river drops over a cliff, and behind it, he hints, an old woman keeps a dry little room and sells what she knows for coin. He thinks she charges far too much, and says so, but he keeps going back."
+    },
+    "old_man:L5:D2": {
+      "vnum": 30350,
+      "keywords": "old man sage deaf",
+      "short": "a half-deaf old man",
+      "long": "A half-deaf old man cups a hand to his ear and shouts, \"Digdogger hates certain kind of sound.\"",
+      "description": "He is nearly deaf, and so he shouts everything, then winces at the echo. Long ago, he explains at the top of his voice, he learned that some noises hurt more than any blade, and that the great eye called Digdogger, which haunts these halls, cannot abide a certain tune. If you carry something that plays one, he hints, this is the place to put it to your lips. He hums a few bars, very badly, to make his point."
+    },
+    "old_man:L5:B7": {
+      "vnum": 30351,
+      "keywords": "old man sage fletcher",
+      "short": "an old man trimming feathers",
+      "long": "An old man trimming feathers glances up from his work and says, \"Secret power is said to be in the arrow.\"",
+      "description": "A heap of grey feathers lies about his knees, and he trims them one at a time with a little knife, fitting each to a shaft that he never quite finishes. An arrow is more than a point and a string, he tells you. The hopping, long-eared things that haunt these halls, the pols voices, fall to a single one of them where a sword must hack and hack. He offers no arrows of his own; he only says you will be glad of a bow down here."
+    },
+    "old_man:L5:D7": {
+      "vnum": 30352,
+      "keywords": "old man bagmaker fidgety",
+      "short": "a fidgety old man",
+      "long": "A fidgety old man rubs his hands together and grins, \"I bet you'd like to have more bombs.\"",
+      "description": "He cannot keep still: his fingers drum, his feet tap and his eyes keep straying to the bags heaped behind him, each stitched with a double seam. He is a bag-maker, he explains, and proud of it, and his bags carry four more bombs than the one at your hip. One costs 100 rupees, and you may BUY BAG to have it, though he will sell each traveller only one. Once he has your coin he talks happily about powder until you leave."
+    },
+    "old_man:L6:C2": {
+      "vnum": 30353,
+      "keywords": "old man sage eyepatch",
+      "short": "an old man with an eyepatch",
+      "long": "An old man with an eyepatch taps the patch over his eye and rasps, \"Aim at the eyes of Gohma.\"",
+      "description": "A leather patch covers his left eye, and he taps it whenever he wants to be listened to. The great crab Gohma took the eye, he says, or he took hers; he can never quite remember which. Her shell turns any blade, but the eye in the middle of it opens now and then, and only an arrow loosed true at that moment will finish her. He mimes drawing a bow, sighting carefully along it with his one good eye, and looks pleased with the shot."
+    },
+    "old_man:L6:D8": {
+      "vnum": 30354,
+      "keywords": "old man sage wistful",
+      "short": "a wistful old man",
+      "long": "A wistful old man gazes into the flames and sighs, \"There are secrets where fairies don't live.\"",
+      "description": "He speaks of fairies the way other men speak of old sweethearts, gazing into the fire as he does. Every pond in Hyrule has its fairy, he says, or ought to, and it troubles him that one lake does not. A water so empty of them must be keeping something else, he hints, something that might answer to music played upon its shore. He hums a tune under his breath, loses the thread of it, and starts again from the beginning."
+    },
+    "old_man:L7:D3": {
+      "vnum": 30355,
+      "keywords": "old man sage hooknose",
+      "short": "a hook-nosed old man",
+      "long": "A hook-nosed old man taps the end of his long nose and whispers, \"There's a secret in the tip of the nose.\"",
+      "description": "His nose is the largest thing about him, long and hooked and red at the tip, and he taps it often. These halls, he says, were cut by someone with a sense of humour: walk them with a map in your head and they make a face, horned and grinning, with a great nose in the middle. Look hard at the very end of that nose, he hints, tapping his own once more. He finds the whole idea far funnier than you are likely to."
+    },
+    "old_man:L7:A4": {
+      "vnum": 30356,
+      "keywords": "old man bagmaker singed",
+      "short": "a powder-burned old man",
+      "long": "A powder-burned old man pats a bulging sack and chuckles, \"I bet you'd like to have more bombs.\"",
+      "description": "His eyebrows are gone, his fingertips are black, and his beard has been singed into a ragged point. He sells bags for carrying bombs and tests every one of them himself, which explains a great deal. This bag holds four more bombs than whatever you carry now, even if you bought one before from another of his trade. It costs 100 rupees: BUY BAG and the money is his. He sells only one to each traveller and waves the rest away."
+    },
+    "old_man:L8:A5": {
+      "vnum": 30357,
+      "keywords": "old man sage tally",
+      "short": "an old man with a knotted cord",
+      "long": "An old man with a knotted cord runs a knot through his fingers and mutters, \"10th enemy has the bomb.\"",
+      "description": "A long cord hangs from his fist, tied with knots, and he runs them through his fingers like prayer beads. He counts everything, he admits: steps, breaths, fallen foes. And he has noticed a thing about the creatures of Hyrule. Strike down ten of them one after another without taking a single wound, and the tenth leaves a bomb where it falls. Take a scratch and the count begins again. He ties another knot to show you."
+    },
+    "old_man:L8:C5": {
+      "vnum": 30358,
+      "keywords": "old man sage gaunt",
+      "short": "a gaunt old man",
+      "long": "A gaunt old man stares past you and intones, \"Spectacle Rock is an entrance to death.\"",
+      "description": "He is thin as a rake and grey as ash, and he speaks like a man reading the words off a tombstone. High on the mountain, he says, two rocks sit side by side like a pair of spectacles, and under the left of them lies the way into the last and deadliest of the labyrinths. Rock gives way to powder, he hints, if you bring enough of it. He does not wish you luck, but he does watch you all the way out of the room."
+    },
+    "old_man:L9:G2": {
+      "vnum": 30359,
+      "keywords": "old man sage warden",
+      "short": "a stern old man",
+      "long": "A stern old man bars the passage with his staff and declares, \"Ones who does not have Triforce can't go in.\"",
+      "description": "He stands where the mountain opens, staff held across the passage, and he does not smile. This mountain lets in only one who carries the Triforce of Wisdom made whole, he says, all eight pieces together, and he will not let you pretend otherwise. If you have them, he lowers the staff and bows. If you have not, he tells you, more kindly than you expect, to go back down and finish what the eight labyrinths began."
+    },
+    "old_man:L9:D4": {
+      "vnum": 30360,
+      "keywords": "old man sage hollow",
+      "short": "a hollow-cheeked old man",
+      "long": "A hollow-cheeked old man grins like a death's head and hisses, \"Eyes of skull has a secret.\"",
+      "description": "His cheeks are so sunken that his face is very nearly a skull already, and he seems to enjoy the resemblance. This mountain was hollowed out in the shape of a great skull, he tells you, and like any skull it has two eyes. In one of them lies the compass; in the other, he hints, lies the reason anyone climbs up here at all. He points two bony fingers at his own eyes, then turns them toward the dark beyond."
+    },
+    "old_man:L9:C8": {
+      "vnum": 30361,
+      "keywords": "old man sage scribe",
+      "short": "an ink-stained old man",
+      "long": "An ink-stained old man shakes his inky fingers and says, \"Patra has the map.\"",
+      "description": "His fingers are black to the knuckle with ink, and scraps of half-drawn maps litter the floor around him, every one abandoned. He tried to chart this mountain, he says, and failed, but a whirling eye called Patra keeps a proper map in one of its rooms, circled by its smaller eyes. Find the Patra and you have found the map. He goes back to drawing, crossing out more than he keeps, and mutters at his own handwriting."
+    },
+    "old_man:L9:G8": {
+      "vnum": 30362,
+      "keywords": "old man sage terse",
+      "short": "a terse old man",
+      "long": "A terse old man jerks a thumb at the west wall and grunts, \"Go to the next room.\"",
+      "description": "He is a man of very few words and has no wish to waste them on you. He jerks his thumb toward the west wall, grunts, and goes back to warming his hands. If pressed, he allows that some walls here are thinner than they look, and that the room beyond has a block in it that does not sit quite as square as it should. Then he folds his arms, stares into the fire, and that is all you will get out of him."
+    },
+    "cave:H8": {
+      "vnum": 30363,
+      "keywords": "old man sage kindly",
+      "short": "a kindly old man",
+      "long": "A kindly old man holds out a wooden sword and says, \"It's dangerous to go alone! Take this.\"",
+      "description": "He has a gentle face and a worried one, and the worry is for you. Monsters walk the fields of Hyrule now, he says, and nobody should go out among them empty-handed. He keeps a plain wooden sword ready for any traveller who has none, and would much rather you took it than not. He will not give you a second while you still carry the first, but if yours is ever lost, he says, come back; there is always another."
+    },
+    "cave:K1": {
+      "vnum": 30364,
+      "keywords": "old man swordkeeper weathered",
+      "short": "a weathered old man",
+      "long": "A weathered old man rests a hand on a white blade and says, \"Master using it and you can have this.\"",
+      "description": "Wind and spray have weathered him like the cliff his cave is cut into, and the white sword before him gleams as though he polishes it daily. He looks first at the blade and then at your chest, counting hearts. Everyone starts with 3, he explains, and gains one for each guardian of the first eight labyrinths laid low, and one for each Heart Container taken. Bring him 5 and the sword is yours. Fewer, and he simply waits."
+    },
+    "cave:B3": {
+      "vnum": 30365,
+      "keywords": "old man swordkeeper gravekeeper",
+      "short": "a grave-dusted old man",
+      "long": "A grave-dusted old man rises from the dust under the grave and says, \"Master using it and you can have this.\"",
+      "description": "Grave dirt clings to his robe and hair, and he seems more at home among the dead than the living. The finest blade anyone may carry now, the Magical Sword, lies before him, for the Master Sword belongs to Ganon these days. He will not hand it to a beginner. Count your hearts against his reckoning: he wants to see 12 before he lets it go. Until then he sits in the dark under the stone you pushed aside, patient as the dead above."
+    },
+    "cave:O1": {
+      "vnum": 30366,
+      "keywords": "old man courier courtly",
+      "short": "a courtly old man",
+      "long": "A courtly old man bows low and offers a sealed letter, saying, \"Show this to the old woman.\"",
+      "description": "He bows when you come in, stiffly, as a man who once served at court and has never forgotten how. He has been charged with a letter in Princess Zelda's own hand, under her seal, and he gives it to you with great ceremony. The old women who sell medicine in Hyrule will want to see it, he explains; carry it and their shops will open to you. He straightens his collar and wishes you a royal welcome wherever you go."
+    },
+    "take_any:L8": {
+      "vnum": 30367,
+      "keywords": "old man giver toothless",
+      "short": "a toothless old man",
+      "long": "A toothless old man beams a gummy smile and says, \"Take any one you want.\"",
+      "description": "He has not a tooth left in his head and smiles all the more for it. On the floor before him lie two gifts, a Heart Container and a red potion, and he waves a hand over both as though they cost him nothing. But choose carefully, he lisps: you may take only one, and only once, and the other stays in his keeping for good. He watches your choice with real interest, as if he has a wager riding on it."
+    },
+    "take_any:H5": {
+      "vnum": 30368,
+      "keywords": "old man giver patient",
+      "short": "a patient old man",
+      "long": "A patient old man folds his hands beside two gifts and offers, \"Take any one you want.\"",
+      "description": "He sits so still that dust has gathered in the folds of his sleeves. He has all the time in the world, he says, and you may take as much of it as you like to decide. Before him lie a Heart Container, which would make you stronger for good, and a red potion, which would save your life once. One of them, and only once, is yours to take. He will not advise you. He only smiles, and waits, and waits."
+    },
+    "take_any:M3": {
+      "vnum": 30369,
+      "keywords": "old man giver ruddy",
+      "short": "a ruddy-faced old man",
+      "long": "A ruddy-faced old man slaps his knee and booms, \"Take any one you want.\"",
+      "description": "His face is red and round and he laughs at everything, including you. Gifts, he booms, are his favourite thing in the world, and he has two of them laid out on a cloth: a Heart Container and a red potion. Take either, he says, take whichever you like, but only the one, mind, and only this once, for he is generous and not a fool. He laughs again at that, rather longer than the joke deserves."
+    },
+    "take_any:P3": {
+      "vnum": 30370,
+      "keywords": "old man giver frail",
+      "short": "a frail old man",
+      "long": "A frail old man pushes two gifts toward you and breathes, \"Take any one you want.\"",
+      "description": "He is very frail and very small, and it costs him real effort to push the cloth across the floor toward you. On it lie a Heart Container and a red potion, the last things of value he owns. He asks only that you take one, and only once, and leave the other for whoever comes after you. His voice is barely a breath and his hands shake, but his eyes are bright and kind, and he is glad you came."
+    },
+    "hint:A8": {
+      "vnum": 30371,
+      "keywords": "old woman crone sharp",
+      "short": "a sharp-eyed old woman",
+      "long": "A sharp-eyed old woman holds out a wrinkled palm and says, \"Pay me and I'll talk.\"",
+      "description": "Her eyes are small and black and miss nothing, least of all the purse at your belt. She knows things, she says, and knowledge is a trade like any other. GIVE her rupees and she will talk accordingly. 10 rupees is an insult, and she will tell you so. 30 buys the way through the Lost Woods, where travellers walk in circles for days. 50, she admits with a cackle, buys nothing but her opinion of how rich you must be."
+    },
+    "hint:F8": {
+      "vnum": 30372,
+      "keywords": "old man sage mournful",
+      "short": "a mournful old man",
+      "long": "A mournful old man bows his head and says quietly, \"Meet the old man at the grave.\"",
+      "description": "He dresses in black and speaks of the dead as though they were only in the next room. Among the graves in the far west of Hyrule, he says, a kinsman keeps vigil, and beneath one of the stones he guards a sword better than any you have carried. He does not say which stone. He only hints that a grave can be moved by someone with the nerve to push it, and that the old man beneath will be glad of the company."
+    },
+    "hint:K2": {
+      "vnum": 30373,
+      "keywords": "old woman crone misty",
+      "short": "a mist-soaked old woman",
+      "long": "A mist-soaked old woman wrings out her shawl and grumbles, \"Pay me and I'll talk.\"",
+      "description": "The roar of the falls fills her little room behind the curtain of water, and her shawl is always damp with spray. She grumbles about the cold, about her knees and about travellers who expect something for nothing. GIVE her rupees if you want her to talk: 5 or 10 will not open her mouth, but 20 buys the way up through the Lost Hills, which turn back anyone who climbs them blind. She counts every coin twice."
+    },
+    "hint:M2": {
+      "vnum": 30374,
+      "keywords": "old man sage leathery",
+      "short": "a leathery old man",
+      "long": "A leathery old man squints into the distance and drawls, \"Secret is in the tree at the dead-end.\"",
+      "description": "Years of sun have tanned him to the colour and texture of an old saddle, and he speaks slowly, as if he has all afternoon. Out where a path runs to nothing, he says, a single tree stands by itself, and it has always struck him as standing guard over something. Wood, he hints, makes a poor door against a flame. He pulls a dry twig from his pocket and turns it thoughtfully in the firelight."
+    },
+    "moblin:B6": {
+      "vnum": 30375,
+      "keywords": "moblin grinning",
+      "short": "a grinning moblin",
+      "long": "A grinning moblin grins with all his crooked teeth and says, \"It's a secret to everybody.\"",
+      "description": "He grins at everyone who walks in, a wide, crooked, yellow grin that would be frightening on any other moblin. He likes visitors, he says, and keeps a little pile of rupees for them under a loose stone by the door. The first time you come he presses 10 of them into your hand without being asked. Come again and he only shrugs, still grinning, and points out that a secret shared twice is no secret at all."
+    },
+    "moblin:B8": {
+      "vnum": 30376,
+      "keywords": "moblin potbelly",
+      "short": "a pot-bellied moblin",
+      "long": "A pot-bellied moblin pats his round belly and chuckles, \"It's a secret to everybody.\"",
+      "description": "His belly hangs over his belt and he pats it fondly as he talks, as though it were a favourite dog. He used to raid caravans, he admits, until he grew too fat to chase them, and now he gives some of the loot back to make amends. As you come in for the first time he counts 30 rupees into your palm. After that he only shrugs, pats his belly again, and asks whether you have brought him anything to eat."
+    },
+    "moblin:C7": {
+      "vnum": 30377,
+      "keywords": "moblin tusk",
+      "short": "a one-tusked moblin",
+      "long": "A one-tusked moblin flicks his broken tusk and confides, \"It's a secret to everybody.\"",
+      "description": "One of his tusks is snapped off near the root, and he flicks the stump with a claw whenever he is thinking. He is the richest moblin in the west, he tells you proudly, and can afford to be generous: on your first visit he hands over 100 rupees in a single heavy bag. He will not do it twice. On any later visit he shrugs his huge shoulders and goes back to polishing the one good tusk he has left."
+    },
+    "moblin:D2": {
+      "vnum": 30378,
+      "keywords": "moblin sleepy",
+      "short": "a sleepy moblin",
+      "long": "A sleepy moblin yawns hugely and mumbles, \"It's a secret to everybody.\"",
+      "description": "He is always half asleep, slumped against the wall of his cave with his spear across his knees. Footsteps wake him, and the first time you walk in he fumbles in a sack and drops 30 rupees into your hand before he has quite opened his eyes. Visit again and he only shrugs, yawns and settles back down. He seems to think the whole arrangement is a dream he keeps having, and is not sure he minds."
+    },
+    "moblin:G6": {
+      "vnum": 30379,
+      "keywords": "moblin youngster",
+      "short": "a young moblin",
+      "long": "A young moblin bounces on his heels and squeaks, \"It's a secret to everybody.\"",
+      "description": "He is young for a moblin, barely tusked, and so excited to have company that he bounces on his heels. His elders told him to guard the secret of this cave and he is very proud of the job. He gives every newcomer 10 rupees from a small clay pot, carefully, as if each coin were a great treasure. On a second visit he shrugs and looks embarrassed, because the elders said once, and he takes rules seriously."
+    },
+    "moblin:H7": {
+      "vnum": 30380,
+      "keywords": "moblin grizzled",
+      "short": "a grizzled moblin",
+      "long": "A grizzled moblin scratches his grey snout and growls, \"It's a secret to everybody.\"",
+      "description": "His snout is grey and his ears are notched from old fights, and he has the gravel voice of a soldier long retired. He has seen enough war, he growls, and these days he pays travellers instead of robbing them. On your first visit he grunts and tosses you 30 rupees without looking up from his whittling. Walk in again and you get a shrug and a hard look, and nothing else at all."
+    },
+    "moblin:I3": {
+      "vnum": 30381,
+      "keywords": "moblin bashful",
+      "short": "a bashful moblin",
+      "long": "A bashful moblin hides behind his spear and murmurs, \"It's a secret to everybody.\"",
+      "description": "He is shy, painfully so, and tries to hide his great bulk behind a spear far too thin for the purpose. He mumbles at the floor rather than at you, but the first time you come in he holds out a fistful of 30 rupees at arm's length, eyes squeezed shut, as if afraid you might bite. Come back and he only shrugs, blushes a deeper shade of brown and shuffles further into the shadows."
+    },
+    "moblin:I5": {
+      "vnum": 30382,
+      "keywords": "moblin nervous",
+      "short": "a nervous moblin",
+      "long": "A nervous moblin glances at the cave mouth and breathes, \"It's a secret to everybody.\"",
+      "description": "He keeps looking past you at the cave mouth, as though expecting someone worse. The other moblins would be furious, he frets, if they knew he was handing out their money. Still, on your first visit he hurries 30 rupees into your hand and begs you to tell nobody. When you return he shrugs helplessly, wringing his paws, and swears there is nothing left to give and nobody must ever know he gave it."
+    },
+    "moblin:L6": {
+      "vnum": 30383,
+      "keywords": "moblin giggler",
+      "short": "a giggling moblin",
+      "long": "A giggling moblin giggles behind a hairy paw and says, \"It's a secret to everybody.\"",
+      "description": "Everything delights him, and he giggles behind a hairy paw at the very idea of a secret, at his cave, at you. He keeps a jar of rupees for guests and, on your first visit, shakes 10 of them into your hand, giggling all the while. On a later visit he only shrugs and giggles harder, because the joke, as far as he can tell, is that you thought there would be more."
+    },
+    "moblin:L7": {
+      "vnum": 30384,
+      "keywords": "moblin earring",
+      "short": "a moblin wearing a gold earring",
+      "long": "A moblin wearing a gold earring waves a lordly paw and says, \"It's a secret to everybody.\"",
+      "description": "A gold ring glints in one torn ear, and he carries himself like a lord among moblins, which perhaps he is. He has more rupees than he knows what to do with, he says airily, and gives 100 of them to each newcomer the moment they step inside. A second visit earns a lordly shrug and nothing more: generosity, he explains, is only charming the first time. He fingers the earring as he says it."
+    },
+    "moblin:N3": {
+      "vnum": 30385,
+      "keywords": "moblin skinny",
+      "short": "a skinny moblin",
+      "long": "A skinny moblin pokes his head around a rock and croaks, \"It's a secret to everybody.\"",
+      "description": "He is all ribs and elbows, the thinnest moblin you have ever seen, and his voice cracks like a frog's. He spends almost nothing, he croaks, and so he can spare 30 rupees for every visitor, once, as they come through the door. After that he shrugs his bony shoulders. He would give more, he says, but then he would have to eat less, and there is not much less left for him to eat."
+    },
+    "moblin:N4": {
+      "vnum": 30386,
+      "keywords": "moblin jowly",
+      "short": "a jowly moblin",
+      "long": "A jowly moblin wobbles his jowls and rumbles, \"It's a secret to everybody.\"",
+      "description": "His jowls hang in great folds and wobble when he speaks, which he does slowly and with dignity. He keeps a neat little cave, swept clean, with his rupees stacked in tidy columns on a shelf. On your first visit he lifts down a column and gives you 30 rupees, counted aloud. On any later visit he shrugs, jowls swinging, and points to the empty space on the shelf as though that settles the matter."
+    },
+    "moblin:O5": {
+      "vnum": 30387,
+      "keywords": "moblin twitchy",
+      "short": "a twitchy-eared moblin",
+      "long": "A twitchy-eared moblin flicks one long ear and grunts, \"It's a secret to everybody.\"",
+      "description": "One of his long ears twitches constantly, as if hearing things nobody else can, and he cocks his head at every drip from the ceiling. He is not rich, he says, and the 10 rupees he hands each new visitor are all he can spare. Still, he gives them gladly, the first time. If you come back he shrugs, ear twitching, and listens past you for the next traveller who has not heard the secret yet."
+    },
+    "moblin:P1": {
+      "vnum": 30388,
+      "keywords": "moblin helmet soldier",
+      "short": "a moblin in a battered helmet",
+      "long": "A moblin in a battered helmet snaps a salute and barks, \"It's a secret to everybody.\"",
+      "description": "He wears an old soldier's helmet, dented and far too small, and salutes everyone who enters. He guarded a royal treasury once, he barks, before the war, and some of it came with him when he deserted. The first time you walk in he presents you with 100 rupees as if pinning on a medal. Return and he salutes again, shrugs, and stands to attention over an empty strongbox."
+    },
+    "merchant:C2": {
+      "vnum": 30389,
+      "keywords": "merchant shopkeeper gaptooth",
+      "short": "a gap-toothed merchant",
+      "long": "A gap-toothed merchant whistles through the gap in his teeth and calls, \"Buy somethin' will ya!\"",
+      "description": "He whistles through the gap in his front teeth when he talks, and he talks a great deal. His goods sit on a rough cloth in the firelight: a Magical Shield at 90 rupees, Bait at 100 and a Recovery Heart at 10. The shield, he insists, will turn a wizard's spell, and the bait will draw any hungry beast away from the path. LIST shows his wares and BUY takes them. He does not haggle, and is offended if you try."
+    },
+    "merchant:E4": {
+      "vnum": 30390,
+      "keywords": "merchant shopkeeper lanky",
+      "short": "a lanky merchant",
+      "long": "A lanky merchant spreads his long arms over his wares and says, \"Buy somethin' will ya!\"",
+      "description": "He is so tall that he has to stoop under the roof of his cave, and his long arms reach every corner of the shop without his moving his feet. His pride is a ring of blue stone, the Blue Ring, at 250 rupees: wear it, he swears, and every blow you take hurts less. Beside it lie a small Key at 80 and Bait at 60. LIST to see them, BUY to take them home, and do not touch the ring until you have paid."
+    },
+    "merchant:E5": {
+      "vnum": 30391,
+      "keywords": "merchant shopkeeper redcap",
+      "short": "a red-capped merchant",
+      "long": "A red-capped merchant tips his red cap and sings out, \"Buy somethin' will ya!\"",
+      "description": "A red cap sits jauntily on his head and he tips it to every customer. He sells the tools of a fighting trade: a Magical Shield for 130 rupees, four Bombs for 20 and a quiver of Arrows for 80. Arrows are worthless without a bow, he warns, honest to a fault, but bombs are never wasted. LIST his stock and BUY what you need. He hums a marching song while you decide, slightly off the beat."
+    },
+    "merchant:F3": {
+      "vnum": 30392,
+      "keywords": "merchant shopkeeper sourface",
+      "short": "a sour-faced merchant",
+      "long": "A sour-faced merchant frowns over his counter and mutters, \"Buy somethin' will ya!\"",
+      "description": "He has the face of a man who has just tasted milk gone off, and he wears it at all times. Customers, he grumbles, always want discounts, and he gives none. A Magical Shield is 130 rupees, four Bombs are 20 and a quiver of Arrows is 80, and that is that. LIST if you must, BUY if you will. For all his scowling he wraps each purchase with great care, and wishes you safe travels under his breath."
+    },
+    "merchant:G3": {
+      "vnum": 30393,
+      "keywords": "merchant shopkeeper stammerer",
+      "short": "a stammering merchant",
+      "long": "A stammering merchant clears his throat twice and stammers, \"Buy somethin' will ya!\"",
+      "description": "He stammers badly, and so his patter, which he has clearly practised, comes out in fits and starts. He sells a Magical Shield for 90 rupees, Bait for 100 and a Recovery Heart for 10, and he has a speech about each that he never manages to finish. LIST shows them anyway, and BUY ends the speech mercifully for you both. He thanks every customer three times, getting a little further each time."
+    },
+    "merchant:G5": {
+      "vnum": 30394,
+      "keywords": "merchant shopkeeper plump",
+      "short": "a plump merchant",
+      "long": "A plump merchant rubs his round hands together and beams, \"Buy somethin' will ya!\"",
+      "description": "Plump and pink and very pleased with himself, he greets you like a long-lost nephew. His cave is the cosiest shop in Hyrule, he claims, and his prices the kindest: a Magical Shield at 90 rupees, Bait at 100 and a Recovery Heart at only 10. He recommends the heart warmly to anyone who looks tired, which in his opinion is everyone. LIST his wares, BUY what you like, and stay for a chat if you can."
+    },
+    "merchant:G7": {
+      "vnum": 30395,
+      "keywords": "merchant shopkeeper baldpate",
+      "short": "a bald merchant",
+      "long": "A bald merchant polishes his bald head with a rag and calls, \"Buy somethin' will ya!\"",
+      "description": "His bald head shines in the firelight, and he polishes it with the same rag he uses on his wares. He is proudest of his Blue Candle, 60 rupees, which lights a dark room and burns back the bushes that hide things. He also keeps a Magical Shield at 160 and a small Key at 100, for the doors below that will not open otherwise. LIST to see them and BUY to carry them off. He polishes his head again when you pay."
+    },
+    "merchant:K5": {
+      "vnum": 30396,
+      "keywords": "merchant shopkeeper jovial",
+      "short": "a jovial merchant",
+      "long": "A jovial merchant laughs heartily and bellows, \"Buy somethin' will ya!\"",
+      "description": "He laughs at his own jokes before he reaches the end of them, and he has a great many jokes, most of them about moblins. Between them he sells a Magical Shield for 130 rupees, four Bombs for 20 and a quiver of Arrows for 80, and he will tell you a bomb is the best joke of all if you set it against the right wall. LIST to see his goods and BUY to take them. He is still laughing as you leave."
+    },
+    "merchant:M1": {
+      "vnum": 30397,
+      "keywords": "merchant shopkeeper sharpnose",
+      "short": "a sharp-nosed merchant",
+      "long": "A sharp-nosed merchant sniffs in the direction of your purse and announces, \"Buy somethin' will ya!\"",
+      "description": "He has a long, sharp nose and uses it to sniff out how much money a customer is carrying, or so he claims. His shop sits high in the hills, and he charges for the climb: a Magical Shield at 160 rupees, a small Key at 100 and a Blue Candle at 60. The candle, he says, sees off the dark and the brambles alike. LIST shows his stock and BUY puts an end to the sniffing. He knows the price of everything."
+    },
+    "merchant:N5": {
+      "vnum": 30398,
+      "keywords": "merchant shopkeeper dozy",
+      "short": "a dozing merchant",
+      "long": "A dozing merchant jerks awake behind his wares and blurts, \"Buy somethin' will ya!\"",
+      "description": "He dozes on a stool between customers and wakes with a start whenever someone comes in, blinking and patting his pockets. Once he has found his bearings he is helpful enough. A Magical Shield costs 90 rupees, Bait 100 and a Recovery Heart 10, and he lays them out in a neat row as if for inspection. LIST to see them and BUY to take one. Take too long deciding and he falls asleep again mid-sentence."
+    },
+    "merchant:O6": {
+      "vnum": 30399,
+      "keywords": "merchant shopkeeper patched",
+      "short": "a merchant in a patched cloak",
+      "long": "A merchant in a patched cloak throws back his patched cloak and urges, \"Buy somethin' will ya!\"",
+      "description": "His cloak is more patch than cloth, each patch a different colour, and he swears every one marks a deal he made. He has wandered the whole of Hyrule and settled here in the east because, he says, the customers are richer and the monsters slower. He sells a Magical Shield at 160 rupees, a small Key at 100 and a Blue Candle at 60. LIST his stock, BUY what suits you, and ask about any patch you like."
+    },
+    "merchant:P7": {
+      "vnum": 30400,
+      "keywords": "merchant shopkeeper moustache",
+      "short": "a moustached merchant",
+      "long": "A moustached merchant twirls a waxed moustache and declares, \"Buy somethin' will ya!\"",
+      "description": "His moustache is waxed into two fine points, and he twirls one whenever he names a price. His shop, at the far south-eastern edge of the land, is the last before a long walk, and he stocks for it: a Magical Shield at 130 rupees, four Bombs at 20 and a quiver of Arrows at 80. LIST and BUY are all you need. He compliments every purchase as though you had chosen it with exquisite taste."
+    },
+    "potion:D4": {
+      "vnum": 30401,
+      "keywords": "old woman potion seller hunched",
+      "short": "a hunched old woman",
+      "long": "A hunched old woman peers up from her cauldron and croaks, \"Buy medicine before you go.\"",
+      "description": "She is bent nearly double over a bubbling cauldron, and the steam has turned her grey hair to frizz. Her eyes go straight to your belt as you come in, looking for a royal seal: she sells to nobody who does not carry Princess Zelda's Letter. Show her that and she will part with a blue Life Potion for 40 rupees or a red Second Potion for 68. LIST and BUY, and mind the cauldron on your way out."
+    },
+    "potion:E1": {
+      "vnum": 30402,
+      "keywords": "old woman potion seller rosy",
+      "short": "a rosy-cheeked old woman",
+      "long": "A rosy-cheeked old woman smiles warmly and reminds you, \"Buy medicine before you go.\"",
+      "description": "Her cheeks are round and rosy and she fusses over every visitor like a grandmother, clucking at your scrapes and bruises. She is strict about one thing, though: without Princess Zelda's Letter on you she will not sell a drop, royal orders. With it, a blue Life Potion is 40 rupees and a red Second Potion is 68, and she tells you to drink the blue one before you feel faint, not after. LIST and BUY."
+    },
+    "potion:E7": {
+      "vnum": 30403,
+      "keywords": "old woman potion seller herbalist",
+      "short": "an old woman smelling of herbs",
+      "long": "An old woman smelling of herbs crushes a leaf between her fingers and says, \"Buy medicine before you go.\"",
+      "description": "Bunches of herbs hang drying from every inch of her ceiling, and she smells of mint and woodsmoke and something bitter underneath. She has no patience for questions until she has seen Princess Zelda's Letter, which she reads twice, lips moving. Then she will sell you a blue Life Potion for 40 rupees or a red Second Potion for 68, brewed that week. LIST her bottles and BUY. She will not tell you the recipe."
+    },
+    "potion:H3": {
+      "vnum": 30404,
+      "keywords": "old woman potion seller spectacled",
+      "short": "a spectacled old woman",
+      "long": "A spectacled old woman pushes up her spectacles and advises, \"Buy medicine before you go.\"",
+      "description": "Thick round spectacles magnify her eyes to twice their size, and she pushes them up her nose every few words. She examines Princess Zelda's Letter very closely indeed before she will trade, holding it up to the fire to check the seal; without it she sells you nothing. With it she offers a blue Life Potion at 40 rupees and a red Second Potion at 68. LIST and BUY, and she will label your bottle in a tiny, careful hand."
+    },
+    "potion:I8": {
+      "vnum": 30405,
+      "keywords": "old woman potion seller hummer",
+      "short": "a humming old woman",
+      "long": "A humming old woman stops humming long enough to say, \"Buy medicine before you go.\"",
+      "description": "She hums constantly, the same three notes over and over, while she stirs and pours and corks. The humming stops only when she asks to see Princess Zelda's Letter, for she trades with nobody who lacks it. Shown the seal, she brightens and offers a blue Life Potion for 40 rupees or a red Second Potion for 68, and goes back to humming. LIST to see them, BUY to take one. The tune is stuck in your head for hours."
+    },
+    "potion:L5": {
+      "vnum": 30406,
+      "keywords": "old woman potion seller tiny",
+      "short": "a tiny old woman",
+      "long": "A tiny old woman stands on a crate to be seen and squeaks, \"Buy medicine before you go.\"",
+      "description": "She is so small that she keeps a crate behind the counter to stand on, and she climbs onto it with great dignity whenever a customer arrives. She trades only with those who carry Princess Zelda's Letter; she squints at the seal, nods once, and then sells a blue Life Potion for 40 rupees or a red Second Potion for 68. LIST and BUY. She is fiercely proud that her potions are the strongest by the cupful, if not by the bottle."
+    },
+    "potion:N1": {
+      "vnum": 30407,
+      "keywords": "old woman potion seller brisk",
+      "short": "a brisk old woman",
+      "long": "A brisk old woman taps the counter impatiently and urges, \"Buy medicine before you go.\"",
+      "description": "She has no time for chatter and makes that clear by tapping the counter until you get to the point. Princess Zelda's Letter first, she says; no letter, no potions, and she does not care who you are. With it, a blue Life Potion costs 40 rupees and a red Second Potion 68. LIST, BUY, and out, she says, though she softens enough to wish you a safe road and to tuck an extra cork into your pack."
+    },
+    "repair:B1": {
+      "vnum": 30408,
+      "keywords": "old man repairman gruff",
+      "short": "a gruff old man",
+      "long": "A gruff old man blocks the doorway and grumbles, \"Pay me for the door repair charge.\"",
+      "description": "He is broad and gruff and built like a door himself, and he blames you personally for every crack in his cave. Somebody bombed his way in, he says, glaring, and somebody is going to pay for it. He takes 20 rupees from each visitor the first time they come in, before they can argue, and drops it into an iron box. After that he only grumbles about the draught and goes back to his mortar."
+    },
+    "repair:D1": {
+      "vnum": 30409,
+      "keywords": "old man repairman ledger",
+      "short": "an old man with a ledger",
+      "long": "An old man with a ledger licks his pencil, opens his ledger and says, \"Pay me for the door repair charge.\"",
+      "description": "He keeps a fat ledger open on his knee and writes in it constantly, licking his pencil between entries. Every visitor has a line in it, with a date and a sum. The first time you walk in he takes 20 rupees for the door repair and writes your name down with a flourish. After that he checks the book, finds you already paid, and waves you on without looking up. He has never once made an error, he says."
+    },
+    "repair:D7": {
+      "vnum": 30410,
+      "keywords": "old man repairman apologetic",
+      "short": "an apologetic old man",
+      "long": "An apologetic old man wrings his hands and apologises, \"Pay me for the door repair charge.\"",
+      "description": "He is terribly sorry about all this, he says, really he is, but the door does not mend itself. He wrings his hands, looks at his feet, and takes 20 rupees from you the moment you come in for the first time, apologising the whole while. On later visits he only apologises for having had to ask, at length, and offers you a seat by the fire that is broken too."
+    },
+    "repair:E2": {
+      "vnum": 30411,
+      "keywords": "old man repairman plasterer",
+      "short": "a plaster-dusted old man",
+      "long": "A plaster-dusted old man brushes plaster from his beard and announces, \"Pay me for the door repair charge.\"",
+      "description": "White plaster dust coats him from head to foot, so that he looks like a statue that has learned to walk. He is in the middle of patching the wall and does not stop. The first time you come in he holds out a dusty palm for 20 rupees and takes it before you have finished blinking. After that he ignores you and keeps patching, leaving white handprints on everything he touches."
+    },
+    "repair:H1": {
+      "vnum": 30412,
+      "keywords": "old man repairman sly",
+      "short": "a sly old man",
+      "long": "A sly old man smiles a crooked little smile and murmurs, \"Pay me for the door repair charge.\"",
+      "description": "There is a sly look about him, and you suspect the door was never broken at all. He smiles the crooked smile of a man who has found an easy living and means to keep it. He relieves each visitor of 20 rupees the first time they walk in, smoothly, almost kindly. On later visits he simply smiles and tips his head, as if the two of you share a joke. Perhaps you do."
+    },
+    "repair:I7": {
+      "vnum": 30413,
+      "keywords": "old man repairman mumbler",
+      "short": "a mumbling old man",
+      "long": "A mumbling old man mumbles into his beard something like, \"Pay me for the door repair charge.\"",
+      "description": "He mumbles everything into his beard, so that most of what he says is lost, but the outstretched hand is clear enough. The first time you come into his cave he takes 20 rupees for the door, mumbling what may be an itemised bill or may be a recipe for soup. After that he mumbles at you companionably and seems to expect nothing more. He has, you gather, a cat somewhere."
+    },
+    "repair:K7": {
+      "vnum": 30414,
+      "keywords": "old man repairman bowlegged",
+      "short": "a bow-legged old man",
+      "long": "A bow-legged old man waddles forward on bowed legs and demands, \"Pay me for the door repair charge.\"",
+      "description": "His legs are so bowed you could roll a barrel between them, and he waddles about his cave tapping the walls with a little hammer. He was a mason once, he says, and still keeps a mason's prices. The first time you come in he takes 20 rupees for the door you came through. After that he only nods and goes on tapping the walls, listening for the next weak spot."
+    },
+    "repair:N8": {
+      "vnum": 30415,
+      "keywords": "old man repairman sniffler",
+      "short": "a sniffling old man",
+      "long": "A sniffling old man sniffs loudly, wipes his nose and says, \"Pay me for the door repair charge.\"",
+      "description": "He has a cold, has always had a cold, and blames the hole somebody blew in his wall for every sniffle of it. He takes 20 rupees from each visitor the first time they come in and tucks it into a damp handkerchief. On later visits he only sniffs at you reproachfully, as if you personally were the draught, and goes back to stuffing rags into the cracks."
+    },
+    "repair:O2": {
+      "vnum": 30416,
+      "keywords": "old man repairman nailbiter",
+      "short": "a nail-chewing old man",
+      "long": "A nail-chewing old man spits out a bent nail and snaps, \"Pay me for the door repair charge.\"",
+      "description": "He chews nails, actual iron nails, and spits out the bent ones into a bucket with a clang. A carpenter by trade and temper, he takes 20 rupees for the door from anyone coming in for the first time and does not discuss it. After that he looks you over, grunts, and goes back to his hammering. He has opinions about bombs, and none of them are kind."
+    },
+    "gambler:A2": {
+      "vnum": 30417,
+      "keywords": "gambler shifty",
+      "short": "a shifty gambler",
+      "long": "A shifty gambler shuffles three signs about and whispers, \"Let's play money making game.\"",
+      "description": "His eyes never rest, and neither do his hands, which shuffle three painted signs about the floor while he talks. You need 10 rupees in your purse to play. GAMBLE LEFT, MIDDLE or RIGHT and he turns them over: one sign wins you 20 or 50, one loses you 10, and the third loses you 10 or 40. He swears the game is honest. He also swears he has never once lost, and both cannot be true."
+    },
+    "gambler:G2": {
+      "vnum": 30418,
+      "keywords": "gambler dapper",
+      "short": "a dapper gambler",
+      "long": "A dapper gambler adjusts his cuffs and purrs, \"Let's play money making game.\"",
+      "description": "He is the best-dressed creature in Hyrule, by his own account, in a waistcoat embroidered with dice. His game is simple and elegant, he says: carry at least 10 rupees, then GAMBLE LEFT, MIDDLE or RIGHT. Behind one sign waits a win of 20 or 50, behind another a loss of 10, and behind the last a loss of 10 or 40. He shuffles with a flourish, pays out with a bow, and collects with a smile."
+    },
+    "gambler:G8": {
+      "vnum": 30419,
+      "keywords": "gambler coinflipper",
+      "short": "a coin-flipping gambler",
+      "long": "A coin-flipping gambler flips a rupee in the air and calls, \"Let's play money making game.\"",
+      "description": "He flips a rupee as he talks, catching it without looking, and never once drops it. He likes the odds of his game, he says, though he admits they like him more. You must hold 10 rupees to sit down. GAMBLE LEFT, MIDDLE or RIGHT: one of the three signs pays 20 or 50, one costs you 10, and one costs you 10 or 40. He has been sitting by the start of the road for years, waiting for fresh faces with full purses."
+    },
+    "gambler:M8": {
+      "vnum": 30420,
+      "keywords": "gambler weary",
+      "short": "a weary gambler",
+      "long": "A weary gambler rubs his tired eyes and offers, \"Let's play money making game.\"",
+      "description": "Dark rings sit under his eyes and he slumps over his three signs like a man who has played all night and lost. He has, often. His game wants 10 rupees in your purse before you can play. GAMBLE LEFT, MIDDLE or RIGHT, and one sign wins you 20 or 50, one loses you 10, and the third loses 10 or 40. He tells you the odds plainly, with the honesty of the very tired, and advises you to quit while ahead."
+    },
+    "gambler:P2": {
+      "vnum": 30421,
+      "keywords": "gambler cheerful",
+      "short": "a cheerful gambler",
+      "long": "A cheerful gambler claps his hands and chirps, \"Let's play money making game.\"",
+      "description": "Win or lose, he is delighted, and he claps his hands at every turn of a sign. His game wants a purse of at least 10 rupees. GAMBLE LEFT, MIDDLE or RIGHT: one sign pays 20 or 50, another takes 10, and the last takes 10 or 40. He cheers just as loudly when you lose as when you win, which some players find charming and others find suspicious. He keeps a tally of his best customers on the wall."
+    },
+    "fairy:D5": {
+      "vnum": 30422,
+      "keywords": "fairy great woods",
+      "short": "the great fairy of the woods",
+      "long": "The great fairy of the woods hovers above the still pond, trailing motes of light.",
+      "description": "She is no taller than your hand, wrapped in a glow like sunlight through green leaves, and she dances over the pond on wings that blur and hum. She does not speak, but she laughs, a sound like a little bell. Anyone who comes to rest at her pond, so long as they are not fighting, finds their hearts made whole: wounds close, strength returns, and weary legs feel fresh again. She asks nothing in return, and seems pleased simply to be visited."
+    },
+    "fairy:J4": {
+      "vnum": 30423,
+      "keywords": "fairy great north",
+      "short": "the great fairy of the north",
+      "long": "The great fairy of the north drifts in slow circles over the fountain, glowing softly.",
+      "description": "Her light is cooler than her sister's in the woods, the pale blue of a winter morning, and she moves with a slow, thoughtful grace. She watches each traveller who comes to the fountain with old, patient eyes. Any who rest here and are not locked in a fight are restored, wounds, weariness and all, as her light washes over them. She hums softly to the water while she works, and the water seems to listen."
     }
   }
 }

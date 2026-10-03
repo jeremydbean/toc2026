@@ -90,8 +90,9 @@ Contextual movement may also be attached to `push`, `pull`, `move`, `turn`,
 | `fill`, `drink`, `eat`, `feed` | Food, drink, and containers |
 | `quaff`, `recite`, `brandish`, `zap` | Activate potions, scrolls, staves, and wands |
 | `brew`, `concoct`, `scribe` | Create class-supported consumables |
-| `shoot` | Fire a bow at an adjacent target, or use Hyrule's Silver Arrow finisher |
-| `bomb`, `burn`, `flip`, `play`, `pull`, `push`, `move`, `turn` | Item or area-specific interactions |
+| `shoot` | Fire a bow at an adjacent target; in Hyrule, its bow (with a quiver, a rupee a shot) or a boomerang at an enemy in the room; or the Silver Arrow finisher |
+| `bomb`, `burn`, `flip`, `play`, `pull`, `push`, `move`, `turn` | Item or area-specific interactions; in Hyrule `bomb` and `burn` also strike an enemy |
+| `hearts` | Your Hyrule heart count, which the White and Magical Swords ask for |
 
 Normal bow shooting requires Archery, targets visible mobiles through open
 adjacent exits, and does not use a separate ammunition item. Shots can improve

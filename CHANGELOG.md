@@ -10,6 +10,53 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- **Hyrule's NES pass: people of their own, maps that help, the caves'
+  rules, and items that do things.** The plan is "The NES Pass: Plan" in
+  `wiki/hyrule-area.md`; the new code is `src/hyrule.c`.
+  - **Every room, enemy and person is written on its own.** Duplicate room
+    names and the caves' shared text are gone: each of the 60-odd caves,
+    shops and halls has its own entry. Every enemy kind has its own text in
+    each band (127 entries), and the old men, old women, merchants, potion
+    sellers, door-repair men, gamblers, moblins, fairies and Zelda are 78
+    records of their own instead of seven shared ones; an old man says his
+    NES hint. Hints now stand in the rooms the sources give (Level 2's old
+    man added; Levels 6, 7, 8 and 9 corrected).
+  - **Maps and compasses tell you something.** LOOK or READ a dungeon map
+    for its floor plan, with you, the guardian's chamber, the locked
+    Triforce chest and what the guardian's door needs; a compass names the
+    first step of the shortest path to the chest and how many rooms away
+    it and the guardian are. All nine sets were checked against the NES.
+  - **Boss drop tables.** Every guardian drops two of five armour pieces at
+    random, each a little better than the best piece a character of its
+    band can find anywhere else, measured with the Gear Finder.
+  - **The caves follow the NES and cannot be farmed.** Money caves pay once
+    per character as you walk in (a new saved field, `HyruleSecrets`); the
+    money-making game is the NES's, with nothing to gain on average and no
+    casino credit; four plain heart caves are the NES's "take any one you
+    want"; the White Sword wants 5 hearts and the graveyard's Magical Sword
+    (new, level 38) 12, counted the NES way (HEARTS); two old women sell
+    hints for rupees (GIVE) and two old men give theirs; the Level 5 and 7
+    old men sell bigger bomb bags.
+  - **Hidden ways open only to their tool.** Bomb walls, bushes, Armos,
+    blocks and the lake were plain closed doors anyone could OPEN; they are
+    secret now until the NES's act opens them, and OPEN, PICK, DOORBASH and
+    UNLOCK refuse with a hint. Shutters stay shut while enemies remain. A
+    bomb is used up by every blast; the Recorder must be the Recorder.
+    `tools/build_directions.py` writes these as the act and its need.
+  - **Every item does something.** Bombs are bought four at a time and
+    thrown at walls or enemies; the bow SHOOTs with a quiver at a rupee a
+    shot, killing pols voices outright; boomerangs stun; candles burn
+    enemies; bait calms a room; the Recorder shrinks Digdogger and calls the
+    whirlwind; the Rod never runs dry and burns with the Book; the red
+    potion turns blue; shop keys keep through a quit; the shop Blue Ring and
+    Magical Shield carry wards; fountain fairies restore you; the tenth
+    enemy in a row without a wound leaves a bomb.
+  - The Silver Arrow was checked against the NES and is already where it
+    belongs: Level 9's item cellar under the far-west wizzrobe room.
+  - The item COMBINE TRIFORCE makes is named just "The Triforce" everywhere
+    it is shown: its short description, COMBINE's messages, its achievement,
+    HELP and the pieces' lore. Same vnum, same powers.
+
 - **Hyrule's dungeons are done in order, and every guardian keeps a key.**
   - Each guardian drops its dungeon's key. The key opens the magical door
     into the room behind the guardian and the locked chest in it; the chest
