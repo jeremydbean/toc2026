@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1791060962
+LogO 1791061296
 Vers 4
 Desc You see something very special about him.
 ~
@@ -18,13 +18,13 @@ PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,m
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6422569
+Plyd 6422903
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 StashMax 500
 Scro 0
-Room 1
+Room 30607
 HMV  30000 30000 30000 30000 30000 30000
 NewGold 98
 NewPlat 2503018
@@ -145,13 +145,10 @@ Color 16 6
 Pos  8
 Prac 265
 Trai 75
-Save  7500
 Alig  -1000
-Hit   7500
-Dam   7500
-ACs 10095 10095 10095 10095
+ACs 95 95 95 95
 Attr 25 21 18 18 18
-AMod 1000 1000 1000 1000 1000
+AMod 0 0 0 0 0
 Pass Kilrpis9ggekI~
 Bin  Killuminati appears before you.~
 Bout Killuminati raises into the sky, and is gone.~
@@ -414,7 +411,7 @@ Vnum 20305
 Nest 0
 Wear -1
 Lev  1
-Time 164
+Time 159
 Cost 96000
 Cond 100
 Repd 0
@@ -588,7 +585,7 @@ End
 #O
 Vnum 29303
 Nest 0
-Wear 16
+Wear -1
 Lev  68
 Cost 10000000000
 Cond 100

@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791060915
+LogO 1791061223
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 267116
+Plyd 267424
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 29204
-HMV  6260 6924 8175 8562 1046 1866
-NewGold 42
-NewPlat 185
-NewCopp 108
-NewSilv 119
+Room 29206
+HMV  4773 6924 8027 8562 390 1866
+NewGold 81
+NewPlat 200
+NewCopp 201
+NewSilv 188
 BankCP 196864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 972
+AchKills 975
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -107,9 +107,9 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  127856
+Exp  129994
 Act  4261068
-AfBy 3678904
+AfBy 3678968
 AfBy2 4104
 Comm 24576
 Mounted 0
@@ -140,9 +140,9 @@ Prac 6
 Trai 1
 Save  -6
 Alig  1000
-Hit   55
-Dam   75
-ACs -282 -295 -248 -104
+Hit   65
+Dam   85
+ACs -182 -195 -148 -4
 Attr 22 13 12 16 15
 AMod 23 23 25 24 23
 Pass Al3w9zuAlwpyY~
@@ -184,7 +184,7 @@ Sk 100 'parry'
 Sk 1 'rescue'
 Sk 100 'second attack'
 Sk 89 'third attack'
-Sk 88 'fast healing'
+Sk 89 'fast healing'
 Sk 89 'door bash'
 Sk 80 'recall'
 Sk 75 'smite'
@@ -192,30 +192,33 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'detect hidden'   0   6   0   0         32          0
-AffD 'detect magic'   0   6   0   0         16          0
-AffD 'detect invis'   0   6   0   0          8          0
-AffD 'titanic'   0  50  50  16          0          0
-AffD 'titanic'   0  50 1555  14          0          0
-AffD 'titanic'   0  50 7160  12          0          0
-AffD 'titanic'   0  50 5770  13          0          0
-AffD 'empower'   0  50 -100  17          0          0
-AffD 'empower'   0  50  20  19          0          0
-AffD 'empower'   0  50  20  18          0          0
-AffD 'empower'   0  50  15   5          0          0
-AffD 'empower'   0  50  11   2          0          0
-AffD 'empower'   0  50  15   4          0          0
-AffD 'empower'   0  50  15   3          0          0
-AffD 'giant strength'   0  50  15   1          0          0
-AffD 'divine protection'   0  50   0   0          0       4096
-AffD 'fire shield'   0  50   0   0          0          8
-AffD 'protection evil'   0  50   0   0       8192          0
-AffD 'pass door'   0  50   0   0    1048576          0
-AffD 'fly'   0  50   0   0     524288          0
-AffD 'haste'   0  50   4   2    2097152          0
-AffD 'sanctuary'   0  50   0   0        128          0
-AffD 'empower'   0  50   0   0          0          0
-AffD 'fly'   0   2   0   0     524288          0
+AffD 'berserk'   0   2 100  17         64          0
+AffD 'berserk'   0   2  10  19         64          0
+AffD 'berserk'  31   2  10  18         64          0
+AffD 'mindbar'   0   2   0   0          0          0
+AffD 'detect hidden'   0   1   0   0         32          0
+AffD 'detect magic'   0   1   0   0         16          0
+AffD 'detect invis'   0   1   0   0          8          0
+AffD 'titanic'   0  45  50  16          0          0
+AffD 'titanic'   0  45 1555  14          0          0
+AffD 'titanic'   0  45 7160  12          0          0
+AffD 'titanic'   0  45 5770  13          0          0
+AffD 'empower'   0  45 -100  17          0          0
+AffD 'empower'   0  45  20  19          0          0
+AffD 'empower'   0  45  20  18          0          0
+AffD 'empower'   0  45  15   5          0          0
+AffD 'empower'   0  45  11   2          0          0
+AffD 'empower'   0  45  15   4          0          0
+AffD 'empower'   0  45  15   3          0          0
+AffD 'giant strength'   0  45  15   1          0          0
+AffD 'divine protection'   0  45   0   0          0       4096
+AffD 'fire shield'   0  45   0   0          0          8
+AffD 'protection evil'   0  45   0   0       8192          0
+AffD 'pass door'   0  45   0   0    1048576          0
+AffD 'fly'   0  45   0   0     524288          0
+AffD 'haste'   0  45   4   2    2097152          0
+AffD 'sanctuary'   0  45   0   0        128          0
+AffD 'empower'   0  45   0   0          0          0
 End
 
 #O
@@ -972,7 +975,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 315
+Time 310
 Cost 0
 Cond 100
 Repd 0
@@ -1020,7 +1023,7 @@ Nest 0
 Wear 12
 Lev  8
 Cost 10000000
-Cond 78
+Cond 77
 Repd 0
 Val  4 5 3 0 0
 End
@@ -1090,16 +1093,6 @@ Lev  52
 Cost 24090000
 Cond 98
 Repd 0
-End
-
-#O
-Vnum 3091
-Nest 0
-Wear -1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'fly'
 End
 
 #O
