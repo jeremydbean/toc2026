@@ -126,12 +126,14 @@ async def verify_token(request: Request, x_admin_token: str = Header(default="")
 try:
     from webadmin.area_health import build_area_health
     from webadmin.area_parser import AreaParser, APPLY_LOCATIONS
+    from webadmin.area_parser import parse_flag_value, flag_bit
     from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values, SECTOR_TYPES
     from webadmin.area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS, ROOM_FLAGS
     from webadmin import oracle
 except ImportError:
     from area_health import build_area_health
     from area_parser import AreaParser, APPLY_LOCATIONS
+    from area_parser import parse_flag_value, flag_bit
     from area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values, SECTOR_TYPES
     from area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS, ROOM_FLAGS
     import oracle
@@ -3851,9 +3853,101 @@ def _gear_race_ok(obj, race_flag: Optional[str]) -> bool:
     return not allowed or race_flag in allowed
 
 
+_GEAR_REACHABLE: Dict[str, Any] = {"key": None, "rooms": None}
+
+
+def _gear_reachable_rooms():
+    """Every room a player can reach from the Oak Tree Square, by the same
+    walk tools/build_directions.py makes for the published routes: exits,
+    portals, handholds and teleport rooms. Cached per parsed world; None if
+    the walk cannot be made, which turns the check off rather than hiding
+    everything."""
+    key = id(parser)
+    if _GEAR_REACHABLE["key"] == key:
+        return _GEAR_REACHABLE["rooms"]
+    rooms = None
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "build_directions", Path(__file__).resolve().parents[1] / "tools" / "build_directions.py")
+        bd = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(bd)
+        world = bd.load_world()
+        portals = bd.load_portals()
+        for room, edges in bd.load_teleports().items():
+            portals.setdefault(room, []).extend(edges)
+        for vnum in bd.load_ejectors():
+            world.pop(vnum, None)
+        rooms = set(bd.shortest_paths(world, bd.START, portals))
+    except Exception:
+        rooms = None
+    _GEAR_REACHABLE["key"] = key
+    _GEAR_REACHABLE["rooms"] = rooms
+    return rooms
+
+
+def _gear_room_open(room, level: int) -> bool:
+    """A room a player of this level may stand in: not staff-only, and not
+    Mud School past newbie level."""
+    # Somewhere you can actually walk to. Kerofk's Void holds a chest of
+    # test kit ("an amulet of XXXXX") that no exit leads to, and Limbo is
+    # the staff's workshop.
+    reachable = _gear_reachable_rooms()
+    if reachable is not None and getattr(room, "vnum", None) not in reachable:
+        return False
+    flags = decode_flags(room.room_flags, ROOM_FLAGS)
+    return not ("imp_only" in flags or "gods_only" in flags
+                or ("newbies_only" in flags and level > 5))
+
+
+def _gear_obtainable_key(key_vnum: int, level: int, depth: int = 0) -> bool:
+    """Whether a key can be had: carried by a mobile, lying in an open room,
+    or inside a container that is itself obtainable."""
+    key = getattr(parser, "objects", {}).get(key_vnum)
+    if key is None or depth > 3:
+        return False
+    if key.carried_by:
+        return True
+    for room in getattr(parser, "rooms", {}).values():
+        if key_vnum in getattr(room, "objects", []) and _gear_room_open(room, level):
+            return True
+    return any(_gear_container_reachable(c, level, depth + 1)
+               for c in getattr(key, "contained_by", []) or [])
+
+
+def _gear_container_reachable(cont_vnum: int, level: int, depth: int = 0):
+    """Where a container can be reached, as a label, or None. A locked
+    container counts only when its key can be had too -- a chest nobody can
+    open is staff storage, not loot."""
+    objects = getattr(parser, "objects", {})
+    cont = objects.get(cont_vnum)
+    if cont is None or depth > 3:
+        return None
+    locked = False
+    try:
+        locked = bool(parse_flag_value(cont.values[1]) & flag_bit("D"))
+        key_vnum = int(cont.values[2])
+    except (IndexError, TypeError, ValueError):
+        key_vnum = 0
+    if locked and key_vnum > 0 and not _gear_obtainable_key(key_vnum, level, depth):
+        return None
+    for room in getattr(parser, "rooms", {}).values():
+        if cont_vnum in getattr(room, "objects", []) and _gear_room_open(room, level):
+            return f"in {cont.short_desc} in {room.name}"
+    mobiles = getattr(parser, "mobiles", {})
+    for mob_vnum in cont.carried_by or []:
+        mob = mobiles.get(mob_vnum)
+        if mob is not None:
+            return f"in {cont.short_desc} carried by {mob.short_desc}"
+    return None
+
+
 def _gear_sources(obj, item_type: int, level: int):
-    """Each mobile a player can take this from, with the level and values
-    the item comes out at: (mob, item_level, values).
+    """Each way a player can take this: (label, item_level, values, rank),
+    where rank orders equal finds (the weaker carrier first).
+
+    Mobiles that carry, wear or sell it, and containers that hold it --
+    the boss chests of Hyrule, which hold the Master Sword.
 
     reset_area hands a level -1 prototype the carrier's level less two (a
     shopkeeper's by item type), never above 52, and create_object rolls
@@ -3873,20 +3967,15 @@ def _gear_sources(obj, item_type: int, level: int):
             # A carrier the parser holds no record of: the reset names it,
             # so take the prototype as it stands.
             if obj.level != -1:
-                yield None, obj.level, list(obj.values)
+                yield "", obj.level, list(obj.values), 999
             continue
         shop = mob_vnum in shops
         if "inventory" in extra and not shop:
             continue
         rooms = [rooms_by_vnum.get(r) for r in mob.spawn_rooms]
         rooms = [r for r in rooms if r is not None]
-        if rooms:
-            def closed(room):
-                flags = decode_flags(room.room_flags, ROOM_FLAGS)
-                return ("imp_only" in flags or "gods_only" in flags
-                        or ("newbies_only" in flags and level > 5))
-            if all(closed(r) for r in rooms):
-                continue
+        if rooms and not any(_gear_room_open(r, level) for r in rooms):
+            continue
         values = list(obj.values)
         item_level = obj.level
         if item_level == -1:
@@ -3901,7 +3990,16 @@ def _gear_sources(obj, item_type: int, level: int):
             elif item_type == ITEM_TYPE_ARMOR and len(values) > 2:
                 for i in range(3):
                     values[i] = str(item_level // 5 + 3)
-        yield mob, item_level, values
+        label = ("sold by " if shop else "from ") + (mob.short_desc or "someone")
+        yield label, item_level, values, int(mob.level or 0)
+
+    # Containers. A level -1 prototype in a chest is skipped: its level
+    # comes from whatever loaded the chest, which the parser cannot see.
+    if obj.level != -1:
+        for cont_vnum in getattr(obj, "contained_by", []) or []:
+            where = _gear_container_reachable(cont_vnum, level)
+            if where:
+                yield where, obj.level, list(obj.values), 500
 
 
 
@@ -3934,7 +4032,7 @@ async def get_best_gear(
     for vnum, obj in parser.objects.items():
         # Obtainable only: something a mobile carries or wears (G and E
         # resets) that a player can actually take and keep.
-        if not getattr(obj, "carried_by", None):
+        if not (getattr(obj, "carried_by", None) or getattr(obj, "contained_by", None)):
             continue
         if not _gear_race_ok(obj, race_flag):
             continue
@@ -3954,16 +4052,15 @@ async def get_best_gear(
         # The best version of it this level can use: a level -1 item is
         # stronger off a stronger carrier.
         source = None
-        for mob, item_level, values in _gear_sources(obj, item_type_num, level):
+        for label, item_level, values, rank in _gear_sources(obj, item_type_num, level):
             if item_level > level:
                 continue
-            mob_level = int(mob.level or 0) if mob is not None else 999
             if source is None or item_level > source[1] or (
-                    item_level == source[1] and mob_level < source[3]):
-                source = (mob, item_level, values, mob_level)
+                    item_level == source[1] and rank < source[3]):
+                source = (label, item_level, values, rank)
         if source is None:
             continue
-        mob, item_level, values, _mob_level = source
+        source_label, item_level, values, _rank = source
 
         # Score: damage first, toughness after, by the class's weights.
         score = 0.0
@@ -4052,9 +4149,7 @@ async def get_best_gear(
             "level": item_level,
             "affects": affects_decoded,
             "area": obj.area_name,
-            "source": "" if mob is None else (
-                ("sold by " if mob.vnum in getattr(parser, "shopkeepers", set())
-                 else "from ") + (mob.short_desc or "someone")),
+            "source": source_label,
         })
 
     # Sort and limit. Ties go to the higher-level item, then the vnum, so

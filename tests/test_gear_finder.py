@@ -242,6 +242,35 @@ class GearFinderTests(unittest.TestCase):
         breakdown = " ".join(result["Left Finger"][0]["score_breakdown"])
         self.assertTrue("Haste" in breakdown or "Sanctuary" in breakdown)
 
+    def test_chest_loot_counts_when_the_chest_can_be_opened(self) -> None:
+        """A boss chest's prize -- the Master Sword -- is loot like any drop,
+        but a locked chest whose key nobody can get is storage, not loot."""
+        from dataclasses import replace
+        from webadmin import server
+
+        open_chest = replace(item(50, 15, "A", ("200", "0", "0", "0", "0")),
+                             carried_by=[], short_desc="an open chest")
+        locked = replace(item(51, 15, "A", ("200", "D", "60", "0", "0")),
+                         carried_by=[], short_desc="a locked chest")
+        keyed = replace(item(52, 15, "A", ("200", "D", "61", "0", "0")),
+                        carried_by=[], short_desc="a keyed chest")
+        no_key = replace(item(60, 18, "A"), carried_by=[])          # nobody has it
+        boss_key = replace(item(61, 18, "A"), carried_by=[1])       # a boss drops it
+        loot = [replace(item(70 + n, 11, "AE", affects=[(19, 3)]), carried_by=[],
+                        contained_by=[cont])
+                for n, cont in enumerate((50, 51, 52))]
+        room = SimpleNamespace(vnum=900, name="Treasure Room", room_flags="0",
+                               objects=[50, 51, 52], area_file="test.are")
+        with patch.object(server, "_gear_reachable_rooms", lambda: None):
+            result = self.find_world(
+                [open_chest, locked, keyed, no_key, boss_key, *loot],
+                {1: self.mob(1, 40)}, rooms={900: room})
+        heads = {i["vnum"]: i["source"] for i in result["Head"]}
+        self.assertIn(70, heads)                      # open chest
+        self.assertNotIn(71, heads)                   # key nobody holds
+        self.assertIn(72, heads)                      # key a boss drops
+        self.assertEqual(heads[70], "in an open chest in Treasure Room")
+
     # ---- the Oracle's live grounding --------------------------------
     def test_oracle_context_describes_gear_and_obtainable_bis(self) -> None:
         from webadmin import server
