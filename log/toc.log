@@ -26020,3 +26020,106 @@ Sat Oct  3 00:41:37 2026 :: Log Alaric [763]: get shield cor
 Sat Oct  3 00:41:38 2026 :: Log Alaric [763]: sc
 Sat Oct  3 00:41:40 2026 :: Log Alaric [763]: wear shield
 Sat Oct  3 00:41:41 2026 :: Log Alaric [763]: sc
+Sat Oct  3 00:41:46 2026 :: Log Alaric [763]: put shi new
+Sat Oct  3 00:41:48 2026 :: Log Alaric [763]: recal
+Sat Oct  3 00:41:48 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
+Sat Oct  3 00:41:49 2026 :: Log Alaric [2497]: en do
+Sat Oct  3 00:41:49 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sat Oct  3 00:41:52 2026 :: Log Alaric [2401]: i
+Sat Oct  3 00:41:53 2026 :: Log Alaric [2401]: eq
+Sat Oct  3 00:42:03 2026 :: Log Alaric [2401]: l
+Sat Oct  3 00:42:05 2026 :: Log Alaric [2401]: s
+Sat Oct  3 00:42:05 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sat Oct  3 00:42:05 2026 :: Log Alaric [2404]: s
+Sat Oct  3 00:42:05 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sat Oct  3 00:42:05 2026 :: Log Alaric [2427]: w
+Sat Oct  3 00:42:05 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sat Oct  3 00:42:05 2026 :: Log Alaric [4201]: w
+Sat Oct  3 00:42:05 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sat Oct  3 00:42:06 2026 :: Log Alaric [4202]: n
+Sat Oct  3 00:42:06 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sat Oct  3 00:42:06 2026 :: Log Alaric [4203]: n
+Sat Oct  3 00:42:06 2026 :: Log Alaric [0]: moved to 4210 (Room of Peace and Healing.)
+Sat Oct  3 00:42:07 2026 :: Log Alaric [4210]: sleep
+Sat Oct  3 00:42:07 2026 :: Log Alaric [4210]: sc
+Sat Oct  3 00:43:03 2026 :: Log Alaric [4210]: score
+Sat Oct  3 00:43:12 2026 :: Log Alaric [4210]: i
+Sat Oct  3 00:43:17 2026 :: Log Alaric [4210]: comp br
+Sat Oct  3 00:43:19 2026 :: Log Alaric [4210]: wake
+Sat Oct  3 00:43:20 2026 :: Log Alaric [4210]: comp br
+Sat Oct  3 00:43:50 2026 :: Log Alaric [4210]: comp mace
+Sat Oct  3 00:44:03 2026 :: Log Alaric [4210]: wear mace
+Sat Oct  3 00:44:04 2026 :: Log Alaric [4210]: l
+Sat Oct  3 00:44:05 2026 :: Log Alaric [4210]: s
+Sat Oct  3 00:44:05 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sat Oct  3 00:44:06 2026 :: Log Alaric [4203]: s
+Sat Oct  3 00:44:06 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sat Oct  3 00:44:06 2026 :: Log Alaric [4202]: e
+Sat Oct  3 00:44:06 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sat Oct  3 00:44:06 2026 :: Log Alaric [4201]: e
+Sat Oct  3 00:44:06 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sat Oct  3 00:44:06 2026 :: Log Alaric [2427]: n
+Sat Oct  3 00:44:06 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sat Oct  3 00:44:07 2026 :: Log Alaric [2404]: n
+Sat Oct  3 00:44:07 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sat Oct  3 00:44:10 2026 :: Log Alaric [2401]: r e 8
+Sat Oct  3 00:44:10 2026 :: Log Alaric [0]: moved to 2403 (Eastern Oak Tree Square.)
+Sat Oct  3 00:44:10 2026 :: Log Alaric [0]: moved to 2420 (Battle Road)
+Sat Oct  3 00:44:10 2026 :: Log Alaric [0]: moved to 2421 (Battle Road)
+Sat Oct  3 00:44:10 2026 :: Log Alaric [0]: moved to 2422 (Battle Road)
+Sat Oct  3 00:44:10 2026 :: Log Alaric [0]: moved to 2423 (Battle Road)
+Sat Oct  3 00:44:10 2026 :: Log Alaric [0]: moved to 2424 (Battle Road)
+Sat Oct  3 00:44:10 2026 :: Log Alaric [0]: moved to 2425 (Gate to Citadel of War on Battle Road)
+Sat Oct  3 00:44:10 2026 :: Log Alaric [0]: moved to 2426 (Inside the Eastern Gates of Dresden.)
+Sat Oct  3 00:44:12 2026 :: Log Alaric [2426]: open east
+Sat Oct  3 00:44:16 2026 :: Log Alaric [2426]: alias
+Sat Oct  3 00:44:20 2026 :: Log Alaric [2426]: alias on open north
+Sat Oct  3 00:44:24 2026 :: Log Alaric [2426]: alias os open sourth
+Sat Oct  3 00:44:28 2026 :: Log Alaric [2426]: alias oe open east
+Sat Oct  3 00:44:32 2026 :: Log Alaric [2426]: alias ow open west
+Sat Oct  3 00:44:32 2026 :: Log Alaric [2426]: l
+Sat Oct  3 00:44:33 2026 :: Log Alaric [2426]: oe
+Sat Oct  3 00:44:35 2026 :: Log Alaric [2426]: kill ci
+Sat Oct  3 00:45:05 2026 :: Sock.sinaddr:  5.161.75.7
+Sat Oct  3 00:45:05 2026 :: EOF encountered on read.
+Sat Oct  3 00:45:09 2026 :: Log Alaric [2426]: l
+Sat Oct  3 00:45:12 2026 :: Log Alaric [2426]: r e 19
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 2440 (Outside the Eastern Gates of Dresden.)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 3503 (City Entrance)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 3502 (The Cross Roads)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 3525 (Along the Eastern Road)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 3526 (Along the Eastern Road)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 3527 (The Checkpoint)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 3528 (Along the Eastern Road)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 3529 (Along the Eastern Road)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 3530 (Near the Sands of Sorrow)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 3531 (Near the Sands of Sorrow)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 3532 (On the Outskirts of New Thalos)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 42 (On the Outskirts of New Thalos)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 9669 (Outside the West Gate of New Thalos)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 9523 (Inside the West Gate of New Thalos)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 9524 (West Main Street)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 9525 (West Main Street)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 9526 (West Main Street)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 9509 (The Western Market Square)
+Sat Oct  3 00:45:12 2026 :: Log Alaric [0]: moved to 9506 (The Center of Market Square)
+Sat Oct  3 00:45:13 2026 :: Log Alaric [9506]: n
+Sat Oct  3 00:45:13 2026 :: Log Alaric [0]: moved to 9515 (The Northern Market Square)
+Sat Oct  3 00:45:13 2026 :: Log Alaric [9515]: n
+Sat Oct  3 00:45:13 2026 :: Log Alaric [0]: moved to 9518 (Sultan's Walk)
+Sat Oct  3 00:45:13 2026 :: Log Alaric [9518]: n
+Sat Oct  3 00:45:13 2026 :: Log Alaric [0]: moved to 9519 (Sultan's Walk)
+Sat Oct  3 00:45:14 2026 :: Log Alaric [9519]: n
+Sat Oct  3 00:45:14 2026 :: Log Alaric [0]: moved to 9520 (Sultan's Walk)
+Sat Oct  3 00:45:14 2026 :: Log Alaric [9520]: n
+Sat Oct  3 00:45:14 2026 :: Log Alaric [0]: moved to 9521 (Sultan's Walk)
+Sat Oct  3 00:45:14 2026 :: Log Alaric [9521]: n
+Sat Oct  3 00:45:14 2026 :: Log Alaric [0]: moved to 9522 (Inside the Northern Gate of New Thalos)
+Sat Oct  3 00:45:16 2026 :: Log Alaric [9522]: kill gu
+Sat Oct  3 00:45:30 2026 :: Log Alaric [9522]: kill gu
+Sat Oct  3 00:45:43 2026 :: Log Alaric [9522]: pray
+Sat Oct  3 00:45:43 2026 :: Log Alaric [0]: moved to 8 (The Oracle's Sanctum)
+Sat Oct  3 00:45:43 2026 :: Oracle: Alaric prayed from room 9522 (Inside the Northern Gate of New Thalos) and entered her sanctum.
+Sat Oct  3 00:46:37 2026 :: Log Alaric [8]: say Does a players proficiency in a weapon help with reducing damage of that same type of damage from a mobile, or increase it's chancing of being able to parryy, dodge, or block it?
+Sat Oct  3 00:46:37 2026 :: Log Alaric [8]: asked the Oracle: Does a players proficiency in a weapon help with reducing damage of that same type of damage from a mobile, or increase it's chancing of being able to parryy, dodge, or block it?
+Sat Oct  3 00:46:41 2026 :: Oracle answered Alaric in room 8: Weapon proficiency increases your damage output with that weapon, not your defense; parry, dodge, and block are separate defensive skills unrelated to what you wield.
