@@ -1,7 +1,7 @@
 #PLAYER
 Name Farslayer~
 Id   21916
-LogO 1791039409
+LogO 1791039753
 Vers 4
 Prom ~
 Ignoring  ~
@@ -15,16 +15,16 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 1
-Plyd 145
+Plyd 489
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 3700
-HMV  20 20 100 100 100 100
+Room 3714
+HMV  20 20 43 100 100 100
 NewGold 0
 NewPlat 0
-NewCopp 0
+NewCopp 6
 NewSilv 0
 BankCP 0
 IntTime 1791039310
@@ -34,13 +34,14 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 0
+AchKills 3
 AchQuests 0
 AchDeaths 0
 AchExplore 0
 AchMaps 0
 AchCompass 0
 AchTriforce 0
+Achv first-kill 1791039658
 Achv visit-mud-school 1791039302
 LastOut  0
 SesLogin 0
@@ -51,7 +52,7 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  0
+Exp  3730
 Act  65788
 Comm 24576
 Mounted 0
@@ -78,14 +79,13 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 5
-Trai 3
+Prac 3
 Save  -1
 Alig  -750
 Hit   2
 Dam   2
-ACs 95 95 95 99
-Attr 13 13 13 13 13
+ACs 89 89 89 99
+Attr 13 13 16 13 13
 AMod 0 0 0 0 0
 Pass FarZsfmbOukHE~
 Titl  the Apprentice of Magic~
@@ -93,7 +93,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 20 100 100
-Cond 0 45 45
+Cond 0 40 40
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -103,7 +103,7 @@ Sk 1 'fly'
 Sk 1 'giant strength'
 Sk 1 'identify'
 Sk 1 'lightning bolt'
-Sk 1 'magic missile'
+Sk 26 'magic missile'
 Sk 1 'refresh'
 Sk 1 'shield'
 Sk 10 'axe'
@@ -116,7 +116,7 @@ Sk 3 'sword'
 Sk 20 'whip'
 Sk 1 'scrolls'
 Sk 1 'wands'
-Sk 50 'recall'
+Sk 62 'recall'
 Gr 'rom basics'
 Gr 'mage basics'
 Gr 'mage default'
@@ -129,7 +129,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 197 0 0
+Val  0 0 192 0 0
 End
 
 #O
@@ -154,6 +154,62 @@ End
 Vnum 3701
 Nest 0
 Wear 16
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3706
+Nest 0
+Wear 6
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3711
+Nest 0
+Wear 12
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3705
+Nest 0
+Wear 4
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3705
+Nest 0
+Wear 3
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3708
+Nest 0
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+Affect -1 0 -1 13 14 0 0
+Affect -1 0 -1 -4 18 0 0
+End
+
+#O
+Vnum 3713
+Nest 0
+Wear -1
 Cost 0
 Cond 100
 Repd 0
