@@ -3989,13 +3989,16 @@ BENEFITS PER REMORT
     4th       57        58           800 each          23      16       +4
     5th       58        59          1000 each          25      18       +5
 
+  Practices and trains you have not spent are kept: the new life's
+  starting amounts above are added to them.
+
   Starting at remort 1 you are immune to hunger and thirst forever.
   Starting at remort 2 you gain psionic powers, and every remort after that
   deepens them: one power from each of the 4 disciplines at the 2nd remort,
   two from each at the 3rd, three from each at the 4th.  They STACK.  A
   remort wipes your skills, but the powers you have been given are
-  remembered and handed back, so a later life never costs you one you
-  already had.  The full pool contains 17: ego whip, mindblast, nightmare,
+  remembered and handed back at 1%, to be practised again, so a later
+  life never costs you one you already had.  The full pool contains 17: ego whip, mindblast, nightmare,
   torment, clairvoyance, mindbar, psionic armor, psychic shield,
   telekinesis, astral walk, shift, confuse, project, transfusion, mind
   leech, enervate, and pyrotechnics.  At the final (5th) remort you are

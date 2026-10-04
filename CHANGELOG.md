@@ -21,6 +21,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **Unspent practices and trains survive a remort.** The new life's
+  starting amounts are added to them instead of replacing them; HELP
+  REMORT says so, and that handed-back psionics return at 1%.
+- **A flaming or frost aura no longer burns its own wearer.** Poison,
+  plague and drowning are damage a character deals themselves, and the
+  aura reflected 60% of each tick back at them -- every tick hit twice.
 - **Remort and psionics, triple-checked.** Loading an offline character
   -- GRANTPSI, UNDENY, or a player's STASH LINK -- ran the psionic login
   top-up, which wrote to a blank connection and could crash the server;

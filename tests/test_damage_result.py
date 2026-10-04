@@ -38,6 +38,13 @@ class DamageResultTests(unittest.TestCase):
                     offenders.append(f"{path.name}:{number}: {line.strip()}")
         self.assertEqual(offenders, [], "use gone_after_blow() after damage()")
 
+    def test_an_aura_never_burns_its_own_wearer(self) -> None:
+        """Poison ticks are damage(ch, ch); the aura reflected them back."""
+        fight = (SRC / "fight.c").read_text(encoding="latin-1")
+        body = fight[fight.index("bool damage( CHAR_DATA *ch"):]
+        body = body[:body.index("AFF2_FLAMING_COLD")]
+        self.assertIn("if ( ch != victim )", body)
+
     def test_gone_after_blow_reads_the_room(self) -> None:
         fight = (SRC / "fight.c").read_text(encoding="latin-1")
         body = fight[fight.index("bool gone_after_blow("):]

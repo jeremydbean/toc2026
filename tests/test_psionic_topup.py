@@ -117,7 +117,8 @@ class PsionicTopUpTests(unittest.TestCase):
     def test_a_remort_away_from_the_temple_ends_in_it(self) -> None:
         with LiveMud() as mud:
             make(mud, "Zfarremort")
-            patch_player_file(mud, "Zfarremort", Levl=54, NumRemorts=0, Room=4208)
+            patch_player_file(mud, "Zfarremort", Levl=54, NumRemorts=0, Room=4208,
+                              Prac=7, Trai=3)
             with mud.connect(timeout=120) as client:
                 login(client, "Zfarremort", PW)
                 client.send(f"remort {PW} cleric none human")
@@ -127,6 +128,10 @@ class PsionicTopUpTests(unittest.TestCase):
             text = (mud.player_dir / "Zfarremort").read_text(encoding="latin-1")
             self.assertRegex(text, r"(?m)^Levl 3$")
             self.assertRegex(text, rf"(?m)^Room {TEMPLE}$")
+            # Unspent practices and trains are kept, the first remort's
+            # 17 and 10 added on top (owner, 2026-10-04).
+            self.assertRegex(text, r"(?m)^Prac 24$")
+            self.assertRegex(text, r"(?m)^Trai 13$")
 
 
 if __name__ == "__main__":

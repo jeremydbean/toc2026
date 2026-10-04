@@ -1394,10 +1394,17 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     hyrule_silver_arrow_hit = dam > 0 && is_hyrule_ganon(victim)
         && is_silver_arrow_attack(ch, dt);
 
-    if(IS_AFFECTED2(victim,AFF2_FLAMING_HOT) )
-      shield = 1;
-    else if(IS_AFFECTED2(victim,AFF2_FLAMING_COLD) )
-      shield = 2;
+    /* An aura burns whoever strikes its wearer -- never the wearer. Poison,
+       plague, drowning and a brew gone wrong are damage you deal yourself,
+       and the aura answered each with 60% more, a second hit from your own
+       shield (2026-10-04). */
+    if ( ch != victim )
+    {
+      if(IS_AFFECTED2(victim,AFF2_FLAMING_HOT) )
+        shield = 1;
+      else if(IS_AFFECTED2(victim,AFF2_FLAMING_COLD) )
+        shield = 2;
+    }
 
 /* Remove Bugged Weapon */
 /*  if ( dam > 1000 )

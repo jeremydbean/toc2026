@@ -5207,8 +5207,13 @@ void do_remort( CHAR_DATA *ch, char *arg)
    ch->max_hit  = ch->pcdata->perm_hit;
    ch->max_mana = ch->pcdata->perm_mana;
    ch->max_move = ch->pcdata->perm_move;
-    ch->practice = (int16_t)(15 + (2 * UMAX(1,ch->pcdata->num_remorts)));
-    ch->train    = (int16_t)(8 + (2 * UMAX(1,ch->pcdata->num_remorts)));
+    /* The new life's starting practices and trains go on top of whatever
+       was left unspent, which used to be thrown away (owner, 2026-10-04).
+       Clamped: both are 16-bit. */
+    ch->practice = (int16_t)URANGE(0, (long)ch->practice
+                   + 15 + 2 * UMAX(1,ch->pcdata->num_remorts), 30000);
+    ch->train    = (int16_t)URANGE(0, (long)ch->train
+                   + 8 + 2 * UMAX(1,ch->pcdata->num_remorts), 30000);
    ch->hit      = ch->max_hit;
    ch->mana     = ch->max_mana;
    ch->move     = ch->max_move;
