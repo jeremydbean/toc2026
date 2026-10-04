@@ -38491,3 +38491,35 @@ Sun Oct  4 13:43:40 2026 :: Log Alaric [29061]: sh gu
 Sun Oct  4 13:44:05 2026 :: Log Alaric [29061]: prac
 Sun Oct  4 13:44:05 2026 :: Log Alaric [29061]: skil
 Sun Oct  4 13:44:16 2026 :: Log Alaric [29061]: spel
+Sun Oct  4 13:44:36 2026 :: Sock.sinaddr:  5.161.215.244
+Sun Oct  4 13:44:36 2026 :: EOF encountered on read.
+Sun Oct  4 13:46:03 2026 :: Log Alaric [29061]: goto calico
+Sun Oct  4 13:46:10 2026 :: Log Alaric [29061]: goto calico
+Sun Oct  4 13:46:19 2026 :: Log Alaric [29061]: goto calico cat
+Sun Oct  4 13:46:41 2026 :: Log Alaric [29061]: eq
+Sun Oct  4 13:46:46 2026 :: Log Alaric [29061]: wake
+Sun Oct  4 13:46:54 2026 :: Log Alaric [29061]: stash
+Sun Oct  4 13:47:18 2026 :: Log Alaric [29061]: stash get alaric
+Sun Oct  4 13:47:20 2026 :: Log Alaric [29061]: l
+Sun Oct  4 13:47:22 2026 :: Log Alaric [29061]: sh gu
+Sun Oct  4 13:47:27 2026 :: Log Alaric [29061]: sh
+Sun Oct  4 13:47:30 2026 :: Log Alaric [29061]: sh
+Sun Oct  4 13:48:40 2026 :: Log Alaric [29061]: l
+Sun Oct  4 13:48:40 2026 :: Log Alaric [29061]: sh gu
+Sun Oct  4 13:48:41 2026 :: Log Alaric [29061]: s
+Sun Oct  4 13:48:41 2026 :: Log Alaric [0]: moved to 29062 (Corridor)
+Sun Oct  4 13:48:42 2026 :: Log Alaric [29062]: sh gu
+Sun Oct  4 13:48:46 2026 :: Log Alaric [29062]: sh gu
+Sun Oct  4 13:49:05 2026 :: Loading Eclipse's playerfile
+Sun Oct  4 13:49:11 2026 :: Log Alaric [29062]: sh gu
+Sun Oct  4 13:49:18 2026 :: Eclipse@97.248.95.144 has connected.
+Sun Oct  4 13:49:21 2026 :: Log Eclipse [9988]: moved to 9988 (Eclipse's Seat of Power.)
+Sun Oct  4 13:49:23 2026 :: Log Eclipse [9988]: who
+Sun Oct  4 13:49:25 2026 :: Log Alaric [29062]: sh gu
+Sun Oct  4 13:49:27 2026 :: Log Alaric [29062]: n
+Sun Oct  4 13:49:27 2026 :: Log Alaric [0]: moved to 29061 (Corridor)
+Sun Oct  4 13:49:28 2026 :: Log Alaric [29061]: s
+Sun Oct  4 13:49:28 2026 :: Log Alaric [0]: moved to 29062 (Corridor)
+Sun Oct  4 13:49:28 2026 :: Log Alaric [29062]: s
+Sun Oct  4 13:49:28 2026 :: Log Alaric [0]: moved to 29063 (Corridor)
+Sun Oct  4 13:49:30 2026 :: Log Alaric [29063]: sh gu
