@@ -5117,6 +5117,8 @@ void do_remort( CHAR_DATA *ch, char *arg)
    }
    /* HEHE, FINALLY A VALID CHOICE */
    player_snapshot_milestone( ch, "remort", true );
+   /* A level 3 character does not keep the undead a level 56 raised. */
+   dismiss_undead_servants( ch );
    watch_log( ch, "remort %d: level %d %s/%s/%s -> %s/%s/%s",
        ch->pcdata->num_remorts + 1, ch->level,
        class_table[ch->class].name, pc_race_table[ch->race].name,

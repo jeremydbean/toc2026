@@ -21,6 +21,32 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **Every multi-hit spell, trap and flood stopped at its first blow.**
+  `damage()` says whether a blow landed, and a 2025 pass read it as "the
+  victim died" at more than twenty places. So: one magic missile, one
+  skeletal hand and one tentacle per target; chain lightning that never
+  chained; heat metal on one item; dirt kicking that never blinded;
+  stunning blow, stun traps and earthquakes that never stunned (and a
+  landed stunning blow, blinding fists or fists of fury that cost no
+  lag); dart traps with one dart and no poison; floods that carried you
+  one room; enervate that never healed; the geyser knocking you down only
+  when it missed; a cauldron explosion that never used up its
+  ingredients; and a poisoned or drowning character skipping the rest of
+  their tick. `gone_after_blow()` is the test now, and
+  `tests/test_damage_result.py` fails on any branch on `damage()`'s
+  result.
+- **Followers of someone who quit kept following a freed character.**
+  `die_follower()` had been an empty stub since November 2025; the next
+  character allocated from the pool inherited them. It is stock ROM's
+  again, and raised undead crumble when their necromancer quits, refuses
+  followers or remorts rather than stand about as a free mobile.
+- **Necromancer exploits closed.** MURDER on your own vampire broke its
+  charm with the first blow and paid full experience; raised undead now
+  pay none to anyone, and MURDER refuses NOKILL mobiles as KILL does. A
+  raise dead that left belongings in the corpse could be cast again and
+  again to pull its owner anywhere; the leftovers now fall to the floor
+  and the corpse is used up. Rope trick and haven kept their origin in
+  the idle void's return pointer and never cleared it.
 - **Two necromancer spells had no trainer.** Cause serious (level 18)
   sat in no necromancer group, and GAIN sells spells only inside a group;
   it is in NECRO MALADICTIONS now, so everyone who already holds that

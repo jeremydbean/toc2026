@@ -675,13 +675,7 @@ void do_mindleech( CHAR_DATA *ch, char *argument )
             drain /= 2;
         act( "You probe $N's empty mind and the shock damages $M!", ch, NULL, victim, TO_CHAR );
         act( "$n probes your empty mind and the backlash hurts!", ch, NULL, victim, TO_VICT );
-        if (damage( ch, victim, drain, gsn_mindleech, DAM_MENTAL ))
-        {
-            /* victim was killed — skip the fight-start block */
-            check_improve(ch, gsn_mindleech, true, 4);
-            WAIT_STATE(ch, skill_table[gsn_mindleech].beats);
-            return;
-        }
+        damage( ch, victim, drain, gsn_mindleech, DAM_MENTAL );
     }
 
     check_improve(ch, gsn_mindleech, true, 4);
@@ -831,16 +825,19 @@ void do_enervate( CHAR_DATA *ch, char *argument )
     act( "$n's eyes dim as $e drains $N's very life and endurance.", ch, NULL, victim, TO_NOTVICT );
 
     victim_hit_before = victim->hit;
-    if (damage( ch, victim, hp_drain, gsn_enervate, DAM_MENTAL ))
     {
-        /* victim was killed — skip healing and fight-start */
-        check_improve(ch, gsn_enervate, true, 4);
-        WAIT_STATE(ch, skill_table[gsn_enervate].beats);
-        return;
-    }
+        ROOM_INDEX_DATA *struck_in = victim->in_room;
 
-    /* Heal only from damage that actually passed saves, defenses, and immunity. */
-    actual_damage = UMAX( 0, victim_hit_before - victim->hit );
+        /* damage() is true for any blow that lands, so this used to skip
+           the healing every time it did anything (2026-10-04). A killing
+           drain heals from what the victim had left. */
+        damage( ch, victim, hp_drain, gsn_enervate, DAM_MENTAL );
+        if ( gone_after_blow( victim, struck_in ) )
+            actual_damage = UMAX( 0, UMIN( hp_drain, victim_hit_before ) );
+        else
+            /* Heal only from damage that actually passed saves, defenses, and immunity. */
+            actual_damage = UMAX( 0, victim_hit_before - victim->hit );
+    }
     ch->hit = (int)(UMIN( ch->max_hit, ch->hit + actual_damage / 2 ));
 
     check_improve(ch, gsn_enervate, true, 4);
@@ -2630,6 +2627,7 @@ void spell_skeletal_hands( int sn, int level, CHAR_DATA *ch, void *vo )
 {
    CHAR_DATA *victim = (CHAR_DATA *) vo;
    int hands, count, dam;
+   ROOM_INDEX_DATA *room = ch->in_room;
 
    hands = 1 + ( level >= 20 ) + ( level >= 30 )
 	     + ( level >= 45 ) + ( level >= 55 );
@@ -2649,7 +2647,8 @@ void spell_skeletal_hands( int sn, int level, CHAR_DATA *ch, void *vo )
      dam  = dice(4, ch->level/3);
      if ( saves_spell( level, victim ) )
 	 dam /= 2;
-     if (damage( ch, victim, dam, sn, DAM_NEGATIVE ))
+     damage( ch, victim, dam, sn, DAM_NEGATIVE );
+     if ( gone_after_blow( victim, room ) || gone_after_blow( ch, room ) )
          return;  /* victim was killed */
    }
 
@@ -2663,6 +2662,7 @@ void spell_tentacles( int sn, int level, CHAR_DATA *ch, void *vo )
    CHAR_DATA *vch;
    CHAR_DATA *vch_next;
    int tentacle, count, dam;
+   ROOM_INDEX_DATA *room = ch->in_room;
 
    send_to_char("You call forth the power of the earth!\n\r",ch);
 
@@ -2680,10 +2680,11 @@ void spell_tentacles( int sn, int level, CHAR_DATA *ch, void *vo )
 	  for( count = 0; count < tentacle; count++)
 	  {
 	    dam  = dice(15, 10);
-	    if (damage( ch, vch, dam, sn, DAM_SLASH))
+	    damage( ch, vch, dam, sn, DAM_SLASH );
+	    if ( gone_after_blow( ch, room ) )
+		return;  /* the caster fell */
+	    if ( gone_after_blow( vch, room ) )
 		break;  /* vch was killed */
-	    if( vch->in_room != ch->in_room)
-		break;
 	  }
       }
     }
@@ -3294,12 +3295,20 @@ void do_concoct( CHAR_DATA *ch, char *argument )
 	NULL,NULL,TO_ROOM);
        extract_obj( potion );
        potion = NULL;
-       if (!damage( ch, ch, dice(2,10), gsn_concoct, DAM_FIRE ))
        {
-           /* ch survived; extract the spent ingredients */
-           extract_obj( pObj_one );
-           extract_obj( pObj_two );
-           save_char_obj(ch);
+           ROOM_INDEX_DATA *brewed_in = ch->in_room;
+
+           /* Hurting yourself always reports a landed blow, so this read
+              "killed" every time and the ingredients survived every
+              explosion: a failed brew cost nothing (2026-10-04). */
+           damage( ch, ch, dice(2,10), gsn_concoct, DAM_FIRE );
+           if ( !gone_after_blow( ch, brewed_in ) )
+           {
+               /* ch survived; extract the spent ingredients */
+               extract_obj( pObj_one );
+               extract_obj( pObj_two );
+               save_char_obj(ch);
+           }
        }
        /* if ch was killed, make_corpse already moved objects to corpse */
        return;
@@ -3805,13 +3814,16 @@ void spell_raise_dead( int sn, int level, CHAR_DATA *ch, void *vo )
       obj_to_char(obj, victim);
     }
 
-    if ( corpse->contains == NULL )
-      extract_obj(corpse);
-    else
+    /* Always used up. A corpse left holding what was too heavy could be
+       raised again and again, pulling its owner to the caster from
+       anywhere each time; what does not fit falls to the floor here. */
+    if ( corpse->contains != NULL )
     {
-      send_to_char("Some belongings were too heavy to return and remain in the corpse.\n\r",victim);
-      act("Some of $N's belongings remain in the corpse.",ch,NULL,victim,TO_CHAR);
+      send_to_char("Some belongings were too heavy to carry and fall to the ground.\n\r",victim);
+      act("Some of $N's belongings fall to the ground.",ch,NULL,victim,TO_CHAR);
+      spill_corpse( corpse );
     }
+    extract_obj(corpse);
 
     save_char_obj(victim);
 
@@ -3913,8 +3925,14 @@ void spell_geyser( int sn, int level, CHAR_DATA *ch, void *vo )
     if ( !IS_NPC(ch) )
         save_char_obj(ch);
 
-    if (!damage( ch, victim, dice(10, 10) + level, sn, DAM_DROWNING ))
-        victim->position = POS_RESTING;  /* victim survived; knock them down */
+    {
+        ROOM_INDEX_DATA *struck_in = victim->in_room;
+
+        /* Was !damage(): knocked down only when the geyser missed. */
+        damage( ch, victim, dice(10, 10) + level, sn, DAM_DROWNING );
+        if ( !gone_after_blow( victim, struck_in ) )
+            victim->position = POS_RESTING;  /* victim survived; knock them down */
+    }
     return;
 }
 
@@ -4056,6 +4074,34 @@ static int undead_servants( CHAR_DATA *ch )
     }
 
     return count;
+}
+
+/*
+ * Raised undead do not outlive their bond. When their necromancer leaves
+ * the game, refuses followers or remorts, they crumble: left standing
+ * they were a charmed mobile pointing at a character who had gone -- the
+ * next one allocated from the pool inherited them -- or a free mobile for
+ * somebody else to farm.
+ */
+void dismiss_undead_servants( CHAR_DATA *master )
+{
+    LIST_ITERATOR iter;
+    CHAR_DATA *gch;
+
+    FOR_EACH_CHARACTER( iter, gch )
+    {
+        if ( gch == master || !IS_NPC( gch ) || gch->master != master
+          || gch->pIndexData == NULL
+          || gch->pIndexData->vnum != MOB_VNUM_ANIMATE )
+            continue;
+
+        if ( gch->in_room != NULL )
+            act( "$n crumbles into dust.", gch, NULL, NULL, TO_ROOM );
+        REMOVE_BIT( gch->affected_by, AFF_CHARM );
+        gch->master = NULL;
+        gch->leader = NULL;
+        extract_char( gch, true );
+    }
 }
 
 
@@ -4464,6 +4510,7 @@ void spell_cone_of_cold( int sn, int level, CHAR_DATA *ch, void *vo )
    UNUSED_PARAM(vo);
    CHAR_DATA *vch;
    CHAR_DATA *vch_next;
+   ROOM_INDEX_DATA *room = ch->in_room;
 
 
     send_to_char( "A cone of frost fans out from your hands!\n\r", ch );
@@ -4477,11 +4524,10 @@ void spell_cone_of_cold( int sn, int level, CHAR_DATA *ch, void *vo )
       {
           if ( vch != ch )
           {
-              if ( damage(ch,vch,dice(level/2,6),sn,DAM_COLD) )
-                  continue;
+              damage(ch,vch,dice(level/2,6),sn,DAM_COLD);
+              if ( gone_after_blow( ch, room ) )
+                  return;  /* the caster fell */
           }
-          if( vch->in_room != ch->in_room)
-              break;
       }
 
     }
@@ -4972,7 +5018,7 @@ void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
     UNUSED_PARAM(vo);
     ROOM_AFF_DATA *raf;
     EXIT_DATA *pexit;
-    ROOM_INDEX_DATA *pRoomIndex, *pHolder;
+    ROOM_INDEX_DATA *pRoomIndex, *pHolder, *origin;
     char *defaultRoomName = "In a pocket dimension.\n\r";
     char *defaultRoomDesc = "You stand in a misty room out of phase with the world.\n\r";
     size_t name_len, desc_len;
@@ -5033,7 +5079,11 @@ void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
     pRoomIndex->next           = room_index_hash[iHash];
     room_index_hash[iHash]     = pRoomIndex;
 
-    ch->was_in_room = ch->in_room;
+    /* The way back is the pocket's down exit and nothing else. It was
+       kept in was_in_room, the idle void's return pointer, which nothing
+       cleared: the caster was never sent to the void again that session,
+       and a reconnect was greeted as a return from it. */
+    origin = ch->in_room;
     char_from_room(ch);
     char_to_room(ch,pRoomIndex);
 
@@ -5043,7 +5093,8 @@ void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
     pexit->exit_info        = 0;
     pexit->lock             = 0;
     pexit->key              = 0;
-    pexit->u1.to_room    = ch->was_in_room;
+    pexit->trap             = 0;
+    pexit->u1.to_room    = origin;
     ch->in_room->exit[5] = pexit;
 
     raf             = alloc_mem(sizeof(*raf) );
@@ -5153,7 +5204,6 @@ void spell_haven( int sn, int level, CHAR_DATA *ch, void *vo )
       if(is_same_group(gch,ch) && !gch->fighting)
       {
 	act("$n is pulled into a magical portal and is gone.",gch,NULL,NULL,TO_ROOM);
-	gch->was_in_room = gch->in_room;
 	char_from_room(gch);
 	char_to_room(gch,pRoomIndex);
 	do_look(gch,"auto");
@@ -5167,7 +5217,7 @@ void spell_haven( int sn, int level, CHAR_DATA *ch, void *vo )
     pexit->lock             = 0;
     pexit->key              = 0;
     pexit->trap             = 0;
-    pexit->u1.to_room    = ch->was_in_room;
+    pexit->u1.to_room    = in_room;
     ch->in_room->exit[5] = pexit;
 
     raf             = alloc_mem(sizeof(*raf) );

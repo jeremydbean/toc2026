@@ -1263,6 +1263,7 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
     CHAR_DATA *tmp_vict,*last_vict,*next_vict;
     bool found;
     int dam;
+    ROOM_INDEX_DATA *room = ch->in_room;
 
     /* first strike */
 
@@ -1276,8 +1277,9 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
     dam = dice(level,6);
     if (saves_spell(level,victim))
 	dam /= 3;
-    if (damage(ch,victim,dam,sn,DAM_LIGHTNING))
-	return;  /* first target killed; stop chain */
+    damage(ch,victim,dam,sn,DAM_LIGHTNING);
+    if ( gone_after_blow( ch, room ) )
+	return;  /* the caster fell; a dead first target still chains */
     last_vict = victim;
     level -= 4;   /* decrement damage */
 
@@ -1299,14 +1301,12 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
 	    dam = dice(level,6);
 	    if (saves_spell(level,tmp_vict))
 		dam /= 3;
-	    if (damage(ch,tmp_vict,dam,sn,DAM_LIGHTNING))
-	    {
-		/* tmp_vict killed; do not use freed pointer as sentinel */
-		last_vict = NULL;
-		level = 0;
-		break;
-	    }
+	    damage(ch,tmp_vict,dam,sn,DAM_LIGHTNING);
+	    if ( gone_after_blow( ch, room ) )
+		return;  /* the caster fell */
 	    level -= 4;  /* decrement damage */
+	    if ( level <= 0 )
+		break;
 	  }
 	}   /* end target searching loop */
 
@@ -1326,7 +1326,8 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
 	  dam = dice(level,6);
 	  if (saves_spell(level,ch))
 	    dam /= 3;
-	  if (damage(ch,ch,dam,sn,DAM_LIGHTNING))
+	  damage(ch,ch,dam,sn,DAM_LIGHTNING);
+	  if ( gone_after_blow( ch, room ) )
 	    return;  /* caster killed by reflected bolt */
 	  level -= 4;  /* decrement damage */
 
@@ -3093,6 +3094,7 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
     OBJ_DATA *obj_next;
     int dam;
     int hit_it = 0;
+    ROOM_INDEX_DATA *room = ch->in_room;
 
    if ( !saves_spell( level, victim) )
     {
@@ -3128,7 +3130,8 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                                         victim->armor[i] += apply_ac( obj_lose, iWear, i );
                                 }
                                 dam = GET_DAMROLL(ch) + dice(2, ch->level/2);
-                                if (damage( ch, victim, dam, sn, DAM_FIRE ))
+                                damage( ch, victim, dam, sn, DAM_FIRE );
+                                if ( gone_after_blow( victim, room ) || gone_after_blow( ch, room ) )
                                     return;  /* victim killed */
                             }
                             else
@@ -3152,7 +3155,8 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                                 dam = GET_DAMROLL(ch) + dice(1, ch->level/2);
                                 if ( saves_spell( level, victim ) )
                                     dam /= 2;
-                                if (damage( ch, victim, dam, sn, DAM_FIRE ))
+                                damage( ch, victim, dam, sn, DAM_FIRE );
+                                if ( gone_after_blow( victim, room ) || gone_after_blow( ch, room ) )
                                     return;  /* victim killed */
                                 ++hit_it;
                             }
@@ -3164,7 +3168,8 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                             if( IS_OBJ_STAT( obj_lose, ITEM_NOREMOVE) )
                             {
                                 dam = GET_DAMROLL(ch) + dice(2, ch->level/2);
-                                if (damage( ch, victim, dam, sn, DAM_FIRE ))
+                                damage( ch, victim, dam, sn, DAM_FIRE );
+                                if ( gone_after_blow( victim, room ) || gone_after_blow( ch, room ) )
                                     return;  /* victim killed */
                             }
                             else
@@ -3180,7 +3185,8 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                                 dam = GET_DAMROLL(ch) + dice(1, ch->level/2);
                                 if ( saves_spell( level, victim ) )
                                     dam /= 2;
-                                if (damage( ch, victim, dam, sn, DAM_FIRE ))
+                                damage( ch, victim, dam, sn, DAM_FIRE );
+                                if ( gone_after_blow( victim, room ) || gone_after_blow( ch, room ) )
                                     return;  /* victim killed */
                                 ++hit_it;
                             }
@@ -3633,6 +3639,7 @@ void spell_magic_missile( int sn, int level, CHAR_DATA *ch, void *vo )
     int dam;
     int missiles = 1 + level/10;
     int count;
+    ROOM_INDEX_DATA *room = ch->in_room;
 
     if(number_percent() > 90)
 	missiles += 1;
@@ -3644,7 +3651,8 @@ void spell_magic_missile( int sn, int level, CHAR_DATA *ch, void *vo )
       dam	= number_range( dam_each[level] / 2, dam_each[level] * 2 );
       if ( saves_spell( level, victim ) )
 	dam /= 2;
-      if (damage( ch, victim, dam, sn, DAM_ENERGY ))
+      damage( ch, victim, dam, sn, DAM_ENERGY );
+      if ( gone_after_blow( victim, room ) || gone_after_blow( ch, room ) )
 	  return;  /* victim was killed */
     }
     return;

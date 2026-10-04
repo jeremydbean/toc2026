@@ -140,9 +140,47 @@ void send_info( char *argument )
     }
 }
 
+/*
+ * A character leaving the game, or refusing followers, lets go of everyone
+ * following them. This was an empty stub from November 2025 to October
+ * 2026, so whoever followed a character who quit kept a master pointer to
+ * a freed character -- and the next character allocated from the pool
+ * inherited them, charmed undead and all -- and a pet that died left its
+ * owner's pet pointer behind. A ridden mount stays with its rider, so
+ * NOFOLLOW does not throw you off; at a quit nuke_pets has already taken
+ * it. This is stock ROM's, less the old exemption for NPCs, which was what
+ * left a dead pet's owner pointing at it.
+ */
 void die_follower( CHAR_DATA *ch )
 {
-    UNUSED_PARAM(ch);
+    LIST_ITERATOR iter;
+    CHAR_DATA *fch;
+
+    if ( ch->master != NULL )
+    {
+        if ( IS_NPC(ch) && ch->ridden && !IS_NPC(ch->master) )
+        {
+            ch->master->pcdata->mounted = false;
+            ch->ridden = false;
+        }
+        if ( ch->master->pet == ch )
+            ch->master->pet = NULL;
+        stop_follower( ch );
+    }
+
+    ch->leader = NULL;
+
+    dismiss_undead_servants( ch );
+
+    FOR_EACH_CHARACTER( iter, fch )
+    {
+        if ( fch == ch || fch->ridden )
+            continue;
+        if ( fch->master == ch )
+            stop_follower( fch );
+        if ( fch->leader == ch )
+            fch->leader = fch;
+    }
 }
 
 void do_check_psi( CHAR_DATA *ch, char *argument )

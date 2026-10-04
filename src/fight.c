@@ -1067,6 +1067,8 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
     int diceroll;
     int sn,skill;
     int dam_type;
+    ROOM_INDEX_DATA *struck_in;
+    bool landed;
 
     sn = -1;
 
@@ -1344,7 +1346,11 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
     if ( dam <= 0 )
 	dam = 1;
 
-    if (!damage( ch, victim, dam, dt, dam_type )
+    /* A bite that landed on someone still standing; this read !damage(),
+       which is true only of a blow that did not land. */
+    struck_in = victim->in_room;
+    landed = damage( ch, victim, dam, dt, dam_type );
+    if ( landed && !gone_after_blow( victim, struck_in )
     &&  LYCANTHROPY_ENABLED
     &&  IS_NPC(ch) && IS_SET(ch->act2,ACT2_LYCANTH)
 	&&  victim->were_shape.name == NULL)
@@ -2197,6 +2203,29 @@ void spill_corpse( OBJ_DATA *corpse )
 	obj_from_obj( obj );
 	obj_to_room( obj, room );
     }
+}
+
+/*
+ * Whether a blow just dealt has ended things for this character here.
+ *
+ * damage() answers whether a blow landed, not whether it killed: it is
+ * true for nearly every blow that connects and for every blow a character
+ * deals themselves. A 2025 pass read it as "the victim died" and cut every
+ * multi-hit spell, trap and flood off at its first landed blow -- one magic
+ * missile, one skeletal hand, one tentacle a target, a chain lightning that
+ * never chained, heat metal on one item, dirt that never blinded, a stun
+ * trap that never stunned, and a poisoned or drowning character skipping
+ * the rest of their tick (2026-10-04).
+ *
+ * A character killed has left the room it was struck in: a mobile is
+ * extracted, which clears in_room -- characters are pooled, never freed,
+ * so reading one afterwards is safe -- and a player is carried to the
+ * death room. Note the room before the blow and ask this after it.
+ */
+bool gone_after_blow( CHAR_DATA *ch, ROOM_INDEX_DATA *room )
+{
+    return ch->in_room == NULL || ch->in_room != room
+        || ch->position == POS_DEAD;
 }
 
 bool is_safe_spell(CHAR_DATA *ch, CHAR_DATA *victim, bool area )
@@ -3311,6 +3340,14 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
     &&   !IS_NPC(victim->master) )
 	return;
 
+    /* Nor is raised undead, charmed or not. Striking your own servant
+       breaks its charm on the first blow (stop_follower in damage()), so
+       the test above never saw a vampire its necromancer MURDERed: full
+       experience for 75 mana, as often as the mana lasted. */
+    if ( victim->pIndexData != NULL
+    &&   victim->pIndexData->vnum == MOB_VNUM_ANIMATE )
+	return;
+
     quest_record_kill(ch, victim);
 
     members = 0;
@@ -4259,12 +4296,15 @@ void do_dirt( CHAR_DATA *ch, char *argument )
     if (number_percent() < chance)
     {
 	AFFECT_DATA af;
+	ROOM_INDEX_DATA *kicked_in = victim->in_room;
+
 	act("$n is blinded by the dirt in $s eyes!",victim,NULL,NULL,TO_ROOM);
-	if (damage(ch,victim,number_range(2,5),gsn_dirt,DAM_NONE))
-	    return;  /* victim was killed */
+	WAIT_STATE(ch,skill_table[gsn_dirt].beats);
+	damage(ch,victim,number_range(2,5),gsn_dirt,DAM_NONE);
+	if ( gone_after_blow( victim, kicked_in ) )
+	    return;  /* the dirt finished them */
 	send_to_char("You can't see a thing!\n\r",victim);
 	check_improve(ch,gsn_dirt,true,2);
-	WAIT_STATE(ch,skill_table[gsn_dirt].beats);
 
 	af.type         = gsn_dirt;
 	af.level        = ch->level;
@@ -4554,6 +4594,15 @@ void do_murder( CHAR_DATA *ch, char *argument )
 
     if ( is_safe( ch, victim ) )
 	return;
+
+    /* KILL has always refused these; MURDER never asked. */
+    if ( IS_NPC(victim) && IS_SET( victim->act, ACT_NOKILL) )
+    {
+	act("$N slaps you and leaves in a huff!",ch,NULL,victim,TO_CHAR);
+	act("$N disappears in a clap of thunder!",ch,NULL,victim,TO_ROOM);
+	extract_char(victim, true);
+	return;
+    }
 
     if( IS_IMMORTAL(ch) || IS_IMMORTAL(victim) )
 	return;
@@ -6428,9 +6477,19 @@ void do_blinding_fists( CHAR_DATA *ch, char *argument )
       else
       {    /* hit is used for dam type to give wider range */
 	act("$n blurs into motion, striking you.",ch,NULL,victim,TO_VICT);
-	if ( damage( ch, victim, number_range(ch->level,ch->level*3),
-		gsn_blinding_fists, hit ) )
+	{
+	  ROOM_INDEX_DATA *struck_in = ch->in_room;
+
+	  /* damage() is true for any blow that lands, not only a kill. */
+	  damage( ch, victim, number_range(ch->level,ch->level*3),
+		gsn_blinding_fists, hit );
+	  if ( gone_after_blow( victim, struck_in )
+	  ||   gone_after_blow( ch, struck_in ) )
+	  {
+	    WAIT_STATE( ch, skill_table[gsn_blinding_fists].beats);
 	    break;  /* victim was killed; stop iterating */
+	  }
+	}
 	check_improve(ch,gsn_blinding_fists,true,6);
 	WAIT_STATE( ch, skill_table[gsn_blinding_fists].beats);
       }
@@ -6559,9 +6618,19 @@ void do_fists_of_fury( CHAR_DATA *ch, char *argument )
       else
       {    /* hit is used for dam type to give wider range */
 	act("Lightning quick, $n's fists slam into you!",ch,NULL,victim,TO_VICT);
-	if ( damage( ch, victim, number_range(ch->level,ch->level*2),
-		gsn_fists_of_fury, hit ) )
+	{
+	  ROOM_INDEX_DATA *struck_in = ch->in_room;
+
+	  /* damage() is true for any blow that lands, not only a kill. */
+	  damage( ch, victim, number_range(ch->level,ch->level*2),
+		gsn_fists_of_fury, hit );
+	  if ( gone_after_blow( victim, struck_in )
+	  ||   gone_after_blow( ch, struck_in ) )
+	  {
+	    WAIT_STATE( ch, skill_table[gsn_fists_of_fury].beats);
 	    break;  /* victim was killed; stop iterating */
+	  }
+	}
 	check_improve(ch,gsn_fists_of_fury,true,6);
 	WAIT_STATE( ch, skill_table[gsn_fists_of_fury].beats);
       }
@@ -6673,9 +6742,19 @@ void do_stunning_blow( CHAR_DATA *ch, char *argument )
     {
       act("You strike a stunning blow to $N.",ch,NULL,victim,TO_CHAR);
       act("$N strikes you with a stunning blow!",ch,NULL,victim,TO_VICT);
-      if ( damage( ch, victim, number_range(ch->level,ch->level*2),
-		gsn_stunning_blow, hit ) )
+      {
+        ROOM_INDEX_DATA *struck_in = ch->in_room;
+
+        /* Read as "killed", a landed blow returned here: no stun, no lag. */
+        damage( ch, victim, number_range(ch->level,ch->level*2),
+		gsn_stunning_blow, hit );
+        if ( gone_after_blow( victim, struck_in )
+        ||   gone_after_blow( ch, struck_in ) )
+        {
+          WAIT_STATE( ch, skill_table[gsn_stunning_blow].beats);
           return;  /* victim killed; do not use stale victim pointer */
+        }
+      }
       check_improve(ch,gsn_stunning_blow,true,6);
 
       if(!is_affected( victim, skill_lookup("stunning blow") ) )
@@ -6694,9 +6773,18 @@ void do_stunning_blow( CHAR_DATA *ch, char *argument )
     }
     else
     {
-      if ( damage( ch, victim, number_range(ch->level/2,ch->level*3),
-		gsn_stunning_blow, hit ) )
+      {
+        ROOM_INDEX_DATA *struck_in = ch->in_room;
+
+        damage( ch, victim, number_range(ch->level/2,ch->level*3),
+		gsn_stunning_blow, hit );
+        if ( gone_after_blow( victim, struck_in )
+        ||   gone_after_blow( ch, struck_in ) )
+        {
+          WAIT_STATE( ch, skill_table[gsn_stunning_blow].beats);
           return;  /* victim killed */
+        }
+      }
       check_improve(ch,gsn_stunning_blow,false,6);
       WAIT_STATE( ch, skill_table[gsn_stunning_blow].beats);
       WAIT_STATE( victim, 1 * PULSE_VIOLENCE );

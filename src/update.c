@@ -1409,8 +1409,13 @@ void char_update( void )
 	  if(!found)
 	  {
 	  send_to_char("Glub, glub, gurgle, glug......Your Drowning!!!\n\r",ch);
-	  if (damage(ch,ch,dice( 10, 10) + 150,skill_lookup("waterfal"),DAM_DROWNING))
-	      continue;  /* ch was killed by drowning */
+	  {
+	      ROOM_INDEX_DATA *drowning_in = ch->in_room;
+
+	      damage(ch,ch,dice( 10, 10) + 150,skill_lookup("waterfal"),DAM_DROWNING);
+	      if ( gone_after_blow( ch, drowning_in ) )
+	          continue;  /* drowned */
+	  }
 	  }
 
 	}
@@ -1881,8 +1886,13 @@ void char_update( void )
 	{
 	    act( "$n shivers and suffers.", ch, NULL, NULL, TO_ROOM );
 	    send_to_char( "You shiver and suffer.\n\r", ch );
-	    if ( damage( ch, ch, dice(2,4), gsn_poison, DAM_POISON ) )
-	        continue;  /* ch was killed/extracted; do not touch ch again */
+	    {
+	        ROOM_INDEX_DATA *poisoned_in = ch->in_room;
+
+	        damage( ch, ch, dice(2,4), gsn_poison, DAM_POISON );
+	        if ( gone_after_blow( ch, poisoned_in ) )
+	            continue;  /* killed: an extracted mobile must not be touched */
+	    }
 	    if(IS_SET(ch->imm_flags,IMM_POISON) )
 	    {
 	      REMOVE_BIT(ch->affected_by, AFF_POISON);
@@ -3282,8 +3292,13 @@ void disaster_update( void )
                         move_char( vch, door, true);
                         REMOVE_BIT(vch->act, PLR_WIZINVIS);
                         act("$n arrives on a wave of water screaming, 'HHggEEggLLggPP!'.",vch,NULL,NULL,TO_ROOM);
-                        if (damage(vch,vch,dice(4,4),skill_lookup("waterfall"),DAM_LIGHTNING))
-                            break;  /* vch was killed; stop moving them */
+                        {
+                            ROOM_INDEX_DATA *swept_to = vch->in_room;
+
+                            damage(vch,vch,dice(4,4),skill_lookup("waterfall"),DAM_LIGHTNING);
+                            if ( gone_after_blow( vch, swept_to ) )
+                                break;  /* drowned; stop moving them */
+                        }
                      }
              }
            break;
@@ -3348,7 +3363,12 @@ void disaster_update( void )
 
 	       if( hit )
 	       {
-		         if ( !damage(vch,vch,dam,skill_lookup("earthquake"),DAM_BASH) )
+		         ROOM_INDEX_DATA *shaken_in = vch->in_room;
+
+		         /* Was !damage(): a blow to yourself always lands, so
+		            nobody was ever stunned. */
+		         damage(vch,vch,dam,skill_lookup("earthquake"),DAM_BASH);
+		         if ( !gone_after_blow( vch, shaken_in ) )
 		             vch->position = POS_STUNNED;
 	       }
 	     }
@@ -3521,17 +3541,29 @@ void room_aff_update( void )
 	  }
 	  else
 	  {
+	    /* Out the way they came in: the pocket's down exit. */
+	    ROOM_INDEX_DATA *way_out = expiring_room->exit[5] != NULL
+	                             ? expiring_room->exit[5]->u1.to_room : NULL;
+	    LIST_ITERATOR iter;
+	    CHAR_DATA *wch;
+
+	    if ( way_out == NULL )
+	        way_out = get_room_index( ROOM_VNUM_TEMPLE );
+
 	    for ( gch = expiring_room->people; gch != NULL; gch = gch_next )
 	    {
 	      gch_next = gch->next_in_room;
 
 	      send_to_char("You are expelled from the room as the spell wears off.\n\r",gch);
 	      char_from_room(gch);
-	      if(gch->was_in_room == NULL)
-		char_to_room(gch, get_room_index(ROOM_VNUM_LIMBO) );
-	      else
-		char_to_room(gch,gch->was_in_room);
+	      char_to_room(gch, way_out);
 	    }
+
+	    /* Anyone who went idle into the void from in here would come back
+	       to a room that is about to be freed. */
+	    FOR_EACH_CHARACTER( iter, wch )
+	        if ( wch->was_in_room == expiring_room )
+	            wch->was_in_room = way_out;
 
 	    for( obj = expiring_room->contents; obj != NULL; obj = obj_next)
 	    {

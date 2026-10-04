@@ -2656,6 +2656,8 @@ bool    is_protected_npc        ( CHAR_DATA *victim );
 const char *class_race_refusal  ( int iClass, int race );
 void    spellup_boot_place      ( void );
 void    spill_corpse            ( OBJ_DATA *corpse );
+bool    gone_after_blow         ( CHAR_DATA *ch, ROOM_INDEX_DATA *room );
+void    dismiss_undead_servants ( CHAR_DATA *master );
 extern          bool                    merc_down;
 extern          char                   *target_name;
 extern          FILE * fpReserve;

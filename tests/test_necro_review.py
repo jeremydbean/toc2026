@@ -62,7 +62,9 @@ class NecroReviewTests(unittest.TestCase):
 
     def test_consumed_corpses_spill_their_loot(self) -> None:
         magic2 = code(read("src", "magic2.c"))
-        self.assertEqual(magic2.count("spill_corpse( corpse );\n"), 2)
+        # Animate dead and trap the soul, and raise dead's leftovers
+        # (2026-10-04): a corpse it left behind could be raised again.
+        self.assertEqual(magic2.count("spill_corpse( corpse );\n"), 3)
         for match in re.finditer(r"spill_corpse\( corpse \);\s*\n\s*extract_obj\( corpse \);", magic2):
             self.assertTrue(match)
 

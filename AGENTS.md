@@ -1362,6 +1362,24 @@ the same way -- class first, and only look for a guild token when the
 class was neither monk nor necro -- or the pairs misalign. `none` (-1) is
 always a legal guild, which is what guarantees a choice always exists.
 
+## damage() Says Whether A Blow Landed
+
+**Never branch on `damage()`'s result.** It is true for nearly every blow
+that connects and for every blow a character deals themselves -- it is
+not "the victim died". Reading it that way at more than twenty sites made
+every multi-hit spell, trap and flood stop at its first landed blow and
+skipped whatever followed a hit: the blindness, the stun, the lag, the
+healing, the ingredients. Note the room before the blow and ask
+`gone_after_blow(victim, room)` after it -- a killed mobile is extracted
+(characters are pooled, so reading one is safe) and a killed player is in
+the death room. `tests/test_damage_result.py` fails on any `if (damage(`.
+
+`die_follower()` is stock ROM's again after a year as an empty stub, and
+it is what keeps a follower from pointing at a character who has quit.
+Raised undead (`MOB_VNUM_ANIMATE`) go with it: `dismiss_undead_servants()`
+is called from `die_follower` and from `do_remort`, and `group_gain` pays
+nothing for one whatever its charm says.
+
 ## Damage Costs Lag
 
 **Wherever a command calls `damage()` and then returns, a `WAIT_STATE`
