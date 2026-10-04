@@ -37731,3 +37731,16 @@ Sun Oct  4 03:16:26 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 
 Sun Oct  4 03:16:26 2026 :: ROM is ready to rock on port 9000.
 Sun Oct  4 03:16:26 2026 :: Automated backup complete.
 Sun Oct  4 03:16:26 2026 :: Daily backup complete.
+Sun Oct  4 03:20:07 2026 :: Sock.sinaddr:  3.133.226.214
+Sun Oct  4 03:20:07 2026 :: EOF encountered on read.
+Sun Oct  4 03:20:15 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sun Oct  4 03:20:19 2026 :: Log WebAdmin: fsave
+Sun Oct  4 03:20:25 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sun Oct  4 03:20:28 2026 :: Received signal 15; saving players and shutting down.
+Sun Oct  4 03:20:28 2026 :: Normal termination of game.
+Sun Oct  4 03:20:29 2026 ::  INIT OK 
+Sun Oct  4 03:20:29 2026 :: walkto_load: 157 destinations.
+Sun Oct  4 03:20:29 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Sun Oct  4 03:20:29 2026 :: ROM is ready to rock on port 9000.
+Sun Oct  4 03:20:29 2026 :: Automated backup complete.
+Sun Oct  4 03:20:29 2026 :: Daily backup complete.
