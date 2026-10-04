@@ -21,6 +21,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **What you take back from your own corpse no longer rots.** A corpse put
+  a decay timer on every potion and scroll in it (and scuba gear), and the
+  timer stayed when you took them back -- the owner's Scroll of Farslay
+  crumbled two days after a death. Only a mobile's corpse stamps them now,
+  and the stamp comes off a player's potions and scrolls at login.
+- **Mudlet 1.5.4: routes load by default.** The last route list downloaded
+  is read from disk as the package starts, a fresh one is fetched two
+  seconds later (and again on reconnect if there is none), a failed
+  download retries, and a WALK typed before the list arrives sets off when
+  it does. WALK also finds trainers and guild halls once the list carries
+  them.
 - **A copy of the character before anything big happens.** Before a remort,
   a death, a staff ADVANCE or SET, a GRANTPSI, a COMBINE, a deletion or a
   login repair, the character is saved and copied to

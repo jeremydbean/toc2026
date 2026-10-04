@@ -54,7 +54,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.5.3"
+tocMudlet.version = "1.5.4"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -495,6 +495,9 @@ function tocMudlet.onRoutes(text)
   end
 
   tocMudlet.routes = data.routes
+  -- Trainers and guild halls, where the list carries them: walk mage,
+  -- walk necro guild and the like find them the same way as an area.
+  tocMudlet.trainers = type(data.trainers) == "table" and data.trainers or {}
   local added = installLinks(data.links)
 
   if not tocMudlet.routesQuiet then
@@ -503,6 +506,28 @@ function tocMudlet.onRoutes(text)
       "exits mapped. <white>walk <name><reset> to use one.\n",
       #data.routes, added))
   end
+
+  -- A walk typed before the list had arrived runs now, instead of
+  -- having told the player to come back later.
+  local waiting = tocMudlet.walkWaiting
+  tocMudlet.walkWaiting = nil
+  if waiting then tocMudlet.walkCommand(waiting) end
+end
+
+-- The last list downloaded, from disk: routes are there the moment the
+-- package loads, rather than five seconds and a network fetch later.
+function tocMudlet.loadCachedRoutes()
+  if not getMudletHomeDir or not io or not io.open then return false end
+  local handle = io.open(getMudletHomeDir() .. "/toc-directions.json", "r")
+  if not handle then return false end
+  local body = handle:read("*a")
+  handle:close()
+  if not body or body == "" then return false end
+  local quiet = tocMudlet.routesQuiet
+  tocMudlet.routesQuiet = true
+  tocMudlet.onRoutes(body)
+  tocMudlet.routesQuiet = quiet
+  return tocMudlet.routes ~= nil
 end
 
 -- Fetched quietly at startup as well as on demand, because a click on
@@ -517,11 +542,28 @@ function tocMudlet.fetchRoutes(quiet)
   pcall(downloadFile, getMudletHomeDir() .. "/toc-directions.json", ROUTES_URL)
 end
 
+local function routeCandidates()
+  local all = {}
+  for _, route in ipairs(tocMudlet.routes or {}) do all[#all + 1] = route end
+  for _, t in ipairs(tocMudlet.trainers or {}) do
+    -- Shaped like an area route, so the walker treats both alike.
+    all[#all + 1] = {
+      area_display = t.name or t.area_display,
+      area = table.concat({ t.role or "", t.class or "", t.guild or "" }, " "),
+      room = t.room or "",
+      vnum = tonumber(t.vnum or t.room_vnum),
+      commands = t.commands,
+      rooms_away = t.rooms_away,
+    }
+  end
+  return all
+end
+
 local function findRoute(name)
   if type(tocMudlet.routes) ~= "table" then return nil end
   local needle = name:lower()
   local best = nil
-  for _, route in ipairs(tocMudlet.routes) do
+  for _, route in ipairs(routeCandidates()) do
     local haystack = ((route.area_display or "") .. " " ..
                       (route.area or "") .. " " .. (route.room or "")):lower()
     if haystack:find(needle, 1, true) then
@@ -580,8 +622,10 @@ function tocMudlet.walkCommand(argument)
   -- A name rather than a number: look it up in the published routes.
   if argument and argument ~= "" and tonumber(argument) == nil then
     if tocMudlet.routes == nil then
-      cecho("\n<gold>[walk]<reset> Route list not loaded yet - " ..
-        "<white>walk routes<reset> fetches it.\n")
+      tocMudlet.walkWaiting = argument
+      cecho("\n<gold>[walk]<reset> Fetching the route list; you will " ..
+        "set off as soon as it arrives.\n")
+      tocMudlet.fetchRoutes(true)
       return
     end
     local route = findRoute(argument)
@@ -1628,6 +1672,14 @@ function tocMudlet.onDownloadDone(file)
 end
 
 function tocMudlet.onDownloadError(file)
+  if type(file) == "string" and file:match("toc%-directions%.json$") then
+    -- Once more after a pause; the cached list, if any, is already in.
+    if not tocMudlet.routesRetried then
+      tocMudlet.routesRetried = true
+      tempTimer(30, function() tocMudlet.fetchRoutes(true) end)
+    end
+    return
+  end
   if file ~= tocMudlet.atlasPending then return end
   tocMudlet.atlasPending = nil
   cecho("\n<red>Could not download the world map.<reset> " ..
@@ -1680,7 +1732,10 @@ function tocMudlet.install()
   register("gmcp.Room.Chars", function() tocMudlet.onChars() end)
   register("gmcp.Comm.Channel", function() tocMudlet.onChannel() end)
   register("gmcp.Room.Info", function() tocMudlet.onRoomInfo() end)
-  register("sysConnectionEvent", function() tocMudlet.subscribe() end)
+  register("sysConnectionEvent", function()
+    tocMudlet.subscribe()
+    if tocMudlet.routes == nil then tocMudlet.fetchRoutes(true) end
+  end)
   register("sysWindowResizeEvent", function() tocMudlet.nudgeMap() end)
   register("sysDownloadDone", function(_, file) tocMudlet.onDownloadDone(file) end)
   register("sysDownloadError", function(_, _, file) tocMudlet.onDownloadError(file) end)
@@ -1695,9 +1750,12 @@ function tocMudlet.install()
   tempTimer(1.5, tocMudlet.nudgeMap)
   -- A few seconds in, so it is not competing with the atlas for the
   -- connection on the one occasion both are wanted at once.
+  -- Routes load by default: whatever was downloaded last, straight
+  -- away, then a fresh copy a moment later.
+  pcall(tocMudlet.loadCachedRoutes)
   if not tocMudlet.routesRequested then
     tocMudlet.routesRequested = true
-    tempTimer(5, function() tocMudlet.fetchRoutes(true) end)
+    tempTimer(2, function() tocMudlet.fetchRoutes(true) end)
   end
   cecho("\n<cyan>Times of Chaos Mudlet interface ready.<reset> " ..
     "Type <white>tocgui<reset> for status, <white>tocgui atlas<reset> for the world map, or <white>tocgui off<reset> to hide it.\n")

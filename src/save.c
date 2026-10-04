@@ -2579,6 +2579,13 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 		       destroyed when they died. Never a player's. */
 		    if ( ch != NULL && !IS_NPC(ch) )
 			REMOVE_BIT( obj->extra_flags, ITEM_INVENTORY );
+		    /* A potion or scroll a player carries has no decay timer
+		       of its own -- one there came from a corpse, before
+		       make_corpse stopped stamping a player's (fight.c). */
+		    if ( ch != NULL && !IS_NPC(ch)
+		    &&   ( obj->item_type == ITEM_POTION
+		        || obj->item_type == ITEM_SCROLL ) )
+			obj->timer = 0;
 		    /* The Blue Ring of Hyrule was a level 24 ring with no
 		       ward until October 2026; a copy bought then keeps its
 		       saved level, so it is raised with the ward it gained. */

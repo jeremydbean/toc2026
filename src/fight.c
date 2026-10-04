@@ -2779,6 +2779,12 @@ void make_corpse( CHAR_DATA *ch )
 	obj_next = obj->next_content;
 
 	obj_from_char( obj );
+	/* A mobile's potions, scrolls and air go off if nobody loots them.
+	   A player's are their own: the timer stayed on whatever they took
+	   back out of their corpse, so a Scroll of Farslay a death had passed
+	   through crumbled two days later in the pack. */
+	if ( IS_NPC(ch) )
+	{
 	if (obj->item_type == ITEM_POTION)
 	    obj->timer = (sh_int)(number_range(100,300));
 	if (obj->item_type == ITEM_SCROLL)
@@ -2790,6 +2796,7 @@ void make_corpse( CHAR_DATA *ch )
 		else
 		  obj->timer = (sh_int)(dice(5,obj->value[0]));
 	    }
+	}
 	if (IS_SET(obj->extra_flags,ITEM_ROT_DEATH))
 	    obj->timer = (sh_int)(number_range(5,10));
 	/* A Hyrule guardian's key opens the treasure room and the chest

@@ -61,6 +61,19 @@ class BoughtItemTests(unittest.TestCase):
         self.assertIn("if ( ch != NULL && !IS_NPC(ch) )\n\t\t\tREMOVE_BIT( obj->extra_flags, ITEM_INVENTORY );",
                       save.replace("\r\n", "\n"))
 
+    def test_a_players_corpse_stamps_no_decay_timers(self) -> None:
+        """Owner's Scroll of Farslay crumbled two days after a death: the
+        corpse put a 200-500 tick timer on it and the timer stayed when he
+        took it back. Only a mobile's corpse stamps potions, scrolls and
+        scuba gear now, and loading clears the old stamp from a player's."""
+        fight = (ROOT / "src" / "fight.c").read_text(encoding="latin-1").replace("\r\n", "\n")
+        corpse = fight.split("void make_corpse( CHAR_DATA *ch )", 1)[1].split("\n}\n", 1)[0]
+        guard = corpse.index("if ( IS_NPC(ch) )\n\t{")
+        self.assertLess(guard, corpse.index("obj->timer = (sh_int)(number_range(200,500));"))
+        save = (ROOT / "src" / "save.c").read_text(encoding="latin-1")
+        self.assertIn("|| obj->item_type == ITEM_SCROLL ) )\n\t\t\tobj->timer = 0;",
+                      save.replace("\r\n", "\n"))
+
     def test_an_old_blue_ring_is_raised_to_its_level(self) -> None:
         """30551 was a level 24 ring with no ward; a copy saved then keeps
         its level, so loading raises it with the ward it gained."""

@@ -170,6 +170,22 @@ assert(#calls == 0, "teardown must be safe")
         for gauge in ("hp", "mana", "move"):
             self.assertNotIn('"tocMudlet.%s"' % gauge, sidebar)
 
+    def test_routes_load_by_default(self) -> None:
+        """Owner, 2026-10-04: routes load by default. The last list
+        downloaded is read from disk as the package starts, a fresh one is
+        fetched a moment later and again on reconnect if missing, a failed
+        download retries, and a WALK typed before the list arrives runs
+        when it does."""
+        script = self.package_script()
+        install = script.split("function tocMudlet.install()")[1].split("\nend\n")[0]
+        self.assertIn("pcall(tocMudlet.loadCachedRoutes)", install)
+        self.assertLess(install.index("pcall(tocMudlet.loadCachedRoutes)"),
+                        install.index("tempTimer(2, function() tocMudlet.fetchRoutes(true) end)"))
+        self.assertIn("tocMudlet.walkWaiting = argument", script)
+        self.assertIn("if waiting then tocMudlet.walkCommand(waiting) end", script)
+        self.assertIn('file:match("toc%-directions%.json$")', script.split(
+            "function tocMudlet.onDownloadError(file)", 1)[1][:400])
+
     @unittest.skipUnless(shutil.which("lua"), "Lua interpreter is not installed")
     def test_package_lua_compiles(self) -> None:
         result = subprocess.run(
