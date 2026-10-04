@@ -43,3 +43,6 @@
 1791077870	Alaric	claude-haiku-4-5	3294	44	0	0	0.003514	Where is the Necro guild located? Can you give me directions from Center Oak Tree?	The live context shows no necro guild giver directions anywhere in the world right now, so I cannot see where it is; use `walkto` to search available routes or ask an immortal.	0
 1791077884	Alaric	claude-haiku-4-5	2256	9	0	0	0.002301	ydone	__OFFTOPIC__	0
 1791077918	Killuminati	claude-haiku-4-5	2355	50	0	0	0.002605	i need directions to the necro trainer from center oak tree square	Use `walkto` to list all trainers and areas with routes, or `walk necromancer` if your client supports it; from the reference I have, I cannot see a published route to a necromancer trainer.	0
+1791082324	Killuminati	claude-haiku-4-5	3200	33	0	0	0.003365	where's the necro guild?	The Morgue of Dresden in the south; only necromancers may enter, but you are a monk so you cannot join that guild.	0
+1791082345	Killuminati	claude-haiku-4-5	2695	30	0	0	0.002845	where's the monk guild? give directions from center oak tree square	`walkto palm of the creator` from Oak Tree Square, or manually: `r w 6;r s 4`.	0
+1791082366	Killuminati	claude-haiku-4-5	2282	25	0	0	0.002407	directions to warrior guild?	`walkto citadel of war` or manually `r e 7;r n 2`.	0

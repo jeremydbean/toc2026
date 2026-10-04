@@ -48,3 +48,10 @@
 1791077908	8	OFFTOPIC	Alaric	
 1791077915	8	Q	Killuminati	i need directions to the necro trainer from center oak tree square
 1791077920	8	A	Killuminati	Use `walkto` to list all trainers and areas with routes, or `walk necromancer` if your client supports it; from the reference I have, I cannot see a published route to a necromancer trainer.
+1791082315	1	SUMMON	Killuminati	
+1791082320	8	Q	Killuminati	where's the necro guild?
+1791082324	8	A	Killuminati	The Morgue of Dresden in the south; only necromancers may enter, but you are a monk so you cannot join that guild.
+1791082343	8	Q	Killuminati	where's the monk guild? give directions from center oak tree square
+1791082348	8	A	Killuminati	`walkto palm of the creator` from Oak Tree Square, or manually: `r w 6;r s 4`.
+1791082364	8	Q	Killuminati	directions to warrior guild?
+1791082368	8	A	Killuminati	`walkto citadel of war` or manually `r e 7;r n 2`.

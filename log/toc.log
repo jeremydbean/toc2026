@@ -37676,3 +37676,24 @@ Sun Oct  4 02:46:25 2026 :: [QUIT] Player rejoined the real world.
 Sun Oct  4 02:47:35 2026 :: Log Killuminati [1]: wizi
 Sun Oct  4 02:47:36 2026 :: Log Killuminati [1]: /
 Sun Oct  4 02:47:53 2026 :: ANNOUNCE: ADMIN: player-state backup to GitHub is not working (last successful run was 99999 minutes ago). Saves are still on disk but are not leaving this machine.
+Sun Oct  4 02:49:36 2026 :: Sock.sinaddr:  52.15.147.27
+Sun Oct  4 02:49:36 2026 :: EOF encountered on read.
+Sun Oct  4 02:51:40 2026 :: Log Killuminati [1]: quit
+Sun Oct  4 02:51:40 2026 :: Killuminati has quit.
+Sun Oct  4 02:51:40 2026 :: [QUIT] Player rejoined the real world.
+Sun Oct  4 02:51:48 2026 :: Sock.sinaddr:  108.81.26.245
+Sun Oct  4 02:51:52 2026 :: Loading Killuminati's playerfile
+Sun Oct  4 02:51:53 2026 :: Killuminati@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Sun Oct  4 02:51:54 2026 :: Log Killuminati [1]: moved to 1 (The Void)
+Sun Oct  4 02:51:55 2026 :: Log Killuminati [1]: pray
+Sun Oct  4 02:51:55 2026 :: Log Killuminati [0]: moved to 8 (The Oracle's Sanctum)
+Sun Oct  4 02:51:55 2026 :: Oracle: Killuminati prayed from room 1 (The Void) and entered her sanctum.
+Sun Oct  4 02:52:00 2026 :: Log Killuminati [8]: 'where's the necro guild?
+Sun Oct  4 02:52:00 2026 :: Log Killuminati [8]: asked the Oracle: where's the necro guild?
+Sun Oct  4 02:52:04 2026 :: Oracle answered Killuminati in room 8: The Morgue of Dresden in the south; only necromancers may enter, but you are a monk so you cannot join that guild.
+Sun Oct  4 02:52:23 2026 :: Log Killuminati [8]: 'where's the monk guild?  give directions from center oak tree square
+Sun Oct  4 02:52:23 2026 :: Log Killuminati [8]: asked the Oracle: where's the monk guild? give directions from center oak tree square
+Sun Oct  4 02:52:28 2026 :: Oracle answered Killuminati in room 8: `walkto palm of the creator` from Oak Tree Square, or manually: `r w 6;r s 4`.
+Sun Oct  4 02:52:44 2026 :: Log Killuminati [8]: 'directions to warrior guild?
+Sun Oct  4 02:52:44 2026 :: Log Killuminati [8]: asked the Oracle: directions to warrior guild?
+Sun Oct  4 02:52:48 2026 :: Oracle answered Killuminati in room 8: `walkto citadel of war` or manually `r e 7;r n 2`.
