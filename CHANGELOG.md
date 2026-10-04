@@ -21,6 +21,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **Nothing a player owns is shop stock.** The Hyrule fix covered buying;
+  the same flag sat on the Azeroth dwarf's Vial of Immortal's Blood and on
+  the free red potions in Hyrule's take-any caves, which were lost on death
+  once picked up. The flag now comes off whatever reaches a player, by any
+  route, and a bought item no longer rots when its owner dies (the prison
+  weaponmaster's short sword did).
 - **Things bought in Hyrule survive their owner's death.** Hyrule's shop
   items carry the shop-stock flag on the item itself, every copy sold kept
   it, and a corpse destroys shop stock -- so dying lost everything a player

@@ -4691,12 +4691,11 @@ void do_buy( CHAR_DATA *ch, char *argument )
     if(IS_SET( obj->extra_flags, ITEM_INVENTORY ) )
     {
         obj = create_object( obj->pIndexData, -1 * obj->level );
-        /* ITEM_INVENTORY means "the shop's endless stock". Hyrule's
-           shop items carry it on the prototype, so every copy sold kept
-           it -- and make_corpse destroys inventory items, so a player
-           who died lost everything they had bought. The bought copy is
-           the player's. */
-        REMOVE_BIT( obj->extra_flags, ITEM_INVENTORY );
+        /* The copy is the buyer's: obj_to_char below clears the shop's
+           ITEM_INVENTORY, and a bought item does not crumble when its
+           owner dies -- the prison weaponmaster's short sword carries
+           ROT_DEATH for the gatekeeper who wields it, not for a buyer. */
+        REMOVE_BIT( obj->extra_flags, ITEM_ROT_DEATH );
     }
     else
         obj_from_char( obj );

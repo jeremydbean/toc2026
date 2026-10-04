@@ -328,6 +328,11 @@ Live-test gotchas that look like product bugs and are not:
 
 - Character names must be **alphabetic only** and at most 12 characters.
   A digit makes creation fail and the save file never appears.
+- **A name that is a mobile's keyword is refused too**, with the same
+  symptom ("no saved player file"). New area content can break an old
+  fixture this way: Hyrule's potion sellers took "seller" in October 2026
+  and `test_shop_purse`'s "Seller" failed CI from then. Prefix fixture
+  names with Z.
 - `stat room` prints both `Number:` (the area-relative number) and
   `Vnum:`. Only `Vnum:` is what `goto` and `set room` want.
 - `parse_login_journal()` returns **file order, oldest first**.

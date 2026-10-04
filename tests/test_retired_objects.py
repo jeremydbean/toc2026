@@ -49,9 +49,13 @@ class BoughtItemTests(unittest.TestCase):
         died lost everything they had bought, a 250-rupee Blue Ring
         included. do_buy clears it on the copy, and loading clears it
         from what a player already carries."""
+        handler = (ROOT / "src" / "handler.c").read_text(encoding="latin-1").replace("\r\n", "\n")
+        to_char = handler.split("void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )", 1)[1].split("\n}\n", 1)[0]
+        self.assertIn("if ( !IS_NPC(ch) )\n\tREMOVE_BIT( obj->extra_flags, ITEM_INVENTORY );", to_char)
+        # A bought item does not rot when its owner dies, either.
         obj_c = (ROOT / "src" / "act_obj.c").read_text(encoding="latin-1")
         buy = obj_c.split("obj = create_object( obj->pIndexData, -1 * obj->level );", 1)[1]
-        self.assertLess(buy.index("REMOVE_BIT( obj->extra_flags, ITEM_INVENTORY );"),
+        self.assertLess(buy.index("REMOVE_BIT( obj->extra_flags, ITEM_ROT_DEATH );"),
                         buy.index("obj_to_char( obj, ch );"))
         save = (ROOT / "src" / "save.c").read_text(encoding="latin-1")
         self.assertIn("if ( ch != NULL && !IS_NPC(ch) )\n\t\t\tREMOVE_BIT( obj->extra_flags, ITEM_INVENTORY );",
@@ -98,6 +102,36 @@ class RetiredObjectLiveTests(unittest.TestCase):
             written = log.read_text(encoding="latin-1", errors="replace")
             self.assertIn("retired object 30542 swapped for 30695", written)
             self.assertNotIn("bad vnum 30542", written)
+
+    def test_shop_stock_a_player_picks_up_survives_their_death(self) -> None:
+        """The take-any caves' red 2nd Potion (30554) carries the shop's
+        ITEM_INVENTORY on its prototype, and make_corpse destroys
+        inventory items -- so a player who picked one up and died lost
+        it. Anything that reaches a player is theirs now."""
+        def run(client, command: str, settle: float = 1.5) -> str:
+            client.drain(0.4)
+            mark = len(client.transcript)
+            client.send(command)
+            client.drain(settle)
+            return client.transcript[mark:]
+
+        with LiveMud() as mud:
+            for name, level in (("Zshopper", 20), ("Zshopgod", 70)):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PASSWORD)
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
+                patch_player_file(mud, name, Levl=level, Room=4207)
+
+            with mud.connect(timeout=120) as hero, mud.connect(timeout=120) as god:
+                login(hero, "Zshopper", PASSWORD)
+                login(god, "Zshopgod", PASSWORD)
+                run(god, "load obj 30554")
+                run(god, "drop potion")
+                self.assertIn("You get", run(hero, "get potion"))
+                run(god, "slay zshopper", 2.5)
+                inside = run(god, "look in corpse", 2.0)
+                self.assertIn("red 2nd Potion", inside, inside)
 
 
 if __name__ == "__main__":

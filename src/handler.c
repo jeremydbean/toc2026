@@ -1694,6 +1694,16 @@ void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
 {
     OBJ_DATA *obj1;
 
+    /* ITEM_INVENTORY is a shopkeeper's endless stock, and make_corpse
+       destroys it -- right for a shopkeeper, who must not drop his
+       shelves, and wrong for a player. Hyrule's shop items, the Azeroth
+       dwarf's vial and the take-any caves' potions carried it on the
+       prototype, so a player's copy kept it and vanished when they died.
+       Whatever reaches a player -- bought, picked up, given -- is theirs.
+       (fread_obj clears it on load too: it links items in directly.) */
+    if ( !IS_NPC(ch) )
+	REMOVE_BIT( obj->extra_flags, ITEM_INVENTORY );
+
     obj->next_content    = ch->carrying;
     ch->carrying         = obj;
     obj->carried_by      = ch;

@@ -105,12 +105,14 @@ class ShopPurseTests(unittest.TestCase):
     def test_selling_pays_in_coins_the_seller_can_carry(self) -> None:
         """The payment used to arrive as its own weight in copper."""
         with LiveMud() as mud:
+            # Not "Seller": the game refuses a name that is a mobile keyword,
+            # and Hyrule's potion sellers have answered to it since 2026-10-03.
             self.character(
-                mud, "Seller", Levl=10, Room=DRESDEN_WEAPONSMITH_SHOP,
+                mud, "Zvendor", Levl=10, Room=DRESDEN_WEAPONSMITH_SHOP,
                 NewPlat=1, NewGold=0, NewSilv=0, NewCopp=0,
             )
             with mud.connect(timeout=120) as client:
-                login(client, "Seller", PASSWORD)
+                login(client, "Zvendor", PASSWORD)
                 self.assertIn("You buy", run(client, "buy dagger", 1.6))
                 before = purse(run(client, "worth", 1.5))
 
