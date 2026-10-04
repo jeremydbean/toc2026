@@ -5285,7 +5285,7 @@ void do_bomb( CHAR_DATA *ch, char *argument )
 
     if ( hyrule_bombs_carried( ch ) <= 0 )
     {
-        send_to_char( "You have no bombs. The arrow shops sell four for 20 rupees.\n\r", ch );
+        send_to_char( "You have no bombs. The arrow shops sell four for 20 gold.\n\r", ch );
         return;
     }
 
@@ -6219,14 +6219,14 @@ void do_gamble( CHAR_DATA *ch, char *argument )
             pick = i;
     if ( pick < 0 )
     {
-        send_to_char( "\"Let's play money making game.\" Three rupee signs lie face down:\n\r"
-                      "GAMBLE LEFT, GAMBLE MIDDLE or GAMBLE RIGHT. One wins 20 or 50 rupees,\n\r"
-                      "one loses 10, and one loses 10 or 40. You need 10 rupees to play.\n\r", ch );
+        send_to_char( "\"Let's play money making game.\" Three coin signs lie face down:\n\r"
+                      "GAMBLE LEFT, GAMBLE MIDDLE or GAMBLE RIGHT. One wins 20 or 50 gold,\n\r"
+                      "one loses 10, and one loses 10 or 40. You need 10 gold to play.\n\r", ch );
         return;
     }
     if ( !has_enough_gold( ch, 10 ) )
     {
-        send_to_char( "You need 10 rupees to play.\n\r", ch );
+        send_to_char( "You need 10 gold to play.\n\r", ch );
         return;
     }
 
@@ -6246,7 +6246,7 @@ void do_gamble( CHAR_DATA *ch, char *argument )
     if ( value > 0 )
     {
         add_money( ch, value );
-        snprintf( buf, sizeof(buf), "You win %d rupees.\n\r", value );
+        snprintf( buf, sizeof(buf), "You win %d gold.\n\r", value );
     }
     else
     {
@@ -6254,10 +6254,10 @@ void do_gamble( CHAR_DATA *ch, char *argument )
 
         if ( loss > 0 )
             add_money( ch, -loss );
-        snprintf( buf, sizeof(buf), "You lose %ld rupees.\n\r", loss );
+        snprintf( buf, sizeof(buf), "You lose %ld gold.\n\r", loss );
     }
     send_to_char( buf, ch );
-    act( "$n turns one of the old man's rupee signs.", ch, NULL, NULL, TO_ROOM );
+    act( "$n turns one of the old man's coin signs.", ch, NULL, NULL, TO_ROOM );
 }
 
 void do_slots( CHAR_DATA *ch, char *argument )

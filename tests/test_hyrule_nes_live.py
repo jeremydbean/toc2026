@@ -123,7 +123,7 @@ class HyruleNesLiveTests(unittest.TestCase):
                 self.assertIn("three bombs", carried, "the bomb was not used up:\n" + carried)
 
                 paid = run(hero, "down", settle=2.0)
-                self.assertIn(f"presses {bombed['amount']} rupees", paid, paid)
+                self.assertIn(f"presses {bombed['amount']} gold", paid, paid)
                 run(hero, "up", settle=1.5)
                 again = run(hero, "down", settle=2.0)
                 self.assertIn("had your share", again, again)
@@ -139,7 +139,7 @@ class HyruleNesLiveTests(unittest.TestCase):
                 lit = run(hero, "burn bush", settle=2.0)
                 self.assertIn("revealing a hidden passage", lit, lit)
                 rich = run(hero, "down", settle=2.0)
-                self.assertIn(f"presses {burned['amount']} rupees", rich, rich)
+                self.assertIn(f"presses {burned['amount']} gold", rich, rich)
 
     def test_the_items_do_what_they_did(self) -> None:
         take_any = next(landmark["room_vnum"] for landmark in WORLD["H4"]["landmarks"]

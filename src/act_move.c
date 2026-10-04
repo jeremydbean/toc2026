@@ -367,11 +367,11 @@ static void charge_hyrule_door_repair( CHAR_DATA *ch )
     }
 
     if ( charge == 20 )
-        send_to_char( "The old man collects 20 rupees for the door repair.\n\r", ch );
+        send_to_char( "The old man collects 20 gold for the door repair.\n\r", ch );
     else if ( charge > 0 )
-        send_to_char( "The old man takes your remaining rupees for the door repair.\n\r", ch );
+        send_to_char( "The old man takes your remaining gold coins for the door repair.\n\r", ch );
     else
-        send_to_char( "The old man marks the repair charge paid, though you have no rupees.\n\r", ch );
+        send_to_char( "The old man marks the repair charge paid, though you have no gold coins.\n\r", ch );
 }
 
 static bool hyrule_room_has_guardian( ROOM_INDEX_DATA *room )

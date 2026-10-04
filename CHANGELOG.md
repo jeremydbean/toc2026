@@ -16,6 +16,11 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   Undead Cleric (up to 45,000) were broken the same way. The fields are
   `int` now, and the area loader stopped clamping a mobile's hit dice at
   32,767. `tests/test_big_hit_points.py`.
+- **Hyrule uses regular money.** Shops, the money caves, the door-repair
+  charge, the gambling game, the hint caves, arrows and every line of
+  prose say gold instead of rupees. A rupee was a gold coin underneath all
+  along, so no price or reward changed: the Blue Ring is 250 gold, a door
+  repair 20, a moblin's gift 10, 30 or 100.
 - **Things bought in Hyrule survive their owner's death.** Hyrule's shop
   items carry the shop-stock flag on the item itself, every copy sold kept
   it, and a corpse destroys shop stock -- so dying lost everything a player

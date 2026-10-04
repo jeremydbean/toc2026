@@ -491,7 +491,7 @@ though every word costs him something, and he says only the one thing. Ask
 what he means and he turns his face east, lifts a finger a little toward
 the north where the land runs out into the water, then rubs finger and
 thumb together like a man counting coins. Whatever waits out there, he
-thinks it worth a hundred rupees.
+thinks it worth a hundred gold.
 ~
 human~
 ABMV 0 0 S
@@ -604,7 +604,7 @@ A fidgety old man rubs his hands together and grins, "I bet you'd like to have m
 He cannot keep still: his fingers drum, his feet tap and his eyes keep
 straying to the bags heaped behind him, each stitched with a double seam.
 He is a bag-maker, he explains, and proud of it, and his bags carry four
-more bombs than the one at your hip. One costs 100 rupees, and you may BUY
+more bombs than the one at your hip. One costs 100 gold, and you may BUY
 BAG to have it, though he will sell each traveller only one. Once he has
 your coin he talks happily about powder until you leave.
 ~
@@ -681,7 +681,7 @@ His eyebrows are gone, his fingertips are black, and his beard has been
 singed into a ragged point. He sells bags for carrying bombs and tests
 every one of them himself, which explains a great deal. This bag holds four
 more bombs than whatever you carry now, even if you bought one before from
-another of his trade. It costs 100 rupees: BUY BAG and the money is his. He
+another of his trade. It costs 100 gold: BUY BAG and the money is his. He
 sells only one to each traveller and waves the rest away.
 ~
 human~
@@ -964,7 +964,7 @@ A sharp-eyed old woman holds out a wrinkled palm and says, "Pay me and I'll talk
 ~
 Her eyes are small and black and miss nothing, least of all the purse at
 your belt. She knows things, she says, and knowledge is a trade like any
-other. GIVE her rupees and she will talk accordingly. 10 rupees is an
+other. GIVE her gold coins and she will talk accordingly. 10 gold is an
 insult, and she will tell you so. 30 buys the way through the Lost Woods,
 where travellers walk in circles for days. 50, she admits with a cackle,
 buys nothing but her opinion of how rich you must be.
@@ -1003,7 +1003,7 @@ A mist-soaked old woman wrings out her shawl and grumbles, "Pay me and I'll talk
 The roar of the falls fills her little room behind the curtain of water,
 and her shawl is always damp with spray. She grumbles about the cold, about
 her knees and about travellers who expect something for nothing. GIVE her
-rupees if you want her to talk: 5 or 10 will not open her mouth, but 20
+gold coins if you want her to talk: 5 or 10 will not open her mouth, but 20
 buys the way up through the Lost Hills, which turn back anyone who climbs
 them blind. She counts every coin twice.
 ~
@@ -1040,10 +1040,10 @@ A grinning moblin grins with all his crooked teeth and says, "It's a secret to e
 ~
 He grins at everyone who walks in, a wide, crooked, yellow grin that would
 be frightening on any other moblin. He likes visitors, he says, and keeps a
-little pile of rupees for them under a loose stone by the door. The first
-time you come he presses 10 of them into your hand without being asked.
-Come again and he only shrugs, still grinning, and points out that a secret
-shared twice is no secret at all.
+little pile of gold coins for them under a loose stone by the door. The
+first time you come he presses 10 of them into your hand without being
+asked. Come again and he only shrugs, still grinning, and points out that a
+secret shared twice is no secret at all.
 ~
 pig~
 ABMV 0 0 S
@@ -1060,9 +1060,9 @@ A pot-bellied moblin pats his round belly and chuckles, "It's a secret to everyb
 His belly hangs over his belt and he pats it fondly as he talks, as though
 it were a favourite dog. He used to raid caravans, he admits, until he grew
 too fat to chase them, and now he gives some of the loot back to make
-amends. As you come in for the first time he counts 30 rupees into your
-palm. After that he only shrugs, pats his belly again, and asks whether you
-have brought him anything to eat.
+amends. As you come in for the first time he counts 30 gold into your palm.
+After that he only shrugs, pats his belly again, and asks whether you have
+brought him anything to eat.
 ~
 pig~
 ABMV 0 0 S
@@ -1079,9 +1079,9 @@ A one-tusked moblin flicks his broken tusk and confides, "It's a secret to every
 One of his tusks is snapped off near the root, and he flicks the stump with
 a claw whenever he is thinking. He is the richest moblin in the west, he
 tells you proudly, and can afford to be generous: on your first visit he
-hands over 100 rupees in a single heavy bag. He will not do it twice. On
-any later visit he shrugs his huge shoulders and goes back to polishing the
-one good tusk he has left.
+hands over 100 gold in a single heavy bag. He will not do it twice. On any
+later visit he shrugs his huge shoulders and goes back to polishing the one
+good tusk he has left.
 ~
 pig~
 ABMV 0 0 S
@@ -1097,7 +1097,7 @@ A sleepy moblin yawns hugely and mumbles, "It's a secret to everybody."
 ~
 He is always half asleep, slumped against the wall of his cave with his
 spear across his knees. Footsteps wake him, and the first time you walk in
-he fumbles in a sack and drops 30 rupees into your hand before he has quite
+he fumbles in a sack and drops 30 gold into your hand before he has quite
 opened his eyes. Visit again and he only shrugs, yawns and settles back
 down. He seems to think the whole arrangement is a dream he keeps having,
 and is not sure he minds.
@@ -1116,10 +1116,10 @@ A young moblin bounces on his heels and squeaks, "It's a secret to everybody."
 ~
 He is young for a moblin, barely tusked, and so excited to have company
 that he bounces on his heels. His elders told him to guard the secret of
-this cave and he is very proud of the job. He gives every newcomer 10
-rupees from a small clay pot, carefully, as if each coin were a great
-treasure. On a second visit he shrugs and looks embarrassed, because the
-elders said once, and he takes rules seriously.
+this cave and he is very proud of the job. He gives every newcomer 10 gold
+from a small clay pot, carefully, as if each coin were a great treasure. On
+a second visit he shrugs and looks embarrassed, because the elders said
+once, and he takes rules seriously.
 ~
 pig~
 ABMV 0 0 S
@@ -1136,7 +1136,7 @@ A grizzled moblin scratches his grey snout and growls, "It's a secret to everybo
 His snout is grey and his ears are notched from old fights, and he has the
 gravel voice of a soldier long retired. He has seen enough war, he growls,
 and these days he pays travellers instead of robbing them. On your first
-visit he grunts and tosses you 30 rupees without looking up from his
+visit he grunts and tosses you 30 gold without looking up from his
 whittling. Walk in again and you get a shrug and a hard look, and nothing
 else at all.
 ~
@@ -1154,7 +1154,7 @@ A bashful moblin hides behind his spear and murmurs, "It's a secret to everybody
 ~
 He is shy, painfully so, and tries to hide his great bulk behind a spear
 far too thin for the purpose. He mumbles at the floor rather than at you,
-but the first time you come in he holds out a fistful of 30 rupees at arm's
+but the first time you come in he holds out a fistful of 30 gold at arm's
 length, eyes squeezed shut, as if afraid you might bite. Come back and he
 only shrugs, blushes a deeper shade of brown and shuffles further into the
 shadows.
@@ -1173,8 +1173,8 @@ A nervous moblin glances at the cave mouth and breathes, "It's a secret to every
 ~
 He keeps looking past you at the cave mouth, as though expecting someone
 worse. The other moblins would be furious, he frets, if they knew he was
-handing out their money. Still, on your first visit he hurries 30 rupees
-into your hand and begs you to tell nobody. When you return he shrugs
+handing out their money. Still, on your first visit he hurries 30 gold into
+your hand and begs you to tell nobody. When you return he shrugs
 helplessly, wringing his paws, and swears there is nothing left to give and
 nobody must ever know he gave it.
 ~
@@ -1191,9 +1191,9 @@ a giggling moblin~
 A giggling moblin giggles behind a hairy paw and says, "It's a secret to everybody."
 ~
 Everything delights him, and he giggles behind a hairy paw at the very idea
-of a secret, at his cave, at you. He keeps a jar of rupees for guests and,
-on your first visit, shakes 10 of them into your hand, giggling all the
-while. On a later visit he only shrugs and giggles harder, because the
+of a secret, at his cave, at you. He keeps a jar of gold coins for guests
+and, on your first visit, shakes 10 of them into your hand, giggling all
+the while. On a later visit he only shrugs and giggles harder, because the
 joke, as far as he can tell, is that you thought there would be more.
 ~
 pig~
@@ -1209,8 +1209,8 @@ a moblin wearing a gold earring~
 A moblin wearing a gold earring waves a lordly paw and says, "It's a secret to everybody."
 ~
 A gold ring glints in one torn ear, and he carries himself like a lord
-among moblins, which perhaps he is. He has more rupees than he knows what
-to do with, he says airily, and gives 100 of them to each newcomer the
+among moblins, which perhaps he is. He has more gold coins than he knows
+what to do with, he says airily, and gives 100 of them to each newcomer the
 moment they step inside. A second visit earns a lordly shrug and nothing
 more: generosity, he explains, is only charming the first time. He fingers
 the earring as he says it.
@@ -1229,7 +1229,7 @@ A skinny moblin pokes his head around a rock and croaks, "It's a secret to every
 ~
 He is all ribs and elbows, the thinnest moblin you have ever seen, and his
 voice cracks like a frog's. He spends almost nothing, he croaks, and so he
-can spare 30 rupees for every visitor, once, as they come through the door.
+can spare 30 gold for every visitor, once, as they come through the door.
 After that he shrugs his bony shoulders. He would give more, he says, but
 then he would have to eat less, and there is not much less left for him to
 eat.
@@ -1248,8 +1248,8 @@ A jowly moblin wobbles his jowls and rumbles, "It's a secret to everybody."
 ~
 His jowls hang in great folds and wobble when he speaks, which he does
 slowly and with dignity. He keeps a neat little cave, swept clean, with his
-rupees stacked in tidy columns on a shelf. On your first visit he lifts
-down a column and gives you 30 rupees, counted aloud. On any later visit he
+gold coins stacked in tidy columns on a shelf. On your first visit he lifts
+down a column and gives you 30 gold, counted aloud. On any later visit he
 shrugs, jowls swinging, and points to the empty space on the shelf as
 though that settles the matter.
 ~
@@ -1267,10 +1267,10 @@ A twitchy-eared moblin flicks one long ear and grunts, "It's a secret to everybo
 ~
 One of his long ears twitches constantly, as if hearing things nobody else
 can, and he cocks his head at every drip from the ceiling. He is not rich,
-he says, and the 10 rupees he hands each new visitor are all he can spare.
-Still, he gives them gladly, the first time. If you come back he shrugs,
-ear twitching, and listens past you for the next traveller who has not
-heard the secret yet.
+he says, and the 10 gold coins he hands each new visitor are all he can
+spare. Still, he gives them gladly, the first time. If you come back he
+shrugs, ear twitching, and listens past you for the next traveller who has
+not heard the secret yet.
 ~
 pig~
 ABMV 0 0 S
@@ -1287,7 +1287,7 @@ A moblin in a battered helmet snaps a salute and barks, "It's a secret to everyb
 He wears an old soldier's helmet, dented and far too small, and salutes
 everyone who enters. He guarded a royal treasury once, he barks, before the
 war, and some of it came with him when he deserted. The first time you walk
-in he presents you with 100 rupees as if pinning on a medal. Return and he
+in he presents you with 100 gold as if pinning on a medal. Return and he
 salutes again, shrugs, and stands to attention over an empty strongbox.
 ~
 pig~
@@ -1304,7 +1304,7 @@ A gap-toothed merchant whistles through the gap in his teeth and calls, "Buy som
 ~
 He whistles through the gap in his front teeth when he talks, and he talks
 a great deal. His goods sit on a rough cloth in the firelight: a Magical
-Shield at 90 rupees, Bait at 100 and a Recovery Heart at 10. The shield, he
+Shield at 90 gold, Bait at 100 and a Recovery Heart at 10. The shield, he
 insists, will turn a wizard's spell, and the bait will draw any hungry
 beast away from the path. LIST shows his wares and BUY takes them. He does
 not haggle, and is offended if you try.
@@ -1323,7 +1323,7 @@ A lanky merchant spreads his long arms over his wares and says, "Buy somethin' w
 ~
 He is so tall that he has to stoop under the roof of his cave, and his long
 arms reach every corner of the shop without his moving his feet. His pride
-is a ring of blue stone, the Blue Ring, at 250 rupees: wear it, he swears,
+is a ring of blue stone, the Blue Ring, at 250 gold: wear it, he swears,
 and every blow you take hurts less. Beside it lie a small Key at 80 and
 Bait at 60. LIST to see them, BUY to take them home, and do not touch the
 ring until you have paid.
@@ -1341,7 +1341,7 @@ a red-capped merchant~
 A red-capped merchant tips his red cap and sings out, "Buy somethin' will ya!"
 ~
 A red cap sits jauntily on his head and he tips it to every customer. He
-sells the tools of a fighting trade: a Magical Shield for 130 rupees, four
+sells the tools of a fighting trade: a Magical Shield for 130 gold, four
 Bombs for 20 and a quiver of Arrows for 80. Arrows are worthless without a
 bow, he warns, honest to a fault, but bombs are never wasted. LIST his
 stock and BUY what you need. He hums a marching song while you decide,
@@ -1361,7 +1361,7 @@ A sour-faced merchant frowns over his counter and mutters, "Buy somethin' will y
 ~
 He has the face of a man who has just tasted milk gone off, and he wears it
 at all times. Customers, he grumbles, always want discounts, and he gives
-none. A Magical Shield is 130 rupees, four Bombs are 20 and a quiver of
+none. A Magical Shield is 130 gold, four Bombs are 20 and a quiver of
 Arrows is 80, and that is that. LIST if you must, BUY if you will. For all
 his scowling he wraps each purchase with great care, and wishes you safe
 travels under his breath.
@@ -1379,9 +1379,9 @@ a stammering merchant~
 A stammering merchant clears his throat twice and stammers, "Buy somethin' will ya!"
 ~
 He stammers badly, and so his patter, which he has clearly practised, comes
-out in fits and starts. He sells a Magical Shield for 90 rupees, Bait for
-100 and a Recovery Heart for 10, and he has a speech about each that he
-never manages to finish. LIST shows them anyway, and BUY ends the speech
+out in fits and starts. He sells a Magical Shield for 90 gold, Bait for 100
+and a Recovery Heart for 10, and he has a speech about each that he never
+manages to finish. LIST shows them anyway, and BUY ends the speech
 mercifully for you both. He thanks every customer three times, getting a
 little further each time.
 ~
@@ -1399,10 +1399,10 @@ A plump merchant rubs his round hands together and beams, "Buy somethin' will ya
 ~
 Plump and pink and very pleased with himself, he greets you like a long-
 lost nephew. His cave is the cosiest shop in Hyrule, he claims, and his
-prices the kindest: a Magical Shield at 90 rupees, Bait at 100 and a
-Recovery Heart at only 10. He recommends the heart warmly to anyone who
-looks tired, which in his opinion is everyone. LIST his wares, BUY what you
-like, and stay for a chat if you can.
+prices the kindest: a Magical Shield at 90 gold, Bait at 100 and a Recovery
+Heart at only 10. He recommends the heart warmly to anyone who looks tired,
+which in his opinion is everyone. LIST his wares, BUY what you like, and
+stay for a chat if you can.
 ~
 human~
 ABMV 0 0 S
@@ -1417,7 +1417,7 @@ a bald merchant~
 A bald merchant polishes his bald head with a rag and calls, "Buy somethin' will ya!"
 ~
 His bald head shines in the firelight, and he polishes it with the same rag
-he uses on his wares. He is proudest of his Blue Candle, 60 rupees, which
+he uses on his wares. He is proudest of his Blue Candle, 60 gold, which
 lights a dark room and burns back the bushes that hide things. He also
 keeps a Magical Shield at 160 and a small Key at 100, for the doors below
 that will not open otherwise. LIST to see them and BUY to carry them off.
@@ -1437,7 +1437,7 @@ A jovial merchant laughs heartily and bellows, "Buy somethin' will ya!"
 ~
 He laughs at his own jokes before he reaches the end of them, and he has a
 great many jokes, most of them about moblins. Between them he sells a
-Magical Shield for 130 rupees, four Bombs for 20 and a quiver of Arrows for
+Magical Shield for 130 gold, four Bombs for 20 and a quiver of Arrows for
 80, and he will tell you a bomb is the best joke of all if you set it
 against the right wall. LIST to see his goods and BUY to take them. He is
 still laughing as you leave.
@@ -1456,8 +1456,8 @@ A sharp-nosed merchant sniffs in the direction of your purse and announces, "Buy
 ~
 He has a long, sharp nose and uses it to sniff out how much money a
 customer is carrying, or so he claims. His shop sits high in the hills, and
-he charges for the climb: a Magical Shield at 160 rupees, a small Key at
-100 and a Blue Candle at 60. The candle, he says, sees off the dark and the
+he charges for the climb: a Magical Shield at 160 gold, a small Key at 100
+and a Blue Candle at 60. The candle, he says, sees off the dark and the
 brambles alike. LIST shows his stock and BUY puts an end to the sniffing.
 He knows the price of everything.
 ~
@@ -1475,8 +1475,8 @@ A dozing merchant jerks awake behind his wares and blurts, "Buy somethin' will y
 ~
 He dozes on a stool between customers and wakes with a start whenever
 someone comes in, blinking and patting his pockets. Once he has found his
-bearings he is helpful enough. A Magical Shield costs 90 rupees, Bait 100
-and a Recovery Heart 10, and he lays them out in a neat row as if for
+bearings he is helpful enough. A Magical Shield costs 90 gold, Bait 100 and
+a Recovery Heart 10, and he lays them out in a neat row as if for
 inspection. LIST to see them and BUY to take one. Take too long deciding
 and he falls asleep again mid-sentence.
 ~
@@ -1495,8 +1495,8 @@ A merchant in a patched cloak throws back his patched cloak and urges, "Buy some
 His cloak is more patch than cloth, each patch a different colour, and he
 swears every one marks a deal he made. He has wandered the whole of Hyrule
 and settled here in the east because, he says, the customers are richer and
-the monsters slower. He sells a Magical Shield at 160 rupees, a small Key
-at 100 and a Blue Candle at 60. LIST his stock, BUY what suits you, and ask
+the monsters slower. He sells a Magical Shield at 160 gold, a small Key at
+100 and a Blue Candle at 60. LIST his stock, BUY what suits you, and ask
 about any patch you like.
 ~
 human~
@@ -1514,7 +1514,7 @@ A moustached merchant twirls a waxed moustache and declares, "Buy somethin' will
 His moustache is waxed into two fine points, and he twirls one whenever he
 names a price. His shop, at the far south-eastern edge of the land, is the
 last before a long walk, and he stocks for it: a Magical Shield at 130
-rupees, four Bombs at 20 and a quiver of Arrows at 80. LIST and BUY are all
+gold, four Bombs at 20 and a quiver of Arrows at 80. LIST and BUY are all
 you need. He compliments every purchase as though you had chosen it with
 exquisite taste.
 ~
@@ -1534,7 +1534,7 @@ She is bent nearly double over a bubbling cauldron, and the steam has
 turned her grey hair to frizz. Her eyes go straight to your belt as you
 come in, looking for a royal seal: she sells to nobody who does not carry
 Princess Zelda's Letter. Show her that and she will part with a blue Life
-Potion for 40 rupees or a red Second Potion for 68. LIST and BUY, and mind
+Potion for 40 gold or a red Second Potion for 68. LIST and BUY, and mind
 the cauldron on your way out.
 ~
 human~
@@ -1552,9 +1552,9 @@ A rosy-cheeked old woman smiles warmly and reminds you, "Buy medicine before you
 Her cheeks are round and rosy and she fusses over every visitor like a
 grandmother, clucking at your scrapes and bruises. She is strict about one
 thing, though: without Princess Zelda's Letter on you she will not sell a
-drop, royal orders. With it, a blue Life Potion is 40 rupees and a red
-Second Potion is 68, and she tells you to drink the blue one before you
-feel faint, not after. LIST and BUY.
+drop, royal orders. With it, a blue Life Potion is 40 gold and a red Second
+Potion is 68, and she tells you to drink the blue one before you feel
+faint, not after. LIST and BUY.
 ~
 human~
 ABMV 0 0 S
@@ -1571,7 +1571,7 @@ An old woman smelling of herbs crushes a leaf between her fingers and says, "Buy
 Bunches of herbs hang drying from every inch of her ceiling, and she smells
 of mint and woodsmoke and something bitter underneath. She has no patience
 for questions until she has seen Princess Zelda's Letter, which she reads
-twice, lips moving. Then she will sell you a blue Life Potion for 40 rupees
+twice, lips moving. Then she will sell you a blue Life Potion for 40 gold
 or a red Second Potion for 68, brewed that week. LIST her bottles and BUY.
 She will not tell you the recipe.
 ~
@@ -1591,8 +1591,8 @@ Thick round spectacles magnify her eyes to twice their size, and she pushes
 them up her nose every few words. She examines Princess Zelda's Letter very
 closely indeed before she will trade, holding it up to the fire to check
 the seal; without it she sells you nothing. With it she offers a blue Life
-Potion at 40 rupees and a red Second Potion at 68. LIST and BUY, and she
-will label your bottle in a tiny, careful hand.
+Potion at 40 gold and a red Second Potion at 68. LIST and BUY, and she will
+label your bottle in a tiny, careful hand.
 ~
 human~
 ABMV 0 0 S
@@ -1609,7 +1609,7 @@ A humming old woman stops humming long enough to say, "Buy medicine before you g
 She hums constantly, the same three notes over and over, while she stirs
 and pours and corks. The humming stops only when she asks to see Princess
 Zelda's Letter, for she trades with nobody who lacks it. Shown the seal,
-she brightens and offers a blue Life Potion for 40 rupees or a red Second
+she brightens and offers a blue Life Potion for 40 gold or a red Second
 Potion for 68, and goes back to humming. LIST to see them, BUY to take one.
 The tune is stuck in your head for hours.
 ~
@@ -1628,9 +1628,9 @@ A tiny old woman stands on a crate to be seen and squeaks, "Buy medicine before 
 She is so small that she keeps a crate behind the counter to stand on, and
 she climbs onto it with great dignity whenever a customer arrives. She
 trades only with those who carry Princess Zelda's Letter; she squints at
-the seal, nods once, and then sells a blue Life Potion for 40 rupees or a
-red Second Potion for 68. LIST and BUY. She is fiercely proud that her
-potions are the strongest by the cupful, if not by the bottle.
+the seal, nods once, and then sells a blue Life Potion for 40 gold or a red
+Second Potion for 68. LIST and BUY. She is fiercely proud that her potions
+are the strongest by the cupful, if not by the bottle.
 ~
 human~
 ABMV 0 0 S
@@ -1647,7 +1647,7 @@ A brisk old woman taps the counter impatiently and urges, "Buy medicine before y
 She has no time for chatter and makes that clear by tapping the counter
 until you get to the point. Princess Zelda's Letter first, she says; no
 letter, no potions, and she does not care who you are. With it, a blue Life
-Potion costs 40 rupees and a red Second Potion 68. LIST, BUY, and out, she
+Potion costs 40 gold and a red Second Potion 68. LIST, BUY, and out, she
 says, though she softens enough to wish you a safe road and to tuck an
 extra cork into your pack.
 ~
@@ -1665,7 +1665,7 @@ A gruff old man blocks the doorway and grumbles, "Pay me for the door repair cha
 ~
 He is broad and gruff and built like a door himself, and he blames you
 personally for every crack in his cave. Somebody bombed his way in, he
-says, glaring, and somebody is going to pay for it. He takes 20 rupees from
+says, glaring, and somebody is going to pay for it. He takes 20 gold from
 each visitor the first time they come in, before they can argue, and drops
 it into an iron box. After that he only grumbles about the draught and goes
 back to his mortar.
@@ -1684,10 +1684,10 @@ An old man with a ledger licks his pencil, opens his ledger and says, "Pay me fo
 ~
 He keeps a fat ledger open on his knee and writes in it constantly, licking
 his pencil between entries. Every visitor has a line in it, with a date and
-a sum. The first time you walk in he takes 20 rupees for the door repair
-and writes your name down with a flourish. After that he checks the book,
-finds you already paid, and waves you on without looking up. He has never
-once made an error, he says.
+a sum. The first time you walk in he takes 20 gold for the door repair and
+writes your name down with a flourish. After that he checks the book, finds
+you already paid, and waves you on without looking up. He has never once
+made an error, he says.
 ~
 human~
 ABMV 0 0 S
@@ -1703,7 +1703,7 @@ An apologetic old man wrings his hands and apologises, "Pay me for the door repa
 ~
 He is terribly sorry about all this, he says, really he is, but the door
 does not mend itself. He wrings his hands, looks at his feet, and takes 20
-rupees from you the moment you come in for the first time, apologising the
+gold from you the moment you come in for the first time, apologising the
 whole while. On later visits he only apologises for having had to ask, at
 length, and offers you a seat by the fire that is broken too.
 ~
@@ -1722,7 +1722,7 @@ A plaster-dusted old man brushes plaster from his beard and announces, "Pay me f
 White plaster dust coats him from head to foot, so that he looks like a
 statue that has learned to walk. He is in the middle of patching the wall
 and does not stop. The first time you come in he holds out a dusty palm for
-20 rupees and takes it before you have finished blinking. After that he
+20 gold and takes it before you have finished blinking. After that he
 ignores you and keeps patching, leaving white handprints on everything he
 touches.
 ~
@@ -1740,7 +1740,7 @@ A sly old man smiles a crooked little smile and murmurs, "Pay me for the door re
 ~
 There is a sly look about him, and you suspect the door was never broken at
 all. He smiles the crooked smile of a man who has found an easy living and
-means to keep it. He relieves each visitor of 20 rupees the first time they
+means to keep it. He relieves each visitor of 20 gold the first time they
 walk in, smoothly, almost kindly. On later visits he simply smiles and tips
 his head, as if the two of you share a joke. Perhaps you do.
 ~
@@ -1758,7 +1758,7 @@ A mumbling old man mumbles into his beard something like, "Pay me for the door r
 ~
 He mumbles everything into his beard, so that most of what he says is lost,
 but the outstretched hand is clear enough. The first time you come into his
-cave he takes 20 rupees for the door, mumbling what may be an itemised bill
+cave he takes 20 gold for the door, mumbling what may be an itemised bill
 or may be a recipe for soup. After that he mumbles at you companionably and
 seems to expect nothing more. He has, you gather, a cat somewhere.
 ~
@@ -1777,7 +1777,7 @@ A bow-legged old man waddles forward on bowed legs and demands, "Pay me for the 
 His legs are so bowed you could roll a barrel between them, and he waddles
 about his cave tapping the walls with a little hammer. He was a mason once,
 he says, and still keeps a mason's prices. The first time you come in he
-takes 20 rupees for the door you came through. After that he only nods and
+takes 20 gold for the door you came through. After that he only nods and
 goes on tapping the walls, listening for the next weak spot.
 ~
 human~
@@ -1793,7 +1793,7 @@ a sniffling old man~
 A sniffling old man sniffs loudly, wipes his nose and says, "Pay me for the door repair charge."
 ~
 He has a cold, has always had a cold, and blames the hole somebody blew in
-his wall for every sniffle of it. He takes 20 rupees from each visitor the
+his wall for every sniffle of it. He takes 20 gold from each visitor the
 first time they come in and tucks it into a damp handkerchief. On later
 visits he only sniffs at you reproachfully, as if you personally were the
 draught, and goes back to stuffing rags into the cracks.
@@ -1811,10 +1811,10 @@ a nail-chewing old man~
 A nail-chewing old man spits out a bent nail and snaps, "Pay me for the door repair charge."
 ~
 He chews nails, actual iron nails, and spits out the bent ones into a
-bucket with a clang. A carpenter by trade and temper, he takes 20 rupees
-for the door from anyone coming in for the first time and does not discuss
-it. After that he looks you over, grunts, and goes back to his hammering.
-He has opinions about bombs, and none of them are kind.
+bucket with a clang. A carpenter by trade and temper, he takes 20 gold for
+the door from anyone coming in for the first time and does not discuss it.
+After that he looks you over, grunts, and goes back to his hammering. He
+has opinions about bombs, and none of them are kind.
 ~
 human~
 ABMV 0 0 S
@@ -1829,7 +1829,7 @@ a shifty gambler~
 A shifty gambler shuffles three signs about and whispers, "Let's play money making game."
 ~
 His eyes never rest, and neither do his hands, which shuffle three painted
-signs about the floor while he talks. You need 10 rupees in your purse to
+signs about the floor while he talks. You need 10 gold in your purse to
 play. GAMBLE LEFT, MIDDLE or RIGHT and he turns them over: one sign wins
 you 20 or 50, one loses you 10, and the third loses you 10 or 40. He swears
 the game is honest. He also swears he has never once lost, and both cannot
@@ -1849,10 +1849,10 @@ A dapper gambler adjusts his cuffs and purrs, "Let's play money making game."
 ~
 He is the best-dressed creature in Hyrule, by his own account, in a
 waistcoat embroidered with dice. His game is simple and elegant, he says:
-carry at least 10 rupees, then GAMBLE LEFT, MIDDLE or RIGHT. Behind one
-sign waits a win of 20 or 50, behind another a loss of 10, and behind the
-last a loss of 10 or 40. He shuffles with a flourish, pays out with a bow,
-and collects with a smile.
+carry at least 10 gold, then GAMBLE LEFT, MIDDLE or RIGHT. Behind one sign
+waits a win of 20 or 50, behind another a loss of 10, and behind the last a
+loss of 10 or 40. He shuffles with a flourish, pays out with a bow, and
+collects with a smile.
 ~
 human~
 ABMV 0 0 S
@@ -1864,12 +1864,12 @@ AHMV ABCDEFGHIJK M 0
 #30419
 gambler coinflipper coin flipping~
 a coin-flipping gambler~
-A coin-flipping gambler flips a rupee in the air and calls, "Let's play money making game."
+A coin-flipping gambler flips a gold coin in the air and calls, "Let's play money making game."
 ~
-He flips a rupee as he talks, catching it without looking, and never once
-drops it. He likes the odds of his game, he says, though he admits they
-like him more. You must hold 10 rupees to sit down. GAMBLE LEFT, MIDDLE or
-RIGHT: one of the three signs pays 20 or 50, one costs you 10, and one
+He flips a gold coin as he talks, catching it without looking, and never
+once drops it. He likes the odds of his game, he says, though he admits
+they like him more. You must hold 10 gold to sit down. GAMBLE LEFT, MIDDLE
+or RIGHT: one of the three signs pays 20 or 50, one costs you 10, and one
 costs you 10 or 40. He has been sitting by the start of the road for years,
 waiting for fresh faces with full purses.
 ~
@@ -1886,11 +1886,11 @@ a weary gambler~
 A weary gambler rubs his tired eyes and offers, "Let's play money making game."
 ~
 Dark rings sit under his eyes and he slumps over his three signs like a man
-who has played all night and lost. He has, often. His game wants 10 rupees
-in your purse before you can play. GAMBLE LEFT, MIDDLE or RIGHT, and one
-sign wins you 20 or 50, one loses you 10, and the third loses 10 or 40. He
-tells you the odds plainly, with the honesty of the very tired, and advises
-you to quit while ahead.
+who has played all night and lost. He has, often. His game wants 10 gold in
+your purse before you can play. GAMBLE LEFT, MIDDLE or RIGHT, and one sign
+wins you 20 or 50, one loses you 10, and the third loses 10 or 40. He tells
+you the odds plainly, with the honesty of the very tired, and advises you
+to quit while ahead.
 ~
 human~
 ABMV 0 0 S
@@ -1905,7 +1905,7 @@ a cheerful gambler~
 A cheerful gambler claps his hands and chirps, "Let's play money making game."
 ~
 Win or lose, he is delighted, and he claps his hands at every turn of a
-sign. His game wants a purse of at least 10 rupees. GAMBLE LEFT, MIDDLE or
+sign. His game wants a purse of at least 10 gold. GAMBLE LEFT, MIDDLE or
 RIGHT: one sign pays 20 or 50, another takes 10, and the last takes 10 or
 40. He cheers just as loudly when you lose as when you win, which some
 players find charming and others find suspicious. He keeps a tally of his
@@ -6273,8 +6273,8 @@ wood~
 0 25 0 P
 
 #30457
-secret rupee chest~
-a secret rupee chest~
+secret coin chest~
+a secret coin chest~
 A little chest of gold waits beneath the burned bush.~
 wood~
 15 0 0
@@ -6834,17 +6834,17 @@ stone~
 12 0 5 1 9
 0 0 0 P
 #30511
-thirty rupees gold money coins~
-30 rupees~
-Thirty rupees gleam here.~
+thirty gold money coins~
+30 gold coins~
+Thirty gold coins gleam here.~
 gold~
 20 0 A
 30 2 0 0 0
 1 0 300000 P
 #30512
-hundred rupees gold money coins~
-100 rupees~
-One hundred rupees gleam here.~
+hundred gold money coins~
+100 gold coins~
+One hundred gold coins gleam here.~
 gold~
 20 0 A
 100 2 0 0 0
@@ -7140,7 +7140,7 @@ water~
 #30541
 magical shield shop~
 a Magical Shield~
-A Magical Shield is displayed for 130 rupees.~
+A Magical Shield is displayed for 130 gold.~
 steel~
 9 N AJ
 5 5 5 3 0
@@ -7157,7 +7157,7 @@ A
 #30543
 arrows arrow quiver shop~
 a quiver of arrows~
-A quiver of arrows is displayed for 80 rupees.~
+A quiver of arrows is displayed for 80 gold.~
 wood~
 8 N AO
 0 0 0 0 0
@@ -7165,14 +7165,14 @@ wood~
 E
 arrows arrow quiver~
 A quiver of arrows for the bow. Wield the bow and SHOOT an enemy in the
-room: each arrow costs a rupee, as it always did, and the quiver is
+room: each arrow costs a gold coin, as it always did, and the quiver is
 never empty while you can pay. An arrow is what finishes Gohma, and
 one is all a pols voice can stand.
 ~
 #30544
 magical shield shop~
 a Magical Shield~
-A Magical Shield is displayed for 160 rupees.~
+A Magical Shield is displayed for 160 gold.~
 steel~
 9 N AJ
 5 5 5 3 0
@@ -7189,7 +7189,7 @@ A
 #30545
 key small shop~
 a small key~
-A small key is displayed for 100 rupees.~
+A small key is displayed for 100 gold.~
 iron~
 18 N A
 0 0 0 0 0
@@ -7202,7 +7202,7 @@ and the lock keeps it. It stays with you when you leave the game.
 #30546
 blue candle shop~
 a Blue Candle~
-A Blue Candle is displayed for 60 rupees.~
+A Blue Candle is displayed for 60 gold.~
 wax~
 1 N AO
 0 0 999 0 0
@@ -7215,7 +7215,7 @@ to find what the bush hides, or BURN an enemy for a lick of flame.
 #30547
 magical shield bargain shop~
 a Magical Shield~
-A Magical Shield is displayed for 90 rupees.~
+A Magical Shield is displayed for 90 gold.~
 steel~
 9 N AJ
 5 5 5 3 0
@@ -7232,7 +7232,7 @@ A
 #30548
 food bait shop~
 enemy bait~
-Enemy bait is displayed for 100 rupees.~
+Enemy bait is displayed for 100 gold.~
 meat~
 19 N A
 H 0 0 0 0
@@ -7247,7 +7247,7 @@ pick the bait up again. A guardian is not fooled.
 #30549
 heart recovery shop~
 a Recovery Heart~
-A Recovery Heart is displayed for 10 rupees.~
+A Recovery Heart is displayed for 10 gold.~
 crystal~
 10 N AO
 10 28 0 0 0
@@ -7255,7 +7255,7 @@ crystal~
 #30550
 key small bargain shop~
 a small key~
-A small key is displayed for 80 rupees.~
+A small key is displayed for 80 gold.~
 iron~
 18 N A
 0 0 0 0 0
@@ -7268,7 +7268,7 @@ and the lock keeps it. It stays with you when you leave the game.
 #30551
 blue ring hyrule shop~
 the Blue Ring of Hyrule~
-The Blue Ring of Hyrule is displayed for 250 rupees.~
+The Blue Ring of Hyrule is displayed for 250 gold.~
 gold~
 9 N AB
 5 5 5 3 0
@@ -7284,7 +7284,7 @@ A
 #30552
 food bait bargain shop~
 enemy bait~
-Enemy bait is displayed for 60 rupees.~
+Enemy bait is displayed for 60 gold.~
 meat~
 19 N A
 H 0 0 0 0
@@ -7299,7 +7299,7 @@ pick the bait up again. A guardian is not fooled.
 #30553
 blue life potion medicine shop~
 a blue Life Potion~
-A blue Life Potion is displayed for 40 rupees.~
+A blue Life Potion is displayed for 40 gold.~
 glass~
 10 N AO
 30 28 28 0 0
@@ -7311,7 +7311,7 @@ QUAFF it and it heals you twice over.
 #30554
 red second potion medicine shop~
 a red 2nd Potion~
-A red 2nd Potion is displayed for 68 rupees.~
+A red 2nd Potion is displayed for 68 gold.~
 glass~
 10 N AO
 30 28 28 0 0
@@ -7324,7 +7324,7 @@ in the bottle turns blue -- a blue Life Potion, for later.
 #30695
 bombs bomb four~
 four bombs~
-Four round black bombs are displayed for 20 rupees.~
+Four round black bombs are displayed for 20 gold.~
 iron~
 8 N A
 4 0 0 0 0
@@ -7339,7 +7339,7 @@ sell room for four more each.
 #30696
 bag bomb bigger satchel~
 a bigger bomb bag~
-A bigger bomb bag hangs from a peg, priced at 100 rupees.~
+A bigger bomb bag hangs from a peg, priced at 100 gold.~
 leather~
 8 N A
 0 0 0 0 0
@@ -9253,7 +9253,7 @@ D3
 0 0 30201
 D5
 ~
-bomb rupee grotto~
+bomb coin grotto~
 4 0 30661
 S
 #30203
@@ -9620,7 +9620,7 @@ D3
 0 0 30217
 D5
 ~
-burn rupee grotto~
+burn coin grotto~
 4 0 30662
 S
 #30219
@@ -9767,7 +9767,7 @@ D3
 0 0 30222
 D5
 ~
-bomb rupee grotto~
+bomb coin grotto~
 4 0 30665
 S
 #30224
@@ -9878,7 +9878,7 @@ D3
 0 0 30226
 D5
 ~
-burn rupee grotto~
+burn coin grotto~
 4 0 30669
 S
 #30228
@@ -10013,7 +10013,7 @@ D2
 0 0 30217
 D5
 ~
-burn rupee grotto~
+burn coin grotto~
 4 0 30660
 S
 #30234
@@ -10144,7 +10144,7 @@ D3
 0 0 30237
 D5
 ~
-burn rupee grotto~
+burn coin grotto~
 4 0 30664
 S
 #30239
@@ -10267,7 +10267,7 @@ D3
 0 0 30242
 D5
 ~
-burn rupee grotto~
+burn coin grotto~
 4 0 30668
 S
 #30244
@@ -10536,7 +10536,7 @@ D3
 0 0 30255
 D5
 ~
-burn rupee grotto~
+burn coin grotto~
 4 0 30667
 S
 #30257
@@ -10681,7 +10681,7 @@ D3
 0 0 30261
 D5
 ~
-armos rupee grotto~
+armos coin grotto~
 4 0 30672
 S
 #30263
@@ -10986,7 +10986,7 @@ D2
 0 0 30261
 D5
 ~
-armos rupee grotto~
+armos coin grotto~
 4 0 30671
 S
 #30278
@@ -11236,7 +11236,7 @@ D3
 0 0 30287
 D5
 ~
-burn rupee grotto~
+burn coin grotto~
 4 0 30666
 S
 #30289
@@ -11359,7 +11359,7 @@ D3
 0 0 30292
 D5
 ~
-bomb rupee grotto~
+bomb coin grotto~
 4 0 30670
 S
 #30294
@@ -11482,7 +11482,7 @@ D3
 0 0 30298
 D5
 ~
-bomb rupee grotto~
+bomb coin grotto~
 4 0 30663
 S
 #30300
@@ -12100,7 +12100,7 @@ stepladder crossing~
 0 0 30311
 D5
 ~
-hidden rupee grotto~
+hidden coin grotto~
 0 0 30673
 S
 #30330
@@ -12109,7 +12109,7 @@ This little cave at the back of the meadow is swept tidy, and a woven mat
 lies before the far wall where a visitor is meant to stand and pay. Flower
 petals blown in from outside collect in the corners. Two small fires
 crackle in iron dishes, and a cracked clay bowl between them holds the odd
-rupee left by earlier callers. Stone steps lead up into the meadow.
+coin left by earlier callers. Stone steps lead up into the meadow.
 ~
 0 AD 11
 D4
@@ -12498,8 +12498,8 @@ Level 1: Undercroft of Brick Ledges~
 A narrow ladder drops into a long basement of brick ledges and black gaps,
 the kind of place one crosses sideways, a ledge at a time. The air smells
 of turned earth and old candle stubs, and the lowest rung of the ladder is
-polished bright. Somebody's hoard of rupees was tucked on a stone shelf at
-the far end. The ladder climbs back up to the chamber above.
+polished bright. Somebody's hoard of gold coins was tucked on a stone shelf
+at the far end. The ladder climbs back up to the chamber above.
 ~
 0 ADN 11
 D4
@@ -13632,8 +13632,8 @@ Level 4: Seeping Red-Brick Cellar~
 Beneath the sunken block a ladder drops into a cramped basement of red
 brick. Narrow ledges step across a dark floor where water gurgles in the
 gaps, and the low ceiling sweats with lake seepage that has left pale tide
-lines on every course. A little hoard of rupees has been wedged on a ledge
-out of the wet. The only way out is back up the ladder.
+lines on every course. A little hoard of gold coins has been wedged on a
+ledge out of the wet. The only way out is back up the ladder.
 ~
 0 ADN 11
 D4
@@ -14028,7 +14028,7 @@ Behind the weak stone of the west wall lies a snug room, its corners
 stacked with empty crates that smell of saltpetre and lamp oil. Fires
 crackle on either side of a worn spot by the north wall, and before them,
 on a squat stone block, a fat canvas bomb bag is displayed with a price of
-100 rupees painted beside it. The only exit is the cracked, weak-looking
+100 gold painted beside it. The only exit is the cracked, weak-looking
 section of the west wall.
 ~
 0 ADN 11
@@ -14081,8 +14081,8 @@ S
 Level 5: Whistling Brick Cellar~
 Dry air whistles faintly through this narrow brick basement, a thin note
 like wind across a reed, from somewhere beneath the scraped block above.
-Brick ledges step across the dark floor, and a cache of rupees lies on the
-last of them, left by someone who meant to come back. The ladder is the
+Brick ledges step across the dark floor, and a cache of gold coins lies on
+the last of them, left by someone who meant to come back. The ladder is the
 only way back up.
 ~
 0 ADN 11
@@ -14837,7 +14837,7 @@ Level 7: Demon's Powder Store~
 Small and square, this room feels strangely safe after the halls below, and
 the smell of black powder lingers in its corners. Low braziers crackle on
 either side of a polished patch of floor, and on a ledge between them sits
-a bulging bomb bag, a price of 100 rupees painted on the stone beneath it.
+a bulging bomb bag, a price of 100 gold painted on the stone beneath it.
 Rows of iron hooks line the walls, all empty. The only way out is the iron-
 banded door with a keyhole in the south wall.
 ~
@@ -15202,9 +15202,9 @@ S
 Level 7: Waxen Ledge Cellar~
 Below the loose block a ladder descends into a narrow basement of rough red
 brick. A single ledge runs the length of the cellar above a black,
-bottomless gap, and the air is warm and faintly waxy. Rupees glint at the
-far end of the ledge, a hoard nobody came back for. The ladder rises back
-to the hall above.
+bottomless gap, and the air is warm and faintly waxy. Gold coins glint at
+the far end of the ledge, a hoard nobody came back for. The ladder rises
+back to the hall above.
 ~
 0 ADN 11
 D4
@@ -15698,7 +15698,7 @@ Level 8: Cellar of the Doorless Keyhole~
 From the shifted block a ladder descends into a cramped brick basement, its
 far end crossed by a single stone ledge above a black gap. A keyhole is
 carved on the far wall with no door around it, and beneath it someone has
-stacked a little hoard of rupees. The ladder leads back up to the hall
+stacked a little hoard of gold coins. The ladder leads back up to the hall
 above.
 ~
 0 ADN 11
@@ -17027,7 +17027,7 @@ leads up into the deep wood.
 0 AD 11
 D4
 ~
-burn rupee grotto~
+burn coin grotto~
 4 0 30233
 S
 #30661
@@ -17041,7 +17041,7 @@ clinks with a respectable number of coins. A stair rises back to the woods.
 0 AD 11
 D4
 ~
-bomb rupee grotto~
+bomb coin grotto~
 4 0 30202
 S
 #30662
@@ -17049,29 +17049,29 @@ The Generous Hollow~
 Below the ash of the burned bush lies a deep, dry hollow lined with oak
 leaves and smelling of acorns. Twin fires burn bright, as if whoever lives
 here likes company, and their light falls on a heavy iron-bound chest
-stuffed so full of rupees that the lid will not shut. A crude carving of a
-grinning snout decorates the wall. Earthen steps climb up into the old
+stuffed so full of gold coins that the lid will not shut. A crude carving
+of a grinning snout decorates the wall. Earthen steps climb up into the old
 forest.
 ~
 0 AD 11
 D4
 ~
-burn rupee grotto~
+burn coin grotto~
 4 0 30218
 S
 #30663
 Terrace Strongroom~
 Bombed terrace rubble spills across the threshold, and the room past it is
 cut square into the mountain like a miner's store. The pair of fires here
-burn behind a low wall of stacked stones, sheltered from the draught.
-Rupees are piled in neat columns along a shelf, counted and recounted by
+burn behind a low wall of stacked stones, sheltered from the draught. Gold
+coins are piled in neat columns along a shelf, counted and recounted by
 some broad thumb, and a gnawed bone lies beside them. The way up leads back
 to the terraces.
 ~
 0 AD 11
 D4
 ~
-bomb rupee grotto~
+bomb coin grotto~
 4 0 30299
 S
 #30664
@@ -17086,7 +17086,7 @@ bank.
 0 AD 11
 D4
 ~
-burn rupee grotto~
+burn coin grotto~
 4 0 30238
 S
 #30665
@@ -17094,14 +17094,14 @@ The Hoard Above the Start~
 A breach in the rock wall, still edged with fresh rubble, lets daylight
 into a burrow that has plainly been lived in for years. A pair of fires are
 kept fed from a stack of kindling by the door, and a lopsided stool sits
-near them. Rupees are tucked into niches pecked into the wall, a few in
+near them. Gold coins are tucked into niches pecked into the wall, a few in
 each, as though savings were hidden in many places at once. The way out
 climbs up through the broken wall.
 ~
 0 AD 11
 D4
 ~
-bomb rupee grotto~
+bomb coin grotto~
 4 0 30223
 S
 #30666
@@ -17109,14 +17109,14 @@ Ashen Thicket Burrow~
 Thick ash from the burned thicket bush lies on the top steps, and below it
 the burrow smells of smoke old and new. Two fires burn in the middle of the
 floor, their stones cracked by long use. A heap of straw forms a bed
-against one wall, and next to it a battered boot holds a sockful of rupees,
-more than pocket money but less than a fortune. Steps rise to the open
-grassland.
+against one wall, and next to it a battered boot holds a sockful of gold
+coins, more than pocket money but less than a fortune. Steps rise to the
+open grassland.
 ~
 0 AD 11
 D4
 ~
-burn rupee grotto~
+burn coin grotto~
 4 0 30288
 S
 #30667
@@ -17131,7 +17131,7 @@ Stairs climb back to the sand bar.
 0 AD 11
 D4
 ~
-burn rupee grotto~
+burn coin grotto~
 4 0 30256
 S
 #30668
@@ -17145,14 +17145,14 @@ little and keeps a little. The stair leads back up to the glade.
 0 AD 11
 D4
 ~
-burn rupee grotto~
+burn coin grotto~
 4 0 30243
 S
 #30669
 Treasury of the Shaded Grove~
 Only the ash blown down from the burned grove bush spoils this treasury,
 for the rest is kept with surprising care. Moss has been laid on the floor
-like a carpet, twin fires burn in matched stone bowls, and rupees lie
+like a carpet, twin fires burn in matched stone bowls, and gold coins lie
 heaped against the back wall in a glittering bank deep enough to wade in. A
 bone comb and a polished shield hang on pegs. Moss-covered steps rise to
 the grove.
@@ -17160,7 +17160,7 @@ the grove.
 0 AD 11
 D4
 ~
-burn rupee grotto~
+burn coin grotto~
 4 0 30227
 S
 #30670
@@ -17175,21 +17175,22 @@ shore.
 0 AD 11
 D4
 ~
-bomb rupee grotto~
+bomb coin grotto~
 4 0 30293
 S
 #30671
 Vault Beneath the Stone Soldier~
 Directly under the shoved-aside statue a cramped vault has been dug into
 the earth, its ceiling shored with planks that still bear the marks of the
-Armos sliding over them. Two fires burn in clay pots, and a stack of rupees
-stands on an upturned shield, tall enough to topple. Stone dust powders
-everything. The way out is up the stair, past the statue's empty plinth.
+Armos sliding over them. Two fires burn in clay pots, and a stack of gold
+coins stands on an upturned shield, tall enough to topple. Stone dust
+powders everything. The way out is up the stair, past the statue's empty
+plinth.
 ~
 0 AD 11
 D4
 ~
-armos rupee grotto~
+armos coin grotto~
 4 0 30277
 S
 #30672
@@ -17204,22 +17205,22 @@ Steps climb back to the grove.
 0 AD 11
 D4
 ~
-armos rupee grotto~
+armos coin grotto~
 4 0 30262
 S
 #30673
 The Crag's Secret Fortune~
 Behind the small mouth in the crag, the cave widens into a surprisingly
-grand chamber lit by two tall fires. Rupees cover the floor along the back
-wall in drifts, and more are wedged in every crack of the rock, as if the
-owner ran out of places to put them. Snapped spear shafts serve as
+grand chamber lit by two tall fires. Gold coins cover the floor along the
+back wall in drifts, and more are wedged in every crack of the rock, as if
+the owner ran out of places to put them. Snapped spear shafts serve as
 firewood, and the high wind off the eastern wilds follows you in. A short
 flight of steps leads up to the crag.
 ~
 0 AD 11
 D4
 ~
-hidden rupee grotto~
+hidden coin grotto~
 0 0 30327
 S
 #30674
@@ -17527,7 +17528,7 @@ The bomb that opened this place did not go unnoticed: the doorway is
 already fitted with a mended door of rough planks, its hinges fresh and its
 frame packed with mortar still damp to the touch. Inside, two fires burn
 and a slate on the wall tallies repairs in neat strokes. A tin cup by the
-threshold waits for twenty rupees from each newcomer. The way up leads back
+threshold waits for twenty gold from each newcomer. The way up leads back
 to the ridge.
 ~
 0 AD 11
@@ -17557,7 +17558,7 @@ A trapdoor once lay hidden beneath the bramble bush, and the fire that
 burned the bush away blistered its planks black. It has been mended
 already, with new boards nailed over the scorch. Below it a small room
 holds two fires, a pot of nails and a hammer laid neatly on a shelf, with a
-bowl waiting for the twenty-rupee charge. Steps rise through the mended
+bowl waiting for the twenty-gold charge. Steps rise through the mended
 trapdoor to the brambles.
 ~
 0 AD 11
@@ -17602,7 +17603,7 @@ The new-looking doorframe glimpsed between the bush roots holds a mended
 door, painted green to match the hedge before the fire took that part of it
 away. Ash still powders its top. Through it lies a neat square room with
 two fires, a broom, and a wooden plate nailed beside the frame where twenty
-rupees are laid down. The stair beyond the door goes up to the field.
+gold are laid down. The stair beyond the door goes up to the field.
 ~
 0 AD 11
 D4
@@ -17631,7 +17632,7 @@ The boom of the sea carries faintly through the rock into this room, whose
 blasted entrance now wears a mended door made of salvaged ship planks,
 still crusted with salt. Rubble has been stacked into a low bench along one
 wall. Two fires burn in the middle of the floor, and a scallop shell set on
-the bench holds the twenty-rupee charge of whoever came before. A stair
+the bench holds the twenty-gold charge of whoever came before. A stair
 leads up to the shore path.
 ~
 0 AD 11
@@ -17646,7 +17647,7 @@ Light that once showed between the cracks now leaks around the edges of a
 hastily mended door, its planks fitted unevenly into the gouged cliff.
 Chips of rock from the blast crunch underfoot. Two fires burn low near a
 stack of spare boards, and an upturned helmet by the fires serves as the
-collection box for the twenty rupees every visitor owes for the damage.
+collection box for the twenty gold every visitor owes for the damage.
 Stairs lead up to the cliffs.
 ~
 0 AD 11
@@ -17658,7 +17659,7 @@ S
 #30710
 The Gorge Gaming Den~
 Broken gorge rock has been kicked into a corner to make room for the game.
-Three rupee markers sit in a straight row on the swept floor, painted alike
+Three coin markers sit in a straight row on the swept floor, painted alike
 so that nothing tells them apart, and two fires throw their glow across
 them. The wind howling through the gorge outside can be heard faintly.
 Scuffs before the markers show where players have paid their ten. The way
@@ -17672,7 +17673,7 @@ bomb gamble entrance~
 S
 #30711
 The Wager Room~
-Every time a rock bounces down the gully outside, the three rupee markers
+Every time a rock bounces down the gully outside, the three coin markers
 laid on the floor of this room jump a little and settle again. The clinking
 heard through the cracks is plain now: stacks of coin are piled near the
 two fires, waiting to be won or swallowed at ten a try. A line scratched
@@ -17688,11 +17689,11 @@ S
 #30712
 Dice Rattle Cavern~
 Behind the cracked crag face, the rattle heard outside turns out to be a
-cup of dice left on a ledge, a toy beside the real game. Three rupee
-markers lie spaced evenly across the floor between two fires, each one a
-gamble that might fatten a ten-rupee stake or empty a purse. Hard-packed
-dirt before them is worn smooth by nervous feet. The stair leads up through
-the blasted rock to the crags.
+cup of dice left on a ledge, a toy beside the real game. Three coin markers
+lie spaced evenly across the floor between two fires, each one a gamble
+that might fatten a ten-gold stake or empty a purse. Hard-packed dirt
+before them is worn smooth by nervous feet. The stair leads up through the
+blasted rock to the crags.
 ~
 0 AD 11
 D4
@@ -17703,7 +17704,7 @@ S
 #30713
 Sandblown Gambling Cave~
 Dune sand keeps finding its way in through the bombed entrance, and it has
-drifted around the three rupee markers set out on the floor so that only
+drifted around the three coin markers set out on the floor so that only
 their tops show. Two fires burn behind them. The stacked coins heard from
 outside sit in towers of different heights, winnings and losses side by
 side. Ten small notches cut into the floor mark the price of a turn. A
@@ -17718,11 +17719,11 @@ S
 #30714
 The Cliffside Game Parlour~
 Morning light from the cliff shelf reaches only a little way into this cave
-before the glow of two fires takes over. Three rupee markers lie in a row
-on a strip of faded red carpet, and a battered cup sits beside a heap of
-coins where the laughter and rattling came from. The floor before the
-carpet is scuffed by countless visitors who stopped to try their luck at
-ten a turn. Stairs lead up to the shelf.
+before the glow of two fires takes over. Three coin markers lie in a row on
+a strip of faded red carpet, and a battered cup sits beside a heap of coins
+where the laughter and rattling came from. The floor before the carpet is
+scuffed by countless visitors who stopped to try their luck at ten a turn.
+Stairs lead up to the shelf.
 ~
 0 AD 11
 D4

@@ -593,7 +593,7 @@
     },
     "L1:cellar:B6": {
       "name": "Undercroft of Brick Ledges",
-      "description": "A narrow ladder drops into a long basement of brick ledges and black gaps, the kind of place one crosses sideways, a ledge at a time. The air smells of turned earth and old candle stubs, and the lowest rung of the ladder is polished bright. Somebody's hoard of rupees was tucked on a stone shelf at the far end. The ladder climbs back up to the chamber above."
+      "description": "A narrow ladder drops into a long basement of brick ledges and black gaps, the kind of place one crosses sideways, a ledge at a time. The air smells of turned earth and old candle stubs, and the lowest rung of the ladder is polished bright. Somebody's hoard of gold coins was tucked on a stone shelf at the far end. The ladder climbs back up to the chamber above."
     },
     "L2:B1": {
       "name": "Crescent Gate",
@@ -825,7 +825,7 @@
     },
     "L4:cellar:C5": {
       "name": "Seeping Red-Brick Cellar",
-      "description": "Beneath the sunken block a ladder drops into a cramped basement of red brick. Narrow ledges step across a dark floor where water gurgles in the gaps, and the low ceiling sweats with lake seepage that has left pale tide lines on every course. A little hoard of rupees has been wedged on a ledge out of the wet. The only way out is back up the ladder."
+      "description": "Beneath the sunken block a ladder drops into a cramped basement of red brick. Narrow ledges step across a dark floor where water gurgles in the gaps, and the low ceiling sweats with lake seepage that has left pale tide lines on every course. A little hoard of gold coins has been wedged on a ledge out of the wet. The only way out is back up the ladder."
     },
     "L5:C1": {
       "name": "Lizard's Gate",
@@ -909,7 +909,7 @@
     },
     "L5:D7": {
       "name": "Bomb Seller's Back Room",
-      "description": "Behind the weak stone of the west wall lies a snug room, its corners stacked with empty crates that smell of saltpetre and lamp oil. Fires crackle on either side of a worn spot by the north wall, and before them, on a squat stone block, a fat canvas bomb bag is displayed with a price of 100 rupees painted beside it. The only exit is the cracked, weak-looking section of the west wall."
+      "description": "Behind the weak stone of the west wall lies a snug room, its corners stacked with empty crates that smell of saltpetre and lamp oil. Fires crackle on either side of a worn spot by the north wall, and before them, on a squat stone block, a fat canvas bomb bag is displayed with a price of 100 gold painted beside it. The only exit is the cracked, weak-looking section of the west wall."
     },
     "L5:B8": {
       "name": "Room of the Scraped Block",
@@ -921,7 +921,7 @@
     },
     "L5:cellar:B8": {
       "name": "Whistling Brick Cellar",
-      "description": "Dry air whistles faintly through this narrow brick basement, a thin note like wind across a reed, from somewhere beneath the scraped block above. Brick ledges step across the dark floor, and a cache of rupees lies on the last of them, left by someone who meant to come back. The ladder is the only way back up."
+      "description": "Dry air whistles faintly through this narrow brick basement, a thin note like wind across a reed, from somewhere beneath the scraped block above. Brick ledges step across the dark floor, and a cache of gold coins lies on the last of them, left by someone who meant to come back. The ladder is the only way back up."
     },
     "L6:A1": {
       "name": "Scorched Antechamber",
@@ -1081,7 +1081,7 @@
     },
     "L7:A4": {
       "name": "Demon's Powder Store",
-      "description": "Small and square, this room feels strangely safe after the halls below, and the smell of black powder lingers in its corners. Low braziers crackle on either side of a polished patch of floor, and on a ledge between them sits a bulging bomb bag, a price of 100 rupees painted on the stone beneath it. Rows of iron hooks line the walls, all empty. The only way out is the iron-banded door with a keyhole in the south wall."
+      "description": "Small and square, this room feels strangely safe after the halls below, and the smell of black powder lingers in its corners. Low braziers crackle on either side of a polished patch of floor, and on a ledge between them sits a bulging bomb bag, a price of 100 gold painted on the stone beneath it. Rows of iron hooks line the walls, all empty. The only way out is the iron-banded door with a keyhole in the south wall."
     },
     "L7:B4": {
       "name": "Hall of Lingering Chill",
@@ -1161,7 +1161,7 @@
     },
     "L7:cellar:C7": {
       "name": "Waxen Ledge Cellar",
-      "description": "Below the loose block a ladder descends into a narrow basement of rough red brick. A single ledge runs the length of the cellar above a black, bottomless gap, and the air is warm and faintly waxy. Rupees glint at the far end of the ledge, a hoard nobody came back for. The ladder rises back to the hall above."
+      "description": "Below the loose block a ladder descends into a narrow basement of rough red brick. A single ledge runs the length of the cellar above a black, bottomless gap, and the air is warm and faintly waxy. Gold coins glint at the far end of the ledge, a hoard nobody came back for. The ladder rises back to the hall above."
     },
     "L8:B1": {
       "name": "Spiced Linen Crypt",
@@ -1269,7 +1269,7 @@
     },
     "L8:cellar:E7": {
       "name": "Cellar of the Doorless Keyhole",
-      "description": "From the shifted block a ladder descends into a cramped brick basement, its far end crossed by a single stone ledge above a black gap. A keyhole is carved on the far wall with no door around it, and beneath it someone has stacked a little hoard of rupees. The ladder leads back up to the hall above."
+      "description": "From the shifted block a ladder descends into a cramped brick basement, its far end crossed by a single stone ledge above a black gap. A keyhole is carved on the far wall with no door around it, and beneath it someone has stacked a little hoard of gold coins. The ladder leads back up to the hall above."
     },
     "L9:B1": {
       "name": "Stairwell Antechamber",
@@ -1555,7 +1555,7 @@
     },
     "hint:A8": {
       "name": "The Whispering Hearth",
-      "description": "This little cave at the back of the meadow is swept tidy, and a woven mat lies before the far wall where a visitor is meant to stand and pay. Flower petals blown in from outside collect in the corners. Two small fires crackle in iron dishes, and a cracked clay bowl between them holds the odd rupee left by earlier callers. Stone steps lead up into the meadow."
+      "description": "This little cave at the back of the meadow is swept tidy, and a woven mat lies before the far wall where a visitor is meant to stand and pay. Flower petals blown in from outside collect in the corners. Two small fires crackle in iron dishes, and a cracked clay bowl between them holds the odd coin left by earlier callers. Stone steps lead up into the meadow."
     },
     "hint:F8": {
       "name": "Sand-Floored Hermitage",
@@ -1579,11 +1579,11 @@
     },
     "rupee:C7": {
       "name": "The Generous Hollow",
-      "description": "Below the ash of the burned bush lies a deep, dry hollow lined with oak leaves and smelling of acorns. Twin fires burn bright, as if whoever lives here likes company, and their light falls on a heavy iron-bound chest stuffed so full of rupees that the lid will not shut. A crude carving of a grinning snout decorates the wall. Earthen steps climb up into the old forest."
+      "description": "Below the ash of the burned bush lies a deep, dry hollow lined with oak leaves and smelling of acorns. Twin fires burn bright, as if whoever lives here likes company, and their light falls on a heavy iron-bound chest stuffed so full of gold coins that the lid will not shut. A crude carving of a grinning snout decorates the wall. Earthen steps climb up into the old forest."
     },
     "rupee:D2": {
       "name": "Terrace Strongroom",
-      "description": "Bombed terrace rubble spills across the threshold, and the room past it is cut square into the mountain like a miner's store. The pair of fires here burn behind a low wall of stacked stones, sheltered from the draught. Rupees are piled in neat columns along a shelf, counted and recounted by some broad thumb, and a gnawed bone lies beside them. The way up leads back to the terraces."
+      "description": "Bombed terrace rubble spills across the threshold, and the room past it is cut square into the mountain like a miner's store. The pair of fires here burn behind a low wall of stacked stones, sheltered from the draught. Gold coins are piled in neat columns along a shelf, counted and recounted by some broad thumb, and a gnawed bone lies beside them. The way up leads back to the terraces."
     },
     "rupee:G6": {
       "name": "Reedbed Hideaway",
@@ -1591,11 +1591,11 @@
     },
     "rupee:H7": {
       "name": "The Hoard Above the Start",
-      "description": "A breach in the rock wall, still edged with fresh rubble, lets daylight into a burrow that has plainly been lived in for years. A pair of fires are kept fed from a stack of kindling by the door, and a lopsided stool sits near them. Rupees are tucked into niches pecked into the wall, a few in each, as though savings were hidden in many places at once. The way out climbs up through the broken wall."
+      "description": "A breach in the rock wall, still edged with fresh rubble, lets daylight into a burrow that has plainly been lived in for years. A pair of fires are kept fed from a stack of kindling by the door, and a lopsided stool sits near them. Gold coins are tucked into niches pecked into the wall, a few in each, as though savings were hidden in many places at once. The way out climbs up through the broken wall."
     },
     "rupee:I3": {
       "name": "Ashen Thicket Burrow",
-      "description": "Thick ash from the burned thicket bush lies on the top steps, and below it the burrow smells of smoke old and new. Two fires burn in the middle of the floor, their stones cracked by long use. A heap of straw forms a bed against one wall, and next to it a battered boot holds a sockful of rupees, more than pocket money but less than a fortune. Steps rise to the open grassland."
+      "description": "Thick ash from the burned thicket bush lies on the top steps, and below it the burrow smells of smoke old and new. Two fires burn in the middle of the floor, their stones cracked by long use. A heap of straw forms a bed against one wall, and next to it a battered boot holds a sockful of gold coins, more than pocket money but less than a fortune. Steps rise to the open grassland."
     },
     "rupee:I5": {
       "name": "Sandbar Strongbox",
@@ -1607,7 +1607,7 @@
     },
     "rupee:L7": {
       "name": "Treasury of the Shaded Grove",
-      "description": "Only the ash blown down from the burned grove bush spoils this treasury, for the rest is kept with surprising care. Moss has been laid on the floor like a carpet, twin fires burn in matched stone bowls, and rupees lie heaped against the back wall in a glittering bank deep enough to wade in. A bone comb and a polished shield hang on pegs. Moss-covered steps rise to the grove."
+      "description": "Only the ash blown down from the burned grove bush spoils this treasury, for the rest is kept with surprising care. Moss has been laid on the floor like a carpet, twin fires burn in matched stone bowls, and gold coins lie heaped against the back wall in a glittering bank deep enough to wade in. A bone comb and a polished shield hang on pegs. Moss-covered steps rise to the grove."
     },
     "rupee:N3": {
       "name": "Pebble-Strewn Coin Cellar",
@@ -1615,7 +1615,7 @@
     },
     "rupee:N4": {
       "name": "Vault Beneath the Stone Soldier",
-      "description": "Directly under the shoved-aside statue a cramped vault has been dug into the earth, its ceiling shored with planks that still bear the marks of the Armos sliding over them. Two fires burn in clay pots, and a stack of rupees stands on an upturned shield, tall enough to topple. Stone dust powders everything. The way out is up the stair, past the statue's empty plinth."
+      "description": "Directly under the shoved-aside statue a cramped vault has been dug into the earth, its ceiling shored with planks that still bear the marks of the Armos sliding over them. Two fires burn in clay pots, and a stack of gold coins stands on an upturned shield, tall enough to topple. Stone dust powders everything. The way out is up the stair, past the statue's empty plinth."
     },
     "rupee:O5": {
       "name": "Den Under the Sentinels",
@@ -1623,7 +1623,7 @@
     },
     "rupee:P1": {
       "name": "The Crag's Secret Fortune",
-      "description": "Behind the small mouth in the crag, the cave widens into a surprisingly grand chamber lit by two tall fires. Rupees cover the floor along the back wall in drifts, and more are wedged in every crack of the rock, as if the owner ran out of places to put them. Snapped spear shafts serve as firewood, and the high wind off the eastern wilds follows you in. A short flight of steps leads up to the crag."
+      "description": "Behind the small mouth in the crag, the cave widens into a surprisingly grand chamber lit by two tall fires. Gold coins cover the floor along the back wall in drifts, and more are wedged in every crack of the rock, as if the owner ran out of places to put them. Snapped spear shafts serve as firewood, and the high wind off the eastern wilds follows you in. A short flight of steps leads up to the crag."
     },
     "shop:C2": {
       "name": "The Hammer-Ringing Store",
@@ -1703,7 +1703,7 @@
     },
     "door_repair:B1": {
       "name": "The Patched Ridge Door",
-      "description": "The bomb that opened this place did not go unnoticed: the doorway is already fitted with a mended door of rough planks, its hinges fresh and its frame packed with mortar still damp to the touch. Inside, two fires burn and a slate on the wall tallies repairs in neat strokes. A tin cup by the threshold waits for twenty rupees from each newcomer. The way up leads back to the ridge."
+      "description": "The bomb that opened this place did not go unnoticed: the doorway is already fitted with a mended door of rough planks, its hinges fresh and its frame packed with mortar still damp to the touch. Inside, two fires burn and a slate on the wall tallies repairs in neat strokes. A tin cup by the threshold waits for twenty gold from each newcomer. The way up leads back to the ridge."
     },
     "door_repair:D1": {
       "name": "The Mason's Grievance",
@@ -1711,7 +1711,7 @@
     },
     "door_repair:D7": {
       "name": "The Scorched Trapdoor",
-      "description": "A trapdoor once lay hidden beneath the bramble bush, and the fire that burned the bush away blistered its planks black. It has been mended already, with new boards nailed over the scorch. Below it a small room holds two fires, a pot of nails and a hammer laid neatly on a shelf, with a bowl waiting for the twenty-rupee charge. Steps rise through the mended trapdoor to the brambles."
+      "description": "A trapdoor once lay hidden beneath the bramble bush, and the fire that burned the bush away blistered its planks black. It has been mended already, with new boards nailed over the scorch. Below it a small room holds two fires, a pot of nails and a hammer laid neatly on a shelf, with a bowl waiting for the twenty-gold charge. Steps rise through the mended trapdoor to the brambles."
     },
     "door_repair:E2": {
       "name": "The Shored-Up Scarp Room",
@@ -1723,7 +1723,7 @@
     },
     "door_repair:I7": {
       "name": "Under the Hedge Doorframe",
-      "description": "The new-looking doorframe glimpsed between the bush roots holds a mended door, painted green to match the hedge before the fire took that part of it away. Ash still powders its top. Through it lies a neat square room with two fires, a broom, and a wooden plate nailed beside the frame where twenty rupees are laid down. The stair beyond the door goes up to the field."
+      "description": "The new-looking doorframe glimpsed between the bush roots holds a mended door, painted green to match the hedge before the fire took that part of it away. Ash still powders its top. Through it lies a neat square room with two fires, a broom, and a wooden plate nailed beside the frame where twenty gold are laid down. The stair beyond the door goes up to the field."
     },
     "door_repair:K7": {
       "name": "The River-Damp Repair Shop",
@@ -1731,31 +1731,31 @@
     },
     "door_repair:N8": {
       "name": "Seaside Mended Door",
-      "description": "The boom of the sea carries faintly through the rock into this room, whose blasted entrance now wears a mended door made of salvaged ship planks, still crusted with salt. Rubble has been stacked into a low bench along one wall. Two fires burn in the middle of the floor, and a scallop shell set on the bench holds the twenty-rupee charge of whoever came before. A stair leads up to the shore path."
+      "description": "The boom of the sea carries faintly through the rock into this room, whose blasted entrance now wears a mended door made of salvaged ship planks, still crusted with salt. Rubble has been stacked into a low bench along one wall. Two fires burn in the middle of the floor, and a scallop shell set on the bench holds the twenty-gold charge of whoever came before. A stair leads up to the shore path."
     },
     "door_repair:O2": {
       "name": "Behind the Gouged Cliff",
-      "description": "Light that once showed between the cracks now leaks around the edges of a hastily mended door, its planks fitted unevenly into the gouged cliff. Chips of rock from the blast crunch underfoot. Two fires burn low near a stack of spare boards, and an upturned helmet by the fires serves as the collection box for the twenty rupees every visitor owes for the damage. Stairs lead up to the cliffs."
+      "description": "Light that once showed between the cracks now leaks around the edges of a hastily mended door, its planks fitted unevenly into the gouged cliff. Chips of rock from the blast crunch underfoot. Two fires burn low near a stack of spare boards, and an upturned helmet by the fires serves as the collection box for the twenty gold every visitor owes for the damage. Stairs lead up to the cliffs."
     },
     "gamble:A2": {
       "name": "The Gorge Gaming Den",
-      "description": "Broken gorge rock has been kicked into a corner to make room for the game. Three rupee markers sit in a straight row on the swept floor, painted alike so that nothing tells them apart, and two fires throw their glow across them. The wind howling through the gorge outside can be heard faintly. Scuffs before the markers show where players have paid their ten. The way out climbs up through the broken wall."
+      "description": "Broken gorge rock has been kicked into a corner to make room for the game. Three coin markers sit in a straight row on the swept floor, painted alike so that nothing tells them apart, and two fires throw their glow across them. The wind howling through the gorge outside can be heard faintly. Scuffs before the markers show where players have paid their ten. The way out climbs up through the broken wall."
     },
     "gamble:G2": {
       "name": "The Wager Room",
-      "description": "Every time a rock bounces down the gully outside, the three rupee markers laid on the floor of this room jump a little and settle again. The clinking heard through the cracks is plain now: stacks of coin are piled near the two fires, waiting to be won or swallowed at ten a try. A line scratched before the markers shows where a player stands to choose. Gravel from the blast covers the stair up to the gully."
+      "description": "Every time a rock bounces down the gully outside, the three coin markers laid on the floor of this room jump a little and settle again. The clinking heard through the cracks is plain now: stacks of coin are piled near the two fires, waiting to be won or swallowed at ten a try. A line scratched before the markers shows where a player stands to choose. Gravel from the blast covers the stair up to the gully."
     },
     "gamble:G8": {
       "name": "Dice Rattle Cavern",
-      "description": "Behind the cracked crag face, the rattle heard outside turns out to be a cup of dice left on a ledge, a toy beside the real game. Three rupee markers lie spaced evenly across the floor between two fires, each one a gamble that might fatten a ten-rupee stake or empty a purse. Hard-packed dirt before them is worn smooth by nervous feet. The stair leads up through the blasted rock to the crags."
+      "description": "Behind the cracked crag face, the rattle heard outside turns out to be a cup of dice left on a ledge, a toy beside the real game. Three coin markers lie spaced evenly across the floor between two fires, each one a gamble that might fatten a ten-gold stake or empty a purse. Hard-packed dirt before them is worn smooth by nervous feet. The stair leads up through the blasted rock to the crags."
     },
     "gamble:M8": {
       "name": "Sandblown Gambling Cave",
-      "description": "Dune sand keeps finding its way in through the bombed entrance, and it has drifted around the three rupee markers set out on the floor so that only their tops show. Two fires burn behind them. The stacked coins heard from outside sit in towers of different heights, winnings and losses side by side. Ten small notches cut into the floor mark the price of a turn. A sandy stair rises to the dunes."
+      "description": "Dune sand keeps finding its way in through the bombed entrance, and it has drifted around the three coin markers set out on the floor so that only their tops show. Two fires burn behind them. The stacked coins heard from outside sit in towers of different heights, winnings and losses side by side. Ten small notches cut into the floor mark the price of a turn. A sandy stair rises to the dunes."
     },
     "gamble:P2": {
       "name": "The Cliffside Game Parlour",
-      "description": "Morning light from the cliff shelf reaches only a little way into this cave before the glow of two fires takes over. Three rupee markers lie in a row on a strip of faded red carpet, and a battered cup sits beside a heap of coins where the laughter and rattling came from. The floor before the carpet is scuffed by countless visitors who stopped to try their luck at ten a turn. Stairs lead up to the shelf."
+      "description": "Morning light from the cliff shelf reaches only a little way into this cave before the glow of two fires takes over. Three coin markers lie in a row on a strip of faded red carpet, and a battered cup sits beside a heap of coins where the laughter and rattling came from. The floor before the carpet is scuffed by countless visitors who stopped to try their luck at ten a turn. Stairs lead up to the shelf."
     },
     "warp_hall:D3": {
       "name": "The Western Crossway",

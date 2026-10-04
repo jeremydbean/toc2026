@@ -567,10 +567,10 @@ void hyrule_enter_room( CHAR_DATA *ch )
         secret_set( ch, (int) i );
         add_money( ch, hyrule_money_caves[i].rupees );
         snprintf( buf, sizeof(buf),
-                  "The moblin grins, presses %d rupees into your hand and taps his snout.\n\r",
+                  "The moblin grins, presses %d gold into your hand and taps his snout.\n\r",
                   hyrule_money_caves[i].rupees );
         send_to_char( buf, ch );
-        act( "The moblin slips $n a handful of rupees.", ch, NULL, NULL, TO_ROOM );
+        act( "The moblin slips $n a handful of gold coins.", ch, NULL, NULL, TO_ROOM );
         save_char_obj( ch );
         return;
     }
@@ -926,7 +926,7 @@ bool hyrule_bomb_creature( CHAR_DATA *ch, CHAR_DATA *victim )
         return false;
     if ( hyrule_bombs_carried( ch ) <= 0 )
     {
-        send_to_char( "You have no bombs. The arrow shops sell four for 20 rupees.\n\r", ch );
+        send_to_char( "You have no bombs. The arrow shops sell four for 20 gold.\n\r", ch );
         return true;
     }
     if ( is_safe( ch, victim ) )
@@ -1065,14 +1065,14 @@ bool hyrule_shoot( CHAR_DATA *ch, OBJ_DATA *weapon, char *argument )
     {
         if ( !hyrule_carries( ch, OBJ_VNUM_HYRULE_ARROWS ) )
         {
-            send_to_char( "You have no arrows. The arrow shops sell a quiver for 80 rupees.\n\r", ch );
+            send_to_char( "You have no arrows. The arrow shops sell a quiver for 80 gold.\n\r", ch );
             return true;
         }
         if ( shot_refused( ch, victim, "Shoot" ) )
             return true;
         if ( !has_enough_gold( ch, 1 ) )
         {
-            send_to_char( "Each arrow costs a rupee, and you have none.\n\r", ch );
+            send_to_char( "Each arrow costs a gold coin, and you have none.\n\r", ch );
             return true;
         }
         add_money( ch, -1 );
@@ -1321,8 +1321,8 @@ bool hyrule_paid_to_talk( CHAR_DATA *ch, CHAR_DATA *victim, int amount )
     {
         act( "$N pushes the coins back at you. \"Pay me and I'll talk.\"", ch, NULL, victim, TO_CHAR );
         send_to_char( ch->in_room->vnum == HYRULE_HINT_ROOM_WOODS
-                      ? "She will take 10, 30 or 50 rupees.\n\r"
-                      : "She will take 5, 10 or 20 rupees.\n\r", ch );
+                      ? "She will take 10, 30 or 50 gold.\n\r"
+                      : "She will take 5, 10 or 20 gold.\n\r", ch );
         return true;
     }
 

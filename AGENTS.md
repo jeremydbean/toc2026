@@ -562,9 +562,14 @@ lives in `room_flag_word()`. `area/hyrule.are` is also the one area file
 committed with CRLF line endings; the generator writes LF, so a
 regeneration rewrites every line of it.
 
-Hyrule prices itself in rupees and says so in the object descriptions. A
-rupee is a gold coin -- the rupee piles are `ITEM_MONEY` with `value[1]`
-set to `TYPE_GOLD` -- so the generator writes `cost * COPPER_PER_GOLD`.
+Hyrule prices itself in ordinary gold and says so in the object
+descriptions ("displayed for 130 gold"). Until 2026-10-03 it said rupees;
+a rupee was always a gold coin underneath, so the owner had the word
+dropped and no amount changed. The generator writes `cost *
+COPPER_PER_GOLD`, and the coin piles are `ITEM_MONEY` with `value[1]` set
+to `TYPE_GOLD`. The manifest's `"type": "rupee"` landmarks and the prose's
+`rupee:B6` keys are data names and stay; nothing a player reads may say
+rupee, which `tests/test_hyrule_progression.py` checks.
 `tools/reprice_by_level.py` skips the file for both reasons: it is
 generated, and its prices are already calibrated against its own drops.
 

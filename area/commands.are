@@ -1781,7 +1781,7 @@ ranged attacks against players.
 
 Hyrule's own bow and boomerangs shoot at an enemy in the same room, and need
 no ARCHERY.  The bow wants a quiver of arrows carried, and each arrow costs
-a rupee; a boomerang comes back to your hand and stuns what it hits.  See
+a gold coin; a boomerang comes back to your hand and stuns what it hits.  See
 HYRULE ITEMS.
 
 Hyrule's Silver Arrow is a special exception.  A level 54 or higher character
@@ -2960,7 +2960,7 @@ Syntax: bomb <cracked surface|creature>
 Hyrule's hidden ways open only to the act the NES asked for, with the tool
 in hand; OPEN, PICK, DOORBASH and UNLOCK will not shift them.
 
-BOMB uses up one of your bombs (the arrow shops sell four for 20 rupees).
+BOMB uses up one of your bombs (the arrow shops sell four for 20 gold).
 At a cracked wall or rock it opens the way; at a creature it is a blast of
 fire, and Dodongo swallows one whole and loses half his health.
 BURN needs a lit candle in your light slot: a bush burns away to show what
@@ -2981,8 +2981,8 @@ See also: HYRULE ITEMS, HYRULE SECRETS, PUSH, SHOOT, LOOK
 Syntax: gamble left|middle|right
 
 GAMBLE plays the old man's money-making game in one of Hyrule's five
-gambling caves, as the NES played it.  You need 10 rupees.  Three rupee
-signs lie face down: one wins 20 or 50 rupees, one loses 10, and one loses
+gambling caves, as the NES played it.  You need 10 gold.  Three coin
+signs lie face down: one wins 20 or 50 gold, one loses 10, and one loses
 10 or 40, laid out at random.  Pick one and all three are turned.
 
 Over many games it pays nothing either way, a game wins at most 50 and
@@ -3012,18 +3012,18 @@ Hyrule's caves keep the NES's rules, and what pays out once pays each
 character once, for good:
 
   Money caves (14)    "It's a secret to everybody": the moblin pays 10, 30
-                      or 100 rupees as you first walk in, and never again.
-  Door repairs (9)    "Pay me for the door repair charge": 20 rupees, once.
+                      or 100 gold as you first walk in, and never again.
+  Door repairs (9)    "Pay me for the door repair charge": 20 gold, once.
   Money games (5)     GAMBLE LEFT, MIDDLE or RIGHT.  See GAMBLE.
   Take any one (4)    A Heart Container or a red potion.  Take one, and the
                       other is refused; the Heart Container is a heart.
   The dock heart      A Heart Container on a dock, reached by stepladder.
   White Sword         5 hearts.  Magical Sword: 12 hearts.  See HEARTS.
-  Hint caves          Two old women sell hints: GIVE them rupees (one takes
+  Hint caves          Two old women sell hints: GIVE them gold coins (one takes
                       10, 30 or 50, the other 5, 10 or 20).  Two old men
                       give theirs free.
   Bomb bags           The old men of Levels 5 and 7 each sell room for four
-                      more bombs, 100 rupees: BUY BAG.
+                      more bombs, 100 gold: BUY BAG.
   Potion shops        The old woman sells only to someone carrying Princess
                       Zelda's Letter, from the old man in the north-east.
   Fountains           The great fairies restore anyone not fighting.
@@ -3044,7 +3044,7 @@ What Hyrule's tools do:
                   chest, and how many rooms away it and the guardian are.
   Bombs           BOMB a cracked wall, or an enemy.  Each uses one.
   Bow + arrows    Wield the bow, carry a quiver: SHOOT an enemy in the room.
-                  Each arrow costs a rupee; no Archery needed.  An arrow
+                  Each arrow costs a gold coin; no Archery needed.  An arrow
                   kills a pols voice outright and finishes Gohma.
   Boomerangs      Wield one and SHOOT: it stuns an enemy out of the fight
                   until struck again, and kills a keese or a gel outright.

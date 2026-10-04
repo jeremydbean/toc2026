@@ -660,6 +660,16 @@ def set_item_line(body: str, vnum: int, item_line: str) -> str:
     return body[:record.start(1)] + item_line + body[record.end(1):]
 
 
+def rename_object(body: str, vnum: int, keywords: str, short: str) -> str:
+    """Rewrite a retained object's keywords and short description, the
+    first two strings of its record."""
+    record = re.compile(rf"(?m)^#{vnum}\r?\n([^\r\n]*)\r?\n([^\r\n]*)\r?\n").search(body)
+    if not record:
+        raise ValueError(f"missing object record {vnum}")
+    return (body[:record.start(1)] + f"{keywords}~" + body[record.end(1):record.start(2)]
+            + f"{short}~" + body[record.end(2):])
+
+
 def redescribe_mobile(body: str, vnum: int, long: str, description: str,
                       short: str | None = None) -> str:
     """Replace a retained mobile's room line and description.
@@ -2006,8 +2016,8 @@ def new_object_records(manifest: dict[str, Any]) -> str:
         object_record(30509, "cracked floor opening", "a cracked stone floor", "Fine cracks mark a concealed descent.", "stone", "31 UV 0", "12 0 5 1 9"),
         # The money caves pay as you walk in (hyrule.c), so no pile lies on
         # their floors; these two are the dungeon cellars' rupees.
-        object_record(30511, "thirty rupees gold money coins", "30 rupees", "Thirty rupees gleam here.", "gold", "20 0 A", "30 2 0 0 0", 1, 0, 30),
-        object_record(30512, "hundred rupees gold money coins", "100 rupees", "One hundred rupees gleam here.", "gold", "20 0 A", "100 2 0 0 0", 1, 0, 100),
+        object_record(30511, "thirty gold money coins", "30 gold coins", "Thirty gold coins gleam here.", "gold", "20 0 A", "30 2 0 0 0", 1, 0, 30),
+        object_record(30512, "hundred gold money coins", "100 gold coins", "One hundred gold coins gleam here.", "gold", "20 0 A", "100 2 0 0 0", 1, 0, 100),
         object_record(30513, "movable stone block", "a movable stone block", "Scrape marks show that this block can be pushed.", "stone", "31 UV 0", "4 0 5 1 9"),
         object_record(30514, "sleeping armos statue", "a sleeping Armos statue", "An Armos statue rests over something hidden.", "stone", "31 UV 0", "4 0 5 1 9"),
         object_record(30520, "death mountain gear chest", "Death Mountain's equipment chest", "A black-and-gold chest waits here.", "iron", "15 0 0", "250 A 0 0 0", 0, 25, 0),
@@ -2059,37 +2069,37 @@ def new_object_records(manifest: dict[str, Any]) -> str:
         object_record(30538, "raft level four crossing", "a waiting dungeon raft", "A raft waits at the water's edge.", "wood", "30 GOV 0", f"6 {level_four['entrance_vnum']} 0 0 30411"),
         object_record(30539, "raft heart crossing", "a waiting heart raft", "A raft waits to cross the open water.", "wood", "30 GOV 0", "6 30657 0 0 30411"),
         object_record(30540, "stepladder heart crossing", "a narrow water crossing", "A gap in the water can be crossed with the stepladder.", "water", "30 GOV 0", "6 30658 0 0 30412"),
-        object_record(30541, "magical shield shop", "a Magical Shield", "A Magical Shield is displayed for 130 rupees.", "steel", "9 N AJ", "5 5 5 3 0", 15, 8, 130, f"{MAGICAL_SHIELD_LORE}\nA\n17 -5"),
-        object_record(30543, "arrows arrow quiver shop", "a quiver of arrows", "A quiver of arrows is displayed for 80 rupees.", "wood", "8 N AO", "0 0 0 0 0", 8, 2, 80,
+        object_record(30541, "magical shield shop", "a Magical Shield", "A Magical Shield is displayed for 130 gold.", "steel", "9 N AJ", "5 5 5 3 0", 15, 8, 130, f"{MAGICAL_SHIELD_LORE}\nA\n17 -5"),
+        object_record(30543, "arrows arrow quiver shop", "a quiver of arrows", "A quiver of arrows is displayed for 80 gold.", "wood", "8 N AO", "0 0 0 0 0", 8, 2, 80,
                       "E\narrows arrow quiver~\nA quiver of arrows for the bow. Wield the bow and SHOOT an enemy in the\n"
-                      "room: each arrow costs a rupee, as it always did, and the quiver is\n"
+                      "room: each arrow costs a gold coin, as it always did, and the quiver is\n"
                       "never empty while you can pay. An arrow is what finishes Gohma, and\n"
                       "one is all a pols voice can stand.\n~"),
-        object_record(30544, "magical shield shop", "a Magical Shield", "A Magical Shield is displayed for 160 rupees.", "steel", "9 N AJ", "5 5 5 3 0", 15, 8, 160, f"{MAGICAL_SHIELD_LORE}\nA\n17 -5"),
-        object_record(30545, "key small shop", "a small key", "A small key is displayed for 100 rupees.", "iron", "18 N A", "0 0 0 0 0", 1, 1, 100, SMALL_KEY_LORE),
-        object_record(30546, "blue candle shop", "a Blue Candle", "A Blue Candle is displayed for 60 rupees.", "wax", "1 N AO", "0 0 999 0 0", 5, 2, 60,
+        object_record(30544, "magical shield shop", "a Magical Shield", "A Magical Shield is displayed for 160 gold.", "steel", "9 N AJ", "5 5 5 3 0", 15, 8, 160, f"{MAGICAL_SHIELD_LORE}\nA\n17 -5"),
+        object_record(30545, "key small shop", "a small key", "A small key is displayed for 100 gold.", "iron", "18 N A", "0 0 0 0 0", 1, 1, 100, SMALL_KEY_LORE),
+        object_record(30546, "blue candle shop", "a Blue Candle", "A Blue Candle is displayed for 60 gold.", "wax", "1 N AO", "0 0 999 0 0", 5, 2, 60,
                       "E\nblue candle~\nA candle that never burns down. Hold it as a light, BURN a bush with it\n"
                       "to find what the bush hides, or BURN an enemy for a lick of flame.\n~"),
-        object_record(30547, "magical shield bargain shop", "a Magical Shield", "A Magical Shield is displayed for 90 rupees.", "steel", "9 N AJ", "5 5 5 3 0", 20, 8, 90, f"{MAGICAL_SHIELD_LORE}\nA\n17 -5"),
-        object_record(30548, "food bait shop", "enemy bait", "Enemy bait is displayed for 100 rupees.", "meat", "19 N A", "H 0 0 0 0", 20, 3, 100, BAIT_LORE),
-        object_record(30549, "heart recovery shop", "a Recovery Heart", "A Recovery Heart is displayed for 10 rupees.", "crystal", "10 N AO", "10 28 0 0 0", 1, 1, 10),
-        object_record(30550, "key small bargain shop", "a small key", "A small key is displayed for 80 rupees.", "iron", "18 N A", "0 0 0 0 0", 1, 1, 80, SMALL_KEY_LORE),
-        object_record(30551, "blue ring hyrule shop", "the Blue Ring of Hyrule", "The Blue Ring of Hyrule is displayed for 250 rupees.", "gold", "9 N AB", "5 5 5 3 0", 45, 1, 250,
+        object_record(30547, "magical shield bargain shop", "a Magical Shield", "A Magical Shield is displayed for 90 gold.", "steel", "9 N AJ", "5 5 5 3 0", 20, 8, 90, f"{MAGICAL_SHIELD_LORE}\nA\n17 -5"),
+        object_record(30548, "food bait shop", "enemy bait", "Enemy bait is displayed for 100 gold.", "meat", "19 N A", "H 0 0 0 0", 20, 3, 100, BAIT_LORE),
+        object_record(30549, "heart recovery shop", "a Recovery Heart", "A Recovery Heart is displayed for 10 gold.", "crystal", "10 N AO", "10 28 0 0 0", 1, 1, 10),
+        object_record(30550, "key small bargain shop", "a small key", "A small key is displayed for 80 gold.", "iron", "18 N A", "0 0 0 0 0", 1, 1, 80, SMALL_KEY_LORE),
+        object_record(30551, "blue ring hyrule shop", "the Blue Ring of Hyrule", "The Blue Ring of Hyrule is displayed for 250 gold.", "gold", "9 N AB", "5 5 5 3 0", 45, 1, 250,
                       "E\nblue ring hyrule~\nThe Blue Ring of Hyrule, a sapphire band. Worn, it takes a tenth off\n"
                       "every blow you suffer, 10 percent. Worn with the Red Ring the two wards\n"
                       "stack, but only one of each ring may be worn.\n~\nA\n13 15"),
-        object_record(30552, "food bait bargain shop", "enemy bait", "Enemy bait is displayed for 60 rupees.", "meat", "19 N A", "H 0 0 0 0", 20, 3, 60, BAIT_LORE),
-        object_record(30553, "blue life potion medicine shop", "a blue Life Potion", "A blue Life Potion is displayed for 40 rupees.", "glass", "10 N AO", "30 28 28 0 0", 1, 2, 40,
+        object_record(30552, "food bait bargain shop", "enemy bait", "Enemy bait is displayed for 60 gold.", "meat", "19 N A", "H 0 0 0 0", 20, 3, 60, BAIT_LORE),
+        object_record(30553, "blue life potion medicine shop", "a blue Life Potion", "A blue Life Potion is displayed for 40 gold.", "glass", "10 N AO", "30 28 28 0 0", 1, 2, 40,
                       "E\nblue life potion~\nQUAFF it and it heals you twice over.\n~"),
-        object_record(30554, "red second potion medicine shop", "a red 2nd Potion", "A red 2nd Potion is displayed for 68 rupees.", "glass", "10 N AO", "30 28 28 0 0", 1, 2, 68,
+        object_record(30554, "red second potion medicine shop", "a red 2nd Potion", "A red 2nd Potion is displayed for 68 gold.", "glass", "10 N AO", "30 28 28 0 0", 1, 2, 68,
                       "E\nred second potion~\nThe 2nd Potion: QUAFF it and it heals you twice over, and what is left\n"
                       "in the bottle turns blue -- a blue Life Potion, for later.\n~"),
-        object_record(HYRULE_BOMBS_VNUM, "bombs bomb four", "four bombs", "Four round black bombs are displayed for 20 rupees.", "iron", "8 N A", "4 0 0 0 0", 1, 2, 20,
+        object_record(HYRULE_BOMBS_VNUM, "bombs bomb four", "four bombs", "Four round black bombs are displayed for 20 gold.", "iron", "8 N A", "4 0 0 0 0", 1, 2, 20,
                       "E\nbombs bomb~\nFour bombs to a purchase. BOMB a cracked wall or rock to open it, or\n"
                       "BOMB an enemy for a blast of fire; each uses one bomb. Dodongo swallows\n"
                       "one whole. Your bag carries eight, and the old men of Levels 5 and 7\n"
                       "sell room for four more each.\n~"),
-        object_record(HYRULE_BOMB_BAG_VNUM, "bag bomb bigger satchel", "a bigger bomb bag", "A bigger bomb bag hangs from a peg, priced at 100 rupees.", "leather", "8 N A", "0 0 0 0 0", 1, 1, 100,
+        object_record(HYRULE_BOMB_BAG_VNUM, "bag bomb bigger satchel", "a bigger bomb bag", "A bigger bomb bag hangs from a peg, priced at 100 gold.", "leather", "8 N A", "0 0 0 0 0", 1, 1, 100,
                       "E\nbag bomb bigger~\nBUY it and your bag carries four more bombs, for good; the old man\n"
                       "keeps the bag and stitches the room into yours.\n~"),
         object_record(HYRULE_GRAVESTONE_VNUM, "gravestone grave headstone loose", "a loose gravestone", "One gravestone sits askew on its slab, as though it could be pushed.", "stone", "31 UV 0", "4 0 5 1 9"),
@@ -2344,7 +2354,7 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
             puzzle = landmark.get("puzzle")
             cave(landmark["room_vnum"], "special", f"rupee:{guide}", [], [f"moblin:{guide}"])
             open_from_screen(room["vnum"], landmark["room_vnum"], puzzle,
-                             f"{puzzle or 'hidden'} rupee grotto")
+                             f"{puzzle or 'hidden'} coin grotto")
 
     for room in manifest["overworld"]["rooms"]:
         for landmark in room["landmarks"]:
@@ -2650,6 +2660,9 @@ def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_
     # Keys are not saved when you quit (save.c); the Magical Key is a
     # treasure the next dungeon needs, so it must be.
     object_body = set_item_line(object_body, 30416, "8 G AO")
+    # Hyrule quotes ordinary money; the burned bush's chest was a
+    # "rupee chest" in the catalog.
+    object_body = rename_object(object_body, 30457, "secret coin chest", "a secret coin chest")
     for dungeon in manifest["dungeons"]:
         object_body = replace_record(object_body, 30479 + dungeon["level"], map_object_record(dungeon, False))
         object_body = replace_record(object_body, 30488 + dungeon["level"], map_object_record(dungeon, True))

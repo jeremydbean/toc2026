@@ -647,7 +647,7 @@
       "keywords": "old man sage whitebeard",
       "short": "a white-bearded old man",
       "long": "A white-bearded old man sits between the twin fires and says, \"Eastmost peninsula is the secret.\"",
-      "description": "His beard is so long and white that he has tucked the end of it into his belt to keep it from the flames on either side of him. He speaks slowly, as though every word costs him something, and he says only the one thing. Ask what he means and he turns his face east, lifts a finger a little toward the north where the land runs out into the water, then rubs finger and thumb together like a man counting coins. Whatever waits out there, he thinks it worth a hundred rupees."
+      "description": "His beard is so long and white that he has tucked the end of it into his belt to keep it from the flames on either side of him. He speaks slowly, as though every word costs him something, and he says only the one thing. Ask what he means and he turns his face east, lifts a finger a little toward the north where the land runs out into the water, then rubs finger and thumb together like a man counting coins. Whatever waits out there, he thinks it worth a hundred gold."
     },
     "old_man:L2:D7": {
       "vnum": 30347,
@@ -689,7 +689,7 @@
       "keywords": "old man bagmaker fidgety",
       "short": "a fidgety old man",
       "long": "A fidgety old man rubs his hands together and grins, \"I bet you'd like to have more bombs.\"",
-      "description": "He cannot keep still: his fingers drum, his feet tap and his eyes keep straying to the bags heaped behind him, each stitched with a double seam. He is a bag-maker, he explains, and proud of it, and his bags carry four more bombs than the one at your hip. One costs 100 rupees, and you may BUY BAG to have it, though he will sell each traveller only one. Once he has your coin he talks happily about powder until you leave."
+      "description": "He cannot keep still: his fingers drum, his feet tap and his eyes keep straying to the bags heaped behind him, each stitched with a double seam. He is a bag-maker, he explains, and proud of it, and his bags carry four more bombs than the one at your hip. One costs 100 gold, and you may BUY BAG to have it, though he will sell each traveller only one. Once he has your coin he talks happily about powder until you leave."
     },
     "old_man:L6:C2": {
       "vnum": 30353,
@@ -717,7 +717,7 @@
       "keywords": "old man bagmaker singed",
       "short": "a powder-burned old man",
       "long": "A powder-burned old man pats a bulging sack and chuckles, \"I bet you'd like to have more bombs.\"",
-      "description": "His eyebrows are gone, his fingertips are black, and his beard has been singed into a ragged point. He sells bags for carrying bombs and tests every one of them himself, which explains a great deal. This bag holds four more bombs than whatever you carry now, even if you bought one before from another of his trade. It costs 100 rupees: BUY BAG and the money is his. He sells only one to each traveller and waves the rest away."
+      "description": "His eyebrows are gone, his fingertips are black, and his beard has been singed into a ragged point. He sells bags for carrying bombs and tests every one of them himself, which explains a great deal. This bag holds four more bombs than whatever you carry now, even if you bought one before from another of his trade. It costs 100 gold: BUY BAG and the money is his. He sells only one to each traveller and waves the rest away."
     },
     "old_man:L8:A5": {
       "vnum": 30357,
@@ -822,7 +822,7 @@
       "keywords": "old woman crone sharp",
       "short": "a sharp-eyed old woman",
       "long": "A sharp-eyed old woman holds out a wrinkled palm and says, \"Pay me and I'll talk.\"",
-      "description": "Her eyes are small and black and miss nothing, least of all the purse at your belt. She knows things, she says, and knowledge is a trade like any other. GIVE her rupees and she will talk accordingly. 10 rupees is an insult, and she will tell you so. 30 buys the way through the Lost Woods, where travellers walk in circles for days. 50, she admits with a cackle, buys nothing but her opinion of how rich you must be."
+      "description": "Her eyes are small and black and miss nothing, least of all the purse at your belt. She knows things, she says, and knowledge is a trade like any other. GIVE her gold coins and she will talk accordingly. 10 gold is an insult, and she will tell you so. 30 buys the way through the Lost Woods, where travellers walk in circles for days. 50, she admits with a cackle, buys nothing but her opinion of how rich you must be."
     },
     "hint:F8": {
       "vnum": 30372,
@@ -836,7 +836,7 @@
       "keywords": "old woman crone misty",
       "short": "a mist-soaked old woman",
       "long": "A mist-soaked old woman wrings out her shawl and grumbles, \"Pay me and I'll talk.\"",
-      "description": "The roar of the falls fills her little room behind the curtain of water, and her shawl is always damp with spray. She grumbles about the cold, about her knees and about travellers who expect something for nothing. GIVE her rupees if you want her to talk: 5 or 10 will not open her mouth, but 20 buys the way up through the Lost Hills, which turn back anyone who climbs them blind. She counts every coin twice."
+      "description": "The roar of the falls fills her little room behind the curtain of water, and her shawl is always damp with spray. She grumbles about the cold, about her knees and about travellers who expect something for nothing. GIVE her gold coins if you want her to talk: 5 or 10 will not open her mouth, but 20 buys the way up through the Lost Hills, which turn back anyone who climbs them blind. She counts every coin twice."
     },
     "hint:M2": {
       "vnum": 30374,
@@ -850,329 +850,329 @@
       "keywords": "moblin grinning",
       "short": "a grinning moblin",
       "long": "A grinning moblin grins with all his crooked teeth and says, \"It's a secret to everybody.\"",
-      "description": "He grins at everyone who walks in, a wide, crooked, yellow grin that would be frightening on any other moblin. He likes visitors, he says, and keeps a little pile of rupees for them under a loose stone by the door. The first time you come he presses 10 of them into your hand without being asked. Come again and he only shrugs, still grinning, and points out that a secret shared twice is no secret at all."
+      "description": "He grins at everyone who walks in, a wide, crooked, yellow grin that would be frightening on any other moblin. He likes visitors, he says, and keeps a little pile of gold coins for them under a loose stone by the door. The first time you come he presses 10 of them into your hand without being asked. Come again and he only shrugs, still grinning, and points out that a secret shared twice is no secret at all."
     },
     "moblin:B8": {
       "vnum": 30376,
       "keywords": "moblin potbelly",
       "short": "a pot-bellied moblin",
       "long": "A pot-bellied moblin pats his round belly and chuckles, \"It's a secret to everybody.\"",
-      "description": "His belly hangs over his belt and he pats it fondly as he talks, as though it were a favourite dog. He used to raid caravans, he admits, until he grew too fat to chase them, and now he gives some of the loot back to make amends. As you come in for the first time he counts 30 rupees into your palm. After that he only shrugs, pats his belly again, and asks whether you have brought him anything to eat."
+      "description": "His belly hangs over his belt and he pats it fondly as he talks, as though it were a favourite dog. He used to raid caravans, he admits, until he grew too fat to chase them, and now he gives some of the loot back to make amends. As you come in for the first time he counts 30 gold into your palm. After that he only shrugs, pats his belly again, and asks whether you have brought him anything to eat."
     },
     "moblin:C7": {
       "vnum": 30377,
       "keywords": "moblin tusk",
       "short": "a one-tusked moblin",
       "long": "A one-tusked moblin flicks his broken tusk and confides, \"It's a secret to everybody.\"",
-      "description": "One of his tusks is snapped off near the root, and he flicks the stump with a claw whenever he is thinking. He is the richest moblin in the west, he tells you proudly, and can afford to be generous: on your first visit he hands over 100 rupees in a single heavy bag. He will not do it twice. On any later visit he shrugs his huge shoulders and goes back to polishing the one good tusk he has left."
+      "description": "One of his tusks is snapped off near the root, and he flicks the stump with a claw whenever he is thinking. He is the richest moblin in the west, he tells you proudly, and can afford to be generous: on your first visit he hands over 100 gold in a single heavy bag. He will not do it twice. On any later visit he shrugs his huge shoulders and goes back to polishing the one good tusk he has left."
     },
     "moblin:D2": {
       "vnum": 30378,
       "keywords": "moblin sleepy",
       "short": "a sleepy moblin",
       "long": "A sleepy moblin yawns hugely and mumbles, \"It's a secret to everybody.\"",
-      "description": "He is always half asleep, slumped against the wall of his cave with his spear across his knees. Footsteps wake him, and the first time you walk in he fumbles in a sack and drops 30 rupees into your hand before he has quite opened his eyes. Visit again and he only shrugs, yawns and settles back down. He seems to think the whole arrangement is a dream he keeps having, and is not sure he minds."
+      "description": "He is always half asleep, slumped against the wall of his cave with his spear across his knees. Footsteps wake him, and the first time you walk in he fumbles in a sack and drops 30 gold into your hand before he has quite opened his eyes. Visit again and he only shrugs, yawns and settles back down. He seems to think the whole arrangement is a dream he keeps having, and is not sure he minds."
     },
     "moblin:G6": {
       "vnum": 30379,
       "keywords": "moblin youngster",
       "short": "a young moblin",
       "long": "A young moblin bounces on his heels and squeaks, \"It's a secret to everybody.\"",
-      "description": "He is young for a moblin, barely tusked, and so excited to have company that he bounces on his heels. His elders told him to guard the secret of this cave and he is very proud of the job. He gives every newcomer 10 rupees from a small clay pot, carefully, as if each coin were a great treasure. On a second visit he shrugs and looks embarrassed, because the elders said once, and he takes rules seriously."
+      "description": "He is young for a moblin, barely tusked, and so excited to have company that he bounces on his heels. His elders told him to guard the secret of this cave and he is very proud of the job. He gives every newcomer 10 gold from a small clay pot, carefully, as if each coin were a great treasure. On a second visit he shrugs and looks embarrassed, because the elders said once, and he takes rules seriously."
     },
     "moblin:H7": {
       "vnum": 30380,
       "keywords": "moblin grizzled",
       "short": "a grizzled moblin",
       "long": "A grizzled moblin scratches his grey snout and growls, \"It's a secret to everybody.\"",
-      "description": "His snout is grey and his ears are notched from old fights, and he has the gravel voice of a soldier long retired. He has seen enough war, he growls, and these days he pays travellers instead of robbing them. On your first visit he grunts and tosses you 30 rupees without looking up from his whittling. Walk in again and you get a shrug and a hard look, and nothing else at all."
+      "description": "His snout is grey and his ears are notched from old fights, and he has the gravel voice of a soldier long retired. He has seen enough war, he growls, and these days he pays travellers instead of robbing them. On your first visit he grunts and tosses you 30 gold without looking up from his whittling. Walk in again and you get a shrug and a hard look, and nothing else at all."
     },
     "moblin:I3": {
       "vnum": 30381,
       "keywords": "moblin bashful",
       "short": "a bashful moblin",
       "long": "A bashful moblin hides behind his spear and murmurs, \"It's a secret to everybody.\"",
-      "description": "He is shy, painfully so, and tries to hide his great bulk behind a spear far too thin for the purpose. He mumbles at the floor rather than at you, but the first time you come in he holds out a fistful of 30 rupees at arm's length, eyes squeezed shut, as if afraid you might bite. Come back and he only shrugs, blushes a deeper shade of brown and shuffles further into the shadows."
+      "description": "He is shy, painfully so, and tries to hide his great bulk behind a spear far too thin for the purpose. He mumbles at the floor rather than at you, but the first time you come in he holds out a fistful of 30 gold at arm's length, eyes squeezed shut, as if afraid you might bite. Come back and he only shrugs, blushes a deeper shade of brown and shuffles further into the shadows."
     },
     "moblin:I5": {
       "vnum": 30382,
       "keywords": "moblin nervous",
       "short": "a nervous moblin",
       "long": "A nervous moblin glances at the cave mouth and breathes, \"It's a secret to everybody.\"",
-      "description": "He keeps looking past you at the cave mouth, as though expecting someone worse. The other moblins would be furious, he frets, if they knew he was handing out their money. Still, on your first visit he hurries 30 rupees into your hand and begs you to tell nobody. When you return he shrugs helplessly, wringing his paws, and swears there is nothing left to give and nobody must ever know he gave it."
+      "description": "He keeps looking past you at the cave mouth, as though expecting someone worse. The other moblins would be furious, he frets, if they knew he was handing out their money. Still, on your first visit he hurries 30 gold into your hand and begs you to tell nobody. When you return he shrugs helplessly, wringing his paws, and swears there is nothing left to give and nobody must ever know he gave it."
     },
     "moblin:L6": {
       "vnum": 30383,
       "keywords": "moblin giggler",
       "short": "a giggling moblin",
       "long": "A giggling moblin giggles behind a hairy paw and says, \"It's a secret to everybody.\"",
-      "description": "Everything delights him, and he giggles behind a hairy paw at the very idea of a secret, at his cave, at you. He keeps a jar of rupees for guests and, on your first visit, shakes 10 of them into your hand, giggling all the while. On a later visit he only shrugs and giggles harder, because the joke, as far as he can tell, is that you thought there would be more."
+      "description": "Everything delights him, and he giggles behind a hairy paw at the very idea of a secret, at his cave, at you. He keeps a jar of gold coins for guests and, on your first visit, shakes 10 of them into your hand, giggling all the while. On a later visit he only shrugs and giggles harder, because the joke, as far as he can tell, is that you thought there would be more."
     },
     "moblin:L7": {
       "vnum": 30384,
       "keywords": "moblin earring",
       "short": "a moblin wearing a gold earring",
       "long": "A moblin wearing a gold earring waves a lordly paw and says, \"It's a secret to everybody.\"",
-      "description": "A gold ring glints in one torn ear, and he carries himself like a lord among moblins, which perhaps he is. He has more rupees than he knows what to do with, he says airily, and gives 100 of them to each newcomer the moment they step inside. A second visit earns a lordly shrug and nothing more: generosity, he explains, is only charming the first time. He fingers the earring as he says it."
+      "description": "A gold ring glints in one torn ear, and he carries himself like a lord among moblins, which perhaps he is. He has more gold coins than he knows what to do with, he says airily, and gives 100 of them to each newcomer the moment they step inside. A second visit earns a lordly shrug and nothing more: generosity, he explains, is only charming the first time. He fingers the earring as he says it."
     },
     "moblin:N3": {
       "vnum": 30385,
       "keywords": "moblin skinny",
       "short": "a skinny moblin",
       "long": "A skinny moblin pokes his head around a rock and croaks, \"It's a secret to everybody.\"",
-      "description": "He is all ribs and elbows, the thinnest moblin you have ever seen, and his voice cracks like a frog's. He spends almost nothing, he croaks, and so he can spare 30 rupees for every visitor, once, as they come through the door. After that he shrugs his bony shoulders. He would give more, he says, but then he would have to eat less, and there is not much less left for him to eat."
+      "description": "He is all ribs and elbows, the thinnest moblin you have ever seen, and his voice cracks like a frog's. He spends almost nothing, he croaks, and so he can spare 30 gold for every visitor, once, as they come through the door. After that he shrugs his bony shoulders. He would give more, he says, but then he would have to eat less, and there is not much less left for him to eat."
     },
     "moblin:N4": {
       "vnum": 30386,
       "keywords": "moblin jowly",
       "short": "a jowly moblin",
       "long": "A jowly moblin wobbles his jowls and rumbles, \"It's a secret to everybody.\"",
-      "description": "His jowls hang in great folds and wobble when he speaks, which he does slowly and with dignity. He keeps a neat little cave, swept clean, with his rupees stacked in tidy columns on a shelf. On your first visit he lifts down a column and gives you 30 rupees, counted aloud. On any later visit he shrugs, jowls swinging, and points to the empty space on the shelf as though that settles the matter."
+      "description": "His jowls hang in great folds and wobble when he speaks, which he does slowly and with dignity. He keeps a neat little cave, swept clean, with his gold coins stacked in tidy columns on a shelf. On your first visit he lifts down a column and gives you 30 gold, counted aloud. On any later visit he shrugs, jowls swinging, and points to the empty space on the shelf as though that settles the matter."
     },
     "moblin:O5": {
       "vnum": 30387,
       "keywords": "moblin twitchy",
       "short": "a twitchy-eared moblin",
       "long": "A twitchy-eared moblin flicks one long ear and grunts, \"It's a secret to everybody.\"",
-      "description": "One of his long ears twitches constantly, as if hearing things nobody else can, and he cocks his head at every drip from the ceiling. He is not rich, he says, and the 10 rupees he hands each new visitor are all he can spare. Still, he gives them gladly, the first time. If you come back he shrugs, ear twitching, and listens past you for the next traveller who has not heard the secret yet."
+      "description": "One of his long ears twitches constantly, as if hearing things nobody else can, and he cocks his head at every drip from the ceiling. He is not rich, he says, and the 10 gold coins he hands each new visitor are all he can spare. Still, he gives them gladly, the first time. If you come back he shrugs, ear twitching, and listens past you for the next traveller who has not heard the secret yet."
     },
     "moblin:P1": {
       "vnum": 30388,
       "keywords": "moblin helmet soldier",
       "short": "a moblin in a battered helmet",
       "long": "A moblin in a battered helmet snaps a salute and barks, \"It's a secret to everybody.\"",
-      "description": "He wears an old soldier's helmet, dented and far too small, and salutes everyone who enters. He guarded a royal treasury once, he barks, before the war, and some of it came with him when he deserted. The first time you walk in he presents you with 100 rupees as if pinning on a medal. Return and he salutes again, shrugs, and stands to attention over an empty strongbox."
+      "description": "He wears an old soldier's helmet, dented and far too small, and salutes everyone who enters. He guarded a royal treasury once, he barks, before the war, and some of it came with him when he deserted. The first time you walk in he presents you with 100 gold as if pinning on a medal. Return and he salutes again, shrugs, and stands to attention over an empty strongbox."
     },
     "merchant:C2": {
       "vnum": 30389,
       "keywords": "merchant shopkeeper gaptooth",
       "short": "a gap-toothed merchant",
       "long": "A gap-toothed merchant whistles through the gap in his teeth and calls, \"Buy somethin' will ya!\"",
-      "description": "He whistles through the gap in his front teeth when he talks, and he talks a great deal. His goods sit on a rough cloth in the firelight: a Magical Shield at 90 rupees, Bait at 100 and a Recovery Heart at 10. The shield, he insists, will turn a wizard's spell, and the bait will draw any hungry beast away from the path. LIST shows his wares and BUY takes them. He does not haggle, and is offended if you try."
+      "description": "He whistles through the gap in his front teeth when he talks, and he talks a great deal. His goods sit on a rough cloth in the firelight: a Magical Shield at 90 gold, Bait at 100 and a Recovery Heart at 10. The shield, he insists, will turn a wizard's spell, and the bait will draw any hungry beast away from the path. LIST shows his wares and BUY takes them. He does not haggle, and is offended if you try."
     },
     "merchant:E4": {
       "vnum": 30390,
       "keywords": "merchant shopkeeper lanky",
       "short": "a lanky merchant",
       "long": "A lanky merchant spreads his long arms over his wares and says, \"Buy somethin' will ya!\"",
-      "description": "He is so tall that he has to stoop under the roof of his cave, and his long arms reach every corner of the shop without his moving his feet. His pride is a ring of blue stone, the Blue Ring, at 250 rupees: wear it, he swears, and every blow you take hurts less. Beside it lie a small Key at 80 and Bait at 60. LIST to see them, BUY to take them home, and do not touch the ring until you have paid."
+      "description": "He is so tall that he has to stoop under the roof of his cave, and his long arms reach every corner of the shop without his moving his feet. His pride is a ring of blue stone, the Blue Ring, at 250 gold: wear it, he swears, and every blow you take hurts less. Beside it lie a small Key at 80 and Bait at 60. LIST to see them, BUY to take them home, and do not touch the ring until you have paid."
     },
     "merchant:E5": {
       "vnum": 30391,
       "keywords": "merchant shopkeeper redcap",
       "short": "a red-capped merchant",
       "long": "A red-capped merchant tips his red cap and sings out, \"Buy somethin' will ya!\"",
-      "description": "A red cap sits jauntily on his head and he tips it to every customer. He sells the tools of a fighting trade: a Magical Shield for 130 rupees, four Bombs for 20 and a quiver of Arrows for 80. Arrows are worthless without a bow, he warns, honest to a fault, but bombs are never wasted. LIST his stock and BUY what you need. He hums a marching song while you decide, slightly off the beat."
+      "description": "A red cap sits jauntily on his head and he tips it to every customer. He sells the tools of a fighting trade: a Magical Shield for 130 gold, four Bombs for 20 and a quiver of Arrows for 80. Arrows are worthless without a bow, he warns, honest to a fault, but bombs are never wasted. LIST his stock and BUY what you need. He hums a marching song while you decide, slightly off the beat."
     },
     "merchant:F3": {
       "vnum": 30392,
       "keywords": "merchant shopkeeper sourface",
       "short": "a sour-faced merchant",
       "long": "A sour-faced merchant frowns over his counter and mutters, \"Buy somethin' will ya!\"",
-      "description": "He has the face of a man who has just tasted milk gone off, and he wears it at all times. Customers, he grumbles, always want discounts, and he gives none. A Magical Shield is 130 rupees, four Bombs are 20 and a quiver of Arrows is 80, and that is that. LIST if you must, BUY if you will. For all his scowling he wraps each purchase with great care, and wishes you safe travels under his breath."
+      "description": "He has the face of a man who has just tasted milk gone off, and he wears it at all times. Customers, he grumbles, always want discounts, and he gives none. A Magical Shield is 130 gold, four Bombs are 20 and a quiver of Arrows is 80, and that is that. LIST if you must, BUY if you will. For all his scowling he wraps each purchase with great care, and wishes you safe travels under his breath."
     },
     "merchant:G3": {
       "vnum": 30393,
       "keywords": "merchant shopkeeper stammerer",
       "short": "a stammering merchant",
       "long": "A stammering merchant clears his throat twice and stammers, \"Buy somethin' will ya!\"",
-      "description": "He stammers badly, and so his patter, which he has clearly practised, comes out in fits and starts. He sells a Magical Shield for 90 rupees, Bait for 100 and a Recovery Heart for 10, and he has a speech about each that he never manages to finish. LIST shows them anyway, and BUY ends the speech mercifully for you both. He thanks every customer three times, getting a little further each time."
+      "description": "He stammers badly, and so his patter, which he has clearly practised, comes out in fits and starts. He sells a Magical Shield for 90 gold, Bait for 100 and a Recovery Heart for 10, and he has a speech about each that he never manages to finish. LIST shows them anyway, and BUY ends the speech mercifully for you both. He thanks every customer three times, getting a little further each time."
     },
     "merchant:G5": {
       "vnum": 30394,
       "keywords": "merchant shopkeeper plump",
       "short": "a plump merchant",
       "long": "A plump merchant rubs his round hands together and beams, \"Buy somethin' will ya!\"",
-      "description": "Plump and pink and very pleased with himself, he greets you like a long-lost nephew. His cave is the cosiest shop in Hyrule, he claims, and his prices the kindest: a Magical Shield at 90 rupees, Bait at 100 and a Recovery Heart at only 10. He recommends the heart warmly to anyone who looks tired, which in his opinion is everyone. LIST his wares, BUY what you like, and stay for a chat if you can."
+      "description": "Plump and pink and very pleased with himself, he greets you like a long-lost nephew. His cave is the cosiest shop in Hyrule, he claims, and his prices the kindest: a Magical Shield at 90 gold, Bait at 100 and a Recovery Heart at only 10. He recommends the heart warmly to anyone who looks tired, which in his opinion is everyone. LIST his wares, BUY what you like, and stay for a chat if you can."
     },
     "merchant:G7": {
       "vnum": 30395,
       "keywords": "merchant shopkeeper baldpate",
       "short": "a bald merchant",
       "long": "A bald merchant polishes his bald head with a rag and calls, \"Buy somethin' will ya!\"",
-      "description": "His bald head shines in the firelight, and he polishes it with the same rag he uses on his wares. He is proudest of his Blue Candle, 60 rupees, which lights a dark room and burns back the bushes that hide things. He also keeps a Magical Shield at 160 and a small Key at 100, for the doors below that will not open otherwise. LIST to see them and BUY to carry them off. He polishes his head again when you pay."
+      "description": "His bald head shines in the firelight, and he polishes it with the same rag he uses on his wares. He is proudest of his Blue Candle, 60 gold, which lights a dark room and burns back the bushes that hide things. He also keeps a Magical Shield at 160 and a small Key at 100, for the doors below that will not open otherwise. LIST to see them and BUY to carry them off. He polishes his head again when you pay."
     },
     "merchant:K5": {
       "vnum": 30396,
       "keywords": "merchant shopkeeper jovial",
       "short": "a jovial merchant",
       "long": "A jovial merchant laughs heartily and bellows, \"Buy somethin' will ya!\"",
-      "description": "He laughs at his own jokes before he reaches the end of them, and he has a great many jokes, most of them about moblins. Between them he sells a Magical Shield for 130 rupees, four Bombs for 20 and a quiver of Arrows for 80, and he will tell you a bomb is the best joke of all if you set it against the right wall. LIST to see his goods and BUY to take them. He is still laughing as you leave."
+      "description": "He laughs at his own jokes before he reaches the end of them, and he has a great many jokes, most of them about moblins. Between them he sells a Magical Shield for 130 gold, four Bombs for 20 and a quiver of Arrows for 80, and he will tell you a bomb is the best joke of all if you set it against the right wall. LIST to see his goods and BUY to take them. He is still laughing as you leave."
     },
     "merchant:M1": {
       "vnum": 30397,
       "keywords": "merchant shopkeeper sharpnose",
       "short": "a sharp-nosed merchant",
       "long": "A sharp-nosed merchant sniffs in the direction of your purse and announces, \"Buy somethin' will ya!\"",
-      "description": "He has a long, sharp nose and uses it to sniff out how much money a customer is carrying, or so he claims. His shop sits high in the hills, and he charges for the climb: a Magical Shield at 160 rupees, a small Key at 100 and a Blue Candle at 60. The candle, he says, sees off the dark and the brambles alike. LIST shows his stock and BUY puts an end to the sniffing. He knows the price of everything."
+      "description": "He has a long, sharp nose and uses it to sniff out how much money a customer is carrying, or so he claims. His shop sits high in the hills, and he charges for the climb: a Magical Shield at 160 gold, a small Key at 100 and a Blue Candle at 60. The candle, he says, sees off the dark and the brambles alike. LIST shows his stock and BUY puts an end to the sniffing. He knows the price of everything."
     },
     "merchant:N5": {
       "vnum": 30398,
       "keywords": "merchant shopkeeper dozy",
       "short": "a dozing merchant",
       "long": "A dozing merchant jerks awake behind his wares and blurts, \"Buy somethin' will ya!\"",
-      "description": "He dozes on a stool between customers and wakes with a start whenever someone comes in, blinking and patting his pockets. Once he has found his bearings he is helpful enough. A Magical Shield costs 90 rupees, Bait 100 and a Recovery Heart 10, and he lays them out in a neat row as if for inspection. LIST to see them and BUY to take one. Take too long deciding and he falls asleep again mid-sentence."
+      "description": "He dozes on a stool between customers and wakes with a start whenever someone comes in, blinking and patting his pockets. Once he has found his bearings he is helpful enough. A Magical Shield costs 90 gold, Bait 100 and a Recovery Heart 10, and he lays them out in a neat row as if for inspection. LIST to see them and BUY to take one. Take too long deciding and he falls asleep again mid-sentence."
     },
     "merchant:O6": {
       "vnum": 30399,
       "keywords": "merchant shopkeeper patched",
       "short": "a merchant in a patched cloak",
       "long": "A merchant in a patched cloak throws back his patched cloak and urges, \"Buy somethin' will ya!\"",
-      "description": "His cloak is more patch than cloth, each patch a different colour, and he swears every one marks a deal he made. He has wandered the whole of Hyrule and settled here in the east because, he says, the customers are richer and the monsters slower. He sells a Magical Shield at 160 rupees, a small Key at 100 and a Blue Candle at 60. LIST his stock, BUY what suits you, and ask about any patch you like."
+      "description": "His cloak is more patch than cloth, each patch a different colour, and he swears every one marks a deal he made. He has wandered the whole of Hyrule and settled here in the east because, he says, the customers are richer and the monsters slower. He sells a Magical Shield at 160 gold, a small Key at 100 and a Blue Candle at 60. LIST his stock, BUY what suits you, and ask about any patch you like."
     },
     "merchant:P7": {
       "vnum": 30400,
       "keywords": "merchant shopkeeper moustache",
       "short": "a moustached merchant",
       "long": "A moustached merchant twirls a waxed moustache and declares, \"Buy somethin' will ya!\"",
-      "description": "His moustache is waxed into two fine points, and he twirls one whenever he names a price. His shop, at the far south-eastern edge of the land, is the last before a long walk, and he stocks for it: a Magical Shield at 130 rupees, four Bombs at 20 and a quiver of Arrows at 80. LIST and BUY are all you need. He compliments every purchase as though you had chosen it with exquisite taste."
+      "description": "His moustache is waxed into two fine points, and he twirls one whenever he names a price. His shop, at the far south-eastern edge of the land, is the last before a long walk, and he stocks for it: a Magical Shield at 130 gold, four Bombs at 20 and a quiver of Arrows at 80. LIST and BUY are all you need. He compliments every purchase as though you had chosen it with exquisite taste."
     },
     "potion:D4": {
       "vnum": 30401,
       "keywords": "old woman potion seller hunched",
       "short": "a hunched old woman",
       "long": "A hunched old woman peers up from her cauldron and croaks, \"Buy medicine before you go.\"",
-      "description": "She is bent nearly double over a bubbling cauldron, and the steam has turned her grey hair to frizz. Her eyes go straight to your belt as you come in, looking for a royal seal: she sells to nobody who does not carry Princess Zelda's Letter. Show her that and she will part with a blue Life Potion for 40 rupees or a red Second Potion for 68. LIST and BUY, and mind the cauldron on your way out."
+      "description": "She is bent nearly double over a bubbling cauldron, and the steam has turned her grey hair to frizz. Her eyes go straight to your belt as you come in, looking for a royal seal: she sells to nobody who does not carry Princess Zelda's Letter. Show her that and she will part with a blue Life Potion for 40 gold or a red Second Potion for 68. LIST and BUY, and mind the cauldron on your way out."
     },
     "potion:E1": {
       "vnum": 30402,
       "keywords": "old woman potion seller rosy",
       "short": "a rosy-cheeked old woman",
       "long": "A rosy-cheeked old woman smiles warmly and reminds you, \"Buy medicine before you go.\"",
-      "description": "Her cheeks are round and rosy and she fusses over every visitor like a grandmother, clucking at your scrapes and bruises. She is strict about one thing, though: without Princess Zelda's Letter on you she will not sell a drop, royal orders. With it, a blue Life Potion is 40 rupees and a red Second Potion is 68, and she tells you to drink the blue one before you feel faint, not after. LIST and BUY."
+      "description": "Her cheeks are round and rosy and she fusses over every visitor like a grandmother, clucking at your scrapes and bruises. She is strict about one thing, though: without Princess Zelda's Letter on you she will not sell a drop, royal orders. With it, a blue Life Potion is 40 gold and a red Second Potion is 68, and she tells you to drink the blue one before you feel faint, not after. LIST and BUY."
     },
     "potion:E7": {
       "vnum": 30403,
       "keywords": "old woman potion seller herbalist",
       "short": "an old woman smelling of herbs",
       "long": "An old woman smelling of herbs crushes a leaf between her fingers and says, \"Buy medicine before you go.\"",
-      "description": "Bunches of herbs hang drying from every inch of her ceiling, and she smells of mint and woodsmoke and something bitter underneath. She has no patience for questions until she has seen Princess Zelda's Letter, which she reads twice, lips moving. Then she will sell you a blue Life Potion for 40 rupees or a red Second Potion for 68, brewed that week. LIST her bottles and BUY. She will not tell you the recipe."
+      "description": "Bunches of herbs hang drying from every inch of her ceiling, and she smells of mint and woodsmoke and something bitter underneath. She has no patience for questions until she has seen Princess Zelda's Letter, which she reads twice, lips moving. Then she will sell you a blue Life Potion for 40 gold or a red Second Potion for 68, brewed that week. LIST her bottles and BUY. She will not tell you the recipe."
     },
     "potion:H3": {
       "vnum": 30404,
       "keywords": "old woman potion seller spectacled",
       "short": "a spectacled old woman",
       "long": "A spectacled old woman pushes up her spectacles and advises, \"Buy medicine before you go.\"",
-      "description": "Thick round spectacles magnify her eyes to twice their size, and she pushes them up her nose every few words. She examines Princess Zelda's Letter very closely indeed before she will trade, holding it up to the fire to check the seal; without it she sells you nothing. With it she offers a blue Life Potion at 40 rupees and a red Second Potion at 68. LIST and BUY, and she will label your bottle in a tiny, careful hand."
+      "description": "Thick round spectacles magnify her eyes to twice their size, and she pushes them up her nose every few words. She examines Princess Zelda's Letter very closely indeed before she will trade, holding it up to the fire to check the seal; without it she sells you nothing. With it she offers a blue Life Potion at 40 gold and a red Second Potion at 68. LIST and BUY, and she will label your bottle in a tiny, careful hand."
     },
     "potion:I8": {
       "vnum": 30405,
       "keywords": "old woman potion seller hummer",
       "short": "a humming old woman",
       "long": "A humming old woman stops humming long enough to say, \"Buy medicine before you go.\"",
-      "description": "She hums constantly, the same three notes over and over, while she stirs and pours and corks. The humming stops only when she asks to see Princess Zelda's Letter, for she trades with nobody who lacks it. Shown the seal, she brightens and offers a blue Life Potion for 40 rupees or a red Second Potion for 68, and goes back to humming. LIST to see them, BUY to take one. The tune is stuck in your head for hours."
+      "description": "She hums constantly, the same three notes over and over, while she stirs and pours and corks. The humming stops only when she asks to see Princess Zelda's Letter, for she trades with nobody who lacks it. Shown the seal, she brightens and offers a blue Life Potion for 40 gold or a red Second Potion for 68, and goes back to humming. LIST to see them, BUY to take one. The tune is stuck in your head for hours."
     },
     "potion:L5": {
       "vnum": 30406,
       "keywords": "old woman potion seller tiny",
       "short": "a tiny old woman",
       "long": "A tiny old woman stands on a crate to be seen and squeaks, \"Buy medicine before you go.\"",
-      "description": "She is so small that she keeps a crate behind the counter to stand on, and she climbs onto it with great dignity whenever a customer arrives. She trades only with those who carry Princess Zelda's Letter; she squints at the seal, nods once, and then sells a blue Life Potion for 40 rupees or a red Second Potion for 68. LIST and BUY. She is fiercely proud that her potions are the strongest by the cupful, if not by the bottle."
+      "description": "She is so small that she keeps a crate behind the counter to stand on, and she climbs onto it with great dignity whenever a customer arrives. She trades only with those who carry Princess Zelda's Letter; she squints at the seal, nods once, and then sells a blue Life Potion for 40 gold or a red Second Potion for 68. LIST and BUY. She is fiercely proud that her potions are the strongest by the cupful, if not by the bottle."
     },
     "potion:N1": {
       "vnum": 30407,
       "keywords": "old woman potion seller brisk",
       "short": "a brisk old woman",
       "long": "A brisk old woman taps the counter impatiently and urges, \"Buy medicine before you go.\"",
-      "description": "She has no time for chatter and makes that clear by tapping the counter until you get to the point. Princess Zelda's Letter first, she says; no letter, no potions, and she does not care who you are. With it, a blue Life Potion costs 40 rupees and a red Second Potion 68. LIST, BUY, and out, she says, though she softens enough to wish you a safe road and to tuck an extra cork into your pack."
+      "description": "She has no time for chatter and makes that clear by tapping the counter until you get to the point. Princess Zelda's Letter first, she says; no letter, no potions, and she does not care who you are. With it, a blue Life Potion costs 40 gold and a red Second Potion 68. LIST, BUY, and out, she says, though she softens enough to wish you a safe road and to tuck an extra cork into your pack."
     },
     "repair:B1": {
       "vnum": 30408,
       "keywords": "old man repairman gruff",
       "short": "a gruff old man",
       "long": "A gruff old man blocks the doorway and grumbles, \"Pay me for the door repair charge.\"",
-      "description": "He is broad and gruff and built like a door himself, and he blames you personally for every crack in his cave. Somebody bombed his way in, he says, glaring, and somebody is going to pay for it. He takes 20 rupees from each visitor the first time they come in, before they can argue, and drops it into an iron box. After that he only grumbles about the draught and goes back to his mortar."
+      "description": "He is broad and gruff and built like a door himself, and he blames you personally for every crack in his cave. Somebody bombed his way in, he says, glaring, and somebody is going to pay for it. He takes 20 gold from each visitor the first time they come in, before they can argue, and drops it into an iron box. After that he only grumbles about the draught and goes back to his mortar."
     },
     "repair:D1": {
       "vnum": 30409,
       "keywords": "old man repairman ledger",
       "short": "an old man with a ledger",
       "long": "An old man with a ledger licks his pencil, opens his ledger and says, \"Pay me for the door repair charge.\"",
-      "description": "He keeps a fat ledger open on his knee and writes in it constantly, licking his pencil between entries. Every visitor has a line in it, with a date and a sum. The first time you walk in he takes 20 rupees for the door repair and writes your name down with a flourish. After that he checks the book, finds you already paid, and waves you on without looking up. He has never once made an error, he says."
+      "description": "He keeps a fat ledger open on his knee and writes in it constantly, licking his pencil between entries. Every visitor has a line in it, with a date and a sum. The first time you walk in he takes 20 gold for the door repair and writes your name down with a flourish. After that he checks the book, finds you already paid, and waves you on without looking up. He has never once made an error, he says."
     },
     "repair:D7": {
       "vnum": 30410,
       "keywords": "old man repairman apologetic",
       "short": "an apologetic old man",
       "long": "An apologetic old man wrings his hands and apologises, \"Pay me for the door repair charge.\"",
-      "description": "He is terribly sorry about all this, he says, really he is, but the door does not mend itself. He wrings his hands, looks at his feet, and takes 20 rupees from you the moment you come in for the first time, apologising the whole while. On later visits he only apologises for having had to ask, at length, and offers you a seat by the fire that is broken too."
+      "description": "He is terribly sorry about all this, he says, really he is, but the door does not mend itself. He wrings his hands, looks at his feet, and takes 20 gold from you the moment you come in for the first time, apologising the whole while. On later visits he only apologises for having had to ask, at length, and offers you a seat by the fire that is broken too."
     },
     "repair:E2": {
       "vnum": 30411,
       "keywords": "old man repairman plasterer",
       "short": "a plaster-dusted old man",
       "long": "A plaster-dusted old man brushes plaster from his beard and announces, \"Pay me for the door repair charge.\"",
-      "description": "White plaster dust coats him from head to foot, so that he looks like a statue that has learned to walk. He is in the middle of patching the wall and does not stop. The first time you come in he holds out a dusty palm for 20 rupees and takes it before you have finished blinking. After that he ignores you and keeps patching, leaving white handprints on everything he touches."
+      "description": "White plaster dust coats him from head to foot, so that he looks like a statue that has learned to walk. He is in the middle of patching the wall and does not stop. The first time you come in he holds out a dusty palm for 20 gold and takes it before you have finished blinking. After that he ignores you and keeps patching, leaving white handprints on everything he touches."
     },
     "repair:H1": {
       "vnum": 30412,
       "keywords": "old man repairman sly",
       "short": "a sly old man",
       "long": "A sly old man smiles a crooked little smile and murmurs, \"Pay me for the door repair charge.\"",
-      "description": "There is a sly look about him, and you suspect the door was never broken at all. He smiles the crooked smile of a man who has found an easy living and means to keep it. He relieves each visitor of 20 rupees the first time they walk in, smoothly, almost kindly. On later visits he simply smiles and tips his head, as if the two of you share a joke. Perhaps you do."
+      "description": "There is a sly look about him, and you suspect the door was never broken at all. He smiles the crooked smile of a man who has found an easy living and means to keep it. He relieves each visitor of 20 gold the first time they walk in, smoothly, almost kindly. On later visits he simply smiles and tips his head, as if the two of you share a joke. Perhaps you do."
     },
     "repair:I7": {
       "vnum": 30413,
       "keywords": "old man repairman mumbler",
       "short": "a mumbling old man",
       "long": "A mumbling old man mumbles into his beard something like, \"Pay me for the door repair charge.\"",
-      "description": "He mumbles everything into his beard, so that most of what he says is lost, but the outstretched hand is clear enough. The first time you come into his cave he takes 20 rupees for the door, mumbling what may be an itemised bill or may be a recipe for soup. After that he mumbles at you companionably and seems to expect nothing more. He has, you gather, a cat somewhere."
+      "description": "He mumbles everything into his beard, so that most of what he says is lost, but the outstretched hand is clear enough. The first time you come into his cave he takes 20 gold for the door, mumbling what may be an itemised bill or may be a recipe for soup. After that he mumbles at you companionably and seems to expect nothing more. He has, you gather, a cat somewhere."
     },
     "repair:K7": {
       "vnum": 30414,
       "keywords": "old man repairman bowlegged",
       "short": "a bow-legged old man",
       "long": "A bow-legged old man waddles forward on bowed legs and demands, \"Pay me for the door repair charge.\"",
-      "description": "His legs are so bowed you could roll a barrel between them, and he waddles about his cave tapping the walls with a little hammer. He was a mason once, he says, and still keeps a mason's prices. The first time you come in he takes 20 rupees for the door you came through. After that he only nods and goes on tapping the walls, listening for the next weak spot."
+      "description": "His legs are so bowed you could roll a barrel between them, and he waddles about his cave tapping the walls with a little hammer. He was a mason once, he says, and still keeps a mason's prices. The first time you come in he takes 20 gold for the door you came through. After that he only nods and goes on tapping the walls, listening for the next weak spot."
     },
     "repair:N8": {
       "vnum": 30415,
       "keywords": "old man repairman sniffler",
       "short": "a sniffling old man",
       "long": "A sniffling old man sniffs loudly, wipes his nose and says, \"Pay me for the door repair charge.\"",
-      "description": "He has a cold, has always had a cold, and blames the hole somebody blew in his wall for every sniffle of it. He takes 20 rupees from each visitor the first time they come in and tucks it into a damp handkerchief. On later visits he only sniffs at you reproachfully, as if you personally were the draught, and goes back to stuffing rags into the cracks."
+      "description": "He has a cold, has always had a cold, and blames the hole somebody blew in his wall for every sniffle of it. He takes 20 gold from each visitor the first time they come in and tucks it into a damp handkerchief. On later visits he only sniffs at you reproachfully, as if you personally were the draught, and goes back to stuffing rags into the cracks."
     },
     "repair:O2": {
       "vnum": 30416,
       "keywords": "old man repairman nailbiter",
       "short": "a nail-chewing old man",
       "long": "A nail-chewing old man spits out a bent nail and snaps, \"Pay me for the door repair charge.\"",
-      "description": "He chews nails, actual iron nails, and spits out the bent ones into a bucket with a clang. A carpenter by trade and temper, he takes 20 rupees for the door from anyone coming in for the first time and does not discuss it. After that he looks you over, grunts, and goes back to his hammering. He has opinions about bombs, and none of them are kind."
+      "description": "He chews nails, actual iron nails, and spits out the bent ones into a bucket with a clang. A carpenter by trade and temper, he takes 20 gold for the door from anyone coming in for the first time and does not discuss it. After that he looks you over, grunts, and goes back to his hammering. He has opinions about bombs, and none of them are kind."
     },
     "gambler:A2": {
       "vnum": 30417,
       "keywords": "gambler shifty",
       "short": "a shifty gambler",
       "long": "A shifty gambler shuffles three signs about and whispers, \"Let's play money making game.\"",
-      "description": "His eyes never rest, and neither do his hands, which shuffle three painted signs about the floor while he talks. You need 10 rupees in your purse to play. GAMBLE LEFT, MIDDLE or RIGHT and he turns them over: one sign wins you 20 or 50, one loses you 10, and the third loses you 10 or 40. He swears the game is honest. He also swears he has never once lost, and both cannot be true."
+      "description": "His eyes never rest, and neither do his hands, which shuffle three painted signs about the floor while he talks. You need 10 gold in your purse to play. GAMBLE LEFT, MIDDLE or RIGHT and he turns them over: one sign wins you 20 or 50, one loses you 10, and the third loses you 10 or 40. He swears the game is honest. He also swears he has never once lost, and both cannot be true."
     },
     "gambler:G2": {
       "vnum": 30418,
       "keywords": "gambler dapper",
       "short": "a dapper gambler",
       "long": "A dapper gambler adjusts his cuffs and purrs, \"Let's play money making game.\"",
-      "description": "He is the best-dressed creature in Hyrule, by his own account, in a waistcoat embroidered with dice. His game is simple and elegant, he says: carry at least 10 rupees, then GAMBLE LEFT, MIDDLE or RIGHT. Behind one sign waits a win of 20 or 50, behind another a loss of 10, and behind the last a loss of 10 or 40. He shuffles with a flourish, pays out with a bow, and collects with a smile."
+      "description": "He is the best-dressed creature in Hyrule, by his own account, in a waistcoat embroidered with dice. His game is simple and elegant, he says: carry at least 10 gold, then GAMBLE LEFT, MIDDLE or RIGHT. Behind one sign waits a win of 20 or 50, behind another a loss of 10, and behind the last a loss of 10 or 40. He shuffles with a flourish, pays out with a bow, and collects with a smile."
     },
     "gambler:G8": {
       "vnum": 30419,
       "keywords": "gambler coinflipper",
       "short": "a coin-flipping gambler",
-      "long": "A coin-flipping gambler flips a rupee in the air and calls, \"Let's play money making game.\"",
-      "description": "He flips a rupee as he talks, catching it without looking, and never once drops it. He likes the odds of his game, he says, though he admits they like him more. You must hold 10 rupees to sit down. GAMBLE LEFT, MIDDLE or RIGHT: one of the three signs pays 20 or 50, one costs you 10, and one costs you 10 or 40. He has been sitting by the start of the road for years, waiting for fresh faces with full purses."
+      "long": "A coin-flipping gambler flips a gold coin in the air and calls, \"Let's play money making game.\"",
+      "description": "He flips a gold coin as he talks, catching it without looking, and never once drops it. He likes the odds of his game, he says, though he admits they like him more. You must hold 10 gold to sit down. GAMBLE LEFT, MIDDLE or RIGHT: one of the three signs pays 20 or 50, one costs you 10, and one costs you 10 or 40. He has been sitting by the start of the road for years, waiting for fresh faces with full purses."
     },
     "gambler:M8": {
       "vnum": 30420,
       "keywords": "gambler weary",
       "short": "a weary gambler",
       "long": "A weary gambler rubs his tired eyes and offers, \"Let's play money making game.\"",
-      "description": "Dark rings sit under his eyes and he slumps over his three signs like a man who has played all night and lost. He has, often. His game wants 10 rupees in your purse before you can play. GAMBLE LEFT, MIDDLE or RIGHT, and one sign wins you 20 or 50, one loses you 10, and the third loses 10 or 40. He tells you the odds plainly, with the honesty of the very tired, and advises you to quit while ahead."
+      "description": "Dark rings sit under his eyes and he slumps over his three signs like a man who has played all night and lost. He has, often. His game wants 10 gold in your purse before you can play. GAMBLE LEFT, MIDDLE or RIGHT, and one sign wins you 20 or 50, one loses you 10, and the third loses 10 or 40. He tells you the odds plainly, with the honesty of the very tired, and advises you to quit while ahead."
     },
     "gambler:P2": {
       "vnum": 30421,
       "keywords": "gambler cheerful",
       "short": "a cheerful gambler",
       "long": "A cheerful gambler claps his hands and chirps, \"Let's play money making game.\"",
-      "description": "Win or lose, he is delighted, and he claps his hands at every turn of a sign. His game wants a purse of at least 10 rupees. GAMBLE LEFT, MIDDLE or RIGHT: one sign pays 20 or 50, another takes 10, and the last takes 10 or 40. He cheers just as loudly when you lose as when you win, which some players find charming and others find suspicious. He keeps a tally of his best customers on the wall."
+      "description": "Win or lose, he is delighted, and he claps his hands at every turn of a sign. His game wants a purse of at least 10 gold. GAMBLE LEFT, MIDDLE or RIGHT: one sign pays 20 or 50, another takes 10, and the last takes 10 or 40. He cheers just as loudly when you lose as when you win, which some players find charming and others find suspicious. He keeps a tally of his best customers on the wall."
     },
     "fairy:D5": {
       "vnum": 30422,

@@ -92,7 +92,7 @@ class HyruleMobKeywordTests(unittest.TestCase):
         for mob in self.gamblers:
             with self.subTest(gambler=mob.short_desc):
                 self.assertIn("GAMBLE", mob.description)
-                self.assertIn("10 rupees", mob.description)
+                self.assertIn("10 gold", mob.description)
 
     def test_the_descriptions_fit_a_terminal(self) -> None:
         wide = [

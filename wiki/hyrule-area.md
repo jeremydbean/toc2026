@@ -154,7 +154,7 @@ holder can walk back into any dungeon.
 
 The Magical Rod (Level 6) and the Magic Book (Level 8) stay in their cellars
 as loot the chain does not need; the cellars whose treasure moved to a chest
-hold rupees instead.
+hold gold coins instead.
 
 **Nothing in the chain can be lost for good.** A guardian repops with a fresh
 key at every area reset, and its chest relocks and refills at the same reset,
@@ -566,8 +566,8 @@ leaves nothing.
 
 | Roll | Drop |
 | ---: | --- |
-| 15% | Rupees (gold coins): 1, 1, 2, 3, 5, 8, 12, 20, 30 by band |
-| 5% | Five times that, the NES's blue rupee |
+| 15% | Gold coins: 1, 1, 2, 3, 5, 8, 12, 20, 30 by band |
+| 5% | Five times that, as the NES's blue rupee was five |
 | 12% | A recovery heart: a potion of cure light (bands 1-2), cure serious (3-4), cure critical (5-6), heal (7-8), heal and cure critical (9) |
 | 3% | A bottled fairy: two cure serious, two cure critical, heal and cure critical, two heals, then three heals |
 | 1% | A clock-flask: a potion of haste, the clock's "everything stops but you" |
@@ -576,10 +576,12 @@ leaves nothing.
 The heart, fairy and clock are one potion per band at
 `OBJ_VNUM_HYRULE_HEART_FIRST` (`30600`), `_FAIRY_FIRST` (`30610`) and
 `_CLOCK_FIRST` (`30620`) plus band - 1, at the bottom of the band to drink and
-cast at its top. The rupee drops start at the NES's single rupee and stay well
-under the coin an ordinary mobile of the band carries; at band 1 a rupee is
-worth far more than a level 5 mobile's silver, which is what keeps Hyrule's
-own rupee prices -- four bombs for 20 rupees -- about forty kills away. Bombs
+cast at its top. The coin drops start at one gold piece, as the NES's start
+at a single rupee, and stay well under the coin an ordinary mobile of the band
+carries; at band 1 a gold coin is worth far more than a level 5 mobile's
+silver, which is what keeps Hyrule's own prices -- four bombs for 20 gold --
+about forty kills away. (Hyrule said rupees until 2026-10-03; a rupee was a
+gold coin all along, so only the word changed.) Bombs
 are not a random drop. Level 8's old man says why: the tenth Hyrule enemy you
 kill in a row without taking a wound leaves you a bomb (`hyrule_note_kill`,
 reset by any wound in `damage()`), as the NES's kill streak did. These potions
@@ -683,17 +685,17 @@ field, `HyruleSecrets` (`pcdata->hyrule_secrets`, under `case 'H'` in
 
 | Cave (guide) | NES | MUD rule |
 | --- | --- | --- |
-| 14 "It's a secret to everybody" caves | A moblin gives 10, 30 or 100 rupees | The moblin pays as you walk in, once per character for each cave. No rupee pile lies on the floor, so nothing refills at a reset. |
-| 9 door repairs | "Pay me for the door repair charge": 20 rupees | Unchanged: charged on entry, once per character for each cave (the hidden receipt). |
-| 5 money-making games | Pick one of three rupee signs | NES odds: one sign wins 20 or 50, one loses 10, one loses 10 or 40, at random; you need 10 rupees. Its expectation is nothing either way, the stake is bounded at 50, and it no longer counts toward the casino achievements, so neither the coin nor the achievements can be farmed. `GAMBLE LEFT|MIDDLE|RIGHT`, and each game costs a round of lag. |
+| 14 "It's a secret to everybody" caves | A moblin gives 10, 30 or 100 gold | The moblin pays as you walk in, once per character for each cave. No coin pile lies on the floor, so nothing refills at a reset. |
+| 9 door repairs | "Pay me for the door repair charge": 20 gold | Unchanged: charged on entry, once per character for each cave (the hidden receipt). |
+| 5 money-making games | Pick one of three coin signs | NES odds: one sign wins 20 or 50, one loses 10, one loses 10 or 40, at random; you need 10 gold. Its expectation is nothing either way, the stake is bounded at 50, and it no longer counts toward the casino achievements, so neither the coin nor the achievements can be farmed. `GAMBLE LEFT|MIDDLE|RIGHT`, and each game costs a round of lag. |
 | 7 potion shops | The old woman wants the Letter | Unchanged: she sells only to someone carrying the Letter. |
 | 4 "Take any one you want" (`H5`, `L8`, `M3`, `P3`) | A Heart Container or a red potion | Take one and the other is refused, once per character for each cave. These were plain heart caves. |
 | Heart Container on the `P6` dock | Lying on the dock, by stepladder | Taken once per character. |
 | White Sword (`K1`) | Needs 5 hearts | Needs 5 hearts (below). |
 | Magical Sword (`B3` grave) | Needs 12 hearts | The grave holds the Magical Sword again (the Master Sword stays Ganon's): level 38, 11d5 +3/+3, between the White Sword and Gohma's eye-lance. Needs 12 hearts. |
-| Hint caves `A8` (open) and `K2` (behind the waterfall) | "Pay me and I'll talk" | GIVE her 10, 30 or 50 rupees at `A8`: 10 is not enough, 30 buys the Lost Woods route, 50 buys only "boy, you're rich". GIVE 5, 10 or 20 at `K2`, where only 20 buys "go up, up, the mountain ahead". She keeps what she is paid, as on the NES; any other sum is handed back. |
+| Hint caves `A8` (open) and `K2` (behind the waterfall) | "Pay me and I'll talk" | GIVE her 10, 30 or 50 gold at `A8`: 10 is not enough, 30 buys the Lost Woods route, 50 buys only "boy, you're rich". GIVE 5, 10 or 20 at `K2`, where only 20 buys "go up, up, the mountain ahead". She keeps what she is paid, as on the NES; any other sum is handed back. |
 | Hint caves `F8` (open) and `M2` (under an Armos) | "Meet the old man at the grave"; "secret is in the tree at the dead-end" | An old man says it. |
-| Level 5 and Level 7 bomb bags | "I bet you'd like to have more bombs": 100 rupees | `GET BAG` pays 100 for four more bombs' room, once each per character. |
+| Level 5 and Level 7 bomb bags | "I bet you'd like to have more bombs": 100 gold | `GET BAG` pays 100 for four more bombs' room, once each per character. |
 
 **Hearts.** The NES counts hearts, and the MUD has hit points, so a heart is
 counted the NES way: 3 to start, one for each of the Level 1-8 guardians you
@@ -739,7 +741,7 @@ as `open <keyword>`, so a published route stays honest.
 | --- | --- |
 | Wooden, White, Magical Sword | Weapons; the White and Magical need hearts |
 | Boomerang, Magical Boomerang | Wielded weapons; `SHOOT <enemy>` throws it: light damage and the enemy is stunned out of the fight for a moment; a keese or gel dies outright. The Magical one hits harder. |
-| Bow + Arrows | `SHOOT <enemy>` in the room, with the bow wielded and the quiver carried: bow damage plus your damroll, a rupee a shot, no Archery skill needed. An arrow kills a pols voice outright and finishes Gohma. |
+| Bow + Arrows | `SHOOT <enemy>` in the room, with the bow wielded and the quiver carried: bow damage plus your damroll, a gold coin a shot, no Archery skill needed. An arrow kills a pols voice outright and finishes Gohma. |
 | Bombs | `BOMB` a cracked wall (uses one), or `BOMB <enemy>` for fire damage (uses one); Dodongo swallows one for half its health. Four to a purchase; the bag holds 8, 12 or 16. |
 | Blue and Red Candle | Light; `BURN` a bush; `BURN <enemy>` for fire damage (the Red Candle burns hotter) |
 | Bait | `FEED` the hungry Goriya (used up), or `FEED BAIT` to set it down: the room's enemies stop fighting and turn to it for a while (kept; never a guardian) |
@@ -845,10 +847,10 @@ for command syntax, migration rules, and save behavior.
 
 The generated overworld includes the complete major First Quest service set:
 
-- 14 secret money caves with their original 10, 30, or 100 rupee rewards
+- 14 secret money caves with their original 10, 30, or 100 gold rewards
 - 7 regular item shops and 5 hidden deluxe shops
 - 7 potion shops, gated by Princess Zelda's Letter
-- 9 one-time 20-rupee door-repair charges
+- 9 one-time 20-gold door-repair charges
 - 5 money-making games using the `gamble` command
 - 4 Power Bracelet warp halls with the original west, center, and east routes
 - 4 "take any one you want" caves and the Heart Container on the `P6` dock
@@ -867,8 +869,8 @@ and the Power Bracelet are a copy each, one at a time, worthless to a shop.
 
 The regular shops source bombs and the Blue Candle inside Hyrule, so early
 secrets do not depend on equipment imported from another area. Shop inventory
-uses the original item groupings and prices. Potion shops offer the 40-rupee
-Life Potion and 68-rupee 2nd Potion only while the character carries the Letter.
+uses the original item groupings and prices. Potion shops offer the 40-gold
+Life Potion and 68-gold 2nd Potion only while the character carries the Letter.
 
 Warp stones require the Power Bracelet. Their route permutations are:
 
@@ -888,10 +890,10 @@ Warp stones require the Power Bracelet. Their route permutations are:
 | `play recorder` | The Recorder itself | Level 7's lake, Digdogger, the whirlwind |
 | `feed <guardian>`, `feed bait` | Enemy bait | Hungry Goriya; calming a room |
 | `push <target>` | Context dependent | Blocks, Armos, the gravestone, warp stones |
-| `gamble left\|middle\|right` | 10 rupees in a money game | First Quest gambling caves |
-| `shoot <enemy>` | The bow and a quiver (a rupee a shot), or a boomerang | Pols voice, Gohma, stunning |
-| `give <n> gold <old woman>` | 10/30/50 or 5/10/20 rupees | The two "pay me and I'll talk" caves |
-| `buy bag` | 100 rupees | The Level 5 and Level 7 bomb bags |
+| `gamble left\|middle\|right` | 10 gold in a money game | First Quest gambling caves |
+| `shoot <enemy>` | The bow and a quiver (a gold coin a shot), or a boomerang | Pols voice, Gohma, stunning |
+| `give <n> gold <old woman>` | 10/30/50 or 5/10/20 gold | The two "pay me and I'll talk" caves |
+| `buy bag` | 100 gold | The Level 5 and Level 7 bomb bags |
 | `hearts` | -- | The heart count the swords ask for |
 
 Puzzle objects use `ITEM_MANIPULATION` type `31`. Generated overworld targets
@@ -1002,7 +1004,7 @@ The Hyrule tests verify:
 - Death Mountain passages, encounters, Ganon key, and Triforce gate
 - every level from 1 through 59 having sourced weapon or armor, none above 59,
   and every item at or below the band it is found in
-- maps, compasses, shops, rupees, repairs, gambling, and warp routes
+- maps, compasses, shops, gold coins, repairs, gambling, and warp routes
 - teleport-only entry, recall blocked only in the dungeons, and a path back
   from every Hyrule room
 - area-generator idempotence

@@ -584,7 +584,7 @@ return portals.
   (53-59), and the land around each dungeon matches it. What you find in a
   place -- chest gear, a boss's Heart Guard and weapon, a shop's wares -- is
   usable at that place's level. The first eight guardians also leave a Heart
-  Container, and ordinary enemies sometimes drop rupees, a heart, a bottled
+  Container, and ordinary enemies sometimes drop gold coins, a heart, a bottled
   fairy or a clock-flask (quaff the last three).
 - The dungeons are done in order. Each needs the previous dungeon's Triforce
   piece to enter and its treasure to reach the guardian; the guardian drops a
@@ -609,7 +609,7 @@ return portals.
 - Hidden ways open only to the NES's act with its tool: BOMB a cracked wall
   (each blast uses a bomb), BURN a bush with a lit candle, PUSH an Armos or a
   gravestone, PLAY the Recorder at Level 7's lake. OPEN will not shift them.
-- Every Hyrule item does something: bombs, the bow and arrows (a rupee a
+- Every Hyrule item does something: bombs, the bow and arrows (a gold coin a
   shot), boomerangs, candles, bait, the Recorder, the Magical Rod and Book,
   potions, keys, rings and the Magical Shield. `help hyrule items` lists them.
 - The caves keep the NES's rules, once per character: the money caves pay as

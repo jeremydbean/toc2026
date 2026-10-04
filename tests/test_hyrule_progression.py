@@ -1264,9 +1264,9 @@ class HyruleProgressionTests(unittest.TestCase):
                 if puzzle:
                     self.assertIn(puzzle_objects[puzzle], world_room.objects)
 
-        # The signs still read "displayed for 130 rupees", and a rupee is a
-        # gold coin -- the rupee piles are ITEM_MONEY with value[1] set to
-        # TYPE_GOLD. obj->cost is counted in copper, so the price only
+        # The signs read "displayed for 130 gold" (they said rupees until
+        # 2026-10-03; a rupee was a gold coin all along) -- the coin piles
+        # are ITEM_MONEY with value[1] set to TYPE_GOLD. obj->cost is counted in copper, so the price only
         # holds if it is written out in copper. It was not: the generator
         # emitted 130, one ten-thousandth of what the shield advertises,
         # and the object-section reader in tools/costs_to_copper.py had
@@ -1403,6 +1403,23 @@ class HyruleProgressionTests(unittest.TestCase):
             and not obj.extra_flags.lstrip("-").isdigit()
             and set("JKL") & set(obj.extra_flags))
         self.assertEqual(barred, [])
+
+    def test_hyrule_quotes_ordinary_money(self) -> None:
+        """The owner's call (2026-10-03): regular money, not rupees. A
+        rupee was a gold coin underneath, so only the word went. Data keys
+        ("type": "rupee", "rupee:B6") may keep it; nothing a player reads
+        may -- the area, its help, or the messages the game sends."""
+        said = []
+        for rel in ("area/hyrule.are", "area/commands.are"):
+            text = Path(rel).read_text(encoding="latin-1")
+            said += [f"{rel}:{text.count(chr(10), 0, m.start()) + 1}"
+                     for m in re.finditer(r"(?i)rupee", text)]
+        for rel in ("src/hyrule.c", "src/act_obj.c", "src/act_move.c", "src/fight.c"):
+            text = Path(rel).read_text(encoding="latin-1")
+            for literal in re.finditer(r'"(?:[^"\\\n]|\\.)*"', text):
+                if re.search(r"(?i)rupee", literal.group(0)):
+                    said.append(f"{rel}: {literal.group(0)[:60]}")
+        self.assertEqual([], said)
 
     def test_ganon_drops_the_key_to_zelda_and_the_triforce(self) -> None:
         level_nine = self.dungeons[9]
