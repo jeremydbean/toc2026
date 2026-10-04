@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791154980
+LogO 1791155165
 Vers 4
 Prom ~
 Ignoring ~
@@ -16,7 +16,7 @@ PsiKnown torment,telekinesis,mindbar,mind leech~
 ChangesSeen ~
 Cast none
 Levl 50
-Plyd 309879
+Plyd 310064
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
@@ -795,7 +795,7 @@ Wear 0
 Cost 2
 Cond 73
 Repd 0
-Val  0 0 68 0 0
+Val  0 0 65 0 0
 End
 
 #O
@@ -892,7 +892,7 @@ Nest 0
 ShD  A surgically removed leg~
 Desc A surgically removed leg waits to serve Alaric~
 Wear -1
-Time 218
+Time 215
 Cost 0
 Cond 25
 Repd 0
@@ -904,7 +904,7 @@ Nest 0
 ShD  A surgically removed leg~
 Desc A surgically removed leg waits to serve Alaric~
 Wear -1
-Time 218
+Time 215
 Cost 0
 Cond 25
 Repd 0
@@ -916,7 +916,7 @@ Nest 0
 ShD  A surgically removed leg~
 Desc A surgically removed leg waits to serve Alaric~
 Wear -1
-Time 218
+Time 215
 Cost 0
 Cond 25
 Repd 0
@@ -928,7 +928,7 @@ Nest 0
 ShD  A surgically removed leg~
 Desc A surgically removed leg waits to serve Alaric~
 Wear -1
-Time 218
+Time 215
 Cost 0
 Cond 25
 Repd 0
@@ -940,7 +940,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 220
+Time 217
 Cost 0
 Cond 25
 Repd 0
@@ -952,7 +952,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 220
+Time 217
 Cost 0
 Cond 25
 Repd 0
@@ -964,7 +964,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 188
+Time 185
 Cost 0
 Cond 25
 Repd 0
@@ -976,7 +976,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 188
+Time 185
 Cost 0
 Cond 25
 Repd 0
@@ -988,7 +988,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 188
+Time 185
 Cost 0
 Cond 25
 Repd 0
@@ -1000,7 +1000,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 188
+Time 185
 Cost 0
 Cond 25
 Repd 0
@@ -1012,7 +1012,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 189
+Time 186
 Cost 0
 Cond 25
 Repd 0
@@ -1024,7 +1024,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 189
+Time 186
 Cost 0
 Cond 25
 Repd 0
@@ -1036,7 +1036,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 190
+Time 187
 Cost 0
 Cond 25
 Repd 0
@@ -1048,7 +1048,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 218
+Time 215
 Cost 0
 Cond 25
 Repd 0
@@ -1060,7 +1060,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 218
+Time 215
 Cost 0
 Cond 25
 Repd 0
@@ -1072,7 +1072,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 190
+Time 187
 Cost 0
 Cond 25
 Repd 0
@@ -1084,7 +1084,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 218
+Time 215
 Cost 0
 Cond 25
 Repd 0
@@ -1096,7 +1096,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 218
+Time 215
 Cost 0
 Cond 25
 Repd 0
@@ -1108,7 +1108,7 @@ Nest 0
 ShD  A surgically removed leg~
 Desc A surgically removed leg waits to serve Alaric~
 Wear -1
-Time 220
+Time 217
 Cost 0
 Cond 25
 Repd 0
@@ -1120,7 +1120,7 @@ Nest 0
 ShD  A surgically removed leg~
 Desc A surgically removed leg waits to serve Alaric~
 Wear -1
-Time 220
+Time 217
 Cost 0
 Cond 25
 Repd 0
