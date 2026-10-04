@@ -37200,3 +37200,49 @@ Sun Oct  4 02:32:50 2026 :: Log Alaric [29063]: n
 Sun Oct  4 02:32:50 2026 :: Log Alaric [0]: moved to 29062 (Corridor)
 Sun Oct  4 02:32:51 2026 :: Log Alaric [29062]: s
 Sun Oct  4 02:32:51 2026 :: Log Alaric [0]: moved to 29063 (Corridor)
+Sun Oct  4 02:32:52 2026 :: Log Alaric [29063]: s
+Sun Oct  4 02:32:52 2026 :: Log Alaric [0]: moved to 29065 (Service Hallway)
+Sun Oct  4 02:32:55 2026 :: Log Alaric [29065]: sh gu
+Sun Oct  4 02:33:10 2026 :: Log Alaric [29065]: sh
+Sun Oct  4 02:33:25 2026 :: Log Alaric [29065]: sh
+Sun Oct  4 02:33:32 2026 :: Log Alaric [29065]: sh gu
+Sun Oct  4 02:33:33 2026 :: Log Alaric [29065]: sh he
+Sun Oct  4 02:33:58 2026 :: Log Alaric [29065]: sh
+Sun Oct  4 02:34:14 2026 :: Log Alaric [29065]: who
+Sun Oct  4 02:34:14 2026 :: Log Alaric [29065]: sh
+Sun Oct  4 02:34:22 2026 :: Sock.sinaddr:  3.149.57.90
+Sun Oct  4 02:34:23 2026 :: EOF encountered on read.
+Sun Oct  4 02:34:31 2026 :: Log Alaric [29065]: sh
+Sun Oct  4 02:34:51 2026 :: Log Alaric [29065]: sh
+Sun Oct  4 02:34:57 2026 :: Log Alaric [29065]: l
+Sun Oct  4 02:34:58 2026 :: Log Alaric [29065]: e
+Sun Oct  4 02:34:58 2026 :: Log Alaric [0]: moved to 29066 (Service Hallway)
+Sun Oct  4 02:35:01 2026 :: Log Alaric [29066]: sh gu
+Sun Oct  4 02:35:26 2026 :: Log Alaric [29066]: sh
+Sun Oct  4 02:35:35 2026 :: Log Alaric [29066]: sh
+Sun Oct  4 02:35:43 2026 :: Log Alaric [29066]: w
+Sun Oct  4 02:35:43 2026 :: Log Alaric [0]: moved to 29065 (Service Hallway)
+Sun Oct  4 02:35:44 2026 :: Log Alaric [29065]: sh gu
+Sun Oct  4 02:35:56 2026 :: Log Alaric [29065]: level 23 -> 24 (earned)
+Sun Oct  4 02:35:56 2026 :: Alaric has achieved level 24!
+Sun Oct  4 02:36:08 2026 :: Log Alaric [29065]: get hea
+Sun Oct  4 02:36:09 2026 :: Log Alaric [29065]: c emb heart
+Sun Oct  4 02:36:14 2026 :: Log Alaric [29065]: l
+Sun Oct  4 02:36:14 2026 :: Log Alaric [29065]: e
+Sun Oct  4 02:36:14 2026 :: Log Alaric [0]: moved to 29066 (Service Hallway)
+Sun Oct  4 02:36:21 2026 :: Log Alaric [29066]: c animate heart he
+Sun Oct  4 02:36:27 2026 :: Log Alaric [29066]: sh he
+Sun Oct  4 02:36:34 2026 :: Log Alaric [29066]: c animate
+Sun Oct  4 02:36:38 2026 :: Log Alaric [29066]: c animate heart
+Sun Oct  4 02:36:54 2026 :: Log Alaric [29066]: help animate
+Sun Oct  4 02:36:59 2026 :: Log Alaric [29066]: c animate
+Sun Oct  4 02:37:08 2026 :: Log Alaric [29066]: c animate
+Sun Oct  4 02:37:18 2026 :: Log Alaric [29066]: c animate
+Sun Oct  4 02:37:25 2026 :: Log Alaric [29066]: eq
+Sun Oct  4 02:37:25 2026 :: Log Alaric [29066]: sh
+Sun Oct  4 02:37:41 2026 :: Log Alaric [29066]: wo
+Sun Oct  4 02:37:42 2026 :: Log Alaric [29066]: l
+Sun Oct  4 02:37:44 2026 :: Log Alaric [29066]: scan
+Sun Oct  4 02:37:45 2026 :: Log Alaric [29066]: recal
+Sun Oct  4 02:37:45 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 02:37:48 2026 :: Log Alaric [4207]: who
