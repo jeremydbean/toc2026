@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791122108
+LogO 1791122651
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 26
-Plyd 284375
+Plyd 284918
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 Scro 22
 Room 4210
-HMV  567 572 2055 2055 183 418
+HMV  567 572 2034 2055 240 418
 NewGold 89
 NewPlat 645
 NewCopp 111
@@ -114,8 +114,7 @@ CasinoWon  51
 CasinoLost 304
 Exp  53078
 Act  4261068
-AfBy 3683004
-AfBy2 4106
+AfBy 4096
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -143,13 +142,13 @@ Color 16 6
 Pos  8
 Prac 19
 Trai 4
-Save  7
+Save  15
 Alig  1000
-Hit   35
-Dam   43
-ACs 5 -5 2 83
+Hit   16
+Dam   25
+ACs 19 9 16 97
 Attr 18 13 13 18 15
-AMod 48 8 11 20 10
+AMod -1 8 11 4 10
 Pass Al3w9zuAlwpyY~
 Titl  the Summoner of Spirits~
 Pnts 2540
@@ -214,54 +213,7 @@ Gr 'necro default'
 Gr 'necro enhancement'
 Gr 'necromancy'
 Gr 'necro transportation'
-AffD 'giant strength'   0   0  15   1          0          0
-AffD 'divine protection'   0   0   0   0          0       4096
-AffD 'fire shield'   0   0   0   0          0          8
-AffD 'protection evil'   0   0   0   0       8192          0
-AffD 'pass door'   0   0   0   0    1048576          0
-AffD 'fly'   0   0   0   0     524288          0
-AffD 'haste'   0   0   4   2    2097152          0
-AffD 'sanctuary'   0   0   0   0        128          0
-AffD 'armor'   0   0 -20  17          0          0
-AffD 'bless'   0   0   8  18          0          0
-AffD 'bless'   0   0  -8  24          0          0
-AffD 'shield'   0   0 -20  17          0          0
-AffD 'sanctuary'   0   0   0   0        128          0
-AffD 'haste'   0   0   4   2    2097152          0
-AffD 'fly'   0   0   0   0     524288          0
-AffD 'pass door'   0   0   0   0    1048576          0
-AffD 'protection evil'   0   0   0   0       8192          0
-AffD 'fire shield'   0   0   0   0          0          8
-AffD 'divine protection'   0   0   0   0          0       4096
-AffD 'giant strength'   0   0   4   1          0          0
-AffD 'frenzy'   0   0  11  18          0          0
-AffD 'frenzy'   0   0  11  19          0          0
-AffD 'frenzy'   0   0 110  17          0          0
-AffD 'major globe'   0   0 -84  17          0          0
-AffD 'infravision'   0   0   0   0        512          0
-AffD 'detect invis'   0   0   0   0          8          0
-AffD 'detect hidden'   0   0   0   0         32          0
-AffD 'detect magic'   0   0   0   0         16          0
-AffD 'detect good'   0   0   0   0          0          2
-AffD 'detect evil'   0   0   0   0          4          0
-AffD 'power gloves'   0   0   7  19          0          0
-AffD 'sanctuary'   0   0   0   0        128          0
-AffD 'haste'   0   0   4   2    2097152          0
-AffD 'fly'   0   0   0   0     524288          0
-AffD 'pass door'   0   0   0   0    1048576          0
-AffD 'protection evil'   0   0   0   0       8192          0
-AffD 'fire shield'   0   0   0   0          0          8
-AffD 'divine protection'   0   0   0   0          0       4096
-AffD 'giant strength'   0   0  15   1          0          0
-AffD 'sanctuary'   0   0   0   0        128          0
-AffD 'haste'   0   0   4   2    2097152          0
-AffD 'fly'   0   0   0   0     524288          0
-AffD 'pass door'   0   0   0   0    1048576          0
-AffD 'protection evil'   0   0   0   0       8192          0
-AffD 'fire shield'   0   0   0   0          0          8
-AffD 'divine protection'   0   0   0   0          0       4096
-AffD 'giant strength'   0   0  15   1          0          0
-AffD 'poison'   0  11  -4   1       4096          0
+AffD 'poison'   0   1  -4   1       4096          0
 End
 
 #O
@@ -271,7 +223,7 @@ Wear 0
 Cost 0
 Cond 91
 Repd 0
-Val  0 0 87 0 0
+Val  0 0 77 0 0
 End
 
 #O
@@ -460,7 +412,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 32
+Time 22
 Cost 0
 Cond 100
 Repd 0
@@ -840,6 +792,7 @@ End
 #O
 Vnum 10042
 Nest 0
+ExtF 2101249
 Wear 16
 Lev  23
 Cost 13000000
