@@ -37697,3 +37697,18 @@ Sun Oct  4 02:52:28 2026 :: Oracle answered Killuminati in room 8: `walkto palm 
 Sun Oct  4 02:52:44 2026 :: Log Killuminati [8]: 'directions to warrior guild?
 Sun Oct  4 02:52:44 2026 :: Log Killuminati [8]: asked the Oracle: directions to warrior guild?
 Sun Oct  4 02:52:48 2026 :: Oracle answered Killuminati in room 8: `walkto citadel of war` or manually `r e 7;r n 2`.
+Sun Oct  4 02:52:57 2026 :: Log Killuminati [8]: walkto
+Sun Oct  4 02:53:02 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sun Oct  4 02:53:06 2026 :: Log WebAdmin: fsave
+Sun Oct  4 02:53:12 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sun Oct  4 02:53:14 2026 :: Received signal 15; saving players and shutting down.
+Sun Oct  4 02:53:14 2026 :: Closing link to Killuminati.
+Sun Oct  4 02:53:14 2026 :: Normal termination of game.
+Sun Oct  4 02:53:16 2026 ::  INIT OK 
+Sun Oct  4 02:53:16 2026 :: walkto_load: 157 destinations.
+Sun Oct  4 02:53:16 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Sun Oct  4 02:53:16 2026 :: ROM is ready to rock on port 9000.
+Sun Oct  4 02:53:16 2026 :: Automated backup complete.
+Sun Oct  4 02:53:16 2026 :: Daily backup complete.
+Sun Oct  4 02:54:41 2026 :: Sock.sinaddr:  3.20.63.178
+Sun Oct  4 02:54:41 2026 :: EOF encountered on read.
