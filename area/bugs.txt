@@ -1,0 +1,1 @@
+[29212] Alaric: Upon reaching level 54, there is a text that begins with, "NOTE:". There is a typo, there should be a space in the word, "maxlevel". It should be presented as, "max level"
