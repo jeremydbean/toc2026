@@ -38523,3 +38523,50 @@ Sun Oct  4 13:49:28 2026 :: Log Alaric [0]: moved to 29062 (Corridor)
 Sun Oct  4 13:49:28 2026 :: Log Alaric [29062]: s
 Sun Oct  4 13:49:28 2026 :: Log Alaric [0]: moved to 29063 (Corridor)
 Sun Oct  4 13:49:30 2026 :: Log Alaric [29063]: sh gu
+Sun Oct  4 13:49:39 2026 :: Log Alaric [29063]: sh gu
+Sun Oct  4 13:49:41 2026 :: Sock.sinaddr:  178.156.189.249
+Sun Oct  4 13:49:41 2026 :: EOF encountered on read.
+Sun Oct  4 13:49:45 2026 :: Log Alaric [29063]: sh gu
+Sun Oct  4 13:49:53 2026 :: Log Eclipse [9988]: pstat alaric
+Sun Oct  4 13:49:53 2026 :: Log Alaric [29063]: sh gu
+Sun Oct  4 13:50:01 2026 :: Log Alaric [29063]: m
+Sun Oct  4 13:50:01 2026 :: Log Alaric [29063]: sh gu
+Sun Oct  4 13:50:04 2026 :: Log Alaric [29063]: n
+Sun Oct  4 13:50:04 2026 :: Log Alaric [0]: moved to 29062 (Corridor)
+Sun Oct  4 13:50:04 2026 :: Log Alaric [29062]: sh gu
+Sun Oct  4 13:50:11 2026 :: Log Eclipse [9988]: wiz
+Sun Oct  4 13:50:11 2026 :: Log Alaric [29062]: s
+Sun Oct  4 13:50:11 2026 :: Log Alaric [0]: moved to 29063 (Corridor)
+Sun Oct  4 13:50:12 2026 :: Log Alaric [29063]: s
+Sun Oct  4 13:50:12 2026 :: Log Alaric [0]: moved to 29065 (Service Hallway)
+Sun Oct  4 13:50:14 2026 :: Log Alaric [29065]: sh he
+Sun Oct  4 13:50:24 2026 :: Sock.sinaddr:  108.81.26.245
+Sun Oct  4 13:50:25 2026 :: Log Alaric [29065]: sh he
+Sun Oct  4 13:50:27 2026 :: Loading Killuminati's playerfile
+Sun Oct  4 13:50:29 2026 :: Killuminati@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Sun Oct  4 13:50:30 2026 :: Log Killuminati [1]: moved to 1 (The Void)
+Sun Oct  4 13:50:30 2026 :: Log Killuminati [1]: /
+Sun Oct  4 13:50:30 2026 :: Log Alaric [29065]: sh he
+Sun Oct  4 13:50:33 2026 :: Log Eclipse [9988]: pstat alaric
+Sun Oct  4 13:50:33 2026 :: Log Killuminati [1]: wizi
+Sun Oct  4 13:50:42 2026 :: Log Killuminati [1]: snoop ala
+Sun Oct  4 13:50:48 2026 :: Log Eclipse [9988]: wiz
+Sun Oct  4 13:51:13 2026 :: Log Alaric [29065]: flee
+Sun Oct  4 13:51:13 2026 :: Log Alaric [0]: moved to 29066 (Service Hallway)
+Sun Oct  4 13:51:14 2026 :: Log Alaric [29066]: flee
+Sun Oct  4 13:51:14 2026 :: Log Alaric [29066]: flee
+Sun Oct  4 13:51:15 2026 :: Log Alaric [29066]: recal
+Sun Oct  4 13:51:15 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 13:51:18 2026 :: Log Alaric [4207]: e
+Sun Oct  4 13:51:18 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sun Oct  4 13:51:19 2026 :: Log Alaric [4202]: n
+Sun Oct  4 13:51:19 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sun Oct  4 13:51:19 2026 :: Log Alaric [4203]: n
+Sun Oct  4 13:51:19 2026 :: Log Alaric [0]: moved to 4210 (Room of Peace and Healing.)
+Sun Oct  4 13:51:20 2026 :: Log Alaric [4210]: sleep
+Sun Oct  4 13:52:20 2026 :: Log Eclipse [9988]: stat alaric
+Sun Oct  4 13:52:31 2026 :: Log Eclipse [9988]: wiz
+Sun Oct  4 13:53:27 2026 :: Log Eclipse [9988]: pstat
+Sun Oct  4 13:54:12 2026 :: Log Eclipse [9988]: stat eclipse
+Sun Oct  4 13:54:24 2026 :: Log Eclipse [9988]: (refused) mstat eclipse
+Sun Oct  4 13:54:35 2026 :: Log Eclipse [9988]: stat mob eclipse
