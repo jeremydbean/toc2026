@@ -45933,3 +45933,45 @@ Sun Oct  4 23:08:27 2026 :: Sock.sinaddr:  5.161.73.160
 Sun Oct  4 23:08:27 2026 :: EOF encountered on read.
 Sun Oct  4 23:13:32 2026 :: Sock.sinaddr:  178.156.189.113
 Sun Oct  4 23:13:32 2026 :: EOF encountered on read.
+Sun Oct  4 23:18:37 2026 :: Sock.sinaddr:  178.156.189.113
+Sun Oct  4 23:18:37 2026 :: EOF encountered on read.
+Sun Oct  4 23:19:07 2026 :: Log Alaric [2497]: afk
+Sun Oct  4 23:19:08 2026 :: Log Alaric [2497]: wake
+Sun Oct  4 23:19:08 2026 :: Log Alaric [2497]: l
+Sun Oct  4 23:19:10 2026 :: Log Alaric [2497]: aq re
+Sun Oct  4 23:19:13 2026 :: Log Alaric [2497]: enter door
+Sun Oct  4 23:19:13 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Oct  4 23:19:13 2026 :: Log Alaric [2401]: east
+Sun Oct  4 23:19:13 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Oct  4 23:19:14 2026 :: Log Alaric [2403]: east
+Sun Oct  4 23:19:14 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sun Oct  4 23:19:14 2026 :: Log Alaric [2420]: east
+Sun Oct  4 23:19:14 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sun Oct  4 23:19:14 2026 :: Log Alaric [2421]: south
+Sun Oct  4 23:19:14 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Sun Oct  4 23:19:14 2026 :: Log Alaric [2441]: east
+Sun Oct  4 23:19:14 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Sun Oct  4 23:19:15 2026 :: Log Alaric [2442]: south
+Sun Oct  4 23:19:15 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Sun Oct  4 23:19:15 2026 :: Log Alaric [2443]: east
+Sun Oct  4 23:19:15 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Sun Oct  4 23:19:15 2026 :: Log Alaric [2444]: east
+Sun Oct  4 23:19:15 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Sun Oct  4 23:19:15 2026 :: Log Alaric [2445]: east
+Sun Oct  4 23:19:15 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Sun Oct  4 23:19:16 2026 :: Log Alaric [2101]: east
+Sun Oct  4 23:19:16 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Sun Oct  4 23:19:16 2026 :: Log Alaric [2102]: east
+Sun Oct  4 23:19:16 2026 :: Log Alaric [2103]: arrived (Along White Dragon Boulevard) from 2102
+Sun Oct  4 23:19:18 2026 :: Log Alaric [2103]: kill gfa
+Sun Oct  4 23:19:20 2026 :: Log Alaric [2103]: kill ga
+Sun Oct  4 23:19:24 2026 :: Log Alaric [2103]: recal
+Sun Oct  4 23:19:24 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2103
+Sun Oct  4 23:19:24 2026 :: Log Alaric [2497]: recal
+Sun Oct  4 23:19:25 2026 :: Log Alaric [2497]: recal
+Sun Oct  4 23:19:25 2026 :: Log Alaric [2497]: aq co
+Sun Oct  4 23:19:25 2026 :: Log Alaric [2497]: quest complete: 22 gold, 83 quest points (streak bonus 133%)
+Sun Oct  4 23:19:25 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct  4 23:19:29 2026 :: Log Alaric [2497]: who
+Sun Oct  4 23:19:29 2026 :: Log Alaric [2497]: sc
+Sun Oct  4 23:19:34 2026 :: Log Alaric [2497]: help title
