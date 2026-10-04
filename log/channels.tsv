@@ -744,3 +744,10 @@
 1791157192	say	questor thews	Well done! I knew you were right for the job.
 1791157192	say	questor thews	Streak of 29 in a row! A +139% bonus has been added!
 1791157192	say	questor thews	Here's your 9 gold - well earned!
+1791157457	say	questor thews	Welcome, Alaric. The realm needs someone of your skill.
+1791157457	say	questor thews	You have 19 minutes to complete this quest.
+1791157457	say	questor thews	Fortune favors the bold - good luck!
+1791157460	question	Alaric	walk
+1791157477	say	questor thews	Excellent work! The realm is in your debt!
+1791157477	say	questor thews	Streak of 30 in a row! A +142% bonus has been added!
+1791157477	say	questor thews	Here's your 19 gold - well earned!
