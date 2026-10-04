@@ -44888,3 +44888,91 @@ Sun Oct  4 21:48:49 2026 :: Log Alaric [16010]: n
 Sun Oct  4 21:48:49 2026 :: Log Alaric [16015]: arrived (Aft Deck - Starboard Side) from 16010
 Sun Oct  4 21:48:51 2026 :: Log Alaric [16015]: drop all.arm
 Sun Oct  4 21:48:52 2026 :: Log Alaric [16015]: kill pi
+Sun Oct  4 21:48:55 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 21:49:01 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 21:49:05 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 21:49:13 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 21:49:19 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 21:49:30 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 21:49:37 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 21:49:41 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 21:49:48 2026 :: Log Alaric [16015]: scan
+Sun Oct  4 21:49:51 2026 :: Log Alaric [16015]: l
+Sun Oct  4 21:49:53 2026 :: Log Alaric [16015]: d
+Sun Oct  4 21:49:53 2026 :: Log Alaric [16020]: arrived (Main Deck of the Royal Eagle - Starboard) from 16015
+Sun Oct  4 21:49:54 2026 :: Log Alaric [16020]: scan
+Sun Oct  4 21:49:56 2026 :: Log Alaric [16020]: w
+Sun Oct  4 21:49:56 2026 :: Log Alaric [16019]: arrived (Main Deck of the Royal Eagle) from 16020
+Sun Oct  4 21:49:56 2026 :: Log Alaric [16019]: w
+Sun Oct  4 21:49:56 2026 :: Log Alaric [16018]: arrived (Main Deck of the Royal Eagle) from 16019
+Sun Oct  4 21:49:59 2026 :: Log Alaric [16018]: te
+Sun Oct  4 21:50:05 2026 :: Log Alaric [16018]: te
+Sun Oct  4 21:50:16 2026 :: Log Alaric [16018]: te
+Sun Oct  4 21:50:22 2026 :: Log Alaric [16018]: te
+Sun Oct  4 21:50:28 2026 :: Log Alaric [16018]: scan
+Sun Oct  4 21:50:29 2026 :: Log Alaric [16018]: n
+Sun Oct  4 21:50:29 2026 :: Log Alaric [16023]: arrived (Main Deck) from 16018
+Sun Oct  4 21:50:30 2026 :: Log Alaric [16023]: n
+Sun Oct  4 21:50:30 2026 :: Log Alaric [16028]: arrived (Main Deck) from 16023
+Sun Oct  4 21:50:32 2026 :: Log Alaric [16028]: te
+Sun Oct  4 21:50:40 2026 :: Log Alaric [16028]: te
+Sun Oct  4 21:50:47 2026 :: Log Alaric [16028]: te
+Sun Oct  4 21:50:55 2026 :: Log Alaric [16028]: te
+Sun Oct  4 21:51:01 2026 :: Log Alaric [16028]: scan
+Sun Oct  4 21:51:02 2026 :: Log Alaric [16028]: c force
+Sun Oct  4 21:51:09 2026 :: Log Alaric [16028]: n
+Sun Oct  4 21:51:09 2026 :: Log Alaric [16033]: arrived (Base of the Mast) from 16028
+Sun Oct  4 21:51:09 2026 :: Log Alaric [16033]: scan
+Sun Oct  4 21:51:11 2026 :: Log Alaric [16033]: n
+Sun Oct  4 21:51:11 2026 :: Log Alaric [16038]: arrived (Main Deck) from 16033
+Sun Oct  4 21:51:12 2026 :: Log Alaric [16038]: te
+Sun Oct  4 21:51:19 2026 :: Log Alaric [16038]: te
+Sun Oct  4 21:51:27 2026 :: Log Alaric [16038]: te
+Sun Oct  4 21:51:33 2026 :: Log Alaric [16038]: te
+Sun Oct  4 21:51:40 2026 :: Log Alaric [16038]: scan
+Sun Oct  4 21:51:41 2026 :: Log Alaric [16038]: n
+Sun Oct  4 21:51:41 2026 :: Log Alaric [16043]: arrived (Main Deck) from 16038
+Sun Oct  4 21:51:42 2026 :: Log Alaric [16043]: scan
+Sun Oct  4 21:51:44 2026 :: Log Alaric [16043]: n
+Sun Oct  4 21:51:44 2026 :: Log Alaric [16047]: arrived (Bow of the Royal Eagle) from 16043
+Sun Oct  4 21:51:45 2026 :: Log Alaric [16047]: scan
+Sun Oct  4 21:51:46 2026 :: Log Alaric [16047]: n
+Sun Oct  4 21:51:46 2026 :: Log Alaric [16050]: arrived (Bow of the Royal Eagle) from 16047
+Sun Oct  4 21:51:47 2026 :: Log Alaric [16050]: te
+Sun Oct  4 21:51:53 2026 :: Log Alaric [16050]: te
+Sun Oct  4 21:51:59 2026 :: Log Alaric [16050]: te
+Sun Oct  4 21:52:04 2026 :: Log Alaric [16050]: scan
+Sun Oct  4 21:52:06 2026 :: Log Alaric [16050]: n
+Sun Oct  4 21:52:06 2026 :: Log Alaric [16052]: arrived (Tip of the Royal Eagle) from 16050
+Sun Oct  4 21:52:06 2026 :: Log Alaric [16052]: te
+Sun Oct  4 21:52:10 2026 :: Log Alaric [16052]: te
+Sun Oct  4 21:52:13 2026 :: Sock.sinaddr:  3.149.57.90
+Sun Oct  4 21:52:13 2026 :: EOF encountered on read.
+Sun Oct  4 21:52:14 2026 :: Log Alaric [16052]: te
+Sun Oct  4 21:52:18 2026 :: Log Alaric [16052]: te
+Sun Oct  4 21:52:24 2026 :: Log Alaric [16052]: te
+Sun Oct  4 21:52:28 2026 :: Log Alaric [16052]: te
+Sun Oct  4 21:52:35 2026 :: Log Alaric [16052]: te
+Sun Oct  4 21:52:41 2026 :: Log Alaric [16052]: te
+Sun Oct  4 21:52:48 2026 :: Log Alaric [16052]: scan
+Sun Oct  4 21:52:49 2026 :: Log Alaric [16052]: s
+Sun Oct  4 21:52:49 2026 :: Log Alaric [16050]: arrived (Bow of the Royal Eagle) from 16052
+Sun Oct  4 21:52:50 2026 :: Log Alaric [16050]: scan
+Sun Oct  4 21:52:53 2026 :: Log Alaric [16050]: s
+Sun Oct  4 21:52:53 2026 :: Log Alaric [16047]: arrived (Bow of the Royal Eagle) from 16050
+Sun Oct  4 21:52:54 2026 :: Log Alaric [16047]: sh pi
+Sun Oct  4 21:53:01 2026 :: Log Alaric [16047]: sh
+Sun Oct  4 21:53:07 2026 :: Log Alaric [16047]: sh
+Sun Oct  4 21:53:14 2026 :: Log Alaric [16047]: sh
+Sun Oct  4 21:53:16 2026 :: Log Alaric [16047]: wo
+Sun Oct  4 21:53:18 2026 :: Log Alaric [16047]: scan
+Sun Oct  4 21:53:20 2026 :: Log Alaric [16047]: w
+Sun Oct  4 21:53:20 2026 :: Log Alaric [16046]: arrived (Bow of the Royal Eagle) from 16047
+Sun Oct  4 21:53:20 2026 :: Log Alaric [16046]: sh sw
+Sun Oct  4 21:53:26 2026 :: Log Alaric [16046]: sh
+Sun Oct  4 21:53:32 2026 :: Log Alaric [16046]: sh
+Sun Oct  4 21:53:38 2026 :: Log Alaric [16046]: sh
+Sun Oct  4 21:53:47 2026 :: Log Alaric [16046]: sh
+Sun Oct  4 21:53:53 2026 :: Log Alaric [16046]: sh
+Sun Oct  4 21:53:55 2026 :: Log Alaric [16046]: level 47 -> 48 (earned)
+Sun Oct  4 21:53:55 2026 :: Alaric has achieved level 48!
