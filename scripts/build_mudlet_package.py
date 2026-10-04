@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import io
+import json
 import sys
 import zipfile
 from collections import deque
@@ -59,8 +60,19 @@ def load_world_rooms():
     # (build_map_bytes skips any exit whose target is not on the map), so
     # nothing points at the gap either. GMCP still sends the room when you
     # walk into one, so the mapper learns it then -- the owner's rule.
+    #
+    # Hyrule's nine dungeons stay off it too (owner, 2026-10-04): a dungeon
+    # is drawn when its dungeon map is found -- the game sends the plan as
+    # Hyrule.MapRoom -- or room by room as it is walked. The overworld is
+    # on the map from the start.
+    dungeons = json.loads((ROOT / "data" / "hyrule_first_quest.json")
+                          .read_text(encoding="utf-8"))["dungeons"]
+    hidden = set()
+    for dungeon in dungeons:
+        hidden.update(range(dungeon["first_room_vnum"], dungeon["last_room_vnum"] + 1))
     rooms = {vnum: room for vnum, room in parser.rooms.items()
-             if "deathtrap" not in decode_flags(room.room_flags, ROOM_FLAGS)}
+             if "deathtrap" not in decode_flags(room.room_flags, ROOM_FLAGS)
+             and vnum not in hidden}
     missing = STARTER_ROOM_IDS - rooms.keys()
     if missing:
         raise RuntimeError(f"Mud School starter rooms are missing: {sorted(missing)}")

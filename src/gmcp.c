@@ -12,7 +12,7 @@
 #include "merc.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.5.4"
+#define TOC_MUDLET_PACKAGE_VERSION "1.5.5"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \
@@ -181,6 +181,7 @@ static void gmcp_reset_snapshots( DESCRIPTOR_DATA *d )
     d->gmcp_last_character = NULL;
     d->gmcp_last_room = -1;
     d->gmcp_last_room_hash = 0;
+    d->hyrule_maps_sent = 0;
     d->gmcp_last_affect_hash = 0;
     d->gmcp_last_quest_hash = 0;
     d->gmcp_last_target_hash = 0;
@@ -1166,6 +1167,66 @@ void gmcp_send_channel( DESCRIPTOR_DATA *d, const char *channel,
 }
 
 
+/*
+ * One room of a Hyrule dungeon's floor plan, for the client's map: sent by
+ * hyrule_send_map (hyrule.c), room by room, when the character comes to hold
+ * that dungeon's map. The starter map leaves the dungeons out (owner,
+ * 2026-10-04), so a dungeon is drawn only once its map is found -- or room
+ * by room as it is walked. x and y are the plan's column and row, z is -1
+ * for a cellar. Exits are the ones Room.Info would name: a wall not yet
+ * bombed is still secret and is left out.
+ */
+void gmcp_send_map_room( DESCRIPTOR_DATA *d, ROOM_INDEX_DATA *room, int level,
+                         int x, int y, int z )
+{
+    char json[MAX_TELNET_SUBNEG - 64];
+    char number[96];
+    int direction;
+    bool first = true;
+
+    if ( d == NULL || room == NULL || !d->gmcp_enabled || d->connected != CON_PLAYING )
+        return;
+
+    snprintf( json, sizeof(json), "{\"level\":%d,\"num\":%d,\"name\":", level, room->vnum );
+    gmcp_json_append_quoted( json, sizeof(json), room->name );
+    toc_strlcat( json, ",\"area\":", sizeof(json) );
+    gmcp_json_append_quoted( json, sizeof(json),
+        room->area != NULL ? gmcp_area_name(room->area->name) : "Unknown Area" );
+    toc_strlcat( json, ",\"environment\":", sizeof(json) );
+    gmcp_json_append_quoted( json, sizeof(json),
+        room->sector_type >= 0 && room->sector_type < SECT_MAX
+            ? gmcp_sector_name[room->sector_type] : "unknown" );
+    snprintf( number, sizeof(number), ",\"x\":%d,\"y\":%d,\"z\":%d,\"exits\":{", x, y, z );
+    toc_strlcat( json, number, sizeof(json) );
+    for ( direction = 0; direction < 10; ++direction )
+    {
+        EXIT_DATA *exit_data = room->exit[direction];
+
+        if ( exit_data == NULL || exit_data->u1.to_room == NULL
+        ||   IS_SET(exit_data->exit_info, EX_SECRET) )
+            continue;
+        if ( !first )
+            toc_strlcat( json, ",", sizeof(json) );
+        first = false;
+        gmcp_json_append_quoted( json, sizeof(json), gmcp_direction_name[direction] );
+        snprintf( number, sizeof(number), ":%d", exit_data->u1.to_room->vnum );
+        toc_strlcat( json, number, sizeof(json) );
+    }
+    toc_strlcat( json, "}}", sizeof(json) );
+    telnet_send_gmcp( d, "Hyrule.MapRoom", json );
+}
+
+/* The end of a floor plan: the client links the rooms it has been sent. */
+void gmcp_send_map_done( DESCRIPTOR_DATA *d, int level, int rooms )
+{
+    char json[96];
+
+    if ( d == NULL || !d->gmcp_enabled || d->connected != CON_PLAYING )
+        return;
+    snprintf( json, sizeof(json), "{\"level\":%d,\"rooms\":%d}", level, rooms );
+    telnet_send_gmcp( d, "Hyrule.MapDone", json );
+}
+
 void gmcp_send_room( DESCRIPTOR_DATA *d )
 {
     CHAR_DATA *ch;
@@ -1327,4 +1388,8 @@ void gmcp_send_room( DESCRIPTOR_DATA *d )
 
     d->gmcp_last_room = room->vnum;
     d->gmcp_last_room_hash = room_hash;
+
+    /* Walking into a Hyrule dungeon with its map in hand draws the whole
+       dungeon, once a session (hyrule.c). */
+    hyrule_map_on_arrival( ch );
 }

@@ -318,6 +318,90 @@ void hyrule_show_map( CHAR_DATA *ch, OBJ_DATA *obj )
             "  You are in the cellar beneath the room marked @.\n\r", sizeof(out) );
 
     send_to_char( out, ch );
+    hyrule_send_map( ch, obj );
+}
+
+/*
+ * The dungeon's floor plan for a client's map (Mudlet): every room of the
+ * plan at its row and column, cellars a level below the room they open
+ * from, then a closing message for the client to link the exits (owner,
+ * 2026-10-04: the starter map leaves the dungeons out, and the map item is
+ * what fills one in). Sent on picking the map up, on reading it, and on
+ * walking into its dungeon with it in hand, once a session.
+ */
+void hyrule_send_map( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    HYRULE_PLAN plan;
+    ROOM_INDEX_DATA *room;
+    DESCRIPTOR_DATA *d;
+    int level;
+    int row;
+    int col;
+    int i;
+    int sent = 0;
+
+    if ( ch == NULL || IS_NPC(ch) || ( d = ch->desc ) == NULL || !d->gmcp_enabled
+    ||   !hyrule_is_dungeon_tool( obj ) || obj->value[0] != HYRULE_DUNGEON_MAP
+    ||   !read_plan( obj, &plan ) )
+        return;
+    level = obj->value[4];
+
+    for ( row = 0; row < HYRULE_PLAN_SIDE; row++ )
+        for ( col = 0; col < HYRULE_PLAN_SIDE; col++ )
+            if ( plan.cell[row][col] > 0
+            &&   ( room = get_room_index( plan.cell[row][col] ) ) != NULL )
+            {
+                gmcp_send_map_room( d, room, level, col, -row, 0 );
+                sent++;
+            }
+    for ( i = 0; i < plan.cellars; i++ )
+        if ( plan_find( &plan, plan.cellar_above[i], &row, &col )
+        &&   ( room = get_room_index( plan.cellar[i] ) ) != NULL )
+        {
+            gmcp_send_map_room( d, room, level, col, -row, -1 );
+            sent++;
+        }
+    gmcp_send_map_done( d, level, sent );
+    d->hyrule_maps_sent |= 1 << level;
+}
+
+/* Into a dungeon whose map you carry, in hand or one bag down: its plan
+   goes to the client, if it has not this session. */
+void hyrule_map_on_arrival( CHAR_DATA *ch )
+{
+    const HYRULE_DUNGEON_GATE *gate;
+    OBJ_DATA *obj;
+    OBJ_DATA *in;
+    int vnum;
+    int level;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->desc == NULL || ch->in_room == NULL )
+        return;
+    vnum = ch->in_room->vnum;
+    if ( vnum < 30400 || vnum > 30699 )
+        return;
+    for ( level = 1; level <= 9; level++ )
+        if ( ( gate = hyrule_dungeon_gate( level ) ) != NULL
+        &&   vnum >= gate->first_room && vnum <= gate->last_room )
+            break;
+    if ( level > 9 || ( ch->desc->hyrule_maps_sent & ( 1 << level ) ) )
+        return;
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    {
+        if ( hyrule_is_dungeon_tool( obj ) && obj->value[0] == HYRULE_DUNGEON_MAP
+        &&   obj->value[4] == level )
+        {
+            hyrule_send_map( ch, obj );
+            return;
+        }
+        for ( in = obj->contains; in != NULL; in = in->next_content )
+            if ( hyrule_is_dungeon_tool( in ) && in->value[0] == HYRULE_DUNGEON_MAP
+            &&   in->value[4] == level )
+            {
+                hyrule_send_map( ch, in );
+                return;
+            }
+    }
 }
 
 /*

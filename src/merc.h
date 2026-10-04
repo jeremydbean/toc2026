@@ -578,6 +578,7 @@ struct  descriptor_data
     bool                gmcp_chars_valid;
     bool                gmcp_items_valid;
     uint32_t            gmcp_last_room_hash;
+    int                 hyrule_maps_sent;   /* bit per dungeon whose plan went out */
     int                 gmcp_last_wait;     /* Char.Lag: last wait sent */
     uint32_t            gmcp_last_group_hash;
     bool                gmcp_group_valid;
@@ -3173,6 +3174,11 @@ bool    hyrule_play_recorder   ( CHAR_DATA *ch, const char *argument );
 int     hyrule_next_level      ( CHAR_DATA *ch );
 void    hyrule_owl_advice      ( CHAR_DATA *ch );
 void    hyrule_owl_after_portal( CHAR_DATA *ch, ROOM_INDEX_DATA *from );
+void    hyrule_send_map        ( CHAR_DATA *ch, OBJ_DATA *obj );
+void    hyrule_map_on_arrival  ( CHAR_DATA *ch );
+void    gmcp_send_map_room     ( DESCRIPTOR_DATA *d, ROOM_INDEX_DATA *room, int level,
+                                 int x, int y, int z );
+void    gmcp_send_map_done     ( DESCRIPTOR_DATA *d, int level, int rooms );
 void    hyrule_after_quaff     ( CHAR_DATA *ch, int vnum );
 bool    hyrule_rod_is_endless  ( const OBJ_DATA *wand );
 void    hyrule_after_zap       ( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *wand );

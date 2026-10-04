@@ -176,6 +176,16 @@ give, is graded for dungeon N's band, and every other screen takes the grade
 of the nearest graded one (the start stays at 1). Re-grade with the same
 rule if the overworld changes; the manifest builder cannot be rerun.
 
+**A dungeon is on the Mudlet map once its map is found** (owner,
+2026-10-04). `scripts/build_mudlet_package.py` leaves the nine dungeons' vnum
+ranges off the starter map; the overworld stays. Getting a dungeon's map,
+reading it, or walking into its dungeon with it in hand (once a session)
+sends the floor plan as `Hyrule.MapRoom` GMCP messages, one per room -- a
+whole dungeon does not fit `MAX_TELNET_SUBNEG` -- and `Hyrule.MapDone`
+(`hyrule_send_map` in `src/hyrule.c`). The package places each room at its
+plan position on z-level `-10 * level` (cellars one below) and links the
+exits at the end. Rooms walked without the map are still mapped as visited.
+
 **Bombs where the walls want them.** A Hyrule enemy killed in or next to a
 room with a bomb wall leaves a bomb one time in four
 (`HYRULE_BOMB_DROP_CHANCE` in `src/hyrule.c`), up to the bag's capacity.

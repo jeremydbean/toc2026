@@ -38768,7 +38768,6 @@
   <room id="30205" area="45" title="Grove of the Manji" environment="6">
    <coord x="-3" y="0" z="0" />
    <exit direction="west" target="30204" />
-   <exit direction="down" target="30437" />
   </room>
   <room id="30206" area="45" title="Sandy Glade" environment="11">
    <coord x="-2" y="0" z="0" />
@@ -38928,7 +38927,6 @@
    <exit direction="north" target="30245" />
    <exit direction="east" target="30230" />
    <exit direction="west" target="30228" />
-   <exit direction="down" target="30562" />
   </room>
   <room id="30230" area="45" title="Eastern Wood Path" environment="4">
    <coord x="7" y="1" z="0" />
@@ -39058,7 +39056,6 @@
   <room id="30250" area="45" title="The Still Pond" environment="4">
    <coord x="-7" y="3" z="0" />
    <exit direction="south" target="30234" />
-   <exit direction="down" target="30527" />
   </room>
   <room id="30251" area="45" title="Fairy Pond of the Woods" environment="3">
    <coord x="-5" y="3" z="0" />
@@ -39180,7 +39177,6 @@
   <room id="30271" area="45" title="The Eagle's Gate" environment="3">
    <coord x="0" y="4" z="0" />
    <exit direction="east" target="30272" />
-   <exit direction="down" target="30401" />
   </room>
   <room id="30272" area="45" title="The River Landing" environment="3">
    <coord x="1" y="4" z="0" />
@@ -39207,7 +39203,6 @@
   <room id="30276" area="45" title="The Moon Gate" environment="3">
    <coord x="5" y="4" z="0" />
    <exit direction="south" target="30260" />
-   <exit direction="down" target="30418" />
   </room>
   <room id="30277" area="45" title="The Armos Shore" environment="4">
    <coord x="6" y="4" z="0" />
@@ -39240,7 +39235,6 @@
   <room id="30282" area="45" title="The Dragon's Gate" environment="6">
    <coord x="-7" y="5" z="0" />
    <exit direction="south" target="30266" />
-   <exit direction="down" target="30501" />
   </room>
   <room id="30283" area="45" title="The Western Warp Stone" environment="6">
    <coord x="-4" y="5" z="0" />
@@ -39460,7 +39454,6 @@
    <coord x="-2" y="11" z="0" />
    <exit direction="east" target="30318" />
    <exit direction="west" target="30316" />
-   <exit direction="down" target="30590" />
   </room>
   <room id="30318" area="45" title="East of Spectacle Rock" environment="6">
    <coord x="-1" y="11" z="0" />
@@ -39491,7 +39484,6 @@
   <room id="30323" area="45" title="The Lizard's Gate" environment="6">
    <coord x="4" y="7" z="0" />
    <exit direction="south" target="30307" />
-   <exit direction="down" target="30476" />
   </room>
   <room id="30324" area="45" title="The Candle Merchant's Hollow" environment="6">
    <coord x="5" y="7" z="0" />
@@ -39531,1309 +39523,6 @@
    <coord x="5" y="6" z="-1" />
    <exit direction="up" target="30308" />
   </room>
-  <room id="30400" area="45" title="Level 1: West Guardroom" environment="12">
-   <coord x="-1" y="4" z="-1" />
-   <exit direction="east" target="30401" />
-  </room>
-  <room id="30401" area="45" title="Level 1: Eagle Gate" environment="12">
-   <coord x="0" y="4" z="-1" />
-   <exit direction="north" target="30403" />
-   <exit direction="east" target="30402" />
-   <exit direction="west" target="30400" />
-   <exit direction="up" target="30271" />
-  </room>
-  <room id="30402" area="45" title="Level 1: East Bone Room" environment="12">
-   <coord x="1" y="4" z="-1" />
-   <exit direction="west" target="30401" />
-  </room>
-  <room id="30403" area="45" title="Level 1: Rattling Passage" environment="12">
-   <coord x="-1" y="5" z="-1" />
-   <exit direction="north" target="30405" />
-   <exit direction="south" target="30401" />
-  </room>
-  <room id="30404" area="45" title="Level 1: Shuttered West Room" environment="12">
-   <coord x="-2" y="6" z="-1" />
-   <exit direction="north" target="30408" />
-   <exit direction="east" target="30405" />
-  </room>
-  <room id="30405" area="45" title="Level 1: Diamond-Tiled Crossing" environment="12">
-   <coord x="-1" y="6" z="-1" />
-   <exit direction="north" target="30409" />
-   <exit direction="east" target="30406" />
-   <exit direction="south" target="30403" />
-   <exit direction="west" target="30404" />
-  </room>
-  <room id="30406" area="45" title="Level 1: Keese-Fouled Gallery" environment="12">
-   <coord x="1" y="6" z="-1" />
-   <exit direction="north" target="30410" />
-   <exit direction="west" target="30405" />
-  </room>
-  <room id="30407" area="45" title="Level 1: Eagle's Ember Alcove" environment="12">
-   <coord x="-3" y="7" z="-1" />
-   <exit direction="east" target="30408" />
-  </room>
-  <room id="30408" area="45" title="Level 1: Slime-Slick Hall" environment="12">
-   <coord x="-2" y="7" z="-1" />
-   <exit direction="east" target="30409" />
-   <exit direction="south" target="30404" />
-   <exit direction="west" target="30407" />
-  </room>
-  <room id="30409" area="45" title="Level 1: Chamber of Pillars" environment="12">
-   <coord x="-1" y="7" z="-1" />
-   <exit direction="north" target="30412" />
-   <exit direction="east" target="30410" />
-   <exit direction="south" target="30405" />
-   <exit direction="west" target="30408" />
-  </room>
-  <room id="30410" area="45" title="Level 1: Scarred Hall" environment="12">
-   <coord x="0" y="7" z="-1" />
-   <exit direction="east" target="30411" />
-   <exit direction="south" target="30406" />
-   <exit direction="west" target="30409" />
-  </room>
-  <room id="30411" area="45" title="Level 1: Hall of Grasping Walls" environment="12">
-   <coord x="1" y="7" z="-1" />
-   <exit direction="north" target="30413" />
-   <exit direction="west" target="30410" />
-  </room>
-  <room id="30412" area="45" title="Level 1: Ossuary Hall" environment="12">
-   <coord x="-1" y="8" z="-1" />
-   <exit direction="north" target="30416" />
-   <exit direction="south" target="30409" />
-  </room>
-  <room id="30413" area="45" title="Level 1: Hall of Threefold Scorches" environment="12">
-   <coord x="1" y="8" z="-1" />
-   <exit direction="east" target="30414" />
-   <exit direction="south" target="30411" />
-  </room>
-  <room id="30414" area="45" title="Level 1: Eagle's Golden Sanctum" environment="12">
-   <coord x="2" y="8" z="-1" />
-   <exit direction="west" target="30413" />
-  </room>
-  <room id="30415" area="45" title="Level 1: Chamber of Blade Traps" environment="12">
-   <coord x="-2" y="9" z="-1" />
-   <exit direction="east" target="30416" />
-   <exit direction="down" target="30417" />
-  </room>
-  <room id="30416" area="45" title="Level 1: Northern Guardroom" environment="12">
-   <coord x="-1" y="9" z="-1" />
-   <exit direction="south" target="30412" />
-   <exit direction="west" target="30415" />
-  </room>
-  <room id="30417" area="45" title="Level 1: Undercroft of Brick Ledges" environment="12">
-   <coord x="-2" y="9" z="-2" />
-   <exit direction="up" target="30415" />
-  </room>
-  <room id="30418" area="45" title="Level 2: Crescent Gate" environment="12">
-   <coord x="5" y="4" z="-1" />
-   <exit direction="north" target="30421" />
-   <exit direction="east" target="30419" />
-   <exit direction="up" target="30276" />
-  </room>
-  <room id="30419" area="45" title="Level 2: Shed Skin Chamber" environment="12">
-   <coord x="9" y="4" z="-1" />
-   <exit direction="north" target="30422" />
-   <exit direction="west" target="30418" />
-  </room>
-  <room id="30420" area="45" title="Level 2: Coiled Track Room" environment="12">
-   <coord x="2" y="5" z="-1" />
-   <exit direction="east" target="30421" />
-  </room>
-  <room id="30421" area="45" title="Level 2: Blue Antechamber" environment="12">
-   <coord x="4" y="5" z="-1" />
-   <exit direction="east" target="30422" />
-   <exit direction="south" target="30418" />
-   <exit direction="west" target="30420" />
-  </room>
-  <room id="30422" area="45" title="Level 2: Moonstone Crossroads" environment="12">
-   <coord x="3" y="5" z="-1" />
-   <exit direction="north" target="30424" />
-   <exit direction="east" target="30423" />
-   <exit direction="south" target="30419" />
-   <exit direction="west" target="30421" />
-  </room>
-  <room id="30423" area="45" title="Level 2: Dripping Chamber" environment="12">
-   <coord x="10" y="5" z="-1" />
-   <exit direction="north" target="30425" />
-   <exit direction="west" target="30422" />
-  </room>
-  <room id="30424" area="45" title="Level 2: Gouged Hall" environment="12">
-   <coord x="2" y="6" z="-1" />
-   <exit direction="north" target="30426" />
-   <exit direction="east" target="30425" />
-   <exit direction="south" target="30422" />
-  </room>
-  <room id="30425" area="45" title="Level 2: Cracked Eastern Room" environment="12">
-   <coord x="3" y="4" z="-1" />
-   <exit direction="north" target="30427" />
-   <exit direction="south" target="30423" />
-   <exit direction="west" target="30424" />
-  </room>
-  <room id="30426" area="45" title="Level 2: Long Hall of the Moon" environment="12">
-   <coord x="2" y="7" z="-1" />
-   <exit direction="north" target="30428" />
-   <exit direction="east" target="30427" />
-   <exit direction="south" target="30424" />
-  </room>
-  <room id="30427" area="45" title="Level 2: Eastern Hall of Cuts" environment="12">
-   <coord x="3" y="10" z="-1" />
-   <exit direction="north" target="30429" />
-   <exit direction="south" target="30425" />
-   <exit direction="west" target="30426" />
-  </room>
-  <room id="30428" area="45" title="Level 2: Silent Chamber" environment="12">
-   <coord x="0" y="8" z="-1" />
-   <exit direction="north" target="30430" />
-   <exit direction="east" target="30429" />
-   <exit direction="south" target="30426" />
-  </room>
-  <room id="30429" area="45" title="Level 2: Trap-Grooved Room" environment="12">
-   <coord x="1" y="9" z="-1" />
-   <exit direction="north" target="30431" />
-   <exit direction="south" target="30427" />
-   <exit direction="west" target="30428" />
-  </room>
-  <room id="30430" area="45" title="Level 2: Serpent Hall" environment="12">
-   <coord x="0" y="9" z="-1" />
-   <exit direction="north" target="30432" />
-   <exit direction="east" target="30431" />
-   <exit direction="south" target="30428" />
-  </room>
-  <room id="30431" area="45" title="Level 2: Slime-Pooled Cell" environment="12">
-   <coord x="1" y="10" z="-1" />
-   <exit direction="north" target="30433" />
-   <exit direction="south" target="30429" />
-   <exit direction="west" target="30430" />
-  </room>
-  <room id="30432" area="45" title="Level 2: Smoke-Stained Antechamber" environment="12">
-   <coord x="0" y="10" z="-1" />
-   <exit direction="north" target="30435" />
-   <exit direction="east" target="30433" />
-   <exit direction="south" target="30430" />
-  </room>
-  <room id="30433" area="45" title="Level 2: Moonlit Smoke Hollow" environment="12">
-   <coord x="2" y="10" z="-1" />
-   <exit direction="south" target="30431" />
-   <exit direction="west" target="30432" />
-  </room>
-  <room id="30434" area="45" title="Level 2: Crescent Moon Sanctum" environment="12">
-   <coord x="-1" y="11" z="-1" />
-   <exit direction="east" target="30435" />
-  </room>
-  <room id="30435" area="45" title="Level 2: Dodongo's Lair" environment="12">
-   <coord x="1" y="11" z="-1" />
-   <exit direction="south" target="30432" />
-   <exit direction="west" target="30434" />
-  </room>
-  <room id="30436" area="45" title="Level 3: Ooze Chamber" environment="12">
-   <coord x="-4" y="0" z="-1" />
-   <exit direction="north" target="30439" />
-   <exit direction="east" target="30437" />
-  </room>
-  <room id="30437" area="45" title="Level 3: Manji Gate" environment="12">
-   <coord x="-3" y="0" z="-1" />
-   <exit direction="west" target="30436" />
-   <exit direction="up" target="30205" />
-  </room>
-  <room id="30438" area="45" title="Level 3: Knight's Dead End" environment="12">
-   <coord x="-6" y="1" z="-1" />
-   <exit direction="north" target="30440" />
-   <exit direction="down" target="30454" />
-  </room>
-  <room id="30439" area="45" title="Level 3: Streaked Hall" environment="12">
-   <coord x="-4" y="2" z="-1" />
-   <exit direction="north" target="30442" />
-   <exit direction="south" target="30436" />
-  </room>
-  <room id="30440" area="45" title="Level 3: Armored Hall" environment="12">
-   <coord x="-6" y="2" z="-1" />
-   <exit direction="north" target="30445" />
-   <exit direction="east" target="30441" />
-   <exit direction="south" target="30438" />
-  </room>
-  <room id="30441" area="45" title="Level 3: Hall of Blades" environment="12">
-   <coord x="-5" y="3" z="-1" />
-   <exit direction="north" target="30446" />
-   <exit direction="east" target="30442" />
-   <exit direction="west" target="30440" />
-  </room>
-  <room id="30442" area="45" title="Level 3: Manji Crossing" environment="12">
-   <coord x="-4" y="3" z="-1" />
-   <exit direction="north" target="30447" />
-   <exit direction="east" target="30443" />
-   <exit direction="south" target="30439" />
-   <exit direction="west" target="30441" />
-  </room>
-  <room id="30443" area="45" title="Level 3: Eastern Slime Hall" environment="12">
-   <coord x="-2" y="3" z="-1" />
-   <exit direction="north" target="30448" />
-   <exit direction="east" target="30444" />
-   <exit direction="west" target="30442" />
-  </room>
-  <room id="30444" area="45" title="Level 3: Chamber of Cold Flickers" environment="12">
-   <coord x="-1" y="-1" z="-1" />
-   <exit direction="north" target="30449" />
-   <exit direction="west" target="30443" />
-  </room>
-  <room id="30445" area="45" title="Level 3: Haunted West Room" environment="12">
-   <coord x="-6" y="8" z="-1" />
-   <exit direction="east" target="30446" />
-   <exit direction="south" target="30440" />
-  </room>
-  <room id="30446" area="45" title="Level 3: Bat Gallery" environment="12">
-   <coord x="-5" y="6" z="-1" />
-   <exit direction="east" target="30447" />
-   <exit direction="south" target="30441" />
-   <exit direction="west" target="30445" />
-  </room>
-  <room id="30447" area="45" title="Level 3: Hall of Three Locks" environment="12">
-   <coord x="-4" y="4" z="-1" />
-   <exit direction="north" target="30450" />
-   <exit direction="east" target="30448" />
-   <exit direction="south" target="30442" />
-   <exit direction="west" target="30446" />
-  </room>
-  <room id="30448" area="45" title="Level 3: Room of Sliding Blades" environment="12">
-   <coord x="-3" y="2" z="-1" />
-   <exit direction="east" target="30449" />
-   <exit direction="south" target="30443" />
-   <exit direction="west" target="30447" />
-  </room>
-  <room id="30449" area="45" title="Level 3: Manhandla's Lair" environment="12">
-   <coord x="-2" y="2" z="-1" />
-   <exit direction="north" target="30451" />
-   <exit direction="south" target="30444" />
-   <exit direction="west" target="30448" />
-  </room>
-  <room id="30450" area="45" title="Level 3: Manji Hall of Grinding Grooves" environment="12">
-   <coord x="-4" y="7" z="-1" />
-   <exit direction="north" target="30453" />
-   <exit direction="south" target="30447" />
-  </room>
-  <room id="30451" area="45" title="Level 3: Sanctum of the Golden Cross" environment="12">
-   <coord x="-2" y="1" z="-1" />
-   <exit direction="south" target="30449" />
-  </room>
-  <room id="30452" area="45" title="Level 3: Northwest Roost" environment="12">
-   <coord x="-5" y="8" z="-1" />
-   <exit direction="east" target="30453" />
-  </room>
-  <room id="30453" area="45" title="Level 3: Manji Hearth Chamber" environment="12">
-   <coord x="-3" y="8" z="-1" />
-   <exit direction="south" target="30450" />
-   <exit direction="west" target="30452" />
-  </room>
-  <room id="30454" area="45" title="Level 3: Pitch-Scented Cellar" environment="12">
-   <coord x="-6" y="1" z="-2" />
-   <exit direction="up" target="30438" />
-  </room>
-  <room id="30455" area="45" title="Level 4: Dripping Roost" environment="12">
-   <coord x="18" y="0" z="0" />
-   <exit direction="east" target="30456" />
-  </room>
-  <room id="30456" area="45" title="Level 4: Mouth of the Snake" environment="12">
-   <coord x="19" y="0" z="0" />
-   <exit direction="north" target="30457" />
-   <exit direction="west" target="30455" />
-   <exit direction="up" target="30253" />
-  </room>
-  <room id="30457" area="45" title="Level 4: Moat Crossing" environment="12">
-   <coord x="19" y="1" z="0" />
-   <exit direction="north" target="30460" />
-   <exit direction="east" target="30458" />
-   <exit direction="south" target="30456" />
-  </room>
-  <room id="30458" area="45" title="Level 4: Serpent Coil Chamber" environment="12">
-   <coord x="20" y="1" z="0" />
-   <exit direction="west" target="30457" />
-  </room>
-  <room id="30459" area="45" title="Level 4: Lane of Blocks" environment="12">
-   <coord x="18" y="2" z="0" />
-   <exit direction="north" target="30461" />
-   <exit direction="east" target="30460" />
-  </room>
-  <room id="30460" area="45" title="Level 4: Seeping Gallery" environment="12">
-   <coord x="19" y="2" z="0" />
-   <exit direction="south" target="30457" />
-   <exit direction="west" target="30459" />
-  </room>
-  <room id="30461" area="45" title="Level 4: Still Corridor" environment="12">
-   <coord x="18" y="3" z="0" />
-   <exit direction="north" target="30462" />
-   <exit direction="south" target="30459" />
-  </room>
-  <room id="30462" area="45" title="Level 4: Crackling Antechamber" environment="12">
-   <coord x="18" y="4" z="0" />
-   <exit direction="north" target="30465" />
-   <exit direction="south" target="30461" />
-  </room>
-  <room id="30463" area="45" title="Level 4: Hall of Biting Serpents" environment="12">
-   <coord x="19" y="4" z="0" />
-   <exit direction="north" target="30466" />
-   <exit direction="east" target="30464" />
-  </room>
-  <room id="30464" area="45" title="Level 4: Room of the Sunken Block" environment="12">
-   <coord x="20" y="4" z="0" />
-   <exit direction="west" target="30463" />
-   <exit direction="down" target="30475" />
-  </room>
-  <room id="30465" area="45" title="Level 4: Divided Hall" environment="12">
-   <coord x="18" y="5" z="0" />
-   <exit direction="north" target="30467" />
-   <exit direction="east" target="30466" />
-   <exit direction="south" target="30462" />
-  </room>
-  <room id="30466" area="45" title="Level 4: Slick Chamber" environment="12">
-   <coord x="19" y="5" z="0" />
-   <exit direction="north" target="30468" />
-   <exit direction="south" target="30463" />
-   <exit direction="west" target="30465" />
-  </room>
-  <room id="30467" area="45" title="Level 4: Cold Crossing" environment="12">
-   <coord x="18" y="6" z="0" />
-   <exit direction="north" target="30471" />
-   <exit direction="east" target="30468" />
-   <exit direction="south" target="30465" />
-  </room>
-  <room id="30468" area="45" title="Level 4: The Sealed Heart" environment="12">
-   <coord x="19" y="6" z="0" />
-   <exit direction="north" target="30472" />
-   <exit direction="east" target="30469" />
-   <exit direction="south" target="30466" />
-   <exit direction="west" target="30467" />
-  </room>
-  <room id="30469" area="45" title="Level 4: Knight's Approach" environment="12">
-   <coord x="20" y="6" z="0" />
-   <exit direction="north" target="30473" />
-   <exit direction="east" target="30470" />
-   <exit direction="west" target="30468" />
-  </room>
-  <room id="30470" area="45" title="Level 4: Hall of the Twin Necks" environment="12">
-   <coord x="21" y="6" z="0" />
-   <exit direction="north" target="30474" />
-   <exit direction="west" target="30469" />
-  </room>
-  <room id="30471" area="45" title="Level 4: Serpent Hearth Cell" environment="12">
-   <coord x="18" y="7" z="0" />
-   <exit direction="south" target="30467" />
-  </room>
-  <room id="30472" area="45" title="Level 4: Rafter Roost" environment="12">
-   <coord x="19" y="7" z="0" />
-   <exit direction="east" target="30473" />
-   <exit direction="south" target="30468" />
-  </room>
-  <room id="30473" area="45" title="Level 4: Gauntlet of Blades" environment="12">
-   <coord x="20" y="7" z="0" />
-   <exit direction="south" target="30469" />
-   <exit direction="west" target="30472" />
-  </room>
-  <room id="30474" area="45" title="Level 4: Sanctum of Bowed Serpents" environment="12">
-   <coord x="21" y="7" z="0" />
-   <exit direction="south" target="30470" />
-  </room>
-  <room id="30475" area="45" title="Level 4: Seeping Red-Brick Cellar" environment="12">
-   <coord x="20" y="4" z="-1" />
-   <exit direction="up" target="30464" />
-  </room>
-  <room id="30476" area="45" title="Level 5: Lizard's Gate" environment="12">
-   <coord x="4" y="7" z="-1" />
-   <exit direction="north" target="30480" />
-   <exit direction="east" target="30477" />
-   <exit direction="up" target="30323" />
-  </room>
-  <room id="30477" area="45" title="Level 5: Echoing Chamber" environment="12">
-   <coord x="5" y="7" z="-1" />
-   <exit direction="north" target="30481" />
-   <exit direction="west" target="30476" />
-  </room>
-  <room id="30478" area="45" title="Level 5: Western Stairwell" environment="12">
-   <coord x="2" y="9" z="-1" />
-   <exit direction="east" target="30479" />
-   <exit direction="down" target="30498" />
-  </room>
-  <room id="30479" area="45" title="Level 5: Hall of Linen Biers" environment="12">
-   <coord x="3" y="8" z="-1" />
-   <exit direction="north" target="30482" />
-   <exit direction="east" target="30480" />
-   <exit direction="west" target="30478" />
-  </room>
-  <room id="30480" area="45" title="Level 5: Embalmers' Hall" environment="12">
-   <coord x="4" y="8" z="-1" />
-   <exit direction="north" target="30483" />
-   <exit direction="east" target="30481" />
-   <exit direction="south" target="30476" />
-   <exit direction="west" target="30479" />
-  </room>
-  <room id="30481" area="45" title="Level 5: Grey Brick Fireside" environment="12">
-   <coord x="5" y="8" z="-1" />
-   <exit direction="south" target="30477" />
-   <exit direction="west" target="30480" />
-  </room>
-  <room id="30482" area="45" title="Level 5: Slime-Glazed Vault" environment="12">
-   <coord x="3" y="9" z="-1" />
-   <exit direction="east" target="30483" />
-   <exit direction="south" target="30479" />
-  </room>
-  <room id="30483" area="45" title="Level 5: Hall of Heavy Tracks" environment="12">
-   <coord x="4" y="9" z="-1" />
-   <exit direction="north" target="30485" />
-   <exit direction="east" target="30484" />
-   <exit direction="south" target="30480" />
-   <exit direction="west" target="30482" />
-  </room>
-  <room id="30484" area="45" title="Level 5: Gray Junction" environment="12">
-   <coord x="5" y="9" z="-1" />
-   <exit direction="north" target="30486" />
-   <exit direction="west" target="30483" />
-  </room>
-  <room id="30485" area="45" title="Level 5: Hushed Archive" environment="12">
-   <coord x="4" y="10" z="-1" />
-   <exit direction="east" target="30486" />
-   <exit direction="south" target="30483" />
-  </room>
-  <room id="30486" area="45" title="Level 5: Shuffling Passage" environment="12">
-   <coord x="5" y="10" z="-1" />
-   <exit direction="north" target="30488" />
-   <exit direction="south" target="30484" />
-   <exit direction="west" target="30485" />
-  </room>
-  <room id="30487" area="45" title="Level 5: Sealed Crypt" environment="12">
-   <coord x="2" y="11" z="-1" />
-   <exit direction="north" target="30489" />
-  </room>
-  <room id="30488" area="45" title="Level 5: Lizard Shrine" environment="12">
-   <coord x="5" y="11" z="-1" />
-   <exit direction="north" target="30492" />
-   <exit direction="south" target="30486" />
-  </room>
-  <room id="30489" area="45" title="Level 5: Digdogger's Den" environment="12">
-   <coord x="2" y="12" z="-1" />
-   <exit direction="north" target="30493" />
-   <exit direction="east" target="30490" />
-   <exit direction="south" target="30487" />
-  </room>
-  <room id="30490" area="45" title="Level 5: Whispering Gallery" environment="12">
-   <coord x="3" y="12" z="-1" />
-   <exit direction="north" target="30494" />
-   <exit direction="east" target="30491" />
-   <exit direction="west" target="30489" />
-  </room>
-  <room id="30491" area="45" title="Level 5: Ossuary" environment="12">
-   <coord x="4" y="12" z="-1" />
-   <exit direction="east" target="30492" />
-   <exit direction="west" target="30490" />
-  </room>
-  <room id="30492" area="45" title="Level 5: Bat-Haunted Tomb" environment="12">
-   <coord x="5" y="12" z="-1" />
-   <exit direction="south" target="30488" />
-   <exit direction="west" target="30491" />
-  </room>
-  <room id="30493" area="45" title="Level 5: Sanctum of Turning Lizards" environment="12">
-   <coord x="2" y="13" z="-1" />
-   <exit direction="south" target="30489" />
-  </room>
-  <room id="30494" area="45" title="Level 5: Nook Behind the False Wall" environment="12">
-   <coord x="3" y="13" z="-1" />
-   <exit direction="south" target="30490" />
-  </room>
-  <room id="30495" area="45" title="Level 5: Rafter Hall" environment="12">
-   <coord x="2" y="8" z="-2" />
-   <exit direction="north" target="30498" />
-   <exit direction="east" target="30496" />
-  </room>
-  <room id="30496" area="45" title="Level 5: Bomb Seller's Back Room" environment="12">
-   <coord x="3" y="8" z="-2" />
-   <exit direction="west" target="30495" />
-  </room>
-  <room id="30497" area="45" title="Level 5: Room of the Scraped Block" environment="12">
-   <coord x="1" y="9" z="-2" />
-   <exit direction="east" target="30498" />
-   <exit direction="down" target="30499" />
-  </room>
-  <room id="30498" area="45" title="Level 5: Stair Landing" environment="12">
-   <coord x="2" y="9" z="-2" />
-   <exit direction="south" target="30495" />
-   <exit direction="west" target="30497" />
-   <exit direction="up" target="30478" />
-  </room>
-  <room id="30499" area="45" title="Level 5: Whistling Brick Cellar" environment="12">
-   <coord x="1" y="9" z="-3" />
-   <exit direction="up" target="30497" />
-  </room>
-  <room id="30500" area="45" title="Level 6: Scorched Antechamber" environment="12">
-   <coord x="-11" y="5" z="-1" />
-   <exit direction="north" target="30503" />
-   <exit direction="east" target="30501" />
-  </room>
-  <room id="30501" area="45" title="Level 6: Dragon's Gate" environment="12">
-   <coord x="-10" y="5" z="-1" />
-   <exit direction="east" target="30502" />
-   <exit direction="west" target="30500" />
-   <exit direction="up" target="30282" />
-  </room>
-  <room id="30502" area="45" title="Level 6: Rune-Scored Hall" environment="12">
-   <coord x="-9" y="6" z="-1" />
-   <exit direction="north" target="30504" />
-   <exit direction="west" target="30501" />
-  </room>
-  <room id="30503" area="45" title="Level 6: Slime Cistern" environment="12">
-   <coord x="-11" y="6" z="-1" />
-   <exit direction="north" target="30505" />
-   <exit direction="south" target="30500" />
-  </room>
-  <room id="30504" area="45" title="Level 6: Cramped Ember Cell" environment="12">
-   <coord x="-9" y="7" z="-1" />
-   <exit direction="south" target="30502" />
-  </room>
-  <room id="30505" area="45" title="Level 6: Smoky Roost" environment="12">
-   <coord x="-11" y="7" z="-1" />
-   <exit direction="north" target="30506" />
-   <exit direction="south" target="30503" />
-  </room>
-  <room id="30506" area="45" title="Level 6: Crossed Grooves of the Dragon" environment="12">
-   <coord x="-11" y="8" z="-1" />
-   <exit direction="north" target="30507" />
-   <exit direction="south" target="30505" />
-  </room>
-  <room id="30507" area="45" title="Level 6: Flickering Hall" environment="12">
-   <coord x="-11" y="9" z="-1" />
-   <exit direction="north" target="30511" />
-   <exit direction="south" target="30506" />
-  </room>
-  <room id="30508" area="45" title="Level 6: Taloned Corner" environment="12">
-   <coord x="-10" y="9" z="-1" />
-   <exit direction="north" target="30512" />
-   <exit direction="east" target="30509" />
-  </room>
-  <room id="30509" area="45" title="Level 6: Sorcerer's Stair" environment="12">
-   <coord x="-9" y="9" z="-1" />
-   <exit direction="west" target="30508" />
-   <exit direction="down" target="30520" />
-  </room>
-  <room id="30510" area="45" title="Level 6: Mage's Dead End" environment="12">
-   <coord x="-10" y="7" z="-2" />
-   <exit direction="north" target="30513" />
-  </room>
-  <room id="30511" area="45" title="Level 6: Statue Gallery" environment="12">
-   <coord x="-11" y="10" z="-1" />
-   <exit direction="north" target="30515" />
-   <exit direction="east" target="30512" />
-   <exit direction="south" target="30507" />
-  </room>
-  <room id="30512" area="45" title="Level 6: Ash Chamber" environment="12">
-   <coord x="-10" y="10" z="-1" />
-   <exit direction="north" target="30516" />
-   <exit direction="south" target="30508" />
-   <exit direction="west" target="30511" />
-  </room>
-  <room id="30513" area="45" title="Level 6: Threshold of the Nest" environment="12">
-   <coord x="-10" y="8" z="-2" />
-   <exit direction="north" target="30519" />
-   <exit direction="east" target="30514" />
-   <exit direction="south" target="30510" />
-  </room>
-  <room id="30514" area="45" title="Level 6: Eastern Bend" environment="12">
-   <coord x="-9" y="8" z="-2" />
-   <exit direction="north" target="30520" />
-   <exit direction="west" target="30513" />
-  </room>
-  <room id="30515" area="45" title="Level 6: Hushed Red Vault" environment="12">
-   <coord x="-11" y="11" z="-1" />
-   <exit direction="east" target="30516" />
-   <exit direction="south" target="30511" />
-  </room>
-  <room id="30516" area="45" title="Level 6: Hall of Many Doors" environment="12">
-   <coord x="-10" y="11" z="-1" />
-   <exit direction="north" target="30521" />
-   <exit direction="east" target="30517" />
-   <exit direction="south" target="30512" />
-   <exit direction="west" target="30515" />
-  </room>
-  <room id="30517" area="45" title="Level 6: Ember Hall" environment="12">
-   <coord x="-9" y="11" z="-1" />
-   <exit direction="north" target="30522" />
-   <exit direction="east" target="30518" />
-   <exit direction="west" target="30516" />
-  </room>
-  <room id="30518" area="45" title="Level 6: Northern Ascent" environment="12">
-   <coord x="-8" y="11" z="-1" />
-   <exit direction="north" target="30523" />
-   <exit direction="west" target="30517" />
-  </room>
-  <room id="30519" area="45" title="Level 6: Gohma's Nest" environment="12">
-   <coord x="-10" y="9" z="-2" />
-   <exit direction="north" target="30524" />
-   <exit direction="south" target="30513" />
-  </room>
-  <room id="30520" area="45" title="Level 6: Eastern Stairwell" environment="12">
-   <coord x="-9" y="9" z="-2" />
-   <exit direction="south" target="30514" />
-   <exit direction="up" target="30509" />
-  </room>
-  <room id="30521" area="45" title="Level 6: Room of the Loose Block" environment="12">
-   <coord x="-10" y="12" z="-1" />
-   <exit direction="east" target="30522" />
-   <exit direction="south" target="30516" />
-   <exit direction="down" target="30525" />
-  </room>
-  <room id="30522" area="45" title="Level 6: Hall of Weak Walls" environment="12">
-   <coord x="-9" y="12" z="-1" />
-   <exit direction="east" target="30523" />
-   <exit direction="south" target="30517" />
-   <exit direction="west" target="30521" />
-  </room>
-  <room id="30523" area="45" title="Level 6: Dragon Brazier Hall" environment="12">
-   <coord x="-8" y="12" z="-1" />
-   <exit direction="south" target="30518" />
-   <exit direction="west" target="30522" />
-  </room>
-  <room id="30524" area="45" title="Level 6: Dragon's Glowing Sanctum" environment="12">
-   <coord x="-10" y="10" z="-2" />
-   <exit direction="south" target="30519" />
-  </room>
-  <room id="30525" area="45" title="Level 6: Magical Rod Cellar" environment="12">
-   <coord x="-10" y="12" z="-2" />
-   <exit direction="up" target="30521" />
-  </room>
-  <room id="30526" area="45" title="Level 7: Hall of Shed Skins" environment="12">
-   <coord x="-8" y="3" z="-1" />
-   <exit direction="north" target="30529" />
-  </room>
-  <room id="30527" area="45" title="Level 7: Demon's Gate" environment="12">
-   <coord x="-7" y="3" z="-1" />
-   <exit direction="north" target="30530" />
-   <exit direction="east" target="30528" />
-   <exit direction="up" target="30250" />
-  </room>
-  <room id="30528" area="45" title="Level 7: Dripping Antechamber" environment="12">
-   <coord x="-6" y="3" z="-1" />
-   <exit direction="north" target="30531" />
-   <exit direction="west" target="30527" />
-  </room>
-  <room id="30529" area="45" title="Level 7: Blade Trap Corridor" environment="12">
-   <coord x="-8" y="4" z="-1" />
-   <exit direction="north" target="30535" />
-   <exit direction="east" target="30530" />
-   <exit direction="south" target="30526" />
-  </room>
-  <room id="30530" area="45" title="Level 7: Moat Crossroads" environment="12">
-   <coord x="-7" y="4" z="-1" />
-   <exit direction="north" target="30536" />
-   <exit direction="east" target="30531" />
-   <exit direction="south" target="30527" />
-   <exit direction="west" target="30529" />
-  </room>
-  <room id="30531" area="45" title="Level 7: Guano-Streaked Crossing" environment="12">
-   <coord x="-6" y="4" z="-1" />
-   <exit direction="north" target="30537" />
-   <exit direction="east" target="30532" />
-   <exit direction="south" target="30528" />
-   <exit direction="west" target="30530" />
-  </room>
-  <room id="30532" area="45" title="Level 7: Shuttered Gallery" environment="12">
-   <coord x="-5" y="4" z="-1" />
-   <exit direction="north" target="30538" />
-   <exit direction="east" target="30533" />
-   <exit direction="west" target="30531" />
-  </room>
-  <room id="30533" area="45" title="Level 7: Urchin's Hollow" environment="12">
-   <coord x="-2" y="4" z="-1" />
-   <exit direction="east" target="30534" />
-   <exit direction="west" target="30532" />
-  </room>
-  <room id="30534" area="45" title="Level 7: Bone-Strewn Alcove" environment="12">
-   <coord x="2" y="4" z="-1" />
-   <exit direction="west" target="30533" />
-  </room>
-  <room id="30535" area="45" title="Level 7: Dodongo Den" environment="12">
-   <coord x="-8" y="5" z="-1" />
-   <exit direction="north" target="30539" />
-   <exit direction="east" target="30536" />
-   <exit direction="south" target="30529" />
-  </room>
-  <room id="30536" area="45" title="Level 7: Boomerang Hall" environment="12">
-   <coord x="-7" y="5" z="-1" />
-   <exit direction="north" target="30540" />
-   <exit direction="east" target="30537" />
-   <exit direction="south" target="30530" />
-   <exit direction="west" target="30535" />
-  </room>
-  <room id="30537" area="45" title="Level 7: Hall of Bones" environment="12">
-   <coord x="-6" y="5" z="-1" />
-   <exit direction="south" target="30531" />
-   <exit direction="west" target="30536" />
-  </room>
-  <room id="30538" area="45" title="Level 7: Hall of the Horned Mask" environment="12">
-   <coord x="-5" y="5" z="-1" />
-   <exit direction="south" target="30532" />
-  </room>
-  <room id="30539" area="45" title="Level 7: Demon's Powder Store" environment="12">
-   <coord x="-8" y="6" z="-1" />
-   <exit direction="south" target="30535" />
-  </room>
-  <room id="30540" area="45" title="Level 7: Hall of Lingering Chill" environment="12">
-   <coord x="-7" y="6" z="-1" />
-   <exit direction="north" target="30542" />
-   <exit direction="south" target="30536" />
-  </room>
-  <room id="30541" area="45" title="Level 7: Western Moat" environment="12">
-   <coord x="-8" y="7" z="-1" />
-   <exit direction="north" target="30544" />
-   <exit direction="east" target="30542" />
-  </room>
-  <room id="30542" area="45" title="Level 7: Island Chamber" environment="12">
-   <coord x="-7" y="7" z="-1" />
-   <exit direction="east" target="30543" />
-   <exit direction="south" target="30540" />
-   <exit direction="west" target="30541" />
-  </room>
-  <room id="30543" area="45" title="Level 7: Hidden Cistern" environment="12">
-   <coord x="-6" y="7" z="-1" />
-   <exit direction="west" target="30542" />
-  </room>
-  <room id="30544" area="45" title="Level 7: Hall of Grumbling" environment="12">
-   <coord x="-8" y="8" z="-1" />
-   <exit direction="north" target="30548" />
-   <exit direction="south" target="30541" />
-  </room>
-  <room id="30545" area="45" title="Level 7: Stairwell of the Demon" environment="12">
-   <coord x="-2" y="10" z="0" />
-   <exit direction="east" target="30546" />
-   <exit direction="down" target="30558" />
-  </room>
-  <room id="30546" area="45" title="Level 7: Hall of the Horned Ledge" environment="12">
-   <coord x="-1" y="10" z="0" />
-   <exit direction="east" target="30547" />
-   <exit direction="west" target="30545" />
-  </room>
-  <room id="30547" area="45" title="Level 7: Demon's Stepped Sanctum" environment="12">
-   <coord x="1" y="10" z="0" />
-   <exit direction="west" target="30546" />
-  </room>
-  <room id="30548" area="45" title="Level 7: Teeming Moat Hall" environment="12">
-   <coord x="-8" y="9" z="-1" />
-   <exit direction="north" target="30553" />
-   <exit direction="east" target="30549" />
-   <exit direction="south" target="30544" />
-  </room>
-  <room id="30549" area="45" title="Level 7: Twin Pillar Hall" environment="12">
-   <coord x="-7" y="9" z="-1" />
-   <exit direction="north" target="30554" />
-   <exit direction="east" target="30550" />
-   <exit direction="west" target="30548" />
-  </room>
-  <room id="30550" area="45" title="Level 7: Hall of the Loose Block" environment="12">
-   <coord x="-5" y="9" z="-1" />
-   <exit direction="east" target="30551" />
-   <exit direction="west" target="30549" />
-   <exit direction="down" target="30559" />
-  </room>
-  <room id="30551" area="45" title="Level 7: Hall of Keyholes" environment="12">
-   <coord x="-4" y="9" z="-1" />
-   <exit direction="north" target="30556" />
-   <exit direction="east" target="30552" />
-   <exit direction="west" target="30550" />
-  </room>
-  <room id="30552" area="45" title="Level 7: Spined Sand Pit" environment="12">
-   <coord x="-3" y="9" z="-1" />
-   <exit direction="north" target="30557" />
-   <exit direction="west" target="30551" />
-  </room>
-  <room id="30553" area="45" title="Level 7: Forgotten Corner" environment="12">
-   <coord x="-8" y="10" z="-1" />
-   <exit direction="east" target="30554" />
-   <exit direction="south" target="30548" />
-  </room>
-  <room id="30554" area="45" title="Level 7: Northern Moat Room" environment="12">
-   <coord x="-7" y="10" z="-1" />
-   <exit direction="east" target="30555" />
-   <exit direction="south" target="30549" />
-   <exit direction="west" target="30553" />
-  </room>
-  <room id="30555" area="45" title="Level 7: Goriya Barracks" environment="12">
-   <coord x="-6" y="10" z="-1" />
-   <exit direction="west" target="30554" />
-  </room>
-  <room id="30556" area="45" title="Level 7: Vault of the Sleeping Face" environment="12">
-   <coord x="-4" y="10" z="-1" />
-   <exit direction="south" target="30551" />
-  </room>
-  <room id="30557" area="45" title="Level 7: Smoke-Stained Den" environment="12">
-   <coord x="-3" y="10" z="-1" />
-   <exit direction="east" target="30558" />
-   <exit direction="south" target="30552" />
-  </room>
-  <room id="30558" area="45" title="Level 7: Grasping Wall Chamber" environment="12">
-   <coord x="-2" y="10" z="-1" />
-   <exit direction="west" target="30557" />
-   <exit direction="up" target="30545" />
-  </room>
-  <room id="30559" area="45" title="Level 7: Waxen Ledge Cellar" environment="12">
-   <coord x="-5" y="9" z="-2" />
-   <exit direction="up" target="30550" />
-  </room>
-  <room id="30560" area="45" title="Level 8: Spiced Linen Crypt" environment="12">
-   <coord x="2" y="1" z="-1" />
-   <exit direction="east" target="30561" />
-   <exit direction="down" target="30585" />
-  </room>
-  <room id="30561" area="45" title="Level 8: Western Antechamber" environment="12">
-   <coord x="5" y="1" z="-1" />
-   <exit direction="east" target="30562" />
-   <exit direction="west" target="30560" />
-  </room>
-  <room id="30562" area="45" title="Level 8: Lion's Gate" environment="12">
-   <coord x="6" y="1" z="-1" />
-   <exit direction="north" target="30564" />
-   <exit direction="east" target="30563" />
-   <exit direction="west" target="30561" />
-   <exit direction="up" target="30229" />
-  </room>
-  <room id="30563" area="45" title="Level 8: Eastern Roost" environment="12">
-   <coord x="7" y="1" z="-1" />
-   <exit direction="west" target="30562" />
-  </room>
-  <room id="30564" area="45" title="Level 8: Narrow Passage Hall" environment="12">
-   <coord x="6" y="2" z="-1" />
-   <exit direction="north" target="30567" />
-   <exit direction="south" target="30562" />
-  </room>
-  <room id="30565" area="45" title="Level 8: Quiet Western Cell" environment="12">
-   <coord x="4" y="4" z="-1" />
-   <exit direction="east" target="30566" />
-  </room>
-  <room id="30566" area="45" title="Level 8: Hall of Echoes" environment="12">
-   <coord x="5" y="3" z="-1" />
-   <exit direction="north" target="30571" />
-   <exit direction="east" target="30567" />
-   <exit direction="west" target="30565" />
-  </room>
-  <room id="30567" area="45" title="Level 8: Slime-Slick Crossing" environment="12">
-   <coord x="7" y="3" z="-1" />
-   <exit direction="north" target="30572" />
-   <exit direction="east" target="30568" />
-   <exit direction="south" target="30564" />
-   <exit direction="west" target="30566" />
-  </room>
-  <room id="30568" area="45" title="Level 8: Warren of Long Ears" environment="12">
-   <coord x="9" y="3" z="-1" />
-   <exit direction="west" target="30567" />
-  </room>
-  <room id="30569" area="45" title="Level 8: Gel-Streaked Chamber" environment="12">
-   <coord x="10" y="5" z="0" />
-   <exit direction="north" target="30573" />
-   <exit direction="east" target="30570" />
-  </room>
-  <room id="30570" area="45" title="Level 8: Stair Beneath the Lion" environment="12">
-   <coord x="9" y="5" z="0" />
-   <exit direction="north" target="30574" />
-   <exit direction="west" target="30569" />
-   <exit direction="down" target="30577" />
-  </room>
-  <room id="30571" area="45" title="Level 8: Hall of Crouching Lions" environment="12">
-   <coord x="8" y="4" z="-1" />
-   <exit direction="north" target="30575" />
-   <exit direction="east" target="30572" />
-   <exit direction="south" target="30566" />
-  </room>
-  <room id="30572" area="45" title="Level 8: Locked Crossway" environment="12">
-   <coord x="7" y="4" z="-1" />
-   <exit direction="north" target="30576" />
-   <exit direction="south" target="30567" />
-   <exit direction="west" target="30571" />
-  </room>
-  <room id="30573" area="45" title="Level 8: Lion's Warm Hearth" environment="12">
-   <coord x="10" y="6" z="0" />
-   <exit direction="east" target="30574" />
-   <exit direction="south" target="30569" />
-  </room>
-  <room id="30574" area="45" title="Level 8: Hall of Four Gouges" environment="12">
-   <coord x="9" y="6" z="0" />
-   <exit direction="north" target="30578" />
-   <exit direction="south" target="30570" />
-   <exit direction="west" target="30573" />
-  </room>
-  <room id="30575" area="45" title="Level 8: Ash-Grey Watch Chamber" environment="12">
-   <coord x="9" y="5" z="-1" />
-   <exit direction="south" target="30571" />
-  </room>
-  <room id="30576" area="45" title="Level 8: Chamber of Three Doors" environment="12">
-   <coord x="7" y="5" z="-1" />
-   <exit direction="north" target="30580" />
-   <exit direction="east" target="30577" />
-   <exit direction="south" target="30572" />
-  </room>
-  <room id="30577" area="45" title="Level 8: Knight's Guardroom" environment="12">
-   <coord x="8" y="5" z="-1" />
-   <exit direction="west" target="30576" />
-   <exit direction="up" target="30570" />
-  </room>
-  <room id="30578" area="45" title="Level 8: Lion's Last Sanctum" environment="12">
-   <coord x="9" y="7" z="0" />
-   <exit direction="south" target="30574" />
-  </room>
-  <room id="30579" area="45" title="Level 8: Lion's Den" environment="12">
-   <coord x="4" y="6" z="-1" />
-   <exit direction="north" target="30581" />
-   <exit direction="east" target="30580" />
-  </room>
-  <room id="30580" area="45" title="Level 8: Cartographer's Hall" environment="12">
-   <coord x="7" y="6" z="-1" />
-   <exit direction="north" target="30582" />
-   <exit direction="south" target="30576" />
-   <exit direction="west" target="30579" />
-  </room>
-  <room id="30581" area="45" title="Level 8: Burrow Chamber" environment="12">
-   <coord x="7" y="9" z="-1" />
-   <exit direction="east" target="30582" />
-   <exit direction="south" target="30579" />
-  </room>
-  <room id="30582" area="45" title="Level 8: Northern Crossroads" environment="12">
-   <coord x="8" y="7" z="-1" />
-   <exit direction="north" target="30584" />
-   <exit direction="east" target="30583" />
-   <exit direction="south" target="30580" />
-   <exit direction="west" target="30581" />
-  </room>
-  <room id="30583" area="45" title="Level 8: Hall of the Shifted Block" environment="12">
-   <coord x="9" y="7" z="-1" />
-   <exit direction="west" target="30582" />
-   <exit direction="down" target="30586" />
-  </room>
-  <room id="30584" area="45" title="Level 8: Ooze-Drenched Chamber" environment="12">
-   <coord x="8" y="8" z="-1" />
-   <exit direction="south" target="30582" />
-  </room>
-  <room id="30585" area="45" title="Level 8: Magic Book Cellar" environment="12">
-   <coord x="2" y="1" z="-2" />
-   <exit direction="up" target="30560" />
-  </room>
-  <room id="30586" area="45" title="Level 8: Cellar of the Doorless Keyhole" environment="12">
-   <coord x="9" y="7" z="-2" />
-   <exit direction="up" target="30583" />
-  </room>
-  <room id="30587" area="45" title="Level 9: Stairwell Antechamber" environment="12">
-   <coord x="-5" y="11" z="-2" />
-   <exit direction="north" target="30591" />
-   <exit direction="up" target="30589" />
-  </room>
-  <room id="30588" area="45" title="Level 9: Chamber of Locked Doors" environment="12">
-   <coord x="-5" y="11" z="-1" />
-   <exit direction="north" target="30593" />
-   <exit direction="east" target="30589" />
-  </room>
-  <room id="30589" area="45" title="Level 9: Furrowed Sand Pit" environment="12">
-   <coord x="-4" y="11" z="-1" />
-   <exit direction="west" target="30588" />
-   <exit direction="down" target="30587" />
-  </room>
-  <room id="30590" area="45" title="Level 9: Gate Beneath Spectacle Rock" environment="12">
-   <coord x="-2" y="11" z="-1" />
-   <exit direction="north" target="30596" />
-   <exit direction="up" target="30317" />
-  </room>
-  <room id="30591" area="45" title="Level 9: Eye of the Western Hall" environment="12">
-   <coord x="-7" y="12" z="-1" />
-   <exit direction="north" target="30598" />
-   <exit direction="east" target="30592" />
-   <exit direction="south" target="30587" />
-   <exit direction="down" target="30621" />
-  </room>
-  <room id="30592" area="45" title="Level 9: Roost of the Keese" environment="12">
-   <coord x="-6" y="12" z="-1" />
-   <exit direction="east" target="30593" />
-   <exit direction="west" target="30591" />
-  </room>
-  <room id="30593" area="45" title="Level 9: Slime-Slick Junction" environment="12">
-   <coord x="-5" y="12" z="-1" />
-   <exit direction="north" target="30600" />
-   <exit direction="east" target="30594" />
-   <exit direction="south" target="30588" />
-   <exit direction="west" target="30592" />
-   <exit direction="down" target="30641" />
-  </room>
-  <room id="30594" area="45" title="Level 9: Crossroads of Ash" environment="12">
-   <coord x="-4" y="12" z="-1" />
-   <exit direction="north" target="30601" />
-   <exit direction="east" target="30595" />
-   <exit direction="west" target="30593" />
-  </room>
-  <room id="30595" area="45" title="Level 9: Scorched Vestibule" environment="12">
-   <coord x="-3" y="12" z="-1" />
-   <exit direction="north" target="30602" />
-   <exit direction="east" target="30596" />
-   <exit direction="west" target="30594" />
-  </room>
-  <room id="30596" area="45" title="Level 9: Mountain Gate Fireside" environment="12">
-   <coord x="-2" y="12" z="-1" />
-   <exit direction="north" target="30603" />
-   <exit direction="south" target="30590" />
-   <exit direction="west" target="30595" />
-  </room>
-  <room id="30597" area="45" title="Level 9: Ooze-Pooled Corner" environment="12">
-   <coord x="-8" y="13" z="-1" />
-   <exit direction="north" target="30605" />
-   <exit direction="east" target="30598" />
-  </room>
-  <room id="30598" area="45" title="Level 9: Hall of Half-Eaten Shields" environment="12">
-   <coord x="-7" y="13" z="-1" />
-   <exit direction="north" target="30606" />
-   <exit direction="south" target="30591" />
-   <exit direction="west" target="30597" />
-  </room>
-  <room id="30599" area="45" title="Level 9: Whirling Dust Chamber" environment="12">
-   <coord x="-6" y="13" z="-1" />
-   <exit direction="north" target="30607" />
-   <exit direction="east" target="30600" />
-   <exit direction="down" target="30639" />
-  </room>
-  <room id="30600" area="45" title="Level 9: Hall of Shadows and Flame" environment="12">
-   <coord x="-5" y="13" z="-1" />
-   <exit direction="north" target="30608" />
-   <exit direction="south" target="30593" />
-   <exit direction="west" target="30599" />
-  </room>
-  <room id="30601" area="45" title="Level 9: Hall of Twin Pillars" environment="12">
-   <coord x="-4" y="13" z="-1" />
-   <exit direction="north" target="30609" />
-   <exit direction="east" target="30602" />
-   <exit direction="south" target="30594" />
-  </room>
-  <room id="30602" area="45" title="Level 9: The Sealed Sand Hollow" environment="12">
-   <coord x="-3" y="13" z="-1" />
-   <exit direction="north" target="30610" />
-   <exit direction="east" target="30603" />
-   <exit direction="south" target="30595" />
-   <exit direction="west" target="30601" />
-   <exit direction="down" target="30633" />
-  </room>
-  <room id="30603" area="45" title="Level 9: Gallery of Ooze" environment="12">
-   <coord x="-2" y="13" z="-1" />
-   <exit direction="north" target="30611" />
-   <exit direction="south" target="30596" />
-   <exit direction="west" target="30602" />
-  </room>
-  <room id="30604" area="45" title="Level 9: Eastern Spellward" environment="12">
-   <coord x="0" y="9" z="-2" />
-   <exit direction="north" target="30612" />
-  </room>
-  <room id="30605" area="45" title="Level 9: Corridor of Burnt Runes" environment="12">
-   <coord x="-8" y="14" z="-1" />
-   <exit direction="north" target="30613" />
-   <exit direction="south" target="30597" />
-  </room>
-  <room id="30606" area="45" title="Level 9: Hall of Grinding Blades" environment="12">
-   <coord x="-7" y="14" z="-1" />
-   <exit direction="north" target="30614" />
-   <exit direction="south" target="30598" />
-  </room>
-  <room id="30607" area="45" title="Level 9: Ganon's Dark Chamber" environment="12">
-   <coord x="-6" y="14" z="-1" />
-   <exit direction="north" target="30615" />
-   <exit direction="south" target="30599" />
-  </room>
-  <room id="30608" area="45" title="Level 9: Sealed Alcove of Embers" environment="12">
-   <coord x="-5" y="14" z="-1" />
-   <exit direction="south" target="30600" />
-  </room>
-  <room id="30609" area="45" title="Level 9: Chamber of Scorch Rings" environment="12">
-   <coord x="-4" y="14" z="-1" />
-   <exit direction="east" target="30610" />
-   <exit direction="south" target="30601" />
-  </room>
-  <room id="30610" area="45" title="Level 9: Crowded Sorcery Hall" environment="12">
-   <coord x="-3" y="14" z="-1" />
-   <exit direction="east" target="30611" />
-   <exit direction="south" target="30602" />
-   <exit direction="west" target="30609" />
-  </room>
-  <room id="30611" area="45" title="Level 9: Hall of Blue Flames" environment="12">
-   <coord x="-2" y="14" z="-1" />
-   <exit direction="south" target="30603" />
-   <exit direction="west" target="30610" />
-  </room>
-  <room id="30612" area="45" title="Level 9: Eastern Wardroom" environment="12">
-   <coord x="0" y="10" z="-2" />
-   <exit direction="north" target="30620" />
-   <exit direction="south" target="30604" />
-  </room>
-  <room id="30613" area="45" title="Level 9: Blade-Trap Stairwell" environment="12">
-   <coord x="-5" y="15" z="-1" />
-   <exit direction="east" target="30614" />
-   <exit direction="south" target="30605" />
-   <exit direction="down" target="30640" />
-  </room>
-  <room id="30614" area="45" title="Level 9: Hall of Many Dangers" environment="12">
-   <coord x="-8" y="11" z="-2" />
-   <exit direction="north" target="30622" />
-   <exit direction="south" target="30606" />
-   <exit direction="west" target="30613" />
-  </room>
-  <room id="30615" area="45" title="Level 9: Princess Zelda's Chamber" environment="12">
-   <coord x="-6" y="15" z="-1" />
-   <exit direction="south" target="30607" />
-  </room>
-  <room id="30616" area="45" title="Level 9: Pool of Gel" environment="12">
-   <coord x="-4" y="11" z="-2" />
-   <exit direction="north" target="30624" />
-   <exit direction="east" target="30617" />
-  </room>
-  <room id="30617" area="45" title="Level 9: Bat-Haunted Gallery" environment="12">
-   <coord x="-3" y="11" z="-2" />
-   <exit direction="north" target="30625" />
-   <exit direction="west" target="30616" />
-  </room>
-  <room id="30618" area="45" title="Level 9: Chamber of the Needle" environment="12">
-   <coord x="-2" y="11" z="-2" />
-   <exit direction="north" target="30626" />
-  </room>
-  <room id="30619" area="45" title="Level 9: Murky Junction" environment="12">
-   <coord x="-1" y="11" z="-2" />
-   <exit direction="north" target="30627" />
-   <exit direction="east" target="30620" />
-  </room>
-  <room id="30620" area="45" title="Level 9: Belfry of the Vires" environment="12">
-   <coord x="0" y="11" z="-2" />
-   <exit direction="north" target="30628" />
-   <exit direction="south" target="30612" />
-   <exit direction="west" target="30619" />
-  </room>
-  <room id="30621" area="45" title="Level 9: Western Stair Room" environment="12">
-   <coord x="-7" y="12" z="-2" />
-   <exit direction="north" target="30629" />
-   <exit direction="up" target="30591" />
-  </room>
-  <room id="30622" area="45" title="Level 9: Circling Wind Chamber" environment="12">
-   <coord x="-8" y="12" z="-2" />
-   <exit direction="north" target="30630" />
-   <exit direction="east" target="30623" />
-   <exit direction="south" target="30614" />
-  </room>
-  <room id="30623" area="45" title="Level 9: Hall of Slime and Shadow" environment="12">
-   <coord x="-6" y="12" z="-2" />
-   <exit direction="north" target="30631" />
-   <exit direction="east" target="30624" />
-   <exit direction="west" target="30622" />
-  </room>
-  <room id="30624" area="45" title="Level 9: Gel-Choked Crossway" environment="12">
-   <coord x="-4" y="12" z="-2" />
-   <exit direction="north" target="30632" />
-   <exit direction="east" target="30625" />
-   <exit direction="south" target="30616" />
-   <exit direction="west" target="30623" />
-  </room>
-  <room id="30625" area="45" title="Level 9: Winged Watchtower" environment="12">
-   <coord x="-3" y="12" z="-2" />
-   <exit direction="north" target="30633" />
-   <exit direction="south" target="30617" />
-   <exit direction="west" target="30624" />
-  </room>
-  <room id="30626" area="45" title="Level 9: Ooze-Streaked Passage" environment="12">
-   <coord x="-2" y="12" z="-2" />
-   <exit direction="north" target="30634" />
-   <exit direction="east" target="30627" />
-   <exit direction="south" target="30618" />
-  </room>
-  <room id="30627" area="45" title="Level 9: Hall of Quivering Gel" environment="12">
-   <coord x="-1" y="12" z="-2" />
-   <exit direction="north" target="30635" />
-   <exit direction="east" target="30628" />
-   <exit direction="south" target="30619" />
-   <exit direction="west" target="30626" />
-  </room>
-  <room id="30628" area="45" title="Level 9: The Cartographer's Vault" environment="12">
-   <coord x="0" y="12" z="-2" />
-   <exit direction="north" target="30636" />
-   <exit direction="south" target="30620" />
-   <exit direction="west" target="30627" />
-  </room>
-  <room id="30629" area="45" title="Level 9: Sealed Western Sanctum" environment="12">
-   <coord x="-8" y="13" z="-2" />
-   <exit direction="south" target="30621" />
-   <exit direction="down" target="30644" />
-  </room>
-  <room id="30630" area="45" title="Level 9: Sand Burrow Hall" environment="12">
-   <coord x="-9" y="13" z="-2" />
-   <exit direction="north" target="30637" />
-   <exit direction="south" target="30622" />
-  </room>
-  <room id="30631" area="45" title="Level 9: Red Sand Hall" environment="12">
-   <coord x="-7" y="13" z="-2" />
-   <exit direction="north" target="30638" />
-   <exit direction="east" target="30632" />
-   <exit direction="south" target="30623" />
-  </room>
-  <room id="30632" area="45" title="Level 9: Silent Cell" environment="12">
-   <coord x="-5" y="13" z="-2" />
-   <exit direction="south" target="30624" />
-   <exit direction="west" target="30631" />
-  </room>
-  <room id="30633" area="45" title="Level 9: Stair of the Devourers" environment="12">
-   <coord x="-3" y="13" z="-2" />
-   <exit direction="east" target="30634" />
-   <exit direction="south" target="30625" />
-   <exit direction="up" target="30602" />
-  </room>
-  <room id="30634" area="45" title="Level 9: Blue-Scorched Hall" environment="12">
-   <coord x="-2" y="13" z="-2" />
-   <exit direction="east" target="30635" />
-   <exit direction="south" target="30626" />
-   <exit direction="west" target="30633" />
-  </room>
-  <room id="30635" area="45" title="Level 9: Northern Whirl Chamber" environment="12">
-   <coord x="-1" y="13" z="-2" />
-   <exit direction="north" target="30642" />
-   <exit direction="south" target="30627" />
-   <exit direction="west" target="30634" />
-  </room>
-  <room id="30636" area="45" title="Level 9: Eastern Gauntlet" environment="12">
-   <coord x="0" y="13" z="-2" />
-   <exit direction="north" target="30643" />
-   <exit direction="south" target="30628" />
-  </room>
-  <room id="30637" area="45" title="Level 9: Northwestern Den" environment="12">
-   <coord x="-8" y="14" z="-2" />
-   <exit direction="east" target="30638" />
-   <exit direction="south" target="30630" />
-  </room>
-  <room id="30638" area="45" title="Level 9: Chamber of Watching Eyes" environment="12">
-   <coord x="-7" y="14" z="-2" />
-   <exit direction="south" target="30631" />
-   <exit direction="west" target="30637" />
-  </room>
-  <room id="30639" area="45" title="Level 9: Stair of Slime" environment="12">
-   <coord x="-6" y="13" z="-2" />
-   <exit direction="east" target="30640" />
-   <exit direction="up" target="30599" />
-  </room>
-  <room id="30640" area="45" title="Level 9: Quiet Stair Landing" environment="12">
-   <coord x="-5" y="14" z="-2" />
-   <exit direction="west" target="30639" />
-   <exit direction="up" target="30613" />
-  </room>
-  <room id="30641" area="45" title="Level 9: Northern Stair of Flame" environment="12">
-   <coord x="-5" y="12" z="-2" />
-   <exit direction="east" target="30642" />
-   <exit direction="up" target="30593" />
-  </room>
-  <room id="30642" area="45" title="Level 9: Whispering Hearth Room" environment="12">
-   <coord x="-4" y="13" z="-2" />
-   <exit direction="south" target="30635" />
-   <exit direction="west" target="30641" />
-  </room>
-  <room id="30643" area="45" title="Level 9: Northeastern Sanctum" environment="12">
-   <coord x="0" y="14" z="-2" />
-   <exit direction="south" target="30636" />
-   <exit direction="down" target="30645" />
-  </room>
-  <room id="30644" area="45" title="Level 9: Silver Arrow Cellar" environment="12">
-   <coord x="-8" y="13" z="-3" />
-   <exit direction="up" target="30629" />
-  </room>
-  <room id="30645" area="45" title="Level 9: Red Ring Cellar" environment="12">
-   <coord x="0" y="14" z="-3" />
-   <exit direction="up" target="30643" />
-  </room>
   <room id="30650" area="45" title="The Old Man's Cave" environment="12">
    <coord x="0" y="0" z="-1" />
    <exit direction="up" target="30200" />
@@ -40843,11 +39532,11 @@
    <exit direction="up" target="30322" />
   </room>
   <room id="30652" area="45" title="Beneath the Hero's Grave" environment="12">
-   <coord x="-9" y="5" z="-1" />
+   <coord x="-8" y="5" z="-1" />
    <exit direction="up" target="30281" />
   </room>
   <room id="30653" area="45" title="The Hermit's Cave" environment="12">
-   <coord x="7" y="8" z="-1" />
+   <coord x="7" y="7" z="-1" />
    <exit direction="up" target="30326" />
   </room>
   <room id="30654" area="45" title="Grotto Beneath the Sands" environment="12">
@@ -40863,11 +39552,11 @@
    <exit direction="up" target="30255" />
   </room>
   <room id="30657" area="45" title="Sanctum Under the Lonely Isle" environment="12">
-   <coord x="29" y="0" z="0" />
+   <coord x="16" y="0" z="0" />
    <exit direction="up" target="30295" />
   </room>
   <room id="30658" area="45" title="Across the Narrow Water" environment="12">
-   <coord x="37" y="0" z="0" />
+   <coord x="24" y="0" z="0" />
    <exit direction="up" target="30247" />
   </room>
   <room id="30659" area="45" title="Hollow of the Old Tree" environment="12">
@@ -40923,15 +39612,15 @@
    <exit direction="up" target="30277" />
   </room>
   <room id="30672" area="45" title="Den Under the Sentinels" environment="12">
-   <coord x="8" y="3" z="-1" />
+   <coord x="7" y="3" z="-1" />
    <exit direction="up" target="30262" />
   </room>
   <room id="30673" area="45" title="The Crag's Secret Fortune" environment="12">
-   <coord x="10" y="7" z="-1" />
+   <coord x="8" y="7" z="-1" />
    <exit direction="up" target="30327" />
   </room>
   <room id="30674" area="45" title="Under the Armos Statue" environment="12">
-   <coord x="-4" y="5" z="-1" />
+   <coord x="-3" y="5" z="-1" />
    <exit direction="up" target="30284" />
   </room>
   <room id="30680" area="45" title="The Riverbank Powder Store" environment="12">
@@ -40939,7 +39628,7 @@
    <exit direction="up" target="30252" />
   </room>
   <room id="30681" area="45" title="Fuse and Fletching" environment="12">
-   <coord x="-3" y="5" z="-1" />
+   <coord x="-2" y="5" z="-1" />
    <exit direction="up" target="30285" />
   </room>
   <room id="30682" area="45" title="The Waxlight Shop" environment="12">
@@ -40951,7 +39640,7 @@
    <exit direction="up" target="30258" />
   </room>
   <room id="30684" area="45" title="The Lampsmoke Cave" environment="12">
-   <coord x="6" y="7" z="-1" />
+   <coord x="5" y="7" z="-1" />
    <exit direction="up" target="30324" />
   </room>
   <room id="30685" area="45" title="Wick and Tallow Den" environment="12">
@@ -40963,7 +39652,7 @@
    <exit direction="up" target="30231" />
   </room>
   <room id="30687" area="45" title="The Hammer-Ringing Store" environment="12">
-   <coord x="-6" y="6" z="-1" />
+   <coord x="-5" y="6" z="-1" />
    <exit direction="up" target="30298" />
   </room>
   <room id="30688" area="45" title="Under the Middle Sentinel" environment="12">
@@ -40971,7 +39660,7 @@
    <exit direction="up" target="30268" />
   </room>
   <room id="30689" area="45" title="Polished Metal Shop" environment="12">
-   <coord x="-2" y="5" z="-1" />
+   <coord x="-1" y="5" z="-1" />
    <exit direction="up" target="30286" />
   </room>
   <room id="30690" area="45" title="The Reedside Trading Post" environment="12">
@@ -40983,7 +39672,7 @@
    <exit direction="up" target="30261" />
   </room>
   <room id="30692" area="45" title="Apothecary in the Bluff" environment="12">
-   <coord x="-9" y="4" z="-1" />
+   <coord x="-4" y="4" z="-1" />
    <exit direction="up" target="30267" />
   </room>
   <room id="30693" area="45" title="The Herbwife's Cave" environment="12">
@@ -41007,15 +39696,15 @@
    <exit direction="up" target="30259" />
   </room>
   <room id="30698" area="45" title="The Draughty Remedy Shop" environment="12">
-   <coord x="7" y="7" z="-1" />
+   <coord x="6" y="7" z="-1" />
    <exit direction="up" target="30325" />
   </room>
   <room id="30700" area="45" title="The Patched Ridge Door" environment="12">
-   <coord x="-6" y="9" z="-1" />
+   <coord x="-6" y="7" z="-1" />
    <exit direction="up" target="30313" />
   </room>
   <room id="30701" area="45" title="The Mason's Grievance" environment="12">
-   <coord x="-5" y="7" z="-1" />
+   <coord x="-4" y="7" z="-1" />
    <exit direction="up" target="30315" />
   </room>
   <room id="30702" area="45" title="The Scorched Trapdoor" environment="12">
@@ -41043,15 +39732,15 @@
    <exit direction="up" target="30213" />
   </room>
   <room id="30708" area="45" title="Behind the Gouged Cliff" environment="12">
-   <coord x="8" y="6" z="-1" />
+   <coord x="7" y="6" z="-1" />
    <exit direction="up" target="30310" />
   </room>
   <room id="30710" area="45" title="The Gorge Gaming Den" environment="12">
-   <coord x="-7" y="8" z="-1" />
+   <coord x="-7" y="6" z="-1" />
    <exit direction="up" target="30296" />
   </room>
   <room id="30711" area="45" title="The Wager Room" environment="12">
-   <coord x="0" y="6" z="-1" />
+   <coord x="-1" y="6" z="-1" />
    <exit direction="up" target="30302" />
   </room>
   <room id="30712" area="45" title="Dice Rattle Cavern" environment="12">
@@ -41063,11 +39752,11 @@
    <exit direction="up" target="30212" />
   </room>
   <room id="30714" area="45" title="The Cliffside Game Parlour" environment="12">
-   <coord x="9" y="6" z="-1" />
+   <coord x="8" y="6" z="-1" />
    <exit direction="up" target="30311" />
   </room>
   <room id="30720" area="45" title="The Western Crossway" environment="12">
-   <coord x="-4" y="8" z="-1" />
+   <coord x="-4" y="5" z="-1" />
    <exit direction="up" target="30283" />
   </room>
   <room id="30721" area="45" title="Hall Beneath the Meadow Stone" environment="12">

@@ -321,6 +321,9 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	}
     } else {
 	obj_to_char( obj, ch );
+	/* A Hyrule dungeon's map fills in that dungeon on a client's map. */
+	if ( hyrule_is_dungeon_tool( obj ) )
+	    hyrule_send_map( ch, obj );
     }
 
     return;

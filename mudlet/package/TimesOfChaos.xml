@@ -54,7 +54,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.5.4"
+tocMudlet.version = "1.5.5"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -1579,7 +1579,7 @@ function tocMudlet.subscribe()
     '"Char.Affects 1","Char.Quest 1","Char.Target 1","Char.Items 1",' ..
     '"Char.Online 1","Char.Lag 1","Char.Group 1",' ..
     '"Char.Achievement 1","Room 1","Room.Info 1","Room.Chars 1",' ..
-    '"Comm 1","Comm.Channel 1"]')
+    '"Comm 1","Comm.Channel 1","Hyrule 1"]')
 end
 
 -- Alaric: "Mudlet map ui does not start automatically. User has to click
@@ -1732,6 +1732,8 @@ function tocMudlet.install()
   register("gmcp.Room.Chars", function() tocMudlet.onChars() end)
   register("gmcp.Comm.Channel", function() tocMudlet.onChannel() end)
   register("gmcp.Room.Info", function() tocMudlet.onRoomInfo() end)
+  register("gmcp.Hyrule.MapRoom", function() tocMudlet.onMapRoom() end)
+  register("gmcp.Hyrule.MapDone", function() tocMudlet.onMapDone() end)
   register("sysConnectionEvent", function()
     tocMudlet.subscribe()
     if tocMudlet.routes == nil then tocMudlet.fetchRoutes(true) end
@@ -1759,6 +1761,47 @@ function tocMudlet.install()
   end
   cecho("\n<cyan>Times of Chaos Mudlet interface ready.<reset> " ..
     "Type <white>tocgui<reset> for status, <white>tocgui atlas<reset> for the world map, or <white>tocgui off<reset> to hide it.\n")
+end
+
+-- Hyrule's dungeons are not on the starter map: each is drawn when its
+-- dungeon map is found (owner, 2026-10-04). The game sends the plan room
+-- by room as Hyrule.MapRoom -- one message cannot carry a whole dungeon --
+-- and Hyrule.MapDone at the end, when every room exists and the exits can
+-- be linked. Each dungeon gets a z-level of its own, ten per level below
+-- the overworld, so its rooms never land on top of the surface's.
+tocMudlet.mapBatch = {}
+
+function tocMudlet.onMapRoom()
+  local r = gmcp and gmcp.Hyrule and gmcp.Hyrule.MapRoom
+  if type(r) ~= "table" then return end
+  local roomId = tonumber(r.num)
+  if not roomId then return end
+  local areaId = ensureArea(r.area)
+  if not roomExistsSafe(roomId) and addRoom then pcall(addRoom, roomId) end
+  if not roomExistsSafe(roomId) then return end
+  if areaId > 0 and setRoomArea then pcall(setRoomArea, roomId, areaId) end
+  if setRoomCoordinates then
+    pcall(setRoomCoordinates, roomId, number(r.x), number(r.y),
+      number(r.z) - 10 * number(r.level))
+  end
+  if setRoomName then pcall(setRoomName, roomId, tostring(r.name or roomId)) end
+  if setRoomEnv then
+    pcall(setRoomEnv, roomId, ENVIRONMENT[tostring(r.environment)] or 201)
+  end
+  tocMudlet.mapBatch[roomId] = r.exits
+end
+
+function tocMudlet.onMapDone()
+  local done = gmcp and gmcp.Hyrule and gmcp.Hyrule.MapDone
+  for roomId, exits in pairs(tocMudlet.mapBatch) do
+    linkKnownExits(roomId, exits)
+  end
+  tocMudlet.mapBatch = {}
+  if updateMap then pcall(updateMap) end
+  if type(done) == "table" and done.level then
+    cecho(string.format("\n<gold>[map]<reset> Level %d's map is drawn on your map.\n",
+      number(done.level)))
+  end
 end
 
 function tocMudlet.teardown()
