@@ -62,6 +62,9 @@ _LAST_CACHE_KEY: Dict[str, str] = {}
 # poller something (a new sitting, a disputed answer). The game turns every
 # control byte a player types into a space, so a player cannot forge one.
 ORACLE_CONTROL = "\x01"
+# The game appends the asker's skills and spells to each question as a last
+# field starting with this (src/abilities.c, abilities_oracle_summary).
+ABILITIES_FIELD = "ABILITIES:"
 _DEFAULT_MODEL = "claude-haiku-4-5"
 
 # The model emits this for a question that is not about the game; the game
@@ -746,6 +749,9 @@ def poll_once(ask_path, answer_path, context_provider=None) -> int:
         if len(parts) < 3:
             continue
         player = parts[1].strip()
+        abilities = ""
+        if len(parts) >= 4 and parts[-1].startswith(ABILITIES_FIELD):
+            abilities = parts.pop()[len(ABILITIES_FIELD):].strip()
         question = "\t".join(parts[2:]).strip()
         if not player or not question:
             continue
@@ -769,6 +775,14 @@ def poll_once(ask_path, answer_path, context_provider=None) -> int:
                     context = got or ""
             except Exception:
                 context, cache_key = "", None
+        if abilities:
+            context = (context + "\n\n" if context else "") + (
+                "From the game itself -- the supplicant's own skills and spells: "
+                "how many they hold, and every one their class and guild can "
+                "learn now that they have not, with what to GAIN, from whom, "
+                "where, and the WALKTO that reaches the trainer. Answer any "
+                "question about missing abilities from this, naming the trainer "
+                "and the WALKTO command: " + abilities)
         answer = _one_line(_ascii(consult(player, question, context, cache_key)))
         try:
             with open(ans, "a", encoding="utf-8") as af:

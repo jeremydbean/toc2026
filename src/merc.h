@@ -2765,6 +2765,9 @@ void    stash_offer_notice ( CHAR_DATA *ch );
 void    stash_link_report ( CHAR_DATA *ch, char *buf, size_t size );
 void    stash_receive   ( CHAR_DATA *ch, OBJ_DATA *obj );
 void    stash_extract   ( CHAR_DATA *ch );
+void    gainlist_by_trainer ( CHAR_DATA *ch, char *argument );
+void    abilities_oracle_summary ( CHAR_DATA *ch, char *out, size_t size );
+bool    is_psionic_sn   ( int sn );
 void    watch_log       ( CHAR_DATA *ch, const char *fmt, ... );
 void    save_notes      ( void );
 void    check_sex       ( CHAR_DATA *ch);
@@ -3313,6 +3316,8 @@ void    walkto_load      ( void );
 void    walkto_update    ( void );
 void    walkto_clear     ( CHAR_DATA *ch );
 void    walkto_interrupt ( CHAR_DATA *ch, const char *line );
+bool    walkto_trainer_place ( const char *name, char *place, size_t place_size,
+                               char *walk, size_t walk_size );
 
 /* update.c */
 void    advance_level   ( CHAR_DATA *ch, bool is_advance );

@@ -187,6 +187,29 @@ class OracleTests(unittest.TestCase):
         self.assertEqual(answer.read_text(encoding="utf-8").strip(), "Alaric\tGo north.")
         self.assertEqual(oracle._cache_get("k-level"), "Go north.")
 
+    def test_poll_once_splits_off_the_abilities_field(self):
+        ask = Path(self.tmp) / "oracle.ask"
+        answer = Path(self.tmp) / "oracle.answer"
+        ask.write_text("1700000000\tAlaric\twhat am I missing?\t"
+                       "ABILITIES:level 28 necromancer; group life & undeath "
+                       "(7 trains) from Soul Trapper, walkto soul trapper;\n",
+                       encoding="utf-8")
+        seen = {}
+
+        def fake_consult(player, question, context="", cache_key=None):
+            seen.update(player=player, question=question, context=context)
+            return "Seek the Soul Trapper."
+
+        real = oracle.consult
+        oracle.consult = fake_consult
+        try:
+            self.assertEqual(oracle.poll_once(ask, answer, lambda p, q: ("Live.", None)), 1)
+        finally:
+            oracle.consult = real
+        self.assertEqual(seen["question"], "what am I missing?")
+        self.assertIn("Live.", seen["context"])
+        self.assertIn("walkto soul trapper", seen["context"])
+
     def test_poll_once_drains_even_when_dormant(self):
         ask = Path(self.tmp) / "oracle.ask"
         answer = Path(self.tmp) / "oracle.answer"

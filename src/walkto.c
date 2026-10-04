@@ -950,6 +950,41 @@ static int walk_quality( const WALKTO_DEST *d, const char *want )
     return walk_words_match( want, words ) ? 1 : 0;
 }
 
+/* Where WALKTO would take you to find the trainer called name ("Soul
+   Trapper", or a short description such as "Seraloi, the lost."), for
+   GAINLIST (abilities.c): the place into place, and what to type after
+   WALKTO into walk. False when WALKTO has no such trainer. */
+bool walkto_trainer_place( const char *name, char *place, size_t place_size,
+                           char *walk, size_t walk_size )
+{
+    char want[256];
+    char have[256];
+    int i;
+
+    walk_words( name, want, sizeof(want) );
+    if ( want[0] == '\0' )
+        return false;
+    for ( i = 0; i < walkto_count; i++ )
+    {
+        const WALKTO_DEST *d = &walkto_dests[i];
+        const char *paren = strchr( d->name, '(' );
+        char bare[96];
+
+        if ( strcmp( d->kind, "trainer" ) && strcmp( d->kind, "clerk" ) )
+            continue;
+        toc_strlcpy( bare, d->name, sizeof(bare) );
+        if ( paren != NULL && (size_t)( paren - d->name ) < sizeof(bare) )
+            bare[paren - d->name] = '\0';
+        walk_words( bare, have, sizeof(have) );
+        if ( strcmp( have, want ) )
+            continue;
+        toc_strlcpy( place, d->place, place_size );
+        toc_strlcpy( walk, have, walk_size );
+        return true;
+    }
+    return false;
+}
+
 /* The best match for what was typed, or -1. *also counts the others
    that matched as well, and others[] names up to three of them. */
 static int walkto_find( const char *argument, int *also, int others[3] )

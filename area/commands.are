@@ -1517,16 +1517,36 @@ nothing else in the game tells you who can.
 See also: PRACTICE, GAINLIST, GAIN, GROUPS
 ~
 
-0 GAINLIST~
+0 GAINLIST ABILITIES~
 Syntax: gainlist
+Syntax: abilities
+Syntax: gainlist trainers
 
-Lists every guildmaster your class and guild allow you to use, and what
-each one can sell you. The cost column shows the training cost, or:
+GAINLIST (or ABILITIES) lists every skill and spell your class and guild
+can learn, and whether you have it:
+
+  X    not learned, and usable at your level -- go and GAIN it
+  -    not learned, usable at a later level (you may GAIN it now anyway)
+  +    learned, with how well you know it
+
+Each thing still to learn is listed with what to GAIN for it -- a group
+brings several spells at once, and the group's spells are named with the
+level each becomes usable at -- what it costs in trains, the trainer who
+sells it, where they are, and what to type after WALKTO to be walked
+there.  The Oracle is given the same list, so you can also ask her what
+you are missing.
+
+GAINLIST TRAINERS shows the older view: each guildmaster your class and
+guild allow you to use, and everything each one sells.  The cost column
+shows the training cost, or:
 
   have    you already have it
   n/a     it cannot be gained at your class
 
-See also: GAIN, PRACTICELIST, TRAIN, GROUPS
+Gaining costs training sessions, not practices.  Once you have something,
+PRACTICELIST and TEACHLIST say who can practise it with you.
+
+See also: GAIN, PRACTICELIST, TEACHLIST, TRAIN, GROUPS, WALKTO
 ~
 
 0 PROMPT~
@@ -2714,18 +2734,6 @@ Use GAINLIST to see which skill groups are available for purchase, and
 PRACTICE to improve skills once you have learned them.
 
 See also: GAINLIST, GAIN, PRACTICE, TRAIN
-~
-
-5 GAINLIST~
-Syntax: gainlist
-
-GAINLIST shows a list of guildmasters and the skill groups or individual
-skills they will allow you to GAIN.  Gaining a skill or group costs training
-sessions (not practice sessions).  For a description of each group, consult
-HELP GROUPS.  For a list of who teaches individual skills once you have
-gained them, see TEACHLIST.
-
-See also: TEACHLIST, GAIN, GROUPS, TRAIN
 ~
 
 69 BUILDING BUILD OLC~

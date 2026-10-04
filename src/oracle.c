@@ -466,9 +466,23 @@ static bool oracle_spool_question( CHAR_DATA *ch, const char *question )
     }
 #endif
 
-    fprintf( fp, "%ld\t%s\t%s\n",
-             (long) ( current_time > 0 ? current_time : time(NULL) ),
-             ch->name, question );
+    /* A real question carries the asker's abilities as a last field, so
+       "what am I missing" is answered from the game (abilities.c). */
+    if ( question[0] != ORACLE_CONTROL && !IS_NPC(ch) )
+    {
+        static char summary[4 * MAX_STRING_LENGTH];
+        static char clean[4 * MAX_STRING_LENGTH];
+
+        abilities_oracle_summary( ch, summary, sizeof(summary) );
+        oracle_sanitize( clean, sizeof(clean), summary );
+        fprintf( fp, "%ld\t%s\t%s\tABILITIES:%s\n",
+                 (long) ( current_time > 0 ? current_time : time(NULL) ),
+                 ch->name, question, clean );
+    }
+    else
+        fprintf( fp, "%ld\t%s\t%s\n",
+                 (long) ( current_time > 0 ? current_time : time(NULL) ),
+                 ch->name, question );
 
     fclose( fp );   /* closing releases the advisory lock */
     return TRUE;

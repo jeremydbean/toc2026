@@ -367,6 +367,8 @@ _ORACLE_PERSONAL_HINTS = (
     "my gear", "my eq", "my equipment", "i'm wearing", "im wearing",
     "i am wearing", "i have", "my current", "what i have", "upgrade",
     "online", "who's on", "whos on", "right now", "currently",
+    "missing", "can i learn", "should i learn", "haven't learned",
+    "have not learned", "my skills", "my spells", "abilities",
 )
 
 

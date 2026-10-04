@@ -3474,7 +3474,9 @@ void do_practicelist(CHAR_DATA *ch, char *argument)
  * hold. "have" in the cost column means you have it; a number is the
  * training cost.
  */
-void do_gainlist(CHAR_DATA *ch, char *argument)
+/* GAINLIST TRAINERS: what each trainer who serves this character sells.
+   Plain GAINLIST is the ticked and crossed list in abilities.c. */
+void gainlist_by_trainer(CHAR_DATA *ch, char *argument)
 {
    UNUSED_PARAM(argument);
 

@@ -356,6 +356,19 @@ static void psionic_remember( CHAR_DATA *ch, const char *name )
     ch->pcdata->psionic_known = str_dup( buf );
 }
 
+/* Whether a skill number is one of the seventeen psionic powers. */
+bool is_psionic_sn( int sn )
+{
+    int i;
+
+    if ( sn < 0 || sn >= MAX_SKILL || skill_table[sn].name == NULL )
+        return FALSE;
+    for ( i = 0; psionic_skill_names[i] != NULL; i++ )
+        if ( !str_cmp( skill_table[sn].name, psionic_skill_names[i] ) )
+            return TRUE;
+    return FALSE;
+}
+
 static bool psionic_is_known( CHAR_DATA *ch, sh_int sn )
 {
     if ( sn < 0 )
