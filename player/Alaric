@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791139282
+LogO 1791139434
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 39
-Plyd 301420
+Plyd 301572
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 Scro 22
-Room 2404
-HMV  726 726 3080 3080 472 472
+Room 4210
+HMV  726 726 2666 3080 472 472
 NewGold 76
 NewPlat 346
 NewCopp 23
@@ -99,12 +99,12 @@ Achv visit-underdark 1790903709
 Achv visit-new-thalos 1790818086
 Achv visit-oz 1791127353
 Achv visit-korzath-fortress 1790899622
-LastOut  1791136893
-SesLogin 1791130964
-SesDur   5929
-SesExpG  2230
-SesLvlG  1
-SesKill  20
+LastOut  1791139434
+SesLogin 1791136905
+SesDur   2529
+SesExpG  21603
+SesLvlG  11
+SesKill  29
 SesPK    0
 SesDead  0
 SesQuest 0
@@ -223,37 +223,37 @@ Gr 'necro enhancement'
 Gr 'necromancy'
 Gr 'necro protective'
 Gr 'necro transportation'
-AffD 'giant strength'   0  17  15   1          0          0
-AffD 'divine protection'   0  17   0   0          0       4096
-AffD 'fire shield'   0  17   0   0          0          8
-AffD 'protection evil'   0  17   0   0       8192          0
-AffD 'pass door'   0  17   0   0    1048576          0
-AffD 'fly'   0  17   0   0     524288          0
-AffD 'haste'   0  17   4   2    2097152          0
-AffD 'sanctuary'   0  17   0   0        128          0
-AffD 'power gloves'   0  17  42  19          0          0
-AffD 'detect evil'   0  17   0   0          4          0
-AffD 'detect good'   0  17   0   0          0          2
-AffD 'detect magic'   0  17   0   0         16          0
-AffD 'detect hidden'   0  17   0   0         32          0
-AffD 'detect invis'   0  17   0   0          8          0
-AffD 'infravision'   0  17   0   0        512          0
-AffD 'frenzy'   0  17 110  17          0          0
-AffD 'frenzy'   0  17  11  19          0          0
-AffD 'frenzy'   0  17  11  18          0          0
-AffD 'giant strength'   0  17   4   1          0          0
-AffD 'divine protection'   0  17   0   0          0       4096
-AffD 'fire shield'   0  17   0   0          0          8
-AffD 'protection evil'   0  17   0   0       8192          0
-AffD 'haste'   0  17   4   2    2097152          0
-AffD 'sanctuary'   0  17   0   0        128          0
-AffD 'shield'   5  17 -20  17          0          0
-AffD 'bless'  22  17  -8  24          0          0
-AffD 'bless'   0  17   8  18          0          0
-AffD 'fly'   0  17   0   0     524288          0
-AffD 'pass door'   0  17   0   0    1048576          0
-AffD 'armor'   0  17 -20  17          0          0
-AffD 'shroud'   0  17 -35  17          0          0
+AffD 'giant strength'   0  15  15   1          0          0
+AffD 'divine protection'   0  15   0   0          0       4096
+AffD 'fire shield'   0  15   0   0          0          8
+AffD 'protection evil'   0  15   0   0       8192          0
+AffD 'pass door'   0  15   0   0    1048576          0
+AffD 'fly'   0  15   0   0     524288          0
+AffD 'haste'   0  15   4   2    2097152          0
+AffD 'sanctuary'   0  15   0   0        128          0
+AffD 'power gloves'   0  15  42  19          0          0
+AffD 'detect evil'   0  15   0   0          4          0
+AffD 'detect good'   0  15   0   0          0          2
+AffD 'detect magic'   0  15   0   0         16          0
+AffD 'detect hidden'   0  15   0   0         32          0
+AffD 'detect invis'   0  15   0   0          8          0
+AffD 'infravision'   0  15   0   0        512          0
+AffD 'frenzy'   0  15 110  17          0          0
+AffD 'frenzy'   0  15  11  19          0          0
+AffD 'frenzy'   0  15  11  18          0          0
+AffD 'giant strength'   0  15   4   1          0          0
+AffD 'divine protection'   0  15   0   0          0       4096
+AffD 'fire shield'   0  15   0   0          0          8
+AffD 'protection evil'   0  15   0   0       8192          0
+AffD 'haste'   0  15   4   2    2097152          0
+AffD 'sanctuary'   0  15   0   0        128          0
+AffD 'shield'   5  15 -20  17          0          0
+AffD 'bless'  22  15  -8  24          0          0
+AffD 'bless'   0  15   8  18          0          0
+AffD 'fly'   0  15   0   0     524288          0
+AffD 'pass door'   0  15   0   0    1048576          0
+AffD 'armor'   0  15 -20  17          0          0
+AffD 'shroud'   0  15 -35  17          0          0
 End
 
 #O
@@ -890,31 +890,31 @@ Nest 0
 ShD  A surgically removed head~
 Desc A surgically removed head grins at Alaric~
 Wear -1
+Time 189
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 12
+Nest 0
+ShD  A surgically removed head~
+Desc A surgically removed head grins at Alaric~
+Wear -1
+Time 191
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 12
+Nest 0
+ShD  A surgically removed head~
+Desc A surgically removed head grins at Alaric~
+Wear -1
 Time 192
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 12
-Nest 0
-ShD  A surgically removed head~
-Desc A surgically removed head grins at Alaric~
-Wear -1
-Time 194
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 12
-Nest 0
-ShD  A surgically removed head~
-Desc A surgically removed head grins at Alaric~
-Wear -1
-Time 195
 Cost 0
 Cond 25
 Repd 0
