@@ -1912,6 +1912,7 @@ struct  char_data
     OBJ_DATA * in_object;
     ROOM_INDEX_DATA * in_room;
     ROOM_INDEX_DATA * was_in_room;
+    int               last_room_vnum;  /* the room char_from_room last took them out of; not saved */
     PC_DATA * pcdata;
     GEN_DATA * gen_data;
     HATE_DATA * hates;

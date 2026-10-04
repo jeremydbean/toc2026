@@ -1638,6 +1638,8 @@ void char_from_room( CHAR_DATA *ch )
        a character leaves a room -- walking, a portal, a recall, being
        dragged. After the null check, because breaking it speaks to the
        room. */
+    ch->last_room_vnum = ch->in_room->vnum;
+
     shadowmeld_break( ch, "You step out of the shadows." );
     oracle_on_char_from_room( ch );
 
@@ -1688,13 +1690,6 @@ void char_from_room( CHAR_DATA *ch )
  */
 void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 {
-    /* Before the move, so the line reads "from here to there". A
-       portal, a teleport or a recall ring moves a character with no
-       command to show for it. */
-    if ( pRoomIndex != NULL && player_is_watched( ch ) )
-        watch_log( ch, "moved to %d (%s)", pRoomIndex->vnum,
-            pRoomIndex->name != NULL ? pRoomIndex->name : "?" );
-
     OBJ_DATA *obj;
 
     if ( pRoomIndex == NULL )
@@ -1706,6 +1701,15 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
     ch->in_room         = pRoomIndex;
     ch->next_in_room    = pRoomIndex->people;
     pRoomIndex->people  = ch;
+
+    /* A portal, a teleport or a recall ring moves a character with no
+       command to show for it, so every arrival is written down. After the
+       move, with the room left behind named: written before it, the line's
+       room read [0] every time -- char_from_room had already run. */
+    if ( player_is_watched( ch ) )
+        watch_log( ch, "arrived (%s) from %d",
+            pRoomIndex->name != NULL ? pRoomIndex->name : "?",
+            ch->last_room_vnum );
 
     if ( !IS_NPC(ch) )
     {

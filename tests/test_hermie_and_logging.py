@@ -170,8 +170,9 @@ class WatchedPlayerLogTests(unittest.TestCase):
         # A refused command is recorded too.
         self.assertIn("refused", text)
         # And where they ended up, which no command shows for a portal,
-        # a teleport or a recall ring.
-        self.assertIn("moved to", text)
+        # a teleport or a recall ring -- with the room they left, and the
+        # room they are in now in the brackets (it used to read [0]).
+        self.assertIn("[4204]: arrived (Halls of Healing.) from 4207", text)
 
     def test_every_player_is_watched_by_default(self) -> None:
         """LOG ALL is on from boot (owner, 2026-10-04): every player gets
@@ -206,7 +207,7 @@ class WatchedPlayerLogTests(unittest.TestCase):
 
         text = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
         self.assertRegex(text, r"Log Zplain \[\d+\]: north")
-        self.assertIn("moved to", text)
+        self.assertRegex(text, r"Log Zplain \[\d+\]: arrived \(.*\) from 4207")
         self.assertIn("Log Zplain [4207]: tell (arguments withheld)", text)
         self.assertNotIn("bluebirdphrase", text, "a tell's words reached the log")
         self.assertIn("namedphrase", text, "a flagged character is recorded in full")
