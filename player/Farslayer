@@ -1,7 +1,7 @@
 #PLAYER
 Name Farslayer~
 Id   21916
-LogO 1791122561
+LogO 1791122819
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,16 +15,16 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 3
-Plyd 2012
+Plyd 2270
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 3715
-HMV  35 36 25 144 112 112
+Room 3712
+HMV  36 36 76 144 112 112
 NewGold 0
 NewPlat 0
-NewCopp 18
+NewCopp 20
 NewSilv 0
 BankCP 0
 IntTime 1791039310
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 9
+AchKills 10
 AchQuests 0
 AchDeaths 2
 AchExplore 0
@@ -53,7 +53,7 @@ SesKill  8
 SesPK    0
 SesDead  2
 SesQuest 0
-Exp  7280
+Exp  7799
 Act  65788
 Comm 24576
 Mounted 0
@@ -79,13 +79,13 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
+Pos  5
 Prac 7
 Trai 3
 Save  -3
 Alig  -750
 Hit   3
-ACs 78 78 78 80
+ACs 74 74 74 80
 Attr 13 13 16 13 13
 AMod 0 0 0 0 0
 Pass FarZsfmbOukHE~
@@ -94,7 +94,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 36 144 112
-Cond 0 16 16
+Cond 0 11 11
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -121,9 +121,9 @@ Sk 62 'recall'
 Gr 'rom basics'
 Gr 'mage basics'
 Gr 'mage default'
-AffD 'armor'   0  21 -20  17          0          0
-AffD 'bless'   0  33  -3  24          0          0
-AffD 'bless'   0  33   3  18          0          0
+AffD 'armor'   0  16 -20  17          0          0
+AffD 'bless'   0  28  -3  24          0          0
+AffD 'bless'   0  28   3  18          0          0
 End
 
 #O
@@ -139,6 +139,24 @@ End
 Vnum 3705
 Nest 0
 Wear 3
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3706
+Nest 0
+Wear 6
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3711
+Nest 0
+Wear 12
 Cost 0
 Cond 100
 Repd 0
