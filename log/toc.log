@@ -34309,3 +34309,162 @@ Sun Oct  4 01:04:12 2026 :: Log Alaric [2494]: who
 Sun Oct  4 01:04:12 2026 :: Log Alaric [2494]: worth
 Sun Oct  4 01:08:03 2026 :: Sock.sinaddr:  178.156.189.113
 Sun Oct  4 01:08:03 2026 :: EOF encountered on read.
+Sun Oct  4 01:12:21 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sun Oct  4 01:12:25 2026 :: Log WebAdmin: fsave
+Sun Oct  4 01:12:31 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sun Oct  4 01:12:33 2026 :: Received signal 15; saving players and shutting down.
+Sun Oct  4 01:12:33 2026 :: Closing link to Killuminati.
+Sun Oct  4 01:12:33 2026 :: Closing link to Alaric.
+Sun Oct  4 01:12:33 2026 :: Normal termination of game.
+Sun Oct  4 01:12:34 2026 ::  INIT OK 
+Sun Oct  4 01:12:34 2026 :: ROM is ready to rock on port 9000.
+Sun Oct  4 01:12:35 2026 :: Automated backup complete.
+Sun Oct  4 01:12:35 2026 :: Daily backup complete.
+Sun Oct  4 01:12:47 2026 :: Received signal 15; saving players and shutting down.
+Sun Oct  4 01:12:47 2026 :: Normal termination of game.
+Sun Oct  4 01:12:47 2026 ::  INIT OK 
+Sun Oct  4 01:12:47 2026 :: ROM is ready to rock on port 9000.
+Sun Oct  4 01:12:47 2026 :: Automated backup complete.
+Sun Oct  4 01:12:47 2026 :: Daily backup complete.
+Sun Oct  4 01:13:08 2026 :: Sock.sinaddr:  5.161.194.92
+Sun Oct  4 01:13:08 2026 :: EOF encountered on read.
+Sun Oct  4 01:13:31 2026 :: Sock.sinaddr:  208.126.22.104
+Sun Oct  4 01:13:34 2026 :: Loading Alaric's playerfile
+Sun Oct  4 01:13:35 2026 :: Alaric@208.126.22.104 has connected.
+Sun Oct  4 01:13:37 2026 :: reset_char: Alaric's broken maxima rebuilt to 200/200/200.
+Sun Oct  4 01:13:37 2026 :: Log Alaric [2494]: moved to 2494 (Weapons Shop.)
+Sun Oct  4 01:13:40 2026 :: Log Alaric [2494]: n
+Sun Oct  4 01:13:40 2026 :: Log Alaric [0]: moved to 2485 (Market Plaza.)
+Sun Oct  4 01:13:41 2026 :: Log Alaric [2485]: w
+Sun Oct  4 01:13:41 2026 :: Log Alaric [0]: moved to 2415 (Main Processional.)
+Sun Oct  4 01:13:42 2026 :: Log Alaric [2415]: eq
+Sun Oct  4 01:13:44 2026 :: Log Alaric [2415]: s
+Sun Oct  4 01:13:44 2026 :: Log Alaric [0]: moved to 2402 (Northern Oak Tree Square.)
+Sun Oct  4 01:13:45 2026 :: Log Alaric [2402]: s
+Sun Oct  4 01:13:45 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sun Oct  4 01:13:48 2026 :: Log Alaric [2401]: jump rock
+Sun Oct  4 01:13:48 2026 :: Log Alaric [0]: moved to 1607 (House of Pancakes)
+Sun Oct  4 01:13:49 2026 :: Log Alaric [0]: moved to 4208 (Altar of the Temple of Devota.)
+Sun Oct  4 01:13:54 2026 :: Log Alaric [4208]: e
+Sun Oct  4 01:13:54 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 01:13:55 2026 :: Log Alaric [4207]: spel
+Sun Oct  4 01:14:03 2026 :: Log Alaric [4207]: l
+Sun Oct  4 01:14:05 2026 :: Log Alaric [4207]: u
+Sun Oct  4 01:14:05 2026 :: Log Alaric [0]: moved to 3700 (Entrance to Mud School)
+Sun Oct  4 01:14:08 2026 :: Log Alaric [3700]: n
+Sun Oct  4 01:14:08 2026 :: Log Alaric [0]: moved to 3757 (A Room in Mud School)
+Sun Oct  4 01:14:08 2026 :: Log Alaric [3757]: e
+Sun Oct  4 01:14:08 2026 :: Log Alaric [0]: moved to 3759 (Soulcrusher's Guild Room)
+Sun Oct  4 01:14:09 2026 :: Log Alaric [3759]: prac
+Sun Oct  4 01:14:15 2026 :: Log Alaric [3759]: prac armor
+Sun Oct  4 01:14:15 2026 :: Log Alaric [3759]: prac
+Sun Oct  4 01:14:18 2026 :: Log Alaric [3759]: w
+Sun Oct  4 01:14:18 2026 :: Log Alaric [0]: moved to 3757 (A Room in Mud School)
+Sun Oct  4 01:14:19 2026 :: Log Alaric [3757]: w
+Sun Oct  4 01:14:19 2026 :: Log Alaric [0]: moved to 3758 (Eclipse's Training Room)
+Sun Oct  4 01:14:20 2026 :: Log Alaric [3758]: train
+Sun Oct  4 01:14:22 2026 :: Log Alaric [3758]: eq
+Sun Oct  4 01:14:31 2026 :: Log Alaric [3758]: train str
+Sun Oct  4 01:14:32 2026 :: Log Alaric [3758]: train str
+Sun Oct  4 01:14:32 2026 :: Log Alaric [3758]: train str
+Sun Oct  4 01:14:33 2026 :: Log Alaric [3758]: train str
+Sun Oct  4 01:14:33 2026 :: Log Alaric [3758]: train str
+Sun Oct  4 01:14:33 2026 :: Log Alaric [3758]: train str
+Sun Oct  4 01:14:33 2026 :: Log Alaric [3758]: train str
+Sun Oct  4 01:14:35 2026 :: Log Alaric [3758]: train
+Sun Oct  4 01:14:38 2026 :: Log Alaric [3758]: train con
+Sun Oct  4 01:14:39 2026 :: Log Alaric [3758]: sc
+Sun Oct  4 01:14:48 2026 :: Log Alaric [3758]: train dex
+Sun Oct  4 01:14:48 2026 :: Log Alaric [3758]: train dex
+Sun Oct  4 01:14:48 2026 :: Log Alaric [3758]: train dex
+Sun Oct  4 01:14:49 2026 :: Log Alaric [3758]: train dex
+Sun Oct  4 01:14:49 2026 :: Log Alaric [3758]: train dex
+Sun Oct  4 01:14:49 2026 :: Log Alaric [3758]: train dex
+Sun Oct  4 01:14:50 2026 :: Log Alaric [3758]: sc
+Sun Oct  4 01:14:51 2026 :: Log Alaric [3758]: wake
+Sun Oct  4 01:14:52 2026 :: Log Alaric [3758]: l
+Sun Oct  4 01:14:55 2026 :: Log Alaric [3758]: e
+Sun Oct  4 01:14:55 2026 :: Log Alaric [0]: moved to 3757 (A Room in Mud School)
+Sun Oct  4 01:14:58 2026 :: Log Alaric [3757]: n
+Sun Oct  4 01:14:58 2026 :: Log Alaric [0]: moved to 3701 (A Room in Mud School)
+Sun Oct  4 01:14:59 2026 :: Log Alaric [3701]: w
+Sun Oct  4 01:14:59 2026 :: Log Alaric [0]: moved to 3702 (The Center Room)
+Sun Oct  4 01:14:59 2026 :: Log Alaric [3702]: n
+Sun Oct  4 01:14:59 2026 :: Log Alaric [0]: moved to 3703 (A Room in Mud School)
+Sun Oct  4 01:15:00 2026 :: Log Alaric [3703]: n
+Sun Oct  4 01:15:00 2026 :: Log Alaric [0]: moved to 3709 (A Room in Mud School)
+Sun Oct  4 01:15:00 2026 :: Log Alaric [3709]: w
+Sun Oct  4 01:15:00 2026 :: Log Alaric [0]: moved to 3711 (A Room in Mud School)
+Sun Oct  4 01:15:01 2026 :: Log Alaric [3711]: d
+Sun Oct  4 01:15:01 2026 :: Log Alaric [0]: moved to 3712 (The Cage Room)
+Sun Oct  4 01:15:02 2026 :: Log Alaric [3712]: w
+Sun Oct  4 01:15:02 2026 :: Log Alaric [0]: moved to 3714 (A Cage)
+Sun Oct  4 01:15:03 2026 :: Log Alaric [3714]: kill li
+Sun Oct  4 01:15:11 2026 :: Log Alaric [3714]: get all cor
+Sun Oct  4 01:15:13 2026 :: Log Alaric [3714]: e
+Sun Oct  4 01:15:13 2026 :: Log Alaric [0]: moved to 3712 (The Cage Room)
+Sun Oct  4 01:15:13 2026 :: Log Alaric [3712]: s
+Sun Oct  4 01:15:13 2026 :: Log Alaric [0]: moved to 3715 (A Cage)
+Sun Oct  4 01:15:14 2026 :: Log Alaric [3715]: kill man
+Sun Oct  4 01:15:24 2026 :: Log Alaric [3715]: who
+Sun Oct  4 01:15:31 2026 :: Log Alaric [3715]: c arm
+Sun Oct  4 01:15:40 2026 :: Log Alaric [3715]: get all cor
+Sun Oct  4 01:15:41 2026 :: Log Alaric [3715]: n
+Sun Oct  4 01:15:41 2026 :: Log Alaric [0]: moved to 3712 (The Cage Room)
+Sun Oct  4 01:15:41 2026 :: Log Alaric [3712]: e
+Sun Oct  4 01:15:41 2026 :: Log Alaric [0]: moved to 3716 (A Cage)
+Sun Oct  4 01:15:41 2026 :: Log Alaric [3716]: kill gre
+Sun Oct  4 01:15:50 2026 :: Log Alaric [3716]: get all cor
+Sun Oct  4 01:15:50 2026 :: Log Alaric [3716]: wear all
+Sun Oct  4 01:15:54 2026 :: Log Alaric [3716]: w
+Sun Oct  4 01:15:54 2026 :: Log Alaric [0]: moved to 3712 (The Cage Room)
+Sun Oct  4 01:15:54 2026 :: Log Alaric [3712]: n
+Sun Oct  4 01:15:54 2026 :: Log Alaric [0]: moved to 3713 (A Cage)
+Sun Oct  4 01:15:55 2026 :: Log Alaric [3713]: kill ko
+Sun Oct  4 01:16:04 2026 :: ANNOUNCE: Quick restart - saving everyone now, back in under a minute.
+Sun Oct  4 01:16:06 2026 :: Log Alaric [3713]: ach remort
+Sun Oct  4 01:16:08 2026 :: Log WebAdmin: fsave
+Sun Oct  4 01:16:13 2026 :: Log Alaric [3713]: get all cor
+Sun Oct  4 01:16:14 2026 :: Received signal 15; saving players and shutting down.
+Sun Oct  4 01:16:14 2026 :: Closing link to Alaric.
+Sun Oct  4 01:16:14 2026 :: Normal termination of game.
+Sun Oct  4 01:16:14 2026 ::  INIT OK 
+Sun Oct  4 01:16:14 2026 :: ROM is ready to rock on port 9000.
+Sun Oct  4 01:16:14 2026 :: Automated backup complete.
+Sun Oct  4 01:16:14 2026 :: Daily backup complete.
+Sun Oct  4 01:16:19 2026 :: Sock.sinaddr:  208.126.22.104
+Sun Oct  4 01:16:21 2026 :: Loading Alaric's playerfile
+Sun Oct  4 01:16:23 2026 :: Alaric@208.126.22.104 has connected.
+Sun Oct  4 01:16:23 2026 :: Log Alaric [3713]: moved to 3713 (A Cage)
+Sun Oct  4 01:16:26 2026 :: Log Alaric [3713]: s
+Sun Oct  4 01:16:26 2026 :: Log Alaric [0]: moved to 3712 (The Cage Room)
+Sun Oct  4 01:16:26 2026 :: Log Alaric [3712]: w
+Sun Oct  4 01:16:26 2026 :: Log Alaric [0]: moved to 3714 (A Cage)
+Sun Oct  4 01:16:29 2026 :: Log Alaric [3714]: wo
+Sun Oct  4 01:16:32 2026 :: Log Alaric [3714]: kill li
+Sun Oct  4 01:16:43 2026 :: Log Alaric [3714]: sc
+Sun Oct  4 01:16:43 2026 :: Log Alaric [3714]: flee
+Sun Oct  4 01:16:43 2026 :: Log Alaric [0]: moved to 3712 (The Cage Room)
+Sun Oct  4 01:16:45 2026 :: Log Alaric [3712]: recal
+Sun Oct  4 01:16:45 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 01:16:47 2026 :: Log Alaric [4207]: u
+Sun Oct  4 01:16:47 2026 :: Log Alaric [0]: moved to 3700 (Entrance to Mud School)
+Sun Oct  4 01:16:48 2026 :: Log Alaric [3700]: n
+Sun Oct  4 01:16:48 2026 :: Log Alaric [0]: moved to 3757 (A Room in Mud School)
+Sun Oct  4 01:16:48 2026 :: Log Alaric [3757]: w
+Sun Oct  4 01:16:48 2026 :: Log Alaric [0]: moved to 3758 (Eclipse's Training Room)
+Sun Oct  4 01:16:49 2026 :: Log Alaric [3758]: sc
+Sun Oct  4 01:16:51 2026 :: Log Alaric [3758]: train con
+Sun Oct  4 01:16:55 2026 :: Log Alaric [3758]: gain convert
+Sun Oct  4 01:16:56 2026 :: Log Alaric [3758]: e
+Sun Oct  4 01:16:56 2026 :: Log Alaric [0]: moved to 3757 (A Room in Mud School)
+Sun Oct  4 01:16:56 2026 :: Log Alaric [3757]: e
+Sun Oct  4 01:16:56 2026 :: Log Alaric [0]: moved to 3759 (Soulcrusher's Guild Room)
+Sun Oct  4 01:16:57 2026 :: Log Alaric [3759]: gain convert
+Sun Oct  4 01:16:58 2026 :: Log Alaric [3759]: w
+Sun Oct  4 01:16:58 2026 :: Log Alaric [0]: moved to 3757 (A Room in Mud School)
+Sun Oct  4 01:16:58 2026 :: Log Alaric [3757]: w
+Sun Oct  4 01:16:58 2026 :: Log Alaric [0]: moved to 3758 (Eclipse's Training Room)
+Sun Oct  4 01:17:01 2026 :: Log Alaric [3758]: sc
+Sun Oct  4 01:17:03 2026 :: Log Alaric [3758]: train con
+Sun Oct  4 01:17:03 2026 :: Log Alaric [3758]: sc

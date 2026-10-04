@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791076151
+LogO 1791076574
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 3
-Plyd 277290
+Plyd 277652
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 Scro 22
-Room 2494
-HMV  -5515 -5515 -6945 -6945 -1385 -1385
+Room 3713
+HMV  200 200 200 200 200 200
 NewGold 25
 NewPlat 557
 NewCopp 47
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 1051
+AchKills 1055
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -109,7 +109,7 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  6000
+Exp  7907
 Act  4261068
 Comm 24576
 Mounted 0
@@ -136,11 +136,13 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 17
-Trai 10
+Prac 16
+Save  -6
 Alig  464
-ACs 100 100 100 100
-Attr 13 13 13 13 13
+Hit   2
+Dam   2
+ACs 88 87 87 99
+Attr 18 13 13 17 14
 AMod 0 10 10 0 10
 Pass Al3w9zuAlwpyY~
 Titl  the Follower~
@@ -158,7 +160,7 @@ Alias os open south~
 Alias oe open east~
 Alias ow open west~
 Sk 1 'animate parts'
-Sk 1 'armor'
+Sk 71 'armor'
 Sk 1 'cause light'
 Sk 1 'chill touch'
 Sk 1 'butcher'
@@ -188,6 +190,87 @@ Gr 'rom basics'
 Gr 'necro basics'
 Gr 'necro default'
 Gr 'necromancy'
+End
+
+#O
+Vnum 3716
+Nest 0
+Wear 0
+Cost 0
+Cond 100
+Repd 0
+Val  0 0 198 0 0
+End
+
+#O
+Vnum 3703
+Nest 0
+Wear 5
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3704
+Nest 0
+Wear 11
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3701
+Nest 0
+Wear 16
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30695
+Nest 0
+ExtF 0
+Wear -1
+Lev  1
+Cost 200000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30695
+Nest 0
+ExtF 0
+Wear -1
+Lev  1
+Cost 200000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30695
+Nest 0
+ExtF 0
+Wear -1
+Lev  1
+Cost 200000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30695
+Nest 0
+ExtF 0
+Wear -1
+Lev  1
+Cost 200000
+Cond 100
+Repd 0
 End
 
 #O
@@ -332,7 +415,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 148
+Time 142
 Cost 0
 Cond 100
 Repd 0
@@ -548,6 +631,81 @@ Repd 0
 Spell 1 'detect invis'
 Spell 2 'detect magic'
 Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3708
+Nest 0
+Wear 8
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3713
+Nest 0
+Wear 14
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3706
+Nest 0
+Wear 6
+Cost 0
+Cond 100
+Repd 0
+Affect -1 0 -1 -5 22 0 0
+End
+
+#O
+Vnum 3711
+Nest 0
+Wear 12
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3705
+Nest 0
+Wear 4
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3705
+Nest 0
+Wear 3
+Cost 0
+Cond 100
+Repd 0
+Affect -1 0 -1 15 14 0 0
+End
+
+#O
+Vnum 3707
+Nest 0
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3712
+Nest 0
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+Affect -1 0 -1 -9 14 0 0
 End
 
 #STASH
@@ -674,8 +832,8 @@ Lev  52
 Cost 23680000
 Cond 100
 Repd 0
-Affect -1 52 -1 3 22 0 0
 Affect -1 52 -1 2 24 0 0
+Affect -1 52 -1 3 22 0 0
 End
 
 #O
@@ -721,8 +879,8 @@ Lev  51
 Cost 50000000
 Cond 99
 Repd 0
-Affect -1 51 -1 20 14 0 0
 Affect -1 51 -1 4 23 0 0
+Affect -1 51 -1 20 14 0 0
 End
 
 #O
@@ -830,8 +988,8 @@ Lev  52
 Cost 25600000
 Cond 100
 Repd 0
-Affect -1 52 -1 -9 14 0 0
 Affect -1 52 -1 -1 13 0 0
+Affect -1 52 -1 -9 14 0 0
 End
 
 #O
@@ -918,9 +1076,9 @@ Lev  29
 Cost 30000000
 Cond 100
 Repd 0
-Affect -1 29 -1 -4 1 0 0
-Affect -1 29 -1 -1 1 0 0
 Affect -1 29 -1 -4 2 0 0
+Affect -1 29 -1 -1 1 0 0
+Affect -1 29 -1 -4 1 0 0
 End
 
 #O
@@ -952,8 +1110,8 @@ Lev  50
 Cost 20000000
 Cond 91
 Repd 0
-Affect -1 50 -1 -17 14 0 0
 Affect -1 50 -1 -3 2 0 0
+Affect -1 50 -1 -17 14 0 0
 End
 
 #O
@@ -1320,10 +1478,10 @@ Lev  32
 Cost 23000000
 Cond 100
 Repd 1
-Affect -1 32 -1 -3 22 0 0
-Affect -1 32 -1 -15 13 0 0
-Affect -1 32 -1 -13 12 0 0
 Affect -1 32 -1 -1 5 0 0
+Affect -1 32 -1 -13 12 0 0
+Affect -1 32 -1 -15 13 0 0
+Affect -1 32 -1 -3 22 0 0
 End
 
 #O
