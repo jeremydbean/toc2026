@@ -168,7 +168,12 @@ class AchievementSystemTests(unittest.TestCase):
 
         self.assertIn("achievement_record_kill(ch, victim)", fight)
         self.assertIn("achievement_record_death( victim )", fight)
-        self.assertGreaterEqual(fight.count("achievement_check_state(ch, true)"), 2)
+        # Both ways a player kills a player (damage and fatality) keep one
+        # book, record_player_kill, which checks the killer's achievements.
+        book = fight[fight.index("void record_player_kill("):]
+        book = book[:book.index("\n}\n")]
+        self.assertIn("achievement_check_state(ch, true)", book)
+        self.assertEqual(fight.count("record_player_kill( ch, victim );"), 2)
         self.assertEqual(quest.count("achievement_record_quest(ch)"), 1)
         for event in (
             "ACHIEVEMENT_EVENT_QUEST_RUSH",

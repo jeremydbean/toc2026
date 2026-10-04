@@ -625,8 +625,29 @@ int stash_count( CHAR_DATA *ch )
     return count;
 }
 
+/*
+ * A limited item in the stash is still its owner's, and the max-load
+ * counts must say so. Putting it away used to count it as back in the
+ * world (obj_from_char), and logging out then took it out of the world
+ * too: a stashed limited item stopped counting at all, and resets loaded
+ * another. +1 marks an item (and what is directly in it, as obj_to_char
+ * counts) as owned; -1 undoes that before obj_to_char counts it again.
+ */
+static void stash_maxload( OBJ_DATA *obj, int signval )
+{
+    OBJ_DATA *inner;
+
+    if ( obj->pIndexData != NULL && get_maxload_index( obj->pIndexData->vnum ) != NULL )
+        add_maxload_index( obj->pIndexData->vnum, signval, 0 );
+    for ( inner = obj->contains; inner != NULL; inner = inner->next_content )
+        if ( inner->pIndexData != NULL
+        &&   get_maxload_index( inner->pIndexData->vnum ) != NULL )
+            add_maxload_index( inner->pIndexData->vnum, signval, 0 );
+}
+
 void stash_receive( CHAR_DATA *ch, OBJ_DATA *obj )
 {
+    stash_maxload( obj, +1 );
     obj->next_content = ch->pcdata->stash;
     ch->pcdata->stash = obj;
     obj->carried_by   = NULL;
@@ -648,9 +669,19 @@ void stash_extract( CHAR_DATA *ch )
 
     for ( obj = ch->pcdata->stash; obj != NULL; obj = next )
     {
+        OBJ_DATA *inner;
+
         next = obj->next_content;
         obj->next_content = NULL;
-        extract_obj( obj );
+        /* Leaving with its owner, as what they carry does: still owned.
+           extract_obj counted it as gone from the world; extract_obj_player
+           counts nothing for an item that sits nowhere, but adds one for
+           each item it takes out of a bag -- so take that one off first. */
+        for ( inner = obj->contains; inner != NULL; inner = inner->next_content )
+            if ( inner->pIndexData != NULL
+            &&   get_maxload_index( inner->pIndexData->vnum ) != NULL )
+                add_maxload_index( inner->pIndexData->vnum, -1, 0 );
+        extract_obj_player( obj );
     }
 
     ch->pcdata->stash = NULL;
@@ -902,6 +933,7 @@ void do_stash( CHAR_DATA *ch, char *argument )
             prev->next_content = obj->next_content;
         obj->next_content = NULL;
 
+        stash_maxload( obj, -1 );
         obj_to_char( obj, ch );
         watch_log( ch, "withdrew %s (vnum %d) from the stash",
             obj->short_descr, obj->pIndexData->vnum );
@@ -1200,6 +1232,7 @@ void do_stash( CHAR_DATA *ch, char *argument )
                     prev->next_content = obj->next_content;
                 obj->next_content = NULL;
 
+                stash_maxload( obj, -1 );
                 obj_to_char( obj, ch );
                 watch_log( ch, "took %s (vnum %d) from %s's stash",
                     obj->short_descr, obj->pIndexData->vnum, owner->name );
@@ -6317,6 +6350,9 @@ void do_slots( CHAR_DATA *ch, char *argument )
 
     /* Deduct 1 gold before spinning */
     add_money( ch, -CASINO_BET_MIN );
+    /* A pull takes a moment: with none, an alias pulled as fast as the
+       input loop ran. */
+    WAIT_STATE( ch, PULSE_VIOLENCE );
 
     r1 = number_range( 0, NUM_SYM - 1 );
     r2 = number_range( 0, NUM_SYM - 1 );
@@ -6329,8 +6365,15 @@ void do_slots( CHAR_DATA *ch, char *argument )
 
     if ( IS_SEVEN(r1) && IS_SEVEN(r2) && IS_SEVEN(r3) )
     {
-        /* Three sevens (either stop): jackpot */
-        payout = 100;
+        /* Three sevens (either stop): jackpot.
+         *
+         * The table paid 1464 for every 343 coins played -- about 4.27 back
+         * on each 1 -- so the casino minted money (2026-10-04). With seven
+         * stops, two of them SEVEN, it now returns 320 per 343, about 93%:
+         *   three sevens  8/343 x 10     three BARs  1/343 x 50
+         *   other three   4/343 x 10     two alike 150/343 x 1 (the coin back)
+         * Change one and recompute the rest. */
+        payout = 10;
         jackpot = true;
         result_msg = "*** JACKPOT! THREE SEVENS! ***\n\r";
     }
@@ -6343,7 +6386,7 @@ void do_slots( CHAR_DATA *ch, char *argument )
     else if ( r1 == r2 && r2 == r3 )
     {
         /* Any other three of a kind (CHERRY/LEMON/ORANGE/GRAPE) */
-        payout = 20;
+        payout = 10;
         result_msg = "Three of a kind!  You win!\n\r";
     }
     else if (   SYM_NORM(r1) == SYM_NORM(r2)
@@ -6351,14 +6394,8 @@ void do_slots( CHAR_DATA *ch, char *argument )
              || SYM_NORM(r1) == SYM_NORM(r3) )
     {
         /* Two matching symbols (correctly handles cross-index SEVEN pairs) */
-        payout = 3;
-        result_msg = "Two of a kind -- you recover your bet plus a little extra.\n\r";
-    }
-    else if ( r1 == 3 || r2 == 3 || r3 == 3 )
-    {
-        /* Any cherry - break even */
         payout = 1;
-        result_msg = "A cherry!  You get your coin back.\n\r";
+        result_msg = "Two of a kind -- you get your coin back.\n\r";
     }
     else
     {

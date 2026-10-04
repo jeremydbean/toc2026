@@ -1924,6 +1924,14 @@ void char_update( void )
         &&   ch->level >= 1
         &&   ch->desc->descriptor % AUTOSAVE_CYCLE_TICKS == save_number )
             save_char_obj( ch );
+        /* Switched or in a were-form: the descriptor is on the mobile and
+           the player's own is NULL, so neither test above saw them and a
+           long switch rolled back on a crash. save_char_obj follows
+           desc->original to the player. */
+        else if ( IS_NPC(ch) && ch->desc != NULL
+        &&   ch->desc->original != NULL && !IS_NPC(ch->desc->original)
+        &&   ch->desc->descriptor % AUTOSAVE_CYCLE_TICKS == save_number )
+            save_char_obj( ch->desc->original );
 
         /* 4-hour session milestone: snapshot heroes/immortals once per
            session after they accumulate 4 hours of game play time. */

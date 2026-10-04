@@ -21,6 +21,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **The slot machine paid 4.27 gold for every 1 played.** It returns about
+  93% now (three BARs 50, three sevens or any three alike 10, two alike
+  your coin back) and a pull takes a moment; HELP SLOTS says so.
+- **A death you caused yourself counts.** Dying of your own poison,
+  plague, drowning or a trap costs the experience a mobile's kill does,
+  and a quest target that dies of poison credits whoever it was fighting.
+- **A stashed limited item stays counted as owned**, so resets no longer
+  load another while yours sits in the stash.
+- **Riding obeys Hyrule's Raft, Stepladder, Triforce and dungeon order**;
+  a refused mounted step ends a RUN; a switched player is autosaved.
 - **A sweep for rare-state bugs (2026-10-04).** Fixed:
   - STASH LINK put the typed name into a file path, so
     `stash link ../area/area.lst` overwrote that file with a player file.

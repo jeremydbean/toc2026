@@ -1927,7 +1927,9 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 
 
 
-	    if(IS_NPC(ch)) {
+	    /* Killed by a mobile, or by yourself -- your own poison, plague,
+	       drowning or trap. Only a mobile's kill used to cost anything. */
+	    if(IS_NPC(ch) || ch == victim) {
               long curr_exp;
               long base_exp;
               base_exp = exp_per_level(victim,victim->pcdata->points) * victim->level;
@@ -3370,8 +3372,19 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
      * P-killing doesn't help either.
      * Dying of mortal wounds or poison doesn't give xp to anyone!
      */
-    if ( !IS_NPC(victim) || victim == ch )
+    if ( !IS_NPC(victim) )
 	return;
+
+    /* Dying of poison, plague or a wound gives no experience, as ever --
+       but a quest that wanted it dead is done. The credit goes to whoever
+       it was fighting (or their master); it used to go to nobody, and the
+       target was gone. */
+    if ( victim == ch )
+    {
+	if ( victim->fighting != NULL && victim->fighting != victim )
+	    quest_record_kill( victim->fighting, victim );
+	return;
+    }
 
     /* A charmed servant is no kill: a necromancer raised a vampire for 75
        mana and killed it for its experience, over and over. */

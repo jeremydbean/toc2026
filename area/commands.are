@@ -1663,12 +1663,13 @@ Play the three-reel slot machine in the casino.  Costs 1 gold per pull.
 
   Symbols: SEVEN, BAR, CHERRY, LEMON, ORANGE, GRAPE
   Payouts:
-    Three SEVENS -- Jackpot!  Win 100 gold
     Three BARs   -- Win 50 gold
-    Three of any -- Win 20 gold
-    Two matching -- Win 3 gold
-    Any CHERRY   -- Get your 1 gold back
+    Three SEVENS -- Win 10 gold
+    Three of any -- Win 10 gold
+    Two matching -- Get your 1 gold back
     No match     -- Lose 1 gold
+
+  The machine keeps about seven coins in every hundred.
 
 You must be inside the Lucky Dragon Casino to use this command.
 

@@ -971,6 +971,37 @@ void do_look( CHAR_DATA *ch, char *argument )
 }
 
 
+/*
+ * The tools Hyrule's ways ask for -- the Raft, the Stepladder, the whole
+ * Triforce of Wisdom -- asked of a walker and a rider alike. Riding used
+ * to skip all three, so a mount crossed the raft water with no Raft.
+ */
+static bool hyrule_tool_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *in_room,
+                                 EXIT_DATA *pexit )
+{
+    if ( !is_hyrule_room(in_room) || pexit == NULL || pexit->keyword == NULL )
+        return false;
+    if ( is_name( "raft", pexit->keyword )
+    &&   !has_key( ch, HYRULE_RAFT_VNUM ) )
+    {
+        send_to_char( "You need the Raft to cross that water.\n\r", ch );
+        return true;
+    }
+    if ( is_name( "stepladder", pexit->keyword )
+    &&   !has_key( ch, HYRULE_STEPLADDER_VNUM ) )
+    {
+        send_to_char( "You need the Stepladder to cross that gap.\n\r", ch );
+        return true;
+    }
+    if ( is_name( "triforce", pexit->keyword )
+    &&   !has_complete_hyrule_triforce( ch ) )
+    {
+        send_to_char( "Only one who carries all eight pieces of the Triforce of Wisdom can open the way.\n\r", ch );
+        return true;
+    }
+    return false;
+}
+
 void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 {
     CHAR_DATA *fch;
@@ -1025,7 +1056,14 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     {
       if(!IS_NPC(ch) && ch->pcdata->mounted)
       {
+	       ROOM_INDEX_DATA *was_in = ch->in_room;
+
 	       do_riding(ch,door, skip_special_check);
+	       /* A refused step ends a run, as it does on foot: a mounted RUN
+	          into a wall said "you cannot take a mount that way" thirty
+	          times. */
+	       if ( ch->in_room == was_in )
+		   runner = 2;
 	       return;
       }
      }
@@ -1128,24 +1166,8 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 
     if ( is_hyrule_room(in_room) && pexit->keyword != NULL )
     {
-        if ( is_name( "raft", pexit->keyword )
-        &&   !has_key( ch, HYRULE_RAFT_VNUM ) )
-        {
-            send_to_char( "You need the Raft to cross that water.\n\r", ch );
+        if ( hyrule_tool_refuses( ch, in_room, pexit ) )
             return;
-        }
-        if ( is_name( "stepladder", pexit->keyword )
-        &&   !has_key( ch, HYRULE_STEPLADDER_VNUM ) )
-        {
-            send_to_char( "You need the Stepladder to cross that gap.\n\r", ch );
-            return;
-        }
-        if ( is_name( "triforce", pexit->keyword )
-        &&   !has_complete_hyrule_triforce( ch ) )
-        {
-            send_to_char( "Only one who carries all eight pieces of the Triforce of Wisdom can open the way.\n\r", ch );
-            return;
-        }
         if ( IS_SET(pexit->exit_info, EX_CLOSED)
         &&   is_name( "shutter", pexit->keyword )
         &&   !hyrule_room_has_guardian(in_room) )
@@ -4816,6 +4838,11 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
        send_to_char( "Alas, you cannot take a mount that way.\n\r", temp_ch );
        return;
     }
+
+    /* Hyrule's tools and its order, as on foot. */
+    if ( hyrule_tool_refuses( temp_ch, in_room, pexit )
+    ||   hyrule_gate_refuses( temp_ch, in_room, to_room ) )
+       return;
 
     if ( IS_SET(pexit->exit_info, EX_WIZLOCKED) )
     {

@@ -110,6 +110,52 @@ class CombatAndMovementSourceTests(unittest.TestCase):
         self.assertIn("followers[nfollow++] = fch;", move)
 
 
+class FollowUpSourceTests(unittest.TestCase):
+    def test_the_slot_machine_keeps_a_little(self) -> None:
+        slots = body("act_obj.c", "void do_slots(")
+        self.assertIn("WAIT_STATE( ch, PULSE_VIOLENCE );", slots)
+        self.assertNotIn("A cherry!", slots)
+        # The reels: seven stops, two of them SEVEN (normalised to 0).
+        total = 0
+        for r1 in range(7):
+            for r2 in range(7):
+                for r3 in range(7):
+                    n = [0 if r < 2 else r for r in (r1, r2, r3)]
+                    if all(r < 2 for r in (r1, r2, r3)):
+                        total += 10
+                    elif r1 == r2 == r3 == 2:
+                        total += 50
+                    elif r1 == r2 == r3:
+                        total += 10
+                    elif n[0] == n[1] or n[1] == n[2] or n[0] == n[2]:
+                        total += 1
+        self.assertEqual(total, 320)            # of every 343 played
+        for payout in ("payout = 10;", "payout = 50;", "payout = 1;"):
+            self.assertIn(payout, slots)
+
+    def test_a_death_you_caused_yourself_still_counts(self) -> None:
+        gain = body("fight.c", "void group_gain(")
+        self.assertIn("quest_record_kill( victim->fighting, victim )", gain)
+        fight = (SRC / "fight.c").read_text(encoding="latin-1")
+        self.assertIn("if(IS_NPC(ch) || ch == victim) {", fight)
+
+    def test_a_stashed_limited_item_stays_counted(self) -> None:
+        obj = (SRC / "act_obj.c").read_text(encoding="latin-1")
+        self.assertIn("stash_maxload( obj, +1 );", obj)
+        self.assertEqual(obj.count("stash_maxload( obj, -1 );"), 2)
+        extract = body("act_obj.c", "void stash_extract(")
+        self.assertIn("extract_obj_player( obj );", extract)
+
+    def test_riding_asks_hyrules_tools_and_order(self) -> None:
+        riding = body("act_move.c", "void do_riding(")
+        self.assertIn("hyrule_tool_refuses( temp_ch, in_room, pexit )", riding)
+        self.assertIn("hyrule_gate_refuses( temp_ch, in_room, to_room )", riding)
+
+    def test_a_switched_player_is_autosaved(self) -> None:
+        update = (SRC / "update.c").read_text(encoding="latin-1")
+        self.assertIn("save_char_obj( ch->desc->original );", update)
+
+
 try:
     from live_mud import LiveMud, create_character, skip_reason
     LIVE_SKIP = skip_reason()

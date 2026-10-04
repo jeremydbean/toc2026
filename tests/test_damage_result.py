@@ -63,7 +63,7 @@ class DamageResultTests(unittest.TestCase):
     def test_raised_undead_are_no_kill_and_do_not_outlive_their_master(self) -> None:
         fight = (SRC / "fight.c").read_text(encoding="latin-1")
         gain = fight[fight.index("void group_gain("):]
-        gain = gain[:gain.index("quest_record_kill")]
+        gain = gain[:gain.index("quest_record_kill(ch, victim)")]
         self.assertIn("MOB_VNUM_ANIMATE", gain)
         remort = (SRC / "act_info.c").read_text(encoding="latin-1")
         remort = remort[remort.index("void do_remort("):]
