@@ -1,7 +1,7 @@
 #PLAYER
 Name Farslayer~
 Id   21916
-LogO 1791122819
+LogO 1791123890
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 3
-Plyd 2270
+Plyd 3341
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 3712
-HMV  36 36 76 144 112 112
+Room 3787
+HMV  36 36 34 144 95 112
 NewGold 0
 NewPlat 0
 NewCopp 20
@@ -53,7 +53,7 @@ SesKill  8
 SesPK    0
 SesDead  2
 SesQuest 0
-Exp  7799
+Exp  7789
 Act  65788
 Comm 24576
 Mounted 0
@@ -81,12 +81,11 @@ Color 15 6
 Color 16 6
 Pos  5
 Prac 7
-Trai 3
 Save  -3
 Alig  -750
 Hit   3
-ACs 74 74 74 80
-Attr 13 13 16 13 13
+ACs 94 94 94 100
+Attr 13 13 17 13 15
 AMod 0 0 0 0 0
 Pass FarZsfmbOukHE~
 Titl  the Scholar of Magic~
@@ -94,7 +93,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 36 144 112
-Cond 0 11 11
+Cond 0 0 0
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -121,9 +120,8 @@ Sk 62 'recall'
 Gr 'rom basics'
 Gr 'mage basics'
 Gr 'mage default'
-AffD 'armor'   0  16 -20  17          0          0
-AffD 'bless'   0  28  -3  24          0          0
-AffD 'bless'   0  28   3  18          0          0
+AffD 'bless'   0  10  -3  24          0          0
+AffD 'bless'   0  10   3  18          0          0
 End
 
 #O
