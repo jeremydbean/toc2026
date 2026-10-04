@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791125902
+LogO 1791126239
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,7 +15,7 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 26
-Plyd 288169
+Plyd 288506
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
@@ -221,7 +221,7 @@ Wear 0
 Cost 0
 Cond 91
 Repd 0
-Val  0 0 22 0 0
+Val  0 0 17 0 0
 End
 
 #O
