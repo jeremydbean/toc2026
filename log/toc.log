@@ -46504,3 +46504,68 @@ Sun Oct  4 23:34:49 2026 :: Log Alaric [1476]: n
 Sun Oct  4 23:34:49 2026 :: Log Alaric [1477]: arrived (The audience chamber) from 1476
 Sun Oct  4 23:34:52 2026 :: Log Alaric [1477]: look mi
 Sun Oct  4 23:34:56 2026 :: Log Alaric [1477]: sh ca
+Sun Oct  4 23:35:03 2026 :: Log Alaric [1477]: sh ca
+Sun Oct  4 23:35:13 2026 :: Log Alaric [1477]: l i cor
+Sun Oct  4 23:35:15 2026 :: Log Alaric [1477]: get col cor
+Sun Oct  4 23:35:18 2026 :: Log Alaric [1477]: stash put col
+Sun Oct  4 23:35:18 2026 :: Log Alaric [1477]: stashed a spiked collar (vnum 1395)
+Sun Oct  4 23:35:19 2026 :: Log Alaric [1477]: quit
+Sun Oct  4 23:35:19 2026 :: Alaric has quit.
+Sun Oct  4 23:35:19 2026 :: [QUIT] Player rejoined the real world.
+Sun Oct  4 23:38:56 2026 :: Sock.sinaddr:  208.126.22.104
+Sun Oct  4 23:38:57 2026 :: Sock.sinaddr:  3.212.128.62
+Sun Oct  4 23:38:57 2026 :: EOF encountered on read.
+Sun Oct  4 23:38:58 2026 :: Loading Alaric's playerfile
+Sun Oct  4 23:38:59 2026 :: Alaric@208.126.22.104 has connected.
+Sun Oct  4 23:38:59 2026 :: Log Alaric [1477]: arrived (The audience chamber) from 0
+Sun Oct  4 23:39:01 2026 :: Log Alaric [1477]: sh ca
+Sun Oct  4 23:39:09 2026 :: Log Alaric [1477]: sh
+Sun Oct  4 23:39:14 2026 :: Log Alaric [1477]: l i cor
+Sun Oct  4 23:39:16 2026 :: Log Alaric [1477]: get col cor
+Sun Oct  4 23:39:19 2026 :: Log Alaric [1477]: stash put col
+Sun Oct  4 23:39:19 2026 :: Log Alaric [1477]: stashed a spiked collar (vnum 1395)
+Sun Oct  4 23:39:20 2026 :: Log Alaric [1477]: recal
+Sun Oct  4 23:39:20 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 1477
+Sun Oct  4 23:39:21 2026 :: Log Alaric [2497]: aq re
+Sun Oct  4 23:39:28 2026 :: Log Alaric [2497]: enter door
+Sun Oct  4 23:39:28 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Oct  4 23:39:28 2026 :: Log Alaric [2401]: south
+Sun Oct  4 23:39:28 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Sun Oct  4 23:39:29 2026 :: Log Alaric [2404]: south
+Sun Oct  4 23:39:29 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 2404
+Sun Oct  4 23:39:29 2026 :: Log Alaric [2427]: south
+Sun Oct  4 23:39:29 2026 :: Log Alaric [2428]: arrived (Main Processional.) from 2427
+Sun Oct  4 23:39:29 2026 :: Log Alaric [2428]: south
+Sun Oct  4 23:39:29 2026 :: Log Alaric [2429]: arrived (Bridge of the Mermaids.) from 2428
+Sun Oct  4 23:39:29 2026 :: Log Alaric [2429]: south
+Sun Oct  4 23:39:29 2026 :: Log Alaric [2430]: arrived (Main Processional.) from 2429
+Sun Oct  4 23:39:30 2026 :: Log Alaric [2430]: south
+Sun Oct  4 23:39:30 2026 :: Log Alaric [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Sun Oct  4 23:39:30 2026 :: Log Alaric [2431]: open south
+Sun Oct  4 23:39:30 2026 :: Log Alaric [2431]: south
+Sun Oct  4 23:39:30 2026 :: Log Alaric [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Sun Oct  4 23:39:34 2026 :: Log Alaric [2432]: s
+Sun Oct  4 23:39:34 2026 :: Log Alaric [3505]: arrived (The Trail to Miden'nir) from 2432
+Sun Oct  4 23:39:35 2026 :: Log Alaric [3505]: s
+Sun Oct  4 23:39:35 2026 :: Log Alaric [3507]: arrived (A Burned Cart) from 3505
+Sun Oct  4 23:39:35 2026 :: Log Alaric [3507]: s
+Sun Oct  4 23:39:35 2026 :: Log Alaric [3510]: arrived (A Crossroads) from 3507
+Sun Oct  4 23:39:36 2026 :: Log Alaric [3510]: s
+Sun Oct  4 23:39:36 2026 :: Log Alaric [3516]: arrived (Muddy Ground) from 3510
+Sun Oct  4 23:39:37 2026 :: Log Alaric [3516]: d
+Sun Oct  4 23:39:37 2026 :: Log Alaric [19]: arrived (Soggy Cave) from 3516
+Sun Oct  4 23:39:38 2026 :: Log Alaric [19]: s
+Sun Oct  4 23:39:38 2026 :: Log Alaric [2801]: arrived (Wastedump) from 19
+Sun Oct  4 23:39:38 2026 :: Log Alaric [2801]: s
+Sun Oct  4 23:39:38 2026 :: Log Alaric [2803]: arrived (Troll's Living Room) from 2801
+Sun Oct  4 23:39:40 2026 :: Log Alaric [2803]: scan
+Sun Oct  4 23:39:41 2026 :: Log Alaric [2803]: e
+Sun Oct  4 23:39:41 2026 :: Log Alaric [2804]: arrived (The Playpen) from 2803
+Sun Oct  4 23:39:43 2026 :: Log Alaric [2804]: te
+Sun Oct  4 23:39:51 2026 :: Log Alaric [2804]: recal
+Sun Oct  4 23:39:51 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2804
+Sun Oct  4 23:39:52 2026 :: Log Alaric [2497]: recal
+Sun Oct  4 23:39:52 2026 :: Log Alaric [2497]: aq co
+Sun Oct  4 23:39:52 2026 :: Log Alaric [2497]: quest complete: 9 gold, 40 quest points (streak bonus 139%)
+Sun Oct  4 23:39:52 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct  4 23:39:58 2026 :: Log Alaric [2497]: stash
