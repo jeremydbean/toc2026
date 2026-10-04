@@ -34233,3 +34233,54 @@ Sun Oct  4 00:41:24 2026 :: Log Alaric [29212]: wear exc
 Sun Oct  4 00:41:36 2026 :: Log Alaric [29212]: torm
 Sun Oct  4 00:41:45 2026 :: Log Alaric [29212]: level 53 -> 54 (restore)
 Sun Oct  4 00:41:45 2026 :: Alaric is now a Knight of the Realms!!!
+Sun Oct  4 00:42:38 2026 :: Sock.sinaddr:  3.12.251.153
+Sun Oct  4 00:42:38 2026 :: EOF encountered on read.
+Sun Oct  4 00:43:01 2026 :: Log Alaric [29212]: bug Upon reaching level 54, there is a text that begins with, "NOTE:". There is a typo, there should be a space in the word, "maxlevel". It should be presented as, "max level"
+Sun Oct  4 00:43:03 2026 :: Log Alaric [29212]: recal
+Sun Oct  4 00:43:03 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 00:43:06 2026 :: Log Alaric [4207]: i
+Sun Oct  4 00:43:13 2026 :: Log Alaric [4207]: e
+Sun Oct  4 00:43:13 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sun Oct  4 00:43:13 2026 :: Log Alaric [4202]: e
+Sun Oct  4 00:43:13 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sun Oct  4 00:43:13 2026 :: Log Alaric [4201]: e
+Sun Oct  4 00:43:13 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sun Oct  4 00:43:14 2026 :: Log Alaric [2427]: n
+Sun Oct  4 00:43:14 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sun Oct  4 00:43:14 2026 :: Log Alaric [2404]: n
+Sun Oct  4 00:43:14 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sun Oct  4 00:43:15 2026 :: Log Alaric [2401]: n
+Sun Oct  4 00:43:15 2026 :: Log Alaric [0]: moved to 2402 (Northern Oak Tree Square.)
+Sun Oct  4 00:43:15 2026 :: Log Alaric [2402]: n
+Sun Oct  4 00:43:15 2026 :: Log Alaric [0]: moved to 2415 (Main Processional.)
+Sun Oct  4 00:43:15 2026 :: Log Alaric [2415]: e
+Sun Oct  4 00:43:15 2026 :: Log Alaric [0]: moved to 2485 (Market Plaza.)
+Sun Oct  4 00:43:15 2026 :: Log Alaric [2485]: s
+Sun Oct  4 00:43:15 2026 :: Log Alaric [0]: moved to 2494 (Weapons Shop.)
+Sun Oct  4 00:43:17 2026 :: Log Alaric [2494]: repair shield
+Sun Oct  4 00:43:18 2026 :: Log Alaric [2494]: wear shi
+Sun Oct  4 00:43:20 2026 :: Log Alaric [2494]: eq
+Sun Oct  4 00:43:23 2026 :: Log Alaric [2494]: wear dark
+Sun Oct  4 00:43:25 2026 :: Log Alaric [2494]: remort (arguments withheld)
+Sun Oct  4 00:43:42 2026 :: Log Alaric [2494]: remort (arguments withheld)
+Sun Oct  4 00:43:42 2026 :: Automated backup complete.
+Sun Oct  4 00:43:45 2026 :: Log Alaric [2494]: wake
+Sun Oct  4 00:43:45 2026 :: Log Alaric [2494]: l
+Sun Oct  4 00:43:47 2026 :: Log Alaric [2494]: score
+Sun Oct  4 00:43:48 2026 :: Log Alaric [2494]: gr
+Sun Oct  4 00:43:49 2026 :: Log Alaric [2494]: l
+Sun Oct  4 00:43:50 2026 :: Log Alaric [2494]: n
+Sun Oct  4 00:44:10 2026 :: Log Alaric [2494]: gr
+Sun Oct  4 00:44:12 2026 :: Log Alaric [2494]: i
+Sun Oct  4 00:44:12 2026 :: Log Alaric [2494]: eq
+Sun Oct  4 00:44:14 2026 :: Log Alaric [2494]: wake
+Sun Oct  4 00:44:14 2026 :: Log Alaric [2494]: l
+Sun Oct  4 00:44:18 2026 :: Log Alaric [2494]: l i new
+Sun Oct  4 00:44:30 2026 :: Log Alaric [2494]: sc
+Sun Oct  4 00:44:32 2026 :: Log Alaric [2494]: stash
+Sun Oct  4 00:45:46 2026 :: Log Alaric [2494]: heal all
+Sun Oct  4 00:45:47 2026 :: Log Alaric [2494]: l
+Sun Oct  4 00:46:03 2026 :: Log Alaric [2494]: sc
+Sun Oct  4 00:46:05 2026 :: Log Alaric [2494]: l
+Sun Oct  4 00:46:08 2026 :: Log Alaric [2494]: who
+Sun Oct  4 00:46:45 2026 :: Log Alaric [2494]: who
