@@ -1151,9 +1151,12 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	   "dodge",          "parry",            "dirt kicking",
 	   "enhanced damage"
 	   }
-    }
+    },
 
-
+    /* The end. Every reader stops at vnum 0, and there was none: each
+       walk of this table ran off its end into whatever the linker put
+       next until something there happened to read as zero. */
+    {  0, 0, 0, { NULL }, { NULL } }
 };
 
 

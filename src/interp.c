@@ -352,6 +352,8 @@ const	struct	cmd_type	cmd_table	[] =
     { "visible",	do_visible,	POS_SLEEPING,	 0,  LOG_NORMAL, 1 },
     { "wake",		do_wake,	POS_SLEEPING,	 0,  LOG_NORMAL, 1 },
     { "where",		do_where,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
+    /* After WAKE, so WA is still wake; WAL and WALK reach this. */
+    { "walkto",		do_walkto,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
 
 
 

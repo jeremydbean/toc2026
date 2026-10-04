@@ -64,6 +64,7 @@ set(SRC_FILES
     src/telnet_proto.c
     src/stubs.c
     src/update.c
+    src/walkto.c
     src/wizlist.c
 )
 

@@ -969,6 +969,8 @@ void game_loop_unix( int control )
                     }
                     d->showstr_point = NULL;
                 }
+                /* Any command but WALKTO ends a walk under way. */
+                walkto_interrupt( ch, d->incomm );
                 interp_from_alias = d->incomm_from_alias;
                 interpret( ch, d->incomm );
                 interp_from_alias = FALSE;
@@ -1464,6 +1466,8 @@ void close_socket( DESCRIPTOR_DATA *dclose )
                said since their last clean quit. */
             if ( !IS_NPC(ch) && ch->pcdata != NULL )
                 ch->pcdata->last_logout = (long)current_time;
+            /* Nobody walks on without a link, or resumes on reconnecting. */
+            walkto_clear( ch );
 	    ch->desc = NULL;
 	}
 	else

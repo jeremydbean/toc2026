@@ -358,6 +358,8 @@ Live-test gotchas that look like product bugs and are not:
 - `src/db.c`: world boot and native area parser
 - `src/interp.c`: command registration/order/trust/logging
 - `src/act_move.c`: movement, exits, traps, recall, run/speedwalk
+- `src/walkto.c`: WALKTO -- named destinations, pathfinding from the
+  player's room, and the paced walk
 - `src/act_info.c`: displays, leveling, remort
 - `src/act_obj.c`: objects, equipment, shops, banks, item use
 - `src/act_comm.c`: channels and communication
@@ -726,7 +728,8 @@ What counts as a way through, because it is more than exits:
   The three numbers after the sector are destination, speed and visibility.
 
 It also writes **`area/routelist.are`**, the `HELP WALKTO` topic
-naming every area with a route and how far out it is. That file is
+documenting the command (below) and naming every area with a route and
+how far out it is. That file is
 generated: edit the generator, not the help, and `area.lst` must keep
 listing it or the topic quietly disappears.
 `tests/test_directions_router.py` asserts the generator reproduces it
@@ -761,6 +764,81 @@ contains the start room. The Quest Zone (20301-20313) and Temple Despair
 (26000-26006) have none because nothing in the world links to them -- the
 first is finished content with no entrance, the second an empty shell with no
 mobs or objects. Do not invent entrances for them; ask.
+
+**Trainers and guild halls are in the JSON too**, as a `trainers` list
+beside `routes` (and a short `places` list: the square, the Temple and its
+altar). Each entry has `name`, `role` (`guild hall`, `guild clerk`,
+`guildmaster`, `practice` or `train`), `class`, `guild`, `room`, `vnum`,
+`commands`, `steps`, `rooms_away` and `members_only` -- the Mudlet package
+reads exactly those keys -- plus `who`, `learners`, `teaches`, `gains`,
+`trains`, `place`, `keywords` and `mob` for the Oracle and WALKTO. The
+sources are the game's own tables, read from the C: `guildmaster_table`
+in `src/const.c` (who teaches what, to whom) and `gg_table` in
+`src/special.c` (which guard stands where). The six halls are named from
+HELP GUILDS in `GUILD_HALLS`. The router does not model guards, so a route
+into a hall is the members' route and `members_only` says whose; hall
+rooms are walked the way `guild_closed_rooms()` walks them, except that
+the hall's own door may carry you in (the monks' Palm of the Creator is a
+teleport room). Castles -- Valhalla, Forsaken and the rest -- are set by
+staff, not joined, and their halls are ordinary area routes.
+
+**`area/walkto.dat` is generated from the same payload**, one
+tab-separated line per destination (`kind vnum name place keywords who`),
+LF line endings (`.gitattributes`), and `tests/test_walkto.py` asserts the
+generator reproduces it byte for byte. It is code, not runtime state:
+`toc-deploy`'s `area/*.txt` exclusion does not touch it and the test
+copies `area/` wholesale. Regenerate after anything that moves a trainer,
+a guard, a guild hall or an area entrance.
+
+## WALKTO
+
+`walkto <place>` (`src/walkto.c`) walks a player from wherever they are
+to any destination in `area/walkto.dat`: the areas HELP WALKTO lists,
+every guild hall, Melancholy the guild clerk, every guildmaster and
+trainer, and the Temple. Staff may also give a room vnum. The pieces:
+
+- **It finds the way again before every step**, with its own Dijkstra
+  priced as the router prices it (a move or a portal one, a room that
+  carries you eight), not `find_first_step` in `hunt.c` -- that walks
+  six directions only, straight through death traps, locked doors and
+  portals it cannot see. A door somebody shut, a room that filled up or a
+  teleport that carried the walker are then just the next search, not a
+  stale plan. Exits, free portals (`do_enter`), climb/crawl/jump objects
+  (`do_manipulate`) and waits in teleport rooms are all ways through;
+  portals that charge, levers and anything wanting a tool are not.
+- **Every step is a real one**: `move_char`, `do_open`, `do_enter`,
+  `do_manipulate`. Private rooms, guild guards (spec funs fire in
+  `move_char`), boats, flying, movement points and Hyrule's gates all
+  still apply, and a refusal ends the walk with the game's own reason.
+  It opens doors that are shut but not locked, and named secret doors
+  outside Hyrule, exactly as the published routes say to.
+- **It never walks into a `ROOM_DT`**, not even as a destination:
+  `walk_room_ok()` refuses one before asking anything else, and the step
+  checks again. It also refuses ejectors, newbie rooms past level 10,
+  other classes' class rooms, and every room `guild_closed_rooms()` says
+  this character's guards would turn them from -- so a warrior asking for
+  the Necro Guild Master is told only necromancers are let in, instead
+  of being walked up to the guard.
+- **Pacing is lag.** `walkto_update()` runs every pulse from
+  `update_handler` and counts down the walker's own `ch->wait` (the input
+  loop only does that when there is input), so a step costs
+  `WALKTO_STEP_PULSES` (half a second) and any lag the walker carries.
+- **It stops** on arrival, on any typed command other than WALKTO
+  (`walkto_interrupt()` in the input loop, before `interpret`; a blank
+  line does not count), on `walkto stop`, when a fight starts, when the
+  walker is not standing, when moved by anything else (recall, summons,
+  death, a leader) unless the room they left was one that carries you,
+  on a refused step, on running out of moves, after
+  `WALKTO_MAX_STEPS`, after two minutes waiting on a teleport, and on
+  losing the link (`close_socket` clears it, so a reconnect does not
+  resume). Nothing about a walk is saved.
+- The whole route was not queued through `queue_alias_input()` because a
+  queue cannot notice that a door is locked or a room is full until it
+  has typed the next ten commands into it.
+
+`walkto` alone fits one screen; `walkto trainers` and `walkto areas` page,
+because they are lists asked for by name. `walk` and `wal` reach it; `wa`
+is still WAKE.
 
 ## Dashboard Work
 
