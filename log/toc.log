@@ -37676,3 +37676,45 @@ Sun Oct  4 02:46:25 2026 :: [QUIT] Player rejoined the real world.
 Sun Oct  4 02:47:35 2026 :: Log Killuminati [1]: wizi
 Sun Oct  4 02:47:36 2026 :: Log Killuminati [1]: /
 Sun Oct  4 02:47:53 2026 :: ANNOUNCE: ADMIN: player-state backup to GitHub is not working (last successful run was 99999 minutes ago). Saves are still on disk but are not leaving this machine.
+Sun Oct  4 02:49:36 2026 :: Sock.sinaddr:  52.15.147.27
+Sun Oct  4 02:49:36 2026 :: EOF encountered on read.
+Sun Oct  4 02:51:40 2026 :: Log Killuminati [1]: quit
+Sun Oct  4 02:51:40 2026 :: Killuminati has quit.
+Sun Oct  4 02:51:40 2026 :: [QUIT] Player rejoined the real world.
+Sun Oct  4 02:51:48 2026 :: Sock.sinaddr:  108.81.26.245
+Sun Oct  4 02:51:52 2026 :: Loading Killuminati's playerfile
+Sun Oct  4 02:51:53 2026 :: Killuminati@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Sun Oct  4 02:51:54 2026 :: Log Killuminati [1]: moved to 1 (The Void)
+Sun Oct  4 02:51:55 2026 :: Log Killuminati [1]: pray
+Sun Oct  4 02:51:55 2026 :: Log Killuminati [0]: moved to 8 (The Oracle's Sanctum)
+Sun Oct  4 02:51:55 2026 :: Oracle: Killuminati prayed from room 1 (The Void) and entered her sanctum.
+Sun Oct  4 02:52:00 2026 :: Log Killuminati [8]: 'where's the necro guild?
+Sun Oct  4 02:52:00 2026 :: Log Killuminati [8]: asked the Oracle: where's the necro guild?
+Sun Oct  4 02:52:04 2026 :: Oracle answered Killuminati in room 8: The Morgue of Dresden in the south; only necromancers may enter, but you are a monk so you cannot join that guild.
+Sun Oct  4 02:52:23 2026 :: Log Killuminati [8]: 'where's the monk guild?  give directions from center oak tree square
+Sun Oct  4 02:52:23 2026 :: Log Killuminati [8]: asked the Oracle: where's the monk guild? give directions from center oak tree square
+Sun Oct  4 02:52:28 2026 :: Oracle answered Killuminati in room 8: `walkto palm of the creator` from Oak Tree Square, or manually: `r w 6;r s 4`.
+Sun Oct  4 02:52:44 2026 :: Log Killuminati [8]: 'directions to warrior guild?
+Sun Oct  4 02:52:44 2026 :: Log Killuminati [8]: asked the Oracle: directions to warrior guild?
+Sun Oct  4 02:52:48 2026 :: Oracle answered Killuminati in room 8: `walkto citadel of war` or manually `r e 7;r n 2`.
+Sun Oct  4 02:52:57 2026 :: Log Killuminati [8]: walkto
+Sun Oct  4 02:53:02 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sun Oct  4 02:53:06 2026 :: Log WebAdmin: fsave
+Sun Oct  4 02:53:12 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sun Oct  4 02:53:14 2026 :: Received signal 15; saving players and shutting down.
+Sun Oct  4 02:53:14 2026 :: Closing link to Killuminati.
+Sun Oct  4 02:53:14 2026 :: Normal termination of game.
+Sun Oct  4 02:53:16 2026 ::  INIT OK 
+Sun Oct  4 02:53:16 2026 :: walkto_load: 157 destinations.
+Sun Oct  4 02:53:16 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Sun Oct  4 02:53:16 2026 :: ROM is ready to rock on port 9000.
+Sun Oct  4 02:53:16 2026 :: Automated backup complete.
+Sun Oct  4 02:53:16 2026 :: Daily backup complete.
+Sun Oct  4 02:54:41 2026 :: Sock.sinaddr:  3.20.63.178
+Sun Oct  4 02:54:41 2026 :: EOF encountered on read.
+Sun Oct  4 02:59:46 2026 :: Sock.sinaddr:  3.12.251.153
+Sun Oct  4 02:59:46 2026 :: EOF encountered on read.
+Sun Oct  4 03:04:51 2026 :: Sock.sinaddr:  178.156.185.127
+Sun Oct  4 03:04:51 2026 :: EOF encountered on read.
+Sun Oct  4 03:09:56 2026 :: Sock.sinaddr:  178.156.181.172
+Sun Oct  4 03:09:57 2026 :: EOF encountered on read.
