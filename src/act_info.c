@@ -334,7 +334,7 @@ if(!scan)
   }
 
   if ( red_ganon )
-      toc_strlcat( buf, "{0C}", sizeof(buf) );
+      toc_strlcat( buf, "{0C", sizeof(buf) );
   toc_strlcat( buf, PERS( victim, ch ), sizeof(buf) );
 
 /*   if(IS_NPC(victim)&&ch->questmob > 0 && victim->pIndexData->vnum == ch->questmob)
@@ -395,7 +395,7 @@ if(!scan)
    }
   }
     if ( red_ganon )
-        toc_strlcat( buf, "{00}", sizeof(buf) );
+        toc_strlcat( buf, "{00", sizeof(buf) );
     toc_strlcat( buf, "\n\r", sizeof(buf) );
     buf[0] = UPPER(buf[0]);
     send_to_char( buf, ch );
@@ -426,7 +426,7 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
     if ( is_red_hyrule_ganon( victim ) )
     {
         send_to_char(
-            "{0C}Ganon's body is blazing bright red, and he no longer fights back. Wield the Silver Arrow and type SHOOT GANON now!{00}\n\r",
+            "{0CGanon's body is blazing bright red, and he no longer fights back. Wield the Silver Arrow and type SHOOT GANON now!{00\n\r",
             ch );
     }
 

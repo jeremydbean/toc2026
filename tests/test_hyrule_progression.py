@@ -1651,7 +1651,10 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertIn("is_red_hyrule_ganon", look_source)
         self.assertIn("ganon's body is blazing bright red", look_source)
         self.assertIn("wield the silver arrow and type shoot ganon", look_source)
-        self.assertIn('toc_strlcat( buf, "{0c}"', look_source)
+        # The red tag is a colour token, "{0C" -- a token takes no closing
+        # brace, and the "{0C}" this once read printed a stray "}".
+        self.assertIn('toc_strlcat( buf, "{0c"', look_source)
+        self.assertNotIn('"{0c}', look_source)
 
     def test_hyrule_has_teleport_only_entry_and_no_walking_world_link(self) -> None:
         arcade = self.parser.objects[30285]

@@ -7795,8 +7795,8 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     victim->pcdata->psionic_grant_pending = true;
     victim->pcdata->psionic = 0;
     victim->pcdata->last_level = 0;
-    send_to_char( "Grant flag applied. They will receive psionics on a level check between "
-                  "18 and 21.\n\r", ch );
+    send_to_char( "Grant flag applied. They will receive psionics the next time they gain a "
+                  "level.\n\r", ch );
 
     /* Worth saying on its own line: an immortal who typed NOW wants to
        know the character is not there, separately from why the grant
@@ -7804,8 +7804,9 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     if ( offline )
         send_to_char( "They are not online, so the flag is saved straight "
                       "to their player file.\n\r", ch );
-    else
-        send_to_char( "Your mind tingles with unfamiliar potential.\n\r", victim );
+    /* The player is told nothing (owner, 2026-10-04): a grant is staff
+       business. They hear about it when the powers awaken, in the same
+       words as anybody whose mind awakens on its own. */
 
     {
         char note[MAX_STRING_LENGTH];

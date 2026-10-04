@@ -200,6 +200,17 @@ void do_check_psi( CHAR_DATA *ch, char *argument )
     if ( !on_level_gain )
         return;
 
+    /* A staff GRANTPSI is certain, and soon: the next level gained pays
+       it, whatever the level (owner, 2026-10-04). It used to wait on the
+       18-21 band's one-in-four rolls, and Alaric, granted at 17, missed
+       three of them. The band's odds are a remort's owing, not a grant. */
+    if ( ch->pcdata->psionic_grant_pending )
+    {
+        psi_log( ch, "flagged grant honoured on reaching level %d", ch->level );
+        grant_psionics( ch, 100, true );
+        return;
+    }
+
     if ( ch->level < PSI_AWAKEN_MIN || ch->level > PSI_AWAKEN_MAX )
         return;
 
@@ -210,20 +221,7 @@ void do_check_psi( CHAR_DATA *ch, char *argument )
              ch->level, roll == ch->level ? "AWAKENED" : "missed" );
 
     if ( roll != ch->level )
-    {
-        /* A staff GRANTPSI is a promise, not a ticket in the draw: the
-           band's dice still decide *when*, but the last level of it pays
-           whatever is still owed. Alaric was granted at 17 and missed at
-           18, 19 and 20. A remort's owing keeps the plain odds. */
-        if ( ch->pcdata->psionic_grant_pending && ch->level == PSI_AWAKEN_MAX )
-        {
-            psi_log( ch, "flagged grant honoured at level %d, the end of "
-                         "the %d-%d band, after the rolls missed",
-                     ch->level, PSI_AWAKEN_MIN, PSI_AWAKEN_MAX );
-            grant_psionics( ch, 100, true );
-        }
         return;
-    }
 
     grant_psionics( ch, 100, true );
 }
@@ -593,7 +591,22 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
     /* Clear spec so future auto-grants use set logic, not a stale immortal list. */
     free_string( ch->pcdata->psionic_grant_spec );
     ch->pcdata->psionic_grant_spec = str_dup( "" );
-    send_to_char( "\n\r{0E}Your mind awakens to hidden psionic powers!{x}\n\r", ch );
+    /* The original awakening, as the game first had it (owner asked for
+       it back): it tells the player where the powers are trained. */
+    send_to_char(
+        "\n\r\n\r"
+        "*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*\n\r"
+        "*-------------------------------------------------------------------------*\n\r"
+        "  An overwhelming sensation of new power hits you in a wave of vertigo.\n\r"
+        "  You fall to your knees and scream out as it engulfs your mind.\n\r"
+        "  As the dizziness passes, you discover that you possess knowledge of\n\r"
+        "  some unique new skills.  Further contemplation leads to a premonition\n\r"
+        "  of you, drifting in the astral plane, and before you is..............\n\r"
+        "       Salir, The Monk of the Way.\n\r"
+        "  He trains psionic powers.  Type WALKTO SALIR to find him.\n\r"
+        "*-------------------------------------------------------------------------*\n\r"
+        "*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*\n\r"
+        "\n\r", ch );
 }
 
 /*
@@ -626,9 +639,15 @@ int psionic_restore_known( CHAR_DATA *ch )
             continue;
         if ( ch->pcdata->learned[sn] < 75 )
         {
+            char line[MAX_INPUT_LENGTH];
+
             ch->pcdata->learned[sn] = 75;
             psi_log( ch, "restored %s to 75%% from an earlier life",
                      skill_table[sn].name );
+            snprintf( line, sizeof(line),
+                "{0EYour mind remembers %s from an earlier life.{00\n\r",
+                skill_table[sn].name );
+            send_to_char( line, ch );
             restored++;
         }
     }

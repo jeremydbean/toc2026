@@ -21,10 +21,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
-- **A staff GRANTPSI always lands by level 21.** The awakening dice still
-  pick the level, but a granted character who misses at 18, 19 and 20 is
-  given psionics at 21 (Alaric missed three rolls). Remort-owed psionics
-  keep the plain odds.
+- **A staff GRANTPSI pays on the next level gained, at any level.** It used to
+  wait on the 18-21 band's one-in-four rolls (Alaric missed three). The
+  player is no longer told a grant was made; the awakening itself is the
+  original framed message again, naming Salir and WALKTO SALIR. Powers
+  restored at login are announced one by one.
+- **Colour tokens that printed.** A token is `{` and two hex digits; the
+  Ganon collapse lines, the Silver Arrow shot, the heat spell and the
+  psionic messages wrote `{0C}`, `{x}` and `{R`, which showed as stray
+  braces and letters.
+- **COMPARE judges gear you cannot wear yet.** The verdict says which is
+  better either way, then why you cannot use it yet.
 - **Hermie stands at the pit for six hours after every boot.**
 - **Necromancer review.** Fixed: major globe stacked without limit (it
   tested the skill number as affect bits); the undead-servant cap vanished

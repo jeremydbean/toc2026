@@ -1453,38 +1453,52 @@ static void gear_send_verdict( CHAR_DATA *ch, const GEAR_PROFILE *profile,
     char buf[MAX_STRING_LENGTH];
     char detail[MAX_INPUT_LENGTH];
     double score;
+    bool winner_usable;
 
-    if ( !usable1 && !usable2 )
-    {
-        send_to_char( "Verdict: you can use neither of them yet.\n\r", ch );
-        return;
-    }
-    if ( !usable1 || !usable2 )
-    {
-        snprintf( buf, sizeof( buf ),
-                  "Verdict: %c, because you cannot use %c yet (%s).\n\r",
-                  usable1 ? 'A' : 'B', usable1 ? 'B' : 'A',
-                  usable1 ? why2 : why1 );
-        send_to_char( buf, ch );
-        return;
-    }
-
+    /* The comparison stands whether or not you can wear either piece yet
+       (owner, 2026-10-04): a player saving up for level 55, or weighing
+       a drop for a guildmate, wants to know which is better. What stops
+       them wearing it is said after, not instead. */
     score = gear_score( profile, a, b, defense );
     if ( fabs( score ) <= GEAR_EVEN )
     {
-        send_to_char( "Verdict: no real difference -- wear whichever you like.\n\r", ch );
-        return;
+        send_to_char( "Verdict: no real difference between them.\n\r", ch );
     }
-    if ( score > 0 )
-        gear_describe_gain( profile, a, b, detail, sizeof( detail ) );
     else
-        gear_describe_gain( profile, b, a, detail, sizeof( detail ) );
-    snprintf( buf, sizeof( buf ), "Verdict: %c, %s -- %s.\n\r",
-              score > 0 ? 'A' : 'B',
-              score > 0 ? obj1->short_descr
-                        : obj2 != NULL ? obj2->short_descr : "nothing",
-              detail );
-    send_to_char( buf, ch );
+    {
+        if ( score > 0 )
+            gear_describe_gain( profile, a, b, detail, sizeof( detail ) );
+        else
+            gear_describe_gain( profile, b, a, detail, sizeof( detail ) );
+        snprintf( buf, sizeof( buf ), "Verdict: %c, %s -- %s.\n\r",
+                  score > 0 ? 'A' : 'B',
+                  score > 0 ? obj1->short_descr
+                            : obj2 != NULL ? obj2->short_descr : "nothing",
+                  detail );
+        send_to_char( buf, ch );
+    }
+
+    winner_usable = score > 0 ? usable1 : usable2;
+    if ( !usable1 && !usable2 )
+    {
+        snprintf( buf, sizeof( buf ),
+                  "You cannot use either of them yet (A: %s; B: %s).\n\r",
+                  why1, why2 );
+        send_to_char( buf, ch );
+    }
+    else if ( fabs( score ) > GEAR_EVEN && !winner_usable )
+    {
+        snprintf( buf, sizeof( buf ),
+                  "You cannot use %c yet (%s): it is the one to wear once you can.\n\r",
+                  score > 0 ? 'A' : 'B', score > 0 ? why1 : why2 );
+        send_to_char( buf, ch );
+    }
+    else if ( !usable1 || !usable2 )
+    {
+        snprintf( buf, sizeof( buf ), "You cannot use %c yet (%s).\n\r",
+                  usable1 ? 'B' : 'A', usable1 ? why2 : why1 );
+        send_to_char( buf, ch );
+    }
 }
 
 static void gear_send_item( CHAR_DATA *ch, char label, OBJ_DATA *obj,

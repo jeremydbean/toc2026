@@ -4834,10 +4834,10 @@ void try_heat_gear( CHAR_DATA *ch, CHAR_DATA *victim )
 
     obj = candidates[number_range(0, count - 1)];
 
-    act( "{RA searing heat engulfs $p -- it's scorching hot!{x}", victim, obj, NULL, TO_CHAR );
-    act( "{R$p bursts bright red as $n tears it off!{x}", victim, obj, NULL, TO_ROOM );
+    act( "{0CA searing heat engulfs $p -- it's scorching hot!{00", victim, obj, NULL, TO_CHAR );
+    act( "{0C$p bursts bright red as $n tears it off!{00", victim, obj, NULL, TO_ROOM );
     if ( ch != victim )
-        act( "{RYour fire superheats $N's $p!{x}", ch, obj, victim, TO_CHAR );
+        act( "{0CYour fire superheats $N's $p!{00", ch, obj, victim, TO_CHAR );
 
     unequip_char( victim, obj );
     SET_BIT( obj->extra_flags, ITEM_HEATED );

@@ -22,6 +22,29 @@ _SKIP = skip_reason()
 
 @unittest.skipIf(_SKIP is not None, _SKIP or "")
 class CompareLive(unittest.TestCase):
+    def test_compare_judges_gear_you_cannot_wear_yet(self):
+        """Owner, 2026-10-04: compare what you cannot wear yet. A level 20
+        warrior holding the level 51 moonray sword is told which sword is
+        better, and then why it has to wait."""
+        with LiveMud() as mud:
+            for name in ("Zcmpyoung", "Zcmpgiver"):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PW)
+                    client.send("quit")
+                    client.wait_closed()
+            patch_player_file(mud, "Zcmpyoung", Levl=20, Cla=3, Room=4207)
+            patch_player_file(mud, "Zcmpgiver", Levl=70, Room=4207)
+            with mud.connect(timeout=120) as me, mud.connect(timeout=120) as imm:
+                login(me, "Zcmpyoung", PW)
+                login(imm, "Zcmpgiver", PW)
+                imm.command("load obj 9923 52", 0.5)
+                imm.command("give moonray zcmpyoung", 0.6)
+                out = me.command("compare moonray", 1.8)
+                self.assertRegex(out, r"Verdict: (A|B|no real difference)", out)
+                self.assertIn("You cannot use", out, out)
+                self.assertIn("needs level", out, out)
+                self.assertNotIn("you can use neither", out.lower(), out)
+
     def test_compare_ranks_damage_first_for_a_kitted_warrior(self):
         with LiveMud() as mud:
             for name in (ME, IMM):

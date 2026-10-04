@@ -351,14 +351,14 @@ static void reform_hyrule_ganon( CHAR_DATA *ch, CHAR_DATA *victim )
 
     if ( ch != NULL && ch != victim )
     {
-        act( "{0C}$N flashes bright red as the darkness around $M shatters!{00} The fight breaks off at one hit point. Other attacks can wound $M, but now you must wield the Silver Arrow and type SHOOT GANON!",
+        act( "{0C$N flashes bright red as the darkness around $M shatters!{00 The fight breaks off at one hit point. Other attacks can wound $M, but now you must wield the Silver Arrow and type SHOOT GANON!",
              ch, NULL, victim, TO_CHAR );
-        act( "{0C}$N flashes bright red as the darkness around $M shatters!{00} The fight breaks off. Only SHOOT GANON with the wielded Silver Arrow can finish $M.",
+        act( "{0C$N flashes bright red as the darkness around $M shatters!{00 The fight breaks off. Only SHOOT GANON with the wielded Silver Arrow can finish $M.",
              ch, NULL, victim, TO_NOTVICT );
     }
     else
     {
-        act( "{0C}$n flashes bright red as the darkness around $m shatters!{00} The fight breaks off at one hit point. Wield the Silver Arrow and type SHOOT GANON to finish $m.",
+        act( "{0C$n flashes bright red as the darkness around $m shatters!{00 The fight breaks off at one hit point. Wield the Silver Arrow and type SHOOT GANON to finish $m.",
              victim, NULL, NULL, TO_ROOM );
     }
 }
@@ -5829,11 +5829,11 @@ void do_shoot( CHAR_DATA *ch, char *argument )
 
         stop_fighting( victim, true );
         WAIT_STATE( ch, skill_table[gsn_archery].beats );
-        act( "{0F}You aim $p at $N and release its silver light!{00}",
+        act( "{0FYou aim $p at $N and release its silver light!{00",
              ch, obj, victim, TO_CHAR );
-        act( "{0F}$n aims $p at $N and releases its silver light!{00}",
+        act( "{0F$n aims $p at $N and releases its silver light!{00",
              ch, obj, victim, TO_NOTVICT );
-        act( "{0F}$n aims $p at you and releases its silver light!{00}",
+        act( "{0F$n aims $p at you and releases its silver light!{00",
              ch, obj, victim, TO_VICT );
         damage( ch, victim,
                 UMAX(1, victim->max_hit

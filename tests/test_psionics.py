@@ -34,14 +34,25 @@ def function_body(source: str, signature: str) -> str:
     start = source.index(signature)
     depth = 0
     seen = False
-    for i in range(start, len(source)):
-        if source[i] == "{":
+    i = start
+    while i < len(source):
+        ch = source[i]
+        # A colour token -- "{0E", with no closing brace -- sits in a
+        # string, so string and character literals are stepped over.
+        if ch in "\"'":
+            j = i + 1
+            while j < len(source) and source[j] != ch:
+                j += 2 if source[j] == "\\" else 1
+            i = j + 1
+            continue
+        if ch == "{":
             depth += 1
             seen = True
-        elif source[i] == "}":
+        elif ch == "}":
             depth -= 1
             if seen and depth == 0:
                 return source[start:i + 1]
+        i += 1
     raise AssertionError("unterminated: " + signature)
 
 
@@ -111,13 +122,16 @@ class AwakeningBandTests(unittest.TestCase):
         for phrase in ("rolled", "hits on", "missed", "AWAKENED"):
             self.assertIn(phrase, self.check, phrase)
 
-    def test_a_staff_grant_lands_by_the_end_of_the_band(self) -> None:
-        """Owner, 2026-10-04: Alaric was granted and missed at 18, 19 and
-        20. A missed roll at PSI_AWAKEN_MAX pays a pending grant; a
+    def test_a_staff_grant_lands_on_the_next_level(self) -> None:
+        """Owner, 2026-10-04: a GRANTPSI is 100% at the next level gained.
+        Alaric was granted and missed the band's rolls at 18, 19 and 20.
+        The pending grant pays before the band is even consulted; a
         remort's owing keeps the plain odds."""
-        miss = self.check.split("if ( roll != ch->level )", 1)[1].split("return;\n    }", 1)[0]
-        self.assertIn("psionic_grant_pending && ch->level == PSI_AWAKEN_MAX", miss)
-        self.assertIn("grant_psionics( ch, 100, true );", miss)
+        level_gain = self.check.split("if ( !on_level_gain )", 1)[1]
+        pending = level_gain.index("if ( ch->pcdata->psionic_grant_pending )")
+        self.assertLess(pending, level_gain.index("roll = number_range("))
+        self.assertIn("grant_psionics( ch, 100, true );",
+                      level_gain[pending:level_gain.index("roll = number_range(")])
 
     def test_every_grant_says_which_power_and_why(self) -> None:
         self.assertGreaterEqual(self.grant.count("psi_log("), 6)
