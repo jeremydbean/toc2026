@@ -45712,3 +45712,97 @@ Sun Oct  4 22:28:46 2026 :: Log Alaric [16013]: sh
 Sun Oct  4 22:28:56 2026 :: Log Alaric [16013]: sh
 Sun Oct  4 22:29:08 2026 :: Log Alaric [16013]: sh
 Sun Oct  4 22:29:18 2026 :: Log Alaric [16013]: sh
+Sun Oct  4 22:29:29 2026 :: Log Alaric [16013]: i
+Sun Oct  4 22:29:29 2026 :: Log Alaric [16013]: sh
+Sun Oct  4 22:29:35 2026 :: Log Alaric [16013]: drop all.leg
+Sun Oct  4 22:29:35 2026 :: Log Alaric [16013]: c anim
+Sun Oct  4 22:29:40 2026 :: Log Alaric [16013]: c anim
+Sun Oct  4 22:29:45 2026 :: Log Alaric [16013]: drop arm
+Sun Oct  4 22:29:45 2026 :: Log Alaric [16013]: drop arm
+Sun Oct  4 22:29:46 2026 :: Log Alaric [16013]: c anim
+Sun Oct  4 22:29:52 2026 :: Log Alaric [16013]: c anim
+Sun Oct  4 22:29:57 2026 :: Log Alaric [16013]: drop arm
+Sun Oct  4 22:29:57 2026 :: Log Alaric [16013]: c anim
+Sun Oct  4 22:30:04 2026 :: Log Alaric [16013]: l
+Sun Oct  4 22:30:05 2026 :: Log Alaric [16013]: bu
+Sun Oct  4 22:30:08 2026 :: Log Alaric [16013]: get all.arm
+Sun Oct  4 22:30:08 2026 :: Log Alaric [16013]: get all.leg
+Sun Oct  4 22:30:11 2026 :: Log Alaric [16013]: bu
+Sun Oct  4 22:30:14 2026 :: Log Alaric [16013]: get all.arm
+Sun Oct  4 22:30:15 2026 :: Log Alaric [16013]: get all.leg
+Sun Oct  4 22:30:15 2026 :: Log Alaric [16013]: scan
+Sun Oct  4 22:30:17 2026 :: Log Alaric [16013]: s
+Sun Oct  4 22:30:17 2026 :: Log Alaric [16008]: arrived (Aft Deck South) from 16013
+Sun Oct  4 22:30:19 2026 :: Log Alaric [16008]: kill buc
+Sun Oct  4 22:30:24 2026 :: Log Alaric [16008]: te
+Sun Oct  4 22:30:30 2026 :: Log Alaric [16008]: te
+Sun Oct  4 22:30:39 2026 :: Log Alaric [16008]: who
+Sun Oct  4 22:30:39 2026 :: Log Alaric [16008]: te
+Sun Oct  4 22:30:46 2026 :: Log Alaric [16008]: te
+Sun Oct  4 22:30:52 2026 :: Log Alaric [16008]: scan
+Sun Oct  4 22:30:54 2026 :: Log Alaric [16008]: w
+Sun Oct  4 22:30:54 2026 :: Log Alaric [16007]: arrived (Aft Deck South) from 16008
+Sun Oct  4 22:30:55 2026 :: Log Alaric [16007]: sh pi
+Sun Oct  4 22:31:00 2026 :: Log Alaric [16007]: drop all.arm
+Sun Oct  4 22:31:00 2026 :: Log Alaric [16007]: c anim
+Sun Oct  4 22:31:06 2026 :: Log Alaric [16007]: c anim
+Sun Oct  4 22:31:10 2026 :: Log Alaric [16007]: c anim
+Sun Oct  4 22:31:16 2026 :: Log Alaric [16007]: c anim
+Sun Oct  4 22:31:25 2026 :: Log Alaric [16007]: c anim
+Sun Oct  4 22:31:37 2026 :: Log Alaric [16007]: c anim
+Sun Oct  4 22:31:46 2026 :: Log Alaric [16007]: bu
+Sun Oct  4 22:31:49 2026 :: Log Alaric [16007]: get all.arm
+Sun Oct  4 22:31:49 2026 :: Log Alaric [16007]: get all.leg
+Sun Oct  4 22:31:51 2026 :: Log Alaric [16007]: l
+Sun Oct  4 22:31:52 2026 :: Log Alaric [16007]: scan
+Sun Oct  4 22:31:54 2026 :: Log Alaric [16007]: w
+Sun Oct  4 22:31:54 2026 :: Log Alaric [16006]: arrived (Southwest Corner of Aft Deck) from 16007
+Sun Oct  4 22:31:54 2026 :: Log Alaric [16006]: scan
+Sun Oct  4 22:31:56 2026 :: Log Alaric [16006]: n
+Sun Oct  4 22:31:56 2026 :: Log Alaric [16011]: arrived (Aft Deck - Port Side) from 16006
+Sun Oct  4 22:31:57 2026 :: Log Alaric [16011]: sh pi
+Sun Oct  4 22:32:04 2026 :: Log Alaric [16011]: sh
+Sun Oct  4 22:32:12 2026 :: Log Alaric [16011]: sh
+Sun Oct  4 22:32:27 2026 :: Log Alaric [16011]: sh
+Sun Oct  4 22:32:36 2026 :: Log Alaric [16011]: l
+Sun Oct  4 22:32:38 2026 :: Log Alaric [16011]: d
+Sun Oct  4 22:32:38 2026 :: Log Alaric [16016]: arrived (Main Deck of the Royal Eagle - Port) from 16011
+Sun Oct  4 22:32:38 2026 :: Log Alaric [16016]: scan
+Sun Oct  4 22:32:40 2026 :: Log Alaric [16016]: sh sw
+Sun Oct  4 22:32:48 2026 :: Log Alaric [16016]: te
+Sun Oct  4 22:32:51 2026 :: Sock.sinaddr:  18.116.205.62
+Sun Oct  4 22:32:51 2026 :: EOF encountered on read.
+Sun Oct  4 22:32:55 2026 :: Log Alaric [16016]: te
+Sun Oct  4 22:33:01 2026 :: Log Alaric [16016]: n
+Sun Oct  4 22:33:01 2026 :: Log Alaric [16021]: arrived (Entrance to the Royal Eagle - Main Deck) from 16016
+Sun Oct  4 22:33:02 2026 :: Log Alaric [16021]: te
+Sun Oct  4 22:33:08 2026 :: Log Alaric [16021]: te
+Sun Oct  4 22:33:16 2026 :: Log Alaric [16021]: te
+Sun Oct  4 22:33:24 2026 :: Log Alaric [16021]: te
+Sun Oct  4 22:33:29 2026 :: Log Alaric [16021]: scan
+Sun Oct  4 22:33:31 2026 :: Log Alaric [16021]: d
+Sun Oct  4 22:33:31 2026 :: Log Alaric [16005]: arrived (Plankway to the Royal Eagle) from 16021
+Sun Oct  4 22:33:33 2026 :: Log Alaric [16005]: kill bu
+Sun Oct  4 22:33:38 2026 :: Log Alaric [16005]: te
+Sun Oct  4 22:33:46 2026 :: Log Alaric [16005]: te
+Sun Oct  4 22:33:55 2026 :: Log Alaric [16005]: te
+Sun Oct  4 22:34:04 2026 :: Log Alaric [16005]: te
+Sun Oct  4 22:34:10 2026 :: Log Alaric [16005]: scan
+Sun Oct  4 22:34:12 2026 :: Log Alaric [16005]: n
+Sun Oct  4 22:34:13 2026 :: Log Alaric [16005]: e
+Sun Oct  4 22:34:14 2026 :: Log Alaric [16005]: scan
+Sun Oct  4 22:34:14 2026 :: Log Alaric [16005]: l
+Sun Oct  4 22:34:15 2026 :: Log Alaric [16005]: u
+Sun Oct  4 22:34:15 2026 :: Log Alaric [16021]: arrived (Entrance to the Royal Eagle - Main Deck) from 16005
+Sun Oct  4 22:34:16 2026 :: Log Alaric [16021]: e
+Sun Oct  4 22:34:16 2026 :: Log Alaric [16022]: arrived (Main Deck) from 16021
+Sun Oct  4 22:34:16 2026 :: Log Alaric [16022]: scan
+Sun Oct  4 22:34:17 2026 :: Log Alaric [16022]: n
+Sun Oct  4 22:34:17 2026 :: Log Alaric [16027]: arrived (Main Deck) from 16022
+Sun Oct  4 22:34:18 2026 :: Log Alaric [16027]: e
+Sun Oct  4 22:34:18 2026 :: Log Alaric [16028]: arrived (Main Deck) from 16027
+Sun Oct  4 22:34:18 2026 :: Log Alaric [16028]: scan
+Sun Oct  4 22:34:20 2026 :: Log Alaric [16028]: n
+Sun Oct  4 22:34:20 2026 :: Log Alaric [16033]: arrived (Base of the Mast) from 16028
+Sun Oct  4 22:34:20 2026 :: Log Alaric [16033]: te
+Sun Oct  4 22:34:29 2026 :: Log Alaric [16033]: te
