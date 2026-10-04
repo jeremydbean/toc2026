@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791125341
+LogO 1791125641
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,7 +15,7 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 26
-Plyd 287608
+Plyd 287908
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
@@ -212,7 +212,7 @@ Gr 'necro default'
 Gr 'necro enhancement'
 Gr 'necromancy'
 Gr 'necro transportation'
-AffD 'armor'   0   6 -20  17          0          0
+AffD 'armor'   0   1 -20  17          0          0
 End
 
 #O
@@ -222,7 +222,7 @@ Wear 0
 Cost 0
 Cond 91
 Repd 0
-Val  0 0 32 0 0
+Val  0 0 27 0 0
 End
 
 #O
