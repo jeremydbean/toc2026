@@ -35643,3 +35643,235 @@ Sun Oct  4 01:47:13 2026 :: Log Alaric [4720]: prac fly
 Sun Oct  4 01:47:14 2026 :: Log Alaric [4720]: prac fly
 Sun Oct  4 01:47:15 2026 :: Log Alaric [4720]: c fl
 Sun Oct  4 01:47:18 2026 :: Log Alaric [4720]: c fly
+Sun Oct  4 01:47:25 2026 :: Log Alaric [4720]: recal
+Sun Oct  4 01:47:25 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 01:47:26 2026 :: Log Alaric [4207]: w
+Sun Oct  4 01:47:26 2026 :: Log Alaric [0]: moved to 4208 (Altar of the Temple of Devota.)
+Sun Oct  4 01:47:27 2026 :: Log Alaric [4208]: heal all
+Sun Oct  4 01:47:27 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Sun Oct  4 01:47:29 2026 :: Log Alaric [4208]: r e 4
+Sun Oct  4 01:47:29 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 01:47:29 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sun Oct  4 01:47:29 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sun Oct  4 01:47:29 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sun Oct  4 01:47:29 2026 :: Log Alaric [2427]: n
+Sun Oct  4 01:47:29 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sun Oct  4 01:47:29 2026 :: Log Alaric [2404]: n
+Sun Oct  4 01:47:29 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sun Oct  4 01:47:46 2026 :: Log Alaric [2401]: r e 8
+Sun Oct  4 01:47:46 2026 :: Log Alaric [0]: moved to 2403 (Eastern Oak Tree Square.)
+Sun Oct  4 01:47:46 2026 :: Log Alaric [0]: moved to 2420 (Battle Road)
+Sun Oct  4 01:47:46 2026 :: Log Alaric [0]: moved to 2421 (Battle Road)
+Sun Oct  4 01:47:46 2026 :: Log Alaric [0]: moved to 2422 (Battle Road)
+Sun Oct  4 01:47:46 2026 :: Log Alaric [0]: moved to 2423 (Battle Road)
+Sun Oct  4 01:47:46 2026 :: Log Alaric [0]: moved to 2424 (Battle Road)
+Sun Oct  4 01:47:46 2026 :: Log Alaric [0]: moved to 2425 (Gate to Citadel of War on Battle Road)
+Sun Oct  4 01:47:46 2026 :: Log Alaric [0]: moved to 2426 (Inside the Eastern Gates of Dresden.)
+Sun Oct  4 01:47:47 2026 :: Log Alaric [2426]: open east
+Sun Oct  4 01:47:47 2026 :: Log Alaric [2426]: r e 3
+Sun Oct  4 01:47:47 2026 :: Log Alaric [0]: moved to 2440 (Outside the Eastern Gates of Dresden.)
+Sun Oct  4 01:47:47 2026 :: Log Alaric [0]: moved to 3503 (City Entrance)
+Sun Oct  4 01:47:47 2026 :: Log Alaric [0]: moved to 3502 (The Cross Roads)
+Sun Oct  4 01:47:47 2026 :: Log Alaric [3502]: r s 4
+Sun Oct  4 01:47:47 2026 :: Log Alaric [0]: moved to 5261 (The dwarf forest)
+Sun Oct  4 01:47:47 2026 :: Log Alaric [0]: moved to 5260 (The dwarf forest)
+Sun Oct  4 01:47:47 2026 :: Log Alaric [0]: moved to 5259 (The dwarf forest)
+Sun Oct  4 01:47:47 2026 :: Log Alaric [0]: moved to 5258 (The dwarf forest)
+Sun Oct  4 01:47:47 2026 :: Log Alaric [5258]: e
+Sun Oct  4 01:47:47 2026 :: Log Alaric [0]: moved to 5262 (The dwarf forest)
+Sun Oct  4 01:47:48 2026 :: Log Alaric [5262]: e
+Sun Oct  4 01:47:48 2026 :: Log Alaric [0]: moved to 5263 (The darker dwarf forest)
+Sun Oct  4 01:47:48 2026 :: Log Alaric [5263]: s
+Sun Oct  4 01:47:48 2026 :: Log Alaric [0]: moved to 5264 (The darker dwarf forest)
+Sun Oct  4 01:47:48 2026 :: Log Alaric [5264]: e
+Sun Oct  4 01:47:48 2026 :: Log Alaric [0]: moved to 5265 (The darker dwarf forest)
+Sun Oct  4 01:47:48 2026 :: Log Alaric [5265]: e
+Sun Oct  4 01:47:48 2026 :: Log Alaric [0]: moved to 5266 (The darker dwarf forest)
+Sun Oct  4 01:47:49 2026 :: Log Alaric [5266]: d
+Sun Oct  4 01:47:49 2026 :: Log Alaric [0]: moved to 5267 (A valley in the dark dwarf forest)
+Sun Oct  4 01:47:49 2026 :: Log Alaric [5267]: open hole
+Sun Oct  4 01:47:49 2026 :: Log Alaric [5267]: w
+Sun Oct  4 01:47:49 2026 :: Log Alaric [0]: moved to 5268 (A small ugly cave)
+Sun Oct  4 01:47:49 2026 :: Log Alaric [5268]: s
+Sun Oct  4 01:47:49 2026 :: Log Alaric [0]: moved to 5269 (A small ugly cave)
+Sun Oct  4 01:47:50 2026 :: Log Alaric [5269]: d
+Sun Oct  4 01:47:50 2026 :: Log Alaric [0]: moved to 5270 (Down the path into a dead end)
+Sun Oct  4 01:47:50 2026 :: Log Alaric [5270]: open secret
+Sun Oct  4 01:47:50 2026 :: Killuminati cleared the bug reports into bugs.txt.20261004-014750.
+Sun Oct  4 01:47:50 2026 :: Log Alaric [5270]: d
+Sun Oct  4 01:47:50 2026 :: Log Alaric [0]: moved to 5100 (City Entrance)
+Sun Oct  4 01:47:50 2026 :: Log Alaric [5100]: w
+Sun Oct  4 01:47:50 2026 :: Log Alaric [0]: moved to 5101 (City street)
+Sun Oct  4 01:48:04 2026 :: Log Alaric [5101]: look wea
+Sun Oct  4 01:48:08 2026 :: Log Alaric [5101]: get exc
+Sun Oct  4 01:48:08 2026 :: Log Alaric [5101]: wear exc
+Sun Oct  4 01:48:12 2026 :: Log Alaric [5101]: get all
+Sun Oct  4 01:48:13 2026 :: Log Alaric [5101]: wear all
+Sun Oct  4 01:48:14 2026 :: Log Alaric [5101]: sh
+Sun Oct  4 01:48:23 2026 :: Log Alaric [5101]: sh
+Sun Oct  4 01:48:31 2026 :: Log Alaric [5101]: sh
+Sun Oct  4 01:48:35 2026 :: Log Alaric [5101]: get exc
+Sun Oct  4 01:48:35 2026 :: Log Alaric [5101]: wear exc
+Sun Oct  4 01:48:35 2026 :: Log Alaric [5101]: get all
+Sun Oct  4 01:48:35 2026 :: Log Alaric [5101]: wear all
+Sun Oct  4 01:48:36 2026 :: Log Alaric [5101]: sh
+Sun Oct  4 01:48:42 2026 :: Log Alaric [5101]: l i cor
+Sun Oct  4 01:48:42 2026 :: Sock.sinaddr:  5.161.194.92
+Sun Oct  4 01:48:42 2026 :: EOF encountered on read.
+Sun Oct  4 01:48:45 2026 :: Log Alaric [5101]: recal
+Sun Oct  4 01:48:45 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 01:48:45 2026 :: Log Alaric [4207]: w
+Sun Oct  4 01:48:45 2026 :: Log Alaric [0]: moved to 4208 (Altar of the Temple of Devota.)
+Sun Oct  4 01:48:47 2026 :: Log Alaric [4208]: heal all
+Sun Oct  4 01:48:47 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Sun Oct  4 01:48:48 2026 :: Log Alaric [4208]: r e 4
+Sun Oct  4 01:48:48 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 01:48:48 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sun Oct  4 01:48:48 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sun Oct  4 01:48:48 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sun Oct  4 01:48:49 2026 :: Log Alaric [2427]: n
+Sun Oct  4 01:48:49 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sun Oct  4 01:48:49 2026 :: Log Alaric [2404]: n
+Sun Oct  4 01:48:49 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sun Oct  4 01:48:50 2026 :: Log Alaric [2401]: r e 8
+Sun Oct  4 01:48:50 2026 :: Log Alaric [0]: moved to 2403 (Eastern Oak Tree Square.)
+Sun Oct  4 01:48:50 2026 :: Log Alaric [0]: moved to 2420 (Battle Road)
+Sun Oct  4 01:48:50 2026 :: Log Alaric [0]: moved to 2421 (Battle Road)
+Sun Oct  4 01:48:50 2026 :: Log Alaric [0]: moved to 2422 (Battle Road)
+Sun Oct  4 01:48:50 2026 :: Log Alaric [0]: moved to 2423 (Battle Road)
+Sun Oct  4 01:48:50 2026 :: Log Alaric [0]: moved to 2424 (Battle Road)
+Sun Oct  4 01:48:50 2026 :: Log Alaric [0]: moved to 2425 (Gate to Citadel of War on Battle Road)
+Sun Oct  4 01:48:50 2026 :: Log Alaric [0]: moved to 2426 (Inside the Eastern Gates of Dresden.)
+Sun Oct  4 01:48:50 2026 :: Log Alaric [2426]: open east
+Sun Oct  4 01:48:50 2026 :: Log Alaric [2426]: r e 3
+Sun Oct  4 01:48:50 2026 :: Log Alaric [0]: moved to 2440 (Outside the Eastern Gates of Dresden.)
+Sun Oct  4 01:48:50 2026 :: Log Alaric [0]: moved to 3503 (City Entrance)
+Sun Oct  4 01:48:50 2026 :: Log Alaric [0]: moved to 3502 (The Cross Roads)
+Sun Oct  4 01:48:50 2026 :: Log Alaric [3502]: r s 4
+Sun Oct  4 01:48:50 2026 :: Log Alaric [0]: moved to 5261 (The dwarf forest)
+Sun Oct  4 01:48:50 2026 :: Log Alaric [0]: moved to 5260 (The dwarf forest)
+Sun Oct  4 01:48:50 2026 :: Log Alaric [0]: moved to 5259 (The dwarf forest)
+Sun Oct  4 01:48:50 2026 :: Log Alaric [0]: moved to 5258 (The dwarf forest)
+Sun Oct  4 01:48:51 2026 :: Log Alaric [5258]: e
+Sun Oct  4 01:48:51 2026 :: Log Alaric [0]: moved to 5262 (The dwarf forest)
+Sun Oct  4 01:48:51 2026 :: Log Alaric [5262]: e
+Sun Oct  4 01:48:51 2026 :: Log Alaric [0]: moved to 5263 (The darker dwarf forest)
+Sun Oct  4 01:48:51 2026 :: Log Alaric [5263]: s
+Sun Oct  4 01:48:51 2026 :: Log Alaric [0]: moved to 5264 (The darker dwarf forest)
+Sun Oct  4 01:48:51 2026 :: Log Alaric [5264]: e
+Sun Oct  4 01:48:51 2026 :: Log Alaric [0]: moved to 5265 (The darker dwarf forest)
+Sun Oct  4 01:48:52 2026 :: Log Alaric [5265]: e
+Sun Oct  4 01:48:52 2026 :: Log Alaric [0]: moved to 5266 (The darker dwarf forest)
+Sun Oct  4 01:48:52 2026 :: Log Alaric [5266]: d
+Sun Oct  4 01:48:52 2026 :: Log Alaric [0]: moved to 5267 (A valley in the dark dwarf forest)
+Sun Oct  4 01:48:52 2026 :: Log Alaric [5267]: open hole
+Sun Oct  4 01:48:52 2026 :: Log Alaric [5267]: w
+Sun Oct  4 01:48:52 2026 :: Log Alaric [0]: moved to 5268 (A small ugly cave)
+Sun Oct  4 01:48:53 2026 :: Log Alaric [5268]: s
+Sun Oct  4 01:48:53 2026 :: Log Alaric [0]: moved to 5269 (A small ugly cave)
+Sun Oct  4 01:48:53 2026 :: Log Alaric [5269]: d
+Sun Oct  4 01:48:53 2026 :: Log Alaric [0]: moved to 5270 (Down the path into a dead end)
+Sun Oct  4 01:48:53 2026 :: Log Alaric [5270]: open secret
+Sun Oct  4 01:48:53 2026 :: Log Alaric [5270]: d
+Sun Oct  4 01:48:53 2026 :: Log Alaric [0]: moved to 5100 (City Entrance)
+Sun Oct  4 01:48:54 2026 :: Log Alaric [5100]: w
+Sun Oct  4 01:48:54 2026 :: Log Alaric [0]: moved to 5101 (City street)
+Sun Oct  4 01:48:55 2026 :: Log Alaric [5101]: n
+Sun Oct  4 01:48:55 2026 :: Log Alaric [0]: moved to 5123 (City street)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [5123]: r w
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 5121 (City street)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 5117 (City street)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 5114 (City street)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25164 (Before the gates.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25163 (The Trade Route.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25162 (The Trade Route.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25161 (The Trade Route.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25160 (The Trade Route.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25159 (The Trade Route.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25158 (The Trade Route.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25153 (The Trade Route.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25154 (The Trade Route.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25155 (The Trade Route.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25156 (The Trade Route.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25157 (The end of the Trade Route.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25201 (Into the cavern.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25202 (The road through the grove.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25203 (The road through the grove.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25204 (The road continues.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25205 (The road north of a mushroom.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25206 (The road starts up the slope.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25207 (The intersection.)
+Sun Oct  4 01:48:56 2026 :: Log Alaric [0]: moved to 25208 (The Eastern Gate of Nethril.)
+Sun Oct  4 01:48:57 2026 :: Log Alaric [25208]: wake
+Sun Oct  4 01:49:06 2026 :: Log Alaric [25208]: e
+Sun Oct  4 01:49:06 2026 :: Log Alaric [0]: moved to 25207 (The intersection.)
+Sun Oct  4 01:49:07 2026 :: Log Alaric [25207]: ex
+Sun Oct  4 01:49:08 2026 :: Log Alaric [25207]: s
+Sun Oct  4 01:49:08 2026 :: Log Alaric [0]: moved to 25248 (The brewery.)
+Sun Oct  4 01:49:11 2026 :: Log Alaric [25248]: s
+Sun Oct  4 01:49:11 2026 :: Log Alaric [25248]: s
+Sun Oct  4 01:49:13 2026 :: Log Alaric [25248]: n
+Sun Oct  4 01:49:13 2026 :: Log Alaric [0]: moved to 25207 (The intersection.)
+Sun Oct  4 01:49:13 2026 :: Log Alaric [25207]: e
+Sun Oct  4 01:49:13 2026 :: Log Alaric [0]: moved to 25206 (The road starts up the slope.)
+Sun Oct  4 01:49:14 2026 :: Log Alaric [25206]: e
+Sun Oct  4 01:49:14 2026 :: Log Alaric [0]: moved to 25205 (The road north of a mushroom.)
+Sun Oct  4 01:49:15 2026 :: Log Alaric [25205]: s
+Sun Oct  4 01:49:15 2026 :: Log Alaric [0]: moved to 25246 (Before the mushroom tower.)
+Sun Oct  4 01:49:16 2026 :: Log Alaric [25246]: n
+Sun Oct  4 01:49:16 2026 :: Log Alaric [0]: moved to 25205 (The road north of a mushroom.)
+Sun Oct  4 01:49:16 2026 :: Log Alaric [25205]: e
+Sun Oct  4 01:49:16 2026 :: Log Alaric [0]: moved to 25204 (The road continues.)
+Sun Oct  4 01:49:17 2026 :: Log Alaric [25204]: e
+Sun Oct  4 01:49:17 2026 :: Log Alaric [0]: moved to 25203 (The road through the grove.)
+Sun Oct  4 01:49:18 2026 :: Log Alaric [25203]: s
+Sun Oct  4 01:49:18 2026 :: Log Alaric [0]: moved to 25259 (The pathway south.)
+Sun Oct  4 01:49:18 2026 :: Log Alaric [25259]: s
+Sun Oct  4 01:49:18 2026 :: Log Alaric [0]: moved to 25260 (Before the bridge.)
+Sun Oct  4 01:49:19 2026 :: Log Alaric [25260]: s
+Sun Oct  4 01:49:19 2026 :: Log Alaric [0]: moved to 25261 (On the bridge.)
+Sun Oct  4 01:49:19 2026 :: Log Alaric [25261]: s
+Sun Oct  4 01:49:19 2026 :: Log Alaric [0]: moved to 25262 (The southern end of the bridge.)
+Sun Oct  4 01:49:19 2026 :: Log Alaric [25262]: s
+Sun Oct  4 01:49:19 2026 :: Log Alaric [25262]: s
+Sun Oct  4 01:49:23 2026 :: Log Alaric [25262]: sw
+Sun Oct  4 01:49:23 2026 :: Log Alaric [0]: moved to 25263 (The strangled path.)
+Sun Oct  4 01:49:24 2026 :: Log Alaric [25263]: sw
+Sun Oct  4 01:49:24 2026 :: Log Alaric [0]: moved to 25264 (The strangled path.)
+Sun Oct  4 01:49:25 2026 :: Log Alaric [25264]: w
+Sun Oct  4 01:49:25 2026 :: Log Alaric [0]: moved to 25265 (The bonfire.)
+Sun Oct  4 01:49:31 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:49:39 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:49:42 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:49:45 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:49:48 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:49:51 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:49:54 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:49:57 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:49:59 2026 :: Log Alaric [25265]: level 15 -> 16 (restore)
+Sun Oct  4 01:49:59 2026 :: Alaric has achieved level 16!
+Sun Oct  4 01:50:00 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:50:03 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:50:06 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:50:09 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:50:12 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:50:15 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:50:18 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:50:21 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:50:24 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:51:30 2026 :: Log Alaric [25265]: l
+Sun Oct  4 01:51:34 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:51:38 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:51:41 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:51:44 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:51:47 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:51:50 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:51:53 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:51:56 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:51:59 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:52:02 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:52:05 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:52:08 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:52:11 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:52:14 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:52:17 2026 :: Log Alaric [25265]: sh dr
