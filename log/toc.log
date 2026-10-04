@@ -35875,3 +35875,149 @@ Sun Oct  4 01:52:08 2026 :: Log Alaric [25265]: sh dr
 Sun Oct  4 01:52:11 2026 :: Log Alaric [25265]: sh dr
 Sun Oct  4 01:52:14 2026 :: Log Alaric [25265]: sh dr
 Sun Oct  4 01:52:17 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:52:34 2026 :: Log Alaric [25265]: who
+Sun Oct  4 01:52:38 2026 :: Log Alaric [25265]: l
+Sun Oct  4 01:52:45 2026 :: Log Alaric [25265]: c butcher corpse
+Sun Oct  4 01:52:50 2026 :: Log Alaric [25265]: c butcher corpse
+Sun Oct  4 01:52:53 2026 :: Log Alaric [25265]: c butcher corpse
+Sun Oct  4 01:52:56 2026 :: Log Alaric [25265]: c butcher corpse
+Sun Oct  4 01:52:59 2026 :: Log Alaric [25265]: c butcher corpse
+Sun Oct  4 01:53:07 2026 :: Log Alaric [25265]: alias bu cast butcher corpse
+Sun Oct  4 01:53:07 2026 :: Log Alaric [25265]: bu
+Sun Oct  4 01:53:12 2026 :: Log Alaric [25265]: bu
+Sun Oct  4 01:53:15 2026 :: Log Alaric [25265]: bu
+Sun Oct  4 01:53:18 2026 :: Log Alaric [25265]: bu
+Sun Oct  4 01:53:27 2026 :: Log Alaric [25265]: l
+Sun Oct  4 01:53:31 2026 :: Log Alaric [25265]: bu
+Sun Oct  4 01:53:43 2026 :: Log Alaric [25265]: bu
+Sun Oct  4 01:53:47 2026 :: Sock.sinaddr:  3.149.57.90
+Sun Oct  4 01:53:47 2026 :: EOF encountered on read.
+Sun Oct  4 01:53:54 2026 :: Log Alaric [25265]: bu
+Sun Oct  4 01:53:59 2026 :: Log Alaric [25265]: bu
+Sun Oct  4 01:54:04 2026 :: Log Alaric [25265]: bu
+Sun Oct  4 01:54:11 2026 :: Log Alaric [25265]: bu
+Sun Oct  4 01:54:17 2026 :: Log Alaric [25265]: bu
+Sun Oct  4 01:54:26 2026 :: Log Alaric [25265]: bu
+Sun Oct  4 01:54:35 2026 :: Log Alaric [25265]: skil
+Sun Oct  4 01:54:38 2026 :: Log Alaric [25265]: spell
+Sun Oct  4 01:54:57 2026 :: Log Alaric [25265]: alias goto cast 'earth travel'
+Sun Oct  4 01:54:59 2026 :: Log Alaric [25265]: l
+Sun Oct  4 01:55:00 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:55:04 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:55:18 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:55:23 2026 :: Log Alaric [25265]: level 16 -> 17 (restore)
+Sun Oct  4 01:55:23 2026 :: Alaric has achieved level 17!
+Sun Oct  4 01:55:28 2026 :: Log Alaric [25265]: sh dr
+Sun Oct  4 01:55:40 2026 :: Log Alaric [25265]: recal
+Sun Oct  4 01:55:40 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 01:55:42 2026 :: Log Alaric [4207]: w
+Sun Oct  4 01:55:42 2026 :: Log Alaric [0]: moved to 4208 (Altar of the Temple of Devota.)
+Sun Oct  4 01:55:44 2026 :: Log Alaric [4208]: heal all
+Sun Oct  4 01:55:44 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Sun Oct  4 01:55:49 2026 :: Log Alaric [4208]: r e 4
+Sun Oct  4 01:55:49 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 01:55:49 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sun Oct  4 01:55:49 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sun Oct  4 01:55:49 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sun Oct  4 01:55:49 2026 :: Log Alaric [2427]: n
+Sun Oct  4 01:55:49 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sun Oct  4 01:55:49 2026 :: Log Alaric [2404]: n
+Sun Oct  4 01:55:49 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sun Oct  4 01:55:50 2026 :: Log Alaric [2401]: r e 8
+Sun Oct  4 01:55:50 2026 :: Log Alaric [0]: moved to 2403 (Eastern Oak Tree Square.)
+Sun Oct  4 01:55:50 2026 :: Log Alaric [0]: moved to 2420 (Battle Road)
+Sun Oct  4 01:55:50 2026 :: Log Alaric [0]: moved to 2421 (Battle Road)
+Sun Oct  4 01:55:50 2026 :: Log Alaric [0]: moved to 2422 (Battle Road)
+Sun Oct  4 01:55:50 2026 :: Log Alaric [0]: moved to 2423 (Battle Road)
+Sun Oct  4 01:55:50 2026 :: Log Alaric [0]: moved to 2424 (Battle Road)
+Sun Oct  4 01:55:50 2026 :: Log Alaric [0]: moved to 2425 (Gate to Citadel of War on Battle Road)
+Sun Oct  4 01:55:50 2026 :: Log Alaric [0]: moved to 2426 (Inside the Eastern Gates of Dresden.)
+Sun Oct  4 01:55:51 2026 :: Log Alaric [2426]: e
+Sun Oct  4 01:55:51 2026 :: Log Alaric [0]: moved to 2440 (Outside the Eastern Gates of Dresden.)
+Sun Oct  4 01:55:51 2026 :: Log Alaric [2440]: e
+Sun Oct  4 01:55:51 2026 :: Log Alaric [0]: moved to 3503 (City Entrance)
+Sun Oct  4 01:55:51 2026 :: Log Killuminati: grantpsi alar
+Sun Oct  4 01:55:51 2026 :: Log Alaric [3503]: e
+Sun Oct  4 01:55:51 2026 :: Log Alaric [0]: moved to 3502 (The Cross Roads)
+Sun Oct  4 01:55:53 2026 :: Log Alaric [3502]: n
+Sun Oct  4 01:55:53 2026 :: Log Alaric [0]: moved to 3501 (The Lane)
+Sun Oct  4 01:55:54 2026 :: Log Alaric [3501]: n
+Sun Oct  4 01:55:54 2026 :: Log Alaric [0]: moved to 3500 (The Plains)
+Sun Oct  4 01:55:55 2026 :: Log Alaric [3500]: n
+Sun Oct  4 01:55:55 2026 :: Log Alaric [3500]: nw
+Sun Oct  4 01:55:55 2026 :: Log Alaric [0]: moved to 21 (A twisting path)
+Sun Oct  4 01:55:56 2026 :: Log Alaric [21]: w
+Sun Oct  4 01:55:56 2026 :: Log Alaric [0]: moved to 22 (Before the great circle)
+Sun Oct  4 01:55:57 2026 :: Log Alaric [22]: s
+Sun Oct  4 01:55:57 2026 :: Log Alaric [0]: moved to 23 (The Great Portal)
+Sun Oct  4 01:55:58 2026 :: Log Alaric [23]: en po
+Sun Oct  4 01:55:58 2026 :: Log Alaric [0]: moved to 10000 (Before the crystal bridge.)
+Sun Oct  4 01:55:59 2026 :: Log Alaric [10000]: n
+Sun Oct  4 01:55:59 2026 :: Log Alaric [0]: moved to 10001 (A crystal bridge.)
+Sun Oct  4 01:56:00 2026 :: Log Alaric [10001]: n
+Sun Oct  4 01:56:00 2026 :: Log Alaric [0]: moved to 10002 (Royal Island.)
+Sun Oct  4 01:56:01 2026 :: Log Alaric [10002]: n
+Sun Oct  4 01:56:01 2026 :: Log Alaric [0]: moved to 10003 (The Glitter Palace's Grand Gate.)
+Sun Oct  4 01:56:02 2026 :: Log Alaric [10003]: n
+Sun Oct  4 01:56:02 2026 :: Log Alaric [0]: moved to 10004 (A large hall.)
+Sun Oct  4 01:56:03 2026 :: Log Alaric [10004]: n
+Sun Oct  4 01:56:03 2026 :: Log Alaric [0]: moved to 10006 (A large hall.)
+Sun Oct  4 01:56:05 2026 :: Log Alaric [10006]: look re
+Sun Oct  4 01:56:06 2026 :: Log Alaric [10006]: kill re
+Sun Oct  4 01:56:13 2026 :: Log Alaric [10006]: s
+Sun Oct  4 01:56:13 2026 :: Log Alaric [0]: moved to 10004 (A large hall.)
+Sun Oct  4 01:56:13 2026 :: Log Alaric [10004]: kill re
+Sun Oct  4 01:56:17 2026 :: Log Alaric [10004]: n
+Sun Oct  4 01:56:17 2026 :: Log Alaric [0]: moved to 10006 (A large hall.)
+Sun Oct  4 01:56:18 2026 :: Log Alaric [10006]: n
+Sun Oct  4 01:56:18 2026 :: Log Alaric [0]: moved to 10007 (A large hall.)
+Sun Oct  4 01:56:19 2026 :: Log Alaric [10007]: n
+Sun Oct  4 01:56:19 2026 :: Log Alaric [0]: moved to 10008 (A high domed intersection.)
+Sun Oct  4 01:56:21 2026 :: Log Alaric [10008]: look pe
+Sun Oct  4 01:56:23 2026 :: Log Alaric [10008]: n
+Sun Oct  4 01:56:23 2026 :: Log Alaric [0]: moved to 10025 (The northern wing.)
+Sun Oct  4 01:56:24 2026 :: Log Alaric [10025]: n
+Sun Oct  4 01:56:24 2026 :: Log Alaric [0]: moved to 10026 (The northern wing.)
+Sun Oct  4 01:56:25 2026 :: Log Alaric [10026]: n
+Sun Oct  4 01:56:25 2026 :: Log Alaric [0]: moved to 10027 (The northern wing.)
+Sun Oct  4 01:56:26 2026 :: Log Alaric [10027]: u
+Sun Oct  4 01:56:26 2026 :: Log Alaric [0]: moved to 10028 (The royal stairway.)
+Sun Oct  4 01:56:27 2026 :: Log Alaric [10028]: u
+Sun Oct  4 01:56:27 2026 :: Log Alaric [0]: moved to 10029 (A grand hallway.)
+Sun Oct  4 01:56:30 2026 :: Log Alaric [10029]: look col
+Sun Oct  4 01:56:33 2026 :: Log Alaric [10029]: kill col
+Sun Oct  4 01:56:38 2026 :: Log Alaric [10029]: sh
+Sun Oct  4 01:56:38 2026 :: Log Alaric [10029]: n
+Sun Oct  4 01:56:38 2026 :: Log Alaric [0]: moved to 10030 (A grand hallway.)
+Sun Oct  4 01:56:38 2026 :: Log Alaric [10030]: sh col
+Sun Oct  4 01:56:46 2026 :: Log Alaric [10030]: l i cor
+Sun Oct  4 01:56:49 2026 :: Log Alaric [10030]: get arm cor
+Sun Oct  4 01:56:51 2026 :: Log Alaric [10030]: com parm
+Sun Oct  4 01:56:52 2026 :: Log Alaric [10030]: comp arm
+Sun Oct  4 01:56:57 2026 :: Log Alaric [10030]: wear arm
+Sun Oct  4 01:56:58 2026 :: Log Alaric [10030]: drop ve
+Sun Oct  4 01:57:00 2026 :: Log Alaric [10030]: l i cor
+Sun Oct  4 01:57:02 2026 :: Log Alaric [10030]: get leg cor
+Sun Oct  4 01:57:03 2026 :: Log Alaric [10030]: comp leg
+Sun Oct  4 01:57:06 2026 :: Log Alaric [10030]: wear leg
+Sun Oct  4 01:57:10 2026 :: Log Alaric [10030]: drop leg
+Sun Oct  4 01:57:12 2026 :: Log Alaric [10030]: sac leg
+Sun Oct  4 01:57:14 2026 :: Log Alaric [10030]: drop leg
+Sun Oct  4 01:57:15 2026 :: Log Alaric [10030]: sac leg
+Sun Oct  4 01:57:15 2026 :: Log Alaric [10030]: l
+Sun Oct  4 01:57:16 2026 :: Log Alaric [10030]: n
+Sun Oct  4 01:57:16 2026 :: Log Alaric [0]: moved to 10031 (An intersection.)
+Sun Oct  4 01:57:19 2026 :: Log Alaric [10031]: s
+Sun Oct  4 01:57:19 2026 :: Log Alaric [0]: moved to 10030 (A grand hallway.)
+Sun Oct  4 01:57:20 2026 :: Log Alaric [10030]: scan
+Sun Oct  4 01:57:21 2026 :: Log Alaric [10030]: n
+Sun Oct  4 01:57:21 2026 :: Log Alaric [0]: moved to 10031 (An intersection.)
+Sun Oct  4 01:57:22 2026 :: Log Alaric [10031]: look mi
+Sun Oct  4 01:57:24 2026 :: Log Alaric [10031]: scan
+Sun Oct  4 01:57:27 2026 :: Log Alaric [10031]: n
+Sun Oct  4 01:57:27 2026 :: Log Alaric [0]: moved to 10052 (A grand hallway.)
+Sun Oct  4 01:57:28 2026 :: Log Alaric [10052]: scan
+Sun Oct  4 01:57:30 2026 :: Log Alaric [10052]: n
+Sun Oct  4 01:57:30 2026 :: Log Alaric [0]: moved to 10053 (A grand hallway.)
+Sun Oct  4 01:57:30 2026 :: Log Alaric [10053]: scan
+Sun Oct  4 01:57:32 2026 :: Log Alaric [10053]: look re
