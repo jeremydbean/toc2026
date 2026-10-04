@@ -43773,3 +43773,97 @@ Sun Oct  4 19:27:38 2026 :: Log Alaric [16025]: bu
 Sun Oct  4 19:27:41 2026 :: Log Alaric [16025]: get all.arm
 Sun Oct  4 19:27:42 2026 :: Log Alaric [16025]: get all.leg
 Sun Oct  4 19:27:42 2026 :: Log Alaric [16025]: i
+Sun Oct  4 19:27:50 2026 :: Log Alaric [16025]: s
+Sun Oct  4 19:27:50 2026 :: Log Alaric [0]: moved to 16020 (Main Deck of the Royal Eagle - Starboard)
+Sun Oct  4 19:27:50 2026 :: Log Alaric [16020]: drop all.leg
+Sun Oct  4 19:27:50 2026 :: Log Alaric [16020]: kill pi
+Sun Oct  4 19:27:55 2026 :: Log Alaric [16020]: c anim
+Sun Oct  4 19:28:00 2026 :: Log Alaric [16020]: c anim
+Sun Oct  4 19:28:04 2026 :: Log Alaric [16020]: c anim
+Sun Oct  4 19:28:09 2026 :: Log Alaric [16020]: c anim
+Sun Oct  4 19:28:13 2026 :: Log Alaric [16020]: drop all.arm
+Sun Oct  4 19:28:13 2026 :: Log Alaric [16020]: c anim
+Sun Oct  4 19:28:18 2026 :: Log Alaric [16020]: c anim
+Sun Oct  4 19:28:21 2026 :: Log Alaric [16020]: c anim
+Sun Oct  4 19:28:27 2026 :: Log Alaric [16020]: c anim
+Sun Oct  4 19:28:32 2026 :: Log Alaric [16020]: l i cor
+Sun Oct  4 19:28:36 2026 :: Log Alaric [16020]: get peg cor
+Sun Oct  4 19:28:37 2026 :: Log Alaric [16020]: comp peg
+Sun Oct  4 19:28:41 2026 :: Log Alaric [16020]: wake
+Sun Oct  4 19:28:41 2026 :: Log Alaric [16020]: l
+Sun Oct  4 19:28:43 2026 :: Log Alaric [16020]: scan
+Sun Oct  4 19:28:45 2026 :: Log Alaric [16020]: bu
+Sun Oct  4 19:28:48 2026 :: Log Alaric [16020]: get all.arm
+Sun Oct  4 19:28:48 2026 :: Log Alaric [16020]: get all.leg
+Sun Oct  4 19:28:57 2026 :: Log Alaric [16020]: u
+Sun Oct  4 19:28:57 2026 :: Log Alaric [0]: moved to 16015 (Aft Deck - Starboard Side)
+Sun Oct  4 19:28:57 2026 :: Log Alaric [16015]: drop all.leg
+Sun Oct  4 19:28:57 2026 :: Log Alaric [16015]: drop all.arm
+Sun Oct  4 19:28:57 2026 :: Log Alaric [16015]: kill pi
+Sun Oct  4 19:29:02 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 19:29:09 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 19:29:16 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 19:29:21 2026 :: Log Alaric [16015]: eq
+Sun Oct  4 19:29:23 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 19:29:30 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 19:29:36 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 19:29:41 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 19:29:46 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 19:29:50 2026 :: Log Alaric [16015]: level 40 -> 41 (earned)
+Sun Oct  4 19:29:50 2026 :: Alaric has achieved level 41!
+Sun Oct  4 19:29:53 2026 :: Log Alaric [16015]: c anim
+Sun Oct  4 19:29:55 2026 :: Sock.sinaddr:  5.161.73.160
+Sun Oct  4 19:29:56 2026 :: EOF encountered on read.
+Sun Oct  4 19:29:57 2026 :: Log Alaric [16015]: comp peg
+Sun Oct  4 19:30:03 2026 :: Log Alaric [16015]: sc
+Sun Oct  4 19:30:05 2026 :: Log Alaric [16015]: wear peg
+Sun Oct  4 19:30:06 2026 :: Log Alaric [16015]: sc
+Sun Oct  4 19:30:13 2026 :: Log Alaric [16015]: stash put plat
+Sun Oct  4 19:30:13 2026 :: Log Alaric [16015]: stashed some platinum leg bands (vnum 9214)
+Sun Oct  4 19:30:16 2026 :: Log Alaric [16015]: eq
+Sun Oct  4 19:30:25 2026 :: Log Alaric [16015]: l
+Sun Oct  4 19:30:26 2026 :: Log Alaric [16015]: scan
+Sun Oct  4 19:30:28 2026 :: Log Alaric [16015]: d
+Sun Oct  4 19:30:28 2026 :: Log Alaric [0]: moved to 16020 (Main Deck of the Royal Eagle - Starboard)
+Sun Oct  4 19:30:30 2026 :: Log Alaric [16020]: u
+Sun Oct  4 19:30:30 2026 :: Log Alaric [0]: moved to 16015 (Aft Deck - Starboard Side)
+Sun Oct  4 19:30:32 2026 :: Log Alaric [16015]: bu
+Sun Oct  4 19:30:35 2026 :: Log Alaric [16015]: get all.arm
+Sun Oct  4 19:30:35 2026 :: Log Alaric [16015]: get all.leg
+Sun Oct  4 19:30:48 2026 :: Log Alaric [16015]: score
+Sun Oct  4 19:30:49 2026 :: Log Alaric [16015]: wo
+Sun Oct  4 19:30:52 2026 :: Log Alaric [16015]: spel
+Sun Oct  4 19:30:58 2026 :: Log Alaric [16015]: c major
+Sun Oct  4 19:31:05 2026 :: Log Alaric [16015]: w
+Sun Oct  4 19:31:05 2026 :: Log Alaric [0]: moved to 16014 (Aft Deck)
+Sun Oct  4 19:31:10 2026 :: Log Alaric [16014]: drop all.arm
+Sun Oct  4 19:31:12 2026 :: Log Alaric [16014]: drop all.leg
+Sun Oct  4 19:31:14 2026 :: Log Alaric [16014]: c anim
+Sun Oct  4 19:31:20 2026 :: Log Alaric [16014]: c anim
+Sun Oct  4 19:31:43 2026 :: Log Alaric [16014]: c anim
+Sun Oct  4 19:31:48 2026 :: Log Alaric [16014]: c anim
+Sun Oct  4 19:31:54 2026 :: Log Alaric [16014]: c anim
+Sun Oct  4 19:32:03 2026 :: Log Alaric [16014]: c anim
+Sun Oct  4 19:32:09 2026 :: Log Alaric [16014]: l i cor
+Sun Oct  4 19:32:11 2026 :: Log Alaric [16014]: sac cor
+Sun Oct  4 19:32:12 2026 :: Log Alaric [16014]: l
+Sun Oct  4 19:32:13 2026 :: Log Alaric [16014]: scan
+Sun Oct  4 19:32:19 2026 :: Log Alaric [16014]: bu
+Sun Oct  4 19:32:22 2026 :: Log Alaric [16014]: e
+Sun Oct  4 19:32:22 2026 :: Log Alaric [0]: moved to 16015 (Aft Deck - Starboard Side)
+Sun Oct  4 19:32:23 2026 :: Log Alaric [16015]: bu
+Sun Oct  4 19:32:24 2026 :: Log Alaric [16015]: w
+Sun Oct  4 19:32:24 2026 :: Log Alaric [0]: moved to 16014 (Aft Deck)
+Sun Oct  4 19:32:25 2026 :: Log Alaric [16014]: e
+Sun Oct  4 19:32:25 2026 :: Log Alaric [0]: moved to 16015 (Aft Deck - Starboard Side)
+Sun Oct  4 19:32:27 2026 :: Log Alaric [16015]: get pearl
+Sun Oct  4 19:32:30 2026 :: Log Alaric [16015]: get head
+Sun Oct  4 19:32:30 2026 :: Log Alaric [16015]: w
+Sun Oct  4 19:32:30 2026 :: Log Alaric [0]: moved to 16014 (Aft Deck)
+Sun Oct  4 19:32:32 2026 :: Log Alaric [16014]: get arm
+Sun Oct  4 19:32:33 2026 :: Log Alaric [16014]: w
+Sun Oct  4 19:32:33 2026 :: Log Alaric [0]: moved to 16013 (Center Aft Deck)
+Sun Oct  4 19:32:35 2026 :: Log Alaric [16013]: drop all.arm
+Sun Oct  4 19:32:37 2026 :: Log Alaric [16013]: drop all.leg
+Sun Oct  4 19:32:40 2026 :: Log Alaric [16013]: drop all.head
+Sun Oct  4 19:32:43 2026 :: Log Alaric [16013]: kill buc
