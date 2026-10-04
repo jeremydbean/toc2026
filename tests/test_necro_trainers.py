@@ -16,9 +16,9 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 NECRO = 5
 LEVEL_IMMORTAL = 60
 
-# Abilities no class has a trainer for. Each is the same for every class,
-# so it is not a necromancer's gap and adding a teacher is a balance call.
-NOBODY_TEACHES = {"despair", "phase"}
+# Abilities no class has a trainer for, on purpose: phase is shadowmeld
+# while you sleep (owner, 2026-10-04). Despair is taught by Rakar now.
+NOBODY_TEACHES = {"phase"}
 
 
 def tables() -> tuple[dict[str, int], dict[str, list[str]], set[str]]:

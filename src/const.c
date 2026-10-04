@@ -577,10 +577,13 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	{
 	  "axe",          "dagger",       "flail",        "mace",
 	  "polearm",      "spear",        "sword",        "whip",
-	  "archery", "shove"
+	  "archery", "shove", "despair"
 	},
 	{
-	  "archery", "shove"
+	  /* Despair is every class's at 25 and nobody taught it (owner,
+	     2026-10-04). Phase, beside it in the table, is left untaught
+	     on purpose: it is shadowmeld while you sleep. */
+	  "archery", "shove", "despair"
 	}
     },
     {   /* 2 Gladiator */
@@ -818,9 +821,12 @@ const   struct  guildmaster_type        guildmaster_table       []  =
     {   /* 21 Wand shop guy. Put him somewhere in dresden. wandering shop */
 	40,     CLASS_ANY,     GUILD_ANY,
 	{
-	"wands",        "staves",	"scrolls",	"scribe"
+	"wands",        "staves",	"scrolls",	"scribe",
+	"earthquake",   "plague",       "harm",         "major globe",
+	"vortex"
 	},
 	{
+	  "arcane studies",
 	  /* Scribe is a cleric's at 25 and nobody taught clerics it; Dawn
 	     teaches scrolls to everyone, so she teaches writing them too
 	     (2026-10-04). Classes whose level for it is out of reach are
@@ -4281,6 +4287,21 @@ const   struct  group_type      group_table     [MAX_GROUP]     =
      * Ratings match the spell's own; the necromancer keeps "necro
      * enhancement" and the monk never has the spell.
      */
+    /*
+     * Spells the class sheet gives a mage, thief or warrior a level for
+     * that no group of theirs held, so nobody could ever learn them (owner,
+     * 2026-10-04: cross-class spells can be taught). Dawn the Wand Maker
+     * sells it in any guild. The spells HELP keeps to one class -- the
+     * necromancer's, M/M's and C/C's own -- are not in it.
+     */
+    {
+	"arcane studies",         { 6, -1, 8, 8, -1, -1 },
+	{
+	  "earthquake",      "plague",           "harm",
+	  "major globe",     "vortex"
+	}
+    },
+
     {
 	"night vision",           { 1, 1, 2, 2, -1, -1 },
 	{

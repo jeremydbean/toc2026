@@ -5331,6 +5331,8 @@ void do_remort( CHAR_DATA *ch, char *arg)
          continue;
       if (worn[iWear]->level > ch->level)
          continue;   /* too high now -- left in the pack, swept below */
+      if (!gear_race_allowed(ch, worn[iWear]))
+         continue;   /* made for another race now -- swept below too */
       if (get_eq_char(ch, iWear) != NULL)
          continue;
       equip_char(ch, worn[iWear], iWear);
@@ -5350,7 +5352,9 @@ void do_remort( CHAR_DATA *ch, char *arg)
          obj_next = obj->next_content;
          if (obj->wear_loc != WEAR_NONE)   /* still worn: keep it on */
             continue;
-         if (obj->level <= ch->level)
+         /* What the new life can wear stays in hand; what it cannot --
+            too high, or made for another race -- goes to the stash. */
+         if (obj->level <= ch->level && gear_race_allowed(ch, obj))
             continue;
          /* Kept carried, as the stash itself would refuse them: a NODROP
             item (a Triforce piece) in a bag a linked character can TAKE

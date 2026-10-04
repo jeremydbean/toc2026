@@ -21,6 +21,24 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **Cross-class spells can be taught.** ARCANE STUDIES, from Dawn the
+  Wand Maker in any guild, holds earthquake, plague, harm, major globe and
+  vortex -- spells the class sheet gives mages, thieves and warriors a
+  level for that no group of theirs held. Spells HELP keeps to one class
+  stay that class's. Despair is taught by Rakar the weaponsmaster; phase
+  is deliberately not taught.
+- **Major globe will not form over armor, shield or stone skin**, as HELP
+  always said; it refused only shroud, so cast last it stacked.
+- **Earth travel and gate keep the room rules walking keeps**: another
+  class's guild rooms, rooms behind a guild guard, Hyrule's order.
+- **WALKTO** routes around Hyrule dungeons you have not earned instead of
+  stopping at the door, and uses the 500-gold Hall of Heroes windows when
+  you can pay and nothing free goes there.
+- **Rope trick and haven take a ridden mount along**; the rider used to go
+  alone, still flagged as riding. A maze turned back on an already-mazed
+  caster fizzles instead of stacking.
+- **A remort keeps on what the new life can wear** and stashes the rest --
+  now including gear made for the old race, which stayed worn.
 - **Unspent practices and trains survive a remort.** The new life's
   starting amounts are added to them instead of replacing them; HELP
   REMORT says so, and that handed-back psionics return at 1%.

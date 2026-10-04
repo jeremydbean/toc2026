@@ -250,8 +250,60 @@ bool hyrule_carries( CHAR_DATA *ch, int vnum )
  * Whether Hyrule's order refuses this move, and if so say why. from may
  * be NULL (a character placed with no room to come from is never asked).
  */
+static bool hyrule_gate_check( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
+                               ROOM_INDEX_DATA *to, bool speak );
+
 bool hyrule_gate_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
                           ROOM_INDEX_DATA *to )
+{
+    return hyrule_gate_check( ch, from, to, true );
+}
+
+/* The same question asked in silence, by WALKTO choosing a route: a
+   dungeon this character has not earned is not a way through. */
+bool hyrule_gate_would_refuse( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
+                               ROOM_INDEX_DATA *to )
+{
+    return hyrule_gate_check( ch, from, to, false );
+}
+
+/*
+ * Whether a spell that carries ch into `to` -- earth travel, gate -- would
+ * break a rule that walking in keeps: another class's guild room, a room
+ * behind a guild guard who would turn this character away, or Hyrule's
+ * order. The spells already ask can_see_room, which keeps staff and Mud
+ * School's rooms, and the room flags. Owner, 2026-10-04: these spells do
+ * not skip room rules.
+ */
+bool travel_spell_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *to )
+{
+    ROOM_INDEX_DATA *closed[512];
+    int count, i, iClass, iGuild;
+
+    if ( to == NULL )
+        return true;
+    if ( IS_NPC(ch) || IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+        return false;
+
+    for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
+    {
+        if ( iClass == ch->class )
+            continue;
+        for ( iGuild = 0; iGuild < MAX_GUILD; iGuild++ )
+            if ( class_table[iClass].guild[iGuild] == to->vnum )
+                return true;
+    }
+
+    count = guild_closed_rooms( ch, closed, 512 );
+    for ( i = 0; i < count; i++ )
+        if ( closed[i] == to )
+            return true;
+
+    return hyrule_gate_check( ch, ch->in_room, to, false );
+}
+
+static bool hyrule_gate_check( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
+                               ROOM_INDEX_DATA *to, bool speak )
 {
     const HYRULE_DUNGEON_GATE *gate = NULL;
     CHAR_DATA *subject = ch;
@@ -282,7 +334,8 @@ bool hyrule_gate_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
     if ( to->vnum == gate->entrance && !from_inside
     &&   gate->entry_need != 0 && !hyrule_carries( subject, gate->entry_need ) )
     {
-        send_to_char( gate->entry_refusal, ch );
+        if ( speak )
+            send_to_char( gate->entry_refusal, ch );
         return true;
     }
 
@@ -291,7 +344,8 @@ bool hyrule_gate_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
     &&   !hyrule_carries( subject, gate->boss_need )
     &&   ( gate->boss_also == 0 || !hyrule_carries( subject, gate->boss_also ) ) )
     {
-        send_to_char( gate->boss_refusal, ch );
+        if ( speak )
+            send_to_char( gate->boss_refusal, ch );
         return true;
     }
 

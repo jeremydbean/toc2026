@@ -790,6 +790,17 @@ generator reproduces it byte for byte. It is code, not runtime state:
 copies `area/` wholesale. Regenerate after anything that moves a trainer,
 a guard, a guild hall or an area entrance.
 
+## Travel Spells Keep Room Rules
+
+`travel_spell_refuses(ch, room)` in `act_move.c` is what earth travel and
+gate ask before carrying a character anywhere: another class's guild
+rooms, rooms `guild_closed_rooms()` says a guard would turn this
+character from, and Hyrule's order. Staff, newbie and private rooms are
+`can_see_room` and the flags the spells already test. A new spell that
+moves a character to another's room asks it too. Hyrule's check is
+`hyrule_gate_check(ch, from, to, speak)`; WALKTO asks it silently through
+`hyrule_gate_would_refuse` when choosing a route.
+
 ## WALKTO
 
 `walkto <place>` (`src/walkto.c`) walks a player from wherever they are

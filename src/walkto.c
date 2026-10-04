@@ -48,6 +48,9 @@ bool has_key( CHAR_DATA *ch, int key );
    because you wait on it and cannot steer. */
 #define WALK_COST_MOVE         1
 #define WALK_COST_WAIT         8
+/* A portal that takes 500 gold: used only where nothing free goes. */
+#define WALK_COST_FARE         40
+#define WALK_FARE_GOLD         500
 
 /* A room vnum is an sh_int, so this covers every room there can be. */
 #define WALK_SLOTS             32768
@@ -303,10 +306,10 @@ static bool walk_exit_ok( CHAR_DATA *ch, ROOM_INDEX_DATA *from, EXIT_DATA *pexit
 }
 
 /* Whether an object in the room is a way through that WALKTO may use:
-   a portal that charges nothing, or a rope, hole or ledge you climb,
-   crawl or jump. Levers, buttons and anything wanting a tool are not
-   ways anywhere, and a portal that takes 500 gold is the player's own
-   decision to make. */
+   a portal, or a rope, hole or ledge you climb, crawl or jump. A portal
+   that takes 500 gold is one only for somebody who can pay it, and costs
+   enough in the search that any free way wins. Levers, buttons and
+   anything wanting a tool are not ways anywhere. */
 static ROOM_INDEX_DATA *walk_object_to( CHAR_DATA *ch, OBJ_DATA *obj )
 {
     if ( !can_see_obj( ch, obj ) )
@@ -323,7 +326,11 @@ static ROOM_INDEX_DATA *walk_object_to( CHAR_DATA *ch, OBJ_DATA *obj )
             if ( obj->value[4] > 0 && !has_key( ch, obj->value[4] ) )
                 return NULL;
             break;
-        default:        /* 1 charges, 2 and 3 are spells, 4 a crystal ball */
+        case 1:         /* the Hall of Heroes' windows: 500 gold */
+            if ( !IS_IMMORTAL(ch) && !has_enough_gold( ch, WALK_FARE_GOLD ) )
+                return NULL;
+            break;
+        default:        /* 2 and 3 are spells, 4 a crystal ball */
             return NULL;
         }
         return get_room_index( obj->value[1] );
@@ -365,7 +372,8 @@ static int walk_moves( CHAR_DATA *ch, ROOM_INDEX_DATA *room,
         EXIT_DATA *pexit = room->exit[door];
 
         if ( !walk_exit_ok( ch, room, pexit, flying, boat )
-        ||   !walk_room_ok( ch, pexit->u1.to_room, target ) )
+        ||   !walk_room_ok( ch, pexit->u1.to_room, target )
+        ||   hyrule_gate_would_refuse( ch, room, pexit->u1.to_room ) )
             continue;
         moves[count].kind = WALK_EXIT;
         moves[count].door = door;
@@ -386,7 +394,9 @@ static int walk_moves( CHAR_DATA *ch, ROOM_INDEX_DATA *room,
         moves[count].door = -1;
         moves[count].obj  = obj;
         moves[count].to   = to;
-        moves[count].cost = WALK_COST_MOVE;
+        moves[count].cost = ( obj->item_type == ITEM_PORTAL
+                              && obj->value[0] == 1 && !IS_IMMORTAL(ch) )
+                            ? WALK_COST_FARE : WALK_COST_MOVE;
         count++;
     }
 
@@ -720,6 +730,9 @@ static void walkto_step( CHAR_DATA *ch )
         char arg[MAX_INPUT_LENGTH];
 
         walk_object_arg( ch, move.obj, arg, sizeof(arg) );
+        if ( move.obj->item_type == ITEM_PORTAL && move.obj->value[0] == 1
+        &&   !IS_IMMORTAL(ch) )
+            act( "You pay the 500 gold $p asks.", ch, move.obj, NULL, TO_CHAR );
         if ( move.obj->item_type == ITEM_PORTAL )
             do_enter( ch, arg );
         else

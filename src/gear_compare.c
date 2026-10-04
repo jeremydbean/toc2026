@@ -323,8 +323,9 @@ static int gear_choose_slot( OBJ_DATA *obj1, OBJ_DATA *obj2 )
 /* Whether you can wear it                                             */
 /* ------------------------------------------------------------------ */
 
-/* wear_requirements_met's rule: the race flags name everyone it suits. */
-static bool gear_race_allowed( CHAR_DATA *ch, OBJ_DATA *obj )
+/* wear_requirements_met's rule: the race flags name everyone it suits.
+   Shared with do_remort, which asks it of every piece a new race keeps. */
+bool gear_race_allowed( CHAR_DATA *ch, OBJ_DATA *obj )
 {
     int allowed;
     int mine;

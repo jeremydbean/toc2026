@@ -2492,10 +2492,15 @@ void spell_major_globe( int sn, int level, CHAR_DATA *ch, void *vo )
        affect bits -- blind, invisible, detect evil, detect magic and
        berserk -- so a recast stacked another -80-level AC for ever, and
        a necro under detect magic was told they were already globed. */
-    /* Shroud refuses a globe; a globe now refuses a shroud. */
-    if ( is_affected(victim, skill_lookup("shroud")) )
+    /* HELP: a globe "cannot be combined with any of the others". Each of
+       them refused a globe already standing, but the globe refused only a
+       shroud -- cast last, it stacked on armor, shield and stone skin. */
+    if ( is_affected(victim, skill_lookup("shroud"))
+    ||   is_affected(victim, skill_lookup("armor"))
+    ||   is_affected(victim, skill_lookup("shield"))
+    ||   is_affected(victim, skill_lookup("stone skin")) )
     {
-      send_to_char("A globe will not form around a shroud.\n\r",ch);
+      send_to_char("A globe will not form around other protective magic.\n\r",ch);
       return;
     }
 
@@ -2557,7 +2562,8 @@ void spell_earth_travel( int sn, int level, CHAR_DATA *ch, void *vo )
     ||   (!IS_NPC(victim) && victim->level >= LEVEL_HERO3)  /* NOT trust */
     ||   (IS_NPC(victim) && IS_SET(victim->imm_flags,IMM_SUMMON))
     ||   (!IS_NPC(victim) && IS_SET(victim->act,PLR_NOSUMMON))
-    ||   (IS_NPC(victim) && saves_spell( level, victim ) ) )
+    ||   (IS_NPC(victim) && saves_spell( level, victim ) )
+    ||   travel_spell_refuses( ch, victim->in_room ) )
     {
 	send_to_char( "You failed.\n\r", ch );
 	   return;
@@ -4456,7 +4462,16 @@ void spell_maze( int sn, int level, CHAR_DATA *ch, void *vo )
     chance = number_percent();
 
     if ( saves_spell( level, victim ) && chance < 65 )
+    {
       victim = ch;
+      /* Turned back on a caster already lost: it used to stack a second
+         maze on them. */
+      if ( is_affected( ch, sn ) )
+      {
+        send_to_char( "Your maze unravels against your own confusion.\n\r", ch );
+        return;
+      }
+    }
 
     af.type      = (sh_int)(sn);
     af.level	 = (sh_int)(level);
@@ -5087,6 +5102,15 @@ void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
     char_from_room(ch);
     char_to_room(ch,pRoomIndex);
 
+    /* A ridden mount goes where its rider goes. The rider used to vanish
+       into the pocket alone, still flagged as riding a mount left behind. */
+    if ( !IS_NPC(ch) && ch->pcdata->mounted && ch->pet != NULL
+    &&   ch->pet->in_room == origin )
+    {
+      char_from_room( ch->pet );
+      char_to_room( ch->pet, pRoomIndex );
+    }
+
     pexit                   = alloc_mem( sizeof(*pexit) );
     pexit->description      = "";
     pexit->keyword          = "";
@@ -5218,6 +5242,15 @@ void spell_haven( int sn, int level, CHAR_DATA *ch, void *vo )
     pexit->key              = 0;
     pexit->trap             = 0;
     pexit->u1.to_room    = in_room;
+
+    /* Riders bring their mounts, which the group pull can leave behind. */
+    for ( gch = pRoomIndex->people; gch != NULL; gch = gch->next_in_room )
+      if ( !IS_NPC(gch) && gch->pcdata->mounted && gch->pet != NULL
+      &&   gch->pet->in_room == in_room )
+      {
+        char_from_room( gch->pet );
+        char_to_room( gch->pet, pRoomIndex );
+      }
     ch->in_room->exit[5] = pexit;
 
     raf             = alloc_mem(sizeof(*raf) );

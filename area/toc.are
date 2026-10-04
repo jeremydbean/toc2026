@@ -1185,6 +1185,19 @@ Trainer is the Soul Trapper.
 See also: SPELLGROUP, GAIN, ANIMATE PARTS
 ~
 
+-1 'ARCANE STUDIES'~
+Spells another class's groups hold that yours may also learn, from Dawn
+the Wand Maker in Dresden, in any guild.  You learn the ones your class
+reaches, at the levels HELP gives for them:
+
+  Earthquake, Plague, Harm, Major Globe and Vortex.
+
+Cost: 6 trains for a mage, 8 for a thief or warrior.  Clerics, monks and
+necromancers have these spells in their own groups, or not at all.
+
+See also: SPELLGROUP, GAIN
+~
+
 -1 MALADICTIONS~
 This group is open to all spell casters.  Spells are listed by class:
 

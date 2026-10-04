@@ -5101,9 +5101,15 @@
     "wands",
     "staves",
     "scrolls",
-    "scribe"
+    "scribe",
+    "earthquake",
+    "plague",
+    "harm",
+    "major globe",
+    "vortex"
    ],
    "gains": [
+    "arcane studies",
     "scribe"
    ],
    "trains": true,
@@ -6471,11 +6477,13 @@
     "sword",
     "whip",
     "archery",
-    "shove"
+    "shove",
+    "despair"
    ],
    "gains": [
     "archery",
-    "shove"
+    "shove",
+    "despair"
    ],
    "trains": true,
    "room": "Western Oak Tree Square.",

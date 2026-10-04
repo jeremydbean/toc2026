@@ -2957,7 +2957,8 @@ void spell_gate( int sn, int level, CHAR_DATA *ch, void *vo )
     ||   (!IS_NPC(victim) && victim->level >= LEVEL_HERO3)  /* NOT trust */
     ||   (IS_NPC(victim) && IS_SET(victim->imm_flags,IMM_SUMMON))
     ||   (!IS_NPC(victim) && IS_SET(victim->act,PLR_NOSUMMON))
-    ||   (IS_NPC(victim) && saves_spell( level, victim ) ) )
+    ||   (IS_NPC(victim) && saves_spell( level, victim ) )
+    ||   travel_spell_refuses( ch, victim->in_room ) )
     {
 	send_to_char( "You failed.\n\r", ch );
 	   return;

@@ -785,7 +785,10 @@ class HyruleProgressionTests(unittest.TestCase):
         enter = move.split("void do_enter(", 1)[1].split("\n}", 1)[0]
         self.assertIn("hyrule_gate_refuses( ch, in_room, to_room )", move_char)
         self.assertIn("hyrule_gate_refuses( ch, ch->in_room, to_room )", enter)
-        gate = move.split("bool hyrule_gate_refuses(", 1)[1].split("\n}", 1)[0]
+        # The rule lives in hyrule_gate_check, which hyrule_gate_refuses
+        # and WALKTO's silent hyrule_gate_would_refuse both call.
+        self.assertIn("return hyrule_gate_check( ch, from, to, true );", move)
+        gate = move.split("ROOM_INDEX_DATA *to, bool speak )\n{", 1)[1].split("\n}", 1)[0]
         self.assertIn("IS_TRUSTED(subject, LEVEL_IMMORTAL)", gate)
         self.assertIn("subject = subject->master", gate)
 

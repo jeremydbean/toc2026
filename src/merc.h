@@ -222,7 +222,7 @@ typedef struct script_loop_prepoll_payload
 #define MAX_SOCIALS             512
 #define MAX_SKILL               232
 #define TRAIL_LEN               10
-#define MAX_GROUP               57
+#define MAX_GROUP               58
 #define MAX_IN_GROUP            20
 #define MAX_CLASS               6
 #define MAX_PC_RACE             6
@@ -2657,6 +2657,10 @@ const char *class_race_refusal  ( int iClass, int race );
 void    spellup_boot_place      ( void );
 void    spill_corpse            ( OBJ_DATA *corpse );
 bool    gone_after_blow         ( CHAR_DATA *ch, ROOM_INDEX_DATA *room );
+bool    travel_spell_refuses    ( CHAR_DATA *ch, ROOM_INDEX_DATA *to );
+bool    hyrule_gate_would_refuse( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
+                                  ROOM_INDEX_DATA *to );
+bool    gear_race_allowed       ( CHAR_DATA *ch, OBJ_DATA *obj );
 void    dismiss_undead_servants ( CHAR_DATA *master );
 extern          bool                    merc_down;
 extern          char                   *target_name;
