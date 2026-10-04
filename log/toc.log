@@ -36635,3 +36635,88 @@ Sun Oct  4 02:12:07 2026 :: Log Alaric [29063]: sh
 Sun Oct  4 02:12:23 2026 :: Log Alaric [29063]: who
 Sun Oct  4 02:12:23 2026 :: Log Alaric [29063]: sh
 Sun Oct  4 02:12:38 2026 :: Log Alaric [29063]: wo
+Sun Oct  4 02:12:39 2026 :: Log Alaric [29063]: e
+Sun Oct  4 02:12:40 2026 :: Log Alaric [29063]: l
+Sun Oct  4 02:12:41 2026 :: Log Alaric [29063]: s
+Sun Oct  4 02:12:41 2026 :: Log Alaric [0]: moved to 29065 (Service Hallway)
+Sun Oct  4 02:12:43 2026 :: Log Alaric [29065]: sh he
+Sun Oct  4 02:13:22 2026 :: Log Alaric [29065]: who
+Sun Oct  4 02:13:22 2026 :: Log Alaric [29065]: sh
+Sun Oct  4 02:13:31 2026 :: Log Alaric [29065]: sh
+Sun Oct  4 02:13:40 2026 :: Log Alaric [29065]: sh
+Sun Oct  4 02:13:46 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sun Oct  4 02:13:50 2026 :: Log Alaric [29065]: sh
+Sun Oct  4 02:13:50 2026 :: Log WebAdmin: fsave
+Sun Oct  4 02:13:53 2026 :: Log Alaric [29065]: get exc
+Sun Oct  4 02:13:53 2026 :: Log Alaric [29065]: wear exc
+Sun Oct  4 02:13:54 2026 :: Log Alaric [29065]: get all
+Sun Oct  4 02:13:54 2026 :: Log Alaric [29065]: wear kn
+Sun Oct  4 02:13:54 2026 :: Log Alaric [29065]: save
+Sun Oct  4 02:13:56 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sun Oct  4 02:13:59 2026 :: Received signal 15; saving players and shutting down.
+Sun Oct  4 02:13:59 2026 :: Closing link to Alaric.
+Sun Oct  4 02:13:59 2026 :: Closing link to Killuminati.
+Sun Oct  4 02:13:59 2026 :: Normal termination of game.
+Sun Oct  4 02:14:00 2026 ::  INIT OK 
+Sun Oct  4 02:14:00 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Sun Oct  4 02:14:00 2026 :: ROM is ready to rock on port 9000.
+Sun Oct  4 02:14:01 2026 :: Automated backup complete.
+Sun Oct  4 02:14:01 2026 :: Daily backup complete.
+Sun Oct  4 02:14:05 2026 :: Sock.sinaddr:  108.81.26.245
+Sun Oct  4 02:14:05 2026 :: Sock.sinaddr:  208.126.22.104
+Sun Oct  4 02:14:05 2026 :: Sock.sinaddr:  54.87.112.51
+Sun Oct  4 02:14:05 2026 :: EOF encountered on read.
+Sun Oct  4 02:14:08 2026 :: Loading Alaric's playerfile
+Sun Oct  4 02:14:08 2026 :: Psi Alaric [29065]: restored mind leech to 75% from an earlier life
+Sun Oct  4 02:14:08 2026 :: Psi Alaric [29065]: restored mindbar to 75% from an earlier life
+Sun Oct  4 02:14:08 2026 :: Psi Alaric [29065]: restored telekinesis to 75% from an earlier life
+Sun Oct  4 02:14:08 2026 :: Psi Alaric [29065]: restored torment to 75% from an earlier life
+Sun Oct  4 02:14:09 2026 :: Alaric@208.126.22.104 has connected.
+Sun Oct  4 02:14:09 2026 :: Loading Killuminati's playerfile
+Sun Oct  4 02:14:10 2026 :: Log Alaric [29065]: moved to 29065 (Service Hallway)
+Sun Oct  4 02:14:10 2026 :: Killuminati@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Sun Oct  4 02:14:11 2026 :: Log Killuminati [1]: moved to 1 (The Void)
+Sun Oct  4 02:14:12 2026 :: Log Killuminati [1]: snoop al
+Sun Oct  4 02:14:12 2026 :: Log Killuminati [1]: snoop al
+Sun Oct  4 02:14:14 2026 :: Log Alaric [29065]: wo
+Sun Oct  4 02:14:17 2026 :: Log Alaric [29065]: sh gu
+Sun Oct  4 02:14:22 2026 :: Log Killuminati [1]: stat char ala
+Sun Oct  4 02:14:32 2026 :: Log Alaric [29065]: sh
+Sun Oct  4 02:14:44 2026 :: Log Alaric [29065]: sh
+Sun Oct  4 02:14:48 2026 :: Log Killuminati [1]: . ok she should know directions and like quadruple checked remort code now, lol
+Sun Oct  4 02:14:59 2026 :: Log Killuminati [1]: . compare will let you compare gear you can't wear also
+Sun Oct  4 02:15:33 2026 :: Log Alaric [29065]: gos Awesome. I noticed the compare now is quite a bit summarized compared to a few days ago
+Sun Oct  4 02:15:55 2026 :: Log Alaric [29065]: gos The original was a lot of info, now it kind of breaks it down damage vs survivabilityy
+Sun Oct  4 02:15:56 2026 :: Log Alaric [29065]: wake
+Sun Oct  4 02:15:56 2026 :: Log Alaric [29065]: l
+Sun Oct  4 02:15:58 2026 :: Log Alaric [29065]: n
+Sun Oct  4 02:15:58 2026 :: Log Alaric [0]: moved to 29063 (Corridor)
+Sun Oct  4 02:15:58 2026 :: Log Killuminati [1]: . yeah it's better at it, re-did it a bit when i fixed the web recommendations
+Sun Oct  4 02:16:00 2026 :: Log Alaric [29063]: sh gu
+Sun Oct  4 02:16:09 2026 :: Log Alaric [29063]: n
+Sun Oct  4 02:16:09 2026 :: Log Alaric [0]: moved to 29062 (Corridor)
+Sun Oct  4 02:16:10 2026 :: Log Alaric [29062]: sh gu
+Sun Oct  4 02:16:14 2026 :: Log Alaric [29062]: sh gu
+Sun Oct  4 02:16:28 2026 :: Log Alaric [29062]: sh gu
+Sun Oct  4 02:16:37 2026 :: Log Alaric [29062]: get knife
+Sun Oct  4 02:16:37 2026 :: Log Alaric [29062]: wear knife
+Sun Oct  4 02:16:39 2026 :: Log Alaric [29062]: sh
+Sun Oct  4 02:16:51 2026 :: Log Alaric [29062]: sh
+Sun Oct  4 02:16:52 2026 :: Log Alaric [29062]: n
+Sun Oct  4 02:16:52 2026 :: Log Alaric [0]: moved to 29061 (Corridor)
+Sun Oct  4 02:16:53 2026 :: Log Alaric [29061]: sh gu
+Sun Oct  4 02:17:00 2026 :: Log Alaric [29061]: worth
+Sun Oct  4 02:17:00 2026 :: Log Alaric [29061]: sh gu
+Sun Oct  4 02:17:14 2026 :: Log Alaric [29061]: sh gu
+Sun Oct  4 02:17:28 2026 :: Log Alaric [29061]: sh gu
+Sun Oct  4 02:17:28 2026 :: Log Alaric [29061]: level 20 -> 21 (earned)
+Sun Oct  4 02:17:28 2026 :: Alaric has achieved level 21!
+Sun Oct  4 02:17:28 2026 :: Psi Alaric [29061]: awakening roll at level 21: rolled 18 of 18-21, hits on 21 -- missed
+Sun Oct  4 02:17:28 2026 :: Psi Alaric [29061]: flagged grant honoured at level 21, the end of the 18-21 band, after the rolls missed
+Sun Oct  4 02:17:28 2026 :: Psi Alaric [29061]: grant forced, no roll taken (remorts 1, pending yes)
+Sun Oct  4 02:17:28 2026 :: Psi Alaric [29061]: Assault set: holds 1 of 4, target 1 for remort 1, 3 candidates
+Sun Oct  4 02:17:28 2026 :: Psi Alaric [29061]: Astral set: holds 1 of 4, target 1 for remort 1, 3 candidates
+Sun Oct  4 02:17:28 2026 :: Psi Alaric [29061]: Defense set: holds 1 of 4, target 1 for remort 1, 3 candidates
+Sun Oct  4 02:17:28 2026 :: Psi Alaric [29061]: Control set: holds 1 of 5, target 1 for remort 1, 4 candidates
+Sun Oct  4 02:17:28 2026 :: Psi Alaric [29061]: grant complete, 4 powers now held
+Sun Oct  4 02:17:38 2026 :: Log Alaric [29061]: skil

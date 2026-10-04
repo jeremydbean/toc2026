@@ -235,3 +235,7 @@
 1791079758	Alaric	208.126.22.104	connect
 1791079875	Alaric	208.126.22.104	quit	116
 1791079879	Alaric	208.126.22.104	connect
+1791080039	Alaric	208.126.22.104	shutdown	159
+1791080039	Killuminati	108-81-26-245.lightspeed.tukrga.sbcglobal.net	shutdown	3389
+1791080049	Alaric	208.126.22.104	connect
+1791080050	Killuminati	108-81-26-245.lightspeed.tukrga.sbcglobal.net	connect
