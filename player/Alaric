@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791142271
+LogO 1791142610
 Vers 4
 Prom ~
 Ignoring ~
@@ -14,18 +14,18 @@ PsiGrant 0
 PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
-Levl 41
-Plyd 303354
+Levl 42
+Plyd 303693
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 Scro 22
-Room 16014
-HMV  3210 4441 17182 18717 910 2846
-NewGold 254
-NewPlat 414
-NewCopp 670
-NewSilv 364
+Room 2404
+HMV  2277 4452 16296 18798 490 2853
+NewGold 289
+NewPlat 427
+NewCopp 845
+NewSilv 433
 BankCP 580356235
 IntTime 1791075484
 IntTotal 8356235
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 1269
+AchKills 1277
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -115,7 +115,7 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  82498
+Exp  84759
 Act  4195532
 AfBy 3678908
 AfBy2 4106
@@ -144,8 +144,8 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 15
-Trai 4
+Prac 17
+Trai 5
 Save  -6
 Alig  1000
 Hit   58
@@ -154,11 +154,11 @@ ACs -115 -115 -124 11
 Attr 18 13 13 18 15
 AMod 37 22 27 25 23
 Pass Al3w9zuAlwpyY~
-Titl  the Defender of the Dead~
+Titl  the Controller of Corpses~
 Pnts 2540
 TSex 1
 LLev 0
-HMVP 801 3257 451
+HMVP 812 3338 458
 Cond 0 -1 -1
 Alias k kick~
 Alias sm smite~
@@ -205,9 +205,9 @@ Sk 75 'sanctuary'
 Sk 75 'shield'
 Sk 76 'shroud'
 Sk 75 'ghostly presence'
-Sk 89 'shock sphere'
+Sk 90 'shock sphere'
 Sk 1 'skeletal hands'
-Sk 1 'tentacles'
+Sk 75 'tentacles'
 Sk 1 'trap the soul'
 Sk 1 'vampiric touch'
 Sk 1 'neutrality field'
@@ -224,7 +224,7 @@ Sk 7 'spear'
 Sk 75 'sword'
 Sk 15 'whip'
 Sk 81 'dodge'
-Sk 77 'meditation'
+Sk 78 'meditation'
 Sk 1 'scrolls'
 Sk 1 'wands'
 Sk 100 'recall'
@@ -236,56 +236,56 @@ Gr 'life & undeath'
 Gr 'necromancy'
 Gr 'necro protective'
 Gr 'necro transportation'
-AffD 'titanic'   0   6  50  16          0          0
-AffD 'titanic'   0   6 2360  14          0          0
-AffD 'titanic'   0   6 15400  12          0          0
-AffD 'titanic'   0   6 3630  13          0          0
-AffD 'empower'   0   6 -100  17          0          0
-AffD 'empower'  28   6  20  19          0          0
-AffD 'empower'   0   6  20  18          0          0
-AffD 'empower'   0   6  15   5          0          0
-AffD 'empower'   0   6  11   2          0          0
-AffD 'empower'   0   6  15   4          0          0
-AffD 'empower'   0   6  15   3          0          0
-AffD 'giant strength'   0  14  15   1          0          0
-AffD 'divine protection'   0  14   0   0          0       4096
-AffD 'fire shield'   0  14   0   0          0          8
-AffD 'protection evil'   0  14   0   0       8192          0
-AffD 'pass door'   0  14   0   0    1048576          0
-AffD 'fly'   0  14   0   0     524288          0
-AffD 'haste'   0  14   4   2    2097152          0
-AffD 'sanctuary'  26  14   0   0        128          0
-AffD 'empower'   0   6   0   0          0          0
-AffD 'divine protection'  28  14   0   0          0       4096
-AffD 'giant strength'   0  14  15   1          0          0
-AffD 'fire shield'   0  14   0   0          0          8
-AffD 'protection evil'   0  14   0   0       8192          0
-AffD 'pass door'   0  14   0   0    1048576          0
-AffD 'fly'   0  14   0   0     524288          0
-AffD 'haste'   0  14   4   2    2097152          0
-AffD 'sanctuary'   0  14   0   0        128          0
-AffD 'power gloves'   0  14  42  19          0          0
-AffD 'detect evil'   0  14   0   0          4          0
-AffD 'detect good'   0  14   0   0          0          2
-AffD 'detect magic'   0  14   0   0         16          0
-AffD 'detect hidden'   0  14   0   0         32          0
-AffD 'detect invis'   0  14   0   0          8          0
-AffD 'infravision'   0  14   0   0        512          0
-AffD 'frenzy'   0  14 110  17          0          0
-AffD 'frenzy'   0  14  11  19          0          0
-AffD 'frenzy'   0  14  11  18          0          0
-AffD 'giant strength'   0  14   4   1          0          0
-AffD 'fire shield'   0  14   0   0          0          8
-AffD 'protection evil'   0  14   0   0       8192          0
-AffD 'haste'   0  14   4   2    2097152          0
-AffD 'sanctuary'   0  14   0   0        128          0
-AffD 'shield'   0  14 -20  17          0          0
-AffD 'bless'  16  14  -8  24          0          0
-AffD 'bless'   0  14   8  18          0          0
-AffD 'fly'   0  14   0   0     524288          0
-AffD 'pass door'   0  14   0   0    1048576          0
-AffD 'armor'   0  14 -20  17          0          0
-AffD 'shroud'   0  14 -35  17          0          0
+AffD 'titanic'   0   1  50  16          0          0
+AffD 'titanic'   0   1 2360  14          0          0
+AffD 'titanic'   0   1 15400  12          0          0
+AffD 'titanic'   0   1 3630  13          0          0
+AffD 'empower'   0   1 -100  17          0          0
+AffD 'empower'  27   1  20  19          0          0
+AffD 'empower'   0   1  20  18          0          0
+AffD 'empower'   0   1  15   5          0          0
+AffD 'empower'   0   1  11   2          0          0
+AffD 'empower'   0   1  15   4          0          0
+AffD 'empower'   0   1  15   3          0          0
+AffD 'giant strength'   0   9  15   1          0          0
+AffD 'divine protection'   0   9   0   0          0       4096
+AffD 'fire shield'   0   9   0   0          0          8
+AffD 'protection evil'   0   9   0   0       8192          0
+AffD 'pass door'   0   9   0   0    1048576          0
+AffD 'fly'   0   9   0   0     524288          0
+AffD 'haste'   0   9   4   2    2097152          0
+AffD 'sanctuary'  26   9   0   0        128          0
+AffD 'empower'   0   1   0   0          0          0
+AffD 'divine protection'  27   9   0   0          0       4096
+AffD 'giant strength'   0   9  15   1          0          0
+AffD 'fire shield'   0   9   0   0          0          8
+AffD 'protection evil'   0   9   0   0       8192          0
+AffD 'pass door'   0   9   0   0    1048576          0
+AffD 'fly'   0   9   0   0     524288          0
+AffD 'haste'   0   9   4   2    2097152          0
+AffD 'sanctuary'   0   9   0   0        128          0
+AffD 'power gloves'   0   9  42  19          0          0
+AffD 'detect evil'   0   9   0   0          4          0
+AffD 'detect good'   0   9   0   0          0          2
+AffD 'detect magic'   0   9   0   0         16          0
+AffD 'detect hidden'   0   9   0   0         32          0
+AffD 'detect invis'   0   9   0   0          8          0
+AffD 'infravision'   0   9   0   0        512          0
+AffD 'frenzy'   0   9 110  17          0          0
+AffD 'frenzy'   0   9  11  19          0          0
+AffD 'frenzy'   0   9  11  18          0          0
+AffD 'giant strength'   0   9   4   1          0          0
+AffD 'fire shield'   0   9   0   0          0          8
+AffD 'protection evil'   0   9   0   0       8192          0
+AffD 'haste'   0   9   4   2    2097152          0
+AffD 'sanctuary'   0   9   0   0        128          0
+AffD 'shield'   0   9 -20  17          0          0
+AffD 'bless'  13   9  -8  24          0          0
+AffD 'bless'   0   9   8  18          0          0
+AffD 'fly'   0   9   0   0     524288          0
+AffD 'pass door'   0   9   0   0    1048576          0
+AffD 'armor'   0   9 -20  17          0          0
+AffD 'shroud'   0   9 -35  17          0          0
 End
 
 #O
@@ -698,7 +698,7 @@ Nest 0
 Wear 14
 Lev  7
 Cost 33000
-Cond 87
+Cond 86
 Repd 0
 End
 
@@ -833,7 +833,7 @@ Nest 0
 Wear 15
 Lev  7
 Cost 33000
-Cond 87
+Cond 86
 Repd 0
 End
 
@@ -875,7 +875,7 @@ Wear 0
 Cost 2
 Cond 92
 Repd 0
-Val  0 0 174 0 0
+Val  0 0 169 0 0
 End
 
 #O
@@ -936,10 +936,92 @@ Affect -1 41 -1 -2 4 0 0
 End
 
 #O
+Vnum 16007
+Nest 0
+Wear -1
+Lev  39
+Cost 26000000
+Cond 100
+Repd 0
+Affect -1 39 -1 3 21 0 0
+End
+
+#O
+Vnum 16021
+Nest 0
+Wear -1
+Lev  46
+Cost 19350000
+Cond 100
+Repd 0
+Affect -1 46 -1 -4 18 0 0
+End
+
+#O
+Vnum 14
+Nest 0
+ShD  A surgically removed arm~
+Desc A surgically removed arm waits to serve Alaric~
+Wear -1
+Time 249
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 14
+Nest 0
+ShD  A surgically removed arm~
+Desc A surgically removed arm waits to serve Alaric~
+Wear -1
+Time 249
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
 Vnum 15
 Nest 0
 ShD  A surgically removed leg~
 Desc A surgically removed leg waits to serve Alaric~
+Wear -1
+Time 249
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 15
+Nest 0
+ShD  A surgically removed leg~
+Desc A surgically removed leg waits to serve Alaric~
+Wear -1
+Time 249
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 14
+Nest 0
+ShD  A surgically removed arm~
+Desc A surgically removed arm waits to serve Alaric~
+Wear -1
+Time 250
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 14
+Nest 0
+ShD  A surgically removed arm~
+Desc A surgically removed arm waits to serve Alaric~
 Wear -1
 Time 250
 Cost 0
@@ -965,7 +1047,31 @@ Nest 0
 ShD  A surgically removed leg~
 Desc A surgically removed leg waits to serve Alaric~
 Wear -1
-Time 247
+Time 250
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 14
+Nest 0
+ShD  A surgically removed arm~
+Desc A surgically removed arm waits to serve Alaric~
+Wear -1
+Time 250
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 14
+Nest 0
+ShD  A surgically removed arm~
+Desc A surgically removed arm waits to serve Alaric~
+Wear -1
+Time 250
 Cost 0
 Cond 25
 Repd 0
@@ -977,7 +1083,115 @@ Nest 0
 ShD  A surgically removed leg~
 Desc A surgically removed leg waits to serve Alaric~
 Wear -1
-Time 247
+Time 250
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 15
+Nest 0
+ShD  A surgically removed leg~
+Desc A surgically removed leg waits to serve Alaric~
+Wear -1
+Time 250
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 14
+Nest 0
+ShD  A surgically removed arm~
+Desc A surgically removed arm waits to serve Alaric~
+Wear -1
+Time 250
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 14
+Nest 0
+ShD  A surgically removed arm~
+Desc A surgically removed arm waits to serve Alaric~
+Wear -1
+Time 250
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 15
+Nest 0
+ShD  A surgically removed leg~
+Desc A surgically removed leg waits to serve Alaric~
+Wear -1
+Time 250
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 15
+Nest 0
+ShD  A surgically removed leg~
+Desc A surgically removed leg waits to serve Alaric~
+Wear -1
+Time 250
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 14
+Nest 0
+ShD  A surgically removed arm~
+Desc A surgically removed arm waits to serve Alaric~
+Wear -1
+Time 250
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 14
+Nest 0
+ShD  A surgically removed arm~
+Desc A surgically removed arm waits to serve Alaric~
+Wear -1
+Time 250
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 15
+Nest 0
+ShD  A surgically removed leg~
+Desc A surgically removed leg waits to serve Alaric~
+Wear -1
+Time 250
+Cost 0
+Cond 25
+Repd 0
+End
+
+#O
+Vnum 15
+Nest 0
+ShD  A surgically removed leg~
+Desc A surgically removed leg waits to serve Alaric~
+Wear -1
+Time 250
 Cost 0
 Cond 25
 Repd 0
