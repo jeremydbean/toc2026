@@ -38877,3 +38877,23 @@ Sun Oct  4 14:19:47 2026 :: Log Farslayer [3717]: n
 Sun Oct  4 14:19:47 2026 :: Log Farslayer [0]: moved to 3784 (The Hallway)
 Sun Oct  4 14:19:48 2026 :: Log Farslayer [3784]: n
 Sun Oct  4 14:19:48 2026 :: Log Farslayer [0]: moved to 3787 (A hallway)
+Sun Oct  4 14:19:52 2026 :: Log Farslayer [3787]: sca
+Sun Oct  4 14:19:58 2026 :: Log Farslayer [3787]: e
+Sun Oct  4 14:19:58 2026 :: Log Farslayer [0]: moved to 3788 (A classroom)
+Sun Oct  4 14:19:59 2026 :: Log Farslayer [3788]: l st
+Sun Oct  4 14:20:05 2026 :: Log Farslayer [3788]: k st
+Sun Oct  4 14:20:08 2026 :: Sock.sinaddr:  5.161.177.47
+Sun Oct  4 14:20:08 2026 :: EOF encountered on read.
+Sun Oct  4 14:20:09 2026 :: Log Farslayer [3788]: c mag
+Sun Oct  4 14:20:14 2026 :: Log Farslayer [3788]: c mag
+Sun Oct  4 14:20:18 2026 :: Log Farslayer [3788]: c mag
+Sun Oct  4 14:20:23 2026 :: Log Farslayer [3788]: c mag
+Sun Oct  4 14:20:26 2026 :: Log Farslayer [3788]: c mag
+Sun Oct  4 14:20:30 2026 :: Log Farslayer [3788]: c mag
+Sun Oct  4 14:20:34 2026 :: Log Farslayer [3788]: c mag
+Sun Oct  4 14:22:00 2026 :: Log Farslayer [3788]: c mag
+Sun Oct  4 14:22:01 2026 :: Log Farslayer [3788]: flee
+Sun Oct  4 14:22:01 2026 :: Log Farslayer [0]: moved to 3787 (A hallway)
+Sun Oct  4 14:22:03 2026 :: Log Farslayer [3787]: rest
+Sun Oct  4 14:24:50 2026 :: EOF encountered on read.
+Sun Oct  4 14:24:50 2026 :: Closing link to Farslayer.
