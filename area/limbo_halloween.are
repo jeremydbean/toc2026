@@ -697,7 +697,7 @@ an undead mob~
 An undead mob is waiting to be created here.~
 You see one of the undead.~
 unique~
-AO DF -750 S
+AOX DF -750 S
 0 0 1d1+1 1d1+1 1d1+1 5
 0 0 0 0
 IK AB 0 NS

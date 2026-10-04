@@ -2715,7 +2715,12 @@ void spell_energy_drain( int sn, int level, CHAR_DATA *ch, void *vo )
 	victim->mana	= (int)(victim->mana - victim->mana * .15);
 	victim->move	= (int)(victim->move - victim->move * .15);
 	dam		 = dice(3, ch->level/3);
-	ch->hit = (int)UMIN( ch->max_hit, ch->hit + dam / 2 );
+	/* As vampiric touch: nothing back from what negative energy cannot
+	   hurt, half from what resists it. */
+	if ( check_immune( victim, DAM_NEGATIVE ) == IS_RESISTANT )
+	    ch->hit = (int)UMIN( ch->max_hit, ch->hit + dam / 4 );
+	else if ( check_immune( victim, DAM_NEGATIVE ) != IS_IMMUNE )
+	    ch->hit = (int)UMIN( ch->max_hit, ch->hit + dam / 2 );
     }
 
     send_to_char("You feel your life slipping away!\n\r",victim);

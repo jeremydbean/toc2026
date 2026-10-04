@@ -303,7 +303,7 @@ See also: CREATE FOOD, CREATE WATER, CREATION
 ~
 
 0 'CREATE SKELETON' 'CREATE WRAITH' 'CREATE VAMPIRE'~
-Syntax: cast create skeleton
+Syntax: cast create skeleton [corpse]
 Syntax: cast create wraith [corpse]
 Syntax: cast create vampire [corpse]
 
@@ -744,7 +744,7 @@ Mage:23  Cleric:20  Thief:27  Warrior:25   Monk: N/A   Necromancer:N/A
 See also: COLD SPELLS, ELECTRIC SPELLS, ELEMENTAL
 ~
 
-0 FIRESHIELD FROSTSHIELD 'DEATHSHROUD'~
+0 FIRESHIELD FROSTSHIELD 'DEATHSHROUD' 'DEATH SHROUD' 'FIRE SHIELD' 'FROST SHIELD'~
 Syntax: cast 'fire shield'
 Syntax: cast 'frost shield'
 Syntax: cast 'death shroud'

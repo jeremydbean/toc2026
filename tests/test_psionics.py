@@ -111,6 +111,14 @@ class AwakeningBandTests(unittest.TestCase):
         for phrase in ("rolled", "hits on", "missed", "AWAKENED"):
             self.assertIn(phrase, self.check, phrase)
 
+    def test_a_staff_grant_lands_by_the_end_of_the_band(self) -> None:
+        """Owner, 2026-10-04: Alaric was granted and missed at 18, 19 and
+        20. A missed roll at PSI_AWAKEN_MAX pays a pending grant; a
+        remort's owing keeps the plain odds."""
+        miss = self.check.split("if ( roll != ch->level )", 1)[1].split("return;\n    }", 1)[0]
+        self.assertIn("psionic_grant_pending && ch->level == PSI_AWAKEN_MAX", miss)
+        self.assertIn("grant_psionics( ch, 100, true );", miss)
+
     def test_every_grant_says_which_power_and_why(self) -> None:
         self.assertGreaterEqual(self.grant.count("psi_log("), 6)
         for phrase in ("roll %d vs chance %d", "granted %s", "grant complete",

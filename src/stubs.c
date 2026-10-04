@@ -210,7 +210,20 @@ void do_check_psi( CHAR_DATA *ch, char *argument )
              ch->level, roll == ch->level ? "AWAKENED" : "missed" );
 
     if ( roll != ch->level )
+    {
+        /* A staff GRANTPSI is a promise, not a ticket in the draw: the
+           band's dice still decide *when*, but the last level of it pays
+           whatever is still owed. Alaric was granted at 17 and missed at
+           18, 19 and 20. A remort's owing keeps the plain odds. */
+        if ( ch->pcdata->psionic_grant_pending && ch->level == PSI_AWAKEN_MAX )
+        {
+            psi_log( ch, "flagged grant honoured at level %d, the end of "
+                         "the %d-%d band, after the rolls missed",
+                     ch->level, PSI_AWAKEN_MIN, PSI_AWAKEN_MAX );
+            grant_psionics( ch, 100, true );
+        }
         return;
+    }
 
     grant_psionics( ch, 100, true );
 }

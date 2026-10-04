@@ -4982,19 +4982,15 @@ void do_remort( CHAR_DATA *ch, char *arg)
      return;
    }
 
-   if ((requested_class == CLASS_NECRO) &&
-       (requested_race != race_lookup("elf")) &&
-       (requested_race != race_lookup("human")))
-   { send_to_char("A Necromancer can only have as race Elf or Human.\n\r",ch);
-     return;
-   }
-
-   if ((requested_class == CLASS_MONK) &&
-       (requested_race != race_lookup("dwarf")) &&
-       (requested_race != race_lookup("human")))
    {
-     send_to_char("A Monk can only have as race Dwarf or Human.\n\r",ch);
-     return;
+     const char *refusal = class_race_refusal( requested_class, requested_race );
+
+     if ( refusal != NULL )
+     {
+       send_to_char( refusal, ch );
+       send_to_char( "\n\r", ch );
+       return;
+     }
    }
 
 

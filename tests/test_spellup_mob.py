@@ -64,6 +64,22 @@ def immortal(mud: LiveMud, name: str) -> None:
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class SpellupMobTests(unittest.TestCase):
+    def test_she_is_at_the_pit_after_every_boot(self) -> None:
+        """Owner, 2026-10-04: six hours at the altar after every reboot.
+        The harness turns this off for the other tests; this one asks."""
+        with LiveMud(extra_env={"TOC_NO_BOOT_HERMIE": None}) as mud:
+            immortal(mud, "Zbootherm")
+            with mud.connect(timeout=120) as client:
+                login(client, "Zbootherm", PASSWORD)
+                run(client, "goto 4208", settle=1.5)
+                here = run(client, "look", settle=1.5)
+                self.assertIn("Hermie", here, here)
+                # Already there: a SPELLUP only extends her.
+                again = run(client, "spellup 30", settle=1.5)
+                self.assertIn("will stay 30 more minutes", again, again)
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
+            self.assertIn("placed in room 4208 at boot for 360 minutes", log)
+
     def test_she_appears_reads_her_menu_and_casts(self) -> None:
         with LiveMud() as mud:
             immortal(mud, "Zspellone")

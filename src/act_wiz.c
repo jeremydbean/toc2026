@@ -11069,6 +11069,7 @@ void spellup_listen( CHAR_DATA *ch, const char *argument )
 /* mobile_update counts a mobile's timer down once every PULSE_MOBILE. */
 #define SPELLUP_TICKS_PER_MINUTE ( 60 * PULSE_PER_SECOND / PULSE_MOBILE )
 #define SPELLUP_MAX_MINUTES      1440
+#define SPELLUP_BOOT_MINUTES     360    /* six hours, every boot */
 
 /* Give her a lifespan: mobile_update counts the timer down and sends her
    home at zero. UPDATE_ALWAYS, because mobile_update skips an empty
@@ -11077,6 +11078,40 @@ static void spellup_set_minutes( CHAR_DATA *mob, int minutes )
 {
     mob->timer = (sh_int)( minutes * SPELLUP_TICKS_PER_MINUTE );
     SET_BIT( mob->act, ACT_UPDATE_ALWAYS );
+}
+
+/*
+ * Hermie at the pit for the first six hours after every boot (owner,
+ * 2026-10-04): the altar, where the healer of Devota stands and RECALL
+ * lands a step away. Placed as SPELLUP <minutes> would place her, so she
+ * leaves on her own; a staff SPELLUP there afterwards just extends her.
+ * TOC_NO_BOOT_HERMIE in the environment skips it -- the test harness sets
+ * it, since several tests count every spellup mobile in the world.
+ */
+void spellup_boot_place( void )
+{
+    ROOM_INDEX_DATA *room;
+    MOB_INDEX_DATA *idx;
+    CHAR_DATA *mob;
+    char buf[MAX_STRING_LENGTH];
+
+    if ( getenv( "TOC_NO_BOOT_HERMIE" ) != NULL )
+        return;
+    if ( ( room = get_room_index( ROOM_VNUM_ALTAR ) ) == NULL
+    ||   ( idx = get_mob_index( MOB_VNUM_SPELLUP ) ) == NULL )
+    {
+        bug( "spellup_boot_place: no altar or no Hermie (%d).", MOB_VNUM_SPELLUP );
+        return;
+    }
+    if ( ( mob = spellup_mob_in_room( room ) ) == NULL )
+    {
+        mob = create_mobile( idx );
+        char_to_room( mob, room );
+    }
+    spellup_set_minutes( mob, SPELLUP_BOOT_MINUTES );
+    snprintf( buf, sizeof(buf), "Spellup: %s placed in room %d at boot for %d minutes.",
+        mob->short_descr, room->vnum, SPELLUP_BOOT_MINUTES );
+    log_string( buf );
 }
 
 void do_spellup( CHAR_DATA *ch, char *argument )

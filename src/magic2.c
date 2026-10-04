@@ -2491,7 +2491,18 @@ void spell_major_globe( int sn, int level, CHAR_DATA *ch, void *vo )
     AFFECT_DATA af;
     CHAR_DATA *victim = (CHAR_DATA *) vo;
 
-    if ( IS_AFFECTED(victim, sn) )
+    /* is_affected, by spell. IS_AFFECTED read the skill number (87) as
+       affect bits -- blind, invisible, detect evil, detect magic and
+       berserk -- so a recast stacked another -80-level AC for ever, and
+       a necro under detect magic was told they were already globed. */
+    /* Shroud refuses a globe; a globe now refuses a shroud. */
+    if ( is_affected(victim, skill_lookup("shroud")) )
+    {
+      send_to_char("A globe will not form around a shroud.\n\r",ch);
+      return;
+    }
+
+    if ( is_affected(victim, sn) )
     {
   if (victim == ch)
   send_to_char("You are already in a protective globe.\n\r",ch);
@@ -2694,7 +2705,14 @@ void spell_vampiric_touch( int sn, int level, CHAR_DATA *ch, void *vo )
     }
 
     dam		 = dice(5, ch->level/3);
-    ch->hit = (int)UMIN( ch->max_hit, ch->hit + dam / 2 );
+    /* Heal from what the blow can take: nothing from a target immune to
+       negative energy (undead), half from one resistant to it. */
+    switch ( check_immune( victim, DAM_NEGATIVE ) )
+    {
+    case IS_IMMUNE:    break;
+    case IS_RESISTANT: ch->hit = (int)UMIN( ch->max_hit, ch->hit + dam / 4 ); break;
+    default:           ch->hit = (int)UMIN( ch->max_hit, ch->hit + dam / 2 ); break;
+    }
 
     act("$n's hand touches you, devouring your life force.",ch,
        NULL,victim,TO_VICT);
@@ -3575,6 +3593,16 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
         return;
     }
 
+    /* A shopkeeper, trainer, healer, the quest master and the like are
+       not anybody's vengeance: the rite would have killed them anywhere
+       in the world. Players remain fair game -- the reader pays for it. */
+    if ( is_protected_npc( victim ) )
+    {
+        act( "The blade circles $N once and falls, unwilling.",
+             ch, NULL, victim, TO_CHAR );
+        return;
+    }
+
     chance = number_percent();
 
     if (chance > 50)
@@ -3721,6 +3749,20 @@ void spell_raise_dead( int sn, int level, CHAR_DATA *ch, void *vo )
     if(IS_SET(victim->act, PLR_NOSUMMON) )
     {
       send_to_char("They do not wish to return to the land of the living.\n\r",ch);
+      return;
+    }
+
+    /* It moves the player to the caster: a summons, held to earth
+       travel's rules -- no way out of a jail or a no-recall room, none
+       into one, a private room or the middle of a fight. */
+    if ( victim->in_room == NULL || victim->fighting != NULL
+    ||   IS_SET(victim->in_room->room_flags, ROOM_JAIL)
+    ||   IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
+    ||   IS_SET(ch->in_room->room_flags, ROOM_JAIL)
+    ||   IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
+    ||   ( victim->in_room != ch->in_room && room_is_private( ch->in_room ) ) )
+    {
+      send_to_char("Their spirit cannot find its way to you from there.\n\r",ch);
       return;
     }
 
@@ -4004,8 +4046,11 @@ static int undead_servants( CHAR_DATA *ch )
 
     FOR_EACH_CHARACTER( iter, gch )
     {
-        if ( is_same_group( gch, ch )
-          && IS_NPC( gch ) && gch->pIndexData != NULL
+        /* Bound to this necromancer, whoever leads the group: counted by
+           is_same_group, a necro following anyone counted none and the
+           cap was gone. */
+        if ( IS_NPC( gch ) && gch->master == ch
+          && gch->pIndexData != NULL
           && gch->pIndexData->vnum == MOB_VNUM_ANIMATE )
             count++;
     }
@@ -4098,7 +4143,10 @@ static CHAR_DATA *raise_undead( CHAR_DATA *ch, OBJ_DATA *corpse,
     victim->timer = (sh_int)( corpse != NULL ? timer * 2 : timer );
 
     if ( corpse != NULL )
+    {
+        spill_corpse( corpse );
         extract_obj( corpse );
+    }
 
     /* Named before it is bound: add_follower announces the servant by
        name, and an unnamed one introduces itself as "an undead mob". */
@@ -4461,7 +4509,7 @@ void spell_embalm( int sn, int level, CHAR_DATA *ch, void *vo )
 
   if(part == 0 )
   {
-    send_to_char("There is nothing here that you can embalm.",ch);
+    send_to_char("There is nothing here that you can embalm.\n\r",ch);
     return;
   }
 
@@ -4481,7 +4529,7 @@ void spell_embalm( int sn, int level, CHAR_DATA *ch, void *vo )
     SET_BIT( obj->extra_flags, ITEM_EMBALMED );
   }
   else
-    send_to_char("You can't preserve it any more than it already is!",ch);
+    send_to_char("You can't preserve it any more than it already is!\n\r",ch);
 
   return;
 
@@ -4561,7 +4609,12 @@ void spell_trap_the_soul_fixed(int sn,int level, CHAR_DATA *ch, void *vo)
   bool found=false;
   char buf[MAX_STRING_LENGTH];
 
+      /* is_protected_npc too: the training dummy stands in an arena, which
+         is_safe_spell waves through, and bottling it carried it out of the
+         yard; a quest master or a no-kill mobile bottled is gone, and a
+         unique one comes back twice -- the reset and the bottle. */
       if(!IS_NPC(victim) || is_safe_spell(ch,victim,false) ||
+       is_protected_npc(victim) ||
        saves_spell(level,victim) || IS_SET(victim->act, ACT_AGGRESSIVE) ||
        victim->fighting != NULL)
       {
@@ -4932,6 +4985,15 @@ void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
       return;
     }
 
+    /* Quitting in the pocket room loads the character in Limbo, which
+       allows recall: a way out of a jail cell or a no-recall dungeon. */
+    if ( IS_SET(ch->in_room->room_flags, ROOM_JAIL)
+    ||   IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) )
+    {
+      send_to_char("The walls here hold too tight to fold.\n\r",ch);
+      return;
+    }
+
     pRoomIndex                  = alloc_mem( sizeof(*pRoomIndex) );
     pRoomIndex->people          = NULL;
     pRoomIndex->contents        = NULL;
@@ -5028,6 +5090,15 @@ void spell_haven( int sn, int level, CHAR_DATA *ch, void *vo )
     if(ch->in_room->affected != NULL && ch->in_room->affected->type == EXTRA_DIMENSIONAL)
     {
       send_to_char("You failed.\n\r",ch);
+      return;
+    }
+
+    /* Quitting in the pocket room loads the character in Limbo, which
+       allows recall: a way out of a jail cell or a no-recall dungeon. */
+    if ( IS_SET(ch->in_room->room_flags, ROOM_JAIL)
+    ||   IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) )
+    {
+      send_to_char("The walls here hold too tight to fold.\n\r",ch);
       return;
     }
 
@@ -5192,6 +5263,7 @@ void spell_butcher( int sn, int level, CHAR_DATA *ch, void *vo )
     head->description = str_dup( buf );
     obj_to_room( head, ch->in_room );
     head->timer = 250;
+    spill_corpse( corpse );
     extract_obj( corpse );
     return;
 }

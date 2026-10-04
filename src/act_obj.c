@@ -4007,6 +4007,10 @@ void do_recite( CHAR_DATA *ch, char *argument )
     act( "$n recites $p.", ch, scroll, NULL, TO_ROOM );
     act( "You recite $p.", ch, scroll, NULL, TO_CHAR );
 
+    /* As ZAP and BRANDISH do. Without it a damage scroll could be read as
+       fast as it could be typed (Damage Costs Lag, AGENTS.md). */
+    WAIT_STATE( ch, 2 * PULSE_VIOLENCE );
+
     if (number_percent() >= 20 + get_skill(ch,gsn_scrolls) * 4/5)
     {
 	send_to_char("You mispronounce a syllable.\n\r",ch);

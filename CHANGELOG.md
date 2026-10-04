@@ -21,6 +21,24 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **A staff GRANTPSI always lands by level 21.** The awakening dice still
+  pick the level, but a granted character who misses at 18, 19 and 20 is
+  given psionics at 21 (Alaric missed three rolls). Remort-owed psionics
+  keep the plain odds.
+- **Hermie stands at the pit for six hours after every boot.**
+- **Necromancer review.** Fixed: major globe stacked without limit (it
+  tested the skill number as affect bits); the undead-servant cap vanished
+  once the necro joined a group, and a servant could be killed for its
+  experience; RECITE had no lag; trap the soul could bottle the training
+  dummy, a quest master or a shopkeeper, and Farslay could kill them
+  anywhere; raising or butchering a corpse destroyed the loot inside;
+  recasting a short buff kept a servant alive for ever; rope trick and
+  haven were a way out of jail and no-recall dungeons; raise dead ignored
+  summoning rules; vampiric touch and energy drain healed off the undead;
+  an iron skin sweep stripped innate immunities whenever any affect ended;
+  creation allowed necromancer and monk races that remort refused; the
+  Halloween undead template could be killed; help for DEATH SHROUD and
+  CREATE SKELETON.
 - **What you take back from your own corpse no longer rots.** A corpse put
   a decay timer on every potion and scroll in it (and scuba gear), and the
   timer stayed when you took them back -- the owner's Scroll of Farslay

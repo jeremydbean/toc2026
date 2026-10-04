@@ -559,6 +559,7 @@ int main( int argc, char **argv )
 #if defined(unix)
     control = init_socket( port );
     boot_db( );
+    spellup_boot_place( );
     snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "ROM is ready to rock on port %d.", port );
     log_string( log_buf );
     if ( notify_systemd( "READY=1\nSTATUS=Accepting MUD connections" ) < 0 )
@@ -2703,6 +2704,17 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 		"That's not a class.\n\rWhat IS your class? ", 0 );
 	    return;
 	}
+
+        {
+            const char *refusal = class_race_refusal( iClass, ch->race );
+
+            if ( refusal != NULL )
+            {
+                write_to_buffer( d, refusal, 0 );
+                write_to_buffer( d, "\n\rWhat IS your class? ", 0 );
+                return;
+            }
+        }
 
         ch->class = (sh_int)iClass;
 

@@ -1777,7 +1777,7 @@ void char_update( void )
 			send_to_char( "\n\r", ch );
 		    }
 
-		    if ( IS_NPC(ch) && IS_AFFECTED(ch, AFF_CHARM) )
+		    if ( IS_NPC(ch) && IS_SET(paf->bitvector, AFF_CHARM) )
 		    {
 			ch->timer = 150;
 		    }
@@ -1801,16 +1801,11 @@ void char_update( void )
 		   affect itself now, through APPLY_IMMUNITY, so it lifts
 		   with the ward and needs no sweeping. */
 		affect_remove( ch, paf );
-
-                if(!is_affected(ch, skill_lookup("iron skin") ) )
-                {
-                  if(IS_SET(ch->imm_flags, IMM_BASH) )
-                    REMOVE_BIT(ch->imm_flags, IMM_BASH);
-                  else if( IS_SET(ch->imm_flags, IMM_PIERCE) )
-                    REMOVE_BIT(ch->imm_flags, IMM_PIERCE);
-                  else if( IS_SET(ch->imm_flags, IMM_SLASH) )
-                    REMOVE_BIT(ch->imm_flags, IMM_SLASH);
-                }
+		/* An iron skin sweep stood here, stripping a bash, pierce or
+		   slash immunity from anyone not under iron skin whenever any
+		   affect expired -- a golem's own, a blind wearing off. Iron
+		   skin puts its immunity on the affect (APPLY_IMMUNITY), so
+		   affect_remove lifts it and nothing needs sweeping. */
 
 	    }
 	}

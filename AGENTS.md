@@ -1182,6 +1182,12 @@ through. The exception is **above** the band: there is no level check
 left to wait for, so a grant to a character past 21 lands at once,
 exactly as though the roll had hit.
 
+**A staff GRANTPSI is a promise; a remort's owing is a chance.** The
+dice decide *when* a granted character awakens, but if they miss at 18,
+19 and 20, level 21 pays the grant anyway (owner, 2026-10-04: Alaric was
+granted and missed three rolls). The one-in-three who finish the band
+with nothing are remort-owed characters only.
+
 Four things were wrong here in 2026-09, all of them from the roll
 living in the wrong place -- open-coded as
 `chance = number_range(18,21); if (level == chance && psionic < 1)`

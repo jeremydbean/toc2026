@@ -3166,6 +3166,23 @@ OBJ_DATA *unique_ring_twin( CHAR_DATA *ch, OBJ_DATA *obj, int slot )
  * Red Ring's sanctuary and the Master Sword's haste last exactly as long
  * as they are worn.
  */
+/*
+ * Why this class cannot be taken with this race, or NULL if it can.
+ * HELP REMORT and do_remort said necromancers are elf or human and monks
+ * dwarf or human; character creation never asked, so a new character
+ * could be a saurian necro the remort would then refuse. One rule now.
+ */
+const char *class_race_refusal( int iClass, int race )
+{
+    if ( iClass == CLASS_NECRO
+    &&   race != race_lookup( "elf" ) && race != race_lookup( "human" ) )
+	return "A Necromancer can only have as race Elf or Human.";
+    if ( iClass == CLASS_MONK
+    &&   race != race_lookup( "dwarf" ) && race != race_lookup( "human" ) )
+	return "A Monk can only have as race Dwarf or Human.";
+    return NULL;
+}
+
 bool equipment_grants_affect( const CHAR_DATA *ch, int bit )
 {
     return equipment_affect_source( ch, bit ) != NULL;

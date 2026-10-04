@@ -2149,6 +2149,56 @@ bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim )
     }
 }
 
+/*
+ * The mobiles nothing may remove from the world: shopkeepers, trainers,
+ * healers, the quest master, no-kill mobiles, the Oracle, Hyrule's
+ * people, the training dummy and anyone divinely warded. Spells that take
+ * a mobile out by some route other than a kill -- trap the soul, Farslay
+ * -- ask this; is_safe_spell lets an arena room skip half of it.
+ */
+bool is_protected_npc( CHAR_DATA *victim )
+{
+    if ( victim == NULL || !IS_NPC(victim) || victim->pIndexData == NULL )
+	return false;
+    return victim->pIndexData->pShop != NULL
+        || IS_SET(victim->act, ACT_TRAIN)
+        || IS_SET(victim->act, ACT_PRACTICE)
+        || IS_SET(victim->act, ACT_IS_HEALER)
+        || IS_SET(victim->act, ACT_GAIN)
+        || IS_SET(victim->act, ACT_QUESTM)
+        || IS_SET(victim->act, ACT_NOKILL)
+        || is_oracle_mob(victim)
+        || is_hyrule_bystander(victim)
+        || is_training_dummy(victim)
+        || is_divinely_warded(victim);
+}
+
+/*
+ * Empty a corpse onto the floor of the room it lies in, before a spell
+ * consumes it. Raising or butchering a corpse used to extract it with its
+ * loot inside -- a Hyrule guardian's key and Heart Container among it.
+ */
+void spill_corpse( OBJ_DATA *corpse )
+{
+    OBJ_DATA *obj;
+    OBJ_DATA *obj_next;
+    ROOM_INDEX_DATA *room;
+
+    if ( corpse == NULL )
+	return;
+    room = corpse->in_room;
+    if ( room == NULL && corpse->carried_by != NULL )
+	room = corpse->carried_by->in_room;
+    if ( room == NULL )
+	return;
+    for ( obj = corpse->contains; obj != NULL; obj = obj_next )
+    {
+	obj_next = obj->next_content;
+	obj_from_obj( obj );
+	obj_to_room( obj, room );
+    }
+}
+
 bool is_safe_spell(CHAR_DATA *ch, CHAR_DATA *victim, bool area )
 {
     if ( ch->in_room == NULL || victim->in_room == NULL )
@@ -3253,6 +3303,12 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
      * Dying of mortal wounds or poison doesn't give xp to anyone!
      */
     if ( !IS_NPC(victim) || victim == ch )
+	return;
+
+    /* A charmed servant is no kill: a necromancer raised a vampire for 75
+       mana and killed it for its experience, over and over. */
+    if ( IS_AFFECTED(victim, AFF_CHARM) && victim->master != NULL
+    &&   !IS_NPC(victim->master) )
 	return;
 
     quest_record_kill(ch, victim);
