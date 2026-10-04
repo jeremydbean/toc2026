@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791138027
+LogO 1791138439
 Vers 4
 Prom ~
 Ignoring ~
@@ -14,18 +14,18 @@ PsiGrant 0
 PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
-Levl 33
-Plyd 300165
+Levl 34
+Plyd 300577
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 Scro 22
-Room 16001
-HMV  3615 3626 13386 13407 2649 2681
-NewGold 26
-NewPlat 289
-NewCopp 68
-NewSilv 58
+Room 2401
+HMV  969 3638 12616 13499 1388 2642
+NewGold 48
+NewPlat 298
+NewCopp 125
+NewSilv 102
 BankCP 580356235
 IntTime 1791075484
 IntTotal 8356235
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 1234
+AchKills 1238
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -114,8 +114,8 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  66104
-Act  4261068
+Exp  69556
+Act  4195532
 AfBy 3678908
 AfBy2 4106
 Comm 24576
@@ -143,21 +143,21 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 26
-Trai 6
-Save  7
-Alig  1002
-Hit   56
-Dam   102
-ACs -58 -67 -64 30
+Prac 30
+Trai 7
+Save  1
+Alig  1000
+Hit   57
+Dam   108
+ACs -85 -88 -91 6
 Attr 18 13 13 18 15
-AMod 22 22 25 23 25
+AMod 26 22 25 23 23
 Pass Al3w9zuAlwpyY~
-Titl  the Consumer of Souls~
+Titl  the Lich Lord~
 Pnts 2540
 TSex 1
 LLev 0
-HMVP 641 2599 395
+HMVP 653 2682 402
 Cond 0 -1 -1
 Alias k kick~
 Alias sm smite~
@@ -170,7 +170,7 @@ Alias ow open west~
 Alias sh cast 'shock sphere'~
 Alias bu cast butcher corpse~
 Alias goto cast 'earth travel'~
-Sk 88 'animate parts'
+Sk 89 'animate parts'
 Sk 71 'armor'
 Sk 75 'cancellation'
 Sk 1 'cause light'
@@ -204,14 +204,14 @@ Sk 75 'mind leech'
 Sk 75 'telekinesis'
 Sk 75 'torment'
 Sk 8 'axe'
-Sk 94 'dagger'
+Sk 95 'dagger'
 Sk 6 'flail'
 Sk 75 'mace'
 Sk 3 'polearm'
 Sk 7 'spear'
 Sk 75 'sword'
 Sk 15 'whip'
-Sk 79 'dodge'
+Sk 81 'dodge'
 Sk 77 'meditation'
 Sk 1 'scrolls'
 Sk 1 'wands'
@@ -223,49 +223,49 @@ Gr 'necro enhancement'
 Gr 'necromancy'
 Gr 'necro protective'
 Gr 'necro transportation'
-AffD 'titanic'   0  17  50  16          0          0
-AffD 'titanic'   0  17 2205  14          0          0
-AffD 'titanic'   0  17 10830  12          0          0
-AffD 'titanic'   0  17 2975  13          0          0
-AffD 'empower'   0  17 -100  17          0          0
-AffD 'empower'   0  17  20  19          0          0
-AffD 'empower'   0  17  20  18          0          0
-AffD 'empower'   0  17  15   5          0          0
-AffD 'empower'   0  17  11   2          0          0
-AffD 'empower'   0  17  15   4          0          0
-AffD 'empower'   0  17  15   3          0          0
-AffD 'giant strength'   0  29  15   1          0          0
-AffD 'divine protection'   0  29   0   0          0       4096
-AffD 'fire shield'   0  29   0   0          0          8
-AffD 'protection evil'   0  29   0   0       8192          0
-AffD 'pass door'   0  29   0   0    1048576          0
-AffD 'fly'   0  29   0   0     524288          0
-AffD 'haste'   0  29   4   2    2097152          0
-AffD 'sanctuary'   0  29   0   0        128          0
-AffD 'empower'   0  17   0   0          0          0
-AffD 'power gloves'   0  29  42  19          0          0
-AffD 'detect evil'   0  29   0   0          4          0
-AffD 'detect good'   0  29   0   0          0          2
-AffD 'detect magic'   0  29   0   0         16          0
-AffD 'detect hidden'   0  29   0   0         32          0
-AffD 'detect invis'   0  29   0   0          8          0
-AffD 'infravision'   0  29   0   0        512          0
-AffD 'frenzy'   0  29 110  17          0          0
-AffD 'frenzy'   0  29  11  19          0          0
-AffD 'frenzy'   0  29  11  18          0          0
-AffD 'giant strength'   0  29   4   1          0          0
-AffD 'divine protection'   0  29   0   0          0       4096
-AffD 'fire shield'   0  29   0   0          0          8
-AffD 'protection evil'   0  29   0   0       8192          0
-AffD 'haste'   0  29   4   2    2097152          0
-AffD 'sanctuary'   0  29   0   0        128          0
-AffD 'shield'   8  29 -20  17          0          0
-AffD 'bless'  23  29  -8  24          0          0
-AffD 'bless'   0  29   8  18          0          0
-AffD 'fly'   0  29   0   0     524288          0
-AffD 'pass door'   0  29   0   0    1048576          0
-AffD 'armor'   0  29 -20  17          0          0
-AffD 'shroud'   0  29 -35  17          0          0
+AffD 'titanic'   0  11  50  16          0          0
+AffD 'titanic'   0  11 2205  14          0          0
+AffD 'titanic'   0  11 10830  12          0          0
+AffD 'titanic'   0  11 2975  13          0          0
+AffD 'empower'   0  11 -100  17          0          0
+AffD 'empower'   0  11  20  19          0          0
+AffD 'empower'   0  11  20  18          0          0
+AffD 'empower'   0  11  15   5          0          0
+AffD 'empower'   0  11  11   2          0          0
+AffD 'empower'   0  11  15   4          0          0
+AffD 'empower'   0  11  15   3          0          0
+AffD 'giant strength'   0  23  15   1          0          0
+AffD 'divine protection'   0  23   0   0          0       4096
+AffD 'fire shield'   0  23   0   0          0          8
+AffD 'protection evil'   0  23   0   0       8192          0
+AffD 'pass door'   0  23   0   0    1048576          0
+AffD 'fly'   0  23   0   0     524288          0
+AffD 'haste'   0  23   4   2    2097152          0
+AffD 'sanctuary'   0  23   0   0        128          0
+AffD 'empower'   0  11   0   0          0          0
+AffD 'power gloves'   0  23  42  19          0          0
+AffD 'detect evil'   0  23   0   0          4          0
+AffD 'detect good'   0  23   0   0          0          2
+AffD 'detect magic'   0  23   0   0         16          0
+AffD 'detect hidden'   0  23   0   0         32          0
+AffD 'detect invis'   0  23   0   0          8          0
+AffD 'infravision'   0  23   0   0        512          0
+AffD 'frenzy'   0  23 110  17          0          0
+AffD 'frenzy'   0  23  11  19          0          0
+AffD 'frenzy'   0  23  11  18          0          0
+AffD 'giant strength'   0  23   4   1          0          0
+AffD 'divine protection'   0  23   0   0          0       4096
+AffD 'fire shield'   0  23   0   0          0          8
+AffD 'protection evil'   0  23   0   0       8192          0
+AffD 'haste'   0  23   4   2    2097152          0
+AffD 'sanctuary'   0  23   0   0        128          0
+AffD 'shield'   6  23 -20  17          0          0
+AffD 'bless'  22  23  -8  24          0          0
+AffD 'bless'   0  23   8  18          0          0
+AffD 'fly'   0  23   0   0     524288          0
+AffD 'pass door'   0  23   0   0    1048576          0
+AffD 'armor'   0  23 -20  17          0          0
+AffD 'shroud'   0  23 -35  17          0          0
 End
 
 #O
@@ -435,7 +435,7 @@ Vnum 3715
 Nest 0
 Wear 17
 Cost 0
-Cond 9
+Cond 4
 Repd 1
 End
 
@@ -668,7 +668,7 @@ Nest 0
 Wear 1
 Lev  7
 Cost 36000
-Cond 63
+Cond 58
 Repd 0
 End
 
@@ -678,7 +678,7 @@ Nest 0
 Wear 11
 Lev  9
 Cost 49000
-Cond 95
+Cond 91
 Repd 0
 End
 
@@ -688,20 +688,9 @@ Nest 0
 Wear 2
 Lev  7
 Cost 36000
-Cond 88
+Cond 86
 Repd 0
 Affect -1 7 -1 3 23 0 0
-End
-
-#O
-Vnum 10027
-Nest 0
-Wear 5
-Lev  14
-Cost 2100000
-Cond 100
-Repd 0
-Val  5 5 4 0 0
 End
 
 #O
@@ -734,7 +723,7 @@ Nest 0
 Wear 14
 Lev  7
 Cost 33000
-Cond 89
+Cond 87
 Repd 0
 End
 
@@ -746,20 +735,6 @@ Lev  22
 Cost 50600000
 Cond 100
 Repd 0
-End
-
-#O
-Vnum 10042
-Nest 0
-ExtF 2101249
-Wear 16
-Lev  23
-Cost 13000000
-Cond 100
-Repd 0
-Affect -1 23 -1 -9 12 0 0
-Affect -1 23 -1 -4 1 0 0
-Affect -1 23 -1 31 14 0 0
 End
 
 #O
@@ -906,9 +881,9 @@ Vnum 3716
 Nest 0
 Wear 0
 Cost 2
-Cond 87
+Cond 84
 Repd 0
-Val  0 0 20 0 0
+Val  0 0 14 0 0
 End
 
 #O
@@ -937,7 +912,7 @@ Nest 0
 ShD  A surgically removed head~
 Desc A surgically removed head grins at Alaric~
 Wear -1
-Time 212
+Time 205
 Cost 0
 Cond 25
 Repd 0
@@ -949,7 +924,7 @@ Nest 0
 ShD  A surgically removed head~
 Desc A surgically removed head grins at Alaric~
 Wear -1
-Time 214
+Time 207
 Cost 0
 Cond 25
 Repd 0
@@ -961,103 +936,7 @@ Nest 0
 ShD  A surgically removed head~
 Desc A surgically removed head grins at Alaric~
 Wear -1
-Time 215
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 14
-Nest 0
-ShD  A surgically removed arm~
-Desc A surgically removed arm waits to serve Alaric~
-Wear -1
-Time 250
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 14
-Nest 0
-ShD  A surgically removed arm~
-Desc A surgically removed arm waits to serve Alaric~
-Wear -1
-Time 250
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 14
-Nest 0
-ShD  A surgically removed arm~
-Desc A surgically removed arm waits to serve Alaric~
-Wear -1
-Time 246
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 14
-Nest 0
-ShD  A surgically removed arm~
-Desc A surgically removed arm waits to serve Alaric~
-Wear -1
-Time 246
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 14
-Nest 0
-ShD  A surgically removed arm~
-Desc A surgically removed arm waits to serve Alaric~
-Wear -1
-Time 246
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 14
-Nest 0
-ShD  A surgically removed arm~
-Desc A surgically removed arm waits to serve Alaric~
-Wear -1
-Time 246
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 15
-Nest 0
-ShD  A surgically removed leg~
-Desc A surgically removed leg waits to serve Alaric~
-Wear -1
-Time 250
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 15
-Nest 0
-ShD  A surgically removed leg~
-Desc A surgically removed leg waits to serve Alaric~
-Wear -1
-Time 250
+Time 208
 Cost 0
 Cond 25
 Repd 0
@@ -1071,6 +950,29 @@ Lev  25
 Cost 250000000
 Cond 100
 Repd 0
+End
+
+#O
+Vnum 10049
+Nest 0
+ExtF 2104641
+Wear 16
+Lev  32
+Cost 23000000
+Cond 100
+Repd 0
+Affect -1 32 -1 -2 5 0 0
+End
+
+#O
+Vnum 10048
+Nest 0
+Wear 5
+Lev  32
+Cost 22000000
+Cond 100
+Repd 0
+Affect -1 32 -1 -15 14 0 0
 End
 
 #STASH
@@ -1932,25 +1834,36 @@ Affect -1 33 -1 -1 23 0 0
 End
 
 #O
-Vnum 10048
+Vnum 10042
 Nest 0
 Wear -1
-Lev  32
-Cost 22000000
+Lev  23
+Cost 13000000
 Cond 100
 Repd 0
-Affect -1 32 -1 -15 14 0 0
+Affect -1 23 -1 -9 12 0 0
+Affect -1 23 -1 -4 1 0 0
+Affect -1 23 -1 31 14 0 0
 End
 
 #O
-Vnum 10049
+Vnum 10027
 Nest 0
 Wear -1
-Lev  32
-Cost 23000000
+Lev  14
+Cost 2100000
 Cond 100
 Repd 0
-Affect -1 32 -1 -2 5 0 0
+Val  5 5 4 0 0
+End
+
+#O
+Vnum 29926
+Nest 0
+Wear -1
+Cost 5000000
+Cond 100
+Repd 0
 End
 
 #END

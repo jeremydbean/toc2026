@@ -42184,3 +42184,88 @@ Sun Oct  4 18:22:08 2026 :: Log Alaric [0]: moved to 16005 (Plankway to the Roya
 Sun Oct  4 18:22:09 2026 :: Log Alaric [16005]: drop all.leg
 Sun Oct  4 18:22:14 2026 :: Log Alaric [16005]: drop all.arm
 Sun Oct  4 18:22:17 2026 :: Log Alaric [16005]: kill buc
+Sun Oct  4 18:22:22 2026 :: Log Alaric [16005]: c anim
+Sun Oct  4 18:22:31 2026 :: Log Alaric [16005]: c anim
+Sun Oct  4 18:22:34 2026 :: Log Alaric [16005]: c anim
+Sun Oct  4 18:22:37 2026 :: Log Alaric [16005]: c anim
+Sun Oct  4 18:22:40 2026 :: Log Alaric [16005]: c anim
+Sun Oct  4 18:23:11 2026 :: Log Alaric [16005]: who
+Sun Oct  4 18:23:12 2026 :: Log Alaric [16005]: c anim
+Sun Oct  4 18:23:17 2026 :: Log Alaric [16005]: c anim
+Sun Oct  4 18:23:23 2026 :: Log Alaric [16005]: c anim
+Sun Oct  4 18:23:23 2026 :: Log Alaric [16005]: level 33 -> 34 (earned)
+Sun Oct  4 18:23:23 2026 :: Alaric has achieved level 34!
+Sun Oct  4 18:23:32 2026 :: Log Alaric [16005]: bu
+Sun Oct  4 18:23:35 2026 :: Log Alaric [16005]: get all.arm
+Sun Oct  4 18:23:35 2026 :: Log Alaric [16005]: get all.leg
+Sun Oct  4 18:23:35 2026 :: Log Alaric [16005]: nos
+Sun Oct  4 18:23:38 2026 :: Log Alaric [16005]: c 'remove curse'
+Sun Oct  4 18:23:47 2026 :: Log Alaric [16005]: stash put scal
+Sun Oct  4 18:23:48 2026 :: Log Alaric [16005]: stash
+Sun Oct  4 18:23:52 2026 :: Log Alaric [16005]: recal
+Sun Oct  4 18:23:52 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 18:23:53 2026 :: Log Alaric [4207]: w
+Sun Oct  4 18:23:53 2026 :: Log Alaric [0]: moved to 4208 (Altar of the Temple of Devota.)
+Sun Oct  4 18:23:56 2026 :: Sock.sinaddr:  34.198.201.66
+Sun Oct  4 18:23:56 2026 :: Log Alaric [4208]: stash put scalp
+Sun Oct  4 18:23:56 2026 :: EOF encountered on read.
+Sun Oct  4 18:23:58 2026 :: Log Alaric [4208]: eq
+Sun Oct  4 18:23:59 2026 :: Log Alaric [4208]: rem scal
+Sun Oct  4 18:24:01 2026 :: Log Alaric [4208]: stash put scalp
+Sun Oct  4 18:24:01 2026 :: Log Alaric [4208]: stashed a Sharp scalpel (vnum 10042)
+Sun Oct  4 18:24:07 2026 :: Log Alaric [4208]: stash get dagger
+Sun Oct  4 18:24:07 2026 :: Log Alaric [4208]: withdrew a Silver star-hilted dagger (vnum 10049) from the stash
+Sun Oct  4 18:24:11 2026 :: Log Alaric [4208]: c bew da
+Sun Oct  4 18:24:16 2026 :: Log Alaric [4208]: wear da
+Sun Oct  4 18:24:18 2026 :: Log Alaric [4208]: stash get robe
+Sun Oct  4 18:24:18 2026 :: Log Alaric [4208]: withdrew some Black velvet robes (vnum 10048) from the stash
+Sun Oct  4 18:24:21 2026 :: Log Alaric [4208]: comp robe
+Sun Oct  4 18:24:25 2026 :: Log Alaric [4208]: wear robe
+Sun Oct  4 18:24:27 2026 :: Sock.sinaddr:  40.124.123.248
+Sun Oct  4 18:24:29 2026 :: Log Alaric [4208]: stash put roman
+Sun Oct  4 18:24:29 2026 :: Log Alaric [4208]: stashed a Roman-style breastplate (vnum 10027)
+Sun Oct  4 18:24:33 2026 :: Log Alaric [4208]: i
+Sun Oct  4 18:24:36 2026 :: Log Alaric [4208]: r e 4
+Sun Oct  4 18:24:36 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 18:24:36 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sun Oct  4 18:24:36 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sun Oct  4 18:24:36 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sun Oct  4 18:24:36 2026 :: Log Alaric [2427]: n
+Sun Oct  4 18:24:36 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sun Oct  4 18:24:37 2026 :: Log Alaric [2404]: n
+Sun Oct  4 18:24:37 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sun Oct  4 18:24:37 2026 :: Sock.sinaddr:  40.124.123.248
+Sun Oct  4 18:24:37 2026 :: EOF encountered on read.
+Sun Oct  4 18:24:43 2026 :: Log Alaric [2401]: drop all.leg
+Sun Oct  4 18:24:44 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:24:50 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:24:54 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:24:59 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:25:03 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:25:08 2026 :: Log Alaric [2401]: drop all.arm
+Sun Oct  4 18:25:09 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:25:14 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:25:20 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:25:25 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:25:28 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:25:36 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:25:42 2026 :: Log Alaric [2401]: who
+Sun Oct  4 18:25:42 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:25:47 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:25:53 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:26:01 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:26:07 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:26:11 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:26:16 2026 :: Log Alaric [2401]: l
+Sun Oct  4 18:26:17 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:26:24 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:26:29 2026 :: Log Alaric [2401]: c anim
+Sun Oct  4 18:26:36 2026 :: Log Alaric [2401]: l
+Sun Oct  4 18:26:36 2026 :: Log Alaric [2401]: sh
+Sun Oct  4 18:26:43 2026 :: Log Alaric [2401]: sh
+Sun Oct  4 18:26:50 2026 :: Log Alaric [2401]: sh
+Sun Oct  4 18:26:58 2026 :: Log Alaric [2401]: sh
+Sun Oct  4 18:27:08 2026 :: Log Alaric [2401]: l i cor
+Sun Oct  4 18:27:13 2026 :: Log Alaric [2401]: get cake cor
+Sun Oct  4 18:27:19 2026 :: Log Alaric [2401]: stash put cake
+Sun Oct  4 18:27:19 2026 :: Log Alaric [2401]: stashed a piece of shadowed horseman's cake (vnum 29926)
