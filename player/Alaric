@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791130402
+LogO 1791130852
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 27
-Plyd 292669
+Plyd 293111
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 Scro 22
-Room 4210
-HMV  566 583 1857 2111 233 434
+Room 4209
+HMV  583 583 739 2111 434 434
 NewGold 262
 NewPlat 66
 NewCopp 3495
@@ -99,12 +99,12 @@ Achv visit-underdark 1790903709
 Achv visit-new-thalos 1790818086
 Achv visit-oz 1791127353
 Achv visit-korzath-fortress 1790899622
-LastOut  1791081985
-SesLogin 1791081630
-SesDur   355
-SesExpG  1272
-SesLvlG  1
-SesKill  5
+LastOut  1791130852
+SesLogin 1791130625
+SesDur   227
+SesExpG  2
+SesLvlG  0
+SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
@@ -114,9 +114,9 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  55571
+Exp  55573
 Act  4261068
-AfBy 1573376
+AfBy 1572864
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -141,13 +141,13 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  4
+Pos  8
 Prac 17
 Save  15
 Alig  1000
 Hit   17
 Dam   25
-ACs -58 -69 -62 20
+ACs -38 -49 -42 40
 Attr 18 13 13 18 15
 AMod 3 8 11 4 10
 Pass Al3w9zuAlwpyY~
@@ -168,7 +168,7 @@ Alias ow open west~
 Alias sh cast 'shock sphere'~
 Alias bu cast butcher corpse~
 Alias goto cast 'earth travel'~
-Sk 79 'animate parts'
+Sk 80 'animate parts'
 Sk 71 'armor'
 Sk 75 'cancellation'
 Sk 1 'cause light'
@@ -221,12 +221,10 @@ Gr 'necro enhancement'
 Gr 'necromancy'
 Gr 'necro protective'
 Gr 'necro transportation'
-AffD 'pass door'   0  12   0   0    1048576          0
-AffD 'shield'  19  26 -20  17          0          0
-AffD 'fly'   0  13   0   0     524288          0
-AffD 'shroud'   0  10 -35  17          0          0
-AffD 'armor'   0   6 -20  17          0          0
-AffD 'infravision'   0   2   0   0        512          0
+AffD 'shroud'   0   3 -35  17          0          0
+AffD 'fly'   0   6   0   0     524288          0
+AffD 'shield'  18  19 -20  17          0          0
+AffD 'pass door'   0   5   0   0    1048576          0
 End
 
 #O
@@ -771,9 +769,9 @@ Lev  23
 Cost 13000000
 Cond 100
 Repd 0
-Affect -1 23 -1 31 14 0 0
-Affect -1 23 -1 -4 1 0 0
 Affect -1 23 -1 -9 12 0 0
+Affect -1 23 -1 -4 1 0 0
+Affect -1 23 -1 31 14 0 0
 End
 
 #O
@@ -922,7 +920,7 @@ Wear 0
 Cost 2
 Cond 92
 Repd 0
-Val  0 0 147 0 0
+Val  0 0 140 0 0
 End
 
 #O
@@ -941,7 +939,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 225
+Time 217
 Cost 0
 Cond 25
 Repd 0
@@ -953,7 +951,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 225
+Time 217
 Cost 0
 Cond 25
 Repd 0
@@ -965,7 +963,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 225
+Time 217
 Cost 0
 Cond 25
 Repd 0
@@ -977,7 +975,7 @@ Nest 0
 ShD  A surgically removed head~
 Desc A surgically removed head grins at Alaric~
 Wear -1
-Time 243
+Time 235
 Cost 0
 Cond 25
 Repd 0
@@ -989,7 +987,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 244
+Time 236
 Cost 0
 Cond 25
 Repd 0
@@ -1001,7 +999,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 244
+Time 236
 Cost 0
 Cond 25
 Repd 0
@@ -1013,7 +1011,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 215
+Time 207
 Cost 0
 Cond 25
 Repd 0
@@ -1025,7 +1023,7 @@ Nest 0
 ShD  A surgically removed head~
 Desc A surgically removed head grins at Alaric~
 Wear -1
-Time 244
+Time 236
 Cost 0
 Cond 25
 Repd 0
@@ -1037,7 +1035,7 @@ Nest 0
 ShD  A surgically removed head~
 Desc A surgically removed head grins at Alaric~
 Wear -1
-Time 239
+Time 231
 Cost 0
 Cond 25
 Repd 0
@@ -1049,7 +1047,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 245
+Time 237
 Cost 0
 Cond 25
 Repd 0
@@ -1061,7 +1059,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 245
+Time 237
 Cost 0
 Cond 25
 Repd 0
@@ -1083,7 +1081,7 @@ Nest 0
 ShD  A surgically removed head~
 Desc A surgically removed head grins at Alaric~
 Wear -1
-Time 248
+Time 240
 Cost 0
 Cond 25
 Repd 0
@@ -1095,7 +1093,7 @@ Nest 0
 ShD  A surgically removed head~
 Desc A surgically removed head grins at Alaric~
 Wear -1
-Time 248
+Time 240
 Cost 0
 Cond 25
 Repd 0
@@ -1107,7 +1105,7 @@ Nest 0
 ShD  A surgically removed head~
 Desc A surgically removed head grins at Alaric~
 Wear -1
-Time 249
+Time 241
 Cost 0
 Cond 25
 Repd 0
@@ -1216,8 +1214,8 @@ Lev  52
 Cost 23680000
 Cond 100
 Repd 0
-Affect -1 52 -1 2 24 0 0
 Affect -1 52 -1 3 22 0 0
+Affect -1 52 -1 2 24 0 0
 End
 
 #O
@@ -1263,8 +1261,8 @@ Lev  51
 Cost 50000000
 Cond 99
 Repd 0
-Affect -1 51 -1 4 23 0 0
 Affect -1 51 -1 20 14 0 0
+Affect -1 51 -1 4 23 0 0
 End
 
 #O
@@ -1372,8 +1370,8 @@ Lev  52
 Cost 25600000
 Cond 100
 Repd 0
-Affect -1 52 -1 -1 13 0 0
 Affect -1 52 -1 -9 14 0 0
+Affect -1 52 -1 -1 13 0 0
 End
 
 #O
@@ -1460,9 +1458,9 @@ Lev  29
 Cost 30000000
 Cond 100
 Repd 0
-Affect -1 29 -1 -4 2 0 0
-Affect -1 29 -1 -1 1 0 0
 Affect -1 29 -1 -4 1 0 0
+Affect -1 29 -1 -1 1 0 0
+Affect -1 29 -1 -4 2 0 0
 End
 
 #O
@@ -1494,8 +1492,8 @@ Lev  50
 Cost 20000000
 Cond 91
 Repd 0
-Affect -1 50 -1 -3 2 0 0
 Affect -1 50 -1 -17 14 0 0
+Affect -1 50 -1 -3 2 0 0
 End
 
 #O
@@ -1862,10 +1860,10 @@ Lev  32
 Cost 23000000
 Cond 100
 Repd 1
-Affect -1 32 -1 -1 5 0 0
-Affect -1 32 -1 -13 12 0 0
-Affect -1 32 -1 -15 13 0 0
 Affect -1 32 -1 -3 22 0 0
+Affect -1 32 -1 -15 13 0 0
+Affect -1 32 -1 -13 12 0 0
+Affect -1 32 -1 -1 5 0 0
 End
 
 #O
