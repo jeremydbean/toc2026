@@ -43,7 +43,11 @@ SOCIAL_SECOND_CHAR *social_table_index[SOCIALTABLE_FIRST_HASH];
 /*
  * Log-all switch.
  */
-bool				fLogAll		= false;
+/* Every player is watched by default (owner, 2026-10-04): the world
+   changed a great deal at once, and the watch log -- commands with the
+   room, every move, coin, level and death -- is how its bugs are
+   found. LOG ALL turns it off and on. player_is_watched() is the test. */
+bool				fLogAll		= true;
 
 
 
@@ -532,13 +536,43 @@ bool check_specials(CHAR_DATA *ch, DO_FUN *cmd, char *arg)
  * Costs one bit test for everybody else, which is why it can sit in
  * char_to_room.
  */
+/*
+ * Whether this character's play is written to the log: LOG <name> sets
+ * PLR_LOG on one, and LOG ALL (fLogAll, on by default) covers everybody.
+ */
+bool player_is_watched( CHAR_DATA *ch )
+{
+    return ch != NULL && !IS_NPC(ch)
+        && ( IS_SET(ch->act, PLR_LOG) || fLogAll );
+}
+
+/*
+ * The words of a private message. log/ is published, and a tell was said
+ * to one person: a character watched only because everybody is records
+ * that a tell was sent and not what it said. One flagged by name with
+ * LOG <name> is under investigation and is recorded in full.
+ */
+static bool command_is_private( const char *name )
+{
+    static const char * const private_cmds[] =
+    { "tell", "reply", "gtell", ";", NULL };
+    int i;
+
+    if ( name == NULL )
+        return FALSE;
+    for ( i = 0; private_cmds[i] != NULL; i++ )
+        if ( !str_cmp( name, private_cmds[i] ) )
+            return TRUE;
+    return FALSE;
+}
+
 void watch_log( CHAR_DATA *ch, const char *fmt, ... )
 {
     char body[2 * MAX_INPUT_LENGTH];
     char line[2 * MAX_INPUT_LENGTH];
     va_list args;
 
-    if ( ch == NULL || IS_NPC(ch) || !IS_SET(ch->act, PLR_LOG) )
+    if ( !player_is_watched( ch ) )
         return;
 
     va_start( args, fmt );
@@ -880,7 +914,7 @@ void interpret( CHAR_DATA *ch, char *argument )
      * password is still never written, but the fact that one was
      * changed is.
      */
-    watched = ( !IS_NPC(ch) && IS_SET(ch->act, PLR_LOG) );
+    watched = player_is_watched( ch );
 
     if ( found )
     {
@@ -894,7 +928,9 @@ void interpret( CHAR_DATA *ch, char *argument )
          * buries the handful of lines where something really was.
          */
         bool quiet  = ( cmd_table[cmd].log == LOG_NEVER );
-        bool secret = command_hides_arguments( cmd_table[cmd].name );
+        bool secret = command_hides_arguments( cmd_table[cmd].name )
+                   || ( !IS_SET(ch->act, PLR_LOG)
+                        && command_is_private( cmd_table[cmd].name ) );
 
         if ( watched )
         {

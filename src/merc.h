@@ -2641,6 +2641,7 @@ extern          HUNTER_DATA             hunter_list     [];
 extern          char                    bug_buf         [];
 extern          time_t                  current_time;
 extern          bool                    fLogAll;
+bool    player_is_watched       ( CHAR_DATA *ch );
 extern          bool                    merc_down;
 extern          char                   *target_name;
 extern          FILE * fpReserve;

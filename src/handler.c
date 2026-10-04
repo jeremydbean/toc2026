@@ -1645,7 +1645,7 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
     /* Before the move, so the line reads "from here to there". A
        portal, a teleport or a recall ring moves a character with no
        command to show for it. */
-    if ( pRoomIndex != NULL && !IS_NPC(ch) && IS_SET(ch->act, PLR_LOG) )
+    if ( pRoomIndex != NULL && player_is_watched( ch ) )
         watch_log( ch, "moved to %d (%s)", pRoomIndex->vnum,
             pRoomIndex->name != NULL ? pRoomIndex->name : "?" );
 

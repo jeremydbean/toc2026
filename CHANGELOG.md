@@ -21,6 +21,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **Every player is watched by default while the changes settle.** LOG ALL
+  is on from boot, and it now means the full watch log for everyone --
+  commands with the room, every move, coin change, level and death -- not
+  bare commands. A tell is recorded by name only unless the character was
+  flagged with LOG <name>, because log/ is published. LOG ALL turns it off;
+  turning it either way is logged. Level lines say "earned" or "staff
+  advance"; an ordinary level read "(restore)", which looked like staff
+  intervention on a watched character.
 - **Remorting under a big spell no longer wrecks the character.** Alaric
   remorted while empowered and titanic and came out at -5515 hit points,
   -6945 mana and -1385 moves: the remort reset the maxima and only then

@@ -315,7 +315,7 @@ void show_backup( CHAR_DATA *ch, char *argument )
 void advance_level( CHAR_DATA *ch, bool is_advance )
 {
     watch_log( ch, "level %d -> %d (%s)", ch->level - 1, ch->level,
-        is_advance ? "advance" : "restore" );
+        is_advance ? "staff advance" : "earned" );
 
     char buf[MAX_STRING_LENGTH];
     int add_hp;

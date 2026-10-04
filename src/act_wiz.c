@@ -3820,13 +3820,16 @@ void do_log( CHAR_DATA *ch, char *argument )
 	if ( fLogAll )
 	{
 	    fLogAll = false;
-	    send_to_char( "Log ALL off.\n\r", ch );
+	    send_to_char( "Log ALL off: only characters flagged with LOG <name> are watched.\n\r", ch );
 	}
 	else
 	{
 	    fLogAll = true;
-	    send_to_char( "Log ALL on.\n\r", ch );
+	    send_to_char( "Log ALL on: every player is watched (tells by name only).\n\r", ch );
 	}
+	snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s turned LOG ALL %s.",
+	    ch->name, fLogAll ? "on" : "off" );
+	log_string( log_buf );
 	return;
     }
 

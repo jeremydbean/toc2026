@@ -1052,6 +1052,14 @@ Recording refused input means a password typed at the wrong moment can
 reach the log. That is the cost of the feature doing its job; the logs
 are already handled as sensitive.
 
+**Every player is watched by default** (owner, 2026-10-04, while the
+changes settle): `fLogAll` starts true, and `player_is_watched()` --
+flagged by name *or* covered by LOG ALL -- is the one test, used by
+`interpret()`, `watch_log` and `char_to_room`. For a character watched
+only by the default, `command_is_private()` withholds the words of
+TELL, REPLY and GTELL: `log/` is published, and AGENTS' rule on private
+messages holds. One flagged with LOG <name> is recorded in full.
+
 **`watch_log(ch, fmt, ...)`** is the hook for everything a command log
 cannot see. It returns immediately unless that character carries
 `PLR_LOG`, which is one bit test, which is why it can sit somewhere as

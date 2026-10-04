@@ -173,6 +173,46 @@ class WatchedPlayerLogTests(unittest.TestCase):
         # a teleport or a recall ring.
         self.assertIn("moved to", text)
 
+    def test_every_player_is_watched_by_default(self) -> None:
+        """LOG ALL is on from boot (owner, 2026-10-04): every player gets
+        the watch log while the changes settle. A tell is recorded by name
+        only unless the character was flagged with LOG <name>, because
+        log/ is published; LOG ALL turns the default off."""
+        mud = LiveMud()
+        mud.__enter__()
+        self.addCleanup(mud.__exit__, None, None, None)
+
+        for name, fields in (("Zplain", {"Levl": 10}), ("Zheeds", {"Levl": 10}),
+                             ("Zwarden", {"Levl": 70})):
+            with mud.connect(timeout=120) as client:
+                create_character(client, name, PASSWORD)
+                client.drain(1.0)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            patch_player_file(mud, name, Room=TEMPLE, **fields)
+
+        with mud.connect(timeout=120) as plain, mud.connect(timeout=120) as heeds, \
+                mud.connect(timeout=120) as warden:
+            login(plain, "Zplain", PASSWORD)
+            login(heeds, "Zheeds", PASSWORD)
+            login(warden, "Zwarden", PASSWORD)
+            run(plain, "tell zheeds bluebirdphrase", 1.5)
+            run(plain, "north", 1.2)
+            run(warden, "log zplain", 1.5)            # flagged by name now
+            run(plain, "tell zheeds namedphrase", 1.5)
+            run(warden, "log all", 1.5)               # the default, off
+            run(heeds, "zzunwatchedcommand", 1.5)
+            heeds.drain(1.0)
+
+        text = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
+        self.assertRegex(text, r"Log Zplain \[\d+\]: north")
+        self.assertIn("moved to", text)
+        self.assertIn("Log Zplain [4207]: tell (arguments withheld)", text)
+        self.assertNotIn("bluebirdphrase", text, "a tell's words reached the log")
+        self.assertIn("namedphrase", text, "a flagged character is recorded in full")
+        self.assertIn("Zwarden turned LOG ALL off.", text)
+        self.assertNotIn("zzunwatchedcommand", text)
+
 
 class LoggingSourceTests(unittest.TestCase):
     @classmethod
@@ -223,7 +263,9 @@ class LoggingSourceTests(unittest.TestCase):
         """The whole reason LOG_NEVER blanks the line. Watching a player
         must not defeat it: the command is named, the arguments are not."""
         self.assertIn("arguments withheld", self.interp)
-        block = self.interp.split("watched = ( !IS_NPC(ch)", 1)[1][:2000]
+        # Watched now means flagged by name or covered by LOG ALL, which is
+        # on by default; the password rule holds either way.
+        block = self.interp.split("watched = player_is_watched( ch );", 1)[1][:2000]
         self.assertIn("secret ? cmd_table[cmd].name : logline", block)
         self.assertIn("logline[0] = '\\0'", block)
 
