@@ -39,3 +39,12 @@
 1790992581	8	Q	Alaric	What advantages does a player gain from having a high dexterity stat?
 1790992586	8	A	Alaric	High dexterity improves your armor class, attack speed, and success with skills like dodge and parry; thieves especially benefit, but warriors like you gain defensive edge too.
 1790992610	8	DONE	Alaric	done
+1791077842	2423	SUMMON	Alaric	
+1791077866	8	Q	Alaric	Where is the Necro guild located? Can you give me directions from Center Oak Tree?
+1791077872	8	A	Alaric	The live context shows no necro guild giver directions anywhere in the world right now, so I cannot see where it is; use `walkto` to search available routes or ask an immortal.
+1791077882	8	Q	Alaric	ydone
+1791077885	8	DONE	Alaric	done
+1791077906	1	SUMMON	Killuminati	
+1791077908	8	OFFTOPIC	Alaric	
+1791077915	8	Q	Killuminati	i need directions to the necro trainer from center oak tree square
+1791077920	8	A	Killuminati	Use `walkto` to list all trainers and areas with routes, or `walk necromancer` if your client supports it; from the reference I have, I cannot see a published route to a necromancer trainer.
