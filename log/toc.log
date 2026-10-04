@@ -39113,3 +39113,141 @@ Sun Oct  4 15:15:16 2026 :: Log Alaric [29060]: wake
 Sun Oct  4 15:15:19 2026 :: Log Alaric [29060]: c arm
 Sun Oct  4 15:15:23 2026 :: Log Alaric [29060]: c arm
 Sun Oct  4 15:15:28 2026 :: Log Alaric [29060]: c de
+Sun Oct  4 15:15:32 2026 :: Log Alaric [29060]: c de
+Sun Oct  4 15:15:38 2026 :: Log Alaric [29060]: c pass
+Sun Oct  4 15:15:42 2026 :: Log Alaric [29060]: c pass
+Sun Oct  4 15:15:47 2026 :: Log Alaric [29060]: s
+Sun Oct  4 15:15:47 2026 :: Log Alaric [29060]: s
+Sun Oct  4 15:15:48 2026 :: Log Alaric [29060]: e
+Sun Oct  4 15:15:48 2026 :: Log Alaric [0]: moved to 29061 (Corridor)
+Sun Oct  4 15:15:48 2026 :: Log Alaric [29061]: e
+Sun Oct  4 15:15:48 2026 :: Log Alaric [29061]: n
+Sun Oct  4 15:15:48 2026 :: Log Alaric [29061]: n
+Sun Oct  4 15:15:50 2026 :: Log Alaric [29061]: r e 27
+Sun Oct  4 15:15:52 2026 :: Log Alaric [29061]: r n 14
+Sun Oct  4 15:15:53 2026 :: Log Alaric [29061]: wake
+Sun Oct  4 15:15:53 2026 :: Log Alaric [29061]: l
+Sun Oct  4 15:15:55 2026 :: Log Alaric [29061]: e
+Sun Oct  4 15:15:56 2026 :: Log Alaric [29061]: w
+Sun Oct  4 15:15:56 2026 :: Log Alaric [0]: moved to 29060 (Corridor)
+Sun Oct  4 15:15:59 2026 :: Sock.sinaddr:  52.15.147.27
+Sun Oct  4 15:15:59 2026 :: EOF encountered on read.
+Sun Oct  4 15:16:09 2026 :: Log Alaric [29060]: sh ch
+Sun Oct  4 15:16:22 2026 :: Log Alaric [29060]: sh ch
+Sun Oct  4 15:16:29 2026 :: Log Alaric [29060]: sh ch
+Sun Oct  4 15:16:34 2026 :: Log Alaric [29060]: sh ch
+Sun Oct  4 15:16:41 2026 :: Log Alaric [29060]: sh ch
+Sun Oct  4 15:16:48 2026 :: Log Alaric [29060]: gr
+Sun Oct  4 15:16:52 2026 :: Log Alaric [29060]: l
+Sun Oct  4 15:16:53 2026 :: Log Alaric [29060]: af
+Sun Oct  4 15:16:55 2026 :: Log Alaric [29060]: score
+Sun Oct  4 15:17:00 2026 :: Log Alaric [29060]: sleep
+Sun Oct  4 15:18:55 2026 :: Log Alaric [29060]: wake
+Sun Oct  4 15:18:55 2026 :: Log Alaric [29060]: c de
+Sun Oct  4 15:19:01 2026 :: Log Alaric [29060]: e
+Sun Oct  4 15:19:01 2026 :: Log Alaric [0]: moved to 29061 (Corridor)
+Sun Oct  4 15:19:04 2026 :: Log Alaric [29061]: sh gu
+Sun Oct  4 15:19:09 2026 :: Log Alaric [29061]: sh
+Sun Oct  4 15:19:18 2026 :: Log Alaric [29061]: sh
+Sun Oct  4 15:19:29 2026 :: Log Alaric [29061]: sh
+Sun Oct  4 15:19:29 2026 :: Log Alaric [29061]: level 26 -> 27 (earned)
+Sun Oct  4 15:19:29 2026 :: Alaric has achieved level 27!
+Sun Oct  4 15:19:35 2026 :: Log Alaric [29061]: s
+Sun Oct  4 15:19:36 2026 :: Log Alaric [29061]: flee
+Sun Oct  4 15:19:37 2026 :: Log Alaric [29061]: flee
+Sun Oct  4 15:19:38 2026 :: Log Alaric [29061]: flee
+Sun Oct  4 15:19:38 2026 :: Log Alaric [0]: moved to 29062 (Corridor)
+Sun Oct  4 15:19:39 2026 :: Log Alaric [29062]: recal
+Sun Oct  4 15:19:39 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 15:19:40 2026 :: Log Alaric [4207]: e
+Sun Oct  4 15:19:40 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sun Oct  4 15:19:41 2026 :: Log Alaric [4202]: n
+Sun Oct  4 15:19:41 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sun Oct  4 15:19:41 2026 :: Log Alaric [4203]: n
+Sun Oct  4 15:19:41 2026 :: Log Alaric [0]: moved to 4210 (Room of Peace and Healing.)
+Sun Oct  4 15:19:42 2026 :: Log Alaric [4210]: sleep
+Sun Oct  4 15:19:44 2026 :: Log Alaric [4210]: sc
+Sun Oct  4 15:19:56 2026 :: Log Alaric [4210]: wake
+Sun Oct  4 15:19:56 2026 :: Log Alaric [4210]: s
+Sun Oct  4 15:19:56 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sun Oct  4 15:19:56 2026 :: Log Alaric [4203]: s
+Sun Oct  4 15:19:56 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sun Oct  4 15:19:56 2026 :: Log Alaric [4202]: e
+Sun Oct  4 15:19:56 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sun Oct  4 15:19:57 2026 :: Log Alaric [4201]: e
+Sun Oct  4 15:19:57 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sun Oct  4 15:19:57 2026 :: Log Alaric [2427]: n
+Sun Oct  4 15:19:57 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sun Oct  4 15:19:57 2026 :: Log Alaric [2404]: n
+Sun Oct  4 15:19:57 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sun Oct  4 15:19:58 2026 :: Log Alaric [2401]: n
+Sun Oct  4 15:19:58 2026 :: Log Alaric [0]: moved to 2402 (Northern Oak Tree Square.)
+Sun Oct  4 15:19:59 2026 :: Log Alaric [2402]: n
+Sun Oct  4 15:19:59 2026 :: Log Alaric [0]: moved to 2415 (Main Processional.)
+Sun Oct  4 15:19:59 2026 :: Log Alaric [2415]: e
+Sun Oct  4 15:19:59 2026 :: Log Alaric [0]: moved to 2485 (Market Plaza.)
+Sun Oct  4 15:19:59 2026 :: Log Alaric [2485]: s
+Sun Oct  4 15:19:59 2026 :: Log Alaric [0]: moved to 2494 (Weapons Shop.)
+Sun Oct  4 15:20:00 2026 :: Log Alaric [2494]: eq
+Sun Oct  4 15:20:02 2026 :: Log Alaric [2494]: n
+Sun Oct  4 15:20:02 2026 :: Log Alaric [0]: moved to 2485 (Market Plaza.)
+Sun Oct  4 15:20:02 2026 :: Log Alaric [2485]: e
+Sun Oct  4 15:20:02 2026 :: Log Alaric [0]: moved to 2486 (Market Plaza.)
+Sun Oct  4 15:20:03 2026 :: Log Alaric [2486]: n
+Sun Oct  4 15:20:03 2026 :: Log Alaric [0]: moved to 2483 (Fountain of Market Plaza.)
+Sun Oct  4 15:20:03 2026 :: Log Alaric [2483]: e
+Sun Oct  4 15:20:03 2026 :: Log Alaric [0]: moved to 2484 (Market Plaza.)
+Sun Oct  4 15:20:03 2026 :: Log Alaric [2484]: e
+Sun Oct  4 15:20:03 2026 :: Log Alaric [0]: moved to 4 (The First National Bank of Dresden.)
+Sun Oct  4 15:20:03 2026 :: Log Alaric [4]: e
+Sun Oct  4 15:20:05 2026 :: Log Alaric [4]: sc
+Sun Oct  4 15:20:09 2026 :: Log Alaric [4]: deposit 600 platinum
+Sun Oct  4 15:20:16 2026 :: Log Alaric [4]: who
+Sun Oct  4 15:20:17 2026 :: Log Alaric [4]: w
+Sun Oct  4 15:20:17 2026 :: Log Alaric [0]: moved to 2484 (Market Plaza.)
+Sun Oct  4 15:20:17 2026 :: Log Alaric [2484]: s
+Sun Oct  4 15:20:17 2026 :: Log Alaric [0]: moved to 2487 (Market Plaza.)
+Sun Oct  4 15:20:18 2026 :: Log Alaric [2487]: w
+Sun Oct  4 15:20:18 2026 :: Log Alaric [0]: moved to 2486 (Market Plaza.)
+Sun Oct  4 15:20:19 2026 :: Log Alaric [2486]: w
+Sun Oct  4 15:20:19 2026 :: Log Alaric [0]: moved to 2485 (Market Plaza.)
+Sun Oct  4 15:20:19 2026 :: Log Alaric [2485]: s
+Sun Oct  4 15:20:19 2026 :: Log Alaric [0]: moved to 2494 (Weapons Shop.)
+Sun Oct  4 15:20:21 2026 :: Log Alaric [2494]: n
+Sun Oct  4 15:20:21 2026 :: Log Alaric [0]: moved to 2485 (Market Plaza.)
+Sun Oct  4 15:20:21 2026 :: Log Alaric [2485]: w
+Sun Oct  4 15:20:21 2026 :: Log Alaric [0]: moved to 2415 (Main Processional.)
+Sun Oct  4 15:20:21 2026 :: Log Alaric [2415]: s
+Sun Oct  4 15:20:21 2026 :: Log Alaric [0]: moved to 2402 (Northern Oak Tree Square.)
+Sun Oct  4 15:20:22 2026 :: Log Alaric [2402]: s
+Sun Oct  4 15:20:22 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sun Oct  4 15:20:23 2026 :: Log Alaric [2401]: n
+Sun Oct  4 15:20:23 2026 :: Log Alaric [0]: moved to 2402 (Northern Oak Tree Square.)
+Sun Oct  4 15:20:24 2026 :: Log Alaric [2402]: n
+Sun Oct  4 15:20:24 2026 :: Log Alaric [0]: moved to 2415 (Main Processional.)
+Sun Oct  4 15:20:24 2026 :: Log Alaric [2415]: w
+Sun Oct  4 15:20:24 2026 :: Log Alaric [0]: moved to 2470 (Wizards Way.)
+Sun Oct  4 15:20:24 2026 :: Log Alaric [2470]: w
+Sun Oct  4 15:20:24 2026 :: Log Alaric [0]: moved to 2471 (Wizards Way.)
+Sun Oct  4 15:20:24 2026 :: Log Alaric [2471]: w
+Sun Oct  4 15:20:24 2026 :: Log Alaric [0]: moved to 2472 (Corner of Wizards Way and Magic Street.)
+Sun Oct  4 15:20:25 2026 :: Log Alaric [2472]: n
+Sun Oct  4 15:20:25 2026 :: Log Alaric [0]: moved to 2473 (Magic Street.)
+Sun Oct  4 15:20:25 2026 :: Log Alaric [2473]: w
+Sun Oct  4 15:20:25 2026 :: Log Alaric [0]: moved to 2474 (Bidom's Magic Shop.)
+Sun Oct  4 15:20:28 2026 :: Log Alaric [2474]: buy true
+Sun Oct  4 15:20:28 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sun Oct  4 15:20:28 2026 :: Log Alaric [2474]: buy true
+Sun Oct  4 15:20:28 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sun Oct  4 15:20:28 2026 :: Log Alaric [2474]: buy true
+Sun Oct  4 15:20:28 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sun Oct  4 15:20:28 2026 :: Log Alaric [2474]: buy true
+Sun Oct  4 15:20:28 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sun Oct  4 15:20:29 2026 :: Log Alaric [2474]: buy true
+Sun Oct  4 15:20:29 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sun Oct  4 15:20:29 2026 :: Log Alaric [2474]: buy true
+Sun Oct  4 15:20:29 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sun Oct  4 15:20:29 2026 :: Log Alaric [2474]: buy true
+Sun Oct  4 15:20:29 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sun Oct  4 15:20:29 2026 :: Log Alaric [2474]: buy true
+Sun Oct  4 15:20:29 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
