@@ -3077,6 +3077,21 @@ case CON_DEFAULT_CHOICE:
 	    act( "$n has entered the game.", ch, NULL, NULL, TO_ROOM );
 	    do_look( ch, "auto" );
 
+	    /* The pet comes in with its owner. This was lost in November
+	       2025, so a saved pet loaded with no room: invisible, refused a
+	       replacement at the shop, and erased by the next save. */
+	    if ( ch->pet != NULL && ch->pet->in_room == NULL && ch->in_room != NULL )
+	    {
+	        char_to_room( ch->pet, ch->in_room );
+	        act( "$n has entered the game.", ch->pet, NULL, NULL, TO_ROOM );
+	    }
+	    /* A mount is never saved, but the flag that you are riding was:
+	       it came back with no mount under it, and a rider cannot be
+	       bashed, tripped or shoved. */
+	    if ( !IS_NPC(ch) && ch->pcdata->mounted
+	    &&   ( ch->pet == NULL || !ch->pet->ridden ) )
+	        ch->pcdata->mounted = false;
+
 	    /* Psionics owed or handed back: here, past the password and with
 	       a real descriptor, never inside load_char_obj. */
 	    psionic_login( ch );

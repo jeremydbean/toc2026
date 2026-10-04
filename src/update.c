@@ -2022,7 +2022,7 @@ void obj_update( void )
      * This avoids modifying the object_list while iterating over it, which can cause segfaults.
      * Max 1000 objects to extract per tick should be more than enough.
      */
-    OBJ_DATA *extract_list[1000];
+    OBJ_DATA *extract_list[OBJ_UPDATE_EXTRACT_MAX];
     int extract_count = 0;
 
     FOR_EACH_OBJECT( iter, obj )
@@ -2415,14 +2415,26 @@ free_string(obj->description);
 	    }
 	}
 
-	/* Defer extraction until after iteration to avoid segfault */
-	if (extract_count < 1000)
+	/* Defer extraction until after iteration to avoid segfault. One
+	   past the limit decays on the next tick instead of never: its timer
+	   had already reached 0, and a 0 timer is never counted again. */
+	if (extract_count < OBJ_UPDATE_EXTRACT_MAX)
 	    extract_list[extract_count++] = obj;
+	else
+	    obj->timer = 1;
     }
 
-    /* Now safely extract all collected objects outside the iteration loop */
+    /* Now safely extract all collected objects outside the iteration loop.
+       Each comes out of whatever holds it first. A mobile's corpse takes
+       its contents with it, and a rot-death item inside one can expire on
+       the same tick: extracted again after the corpse had freed it, it
+       went onto the free list twice and the next two objects created
+       shared one block of memory. */
     {
         int i;
+        for (i = 0; i < extract_count; i++)
+            if ( extract_list[i]->in_obj != NULL )
+                obj_from_obj( extract_list[i] );
         for (i = 0; i < extract_count; i++)
         {
             extract_obj( extract_list[i] );
@@ -2466,7 +2478,7 @@ void room_update( void )
 		to_room = get_room_index(pRoom->to_room);
 
 		if ( to_room == NULL )
-		    break;   /* misconfigured teleport room — skip this tick */
+		    continue;   /* one misconfigured room, not every one after it; was: misconfigured teleport room — skip this tick */
 
 		for (pChar = pRoom->room->people; pChar != NULL;
 			pChar = pCharNext)
@@ -3274,7 +3286,9 @@ void disaster_update( void )
                          count = -1;
 
                          for( door = 0; door < 10; door++)
-                             if ( ( pexit = vch->in_room->exit[door] ) != NULL &&  !IS_SET(pexit->exit_info, EX_CLOSED) )
+                             if ( ( pexit = vch->in_room->exit[door] ) != NULL &&  !IS_SET(pexit->exit_info, EX_CLOSED)
+                             &&   pexit->u1.to_room != NULL
+                             &&   !IS_SET(pexit->u1.to_room->room_flags, ROOM_DT) )
                              {
                                      count++;
                                      rand_door[count] = door;
@@ -3414,17 +3428,8 @@ void disaster_update( void )
 		send_to_char("        *               *       \n",vch);
 		send_to_char("           *  *   *  *          \n\r",vch);
 		{
-		  int attempts;
-		  for (attempts = 0; attempts < 200; attempts++)
-		  {
-		    pRoomTport = get_room_index( number_range( 0, 65535 ) );
-		    if ( pRoomTport != NULL
-		      &&  !IS_SET(pRoomTport->room_flags, ROOM_PRIVATE)
-		      &&  !IS_SET(pRoomTport->room_flags, ROOM_NO_RECALL)
-		      &&  !IS_SET(pRoomTport->room_flags, ROOM_JAIL)
-		      &&  !IS_SET(pRoomTport->room_flags, ROOM_SOLITARY) )
-		       break;
-		  }
+		  /* Never a death trap, a staff room or a guild hall. */
+		  pRoomTport = random_travel_room( vch, true );
 		  if (pRoomTport == NULL)
 		      break;  /* no valid room found; skip tornado transport */
 		}
@@ -3534,6 +3539,23 @@ void room_aff_update( void )
              frees the raf struct (pRoom->affected = raf is freed inside).
              Accessing raf->room after that call is a use-after-free. */
           ROOM_INDEX_DATA *expiring_room = raf->room;
+	  /* Out the way they came in: the pocket's down exit. */
+	  ROOM_INDEX_DATA *way_out = expiring_room->exit[5] != NULL
+	                           ? expiring_room->exit[5]->u1.to_room : NULL;
+	  LIST_ITERATOR iter;
+	  CHAR_DATA *wch;
+
+	  if ( way_out == NULL )
+	      way_out = get_room_index( ROOM_VNUM_TEMPLE );
+
+	  /* Anyone who went idle into the void from in here would come back
+	     to a room about to be freed -- an empty pocket included: an idle
+	     member a haven pulled in went to the void, the rest walked out,
+	     and their next keystroke put them in freed memory. */
+	  FOR_EACH_CHARACTER( iter, wch )
+	      if ( wch->was_in_room == expiring_room )
+	          wch->was_in_room = way_out;
+
 	  if(expiring_room->people == NULL && expiring_room->contents == NULL)
 	  {
 	     remove_room_affect(expiring_room,raf);
@@ -3541,14 +3563,6 @@ void room_aff_update( void )
 	  }
 	  else
 	  {
-	    /* Out the way they came in: the pocket's down exit. */
-	    ROOM_INDEX_DATA *way_out = expiring_room->exit[5] != NULL
-	                             ? expiring_room->exit[5]->u1.to_room : NULL;
-	    LIST_ITERATOR iter;
-	    CHAR_DATA *wch;
-
-	    if ( way_out == NULL )
-	        way_out = get_room_index( ROOM_VNUM_TEMPLE );
 
 	    for ( gch = expiring_room->people; gch != NULL; gch = gch_next )
 	    {
@@ -3558,12 +3572,6 @@ void room_aff_update( void )
 	      char_from_room(gch);
 	      char_to_room(gch, way_out);
 	    }
-
-	    /* Anyone who went idle into the void from in here would come back
-	       to a room that is about to be freed. */
-	    FOR_EACH_CHARACTER( iter, wch )
-	        if ( wch->was_in_room == expiring_room )
-	            wch->was_in_room = way_out;
 
 	    for( obj = expiring_room->contents; obj != NULL; obj = obj_next)
 	    {

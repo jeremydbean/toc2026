@@ -721,6 +721,13 @@ bool hyrule_claim( CHAR_DATA *ch, OBJ_DATA *obj )
 
     copy = create_object( obj->pIndexData, obj->level );
     copy->cost = 0;
+    /* One at a time, and yours: the old man refuses a second only while
+       you carry the first, so a gift stashed or handed over could be
+       claimed again for ever -- Magical Swords and Letters for alts who
+       never earned the hearts. NODROP keeps it with whoever claimed it;
+       lose it, and he gives you another. */
+    if ( claim->choice_bit < 0 )
+        SET_BIT( copy->extra_flags, ITEM_NODROP );
     obj_to_char( copy, ch );
     act( "You take $p.", ch, copy, NULL, TO_CHAR );
     act( "$n takes $p.", ch, copy, NULL, TO_ROOM );
@@ -779,22 +786,33 @@ static OBJ_DATA *find_bombs( CHAR_DATA *ch )
     return NULL;
 }
 
-int hyrule_bombs_carried( CHAR_DATA *ch )
+/* Every bomb in a list, however deep the bags go. */
+static int count_bombs_in( OBJ_DATA *list, int depth )
 {
     OBJ_DATA *obj;
-    OBJ_DATA *inner;
     int count = 0;
 
-    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    if ( depth > 16 )
+        return 0;
+    for ( obj = list; obj != NULL; obj = obj->next_content )
     {
         if ( is_bombs( obj ) )
             count += UMAX( 0, obj->value[0] );
-        if ( obj->item_type != ITEM_CONTAINER )
-            continue;
-        for ( inner = obj->contains; inner != NULL; inner = inner->next_content )
-            if ( is_bombs( inner ) )
-                count += UMAX( 0, inner->value[0] );
+        if ( obj->contains != NULL )
+            count += count_bombs_in( obj->contains, depth + 1 );
     }
+    return count;
+}
+
+/* What counts against the bag: everything carried, at any depth, and the
+   stash. Only hand and one bag down used to count, so a character could
+   stash eight, buy eight more, and carry on for good. */
+int hyrule_bombs_carried( CHAR_DATA *ch )
+{
+    int count = count_bombs_in( ch->carrying, 0 );
+
+    if ( !IS_NPC(ch) && ch->pcdata != NULL )
+        count += count_bombs_in( ch->pcdata->stash, 0 );
     return count;
 }
 

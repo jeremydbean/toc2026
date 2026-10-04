@@ -85,6 +85,10 @@ static bool psionic_remote_room_blocked( CHAR_DATA *ch,
     if ( block_safe && IS_SET( room->room_flags, ROOM_SAFE ) )
         return true;
 
+    /* A destination keeps the rules walking in keeps (astral walk). */
+    if ( block_safe && block_no_recall && travel_spell_refuses( ch, room ) )
+        return true;
+
     if ( block_no_recall && IS_SET( room->room_flags, ROOM_NO_RECALL ) )
         return true;
 

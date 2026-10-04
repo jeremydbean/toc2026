@@ -479,6 +479,14 @@ void violence_update( void )
 	if ( dummy_holds_fire( ch ) )
 	    continue;
 
+	/* Carried into a safe room together -- a river, a flood -- two
+	   fighters went on fighting for ever, every blow refused. */
+	if ( ch->in_room != NULL && IS_SET(ch->in_room->room_flags, ROOM_SAFE) )
+	{
+	    stop_fighting( ch, false );
+	    continue;
+	}
+
 	if ( IS_AWAKE(ch) && ch->in_room == victim->in_room )
 	{
 	    /* One of these is a round to the fight meter, as it is to the
@@ -1385,7 +1393,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     CHAR_DATA *vch;
     bool immune;
     bool hyrule_silver_arrow_hit;
-    int shield = 0,i,num=0;
+    int shield = 0;
     LIST_ITERATOR iter;
 
     if ( victim->position == POS_DEAD )
@@ -1843,8 +1851,8 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 */
 
 	 victim->affected_by2 = 0;
-	 if ( victim->pcdata->mounted)
-	   victim->pcdata->mounted = false;
+	 reapply_innate_affects( victim );
+	 release_mount( victim );
 
 	 victim->position = POS_RESTING;
 	 victim->hit         = UMAX( 1, victim->hit  );
@@ -1894,26 +1902,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
                         }
         group_gain( ch, victim );
 
-	if( !IS_NPC(ch) && !IS_NPC(victim) )
-	{
-	    send_to_char("Your deathcount is increased by 1.\n\r",victim);
-	    victim->pcdata->dcount += 1;
-            if ((!IS_IMMORTAL(ch)) && (victim != ch)) {
-	       for(i=0;i<MAX_WEAR;i++) {
-		  if(get_eq_char(victim,i) != NULL) {
-		      num++;
-		  }
-	       }
-
-	       if(num > 10) {
-                 ch->pcdata->pkills_given += 1;
-                 victim->pcdata->pkills_received += 1;
-                 update_pkills(ch);
-                 update_pkills(victim);
-		 achievement_check_state(ch, true);
-	       }
-            }
-	}
+	record_player_kill( ch, victim );
 
 	if ( !IS_NPC(victim) )
 	{
@@ -2107,10 +2096,14 @@ bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim )
 
     if (IS_NPC(ch))
     {
-	/* charmed mobs and pets cannot attack players */
-/*	if (!IS_NPC(victim) && (IS_AFFECTED(ch,AFF_CHARM)
+	/* A charmed mob or a pet fights a player only where its master
+	   could: the stock rule (never) was commented out, so ORDER sent a
+	   charmie at any player at all -- past the PK range, the death count
+	   and every PK rule -- and the victim died to "a mob". */
+	if (!IS_NPC(victim) && (IS_AFFECTED(ch,AFF_CHARM)
 			    ||  IS_SET(ch->act,ACT_PET)))
-	    return true;*/
+	    return ch->master == NULL || IS_NPC(ch->master)
+		|| is_safe( ch->master, victim );
 
 	return false;
      }
@@ -2229,6 +2222,39 @@ void spill_corpse( OBJ_DATA *corpse )
  * so reading one afterwards is safe -- and a player is carried to the
  * death room. Note the room before the blow and ask this after it.
  */
+/*
+ * A player killed by a player: the death count that backstab's limit
+ * reads, and the PK board -- which counts only a victim wearing more than
+ * ten pieces, so a stripped alt is no trophy. damage() and fatality()
+ * both, so the two ways to kill cannot keep different books.
+ */
+void record_player_kill( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    int i;
+    int num = 0;
+
+    if ( IS_NPC(ch) || IS_NPC(victim) )
+	return;
+
+    send_to_char("Your deathcount is increased by 1.\n\r",victim);
+    victim->pcdata->dcount += 1;
+    if ( IS_IMMORTAL(ch) || victim == ch )
+	return;
+
+    for ( i = 0; i < MAX_WEAR; i++ )
+	if ( get_eq_char(victim,i) != NULL )
+	    num++;
+
+    if ( num > 10 )
+    {
+	ch->pcdata->pkills_given += 1;
+	victim->pcdata->pkills_received += 1;
+	update_pkills(ch);
+	update_pkills(victim);
+	achievement_check_state(ch, true);
+    }
+}
+
 bool gone_after_blow( CHAR_DATA *ch, ROOM_INDEX_DATA *room )
 {
     return ch->in_room == NULL || ch->in_room != room
@@ -3246,8 +3272,11 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
       if(victim->ridden && victim->master != NULL && !IS_NPC(victim->master) )
 	 victim->master->pcdata->mounted = false;
 
-      /* Fix so that you lose your pets when they get killed - Rico 8/2/98 */
-      if (victim->master != NULL)
+      /* You lose your pet when it is killed - Rico 8/2/98. Only when it is
+         the pet: any charmed follower or raised undead dying used to clear
+         the pointer too, stranding the real pet or mount -- unsaved,
+         unkillable, and still pointing at its owner after they quit. */
+      if (victim->master != NULL && victim->master->pet == victim)
          victim->master->pet = NULL;
 
 	victim->pIndexData->killed++;
@@ -3297,6 +3326,9 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
 */
 
     victim->affected_by2 = 0;
+    /* What the race gives (an elf's infravision) and the gear still worn
+       go on; a death used to take them until the next login. */
+    reapply_innate_affects( victim );
 
     for (i = 0; i < 4; i++)
 	victim->armor[i]= 100;
@@ -5703,8 +5735,8 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
 	    affect_remove( victim, victim->affected );
 	victim->affected_by = 0;
 	victim->affected_by2 = 0;
-	if ( victim->pcdata->mounted)
-	    victim->pcdata->mounted = false;
+	reapply_innate_affects( victim );
+	release_mount( victim );
 	victim->position = POS_RESTING;
 	victim->hit  = UMAX( 1, victim->hit  );
 	victim->mana = UMAX( 1, victim->mana );
@@ -5732,8 +5764,8 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
 	    affect_remove( victim, victim->affected );
 	victim->affected_by = 0;
 	victim->affected_by2 = 0;
-	if ( victim->pcdata->mounted)
-	    victim->pcdata->mounted = false;
+	reapply_innate_affects( victim );
+	release_mount( victim );
 	victim->position = POS_RESTING;
 	victim->hit  = UMAX( 1, victim->hit  );
 	victim->mana = UMAX( 1, victim->mana );
@@ -5750,14 +5782,11 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
 		(IS_NPC(ch) ? ch->short_descr : ch->name),
 		victim->in_room->vnum );
 	    log_string( log_buf );
-	    if ( !IS_NPC(ch) )
-	    {
-		ch->pcdata->pkills_given += 1;
-		update_pkills(ch);
-		achievement_check_state(ch, true);
-	    }
-	    victim->pcdata->pkills_received += 1;
-	    update_pkills(victim);
+	    /* The same book damage() keeps. A fatality used to count every
+	       kill on the PK board and never raised the death count: a naked
+	       sleeping alt was a trophy every time, and backstab's death-count
+	       limit never closed. */
+	    record_player_kill( ch, victim );
 	    wizinfo(log_buf, LEVEL_IMMORTAL);
 
 	    /*
@@ -6023,7 +6052,10 @@ void do_shoot( CHAR_DATA *ch, char *argument )
           return;
       }
 
-      if(IS_NPC(victim) && number_percent () < 50)
+      /* A sentinel holds its post: a shot used to pull guild guards, and
+	 the training dummy, out of where they stand. */
+      if(IS_NPC(victim) && number_percent () < 50
+      && !IS_SET(victim->act, ACT_SENTINEL) && !is_training_dummy(victim))
       {
 	victim->position = POS_STANDING;
 	move_char(victim,door2,false);

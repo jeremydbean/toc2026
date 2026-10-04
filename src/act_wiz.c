@@ -6628,13 +6628,15 @@ void do_undeny(CHAR_DATA *ch, char *argument)
 
     arg[0] = UPPER(arg[0]);
 
-    if ( get_char_world( ch, arg ) != NULL )
+    if ( player_in_game( arg, NULL ) != NULL )
     {
     send_to_char( "That person is already connected!\n\r", ch );
     return;
     }
 
-    char_exists = load_char_obj(&d, arg );
+    /* d was never initialised here: offline_player_load clears it, checks
+       the name and frees what a missing file leaves behind. */
+    char_exists = offline_player_load( &d, arg, NULL ) != NULL;
 
     if (!char_exists)
     {
@@ -6644,11 +6646,6 @@ void do_undeny(CHAR_DATA *ch, char *argument)
 
     if (char_exists)
     {
-
-       d.character->desc     = NULL;
-       register_character( d.character );
-       d.connected           = CON_PLAYING;
-       reset_char(d.character);
 
        if (!IS_SET(d.character->act, PLR_DENY))
        {
@@ -7666,25 +7663,29 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( ( victim = get_char_world( ch, arg ) ) == NULL )
     {
-        /* Not connected: work on their save file instead of refusing.
-           Same load / modify / save / extract shape as do_undeny. */
-        arg[0] = UPPER(arg[0]);
-        memset( &offline_desc, 0, sizeof(offline_desc) );
+        bool logging_in;
 
-        if ( !load_char_obj( &offline_desc, arg ) )
+        /* By name, seen or not; never a second copy of somebody online. */
+        victim = player_in_game( arg, &logging_in );
+        if ( victim != NULL && logging_in )
         {
-            send_to_char( "No player by that name is online or saved.\n\r", ch );
+            send_to_char( "They are logging in; try again in a moment.\n\r", ch );
             return;
         }
-
-        victim = offline_desc.character;
-        victim->desc = NULL;
-        register_character( victim );
-        offline_desc.connected = CON_PLAYING;
-        reset_char( victim );
-        offline = true;
+        if ( victim == NULL
+        &&   ( victim = get_char_world( ch, arg ) ) != NULL && !IS_NPC(victim) )
+            ;
+        else if ( victim == NULL )
+        {
+            /* Not connected: work on their save file instead of refusing. */
+            if ( ( victim = offline_player_load( &offline_desc, arg, NULL ) ) == NULL )
+            {
+                send_to_char( "No player by that name is online or saved.\n\r", ch );
+                return;
+            }
+            offline = true;
+        }
     }
 
     if ( IS_NPC( victim ) )

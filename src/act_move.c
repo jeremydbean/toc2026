@@ -508,6 +508,36 @@ static void open_hyrule_shutter( ROOM_INDEX_DATA *room, EXIT_DATA *pexit,
 
 /* Random room generation by gravestone */
 
+/*
+ * A random room somebody may be carried to: never a death trap, a jail, a
+ * private or staff room (random_scatter_room), nor anywhere this character
+ * could not walk into (travel_spell_refuses, can_see_room), nor out of
+ * reach of recall. allow_safe lets a safe room count. Recall misfires,
+ * tornadoes and teleport traps all used to guess vnums, check fewer rules,
+ * and -- after two hundred misses -- use the last rejected room anyway.
+ */
+ROOM_INDEX_DATA *random_travel_room( CHAR_DATA *ch, bool allow_safe )
+{
+    int attempts;
+
+    for ( attempts = 0; attempts < 50; attempts++ )
+    {
+	ROOM_INDEX_DATA *room = random_scatter_room( NULL );
+
+	if ( room == NULL )
+	    break;
+	if ( !can_see_room( ch, room )
+	||   IS_SET(room->room_flags, ROOM_NO_RECALL)
+	||   ( !allow_safe && IS_SET(room->room_flags, ROOM_SAFE) )
+	||   ( !IS_NPC(ch) && ch->level > 10
+	       && IS_SET(room->room_flags, ROOM_NEWBIES_ONLY) )
+	||   travel_spell_refuses( ch, room ) )
+	    continue;
+	return room;
+    }
+    return get_room_index( ROOM_VNUM_TEMPLE );
+}
+
 ROOM_INDEX_DATA *get_random_room(CHAR_DATA *ch)
 {
     ROOM_INDEX_DATA *room;
@@ -976,6 +1006,21 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 	 door = rand_door[pick_door];
     }
 
+    /* A mount that is not here is not under you. Teleports, portals,
+       recall, shift, tornadoes and traps all moved the rider alone, and the
+       next step through do_riding then dragged the mount from wherever it
+       was -- across the world, into Hyrule. */
+    if ( !IS_NPC(ch) && ch->pcdata->mounted
+    &&   ( ch->pet == NULL || ch->pet->in_room != ch->in_room ) )
+	release_mount( ch );
+
+    /* Held is held, mounted or not: riding used to come first. */
+    if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_STASIS) )
+    {
+	send_to_char( "You are held in place and cannot move!\n\r", ch );
+	return;
+    }
+
     if(ch->pet != NULL)
     {
       if(!IS_NPC(ch) && ch->pcdata->mounted)
@@ -1416,9 +1461,24 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     if (in_room == to_room) /* no circular follows */
 	return;
 
-    for ( fch = in_room->people; fch != NULL; fch = fch_next )
+    /* Followers are taken from the room as it stood, then moved one at a
+       time. Walking the room list while moving them sent the walk on into
+       the new room's list, and a follower whose own pet had just come
+       along was moved a second time -- a room past the leader. */
     {
-	fch_next = fch->next_in_room;
+    CHAR_DATA *followers[64];
+    int nfollow = 0;
+    int k;
+
+    for ( fch = in_room->people; fch != NULL && nfollow < 64; fch = fch->next_in_room )
+	if ( fch->master == ch )
+	    followers[nfollow++] = fch;
+
+    for ( k = 0; k < nfollow; k++ )
+    {
+	fch = followers[k];
+	if ( fch->in_room != in_room || fch->master != ch )
+	    continue;
 
 	if ( fch->master == ch && IS_AFFECTED(fch,AFF_CHARM)
 	&&   fch->position < POS_STANDING)
@@ -1440,6 +1500,7 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 	    act( "You follow $N.", fch, NULL, ch, TO_CHAR );
 	    move_char(fch, door, false);
 	}
+    }
     }
 
     return;
@@ -3962,6 +4023,17 @@ void do_enter( CHAR_DATA *ch, char *argument )
    if ( hyrule_gate_refuses( ch, ch->in_room, to_room ) )
      return;
 
+   /* And what walking in asks: another class's guild rooms, a guard who
+      would turn you away, staff rooms, Mud School past its level. A
+      summon portal carried anyone into its caster's guild hall. */
+   if ( !IS_NPC(ch) && !IS_TRUSTED(ch, LEVEL_IMMORTAL)
+   &&   ( !can_see_room( ch, to_room ) || travel_spell_refuses( ch, to_room )
+       || ( ch->level > 10 && IS_SET(to_room->room_flags, ROOM_NEWBIES_ONLY) ) ) )
+   {
+     send_to_char( "Something on the far side turns you back.\n\r", ch );
+     return;
+   }
+
    switch( obj->value[0])
    {
    case 1:               /* for windows in hall of hero's */
@@ -4217,20 +4289,9 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
        break;
        case 5: /* tport trap (10 on all stats) */
 	 {
-	   int attempts;
-	   for ( attempts = 0; attempts < 200; attempts++ )
-	   {
-	     pRoomIndex = get_room_index( number_range( 0, 65535 ) );
-	     if ( pRoomIndex != NULL
-	     &&   can_see_room(ch,pRoomIndex)
-	     &&   !IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE)
-	     &&   !IS_SET(pRoomIndex->room_flags, ROOM_GODS_ONLY)
-	     &&   !IS_SET(pRoomIndex->room_flags, ROOM_IMP_ONLY)
-	     &&   !IS_SET(pRoomIndex->room_flags, ROOM_NO_RECALL)
-	     &&   !IS_SET(pRoomIndex->room_flags, ROOM_JAIL)
-	     &&   !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY) )
-	       break;
-	   }
+	   /* Never a death trap: this trap also drops you to 10 hit points,
+	      and a death trap kills anyone at 20 or less on arrival. */
+	   pRoomIndex = random_travel_room( ch, true );
 	   if ( pRoomIndex == NULL )
 	     break;
 	 }
@@ -4578,6 +4639,15 @@ void do_ride( CHAR_DATA *ch, char *argument)
     {
       act( "$N already has a rider.", ch, NULL, victim, TO_ROOM );
       return;
+    }
+
+    /* One companion at a time. RIDE used to set ch->pet over a bought pet,
+       which went on following and fighting, charmed, while DISMOUNT
+       cleared the pointer and the shop sold another -- without end. */
+    if ( ch->pet != NULL && ch->pet != victim )
+    {
+        send_to_char( "You already have a companion; you cannot take a mount as well.\n\r", ch );
+        return;
     }
 
     if ( victim->master != NULL || ( victim->leader != NULL && victim->leader != victim ) )

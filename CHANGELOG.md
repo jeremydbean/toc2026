@@ -21,6 +21,46 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **A sweep for rare-state bugs (2026-10-04).** Fixed:
+  - STASH LINK put the typed name into a file path, so
+    `stash link ../area/area.lst` overwrote that file with a player file.
+    Every offline load -- the stash, GRANTPSI, UNDENY -- goes through
+    `offline_player_load`, which takes only a legal name.
+  - STASH TAKE from a linked partner who was online but unseen (stealth,
+    shadowmeld, or still at the password prompt) loaded a second copy from
+    disk and duplicated the item. `player_in_game` finds them by name.
+  - A saved pet was never put back in the world at login (lost in Nov
+    2025): invisible, then erased by the next save. A saved "riding" flag
+    with no mount made its owner unbashable. Pets and stashes of characters
+    loaded but never entered leaked into the world on every reconnect.
+  - RIDE replaced a bought pet, which went on following, so the shop sold
+    another without end; any follower dying cleared the real pet.
+  - A mobile corpse and a rot-death item inside it expiring on one tick
+    were extracted twice, corrupting the object pool.
+  - WEAR ALL kept equipping the corpse's contents after an action item
+    killed its wearer.
+  - An empty haven pocket expiring left an idle member's way back pointing
+    at freed memory.
+  - Looted potions and scrolls kept the corpse's rot timer and crumbled.
+  - Hyrule's cave gifts could be claimed again after stashing or handing
+    over the first (they are NODROP now); the bomb limit ignored the stash
+    and deep bags.
+  - Charmed mobs and pets could be ordered at any player, past every PK
+    rule; they follow their master's rules now. A fatality skipped the PK
+    board's rules and never raised the death count.
+  - Death took an elf's infravision, and an arena death the powers of worn
+    gear, until the next login; an arena death stranded a ridden mount.
+  - A fight carried into a safe room never ended. SHOOT pulled the
+    training dummy and guild guards off their posts.
+  - A rider moved without the mount (teleport, portal, recall, shift,
+    tornado, trap, river) dragged the mount across the world on the next
+    step; stasis did not hold a rider.
+  - Portals, the portal spell and astral walk skipped guild halls and
+    guarded rooms. Recall misfires, tornadoes and teleport traps could
+    land you in a death trap or a staff room. Floods could sweep you into
+    a death trap. One misconfigured teleport room stopped all the others.
+  - A follower whose pet came along could be moved twice, a room past
+    the leader.
 - **Several commands on one typed line, in any client.** "n;kill orc"
   from Mudlet or plain telnet used to answer "Huh?"; only the browser split
   on semicolons. The server splits now, on the browser's rules (quotes and

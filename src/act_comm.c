@@ -4070,6 +4070,11 @@ void nuke_pets( CHAR_DATA *ch )
     	stop_follower(pet);
     	if (pet->in_room != NULL)
     	    act("$N slowly fades away.",ch,NULL,pet,TO_NOTVICT);
+	else
+	    /* Loaded from a file and never placed -- an offline load, or a
+	       login that never finished. extract_char refuses a character
+	       with no room, so it leaked into the character list. */
+	    char_to_room( pet, get_room_index( ROOM_VNUM_LIMBO ) );
     	extract_char(pet,TRUE);
     }
     ch->pet = NULL;

@@ -232,6 +232,14 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	&&  !CAN_WEAR(container, ITEM_TAKE) && obj->timer)
 	    obj->timer = 0;
 
+	/* A mobile's potions and scrolls are given a timer in its corpse so
+	   they go off if nobody loots them. Looted, they are the looter's:
+	   the timer used to stay, so they crumbled in the pack and the stash,
+	   shops and the donation pit all refused them meanwhile. */
+	if (container->item_type == ITEM_CORPSE_NPC
+	&&  (obj->item_type == ITEM_POTION || obj->item_type == ITEM_SCROLL))
+	    obj->timer = 0;
+
 	act( "You get $p from $P.", ch, obj, container, TO_CHAR );
 	if(!hidden)
 	  act( "$n gets $p from $P.", ch, obj, container, TO_ROOM );
@@ -410,25 +418,16 @@ static bool stash_record_offer( CHAR_DATA *ch, const char *name, bool adding )
     CHAR_DATA *target;
     bool offline = false;
     bool blocked = false;
+    bool logging_in;
 
-    if ( ( target = get_char_world( ch, (char *) name ) ) == NULL )
+    if ( ( target = player_in_game( name, &logging_in ) ) == NULL )
     {
-        char proper[MAX_INPUT_LENGTH];
-
-        toc_strlcpy( proper, name, sizeof(proper) );
-        proper[0] = UPPER(proper[0]);
-        memset( &offline_desc, 0, sizeof(offline_desc) );
-
-        if ( !load_char_obj( &offline_desc, proper ) )
+        if ( ( target = offline_player_load( &offline_desc, name, NULL ) ) == NULL )
             return false;
-
-        target = offline_desc.character;
-        target->desc = NULL;
-        register_character( target );
-        offline_desc.connected = CON_PLAYING;
-        reset_char( target );
         offline = true;
     }
+    else if ( logging_in )
+        return false;
 
     if ( IS_NPC(target) || target->pcdata == NULL )
     {
@@ -1122,25 +1121,27 @@ void do_stash( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( ( owner = get_char_world( ch, who ) ) == NULL )
         {
-            /* Same load / modify / save / extract shape the offline
-               staff commands use. */
-            who[0] = UPPER(who[0]);
-            memset( &offline_desc, 0, sizeof(offline_desc) );
+            /* By name, seen or not: an unseen partner who is online is
+               worked on in memory, never loaded again from disk. */
+            bool logging_in;
+            const char *why = NULL;
 
-            if ( !load_char_obj( &offline_desc, who ) )
+            owner = player_in_game( who, &logging_in );
+            if ( owner != NULL && logging_in )
             {
-                send_to_char( "No such character is saved.\n\r", ch );
+                send_to_char( "They are just logging in; try again in a moment.\n\r", ch );
                 return;
             }
-
-            owner = offline_desc.character;
-            owner->desc = NULL;
-            register_character( owner );
-            offline_desc.connected = CON_PLAYING;
-            reset_char( owner );
-            offline = true;
+            if ( owner == NULL )
+            {
+                if ( ( owner = offline_player_load( &offline_desc, who, &why ) ) == NULL )
+                {
+                    send_to_char( why, ch );
+                    return;
+                }
+                offline = true;
+            }
         }
 
         if ( IS_NPC(owner) || owner->pcdata == NULL )
@@ -3709,10 +3710,19 @@ void do_wear( CHAR_DATA *ch, char *argument )
 
 	    if ( obj->wear_loc == WEAR_NONE && can_see_obj( ch, obj ) )
 	    {
+		/* Read before wearing: an action item may destroy itself. */
+		bool metal = IS_SET(obj->extra_flags, ITEM_METAL);
+
 		wear_obj( ch, obj, false );
 
-		if (IS_AFFECTED(ch, AFF_SNEAK) &&
-			  IS_SET(obj->extra_flags, ITEM_METAL))
+		/* An action item can kill the wearer -- the pack is then a
+		   corpse, and the rest of this loop was putting the corpse's
+		   contents "on" a dead character -- or recall them. Stop
+		   as soon as the next item is no longer theirs. */
+		if ( obj_next != NULL && obj_next->carried_by != ch )
+		    break;
+
+		if (IS_AFFECTED(ch, AFF_SNEAK) && metal)
 		{
 		    send_to_char("But it sure will make it hard to sneak!\n\r",ch );
 		    recheck = true;
@@ -3739,9 +3749,15 @@ void do_wear( CHAR_DATA *ch, char *argument )
 	  send_to_char("You can't wield a weapon right now.\n\r",ch);
 	  return;
 	}
-	wear_obj( ch, obj, true );
+	{
+	    bool metal = IS_SET(obj->extra_flags, ITEM_METAL);
 
-	if (IS_AFFECTED(ch, AFF_SNEAK) && IS_SET(obj->extra_flags, ITEM_METAL))
+	    wear_obj( ch, obj, true );
+	    if ( !metal )
+		return;
+	}
+
+	if (IS_AFFECTED(ch, AFF_SNEAK))
 	{
 	    send_to_char( "But it sure will make it hard to sneak!\n\r", ch );
 	    recheck_sneak(ch);

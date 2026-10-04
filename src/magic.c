@@ -5168,7 +5168,9 @@ void spell_portal( int sn, int level, CHAR_DATA *ch, void *vo )
     ||   victim->level >= level + 3
     ||   (!IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON))
     ||   (IS_NPC(victim) && IS_SET(victim->imm_flags,IMM_SUMMON))
-    ||   (IS_NPC(victim) && saves_spell( level, victim ) ) )
+    ||   (IS_NPC(victim) && saves_spell( level, victim ) )
+    ||   !can_see_room( ch, victim->in_room )
+    ||   travel_spell_refuses( ch, victim->in_room ) )
     {
 	send_to_char( "You failed.\n\r", ch );
 	return;

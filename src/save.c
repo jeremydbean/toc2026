@@ -563,7 +563,10 @@ void save_char_obj( CHAR_DATA *ch )
 	if ( ch->carrying != NULL )
 	    fwrite_obj( ch, ch->carrying, fp, 0 );
 	/* save the pets */
-	if (ch->pet != NULL && ch->pet->in_room == ch->in_room
+	/* A pet not yet placed -- the owner was loaded offline, or is still
+	   logging in -- is still theirs: dropping it here erased it. */
+	if (ch->pet != NULL
+        && (ch->pet->in_room == ch->in_room || ch->pet->in_room == NULL)
         && ch->pet->carrying == NULL )
 	    fwrite_pet(ch->pet,fp);
 	/* Last, and deliberately: the marker puts fread_obj into stash
@@ -1184,6 +1187,97 @@ void fwrite_obj( CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest )
 /*
  * Load a char and inventory into a new ch structure.
  */
+/*
+ * A player who is in the game in any form: playing, link-dead, or past
+ * the name prompt with their file already loaded (*logging_in is set for
+ * that last one). Visibility plays no part. get_char_world asks can_see,
+ * so a stash TAKE from a linked partner who was merely stealthed, or still
+ * at the password prompt, loaded a second copy from disk and duplicated
+ * whatever it took (2026-10-04).
+ */
+CHAR_DATA *player_in_game( const char *name, bool *logging_in )
+{
+    LIST_ITERATOR iter;
+    CHAR_DATA *wch;
+    DESCRIPTOR_DATA *d;
+
+    if ( logging_in != NULL )
+        *logging_in = FALSE;
+    if ( name == NULL || name[0] == '\0' )
+        return NULL;
+
+    FOR_EACH_CHARACTER( iter, wch )
+        if ( !IS_NPC(wch) && !str_cmp( wch->name, name ) )
+            return wch;
+
+    for ( d = descriptor_list; d != NULL; d = d->next )
+        if ( d->connected != CON_PLAYING && d->character != NULL
+        &&   !IS_NPC(d->character) && d->character->name != NULL
+        &&   !str_cmp( d->character->name, name ) )
+        {
+            if ( logging_in != NULL )
+                *logging_in = TRUE;
+            return d->character;
+        }
+
+    return NULL;
+}
+
+/*
+ * Load a character who is not in the game, to change and save them: the
+ * one door for GRANTPSI, UNDENY and the stash's offline paths. A name a
+ * player could not have -- anything but 2 to 12 letters -- is refused
+ * before it reaches a file path: STASH LINK ../area/area.lst loaded that
+ * file as a character and saved a player file over it (2026-10-04). So is
+ * anyone in the game in any form (player_in_game), and a missing file
+ * frees the character the loader made rather than leaking it. Returns
+ * NULL with a reason in *why.
+ */
+CHAR_DATA *offline_player_load( DESCRIPTOR_DATA *d, const char *name,
+                                const char **why )
+{
+    char proper[MAX_INPUT_LENGTH];
+    CHAR_DATA *ch;
+    size_t i, len;
+
+    if ( why != NULL )
+        *why = "No such character is saved.\n\r";
+    if ( name == NULL )
+        return NULL;
+    len = strlen( name );
+    if ( len < 2 || len > 12 )
+        return NULL;
+    for ( i = 0; i < len; i++ )
+        if ( !isalpha( (unsigned char)name[i] ) )
+            return NULL;
+
+    toc_strlcpy( proper, capitalize( name ), sizeof(proper) );
+    if ( player_in_game( proper, NULL ) != NULL )
+    {
+        if ( why != NULL )
+            *why = "They are in the game right now; try again when they are not.\n\r";
+        return NULL;
+    }
+
+    memset( d, 0, sizeof(*d) );
+    if ( !load_char_obj( d, proper ) )
+    {
+        if ( d->character != NULL )
+        {
+            free_char( d->character );
+            d->character = NULL;
+        }
+        return NULL;
+    }
+
+    ch = d->character;
+    ch->desc = NULL;
+    register_character( ch );
+    d->connected = CON_PLAYING;
+    reset_char( ch );
+    return ch;
+}
+
 bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 {
     static PC_DATA pcdata_zero;

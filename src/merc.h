@@ -223,6 +223,7 @@ typedef struct script_loop_prepoll_payload
 #define MAX_SKILL               232
 #define TRAIL_LEN               10
 #define MAX_GROUP               58
+#define OBJ_UPDATE_EXTRACT_MAX  4096
 #define MAX_IN_GROUP            20
 #define MAX_CLASS               6
 #define MAX_PC_RACE             6
@@ -2657,6 +2658,10 @@ const char *class_race_refusal  ( int iClass, int race );
 void    spellup_boot_place      ( void );
 void    spill_corpse            ( OBJ_DATA *corpse );
 bool    gone_after_blow         ( CHAR_DATA *ch, ROOM_INDEX_DATA *room );
+void    record_player_kill      ( CHAR_DATA *ch, CHAR_DATA *victim );
+void    reapply_innate_affects  ( CHAR_DATA *ch );
+void    release_mount           ( CHAR_DATA *ch );
+ROOM_INDEX_DATA *random_travel_room ( CHAR_DATA *ch, bool allow_safe );
 bool    travel_spell_refuses    ( CHAR_DATA *ch, ROOM_INDEX_DATA *to );
 bool    hyrule_gate_would_refuse( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
                                   ROOM_INDEX_DATA *to );
@@ -2953,6 +2958,9 @@ void    clone_object    ( OBJ_DATA *parent, OBJ_DATA *clone );
 void    create_room     ( int vnum );
 void    clear_char      ( CHAR_DATA *ch );
 void    free_char       ( CHAR_DATA *ch );
+CHAR_DATA *player_in_game ( const char *name, bool *logging_in );
+CHAR_DATA *offline_player_load ( DESCRIPTOR_DATA *d, const char *name,
+                                 const char **why );
 char * get_extra_descr ( const char *name, EXTRA_DESCR_DATA *ed );
 MID * get_mob_index   ( int vnum );
 OID * get_obj_index   ( int vnum );

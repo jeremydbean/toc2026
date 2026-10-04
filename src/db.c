@@ -3467,6 +3467,18 @@ void free_char( CHAR_DATA *ch )
     
     if (IS_NPC(ch))
         mobile_count--;
+
+    /* A character loaded and never entered -- a wrong password, a dropped
+       connection at the prompt, the copy a link-dead reconnect replaces --
+       still holds the stash and the pet its file gave it. Both were left
+       registered in the world for good, every time somebody typed the
+       name. A quit has already taken both. */
+    if ( !IS_NPC(ch) && ch->pcdata != NULL )
+    {
+        if ( ch->pet != NULL && ch->pet->in_room == NULL )
+            nuke_pets( ch );
+        stash_extract( ch );
+    }
  
     for ( obj = ch->carrying; obj != NULL; obj = obj_next )
     {

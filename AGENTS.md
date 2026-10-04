@@ -796,10 +796,31 @@ generator reproduces it byte for byte. It is code, not runtime state:
 copies `area/` wholesale. Regenerate after anything that moves a trainer,
 a guard, a guild hall or an area entrance.
 
+## Loading Somebody Who Is Not Playing
+
+**Use `offline_player_load()`, never `load_char_obj` on a raw name.**
+Every command that changes a character who is not in the game -- the
+stash's LINK/OF/TAKE, GRANTPSI, UNDENY -- goes through it: it takes only
+2-12 letters (a typed `../area/area.lst` reached a file path and was
+saved over), refuses anyone `player_in_game()` finds, and frees what a
+missing file leaves. **`player_in_game(name, &logging_in)`, not
+`get_char_world`, decides whether somebody is online**: `get_char_world`
+asks `can_see`, so an unseen partner looked offline and was loaded a
+second time -- an item duplication. A character at the password prompt
+counts as in the game.
+
+A loaded character's pet has no room until login places it
+(`CON_READ_MOTD` does, as it did before November 2025). `save_char_obj`
+keeps an unplaced pet, `nuke_pets` gives one a room before extracting
+it, and `free_char` clears the stash and an unplaced pet of a copy that
+never entered -- a wrong password, a reconnect.
+
 ## Travel Spells Keep Room Rules
 
-`travel_spell_refuses(ch, room)` in `act_move.c` is what earth travel and
-gate ask before carrying a character anywhere: another class's guild
+`travel_spell_refuses(ch, room)` in `act_move.c` is what earth travel,
+gate, the portal spell, astral walk and ENTER ask before carrying a
+character anywhere, and what `random_travel_room()` -- recall misfires,
+tornadoes, teleport traps -- picks against: another class's guild
 rooms, rooms `guild_closed_rooms()` says a guard would turn this
 character from, and Hyrule's order. Staff, newbie and private rooms are
 `can_see_room` and the flags the spells already test. A new spell that

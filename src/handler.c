@@ -1167,6 +1167,27 @@ static void restore_character_affect_bits( CHAR_DATA *ch,
     SET_BIT( ch->affected_by2, restore_secondary & secondary_bits );
 }
 
+/* Every bit the race, the spells and the worn gear give, put back after
+   something has cleared them all -- a death. */
+void reapply_innate_affects( CHAR_DATA *ch )
+{
+    restore_character_affect_bits( ch, -1, -1 );
+}
+
+/*
+ * A rider who is moved, or dies, where the mount does not follow is no
+ * longer riding: both flags come down. Clearing only the rider's left the
+ * mount "ridden" -- hidden from the room and unable to move.
+ */
+void release_mount( CHAR_DATA *ch )
+{
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+	return;
+    if ( ch->pet != NULL )
+	ch->pet->ridden = false;
+    ch->pcdata->mounted = false;
+}
+
 /*
  * Apply or remove an affect to a character.
  */
