@@ -397,7 +397,19 @@ Commands added or revived in September 2026, and where they live:
 - `dns` (`src/act_wiz.c`) toggles hostname resolution, lists connected
   descriptors, and resolves one address. It was a stub in `src/stubs.c`.
 - `practicelist` (`src/act_info.c`) lists who can practise the skills you
-  already know; `gainlist` beside it marks what you already have.
+  already know. `gainlist` (alias `abilities`, `src/abilities.c`) lists
+  every skill and spell the character's class and guild can buy -- X
+  missing, + learned -- grouped by what to GAIN, with the trainer and the
+  WALKTO; `gainlist trainers` is the old per-trainer view
+  (`gainlist_by_trainer` in `act_info.c`). The same list rides to the
+  Oracle with every question (`abilities_oracle_summary`). It never
+  announces itself at a level gain (owner).
+- `changes` (`src/changes.c`) reads `area/changes.dat`: entries headed
+  `@ <id> <yyyy-mm-dd>`, newest first. It shows the last two weeks'
+  entries a character has been shown fewer than three times and counts
+  each showing (`ChangesSeen`, case 'C'); `changes all` shows everything.
+  Add an entry for every player-visible change, and never reuse or alter
+  an id -- the counts are kept by id.
 - `alias` / `unalias` live in `src/act_comm.c`; expansion is in
   `src/interp.c` and must not leave a trailing space, or commands that read
   their whole argument (`goto`) fail on it. An alias may hold up to
