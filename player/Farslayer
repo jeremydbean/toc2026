@@ -1,7 +1,7 @@
 #PLAYER
 Name Farslayer~
 Id   21916
-LogO 1791122819
+LogO 1791123108
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 3
-Plyd 2270
+Plyd 2559
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
 Room 3712
-HMV  36 36 76 144 112 112
+HMV  36 36 144 144 112 112
 NewGold 0
 NewPlat 0
 NewCopp 20
@@ -94,7 +94,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 36 144 112
-Cond 0 11 11
+Cond 0 6 6
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -121,9 +121,9 @@ Sk 62 'recall'
 Gr 'rom basics'
 Gr 'mage basics'
 Gr 'mage default'
-AffD 'armor'   0  16 -20  17          0          0
-AffD 'bless'   0  28  -3  24          0          0
-AffD 'bless'   0  28   3  18          0          0
+AffD 'armor'   0  11 -20  17          0          0
+AffD 'bless'   0  23  -3  24          0          0
+AffD 'bless'   0  23   3  18          0          0
 End
 
 #O
