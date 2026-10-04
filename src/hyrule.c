@@ -1616,14 +1616,23 @@ bool hyrule_keeper_refuses( CHAR_DATA *keeper, CHAR_DATA *ch )
 
 /* --------------------------------------------------------------------
  * What a guardian leaves besides its key, Heart Container, weapon and
- * Heart Guard: two of its five drop-table pieces, at random. The pieces
- * are written by scripts/build_hyrule_area.py at
- * OBJ_VNUM_HYRULE_BOSS_DROP_FIRST + (level - 1) * 5 + n.
+ * Heart Guard: three pieces of its drop table, at random -- a piece for
+ * every armour slot but the neck (and Ganon's head), each the best in its
+ * slot for the guardian's band (owner, 2026-10-04). The first five are
+ * written by scripts/build_hyrule_area.py at
+ * OBJ_VNUM_HYRULE_BOSS_DROP_FIRST + (level - 1) * 5 + n, the rest at
+ * OBJ_VNUM_HYRULE_BOSS_EXTRA_FIRST + (level - 1) * 7 + n - 5, and
+ * hyrule_boss_extra_drops counts the rest (BOSS_EXTRA_DROPS).
  * ------------------------------------------------------------------ */
 
 static const int hyrule_guardian_vnums[9] =
 {
     30222, 30218, 30305, 30307, 30309, 30223, 30314, 30316, 30225
+};
+
+static const int hyrule_boss_extra_drops[9] =
+{
+    6, 6, 6, 6, 6, 6, 6, 6, 5
 };
 
 void hyrule_boss_drops( CHAR_DATA *boss, OBJ_DATA *corpse )
@@ -1632,6 +1641,7 @@ void hyrule_boss_drops( CHAR_DATA *boss, OBJ_DATA *corpse )
     int picked[HYRULE_BOSS_DROPS_PER_KILL];
     int level = 0;
     int count = 0;
+    int total;
     int i;
 
     if ( boss == NULL || corpse == NULL || !IS_NPC(boss) || boss->pIndexData == NULL )
@@ -1642,9 +1652,10 @@ void hyrule_boss_drops( CHAR_DATA *boss, OBJ_DATA *corpse )
     if ( level == 0 )
         return;
 
-    while ( count < HYRULE_BOSS_DROPS_PER_KILL )
+    total = HYRULE_BOSS_DROPS_PER_GUARDIAN + hyrule_boss_extra_drops[level - 1];
+    while ( count < HYRULE_BOSS_DROPS_PER_KILL && count < total )
     {
-        int n = number_range( 0, HYRULE_BOSS_DROPS_PER_GUARDIAN - 1 );
+        int n = number_range( 0, total - 1 );
         bool seen = false;
 
         for ( i = 0; i < count; i++ )
@@ -1653,8 +1664,12 @@ void hyrule_boss_drops( CHAR_DATA *boss, OBJ_DATA *corpse )
         if ( seen )
             continue;
         picked[count++] = n;
-        index = get_obj_index( OBJ_VNUM_HYRULE_BOSS_DROP_FIRST
-                               + ( level - 1 ) * HYRULE_BOSS_DROPS_PER_GUARDIAN + n );
+        index = get_obj_index( n < HYRULE_BOSS_DROPS_PER_GUARDIAN
+            ? OBJ_VNUM_HYRULE_BOSS_DROP_FIRST
+              + ( level - 1 ) * HYRULE_BOSS_DROPS_PER_GUARDIAN + n
+            : OBJ_VNUM_HYRULE_BOSS_EXTRA_FIRST
+              + ( level - 1 ) * HYRULE_BOSS_EXTRA_STRIDE
+              + n - HYRULE_BOSS_DROPS_PER_GUARDIAN );
         if ( index == NULL )
         {
             bug( "hyrule_boss_drops: missing drop for Level %d.", level );
@@ -1669,26 +1684,76 @@ void hyrule_boss_drops( CHAR_DATA *boss, OBJ_DATA *corpse )
  * without a wound, and the tenth leaves you a bomb (Level 8's old man).
  * ------------------------------------------------------------------ */
 
-void hyrule_note_kill( CHAR_DATA *ch, CHAR_DATA *victim )
+/* Whether an exit is a way that has to be bombed open: a cracked wall or
+   rock, a bomb cave, Level 9's door. */
+static bool exit_wants_bomb( const EXIT_DATA *pexit )
+{
+    return pexit != NULL && pexit->keyword != NULL
+        && ( is_name( "cracked", pexit->keyword ) || is_name( "bomb", pexit->keyword ) );
+}
+
+/* A room with a bomb wall in it, or next door to one. */
+static bool near_bomb_wall( ROOM_INDEX_DATA *room )
+{
+    int door;
+
+    if ( room == NULL )
+        return false;
+    for ( door = 0; door < 10; door++ )
+    {
+        EXIT_DATA *pexit = room->exit[door];
+        int other;
+
+        if ( pexit == NULL )
+            continue;
+        if ( exit_wants_bomb( pexit ) )
+            return true;
+        if ( pexit->u1.to_room == NULL )
+            continue;
+        for ( other = 0; other < 10; other++ )
+            if ( exit_wants_bomb( pexit->u1.to_room->exit[other] ) )
+                return true;
+    }
+    return false;
+}
+
+/* One bomb into a character's bag, if it has room. True when given. */
+static bool give_one_bomb( CHAR_DATA *ch )
 {
     OBJ_INDEX_DATA *index;
     OBJ_DATA *bomb;
 
-    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || !is_hyrule_enemy( victim ) )
-        return;
-    if ( ++ch->pcdata->hyrule_streak < 10 )
-        return;
-    ch->pcdata->hyrule_streak = 0;
     if ( hyrule_bombs_carried( ch ) >= hyrule_bomb_capacity( ch )
     ||   ( index = get_obj_index( OBJ_VNUM_HYRULE_BOMBS ) ) == NULL )
-        return;
+        return false;
     bomb = create_object( index, 0 );
     bomb->value[0] = 1;
     bomb->cost = 0;
     obj_to_char( bomb, ch );
     if ( !hyrule_bought( ch, bomb ) )
         name_bombs( bomb );
-    send_to_char( "Ten foes in a row without a scratch: the tenth leaves you a bomb.\n\r", ch );
+    return true;
+}
+
+/* A bomb in four from an enemy killed where the walls want bombing
+   (owner, 2026-10-04): nobody should have to walk out to a shop to get
+   past a cracked wall the dungeon put in front of them. */
+#define HYRULE_BOMB_DROP_CHANCE 25
+
+void hyrule_note_kill( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || !is_hyrule_enemy( victim ) )
+        return;
+    if ( near_bomb_wall( ch->in_room )
+    &&   number_percent() <= HYRULE_BOMB_DROP_CHANCE
+    &&   give_one_bomb( ch ) )
+        act( "$N leaves a bomb behind, and you tuck it into your bag.",
+             ch, NULL, victim, TO_CHAR );
+    if ( ++ch->pcdata->hyrule_streak < 10 )
+        return;
+    ch->pcdata->hyrule_streak = 0;
+    if ( give_one_bomb( ch ) )
+        send_to_char( "Ten foes in a row without a scratch: the tenth leaves you a bomb.\n\r", ch );
 }
 
 void hyrule_note_wound( CHAR_DATA *victim )

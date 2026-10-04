@@ -282,7 +282,7 @@ static bool is_hyrule_ganon( CHAR_DATA *victim )
  * (the old man, the repair man, the gambler, the fairy) are kept in the
  * test in case a reset of an older area file still loads one.
  */
-static bool is_hyrule_bystander( CHAR_DATA *victim )
+bool is_hyrule_bystander( CHAR_DATA *victim )
 {
     int vnum;
 

@@ -432,10 +432,19 @@ static bool hyrule_room_has_guardian( ROOM_INDEX_DATA *room )
 {
     CHAR_DATA *victim;
 
+    /* Hyrule's enemies and guardians, not its people and not anybody's
+       pet. Nothing in Hyrule is aggressive (owner, 2026-10-04), so the
+       aggressive bit this used to read no longer tells an enemy apart. */
     for ( victim = room->people; victim != NULL; victim = victim->next_in_room )
     {
-        if ( IS_NPC(victim) && IS_SET(victim->act, ACT_AGGRESSIVE)
-        &&   !IS_AFFECTED(victim, AFF_CHARM) )
+        int vnum;
+
+        if ( !IS_NPC(victim) || victim->pIndexData == NULL
+        ||   IS_AFFECTED(victim, AFF_CHARM) || is_hyrule_bystander( victim ) )
+            continue;
+        vnum = victim->pIndexData->vnum;
+        if ( ( vnum >= 30200 && vnum <= 30799 )
+        ||   ( vnum >= HYRULE_TIER_FIRST_VNUM && vnum <= HYRULE_TIER_LAST_VNUM ) )
             return true;
     }
     return false;

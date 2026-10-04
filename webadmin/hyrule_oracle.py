@@ -95,7 +95,14 @@ L4 the stepladder, L5 a short bow,
 L6 Recorder, L7 Red Candle, L8 Magical Key, L9 the Master Sword and the final
 piece. Guardians: Aquamentus, Dodongo, Manhandla, Gleeok, Digdogger, Gohma,
 an ancient Aquamentus, an ashen Gleeok, Ganon. Bigger guardians are meant
-for a group; a lone character at the top of the band usually loses.
+for a group; a lone character at the top of the band usually loses. Each
+guardian carries its weapon and Heart Guard and drops three more pieces from
+a table with one for every other armour slot, each the best in the game for
+its band, for fighters and casters alike. Nothing in Hyrule attacks first;
+its creatures are as tough as the world's at the same level, and the land
+around each dungeon is graded for that dungeon's band. Enemies killed near a
+cracked wall leave a bomb now and then, and every tenth foe in a row killed
+without taking a wound leaves one too.
 Where the entrances are, from The First Quest Begins:
  L1 Eagle's Gate: north to the River Landing, stepping stones west, DOWN.
  L2 Moon Gate: east through the meadows to Moblin Hollow, north to the Wooded

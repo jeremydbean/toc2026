@@ -50,6 +50,7 @@ NEW_OBJECT_VNUMS = (
     | set(range(30530, 30591))
     | set(range(30591, 30650))     # heart containers, drops, keys, chests
     | set(range(30649, 30700))     # the Magical Sword, boss drops, bombs, the bomb bag
+    | set(range(30700, 30763))     # the guardians' further drops (BOSS_EXTRA_DROPS)
     | {30408}                      # the ninth piece, the final Triforce piece
 )
 # Catalog objects taken out altogether. The plain "red ring" (30261) filled
@@ -344,17 +345,40 @@ def tier_level(kind: str, band: int, bands: dict[int, tuple[int, int]]) -> int:
 
 
 # Ordinary mobiles elsewhere in the world, read off the area files with the
-# dashboard parser: roughly the median hit points and average damage for a
-# spawned mobile at each level. A Hyrule enemy scales from these by its kind.
+# dashboard parser: the median hit points, and the median damage a ROUND
+# (every attack the mobile makes), of a spawned mobile within two levels
+# either side. A Hyrule enemy scales from these by its kind, so a dungeon's
+# enemies are on par with what a character of its band fights elsewhere
+# (owner, 2026-10-04). The damage curve used to be per blow and read about
+# half the world's, and fast races hit twice on top of it.
 HIT_POINT_CURVE = (
-    (1, 15), (5, 70), (10, 140), (15, 240), (20, 380), (25, 600),
-    (30, 900), (35, 1350), (40, 1750), (45, 2400), (50, 3300),
+    (1, 25), (5, 67), (10, 135), (15, 225), (20, 350), (25, 560),
+    (30, 890), (35, 1350), (40, 1700), (45, 2400), (50, 3300),
     (55, 4600), (60, 6200), (65, 8000),
 )
 DAMAGE_CURVE = (
-    (1, 3), (5, 5), (10, 8), (15, 11), (20, 15), (25, 19), (30, 24),
-    (35, 28), (40, 33), (45, 38), (50, 43), (55, 49), (60, 55), (65, 62),
+    (1, 4.5), (5, 8), (10, 14), (15, 22), (20, 29), (25, 42), (30, 59),
+    (35, 73), (40, 86), (45, 117), (50, 129), (55, 147), (60, 150), (65, 160),
 )
+
+# Races whose race table entry carries OFF_FAST, and so strike twice a round
+# (const.c's race_table); and the fast offence letter itself.
+FAST_RACES = {"bat", "cat", "dog", "fish", "fox", "insect", "rabbit", "song bird", "wolf"}
+OFF_FAST_LETTER = "H"
+
+
+# What each band's mix of kinds comes to against the world, corrected: a
+# band of keese and gels (Level 1) runs light, one of darknuts and lynels
+# heavy. Measured with the dashboard parser against the world's spawned
+# mobiles at each band's middle level (hit points, damage a round), so that
+# a dungeon's enemies average out on par with the world's (2026-10-04).
+BAND_HP_CALIBRATION = {1: 1.5, 2: 1.4, 3: 1.18, 4: 1.16, 5: 0.82, 6: 1.1,
+                       7: 0.74, 8: 0.9, 9: 0.75}
+BAND_DAMAGE_CALIBRATION = {1: 1.2, 4: 1.08, 8: 1.08, 9: 0.94}
+
+
+def attacks_per_round(enemy: "EnemyType") -> int:
+    return 2 if enemy.race in FAST_RACES or OFF_FAST_LETTER in enemy.off else 1
 
 
 def curve(points: tuple[tuple[int, int], ...], level: int) -> float:
@@ -393,8 +417,9 @@ def enemy_record(kind: str, band: int, bands: dict[int, tuple[int, int]],
     level = tier_level(kind, band, bands)
     hit_dice, damage_dice, hitroll = stat_fields(
         level,
-        curve(HIT_POINT_CURVE, level) * enemy.hp,
-        curve(DAMAGE_CURVE, level) * enemy.damage,
+        curve(HIT_POINT_CURVE, level) * enemy.hp * BAND_HP_CALIBRATION.get(band, 1.0),
+        curve(DAMAGE_CURVE, level) * enemy.damage * BAND_DAMAGE_CALIBRATION.get(band, 1.0)
+        / attacks_per_round(enemy),
     )
     keywords = merge_keywords(enemy.keywords, enemy.short)
     # ACT_IS_NPC, ACT_SENTINEL, ACT_AGGRESSIVE: NES enemies hold their
@@ -758,14 +783,14 @@ BOSS_WEAPONS = {
     1: BossWeapon(
         30582, "aquamentus horn spear", "an Aquamentus horn-spear",
         "A spear tipped with a dragon's horn lies here.", "bone", 3, (3, 6), 2,
-        8, 2, 1, 6,
+        8, 8, 1, 6,
         "The shaft is cut from a young tree in the Eagle's courtyard, and the\n"
         "head is the horn Aquamentus wore on its snout. It is light, quick and\n"
         "far sharper than anything a beginner has a right to carry."),
     2: BossWeapon(
         30583, "dodongo tail club", "a Dodongo tail-club",
         "A heavy club of grey, pebbled hide lies here.", "leather", 4, (4, 8), 7,
-        14, 2, 2, 12,
+        14, 7, 2, 12,
         "A length of Dodongo tail, dried hard as wood and bound at the grip.\n"
         "Nothing that fell on the Moon's floor ever cut that hide; this is\n"
         "what it feels like to be hit by it."),
@@ -785,14 +810,14 @@ BOSS_WEAPONS = {
     5: BossWeapon(
         30586, "digdogger urchin flail", "the Digdogger urchin flail",
         "A spiked iron ball on a chain lies here.", "iron", 6, (7, 9), 8,
-        33, 3, 2, 15,
+        33, 6, 2, 15,
         "The head of this flail is a single spine-cluster from the great\n"
         "urchin of the Lizard's den. It hums faintly when swung, a sound\n"
         "Digdogger would have hated."),
     6: BossWeapon(
         30587, "gohma eye lance", "the Gohma eye-lance",
         "A slender lance with a red crystal point lies here.", "steel", 3, (7, 10), 11,
-        40, 3, 1, 10,
+        40, 6, 1, 10,
         "The point is the crystal lens of Gohma's single eye, ground to a\n"
         "needle. It finds the weak spot in armour as surely as an arrow\n"
         "found the eye."),
@@ -812,7 +837,7 @@ BOSS_WEAPONS = {
     9: BossWeapon(
         30590, "trident ganon", "the Trident of Ganon",
         "A black trident wreathed in a dull red light lies here.", "iron", 3, (11, 10), 11,
-        59, 9, 3, 16,
+        59, 12, 3, 16,
         "Ganon's own weapon, black iron that drinks the light around it. In\n"
         "the hand of a hero it rivals the Master Sword itself, though it has\n"
         "never once been carried for a good cause before."),
@@ -846,13 +871,16 @@ BOSS_WEAPON_BASELINES = {
 
 BOSS_DROP_FIRST = 30650
 BOSS_DROPS_PER_GUARDIAN = 5
-BOSS_DROPS_PER_KILL = 2
+BOSS_DROPS_PER_KILL = 3
+BOSS_EXTRA_DROP_FIRST = 30700
+BOSS_EXTRA_DROP_STRIDE = 7
 WEAR_SLOT_FLAG = {
     "finger": "B", "neck": "C", "body": "D", "head": "E", "legs": "F", "feet": "G",
     "hands": "H", "arms": "I", "shield": "J", "about": "K", "waist": "L", "wrist": "M",
 }
-APPLY_CODES = {"strength": 1, "dexterity": 2, "constitution": 5, "hit points": 13,
-               "hitroll": 18, "damroll": 19, "save vs spell": 24}
+APPLY_CODES = {"strength": 1, "dexterity": 2, "intelligence": 3, "constitution": 5,
+               "mana": 12, "hit points": 13, "hitroll": 18, "damroll": 19,
+               "save vs spell": 24}
 
 
 @dataclass(frozen=True)
@@ -1047,8 +1075,268 @@ BOSS_DROPS: dict[int, tuple[DropPiece, ...]] = {
 }
 
 
+# The rest of each guardian's table (owner, 2026-10-04): a piece for every
+# armour slot its first five leave open -- every slot but the neck, which
+# is the Heart Guard's, and for Ganon the head, his crown's -- each sized by
+# the same measure as the first five and carrying mana as well, so a caster
+# finds it as good as a fighter does. They live in a second block from
+# BOSS_EXTRA_DROP_FIRST, BOSS_EXTRA_DROP_STRIDE to a guardian.
+BOSS_EXTRA_DROPS: dict[int, tuple[DropPiece, ...]] = {
+    1: (
+        DropPiece("finger", "eagle eye ring amber", "an eagle's-eye ring", 2,
+                  (("hit points", 24), ("mana", 3)),
+                  "6.0 a glinting ring of silver",
+                  "A brass ring set with a chip of amber, as sharp-sighted as the Eagle it is named for."),
+        DropPiece("legs", "green scale leggings", "a pair of green-scale leggings", 2,
+                  (("hit points", 16), ("mana", 3)),
+                  "6.5 some soldier leggings",
+                  "Leggings of the young dragon's smaller scales, light and supple."),
+        DropPiece("feet", "talon boots eagle", "a pair of talon boots", 2,
+                  (("hit points", 8), ("mana", 2)),
+                  "3.25 spiked heel boots",
+                  "Soft boots with a hooked talon sewn at each heel."),
+        DropPiece("arms", "horn guard sleeves", "a pair of horn-guard sleeves", 2,
+                  (("hit points", 34),),
+                  "8.0 some dark metal bracers",
+                  "Leather sleeves with slips of the dragon's horn laced over the forearm."),
+        DropPiece("waist", "eagle buckle belt", "an eagle-buckled belt", 2,
+                  (("hit points", 10), ("mana", 16)),
+                  "3.5 leather belt",
+                  "A belt whose bronze buckle is a spread-winged eagle."),
+        DropPiece("wrist", "aquamentus scale band", "an Aquamentus scale band", 2,
+                  (("hit points", 28),),
+                  "7.0 an enchanted leather bracer",
+                  "A wristband of one curled green scale, warm to the touch."),
+    ),
+    2: (
+        DropPiece("head", "dodongo skull cap", "a Dodongo skull cap", 4,
+                  (("hitroll", 1), ("damroll", 1), ("mana", 19)),
+                  "11.2 a dark horned helmet",
+                  "The bony plate from the top of the beast's head, padded inside."),
+        DropPiece("hands", "pebble hide mitts", "a pair of pebble-hide mitts", 4,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 62), ("mana", 6)),
+                  "22.4 some heavy wool mittens",
+                  "Heavy mitts of pebbled grey hide that no blade has ever cut."),
+        DropPiece("arms", "crescent armbands moon", "a pair of crescent armbands", 4,
+                  (("hitroll", 1), ("damroll", 1)),
+                  "8.0 some dark metal bracers",
+                  "Silver armbands shaped like the waxing and the waning moon."),
+        DropPiece("shield", "dodongo plate shield", "a Dodongo-plate shield", 8,
+                  (("hit points", 12), ("mana", 2)),
+                  "9.5 a Magical Shield",
+                  "A shield made from a single plate of the beast's flank."),
+        DropPiece("about", "moonlit cloak", "a moonlit cloak", 4,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 26), ("mana", 31)),
+                  "19.5 a commoner's piwafwi",
+                  "A pale blue cloak that seems to hold a little moonlight in its folds."),
+        DropPiece("wrist", "silver crescent bracelet", "a silver crescent bracelet", 4,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 34), ("mana", 35)),
+                  "17.25 bracers of defence",
+                  "A slim bracelet ending in two silver crescents that never quite meet."),
+    ),
+    3: (
+        DropPiece("finger", "thorn braided ring", "a ring of braided thorn", 5,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 14), ("mana", 15)),
+                  "14.45 Lancelot's Signet Ring",
+                  "Three thorns grown into a ring, still green and still sharp."),
+        DropPiece("body", "bloom plated breastplate", "a bloom-plated breastplate", 10,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 60)),
+                  "46.0 a bearskin coat",
+                  "A breastplate faced with Manhandla's hard red petals, overlapping like scales."),
+        DropPiece("feet", "rootstep boots", "a pair of rootstep boots", 5,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 70), ("mana", 7)),
+                  "24.75 some snakeskin boots",
+                  "Boots of woven root that grip the ground as though they grew there."),
+        DropPiece("arms", "vine wrapped sleeves", "a pair of vine-wrapped sleeves", 5,
+                  (("hitroll", 1), ("damroll", 1), ("mana", 3)),
+                  "10.75 the Titanic Arm plates of Hercules",
+                  "Sleeves bound round with living vine that tightens when you strike."),
+        DropPiece("shield", "four petal shield", "a four-petal shield", 10,
+                  (("hitroll", 1), ("damroll", 1)),
+                  "13.2 Orcish Horde Shield",
+                  "A round shield of four great petals, each one hard as horn."),
+        DropPiece("waist", "manji cross sash", "a Manji-cross sash", 5,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 42)),
+                  "19.75 a quick sheathe",
+                  "A red sash embroidered with the turning four-armed cross of the Manji."),
+    ),
+    4: (
+        DropPiece("finger", "coiled serpent ring", "a coiled-serpent ring", 7,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 4), ("mana", 30)),
+                  "14.45 Lancelot's Signet Ring",
+                  "A ring of a green serpent swallowing its own tail."),
+        DropPiece("feet", "snakeskin treads", "a pair of snakeskin treads", 7,
+                  (("hitroll", 2), ("damroll", 2), ("hit points", 20), ("mana", 22)),
+                  "24.75 some snakeskin boots",
+                  "Silent boots of shed Gleeok skin, smooth one way and rough the other."),
+        DropPiece("hands", "fang grip gloves", "a pair of fang-grip gloves", 7,
+                  (("hitroll", 2), ("damroll", 2), ("hit points", 20), ("mana", 10)),
+                  "24.75 the Titanic Horns of Capricon",
+                  "Gloves with small fangs set in the palms for a grip that will not slip."),
+        DropPiece("about", "twin headed mantle", "a twin-headed mantle", 7,
+                  (("hitroll", 2), ("damroll", 2), ("hit points", 4), ("mana", 43)),
+                  "28.5 an armored shirt of chainmail",
+                  "A mantle whose collar ends in two snarling serpent heads."),
+        DropPiece("waist", "scaled serpent girdle", "a scaled serpent girdle", 7,
+                  (("hitroll", 2), ("damroll", 2), ("mana", 22)),
+                  "19.75 a quick sheathe",
+                  "A girdle of green scale that coils twice about the waist."),
+        DropPiece("wrist", "venom green bracer", "a venom-green bracer", 7,
+                  (("hitroll", 2), ("damroll", 2), ("mana", 41)),
+                  "18.75 bracers of defence",
+                  "A bracer of glossy green scale that weeps a little venom in the heat."),
+    ),
+    5: (
+        DropPiece("finger", "urchin spine ring", "an urchin-spine ring", 8,
+                  (("hitroll", 1), ("damroll", 1), ("mana", 29)),
+                  "14.45 Lancelot's Signet Ring",
+                  "A ring bristling with tiny urchin spines, blunted on the inside."),
+        DropPiece("head", "lizard crest helm", "a lizard-crest helm", 8,
+                  (("hitroll", 2), ("damroll", 2), ("hit points", 16), ("mana", 20)),
+                  "32.5 a wolf helm",
+                  "A helm with a tall frilled crest that rises when you are angry."),
+        DropPiece("legs", "spined greaves", "a pair of spined greaves", 8,
+                  (("hitroll", 2), ("damroll", 2), ("hit points", 44), ("mana", 113)),
+                  "37.5 etched steel leggings",
+                  "Greaves studded with Digdogger's short spines down each shin."),
+        DropPiece("shield", "urchin shell shield", "an urchin-shell shield", 16,
+                  (("hitroll", 2), ("damroll", 2), ("mana", 26)),
+                  "27.95 a small round shield",
+                  "A domed shield cut from the great urchin's shell, spines still at the rim."),
+        DropPiece("waist", "sand hide belt", "a sand-hide belt", 8,
+                  (("hitroll", 2), ("damroll", 2), ("mana", 20)),
+                  "19.75 a quick sheathe",
+                  "A broad belt of sandy lizard hide, cool however hot the day."),
+        DropPiece("wrist", "lizard eye bracer", "a lizard's-eye bracer", 8,
+                  (("hitroll", 2), ("damroll", 2), ("mana", 38)),
+                  "18.75 bracers of defence",
+                  "A bracer set with a yellow stone slit like a lizard's eye."),
+    ),
+    6: (
+        DropPiece("body", "carapace cuirass gohma", "a carapace cuirass", 20,
+                  (("hitroll", 2), ("damroll", 2), ("mana", 9)),
+                  "66.65 some Black velvet robes",
+                  "A cuirass of Gohma's shell, ridged and heavy and harder than steel."),
+        DropPiece("legs", "crab leg greaves", "a pair of crab-leg greaves", 10,
+                  (("hitroll", 3), ("damroll", 3), ("mana", 115)),
+                  "37.5 etched steel leggings",
+                  "Greaves of jointed shell from the great crab's own legs."),
+        DropPiece("hands", "pincer gauntlets", "a pair of pincer gauntlets", 10,
+                  (("hitroll", 3), ("damroll", 3), ("mana", 8)),
+                  "28.75 obsidian gauntlets",
+                  "Gauntlets with a hooked pincer over each fist."),
+        DropPiece("arms", "shell vambraces", "a pair of shell vambraces", 10,
+                  (("hitroll", 3), ("damroll", 3), ("mana", 14)),
+                  "29.25 black steel vambraces",
+                  "Vambraces of curved red shell that ring like bells when struck."),
+        DropPiece("about", "dragon banner cloak", "a dragon-banner cloak", 10,
+                  (("hitroll", 2), ("damroll", 2), ("mana", 36)),
+                  "30.0 a chimaera cloak",
+                  "A cloak cut from the Dragon dungeon's own banner, its beast in faded gold."),
+        DropPiece("waist", "eye clasped belt", "an eye-clasped belt", 10,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 18), ("mana", 10)),
+                  "19.75 a quick sheathe",
+                  "A belt fastened with a clasp shaped like a single staring eye."),
+    ),
+    7: (
+        DropPiece("finger", "demon horn ring", "a demon-horn ring", 12,
+                  (("hitroll", 2), ("damroll", 2), ("hit points", 14), ("mana", 21)),
+                  "28.5 a pirate's ring",
+                  "A ring of black horn carved from the ancient dragon's brow."),
+        DropPiece("feet", "ashstride boots", "a pair of ashstride boots", 12,
+                  (("hitroll", 3), ("damroll", 3), ("mana", 15)),
+                  "33.25 a pair of mithril boots",
+                  "Boots that leave no print, even in the soft ash of the Demon's halls."),
+        DropPiece("arms", "dragonbone vambraces", "a pair of dragonbone vambraces", 12,
+                  (("hitroll", 3), ("damroll", 3), ("mana", 9)),
+                  "29.25 black steel vambraces",
+                  "Vambraces of pale dragonbone, light as wood and harder than iron."),
+        DropPiece("shield", "demon scale tower shield", "a demon-scale tower shield", 24,
+                  (("hitroll", 2), ("damroll", 2), ("mana", 33)),
+                  "35.75 a shield of defense",
+                  "A tall shield faced with dark scales, each the size of a hand."),
+        DropPiece("waist", "bone link girdle", "a bone-link girdle", 12,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 8), ("mana", 8)),
+                  "19.75 a quick sheathe",
+                  "A girdle of linked dragon vertebrae that creaks as you breathe."),
+        DropPiece("wrist", "ancient scale bracer", "an ancient-scale bracer", 12,
+                  (("hitroll", 3), ("damroll", 3), ("hit points", 8), ("mana", 25)),
+                  "34.55 a white bracer",
+                  "A bracer of scale gone black with age, still warm at its heart."),
+    ),
+    8: (
+        DropPiece("finger", "four crowned signet", "a four-crowned signet", 13,
+                  (("hitroll", 4), ("damroll", 4), ("mana", 66)),
+                  "38.0 An assassin's ring",
+                  "A heavy signet ring stamped with four crowns, one for each of the Lion's heads."),
+        DropPiece("head", "lion maned helm", "a lion-maned helm", 13,
+                  (("hitroll", 4), ("damroll", 4), ("hit points", 8), ("mana", 38)),
+                  "55.0 battle helmet",
+                  "A great helm crowned with a mane of ash-grey bristle."),
+        DropPiece("legs", "ashen greaves", "a pair of ashen greaves", 13,
+                  (("hitroll", 3), ("damroll", 3), ("mana", 100)),
+                  "44.5 a pair of Solgartian battle armor leggings",
+                  "Greaves of grey scale that smell faintly of a long-dead fire."),
+        DropPiece("feet", "ember tread boots", "a pair of ember-tread boots", 13,
+                  (("hitroll", 3), ("damroll", 3), ("mana", 35)),
+                  "33.25 a pair of mithril boots",
+                  "Boots whose soles glow faintly, as though they had walked through embers."),
+        DropPiece("hands", "lion paw gauntlets", "a pair of lion-paw gauntlets", 13,
+                  (("hitroll", 4), ("damroll", 4), ("hit points", 32), ("mana", 9)),
+                  "47.25 a pair of elven gloves",
+                  "Gauntlets shaped like great paws, with curved claws of blackened bronze."),
+        DropPiece("about", "drifting ash mantle", "a mantle of drifting ash", 13,
+                  (("hitroll", 1), ("damroll", 1), ("hit points", 6), ("mana", 43)),
+                  "32.5 an assassin's shroud",
+                  "A grey mantle that sheds a fine ash wherever it goes and is never less."),
+    ),
+    9: (
+        DropPiece("finger", "ganon ring power", "the ring of Power", 14,
+                  (("hitroll", 4), ("damroll", 4), ("hit points", 186), ("mana", 8)),
+                  "76.75 The Masters Ring",
+                  "A black iron ring holding one dark triangle, the Triforce of Power's shadow."),
+        DropPiece("body", "dark lord plate ganon", "the Dark Lord's plate", 28,
+                  (("hitroll", 4), ("damroll", 4), ("hit points", 194), ("mana", 12)),
+                  "143.0 Divine Breast Plate",
+                  "Ganon's own armour, black plate edged in red, sized down by no smith alive."),
+        DropPiece("feet", "boar king boots", "a pair of boar-king boots", 14,
+                  (("hitroll", 4), ("damroll", 4), ("hit points", 2), ("mana", 31)),
+                  "42.7 battle boots",
+                  "Boots of blue boar hide, hoof-toed and heavier than they look."),
+        DropPiece("shield", "black trident shield", "the black trident shield", 28,
+                  (("hitroll", 4), ("damroll", 4), ("mana", 21)),
+                  "52.85 (Dark) a Ceresian kite",
+                  "A shield of black iron with Ganon's trident worked across its face."),
+        DropPiece("about", "ganon crimson cape", "Ganon's crimson cape", 14,
+                  (("hitroll", 1), ("damroll", 1), ("mana", 61)),
+                  "32.5 an assassin's shroud",
+                  "A heavy cape of crimson cloth that falls like poured blood."),
+    ),
+}
+
+# Mana for the first five pieces, by index, so a caster finds them as
+# good as a fighter does: sized to the Gear Finder's mage weights.
+BOSS_DROP_MANA: dict[tuple[int, int], int] = {
+    (1, 0): 1, (1, 1): 9, (1, 3): 14, (1, 4): 6, (2, 2): 22, (2, 3): 11,
+    (2, 4): 3, (3, 1): 19, (3, 2): 20, (3, 3): 36, (4, 1): 5, (4, 2): 19,
+    (4, 4): 3, (5, 0): 29, (5, 1): 13, (5, 2): 14, (5, 3): 17, (5, 4): 25,
+    (6, 0): 30, (6, 1): 28, (6, 2): 2, (6, 3): 13, (6, 4): 18, (7, 0): 69,
+    (7, 1): 11, (7, 2): 4, (7, 3): 89, (7, 4): 10, (8, 0): 79, (8, 1): 24,
+    (8, 2): 12, (8, 3): 30, (8, 4): 37, (9, 0): 15, (9, 1): 70, (9, 2): 32,
+    (9, 3): 18, (9, 4): 28,
+}
+
+
+def boss_drops(level: int) -> tuple[DropPiece, ...]:
+    """Every piece a guardian can drop: the first five, then the rest."""
+    return BOSS_DROPS[level] + BOSS_EXTRA_DROPS[level]
+
+
 def boss_drop_vnum(level: int, index: int) -> int:
-    return BOSS_DROP_FIRST + (level - 1) * BOSS_DROPS_PER_GUARDIAN + index
+    if index < BOSS_DROPS_PER_GUARDIAN:
+        return BOSS_DROP_FIRST + (level - 1) * BOSS_DROPS_PER_GUARDIAN + index
+    return (BOSS_EXTRA_DROP_FIRST + (level - 1) * BOSS_EXTRA_DROP_STRIDE
+            + index - BOSS_DROPS_PER_GUARDIAN)
 
 
 def boss_drop_level(level: int, bands: dict[int, tuple[int, int]]) -> int:
@@ -1065,9 +1353,12 @@ def boss_drop_records(manifest: dict[str, Any]) -> list[str]:
         title = dungeon["title"].removeprefix("The ")
         guardian = BOSS_NAMES[BOSS_MOBS[level]]
         item_level = boss_drop_level(level, bands)
-        for index, piece in enumerate(BOSS_DROPS[level]):
+        for index, piece in enumerate(boss_drops(level)):
+            affects = piece.affects
+            if BOSS_DROP_MANA.get((level, index)):
+                affects = affects + (("mana", BOSS_DROP_MANA[(level, index)]),)
             applies = "\n".join(
-                f"A\n{APPLY_CODES[name]} {value}" for name, value in piece.affects)
+                f"A\n{APPLY_CODES[name]} {value}" for name, value in affects)
             lore = textwrap.fill(
                 f"{piece.lore} It fell from {guardian}, guardian of "
                 f"{'Death Mountain' if level == 9 else 'the ' + title}.",
@@ -1227,6 +1518,45 @@ def weapon_score(weapon: BossWeapon) -> float:
     return count * (size + 1) / 2 + weapon.damroll
 
 
+# Mana on each guardian's weapon, so a caster finds it as good as a
+# fighter does (the Gear Finder's mage weights; it weighs nothing for a
+# warrior, so the warrior measure above is untouched). 2026-10-04.
+BOSS_WEAPON_MANA = {1: 5, 2: 33, 3: 33, 4: 35, 5: 33, 6: 34, 7: 32, 8: 34, 9: 86}
+
+# What each Heart Guard gives worn, beyond its armour (2026-10-04): it was
+# armour alone and scored a fifth of the best neck in the game. Written onto
+# the kept catalog record by add_object_applies. The Heart Guards are also
+# map-room chest gear, so the chests carry the same pieces.
+HEART_GUARD_APPLIES = {
+    1: (("hitroll", 2), ("mana", 8)),
+    2: (("hitroll", 2), ("damroll", 2), ("dexterity", 1), ("mana", 40)),
+    3: (("hitroll", 3), ("damroll", 3), ("strength", 1), ("intelligence", 2), ("mana", 60)),
+    4: (("hitroll", 3), ("damroll", 3), ("strength", 1), ("intelligence", 2), ("mana", 55)),
+    5: (("hitroll", 3), ("damroll", 3), ("intelligence", 2), ("mana", 55)),
+    6: (("hitroll", 3), ("damroll", 3), ("intelligence", 2), ("mana", 50)),
+    7: (("hitroll", 3), ("damroll", 3), ("intelligence", 2), ("mana", 45)),
+    8: (("hitroll", 5), ("damroll", 5), ("strength", 1), ("intelligence", 2), ("mana", 75)),
+    9: (("hitroll", 6), ("damroll", 6), ("strength", 1), ("intelligence", 2), ("mana", 55)),
+}
+
+
+def add_object_applies(body: str, vnum: int, applies) -> str:
+    """Give a kept object record stat applies, written straight after its
+    level line, ahead of any extra description or trailer it already has.
+    Applies already standing there are replaced, so the generator stays a
+    fixed point on its own output."""
+    record = re.compile(rf"(?ms)^#{vnum}\r?\n.*?(?=^#\d+\r?$|\Z)").search(body)
+    if not record:
+        raise ValueError(f"missing object record {vnum}")
+    level_line = re.compile(r"(?m)^(-?\d+) (\d+) (\d+) ([PGAWDBR])(?=\r?$)")
+    match = level_line.search(body, record.start(), record.end())
+    if not match:
+        raise ValueError(f"missing level line for object {vnum}")
+    standing = re.compile(r"(?:\r?\nA\r?\n-?\d+ -?\d+)*").match(body, match.end())
+    lines = "".join(f"\nA\n{APPLY_CODES[name]} {value}" for name, value in applies)
+    return body[:match.end()] + lines + body[standing.end():]
+
+
 def boss_weapon_record(dungeon_level: int) -> str:
     weapon = BOSS_WEAPONS[dungeon_level]
     count, size = weapon.dice
@@ -1239,7 +1569,8 @@ def boss_weapon_record(dungeon_level: int) -> str:
         "5 AG AN",
         f"{weapon.weapon_class} {count} {size} {weapon.attack} 0",
         weapon.level, weapon.weight, weapon.level * weapon.level * 6,
-        f"E\n{weapon.keywords}~\n{lore}\n~\nA\n18 {weapon.hitroll}\nA\n19 {weapon.damroll}",
+        f"E\n{weapon.keywords}~\n{lore}\n~\nA\n18 {weapon.hitroll}\nA\n19 {weapon.damroll}"
+        f"\nA\n12 {BOSS_WEAPON_MANA[dungeon_level]}",
     )
 
 
@@ -2075,13 +2406,13 @@ def new_object_records(manifest: dict[str, Any]) -> str:
                       "room: each arrow costs a gold coin, as it always did, and the quiver is\n"
                       "never empty while you can pay. An arrow is what finishes Gohma, and\n"
                       "one is all a pols voice can stand.\n~"),
-        object_record(30544, "magical shield shop", "a Magical Shield", "A Magical Shield is displayed for 160 gold.", "steel", "9 N AJ", "5 5 5 3 0", 15, 8, 160, f"{MAGICAL_SHIELD_LORE}\nA\n17 -5"),
+        object_record(30544, "magical shield shop", "a Magical Shield", "A Magical Shield is displayed for 160 gold.", "steel", "9 N AJ", "5 5 5 3 0", 14, 8, 160, f"{MAGICAL_SHIELD_LORE}\nA\n17 -5"),
         object_record(30545, "key small shop", "a small key", "A small key is displayed for 100 gold.", "iron", "18 N A", "0 0 0 0 0", 1, 1, 100, SMALL_KEY_LORE),
         object_record(30546, "blue candle shop", "a Blue Candle", "A Blue Candle is displayed for 60 gold.", "wax", "1 N AO", "0 0 999 0 0", 5, 2, 60,
                       "E\nblue candle~\nA candle that never burns down. Hold it as a light, BURN a bush with it\n"
                       "to find what the bush hides, or BURN an enemy for a lick of flame.\n~"),
-        object_record(30547, "magical shield bargain shop", "a Magical Shield", "A Magical Shield is displayed for 90 gold.", "steel", "9 N AJ", "5 5 5 3 0", 20, 8, 90, f"{MAGICAL_SHIELD_LORE}\nA\n17 -5"),
-        object_record(30548, "food bait shop", "enemy bait", "Enemy bait is displayed for 100 gold.", "meat", "19 N A", "H 0 0 0 0", 20, 3, 100, BAIT_LORE),
+        object_record(30547, "magical shield bargain shop", "a Magical Shield", "A Magical Shield is displayed for 90 gold.", "steel", "9 N AJ", "5 5 5 3 0", 8, 8, 90, f"{MAGICAL_SHIELD_LORE}\nA\n17 -5"),
+        object_record(30548, "food bait shop", "enemy bait", "Enemy bait is displayed for 100 gold.", "meat", "19 N A", "H 0 0 0 0", 8, 3, 100, BAIT_LORE),
         object_record(30549, "heart recovery shop", "a Recovery Heart", "A Recovery Heart is displayed for 10 gold.", "crystal", "10 N AO", "10 28 0 0 0", 1, 1, 10),
         object_record(30550, "key small bargain shop", "a small key", "A small key is displayed for 80 gold.", "iron", "18 N A", "0 0 0 0 0", 1, 1, 80, SMALL_KEY_LORE),
         object_record(30551, "blue ring hyrule shop", "the Blue Ring of Hyrule", "The Blue Ring of Hyrule is displayed for 250 gold.", "gold", "9 N AB", "5 5 5 3 0", 45, 1, 250,
@@ -2624,6 +2955,44 @@ def render_specials(retained: str, manifest: dict[str, Any]) -> str:
     return "\n".join(line for line in lines if line)
 
 
+ACT_AGGRESSIVE_LETTER = "F"
+ACT_AGGRESSIVE_BIT = 1 << 5
+
+
+def calm_mobiles(body: str) -> str:
+    """Nothing in Hyrule is aggressive (owner, 2026-10-04): every mobile
+    record, generated or kept from the catalog, has ACT_AGGRESSIVE taken out
+    of its act flags. An enemy still fights back, and a shutter still waits
+    for the room's enemies to die (hyrule_room_has_guardian in act_move.c
+    no longer reads the flag). The act field is the first word after the
+    fifth tilde: keywords, short, long, description, race."""
+    out = []
+    for record in re.split(r"(?m)^(?=#\d+\s*$)", body):
+        pos = 0
+        for _ in range(5):
+            pos = record.find("~", pos)
+            if pos < 0:
+                break
+            pos += 1
+        if pos <= 0:
+            out.append(record)
+            continue
+        line_start = record.find("\n", pos) + 1
+        line_end = record.find("\n", line_start)
+        if line_start <= 0 or line_end < 0:
+            out.append(record)
+            continue
+        words = record[line_start:line_end].split(" ")
+        act = words[0]
+        if act.isdigit():
+            act = str(int(act) & ~ACT_AGGRESSIVE_BIT)
+        else:
+            act = act.replace(ACT_AGGRESSIVE_LETTER, "") or "0"
+        words[0] = act
+        out.append(record[:line_start] + " ".join(words) + record[line_end:])
+    return "".join(out)
+
+
 def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_PROSE,
                mob_prose_path: Path = DEFAULT_MOB_PROSE) -> None:
     global _NPC_TABLE
@@ -2667,14 +3036,17 @@ def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_
         object_body = replace_record(object_body, 30479 + dungeon["level"], map_object_record(dungeon, False))
         object_body = replace_record(object_body, 30488 + dungeon["level"], map_object_record(dungeon, True))
     object_body = relevel_catalog_items(object_body, manifest)
+    for level, applies in HEART_GUARD_APPLIES.items():
+        object_body = add_object_applies(object_body, BOSS_GEAR[level], applies)
 
     rooms, _ = build_rooms(manifest, prose)
     room_body = "\n".join(render_room(room) for room in sorted(rooms.values(), key=lambda item: item.vnum))
     resets = render_resets(rooms, manifest)
 
+    mobiles = calm_mobiles(
+        f"{mobile_body}\n{new_mobile_records()}\n{enemy_records(manifest, mob_prose)}")
     output = (
-        f"{header}\n\n#MOBILES\n{mobile_body}\n{new_mobile_records()}\n"
-        f"{enemy_records(manifest, mob_prose)}\n#0\n\n"
+        f"{header}\n\n#MOBILES\n{mobiles}\n#0\n\n"
         f"#OBJECTS\n{object_body}\n{new_object_records(manifest)}\n#0\n\n"
         f"#ROOMS\n{room_body}\n#0\n\n"
         f"#SPECIALS\n{render_specials(specials_body, manifest)}\n\n"

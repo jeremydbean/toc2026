@@ -24,7 +24,7 @@
       {
         "coordinate": "A1",
         "vnum": 30201,
-        "recommended_level": 25,
+        "recommended_level": 36,
         "exits": {
           "east": {
             "to": "B1",
@@ -47,7 +47,7 @@
       {
         "coordinate": "B1",
         "vnum": 30202,
-        "recommended_level": 25,
+        "recommended_level": 36,
         "exits": {
           "east": {
             "to": "C1",
@@ -81,7 +81,7 @@
       {
         "coordinate": "C1",
         "vnum": 30203,
-        "recommended_level": 24,
+        "recommended_level": 17,
         "exits": {
           "east": {
             "to": "D1",
@@ -108,7 +108,7 @@
       {
         "coordinate": "D1",
         "vnum": 30204,
-        "recommended_level": 19,
+        "recommended_level": 17,
         "exits": {
           "east": {
             "to": "E1",
@@ -156,7 +156,7 @@
       {
         "coordinate": "F1",
         "vnum": 30206,
-        "recommended_level": 16,
+        "recommended_level": 17,
         "exits": {
           "east": {
             "to": "G1",
@@ -185,7 +185,7 @@
       {
         "coordinate": "G1",
         "vnum": 30207,
-        "recommended_level": 7,
+        "recommended_level": 1,
         "exits": {
           "east": {
             "to": "H1",
@@ -287,7 +287,7 @@
       {
         "coordinate": "J1",
         "vnum": 30209,
-        "recommended_level": 12,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "K1",
@@ -332,7 +332,7 @@
       {
         "coordinate": "K1",
         "vnum": 30210,
-        "recommended_level": 19,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "L1",
@@ -353,7 +353,7 @@
       {
         "coordinate": "L1",
         "vnum": 30211,
-        "recommended_level": 27,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "M1",
@@ -386,7 +386,7 @@
       {
         "coordinate": "M1",
         "vnum": 30212,
-        "recommended_level": 35,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "N1",
@@ -414,7 +414,7 @@
       {
         "coordinate": "N1",
         "vnum": 30213,
-        "recommended_level": 45,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "O1",
@@ -443,7 +443,7 @@
       {
         "coordinate": "O1",
         "vnum": 30214,
-        "recommended_level": 40,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "P1",
@@ -464,7 +464,7 @@
       {
         "coordinate": "P1",
         "vnum": 30215,
-        "recommended_level": 36,
+        "recommended_level": 49,
         "exits": {
           "north": {
             "to": "P2",
@@ -485,7 +485,7 @@
       {
         "coordinate": "A2",
         "vnum": 30216,
-        "recommended_level": 29,
+        "recommended_level": 36,
         "exits": {
           "east": {
             "to": "B2",
@@ -507,7 +507,7 @@
       {
         "coordinate": "B2",
         "vnum": 30217,
-        "recommended_level": 30,
+        "recommended_level": 36,
         "exits": {
           "east": {
             "to": "C2",
@@ -538,7 +538,7 @@
       {
         "coordinate": "C2",
         "vnum": 30218,
-        "recommended_level": 32,
+        "recommended_level": 36,
         "exits": {
           "east": {
             "to": "D2",
@@ -577,7 +577,7 @@
       {
         "coordinate": "D2",
         "vnum": 30219,
-        "recommended_level": 24,
+        "recommended_level": 17,
         "exits": {
           "east": {
             "to": "E2",
@@ -617,7 +617,7 @@
       {
         "coordinate": "E2",
         "vnum": 30220,
-        "recommended_level": 19,
+        "recommended_level": 17,
         "exits": {
           "east": {
             "to": "F2",
@@ -658,7 +658,7 @@
       {
         "coordinate": "F2",
         "vnum": 30221,
-        "recommended_level": 20,
+        "recommended_level": 17,
         "exits": {
           "east": {
             "to": "G2",
@@ -690,7 +690,7 @@
       {
         "coordinate": "G2",
         "vnum": 30222,
-        "recommended_level": 15,
+        "recommended_level": 17,
         "exits": {
           "east": {
             "to": "H2",
@@ -723,7 +723,7 @@
       {
         "coordinate": "H2",
         "vnum": 30223,
-        "recommended_level": 6,
+        "recommended_level": 17,
         "exits": {
           "east": {
             "to": "I2",
@@ -757,7 +757,7 @@
       {
         "coordinate": "I2",
         "vnum": 30224,
-        "recommended_level": 13,
+        "recommended_level": 5,
         "exits": {
           "east": {
             "to": "J2",
@@ -796,7 +796,7 @@
       {
         "coordinate": "J2",
         "vnum": 30225,
-        "recommended_level": 19,
+        "recommended_level": 5,
         "exits": {
           "east": {
             "to": "K2",
@@ -823,7 +823,7 @@
       {
         "coordinate": "K2",
         "vnum": 30226,
-        "recommended_level": 26,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "L2",
@@ -858,7 +858,7 @@
       {
         "coordinate": "L2",
         "vnum": 30227,
-        "recommended_level": 34,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "M2",
@@ -898,7 +898,7 @@
       {
         "coordinate": "M2",
         "vnum": 30228,
-        "recommended_level": 43,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "N2",
@@ -957,7 +957,7 @@
       {
         "coordinate": "O2",
         "vnum": 30230,
-        "recommended_level": 46,
+        "recommended_level": 49,
         "exits": {
           "east": {
             "to": "P2",
@@ -979,7 +979,7 @@
       {
         "coordinate": "P2",
         "vnum": 30231,
-        "recommended_level": 41,
+        "recommended_level": 49,
         "exits": {
           "north": {
             "to": "P3",
@@ -1013,7 +1013,7 @@
       {
         "coordinate": "A3",
         "vnum": 30232,
-        "recommended_level": 33,
+        "recommended_level": 36,
         "exits": {
           "north": {
             "to": "A4",
@@ -1034,7 +1034,7 @@
       {
         "coordinate": "B3",
         "vnum": 30233,
-        "recommended_level": 35,
+        "recommended_level": 36,
         "exits": {
           "east": {
             "to": "C3",
@@ -1063,7 +1063,7 @@
       {
         "coordinate": "C3",
         "vnum": 30234,
-        "recommended_level": 39,
+        "recommended_level": 43,
         "exits": {
           "east": {
             "to": "D3",
@@ -1095,7 +1095,7 @@
       {
         "coordinate": "D3",
         "vnum": 30235,
-        "recommended_level": 31,
+        "recommended_level": 43,
         "exits": {
           "east": {
             "to": "E3",
@@ -1127,7 +1127,7 @@
       {
         "coordinate": "E3",
         "vnum": 30236,
-        "recommended_level": 24,
+        "recommended_level": 43,
         "exits": {
           "east": {
             "to": "F3",
@@ -1191,7 +1191,7 @@
       {
         "coordinate": "G3",
         "vnum": 30238,
-        "recommended_level": 19,
+        "recommended_level": 23,
         "exits": {
           "east": {
             "to": "H3",
@@ -1226,7 +1226,7 @@
       {
         "coordinate": "H3",
         "vnum": 30239,
-        "recommended_level": 12,
+        "recommended_level": 5,
         "exits": {
           "east": {
             "to": "I3",
@@ -1247,7 +1247,7 @@
       {
         "coordinate": "I3",
         "vnum": 30240,
-        "recommended_level": 16,
+        "recommended_level": 5,
         "exits": {
           "east": {
             "to": "J3",
@@ -1278,7 +1278,7 @@
       {
         "coordinate": "J3",
         "vnum": 30241,
-        "recommended_level": 20,
+        "recommended_level": 5,
         "exits": {
           "east": {
             "to": "K3",
@@ -1309,7 +1309,7 @@
       {
         "coordinate": "K3",
         "vnum": 30242,
-        "recommended_level": 23,
+        "recommended_level": 30,
         "exits": {
           "east": {
             "to": "L3",
@@ -1335,7 +1335,7 @@
       {
         "coordinate": "L3",
         "vnum": 30243,
-        "recommended_level": 26,
+        "recommended_level": 30,
         "exits": {
           "east": {
             "to": "M3",
@@ -1375,7 +1375,7 @@
       {
         "coordinate": "M3",
         "vnum": 30244,
-        "recommended_level": 28,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "N3",
@@ -1401,7 +1401,7 @@
       {
         "coordinate": "N3",
         "vnum": 30245,
-        "recommended_level": 43,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "O3",
@@ -1432,7 +1432,7 @@
       {
         "coordinate": "O3",
         "vnum": 30246,
-        "recommended_level": 38,
+        "recommended_level": 11,
         "exits": {
           "west": {
             "to": "N3",
@@ -1455,7 +1455,7 @@
       {
         "coordinate": "P3",
         "vnum": 30247,
-        "recommended_level": 34,
+        "recommended_level": 49,
         "exits": {
           "north": {
             "to": "P4",
@@ -1510,7 +1510,7 @@
       {
         "coordinate": "B4",
         "vnum": 30249,
-        "recommended_level": 40,
+        "recommended_level": 36,
         "exits": {
           "north": {
             "to": "B5",
@@ -1554,7 +1554,7 @@
       {
         "coordinate": "D4",
         "vnum": 30251,
-        "recommended_level": 37,
+        "recommended_level": 43,
         "exits": {
           "south": {
             "to": "D3",
@@ -1575,7 +1575,7 @@
       {
         "coordinate": "E4",
         "vnum": 30252,
-        "recommended_level": 26,
+        "recommended_level": 43,
         "exits": {
           "north": {
             "to": "E5",
@@ -1604,7 +1604,7 @@
       {
         "coordinate": "F4",
         "vnum": 30253,
-        "recommended_level": 24,
+        "recommended_level": 23,
         "exits": {
           "south": {
             "to": "F3",
@@ -1627,7 +1627,7 @@
       {
         "coordinate": "G4",
         "vnum": 30254,
-        "recommended_level": 21,
+        "recommended_level": 5,
         "exits": {
           "east": {
             "to": "H4",
@@ -1656,7 +1656,7 @@
       {
         "coordinate": "H4",
         "vnum": 30255,
-        "recommended_level": 11,
+        "recommended_level": 5,
         "exits": {
           "east": {
             "to": "I4",
@@ -1684,7 +1684,7 @@
       {
         "coordinate": "I4",
         "vnum": 30256,
-        "recommended_level": 16,
+        "recommended_level": 5,
         "exits": {
           "north": {
             "to": "I5",
@@ -1719,7 +1719,7 @@
       {
         "coordinate": "J4",
         "vnum": 30257,
-        "recommended_level": 19,
+        "recommended_level": 5,
         "exits": {
           "east": {
             "to": "K4",
@@ -1770,7 +1770,7 @@
       {
         "coordinate": "K4",
         "vnum": 30258,
-        "recommended_level": 20,
+        "recommended_level": 30,
         "exits": {
           "east": {
             "to": "L4",
@@ -1803,7 +1803,7 @@
       {
         "coordinate": "L4",
         "vnum": 30259,
-        "recommended_level": 20,
+        "recommended_level": 30,
         "exits": {
           "north": {
             "to": "L5",
@@ -1837,7 +1837,7 @@
       {
         "coordinate": "M4",
         "vnum": 30260,
-        "recommended_level": 16,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "N4",
@@ -1859,7 +1859,7 @@
       {
         "coordinate": "N4",
         "vnum": 30261,
-        "recommended_level": 29,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "O4",
@@ -1898,7 +1898,7 @@
       {
         "coordinate": "O4",
         "vnum": 30262,
-        "recommended_level": 28,
+        "recommended_level": 11,
         "exits": {
           "west": {
             "to": "N4",
@@ -1923,7 +1923,7 @@
       {
         "coordinate": "P4",
         "vnum": 30263,
-        "recommended_level": 28,
+        "recommended_level": 49,
         "exits": {
           "north": {
             "to": "P5",
@@ -1945,7 +1945,7 @@
       {
         "coordinate": "A5",
         "vnum": 30264,
-        "recommended_level": 34,
+        "recommended_level": 36,
         "exits": {
           "east": {
             "to": "B5",
@@ -2002,7 +2002,7 @@
       {
         "coordinate": "C5",
         "vnum": 30266,
-        "recommended_level": 38,
+        "recommended_level": 36,
         "exits": {
           "east": {
             "to": "D5",
@@ -2029,7 +2029,7 @@
       {
         "coordinate": "D5",
         "vnum": 30267,
-        "recommended_level": 33,
+        "recommended_level": 36,
         "exits": {
           "north": {
             "to": "D6",
@@ -2056,7 +2056,7 @@
       {
         "coordinate": "E5",
         "vnum": 30268,
-        "recommended_level": 27,
+        "recommended_level": 43,
         "exits": {
           "south": {
             "to": "E4",
@@ -2081,7 +2081,7 @@
       {
         "coordinate": "F5",
         "vnum": 30269,
-        "recommended_level": 24,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "G5",
@@ -2100,7 +2100,7 @@
       {
         "coordinate": "G5",
         "vnum": 30270,
-        "recommended_level": 13,
+        "recommended_level": 56,
         "exits": {
           "north": {
             "to": "G6",
@@ -2141,7 +2141,7 @@
       {
         "coordinate": "I5",
         "vnum": 30272,
-        "recommended_level": 9,
+        "recommended_level": 5,
         "exits": {
           "north": {
             "to": "I6",
@@ -2168,7 +2168,7 @@
       {
         "coordinate": "J5",
         "vnum": 30273,
-        "recommended_level": 15,
+        "recommended_level": 5,
         "exits": {
           "south": {
             "to": "J4",
@@ -2189,7 +2189,7 @@
       {
         "coordinate": "K5",
         "vnum": 30274,
-        "recommended_level": 17,
+        "recommended_level": 30,
         "exits": {
           "east": {
             "to": "L5",
@@ -2216,7 +2216,7 @@
       {
         "coordinate": "L5",
         "vnum": 30275,
-        "recommended_level": 15,
+        "recommended_level": 30,
         "exits": {
           "north": {
             "to": "L6",
@@ -2264,7 +2264,7 @@
       {
         "coordinate": "N5",
         "vnum": 30277,
-        "recommended_level": 16,
+        "recommended_level": 11,
         "exits": {
           "north": {
             "to": "N6",
@@ -2294,7 +2294,7 @@
       {
         "coordinate": "O5",
         "vnum": 30278,
-        "recommended_level": 20,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "P5",
@@ -2316,7 +2316,7 @@
       {
         "coordinate": "P5",
         "vnum": 30279,
-        "recommended_level": 22,
+        "recommended_level": 49,
         "exits": {
           "north": {
             "to": "P6",
@@ -2343,7 +2343,7 @@
       {
         "coordinate": "A6",
         "vnum": 30280,
-        "recommended_level": 35,
+        "recommended_level": 36,
         "exits": {
           "east": {
             "to": "B6",
@@ -2413,7 +2413,7 @@
       {
         "coordinate": "D6",
         "vnum": 30283,
-        "recommended_level": 35,
+        "recommended_level": 36,
         "exits": {
           "east": {
             "to": "E6",
@@ -2458,7 +2458,7 @@
       {
         "coordinate": "E6",
         "vnum": 30284,
-        "recommended_level": 33,
+        "recommended_level": 36,
         "exits": {
           "east": {
             "to": "F6",
@@ -2492,7 +2492,7 @@
       {
         "coordinate": "F6",
         "vnum": 30285,
-        "recommended_level": 33,
+        "recommended_level": 56,
         "exits": {
           "north": {
             "to": "F7",
@@ -2525,7 +2525,7 @@
       {
         "coordinate": "G6",
         "vnum": 30286,
-        "recommended_level": 23,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "H6",
@@ -2554,7 +2554,7 @@
       {
         "coordinate": "H6",
         "vnum": 30287,
-        "recommended_level": 11,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "I6",
@@ -2588,7 +2588,7 @@
       {
         "coordinate": "I6",
         "vnum": 30288,
-        "recommended_level": 17,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "J6",
@@ -2622,7 +2622,7 @@
       {
         "coordinate": "J6",
         "vnum": 30289,
-        "recommended_level": 20,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "K6",
@@ -2643,7 +2643,7 @@
       {
         "coordinate": "K6",
         "vnum": 30290,
-        "recommended_level": 22,
+        "recommended_level": 30,
         "exits": {
           "east": {
             "to": "L6",
@@ -2669,7 +2669,7 @@
       {
         "coordinate": "L6",
         "vnum": 30291,
-        "recommended_level": 22,
+        "recommended_level": 30,
         "exits": {
           "east": {
             "to": "M6",
@@ -2701,7 +2701,7 @@
       {
         "coordinate": "M6",
         "vnum": 30292,
-        "recommended_level": 15,
+        "recommended_level": 30,
         "exits": {
           "east": {
             "to": "N6",
@@ -2734,7 +2734,7 @@
       {
         "coordinate": "N6",
         "vnum": 30293,
-        "recommended_level": 21,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "O6",
@@ -2774,7 +2774,7 @@
       {
         "coordinate": "O6",
         "vnum": 30294,
-        "recommended_level": 23,
+        "recommended_level": 11,
         "exits": {
           "south": {
             "to": "O5",
@@ -2796,7 +2796,7 @@
       {
         "coordinate": "P6",
         "vnum": 30295,
-        "recommended_level": 24,
+        "recommended_level": 49,
         "exits": {
           "south": {
             "to": "P5",
@@ -2817,7 +2817,7 @@
       {
         "coordinate": "A7",
         "vnum": 30296,
-        "recommended_level": 35,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "B7",
@@ -2845,7 +2845,7 @@
       {
         "coordinate": "B7",
         "vnum": 30297,
-        "recommended_level": 36,
+        "recommended_level": 56,
         "exits": {
           "north": {
             "to": "B8",
@@ -2867,7 +2867,7 @@
       {
         "coordinate": "C7",
         "vnum": 30298,
-        "recommended_level": 37,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "D7",
@@ -2896,7 +2896,7 @@
       {
         "coordinate": "D7",
         "vnum": 30299,
-        "recommended_level": 37,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "E7",
@@ -2931,7 +2931,7 @@
       {
         "coordinate": "E7",
         "vnum": 30300,
-        "recommended_level": 40,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "F7",
@@ -2965,7 +2965,7 @@
       {
         "coordinate": "F7",
         "vnum": 30301,
-        "recommended_level": 48,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "G7",
@@ -2992,7 +2992,7 @@
       {
         "coordinate": "G7",
         "vnum": 30302,
-        "recommended_level": 35,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "H7",
@@ -3020,7 +3020,7 @@
       {
         "coordinate": "H7",
         "vnum": 30303,
-        "recommended_level": 22,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "I7",
@@ -3051,7 +3051,7 @@
       {
         "coordinate": "I7",
         "vnum": 30304,
-        "recommended_level": 24,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "J7",
@@ -3072,7 +3072,7 @@
       {
         "coordinate": "J7",
         "vnum": 30305,
-        "recommended_level": 26,
+        "recommended_level": 30,
         "exits": {
           "east": {
             "to": "K7",
@@ -3093,7 +3093,7 @@
       {
         "coordinate": "K7",
         "vnum": 30306,
-        "recommended_level": 27,
+        "recommended_level": 30,
         "exits": {
           "east": {
             "to": "L7",
@@ -3126,7 +3126,7 @@
       {
         "coordinate": "L7",
         "vnum": 30307,
-        "recommended_level": 28,
+        "recommended_level": 30,
         "exits": {
           "east": {
             "to": "M7",
@@ -3155,7 +3155,7 @@
       {
         "coordinate": "M7",
         "vnum": 30308,
-        "recommended_level": 22,
+        "recommended_level": 30,
         "exits": {
           "east": {
             "to": "N7",
@@ -3194,7 +3194,7 @@
       {
         "coordinate": "N7",
         "vnum": 30309,
-        "recommended_level": 25,
+        "recommended_level": 30,
         "exits": {
           "east": {
             "to": "O7",
@@ -3249,7 +3249,7 @@
       {
         "coordinate": "O7",
         "vnum": 30310,
-        "recommended_level": 26,
+        "recommended_level": 30,
         "exits": {
           "east": {
             "to": "P7",
@@ -3283,7 +3283,7 @@
       {
         "coordinate": "P7",
         "vnum": 30311,
-        "recommended_level": 26,
+        "recommended_level": 30,
         "exits": {
           "north": {
             "to": "P8",
@@ -3310,7 +3310,7 @@
       {
         "coordinate": "A8",
         "vnum": 30312,
-        "recommended_level": 37,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "B8",
@@ -3329,7 +3329,7 @@
       {
         "coordinate": "B8",
         "vnum": 30313,
-        "recommended_level": 38,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "C8",
@@ -3363,7 +3363,7 @@
       {
         "coordinate": "C8",
         "vnum": 30314,
-        "recommended_level": 39,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "D8",
@@ -3389,7 +3389,7 @@
       {
         "coordinate": "D8",
         "vnum": 30315,
-        "recommended_level": 43,
+        "recommended_level": 56,
         "exits": {
           "south": {
             "to": "D7",
@@ -3418,7 +3418,7 @@
       {
         "coordinate": "E8",
         "vnum": 30316,
-        "recommended_level": 51,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "F8",
@@ -3470,7 +3470,7 @@
       {
         "coordinate": "G8",
         "vnum": 30318,
-        "recommended_level": 49,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "H8",
@@ -3492,7 +3492,7 @@
       {
         "coordinate": "H8",
         "vnum": 30319,
-        "recommended_level": 35,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "I8",
@@ -3526,7 +3526,7 @@
       {
         "coordinate": "I8",
         "vnum": 30320,
-        "recommended_level": 32,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "J8",
@@ -3547,7 +3547,7 @@
       {
         "coordinate": "J8",
         "vnum": 30321,
-        "recommended_level": 30,
+        "recommended_level": 56,
         "exits": {
           "west": {
             "to": "I8",
@@ -3607,7 +3607,7 @@
       {
         "coordinate": "M8",
         "vnum": 30324,
-        "recommended_level": 29,
+        "recommended_level": 30,
         "exits": {
           "east": {
             "to": "N8",
@@ -3635,7 +3635,7 @@
       {
         "coordinate": "N8",
         "vnum": 30325,
-        "recommended_level": 28,
+        "recommended_level": 30,
         "exits": {
           "south": {
             "to": "N7",
@@ -3664,7 +3664,7 @@
       {
         "coordinate": "O8",
         "vnum": 30326,
-        "recommended_level": 28,
+        "recommended_level": 30,
         "exits": {
           "south": {
             "to": "O7",
@@ -3685,7 +3685,7 @@
       {
         "coordinate": "P8",
         "vnum": 30327,
-        "recommended_level": 28,
+        "recommended_level": 30,
         "exits": {
           "south": {
             "to": "P7",

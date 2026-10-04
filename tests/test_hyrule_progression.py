@@ -976,7 +976,7 @@ class HyruleProgressionTests(unittest.TestCase):
         for name, vnum in (("HYRULE_NPC_FIRST", NPC_VNUM_FIRST), ("HYRULE_NPC_LAST", NPC_VNUM_LAST),
                            ("HYRULE_ZELDA_VNUM", ZELDA_VNUM)):
             self.assertRegex(merc, rf"#define {name}\s+{vnum}\b")
-        bystander = fight.split("static bool is_hyrule_bystander(", 1)[1].split("\n}", 1)[0]
+        bystander = fight.split("bool is_hyrule_bystander(", 1)[1].split("\n}", 1)[0]
         self.assertIn("vnum >= HYRULE_NPC_FIRST && vnum <= HYRULE_NPC_LAST", bystander)
         self.assertIn("HYRULE_ZELDA_VNUM", bystander)
         outside = sorted(

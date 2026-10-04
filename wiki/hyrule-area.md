@@ -159,6 +159,27 @@ give. `tests/test_hyrule_walkthrough.py` plays the whole chain live as a
 mortal: every walk, entrance, chest and returning light, the owl and the
 Recorder.
 
+**Nothing in Hyrule is aggressive** (owner, 2026-10-04). `calm_mobiles()` in
+the generator takes `ACT_AGGRESSIVE` off every mobile record, kept or
+generated; enemies fight back when attacked. A shutter still waits for its
+room's enemies to die: `hyrule_room_has_guardian()` asks whether a Hyrule
+enemy (not a bystander, not a pet) is in the room, no longer the flag.
+
+**Enemies are on par with the world at their level.** `HIT_POINT_CURVE` and
+`DAMAGE_CURVE` are the median hit points and damage a round of the world's
+spawned mobiles; damage is divided by the attacks a kind makes a round (fast
+races hit twice), and `BAND_HP_CALIBRATION` / `BAND_DAMAGE_CALIBRATION`
+correct each band's mix of kinds so its enemies average 1.00 of the world
+at the band's middle level. The overworld is graded along the routes: every
+screen a player walks to reach dungeon N, carrying only what earlier dungeons
+give, is graded for dungeon N's band, and every other screen takes the grade
+of the nearest graded one (the start stays at 1). Re-grade with the same
+rule if the overworld changes; the manifest builder cannot be rerun.
+
+**Bombs where the walls want them.** A Hyrule enemy killed in or next to a
+room with a bomb wall leaves a bomb one time in four
+(`HYRULE_BOMB_DROP_CHANCE` in `src/hyrule.c`), up to the bag's capacity.
+
 **The owl.** Leaving a dungeon you have won by its returning light, an owl
 lands and says where the next dungeon is and what opens it
 (`hyrule_owl_after_portal` in `src/hyrule.c`, called from `do_enter`). Its
@@ -317,9 +338,24 @@ boss weapon sits 10-20% above that mark, and the test holds it there.
 
 ### Boss Drop Tables
 
+**Since 2026-10-04 every guardian drops a piece for every armour slot** but
+the neck (its Heart Guard's) and, for Ganon, the head (his crown's): the five
+below plus `BOSS_EXTRA_DROPS`, six more each (five for Ganon) in a second
+block at `30700` (`BOSS_EXTRA_DROP_FIRST`, seven vnums a guardian), and three
+pieces fall each kill. Every piece also carries mana (`BOSS_DROP_MANA` for the
+first five), sized so that it is the best in its slot for a caster as well as
+a fighter, and `tests/test_hyrule_boss_drops.py` measures both against the
+whole world. The extra pieces were sized by a solver against the Gear Finder
+at the top of each band: hitroll and damroll at about a twelfth of the level,
+hit points to reach roughly 8% over the best warrior piece (never past the
+test's ceiling), then mana to 6% over the best mage piece. The weapons gained
+hitroll (Levels 1, 2, 5, 6 and 9 lost to carrier-levelled weapons the
+Gear Finder ranks) and mana (`BOSS_WEAPON_MANA`); the Heart Guards, armour
+alone until then, gained `HEART_GUARD_APPLIES`.
+
 Besides its key, Heart Container, weapon and Heart Guard, every guardian has
 five armour pieces (`BOSS_DROPS` in the generator, vnums `30650-30694`), and
-two of them, chosen at random, fall in its corpse each kill
+two of them, chosen at random, fell in its corpse each kill
 (`hyrule_boss_drops()` in `src/hyrule.c`, called from `make_corpse`). Each is at
 the top of its band (Ganon's at 58) and was sized against the best piece any
 other source gives a warrior of that level in that slot, by the Gear Finder's

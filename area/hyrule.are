@@ -9,7 +9,7 @@ A fish-like creature hops from the water and ATTACKS!
 This fish-like creature seems to spend most of it's time underwater... occasionally rising to the surface to peer around.  It doesn't seem to be at all afraid by your presence... and you actually seem to anger it.
 ~
 fish~
-ABCFHM JL -100 S
+ABCHM JL -100 S
 30 15 8d10+850 1d1+0 3d6+22 5
 0 0 0 0
 FHU R I 0
@@ -23,7 +23,7 @@ A large white ghost floats here.
 This large ghost doesn't look to happy to see you here.  It's moans are unearthly...
 ~
 undead~
-AF BCEFHJQU -300 S
+A BCEFHJQU -300 S
 55 27 16d10+5000 18d10+900 6d8+41 18
 0 0 0 0
 0 BLQ FG EHJN
@@ -38,7 +38,7 @@ A large tree stands here.  Upon closer examination, you notice what looks like a
 and eyes... how odd...
 ~
 tree~
-ABFM DEFJV -350 S
+ABM DEFJV -350 S
 55 27 16d10+5000 1d1+0 6d8+41 7
 0 0 0 0
 CEO EQS I HIJ
@@ -57,7 +57,7 @@ core, and the smoke of a bomb stuns it long enough for a blade to
 bite. Guardian of the Moon, it leaves a heart container behind.
 ~
 lizard~
-ABFMV DEFV -750 S
+ABMV DEFV -750 S
 16 8 4d10+2178 1d10+0 2d6+12 7
 0 0 0 0
 0 H L I
@@ -77,7 +77,7 @@ of the Eagle, it bars the way to the first shard of wisdom, and it
 leaves a heart container behind when it falls.
 ~
 dragon~
-ABFMV DFHJ -450 S
+ABMV DFHJ -450 S
 10 5 2d10+809 1d10+0 1d5+7 7
 0 0 0 0
 CMO BHL HQ I
@@ -96,7 +96,7 @@ that is not an arrow: carry a bow, or the Silver Arrow, to end it.
 Guardian of the Dragon, it leaves a heart container behind.
 ~
 insect~
-ABFMV CDFHJTV -750 S
+ABMV CDFHJTV -750 S
 43 21 10d10+19945 15d10+720 3d2+32 7
 0 0 0 0
 H BG 0 HL
@@ -110,7 +110,7 @@ The mighty wizard Agahnim stands here.
 Agahnim watches you as you enter, and gives a little smirk.  He seems unimpressed by you, as his eyes start to glow a bright blue.  The entire room crackles with his power, and then goes quiet.  Oh, boy.
 ~
 elf~
-ABFMRV CDFHJT -500 S
+ABMRV CDFHJT -500 S
 65 32 28d12+11500 24d10+1400 8d10+50 2
 0 0 0 0
 0 B CL U
@@ -131,7 +131,7 @@ down, he collapses flashing red, and a level 54+ hero must wield the Silver
 Arrow and SHOOT GANON to end it.
 ~
 pig~
-ABFMRV CDFHJQUV -800 S
+ABMRV CDFHJQUV -800 S
 64 32 16d10+35912 17d10+840 5d31+120 7
 -40 -40 -40 -40
 BCDE B CP Y
@@ -203,7 +203,7 @@ A segmented Moldorm circles the room.
 The armored worm turns in tight, relentless circles.
 ~
 insect~
-AF 0 -200 S
+A 0 -200 S
 25 12 8d10+750 1d10+0 3d5+18 7
 0 0 0 0
 0 0 0 0
@@ -224,7 +224,7 @@ bomb can take more than one head at once. Guardian of the Manji, it
 leaves a heart container behind.
 ~
 tree~
-ABFMV 0 -200 S
+ABMV 0 -200 S
 23 11 5d10+3372 1d10+0 2d11+18 7
 0 0 0 0
 0 0 0 0
@@ -244,7 +244,7 @@ own, still spitting fire. When the last head is severed, the beast
 collapses. Guardian of the Snake, it leaves a heart container.
 ~
 dragon~
-ABFMV 0 -200 S
+ABMV 0 -200 S
 30 15 7d10+5962 12d10+600 3d16+38 7
 0 0 0 0
 0 0 0 0
@@ -264,7 +264,7 @@ simply a long, hard fight against a hide like a pincushion. Guardian
 of the Lizard, it leaves a heart container behind.
 ~
 human~
-ABFMV 0 -200 S
+ABMV 0 -200 S
 36 18 9d10+16750 13d10+660 3d8+27 7
 0 0 0 0
 0 0 0 0
@@ -279,7 +279,7 @@ A hungry Goriya watches the passage.
 The Goriya looks more interested in food than battle and refuses to move.
 ~
 goblin~
-AF 0 -200 S
+A 0 -200 S
 1 1 3d10+1 1d10+0 1d4+1 7
 0 0 0 0
 0 0 0 0
@@ -294,7 +294,7 @@ An elder Digdogger shakes the dungeon.
 The enormous eye has survived countless heroes, but still fears music.
 ~
 human~
-ABFMV 0 -200 S
+ABMV 0 -200 S
 63 31 21d10+9922 15d10+756 7d8+45 7
 0 0 0 0
 0 0 0 0
@@ -314,7 +314,7 @@ horned head can be wounded. Guardian of the Demon, it bars the way
 to the seventh shard of wisdom and leaves a heart container behind.
 ~
 dragon~
-ABFMV 0 -200 S
+ABMV 0 -200 S
 49 24 12d10+29934 16d10+768 4d12+40 7
 0 0 0 0
 0 0 0 0
@@ -335,7 +335,7 @@ four are severed does the beast die. Guardian of the Lion, it keeps
 the last shard of wisdom and leaves a heart container behind.
 ~
 dragon~
-ABFMV 0 -200 S
+ABMV 0 -200 S
 55 27 13d10+32928 16d10+804 4d15+48 7
 0 0 0 0
 0 0 0 0
@@ -350,7 +350,7 @@ An ancient Manhandla tears at the Lion's walls.
 The old four-headed plant has rooted itself through the dungeon floor.
 ~
 tree~
-ABFMV 0 -200 S
+ABMV 0 -200 S
 65 32 21d10+10562 16d10+780 7d8+46 7
 0 0 0 0
 0 0 0 0
@@ -365,7 +365,7 @@ A western moblin guards the forest trail.
 This disciplined raider watches the road to the Manji.
 ~
 pig~
-AF 0 -200 S
+A 0 -200 S
 23 11 7d10+634 1d10+0 3d5+16 7
 0 0 0 0
 0 0 0 0
@@ -380,7 +380,7 @@ A western Zora stalks the lakeside.
 The veteran river fighter is far stronger than its eastern kin.
 ~
 fish~
-AF 0 -200 S
+A 0 -200 S
 28 14 9d10+940 1d10+0 3d5+20 7
 0 0 0 0
 0 0 0 0
@@ -395,7 +395,7 @@ A shoreline leever bursts from the sand.
 Salt has hardened this creature's shell into natural armor.
 ~
 insect~
-AF 0 -200 S
+A 0 -200 S
 33 16 11d10+1306 1d10+0 4d6+23 7
 0 0 0 0
 0 0 0 0
@@ -410,7 +410,7 @@ A gnarled guardian tree tears free of its roots.
 Ancient magic drives this tree to defend the final eastern paths.
 ~
 tree~
-AF 0 -200 S
+A 0 -200 S
 63 31 21d10+4762 15d10+756 7d8+45 7
 0 0 0 0
 0 0 0 0
@@ -425,7 +425,7 @@ A blue Like Like slides forward, hungry for enchanted equipment.
 This stronger dungeon predator has adapted to the magic surrounding the Dragon labyrinth.
 ~
 human~
-ABF 0 -300 S
+AB 0 -300 S
 58 29 19d10+4070 14d10+696 6d7+42 7
 0 0 0 0
 U 0 D C
@@ -440,7 +440,7 @@ An elder Moldorm coils across the Demon's opening chamber.
 Age and the seventh labyrinth's magic have hardened every segment of this enormous worm.
 ~
 snake~
-ABF 0 -300 S
+AB 0 -300 S
 61 30 20d10+4465 15d10+732 7d8+43 7
 0 0 0 0
 0 0 0 0
@@ -455,7 +455,7 @@ A red Wizzrobe flickers between the shadows of Death Mountain.
 This master of the final labyrinth disappears between volleys of searing magic.
 ~
 elf~
-ABFR CDFHJTV -500 S
+ABR CDFHJTV -500 S
 68 34 22d10+5548 17d10+816 7d8+48 2
 0 0 0 0
 0 0 0 0
@@ -1970,8 +1970,8 @@ puffs its tube of a snout and spits a pebble that any shield will knock
 aside. A couple of honest blows end it.
 ~
 fish~
-ABF 0 0 S
-2 1 1d10+18 1d1+0 1d2+2 6
+AB 0 0 S
+2 1 1d10+37 1d1+0 1d2+2 6
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -1989,8 +1989,8 @@ toward whoever comes near and fires, but its aim is still poor and a raised
 shield sends the stones skipping away.
 ~
 fish~
-ABF 0 0 S
-8 4 2d10+79 1d1+0 1d2+6 6
+AB 0 0 S
+8 4 2d10+110 1d1+0 1d2+6 6
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2008,8 +2008,8 @@ spit a stone hard enough to crack bark. Strike from the side while it is
 turning; a shield held forward takes the stones well enough.
 ~
 fish~
-ABF 0 0 S
-14 7 3d10+160 1d1+0 1d2+10 6
+AB 0 0 S
+14 7 3d10+179 1d1+0 1d2+10 6
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2027,8 +2027,8 @@ stones that leave craters in the turf. A shield still turns them, though
 each one jars the arm to the shoulder.
 ~
 fish~
-ABF 0 0 S
-20 10 5d10+276 1d1+0 2d2+15 6
+AB 0 0 S
+20 10 5d10+297 1d1+0 2d2+15 6
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2046,27 +2046,8 @@ heavy and hard to shift. Keep a shield up and close the distance, because
 it will not chase you into the open grass.
 ~
 fish~
-ABF 0 0 S
-27 13 6d10+543 1d1+0 2d2+20 6
-0 0 0 0
-0 0 0 0
-8 8 0 0
-AHMV ABCDEFGHIJK S 0
-#31005
-octorok red~
-a red octorok~
-A grizzled red octorok crouches in the windblown grass, snout flared.
-~
-The wind off the southeastern coast has flattened the grass around this
-octorok into a nest, and it has sat in that nest long enough to grow huge
-and sour. One eye is clouded white, the other sharp. Its snout is ringed
-with calluses from spitting, and it picks the roundest, heaviest stones
-from the scatter at its feet. A shield stops them, but they come in quick
-pairs now, and it wheels to face you faster than a young one.
-~
-fish~
-ABF 0 0 S
-33 16 8d10+892 1d1+0 3d2+24 6
+AB 0 0 S
+27 13 6d10+421 1d1+0 2d2+20 6
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2084,8 +2065,43 @@ it spits rocks that whistle. Shields still turn them, but only just, and it
 takes a long, hard fight to bring it down.
 ~
 fish~
-ABF 0 0 S
-40 20 10d10+1345 1d1+0 3d2+30 6
+AB 0 0 S
+40 20 10d10+951 1d1+0 3d2+30 6
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK S 0
+#31007
+octorok red~
+a red octorok~
+A massive red octorok guards the cliff path, rocks whistling from its snout.
+~
+This red octorok is as big as a barrel and dark as old brick, and it has
+held the eastern cliffs for so long that the path bends around it. It spits
+rocks with deadly accuracy and enough force to stagger a shielded knight.
+Close the distance fast and fight hard.
+~
+fish~
+AB 0 0 S
+46 23 11d10+1797 1d1+0 4d8+34 6
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK S 0
+#31010
+octorok blue~
+a blue octorok~
+A small blue octorok bobs through the grass, snout puffing.
+~
+Barely grown, this blue octorok has a soft, mottled hide and stubby legs
+that leave little tracks in the meadow. It spits pebbles a little harder
+and a little more often than its red cousins, but a shield turns every one,
+and a few honest blows put it down. It is the first real fight many
+travellers in Hyrule find.
+~
+fish~
+AB 0 0 S
+4 2 1d10+79 1d1+0 1d2+3 6
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2103,8 +2119,8 @@ stones are small, and a raised shield turns every one of them aside with a
 dull click.
 ~
 fish~
-ABF 0 0 S
-10 5 2d10+129 1d1+0 1d2+7 6
+AB 0 0 S
+10 5 2d10+178 1d1+0 1d2+7 6
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2122,88 +2138,47 @@ Step out of that line and it must turn before it can shoot again, which
 buys a moment to strike.
 ~
 fish~
-ABF 0 0 S
-16 8 4d10+246 1d1+0 2d2+12 6
+AB 0 0 S
+16 8 4d10+273 1d1+0 2d2+12 6
 0 0 0 0
 0 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK S 0
-#31013
+#31017
 octorok blue~
 a blue octorok~
-A blue octorok squats on the lake shingle, its snout puckering.
+A grizzled blue octorok squats on the rocks above the eastern sea.
 ~
-Lake Hylia has fattened this octorok on whatever washes up along the
-shingle, and its blue skin has a wet, oily sheen marked with thorn
-scratches from the brambles inland. It is heavier than its young cousins
-and does not flinch from a blade, taking blow after blow while it pumps out
-stones that crack against rock. A shield held square still stops them,
-though the impact numbs the arm.
+Salt and wind have bleached this old blue octorok to the colour of slate,
+and its tough hide is ridged with barnacle scars. It holds the eastern
+cliffs and coast against all comers, spitting rocks with a crack like a
+sling, and it hits hard enough to dent a shield. Close in quickly and do
+not let it pick you off from range.
 ~
 fish~
-ABF 0 0 S
-22 11 5d10+440 1d1+0 2d2+16 6
+AB 0 0 S
+48 24 12d10+2580 1d1+0 4d13+40 6
 0 0 0 0
 0 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK S 0
-#31014
-octorok blue~
-a blue octorok~
-A blue octorok clings to the cliff edge, crusted white with salt.
+#31021
+moblin red~
+a red moblin~
+A red moblin skulks among the dark pines, grumbling.
 ~
-Sea wind has scoured this octorok to a faded slate blue, and a rime of
-dried salt crusts its rubbery hide around the eyes and snout. It lives on
-the cliff tops where gulls wheel, and it has learned to spit its stones
-downwind so the gale carries them farther and faster than any shot on the
-lowland grass. Only a shield turned to meet them will stop them, and it
-needs many heavy cuts to fall.
+This red moblin is a scrawny, ill-tempered thing with a cracked spear and a
+habit of muttering to itself. It lurks among the dark pines on the way east
+and hurls its spear at travellers before charging after it. It is no great
+threat to a careful fighter, but it never gives up a chase.
 ~
-fish~
-ABF 0 0 S
-29 14 7d10+802 1d1+0 2d2+21 6
+pig~
+AB 0 0 S
+10 5 2d10+178 1d1+0 1d11+8 2
 0 0 0 0
 0 0 0 0
 8 8 0 0
-AHMV ABCDEFGHIJK S 0
-#31015
-octorok blue~
-a blue octorok~
-A blue octorok lurks among the tide pools, barnacles on its back.
-~
-Barnacles have taken root along the back of this old octorok, and one of
-its four legs ends in a healed stump from some fight among the tide pools
-of the southeastern coast. It moves in a rolling, lopsided scuttle but has
-lost none of its speed, and the stones it spits are lumps of beach rock
-that ring off a shield like a hammer on an anvil. It shrugs off blows that
-would burst younger kin.
-~
-fish~
-ABF 0 0 S
-35 17 8d10+1306 1d1+0 3d2+26 6
-0 0 0 0
-0 0 0 0
-8 8 0 0
-AHMV ABCDEFGHIJK S 0
-#31016
-octorok blue~
-a blue octorok~
-A huge blue octorok guards the path amid a litter of spat stones.
-~
-The largest of its kind for leagues, this octorok has grown a hide so dark
-it is nearly black, rippled with old scars where swords once bit and failed
-to finish it. It holds a stretch of the southern paths as its own and has
-spat so many stones there that they lie scattered like hail. Each shot
-comes out with the force of a sling bullet, and only a raised shield keeps
-a skull whole against it.
-~
-fish~
-ABF 0 0 S
-42 21 10d10+1955 1d1+0 3d2+31 6
-0 0 0 0
-0 0 0 0
-8 8 0 0
-AHMV ABCDEFGHIJK S 0
+AHMV ABCDEFGHIJK M 0
 #31022
 moblin red~
 a red moblin~
@@ -2217,27 +2192,8 @@ hurls the spear in a straight line, and a raised shield turns the throw
 aside with a dull clack.
 ~
 pig~
-ABF 0 0 S
-16 8 4d10+246 1d1+0 2d2+12 2
-0 0 0 0
-0 0 0 0
-8 8 0 0
-AHMV ABCDEFGHIJK M 0
-#31023
-moblin red~
-a red moblin~
-A red moblin squats beside a cold firepit, sharpening a spear shaft.
-~
-Heavier through the shoulders than the thicket whelps, this brute has the
-churned leaf mould of the southern woods caked to its knees and soot from
-old cookfires smeared across its snout. A torn ear hangs in a ragged flap.
-It hunts in short, stamping patrols between the orderly trees, and it
-carries a bundle of spears on its back so that it can throw one after
-another down any open lane.
-~
-pig~
-ABF 0 0 S
-22 11 5d10+440 1d1+0 2d2+16 2
+AB 0 0 S
+16 8 4d10+273 1d1+0 2d8+14 2
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2255,27 +2211,8 @@ healed white across its belly, and it keeps its distance from anyone
 carrying a shield, circling to find an open side.
 ~
 pig~
-ABF 0 0 S
-29 14 7d10+802 1d1+0 2d2+21 2
-0 0 0 0
-0 0 0 0
-8 8 0 0
-AHMV ABCDEFGHIJK M 0
-#31025
-moblin red~
-a red moblin~
-A red moblin stalks between identical trunks, spear cocked to throw.
-~
-Owl feathers are knotted into the coarse mane of this grizzled moblin, a
-trophy habit picked up in the endless sameness of the Lost Woods. Its hide
-has darkened to the colour of dried blood and is crosshatched with scars.
-It knows every looping path here and uses them, vanishing behind one trunk
-and reappearing at another to send a heavy spear whistling straight along
-the trail toward the unwary.
-~
-pig~
-ABF 0 0 S
-35 17 8d10+1306 1d1+0 3d2+26 2
+AB 0 0 S
+29 14 7d10+637 1d1+0 2d22+33 2
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2293,8 +2230,8 @@ it catches a scent it hurls long iron-tipped spears hard enough to splinter
 a sapling, though a shield still stops them.
 ~
 pig~
-ABF 0 0 S
-42 21 10d10+1955 1d1+0 3d2+31 2
+AB 0 0 S
+42 21 10d10+1410 1d1+0 3d25+59 2
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2312,8 +2249,26 @@ throws its spears in quick pairs, the second aimed where a dodging
 traveller is likely to step.
 ~
 pig~
-ABF 0 0 S
-48 24 12d10+2874 1d1+0 4d2+36 2
+AB 0 0 S
+48 24 12d10+2580 1d1+0 4d26+80 2
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#31031
+moblin blue~
+a blue moblin~
+A blue moblin stalks the woods, spear held low.
+~
+Young as blue moblins go, this one is lean and quick-tempered, its blue
+hide still patchy and its spear a crude pole with a stone point. It patrols
+the eastern woods in a grumbling circuit and throws its spear at anything
+that moves, then charges after it. Its spear stings, but it is no match for
+a steady blade and a raised shield.
+~
+pig~
+AB 0 0 S
+12 6 3d10+259 1d1+0 1d15+11 2
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2331,27 +2286,8 @@ moves on the path ahead. Stepping aside from the throw leaves it fumbling
 for another shaft.
 ~
 pig~
-ABF 0 0 S
-18 9 4d10+351 1d1+0 2d2+13 2
-0 0 0 0
-0 0 0 0
-8 8 0 0
-AHMV ABCDEFGHIJK M 0
-#31033
-moblin blue~
-a blue moblin~
-A blue moblin sniffs at the leaf mould, spear held low and ready.
-~
-Leaf mould cakes the clawed feet of this blue moblin, and a broken
-arrowhead is still lodged in the thick skin of one shoulder. It ranges the
-southern woods with its pack, snuffling for scent along the rows of trees,
-then straightening to fling a spear that flies flat and true. It takes
-several solid blows before it drops, and it bellows to its kin the moment
-it is hurt.
-~
-pig~
-ABF 0 0 S
-24 12 6d10+606 1d1+0 2d2+18 2
+AB 0 0 S
+18 9 4d10+385 1d1+0 2d11+17 2
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2369,8 +2305,8 @@ are iron-tipped now, thrown hard enough to split a sapling, and it will not
 stop chasing once it has a scent.
 ~
 pig~
-ABF 0 0 S
-31 15 7d10+1100 1d1+0 3d2+23 2
+AB 0 0 S
+31 15 7d10+888 1d1+0 3d17+41 2
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2388,8 +2324,8 @@ first spear leaves its hand. A blow that would fell a red moblin barely
 makes this one grunt.
 ~
 pig~
-ABF 0 0 S
-37 18 9d10+1687 1d1+0 3d3+27 2
+AB 0 0 S
+37 18 9d10+1835 1d1+0 3d22+52 2
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2407,8 +2343,26 @@ patience and many hard blows bring it down, and it fights on long after its
 pack has fled.
 ~
 pig~
-ABF 0 0 S
-44 22 11d10+2550 1d1+0 3d4+33 2
+AB 0 0 S
+44 22 11d10+1863 1d1+0 3d32+73 2
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#31037
+moblin blue~
+a blue moblin~
+A hulking blue moblin guards the eastern wood path, spear across its knees.
+~
+This blue moblin is a veteran of the eastern woods, heavy with muscle and
+scarred from tusk to toe, and its iron-headed spear has broken many
+shields. It holds the wood path near the Lion's thicket with a soldier's
+patience and hurls the spear with frightening force. Expect a long, hard
+fight.
+~
+pig~
+AB 0 0 S
+50 25 12d10+3349 1d1+0 4d30+92 2
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2426,65 +2380,59 @@ heartbeats while it crouches to gather itself are the time to strike before
 it springs away again.
 ~
 insect~
-ABF 0 0 S
-11 5 2d10+133 1d1+0 1d2+8 10
+AB 0 0 S
+11 5 2d10+182 1d1+0 1d2+8 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK S 0
-#31052
+#31054
 tektite blue spider~
 a blue tektite~
-A blue tektite springs along the craggy ridge, dislodging loose stones.
+A blue tektite springs from crag to crag, legs folding and snapping.
 ~
-Wind off the southern ridge has bleached this tektite's shell from deep
-blue to the pale shade of a winter sky, and one of its legs bends at a
-crooked angle where it once broke and mended. It is quick and confident
-now, sailing in long arcs over the jagged brown rock and dropping onto
-whatever moves below. Wait for it to settle on its haunches before
-swinging, because in the air it is nearly impossible to hit.
+Long-legged and hard-shelled, this blue tektite has learned to leap among
+the craggy rises of the north-east, landing beside a traveller before they
+see it jump. It strikes and springs away in the same motion. Wait for it to
+land, then hit it before it can gather its legs again.
 ~
 insect~
-ABF 0 0 S
-17 8 4d10+244 1d1+0 2d2+12 10
+AB 0 0 S
+30 15 7d10+618 1d1+0 3d2+22 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK S 0
-#31062
+#31060
 leever red sand~
 a red leever~
-A small red leever bores up through the sand, spinning with a hiss.
+A small red leever pops up from the sand bar, spinning.
 ~
-This leever is young, its spines still soft and pinkish at the tips and its
-whorl of leaves no wider than a hand. It lives in the damp sand by the
-lake, where wet grains cling to it and clot between its spines. It surfaces
-close to anyone who crosses the flats, scuttles straight at them along the
-ground, then screws itself back down and rises somewhere else. It is feeble
-alone, but it keeps coming back.
+This young red leever is little more than a spinning red knot, its hide
+still soft from the sand. It rises out of the sand bar beside travellers,
+spins at them for a moment and sinks again. It is slow to surface and quick
+to die, which makes it good practice for the dunes to come.
 ~
 insect~
-ABF 0 0 S
-15 7 3d10+200 1d1+0 2d2+11 22
+AB 0 0 S
+3 1 1d10+57 1d1+0 1d2+2 22
 0 0 0 0
 0 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK S 0
-#31063
+#31061
 leever red sand~
 a red leever~
-A red leever corkscrews out of a burrow hole and rushes across the sand.
+A red leever whirls up out of the southern sands.
 ~
-Wind-scoured and hard, this leever has the dull brick colour of the
-southern sands, and its spines are worn blunt from boring through grit. It
-rises with a dry rattle rather than a hiss, charges in a straight line
-across the ripples and vanishes before a counterstroke can land. Watch the
-burrow holes that open and close around you; the next one to bulge is where
-it will surface. Strike as it climbs out.
+A tough little red leever, its hide toughened by the hot southern sands,
+rises and sinks in the dunes like a fish in water. It spins at anyone who
+strays near and dives again before they can answer. Watch for the swirl in
+the sand that warns of it, and strike as it rises.
 ~
 insect~
-ABF 0 0 S
-21 10 5d10+354 1d1+0 2d2+15 22
+AB 0 0 S
+9 4 2d10+142 1d1+0 1d2+6 22
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2502,27 +2450,25 @@ what lay inside, surfacing beside travellers, charging, then sinking again.
 Patience and a ready blade wear it down.
 ~
 insect~
-ABF 0 0 S
-28 14 7d10+664 1d1+0 2d2+21 22
+AB 0 0 S
+28 14 7d10+521 1d1+0 2d2+21 22
 0 0 0 0
 0 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK S 0
-#31065
+#31068
 leever red sand~
 a red leever~
-A great red leever rises out of the dunes, spines rattling in the wind.
+A huge red leever erupts from the flats, spinning like a millwheel.
 ~
-Old and enormous, this leever has grown a ragged collar of dead leaves
-around its spinning crown, bleached almost white by the sun on the southern
-dunes. It surfaces with a roar of sand, and the whorls it leaves behind
-take a long while to fill. It charges harder than its smaller kin and
-burrows faster, so it is rarely above ground for long. Stand still, wait
-for the sand to bulge, and hit hard the instant it appears.
+The red leevers of the high flats grow huge and dark, and this one bursts
+from the ground with a spray of grit and spins at its prey with crushing
+force. It is hard to hit and harder to hurt, and it comes back again and
+again. Only a strong fighter should linger here.
 ~
 insect~
-ABF 0 0 S
-34 17 8d10+1090 1d1+0 3d2+25 22
+AB 0 0 S
+54 27 13d10+2858 1d1+0 4d9+40 22
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2540,27 +2486,44 @@ sink again quickly, so there is time to meet it with steady blows rather
 than chase it from hole to hole.
 ~
 insect~
-ABF 0 0 S
-17 8 4d10+304 1d1+0 2d2+12 22
+AB 0 0 S
+17 8 4d10+335 1d1+0 2d2+12 22
 0 0 0 0
 0 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK S 0
-#31073
+#31074
 leever blue sand~
 a blue leever~
-A blue leever whirls through the dunes, leaving a spiral furrow behind.
+A blue leever bores through the north-eastern dunes, sand hissing off its hide.
 ~
-Its spines are long and hardened now, worn to a polish by years of grinding
-through the dune strip, and its blue skin has bleached almost white on the
-side it keeps toward the sun. It surfaces near the stone soldiers and below
-the hills alike, wherever the sand runs soft, and it pursues anyone it
-senses with dogged patience. It burrows only after a long chase, so
-standing ground against it is wiser than running.
+Hardened by the hot sands of the north-eastern hills, this blue leever is a
+squat whirl of tough blue hide that bores through the dunes faster than a
+man can run. It surfaces without warning beside travellers and spins at
+them, then sinks again before a sword comes down. Keep moving, watch the
+sand for its furrow, and strike the moment it rises.
 ~
 insect~
-ABF 0 0 S
-24 12 6d10+579 1d1+0 2d2+18 22
+AB 0 0 S
+30 15 7d10+764 1d1+0 3d4+22 22
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK S 0
+#31076
+leever blue sand~
+a blue leever~
+A great blue leever churns up through the sand among the sentinels.
+~
+This blue leever is old and broad, its hide scoured to a dull slate by
+years of sand, and it rises from the ground among the silent statues like a
+spinning millstone. It hits hard and keeps coming, burrowing and
+resurfacing in a ring around its prey. Stand your ground, shield up, and
+cut it down each time it rises.
+~
+insect~
+AB 0 0 S
+43 21 10d10+1671 1d1+0 3d13+32 22
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2578,8 +2541,8 @@ it chases relentlessly before it ever thinks of burrowing. Only heavy,
 committed strokes do it any harm.
 ~
 insect~
-ABF 0 0 S
-56 28 14d10+5335 1d1+0 4d3+42 22
+AB 0 0 S
+56 28 14d10+3982 1d1+0 4d13+42 22
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2597,8 +2560,8 @@ along straight lines, and its thick hide turns aside weak blows. Even this
 young, it is one of the deadliest things in the open.
 ~
 horse~
-ABF 0 0 S
-33 16 8d10+1711 1d1+0 3d6+24 3
+AB 0 0 S
+33 16 8d10+1390 1d1+0 3d22+53 3
 0 0 0 0
 K 0 0 0
 8 8 0 0
@@ -2616,27 +2579,8 @@ hooves sinking deep into the dust. Its sword throws bright beams down any
 straight line of rock, and only heavy blows get through its hide.
 ~
 horse~
-ABF 0 0 S
-40 20 10d10+2570 1d1+0 3d8+30 3
-0 0 0 0
-K 0 0 0
-8 8 0 0
-AHMV ABCDEFGHIJK L 0
-#31087
-lynel blue centaur lion~
-a blue lynel~
-A massive blue lynel stands watch on the high ledge, mane streaming.
-~
-Broader across the shoulders than any horse, this lynel wears blue scale
-that has been cracked and regrown so often it lies in uneven ridges. Its
-mane has gone grey at the roots, and one tusk is snapped short. It holds
-the high meadows near Spectacle Rock as its own and charges anything that
-climbs into view, flinging sword beams long before it closes. Its hide
-shrugs off all but the strongest steel.
-~
-horse~
-ABF 0 0 S
-52 26 13d10+5658 1d1+0 4d9+39 3
+AB 0 0 S
+40 20 10d10+2750 1d1+0 3d29+67 3
 0 0 0 0
 K 0 0 0
 8 8 0 0
@@ -2654,8 +2598,8 @@ the beams from its sword split boulders. Its hide is like iron; only the
 finest blade and many blows will fell it.
 ~
 horse~
-ABF 0 0 S
-59 29 14d10+8743 1d1+0 4d12+44 3
+AB 0 0 S
+59 29 14d10+6538 1d1+0 4d35+110 3
 0 0 0 0
 K 0 0 0
 8 8 0 0
@@ -2673,8 +2617,8 @@ swing of a sword ends it, though the timing is harder than it looks when it
 never flies straight.
 ~
 bat~
-ABF 0 0 S
-2 1 1d10+9 1d1+0 1d2+1 10
+AB 0 0 S
+2 1 1d10+21 1d1+0 1d2+1 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -2692,8 +2636,8 @@ and a single hit will drop it, but its jittering path makes it a hard
 target to land.
 ~
 bat~
-ABF 0 0 S
-8 4 2d10+45 1d1+0 1d2+6 10
+AB 0 0 S
+8 4 2d10+64 1d1+0 1d2+6 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -2711,8 +2655,8 @@ kill it, so the trick is only to be where it pauses rather than where it
 was.
 ~
 bat~
-ABF 0 0 S
-14 7 3d10+94 1d1+0 1d2+10 10
+AB 0 0 S
+14 7 3d10+106 1d1+0 1d2+10 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -2730,8 +2674,8 @@ down to a single solid hit but tends to come in from above, where a sword
 arm is slowest to reach.
 ~
 bat~
-ABF 0 0 S
-20 10 5d10+162 1d1+0 2d2+15 10
+AB 0 0 S
+20 10 5d10+176 1d1+0 2d2+15 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -2749,8 +2693,8 @@ still frail and one blow finishes it, but it is bolder now and dives
 straight at faces.
 ~
 bat~
-ABF 0 0 S
-27 13 6d10+327 1d1+0 2d2+20 10
+AB 0 0 S
+27 13 6d10+251 1d1+0 2d2+20 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -2768,8 +2712,8 @@ It still dies to a single good hit, but finding it in that haze is the real
 fight.
 ~
 bat~
-ABF 0 0 S
-33 16 8d10+541 1d1+0 3d2+24 10
+AB 0 0 S
+33 16 8d10+597 1d1+0 3d2+24 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -2787,8 +2731,8 @@ surely as any bat, yet it comes in numbers and harries anyone already
 pinned down.
 ~
 bat~
-ABF 0 0 S
-40 20 10d10+820 1d1+0 3d2+30 10
+AB 0 0 S
+40 20 10d10+574 1d1+0 3d2+30 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -2806,8 +2750,8 @@ with a veteran's cunning, but its body is as frail as ever and one blow
 brings it down.
 ~
 bat~
-ABF 0 0 S
-46 23 11d10+1230 1d1+0 4d2+34 10
+AB 0 0 S
+46 23 11d10+1100 1d1+0 4d5+34 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -2825,8 +2769,8 @@ before it dives again, and though a single solid stroke still kills it, it
 seldom offers one.
 ~
 bat~
-ABF 0 0 S
-53 26 13d10+1968 1d1+0 4d2+39 10
+AB 0 0 S
+53 26 13d10+1458 1d1+0 4d2+39 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -2844,8 +2788,8 @@ a solid blow scatters it across the floor. Now and then one carries a small
 iron key that clatters loose when it falls.
 ~
 undead~
-ABF 0 0 S
-4 2 1d10+51 1d1+0 1d2+3 3
+AB 0 0 S
+4 2 1d10+79 1d1+0 1d6+5 3
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2863,8 +2807,8 @@ followed by a heavy cut from a blackened longsword, and it takes many
 strong blows before it clatters apart. Some carry keys.
 ~
 undead~
-ABF 0 0 S
-42 21 10d10+1955 1d1+0 3d2+31 3
+AB 0 0 S
+42 21 10d10+1410 1d1+0 3d25+59 3
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2882,8 +2826,8 @@ gels that keep pressing in, while a strong cut bursts it in one spray of
 slime.
 ~
 unique~
-ABF 0 0 S
-16 8 4d10+246 1d1+0 2d2+12 14
+AB 0 0 S
+16 8 4d10+273 1d1+0 2d7+13 14
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2901,8 +2845,8 @@ cut splits it into two gels that carry on the fight, and only a forceful
 blow breaks the whole of it at once.
 ~
 unique~
-ABF 0 0 S
-29 14 7d10+802 1d1+0 2d2+21 14
+AB 0 0 S
+29 14 7d10+637 1d1+0 2d19+30 14
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2920,8 +2864,8 @@ lightly and the halves crawl apart as two gels; strike with real weight and
 it bursts across the walls.
 ~
 unique~
-ABF 0 0 S
-35 17 8d10+1306 1d1+0 3d2+26 14
+AB 0 0 S
+35 17 8d10+1441 1d1+0 3d17+39 14
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2939,8 +2883,8 @@ that shakes the floor. Anything short of a mighty stroke merely halves it
 into a pair of gels, which then come on twice as fast.
 ~
 unique~
-ABF 0 0 S
-48 24 12d10+2874 1d1+0 4d2+36 14
+AB 0 0 S
+48 24 12d10+2580 1d1+0 4d23+72 14
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2958,8 +2902,8 @@ reaches. Only the strongest blades burst it outright; a lesser blow splits
 it into gels that swarm.
 ~
 unique~
-ABF 0 0 S
-55 27 13d10+4528 1d1+0 4d2+41 14
+AB 0 0 S
+55 27 13d10+3378 1d1+0 4d24+75 14
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2977,8 +2921,8 @@ that curves home again, stinging on both legs of the trip. A few blows send
 it whimpering to the floor.
 ~
 goblin~
-ABF 0 0 S
-4 2 1d10+51 1d1+0 1d2+3 7
+AB 0 0 S
+4 2 1d10+79 1d1+0 1d6+5 7
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2996,8 +2940,8 @@ air whenever someone carrying food passes. Strike between its throws, while
 its hand is empty.
 ~
 goblin~
-ABF 0 0 S
-10 5 2d10+129 1d1+0 1d2+7 7
+AB 0 0 S
+10 5 2d10+178 1d1+0 1d11+8 7
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3015,8 +2959,8 @@ weapon whirring out in a line and swinging back to strike again. It hungers
 constantly and snaps at anything that smells of meat.
 ~
 goblin~
-ABF 0 0 S
-42 21 10d10+1955 1d1+0 3d2+31 7
+AB 0 0 S
+42 21 10d10+1410 1d1+0 3d25+59 7
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3034,8 +2978,8 @@ and when it spits a victim out again it keeps the shield. Strike fast and
 often before it can close its mouth around you.
 ~
 unique~
-ABF 0 0 S
-24 12 6d10+634 1d1+0 2d2+18 14
+AB 0 0 S
+24 12 6d10+688 1d1+0 2d13+20 14
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3053,8 +2997,8 @@ softens metal and wood alike, so a shield taken inside rarely comes out.
 Fight it from a distance, or hit hard and step back.
 ~
 unique~
-ABF 0 0 S
-37 18 9d10+1762 1d1+0 3d2+27 14
+AB 0 0 S
+37 18 9d10+1917 1d1+0 3d15+38 14
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3072,8 +3016,8 @@ with frightening speed for its bulk and engulfs in one motion. Keep your
 shield away from that maw and cut it down quickly.
 ~
 unique~
-ABF 0 0 S
-57 28 14d10+6211 1d1+0 4d2+42 14
+AB 0 0 S
+57 28 14d10+4639 1d1+0 4d21+67 14
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3091,8 +3035,8 @@ again. Its armoured body shrugs off blows; only the head can be hurt, and
 every segment it loses makes it quicker.
 ~
 centipede~
-ABF 0 0 S
-59 29 14d10+8743 1d1+0 4d9+44 10
+AB 0 0 S
+59 29 14d10+6538 1d1+0 4d16+51 10
 0 0 0 0
 H 0 0 0
 8 8 0 0
@@ -3110,8 +3054,8 @@ a lit bomb dropped in its path will be gulped down whole and explode inside
 its belly.
 ~
 lizard~
-ABF 0 0 S
-33 16 8d10+2004 1d1+0 3d2+24 10
+AB 0 0 S
+33 16 8d10+1629 1d1+0 3d19+44 10
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3129,8 +3073,8 @@ placed just ahead of its jaws. The blast stuns it in a haze of smoke, and
 that is the moment a blade can finally bite.
 ~
 lizard~
-ABF 0 0 S
-46 23 11d10+4454 1d1+0 4d3+34 10
+AB 0 0 S
+46 23 11d10+3281 1d1+0 4d25+79 10
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3148,8 +3092,8 @@ torch or a flame will catch its dry linen and do more than an hour of
 hacking ever could.
 ~
 undead~
-ABF 0 0 S
-31 15 7d10+1199 1d1+0 3d2+23 8
+AB 0 0 S
+31 15 7d10+968 1d1+0 3d16+37 8
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3167,8 +3111,8 @@ crushing arcs. It can absorb a frightful amount of steel before falling,
 but its wraps still burn fiercely.
 ~
 undead~
-ABF 0 0 S
-50 25 12d10+4059 1d1+0 4d2+37 8
+AB 0 0 S
+50 25 12d10+3646 1d1+0 4d27+84 8
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3186,8 +3130,8 @@ front without fail. Wait for it to turn away on its rounds, then strike at
 the side or from behind.
 ~
 human~
-ABF 0 0 S
-19 9 4d10+436 1d1+0 2d2+14 3
+AB 0 0 S
+19 9 4d10+477 1d1+0 2d11+18 3
 0 0 0 0
 K 0 0 0
 8 8 0 0
@@ -3205,8 +3149,8 @@ toward the threat. Blows from the front glance off uselessly. Only a quick
 step to its flank, or a strike from behind, will find a gap.
 ~
 human~
-ABF 0 0 S
-51 25 12d10+4562 1d1+0 4d4+38 3
+AB 0 0 S
+51 25 12d10+4099 1d1+0 4d30+95 3
 0 0 0 0
 K 0 0 0
 8 8 0 0
@@ -3224,8 +3168,8 @@ beam of magic from its wand. Shields do little against those beams. Strike
 it as it slides past, before it fades into the stone.
 ~
 human~
-ABF 0 0 S
-39 19 9d10+1620 1d1+0 3d7+29 19
+AB 0 0 S
+39 19 9d10+1744 1d1+0 3d28+65 19
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3243,31 +3187,12 @@ lines, and those beams punch through any shield. It must be cut down while
 it crosses open floor, because no wall stops it.
 ~
 human~
-ABF 0 0 S
-58 29 14d10+5483 1d1+0 4d12+43 19
+AB 0 0 S
+58 29 14d10+4093 1d1+0 4d35+109 19
 0 0 0 0
 0 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
-#31263
-boulder rock falling tumbling~
-a tumbling boulder~
-Loose stones skitter down the brown slopes in short bouncing hops.
-~
-Small rocks and clods of hard brown earth shake loose from the rim of the
-ravine and come down the slope in quick, low hops. None is larger than a
-melon, yet each one hits like a thrown brick and breaks apart into grit on
-impact. Nothing about them can be fought or turned; a sword passes through
-empty air where a stone was a heartbeat ago. Watch the rim, wait for a gap
-and run.
-~
-modron~
-ABF 0 0 S
-24 12 6d10+412 1d1+0 2d3+18 8
-0 0 0 0
-0 0 0 0
-8 8 0 0
-AHMV ABCDEFGHIJK L 0
 #31264
 boulder rock falling tumbling~
 a tumbling boulder~
@@ -3281,46 +3206,26 @@ stops them; the only answer is to read the bounce and step out of the place
 it will land.
 ~
 modron~
-ABF 0 0 S
-30 15 7d10+682 1d1+0 3d4+22 8
+AB 0 0 S
+30 15 7d10+545 1d1+0 3d18+42 8
 0 0 0 0
 0 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK L 0
-#31265
+#31268
 boulder rock falling tumbling~
 a tumbling boulder~
-A great boulder rolls along the rumbling gully, cracking stone.
+Boulders the size of huts thunder down the mountainside.
 ~
-Frost cracks the unstable cliff above the gully, and it lets go of slabs as
-large as a cart, which hit the floor, bounce high and slam down again in a
-shower of sparks and splinters. The gully floor is grooved from years of
-them. They are not alive and cannot be wounded, only dodged by timing,
-since the walls leave little room to step aside and every rumble overhead
-means another is coming.
-~
-modron~
-ABF 0 0 S
-36 18 9d10+1094 1d1+0 3d4+27 8
-0 0 0 0
-0 0 0 0
-8 8 0 0
-AHMV ABCDEFGHIJK L 0
-#31266
-boulder rock falling tumbling~
-a tumbling boulder~
-Massive boulders crash over the crest in a ceaseless rockfall.
-~
-High on the crest the wind is bitter and the scree is rimed with frost, and
-the peaks above shed boulders as tall as a man that come leaping over the
-edge in great booming arcs. Each impact shakes the ground and pocks it with
-fresh craters. Nothing living could stand against them and no blade or
-spell will slow them; a traveller can only watch the sky, count the bounces
-and run between them.
+Death Mountain sheds its slopes without pause. Great boulders break loose
+from the heights above and come bounding down in booming arcs, each one big
+enough to flatten a cart, and the ground here is pitted with their craters.
+Nothing stops them and nothing hurts them; a traveller can only watch,
+count the bounces, and run.
 ~
 modron~
-ABF 0 0 S
-43 21 10d10+1657 1d1+0 3d6+32 8
+AB 0 0 S
+56 28 14d10+2875 1d1+0 4d32+100 8
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3337,8 +3242,8 @@ boot and slows your steps until you scrape it off. It is the leftover half
 of a split zol, and one stroke of anything sharp ends it in a splash.
 ~
 unique~
-ABF 0 0 S
-2 1 1d10+7 1d1+0 1d2+1 12
+AB 0 0 S
+2 1 1d10+18 1d1+0 1d3+2 12
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3356,8 +3261,8 @@ drags at the legs. Like every gel it was born when a zol was cut apart, and
 a single clean blow disperses it.
 ~
 unique~
-ABF 0 0 S
-8 4 2d10+39 1d1+0 1d2+6 12
+AB 0 0 S
+8 4 2d10+57 1d1+0 1d2+6 12
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3375,8 +3280,8 @@ every step. It is still only the half of a zol that was cut in two, and a
 solid hit splatters it across the floor.
 ~
 unique~
-ABF 0 0 S
-20 10 5d10+144 1d1+0 2d2+15 12
+AB 0 0 S
+20 10 5d10+155 1d1+0 2d3+15 12
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3394,8 +3299,8 @@ zol split in two. A clean blow still ends one, but it takes a strong arm to
 cut through.
 ~
 unique~
-ABF 0 0 S
-53 26 13d10+1764 1d1+0 4d2+39 12
+AB 0 0 S
+53 26 13d10+1306 1d1+0 4d15+47 12
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3413,8 +3318,8 @@ them all the way back to the dungeon's entrance, so the safest ground is
 the middle of the floor.
 ~
 undead~
-ABF 0 0 S
-5 2 1d10+64 1d1+0 1d2+3 8
+AB 0 0 S
+5 2 1d10+95 1d1+0 1d6+5 8
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3432,8 +3337,8 @@ to linger near the walls. Its prisoners are hauled back to the dungeon's
 entrance. Strike its fingers, and keep moving.
 ~
 undead~
-ABF 0 0 S
-43 21 10d10+2085 1d1+0 3d2+32 8
+AB 0 0 S
+43 21 10d10+1514 1d1+0 3d24+56 8
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3450,8 +3355,8 @@ a straight line with it, though, it shoots forward in a sudden charge. A
 single good cut finishes it, but its fangs are sharp enough to sting badly.
 ~
 snake~
-ABF 0 0 S
-10 5 2d10+101 1d1+0 1d2+7 10
+AB 0 0 S
+10 5 2d10+140 1d1+0 1d8+8 10
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3469,8 +3374,8 @@ column of the floor, and then it charges straight in, faster than any
 arrow, with a bite that can drop a careless warrior.
 ~
 snake~
-ABF 0 0 S
-42 21 10d10+1553 1d1+0 3d2+31 10
+AB 0 0 S
+42 21 10d10+1117 1d1+0 3d23+53 10
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3488,8 +3393,8 @@ blade impossible to swing for a while, so the only sense is to stay out of
 its path.
 ~
 undead~
-ABF 0 0 S
-16 8 4d10+139 1d1+0 2d2+12 29
+AB 0 0 S
+16 8 4d10+155 1d1+0 2d3+12 29
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -3507,8 +3412,8 @@ any blade, and a brush with it leaves the sword arm too numb and heavy to
 strike until the curse fades.
 ~
 undead~
-ABF 0 0 S
-22 11 5d10+253 1d1+0 2d2+16 29
+AB 0 0 S
+22 11 5d10+275 1d1+0 2d9+16 29
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -3526,8 +3431,8 @@ effect. Its touch curses the arm that holds the blade, and in these narrow
 passages that is often worse than a wound.
 ~
 undead~
-ABF 0 0 S
-35 17 8d10+766 1d1+0 3d2+26 29
+AB 0 0 S
+35 17 8d10+847 1d1+0 3d12+31 29
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -3545,8 +3450,8 @@ all. A single touch makes the sword hand go dead and useless, and the
 numbness lasts long enough to matter.
 ~
 undead~
-ABF 0 0 S
-42 21 10d10+1151 1d1+0 3d2+31 29
+AB 0 0 S
+42 21 10d10+824 1d1+0 3d18+41 29
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -3564,8 +3469,8 @@ travellers simply time their crossing. Those who misjudge it find their
 sword arm cursed and slack for a long while after.
 ~
 undead~
-ABF 0 0 S
-48 24 12d10+1698 1d1+0 4d2+36 29
+AB 0 0 S
+48 24 12d10+1522 1d1+0 4d18+56 29
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -3583,8 +3488,8 @@ strongest of all, deadening the sword arm completely, and this deep beneath
 the mountain a disarmed traveller rarely lasts long.
 ~
 undead~
-ABF 0 0 S
-55 27 13d10+2688 1d1+0 4d2+41 29
+AB 0 0 S
+55 27 13d10+1998 1d1+0 4d18+58 29
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -3602,8 +3507,8 @@ air, and a fight is not won until both bats are swatted down too, however
 erratic their flight.
 ~
 bat~
-ABF 0 0 S
-24 12 6d10+523 1d1+0 2d2+18 10
+AB 0 0 S
+24 12 6d10+568 1d1+0 2d2+18 10
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3621,8 +3526,8 @@ it into a pair of red keese, each as vicious as their parent, which must be
 hunted down in turn.
 ~
 bat~
-ABF 0 0 S
-37 18 9d10+1460 1d1+0 3d2+27 10
+AB 0 0 S
+37 18 9d10+1590 1d1+0 3d7+27 10
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3640,8 +3545,8 @@ bursts into two red keese, swifter and angrier than any lower down, and
 they must be finished as well.
 ~
 bat~
-ABF 0 0 S
-57 28 14d10+5163 1d1+0 4d4+42 10
+AB 0 0 S
+57 28 14d10+3853 1d1+0 4d13+42 10
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3659,8 +3564,8 @@ loud noise, and the surest cure for one is a single arrow, which pops it
 like a bubble.
 ~
 rabbit~
-ABF 0 0 S
-31 15 7d10+952 1d1+0 3d2+23 15
+AB 0 0 S
+31 15 7d10+767 1d1+0 3d4+23 15
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3678,8 +3583,8 @@ it, and it seems to grin at the effort. Noise sets it shaking, and one
 well-placed arrow still brings it down at once.
 ~
 rabbit~
-ABF 0 0 S
-50 25 12d10+3234 1d1+0 4d2+37 15
+AB 0 0 S
+50 25 12d10+2904 1d1+0 4d13+42 15
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3697,8 +3602,8 @@ from its hide. One sound unsettles it: the notes of a recorder make it
 shrivel and split into small, quick urchins that can be killed.
 ~
 unique~
-ABF 0 0 S
-46 23 11d10+4454 1d1+0 4d3+34 8
+AB 0 0 S
+46 23 11d10+3281 1d1+0 4d25+79 8
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3716,8 +3621,8 @@ stands solid can a blade touch it, so hold position, watch the floor, and
 strike when it appears.
 ~
 human~
-ABF 0 0 S
-38 19 9d10+1382 1d1+0 3d5+28 19
+AB 0 0 S
+38 19 9d10+1495 1d1+0 3d25+58 19
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3735,8 +3640,8 @@ fades. It can be wounded only while visible, and it is visible for barely a
 breath, so a swift and steady hand is needed.
 ~
 human~
-ABF 0 0 S
-57 28 14d10+4639 1d1+0 4d9+42 19
+AB 0 0 S
+57 28 14d10+3460 1d1+0 4d33+100 19
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3754,8 +3659,8 @@ weapon to swing back. It takes several firm blows to put down, and it
 sniffs hopefully at anyone carrying a meal.
 ~
 goblin~
-ABF 0 0 S
-12 6 3d10+190 1d1+0 1d2+9 7
+AB 0 0 S
+12 6 3d10+259 1d1+0 1d15+11 7
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3773,8 +3678,8 @@ anything slow to obey. It is famously greedy, and in this labyrinth one of
 its kind is said to refuse to budge until someone feeds it.
 ~
 goblin~
-ABF 0 0 S
-44 22 11d10+2550 1d1+0 3d4+33 7
+AB 0 0 S
+44 22 11d10+1863 1d1+0 3d32+73 7
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3792,8 +3697,8 @@ any threat, and blows from the front ring off uselessly. Circle to its
 flank or back, where the plate is thinner, and strike there.
 ~
 human~
-ABF 0 0 S
-27 13 6d10+1047 1d1+0 2d4+20 3
+AB 0 0 S
+27 13 6d10+1171 1d1+0 2d24+38 3
 0 0 0 0
 K 0 0 0
 8 8 0 0
@@ -3811,8 +3716,8 @@ before plunging under again. Swords glance off its body; only its head can
 be wounded, and losing segments makes it faster.
 ~
 centipede~
-ABF 0 0 S
-58 29 14d10+7151 1d1+0 4d6+43 10
+AB 0 0 S
+58 29 14d10+5344 1d1+0 4d14+46 10
 0 0 0 0
 H 0 0 0
 8 8 0 0
@@ -3830,12 +3735,29 @@ harmed while its guardians circle. Destroy the small eyes one by one, then
 strike the centre while it is defenceless.
 ~
 unique~
-ABF 0 0 S
-59 29 14d10+11683 1d1+0 4d12+44 19
+AB 0 0 S
+59 29 14d10+8743 1d1+0 4d35+110 19
 0 0 0 0
 F 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK L 0
+#32210
+zola zora river~
+a Zola~
+A young zora surfaces in the shallows, its throat glowing faintly.
+~
+Small and green, this young zora still lives in the shallow, sunlit waters
+of the lake and the river bend. It rises without warning, its throat
+glowing, and spits a sputtering fireball before sinking again. A shield
+stops the shot easily, and it takes only a blow or two to drive it off.
+~
+fish~
+AB 0 0 S
+5 2 1d10+85 1d1+0 1d4+3 6
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
 #32211
 zola zora river~
 a Zola~
@@ -3849,8 +3771,8 @@ its fire is weak, and a shield raised toward the water turns it easily.
 Strike while its head is up.
 ~
 fish~
-ABF 0 0 S
-11 5 2d10+133 1d1+0 1d2+8 6
+AB 0 0 S
+11 5 2d10+182 1d1+0 1d2+8 6
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3868,8 +3790,8 @@ head is above the water can a blade or arrow reach it, so a patient fighter
 waits for the glow.
 ~
 fish~
-ABF 0 0 S
-17 8 4d10+244 1d1+0 2d2+12 6
+AB 0 0 S
+17 8 4d10+270 1d1+0 2d2+12 6
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3887,8 +3809,8 @@ fireballs come hot and quick, and a shield turned toward the water is the
 surest defence.
 ~
 fish~
-ABF 0 0 S
-23 11 5d10+433 1d1+0 2d2+17 6
+AB 0 0 S
+23 11 5d10+469 1d1+0 2d4+17 6
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3906,8 +3828,42 @@ flying. A shield stops the shot, but it sinks fast and resurfaces somewhere
 else in the white water.
 ~
 fish~
-ABF 0 0 S
-30 15 7d10+772 1d1+0 3d2+22 6
+AB 0 0 S
+30 15 7d10+618 1d1+0 3d6+22 6
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#32216
+zola zora river~
+a Zola~
+A dark zora rises from the river, fireball smouldering in its throat.
+~
+In the deep, shaded water of the forest river this zora has grown big and
+dark, its scales near black and its fins frayed like old sails. It surfaces
+at the ford and the riverside cave mouth and spits fireballs hot enough to
+scorch a shield. Strike when it rises, and keep moving between its shots.
+~
+fish~
+AB 0 0 S
+43 21 10d10+1357 1d1+0 3d14+35 6
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#32217
+zola zora river~
+a Zola~
+A great zora heaves up from the deep water by the eastern dock.
+~
+The water off the eastern dock is deep and cold, and the zora that hunts
+there is as big as a man, its scales a dark, oily green and its throat
+glowing like a forge. Its fireballs are fierce and come fast. A strong
+shield and a quick blade are the only answers.
+~
+fish~
+AB 0 0 S
+49 24 12d10+2461 1d1+0 4d14+45 6
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3925,8 +3881,8 @@ movement. Wait for it to come down and hit it then, because in the air it
 will not stay still long enough.
 ~
 insect~
-ABF 0 0 S
-3 1 1d10+24 1d1+0 1d2+2 10
+AB 0 0 S
+3 1 1d10+43 1d1+0 1d2+2 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -3944,27 +3900,8 @@ the moment after it touches down, while it crouches for the next leap, is
 when a sword will find it.
 ~
 insect~
-ABF 0 0 S
-15 7 3d10+152 1d1+0 2d2+11 10
-0 0 0 0
-F 0 0 0
-8 8 0 0
-AHMV ABCDEFGHIJK S 0
-#32223
-tektite red spider~
-a red tektite~
-A red tektite bounds over the rolling hills, landing with a heavy thump.
-~
-Its shell is scored with deep scratches from years of landing on the gouged
-rock of the scarred cliffs, and the red has darkened toward maroon. It is
-the size of a large dog and leaps so high it is lost against the sky for a
-moment before crashing down. It prefers to drop directly onto its prey. A
-careful fighter steps aside from the shadow and strikes while its legs are
-still bent from the landing.
-~
-insect~
-ABF 0 0 S
-21 10 5d10+269 1d1+0 2d2+15 10
+AB 0 0 S
+15 7 3d10+169 1d1+0 2d2+11 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -3982,31 +3919,12 @@ fearsome reach, but it still must crouch before each spring, and that pause
 is its weakness.
 ~
 insect~
-ABF 0 0 S
-28 14 7d10+508 1d1+0 2d2+21 10
+AB 0 0 S
+28 14 7d10+397 1d1+0 2d2+21 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK S 0
-#32274
-lynel red centaur lion~
-a red lynel~
-A red lynel prowls the western crags, its sword scraping the rock.
-~
-Lean and restless, this red lynel is young enough that its mane is still
-more fuzz than flame, and its sword is a plain notched blade a little too
-long for its arm. Claw marks on the crags at the western edge are its own,
-scored while it sharpened hooves and steel. It charges along straight
-tracks and flings beams of force from its sword at anything in line. Even
-young, it is deadlier than most things on the plains.
-~
-horse~
-ABF 0 0 S
-32 16 8d10+1360 1d1+0 3d3+24 3
-0 0 0 0
-K 0 0 0
-8 8 0 0
-AHMV ABCDEFGHIJK L 0
 #32275
 lynel red centaur lion~
 a red lynel~
@@ -4020,8 +3938,26 @@ The beams from its sword reach across whole slopes. Fight it with a shield
 ready and strike while it turns to charge again.
 ~
 horse~
-ABF 0 0 S
-39 19 9d10+2122 1d1+0 3d5+29 3
+AB 0 0 S
+39 19 9d10+2281 1d1+0 3d26+60 3
+0 0 0 0
+K 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK L 0
+#32278
+lynel red centaur lion~
+a red lynel~
+A towering red lynel paces the mountain terraces, mane ablaze.
+~
+This red lynel is a lord of Death Mountain's high terraces, enormous and
+scarred, its copper mane whipping like fire in the thin wind. It charges
+down the broken slopes with terrible speed and its sword throws beams
+across whole terraces. It is one of the deadliest things in Hyrule; meet it
+only well armed and well prepared.
+~
+horse~
+AB 0 0 S
+58 29 14d10+5344 1d1+0 4d32+101 3
 0 0 0 0
 K 0 0 0
 8 8 0 0
@@ -4039,27 +3975,25 @@ disturbs a grave. Touching the headstones wakes more of its kind, but
 strike down the first ghini and the lesser ones fade with it.
 ~
 undead~
-ABF 0 0 S
-38 19 9d10+1858 1d1+0 3d2+28 5
+AB 0 0 S
+38 19 9d10+2010 1d1+0 3d21+48 5
 0 0 0 0
 0 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
-#32351
+#32350
 peahat spinning flower~
 a peahat~
-A small peahat spins up from the flowers, wobbling as it rises.
+A small peahat twirls over the flower field, petals fluttering.
 ~
-This peahat is a young bloom, its petals still pale yellow and slightly
-crumpled, and it spins unevenly so that it lurches and dips over the
-flowered slope at the foot of Death Mountain. It rises a little way, drifts
-toward whatever moves, and bumps clumsily into it. While its petals whirl
-no blade can catch it. It tires quickly, though, and when it settles to
-rest it can be cut down with ease.
+Hardly larger than a sunflower, this young peahat drifts over the meadow on
+a lazy spin, petals soft and bright. While it whirls no blade can touch it,
+but it tires quickly and lands to rest among the flowers, and then even a
+beginner's sword makes short work of it.
 ~
 plant~
-ABF 0 0 S
-10 5 2d10+115 1d1+0 1d2+7 1
+AB 0 0 S
+4 2 1d10+71 1d1+0 1d4+5 1
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -4077,8 +4011,8 @@ answer: sooner or later its spin slows, it drops to the grass, and in that
 moment it is helpless against a sword.
 ~
 plant~
-ABF 0 0 S
-16 8 4d10+219 1d1+0 2d2+12 1
+AB 0 0 S
+16 8 4d10+244 1d1+0 2d7+13 1
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -4096,8 +4030,8 @@ when its petals slow and it sinks onto the grass to rest can a weapon find
 it, so stay clear and wait.
 ~
 plant~
-ABF 0 0 S
-23 11 5d10+433 1d1+0 2d2+17 1
+AB 0 0 S
+23 11 5d10+469 1d1+0 2d14+21 1
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -4115,8 +4049,8 @@ it whirls. Keep moving, let it overshoot, and strike in the brief moment
 after it lands.
 ~
 plant~
-ABF 0 0 S
-29 14 7d10+718 1d1+0 2d2+21 1
+AB 0 0 S
+29 14 7d10+570 1d1+0 2d19+30 1
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -4134,65 +4068,45 @@ prey. No blade can touch it while it turns, but it must land to rest at
 last, and then it is as vulnerable as any flower.
 ~
 plant~
-ABF 0 0 S
-36 18 9d10+1238 1d1+0 3d2+27 1
+AB 0 0 S
+36 18 9d10+1356 1d1+0 3d17+41 1
 0 0 0 0
 F 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
-#32357
+#32358
 peahat spinning flower~
 a peahat~
-A giant peahat spins above the high meadow, petals beating the air.
+An ancient peahat whirls over the mountain heights, petals like blades.
 ~
-Broad as a cartwheel, this ancient peahat has petals thick as leather and a
-dark, knotted heart scarred by blades that caught it on the ground. It
-rides the updraughts over the highland meadows near Spectacle Rock and
-comes down like a falling millstone. While it spins nothing harms it. It
-lands to rest less often than its younger kin, so be ready the moment it
-settles, and strike before it lifts away.
+This peahat has ridden the winds of Death Mountain for longer than anyone
+remembers, and its petals have grown thick and hard as leather. It drops
+out of the updraughts like a falling millstone and is gone again before a
+blow can land. It settles only rarely; be ready, and strike the moment it
+touches the ground.
 ~
 plant~
-ABF 0 0 S
-48 24 12d10+2580 1d1+0 4d2+36 1
+AB 0 0 S
+55 27 13d10+3034 1d1+0 4d24+75 1
 0 0 0 0
 F 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
-#32362
+#32361
 armos knight statue~
 an Armos knight~
-An armos knight stands on the lakeside rise, lichen on its shield.
+An armos knight stands sentinel among the trees, moss in its joints.
 ~
-Lake damp has crept into this stone soldier, greening its shield with
-lichen and softening the edges of its carved face. It looks like a mere
-carving until a hand touches it; then colour floods into the stone and it
-lurches forward on stiff legs, jabbing its spear as it marches. It is slow
-and clumsy so soon after waking, and blows land on it freely while it finds
-its feet.
-~
-modron~
-ABF 0 0 S
-19 9 4d10+471 1d1+0 2d2+14 8
-0 0 0 0
-0 0 0 0
-8 8 0 0
-AHMV ABCDEFGHIJK L 0
-#32363
-armos knight statue~
-an Armos knight~
-An armos knight stands on the windy ridge, its spear chipped.
-~
-Wind and blown sand have scoured this armos statue until its features are
-barely there, and the tip of its spear has chipped away to a blunt point.
-It waits on the high ground with infinite patience. Laying a hand on it
-wakes it: the stone flushes red, grit pours from its joints, and it stamps
-after the one who disturbed it in short jerky strides. Whatever lay hidden
-at its base is exposed once it moves.
+Small for its kind and green with moss, this armos has stood among these
+trees so long that ivy has climbed its legs and birds nest in the crook of
+its stone arm. Touched, it shakes off the creepers with a dry crack and
+stamps after you on short, heavy legs, slower than the old knights of the
+highlands. A few good blows will break it, and some of these statues stand
+over a hidden way.
 ~
 modron~
-ABF 0 0 S
-26 13 6d10+891 1d1+0 2d4+19 8
+AB 0 0 S
+13 6 3d10+354 1d1+0 1d16+14 8
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -4210,8 +4124,45 @@ knight's speed and purpose. It takes a great deal of punishment to break,
 and some of these statues hide a stair beneath their feet.
 ~
 modron~
-ABF 0 0 S
-32 16 8d10+1468 1d1+0 3d3+24 8
+AB 0 0 S
+32 16 8d10+1189 1d1+0 3d19+47 8
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK L 0
+#32365
+armos knight statue~
+an Armos knight~
+A grave armos knight stands in the gallery, its stone streaked black.
+~
+Rain from the graveyard hills has run down this armos for centuries and
+left it streaked black as a mourner. Its blank face is turned toward the
+Dragon's gate and its sword is chipped from old fights. Touched, it wakes
+with a deep grinding groan and strides after you with a veteran's purpose,
+and it takes a long, hard fight to bring it down.
+~
+modron~
+AB 0 0 S
+39 19 9d10+2461 1d1+0 3d26+60 8
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK L 0
+#32366
+armos knight statue~
+an Armos knight~
+An ancient armos knight looms among the silent sentinels.
+~
+Weathered almost smooth, this is one of the oldest armos in Hyrule, its
+features worn away to a suggestion of a face and its shield cracked
+through. Touched, it wakes with a sound like a landslide and turns a hard,
+cold blue, then marches faster than anything so heavy has a right to.
+Blades skate off it; only patience and a great deal of punishment will
+break it.
+~
+modron~
+AB 0 0 S
+45 22 11d10+2426 1d1+0 4d27+84 8
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -4229,8 +4180,8 @@ No weapon dents it. The only answer is to cross its line quickly, or not at
 all.
 ~
 modron~
-ABF 0 0 S
-5 2 1d10+50 1d1+0 1d3+4 1
+AB 0 0 S
+5 2 1d10+75 1d1+0 1d8+7 1
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -4248,8 +4199,8 @@ running man, then slowly grinds home. Blades and arrows simply ring off it;
 the trick is timing, not force.
 ~
 modron~
-ABF 0 0 S
-11 5 2d10+117 1d1+0 1d4+8 1
+AB 0 0 S
+11 5 2d10+160 1d1+0 1d14+11 1
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -4267,8 +4218,8 @@ noise that rings through the halls. Nothing breaks it. Watch its line, then
 dash across after it begins its slow return.
 ~
 modron~
-ABF 0 0 S
-17 8 4d10+215 1d1+0 2d2+12 1
+AB 0 0 S
+17 8 4d10+238 1d1+0 2d11+18 1
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -4286,8 +4237,8 @@ the opposite wall and then crawls back. It cannot be harmed by any weapon,
 so the gauntlet must be crossed with timing.
 ~
 modron~
-ABF 0 0 S
-24 12 6d10+412 1d1+0 2d3+18 1
+AB 0 0 S
+24 12 6d10+448 1d1+0 2d19+31 1
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -4305,8 +4256,8 @@ twin, and retreats in a slow, grinding crawl. No blow can damage it; it can
 only be outrun or waited out.
 ~
 modron~
-ABF 0 0 S
-36 18 9d10+1094 1d1+0 3d4+27 1
+AB 0 0 S
+36 18 9d10+1200 1d1+0 3d23+54 1
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -4324,8 +4275,8 @@ rockets forward, rebounds, and slides back to its corner. It is
 indestructible, and wise travellers do not try.
 ~
 modron~
-ABF 0 0 S
-43 21 10d10+1657 1d1+0 3d6+32 1
+AB 0 0 S
+43 21 10d10+1200 1d1+0 3d33+75 1
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -4343,8 +4294,8 @@ rockslide, then drags itself back with a long, grating moan. No weapon has
 ever marked it; it is passed by speed alone.
 ~
 modron~
-ABF 0 0 S
-56 28 14d10+3859 1d1+0 4d8+42 1
+AB 0 0 S
+56 28 14d10+2875 1d1+0 4d32+100 1
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -5306,6 +5257,10 @@ steel~
 9 G AC
 2 2 2 1 0
 8 6 3200000 P
+A
+18 2
+A
+12 8
 
 #30340
 a pair of ropehide boots hyrule gear~
@@ -5396,6 +5351,14 @@ steel~
 9 G AC
 4 4 4 2 0
 14 10 9800000 P
+A
+18 2
+A
+19 2
+A
+2 1
+A
+12 40
 
 #30350
 a pair of zolslick boots hyrule gear~
@@ -5486,6 +5449,16 @@ steel~
 9 G AC
 5 5 5 3 0
 20 13 20000000 P
+A
+18 3
+A
+19 3
+A
+1 1
+A
+3 2
+A
+12 60
 
 #30360
 a pair of virewing boots hyrule gear~
@@ -5576,6 +5549,16 @@ steel~
 9 G AC
 7 7 7 4 0
 27 16 36450000 P
+A
+18 3
+A
+19 3
+A
+1 1
+A
+3 2
+A
+12 55
 
 #30370
 a suit of gibdo wrappings hyrule gear~
@@ -5621,6 +5604,14 @@ steel~
 9 G AC
 8 8 8 5 0
 33 18 54450000 P
+A
+18 3
+A
+19 3
+A
+3 2
+A
+12 55
 
 #30375
 a pair of orange wizzrobe gloves hyrule gear~
@@ -5657,6 +5648,14 @@ steel~
 9 G AC
 10 10 10 6 0
 40 20 80000000 P
+A
+18 3
+A
+19 3
+A
+3 2
+A
+12 50
 
 #30379
 a pair of demon maze boots hyrule gear~
@@ -5693,6 +5692,14 @@ steel~
 9 G AC
 12 12 12 7 0
 46 21 105800000 P
+A
+18 3
+A
+19 3
+A
+3 2
+A
+12 45
 
 #30383
 a pair of spellbook bracers hyrule gear~
@@ -5720,6 +5727,16 @@ steel~
 9 G AC
 13 13 13 8 0
 52 22 135200000 P
+A
+18 5
+A
+19 5
+A
+1 1
+A
+3 2
+A
+12 75
 
 #30386
 a silverarrow spear hyrule gear~
@@ -5747,6 +5764,16 @@ steel~
 9 G AE
 15 15 15 9 0
 59 23 174050000 P
+A
+18 6
+A
+19 6
+A
+1 1
+A
+3 2
+A
+12 55
 
 #30400
 triforce shard piece first 1~
@@ -7176,7 +7203,7 @@ A Magical Shield is displayed for 160 gold.~
 steel~
 9 N AJ
 5 5 5 3 0
-15 8 1600000 P
+14 8 1600000 P
 E
 magical shield~
 A broad shield whose face is worked with a red cross and a golden bird.
@@ -7219,7 +7246,7 @@ A Magical Shield is displayed for 90 gold.~
 steel~
 9 N AJ
 5 5 5 3 0
-20 8 900000 P
+8 8 900000 P
 E
 magical shield~
 A broad shield whose face is worked with a red cross and a golden bird.
@@ -7236,7 +7263,7 @@ Enemy bait is displayed for 100 gold.~
 meat~
 19 N A
 H 0 0 0 0
-20 3 1000000 P
+8 3 1000000 P
 E
 bait enemy food~
 Strong-smelling bait. FEED it to the hungry Goriya in the Demon's
@@ -7471,9 +7498,11 @@ far sharper than anything a beginner has a right to carry.
 It is the prize of Level 1, carried by the guardian who rules there.
 ~
 A
-18 2
+18 8
 A
 19 1
+A
+12 5
 #30583
 dodongo tail club~
 a Dodongo tail-club~
@@ -7490,9 +7519,11 @@ what it feels like to be hit by it.
 It is the prize of Level 2, carried by the guardian who rules there.
 ~
 A
-18 2
+18 7
 A
 19 2
+A
+12 33
 #30584
 manhandla bloom whip~
 the Manhandla bloom-whip~
@@ -7512,6 +7543,8 @@ A
 18 2
 A
 19 2
+A
+12 33
 #30585
 gleeok twin fang glaive~
 the Gleeok twin-fang glaive~
@@ -7530,6 +7563,8 @@ A
 18 3
 A
 19 2
+A
+12 35
 #30586
 digdogger urchin flail~
 the Digdogger urchin flail~
@@ -7546,9 +7581,11 @@ Digdogger would have hated.
 It is the prize of Level 5, carried by the guardian who rules there.
 ~
 A
-18 3
+18 6
 A
 19 2
+A
+12 33
 #30587
 gohma eye lance~
 the Gohma eye-lance~
@@ -7565,9 +7602,11 @@ found the eye.
 It is the prize of Level 6, carried by the guardian who rules there.
 ~
 A
-18 3
+18 6
 A
 19 1
+A
+12 34
 #30588
 demon dragonbone sword~
 the Demon's dragonbone sword~
@@ -7586,6 +7625,8 @@ A
 18 4
 A
 19 4
+A
+12 32
 #30589
 lion four crowned axe~
 the Lion's four-crowned axe~
@@ -7605,6 +7646,8 @@ A
 18 9
 A
 19 6
+A
+12 34
 #30590
 trident ganon~
 the Trident of Ganon~
@@ -7621,9 +7664,11 @@ never once been carried for a good cause before.
 It is the prize of Level 9, carried by the guardian who rules there.
 ~
 A
-18 9
+18 12
 A
 19 3
+A
+12 86
 #30650
 aquamentus scale coat green~
 a coat of Aquamentus scale~
@@ -7643,6 +7688,8 @@ A
 19 1
 A
 13 13
+A
+12 1
 #30651
 horn crested helm aquamentus~
 a horn-crested helm~
@@ -7660,6 +7707,8 @@ A
 24 -2
 A
 13 19
+A
+12 9
 #30652
 dragonclaw gloves claw~
 a pair of dragonclaw gloves~
@@ -7700,6 +7749,8 @@ A
 19 2
 A
 2 1
+A
+12 14
 #30654
 green scale buckler~
 a green scale buckler~
@@ -7717,6 +7768,106 @@ A
 24 -2
 A
 13 36
+A
+12 6
+#30700
+eagle eye ring amber~
+an eagle's-eye ring~
+An eagle's-eye ring lies here.~
+steel~
+9 G AB
+2 2 2 2 0
+8 2 3200000 P
+E
+eagle eye ring amber~
+A brass ring set with a chip of amber, as sharp-sighted as the Eagle it is
+named for. It fell from Aquamentus, guardian of the Eagle.
+~
+A
+13 24
+A
+12 3
+#30701
+green scale leggings~
+a pair of green-scale leggings~
+A pair of green-scale leggings lies here.~
+steel~
+9 G AF
+2 2 2 2 0
+8 2 3200000 P
+E
+green scale leggings~
+Leggings of the young dragon's smaller scales, light and supple. It fell
+from Aquamentus, guardian of the Eagle.
+~
+A
+13 16
+A
+12 3
+#30702
+talon boots eagle~
+a pair of talon boots~
+A pair of talon boots lies here.~
+leather~
+9 G AG
+2 2 2 2 0
+8 2 3200000 P
+E
+talon boots eagle~
+Soft boots with a hooked talon sewn at each heel. It fell from Aquamentus,
+guardian of the Eagle.
+~
+A
+13 8
+A
+12 2
+#30703
+horn guard sleeves~
+a pair of horn-guard sleeves~
+A pair of horn-guard sleeves lies here.~
+steel~
+9 G AI
+2 2 2 2 0
+8 2 3200000 P
+E
+horn guard sleeves~
+Leather sleeves with slips of the dragon's horn laced over the forearm. It
+fell from Aquamentus, guardian of the Eagle.
+~
+A
+13 34
+#30704
+eagle buckle belt~
+an eagle-buckled belt~
+An eagle-buckled belt lies here.~
+leather~
+9 G AL
+2 2 2 2 0
+8 2 3200000 P
+E
+eagle buckle belt~
+A belt whose bronze buckle is a spread-winged eagle. It fell from
+Aquamentus, guardian of the Eagle.
+~
+A
+13 10
+A
+12 16
+#30705
+aquamentus scale band~
+an Aquamentus scale band~
+An Aquamentus scale band lies here.~
+steel~
+9 G AM
+2 2 2 2 0
+8 2 3200000 P
+E
+aquamentus scale band~
+A wristband of one curled green scale, warm to the touch. It fell from
+Aquamentus, guardian of the Eagle.
+~
+A
+13 28
 #30655
 dodongo hide jerkin~
 a Dodongo-hide jerkin~
@@ -7776,6 +7927,8 @@ A
 2 2
 A
 13 28
+A
+12 22
 #30658
 crescent buckled belt moon~
 a crescent-buckled belt~
@@ -7795,6 +7948,8 @@ A
 19 2
 A
 13 12
+A
+12 11
 #30659
 smoke grey moonstone ring~
 a smoke-grey moonstone ring~
@@ -7816,6 +7971,124 @@ A
 24 -2
 A
 13 6
+A
+12 3
+#30707
+dodongo skull cap~
+a Dodongo skull cap~
+A Dodongo skull cap lies here.~
+steel~
+9 G AE
+4 4 4 4 0
+14 2 9800000 P
+E
+dodongo skull cap~
+The bony plate from the top of the beast's head, padded inside. It fell
+from Dodongo, guardian of the Moon.
+~
+A
+18 1
+A
+19 1
+A
+12 19
+#30708
+pebble hide mitts~
+a pair of pebble-hide mitts~
+A pair of pebble-hide mitts lies here.~
+leather~
+9 G AH
+4 4 4 4 0
+14 2 9800000 P
+E
+pebble hide mitts~
+Heavy mitts of pebbled grey hide that no blade has ever cut. It fell from
+Dodongo, guardian of the Moon.
+~
+A
+18 1
+A
+19 1
+A
+13 62
+A
+12 6
+#30709
+crescent armbands moon~
+a pair of crescent armbands~
+A pair of crescent armbands lies here.~
+steel~
+9 G AI
+4 4 4 4 0
+14 2 9800000 P
+E
+crescent armbands moon~
+Silver armbands shaped like the waxing and the waning moon. It fell from
+Dodongo, guardian of the Moon.
+~
+A
+18 1
+A
+19 1
+#30710
+dodongo plate shield~
+a Dodongo-plate shield~
+A Dodongo-plate shield lies here.~
+steel~
+9 G AJ
+8 8 8 8 0
+14 6 9800000 P
+E
+dodongo plate shield~
+A shield made from a single plate of the beast's flank. It fell from
+Dodongo, guardian of the Moon.
+~
+A
+13 12
+A
+12 2
+#30711
+moonlit cloak~
+a moonlit cloak~
+A moonlit cloak lies here.~
+leather~
+9 G AK
+4 4 4 4 0
+14 2 9800000 P
+E
+moonlit cloak~
+A pale blue cloak that seems to hold a little moonlight in its folds. It
+fell from Dodongo, guardian of the Moon.
+~
+A
+18 1
+A
+19 1
+A
+13 26
+A
+12 31
+#30712
+silver crescent bracelet~
+a silver crescent bracelet~
+A silver crescent bracelet lies here.~
+steel~
+9 G AM
+4 4 4 4 0
+14 2 9800000 P
+E
+silver crescent bracelet~
+A slim bracelet ending in two silver crescents that never quite meet. It
+fell from Dodongo, guardian of the Moon.
+~
+A
+18 1
+A
+19 1
+A
+13 34
+A
+12 35
 #30660
 thornvine greaves~
 a pair of thornvine greaves~
@@ -7856,6 +8129,8 @@ A
 2 3
 A
 13 25
+A
+12 19
 #30662
 four bloom gauntlets~
 a pair of four-bloom gauntlets~
@@ -7877,6 +8152,8 @@ A
 1 2
 A
 13 3
+A
+12 20
 #30663
 manji cross bracer~
 a Manji-cross bracer~
@@ -7898,6 +8175,8 @@ A
 2 3
 A
 13 14
+A
+12 36
 #30664
 flower crowned helm~
 a flower-crowned helm~
@@ -7919,6 +8198,122 @@ A
 24 -4
 A
 13 8
+#30714
+thorn braided ring~
+a ring of braided thorn~
+A ring of braided thorn lies here.~
+steel~
+9 G AB
+5 5 5 5 0
+20 2 20000000 P
+E
+thorn braided ring~
+Three thorns grown into a ring, still green and still sharp. It fell from
+Manhandla, guardian of the Manji.
+~
+A
+18 1
+A
+19 1
+A
+13 14
+A
+12 15
+#30715
+bloom plated breastplate~
+a bloom-plated breastplate~
+A bloom-plated breastplate lies here.~
+steel~
+9 G AD
+10 10 10 10 0
+20 6 20000000 P
+E
+bloom plated breastplate~
+A breastplate faced with Manhandla's hard red petals, overlapping like
+scales. It fell from Manhandla, guardian of the Manji.
+~
+A
+18 1
+A
+19 1
+A
+13 60
+#30716
+rootstep boots~
+a pair of rootstep boots~
+A pair of rootstep boots lies here.~
+leather~
+9 G AG
+5 5 5 5 0
+20 2 20000000 P
+E
+rootstep boots~
+Boots of woven root that grip the ground as though they grew there. It fell
+from Manhandla, guardian of the Manji.
+~
+A
+18 1
+A
+19 1
+A
+13 70
+A
+12 7
+#30717
+vine wrapped sleeves~
+a pair of vine-wrapped sleeves~
+A pair of vine-wrapped sleeves lies here.~
+steel~
+9 G AI
+5 5 5 5 0
+20 2 20000000 P
+E
+vine wrapped sleeves~
+Sleeves bound round with living vine that tightens when you strike. It fell
+from Manhandla, guardian of the Manji.
+~
+A
+18 1
+A
+19 1
+A
+12 3
+#30718
+four petal shield~
+a four-petal shield~
+A four-petal shield lies here.~
+steel~
+9 G AJ
+10 10 10 10 0
+20 6 20000000 P
+E
+four petal shield~
+A round shield of four great petals, each one hard as horn. It fell from
+Manhandla, guardian of the Manji.
+~
+A
+18 1
+A
+19 1
+#30719
+manji cross sash~
+a Manji-cross sash~
+A Manji-cross sash lies here.~
+leather~
+9 G AL
+5 5 5 5 0
+20 2 20000000 P
+E
+manji cross sash~
+A red sash embroidered with the turning four-armed cross of the Manji. It
+fell from Manhandla, guardian of the Manji.
+~
+A
+18 1
+A
+19 1
+A
+13 42
 #30665
 twin dragon hauberk gleeok~
 a twin-dragon hauberk~
@@ -7959,6 +8354,8 @@ A
 24 -5
 A
 13 15
+A
+12 5
 #30667
 fang vambraces~
 a pair of fang vambraces~
@@ -7978,6 +8375,8 @@ A
 19 2
 A
 1 1
+A
+12 19
 #30668
 twin horned helm~
 a twin-horned helm~
@@ -8018,6 +8417,130 @@ A
 19 2
 A
 13 30
+A
+12 3
+#30721
+coiled serpent ring~
+a coiled-serpent ring~
+A coiled-serpent ring lies here.~
+steel~
+9 G AB
+7 7 7 7 0
+27 2 36450000 P
+E
+coiled serpent ring~
+A ring of a green serpent swallowing its own tail. It fell from Gleeok,
+guardian of the Snake.
+~
+A
+18 1
+A
+19 1
+A
+13 4
+A
+12 30
+#30722
+snakeskin treads~
+a pair of snakeskin treads~
+A pair of snakeskin treads lies here.~
+leather~
+9 G AG
+7 7 7 7 0
+27 2 36450000 P
+E
+snakeskin treads~
+Silent boots of shed Gleeok skin, smooth one way and rough the other. It
+fell from Gleeok, guardian of the Snake.
+~
+A
+18 2
+A
+19 2
+A
+13 20
+A
+12 22
+#30723
+fang grip gloves~
+a pair of fang-grip gloves~
+A pair of fang-grip gloves lies here.~
+leather~
+9 G AH
+7 7 7 7 0
+27 2 36450000 P
+E
+fang grip gloves~
+Gloves with small fangs set in the palms for a grip that will not slip. It
+fell from Gleeok, guardian of the Snake.
+~
+A
+18 2
+A
+19 2
+A
+13 20
+A
+12 10
+#30724
+twin headed mantle~
+a twin-headed mantle~
+A twin-headed mantle lies here.~
+leather~
+9 G AK
+7 7 7 7 0
+27 2 36450000 P
+E
+twin headed mantle~
+A mantle whose collar ends in two snarling serpent heads. It fell from
+Gleeok, guardian of the Snake.
+~
+A
+18 2
+A
+19 2
+A
+13 4
+A
+12 43
+#30725
+scaled serpent girdle~
+a scaled serpent girdle~
+A scaled serpent girdle lies here.~
+leather~
+9 G AL
+7 7 7 7 0
+27 2 36450000 P
+E
+scaled serpent girdle~
+A girdle of green scale that coils twice about the waist. It fell from
+Gleeok, guardian of the Snake.
+~
+A
+18 2
+A
+19 2
+A
+12 22
+#30726
+venom green bracer~
+a venom-green bracer~
+A venom-green bracer lies here.~
+steel~
+9 G AM
+7 7 7 7 0
+27 2 36450000 P
+E
+venom green bracer~
+A bracer of glossy green scale that weeps a little venom in the heat. It
+fell from Gleeok, guardian of the Snake.
+~
+A
+18 2
+A
+19 2
+A
+12 41
 #30670
 urchin spine mail~
 a coat of urchin-spine mail~
@@ -8037,6 +8560,8 @@ A
 19 2
 A
 13 33
+A
+12 29
 #30671
 spined gauntlets~
 a pair of spined gauntlets~
@@ -8056,6 +8581,8 @@ A
 19 2
 A
 1 3
+A
+12 13
 #30672
 lizard hide armguards~
 a pair of lizard-hide armguards~
@@ -8075,6 +8602,8 @@ A
 19 2
 A
 1 3
+A
+12 14
 #30673
 sand lizard boots~
 a pair of sand-lizard boots~
@@ -8096,6 +8625,8 @@ A
 2 4
 A
 13 18
+A
+12 17
 #30674
 frilled lizard cloak~
 a frilled lizard cloak~
@@ -8115,6 +8646,126 @@ A
 19 1
 A
 2 1
+A
+12 25
+#30728
+urchin spine ring~
+an urchin-spine ring~
+An urchin-spine ring lies here.~
+steel~
+9 G AB
+8 8 8 8 0
+33 2 54450000 P
+E
+urchin spine ring~
+A ring bristling with tiny urchin spines, blunted on the inside. It fell
+from Digdogger, guardian of the Lizard.
+~
+A
+18 1
+A
+19 1
+A
+12 29
+#30729
+lizard crest helm~
+a lizard-crest helm~
+A lizard-crest helm lies here.~
+steel~
+9 G AE
+8 8 8 8 0
+33 2 54450000 P
+E
+lizard crest helm~
+A helm with a tall frilled crest that rises when you are angry. It fell
+from Digdogger, guardian of the Lizard.
+~
+A
+18 2
+A
+19 2
+A
+13 16
+A
+12 20
+#30730
+spined greaves~
+a pair of spined greaves~
+A pair of spined greaves lies here.~
+steel~
+9 G AF
+8 8 8 8 0
+33 2 54450000 P
+E
+spined greaves~
+Greaves studded with Digdogger's short spines down each shin. It fell from
+Digdogger, guardian of the Lizard.
+~
+A
+18 2
+A
+19 2
+A
+13 44
+A
+12 113
+#30731
+urchin shell shield~
+an urchin-shell shield~
+An urchin-shell shield lies here.~
+steel~
+9 G AJ
+16 16 16 16 0
+33 6 54450000 P
+E
+urchin shell shield~
+A domed shield cut from the great urchin's shell, spines still at the rim.
+It fell from Digdogger, guardian of the Lizard.
+~
+A
+18 2
+A
+19 2
+A
+12 26
+#30732
+sand hide belt~
+a sand-hide belt~
+A sand-hide belt lies here.~
+leather~
+9 G AL
+8 8 8 8 0
+33 2 54450000 P
+E
+sand hide belt~
+A broad belt of sandy lizard hide, cool however hot the day. It fell from
+Digdogger, guardian of the Lizard.
+~
+A
+18 2
+A
+19 2
+A
+12 20
+#30733
+lizard eye bracer~
+a lizard's-eye bracer~
+A lizard's-eye bracer lies here.~
+steel~
+9 G AM
+8 8 8 8 0
+33 2 54450000 P
+E
+lizard eye bracer~
+A bracer set with a yellow stone slit like a lizard's eye. It fell from
+Digdogger, guardian of the Lizard.
+~
+A
+18 2
+A
+19 2
+A
+12 38
 #30675
 amber eye bracer gohma~
 a bracer set with an amber eye~
@@ -8134,6 +8785,8 @@ A
 19 3
 A
 2 3
+A
+12 30
 #30676
 gohma carapace shield~
 Gohma's carapace shield~
@@ -8153,6 +8806,8 @@ A
 19 3
 A
 24 -2
+A
+12 28
 #30677
 dragon crested helm~
 a dragon-crested helm~
@@ -8172,6 +8827,8 @@ A
 19 1
 A
 24 -2
+A
+12 2
 #30678
 unblinking eye ring~
 an unblinking eye ring~
@@ -8191,6 +8848,8 @@ A
 19 2
 A
 24 -5
+A
+12 13
 #30679
 pincer toed boots~
 a pair of pincer-toed boots~
@@ -8210,6 +8869,124 @@ A
 19 3
 A
 2 2
+A
+12 18
+#30735
+carapace cuirass gohma~
+a carapace cuirass~
+A carapace cuirass lies here.~
+steel~
+9 G AD
+20 20 20 20 0
+40 6 80000000 P
+E
+carapace cuirass gohma~
+A cuirass of Gohma's shell, ridged and heavy and harder than steel. It fell
+from Gohma, guardian of the Dragon.
+~
+A
+18 2
+A
+19 2
+A
+12 9
+#30736
+crab leg greaves~
+a pair of crab-leg greaves~
+A pair of crab-leg greaves lies here.~
+steel~
+9 G AF
+10 10 10 10 0
+40 2 80000000 P
+E
+crab leg greaves~
+Greaves of jointed shell from the great crab's own legs. It fell from
+Gohma, guardian of the Dragon.
+~
+A
+18 3
+A
+19 3
+A
+12 115
+#30737
+pincer gauntlets~
+a pair of pincer gauntlets~
+A pair of pincer gauntlets lies here.~
+leather~
+9 G AH
+10 10 10 10 0
+40 2 80000000 P
+E
+pincer gauntlets~
+Gauntlets with a hooked pincer over each fist. It fell from Gohma, guardian
+of the Dragon.
+~
+A
+18 3
+A
+19 3
+A
+12 8
+#30738
+shell vambraces~
+a pair of shell vambraces~
+A pair of shell vambraces lies here.~
+steel~
+9 G AI
+10 10 10 10 0
+40 2 80000000 P
+E
+shell vambraces~
+Vambraces of curved red shell that ring like bells when struck. It fell
+from Gohma, guardian of the Dragon.
+~
+A
+18 3
+A
+19 3
+A
+12 14
+#30739
+dragon banner cloak~
+a dragon-banner cloak~
+A dragon-banner cloak lies here.~
+leather~
+9 G AK
+10 10 10 10 0
+40 2 80000000 P
+E
+dragon banner cloak~
+A cloak cut from the Dragon dungeon's own banner, its beast in faded gold.
+It fell from Gohma, guardian of the Dragon.
+~
+A
+18 2
+A
+19 2
+A
+12 36
+#30740
+eye clasped belt~
+an eye-clasped belt~
+An eye-clasped belt lies here.~
+leather~
+9 G AL
+10 10 10 10 0
+40 2 80000000 P
+E
+eye clasped belt~
+A belt fastened with a clasp shaped like a single staring eye. It fell from
+Gohma, guardian of the Dragon.
+~
+A
+18 1
+A
+19 1
+A
+13 18
+A
+12 10
 #30680
 demon scale plate~
 a suit of demon-scale plate~
@@ -8229,6 +9006,8 @@ A
 19 7
 A
 13 21
+A
+12 69
 #30681
 chipped horn crown~
 a chipped-horn crown~
@@ -8248,6 +9027,8 @@ A
 19 2
 A
 24 -8
+A
+12 11
 #30682
 demonclaw gauntlets~
 a pair of demonclaw gauntlets~
@@ -8267,6 +9048,8 @@ A
 19 4
 A
 1 2
+A
+12 4
 #30683
 ancient scale greaves~
 a pair of ancient-scale greaves~
@@ -8286,6 +9069,8 @@ A
 19 1
 A
 13 10
+A
+12 89
 #30684
 demon wing cloak~
 a demon-wing cloak~
@@ -8301,6 +9086,128 @@ It fell from ancient Aquamentus, guardian of the Demon.
 ~
 A
 2 4
+A
+12 10
+#30742
+demon horn ring~
+a demon-horn ring~
+A demon-horn ring lies here.~
+steel~
+9 G AB
+12 12 12 12 0
+46 2 105800000 P
+E
+demon horn ring~
+A ring of black horn carved from the ancient dragon's brow. It fell from
+ancient Aquamentus, guardian of the Demon.
+~
+A
+18 2
+A
+19 2
+A
+13 14
+A
+12 21
+#30743
+ashstride boots~
+a pair of ashstride boots~
+A pair of ashstride boots lies here.~
+leather~
+9 G AG
+12 12 12 12 0
+46 2 105800000 P
+E
+ashstride boots~
+Boots that leave no print, even in the soft ash of the Demon's halls. It
+fell from ancient Aquamentus, guardian of the Demon.
+~
+A
+18 3
+A
+19 3
+A
+12 15
+#30744
+dragonbone vambraces~
+a pair of dragonbone vambraces~
+A pair of dragonbone vambraces lies here.~
+steel~
+9 G AI
+12 12 12 12 0
+46 2 105800000 P
+E
+dragonbone vambraces~
+Vambraces of pale dragonbone, light as wood and harder than iron. It fell
+from ancient Aquamentus, guardian of the Demon.
+~
+A
+18 3
+A
+19 3
+A
+12 9
+#30745
+demon scale tower shield~
+a demon-scale tower shield~
+A demon-scale tower shield lies here.~
+steel~
+9 G AJ
+24 24 24 24 0
+46 6 105800000 P
+E
+demon scale tower shield~
+A tall shield faced with dark scales, each the size of a hand. It fell from
+ancient Aquamentus, guardian of the Demon.
+~
+A
+18 2
+A
+19 2
+A
+12 33
+#30746
+bone link girdle~
+a bone-link girdle~
+A bone-link girdle lies here.~
+leather~
+9 G AL
+12 12 12 12 0
+46 2 105800000 P
+E
+bone link girdle~
+A girdle of linked dragon vertebrae that creaks as you breathe. It fell
+from ancient Aquamentus, guardian of the Demon.
+~
+A
+18 1
+A
+19 1
+A
+13 8
+A
+12 8
+#30747
+ancient scale bracer~
+an ancient-scale bracer~
+An ancient-scale bracer lies here.~
+steel~
+9 G AM
+12 12 12 12 0
+46 2 105800000 P
+E
+ancient scale bracer~
+A bracer of scale gone black with age, still warm at its heart. It fell
+from ancient Aquamentus, guardian of the Demon.
+~
+A
+18 3
+A
+19 3
+A
+13 8
+A
+12 25
 #30685
 ashen dragon plate~
 a suit of ashen dragon plate~
@@ -8320,6 +9227,8 @@ A
 19 9
 A
 13 4
+A
+12 79
 #30686
 four crowned lion shield~
 the four-crowned lion shield~
@@ -8341,6 +9250,8 @@ A
 24 -10
 A
 13 15
+A
+12 24
 #30687
 lion head girdle~
 a lion-head girdle~
@@ -8360,6 +9271,8 @@ A
 19 4
 A
 13 34
+A
+12 12
 #30688
 ash grey dragon bracer~
 an ash-grey dragon bracer~
@@ -8379,6 +9292,8 @@ A
 19 5
 A
 2 2
+A
+12 30
 #30689
 ember armguards~
 a pair of ember armguards~
@@ -8398,6 +9313,128 @@ A
 19 2
 A
 1 1
+A
+12 37
+#30749
+four crowned signet~
+a four-crowned signet~
+A four-crowned signet lies here.~
+steel~
+9 G AB
+13 13 13 13 0
+52 2 135200000 P
+E
+four crowned signet~
+A heavy signet ring stamped with four crowns, one for each of the Lion's
+heads. It fell from ashen Gleeok, guardian of the Lion.
+~
+A
+18 4
+A
+19 4
+A
+12 66
+#30750
+lion maned helm~
+a lion-maned helm~
+A lion-maned helm lies here.~
+steel~
+9 G AE
+13 13 13 13 0
+52 2 135200000 P
+E
+lion maned helm~
+A great helm crowned with a mane of ash-grey bristle. It fell from ashen
+Gleeok, guardian of the Lion.
+~
+A
+18 4
+A
+19 4
+A
+13 8
+A
+12 38
+#30751
+ashen greaves~
+a pair of ashen greaves~
+A pair of ashen greaves lies here.~
+steel~
+9 G AF
+13 13 13 13 0
+52 2 135200000 P
+E
+ashen greaves~
+Greaves of grey scale that smell faintly of a long-dead fire. It fell from
+ashen Gleeok, guardian of the Lion.
+~
+A
+18 3
+A
+19 3
+A
+12 100
+#30752
+ember tread boots~
+a pair of ember-tread boots~
+A pair of ember-tread boots lies here.~
+leather~
+9 G AG
+13 13 13 13 0
+52 2 135200000 P
+E
+ember tread boots~
+Boots whose soles glow faintly, as though they had walked through embers.
+It fell from ashen Gleeok, guardian of the Lion.
+~
+A
+18 3
+A
+19 3
+A
+12 35
+#30753
+lion paw gauntlets~
+a pair of lion-paw gauntlets~
+A pair of lion-paw gauntlets lies here.~
+leather~
+9 G AH
+13 13 13 13 0
+52 2 135200000 P
+E
+lion paw gauntlets~
+Gauntlets shaped like great paws, with curved claws of blackened bronze. It
+fell from ashen Gleeok, guardian of the Lion.
+~
+A
+18 4
+A
+19 4
+A
+13 32
+A
+12 9
+#30754
+drifting ash mantle~
+a mantle of drifting ash~
+A mantle of drifting ash lies here.~
+leather~
+9 G AK
+13 13 13 13 0
+52 2 135200000 P
+E
+drifting ash mantle~
+A grey mantle that sheds a fine ash wherever it goes and is never less. It
+fell from ashen Gleeok, guardian of the Lion.
+~
+A
+18 1
+A
+19 1
+A
+13 6
+A
+12 43
 #30690
 ganon black gauntlets~
 Ganon's black gauntlets~
@@ -8417,6 +9454,8 @@ A
 19 4
 A
 1 3
+A
+12 15
 #30691
 boar hide greaves~
 a pair of boar-hide greaves~
@@ -8436,6 +9475,8 @@ A
 19 1
 A
 13 7
+A
+12 70
 #30692
 ganon arm plates~
 Ganon's arm plates~
@@ -8455,6 +9496,8 @@ A
 19 5
 A
 1 1
+A
+12 32
 #30693
 girdle of power~
 the girdle of Power~
@@ -8474,6 +9517,8 @@ A
 19 5
 A
 13 17
+A
+12 18
 #30694
 trident chased bracer~
 a trident-chased bracer~
@@ -8493,6 +9538,109 @@ A
 19 5
 A
 2 1
+A
+12 28
+#30756
+ganon ring power~
+the ring of Power~
+The ring of Power lies here.~
+steel~
+9 G AB
+14 14 14 14 0
+58 2 168200000 P
+E
+ganon ring power~
+A black iron ring holding one dark triangle, the Triforce of Power's
+shadow. It fell from Ganon, guardian of Death Mountain.
+~
+A
+18 4
+A
+19 4
+A
+13 186
+A
+12 8
+#30757
+dark lord plate ganon~
+the Dark Lord's plate~
+The Dark Lord's plate lies here.~
+steel~
+9 G AD
+28 28 28 28 0
+58 6 168200000 P
+E
+dark lord plate ganon~
+Ganon's own armour, black plate edged in red, sized down by no smith alive.
+It fell from Ganon, guardian of Death Mountain.
+~
+A
+18 4
+A
+19 4
+A
+13 194
+A
+12 12
+#30758
+boar king boots~
+a pair of boar-king boots~
+A pair of boar-king boots lies here.~
+leather~
+9 G AG
+14 14 14 14 0
+58 2 168200000 P
+E
+boar king boots~
+Boots of blue boar hide, hoof-toed and heavier than they look. It fell from
+Ganon, guardian of Death Mountain.
+~
+A
+18 4
+A
+19 4
+A
+13 2
+A
+12 31
+#30759
+black trident shield~
+the black trident shield~
+The black trident shield lies here.~
+steel~
+9 G AJ
+28 28 28 28 0
+58 6 168200000 P
+E
+black trident shield~
+A shield of black iron with Ganon's trident worked across its face. It fell
+from Ganon, guardian of Death Mountain.
+~
+A
+18 4
+A
+19 4
+A
+12 21
+#30760
+ganon crimson cape~
+Ganon's crimson cape~
+Ganon's crimson cape lies here.~
+leather~
+9 G AK
+14 14 14 14 0
+58 2 168200000 P
+E
+ganon crimson cape~
+A heavy cape of crimson cloth that falls like poured blood. It fell from
+Ganon, guardian of Death Mountain.
+~
+A
+18 1
+A
+19 1
+A
+12 61
 #30591
 heart container eagle crystal~
 the Eagle's Heart Container~
@@ -18003,133 +19151,133 @@ M 32188 spec_hyrule_patra Load to: a patra (Level 9 band)
 S
 
 #RESETS
-M 0 32353 10 30201
-M 0 32353 10 30201
-M 0 31033 5 30202
-M 0 31033 5 30202
+M 0 32355 4 30201
+M 0 32355 4 30201
+M 0 31035 8 30202
+M 0 31035 8 30202
 O 0 30509 0 30202
 D 0 30202 5 4
-M 0 31023 2 30203
-M 0 31033 5 30203
-M 0 31032 3 30204
-M 0 31032 3 30204
-M 0 32222 3 30205
-M 0 31072 4 30206
-M 0 32352 6 30206
+M 0 31022 1 30203
+M 0 31032 4 30203
+M 0 31032 4 30204
+M 0 31032 4 30204
+M 0 32222 1 30205
+M 0 31072 1 30206
+M 0 32352 1 30206
 M 0 32220 2 30207
 M 0 32220 2 30207
 O 0 30509 0 30207
 D 0 30207 5 4
-M 0 31000 5 30208
-M 0 31000 5 30208
+M 0 31000 12 30208
+M 0 31000 12 30208
 O 0 30506 0 30208
 D 0 30208 5 4
-M 0 31051 2 30209
-M 0 31051 2 30209
+M 0 31051 4 30209
+M 0 31051 4 30209
 O 0 30564 0 30209
 D 0 30209 5 4
-M 0 31052 4 30210
-M 0 31052 4 30210
-M 0 31063 2 30211
-M 0 31063 2 30211
+M 0 31051 4 30210
+M 0 31051 4 30210
+M 0 31061 4 30211
+M 0 31061 4 30211
 O 0 30509 0 30211
 D 0 30211 5 4
-M 0 31065 2 30212
-M 0 31065 2 30212
+M 0 31061 4 30212
+M 0 31061 4 30212
 O 0 30509 0 30212
 D 0 30212 5 4
-M 0 31016 4 30213
-M 0 31016 4 30213
+M 0 31011 8 30213
+M 0 31011 8 30213
 O 0 30509 0 30213
 D 0 30213 5 4
-M 0 31005 2 30214
-M 0 31005 2 30214
-M 0 31015 3 30215
-M 0 31084 2 30216
-M 0 32354 3 30216
-M 0 31034 10 30217
-M 0 31034 10 30217
-M 0 31034 10 30218
-M 0 31034 10 30218
+M 0 31001 6 30214
+M 0 31001 6 30214
+M 0 31017 6 30215
+M 0 31085 2 30216
+M 0 32355 4 30216
+M 0 31035 8 30217
+M 0 31035 8 30217
+M 0 31035 8 30218
+M 0 31035 8 30218
 O 0 30506 0 30218
 D 0 30218 5 4
-M 0 31013 4 30219
-M 0 31033 5 30219
+M 0 31012 2 30219
+M 0 31032 4 30219
 O 0 30506 0 30219
 D 0 30219 5 4
-M 0 31002 11 30220
-M 0 31012 4 30220
+M 0 31002 6 30220
+M 0 31012 2 30220
 O 0 30506 0 30220
 D 0 30220 5 4
-M 0 31002 11 30221
-M 0 32212 4 30221
-M 0 31002 11 30222
-M 0 31002 11 30222
-M 0 31000 5 30223
-M 0 31000 5 30223
+M 0 31002 6 30221
+M 0 32212 1 30221
+M 0 31002 6 30222
+M 0 31002 6 30222
+M 0 31002 6 30223
+M 0 31002 6 30223
 O 0 30509 0 30223
 D 0 30223 5 4
-M 0 31001 5 30224
-M 0 31001 5 30224
+M 0 31000 12 30224
+M 0 31000 12 30224
 O 0 30506 0 30224
 D 0 30224 5 4
-M 0 31002 11 30225
-M 0 32212 4 30225
-M 0 31003 7 30226
-M 0 32213 7 30226
+M 0 31000 12 30225
+M 0 32210 4 30225
+M 0 31001 6 30226
+M 0 32211 2 30226
 O 0 30506 0 30226
 D 0 30226 5 4
-M 0 31015 3 30227
-M 0 31035 6 30227
+M 0 31011 8 30227
+M 0 31031 11 30227
 O 0 30506 0 30227
 D 0 30227 5 4
-M 0 31026 3 30228
-M 0 31026 3 30228
+M 0 31021 2 30228
+M 0 31021 2 30228
 M 0 31027 2 30229
 M 0 31027 2 30229
 O 0 30506 0 30229
 D 0 30229 5 4
-M 0 31016 4 30230
-M 0 31036 3 30230
-M 0 31006 1 30231
-M 0 31016 4 30231
-M 0 32274 2 30232
-M 0 32274 2 30232
-M 0 31035 6 30233
-M 0 31035 6 30233
+M 0 31017 6 30230
+M 0 31037 1 30230
+M 0 31007 2 30231
+M 0 31017 6 30231
+M 0 32275 5 30232
+M 0 32275 5 30232
+M 0 31035 8 30233
+M 0 31035 8 30233
 O 0 30506 0 30233
 D 0 30233 5 4
-M 0 31025 1 30234
-M 0 31035 6 30234
-M 0 31024 1 30235
-M 0 31034 10 30235
-M 0 31003 7 30236
-M 0 32213 7 30236
-M 0 31003 7 30237
-M 0 32213 7 30237
-M 0 31002 11 30238
-M 0 32212 4 30238
+M 0 31026 3 30234
+M 0 31036 2 30234
+M 0 31026 3 30235
+M 0 31036 2 30235
+M 0 31006 2 30236
+M 0 32216 2 30236
+M 0 31003 2 30237
+M 0 32213 2 30237
+M 0 31003 2 30238
+M 0 32213 2 30238
 O 0 30506 0 30238
 D 0 30238 5 4
-M 0 31001 5 30239
-M 0 31001 5 30239
-M 0 31002 11 30240
-M 0 31002 11 30240
-M 0 32352 6 30241
-M 0 32352 6 30241
-M 0 31003 7 30242
-M 0 31003 7 30242
-M 0 31023 2 30243
-M 0 31033 5 30243
+M 0 31000 12 30239
+M 0 31000 12 30239
+M 0 31000 12 30240
+M 0 31000 12 30240
+M 0 32350 2 30241
+M 0 32350 2 30241
+M 0 31004 2 30242
+M 0 31004 2 30242
+M 0 31024 3 30243
+M 0 31034 1 30243
 O 0 30506 0 30243
 D 0 30243 5 4
-M 0 31034 10 30244
-M 0 31034 10 30244
-M 0 31036 3 30245
-M 0 31036 3 30245
-M 0 31035 6 30246
-M 0 31035 6 30246
-M 0 31015 3 30247
+M 0 31031 11 30244
+M 0 31031 11 30244
+M 0 31031 11 30245
+M 0 31031 11 30245
+M 0 31031 11 30246
+M 0 31031 11 30246
+M 0 31017 6 30247
 O 0 30540 0 30247
 M 0 32305 6 30248
 M 0 32305 6 30249
@@ -18138,187 +19286,187 @@ O 0 30507 0 30250
 D 0 30250 5 4
 M 0 30422 1 30251
 O 0 30225 0 30251
-M 0 31003 7 30252
-M 0 32213 7 30252
-M 0 32353 10 30253
+M 0 31006 2 30252
+M 0 32216 2 30252
+M 0 32353 1 30253
 O 0 30538 0 30253
-M 0 32213 7 30254
+M 0 32210 4 30254
 O 0 30506 0 30254
 D 0 30254 5 4
-M 0 32211 1 30255
+M 0 32210 4 30255
 O 0 30506 0 30255
 D 0 30255 5 4
-M 0 31062 3 30256
-M 0 32212 4 30256
+M 0 31060 1 30256
+M 0 32210 4 30256
 O 0 30506 0 30256
 D 0 30256 5 4
-M 0 31002 11 30257
-M 0 31012 4 30257
+M 0 31000 12 30257
+M 0 31010 2 30257
 O 0 30564 0 30257
 D 0 30257 5 4
-M 0 31052 4 30258
-M 0 31052 4 30258
-M 0 31022 2 30259
-M 0 31022 2 30259
+M 0 31054 2 30258
+M 0 31054 2 30258
+M 0 31024 3 30259
+M 0 31024 3 30259
 O 0 30506 0 30259
 D 0 30259 5 4
-M 0 31002 11 30260
-M 0 31012 4 30260
-M 0 31034 10 30261
-M 0 31034 10 30261
+M 0 31001 6 30260
+M 0 31011 8 30260
+M 0 31031 11 30261
+M 0 31031 11 30261
 O 0 30506 0 30261
 D 0 30261 5 4
-M 0 31034 10 30262
-M 0 32364 2 30262
+M 0 31031 11 30262
+M 0 32361 2 30262
 O 0 30514 0 30262
 D 0 30262 5 4
-M 0 31004 1 30263
-M 0 31014 1 30263
+M 0 31007 2 30263
+M 0 31017 6 30263
 M 0 32305 6 30264
 M 0 32305 6 30265
-M 0 31085 7 30266
-M 0 32355 2 30266
+M 0 31085 2 30266
+M 0 32355 4 30266
 O 0 30509 0 30267
 D 0 30267 5 4
-M 0 31073 4 30268
-M 0 32363 2 30268
+M 0 31076 1 30268
+M 0 32366 1 30268
 O 0 30514 0 30268
 D 0 30268 5 4
-M 0 31000 5 30271
-M 0 31001 5 30272
-M 0 31011 2 30272
+M 0 31000 12 30271
+M 0 31000 12 30272
+M 0 31010 2 30272
 M 0 30423 1 30273
 O 0 30225 0 30273
-M 0 31072 4 30274
-M 0 32352 6 30274
-M 0 31072 4 30275
-M 0 31072 4 30275
-M 0 31011 2 30276
-M 0 31032 3 30277
-M 0 32362 1 30277
+M 0 31074 6 30274
+M 0 32354 6 30274
+M 0 31074 6 30275
+M 0 31074 6 30275
+M 0 31011 8 30276
+M 0 31031 11 30277
+M 0 32361 2 30277
 O 0 30514 0 30277
 D 0 30277 5 4
-M 0 31002 11 30278
-M 0 31012 4 30278
-M 0 31013 4 30279
-M 0 32213 7 30279
+M 0 31001 6 30278
+M 0 31011 8 30278
+M 0 31017 6 30279
+M 0 32217 1 30279
 M 0 32305 6 30280
 M 0 32305 6 30281
 O 0 30697 0 30281
 D 0 30281 5 4
-M 0 32275 11 30282
-M 0 32275 11 30283
-M 0 32275 11 30283
+M 0 32275 5 30282
+M 0 32275 5 30283
+M 0 32275 5 30283
 O 0 30564 0 30283
 D 0 30283 5 4
-M 0 32364 2 30284
+M 0 32365 1 30284
 O 0 30514 0 30284
 D 0 30284 5 4
-M 0 32354 3 30285
-M 0 32354 3 30285
-M 0 32353 10 30286
-M 0 32353 10 30286
+M 0 32358 11 30285
+M 0 32358 11 30285
+M 0 32358 11 30286
+M 0 32358 11 30286
 O 0 30509 0 30286
 D 0 30286 5 4
-M 0 32351 2 30287
-M 0 32351 2 30287
+M 0 32358 11 30287
+M 0 32358 11 30287
 O 0 30509 0 30287
 D 0 30287 5 4
-M 0 32352 6 30288
-M 0 32352 6 30288
+M 0 32358 11 30288
+M 0 32358 11 30288
 O 0 30506 0 30288
 D 0 30288 5 4
-M 0 31062 3 30289
-M 0 31062 3 30289
-M 0 31073 4 30290
-M 0 31073 4 30290
-M 0 31073 4 30291
-M 0 32353 10 30291
-M 0 32222 3 30292
-M 0 32222 3 30292
+M 0 31068 2 30289
+M 0 31068 2 30289
+M 0 31074 6 30290
+M 0 31074 6 30290
+M 0 31074 6 30291
+M 0 32354 6 30291
+M 0 32224 10 30292
+M 0 32224 10 30292
 O 0 30509 0 30292
 D 0 30292 5 4
-M 0 31003 7 30293
-M 0 31013 4 30293
+M 0 31001 6 30293
+M 0 31011 8 30293
 O 0 30509 0 30293
 D 0 30293 5 4
-M 0 31013 4 30294
-M 0 32213 7 30294
+M 0 31011 8 30294
+M 0 32211 2 30294
 O 0 30539 0 30295
-M 0 31085 7 30296
-M 0 31085 7 30296
+M 0 31088 11 30296
+M 0 31088 11 30296
 O 0 30509 0 30296
 D 0 30296 5 4
-M 0 31085 7 30297
-M 0 32355 2 30297
-M 0 31085 7 30298
-M 0 31085 7 30298
+M 0 31088 11 30297
+M 0 32358 11 30297
+M 0 31088 11 30298
+M 0 31088 11 30298
 O 0 30509 0 30298
 D 0 30298 5 4
-M 0 31085 7 30299
-M 0 32275 11 30299
+M 0 31088 11 30299
+M 0 32278 8 30299
 O 0 30509 0 30299
 D 0 30299 5 4
-M 0 32275 11 30300
-M 0 32275 11 30300
+M 0 32278 8 30300
+M 0 32278 8 30300
 O 0 30509 0 30300
 D 0 30300 5 4
-M 0 31087 4 30301
-M 0 32357 2 30301
-M 0 31265 2 30302
-M 0 31265 2 30302
+M 0 31088 11 30301
+M 0 32358 11 30301
+M 0 31268 9 30302
+M 0 31268 9 30302
 O 0 30509 0 30302
 D 0 30302 5 4
-M 0 31263 5 30303
-M 0 31263 5 30304
-M 0 31263 5 30304
-M 0 31263 5 30305
-M 0 31263 5 30305
-M 0 32223 4 30306
-M 0 32223 4 30306
-M 0 32363 2 30308
+M 0 31268 9 30303
+M 0 31268 9 30304
+M 0 31268 9 30304
+M 0 31264 2 30305
+M 0 31264 2 30305
+M 0 32224 10 30306
+M 0 32224 10 30306
+M 0 32364 1 30308
 O 0 30514 0 30308
 D 0 30308 5 4
-M 0 32353 10 30309
-M 0 32353 10 30309
+M 0 32354 6 30309
+M 0 32354 6 30309
 O 0 30564 0 30309
 D 0 30309 5 4
-M 0 32223 4 30310
-M 0 32223 4 30310
+M 0 32224 10 30310
+M 0 32224 10 30310
 O 0 30509 0 30310
 D 0 30310 5 4
-M 0 32353 10 30311
-M 0 32353 10 30311
-M 0 32275 11 30313
-M 0 32275 11 30313
+M 0 32354 6 30311
+M 0 32354 6 30311
+M 0 32278 8 30313
+M 0 32278 8 30313
 O 0 30509 0 30313
 D 0 30313 5 4
-M 0 32275 11 30314
-M 0 32275 11 30314
-M 0 31266 2 30315
-M 0 31266 2 30315
+M 0 32278 8 30314
+M 0 32278 8 30314
+M 0 31268 9 30315
+M 0 31268 9 30315
 O 0 30509 0 30315
 D 0 30315 5 4
-M 0 31087 4 30316
-M 0 31087 4 30316
+M 0 31088 11 30316
+M 0 31088 11 30316
 M 0 31078 1 30317
-M 0 31088 1 30317
+M 0 31088 11 30317
 O 0 30509 0 30317
 D 0 30317 5 4
-M 0 31087 4 30318
-M 0 32357 2 30318
-M 0 32275 11 30319
+M 0 31088 11 30318
+M 0 32358 11 30318
+M 0 32278 8 30319
 O 0 30509 0 30319
 D 0 30319 5 4
-M 0 31264 2 30320
-M 0 31264 2 30320
-M 0 31084 2 30322
+M 0 31268 9 30320
+M 0 31268 9 30320
+M 0 31084 1 30322
 M 0 32214 1 30322
 M 0 31064 1 30323
-M 0 32224 4 30324
-M 0 32224 4 30324
-M 0 32224 4 30325
-M 0 32224 4 30325
+M 0 32224 10 30324
+M 0 32224 10 30324
+M 0 32224 10 30325
+M 0 32224 10 30325
 O 0 30509 0 30325
 D 0 30325 5 4
 M 0 30371 1 30330

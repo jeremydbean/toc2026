@@ -38,9 +38,17 @@
       "7": {
         "long": "A huge red octorok broods on the grassy bluff above the breaking waves.",
         "description": "This must be among the oldest octoroks in Hyrule, its red gone dark as dried blood and its four legs thick as fence posts. Barnacle scars and old sword cuts map its back. It guards the bluff outside the coastal cave as patiently as a stone, motionless until something steps into line, and then it spits rocks that whistle. Shields still turn them, but only just, and it takes a long, hard fight to bring it down."
+      },
+      "8": {
+        "long": "A massive red octorok guards the cliff path, rocks whistling from its snout.",
+        "description": "This red octorok is as big as a barrel and dark as old brick, and it has held the eastern cliffs for so long that the path bends around it. It spits rocks with deadly accuracy and enough force to stagger a shielded knight. Close the distance fast and fight hard."
       }
     },
     "blue_octorok": {
+      "1": {
+        "long": "A small blue octorok bobs through the grass, snout puffing.",
+        "description": "Barely grown, this blue octorok has a soft, mottled hide and stubby legs that leave little tracks in the meadow. It spits pebbles a little harder and a little more often than its red cousins, but a shield turns every one, and a few honest blows put it down. It is the first real fight many travellers in Hyrule find."
+      },
       "2": {
         "long": "A blue octorok scuttles along the damp riverbank, snout working.",
         "description": "This one is barely grown, its blue hide still soft and speckled with river silt from the landing where it hatched. It scuttles in short bursts along the wet stones near the crescent gate, stops dead, swivels its stubby snout and spits a pebble before scampering off again. Its aim is wild and its stones are small, and a raised shield turns every one of them aside with a dull click."
@@ -64,9 +72,17 @@
       "7": {
         "long": "A huge blue octorok guards the path amid a litter of spat stones.",
         "description": "The largest of its kind for leagues, this octorok has grown a hide so dark it is nearly black, rippled with old scars where swords once bit and failed to finish it. It holds a stretch of the southern paths as its own and has spat so many stones there that they lie scattered like hail. Each shot comes out with the force of a sling bullet, and only a raised shield keeps a skull whole against it."
+      },
+      "8": {
+        "long": "A grizzled blue octorok squats on the rocks above the eastern sea.",
+        "description": "Salt and wind have bleached this old blue octorok to the colour of slate, and its tough hide is ridged with barnacle scars. It holds the eastern cliffs and coast against all comers, spitting rocks with a crack like a sling, and it hits hard enough to dent a shield. Close in quickly and do not let it pick you off from range."
       }
     },
     "red_moblin": {
+      "2": {
+        "long": "A red moblin skulks among the dark pines, grumbling.",
+        "description": "This red moblin is a scrawny, ill-tempered thing with a cracked spear and a habit of muttering to itself. It lurks among the dark pines on the way east and hurls its spear at travellers before charging after it. It is no great threat to a careful fighter, but it never gives up a chase."
+      },
       "3": {
         "long": "A red moblin gnaws a bone among the knotted roots of the thicket.",
         "description": "This one is barely grown, its red bristles still patchy over pink hide and its ears too big for its head. It has made a nest of snapped arrows and stolen bones beneath the thicket's knotted roots and guards it with a short, crooked spear. When it spots a stranger it yaps, rears back and hurls the spear in a straight line, and a raised shield turns the throw aside with a dull clack."
@@ -93,6 +109,10 @@
       }
     },
     "blue_moblin": {
+      "2": {
+        "long": "A blue moblin stalks the woods, spear held low.",
+        "description": "Young as blue moblins go, this one is lean and quick-tempered, its blue hide still patchy and its spear a crude pole with a stone point. It patrols the eastern woods in a grumbling circuit and throws its spear at anything that moves, then charges after it. Its spear stings, but it is no match for a steady blade and a raised shield."
+      },
       "3": {
         "long": "A blue moblin stalks the forest trail, a fresh spear on its shoulder.",
         "description": "A young blue moblin, its hide still patchy where grey-blue bristles have yet to come in, and its spear a raw sapling with a flaked stone head lashed on. It walks the trails near the ring of trees with a bully's swagger, grunting at shadows, and hurls spears in straight lines as soon as anything moves on the path ahead. Stepping aside from the throw leaves it fumbling for another shaft."
@@ -112,6 +132,10 @@
       "7": {
         "long": "A blue moblin chieftain gnaws a bone beside a cold campfire.",
         "description": "A massive old moblin, broad as a door, with a hide gone the colour of slate and an iron collar riveted round its neck as a mark of rank. It lords over the hollow where its kin camp, and it keeps the best spears for itself, long heavy shafts it throws in straight lines with frightening speed. Only patience and many hard blows bring it down, and it fights on long after its pack has fled."
+      },
+      "8": {
+        "long": "A hulking blue moblin guards the eastern wood path, spear across its knees.",
+        "description": "This blue moblin is a veteran of the eastern woods, heavy with muscle and scarred from tusk to toe, and its iron-headed spear has broken many shields. It holds the wood path near the Lion's thicket with a soldier's patience and hurls the spear with frightening force. Expect a long, hard fight."
       }
     },
     "red_tektite": {
@@ -140,9 +164,21 @@
       "3": {
         "long": "A blue tektite springs along the craggy ridge, dislodging loose stones.",
         "description": "Wind off the southern ridge has bleached this tektite's shell from deep blue to the pale shade of a winter sky, and one of its legs bends at a crooked angle where it once broke and mended. It is quick and confident now, sailing in long arcs over the jagged brown rock and dropping onto whatever moves below. Wait for it to settle on its haunches before swinging, because in the air it is nearly impossible to hit."
+      },
+      "5": {
+        "long": "A blue tektite springs from crag to crag, legs folding and snapping.",
+        "description": "Long-legged and hard-shelled, this blue tektite has learned to leap among the craggy rises of the north-east, landing beside a traveller before they see it jump. It strikes and springs away in the same motion. Wait for it to land, then hit it before it can gather its legs again."
       }
     },
     "red_leever": {
+      "1": {
+        "long": "A small red leever pops up from the sand bar, spinning.",
+        "description": "This young red leever is little more than a spinning red knot, its hide still soft from the sand. It rises out of the sand bar beside travellers, spins at them for a moment and sinks again. It is slow to surface and quick to die, which makes it good practice for the dunes to come."
+      },
+      "2": {
+        "long": "A red leever whirls up out of the southern sands.",
+        "description": "A tough little red leever, its hide toughened by the hot southern sands, rises and sinks in the dunes like a fish in water. It spins at anyone who strays near and dives again before they can answer. Watch for the swirl in the sand that warns of it, and strike as it rises."
+      },
       "3": {
         "long": "A small red leever bores up through the sand, spinning with a hiss.",
         "description": "This leever is young, its spines still soft and pinkish at the tips and its whorl of leaves no wider than a hand. It lives in the damp sand by the lake, where wet grains cling to it and clot between its spines. It surfaces close to anyone who crosses the flats, scuttles straight at them along the ground, then screws itself back down and rises somewhere else. It is feeble alone, but it keeps coming back."
@@ -158,6 +194,10 @@
       "6": {
         "long": "A great red leever rises out of the dunes, spines rattling in the wind.",
         "description": "Old and enormous, this leever has grown a ragged collar of dead leaves around its spinning crown, bleached almost white by the sun on the southern dunes. It surfaces with a roar of sand, and the whorls it leaves behind take a long while to fill. It charges harder than its smaller kin and burrows faster, so it is rarely above ground for long. Stand still, wait for the sand to bulge, and hit hard the instant it appears."
+      },
+      "9": {
+        "long": "A huge red leever erupts from the flats, spinning like a millwheel.",
+        "description": "The red leevers of the high flats grow huge and dark, and this one bursts from the ground with a spray of grit and spins at its prey with crushing force. It is hard to hit and harder to hurt, and it comes back again and again. Only a strong fighter should linger here."
       }
     },
     "blue_leever": {
@@ -168,6 +208,14 @@
       "4": {
         "long": "A blue leever whirls through the dunes, leaving a spiral furrow behind.",
         "description": "Its spines are long and hardened now, worn to a polish by years of grinding through the dune strip, and its blue skin has bleached almost white on the side it keeps toward the sun. It surfaces near the stone soldiers and below the hills alike, wherever the sand runs soft, and it pursues anyone it senses with dogged patience. It burrows only after a long chase, so standing ground against it is wiser than running."
+      },
+      "5": {
+        "long": "A blue leever bores through the north-eastern dunes, sand hissing off its hide.",
+        "description": "Hardened by the hot sands of the north-eastern hills, this blue leever is a squat whirl of tough blue hide that bores through the dunes faster than a man can run. It surfaces without warning beside travellers and spins at them, then sinks again before a sword comes down. Keep moving, watch the sand for its furrow, and strike the moment it rises."
+      },
+      "7": {
+        "long": "A great blue leever churns up through the sand among the sentinels.",
+        "description": "This blue leever is old and broad, its hide scoured to a dull slate by years of sand, and it rises from the ground among the silent statues like a spinning millstone. It hits hard and keeps coming, burrowing and resurfacing in a ring around its prey. Stand your ground, shield up, and cut it down each time it rises."
       },
       "9": {
         "long": "A blue leever grinds up through frost-crusted sand atop Spectacle Rock.",
@@ -182,6 +230,10 @@
       "6": {
         "long": "A battle-worn red lynel thunders along the ridge, mane like a torch.",
         "description": "Powerful and scarred, this red lynel has a mane of deep copper that the thin mountain wind whips about like flame, and its breastplate is gouged with the marks of old fights near the Dragon's gate. It knows every pass and terrace of the high ridges and charges down them with terrible speed. The beams from its sword reach across whole slopes. Fight it with a shield ready and strike while it turns to charge again."
+      },
+      "9": {
+        "long": "A towering red lynel paces the mountain terraces, mane ablaze.",
+        "description": "This red lynel is a lord of Death Mountain's high terraces, enormous and scarred, its copper mane whipping like fire in the thin wind. It charges down the broken slopes with terrible speed and its sword throws beams across whole terraces. It is one of the deadliest things in Hyrule; meet it only well armed and well prepared."
       }
     },
     "blue_lynel": {
@@ -203,6 +255,10 @@
       }
     },
     "peahat": {
+      "1": {
+        "long": "A small peahat twirls over the flower field, petals fluttering.",
+        "description": "Hardly larger than a sunflower, this young peahat drifts over the meadow on a lazy spin, petals soft and bright. While it whirls no blade can touch it, but it tires quickly and lands to rest among the flowers, and then even a beginner's sword makes short work of it."
+      },
       "2": {
         "long": "A small peahat spins up from the flowers, wobbling as it rises.",
         "description": "This peahat is a young bloom, its petals still pale yellow and slightly crumpled, and it spins unevenly so that it lurches and dips over the flowered slope at the foot of Death Mountain. It rises a little way, drifts toward whatever moves, and bumps clumsily into it. While its petals whirl no blade can catch it. It tires quickly, though, and when it settles to rest it can be cut down with ease."
@@ -226,9 +282,17 @@
       "8": {
         "long": "A giant peahat spins above the high meadow, petals beating the air.",
         "description": "Broad as a cartwheel, this ancient peahat has petals thick as leather and a dark, knotted heart scarred by blades that caught it on the ground. It rides the updraughts over the highland meadows near Spectacle Rock and comes down like a falling millstone. While it spins nothing harms it. It lands to rest less often than its younger kin, so be ready the moment it settles, and strike before it lifts away."
+      },
+      "9": {
+        "long": "An ancient peahat whirls over the mountain heights, petals like blades.",
+        "description": "This peahat has ridden the winds of Death Mountain for longer than anyone remembers, and its petals have grown thick and hard as leather. It drops out of the updraughts like a falling millstone and is gone again before a blow can land. It settles only rarely; be ready, and strike the moment it touches the ground."
       }
     },
     "zora": {
+      "1": {
+        "long": "A young zora surfaces in the shallows, its throat glowing faintly.",
+        "description": "Small and green, this young zora still lives in the shallow, sunlit waters of the lake and the river bend. It rises without warning, its throat glowing, and spits a sputtering fireball before sinking again. A shield stops the shot easily, and it takes only a blow or two to drive it off."
+      },
       "2": {
         "long": "A zora pokes its finned head up from the shallows, then sinks.",
         "description": "A young zora, its scales still a bright lake green and its fin crest small and soft. It keeps to the open water off Lake Hylia's southern shore, surfacing with a ripple, hanging there a moment with its throat beginning to glow, then spitting a small fireball before diving. Its aim is poor and its fire is weak, and a shield raised toward the water turns it easily. Strike while its head is up."
@@ -244,6 +308,14 @@
       "5": {
         "long": "A zora rears up from the foaming pool beneath the roaring falls.",
         "description": "Cold mountain water and the endless hammer of the falls have made this zora lean and powerful, its scales a pale, icy grey-green and its fins torn to lace by the current. It surfaces in the spray at the foot of the cascade, where the mist hides its glowing throat until the fireball is already flying. A shield stops the shot, but it sinks fast and resurfaces somewhere else in the white water."
+      },
+      "7": {
+        "long": "A dark zora rises from the river, fireball smouldering in its throat.",
+        "description": "In the deep, shaded water of the forest river this zora has grown big and dark, its scales near black and its fins frayed like old sails. It surfaces at the ford and the riverside cave mouth and spits fireballs hot enough to scorch a shield. Strike when it rises, and keep moving between its shots."
+      },
+      "8": {
+        "long": "A great zora heaves up from the deep water by the eastern dock.",
+        "description": "The water off the eastern dock is deep and cold, and the zora that hunts there is as big as a man, its scales a dark, oily green and its throat glowing like a forge. Its fireballs are fierce and come fast. A strong shield and a quick blade are the only answers."
       }
     },
     "ghini": {
@@ -253,6 +325,10 @@
       }
     },
     "armos": {
+      "2": {
+        "long": "An armos knight stands sentinel among the trees, moss in its joints.",
+        "description": "Small for its kind and green with moss, this armos has stood among these trees so long that ivy has climbed its legs and birds nest in the crook of its stone arm. Touched, it shakes off the creepers with a dry crack and stamps after you on short, heavy legs, slower than the old knights of the highlands. A few good blows will break it, and some of these statues stand over a hidden way."
+      },
       "3": {
         "long": "An armos knight stands on the lakeside rise, lichen on its shield.",
         "description": "Lake damp has crept into this stone soldier, greening its shield with lichen and softening the edges of its carved face. It looks like a mere carving until a hand touches it; then colour floods into the stone and it lurches forward on stiff legs, jabbing its spear as it marches. It is slow and clumsy so soon after waking, and blows land on it freely while it finds its feet."
@@ -264,6 +340,14 @@
       "5": {
         "long": "An armos knight keeps its silent watch, blank eyes on the horizon.",
         "description": "Tall and broad-shouldered, this is one of the old armos of the highlands, its stone weathered to a deep grey and its shield cracked across the face where something struck it long ago. Touched, it wakes with a grinding of stone on stone and turns a hard, cold blue, then marches with an older knight's speed and purpose. It takes a great deal of punishment to break, and some of these statues hide a stair beneath their feet."
+      },
+      "6": {
+        "long": "A grave armos knight stands in the gallery, its stone streaked black.",
+        "description": "Rain from the graveyard hills has run down this armos for centuries and left it streaked black as a mourner. Its blank face is turned toward the Dragon's gate and its sword is chipped from old fights. Touched, it wakes with a deep grinding groan and strides after you with a veteran's purpose, and it takes a long, hard fight to bring it down."
+      },
+      "7": {
+        "long": "An ancient armos knight looms among the silent sentinels.",
+        "description": "Weathered almost smooth, this is one of the oldest armos in Hyrule, its features worn away to a suggestion of a face and its shield cracked through. Touched, it wakes with a sound like a landslide and turns a hard, cold blue, then marches faster than anything so heavy has a right to. Blades skate off it; only patience and a great deal of punishment will break it."
       }
     },
     "falling_rock": {
@@ -282,6 +366,10 @@
       "7": {
         "long": "Massive boulders crash over the crest in a ceaseless rockfall.",
         "description": "High on the crest the wind is bitter and the scree is rimed with frost, and the peaks above shed boulders as tall as a man that come leaping over the edge in great booming arcs. Each impact shakes the ground and pocks it with fresh craters. Nothing living could stand against them and no blade or spell will slow them; a traveller can only watch the sky, count the bounces and run between them."
+      },
+      "9": {
+        "long": "Boulders the size of huts thunder down the mountainside.",
+        "description": "Death Mountain sheds its slopes without pause. Great boulders break loose from the heights above and come bounding down in booming arcs, each one big enough to flatten a cart, and the ground here is pitted with their craters. Nothing stops them and nothing hurts them; a traveller can only watch, count the bounces, and run."
       }
     },
     "keese": {

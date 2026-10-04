@@ -185,10 +185,15 @@ Current October 2026 Python baseline:
 ```text
 100 listed area entries
 2,495 mobiles
-3,668 objects
+3,721 objects
 7,787 rooms
-0 critical, 12 warning, 1,582 information findings
+0 critical, 12 warning, 1,635 information findings
 ```
+
+Objects and information findings both rose by exactly 53 on 2026-10-04,
+when every Hyrule guardian gained a drop for each armour slot its first five
+left open (`BOSS_EXTRA_DROPS`, vnums 30700 on): like the first five, they
+are made by `make_corpse`, so each counts as `object-has-no-source`.
 
 Removing the catalog's unplaced plain red ring (`30261`) and Ganon's copy
 of the Blue Ring of Hyrule (`30578`, the shop's ring now carries the name)
@@ -606,6 +611,17 @@ and must stay the best weapon a mortal can get anywhere at 59 or below;
 The old men, Zelda and the other non-combatants are refused by
 `is_hyrule_bystander()` in `is_safe`, so their high levels cannot be
 farmed.
+
+**Nothing in Hyrule is aggressive** (owner, 2026-10-04): the generator's
+`calm_mobiles()` strips `ACT_AGGRESSIVE` from every record, so do not read
+that flag to tell a Hyrule enemy apart -- `hyrule_room_has_guardian()`, which
+holds shutters shut, asks for a non-bystander Hyrule mobile instead. Enemy
+stats follow the world's median hit points and damage a round at their
+level (`HIT_POINT_CURVE`, `DAMAGE_CURVE`, the band calibrations), and the
+overworld is graded along the routes to each dungeon; see
+`wiki/hyrule-area.md`. `tests/test_hyrule_walkthrough.py` plays the whole
+chain as a mortal -- run it after any change to the overworld, the gates
+or the owl's directions.
 
 **Worn powers are ROM `F` records.** `load_objects` reads
 `F` / `A <location> <modifier> <bits>` and puts the bits on the prototype

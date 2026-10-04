@@ -1364,7 +1364,12 @@ const char *default_prompt_text args( ( void ) );
 /* Each guardian's drop table: five pieces at FIRST + (level - 1) * 5. */
 #define OBJ_VNUM_HYRULE_BOSS_DROP_FIRST   30650
 #define HYRULE_BOSS_DROPS_PER_GUARDIAN    5
-#define HYRULE_BOSS_DROPS_PER_KILL        2
+#define HYRULE_BOSS_DROPS_PER_KILL        3
+/* The rest of each guardian's table, a piece for every other armour slot
+   (scripts/build_hyrule_area.py, BOSS_EXTRA_DROPS): a second block,
+   HYRULE_BOSS_EXTRA_STRIDE vnums to a guardian. */
+#define OBJ_VNUM_HYRULE_BOSS_EXTRA_FIRST  30700
+#define HYRULE_BOSS_EXTRA_STRIDE          7
 
 /* One row of Hyrule's dungeon order, hyrule_progress_gate in act_move.c:
    where the dungeon is, and what its two gates ask for. The maps and
@@ -3145,6 +3150,7 @@ bool    hyrule_gate_refuses ( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
                               ROOM_INDEX_DATA *to );
 const HYRULE_DUNGEON_GATE *hyrule_dungeon_gate ( int level );
 bool    hyrule_carries  ( CHAR_DATA *ch, int vnum );
+bool    is_hyrule_bystander ( CHAR_DATA *victim );
 
 /* hyrule.c */
 bool    hyrule_is_dungeon_tool ( const OBJ_DATA *obj );
