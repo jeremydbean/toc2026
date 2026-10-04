@@ -64,10 +64,10 @@ static int psionic_reduce_mental_drain( CHAR_DATA *victim, int amount )
     return UMAX( 0, amount );
 }
 
-static bool psionic_remote_room_blocked( CHAR_DATA *ch,
-                                         ROOM_INDEX_DATA *room,
-                                         bool block_safe,
-                                         bool block_no_recall )
+bool psionic_remote_room_blocked( CHAR_DATA *ch,
+                                  ROOM_INDEX_DATA *room,
+                                  bool block_safe,
+                                  bool block_no_recall )
 {
     if ( room == NULL
     ||   !can_see_room( ch, room )
@@ -1175,20 +1175,10 @@ void do_astral_walk( CHAR_DATA *ch, char *argument )
      * the helper's own list) and the destination passes true. Gate,
      * summon, teleport, shift and the rest keep no-recall on both sides.
      */
-    victim = get_char_world( ch, arg );
-    if ( victim == NULL
-    ||   victim == ch
-    ||   IS_IMMORTAL(victim)
-    ||   (victim != NULL && victim->in_room == ch->in_room)
-    ||   psionic_remote_room_blocked(ch, ch->in_room, false, false)
-    ||   psionic_remote_room_blocked(ch, victim != NULL ? victim->in_room : NULL,
-                                     true, true)
-    ||   (victim != NULL
-      && IS_SET(victim->in_room->room_flags, ROOM_NEWBIES_ONLY))
-    ||   (victim != NULL && IS_NPC(victim)
-      && IS_SET(victim->imm_flags, IMM_SUMMON))
-    ||   (victim != NULL && !IS_NPC(victim)
-      && IS_SET(victim->act, PLR_NOSUMMON)) )
+    /* The first mind by that name it could reach, at any level (owner,
+       2026-10-04); a mobile's summon immunity no longer stops it. */
+    victim = travel_target( ch, arg, ch->level, TRAVEL_ASTRAL );
+    if ( victim == NULL )
     {
         send_to_char( "You cannot find a safe astral path to that target.\n\r", ch );
         return;
@@ -2550,24 +2540,8 @@ void spell_earth_travel( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim;
     char buf[MAX_STRING_LENGTH];
 
-    if ( ( victim = get_char_world( ch, target_name ) ) == NULL
-    ||   victim == ch
-    ||   victim->in_room == NULL
-    ||   !can_see_room(ch,victim->in_room)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_SAFE)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_PRIVATE)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_SOLITARY)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
-    ||   IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_JAIL)
-    ||   IS_SET(ch->in_room->room_flags, ROOM_JAIL)
-    ||   victim->level >= level + 3
-    ||   (!IS_NPC(ch) && ch->pcdata->mounted)
-    ||   (!IS_NPC(victim) && victim->level >= LEVEL_HERO3)  /* NOT trust */
-    ||   (IS_NPC(victim) && IS_SET(victim->imm_flags,IMM_SUMMON))
-    ||   (!IS_NPC(victim) && IS_SET(victim->act,PLR_NOSUMMON))
-    ||   (IS_NPC(victim) && saves_spell( level, victim ) )
-    ||   travel_spell_refuses( ch, victim->in_room ) )
+    if ( (!IS_NPC(ch) && ch->pcdata->mounted)
+    ||   ( victim = travel_target( ch, target_name, level, TRAVEL_GATE ) ) == NULL )
     {
 	send_to_char( "You failed.\n\r", ch );
 	   return;

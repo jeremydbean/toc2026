@@ -2660,6 +2660,13 @@ void    spellup_boot_place      ( void );
 void    spill_corpse            ( OBJ_DATA *corpse );
 bool    gone_after_blow         ( CHAR_DATA *ch, ROOM_INDEX_DATA *room );
 void    record_player_kill      ( CHAR_DATA *ch, CHAR_DATA *victim );
+#define TRAVEL_GATE    0   /* gate, earth travel */
+#define TRAVEL_PORTAL  1   /* the portal spell */
+#define TRAVEL_ASTRAL  2   /* astral walk */
+CHAR_DATA *travel_target          ( CHAR_DATA *ch, char *argument, int level,
+                                    int mode );
+bool    psionic_remote_room_blocked ( CHAR_DATA *ch, ROOM_INDEX_DATA *room,
+                                      bool block_safe, bool block_no_recall );
 void    reapply_innate_affects  ( CHAR_DATA *ch );
 void    release_mount           ( CHAR_DATA *ch );
 ROOM_INDEX_DATA *random_travel_room ( CHAR_DATA *ch, bool allow_safe );

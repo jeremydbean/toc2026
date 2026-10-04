@@ -809,6 +809,13 @@ Syntax: cast 'earth travel' <character>
 This spell transports the caster to the target character.
 If the target character is a pc, he or she must have nosummon off.
 
+It reaches anyone who is not more than four levels above you, not of
+immortal level, and not standing in a no-recall room or a jail -- nor
+anywhere you could not walk into: a full private room, a guild hall or
+guarded room closed to you, a Hyrule dungeon you have not earned.  When
+several share a name it goes to the first you could reach, and 2.kitten
+means the second.
+
 For gate, minimum level depends on your primary class and is:
 Mage:20   Cleric:19   Thief:22   Warrior:23   Monk: N/A   Necromancer:N/A
 

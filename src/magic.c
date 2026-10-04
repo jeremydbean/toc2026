@@ -2933,6 +2933,85 @@ if(!IS_IMMORTAL(ch) )
 
 /* RT ROM-style gate */
 
+/*
+ * Who a travel spell takes you to: the first character by that name you
+ * could actually reach, and with "2.name" the second such. get_char_world
+ * took the first match in the world, reachable or not, so "kitten" found a
+ * level 45 kitten and the spell failed while a reachable one sat in the
+ * High Tower (Alaric, 2026-10-04).
+ *
+ * The owner's rules (2026-10-04):
+ *   gate, earth travel, portal -- anyone not in a no-recall or jail room,
+ *     not of immortal level, and not more than four levels above you.
+ *   astral walk -- no level limit; it may leave a no-recall room but
+ *     never enter one.
+ * A mobile's summon immunity is not asked: it stops a mobile being pulled
+ * to you, not you going to it, and nearly every mobile carries it. Nor is
+ * its saving throw: a target that qualifies is reached. What walking in
+ * would refuse is still refused -- staff and Mud School rooms, a private
+ * room that is full, another class's guild hall, a guarded room,
+ * Hyrule's order -- and so is a death trap. A player still needs
+ * NOSUMMON off, and gate and earth travel still stop at hero level.
+ * The portal spell never opens onto a fight or an aggressive mobile.
+ */
+CHAR_DATA *travel_target( CHAR_DATA *ch, char *argument, int level, int mode )
+{
+    char arg[MAX_INPUT_LENGTH];
+    LIST_ITERATOR iter;
+    CHAR_DATA *wch;
+    int number;
+    int count = 0;
+
+    if ( ch->in_room == NULL || IS_SET(ch->in_room->room_flags, ROOM_JAIL) )
+	return NULL;
+    if ( mode == TRAVEL_GATE && IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) )
+	return NULL;
+    if ( mode == TRAVEL_ASTRAL
+    &&   psionic_remote_room_blocked( ch, ch->in_room, false, false ) )
+	return NULL;
+
+    number = number_argument( argument, arg );
+    if ( arg[0] == '\0' )
+	return NULL;
+
+    FOR_EACH_CHARACTER( iter, wch )
+    {
+	ROOM_INDEX_DATA *room = wch->in_room;
+
+	if ( wch == ch || room == NULL || room == ch->in_room
+	||   !is_name( arg, wch->name ) || !can_see( ch, wch ) )
+	    continue;
+
+	if ( IS_IMMORTAL(wch)
+	||   IS_SET(room->room_flags, ROOM_NO_RECALL)
+	||   IS_SET(room->room_flags, ROOM_JAIL)
+	||   IS_SET(room->room_flags, ROOM_DT)
+	||   !can_see_room( ch, room )
+	||   !can_enter_private_room( ch, room )
+	||   ( !IS_NPC(ch) && !IS_IMMORTAL(ch) && ch->level > 10
+	       && IS_SET(room->room_flags, ROOM_NEWBIES_ONLY) )
+	||   travel_spell_refuses( ch, room )
+	||   ( !IS_NPC(wch) && IS_SET(wch->act, PLR_NOSUMMON) ) )
+	    continue;
+
+	if ( mode != TRAVEL_ASTRAL && wch->level > level + 4 )
+	    continue;
+	if ( mode == TRAVEL_GATE && !IS_NPC(wch) && wch->level >= LEVEL_HERO3 )
+	    continue;
+	if ( mode == TRAVEL_PORTAL
+	&&   ( wch->fighting != NULL
+	    || ( IS_NPC(wch) && IS_SET(wch->act, ACT_AGGRESSIVE) ) ) )
+	    continue;
+	if ( mode == TRAVEL_ASTRAL
+	&&   psionic_remote_room_blocked( ch, room, true, true ) )
+	    continue;
+
+	if ( ++count == number )
+	    return wch;
+    }
+    return NULL;
+}
+
 void spell_gate( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     UNUSED_PARAM(sn);
@@ -2942,23 +3021,7 @@ void spell_gate( int sn, int level, CHAR_DATA *ch, void *vo )
     char buf[MAX_STRING_LENGTH];
 
 
-    if ( ( victim = get_char_world( ch, target_name ) ) == NULL
-    ||   victim == ch
-    ||   victim->in_room == NULL
-    ||   !can_see_room(ch,victim->in_room)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_SAFE)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_PRIVATE)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_SOLITARY)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
-    ||   IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
-    ||   IS_SET(ch->in_room->room_flags, ROOM_JAIL)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_JAIL)
-    ||   victim->level >= level + 3
-    ||   (!IS_NPC(victim) && victim->level >= LEVEL_HERO3)  /* NOT trust */
-    ||   (IS_NPC(victim) && IS_SET(victim->imm_flags,IMM_SUMMON))
-    ||   (!IS_NPC(victim) && IS_SET(victim->act,PLR_NOSUMMON))
-    ||   (IS_NPC(victim) && saves_spell( level, victim ) )
-    ||   travel_spell_refuses( ch, victim->in_room ) )
+    if ( ( victim = travel_target( ch, target_name, level, TRAVEL_GATE ) ) == NULL )
     {
 	send_to_char( "You failed.\n\r", ch );
 	   return;
@@ -5154,23 +5217,7 @@ void spell_portal( int sn, int level, CHAR_DATA *ch, void *vo )
      * ROOM_NO_RECALL and the caster's is deliberately not -- only for
      * ROOM_JAIL. Gate and summon keep no-recall on both sides.
      */
-    if ( ( victim = get_char_world( ch, target_name ) ) == NULL
-    ||   victim == ch
-    ||   victim->in_room == NULL
-    ||   IS_SET(victim->in_room->room_flags, ROOM_SAFE)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_PRIVATE)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_SOLITARY)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
-    ||   IS_SET(ch->in_room->room_flags, ROOM_JAIL)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_JAIL)
-    ||   (IS_NPC(victim) && IS_SET(victim->act,ACT_AGGRESSIVE))
-    ||   victim->fighting != NULL
-    ||   victim->level >= level + 3
-    ||   (!IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON))
-    ||   (IS_NPC(victim) && IS_SET(victim->imm_flags,IMM_SUMMON))
-    ||   (IS_NPC(victim) && saves_spell( level, victim ) )
-    ||   !can_see_room( ch, victim->in_room )
-    ||   travel_spell_refuses( ch, victim->in_room ) )
+    if ( ( victim = travel_target( ch, target_name, level, TRAVEL_PORTAL ) ) == NULL )
     {
 	send_to_char( "You failed.\n\r", ch );
 	return;
