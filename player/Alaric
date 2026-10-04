@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791135317
+LogO 1791135602
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,18 +15,18 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 28
-Plyd 297466
+Plyd 297751
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 Scro 22
-Room 4210
-HMV  334 595 1850 2166 260 441
-NewGold 272
-NewPlat 69
-NewCopp 3521
-NewSilv 388
-BankCP 1080356235
+Room 29060
+HMV  381 595 2005 2166 386 441
+NewGold 76
+NewPlat 371
+NewCopp 21
+NewSilv 23
+BankCP 780356235
 IntTime 1791075484
 IntTotal 8356235
 Dcount 0
@@ -114,9 +114,10 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  56069
+Exp  56059
 Act  4261068
 AfBy 1572864
+AfBy2 16
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -141,7 +142,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  4
+Pos  8
 Prac 19
 Trai 1
 Save  15
@@ -222,11 +223,12 @@ Gr 'necro enhancement'
 Gr 'necromancy'
 Gr 'necro protective'
 Gr 'necro transportation'
-AffD 'pass door'   0   9   0   0    1048576          0
-AffD 'fly'   0  26   0   0     524288          0
-AffD 'shroud'   0  22 -35  17          0          0
-AffD 'shield'   0  30 -20  17          0          0
-AffD 'armor'  15  19 -20  17          0          0
+AffD 'death shroud'   0   1   0   0          0         16
+AffD 'pass door'   0   4   0   0    1048576          0
+AffD 'fly'   0  21   0   0     524288          0
+AffD 'shroud'   0  17 -35  17          0          0
+AffD 'shield'   0  25 -20  17          0          0
+AffD 'armor'  14  14 -20  17          0          0
 End
 
 #O
@@ -922,7 +924,7 @@ Wear 0
 Cost 2
 Cond 92
 Repd 0
-Val  0 0 65 0 0
+Val  0 0 60 0 0
 End
 
 #O
@@ -932,42 +934,6 @@ Wear -1
 Lev  18
 Cost 5000000
 Cond 100
-Repd 0
-End
-
-#O
-Vnum 12
-Nest 0
-ShD  A surgically removed head~
-Desc A surgically removed head grins at Alaric~
-Wear -1
-Time 161
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 12
-Nest 0
-ShD  A surgically removed head~
-Desc A surgically removed head grins at Alaric~
-Wear -1
-Time 162
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 12
-Nest 0
-ShD  A surgically removed head~
-Desc A surgically removed head grins at Alaric~
-Wear -1
-Time 157
-Cost 0
-Cond 25
 Repd 0
 End
 
@@ -982,48 +948,12 @@ Repd 0
 End
 
 #O
-Vnum 12
+Vnum 14
 Nest 0
-ShD  A surgically removed head~
-Desc A surgically removed head grins at Alaric~
+ShD  A surgically removed arm~
+Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 166
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 12
-Nest 0
-ShD  A surgically removed head~
-Desc A surgically removed head grins at Alaric~
-Wear -1
-Time 166
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 12
-Nest 0
-ShD  A surgically removed head~
-Desc A surgically removed head grins at Alaric~
-Wear -1
-Time 167
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 12
-Nest 0
-ShD  A surgically removed head~
-Desc A surgically removed head grins at Alaric~
-Wear -1
-Time 248
+Time 245
 Cost 0
 Cond 25
 Repd 0
@@ -1035,7 +965,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 250
+Time 245
 Cost 0
 Cond 25
 Repd 0
@@ -1047,7 +977,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 250
+Time 244
 Cost 0
 Cond 25
 Repd 0
@@ -1059,19 +989,7 @@ Nest 0
 ShD  A surgically removed arm~
 Desc A surgically removed arm waits to serve Alaric~
 Wear -1
-Time 249
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 14
-Nest 0
-ShD  A surgically removed arm~
-Desc A surgically removed arm waits to serve Alaric~
-Wear -1
-Time 248
+Time 243
 Cost 0
 Cond 25
 Repd 0
@@ -1083,7 +1001,7 @@ Nest 0
 ShD  A surgically removed leg~
 Desc A surgically removed leg waits to serve Alaric~
 Wear -1
-Time 250
+Time 245
 Cost 0
 Cond 25
 Repd 0
@@ -1095,7 +1013,7 @@ Nest 0
 ShD  A surgically removed leg~
 Desc A surgically removed leg waits to serve Alaric~
 Wear -1
-Time 250
+Time 245
 Cost 0
 Cond 25
 Repd 0
@@ -1107,7 +1025,7 @@ Nest 0
 ShD  A surgically removed leg~
 Desc A surgically removed leg waits to serve Alaric~
 Wear -1
-Time 248
+Time 243
 Cost 0
 Cond 25
 Repd 0
@@ -1119,19 +1037,7 @@ Nest 0
 ShD  A surgically removed leg~
 Desc A surgically removed leg waits to serve Alaric~
 Wear -1
-Time 248
-Cost 0
-Cond 25
-Repd 0
-End
-
-#O
-Vnum 12
-Nest 0
-ShD  A surgically removed head~
-Desc A surgically removed head grins at Alaric~
-Wear -1
-Time 250
+Time 243
 Cost 0
 Cond 25
 Repd 0
