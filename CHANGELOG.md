@@ -21,6 +21,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **A quest is told to the one who asked for it.** The questmaster SAID
+  every assignment -- target and where to find it -- so everyone in the
+  room heard another player's quest and went after it. Alaric: "the mud
+  just forces the quest on the whole room". It is a tell now.
 - **Cross-class spells can be taught.** ARCANE STUDIES, from Dawn the
   Wand Maker in any guild, holds earthquake, plague, harm, major globe and
   vortex -- spells the class sheet gives mages, thieves and warriors a

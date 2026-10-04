@@ -1393,6 +1393,17 @@ static bool automatic_quest_target_is_suitable( CHAR_DATA *ch,
     return true;
 }
 
+/*
+ * What a quest is, told to the one character it is for. The assignment
+ * used to be SAID, so everyone in the questmaster's room heard another
+ * player's target and where to find it, and went after it: "the mud just
+ * forces the quest on the whole room" (Alaric, 2026-10-01).
+ */
+static void quest_tell( CHAR_DATA *questman, CHAR_DATA *ch, const char *text )
+{
+    act( "$n tells you '$t'", questman, text, ch, TO_VICT );
+}
+
 void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 {
     CHAR_DATA *victim;
@@ -1426,8 +1437,8 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 	snprintf(buf, sizeof(buf),
 	    "My apologies, %s - there are no suitable quests at the moment.",
 	    ch->name);
-	do_say(questman, buf);
-	do_say(questman, "Ask me again in a minute.");
+	quest_tell(questman, ch, buf);
+	quest_tell(questman, ch, "Ask me again in a minute.");
 	ch->nextquest = 1;
         return;
     }
@@ -1476,7 +1487,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 		snprintf(buf, sizeof(buf),
 		    "My apologies, %s - the quest item is unavailable right now.",
 		    ch->name);
-		do_say(questman, buf);
+		quest_tell(questman, ch, buf);
 		ch->nextquest = 5;
 		return;
 	    }
@@ -1493,27 +1504,27 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 	    case 0:
 		snprintf(buf, sizeof(buf),
 		    "Bandits have made off with %s!", questitem->short_descr);
-		do_say(questman, buf);
-		do_say(questman, "Recover it and you'll be rewarded with quest points!");
+		quest_tell(questman, ch, buf);
+		quest_tell(questman, ch, "Recover it and you'll be rewarded with quest points!");
 		break;
 	    case 1:
 		snprintf(buf, sizeof(buf),
 		    "Raiders stole %s from the realm!", questitem->short_descr);
-		do_say(questman, buf);
-		do_say(questman, "Bring it back and I'll make it worth your while!");
+		quest_tell(questman, ch, buf);
+		quest_tell(questman, ch, "Bring it back and I'll make it worth your while!");
 		break;
 	    case 2:
 		snprintf(buf, sizeof(buf),
 		    "A prized artifact - %s - has gone missing!", questitem->short_descr);
-		do_say(questman, buf);
-		do_say(questman, "Find it and I'll reward you handsomely in quest points!");
+		quest_tell(questman, ch, buf);
+		quest_tell(questman, ch, "Find it and I'll reward you handsomely in quest points!");
 		break;
 	}
 
 	snprintf(buf, sizeof(buf),
 	    "It was last spotted near %s, in the %s region.",
 	    room->name, area_name);
-	do_say(questman, buf);
+	quest_tell(questman, ch, buf);
 	return;
     }
 
@@ -1525,29 +1536,29 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
     {
 	case 0:
         snprintf(buf, sizeof(buf), "%s has been declared an outlaw!",victim->short_descr);
-	do_say(questman,buf);
-        do_say(questman, "Hunt them down before they cause more trouble!");
+	quest_tell(questman, ch, buf);
+        quest_tell(questman, ch, "Hunt them down before they cause more trouble!");
 	break;
 
 	case 1:
 	snprintf(buf, sizeof(buf), "The criminal known as %s has escaped from prison!",victim->short_descr);
-	do_say(questman,buf);
+	quest_tell(questman, ch, buf);
 	snprintf(buf, sizeof(buf), "Since the escape, they've slain %d innocent people!",number_range(2,20));
-	do_say(questman,buf);
-	do_say(questman,"You must find and stop them!");
+	quest_tell(questman, ch, buf);
+	quest_tell(questman, ch, "You must find and stop them!");
 	break;
 
 	case 2:
 	snprintf(buf, sizeof(buf), "A bounty has been posted on %s.",victim->short_descr);
-	do_say(questman,buf);
-	do_say(questman, "Eliminate this threat and collect your reward!");
+	quest_tell(questman, ch, buf);
+	quest_tell(questman, ch, "Eliminate this threat and collect your reward!");
 	break;
 
 	case 3:
 	snprintf(buf, sizeof(buf), "%s threatens the peace of the realm!",victim->short_descr);
-	do_say(questman,buf);
+	quest_tell(questman, ch, buf);
 	snprintf(buf, sizeof(buf), "Deal with them before %d more innocents suffer!",number_range(3,15));
-	do_say(questman,buf);
+	quest_tell(questman, ch, buf);
 	break;
     }
 
@@ -1556,7 +1567,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 	snprintf(buf, sizeof(buf),
 	    "Your quarry was last spotted near %s, in the %s region.",
 	    room->name, area_name);
-	do_say(questman,buf);
+	quest_tell(questman, ch, buf);
     }
 
   /* Guard: vnum must be positive and within hash range. */
@@ -1567,7 +1578,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
        {
        bug("Questman messed up on the mob's vnum",0);
        ch->questmob = 0;
-       do_say(questman,"OOOPS. I've somehow messed up your quest, just type aquest complete.");
+       quest_tell(questman, ch, "OOOPS. I've somehow messed up your quest, just type aquest complete.");
 
        }
     }
