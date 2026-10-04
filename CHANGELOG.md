@@ -21,6 +21,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **Remorting under a big spell no longer wrecks the character.** Alaric
+  remorted while empowered and titanic and came out at -5515 hit points,
+  -6945 mana and -1385 moves: the remort reset the maxima and only then
+  stripped the spells, and stripping a spell takes its bonus back off the
+  maxima. The spells now come off with the gear, before the reset. The
+  login that follows a remort rebuilds the permanent stats from the maxima,
+  which wrote the wreck in for good; it now never derives a non-positive
+  maximum, keeps a sane stored one, and fills a rebuilt pool. A remort also
+  ends dressed -- OUTFIT fills the empty light, body, shield and weapon
+  slots, as for a new character. The level 54 note says "max level".
 - **Nothing a player owns is shop stock.** The Hyrule fix covered buying;
   the same flag sat on the Azeroth dwarf's Vial of Immortal's Blood and on
   the free red potions in Hyrule's take-any caves, which were lost on death

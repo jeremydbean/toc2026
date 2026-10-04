@@ -5134,6 +5134,14 @@ void do_remort( CHAR_DATA *ch, char *arg)
          unequip_char(ch, worn[iWear]);
    }
 
+   /* Spells the same way, and for the same reason. affect_remove takes
+      an APPLY_HIT/MANA/MOVE bonus back off the maxima, so stripping
+      empower or titanic *after* the maxima were reset to the new life's
+      200 subtracted thousands from them: a level 3 at -5515 hit points,
+      reported by Alaric. Off first, then the reset writes over a body
+      that carries nothing. */
+   while (ch->affected) affect_remove(ch,ch->affected );
+
    old_level    = ch->level;   /* the life being left behind, for the bag name */
    ch->level    = 3;
    ch->pcdata->points += 2500;
@@ -5176,7 +5184,6 @@ void do_remort( CHAR_DATA *ch, char *arg)
    /* After the class, race and guild swap: exp_per_level reads all three. */
    ch->exp      = 3 * exp_per_level(ch,ch->pcdata->points);
 
-   while (ch->affected) affect_remove(ch,ch->affected );
    ch->affected = NULL;
    ch->imm_flags = 0;
    ch->res_flags = 0;
@@ -5303,6 +5310,12 @@ void do_remort( CHAR_DATA *ch, char *arg)
    ch->pcdata->bank = 0;
    ch->new_silver = 50;
    */
+
+   /* A new life starts dressed, as a new character does: outfit fills
+      only the slots left empty (light, body, shield, weapon -- a kept
+      level 3 piece stays on) and floors the new class's weapon skill and
+      recall, which the skill wipe above took to nothing. */
+   do_outfit(ch, "");
 
    achievement_check_state(ch, true);
    save_char_obj(ch);

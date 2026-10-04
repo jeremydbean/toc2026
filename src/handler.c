@@ -438,6 +438,7 @@ void reset_char(CHAR_DATA *ch)
      OBJ_DATA *obj;
      AFFECT_DATA *af;
      int i;
+     bool fix_hit = false, fix_mana = false, fix_move = false;
 
      if (IS_NPC(ch))
 	return;
@@ -495,10 +496,41 @@ void reset_char(CHAR_DATA *ch)
 		    case APPLY_MOVE:    ch->max_move    -= mod;         break;
 		}
 	    }
-	/* now reset the permanent stats */
-	ch->pcdata->perm_hit    = ch->max_hit;
-	ch->pcdata->perm_mana   = ch->max_mana;
-	ch->pcdata->perm_move   = ch->max_move;
+	/* now reset the permanent stats -- from the maxima, unless what that
+	   gives is not a body anyone could have. A remort used to leave the
+	   maxima thousands below zero (spells stripped after the reset), and
+	   the remort's last_level of 0 sends the next login through here,
+	   which wrote the wreck into the permanent stats for good. Keep a
+	   stored value that is still positive; failing that, start over. */
+	{
+	    int floor = ch->pcdata->num_remorts > 0
+		      ? 200 * ch->pcdata->num_remorts : 20;
+
+	    if ( ch->max_hit > 0 )
+		ch->pcdata->perm_hit = ch->max_hit;
+	    else
+	    {
+		fix_hit = true;
+		if ( ch->pcdata->perm_hit < 1 )
+		    ch->pcdata->perm_hit = floor;
+	    }
+	    if ( ch->max_mana > 0 )
+		ch->pcdata->perm_mana = ch->max_mana;
+	    else
+	    {
+		fix_mana = true;
+		if ( ch->pcdata->perm_mana < 1 )
+		    ch->pcdata->perm_mana = floor;
+	    }
+	    if ( ch->max_move > 0 )
+		ch->pcdata->perm_move = ch->max_move;
+	    else
+	    {
+		fix_move = true;
+		if ( ch->pcdata->perm_move < 1 )
+		    ch->pcdata->perm_move = floor;
+	    }
+	}
 	if (ch->pcdata->true_sex < 0 || ch->pcdata->true_sex > 2) {
 		if (ch->sex > 0 && ch->sex < 3)
 		    ch->pcdata->true_sex        = ch->sex;
@@ -634,6 +666,20 @@ void reset_char(CHAR_DATA *ch)
     /* make sure sex is RIGHT!!!! */
     if (ch->sex < 0 || ch->sex > 2)
 	ch->sex = ch->pcdata->true_sex;
+
+    /* A pool rebuilt from a broken maximum starts full: its current value
+       was thousands below zero with the maximum, and a character standing
+       at -5515 of 200 is as stuck as one whose maximum is wrong. */
+    if ( fix_hit || fix_mana || fix_move )
+    {
+	if ( fix_hit )  ch->hit  = ch->max_hit;
+	if ( fix_mana ) ch->mana = ch->max_mana;
+	if ( fix_move ) ch->move = ch->max_move;
+	snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+	    "reset_char: %s's broken maxima rebuilt to %d/%d/%d.",
+	    ch->name, ch->max_hit, ch->max_mana, ch->max_move );
+	log_string( log_buf );
+    }
 }
 
 

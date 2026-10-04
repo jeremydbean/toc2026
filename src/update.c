@@ -358,7 +358,7 @@ void advance_level( CHAR_DATA *ch, bool is_advance )
 	    }
 	    else
 	    {
-		send_to_char("    NOTE:  This is the maxlevel you can achieve unless you remort.   \n\r",ch);
+		send_to_char("    NOTE:  This is the max level you can achieve unless you remort.  \n\r",ch);
 		send_to_char("              (Type 'HELP REMORT' for more information.)\n\r",ch);
 	    }
 	    send_to_char("\n\r",ch);
