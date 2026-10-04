@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791127712
+LogO 1791128036
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 27
-Plyd 289979
+Plyd 290303
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 Scro 22
-Room 4710
-HMV  538 583 1644 2111 275 425
+Room 4210
+HMV  495 583 1599 2111 280 425
 NewGold 66
 NewPlat 53
 NewCopp 71
@@ -114,9 +114,9 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  54098
+Exp  54088
 Act  4261068
-AfBy 568
+AfBy 1049088
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -141,7 +141,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
+Pos  4
 Prac 17
 Save  15
 Alig  1004
@@ -221,13 +221,11 @@ Gr 'necro enhancement'
 Gr 'necromancy'
 Gr 'necro protective'
 Gr 'necro transportation'
-AffD 'shroud'   0  26 -35  17          0          0
-AffD 'shield'  27  34 -20  17          0          0
-AffD 'infravision'   0  47   0   0        512          0
-AffD 'detect hidden'   0   1   0   0         32          0
-AffD 'detect magic'   0   1   0   0         16          0
-AffD 'detect invis'   0   1   0   0          8          0
-AffD 'armor'   0   9 -20  17          0          0
+AffD 'pass door'   0   8   0   0    1048576          0
+AffD 'shroud'   0  21 -35  17          0          0
+AffD 'shield'  26  29 -20  17          0          0
+AffD 'infravision'   0  42   0   0        512          0
+AffD 'armor'   0   4 -20  17          0          0
 End
 
 #O
@@ -397,7 +395,7 @@ Vnum 3715
 Nest 0
 Wear 17
 Cost 0
-Cond 22
+Cond 16
 Repd 1
 End
 
@@ -651,7 +649,7 @@ Nest 0
 Wear 1
 Lev  7
 Cost 36000
-Cond 91
+Cond 87
 Repd 0
 End
 
@@ -757,7 +755,7 @@ Nest 0
 Wear 4
 Lev  11
 Cost 2800000
-Cond 98
+Cond 95
 Repd 0
 Val  6 6 5 0 0
 Affect -1 11 -1 5 22 0 0
@@ -943,7 +941,7 @@ Wear 0
 Cost 2
 Cond 95
 Repd 0
-Val  0 0 192 0 0
+Val  0 0 187 0 0
 End
 
 #O
