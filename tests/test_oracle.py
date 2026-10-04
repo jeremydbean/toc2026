@@ -412,6 +412,53 @@ class OracleContextTests(unittest.TestCase):
         self.assertEqual(kinds, ["obj", "mob", "eq", "mobeq", "who"])
         self.assertTrue(all(line.split("\t")[2] == "Alaric" for line in sent))
 
+    def test_the_necro_guild_question_gets_the_masters_route(self):
+        # Asked live and answered with an area route: an area route does
+        # not say which room the master stands in, or that the door is
+        # guarded. The Necro Guild Master is in Master's Chambers (4721).
+        from unittest.mock import patch
+        with patch.object(_server, "_oracle_live_lookup",
+                          lambda reqs, timeout=2.5, asker="": ["" for _ in reqs]):
+            ctx = _server._oracle_context("Nobodyhere", "where is the necro guild?")
+        self.assertIn("Necro Guild Master, in Master's Chambers: from the Oak "
+                      "Tree Square r s 6;r w 2;r n 5", ctx)
+        self.assertIn("WALKTO NECRO GUILD MASTER", ctx)
+        self.assertIn("only necromancers of the necro guild may enter", ctx)
+        # Not the Assassins Guild, which is an area that happens to say
+        # "guild" in its name.
+        self.assertNotIn("Assassins Guild", ctx)
+
+    def test_a_mage_asking_where_to_practise_gets_the_mage_masters(self):
+        lines = _server._oracle_trainer_lines("where can a mage practice?")
+        text = " ".join(lines)
+        # Danko the mystic knight, the mage guild's guildmaster, in the
+        # Center of the University.
+        self.assertIn("Danko the mystic knight, in Center of the University: "
+                      "from the Oak Tree Square r n 2;r w 2;r n 4", text)
+        self.assertIn("University of Magic", text)
+        # Asked without naming the class, the asker's own class decides.
+        own = " ".join(_server._oracle_trainer_lines(
+            "where can I practice?", asker_class="mage"))
+        self.assertIn("Danko the mystic knight", own)
+
+    def test_a_skill_named_finds_who_teaches_it(self):
+        text = " ".join(_server._oracle_trainer_lines(
+            "where can I learn fireball?"))
+        self.assertIn("Who teaches fireball", text)
+        self.assertIn("Flame the fire mage", text)
+
+    def test_joining_a_guild_points_at_the_clerk(self):
+        text = " ".join(_server._oracle_trainer_lines("how do I join a guild?"))
+        self.assertIn("Melancholy", text)
+        self.assertIn("WALKTO MELANCHOLY", text)
+
+    def test_trainer_lines_stay_out_of_unrelated_questions_and_bounded(self):
+        self.assertEqual([], _server._oracle_trainer_lines("what does sanctuary do?"))
+        both = _server._oracle_trainer_lines(
+            "where do mages and clerics practice and gain and learn sanctuary?")
+        self.assertLessEqual(sum(len(l) for l in both),
+                             _server._ORACLE_TRAINER_CHARS + 3)
+
     def test_drop_questions_are_answered_from_the_area_files(self):
         ns = types.SimpleNamespace
         objs = {

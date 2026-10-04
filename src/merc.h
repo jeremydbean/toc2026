@@ -2185,6 +2185,16 @@ struct  pc_data
     int                 recall_vnum;
     long                recall_set_at;        /* unix time it was last moved */
 
+    /* WALKTO under way (walkto.c): the room it is walking to, which
+       destination that is, the steps taken, the seconds spent waiting
+       on a room that carries you, and the room the last step should
+       have left them in. Session only -- never saved; 0 is not walking. */
+    int                 walkto_vnum;
+    int                 walkto_dest;
+    int                 walkto_steps;
+    int                 walkto_waited;
+    int                 walkto_expect;
+
     /* The player chose their title with TITLE, so a level-up must not
        replace it with the class title. TITLE DEFAULT clears it. Saved as
        TitleSet under case 'T'; an old file without it reads as false. */
@@ -3273,6 +3283,12 @@ int     guild_closed_rooms ( CHAR_DATA *ch, ROOM_INDEX_DATA **out, int max );
 void    hunt_victim     ( CHAR_DATA *ch, int ANNOY );
 void    do_stop_hunting ( CHAR_DATA *ch, char *args );
 void    do_start_hunting ( CHAR_DATA *hunter, CHAR_DATA *target, int ANNOY);
+
+/* walkto.c */
+void    walkto_load      ( void );
+void    walkto_update    ( void );
+void    walkto_clear     ( CHAR_DATA *ch );
+void    walkto_interrupt ( CHAR_DATA *ch, const char *line );
 
 /* update.c */
 void    advance_level   ( CHAR_DATA *ch, bool is_advance );

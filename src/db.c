@@ -526,6 +526,7 @@ void boot_db( void )
 	load_ban( );
 /*	load_wizlist( );*/
         load_pkills( );
+        walkto_load( );
 //	load_relics();  REMOVERELIC
     }
 

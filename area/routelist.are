@@ -1,10 +1,30 @@
 #HELPS
 
 0 WALKTO ROUTELIST AREALIST~
-Every area you can walk to from the Oak Tree Square, and how many
-rooms out it is.  In Mudlet, WALK <name> follows one of these; on
-the website and in the browser client they are listed with the
-commands to get there.
+Syntax: walkto                  how it works, and the guild halls
+        walkto <place>          walk there from wherever you are
+        walkto guilds           the guild halls and the guild clerk
+        walkto trainers         every guildmaster and trainer
+        walkto areas            every area, in columns
+        walkto stop             stop walking
+
+WALKTO finds the way from the room you are standing in and walks
+it for you, a room every half second, opening doors that are shut
+but not locked.  Name a place by any part of its name: WALKTO
+TEMPLE, WALKTO MORIA, WALKTO NECRO MASTER, WALKTO MAGE GUILD.
+
+You stop when you arrive, when you type any other command, when a
+fight starts, when you sit, rest or sleep, when you run out of
+movement, or when the way ahead is locked, guarded or gone.  It
+never walks you into a death trap, past a guild guard who would
+turn you away, or through a portal that takes a fare.  A few areas
+need a wait or a key it cannot manage for you; it says so, and
+ROUTES on the website gives the commands.
+
+Every area you can walk to, and how many rooms out it is from the
+Oak Tree Square.  In Mudlet, WALK <name> follows the same routes
+on the map; on the website and in the browser client they are
+listed with the commands to get there.
 
 The number is rooms travelled, not difficulty.  A short walk can
 end somewhere that will kill you, and a long one can be perfectly
@@ -60,7 +80,7 @@ Dresden is not listed because it holds the Oak Tree Square, which
 is where every route begins.  The Quest Zone and Temple Despair
 are not listed because nothing in the world links to them.
 
-See also: ROUTES, WALK, MAP, MUDLET, AREAS
+See also: ROUTES, WALK, MAP, MUDLET, AREAS, GUILDS, TEACHLIST
 ~
 
 0 $~

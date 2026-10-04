@@ -688,6 +688,154 @@ def _oracle_gear_where(item: Dict[str, Any], objs, mobs) -> str:
     return "from %s in %s" % (carrier, area) if carrier else "from %s" % area
 
 
+# "Where is the necro guild", "where can a mage practise", "who teaches
+# fireball", "where do I join a guild" -- answered from the trainers list
+# tools/build_directions.py writes into directions.json: every guild hall,
+# the guild clerk and every guildmaster and trainer, each with its route
+# from the Oak Tree Square and who the guard lets in. She once had only the
+# area routes, and an area route does not say which room the master is in
+# or that the door is guarded.
+_ORACLE_TRAINER_STEMS = ("train", "guild", "practi", "learn", "teach", "gain",
+                         "master", "clerk", "join")
+_ORACLE_GUILD_WORDS = {
+    "mage": ("mage", "mages", "magic", "wizard", "wizards", "magician",
+             "university"),
+    "cleric": ("cleric", "clerics", "priest", "priests", "breas"),
+    "thief": ("thief", "thieves", "rogue", "rogues"),
+    "warrior": ("warrior", "warriors", "fighter", "fighters", "citadel"),
+    "monk": ("monk", "monks", "palm"),
+    "necro": ("necro", "necros", "necromancer", "necromancers", "morgue"),
+}
+# A class or a guild as the player file names it, to the guild it means.
+_ORACLE_TO_GUILD = {"mage": "mage", "cleric": "cleric", "thief": "thief",
+                    "warrior": "warrior", "monk": "monk",
+                    "necromancer": "necro", "necro": "necro"}
+_ORACLE_TRAINER_CHARS = 3000
+
+
+def _oracle_walk_name(entry: Dict[str, Any]) -> str:
+    """What to type after WALKTO: the name without its "(place)"."""
+    name = str(entry.get("name", ""))
+    if entry.get("role") == "guild clerk":
+        name = name.split(",")[0]
+    return name.split(" (")[0].strip().upper()
+
+
+def _oracle_trainer_route(entry: Dict[str, Any]) -> str:
+    where = entry.get("room") or "?"
+    cmds = entry.get("commands") or "(you are there)"
+    return "%s, in %s: from the Oak Tree Square %s (or type WALKTO %s)" % (
+        str(entry.get("name", "?")).split(" (")[0], str(where).rstrip("."),
+        cmds, _oracle_walk_name(entry))
+
+
+def _oracle_trainer_lines(question: str, asker_class: str = "",
+                          asker_guild: str = "", trainers=None) -> list:
+    """Trainer and guild directions that answer the question, or []."""
+    ql = (question or "").lower()
+    tokens = re.findall(r"[a-z]+", ql)
+    if not any(t.startswith(s) for t in tokens for s in _ORACLE_TRAINER_STEMS):
+        return []
+    if trainers is None:
+        try:
+            trainers = load_directions().get("trainers") or []
+        except Exception:
+            trainers = []
+    if not trainers:
+        return []
+
+    asked = [g for g, words in _ORACLE_GUILD_WORDS.items()
+             if any(t in words for t in tokens)]
+    guilds = list(asked)
+    if not guilds:
+        # "Where can I practise?" is about the asker's own guild and class.
+        for name in (asker_guild, asker_class):
+            g = _ORACLE_TO_GUILD.get(str(name or "").lower())
+            if g and g not in guilds:
+                guilds.append(g)
+    guilds = guilds[:2]
+
+    lines: list = []
+
+    # A skill or spell named outright: who teaches it, members first.
+    skills = sorted({s for e in trainers
+                     for s in list(e.get("teaches") or []) + list(e.get("gains") or [])
+                     if len(s) >= 3
+                     and re.search(r"\b%s\b" % re.escape(s.lower()), ql)},
+                    key=lambda s: (-len(s), s))
+    for skill in skills[:2]:
+        teachers = [e for e in trainers
+                    if skill in (e.get("teaches") or []) or skill in (e.get("gains") or [])]
+        teachers.sort(key=lambda e: (e.get("guild") not in guilds,
+                                     e.get("rooms_away") or 0))
+        parts = []
+        for e in teachers[:4]:
+            who = e.get("learners") or "anyone"
+            gate = (" -- only %s may enter" % e.get("who")) if e.get("members_only") else ""
+            parts.append("%s (teaches %s%s)" % (_oracle_trainer_route(e), who, gate))
+        if parts:
+            lines.append("Who teaches %s: %s." % (skill, "; ".join(parts)))
+
+    for g in guilds:
+        hall = next((e for e in trainers
+                     if e.get("role") == "guild hall" and e.get("guild") == g), None)
+        inside = [e for e in trainers
+                  if e.get("members_only") == g and e.get("role") != "guild hall"]
+        outside = [e for e in trainers
+                   if not e.get("members_only") and e.get("role") != "guild clerk"
+                   and _ORACLE_TO_GUILD.get(str(e.get("class", ""))) == g]
+        text = []
+        if hall:
+            text.append("The %s guild's hall is the %s; only %s may enter. Route: %s." % (
+                g, hall.get("place"), hall.get("who"), _oracle_trainer_route(hall)))
+        if inside:
+            text.append("Its guildmasters and trainers: " + "; ".join(
+                "%s [teaches %s]" % (_oracle_trainer_route(e),
+                                     e.get("learners") or "anyone")
+                for e in inside) + ".")
+        if outside:
+            text.append("Outside the hall: " + "; ".join(
+                "%s [teaches %s]" % (_oracle_trainer_route(e),
+                                     e.get("learners") or "anyone")
+                for e in outside[:3]) + ".")
+        if text:
+            lines.append(" ".join(text))
+
+    if any(t in ("join", "joining", "clerk") for t in tokens) or (
+            not guilds and not skills and "guild" in " ".join(tokens)):
+        clerk = next((e for e in trainers if e.get("role") == "guild clerk"), None)
+        if clerk:
+            lines.append("To join a guild (levels 3 to 6, and only if never in "
+                         "one): %s. Monks and necromancers are given their guild "
+                         "with the class." % _oracle_trainer_route(clerk))
+
+    if not lines:
+        halls = [e for e in trainers if e.get("role") == "guild hall"]
+        if any(t.startswith("train") for t in tokens):
+            stats = sorted((e for e in trainers
+                            if e.get("trains") and not e.get("members_only")),
+                           key=lambda e: e.get("rooms_away") or 0)[:3]
+            if stats:
+                lines.append("Trainers anyone may TRAIN stats with: " + "; ".join(
+                    _oracle_trainer_route(e) for e in stats) + ".")
+        if halls:
+            lines.append("The guild halls, each open only to its own members: "
+                         + "; ".join(_oracle_trainer_route(e) for e in halls) + ".")
+
+    if lines:
+        lines.append("WALKTO <name> walks a player to any of these from wherever "
+                     "they stand; WALKTO TRAINERS lists every trainer in game.")
+    out, used = [], 0
+    for line in lines:
+        if used + len(line) > _ORACLE_TRAINER_CHARS:
+            line = line[:max(0, _ORACLE_TRAINER_CHARS - used - 3)] + "..."
+        out.append(line)
+        used += len(line)
+        if used >= _ORACLE_TRAINER_CHARS:
+            break
+    return out
+
+
 def _oracle_context(player: str, question: str) -> str:
     """Build live grounding for one question: the asker's level, class and worn
     gear, and -- for gear questions -- the obtainable best-in-slot for their
@@ -863,16 +1011,29 @@ def _oracle_context(player: str, question: str) -> str:
                          "Answer with the first of these." % (
                              whose, _ORACLE_MORTAL_CAP, "; ".join(picks)))
 
+    # Guild halls, guildmasters and trainers, with their routes.
+    try:
+        lines += _oracle_trainer_lines(question, cls,
+                                       str(prof.get("guild_name", "")).lower())
+    except Exception:
+        pass
+
     # The website's Directions data: walking routes from the Oak Tree Square.
     if any(h in ql for h in _ORACLE_DIR_HINTS) or "where is" in ql:
         try:
             routes = load_directions().get("routes") or []
         except Exception:
             routes = []
+        # "guild" and the like are the trainer lines' business: here they
+        # only matched the Assassins Guild, which is an area, not a guild
+        # anybody joins.
         words = [w for w in re.findall(r"[a-z]{3,20}", ql)
                  if w not in _ORACLE_STOPWORDS
                  and w not in ("how", "directions", "direction", "route", "walk",
-                               "path", "way", "far", "from", "here", "there")]
+                               "path", "way", "far", "from", "here", "there",
+                               "guild", "guilds", "master", "guildmaster",
+                               "trainer", "trainers", "practice", "practise",
+                               "learn", "teach", "teaches", "train", "gain")]
         scored = []
         for r in routes:
             hay = " ".join(str(r.get(k, "")) for k in

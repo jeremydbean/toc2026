@@ -42,6 +42,9 @@ Many character and object lookups support a numbered keyword such as
 | `exits`, `look <direction>` | Inspect known routes |
 | `run <direction> [distance]` | Move repeatedly in one direction, default/max 30 |
 | `speedwalk <route>` | Follow compact lowercase routes such as `3n2e1s` |
+| `walkto <place>` | Walk to an area, a guild hall, a guildmaster or trainer, the guild clerk, or the Temple from wherever you stand, a room every half second; any other command stops you |
+| `walkto`, `walkto guilds`, `walkto trainers`, `walkto areas` | List the places `walkto` knows |
+| `walkto stop` | Stop walking |
 | `enter <target>` | Enter a supported object, portal, or feature |
 | `climb`, `crawl`, `jump` | Use area-defined movement features |
 | `ride`, `mount`, `dismount` | Control supported mounts |

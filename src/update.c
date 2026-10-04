@@ -2943,6 +2943,9 @@ void update_handler( void )
 	hunting_update   ( );
     }
 
+    /* Every pulse: walkto.c paces each walker by their own lag. */
+    walkto_update( );
+
     if ( --pulse_aggr <= 0 )
     {
 	pulse_aggr	= PULSE_AGGR;
