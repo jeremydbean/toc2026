@@ -46393,3 +46393,114 @@ Sun Oct  4 23:29:32 2026 :: Log Alaric [1461]: stashed an onyx bracelet (vnum 13
 Sun Oct  4 23:29:34 2026 :: Log Alaric [1461]: quit
 Sun Oct  4 23:29:34 2026 :: Alaric has quit.
 Sun Oct  4 23:29:34 2026 :: [QUIT] Player rejoined the real world.
+Sun Oct  4 23:32:22 2026 :: Sock.sinaddr:  162.216.150.37
+Sun Oct  4 23:32:23 2026 :: Sock.sinaddr:  162.216.150.37
+Sun Oct  4 23:32:23 2026 :: EOF encountered on read.
+Sun Oct  4 23:33:10 2026 :: Sock.sinaddr:  208.126.22.104
+Sun Oct  4 23:33:12 2026 :: Loading Alaric's playerfile
+Sun Oct  4 23:33:13 2026 :: Alaric@208.126.22.104 has connected.
+Sun Oct  4 23:33:14 2026 :: Log Alaric [1461]: arrived (The chamber of darkness) from 0
+Sun Oct  4 23:33:16 2026 :: Log Alaric [1461]: look ap
+Sun Oct  4 23:33:18 2026 :: Log Alaric [1461]: sh ap
+Sun Oct  4 23:33:28 2026 :: Log Alaric [1461]: get brac cor
+Sun Oct  4 23:33:28 2026 :: Log Alaric [1461]: stash put brac
+Sun Oct  4 23:33:28 2026 :: Log Alaric [1461]: stashed an onyx bracelet (vnum 1388)
+Sun Oct  4 23:33:29 2026 :: Log Alaric [1461]: l
+Sun Oct  4 23:33:31 2026 :: Log Alaric [1461]: scan
+Sun Oct  4 23:33:33 2026 :: Log Alaric [1461]: e
+Sun Oct  4 23:33:33 2026 :: Log Alaric [1464]: arrived (The inner chamber) from 1461
+Sun Oct  4 23:33:35 2026 :: Log Alaric [1464]: look mas
+Sun Oct  4 23:33:38 2026 :: Log Alaric [1464]: look ca
+Sun Oct  4 23:33:43 2026 :: Log Alaric [1464]: sh ca
+Sun Oct  4 23:33:51 2026 :: Log Alaric [1464]: l i cor
+Sun Oct  4 23:33:52 2026 :: Sock.sinaddr:  54.167.223.174
+Sun Oct  4 23:33:52 2026 :: EOF encountered on read.
+Sun Oct  4 23:33:53 2026 :: Log Alaric [1464]: w
+Sun Oct  4 23:33:53 2026 :: Log Alaric [1461]: arrived (The chamber of darkness) from 1464
+Sun Oct  4 23:33:53 2026 :: Log Alaric [1461]: n
+Sun Oct  4 23:33:53 2026 :: Log Alaric [1462]: arrived (It is very dark here...) from 1461
+Sun Oct  4 23:33:54 2026 :: Log Alaric [1462]: s
+Sun Oct  4 23:33:54 2026 :: Log Alaric [1461]: arrived (The chamber of darkness) from 1462
+Sun Oct  4 23:33:55 2026 :: Log Alaric [1461]: s
+Sun Oct  4 23:33:55 2026 :: Log Alaric [1463]: arrived (Torture chamber) from 1461
+Sun Oct  4 23:33:55 2026 :: Log Alaric [1463]: n
+Sun Oct  4 23:33:55 2026 :: Log Alaric [1461]: arrived (The chamber of darkness) from 1463
+Sun Oct  4 23:33:56 2026 :: Log Alaric [1461]: w
+Sun Oct  4 23:33:56 2026 :: Log Alaric [1461]: w
+Sun Oct  4 23:33:57 2026 :: Log Alaric [1461]: ow
+Sun Oct  4 23:33:58 2026 :: Log Alaric [1461]: w
+Sun Oct  4 23:33:58 2026 :: Log Alaric [1460]: arrived (The end of the hallway) from 1461
+Sun Oct  4 23:33:59 2026 :: Log Alaric [1460]: c pass
+Sun Oct  4 23:34:03 2026 :: Log Alaric [1460]: w
+Sun Oct  4 23:34:03 2026 :: Log Alaric [1459]: arrived (A dark hallway) from 1460
+Sun Oct  4 23:34:04 2026 :: Log Alaric [1459]: w
+Sun Oct  4 23:34:04 2026 :: Log Alaric [1458]: arrived (A dark hallway) from 1459
+Sun Oct  4 23:34:04 2026 :: Log Alaric [1458]: w
+Sun Oct  4 23:34:04 2026 :: Log Alaric [1450]: arrived (An intersection) from 1458
+Sun Oct  4 23:34:04 2026 :: Log Alaric [1450]: w
+Sun Oct  4 23:34:04 2026 :: Log Alaric [1465]: arrived (A bright hallway) from 1450
+Sun Oct  4 23:34:05 2026 :: Log Alaric [1465]: w
+Sun Oct  4 23:34:05 2026 :: Log Alaric [1466]: arrived (A bright hallway) from 1465
+Sun Oct  4 23:34:05 2026 :: Log Alaric [1466]: w
+Sun Oct  4 23:34:05 2026 :: Log Alaric [1467]: arrived (An antechamber) from 1466
+Sun Oct  4 23:34:08 2026 :: Log Alaric [1467]: look ap
+Sun Oct  4 23:34:12 2026 :: Log Alaric [1467]: w
+Sun Oct  4 23:34:12 2026 :: Log Alaric [1469]: arrived (The chamber of the white light) from 1467
+Sun Oct  4 23:34:14 2026 :: Log Alaric [1469]: look ca
+Sun Oct  4 23:34:16 2026 :: Log Alaric [1469]: sh ca
+Sun Oct  4 23:34:23 2026 :: Log Alaric [1469]: look mas
+Sun Oct  4 23:34:27 2026 :: Log Alaric [1469]: n
+Sun Oct  4 23:34:27 2026 :: Log Alaric [1470]: arrived (The meditation chamber) from 1469
+Sun Oct  4 23:34:28 2026 :: Log Alaric [1470]: s
+Sun Oct  4 23:34:28 2026 :: Log Alaric [1469]: arrived (The chamber of the white light) from 1470
+Sun Oct  4 23:34:28 2026 :: Log Alaric [1469]: s
+Sun Oct  4 23:34:28 2026 :: Log Alaric [1471]: arrived (A study) from 1469
+Sun Oct  4 23:34:29 2026 :: Log Alaric [1471]: n
+Sun Oct  4 23:34:29 2026 :: Log Alaric [1469]: arrived (The chamber of the white light) from 1471
+Sun Oct  4 23:34:30 2026 :: Log Alaric [1469]: w
+Sun Oct  4 23:34:30 2026 :: Log Alaric [1472]: arrived (A closet) from 1469
+Sun Oct  4 23:34:31 2026 :: Log Alaric [1472]: e
+Sun Oct  4 23:34:31 2026 :: Log Alaric [1469]: arrived (The chamber of the white light) from 1472
+Sun Oct  4 23:34:31 2026 :: Log Alaric [1469]: e
+Sun Oct  4 23:34:31 2026 :: Log Alaric [1467]: arrived (An antechamber) from 1469
+Sun Oct  4 23:34:31 2026 :: Log Alaric [1467]: e
+Sun Oct  4 23:34:31 2026 :: Log Alaric [1466]: arrived (A bright hallway) from 1467
+Sun Oct  4 23:34:31 2026 :: Log Alaric [1466]: e
+Sun Oct  4 23:34:31 2026 :: Log Alaric [1465]: arrived (A bright hallway) from 1466
+Sun Oct  4 23:34:32 2026 :: Log Alaric [1465]: e
+Sun Oct  4 23:34:32 2026 :: Log Alaric [1450]: arrived (An intersection) from 1465
+Sun Oct  4 23:34:32 2026 :: Log Alaric [1450]: e
+Sun Oct  4 23:34:32 2026 :: Log Alaric [1458]: arrived (A dark hallway) from 1450
+Sun Oct  4 23:34:33 2026 :: Log Alaric [1458]: w
+Sun Oct  4 23:34:33 2026 :: Log Alaric [1450]: arrived (An intersection) from 1458
+Sun Oct  4 23:34:34 2026 :: Log Alaric [1450]: s
+Sun Oct  4 23:34:34 2026 :: Log Alaric [1451]: arrived (A grey tiled hallway) from 1450
+Sun Oct  4 23:34:35 2026 :: Log Alaric [1451]: s
+Sun Oct  4 23:34:35 2026 :: Log Alaric [1452]: arrived (A grey tiled hallway) from 1451
+Sun Oct  4 23:34:35 2026 :: Log Alaric [1452]: s
+Sun Oct  4 23:34:35 2026 :: Log Alaric [1453]: arrived (The antechamber) from 1452
+Sun Oct  4 23:34:37 2026 :: Log Alaric [1453]: look ap
+Sun Oct  4 23:34:40 2026 :: Log Alaric [1453]: s
+Sun Oct  4 23:34:40 2026 :: Log Alaric [1454]: arrived (The main chamber) from 1453
+Sun Oct  4 23:34:42 2026 :: Log Alaric [1454]: look mas
+Sun Oct  4 23:34:45 2026 :: Log Alaric [1454]: scan
+Sun Oct  4 23:34:47 2026 :: Log Alaric [1454]: n
+Sun Oct  4 23:34:47 2026 :: Log Alaric [1453]: arrived (The antechamber) from 1454
+Sun Oct  4 23:34:48 2026 :: Log Alaric [1453]: n
+Sun Oct  4 23:34:48 2026 :: Log Alaric [1452]: arrived (A grey tiled hallway) from 1453
+Sun Oct  4 23:34:48 2026 :: Log Alaric [1452]: n
+Sun Oct  4 23:34:48 2026 :: Log Alaric [1451]: arrived (A grey tiled hallway) from 1452
+Sun Oct  4 23:34:48 2026 :: Log Alaric [1451]: n
+Sun Oct  4 23:34:48 2026 :: Log Alaric [1450]: arrived (An intersection) from 1451
+Sun Oct  4 23:34:48 2026 :: Log Alaric [1450]: n
+Sun Oct  4 23:34:48 2026 :: Log Alaric [1473]: arrived (A wide hallway) from 1450
+Sun Oct  4 23:34:49 2026 :: Log Alaric [1473]: n
+Sun Oct  4 23:34:49 2026 :: Log Alaric [1474]: arrived (A wide hallway) from 1473
+Sun Oct  4 23:34:49 2026 :: Log Alaric [1474]: n
+Sun Oct  4 23:34:49 2026 :: Log Alaric [1475]: arrived (A wide hallway) from 1474
+Sun Oct  4 23:34:49 2026 :: Log Alaric [1475]: n
+Sun Oct  4 23:34:49 2026 :: Log Alaric [1476]: arrived (The entranceway) from 1475
+Sun Oct  4 23:34:49 2026 :: Log Alaric [1476]: n
+Sun Oct  4 23:34:49 2026 :: Log Alaric [1477]: arrived (The audience chamber) from 1476
+Sun Oct  4 23:34:52 2026 :: Log Alaric [1477]: look mi
+Sun Oct  4 23:34:56 2026 :: Log Alaric [1477]: sh ca
