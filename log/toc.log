@@ -44598,3 +44598,30 @@ Sun Oct  4 19:57:52 2026 :: Alaric has achieved level 47!
 Sun Oct  4 19:57:57 2026 :: Log Alaric [16005]: l i cor
 Sun Oct  4 19:58:00 2026 :: Log Alaric [16005]: get brac cor
 Sun Oct  4 19:58:01 2026 :: Log Alaric [16005]: eq
+Sun Oct  4 19:58:03 2026 :: Log Alaric [16005]: sc
+Sun Oct  4 19:58:05 2026 :: Log Alaric [16005]: rem ench
+Sun Oct  4 19:58:06 2026 :: Log Alaric [16005]: wear pearl
+Sun Oct  4 19:58:08 2026 :: Log Alaric [16005]: sc
+Sun Oct  4 19:58:13 2026 :: Log Alaric [16005]: stash put ench
+Sun Oct  4 19:58:13 2026 :: Log Alaric [16005]: stashed an enchanted leather bracer (vnum 3504)
+Sun Oct  4 19:58:15 2026 :: Log Alaric [16005]: recal
+Sun Oct  4 19:58:15 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 19:58:15 2026 :: Log Alaric [4207]: w
+Sun Oct  4 19:58:15 2026 :: Log Alaric [0]: moved to 4208 (Altar of the Temple of Devota.)
+Sun Oct  4 19:58:17 2026 :: Log Alaric [4208]: heal all
+Sun Oct  4 19:58:17 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Sun Oct  4 19:58:19 2026 :: Log Alaric [4208]: r e 4
+Sun Oct  4 19:58:19 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 19:58:19 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sun Oct  4 19:58:19 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sun Oct  4 19:58:19 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sun Oct  4 19:58:19 2026 :: Log Alaric [2427]: n
+Sun Oct  4 19:58:19 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sun Oct  4 19:58:19 2026 :: Log Alaric [2404]: n
+Sun Oct  4 19:58:19 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sun Oct  4 19:58:20 2026 :: Log Alaric [2401]: score
+Sun Oct  4 19:58:22 2026 :: Log Alaric [2401]: quit
+Sun Oct  4 19:58:22 2026 :: Alaric has quit.
+Sun Oct  4 19:58:22 2026 :: [QUIT] Player rejoined the real world.
+Sun Oct  4 20:00:24 2026 :: Sock.sinaddr:  54.87.112.51
+Sun Oct  4 20:00:24 2026 :: EOF encountered on read.
