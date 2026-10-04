@@ -19,6 +19,21 @@ MARKER="${MARKER:-/run/toc-state-sync.status}"
 # none, and a failed marker write must not fail the check itself.
 mkdir -p "$(dirname "$MARKER")" 2>/dev/null || true
 QUEUE="${QUEUE:-/srv/toc/current/area/webadmin.queue}"
+WIZINFO_LEVEL="${WIZINFO_LEVEL:-60}"    # LEVEL_IMMORTAL
+
+# A run in progress has no exit time yet -- systemd zeroes it at start --
+# which read as "99999 minutes ago" and announced a dead backup. It is not
+# rare: a deploy restarts both timers in the same second, and a 5- and a
+# 15-minute timer started together meet every quarter hour (2026-10-04).
+# A sync takes seconds; wait for it to finish, then judge the result.
+tries=0
+while [ "$tries" -lt 60 ]; do
+    state=$(systemctl show -p ActiveState --value "$UNIT" 2>/dev/null || echo unknown)
+    case "$state" in
+        activating|deactivating|reloading) sleep 2; tries=$((tries + 1)) ;;
+        *) break ;;
+    esac
+done
 
 result=$(systemctl show -p Result --value "$UNIT" 2>/dev/null || echo unknown)
 finished=$(systemctl show -p ExecMainExitTimestampMonotonic --value "$UNIT" 2>/dev/null || echo 0)
@@ -54,11 +69,13 @@ printf 'FAILING %s %s\n' "$(date -Is)" "$problem" > "$MARKER" 2>/dev/null || tru
 echo "STATE SYNC IS NOT WORKING: $problem" >&2
 logger -t toc-state-sync -p daemon.err "state sync is not working: $problem" 2>/dev/null || true
 
-# Tell whoever is in the game. A staff character reading this is the
-# whole point; an error only journald sees is an error nobody sees.
+# Tell staff who are in the game. A staff character reading this is the
+# whole point; an error only journald sees is an error nobody sees. On
+# WIZINFO at immortal level, not ANNOUNCE: players can do nothing about a
+# backup and should not be told theirs is failing (owner, 2026-10-04).
 if [ -f "$QUEUE" ] && [ -w "$QUEUE" ]; then
-    printf 'announce|%s\n' \
-        "ADMIN: player-state backup to GitHub is not working ($problem). Saves are still on disk but are not leaving this machine." \
+    printf 'wizinfo|%s|%s\n' "$WIZINFO_LEVEL" \
+        "Player-state backup to GitHub is not working ($problem). Saves are still on disk but are not leaving this machine." \
         >> "$QUEUE" 2>/dev/null || true
 fi
 

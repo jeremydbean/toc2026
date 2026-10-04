@@ -1062,7 +1062,7 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	  "cause light",     "chill touch",	 "butcher",
 	  "bewitch weapon",  "neutrality field", "shock sphere",
 	  "remove curse",    "plague",           "maze",
-          "weaken",          "blindness"
+          "weaken",          "blindness",        "cause serious"
 	 },
 	 {
 	  "necromancy", "necro maladictions"
@@ -1100,10 +1100,12 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	 4705,          CLASS_NECRO,     GUILD_NECRO,
 	 {
 	  "fly",             "pass door",        "earth travel",
-	  "scrolls"
+	  "scrolls",         "scribe"
 	 },
 	 {
-	  "necro transportation", "scrolls"
+	  /* Scribe is a necromancer's at 30, and only the mages' trainer
+	     taught it; it sits beside scrolls here. */
+	  "necro transportation", "scrolls", "scribe"
 	 }
     },
 
@@ -4170,10 +4172,15 @@ const   struct  group_type      group_table     [MAX_GROUP]     =
     },
 
     {
+        /* Cause serious is a necromancer's at 18 and sat in no group of
+           theirs, and GAIN sells a spell only inside a group, so no
+           necromancer could ever learn it (2026-10-04). Groups are
+           re-applied at login, so everyone already holding this one has
+           it from their next. */
         "necro maladictions",           {-1, -1, -1, -1, -1, 2 },
         {
           "blindness",       "weaken",           "maze",
-          "plague"
+          "plague",          "cause serious"
         }
     },
 

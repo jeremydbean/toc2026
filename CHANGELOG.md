@@ -21,6 +21,24 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **Two necromancer spells had no trainer.** Cause serious (level 18)
+  sat in no necromancer group, and GAIN sells spells only inside a group;
+  it is in NECRO MALADICTIONS now, so everyone who already holds that
+  group has it from their next login. Scribe (level 30) was taught only by
+  the mages' trainer; the Undead Spirit, who teaches scrolls, teaches it
+  too. `tests/test_necro_trainers.py` fails if a necromancer skill is ever
+  left without one again. Despair and phase are untaught for every class.
+- **No remort, and no levelling, past your cap.** A character staff
+  advanced beyond 54 plus their remorts went on gaining levels toward 60
+  and was told to "advance till" a level below their own. Experience now
+  stops at the cap however far past it they are, remort refuses them
+  with an honest reason (owner: remort does not work past the point you
+  could level to), and an immortal can never remort.
+- **The backup alarm cried wolf, to everyone.** The state-sync check
+  read a sync that was still running as "last success 99999 minutes ago"
+  -- a deploy restarts the 5- and 15-minute timers together, so they meet
+  every quarter hour -- and announced it to the whole game. It waits for
+  a running sync now, and a real failure goes to staff on WIZINFO.
 - **Remort psionics, end to end.** A new power starts at 1% and is trained
   with Salir; one handed back from an earlier life keeps 75%. A character
   with two or more remorts who holds fewer powers than the remorts give

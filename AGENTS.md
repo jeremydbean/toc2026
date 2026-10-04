@@ -998,8 +998,12 @@ covers; an untested restore is a hope.
 
 `toc-state-sync-check` runs every fifteen minutes and makes a stalled
 sync loud: journal at `daemon.err`, a marker at
-`/run/toc-state-sync.status`, and an in-game announcement, because the
-way backups fail is quietly.
+`/run/toc-state-sync.status`, and a staff WIZINFO line, because the way
+backups fail is quietly. **WIZINFO, never ANNOUNCE** (owner, 2026-10-04):
+players can do nothing about a backup. It waits out a sync that is
+running -- systemd zeroes the exit time while one is, which read as
+"99999 minutes ago", and a deploy starts both timers in the same second
+so they collide every fifteen minutes.
 
 **`AUTOSAVE_CYCLE_TICKS` is the other half of the five-minute
 promise.** Syncing every five minutes is pointless if the game only
@@ -1338,6 +1342,18 @@ ever living as a mage. A non-monk life also burned two of only six
 values, so a reachable history left a player with no legal choice at
 their fourth remort: an empty list, stuck at 57, with 59 out of reach for
 good. `tests/test_remort_gifts.py` walks every path exhaustively.
+
+**The cap is a ceiling for both levels and remorts.** `gain_exp` stops
+at `54 + num_remorts` or above, and `do_remort` refuses a character past
+it (owner, 2026-10-04: remort does not work past the point you could
+level to) and any immortal. Only staff ADVANCE puts somebody there.
+
+**GAIN sells a spell only inside a group** (`do_gain`'s "You must learn
+the full group"); a single name in a trainer's gain list works only for
+skills. A spell a class can reach must therefore sit in one of its
+groups, which `tests/test_necro_trainers.py` checks for necromancers.
+Groups are re-applied by `gn_add` at login, so adding a member reaches
+everyone already holding the group.
 
 `ListRemorts` is unchanged on disk and is **not** a flat list of numbers.
 It is written one life at a time as `<class>` alone for a monk or a necro,

@@ -6338,7 +6338,8 @@
     "plague",
     "maze",
     "weaken",
-    "blindness"
+    "blindness",
+    "cause serious"
    ],
    "gains": [
     "necromancy",
@@ -6370,11 +6371,13 @@
     "fly",
     "pass door",
     "earth travel",
-    "scrolls"
+    "scrolls",
+    "scribe"
    ],
    "gains": [
     "necro transportation",
-    "scrolls"
+    "scrolls",
+    "scribe"
    ],
    "trains": true,
    "room": "Tomb",

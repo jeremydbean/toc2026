@@ -553,7 +553,9 @@ void gain_exp( CHAR_DATA *ch, int gain )
     if ( IS_NPC(ch) || ch->level > LEVEL_KING || ch->level == 50)
 	     return;
 
-    if (ch -> level == 54 + ch->pcdata->num_remorts)
+    /* At or past the cap. Past it happens when staff ADVANCE a character
+       beyond their remorts; with == they went on levelling to 60. */
+    if (ch -> level >= 54 + ch->pcdata->num_remorts)
         return;
 
      if ( gain > 0 && !IS_NPC(ch) && ch->pcdata->exp_bonus > 0 )

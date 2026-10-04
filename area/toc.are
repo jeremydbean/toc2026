@@ -1198,7 +1198,7 @@ C/C: Blindness, Curse, Energy Drain, Plague, Poison, Weaken, Maze
 ?/C: Blindness, Curse, Energy Drain, Poison, Weaken
      Cost: 5 for mage or cleric, 6 for warrior or thief
 
-Necro: Blindness, Weaken, Maze, Plague
+Necro: Blindness, Weaken, Maze, Plague, Cause Serious
        Cost: 2 trains
 
 Note: Necro's already get Curse and Poison for free.

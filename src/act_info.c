@@ -4994,14 +4994,22 @@ void do_remort( CHAR_DATA *ch, char *arg)
    }
 
 
-   if (ch->level != LEVEL_HERO3 + ch->pcdata->num_remorts) {
+   /* Only at the cap. Past it -- staff advanced them beyond their
+      remorts -- is past the point the game would let them level to, and
+      the owner's rule (2026-10-04) is that remort does not work there.
+      They used to be told to "advance till" a level below their own. */
+   if (ch->level > LEVEL_HERO3 + ch->pcdata->num_remorts) {
+     send_to_char("You are past the level a remort is taken at, so you cannot remort.\n\r",ch);
+     return;
+   }
+   if (ch->level < LEVEL_HERO3 + ch->pcdata->num_remorts) {
      send_to_char("You are not yet ready to remort.\n\r",ch);
      snprintf(buf, sizeof(buf),"You need to advance till level %d.\n\r",
              LEVEL_HERO3 + ch->pcdata->num_remorts);
      send_to_char(buf,ch);
      return;
    }
-   if (ch->pcdata->num_remorts >= 5) {
+   if (ch->pcdata->num_remorts >= 5 || ch->level >= LEVEL_IMMORTAL) {
      send_to_char("You are not allowed to remort anymore.\n\r",ch);
      return;
    }
