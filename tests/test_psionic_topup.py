@@ -1,7 +1,8 @@
 """Remort psionics, end to end (owner, 2026-10-04).
 
-* A new power starts at 1% and is trained with Salir; one handed back from
-  an earlier life keeps 75%.
+* Every power starts at 1% and is trained with Salir -- one handed back
+  from an earlier life too -- and one already held is never raised by a
+  login (it was: "below 75, make it 75" at every login).
 * A character remorted before remorts handed psionics out (Bongaboy:
   three remorts, none) is topped up to their due at login -- two of each
   discipline at three remorts -- with the awakening.
@@ -67,11 +68,22 @@ class PsionicTopUpTests(unittest.TestCase):
                 seen = client.transcript
                 client.send("quit")
                 self.assertTrue(client.wait_closed())
-            # Handed back, one by one, at the 75% of an earlier life.
+            # Handed back, one by one, at 1% like any power not yet practised.
             self.assertIn("Your mind remembers mind leech from an earlier life.", seen)
             self.assertNotIn("Salir, The Monk of the Way", seen)
             text = (mud.player_dir / "Zpsiheld").read_text(encoding="latin-1")
-            self.assertRegex(text, r"(?m)^Sk 75 'mind leech'$")
+            self.assertRegex(text, r"(?m)^Sk 1 'mind leech'$")
+
+            # And a login never raises a power the character holds: the
+            # restore read "below 75, make it 75" at every login.
+            with mud.connect(timeout=120) as client:
+                login(client, "Zpsiheld", PW)
+                again = client.transcript
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            self.assertNotIn("from an earlier life", again)
+            text = (mud.player_dir / "Zpsiheld").read_text(encoding="latin-1")
+            self.assertRegex(text, r"(?m)^Sk 1 'mind leech'$")
 
 
 if __name__ == "__main__":

@@ -1264,11 +1264,13 @@ through. The exception is **above** the band: there is no level check
 left to wait for, so a grant to a character past 21 lands at once,
 exactly as though the roll had hit.
 
-**A new power starts at 1%; one handed back keeps 75%.** `psionic_learn`
-floors a granted power at 1% (owner, 2026-10-04: trained with Salir, as
-the awakening message says); the restore loops -- in `grant_psionics` and
-`psionic_restore_known`, which runs at every login and on the first
-remort -- put a remembered power back at 75%. `psionic_owed_by_remorts`
+**Every power starts at 1% until practised** (owner, 2026-10-04: trained
+with Salir, as the awakening message says) -- a new one from
+`psionic_learn` and one handed back after a remort alike. The restore
+loops -- in `grant_psionics` and `psionic_restore_known`, which runs at
+every login and on the first remort -- put back only what the wipe left
+at 0, and at 1%. They read "below 75, make it 75", which at every login
+raised a power granted at 1% to 75% without a practice spent. `psionic_owed_by_remorts`
 tops up, at login, a character with two or more remorts holding fewer
 than their due. The long awakening message is for new powers only
 (`added` in `grant_psionics`).

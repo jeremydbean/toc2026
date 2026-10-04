@@ -65,8 +65,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   -- a deploy restarts the 5- and 15-minute timers together, so they meet
   every quarter hour -- and announced it to the whole game. It waits for
   a running sync now, and a real failure goes to staff on WIZINFO.
-- **Remort psionics, end to end.** A new power starts at 1% and is trained
-  with Salir; one handed back from an earlier life keeps 75%. A character
+- **Remort psionics, end to end.** Every power starts at 1% and is
+  trained with Salir, one handed back from an earlier life included. (The
+  first cut restored them at 75% -- and did it at every login, so a power
+  granted at 1% read 75% after a relog; that is gone.) A character
   with two or more remorts who holds fewer powers than the remorts give
   (Bongaboy: three remorts, none) is topped up at login. The big awakening
   message shows only when something new is given; powers handed back are

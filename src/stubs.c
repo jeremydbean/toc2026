@@ -404,10 +404,10 @@ static void psi_log( CHAR_DATA *ch, const char *fmt, ... )
 
 
 /*
- * A power newly given starts at 1%, like any skill a character has just
- * learned, and is trained up with Salir (owner, 2026-10-04). A power
- * handed back from an earlier life keeps 75% -- see the restore loops --
- * because it was practised once already.
+ * Every power starts at 1% until it is practised with Salir (owner,
+ * 2026-10-04) -- one newly given and one handed back after a remort alike.
+ * The restore loops below put a wiped power back at 1% and never touch one
+ * the character holds at any level.
  */
 static void psionic_learn( CHAR_DATA *ch, sh_int sn )
 {
@@ -557,12 +557,16 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
 
             if ( psionic_is_known( ch, sn ) )
             {
-                if ( ch->pcdata->learned[(int)sn] < 75 )
+                /* Only what the remort wiped, and at 1%. This was "below
+                   75, make it 75", and it ran at every login: a power
+                   granted at 1% was 75% the next time the player logged
+                   in, without a practice spent (2026-10-04). */
+                if ( ch->pcdata->learned[(int)sn] < 1 )
                 {
                     char line[MAX_INPUT_LENGTH];
 
-                    ch->pcdata->learned[(int)sn] = 75;
-                    psi_log( ch, "restored %s (%s set) to 75%% from an "
+                    ch->pcdata->learned[(int)sn] = 1;
+                    psi_log( ch, "restored %s (%s set) at 1%% from an "
                                  "earlier life", skill_table[(int)sn].name,
                              psi_set_names[s] );
                     snprintf( line, sizeof(line),
@@ -715,8 +719,8 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
  * adds to those rather than dealing a fresh hand.
  */
 /*
- * Put back every power the character has been given in any life, at 75%
- * where the skill wipe left less. grant_psionics does this as its first
+ * Put back every power the character has been given in any life, at 1%,
+ * where the skill wipe left none; a power held at any level is left alone. grant_psionics does this as its first
  * step from the second remort on; the first remort awards nothing new,
  * and used to award nothing back either, so a character who awoke at
  * 18-21 or was granted powers lost them for a whole life. Returns how
@@ -736,12 +740,12 @@ int psionic_restore_known( CHAR_DATA *ch )
 
         if ( sn < 0 || !psionic_is_known( ch, (sh_int)sn ) )
             continue;
-        if ( ch->pcdata->learned[sn] < 75 )
+        if ( ch->pcdata->learned[sn] < 1 )
         {
             char line[MAX_INPUT_LENGTH];
 
-            ch->pcdata->learned[sn] = 75;
-            psi_log( ch, "restored %s to 75%% from an earlier life",
+            ch->pcdata->learned[sn] = 1;
+            psi_log( ch, "restored %s at 1%% from an earlier life",
                      skill_table[sn].name );
             snprintf( line, sizeof(line),
                 "{0EYour mind remembers %s from an earlier life.{00\n\r",

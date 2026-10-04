@@ -7764,8 +7764,8 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
            a level 1 is below it, not in it, and will meet it on the
            way up. Say where the band is rather than where they are. */
         send_to_char( "Psionics awaken between levels 18 and 21, so this "
-                      "is flagged for a level check there rather than "
-                      "granted now.\n\r", ch );
+                      "is flagged and lands on the next level they gain "
+                      "rather than now.\n\r", ch );
         immediate = false;
     }
 

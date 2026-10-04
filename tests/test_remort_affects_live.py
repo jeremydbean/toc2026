@@ -129,8 +129,9 @@ class RemortAffectTests(unittest.TestCase):
 
             text = (mud.player_dir / "Zreborn").read_text(encoding="latin-1")
             self.assertRegex(text, r"(?m)^Wimp\s+40$", "wimpy cut to a fifth of 200")
-            self.assertRegex(text, r"(?m)^Sk 75 'torment'$",
-                             "a known power is given back on the first remort")
+            self.assertRegex(text, r"(?m)^Sk 1 'torment'$",
+                             "a known power is given back on the first remort, "
+                             "at 1% until practised")
             self.assertRegex(text, r"(?m)^Psionic\s+1$")
 
     def test_a_character_already_wrecked_is_rebuilt_at_login(self) -> None:
