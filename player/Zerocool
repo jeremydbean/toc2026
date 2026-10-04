@@ -55,7 +55,7 @@ NumRemorts 0
 Note 943144791
 Scro 22
 Room 4208
-HMV  -7494 -7494 -7499 -7499 -8031 -8031
+HMV  740 740 560 560 400 400
 NewGold 2973
 NewPlat 0
 NewCopp 0
@@ -96,14 +96,14 @@ Color 16 6
 Pos  8
 Alig  1000
 ACs 100 100 100 100
-Attr -40 -26 -29 -38 -56
+Attr 12 18 13 14 14
 AMod 0 0 0 0 0
 Pass ZeIwOJkDPx2uo~
 Titl .~
 Pnts 40
 TSex 1
 LLev 208
-HMVP -7494 -7499 -8031
+HMVP 740 560 400
 Cond 0 0 0
 Alias a cast 'acid blast' ~
 Alias p cast 'dispel magic'~
