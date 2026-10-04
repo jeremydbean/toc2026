@@ -402,6 +402,12 @@ Commands added or revived in September 2026, and where they live:
   between them and each is logged by its own name. A line that came out of
   an alias is never alias-expanded again -- that is the recursion limit --
   and is exempt from the input-spam count and from `!`.
+  A *typed* line with semicolons is split the same way by
+  `split_typed_commands()` in `comm.c`, on the browser client's rules
+  (`webadmin/static/command-sequence.js`: quotes and `\;` keep a
+  semicolon), with the rest queued through `queue_alias_input()` -- so a
+  chained command is not alias-expanded either. A line whose first word is
+  ALIAS, UNALIAS or a password command is never split.
 
 ## C Change Rules
 

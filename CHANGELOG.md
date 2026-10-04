@@ -21,6 +21,11 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **Several commands on one typed line, in any client.** "n;kill orc"
+  from Mudlet or plain telnet used to answer "Huh?"; only the browser split
+  on semicolons. The server splits now, on the browser's rules (quotes and
+  \; keep a semicolon), runs them one at a time with lag between, and
+  never splits a line that sets an alias or carries a password.
 - **A quest is told to the one who asked for it.** The questmaster SAID
   every assignment -- target and where to find it -- so everyone in the
   room heard another player's quest and went after it. Alaric: "the mud

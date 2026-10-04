@@ -2529,6 +2529,11 @@ e.g.: alias prep wear all;get all corpse;sacrifice corpse
       alias kb kill;bash
       kb orc                  (kill, then bash orc)
 
+You can also type several commands on one line, separated by semicolons,
+in any client: n;kill orc.  They run one at a time, as an alias's do.
+A line that sets an alias is the exception: it is taken whole, so
+alias prep wear all;get all corpse stores both commands.
+
 Write \; for a semicolon that belongs inside a command rather than
 between two.  The browser client splits what you type on semicolons
 itself, so there type the alias with \; between its commands:

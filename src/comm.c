@@ -337,6 +337,7 @@ DESCRIPTOR_DATA *new_descriptor ( int control );
 void    init_descriptor         ( int control );
 bool    read_from_descriptor    ( DESCRIPTOR_DATA *d );
 bool    read_from_buffer        ( DESCRIPTOR_DATA *d );
+static bool split_typed_commands( DESCRIPTOR_DATA *d );
 void    stop_idling             ( CHAR_DATA *ch );
 void    nanny                   ( DESCRIPTOR_DATA *d, char *argument );
 bool    process_output          ( DESCRIPTOR_DATA *d, bool fPrompt );
@@ -970,11 +971,16 @@ void game_loop_unix( int control )
                     }
                     d->showstr_point = NULL;
                 }
-                /* Any command but WALKTO ends a walk under way. */
-                walkto_interrupt( ch, d->incomm );
-                interp_from_alias = d->incomm_from_alias;
-                interpret( ch, d->incomm );
-                interp_from_alias = FALSE;
+                /* A typed line with semicolons is several commands; an
+                   alias's own lines were split when it was expanded. */
+                if ( d->incomm_from_alias || split_typed_commands( d ) )
+                {
+                    /* Any command but WALKTO ends a walk under way. */
+                    walkto_interrupt( ch, d->incomm );
+                    interp_from_alias = d->incomm_from_alias;
+                    interpret( ch, d->incomm );
+                    interp_from_alias = FALSE;
+                }
             }
             d->incomm[0] = '\0';
             d->incomm_from_alias = FALSE;
@@ -1598,6 +1604,132 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
 }
 
 
+
+/*
+ * A line typed with semicolons is several commands: "n;kill orc". The
+ * browser client always split them itself; a telnet client such as
+ * Mudlet sent the line whole and was told "Huh?" (Alaric, 2026-10-04).
+ * The rules are the browser's, in webadmin/static/command-sequence.js: a
+ * semicolon inside quotes, or written \;, belongs to the command.
+ *
+ * The first command is left in d->incomm to run now; the rest go through
+ * queue_alias_input, so lag falls between them as it does between lines
+ * typed one at a time, and each is logged under its own name. A line
+ * that defines an alias is never split -- its semicolons are the alias's
+ * -- and neither is a command that takes a password.
+ *
+ * Returns FALSE when the line has been refused and must not run.
+ */
+#define TYPED_MAX_COMMANDS ALIAS_MAX_QUEUED
+
+static bool typed_quote_can_open( const char *cur, size_t len )
+{
+    return len == 0 || isspace( (unsigned char)cur[len - 1] )
+        || strchr( "([{=:,", cur[len - 1] ) != NULL;
+}
+
+static bool typed_line_whole( const char *line )
+{
+    static const char * const whole[] =
+    {
+        "alias", "unalias", "password", "resetpwd", "delete", "remort", NULL
+    };
+    char word[MAX_INPUT_LENGTH];
+    int i;
+
+    one_argument( (char *)line, word );
+    if ( strlen( word ) < 2 )
+        return FALSE;
+    for ( i = 0; whole[i] != NULL; i++ )
+        if ( !str_prefix( word, whole[i] ) )
+            return TRUE;
+    return FALSE;
+}
+
+static bool split_typed_commands( DESCRIPTOR_DATA *d )
+{
+    static char cmds[TYPED_MAX_COMMANDS + 1][MAX_INPUT_LENGTH];
+    char cur[MAX_INPUT_LENGTH];
+    const char *s = d->incomm;
+    size_t len = 0;
+    char quote = '\0';
+    int count = 0;
+    size_t i;
+
+    if ( strchr( s, ';' ) == NULL || typed_line_whole( s ) )
+        return TRUE;
+
+    for ( i = 0; ; i++ )
+    {
+        char c = s[i];
+
+        if ( c == '\0' || ( c == ';' && quote == '\0' ) )
+        {
+            size_t start = 0;
+
+            while ( len > 0 && isspace( (unsigned char)cur[len - 1] ) )
+                len--;
+            cur[len] = '\0';
+            while ( isspace( (unsigned char)cur[start] ) )
+                start++;
+            if ( cur[start] != '\0' )
+            {
+                if ( count <= TYPED_MAX_COMMANDS )
+                    toc_strlcpy( cmds[count], cur + start, MAX_INPUT_LENGTH );
+                count++;
+            }
+            len = 0;
+            if ( c == '\0' )
+                break;
+            continue;
+        }
+
+        if ( c == '\\' && s[i + 1] == ';' )
+        {
+            c = ';';
+            i++;
+        }
+        else if ( quote != '\0' )
+        {
+            size_t back = 0;
+
+            while ( back < i && s[i - 1 - back] == '\\' )
+                back++;
+            if ( c == quote && back % 2 == 0 )
+                quote = '\0';
+        }
+        else if ( ( c == '\'' || c == '"' ) && typed_quote_can_open( cur, len ) )
+            quote = c;
+
+        if ( len < MAX_INPUT_LENGTH - 3 )
+            cur[len++] = c;
+    }
+
+    if ( count == 0 )
+    {
+        d->incomm[0] = '\0';
+        return FALSE;
+    }
+
+    if ( count > 1 )
+    {
+        if ( count - 1 + d->alias_queued > TYPED_MAX_COMMANDS
+        ||   !queue_alias_input( d, cmds + 1, count - 1 ) )
+        {
+            char buf[MAX_STRING_LENGTH];
+
+            snprintf( buf, sizeof(buf), "That is more commands than one line "
+                      "may hold (%d at most); none of them ran.\n\r",
+                      TYPED_MAX_COMMANDS );
+            write_to_buffer( d, buf, 0 );
+            d->incomm[0] = '\0';
+            return FALSE;
+        }
+    }
+
+    toc_strlcpy( d->incomm, cmds[0], sizeof(d->incomm) );
+    return TRUE;
+}
 
 /*
  * Transfer one line from input buffer to input line.
