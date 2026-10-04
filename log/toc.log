@@ -39097,3 +39097,9 @@ Sun Oct  4 14:46:00 2026 :: Snapshot of Alaric taken before staffset (PRESTORE A
 Sun Oct  4 14:46:12 2026 :: Log WebAdmin: fsave
 Sun Oct  4 14:50:36 2026 :: Sock.sinaddr:  5.161.215.244
 Sun Oct  4 14:50:36 2026 :: EOF encountered on read.
+Sun Oct  4 14:55:41 2026 :: Sock.sinaddr:  18.116.205.62
+Sun Oct  4 14:55:41 2026 :: EOF encountered on read.
+Sun Oct  4 14:56:20 2026 :: Log Alaric [0]: moved to 2 (Limbo)
+Sun Oct  4 14:56:20 2026 :: Log Alaric [0]: moved to 29060 (Corridor)
+Sun Oct  4 14:56:20 2026 :: Log Alaric [29060]: who
+Sun Oct  4 14:56:21 2026 :: Log Alaric [29060]: worth
