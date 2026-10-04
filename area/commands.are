@@ -1034,317 +1034,19 @@ See also: HOLYLIGHT, WIZINVIS, CLOAK, RESTORE
 
 0 CHANGES~
 Syntax: changes
+        changes all
 
-What has changed in the game lately, newest first.  Type HELP on any
-command named here for the detail.
+CHANGES shows what is new in the game, newest first: the changes from the
+last two weeks that you have not already been shown three times.  Once you
+have seen an entry three times, or it is more than two weeks old, it stops
+appearing, so the list stays short.
 
-1 Oct 2026
-  SWEDISH works again.  The command set a flag but nothing read it: the
-  speech filter that garbles a swedished (or drunk) player's SAY and
-  channel text had been dropped in a refactor and left only as an
-  uncompiled file.  It is compiled and wired back into SAY and the
-  channels.  Drunk slurring returns with it.
+CHANGES ALL shows every change there has ever been, however often you
+have seen it.
 
-  Mudlet 1.5.0 adds a combat-awareness set: a lag bar that shows when
-  you can act again, an enemy health gauge beside your own bars, a
-  Buffs tab with a countdown bar per spell, a Group tab showing each
-  party member's level and health, a low-health warning, and a Tells
-  tab that lights up on a new tell.  Update the package to get them.
+Type HELP on any command named in a change for the detail.
 
-  Mudlet: the quest strip now carries the target room, and clicking it
-  (or typing WALK QUEST) walks you straight there. The game sends the
-  room's vnum with the quest, so it is an exact path, not a guess by
-  name. Update the package to 1.4.0 to get it.
-
-  The dashboard's gear finder names the best piece for each of your
-  eighteen slots for your class and level - both rings, both necks and
-  both wrists, two different items for each pair - then ranks every
-  item you could wear in each slot, Light included.  Plain
-  armour and shields were missing because their own armour class was
-  never counted, lights because they carry no wear flag, and an item
-  that made your saves worse was being ranked as if it made them
-  better.
-
-  Staff can eat anything again, to destroy an item they carry.  It
-  checked the character's level rather than their trust, so a builder
-  trusted to immortal rank was told the item was not edible.
-
-  The training dummy can no longer be finished off.  A fatality
-  backstab killed it outright, because an instant kill never passed
-  the check that keeps it standing.  Backstab it and you get an
-  ordinary backstab, counted on the meter like any other blow; and
-  anything else that kills on the spot now finds it back on its post.
-
-  AFFECT now lists psionic wards.  MINDBAR, PSIONIC ARMOR and PSYCHIC
-  SHIELD change no statistic - they are a named protection and a
-  duration - and the list was skipping exactly that shape, so the one
-  kind of effect you most want to confirm was the one you could not
-  see.  Reported by Alaric.  Psionics and skills are also no longer
-  announced as spells.
-
-  Damage numbers now appear for every weapon.  Fifteen weapons in the
-  world carry no particular attack noun, and those went down a branch
-  of the combat message code that had never been given the bracketed
-  figure - so DAMAGENUMBERS worked for every weapon except the odd
-  ones, and for bare hands in some cases.  Reported by Alaric.
-
-  A training yard, and a dummy in it that cannot be killed.  Go down
-  the staircase in the centre of the Oak Tree Square, then south -
-  WALK DUMMY in Mudlet takes you there - and KILL DUMMY.  HELP DUMMY
-  explains all of it.  The yard takes one fighter at a time, so nobody
-  else can walk into your run.
-
-  Every run is the standard fight by default: twenty-five rounds, then a
-  bell, against a dummy at your own level that fights normally - it
-  dodges, parries, blocks and hits back.  Your best goes on a
-  leaderboard - DUMMY LEADERBOARD - and when a run ends you are told
-  whether it was a personal best, where you stand among everybody who
-  has run it, and how far the record is.  Post the best run anybody has
-  and you earn Top of the Board.
-
-  Just attacking the dummy gives you the standard fight: when the yard
-  empties, it goes back to it, whatever the last fighter set.
-
-  Only the standard fight is ranked.  DUMMY DEFENDS NO and DUMMY FIGHTS
-  NO take the dummy's own part out so you can measure your damage
-  alone, and DUMMY ROUNDS and DUMMY ENDLESS change the length - but
-  changing any setting at all means the run is not ranked, and the game
-  says so the moment you change it.
-
-  Neither of you can die in the yard.  When a run ends you are put back
-  the way you were when it began - hit points, mana and moves - not
-  healed to full, so it is no place to recover.  Nothing is learned
-  there either: skills and spells do not improve in the yard.
-
-  The report breaks the fight down attack by attack, both ways - every
-  spell you cast and every special attack on its own line, with its
-  damage, share, hit rate, average and best - alongside your totals,
-  damage per second, per swing and per round, and everything it did
-  to you.  Set the dummy up however the question needs: any level,
-  four shapes, nine damage types, a spell for it to cast, haste, a
-  different number of rounds, or DUMMY ENDLESS for a run with no
-  bell.
-
-  A portal now refuses to take you into a private room that is full,
-  the way walking in always has.  It used to be the one way past.
-
-  The quest master no longer asks you to kill the training dummy, which
-  cannot die.
-
-  Mudlet shows your damage per round under the target: live during a
-  fight, then the last fight's once it ends.  Every fight counts, and
-  the game measures it, so it works with damage numbers off.  A new
-  line below the quest lists who else is online - only players you
-  could see, so nobody wizi, cloaked, stealthed or hidden.  Mudlet
-  offers the 1.3.0 package update automatically.
-
-  City guards hunting a wanted player no longer follow them into the
-  Temple.  A hunter stops at the edge of a room mobiles may not enter,
-  as it always has at a safe one.
-
-  If WALK DUMMY in Mudlet still heads somewhere else, TOCGUI ATLAS
-  reloads the map with the yard where it is now.
-
-  The Mudlet chat window now shows each channel in the colour you
-  chose for it with COLOR, the same as the main window, and the quest
-  strip says where the quest master last saw your target.  Mudlet
-  offers the 1.3.1 package update automatically.
-
-  The plaque in the Hall of Heroes lists every hero there has ever
-  been, and a new hero's name is on it the moment they are made - as
-  the room always said it would be.  LOOK PLAQUE, down from the
-  centre of the Oak Tree Square.
-
-  POKE pokes again.  It was taken as the start of the longer command
-  POKER, so the social could never be used.  A word that is exactly a
-  social's name is now that social.
-
-  COMBINE is back.  It switches your inventory between the combined
-  list - (3) a big pot pie - and the long one, and AUTOLIST shows which
-  you have.  It had been switched off while everything it controls
-  stayed on.  COMB is still the social, so type at least COMBI.
-
-  Pyrotechnics now hits as hard as a fireball cast at your level.  It
-  used to scale with your current hit points, which made it about three
-  times its fellow psionics at level fifty and grew without limit with
-  every remort.  A failed attempt now costs its wait, as a failed cast
-  does, rather than letting you try again at once.  Heating the
-  victim's gear is still what it adds over a fireball.
-
-25 Sep 2026
-  RECALL can be moved.  RECALL SET makes the room you are standing in your
-  recall point, RECALL DEFAULT puts it back to the Temple, and RECALL WHERE
-  tells you where it is.  Once every 30 minutes, and not mid-fight.
-
-  The note board answers back.  NOTE REPLY <n> starts a note to
-  whoever wrote that one with the subject already set, NOTE FORWARD
-  <n> <player> passes one on, NOTE SEARCH finds a note by any word in
-  it, NOTE UNREAD shows only what is waiting and NOTE CATCHUP clears
-  the lot.  See HELP NOTE.
-
-  HISTORY draws a line where you last logged out, so what was said
-  while you were away is easy to pick out.  Nothing is shown to you
-  automatically - you have to ask.
-
-  HISTORY reads back what was said.  Type it on its own for the last
-  twenty lines across every channel you can hear, HISTORY 50 for more,
-  HISTORY GOSSIP for one channel, or HISTORY TELL for your own tells -
-  which stay private, and are kept per character.  It is held in memory
-  and is lost on a reboot, so it is a way to catch up rather than a
-  transcript.  See HELP HISTORY.
-
-  You can set your recall point at the quest giver now.  A room was
-  being refused for being 'private', which is a count of who is standing
-  in it - the questmaster and you already made two - and that count
-  changes minute to minute, so a point set in a quiet moment would have
-  quietly reverted to the Temple later.  Only the permanent flags refuse
-  a recall point now.
-
-  A mobile that lives in a room no longer fills it either.  The quest
-  giver's room holds two, and the questmaster was one of them.
-
-  An idle immortal no longer fills a one-person room.  Standing in the
-  quest room was enough to shut questing down for everybody else, which
-  is not what that flag is for - it exists to stop players walking in on
-  each other.  Staff can also walk into such a room now rather than
-  being turned away from it.
-
-  STASH LINK has a help entry of its own at last: HELP STASHLINK covers
-  linking, denying, blocking and sharing in full, and HELP STASH lists
-  every subcommand rather than four of them.
-
-  SHADOWMELD is a real skill now, and it is meant for two things: going
-  AFK without being killed for it, and laying in wait in a room somebody
-  has to walk through so that you strike first.
-
-  The fourth remort teaches it at 50% and it improves from there with
-  use and with failure, like anything else.  A god can grant it to
-  anyone with SET SKILL.  No later remort takes it away, and once you
-  hold it you may practise it up.
-
-  It behaves exactly like STEALTH against other players now rather than
-  like hide - the same roll against the same weather - so looking for
-  the hidden no longer finds you.  Holylight still does, and faerie fog
-  still reveals you.  VIS steps you out of it, WHO shows [SHADOW] beside
-  your name, WHERE leaves you off the list and DANGER SENSE counts you,
-  all exactly as they do for stealth.  Striking at somebody ends it,
-  whether you swing or cast.
-
-  The recall that never fails has moved from the fourth remort down to
-  the third, to make room for shadowmeld.
-
-  Remorting no longer cares which guilds you have belonged to, only
-  which classes you have lived as: mage, cleric, thief, warrior, monk,
-  necro.  Every life must be a class you have not played.  Join any
-  guild you like, as often as you like.
-
-  The third remort now carries three gifts instead of one: twice the
-  carrying room, twice as long before the idle void, and a second psionic
-  power from each discipline.  Psionics STACK from now on -- a remort
-  remembers what it gave you and hands it back, so a later life never
-  costs you a power you already had, and the fifth remort gives you all
-  seventeen.
-
-  Remorting no longer reads your class and guild history as one list.  It
-  used to, and because a guild is stored as its matching class, having
-  been in the mage guild barred you from ever living as a mage.  Worse, a
-  player who spent their choices badly could arrive at the fourth remort
-  with nothing legal left to pick, stuck at 57 with 59 out of reach.  The
-  two histories are separate now, 'none' is always a legal guild, and a
-  refusal lists everything still open to you.
-
-  Two new gifts for remorting.  The remort taken at level 56 doubles
-  how long you may idle before the void takes you.  The one taken at
-  level 57 gives SHADOWMELD: draw the shadows around yourself and stay
-  in them until you move, sleeping if you like, with no creature in the
-  world able to see you.  It is meant for stepping away from the
-  keyboard.  See HELP SHADOWMELD.
-
-  There is a stash at the altar now, one step west of recall.  STASH
-  PUT sets something aside from anywhere in the world; STASH GET takes
-  it back out, and that part only works at the altar.  Fifty things to
-  begin with, more for coin.  See HELP STASH.
-
-  Hermie answers HEAL now, exactly like the healer at the pit and
-  with the same menu, except that everything she does is free.  She
-  no longer listens to what you say in the room.  She has ten more
-  spells than she did, six named groups, and REFRESH, HEAL and MANA
-  now fill the pool instead of handing out a slice at a time.  See
-  HELP BUFF.
-
-  The healer at the pit tells you when a curse resists instead of
-  taking your gold in silence.
-
-  The game says when something is waiting for you.  Unread notes are
-  announced at login instead of sitting unmentioned, and staff are told
-  how many bug, typo and idea reports have come in since they last
-  looked.  See HELP REPORTS.
-
-  Staff can now MIRROR a player's gear onto themselves to look at a
-  build from the inside, online or not, and INVULN stops anything hurting
-  them while they do it.  MIRROR RESTORE hands the borrowed kit back in a
-  pack and puts their own gear on again.
-
-  Herbs and spell components actually appear now.  They had barely been
-  landing at all for years, and the scattering is deliberately sparse -
-  finding one should be a small event - and stops entirely when nobody is
-  logged in.
-
-  Two monster wards that had never worked now do.  A bloody aura turns
-  magic aside; a dominion shield turns aside everything, and only goes up
-  when the creature is badly hurt.  Four end-game creatures use them: the
-  Lord General and the Fade in the Battleground, and Zoltan and the second
-  succubus in Valhalla.  See HELP DOMINION SHIELD.
-
-  WORD OF RECALL is worth casting now.  It always goes to the Temple
-  whatever you have set your own recall to, so a cleric has two places to
-  reach in a hurry instead of one, and it works while you are cursed,
-  where the RECALL skill does not.  A scroll or potion of recall carries
-  the same spell and does the same two things.
-
-  Shops take the coins you actually have.  Buying used to look only at the
-  loose copper in your purse, so a character carrying platinum could be
-  told they could not afford a loaf of bread.  Shops now make change, and
-  they pay for what you sell them in coins you can carry.
-
-  Prices in low-level areas are priced for low-level characters.  Mud
-  School sells bread for a copper and a meal for sixteen; a full set of
-  leather in Dresden is a few gold rather than a few platinum.  Nothing
-  above level 10 changed.
-
-23-25 Sep 2026
-  AQUEST INFO, POINTS, TIME and GAMBLE work wherever you are standing;
-  only the questmaster's business needs a questmaster.  Every subcommand
-  can be shortened to its first letter.  Characters under level 4 can be
-  given a quest at last, and the questmaster now names an area you would
-  recognise instead of reading out its level range.
-
-  REMORT no longer quietly costs you armour.  Gear you keep on through a
-  remort keeps its bonuses.  Remorting also works if your password has a
-  capital letter in it, which it did not before.
-
-  REPAIR works on gear you are wearing, quotes its price in coins, and
-  restores an item's armour and worth as well as its condition.
-
-  Travel directions to every area in the game are published on the website
-  at toc.jeremybean.com, and in the Routes panel of the browser client.
-
-  Hyrule lets you recall out of it, except from inside the nine dungeons,
-  and its overworld no longer goes pitch dark at sunset.
-
-Sep 2026
-  Prices are counted in copper.  LIST and APPRAISE write them in the coins
-  they will cost you - 5g 20s, 1c, free - instead of one long number.
-
-  The necromancer's undead line works: CREATE SKELETON, CREATE ZOMBIE and
-  the rest.  ANIMATE PARTS no longer needs a body part, and hits harder
-  when it has one.
-
-  CAST no longer needs quotes around a spell with a space in its name.
-
-  Rooms built in game survive a reboot.
-
-See also: NEWS, MOTD, RECALL, AQUEST, REMORT, REPAIR
+See also: NEWS, MOTD
 ~
 
 0 NEWS~
@@ -5502,11 +5204,14 @@ the slot number (for making new zones) of a skill name.
 See also: LOAD, STAT, AREAVNUMS
 ~
 
-63 STAT~
+63 STAT MSTAT OSTAT RSTAT~
 Syntax: stat <name>
         stat mob  <name>
         stat obj  <name>
         stat room <number>
+        mstat <name>       (the same as stat mob)
+        ostat <name>       (the same as stat obj)
+        rstat [number]     (the same as stat room)
 
 The stat command gives you detailed information on an object, mobile, or room
 within the game.  Without a class argument, the command will return an object
@@ -5593,7 +5298,18 @@ GWHERE with no argument lists every player currently connected, their
 room name, and their room vnum.  With a keyword argument it filters to
 mobiles matching that name, similar to MWHERE.
 
-See also: MWHERE, OWHERE, RWHERE, WIZCHECK
+See also: MWHERE, OWHERE, RWHERE, WIZCHECK, PWHERE
+~
+
+62 PWHERE~
+Syntax: pwhere
+
+PWHERE lists every player in the game you can see: their level, room
+vnum, room name and area, and whether they are link-dead, fighting or
+idle.  Unlike GWHERE it counts link-dead characters, who are still in the
+world without a connection.
+
+See also: GWHERE, MWHERE, WHERE, PSTAT
 ~
 
 62 QFLAG~

@@ -1860,7 +1860,8 @@ Exits lead into the cardinal directions plus down.
 ~
 2 CDR 0
 D0
-You see an aggressive monster inside!
+You see an aggressive monster inside!  It attacks the moment you step in.
+Go in with your hit points full, and if they run low, FLEE.
 ~
 ~
 0 -1 3713
@@ -1902,6 +1903,11 @@ to wear your newly won equipment.
 When you are done with the corpse, 'SACRIFICE CORPSE' to give it to your God.
 God will reward you for this.
 
+BEWARE THE NORTH CAGE.  Its monster is aggressive: it attacks as soon as you
+walk in, before you can do anything.  Do not go in hurt.  REST until your
+hit points are full first, and if the fight turns against you, type 'FLEE'
+to escape -- then rest and try again.  Try the other three cages first.
+
 Between combat, you may need to rest or sleep to regenerate hit points.
 You can 'REST' to regenerate hit points, or you can 'SLEEP'.  'SLEEP' will
 refresh you faster than 'REST', but you will be less aware of your
@@ -1921,8 +1927,10 @@ You see the Cage Room.
 0 -1 3712
 E
 sign~
-There is an aggressive monster in this room.  Kill him and get out of here
-fast!  Remember to loot and sacrifice the corpse.
+There is an aggressive monster in this room.  It attacks anyone who walks
+in.  If your hit points run low, type 'FLEE' to get out, then REST to full
+before you come back.  Kill it and get out of here fast!  Remember to loot
+and sacrifice the corpse.
 ~
 S
 #3714

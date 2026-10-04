@@ -1,0 +1,529 @@
+# CHANGES -- what the game tells players has changed (src/changes.c).
+# Each entry: a line '@ <id> <yyyy-mm-dd>', its text, then a blank line.
+# Newest first. Ids never change and are never reused: a character's
+# view counts are kept by id. Write entries for players, not for staff.
+
+@ 20261004a 2026-10-04
+GAINLIST now shows every skill and spell your class and guild can learn,
+ticked (+) when you have it and crossed (X) when you do not, with what to
+GAIN for it, which trainer sells it, where they stand and the WALKTO that
+takes you there. ABILITIES is the same command, and GAINLIST TRAINERS is
+the old list of what each trainer sells.
+
+@ 20261004b 2026-10-04
+The Oracle knows what you are missing. PRAY and ask her what skills or
+spells you have not learned, and she answers from the game itself, with
+the trainer and the way to them.
+
+@ 20261004c 2026-10-04
+Gate, earth travel and portal reach the first creature or person of that
+name you could actually get to: anyone not in a no-recall room or a jail,
+not immortal, and no more than four levels above you. 2.kitten is the
+second such kitten. Astral walk has no level limit and can leave a no-
+recall room, but never enter one.
+
+@ 20261004d 2026-10-04
+Hyrule can be done in order now. Levels 1 and 2 stood behind river
+crossings that needed the raft, which is Level 3's treasure, and Level 4's
+island behind a ladder that is Level 4's own. There are stepping stones, a
+ferry and a plank bridge there now. Reported by Alaric.
+
+@ 20261004e 2026-10-04
+Nothing in Hyrule attacks first any more, and its creatures are as tough
+as the rest of the world's at the same level - no tougher, no softer. The
+land around each dungeon is graded for that dungeon, and HELP HYRULE lists
+the character levels each dungeon is built for and where it is.
+
+@ 20261004f 2026-10-04
+Every Hyrule guardian can drop a piece for every armour slot, each the
+best in the game for its dungeon's levels, for fighters and casters alike,
+and three fall each kill. The guardians' weapons and Heart Guards are
+stronger too.
+
+@ 20261004g 2026-10-04
+In Hyrule, enemies killed near a cracked wall sometimes leave a bomb, so
+you are not sent back to a shop to get past a wall the dungeon put in
+front of you.
+
+@ 20261004h 2026-10-04
+The Recorder: PLAY RECORDER (or BLOW RECORDER) out in Hyrule's open land
+calls a whirlwind that carries you to any dungeon you have won and to the
+one you are working on. PLAY RECORDER <level> picks one. Where a puzzle
+wants the tune, the puzzle still gets it.
+
+@ 20261004i 2026-10-04
+Leave a Hyrule dungeon you have won by its returning light and an owl
+lands to tell you where the next dungeon is and what opens it. The Oracle
+knows every path in Hyrule too, and gives directions from wherever you
+stand.
+
+@ 20261004j 2026-10-04
+A Hyrule treasure chest is never relocked while you are standing at it.
+
+@ 20261004k 2026-10-04
+Mudlet 1.5.5: Hyrule's dungeons are no longer on the starter map. Pick up
+a dungeon's map and the whole dungeon is drawn on yours.
+
+@ 20261004l 2026-10-04
+Commands typed on one line with semicolons between them - n;n;e - run one
+after another in any client, as they always did in the browser client.
+
+@ 20261004m 2026-10-04
+The quest master tells you your quest instead of announcing it to the
+room.
+
+@ 20261004n 2026-10-04
+A remort keeps your unspent practices and trains, and your own flaming
+aura never burns you.
+
+@ 20261004o 2026-10-04
+Spells your class can learn from another class's trainer are taught now,
+and so is DESPAIR. MAJOR GLOBE, the travel spells, riding, MAZE and WALKTO
+had fixes of their own.
+
+@ 20261004p 2026-10-04
+The slot machines pay back about 93 percent, and limited items you put in
+your stash stay yours.
+
+@ 20261004q 2026-10-04
+Mud School's north cage now warns you plainly: its monster attacks the
+moment you walk in, so go in rested and FLEE if it turns against you.
+
+@ 20261004r 2026-10-04
+The play page has a link to the gear finder: the best gear for your class
+and level, and where it drops.
+
+@ 20261003a 2026-10-03
+Psionic powers start at 1% until you practise them with Salir, including
+powers handed back after a remort.
+
+@ 20261003b 2026-10-03
+Nobody can remort or level past the level cap, and every necromancer spell
+now has a trainer. SCRIBE is taught by Dawn for every class.
+
+@ 20261003c 2026-10-03
+WALKTO <place> walks you to any area, guild hall, guildmaster or trainer
+from wherever you stand, a step at a time. Type anything to stop. See HELP
+WALKTO.
+
+@ 20261003d 2026-10-03
+The Oracle knows every guild hall, guildmaster and trainer, and the way to
+each.
+
+@ 20261003e 2026-10-03
+Hyrule's nine dungeons are done in order: each guardian drops a key to its
+treasure chest, which holds a Triforce piece and the treasure the next
+dungeon needs. COMBINE TRIFORCE joins all nine. Ganon guards the Master
+Sword and is a fight for a group. Dungeon maps and compasses show you the
+way. See HELP HYRULE.
+
+@ 20261003f 2026-10-03
+Hyrule prices everything in ordinary gold.
+
+@ 20261003g 2026-10-03
+Stealth and shadowmeld cannot be seen through without holylight - there is
+no roll any more, so you no longer flicker in and out of sight.
+
+@ 20261003h 2026-10-03
+REPAIR costs what your kills can pay for.
+
+@ 20261003i 2026-10-03
+Characters can have more than 32,767 hit points.
+
+@ 20261003j 2026-10-03
+Heroes never get too full to eat, and nobody sees 'No help on that word'
+at login. Reported by Alaric.
+
+@ 20261003k 2026-10-03
+Every guild has infravision, titles stay set, and an ALIAS can run several
+commands separated by semicolons.
+
+@ 20261003l 2026-10-03
+An item the game retires is swapped for its replacement at your next login
+instead of vanishing.
+
+@ 20261003m 2026-10-03
+Mudlet 1.5.2 to 1.5.4: health, mana, endurance and experience are back
+across the top, a failing part no longer hides the interface, death traps
+are off the map, and travel routes load by default.
+
+@ 20261002a 2026-10-02
+COMPARE is rebuilt around how hard you hit, and COMPARE UPGRADES lists the
+best pieces you could be wearing. The website's gear finder follows the
+same rules.
+
+@ 20261002b 2026-10-02
+PRAY takes you to the Oracle's sanctum and back.
+
+@ 20261002c 2026-10-02
+Old bug and typo reports that were still true have been fixed, and the
+disarm message has lost its stray space.
+
+@ 20261001a 2026-10-01
+The Oracle: PRAY to ask a seer about the game - gear, places, levelling,
+how things work. See HELP ORACLE.
+
+@ 20261001b 2026-10-01
+A remort keeps every piece of your gear, bagging what your new level
+cannot wear, and REPLAY is another name for HISTORY.
+
+@ 20261001c 2026-10-01
+SWEDISH works again.  The command set a flag but nothing read it: the
+speech filter that garbles a swedished (or drunk) player's SAY and
+channel text had been dropped in a refactor and left only as an
+uncompiled file.  It is compiled and wired back into SAY and the
+channels.  Drunk slurring returns with it.
+
+@ 20261001d 2026-10-01
+Mudlet 1.5.0 adds a combat-awareness set: a lag bar that shows when
+you can act again, an enemy health gauge beside your own bars, a
+Buffs tab with a countdown bar per spell, a Group tab showing each
+party member's level and health, a low-health warning, and a Tells
+tab that lights up on a new tell.  Update the package to get them.
+
+@ 20261001e 2026-10-01
+Mudlet: the quest strip now carries the target room, and clicking it
+(or typing WALK QUEST) walks you straight there. The game sends the
+room's vnum with the quest, so it is an exact path, not a guess by
+name. Update the package to 1.4.0 to get it.
+
+@ 20261001f 2026-10-01
+The dashboard's gear finder names the best piece for each of your
+eighteen slots for your class and level - both rings, both necks and
+both wrists, two different items for each pair - then ranks every
+item you could wear in each slot, Light included.  Plain
+armour and shields were missing because their own armour class was
+never counted, lights because they carry no wear flag, and an item
+that made your saves worse was being ranked as if it made them
+better.
+
+@ 20261001g 2026-10-01
+Staff can eat anything again, to destroy an item they carry.  It
+checked the character's level rather than their trust, so a builder
+trusted to immortal rank was told the item was not edible.
+
+@ 20261001h 2026-10-01
+The training dummy can no longer be finished off.  A fatality
+backstab killed it outright, because an instant kill never passed
+the check that keeps it standing.  Backstab it and you get an
+ordinary backstab, counted on the meter like any other blow; and
+anything else that kills on the spot now finds it back on its post.
+
+@ 20261001i 2026-10-01
+AFFECT now lists psionic wards.  MINDBAR, PSIONIC ARMOR and PSYCHIC
+SHIELD change no statistic - they are a named protection and a
+duration - and the list was skipping exactly that shape, so the one
+kind of effect you most want to confirm was the one you could not
+see.  Reported by Alaric.  Psionics and skills are also no longer
+announced as spells.
+
+@ 20261001j 2026-10-01
+Damage numbers now appear for every weapon.  Fifteen weapons in the
+world carry no particular attack noun, and those went down a branch
+of the combat message code that had never been given the bracketed
+figure - so DAMAGENUMBERS worked for every weapon except the odd
+ones, and for bare hands in some cases.  Reported by Alaric.
+
+@ 20261001k 2026-10-01
+A training yard, and a dummy in it that cannot be killed.  Go down
+the staircase in the centre of the Oak Tree Square, then south -
+WALK DUMMY in Mudlet takes you there - and KILL DUMMY.  HELP DUMMY
+explains all of it.  The yard takes one fighter at a time, so nobody
+else can walk into your run.
+
+@ 20261001l 2026-10-01
+Every run is the standard fight by default: twenty-five rounds, then a
+bell, against a dummy at your own level that fights normally - it
+dodges, parries, blocks and hits back.  Your best goes on a
+leaderboard - DUMMY LEADERBOARD - and when a run ends you are told
+whether it was a personal best, where you stand among everybody who
+has run it, and how far the record is.  Post the best run anybody has
+and you earn Top of the Board.
+
+@ 20261001m 2026-10-01
+Just attacking the dummy gives you the standard fight: when the yard
+empties, it goes back to it, whatever the last fighter set.
+
+@ 20261001n 2026-10-01
+Only the standard fight is ranked.  DUMMY DEFENDS NO and DUMMY FIGHTS
+NO take the dummy's own part out so you can measure your damage
+alone, and DUMMY ROUNDS and DUMMY ENDLESS change the length - but
+changing any setting at all means the run is not ranked, and the game
+says so the moment you change it.
+
+@ 20261001o 2026-10-01
+Neither of you can die in the yard.  When a run ends you are put back
+the way you were when it began - hit points, mana and moves - not
+healed to full, so it is no place to recover.  Nothing is learned
+there either: skills and spells do not improve in the yard.
+
+@ 20261001p 2026-10-01
+The report breaks the fight down attack by attack, both ways - every
+spell you cast and every special attack on its own line, with its
+damage, share, hit rate, average and best - alongside your totals,
+damage per second, per swing and per round, and everything it did
+to you.  Set the dummy up however the question needs: any level,
+four shapes, nine damage types, a spell for it to cast, haste, a
+different number of rounds, or DUMMY ENDLESS for a run with no
+bell.
+
+@ 20261001q 2026-10-01
+A portal now refuses to take you into a private room that is full,
+the way walking in always has.  It used to be the one way past.
+
+@ 20261001r 2026-10-01
+The quest master no longer asks you to kill the training dummy, which
+cannot die.
+
+@ 20261001s 2026-10-01
+Mudlet shows your damage per round under the target: live during a
+fight, then the last fight's once it ends.  Every fight counts, and
+the game measures it, so it works with damage numbers off.  A new
+line below the quest lists who else is online - only players you
+could see, so nobody wizi, cloaked, stealthed or hidden.  Mudlet
+offers the 1.3.0 package update automatically.
+
+@ 20261001t 2026-10-01
+City guards hunting a wanted player no longer follow them into the
+Temple.  A hunter stops at the edge of a room mobiles may not enter,
+as it always has at a safe one.
+
+@ 20261001u 2026-10-01
+If WALK DUMMY in Mudlet still heads somewhere else, TOCGUI ATLAS
+reloads the map with the yard where it is now.
+
+@ 20261001v 2026-10-01
+The Mudlet chat window now shows each channel in the colour you
+chose for it with COLOR, the same as the main window, and the quest
+strip says where the quest master last saw your target.  Mudlet
+offers the 1.3.1 package update automatically.
+
+@ 20261001w 2026-10-01
+The plaque in the Hall of Heroes lists every hero there has ever
+been, and a new hero's name is on it the moment they are made - as
+the room always said it would be.  LOOK PLAQUE, down from the
+centre of the Oak Tree Square.
+
+@ 20261001x 2026-10-01
+POKE pokes again.  It was taken as the start of the longer command
+POKER, so the social could never be used.  A word that is exactly a
+social's name is now that social.
+
+@ 20261001y 2026-10-01
+COMBINE is back.  It switches your inventory between the combined
+list - (3) a big pot pie - and the long one, and AUTOLIST shows which
+you have.  It had been switched off while everything it controls
+stayed on.  COMB is still the social, so type at least COMBI.
+
+@ 20261001z 2026-10-01
+Pyrotechnics now hits as hard as a fireball cast at your level.  It
+used to scale with your current hit points, which made it about three
+times its fellow psionics at level fifty and grew without limit with
+every remort.  A failed attempt now costs its wait, as a failed cast
+does, rather than letting you try again at once.  Heating the
+victim's gear is still what it adds over a fireball.
+
+@ 20260925a 2026-09-25
+RECALL can be moved.  RECALL SET makes the room you are standing in your
+recall point, RECALL DEFAULT puts it back to the Temple, and RECALL WHERE
+tells you where it is.  Once every 30 minutes, and not mid-fight.
+
+@ 20260925b 2026-09-25
+The note board answers back.  NOTE REPLY <n> starts a note to
+whoever wrote that one with the subject already set, NOTE FORWARD
+<n> <player> passes one on, NOTE SEARCH finds a note by any word in
+it, NOTE UNREAD shows only what is waiting and NOTE CATCHUP clears
+the lot.  See HELP NOTE.
+
+@ 20260925c 2026-09-25
+HISTORY draws a line where you last logged out, so what was said
+while you were away is easy to pick out.  Nothing is shown to you
+automatically - you have to ask.
+
+@ 20260925d 2026-09-25
+HISTORY reads back what was said.  Type it on its own for the last
+twenty lines across every channel you can hear, HISTORY 50 for more,
+HISTORY GOSSIP for one channel, or HISTORY TELL for your own tells -
+which stay private, and are kept per character.  It is held in memory
+and is lost on a reboot, so it is a way to catch up rather than a
+transcript.  See HELP HISTORY.
+
+@ 20260925e 2026-09-25
+You can set your recall point at the quest giver now.  A room was
+being refused for being 'private', which is a count of who is standing
+in it - the questmaster and you already made two - and that count
+changes minute to minute, so a point set in a quiet moment would have
+quietly reverted to the Temple later.  Only the permanent flags refuse
+a recall point now.
+
+@ 20260925f 2026-09-25
+A mobile that lives in a room no longer fills it either.  The quest
+giver's room holds two, and the questmaster was one of them.
+
+@ 20260925g 2026-09-25
+An idle immortal no longer fills a one-person room.  Standing in the
+quest room was enough to shut questing down for everybody else, which
+is not what that flag is for - it exists to stop players walking in on
+each other.  Staff can also walk into such a room now rather than
+being turned away from it.
+
+@ 20260925h 2026-09-25
+STASH LINK has a help entry of its own at last: HELP STASHLINK covers
+linking, denying, blocking and sharing in full, and HELP STASH lists
+every subcommand rather than four of them.
+
+@ 20260925i 2026-09-25
+SHADOWMELD is a real skill now, and it is meant for two things: going
+AFK without being killed for it, and laying in wait in a room somebody
+has to walk through so that you strike first.
+
+@ 20260925j 2026-09-25
+The fourth remort teaches it at 50% and it improves from there with
+use and with failure, like anything else.  A god can grant it to
+anyone with SET SKILL.  No later remort takes it away, and once you
+hold it you may practise it up.
+
+@ 20260925k 2026-09-25
+It behaves exactly like STEALTH against other players now rather than
+like hide - the same roll against the same weather - so looking for
+the hidden no longer finds you.  Holylight still does, and faerie fog
+still reveals you.  VIS steps you out of it, WHO shows [SHADOW] beside
+your name, WHERE leaves you off the list and DANGER SENSE counts you,
+all exactly as they do for stealth.  Striking at somebody ends it,
+whether you swing or cast.
+
+@ 20260925l 2026-09-25
+The recall that never fails has moved from the fourth remort down to
+the third, to make room for shadowmeld.
+
+@ 20260925m 2026-09-25
+Remorting no longer cares which guilds you have belonged to, only
+which classes you have lived as: mage, cleric, thief, warrior, monk,
+necro.  Every life must be a class you have not played.  Join any
+guild you like, as often as you like.
+
+@ 20260925n 2026-09-25
+The third remort now carries three gifts instead of one: twice the
+carrying room, twice as long before the idle void, and a second psionic
+power from each discipline.  Psionics STACK from now on -- a remort
+remembers what it gave you and hands it back, so a later life never
+costs you a power you already had, and the fifth remort gives you all
+seventeen.
+
+@ 20260925o 2026-09-25
+Remorting no longer reads your class and guild history as one list.  It
+used to, and because a guild is stored as its matching class, having
+been in the mage guild barred you from ever living as a mage.  Worse, a
+player who spent their choices badly could arrive at the fourth remort
+with nothing legal left to pick, stuck at 57 with 59 out of reach.  The
+two histories are separate now, 'none' is always a legal guild, and a
+refusal lists everything still open to you.
+
+@ 20260925p 2026-09-25
+Two new gifts for remorting.  The remort taken at level 56 doubles
+how long you may idle before the void takes you.  The one taken at
+level 57 gives SHADOWMELD: draw the shadows around yourself and stay
+in them until you move, sleeping if you like, with no creature in the
+world able to see you.  It is meant for stepping away from the
+keyboard.  See HELP SHADOWMELD.
+
+@ 20260925q 2026-09-25
+There is a stash at the altar now, one step west of recall.  STASH
+PUT sets something aside from anywhere in the world; STASH GET takes
+it back out, and that part only works at the altar.  Fifty things to
+begin with, more for coin.  See HELP STASH.
+
+@ 20260925r 2026-09-25
+Hermie answers HEAL now, exactly like the healer at the pit and
+with the same menu, except that everything she does is free.  She
+no longer listens to what you say in the room.  She has ten more
+spells than she did, six named groups, and REFRESH, HEAL and MANA
+now fill the pool instead of handing out a slice at a time.  See
+HELP BUFF.
+
+@ 20260925s 2026-09-25
+The healer at the pit tells you when a curse resists instead of
+taking your gold in silence.
+
+@ 20260925t 2026-09-25
+The game says when something is waiting for you.  Unread notes are
+announced at login instead of sitting unmentioned, and staff are told
+how many bug, typo and idea reports have come in since they last
+looked.  See HELP REPORTS.
+
+@ 20260925u 2026-09-25
+Staff can now MIRROR a player's gear onto themselves to look at a
+build from the inside, online or not, and INVULN stops anything hurting
+them while they do it.  MIRROR RESTORE hands the borrowed kit back in a
+pack and puts their own gear on again.
+
+@ 20260925v 2026-09-25
+Herbs and spell components actually appear now.  They had barely been
+landing at all for years, and the scattering is deliberately sparse -
+finding one should be a small event - and stops entirely when nobody is
+logged in.
+
+@ 20260925w 2026-09-25
+Two monster wards that had never worked now do.  A bloody aura turns
+magic aside; a dominion shield turns aside everything, and only goes up
+when the creature is badly hurt.  Four end-game creatures use them: the
+Lord General and the Fade in the Battleground, and Zoltan and the second
+succubus in Valhalla.  See HELP DOMINION SHIELD.
+
+@ 20260925x 2026-09-25
+WORD OF RECALL is worth casting now.  It always goes to the Temple
+whatever you have set your own recall to, so a cleric has two places to
+reach in a hurry instead of one, and it works while you are cursed,
+where the RECALL skill does not.  A scroll or potion of recall carries
+the same spell and does the same two things.
+
+@ 20260925y 2026-09-25
+Shops take the coins you actually have.  Buying used to look only at the
+loose copper in your purse, so a character carrying platinum could be
+told they could not afford a loaf of bread.  Shops now make change, and
+they pay for what you sell them in coins you can carry.
+
+@ 20260925z 2026-09-25
+Prices in low-level areas are priced for low-level characters.  Mud
+School sells bread for a copper and a meal for sixteen; a full set of
+leather in Dresden is a few gold rather than a few platinum.  Nothing
+above level 10 changed.
+
+@ 20260924a 2026-09-24
+AQUEST INFO, POINTS, TIME and GAMBLE work wherever you are standing;
+only the questmaster's business needs a questmaster.  Every subcommand
+can be shortened to its first letter.  Characters under level 4 can be
+given a quest at last, and the questmaster now names an area you would
+recognise instead of reading out its level range.
+
+@ 20260924b 2026-09-24
+REMORT no longer quietly costs you armour.  Gear you keep on through a
+remort keeps its bonuses.  Remorting also works if your password has a
+capital letter in it, which it did not before.
+
+@ 20260924c 2026-09-24
+REPAIR works on gear you are wearing, quotes its price in coins, and
+restores an item's armour and worth as well as its condition.
+
+@ 20260924d 2026-09-24
+Travel directions to every area in the game are published on the website
+at toc.jeremybean.com, and in the Routes panel of the browser client.
+
+@ 20260924e 2026-09-24
+Hyrule lets you recall out of it, except from inside the nine dungeons,
+and its overworld no longer goes pitch dark at sunset.
+
+@ 20260915a 2026-09-15
+Prices are counted in copper.  LIST and APPRAISE write them in the coins
+they will cost you - 5g 20s, 1c, free - instead of one long number.
+
+@ 20260915b 2026-09-15
+The necromancer's undead line works: CREATE SKELETON, CREATE ZOMBIE and
+the rest.  ANIMATE PARTS no longer needs a body part, and hits harder
+when it has one.
+
+@ 20260915c 2026-09-15
+CAST no longer needs quotes around a spell with a space in its name.
+
+@ 20260915d 2026-09-15
+Rooms built in game survive a reboot.

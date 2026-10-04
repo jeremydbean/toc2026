@@ -319,9 +319,11 @@ class RecallSourceTests(unittest.TestCase):
     def test_help_changes_lists_changes(self) -> None:
         """It used to promise a log of recent updates and then not have
         one."""
-        entry = self.commands.split("\n0 CHANGES~\n", 1)[1].split("\n~\n", 1)[0]
+        # The list moved from HELP CHANGES to area/changes.dat (src/changes.c,
+        # 2026-10-04), which CHANGES and CHANGES ALL read.
+        entry = (ROOT / "area" / "changes.dat").read_text(encoding="latin-1")
         self.assertGreater(len(entry.splitlines()), 20, entry)
-        self.assertRegex(entry, r"\d{1,2}[- ]?\w* ?\w+ 20\d\d")
+        self.assertRegex(entry, r"(?m)^@ \w+ 20\d\d-\d\d-\d\d$")
         for topic in ("RECALL", "AQUEST", "REMORT", "REPAIR"):
             with self.subTest(topic=topic):
                 self.assertIn(topic, entry)

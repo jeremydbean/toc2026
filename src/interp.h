@@ -278,6 +278,7 @@ DECLARE_DO_FUN(	do_mload	);
 DECLARE_DO_FUN(	do_mset		);
 DECLARE_DO_FUN(	do_mstat	);
 DECLARE_DO_FUN(	do_mwhere	);
+DECLARE_DO_FUN(	do_pwhere	);
 DECLARE_DO_FUN( do_motd		);
 DECLARE_DO_FUN( do_move		);
 DECLARE_DO_FUN(	do_murde	);

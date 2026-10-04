@@ -2064,6 +2064,7 @@ struct  pc_data
     bool                psionic_grant_pending;
     char * psionic_grant_spec;
     char * psionic_known;
+    char * changes_seen;     /* CHANGES: "id:count ...", changes.c */
     /* Not saved: a tell scrollback for the length of the session. */
     char * tell_history [TELL_HISTORY_LINES];
     time_t              tell_history_when [TELL_HISTORY_LINES];
@@ -3328,6 +3329,7 @@ void    do_start_hunting ( CHAR_DATA *hunter, CHAR_DATA *target, int ANNOY);
 
 /* walkto.c */
 void    walkto_load      ( void );
+void    changes_load     ( void );
 void    walkto_update    ( void );
 void    walkto_clear     ( CHAR_DATA *ch );
 void    walkto_interrupt ( CHAR_DATA *ch, const char *line );

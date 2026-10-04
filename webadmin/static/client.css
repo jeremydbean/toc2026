@@ -1644,9 +1644,23 @@ textarea {
     transition: background 0.15s ease;
 }
 .play-info-mudlet:hover { background: var(--teal); }
+.play-info-links { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.play-info-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: border-color 0.15s ease;
+}
+.play-info-link:hover { border-color: var(--teal); }
 .play-info-icon { width: 18px; height: 18px; color: var(--teal); flex: none; }
 .play-info-mudlet:hover .play-info-icon { color: var(--text); }
 @media (max-width: 640px) {
     .play-info { justify-content: center; text-align: center; }
-    .play-info-mudlet { width: 100%; justify-content: center; }
+    .play-info-links { width: 100%; }
+    .play-info-mudlet, .play-info-link { width: 100%; justify-content: center; }
 }

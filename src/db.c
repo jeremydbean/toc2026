@@ -527,6 +527,7 @@ void boot_db( void )
 /*	load_wizlist( );*/
         load_pkills( );
         walkto_load( );
+        changes_load( );
 //	load_relics();  REMOVERELIC
     }
 
@@ -3534,6 +3535,7 @@ void free_char( CHAR_DATA *ch )
         free_string( ch->pcdata->title          );
         free_string( ch->pcdata->psionic_grant_spec );
         free_string( ch->pcdata->psionic_known  );
+        free_string( ch->pcdata->changes_seen   );
         for ( i = 0; i < TELL_HISTORY_LINES; i++ )
         {
             if ( ch->pcdata->tell_history[i] != NULL )

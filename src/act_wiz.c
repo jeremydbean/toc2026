@@ -2524,6 +2524,53 @@ void do_mwhere( CHAR_DATA *ch, char *argument )
     return;
 }
 
+/*
+ * PWHERE: every player in the world and where they are -- level, room,
+ * area, and whether they are link-dead, fighting or idle. GWHERE walks the
+ * descriptors and so misses the link-dead; this walks the characters.
+ * Staff the viewer cannot see are left out, as everywhere else.
+ */
+void do_pwhere( CHAR_DATA *ch, char *argument )
+{
+    char buf[MAX_STRING_LENGTH];
+    char buffer[8 * MAX_STRING_LENGTH];
+    char area[64];
+    CHAR_DATA *victim;
+    LIST_ITERATOR iter;
+    int count = 0;
+
+    UNUSED_PARAM(argument);
+
+    snprintf( buffer, sizeof(buffer), "%-12s %3s  %-6s %-30s %s\n\r",
+              "Player", "Lvl", "Room", "Room name", "Area / state" );
+    FOR_EACH_CHARACTER( iter, victim )
+    {
+        const char *state;
+
+        if ( IS_NPC(victim) || victim->in_room == NULL || !can_see( ch, victim ) )
+            continue;
+        state = victim->desc == NULL ? " (link-dead)"
+              : victim->fighting != NULL ? " (fighting)"
+              : victim->timer >= 5 ? " (idle)" : "";
+        toc_strlcpy( area, victim->in_room->area != NULL && victim->in_room->area->name != NULL
+                     ? victim->in_room->area->name : "?", sizeof(area) );
+        snprintf( buf, sizeof(buf), "%-12s %3d  %-6d %-30.30s %s%s\n\r",
+                  victim->name, victim->level, victim->in_room->vnum,
+                  victim->in_room->name, area, state );
+        toc_strlcat( buffer, buf, sizeof(buffer) );
+        if ( ++count >= 100 )
+            break;
+    }
+    if ( count == 0 )
+    {
+        send_to_char( "Nobody you can see is in the game.\n\r", ch );
+        return;
+    }
+    snprintf( buf, sizeof(buf), "%d player%s.\n\r", count, count == 1 ? "" : "s" );
+    toc_strlcat( buffer, buf, sizeof(buffer) );
+    page_to_char( buffer, ch );
+}
+
 void do_diagnostics( CHAR_DATA *ch, char *argument )
 {
     extern char str_boot_time[];

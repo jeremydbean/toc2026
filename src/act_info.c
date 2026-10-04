@@ -698,13 +698,6 @@ void do_story(CHAR_DATA *ch, char *argument)
     do_help(ch,"story");
 }
 
-void do_changes(CHAR_DATA *ch, char *argument)
-{
-    UNUSED_PARAM(argument);
-
-    do_help(ch,"changes");
-}
-
 void do_wizlist(CHAR_DATA *ch, char *argument)
 {
     UNUSED_PARAM(argument);
