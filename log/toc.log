@@ -39090,3 +39090,8 @@ Sun Oct  4 14:40:06 2026 :: Farslayer has quit.
 Sun Oct  4 14:40:06 2026 :: [QUIT] Player rejoined the real world.
 Sun Oct  4 14:40:26 2026 :: Sock.sinaddr:  5.161.61.238
 Sun Oct  4 14:40:26 2026 :: EOF encountered on read.
+Sun Oct  4 14:45:31 2026 :: Sock.sinaddr:  178.156.185.231
+Sun Oct  4 14:45:32 2026 :: EOF encountered on read.
+Sun Oct  4 14:46:00 2026 :: Log WebAdmin: set char Alaric bank 480356235
+Sun Oct  4 14:46:00 2026 :: Snapshot of Alaric taken before staffset (PRESTORE Alaric to see it).
+Sun Oct  4 14:46:12 2026 :: Log WebAdmin: fsave

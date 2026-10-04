@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791125018
+LogO 1791125341
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,18 +15,18 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 26
-Plyd 287285
+Plyd 287608
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 Scro 22
 Room 29060
-HMV  572 572 2027 2055 418 418
+HMV  572 572 2055 2055 418 418
 NewGold 99
 NewPlat 649
 NewCopp 139
 NewSilv 76
-BankCP 197356235
+BankCP 480356235
 IntTime 1791075484
 IntTotal 8356235
 Dcount 0
@@ -114,7 +114,6 @@ CasinoWon  51
 CasinoLost 304
 Exp  53714
 Act  4261068
-AfBy 1048576
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -213,8 +212,7 @@ Gr 'necro default'
 Gr 'necro enhancement'
 Gr 'necromancy'
 Gr 'necro transportation'
-AffD 'pass door'   0   0   0   0    1048576          0
-AffD 'armor'   0  11 -20  17          0          0
+AffD 'armor'   0   6 -20  17          0          0
 End
 
 #O
@@ -224,7 +222,7 @@ Wear 0
 Cost 0
 Cond 91
 Repd 0
-Val  0 0 37 0 0
+Val  0 0 32 0 0
 End
 
 #O
