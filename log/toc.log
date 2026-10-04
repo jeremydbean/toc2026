@@ -38570,3 +38570,221 @@ Sun Oct  4 13:53:27 2026 :: Log Eclipse [9988]: pstat
 Sun Oct  4 13:54:12 2026 :: Log Eclipse [9988]: stat eclipse
 Sun Oct  4 13:54:24 2026 :: Log Eclipse [9988]: (refused) mstat eclipse
 Sun Oct  4 13:54:35 2026 :: Log Eclipse [9988]: stat mob eclipse
+Sun Oct  4 13:54:42 2026 :: Log Eclipse [9988]: stat mob alaric
+Sun Oct  4 13:54:45 2026 :: Sock.sinaddr:  3.20.63.178
+Sun Oct  4 13:54:45 2026 :: EOF encountered on read.
+Sun Oct  4 13:56:24 2026 :: Log Eclipse [9988]: commands
+Sun Oct  4 13:56:28 2026 :: Log Eclipse [9988]: help remort
+Sun Oct  4 13:56:59 2026 :: Sock.sinaddr:  71.117.172.247
+Sun Oct  4 13:57:04 2026 :: Loading Farslayer's playerfile
+Sun Oct  4 13:57:09 2026 :: Farslayer@pool-71-117-172-247.prvdri.fios.verizon.net has connected.
+Sun Oct  4 13:57:10 2026 :: Log Farslayer [4216]: moved to 4216 (Death room.)
+Sun Oct  4 13:57:11 2026 :: Log Farslayer [4216]: l
+Sun Oct  4 13:57:12 2026 :: Log Farslayer [4216]: (refused) whg
+Sun Oct  4 13:57:13 2026 :: Log Farslayer [4216]: wh
+Sun Oct  4 13:57:14 2026 :: Log Farslayer [4216]: eq
+Sun Oct  4 13:57:16 2026 :: Log Farslayer [4216]: st
+Sun Oct  4 13:57:20 2026 :: Log Farslayer [4216]: d
+Sun Oct  4 13:57:20 2026 :: Log Farslayer [0]: moved to 4208 (Altar of the Temple of Devota.)
+Sun Oct  4 13:57:24 2026 :: Log Farslayer [4208]: sca
+Sun Oct  4 13:57:25 2026 :: Log Farslayer [4208]: l
+Sun Oct  4 13:57:27 2026 :: Log Farslayer [4208]: eq
+Sun Oct  4 13:57:29 2026 :: Log Farslayer [4208]: exa pit
+Sun Oct  4 13:57:30 2026 :: Log Farslayer [4208]: e
+Sun Oct  4 13:57:30 2026 :: Log Farslayer [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 13:57:31 2026 :: Log Farslayer [4207]: u
+Sun Oct  4 13:57:31 2026 :: Log Farslayer [0]: moved to 3700 (Entrance to Mud School)
+Sun Oct  4 13:57:32 2026 :: Log Farslayer [3700]: n
+Sun Oct  4 13:57:32 2026 :: Log Farslayer [0]: moved to 3757 (A Room in Mud School)
+Sun Oct  4 13:57:32 2026 :: Log Alaric [4210]: who
+Sun Oct  4 13:57:33 2026 :: Log Farslayer [3757]: n
+Sun Oct  4 13:57:33 2026 :: Log Farslayer [0]: moved to 3701 (A Room in Mud School)
+Sun Oct  4 13:57:35 2026 :: Log Farslayer [3701]: w
+Sun Oct  4 13:57:35 2026 :: Log Farslayer [0]: moved to 3702 (The Center Room)
+Sun Oct  4 13:57:37 2026 :: Log Farslayer [3702]: n
+Sun Oct  4 13:57:37 2026 :: Log Farslayer [0]: moved to 3703 (A Room in Mud School)
+Sun Oct  4 13:57:38 2026 :: Log Farslayer [3703]: n
+Sun Oct  4 13:57:38 2026 :: Log Farslayer [0]: moved to 3709 (A Room in Mud School)
+Sun Oct  4 13:57:39 2026 :: Log Farslayer [3709]: w
+Sun Oct  4 13:57:39 2026 :: Log Farslayer [0]: moved to 3711 (A Room in Mud School)
+Sun Oct  4 13:57:39 2026 :: Log Farslayer [3711]: d
+Sun Oct  4 13:57:39 2026 :: Log Farslayer [0]: moved to 3712 (The Cage Room)
+Sun Oct  4 13:57:41 2026 :: Log Farslayer [3712]: e
+Sun Oct  4 13:57:41 2026 :: Log Farslayer [0]: moved to 3716 (A Cage)
+Sun Oct  4 13:57:42 2026 :: Log Alaric [4210]: score
+Sun Oct  4 13:57:42 2026 :: Log Alaric [4210]: l
+Sun Oct  4 13:57:43 2026 :: Log Farslayer [3716]: k gr
+Sun Oct  4 13:57:44 2026 :: Log Alaric [4210]: af
+Sun Oct  4 13:57:47 2026 :: Log Farslayer [3716]: sc
+Sun Oct  4 13:57:49 2026 :: Log Alaric [4210]: prac
+Sun Oct  4 13:57:55 2026 :: Log Eclipse [9988]: socket
+Sun Oct  4 13:57:56 2026 :: Log Alaric [4210]: eq
+Sun Oct  4 13:57:58 2026 :: Log Farslayer [3716]: equip
+Sun Oct  4 13:57:58 2026 :: Log Alaric [4210]: rem scal
+Sun Oct  4 13:58:00 2026 :: Log Alaric [4210]: c bew scal
+Sun Oct  4 13:58:06 2026 :: Log Alaric [4210]: wear scal
+Sun Oct  4 13:58:08 2026 :: Log Farslayer [3716]: c mag
+Sun Oct  4 13:58:11 2026 :: Log Alaric [4210]: gr
+Sun Oct  4 13:58:12 2026 :: Log Farslayer [3716]: c mag
+Sun Oct  4 13:58:16 2026 :: Log Farslayer [3716]: c mag
+Sun Oct  4 13:58:30 2026 :: Log Killuminati [1]: pit
+Sun Oct  4 13:58:30 2026 :: Log Killuminati [0]: moved to 4208 (Altar of the Temple of Devota.)
+Sun Oct  4 13:58:42 2026 :: Log Eclipse [9988]: who
+Sun Oct  4 13:58:45 2026 :: Log Farslayer [3716]: (refused) issue subissue
+Sun Oct  4 13:58:45 2026 :: Log Farslayer [3716]: i
+Sun Oct  4 13:58:47 2026 :: Log Farslayer [3716]: (refused) issue
+Sun Oct  4 13:58:49 2026 :: Log Killuminati [4208]: /
+Sun Oct  4 13:58:51 2026 :: Log Farslayer [3716]: help equip
+Sun Oct  4 13:58:55 2026 :: Log Farslayer [3716]: help issue
+Sun Oct  4 13:58:57 2026 :: Log Killuminati [4208]: quit
+Sun Oct  4 13:58:57 2026 :: Killuminati has quit.
+Sun Oct  4 13:58:57 2026 :: [QUIT] Player rejoined the real world.
+Sun Oct  4 13:59:02 2026 :: Log Farslayer [3716]: help start
+Sun Oct  4 13:59:04 2026 :: Log Farslayer [3716]: (refused) start
+Sun Oct  4 13:59:08 2026 :: Log Farslayer [3716]: c magic
+Sun Oct  4 13:59:11 2026 :: Log Farslayer [3716]: c magic
+Sun Oct  4 13:59:18 2026 :: Log Farslayer [3716]: wear all
+Sun Oct  4 13:59:18 2026 :: Log Farslayer [3716]: sc
+Sun Oct  4 13:59:21 2026 :: Log Farslayer [3716]: l
+Sun Oct  4 13:59:22 2026 :: Log Farslayer [3716]: w
+Sun Oct  4 13:59:22 2026 :: Log Farslayer [0]: moved to 3712 (The Cage Room)
+Sun Oct  4 13:59:26 2026 :: Log Farslayer [3712]: l
+Sun Oct  4 13:59:40 2026 :: Log Eclipse [9988]: help necromancer
+Sun Oct  4 13:59:48 2026 :: Sock.sinaddr:  34.198.201.66
+Sun Oct  4 13:59:49 2026 :: EOF encountered on read.
+Sun Oct  4 14:01:13 2026 :: Log Farslayer [3712]: af
+Sun Oct  4 14:01:14 2026 :: Log Farslayer [3712]: i
+Sun Oct  4 14:01:18 2026 :: Log Farslayer [3712]: eq
+Sun Oct  4 14:01:19 2026 :: Log Farslayer [3712]: wh
+Sun Oct  4 14:01:25 2026 :: Log Farslayer [3712]: s
+Sun Oct  4 14:01:25 2026 :: Log Farslayer [0]: moved to 3715 (A Cage)
+Sun Oct  4 14:01:30 2026 :: Log Farslayer [3715]: k man
+Sun Oct  4 14:01:34 2026 :: Log Farslayer [3715]: c magic
+Sun Oct  4 14:01:37 2026 :: Log Farslayer [3715]: af
+Sun Oct  4 14:01:42 2026 :: Log Farslayer [3715]: c mag
+Sun Oct  4 14:01:47 2026 :: Log Farslayer [3715]: c mag
+Sun Oct  4 14:01:50 2026 :: Log Farslayer [3715]: c mag
+Sun Oct  4 14:01:55 2026 :: Log Farslayer [3715]: c mag
+Sun Oct  4 14:03:01 2026 :: Log Farslayer [3715]: c mag
+Sun Oct  4 14:03:13 2026 :: Log Farslayer [3715]: wear all
+Sun Oct  4 14:03:14 2026 :: Log Farslayer [3715]: n
+Sun Oct  4 14:03:14 2026 :: Log Farslayer [0]: moved to 3712 (The Cage Room)
+Sun Oct  4 14:03:15 2026 :: Log Farslayer [3712]: w
+Sun Oct  4 14:03:15 2026 :: Log Farslayer [0]: moved to 3714 (A Cage)
+Sun Oct  4 14:03:17 2026 :: Log Farslayer [3714]: l liz
+Sun Oct  4 14:03:18 2026 :: Log Farslayer [3714]: e
+Sun Oct  4 14:03:18 2026 :: Log Farslayer [0]: moved to 3712 (The Cage Room)
+Sun Oct  4 14:03:18 2026 :: Log Farslayer [3712]: n
+Sun Oct  4 14:03:18 2026 :: Log Farslayer [0]: moved to 3713 (A Cage)
+Sun Oct  4 14:03:20 2026 :: Log Farslayer [3713]: l k
+Sun Oct  4 14:03:27 2026 :: Log Farslayer [3713]: sc
+Sun Oct  4 14:03:39 2026 :: Log Farslayer [3713]: flee
+Sun Oct  4 14:03:39 2026 :: Log Farslayer [0]: moved to 3712 (The Cage Room)
+Sun Oct  4 14:03:41 2026 :: Log Farslayer [3712]: rest
+Sun Oct  4 14:04:00 2026 :: Log Eclipse [9988]: socket
+Sun Oct  4 14:04:16 2026 :: Log Eclipse [9988]: mwhere
+Sun Oct  4 14:04:18 2026 :: Log Eclipse [9988]: (refused) pwhere
+Sun Oct  4 14:04:19 2026 :: Log Alaric [4210]: af
+Sun Oct  4 14:04:23 2026 :: Log Alaric [4210]: prac
+Sun Oct  4 14:04:26 2026 :: Log Eclipse [9988]: wiz
+Sun Oct  4 14:04:28 2026 :: Log Alaric [4210]: c arm
+Sun Oct  4 14:04:32 2026 :: Log Alaric [4210]: c arm
+Sun Oct  4 14:04:37 2026 :: Log Alaric [4210]: c de
+Sun Oct  4 14:04:44 2026 :: Log Alaric [4210]: af
+Sun Oct  4 14:04:50 2026 :: Log Alaric [4210]: l
+Sun Oct  4 14:04:51 2026 :: Log Alaric [4210]: s
+Sun Oct  4 14:04:51 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sun Oct  4 14:04:52 2026 :: Log Alaric [4203]: s
+Sun Oct  4 14:04:52 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sun Oct  4 14:04:52 2026 :: Log Alaric [4202]: e
+Sun Oct  4 14:04:52 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sun Oct  4 14:04:52 2026 :: Log Alaric [4201]: e
+Sun Oct  4 14:04:52 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sun Oct  4 14:04:53 2026 :: Sock.sinaddr:  5.161.215.244
+Sun Oct  4 14:04:53 2026 :: Log Alaric [2427]: n
+Sun Oct  4 14:04:53 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sun Oct  4 14:04:53 2026 :: EOF encountered on read.
+Sun Oct  4 14:04:53 2026 :: Log Alaric [2404]: n
+Sun Oct  4 14:04:53 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sun Oct  4 14:04:55 2026 :: Log Alaric [2401]: c pass
+Sun Oct  4 14:04:59 2026 :: Log Alaric [2401]: c pass
+Sun Oct  4 14:05:03 2026 :: Log Alaric [2401]: c pass
+Sun Oct  4 14:05:08 2026 :: Log Alaric [2401]: r e 27
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 2403 (Eastern Oak Tree Square.)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 2420 (Battle Road)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 2421 (Battle Road)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 2422 (Battle Road)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 2423 (Battle Road)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 2424 (Battle Road)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 2425 (Gate to Citadel of War on Battle Road)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 2426 (Inside the Eastern Gates of Dresden.)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 2440 (Outside the Eastern Gates of Dresden.)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 3503 (City Entrance)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 3502 (The Cross Roads)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 3525 (Along the Eastern Road)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 3526 (Along the Eastern Road)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 3527 (The Checkpoint)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 3528 (Along the Eastern Road)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 3529 (Along the Eastern Road)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 3530 (Near the Sands of Sorrow)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 3531 (Near the Sands of Sorrow)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 3532 (On the Outskirts of New Thalos)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 42 (On the Outskirts of New Thalos)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9669 (Outside the West Gate of New Thalos)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9523 (Inside the West Gate of New Thalos)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9524 (West Main Street)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9525 (West Main Street)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9526 (West Main Street)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9509 (The Western Market Square)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9506 (The Center of Market Square)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [9506]: r n 12
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9515 (The Northern Market Square)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9518 (Sultan's Walk)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9519 (Sultan's Walk)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9520 (Sultan's Walk)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9521 (Sultan's Walk)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9522 (Inside the Northern Gate of New Thalos)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9667 (Outside the Northern Gate of New Thalos)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9781 (On the Plains)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9782 (On the Plains)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 9783 (Edge of the forest)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 64 (Misty Clearing)
+Sun Oct  4 14:05:08 2026 :: Log Alaric [0]: moved to 29001 (Entrance to the Fortress)
+Sun Oct  4 14:05:10 2026 :: Log Alaric [29001]: n
+Sun Oct  4 14:05:10 2026 :: Log Alaric [0]: moved to 29002 (Inside Korzath's Private Fortress)
+Sun Oct  4 14:05:10 2026 :: Log Alaric [29002]: n
+Sun Oct  4 14:05:10 2026 :: Log Alaric [0]: moved to 29003 (Grand Foyer)
+Sun Oct  4 14:05:11 2026 :: Log Alaric [29003]: ne
+Sun Oct  4 14:05:11 2026 :: Log Alaric [0]: moved to 29060 (Corridor)
+Sun Oct  4 14:05:12 2026 :: Log Alaric [29060]: sh ch
+Sun Oct  4 14:05:20 2026 :: Log Alaric [29060]: sh
+Sun Oct  4 14:05:25 2026 :: Log Alaric [29060]: sh
+Sun Oct  4 14:05:31 2026 :: Log Alaric [29060]: sh
+Sun Oct  4 14:05:37 2026 :: Log Alaric [29060]: sh
+Sun Oct  4 14:05:49 2026 :: Log Alaric [29060]: e
+Sun Oct  4 14:05:49 2026 :: Log Alaric [0]: moved to 29061 (Corridor)
+Sun Oct  4 14:05:50 2026 :: Log Alaric [29061]: sh gu
+Sun Oct  4 14:06:00 2026 :: Log Alaric [29061]: sh
+Sun Oct  4 14:06:08 2026 :: Log Alaric [29061]: sh
+Sun Oct  4 14:06:22 2026 :: Log Alaric [29061]: recal
+Sun Oct  4 14:06:22 2026 :: Log Alaric [0]: moved to 29006 (Corridor)
+Sun Oct  4 14:06:23 2026 :: Log Alaric [29006]: e
+Sun Oct  4 14:06:23 2026 :: Log Alaric [0]: moved to 29005 (Before an Iron Door)
+Sun Oct  4 14:06:24 2026 :: Log Alaric [29005]: recal
+Sun Oct  4 14:06:24 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 14:06:26 2026 :: Log Alaric [4207]: e
+Sun Oct  4 14:06:26 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sun Oct  4 14:06:27 2026 :: Log Alaric [4202]: n
+Sun Oct  4 14:06:27 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sun Oct  4 14:06:27 2026 :: Log Alaric [4203]: n
+Sun Oct  4 14:06:27 2026 :: Log Alaric [0]: moved to 4210 (Room of Peace and Healing.)
+Sun Oct  4 14:06:28 2026 :: Log Alaric [4210]: sleep
+Sun Oct  4 14:06:40 2026 :: Log Eclipse [9988]: pstat
+Sun Oct  4 14:06:47 2026 :: Log Eclipse [9988]: at farslayer l
+Sun Oct  4 14:06:47 2026 :: Log Eclipse [0]: moved to 3712 (The Cage Room)
+Sun Oct  4 14:06:47 2026 :: Log Eclipse [3712]: l
+Sun Oct  4 14:06:47 2026 :: Log Eclipse [0]: moved to 9988 (Eclipse's Seat of Power.)
+Sun Oct  4 14:06:58 2026 :: Log Eclipse [9988]: at alaric l
+Sun Oct  4 14:06:58 2026 :: Log Eclipse [0]: moved to 4210 (Room of Peace and Healing.)
+Sun Oct  4 14:06:58 2026 :: Log Eclipse [4210]: l
+Sun Oct  4 14:06:58 2026 :: Log Eclipse [0]: moved to 9988 (Eclipse's Seat of Power.)
