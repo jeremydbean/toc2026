@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791063438
+LogO 1791073541
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 53
-Plyd 269591
+Plyd 274680
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 4210
-HMV  6948 6948 8589 8589 67 1880
-NewGold 122
-NewPlat 322
-NewCopp 839
-NewSilv 306
+Room 2401
+HMV  1120 1143 1429 1429 317 317
+NewGold 293
+NewPlat 474
+NewCopp 663
+NewSilv 458
 BankCP 196864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 999
+AchKills 1035
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -52,6 +52,7 @@ Achv level-50 1789947074
 Achv day-played 1790134411
 Achv first-kill 1789779526
 Achv hundred-kills 1789824285
+Achv thousand-kills 1791068520
 Achv first-quest 1789950885
 Achv ten-quests 1790040827
 Achv fifty-quests 1790470861
@@ -107,10 +108,10 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  143577
+Exp  154006
 Act  4261068
-AfBy 3678912
-AfBy2 4104
+AfBy 3678908
+AfBy2 4106
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -135,23 +136,23 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  4
+Pos  8
 Prac 10
 Trai 2
-Save  -3
+Save  -13
 Alig  1000
-Hit   65
-Dam   85
-ACs -177 -190 -143 1
+Hit   52
+Dam   87
+ACs -265 -277 -230 -99
 Attr 22 13 12 16 15
-AMod 24 23 26 22 23
+AMod 27 8 10 17 8
 Pass Al3w9zuAlwpyY~
 Titl  the Knight of the Castle~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 1114 1449 412
-Cond 0 100 100
+Cond 0 24 24
 Alias k kick~
 Alias sm smite~
 Alias mind mindleech~
@@ -169,22 +170,22 @@ Sk 100 'dagger'
 Sk 25 'flail'
 Sk 100 'mace'
 Sk 35 'polearm'
-Sk 98 'shield block'
+Sk 99 'shield block'
 Sk 30 'spear'
 Sk 100 'sword'
 Sk 30 'whip'
 Sk 1 'bash'
 Sk 74 'berserk'
 Sk 1 'disarm'
-Sk 75 'heroic grip'
-Sk 98 'dodge'
+Sk 77 'heroic grip'
+Sk 99 'dodge'
 Sk 100 'enhanced damage'
 Sk 95 'kick'
 Sk 100 'parry'
 Sk 1 'rescue'
 Sk 100 'second attack'
-Sk 90 'third attack'
-Sk 89 'fast healing'
+Sk 91 'third attack'
+Sk 91 'fast healing'
 Sk 89 'door bash'
 Sk 80 'recall'
 Sk 75 'smite'
@@ -192,29 +193,38 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'titanic'   0  12  50  16          0          0
-AffD 'titanic'   0  12 1555  14          0          0
-AffD 'titanic'   0  12 7160  12          0          0
-AffD 'titanic'   0  12 5770  13          0          0
-AffD 'empower'   0  12 -100  17          0          0
-AffD 'empower'   0  12  20  19          0          0
-AffD 'empower'   0  12  20  18          0          0
-AffD 'empower'   0  12  15   5          0          0
-AffD 'empower'   0  12  11   2          0          0
-AffD 'empower'   0  12  15   4          0          0
-AffD 'empower'   0  12  15   3          0          0
-AffD 'giant strength'   0  12  15   1          0          0
-AffD 'divine protection'   0  12   0   0          0       4096
-AffD 'fire shield'   0  12   0   0          0          8
-AffD 'protection evil'   0  12   0   0       8192          0
-AffD 'pass door'   0  12   0   0    1048576          0
-AffD 'fly'   0  12   0   0     524288          0
-AffD 'haste'   0  12   4   2    2097152          0
-AffD 'sanctuary'   0  12   0   0        128          0
-AffD 'empower'   0  12   0   0          0          0
-AffD 'berserk'  50   1  10  18         64          0
-AffD 'berserk'  47   1  10  19         64          0
-AffD 'berserk'  51   1 100  17         64          0
+AffD 'mindbar'  49   1   0   0          0          0
+AffD 'giant strength'   0   7  15   1          0          0
+AffD 'divine protection'   0   7   0   0          0       4096
+AffD 'fire shield'   0   7   0   0          0          8
+AffD 'protection evil'   0   7   0   0       8192          0
+AffD 'pass door'   0   7   0   0    1048576          0
+AffD 'fly'   0   7   0   0     524288          0
+AffD 'haste'   0   7   4   2    2097152          0
+AffD 'sanctuary'   0   7   0   0        128          0
+AffD 'power gloves'   0   7  21  19          0          0
+AffD 'detect evil'   0   7   0   0          4          0
+AffD 'detect good'   0   7   0   0          0          2
+AffD 'detect magic'   0   7   0   0         16          0
+AffD 'detect hidden'   0   7   0   0         32          0
+AffD 'detect invis'   0   7   0   0          8          0
+AffD 'major globe'   0   7 -133  17          0          0
+AffD 'frenzy'   0   7 110  17          0          0
+AffD 'frenzy'   0   7  11  19          0          0
+AffD 'frenzy'   0   7  11  18          0          0
+AffD 'giant strength'  46   7   4   1          0          0
+AffD 'divine protection'  42   7   0   0          0       4096
+AffD 'fire shield'   0   7   0   0          0          8
+AffD 'protection evil'   0   7   0   0       8192          0
+AffD 'pass door'   0   7   0   0    1048576          0
+AffD 'fly'   0   7   0   0     524288          0
+AffD 'haste'   0   7   4   2    2097152          0
+AffD 'sanctuary'   0   7   0   0        128          0
+AffD 'stone skin'   0   7 -40  17          0          0
+AffD 'shield'   0   7 -20  17          0          0
+AffD 'bless'   0   7  -8  24          0          0
+AffD 'bless'  41   7   8  18          0          0
+AffD 'armor'  41   7 -20  17          0          0
 End
 
 #O
@@ -454,10 +464,10 @@ Lev  32
 Cost 23000000
 Cond 100
 Repd 1
-Affect -1 32 -1 -1 5 0 0
-Affect -1 32 -1 -13 12 0 0
-Affect -1 32 -1 -15 13 0 0
 Affect -1 32 -1 -3 22 0 0
+Affect -1 32 -1 -15 13 0 0
+Affect -1 32 -1 -13 12 0 0
+Affect -1 32 -1 -1 5 0 0
 End
 
 #O
@@ -553,6 +563,17 @@ Val  2 2 4 0 0
 End
 
 #O
+Vnum 10059
+Nest 1
+Wear -1
+Lev  33
+Cost 40000000
+Cond 91
+Repd 0
+Affect -1 33 -1 -1 23 0 0
+End
+
+#O
 Vnum 734
 Nest 0
 Wear -1
@@ -601,17 +622,6 @@ Cost 22000000
 Cond 100
 Repd 1
 Affect -1 32 -1 5 21 0 0
-End
-
-#O
-Vnum 10059
-Nest 0
-Wear -1
-Lev  33
-Cost 40000000
-Cond 91
-Repd 0
-Affect -1 33 -1 -1 23 0 0
 End
 
 #O
@@ -813,7 +823,7 @@ Vnum 3715
 Nest 0
 Wear 17
 Cost 0
-Cond 48
+Cond 46
 Repd 1
 End
 
@@ -825,8 +835,8 @@ Lev  50
 Cost 20000000
 Cond 91
 Repd 0
-Affect -1 50 -1 -3 2 0 0
 Affect -1 50 -1 -17 14 0 0
+Affect -1 50 -1 -3 2 0 0
 End
 
 #O
@@ -869,9 +879,9 @@ Lev  29
 Cost 30000000
 Cond 100
 Repd 0
-Affect -1 29 -1 -4 2 0 0
-Affect -1 29 -1 -1 1 0 0
 Affect -1 29 -1 -4 1 0 0
+Affect -1 29 -1 -1 1 0 0
+Affect -1 29 -1 -4 2 0 0
 End
 
 #O
@@ -920,45 +930,23 @@ End
 #O
 Vnum 703
 Nest 0
-Wear 11
+ExtF 67109890
+Wear -1
 Lev  47
-Cost 20000000
-Cond 100
+Cost 6666666
+Cond 0
 Repd 3
+Val  11 12 12 -1 0
 End
 
 #O
 Vnum 48
 Nest 0
 Wear -1
-Time 275
+Time 193
 Cost 0
 Cond 100
 Repd 0
-End
-
-#O
-Vnum 3092
-Nest 0
-Wear -1
-Cost 31000
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
-End
-
-#O
-Vnum 3092
-Nest 0
-Wear -1
-Cost 31000
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
 End
 
 #O
@@ -967,7 +955,7 @@ Nest 0
 Wear 12
 Lev  8
 Cost 10000000
-Cond 61
+Cond 56
 Repd 0
 Val  4 5 3 0 0
 End
@@ -992,8 +980,8 @@ Lev  52
 Cost 25600000
 Cond 100
 Repd 0
-Affect -1 52 -1 -1 13 0 0
 Affect -1 52 -1 -9 14 0 0
+Affect -1 52 -1 -1 13 0 0
 End
 
 #O
@@ -1012,7 +1000,7 @@ Nest 0
 Wear 8
 Lev  52
 Cost 0
-Cond 100
+Cond 99
 Repd 0
 Affect -1 52 -1 -4 5 0 0
 End
@@ -1110,7 +1098,7 @@ End
 #O
 Vnum 29207
 Nest 0
-Wear -1
+Wear 16
 Lev  51
 Cost 20000000
 Cond 99
@@ -1174,18 +1162,6 @@ Spell 3 'giant strength'
 End
 
 #O
-Vnum 700
-Nest 0
-ExtF 3146818
-Wear 16
-Lev  48
-Cost 25000000
-Cond 100
-Repd 0
-Affect -1 48 -1 3 20 0 0
-End
-
-#O
 Vnum 29211
 Nest 0
 Wear -1
@@ -1204,8 +1180,186 @@ Lev  51
 Cost 50000000
 Cond 99
 Repd 0
-Affect -1 51 -1 4 23 0 0
 Affect -1 51 -1 20 14 0 0
+Affect -1 51 -1 4 23 0 0
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 16005
+Nest 0
+Wear -1
+Lev  52
+Cost 28680000
+Cond 100
+Repd 0
+Affect -1 52 -1 4 24 0 0
+End
+
+#O
+Vnum 16016
+Nest 0
+Wear -1
+Lev  52
+Cost 23680000
+Cond 100
+Repd 0
+Affect -1 52 -1 3 22 0 0
+Affect -1 52 -1 2 24 0 0
+End
+
+#O
+Vnum 16018
+Nest 0
+Wear -1
+Lev  52
+Cost 26200000
+Cond 100
+Repd 0
+Affect -1 52 -1 5 22 0 0
+End
+
+#O
+Vnum 700
+Nest 0
+ExtF 3146818
+Wear -1
+Lev  48
+Cost 25000000
+Cond 100
+Repd 0
+Affect -1 48 -1 3 20 0 0
 End
 
 #STASH
