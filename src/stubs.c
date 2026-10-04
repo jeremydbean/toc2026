@@ -589,6 +589,41 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
  * the list from what they already know means their first stacking remort
  * adds to those rather than dealing a fresh hand.
  */
+/*
+ * Put back every power the character has been given in any life, at 75%
+ * where the skill wipe left less. grant_psionics does this as its first
+ * step from the second remort on; the first remort awards nothing new,
+ * and used to award nothing back either, so a character who awoke at
+ * 18-21 or was granted powers lost them for a whole life. Returns how
+ * many it restored.
+ */
+int psionic_restore_known( CHAR_DATA *ch )
+{
+    int i;
+    int restored = 0;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return 0;
+
+    for ( i = 0; psionic_skill_names[i] != NULL; i++ )
+    {
+        int sn = skill_lookup( psionic_skill_names[i] );
+
+        if ( sn < 0 || !psionic_is_known( ch, (sh_int)sn ) )
+            continue;
+        if ( ch->pcdata->learned[sn] < 75 )
+        {
+            ch->pcdata->learned[sn] = 75;
+            psi_log( ch, "restored %s to 75%% from an earlier life",
+                     skill_table[sn].name );
+            restored++;
+        }
+    }
+    if ( restored > 0 )
+        ch->pcdata->psionic = 1;
+    return restored;
+}
+
 void psionic_sync_known( CHAR_DATA *ch )
 {
     int i;

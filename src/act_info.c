@@ -1278,6 +1278,8 @@ void do_combine(CHAR_DATA *ch, char *argument)
         for ( i = 0; i < sizeof(combine_recipes) / sizeof(combine_recipes[0]); i++ )
             if ( !str_prefix( arg, combine_recipes[i].name ) )
             {
+                /* Nine pieces become one item: keep them as they were. */
+                player_snapshot_milestone( ch, "combine", true );
                 combine_recipe( ch, &combine_recipes[i] );
                 return;
             }
@@ -5110,6 +5112,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
       return;
    }
    /* HEHE, FINALLY A VALID CHOICE */
+   player_snapshot_milestone( ch, "remort", true );
 
 
 
@@ -5117,6 +5120,9 @@ void do_remort( CHAR_DATA *ch, char *arg)
    snprintf(buf, sizeof(buf), "%s has remorted!", ch->name);
    send_info(buf);
    wizinfo(buf,LEVEL_IMMORTAL);
+   /* The backup tars the player files; what this character has done
+      since the last autosave belongs in it. */
+   save_char_obj(ch);
    do_backup();
 
    /* Items are KEPT, worn ones included -- but everything below rewrites
@@ -5168,6 +5174,10 @@ void do_remort( CHAR_DATA *ch, char *arg)
    ch->hit      = ch->max_hit;
    ch->mana     = ch->max_mana;
    ch->move     = ch->max_move;
+   /* do_wimpy's own cap. A level 54's wimpy of 800 against a new life's
+      200 hit points fled from every blow that landed. */
+   if ( ch->wimpy > ch->max_hit / 2 )
+      ch->wimpy = (int16_t)(ch->max_hit / 5);
     ch->class    = (int16_t)requested_class;
     ch->race     = (int16_t)requested_race;
    if (ch->class == CLASS_MONK)
@@ -5244,10 +5254,18 @@ void do_remort( CHAR_DATA *ch, char *arg)
       normally hands it over refuses anyone already in a guild -- which
       a remorted character always is. */
    apply_class_and_guild_skills( ch );
+   /* Only the login and the guild clerk granted it, so a warrior/warrior
+      life lacked it until the next relog. */
+   grant_heros_grip( ch );
    /* Grant psionic powers on 2nd remort and beyond (they are wiped with
     * all other skills and must be re-awarded each time). */
    if ( ch->pcdata->num_remorts >= 2 )
        grant_psionics( ch, 100, true );
+   else
+       /* The first remort awards none, but must not take away powers the
+          character already had -- an awakening at 18-21 or a GRANTPSI.
+          HELP REMORT: a later life never costs you one. */
+       psionic_restore_known( ch );
 
    /* Shadowmeld, from the fourth remort on: half of it as the gift, or
       whatever the character had already practised it to, whichever is
@@ -5290,6 +5308,11 @@ void do_remort( CHAR_DATA *ch, char *arg)
          if (obj->wear_loc != WEAR_NONE)   /* still worn: keep it on */
             continue;
          if (obj->level <= ch->level)
+            continue;
+         /* Kept carried, as the stash itself would refuse them: a NODROP
+            item (a Triforce piece) in a bag a linked character can TAKE
+            would walk to an alt, and a timed item rots in the stash. */
+         if (!can_drop_obj(ch, obj) || obj->timer > 0)
             continue;
          if (bag == NULL)
             bag = remort_gear_bag(ch, old_level);

@@ -4050,7 +4050,9 @@ CLASS, GUILD, AND RACE OPTIONS
 
   The GUILD is free.  Join any of them, as often as you like, or none.
   Monks and necromancers must still use 'none', because those classes
-  have no guild.
+  have no guild.  A mage, cleric, thief or warrior who chooses 'none' only
+  puts the choice off: at level 6 the guild of the class claims you, as it
+  does any new character, for a 50 gold fee.
 
   If a class is refused, the game lists every one still open to you.
 
@@ -4065,6 +4067,13 @@ CLASS, GUILD, AND RACE OPTIONS
 
 NOTES
   Finish or abort any active automatic quest before remorting.
+  Gear the new level cannot wear goes into a pack in your stash, which you
+  can always take back out at the altar, however heavy it is.  A NODROP
+  item or one on a timer stays with you instead.
+  A new life starts dressed: you are given the newcomer's outfit for any
+  empty light, body, shield and weapon slot.
+  Your wimpy is cut back if it was above half your new hit points.
+  A recall point in a room your new level may not enter is set aside.
   If you supply a class with no guild (monk or necro), type 'none' for guild.
   All affects, immunities, resistances, and flags are cleared on remort.
   Your pk_state is reset; the title is set to match your new class.
@@ -4076,6 +4085,7 @@ Each remort carries its own gift, and they build on one another:
 
     first   (at level 54)   hunger and thirst no longer touch you
     second  (at level 55)   psionic powers, one from each discipline
+                            (usable from level 15, as all psionics are)
     third   (at level 56)   twice the carrying room, twice as long before
                             the idle void takes you, a recall that never
                             fails, and a second power from each discipline
@@ -4087,6 +4097,10 @@ Each remort carries its own gift, and they build on one another:
 
 Every remort also raises the flat hit, mana and movement you start a
 life with, and the practices and trains you begin it holding.
+
+Psionic powers you already have -- from an awakening at 18-21 or a grant --
+are never lost to a remort, the first one included: every life gives them
+back.
 ~
 
 0 AFFECT~

@@ -3067,6 +3067,12 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
         return;
     }
 
+    /* A player's death moves everything they carry into a corpse and
+       costs experience: keep a copy of them as they were, in case the
+       death was a bug. */
+    if ( !IS_NPC(victim) && !is_killuminati( victim ) )
+        player_snapshot_milestone( victim, "death", true );
+
     /* Killuminati cannot be killed by any route -- a death trap, a death ray,
        a slay, a fatality, a killing blow all arrive here, and all leave him at
        a single hit point, shielded, rather than dead. */

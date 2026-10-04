@@ -114,6 +114,9 @@ void do_delete( CHAR_DATA *ch, char *argument)
         snprintf( strsave, sizeof(strsave), "%s%s", PLAYER_DIR, capitalize( ch->name ) );
         log_string("[DELETE] Character self-deleted.");
 	stop_fighting(ch,TRUE);
+	/* The versions directory outlives the file, so a deletion regretted
+	   -- or done by somebody else at the keyboard -- can be undone. */
+	player_snapshot_milestone( ch, "delete", true );
 	do_quit(ch,"");
 	unlink(strsave);
 	return;

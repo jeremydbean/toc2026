@@ -21,6 +21,24 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **A copy of the character before anything big happens.** Before a remort,
+  a death, a staff ADVANCE or SET, a GRANTPSI, a COMBINE, a deletion or a
+  login repair, the character is saved and copied to
+  `player/versions/<Name>/<Name>.<timestamp>.<reason>`. PRESTORE lists those
+  with "before remort" and the like, and the 30-copy rotation never prunes
+  them; the newest 20 of each reason are kept.
+- **Remort, from a full review.** Wimpy is cut to a fifth of the new hit
+  points (a 54's 800 against 200 fled every blow). The stash hands back the
+  outgrown-gear pack however heavy (owner) -- a level 3 could never lift a
+  level 54 kit, so it stayed there. NODROP and timed items stay carried
+  instead of going in the pack (a pack can be TAKEn by a linked alt). A
+  remorted character's hunger and thirst stay gone through fountains and
+  RESTORE. Powers from an awakening or a grant come back on the first
+  remort, and at login for anyone remorted before. Hero's grip is granted
+  at once; a recall point a new level 3 may not enter is set aside; the
+  login repair also catches maxima below 200 per remort; OUTFIT floors
+  recall even when it hands out nothing; the character is saved before the
+  backup. HELP REMORT says all of it.
 - **Every player is watched by default while the changes settle.** LOG ALL
   is on from boot, and it now means the full watch log for everyone --
   commands with the room, every move, coin change, level and death -- not

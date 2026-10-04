@@ -810,6 +810,16 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
     if(value == 0 || IS_NPC(ch) )
       return;
 
+    /* The first remort's gift is no hunger or thirst, for good. Only
+       do_remort wrote the -1, so a fountain (48) or a RESTORE (100) gave
+       the hunger back. */
+    if ( ch->pcdata->num_remorts >= 1
+    &&   ( iCond == COND_FULL || iCond == COND_THIRST ) )
+    {
+	ch->pcdata->condition[iCond] = -1;
+	return;
+    }
+
     if ( ch->level >= LEVEL_HERO)
     {
 

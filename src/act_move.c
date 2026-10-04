@@ -3008,7 +3008,10 @@ ROOM_INDEX_DATA *recall_room( CHAR_DATA *ch )
     &&   ch->pcdata->recall_vnum != 0 )
     {
 	home = get_room_index( ch->pcdata->recall_vnum );
-	if ( !room_allows_recall_point( home ) )
+	/* can_see_room too: a point set in a heroes-only room survived a
+	   remort, and recall then walked a level 3 straight past the gate
+	   that room keeps. */
+	if ( !room_allows_recall_point( home ) || !can_see_room( ch, home ) )
 	    home = NULL;
     }
 

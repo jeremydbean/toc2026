@@ -64,7 +64,8 @@ static bool snapshot_build_file args( ( char *dst, size_t dst_size,
                                         const char *dir, const char *name,
                                         const char *suffix ) );
 static bool snapshot_ensure_dir args( ( const char *path ) );
-static void player_snapshot_internal args( ( const char *name, bool force ) );
+static void player_snapshot_internal args( ( const char *name, bool force,
+                                             const char *tag ) );
 
 #if defined(unix) && defined(CHGRP_TO)
 static bool can_chgrp      args( ( void ) );
@@ -184,7 +185,8 @@ static bool snapshot_ensure_dir( const char *path )
  * The PLAYER_VER_MAX most recent versions are kept; older ones are pruned.
  * Safe to call even if the player file does not yet exist (first save).
  */
-static void player_snapshot_internal( const char *name, bool force )
+static void player_snapshot_internal( const char *name, bool force,
+                                      const char *tag )
 {
     char cap_name[MAX_INPUT_LENGTH];
     char src[MAX_STRING_LENGTH];
@@ -283,6 +285,14 @@ static void player_snapshot_internal( const char *name, bool force )
         bug( "player_snapshot: could not format timestamp", 0 );
         return;
     }
+    /* A milestone carries its reason after the timestamp:
+       <Name>.YYYYMMDD_HHMMSS.remort. PRESTORE lists it with that label,
+       and the ordinary rotation below leaves it alone. */
+    if ( tag != NULL && tag[0] != '\0' )
+    {
+        toc_strlcat( ts, ".", sizeof(ts) );
+        toc_strlcat( ts, tag, sizeof(ts) );
+    }
     if ( !snapshot_build_file( dest, sizeof(dest), vdir, cap_name, ts ) )
     {
         fclose( in );
@@ -343,9 +353,24 @@ static void player_snapshot_internal( const char *name, bool force )
 
             while ( ( ent = readdir( dp ) ) != NULL && count < VER_SCAN_MAX )
             {
-                /* Match files named exactly "<Name>.<timestamp>" */
-                if ( strncmp( ent->d_name, cap_name, nlen ) == 0
-                  && ent->d_name[nlen] == '.' )
+                /* The ordinary rotation counts "<Name>.<timestamp>" and
+                   nothing else; a milestone, "<Name>.<timestamp>.<tag>",
+                   is pruned only against others with the same tag. */
+                size_t dlen = strlen( ent->d_name );
+                bool tagged_entry = ( dlen > nlen + 16
+                                   && ent->d_name[nlen + 16] == '.' );
+
+                if ( strncmp( ent->d_name, cap_name, nlen ) != 0
+                  || ent->d_name[nlen] != '.' )
+                    continue;
+                if ( tag == NULL || tag[0] == '\0' )
+                {
+                    if ( tagged_entry || dlen != nlen + 16 )
+                        continue;
+                }
+                else if ( !tagged_entry
+                       || strcmp( ent->d_name + nlen + 17, tag ) != 0 )
+                    continue;
                 {
                     if ( toc_strlcpy( entries[count], ent->d_name,
                                       sizeof(entries[count]) )
@@ -377,7 +402,10 @@ static void player_snapshot_internal( const char *name, bool force )
             /* Delete oldest until we are within the limit */
             {
                 int i;
-                for ( i = 0; i < count - PLAYER_VER_MAX; i++ )
+                int keep = ( tag != NULL && tag[0] != '\0' )
+                         ? PLAYER_MILESTONE_MAX : PLAYER_VER_MAX;
+
+                for ( i = 0; i < count - keep; i++ )
                 {
                     char to_del[MAX_STRING_LENGTH];
                     if ( snapshot_join_path( to_del, sizeof(to_del), vdir,
@@ -393,13 +421,37 @@ static void player_snapshot_internal( const char *name, bool force )
 
 void player_snapshot( const char *name )
 {
-    player_snapshot_internal(name, false);
+    player_snapshot_internal(name, false, NULL);
 }
 
 
 void player_snapshot_force( const char *name )
 {
-    player_snapshot_internal(name, true);
+    player_snapshot_internal(name, true, NULL);
+}
+
+
+/*
+ * A copy of the character as they stand, taken just before something big
+ * happens to them -- a remort, a death, a staff change -- so PRESTORE can
+ * put them back if it goes wrong. Owner, 2026-10-04, after a remort left
+ * Alaric at -5515 hit points with nothing but a hand-built restore to fix
+ * it. save_first writes the in-memory character out first; pass false
+ * only where the file on disk is the thing worth keeping (a login whose
+ * repair is about to change it). Written to the log, so whoever is
+ * restoring finds it.
+ */
+void player_snapshot_milestone( CHAR_DATA *ch, const char *tag, bool save_first )
+{
+    if ( ch == NULL || IS_NPC(ch) || ch->name == NULL )
+        return;
+    if ( save_first )
+        save_char_obj( ch );
+    player_snapshot_internal( ch->name, true, tag );
+    snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+        "Snapshot of %s taken before %s (PRESTORE %s to see it).",
+        ch->name, tag, ch->name );
+    log_string( log_buf );
 }
 
 
@@ -1403,6 +1455,10 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 
     /* Powers learned before the list existed still count towards it. */
     psionic_sync_known( ch );
+    /* And powers a remort took away come back: the first remort used to
+       give none back, so a character remorted before that was fixed
+       carries them in the list and not in the skill table. */
+    psionic_restore_known( ch );
 
     /* Shadowmeld used to be a flat check against the remort count rather
      * than a skill. Anyone who earned it that way is given the skill, so

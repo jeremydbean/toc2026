@@ -505,29 +505,33 @@ void reset_char(CHAR_DATA *ch)
 	{
 	    int floor = ch->pcdata->num_remorts > 0
 		      ? 200 * ch->pcdata->num_remorts : 20;
+	    /* A remorted body starts at 200 per remort and only grows, so
+	       anything under that is the same wreck at a smaller scale: a
+	       spell worth less than the base, stripped after the reset. */
+	    int least = ch->pcdata->num_remorts > 0 ? floor : 1;
 
-	    if ( ch->max_hit > 0 )
+	    if ( ch->max_hit >= least )
 		ch->pcdata->perm_hit = ch->max_hit;
 	    else
 	    {
 		fix_hit = true;
-		if ( ch->pcdata->perm_hit < 1 )
+		if ( ch->pcdata->perm_hit < least )
 		    ch->pcdata->perm_hit = floor;
 	    }
-	    if ( ch->max_mana > 0 )
+	    if ( ch->max_mana >= least )
 		ch->pcdata->perm_mana = ch->max_mana;
 	    else
 	    {
 		fix_mana = true;
-		if ( ch->pcdata->perm_mana < 1 )
+		if ( ch->pcdata->perm_mana < least )
 		    ch->pcdata->perm_mana = floor;
 	    }
-	    if ( ch->max_move > 0 )
+	    if ( ch->max_move >= least )
 		ch->pcdata->perm_move = ch->max_move;
 	    else
 	    {
 		fix_move = true;
-		if ( ch->pcdata->perm_move < 1 )
+		if ( ch->pcdata->perm_move < least )
 		    ch->pcdata->perm_move = floor;
 	    }
 	}
@@ -672,6 +676,9 @@ void reset_char(CHAR_DATA *ch)
        at -5515 of 200 is as stuck as one whose maximum is wrong. */
     if ( fix_hit || fix_mana || fix_move )
     {
+	/* The file on disk is still the broken one: keep it, as it was,
+	   before anything saves over it. */
+	player_snapshot_milestone( ch, "repair", false );
 	if ( fix_hit )  ch->hit  = ch->max_hit;
 	if ( fix_mana ) ch->mana = ch->max_mana;
 	if ( fix_move ) ch->move = ch->max_move;

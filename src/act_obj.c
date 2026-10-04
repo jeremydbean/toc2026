@@ -889,18 +889,10 @@ void do_stash( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( ch->carry_number + get_obj_number( obj ) > can_carry_n( ch ) )
-        {
-            send_to_char( "Your hands are too full.\n\r", ch );
-            return;
-        }
-
-        if ( ch->carry_weight + get_obj_weight( obj ) > can_carry_w( ch ) )
-        {
-            send_to_char( "That is more than you can carry.\n\r", ch );
-            return;
-        }
-
+        /* No carry check (owner, 2026-10-04): what is in the stash is
+           the character's, and a remort folds a whole level 54 kit into
+           one bag that a level 3 could not lift -- so it stayed in the
+           stash for good. The limits still apply to picking up more. */
         if ( prev == NULL )
             ch->pcdata->stash = obj->next_content;
         else

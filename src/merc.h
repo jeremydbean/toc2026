@@ -2685,6 +2685,7 @@ size_t toc_strlcat(char *dst, const char *src, size_t siz);
 #define PLAYER_VER_DIR  "../player/versions/"  /* per-player versioned snapshots */
 #define PLAYER_VER_MAX  30                      /* keep this many versions per player */
 #define PLAYER_SNAPSHOT_MIN_INTERVAL 1800       /* minimum seconds between snapshots (30 min) */
+#define PLAYER_MILESTONE_MAX 20                 /* milestone copies kept per player per reason */
 #define GOD_DIR         "../gods/"
 #define HERO_DIR        "../heroes/"
 /* The Entrance to the Hall of Heroes, where the plaque is. */
@@ -3021,6 +3022,7 @@ bool    flags_from_argument ( const char *argument, int current, int *result );
  */
 bool    is_warrior_warrior  ( const CHAR_DATA *ch );
 void    grant_heros_grip    ( CHAR_DATA *ch );
+int     psionic_restore_known ( CHAR_DATA *ch );
 bool    heros_grip_holds    ( CHAR_DATA *victim );
 void    herbie_visit        ( CHAR_DATA *mob, CHAR_DATA *victim );
 void    apply_class_weapon_profs ( CHAR_DATA *ch );
@@ -3229,6 +3231,7 @@ bool    load_char_obj   ( DESCRIPTOR_DATA *d, char *name );
 void    corpse_back     ( CHAR_DATA *ch, OBJ_DATA *corpse );
 void    player_snapshot ( const char *name );  /* versioned snapshot of player file */
 void    player_snapshot_force ( const char *name ); /* unthrottled pre-restore snapshot */
+void    player_snapshot_milestone ( CHAR_DATA *ch, const char *tag, bool save_first );
 
 /* skills.c */
 bool    parse_gen_groups ( CHAR_DATA *ch,char *argument );

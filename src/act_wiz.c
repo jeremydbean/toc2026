@@ -294,6 +294,14 @@ void do_outfit ( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* The two skills a character needs to function, whatever happens to
+       the gear below -- a remort runs this after its skill wipe, and an
+       old school item in the pack used to return before reaching them.
+       Floors, not assignments: practice beyond them is kept. */
+    if ( ch->pcdata != NULL && gsn_recall > 0
+      && ch->pcdata->learned[gsn_recall] < STARTING_RECALL_SKILL )
+	ch->pcdata->learned[gsn_recall] = STARTING_RECALL_SKILL;
+
     if ( ( obj = get_obj_carry( ch, "sub" ) ) != NULL )
     {
 	   send_to_char( "You already have some equipment, put it on.\n\r", ch );
@@ -3411,6 +3419,9 @@ void do_advance( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* Before the level changes: a demotion resets everything to level 1. */
+    player_snapshot_milestone( victim, "advance", true );
+
     /*
 	* Lower level:
      *   Reset to level 1.
@@ -4348,6 +4359,10 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	send_to_char( "They aren't here.\n\r", ch );
 	return;
     }
+
+    /* A staff SET on a player can change anything; keep them as they were. */
+    if ( !IS_NPC(victim) )
+	player_snapshot_milestone( victim, "staffset", true );
 
     /*
      * Snarf the value (which need not be numeric).
@@ -7682,6 +7697,9 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
 
     argument = one_argument( argument, mode );
 
+    /* A grant is irreversible; keep the character as they were. */
+    player_snapshot_milestone( victim, "grantpsi", true );
+
     if ( !str_cmp( mode, "now" ) )
     {
         immediate = true;
@@ -9837,7 +9855,10 @@ void do_prestore( CHAR_DATA *ch, char *argument )
     namelen = (int) strlen( capname );
     while ( (de = readdir(dp)) != NULL && count < PLAYER_VER_MAX + 64 )
     {
-        if ( (int) strlen( de->d_name ) != namelen + 16 )
+        /* "<Name>.<timestamp>" and milestones, "<Name>.<timestamp>.<tag>". */
+        if ( (int) strlen( de->d_name ) != namelen + 16
+          && ( (int) strlen( de->d_name ) <= namelen + 17
+            || de->d_name[namelen + 16] != '.' ) )
             continue;
         if ( strncmp( de->d_name, capname, (size_t) namelen ) != 0 )
             continue;
@@ -9918,11 +9939,22 @@ void do_prestore( CHAR_DATA *ch, char *argument )
                 fclose( fv );
             }
 
-            if ( snap_level > 0 )
-                snprintf( buf, sizeof(buf), "  [%2d] %s  (level %d)\n\r",
-                          i + 1, datebuf, snap_level );
-            else
-                snprintf( buf, sizeof(buf), "  [%2d] %s\n\r", i + 1, datebuf );
+            {
+                const char *tag = ( (int) strlen( versions[i] ) > namelen + 17 )
+                                ? versions[i] + namelen + 17 : NULL;
+                char label[MAX_INPUT_LENGTH];
+
+                if ( tag != NULL )
+                    snprintf( label, sizeof(label), "  -- before %s", tag );
+                else
+                    label[0] = '\0';
+                if ( snap_level > 0 )
+                    snprintf( buf, sizeof(buf), "  [%2d] %s  (level %d)%s\n\r",
+                              i + 1, datebuf, snap_level, label );
+                else
+                    snprintf( buf, sizeof(buf), "  [%2d] %s%s\n\r",
+                              i + 1, datebuf, label );
+            }
             send_to_char( buf, ch );
         }
         send_to_char( "Use 'prestore <player> <number>' to restore.\n\r", ch );

@@ -39,6 +39,19 @@ def add_lines(mud: LiveMud, name: str, lines: list[str]) -> None:
     path.write_text("\n".join(text), encoding="latin-1")
 
 
+def add_objects(mud: LiveMud, name: str, records: list[str]) -> None:
+    """Carried objects, inserted ahead of the character's own."""
+    path = mud.player_dir / name
+    text = path.read_text(encoding="latin-1")
+    marker = "\n#O\n" if "\n#O\n" in text else "\n#END"
+    i = text.index(marker) + 1
+    path.write_text(text[:i] + "\n".join(records) + "\n" + text[i:], encoding="latin-1")
+
+
+def mud_ctx() -> LiveMud:
+    return LiveMud()
+
+
 def make(mud: LiveMud, name: str) -> None:
     with mud.connect(timeout=120) as client:
         create_character(client, name, PW)
@@ -85,6 +98,40 @@ class RemortAffectTests(unittest.TestCase):
                 client.send("quit")
                 self.assertTrue(client.wait_closed())
             self.assertEqual(hmv(mud, "Ztitanic")[1::2], [200, 200, 200])
+
+    def test_the_rest_of_a_remort_comes_through(self) -> None:
+        """From the remort review: wimpy cut back, the outgrown-gear bag
+        withdrawable however heavy (owner), psionics kept on the first
+        remort, and a NODROP item never bagged."""
+        with mud_ctx() as mud:
+            make(mud, "Zreborn")
+            patch_player_file(mud, "Zreborn", Levl=54, Room=TEMPLE, Wimp=800,
+                              PsiKnown="torment~")
+            # Two suits of clamshell scale mail (1000 weight each), far past
+            # what a level 3 can lift, and a NODROP item over level.
+            add_objects(mud, "Zreborn", [
+                "#O\nVnum 6415\nNest 0\nWear -1\nLev  40\nEnd\n",
+                "#O\nVnum 6415\nNest 0\nWear -1\nLev  40\nEnd\n",
+                "#O\nVnum 30408\nNest 0\nWear -1\nEnd\n",   # the final Triforce piece
+            ])
+            with mud.connect(timeout=120) as client:
+                login(client, "Zreborn", PW)
+                client.command("remort %s mage none human" % PW, 3.0)
+                carried = client.command("inventory", 1.2)
+                self.assertIn("final Triforce piece", carried,
+                              "a NODROP item stays carried, out of the bag")
+                client.command("west", 1.2)              # the altar, where the stash is
+                got = client.command("stash get gear", 2.0)
+                self.assertNotIn("too full", got.lower(), got)
+                self.assertNotIn("more than you can carry", got.lower(), got)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+
+            text = (mud.player_dir / "Zreborn").read_text(encoding="latin-1")
+            self.assertRegex(text, r"(?m)^Wimp\s+40$", "wimpy cut to a fifth of 200")
+            self.assertRegex(text, r"(?m)^Sk 75 'torment'$",
+                             "a known power is given back on the first remort")
+            self.assertRegex(text, r"(?m)^Psionic\s+1$")
 
     def test_a_character_already_wrecked_is_rebuilt_at_login(self) -> None:
         """Alaric's own numbers: the stored permanent stats survived (200),
