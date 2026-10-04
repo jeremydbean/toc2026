@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791127209
+LogO 1791127423
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 27
-Plyd 289476
+Plyd 289690
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 Scro 22
-Room 4
-HMV  174 583 1847 2111 180 425
-NewGold 5
-NewPlat 52
-NewCopp 55
-NewSilv 89
+Room 17768
+HMV  581 583 1895 2111 245 425
+NewGold 79
+NewPlat 51
+NewCopp 53
+NewSilv 85
 BankCP 1080356235
 IntTime 1791075484
 IntTotal 8356235
@@ -97,6 +97,7 @@ Achv visit-emerald-forest 1790982178
 Achv visit-glitter-palace 1791078958
 Achv visit-underdark 1790903709
 Achv visit-new-thalos 1790818086
+Achv visit-oz 1791127353
 Achv visit-korzath-fortress 1790899622
 LastOut  1791081985
 SesLogin 1791081630
@@ -115,7 +116,7 @@ CasinoWon  51
 CasinoLost 304
 Exp  54087
 Act  4261068
-AfBy 1048576
+AfBy 1049144
 AfBy2 8
 Comm 24576
 Mounted 0
@@ -216,18 +217,12 @@ Gr 'necro enhancement'
 Gr 'necromancy'
 Gr 'necro transportation'
 AffD 'death shroud'   0   1   0   0          0          8
-AffD 'pass door'   0   9   0   0    1048576          0
-AffD 'armor'   0  19 -20  17          0          0
-End
-
-#O
-Vnum 3716
-Nest 0
-Wear 0
-Cost 0
-Cond 91
-Repd 0
-Val  0 0 2 0 0
+AffD 'infravision'   0  52   0   0        512          0
+AffD 'detect hidden'   0   6   0   0         32          0
+AffD 'detect magic'   0   6   0   0         16          0
+AffD 'detect invis'   0   6   0   0          8          0
+AffD 'pass door'   0   4   0   0    1048576          0
+AffD 'armor'   0  14 -20  17          0          0
 End
 
 #O
@@ -850,6 +845,100 @@ Lev  22
 Cost 55660000
 Cond 100
 Repd 0
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3716
+Nest 0
+Wear 0
+Cost 2
+Cond 100
+Repd 0
+Val  0 0 197 0 0
 End
 
 #STASH

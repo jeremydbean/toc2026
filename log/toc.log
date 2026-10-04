@@ -39251,3 +39251,172 @@ Sun Oct  4 15:20:29 2026 :: Log Alaric [2474]: buy true
 Sun Oct  4 15:20:29 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
 Sun Oct  4 15:20:29 2026 :: Log Alaric [2474]: buy true
 Sun Oct  4 15:20:29 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sun Oct  4 15:20:32 2026 :: Log Alaric [2474]: quaff true
+Sun Oct  4 15:20:34 2026 :: Log Alaric [2474]: goto ceph
+Sun Oct  4 15:21:03 2026 :: Sock.sinaddr:  34.198.201.66
+Sun Oct  4 15:21:04 2026 :: EOF encountered on read.
+Sun Oct  4 15:21:11 2026 :: Log Alaric [2474]: goto coward
+Sun Oct  4 15:21:15 2026 :: Log Alaric [2474]: goto coward
+Sun Oct  4 15:21:21 2026 :: Log Alaric [2474]: l
+Sun Oct  4 15:21:25 2026 :: Log Alaric [2474]: e
+Sun Oct  4 15:21:25 2026 :: Log Alaric [0]: moved to 2473 (Magic Street.)
+Sun Oct  4 15:21:25 2026 :: Log Alaric [2473]: s
+Sun Oct  4 15:21:25 2026 :: Log Alaric [0]: moved to 2472 (Corner of Wizards Way and Magic Street.)
+Sun Oct  4 15:21:26 2026 :: Log Alaric [2472]: e
+Sun Oct  4 15:21:26 2026 :: Log Alaric [0]: moved to 2471 (Wizards Way.)
+Sun Oct  4 15:21:26 2026 :: Log Alaric [2471]: e
+Sun Oct  4 15:21:26 2026 :: Log Alaric [0]: moved to 2470 (Wizards Way.)
+Sun Oct  4 15:21:26 2026 :: Log Alaric [2470]: e
+Sun Oct  4 15:21:26 2026 :: Log Alaric [0]: moved to 2415 (Main Processional.)
+Sun Oct  4 15:21:27 2026 :: Log Alaric [2415]: s
+Sun Oct  4 15:21:27 2026 :: Log Alaric [0]: moved to 2402 (Northern Oak Tree Square.)
+Sun Oct  4 15:21:27 2026 :: Log Alaric [2402]: s
+Sun Oct  4 15:21:27 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sun Oct  4 15:21:29 2026 :: Log Alaric [2401]: s
+Sun Oct  4 15:21:29 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sun Oct  4 15:21:29 2026 :: Log Alaric [2404]: s
+Sun Oct  4 15:21:29 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sun Oct  4 15:21:30 2026 :: Log Alaric [2427]: w
+Sun Oct  4 15:21:30 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sun Oct  4 15:21:30 2026 :: Log Alaric [4201]: w
+Sun Oct  4 15:21:30 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sun Oct  4 15:21:30 2026 :: Log Alaric [4202]: w
+Sun Oct  4 15:21:30 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 15:21:31 2026 :: Log Alaric [4207]: u
+Sun Oct  4 15:21:31 2026 :: Log Alaric [0]: moved to 3700 (Entrance to Mud School)
+Sun Oct  4 15:21:31 2026 :: Log Alaric [3700]: u
+Sun Oct  4 15:21:31 2026 :: Log Alaric [0]: moved to 3772 (Newbie Train Station)
+Sun Oct  4 15:21:31 2026 :: Log Alaric [3772]: n
+Sun Oct  4 15:21:31 2026 :: Log Alaric [0]: moved to 3241 (The Train Cafe.)
+Sun Oct  4 15:21:33 2026 :: Log Alaric [3241]: buy ywar
+Sun Oct  4 15:21:35 2026 :: Log Alaric [3241]: buy wa
+Sun Oct  4 15:21:35 2026 :: Log Alaric [3241]: bought a war banner (vnum 3716) for 2 copper from a waitress
+Sun Oct  4 15:21:38 2026 :: Log Alaric [3241]: wear wa
+Sun Oct  4 15:21:39 2026 :: Log Alaric [3241]: s
+Sun Oct  4 15:21:39 2026 :: Log Alaric [0]: moved to 3772 (Newbie Train Station)
+Sun Oct  4 15:21:39 2026 :: Log Alaric [3772]: d
+Sun Oct  4 15:21:39 2026 :: Log Alaric [0]: moved to 3700 (Entrance to Mud School)
+Sun Oct  4 15:21:39 2026 :: Log Alaric [3700]: d
+Sun Oct  4 15:21:39 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 15:21:41 2026 :: Log Alaric [4207]: gr
+Sun Oct  4 15:21:43 2026 :: Log Alaric [4207]: r e 3
+Sun Oct  4 15:21:43 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sun Oct  4 15:21:43 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sun Oct  4 15:21:43 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sun Oct  4 15:21:43 2026 :: Log Alaric [2427]: n
+Sun Oct  4 15:21:43 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sun Oct  4 15:21:43 2026 :: Log Alaric [2404]: n
+Sun Oct  4 15:21:43 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sun Oct  4 15:21:47 2026 :: Log Alaric [2401]: spel
+Sun Oct  4 15:21:50 2026 :: Log Alaric [2401]: skil
+Sun Oct  4 15:21:57 2026 :: Log Alaric [2401]: help second
+Sun Oct  4 15:22:01 2026 :: Log Alaric [2401]: help second attack
+Sun Oct  4 15:22:11 2026 :: Log Alaric [2401]: l
+Sun Oct  4 15:22:31 2026 :: Log Alaric [2401]: r w 7
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 2405 (Western Oak Tree Square.)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 2433 (Temple Boulevard.)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 2434 (Temple Boulevard.)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 2435 (Temple Boulevard.)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 2436 (Temple Boulevard.)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 2437 (Temple Boulevard.)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 2438 (Inside the Western Gates of Dresden.)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [2438]: open west
+Sun Oct  4 15:22:31 2026 :: Log Alaric [2438]: r w 10
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 2439 (Outside the Western Gates of Dresden.)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 6000 (The edge of the forest)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 6001 (A trail through the light forest)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 6002 (A trail through the light forest)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 6003 (A trail through the dense forest)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 6004 (A trail through the dense forest)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 6100 (A narrow trail through the deep, dark forest)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 6101 (A narrow trail through the deep, dark forest)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 6102 (A narrow trail through the deep, dark forest)
+Sun Oct  4 15:22:31 2026 :: Log Alaric [0]: moved to 6103 (A narrow trail through the deep, dark forest)
+Sun Oct  4 15:22:32 2026 :: Log Alaric [6103]: s
+Sun Oct  4 15:22:32 2026 :: Log Alaric [0]: moved to 6108 (A narrow trail through the deep, dark forest)
+Sun Oct  4 15:22:32 2026 :: Log Alaric [6108]: w
+Sun Oct  4 15:22:32 2026 :: Log Alaric [0]: moved to 6109 (A narrow trail through the deep, dark forest)
+Sun Oct  4 15:22:32 2026 :: Log Alaric [6109]: w
+Sun Oct  4 15:22:32 2026 :: Log Alaric [0]: moved to 6110 (A narrow trail through the deep, dark forest)
+Sun Oct  4 15:22:32 2026 :: Log Alaric [6110]: n
+Sun Oct  4 15:22:32 2026 :: Log Alaric [0]: moved to 6144 (A small path in the deep, dark forest)
+Sun Oct  4 15:22:33 2026 :: Log Alaric [6144]: w
+Sun Oct  4 15:22:33 2026 :: Log Alaric [0]: moved to 6130 (A narrow trail through the deep, dark forest)
+Sun Oct  4 15:22:33 2026 :: Log Alaric [6130]: n
+Sun Oct  4 15:22:33 2026 :: Log Alaric [0]: moved to 66 (A dark section of the forest)
+Sun Oct  4 15:22:33 2026 :: Log Alaric [66]: enter tornado
+Sun Oct  4 15:22:33 2026 :: Log Alaric [0]: moved to 17700 (Entrance to the Land of Oz)
+Sun Oct  4 15:22:37 2026 :: Log Alaric [17700]: scan
+Sun Oct  4 15:22:41 2026 :: Log Alaric [17700]: ex
+Sun Oct  4 15:22:43 2026 :: Log Alaric [17700]: n
+Sun Oct  4 15:22:43 2026 :: Log Alaric [0]: moved to 17752 (Munchkin Land)
+Sun Oct  4 15:22:44 2026 :: Log Alaric [17752]: ex
+Sun Oct  4 15:22:46 2026 :: Log Alaric [17752]: n
+Sun Oct  4 15:22:46 2026 :: Log Alaric [0]: moved to 17753 (Beginning of the Yellow Brick Road)
+Sun Oct  4 15:22:48 2026 :: Log Alaric [17753]: ex
+Sun Oct  4 15:22:49 2026 :: Log Alaric [17753]: n
+Sun Oct  4 15:22:49 2026 :: Log Alaric [0]: moved to 17758 (The Yellow Brick Road)
+Sun Oct  4 15:22:49 2026 :: Log Alaric [17758]: ex
+Sun Oct  4 15:22:50 2026 :: Log Alaric [17758]: scan
+Sun Oct  4 15:22:52 2026 :: Log Alaric [17758]: a infra
+Sun Oct  4 15:22:55 2026 :: Log Alaric [17758]: c infra
+Sun Oct  4 15:23:01 2026 :: Log Alaric [17758]: scan
+Sun Oct  4 15:23:01 2026 :: Log Alaric [17758]: ex
+Sun Oct  4 15:23:10 2026 :: Log Alaric [17758]: n
+Sun Oct  4 15:23:10 2026 :: Log Alaric [0]: moved to 17762 (The Yellow Brick Road)
+Sun Oct  4 15:23:11 2026 :: Log Alaric [17762]: scan
+Sun Oct  4 15:23:11 2026 :: Log Alaric [17762]: n
+Sun Oct  4 15:23:11 2026 :: Log Alaric [0]: moved to 17763 (The Yellow Brick Road)
+Sun Oct  4 15:23:13 2026 :: Log Alaric [17763]: scan
+Sun Oct  4 15:23:14 2026 :: Log Alaric [17763]: n
+Sun Oct  4 15:23:14 2026 :: Log Alaric [0]: moved to 17764 (The Yellow Brick Road)
+Sun Oct  4 15:23:14 2026 :: Log Alaric [17764]: scan
+Sun Oct  4 15:23:15 2026 :: Log Alaric [17764]: n
+Sun Oct  4 15:23:15 2026 :: Log Alaric [0]: moved to 17765 (The Yellow Brick Road)
+Sun Oct  4 15:23:16 2026 :: Log Alaric [17765]: scan
+Sun Oct  4 15:23:17 2026 :: Log Alaric [17765]: look ti
+Sun Oct  4 15:23:18 2026 :: Log Alaric [17765]: scan
+Sun Oct  4 15:23:19 2026 :: Log Alaric [17765]: n
+Sun Oct  4 15:23:19 2026 :: Log Alaric [0]: moved to 17767 (Yellow Brick Road)
+Sun Oct  4 15:23:20 2026 :: Log Alaric [17767]: scan
+Sun Oct  4 15:23:21 2026 :: Log Alaric [17767]: n
+Sun Oct  4 15:23:21 2026 :: Log Alaric [0]: moved to 17768 (Yellow Brick Road)
+Sun Oct  4 15:23:23 2026 :: Log Alaric [17768]: look li
+Sun Oct  4 15:23:28 2026 :: Log Alaric [17768]: con li
+Sun Oct  4 15:23:29 2026 :: Log Alaric [17768]: af
+Sun Oct  4 15:23:32 2026 :: Log Alaric [17768]: c de
+Sun Oct  4 15:23:37 2026 :: Log Alaric [17768]: sh li
+Sun Oct  4 15:23:45 2026 :: Log Alaric [17768]: sh li
+Sun Oct  4 15:23:51 2026 :: Log Alaric [17768]: sh li
+Sun Oct  4 15:24:01 2026 :: Log Alaric [17768]: sh
+Sun Oct  4 15:24:07 2026 :: Log Alaric [17768]: sh
+Sun Oct  4 15:24:13 2026 :: Log Alaric [17768]: get all cor
+Sun Oct  4 15:24:13 2026 :: Log Alaric [17768]: comp staf
+Sun Oct  4 15:24:21 2026 :: Log Alaric [17768]: s
+Sun Oct  4 15:24:21 2026 :: Log Alaric [0]: moved to 17767 (Yellow Brick Road)
+Sun Oct  4 15:24:22 2026 :: Log Alaric [17767]: s
+Sun Oct  4 15:24:22 2026 :: Log Alaric [0]: moved to 17765 (The Yellow Brick Road)
+Sun Oct  4 15:24:22 2026 :: Log Alaric [17765]: s
+Sun Oct  4 15:24:22 2026 :: Log Alaric [0]: moved to 17764 (The Yellow Brick Road)
+Sun Oct  4 15:24:22 2026 :: Log Alaric [17764]: s
+Sun Oct  4 15:24:22 2026 :: Log Alaric [0]: moved to 17763 (The Yellow Brick Road)
+Sun Oct  4 15:24:23 2026 :: Log Alaric [17763]: s
+Sun Oct  4 15:24:23 2026 :: Log Alaric [0]: moved to 17762 (The Yellow Brick Road)
+Sun Oct  4 15:24:23 2026 :: Log Alaric [17762]: s
+Sun Oct  4 15:24:23 2026 :: Log Alaric [0]: moved to 17758 (The Yellow Brick Road)
+Sun Oct  4 15:24:23 2026 :: Log Alaric [17758]: s
+Sun Oct  4 15:24:23 2026 :: Log Alaric [0]: moved to 17753 (Beginning of the Yellow Brick Road)
+Sun Oct  4 15:24:24 2026 :: Log Alaric [17753]: s
+Sun Oct  4 15:24:24 2026 :: Log Alaric [0]: moved to 17752 (Munchkin Land)
+Sun Oct  4 15:24:24 2026 :: Log Alaric [17752]: s
+Sun Oct  4 15:24:24 2026 :: Log Alaric [0]: moved to 17700 (Entrance to the Land of Oz)
+Sun Oct  4 15:24:28 2026 :: Log Alaric [17700]: recal
+Sun Oct  4 15:24:28 2026 :: Log Alaric [0]: moved to 24104 (At an Intersection in the Forest Murkmire)
+Sun Oct  4 15:24:29 2026 :: Log Alaric [24104]: recal
+Sun Oct  4 15:24:29 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 15:24:31 2026 :: Log Alaric [4207]: w
+Sun Oct  4 15:24:31 2026 :: Log Alaric [0]: moved to 4208 (Altar of the Temple of Devota.)
+Sun Oct  4 15:24:32 2026 :: Log Alaric [4208]: heal ref
+Sun Oct  4 15:24:36 2026 :: Log Alaric [4208]: heal ref
+Sun Oct  4 15:25:23 2026 :: Log Alaric [4208]: goto cepheus
+Sun Oct  4 15:25:28 2026 :: Log Alaric [4208]: goto cepheus
