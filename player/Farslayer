@@ -1,7 +1,7 @@
 #PLAYER
 Name Farslayer~
 Id   21916
-LogO 1791123890
+LogO 1791124806
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 3
-Plyd 3341
+Plyd 4257
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
 Room 3787
-HMV  36 36 34 144 95 112
+HMV  36 36 94 144 112 112
 NewGold 0
 NewPlat 0
 NewCopp 20
@@ -44,14 +44,14 @@ AchTriforce 0
 Achv first-kill 1791039658
 Achv visit-mud-school 1791039302
 Achv first-death 1791039860
-LastOut  1791040939
-SesLogin 1791039302
-SesDur   1637
-SesExpG  6742
-SesLvlG  3
-SesKill  8
+LastOut  1791124806
+SesLogin 1791122230
+SesDur   2576
+SesExpG  1047
+SesLvlG  0
+SesKill  2
 SesPK    0
-SesDead  2
+SesDead  0
 SesQuest 0
 Exp  7789
 Act  65788
@@ -81,9 +81,7 @@ Color 15 6
 Color 16 6
 Pos  5
 Prac 7
-Save  -3
 Alig  -750
-Hit   3
 ACs 94 94 94 100
 Attr 13 13 17 13 15
 AMod 0 0 0 0 0
@@ -120,8 +118,6 @@ Sk 62 'recall'
 Gr 'rom basics'
 Gr 'mage basics'
 Gr 'mage default'
-AffD 'bless'   0  10  -3  24          0          0
-AffD 'bless'   0  10   3  18          0          0
 End
 
 #O
