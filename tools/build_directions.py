@@ -30,7 +30,8 @@ import re
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "webadmin"))
-from area_parser import format_area_name  # noqa: E402
+from area_parser import (  # noqa: E402
+    AreaParser, flag_bit, format_area_name, parse_flag_value, split_area_name)
 
 AREA = pathlib.Path("area")
 START = 2401
@@ -683,10 +684,30 @@ def write_route_help(routes):
 
     lines = [
         "0 WALKTO ROUTELIST AREALIST~",
-        "Every area you can walk to from the Oak Tree Square, and how many",
-        "rooms out it is.  In Mudlet, WALK <name> follows one of these; on",
-        "the website and in the browser client they are listed with the",
-        "commands to get there.",
+        "Syntax: walkto                  how it works, and the guild halls",
+        "        walkto <place>          walk there from wherever you are",
+        "        walkto guilds           the guild halls and the guild clerk",
+        "        walkto trainers         every guildmaster and trainer",
+        "        walkto areas            every area, in columns",
+        "        walkto stop             stop walking",
+        "",
+        "WALKTO finds the way from the room you are standing in and walks",
+        "it for you, a room every half second, opening doors that are shut",
+        "but not locked.  Name a place by any part of its name: WALKTO",
+        "TEMPLE, WALKTO MORIA, WALKTO NECRO MASTER, WALKTO MAGE GUILD.",
+        "",
+        "You stop when you arrive, when you type any other command, when a",
+        "fight starts, when you sit, rest or sleep, when you run out of",
+        "movement, or when the way ahead is locked, guarded or gone.  It",
+        "never walks you into a death trap, past a guild guard who would",
+        "turn you away, or through a portal that takes a fare.  A few areas",
+        "need a wait or a key it cannot manage for you; it says so, and",
+        "ROUTES on the website gives the commands.",
+        "",
+        "Every area you can walk to, and how many rooms out it is from the",
+        "Oak Tree Square.  In Mudlet, WALK <name> follows the same routes",
+        "on the map; on the website and in the browser client they are",
+        "listed with the commands to get there.",
         "",
         "The number is rooms travelled, not difficulty.  A short walk can",
         "end somewhere that will kill you, and a long one can be perfectly",
@@ -710,7 +731,7 @@ def write_route_help(routes):
         "is where every route begins.  The Quest Zone and Temple Despair",
         "are not listed because nothing in the world links to them.",
         "",
-        "See also: ROUTES, WALK, MAP, MUDLET, AREAS",
+        "See also: ROUTES, WALK, MAP, MUDLET, AREAS, GUILDS, TEACHLIST",
         "~",
         "",
         "0 $~",
@@ -724,6 +745,410 @@ def write_route_help(routes):
     with open(out, "w", encoding="latin-1", newline="") as fh:
         fh.write(body)
     return len(entries)
+
+
+# --- Trainers, guild halls and the WALKTO destinations ---------------------
+#
+# The game's own tables are the authority on who teaches what and who
+# guards which door, so they are read from the C source rather than kept
+# a second time here: guildmaster_table in src/const.c and gg_table in
+# src/special.c.
+
+CONST_C = pathlib.Path("src/const.c")
+SPECIAL_C = pathlib.Path("src/special.c")
+
+CLASS_WORD = {"CLASS_ANY": "any", "CLASS_MAGE": "mage",
+              "CLASS_CLERIC": "cleric", "CLASS_THIEF": "thief",
+              "CLASS_WARRIOR": "warrior", "CLASS_MONK": "monk",
+              "CLASS_NECRO": "necromancer", "CLASS_OTHER": "other"}
+GUILD_WORD = {"GUILD_MAGE": "mage", "GUILD_CLERIC": "cleric",
+              "GUILD_THIEF": "thief", "GUILD_WARRIOR": "warrior",
+              "GUILD_MONK": "monk", "GUILD_NECRO": "necro",
+              "GUILD_ANY": "any", "GUILD_NONE": "none"}
+PLURAL = {"mage": "mages", "cleric": "clerics", "thief": "thieves",
+          "warrior": "warriors", "monk": "monks",
+          "necromancer": "necromancers", "necro": "necromancers"}
+
+# HELP GUILDS names the six halls; gg_table says where their guards stand.
+GUILD_ORDER = ("mage", "cleric", "thief", "warrior", "monk", "necro")
+GUILD_HALLS = {"mage": "University of Magic", "cleric": "Temple of Breas",
+               "thief": "House of Thieves", "warrior": "Citadel of War",
+               "monk": "Palm of the Creator", "necro": "Morgue of Dresden"}
+GUILD_KEYWORDS = {
+    "mage": "mage mages magic magician wizard university",
+    "cleric": "cleric clerics priest priests breas",
+    "thief": "thief thieves rogue rogues",
+    "warrior": "warrior warriors fighter fighters citadel war",
+    "monk": "monk monks palm creator",
+    "necro": "necro necros necromancer necromancers morgue",
+}
+GUARD_DOOR = {"north": 0, "east": 1, "south": 2, "west": 3, "up": 4,
+              "down": 5}
+HALL_MAX_ROOMS = 160            # GUILD_HALL_MAX_ROOMS in src/special.c
+
+ACT_TRAIN = flag_bit("J")
+ACT_PRACTICE = flag_bit("K")
+
+# Places a player asks for by name that are neither an area nor a mob.
+# ROOM_VNUM_TEMPLE and ROOM_VNUM_ALTAR in src/merc.h.
+PLACES = (
+    (START, "Oak Tree Square", "square oak tree start dresden"),
+    (4207, "Temple of Devota", "temple devota recall"),
+    (4208, "Temple Altar", "altar stash temple"),
+)
+
+
+def load_guildmasters():
+    """guildmaster_table: [{mob, class, guild, teaches, gains}]."""
+    text = CONST_C.read_text("latin-1")
+    m = re.search(r"guildmaster_table\s*\[\]\s*=\s*\{(.*?)\n\};", text, re.S)
+    if not m:
+        return []
+    body = re.sub(r"/\*.*?\*/", " ", m.group(1), flags=re.S)
+    out = []
+    # The Fire mage's entry ends "}, }," -- a trailing comma C allows --
+    # and without the ,? this read straight on into the next master and
+    # lost the Adept of Soulcrusher inside the Fire mage's gain list.
+    for e in re.finditer(r"\{\s*(\d+)\s*,\s*(CLASS_\w+)\s*,\s*(GUILD_\w+)\s*,"
+                         r"\s*\{(.*?)\}\s*,\s*\{(.*?)\}\s*,?\s*\}", body, re.S):
+        if int(e.group(1)) == 0:
+            continue
+        out.append({"mob": int(e.group(1)),
+                    "class": CLASS_WORD.get(e.group(2), "any"),
+                    "guild": GUILD_WORD.get(e.group(3), "any"),
+                    "teaches": re.findall(r'"([^"]*)"', e.group(4)),
+                    "gains": re.findall(r'"([^"]*)"', e.group(5))})
+    return out
+
+
+def load_guild_guards():
+    """gg_table: [{mob, room, door, class, guild}], one per guarded door."""
+    text = SPECIAL_C.read_text("latin-1")
+    m = re.search(r"gg_table\s*\[\]\s*=\s*\{(.*?)\n\s*\};", text, re.S)
+    if not m:
+        return []
+    out = []
+    for e in re.finditer(r"\{\s*(\d+)\s*,\s*(\d+)\s*,\s*do_(\w+)\s*,"
+                         r"\s*(CLASS_\w+)\s*,\s*(GUILD_\w+)\s*,", m.group(1)):
+        if int(e.group(1)) == 0 or e.group(3) not in GUARD_DOOR:
+            continue
+        out.append({"mob": int(e.group(1)), "room": int(e.group(2)),
+                    "door": GUARD_DOOR[e.group(3)],
+                    "class": CLASS_WORD.get(e.group(4), "any"),
+                    "guild": GUILD_WORD.get(e.group(5), "any")})
+    return out
+
+
+def guild_halls(rooms, guards, carried=None):
+    """guild -> {rooms, doors, class}: what lies behind each hall's guards.
+
+    Walked the way guild_closed_rooms() in src/special.c walks it: from
+    the room past a guard, never stepping back into a guard post, and a
+    walk that grows past HALL_MAX_ROOMS has found the open world rather
+    than a hall. The Templar of Devota guards a class, not a guild, and
+    is not a hall anybody joins.
+
+    `carried` is the teleport rooms (load_teleports): the monks' Palm of
+    the Creator is a room with no exits that carries you on into the
+    Quiet Place, where the masters are.
+    """
+    carried = carried or {}
+    posts = {g["room"] for g in guards}
+    halls = {}
+    for g in guards:
+        if g["guild"] not in GUILD_HALLS:
+            continue
+        way = rooms.get(g["room"], {}).get("exits", {}).get(g["door"])
+        if way is None or way[0] not in rooms:
+            continue
+        hall = halls.setdefault(g["guild"], {"rooms": set(), "doors": [],
+                                             "class": g["class"]})
+        hall["doors"].append(way[0])
+        if way[0] in hall["rooms"]:
+            continue
+        seen, queue, open_world = {way[0]}, [way[0]], False
+        while queue and not open_world:
+            here = queue.pop(0)
+            onward = [rooms[here]["exits"][door][0] for door in range(10)
+                      if door in rooms[here]["exits"]]
+            # Only the hall's own door may carry you in. A room deeper
+            # inside that carries you somewhere is a way back out --
+            # the monks' "Back to the beginning" -- not more hall.
+            if here == way[0]:
+                onward += [edge[2] for edge in carried.get(here, [])
+                           if edge[0] == "wait"]
+            for to in onward:
+                if to in posts or to in seen or to not in rooms:
+                    continue
+                if len(seen) >= HALL_MAX_ROOMS:
+                    open_world = True
+                    break
+                seen.add(to)
+                queue.append(to)
+        if not open_world:
+            hall["rooms"] |= seen
+    return halls
+
+
+def members_phrase(guild, guard_class):
+    """Who a hall's guard lets in, in words."""
+    if guard_class not in ("any", "other"):
+        return "%s of the %s guild" % (PLURAL.get(guard_class, guard_class),
+                                       guild)
+    return "members of the %s guild" % guild
+
+
+def learners_phrase(cls, guild):
+    """Who a guildmaster will teach, as do_practice decides it."""
+    if cls == "any" and guild == "any":
+        return "anyone"
+    if cls == "other":
+        return "members of the %s guild who are not %s" % (
+            guild, PLURAL.get(guild, guild))
+    if guild == "any":
+        return "%s only" % PLURAL.get(cls, cls)
+    if cls == "any":
+        return "members of the %s guild" % guild
+    return "%s of the %s guild" % (PLURAL.get(cls, cls), guild)
+
+
+def short_name(desc):
+    """A mob's short description as a name: "the Necro Guild Master" is
+    "Necro Guild Master", "Seraloi, the lost." is "Seraloi, the lost"."""
+    text = re.sub(r"\{(?:[0-9A-Fa-f]{2}|.)", "", desc or "")
+    text = " ".join(text.split()).rstrip(".")
+    if text.lower().startswith("the "):
+        text = text[4:]
+    return text[:1].upper() + text[1:]
+
+
+def place_name(rooms, vnum, hall_of):
+    """Where a room is, for a person: its guild hall, or its area."""
+    guild = hall_of.get(vnum)
+    if guild:
+        return GUILD_HALLS[guild]
+    area = rooms[vnum]["area"]
+    return split_area_name(area)[1] or area
+
+
+def route_fields(rooms, reach, vnum):
+    path = reach[vnum]
+    return {"room": rooms[vnum]["name"], "vnum": vnum,
+            "commands": to_commands(rooms, path),
+            "steps": describe(rooms, path), "rooms_away": len(path)}
+
+
+def _words(text):
+    """Keywords once each, in the order first given."""
+    seen, out = set(), []
+    for word in str(text or "").lower().split():
+        if word not in seen:
+            seen.add(word)
+            out.append(word)
+    return " ".join(out)
+
+
+def build_trainers(rooms, reach, carried=None):
+    """Every guild hall, the guild clerk, and every trainer, routed.
+
+    A trainer is a guildmaster_table entry whose mobile can practise
+    (ACT_PRACTICE, which do_practice and do_gain both demand), or any
+    mobile that trains stats (ACT_TRAIN, which do_train asks for). The
+    router does not model guild guards -- it publishes the members' way
+    in -- so each entry says who the guard admits in `members_only`.
+    """
+    guards = load_guild_guards()
+    halls = guild_halls(rooms, guards, carried)
+    hall_of = {room: guild for guild in GUILD_ORDER if guild in halls
+               for room in halls[guild]["rooms"]}
+
+    parser = AreaParser(AREA)
+    parser.parse_all()
+    mobiles = parser.mobiles
+    masters = {g["mob"]: g for g in load_guildmasters()}
+
+    out = []
+    for guild in GUILD_ORDER:
+        hall = halls.get(guild)
+        if not hall:
+            continue
+        doors = [d for d in hall["doors"] if d in reach]
+        if not doors:
+            continue
+        door = min(doors, key=lambda v: (len(reach[v]), v))
+        entry = {
+            "name": "%s (%s guild)" % (GUILD_HALLS[guild], guild),
+            "role": "guild hall",
+            "class": hall["class"],
+            "guild": guild,
+            "members_only": guild,
+            "who": members_phrase(guild, hall["class"]),
+            "place": GUILD_HALLS[guild],
+            "keywords": "guild hall " + GUILD_KEYWORDS[guild],
+        }
+        entry.update(route_fields(rooms, reach, door))
+        out.append(entry)
+
+    for vnum in sorted(parser.mob_specials):
+        if parser.mob_specials[vnum] != "spec_guild_clerk":
+            continue
+        mob = mobiles.get(vnum)
+        placed = [r for r in (mob.spawn_rooms if mob else []) if r in reach]
+        if not placed:
+            continue
+        room = min(placed, key=lambda v: (len(reach[v]), v))
+        short = short_name(mob.short_desc)
+        entry = {
+            "name": "%s, the guild clerk" % short,
+            "role": "guild clerk",
+            "class": "any",
+            "guild": "any",
+            "members_only": "",
+            "who": "anyone who has never joined a guild, levels 3 to 6",
+            "place": place_name(rooms, room, hall_of),
+            "keywords": "%s guild clerk join" % mob.keywords,
+            "mob": vnum,
+        }
+        entry.update(route_fields(rooms, reach, room))
+        out.append(entry)
+
+    found = []
+    candidates = set(masters) | {
+        v for v, m in mobiles.items()
+        if parse_flag_value(m.act_flags) & ACT_TRAIN}
+    for vnum in sorted(candidates):
+        mob = mobiles.get(vnum)
+        if mob is None:
+            continue
+        acts = parse_flag_value(mob.act_flags)
+        master = masters.get(vnum) if acts & ACT_PRACTICE else None
+        trains = bool(acts & ACT_TRAIN)
+        if master is None and not trains:
+            continue
+        placed = [r for r in mob.spawn_rooms if r in reach]
+        if not placed:
+            continue
+        room = min(placed, key=lambda v: (len(reach[v]), v))
+        guild = hall_of.get(room, "")
+        short = short_name(mob.short_desc)
+        place = place_name(rooms, room, hall_of)
+        words = [mob.keywords, "trainer"]
+        if master:
+            words += ["guildmaster", "practice", "gain", "teacher"]
+            cls, gld = master["class"], master["guild"]
+            for name in (cls, gld):
+                if name in GUILD_KEYWORDS:
+                    words.append(GUILD_KEYWORDS[name])
+                elif name == "necromancer":
+                    words.append(GUILD_KEYWORDS["necro"])
+        else:
+            cls, gld = "any", "any"
+        if trains:
+            words += ["train", "stats"]
+        if guild:
+            words.append(GUILD_KEYWORDS[guild])
+        entry = {
+            "name": "%s (%s)" % (short, place),
+            "role": ("guildmaster" if master and master["gains"]
+                     else "practice" if master else "train"),
+            "class": cls,
+            "guild": gld,
+            "members_only": guild,
+            "who": (members_phrase(guild, halls[guild]["class"])
+                    if guild else "anyone"),
+            "learners": learners_phrase(cls, gld) if master else "anyone",
+            "place": place,
+            "keywords": " ".join(" ".join(words).split()),
+            "mob": vnum,
+            "teaches": master["teaches"] if master else [],
+            "gains": master["gains"] if master else [],
+            "trains": trains,
+        }
+        entry.update(route_fields(rooms, reach, room))
+        rank = GUILD_ORDER.index(guild) if guild else len(GUILD_ORDER)
+        found.append(((rank, place.lower(), entry["rooms_away"],
+                       entry["name"].lower()), entry))
+
+    # Two mobiles with one name in one room are one destination (the
+    # pirates on the Levee); one name in two rooms is told apart by the
+    # room (New Thalos has four mobiles called "the guildmaster").
+    ordered = [entry for _key, entry in sorted(found, key=lambda f: f[0])]
+    rooms_by_name = collections.defaultdict(set)
+    for entry in ordered:
+        rooms_by_name[entry["name"]].add(entry["vnum"])
+    kept = set()
+    for entry in ordered:
+        if (entry["name"], entry["vnum"]) in kept:
+            continue
+        kept.add((entry["name"], entry["vnum"]))
+        if len(rooms_by_name[entry["name"]]) > 1:
+            entry["name"] = "%s (%s, %s)" % (
+                short_name(mobiles[entry["mob"]].short_desc), entry["place"],
+                entry["room"].rstrip("."))
+        out.append(entry)
+
+    for entry in out:
+        entry["keywords"] = _words(entry["keywords"])
+    return out
+
+
+def build_places(rooms, reach):
+    out = []
+    for vnum, name, keywords in PLACES:
+        if vnum not in rooms or vnum not in reach:
+            continue
+        entry = {"name": name, "role": "place",
+                 "place": split_area_name(rooms[vnum]["area"])[1],
+                 "keywords": keywords}
+        entry.update(route_fields(rooms, reach, vnum))
+        out.append(entry)
+    return out
+
+
+def _field(text):
+    """One tab-separated field: no tabs, no line breaks, never empty."""
+    text = " ".join(str(text or "").split())
+    return text or "-"
+
+
+def write_walkto_data(payload, out=pathlib.Path("area/walkto.dat")):
+    """What the WALKTO command can walk to, for the game to read at boot.
+
+    Generated from the same payload as webadmin/directions.json, so the
+    command, the website and the Oracle name the same places. The game
+    finds its own way from wherever the player stands; all it needs from
+    here is a name and a room. Order matters: when two places match a
+    name equally well, the earlier one wins, so the places and the guild
+    halls come before the trainers inside them, and those before areas.
+    """
+    rows = []
+    for place in payload.get("places", []):
+        rows.append(("place", place["vnum"], place["name"],
+                     place.get("place", ""), place.get("keywords", ""), ""))
+    kinds = {"guild hall": "guild", "guild clerk": "clerk"}
+    for entry in payload.get("trainers", []):
+        rows.append((kinds.get(entry["role"], "trainer"), entry["vnum"],
+                     entry["name"], entry.get("place", ""),
+                     entry.get("keywords", ""),
+                     entry.get("who", "") if entry.get("members_only") else ""))
+    for route in sorted(payload.get("routes", []),
+                        key=lambda r: (r.get("area_display") or r["area"]).lower()):
+        rows.append(("area", route["vnum"],
+                     route.get("area_display") or route["area"], "", "", ""))
+
+    lines = [
+        "# WALKTO destinations, generated by tools/build_directions.py.",
+        "# Do not edit: change the generator or the world and regenerate.",
+        "# kind<TAB>room vnum<TAB>name<TAB>place<TAB>keywords<TAB>who may enter",
+    ]
+    for kind, vnum, name, place, keywords, who in rows:
+        lines.append("\t".join((kind, str(int(vnum)), _field(name),
+                                _field(place), _field(keywords),
+                                _field(who))))
+    with open(out, "w", encoding="latin-1", errors="replace",
+              newline="") as fh:
+        fh.write("\n".join(lines) + "\n")
+    return len(rows)
 
 
 def main():
@@ -828,6 +1253,13 @@ def main():
                           "command": "%s %s" % (verb, keyword),
                           "to": dest})
 
+    # Every guild hall, the guild clerk and every trainer, and the few
+    # named places that are neither: the destinations WALKTO knows
+    # besides the areas, and what the Oracle answers "where do I
+    # practise" from.
+    trainers = build_trainers(rooms, reach, portals)
+    places = build_places(rooms, reach)
+
     payload = {
         "start": {"vnum": START, "room": rooms[START]["name"],
                   "area": rooms[START]["area"],
@@ -838,10 +1270,14 @@ def main():
             "legacy_drifted": sum(1 for e in legacy if e["status"] == "drifted"),
             "legacy_repaired": sum(1 for e in legacy if "fixed_commands" in e),
             "links": len(links),
+            "trainers": len(trainers),
+            "places": len(places),
         },
         "routes": routes,
         "legacy": legacy,
         "links": links,
+        "trainers": trainers,
+        "places": places,
     }
 
     out = pathlib.Path("webadmin/directions.json")
@@ -849,6 +1285,9 @@ def main():
 
     listed = write_route_help(routes)
     print(f"{listed} areas listed in area/routelist.are")
+    walkable = write_walkto_data(payload)
+    print(f"{walkable} WALKTO destinations in area/walkto.dat "
+          f"({len(trainers)} guild halls, clerks and trainers)")
     print(f"{len(rooms)} rooms, {len(reach)} reachable from {START} "
           f"({sum(len(v) for v in portals.values())} portals and "
           f"handholds in play)")
