@@ -4980,6 +4980,7 @@ void do_flee( CHAR_DATA *ch, char *argument )
     ROOM_INDEX_DATA *now_in;
     CHAR_DATA *victim;
     int attempt, chance;
+    static bool despair_answering = false;
 
     if ( ( victim = ch->fighting ) == NULL )
     {
@@ -5010,7 +5011,12 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	&&   IS_SET(pexit->u1.to_room->room_flags, ROOM_NO_MOB) ) )
 	    continue;
 
-	if( (chance = get_skill(ch,gsn_despair) ) > 1 && number_percent () < chance)
+	/* Despair answers a flee with the opponent's flight instead. The
+	   opponent's own flight must not answer back with despair of its
+	   own: two fighters who both had it fled into each other, one
+	   do_flee inside the next, for as long as the rolls held. */
+	if( !despair_answering
+	&&  (chance = get_skill(ch,gsn_despair) ) > 1 && number_percent () < chance)
 	{
 	  act("$N is overcome with a feeling of despair and flees the battle.",ch,
 	    NULL,victim,TO_NOTVICT);
@@ -5019,7 +5025,9 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	  act("$N is overcome with a feeling of despair and flees the battle.",ch,
 	    NULL,victim,TO_CHAR);
 
+	  despair_answering = true;
 	  do_flee(victim, "");
+	  despair_answering = false;
 	  return;
 	}
 

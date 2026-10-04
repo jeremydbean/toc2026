@@ -21,6 +21,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **Trainers, checked for every class and guild.** Dawn the Wand Maker
+  teaches scribe to anyone who can reach it (clerics at 25 had nobody);
+  HELP MALADICTIONS names Grill for ?/C instead of "<TBD>". HELP PHASE and
+  HELP DESPAIR say what they do: phase can stealth you as you fall asleep,
+  and despair can turn your FLEE into your opponent's. Two fighters who
+  both held despair could bounce FLEE back and forth inside each other;
+  an answer to despair no longer answers back.
 - **Every multi-hit spell, trap and flood stopped at its first blow.**
   `damage()` says whether a blow landed, and a 2025 pass read it as "the
   victim died" at more than twenty places. So: one magic missile, one

@@ -5088,7 +5088,7 @@
   },
   {
    "name": "Dawn the Wand Maker (University of Magic)",
-   "role": "practice",
+   "role": "guildmaster",
    "class": "any",
    "guild": "any",
    "members_only": "mage",
@@ -5100,9 +5100,12 @@
    "teaches": [
     "wands",
     "staves",
-    "scrolls"
+    "scrolls",
+    "scribe"
    ],
-   "gains": [],
+   "gains": [
+    "scribe"
+   ],
    "trains": true,
    "room": "Wand and Staff Maker's shop.",
    "vnum": 4329,

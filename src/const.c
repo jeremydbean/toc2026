@@ -818,11 +818,15 @@ const   struct  guildmaster_type        guildmaster_table       []  =
     {   /* 21 Wand shop guy. Put him somewhere in dresden. wandering shop */
 	40,     CLASS_ANY,     GUILD_ANY,
 	{
-	"wands",        "staves",	"scrolls"
+	"wands",        "staves",	"scrolls",	"scribe"
 	},
 	{
-          NULL
-        }
+	  /* Scribe is a cleric's at 25 and nobody taught clerics it; Dawn
+	     teaches scrolls to everyone, so she teaches writing them too
+	     (2026-10-04). Classes whose level for it is out of reach are
+	     refused by GAIN as usual. */
+	  "scribe"
+	}
     },
     {   /* 22 Librarian */
 	41,     CLASS_ANY,     GUILD_MAGE,
