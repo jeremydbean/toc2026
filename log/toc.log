@@ -41445,3 +41445,98 @@ Sun Oct  4 17:56:57 2026 :: Log Alaric [2404]: sh ja
 Sun Oct  4 17:57:01 2026 :: Log Alaric [2404]: bu
 Sun Oct  4 17:57:04 2026 :: Log Alaric [2404]: get all.arm
 Sun Oct  4 17:57:04 2026 :: Log Alaric [2404]: get all.leg
+Sun Oct  4 17:57:10 2026 :: Log Alaric [2404]: n
+Sun Oct  4 17:57:10 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sun Oct  4 17:57:12 2026 :: Log Alaric [2401]: af
+Sun Oct  4 17:57:13 2026 :: Log Alaric [2401]: i
+Sun Oct  4 17:57:18 2026 :: Log Alaric [2401]: c arm
+Sun Oct  4 17:57:24 2026 :: Log Alaric [2401]: comp helm
+Sun Oct  4 17:57:30 2026 :: Log Alaric [2401]: drop helm
+Sun Oct  4 17:57:31 2026 :: Log Alaric [2401]: sac helm
+Sun Oct  4 17:57:33 2026 :: Log Alaric [2401]: comp liv
+Sun Oct  4 17:57:49 2026 :: Log Alaric [2401]: drop liv
+Sun Oct  4 17:57:50 2026 :: Log Alaric [2401]: sac li
+Sun Oct  4 17:57:52 2026 :: Log Alaric [2401]: c shroud
+Sun Oct  4 17:57:59 2026 :: Log Alaric [2401]: i
+Sun Oct  4 17:58:09 2026 :: Log Alaric [2401]: comp silver
+Sun Oct  4 17:58:13 2026 :: Log Alaric [2401]: drop silv
+Sun Oct  4 17:58:15 2026 :: Log Alaric [2401]: sac sil
+Sun Oct  4 17:58:18 2026 :: Log Alaric [2401]: comp sharp
+Sun Oct  4 17:58:31 2026 :: Sock.sinaddr:  178.156.185.127
+Sun Oct  4 17:58:31 2026 :: EOF encountered on read.
+Sun Oct  4 17:58:32 2026 :: Log Alaric [2401]: drop sword
+Sun Oct  4 17:58:33 2026 :: Log Alaric [2401]: sac sw
+Sun Oct  4 17:58:34 2026 :: Log Killuminati [4208]: . ok yeah it was overly restricted based on level.  it's being fixed.  also, i think you're missing some spells/skills.  i'm adding an abilities command that will show if you're missing any spells/skills and the oracle can give directions on where to train
+Sun Oct  4 17:58:48 2026 :: Log Killuminati [4208]: . you're missing your pets, lol
+Sun Oct  4 17:58:56 2026 :: Log Alaric [2401]: gos Saving up for life-undeath next
+Sun Oct  4 17:59:03 2026 :: Log Killuminati [4208]: . yeah that's what you're missing, lol
+Sun Oct  4 17:59:11 2026 :: Log Killuminati [4208]: vnum cake
+Sun Oct  4 17:59:12 2026 :: Log Alaric [2401]: gos Just haven't grabbed it as of yeyt.
+Sun Oct  4 17:59:24 2026 :: Log Killuminati [4208]: summonevent
+Sun Oct  4 17:59:27 2026 :: Log Alaric [2401]: gos the gainlist commands works well for seeing what you have/don't have
+Sun Oct  4 17:59:32 2026 :: Log Killuminati [4208]: . oh nice ok
+Sun Oct  4 17:59:34 2026 :: Log Killuminati [4208]: snoop self
+Sun Oct  4 17:59:36 2026 :: Log Alaric [2401]: flee
+Sun Oct  4 17:59:36 2026 :: Log Alaric [0]: moved to 2402 (Northern Oak Tree Square.)
+Sun Oct  4 17:59:39 2026 :: Log Alaric [2402]: recal
+Sun Oct  4 17:59:39 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sun Oct  4 17:59:40 2026 :: Log Alaric [4207]: e
+Sun Oct  4 17:59:40 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sun Oct  4 17:59:41 2026 :: Log Alaric [4202]: n
+Sun Oct  4 17:59:41 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sun Oct  4 17:59:41 2026 :: Log Alaric [4203]: n
+Sun Oct  4 17:59:41 2026 :: Log Alaric [0]: moved to 4210 (Room of Peace and Healing.)
+Sun Oct  4 17:59:42 2026 :: Log Alaric [4210]: af
+Sun Oct  4 17:59:47 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:00:14 2026 :: Log Alaric [4210]: gos I grabbed the stuff I knew was good. life-undeath was next to try and get some mobs to tank for me. I think it'd be pretty cheap
+Sun Oct  4 18:00:17 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:00:21 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:00:24 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:00:27 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:00:30 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:00:33 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:00:36 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:00:39 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:00:42 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:00:45 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:00:48 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:00:51 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:00:54 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:00:57 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:01:00 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:01:03 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:01:06 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:01:07 2026 :: Log Killuminati [4208]: goto headless
+Sun Oct  4 18:01:07 2026 :: Log Killuminati [0]: moved to 2401 (Center of Oak Tree Square.)
+Sun Oct  4 18:01:09 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:01:10 2026 :: Log Killuminati [2401]: give cake head
+Sun Oct  4 18:01:12 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:01:12 2026 :: Log Killuminati [2401]: vnum cake
+Sun Oct  4 18:01:15 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:01:16 2026 :: Log Killuminati [2401]: load obj 29926
+Sun Oct  4 18:01:18 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:01:18 2026 :: Log Killuminati [2401]: give cake horse
+Sun Oct  4 18:01:18 2026 :: Log Killuminati [2401]: gave a piece of shadowed horseman's cake (vnum 29926) to the Headless Horseman
+Sun Oct  4 18:01:21 2026 :: Log Killuminati [2401]: look horse
+Sun Oct  4 18:01:21 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:01:24 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:01:25 2026 :: Log Killuminati [2401]: goto 1
+Sun Oct  4 18:01:25 2026 :: Log Killuminati [0]: moved to 1 (The Void)
+Sun Oct  4 18:01:27 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:01:30 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:01:30 2026 :: 208.126.22.104 input spamming!
+Sun Oct  4 18:01:33 2026 :: Log Alaric [4210]: quit
+Sun Oct  4 18:01:33 2026 :: Alaric has quit.
+Sun Oct  4 18:01:33 2026 :: [QUIT] Player rejoined the real world.
+Sun Oct  4 18:01:42 2026 :: Sock.sinaddr:  208.126.22.104
+Sun Oct  4 18:01:44 2026 :: Loading Alaric's playerfile
+Sun Oct  4 18:01:45 2026 :: Alaric@208.126.22.104 has connected.
+Sun Oct  4 18:01:45 2026 :: Log Killuminati [1]: gainlist
+Sun Oct  4 18:01:45 2026 :: Log Alaric [4210]: moved to 4210 (Room of Peace and Healing.)
+Sun Oct  4 18:01:55 2026 :: Log Alaric [4210]: c anim
+Sun Oct  4 18:02:02 2026 :: Log Alaric [4210]: prac
+Sun Oct  4 18:02:03 2026 :: Log Killuminati [1]: snoop ala
+Sun Oct  4 18:02:04 2026 :: Log Killuminati [1]: lo
+Sun Oct  4 18:02:06 2026 :: Log Alaric [4210]: c mana
+Sun Oct  4 18:02:11 2026 :: Log Alaric [4210]: c mana
+Sun Oct  4 18:02:15 2026 :: Log Alaric [4210]: c mana
