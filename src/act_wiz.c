@@ -7774,8 +7774,14 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
         char note[MAX_STRING_LENGTH];
 
         victim->pcdata->psionic_grant_pending = false;
-        grant_psionics( victim, 100, true );
-        send_to_char( "Psionics granted immediately.\n\r", ch );
+        if ( grant_psionics( victim, 100, true ) > 0 )
+            send_to_char( "Psionics granted immediately.\n\r", ch );
+        else
+            /* With no list the sets only top up to what the remorts give,
+               so somebody already holding that gets nothing new -- and
+               used to be reported as granted. */
+            send_to_char( "Nothing new: they already hold every power that "
+                          "grant could give. Name powers to add others.\n\r", ch );
         snprintf( note, sizeof(note),
                   "%s granted %s psionics immediately at level %d (%s).",
                   ch->name, victim->name, victim->level, list_buf );

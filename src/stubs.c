@@ -461,7 +461,8 @@ bool psionic_owed_by_remorts( CHAR_DATA *ch )
     return false;
 }
 
-void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
+/* Returns how many powers were newly given (not handed back). */
+int grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
 {
     /* 4 thematic psionic skill sets.  A remort awards one power from each
      * set for every remort past the first -- 4 at the second remort, 8 at
@@ -496,7 +497,7 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
         { "Assault", "Astral", "Defense", "Control" };
 
     if ( IS_NPC(ch) || ch->pcdata == NULL )
-        return;
+        return 0;
 
     if ( force_grant )
     {
@@ -519,7 +520,7 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
                  roll, chance, missed ? "MISSED, nothing granted" : "passed" );
 
         if ( missed )
-            return;
+            return 0;
     }
 
     /* An immortal-specified skill list overrides set logic. */
@@ -679,7 +680,7 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
         psi_log( ch, "nothing could be selected -- grant abandoned" );
         ch->pcdata->psionic_grant_pending = false;
         bug( "Grant_psionics: no valid skills were selected.", 0 );
-        return;
+        return 0;
     }
 
     psi_log( ch, "grant complete, %d power%s now held", selected,
@@ -710,6 +711,40 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
         "*-------------------------------------------------------------------------*\n\r"
         "*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*\n\r"
         "\n\r", ch );
+    return added;
+}
+
+/*
+ * Everything psionic that happens as a player enters the game, in order:
+ * powers a remort wiped come back at 1%, a remorted character short of
+ * what their remorts give is topped up, and a pending GRANTPSI above the
+ * awakening band is paid. Called once, from the nanny, with a real
+ * descriptor -- never from load_char_obj, which also loads characters
+ * for GRANTPSI, UNDENY and STASH LINK on a blank one.
+ */
+void psionic_login( CHAR_DATA *ch )
+{
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+
+    psionic_restore_known( ch );
+
+    if ( psionic_owed_by_remorts( ch ) )
+    {
+        /* What the remorts owe, by the sets. A pending GRANTPSI list is
+           the next level's to pay, not this login's: put it aside so the
+           top-up neither spends it nor clears the flag. */
+        char *spec = ch->pcdata->psionic_grant_spec;
+        bool pending = ch->pcdata->psionic_grant_pending;
+
+        ch->pcdata->psionic_grant_spec = str_dup( "" );
+        grant_psionics( ch, 100, true );
+        free_string( ch->pcdata->psionic_grant_spec );
+        ch->pcdata->psionic_grant_spec = spec;
+        ch->pcdata->psionic_grant_pending = pending;
+    }
+
+    do_check_psi( ch, "" );
 }
 
 /*

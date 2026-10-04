@@ -5013,6 +5013,11 @@ void do_remort( CHAR_DATA *ch, char *arg)
      send_to_char("You are not allowed to remort anymore.\n\r",ch);
      return;
    }
+   /* A remort ends in the Temple, so it must not be a way out of jail. */
+   if (ch->in_room != NULL && IS_SET(ch->in_room->room_flags, ROOM_JAIL)) {
+     send_to_char("Not from a cell. Serve your time first.\n\r",ch);
+     return;
+   }
    /*
     * Which classes this character has already lived as.
     *
@@ -5117,12 +5122,33 @@ void do_remort( CHAR_DATA *ch, char *arg)
    }
    /* HEHE, FINALLY A VALID CHOICE */
    player_snapshot_milestone( ch, "remort", true );
-   /* A level 3 character does not keep the undead a level 56 raised. */
+   /* A level 3 character does not keep the undead a level 56 raised, */
    dismiss_undead_servants( ch );
+   /* nor anything else they charmed: a level 50 under charm person would
+      fight for the new life until the charm ran out. A pet or a mount is
+      property and stays. */
+   {
+      LIST_ITERATOR iter;
+      CHAR_DATA *fch;
+
+      FOR_EACH_CHARACTER( iter, fch )
+      {
+         if ( !IS_NPC(fch) || fch->master != ch || fch == ch->pet
+           || !IS_AFFECTED(fch, AFF_CHARM) )
+            continue;
+         if ( fch->in_room != NULL )
+            act( "$n shakes off the charm and wanders away.", fch, NULL,
+                 NULL, TO_ROOM );
+         stop_follower( fch );
+         extract_char( fch, true );
+      }
+   }
    watch_log( ch, "remort %d: level %d %s/%s/%s -> %s/%s/%s",
        ch->pcdata->num_remorts + 1, ch->level,
        class_table[ch->class].name, pc_race_table[ch->race].name,
-       ch->pcdata->guild >= 0 ? class_table[ch->pcdata->guild].name : "none",
+       /* GUILD_NONE is 11, past the end of class_table. */
+       ch->pcdata->guild >= 0 && ch->pcdata->guild < MAX_CLASS
+           ? class_table[ch->pcdata->guild].name : "none",
        class_table[requested_class].name, pc_race_table[requested_race].name,
        requested_guild >= 0 ? class_table[requested_guild].name : "none" );
 
@@ -5351,6 +5377,19 @@ void do_remort( CHAR_DATA *ch, char *arg)
       level 3 piece stays on) and floors the new class's weapon skill and
       recall, which the skill wipe above took to nothing. */
    do_outfit(ch, "");
+
+   /* A new life starts in the Temple. Remorting was allowed anywhere, so a
+      level 54 could remort in Death Mountain -- no recall, monsters of
+      53 to 59 -- and be a level 3 with 200 hit points among them. */
+   if ( ch->in_room != NULL && ch->in_room->vnum != ROOM_VNUM_TEMPLE
+   &&   get_room_index( ROOM_VNUM_TEMPLE ) != NULL )
+   {
+      act( "$n fades away into a new life.", ch, NULL, NULL, TO_ROOM );
+      char_from_room( ch );
+      char_to_room( ch, get_room_index( ROOM_VNUM_TEMPLE ) );
+      act( "$n appears, beginning a new life.", ch, NULL, NULL, TO_ROOM );
+      do_look( ch, "auto" );
+   }
 
    achievement_check_state(ch, true);
    save_char_obj(ch);

@@ -85,6 +85,49 @@ class PsionicTopUpTests(unittest.TestCase):
             text = (mud.player_dir / "Zpsiheld").read_text(encoding="latin-1")
             self.assertRegex(text, r"(?m)^Sk 1 'mind leech'$")
 
+    def test_an_offline_grant_to_an_owed_character_does_not_crash(self) -> None:
+        """Loading a character for GRANTPSI ran the login top-up, which
+        wrote to the blank descriptor of the offline load: a segfault."""
+        with LiveMud() as mud:
+            make(mud, "Zpsioff")
+            make(mud, "Zpsiimm")
+            patch_player_file(mud, "Zpsioff", Levl=30, NumRemorts=3, Room=TEMPLE,
+                              Psionic=0)
+            patch_player_file(mud, "Zpsiimm", Levl=70, Room=TEMPLE)
+            with mud.connect(timeout=120) as staff:
+                login(staff, "Zpsiimm", PW)
+                staff.send("grantpsi Zpsioff")
+                staff.drain(3)
+                staff.send("say still standing")
+                staff.drain(2)
+                seen = staff.transcript
+                staff.send("quit")
+                self.assertTrue(staff.wait_closed())
+            self.assertIn("still standing", seen)
+            # Above level 21 the grant is paid at once, into the file: two
+            # of each discipline at three remorts.
+            text = (mud.player_dir / "Zpsioff").read_text(encoding="latin-1")
+            known = re.search(r"(?m)^PsiKnown (.*)~", text).group(1).split(",")
+            self.assertEqual(len(known), 8, known)
+            with mud.connect(timeout=120) as client:
+                login(client, "Zpsioff", PW)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+
+    def test_a_remort_away_from_the_temple_ends_in_it(self) -> None:
+        with LiveMud() as mud:
+            make(mud, "Zfarremort")
+            patch_player_file(mud, "Zfarremort", Levl=54, NumRemorts=0, Room=4208)
+            with mud.connect(timeout=120) as client:
+                login(client, "Zfarremort", PW)
+                client.send(f"remort {PW} cleric none human")
+                client.drain(4)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            text = (mud.player_dir / "Zfarremort").read_text(encoding="latin-1")
+            self.assertRegex(text, r"(?m)^Levl 3$")
+            self.assertRegex(text, rf"(?m)^Room {TEMPLE}$")
+
 
 if __name__ == "__main__":
     unittest.main()

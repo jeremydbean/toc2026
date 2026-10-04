@@ -2888,7 +2888,8 @@ bool    queue_alias_input ( DESCRIPTOR_DATA *d,
 void    close_socket    ( DESCRIPTOR_DATA *dclose );
 void    write_to_buffer ( DESCRIPTOR_DATA *d, const char *txt, int length );
 void    do_check_psi    ( CHAR_DATA *ch, char *argument );
-void    grant_psionics  ( CHAR_DATA *ch, int chance, bool force_grant );
+int     grant_psionics  ( CHAR_DATA *ch, int chance, bool force_grant );
+void    psionic_login   ( CHAR_DATA *ch );
 bool    is_training_dummy  ( CHAR_DATA *ch );
 bool    dummy_absorb       ( CHAR_DATA *ch, CHAR_DATA *victim, int dam,
                              int dt );

@@ -2945,6 +2945,10 @@ case CON_DEFAULT_CHOICE:
 	    act( "$n has entered the game.", ch, NULL, NULL, TO_ROOM );
 	    do_look( ch, "auto" );
 
+	    /* Psionics owed or handed back: here, past the password and with
+	       a real descriptor, never inside load_char_obj. */
+	    psionic_login( ch );
+
             snprintf( buf, sizeof(buf), "%s has entered the game.", ch->name );
             wizinfo( buf, ch->level );
 

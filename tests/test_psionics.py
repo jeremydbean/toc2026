@@ -65,7 +65,7 @@ class AwakeningBandTests(unittest.TestCase):
         cls.update = read("src", "update.c")
         cls.save = read("src", "save.c")
         cls.check = function_body(cls.stubs, "void do_check_psi(")
-        cls.grant = function_body(cls.stubs, "void grant_psionics(")
+        cls.grant = function_body(cls.stubs, "int grant_psionics(")
         cls.grantpsi = function_body(cls.wiz, "void do_grantpsi(")
 
     def test_the_band_is_named_once(self) -> None:
@@ -87,8 +87,15 @@ class AwakeningBandTests(unittest.TestCase):
         self.assertIn('!str_cmp( argument, "levelup" )', self.check)
         self.assertIn('do_check_psi(victim,"levelup")', self.wiz)
         self.assertIn('do_check_psi(ch,"levelup")', self.update)
-        # The loader calls it for the flag, not for a fresh roll.
-        self.assertIn('do_check_psi( ch, "" )', self.save)
+        # Login calls it for the flag, not for a fresh roll -- from
+        # psionic_login() at game entry, never from load_char_obj, which
+        # also loads characters for GRANTPSI and STASH LINK on a blank
+        # descriptor that its output crashed.
+        login = function_body(self.stubs, "void psionic_login(")
+        self.assertIn('do_check_psi( ch, "" )', login)
+        self.assertNotIn("do_check_psi", self.save)
+        self.assertNotIn("grant_psionics", self.save)
+        self.assertNotIn("psionic_restore_known", self.save)
 
     def test_a_pending_flag_is_read_back(self) -> None:
         """PsiGrant was saved, loaded, and then consulted by nothing."""

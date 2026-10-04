@@ -1453,16 +1453,14 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     if ( ch->pcdata->psionic_known         == NULL ) ch->pcdata->psionic_known         = str_dup( "" );
     if ( ch->pcdata->list_remorts          == NULL ) ch->pcdata->list_remorts          = str_dup( "" );
 
-    /* Powers learned before the list existed still count towards it. */
+    /* Powers learned before the list existed still count towards it.
+       Silent, so it may run on any load. Everything that speaks -- the
+       powers handed back, the remort top-up, a pending grant -- is
+       psionic_login(), at the moment the player enters the game: from
+       here it wrote to the blank descriptor an offline load (GRANTPSI,
+       UNDENY, STASH LINK) uses, and crashed, and before that it told
+       whoever typed the name at the login prompt (2026-10-04). */
     psionic_sync_known( ch );
-    /* And powers a remort took away come back: the first remort used to
-       give none back, so a character remorted before that was fixed
-       carries them in the list and not in the skill table. */
-    psionic_restore_known( ch );
-    /* And what the remorts themselves give, for a character who remorted
-       before remorts handed it out: the shortfall, with the awakening. */
-    if ( psionic_owed_by_remorts( ch ) )
-        grant_psionics( ch, 100, true );
 
     /* Shadowmeld used to be a flat check against the remort count rather
      * than a skill. Anyone who earned it that way is given the skill, so
@@ -1492,11 +1490,8 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
      */
     apply_class_and_guild_skills( ch );
 
-    /* And the psionics a second remort owes them, if that grant was
-       missed. do_check_psi holds the condition; it was only reachable
-       through an immortal advancing somebody. */
-    if ( found )
-        do_check_psi( ch, "" );
+    /* The psionics a remort or a grant owes them: psionic_login(), at
+       game entry, not here. */
 
     color_update_defaults( ch, !found );
 

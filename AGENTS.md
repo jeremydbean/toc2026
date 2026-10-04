@@ -1302,10 +1302,21 @@ at each of two call sites:
   then `do_check_psi` tested only the remort count. A level 50
   character carried `PsiGrant 1` for days having been promised it
   twice.
-- **A login re-rolled.** `load_char_obj` calls `do_check_psi`, so with
-  the roll at the call sites a character inside the band could relog
-  until it landed. The call from the loader passes no argument now and
-  only `"levelup"` rolls.
+- **A login re-rolled.** The login calls `do_check_psi`, so with the
+  roll at the call sites a character inside the band could relog until
+  it landed. The login call passes no argument now and only
+  `"levelup"` rolls.
+
+**Nothing psionic that speaks runs inside `load_char_obj`.** That
+loader also builds characters for GRANTPSI, UNDENY and STASH LINK on a
+zeroed descriptor whose output buffer is NULL, so the restore and the
+remort top-up crashed the server there -- and for a real login they ran
+at the name prompt, telling whoever typed the name. `psionic_login()` in
+`stubs.c` does all of it, called from the nanny once the player is in
+their room; only the silent `psionic_sync_known` stays in the loader.
+The top-up there puts a pending GRANTPSI list aside so it is still the
+next level's to pay. `grant_psionics` returns how many powers were new,
+and GRANTPSI says so when it is none.
 - **A grant above the band waited for ever**, because the band is
   behind you and nothing was checking whether it still could happen.
 - **`number_percent() >= chance` in `grant_psionics`** made a chance
@@ -1356,6 +1367,17 @@ skills. A spell a class can reach must therefore sit in one of its
 groups, which `tests/test_necro_trainers.py` checks for necromancers.
 Groups are re-applied by `gn_add` at login, so adding a member reaches
 everyone already holding the group.
+
+**A remort ends in the Temple**, and is refused from a jail cell for
+that reason: it was allowed anywhere, so a level 54 could remort inside
+a no-recall dungeon and be a level 3 among level 55 monsters. Charmed
+followers other than the pet or mount are released and wander off, as
+raised undead crumble.
+
+**`char_from_room` only takes out a character who is in the room.** A
+character loaded offline has `in_room` set but was never put there, and
+taking them out drove the area's player count negative -- an area that
+believes itself empty resets around the players inside it.
 
 `ListRemorts` is unchanged on disk and is **not** a flat list of numbers.
 It is written one life at a time as `<class>` alone for a monk or a necro,

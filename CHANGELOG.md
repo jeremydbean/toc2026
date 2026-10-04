@@ -21,6 +21,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **Remort and psionics, triple-checked.** Loading an offline character
+  -- GRANTPSI, UNDENY, or a player's STASH LINK -- ran the psionic login
+  top-up, which wrote to a blank connection and could crash the server;
+  it also announced a character's powers to whoever typed their name at
+  the login prompt. It runs on entering the game now. A guildless
+  character's remort read past the end of the class table into the log.
+  Offline loads drove an area's player count below zero, so Hyrule could
+  reset and reseal its walls around players inside. A remort now ends in
+  the Temple (it could be taken inside a no-recall dungeon) and is
+  refused in jail; charmed followers other than a pet or mount are
+  released. GRANTPSI says when it added nothing, and a pending GRANTPSI
+  list is no longer spent by the login top-up.
 - **Trainers, checked for every class and guild.** Dawn the Wand Maker
   teaches scribe to anyone who can reach it (clerics at 25 had nobody);
   HELP MALADICTIONS names Grill for ?/C instead of "<TBD>". HELP PHASE and

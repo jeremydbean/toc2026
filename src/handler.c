@@ -1588,10 +1588,28 @@ void char_from_obj( OBJ_DATA *obj )
 void char_from_room( CHAR_DATA *ch )
 {
     OBJ_DATA *obj;
+    CHAR_DATA *rch;
 
     if ( ch->in_room == NULL )
     {
 	bug( "Char_from_room: NULL.", 0 );
+	return;
+    }
+
+    /* A character loaded straight from a player file -- GRANTPSI, UNDENY,
+       a stash reached across linked characters -- has in_room set and was
+       never put in the room. Taking them out lowered counts they never
+       raised: an area's player count went below zero, and an area that
+       thinks it is empty resets with players in it -- Hyrule resealed its
+       bomb walls behind them (2026-10-04). Only someone really here is
+       taken out. */
+    for ( rch = ch->in_room->people; rch != NULL; rch = rch->next_in_room )
+	if ( rch == ch )
+	    break;
+    if ( rch == NULL )
+    {
+	ch->in_room      = NULL;
+	ch->next_in_room = NULL;
 	return;
     }
 
