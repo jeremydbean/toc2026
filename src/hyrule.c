@@ -1201,18 +1201,61 @@ static const int hyrule_dungeon_screens[9] =
     30271, 30276, 30205, 30253, 30323, 30282, 30250, 30229, 30317
 };
 
+/* The dungeon a character is working on: the lowest whose Triforce piece
+   they do not carry, or 0 once all nine are theirs. */
+int hyrule_next_level( CHAR_DATA *ch )
+{
+    int level;
+
+    for ( level = 1; level <= 9; level++ )
+        if ( !hyrule_carries( ch, HYRULE_PIECE_VNUM( level ) ) )
+            return level;
+    return 0;
+}
+
+/* Where the whirlwind may take a character: a dungeon they have won, and
+   the one they are working on (owner, 2026-10-04). */
+static bool recorder_may_visit( CHAR_DATA *ch, int level )
+{
+    int next = hyrule_next_level( ch );
+
+    return next == 0 || level == next
+        || hyrule_carries( ch, HYRULE_PIECE_VNUM( level ) );
+}
+
+/* "1 2 3 4" -- the levels the whirlwind will take this character to. */
+static void recorder_choices( CHAR_DATA *ch, char *out, size_t size )
+{
+    char item[16];
+    int level;
+
+    out[0] = '\0';
+    for ( level = 1; level <= 9; level++ )
+        if ( recorder_may_visit( ch, level ) )
+        {
+            snprintf( item, sizeof(item), "%s%d", out[0] != '\0' ? " " : "", level );
+            toc_strlcat( out, item, size );
+        }
+}
+
 /*
  * The Recorder with no lake to drain. It shrinks every digdogger in the
  * room to a third of its health, once; and on the overworld its whirlwind
- * carries you to the next dungeon, in order, whose Triforce piece you
- * carry. True when the tune did something.
+ * carries you to a dungeon's entrance -- any you have won, and the one you
+ * are working on next. PLAY RECORDER goes to the next of those in turn
+ * (the one you are working on first, from anywhere that is not a dungeon's
+ * screen); PLAY RECORDER <level> goes straight to that one. True when the
+ * tune did something.
  */
-bool hyrule_play_recorder( CHAR_DATA *ch )
+bool hyrule_play_recorder( CHAR_DATA *ch, const char *argument )
 {
     CHAR_DATA *victim;
     ROOM_INDEX_DATA *to_room;
+    char buf[MAX_STRING_LENGTH];
+    char choices[64];
     bool shrank = false;
     int here = -1;
+    int want = 0;
     int step;
     int i;
 
@@ -1231,35 +1274,242 @@ bool hyrule_play_recorder( CHAR_DATA *ch )
 
     if ( ch->in_room->vnum < HYRULE_OVERWORLD_FIRST
     ||   ch->in_room->vnum > HYRULE_OVERWORLD_LAST )
+    {
+        if ( IS_HYRULE_ROOM_VNUM( ch->in_room->vnum ) )
+        {
+            send_to_char( "Down here the tune finds no wind to call. Play it under the open sky.\n\r", ch );
+            return true;
+        }
         return false;
+    }
     if ( ch->fighting != NULL )
     {
         send_to_char( "A whirlwind will not come for someone in the middle of a fight.\n\r", ch );
         return true;
     }
 
-    for ( i = 0; i < 9; i++ )
-        if ( hyrule_dungeon_screens[i] == ch->in_room->vnum )
-            here = i;
-    for ( step = 1; step <= 9; step++ )
+    recorder_choices( ch, choices, sizeof(choices) );
+    if ( argument != NULL && argument[0] != '\0' )
     {
-        i = ( here + step + 9 ) % 9;
-        if ( !hyrule_carries( ch, HYRULE_PIECE_VNUM( i + 1 ) ) )
-            continue;
-        if ( ( to_room = get_room_index( hyrule_dungeon_screens[i] ) ) == NULL
-        ||   to_room == ch->in_room )
-            break;
-        act( "A whirlwind spins down out of a clear sky and snatches you up!", ch, NULL, NULL, TO_CHAR );
-        act( "A whirlwind spins down, snatches $n up and is gone.", ch, NULL, NULL, TO_ROOM );
-        char_from_room( ch );
-        char_to_room( ch, to_room );
-        act( "A whirlwind spins down and sets $n on the grass.", ch, NULL, NULL, TO_ROOM );
-        do_look( ch, "auto" );
-        WAIT_STATE( ch, PULSE_VIOLENCE );
+        if ( !is_number( (char *) argument )
+        ||   ( want = atoi( argument ) ) < 1 || want > 9 )
+        {
+            snprintf( buf, sizeof(buf),
+                      "Name a dungeon by its level: PLAY RECORDER <1-9>. "
+                      "The wind will carry you to %s.\n\r", choices );
+            send_to_char( buf, ch );
+            return true;
+        }
+        if ( !recorder_may_visit( ch, want ) )
+        {
+            snprintf( buf, sizeof(buf),
+                      "The wind stirs, then dies. It knows the way to the dungeons you have\n\r"
+                      "won and to the one you are working on: %s.\n\r", choices );
+            send_to_char( buf, ch );
+            return true;
+        }
+    }
+    else
+    {
+        int next = hyrule_next_level( ch );
+
+        for ( i = 0; i < 9; i++ )
+            if ( hyrule_dungeon_screens[i] == ch->in_room->vnum )
+                here = i;
+        if ( here < 0 && next > 0 )
+            want = next;
+        else
+            for ( step = 1; step <= 9; step++ )
+            {
+                i = ( here + step + 9 ) % 9;
+                if ( recorder_may_visit( ch, i + 1 ) )
+                {
+                    want = i + 1;
+                    break;
+                }
+            }
+    }
+
+    if ( want < 1 || ( to_room = get_room_index( hyrule_dungeon_screens[want - 1] ) ) == NULL )
+    {
+        send_to_char( "The wind stirs, then dies.\n\r", ch );
         return true;
     }
-    send_to_char( "The wind stirs, then dies. It knows the way only to dungeons whose Triforce piece you carry.\n\r", ch );
+    if ( to_room == ch->in_room )
+    {
+        snprintf( buf, sizeof(buf),
+                  "The wind circles you and settles: you are already at Level %d's door.\n\r"
+                  "PLAY RECORDER <level> goes to another -- %s.\n\r", want, choices );
+        send_to_char( buf, ch );
+        return true;
+    }
+
+    act( "A whirlwind spins down out of a clear sky and snatches you up!", ch, NULL, NULL, TO_CHAR );
+    act( "A whirlwind spins down, snatches $n up and is gone.", ch, NULL, NULL, TO_ROOM );
+    char_from_room( ch );
+    char_to_room( ch, to_room );
+    act( "A whirlwind spins down and sets $n on the grass.", ch, NULL, NULL, TO_ROOM );
+    do_look( ch, "auto" );
+    snprintf( buf, sizeof(buf),
+              "The whirlwind sets you down at Level %d. Play again to ride on, or\n\r"
+              "PLAY RECORDER <level> to go straight to one: %s.\n\r", want, choices );
+    send_to_char( buf, ch );
+    WAIT_STATE( ch, PULSE_VIOLENCE );
     return true;
+}
+
+/* --------------------------------------------------------------------
+ * The owl.
+ *
+ * Owner, 2026-10-04: coming out of a dungeon you have won by its returning
+ * light (or Zelda's portal), an owl lands and says where the next dungeon
+ * is and what opens it. The directions are walked from the overworld as
+ * it is generated; tests/test_hyrule_walkthrough.py walks them.
+ * ------------------------------------------------------------------ */
+
+static const char *const hyrule_owl_hints[10] =
+{
+    /* 0: all nine pieces */
+    "All nine pieces of the Triforce are yours. Hold them together and "
+    "COMBINE TRIFORCE, and Hyrule is whole again. Well done, hero!",
+    /* 1 */
+    "Level 1, the Eagle's Gate, stands across the river west of the River "
+    "Landing. From where you came into Hyrule go north, then east to Bush Row, "
+    "then north three times to the Landing, and cross the stepping stones "
+    "west.",
+    /* 2 */
+    "Level 2, the Moon Gate, lies to the east across the water. From the "
+    "Crossroads South of the Lake go east through the meadows to Moblin "
+    "Hollow, north to the Wooded Crossroads, west to the Eastern Dock, and "
+    "the ferry there takes you north to it.",
+    /* 3 */
+    "Level 3, the Grove of the Manji, is in the south-west. From the Rock "
+    "Wall Above the Start go west past the Candle Shop Knoll, the Forest "
+    "Stream, the Lost Woods and the Bramble Wood, then south to the Path to "
+    "the Manji and east into the grove.",
+    /* 4 */
+    "Level 4 is on the Isle of the Snake in Lake Hylia. From the Forest "
+    "Stream go north to the Shore Below the Snake and over the plank bridge, "
+    "and ENTER RAFT: Level 3's raft carries you in.",
+    /* 5 */
+    "Level 5, the Lizard's Gate, is in the north-east. From the River "
+    "Landing go north to the Withered Thicket, east across the sands to "
+    "Below the Lost Hills, then north twice: Level 4's stepladder bridges "
+    "the gaps.",
+    /* 6 */
+    "Level 6, the Dragon's Gate, is in the far north-west. Go west through "
+    "the woods to the Western Meadow Edge, north on Level 3's raft past the "
+    "Western Crags into the graveyard, east to Ghost Hill, and bridge the "
+    "gap north with the stepladder.",
+    /* 7 */
+    "Level 7 lies beneath the Still Pond in the west. From the Shore Below "
+    "the Snake go west past the Forest River Ford and the Fairy Path to the "
+    "Lost Woods Crossing, then north. PLAY RECORDER at the pond to drain it.",
+    /* 8 */
+    "Level 8 hides in the Lion's Thicket, east of where you came into "
+    "Hyrule. From Bush Row go east along the river to the Dark Pine Stand "
+    "and on into the thicket, and BURN the bush there with a candle.",
+    /* 9 */
+    "Level 9 is beneath Spectacle Rock on Death Mountain. From the River "
+    "Landing go north to the Withered Thicket, west to the Foot of Death "
+    "Mountain, then north through the Lost Hills -- keep going north, five "
+    "times -- to the Summit Road, and west twice. BOMB the rock with all "
+    "eight pieces in hand."
+};
+
+/* Send text word-wrapped at 76 columns, each line indented by indent. */
+static void hyrule_send_wrapped( CHAR_DATA *ch, const char *text, int indent )
+{
+    char out[2 * MAX_STRING_LENGTH];
+    size_t col = 0;
+    const char *p = text;
+
+    out[0] = '\0';
+    while ( *p != '\0' )
+    {
+        const char *end = strchr( p, ' ' );
+        size_t word = end != NULL ? (size_t)( end - p ) : strlen( p );
+        char piece[MAX_INPUT_LENGTH];
+
+        if ( col == 0 )
+        {
+            int i;
+
+            for ( i = 0; i < indent; i++ )
+                toc_strlcat( out, " ", sizeof(out) );
+            col = indent;
+        }
+        else if ( col + 1 + word > 76 )
+        {
+            toc_strlcat( out, "\n\r", sizeof(out) );
+            col = 0;
+            continue;
+        }
+        else
+        {
+            toc_strlcat( out, " ", sizeof(out) );
+            col++;
+        }
+        if ( word >= sizeof(piece) )
+            word = sizeof(piece) - 1;
+        memcpy( piece, p, word );
+        piece[word] = '\0';
+        toc_strlcat( out, piece, sizeof(out) );
+        col += word;
+        p += word;
+        while ( *p == ' ' )
+            p++;
+    }
+    if ( col > 0 )
+        toc_strlcat( out, "\n\r", sizeof(out) );
+    send_to_char( out, ch );
+}
+
+/* The owl's advice for the dungeon this character is working on. */
+void hyrule_owl_advice( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+    int next = hyrule_next_level( ch );
+
+    hyrule_send_wrapped( ch, hyrule_owl_hints[next], 2 );
+    if ( next > 0 )
+    {
+        snprintf( buf, sizeof(buf),
+                  "Its door asks for the Triforce piece of Level %d, and its "
+                  "guardian's chamber for Level %d's treasure; the Oracle knows "
+                  "every path in Hyrule if you lose the way, and once you hold the "
+                  "Recorder, PLAY RECORDER carries you to any dungeon you have won "
+                  "and to the next.", next > 1 ? next - 1 : 0, next > 1 ? next - 1 : 0 );
+        if ( next > 1 )
+            hyrule_send_wrapped( ch, buf, 2 );
+        else
+            hyrule_send_wrapped( ch, "The Oracle knows every path in Hyrule if you lose the way.", 2 );
+    }
+}
+
+/* Coming out of a dungeon you have won, by its returning light: the owl. */
+void hyrule_owl_after_portal( CHAR_DATA *ch, ROOM_INDEX_DATA *from )
+{
+    const HYRULE_DUNGEON_GATE *gate;
+    int level;
+
+    if ( IS_NPC(ch) || from == NULL || ch->in_room == NULL
+    ||   ch->in_room->vnum < HYRULE_OVERWORLD_FIRST
+    ||   ch->in_room->vnum > HYRULE_OVERWORLD_LAST )
+        return;
+    for ( level = 1; level <= 9; level++ )
+        if ( ( gate = hyrule_dungeon_gate( level ) ) != NULL
+        &&   from->vnum >= gate->first_room && from->vnum <= gate->last_room )
+            break;
+    if ( level > 9 || !hyrule_carries( ch, HYRULE_PIECE_VNUM( level ) ) )
+        return;
+
+    send_to_char( "\n\rWith a rush of wings, a great owl drops out of the sky and lands on a\n\r"
+                  "branch beside you. It blinks at you and hoots:\n\r\n\r", ch );
+    act( "A great owl drops out of the sky beside $n and hoots at $m.",
+         ch, NULL, NULL, TO_ROOM );
+    hyrule_owl_advice( ch );
+    send_to_char( "\n\rThe owl spreads its wings and is gone.\n\r", ch );
 }
 
 /* The red 2nd Potion turns blue when drunk, as on the NES. */

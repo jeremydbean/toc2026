@@ -292,6 +292,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "bs",		do_backstab,	POS_STANDING,	 0,  LOG_NORMAL, 0 },
     { "berserk",	do_berserk,	POS_FIGHTING,	 0,  LOG_NORMAL, 1 },
     { "blinding",	do_blinding_fists,POS_FIGHTING,	 0,  LOG_NORMAL, 1 },
+    { "blow",		do_play,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "confuse",	do_confuse,	POS_FIGHTING,	15,  LOG_NORMAL, 0 },
     { "crane",		do_crane_dance,	POS_STANDING,	 5,  LOG_NORMAL, 0 },
     { "doorbash",       do_doorbash,    POS_STANDING,    0,  LOG_NORMAL, 1 },

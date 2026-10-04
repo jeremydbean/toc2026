@@ -10098,14 +10098,14 @@ S
 Shore Below the Snake~
 The forest gives way to the western waters of Lake Hylia, glittering under
 an open sky. A small island rises a short distance to the north, and a dark
-serpent-shaped doorway can just be glimpsed on it across a channel too wide
-to step and narrow enough to bridge with a ladder. Paths lead east, west
-and south along the shore, where the water sometimes spits fire.
+serpent-shaped doorway can just be glimpsed on it, reached by a narrow
+plank bridge laid across the channel. Paths lead east, west and south along
+the shore, where the water sometimes spits fire.
 ~
 0 Z B 2
 D0
-A narrow gap of water cuts across the way; a stepladder would bridge it.~
-stepladder crossing~
+~
+~
 0 0 30253
 D1
 ~
@@ -10456,14 +10456,13 @@ S
 Isle of the Snake~
 A small green island rises out of the lake, ringed on every side by cold,
 lapping water. At its heart a dark stone entrance is carved in the coiled
-shape of a serpent, its doorway breathing out damp air. Across a gap of
-water to the south lies the lakeshore, too wide to jump; only those who
-came over on a raft or bridged it with a ladder ever set foot on its grass.
+shape of a serpent, its doorway breathing out damp air. A narrow plank
+bridge runs back south over the water to the lakeshore.
 ~
 0 Z B 2
 D2
-A narrow gap of water cuts across the way; a stepladder would bridge it.~
-stepladder crossing~
+~
+~
 0 0 30237
 S
 #30254
@@ -10622,14 +10621,14 @@ S
 The Eastern Dock~
 A weathered wooden dock juts out from the grassy bank over open water, its
 planks bleached grey and its posts green with weed. Water stretches away
-northward toward a hazy green spit where a stone gate stands, too far to
-swim but easy going on a raft. Spat stones lie scattered on the planks.
-Behind the dock the meadow rolls off to the east.
+northward toward a hazy green spit where a stone gate stands, and a flat-
+bottomed ferry tied to the dock will pole anyone across. Spat stones lie
+scattered on the planks. Behind the dock the meadow rolls off to the east.
 ~
 0 Z B 2
 D0
-Open water lies that way. Only a raft will carry you across.~
-raft crossing~
+~
+~
 0 0 30276
 D1
 ~
@@ -10857,12 +10856,12 @@ On a spit of green land cut off by the river, a stone entrance stands in a
 rocky outcrop, its lintel carved with the spread wings of an eagle and
 walled about by green-grey statues. Cool, musty air drifts from the
 darkness within, smelling of bats. The river runs wide to the east, where a
-wooden dock waits for anyone with a raft to cross back.
+line of flat stepping stones leads back across to a wooden dock.
 ~
 0 Z B 2
 D1
-Open water lies that way. Only a raft will carry you across.~
-raft crossing~
+~
+~
 0 0 30272
 D5
 ~
@@ -10873,9 +10872,9 @@ S
 The River Landing~
 The river widens here, and a sturdy wooden dock juts out from the bank into
 the current. Across the water to the west a green shore with a carved stone
-gate waits, unreachable on foot but an easy crossing by raft. Spat stones
-of two colours litter the planks. Grass grows thick along the bank, and the
-land opens to the north and south.
+gate waits, and a line of flat stepping stones, worn smooth by many feet,
+leads over to it. Spat stones of two colours litter the planks. Grass grows
+thick along the bank, and the land opens to the north and south.
 ~
 0 Z B 2
 D0
@@ -10887,8 +10886,8 @@ D2
 ~
 0 0 30256
 D3
-Open water lies that way. Only a raft will carry you across.~
-raft crossing~
+~
+~
 0 0 30271
 S
 #30273
@@ -10954,13 +10953,13 @@ The Moon Gate~
 A stone entrance stands near the water's edge, its doorway crowned with a
 carved crescent moon and its steps worn smooth by the lake's damp. Air
 drifts from inside, smelling of stone, old water and shed snakeskin. The
-lake's edge cuts off the south, where a wooden dock juts into the water for
-those who came by raft.
+lake's edge cuts off the south, where a ferry waits at a wooden dock to
+carry travellers back across.
 ~
 0 Z B 2
 D2
-Open water lies that way. Only a raft will carry you across.~
-raft crossing~
+~
+~
 0 0 30260
 D5
 ~

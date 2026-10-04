@@ -148,6 +148,32 @@ in one, and `goto` and `transfer` are staff commands.
 | 8: The Lion | Piece 7, and a candle to burn the bush (as before) | The way to the guardian is utterly dark: the Red Candle | Piece 8 + the Magical Key (`30416`) | NES: the Red Candle lights dark rooms and burns Level 8's bush; the Magical Key is the Lion's treasure. |
 | 9: Death Mountain | Piece 8 (and all eight pieces and a bomb at the door, as before) | The doors before Ganon's lair: the Magical Key | Great chest: piece 9, the final Triforce piece (`30408`, Ganon's Power), + the Master Sword (`30200`) | NES: the Magical Key opens every lock in the last dungeons. The Silver Arrow that finishes Ganon is in Death Mountain's own cellar, where the NES keeps it, before his lair; the Red Ring is in its other cellar. |
 
+**The overworld must not ask for a tool before its dungeon gives it.**
+Until 2026-10-04 Levels 1 and 2 stood behind raft crossings (`H5`-`I5`,
+`M4`-`M5`) and the raft is Level 3's treasure, and Level 4's island behind a
+stepladder crossing (`F3`-`F4`), which is Level 4's own -- so nobody without
+a traded raft could start the chain. Those three are open now (stepping
+stones, a ferry, a plank bridge), and `tests/test_hyrule_oracle.py` routes
+from the entry to every dungeon carrying only what the dungeons before it
+give. `tests/test_hyrule_walkthrough.py` plays the whole chain live as a
+mortal: every walk, entrance, chest and returning light, the owl and the
+Recorder.
+
+**The owl.** Leaving a dungeon you have won by its returning light, an owl
+lands and says where the next dungeon is and what opens it
+(`hyrule_owl_after_portal` in `src/hyrule.c`, called from `do_enter`). Its
+directions are the generated routes; change the overworld and re-walk them.
+
+**The Oracle knows the zone.** `webadmin/hyrule_oracle.py` gives her a guide
+to how Hyrule plays here, the asker's progress (the game sends their room,
+the dungeon they are on and the Hyrule items they carry with every
+question), and walking routes from where they stand, with each seal's act
+spelled out. Keep its `DUNGEONS` and `GUIDE` in step with this page.
+
+**A chest is never relocked under somebody standing at it.** The reset that
+refills a Hyrule chest skips one with a player in its room: a reset landing
+between UNLOCK and OPEN locked it in their face.
+
 After Ganon, `COMBINE TRIFORCE` joins the nine pieces into The Triforce
 (see below). The Triforce counts as every piece, so its
 holder can walk back into any dungeon.
@@ -745,7 +771,7 @@ as `open <keyword>`, so a published route stays honest.
 | Bombs | `BOMB` a cracked wall (uses one), or `BOMB <enemy>` for fire damage (uses one); Dodongo swallows one for half its health. Four to a purchase; the bag holds 8, 12 or 16. |
 | Blue and Red Candle | Light; `BURN` a bush; `BURN <enemy>` for fire damage (the Red Candle burns hotter) |
 | Bait | `FEED` the hungry Goriya (used up), or `FEED BAIT` to set it down: the room's enemies stop fighting and turn to it for a while (kept; never a guardian) |
-| Recorder | Drains Level 7's lake, shrinks Digdogger (a third of its health), and on the overworld its whirlwind carries you to the next dungeon whose Triforce piece you carry |
+| Recorder | Drains Level 7's lake, shrinks Digdogger (a third of its health), and on the overworld its whirlwind carries you to a dungeon's screen: any whose Triforce piece you carry, and the one you are working on (`hyrule_next_level`). `PLAY RECORDER` goes to the next of those in turn -- the one being worked on first from a screen that is no dungeon's -- and `PLAY RECORDER <level>` straight to one. `BLOW` is the same command. A puzzle that wants the tune always gets it, a level or not |
 | Magical Rod | A wand of acid blast; with the Magic Book carried its blast bursts into flame as well |
 | Magic Book | Held armour; the Rod's fire |
 | Letter | The potion shops sell only to its carrier |

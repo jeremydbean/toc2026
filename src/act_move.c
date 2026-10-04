@@ -4112,10 +4112,16 @@ void do_enter( CHAR_DATA *ch, char *argument )
     extract_obj( obj );
    }
 
-   char_from_room( ch );
-   char_to_room( ch, to_room );
-   act("$n materializes out of nowhere.",ch,NULL,NULL,TO_ROOM);
-   do_look(ch,"auto");
+   {
+     /* Hyrule's owl meets whoever comes out of a dungeon they have won. */
+     ROOM_INDEX_DATA *left = ch->in_room;
+
+     char_from_room( ch );
+     char_to_room( ch, to_room );
+     act("$n materializes out of nowhere.",ch,NULL,NULL,TO_ROOM);
+     do_look(ch,"auto");
+     hyrule_owl_after_portal( ch, left );
+   }
 
    return;
 }

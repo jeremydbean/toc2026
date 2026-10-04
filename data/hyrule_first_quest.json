@@ -1168,7 +1168,7 @@
           },
           "north": {
             "to": "F4",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30253
           },
           "south": {
@@ -1608,7 +1608,7 @@
         "exits": {
           "south": {
             "to": "F3",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30237
           }
         },
@@ -1846,7 +1846,7 @@
           },
           "north": {
             "to": "M5",
-            "gate": "raft",
+            "gate": "open",
             "to_vnum": 30276
           }
         },
@@ -2123,7 +2123,7 @@
         "exits": {
           "east": {
             "to": "I5",
-            "gate": "raft",
+            "gate": "open",
             "to_vnum": 30272
           }
         },
@@ -2155,7 +2155,7 @@
           },
           "west": {
             "to": "H5",
-            "gate": "raft",
+            "gate": "open",
             "to_vnum": 30271
           }
         },
@@ -2246,7 +2246,7 @@
         "exits": {
           "south": {
             "to": "M4",
-            "gate": "raft",
+            "gate": "open",
             "to_vnum": 30260
           }
         },

@@ -10219,6 +10219,11 @@ static const char * const empower_spells[] =
     NULL
 };
 
+/* Set while Hermie hands out EMPOWER or TITANIC (spellup_grant), which she
+   does as the player on themselves: the staff notice then names her, not
+   "Alaric empowered Alaric" as though a mortal had run a staff command. */
+static const char *buff_giver = NULL;
+
 void do_empower( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
@@ -10313,9 +10318,13 @@ void do_empower( CHAR_DATA *ch, char *argument )
     {
         char note[MAX_STRING_LENGTH];
 
-        snprintf( note, sizeof(note), "%s empowered %s (%s).",
-            ch->name, victim->name,
-            duration == -1 ? "permanent" : "temporary" );
+        if ( buff_giver != NULL )
+            snprintf( note, sizeof(note), "%s empowered %s through BUFF (temporary).",
+                buff_giver, victim->name );
+        else
+            snprintf( note, sizeof(note), "%s empowered %s (%s).",
+                ch->name, victim->name,
+                duration == -1 ? "permanent" : "temporary" );
         wizinfo( note, LEVEL_IMMORTAL );
     }
     if ( duration == -1 )
@@ -10418,9 +10427,13 @@ void do_titanic( CHAR_DATA *ch, char *argument )
     {
         char note[MAX_STRING_LENGTH];
 
-        snprintf( note, sizeof(note), "%s made %s titanic (%s).",
-            ch->name, victim->name,
-            duration == -1 ? "permanent" : "temporary" );
+        if ( buff_giver != NULL )
+            snprintf( note, sizeof(note), "%s made %s titanic through BUFF (temporary).",
+                buff_giver, victim->name );
+        else
+            snprintf( note, sizeof(note), "%s made %s titanic (%s).",
+                ch->name, victim->name,
+                duration == -1 ? "permanent" : "temporary" );
         wizinfo( note, LEVEL_IMMORTAL );
     }
     act( "$n grows to titanic proportions!", victim, NULL, NULL, TO_ROOM );
@@ -10631,7 +10644,9 @@ static bool spellup_grant( CHAR_DATA *mob, CHAR_DATA *victim,
            to empower themselves cannot fail that way. The affect then
            carries their level rather than hers. */
         snprintf( buf, sizeof(buf), "%s %d", victim->name, SPELLUP_DURATION );
+        buff_giver = mob->short_descr;
         do_empower( victim, buf );
+        buff_giver = NULL;
         return TRUE;
     }
 
@@ -10645,7 +10660,9 @@ static bool spellup_grant( CHAR_DATA *mob, CHAR_DATA *victim,
         }
         /* Same reason as empower above. */
         snprintf( buf, sizeof(buf), "%s %d", victim->name, SPELLUP_DURATION );
+        buff_giver = mob->short_descr;
         do_titanic( victim, buf );
+        buff_giver = NULL;
         return TRUE;
     }
 

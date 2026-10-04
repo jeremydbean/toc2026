@@ -1814,7 +1814,7 @@ cannot deliver the final blow.
 See also: ARCHERY, WIELD, SCAN
 ~
 
-0 HYRULE DUNGEONS 'HYRULE ORDER'~
+0 HYRULE DUNGEONS 'HYRULE ORDER' 'HYRULE LEVELS'~
 Hyrule is entered through the arcade cabinet in the Games Room, on the
 university campus.  ENTER CABINET and the screen takes you.  RECALL works
 on the overworld but not inside the nine numbered dungeons.
@@ -1825,6 +1825,8 @@ The nine dungeons are done IN ORDER, and every one works the same way:
   - the guardian drops a key.  UNLOCK the door behind it, then UNLOCK and
     OPEN the chest there: it holds this dungeon's piece and its treasure.
 Carry what you need in hand, worn or in a bag (not the stash).
+
+The Levels column is the character levels each dungeon is built for.
 
   Level  Levels  To enter     Before the guardian   Chest holds
   1      2-8     --           --                    piece 1, boomerang
@@ -1837,11 +1839,29 @@ Carry what you need in hand, worn or in a bag (not the stash).
   8      46-52   piece 7      the Red Candle        piece 8, Magical Key
   9      53-59   pieces 1-8   the Magical Key       piece 9, Master Sword
 
+Where they are, from The First Quest Begins where the cabinet sets you down:
+  1  north up the I column to the River Landing, stepping stones west
+  2  east to Moblin Hollow, north, west to the Eastern Dock, ferry north
+  3  west through the Lost Woods and Bramble Wood, south, then east
+  4  Shore Below the Snake, plank bridge north, ENTER RAFT
+  5  north-east past Below the Lost Hills, two stepladder crossings north
+  6  far north-west: raft north to the graveyard, Ghost Hill, ladder north
+  7  the Still Pond in the west: PLAY RECORDER to drain it
+  8  the Lion's Thicket in the east: BURN BUSH
+  9  Spectacle Rock: Lost Hills north five times, then BOMB CRACKED
+Each entrance is DOWN from its screen.
+
 Each guardian is a hard fight for its band: alone, plan to be well above
 it or bring friends.  A lost piece or treasure comes back from the same
 chest after the next reset, when the guardian has a new key.  Pieces cannot
 be dropped, given or sold.  COMBINE TRIFORCE joins all nine.  Each dungeon's
 map and compass show you the way (HYRULE ITEMS).
+
+Coming out of a dungeon you have won, by its returning light, an owl tells
+you where the next one is.  Once you hold the Recorder, PLAY RECORDER (or
+BLOW RECORDER) on the open land carries you to any dungeon you have won
+and to the one you are working on; PLAY RECORDER <level> picks one.  The
+Oracle knows every path in Hyrule: PRAY, and ask her the way.
 
 See also: GANON, COMBINE, RECALL, HYRULE ITEMS, HYRULE SECRETS, HEARTS
 ~
@@ -2969,7 +2989,8 @@ Syntax: bomb <cracked surface|creature>
         burn <bush|creature>
         feed <guardian>
         feed bait
-        play <instrument>
+        play <instrument> [level]
+        blow <instrument> [level]
 
 Hyrule's hidden ways open only to the act the NES asked for, with the tool
 in hand; OPEN, PICK, DOORBASH and UNLOCK will not shift them.
@@ -2979,9 +3000,12 @@ At a cracked wall or rock it opens the way; at a creature it is a blast of
 fire, and Dodongo swallows one whole and loses half his health.
 BURN needs a lit candle in your light slot: a bush burns away to show what
 it hid, and a creature takes a lick of flame (the Red Candle burns hotter).
-PLAY needs the Recorder itself: it drains Level 7's lake, shrinks a
-Digdogger to a third of its health, and out on the open land calls a
-whirlwind to the next dungeon whose Triforce piece you carry.
+PLAY (or BLOW) needs the Recorder itself: it drains Level 7's lake and
+shrinks a Digdogger to a third of its health -- where a puzzle wants the
+tune, the puzzle always gets it.  Anywhere else on the open land it calls a
+whirlwind to a dungeon's door: any dungeon whose Triforce piece you carry,
+and the one you are working on next.  PLAY RECORDER goes to the next of
+those in turn; PLAY RECORDER <level> goes straight to that one.
 FEED gives bait to the hungry Goriya, who eats it.  FEED BAIT anywhere else
 sets it down: the room's enemies forget you and turn to the smell for a
 while, and you keep the bait.  A guardian is not fooled.

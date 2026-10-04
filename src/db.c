@@ -2143,6 +2143,27 @@ void reset_area( AREA_DATA *pArea )
             }
 
             /*
+             * But not a chest somebody is standing at: a reset between their
+             * UNLOCK and their OPEN locked it in their face (found walking
+             * the chain, 2026-10-04). It refills once they have gone.
+             */
+            if ( IS_HYRULE_CHEST(pObjToIndex->vnum) && obj_to->in_room != NULL )
+            {
+                CHAR_DATA *watcher;
+                bool watched = false;
+
+                for ( watcher = obj_to->in_room->people; watcher != NULL;
+                      watcher = watcher->next_in_room )
+                    if ( !IS_NPC(watcher) )
+                        watched = true;
+                if ( watched )
+                {
+                    last = false;
+                    break;
+                }
+            }
+
+            /*
              * ROM 2.4's "fix object lock state": a container standing in a
              * room is closed and locked again as its builder wrote it, so
              * a looted chest is shut at the next reset rather than left

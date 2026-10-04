@@ -5360,16 +5360,20 @@ void do_play( CHAR_DATA *ch, char *argument )
 {
     OBJ_DATA *instrument;
     OBJ_DATA *target;
+    char arg[MAX_INPUT_LENGTH];
 
-    if ( argument[0] == '\0' )
+    /* PLAY RECORDER [level]: the instrument, then where the whirlwind
+       should go (hyrule_play_recorder). BLOW is the same command. */
+    argument = one_argument( argument, arg );
+    if ( arg[0] == '\0' )
     {
         send_to_char( "Play what?\n\r", ch );
         return;
     }
 
-    instrument = get_obj_carry( ch, argument );
+    instrument = get_obj_carry( ch, arg );
     if ( instrument == NULL )
-        instrument = get_obj_wear( ch, argument );
+        instrument = get_obj_wear( ch, arg );
     if ( instrument == NULL
     || ( !is_name( "recorder", instrument->name )
       && !is_name( "whistle", instrument->name )
@@ -5397,6 +5401,9 @@ void do_play( CHAR_DATA *ch, char *argument )
             break;
     }
 
+    /* A puzzle that wants the tune always gets it, PLAY RECORDER <level>
+       included; anywhere else the level picks the whirlwind's dungeon
+       (owner, 2026-10-04). */
     act( "You play $p, and an ancient melody fills the room.",
          ch, instrument, NULL, TO_CHAR );
     act( "$n plays $p, and an ancient melody fills the room.",
@@ -5405,7 +5412,7 @@ void do_play( CHAR_DATA *ch, char *argument )
     if ( target == NULL )
     {
         /* No lake: it shrinks Digdogger, or calls the whirlwind. */
-        if ( !IS_HYRULE_ROOM_VNUM(ch->in_room->vnum) || !hyrule_play_recorder( ch ) )
+        if ( !IS_HYRULE_ROOM_VNUM(ch->in_room->vnum) || !hyrule_play_recorder( ch, argument ) )
             send_to_char( "The melody fades without an answer.\n\r", ch );
         return;
     }

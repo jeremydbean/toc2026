@@ -65,6 +65,40 @@ ORACLE_CONTROL = "\x01"
 # The game appends the asker's skills and spells to each question as a last
 # field starting with this (src/abilities.c, abilities_oracle_summary).
 ABILITIES_FIELD = "ABILITIES:"
+# ... and where they stand, as "room=N;hyrule_next=N;hyrule_items=a|b"
+# (src/oracle.c, oracle_state), which the context provider routes from.
+STATE_FIELD = "STATE:"
+
+
+def parse_state(text: str) -> dict:
+    """The game's STATE field as a dict: room and hyrule_next as ints,
+    hyrule_items as a list of names. Anything malformed is left out."""
+    state: dict = {}
+    for part in (text or "").split(";"):
+        key, sep, value = part.partition("=")
+        key = key.strip()
+        if not sep or not key:
+            continue
+        if key in ("room", "hyrule_next"):
+            try:
+                state[key] = int(value.strip())
+            except ValueError:
+                pass
+        elif key == "hyrule_items":
+            state[key] = [v.strip() for v in value.split("|") if v.strip()]
+    return state
+
+
+def _takes_state(provider) -> bool:
+    """Whether a context provider accepts the state as a third argument."""
+    try:
+        import inspect
+        params = list(inspect.signature(provider).parameters.values())
+    except (TypeError, ValueError):
+        return False
+    if any(p.kind == p.VAR_POSITIONAL for p in params):
+        return True
+    return len(params) >= 3
 _DEFAULT_MODEL = "claude-haiku-4-5"
 
 # The model emits this for a question that is not about the game; the game
@@ -750,8 +784,13 @@ def poll_once(ask_path, answer_path, context_provider=None) -> int:
             continue
         player = parts[1].strip()
         abilities = ""
-        if len(parts) >= 4 and parts[-1].startswith(ABILITIES_FIELD):
-            abilities = parts.pop()[len(ABILITIES_FIELD):].strip()
+        state: dict = {}
+        while len(parts) >= 4 and parts[-1].startswith((ABILITIES_FIELD, STATE_FIELD)):
+            field = parts.pop()
+            if field.startswith(ABILITIES_FIELD):
+                abilities = field[len(ABILITIES_FIELD):].strip()
+            else:
+                state = parse_state(field[len(STATE_FIELD):])
         question = "\t".join(parts[2:]).strip()
         if not player or not question:
             continue
@@ -767,7 +806,9 @@ def poll_once(ask_path, answer_path, context_provider=None) -> int:
         cache_key = None
         if context_provider is not None:
             try:
-                got = context_provider(player, question)
+                got = (context_provider(player, question, state)
+                       if _takes_state(context_provider)
+                       else context_provider(player, question))
                 if isinstance(got, tuple):
                     context = got[0] or ""
                     cache_key = got[1] if len(got) > 1 else None

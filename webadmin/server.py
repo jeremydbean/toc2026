@@ -130,6 +130,7 @@ try:
     from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values, SECTOR_TYPES
     from webadmin.area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS, ROOM_FLAGS
     from webadmin import oracle
+    from webadmin import hyrule_oracle
 except ImportError:
     from area_health import build_area_health
     from area_parser import AreaParser, APPLY_LOCATIONS
@@ -137,6 +138,7 @@ except ImportError:
     from area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values, SECTOR_TYPES
     from area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS, ROOM_FLAGS
     import oracle
+    import hyrule_oracle
 
 # Default paths
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
@@ -838,11 +840,30 @@ def _oracle_trainer_lines(question: str, asker_class: str = "",
     return out
 
 
-def _oracle_context(player: str, question: str) -> str:
+_ORACLE_GRAPH: Tuple[int, Any] | None = None
+
+
+def _oracle_world_graph(rooms: Dict[int, Any], directions: Dict[str, Any]):
+    """The walking graph hyrule_oracle routes over, rebuilt only when the
+    parser's room table is replaced (a reload)."""
+    global _ORACLE_GRAPH
+    if _ORACLE_GRAPH is not None and _ORACLE_GRAPH[0] == id(rooms):
+        return _ORACLE_GRAPH[1]
+    graph = hyrule_oracle.build_graph(rooms, directions.get("links") or [])
+    _ORACLE_GRAPH = (id(rooms), graph)
+    return graph
+
+
+def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] = None) -> str:
     """Build live grounding for one question: the asker's level, class and worn
     gear, and -- for gear questions -- the obtainable best-in-slot for their
     class and level, with where it drops. Runs in the poller's thread; the
-    dashboard already reads player files and parses the world here."""
+    dashboard already reads player files and parses the world here.
+
+    state is what the game sends with the question (oracle.parse_state): the
+    room the asker stands in and their Hyrule progress. Hyrule questions, and
+    any from somebody standing in Hyrule, lead with hyrule_oracle's guide,
+    progress and routes, which get the room the rest would crowd out."""
     # Without a readable player file there is nothing personal to say, but
     # the help, the drop tables and the live world still answer the question.
     prof = parse_player_file(player) or {}
@@ -1068,6 +1089,16 @@ def _oracle_context(player: str, question: str) -> str:
             lines.append("Best leveling for level %d (the site's leveling guide) -- %s."
                          % (lvl, " | ".join(picks)))
 
+    hyrule: list = []
+    try:
+        directions = load_directions()
+        hyrule = hyrule_oracle.oracle_lines(question, state or {}, rooms, directions,
+                                            _oracle_world_graph(rooms, directions)
+                                            if rooms else None)
+    except Exception:
+        hyrule = []
+    if hyrule:
+        return ("\n".join(hyrule) + "\n" + "\n".join(lines))[:16000]
     return "\n".join(lines)[:9000]
 
 
@@ -1097,9 +1128,15 @@ def _oracle_cache_key(player: str, question: str):
                      str(prof.get("race", "")).lower(), str(prof.get("level", ""))))
 
 
-def _oracle_provider(player: str, question: str):
-    """What the poller hands each question: (live grounding, cache key)."""
-    return _oracle_context(player, question), _oracle_cache_key(player, question)
+def _oracle_provider(player: str, question: str, state: Optional[Dict[str, Any]] = None):
+    """What the poller hands each question: (live grounding, cache key). A
+    question about Hyrule, or from somebody standing in it, depends on where
+    they stand and what they carry, so it is never cached."""
+    key = _oracle_cache_key(player, question)
+    if hyrule_oracle.is_hyrule_question(question) \
+            or hyrule_oracle.in_hyrule(int((state or {}).get("room") or 0)):
+        key = None
+    return _oracle_context(player, question, state), key
 
 
 async def _oracle_poll_loop():

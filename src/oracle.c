@@ -442,6 +442,48 @@ static bool oracle_is_dispute( const char *said )
 }
 
 
+/* One Hyrule item's name for the state field, with the field's own
+   separators taken out. */
+static void oracle_state_item( char *out, size_t size, OBJ_DATA *obj, int *count )
+{
+    char name[MAX_INPUT_LENGTH];
+    char *p;
+
+    if ( obj->pIndexData == NULL || !IS_HYRULE_ROOM_VNUM( obj->pIndexData->vnum )
+    ||   *count >= 40 )
+        return;
+    toc_strlcpy( name, obj->short_descr != NULL ? obj->short_descr : "?", sizeof(name) );
+    for ( p = name; *p != '\0'; p++ )
+        if ( *p == '|' || *p == ';' || *p == '=' )
+            *p = ' ';
+    if ( *count > 0 )
+        toc_strlcat( out, "|", size );
+    toc_strlcat( out, name, size );
+    (*count)++;
+}
+
+/*
+ * Where the asker stands, for the poller's routes, and how far along
+ * Hyrule they are: "room=30237;hyrule_next=4;hyrule_items=the raft|...".
+ * Items are what they carry from Hyrule's own catalog, in hand, worn or one
+ * bag down -- what the dungeon gates themselves ask (hyrule_carries).
+ */
+static void oracle_state( CHAR_DATA *ch, char *out, size_t size )
+{
+    OBJ_DATA *obj;
+    OBJ_DATA *in;
+    int count = 0;
+
+    snprintf( out, size, "room=%d;hyrule_next=%d;hyrule_items=",
+              ch->in_room != NULL ? ch->in_room->vnum : 0, hyrule_next_level( ch ) );
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    {
+        oracle_state_item( out, size, obj, &count );
+        for ( in = obj->contains; in != NULL; in = in->next_content )
+            oracle_state_item( out, size, in, &count );
+    }
+}
+
 /* Spool one record for the out-of-process poller: a question, or -- when it
    begins with ORACLE_CONTROL -- a message from the game itself. */
 static bool oracle_spool_question( CHAR_DATA *ch, const char *question )
@@ -466,18 +508,23 @@ static bool oracle_spool_question( CHAR_DATA *ch, const char *question )
     }
 #endif
 
-    /* A real question carries the asker's abilities as a last field, so
-       "what am I missing" is answered from the game (abilities.c). */
+    /* A real question carries the asker's abilities and where they stand
+       as two last fields, so "what am I missing" and "how do I get there
+       from here" are answered from the game (abilities.c, oracle_state). */
     if ( question[0] != ORACLE_CONTROL && !IS_NPC(ch) )
     {
         static char summary[4 * MAX_STRING_LENGTH];
         static char clean[4 * MAX_STRING_LENGTH];
+        char state[MAX_STRING_LENGTH];
+        char state_clean[MAX_STRING_LENGTH];
 
         abilities_oracle_summary( ch, summary, sizeof(summary) );
         oracle_sanitize( clean, sizeof(clean), summary );
-        fprintf( fp, "%ld\t%s\t%s\tABILITIES:%s\n",
+        oracle_state( ch, state, sizeof(state) );
+        oracle_sanitize( state_clean, sizeof(state_clean), state );
+        fprintf( fp, "%ld\t%s\t%s\tABILITIES:%s\tSTATE:%s\n",
                  (long) ( current_time > 0 ? current_time : time(NULL) ),
-                 ch->name, question, clean );
+                 ch->name, question, clean, state_clean );
     }
     else
         fprintf( fp, "%ld\t%s\t%s\n",
