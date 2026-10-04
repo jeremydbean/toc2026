@@ -1260,11 +1260,29 @@ through. The exception is **above** the band: there is no level check
 left to wait for, so a grant to a character past 21 lands at once,
 exactly as though the roll had hit.
 
+**A new power starts at 1%; one handed back keeps 75%.** `psionic_learn`
+floors a granted power at 1% (owner, 2026-10-04: trained with Salir, as
+the awakening message says); the restore loops -- in `grant_psionics` and
+`psionic_restore_known`, which runs at every login and on the first
+remort -- put a remembered power back at 75%. `psionic_owed_by_remorts`
+tops up, at login, a character with two or more remorts holding fewer
+than their due. The long awakening message is for new powers only
+(`added` in `grant_psionics`).
+
+**Hermie stands at the altar for six hours after every boot**
+(`spellup_boot_place`, called from `main` after `boot_db`).
+`TOC_NO_BOOT_HERMIE` skips it, and `tests/live_mud.py` sets it by default
+because several tests count every spellup mobile; pass
+`extra_env={"TOC_NO_BOOT_HERMIE": None}` to see her.
+
 **A staff GRANTPSI is a promise; a remort's owing is a chance.** The
 dice decide *when* a granted character awakens, but if they miss at 18,
 19 and 20, level 21 pays the grant anyway (owner, 2026-10-04: Alaric was
 granted and missed three rolls). The one-in-three who finish the band
-with nothing are remort-owed characters only.
+with nothing are remort-owed characters only. *Superseded the same
+night:* a pending grant now pays on the very next level gained, at any
+level, before the band is consulted, and GRANTPSI no longer tells the
+player anything.
 
 Four things were wrong here in 2026-09, all of them from the roll
 living in the wrong place -- open-coded as

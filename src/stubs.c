@@ -365,15 +365,62 @@ static void psi_log( CHAR_DATA *ch, const char *fmt, ... )
 }
 
 
+/*
+ * A power newly given starts at 1%, like any skill a character has just
+ * learned, and is trained up with Salir (owner, 2026-10-04). A power
+ * handed back from an earlier life keeps 75% -- see the restore loops --
+ * because it was practised once already.
+ */
 static void psionic_learn( CHAR_DATA *ch, sh_int sn )
 {
     if ( sn < 0 )
         return;
 
-    if ( ch->pcdata->learned[(int)sn] < 75 )
-        ch->pcdata->learned[(int)sn] = 75;
+    if ( ch->pcdata->learned[(int)sn] < 1 )
+        ch->pcdata->learned[(int)sn] = 1;
 
     psionic_remember( ch, skill_table[(int)sn].name );
+}
+
+/*
+ * Whether a remorted character holds fewer powers than their remort count
+ * gives: two remorts or more, and fewer than (remorts - 1) of a
+ * discipline, or not all seventeen after the fifth. A character remorted
+ * before remorts handed psionics out (Bongaboy, three remorts and none) is
+ * topped up at login.
+ */
+bool psionic_owed_by_remorts( CHAR_DATA *ch )
+{
+    static const char * const sets[4][6] =
+    {
+        { "ego whip", "torment", "nightmare", "mindblast", NULL, NULL },
+        { "astral walk", "shift", "project", "telekinesis", NULL, NULL },
+        { "mindbar", "psionic armor", "psychic shield", "transfusion", NULL, NULL },
+        { "clairvoyance", "confuse", "mind leech", "enervate", "pyrotechnics", NULL }
+    };
+    int s, i, want;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL || ch->pcdata->num_remorts < 2 )
+        return false;
+
+    for ( s = 0; s < 4; s++ )
+    {
+        int held = 0, size = 0;
+
+        for ( i = 0; sets[s][i] != NULL; i++ )
+        {
+            int sn = skill_lookup( sets[s][i] );
+
+            size++;
+            if ( sn >= 0 && psionic_is_known( ch, (sh_int)sn ) )
+                held++;
+        }
+        want = ch->pcdata->num_remorts >= 5 ? size
+             : UMIN( size, UMAX( 1, ch->pcdata->num_remorts - 1 ) );
+        if ( held < want )
+            return true;
+    }
+    return false;
 }
 
 void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
@@ -401,6 +448,7 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
 
     int i, s;
     int selected = 0;
+    int added = 0;     /* new powers, not ones handed back */
     char normalized_spec[MAX_STRING_LENGTH];
     char invalid[MAX_INPUT_LENGTH];
     bool spec_only;
@@ -473,10 +521,16 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
             {
                 if ( ch->pcdata->learned[(int)sn] < 75 )
                 {
+                    char line[MAX_INPUT_LENGTH];
+
                     ch->pcdata->learned[(int)sn] = 75;
                     psi_log( ch, "restored %s (%s set) to 75%% from an "
                                  "earlier life", skill_table[(int)sn].name,
                              psi_set_names[s] );
+                    snprintf( line, sizeof(line),
+                        "{0EYour mind remembers %s from an earlier life.{00\n\r",
+                        skill_table[(int)sn].name );
+                    send_to_char( line, ch );
                 }
                 selected++;
             }
@@ -496,6 +550,7 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
                 if ( sn >= 0 && !psionic_is_known( ch, sn ) )
                 {
                     psionic_learn( ch, sn );
+                    added++;
                     psi_log( ch, "granted %s (%s set) -- final remort, "
                                  "every power", skill_table[(int)sn].name,
                              psi_set_names[s] );
@@ -517,6 +572,7 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
                                             skill_table[(int)sn].name ) )
                 {
                     psionic_learn( ch, sn );
+                    added++;
                     psi_log( ch, "granted %s (%s set) -- named in the "
                                  "immortal spec", skill_table[(int)sn].name,
                              psi_set_names[s] );
@@ -562,6 +618,7 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
                 sh_int chosen = *psi_sets[s][unknown[pick]];
 
                 psionic_learn( ch, chosen );
+                added++;
                 psi_log( ch, "granted %s (%s set) -- drew %d of %d unheld",
                          skill_table[(int)chosen].name, psi_set_names[s],
                          pick + 1, count );
@@ -592,7 +649,11 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
     free_string( ch->pcdata->psionic_grant_spec );
     ch->pcdata->psionic_grant_spec = str_dup( "" );
     /* The original awakening, as the game first had it (owner asked for
-       it back): it tells the player where the powers are trained. */
+       it back): it tells the player where the powers are trained. Only
+       when something new was given -- a grant or a remort that finds the
+       character already holding their due hands back what they had, says
+       so power by power above, and is not an awakening. */
+    if ( added > 0 )
     send_to_char(
         "\n\r\n\r"
         "*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*\n\r"

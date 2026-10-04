@@ -263,6 +263,9 @@ static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
 
     add_money(ch, reward);
     ch->questgamble_pts = (sh_int)pointreward;
+    watch_log( ch, "quest complete: %d gold, %d quest points%s%s (streak bonus %d%%)",
+        reward, pointreward, completed_rush ? ", rush" : "",
+        completed_emergency ? ", emergency" : "", streak_bonus );
     snprintf(buf, sizeof(buf), "Here's your %d gold - well earned!", reward);
     do_say(questman, buf);
     send_to_char(

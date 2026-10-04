@@ -5109,6 +5109,12 @@ void do_remort( CHAR_DATA *ch, char *arg)
    }
    /* HEHE, FINALLY A VALID CHOICE */
    player_snapshot_milestone( ch, "remort", true );
+   watch_log( ch, "remort %d: level %d %s/%s/%s -> %s/%s/%s",
+       ch->pcdata->num_remorts + 1, ch->level,
+       class_table[ch->class].name, pc_race_table[ch->race].name,
+       ch->pcdata->guild >= 0 ? class_table[ch->pcdata->guild].name : "none",
+       class_table[requested_class].name, pc_race_table[requested_race].name,
+       requested_guild >= 0 ? class_table[requested_guild].name : "none" );
 
 
 

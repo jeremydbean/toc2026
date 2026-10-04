@@ -2387,15 +2387,17 @@ free_string(obj->description);
 		next_obj = t_obj->next_content;
 		obj_from_obj(t_obj);
 
+		/* One of these, as stock ROM chains them. Without the elses a
+		   corpse rotting in someone's hands or inside a container gave
+		   its contents to the carrier and then, finding no room,
+		   destroyed them: a player who carried their own corpse lost
+		   everything in it when it rotted. */
 		if (obj->in_obj) /* in another object */
 		    obj_to_obj(t_obj,obj->in_obj);
-
-		if (obj->carried_by)  /* carried */
+		else if (obj->carried_by)  /* carried */
 		    obj_to_char(t_obj,obj->carried_by);
-
-		if (obj->in_room == NULL)  /* destroy it */
+		else if (obj->in_room == NULL)  /* nowhere at all */
 		    extract_obj(t_obj);
-
 		else /* to a room */
 		    obj_to_room(t_obj,obj->in_room);
 	    }

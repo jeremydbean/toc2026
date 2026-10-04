@@ -21,6 +21,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   prose say gold instead of rupees. A rupee was a gold coin underneath all
   along, so no price or reward changed: the Blue Ring is 250 gold, a door
   repair 20, a moblin's gift 10, 30 or 100.
+- **Remort psionics, end to end.** A new power starts at 1% and is trained
+  with Salir; one handed back from an earlier life keeps 75%. A character
+  with two or more remorts who holds fewer powers than the remorts give
+  (Bongaboy: three remorts, none) is topped up at login. The big awakening
+  message shows only when something new is given; powers handed back are
+  named one by one.
+- **A rotting corpse in someone's hands kept nothing.** Its contents went
+  to the carrier and were then destroyed in the same pass, because the
+  three destinations were not chained with else (stock ROM's are).
+- **More of what a watched player does is logged:** buying and selling
+  (item, vnum, price, shopkeeper), giving an item (both sides), the
+  stash (in, out, and across linked characters), a finished quest's
+  reward, and a remort's old and new class, race and guild. TAKE from a
+  linked character's stash ignores carry limits, as withdraw does.
 - **A staff GRANTPSI pays on the next level gained, at any level.** It used to
   wait on the 18-21 band's one-in-four rolls (Alaric missed three). The
   player is no longer told a grant was made; the awakening itself is the

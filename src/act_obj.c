@@ -787,6 +787,8 @@ void do_stash( CHAR_DATA *ch, char *argument )
                   || !can_drop_obj( ch, obj ) )
                     continue;
 
+                watch_log( ch, "stashed %s (vnum %d)", obj->short_descr,
+                    obj->pIndexData->vnum );
                 obj_from_char( obj );
                 stash_receive( ch, obj );
                 put++;
@@ -848,6 +850,8 @@ void do_stash( CHAR_DATA *ch, char *argument )
         act( "You put $p away for safe keeping.", ch, obj, NULL, TO_CHAR );
         act( "$n puts $p away.", ch, obj, NULL, TO_ROOM );
 
+        watch_log( ch, "stashed %s (vnum %d)", obj->short_descr,
+            obj->pIndexData->vnum );
         obj_from_char( obj );
         stash_receive( ch, obj );
 
@@ -900,6 +904,8 @@ void do_stash( CHAR_DATA *ch, char *argument )
         obj->next_content = NULL;
 
         obj_to_char( obj, ch );
+        watch_log( ch, "withdrew %s (vnum %d) from the stash",
+            obj->short_descr, obj->pIndexData->vnum );
         act( "You take $p out of your stash.", ch, obj, NULL, TO_CHAR );
         act( "$n takes $p out of their stash.", ch, obj, NULL, TO_ROOM );
 
@@ -1185,12 +1191,6 @@ void do_stash( CHAR_DATA *ch, char *argument )
             if ( obj == NULL )
                 send_to_char( "There is nothing like that in their stash.\n\r",
                     ch );
-            else if ( ch->carry_number + get_obj_number( obj )
-                      > can_carry_n( ch ) )
-                send_to_char( "Your hands are too full.\n\r", ch );
-            else if ( ch->carry_weight + get_obj_weight( obj )
-                      > can_carry_w( ch ) )
-                send_to_char( "That is more than you can carry.\n\r", ch );
             else
             {
                 if ( prev == NULL )
@@ -1200,6 +1200,10 @@ void do_stash( CHAR_DATA *ch, char *argument )
                 obj->next_content = NULL;
 
                 obj_to_char( obj, ch );
+                watch_log( ch, "took %s (vnum %d) from %s's stash",
+                    obj->short_descr, obj->pIndexData->vnum, owner->name );
+                watch_log( owner, "%s took %s (vnum %d) from this stash",
+                    ch->name, obj->short_descr, obj->pIndexData->vnum );
                 act( "You take $p out of their stash.", ch, obj, NULL,
                     TO_CHAR );
 
@@ -2251,6 +2255,10 @@ void do_give( CHAR_DATA *ch, char *argument )
 
     obj_from_char( obj );
     obj_to_char( obj, victim );
+    watch_log( ch, "gave %s (vnum %d) to %s", obj->short_descr,
+        obj->pIndexData->vnum, IS_NPC(victim) ? victim->short_descr : victim->name );
+    watch_log( victim, "received %s (vnum %d) from %s", obj->short_descr,
+        obj->pIndexData->vnum, IS_NPC(ch) ? ch->short_descr : ch->name );
     act( "$n gives $p to $N.", ch, obj, victim, TO_NOTVICT );
     act( "$n gives you $p.",   ch, obj, victim, TO_VICT    );
     act( "You give $p to $N.", ch, obj, victim, TO_CHAR    );
@@ -4702,6 +4710,8 @@ void do_buy( CHAR_DATA *ch, char *argument )
     obj_to_char( obj, ch );
     if(cost < obj->cost)
 	obj->cost = cost;
+    watch_log( ch, "bought %s (vnum %d) for %ld copper from %s",
+        obj->short_descr, obj->pIndexData->vnum, cost, keeper->short_descr );
     /* A bigger bomb bag becomes room in yours; bombs join your bombs. */
     hyrule_bought( ch, obj );
     return;
@@ -4856,6 +4866,8 @@ void do_sell( CHAR_DATA *ch, char *argument )
         snprintf( buf, sizeof(buf), "You sell $p for %s.", price_buf );
     }
     act( buf, ch, obj, NULL, TO_CHAR );
+    watch_log( ch, "sold %s (vnum %d) for %ld copper to %s",
+        obj->short_descr, obj->pIndexData->vnum, (long)cost, keeper->short_descr );
     gain_copper(ch, cost);
     spend_copper(keeper, cost);
 

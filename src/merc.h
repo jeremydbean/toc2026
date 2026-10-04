@@ -3037,6 +3037,7 @@ bool    flags_from_argument ( const char *argument, int current, int *result );
 bool    is_warrior_warrior  ( const CHAR_DATA *ch );
 void    grant_heros_grip    ( CHAR_DATA *ch );
 int     psionic_restore_known ( CHAR_DATA *ch );
+bool    psionic_owed_by_remorts ( CHAR_DATA *ch );
 bool    heros_grip_holds    ( CHAR_DATA *victim );
 void    herbie_visit        ( CHAR_DATA *mob, CHAR_DATA *victim );
 void    apply_class_weapon_profs ( CHAR_DATA *ch );

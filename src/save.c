@@ -1459,6 +1459,10 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
        give none back, so a character remorted before that was fixed
        carries them in the list and not in the skill table. */
     psionic_restore_known( ch );
+    /* And what the remorts themselves give, for a character who remorted
+       before remorts handed it out: the shortfall, with the awakening. */
+    if ( psionic_owed_by_remorts( ch ) )
+        grant_psionics( ch, 100, true );
 
     /* Shadowmeld used to be a flat check against the remort count rather
      * than a skill. Anyone who earned it that way is given the skill, so
