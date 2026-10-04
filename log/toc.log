@@ -34284,3 +34284,16 @@ Sun Oct  4 00:46:03 2026 :: Log Alaric [2494]: sc
 Sun Oct  4 00:46:05 2026 :: Log Alaric [2494]: l
 Sun Oct  4 00:46:08 2026 :: Log Alaric [2494]: who
 Sun Oct  4 00:46:45 2026 :: Log Alaric [2494]: who
+Sun Oct  4 00:47:35 2026 :: Log Alaric [2494]: gr
+Sun Oct  4 00:47:44 2026 :: Sock.sinaddr:  178.156.187.238
+Sun Oct  4 00:47:44 2026 :: EOF encountered on read.
+Sun Oct  4 00:48:50 2026 :: Log Alaric [2494]: bug Upon remorting, a character with affect such as empower and titanic will be set to negative value for their hp, mana, and movement. These are permanently set, and the character cannot proceed. When a player remorts, their affects should be forcibly removed before the character is set back to level 3 with their new chosen class, guild and race.
+Sun Oct  4 00:48:56 2026 :: Log Alaric [2494]: who
+Sun Oct  4 00:48:59 2026 :: Log Alaric [2494]: prac
+Sun Oct  4 00:49:00 2026 :: Log Alaric [2494]: skil
+Sun Oct  4 00:50:10 2026 :: Log Alaric [2494]: bug After remorting, the character does not have any gear. After performing a remort, the player character should be given the same default gear that they would as if they were a newly created character for the class and guild that they have chosen.
+Sun Oct  4 00:50:16 2026 :: Log Alaric [2494]: sc
+Sun Oct  4 00:50:31 2026 :: Log Alaric [2494]: help remort
+Sun Oct  4 00:50:49 2026 :: Log Alaric [2494]: sc
+Sun Oct  4 00:50:53 2026 :: Log Alaric [2494]: who
+Sun Oct  4 00:51:28 2026 :: Log Alaric [2494]: wo
