@@ -1,10 +1,10 @@
 #PLAYER
 Name Farslayer~
 Id   21916
-LogO 1791040939
+LogO 1791122287
 Vers 4
 Prom ~
-Ignoring  ~
+Ignoring ~
 Race human~
 Sex  1
 Cla  0
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 3
-Plyd 1675
+Plyd 1738
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 4216
-HMV  36 36 144 144 112 112
+Room 3716
+HMV  33 36 144 144 112 112
 NewGold 0
 NewPlat 0
 NewCopp 16
@@ -79,7 +79,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  5
+Pos  8
 Prac 7
 Trai 3
 Alig  -750
@@ -92,7 +92,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 36 144 112
-Cond 0 22 22
+Cond 0 21 21
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
