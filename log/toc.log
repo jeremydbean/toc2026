@@ -51777,3 +51777,157 @@ Mon Oct  5 22:54:09 2026 :: Log Alaric [10172]: gr
 Mon Oct  5 22:54:11 2026 :: Log Alaric [10172]: cv
 Mon Oct  5 22:54:16 2026 :: Log Alaric [10172]: cw
 Mon Oct  5 22:54:22 2026 :: Log Alaric [10172]: cw
+Mon Oct  5 22:54:28 2026 :: Log Alaric [10172]: cs
+Mon Oct  5 22:54:32 2026 :: Log Alaric [10172]: cs
+Mon Oct  5 22:54:37 2026 :: Log Alaric [10172]: cs
+Mon Oct  5 22:54:40 2026 :: Log Alaric [10172]: order vamp east
+Mon Oct  5 22:54:49 2026 :: Log Alaric [10172]: e
+Mon Oct  5 22:54:49 2026 :: Log Alaric [10173]: arrived (Princess Semele's Royal bedroom.) from 10172
+Mon Oct  5 22:54:49 2026 :: Log Alaric [10173]: order all kill sem
+Mon Oct  5 22:54:49 2026 :: Log vampire: kill sem
+Mon Oct  5 22:54:49 2026 :: Log wraith: kill sem
+Mon Oct  5 22:54:49 2026 :: Log skeleton: kill sem
+Mon Oct  5 22:54:49 2026 :: Log skeleton: kill sem
+Mon Oct  5 22:54:49 2026 :: Log skeleton: kill sem
+Mon Oct  5 22:54:57 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:55:05 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:55:13 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:55:20 2026 :: Log Alaric [10173]: who
+Mon Oct  5 22:55:21 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:55:24 2026 :: Sock.sinaddr:  5.161.113.195
+Mon Oct  5 22:55:24 2026 :: EOF encountered on read.
+Mon Oct  5 22:55:28 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:55:35 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:55:43 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:55:52 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:56:00 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:56:06 2026 :: Log Alaric [10173]: who
+Mon Oct  5 22:56:07 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:56:12 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:56:20 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:56:27 2026 :: Log Alaric [10173]: who
+Mon Oct  5 22:56:27 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:56:36 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:56:44 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:56:55 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:57:02 2026 :: Log Alaric [10173]: who
+Mon Oct  5 22:57:02 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:57:11 2026 :: Log Alaric [10173]: sh
+Mon Oct  5 22:57:17 2026 :: Log Alaric [10173]: l i cor
+Mon Oct  5 22:57:21 2026 :: Log Alaric [10173]: get all cor
+Mon Oct  5 22:57:22 2026 :: Log Alaric [10173]: ow
+Mon Oct  5 22:57:23 2026 :: Log Alaric [10173]: flee
+Mon Oct  5 22:57:26 2026 :: Log Alaric [10173]: look ro
+Mon Oct  5 22:57:29 2026 :: Log Alaric [10173]: flee
+Mon Oct  5 22:57:29 2026 :: Log Alaric [10172]: arrived (the Royal Chambers.) from 10173
+Mon Oct  5 22:57:31 2026 :: Log Alaric [10172]: w
+Mon Oct  5 22:57:31 2026 :: Log Alaric [10174]: arrived (the Royal Chambers.) from 10172
+Mon Oct  5 22:57:36 2026 :: Log Alaric [10174]: n
+Mon Oct  5 22:57:36 2026 :: Log Alaric [10176]: arrived (Prince Augustus' bedroom.) from 10174
+Mon Oct  5 22:57:36 2026 :: Log Alaric [10176]: e
+Mon Oct  5 22:57:36 2026 :: Log Alaric [10177]: arrived (Prince Augustus' bedroom.) from 10176
+Mon Oct  5 22:57:39 2026 :: Log Alaric [10177]: s
+Mon Oct  5 22:57:40 2026 :: Log Alaric [10177]: w
+Mon Oct  5 22:57:40 2026 :: Log Alaric [10176]: arrived (Prince Augustus' bedroom.) from 10177
+Mon Oct  5 22:57:42 2026 :: Log Alaric [10176]: flee
+Mon Oct  5 22:57:42 2026 :: Log Alaric [10174]: arrived (the Royal Chambers.) from 10176
+Mon Oct  5 22:57:46 2026 :: Log Alaric [10174]: n
+Mon Oct  5 22:57:46 2026 :: Log Alaric [10176]: arrived (Prince Augustus' bedroom.) from 10174
+Mon Oct  5 22:57:46 2026 :: Log Alaric [10176]: e
+Mon Oct  5 22:57:46 2026 :: Log Alaric [10177]: arrived (Prince Augustus' bedroom.) from 10176
+Mon Oct  5 22:57:48 2026 :: Log Alaric [10177]: n
+Mon Oct  5 22:57:48 2026 :: Log Alaric [10178]: arrived (An ante-room.) from 10177
+Mon Oct  5 22:57:49 2026 :: Log Alaric [10178]: e
+Mon Oct  5 22:57:49 2026 :: Log Alaric [10179]: arrived (In the elevator.) from 10178
+Mon Oct  5 22:57:52 2026 :: Log Alaric [10179]: s
+Mon Oct  5 22:57:52 2026 :: Log Alaric [10180]: arrived (Outside the palace.) from 10179
+Mon Oct  5 22:57:53 2026 :: Log Alaric [10180]: w
+Mon Oct  5 22:57:53 2026 :: Log Alaric [10003]: arrived (The Glitter Palace's Grand Gate.) from 10180
+Mon Oct  5 22:57:53 2026 :: Log Alaric [10003]: s
+Mon Oct  5 22:57:53 2026 :: Log Alaric [10002]: arrived (Royal Island.) from 10003
+Mon Oct  5 22:57:53 2026 :: Log Alaric [10002]: s
+Mon Oct  5 22:57:53 2026 :: Log Alaric [10001]: arrived (A crystal bridge.) from 10002
+Mon Oct  5 22:57:53 2026 :: Log Alaric [10001]: s
+Mon Oct  5 22:57:53 2026 :: Log Alaric [10000]: arrived (Before the crystal bridge.) from 10001
+Mon Oct  5 22:57:54 2026 :: Log Alaric [10000]: s
+Mon Oct  5 22:57:54 2026 :: Log Alaric [10000]: s
+Mon Oct  5 22:57:54 2026 :: Log Alaric [10000]: s
+Mon Oct  5 22:57:54 2026 :: Log Alaric [10000]: s
+Mon Oct  5 22:57:55 2026 :: Log Alaric [10000]: s
+Mon Oct  5 22:57:55 2026 :: Log Alaric [10000]: en po
+Mon Oct  5 22:57:55 2026 :: Log Alaric [23]: arrived (The Great Portal) from 10000
+Mon Oct  5 22:57:57 2026 :: Log Alaric [23]: recal
+Mon Oct  5 22:57:57 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 23
+Mon Oct  5 22:57:57 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 22:57:59 2026 :: Log Alaric [2497]: aq re
+Mon Oct  5 22:58:02 2026 :: Log Alaric [2497]: enter door
+Mon Oct  5 22:58:02 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Mon Oct  5 22:58:02 2026 :: Log Alaric [2401]: east
+Mon Oct  5 22:58:02 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Mon Oct  5 22:58:03 2026 :: Log Alaric [2403]: east
+Mon Oct  5 22:58:03 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Mon Oct  5 22:58:03 2026 :: Log Alaric [2420]: east
+Mon Oct  5 22:58:03 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Mon Oct  5 22:58:03 2026 :: Log Alaric [2421]: south
+Mon Oct  5 22:58:03 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Mon Oct  5 22:58:04 2026 :: Log Alaric [2441]: east
+Mon Oct  5 22:58:04 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Mon Oct  5 22:58:04 2026 :: Log Alaric [2442]: south
+Mon Oct  5 22:58:04 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Mon Oct  5 22:58:05 2026 :: Log Alaric [2443]: east
+Mon Oct  5 22:58:05 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Mon Oct  5 22:58:05 2026 :: Log Alaric [2444]: east
+Mon Oct  5 22:58:05 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Mon Oct  5 22:58:05 2026 :: Log Alaric [2445]: east
+Mon Oct  5 22:58:05 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Mon Oct  5 22:58:06 2026 :: Log Alaric [2101]: east
+Mon Oct  5 22:58:06 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Mon Oct  5 22:58:06 2026 :: Log Alaric [2102]: south
+Mon Oct  5 22:58:06 2026 :: Log Alaric [2109]: arrived (An over-grown lot) from 2102
+Mon Oct  5 22:58:06 2026 :: Log Alaric [2109]: east
+Mon Oct  5 22:58:06 2026 :: Log Alaric [2110]: arrived (East end of an over-grown plot of land) from 2109
+Mon Oct  5 22:58:06 2026 :: Log Alaric [2110]: south
+Mon Oct  5 22:58:06 2026 :: Log Alaric [2116]: arrived (Dracolich Plaza) from 2110
+Mon Oct  5 22:58:07 2026 :: Log Alaric [2116]: east
+Mon Oct  5 22:58:07 2026 :: Log Alaric [2117]: arrived (Shortcut) from 2116
+Mon Oct  5 22:58:07 2026 :: Log Alaric [2117]: south
+Mon Oct  5 22:58:07 2026 :: Log Alaric [2121]: arrived (Shortcut) from 2117
+Mon Oct  5 22:58:07 2026 :: Log Alaric [2121]: east
+Mon Oct  5 22:58:07 2026 :: Log Alaric [2122]: arrived (Ice Dragon Way) from 2121
+Mon Oct  5 22:58:07 2026 :: Log Alaric [2122]: south
+Mon Oct  5 22:58:07 2026 :: Log Alaric [2127]: arrived (Yellow Dragon Road) from 2122
+Mon Oct  5 22:58:08 2026 :: Log Alaric [2127]: west
+Mon Oct  5 22:58:08 2026 :: Log Alaric [2126]: arrived (Yellow Dragon Road) from 2127
+Mon Oct  5 22:58:08 2026 :: Log Alaric [2126]: south
+Mon Oct  5 22:58:08 2026 :: Log Alaric [2131]: arrived (NO MAN'S LAND) from 2126
+Mon Oct  5 22:58:08 2026 :: Log Alaric [2131]: south
+Mon Oct  5 22:58:08 2026 :: Log Alaric [2136]: arrived (NO MAN'S LAND) from 2131
+Mon Oct  5 22:58:08 2026 :: Log Alaric [2136]: south
+Mon Oct  5 22:58:08 2026 :: Log Alaric [2141]: arrived (Bend in Hector Street) from 2136
+Mon Oct  5 22:58:09 2026 :: Log Alaric [2141]: south
+Mon Oct  5 22:58:09 2026 :: Log Alaric [2146]: arrived (Hector Street) from 2141
+Mon Oct  5 22:58:09 2026 :: Log Alaric [2146]: south
+Mon Oct  5 22:58:09 2026 :: Log Alaric [2150]: arrived (First intersection of Hector and Achilles) from 2146
+Mon Oct  5 22:58:09 2026 :: Log Alaric [2150]: south
+Mon Oct  5 22:58:09 2026 :: Log Alaric [2156]: arrived (Achilles avenue at entrance to park) from 2150
+Mon Oct  5 22:58:09 2026 :: Log Alaric [2156]: south
+Mon Oct  5 22:58:09 2026 :: Log Alaric [2163]: arrived (Achilles Avenue) from 2156
+Mon Oct  5 22:58:11 2026 :: Log Alaric [2163]: get all
+Mon Oct  5 22:58:12 2026 :: Log Alaric [2163]: recal
+Mon Oct  5 22:58:12 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2163
+Mon Oct  5 22:58:12 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 22:58:14 2026 :: Log Alaric [2497]: aq co
+Mon Oct  5 22:58:14 2026 :: Log Alaric [2497]: quest complete: 20 gold, 49 quest points (streak bonus 193%)
+Mon Oct  5 22:58:15 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct  5 22:58:17 2026 :: Log Alaric [2497]: eq
+Mon Oct  5 22:58:36 2026 :: Log Alaric [2497]: rem starj
+Mon Oct  5 22:58:40 2026 :: Log Alaric [2497]: stash put starj
+Mon Oct  5 22:58:40 2026 :: Log Alaric [2497]: stashed (Shining) A Precious Starjewel (vnum 10059)
+Mon Oct  5 22:58:42 2026 :: Log Alaric [2497]: wear cloak
+Mon Oct  5 22:58:43 2026 :: Log Alaric [2497]: i
+Mon Oct  5 22:58:47 2026 :: Log Alaric [2497]: comp robe
+Mon Oct  5 22:59:01 2026 :: Log Alaric [2497]: drop robe
+Mon Oct  5 22:59:07 2026 :: Log Alaric [2497]: comp dia
+Mon Oct  5 22:59:16 2026 :: Log Alaric [2497]: drop dia
+Mon Oct  5 22:59:18 2026 :: Log Alaric [2497]: nos
+Mon Oct  5 22:59:21 2026 :: Log Alaric [2497]: c remove curse
