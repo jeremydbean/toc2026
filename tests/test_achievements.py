@@ -257,7 +257,8 @@ class AchievementSystemTests(unittest.TestCase):
         self.assertIn("0 ACHIEVEMENT ACHIEVEMENTS~", command_help)
         self.assertIn("MISADVENTURE, ECONOMY, and HYRULE", command_help)
         self.assertIn("wiki/achievements.md", readme)
-        self.assertIn("127-achievement", readme)
+        # The README's count follows the catalog, so the two cannot drift.
+        self.assertIn(f"{len(self.entries)}-achievement", readme)
         self.assertIn("Existing Characters", guide)
         self.assertIn("lifetime mobile-kill", guide)
 
