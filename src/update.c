@@ -2017,6 +2017,17 @@ int idle_purge_ticks( CHAR_DATA *ch )
     return ticks;
 }
 
+/* Whether any player stands in the room, as the Hyrule chest reset asks. */
+static bool room_has_player( ROOM_INDEX_DATA *room )
+{
+    CHAR_DATA *rch;
+
+    for ( rch = room->people; rch != NULL; rch = rch->next_in_room )
+        if ( !IS_NPC(rch) )
+            return true;
+    return false;
+}
+
 void obj_update( void )
 {
     OBJ_DATA *obj;
@@ -2103,7 +2114,16 @@ void obj_update( void )
 	   continue;
 	  }
 
-	if(obj->item_type == ITEM_CONTAINER)
+	/*
+	 * A keyed chest left lying about locks itself again, and now and then
+	 * grows a trap. Only one nobody is with: this ran on every container
+	 * every tick, so a chest a player had just unlocked and opened could
+	 * slam shut and lock before their GET -- and a keyed box in somebody's
+	 * pack locked itself in their hands. Hyrule's Triforce chests showed
+	 * it, failing in CI whenever a tick fell between OPEN and GET.
+	 */
+	if(obj->item_type == ITEM_CONTAINER
+	&& obj->in_room != NULL && !room_has_player( obj->in_room ))
 	{
 	 if(obj->value[2] != 0 && obj->value[2] != -1
 	 && obj->value[1] != 15 && obj->value[1] != 29)

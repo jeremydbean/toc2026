@@ -3,6 +3,17 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261005a 2026-10-05
+A chest you have just unlocked and opened no longer slams shut and locks
+itself before you can take what is inside, and a locked box in your pack no
+longer locks itself in your hands. Chests left lying in empty rooms still
+lock themselves again for the next visitor.
+
+@ 20261005b 2026-10-05
+Reconnecting straight after you quit no longer drops you at the password
+prompt without a word: a quit still waiting out lag used to hang up on the
+new login as well.
+
 @ 20261004t 2026-10-04
 Hyrule's dungeon enemies were fought one by one against the world's own
 mobiles of the same levels. Levels 1 to 5, 8 and 9 already matched the

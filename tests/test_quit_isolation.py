@@ -100,5 +100,25 @@ class QuitIsolationTests(unittest.TestCase):
                 self.assertNotIn("Zquitleft", run(watcher, "who"))
 
 
+class QuitSparesLoginsTests(unittest.TestCase):
+    """The duplicate sweep closes only connections in the game.
+
+    A connection at the name or password prompt holds its own copy of the
+    character, loaded from the file. Closing it hung up without a word on
+    somebody logging in as the quitter while the quitter's lagged QUIT was
+    still queued, and extracted a copy that was never in the world; the
+    login throttle tests lost "Wrong password." to it in CI (2026-10-05).
+    """
+
+    def test_the_sweep_skips_anyone_not_playing(self) -> None:
+        comm = (Path(__file__).resolve().parents[1] / "src" / "act_comm.c").read_text(
+            encoding="latin-1")
+        start = comm.index("Close any *other* descriptor still holding")
+        sweep = comm[start:comm.index("return;", start)]
+        guard = sweep.index("if (d->connected != CON_PLAYING)")
+        self.assertLess(guard, sweep.index("extract_char(tch,TRUE);"))
+        self.assertLess(guard, sweep.index("close_socket(d);"))
+
+
 if __name__ == "__main__":
     unittest.main()

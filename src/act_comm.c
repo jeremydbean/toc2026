@@ -3922,12 +3922,22 @@ void do_quit( CHAR_DATA *ch, char *argument )
      * codebase ever assigns that field; it was only ever read, right
      * here. So every character's id was 0, the test was 0 == 0, and one
      * player typing `quit' silently disconnected everyone else online.
+     *
+     * Only a duplicate in the game. A connection still at the name or
+     * password prompt holds a fresh copy loaded from the file, not this
+     * character: closing it hung up, without a word, on somebody logging
+     * in as the quitter -- a player reconnecting while their own lagged
+     * QUIT was still queued -- and extracted a copy that was never in the
+     * world. The login throttle tests lost "Wrong password." to it in CI
+     * (2026-10-05).
      */
     for (d = descriptor_list; d != NULL; d = d_next)
     {
 	CHAR_DATA *tch;
 
 	d_next = d->next;
+	if (d->connected != CON_PLAYING)
+	    continue;
 	tch = d->original ? d->original : d->character;
 	if (tch != NULL && !IS_NPC(tch) && tch->name != NULL
 	 && quitter_name[0] != '\0'

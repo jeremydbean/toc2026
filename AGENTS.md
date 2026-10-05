@@ -329,6 +329,16 @@ source-inspection test fails after a refactor, check whether the behaviour
 moved before changing the test, and repoint the assertion at where it lives
 now -- never weaken it so it passes.
 
+`MudClient.expect` says which way it failed in the first line, because that
+is all CI reprints: **"server hung up before"** means the connection closed
+without the text arriving, **"timed out waiting for"** that the server was
+slow. The first message is what found the login throttle tests' CI failure
+(4caaafc): the server hung up at the password prompt. `do_quit`'s sweep for
+duplicate logins closed every connection holding the quitter's name,
+including one at the login prompts, so a quit still waiting out lag -- the
+fixture's own `quit` -- killed the next login attempt silently. The sweep
+now asks for `CON_PLAYING` (`tests/test_quit_isolation.py`).
+
 Live-test gotchas that look like product bugs and are not:
 
 - Character names must be **alphabetic only** and at most 12 characters.
@@ -693,8 +703,19 @@ must say the same thing; `tests/test_hyrule_progression.py` checks the first
 two against each other and the chests. Pieces are treasure, not keys,
 because `save.c` drops keys at quit; they are NODROP so one character cannot
 carry another through. `reset_area` refills and relocks Hyrule's chests
-even with players about, since Hyrule is one area. `COMBINE TRIFORCE` is the
-only way to The Triforce.
+even with players about, since Hyrule is one area -- but never one a player
+is standing at. `COMBINE TRIFORCE` is the only way to The Triforce.
+
+**Keyed chests relock themselves on the tick, and only unattended ones.**
+`obj_update` closes and locks every keyed container each tick, and now and
+then traps one. Until 2026-10-05 it did that to every container in the
+world, so a chest slammed shut between a player's OPEN and GET whenever a
+tick fell there -- the "The chest is closed" that failed the walkthrough
+and the dungeon chain test in CI for days, and never on demand. It now asks
+for a container lying in a room no player is in
+(`tests/test_container_relock.py`). A failure that only appears on a slow
+runner and lines up with a tick or a reset is worth a seven-minute loop
+before anything else.
 
 **The NES machinery lives in `src/hyrule.c`** (October 2026; the plan is
 "The NES Pass: Plan" in `wiki/hyrule-area.md`). Four rules to keep:

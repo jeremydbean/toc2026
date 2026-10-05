@@ -259,6 +259,7 @@ class MudClient:
         transcript on timeout, which is what makes failures debuggable.
         """
         deadline = time.monotonic() + (timeout or self.timeout)
+        hung_up = False
         while time.monotonic() < deadline:
             haystack = self.buffer.lower()
             for pattern in patterns:
@@ -277,9 +278,15 @@ class MudClient:
                     if index != -1:
                         self.buffer = self.buffer[index + len(pattern):]
                         return pattern
+                hung_up = True
                 break
+        # Which of the two it was leads the message: CI reprints only a
+        # failure's first line, and "the server hung up without saying it"
+        # is a different bug from "the server was too slow to say it".
+        tail = " ".join(self.buffer.split())[-160:]
         raise AssertionError(
-            f"timed out waiting for {patterns!r}.\n"
+            f"{'server hung up before' if hung_up else 'timed out waiting for'} "
+            f"{patterns!r}; last output: {tail!r}.\n"
             f"{self.server_state()}\n"
             f"--- transcript ---\n{self.transcript[-4000:]}"
         )

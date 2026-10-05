@@ -173,16 +173,9 @@ class HyruleWalkthroughTests(unittest.TestCase):
                     inside = run(hero, door, 1.5)
                     self.assertIn(self.name_of(goal), inside, looted + opened + inside)
                     chest = run(hero, "unlock chest", 1.5) + run(hero, "open chest", 1.5)
+                    # No retry: a chest that shuts between OPEN and GET was the
+                    # game's tick relocking it (tests/test_container_relock.py).
                     prize = run(hero, "get all chest", 2.5)
-                    if "is closed" in prize.lower():
-                        # Twice in CI, never locally, the chest answered
-                        # closed after UNLOCK and OPEN. Say so loudly and
-                        # try once more, so a slow runner's timing is told
-                        # apart from a chest that really will not open.
-                        print(f"\n[walkthrough] Level {level} chest closed after "
-                              f"unlock/open: {one_line(chest)}", file=sys.stderr)
-                        chest += run(hero, "unlock chest", 2.0) + run(hero, "open chest", 2.0)
-                        prize = run(hero, "get all chest", 3.0)
                     piece = self.parser.objects[gen.PIECE_VNUMS[level]].short_desc
                     treasure = self.parser.objects[gen.DUNGEON_TREASURE[level]].short_desc
                     # CI reprints only the first line of a failure, so the
