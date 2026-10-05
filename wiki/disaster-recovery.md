@@ -17,7 +17,7 @@ to `ssh toc@toc.local`, touch `/run/toc2026/update.request`, or start a
 | --- | --- |
 | Host | Oracle Cloud instance, Ubuntu 24.04 ARM, region us-ashburn-1 |
 | Public IP | `129.159.105.156` -- **reserved**, so it survives a stop/recreate |
-| Reach it | `ssh -i C:\Users\JeremyBean\Downloads\oci_game_private_key ubuntu@129.159.105.156` |
+| Reach it | `ssh toc-oracle` from PowerShell or Git Bash on the owner's desktop (alias in `~/.ssh/config`, key `~/.ssh/toc-oracle`). Fallback, Git Bash only: `ssh -i /c/Users/JeremyBean/Downloads/oci_game_private_key ubuntu@129.159.105.156` -- PowerShell refuses that copy of the key as unprotected |
 | Game lives in | `/srv/toc/current` (state) and `/srv/toc/build` (git checkout) |
 | Public | `toc.jeremybean.com:9000` game, `:9001` dashboard and browser client |
 | Firewall | OCI VCN security list **and** the instance's own iptables -- a port must be open in both |
@@ -35,7 +35,7 @@ alive and the dashboard can see it. Anything else, work down this page.
 ## The game is down
 
 ```bash
-ssh -i C:\Users\JeremyBean\Downloads\oci_game_private_key ubuntu@129.159.105.156
+ssh toc-oracle
 systemctl status toc-game toc-web
 sudo journalctl -u toc-game -n 50
 ```

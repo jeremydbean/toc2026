@@ -1126,16 +1126,43 @@ warning on 2026-09-29 -- and the characters were carried forward through
 each move. Only Oracle is live: there is no VM to reach at `172.28.90.2`
 and no Pi at `toc.local`.
 
-    ssh -i C:\Users\JeremyBean\Downloads\oci_game_private_key ubuntu@129.159.105.156
-    sudo /usr/local/sbin/toc-deploy          # fetch, build, check, restart
-    sudo /usr/local/sbin/toc-deploy --dry-run
+### Connecting and shipping from a new session
 
+On the owner's desktop, from **either shell** (PowerShell or Git Bash):
+
+    ssh toc-oracle 'sudo /usr/local/sbin/toc-deploy'            # ship main
+    ssh toc-oracle 'sudo /usr/local/sbin/toc-deploy --dry-run'  # build + validate only
+    ssh toc-oracle 'systemctl is-active toc-game toc-web'       # is it up
+
+`toc-oracle` is a host alias in `C:\Users\JeremyBean\.ssh\config`
+(129.159.105.156, user **ubuntu**, key `~/.ssh/toc-oracle`). Wrap a
+deploy in `timeout 1200` from Bash; it takes a few minutes. The whole
+loop for any change is: edit, build both trees in WSL, run the relevant
+test module, commit, `git fetch && git rebase origin/main && git push`,
+then the deploy line above -- without asking (see the deploy rule below).
+
+**Why the alias exists (2026-10-05).** The original key,
+`C:\Users\JeremyBean\Downloads\oci_game_private_key`, is readable by the
+`CodexSandboxUsers` group. Git Bash's ssh does not care, but Windows
+OpenSSH -- what PowerShell runs -- refuses it ("UNPROTECTED PRIVATE KEY
+FILE ... bad permissions") and then fails with `Permission denied
+(publickey)`, which looks exactly like a server or key problem and is
+neither. `~/.ssh/toc-oracle` is a copy readable by the owner's account
+only; the Downloads original is left alone because Codex uses it. If the
+alias is ever missing, `ssh -i /c/Users/JeremyBean/Downloads/oci_game_private_key
+ubuntu@129.159.105.156` from **Git Bash** still works.
+
+Three things a new session cannot get past, and should say so rather
+than retry: a chat opened outside `C:\Users\JeremyBean\toc2026` loads
+neither this file nor the project memory; a cloud or remote session has
+no copy of the key at all; and the host's admin token never leaves
+`/etc/toc/web.env` (read it there with `sudo`, never print it).
+
+On the host: `/srv/toc/build` is the git checkout `toc-deploy` resets
+and builds, `/srv/toc/current` the live tree it rsyncs into, units
+`toc-game` and `toc-web`, plus `toc-state-sync`, `toc-state-sync-check`,
+`toc-game-recovery` and `toc-daily-backup`, all in `/usr/local/sbin`.
 The SSH user is **ubuntu** (the VM used `tocadmin`; that is history).
-The key was in Downloads at cutover and may be moved to
-`C:\ProgramData\ToC\secrets\`. The game, dashboard, state-sync and
-recovery run under systemd on the same `/srv/toc` layout as the VM did,
-so everything below about deploys, backups and recovery still applies --
-only the address and the login changed.
 
 `wiki/disaster-recovery.md` is the one page to read when something is
 broken: what is down, how to deploy, whether the backups are working,
