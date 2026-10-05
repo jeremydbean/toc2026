@@ -49123,3 +49123,14 @@ Mon Oct  5 13:51:51 2026 :: Sock.sinaddr:  5.161.73.160
 Mon Oct  5 13:51:51 2026 :: EOF encountered on read.
 Mon Oct  5 13:56:55 2026 :: Sock.sinaddr:  5.161.177.47
 Mon Oct  5 13:56:55 2026 :: EOF encountered on read.
+Mon Oct  5 14:00:10 2026 :: Loading Eclipse's playerfile
+Mon Oct  5 14:00:13 2026 :: Eclipse@97.248.95.144 has connected.
+Mon Oct  5 14:00:14 2026 :: Log Eclipse [9988]: arrived (Eclipse's Seat of Power.) from 0
+Mon Oct  5 14:00:16 2026 :: Log Eclipse [9988]: who
+Mon Oct  5 14:00:21 2026 :: Log Eclipse [9988]: sock
+Mon Oct  5 14:00:39 2026 :: Log Eclipse [9988]: quit
+Mon Oct  5 14:00:39 2026 :: Eclipse has quit.
+Mon Oct  5 14:00:39 2026 :: [QUIT] Player rejoined the real world.
+Mon Oct  5 14:00:46 2026 :: EOF encountered on read.
+Mon Oct  5 14:02:00 2026 :: Sock.sinaddr:  178.156.185.127
+Mon Oct  5 14:02:00 2026 :: EOF encountered on read.
