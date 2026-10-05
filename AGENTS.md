@@ -1665,10 +1665,9 @@ old hosts' backlog, worked through in October 2026, is
 `area/bugs.txt.20260929-151146` and `area/typos.txt.20260929-151146`.
 
 The staff half is gated with `IS_TRUSTED(ch, LEVEL_IMMORTAL)`, not
-`IS_IMMORTAL`. `is_note_to()` still uses `IS_IMMORTAL`, so a trusted
-builder does not receive notes addressed to `immortal`; that is the
-same class of bug as the INVULN one and has not been changed, because
-it alters who receives mail.
+`IS_IMMORTAL`. `is_note_to()` asks the same, so a builder trusted to
+immortal rank receives notes addressed to `immortal` (the staff-trust
+sweep; confirmed with the owner, 2026-10-05).
 
 Other deploy facts:
 
