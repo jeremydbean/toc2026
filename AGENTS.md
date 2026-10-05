@@ -1161,6 +1161,20 @@ neither this file nor the project memory; a cloud or remote session has
 no copy of the key at all; and the host's admin token never leaves
 `/etc/toc/web.env` (read it there with `sudo`, never print it).
 
+**A cloud session works, it just cannot ship.** It has HTTPS only, so no
+SSH and no project memory -- this file is all it gets. It should edit,
+build both trees, run the relevant test module, commit, and push straight
+to `main` after `git fetch && git rebase origin/main` (the owner's rule
+applies there too; no branch and pull request is needed), then say that
+the change still needs `ssh toc-oracle 'sudo /usr/local/sbin/toc-deploy'`
+from the desktop if it touched code. CI is readable without auth at
+`https://api.github.com/repos/jeremydbean/toc2026/actions/runs`. The
+synced `log/` and `area/*.txt` in git stand in for the host's reports up
+to five minutes stale; they carry player addresses, so filter IPs out of
+anything printed. Recount world totals from the tools (`area_lint.py`,
+`merc --check-area`) rather than copying a figure from a doc -- the
+baseline above was wrong for a day because one was copied.
+
 On the host: `/srv/toc/build` is the git checkout `toc-deploy` resets
 and builds, `/srv/toc/current` the live tree it rsyncs into, units
 `toc-game` and `toc-web`, plus `toc-state-sync`, `toc-state-sync-check`,
