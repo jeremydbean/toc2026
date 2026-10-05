@@ -1161,24 +1161,49 @@ neither this file nor the project memory; a cloud or remote session has
 no copy of the key at all; and the host's admin token never leaves
 `/etc/toc/web.env` (read it there with `sudo`, never print it).
 
-**A cloud session works, it just cannot ship.** It has HTTPS only, so no
-SSH and no project memory -- this file is all it gets. It should edit,
-build both trees, run the relevant test module, commit, and push straight
-to `main` after `git fetch && git rebase origin/main` (the owner's rule
-applies there too; no branch and pull request is needed), then say that
-the change still needs `ssh toc-oracle 'sudo /usr/local/sbin/toc-deploy'`
-from the desktop if it touched code. CI is readable without auth at
-`https://api.github.com/repos/jeremydbean/toc2026/actions/runs`. The
-synced `log/` and `area/*.txt` in git stand in for the host's reports up
-to five minutes stale; they carry player addresses, so filter IPs out of
-anything printed. Recount world totals from the tools (`area_lint.py`,
-`merc --check-area`) rather than copying a figure from a doc -- the
-baseline above was wrong for a day because one was copied.
+**A push to `main` is a deploy** (owner, 2026-10-05). `toc-auto-deploy`
+runs on the host every ten minutes: when `main` carries code that is not
+live and CI's Validate run for it has passed, it runs `toc-deploy` pinned
+to that commit, with automatic rollback if the game does not come back
+healthy. Docs, tests and state-sync commits never trigger it, and a
+commit that failed to deploy is not retried until something newer lands.
+So a session that can only push -- a cloud session -- still ships: push,
+and the game updates about ten minutes after CI goes green (CI takes
+about an hour). Put `[deploy now]` in a commit message to skip the CI
+wait for an urgent fix; `toc-deploy` still refuses anything that does not
+build or whose world does not load. A desktop session may still run
+`toc-deploy` by hand for an immediate deploy; the two share a lock.
+
+**A cloud session has HTTPS only** -- no SSH, no key, no project memory;
+this file is all it gets, and the sandbox's proxy will not let it reach
+`toc.jeremybean.com` either. It should edit, build both trees, run the
+relevant test module, commit, and push straight to `main` after
+`git fetch && git rebase origin/main` (no branch or pull request), then
+check rather than assume:
+
+- CI: `https://api.github.com/repos/jeremydbean/toc2026/actions/runs`
+  (public, no auth).
+- What is live: `log/deployed-commit` in git (the commit and when), and
+  what the auto-deployer last decided and why: `log/auto-deploy.status`.
+  The state sync carries both to GitHub within five minutes, so
+  `git fetch` and read `origin/main:log/auto-deploy.status`.
+- Reports: the synced `area/bugs.txt`, `typos.txt`, `ideas.txt` and
+  `log/toc.log` stand in for the host's, up to five minutes stale. They
+  carry player addresses, so filter IPs out of anything printed.
+
+Recount world totals from the tools (`area_lint.py`, `merc --check-area`)
+rather than copying a figure from a doc -- the baseline above was wrong
+for a day because one was copied.
 
 On the host: `/srv/toc/build` is the git checkout `toc-deploy` resets
 and builds, `/srv/toc/current` the live tree it rsyncs into, units
 `toc-game` and `toc-web`, plus `toc-state-sync`, `toc-state-sync-check`,
-`toc-game-recovery` and `toc-daily-backup`, all in `/usr/local/sbin`.
+`toc-game-recovery`, `toc-auto-deploy` and `toc-daily-backup`, all in
+`/usr/local/sbin`. `toc-deploy` installs the newer copies of the first
+five, and the auto-deploy units, at the end of every healthy deploy.
+`toc-auto-deploy` keeps its state in `/var/lib/toc-auto-deploy`
+(`attempted`, `last.log`); `journalctl -t toc-auto-deploy` has its
+history.
 The SSH user is **ubuntu** (the VM used `tocadmin`; that is history).
 
 `wiki/disaster-recovery.md` is the one page to read when something is

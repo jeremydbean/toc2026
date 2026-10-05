@@ -1,0 +1,14 @@
+[Unit]
+Description=Deploy main to the live game once CI has passed
+Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/disaster-recovery.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# Root, because toc-deploy stops and starts the game and installs into
+# /usr/local/sbin; it is the same thing a desktop session runs with sudo.
+ExecStart=/usr/local/sbin/toc-auto-deploy
+# A build takes a few minutes, a full stop-install-start-check another
+# minute or two.
+TimeoutStartSec=1800

@@ -1,0 +1,16 @@
+[Unit]
+Description=Look for new code on main every ten minutes
+Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/disaster-recovery.md
+
+[Timer]
+# Ten minutes against a CI run of about an hour: a push is live within
+# ten minutes of going green. Each tick is a git fetch and, only when
+# code has changed, one unauthenticated GitHub API call -- six an hour
+# against a limit of sixty.
+OnBootSec=5min
+OnUnitActiveSec=10min
+Persistent=true
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

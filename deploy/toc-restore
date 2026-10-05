@@ -123,10 +123,11 @@ mkdir -p /etc/toc /var/log/toc /var/backups/toc
 for u in toc-game.service toc-web.service \
          toc-state-sync.service toc-state-sync.timer \
          toc-state-sync-check.service toc-state-sync-check.timer \
-         toc-game-recovery.service toc-game-recovery.timer; do
+         toc-game-recovery.service toc-game-recovery.timer \
+         toc-auto-deploy.service toc-auto-deploy.timer; do
     [ -f "$BUILD/deploy/windows-vm/$u" ] && install -m 0644 "$BUILD/deploy/windows-vm/$u" /etc/systemd/system/
 done
-for s in toc-state-sync toc-state-sync-check toc-game-recovery; do
+for s in toc-deploy toc-state-sync toc-state-sync-check toc-game-recovery toc-auto-deploy; do
     [ -f "$BUILD/deploy/windows-vm/$s" ] && install -m 0755 "$BUILD/deploy/windows-vm/$s" /usr/local/sbin/
 done
 
@@ -163,6 +164,11 @@ systemctl daemon-reload || true
 # is the backstop if it ever crash-loops past systemd's start limit.
 systemctl enable --now toc-game.service toc-web.service 2>/dev/null || true
 systemctl enable --now toc-state-sync.timer toc-state-sync-check.timer toc-game-recovery.timer 2>/dev/null || true
+# The restore is the first deploy: record it, so toc-auto-deploy has a
+# live commit to compare main against, then let it take over.
+printf '%s %s\n' "$(git -C "$BUILD" rev-parse HEAD)" \
+    "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > "$TOC_PREFIX/current/log/deployed-commit" 2>/dev/null || true
+systemctl enable --now toc-auto-deploy.timer 2>/dev/null || true
 
 cat <<'NOTE'
 

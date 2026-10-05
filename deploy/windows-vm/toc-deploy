@@ -19,10 +19,22 @@ set -eu
 BUILD="${BUILD:-/srv/toc/build}"
 CURRENT="${CURRENT:-/srv/toc/current}"
 BRANCH="${BRANCH:-main}"
+# toc-auto-deploy pins the commit CI passed, so a push that lands while
+# it waited is not deployed unchecked. By hand it is the branch tip.
+REF="${TOC_DEPLOY_REF:-origin/$BRANCH}"
 DRY=0
 [ "${1:-}" = "--dry-run" ] && DRY=1
 
 say() { printf '\n== %s\n' "$*"; }
+
+# One deploy at a time: the timer's and a desktop session's could
+# otherwise meet in the middle of an rsync. toc-auto-deploy takes the
+# lock itself and says so, because a second flock on a fresh open of the
+# same file would wait on its own parent.
+if [ -z "${TOC_DEPLOY_LOCKED:-}" ]; then
+    exec 9>"${TOC_DEPLOY_LOCK:-/run/toc-deploy.lock}"
+    flock 9
+fi
 
 say "fetching"
 before=$(git -C "$BUILD" rev-parse --short HEAD)
@@ -34,7 +46,7 @@ before=$(git -C "$BUILD" rev-parse --short HEAD)
 # rather than merge, because there is never a local change here to lose.
 git -C "$BUILD" checkout --quiet -- . 2>/dev/null || true
 git -C "$BUILD" fetch --quiet origin "$BRANCH"
-git -C "$BUILD" reset --quiet --hard "origin/$BRANCH"
+git -C "$BUILD" reset --quiet --hard "$REF"
 after=$(git -C "$BUILD" rev-parse --short HEAD)
 if [ "$before" = "$after" ]; then
     echo "   already at $after"
@@ -166,6 +178,13 @@ while [ $n -lt 15 ]; do
         say "healthy at $after"
         printf '   characters on disk: %s\n' "$(ls "$CURRENT/player" | wc -l)"
 
+        # What is live, for toc-auto-deploy to compare against and for
+        # any session to read: log/ is excluded from the rsync above and
+        # carried to GitHub by the state sync.
+        printf '%s %s\n' "$(git -C "$BUILD" rev-parse HEAD)" \
+            "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > "$CURRENT/log/deployed-commit"
+        chown toc:toc "$CURRENT/log/deployed-commit" 2>/dev/null || true
+
         # Keep the host's copies of these scripts in step with the
         # checkout that just came back healthy. Nothing used to install
         # them, so a fix to this script or to the state sync sat in git
@@ -174,17 +193,56 @@ while [ $n -lt 15 ]; do
         # Only from a build that came back healthy, so a broken script
         # cannot replace a working one; install(1) writes a new file, so
         # the copy running now is not touched.
-        for s in toc-deploy toc-state-sync toc-state-sync-check toc-game-recovery; do
+        for s in toc-deploy toc-state-sync toc-state-sync-check toc-game-recovery \
+                 toc-auto-deploy; do
             if [ -f "$BUILD/deploy/windows-vm/$s" ] &&
                ! cmp -s "$BUILD/deploy/windows-vm/$s" "/usr/local/sbin/$s"; then
                 install -m 0755 "$BUILD/deploy/windows-vm/$s" "/usr/local/sbin/$s" &&
                     printf '   installed %s\n' "$s"
             fi
         done
+        # The auto-deploy timer's units, the same way. A deploy run by the
+        # timer reaches this point too, so it must not restart the
+        # service it is running inside: enable --now on the timer only.
+        units_changed=0
+        for u in toc-auto-deploy.service toc-auto-deploy.timer; do
+            if [ -f "$BUILD/deploy/windows-vm/$u" ] &&
+               ! cmp -s "$BUILD/deploy/windows-vm/$u" "/etc/systemd/system/$u"; then
+                install -m 0644 "$BUILD/deploy/windows-vm/$u" "/etc/systemd/system/$u" &&
+                    printf '   installed %s\n' "$u" && units_changed=1
+            fi
+        done
+        if [ "$units_changed" = 1 ]; then
+            systemctl daemon-reload
+            systemctl enable --now toc-auto-deploy.timer >/dev/null 2>&1 || true
+        fi
         exit 0
     fi
     n=$((n + 1)); sleep 3
 done
+
+# Unattended (toc-auto-deploy sets this), there is nobody to read the
+# rollback line, so do it: the old code and area files go back and the
+# game restarts on them. The world was validated before anything was
+# stopped, so this is a game that built and loaded and then would not
+# come up -- rare, and exactly what nobody should find hours later.
+if [ "${TOC_DEPLOY_ROLLBACK:-0}" = 1 ]; then
+    echo "   DID NOT COME BACK HEALTHY -- rolling back to the previous code" >&2
+    systemctl stop toc-web toc-game || true
+    tar xzf "/srv/toc/rollback-code-$stamp.tgz" -C "$CURRENT"
+    chown -R toc:toc "$CURRENT"
+    systemctl start toc-game
+    sleep 8
+    systemctl start toc-web
+    sleep 6
+    if curl --fail --silent --max-time 3 http://127.0.0.1:9001/api/health |
+        grep -q '"merc":true'; then
+        echo "   rolled back and healthy" >&2
+    else
+        echo "   ROLLED BACK BUT STILL NOT HEALTHY -- toc-game-recovery will keep trying" >&2
+    fi
+    exit 1
+fi
 
 echo "   DID NOT COME BACK HEALTHY. Roll back with:" >&2
 echo "   tar xzf /srv/toc/rollback-code-$stamp.tgz -C $CURRENT && systemctl restart toc-game toc-web" >&2

@@ -1,0 +1,143 @@
+#!/bin/sh
+# Ship main to the live game on its own, so that a push is a deploy.
+#
+# Run every ten minutes by toc-auto-deploy.timer (owner, 2026-10-05). A
+# cloud session can push to GitHub and nothing else -- it has HTTPS only,
+# no SSH and no key -- so the host comes to GitHub instead: it already
+# talks to it every five minutes for the state sync. Nothing on the
+# server opens to anything new.
+#
+# It deploys only when all of this holds:
+#
+#   * main has moved on from what is live ($CURRENT/log/deployed-commit,
+#     written by toc-deploy when a deploy comes back healthy);
+#   * the difference touches code -- docs, tests and the state sync's own
+#     commits never restart the game;
+#   * CI's Validate run for the newest commit it ran on is a success,
+#     read from GitHub's public API. A commit whose message carries
+#     [deploy now] skips that wait; toc-deploy still refuses one that
+#     will not build or whose world will not load;
+#   * this exact commit has not already been tried and failed, so a bad
+#     push restarts the game once, not every ten minutes.
+#
+# Then it runs toc-deploy pinned to that commit, so code pushed while it
+# was waiting for CI cannot ride along unchecked, with rollback on: an
+# unattended deploy that does not come back healthy puts the old code
+# back by itself.
+#
+# What it decided last is in $CURRENT/log/auto-deploy.status, and the
+# state sync carries log/ to GitHub, so a session that cannot reach the
+# host can still read what is live and why.
+set -eu
+
+BUILD="${BUILD:-/srv/toc/build}"
+CURRENT="${CURRENT:-/srv/toc/current}"
+REPO="${TOC_GITHUB_REPO:-jeremydbean/toc2026}"
+STATE_DIR="${STATE_DIR:-/var/lib/toc-auto-deploy}"
+LOCK="${TOC_DEPLOY_LOCK:-/run/toc-deploy.lock}"
+DEPLOY_BIN="${TOC_DEPLOY_BIN:-/usr/local/sbin/toc-deploy}"
+MARKER="$CURRENT/log/deployed-commit"
+STATUS="$CURRENT/log/auto-deploy.status"
+
+mkdir -p "$STATE_DIR"
+
+status() {
+    printf '%s %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$*" > "$STATUS.tmp" &&
+        mv "$STATUS.tmp" "$STATUS"
+    chown toc:toc "$STATUS" 2>/dev/null || true
+    echo "$*"
+}
+
+# One deploy at a time. A deploy by hand holds this lock too; if one is
+# running, the next timer tick looks again.
+exec 9>"$LOCK"
+if ! flock -n 9; then
+    echo "a deploy is already running"
+    exit 0
+fi
+
+git -C "$BUILD" checkout --quiet -- . 2>/dev/null || true
+git -C "$BUILD" fetch --quiet origin main
+target=$(git -C "$BUILD" rev-parse origin/main)
+short=$(git -C "$BUILD" rev-parse --short "$target")
+
+live=$(cut -d' ' -f1 "$MARKER" 2>/dev/null || true)
+if [ -z "$live" ] || ! git -C "$BUILD" cat-file -e "$live^{commit}" 2>/dev/null; then
+    status "no record of what is live in $MARKER; run toc-deploy once by hand"
+    exit 0
+fi
+[ "$live" = "$target" ] && exit 0
+
+# Code is everything a deploy carries into the live tree except what the
+# running game owns (the state sync's paths, as validate.yml lists them)
+# and what never runs there.
+changed=$(git -C "$BUILD" diff --name-only "$live" "$target" -- . \
+    ':(exclude)player' ':(exclude)gods' ':(exclude)heroes' ':(exclude)log' \
+    ':(exclude)notes' ':(exclude)wiki' ':(exclude)tests' ':(exclude).github' \
+    ':(exclude,glob)**/*.md' \
+    ':(exclude,glob)area/notes.txt' ':(exclude,glob)area/bugs.txt*' \
+    ':(exclude,glob)area/ideas.txt*' ':(exclude,glob)area/typos.txt*' \
+    ':(exclude)area/pkilldata.txt' ':(exclude)area/wizlist.txt' \
+    ':(exclude)area/maxload.txt' ':(exclude)area/offense.txt' \
+    ':(exclude)area/relics.txt' ':(exclude)area/not.txt' \
+    ':(exclude)area/ban.txt' ':(exclude)area/dpsboard.txt')
+live_short=$(git -C "$BUILD" rev-parse --short "$live")
+if [ -z "$changed" ]; then
+    status "live at $live_short; main ($short) differs only in docs, tests or state"
+    exit 0
+fi
+
+if [ "$(cat "$STATE_DIR/attempted" 2>/dev/null || true)" = "$target" ]; then
+    exit 0
+fi
+
+if git -C "$BUILD" log --format=%B "$live..$target" | grep -qF '[deploy now]'; then
+    why="[deploy now]"
+else
+    # The newest commit CI runs for. State syncs carry [skip ci], and a
+    # commit pushed on top of another cancels the older run, so this is
+    # the one whose verdict covers everything before it.
+    ci=$(git -C "$BUILD" log -1 --format=%H --invert-grep --fixed-strings \
+        --grep='[skip ci]' "$live..$target")
+    if [ -z "$ci" ]; then
+        status "code changed but no commit after $live_short runs CI; not deploying $short"
+        exit 0
+    fi
+    ci_short=$(git -C "$BUILD" rev-parse --short "$ci")
+    verdict=$(curl -fsS --max-time 20 \
+        "https://api.github.com/repos/$REPO/actions/runs?head_sha=$ci&per_page=20" |
+        python3 -c '
+import json, sys
+runs = [r for r in json.load(sys.stdin).get("workflow_runs", [])
+        if r.get("name") == "Validate" and r.get("event") == "push"]
+if not runs:
+    print("none")
+else:
+    r = max(runs, key=lambda r: r.get("created_at", ""))
+    print(r["conclusion"] if r["status"] == "completed" else r["status"])
+' 2>/dev/null) || verdict=unreachable
+    case "$verdict" in
+        success)
+            why="CI passed on $ci_short" ;;
+        none|queued|in_progress|waiting|pending|requested|unreachable)
+            status "waiting for CI on $ci_short ($verdict) before deploying $short"
+            exit 0 ;;
+        *)
+            status "not deploying $short: CI on $ci_short says $verdict; push a fix"
+            exit 0 ;;
+    esac
+fi
+
+echo "$target" > "$STATE_DIR/attempted"
+status "deploying $short ($why)"
+logger -t toc-auto-deploy "deploying $short ($why)" 2>/dev/null || true
+if TOC_DEPLOY_LOCKED=1 TOC_DEPLOY_REF="$target" TOC_DEPLOY_ROLLBACK=1 \
+        "$DEPLOY_BIN" > "$STATE_DIR/last.log" 2>&1; then
+    status "deployed $short ($why)"
+    logger -t toc-auto-deploy "deployed $short" 2>/dev/null || true
+else
+    status "deploy of $short FAILED and was rolled back; not retrying this commit -- see $STATE_DIR/last.log"
+    logger -p daemon.err -t toc-auto-deploy "deploy of $short failed" 2>/dev/null || true
+    tail -25 "$STATE_DIR/last.log"
+    exit 1
+fi

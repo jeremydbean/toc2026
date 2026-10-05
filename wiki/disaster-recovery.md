@@ -79,6 +79,18 @@ It archives the running code to `/srv/toc/rollback-code-<stamp>.tgz`
 first and prints the rollback command if the game does not come back
 healthy. It never takes player state from git.
 
+**Usually you do not need to run it.** `toc-auto-deploy.timer` checks
+`main` every ten minutes and deploys new code once CI's Validate run for
+it passes, pinned to that commit and rolling itself back if the game
+does not come back healthy; `[deploy now]` in a commit message skips the
+CI wait. Docs, tests and state-sync commits never trigger it. What it
+decided last is in `/srv/toc/current/log/auto-deploy.status` (also in
+git, via the state sync), the live commit in `log/deployed-commit`, and
+its history in `journalctl -t toc-auto-deploy`. To stop it:
+`sudo systemctl disable --now toc-auto-deploy.timer`. If a deploy failed,
+`/var/lib/toc-auto-deploy/last.log` has the output; it will not retry
+that commit, so push a fix or run `toc-deploy` by hand.
+
 ## Are we actually backed up right now?
 
 ```bash
