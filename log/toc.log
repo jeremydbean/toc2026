@@ -52914,3 +52914,190 @@ Mon Oct  5 23:28:15 2026 :: Log Alaric [2497]: recal
 Mon Oct  5 23:28:15 2026 :: Log Alaric [2497]: aq co
 Mon Oct  5 23:28:15 2026 :: Log Alaric [2497]: quest complete: 3 gold, 53 quest points (streak bonus 198%)
 Mon Oct  5 23:28:15 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct  5 23:30:55 2026 :: Sock.sinaddr:  34.198.201.66
+Mon Oct  5 23:30:55 2026 :: EOF encountered on read.
+Mon Oct  5 23:31:52 2026 :: Log Alaric [2497]: af
+Mon Oct  5 23:31:54 2026 :: Log Alaric [2497]: wake
+Mon Oct  5 23:31:56 2026 :: Log Alaric [2497]: en do
+Mon Oct  5 23:31:56 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Mon Oct  5 23:31:59 2026 :: Log Alaric [2401]: jump rock
+Mon Oct  5 23:31:59 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Mon Oct  5 23:31:59 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 1607
+Mon Oct  5 23:32:00 2026 :: Log Alaric [4208]: l
+Mon Oct  5 23:32:02 2026 :: Log Alaric [4208]: heal all
+Mon Oct  5 23:32:02 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Mon Oct  5 23:32:03 2026 :: Log Alaric [4208]: r e 4
+Mon Oct  5 23:32:03 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Mon Oct  5 23:32:03 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Mon Oct  5 23:32:03 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Mon Oct  5 23:32:03 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Mon Oct  5 23:32:03 2026 :: Log Alaric [2427]: n
+Mon Oct  5 23:32:03 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Mon Oct  5 23:32:04 2026 :: Log Alaric [2404]: n
+Mon Oct  5 23:32:04 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Mon Oct  5 23:32:13 2026 :: Log Alaric [2401]: look
+Mon Oct  5 23:32:13 2026 :: Log Alaric [2401]: look
+Mon Oct  5 23:32:27 2026 :: Log Alaric [2401]: r s 6
+Mon Oct  5 23:32:27 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Mon Oct  5 23:32:27 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 2404
+Mon Oct  5 23:32:27 2026 :: Log Alaric [2428]: arrived (Main Processional.) from 2427
+Mon Oct  5 23:32:27 2026 :: Log Alaric [2429]: arrived (Bridge of the Mermaids.) from 2428
+Mon Oct  5 23:32:27 2026 :: Log Alaric [2430]: arrived (Main Processional.) from 2429
+Mon Oct  5 23:32:27 2026 :: Log Alaric [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Mon Oct  5 23:32:27 2026 :: Log Alaric [2431]: open south
+Mon Oct  5 23:32:27 2026 :: Log Alaric [2431]: r s 3
+Mon Oct  5 23:32:27 2026 :: Log Alaric [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Mon Oct  5 23:32:27 2026 :: Log Alaric [3505]: arrived (The Trail to Miden'nir) from 2432
+Mon Oct  5 23:32:27 2026 :: Log Alaric [3507]: arrived (A Burned Cart) from 3505
+Mon Oct  5 23:32:28 2026 :: Log Alaric [3507]: w
+Mon Oct  5 23:32:28 2026 :: Log Alaric [3508]: arrived (On a Small Path) from 3507
+Mon Oct  5 23:32:28 2026 :: Log Alaric [3508]: s
+Mon Oct  5 23:32:28 2026 :: Log Alaric [3511]: arrived (The Trail) from 3508
+Mon Oct  5 23:32:28 2026 :: Log Alaric [3511]: open secret
+Mon Oct  5 23:32:28 2026 :: Log Alaric [3511]: w
+Mon Oct  5 23:32:28 2026 :: Log Alaric [20501]: arrived (A Fog-Shrouded Trail) from 3511
+Mon Oct  5 23:32:29 2026 :: Log Alaric [20501]: u
+Mon Oct  5 23:32:29 2026 :: Log Alaric [20502]: arrived (The Haunted Pine Forest) from 20501
+Mon Oct  5 23:32:29 2026 :: Log Alaric [20502]: u
+Mon Oct  5 23:32:29 2026 :: Log Alaric [20503]: arrived (Near the Summit) from 20502
+Mon Oct  5 23:32:29 2026 :: Log Alaric [20503]: s
+Mon Oct  5 23:32:29 2026 :: Log Alaric [20504]: arrived (A Mountain Pass) from 20503
+Mon Oct  5 23:32:29 2026 :: Log Alaric [20504]: s
+Mon Oct  5 23:32:29 2026 :: Log Alaric [20505]: arrived (A Mountain Pass) from 20504
+Mon Oct  5 23:32:30 2026 :: Log Alaric [20505]: w
+Mon Oct  5 23:32:30 2026 :: Log Alaric [20506]: arrived (A Thickly-Wooded Dell) from 20505
+Mon Oct  5 23:32:33 2026 :: Log Alaric [20506]: scan
+Mon Oct  5 23:32:35 2026 :: Log Alaric [20506]: s
+Mon Oct  5 23:32:35 2026 :: Log Alaric [20507]: arrived (A Signpost in the Enchanted Forests) from 20506
+Mon Oct  5 23:32:35 2026 :: Log Alaric [20507]: scan
+Mon Oct  5 23:32:39 2026 :: Log Alaric [20507]: e
+Mon Oct  5 23:32:39 2026 :: Log Alaric [20533]: arrived (A Well-Used Trail Through The Forest) from 20507
+Mon Oct  5 23:32:40 2026 :: Log Alaric [20533]: scan
+Mon Oct  5 23:32:42 2026 :: Log Alaric [20533]: e
+Mon Oct  5 23:32:42 2026 :: Log Alaric [20534]: arrived (The Woodkeepers' Outpost) from 20533
+Mon Oct  5 23:32:43 2026 :: Log Alaric [20534]: look ra
+Mon Oct  5 23:32:47 2026 :: Log Alaric [20534]: look an
+Mon Oct  5 23:32:53 2026 :: Log Alaric [20534]: con ra
+Mon Oct  5 23:32:59 2026 :: Log Alaric [20534]: w
+Mon Oct  5 23:32:59 2026 :: Log Alaric [20533]: arrived (A Well-Used Trail Through The Forest) from 20534
+Mon Oct  5 23:32:59 2026 :: Log Alaric [20533]: s
+Mon Oct  5 23:32:59 2026 :: Log Alaric [20532]: arrived (The Emerald Forest) from 20533
+Mon Oct  5 23:33:00 2026 :: Log Alaric [20532]: scan
+Mon Oct  5 23:33:01 2026 :: Log Alaric [20532]: s
+Mon Oct  5 23:33:01 2026 :: Log Alaric [20537]: arrived (The Emerald Forest) from 20532
+Mon Oct  5 23:33:02 2026 :: Log Alaric [20537]: scan
+Mon Oct  5 23:33:03 2026 :: Log Alaric [20537]: e
+Mon Oct  5 23:33:03 2026 :: Log Alaric [20538]: arrived (In the Emerald Forest) from 20537
+Mon Oct  5 23:33:03 2026 :: Log Alaric [20538]: scan
+Mon Oct  5 23:33:07 2026 :: Log Alaric [20538]: e
+Mon Oct  5 23:33:07 2026 :: Log Alaric [20539]: arrived (Before the Great Tree) from 20538
+Mon Oct  5 23:33:07 2026 :: Log Alaric [20539]: scan
+Mon Oct  5 23:33:08 2026 :: Log Alaric [20539]: s
+Mon Oct  5 23:33:08 2026 :: Log Alaric [20543]: arrived (In the Emerald Forest) from 20539
+Mon Oct  5 23:33:09 2026 :: Log Alaric [20543]: scan
+Mon Oct  5 23:33:11 2026 :: Log Alaric [20543]: s
+Mon Oct  5 23:33:11 2026 :: Log Alaric [20561]: arrived (A Woodland Trail) from 20543
+Mon Oct  5 23:33:12 2026 :: Log Alaric [20561]: scan
+Mon Oct  5 23:33:13 2026 :: Log Alaric [20561]: s
+Mon Oct  5 23:33:13 2026 :: Log Alaric [20560]: arrived (A Dense Path) from 20561
+Mon Oct  5 23:33:14 2026 :: Log Alaric [20560]: scan
+Mon Oct  5 23:33:15 2026 :: Log Alaric [20560]: s
+Mon Oct  5 23:33:15 2026 :: Log Alaric [20566]: arrived (A Small Clearing) from 20560
+Mon Oct  5 23:33:16 2026 :: Log Alaric [20566]: scan
+Mon Oct  5 23:33:17 2026 :: Log Alaric [20566]: w
+Mon Oct  5 23:33:17 2026 :: Log Alaric [20567]: arrived (The Ragged Trail) from 20566
+Mon Oct  5 23:33:18 2026 :: Log Alaric [20567]: scan
+Mon Oct  5 23:33:20 2026 :: Log Alaric [20567]: w
+Mon Oct  5 23:33:20 2026 :: Log Alaric [20568]: arrived (The Honey Bun) from 20567
+Mon Oct  5 23:33:21 2026 :: Log Alaric [20568]: scan
+Mon Oct  5 23:33:24 2026 :: Log Alaric [20568]: w
+Mon Oct  5 23:33:24 2026 :: Log Alaric [20569]: arrived (A fairly large clearing) from 20568
+Mon Oct  5 23:33:25 2026 :: Log Alaric [20569]: scan
+Mon Oct  5 23:33:26 2026 :: Log Alaric [20569]: w
+Mon Oct  5 23:33:26 2026 :: Log Alaric [20570]: arrived (The three way woodland) from 20569
+Mon Oct  5 23:33:27 2026 :: Log Alaric [20570]: scan
+Mon Oct  5 23:33:28 2026 :: Log Alaric [20570]: w
+Mon Oct  5 23:33:28 2026 :: Log Alaric [20571]: arrived (A Forest Trail) from 20570
+Mon Oct  5 23:33:29 2026 :: Log Alaric [20571]: scan
+Mon Oct  5 23:33:30 2026 :: Log Alaric [20571]: s
+Mon Oct  5 23:33:30 2026 :: Log Alaric [20573]: arrived (A Lovely Trail) from 20571
+Mon Oct  5 23:33:31 2026 :: Log Alaric [20573]: scan
+Mon Oct  5 23:33:32 2026 :: Log Alaric [20573]: n
+Mon Oct  5 23:33:32 2026 :: Log Alaric [20571]: arrived (A Forest Trail) from 20573
+Mon Oct  5 23:33:33 2026 :: Log Alaric [20571]: on
+Mon Oct  5 23:33:33 2026 :: Log Alaric [20571]: scan
+Mon Oct  5 23:33:34 2026 :: Log Alaric [20571]: ex
+Mon Oct  5 23:33:36 2026 :: Log Alaric [20571]: n
+Mon Oct  5 23:33:36 2026 :: Log Alaric [20553]: arrived (A Hill in the Marsh) from 20571
+Mon Oct  5 23:33:37 2026 :: Log Alaric [20553]: look elf
+Mon Oct  5 23:33:41 2026 :: Log Alaric [20553]: l
+Mon Oct  5 23:33:46 2026 :: Log Alaric [20553]: look elf
+Mon Oct  5 23:33:47 2026 :: Log Alaric [20553]: w
+Mon Oct  5 23:33:47 2026 :: Log Alaric [20552]: arrived (The Dead Moors) from 20553
+Mon Oct  5 23:33:48 2026 :: Log Alaric [20552]: scan
+Mon Oct  5 23:33:49 2026 :: Log Alaric [20552]: e
+Mon Oct  5 23:33:49 2026 :: Log Alaric [20553]: arrived (A Hill in the Marsh) from 20552
+Mon Oct  5 23:33:50 2026 :: Log Alaric [20553]: look de
+Mon Oct  5 23:33:51 2026 :: Log Alaric [20553]: w
+Mon Oct  5 23:33:51 2026 :: Log Alaric [20552]: arrived (The Dead Moors) from 20553
+Mon Oct  5 23:33:52 2026 :: Log Alaric [20552]: scan
+Mon Oct  5 23:33:53 2026 :: Log Alaric [20552]: n
+Mon Oct  5 23:33:53 2026 :: Log Alaric [20551]: arrived (The Dead Moors) from 20552
+Mon Oct  5 23:33:54 2026 :: Log Alaric [20551]: scan
+Mon Oct  5 23:33:55 2026 :: Log Alaric [20551]: n
+Mon Oct  5 23:33:55 2026 :: Log Alaric [20593]: arrived (The Dead Moors) from 20551
+Mon Oct  5 23:33:56 2026 :: Log Alaric [20593]: scan
+Mon Oct  5 23:33:57 2026 :: Log Alaric [20593]: n
+Mon Oct  5 23:33:57 2026 :: Log Alaric [20528]: arrived (The Witch Wood) from 20593
+Mon Oct  5 23:33:57 2026 :: Log Alaric [20528]: scan
+Mon Oct  5 23:33:58 2026 :: Log Alaric [20528]: n
+Mon Oct  5 23:33:58 2026 :: Log Alaric [20527]: arrived (The Witch Wood) from 20528
+Mon Oct  5 23:33:59 2026 :: Log Alaric [20527]: scan
+Mon Oct  5 23:34:01 2026 :: Log Alaric [20527]: n
+Mon Oct  5 23:34:01 2026 :: Log Alaric [20519]: arrived (The Altar of Sacrifice) from 20527
+Mon Oct  5 23:34:01 2026 :: Log Alaric [20519]: scan
+Mon Oct  5 23:34:02 2026 :: Log Alaric [20519]: e
+Mon Oct  5 23:34:02 2026 :: Log Alaric [20518]: arrived (The Witch Wood) from 20519
+Mon Oct  5 23:34:03 2026 :: Log Alaric [20518]: scan
+Mon Oct  5 23:34:04 2026 :: Log Alaric [20518]: s
+Mon Oct  5 23:34:04 2026 :: Log Alaric [20517]: arrived (The Witch Wood) from 20518
+Mon Oct  5 23:34:04 2026 :: Log Alaric [20517]: e
+Mon Oct  5 23:34:05 2026 :: Log Alaric [20517]: scan
+Mon Oct  5 23:34:06 2026 :: Log Alaric [20517]: s
+Mon Oct  5 23:34:06 2026 :: Log Alaric [20529]: arrived (The Entrance of the Witch Wood) from 20517
+Mon Oct  5 23:34:06 2026 :: Log Alaric [20529]: e
+Mon Oct  5 23:34:06 2026 :: Log Alaric [20530]: arrived (Under Dark Woods) from 20529
+Mon Oct  5 23:34:07 2026 :: Log Alaric [20530]: scan
+Mon Oct  5 23:34:09 2026 :: Log Alaric [20530]: e
+Mon Oct  5 23:34:10 2026 :: Log Alaric [20530]: scan
+Mon Oct  5 23:34:11 2026 :: Log Alaric [20530]: s
+Mon Oct  5 23:34:11 2026 :: Log Alaric [20548]: arrived (The Forest Road) from 20530
+Mon Oct  5 23:34:13 2026 :: Log Alaric [20548]: scan
+Mon Oct  5 23:34:14 2026 :: Log Alaric [20548]: e
+Mon Oct  5 23:34:14 2026 :: Log Alaric [20547]: arrived (The Emerald Forest) from 20548
+Mon Oct  5 23:34:15 2026 :: Log Alaric [20547]: scan
+Mon Oct  5 23:34:16 2026 :: Log Alaric [20547]: n
+Mon Oct  5 23:34:16 2026 :: Log Alaric [20531]: arrived (The Emerald Forest) from 20547
+Mon Oct  5 23:34:17 2026 :: Log Alaric [20531]: scan
+Mon Oct  5 23:34:18 2026 :: Log Alaric [20531]: n
+Mon Oct  5 23:34:18 2026 :: Log Alaric [20507]: arrived (A Signpost in the Enchanted Forests) from 20531
+Mon Oct  5 23:34:18 2026 :: Log Alaric [20507]: scan
+Mon Oct  5 23:34:20 2026 :: Log Alaric [20507]: e
+Mon Oct  5 23:34:20 2026 :: Log Alaric [20533]: arrived (A Well-Used Trail Through The Forest) from 20507
+Mon Oct  5 23:34:20 2026 :: Log Alaric [20533]: scan
+Mon Oct  5 23:34:24 2026 :: Log Alaric [20533]: e
+Mon Oct  5 23:34:24 2026 :: Log Alaric [20534]: arrived (The Woodkeepers' Outpost) from 20533
+Mon Oct  5 23:34:25 2026 :: Log Alaric [20534]: look lad
+Mon Oct  5 23:34:30 2026 :: Log Alaric [20534]: look sil
+Mon Oct  5 23:34:33 2026 :: Log Alaric [20534]: kill rang
+Mon Oct  5 23:34:36 2026 :: Log Alaric [20534]: look rang
+Mon Oct  5 23:34:40 2026 :: Log Alaric [20534]: look 2.rang
+Mon Oct  5 23:34:41 2026 :: Log Alaric [20534]: list
+Mon Oct  5 23:34:43 2026 :: Log Alaric [20534]: n
+Mon Oct  5 23:34:43 2026 :: Log Alaric [20535]: arrived (The Guildmaster's Cabin) from 20534
+Mon Oct  5 23:34:43 2026 :: Log Alaric [20535]: scan
+Mon Oct  5 23:34:45 2026 :: Log Alaric [20535]: s
+Mon Oct  5 23:34:45 2026 :: Log Alaric [20534]: arrived (The Woodkeepers' Outpost) from 20535
+Mon Oct  5 23:34:46 2026 :: Log Alaric [20534]: e
+Mon Oct  5 23:34:46 2026 :: Log Alaric [20536]: arrived (Smokey's Supplies) from 20534
+Mon Oct  5 23:34:46 2026 :: Log Alaric [20536]: scan
