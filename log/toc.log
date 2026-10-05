@@ -48832,3 +48832,6 @@ Mon Oct  5 03:38:57 2026 :: Log Alaric [2]: arrived (Limbo) from 2497
 Mon Oct  5 03:38:57 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2
 Mon Oct  5 03:38:57 2026 :: Log Alaric [2497]: who
 Mon Oct  5 03:38:57 2026 :: Log Alaric [2497]: worth
+Mon Oct  5 03:42:40 2026 :: Sock.sinaddr:  5.161.177.47
+Mon Oct  5 03:42:40 2026 :: EOF encountered on read.
+Mon Oct  5 03:44:47 2026 :: Sock.sinaddr:  45.79.207.111
