@@ -50670,3 +50670,101 @@ Mon Oct  5 22:28:54 2026 :: Log Alaric [10136]: get robe cor
 Mon Oct  5 22:28:56 2026 :: Log Alaric [10136]: comp robe
 Mon Oct  5 22:28:59 2026 :: Log Alaric [10136]: drop robe
 Mon Oct  5 22:29:01 2026 :: Log Alaric [10136]: get star cor
+Mon Oct  5 22:29:05 2026 :: Log Alaric [10136]: comp starj
+Mon Oct  5 22:29:11 2026 :: Log Alaric [10136]: wear starj
+Mon Oct  5 22:29:14 2026 :: Log Alaric [10136]: stash put starj
+Mon Oct  5 22:29:14 2026 :: Log Alaric [10136]: stashed (Shining) A Precious Starjewel (vnum 10059)
+Mon Oct  5 22:29:15 2026 :: Log Alaric [10136]: l
+Mon Oct  5 22:29:25 2026 :: Log Alaric [10136]: l i cor
+Mon Oct  5 22:29:27 2026 :: Log Alaric [10136]: get key ycor
+Mon Oct  5 22:29:30 2026 :: Log Alaric [10136]: get key cor
+Mon Oct  5 22:29:33 2026 :: Log Alaric [10136]: w
+Mon Oct  5 22:29:33 2026 :: Log Alaric [10137]: arrived (A forgotten hallway.) from 10136
+Mon Oct  5 22:29:34 2026 :: Log Alaric [10137]: w
+Mon Oct  5 22:29:34 2026 :: Log Alaric [10138]: arrived (A forgotten hallway.) from 10137
+Mon Oct  5 22:29:34 2026 :: Log Alaric [10138]: w
+Mon Oct  5 22:29:34 2026 :: Log Alaric [10139]: arrived (A forgotten hallway.) from 10138
+Mon Oct  5 22:29:34 2026 :: Log Alaric [10139]: w
+Mon Oct  5 22:29:34 2026 :: Log Alaric [10140]: arrived (A forgotten hallway.) from 10139
+Mon Oct  5 22:29:35 2026 :: Log Alaric [10140]: n
+Mon Oct  5 22:29:35 2026 :: Log Alaric [10143]: arrived (An abandoned room.) from 10140
+Mon Oct  5 22:29:36 2026 :: Log Alaric [10143]: e
+Mon Oct  5 22:29:36 2026 :: Log Alaric [10145]: arrived (An abandoned bedroom.) from 10143
+Mon Oct  5 22:29:39 2026 :: Log Alaric [10145]: unl statue
+Mon Oct  5 22:29:42 2026 :: Log Alaric [10145]: open statue
+Mon Oct  5 22:29:44 2026 :: Log Alaric [10145]: n
+Mon Oct  5 22:29:44 2026 :: Log Alaric [10146]: arrived (A secret room.) from 10145
+Mon Oct  5 22:29:48 2026 :: Log Alaric [10146]: open trapdoor
+Mon Oct  5 22:29:49 2026 :: Log Alaric [10146]: u
+Mon Oct  5 22:29:49 2026 :: Log Alaric [10147]: arrived (A staircase.) from 10146
+Mon Oct  5 22:29:50 2026 :: Log Alaric [10147]: u
+Mon Oct  5 22:29:50 2026 :: Log Alaric [10148]: arrived (A staircase.) from 10147
+Mon Oct  5 22:29:52 2026 :: Log Alaric [10148]: open north
+Mon Oct  5 22:29:53 2026 :: Log Alaric [10148]: n
+Mon Oct  5 22:29:53 2026 :: Log Alaric [10149]: arrived (A closet.) from 10148
+Mon Oct  5 22:29:55 2026 :: Log Alaric [10149]: open west
+Mon Oct  5 22:29:56 2026 :: Log Alaric [10149]: w
+Mon Oct  5 22:29:56 2026 :: Log Alaric [10150]: arrived (A bedroom.) from 10149
+Mon Oct  5 22:29:56 2026 :: Log Alaric [10150]: on
+Mon Oct  5 22:29:57 2026 :: Log Alaric [10150]: n
+Mon Oct  5 22:29:57 2026 :: Log Alaric [10151]: arrived (The Royal hallway.) from 10150
+Mon Oct  5 22:29:59 2026 :: Sock.sinaddr:  5.161.194.92
+Mon Oct  5 22:30:00 2026 :: EOF encountered on read.
+Mon Oct  5 22:30:00 2026 :: Log Alaric [10151]: n
+Mon Oct  5 22:30:00 2026 :: Log Alaric [10170]: arrived (Before the Royal chambers.) from 10151
+Mon Oct  5 22:30:03 2026 :: Log Alaric [10170]: look ro
+Mon Oct  5 22:30:07 2026 :: Log Alaric [10170]: te
+Mon Oct  5 22:30:12 2026 :: Log Alaric [10170]: te
+Mon Oct  5 22:30:17 2026 :: Log Alaric [10170]: te
+Mon Oct  5 22:30:28 2026 :: Log Alaric [10170]: who
+Mon Oct  5 22:30:28 2026 :: Log Alaric [10170]: te
+Mon Oct  5 22:30:34 2026 :: Log Alaric [10170]: te
+Mon Oct  5 22:30:39 2026 :: Log Alaric [10170]: te
+Mon Oct  5 22:30:45 2026 :: Log Alaric [10170]: te
+Mon Oct  5 22:30:50 2026 :: Log Alaric [10170]: te
+Mon Oct  5 22:30:57 2026 :: Log Alaric [10170]: te
+Mon Oct  5 22:31:03 2026 :: Log Alaric [10170]: te
+Mon Oct  5 22:31:09 2026 :: Log Alaric [10170]: l i cor
+Mon Oct  5 22:31:12 2026 :: Log Alaric [10170]: get all cor
+Mon Oct  5 22:31:14 2026 :: Log Alaric [10170]: drop lance
+Mon Oct  5 22:31:15 2026 :: Log Alaric [10170]: te
+Mon Oct  5 22:31:20 2026 :: Log Alaric [10170]: te
+Mon Oct  5 22:31:30 2026 :: Log Alaric [10170]: who
+Mon Oct  5 22:31:30 2026 :: Log Alaric [10170]: te
+Mon Oct  5 22:31:37 2026 :: Log Alaric [10170]: te
+Mon Oct  5 22:31:43 2026 :: Log Alaric [10170]: l i cor
+Mon Oct  5 22:31:47 2026 :: Log Alaric [10170]: get cloak cor
+Mon Oct  5 22:31:49 2026 :: Log Alaric [10170]: af
+Mon Oct  5 22:31:51 2026 :: Log Alaric [10170]: scan
+Mon Oct  5 22:31:52 2026 :: Log Alaric [10170]: n
+Mon Oct  5 22:31:52 2026 :: Log Alaric [10171]: arrived (the Royal Chambers.) from 10170
+Mon Oct  5 22:31:54 2026 :: Log Alaric [10171]: scan
+Mon Oct  5 22:31:56 2026 :: Log Alaric [10171]: n
+Mon Oct  5 22:31:56 2026 :: Log Alaric [10172]: arrived (the Royal Chambers.) from 10171
+Mon Oct  5 22:31:57 2026 :: Log Alaric [10172]: scan
+Mon Oct  5 22:32:00 2026 :: Log Alaric [10172]: c infra
+Mon Oct  5 22:32:08 2026 :: Log Alaric [10172]: w
+Mon Oct  5 22:32:08 2026 :: Log Alaric [10174]: arrived (the Royal Chambers.) from 10172
+Mon Oct  5 22:32:10 2026 :: Log Alaric [10174]: on
+Mon Oct  5 22:32:11 2026 :: Log Alaric [10174]: os
+Mon Oct  5 22:32:12 2026 :: Log Alaric [10174]: scan
+Mon Oct  5 22:32:17 2026 :: Log Alaric [10174]: n
+Mon Oct  5 22:32:17 2026 :: Log Alaric [10176]: arrived (Prince Augustus' bedroom.) from 10174
+Mon Oct  5 22:32:21 2026 :: Log Alaric [10176]: sh au
+Mon Oct  5 22:32:31 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:32:37 2026 :: Log Alaric [10176]: te
+Mon Oct  5 22:32:44 2026 :: Log Alaric [10176]: te
+Mon Oct  5 22:32:52 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:32:57 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:33:05 2026 :: Log Alaric [10176]: cv
+Mon Oct  5 22:33:07 2026 :: Log Alaric [10176]: cv
+Mon Oct  5 22:33:09 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:33:15 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:33:19 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:33:25 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:33:30 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:33:36 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:33:42 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:33:48 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:33:54 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:34:00 2026 :: Log Alaric [10176]: sh
