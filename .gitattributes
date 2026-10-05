@@ -7,6 +7,10 @@ deploy/toc2026-* text eol=lf
 # Same for the Windows-VM units and their extensionless script: a CRLF
 # shebang line is rejected outright by the Linux loader.
 deploy/windows-vm/* text eol=lf
+# toc-restore runs as `sh` on a bare box, and the WSL syntax check and
+# tests/test_auto_deploy.py read it from this checkout, where text=auto
+# alone gave Windows a CRLF copy that sh rejects.
+deploy/toc-restore text eol=lf
 # Keep reproducible Mudlet assets byte-identical on Windows and POSIX.
 mudlet/*.xml text eol=lf
 mudlet/package/*.xml text eol=lf
