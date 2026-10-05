@@ -94,10 +94,16 @@ class DungeonChainTests(unittest.TestCase):
 
                 shut = run(hero, "open chest", settle=1.5)
                 self.assertIn("locked", shut.lower(), f"the chest starts locked:\n{shut}")
-                run(hero, "unlock chest", settle=1.5)
-                run(hero, "open chest", settle=1.5)
+                chest = run(hero, "unlock chest", settle=1.5) + run(hero, "open chest", settle=1.5)
                 prize = run(hero, "get all chest", settle=2.0)
-                self.assertIn("first triforce shard", prize.lower(), prize)
+                # Twice in CI, never locally, the chest answered closed after
+                # UNLOCK and OPEN (also in test_hyrule_walkthrough). CI
+                # reprints only a failure's first line, so the chest's own
+                # replies lead it.
+                self.assertIn("first triforce shard", prize.lower(), " | ".join(
+                    x.strip().replace("\n", " ") for x in
+                    (f"chest said [{chest}]", f"prize [{prize}]",
+                     f"look [{run(hero, 'look', 1.5)}]")))
                 self.assertIn("boomerang", prize.lower(), prize)
 
     def test_the_next_door_wants_the_previous_piece_and_treasure(self) -> None:
