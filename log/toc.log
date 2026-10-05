@@ -47309,3 +47309,61 @@ Mon Oct  5 00:10:20 2026 :: Log Alaric [2424]: e
 Mon Oct  5 00:10:20 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
 Mon Oct  5 00:10:21 2026 :: Log Alaric [2425]: e
 Mon Oct  5 00:10:21 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Mon Oct  5 00:10:24 2026 :: Log Alaric [2426]: c ener ci
+Mon Oct  5 00:10:29 2026 :: Log Alaric [2426]: c ener ci
+Mon Oct  5 00:10:53 2026 :: Log Alaric [2426]: recal
+Mon Oct  5 00:10:53 2026 :: Log Alaric [13423]: arrived (Room of Lost Souls) from 2426
+Mon Oct  5 00:10:54 2026 :: Log Alaric [13423]: aq re
+Mon Oct  5 00:10:56 2026 :: Log Alaric [13423]: recal
+Mon Oct  5 00:10:56 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 13423
+Mon Oct  5 00:10:57 2026 :: Log Alaric [2497]: aq re
+Mon Oct  5 00:11:00 2026 :: Log Alaric [2497]: enter door
+Mon Oct  5 00:11:00 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Mon Oct  5 00:11:00 2026 :: Log Alaric [2401]: east
+Mon Oct  5 00:11:00 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Mon Oct  5 00:11:00 2026 :: Log Alaric [2403]: east
+Mon Oct  5 00:11:00 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Mon Oct  5 00:11:01 2026 :: Log Alaric [2420]: east
+Mon Oct  5 00:11:01 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Mon Oct  5 00:11:01 2026 :: Log Alaric [2421]: south
+Mon Oct  5 00:11:01 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Mon Oct  5 00:11:01 2026 :: Log Alaric [2441]: east
+Mon Oct  5 00:11:01 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Mon Oct  5 00:11:01 2026 :: Log Alaric [2442]: south
+Mon Oct  5 00:11:01 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Mon Oct  5 00:11:02 2026 :: Log Alaric [2443]: east
+Mon Oct  5 00:11:02 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Mon Oct  5 00:11:02 2026 :: Log Alaric [2444]: east
+Mon Oct  5 00:11:02 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Mon Oct  5 00:11:02 2026 :: Log Alaric [2445]: east
+Mon Oct  5 00:11:02 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Mon Oct  5 00:11:02 2026 :: Log Alaric [2101]: east
+Mon Oct  5 00:11:02 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Mon Oct  5 00:11:03 2026 :: Log Alaric [2102]: east
+Mon Oct  5 00:11:03 2026 :: Log Alaric [2103]: arrived (Along White Dragon Boulevard) from 2102
+Mon Oct  5 00:11:03 2026 :: Log Alaric [2103]: east
+Mon Oct  5 00:11:03 2026 :: Log Alaric [2104]: arrived (White Dragon Boulevard at Armory) from 2103
+Mon Oct  5 00:11:03 2026 :: Log Alaric [2104]: east
+Mon Oct  5 00:11:03 2026 :: Log Alaric [2105]: arrived (White Dragon Blvd.) from 2104
+Mon Oct  5 00:11:03 2026 :: Log Alaric [2105]: east
+Mon Oct  5 00:11:03 2026 :: Log Alaric [2106]: arrived (Corner of Ice and White Dragon) from 2105
+Mon Oct  5 00:11:04 2026 :: Log Alaric [2106]: south
+Mon Oct  5 00:11:04 2026 :: Log Alaric [2113]: arrived (Ice Dragon Bend) from 2106
+Mon Oct  5 00:11:04 2026 :: Log Alaric [2113]: east
+Mon Oct  5 00:11:04 2026 :: Log Alaric [2114]: arrived (The remains of the magic shop) from 2113
+Mon Oct  5 00:11:04 2026 :: Log Alaric [2114]: east
+Mon Oct  5 00:11:04 2026 :: Log Alaric [2115]: arrived (Bronze Dragon Street at wizard's back door) from 2114
+Mon Oct  5 00:11:04 2026 :: Log Alaric [2115]: south
+Mon Oct  5 00:11:04 2026 :: Log Alaric [2120]: arrived (Bronze Dragon Street) from 2115
+Mon Oct  5 00:11:05 2026 :: Log Alaric [2120]: south
+Mon Oct  5 00:11:05 2026 :: Log Alaric [2125]: arrived (Bronze Dragon Street at Warehouse) from 2120
+Mon Oct  5 00:11:05 2026 :: Log Alaric [2125]: south
+Mon Oct  5 00:11:05 2026 :: Log Alaric [2130]: arrived (Yellow Dragon Road) from 2125
+Mon Oct  5 00:11:07 2026 :: Log Alaric [2130]: get all
+Mon Oct  5 00:11:10 2026 :: Log Alaric [2130]: recal
+Mon Oct  5 00:11:10 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2130
+Mon Oct  5 00:11:11 2026 :: Log Alaric [2497]: aq co
+Mon Oct  5 00:11:11 2026 :: Log Alaric [2497]: quest complete: 22 gold, 32 quest points (streak bonus 153%)
+Mon Oct  5 00:11:14 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct  5 00:14:31 2026 :: Sock.sinaddr:  5.161.177.47
+Mon Oct  5 00:14:31 2026 :: EOF encountered on read.
