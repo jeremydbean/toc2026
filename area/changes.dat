@@ -3,6 +3,13 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261005d 2026-10-05
+BUY and TRAIN take a count: BUY 10 FLY buys ten potions, TRAIN HP 10 uses
+ten sessions. Each stops at the first one you cannot afford, carry or
+train, and tells you how many it managed. HELP now answers every spell
+group by name -- HELP NECRO MALADICTIONS lists what is in it and what it
+costs you -- and HELP DOOR BASH finds DOORBASH.
+
 @ 20261005c 2026-10-05
 Saying something with a $ in it now shows you exactly what you said, as
 everyone else already saw it, and ordering a pet to do something with a $

@@ -1816,7 +1816,7 @@ if mounted travel is not permitted there.
 See also: MOUNT, RIDE
 ~
 
-0 DOORBASH~
+0 DOORBASH 'DOOR BASH'~
 Syntax: doorbash <direction>
 
 Charge a closed or locked door with brute force, attempting to break it
@@ -2637,10 +2637,15 @@ See also: COMPACT, COMBINE, PROMPT
 0 BUY~
 Syntax: buy <object>
 Syntax: buy <n>.<object>
+Syntax: buy <count> <object>
 
 BUY purchases an object from a shopkeeper.  When multiple items of the
 same name are available, prepend the position index: 'buy 2.sword' buys
 the second sword in the list.
+
+With a count, BUY buys that many, up to 50, one at a time: 'buy 10 fly'
+buys ten potions of fly.  It stops at the first one you cannot afford or
+carry, or when the shopkeeper runs out, and says how many you got.
 
 See also: LIST, SELL, VALUE
 ~
@@ -4116,6 +4121,11 @@ See also: DESCRIPTION, SCORE, WHO
 
 0 TRAIN~
 Syntax: train <str int wis dex con hp mana>
+Syntax: train <str int wis dex con hp mana> <count>
+
+With a count, TRAIN uses that many sessions at once, up to 100: 'train
+hp 10' raises your hit points by 100.  It stops when your sessions run
+out or the attribute reaches its maximum, and says how many it trained.
 
 TRAIN increases one of your attributes.  When you start the game, your
 character has standard attributes based on your class, and several

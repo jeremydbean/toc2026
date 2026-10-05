@@ -2280,6 +2280,45 @@ void do_help( CHAR_DATA *ch, char *argument )
     }
     }
 
+    /*
+     * A spell group with no entry of its own -- 43 of the 58 have none,
+     * every "necro ..." group among them -- is answered from group_table,
+     * which cannot drift from what GAIN sells. Necromancers asked for
+     * NECRO MALADICTIONS and the rest and were told there was no help.
+     */
+    {
+	int gn = group_lookup( argall );
+
+	if ( gn >= 0 )
+	{
+	    char line[MAX_STRING_LENGTH];
+	    int sn;
+	    int col = 0;
+
+	    snprintf( line, sizeof(line), "%s is a group of abilities:\n\r",
+		      capitalize( group_table[gn].name ) );
+	    send_to_char( line, ch );
+	    for ( sn = 0; sn < MAX_IN_GROUP && group_table[gn].spells[sn] != NULL; sn++ )
+	    {
+		snprintf( line, sizeof(line), "  %-22s", group_table[gn].spells[sn] );
+		send_to_char( line, ch );
+		if ( ++col % 3 == 0 )
+		    send_to_char( "\n\r", ch );
+	    }
+	    if ( col % 3 != 0 )
+		send_to_char( "\n\r", ch );
+	    if ( !IS_NPC(ch) && group_table[gn].rating[ch->class] > 0 )
+		snprintf( line, sizeof(line),
+			  "It costs you %d train%s.  GAINLIST shows who sells it.\n\r",
+			  group_table[gn].rating[ch->class],
+			  group_table[gn].rating[ch->class] == 1 ? "" : "s" );
+	    else
+		toc_strlcpy( line, "Your class does not buy it.\n\r", sizeof(line) );
+	    send_to_char( line, ch );
+	    return;
+	}
+    }
+
     send_to_char( "No help on that word.\n\r", ch );
     return;
 }

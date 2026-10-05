@@ -4672,23 +4672,66 @@ long get_cost( CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy )
 
 
 
+/*
+ * BUY <n> <item> buys up to n, one at a time, through buy_one -- every
+ * purchase takes every check a single BUY does, and the first refusal
+ * (cannot afford it, cannot carry it, sold out) stops the run. Players
+ * bought potions by typing BUY FLY thirteen times running.
+ */
+#define BUY_MAX_COUNT 50
+
+static bool buy_one( CHAR_DATA *ch, CHAR_DATA *keeper, char *argument );
+
 void do_buy( CHAR_DATA *ch, char *argument )
 {
-    char buf[MAX_STRING_LENGTH];
+    char arg[MAX_INPUT_LENGTH];
+    char *rest;
     CHAR_DATA *keeper;
-    OBJ_DATA *obj;
-
-    long cost;
-    int roll;
+    int count = 1;
+    int bought = 0;
 
     if(argument[0] == '\0') {
 	send_to_char( "Buy what?\n\r", ch );
 	return;
     }
 
+    rest = one_argument( argument, arg );
+    if ( is_number( arg ) && rest[0] != '\0' )
+    {
+	/* Bound before converting: is_number takes any run of digits. */
+	if ( strlen( arg ) > 3 || ( count = atoi( arg ) ) < 1 )
+	{
+	    send_to_char( "Buy how many?\n\r", ch );
+	    return;
+	}
+	count = UMIN( count, BUY_MAX_COUNT );
+	argument = rest;
+    }
 
     if(!(keeper = find_keeper(ch)))
 	return;
+
+    while ( bought < count && buy_one( ch, keeper, argument ) )
+	bought++;
+
+    if ( bought > 0 && bought < count )
+    {
+	char buf[MAX_INPUT_LENGTH];
+
+	snprintf( buf, sizeof(buf), "You bought %d of the %d you asked for.\n\r",
+		  bought, count );
+	send_to_char( buf, ch );
+    }
+}
+
+/* One purchase. True when something changed hands. */
+static bool buy_one( CHAR_DATA *ch, CHAR_DATA *keeper, char *argument )
+{
+    char buf[MAX_STRING_LENGTH];
+    OBJ_DATA *obj;
+
+    long cost;
+    int roll;
 
     obj  = get_obj_carry( keeper, argument );
     cost = get_cost( keeper, obj, true );
@@ -4696,34 +4739,34 @@ void do_buy( CHAR_DATA *ch, char *argument )
     if(cost <= 0 || !can_see_obj(ch,obj)) {
 	act( "$n tells you 'I don't sell that -- try 'list''.",
 	    keeper, NULL, ch, TO_VICT );
-	return;
+	return false;
     }
 
      if(!has_enough_copper(ch, cost)) {
          act( "$n tells you 'You can't afford to buy $p'.",
              keeper, obj, ch, TO_VICT );
-         return;
+         return false;
     }
 
     if(obj->level > ch->level) {
 	act( "$n tells you 'You can't use $p yet'.",
 	    keeper, obj, ch, TO_VICT );
-        return;
+        return false;
     }
 
     if(ch->carry_number + get_obj_number(obj) > can_carry_n(ch)) {
 	send_to_char( "You can't carry that many items.\n\r", ch );
-	return;
+	return false;
     }
 
     if(query_carry_weight(ch) + get_obj_weight(obj) > can_carry_w(ch)) {
 	send_to_char( "You can't carry that much weight.\n\r",ch);
-	return;
+	return false;
     }
 
     /* A full bomb bag, or a bigger bag already bought (hyrule.c). */
     if ( hyrule_buy_refuses( ch, obj ) )
-	return;
+	return false;
 
     roll = number_percent();
     if (!IS_NPC(ch) && roll < ch->pcdata->learned[gsn_haggle]) {
@@ -4766,7 +4809,7 @@ void do_buy( CHAR_DATA *ch, char *argument )
         obj->short_descr, obj->pIndexData->vnum, cost, keeper->short_descr );
     /* A bigger bomb bag becomes room in yours; bombs join your bombs. */
     hyrule_bought( ch, obj );
-    return;
+    return true;
 }
 
 

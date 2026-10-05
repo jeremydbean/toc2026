@@ -3561,7 +3561,8 @@ void do_recall( CHAR_DATA *ch, char *argument )
     recall_travel( ch, recall_room( ch ), true );
 }
 
-void do_train( CHAR_DATA *ch, char *argument )
+/* One session's worth of TRAIN. True when something was trained. */
+static bool train_once( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *mob;
@@ -3570,7 +3571,7 @@ void do_train( CHAR_DATA *ch, char *argument )
     int cost;
 
     if ( IS_NPC(ch) )
-	return;
+	return false;
 
     /*
      * Check for trainer.
@@ -3584,7 +3585,7 @@ void do_train( CHAR_DATA *ch, char *argument )
     if ( mob == NULL )
     {
 	send_to_char( "You can't do that here.\n\r", ch );
-	return;
+	return false;
     }
 
     if ( argument[0] == '\0' )
@@ -3675,7 +3676,7 @@ void do_train( CHAR_DATA *ch, char *argument )
 		TO_CHAR );
 	}
 
-	return;
+	return false;
     }
 
     if (!str_cmp("hp",argument))
@@ -3683,7 +3684,7 @@ void do_train( CHAR_DATA *ch, char *argument )
     	if ( cost > ch->train )
     	{
        	    send_to_char( "You don't have enough training sessions.\n\r", ch );
-	    return;
+	    return false;
         }
 
 	ch->train = (int16_t)(ch->train - cost);
@@ -3692,7 +3693,7 @@ void do_train( CHAR_DATA *ch, char *argument )
         ch->hit +=10;
         act( "Your durability increases!",ch,NULL,NULL,TO_CHAR);
         act( "$n's durability increases!",ch,NULL,NULL,TO_ROOM);
-        return;
+        return true;
     }
 
     if (!str_cmp("mana",argument))
@@ -3700,7 +3701,7 @@ void do_train( CHAR_DATA *ch, char *argument )
         if ( cost > ch->train )
         {
             send_to_char( "You don't have enough training sessions.\n\r", ch );
-            return;
+            return false;
         }
 
 	ch->train = (int16_t)(ch->train - cost);
@@ -3709,19 +3710,19 @@ void do_train( CHAR_DATA *ch, char *argument )
 	ch->mana += 10;
         act( "Your power increases!",ch,NULL,NULL,TO_CHAR);
         act( "$n's power increases!",ch,NULL,NULL,TO_ROOM);
-        return;
+        return true;
     }
 
     if ( ch->perm_stat[stat]  >= get_max_train(ch,stat) )
     {
 	act( "Your $T is already at maximum.", ch, NULL, pOutput, TO_CHAR );
-	return;
+	return false;
     }
 
     if ( cost > ch->train )
     {
 	send_to_char( "You don't have enough training sessions.\n\r", ch );
-	return;
+	return false;
     }
 
     ch->train		= (int16_t)(ch->train - cost);
@@ -3729,7 +3730,49 @@ void do_train( CHAR_DATA *ch, char *argument )
     ch->perm_stat[stat]		+= 1;
     act( "Your $T increases!", ch, NULL, pOutput, TO_CHAR );
     act( "$n's $T increases!", ch, NULL, pOutput, TO_ROOM );
-    return;
+    return true;
+}
+
+/*
+ * TRAIN <stat> [n] trains up to n sessions, one at a time through
+ * train_once, so each takes every check a single TRAIN does and the first
+ * refusal (no sessions left, the stat at its maximum) stops the run.
+ * Players trained hit points by typing TRAIN HP twelve times running.
+ */
+#define TRAIN_MAX_COUNT 100
+
+void do_train( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char num[MAX_INPUT_LENGTH];
+    int count = 1;
+    int done = 0;
+
+    argument = one_argument( argument, arg );
+    one_argument( argument, num );
+
+    if ( num[0] != '\0' )
+    {
+	/* Bound before converting: is_number takes any run of digits. */
+	if ( !is_number( num ) || strlen( num ) > 3 || ( count = atoi( num ) ) < 1 )
+	{
+	    send_to_char( "Train how many?\n\r", ch );
+	    return;
+	}
+	count = UMIN( count, TRAIN_MAX_COUNT );
+    }
+
+    while ( done < count && train_once( ch, arg ) )
+	done++;
+
+    if ( done > 0 && done < count )
+    {
+	char buf[MAX_INPUT_LENGTH];
+
+	snprintf( buf, sizeof(buf), "You trained %d of the %d you asked for.\n\r",
+		  done, count );
+	send_to_char( buf, ch );
+    }
 }
 
 /* added by Eclipse */
