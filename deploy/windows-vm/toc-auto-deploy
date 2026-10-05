@@ -41,6 +41,15 @@ STATUS="$CURRENT/log/auto-deploy.status"
 
 mkdir -p "$STATE_DIR"
 
+# The build tree belongs to toc and this runs as root, which git refuses
+# ("dubious ownership") unless told the directory is safe. By hand that
+# comes from root's ~/.gitconfig, but a systemd service has no HOME, so
+# the first timer run failed there. Say it here, in the environment, so
+# toc-deploy below inherits it too and no account's config is needed.
+export GIT_CONFIG_COUNT=1
+export GIT_CONFIG_KEY_0=safe.directory
+export GIT_CONFIG_VALUE_0="$BUILD"
+
 status() {
     printf '%s %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$*" > "$STATUS.tmp" &&
         mv "$STATUS.tmp" "$STATUS"

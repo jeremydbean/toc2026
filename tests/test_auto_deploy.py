@@ -202,6 +202,15 @@ class AutoDeploySourceTests(unittest.TestCase):
         self.assertIn("enable --now toc-auto-deploy.timer", restore)
         self.assertIn("log/deployed-commit", restore)
 
+    def test_git_is_told_the_build_tree_is_safe(self) -> None:
+        # A systemd service has no HOME, so root's ~/.gitconfig, which is
+        # what makes sudo toc-deploy work, is not read; the first timer
+        # run on the host died on "dubious ownership" without this.
+        script = SCRIPT.read_text()
+        self.assertIn("GIT_CONFIG_KEY_0=safe.directory", script)
+        self.assertIn('GIT_CONFIG_VALUE_0="$BUILD"', script)
+        self.assertLess(script.index("GIT_CONFIG_VALUE_0"), script.index("git -C"))
+
     def test_the_script_is_lf(self) -> None:
         for path in (SCRIPT, DEPLOY, RESTORE):
             self.assertNotIn(b"\r", path.read_bytes(), path.name)
