@@ -28,7 +28,7 @@ Suggested short description:
       command input.
 - [x] `Room.Info` provides numeric room IDs, names, areas, environments, and
       visible exits for mapper tracking.
-- [x] A full-world MMP map ships all 7,781 rooms across 92 areas, laid out
+- [x] A full-world MMP map ships all 7,787 rooms across 92 areas, laid out
       per area with no two rooms sharing a square.
 - [x] The official package embeds a mapper and HP, mana, endurance, and
       experience gauges.

@@ -167,9 +167,9 @@ Info findings are cleanup candidates and are not deployment blockers by default.
 
 ## Current Disconnected-Room Review
 
-The August 2026 baseline is 99 listed area entries, 2,336 mobiles, 3,557 objects, and 7,781 rooms, with 0 critical, 11 warning, and 1,571 informational findings. The five additional informational entries are Ganon relic prototypes sourced by the runtime corpse-drop table rather than area resets. The topology review reduced the warning-level baseline from 21 areas to 11 without hiding unexplained rooms. Operational pet storage, hardcoded/private rooms, jails, staff quest staging, and solitary rooms are now inferred or reported at info severity. The broken `#65` self-loop was repaired between `connect.are` and Hell room `#13418`, and Marilyn now uses the pet-shop special required by Solace's bird factory.
+The October 2026 baseline is 100 listed area entries, 2,495 mobiles, 3,721 objects, and 7,787 rooms, with 0 critical, 12 warning, and 1,635 informational findings. Most of the informational growth since the first Hyrule pass is source-less objects the generated Hyrule guardians drop at kill time rather than through area resets (see the baseline notes in `AGENTS.md` for the exact arithmetic). The topology review earlier reduced the warning-level baseline from 21 areas to 11 without hiding unexplained rooms; the current 12 is that plus one later disconnected group. Operational pet storage, hardcoded/private rooms, jails, staff quest staging, and solitary rooms are now inferred or reported at info severity. The broken `#65` self-loop was repaired between `connect.are` and Hell room `#13418`, and Marilyn now uses the pet-shop special required by Solace's bird factory.
 
-The Python tools report 99 entries from `area.lst`, while the native validator reports 94 indexed areas. This is expected: six list entries are help/social data files with no `#AREA` record, leaving 93 world areas, and the C loader adds one generated online-building area at boot.
+The Python tools report 100 entries from `area.lst`, while the native validator reports 95 indexed areas. This is expected: six list entries are help/social data files with no `#AREA` record, leaving 94 world areas, and the C loader adds one generated online-building area at boot.
 
 The remaining warnings have distinct causes and should not be bulk-suppressed:
 

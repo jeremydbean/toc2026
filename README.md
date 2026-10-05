@@ -6,11 +6,19 @@ the complete world database, a FastAPI operations dashboard, Docker packaging,
 validation tools, tests, and the source data used to generate Hyrule: First
 Quest.
 
-The current checked-in world parses as **99 listed area files, 7,781 rooms,
-2,336 mobiles, and 3,557 objects**. Player progression spans six classes, five
+The current checked-in world parses as **100 listed area files, 7,787 rooms,
+2,495 mobiles, and 3,721 objects**. Player progression spans six classes, five
 playable races, four optional cross-class guilds, five remorts, questing, group
 play, player killing, permanent achievements, advanced equipment comparison,
 and a large collection of hand-built areas.
+
+> **Where the live game runs:** the public server is an Oracle Cloud
+> instance (Always Free ARM, Ubuntu 24.04) that `toc.jeremybean.com`
+> resolves to. It moved there on 2026-10-01; the earlier Raspberry Pi
+> (died 2026-09-29) and Hyper-V VM (powered off) are gone. Operators and
+> automated sessions should read [Disaster Recovery](wiki/disaster-recovery.md)
+> for the deploy command, backups, and rebuild procedure. The Pi and
+> Windows material below is kept only as a generic self-hosting reference.
 
 > **Before hosting or playing:** ToC uses plain Telnet and legacy DES `crypt(3)`
 > password hashes. Traffic is not encrypted, and only the first eight password
@@ -27,8 +35,8 @@ and a large collection of hand-built areas.
 | Returning player | [Player Command Reference](wiki/player-command-reference.md) |
 | Mudlet player | [Official Mudlet package](mudlet/README.md) |
 | Server host | [Hosting Guide](wiki/hosting-guide.md) |
-| Something is broken, or the host died | [Disaster Recovery](wiki/disaster-recovery.md) |
-| Current Windows production host | [Windows Production Runbook](wiki/windows-production-hosting.md) |
+| Live production host, deploys, or something broken | [Disaster Recovery](wiki/disaster-recovery.md) (Oracle Cloud) |
+| Retired Windows VM host (history) | [Windows Production Runbook](wiki/windows-production-hosting.md) |
 | Mudlet listing submission | [Listing Handoff](mudlet/listing-submission.md) |
 | Immortal/operator | [Operator Guide](wiki/operator-guide.md) |
 | Developer | [Developer Guide](wiki/developer-guide.md) and [CONTRIBUTING.md](CONTRIBUTING.md) |
@@ -49,7 +57,7 @@ documentation.
   campaign with all nine First Quest dungeons.
 - Advanced in-game `compare` analysis that models a player's complete loadout,
   class, guild, level, skills, spells, and selected gameplay focus.
-- A permanent 127-achievement progression system with points, earned dates,
+- A permanent 196-achievement progression system with points, earned dates,
   hidden discoveries, live progress, retroactive milestones, group boss credit,
   world bosses, rare relics, crafting, banking and casino feats, unusual deaths,
   and complete Hyrule dungeon, map, compass, shard, and boss tracking.
@@ -449,11 +457,12 @@ python3 -m unittest discover -s tests
 git diff --check
 ```
 
-The August 2026 baseline is 0 critical, 11 warning, and 1,571 informational
+The October 2026 baseline is 0 critical, 12 warning, and 1,635 informational
 area-health findings. The warnings are reviewed disconnected room groups; the
 informational backlog includes intentional and reviewable one-way exits,
-unspawned definitions, and objects without reset sources. Do not suppress a
-finding merely to reduce the count.
+unspawned definitions, and objects without reset sources (the generated Hyrule
+guardians' drop tables are made at kill time, so each counts as a source-less
+object). Do not suppress a finding merely to reduce the count.
 
 ## Repository Map
 
