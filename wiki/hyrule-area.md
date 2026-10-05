@@ -524,54 +524,68 @@ leads home.
 
 ### Guardian Fights
 
-Every guardian is sized so that **a lone character at the top of the band
-usually loses, one six levels above usually wins, and a group of three at the
-band usually wins.** The sizes come from a Monte Carlo of `fight.c`'s
-formulas: `one_hit`'s to-hit and damage, NPC parry and dodge
-(`min(30, level) + level - victim`), the player's parry, dodge and shield
-block, sanctuary, armour's damage reduction and the mobile's damroll scaled by
-its skill. The player model is fitted to the live player files -- the 80th
-percentile of each four-level bucket, "geared for the band":
+**Every guardian is hard, and Hermie is what makes it possible** (owner,
+2026-10-04). A median player at the top of the band loses alone; the same
+player buffed by Hermie first -- EMPOWER, TITANIC, the defence and combat
+groups -- wins, usually with little health to spare. Ganon is the exception:
+he is a fight for a buffed group.
 
-| | Formula | Level 8 | Level 33 | Level 52 |
-| --- | --- | ---: | ---: | ---: |
-| Hit points | `8 + 10L + 0.3L^2` | 107 | 665 | 1,339 |
-| Hitroll | `0.02L^2 + 0.1L + 5` | 7 | 30 | 64 |
-| Damroll | `0.012L^2 + 0.95L - 6` | 2 | 38 | 76 |
-| Armour | `60 - 4.5L` | 24 | -88 | -174 |
+The sizes were found by playing the fights, not only by simulating them. A
+human warrior at the top of each band, with the skills at 75%, the hit points
+of a typical player of that level, and average gear -- the Gear Finder's
+median piece for each slot, or the Hyrule gear they would hold by then where
+that is better (earlier guardians' weapons, Heart Guards, three random drops
+each, and the map-room chests) -- fought each guardian in the live game,
+unbuffed and then buffed, with exactly one guardian in the room and the
+weapon picked back up after a disarm, as a player would. The saved player
+files confirm that warrior is the median player: by level, its hitroll is
+the files' median, its damroll a little under and its hit points a little
+over.
 
-Second attack from level 10, third from 25, haste from 30, enhanced damage
-from 20, sanctuary alone from 30 or with a cleric from 15, a weapon averaging
-`0.8L + 2`, and damage scaled by 2.5 to match the training yard's board (a
-level 50 warrior there lands about 650 a round). The group is a tank, a cleric
-who heals the lowest each round, and a damage dealer.
+Three things the old simulation got wrong, kept here so they are not
+repeated:
+
+- It scaled player damage by 2.5 to match the training yard's best runs.
+  Median players hit about as hard as the unscaled model, so every guardian
+  had been sized for players far above the median, and the first retune
+  against Hermie's buffs came out several times too hard live.
+- Manhandla's "tree" race is immune to bash, and Gohma was immune to slash
+  twice over (her race and her own flags), so the tail-club Level 2 hands
+  out did nothing to Manhandla at all. Manhandla is a plant and Gohma a
+  "unique" now, with no weapon immunity (`GUARDIAN_RACE`,
+  `GUARDIAN_IMMUNITIES_REMOVED`). Her arrow and Manhandla's fire weakness are
+  their special rules, not immunity to what a player happens to carry.
+- Gohma's catalog sanctuary made her impossible to wear down for a buffed
+  solo player; it is stripped (`GUARDIAN_AFFECTS_REMOVED`). Only an arrow
+  still finishes her, so the bow from Level 5 matters.
 
 Each guardian has the attack the NES gave it, in `spec_hyrule_guardian`
-(`src/special.c`): every four seconds a volley of spell blows at random members
-of the fight that no parry stops. Manhandla spits from however many of its four
-heads are left, Gleeok's heads fly loose below half its health, and Digdogger
-splits in two below half, each half rolling for half. A patra, Death Mountain's
-orbiting eye, lashes everyone fighting it each pulse (`spec_hyrule_patra`).
+(`src/special.c`): every four seconds a volley of spell blows at random
+members of the fight that no parry stops. Manhandla spits from however many
+of its four heads are left, Gleeok's heads fly loose below half its health,
+and Digdogger splits in two below half, each half rolling for half. A patra,
+Death Mountain's orbiting eye, lashes everyone fighting it each pulse
+(`spec_hyrule_patra`).
 
-| Level | Guardian | Level | Hit points | Blow | Volley a pulse | Solo, top of band | Solo, six above | Three, top of band | Three, mid-band |
-| --- | --- | ---: | ---: | ---: | --- | ---: | ---: | ---: | ---: |
-| 1 | Aquamentus | 10 | 820 | 10 | 3 fireballs 4-6 | 0% (8) | 88% (14) | 100% | 100% |
-| 2 | Dodongo | 16 | 2,200 | 19 | a charge 22-31 | 0% (14) | 87% (20) | 100% | 100% |
-| 3 | Manhandla | 23 | 3,400 | 30 | 4 heads 9-13 | 0% (20) | 88% (26) | 100% | 100% |
-| 4 | Gleeok | 30 | 6,000 | 64 | 2 heads 39-55 | 0% (27) | 90% (33) | 100% | 100% |
-| 5 | Digdogger | 36 | 16,800 | 40 | a roll 48-67 | 0% (33) | 87% (39) | 100% | 100% |
-| 6 | Gohma | 43 | 20,000 | 27 | the eye 32-45 | 0% (40) | 89% (46) | 100% | 100% |
-| 7 | ancient Aquamentus | 49 | 30,000 | 66 | 3 fireballs 26-36 | 0% (46) | 85% (52) | 100% | 100% |
-| 8 | ashen Gleeok | 55 | 33,000 | 80 | 4 heads 24-34 | 0% (52) | 88% (58) | 100% | 100% |
+| Level | Guardian | Level | Hit points | Blow | Volley a pulse | Alone, unbuffed | Alone, buffed (live) |
+| --- | --- | ---: | ---: | ---: | --- | --- | --- |
+| 1 | Aquamentus | 10 | 1,590 | 19 | 3 fireballs 8-11 | lost | won 2 of 2, most of the health used |
+| 2 | Dodongo | 16 | 3,300 | 59 | a charge 68-95 | lost | won 2 of 2, ~80% used |
+| 3 | Manhandla | 23 | 4,500 | 83 | 4 heads 26-35 | lost | won 2 of 2, ~85% used |
+| 4 | Gleeok | 30 | 6,000 | 75 | 2 heads 46-64 | lost | won 2 of 2, 75-85% used |
+| 5 | Digdogger | 36 | 7,500 | 195 | a roll 382-530 | lost | won; a long fight |
+| 6 | Gohma | 43 | 9,000 | 100 | the eye 119-168 | lost | won 1 of 2, the win nearly spent |
+| 7 | ancient Aquamentus | 49 | 9,500 | 116 | 3 fireballs 46-63 | lost | won 2 of 2, one at 1% |
+| 8 | ashen Gleeok | 55 | 10,500 | 133 | 4 heads 47-66 | lost | won 2 of 2, one nearly dead |
+| 9 | Ganon | 64 | 36,000 | 200 | 2 fireballs 300-420 | lost | lost (a group fight) |
 
-Each was set as strong as the brief allows: its hit points bisected to where
-the character six levels above wins about seven times in eight. The model is
-kind to groups -- a cleric's sanctuary on everybody and a heal every round --
-so a real group will find these harder than the last two columns say. Gohma
-keeps her catalog sanctuary and haste, Aquamentus his sanctuary and Dodongo its
-haste, which is why Gohma's blow is light. The breath weapons four of them had
-went: dragon breath hits for an eighth of the breather's own hit points, which
-at these sizes would be a thousand a breath.
+Hit points climb guardian by guardian to Ganon's, and no guardian's blow
+reaches his; `tests/test_hyrule_progression.py` holds both. Four of the
+breath weapons the catalog gave these monsters went long ago: dragon breath
+hits for an eighth of the breather's own hit points. To retune, play the
+fight: `tools/hyrule_playtest/gear_plan.py` builds the gear and
+`tools/hyrule_playtest/playtest.py` plays a dungeon's fights in a throwaway
+server. The simulation in this section's history is a guide, not the answer.
 
 ### The Triforce
 

@@ -3,6 +3,15 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261004s 2026-10-04
+Hyrule's guardians were played through in the real game and retuned. Each
+is a hard fight for its dungeon's levels: an ordinary character at the top
+of the band loses alone, but buffed by Hermie first (BUFF EMPOWER, TITANIC,
+DEFENSE and COMBAT) can win, usually with little health to spare. Ganon
+still wants a buffed group. Manhandla no longer shrugs off clubs and maces,
+nor Gohma swords; Gohma has lost her sanctuary, but only an arrow finishes
+her, so carry the bow.
+
 @ 20261004a 2026-10-04
 GAINLIST now shows every skill and spell your class and guild can learn,
 ticked (+) when you have it and crossed (X) when you do not, with what to

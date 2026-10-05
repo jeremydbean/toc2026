@@ -94,8 +94,11 @@ Treasures: L1 a small boomerang, L2 the Magical Boomerang, L3 the dungeon raft,
 L4 the stepladder, L5 a short bow,
 L6 Recorder, L7 Red Candle, L8 Magical Key, L9 the Master Sword and the final
 piece. Guardians: Aquamentus, Dodongo, Manhandla, Gleeok, Digdogger, Gohma,
-an ancient Aquamentus, an ashen Gleeok, Ganon. Bigger guardians are meant
-for a group; a lone character at the top of the band usually loses. Each
+an ancient Aquamentus, an ashen Gleeok, Ganon. Guardians are hard: an
+ordinary character at the top of the band loses alone. With Hermie's buffs
+first (she stands at the Temple altar after a reboot: BUFF EMPOWER, BUFF
+TITANIC, BUFF DEFENSE, BUFF COMBAT) one can win alone, though it is close;
+a group does better. Ganon is a fight for a buffed group. Each
 guardian carries its weapon and Heart Guard and drops three more pieces from
 a table with one for every other armour slot, each the best in the game for
 its band, for fighters and casters alike. Nothing in Hyrule attacks first;

@@ -641,27 +641,27 @@ def enemy_tiers(manifest: dict[str, Any]) -> list[tuple[str, int]]:
 
 BOSS_STATS = {
     # dungeon: (level, hit points, average damage per blow)
-    1: (10, 820, 10),     # Aquamentus
-    2: (16, 2200, 19),    # Dodongo
-    3: (23, 3400, 30),    # Manhandla
-    4: (30, 6000, 64),    # Gleeok, two heads
-    5: (36, 16800, 40),   # Digdogger
-    6: (43, 20000, 27),   # Gohma: her sanctuary and haste do the rest
-    7: (49, 30000, 66),   # Aquamentus again, older and harder
-    8: (55, 33000, 80),   # Gleeok, four heads
+    1: (10, 1590, 19),     # Aquamentus
+    2: (16, 3300, 59),    # Dodongo
+    3: (23, 4500, 83),    # Manhandla
+    4: (30, 6000, 75),    # Gleeok, two heads
+    5: (36, 7500, 195),   # Digdogger
+    6: (43, 9000, 100),   # Gohma: haste; her sanctuary is taken off (GUARDIAN_AFFECTS_REMOVED)
+    7: (49, 9500, 116),   # Aquamentus again, older and harder
+    8: (55, 10500, 133),   # Gleeok, four heads
     9: (64, 36000, 200),  # Ganon -- see above, and spec_ganon
 }
 # dungeon: (projectiles a pulse, least, most) -- spec_hyrule_guardian and
 # spec_ganon; src/special.c's tables must say the same.
 BOSS_VOLLEYS = {
-    1: (3, 4, 6),         # Aquamentus's fan of three fireballs
-    2: (1, 22, 31),       # Dodongo's charge
-    3: (4, 9, 13),        # Manhandla's four heads
-    4: (2, 39, 55),       # Gleeok's two heads
-    5: (1, 48, 67),       # Digdogger's roll; two at half each once split
-    6: (1, 32, 45),       # Gohma's eye
-    7: (3, 26, 36),       # the ancient Aquamentus's fan
-    8: (4, 24, 34),       # the ashen Gleeok's four heads
+    1: (3, 8, 11),         # Aquamentus's fan of three fireballs
+    2: (1, 68, 95),       # Dodongo's charge
+    3: (4, 26, 35),        # Manhandla's four heads
+    4: (2, 46, 64),       # Gleeok's two heads
+    5: (1, 382, 530),       # Digdogger's roll; two at half each once split
+    6: (1, 119, 168),       # Gohma's eye
+    7: (3, 46, 63),       # the ancient Aquamentus's fan
+    8: (4, 47, 66),       # the ashen Gleeok's four heads
     9: (2, 300, 420),     # Ganon's fireballs
 }
 GANON_VNUM = 30225
@@ -2958,6 +2958,20 @@ def render_specials(retained: str, manifest: dict[str, Any]) -> str:
 ACT_AGGRESSIVE_LETTER = "F"
 ACT_AGGRESSIVE_BIT = 1 << 5
 
+# Affect letters taken off a kept guardian record. Gohma kept her catalog
+# sanctuary, and with it halving every blow a buffed solo player of her
+# band could not wear her down at all -- her armoured eye, which only an
+# arrow passes, is what makes her fight hers (2026-10-04 playtest).
+GUARDIAN_AFFECTS_REMOVED = {30223: "H"}
+# No guardian may shrug off a whole weapon type: the playtest found a level
+# 20 warrior helpless against Manhandla with the tail-club Level 2 hands
+# out, because the "tree" race is immune to bash, and Gohma immune to slash
+# twice over (her race and her own flags) though her lore says blades wear
+# her down. Her arrow and Manhandla's fire are their special rules, not
+# immunity to what a player happens to carry.
+GUARDIAN_RACE = {30305: "plant", 30223: "unique"}
+GUARDIAN_IMMUNITIES_REMOVED = {30223: "G"}
+
 
 def calm_mobiles(body: str) -> str:
     """Nothing in Hyrule is aggressive (owner, 2026-10-04): every mobile
@@ -2989,7 +3003,25 @@ def calm_mobiles(body: str) -> str:
         else:
             act = act.replace(ACT_AGGRESSIVE_LETTER, "") or "0"
         words[0] = act
-        out.append(record[:line_start] + " ".join(words) + record[line_end:])
+        head = re.match(r"\s*#(\d+)", record)
+        vnum = int(head.group(1)) if head else 0
+        removed = GUARDIAN_AFFECTS_REMOVED.get(vnum)
+        if removed and len(words) > 1 and not words[1].isdigit():
+            words[1] = "".join(ch for ch in words[1] if ch not in removed) or "0"
+        record = record[:line_start] + " ".join(words) + record[line_end:]
+        if vnum in GUARDIAN_IMMUNITIES_REMOVED:
+            # off imm res vuln: the third line after the act line.
+            lines = record[line_start:].split("\n")
+            fields = lines[3].split(" ")
+            fields[1] = "".join(ch for ch in fields[1]
+                                if ch not in GUARDIAN_IMMUNITIES_REMOVED[vnum]) or "0"
+            lines[3] = " ".join(fields)
+            record = record[:line_start] + "\n".join(lines)
+        if vnum in GUARDIAN_RACE:
+            race_end = record.rfind("~", 0, line_start)
+            race_start = record.rfind("\n", 0, race_end) + 1
+            record = record[:race_start] + GUARDIAN_RACE[vnum] + record[race_end:]
+        out.append(record)
     return "".join(out)
 
 

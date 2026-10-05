@@ -160,7 +160,9 @@ class HyruleWalkthroughTests(unittest.TestCase):
                     self.assertIn("corpse", run(god, "look", 1.0).lower(), slain)
                     run(god, f"transfer {HERO.lower()} {boss_room}", 2.0)
                     run(god, "goto 4207", 1.0)
-                    looted = run(hero, "get all corpse", 2.0)
+                    # The key first: with a drop for every slot, a pack that
+                    # has carried every earlier dungeon's loot can be full.
+                    looted = run(hero, "get key corpse", 1.5) + run(hero, "get all corpse", 2.0)
                     door = next(DIRS[x.direction] for x in self.rooms[boss_room].exits
                                 if x.to_room == goal)
                     opened = run(hero, f"unlock {door}", 1.2) + run(hero, f"open {door}", 1.2)

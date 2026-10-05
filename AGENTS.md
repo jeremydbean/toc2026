@@ -663,9 +663,22 @@ blows no parry stops, two every four seconds at random members of the
 fight; his melee barely matters. Retune him with the simulation described
 in `wiki/hyrule-area.md`, not by feel: the Silver Arrow's tenth-of-health
 floor fixes the fight's length, so his damage per pulse is what decides
-who wins. The other eight guardians were sized by the same simulation
-(`spec_hyrule_guardian`, `BOSS_VOLLEYS`): a lone character at the top of
-the band loses, six levels above wins, a group of three wins.
+who wins.
+
+**The other eight guardians are hard, and Hermie is what makes them
+possible** (owner, 2026-10-04). A median player at the top of the band
+loses alone; the same player buffed by Hermie (EMPOWER, TITANIC, the
+defence and combat groups) wins about two fights in three. "Median" is
+measured, not assumed: the saved player files' hitroll, damroll and hit
+points by level, and a live playtest of a warrior in average gear (the
+Gear Finder's median per slot, or the Hyrule gear they would hold by then)
+-- see "Guardian Fights" in `wiki/hyrule-area.md`. The old simulation
+scaled player damage by 2.5 to match the training yard's best runs, which
+sized every guardian for players far above the median; do not reach for
+that scale again. Hit points still climb guardian by guardian to Ganon's,
+and no guardian's blow may reach his (`tests/test_hyrule_progression.py`).
+Gohma's catalog sanctuary is stripped (`GUARDIAN_AFFECTS_REMOVED`): with it,
+a buffed solo player could not wear her down at all.
 
 **The dungeons are done in order, and the chain is data in three places
 that must agree.** Each guardian drops its dungeon's key (Ganon's is the

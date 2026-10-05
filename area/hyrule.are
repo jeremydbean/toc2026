@@ -58,7 +58,7 @@ bite. Guardian of the Moon, it leaves a heart container behind.
 ~
 lizard~
 ABMV DEFV -750 S
-16 8 4d10+2178 1d10+0 2d6+12 7
+16 8 4d10+3278 1d10+0 2d23+35 7
 0 0 0 0
 0 H L I
 8 8 0 0
@@ -78,7 +78,7 @@ leaves a heart container behind when it falls.
 ~
 dragon~
 ABMV DFHJ -450 S
-10 5 2d10+809 1d10+0 1d5+7 7
+10 5 2d10+1579 1d10+0 1d15+11 7
 0 0 0 0
 CMO BHL HQ I
 8 8 0 0
@@ -95,11 +95,11 @@ can wear it down, but its eye snaps shut against any finishing blow
 that is not an arrow: carry a bow, or the Silver Arrow, to end it.
 Guardian of the Dragon, it leaves a heart container behind.
 ~
-insect~
-ABMV CDFHJTV -750 S
-43 21 10d10+19945 15d10+720 3d2+32 7
+unique~
+ABMV CDFJTV -750 S
+43 21 10d10+8945 15d10+720 3d26+60 7
 0 0 0 0
-H BG 0 HL
+H B 0 HL
 8 8 0 0
 ABHMV ABCDEFGHIJKQ L 0
 #30224
@@ -223,9 +223,9 @@ one ricochets about the chamber at frightening speed. A well-placed
 bomb can take more than one head at once. Guardian of the Manji, it
 leaves a heart container behind.
 ~
-tree~
+plant~
 ABMV 0 -200 S
-23 11 5d10+3372 1d10+0 2d11+18 7
+23 11 5d10+4472 1d10+0 2d32+50 7
 0 0 0 0
 0 0 0 0
 8 8 0 3200
@@ -245,7 +245,7 @@ collapses. Guardian of the Snake, it leaves a heart container.
 ~
 dragon~
 ABMV 0 -200 S
-30 15 7d10+5962 12d10+600 3d16+38 7
+30 15 7d10+5962 12d10+600 3d19+45 7
 0 0 0 0
 0 0 0 0
 8 8 0 5000
@@ -265,7 +265,7 @@ of the Lizard, it leaves a heart container behind.
 ~
 human~
 ABMV 0 -200 S
-36 18 9d10+16750 13d10+660 3d8+27 7
+36 18 9d10+7450 13d10+660 3d51+117 7
 0 0 0 0
 0 0 0 0
 8 8 0 6050
@@ -315,7 +315,7 @@ to the seventh shard of wisdom and leaves a heart container behind.
 ~
 dragon~
 ABMV 0 -200 S
-49 24 12d10+29934 16d10+768 4d12+40 7
+49 24 12d10+9434 16d10+768 4d22+70 7
 0 0 0 0
 0 0 0 0
 8 8 0 8192
@@ -336,7 +336,7 @@ the last shard of wisdom and leaves a heart container behind.
 ~
 dragon~
 ABMV 0 -200 S
-55 27 13d10+32928 16d10+804 4d15+48 7
+55 27 13d10+10428 16d10+804 4d26+80 7
 0 0 0 0
 0 0 0 0
 8 8 0 8978
