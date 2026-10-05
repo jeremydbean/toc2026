@@ -49595,3 +49595,81 @@ Mon Oct  5 21:41:41 2026 :: Log Alaric [2497]: who
 Mon Oct  5 21:41:42 2026 :: Log Alaric [2497]: worth
 Mon Oct  5 21:44:18 2026 :: Sock.sinaddr:  178.156.184.20
 Mon Oct  5 21:44:18 2026 :: EOF encountered on read.
+Mon Oct  5 21:49:22 2026 :: Sock.sinaddr:  5.161.117.52
+Mon Oct  5 21:49:23 2026 :: EOF encountered on read.
+Mon Oct  5 21:49:46 2026 :: Log Alaric [2497]: afk
+Mon Oct  5 21:49:47 2026 :: Log Alaric [2497]: aq re
+Mon Oct  5 21:49:50 2026 :: Log Alaric [2497]: enter door
+Mon Oct  5 21:49:50 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Mon Oct  5 21:49:50 2026 :: Log Alaric [2401]: east
+Mon Oct  5 21:49:50 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Mon Oct  5 21:49:51 2026 :: Log Alaric [2403]: east
+Mon Oct  5 21:49:51 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Mon Oct  5 21:49:51 2026 :: Log Alaric [2420]: east
+Mon Oct  5 21:49:51 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Mon Oct  5 21:49:51 2026 :: Log Alaric [2421]: east
+Mon Oct  5 21:49:51 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Mon Oct  5 21:49:51 2026 :: Log Alaric [2422]: east
+Mon Oct  5 21:49:51 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Mon Oct  5 21:49:52 2026 :: Log Alaric [2423]: east
+Mon Oct  5 21:49:52 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Mon Oct  5 21:49:52 2026 :: Log Alaric [2424]: east
+Mon Oct  5 21:49:52 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Mon Oct  5 21:49:52 2026 :: Log Alaric [2425]: east
+Mon Oct  5 21:49:52 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Mon Oct  5 21:49:52 2026 :: Log Alaric [2426]: open east
+Mon Oct  5 21:49:53 2026 :: Log Alaric [2426]: east
+Mon Oct  5 21:49:53 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Mon Oct  5 21:49:55 2026 :: Log Alaric [2440]: east
+Mon Oct  5 21:49:55 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Mon Oct  5 21:49:55 2026 :: Log Alaric [3503]: east
+Mon Oct  5 21:49:55 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Mon Oct  5 21:49:55 2026 :: Log Alaric [3502]: south
+Mon Oct  5 21:49:55 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 3502
+Mon Oct  5 21:49:56 2026 :: Log Alaric [5261]: south
+Mon Oct  5 21:49:56 2026 :: Log Alaric [5260]: arrived (The dwarf forest) from 5261
+Mon Oct  5 21:49:56 2026 :: Log Alaric [5260]: south
+Mon Oct  5 21:49:56 2026 :: Log Alaric [5259]: arrived (The dwarf forest) from 5260
+Mon Oct  5 21:49:56 2026 :: Log Alaric [5259]: south
+Mon Oct  5 21:49:56 2026 :: Log Alaric [5258]: arrived (The dwarf forest) from 5259
+Mon Oct  5 21:49:56 2026 :: Log Alaric [5258]: east
+Mon Oct  5 21:49:56 2026 :: Log Alaric [5262]: arrived (The dwarf forest) from 5258
+Mon Oct  5 21:49:57 2026 :: Log Alaric [5262]: east
+Mon Oct  5 21:49:57 2026 :: Log Alaric [5263]: arrived (The darker dwarf forest) from 5262
+Mon Oct  5 21:49:57 2026 :: Log Alaric [5263]: south
+Mon Oct  5 21:49:57 2026 :: Log Alaric [5264]: arrived (The darker dwarf forest) from 5263
+Mon Oct  5 21:49:58 2026 :: Log Alaric [5264]: east
+Mon Oct  5 21:49:58 2026 :: Log Alaric [5265]: arrived (The darker dwarf forest) from 5264
+Mon Oct  5 21:49:58 2026 :: Log Alaric [5265]: east
+Mon Oct  5 21:49:58 2026 :: Log Alaric [5266]: arrived (The darker dwarf forest) from 5265
+Mon Oct  5 21:49:58 2026 :: Log Alaric [5266]: down
+Mon Oct  5 21:49:58 2026 :: Log Alaric [5267]: arrived (A valley in the dark dwarf forest) from 5266
+Mon Oct  5 21:49:58 2026 :: Log Alaric [5267]: south
+Mon Oct  5 21:49:58 2026 :: Log Alaric [62]: arrived (Minor Path) from 5267
+Mon Oct  5 21:49:59 2026 :: Log Alaric [62]: east
+Mon Oct  5 21:49:59 2026 :: Log Alaric [1701]: arrived (Main Eastern Road) from 62
+Mon Oct  5 21:49:59 2026 :: Log Alaric [1701]: east
+Mon Oct  5 21:49:59 2026 :: Log Alaric [1702]: arrived (Crossroads to the Wilderness) from 1701
+Mon Oct  5 21:49:59 2026 :: Log Alaric [1702]: north
+Mon Oct  5 21:49:59 2026 :: Log Alaric [1704]: arrived (Trail north of crossroads) from 1702
+Mon Oct  5 21:49:59 2026 :: Log Alaric [1704]: north
+Mon Oct  5 21:49:59 2026 :: Log Alaric [1705]: arrived (Trail south of forest) from 1704
+Mon Oct  5 21:50:00 2026 :: Log Alaric [1705]: north
+Mon Oct  5 21:50:00 2026 :: Log Alaric [1706]: arrived (Entrance to the forest) from 1705
+Mon Oct  5 21:50:00 2026 :: Log Alaric [1706]: north
+Mon Oct  5 21:50:00 2026 :: Log Alaric [1707]: arrived (Trail in Dark Oak Forest) from 1706
+Mon Oct  5 21:50:01 2026 :: Log Alaric [1707]: north
+Mon Oct  5 21:50:01 2026 :: Log Alaric [1708]: arrived (Junction in Dark Forest) from 1707
+Mon Oct  5 21:50:01 2026 :: Log Alaric [1708]: west
+Mon Oct  5 21:50:01 2026 :: Log Alaric [1709]: arrived (Path to Centaur Village) from 1708
+Mon Oct  5 21:50:01 2026 :: Log Alaric [1709]: west
+Mon Oct  5 21:50:01 2026 :: Log Alaric [1710]: arrived (The East side of the Centaur Clearing) from 1709
+Mon Oct  5 21:50:02 2026 :: Log Alaric [1710]: get all
+Mon Oct  5 21:50:03 2026 :: Log Alaric [1710]: recal
+Mon Oct  5 21:50:03 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 1710
+Mon Oct  5 21:50:03 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 21:50:03 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 21:50:04 2026 :: Log Alaric [2497]: aq co
+Mon Oct  5 21:50:04 2026 :: Log Alaric [2497]: quest complete: 17 gold, 91 quest points (streak bonus 186%)
+Mon Oct  5 21:50:06 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct  5 21:50:07 2026 :: Log Alaric [2497]: sc
