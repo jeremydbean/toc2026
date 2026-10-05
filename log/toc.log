@@ -48111,3 +48111,75 @@ Mon Oct  5 01:19:08 2026 :: Log Alaric [2497]: changes
 Mon Oct  5 01:19:51 2026 :: Log Alaric [2497]: changes
 Mon Oct  5 01:20:30 2026 :: Sock.sinaddr:  178.156.185.231
 Mon Oct  5 01:20:30 2026 :: EOF encountered on read.
+Mon Oct  5 01:23:05 2026 :: Log Alaric [2497]: compare upgrades
+Mon Oct  5 01:23:26 2026 :: Log Alaric [2497]: wake
+Mon Oct  5 01:23:26 2026 :: Log Alaric [2497]: l
+Mon Oct  5 01:23:29 2026 :: Log Alaric [2497]: aq ti
+Mon Oct  5 01:23:34 2026 :: Log Alaric [2497]: aq re
+Mon Oct  5 01:23:36 2026 :: Log Alaric [2497]: enter door
+Mon Oct  5 01:23:36 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Mon Oct  5 01:23:36 2026 :: Log Alaric [2401]: east
+Mon Oct  5 01:23:36 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Mon Oct  5 01:23:36 2026 :: Log Alaric [2403]: east
+Mon Oct  5 01:23:36 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Mon Oct  5 01:23:36 2026 :: Log Alaric [2420]: east
+Mon Oct  5 01:23:36 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Mon Oct  5 01:23:37 2026 :: Log Alaric [2421]: south
+Mon Oct  5 01:23:37 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Mon Oct  5 01:23:37 2026 :: Log Alaric [2441]: east
+Mon Oct  5 01:23:37 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Mon Oct  5 01:23:37 2026 :: Log Alaric [2442]: south
+Mon Oct  5 01:23:37 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Mon Oct  5 01:23:37 2026 :: Log Alaric [2443]: east
+Mon Oct  5 01:23:37 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Mon Oct  5 01:23:38 2026 :: Log Alaric [2444]: east
+Mon Oct  5 01:23:38 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Mon Oct  5 01:23:38 2026 :: Log Alaric [2445]: east
+Mon Oct  5 01:23:38 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Mon Oct  5 01:23:38 2026 :: Log Alaric [2101]: east
+Mon Oct  5 01:23:38 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Mon Oct  5 01:23:38 2026 :: Log Alaric [2102]: south
+Mon Oct  5 01:23:38 2026 :: Log Alaric [2109]: arrived (An over-grown lot) from 2102
+Mon Oct  5 01:23:39 2026 :: Log Alaric [2109]: east
+Mon Oct  5 01:23:39 2026 :: Log Alaric [2110]: arrived (East end of an over-grown plot of land) from 2109
+Mon Oct  5 01:23:39 2026 :: Log Alaric [2110]: south
+Mon Oct  5 01:23:39 2026 :: Log Alaric [2116]: arrived (Dracolich Plaza) from 2110
+Mon Oct  5 01:23:39 2026 :: Log Alaric [2116]: east
+Mon Oct  5 01:23:39 2026 :: Log Alaric [2117]: arrived (Shortcut) from 2116
+Mon Oct  5 01:23:39 2026 :: Log Alaric [2117]: south
+Mon Oct  5 01:23:39 2026 :: Log Alaric [2121]: arrived (Shortcut) from 2117
+Mon Oct  5 01:23:40 2026 :: Log Alaric [2121]: east
+Mon Oct  5 01:23:40 2026 :: Log Alaric [2122]: arrived (Ice Dragon Way) from 2121
+Mon Oct  5 01:23:40 2026 :: Log Alaric [2122]: south
+Mon Oct  5 01:23:40 2026 :: Log Alaric [2127]: arrived (Yellow Dragon Road) from 2122
+Mon Oct  5 01:23:40 2026 :: Log Alaric [2127]: west
+Mon Oct  5 01:23:40 2026 :: Log Alaric [2126]: arrived (Yellow Dragon Road) from 2127
+Mon Oct  5 01:23:40 2026 :: Log Alaric [2126]: south
+Mon Oct  5 01:23:40 2026 :: Log Alaric [2131]: arrived (NO MAN'S LAND) from 2126
+Mon Oct  5 01:23:41 2026 :: Log Alaric [2131]: south
+Mon Oct  5 01:23:41 2026 :: Log Alaric [2136]: arrived (NO MAN'S LAND) from 2131
+Mon Oct  5 01:23:41 2026 :: Log Alaric [2136]: south
+Mon Oct  5 01:23:41 2026 :: Log Alaric [2141]: arrived (Bend in Hector Street) from 2136
+Mon Oct  5 01:23:41 2026 :: Log Alaric [2141]: south
+Mon Oct  5 01:23:41 2026 :: Log Alaric [2146]: arrived (Hector Street) from 2141
+Mon Oct  5 01:23:41 2026 :: Log Alaric [2146]: south
+Mon Oct  5 01:23:41 2026 :: Log Alaric [2150]: arrived (First intersection of Hector and Achilles) from 2146
+Mon Oct  5 01:23:42 2026 :: Log Alaric [2150]: south
+Mon Oct  5 01:23:42 2026 :: Log Alaric [2156]: arrived (Achilles avenue at entrance to park) from 2150
+Mon Oct  5 01:23:42 2026 :: Log Alaric [2156]: west
+Mon Oct  5 01:23:42 2026 :: Log Alaric [2155]: arrived (Khan Park) from 2156
+Mon Oct  5 01:23:42 2026 :: Log Alaric [2155]: south
+Mon Oct  5 01:23:42 2026 :: Log Alaric [2162]: arrived (Alexander Street at park entrance) from 2155
+Mon Oct  5 01:23:42 2026 :: Log Alaric [2162]: west
+Mon Oct  5 01:23:42 2026 :: Log Alaric [2161]: arrived (Alexander Road) from 2162
+Mon Oct  5 01:23:43 2026 :: Log Alaric [2161]: te
+Mon Oct  5 01:23:47 2026 :: Log Alaric [2161]: recal
+Mon Oct  5 01:23:47 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2161
+Mon Oct  5 01:23:48 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 01:23:48 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 01:23:48 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 01:23:48 2026 :: Log Alaric [2497]: aq co
+Mon Oct  5 01:23:48 2026 :: Log Alaric [2497]: quest complete: 8 gold, 54 quest points (streak bonus 171%)
+Mon Oct  5 01:23:49 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct  5 01:25:34 2026 :: Sock.sinaddr:  54.167.223.174
+Mon Oct  5 01:25:35 2026 :: EOF encountered on read.
