@@ -47881,3 +47881,51 @@ Mon Oct  5 00:44:58 2026 :: Sock.sinaddr:  5.161.117.52
 Mon Oct  5 00:44:58 2026 :: EOF encountered on read.
 Mon Oct  5 00:50:01 2026 :: Sock.sinaddr:  178.156.189.113
 Mon Oct  5 00:50:01 2026 :: EOF encountered on read.
+Mon Oct  5 00:51:48 2026 :: Log Alaric [2497]: aq re
+Mon Oct  5 00:51:53 2026 :: Log Alaric [2497]: enter door
+Mon Oct  5 00:51:53 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Mon Oct  5 00:51:53 2026 :: Log Alaric [2401]: east
+Mon Oct  5 00:51:53 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Mon Oct  5 00:51:54 2026 :: Log Alaric [2403]: east
+Mon Oct  5 00:51:54 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Mon Oct  5 00:51:54 2026 :: Log Alaric [2420]: east
+Mon Oct  5 00:51:54 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Mon Oct  5 00:51:54 2026 :: Log Alaric [2421]: south
+Mon Oct  5 00:51:54 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Mon Oct  5 00:51:54 2026 :: Log Alaric [2441]: east
+Mon Oct  5 00:51:54 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Mon Oct  5 00:51:55 2026 :: Log Alaric [2442]: south
+Mon Oct  5 00:51:55 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Mon Oct  5 00:51:55 2026 :: Log Alaric [2443]: east
+Mon Oct  5 00:51:55 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Mon Oct  5 00:51:55 2026 :: Log Alaric [2444]: east
+Mon Oct  5 00:51:55 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Mon Oct  5 00:51:55 2026 :: Log Alaric [2445]: east
+Mon Oct  5 00:51:55 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Mon Oct  5 00:51:56 2026 :: Log Alaric [2101]: east
+Mon Oct  5 00:51:56 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Mon Oct  5 00:51:56 2026 :: Log Alaric [2102]: east
+Mon Oct  5 00:51:56 2026 :: Log Alaric [2103]: arrived (Along White Dragon Boulevard) from 2102
+Mon Oct  5 00:51:56 2026 :: Log Alaric [2103]: east
+Mon Oct  5 00:51:56 2026 :: Log Alaric [2104]: arrived (White Dragon Boulevard at Armory) from 2103
+Mon Oct  5 00:51:56 2026 :: Log Alaric [2104]: east
+Mon Oct  5 00:51:56 2026 :: Log Alaric [2105]: arrived (White Dragon Blvd.) from 2104
+Mon Oct  5 00:51:57 2026 :: Log Alaric [2105]: east
+Mon Oct  5 00:51:57 2026 :: Log Alaric [2106]: arrived (Corner of Ice and White Dragon) from 2105
+Mon Oct  5 00:51:57 2026 :: Log Alaric [2106]: east
+Mon Oct  5 00:51:57 2026 :: Log Alaric [2107]: arrived (White Dragon Boulevard) from 2106
+Mon Oct  5 00:51:57 2026 :: Log Alaric [2107]: east
+Mon Oct  5 00:51:57 2026 :: Log Alaric [2108]: arrived (Corner of Bronze and White Dragon) from 2107
+Mon Oct  5 00:51:58 2026 :: Log Alaric [2108]: te
+Mon Oct  5 00:52:02 2026 :: Log Alaric [2108]: recal
+Mon Oct  5 00:52:02 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2108
+Mon Oct  5 00:52:03 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 00:52:03 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 00:52:03 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 00:52:03 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 00:52:04 2026 :: Log Alaric [2497]: aq co
+Mon Oct  5 00:52:04 2026 :: Log Alaric [2497]: quest complete: 2 gold, 137 quest points, rush (streak bonus 165%)
+Mon Oct  5 00:52:04 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct  5 00:52:06 2026 :: Log Alaric [2497]: sc
+Mon Oct  5 00:55:06 2026 :: Sock.sinaddr:  3.133.226.214
+Mon Oct  5 00:55:06 2026 :: EOF encountered on read.
