@@ -1,1 +1,1 @@
-2026-10-05T22:43:34Z waiting for CI on b34d3827 (in_progress) before deploying e1989afe
+2026-10-05T22:53:44Z not deploying 21c404be: CI on b34d3827 says failure; push a fix
