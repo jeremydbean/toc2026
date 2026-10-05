@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791160444
+LogO 1791160755
 Vers 4
 Prom ~
 Ignoring ~
@@ -16,15 +16,15 @@ PsiKnown torment,telekinesis,mindbar,mind leech~
 ChangesSeen ~
 Cast none
 Levl 50
-Plyd 314906
+Plyd 315217
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 StashMax 150
 Scro 22
 Room 2497
-HMV  1090 1090 3934 4004 170 499
-NewGold 21
+HMV  6540 6540 23954 24024 749 2994
+NewGold 22
 NewPlat 18
 NewCopp 1
 NewSilv 74
@@ -36,8 +36,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 1430
-AchQuests 150
+AchKills 1431
+AchQuests 151
 AchDeaths 0
 AchExplore 5
 AchMaps 5
@@ -113,13 +113,15 @@ SesDead  0
 SesQuest 0
 RecallRoom 2497
 RecallSet  1791153330
-QuestPnts 919
-QuestStrk 39
+QuestPnts 1013
+QuestStrk 40
 CasinoWon  51
 CasinoLost 304
 QuestNext 5
 Exp  100071
 Act  4261068
+AfBy 3678908
+AfBy2 4106
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -147,13 +149,13 @@ Color 16 6
 Pos  8
 Prac 12
 Trai 4
-Save  -12
-Alig  961
-Hit   32
-Dam   47
-ACs -180 -179 -182 -13
+Save  -20
+Alig  971
+Hit   71
+Dam   92
+ACs -170 -169 -172 -3
 Attr 18 13 13 18 15
-AMod 2 10 8 -1 8
+AMod 21 25 23 18 23
 Pass Al3w9zuAlwpyY~
 Titl  the Master of the Undead~
 Pnts 2540
@@ -238,9 +240,49 @@ Gr 'life & undeath'
 Gr 'necromancy'
 Gr 'necro protective'
 Gr 'necro transportation'
-AffD 'shroud'   0  39 -35  17          0          0
-AffD 'shield'   0  46 -20  17          0          0
-AffD 'armor'   0  12 -20  17          0          0
+AffD 'titanic'  39  27  50  16          0          0
+AffD 'titanic'   0  27 2495  14          0          0
+AffD 'titanic'   0  27 20020  12          0          0
+AffD 'titanic'   0  27 5450  13          0          0
+AffD 'empower'   0  27 -100  17          0          0
+AffD 'empower'   0  27  20  19          0          0
+AffD 'empower'   0  27  20  18          0          0
+AffD 'empower'   0  27  15   5          0          0
+AffD 'empower'   0  27  11   2          0          0
+AffD 'empower'   0  27  15   4          0          0
+AffD 'empower'   0  27  15   3          0          0
+AffD 'giant strength'   0  27  15   1          0          0
+AffD 'divine protection'   0  27   0   0          0       4096
+AffD 'fire shield'   0  27   0   0          0          8
+AffD 'protection evil'   0  27   0   0       8192          0
+AffD 'pass door'   0  27   0   0    1048576          0
+AffD 'fly'   0  27   0   0     524288          0
+AffD 'haste'   0  27   4   2    2097152          0
+AffD 'sanctuary'   0  27   0   0        128          0
+AffD 'empower'   0  27   0   0          0          0
+AffD 'power gloves'   0  27  14  19          0          0
+AffD 'detect evil'   0  27   0   0          4          0
+AffD 'detect good'   0  27   0   0          0          2
+AffD 'detect magic'   0  27   0   0         16          0
+AffD 'detect hidden'   0  27   0   0         32          0
+AffD 'detect invis'   7  27   0   0          8          0
+AffD 'infravision'   2  27   0   0        512          0
+AffD 'frenzy'   0  27 110  17          0          0
+AffD 'frenzy'   0  27  11  19          0          0
+AffD 'frenzy'   0  27  11  18          0          0
+AffD 'giant strength'   0  27   4   1          0          0
+AffD 'divine protection'   0  27   0   0          0       4096
+AffD 'fire shield'   0  27   0   0          0          8
+AffD 'protection evil'   0  27   0   0       8192          0
+AffD 'pass door'   0  27   0   0    1048576          0
+AffD 'fly'   0  27   0   0     524288          0
+AffD 'haste'   0  27   4   2    2097152          0
+AffD 'sanctuary'   0  27   0   0        128          0
+AffD 'bless'   8  27  -8  24          0          0
+AffD 'bless'   2  27   8  18          0          0
+AffD 'shroud'   0  27 -35  17          0          0
+AffD 'shield'   0  27 -20  17          0          0
+AffD 'armor'   0  27 -20  17          0          0
 End
 
 #O
@@ -769,7 +811,7 @@ Lev  35
 Cost 7500000
 Cond 100
 Repd 0
-Val  0 0 9957 0 0
+Val  0 0 9951 0 0
 Affect -1 35 -1 -19 12 0 0
 End
 

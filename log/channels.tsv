@@ -405,3 +405,11 @@
 1791160444	say	questor thews	Well done! I knew you were right for the job.
 1791160444	say	questor thews	Streak of 39 in a row! A +161% bonus has been added!
 1791160444	say	questor thews	Here's your 16 gold - well earned!
+1791160638	say	questor thews	You've earned a rest, Alaric. Return in 2 minutes.
+1791160738	say	questor thews	Thank you for answering the call, brave Alaric!
+1791160738	say	questor thews	You have 24 minutes to complete this quest.
+1791160738	say	questor thews	The realm is counting on you!
+1791160740	question	Alaric	walk
+1791160755	say	questor thews	Splendid - you've returned victorious!
+1791160755	say	questor thews	Streak of 40 in a row! A +163% bonus has been added!
+1791160755	say	questor thews	Here's your 1 gold - well earned!
