@@ -48372,3 +48372,180 @@ Mon Oct  5 01:40:37 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Squar
 Mon Oct  5 01:40:47 2026 :: Sock.sinaddr:  178.156.181.172
 Mon Oct  5 01:40:47 2026 :: EOF encountered on read.
 Mon Oct  5 01:41:02 2026 :: Log Alaric [2401]: af
+Mon Oct  5 01:41:04 2026 :: Log Alaric [2401]: c fly
+Mon Oct  5 01:41:09 2026 :: Log Alaric [2401]: c fly
+Mon Oct  5 01:41:15 2026 :: Log Alaric [2401]: r e 8
+Mon Oct  5 01:41:15 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Mon Oct  5 01:41:15 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Mon Oct  5 01:41:15 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Mon Oct  5 01:41:15 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Mon Oct  5 01:41:15 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Mon Oct  5 01:41:15 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Mon Oct  5 01:41:15 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Mon Oct  5 01:41:15 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Mon Oct  5 01:41:15 2026 :: Log Alaric [2426]: open east e
+Mon Oct  5 01:41:16 2026 :: Log Alaric [2426]: r e 3
+Mon Oct  5 01:41:16 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Mon Oct  5 01:41:16 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Mon Oct  5 01:41:16 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Mon Oct  5 01:41:16 2026 :: Log Alaric [3502]: r s 4
+Mon Oct  5 01:41:16 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 3502
+Mon Oct  5 01:41:16 2026 :: Log Alaric [5260]: arrived (The dwarf forest) from 5261
+Mon Oct  5 01:41:16 2026 :: Log Alaric [5259]: arrived (The dwarf forest) from 5260
+Mon Oct  5 01:41:16 2026 :: Log Alaric [5258]: arrived (The dwarf forest) from 5259
+Mon Oct  5 01:41:16 2026 :: Log Alaric [5258]: e
+Mon Oct  5 01:41:16 2026 :: Log Alaric [5262]: arrived (The dwarf forest) from 5258
+Mon Oct  5 01:41:16 2026 :: Log Alaric [5262]: e
+Mon Oct  5 01:41:16 2026 :: Log Alaric [5263]: arrived (The darker dwarf forest) from 5262
+Mon Oct  5 01:41:17 2026 :: Log Alaric [5263]: s
+Mon Oct  5 01:41:17 2026 :: Log Alaric [5264]: arrived (The darker dwarf forest) from 5263
+Mon Oct  5 01:41:17 2026 :: Log Alaric [5264]: e
+Mon Oct  5 01:41:17 2026 :: Log Alaric [5265]: arrived (The darker dwarf forest) from 5264
+Mon Oct  5 01:41:17 2026 :: Log Alaric [5265]: e
+Mon Oct  5 01:41:17 2026 :: Log Alaric [5266]: arrived (The darker dwarf forest) from 5265
+Mon Oct  5 01:41:17 2026 :: Log Alaric [5266]: d
+Mon Oct  5 01:41:17 2026 :: Log Alaric [5267]: arrived (A valley in the dark dwarf forest) from 5266
+Mon Oct  5 01:41:18 2026 :: Log Alaric [5267]: s
+Mon Oct  5 01:41:18 2026 :: Log Alaric [62]: arrived (Minor Path) from 5267
+Mon Oct  5 01:41:18 2026 :: Log Alaric [62]: r e 8
+Mon Oct  5 01:41:18 2026 :: Log Alaric [1701]: arrived (Main Eastern Road) from 62
+Mon Oct  5 01:41:18 2026 :: Log Alaric [1702]: arrived (Crossroads to the Wilderness) from 1701
+Mon Oct  5 01:41:18 2026 :: Log Alaric [1601]: arrived (Rough East-West Path) from 1702
+Mon Oct  5 01:41:18 2026 :: Log Alaric [1602]: arrived (Rough Path Between the Hills) from 1601
+Mon Oct  5 01:41:18 2026 :: Log Alaric [1603]: arrived (Path through an Open Area) from 1602
+Mon Oct  5 01:41:18 2026 :: Log Alaric [1604]: arrived (West Side of Moat) from 1603
+Mon Oct  5 01:41:18 2026 :: Log Alaric [1620]: arrived (Western Moat) from 1604
+Mon Oct  5 01:41:18 2026 :: Log Alaric [1623]: arrived (Tower Foyer) from 1620
+Mon Oct  5 01:41:18 2026 :: Log Alaric [1623]: open east
+Mon Oct  5 01:41:18 2026 :: Log Alaric [1623]: e
+Mon Oct  5 01:41:18 2026 :: Log Alaric [1624]: arrived (The Grand Lobby) from 1623
+Mon Oct  5 01:41:29 2026 :: Log Alaric [1624]: e
+Mon Oct  5 01:41:29 2026 :: Log Alaric [1625]: arrived (Base of the Western Tower) from 1624
+Mon Oct  5 01:41:31 2026 :: Log Alaric [1625]: e
+Mon Oct  5 01:41:31 2026 :: Log Alaric [1626]: arrived (The Musty Corridor) from 1625
+Mon Oct  5 01:41:32 2026 :: Log Alaric [1626]: scan
+Mon Oct  5 01:41:33 2026 :: Log Alaric [1626]: e
+Mon Oct  5 01:41:33 2026 :: Log Alaric [1631]: arrived (Base of the Eastern Tower) from 1626
+Mon Oct  5 01:41:34 2026 :: Log Alaric [1631]: u
+Mon Oct  5 01:41:34 2026 :: Log Alaric [1635]: arrived (On the First Staircase) from 1631
+Mon Oct  5 01:41:34 2026 :: Log Alaric [1635]: scan
+Mon Oct  5 01:41:35 2026 :: Log Alaric [1635]: u
+Mon Oct  5 01:41:35 2026 :: Log Alaric [1636]: arrived (Second Level of the Eastern Tower) from 1635
+Mon Oct  5 01:41:36 2026 :: Log Alaric [1636]: scan
+Mon Oct  5 01:41:36 2026 :: Log Alaric [1636]: w
+Mon Oct  5 01:41:36 2026 :: Log Alaric [1637]: arrived (The Elegant Hall) from 1636
+Mon Oct  5 01:41:37 2026 :: Log Alaric [1637]: scan
+Mon Oct  5 01:41:38 2026 :: Log Alaric [1637]: w
+Mon Oct  5 01:41:38 2026 :: Log Alaric [1640]: arrived (Second Level of the Western Tower) from 1637
+Mon Oct  5 01:41:39 2026 :: Log Alaric [1640]: scan
+Mon Oct  5 01:41:40 2026 :: Log Alaric [1640]: w
+Mon Oct  5 01:41:40 2026 :: Log Alaric [1641]: arrived (On the Balcony) from 1640
+Mon Oct  5 01:41:41 2026 :: Log Alaric [1641]: scan
+Mon Oct  5 01:41:41 2026 :: Log Alaric [1641]: e
+Mon Oct  5 01:41:41 2026 :: Log Alaric [1640]: arrived (Second Level of the Western Tower) from 1641
+Mon Oct  5 01:41:42 2026 :: Log Alaric [1640]: u
+Mon Oct  5 01:41:42 2026 :: Log Alaric [1642]: arrived (The Spiral Stairs) from 1640
+Mon Oct  5 01:41:42 2026 :: Log Alaric [1642]: scan
+Mon Oct  5 01:41:43 2026 :: Log Alaric [1642]: u
+Mon Oct  5 01:41:43 2026 :: Log Alaric [1643]: arrived (Third Level of Western Tower) from 1642
+Mon Oct  5 01:41:43 2026 :: Log Alaric [1643]: scan
+Mon Oct  5 01:41:44 2026 :: Log Alaric [1643]: e
+Mon Oct  5 01:41:44 2026 :: Log Alaric [1644]: arrived (It's too dark to see anything!) from 1643
+Mon Oct  5 01:41:45 2026 :: Log Alaric [1644]: scan
+Mon Oct  5 01:41:46 2026 :: Log Alaric [1644]: e
+Mon Oct  5 01:41:46 2026 :: Log Alaric [1647]: arrived (Third Level of Eastern Tower) from 1644
+Mon Oct  5 01:41:47 2026 :: Log Alaric [1647]: scan
+Mon Oct  5 01:41:51 2026 :: Log Alaric [1647]: open up
+Mon Oct  5 01:41:51 2026 :: Log Alaric [1647]: scan
+Mon Oct  5 01:41:53 2026 :: Log Alaric [1647]: w
+Mon Oct  5 01:41:53 2026 :: Log Alaric [1644]: arrived (It's too dark to see anything!) from 1647
+Mon Oct  5 01:41:54 2026 :: Log Alaric [1644]: n
+Mon Oct  5 01:41:54 2026 :: Log Alaric [1645]: arrived (The Armory) from 1644
+Mon Oct  5 01:41:56 2026 :: Log Alaric [1645]: s
+Mon Oct  5 01:41:56 2026 :: Log Alaric [1644]: arrived (It's too dark to see anything!) from 1645
+Mon Oct  5 01:41:56 2026 :: Log Alaric [1644]: s
+Mon Oct  5 01:41:56 2026 :: Log Alaric [1646]: arrived (The Officer's Quarters) from 1644
+Mon Oct  5 01:41:58 2026 :: Log Alaric [1646]: n
+Mon Oct  5 01:41:58 2026 :: Log Alaric [1644]: arrived (It's too dark to see anything!) from 1646
+Mon Oct  5 01:42:01 2026 :: Log Alaric [1644]: w
+Mon Oct  5 01:42:01 2026 :: Log Alaric [1643]: arrived (Third Level of Western Tower) from 1644
+Mon Oct  5 01:42:03 2026 :: Log Alaric [1643]: e
+Mon Oct  5 01:42:03 2026 :: Log Alaric [1644]: arrived (It's too dark to see anything!) from 1643
+Mon Oct  5 01:42:04 2026 :: Log Alaric [1644]: s
+Mon Oct  5 01:42:04 2026 :: Log Alaric [1646]: arrived (The Officer's Quarters) from 1644
+Mon Oct  5 01:42:05 2026 :: Log Alaric [1646]: n
+Mon Oct  5 01:42:05 2026 :: Log Alaric [1644]: arrived (It's too dark to see anything!) from 1646
+Mon Oct  5 01:42:05 2026 :: Log Alaric [1644]: n
+Mon Oct  5 01:42:05 2026 :: Log Alaric [1645]: arrived (The Armory) from 1644
+Mon Oct  5 01:42:07 2026 :: Log Alaric [1645]: s
+Mon Oct  5 01:42:07 2026 :: Log Alaric [1644]: arrived (It's too dark to see anything!) from 1645
+Mon Oct  5 01:42:07 2026 :: Log Alaric [1644]: e
+Mon Oct  5 01:42:07 2026 :: Log Alaric [1647]: arrived (Third Level of Eastern Tower) from 1644
+Mon Oct  5 01:42:10 2026 :: Log Alaric [1647]: aq info
+Mon Oct  5 01:42:12 2026 :: Log Alaric [1647]: where savage
+Mon Oct  5 01:42:14 2026 :: Log Alaric [1647]: l
+Mon Oct  5 01:42:14 2026 :: Log Alaric [1647]: ex
+Mon Oct  5 01:42:17 2026 :: Log Alaric [1647]: c pass
+Mon Oct  5 01:42:22 2026 :: Log Alaric [1647]: u
+Mon Oct  5 01:42:22 2026 :: Log Alaric [1648]: arrived (Turret of the Eastern Tower) from 1647
+Mon Oct  5 01:42:25 2026 :: Log Alaric [1648]: w
+Mon Oct  5 01:42:25 2026 :: Log Alaric [1649]: arrived (On the Catwalk) from 1648
+Mon Oct  5 01:42:27 2026 :: Log Alaric [1649]: w
+Mon Oct  5 01:42:27 2026 :: Log Alaric [1650]: arrived (Turret of the Western Tower) from 1649
+Mon Oct  5 01:42:29 2026 :: Log Alaric [1650]: w
+Mon Oct  5 01:42:29 2026 :: Log Alaric [1651]: arrived (On the Other Side) from 1650
+Mon Oct  5 01:42:30 2026 :: Log Alaric [1651]: w
+Mon Oct  5 01:42:30 2026 :: Log Alaric [1652]: arrived (The Chamber) from 1651
+Mon Oct  5 01:42:31 2026 :: Log Alaric [1652]: e
+Mon Oct  5 01:42:31 2026 :: Log Alaric [1651]: arrived (On the Other Side) from 1652
+Mon Oct  5 01:42:32 2026 :: Log Alaric [1651]: e
+Mon Oct  5 01:42:32 2026 :: Log Alaric [1650]: arrived (Turret of the Western Tower) from 1651
+Mon Oct  5 01:42:33 2026 :: Log Alaric [1650]: e
+Mon Oct  5 01:42:33 2026 :: Log Alaric [1649]: arrived (On the Catwalk) from 1650
+Mon Oct  5 01:42:34 2026 :: Log Alaric [1649]: e
+Mon Oct  5 01:42:34 2026 :: Log Alaric [1648]: arrived (Turret of the Eastern Tower) from 1649
+Mon Oct  5 01:42:35 2026 :: Log Alaric [1648]: d
+Mon Oct  5 01:42:35 2026 :: Log Alaric [1647]: arrived (Third Level of Eastern Tower) from 1648
+Mon Oct  5 01:42:38 2026 :: Log Alaric [1647]: u
+Mon Oct  5 01:42:38 2026 :: Log Alaric [1648]: arrived (Turret of the Eastern Tower) from 1647
+Mon Oct  5 01:42:40 2026 :: Log Alaric [1648]: d
+Mon Oct  5 01:42:40 2026 :: Log Alaric [1647]: arrived (Third Level of Eastern Tower) from 1648
+Mon Oct  5 01:42:41 2026 :: Log Alaric [1647]: w
+Mon Oct  5 01:42:41 2026 :: Log Alaric [1644]: arrived (It's too dark to see anything!) from 1647
+Mon Oct  5 01:42:42 2026 :: Log Alaric [1644]: n
+Mon Oct  5 01:42:42 2026 :: Log Alaric [1645]: arrived (The Armory) from 1644
+Mon Oct  5 01:42:43 2026 :: Log Alaric [1645]: s
+Mon Oct  5 01:42:43 2026 :: Log Alaric [1644]: arrived (It's too dark to see anything!) from 1645
+Mon Oct  5 01:42:44 2026 :: Log Alaric [1644]: s
+Mon Oct  5 01:42:44 2026 :: Log Alaric [1646]: arrived (The Officer's Quarters) from 1644
+Mon Oct  5 01:42:45 2026 :: Log Alaric [1646]: n
+Mon Oct  5 01:42:45 2026 :: Log Alaric [1644]: arrived (It's too dark to see anything!) from 1646
+Mon Oct  5 01:42:45 2026 :: Log Alaric [1644]: w
+Mon Oct  5 01:42:45 2026 :: Log Alaric [1643]: arrived (Third Level of Western Tower) from 1644
+Mon Oct  5 01:42:47 2026 :: Log Alaric [1643]: w
+Mon Oct  5 01:42:51 2026 :: Log Alaric [1643]: l
+Mon Oct  5 01:42:54 2026 :: Log Alaric [1643]: goto savage
+Mon Oct  5 01:42:58 2026 :: Log Alaric [1643]: goto savage
+Mon Oct  5 01:43:03 2026 :: Log Alaric [1643]: goto savage
+Mon Oct  5 01:43:03 2026 :: Log Alaric [1610]: arrived (Minotaur's Room) from 1643
+Mon Oct  5 01:43:09 2026 :: Log Alaric [1610]: kill sa
+Mon Oct  5 01:43:16 2026 :: Log Alaric [1610]: sh
+Mon Oct  5 01:43:22 2026 :: Log Alaric [1610]: sh
+Mon Oct  5 01:43:30 2026 :: Log Alaric [1610]: l
+Mon Oct  5 01:43:31 2026 :: Log Alaric [1610]: u
+Mon Oct  5 01:43:31 2026 :: Log Alaric [1609]: arrived (Empty Room) from 1610
+Mon Oct  5 01:43:35 2026 :: Log Alaric [1609]: w
+Mon Oct  5 01:43:35 2026 :: Log Alaric [1611]: arrived (A Corridor) from 1609
+Mon Oct  5 01:43:36 2026 :: Log Alaric [1611]: recal
+Mon Oct  5 01:43:36 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 1611
+Mon Oct  5 01:43:36 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 01:43:36 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 01:43:37 2026 :: Log Alaric [2497]: aq co
+Mon Oct  5 01:43:37 2026 :: Log Alaric [2497]: quest complete: 7 gold, 77 quest points (streak bonus 177%)
+Mon Oct  5 01:43:39 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct  5 01:43:40 2026 :: Log Alaric [2497]: score
+Mon Oct  5 01:43:41 2026 :: Log Alaric [2497]: who
+Mon Oct  5 01:45:31 2026 :: Log Alaric [2497]: who
+Mon Oct  5 01:45:34 2026 :: Log Alaric [2497]: sc
+Mon Oct  5 01:45:51 2026 :: Sock.sinaddr:  5.161.113.195
+Mon Oct  5 01:45:51 2026 :: EOF encountered on read.
