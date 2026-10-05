@@ -183,8 +183,8 @@ git diff --check
 Current October 2026 Python baseline:
 
 ```text
-100 listed area entries
-2,495 mobiles
+102 listed area entries
+2,494 mobiles
 3,721 objects
 7,787 rooms
 0 critical, 12 warning, 1,635 information findings
@@ -225,9 +225,12 @@ commented out as "(removed: room/obj does not exist)" went back in; every
 vnum they named was present all along. See the changelog entry for the
 parsing mistake behind the claim.
 
-Six list entries are help/social files without `#AREA`; native boot creates one
-online-building area. Do not force native and Python area totals to match by
-removing valid files or hiding the generated area.
+Seven list entries are help/social files without `#AREA` (`commands`,
+`routelist`, `skills`, `spells`, `masters`, `toc`, `social`), so the native
+validator reports 95 areas against the Python tools' 102 entries. Online
+building saves into `custom.are` (`BUILDER_AREA_FILE`); because `area.lst`
+lists it, boot creates no extra area. Do not force native and Python area
+totals to match by removing valid files or hiding the builder area.
 
 Run tests proportional to risk. Movement, combat, extraction, persistence,
 world loading, command authorization, and queue changes need the full suite plus
@@ -827,7 +830,7 @@ Two rules keep the output honest, and both were learned the hard way:
   routing, though `load_world()` still reports them, because the parity test
   against the dashboard parser depends on that staying faithful.
 
-89 of the 92 areas holding rooms have a route. Dresden has none because it
+90 of the 93 areas holding rooms have a route. Dresden has none because it
 contains the start room. The Quest Zone (20301-20313) and Temple Despair
 (26000-26006) have none because nothing in the world links to them -- the
 first is finished content with no entrance, the second an empty shell with no

@@ -6,8 +6,8 @@ the complete world database, a FastAPI operations dashboard, Docker packaging,
 validation tools, tests, and the source data used to generate Hyrule: First
 Quest.
 
-The current checked-in world parses as **100 listed area files, 7,787 rooms,
-2,495 mobiles, and 3,721 objects**. Player progression spans six classes, five
+The current checked-in world parses as **102 listed area files, 7,787 rooms,
+2,494 mobiles, and 3,721 objects**. Player progression spans six classes, five
 playable races, four optional cross-class guilds, five remorts, questing, group
 play, player killing, permanent achievements, advanced equipment comparison,
 and a large collection of hand-built areas.

@@ -1,7 +1,7 @@
 # Times of Chaos Documentation
 
 Welcome to the maintained documentation for Times of Chaos. The current world
-inventory is 100 listed area entries, 7,787 rooms, 2,495 mobiles, and 3,721
+inventory is 102 listed area entries, 7,787 rooms, 2,494 mobiles, and 3,721
 objects. The live game runs on Oracle Cloud (`toc.jeremybean.com`); see
 [Disaster Recovery](disaster-recovery.md) for deploys and recovery.
 
