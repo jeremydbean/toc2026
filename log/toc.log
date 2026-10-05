@@ -47929,3 +47929,89 @@ Mon Oct  5 00:52:04 2026 :: Log Alaric [2497]: aq ga no
 Mon Oct  5 00:52:06 2026 :: Log Alaric [2497]: sc
 Mon Oct  5 00:55:06 2026 :: Sock.sinaddr:  3.133.226.214
 Mon Oct  5 00:55:06 2026 :: EOF encountered on read.
+Mon Oct  5 00:56:48 2026 :: Sock.sinaddr:  64.62.156.108
+Mon Oct  5 00:56:48 2026 :: EOF encountered on read.
+Mon Oct  5 00:59:44 2026 :: Log Alaric [2497]: aq re
+Mon Oct  5 00:59:48 2026 :: Log Alaric [2497]: enter door
+Mon Oct  5 00:59:48 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Mon Oct  5 00:59:48 2026 :: Log Alaric [2401]: east
+Mon Oct  5 00:59:48 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Mon Oct  5 00:59:48 2026 :: Log Alaric [2403]: east
+Mon Oct  5 00:59:48 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Mon Oct  5 00:59:49 2026 :: Log Alaric [2420]: east
+Mon Oct  5 00:59:49 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Mon Oct  5 00:59:49 2026 :: Log Alaric [2421]: east
+Mon Oct  5 00:59:49 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Mon Oct  5 00:59:49 2026 :: Log Alaric [2422]: east
+Mon Oct  5 00:59:49 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Mon Oct  5 00:59:49 2026 :: Log Alaric [2423]: east
+Mon Oct  5 00:59:49 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Mon Oct  5 00:59:50 2026 :: Log Alaric [2424]: east
+Mon Oct  5 00:59:50 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Mon Oct  5 00:59:50 2026 :: Log Alaric [2425]: east
+Mon Oct  5 00:59:50 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Mon Oct  5 00:59:50 2026 :: Log Alaric [2426]: open east
+Mon Oct  5 00:59:50 2026 :: Log Alaric [2426]: east
+Mon Oct  5 00:59:50 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Mon Oct  5 00:59:52 2026 :: Log Alaric [2440]: east
+Mon Oct  5 00:59:52 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Mon Oct  5 00:59:52 2026 :: Log Alaric [3503]: east
+Mon Oct  5 00:59:52 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Mon Oct  5 00:59:53 2026 :: Log Alaric [3502]: south
+Mon Oct  5 00:59:53 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 3502
+Mon Oct  5 00:59:53 2026 :: Log Alaric [5261]: south
+Mon Oct  5 00:59:53 2026 :: Log Alaric [5260]: arrived (The dwarf forest) from 5261
+Mon Oct  5 00:59:53 2026 :: Log Alaric [5260]: south
+Mon Oct  5 00:59:53 2026 :: Log Alaric [5259]: arrived (The dwarf forest) from 5260
+Mon Oct  5 00:59:53 2026 :: Log Alaric [5259]: south
+Mon Oct  5 00:59:53 2026 :: Log Alaric [5258]: arrived (The dwarf forest) from 5259
+Mon Oct  5 00:59:54 2026 :: Log Alaric [5258]: east
+Mon Oct  5 00:59:54 2026 :: Log Alaric [5262]: arrived (The dwarf forest) from 5258
+Mon Oct  5 00:59:54 2026 :: Log Alaric [5262]: east
+Mon Oct  5 00:59:54 2026 :: Log Alaric [5263]: arrived (The darker dwarf forest) from 5262
+Mon Oct  5 00:59:54 2026 :: Log Alaric [5263]: south
+Mon Oct  5 00:59:54 2026 :: Log Alaric [5264]: arrived (The darker dwarf forest) from 5263
+Mon Oct  5 00:59:54 2026 :: Log Alaric [5264]: east
+Mon Oct  5 00:59:54 2026 :: Log Alaric [5265]: arrived (The darker dwarf forest) from 5264
+Mon Oct  5 00:59:55 2026 :: Log Alaric [5265]: east
+Mon Oct  5 00:59:55 2026 :: Log Alaric [5266]: arrived (The darker dwarf forest) from 5265
+Mon Oct  5 00:59:55 2026 :: Log Alaric [5266]: down
+Mon Oct  5 00:59:55 2026 :: Log Alaric [5267]: arrived (A valley in the dark dwarf forest) from 5266
+Mon Oct  5 00:59:55 2026 :: Log Alaric [5267]: south
+Mon Oct  5 00:59:55 2026 :: Log Alaric [62]: arrived (Minor Path) from 5267
+Mon Oct  5 00:59:55 2026 :: Log Alaric [62]: east
+Mon Oct  5 00:59:55 2026 :: Log Alaric [1701]: arrived (Main Eastern Road) from 62
+Mon Oct  5 00:59:56 2026 :: Log Alaric [1701]: east
+Mon Oct  5 00:59:56 2026 :: Log Alaric [1702]: arrived (Crossroads to the Wilderness) from 1701
+Mon Oct  5 00:59:56 2026 :: Log Alaric [1702]: east
+Mon Oct  5 00:59:56 2026 :: Log Alaric [1601]: arrived (Rough East-West Path) from 1702
+Mon Oct  5 00:59:56 2026 :: Log Alaric [1601]: east
+Mon Oct  5 00:59:56 2026 :: Log Alaric [1602]: arrived (Rough Path Between the Hills) from 1601
+Mon Oct  5 00:59:56 2026 :: Log Alaric [1602]: east
+Mon Oct  5 00:59:56 2026 :: Log Alaric [1603]: arrived (Path through an Open Area) from 1602
+Mon Oct  5 00:59:57 2026 :: Log Alaric [1603]: east
+Mon Oct  5 00:59:57 2026 :: Log Alaric [1604]: arrived (West Side of Moat) from 1603
+Mon Oct  5 00:59:57 2026 :: Log Alaric [1604]: north
+Mon Oct  5 00:59:57 2026 :: Log Alaric [1605]: arrived (Path North of Moat) from 1604
+Mon Oct  5 00:59:57 2026 :: Log Alaric [1605]: north
+Mon Oct  5 00:59:57 2026 :: Log Alaric [1606]: arrived (Cluster of Buildings) from 1605
+Mon Oct  5 00:59:57 2026 :: Log Alaric [1606]: north
+Mon Oct  5 00:59:57 2026 :: Log Alaric [1609]: arrived (Empty Room) from 1606
+Mon Oct  5 00:59:58 2026 :: Log Alaric [1609]: west
+Mon Oct  5 00:59:58 2026 :: Log Alaric [1611]: arrived (A Corridor) from 1609
+Mon Oct  5 00:59:58 2026 :: Log Alaric [1611]: west
+Mon Oct  5 00:59:58 2026 :: Log Alaric [1612]: arrived (Tower) from 1611
+Mon Oct  5 00:59:58 2026 :: Log Alaric [1612]: up
+Mon Oct  5 00:59:58 2026 :: Log Alaric [1613]: arrived (The tower) from 1612
+Mon Oct  5 00:59:58 2026 :: Log Alaric [1613]: up
+Mon Oct  5 00:59:58 2026 :: Log Alaric [1614]: arrived (The tower) from 1613
+Mon Oct  5 01:00:00 2026 :: Log Alaric [1614]: te
+Mon Oct  5 01:00:04 2026 :: Log Alaric [1614]: recal
+Mon Oct  5 01:00:04 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 1614
+Mon Oct  5 01:00:04 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 01:00:05 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 01:00:05 2026 :: Log Alaric [2497]: aq co
+Mon Oct  5 01:00:05 2026 :: Log Alaric [2497]: quest complete: 12 gold, 82 quest points (streak bonus 167%)
+Mon Oct  5 01:00:05 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct  5 01:00:10 2026 :: Sock.sinaddr:  178.156.184.20
+Mon Oct  5 01:00:10 2026 :: EOF encountered on read.

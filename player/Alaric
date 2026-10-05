@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791161588
+LogO 1791162005
 Vers 4
 Prom ~
 Ignoring ~
@@ -16,28 +16,28 @@ PsiKnown torment,telekinesis,mindbar,mind leech~
 ChangesSeen ~
 Cast none
 Levl 50
-Plyd 316050
+Plyd 316467
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 StashMax 150
 Scro 22
 Room 2497
-HMV  6540 6540 23967 24024 554 2994
-NewGold 24
+HMV  6540 6540 23966 24024 347 2994
+NewGold 36
 NewPlat 18
 NewCopp 1
 NewSilv 74
-BankCP 1130356235
-IntTime 1791075484
-IntTotal 8356235
+BankCP 1133182125
+IntTime 1791161884
+IntTotal 11182125
 Dcount 0
 SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 1433
-AchQuests 152
+AchKills 1434
+AchQuests 153
 AchDeaths 0
 AchExplore 5
 AchMaps 5
@@ -113,11 +113,11 @@ SesDead  0
 SesQuest 0
 RecallRoom 2497
 RecallSet  1791153330
-QuestPnts 1150
-QuestStrk 41
+QuestPnts 1232
+QuestStrk 42
 CasinoWon  51
 CasinoLost 304
-QuestNext 4
+QuestNext 5
 Exp  100071
 Act  4261068
 AfBy 3678908
@@ -150,7 +150,7 @@ Pos  8
 Prac 12
 Trai 4
 Save  -20
-Alig  994
+Alig  1000
 Hit   71
 Dam   92
 ACs -170 -169 -172 -3
@@ -240,49 +240,49 @@ Gr 'life & undeath'
 Gr 'necromancy'
 Gr 'necro protective'
 Gr 'necro transportation'
-AffD 'titanic'  38  13  50  16          0          0
-AffD 'titanic'   0  13 2495  14          0          0
-AffD 'titanic'   0  13 20020  12          0          0
-AffD 'titanic'   0  13 5450  13          0          0
-AffD 'empower'   0  13 -100  17          0          0
-AffD 'empower'   0  13  20  19          0          0
-AffD 'empower'   0  13  20  18          0          0
-AffD 'empower'   0  13  15   5          0          0
-AffD 'empower'   0  13  11   2          0          0
-AffD 'empower'   0  13  15   4          0          0
-AffD 'empower'   0  13  15   3          0          0
-AffD 'giant strength'   0  13  15   1          0          0
-AffD 'divine protection'   0  13   0   0          0       4096
-AffD 'fire shield'   0  13   0   0          0          8
-AffD 'protection evil'   0  13   0   0       8192          0
-AffD 'pass door'   0  13   0   0    1048576          0
-AffD 'fly'   0  13   0   0     524288          0
-AffD 'haste'   0  13   4   2    2097152          0
-AffD 'sanctuary'   0  13   0   0        128          0
-AffD 'empower'   0  13   0   0          0          0
-AffD 'power gloves'   0  13  14  19          0          0
-AffD 'detect evil'   0  13   0   0          4          0
-AffD 'detect good'   0  13   0   0          0          2
-AffD 'detect magic'   0  13   0   0         16          0
-AffD 'detect hidden'   0  13   0   0         32          0
-AffD 'detect invis'   4  13   0   0          8          0
-AffD 'infravision'   0  13   0   0        512          0
-AffD 'frenzy'   0  13 110  17          0          0
-AffD 'frenzy'   0  13  11  19          0          0
-AffD 'frenzy'   0  13  11  18          0          0
-AffD 'giant strength'   0  13   4   1          0          0
-AffD 'divine protection'   0  13   0   0          0       4096
-AffD 'fire shield'   0  13   0   0          0          8
-AffD 'protection evil'   0  13   0   0       8192          0
-AffD 'pass door'   0  13   0   0    1048576          0
-AffD 'fly'   0  13   0   0     524288          0
-AffD 'haste'   0  13   4   2    2097152          0
-AffD 'sanctuary'   0  13   0   0        128          0
-AffD 'bless'   2  13  -8  24          0          0
-AffD 'bless'   0  13   8  18          0          0
-AffD 'shroud'   0  13 -35  17          0          0
-AffD 'shield'   0  13 -20  17          0          0
-AffD 'armor'   0  13 -20  17          0          0
+AffD 'titanic'  37   6  50  16          0          0
+AffD 'titanic'   0   6 2495  14          0          0
+AffD 'titanic'   0   6 20020  12          0          0
+AffD 'titanic'   0   6 5450  13          0          0
+AffD 'empower'   0   6 -100  17          0          0
+AffD 'empower'   0   6  20  19          0          0
+AffD 'empower'   0   6  20  18          0          0
+AffD 'empower'   0   6  15   5          0          0
+AffD 'empower'   0   6  11   2          0          0
+AffD 'empower'   0   6  15   4          0          0
+AffD 'empower'   0   6  15   3          0          0
+AffD 'giant strength'   0   6  15   1          0          0
+AffD 'divine protection'   0   6   0   0          0       4096
+AffD 'fire shield'   0   6   0   0          0          8
+AffD 'protection evil'   0   6   0   0       8192          0
+AffD 'pass door'   0   6   0   0    1048576          0
+AffD 'fly'   0   6   0   0     524288          0
+AffD 'haste'   0   6   4   2    2097152          0
+AffD 'sanctuary'   0   6   0   0        128          0
+AffD 'empower'   0   6   0   0          0          0
+AffD 'power gloves'   0   6  14  19          0          0
+AffD 'detect evil'   0   6   0   0          4          0
+AffD 'detect good'   0   6   0   0          0          2
+AffD 'detect magic'   0   6   0   0         16          0
+AffD 'detect hidden'   0   6   0   0         32          0
+AffD 'detect invis'   1   6   0   0          8          0
+AffD 'infravision'   0   6   0   0        512          0
+AffD 'frenzy'   0   6 110  17          0          0
+AffD 'frenzy'   0   6  11  19          0          0
+AffD 'frenzy'   0   6  11  18          0          0
+AffD 'giant strength'   0   6   4   1          0          0
+AffD 'divine protection'   0   6   0   0          0       4096
+AffD 'fire shield'   0   6   0   0          0          8
+AffD 'protection evil'   0   6   0   0       8192          0
+AffD 'pass door'   0   6   0   0    1048576          0
+AffD 'fly'   0   6   0   0     524288          0
+AffD 'haste'   0   6   4   2    2097152          0
+AffD 'sanctuary'   0   6   0   0        128          0
+AffD 'bless'   2   6  -8  24          0          0
+AffD 'bless'   0   6   8  18          0          0
+AffD 'shroud'   0   6 -35  17          0          0
+AffD 'shield'   0   6 -20  17          0          0
+AffD 'armor'   0   6 -20  17          0          0
 End
 
 #O
@@ -811,7 +811,7 @@ Lev  35
 Cost 7500000
 Cond 100
 Repd 0
-Val  0 0 9937 0 0
+Val  0 0 9930 0 0
 Affect -1 35 -1 -19 12 0 0
 End
 
