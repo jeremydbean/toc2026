@@ -103,8 +103,13 @@ class AdditionalRareMechanicTests(unittest.TestCase):
         self.assertIn("find_online_player_exact(arg)", raise_dead)
         self.assertNotIn("get_char_world(ch,arg)", raise_dead)
         self.assertGreaterEqual(raise_dead.count("continue;"), 2)
-        self.assertIn("if ( corpse->contains == NULL )", raise_dead)
-        self.assertIn("remain in the corpse", raise_dead)
+        # What does not fit is spilled to the floor, never destroyed with
+        # the corpse: the corpse is always used up, so it cannot be raised
+        # again to pull its owner across the world.
+        spill = raise_dead.index("spill_corpse( corpse );")
+        self.assertLess(raise_dead.index("if ( corpse->contains != NULL )"), spill)
+        self.assertLess(spill, raise_dead.index("extract_obj(corpse);"))
+        self.assertIn("fall to the ground", raise_dead)
         self.assertIn("save_char_obj(victim)", raise_dead)
 
     def test_summoned_undead_remain_controlled_for_their_lifetime(self) -> None:

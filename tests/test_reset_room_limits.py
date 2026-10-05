@@ -28,17 +28,19 @@ from live_mud import (
 
 SKIP = skip_reason()
 
-# area/hyrule.are stocks these rooms with mobile 32353, the peahat built for
-# the Level 4 band (scripts/build_hyrule_area.py generates one record per
-# enemy kind per band, so every room drained here must sit in the same
-# band as the watched one). Its world-wide cap equals the total the area
-# asks for, so every freed slot is contested on the next reset.
-WATCHED_ROOM = 30201          # earliest peahat room, asks for two
+# area/hyrule.are stocks these rooms with mobile 32358, the peahat built for
+# the Death Mountain band (scripts/build_hyrule_area.py generates one record
+# per enemy kind per band, so every room drained here must sit in the same
+# band as the watched one -- the October 2026 regrade moved the meadow's
+# peahats to other bands, which is why this is no longer 30201). Its
+# world-wide cap equals the total the area asks for, eleven, so every freed
+# slot is contested on the next reset.
+WATCHED_ROOM = 30285          # earliest band 9 peahat room, asks for two
 WATCHED_INTENT = 2
-DRAINED_ROOMS = (30286, 30309, 30311)   # later rooms, six peahats between them
-# The Level 4 band peahat's room line, from data/hyrule_mob_prose.json
-# (enemies.peahat."4": every band of a kind has its own text).
-MOB_LONG_DESC = "A sturdy peahat skims low over the meadow, petals blurring in the sun."
+DRAINED_ROOMS = (30286, 30287, 30288)   # later rooms, six peahats between them
+# The band 9 peahat's room line, from data/hyrule_mob_prose.json
+# (enemies.peahat."9": every band of a kind has its own text).
+MOB_LONG_DESC = "An ancient peahat whirls over the mountain heights, petals like blades."
 
 IMMORTAL_LEVEL = 70
 PASSWORD = "Ziprepoppw"

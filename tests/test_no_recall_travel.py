@@ -37,45 +37,58 @@ class TravelSourceTests(unittest.TestCase):
         cls.magic = (ROOT / "src" / "magic.c").read_text(encoding="latin-1")
         cls.magic2 = (ROOT / "src" / "magic2.c").read_text(encoding="latin-1")
 
-    def portal_mortal_check(self) -> str:
-        # The immortal branch closes with a brace in column 0, so the
-        # function is taken up to the next one (commented out) instead.
-        start = self.magic.index("void spell_portal(")
-        body = self.magic[start:self.magic.index("spell_iportal", start)]
-        mortal = body[body.index("else\n"):]
-        return mortal[:mortal.index("You failed.")]
+    def travel_target(self) -> str:
+        # Gate, earth travel, portal and astral walk all choose their
+        # target through travel_target() since 2026-10-04; the room rules
+        # live there, told apart by mode.
+        return function_body(self.magic, "CHAR_DATA *travel_target(")
 
     def test_portal_leaves_a_no_recall_room_but_never_enters_one(self) -> None:
-        check = self.portal_mortal_check()
-        self.assertIn("IS_SET(ch->in_room->room_flags, ROOM_JAIL)", check)
-        self.assertNotIn("ch->in_room->room_flags, ROOM_NO_RECALL", check)
-        self.assertIn("IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)", check)
-        self.assertIn("IS_SET(victim->in_room->room_flags, ROOM_JAIL)", check)
+        portal = self.magic[self.magic.index("void spell_portal("):]
+        portal = portal[:portal.index("spell_iportal")]
+        self.assertIn("travel_target( ch, target_name, level, TRAVEL_PORTAL )", portal)
+        check = self.travel_target()
+        # The caster's room: jail for every mode, no-recall for gate only.
+        self.assertIn(
+            "if ( ch->in_room == NULL || IS_SET(ch->in_room->room_flags, ROOM_JAIL) )", check)
+        self.assertIn(
+            "if ( mode == TRAVEL_GATE && IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) )",
+            check)
+        self.assertEqual(1, check.count("ch->in_room->room_flags, ROOM_NO_RECALL"))
+        # The target's room: both, for every mode.
+        self.assertIn("IS_SET(room->room_flags, ROOM_NO_RECALL)", check)
+        self.assertIn("IS_SET(room->room_flags, ROOM_JAIL)", check)
 
     def test_astral_walk_leaves_a_no_recall_room_but_never_enters_one(self) -> None:
         body = function_body(self.magic2, "void do_astral_walk(")
+        self.assertIn("travel_target( ch, arg, ch->level, TRAVEL_ASTRAL )", body)
+        check = self.travel_target()
         origin = re.search(
-            r"psionic_remote_room_blocked\(\s*ch,\s*ch->in_room,\s*(\w+),\s*(\w+)\s*\)",
-            body)
+            r"mode == TRAVEL_ASTRAL\s*&&\s*psionic_remote_room_blocked\(\s*ch,\s*ch->in_room,"
+            r"\s*(\w+),\s*(\w+)\s*\)", check)
         target = re.search(
-            r"psionic_remote_room_blocked\(\s*ch,\s*victim != NULL \? victim->in_room"
-            r" : NULL,\s*(\w+),\s*(\w+)\s*\)", body)
+            r"mode == TRAVEL_ASTRAL\s*&&\s*psionic_remote_room_blocked\(\s*ch,\s*room,"
+            r"\s*(\w+),\s*(\w+)\s*\)", check)
         self.assertIsNotNone(origin)
         self.assertIsNotNone(target)
         self.assertEqual("false", origin.group(2), "origin must not block no-recall")
         self.assertEqual("true", target.group(2), "destination must block no-recall")
 
     def test_jail_still_stops_the_helper_both_ways(self) -> None:
-        helper = function_body(self.magic2, "static bool psionic_remote_room_blocked(")
+        helper = function_body(self.magic2, "bool psionic_remote_room_blocked(")
         unconditional = helper[:helper.index("if ( block_safe")]
         self.assertIn("ROOM_JAIL", unconditional)
 
     def test_the_others_keep_no_recall_on_the_caster_side(self) -> None:
-        for source, signature in ((self.magic, "void spell_gate("),
-                                  (self.magic, "void spell_summon(")):
-            with self.subTest(signature=signature):
-                self.assertIn("IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)",
-                              function_body(source, signature))
+        self.assertIn("travel_target( ch, target_name, level, TRAVEL_GATE )",
+                      function_body(self.magic, "void spell_gate("))
+        self.assertIn("travel_target( ch, target_name, level, TRAVEL_GATE )",
+                      function_body(self.magic2, "void spell_earth_travel("))
+        self.assertIn(
+            "mode == TRAVEL_GATE && IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)",
+            self.travel_target())
+        self.assertIn("IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)",
+                      function_body(self.magic, "void spell_summon("))
         shift = function_body(self.magic2, "void do_shift(")
         self.assertRegex(
             shift, r"psionic_remote_room_blocked\(ch, ch->in_room, false, true\)")

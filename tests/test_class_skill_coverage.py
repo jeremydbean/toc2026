@@ -122,12 +122,18 @@ class ClassSkillCoverageTests(unittest.TestCase):
             self.assertIn(f'skill_lookup("{spell}")', body, spell)
 
     def test_travel_spells_keep_room_rules(self) -> None:
+        # Both find their target through travel_target(), which asks the
+        # room rules of every candidate's room before choosing it.
         for path, spell in (("magic.c", "void spell_gate("),
                             ("magic2.c", "void spell_earth_travel(")):
             text = (SRC / path).read_text(encoding="latin-1")
             body = text[text.index(spell):]
             body = body[:body.index("\n}\n")]
-            self.assertIn("travel_spell_refuses( ch, victim->in_room )", body, spell)
+            self.assertIn("travel_target( ch, target_name, level, TRAVEL_GATE )", body, spell)
+        magic = (SRC / "magic.c").read_text(encoding="latin-1")
+        target = magic[magic.index("CHAR_DATA *travel_target("):]
+        target = target[:target.index("\n}\n")]
+        self.assertIn("travel_spell_refuses( ch, room )", target)
         move = (SRC / "act_move.c").read_text(encoding="latin-1")
         helper = move[move.index("bool travel_spell_refuses("):]
         helper = helper[:helper.index("\n}\n")]

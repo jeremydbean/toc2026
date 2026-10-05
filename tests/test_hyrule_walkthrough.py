@@ -56,6 +56,10 @@ def run(client, command: str, settle: float = 1.2) -> str:
     return client.transcript[mark:]
 
 
+def one_line(text: str) -> str:
+    return re.sub(r"\s*[\r\n]+\s*", " | ", text).strip()
+
+
 def make(mud: LiveMud, name: str, **fields) -> None:
     with mud.connect(timeout=120) as client:
         create_character(client, name, PASSWORD)
@@ -168,13 +172,26 @@ class HyruleWalkthroughTests(unittest.TestCase):
                     opened = run(hero, f"unlock {door}", 1.2) + run(hero, f"open {door}", 1.2)
                     inside = run(hero, door, 1.5)
                     self.assertIn(self.name_of(goal), inside, looted + opened + inside)
-                    chest = run(hero, "unlock chest", 1.2) + run(hero, "open chest", 1.2)
-                    prize = run(hero, "get all chest", 2.0)
+                    chest = run(hero, "unlock chest", 1.5) + run(hero, "open chest", 1.5)
+                    prize = run(hero, "get all chest", 2.5)
+                    if "is closed" in prize.lower():
+                        # Twice in CI, never locally, the chest answered
+                        # closed after UNLOCK and OPEN. Say so loudly and
+                        # try once more, so a slow runner's timing is told
+                        # apart from a chest that really will not open.
+                        print(f"\n[walkthrough] Level {level} chest closed after "
+                              f"unlock/open: {one_line(chest)}", file=sys.stderr)
+                        chest += run(hero, "unlock chest", 2.0) + run(hero, "open chest", 2.0)
+                        prize = run(hero, "get all chest", 3.0)
                     piece = self.parser.objects[gen.PIECE_VNUMS[level]].short_desc
                     treasure = self.parser.objects[gen.DUNGEON_TREASURE[level]].short_desc
-                    self.assertIn(piece.lower(), prize.lower(),
-                                  looted + opened + inside + chest + prize
-                                  + run(hero, "inventory", 1.0) + run(hero, "look", 1.0))
+                    # CI reprints only the first line of a failure, so the
+                    # chest's own replies lead and the message is one line.
+                    self.assertIn(piece.lower(), prize.lower(), one_line(
+                        f"Level {level}: chest said [{chest}] prize [{prize}] "
+                        f"inventory [{run(hero, 'inventory', 1.0)}] "
+                        f"look [{run(hero, 'look', 1.0)}] "
+                        f"before [{looted + opened + inside}]"))
                     self.assertIn(treasure.lower(), prize.lower(), prize)
                     items.append(treasure)
 

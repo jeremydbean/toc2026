@@ -110,12 +110,19 @@ class PsionicsSystemTests(unittest.TestCase):
         astral = function_body(self.magic2, "void do_astral_walk", "void do_telekinesis")
         shift = function_body(self.magic2, "void do_shift", "void spell_major_globe")
 
-        self.assertLess(astral.index("victim = get_char_world"), astral.index("ch->mana -= 70"))
+        # Astral walk finds its mind through travel_target() in magic.c,
+        # shared with gate and portal, and the room checks live there.
+        magic = (ROOT / "src" / "magic.c").read_text(encoding="latin-1")
+        target = function_body(magic, "CHAR_DATA *travel_target(", "\n}\n")
+        self.assertLess(astral.index("victim = travel_target"), astral.index("ch->mana -= 70"))
+        self.assertIn("TRAVEL_ASTRAL", astral)
+        self.assertIn("psionic_remote_room_blocked( ch, room, true, true )", target)
+        self.assertIn("room == ch->in_room", target)
         self.assertLess(shift.index("victim = get_char_world"), shift.index("ch->mana -= 70"))
+        self.assertIn("psionic_remote_room_blocked", shift)
+        self.assertIn("victim->in_room == ch->in_room", shift)
+        self.assertIn("ROOM2_NO_TPORT", self.magic2)
         for body in (astral, shift):
-            self.assertIn("psionic_remote_room_blocked", body)
-            self.assertIn("victim->in_room == ch->in_room", body)
-            self.assertIn("ROOM2_NO_TPORT", self.magic2)
             self.assertIn("WAIT_STATE", body)
             self.assertIn("check_improve", body)
 
