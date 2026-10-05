@@ -7146,7 +7146,9 @@ void do_force( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    snprintf( buf, sizeof(buf), "$n forces you to '%s'.", argument );
+    /* The order goes in as $t, never into the format: a $ in it was read
+       as an act() code. */
+    toc_strlcpy( buf, "$n forces you to '$t'.", sizeof(buf) );
 
     if ( !str_cmp( arg, "all" ) )
     {
@@ -7163,7 +7165,7 @@ void do_force( CHAR_DATA *ch, char *argument )
 
             if ( !IS_NPC(vch) && get_trust( vch ) < get_trust( ch ) )
             {
-                act( buf, ch, NULL, vch, TO_VICT );
+                act( buf, ch, argument, vch, TO_VICT );
                 interpret( vch, argument );
             }
         }
@@ -7184,7 +7186,7 @@ void do_force( CHAR_DATA *ch, char *argument )
             if ( !IS_NPC(vch) && get_trust( vch ) < get_trust( ch )
             &&   vch->level < LEVEL_HERO)
 	    {
-		act( buf, ch, NULL, vch, TO_VICT );
+		act( buf, ch, argument, vch, TO_VICT );
 		interpret( vch, argument );
 	    }
 	}
@@ -7205,7 +7207,7 @@ void do_force( CHAR_DATA *ch, char *argument )
             if ( !IS_NPC(vch) && get_trust( vch ) < get_trust( ch )
             &&   vch->level >= LEVEL_HERO)
 	    {
-		act( buf, ch, NULL, vch, TO_VICT );
+		act( buf, ch, argument, vch, TO_VICT );
 		interpret( vch, argument );
 	    }
 	}
@@ -7244,7 +7246,7 @@ void do_force( CHAR_DATA *ch, char *argument )
 	  return;
 	}
 
-	act( buf, ch, NULL, victim, TO_VICT );
+	act( buf, ch, argument, victim, TO_VICT );
 	interpret( victim, argument );
     }
 

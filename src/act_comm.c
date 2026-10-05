@@ -2486,8 +2486,10 @@ void do_say( CHAR_DATA *ch, char *argument )
     argument = speak_filter( ch, argument );
 
     /* Code Safety: snprintf */
-    snprintf( buf, sizeof(buf), "{%02XYou say '%s'{00\n\r", COL_SAYS, argument );
-    act( buf, ch, NULL, NULL, TO_CHAR );
+    /* What was said goes in as $t, as it does for the room: in the format
+       a typed $ was read as an act() code and the echo came back mangled. */
+    snprintf( buf, sizeof(buf), "{%02XYou say '$t'{00\n\r", COL_SAYS );
+    act( buf, ch, argument, NULL, TO_CHAR );
 
     snprintf( buf, sizeof(buf), "{%02X$n says '$t'{00", COL_SAYS );
     act_new_cstr( buf, ch, argument, NULL, TO_ROOM, POS_RESTING );
@@ -4096,7 +4098,6 @@ void nuke_pets( CHAR_DATA *ch )
 
 void do_order( CHAR_DATA *ch, char *argument )
 {
-    char buf[MAX_STRING_LENGTH];
     char arg[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
     CHAR_DATA *victim;
@@ -4158,9 +4159,7 @@ void do_order( CHAR_DATA *ch, char *argument )
 	&& ( fAll || och == victim ) )
 	{
 	    found = TRUE;
-            /* Code Safety: snprintf */
-	    snprintf( buf, sizeof(buf), "$n orders you to '%s'.", argument );
-	    act( buf, ch, NULL, och, TO_VICT );
+	    act( "$n orders you to '$t'.", ch, argument, och, TO_VICT );
 	    interpret( och, argument );
 	}
     }

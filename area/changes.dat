@@ -3,6 +3,12 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261005c 2026-10-05
+Saying something with a $ in it now shows you exactly what you said, as
+everyone else already saw it, and ordering a pet to do something with a $
+in it no longer garbles the order it hears. The WHOOSH social says
+*whooshes* to its target properly.
+
 @ 20261005a 2026-10-05
 A chest you have just unlocked and opened no longer slams shut and locks
 itself before you can take what is inside, and a locked box in your pack no

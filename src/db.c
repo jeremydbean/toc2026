@@ -4932,7 +4932,7 @@ void do_dump( CHAR_DATA *ch, char *argument )
                 char_to_room( mob, ch->in_room );
             }
             buf = stat_mob(mob);
-	    fprintf(fp, buf);
+	    fputs( buf, fp );   /* a % in a description is not a format */
             if (!found)
                 extract_char(mob, true);
         }
@@ -4989,7 +4989,7 @@ void do_dump( CHAR_DATA *ch, char *argument )
                 buf = identify_obj(obj);
                 if (!found)
                     extract_obj(obj);
-                fprintf(fp, buf);
+                fputs( buf, fp );   /* a % in a description is not a format */
             }
         /* close file */
         if (!firstone)
