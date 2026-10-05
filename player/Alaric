@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791162614
+LogO 1791162811
 Vers 4
 Prom ~
 Ignoring ~
@@ -16,14 +16,14 @@ PsiKnown torment,telekinesis,mindbar,mind leech~
 ChangesSeen ~
 Cast none
 Levl 50
-Plyd 317076
+Plyd 317273
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 StashMax 150
 Scro 22
 Room 2497
-HMV  1090 1090 3951 4004 427 499
+HMV  1090 1090 4004 4004 499 499
 NewGold 66
 NewPlat 18
 NewCopp 1
@@ -238,10 +238,10 @@ Gr 'life & undeath'
 Gr 'necromancy'
 Gr 'necro protective'
 Gr 'necro transportation'
-AffD 'sanctuary'   0  11   0   0        128          0
-AffD 'shroud'   0  47 -35  17          0          0
-AffD 'shield'   0  55 -20  17          0          0
-AffD 'armor'   0  21 -20  17          0          0
+AffD 'sanctuary'   0   8   0   0        128          0
+AffD 'shroud'   0  44 -35  17          0          0
+AffD 'shield'   0  52 -20  17          0          0
+AffD 'armor'   0  18 -20  17          0          0
 End
 
 #O
@@ -770,7 +770,7 @@ Lev  35
 Cost 7500000
 Cond 100
 Repd 0
-Val  0 0 9920 0 0
+Val  0 0 9917 0 0
 Affect -1 35 -1 -19 12 0 0
 End
 
