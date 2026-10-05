@@ -50895,3 +50895,219 @@ Mon Oct  5 22:39:02 2026 :: Log Alaric [22]: s
 Mon Oct  5 22:39:02 2026 :: Log Alaric [23]: arrived (The Great Portal) from 22
 Mon Oct  5 22:39:04 2026 :: Log Alaric [23]: en po
 Mon Oct  5 22:39:04 2026 :: Log Alaric [10000]: arrived (Before the crystal bridge.) from 23
+Mon Oct  5 22:39:15 2026 :: Log Alaric [10000]: n
+Mon Oct  5 22:39:15 2026 :: Log Alaric [10001]: arrived (A crystal bridge.) from 10000
+Mon Oct  5 22:39:15 2026 :: Log Alaric [10001]: n
+Mon Oct  5 22:39:15 2026 :: Log Alaric [10002]: arrived (Royal Island.) from 10001
+Mon Oct  5 22:39:15 2026 :: Log Alaric [10002]: open north
+Mon Oct  5 22:39:16 2026 :: Log Alaric [10002]: n
+Mon Oct  5 22:39:16 2026 :: Log Alaric [10003]: arrived (The Glitter Palace's Grand Gate.) from 10002
+Mon Oct  5 22:39:16 2026 :: Log Alaric [10003]: open north
+Mon Oct  5 22:39:16 2026 :: Log Alaric [10003]: r n 7
+Mon Oct  5 22:39:16 2026 :: Log Alaric [10004]: arrived (A large hall.) from 10003
+Mon Oct  5 22:39:16 2026 :: Log Alaric [10006]: arrived (A large hall.) from 10004
+Mon Oct  5 22:39:16 2026 :: Log Alaric [10007]: arrived (A large hall.) from 10006
+Mon Oct  5 22:39:16 2026 :: Log Alaric [10008]: arrived (A high domed intersection.) from 10007
+Mon Oct  5 22:39:16 2026 :: Log Alaric [10025]: arrived (The northern wing.) from 10008
+Mon Oct  5 22:39:16 2026 :: Log Alaric [10026]: arrived (The northern wing.) from 10025
+Mon Oct  5 22:39:16 2026 :: Log Alaric [10027]: arrived (The northern wing.) from 10026
+Mon Oct  5 22:39:16 2026 :: Log Alaric [10027]: u
+Mon Oct  5 22:39:16 2026 :: Log Alaric [10028]: arrived (The royal stairway.) from 10027
+Mon Oct  5 22:39:17 2026 :: Log Alaric [10028]: u
+Mon Oct  5 22:39:17 2026 :: Log Alaric [10029]: arrived (A grand hallway.) from 10028
+Mon Oct  5 22:39:17 2026 :: Log Alaric [10029]: r n 4
+Mon Oct  5 22:39:17 2026 :: Log Alaric [10030]: arrived (A grand hallway.) from 10029
+Mon Oct  5 22:39:17 2026 :: Log Alaric [10031]: arrived (An intersection.) from 10030
+Mon Oct  5 22:39:17 2026 :: Log Alaric [10052]: arrived (A grand hallway.) from 10031
+Mon Oct  5 22:39:17 2026 :: Log Alaric [10053]: arrived (A grand hallway.) from 10052
+Mon Oct  5 22:39:17 2026 :: Log Alaric [10053]: open north
+Mon Oct  5 22:39:17 2026 :: Log Alaric [10053]: r n 3
+Mon Oct  5 22:39:17 2026 :: Log Alaric [10054]: arrived (Throne Room.) from 10053
+Mon Oct  5 22:39:17 2026 :: Log Alaric [10059]: arrived (Center of the throne Room.) from 10054
+Mon Oct  5 22:39:17 2026 :: Log Alaric [10062]: arrived (The Throne.) from 10059
+Mon Oct  5 22:39:18 2026 :: Log Alaric [10062]: open trapdoor
+Mon Oct  5 22:39:18 2026 :: Log Alaric [10062]: u
+Mon Oct  5 22:39:18 2026 :: Log Alaric [10067]: arrived (Above the throne.) from 10062
+Mon Oct  5 22:39:18 2026 :: Log Alaric [10067]: open up
+Mon Oct  5 22:39:18 2026 :: Log Alaric [10067]: u
+Mon Oct  5 22:39:18 2026 :: Log Alaric [10068]: arrived (A dark hallway.) from 10067
+Mon Oct  5 22:39:19 2026 :: Log Alaric [10068]: open hidden
+Mon Oct  5 22:39:19 2026 :: Log Alaric [10068]: n
+Mon Oct  5 22:39:19 2026 :: Log Alaric [10069]: arrived (A dark hallway.) from 10068
+Mon Oct  5 22:39:19 2026 :: Log Alaric [10069]: open secret
+Mon Oct  5 22:39:19 2026 :: Log Alaric [10069]: w
+Mon Oct  5 22:39:19 2026 :: Log Alaric [10070]: arrived (West end in the dark hallway.) from 10069
+Mon Oct  5 22:39:20 2026 :: Log Alaric [10070]: s
+Mon Oct  5 22:39:20 2026 :: Log Alaric [10074]: arrived (A dark hallway.) from 10070
+Mon Oct  5 22:39:20 2026 :: Log Alaric [10074]: s
+Mon Oct  5 22:39:20 2026 :: Log Alaric [10075]: arrived (Dark end of the hall.) from 10074
+Mon Oct  5 22:39:20 2026 :: Log Alaric [10075]: open hidden
+Mon Oct  5 22:39:20 2026 :: Log Alaric [10075]: e
+Mon Oct  5 22:39:20 2026 :: Log Alaric [10076]: arrived (A dark hallway.) from 10075
+Mon Oct  5 22:39:21 2026 :: Log Alaric [10076]: e
+Mon Oct  5 22:39:21 2026 :: Log Alaric [10077]: arrived (A dark hallway.) from 10076
+Mon Oct  5 22:39:21 2026 :: Log Alaric [10077]: e
+Mon Oct  5 22:39:21 2026 :: Log Alaric [10078]: arrived (A dark room.) from 10077
+Mon Oct  5 22:39:21 2026 :: Log Alaric [10078]: open south
+Mon Oct  5 22:39:21 2026 :: Log Alaric [10078]: s
+Mon Oct  5 22:39:21 2026 :: Log Alaric [10080]: arrived (A dark hallway.) from 10078
+Mon Oct  5 22:39:22 2026 :: Log Alaric [10080]: open trapdoor
+Mon Oct  5 22:39:22 2026 :: Log Alaric [10080]: u
+Mon Oct  5 22:39:22 2026 :: Log Alaric [10087]: arrived (A sloping passage.) from 10080
+Mon Oct  5 22:39:22 2026 :: Log Alaric [10087]: u
+Mon Oct  5 22:39:22 2026 :: Log Alaric [10088]: arrived (A dimly lit room.) from 10087
+Mon Oct  5 22:39:22 2026 :: Log Alaric [10088]: open west
+Mon Oct  5 22:39:23 2026 :: Log Alaric [10088]: w
+Mon Oct  5 22:39:23 2026 :: Log Alaric [10089]: arrived (A dimly lit hallway.) from 10088
+Mon Oct  5 22:39:23 2026 :: Log Alaric [10089]: w
+Mon Oct  5 22:39:23 2026 :: Log Alaric [10090]: arrived (A dimly lit hallway.) from 10089
+Mon Oct  5 22:39:23 2026 :: Log Alaric [10090]: w
+Mon Oct  5 22:39:23 2026 :: Log Alaric [10091]: arrived (Dark end in the hallway.) from 10090
+Mon Oct  5 22:39:23 2026 :: Log Alaric [10091]: s
+Mon Oct  5 22:39:23 2026 :: Log Alaric [10092]: arrived (A dimly lit hallway.) from 10091
+Mon Oct  5 22:39:24 2026 :: Log Alaric [10092]: e
+Mon Oct  5 22:39:24 2026 :: Log Alaric [10093]: arrived (A dimly lit hallway.) from 10092
+Mon Oct  5 22:39:24 2026 :: Log Alaric [10093]: open tapestry
+Mon Oct  5 22:39:24 2026 :: Log Alaric [10093]: s
+Mon Oct  5 22:39:24 2026 :: Log Alaric [10095]: arrived (A brightly lit room.) from 10093
+Mon Oct  5 22:39:24 2026 :: Log Alaric [10095]: open tile
+Mon Oct  5 22:39:25 2026 :: Log Alaric [10095]: d
+Mon Oct  5 22:39:25 2026 :: Log Alaric [10097]: arrived (A brightly lit room.) from 10095
+Mon Oct  5 22:39:25 2026 :: Log Alaric [10097]: open west
+Mon Oct  5 22:39:25 2026 :: Log Alaric [10097]: w
+Mon Oct  5 22:39:25 2026 :: Log Alaric [10098]: arrived (A brightly lit corridor.) from 10097
+Mon Oct  5 22:39:25 2026 :: Log Alaric [10098]: w
+Mon Oct  5 22:39:25 2026 :: Log Alaric [10099]: arrived (A brightly lit corridor.) from 10098
+Mon Oct  5 22:39:26 2026 :: Log Alaric [10099]: w
+Mon Oct  5 22:39:26 2026 :: Log Alaric [10100]: arrived (A bend in the brightly lit corridor.) from 10099
+Mon Oct  5 22:39:26 2026 :: Log Alaric [10100]: n
+Mon Oct  5 22:39:26 2026 :: Log Alaric [10101]: arrived (A brightly lit corridor.) from 10100
+Mon Oct  5 22:39:26 2026 :: Log Alaric [10101]: n
+Mon Oct  5 22:39:26 2026 :: Log Alaric [10102]: arrived (North end of the brightly lit corridor.) from 10101
+Mon Oct  5 22:39:26 2026 :: Log Alaric [10102]: open north
+Mon Oct  5 22:39:27 2026 :: Log Alaric [10102]: n
+Mon Oct  5 22:39:27 2026 :: Log Alaric [10103]: arrived (spiral staircase.) from 10102
+Mon Oct  5 22:39:27 2026 :: Log Alaric [10103]: up
+Mon Oct  5 22:39:27 2026 :: Log Alaric [10104]: arrived (Upstairs.) from 10103
+Mon Oct  5 22:39:27 2026 :: Log Alaric [10104]: open south
+Mon Oct  5 22:39:27 2026 :: Log Alaric [10104]: r s 4
+Mon Oct  5 22:39:27 2026 :: Log Alaric [10105]: arrived (A small hallway.) from 10104
+Mon Oct  5 22:39:27 2026 :: Log Alaric [10106]: arrived (A small hallway.) from 10105
+Mon Oct  5 22:39:27 2026 :: Log Alaric [10107]: arrived (Center of the small hallway.) from 10106
+Mon Oct  5 22:39:27 2026 :: Log Alaric [10109]: arrived (A small hallway.) from 10107
+Mon Oct  5 22:39:28 2026 :: Log Alaric [10109]: open east
+Mon Oct  5 22:39:28 2026 :: Log Alaric [10109]: e
+Mon Oct  5 22:39:28 2026 :: Log Alaric [10111]: arrived (A small alcove.) from 10109
+Mon Oct  5 22:39:28 2026 :: Log Alaric [10111]: open tapestry
+Mon Oct  5 22:39:28 2026 :: Log Alaric [10111]: r e 6
+Mon Oct  5 22:39:28 2026 :: Log Alaric [10120]: arrived (A narrow hallway.) from 10111
+Mon Oct  5 22:39:28 2026 :: Log Alaric [10121]: arrived (A narrow hallway.) from 10120
+Mon Oct  5 22:39:28 2026 :: Log Alaric [10122]: arrived (A narrow hallway.) from 10121
+Mon Oct  5 22:39:28 2026 :: Log Alaric [10123]: arrived (A narrow hallway.) from 10122
+Mon Oct  5 22:39:28 2026 :: Log Alaric [10124]: arrived (A narrow hallway.) from 10123
+Mon Oct  5 22:39:28 2026 :: Log Alaric [10125]: arrived (A narrow hallway.) from 10124
+Mon Oct  5 22:39:29 2026 :: Log Alaric [10125]: (refused) (minister is around here)
+Mon Oct  5 22:39:29 2026 :: Log Alaric [10125]: open mirror
+Mon Oct  5 22:39:29 2026 :: Log Alaric [10125]: n
+Mon Oct  5 22:39:29 2026 :: Log Alaric [10127]: arrived (A cul-de-sac.) from 10125
+Mon Oct  5 22:39:29 2026 :: Log Alaric [10127]: open floor
+Mon Oct  5 22:39:30 2026 :: Log Alaric [10127]: d
+Mon Oct  5 22:39:30 2026 :: Log Alaric [10129]: arrived (Beginning of a forgotten hallway.) from 10127
+Mon Oct  5 22:39:30 2026 :: Log Alaric [10129]: n
+Mon Oct  5 22:39:30 2026 :: Log Alaric [10130]: arrived (An intersection in the forgotten hallway.) from 10129
+Mon Oct  5 22:39:30 2026 :: Log Alaric [10130]: n
+Mon Oct  5 22:39:30 2026 :: Log Alaric [10135]: arrived (A bend in the forgotten hallway.) from 10130
+Mon Oct  5 22:39:30 2026 :: Log Alaric [10135]: w
+Mon Oct  5 22:39:30 2026 :: Log Alaric [10136]: arrived (A forgotten hallway.) from 10135
+Mon Oct  5 22:39:36 2026 :: Log Alaric [10136]: w
+Mon Oct  5 22:39:36 2026 :: Log Alaric [10137]: arrived (A forgotten hallway.) from 10136
+Mon Oct  5 22:39:37 2026 :: Log Alaric [10137]: w
+Mon Oct  5 22:39:37 2026 :: Log Alaric [10138]: arrived (A forgotten hallway.) from 10137
+Mon Oct  5 22:39:37 2026 :: Log Alaric [10138]: w
+Mon Oct  5 22:39:37 2026 :: Log Alaric [10139]: arrived (A forgotten hallway.) from 10138
+Mon Oct  5 22:39:37 2026 :: Log Alaric [10139]: w
+Mon Oct  5 22:39:37 2026 :: Log Alaric [10140]: arrived (A forgotten hallway.) from 10139
+Mon Oct  5 22:39:38 2026 :: Log Alaric [10140]: n
+Mon Oct  5 22:39:38 2026 :: Log Alaric [10143]: arrived (An abandoned room.) from 10140
+Mon Oct  5 22:39:38 2026 :: Log Alaric [10143]: e
+Mon Oct  5 22:39:38 2026 :: Log Alaric [10145]: arrived (An abandoned bedroom.) from 10143
+Mon Oct  5 22:39:40 2026 :: Log Alaric [10145]: unl statue
+Mon Oct  5 22:39:41 2026 :: Log Alaric [10145]: open statue
+Mon Oct  5 22:39:42 2026 :: Log Alaric [10145]: n
+Mon Oct  5 22:39:42 2026 :: Log Alaric [10146]: arrived (A secret room.) from 10145
+Mon Oct  5 22:39:44 2026 :: Log Alaric [10146]: open trapdoor
+Mon Oct  5 22:39:44 2026 :: Log Alaric [10146]: u
+Mon Oct  5 22:39:44 2026 :: Log Alaric [10147]: arrived (A staircase.) from 10146
+Mon Oct  5 22:39:45 2026 :: Log Alaric [10147]: u
+Mon Oct  5 22:39:45 2026 :: Log Alaric [10148]: arrived (A staircase.) from 10147
+Mon Oct  5 22:39:47 2026 :: Log Alaric [10148]: on
+Mon Oct  5 22:39:48 2026 :: Log Alaric [10148]: n
+Mon Oct  5 22:39:48 2026 :: Log Alaric [10149]: arrived (A closet.) from 10148
+Mon Oct  5 22:39:49 2026 :: Log Alaric [10149]: ow
+Mon Oct  5 22:39:49 2026 :: Log Alaric [10149]: w
+Mon Oct  5 22:39:49 2026 :: Log Alaric [10150]: arrived (A bedroom.) from 10149
+Mon Oct  5 22:39:50 2026 :: Log Alaric [10150]: on
+Mon Oct  5 22:39:50 2026 :: Log Alaric [10150]: n
+Mon Oct  5 22:39:50 2026 :: Log Alaric [10151]: arrived (The Royal hallway.) from 10150
+Mon Oct  5 22:39:51 2026 :: Log Alaric [10151]: n
+Mon Oct  5 22:39:51 2026 :: Log Alaric [10170]: arrived (Before the Royal chambers.) from 10151
+Mon Oct  5 22:39:51 2026 :: Log Alaric [10170]: on
+Mon Oct  5 22:39:52 2026 :: Log Alaric [10170]: n
+Mon Oct  5 22:39:52 2026 :: Log Alaric [10171]: arrived (the Royal Chambers.) from 10170
+Mon Oct  5 22:39:54 2026 :: Log Alaric [10171]: n
+Mon Oct  5 22:39:54 2026 :: Log Alaric [10172]: arrived (the Royal Chambers.) from 10171
+Mon Oct  5 22:39:55 2026 :: Log Alaric [10172]: w
+Mon Oct  5 22:39:55 2026 :: Log Alaric [10174]: arrived (the Royal Chambers.) from 10172
+Mon Oct  5 22:39:56 2026 :: Log Alaric [10174]: on
+Mon Oct  5 22:40:02 2026 :: Log Alaric [10174]: n
+Mon Oct  5 22:40:02 2026 :: Log Alaric [10176]: arrived (Prince Augustus' bedroom.) from 10174
+Mon Oct  5 22:40:02 2026 :: Log Alaric [10176]: sh aug
+Mon Oct  5 22:40:09 2026 :: Sock.sinaddr:  178.156.185.127
+Mon Oct  5 22:40:09 2026 :: EOF encountered on read.
+Mon Oct  5 22:40:12 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:40:18 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:40:23 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:40:28 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:40:36 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:40:45 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:40:54 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:41:03 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:41:10 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:41:21 2026 :: Log Alaric [10176]: who
+Mon Oct  5 22:41:21 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:41:28 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:41:34 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:41:40 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:41:48 2026 :: Log Alaric [10176]: who
+Mon Oct  5 22:41:48 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:41:57 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:42:00 2026 :: Log Alaric [10176]: who
+Mon Oct  5 22:42:00 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:42:07 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:42:13 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:42:22 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:42:29 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:42:37 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:42:48 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:42:58 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:43:08 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:43:11 2026 :: Log Alaric [10176]: l i cor
+Mon Oct  5 22:43:13 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:43:18 2026 :: Log Alaric [10176]: get all cor
+Mon Oct  5 22:43:20 2026 :: Log Alaric [10176]: look ro
+Mon Oct  5 22:43:21 2026 :: Log Alaric [10176]: sh
+Mon Oct  5 22:43:28 2026 :: Log Alaric [10176]: flee
+Mon Oct  5 22:43:28 2026 :: Log Alaric [10174]: arrived (the Royal Chambers.) from 10176
+Mon Oct  5 22:43:30 2026 :: Log Alaric [10174]: scan
+Mon Oct  5 22:43:32 2026 :: Log Alaric [10174]: e
+Mon Oct  5 22:43:32 2026 :: Log Alaric [10172]: arrived (the Royal Chambers.) from 10174
+Mon Oct  5 22:43:33 2026 :: Log Alaric [10172]: oe
+Mon Oct  5 22:43:34 2026 :: Log Alaric [10172]: scan
+Mon Oct  5 22:43:44 2026 :: Log Alaric [10172]: cv
+Mon Oct  5 22:43:49 2026 :: Log Alaric [10172]: cw
+Mon Oct  5 22:43:53 2026 :: Log Alaric [10172]: cw
+Mon Oct  5 22:43:57 2026 :: Log Alaric [10172]: cw
+Mon Oct  5 22:44:02 2026 :: Log Alaric [10172]: cs
+Mon Oct  5 22:44:06 2026 :: Log Alaric [10172]: cs
+Mon Oct  5 22:44:10 2026 :: Log Alaric [10172]: cs
+Mon Oct  5 22:44:14 2026 :: Log Alaric [10172]: cs
