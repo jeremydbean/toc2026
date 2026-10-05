@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791160178
+LogO 1791160444
 Vers 4
 Prom ~
 Ignoring ~
@@ -16,15 +16,15 @@ PsiKnown torment,telekinesis,mindbar,mind leech~
 ChangesSeen ~
 Cast none
 Levl 50
-Plyd 314640
+Plyd 314906
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 StashMax 150
 Scro 22
 Room 2497
-HMV  1090 1090 3934 4004 198 499
-NewGold 5
+HMV  1090 1090 3934 4004 170 499
+NewGold 21
 NewPlat 18
 NewCopp 1
 NewSilv 74
@@ -36,8 +36,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 1428
-AchQuests 149
+AchKills 1430
+AchQuests 150
 AchDeaths 0
 AchExplore 5
 AchMaps 5
@@ -113,8 +113,8 @@ SesDead  0
 SesQuest 0
 RecallRoom 2497
 RecallSet  1791153330
-QuestPnts 883
-QuestStrk 38
+QuestPnts 919
+QuestStrk 39
 CasinoWon  51
 CasinoLost 304
 QuestNext 5
@@ -148,7 +148,7 @@ Pos  8
 Prac 12
 Trai 4
 Save  -12
-Alig  941
+Alig  961
 Hit   32
 Dam   47
 ACs -180 -179 -182 -13
@@ -209,7 +209,7 @@ Sk 77 'shroud'
 Sk 75 'ghostly presence'
 Sk 92 'shock sphere'
 Sk 1 'skeletal hands'
-Sk 92 'tentacles'
+Sk 93 'tentacles'
 Sk 1 'trap the soul'
 Sk 1 'vampiric touch'
 Sk 1 'neutrality field'
@@ -238,9 +238,9 @@ Gr 'life & undeath'
 Gr 'necromancy'
 Gr 'necro protective'
 Gr 'necro transportation'
-AffD 'shroud'   0  43 -35  17          0          0
-AffD 'shield'   0  50 -20  17          0          0
-AffD 'armor'   0  16 -20  17          0          0
+AffD 'shroud'   0  39 -35  17          0          0
+AffD 'shield'   0  46 -20  17          0          0
+AffD 'armor'   0  12 -20  17          0          0
 End
 
 #O
@@ -769,7 +769,7 @@ Lev  35
 Cost 7500000
 Cond 100
 Repd 0
-Val  0 0 9961 0 0
+Val  0 0 9957 0 0
 Affect -1 35 -1 -19 12 0 0
 End
 
