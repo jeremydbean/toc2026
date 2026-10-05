@@ -47234,3 +47234,78 @@ Mon Oct  5 00:03:00 2026 :: Log Alaric [2497]: af
 Mon Oct  5 00:03:39 2026 :: Log Alaric [2497]: who
 Mon Oct  5 00:04:21 2026 :: Sock.sinaddr:  3.133.226.214
 Mon Oct  5 00:04:21 2026 :: EOF encountered on read.
+Mon Oct  5 00:05:28 2026 :: Log Alaric [2497]: aq re
+Mon Oct  5 00:05:34 2026 :: Log Alaric [2497]: enter door
+Mon Oct  5 00:05:34 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Mon Oct  5 00:05:34 2026 :: Log Alaric [2401]: south
+Mon Oct  5 00:05:34 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Mon Oct  5 00:05:34 2026 :: Log Alaric [2404]: south
+Mon Oct  5 00:05:34 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 2404
+Mon Oct  5 00:05:34 2026 :: Log Alaric [2427]: south
+Mon Oct  5 00:05:34 2026 :: Log Alaric [2428]: arrived (Main Processional.) from 2427
+Mon Oct  5 00:05:35 2026 :: Log Alaric [2428]: south
+Mon Oct  5 00:05:35 2026 :: Log Alaric [2429]: arrived (Bridge of the Mermaids.) from 2428
+Mon Oct  5 00:05:35 2026 :: Log Alaric [2429]: south
+Mon Oct  5 00:05:35 2026 :: Log Alaric [2430]: arrived (Main Processional.) from 2429
+Mon Oct  5 00:05:35 2026 :: Log Alaric [2430]: south
+Mon Oct  5 00:05:35 2026 :: Log Alaric [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Mon Oct  5 00:05:35 2026 :: Log Alaric [2431]: open south
+Mon Oct  5 00:05:36 2026 :: Log Alaric [2431]: south
+Mon Oct  5 00:05:36 2026 :: Log Alaric [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Mon Oct  5 00:05:37 2026 :: Log Alaric [2432]: south
+Mon Oct  5 00:05:37 2026 :: Log Alaric [3505]: arrived (The Trail to Miden'nir) from 2432
+Mon Oct  5 00:05:38 2026 :: Log Alaric [3505]: south
+Mon Oct  5 00:05:38 2026 :: Log Alaric [3507]: arrived (A Burned Cart) from 3505
+Mon Oct  5 00:05:38 2026 :: Log Alaric [3507]: south
+Mon Oct  5 00:05:38 2026 :: Log Alaric [3510]: arrived (A Crossroads) from 3507
+Mon Oct  5 00:05:38 2026 :: Log Alaric [3510]: south
+Mon Oct  5 00:05:38 2026 :: Log Alaric [3516]: arrived (Muddy Ground) from 3510
+Mon Oct  5 00:05:38 2026 :: Log Alaric [3516]: down
+Mon Oct  5 00:05:38 2026 :: Log Alaric [19]: arrived (Soggy Cave) from 3516
+Mon Oct  5 00:05:39 2026 :: Log Alaric [19]: south
+Mon Oct  5 00:05:39 2026 :: Log Alaric [2801]: arrived (Wastedump) from 19
+Mon Oct  5 00:05:39 2026 :: Log Alaric [2801]: south
+Mon Oct  5 00:05:39 2026 :: Log Alaric [2803]: arrived (Troll's Living Room) from 2801
+Mon Oct  5 00:05:40 2026 :: Log Alaric [2803]: te
+Mon Oct  5 00:05:45 2026 :: Log Alaric [2803]: recal
+Mon Oct  5 00:05:45 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2803
+Mon Oct  5 00:05:45 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 00:05:45 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 00:05:46 2026 :: Log Alaric [2497]: aq co
+Mon Oct  5 00:05:46 2026 :: Log Alaric [2497]: quest complete: 30 gold, 27 quest points (streak bonus 151%)
+Mon Oct  5 00:05:46 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct  5 00:09:04 2026 :: Log Alaric [2497]: who
+Mon Oct  5 00:09:05 2026 :: Log Alaric [2497]: i
+Mon Oct  5 00:09:09 2026 :: Log Alaric [2497]: score
+Mon Oct  5 00:09:10 2026 :: Log Alaric [2497]: comp staf
+Mon Oct  5 00:09:25 2026 :: Log Alaric [2497]: l
+Mon Oct  5 00:09:26 2026 :: Sock.sinaddr:  5.161.75.7
+Mon Oct  5 00:09:26 2026 :: EOF encountered on read.
+Mon Oct  5 00:09:27 2026 :: Log Alaric [2497]: en do
+Mon Oct  5 00:09:27 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Mon Oct  5 00:09:28 2026 :: Log Alaric [2401]: e
+Mon Oct  5 00:09:28 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Mon Oct  5 00:09:28 2026 :: Log Alaric [2403]: e
+Mon Oct  5 00:09:28 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Mon Oct  5 00:09:29 2026 :: Log Alaric [2420]: e
+Mon Oct  5 00:09:29 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Mon Oct  5 00:09:31 2026 :: Log Alaric [2421]: e
+Mon Oct  5 00:09:31 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Mon Oct  5 00:09:31 2026 :: Log Alaric [2422]: w
+Mon Oct  5 00:09:31 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2422
+Mon Oct  5 00:09:32 2026 :: Log Alaric [2421]: gain
+Mon Oct  5 00:09:33 2026 :: Log Alaric [2421]: e
+Mon Oct  5 00:09:33 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Mon Oct  5 00:09:35 2026 :: Log Alaric [2422]: c en fi
+Mon Oct  5 00:09:40 2026 :: Log Alaric [2422]: c energy fi
+Mon Oct  5 00:09:48 2026 :: Log Alaric [2422]: e
+Mon Oct  5 00:09:48 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Mon Oct  5 00:09:49 2026 :: Log Alaric [2423]: e
+Mon Oct  5 00:09:49 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Mon Oct  5 00:09:53 2026 :: Log Alaric [2424]: c ener dr
+Mon Oct  5 00:10:18 2026 :: Log Alaric [2424]: wake
+Mon Oct  5 00:10:18 2026 :: Log Alaric [2424]: l
+Mon Oct  5 00:10:20 2026 :: Log Alaric [2424]: e
+Mon Oct  5 00:10:20 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Mon Oct  5 00:10:21 2026 :: Log Alaric [2425]: e
+Mon Oct  5 00:10:21 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
