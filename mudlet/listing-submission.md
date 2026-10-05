@@ -28,7 +28,9 @@ Suggested short description:
       command input.
 - [x] `Room.Info` provides numeric room IDs, names, areas, environments, and
       visible exits for mapper tracking.
-- [x] A full-world MMP map ships all 7,787 rooms across 92 areas, laid out
+- [x] A full-world MMP map ships 7,536 rooms across 93 areas -- every room
+      except death traps and Hyrule's nine dungeons, which the mapper learns
+      when they are walked or a dungeon map is found -- laid out
       per area with no two rooms sharing a square.
 - [x] The official package embeds a mapper and HP, mana, endurance, and
       experience gauges.

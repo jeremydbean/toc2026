@@ -58,10 +58,10 @@ Confirm:
 - Disk space can accommodate player versions, logs, image layers, and archives.
 - Dashboard health agrees with a real MUD client connection.
 
-Current checked-in parser inventory is 100 listed area files, 7,787 rooms, 2,495
-mobiles, and 3,721 objects. Native boot also creates an online-building area,
-and native/Python area totals differ because six listed help/social files have
-no `#AREA` record. Investigate unexpected deltas, not the known counting model.
+Current checked-in parser inventory is 102 listed area files, 7,787 rooms, 2,494
+mobiles, and 3,721 objects. Native and Python area totals differ because seven
+listed help/social files have no `#AREA` record: the native validator reports
+95 areas, including the `custom.are` builder workshop. Investigate unexpected deltas, not the known counting model.
 
 ### Raspberry Pi Appliance Quick Check
 

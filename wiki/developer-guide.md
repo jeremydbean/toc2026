@@ -284,17 +284,19 @@ git diff --check
 October 2026 parser baseline:
 
 ```text
-100 listed area entries
-2,495 mobiles
+102 listed area entries
+2,494 mobiles
 3,721 objects
 7,787 rooms
 0 critical, 12 warning, 1,635 information area-health findings
 ```
 
-Six `area.lst` entries (`commands.are`, `skills.are`, `spells.are`,
-`masters.are`, `toc.are`, and `social.are`) are help/social files without an
-`#AREA` record. The C server also creates one online-building area at boot, so
-native and Python area totals are expected to use different counting models.
+Seven `area.lst` entries (`commands.are`, `routelist.are`, `skills.are`,
+`spells.are`, `masters.are`, `toc.are`, and `social.are`) are help/social files
+without an `#AREA` record, so the native validator reports 95 areas against the
+Python tools' 102 entries. Online building saves into the listed `custom.are`;
+the C server creates a separate online-building area only if `area.lst` stops
+listing that file.
 
 ## Test Layout
 
