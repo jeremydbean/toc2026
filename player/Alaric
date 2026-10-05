@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791173578
+LogO 1791221311
 Vers 4
 Prom ~
 Ignoring ~
@@ -16,15 +16,15 @@ PsiKnown torment,telekinesis,mindbar,mind leech~
 ChangesSeen 20261004s:2 20261004a:2 20261004b:2 20261004c:2 20261004d:2 20261004e:2 20261004f:2 20261004g:2 20261004h:2 20261004i:2 20261004j:2 20261004k:2 20261004l:2 20261004m:2 20261004n:2 20261004o:2 20261004p:2 20261004q:2 20261004r:2 20261003a:2 20261003b:2 20261003c:2 20261003d:2 20261003e:2 20261003f:2 20261003g:2 20261003h:2 20261003i:2 20261003j:2 20261003k:2 20261003l:2 20261003m:2 20261002a:2 20261002b:2 20261002c:2 20261001a:2 20261001b:2 20261001c:2 20261001d:2 20261001e:2 20261001f:2 20261001g:2 20261001h:2 20261001i:2 20261001j:2 20261001k:2 20261001l:2 20261001m:2 20261001n:2 20261001o:2 20261001p:2 20261001q:2 20261001r:2 20261001s:2 20261001t:2 20261001u:2 20261001v:2 20261001w:2 20261001x:2 20261001y:2 20261001z:2 20260925a:2 20260925b:2 20260925c:2 20260925d:2 20260925e:2 20260925f:2 20260925g:2 20260925h:2 20260925i:2 20260925j:2 20260925k:2 20260925l:2 20260925m:2 20260925n:2 20260925o:2 20260925p:2 20260925q:2 20260925r:2 20260925s:2 20260925t:2 20260925u:2 20260925v:2 20260925w:2 20260925x:2 20260925y:2 20260925z:2 20260924a:2 20260924b:2 20260924c:2 20260924d:2 20260924e:2~
 Cast none
 Levl 50
-Plyd 327883
+Plyd 328083
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 StashMax 150
 Scro 22
 Room 2497
-HMV  1090 1090 4004 4004 499 499
-NewGold 89
+HMV  1090 1090 4004 4004 231 499
+NewGold 92
 NewPlat 19
 NewCopp 3
 NewSilv 75
@@ -36,8 +36,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 1437
-AchQuests 160
+AchKills 1438
+AchQuests 161
 AchDeaths 0
 AchExplore 5
 AchMaps 5
@@ -102,23 +102,25 @@ Achv visit-underdark 1790903709
 Achv visit-new-thalos 1790818086
 Achv visit-oz 1791127353
 Achv visit-korzath-fortress 1790899622
-LastOut  1791156919
-SesLogin 1791156794
-SesDur   125
+LastOut  1791221311
+SesLogin 1791221115
+SesDur   196
 SesExpG  0
 SesLvlG  0
-SesKill  4
+SesKill  1
 SesPK    0
 SesDead  0
-SesQuest 0
+SesQuest 1
 RecallRoom 2497
 RecallSet  1791153330
-QuestPnts 1789
-QuestStrk 49
+QuestPnts 1862
+QuestStrk 50
 CasinoWon  51
 CasinoLost 304
+QuestNext 5
 Exp  100071
 Act  4261068
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -237,6 +239,7 @@ Gr 'life & undeath'
 Gr 'necromancy'
 Gr 'necro protective'
 Gr 'necro transportation'
+AffD 'infravision'   0  98   0   0        512          0
 End
 
 #O
@@ -689,8 +692,8 @@ Lev  41
 Cost 14980000
 Cond 100
 Repd 0
-Affect -1 41 -1 -2 1 0 0
 Affect -1 41 -1 -2 4 0 0
+Affect -1 41 -1 -2 1 0 0
 End
 
 #O
@@ -765,7 +768,7 @@ Lev  35
 Cost 7500000
 Cond 100
 Repd 0
-Val  0 0 9733 0 0
+Val  0 0 9730 0 0
 Affect -1 35 -1 -19 12 0 0
 End
 
@@ -777,8 +780,8 @@ Lev  47
 Cost 20000000
 Cond 100
 Repd 0
-Affect -1 47 -1 -5 2 0 0
 Affect -1 47 -1 -5 22 0 0
+Affect -1 47 -1 -5 2 0 0
 End
 
 #O
@@ -885,8 +888,8 @@ Lev  52
 Cost 23680000
 Cond 100
 Repd 0
-Affect -1 52 -1 3 22 0 0
 Affect -1 52 -1 2 24 0 0
+Affect -1 52 -1 3 22 0 0
 End
 
 #O
@@ -932,8 +935,8 @@ Lev  51
 Cost 50000000
 Cond 99
 Repd 0
-Affect -1 51 -1 20 14 0 0
 Affect -1 51 -1 4 23 0 0
+Affect -1 51 -1 20 14 0 0
 End
 
 #O
@@ -1041,8 +1044,8 @@ Lev  52
 Cost 25600000
 Cond 100
 Repd 0
-Affect -1 52 -1 -9 14 0 0
 Affect -1 52 -1 -1 13 0 0
+Affect -1 52 -1 -9 14 0 0
 End
 
 #O
@@ -1129,9 +1132,9 @@ Lev  29
 Cost 30000000
 Cond 100
 Repd 0
-Affect -1 29 -1 -4 1 0 0
-Affect -1 29 -1 -1 1 0 0
 Affect -1 29 -1 -4 2 0 0
+Affect -1 29 -1 -1 1 0 0
+Affect -1 29 -1 -4 1 0 0
 End
 
 #O
@@ -1163,8 +1166,8 @@ Lev  50
 Cost 20000000
 Cond 91
 Repd 0
-Affect -1 50 -1 -17 14 0 0
 Affect -1 50 -1 -3 2 0 0
+Affect -1 50 -1 -17 14 0 0
 End
 
 #O
@@ -1531,10 +1534,10 @@ Lev  32
 Cost 23000000
 Cond 100
 Repd 1
-Affect -1 32 -1 -3 22 0 0
-Affect -1 32 -1 -15 13 0 0
-Affect -1 32 -1 -13 12 0 0
 Affect -1 32 -1 -1 5 0 0
+Affect -1 32 -1 -13 12 0 0
+Affect -1 32 -1 -15 13 0 0
+Affect -1 32 -1 -3 22 0 0
 End
 
 #O
@@ -1648,9 +1651,9 @@ Lev  23
 Cost 13000000
 Cond 100
 Repd 0
-Affect -1 23 -1 -9 12 0 0
-Affect -1 23 -1 -4 1 0 0
 Affect -1 23 -1 31 14 0 0
+Affect -1 23 -1 -4 1 0 0
+Affect -1 23 -1 -9 12 0 0
 End
 
 #O

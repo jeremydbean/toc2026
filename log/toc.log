@@ -49251,3 +49251,92 @@ Mon Oct  5 17:25:24 2026 :: Log Alaric [2497]: as re
 Mon Oct  5 17:25:29 2026 :: Log Alaric [2497]: as re
 Mon Oct  5 17:25:30 2026 :: Log Alaric [2497]: l
 Mon Oct  5 17:25:39 2026 :: Log Alaric [2497]: a quest request
+Mon Oct  5 17:25:52 2026 :: Log Alaric [2497]: aquest request
+Mon Oct  5 17:25:57 2026 :: Log Alaric [2497]: walk quest
+Mon Oct  5 17:26:04 2026 :: Log Alaric [2497]: walk to quest
+Mon Oct  5 17:26:09 2026 :: Log Alaric [2497]: walkto quest
+Mon Oct  5 17:26:18 2026 :: Log Alaric [2497]: walk fire newts
+Mon Oct  5 17:26:18 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Mon Oct  5 17:26:19 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Mon Oct  5 17:26:20 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Mon Oct  5 17:26:21 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Mon Oct  5 17:26:21 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Mon Oct  5 17:26:22 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Mon Oct  5 17:26:23 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Mon Oct  5 17:26:24 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Mon Oct  5 17:26:24 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Mon Oct  5 17:26:25 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Mon Oct  5 17:26:26 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Mon Oct  5 17:26:27 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Mon Oct  5 17:26:27 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 3502
+Mon Oct  5 17:26:28 2026 :: Log Alaric [35]: arrived (Lava Forest) from 5261
+Mon Oct  5 17:26:29 2026 :: Log Alaric [36]: arrived (The Lava Tube) from 35
+Mon Oct  5 17:26:30 2026 :: Log Alaric [37]: arrived (Lava Field) from 36
+Mon Oct  5 17:26:30 2026 :: Log Alaric [2900]: arrived (Obsidian hills) from 37
+Mon Oct  5 17:26:45 2026 :: Log Alaric [2900]: ex
+Mon Oct  5 17:26:48 2026 :: Log Alaric [2900]: c infra
+Mon Oct  5 17:26:54 2026 :: Log Alaric [2900]: ex
+Mon Oct  5 17:27:06 2026 :: Log Alaric [2900]: walk view newts
+Mon Oct  5 17:27:13 2026 :: Log Alaric [2900]: walk fire newts
+Mon Oct  5 17:27:15 2026 :: Log Alaric [2900]: look
+Mon Oct  5 17:27:20 2026 :: Log Alaric [2900]: ex
+Mon Oct  5 17:27:21 2026 :: Log Alaric [2900]: s
+Mon Oct  5 17:27:21 2026 :: Log Alaric [2901]: arrived (Obsidian hills) from 2900
+Mon Oct  5 17:27:21 2026 :: Log Alaric [2901]: ex
+Mon Oct  5 17:27:22 2026 :: Log Alaric [2901]: s
+Mon Oct  5 17:27:22 2026 :: Log Alaric [2902]: arrived (Obsidian hills) from 2901
+Mon Oct  5 17:27:23 2026 :: Log Alaric [2902]: ex
+Mon Oct  5 17:27:23 2026 :: Log Alaric [2902]: e
+Mon Oct  5 17:27:23 2026 :: Log Alaric [2903]: arrived (Mountain side) from 2902
+Mon Oct  5 17:27:24 2026 :: Log Alaric [2903]: ex
+Mon Oct  5 17:27:25 2026 :: Log Alaric [2903]: w
+Mon Oct  5 17:27:25 2026 :: Log Alaric [2902]: arrived (Obsidian hills) from 2903
+Mon Oct  5 17:27:27 2026 :: Log Alaric [2902]: n
+Mon Oct  5 17:27:27 2026 :: Log Alaric [2901]: arrived (Obsidian hills) from 2902
+Mon Oct  5 17:27:28 2026 :: Log Alaric [2901]: n
+Mon Oct  5 17:27:28 2026 :: Log Alaric [2900]: arrived (Obsidian hills) from 2901
+Mon Oct  5 17:27:29 2026 :: Log Alaric [2900]: nw
+Mon Oct  5 17:27:29 2026 :: Log Alaric [37]: arrived (Lava Field) from 2900
+Mon Oct  5 17:27:31 2026 :: Log Alaric [37]: w
+Mon Oct  5 17:27:31 2026 :: Log Alaric [36]: arrived (The Lava Tube) from 37
+Mon Oct  5 17:27:31 2026 :: Log Alaric [36]: ex
+Mon Oct  5 17:27:38 2026 :: Log Alaric [36]: where newt
+Mon Oct  5 17:27:39 2026 :: Log Alaric [36]: l
+Mon Oct  5 17:27:43 2026 :: Log Alaric [36]: walk fire newts
+Mon Oct  5 17:27:43 2026 :: Log Alaric [37]: arrived (Lava Field) from 36
+Mon Oct  5 17:27:43 2026 :: Log Alaric [2900]: arrived (Obsidian hills) from 37
+Mon Oct  5 17:27:50 2026 :: Log Alaric [2900]: where new
+Mon Oct  5 17:27:52 2026 :: Log Alaric [2900]: s
+Mon Oct  5 17:27:52 2026 :: Log Alaric [2901]: arrived (Obsidian hills) from 2900
+Mon Oct  5 17:27:54 2026 :: Log Alaric [2901]: where newt
+Mon Oct  5 17:27:55 2026 :: Log Alaric [2901]: s
+Mon Oct  5 17:27:55 2026 :: Log Alaric [2902]: arrived (Obsidian hills) from 2901
+Mon Oct  5 17:27:56 2026 :: Log Alaric [2902]: e
+Mon Oct  5 17:27:56 2026 :: Log Alaric [2903]: arrived (Mountain side) from 2902
+Mon Oct  5 17:27:57 2026 :: Log Alaric [2903]: s
+Mon Oct  5 17:27:57 2026 :: Log Alaric [2904]: arrived (Mountain side) from 2903
+Mon Oct  5 17:27:59 2026 :: Log Alaric [2904]: s
+Mon Oct  5 17:27:59 2026 :: Log Alaric [2905]: arrived (Mountain top) from 2904
+Mon Oct  5 17:28:01 2026 :: Log Alaric [2905]: s
+Mon Oct  5 17:28:01 2026 :: Log Alaric [2906]: arrived (Entrance to the mountain) from 2905
+Mon Oct  5 17:28:03 2026 :: Log Alaric [2906]: scan
+Mon Oct  5 17:28:04 2026 :: Log Alaric [2906]: d
+Mon Oct  5 17:28:04 2026 :: Log Alaric [2910]: arrived (Inside the mountain) from 2906
+Mon Oct  5 17:28:05 2026 :: Log Alaric [2910]: scan
+Mon Oct  5 17:28:06 2026 :: Log Alaric [2910]: e
+Mon Oct  5 17:28:06 2026 :: Log Alaric [2911]: arrived (Guard room) from 2910
+Mon Oct  5 17:28:09 2026 :: Log Alaric [2911]: kill fire
+Mon Oct  5 17:28:13 2026 :: Log Alaric [2911]: recal
+Mon Oct  5 17:28:13 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2911
+Mon Oct  5 17:28:14 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 17:28:14 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 17:28:15 2026 :: Log Alaric [2497]: aquest comp
+Mon Oct  5 17:28:15 2026 :: Log Alaric [2497]: quest complete: 3 gold, 73 quest points (streak bonus 183%)
+Mon Oct  5 17:28:19 2026 :: Log Alaric [2497]: aquest ga no
+Mon Oct  5 17:28:22 2026 :: Log Alaric [2497]: score
+Mon Oct  5 17:28:31 2026 :: Log Alaric [2497]: quit
+Mon Oct  5 17:28:31 2026 :: Alaric has quit.
+Mon Oct  5 17:28:31 2026 :: [QUIT] Player rejoined the real world.
+Mon Oct  5 17:28:37 2026 :: EOF encountered on read.
+Mon Oct  5 17:30:16 2026 :: Sock.sinaddr:  52.87.72.16
+Mon Oct  5 17:30:16 2026 :: EOF encountered on read.
