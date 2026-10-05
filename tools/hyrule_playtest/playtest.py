@@ -15,13 +15,14 @@ fight is in the dungeon's treasure room (dark, empty), from full health:
 Ganon is finished with the Silver Arrow when he collapses, as players must.
 Usage (repository root, WSL):
   python3 tools/hyrule_playtest/playtest.py <dungeon 1-9> <gear_plan.json> <out.json> [guardians]
-"guardians" skips the ordinary fights. world_controls.json beside this file, if
+"guardians" skips the ordinary fights; "enemies" skips the guardian. world_controls.json beside this file, if
 present, lists world mobiles to fight as a control: {"<dungeon>": [{"vnum", "keyword"}]}.
 Each dungeon boots its own server, so the nine can run in parallel; see wiki/hyrule-area.md.
 """
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import time
@@ -55,6 +56,7 @@ boss_vnum = gen.BOSS_MOBS[LEVEL]
 boss_room = dungeon["boss_vnum"]
 arena = 29390 + LEVEL
 GUARDIANS_ONLY = len(sys.argv) > 4 and sys.argv[4] == "guardians"
+ENEMIES_ONLY = len(sys.argv) > 4 and sys.argv[4] == "enemies"
 BOW, QUIVER = 30222, 30543
 L = PLAN["level"]
 hp_max = int(8 + 10 * L + 0.3 * L * L)
@@ -230,16 +232,25 @@ with LiveMud(extra_env={"TOC_NO_BOOT_HERMIE": None}) as mud:
         run(god, "purge", 1.0)
         run(god, "goto 4207", 0.8)
 
-        for c in ([] if GUARDIANS_ONLY else CONTROLS):
+        # PLAYTEST_ONLY=<vnum,vnum>: just those Hyrule kinds, no controls.
+        only = [int(x) for x in os.environ.get("PLAYTEST_ONLY", "").split(",") if x.strip()]
+        # PLAYTEST_CONTROL=<vnum>: just that world control. A death skews
+        # every fight after it in the same run, so a clean comparison gives
+        # each fight a fresh server (tools/hyrule_playtest/one_each.sh).
+        control = os.environ.get("PLAYTEST_CONTROL", "").strip()
+        if control:
+            only = only or [-1]
+        for c in ([c for c in CONTROLS if str(c["vnum"]) == control] if control
+                  else [] if GUARDIANS_ONLY or only else CONTROLS):
             results["fights"].append(one_fight(hero, god, c["vnum"], "world", c["keyword"]))
         kinds = sorted({r.arg1 for resets in parser.resets.values() for r in resets
                         if r.command == "M"
                         and dungeon["first_room_vnum"] <= r.arg3 <= dungeon["last_room_vnum"]
                         and gen.TIER_VNUM_FIRST <= r.arg1 <= gen.TIER_VNUM_LAST})
-        for vnum in ([] if GUARDIANS_ONLY else kinds):
+        for vnum in ([] if GUARDIANS_ONLY else [v for v in (only or kinds) if v > 0]):
             results["fights"].append(one_fight(hero, god, vnum, "hyrule", mob_keyword(vnum)))
 
-        for label in ("unbuffed", "buffed", "buffed"):
+        for label in (() if ENEMIES_ONLY else ("unbuffed", "buffed", "buffed")):
             run(god, f"goto {boss_room}", 1.0)
             for _ in range(4):
                 if "aren't here" in run(god, f"slay {mob_keyword(boss_vnum)}", 0.8):

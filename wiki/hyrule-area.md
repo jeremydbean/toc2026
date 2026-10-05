@@ -303,7 +303,36 @@ in. Within a band a kind's level is set by its rank -- keese and gels at the
 bottom, darknuts, lynels, and lanmolas at the top -- and its hit points and
 damage by its kind against an ordinary mobile of that level elsewhere in the
 world (`HIT_POINT_CURVE`, `DAMAGE_CURVE`, read off the other area files). All
-generated enemies are sentinel and aggressive: an NES enemy holds its screen.
+generated enemies are sentinel: an NES enemy holds its screen. None is
+aggressive (`calm_mobiles()`, owner 2026-10-04).
+
+**The bands were checked by play** (2026-10-04). The playtest warrior (see
+"Guardian Fights") at the top of each band fought every enemy kind in its
+dungeon and six spawned world mobiles of the band's levels -- the third and
+two-thirds marks by damage at its bottom, middle and top level
+(`tools/hyrule_playtest/world_controls.json`) -- **each fight in a fresh
+server**. That last part matters: in one long run, a death skews every
+fight after it, and the first pass read band 9's keese as a killer when
+alone it cost five percent of the warrior's health. Run one fight per
+server, as `PLAYTEST_ONLY=<vnum>` or `PLAYTEST_CONTROL=<vnum>` with the
+`enemies` argument. Wins out of fights that finished:
+
+| Band | Hyrule | World | Result |
+| --- | --- | --- | --- |
+| 6 (33-40) | 5 of 7 | 5 of 5 | hit points 1.1 -> 0.95 |
+| 7 (40-46) | 6 of 10 | 1 of 6 | hit points 0.74 -> 0.85 |
+| 8 (46-52) | 2 of 6 | 2 of 6 | unchanged |
+| 9 (53-59) | 3 of 11 | 1 of 5 | unchanged |
+
+The wizzrobes were the one kind that won every time, at band 6 and band 9
+alike: `spec_cast_mage` casts acid blast up there on top of their blows.
+They are glass cannons now, as on the NES -- melee 0.8 and 0.9 of an
+ordinary mobile's, hit points 0.65 and 0.6 -- and after the change the
+warrior won three of four at band 6 and one of four at band 9, the
+world's own rate at that level. Bands 1 to 5 were already on par in the
+earlier pass. From about level 40 the
+world itself is more than a median warrior wins alone; Hyrule matches it,
+it does not soften it.
 
 The code is the offset of the single catalog record the kind used to be
 (`30215` -> 15 for the like like), and `hyrule_enemy_kind()` in `src/fight.c`
@@ -577,7 +606,14 @@ Death Mountain's orbiting eye, lashes everyone fighting it each pulse
 | 6 | Gohma | 43 | 9,000 | 100 | the eye 119-168 | lost | won 1 of 2, the win nearly spent |
 | 7 | ancient Aquamentus | 49 | 9,500 | 116 | 3 fireballs 46-63 | lost | won 2 of 2, one at 1% |
 | 8 | ashen Gleeok | 55 | 10,500 | 133 | 4 heads 47-66 | lost | won 2 of 2, one nearly dead |
-| 9 | Ganon | 64 | 36,000 | 200 | 2 fireballs 300-420 | lost | lost (a group fight) |
+| 9 | Ganon | 64 | 36,000 | 200 | 2 fireballs 300-420 | lost | lost; a buffed pair won 2 of 2, a trio 2 of 2 |
+
+Ganon's group fights were played with `tools/hyrule_playtest/ganon_group.py`:
+the same warrior, two or three of them, each buffed by Hermie, the leader
+carrying the Silver Arrow. Nobody fell in any of the four. A pair is
+therefore enough, and TITANIC is most of why: it multiplies maximum hit
+points by six, so a buffed group carries several times the health the
+fireballs were sized against.
 
 Hit points climb guardian by guardian to Ganon's, and no guardian's blow
 reaches his; `tests/test_hyrule_progression.py` holds both. Four of the

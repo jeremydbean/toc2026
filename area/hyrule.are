@@ -2066,7 +2066,7 @@ takes a long, hard fight to bring it down.
 ~
 fish~
 AB 0 0 S
-40 20 10d10+951 1d1+0 3d2+30 6
+40 20 10d10+1101 1d1+0 3d2+30 6
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2231,7 +2231,7 @@ a sapling, though a shield still stops them.
 ~
 pig~
 AB 0 0 S
-42 21 10d10+1410 1d1+0 3d25+59 2
+42 21 10d10+1628 1d1+0 3d25+59 2
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2325,7 +2325,7 @@ makes this one grunt.
 ~
 pig~
 AB 0 0 S
-37 18 9d10+1835 1d1+0 3d22+52 2
+37 18 9d10+1578 1d1+0 3d22+52 2
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2344,7 +2344,7 @@ pack has fled.
 ~
 pig~
 AB 0 0 S
-44 22 11d10+1863 1d1+0 3d32+73 2
+44 22 11d10+2149 1d1+0 3d32+73 2
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2523,7 +2523,7 @@ cut it down each time it rises.
 ~
 insect~
 AB 0 0 S
-43 21 10d10+1671 1d1+0 3d13+32 22
+43 21 10d10+1927 1d1+0 3d13+32 22
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2580,7 +2580,7 @@ straight line of rock, and only heavy blows get through its hide.
 ~
 horse~
 AB 0 0 S
-40 20 10d10+2750 1d1+0 3d29+67 3
+40 20 10d10+2368 1d1+0 3d29+67 3
 0 0 0 0
 K 0 0 0
 8 8 0 0
@@ -2713,7 +2713,7 @@ fight.
 ~
 bat~
 AB 0 0 S
-33 16 8d10+597 1d1+0 3d2+24 10
+33 16 8d10+510 1d1+0 3d2+24 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -2732,7 +2732,7 @@ pinned down.
 ~
 bat~
 AB 0 0 S
-40 20 10d10+574 1d1+0 3d2+30 10
+40 20 10d10+668 1d1+0 3d2+30 10
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -2808,7 +2808,7 @@ strong blows before it clatters apart. Some carry keys.
 ~
 undead~
 AB 0 0 S
-42 21 10d10+1410 1d1+0 3d25+59 3
+42 21 10d10+1628 1d1+0 3d25+59 3
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2865,7 +2865,7 @@ it bursts across the walls.
 ~
 unique~
 AB 0 0 S
-35 17 8d10+1441 1d1+0 3d17+39 14
+35 17 8d10+1238 1d1+0 3d17+39 14
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2960,7 +2960,7 @@ constantly and snaps at anything that smells of meat.
 ~
 goblin~
 AB 0 0 S
-42 21 10d10+1410 1d1+0 3d25+59 7
+42 21 10d10+1628 1d1+0 3d25+59 7
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -2998,7 +2998,7 @@ Fight it from a distance, or hit hard and step back.
 ~
 unique~
 AB 0 0 S
-37 18 9d10+1917 1d1+0 3d15+38 14
+37 18 9d10+1649 1d1+0 3d15+38 14
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3074,7 +3074,7 @@ that is the moment a blade can finally bite.
 ~
 lizard~
 AB 0 0 S
-46 23 11d10+3281 1d1+0 4d25+79 10
+46 23 11d10+3777 1d1+0 4d25+79 10
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3169,7 +3169,7 @@ it as it slides past, before it fades into the stone.
 ~
 human~
 AB 0 0 S
-39 19 9d10+1744 1d1+0 3d28+65 19
+39 19 9d10+880 1d1+0 3d19+45 19
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3188,7 +3188,7 @@ it crosses open floor, because no wall stops it.
 ~
 human~
 AB 0 0 S
-58 29 14d10+4093 1d1+0 4d35+109 19
+58 29 14d10+2425 1d1+0 4d24+76 19
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3338,7 +3338,7 @@ entrance. Strike its fingers, and keep moving.
 ~
 undead~
 AB 0 0 S
-43 21 10d10+1514 1d1+0 3d24+56 8
+43 21 10d10+1747 1d1+0 3d24+56 8
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3375,7 +3375,7 @@ arrow, with a bite that can drop a careless warrior.
 ~
 snake~
 AB 0 0 S
-42 21 10d10+1117 1d1+0 3d23+53 10
+42 21 10d10+1291 1d1+0 3d23+53 10
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3432,7 +3432,7 @@ passages that is often worse than a wound.
 ~
 undead~
 AB 0 0 S
-35 17 8d10+847 1d1+0 3d12+31 29
+35 17 8d10+726 1d1+0 3d12+31 29
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -3451,7 +3451,7 @@ numbness lasts long enough to matter.
 ~
 undead~
 AB 0 0 S
-42 21 10d10+824 1d1+0 3d18+41 29
+42 21 10d10+955 1d1+0 3d18+41 29
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -3527,7 +3527,7 @@ hunted down in turn.
 ~
 bat~
 AB 0 0 S
-37 18 9d10+1590 1d1+0 3d7+27 10
+37 18 9d10+1366 1d1+0 3d7+27 10
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3603,7 +3603,7 @@ shrivel and split into small, quick urchins that can be killed.
 ~
 unique~
 AB 0 0 S
-46 23 11d10+3281 1d1+0 4d25+79 8
+46 23 11d10+3777 1d1+0 4d25+79 8
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3622,7 +3622,7 @@ strike when it appears.
 ~
 human~
 AB 0 0 S
-38 19 9d10+1495 1d1+0 3d25+58 19
+38 19 9d10+914 1d1+0 3d16+39 19
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3641,7 +3641,7 @@ breath, so a swift and steady hand is needed.
 ~
 human~
 AB 0 0 S
-57 28 14d10+3460 1d1+0 4d33+100 19
+57 28 14d10+2478 1d1+0 4d21+67 19
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3679,7 +3679,7 @@ its kind is said to refuse to budge until someone feeds it.
 ~
 goblin~
 AB 0 0 S
-44 22 11d10+1863 1d1+0 3d32+73 7
+44 22 11d10+2149 1d1+0 3d32+73 7
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3846,7 +3846,7 @@ scorch a shield. Strike when it rises, and keep moving between its shots.
 ~
 fish~
 AB 0 0 S
-43 21 10d10+1357 1d1+0 3d14+35 6
+43 21 10d10+1567 1d1+0 3d14+35 6
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3939,7 +3939,7 @@ ready and strike while it turns to charge again.
 ~
 horse~
 AB 0 0 S
-39 19 9d10+2281 1d1+0 3d26+60 3
+39 19 9d10+1964 1d1+0 3d26+60 3
 0 0 0 0
 K 0 0 0
 8 8 0 0
@@ -3976,7 +3976,7 @@ strike down the first ghini and the lesser ones fade with it.
 ~
 undead~
 AB 0 0 S
-38 19 9d10+2010 1d1+0 3d21+48 5
+38 19 9d10+1729 1d1+0 3d21+48 5
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -4069,7 +4069,7 @@ last, and then it is as vulnerable as any flower.
 ~
 plant~
 AB 0 0 S
-36 18 9d10+1356 1d1+0 3d17+41 1
+36 18 9d10+1165 1d1+0 3d17+41 1
 0 0 0 0
 F 0 0 0
 8 8 0 0
@@ -4143,7 +4143,7 @@ and it takes a long, hard fight to bring it down.
 ~
 modron~
 AB 0 0 S
-39 19 9d10+2461 1d1+0 3d26+60 8
+39 19 9d10+2118 1d1+0 3d26+60 8
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -4162,7 +4162,7 @@ break it.
 ~
 modron~
 AB 0 0 S
-45 22 11d10+2426 1d1+0 4d27+84 8
+45 22 11d10+2796 1d1+0 4d27+84 8
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -4257,7 +4257,7 @@ only be outrun or waited out.
 ~
 modron~
 AB 0 0 S
-36 18 9d10+1200 1d1+0 3d23+54 1
+36 18 9d10+1030 1d1+0 3d23+54 1
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -4276,7 +4276,7 @@ indestructible, and wise travellers do not try.
 ~
 modron~
 AB 0 0 S
-43 21 10d10+1200 1d1+0 3d33+75 1
+43 21 10d10+1387 1d1+0 3d33+75 1
 0 0 0 0
 0 0 0 0
 8 8 0 0

@@ -296,12 +296,17 @@ ENEMY_TYPES: dict[str, EnemyType] = {
     "blue_darknut": EnemyType(
         115, "human", "darknut blue knight", "a blue darknut",
         1.0, 1.5, 1.2, 3, off="K"),
+    # Wizzrobes cast (spec_cast_mage) on top of their blows -- acid blast,
+    # high up -- and were the fastest killers in bands 6 and 9 by play, every
+    # time (2026-10-04). Their melee sits below an ordinary mobile's, and
+    # they are glass cannons as on the NES: few hit points, so the fight is
+    # over before the spells win it.
     "red_wizzrobe": EnemyType(
         110, "human", "wizzrobe red wizard", "a red wizzrobe",
-        0.7, 0.9, 1.2, 19, special="spec_cast_mage"),
+        0.7, 0.65, 0.8, 19, special="spec_cast_mage"),
     "blue_wizzrobe": EnemyType(
         21, "human", "wizzrobe blue wizard", "a blue wizzrobe",
-        0.9, 1.0, 1.3, 19, special="spec_cast_mage"),
+        0.9, 0.6, 0.9, 19, special="spec_cast_mage"),
     "red_lanmola": EnemyType(
         117, "centipede", "lanmola red centipede", "a red lanmola",
         0.8, 1.3, 1.1, 10, off="H", size="L"),
@@ -372,8 +377,16 @@ OFF_FAST_LETTER = "H"
 # heavy. Measured with the dashboard parser against the world's spawned
 # mobiles at each band's middle level (hit points, damage a round), so that
 # a dungeon's enemies average out on par with the world's (2026-10-04).
-BAND_HP_CALIBRATION = {1: 1.5, 2: 1.4, 3: 1.18, 4: 1.16, 5: 0.82, 6: 1.1,
-                       7: 0.74, 8: 0.9, 9: 0.75}
+#
+# Bands 6 and 7 were then corrected by play (2026-10-04, late): the median
+# warrior at the top of each band fought every enemy kind and six world
+# mobiles of the band's levels, each fight in a fresh server (a death skews
+# every fight after it in the same run). Band 6 lost two Hyrule fights of
+# seven and no world one, so its enemies came down from 1.1; band 7 won six
+# of ten in Hyrule against one of six in the world, so they went up from
+# 0.74. Bands 8 and 9 matched the world as they were.
+BAND_HP_CALIBRATION = {1: 1.5, 2: 1.4, 3: 1.18, 4: 1.16, 5: 0.82, 6: 0.95,
+                       7: 0.85, 8: 0.9, 9: 0.75}
 BAND_DAMAGE_CALIBRATION = {1: 1.2, 4: 1.08, 8: 1.08, 9: 0.94}
 
 

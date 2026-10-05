@@ -3,6 +3,13 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261004t 2026-10-04
+Hyrule's dungeon enemies were fought one by one against the world's own
+mobiles of the same levels. Levels 1 to 5, 8 and 9 already matched the
+world. Level 6's enemies ran a little tough and have fewer hit points now;
+Level 7's ran soft and have more. Ganon was played against groups: a pair
+buffed by Hermie can beat him, a lone character still cannot.
+
 @ 20261004s 2026-10-04
 Hyrule's guardians were played through in the real game and retuned. Each
 is a hard fight for its dungeon's levels: an ordinary character at the top

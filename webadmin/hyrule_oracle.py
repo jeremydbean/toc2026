@@ -98,7 +98,8 @@ an ancient Aquamentus, an ashen Gleeok, Ganon. Guardians are hard: an
 ordinary character at the top of the band loses alone. With Hermie's buffs
 first (she stands at the Temple altar after a reboot: BUFF EMPOWER, BUFF
 TITANIC, BUFF DEFENSE, BUFF COMBAT) one can win alone, though it is close;
-a group does better. Ganon is a fight for a buffed group. Each
+a group does better. Ganon is a fight for a buffed group: two players
+buffed by Hermie can beat him, one alone cannot. Each
 guardian carries its weapon and Heart Guard and drops three more pieces from
 a table with one for every other armour slot, each the best in the game for
 its band, for fighters and casters alike. Nothing in Hyrule attacks first;

@@ -1,0 +1,506 @@
+{
+ "1": [
+  {
+   "vnum": 12002,
+   "name": "a Factory Worker",
+   "level": 2,
+   "hp": 24,
+   "dpr": 4.0,
+   "area": "froboz.are",
+   "keyword": "worker"
+  },
+  {
+   "vnum": 3711,
+   "name": "the boar",
+   "level": 3,
+   "hp": 36,
+   "dpr": 5.5,
+   "area": "school.are",
+   "keyword": "boar"
+  },
+  {
+   "vnum": 3714,
+   "name": "the beast",
+   "level": 5,
+   "hp": 70,
+   "dpr": 7.3,
+   "area": "school.are",
+   "keyword": "beast"
+  },
+  {
+   "vnum": 1511,
+   "name": "a giant rat",
+   "level": 6,
+   "hp": 78,
+   "dpr": 8.5,
+   "area": "gnome.are",
+   "keyword": "rat"
+  },
+  {
+   "vnum": 1315,
+   "name": "a young apprentice magic user",
+   "level": 7,
+   "hp": 105,
+   "dpr": 11.0,
+   "area": "htower.are",
+   "keyword": "apprentice"
+  },
+  {
+   "vnum": 1507,
+   "name": "a small troll",
+   "level": 8,
+   "hp": 110,
+   "dpr": 12.0,
+   "area": "gnome.are",
+   "keyword": "troll"
+  }
+ ],
+ "2": [
+  {
+   "vnum": 1318,
+   "name": "A young apprentice",
+   "level": 7,
+   "hp": 105,
+   "dpr": 11.0,
+   "area": "htower.are",
+   "keyword": "apprentice"
+  },
+  {
+   "vnum": 7614,
+   "name": "the bard",
+   "level": 9,
+   "hp": 117,
+   "dpr": 12.4,
+   "area": "ultima.are",
+   "keyword": "bard"
+  },
+  {
+   "vnum": 925,
+   "name": "A Cook",
+   "level": 10,
+   "hp": 129,
+   "dpr": 14.4,
+   "area": "olympus.are",
+   "keyword": "cook"
+  },
+  {
+   "vnum": 4155,
+   "name": "the thief",
+   "level": 12,
+   "hp": 162,
+   "dpr": 17.2,
+   "area": "moria.are",
+   "keyword": "thief"
+  },
+  {
+   "vnum": 7629,
+   "name": "the citizen of yew",
+   "level": 13,
+   "hp": 181,
+   "dpr": 19.1,
+   "area": "ultima.are",
+   "keyword": "citizen"
+  },
+  {
+   "vnum": 7041,
+   "name": "the sea hag",
+   "level": 14,
+   "hp": 245,
+   "dpr": 21.4,
+   "area": "sewer.are",
+   "keyword": "sea"
+  }
+ ],
+ "3": [
+  {
+   "vnum": 1702,
+   "name": "a trapper",
+   "level": 13,
+   "hp": 201,
+   "dpr": 19.1,
+   "area": "wyvern.are",
+   "keyword": "trapper"
+  },
+  {
+   "vnum": 5701,
+   "name": "the ogre",
+   "level": 15,
+   "hp": 223,
+   "dpr": 23.8,
+   "area": "mid_ruin.are",
+   "keyword": "ogre"
+  },
+  {
+   "vnum": 19109,
+   "name": "A healer",
+   "level": 18,
+   "hp": 342,
+   "dpr": 21.0,
+   "area": "rome.are",
+   "keyword": "healer"
+  },
+  {
+   "vnum": 11014,
+   "name": "the ochre jello",
+   "level": 16,
+   "hp": 203,
+   "dpr": 28.4,
+   "area": "ancala.are",
+   "keyword": "jello"
+  },
+  {
+   "vnum": 28013,
+   "name": "A gynosphinx",
+   "level": 19,
+   "hp": 380,
+   "dpr": 25.0,
+   "area": "pyramid.are",
+   "keyword": "gynosphinx"
+  },
+  {
+   "vnum": 18006,
+   "name": "an ice viper",
+   "level": 20,
+   "hp": 328,
+   "dpr": 33.4,
+   "area": "icekeep.are",
+   "keyword": "viper"
+  }
+ ],
+ "4": [
+  {
+   "vnum": 1802,
+   "name": "the gnome guard",
+   "level": 20,
+   "hp": 461,
+   "dpr": 25.0,
+   "area": "haven.are",
+   "keyword": "gnome"
+  },
+  {
+   "vnum": 25200,
+   "name": "a drow guard",
+   "level": 20,
+   "hp": 348,
+   "dpr": 34.8,
+   "area": "mushroom.are",
+   "keyword": "guard"
+  },
+  {
+   "vnum": 13221,
+   "name": "Janni",
+   "level": 24,
+   "hp": 528,
+   "dpr": 29.0,
+   "area": "solace.are",
+   "keyword": "Janni"
+  },
+  {
+   "vnum": 1338,
+   "name": "the master charmer",
+   "level": 23,
+   "hp": 483,
+   "dpr": 41.9,
+   "area": "htower.are",
+   "keyword": "master"
+  },
+  {
+   "vnum": 9330,
+   "name": "Cassiopeia the Queen",
+   "level": 26,
+   "hp": 720,
+   "dpr": 35.0,
+   "area": "galaxy.are",
+   "keyword": "cassiopeia"
+  },
+  {
+   "vnum": 9104,
+   "name": "the mysterious effreeti",
+   "level": 27,
+   "hp": 644,
+   "dpr": 52.8,
+   "area": "dylan.are",
+   "keyword": "mysterious"
+  }
+ ],
+ "5": [
+  {
+   "vnum": 9330,
+   "name": "Cassiopeia the Queen",
+   "level": 26,
+   "hp": 720,
+   "dpr": 35.0,
+   "area": "galaxy.are",
+   "keyword": "cassiopeia"
+  },
+  {
+   "vnum": 6502,
+   "name": "the wraith",
+   "level": 28,
+   "hp": 644,
+   "dpr": 56.1,
+   "area": "dwarves.are",
+   "keyword": "wraith"
+  },
+  {
+   "vnum": 9581,
+   "name": "the high priest",
+   "level": 30,
+   "hp": 995,
+   "dpr": 40.0,
+   "area": "newthalo.are",
+   "keyword": "high"
+  },
+  {
+   "vnum": 8751,
+   "name": "a goblin",
+   "level": 30,
+   "hp": 905,
+   "dpr": 69.0,
+   "area": "kerofk.are",
+   "keyword": "goblin"
+  },
+  {
+   "vnum": 8725,
+   "name": "the Black Marketeer",
+   "level": 33,
+   "hp": 982,
+   "dpr": 62.2,
+   "area": "kerofk.are",
+   "keyword": "black"
+  },
+  {
+   "vnum": 24521,
+   "name": "The Sultan of Fire",
+   "level": 32,
+   "hp": 955,
+   "dpr": 78.0,
+   "area": "abyss.are",
+   "keyword": "fire"
+  }
+ ],
+ "6": [
+  {
+   "vnum": 20122,
+   "name": "The Black thing",
+   "level": 32,
+   "hp": 1055,
+   "dpr": 58.5,
+   "area": "prison.are",
+   "keyword": "Thing"
+  },
+  {
+   "vnum": 7650,
+   "name": "the ghost",
+   "level": 32,
+   "hp": 1055,
+   "dpr": 78.0,
+   "area": "ultima.are",
+   "keyword": "ghost"
+  },
+  {
+   "vnum": 12,
+   "name": "Vladamir the veteran",
+   "level": 36,
+   "hp": 2000,
+   "dpr": 70.9,
+   "area": "limbo.are",
+   "keyword": "vladamir"
+  },
+  {
+   "vnum": 24508,
+   "name": "an Efreet",
+   "level": 35,
+   "hp": 1255,
+   "dpr": 84.0,
+   "area": "abyss.are",
+   "keyword": "flaming"
+  },
+  {
+   "vnum": 20567,
+   "name": "a ranger",
+   "level": 39,
+   "hp": 1702,
+   "dpr": 56.0,
+   "area": "emerald.are",
+   "keyword": "Ranger"
+  },
+  {
+   "vnum": 8742,
+   "name": "the Edimmu",
+   "level": 40,
+   "hp": 1305,
+   "dpr": 100.0,
+   "area": "kerofk.are",
+   "keyword": "Edimmu"
+  }
+ ],
+ "7": [
+  {
+   "vnum": 28016,
+   "name": "The great sphinx",
+   "level": 41,
+   "hp": 1271,
+   "dpr": 57.5,
+   "area": "pyramid.are",
+   "keyword": "great"
+  },
+  {
+   "vnum": 8742,
+   "name": "the Edimmu",
+   "level": 40,
+   "hp": 1305,
+   "dpr": 100.0,
+   "area": "kerofk.are",
+   "keyword": "Edimmu"
+  },
+  {
+   "vnum": 7657,
+   "name": "Blackthorn",
+   "level": 43,
+   "hp": 2638,
+   "dpr": 90.1,
+   "area": "ultima.are",
+   "keyword": "blackthorn"
+  },
+  {
+   "vnum": 717,
+   "name": "Sir Tristram of Lyoness",
+   "level": 43,
+   "hp": 1312,
+   "dpr": 129.5,
+   "area": "camelot.are",
+   "keyword": "tristram"
+  },
+  {
+   "vnum": 8702,
+   "name": "Leonna",
+   "level": 45,
+   "hp": 1805,
+   "dpr": 108.0,
+   "area": "kerofk.are",
+   "keyword": "mage"
+  },
+  {
+   "vnum": 13417,
+   "name": "the blood from the fountain",
+   "level": 45,
+   "hp": 3138,
+   "dpr": 145.8,
+   "area": "hell.are",
+   "keyword": "blood"
+  }
+ ],
+ "8": [
+  {
+   "vnum": 8755,
+   "name": "a goblin captain",
+   "level": 47,
+   "hp": 1705,
+   "dpr": 106.5,
+   "area": "kerofk.are",
+   "keyword": "goblin"
+  },
+  {
+   "vnum": 13417,
+   "name": "the blood from the fountain",
+   "level": 45,
+   "hp": 3138,
+   "dpr": 145.8,
+   "area": "hell.are",
+   "keyword": "blood"
+  },
+  {
+   "vnum": 25010,
+   "name": "The Thrush",
+   "level": 50,
+   "hp": 310,
+   "dpr": 104.0,
+   "area": "mountain.are",
+   "keyword": "thrush"
+  },
+  {
+   "vnum": 29502,
+   "name": "Pube",
+   "level": 50,
+   "hp": 1625,
+   "dpr": 148.8,
+   "area": "lud.are",
+   "keyword": "pube"
+  },
+  {
+   "vnum": 26710,
+   "name": "A Cinder Stalker",
+   "level": 52,
+   "hp": 2150,
+   "dpr": 138.2,
+   "area": "ashen_wastes.are",
+   "keyword": "cinder"
+  },
+  {
+   "vnum": 13458,
+   "name": "reactor specialist",
+   "level": 52,
+   "hp": 5775,
+   "dpr": 169.1,
+   "area": "hell.are",
+   "keyword": "reactor"
+  }
+ ],
+ "9": [
+  {
+   "vnum": 26712,
+   "name": "A Magma Troll",
+   "level": 54,
+   "hp": 2950,
+   "dpr": 148.8,
+   "area": "ashen_wastes.are",
+   "keyword": "magma"
+  },
+  {
+   "vnum": 13471,
+   "name": "juicy steak",
+   "level": 52,
+   "hp": 5775,
+   "dpr": 173.2,
+   "area": "hell.are",
+   "keyword": "juicy"
+  },
+  {
+   "vnum": 2220,
+   "name": "Tiamat",
+   "level": 55,
+   "hp": 2015,
+   "dpr": 122.0,
+   "area": "draconia.are",
+   "keyword": "tiamat"
+  },
+  {
+   "vnum": 26716,
+   "name": "An Infernal Sentinel",
+   "level": 57,
+   "hp": 4350,
+   "dpr": 161.0,
+   "area": "ashen_wastes.are",
+   "keyword": "infernal"
+  },
+  {
+   "vnum": 904,
+   "name": "Poseidon",
+   "level": 59,
+   "hp": 9275,
+   "dpr": 126.0,
+   "area": "olympus.are",
+   "keyword": "poseidon"
+  },
+  {
+   "vnum": 29218,
+   "name": "a Grand Warlock",
+   "level": 58,
+   "hp": 4805,
+   "dpr": 141.0,
+   "area": "korzath2.are",
+   "keyword": "grand"
+  }
+ ]
+}
