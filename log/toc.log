@@ -52812,3 +52812,105 @@ Mon Oct  5 23:24:12 2026 :: Log Alaric [2497]: aq ga no
 Mon Oct  5 23:24:14 2026 :: Log Alaric [2497]: score
 Mon Oct  5 23:24:17 2026 :: Log Alaric [2497]: who
 Mon Oct  5 23:24:18 2026 :: Log Alaric [2497]: eq
+Mon Oct  5 23:25:24 2026 :: Log Alaric [2497]: score
+Mon Oct  5 23:25:24 2026 :: Log Alaric [2497]: who
+Mon Oct  5 23:25:25 2026 :: Log Alaric [2497]: i
+Mon Oct  5 23:25:29 2026 :: Log Alaric [2497]: comp robe
+Mon Oct  5 23:25:49 2026 :: Log Alaric [2497]: wear robe
+Mon Oct  5 23:25:51 2026 :: Log Alaric [2497]: nos
+Mon Oct  5 23:25:51 2026 :: Sock.sinaddr:  178.156.181.172
+Mon Oct  5 23:25:52 2026 :: EOF encountered on read.
+Mon Oct  5 23:25:53 2026 :: Log Alaric [2497]: c remove curse
+Mon Oct  5 23:25:58 2026 :: Log Alaric [2497]: nos
+Mon Oct  5 23:25:58 2026 :: Log Alaric [2497]: c remove curse
+Mon Oct  5 23:26:02 2026 :: Log Alaric [2497]: c remove curse
+Mon Oct  5 23:26:09 2026 :: Log Alaric [2497]: wear robe
+Mon Oct  5 23:26:09 2026 :: Log Alaric [2497]: comp plate
+Mon Oct  5 23:26:24 2026 :: Log Alaric [2497]: wear plate
+Mon Oct  5 23:26:28 2026 :: Log Alaric [2497]: stash put robe
+Mon Oct  5 23:26:28 2026 :: Log Alaric [2497]: stashed the Crystalline Robe of Shielding (vnum 10003)
+Mon Oct  5 23:26:29 2026 :: Log Alaric [2497]: i
+Mon Oct  5 23:26:33 2026 :: Log Alaric [2497]: comp dag
+Mon Oct  5 23:27:03 2026 :: Log Alaric [2497]: c remove curse
+Mon Oct  5 23:27:07 2026 :: Log Alaric [2497]: c remove curse
+Mon Oct  5 23:27:14 2026 :: Log Alaric [2497]: c bew dag
+Mon Oct  5 23:27:18 2026 :: Log Alaric [2497]: c bew dag
+Mon Oct  5 23:27:23 2026 :: Log Alaric [2497]: wear dag
+Mon Oct  5 23:27:29 2026 :: Log Alaric [2497]: comp just
+Mon Oct  5 23:27:35 2026 :: Log Alaric [2497]: i
+Mon Oct  5 23:27:41 2026 :: Log Alaric [2497]: comp royal
+Mon Oct  5 23:27:49 2026 :: Log Alaric [2497]: drop roy
+Mon Oct  5 23:27:51 2026 :: Log Alaric [2497]: sac roy
+Mon Oct  5 23:27:51 2026 :: Log Alaric [2497]: l
+Mon Oct  5 23:27:53 2026 :: Log Alaric [2497]: aq re
+Mon Oct  5 23:27:56 2026 :: Log Alaric [2497]: enter door
+Mon Oct  5 23:27:56 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Mon Oct  5 23:27:57 2026 :: Log Alaric [2401]: east
+Mon Oct  5 23:27:57 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Mon Oct  5 23:27:57 2026 :: Log Alaric [2403]: east
+Mon Oct  5 23:27:57 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Mon Oct  5 23:27:57 2026 :: Log Alaric [2420]: east
+Mon Oct  5 23:27:57 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Mon Oct  5 23:27:58 2026 :: Log Alaric [2421]: east
+Mon Oct  5 23:27:58 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Mon Oct  5 23:27:58 2026 :: Log Alaric [2422]: east
+Mon Oct  5 23:27:58 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Mon Oct  5 23:27:58 2026 :: Log Alaric [2423]: east
+Mon Oct  5 23:27:58 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Mon Oct  5 23:27:59 2026 :: Log Alaric [2424]: east
+Mon Oct  5 23:27:59 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Mon Oct  5 23:27:59 2026 :: Log Alaric [2425]: east
+Mon Oct  5 23:27:59 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Mon Oct  5 23:27:59 2026 :: Log Alaric [2426]: open east
+Mon Oct  5 23:27:59 2026 :: Log Alaric [2426]: east
+Mon Oct  5 23:27:59 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Mon Oct  5 23:28:01 2026 :: Log Alaric [2440]: east
+Mon Oct  5 23:28:01 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Mon Oct  5 23:28:02 2026 :: Log Alaric [3503]: east
+Mon Oct  5 23:28:02 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Mon Oct  5 23:28:02 2026 :: Log Alaric [3502]: south
+Mon Oct  5 23:28:02 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 3502
+Mon Oct  5 23:28:02 2026 :: Log Alaric [5261]: southeast
+Mon Oct  5 23:28:02 2026 :: Log Alaric [35]: arrived (Lava Forest) from 5261
+Mon Oct  5 23:28:02 2026 :: Log Alaric [35]: northeast
+Mon Oct  5 23:28:02 2026 :: Log Alaric [36]: arrived (The Lava Tube) from 35
+Mon Oct  5 23:28:03 2026 :: Log Alaric [36]: east
+Mon Oct  5 23:28:03 2026 :: Log Alaric [37]: arrived (Lava Field) from 36
+Mon Oct  5 23:28:03 2026 :: Log Alaric [37]: southeast
+Mon Oct  5 23:28:03 2026 :: Log Alaric [2900]: arrived (Obsidian hills) from 37
+Mon Oct  5 23:28:03 2026 :: Log Alaric [2900]: south
+Mon Oct  5 23:28:03 2026 :: Log Alaric [2901]: arrived (Obsidian hills) from 2900
+Mon Oct  5 23:28:04 2026 :: Log Alaric [2901]: south
+Mon Oct  5 23:28:04 2026 :: Log Alaric [2902]: arrived (Obsidian hills) from 2901
+Mon Oct  5 23:28:05 2026 :: Log Alaric [2902]: east
+Mon Oct  5 23:28:05 2026 :: Log Alaric [2903]: arrived (Mountain side) from 2902
+Mon Oct  5 23:28:05 2026 :: Log Alaric [2903]: south
+Mon Oct  5 23:28:05 2026 :: Log Alaric [2904]: arrived (Mountain side) from 2903
+Mon Oct  5 23:28:05 2026 :: Log Alaric [2904]: south
+Mon Oct  5 23:28:05 2026 :: Log Alaric [2905]: arrived (Mountain top) from 2904
+Mon Oct  5 23:28:05 2026 :: Log Alaric [2905]: south
+Mon Oct  5 23:28:05 2026 :: Log Alaric [2906]: arrived (Entrance to the mountain) from 2905
+Mon Oct  5 23:28:06 2026 :: Log Alaric [2906]: down
+Mon Oct  5 23:28:06 2026 :: Log Alaric [2910]: arrived (Inside the mountain) from 2906
+Mon Oct  5 23:28:06 2026 :: Log Alaric [2910]: down
+Mon Oct  5 23:28:06 2026 :: Log Alaric [2913]: arrived (Inside the mountain) from 2910
+Mon Oct  5 23:28:06 2026 :: Log Alaric [2913]: down
+Mon Oct  5 23:28:06 2026 :: Log Alaric [2916]: arrived (Bottom of the mountain) from 2913
+Mon Oct  5 23:28:07 2026 :: Log Alaric [2916]: north
+Mon Oct  5 23:28:07 2026 :: Log Alaric [2917]: arrived (The tunnel) from 2916
+Mon Oct  5 23:28:07 2026 :: Log Alaric [2917]: north
+Mon Oct  5 23:28:07 2026 :: Log Alaric [2918]: arrived (Bend in the tunnel) from 2917
+Mon Oct  5 23:28:07 2026 :: Log Alaric [2918]: east
+Mon Oct  5 23:28:07 2026 :: Log Alaric [2919]: arrived (The tunnel) from 2918
+Mon Oct  5 23:28:08 2026 :: Log Alaric [2919]: north
+Mon Oct  5 23:28:08 2026 :: Log Alaric [2921]: arrived (The tunnel) from 2919
+Mon Oct  5 23:28:08 2026 :: Log Alaric [2921]: north
+Mon Oct  5 23:28:08 2026 :: Log Alaric [2923]: arrived (The tunnel) from 2921
+Mon Oct  5 23:28:10 2026 :: Log Alaric [2923]: te
+Mon Oct  5 23:28:14 2026 :: Log Alaric [2923]: recal
+Mon Oct  5 23:28:14 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2923
+Mon Oct  5 23:28:14 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 23:28:15 2026 :: Log Alaric [2497]: recal
+Mon Oct  5 23:28:15 2026 :: Log Alaric [2497]: aq co
+Mon Oct  5 23:28:15 2026 :: Log Alaric [2497]: quest complete: 3 gold, 53 quest points (streak bonus 198%)
+Mon Oct  5 23:28:15 2026 :: Log Alaric [2497]: aq ga no
