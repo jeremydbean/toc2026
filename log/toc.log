@@ -56582,3 +56582,26 @@ Tue Oct  6 15:28:56 2026 :: Log Eclipse [9988]: pray
 Tue Oct  6 15:28:56 2026 :: Log Eclipse [8]: arrived (The Oracle's Sanctum) from 9988
 Tue Oct  6 15:28:56 2026 :: Oracle: Eclipse prayed from room 9988 (Eclipse's Seat of Power.) and entered her sanctum.
 Tue Oct  6 15:29:00 2026 :: Log Eclipse [8]: stat room
+Tue Oct  6 15:30:20 2026 :: Sock.sinaddr:  3.212.128.62
+Tue Oct  6 15:30:20 2026 :: EOF encountered on read.
+Tue Oct  6 15:31:40 2026 :: Log Eclipse [8]: who
+Tue Oct  6 15:31:59 2026 :: Log Eclipse [9988]: arrived (Eclipse's Seat of Power.) from 8
+Tue Oct  6 15:32:01 2026 :: Log Alaric [2]: arrived (Limbo) from 4207
+Tue Oct  6 15:32:01 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 2
+Tue Oct  6 15:32:01 2026 :: Log Alaric [4207]: who
+Tue Oct  6 15:32:01 2026 :: Log Alaric [4207]: worth
+Tue Oct  6 15:32:13 2026 :: Log Eclipse [9988]: who
+Tue Oct  6 15:32:21 2026 :: Log Eclipse [9988]: at alaric force alaric pray
+Tue Oct  6 15:32:21 2026 :: Log Eclipse [4207]: arrived (Before the Altar.) from 9988
+Tue Oct  6 15:32:21 2026 :: Log Eclipse [4207]: force alaric pray
+Tue Oct  6 15:32:21 2026 :: Log Alaric [4207]: pray
+Tue Oct  6 15:32:21 2026 :: Log Alaric [8]: arrived (The Oracle's Sanctum) from 4207
+Tue Oct  6 15:32:21 2026 :: Oracle: Alaric prayed from room 4207 (Before the Altar.) and entered her sanctum.
+Tue Oct  6 15:32:21 2026 :: Log Eclipse [9988]: arrived (Eclipse's Seat of Power.) from 4207
+Tue Oct  6 15:32:50 2026 :: Log Eclipse [9988]: gos fun :)
+Tue Oct  6 15:33:54 2026 :: Sock.sinaddr:  20.65.146.48
+Tue Oct  6 15:33:55 2026 :: Sock.sinaddr:  20.65.146.48
+Tue Oct  6 15:34:02 2026 :: Log Eclipse [9988]: goto 8
+Tue Oct  6 15:34:02 2026 :: Log Eclipse [8]: arrived (The Oracle's Sanctum) from 9988
+Tue Oct  6 15:34:04 2026 :: Log Eclipse [8]: l
+Tue Oct  6 15:34:29 2026 :: Log Eclipse [8]: say some interesting new stuff
