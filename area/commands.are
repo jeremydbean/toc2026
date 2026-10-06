@@ -2489,6 +2489,17 @@ Rooms you make this way belong to the builder area, which is written to
 area/custom.are.  Anyone from level 69 up may build there freely, and
 saving takes no more than RSAVE CONFIRM.
 
+An area of your own.  ANEW <low> <high> <name> claims a block of vnums and
+makes a new area with its own file, so your work is not mixed in with
+everyone else's in custom.are.  A room, and later a mobile or object, whose
+vnum falls in the block belongs to that area and is yours to edit and save.
+ALIST shows every area with its range and contents; ASTAT reads one in
+detail.  See HELP ANEW.
+
+  anew 29200 29249 The Sunken Grotto
+  goto 29200                       the room is born into the Grotto
+  ...build and rsave as above...
+
 Rooms that came out of a shipped area file are a different matter.  Only
 an implementor may change one at all, and saving over that area's file
 takes a confirmation naming the file, so a stray RSAVE cannot rewrite
@@ -2559,6 +2570,59 @@ kept beside the new one with a timestamp, so a bad save can be undone from
 the shell.
 
 See also: BUILDING, RLINK, SET
+~
+
+69 ANEW~
+Syntax: anew <low vnum> <high vnum> <name>
+
+ANEW makes a new buildable area that owns a block of vnums all its own,
+instead of building loose in the shared workshop (custom.are).
+
+  anew 29200 29249 The Sunken Grotto
+
+The range must be empty -- no room, mobile or object may already use a
+vnum in it -- and must not overlap another area.  Pick a free block with
+RLIST, VNUM, or ALIST.  Keep an area under 5000 vnums; rooms themselves
+run from 1 to WORLD_SIZE.
+
+ANEW writes a stub file, area/<name>.are, carrying an #AREADATA header with
+the range and your name as its builder, and lists it in area.lst so it
+loads at the next reboot.  It is linked live at once, so you can GOTO a
+vnum in the range straightaway: the room is born into the new area, not the
+workshop.  Build as usual (SET ROOM, RLINK) and RSAVE CONFIRM to write it.
+
+Anyone named in the area's Builders line may build there; an implementor
+may build anywhere.  ASTAT shows who.
+
+A caution about deploys: a file made in game lives only on the running
+server until it is committed to the repository.  A code deploy rebuilds the
+area directory from git and will drop an area that was never committed.
+Tell an implementor when you have made one worth keeping.
+
+See also: BUILDING, ALIST, ASTAT, RLINK, RSAVE
+~
+
+68 ALIST~
+Syntax: alist
+
+ALIST lists every area the game has loaded: its name, its file, its vnum
+range, and how many rooms, mobiles and objects it holds.  A '*' marks an
+area you can build in and save with RSAVE -- the workshop and any area made
+with ANEW.  An area that shipped with the game shows no range and is
+editable only by an implementor.
+
+See also: BUILDING, ANEW, ASTAT
+~
+
+68 ASTAT~
+Syntax: astat
+        astat <area name>
+
+ASTAT reads one area in detail: its name, file, vnum range, the builders
+allowed to work in it, its room/mobile/object counts, and whether you may
+build in it.  With no argument it reads the area you are standing in.
+
+See also: BUILDING, ANEW, ALIST
 ~
 
 70 DNS~

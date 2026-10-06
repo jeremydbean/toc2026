@@ -2364,6 +2364,15 @@ struct  area_data
     /* The .are this was read from, so in-game edits know where to save.
        "custom.are" for rooms built in game, which have no file yet. */
     char * file_name;
+    /* A buildable area made in game (ANEW) owns a vnum range: a room,
+       mobile or object whose vnum falls in [min_vnum, max_vnum] belongs
+       to it and may be edited and saved freely. Both 0 means an area
+       that shipped with the game and declared no range -- read-mostly,
+       editable only by an implementor. `builders' is who may build in
+       it, a space-separated name list, or NULL/"All" for any immortal. */
+    sh_int              min_vnum;
+    sh_int              max_vnum;
+    char *              builders;
     sh_int              age;
     sh_int              nplayer;
     bool                empty;
@@ -3084,7 +3093,12 @@ const char *guild_group_name ( int guild );
 
 /* In-game building. */
 #define BUILDER_AREA_FILE   "custom.are"
+#define AREA_LIST_FILE      "area.lst"
 bool    save_area_rooms ( AREA_DATA *pArea, char *why, size_t why_size );
+AREA_DATA *area_for_vnum ( int vnum );
+bool    area_is_buildable ( AREA_DATA *pArea );
+bool    may_build_area   ( CHAR_DATA *ch, AREA_DATA *pArea );
+bool    append_area_to_list ( const char *basename, char *why, size_t why_size );
 bool    is_loopback_ip  ( uint32_t ip );
 extern bool dns_lookup_enabled;
 int     get_curr_stat   ( CHAR_DATA *ch, int stat );

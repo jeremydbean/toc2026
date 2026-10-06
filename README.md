@@ -41,6 +41,7 @@ and a large collection of hand-built areas.
 | Immortal/operator | [Operator Guide](wiki/operator-guide.md) |
 | Developer | [Developer Guide](wiki/developer-guide.md) and [CONTRIBUTING.md](CONTRIBUTING.md) |
 | Area builder | [Area Building Guide](wiki/area-building-guide.md) |
+| Immortal building in game | [In-Game Building Guide](wiki/building-guide.md) |
 | Hyrule player or builder | [Hyrule: First Quest](wiki/hyrule-area.md) |
 | Achievement hunter | [Achievement System](wiki/achievements.md) |
 | Security reviewer | [Security Policy and Deployment Guide](SECURITY.md) |
@@ -495,6 +496,7 @@ then regenerate and test instead of hand-editing generated output.
 - [Contributing](CONTRIBUTING.md)
 - [Security](SECURITY.md)
 - [Area Building Guide](wiki/area-building-guide.md)
+- [In-Game Building Guide](wiki/building-guide.md)
 - [Validation and Area Health](wiki/validation-and-area-health.md)
 - [Advanced Gear Comparison](wiki/gear-comparison.md)
 - [Hyrule: First Quest](wiki/hyrule-area.md)

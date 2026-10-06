@@ -62,6 +62,8 @@ DECLARE_DO_FUN(do_rsave         );
 
 /* The area rooms made with `goto <unused vnum>' land in. */
 extern AREA_DATA *      new_area;
+extern AREA_DATA *      area_first;
+extern AREA_DATA *      area_last;
 extern int              top_exit;
 extern char * const     dir_name[];
 extern const int16_t    rev_dir[];
@@ -5913,10 +5915,350 @@ bool may_edit_room( CHAR_DATA *ch, ROOM_INDEX_DATA *room )
     if ( room == NULL )
         return false;
 
-    if ( room->area == new_area )
-        return true;
+    /* The builder workshop and any ANEW area with a declared range are
+       freely editable by whoever may build there; a shipped area is an
+       implementor's call. */
+    if ( area_is_buildable( room->area ) )
+        return may_build_area( ch, room->area );
 
     return get_trust( ch ) >= MAX_LEVEL;
+}
+
+
+/*
+ * Whether this character may build in this area. An implementor may build
+ * anywhere. Otherwise the area's Builders list decides: empty, "All", or a
+ * name match (a space-separated list) lets the builder in. The builder
+ * workshop (new_area) is open to any immortal who reached these commands.
+ */
+bool may_build_area( CHAR_DATA *ch, AREA_DATA *pArea )
+{
+    char arg[MAX_INPUT_LENGTH];
+    const char *list;
+
+    if ( ch == NULL || pArea == NULL )
+        return false;
+
+    if ( get_trust( ch ) >= MAX_LEVEL )
+        return true;
+
+    if ( pArea == new_area )
+        return true;
+
+    list = pArea->builders;
+    if ( list == NULL || list[0] == '\0' || !str_cmp( list, "All" ) )
+        return true;
+
+    while ( *list != '\0' )
+    {
+        list = one_argument( (char *) list, arg );
+        if ( arg[0] != '\0' && !str_cmp( arg, ch->name ) )
+            return true;
+    }
+
+    return false;
+}
+
+
+/* A file-name slug from an area name: lowercase letters and digits, every
+   other run collapsed to a single underscore, then ".are". */
+static void area_slug( const char *name, char *out, size_t size )
+{
+    size_t o = 0;
+    bool last_us = false;
+
+    for ( ; *name != '\0' && o < size - 6; name++ )
+    {
+        if ( isalnum( (unsigned char) *name ) )
+        {
+            out[o++] = LOWER( *name );
+            last_us  = false;
+        }
+        else if ( !last_us && o > 0 )
+        {
+            out[o++] = '_';
+            last_us  = true;
+        }
+    }
+    while ( o > 0 && out[o - 1] == '_' )
+        o--;
+    if ( o == 0 )
+        out[o++] = 'a';
+    out[o] = '\0';
+    toc_strlcat( out, ".are", size );
+}
+
+
+/*
+ * ANEW <low> <high> <name> -- make a new buildable area with its own vnum
+ * range. It writes a stub .are (an #AREADATA header and an empty #ROOMS
+ * section), lists it in area.lst so it loads next boot, and links it live
+ * so building can start at once. GOTO a vnum in the range to make a room;
+ * RSAVE writes the rooms into the file.
+ */
+void do_anew( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char slug[MAX_INPUT_LENGTH];
+    char why[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    AREA_DATA *pArea;
+    FILE *fp;
+    int lo, hi, vnum;
+
+    argument = one_argument( argument, arg1 );
+    argument = one_argument( argument, arg2 );
+    smash_tilde( argument );
+
+    if ( arg1[0] == '\0' || arg2[0] == '\0' || argument[0] == '\0'
+      || !is_number( arg1 ) || !is_number( arg2 ) )
+    {
+        send_to_char( "Syntax: anew <low vnum> <high vnum> <name>\n\r", ch );
+        send_to_char( "  e.g.  anew 31000 31099 The Sunken Grotto\n\r", ch );
+        return;
+    }
+
+    lo = atoi( arg1 );
+    hi = atoi( arg2 );
+
+    if ( lo < 1 || hi > WORLD_SIZE || lo > hi )
+    {
+        snprintf( buf, sizeof(buf),
+                  "Vnums run from 1 to %d, low first.\n\r", WORLD_SIZE );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( hi - lo + 1 > 5000 )
+    {
+        send_to_char( "That range is enormous; keep an area under 5000 "
+                      "vnums.\n\r", ch );
+        return;
+    }
+
+    /* The range must be empty and must not overlap another area's. */
+    for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
+    {
+        if ( pArea->min_vnum > 0 && lo <= pArea->max_vnum && hi >= pArea->min_vnum )
+        {
+            snprintf( buf, sizeof(buf),
+                      "That overlaps %s (%d-%d).\n\r",
+                      pArea->name != NULL ? pArea->name : "another area",
+                      pArea->min_vnum, pArea->max_vnum );
+            send_to_char( buf, ch );
+            return;
+        }
+    }
+
+    for ( vnum = lo; vnum <= hi; vnum++ )
+    {
+        if ( get_room_index( vnum ) != NULL || get_mob_index( vnum ) != NULL
+          || get_obj_index( vnum ) != NULL )
+        {
+            snprintf( buf, sizeof(buf),
+                      "Vnum %d is already in use; pick an empty range "
+                      "(try RLIST or VNUM).\n\r", vnum );
+            send_to_char( buf, ch );
+            return;
+        }
+    }
+
+    area_slug( argument, slug, sizeof(slug) );
+
+    if ( ( fp = fopen( slug, "r" ) ) != NULL )
+    {
+        fclose( fp );
+        snprintf( buf, sizeof(buf),
+                  "A file named %s already exists; rename the area.\n\r",
+                  slug );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( ( fp = fopen( slug, "w" ) ) == NULL )
+    {
+        snprintf( buf, sizeof(buf), "Could not create %s.\n\r", slug );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    fprintf( fp,
+             "#AREADATA\n"
+             "Name %s~\n"
+             "Builders %s~\n"
+             "VNUMs %d %d\n"
+             "End\n\n"
+             "#ROOMS\n#0\n\n"
+             "#$\n",
+             argument, ch->name != NULL ? ch->name : "All", lo, hi );
+    fclose( fp );
+
+    if ( !append_area_to_list( slug, why, sizeof(why) ) )
+    {
+        snprintf( buf, sizeof(buf),
+                  "Wrote %s but could not list it in %s (%s); add it by "
+                  "hand before the next boot.\n\r",
+                  slug, AREA_LIST_FILE, why );
+        send_to_char( buf, ch );
+        /* Fall through and link it live anyway. */
+    }
+
+    pArea                = alloc_perm( sizeof(*pArea) );
+    pArea->reset_first   = NULL;
+    pArea->reset_last    = NULL;
+    pArea->name          = str_dup( argument );
+    pArea->file_name     = str_dup( slug );
+    pArea->min_vnum      = (sh_int) lo;
+    pArea->max_vnum      = (sh_int) hi;
+    pArea->builders      = str_dup( ch->name != NULL ? ch->name : "All" );
+    pArea->age           = 15;
+    pArea->nplayer       = 0;
+    pArea->empty         = false;
+    pArea->disaster_type = 0;
+    pArea->next          = NULL;
+
+    if ( area_first == NULL )
+        area_first = pArea;
+    if ( area_last != NULL )
+        area_last->next = pArea;
+    area_last = pArea;
+
+    snprintf( buf, sizeof(buf),
+              "Created area '%s' (%d-%d) in %s.\n\r"
+              "GOTO a vnum in the range to start a room, then RSAVE.\n\r",
+              pArea->name, lo, hi, slug );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf), "%s created area %s (%d-%d), file %s.",
+              ch->name, pArea->name, lo, hi, slug );
+    wizinfo( buf, LEVEL_IMMORTAL );
+    log_string( buf );
+}
+
+
+/* Rooms, mobiles and objects an area holds, counted for ALIST/ASTAT. */
+static void area_counts( AREA_DATA *pArea, int *rooms, int *mobs, int *objs )
+{
+    int vnum;
+
+    *rooms = *mobs = *objs = 0;
+
+    /* Rooms carry an area pointer; count those. */
+    for ( vnum = 0; vnum <= WORLD_SIZE; vnum++ )
+        if ( get_room_index( vnum ) != NULL && get_room_index( vnum )->area == pArea )
+            (*rooms)++;
+
+    /* Mobs and objects have no area pointer, so a buildable area counts
+       them by its declared range. A shipped area reports 0 here. */
+    if ( pArea->min_vnum > 0 )
+    {
+        for ( vnum = pArea->min_vnum; vnum <= pArea->max_vnum; vnum++ )
+        {
+            if ( get_mob_index( vnum ) != NULL )
+                (*mobs)++;
+            if ( get_obj_index( vnum ) != NULL )
+                (*objs)++;
+        }
+    }
+}
+
+
+/* ALIST -- every area, its file, vnum range and contents. */
+void do_alist( CHAR_DATA *ch, char *argument )
+{
+    char buf[MAX_STRING_LENGTH];
+    AREA_DATA *pArea;
+    int n = 0;
+
+    UNUSED_PARAM( argument );
+
+    snprintf( buf, sizeof(buf),
+              "%-28s %-16s %-11s %5s %5s %5s\n\r",
+              "Area", "File", "Vnums", "Rooms", "Mobs", "Objs" );
+    send_to_char( buf, ch );
+
+    for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
+    {
+        char range[16];
+        int rooms, mobs, objs;
+
+        area_counts( pArea, &rooms, &mobs, &objs );
+        if ( pArea->min_vnum > 0 )
+            snprintf( range, sizeof(range), "%d-%d",
+                      pArea->min_vnum, pArea->max_vnum );
+        else
+            toc_strlcpy( range, "-", sizeof(range) );
+
+        snprintf( buf, sizeof(buf),
+                  "%-28.28s %-16.16s %-11s %5d %5d %5d%s\n\r",
+                  pArea->name != NULL ? pArea->name : "(unnamed)",
+                  pArea->file_name != NULL ? pArea->file_name : "-",
+                  range, rooms, mobs, objs,
+                  area_is_buildable( pArea ) ? " *" : "" );
+        send_to_char( buf, ch );
+        n++;
+    }
+
+    snprintf( buf, sizeof(buf),
+              "%d areas; * marks a buildable one (RSAVE/ASAVE writes it).\n\r",
+              n );
+    send_to_char( buf, ch );
+}
+
+
+/* ASTAT -- details of one area (named, or the one you are standing in). */
+void do_astat( CHAR_DATA *ch, char *argument )
+{
+    char buf[MAX_STRING_LENGTH];
+    AREA_DATA *pArea = NULL;
+    int rooms, mobs, objs;
+
+    if ( argument[0] == '\0' )
+    {
+        if ( ch->in_room != NULL )
+            pArea = ch->in_room->area;
+    }
+    else
+    {
+        for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
+            if ( pArea->name != NULL && !str_prefix( argument, pArea->name ) )
+                break;
+    }
+
+    if ( pArea == NULL )
+    {
+        send_to_char( "No such area.  ASTAT with no argument reads the one "
+                      "you are in.\n\r", ch );
+        return;
+    }
+
+    area_counts( pArea, &rooms, &mobs, &objs );
+
+    char range[32];
+    if ( pArea->min_vnum > 0 )
+        snprintf( range, sizeof(range), "%d-%d",
+                  pArea->min_vnum, pArea->max_vnum );
+    else
+        toc_strlcpy( range, "none (shipped area)", sizeof(range) );
+
+    snprintf( buf, sizeof(buf),
+              "Name:     %s\n\r"
+              "File:     %s\n\r"
+              "Vnums:    %s\n\r"
+              "Builders: %s\n\r"
+              "Contents: %d rooms, %d mobiles, %d objects\n\r"
+              "Buildable: %s\n\r",
+              pArea->name != NULL ? pArea->name : "(unnamed)",
+              pArea->file_name != NULL ? pArea->file_name : "-",
+              range,
+              pArea->builders != NULL && pArea->builders[0] != '\0'
+                ? pArea->builders : "All",
+              rooms, mobs, objs,
+              area_is_buildable( pArea )
+                ? ( may_build_area( ch, pArea ) ? "yes" : "yes, but not by you" )
+                : "no (implementor only)" );
+    send_to_char( buf, ch );
 }
 
 
@@ -6237,7 +6579,9 @@ void do_rsave( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    builder = ( pArea == new_area );
+    /* A buildable area (the workshop or an ANEW area) saves with a plain
+       "rsave confirm"; a shipped area makes an implementor name the file. */
+    builder = area_is_buildable( pArea );
 
     if ( !builder && get_trust( ch ) < MAX_LEVEL )
     {

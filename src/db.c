@@ -311,6 +311,7 @@ char                    current_area_file[MAX_INPUT_LENGTH];
 void    init_mm         args( ( void ) );
 void    load_area_file  args( ( const char *strArea ) );
 void    load_area       args( ( FILE *fp ) );
+void    load_areadata   args( ( FILE *fp ) );
 void    load_helps      args( ( FILE *fp ) );
 void    load_mobiles    args( ( FILE *fp ) );
 void    load_objects    args( ( FILE *fp ) );
@@ -569,6 +570,7 @@ void load_area_file( const char *area_filename )
  
              if ( word[0] == '$'               )                 break;
         else if ( !str_cmp( word, "AREA"     ) ) load_area    (fpArea);
+        else if ( !str_cmp( word, "AREADATA" ) ) load_areadata(fpArea);
         else if ( !str_cmp( word, "HELPS"    ) ) load_helps   (fpArea);
         else if ( !str_cmp( word, "MOBILES"  ) ) load_mobiles (fpArea);
         else if ( !str_cmp( word, "OBJECTS"  ) ) load_objects (fpArea);
@@ -601,20 +603,115 @@ void load_area( FILE *fp )
     pArea->reset_last    = NULL;
     pArea->name          = fread_string( fp );
     pArea->file_name     = str_dup( current_area_file );
+    /* A legacy #AREA header declares no vnum range, so this area is
+       read-mostly. A buildable range only comes from #AREADATA (ANEW). */
+    pArea->min_vnum      = 0;
+    pArea->max_vnum      = 0;
+    pArea->builders      = NULL;
     pArea->age           = 15;
     pArea->nplayer       = 0;
     pArea->empty         = false;
     pArea->disaster_type = 0;
- 
+
     if ( area_first == NULL )
         area_first = pArea;
     if ( area_last  != NULL )
         area_last->next = pArea;
     area_last   = pArea;
     pArea->next = NULL;
- 
+
     top_area++;
     return;
+}
+
+
+/*
+ * Snarf an '#AREADATA' header: the modern form that carries a vnum range,
+ * so an area built in game (ANEW) reloads as buildable. Keyword lines run
+ * until 'End'; an unknown keyword is skipped rather than fatal, so a newer
+ * file still loads on an older build.
+ */
+void load_areadata( FILE *fp )
+{
+    AREA_DATA *pArea;
+    char *word;
+
+    pArea                = alloc_perm( sizeof(*pArea) );
+    pArea->reset_first   = NULL;
+    pArea->reset_last    = NULL;
+    pArea->name          = str_dup( "Unnamed Area" );
+    pArea->file_name     = str_dup( current_area_file );
+    pArea->min_vnum      = 0;
+    pArea->max_vnum      = 0;
+    pArea->builders      = NULL;
+    pArea->age           = 15;
+    pArea->nplayer       = 0;
+    pArea->empty         = false;
+    pArea->disaster_type = 0;
+
+    for ( ; ; )
+    {
+        word = feof( fp ) ? "End" : fread_word( fp );
+
+        if ( !str_cmp( word, "End" ) )
+            break;
+        else if ( !str_cmp( word, "Name" ) )
+        {
+            free_string( pArea->name );
+            pArea->name = fread_string( fp );
+        }
+        else if ( !str_cmp( word, "Builders" ) )
+        {
+            free_string( pArea->builders );
+            pArea->builders = fread_string( fp );
+        }
+        else if ( !str_cmp( word, "VNUMs" ) )
+        {
+            pArea->min_vnum = (sh_int)(fread_number( fp ));
+            pArea->max_vnum = (sh_int)(fread_number( fp ));
+        }
+        else
+        {
+            /* An unknown keyword's value is one string; drop it. */
+            fread_to_eol( fp );
+        }
+    }
+
+    if ( area_first == NULL )
+        area_first = pArea;
+    if ( area_last  != NULL )
+        area_last->next = pArea;
+    area_last   = pArea;
+    pArea->next = NULL;
+
+    top_area++;
+    return;
+}
+
+
+/* The buildable area a vnum belongs to, by its declared range, or NULL.
+   new_area (custom.are) is the fallback home for rooms built with GOTO. */
+AREA_DATA *area_for_vnum( int vnum )
+{
+    AREA_DATA *pArea;
+
+    for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
+    {
+        if ( pArea->min_vnum > 0
+          && vnum >= pArea->min_vnum && vnum <= pArea->max_vnum )
+            return pArea;
+    }
+
+    return NULL;
+}
+
+
+/* A shipped area declared no range and is read-mostly; a buildable area
+   (ANEW, or the builder workshop) carries one and may be edited freely. */
+bool area_is_buildable( AREA_DATA *pArea )
+{
+    return pArea != NULL
+      && ( pArea->min_vnum > 0 || pArea == new_area );
 }
  
  
@@ -2432,7 +2529,12 @@ void create_room( int vnum )
     pRoomIndex->people          = NULL;
     pRoomIndex->contents        = NULL;
     pRoomIndex->extra_descr     = NULL;
-    pRoomIndex->area            = new_area;
+    /* A room built inside a declared ANEW range belongs to that area; one
+       made loose with GOTO falls to the builder workshop (new_area). */
+    {
+        AREA_DATA *owner = area_for_vnum( vnum );
+        pRoomIndex->area            = owner != NULL ? owner : new_area;
+    }
     pRoomIndex->vnum            = (sh_int)(vnum);
     pRoomIndex->name            = alloc_mem( (int)(strlen(defaultRoomName) + 1) );
     pRoomIndex->description     = alloc_mem( (int)(strlen(defaultRoomDesc) + 1) );
@@ -2713,6 +2815,103 @@ bool save_area_rooms( AREA_DATA *pArea, char *why, size_t why_size )
     }
 
     snprintf( why, why_size, "%s", path );
+    return true;
+}
+
+
+/* Is this line area.lst's '$' terminator (first non-space is '$')? */
+static bool is_area_list_terminator( const char *line )
+{
+    while ( *line != '\0' && isspace( (unsigned char) *line ) )
+        line++;
+    return *line == '$';
+}
+
+
+/*
+ * Put a new area file into area.lst so it loads at the next boot, inserted
+ * just before the '$' terminator. A no-op if it is already listed. The
+ * file is rewritten through a temp and renamed, like the room saver, so a
+ * failure leaves area.lst exactly as it was.
+ */
+bool append_area_to_list( const char *basename, char *why, size_t why_size )
+{
+    char temp_path[MAX_INPUT_LENGTH + 32];
+    char line[MAX_STRING_LENGTH];
+    FILE *in;
+    FILE *out;
+    bool inserted = false;
+
+    if ( basename == NULL || basename[0] == '\0' )
+    {
+        snprintf( why, why_size, "no file name" );
+        return false;
+    }
+
+    if ( ( in = fopen( AREA_LIST_FILE, "r" ) ) == NULL )
+    {
+        snprintf( why, why_size, "cannot read %s", AREA_LIST_FILE );
+        return false;
+    }
+
+    snprintf( temp_path, sizeof(temp_path), "%s.tmp", AREA_LIST_FILE );
+    if ( ( out = fopen( temp_path, "w" ) ) == NULL )
+    {
+        fclose( in );
+        snprintf( why, why_size, "cannot write %s", temp_path );
+        return false;
+    }
+
+    while ( fgets( line, sizeof(line), in ) != NULL )
+    {
+        char name[MAX_INPUT_LENGTH];
+        int i = 0;
+
+        /* First whitespace-delimited token on the line, to spot a dup. */
+        const char *p = line;
+        while ( *p != '\0' && isspace( (unsigned char) *p ) )
+            p++;
+        while ( *p != '\0' && !isspace( (unsigned char) *p )
+                && i < (int) sizeof(name) - 1 )
+            name[i++] = *p++;
+        name[i] = '\0';
+
+        if ( !str_cmp( name, basename ) )
+        {
+            /* Already listed: nothing to do, keep the file untouched. */
+            fclose( in );
+            fclose( out );
+            unlink( temp_path );
+            snprintf( why, why_size, "already listed" );
+            return true;
+        }
+
+        if ( !inserted && is_area_list_terminator( line ) )
+        {
+            fprintf( out, "%s\n", basename );
+            inserted = true;
+        }
+
+        fputs( line, out );
+    }
+
+    fclose( in );
+
+    if ( !inserted )
+    {
+        /* No '$' found -- append the entry and a terminator. */
+        fprintf( out, "%s\n$\n", basename );
+    }
+
+    fclose( out );
+
+    if ( rename( temp_path, AREA_LIST_FILE ) != 0 )
+    {
+        snprintf( why, why_size, "could not replace %s", AREA_LIST_FILE );
+        return false;
+    }
+
+    snprintf( why, why_size, "%s", AREA_LIST_FILE );
     return true;
 }
 

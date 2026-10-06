@@ -57,6 +57,8 @@ objects. The live game runs on Oracle Cloud (`toc.jeremybean.com`); see
 
 ## Area Builders
 
+- [In-Game Building Guide](building-guide.md) - building areas, rooms and
+  (as later phases land) mobiles and objects from inside the game
 - [Area Building Guide](area-building-guide.md) - authoritative modern `.are`
   reference, all sections/flags/values, complete template, and validation
 - [Hyrule: First Quest](hyrule-area.md) - manifest/generator contract and
