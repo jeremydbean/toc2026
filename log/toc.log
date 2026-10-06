@@ -53834,3 +53834,15 @@ Tue Oct  6 00:14:54 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 
 Tue Oct  6 00:14:54 2026 :: ROM is ready to rock on port 9000.
 Tue Oct  6 00:14:54 2026 :: Automated backup complete.
 Tue Oct  6 00:14:54 2026 :: Daily backup complete.
+Tue Oct  6 00:16:15 2026 :: Sock.sinaddr:  208.126.22.104
+Tue Oct  6 00:16:17 2026 :: Loading Alaric's playerfile
+Tue Oct  6 00:16:18 2026 :: Alaric@208.126.22.104 has connected.
+Tue Oct  6 00:16:19 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Tue Oct  6 00:16:21 2026 :: Log Alaric [2497]: who
+Tue Oct  6 00:16:23 2026 :: Log Alaric [2497]: aq ti
+Tue Oct  6 00:16:36 2026 :: Sock.sinaddr:  54.87.112.51
+Tue Oct  6 00:16:36 2026 :: EOF encountered on read.
+Tue Oct  6 00:17:38 2026 :: Log Alaric [2497]: who
+Tue Oct  6 00:17:51 2026 :: Log Alaric [2497]: score
+Tue Oct  6 00:17:52 2026 :: Log Alaric [2497]: l
+Tue Oct  6 00:17:56 2026 :: Log Alaric [2497]: aq ti
