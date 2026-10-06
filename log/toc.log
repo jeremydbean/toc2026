@@ -56402,3 +56402,9 @@ Tue Oct  6 11:39:36 2026 :: Sock.sinaddr:  204.76.203.219
 Tue Oct  6 11:39:46 2026 :: EOF encountered on read.
 Tue Oct  6 11:41:46 2026 :: Sock.sinaddr:  178.156.189.249
 Tue Oct  6 11:41:47 2026 :: EOF encountered on read.
+Tue Oct  6 11:44:29 2026 :: Log Alaric [2]: arrived (Limbo) from 4207
+Tue Oct  6 11:44:30 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 2
+Tue Oct  6 11:44:30 2026 :: Log Alaric [4207]: who
+Tue Oct  6 11:44:30 2026 :: Log Alaric [4207]: worth
+Tue Oct  6 11:46:50 2026 :: Sock.sinaddr:  178.156.181.172
+Tue Oct  6 11:46:50 2026 :: EOF encountered on read.
