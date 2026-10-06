@@ -354,6 +354,13 @@ Live-test gotchas that look like product bugs and are not:
 - `stat room` prints both `Number:` (the area-relative number) and
   `Vnum:`. Only `Vnum:` is what `goto` and `set room` want.
 - `parse_login_journal()` returns **file order, oldest first**.
+- **Lag counts down only while a command is waiting** (`comm.c`, the
+  `ch->wait` check in the input loop), so `drain()` after a lagging
+  command burns none of it: the next command sits out the whole lag
+  before it runs, and its reply window has to hold both. A 3-second
+  window after the recorder's whirlwind (`PULSE_VIOLENCE`, 3 s) failed
+  `test_hyrule_walkthrough` in CI twice running on 2026-10-06 with an
+  empty reply, and passed every time locally.
 - Guildmaster mob vnums are not room vnums. `goto 4701` goes to a room;
   the Necro Guild Master lives in room 4721.
 - **`Levl=70` in a fixture makes an immortal, and aggressives ignore
@@ -378,7 +385,7 @@ Live-test gotchas that look like product bugs and are not:
 - `src/act_move.c`: movement, exits, traps, recall, run/speedwalk
 - `src/walkto.c`: WALKTO -- named destinations, pathfinding from the
   player's room, and the paced walk
-- `src/build.c`: in-game building in words -- SET MOB/OBJ <vnum>, MSHOW, OSHOW,
+- `src/build.c`: in-game building in words -- SET MOB/OBJ <vnum>, MSHOW, OSHOW, PLACE/RESETS/UNPLACE,
   with the name tables for every mobile and object flag word; ANEW/ASAVE/MCREATE/
   OCREATE are in `act_wiz.c` and the area writer in `db.c`
 - `src/act_info.c`: displays, leveling, remort

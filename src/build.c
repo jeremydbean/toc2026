@@ -31,6 +31,7 @@
 /* db.c's counts of what has been allocated, kept honest for MEMORY. */
 extern int top_affect;
 extern int top_ed;
+extern AREA_DATA *area_first;
 
 struct build_flag
 {
@@ -2425,5 +2426,739 @@ void build_set_obj( CHAR_DATA *ch, char *argument )
 
     snprintf( buf, sizeof(buf), "Object %d's %s is set.  OSHOW %d to look; ASAVE "
               "to keep it.\n\r", o->vnum, field, o->vnum );
+    send_to_char( buf, ch );
+}
+
+
+/*
+ * ------------------------------------------------------------------------
+ * Resets: PLACE, RESETS and UNPLACE.
+ *
+ * A reset is what makes something come back: every few minutes the game
+ * walks an area's reset list and puts each mobile, object and door state
+ * back as the list says. The list is order sensitive, and these commands
+ * keep its order for the builder:
+ *
+ *  - G (give) and E (equip) act on the mobile the last M reset made, so
+ *    an item for a mobile goes straight after that mobile's M and the
+ *    items already given it.
+ *  - P (put in) fills a container already made, so it goes straight after
+ *    the O that makes the container.
+ *  - M, O and D go at the end.
+ *
+ * reset_area runs from the top, so a reset belongs to the room of the last
+ * M or O above it -- which is how RESETS lists a room's and UNPLACE takes
+ * a mobile's items away with it.
+ *
+ * Each PLACE also does at once what the reset will do, so the builder sees
+ * the mobile or the item straight away. Only an ANEW area can hold resets,
+ * because ASAVE is what writes them.
+ * ------------------------------------------------------------------------
+ */
+
+extern int top_reset;
+extern const int16_t rev_dir[];
+extern char * const dir_name[];
+
+/* The room each reset in the list acts on, by the rule above. */
+static ROOM_INDEX_DATA *reset_room( RESET_DATA *r, ROOM_INDEX_DATA *context )
+{
+    switch ( r->command )
+    {
+    case 'M':
+    case 'O':
+        return get_room_index( r->arg3 );
+    case 'D':
+    case 'R':
+        return get_room_index( r->arg1 );
+    default:
+        return context;
+    }
+}
+
+
+/* Does a prototype's area load no later than this one? A reset naming one
+   that loads later stops the boot (see reset_is_writable in db.c). */
+static bool loads_no_later( int vnum, AREA_DATA *pArea )
+{
+    AREA_DATA *owner = area_for_vnum( vnum );
+    AREA_DATA *scan;
+
+    if ( owner == NULL )
+        return true;
+    for ( scan = area_first; scan != NULL; scan = scan->next )
+    {
+        if ( scan == owner )
+            return true;
+        if ( scan == pArea )
+            return false;
+    }
+    return false;
+}
+
+
+/* The room a builder may place things in, or NULL after saying why not. */
+static ROOM_INDEX_DATA *placeable_room( CHAR_DATA *ch )
+{
+    ROOM_INDEX_DATA *room = ch->in_room;
+
+    if ( room == NULL )
+        return NULL;
+    if ( room->area == NULL || room->area->min_vnum <= 0 )
+    {
+        send_to_char( "Resets are kept by ASAVE, which only an area made with ANEW "
+                      "has.  Build in one.\n\r", ch );
+        return NULL;
+    }
+    if ( !may_build_area( ch, room->area ) )
+    {
+        send_to_char( "You are not one of this area's builders.\n\r", ch );
+        return NULL;
+    }
+    return room;
+}
+
+
+static RESET_DATA *new_reset( char command, int arg1, int arg2, int arg3 )
+{
+    RESET_DATA *r = alloc_perm( sizeof(*r) );
+
+    r->command  = command;
+    r->arg1     = (sh_int) arg1;
+    r->arg2     = (sh_int) arg2;
+    r->arg3     = (sh_int) arg3;
+    r->room_max = 0;
+    r->next     = NULL;
+    top_reset++;
+    return r;
+}
+
+static void reset_append( AREA_DATA *pArea, RESET_DATA *r )
+{
+    if ( pArea->reset_first == NULL )
+        pArea->reset_first = r;
+    if ( pArea->reset_last != NULL )
+        pArea->reset_last->next = r;
+    pArea->reset_last = r;
+}
+
+/* A door has one state: placing it again changes the reset it has. */
+static void set_door_reset( AREA_DATA *pArea, int room_vnum, int door, int state )
+{
+    RESET_DATA *r;
+
+    for ( r = pArea->reset_first; r != NULL; r = r->next )
+    {
+        if ( r->command == 'D' && r->arg1 == room_vnum && r->arg2 == door )
+        {
+            r->arg3 = (sh_int) state;
+            return;
+        }
+    }
+    reset_append( pArea, new_reset( 'D', room_vnum, door, state ) );
+}
+
+static void reset_insert_after( AREA_DATA *pArea, RESET_DATA *after, RESET_DATA *r )
+{
+    r->next     = after->next;
+    after->next = r;
+    if ( pArea->reset_last == after )
+        pArea->reset_last = r;
+}
+
+
+/* After an M is added or removed: each M's world cap is the number of M
+   resets the area has for that mobile, and its room cap the number in its
+   own room -- what fix_reset_room_limits works out at boot. */
+static void recount_mob_resets( AREA_DATA *pArea, int vnum )
+{
+    RESET_DATA *r, *o;
+
+    for ( r = pArea->reset_first; r != NULL; r = r->next )
+    {
+        int in_area = 0, in_room = 0;
+
+        if ( r->command != 'M' || r->arg1 != vnum )
+            continue;
+        for ( o = pArea->reset_first; o != NULL; o = o->next )
+        {
+            if ( o->command != 'M' || o->arg1 != vnum )
+                continue;
+            in_area++;
+            if ( o->arg3 == r->arg3 )
+                in_room++;
+        }
+        r->arg2     = (sh_int) UMAX( r->arg2, in_area );
+        r->room_max = (sh_int) in_room;
+    }
+}
+
+
+/*
+ * The last M in this room for this mobile, and the last reset attached to
+ * it (its own G and E resets), or NULL.
+ */
+static RESET_DATA *mob_reset_in_room( AREA_DATA *pArea, ROOM_INDEX_DATA *room,
+                                      int mob_vnum, RESET_DATA **tail )
+{
+    RESET_DATA *r, *found = NULL;
+
+    *tail = NULL;
+    for ( r = pArea->reset_first; r != NULL; r = r->next )
+    {
+        if ( r->command == 'M' && r->arg1 == mob_vnum && r->arg3 == room->vnum )
+        {
+            found = r;
+            *tail = r;
+        }
+        else if ( found != NULL && *tail != NULL
+               && ( r->command == 'G' || r->command == 'E' ) && (*tail)->next == r )
+            *tail = r;
+    }
+    return found;
+}
+
+/* The same for an O that makes a container here, and its P resets. */
+static RESET_DATA *obj_reset_in_room( AREA_DATA *pArea, ROOM_INDEX_DATA *room,
+                                      int obj_vnum, RESET_DATA **tail )
+{
+    RESET_DATA *r, *found = NULL;
+
+    *tail = NULL;
+    for ( r = pArea->reset_first; r != NULL; r = r->next )
+    {
+        if ( r->command == 'O' && r->arg1 == obj_vnum && r->arg3 == room->vnum )
+        {
+            found = r;
+            *tail = r;
+        }
+        else if ( found != NULL && *tail != NULL && r->command == 'P'
+               && (*tail)->next == r )
+            *tail = r;
+    }
+    return found;
+}
+
+
+/* Where an equipped item goes, by its wear slots in WEAR's order, skipping
+   a paired slot the mobile's earlier E resets have taken. */
+static int equip_slot( OBJ_INDEX_DATA *o, RESET_DATA *m, RESET_DATA *tail )
+{
+    bool used[MAX_WEAR];
+    RESET_DATA *r;
+    int i;
+
+    for ( i = 0; i < MAX_WEAR; i++ )
+        used[i] = false;
+    /* Only this mobile's own resets: those after its M, up to the tail. */
+    for ( r = m; r != tail && r != NULL; )
+    {
+        r = r->next;
+        if ( r != NULL && r->command == 'E' && r->arg3 >= 0 && r->arg3 < MAX_WEAR )
+            used[r->arg3] = true;
+    }
+
+#define SLOT_FREE( a, b ) ( !used[a] ? (a) : ( !used[b] ? (b) : -1 ) )
+    if ( o->item_type == ITEM_LIGHT )                    return SLOT_FREE( WEAR_LIGHT, WEAR_LIGHT );
+    if ( IS_SET( o->wear_flags, ITEM_WEAR_FINGER ) )     return SLOT_FREE( WEAR_FINGER_L, WEAR_FINGER_R );
+    if ( IS_SET( o->wear_flags, ITEM_WEAR_NECK ) )       return SLOT_FREE( WEAR_NECK_1, WEAR_NECK_2 );
+    if ( IS_SET( o->wear_flags, ITEM_WEAR_BODY ) )       return SLOT_FREE( WEAR_BODY, WEAR_BODY );
+    if ( IS_SET( o->wear_flags, ITEM_WEAR_HEAD ) )       return SLOT_FREE( WEAR_HEAD, WEAR_HEAD );
+    if ( IS_SET( o->wear_flags, ITEM_WEAR_LEGS ) )       return SLOT_FREE( WEAR_LEGS, WEAR_LEGS );
+    if ( IS_SET( o->wear_flags, ITEM_WEAR_FEET ) )       return SLOT_FREE( WEAR_FEET, WEAR_FEET );
+    if ( IS_SET( o->wear_flags, ITEM_WEAR_HANDS ) )      return SLOT_FREE( WEAR_HANDS, WEAR_HANDS );
+    if ( IS_SET( o->wear_flags, ITEM_WEAR_ARMS ) )       return SLOT_FREE( WEAR_ARMS, WEAR_ARMS );
+    if ( IS_SET( o->wear_flags, ITEM_WEAR_ABOUT ) )      return SLOT_FREE( WEAR_ABOUT, WEAR_ABOUT );
+    if ( IS_SET( o->wear_flags, ITEM_WEAR_WAIST ) )      return SLOT_FREE( WEAR_WAIST, WEAR_WAIST );
+    if ( IS_SET( o->wear_flags, ITEM_WEAR_WRIST ) )      return SLOT_FREE( WEAR_WRIST_L, WEAR_WRIST_R );
+    if ( IS_SET( o->wear_flags, ITEM_WEAR_SHIELD ) )     return SLOT_FREE( WEAR_SHIELD, WEAR_SHIELD );
+    if ( IS_SET( o->wear_flags, ITEM_WIELD ) )           return SLOT_FREE( WEAR_WIELD, WEAR_WIELD );
+    if ( IS_SET( o->wear_flags, ITEM_HOLD ) )            return SLOT_FREE( WEAR_HOLD, WEAR_HOLD );
+#undef SLOT_FREE
+    return -2;
+}
+
+static const char *wear_slot_word( int slot )
+{
+    switch ( slot )
+    {
+    case WEAR_LIGHT:    return "as a light";
+    case WEAR_FINGER_L: return "on the left finger";
+    case WEAR_FINGER_R: return "on the right finger";
+    case WEAR_NECK_1:
+    case WEAR_NECK_2:   return "around the neck";
+    case WEAR_BODY:     return "on the torso";
+    case WEAR_HEAD:     return "on the head";
+    case WEAR_LEGS:     return "on the legs";
+    case WEAR_FEET:     return "on the feet";
+    case WEAR_HANDS:    return "on the hands";
+    case WEAR_ARMS:     return "on the arms";
+    case WEAR_SHIELD:   return "as a shield";
+    case WEAR_ABOUT:    return "about the body";
+    case WEAR_WAIST:    return "around the waist";
+    case WEAR_WRIST_L:  return "on the left wrist";
+    case WEAR_WRIST_R:  return "on the right wrist";
+    case WEAR_WIELD:    return "wielded";
+    case WEAR_HOLD:     return "held";
+    }
+    return "somewhere";
+}
+
+
+/* A mobile made from this prototype, standing in this room. */
+static CHAR_DATA *mob_here( ROOM_INDEX_DATA *room, MOB_INDEX_DATA *m )
+{
+    CHAR_DATA *rch;
+
+    for ( rch = room->people; rch != NULL; rch = rch->next_in_room )
+        if ( IS_NPC( rch ) && rch->pIndexData == m )
+            return rch;
+    return NULL;
+}
+
+static OBJ_DATA *obj_here( ROOM_INDEX_DATA *room, OBJ_INDEX_DATA *o )
+{
+    OBJ_DATA *obj;
+
+    for ( obj = room->contents; obj != NULL; obj = obj->next_content )
+        if ( obj->pIndexData == o )
+            return obj;
+    return NULL;
+}
+
+
+static void place_help( CHAR_DATA *ch )
+{
+    send_to_char(
+        "Syntax: place mob <vnum> [<how many>]     a mobile here, coming back\n\r"
+        "        place obj <vnum>                  an object on the floor here\n\r"
+        "        place obj <vnum> in <container>   inside a container placed here\n\r"
+        "        place obj <vnum> on <mob>         carried by a mobile placed here\n\r"
+        "        place obj <vnum> worn <mob>       worn or wielded by it\n\r"
+        "        place door <dir> open|closed|locked\n\r"
+        "RESETS lists what is placed here; UNPLACE <n> takes one away.  ASAVE keeps\n\r"
+        "them.\n\r", ch );
+}
+
+
+/* PLACE -- put something in the room that comes back at every reset. */
+void do_place( CHAR_DATA *ch, char *argument )
+{
+    char what[MAX_INPUT_LENGTH];
+    char arg[MAX_INPUT_LENGTH];
+    char how[MAX_INPUT_LENGTH];
+    char target[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    ROOM_INDEX_DATA *room;
+    AREA_DATA *pArea;
+
+    argument = one_argument( argument, what );
+    argument = one_argument( argument, arg );
+    argument = one_argument( argument, how );
+    one_argument( argument, target );
+
+    if ( what[0] == '\0' || arg[0] == '\0' )
+    {
+        place_help( ch );
+        return;
+    }
+    if ( ( room = placeable_room( ch ) ) == NULL )
+        return;
+    pArea = room->area;
+
+    if ( !str_prefix( what, "mobile" ) )
+    {
+        MOB_INDEX_DATA *m;
+        long count = 1;
+        int i;
+
+        if ( !is_number( arg ) || ( m = get_mob_index( atoi( arg ) ) ) == NULL )
+        {
+            snprintf( buf, sizeof(buf), "There is no mobile %s.\n\r", arg );
+            send_to_char( buf, ch );
+            return;
+        }
+        if ( how[0] != '\0' && ( ( count = plain_number( how, 20 ) ) < 1 ) )
+        {
+            send_to_char( "How many: a number from 1 to 20.\n\r", ch );
+            return;
+        }
+        if ( !loads_no_later( m->vnum, pArea ) )
+        {
+            send_to_char( "That mobile's area loads after this one, so the game could "
+                          "not find it\n\rwhen this area's resets are read.\n\r", ch );
+            return;
+        }
+        for ( i = 0; i < count; i++ )
+        {
+            CHAR_DATA *mob;
+
+            reset_append( pArea, new_reset( 'M', m->vnum, 1, room->vnum ) );
+            mob = create_mobile( m );
+            char_to_room( mob, room );
+        }
+        recount_mob_resets( pArea, m->vnum );
+        snprintf( buf, sizeof(buf), "%s will be here%s after every reset.\n\r",
+                  m->short_descr, count > 1 ? " (that many of them)" : "" );
+        buf[0] = UPPER( buf[0] );
+        send_to_char( buf, ch );
+    }
+    else if ( !str_prefix( what, "object" ) )
+    {
+        OBJ_INDEX_DATA *o;
+        RESET_DATA *r;
+
+        if ( !is_number( arg ) || ( o = get_obj_index( atoi( arg ) ) ) == NULL )
+        {
+            snprintf( buf, sizeof(buf), "There is no object %s.\n\r", arg );
+            send_to_char( buf, ch );
+            return;
+        }
+        if ( !loads_no_later( o->vnum, pArea ) )
+        {
+            send_to_char( "That object's area loads after this one, so the game could "
+                          "not find it\n\rwhen this area's resets are read.\n\r", ch );
+            return;
+        }
+
+        if ( how[0] == '\0' )
+        {
+            if ( !IS_SET( o->wear_flags, ITEM_TAKE ) && o->item_type != ITEM_CONTAINER
+              && o->item_type != ITEM_FOUNTAIN && o->item_type != ITEM_FURNITURE
+              && o->item_type != ITEM_PORTAL )
+                send_to_char( "(It cannot be picked up -- no TAKE -- so it stays as "
+                              "scenery.)\n\r", ch );
+            reset_append( pArea, new_reset( 'O', o->vnum, 0, room->vnum ) );
+            obj_to_room( create_object( o, o->level ), room );
+            snprintf( buf, sizeof(buf), "%s will lie here after every reset that "
+                      "finds the area empty.\n\r", o->short_descr );
+        }
+        else if ( !str_cmp( how, "in" ) )
+        {
+            OBJ_INDEX_DATA *box;
+            RESET_DATA *tail;
+            OBJ_DATA *box_here;
+
+            if ( !is_number( target ) || ( box = get_obj_index( atoi( target ) ) ) == NULL
+              || obj_reset_in_room( pArea, room, box->vnum, &tail ) == NULL )
+            {
+                send_to_char( "Name a container placed in this room: PLACE OBJ <its vnum> "
+                              "first.\n\r", ch );
+                return;
+            }
+            if ( box->item_type != ITEM_CONTAINER )
+            {
+                send_to_char( "That is not a container.\n\r", ch );
+                return;
+            }
+            r = new_reset( 'P', o->vnum, 0, box->vnum );
+            reset_insert_after( pArea, tail, r );
+            if ( ( box_here = obj_here( room, box ) ) != NULL )
+                obj_to_obj( create_object( o, o->level ), box_here );
+            snprintf( buf, sizeof(buf), "%s will be put back in %s at every reset.\n\r",
+                      o->short_descr, box->short_descr );
+        }
+        else if ( !str_cmp( how, "on" ) || !str_prefix( how, "worn" )
+               || !str_prefix( how, "wear" ) || !str_prefix( how, "wielded" )
+               || !str_prefix( how, "equip" ) )
+        {
+            MOB_INDEX_DATA *m;
+            RESET_DATA *mreset, *tail;
+            CHAR_DATA *mob;
+            bool worn = str_cmp( how, "on" ) != 0;
+            int slot = 0;
+
+            if ( !is_number( target ) || ( m = get_mob_index( atoi( target ) ) ) == NULL
+              || ( mreset = mob_reset_in_room( pArea, room, m->vnum, &tail ) ) == NULL )
+            {
+                send_to_char( "Name a mobile placed in this room: PLACE MOB <its vnum> "
+                              "first.\n\r", ch );
+                return;
+            }
+            if ( worn && ( slot = equip_slot( o, mreset, tail ) ) < 0 )
+            {
+                send_to_char( slot == -2
+                    ? "It has no wear slot it can be worn in (SET OBJ ... WEAR).\n\r"
+                    : "That mobile already wears something there.\n\r", ch );
+                return;
+            }
+            r = new_reset( worn ? 'E' : 'G', o->vnum, -1, worn ? slot : 0 );
+            reset_insert_after( pArea, tail, r );
+            if ( ( mob = mob_here( room, m ) ) != NULL )
+            {
+                OBJ_DATA *obj = create_object( o, o->level );
+
+                obj_to_char( obj, mob );
+                if ( worn && get_eq_char( mob, slot ) == NULL )
+                    equip_char( mob, obj, slot );
+            }
+            if ( worn )
+                snprintf( buf, sizeof(buf), "%s will wear %s %s at every reset.\n\r",
+                          m->short_descr, o->short_descr, wear_slot_word( slot ) );
+            else
+                snprintf( buf, sizeof(buf), "%s will carry %s at every reset.\n\r",
+                          m->short_descr, o->short_descr );
+        }
+        else
+        {
+            place_help( ch );
+            return;
+        }
+        buf[0] = UPPER( buf[0] );
+        send_to_char( buf, ch );
+    }
+    else if ( !str_prefix( what, "door" ) || !str_prefix( what, "exit" ) )
+    {
+        static const struct build_flag door_states[] =
+        {
+            { "open", 0 }, { "closed", 1 }, { "locked", 2 }, { NULL, 0 }
+        };
+        const struct build_flag *state = flag_find( door_states, how );
+        EXIT_DATA *pexit;
+        int door;
+        int sides = 1;
+
+        for ( door = 0; door <= 9; door++ )
+            if ( !str_prefix( arg, dir_name[door] ) )
+                break;
+        if ( door > 9 || ( pexit = room->exit[door] ) == NULL )
+        {
+            send_to_char( "There is no exit that way.\n\r", ch );
+            return;
+        }
+        if ( !IS_SET( pexit->exit_info, EX_ISDOOR ) )
+        {
+            send_to_char( "That way is not a door.  RLINK <dir> DOOR makes it one.\n\r", ch );
+            return;
+        }
+        if ( state == NULL )
+        {
+            send_to_char( "A door is placed open, closed or locked.\n\r", ch );
+            return;
+        }
+        if ( state->bit == 2 && pexit->key <= 0 )
+            send_to_char( "(It has no key: RLINK <dir> KEY <vnum> gives it one.)\n\r", ch );
+
+        /* Doors whose state is fixed at load (secret, trapped) keep it. */
+        if ( pexit->lock == 4 || pexit->lock == 5 )
+        {
+            send_to_char( "That door is secret or trapped, and resets that way "
+                          "whatever is placed.\n\r", ch );
+            return;
+        }
+
+        set_door_reset( pArea, room->vnum, door, (int) state->bit );
+        REMOVE_BIT( pexit->exit_info, EX_CLOSED | EX_LOCKED );
+        if ( state->bit >= 1 ) SET_BIT( pexit->exit_info, EX_CLOSED );
+        if ( state->bit >= 2 ) SET_BIT( pexit->exit_info, EX_LOCKED );
+
+        /* The far side too, when it is a door in an area this builder may
+           build in -- otherwise a door locked from one side only. */
+        {
+            ROOM_INDEX_DATA *there = pexit->u1.to_room;
+            EXIT_DATA *back;
+
+            if ( there != NULL && ( back = there->exit[rev_dir[door]] ) != NULL
+              && back->u1.to_room == room && IS_SET( back->exit_info, EX_ISDOOR )
+              && there->area != NULL && there->area->min_vnum > 0
+              && may_build_area( ch, there->area )
+              && back->lock != 4 && back->lock != 5 )
+            {
+                set_door_reset( there->area, there->vnum, rev_dir[door], (int) state->bit );
+                REMOVE_BIT( back->exit_info, EX_CLOSED | EX_LOCKED );
+                if ( state->bit >= 1 ) SET_BIT( back->exit_info, EX_CLOSED );
+                if ( state->bit >= 2 ) SET_BIT( back->exit_info, EX_LOCKED );
+                sides = 2;
+            }
+        }
+        snprintf( buf, sizeof(buf), "The door %s will be %s after every reset%s.\n\r",
+                  dir_name[door], state->name,
+                  sides == 2 ? ", from both sides" : " (this side only)" );
+        send_to_char( buf, ch );
+    }
+    else
+    {
+        place_help( ch );
+        return;
+    }
+
+    snprintf( buf, sizeof(buf), "%s placed %s %s in room %d.", ch->name, what, arg,
+              room->vnum );
+    log_string( buf );
+    send_to_char( "RESETS lists this room's; ASAVE keeps them.\n\r", ch );
+}
+
+
+/* One reset in words, for RESETS. */
+static void reset_words( RESET_DATA *r, char *out, size_t size )
+{
+    MOB_INDEX_DATA *m;
+    OBJ_INDEX_DATA *o, *box;
+    static const char *door_word[] =
+        { "open", "closed", "locked", "wizlocked", "secret", "trapped" };
+
+    switch ( r->command )
+    {
+    case 'M':
+        m = get_mob_index( r->arg1 );
+        snprintf( out, size, "mobile %d, %s", r->arg1, m ? m->short_descr : "(gone)" );
+        break;
+    case 'O':
+        o = get_obj_index( r->arg1 );
+        snprintf( out, size, "object %d, %s, on the floor", r->arg1,
+                  o ? o->short_descr : "(gone)" );
+        break;
+    case 'P':
+        o = get_obj_index( r->arg1 );
+        box = get_obj_index( r->arg3 );
+        snprintf( out, size, "    object %d, %s, in %s", r->arg1,
+                  o ? o->short_descr : "(gone)", box ? box->short_descr : "(gone)" );
+        break;
+    case 'G':
+        o = get_obj_index( r->arg1 );
+        snprintf( out, size, "    object %d, %s, carried", r->arg1,
+                  o ? o->short_descr : "(gone)" );
+        break;
+    case 'E':
+        o = get_obj_index( r->arg1 );
+        snprintf( out, size, "    object %d, %s, %s", r->arg1,
+                  o ? o->short_descr : "(gone)", wear_slot_word( r->arg3 ) );
+        break;
+    case 'D':
+        snprintf( out, size, "door %s, %s", r->arg2 >= 0 && r->arg2 <= 9
+                  ? dir_name[r->arg2] : "?", r->arg3 >= 0 && r->arg3 <= 5
+                  ? door_word[r->arg3] : "?" );
+        break;
+    case 'R':
+        snprintf( out, size, "the first %d exits shuffled", r->arg2 );
+        break;
+    default:
+        snprintf( out, size, "a '%c' reset", r->command );
+        break;
+    }
+}
+
+
+/* RESETS -- what comes back in this room, numbered for UNPLACE. */
+void do_resets( CHAR_DATA *ch, char *argument )
+{
+    char buf[MAX_STRING_LENGTH];
+    char line[512];
+    ROOM_INDEX_DATA *room = ch->in_room;
+    ROOM_INDEX_DATA *context = NULL;
+    RESET_DATA *r;
+    int n = 0;
+
+    UNUSED_PARAM( argument );
+    if ( room == NULL || room->area == NULL )
+        return;
+
+    buf[0] = '\0';
+    for ( r = room->area->reset_first; r != NULL; r = r->next )
+    {
+        ROOM_INDEX_DATA *where = reset_room( r, context );
+
+        if ( r->command == 'M' || r->command == 'O' )
+            context = where;
+        if ( where != room )
+            continue;
+        reset_words( r, line, sizeof(line) );
+        snprintf( buf + strlen( buf ), sizeof(buf) - strlen( buf ), "%3d. %s\n\r",
+                  ++n, line );
+        if ( strlen( buf ) > sizeof(buf) - 200 )
+        {
+            toc_strlcat( buf, "  ...and more.\n\r", sizeof(buf) );
+            break;
+        }
+    }
+
+    if ( n == 0 )
+    {
+        send_to_char( "Nothing is placed in this room.  PLACE puts something here.\n\r", ch );
+        return;
+    }
+    page_to_char( buf, ch );
+}
+
+
+/* UNPLACE <n> -- take a reset out of this room, and a mobile's or
+   container's own resets with it. What is in the room now stays. */
+void do_unplace( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    char line[512];
+    ROOM_INDEX_DATA *room;
+    ROOM_INDEX_DATA *context = NULL;
+    AREA_DATA *pArea;
+    RESET_DATA *r, *prev = NULL, *target = NULL, *target_prev = NULL;
+    int n = 0, want, removed = 0, mob_vnum = 0;
+
+    one_argument( argument, arg );
+    if ( !is_number( arg ) || ( want = atoi( arg ) ) < 1 )
+    {
+        send_to_char( "Syntax: unplace <number>   (the number RESETS shows)\n\r", ch );
+        return;
+    }
+    if ( ( room = placeable_room( ch ) ) == NULL )
+        return;
+    pArea = room->area;
+
+    for ( r = pArea->reset_first; r != NULL; prev = r, r = r->next )
+    {
+        ROOM_INDEX_DATA *where = reset_room( r, context );
+
+        if ( r->command == 'M' || r->command == 'O' )
+            context = where;
+        if ( where == room && ++n == want )
+        {
+            target      = r;
+            target_prev = prev;
+            break;
+        }
+    }
+    if ( target == NULL )
+    {
+        send_to_char( "There is no reset with that number here.  RESETS lists them.\n\r", ch );
+        return;
+    }
+
+    reset_words( target, line, sizeof(line) );
+
+    /* Unlink it, and what hangs off it: a mobile's G and E, a container's
+       P -- the resets straight after it that act on what it made. */
+    {
+        char kind = target->command;
+        RESET_DATA *next = target->next;
+
+        if ( kind == 'M' )
+            mob_vnum = target->arg1;
+        if ( target_prev == NULL ) pArea->reset_first = next;
+        else                       target_prev->next  = next;
+        if ( pArea->reset_last == target )
+            pArea->reset_last = target_prev;
+        removed = 1;
+
+        while ( next != NULL
+             && ( ( kind == 'M' && ( next->command == 'G' || next->command == 'E' ) )
+               || ( kind == 'O' && next->command == 'P' ) ) )
+        {
+            RESET_DATA *after = next->next;
+
+            if ( target_prev == NULL ) pArea->reset_first = after;
+            else                       target_prev->next  = after;
+            if ( pArea->reset_last == next )
+                pArea->reset_last = target_prev;
+            removed++;
+            next = after;
+        }
+    }
+
+    if ( mob_vnum != 0 )
+        recount_mob_resets( pArea, mob_vnum );
+
+    snprintf( buf, sizeof(buf), "Taken out: %s%s.  What is in the room now stays until "
+              "it is purged.\n\r", line,
+              removed > 1 ? " and what it carried or held" : "" );
     send_to_char( buf, ch );
 }

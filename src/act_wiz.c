@@ -6731,6 +6731,33 @@ void do_rlink( CHAR_DATA *ch, char *argument )
         }
 
         send_to_char( buf, ch );
+
+        /* A door is a door from both sides: its kind and its key go onto
+           the exit back as well, when that leads here and is one this
+           builder may edit -- otherwise PLACE DOOR LOCKED locks one side
+           of a door the other side calls an open way. A secret way is
+           left one-sided on purpose: hidden from one side only is a
+           thing builders mean. */
+        if ( !str_cmp( arg2, "open" ) || !str_cmp( arg2, "door" )
+          || !str_prefix( arg2, "pickproof" ) || !str_cmp( arg2, "key" ) )
+        {
+            ROOM_INDEX_DATA *there = pexit->u1.to_room;
+            EXIT_DATA *back;
+
+            if ( there != NULL && there != here
+              && ( back = there->exit[rev_dir[door]] ) != NULL
+              && back->u1.to_room == here && may_edit_room( ch, there )
+              && back->lock != 4 && back->lock != 5 )
+            {
+                if ( !str_cmp( arg2, "key" ) )
+                    back->key = pexit->key;
+                else
+                    set_exit_lock( back, pexit->lock );
+                snprintf( buf, sizeof(buf), "The way back, %s from room %d, "
+                          "matches.\n\r", dir_name[rev_dir[door]], there->vnum );
+                send_to_char( buf, ch );
+            }
+        }
         return;
     }
 

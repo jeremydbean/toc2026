@@ -2550,6 +2550,10 @@ sets the keyword to 'secret' as well as the lock.  Add more words with
 RLINK <dir> NAME SECRET <word>, keeping 'secret' first; drop it and the
 exit stops being hidden the next time the area loads.
 
+OPEN, DOOR, PICK and KEY set the way back as well, when it leads here and
+is a room you may edit: a door is a door from both sides.  SECRET is left
+one-sided, since a way hidden from one side only is often the point.
+
 Nothing is written to disk until RSAVE.
 
 See also: BUILDING, RSAVE, SET, RSTAT
@@ -2831,6 +2835,47 @@ already in the world keep their old values; LOAD a fresh one to see a
 change.  ASAVE keeps the prototype.
 
 See also: OCREATE, ASAVE, BUILDING, MSHOW
+~
+
+69 PLACE RESETS UNPLACE~
+Syntax: place mob <vnum> [<how many>]
+        place obj <vnum>
+        place obj <vnum> in <container vnum>
+        place obj <vnum> on <mobile vnum>
+        place obj <vnum> worn <mobile vnum>
+        place door <direction> open | closed | locked
+        resets
+        unplace <number>
+
+A reset is what makes something come back.  Every few minutes the game
+walks an area's resets and puts each mobile, object and door back the way
+they say.  PLACE adds one for the room you are standing in, and does it
+once straight away so you can see it.  Only an area made with ANEW holds
+resets, because ASAVE is what keeps them.
+
+  place mob 21003           the smith stands here, and comes back if killed
+  place mob 21004 3         three rats
+  place obj 21010           a chest on the floor
+  place obj 21011 in 21010  a ring inside that chest
+  place obj 21012 worn 21003   the smith wields his hammer
+  place obj 21013 on 21003     and carries a key
+  place door north locked   the door north is locked again at every reset
+
+An item for a mobile, or for a container, needs that mobile or container
+placed in this room first: the reset that gives or fills follows the one
+that makes it.  WORN picks the slot from the item's wear slots, the second
+finger or wrist if the first is taken.  A door is set from both sides when
+the far room is one you may build in.
+
+Objects on the floor and in containers come back only when a reset finds
+the area empty of players, as they always have; mobiles and doors come
+back whenever the area resets.
+
+RESETS lists what is placed in this room, numbered.  UNPLACE <number>
+takes one out -- and with a mobile its items, with a container what is
+in it.  What is in the room now stays until you PURGE it.
+
+See also: ASAVE, MCREATE, OCREATE, BUILDING
 ~
 
 70 DNS~

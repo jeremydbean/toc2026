@@ -355,6 +355,58 @@ removed first.
 
 ---
 
+## Placing things: resets
+
+A prototype is a template; nothing appears in the world until something
+makes one. A **reset** is a standing order: "a smith stands in this room",
+"a chest lies here with a ring in it", "this door is locked". Every few
+minutes the game walks each area's resets and puts back whatever is
+missing. `PLACE` writes one for the room you are standing in, and carries
+it out once immediately so you can see it.
+
+```
+goto 29201
+place mob 29210                 the smith, here, coming back if killed
+place obj 29221 worn 29210      wielding the sword
+place obj 29230 on 29210        carrying a key
+place obj 29240                 a chest on the floor
+place obj 29241 in 29240        a ring in the chest
+place door north locked         the door north locked again each reset
+resets
+asave
+```
+
+| Command | What it does |
+|---|---|
+| `place mob <vnum> [<how many>]` | A mobile in this room. `place mob 29215 3` is three of them. |
+| `place obj <vnum>` | An object on the floor here. |
+| `place obj <vnum> in <container>` | Inside a container already placed in this room. |
+| `place obj <vnum> on <mobile>` | Carried by a mobile already placed in this room. |
+| `place obj <vnum> worn <mobile>` | Worn or wielded by it. The slot comes from the item's wear slots; a second ring goes on the other finger. |
+| `place door <dir> open\|closed\|locked` | The door's state after each reset -- from both sides, when the far room is one you may build in. |
+| `resets` | What is placed in this room, numbered. |
+| `unplace <n>` | Take reset `n` out. A mobile's items, or a container's contents, go with it. |
+
+**Order matters, and PLACE keeps it.** A "give" or "wear" reset acts on the
+mobile the reset before it made; a "put in" acts on the container. So an
+item for a mobile or a chest needs that mobile or chest placed in this room
+first, and PLACE files the item straight after it.
+
+**When things come back.** Mobiles and doors come back whenever their area
+resets. Objects on the floor and in containers come back only when a reset
+finds the area empty of players -- stock ROM behaviour, so loot is not
+restocked under somebody's feet. A mobile is never added past the number
+placed in its room, however long it survives.
+
+**Taking one out.** UNPLACE removes the reset, not what it already made:
+the mobile or object in the room now stays until you PURGE it.
+
+Resets live in the area and are written by `ASAVE`, so they need an area
+made with ANEW. A door's lock wants a key to be any use: `rlink <dir> key
+<vnum>` names one.
+
+---
+
 ## Command reference
 
 ### Areas
@@ -436,6 +488,14 @@ Directions: `north east south west up down` and the four diagonals.
 | `oshow <vnum>` | Read an object prototype in words. |
 | `set obj <vnum> <field> <value>` | Change an object prototype; see [Editing an object](#editing-an-object). |
 
+### Resets
+
+| Command | What it does |
+|---|---|
+| `place mob\|obj\|door ...` | Make something come back in this room; see [Placing things](#placing-things-resets). |
+| `resets` | List this room's resets. |
+| `unplace <n>` | Remove one. |
+
 ---
 
 ## Saving and deploys
@@ -506,11 +566,11 @@ In-game building is being filled out in phases. Shipped so far:
 - **Editing mobiles** -- SET MOB <vnum> and MSHOW, every field in words.
 - **Editing objects** -- SET OBJ <vnum> and OSHOW: type, wear slots, flags,
   the values each type gives meaning to, affects, powers and details.
+- **Resets** -- PLACE, RESETS and UNPLACE: mobiles, their gear, objects,
+  containers' contents and door states that come back, saved with ASAVE.
 
 Coming, in order:
 
-- **Resets** -- place a mobile or object in a room so it respawns, and have
-  it persist in the area file.
 - **A guided wizard** -- a step-by-step builder that asks what you want and
   runs the commands for you, for people who would rather be led than
   memorise syntax.
