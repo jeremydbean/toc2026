@@ -56495,3 +56495,14 @@ Tue Oct  6 14:16:32 2026 :: Log Alaric [4207]: who
 Tue Oct  6 14:16:32 2026 :: Log Alaric [4207]: worth
 Tue Oct  6 14:19:10 2026 :: Sock.sinaddr:  5.161.75.7
 Tue Oct  6 14:19:10 2026 :: EOF encountered on read.
+Tue Oct  6 14:24:15 2026 :: Sock.sinaddr:  3.149.57.90
+Tue Oct  6 14:24:15 2026 :: EOF encountered on read.
+Tue Oct  6 14:28:36 2026 :: Loading Eclipse's playerfile
+Tue Oct  6 14:28:39 2026 :: Eclipse@97.248.95.144 has connected.
+Tue Oct  6 14:28:41 2026 :: Log Eclipse [9988]: arrived (Eclipse's Seat of Power.) from 0
+Tue Oct  6 14:28:44 2026 :: Log Eclipse [9988]: who
+Tue Oct  6 14:28:54 2026 :: Log Eclipse [9988]: stat mob alaric
+Tue Oct  6 14:29:02 2026 :: Log Eclipse [9988]: at alaric stat alaric
+Tue Oct  6 14:29:02 2026 :: Log Eclipse [4207]: arrived (Before the Altar.) from 9988
+Tue Oct  6 14:29:02 2026 :: Log Eclipse [4207]: stat alaric
+Tue Oct  6 14:29:02 2026 :: Log Eclipse [9988]: arrived (Eclipse's Seat of Power.) from 4207
