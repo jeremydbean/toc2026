@@ -1,7 +1,7 @@
 #PLAYER
 Name Eclipse~
 Id   2891
-LogO 1791303418
+LogO 1791306073
 Vers 4
 Desc Blah
 ~
@@ -19,7 +19,7 @@ ChangesSeen ~
 Cast none
 Levl 70
 Tru  70
-Plyd 10929778
+Plyd 10932433
 ListRemorts 0  0 ~
 NumRemorts 1
 Note 1790386686
@@ -65,7 +65,7 @@ Achv carry-one-platinum 1789655104
 Achv level-35 1790776090
 Achv level-45 1790776090
 Achv month-played 1790776090
-LastOut  1791299809
+LastOut  1791303418
 SesLogin 1791212924
 SesDur   20
 SesExpG  0
