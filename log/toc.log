@@ -53916,3 +53916,50 @@ Tue Oct  6 00:22:47 2026 :: Log Alaric [2497]: score
 Tue Oct  6 00:24:52 2026 :: Log Alaric [2497]: help hit
 Tue Oct  6 00:24:58 2026 :: Log Alaric [2497]: help hitroll
 Tue Oct  6 00:25:15 2026 :: Log Alaric [2497]: aq ti
+Tue Oct  6 00:26:44 2026 :: Sock.sinaddr:  5.161.177.47
+Tue Oct  6 00:26:44 2026 :: EOF encountered on read.
+Tue Oct  6 00:27:00 2026 :: Log Alaric [2497]: who
+Tue Oct  6 00:27:02 2026 :: Log Alaric [2497]: sc
+Tue Oct  6 00:27:28 2026 :: Log Alaric [2497]: aq re
+Tue Oct  6 00:27:30 2026 :: Log Alaric [2497]: enter door
+Tue Oct  6 00:27:30 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Oct  6 00:27:31 2026 :: Log Alaric [2401]: south
+Tue Oct  6 00:27:31 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Tue Oct  6 00:27:31 2026 :: Log Alaric [2404]: south
+Tue Oct  6 00:27:31 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 2404
+Tue Oct  6 00:27:31 2026 :: Log Alaric [2427]: south
+Tue Oct  6 00:27:31 2026 :: Log Alaric [2428]: arrived (Main Processional.) from 2427
+Tue Oct  6 00:27:32 2026 :: Log Alaric [2428]: south
+Tue Oct  6 00:27:32 2026 :: Log Alaric [2429]: arrived (Bridge of the Mermaids.) from 2428
+Tue Oct  6 00:27:32 2026 :: Log Alaric [2429]: south
+Tue Oct  6 00:27:32 2026 :: Log Alaric [2430]: arrived (Main Processional.) from 2429
+Tue Oct  6 00:27:32 2026 :: Log Alaric [2430]: south
+Tue Oct  6 00:27:32 2026 :: Log Alaric [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Tue Oct  6 00:27:33 2026 :: Log Alaric [2431]: open south
+Tue Oct  6 00:27:33 2026 :: Log Alaric [2431]: south
+Tue Oct  6 00:27:33 2026 :: Log Alaric [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Tue Oct  6 00:27:40 2026 :: Log Alaric [2432]: south
+Tue Oct  6 00:27:40 2026 :: Log Alaric [3505]: arrived (The Trail to Miden'nir) from 2432
+Tue Oct  6 00:27:40 2026 :: Log Alaric [3505]: south
+Tue Oct  6 00:27:40 2026 :: Log Alaric [3507]: arrived (A Burned Cart) from 3505
+Tue Oct  6 00:27:40 2026 :: Log Alaric [3507]: south
+Tue Oct  6 00:27:40 2026 :: Log Alaric [3510]: arrived (A Crossroads) from 3507
+Tue Oct  6 00:27:40 2026 :: Log Alaric [3510]: south
+Tue Oct  6 00:27:40 2026 :: Log Alaric [3516]: arrived (Muddy Ground) from 3510
+Tue Oct  6 00:27:41 2026 :: Log Alaric [3516]: down
+Tue Oct  6 00:27:41 2026 :: Log Alaric [19]: arrived (Soggy Cave) from 3516
+Tue Oct  6 00:27:41 2026 :: Log Alaric [19]: south
+Tue Oct  6 00:27:41 2026 :: Log Alaric [2801]: arrived (Wastedump) from 19
+Tue Oct  6 00:27:41 2026 :: Log Alaric [2801]: south
+Tue Oct  6 00:27:41 2026 :: Log Alaric [2803]: arrived (Troll's Living Room) from 2801
+Tue Oct  6 00:27:41 2026 :: Log Alaric [2803]: west
+Tue Oct  6 00:27:41 2026 :: Log Alaric [2802]: arrived (Troll's Larder) from 2803
+Tue Oct  6 00:27:44 2026 :: Log Alaric [2802]: get all
+Tue Oct  6 00:27:44 2026 :: Log Alaric [2802]: recal
+Tue Oct  6 00:27:44 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2802
+Tue Oct  6 00:27:44 2026 :: Log Alaric [2497]: recal
+Tue Oct  6 00:27:45 2026 :: Log Alaric [2497]: recal
+Tue Oct  6 00:27:46 2026 :: Log Alaric [2497]: aq co
+Tue Oct  6 00:27:46 2026 :: Log Alaric [2497]: quest complete: 27 gold, 52 quest points (streak bonus 208%)
+Tue Oct  6 00:27:47 2026 :: Log Alaric [2497]: aq ga no
+Tue Oct  6 00:27:49 2026 :: Log Alaric [2497]: score
