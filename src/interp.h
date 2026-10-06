@@ -365,6 +365,7 @@ DECLARE_DO_FUN(	do_astat	);
 DECLARE_DO_FUN(	do_asave	);
 DECLARE_DO_FUN(	do_mcreate	);
 DECLARE_DO_FUN(	do_mshow	);
+DECLARE_DO_FUN(	do_oshow	);
 DECLARE_DO_FUN(	do_ocreate	);
 DECLARE_DO_FUN(	do_rset		);
 DECLARE_DO_FUN(	do_rlink	);

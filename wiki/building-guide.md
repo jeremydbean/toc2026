@@ -153,8 +153,8 @@ changes nothing else, and a copied shopkeeper gets a shop of its own.
 See it with `LOAD MOB <vnum>` or `LOAD OBJ <vnum>`, read it with
 `OSTAT <vnum>`, and keep it with `ASAVE`.
 
-Editing an object field by field (`set obj 29220 type weapon`) is the next
-phase; see the [Roadmap](#roadmap). Mobiles can be edited now.
+Both can then be edited field by field, in words: see
+[Editing a mobile](#editing-a-mobile) and [Editing an object](#editing-an-object).
 
 ---
 
@@ -260,6 +260,101 @@ change. Nothing is kept until `ASAVE`.
 
 ---
 
+## Editing an object
+
+`SET OBJ` with a **vnum** edits an object prototype in words, and
+`OSHOW <vnum>` reads it back in the same words. (`set obj sword ...`, with a
+name, still edits one object in the world.)
+
+A blank object becoming a sword:
+
+```
+ocreate 29220
+set obj 29220 keywords sword runed
+set obj 29220 short a runed sword
+set obj 29220 long A runed sword lies here.
+set obj 29220 desc The blade is etched from hilt to point.
+set obj 29220 detail runes They spell out a name nobody remembers.
+set obj 29220 type weapon
+set obj 29220 class sword
+set obj 29220 dice 3d6
+set obj 29220 attack slash
+set obj 29220 weapon +sharp
+set obj 29220 wear +take +wield
+set obj 29220 flags +glow +magic
+set obj 29220 level 15
+set obj 29220 cost 5g 20s
+set obj 29220 affect +hitroll 2
+oshow 29220
+asave
+```
+
+### Every object
+
+| Field | Takes | Notes |
+|---|---|---|
+| `keywords` | words | What players type. |
+| `short` | text | In sentences: "you wield *a runed sword*". |
+| `long` | text | The line when it lies on the ground. |
+| `desc` | text | What `LOOK SWORD` shows. Without it, LOOK repeats the long line. |
+| `detail` | a keyword, then text | What `LOOK <keyword>` shows -- runes, a seal, a crack. `detail runes + more` adds; `detail runes none` removes. Quote several keywords: `detail 'runes markings' ...`. |
+| `type` | a type | `weapon` `armor` `clothing` `light` `container` `drink` `food` `potion` `pill` `scroll` `wand` `staff` `portal` `money` `key` `treasure` `furniture` `boat`... **Changing the type clears the values**, which meant something else to the old type. |
+| `level` | 0-200 | Who can use it. |
+| `weight` | 0-30000 | |
+| `cost` | a price | `5g 20s`, `1p`, `3 gold`, or a plain number of copper. |
+| `condition` | `perfect` `good` `average` `worn` `damaged` `broken` `ruined` | |
+| `material` | a material | |
+| `wear` | slots | `+take` (it can be picked up -- almost everything wants this), then where it goes: `wield` `hold` `finger` `neck` `torso` `head` `legs` `feet` `hands` `arms` `shield` `about` `waist` `wrist`. |
+| `flags` | names | `glow` `hum` `magic` `bless` `nodrop` `noremove` `invis` `metal` `anti_good` `anti_evil` `anti_neutral` `rot_death` `no_locate` `humans_only` `elves_only` `dwarves_only` `no_steal`... |
+
+Lists take `+name`, `-name` and `none`, as for mobiles.
+
+### What its values mean, by type
+
+An object's numbers mean different things for each type, so each type has
+fields of its own. A field another type owns is refused with the list of
+this type's.
+
+| Type | Fields |
+|---|---|
+| weapon | `class sword` (dagger axe mace spear flail whip polearm bow exotic), `dice 3d6`, `attack slash`, `weapon +sharp` (flaming frost vampiric vorpal two_handed) |
+| armor, clothing | `ac 5`, or `ac slash 8` -- on an item **higher is better** |
+| light | `hours 24`, or `hours infinite` |
+| container | `capacity 100` (weight it holds), `container +closeable +closed +locked +pickproof`, `key <object vnum>` |
+| drink | `capacity 10`, `amount 10` or `amount full`, `liquid beer`, `poisoned yes` |
+| food | `hours 6`, `poisoned no` |
+| money | `coins 50`, `coin gold` |
+| potion, pill, scroll | `spell level 20`, `spells 'cure light' armor` (up to three) |
+| wand, staff | `spell level 20`, `charges 5`, `spell 'magic missile'` |
+| portal | `portal plain` (or `random`, `crystal_ball`, `keyed`), `destination <room vnum>`, `key <object vnum>` |
+| anything | `v0` .. `v4` -- the raw numbers, for types nobody has named yet |
+
+A spell has to be one an item can hold: it must do something, and have a
+slot number, because the area file stores spells by slot. A weapon's dice
+take no bonus; give extra damage as `affect +damroll 2`.
+
+### What it gives the wearer
+
+```
+set obj 29220 affect +hitroll 2      a stat bonus
+set obj 29220 affect ac -10          armour (lower is better on a person)
+set obj 29220 affect -hitroll        take it off
+set obj 29220 grants +haste          a power while worn
+```
+
+Stats: `strength` `dexterity` `intelligence` `wisdom` `constitution` `hp`
+`mana` `moves` `ac` `hitroll` `damroll` `saves`. One affect per stat:
+setting it again replaces it. Powers (`grants`): `haste` `sanctuary`
+`flying` `invisible` `detect_invis` `detect_hidden` `infrared` `pass_door`
+`sneak`...
+
+**Affects and powers cannot change while anybody is wearing one.** The game
+takes an item's affects off by reading the prototype, so changing them
+under a worn copy would take off something other than what went on. Have it
+removed first.
+
+---
+
 ## Command reference
 
 ### Areas
@@ -338,7 +433,8 @@ Directions: `north east south west up down` and the four diagonals.
 | `load mob <vnum>` / `load obj <vnum>` | Make one, to look at. |
 | `mshow <vnum>` | Read a mobile prototype in words. |
 | `set mob <vnum> <field> <value>` | Change a mobile prototype; see [Editing a mobile](#editing-a-mobile). |
-| `ostat <vnum>` | Read an object prototype. |
+| `oshow <vnum>` | Read an object prototype in words. |
+| `set obj <vnum> <field> <value>` | Change an object prototype; see [Editing an object](#editing-an-object). |
 
 ---
 
@@ -408,11 +504,11 @@ In-game building is being filled out in phases. Shipped so far:
 - **Mobiles, objects and the full-area save** -- MCREATE and OCREATE, blank
   or copied from anything in the game; ASAVE writes the whole area.
 - **Editing mobiles** -- SET MOB <vnum> and MSHOW, every field in words.
+- **Editing objects** -- SET OBJ <vnum> and OSHOW: type, wear slots, flags,
+  the values each type gives meaning to, affects, powers and details.
 
 Coming, in order:
 
-- **Editing objects** -- change an item in plain English: type, wear
-  slots, and the values that matter for that type, named not numbered.
 - **Resets** -- place a mobile or object in a room so it respawns, and have
   it persist in the area file.
 - **A guided wizard** -- a step-by-step builder that asks what you want and

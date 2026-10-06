@@ -4266,6 +4266,15 @@ void do_set( CHAR_DATA *ch, char *argument )
 
     if (!str_prefix(arg,"object"))
     {
+	char target[MAX_INPUT_LENGTH];
+
+	/* A number is an object prototype being built (build.c). */
+	one_argument(argument,target);
+	if (is_number(target))
+	{
+	    build_set_obj(ch,argument);
+	    return;
+	}
 	do_oset(ch,argument);
 	return;
     }

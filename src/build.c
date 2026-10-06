@@ -28,6 +28,10 @@
 #include "merc.h"
 #include "interp.h"
 
+/* db.c's counts of what has been allocated, kept honest for MEMORY. */
+extern int top_affect;
+extern int top_ed;
+
 struct build_flag
 {
     const char *name;
@@ -288,11 +292,15 @@ static const char *enum_name( const struct build_flag *t, long value )
 static void flag_names( const struct build_flag *t, long bits,
                         char *out, size_t size )
 {
+    long shown = 0;
+
     out[0] = '\0';
     for ( ; t->name != NULL; t++ )
     {
-        if ( IS_SET( bits, t->bit ) )
+        /* A synonym ("body" for torso) is named once. */
+        if ( IS_SET( bits, t->bit ) && !IS_SET( shown, t->bit ) )
         {
+            SET_BIT( shown, t->bit );
             if ( out[0] != '\0' )
                 toc_strlcat( out, " ", size );
             toc_strlcat( out, t->name, size );
@@ -1156,5 +1164,1266 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
 
     snprintf( buf, sizeof(buf), "Mobile %d's %s is set.  MSHOW %d to look; ASAVE "
               "to keep it.\n\r", m->vnum, field, m->vnum );
+    send_to_char( buf, ch );
+}
+
+
+/*
+ * ------------------------------------------------------------------------
+ * Objects: SET OBJ <vnum> and OSHOW.
+ *
+ * An object's five values mean different things for each type -- a
+ * weapon's are its class, dice, attack and flags; a container's its
+ * capacity, lid and key -- so the value fields are named per type and a
+ * field another type owns is refused with the list of this type's. V0 to
+ * V4 stay available underneath, for the types nobody has named yet.
+ *
+ * Every value written is kept at 0 or above: the area file reads values
+ * with fread_flag, which has no minus sign, and ASAVE refuses a negative
+ * one rather than write it.
+ * ------------------------------------------------------------------------
+ */
+
+DECLARE_SPELL_FUN( spell_null );
+
+static const struct build_flag type_names[] =
+{
+    { "light",       ITEM_LIGHT       }, { "scroll",      ITEM_SCROLL      },
+    { "wand",        ITEM_WAND        }, { "staff",       ITEM_STAFF       },
+    { "weapon",      ITEM_WEAPON      }, { "treasure",    ITEM_TREASURE    },
+    { "armor",       ITEM_ARMOR       }, { "armour",      ITEM_ARMOR       },
+    { "potion",      ITEM_POTION      }, { "clothing",    ITEM_CLOTHING    },
+    { "furniture",   ITEM_FURNITURE   }, { "trash",       ITEM_TRASH       },
+    { "container",   ITEM_CONTAINER   }, { "drink",       ITEM_DRINK_CON   },
+    { "key",         ITEM_KEY         }, { "food",        ITEM_FOOD        },
+    { "money",       ITEM_MONEY       }, { "boat",        ITEM_BOAT        },
+    { "fountain",    ITEM_FOUNTAIN    }, { "pill",        ITEM_PILL        },
+    { "map",         ITEM_MAP         }, { "scuba_gear",  ITEM_SCUBA_GEAR  },
+    { "portal",      ITEM_PORTAL      }, { "saddle",      ITEM_SADDLE      },
+    { "herb",        ITEM_HERB        }, { "spell_component", ITEM_SPELL_COMPONENT },
+    { "training_food", ITEM_CAKE      },
+    { NULL, 0 }
+};
+
+static const struct build_flag wear_names[] =
+{
+    { "take",      ITEM_TAKE        }, { "finger",    ITEM_WEAR_FINGER },
+    { "neck",      ITEM_WEAR_NECK   }, { "torso",     ITEM_WEAR_BODY   },
+    { "body",      ITEM_WEAR_BODY   }, { "head",      ITEM_WEAR_HEAD   },
+    { "legs",      ITEM_WEAR_LEGS   }, { "feet",      ITEM_WEAR_FEET   },
+    { "hands",     ITEM_WEAR_HANDS  }, { "arms",      ITEM_WEAR_ARMS   },
+    { "shield",    ITEM_WEAR_SHIELD }, { "about",     ITEM_WEAR_ABOUT  },
+    { "waist",     ITEM_WEAR_WAIST  }, { "wrist",     ITEM_WEAR_WRIST  },
+    { "wield",     ITEM_WIELD       }, { "hold",      ITEM_HOLD        },
+    { "two_hands", ITEM_TWO_HANDS   },
+    { NULL, 0 }
+};
+
+static const struct build_flag extra_names[] =
+{
+    { "glow",        ITEM_GLOW        }, { "hum",         ITEM_HUM         },
+    { "dark",        ITEM_DARK        }, { "lock",        ITEM_LOCK        },
+    { "evil",        ITEM_EVIL        }, { "invis",       ITEM_INVIS       },
+    { "magic",       ITEM_MAGIC       }, { "nodrop",      ITEM_NODROP      },
+    { "bless",       ITEM_BLESS       }, { "anti_good",   ITEM_ANTI_GOOD   },
+    { "anti_evil",   ITEM_ANTI_EVIL   }, { "anti_neutral", ITEM_ANTI_NEUTRAL },
+    { "noremove",    ITEM_NOREMOVE    }, { "inventory",   ITEM_INVENTORY   },
+    { "nopurge",     ITEM_NOPURGE     }, { "rot_death",   ITEM_ROT_DEATH   },
+    { "vis_death",   ITEM_VIS_DEATH   }, { "metal",       ITEM_METAL       },
+    { "bounce",      ITEM_BOUNCE      }, { "no_identify", ITEM_NOIDENTIFY  },
+    { "no_locate",   ITEM_NOLOCATE    }, { "race_restricted", ITEM_RACE_RESTRICTED },
+    { NULL, 0 }
+};
+
+static const struct build_flag extra2_names[] =
+{
+    { "humans_only",    ITEM2_HUMAN_ONLY    }, { "elves_only",     ITEM2_ELF_ONLY      },
+    { "dwarves_only",   ITEM2_DWARF_ONLY    }, { "halflings_only", ITEM2_HALFLING_ONLY },
+    { "saurians_only",  ITEM2_SAURIAN_ONLY  }, { "no_steal",       ITEM2_NOSTEAL       },
+    { "no_teleport",    ITEM2_NO_TPORT      },
+    { NULL, 0 }
+};
+
+static const struct build_flag weapon_class_names[] =
+{
+    { "exotic", WEAPON_EXOTIC }, { "sword",   WEAPON_SWORD   },
+    { "dagger", WEAPON_DAGGER }, { "spear",   WEAPON_SPEAR   },
+    { "mace",   WEAPON_MACE   }, { "axe",     WEAPON_AXE     },
+    { "flail",  WEAPON_FLAIL  }, { "whip",    WEAPON_WHIP    },
+    { "polearm", WEAPON_POLEARM }, { "bow",   WEAPON_BOW     },
+    { NULL, 0 }
+};
+
+static const struct build_flag weapon_flag_names[] =
+{
+    { "flaming",  WEAPON_FLAMING  }, { "frost",     WEAPON_FROST     },
+    { "vampiric", WEAPON_VAMPIRIC }, { "sharp",     WEAPON_SHARP     },
+    { "vorpal",   WEAPON_VORPAL   }, { "two_handed", WEAPON_TWO_HANDS },
+    { NULL, 0 }
+};
+
+static const struct build_flag container_names[] =
+{
+    { "closeable", CONT_CLOSEABLE }, { "pickproof", CONT_PICKPROOF },
+    { "closed",    CONT_CLOSED    }, { "locked",    CONT_LOCKED    },
+    { "trapped",   CONT_TRAPPED   },
+    { NULL, 0 }
+};
+
+static const struct build_flag coin_names[] =
+{
+    { "copper", TYPE_COPPER }, { "silver",   TYPE_SILVER   },
+    { "gold",   TYPE_GOLD   }, { "platinum", TYPE_PLATINUM },
+    { NULL, 0 }
+};
+
+/* Portal kinds by what do_enter does with each value[0]. */
+static const struct build_flag portal_names[] =
+{
+    { "plain",        0 }, { "random",       1 },
+    { "crystal_ball", 4 }, { "keyed",        6 },
+    { NULL, 0 }
+};
+
+static const struct build_flag apply_names[] =
+{
+    { "strength",     APPLY_STR           }, { "dexterity",    APPLY_DEX          },
+    { "intelligence", APPLY_INT           }, { "wisdom",       APPLY_WIS          },
+    { "constitution", APPLY_CON           }, { "hp",           APPLY_HIT          },
+    { "mana",         APPLY_MANA          }, { "moves",        APPLY_MOVE         },
+    { "ac",           APPLY_AC            }, { "hitroll",      APPLY_HITROLL      },
+    { "damroll",      APPLY_DAMROLL       }, { "saves",        APPLY_SAVING_SPELL },
+    { "save_para",    APPLY_SAVING_PARA   }, { "save_rod",     APPLY_SAVING_ROD   },
+    { "save_petri",   APPLY_SAVING_PETRI  }, { "save_breath",  APPLY_SAVING_BREATH },
+    { "age",          APPLY_AGE           }, { "weight",       APPLY_WEIGHT       },
+    { "height",       APPLY_HEIGHT        },
+    { NULL, 0 }
+};
+
+/* The letters load_objects turns into these conditions. */
+static const struct build_flag condition_names[] =
+{
+    { "perfect", 100 }, { "good",    90 }, { "average", 75 }, { "worn", 50 },
+    { "damaged",  25 }, { "broken",  10 }, { "ruined",   0 },
+    { NULL, 0 }
+};
+
+
+/* A condition in words, rounded down the way the area file stores it. */
+static const char *condition_word( int condition )
+{
+    const struct build_flag *f;
+
+    for ( f = condition_names; f->name != NULL; f++ )
+        if ( condition >= f->bit )
+            return f->name;
+    return "ruined";
+}
+
+
+/* A number at or above zero, no larger than `hi'; -1 when it is not one. */
+static long plain_number( const char *s, long hi )
+{
+    long n;
+
+    if ( s[0] == '\0' || !isdigit( (unsigned char) s[0] ) || !is_number( (char *) s )
+      || strlen( s ) > 12 )
+        return -1;
+    n = atol( s );
+    return n <= hi ? n : -1;
+}
+
+
+/* "5g 20s", "1p", "350" (copper), "3 gold": a price in copper, or -1. */
+static long parse_price( char *s )
+{
+    char word[MAX_INPUT_LENGTH];
+    long total = 0;
+    bool any = false;
+
+    for ( ; ; )
+    {
+        char unit_word[MAX_INPUT_LENGTH];
+        char *end;
+        long n;
+        long unit = 1;
+
+        s = one_argument( s, word );
+        if ( word[0] == '\0' )
+            break;
+        if ( !isdigit( (unsigned char) word[0] ) )
+            return -1;
+        n = strtol( word, &end, 10 );
+        if ( *end == '\0' )
+        {
+            /* "3 gold": the unit may be the next word. */
+            char *peek = one_argument( s, unit_word );
+
+            if ( unit_word[0] != '\0' && !isdigit( (unsigned char) unit_word[0] ) )
+            {
+                end = unit_word;
+                s = peek;
+            }
+        }
+        switch ( LOWER( *end ) )
+        {
+        case '\0': case 'c': unit = 1;                   break;
+        case 's':            unit = COPPER_PER_SILVER;   break;
+        case 'g':            unit = COPPER_PER_GOLD;     break;
+        case 'p':            unit = COPPER_PER_PLATINUM; break;
+        default:             return -1;
+        }
+        if ( n < 0 || n > 1000000L )
+            return -1;
+        total += n * unit;
+        if ( total > 100000L * COPPER_PER_PLATINUM )
+            return -1;
+        any = true;
+    }
+    return any ? total : -1;
+}
+
+
+/* A spell that can be stored on an item: it has to do something, and it
+   has to have a slot, because the area file holds spells by slot. */
+static int storable_spell( const char *name )
+{
+    int sn = skill_lookup( name );
+
+    if ( sn <= 0 || skill_table[sn].spell_fun == NULL
+      || skill_table[sn].spell_fun == spell_null || skill_table[sn].slot <= 0 )
+        return -1;
+    return sn;
+}
+
+static const char *spell_word( int sn )
+{
+    return sn > 0 && sn < MAX_SKILL && skill_table[sn].name != NULL
+        ? skill_table[sn].name : "none";
+}
+
+
+/* Is any object made from this prototype being worn? Equip and unequip
+   read the prototype's affects, so changing them under a worn copy would
+   take off something other than what was put on. */
+static bool prototype_worn( OBJ_INDEX_DATA *o )
+{
+    LIST_ITERATOR iter;
+    OBJ_DATA *obj;
+
+    FOR_EACH_OBJECT( iter, obj )
+    {
+        if ( obj->pIndexData == o && obj->wear_loc != WEAR_NONE )
+            return true;
+    }
+    return false;
+}
+
+
+static OBJ_INDEX_DATA *editable_obj( CHAR_DATA *ch, const char *arg )
+{
+    char buf[MAX_STRING_LENGTH];
+    OBJ_INDEX_DATA *o;
+    AREA_DATA *pArea;
+    int vnum;
+
+    if ( !is_number( (char *) arg ) || strlen( arg ) > 5
+      || ( vnum = atoi( arg ) ) <= 0
+      || ( o = get_obj_index( vnum ) ) == NULL )
+    {
+        snprintf( buf, sizeof(buf), "There is no object %s.  OCREATE makes one.\n\r",
+                  arg );
+        send_to_char( buf, ch );
+        return NULL;
+    }
+
+    if ( ( pArea = area_for_vnum( vnum ) ) == NULL )
+    {
+        snprintf( buf, sizeof(buf),
+                  "Object %d came with the game, not from an area built here, and "
+                  "a change\n\rto it could never be saved.  Copy it into your own "
+                  "area instead:\n\r  ocreate <new vnum> %d\n\r", vnum, vnum );
+        send_to_char( buf, ch );
+        return NULL;
+    }
+
+    if ( !may_build_area( ch, pArea ) )
+    {
+        snprintf( buf, sizeof(buf), "Object %d belongs to %s, and you are not one "
+                  "of its builders.\n\r", vnum, pArea->name );
+        send_to_char( buf, ch );
+        return NULL;
+    }
+
+    return o;
+}
+
+
+/* The value fields of this object's type, in words, appended to out. */
+static void describe_values( OBJ_INDEX_DATA *o, char *out, size_t size )
+{
+    char buf[MAX_STRING_LENGTH];
+    char flags[512];
+
+    buf[0] = '\0';
+    switch ( o->item_type )
+    {
+    case ITEM_LIGHT:
+        if ( o->value[2] == 999 || o->value[2] == -1 )
+            snprintf( buf, sizeof(buf), "hours: infinite\n\r" );
+        else
+            snprintf( buf, sizeof(buf), "hours: %d\n\r", o->value[2] );
+        break;
+    case ITEM_WEAPON:
+        flag_names( weapon_flag_names, o->value[4], flags, sizeof(flags) );
+        snprintf( buf, sizeof(buf),
+                  "class: %s   dice: %dd%d (average %d)   attack: %s\n\r"
+                  "weapon: %s\n\r",
+                  enum_name( weapon_class_names, o->value[0] ),
+                  o->value[1], o->value[2], ( 1 + o->value[2] ) * o->value[1] / 2,
+                  o->value[3] >= 0 && o->value[3] <= MAX_DAMAGE_MESSAGE
+                      ? attack_table[o->value[3]].name : "unknown",
+                  flags );
+        break;
+    case ITEM_ARMOR:
+    case ITEM_CLOTHING:
+        snprintf( buf, sizeof(buf),
+                  "ac: pierce %d  bash %d  slash %d  exotic %d   (higher is better)\n\r",
+                  o->value[0], o->value[1], o->value[2], o->value[3] );
+        break;
+    case ITEM_CONTAINER:
+        flag_names( container_names, o->value[1], flags, sizeof(flags) );
+        snprintf( buf, sizeof(buf), "capacity: %d   container: %s   key: %d\n\r",
+                  o->value[0], flags, o->value[2] );
+        break;
+    case ITEM_DRINK_CON:
+        snprintf( buf, sizeof(buf),
+                  "capacity: %d   amount: %d   liquid: %s   poisoned: %s\n\r",
+                  o->value[0], o->value[1],
+                  o->value[2] >= 0 && o->value[2] < LIQ_MAX
+                      ? liq_table[o->value[2]].liq_name : "unknown",
+                  o->value[3] != 0 ? "yes" : "no" );
+        break;
+    case ITEM_FOOD:
+        snprintf( buf, sizeof(buf), "hours: %d   poisoned: %s\n\r",
+                  o->value[0], o->value[3] != 0 ? "yes" : "no" );
+        break;
+    case ITEM_MONEY:
+        snprintf( buf, sizeof(buf), "coins: %d   coin: %s\n\r",
+                  o->value[0], enum_name( coin_names, o->value[1] ) );
+        break;
+    case ITEM_PILL:
+    case ITEM_POTION:
+    case ITEM_SCROLL:
+        snprintf( buf, sizeof(buf), "spell level: %d   spells: '%s' '%s' '%s'\n\r",
+                  o->value[0], spell_word( o->value[1] ), spell_word( o->value[2] ),
+                  spell_word( o->value[3] ) );
+        break;
+    case ITEM_WAND:
+    case ITEM_STAFF:
+        snprintf( buf, sizeof(buf), "spell level: %d   charges: %d   spell: '%s'\n\r",
+                  o->value[0], o->value[1], spell_word( o->value[3] ) );
+        break;
+    case ITEM_PORTAL:
+        snprintf( buf, sizeof(buf), "portal: %s   destination: %d   key: %d\n\r",
+                  enum_name( portal_names, o->value[0] ), o->value[1], o->value[4] );
+        break;
+    }
+    toc_strlcat( out, buf, size );
+}
+
+
+/* The full prototype, in the words SET OBJ takes. */
+static void show_obj( CHAR_DATA *ch, OBJ_INDEX_DATA *o )
+{
+    static char out[4 * MAX_STRING_LENGTH];
+    const size_t size = sizeof(out);
+    char buf[MAX_STRING_LENGTH];
+    char flags[1024];
+    char price[64];
+    AREA_DATA *pArea = area_for_vnum( o->vnum );
+    AFFECT_DATA *paf;
+    EXTRA_DESCR_DATA *ed;
+    long grants = 0;
+
+    out[0] = '\0';
+    snprintf( buf, sizeof(buf), "Object %d, in %s.\n\r", o->vnum,
+              pArea != NULL ? pArea->name : "an area that shipped with the game" );
+    toc_strlcat( out, buf, size );
+    snprintf( buf, sizeof(buf), "keywords: %s\n\rshort:    %s\n\rlong:     %s\n\r",
+              o->name, o->short_descr, o->description );
+    toc_strlcat( out, buf, size );
+
+    format_price( o->cost, price, sizeof(price) );
+    snprintf( buf, sizeof(buf),
+              "type: %s   level: %d   weight: %d   cost: %s\n\r"
+              "condition: %s   material: %s\n\r",
+              enum_name( type_names, o->item_type ), o->level, o->weight, price,
+              condition_word( o->condition ), material_name( o->material ) );
+    toc_strlcat( out, buf, size );
+
+    flag_names( wear_names, (unsigned short) o->wear_flags, flags, sizeof(flags) );
+    snprintf( buf, sizeof(buf), "wear:  %s\n\r", flags );
+    toc_strlcat( out, buf, size );
+    flag_names( extra_names, o->extra_flags, flags, sizeof(flags) );
+    if ( o->extra_flags2 != 0 )
+    {
+        char more[512];
+
+        flag_names( extra2_names, o->extra_flags2, more, sizeof(more) );
+        if ( !str_cmp( flags, "none" ) )
+            flags[0] = '\0';
+        else
+            toc_strlcat( flags, " ", sizeof(flags) );
+        toc_strlcat( flags, more, sizeof(flags) );
+    }
+    snprintf( buf, sizeof(buf), "flags: %s\n\r", flags );
+    toc_strlcat( out, buf, size );
+
+    describe_values( o, out, size );
+
+    buf[0] = '\0';
+    for ( paf = o->affected; paf != NULL; paf = paf->next )
+    {
+        char one[96];
+
+        grants |= paf->bitvector;
+        if ( paf->location == APPLY_NONE )
+            continue;
+        snprintf( one, sizeof(one), "%s%+d %s", buf[0] != '\0' ? ", " : "",
+                  paf->modifier, enum_name( apply_names, paf->location ) );
+        toc_strlcat( buf, one, sizeof(buf) );
+    }
+    snprintf( flags, sizeof(flags), "affects: %s\n\r", buf[0] != '\0' ? buf : "none" );
+    toc_strlcat( out, flags, size );
+    if ( grants != 0 )
+    {
+        flag_names( affect_names, grants, flags, sizeof(flags) );
+        snprintf( buf, sizeof(buf), "grants:  %s\n\r", flags );
+        toc_strlcat( out, buf, size );
+    }
+
+    buf[0] = '\0';
+    for ( ed = o->extra_descr; ed != NULL; ed = ed->next )
+    {
+        if ( buf[0] != '\0' )
+            toc_strlcat( buf, ", ", sizeof(buf) );
+        toc_strlcat( buf, ed->keyword, sizeof(buf) );
+    }
+    snprintf( flags, sizeof(flags), "details: %s\n\r", buf[0] != '\0' ? buf : "none" );
+    toc_strlcat( out, flags, size );
+
+    snprintf( buf, sizeof(buf), "values:  %d %d %d %d %d\n\r",
+              o->value[0], o->value[1], o->value[2], o->value[3], o->value[4] );
+    toc_strlcat( out, buf, size );
+    toc_strlcat( out, "(Objects already made keep their old values; LOAD one to "
+                      "see a change.)\n\r", size );
+    page_to_char( out, ch );
+}
+
+
+/* OSHOW <vnum> -- an object prototype in the words SET OBJ takes. */
+void do_oshow( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    OBJ_INDEX_DATA *o;
+
+    one_argument( argument, arg );
+    if ( arg[0] == '\0' || !is_number( arg ) || strlen( arg ) > 5
+      || ( o = get_obj_index( atoi( arg ) ) ) == NULL )
+    {
+        send_to_char( "Syntax: oshow <object vnum>\n\r", ch );
+        return;
+    }
+    show_obj( ch, o );
+}
+
+
+static void obj_field_help( CHAR_DATA *ch )
+{
+    send_to_char(
+        "Syntax: set obj <vnum> <field> <value>\n\r"
+        "  keywords <words>   short <text>   long <text>   material <name>\n\r"
+        "  type <type>   level <n>   weight <n>   cost 5g 20s   condition perfect..ruined\n\r"
+        "  wear +take +wield ...    flags +glow +magic -nodrop ...\n\r"
+        "  affect +hitroll 2   affect -hitroll   affect none\n\r"
+        "  grants +haste       (a power while worn)   detail <keyword> <text>\n\r"
+        "By type:\n\r"
+        "  weapon     class <sword..bow>  dice 2d6  attack <name>  weapon +sharp\n\r"
+        "  armor      ac <n>  or  ac pierce|bash|slash|exotic <n>  (higher is better)\n\r"
+        "  light      hours <n>|infinite\n\r"
+        "  container  capacity <n>  container +closeable +locked  key <vnum>\n\r"
+        "  drink      capacity <n>  amount <n>|full  liquid <name>  poisoned yes|no\n\r"
+        "  food       hours <n>  poisoned yes|no      money  coins <n>  coin gold\n\r"
+        "  potion pill scroll   spell level <n>   spells <spell> [<spell> <spell>]\n\r"
+        "  wand staff           spell level <n>   charges <n>   spell <spell>\n\r"
+        "  portal     portal plain|random|crystal_ball|keyed  destination <vnum>  key <vnum>\n\r"
+        "  any type   v0..v4 <number>\n\r"
+        "OSHOW <vnum> shows the object in these words.  ASAVE keeps changes.\n\r",
+        ch );
+}
+
+
+/*
+ * The fields one item type gives its values. Returns 1 when the field was
+ * this type's and was set, 0 when it is not a value field of this type,
+ * and -1 when it was but the value was refused (and said so).
+ */
+static int set_obj_value_field( CHAR_DATA *ch, OBJ_INDEX_DATA *o,
+                                const char *field, char *value )
+{
+    char buf[MAX_STRING_LENGTH];
+    const struct build_flag *f;
+    long n;
+    int t = o->item_type;
+
+    if ( strlen( field ) < 3 && str_cmp( field, "ac" ) && str_cmp( field, "to" ) )
+        return 0;
+
+    if ( ( t == ITEM_LIGHT || t == ITEM_FOOD ) && !str_prefix( field, "hours" ) )
+    {
+        if ( t == ITEM_LIGHT && !str_prefix( value, "infinite" ) )
+            n = 999;
+        else if ( ( n = plain_number( value, 998 ) ) < 0 )
+        {
+            send_to_char( "Hours is a number from 0 to 998, or (for a light) "
+                          "infinite.\n\r", ch );
+            return -1;
+        }
+        o->value[t == ITEM_LIGHT ? 2 : 0] = (int) n;
+        return 1;
+    }
+
+    if ( t == ITEM_WEAPON )
+    {
+        if ( !str_prefix( field, "class" ) )
+        {
+            if ( ( f = flag_find( weapon_class_names, value ) ) == NULL )
+            {
+                table_names( weapon_class_names, buf, sizeof(buf) );
+                send_to_char( "Classes: ", ch ); send_to_char( buf, ch );
+                send_to_char( "\n\r", ch );
+                return -1;
+            }
+            o->value[0] = (int) f->bit;
+            return 1;
+        }
+        if ( !str_prefix( field, "dice" ) || !str_prefix( field, "damage" ) )
+        {
+            int dn, dt, db;
+
+            if ( !parse_dice( value, &dn, &dt, &db ) || db != 0 || dn > 100 || dt > 1000 )
+            {
+                send_to_char( "Weapon dice are 2d6: two six-sided dice, no bonus "
+                              "(give the bonus as an affect: damroll).\n\r", ch );
+                return -1;
+            }
+            o->value[1] = dn;
+            o->value[2] = dt;
+            return 1;
+        }
+        if ( !str_prefix( field, "attack" ) )
+        {
+            int at = attack_named( value );
+
+            if ( at < 0 )
+            {
+                attack_list( buf, sizeof(buf) );
+                send_to_char( "Attacks: ", ch ); send_to_char( buf, ch );
+                send_to_char( "\n\r", ch );
+                return -1;
+            }
+            o->value[3] = at;
+            return 1;
+        }
+        if ( !str_prefix( field, "weapon" ) )
+        {
+            long bits = o->value[4];
+
+            if ( !flag_edit( ch, weapon_flag_names, &bits, "weapon flag", value, 0, "" ) )
+                return -1;
+            o->value[4] = (int) bits;
+            return 1;
+        }
+    }
+
+    if ( ( t == ITEM_ARMOR || t == ITEM_CLOTHING )
+      && ( !str_cmp( field, "ac" ) || !str_prefix( field, "armor" )
+        || !str_prefix( field, "armour" ) ) )
+    {
+        char kind[MAX_INPUT_LENGTH];
+        char *rest = one_argument( value, kind );
+        int which = -1;
+        int i;
+
+        if ( !str_prefix( kind, "pierce" ) )      which = 0;
+        else if ( !str_prefix( kind, "bash" ) )   which = 1;
+        else if ( !str_prefix( kind, "slash" ) )  which = 2;
+        else if ( !str_prefix( kind, "exotic" ) ) which = 3;
+        else rest = value;
+        while ( isspace( (unsigned char) *rest ) )
+            rest++;
+        if ( ( n = plain_number( rest, 1000 ) ) < 0 )
+        {
+            send_to_char( "Armour on an item is 0 or more, higher is better: ac 5, "
+                          "or ac slash 8.\n\r", ch );
+            return -1;
+        }
+        for ( i = 0; i < 4; i++ )
+            if ( which < 0 || which == i )
+                o->value[i] = (int) n;
+        return 1;
+    }
+
+    if ( t == ITEM_CONTAINER )
+    {
+        if ( !str_prefix( field, "capacity" ) )
+        {
+            if ( ( n = plain_number( value, 100000 ) ) < 0 )
+            {
+                send_to_char( "Capacity is the weight it holds, a number.\n\r", ch );
+                return -1;
+            }
+            o->value[0] = (int) n;
+            return 1;
+        }
+        if ( !str_prefix( field, "container" ) || !str_prefix( field, "lid" ) )
+        {
+            long bits = o->value[1];
+
+            if ( !flag_edit( ch, container_names, &bits, "container flag", value, 0, "" ) )
+                return -1;
+            o->value[1] = (int) bits;
+            return 1;
+        }
+    }
+
+    if ( ( t == ITEM_CONTAINER || t == ITEM_PORTAL ) && !str_cmp( field, "key" ) )
+    {
+        if ( ( n = plain_number( value, 32767 ) ) < 0
+          || ( n != 0 && get_obj_index( (int) n ) == NULL ) )
+        {
+            send_to_char( "Key is the vnum of an object that exists, or 0 for "
+                          "none.\n\r", ch );
+            return -1;
+        }
+        o->value[t == ITEM_CONTAINER ? 2 : 4] = (int) n;
+        return 1;
+    }
+
+    if ( t == ITEM_DRINK_CON )
+    {
+        if ( !str_prefix( field, "capacity" ) || !str_prefix( field, "amount" ) )
+        {
+            bool cap = !str_prefix( field, "capacity" );
+
+            if ( !cap && !str_cmp( value, "full" ) )
+                n = o->value[0];
+            else if ( ( n = plain_number( value, 10000 ) ) < 0 )
+            {
+                send_to_char( "Give a number of drinks.\n\r", ch );
+                return -1;
+            }
+            o->value[cap ? 0 : 1] = (int) n;
+            if ( o->value[1] > o->value[0] )
+                o->value[1] = o->value[0];
+            return 1;
+        }
+        if ( !str_prefix( field, "liquid" ) )
+        {
+            int liq;
+
+            for ( liq = 0; liq < LIQ_MAX; liq++ )
+                if ( !str_prefix( value, liq_table[liq].liq_name ) )
+                    break;
+            if ( liq >= LIQ_MAX )
+            {
+                buf[0] = '\0';
+                for ( liq = 0; liq < LIQ_MAX; liq++ )
+                {
+                    toc_strlcat( buf, " ", sizeof(buf) );
+                    toc_strlcat( buf, liq_table[liq].liq_name, sizeof(buf) );
+                }
+                send_to_char( "Liquids:", ch ); send_to_char( buf, ch );
+                send_to_char( "\n\r", ch );
+                return -1;
+            }
+            o->value[2] = liq;
+            return 1;
+        }
+    }
+
+    if ( ( t == ITEM_DRINK_CON || t == ITEM_FOOD ) && !str_prefix( field, "poisoned" ) )
+    {
+        if ( !str_cmp( value, "yes" ) || !str_cmp( value, "on" ) )       o->value[3] = 1;
+        else if ( !str_cmp( value, "no" ) || !str_cmp( value, "off" ) )  o->value[3] = 0;
+        else { send_to_char( "Poisoned yes or no.\n\r", ch ); return -1; }
+        return 1;
+    }
+
+    if ( t == ITEM_MONEY )
+    {
+        if ( !str_prefix( field, "coins" ) && str_cmp( field, "coin" ) )
+        {
+            if ( ( n = plain_number( value, 2000000000L ) ) < 0 )
+            {
+                send_to_char( "Give a number of coins.\n\r", ch );
+                return -1;
+            }
+            o->value[0] = (int) n;
+            return 1;
+        }
+        if ( !str_cmp( field, "coin" ) )
+        {
+            if ( ( f = flag_find( coin_names, value ) ) == NULL )
+            {
+                send_to_char( "Coin is copper, silver, gold or platinum.\n\r", ch );
+                return -1;
+            }
+            o->value[1] = (int) f->bit;
+            return 1;
+        }
+    }
+
+    if ( t == ITEM_PILL || t == ITEM_POTION || t == ITEM_SCROLL
+      || t == ITEM_WAND || t == ITEM_STAFF )
+    {
+        bool device = ( t == ITEM_WAND || t == ITEM_STAFF );
+
+        if ( !str_prefix( field, "spell" ) || !str_prefix( field, "spells" ) )
+        {
+            char name[MAX_INPUT_LENGTH];
+            char *rest = value;
+            int sn[3] = { -1, -1, -1 };
+            int i;
+
+            /* "spell level 20" sets the level the spells are cast at. */
+            rest = one_argument( value, name );
+            if ( !str_cmp( name, "level" ) )
+            {
+                if ( ( n = plain_number( rest, 200 ) ) < 0 )
+                {
+                    send_to_char( "Spell level is a number from 0 to 200.\n\r", ch );
+                    return -1;
+                }
+                o->value[0] = (int) n;
+                return 1;
+            }
+
+            rest = value;
+            for ( i = 0; i < ( device ? 1 : 3 ); i++ )
+            {
+                rest = one_argument( rest, name );
+                if ( name[0] == '\0' )
+                    break;
+                if ( !str_cmp( name, "none" ) )
+                    continue;
+                if ( ( sn[i] = storable_spell( name ) ) < 0 )
+                {
+                    snprintf( buf, sizeof(buf), "'%s' is not a spell an item can "
+                              "hold.  Quote a spell of two words: 'cure light'.\n\r",
+                              name );
+                    send_to_char( buf, ch );
+                    return -1;
+                }
+            }
+            if ( device )
+                o->value[3] = sn[0];
+            else
+            {
+                o->value[1] = sn[0];
+                o->value[2] = sn[1];
+                o->value[3] = sn[2];
+            }
+            return 1;
+        }
+        if ( device && !str_prefix( field, "charges" ) )
+        {
+            if ( ( n = plain_number( value, 100 ) ) < 0 )
+            {
+                send_to_char( "Charges is a number from 0 to 100.\n\r", ch );
+                return -1;
+            }
+            o->value[1] = o->value[2] = (int) n;
+            return 1;
+        }
+    }
+
+    if ( t == ITEM_PORTAL )
+    {
+        if ( !str_cmp( field, "portal" ) || !str_prefix( field, "kind" ) )
+        {
+            if ( ( f = flag_find( portal_names, value ) ) == NULL )
+            {
+                send_to_char( "A portal is plain, random (costs 500 gold, goes "
+                              "anywhere), crystal_ball or keyed.\n\r", ch );
+                return -1;
+            }
+            o->value[0] = (int) f->bit;
+            return 1;
+        }
+        if ( !str_prefix( field, "destination" ) || !str_cmp( field, "to" ) )
+        {
+            if ( ( n = plain_number( value, WORLD_SIZE ) ) < 0
+              || get_room_index( (int) n ) == NULL )
+            {
+                send_to_char( "Destination is the vnum of a room that exists.\n\r", ch );
+                return -1;
+            }
+            o->value[1] = (int) n;
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+
+/* Add, replace or take away a stat affect: "+hitroll 2", "-hitroll", "none". */
+static bool obj_affect_edit( CHAR_DATA *ch, OBJ_INDEX_DATA *o, char *value )
+{
+    char word[MAX_INPUT_LENGTH];
+    char amount[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    const struct build_flag *f;
+    AFFECT_DATA *paf, *prev = NULL;
+    bool remove;
+    const char *name;
+    int mod;
+
+    value = one_argument( value, word );
+    one_argument( value, amount );
+
+    if ( !str_cmp( word, "none" ) )
+    {
+        /* Keep only the worn powers, which GRANTS owns. */
+        AFFECT_DATA *keep = NULL, *last = NULL, *next;
+
+        for ( paf = o->affected; paf != NULL; paf = next )
+        {
+            next = paf->next;
+            if ( paf->bitvector == 0 )
+                continue;
+            paf->location = APPLY_NONE;
+            paf->modifier = 0;
+            paf->next     = NULL;
+            if ( last == NULL ) keep = paf; else last->next = paf;
+            last = paf;
+        }
+        o->affected = keep;
+        return true;
+    }
+
+    remove = ( word[0] == '-' );
+    name   = ( word[0] == '-' || word[0] == '+' ) ? word + 1 : word;
+    if ( ( f = flag_find( apply_names, name ) ) == NULL )
+    {
+        table_names( apply_names, buf, sizeof(buf) );
+        send_to_char( "Affects: ", ch ); send_to_char( buf, ch );
+        send_to_char( "\n\r  affect +hitroll 2, affect -hitroll, affect none\n\r", ch );
+        return false;
+    }
+
+    /* Find this location's affect, if there is one. */
+    for ( paf = o->affected; paf != NULL; prev = paf, paf = paf->next )
+        if ( paf->location == f->bit && paf->bitvector == 0 )
+            break;
+
+    if ( remove )
+    {
+        if ( paf == NULL )
+        {
+            send_to_char( "It has no such affect.\n\r", ch );
+            return false;
+        }
+        if ( prev == NULL ) o->affected = paf->next; else prev->next = paf->next;
+        return true;
+    }
+
+    if ( !is_number( amount ) || ( mod = atoi( amount ) ) == 0 || mod < -1000 || mod > 1000 )
+    {
+        send_to_char( "Give an amount from -1000 to 1000: affect +hitroll 2, affect "
+                      "ac -10.\n\r", ch );
+        return false;
+    }
+
+    if ( paf == NULL )
+    {
+        paf             = alloc_perm( sizeof(*paf) );
+        paf->type       = -1;
+        paf->duration   = -1;
+        paf->bitvector  = 0;
+        paf->bitvector2 = 0;
+        paf->location   = (sh_int) f->bit;
+        paf->next       = o->affected;
+        o->affected     = paf;
+        top_affect++;
+    }
+    paf->level    = o->level;
+    paf->modifier = (sh_int) mod;
+    return true;
+}
+
+
+/* Worn powers: "+haste -sanctuary". Each is a bit on an affect with no
+   stat, written back as an F record. */
+static bool obj_grants_edit( CHAR_DATA *ch, OBJ_INDEX_DATA *o, char *value )
+{
+    AFFECT_DATA *paf, *prev, *next;
+    long bits = 0;
+    long before;
+
+    for ( paf = o->affected; paf != NULL; paf = paf->next )
+        bits |= paf->bitvector;
+    before = bits;
+
+    if ( !flag_edit( ch, affect_names, &bits, "power", value, 0, "" ) )
+        return false;
+
+    /* Take away what went: clear the bits, and drop an affect left with
+       neither a stat nor a power. */
+    prev = NULL;
+    for ( paf = o->affected; paf != NULL; paf = next )
+    {
+        next = paf->next;
+        paf->bitvector &= (int) bits;
+        if ( paf->bitvector == 0 && paf->location == APPLY_NONE )
+        {
+            if ( prev == NULL ) o->affected = next; else prev->next = next;
+            continue;
+        }
+        prev = paf;
+    }
+
+    /* Add what came: one powers-only affect holds them. */
+    if ( ( bits & ~before ) != 0 )
+    {
+        paf             = alloc_perm( sizeof(*paf) );
+        paf->type       = -1;
+        paf->level      = o->level;
+        paf->duration   = -1;
+        paf->location   = APPLY_NONE;
+        paf->modifier   = 0;
+        paf->bitvector  = (int) ( bits & ~before );
+        paf->bitvector2 = 0;
+        paf->next       = o->affected;
+        o->affected     = paf;
+        top_affect++;
+    }
+    return true;
+}
+
+
+/* An extra description: "detail runes The runes spell a name.", "detail
+   runes + more", "detail runes none". */
+static bool obj_detail_edit( CHAR_DATA *ch, OBJ_INDEX_DATA *o, char *value )
+{
+    char keyword[MAX_INPUT_LENGTH];
+    char text[2 * MAX_STRING_LENGTH];
+    EXTRA_DESCR_DATA *ed, *prev = NULL;
+
+    value = one_argument( value, keyword );
+    while ( isspace( (unsigned char) *value ) )
+        value++;
+    if ( keyword[0] == '\0' || value[0] == '\0' )
+    {
+        send_to_char( "Syntax: detail <keyword> <text>      what LOOK <keyword> shows\n\r"
+                      "        detail <keyword> + <text>    add to it\n\r"
+                      "        detail <keyword> none        take it away\n\r"
+                      "Quote several keywords: detail 'runes markings' <text>\n\r", ch );
+        return false;
+    }
+
+    for ( ed = o->extra_descr; ed != NULL; prev = ed, ed = ed->next )
+        if ( !str_cmp( ed->keyword, keyword ) )
+            break;
+
+    if ( !str_cmp( value, "none" ) )
+    {
+        if ( ed == NULL )
+        {
+            send_to_char( "It has no such detail.\n\r", ch );
+            return false;
+        }
+        if ( prev == NULL ) o->extra_descr = ed->next; else prev->next = ed->next;
+        return true;
+    }
+
+    text[0] = '\0';
+    if ( value[0] == '+' && ed != NULL )
+        toc_strlcpy( text, ed->description, sizeof(text) );
+    wrap_into( value[0] == '+' ? value + 1 : value, text, sizeof(text) );
+    if ( strlen( text ) >= MAX_STRING_LENGTH - 2 )
+    {
+        send_to_char( "That detail is too long.\n\r", ch );
+        return false;
+    }
+    text[0] = UPPER( text[0] );
+
+    if ( ed == NULL )
+    {
+        ed          = alloc_perm( sizeof(*ed) );
+        ed->keyword = str_perm( keyword );
+        ed->next    = NULL;
+        /* At the end, so details read in the order they were added. */
+        if ( o->extra_descr == NULL )
+            o->extra_descr = ed;
+        else
+        {
+            EXTRA_DESCR_DATA *last = o->extra_descr;
+
+            while ( last->next != NULL )
+                last = last->next;
+            last->next = ed;
+        }
+        top_ed++;
+    }
+    ed->description = str_perm( text );
+    return true;
+}
+
+
+/* Wear slots, extra flags and the second extra word, edited as one list. */
+static bool obj_flags_edit( CHAR_DATA *ch, OBJ_INDEX_DATA *o, char *value )
+{
+    char word[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    long one = o->extra_flags;
+    long two = o->extra_flags2;
+
+    if ( value[0] == '\0' || !str_cmp( value, "none" ) )
+    {
+        if ( value[0] == '\0' )
+        {
+            table_names( extra_names, buf, sizeof(buf) );
+            send_to_char( "Flags: ", ch ); send_to_char( buf, ch );
+            table_names( extra2_names, buf, sizeof(buf) );
+            send_to_char( " ", ch ); send_to_char( buf, ch );
+            send_to_char( "\n\r", ch );
+            return false;
+        }
+        o->extra_flags  = 0;
+        o->extra_flags2 = 0;
+        return true;
+    }
+
+    /* Each name belongs to one of the two words; edit each in turn. */
+    for ( ; ; )
+    {
+        const char *name;
+        char single[MAX_INPUT_LENGTH];
+
+        value = one_argument( value, word );
+        if ( word[0] == '\0' )
+            break;
+        name = ( word[0] == '-' || word[0] == '+' ) ? word + 1 : word;
+        toc_strlcpy( single, word, sizeof(single) );
+        if ( flag_find( extra_names, name ) != NULL )
+        {
+            if ( !flag_edit( ch, extra_names, &one, "flag", single, 0, "" ) )
+                return false;
+        }
+        else if ( !flag_edit( ch, extra2_names, &two, "flag", single, 0, "" ) )
+            return false;
+    }
+    o->extra_flags  = (int) one;
+    o->extra_flags2 = (int) two;
+    return true;
+}
+
+
+/*
+ * SET OBJ <vnum> <field> <value>: reached from do_set when the target is a
+ * number, so "set obj sword ..." still edits an object in the world.
+ */
+void build_set_obj( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char field[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    char value[MAX_INPUT_LENGTH];
+    OBJ_INDEX_DATA *o;
+    const struct build_flag *f;
+    long n;
+    int r;
+
+    smash_tilde( argument );
+    argument = one_argument( argument, arg1 );
+    argument = one_argument( argument, field );
+    while ( isspace( (unsigned char) *argument ) )
+        argument++;
+    toc_strlcpy( value, argument, sizeof(value) );
+
+    if ( ( o = editable_obj( ch, arg1 ) ) == NULL )
+        return;
+
+    if ( field[0] == '\0' )
+    {
+        show_obj( ch, o );
+        return;
+    }
+
+    /* A field with no value only ever means "what goes here?" -- and an
+       empty word is a prefix of every name to str_prefix. */
+    if ( value[0] == '\0' && str_prefix( field, "flags" ) )
+    {
+        obj_field_help( ch );
+        return;
+    }
+
+    if ( ( r = set_obj_value_field( ch, o, field, value ) ) != 0 )
+    {
+        if ( r < 0 )
+            return;
+    }
+    else if ( !str_prefix( field, "keywords" ) || !str_cmp( field, "name" ) )
+        o->name = str_perm( value );
+    else if ( !str_prefix( field, "short" ) )
+        o->short_descr = str_perm( value );
+    else if ( !str_prefix( field, "long" ) )
+    {
+        value[0] = UPPER( value[0] );
+        o->description = str_perm( value );
+    }
+    else if ( !str_prefix( field, "material" ) )
+    {
+        int mat = material_lookup( value );
+
+        if ( mat == 19 && str_prefix( value, "unknown" ) )
+        {
+            send_to_char( "Materials: adamantite brass bronze cloth copper food "
+                          "glass gold herb iron\n\r  leather paper pill silver "
+                          "'spell component' steel stone vellum wood unknown\n\r", ch );
+            return;
+        }
+        o->material = (sh_int) mat;
+    }
+    else if ( !str_prefix( field, "type" ) )
+    {
+        if ( ( f = flag_find( type_names, value ) ) == NULL )
+        {
+            table_names( type_names, buf, sizeof(buf) );
+            send_to_char( "Types: ", ch ); send_to_char( buf, ch );
+            send_to_char( "\n\r", ch );
+            return;
+        }
+        if ( o->item_type != f->bit )
+        {
+            int i;
+
+            /* The old type's values mean nothing to the new one. */
+            o->item_type = (sh_int) f->bit;
+            for ( i = 0; i < 5; i++ )
+                o->value[i] = 0;
+            if ( o->item_type == ITEM_PILL || o->item_type == ITEM_POTION
+              || o->item_type == ITEM_SCROLL )
+                o->value[1] = o->value[2] = o->value[3] = -1;
+            if ( o->item_type == ITEM_WAND || o->item_type == ITEM_STAFF )
+                o->value[3] = -1;
+            send_to_char( "Its values are cleared for the new type; OSHOW shows "
+                          "what to set.\n\r", ch );
+        }
+    }
+    else if ( !str_prefix( field, "level" ) )
+    {
+        if ( ( n = plain_number( value, 200 ) ) < 0 )
+        {
+            send_to_char( "Level is a number from 0 to 200.\n\r", ch );
+            return;
+        }
+        o->level = (sh_int) n;
+    }
+    else if ( !str_prefix( field, "weight" ) )
+    {
+        if ( ( n = plain_number( value, 30000 ) ) < 0 )
+        {
+            send_to_char( "Weight is a number from 0 to 30000.\n\r", ch );
+            return;
+        }
+        o->weight = (sh_int) n;
+    }
+    else if ( !str_prefix( field, "cost" ) || !str_prefix( field, "price" ) )
+    {
+        if ( ( n = parse_price( value ) ) < 0 )
+        {
+            send_to_char( "Give a price: 5g 20s, 1p, 3 gold, or a number of "
+                          "copper.\n\r", ch );
+            return;
+        }
+        o->cost = n;
+    }
+    else if ( !str_prefix( field, "condition" ) )
+    {
+        if ( ( f = flag_find( condition_names, value ) ) == NULL )
+        {
+            send_to_char( "Condition: perfect good average worn damaged broken "
+                          "ruined.\n\r", ch );
+            return;
+        }
+        o->condition = (sh_int) f->bit;
+    }
+    else if ( !str_prefix( field, "wear" ) )
+    {
+        long bits = (unsigned short) o->wear_flags;
+
+        if ( !flag_edit( ch, wear_names, &bits, "wear slot", value, 0, "" ) )
+            return;
+        o->wear_flags = (sh_int) bits;
+    }
+    else if ( !str_prefix( field, "flags" ) || !str_prefix( field, "extra" ) )
+    {
+        if ( !obj_flags_edit( ch, o, value ) )
+            return;
+    }
+    else if ( !str_prefix( field, "affects" ) || !str_prefix( field, "grants" )
+           || !str_prefix( field, "powers" ) )
+    {
+        if ( prototype_worn( o ) )
+        {
+            send_to_char( "Somebody is wearing one of these.  Its affects come off "
+                          "as they went on,\n\rso they cannot change under it: have "
+                          "it taken off first.\n\r", ch );
+            return;
+        }
+        if ( !str_prefix( field, "affects" ) ? !obj_affect_edit( ch, o, value )
+                                             : !obj_grants_edit( ch, o, value ) )
+            return;
+    }
+    else if ( !str_prefix( field, "details" ) )
+    {
+        if ( !obj_detail_edit( ch, o, value ) )
+            return;
+    }
+    else if ( !str_prefix( field, "description" ) )
+    {
+        /* What LOOK <object> shows is a detail under the object's own
+           keywords; without one, LOOK repeats the long line. */
+        char detail[2 * MAX_INPUT_LENGTH];
+
+        snprintf( detail, sizeof(detail), "'%s' %s", o->name, value );
+        if ( !obj_detail_edit( ch, o, detail ) )
+            return;
+    }
+    else if ( LOWER( field[0] ) == 'v' && field[1] >= '0' && field[1] <= '4'
+           && field[2] == '\0' )
+    {
+        if ( ( n = plain_number( value, 2000000000L ) ) < 0 )
+        {
+            send_to_char( "A value is a number, 0 or more.\n\r", ch );
+            return;
+        }
+        o->value[field[1] - '0'] = (int) n;
+    }
+    else
+    {
+        snprintf( buf, sizeof(buf), "%s has no field '%s'.\n\r",
+                  enum_name( type_names, o->item_type ), field );
+        send_to_char( buf, ch );
+        obj_field_help( ch );
+        return;
+    }
+
+    snprintf( buf, sizeof(buf), "Object %d's %s is set.  OSHOW %d to look; ASAVE "
+              "to keep it.\n\r", o->vnum, field, o->vnum );
     send_to_char( buf, ch );
 }

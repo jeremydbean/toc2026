@@ -2765,7 +2765,72 @@ clears.  Give a field alone to list its names.
 A mobile already in the world keeps the form it was made with; PURGE it
 and LOAD MOB <vnum> to see the change.  ASAVE keeps the prototype.
 
-See also: MCREATE, ASAVE, BUILDING
+See also: MCREATE, ASAVE, BUILDING, OSHOW
+~
+
+68 OSHOW OEDIT 'SET OBJ'~
+Syntax: oshow <vnum>
+        set obj <vnum> <field> <value>
+
+OSHOW reads an object prototype in words, and SET OBJ with a vnum changes
+one, taking the same words OSHOW prints.  Only an object in an area made
+with ANEW can be changed; copy a shipped one in with OCREATE first.
+
+What it says
+  keywords <words>     what players type: sword runed
+  short <text>         in a sentence: a runed sword
+  long <text>          the line on the ground: A runed sword lies here.
+  desc <text>          what LOOK at it shows
+  detail <word> <text> what LOOK <word> shows: detail runes They read...
+                       detail <word> + <text> adds, detail <word> none removes;
+                       quote several words: detail 'runes markings' ...
+
+What it is
+  type <type>   weapon armor clothing light container drink food potion
+                pill scroll wand staff portal money key treasure ...
+                Changing the type clears the values: they meant something
+                else to the old one.
+  level <n>   weight <n>   material <name>
+  cost <price>  5g 20s, 1p, 3 gold, or a number of copper
+  condition     perfect good average worn damaged broken ruined
+  wear          +take (can be picked up) +wield +hold +finger +neck +torso
+                +head +legs +feet +hands +arms +shield +about +waist +wrist
+  flags         +glow +hum +magic +bless +nodrop +noremove +invis +metal
+                +anti_good +anti_evil +anti_neutral +rot_death +no_locate
+                +humans_only +elves_only +dwarves_only +no_steal ...
+
+What it does, by type
+  weapon      class sword|dagger|axe|mace|spear|flail|whip|polearm|bow|exotic
+              dice 3d6   attack slash   weapon +sharp +flaming +frost
+              +vampiric +vorpal +two_handed
+  armor       ac <n>, or ac pierce|bash|slash|exotic <n>  (higher is better)
+  light       hours <n> | infinite
+  container   capacity <weight>   container +closeable +closed +locked
+              +pickproof   key <object vnum>
+  drink       capacity <n>   amount <n> | full   liquid water|beer|wine...
+              poisoned yes|no
+  food        hours <n>   poisoned yes|no
+  money       coins <n>   coin copper|silver|gold|platinum
+  potion, pill, scroll   spell level <n>   spells 'cure light' armor
+  wand, staff            spell level <n>   charges <n>   spell <spell>
+  portal      portal plain|random|crystal_ball|keyed   destination <room>
+              key <object vnum>  (for keyed)
+  any type    v0 .. v4 <number>, the raw values, for anything else
+
+What it gives the wearer
+  affect +hitroll 2        a stat: strength dexterity intelligence wisdom
+  affect ac -10            constitution hp mana moves ac hitroll damroll
+  affect -hitroll          saves ...  One per stat; setting it again
+  affect none              replaces it.
+  grants +haste            a power while worn: haste sanctuary flying
+                           invisible detect_invis infrared pass_door ...
+
+Affects and powers cannot change while anybody is wearing one of these:
+they come off the way they went on, so have it taken off first.  Objects
+already in the world keep their old values; LOAD a fresh one to see a
+change.  ASAVE keeps the prototype.
+
+See also: OCREATE, ASAVE, BUILDING, MSHOW
 ~
 
 70 DNS~
@@ -5018,7 +5083,8 @@ effect immediately and, for a player, is saved with them. Type any of the
 forms above without a field to see what that form accepts.
 
 SET MOB with a vnum instead of a name -- set mob 21003 race dwarf -- edits
-a mobile prototype you are building, in words.  See HELP MSHOW.
+a mobile prototype you are building, in words.  See HELP MSHOW.  SET OBJ
+with a vnum does the same for an object.  See HELP OSHOW.
 
 SET CHAR / SET MOB
   Stats       str int wis dex con
