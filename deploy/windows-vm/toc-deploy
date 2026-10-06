@@ -216,6 +216,21 @@ while [ $n -lt 15 ]; do
             systemctl daemon-reload
             systemctl enable --now toc-auto-deploy.timer >/dev/null 2>&1 || true
         fi
+        # The game and dashboard units too. Nothing installed them, so a
+        # fix to either sat in git: the dashboard's --log-file pointed at a
+        # root-only file for days (2026-10-06). The dashboard restarts on a
+        # changed unit -- nobody is playing through it, and a deploy has
+        # just restarted it anyway. The game's unit takes effect at its
+        # next start rather than costing players a second restart now.
+        for u in toc-web.service toc-game.service; do
+            if [ -f "$BUILD/deploy/windows-vm/$u" ] &&
+               ! cmp -s "$BUILD/deploy/windows-vm/$u" "/etc/systemd/system/$u"; then
+                install -m 0644 "$BUILD/deploy/windows-vm/$u" "/etc/systemd/system/$u" &&
+                    printf '   installed %s\n' "$u"
+                systemctl daemon-reload
+                [ "$u" = toc-web.service ] && systemctl restart toc-web
+            fi
+        done
         exit 0
     fi
     n=$((n + 1)); sleep 3

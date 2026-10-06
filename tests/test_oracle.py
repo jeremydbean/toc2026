@@ -539,6 +539,14 @@ class OracleWiringTests(unittest.TestCase):
         unit = self.read("deploy", "windows-vm", "toc-web.service")
         self.assertIn("StateDirectory=toc", unit)
 
+    def test_web_service_reads_a_log_it_can_open(self):
+        # toc-game's append: capture in /var/log/toc is created root:root
+        # 0600 by systemd, so the dashboard (User=toc) got Permission denied
+        # and the live-log socket flapped. It reads the game's own log.
+        unit = self.read("deploy", "windows-vm", "toc-web.service")
+        self.assertIn("--log-file /srv/toc/current/log/toc.log", unit)
+        self.assertNotIn("--log-file /var/log/toc/", unit)
+
     def test_the_sanctum_is_a_closed_room(self):
         # Solitary, no-recall, safe, no mobs, and its only exit leads down.
         limbo = self.read("area", "limbo.are").replace("\r\n", "\n")
