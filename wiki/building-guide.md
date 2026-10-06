@@ -118,6 +118,47 @@ what it holds.
 
 ---
 
+## Mobiles and objects
+
+Every mobile and object in the game is a **prototype**: a template with a
+vnum. `LOAD MOB 4444` makes one elite guard from prototype 4444; a reset
+makes one every time the area repops. Building a monster or an item means
+making a prototype.
+
+A prototype you build lives in your area's vnum range. That range is how
+the area knows the prototype is its own, so `MCREATE` and `OCREATE` only
+work inside an area made with [ANEW](#anew), not in the workshop.
+
+**Start from a copy.** Almost everything in a new zone is a variation on
+something that already exists, and a copy brings every field with it --
+the dice, the flags, the spells, the affects -- already sensible for its
+level:
+
+```
+mcreate 29210 4444       a copy of the elite guard of Dresden
+ocreate 29220 3021       a copy of a small sword
+```
+
+**Or start blank.** One number makes a blank prototype: a level 1 human
+called "a new mobile", or a piece of trash you can pick up called "a new
+object".
+
+```
+mcreate 29211
+ocreate 29221
+```
+
+Either way the new prototype is its own from that moment: changing it
+changes nothing else, and a copied shopkeeper gets a shop of its own.
+See it with `LOAD MOB <vnum>` or `LOAD OBJ <vnum>`, read it with
+`OSTAT <vnum>`, and keep it with `ASAVE`.
+
+Editing a prototype field by field, in plain English (`set mob 29210 race
+dwarf`, `set obj 29220 type weapon`), is the next phase; see the
+[Roadmap](#roadmap). Until then, copy the closest thing to what you want.
+
+---
+
 ## Command reference
 
 ### Areas
@@ -180,9 +221,21 @@ Directions: `north east south west up down` and the four diagonals.
 
 | Command | What it does |
 |---|---|
+| `asave [area]` | Write a whole ANEW area: mobiles, objects, rooms, resets, shops, specials. |
 | `rsave` | Report what would be written (writes nothing). |
-| `rsave confirm` | Write the current area's rooms to its file (buildable areas). |
+| `rsave confirm` | Write the current area to its file. An ANEW area saves whole, as ASAVE. |
 | `rsave confirm <file>` | Implementor-only, for a shipped area; names the file to prove intent. |
+
+### Mobiles and objects
+
+| Command | What it does |
+|---|---|
+| `mcreate <vnum>` | A blank mobile at a free vnum in your area's range. |
+| `mcreate <vnum> <from>` | A copy of mobile `<from>`, which may be any mobile in the game. |
+| `ocreate <vnum>` | A blank object at a free vnum in your area's range. |
+| `ocreate <vnum> <from>` | A copy of object `<from>`. |
+| `load mob <vnum>` / `load obj <vnum>` | Make one, to look at. |
+| `ostat <vnum>` | Read an object prototype. |
 
 ---
 
@@ -190,9 +243,17 @@ Directions: `north east south west up down` and the four diagonals.
 
 Two different things have to happen for built work to last.
 
-**1. Save to the file.** `RSAVE` writes the area you are in. Rooms you never
-saved are gone at the next reboot. RSAVE keeps the previous file beside the
-new one with a timestamp, so a bad save can be undone from the shell.
+**1. Save to the file.** `ASAVE` writes everything in an ANEW area -- every
+mobile and object in its range, its rooms, resets, shops and specials --
+and `RSAVE CONFIRM` does the same there. In the workshop and in shipped
+areas, RSAVE writes the rooms only. Anything never saved is gone at the next
+reboot. Both keep the previous file beside the new one with a timestamp, so
+a bad save can be undone from the shell.
+
+ASAVE writes nothing if something in the area cannot be written faithfully,
+and names it. A reset that points at something gone -- a mobile never
+saved, a door taken out since -- would stop the game at the next boot, so
+it is left out of the file, and ASAVE says how many it dropped.
 
 **2. Reach the repository.** The live server runs from a copy that a code
 deploy rebuilds from git. A new `.are` file and an `area.lst` entry made in
@@ -206,11 +267,17 @@ keeping so it can be committed. This is a known limitation, not a bug.
 
 ## What will not save yet
 
-`RSAVE` refuses, by name, a room it cannot write without quietly losing
-something: a room with a second flag word, a river or teleport room, or a
-room carrying a room affect. Those hold data the room format does not yet
-round-trip. Build elsewhere, or ask for the format to be finished, rather
-than save a file that has lost it.
+`RSAVE` and `ASAVE` refuse, by name, a room they cannot write without
+quietly losing something: a river or teleport room, or a room carrying a
+room affect. Those hold data the room format does not yet round-trip. Build
+elsewhere, or ask for the format to be finished, rather than save a file
+that has lost it. ASAVE refuses the same way for a mobile flag word or an
+object value the file format cannot hold (a negative object value, for
+one).
+
+One thing comes back changed on purpose: a room with **no exits at all** is
+made NO_MOB when the game boots, as stock ROM always has. Give a room an
+exit and it keeps the flags you set.
 
 ---
 
@@ -234,18 +301,18 @@ than save a file that has lost it.
 In-game building is being filled out in phases. Shipped so far:
 
 - **Areas and rooms** -- ANEW/ALIST/ASTAT, GOTO-to-create, SET ROOM, RLINK,
-  RSAVE. (This guide.)
+  RSAVE.
+- **Mobiles, objects and the full-area save** -- MCREATE and OCREATE, blank
+  or copied from anything in the game; ASAVE writes the whole area.
 
 Coming, in order:
 
+- **Editing mobiles** -- change a monster in plain English: `set mob
+  <vnum> race human`, `sex female`, `level 12`, flags by name.
+- **Editing objects** -- change an item in plain English: type, wear
+  slots, and the values that matter for that type, named not numbered.
 - **Resets** -- place a mobile or object in a room so it respawns, and have
   it persist in the area file.
-- **Mobiles** -- create and edit a monster in plain English: `set mob
-  <vnum> race human`, `sex female`, `level 12`, flags by name.
-- **Objects** -- create and edit an item in plain English: type, wear
-  slots, and the values that matter for that type, named not numbered.
-- **Full-area save** -- write an area's mobiles, objects, resets, and shops,
-  not just its rooms.
 - **A guided wizard** -- a step-by-step builder that asks what you want and
   runs the commands for you, for people who would rather be led than
   memorise syntax.
@@ -256,8 +323,8 @@ Coming, in order:
 
 ## Related
 
-- `HELP BUILDING`, `HELP ANEW`, `HELP RLINK`, `HELP RSAVE`, `HELP SET` in
-  game.
+- `HELP BUILDING`, `HELP ANEW`, `HELP ASAVE`, `HELP MCREATE`,
+  `HELP OCREATE`, `HELP RLINK`, `HELP RSAVE`, `HELP SET` in game.
 - [Area Building Guide](area-building-guide.md) -- the `.are` file format,
   for editing files directly or understanding what the commands write.
 - [Operator Guide](operator-guide.md) -- running the live game.

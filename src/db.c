@@ -921,6 +921,53 @@ static void read_m_mob_extras( FILE *fp, MOB_INDEX_DATA *pMobIndex )
 }
  
 /*
+ * A mobile's coin, from the one wealth figure an area file gives it. A
+ * figure of 0 means "what a mobile of this level carries", rolled once
+ * here for the prototype. The level has to be set first. The figure itself
+ * is kept so that saving the area writes back what was read.
+ */
+void mob_index_set_wealth( MOB_INDEX_DATA *pMobIndex, long total )
+{
+    pMobIndex->wealth       = total;
+    pMobIndex->new_platinum = 0;
+    pMobIndex->new_gold     = 0;
+    pMobIndex->new_silver   = 0;
+    pMobIndex->new_copper   = 0;
+
+    if(total != 0) {
+        pMobIndex->new_platinum = UMAX(0,total/179);
+        pMobIndex->new_gold     = UMAX(0,total/69);
+        pMobIndex->new_silver   = UMAX(0,total/39);
+        pMobIndex->new_copper   = UMAX(0,total/29);
+    } else {
+        if(pMobIndex->level < 5) {
+            pMobIndex->new_copper = number_range(1,2*pMobIndex->level);
+        } else if(pMobIndex->level < 10) {
+            pMobIndex->new_silver = number_range(1,2*pMobIndex->level);
+            pMobIndex->new_copper = number_range(1,4*pMobIndex->level);
+        } else if(pMobIndex->level < 20) {
+            pMobIndex->new_gold =   number_range(1,pMobIndex->level);
+            pMobIndex->new_silver = number_range(1,2*pMobIndex->level);
+            pMobIndex->new_copper = number_range(1,8*pMobIndex->level);
+        } else if(pMobIndex->level < 30) {
+            pMobIndex->new_gold =   number_range(1,2*pMobIndex->level);
+            pMobIndex->new_silver = number_range(1,4*pMobIndex->level);
+            pMobIndex->new_copper = number_range(1,16*pMobIndex->level);
+        } else if(pMobIndex->level < 50) {
+            pMobIndex->new_gold =   number_range(1,3*pMobIndex->level);
+            pMobIndex->new_silver = number_range(1,6*pMobIndex->level);
+            pMobIndex->new_copper = number_range(1,12*pMobIndex->level);
+        } else {
+            pMobIndex->new_platinum = number_range(1,pMobIndex->level/2);
+            pMobIndex->new_gold =     number_range(1,4*pMobIndex->level);
+            pMobIndex->new_silver =   number_range(1,8*pMobIndex->level);
+            pMobIndex->new_copper =   number_range(1,4*pMobIndex->level);
+        }
+    }
+}
+
+
+/*
  * Snarf a mob section.  new style
  */
 void load_mobiles( FILE *fp )
@@ -1046,37 +1093,8 @@ void load_mobiles( FILE *fp )
         pMobIndex->sex                  = fread_sh_int( fp );
 
         total		                = fread_number( fp );
-        if(total != 0) {
-            pMobIndex->new_platinum = UMAX(0,total/179);
-            pMobIndex->new_gold     = UMAX(0,total/69);
-            pMobIndex->new_silver   = UMAX(0,total/39);
-            pMobIndex->new_copper   = UMAX(0,total/29);
-	} else {
-	    if(pMobIndex->level < 5) {
-                pMobIndex->new_copper = number_range(1,2*pMobIndex->level);
-	    } else if(pMobIndex->level < 10) {
-                pMobIndex->new_silver = number_range(1,2*pMobIndex->level);
-                pMobIndex->new_copper = number_range(1,4*pMobIndex->level);
-	    } else if(pMobIndex->level < 20) {
-                pMobIndex->new_gold =   number_range(1,pMobIndex->level);
-                pMobIndex->new_silver = number_range(1,2*pMobIndex->level);
-                pMobIndex->new_copper = number_range(1,8*pMobIndex->level);
-	    } else if(pMobIndex->level < 30) {
-                pMobIndex->new_gold =   number_range(1,2*pMobIndex->level);
-                pMobIndex->new_silver = number_range(1,4*pMobIndex->level);
-                pMobIndex->new_copper = number_range(1,16*pMobIndex->level);
-	    } else if(pMobIndex->level < 50) {
-                pMobIndex->new_gold =   number_range(1,3*pMobIndex->level);
-                pMobIndex->new_silver = number_range(1,6*pMobIndex->level);
-                pMobIndex->new_copper = number_range(1,12*pMobIndex->level);
-            } else {
-                pMobIndex->new_platinum = number_range(1,pMobIndex->level/2);
-                pMobIndex->new_gold =     number_range(1,4*pMobIndex->level);
-                pMobIndex->new_silver =   number_range(1,8*pMobIndex->level);
-                pMobIndex->new_copper =   number_range(1,4*pMobIndex->level);
-	    }
-        }
-        pMobIndex->form                 = fread_flag( fp )
+        mob_index_set_wealth( pMobIndex, total );
+        pMobIndex->form                = fread_flag( fp )
                                         | race_table[pMobIndex->race].form;
         pMobIndex->parts                = fread_flag( fp )
                                         | race_table[pMobIndex->race].parts;
@@ -2600,6 +2618,8 @@ static bool room_is_saveable( ROOM_INDEX_DATA *room, char *why, size_t why_size 
  * does not end in anything. Both have to come out as a line followed by the
  * tilde, so a missing newline is supplied and a present one is not doubled.
  */
+static void write_area_text( FILE *fp, const char *text );
+
 static void write_string_block( FILE *fp, const char *text )
 {
     size_t len;
@@ -2610,10 +2630,13 @@ static void write_string_block( FILE *fp, const char *text )
         return;
     }
 
-    fputs( text, fp );
+    write_area_text( fp, text );
 
+    /* The carriage returns were not written, so look past them. */
     len = strlen( text );
-    if ( text[len - 1] != '\n' && text[len - 1] != '\r' )
+    while ( len > 0 && text[len - 1] == '\r' )
+        len--;
+    if ( len == 0 || text[len - 1] != '\n' )
         fputc( '\n', fp );
 
     fprintf( fp, "~\n" );
@@ -2627,7 +2650,8 @@ static void write_room( FILE *fp, ROOM_INDEX_DATA *room )
     int door;
 
     fprintf( fp, "#%d\n", room->vnum );
-    fprintf( fp, "%s~\n", room->name != NULL ? room->name : "" );
+    write_area_text( fp, room->name );
+    fputs( "~\n", fp );
     write_string_block( fp, room->description );
     /* The second flag word goes between the first and the sector, and
        only when the first says it is there -- exactly how load_rooms
@@ -2650,7 +2674,8 @@ static void write_room( FILE *fp, ROOM_INDEX_DATA *room )
 
         fprintf( fp, "D%d\n", door );
         write_string_block( fp, pexit->description );
-        fprintf( fp, "%s~\n", pexit->keyword != NULL ? pexit->keyword : "" );
+        write_area_text( fp, pexit->keyword );
+        fputs( "~\n", fp );
         fprintf( fp, "%d %d %d\n",
                  (int) pexit->lock, (int) pexit->key,
                  pexit->u1.to_room != NULL
@@ -2660,7 +2685,8 @@ static void write_room( FILE *fp, ROOM_INDEX_DATA *room )
     for ( ed = room->extra_descr; ed != NULL; ed = ed->next )
     {
         fprintf( fp, "E\n" );
-        fprintf( fp, "%s~\n", ed->keyword != NULL ? ed->keyword : "" );
+        write_area_text( fp, ed->keyword );
+        fputs( "~\n", fp );
         write_string_block( fp, ed->description );
     }
 
@@ -2816,6 +2842,774 @@ bool save_area_rooms( AREA_DATA *pArea, char *why, size_t why_size )
 
     snprintf( why, why_size, "%s", path );
     return true;
+}
+
+
+/*
+ * ------------------------------------------------------------------------
+ * Saving a whole area: the inverse of load_mobiles, load_objects,
+ * load_rooms, load_resets, load_shops and load_specials, in the order the
+ * loader needs them. Only an area with a declared vnum range (ANEW) is
+ * written this way, because only such an area knows which mobiles and
+ * objects are its own: they are the ones whose vnums fall in its range.
+ *
+ * The test of this code is a round trip. Save, reboot, save again, and the
+ * two files are byte for byte the same (tests/test_building_mobs_objs.py).
+ * ------------------------------------------------------------------------
+ */
+
+/* Text as fread_string reads it back: carriage returns dropped (the loader
+   puts one after every newline itself) and a tilde, which would end the
+   string early and desync the rest of the file, turned into a dash. */
+static void write_area_text( FILE *fp, const char *text )
+{
+    for ( ; text != NULL && *text != '\0'; text++ )
+    {
+        if ( *text == '\r' )
+            continue;
+        fputc( *text == '~' ? '-' : *text, fp );
+    }
+}
+
+/* A one-line string and its tilde. */
+static void write_line_string( FILE *fp, const char *text )
+{
+    write_area_text( fp, text );
+    fputs( "~\n", fp );
+}
+
+/* Does the area owning this vnum load no later than pArea? A reset that
+   names something loaded after its own area stops the boot, because the
+   loader looks every reset's targets up as it reads them. A vnum in no
+   declared range belongs to a shipped area, which loads first. */
+static bool loads_by( AREA_DATA *owner, AREA_DATA *pArea )
+{
+    AREA_DATA *scan;
+
+    if ( owner == NULL )
+        return true;
+
+    for ( scan = area_first; scan != NULL; scan = scan->next )
+    {
+        if ( scan == owner )
+            return true;
+        if ( scan == pArea )
+            return false;
+    }
+
+    return false;
+}
+
+static bool mob_ok_for( int vnum, AREA_DATA *pArea )
+{
+    return get_mob_index( vnum ) != NULL && loads_by( area_for_vnum( vnum ), pArea );
+}
+
+static bool obj_ok_for( int vnum, AREA_DATA *pArea )
+{
+    return get_obj_index( vnum ) != NULL && loads_by( area_for_vnum( vnum ), pArea );
+}
+
+static bool room_ok_for( int vnum, AREA_DATA *pArea )
+{
+    ROOM_INDEX_DATA *room = get_room_index( vnum );
+
+    return room != NULL && loads_by( room->area, pArea );
+}
+
+
+/*
+ * Would load_resets accept this reset when this area loads? It checks each
+ * reset's targets as it reads them and exits the game on a bad one, so a
+ * reset whose mobile was never saved, or whose door was taken out since,
+ * would stop the next boot. Such a reset is left out of the file and
+ * counted, rather than written.
+ */
+static bool reset_is_writable( RESET_DATA *r, AREA_DATA *pArea )
+{
+    ROOM_INDEX_DATA *room;
+    EXIT_DATA *pexit;
+
+    switch ( r->command )
+    {
+    case 'M':
+        return mob_ok_for( r->arg1, pArea ) && room_ok_for( r->arg3, pArea );
+    case 'O':
+        return obj_ok_for( r->arg1, pArea ) && room_ok_for( r->arg3, pArea );
+    case 'P':
+        return obj_ok_for( r->arg1, pArea ) && obj_ok_for( r->arg3, pArea );
+    case 'G':
+    case 'E':
+        return obj_ok_for( r->arg1, pArea );
+    case 'D':
+        if ( !room_ok_for( r->arg1, pArea ) || r->arg2 < 0 || r->arg2 > 9
+          || r->arg3 < 0 || r->arg3 > 5 )
+            return false;
+        room  = get_room_index( r->arg1 );
+        pexit = room->exit[r->arg2];
+        return pexit != NULL && IS_SET( pexit->exit_info, EX_ISDOOR );
+    case 'R':
+        return room_ok_for( r->arg1, pArea ) && r->arg2 >= 0 && r->arg2 <= 6;
+    case 'H':
+        return obj_ok_for( r->arg1, pArea )
+            && ( r->arg2 == 0 || obj_ok_for( r->arg2, pArea ) )
+            && mob_ok_for( r->arg3, pArea );
+    }
+
+    return false;
+}
+
+
+/* fread_flag reads digits and letters but never a minus sign, so a flag
+   word or object value that has gone negative cannot be written back. */
+static bool mobile_is_saveable( MOB_INDEX_DATA *m, char *why, size_t why_size )
+{
+    if ( m->act < 0 || m->act2 < 0 || m->affected_by < 0 || m->affected_by2 < 0
+      || m->off_flags < 0 || m->off_flags2 < 0 || m->imm_flags < 0
+      || m->imm_flags2 < 0 || m->res_flags < 0 || m->res_flags2 < 0
+      || m->vuln_flags < 0 || m->vuln_flags2 < 0 || m->form < 0 || m->parts < 0 )
+    {
+        snprintf( why, why_size,
+                  "mobile %d has a flag word the file format cannot hold",
+                  m->vnum );
+        return false;
+    }
+    return true;
+}
+
+static int obj_file_value( OBJ_INDEX_DATA *o, int i );
+
+static bool object_is_saveable( OBJ_INDEX_DATA *o, char *why, size_t why_size )
+{
+    int i;
+
+    if ( o->extra_flags < 0 || o->extra_flags2 < 0 )
+    {
+        snprintf( why, why_size,
+                  "object %d has a flag word the file format cannot hold",
+                  o->vnum );
+        return false;
+    }
+
+    for ( i = 0; i < 5; i++ )
+    {
+        if ( obj_file_value( o, i ) < 0 )
+        {
+            snprintf( why, why_size,
+                      "object %d has a negative value %d (v%d), which the "
+                      "file format cannot hold", o->vnum, o->value[i], i );
+            return false;
+        }
+    }
+    return true;
+}
+
+
+/* One mobile, in the shape load_mobiles() reads. */
+static void write_mobile( FILE *fp, MOB_INDEX_DATA *m )
+{
+    static const char size_letter[] = "TSMLHG";
+    MOB_ACTION_DATA *action;
+    const char *material;
+    long act  = m->act;
+    long aff  = m->affected_by;
+    long off  = m->off_flags;
+    long imm  = m->imm_flags;
+    long res  = m->res_flags;
+    long vuln = m->vuln_flags;
+
+    /* A second flag word is read only when the first carries its marker,
+       so a second word in use gets the marker whether it had one or not. */
+    if ( m->act2 != 0 )         SET_BIT( act,  ACT_FLAGS2 );
+    if ( m->affected_by2 != 0 ) SET_BIT( aff,  AFF_FLAGS2 );
+    if ( m->off_flags2 != 0 )   SET_BIT( off,  OFF_FLAGS2 );
+    if ( m->imm_flags2 != 0 )   SET_BIT( imm,  IMM_FLAGS2 );
+    if ( m->res_flags2 != 0 )   SET_BIT( res,  RES_FLAGS2 );
+    if ( m->vuln_flags2 != 0 )  SET_BIT( vuln, VULN_FLAGS2 );
+
+    fprintf( fp, "#%d\n", m->vnum );
+    write_line_string( fp, m->player_name );
+    write_line_string( fp, m->short_descr );
+    write_string_block( fp, m->long_descr );
+    write_string_block( fp, m->description );
+    write_line_string( fp, race_table[m->race].name );
+
+    fprintf( fp, "%ld", act );
+    if ( IS_SET( act, ACT_FLAGS2 ) )
+        fprintf( fp, " %ld", m->act2 );
+    fprintf( fp, " %ld", aff );
+    if ( IS_SET( aff, AFF_FLAGS2 ) )
+        fprintf( fp, " %ld", m->affected_by2 );
+    fprintf( fp, " %d %c\n", (int) m->alignment, m->action != NULL ? 'M' : 'S' );
+
+    fprintf( fp, "%d %d %dd%d+%d %dd%d+%d %dd%d+%d %d\n",
+             (int) m->level, (int) m->hitroll,
+             m->hit[DICE_NUMBER], m->hit[DICE_TYPE], m->hit[DICE_BONUS],
+             (int) m->mana[DICE_NUMBER], (int) m->mana[DICE_TYPE],
+             (int) m->mana[DICE_BONUS],
+             (int) m->damage[DICE_NUMBER], (int) m->damage[DICE_TYPE],
+             (int) m->damage[DICE_BONUS],
+             (int) m->dam_type );
+
+    fprintf( fp, "%d %d %d %d\n",
+             (int) m->ac[AC_PIERCE], (int) m->ac[AC_BASH],
+             (int) m->ac[AC_SLASH], (int) m->ac[AC_EXOTIC] );
+
+    fprintf( fp, "%ld", off );
+    if ( IS_SET( off, OFF_FLAGS2 ) )
+        fprintf( fp, " %ld", m->off_flags2 );
+    fprintf( fp, " %ld", imm );
+    if ( IS_SET( imm, IMM_FLAGS2 ) )
+        fprintf( fp, " %ld", m->imm_flags2 );
+    fprintf( fp, " %ld", res );
+    if ( IS_SET( res, RES_FLAGS2 ) )
+        fprintf( fp, " %ld", m->res_flags2 );
+    fprintf( fp, " %ld", vuln );
+    if ( IS_SET( vuln, VULN_FLAGS2 ) )
+        fprintf( fp, " %ld", m->vuln_flags2 );
+    fputc( '\n', fp );
+
+    fprintf( fp, "%d %d %d %ld\n",
+             (int) m->start_pos, (int) m->default_pos, (int) m->sex, m->wealth );
+
+    /* The mobile's material is read as one word; fread_word takes a quoted
+       one, which "spell component" needs. */
+    material = material_name( m->material );
+    fprintf( fp, strchr( material, ' ' ) != NULL ? "%ld %ld %c '%s'\n"
+                                                 : "%ld %ld %c %s\n",
+             m->form, m->parts,
+             m->size >= 0 && m->size <= SIZE_GIANT ? size_letter[m->size] : 'M',
+             material );
+
+    if ( m->action != NULL )
+    {
+        fputs( "{\n", fp );
+        for ( action = m->action; action != NULL; action = action->next )
+        {
+            fprintf( fp, "A %d\n", (int) action->level );
+            write_line_string( fp, action->not_vict_action );
+            write_line_string( fp, action->vict_action );
+        }
+        fputs( "}\n", fp );
+    }
+}
+
+
+/* The letter load_objects turns back into this condition. */
+static char condition_letter( int condition )
+{
+    if ( condition >= 100 ) return 'P';
+    if ( condition >=  90 ) return 'G';
+    if ( condition >=  75 ) return 'A';
+    if ( condition >=  50 ) return 'W';
+    if ( condition >=  25 ) return 'D';
+    if ( condition >=  10 ) return 'B';
+    return 'R';
+}
+
+/* An object value as the file holds it. Spells are stored by slot and
+   held by skill number, and an infinite light is written 999, because
+   fread_flag cannot read the -1 it means. */
+static int obj_file_value( OBJ_INDEX_DATA *o, int i )
+{
+    int v = o->value[i];
+    bool spell = false;
+
+    switch ( o->item_type )
+    {
+    case ITEM_PILL:
+    case ITEM_POTION:
+    case ITEM_SCROLL:
+        spell = ( i >= 1 && i <= 3 );
+        break;
+    case ITEM_STAFF:
+    case ITEM_WAND:
+        spell = ( i == 3 );
+        break;
+    case ITEM_LIGHT:
+        if ( i == 2 && v == -1 )
+            return 999;
+        break;
+    }
+
+    if ( spell )
+        return ( v > 0 && v < MAX_SKILL && skill_table[v].slot > 0 )
+            ? skill_table[v].slot : 0;
+
+    return v;
+}
+
+/* load_objects puts each trailer at the head of its list, so the lists are
+   written last to first to come back in the order they are in now. */
+static void write_obj_affects( FILE *fp, AFFECT_DATA *paf )
+{
+    if ( paf == NULL )
+        return;
+    write_obj_affects( fp, paf->next );
+    if ( paf->bitvector != 0 )
+        fprintf( fp, "F\nA %d %d %d\n",
+                 (int) paf->location, (int) paf->modifier, paf->bitvector );
+    else
+        fprintf( fp, "A\n%d %d\n", (int) paf->location, (int) paf->modifier );
+}
+
+static void write_obj_extras( FILE *fp, EXTRA_DESCR_DATA *ed )
+{
+    if ( ed == NULL )
+        return;
+    write_obj_extras( fp, ed->next );
+    fputs( "E\n", fp );
+    write_line_string( fp, ed->keyword );
+    write_string_block( fp, ed->description );
+}
+
+static void write_obj_actions( FILE *fp, OBJ_ACTION_DATA *action )
+{
+    if ( action == NULL )
+        return;
+    write_obj_actions( fp, action->next );
+    fputs( "T\n", fp );
+    write_line_string( fp, action->not_vict_action );
+    write_line_string( fp, action->vict_action );
+}
+
+/* One object, in the shape load_objects() reads. */
+static void write_object( FILE *fp, OBJ_INDEX_DATA *o )
+{
+    int extra = o->extra_flags;
+
+    if ( o->extra_flags2 != 0 )
+        SET_BIT( extra, ITEM_FLAGS2 );
+
+    fprintf( fp, "#%d\n", o->vnum );
+    write_line_string( fp, o->name );
+    write_line_string( fp, o->short_descr );
+    write_line_string( fp, o->description );
+    write_line_string( fp, material_name( o->material ) );
+
+    fprintf( fp, "%d %d", (int) o->item_type, extra );
+    if ( IS_SET( extra, ITEM_FLAGS2 ) )
+        fprintf( fp, " %d", o->extra_flags2 );
+    /* Wear flags are a short; write the bits, not a sign. */
+    fprintf( fp, " %u\n", (unsigned int) (unsigned short) o->wear_flags );
+
+    fprintf( fp, "%d %d %d %d %d\n",
+             obj_file_value( o, 0 ), obj_file_value( o, 1 ),
+             obj_file_value( o, 2 ), obj_file_value( o, 3 ),
+             obj_file_value( o, 4 ) );
+
+    fprintf( fp, "%d %d %ld %c\n",
+             (int) o->level, (int) o->weight, o->cost,
+             condition_letter( o->condition ) );
+
+    write_obj_affects( fp, o->affected );
+    write_obj_extras( fp, o->extra_descr );
+    write_obj_actions( fp, o->action );
+}
+
+
+/* The whole area file. Returns how many resets were left out. */
+static int write_area_file( FILE *fp, AREA_DATA *pArea )
+{
+    RESET_DATA *r;
+    int vnum;
+    int dropped = 0;
+
+    fputs( "#AREADATA\nName ", fp );
+    write_line_string( fp, pArea->name );
+    fputs( "Builders ", fp );
+    write_line_string( fp, pArea->builders != NULL && pArea->builders[0] != '\0'
+                           ? pArea->builders : "All" );
+    fprintf( fp, "VNUMs %d %d\nEnd\n\n", pArea->min_vnum, pArea->max_vnum );
+
+    fputs( "#MOBILES\n", fp );
+    for ( vnum = pArea->min_vnum; vnum <= pArea->max_vnum; vnum++ )
+    {
+        MOB_INDEX_DATA *m = get_mob_index( vnum );
+        if ( m != NULL )
+            write_mobile( fp, m );
+    }
+    fputs( "#0\n\n", fp );
+
+    fputs( "#OBJECTS\n", fp );
+    for ( vnum = pArea->min_vnum; vnum <= pArea->max_vnum; vnum++ )
+    {
+        OBJ_INDEX_DATA *o = get_obj_index( vnum );
+        if ( o != NULL )
+            write_object( fp, o );
+    }
+    fputs( "#0\n\n", fp );
+
+    write_area_rooms( fp, pArea );
+
+    fputs( "#RESETS\n", fp );
+    for ( r = pArea->reset_first; r != NULL; r = r->next )
+    {
+        if ( !reset_is_writable( r, pArea ) )
+        {
+            dropped++;
+            continue;
+        }
+        if ( r->command == 'G' || r->command == 'R' )
+            fprintf( fp, "%c 0 %d %d\n", r->command, (int) r->arg1, (int) r->arg2 );
+        else
+            fprintf( fp, "%c 0 %d %d %d\n", r->command,
+                     (int) r->arg1, (int) r->arg2, (int) r->arg3 );
+    }
+    fputs( "S\n\n", fp );
+
+    fputs( "#SHOPS\n", fp );
+    for ( vnum = pArea->min_vnum; vnum <= pArea->max_vnum; vnum++ )
+    {
+        MOB_INDEX_DATA *m = get_mob_index( vnum );
+        SHOP_DATA *s;
+        int i;
+
+        if ( m == NULL || ( s = m->pShop ) == NULL )
+            continue;
+        fprintf( fp, "%d", m->vnum );
+        for ( i = 0; i < MAX_TRADE; i++ )
+            fprintf( fp, " %d", (int) s->buy_type[i] );
+        fprintf( fp, " %d %d %d %d\n", (int) s->profit_buy, (int) s->profit_sell,
+                 (int) s->open_hour, (int) s->close_hour );
+    }
+    fputs( "0\n\n", fp );
+
+    fputs( "#SPECIALS\n", fp );
+    for ( vnum = pArea->min_vnum; vnum <= pArea->max_vnum; vnum++ )
+    {
+        MOB_INDEX_DATA *m = get_mob_index( vnum );
+        const char *name;
+
+        if ( m == NULL || m->spec_fun == NULL )
+            continue;
+        name = special_name( m->spec_fun );
+        if ( name == NULL || !str_cmp( name, "none" ) )
+            continue;
+        fprintf( fp, "M %d %s\n", m->vnum, name );
+    }
+    fputs( "S\n\n#$\n", fp );
+
+    return dropped;
+}
+
+
+/*
+ * Save everything an ANEW area holds. Returns false with a reason in `why';
+ * on success `why' holds the path written, and a note if any reset had to
+ * be left out. The file is written to a temp and renamed over the old one,
+ * which is kept beside it with a timestamp, as RSAVE does.
+ */
+bool save_area_full( AREA_DATA *pArea, char *why, size_t why_size )
+{
+    char path[MAX_INPUT_LENGTH];
+    char temp_path[MAX_INPUT_LENGTH + 32];
+    char backup_path[MAX_INPUT_LENGTH + 32];
+    FILE *fp;
+    bool existed;
+    int vnum;
+    int dropped;
+
+    if ( pArea == NULL || pArea->min_vnum <= 0 )
+    {
+        snprintf( why, why_size, "that area declares no vnum range" );
+        return false;
+    }
+    if ( pArea->file_name == NULL || pArea->file_name[0] == '\0' )
+    {
+        snprintf( why, why_size, "that area has no file to save to" );
+        return false;
+    }
+
+    /* Refuse before touching the disk, so a refusal leaves the file as it
+       was. */
+    for ( vnum = 0; vnum <= WORLD_SIZE; vnum++ )
+    {
+        ROOM_INDEX_DATA *room = get_room_index( vnum );
+
+        if ( room != NULL && room->area == pArea
+          && !room_is_saveable( room, why, why_size ) )
+            return false;
+    }
+    for ( vnum = pArea->min_vnum; vnum <= pArea->max_vnum; vnum++ )
+    {
+        MOB_INDEX_DATA *m = get_mob_index( vnum );
+        OBJ_INDEX_DATA *o = get_obj_index( vnum );
+
+        if ( m != NULL && !mobile_is_saveable( m, why, why_size ) )
+            return false;
+        if ( o != NULL && !object_is_saveable( o, why, why_size ) )
+            return false;
+    }
+
+    toc_strlcpy( path, pArea->file_name, sizeof(path) );
+    snprintf( temp_path, sizeof(temp_path), "%s.tmp", path );
+
+    if ( ( fp = fopen( temp_path, "w" ) ) == NULL )
+    {
+        snprintf( why, why_size, "cannot write %s", temp_path );
+        return false;
+    }
+    dropped = write_area_file( fp, pArea );
+    if ( fclose( fp ) != 0 )
+    {
+        remove( temp_path );
+        snprintf( why, why_size, "could not finish writing %s", temp_path );
+        return false;
+    }
+
+    existed = ( ( fp = fopen( path, "r" ) ) != NULL );
+    if ( existed )
+    {
+        fclose( fp );
+        snprintf( backup_path, sizeof(backup_path), "%s.%ld.bak",
+                  path, (long) current_time );
+        rename( path, backup_path );
+    }
+
+    if ( rename( temp_path, path ) != 0 )
+    {
+        snprintf( why, why_size, "could not replace %s", path );
+        return false;
+    }
+
+    if ( dropped > 0 )
+        snprintf( why, why_size,
+                  "%s (left out %d reset%s naming something that is gone or "
+                  "loads after this area)", path, dropped, dropped == 1 ? "" : "s" );
+    else
+        snprintf( why, why_size, "%s", path );
+    return true;
+}
+
+
+/* The attack_table index of an attack name, or 0 ("hit"). */
+static int attack_index( const char *name )
+{
+    int i;
+
+    for ( i = 0; i <= MAX_DAMAGE_MESSAGE; i++ )
+        if ( !str_cmp( name, attack_table[i].name ) )
+            return i;
+    return 0;
+}
+
+
+/*
+ * A new mobile prototype at `vnum': a copy of `copy_from' if given, or a
+ * plain level 1 human to be described with SET MOB. The caller has checked
+ * that the vnum is free and that the builder may use it. A copied
+ * shopkeeper gets a shop of its own, and copied actions are copied, not
+ * shared, so editing one mobile never changes the other.
+ *
+ * Every prototype string goes through str_perm (see there for why), which
+ * hands back a boot string as it is -- so a copy can share its source's
+ * text. Editing a prototype string replaces the pointer with a new
+ * str_perm; it never writes through it, and never frees it.
+ */
+MOB_INDEX_DATA *new_mob_index( int vnum, MOB_INDEX_DATA *copy_from )
+{
+    MOB_INDEX_DATA *m;
+    int iHash;
+
+    m = alloc_perm( sizeof(*m) );
+
+    if ( copy_from != NULL )
+    {
+        MOB_ACTION_DATA *a, *last = NULL;
+
+        *m = *copy_from;
+        m->player_name = str_perm( copy_from->player_name );
+        m->short_descr = str_perm( copy_from->short_descr );
+        m->long_descr  = str_perm( copy_from->long_descr );
+        m->description = str_perm( copy_from->description );
+
+        m->action = NULL;
+        for ( a = copy_from->action; a != NULL; a = a->next )
+        {
+            MOB_ACTION_DATA *c = alloc_perm( sizeof(*c) );
+
+            c->level           = a->level;
+            c->not_vict_action = str_perm( a->not_vict_action );
+            c->vict_action     = str_perm( a->vict_action );
+            c->next            = NULL;
+            if ( last == NULL )
+                m->action = c;
+            else
+                last->next = c;
+            last = c;
+        }
+
+        m->pShop = NULL;
+        if ( copy_from->pShop != NULL )
+        {
+            SHOP_DATA *s = alloc_perm( sizeof(*s) );
+
+            *s        = *copy_from->pShop;
+            s->keeper = (sh_int) vnum;
+            s->next   = NULL;
+            if ( shop_first == NULL )
+                shop_first = s;
+            if ( shop_last != NULL )
+                shop_last->next = s;
+            shop_last = s;
+            top_shop++;
+            m->pShop  = s;
+        }
+    }
+    else
+    {
+        int race = race_lookup( "human" );
+
+        m->player_name = str_perm( "mobile new" );
+        m->short_descr = str_perm( "a new mobile" );
+        m->long_descr  = str_perm( "A new mobile stands here, waiting to be described.\n\r" );
+        m->description = str_perm( "" );
+        m->race        = (sh_int) race;
+        m->level       = 1;
+        m->act         = ACT_IS_NPC | race_table[race].act;
+        m->affected_by = race_table[race].aff;
+        m->off_flags   = race_table[race].off;
+        m->imm_flags   = race_table[race].imm;
+        m->res_flags   = race_table[race].res;
+        m->vuln_flags  = race_table[race].vuln;
+        m->form        = race_table[race].form;
+        m->parts       = race_table[race].parts;
+        m->hit[DICE_NUMBER]    = 2;
+        m->hit[DICE_TYPE]      = 6;
+        m->hit[DICE_BONUS]     = 10;
+        m->mana[DICE_NUMBER]   = 1;
+        m->mana[DICE_TYPE]     = 10;
+        m->mana[DICE_BONUS]    = 100;
+        m->damage[DICE_NUMBER] = 1;
+        m->damage[DICE_TYPE]   = 4;
+        m->damage[DICE_BONUS]  = 0;
+        m->dam_type    = (sh_int) attack_index( "punch" );
+        /* The armour cap load_mobiles applies at this level. */
+        m->ac[AC_PIERCE] = m->ac[AC_BASH] = m->ac[AC_SLASH]
+                         = m->ac[AC_EXOTIC] = 100 - 6 * m->level;
+        m->start_pos   = POS_STANDING;
+        m->default_pos = POS_STANDING;
+        m->sex         = SEX_NEUTRAL;
+        m->size        = SIZE_MEDIUM;
+        m->material    = (sh_int) material_lookup( "unknown" );
+        mob_index_set_wealth( m, 0 );
+    }
+
+    m->vnum       = (sh_int) vnum;
+    m->new_format = true;
+    m->count      = 0;
+    m->killed     = 0;
+
+    iHash          = vnum % MAX_KEY_HASH;
+    m->next        = mob_index_hash[iHash];
+    mob_index_hash[iHash] = m;
+    top_mob_index++;
+    newmobs++;
+    kill_table[URANGE(0, m->level, MAX_LEVEL-1)].number++;
+    return m;
+}
+
+
+/*
+ * A new object prototype at `vnum': a copy of `copy_from' if given, or a
+ * piece of trash that can be picked up, to be described with SET OBJ. The
+ * affects, extra descriptions and wear actions are copied, not shared.
+ */
+OBJ_INDEX_DATA *new_obj_index( int vnum, OBJ_INDEX_DATA *copy_from )
+{
+    OBJ_INDEX_DATA *o;
+    int iHash;
+
+    o = alloc_perm( sizeof(*o) );
+
+    if ( copy_from != NULL )
+    {
+        AFFECT_DATA *paf, *plast = NULL;
+        EXTRA_DESCR_DATA *ed, *elast = NULL;
+        OBJ_ACTION_DATA *a, *alast = NULL;
+
+        *o = *copy_from;
+        o->name        = str_perm( copy_from->name );
+        o->short_descr = str_perm( copy_from->short_descr );
+        o->description = str_perm( copy_from->description );
+        if ( copy_from->action_to_room != NULL )
+            o->action_to_room = str_perm( copy_from->action_to_room );
+        if ( copy_from->action_to_char != NULL )
+            o->action_to_char = str_perm( copy_from->action_to_char );
+
+        o->affected = NULL;
+        for ( paf = copy_from->affected; paf != NULL; paf = paf->next )
+        {
+            AFFECT_DATA *c = alloc_perm( sizeof(*c) );
+
+            *c      = *paf;
+            c->next = NULL;
+            if ( plast == NULL )
+                o->affected = c;
+            else
+                plast->next = c;
+            plast = c;
+            top_affect++;
+        }
+
+        o->extra_descr = NULL;
+        for ( ed = copy_from->extra_descr; ed != NULL; ed = ed->next )
+        {
+            EXTRA_DESCR_DATA *c = alloc_perm( sizeof(*c) );
+
+            c->keyword     = str_perm( ed->keyword );
+            c->description = str_perm( ed->description );
+            c->next        = NULL;
+            if ( elast == NULL )
+                o->extra_descr = c;
+            else
+                elast->next = c;
+            elast = c;
+            top_ed++;
+        }
+
+        o->action = NULL;
+        for ( a = copy_from->action; a != NULL; a = a->next )
+        {
+            OBJ_ACTION_DATA *c = alloc_perm( sizeof(*c) );
+
+            c->not_vict_action = str_perm( a->not_vict_action );
+            c->vict_action     = str_perm( a->vict_action );
+            c->next            = NULL;
+            if ( alast == NULL )
+                o->action = c;
+            else
+                alast->next = c;
+            alast = c;
+            top_new_action++;
+        }
+    }
+    else
+    {
+        o->name        = str_perm( "object new" );
+        o->short_descr = str_perm( "a new object" );
+        o->description = str_perm( "A new object lies here, waiting to be described." );
+        o->material    = (sh_int) material_lookup( "unknown" );
+        o->item_type   = ITEM_TRASH;
+        o->wear_flags  = ITEM_TAKE;
+        o->level       = 1;
+        o->weight      = 1;
+        o->cost        = 0;
+        o->condition   = 100;
+    }
+
+    o->vnum       = (sh_int) vnum;
+    o->new_format = true;
+    o->reset_num  = 0;
+    o->count      = 0;
+
+    iHash          = vnum % MAX_KEY_HASH;
+    o->next        = obj_index_hash[iHash];
+    obj_index_hash[iHash] = o;
+    top_obj_index++;
+    newobjs++;
+    return o;
 }
 
 
@@ -4495,6 +5289,43 @@ char *str_dup( const char *str )
  
  
  
+/*
+ * A copy of `str' that nothing will ever free, for a prototype made after
+ * boot. create_object and create_mobile give each instance its prototype's
+ * strings by pointer, and extracting the instance frees them -- harmless
+ * for a prototype read at boot, whose strings live in string_space, which
+ * free_string leaves alone, and fatal for one built in game with str_dup:
+ * the first object purged freed its prototype's name. This puts the copy
+ * where fread_string puts boot strings.
+ */
+char *str_perm( const char *str )
+{
+    size_t len;
+    char *pString;
+
+    if ( str == NULL || str[0] == '\0' )
+        return &str_empty[0];
+
+    if ( str >= string_space && str < top_string )
+        return (char *) str;
+
+    len = strlen( str ) + 1;
+    if ( top_string + len > &string_space[MAX_STRING - MAX_STRING_LENGTH] )
+    {
+        bug( "Str_perm: string space is full (MAX_STRING %d).", MAX_STRING );
+        return &str_empty[0];
+    }
+
+    pString     = top_string;
+    memcpy( pString, str, len );
+    top_string += len;
+    nAllocString += 1;
+    sAllocString += (int) len;
+    return pString;
+}
+
+
+
 /*
  * Free a string.
  * Null is legal here to simplify callers.

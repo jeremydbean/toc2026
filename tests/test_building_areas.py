@@ -60,8 +60,9 @@ class AreaBuildingTests(unittest.TestCase):
                 here = run(imm, "look", 1.5)
                 self.assertIn("Mossy Hollow", here, here)
 
+                # An ANEW area saves whole, rooms and all (phase 2).
                 saved = run(imm, "rsave confirm", 2.0)
-                self.assertIn("rooms to", saved.lower(), saved)
+                self.assertIn("saved zed mossy hollow: 1 room", saved.lower(), saved)
 
                 imm.send("quit")
                 self.assertTrue(imm.wait_closed())

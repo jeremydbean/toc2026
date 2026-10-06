@@ -861,6 +861,31 @@ generator reproduces it byte for byte. It is code, not runtime state:
 copies `area/` wholesale. Regenerate after anything that moves a trainer,
 a guard, a guild hall or an area entrance.
 
+## In-Game Building
+
+The player-facing reference is `wiki/building-guide.md`; it is built in
+phases (areas and rooms; MCREATE/OCREATE and ASAVE; English SET MOB/OBJ,
+resets and a guided wizard to come). Three rules the code depends on:
+
+- **An area made with ANEW owns its vnum range**, declared in an
+  `#AREADATA` header (`load_areadata`). Mobiles and objects carry no area
+  pointer, so the range is how `save_area_full` in `db.c` knows what to
+  write, and why MCREATE/OCREATE refuse a vnum outside one. RSAVE on such
+  an area saves it whole; a legacy `#AREA` area still saves rooms only.
+- **The writer is the loader's exact inverse**, and
+  `tests/test_building_mobs_objs.py` holds it to that: save, reboot, save,
+  byte for byte. Change a loader and change its writer in the same commit.
+  Object trailers are prepended on load, so they are written last to
+  first; spell values are written as slots; a reset the loader would exit
+  on is left out and counted. One difference is the game's own: boot makes
+  a room with no exits NO_MOB (`fix_exits`).
+- **A prototype string made after boot goes through `str_perm`, never
+  `str_dup`.** `create_object` and `create_mobile` give an instance its
+  prototype's strings by pointer, and extracting the instance frees them
+  unless they sit in `string_space`. A `str_dup`ed prototype name was freed
+  by the first OSTAT and read back as garbage. Editing a prototype string
+  replaces the pointer with a new `str_perm` and never frees the old one.
+
 ## Loading Somebody Who Is Not Playing
 
 **Use `offline_player_load()`, never `load_char_obj` on a raw name.**

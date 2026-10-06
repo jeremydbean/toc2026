@@ -6262,6 +6262,266 @@ void do_astat( CHAR_DATA *ch, char *argument )
 }
 
 
+/* Resets an area holds, for the save report. */
+static int area_reset_count( AREA_DATA *pArea )
+{
+    RESET_DATA *r;
+    int n = 0;
+
+    for ( r = pArea->reset_first; r != NULL; r = r->next )
+        n++;
+    return n;
+}
+
+
+/*
+ * Write a whole ANEW area -- mobiles, objects, rooms, resets, shops and
+ * specials -- and tell the builder what went. Shared by ASAVE and by RSAVE,
+ * which hands an area with a declared range to it, so that saving rooms
+ * can never quietly leave the area's mobiles behind.
+ */
+static void report_full_save( CHAR_DATA *ch, AREA_DATA *pArea )
+{
+    char buf[MAX_STRING_LENGTH];
+    char why[MAX_STRING_LENGTH];
+    int rooms, mobs, objs;
+
+    if ( !save_area_full( pArea, why, sizeof(why) ) )
+    {
+        snprintf( buf, sizeof(buf), "Nothing was written: %s.\n\r", why );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    area_counts( pArea, &rooms, &mobs, &objs );
+    snprintf( buf, sizeof(buf),
+              "Saved %s: %d room%s, %d mobile%s, %d object%s, %d reset%s.\n\r"
+              "Written to %s.\n\r",
+              pArea->name != NULL ? pArea->name : "(unnamed)",
+              rooms, rooms == 1 ? "" : "s", mobs, mobs == 1 ? "" : "s",
+              objs, objs == 1 ? "" : "s",
+              area_reset_count( pArea ), area_reset_count( pArea ) == 1 ? "" : "s",
+              why );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf), "%s saved area %s (%d rooms, %d mobiles, "
+              "%d objects) to %s.", ch->name, pArea->name, rooms, mobs, objs, why );
+    wizinfo( buf, LEVEL_IMMORTAL );
+    log_string( buf );
+}
+
+
+/* ASAVE [area] -- save everything in an area you built. */
+void do_asave( CHAR_DATA *ch, char *argument )
+{
+    AREA_DATA *pArea = NULL;
+
+    if ( IS_NPC( ch ) )
+        return;
+
+    if ( argument[0] == '\0' )
+    {
+        if ( ch->in_room != NULL )
+            pArea = ch->in_room->area;
+    }
+    else
+    {
+        for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
+            if ( pArea->name != NULL && !str_prefix( argument, pArea->name ) )
+                break;
+    }
+
+    if ( pArea == NULL )
+    {
+        send_to_char( "No such area.  ASAVE with no argument saves the one you "
+                      "are in.\n\r", ch );
+        return;
+    }
+
+    if ( pArea->min_vnum <= 0 )
+    {
+        send_to_char( "That area has no vnum range of its own, so ASAVE cannot "
+                      "tell which mobiles\n\rand objects are its.  RSAVE writes "
+                      "its rooms.  Areas made with ANEW save whole.\n\r", ch );
+        return;
+    }
+
+    if ( !may_build_area( ch, pArea ) )
+    {
+        send_to_char( "You are not one of that area's builders.\n\r", ch );
+        return;
+    }
+
+    report_full_save( ch, pArea );
+}
+
+
+/*
+ * Which area a new mobile or object at this vnum would belong to, or NULL
+ * after saying why it cannot be made there. A prototype lives in an ANEW
+ * area's range, because the range is how the area knows the prototype is
+ * its own to save.
+ */
+static AREA_DATA *build_area_for_new( CHAR_DATA *ch, int vnum, const char *what )
+{
+    char buf[MAX_STRING_LENGTH];
+    AREA_DATA *pArea = area_for_vnum( vnum );
+
+    if ( pArea == NULL )
+    {
+        snprintf( buf, sizeof(buf),
+                  "Vnum %d is in no area you can build in.  A new %s goes in "
+                  "the range of an\n\rarea made with ANEW; ALIST shows the "
+                  "ranges.\n\r", vnum, what );
+        send_to_char( buf, ch );
+        return NULL;
+    }
+
+    if ( !may_build_area( ch, pArea ) )
+    {
+        snprintf( buf, sizeof(buf), "%s belongs to %s, and you are not one of "
+                  "its builders.\n\r",
+                  pArea->name != NULL ? pArea->name : "That area",
+                  pArea->builders != NULL ? pArea->builders : "nobody" );
+        send_to_char( buf, ch );
+        return NULL;
+    }
+
+    return pArea;
+}
+
+
+/* The vnum argument of MCREATE/OCREATE, or -1. */
+static int build_vnum_arg( const char *arg )
+{
+    if ( arg[0] == '\0' || !is_number( (char *) arg ) || strlen( arg ) > 5 )
+        return -1;
+    return atoi( arg );
+}
+
+
+/* MCREATE <vnum> [<vnum to copy>] -- a new mobile prototype. */
+void do_mcreate( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    MOB_INDEX_DATA *source = NULL;
+    MOB_INDEX_DATA *made;
+    AREA_DATA *pArea;
+    int vnum;
+
+    argument = one_argument( argument, arg1 );
+    one_argument( argument, arg2 );
+
+    if ( ( vnum = build_vnum_arg( arg1 ) ) <= 0 )
+    {
+        send_to_char( "Syntax: mcreate <vnum>               a blank mobile\n\r"
+                      "        mcreate <vnum> <copy vnum>   a copy of an existing one\n\r",
+                      ch );
+        return;
+    }
+
+    if ( ( pArea = build_area_for_new( ch, vnum, "mobile" ) ) == NULL )
+        return;
+
+    if ( get_mob_index( vnum ) != NULL )
+    {
+        snprintf( buf, sizeof(buf), "Mobile %d already exists.\n\r", vnum );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( arg2[0] != '\0' )
+    {
+        int from = build_vnum_arg( arg2 );
+
+        if ( from <= 0 || ( source = get_mob_index( from ) ) == NULL )
+        {
+            snprintf( buf, sizeof(buf), "There is no mobile %s to copy.\n\r", arg2 );
+            send_to_char( buf, ch );
+            return;
+        }
+    }
+
+    made = new_mob_index( vnum, source );
+
+    if ( source != NULL )
+        snprintf( buf, sizeof(buf), "Mobile %d made in %s, a copy of %d (%s).\n\r",
+                  vnum, pArea->name, source->vnum, made->short_descr );
+    else
+        snprintf( buf, sizeof(buf), "Mobile %d made in %s: a blank level 1 "
+                  "human.\n\r", vnum, pArea->name );
+    send_to_char( buf, ch );
+    send_to_char( "LOAD MOB <vnum> to see it.  ASAVE to keep it.\n\r", ch );
+
+    snprintf( buf, sizeof(buf), "%s made mobile %d in %s%s.", ch->name, vnum,
+              pArea->name, source != NULL ? " (a copy)" : "" );
+    log_string( buf );
+}
+
+
+/* OCREATE <vnum> [<vnum to copy>] -- a new object prototype. */
+void do_ocreate( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    OBJ_INDEX_DATA *source = NULL;
+    OBJ_INDEX_DATA *made;
+    AREA_DATA *pArea;
+    int vnum;
+
+    argument = one_argument( argument, arg1 );
+    one_argument( argument, arg2 );
+
+    if ( ( vnum = build_vnum_arg( arg1 ) ) <= 0 )
+    {
+        send_to_char( "Syntax: ocreate <vnum>               a blank object\n\r"
+                      "        ocreate <vnum> <copy vnum>   a copy of an existing one\n\r",
+                      ch );
+        return;
+    }
+
+    if ( ( pArea = build_area_for_new( ch, vnum, "object" ) ) == NULL )
+        return;
+
+    if ( get_obj_index( vnum ) != NULL )
+    {
+        snprintf( buf, sizeof(buf), "Object %d already exists.\n\r", vnum );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( arg2[0] != '\0' )
+    {
+        int from = build_vnum_arg( arg2 );
+
+        if ( from <= 0 || ( source = get_obj_index( from ) ) == NULL )
+        {
+            snprintf( buf, sizeof(buf), "There is no object %s to copy.\n\r", arg2 );
+            send_to_char( buf, ch );
+            return;
+        }
+    }
+
+    made = new_obj_index( vnum, source );
+
+    if ( source != NULL )
+        snprintf( buf, sizeof(buf), "Object %d made in %s, a copy of %d (%s).\n\r",
+                  vnum, pArea->name, source->vnum, made->short_descr );
+    else
+        snprintf( buf, sizeof(buf), "Object %d made in %s: a blank piece of "
+                  "trash you can pick up.\n\r", vnum, pArea->name );
+    send_to_char( buf, ch );
+    send_to_char( "LOAD OBJ <vnum> to see it.  ASAVE to keep it.\n\r", ch );
+
+    snprintf( buf, sizeof(buf), "%s made object %d in %s%s.", ch->name, vnum,
+              pArea->name, source != NULL ? " (a copy)" : "" );
+    log_string( buf );
+}
+
+
 /*
  * Turn a lock number into the exit_info bits, the way load_rooms does.
  * Keeping the two in step matters: lock is what gets written to the file
@@ -6589,6 +6849,27 @@ void do_rsave( CHAR_DATA *ch, char *argument )
                       "may write to it.\n\r", ch );
         send_to_char( "Build in rooms you made yourself and RSAVE there "
                       "instead.\n\r", ch );
+        return;
+    }
+
+    /* An area made with ANEW is saved whole: writing only its rooms would
+       leave the mobiles and objects built beside them out of the file. */
+    if ( pArea->min_vnum > 0 )
+    {
+        if ( str_cmp( arg1, "confirm" ) )
+        {
+            send_to_char( "This area was made with ANEW, so it saves whole: "
+                          "rooms, mobiles, objects,\n\rresets and shops.  The "
+                          "old file is kept beside the new one.\n\r"
+                          "To go ahead: rsave confirm   (or ASAVE)\n\r", ch );
+            return;
+        }
+        if ( !may_build_area( ch, pArea ) )
+        {
+            send_to_char( "You are not one of that area's builders.\n\r", ch );
+            return;
+        }
+        report_full_save( ch, pArea );
         return;
     }
 

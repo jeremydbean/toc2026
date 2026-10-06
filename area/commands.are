@@ -2500,19 +2500,30 @@ detail.  See HELP ANEW.
   goto 29200                       the room is born into the Grotto
   ...build and rsave as above...
 
+Mobiles and objects.  Inside an area of your own, MCREATE and OCREATE make
+a new mobile or object at a free vnum in its range -- blank, or a copy of
+any mobile or object in the game, which is the quickest start: copy the
+nearest thing to what you want and change it.  ASAVE then writes the whole
+area, mobiles, objects, rooms, resets and shops together.
+
+  mcreate 29210 4444               a copy of mobile 4444
+  ocreate 29220                    a blank object
+  load mob 29210                   see it
+  asave                            keep the lot
+
 Rooms that came out of a shipped area file are a different matter.  Only
 an implementor may change one at all, and saving over that area's file
 takes a confirmation naming the file, so a stray RSAVE cannot rewrite
 Hyrule because you happened to be standing in it.  The previous file is
 kept beside it as a dated backup either way.
 
-What will not save yet: rooms with a second flag word, river or teleport
-rooms, and rooms carrying a room affect.  Those hold data outside the room
+What will not save yet: river or teleport rooms, and rooms carrying a room
+affect.  Those hold data outside the room
 itself, and rather than write a file that has quietly lost it, RSAVE stops
 and names the room.  Move your building elsewhere, or ask for the format
 to be finished.
 
-See also: RLINK, RSAVE, SET, GOTO, RSTAT
+See also: RLINK, RSAVE, ASAVE, MCREATE, OCREATE, SET, GOTO, RSTAT
 ~
 
 69 RLINK DIG~
@@ -2569,7 +2580,11 @@ and specials in the file are left exactly as they are.  The old file is
 kept beside the new one with a timestamp, so a bad save can be undone from
 the shell.
 
-See also: BUILDING, RLINK, SET
+An area made with ANEW is different: it saves whole, exactly as ASAVE
+does, because writing only its rooms would leave the mobiles and objects
+built beside them out of the file.
+
+See also: BUILDING, ASAVE, RLINK, SET
 ~
 
 69 ANEW~
@@ -2622,7 +2637,75 @@ ASTAT reads one area in detail: its name, file, vnum range, the builders
 allowed to work in it, its room/mobile/object counts, and whether you may
 build in it.  With no argument it reads the area you are standing in.
 
-See also: BUILDING, ANEW, ALIST
+See also: BUILDING, ANEW, ALIST, ASAVE
+~
+
+69 ASAVE~
+Syntax: asave
+        asave <area name>
+
+ASAVE writes everything in an area made with ANEW to its file: the
+mobiles and objects in its vnum range, its rooms, its resets, its shops and
+its specials.  With no argument it saves the area you are standing in.
+
+  Saved The Sunken Grotto: 12 rooms, 4 mobiles, 7 objects, 9 resets.
+
+The previous file is kept beside the new one with a timestamp.  Nothing is
+written if anything in the area cannot be saved faithfully -- a river or
+teleport room, a room affect, a value the file format cannot hold -- and
+ASAVE says which room or vnum is in the way.
+
+A reset that names something gone (a mobile never saved, a door taken out
+since) would stop the game at the next boot, so it is left out of the file
+and ASAVE tells you how many it dropped.
+
+Only an area with a vnum range of its own can be saved whole: the range is
+how it knows which mobiles and objects are its.  The workshop and the
+areas that shipped with the game save their rooms with RSAVE.
+
+A room with no exits at all is made NO_MOB when the game boots, as it
+always has been, so a lone room comes back with that flag set.
+
+See also: BUILDING, ANEW, MCREATE, OCREATE, RSAVE
+~
+
+69 MCREATE~
+Syntax: mcreate <vnum>
+        mcreate <vnum> <vnum to copy>
+
+MCREATE makes a new mobile.  The vnum must be free and inside the range of
+an area made with ANEW that you may build in.
+
+With one number you get a blank: a level 1 human called "a new mobile".
+With two you get a copy of any mobile in the game -- its descriptions,
+race, level, dice, flags, actions, special and shop, if it keeps one --
+which is usually the quicker start.
+
+  mcreate 29210 4444
+
+The copy is its own mobile from then on; changing it changes nothing
+else.  LOAD MOB <vnum> puts one in front of you.  ASAVE keeps it; until
+then it is gone at the next reboot.
+
+See also: OCREATE, ASAVE, ANEW, LOAD
+~
+
+69 OCREATE~
+Syntax: ocreate <vnum>
+        ocreate <vnum> <vnum to copy>
+
+OCREATE makes a new object.  The vnum must be free and inside the range of
+an area made with ANEW that you may build in.
+
+With one number you get a blank: a piece of trash you can pick up, called
+"a new object".  With two you get a copy of any object in the game --
+type, flags, values, spells, affects, extra descriptions and wear actions.
+
+  ocreate 29220 3021
+
+LOAD OBJ <vnum> makes one; OSTAT <vnum> reads it.  ASAVE keeps it.
+
+See also: MCREATE, ASAVE, ANEW, LOAD
 ~
 
 70 DNS~

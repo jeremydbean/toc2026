@@ -1879,6 +1879,10 @@ struct  mob_index_data
     long                new_gold;
     long                new_silver;
     long                new_copper;
+    /* The coin figure the area file gave, kept so a saved area writes back
+       what it read: the four piles above are derived from it, and from
+       nothing at all when it is 0 (mob_index_set_wealth). */
+    long                wealth;
     long                form;
     long                parts;
     sh_int              size;
@@ -3006,6 +3010,7 @@ void * alloc_mem       ( int sMem );
 void * alloc_perm      ( int sMem );
 void    free_mem        ( void *pMem, int sMem );
 char * str_dup         ( const char *str );
+char *  str_perm        ( const char *str );
 void    free_string     ( char *pstr );
 AFFECT_DATA    *new_affect          ( void );
 void           free_affect          ( AFFECT_DATA* pAf );
@@ -3095,6 +3100,10 @@ const char *guild_group_name ( int guild );
 #define BUILDER_AREA_FILE   "custom.are"
 #define AREA_LIST_FILE      "area.lst"
 bool    save_area_rooms ( AREA_DATA *pArea, char *why, size_t why_size );
+bool    save_area_full  ( AREA_DATA *pArea, char *why, size_t why_size );
+void    mob_index_set_wealth ( MOB_INDEX_DATA *pMobIndex, long total );
+MOB_INDEX_DATA *new_mob_index ( int vnum, MOB_INDEX_DATA *copy_from );
+OBJ_INDEX_DATA *new_obj_index ( int vnum, OBJ_INDEX_DATA *copy_from );
 AREA_DATA *area_for_vnum ( int vnum );
 bool    area_is_buildable ( AREA_DATA *pArea );
 bool    may_build_area   ( CHAR_DATA *ch, AREA_DATA *pArea );
