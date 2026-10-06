@@ -56605,3 +56605,9 @@ Tue Oct  6 15:34:02 2026 :: Log Eclipse [9988]: goto 8
 Tue Oct  6 15:34:02 2026 :: Log Eclipse [8]: arrived (The Oracle's Sanctum) from 9988
 Tue Oct  6 15:34:04 2026 :: Log Eclipse [8]: l
 Tue Oct  6 15:34:29 2026 :: Log Eclipse [8]: say some interesting new stuff
+Tue Oct  6 15:34:45 2026 :: Log Eclipse [8]: got 9988
+Tue Oct  6 15:34:45 2026 :: Log Eclipse [9988]: arrived (Eclipse's Seat of Power.) from 8
+Tue Oct  6 15:35:23 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 8
+Tue Oct  6 15:35:24 2026 :: Sock.sinaddr:  178.156.181.172
+Tue Oct  6 15:35:25 2026 :: EOF encountered on read.
+Tue Oct  6 15:35:54 2026 :: Log Eclipse [9988]: who
