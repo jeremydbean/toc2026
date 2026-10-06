@@ -65,6 +65,7 @@ set(SRC_FILES
     src/stubs.c
     src/update.c
     src/walkto.c
+    src/build.c
     src/changes.c
     src/abilities.c
     src/wizlist.c

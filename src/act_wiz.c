@@ -4244,6 +4244,16 @@ void do_set( CHAR_DATA *ch, char *argument )
     if (!str_prefix(arg,"mobile") || !str_prefix(arg,"character")
     ||  !str_prefix(arg,"player"))
     {
+	char target[MAX_INPUT_LENGTH];
+
+	/* A number is a mobile prototype being built (build.c); a name is
+	   somebody in the world. No character is called "21002". */
+	one_argument(argument,target);
+	if (!str_prefix(arg,"mobile") && is_number(target))
+	{
+	    build_set_mob(ch,argument);
+	    return;
+	}
 	do_mset(ch,argument);
 	return;
     }

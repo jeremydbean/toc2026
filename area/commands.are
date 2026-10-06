@@ -2708,6 +2708,66 @@ LOAD OBJ <vnum> makes one; OSTAT <vnum> reads it.  ASAVE keeps it.
 See also: MCREATE, ASAVE, ANEW, LOAD
 ~
 
+68 MSHOW MEDIT 'SET MOB'~
+Syntax: mshow <vnum>
+        set mob <vnum> <field> <value>
+
+MSHOW reads a mobile prototype in words, and SET MOB with a vnum changes
+one, taking the same words MSHOW prints.  Only a mobile in an area made
+with ANEW can be changed: that is what ASAVE writes, so a change anywhere
+else could never be kept.  Copy a shipped mobile in with MCREATE first.
+
+What it says
+  keywords <words>        what players type to mean it: dwarf smith
+  short <text>            in a sentence: a burly dwarf smith
+  long <text>             in the room: A burly dwarf smith works here.
+  desc <text>             what LOOK at it shows; wrapped for you
+  desc + <text>           add to the description
+  desc clear              empty it
+
+What it is
+  race <name>    human elf dwarf giant dragon wolf ...  A race brings its
+                 natural flags with it, and they cannot be taken away:
+                 every boot puts them back, so a dwarf always sees in
+                 the dark.  Change the race to lose them.
+  sex male | female | neutral        size tiny small medium large huge giant
+  material <name>                    alignment good | neutral | evil | -1000..1000
+
+How it fights
+  level <n>      Setting a level raises the hitroll and damage bonus, and
+                 lowers the armour, to the least a mobile of that level
+                 gets -- the game does this at every boot anyway, so it
+                 is done now and you are told.
+  hitroll <n>
+  hp <dice>      hit points: 4d10+80 is four ten-sided dice plus 80
+  mana <dice>    damage <dice>
+  attack <name>  slash pierce bite claw punch flaming_bite ...
+  ac <n>         all four armour classes; lower is better
+  ac pierce | bash | slash | exotic <n>
+
+How it behaves
+  position <pos> how it is found: standing sitting resting sleeping
+  default <pos>  what it returns to after a fight
+  wealth <n>     its coin; 0 means what a mobile of its level carries
+  special <name> a special behaviour (cast_mage, breath_fire...), or none
+
+Flags, by name.  +name adds, -name takes away, a bare name adds, NONE
+clears.  Give a field alone to list its names.
+  act         aggressive sentinel stay_area wimpy scavenger pet ...
+  affect      sanctuary invisible detect_invis flying haste sneak ...
+  offense     dodge parry bash kick trip disarm assist_all ...
+  immune / resist / vulnerable    fire cold lightning poison magic ...
+  form / parts                    what kind of body it has
+
+  set mob 21003 act +aggressive -wimpy
+  set mob 21003 resist +fire +cold
+
+A mobile already in the world keeps the form it was made with; PURGE it
+and LOAD MOB <vnum> to see the change.  ASAVE keeps the prototype.
+
+See also: MCREATE, ASAVE, BUILDING
+~
+
 70 DNS~
 Syntax: dns
         dns on | off
@@ -4956,6 +5016,9 @@ Syntax: set char  <player> <field> <value>
 SET changes a live value on a character, object or room. The change takes
 effect immediately and, for a player, is saved with them. Type any of the
 forms above without a field to see what that form accepts.
+
+SET MOB with a vnum instead of a name -- set mob 21003 race dwarf -- edits
+a mobile prototype you are building, in words.  See HELP MSHOW.
 
 SET CHAR / SET MOB
   Stats       str int wis dex con

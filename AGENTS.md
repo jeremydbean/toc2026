@@ -378,6 +378,9 @@ Live-test gotchas that look like product bugs and are not:
 - `src/act_move.c`: movement, exits, traps, recall, run/speedwalk
 - `src/walkto.c`: WALKTO -- named destinations, pathfinding from the
   player's room, and the paced walk
+- `src/build.c`: in-game building in words -- SET MOB <vnum> and MSHOW,
+  with the name tables for every mobile flag word; ANEW/ASAVE/MCREATE/
+  OCREATE are in `act_wiz.c` and the area writer in `db.c`
 - `src/act_info.c`: displays, leveling, remort
 - `src/act_obj.c`: objects, equipment, shops, banks, item use
 - `src/act_comm.c`: channels and communication

@@ -153,9 +153,110 @@ changes nothing else, and a copied shopkeeper gets a shop of its own.
 See it with `LOAD MOB <vnum>` or `LOAD OBJ <vnum>`, read it with
 `OSTAT <vnum>`, and keep it with `ASAVE`.
 
-Editing a prototype field by field, in plain English (`set mob 29210 race
-dwarf`, `set obj 29220 type weapon`), is the next phase; see the
-[Roadmap](#roadmap). Until then, copy the closest thing to what you want.
+Editing an object field by field (`set obj 29220 type weapon`) is the next
+phase; see the [Roadmap](#roadmap). Mobiles can be edited now.
+
+---
+
+## Editing a mobile
+
+`SET MOB` with a **vnum** instead of a name edits a prototype, in words.
+`MSHOW <vnum>` reads it back, and prints exactly the words SET takes, so
+the quickest way to learn the fields is to MSHOW something and change what
+you see. (`set mob guard ...`, with a name, still edits one mobile standing
+in the world, as it always has.)
+
+Here is a blank mobile becoming a village smith:
+
+```
+mcreate 29210
+set mob 29210 keywords dwarf smith
+set mob 29210 short a burly dwarf smith
+set mob 29210 long A burly dwarf smith hammers at an anvil here.
+set mob 29210 desc Soot covers his arms to the elbow, and his beard is singed short.
+set mob 29210 desc + He does not look up.
+set mob 29210 race dwarf
+set mob 29210 sex male
+set mob 29210 level 20
+set mob 29210 hp 4d10+80
+set mob 29210 attack pound
+set mob 29210 act +sentinel
+set mob 29210 offense +parry
+mshow 29210
+asave
+```
+
+### The words
+
+| Field | Takes | Notes |
+|---|---|---|
+| `keywords` | words | What players type: `dwarf smith`. |
+| `short` | text | Used in sentences: "*a burly dwarf smith* hits you". |
+| `long` | text | The line in the room. A capital and a line end are added. |
+| `desc` | text | What LOOK at it shows, wrapped to 72 columns for you. `desc + more` adds; `desc clear` empties. |
+| `race` | a race | `human`, `elf`, `dwarf`, `giant`, `dragon`, `wolf`... |
+| `sex` | `male` `female` `neutral` | |
+| `size` | `tiny` `small` `medium` `large` `huge` `giant` | |
+| `material` | a material | `iron`, `wood`, `cloth`... |
+| `level` | 1-200 | See [what the level does](#what-the-level-does). |
+| `alignment` | `good` `neutral` `evil`, or -1000..1000 | |
+| `hitroll` | a number | |
+| `hp` | dice | `4d10+80`: four ten-sided dice, plus 80. |
+| `mana`, `damage` | dice | `2d6+3`. |
+| `attack` | an attack | `slash`, `pierce`, `bite`, `claw`, `pound`, `flaming_bite`... Give none to list them. |
+| `ac` | a number | All four armour classes. **Lower is better.** `ac slash -40` sets one. |
+| `position` | `standing` `sitting` `resting` `sleeping` | How it is found when it appears. |
+| `default` | the same | What it goes back to. |
+| `wealth` | a number | Its coin. 0 means "what a mobile of its level carries". |
+| `special` | a special, or `none` | A built-in behaviour: `cast_mage`, `breath_fire`, `thief`... The `spec_` is optional. |
+
+### Flags
+
+`act`, `affect`, `offense`, `immune`, `resist`, `vulnerable`, `form` and
+`parts` are lists of names. `+name` adds one, `-name` takes one away, a bare
+name adds, and `none` clears the list. Several at once is fine:
+
+```
+set mob 29210 act +aggressive -wimpy
+set mob 29210 resist +fire +cold
+set mob 29210 affect none
+```
+
+Give the field with nothing after it (`set mob 29210 act`) to see every
+name it takes. A name you mistype is refused and the list is printed.
+
+| Field | Some of its names |
+|---|---|
+| `act` | `aggressive` `sentinel` (never wanders) `stay_area` `wimpy` `scavenger` `pet` `train` `practice` `healer` `mountable` `no_purge` `questmaster` |
+| `affect` | `sanctuary` `invisible` `detect_invis` `detect_hidden` `flying` `haste` `sneak` `hide` `infrared` `pass_door` |
+| `offense` | `dodge` `parry` `bash` `kick` `trip` `disarm` `berserk` `rescue` `fast` `assist_all` `assist_race` `assist_guard` |
+| `immune` / `resist` / `vulnerable` | `fire` `cold` `lightning` `acid` `poison` `magic` `weapon` `bash` `pierce` `slash` `holy` `negative` `mental` ... (`vulnerable` adds `iron` `wood` `silver`) |
+| `form` | `biped` `mammal` `animal` `sentient` `undead` `dragon` `insect` `edible` ... |
+| `parts` | `head` `arms` `legs` `hands` `claws` `fangs` `wings` `tail` `scales` ... |
+
+### What the race does
+
+A race comes with natural flags: a dwarf sees in the dark and resists magic
+and disease; a dragon sees the invisible, bashes and lashes with its tail. Setting a race adds them, and replaces the
+mobile's form and body parts with the race's. **A race's natural flags
+cannot be taken away**, because every boot puts them back whatever the
+file says. SET refuses and tells you why rather than let it look as though
+it worked. To lose them, choose another race.
+
+### What the level does
+
+The game holds every mobile to a floor for its level, at every boot: its
+hitroll is at least half its level, its damage bonus at least three
+quarters of it, and its armour no worse than `100 - 6 x level`. SET applies
+the same floor the moment you set a level, hitroll, damage or armour, and
+says what it raised, so MSHOW never shows you a number a reboot would
+quietly change. Set the level first, then tune upward from there.
+
+### Seeing it
+
+`LOAD MOB 29210` puts one in front of you. A mobile already in the world
+keeps the form it was made with: PURGE it and load a fresh one to see a
+change. Nothing is kept until `ASAVE`.
 
 ---
 
@@ -235,6 +336,8 @@ Directions: `north east south west up down` and the four diagonals.
 | `ocreate <vnum>` | A blank object at a free vnum in your area's range. |
 | `ocreate <vnum> <from>` | A copy of object `<from>`. |
 | `load mob <vnum>` / `load obj <vnum>` | Make one, to look at. |
+| `mshow <vnum>` | Read a mobile prototype in words. |
+| `set mob <vnum> <field> <value>` | Change a mobile prototype; see [Editing a mobile](#editing-a-mobile). |
 | `ostat <vnum>` | Read an object prototype. |
 
 ---
@@ -304,11 +407,10 @@ In-game building is being filled out in phases. Shipped so far:
   RSAVE.
 - **Mobiles, objects and the full-area save** -- MCREATE and OCREATE, blank
   or copied from anything in the game; ASAVE writes the whole area.
+- **Editing mobiles** -- SET MOB <vnum> and MSHOW, every field in words.
 
 Coming, in order:
 
-- **Editing mobiles** -- change a monster in plain English: `set mob
-  <vnum> race human`, `sex female`, `level 12`, flags by name.
 - **Editing objects** -- change an item in plain English: type, wear
   slots, and the values that matter for that type, named not numbered.
 - **Resets** -- place a mobile or object in a room so it respawns, and have

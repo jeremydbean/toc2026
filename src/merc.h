@@ -3103,6 +3103,7 @@ bool    save_area_rooms ( AREA_DATA *pArea, char *why, size_t why_size );
 bool    save_area_full  ( AREA_DATA *pArea, char *why, size_t why_size );
 void    mob_index_set_wealth ( MOB_INDEX_DATA *pMobIndex, long total );
 MOB_INDEX_DATA *new_mob_index ( int vnum, MOB_INDEX_DATA *copy_from );
+void    build_set_mob   ( CHAR_DATA *ch, char *argument );
 OBJ_INDEX_DATA *new_obj_index ( int vnum, OBJ_INDEX_DATA *copy_from );
 AREA_DATA *area_for_vnum ( int vnum );
 bool    area_is_buildable ( AREA_DATA *pArea );

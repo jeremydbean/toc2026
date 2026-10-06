@@ -448,6 +448,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "astat",          do_astat,       POS_DEAD,       L2,  LOG_NORMAL, 1 },
     { "asave",          do_asave,       POS_DEAD,       L1,  LOG_ALWAYS, 1 },
     { "mcreate",        do_mcreate,     POS_DEAD,       L1,  LOG_ALWAYS, 1 },
+    { "mshow",          do_mshow,       POS_DEAD,       L2,  LOG_NORMAL, 1 },
     { "ocreate",        do_ocreate,     POS_DEAD,       L1,  LOG_ALWAYS, 1 },
     { "rlink",          do_rlink,       POS_DEAD,       L1,  LOG_ALWAYS, 1 },
     { "rsave",          do_rsave,       POS_DEAD,       L1,  LOG_ALWAYS, 1 },
