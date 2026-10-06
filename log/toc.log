@@ -54478,3 +54478,125 @@ Tue Oct  6 00:55:39 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 
 Tue Oct  6 00:55:40 2026 :: Log Alaric [4207]: w
 Tue Oct  6 00:55:40 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
 Tue Oct  6 00:55:43 2026 :: Log Alaric [4208]: stash
+Tue Oct  6 00:55:51 2026 :: Log Alaric [4208]: stash get alar
+Tue Oct  6 00:55:51 2026 :: Log Alaric [4208]: withdrew Alaric's level 54 gear (vnum 3032) from the stash
+Tue Oct  6 00:55:55 2026 :: Log Alaric [4208]: l i alar
+Tue Oct  6 00:55:58 2026 :: Log Alaric [4208]: get all alar
+Tue Oct  6 00:56:02 2026 :: Log Alaric [4208]: i
+Tue Oct  6 00:56:11 2026 :: Log Alaric [4208]: e
+Tue Oct  6 00:56:11 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Tue Oct  6 00:56:12 2026 :: Log Alaric [4207]: s
+Tue Oct  6 00:56:12 2026 :: Log Alaric [4205]: arrived (Halls of Healing.) from 4207
+Tue Oct  6 00:56:13 2026 :: Log Alaric [4205]: drop alar
+Tue Oct  6 00:56:15 2026 :: Log Alaric [4205]: sc
+Tue Oct  6 00:56:18 2026 :: Log Alaric [4205]: get all alar
+Tue Oct  6 00:56:25 2026 :: Log Alaric [4205]: drop plate
+Tue Oct  6 00:56:27 2026 :: Log Alaric [4205]: sac plate
+Tue Oct  6 00:56:30 2026 :: Log Alaric [4205]: drop dark
+Tue Oct  6 00:56:32 2026 :: Log Alaric [4205]: sac dark
+Tue Oct  6 00:56:37 2026 :: Log Alaric [4205]: drop all.pill
+Tue Oct  6 00:56:42 2026 :: Log Alaric [4205]: sac pill
+Tue Oct  6 00:56:42 2026 :: Log Alaric [4205]: sac pill
+Tue Oct  6 00:56:42 2026 :: Log Alaric [4205]: sac pill
+Tue Oct  6 00:56:43 2026 :: Log Alaric [4205]: sac pill
+Tue Oct  6 00:56:44 2026 :: Log Alaric [4205]: get all alar
+Tue Oct  6 00:56:55 2026 :: Log Alaric [4205]: l i alar
+Tue Oct  6 00:56:55 2026 :: Log Alaric [4205]: af
+Tue Oct  6 00:56:58 2026 :: Log Alaric [4205]: sac alar
+Tue Oct  6 00:56:59 2026 :: Log Alaric [4205]: l
+Tue Oct  6 00:57:00 2026 :: Log Alaric [4205]: i
+Tue Oct  6 00:57:02 2026 :: Log Alaric [4205]: drop ex
+Tue Oct  6 00:57:04 2026 :: Log Alaric [4205]: sac ex
+Tue Oct  6 00:57:07 2026 :: Log Alaric [4205]: eq
+Tue Oct  6 00:57:08 2026 :: Log Alaric [4205]: sc
+Tue Oct  6 00:57:12 2026 :: Sock.sinaddr:  18.116.205.62
+Tue Oct  6 00:57:12 2026 :: EOF encountered on read.
+Tue Oct  6 00:57:13 2026 :: Log Alaric [4205]: rem ring
+Tue Oct  6 00:57:13 2026 :: Log Alaric [4205]: rem ring
+Tue Oct  6 00:57:15 2026 :: Log Alaric [4205]: wear assass
+Tue Oct  6 00:57:15 2026 :: Log Alaric [4205]: wear assass
+Tue Oct  6 00:57:22 2026 :: Log Alaric [4205]: wear cloak
+Tue Oct  6 00:57:25 2026 :: Log Alaric [4205]: drop cloak
+Tue Oct  6 00:57:28 2026 :: Log Alaric [4205]: sac cloak
+Tue Oct  6 00:57:31 2026 :: Log Alaric [4205]: rem assass
+Tue Oct  6 00:57:32 2026 :: Log Alaric [4205]: rem assass
+Tue Oct  6 00:57:32 2026 :: Log Alaric [4205]: rem assass
+Tue Oct  6 00:57:32 2026 :: Log Alaric [4205]: rem assass
+Tue Oct  6 00:57:33 2026 :: Log Alaric [4205]: rem assass
+Tue Oct  6 00:57:33 2026 :: Log Alaric [4205]: rem assass
+Tue Oct  6 00:57:35 2026 :: Log Alaric [4205]: rem cloak
+Tue Oct  6 00:57:36 2026 :: Log Alaric [4205]: rem cloak
+Tue Oct  6 00:57:36 2026 :: Log Alaric [4205]: rem cloak
+Tue Oct  6 00:57:38 2026 :: Log Alaric [4205]: get cloak
+Tue Oct  6 00:57:43 2026 :: Log Alaric [4205]: wear clo
+Tue Oct  6 00:57:44 2026 :: Log Alaric [4205]: drop as
+Tue Oct  6 00:57:46 2026 :: Log Alaric [4205]: drop as
+Tue Oct  6 00:57:46 2026 :: Log Alaric [4205]: drop as
+Tue Oct  6 00:57:46 2026 :: Log Alaric [4205]: drop as
+Tue Oct  6 00:57:47 2026 :: Log Alaric [4205]: drop as
+Tue Oct  6 00:57:47 2026 :: Log Alaric [4205]: drop as
+Tue Oct  6 00:57:47 2026 :: Log Alaric [4205]: drop as
+Tue Oct  6 00:57:47 2026 :: Log Alaric [4205]: drop as
+Tue Oct  6 00:57:48 2026 :: Log Alaric [4205]: drop as
+Tue Oct  6 00:57:50 2026 :: Log Alaric [4205]: get ring
+Tue Oct  6 00:57:50 2026 :: Log Alaric [4205]: get ring
+Tue Oct  6 00:57:52 2026 :: Log Alaric [4205]: l
+Tue Oct  6 00:57:55 2026 :: Log Alaric [4205]: get da
+Tue Oct  6 00:57:56 2026 :: Log Alaric [4205]: drop da
+Tue Oct  6 00:57:58 2026 :: Log Alaric [4205]: sac da
+Tue Oct  6 00:57:58 2026 :: Log Alaric [4205]: i
+Tue Oct  6 00:57:59 2026 :: Log Alaric [4205]: eq
+Tue Oct  6 00:58:04 2026 :: Log Alaric [4205]: rem cloak
+Tue Oct  6 00:58:06 2026 :: Log Alaric [4205]: drop cloak
+Tue Oct  6 00:58:10 2026 :: Log Alaric [4205]: sac cloak
+Tue Oct  6 00:58:12 2026 :: Log Alaric [4205]: wear cloak
+Tue Oct  6 00:58:12 2026 :: Log Alaric [4205]: wear cloak
+Tue Oct  6 00:58:14 2026 :: Log Alaric [4205]: wear ring
+Tue Oct  6 00:58:15 2026 :: Log Alaric [4205]: wear ring
+Tue Oct  6 00:58:16 2026 :: Log Alaric [4205]: sc
+Tue Oct  6 00:58:19 2026 :: Log Alaric [4205]: i
+Tue Oct  6 00:58:24 2026 :: Log Alaric [4205]: comp boot
+Tue Oct  6 00:58:30 2026 :: Log Alaric [4205]: wear boot
+Tue Oct  6 00:58:35 2026 :: Log Alaric [4205]: stash put mith
+Tue Oct  6 00:58:35 2026 :: Log Alaric [4205]: stashed a pair of mithril boots (vnum 4618)
+Tue Oct  6 00:58:36 2026 :: Log Alaric [4205]: i
+Tue Oct  6 00:58:40 2026 :: Log Alaric [4205]: comp foot
+Tue Oct  6 00:58:46 2026 :: Log Alaric [4205]: drop foo
+Tue Oct  6 00:58:47 2026 :: Log Alaric [4205]: ac fo
+Tue Oct  6 00:58:51 2026 :: Log Alaric [4205]: sac fo
+Tue Oct  6 00:58:52 2026 :: Log Alaric [4205]: i
+Tue Oct  6 00:58:55 2026 :: Log Alaric [4205]: wear piw
+Tue Oct  6 00:58:57 2026 :: Log Alaric [4205]: sc
+Tue Oct  6 00:59:00 2026 :: Log Alaric [4205]: comp piw
+Tue Oct  6 00:59:15 2026 :: Log Alaric [4205]: wear piw
+Tue Oct  6 00:59:18 2026 :: Log Alaric [4205]: com piw
+Tue Oct  6 00:59:20 2026 :: Log Alaric [4205]: comp piw
+Tue Oct  6 00:59:24 2026 :: Log Alaric [4205]: drop piw
+Tue Oct  6 00:59:25 2026 :: Log Alaric [4205]: sac piw
+Tue Oct  6 00:59:26 2026 :: Log Alaric [4205]: i
+Tue Oct  6 00:59:29 2026 :: Log Alaric [4205]: eq
+Tue Oct  6 00:59:35 2026 :: Log Alaric [4205]: comp shield
+Tue Oct  6 00:59:39 2026 :: Log Alaric [4205]: wear shield
+Tue Oct  6 00:59:41 2026 :: Log Alaric [4205]: drop shield
+Tue Oct  6 00:59:42 2026 :: Log Alaric [4205]: sac shi
+Tue Oct  6 00:59:43 2026 :: Log Alaric [4205]: i
+Tue Oct  6 00:59:45 2026 :: Log Alaric [4205]: eq
+Tue Oct  6 00:59:47 2026 :: Log Alaric [4205]: drop war
+Tue Oct  6 00:59:49 2026 :: Log Alaric [4205]: sac war
+Tue Oct  6 00:59:50 2026 :: Log Alaric [4205]: i
+Tue Oct  6 00:59:54 2026 :: Log Alaric [4205]: drop brac
+Tue Oct  6 00:59:55 2026 :: Log Alaric [4205]: drop brac
+Tue Oct  6 00:59:56 2026 :: Log Alaric [4205]: sac brac
+Tue Oct  6 00:59:56 2026 :: Log Alaric [4205]: sac brac
+Tue Oct  6 01:00:00 2026 :: Log Alaric [4205]: eq
+Tue Oct  6 01:00:04 2026 :: Log Alaric [4205]: drop belt
+Tue Oct  6 01:00:06 2026 :: Log Alaric [4205]: sac belt
+Tue Oct  6 01:00:06 2026 :: Log Alaric [4205]: i
+Tue Oct  6 01:00:13 2026 :: Log Alaric [4205]: stash put starl
+Tue Oct  6 01:00:13 2026 :: Log Alaric [4205]: stashed Starlight (vnum 29049)
+Tue Oct  6 01:00:22 2026 :: Log Alaric [4205]: drop brav
+Tue Oct  6 01:00:23 2026 :: Log Alaric [4205]: sac brav
+Tue Oct  6 01:00:29 2026 :: Log Alaric [4205]: stash put arm
+Tue Oct  6 01:00:29 2026 :: Log Alaric [4205]: stashed some platinum arm bands (vnum 9213)
+Tue Oct  6 01:00:33 2026 :: Log Alaric [4205]: l
+Tue Oct  6 01:00:35 2026 :: Log Alaric [4205]: comp hat
