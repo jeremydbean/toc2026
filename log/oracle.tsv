@@ -55,3 +55,6 @@
 1791082348	8	A	Killuminati	`walkto palm of the creator` from Oak Tree Square, or manually: `r w 6;r s 4`.
 1791082364	8	Q	Killuminati	directions to warrior guild?
 1791082368	8	A	Killuminati	`walkto citadel of war` or manually `r e 7;r n 2`.
+1791299820	9988	SUMMON	Eclipse	
+1791299908	8	Q	Eclipse	what is a better sword
+1791299914	8	A	Eclipse	I cannot see what swords are available to you without knowing where you are or what you're seeking; the Master Sword (level 58) from Ganon's great chest is the finest blade a mortal can wield, but compare what you find with `compare <item>`.
