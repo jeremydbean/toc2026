@@ -55562,3 +55562,154 @@ Tue Oct  6 01:30:35 2026 :: Log Alaric [29210]: te
 Tue Oct  6 01:30:42 2026 :: Log Alaric [29210]: te
 Tue Oct  6 01:30:52 2026 :: Log Alaric [29210]: te
 Tue Oct  6 01:30:58 2026 :: Log Alaric [29210]: te
+Tue Oct  6 01:31:07 2026 :: Log Alaric [29210]: te
+Tue Oct  6 01:31:07 2026 :: Log Alaric [29210]: level 52 -> 53 (earned)
+Tue Oct  6 01:31:07 2026 :: Alaric has reached the next level of Heroism!!
+Tue Oct  6 01:31:14 2026 :: Log Alaric [29210]: wear scep
+Tue Oct  6 01:31:20 2026 :: Log Alaric [29210]: comp cord
+Tue Oct  6 01:31:23 2026 :: Log Alaric [29210]: wear cord
+Tue Oct  6 01:31:27 2026 :: Log Alaric [29210]: stash put peg
+Tue Oct  6 01:31:27 2026 :: Log Alaric [29210]: stashed a pegleg (vnum 16013)
+Tue Oct  6 01:31:27 2026 :: Log Alaric [29210]: l
+Tue Oct  6 01:31:28 2026 :: Log Alaric [29210]: s
+Tue Oct  6 01:31:28 2026 :: Log Alaric [29209]: arrived (Twist in the Maze) from 29210
+Tue Oct  6 01:31:29 2026 :: Log Alaric [29209]: te
+Tue Oct  6 01:31:40 2026 :: Log Alaric [29209]: wo
+Tue Oct  6 01:31:42 2026 :: Log Alaric [29209]: score
+Tue Oct  6 01:31:42 2026 :: Log Alaric [29209]: l
+Tue Oct  6 01:31:44 2026 :: Log Alaric [29209]: n
+Tue Oct  6 01:31:44 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 29209
+Tue Oct  6 01:31:47 2026 :: Log Alaric [29210]: w
+Tue Oct  6 01:31:47 2026 :: Log Alaric [29211]: arrived (Twist in the Maze) from 29210
+Tue Oct  6 01:31:48 2026 :: Log Alaric [29211]: te
+Tue Oct  6 01:31:59 2026 :: Log Alaric [29211]: c force
+Tue Oct  6 01:32:07 2026 :: Log Alaric [29211]: te
+Tue Oct  6 01:32:14 2026 :: Log Alaric [29211]: te
+Tue Oct  6 01:32:22 2026 :: Log Alaric [29211]: te
+Tue Oct  6 01:32:31 2026 :: Log Alaric [29211]: te
+Tue Oct  6 01:32:38 2026 :: Log Alaric [29211]: who
+Tue Oct  6 01:32:38 2026 :: Log Alaric [29211]: te
+Tue Oct  6 01:32:43 2026 :: Sock.sinaddr:  3.212.128.62
+Tue Oct  6 01:32:43 2026 :: EOF encountered on read.
+Tue Oct  6 01:32:47 2026 :: Log Alaric [29211]: te
+Tue Oct  6 01:32:57 2026 :: Log Alaric [29211]: who
+Tue Oct  6 01:32:57 2026 :: Log Alaric [29211]: te
+Tue Oct  6 01:33:07 2026 :: Log Alaric [29211]: e
+Tue Oct  6 01:33:07 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 29211
+Tue Oct  6 01:33:07 2026 :: Log Alaric [29210]: te
+Tue Oct  6 01:33:13 2026 :: Log Alaric [29210]: s
+Tue Oct  6 01:33:13 2026 :: Log Alaric [29209]: arrived (Twist in the Maze) from 29210
+Tue Oct  6 01:33:14 2026 :: Log Alaric [29209]: sh sk
+Tue Oct  6 01:33:19 2026 :: Log Alaric [29209]: n
+Tue Oct  6 01:33:19 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 29209
+Tue Oct  6 01:33:21 2026 :: Log Alaric [29210]: w
+Tue Oct  6 01:33:21 2026 :: Log Alaric [29211]: arrived (Twist in the Maze) from 29210
+Tue Oct  6 01:33:23 2026 :: Log Alaric [29211]: n
+Tue Oct  6 01:33:23 2026 :: Log Alaric [29212]: arrived (Twist in the Maze) from 29211
+Tue Oct  6 01:33:24 2026 :: Log Alaric [29212]: te
+Tue Oct  6 01:33:41 2026 :: Log Alaric [29212]: who
+Tue Oct  6 01:33:44 2026 :: Log Alaric [29212]: te
+Tue Oct  6 01:33:51 2026 :: Log Alaric [29212]: recal
+Tue Oct  6 01:33:51 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 29212
+Tue Oct  6 01:33:51 2026 :: Log Alaric [4207]: recal
+Tue Oct  6 01:33:51 2026 :: Log Alaric [4207]: recal
+Tue Oct  6 01:33:52 2026 :: Log Alaric [4207]: recal
+Tue Oct  6 01:33:52 2026 :: Log Alaric [4207]: recal
+Tue Oct  6 01:33:53 2026 :: Log Alaric [4207]: w
+Tue Oct  6 01:33:53 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Tue Oct  6 01:33:55 2026 :: Log Alaric [4208]: heal all
+Tue Oct  6 01:33:55 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Tue Oct  6 01:33:57 2026 :: Log Alaric [4208]: r e 4
+Tue Oct  6 01:33:57 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Tue Oct  6 01:33:57 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Tue Oct  6 01:33:57 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Oct  6 01:33:57 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Tue Oct  6 01:33:57 2026 :: Log Alaric [2427]: n
+Tue Oct  6 01:33:57 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Oct  6 01:33:58 2026 :: Log Alaric [2404]: n
+Tue Oct  6 01:33:58 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Oct  6 01:33:59 2026 :: Log Alaric [2401]: r e 27
+Tue Oct  6 01:33:59 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Tue Oct  6 01:33:59 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Tue Oct  6 01:33:59 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Tue Oct  6 01:33:59 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Tue Oct  6 01:33:59 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Tue Oct  6 01:33:59 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Tue Oct  6 01:33:59 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Tue Oct  6 01:33:59 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Tue Oct  6 01:33:59 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Tue Oct  6 01:33:59 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Tue Oct  6 01:33:59 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Tue Oct  6 01:33:59 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Tue Oct  6 01:33:59 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Tue Oct  6 01:33:59 2026 :: Log Alaric [3527]: arrived (The Checkpoint) from 3526
+Tue Oct  6 01:33:59 2026 :: Log Alaric [3528]: arrived (Along the Eastern Road) from 3527
+Tue Oct  6 01:33:59 2026 :: Log Alaric [3529]: arrived (Along the Eastern Road) from 3528
+Tue Oct  6 01:33:59 2026 :: Log Alaric [3530]: arrived (Near the Sands of Sorrow) from 3529
+Tue Oct  6 01:33:59 2026 :: Log Alaric [3531]: arrived (Near the Sands of Sorrow) from 3530
+Tue Oct  6 01:33:59 2026 :: Log Alaric [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Tue Oct  6 01:33:59 2026 :: Log Alaric [42]: arrived (On the Outskirts of New Thalos) from 3532
+Tue Oct  6 01:33:59 2026 :: Log Alaric [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Tue Oct  6 01:33:59 2026 :: Log Alaric [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Tue Oct  6 01:33:59 2026 :: Log Alaric [9524]: arrived (West Main Street) from 9523
+Tue Oct  6 01:33:59 2026 :: Log Alaric [9525]: arrived (West Main Street) from 9524
+Tue Oct  6 01:33:59 2026 :: Log Alaric [9526]: arrived (West Main Street) from 9525
+Tue Oct  6 01:33:59 2026 :: Log Alaric [9509]: arrived (The Western Market Square) from 9526
+Tue Oct  6 01:33:59 2026 :: Log Alaric [9506]: arrived (The Center of Market Square) from 9509
+Tue Oct  6 01:34:00 2026 :: Log Alaric [9506]: r n 15
+Tue Oct  6 01:34:00 2026 :: Log Alaric [9515]: arrived (The Northern Market Square) from 9506
+Tue Oct  6 01:34:00 2026 :: Log Alaric [9518]: arrived (Sultan's Walk) from 9515
+Tue Oct  6 01:34:00 2026 :: Log Alaric [9519]: arrived (Sultan's Walk) from 9518
+Tue Oct  6 01:34:00 2026 :: Log Alaric [9520]: arrived (Sultan's Walk) from 9519
+Tue Oct  6 01:34:00 2026 :: Log Alaric [9521]: arrived (Sultan's Walk) from 9520
+Tue Oct  6 01:34:00 2026 :: Log Alaric [9522]: arrived (Inside the Northern Gate of New Thalos) from 9521
+Tue Oct  6 01:34:00 2026 :: Log Alaric [9667]: arrived (Outside the Northern Gate of New Thalos) from 9522
+Tue Oct  6 01:34:00 2026 :: Log Alaric [9781]: arrived (On the Plains) from 9667
+Tue Oct  6 01:34:00 2026 :: Log Alaric [9782]: arrived (On the Plains) from 9781
+Tue Oct  6 01:34:00 2026 :: Log Alaric [9783]: arrived (Edge of the forest) from 9782
+Tue Oct  6 01:34:00 2026 :: Log Alaric [64]: arrived (Misty Clearing) from 9783
+Tue Oct  6 01:34:00 2026 :: Log Alaric [29001]: arrived (Entrance to the Fortress) from 64
+Tue Oct  6 01:34:00 2026 :: Log Alaric [29002]: arrived (Inside Korzath's Private Fortress) from 29001
+Tue Oct  6 01:34:00 2026 :: Log Alaric [29003]: arrived (Grand Foyer) from 29002
+Tue Oct  6 01:34:00 2026 :: Log Alaric [29004]: arrived (Center Tunnelway) from 29003
+Tue Oct  6 01:34:03 2026 :: Log Alaric [29004]: te
+Tue Oct  6 01:34:16 2026 :: Log Alaric [29004]: te
+Tue Oct  6 01:34:25 2026 :: Log Alaric [29004]: sh
+Tue Oct  6 01:34:33 2026 :: Log Alaric [29004]: get key cor
+Tue Oct  6 01:34:34 2026 :: Log Alaric [29004]: unl north
+Tue Oct  6 01:34:34 2026 :: Log Alaric [29004]: on
+Tue Oct  6 01:34:35 2026 :: Log Alaric [29004]: n
+Tue Oct  6 01:34:35 2026 :: Log Alaric [29201]: arrived (Heroes Hall) from 29004
+Tue Oct  6 01:34:35 2026 :: Log Alaric [29201]: n
+Tue Oct  6 01:34:35 2026 :: Log Alaric [29202]: arrived (Hall of Past Heroes) from 29201
+Tue Oct  6 01:34:36 2026 :: Log Alaric [29202]: w
+Tue Oct  6 01:34:36 2026 :: Log Alaric [29203]: arrived (Passage to the Maze) from 29202
+Tue Oct  6 01:34:37 2026 :: Log Alaric [29203]: w
+Tue Oct  6 01:34:37 2026 :: Log Alaric [29204]: arrived (Twist in the Maze) from 29203
+Tue Oct  6 01:34:38 2026 :: Log Alaric [29204]: s
+Tue Oct  6 01:34:38 2026 :: Log Alaric [29205]: arrived (Twist in the Maze) from 29204
+Tue Oct  6 01:34:38 2026 :: Log Alaric [29205]: e
+Tue Oct  6 01:34:38 2026 :: Log Alaric [29206]: arrived (Twist in the Maze) from 29205
+Tue Oct  6 01:34:39 2026 :: Log Alaric [29206]: s
+Tue Oct  6 01:34:39 2026 :: Log Alaric [29207]: arrived (Twist in the Maze) from 29206
+Tue Oct  6 01:34:41 2026 :: Log Alaric [29207]: n
+Tue Oct  6 01:34:41 2026 :: Log Alaric [29206]: arrived (Twist in the Maze) from 29207
+Tue Oct  6 01:34:42 2026 :: Log Alaric [29206]: te
+Tue Oct  6 01:34:47 2026 :: Log Alaric [29206]: te
+Tue Oct  6 01:34:53 2026 :: Log Alaric [29206]: te
+Tue Oct  6 01:34:56 2026 :: Log Alaric [29206]: te
+Tue Oct  6 01:35:06 2026 :: Log Alaric [29206]: who
+Tue Oct  6 01:35:06 2026 :: Log Alaric [29206]: te
+Tue Oct  6 01:35:13 2026 :: Log Alaric [29206]: te
+Tue Oct  6 01:35:21 2026 :: Log Alaric [29206]: te
+Tue Oct  6 01:35:32 2026 :: Log Alaric [29206]: who
+Tue Oct  6 01:35:32 2026 :: Log Alaric [29206]: te
+Tue Oct  6 01:35:39 2026 :: Log Alaric [29206]: worth
+Tue Oct  6 01:35:40 2026 :: Log Alaric [29206]: s
+Tue Oct  6 01:35:40 2026 :: Log Alaric [29207]: arrived (Twist in the Maze) from 29206
+Tue Oct  6 01:35:46 2026 :: Log Alaric [29207]: i
+Tue Oct  6 01:35:51 2026 :: Log Alaric [29207]: eq
+Tue Oct  6 01:35:54 2026 :: Log Alaric [29207]: wake
+Tue Oct  6 01:35:54 2026 :: Log Alaric [29207]: l
+Tue Oct  6 01:35:56 2026 :: Log Alaric [29207]: te
+Tue Oct  6 01:36:02 2026 :: Log Alaric [29207]: te
