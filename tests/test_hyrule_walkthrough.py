@@ -202,18 +202,27 @@ class HyruleWalkthroughTests(unittest.TestCase):
                         # The Recorder: any dungeon won, and the next one,
                         # and no other. (At the pond its tune is the pond's:
                         # the Level 7 step below drains it with PLAY RECORDER.)
+                        #
+                        # A ride leaves PULSE_VIOLENCE (3 s) of lag, and lag
+                        # counts down only while a command is waiting (comm.c),
+                        # so draining beforehand burns none of it: the next
+                        # command sits out the whole 3 s first. Its window
+                        # has to hold the lag and the reply. A 3 s window
+                        # here failed CI twice running on 2026-10-06, the
+                        # reply landing just after the window closed.
+                        after_ride = 7.0
                         back = run(hero, "blow recorder 1", 4.0)
                         self.assertIn(self.name_of(ho.DUNGEONS[1]["screen"]), back, back)
-                        hero.drain(4.0)     # the whirlwind's lag
-                        refused = run(hero, "play recorder 8", 3.0)
+                        refused = run(hero, "play recorder 8", after_ride)
                         self.assertIn("knows the way", refused, refused)
-                        hero.drain(1.0)
                         onward = run(hero, "play recorder", 4.0)
                         self.assertIn(self.name_of(ho.DUNGEONS[2]["screen"]), onward, onward)
-                        hero.drain(4.0)
-                        flown = run(hero, "play recorder 7", 4.0)
+                        flown = run(hero, "play recorder 7", after_ride)
                         self.assertIn(self.name_of(ho.DUNGEONS[7]["screen"]), flown, flown)
-                        hero.drain(4.0)
+                        # Pay the last ride's lag with a command whose reply
+                        # nothing reads, so the pond's tune below is not the
+                        # one that waits for it.
+                        run(hero, "look", after_ride)
                         here = ho.DUNGEONS[7]["screen"]
 
                 made = run(hero, "combine triforce", 2.0)
