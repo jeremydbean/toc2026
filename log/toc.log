@@ -56506,3 +56506,18 @@ Tue Oct  6 14:29:02 2026 :: Log Eclipse [9988]: at alaric stat alaric
 Tue Oct  6 14:29:02 2026 :: Log Eclipse [4207]: arrived (Before the Altar.) from 9988
 Tue Oct  6 14:29:02 2026 :: Log Eclipse [4207]: stat alaric
 Tue Oct  6 14:29:02 2026 :: Log Eclipse [9988]: arrived (Eclipse's Seat of Power.) from 4207
+Tue Oct  6 14:29:12 2026 :: Log Eclipse [9988]: at alaric stat mob alaric
+Tue Oct  6 14:29:12 2026 :: Log Eclipse [4207]: arrived (Before the Altar.) from 9988
+Tue Oct  6 14:29:12 2026 :: Log Eclipse [4207]: stat mob alaric
+Tue Oct  6 14:29:12 2026 :: Log Eclipse [9988]: arrived (Eclipse's Seat of Power.) from 4207
+Tue Oct  6 14:29:19 2026 :: Sock.sinaddr:  178.156.187.238
+Tue Oct  6 14:29:19 2026 :: EOF encountered on read.
+Tue Oct  6 14:30:59 2026 :: Log Eclipse [9988]: at alaric mstat alaric
+Tue Oct  6 14:30:59 2026 :: Log Eclipse [4207]: arrived (Before the Altar.) from 9988
+Tue Oct  6 14:30:59 2026 :: Log Eclipse [4207]: mstat alaric
+Tue Oct  6 14:30:59 2026 :: Log Eclipse [9988]: arrived (Eclipse's Seat of Power.) from 4207
+Tue Oct  6 14:31:08 2026 :: Log Eclipse [9988]: wiz
+Tue Oct  6 14:31:45 2026 :: Log Eclipse [9988]: at alaric pstat alaric
+Tue Oct  6 14:31:45 2026 :: Log Eclipse [4207]: arrived (Before the Altar.) from 9988
+Tue Oct  6 14:31:45 2026 :: Log Eclipse [4207]: pstat alaric
+Tue Oct  6 14:31:45 2026 :: Log Eclipse [9988]: arrived (Eclipse's Seat of Power.) from 4207

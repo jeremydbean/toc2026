@@ -1,7 +1,7 @@
 #PLAYER
 Name Eclipse~
 Id   2891
-LogO 1791296925
+LogO 1791297224
 Vers 4
 Desc Blah
 ~
@@ -19,7 +19,7 @@ ChangesSeen ~
 Cast none
 Levl 70
 Tru  70
-Plyd 10923285
+Plyd 10923584
 ListRemorts 0  0 ~
 NumRemorts 1
 Note 1790386686
@@ -31,7 +31,7 @@ NewPlat 4
 NewCopp 4
 NewSilv 0
 BankCP 0
-IntTime 1791210797
+IntTime 1791297197
 IntTotal 0
 Dcount 0
 SavedOnce 1
