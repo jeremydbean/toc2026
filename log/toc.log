@@ -54123,3 +54123,146 @@ Tue Oct  6 00:38:50 2026 :: Log Alaric [2497]: sc
 Tue Oct  6 00:40:07 2026 :: Log Alaric [2497]: c forc
 Tue Oct  6 00:40:13 2026 :: Log Alaric [2497]: c forc
 Tue Oct  6 00:40:19 2026 :: Log Alaric [2497]: af
+Tue Oct  6 00:40:50 2026 :: Log Alaric [2497]: aq ti
+Tue Oct  6 00:41:59 2026 :: Sock.sinaddr:  178.156.187.238
+Tue Oct  6 00:41:59 2026 :: EOF encountered on read.
+Tue Oct  6 00:42:57 2026 :: Log Alaric [2497]: c de
+Tue Oct  6 00:43:06 2026 :: Log Alaric [2497]: aq ti
+Tue Oct  6 00:44:27 2026 :: Log Alaric [2497]: aq re
+Tue Oct  6 00:44:29 2026 :: Log Alaric [2497]: enter door
+Tue Oct  6 00:44:29 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Oct  6 00:44:30 2026 :: Log Alaric [2401]: east
+Tue Oct  6 00:44:30 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Tue Oct  6 00:44:30 2026 :: Log Alaric [2403]: east
+Tue Oct  6 00:44:30 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Tue Oct  6 00:44:30 2026 :: Log Alaric [2420]: east
+Tue Oct  6 00:44:30 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Tue Oct  6 00:44:31 2026 :: Log Alaric [2421]: south
+Tue Oct  6 00:44:31 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Tue Oct  6 00:44:31 2026 :: Log Alaric [2441]: east
+Tue Oct  6 00:44:31 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Tue Oct  6 00:44:31 2026 :: Log Alaric [2442]: south
+Tue Oct  6 00:44:31 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Tue Oct  6 00:44:31 2026 :: Log Alaric [2443]: east
+Tue Oct  6 00:44:31 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Tue Oct  6 00:44:32 2026 :: Log Alaric [2444]: east
+Tue Oct  6 00:44:32 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Tue Oct  6 00:44:32 2026 :: Log Alaric [2445]: east
+Tue Oct  6 00:44:32 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Tue Oct  6 00:44:32 2026 :: Log Alaric [2101]: east
+Tue Oct  6 00:44:32 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Tue Oct  6 00:44:32 2026 :: Log Alaric [2102]: south
+Tue Oct  6 00:44:32 2026 :: Log Alaric [2109]: arrived (An over-grown lot) from 2102
+Tue Oct  6 00:44:33 2026 :: Log Alaric [2109]: east
+Tue Oct  6 00:44:33 2026 :: Log Alaric [2110]: arrived (East end of an over-grown plot of land) from 2109
+Tue Oct  6 00:44:33 2026 :: Log Alaric [2110]: south
+Tue Oct  6 00:44:33 2026 :: Log Alaric [2116]: arrived (Dracolich Plaza) from 2110
+Tue Oct  6 00:44:33 2026 :: Log Alaric [2116]: east
+Tue Oct  6 00:44:33 2026 :: Log Alaric [2117]: arrived (Shortcut) from 2116
+Tue Oct  6 00:44:33 2026 :: Log Alaric [2117]: south
+Tue Oct  6 00:44:33 2026 :: Log Alaric [2121]: arrived (Shortcut) from 2117
+Tue Oct  6 00:44:34 2026 :: Log Alaric [2121]: east
+Tue Oct  6 00:44:34 2026 :: Log Alaric [2122]: arrived (Ice Dragon Way) from 2121
+Tue Oct  6 00:44:34 2026 :: Log Alaric [2122]: south
+Tue Oct  6 00:44:34 2026 :: Log Alaric [2127]: arrived (Yellow Dragon Road) from 2122
+Tue Oct  6 00:44:34 2026 :: Log Alaric [2127]: west
+Tue Oct  6 00:44:34 2026 :: Log Alaric [2126]: arrived (Yellow Dragon Road) from 2127
+Tue Oct  6 00:44:34 2026 :: Log Alaric [2126]: south
+Tue Oct  6 00:44:34 2026 :: Log Alaric [2131]: arrived (NO MAN'S LAND) from 2126
+Tue Oct  6 00:44:35 2026 :: Log Alaric [2131]: south
+Tue Oct  6 00:44:35 2026 :: Log Alaric [2136]: arrived (NO MAN'S LAND) from 2131
+Tue Oct  6 00:44:35 2026 :: Log Alaric [2136]: south
+Tue Oct  6 00:44:35 2026 :: Log Alaric [2141]: arrived (Bend in Hector Street) from 2136
+Tue Oct  6 00:44:35 2026 :: Log Alaric [2141]: south
+Tue Oct  6 00:44:35 2026 :: Log Alaric [2146]: arrived (Hector Street) from 2141
+Tue Oct  6 00:44:35 2026 :: Log Alaric [2146]: south
+Tue Oct  6 00:44:35 2026 :: Log Alaric [2150]: arrived (First intersection of Hector and Achilles) from 2146
+Tue Oct  6 00:44:36 2026 :: Log Alaric [2150]: south
+Tue Oct  6 00:44:36 2026 :: Log Alaric [2156]: arrived (Achilles avenue at entrance to park) from 2150
+Tue Oct  6 00:44:36 2026 :: Log Alaric [2156]: west
+Tue Oct  6 00:44:36 2026 :: Log Alaric [2155]: arrived (Khan Park) from 2156
+Tue Oct  6 00:44:38 2026 :: Log Alaric [2155]: get all
+Tue Oct  6 00:44:40 2026 :: Log Alaric [2155]: recal
+Tue Oct  6 00:44:40 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2155
+Tue Oct  6 00:44:40 2026 :: Log Alaric [2497]: recal
+Tue Oct  6 00:44:40 2026 :: Log Alaric [2497]: recal
+Tue Oct  6 00:44:41 2026 :: Log Alaric [2497]: aq co
+Tue Oct  6 00:44:41 2026 :: Log Alaric [2497]: quest complete: 24 gold, 622 quest points, emergency (streak bonus 211%)
+Tue Oct  6 00:44:42 2026 :: Log Alaric [2497]: aq ga no
+Tue Oct  6 00:44:43 2026 :: Log Alaric [2497]: sc
+Tue Oct  6 00:44:47 2026 :: Log Alaric [2497]: wear dip
+Tue Oct  6 00:44:49 2026 :: Log Alaric [2497]: eq
+Tue Oct  6 00:44:50 2026 :: Log Alaric [2497]: sc
+Tue Oct  6 00:44:58 2026 :: Log Alaric [2497]: buy hero
+Tue Oct  6 00:45:01 2026 :: Log Alaric [2497]: buy level
+Tue Oct  6 00:45:02 2026 :: Log Alaric [2497]: l
+Tue Oct  6 00:45:04 2026 :: Log Alaric [2497]: list
+Tue Oct  6 00:45:05 2026 :: Log Alaric [2497]: aq list
+Tue Oct  6 00:45:08 2026 :: Log Alaric [2497]: aq buy hero
+Tue Oct  6 00:45:08 2026 :: Log Alaric [2497]: level 50 -> 51 (earned)
+Tue Oct  6 00:45:08 2026 :: Alaric is now a hero!
+Tue Oct  6 00:45:11 2026 :: Log Alaric [2497]: wear sc
+Tue Oct  6 00:45:13 2026 :: Log Alaric [2497]: wo
+Tue Oct  6 00:45:16 2026 :: Log Alaric [2497]: en do
+Tue Oct  6 00:45:16 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Oct  6 00:45:19 2026 :: Log Alaric [2401]: jump rock
+Tue Oct  6 00:45:19 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Tue Oct  6 00:45:19 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 1607
+Tue Oct  6 00:45:21 2026 :: Log Alaric [4208]: l
+Tue Oct  6 00:45:23 2026 :: Log Alaric [4208]: heal all
+Tue Oct  6 00:45:23 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Tue Oct  6 00:45:24 2026 :: Log Alaric [4208]: r e 4
+Tue Oct  6 00:45:24 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Tue Oct  6 00:45:24 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Tue Oct  6 00:45:24 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Oct  6 00:45:24 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Tue Oct  6 00:45:25 2026 :: Log Alaric [2427]: n
+Tue Oct  6 00:45:25 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Oct  6 00:45:25 2026 :: Log Alaric [2404]: n
+Tue Oct  6 00:45:25 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Oct  6 00:45:28 2026 :: Log Alaric [2401]: r e 27
+Tue Oct  6 00:45:28 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Tue Oct  6 00:45:28 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Tue Oct  6 00:45:28 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Tue Oct  6 00:45:28 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Tue Oct  6 00:45:28 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Tue Oct  6 00:45:28 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Tue Oct  6 00:45:28 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Tue Oct  6 00:45:28 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Tue Oct  6 00:45:28 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Tue Oct  6 00:45:28 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Tue Oct  6 00:45:28 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Tue Oct  6 00:45:28 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Tue Oct  6 00:45:28 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Tue Oct  6 00:45:28 2026 :: Log Alaric [3527]: arrived (The Checkpoint) from 3526
+Tue Oct  6 00:45:28 2026 :: Log Alaric [3528]: arrived (Along the Eastern Road) from 3527
+Tue Oct  6 00:45:28 2026 :: Log Alaric [3529]: arrived (Along the Eastern Road) from 3528
+Tue Oct  6 00:45:28 2026 :: Log Alaric [3530]: arrived (Near the Sands of Sorrow) from 3529
+Tue Oct  6 00:45:28 2026 :: Log Alaric [3531]: arrived (Near the Sands of Sorrow) from 3530
+Tue Oct  6 00:45:28 2026 :: Log Alaric [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Tue Oct  6 00:45:28 2026 :: Log Alaric [42]: arrived (On the Outskirts of New Thalos) from 3532
+Tue Oct  6 00:45:28 2026 :: Log Alaric [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Tue Oct  6 00:45:28 2026 :: Log Alaric [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Tue Oct  6 00:45:28 2026 :: Log Alaric [9524]: arrived (West Main Street) from 9523
+Tue Oct  6 00:45:28 2026 :: Log Alaric [9525]: arrived (West Main Street) from 9524
+Tue Oct  6 00:45:28 2026 :: Log Alaric [9526]: arrived (West Main Street) from 9525
+Tue Oct  6 00:45:28 2026 :: Log Alaric [9509]: arrived (The Western Market Square) from 9526
+Tue Oct  6 00:45:28 2026 :: Log Alaric [9506]: arrived (The Center of Market Square) from 9509
+Tue Oct  6 00:45:29 2026 :: Log Alaric [9506]: r n 14
+Tue Oct  6 00:45:29 2026 :: Log Alaric [9515]: arrived (The Northern Market Square) from 9506
+Tue Oct  6 00:45:29 2026 :: Log Alaric [9518]: arrived (Sultan's Walk) from 9515
+Tue Oct  6 00:45:29 2026 :: Log Alaric [9519]: arrived (Sultan's Walk) from 9518
+Tue Oct  6 00:45:29 2026 :: Log Alaric [9520]: arrived (Sultan's Walk) from 9519
+Tue Oct  6 00:45:29 2026 :: Log Alaric [9521]: arrived (Sultan's Walk) from 9520
+Tue Oct  6 00:45:29 2026 :: Log Alaric [9522]: arrived (Inside the Northern Gate of New Thalos) from 9521
+Tue Oct  6 00:45:29 2026 :: Log Alaric [9667]: arrived (Outside the Northern Gate of New Thalos) from 9522
+Tue Oct  6 00:45:29 2026 :: Log Alaric [9781]: arrived (On the Plains) from 9667
+Tue Oct  6 00:45:29 2026 :: Log Alaric [9782]: arrived (On the Plains) from 9781
+Tue Oct  6 00:45:29 2026 :: Log Alaric [9783]: arrived (Edge of the forest) from 9782
+Tue Oct  6 00:45:29 2026 :: Log Alaric [64]: arrived (Misty Clearing) from 9783
+Tue Oct  6 00:45:29 2026 :: Log Alaric [29001]: arrived (Entrance to the Fortress) from 64
+Tue Oct  6 00:45:29 2026 :: Log Alaric [29002]: arrived (Inside Korzath's Private Fortress) from 29001
+Tue Oct  6 00:45:29 2026 :: Log Alaric [29003]: arrived (Grand Foyer) from 29002
+Tue Oct  6 00:45:30 2026 :: Log Alaric [29003]: n
+Tue Oct  6 00:45:30 2026 :: Log Alaric [29004]: arrived (Center Tunnelway) from 29003
+Tue Oct  6 00:45:32 2026 :: Log Alaric [29004]: kill gu
