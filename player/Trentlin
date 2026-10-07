@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1791414525
+LogO 1791414685
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,13 +16,13 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 8
-Plyd 4660
+Plyd 4820
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 4411
-HMV  99 110 195 219 133 138
+Room 1109
+HMV  -20 110 199 219 96 138
 NewGold 38
 NewPlat 8
 NewCopp 78
@@ -50,9 +50,12 @@ Achv visit-mud-school 1791053973
 Achv visit-casino 1791056149
 Achv visit-smurf 1791055506
 Achv visit-gangland 1791056925
+Achv visit-thalos 1791414546
+Achv visit-shire 1791414577
 Achv carry-one-platinum 1791054979
 Achv four-denominations 1791055231
 Achv visit-froboz 1791055958
+Achv visit-glitter-palace 1791414563
 LastOut  1791414384
 SesLogin 1791414294
 SesDur   90
@@ -64,8 +67,8 @@ SesDead  0
 SesQuest 0
 QuestPnts 104
 QuestStrk 2
-QuestNext 9
-Exp  18052
+QuestNext 7
+Exp  18049
 Act  65740
 AfBy 512
 Comm 24576
@@ -92,15 +95,14 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
+Pos  0
 Prac 5
-Trai 2
 Save  3
 Alig  -60
 Hit   2
 Dam   6
 ACs 79 71 69 99
-Attr 14 16 13 12 19
+Attr 14 16 15 12 19
 AMod 0 10 11 0 7
 Pass TrjPUdRVdu8MY~
 Titl  the Swordsman~
@@ -108,7 +110,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 110 219 142
-Cond 0 0 43
+Cond 0 0 41
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -155,7 +157,7 @@ Wear 0
 Cost 0
 Cond 99
 Repd 0
-Val  0 0 122 0 0
+Val  0 0 120 0 0
 End
 
 #O
@@ -258,7 +260,7 @@ Vnum 3715
 Nest 0
 Wear 17
 Cost 0
-Cond 99
+Cond 98
 Repd 0
 End
 

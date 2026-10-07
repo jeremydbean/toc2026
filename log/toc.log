@@ -62043,3 +62043,235 @@ Wed Oct  7 23:08:51 2026 :: Log Trentlin [4403]: s
 Wed Oct  7 23:08:51 2026 :: Log Trentlin [4402]: arrived (Tunnel to courtyard.) from 4403
 Wed Oct  7 23:08:52 2026 :: Log Trentlin [4402]: s
 Wed Oct  7 23:08:52 2026 :: Log Trentlin [4401]: arrived (Before Gates to the Citadel of War.) from 4402
+Wed Oct  7 23:08:53 2026 :: Log Trentlin [4401]: s
+Wed Oct  7 23:08:53 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 4401
+Wed Oct  7 23:08:54 2026 :: Log Trentlin [2425]: e
+Wed Oct  7 23:08:54 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Wed Oct  7 23:08:57 2026 :: Log Trentlin [2426]: (refused) oe
+Wed Oct  7 23:08:57 2026 :: Log Trentlin [2426]: e
+Wed Oct  7 23:09:00 2026 :: Log Trentlin [2426]: open east
+Wed Oct  7 23:09:00 2026 :: Log Trentlin [2426]: e
+Wed Oct  7 23:09:00 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Wed Oct  7 23:09:01 2026 :: Log Trentlin [2440]: sca
+Wed Oct  7 23:09:02 2026 :: Log Trentlin [2440]: e
+Wed Oct  7 23:09:02 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Wed Oct  7 23:09:02 2026 :: Sock.sinaddr:  178.156.189.249
+Wed Oct  7 23:09:02 2026 :: EOF encountered on read.
+Wed Oct  7 23:09:03 2026 :: Log Trentlin [3503]: sca
+Wed Oct  7 23:09:03 2026 :: Log Trentlin [3503]: e
+Wed Oct  7 23:09:03 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Wed Oct  7 23:09:04 2026 :: Log Trentlin [3502]: sca
+Wed Oct  7 23:09:06 2026 :: Log Trentlin [3502]: s
+Wed Oct  7 23:09:06 2026 :: Log Trentlin [5261]: arrived (The dwarf forest) from 3502
+Wed Oct  7 23:09:08 2026 :: Log Trentlin [5261]: sca
+Wed Oct  7 23:09:11 2026 :: Log Trentlin [5261]: n
+Wed Oct  7 23:09:11 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 5261
+Wed Oct  7 23:09:11 2026 :: Log Trentlin [3502]: n
+Wed Oct  7 23:09:11 2026 :: Log Trentlin [3501]: arrived (The Lane) from 3502
+Wed Oct  7 23:09:12 2026 :: Log Trentlin [3501]: n
+Wed Oct  7 23:09:12 2026 :: Log Trentlin [3500]: arrived (The Plains) from 3501
+Wed Oct  7 23:09:14 2026 :: Log Trentlin [3500]: sca
+Wed Oct  7 23:09:15 2026 :: Log Trentlin [3500]: nw
+Wed Oct  7 23:09:15 2026 :: Log Trentlin [21]: arrived (A twisting path) from 3500
+Wed Oct  7 23:09:16 2026 :: Log Trentlin [21]: sca
+Wed Oct  7 23:09:17 2026 :: Log Trentlin [21]: w
+Wed Oct  7 23:09:17 2026 :: Log Trentlin [22]: arrived (Before the great circle) from 21
+Wed Oct  7 23:09:17 2026 :: Log Trentlin [22]: sca
+Wed Oct  7 23:09:20 2026 :: Log Trentlin [22]: s
+Wed Oct  7 23:09:20 2026 :: Log Trentlin [23]: arrived (The Great Portal) from 22
+Wed Oct  7 23:09:23 2026 :: Log Trentlin [23]: l in por
+Wed Oct  7 23:09:23 2026 :: Log Trentlin [10000]: arrived (Before the crystal bridge.) from 23
+Wed Oct  7 23:09:23 2026 :: Log Trentlin [23]: arrived (The Great Portal) from 10000
+Wed Oct  7 23:09:25 2026 :: Log Trentlin [23]: l sign
+Wed Oct  7 23:09:27 2026 :: Log Trentlin [23]: n
+Wed Oct  7 23:09:27 2026 :: Log Trentlin [22]: arrived (Before the great circle) from 23
+Wed Oct  7 23:09:28 2026 :: Log Trentlin [22]: e
+Wed Oct  7 23:09:28 2026 :: Log Trentlin [21]: arrived (A twisting path) from 22
+Wed Oct  7 23:09:29 2026 :: Log Trentlin [21]: se
+Wed Oct  7 23:09:29 2026 :: Log Trentlin [3500]: arrived (The Plains) from 21
+Wed Oct  7 23:09:30 2026 :: Log Trentlin [3500]: s
+Wed Oct  7 23:09:30 2026 :: Log Trentlin [3501]: arrived (The Lane) from 3500
+Wed Oct  7 23:09:31 2026 :: Log Trentlin [3501]: s
+Wed Oct  7 23:09:31 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3501
+Wed Oct  7 23:09:32 2026 :: Log Trentlin [3502]: e
+Wed Oct  7 23:09:32 2026 :: Log Trentlin [3525]: arrived (Along the Eastern Road) from 3502
+Wed Oct  7 23:09:33 2026 :: Log Trentlin [3525]: e
+Wed Oct  7 23:09:33 2026 :: Log Trentlin [3526]: arrived (Along the Eastern Road) from 3525
+Wed Oct  7 23:09:34 2026 :: Log Trentlin [3526]: sca
+Wed Oct  7 23:09:35 2026 :: Log Trentlin [3526]: exi
+Wed Oct  7 23:09:36 2026 :: Log Trentlin [3526]: n
+Wed Oct  7 23:09:36 2026 :: Log Trentlin [38]: arrived (Well Kept Path) from 3526
+Wed Oct  7 23:09:37 2026 :: Log Trentlin [38]: n
+Wed Oct  7 23:09:37 2026 :: Log Trentlin [1100]: arrived (A well kept path) from 38
+Wed Oct  7 23:09:39 2026 :: Log Trentlin [1100]: n
+Wed Oct  7 23:09:39 2026 :: Log Trentlin [1101]: arrived (A well kept path) from 1100
+Wed Oct  7 23:09:40 2026 :: Log Trentlin [1101]: n
+Wed Oct  7 23:09:40 2026 :: Log Trentlin [1102]: arrived (A well kept path) from 1101
+Wed Oct  7 23:09:41 2026 :: Log Trentlin [1102]: sco
+Wed Oct  7 23:09:43 2026 :: Log Trentlin [1102]: n
+Wed Oct  7 23:09:43 2026 :: Log Trentlin [1103]: arrived (Entrance to the Shire) from 1102
+Wed Oct  7 23:09:45 2026 :: Log Trentlin [1103]: l sign
+Wed Oct  7 23:09:46 2026 :: Log Trentlin [1103]: i
+Wed Oct  7 23:09:48 2026 :: Log Trentlin [1103]: e
+Wed Oct  7 23:09:48 2026 :: Log Trentlin [1104]: arrived (Bywater Road) from 1103
+Wed Oct  7 23:09:49 2026 :: Log Trentlin [1104]: sca
+Wed Oct  7 23:09:50 2026 :: Log Trentlin [1104]: n
+Wed Oct  7 23:09:50 2026 :: Log Trentlin [1105]: arrived (The General Store) from 1104
+Wed Oct  7 23:09:51 2026 :: Log Trentlin [1105]: list
+Wed Oct  7 23:09:52 2026 :: Log Trentlin [1105]: s
+Wed Oct  7 23:09:52 2026 :: Log Trentlin [1104]: arrived (Bywater Road) from 1105
+Wed Oct  7 23:09:53 2026 :: Log Trentlin [1104]: e
+Wed Oct  7 23:09:53 2026 :: Log Trentlin [1106]: arrived (Bywater Road) from 1104
+Wed Oct  7 23:09:53 2026 :: Log Trentlin [1106]: sca
+Wed Oct  7 23:09:57 2026 :: Log Trentlin [1106]: n
+Wed Oct  7 23:09:57 2026 :: Log Trentlin [1107]: arrived (The House of Arms) from 1106
+Wed Oct  7 23:09:58 2026 :: Log Trentlin [1107]: list
+Wed Oct  7 23:09:58 2026 :: Log Trentlin [1107]: s
+Wed Oct  7 23:09:58 2026 :: Log Trentlin [1106]: arrived (Bywater Road) from 1107
+Wed Oct  7 23:09:59 2026 :: Log Trentlin [1106]: e
+Wed Oct  7 23:09:59 2026 :: Log Trentlin [1109]: arrived (A bend in the road) from 1106
+Wed Oct  7 23:10:01 2026 :: Log Trentlin [1109]: con sh
+Wed Oct  7 23:10:01 2026 :: Log Trentlin [1109]: l sh
+Wed Oct  7 23:10:04 2026 :: Log Trentlin [1109]: k sh
+Wed Oct  7 23:10:08 2026 :: Log Trentlin [1109]: bash
+Wed Oct  7 23:10:15 2026 :: Log Trentlin [1109]: bash
+Wed Oct  7 23:10:24 2026 :: Log Trentlin [1109]: bash
+Wed Oct  7 23:10:36 2026 :: Log Trentlin [1109]: kic
+Wed Oct  7 23:10:39 2026 :: Log Trentlin [1109]: kick
+Wed Oct  7 23:10:42 2026 :: Log Trentlin [1109]: kick
+Wed Oct  7 23:10:46 2026 :: Log Trentlin [1109]: kick
+Wed Oct  7 23:10:51 2026 :: Log Trentlin [1109]: kick
+Wed Oct  7 23:10:57 2026 :: Log Trentlin [1109]: kick
+Wed Oct  7 23:11:01 2026 :: Log Trentlin [1109]: kick
+Wed Oct  7 23:11:06 2026 :: Log Trentlin [1109]: bash
+Wed Oct  7 23:11:14 2026 :: Log Trentlin [1109]: bash
+Wed Oct  7 23:11:25 2026 :: Trentlin killed by a sheriff at 1109
+Wed Oct  7 23:11:25 2026 :: Snapshot of Trentlin taken before death (PRESTORE Trentlin to see it).
+Wed Oct  7 23:11:25 2026 :: Log Trentlin [4216]: arrived (Death room.) from 1109
+Wed Oct  7 23:11:29 2026 :: Log Trentlin [4216]: flee
+Wed Oct  7 23:11:29 2026 :: Log Trentlin [4216]: flee
+Wed Oct  7 23:11:29 2026 :: Log Trentlin [4216]: flee
+Wed Oct  7 23:11:30 2026 :: Log Trentlin [4216]: flee
+Wed Oct  7 23:11:30 2026 :: Log Trentlin [4216]: flee
+Wed Oct  7 23:11:30 2026 :: Log Trentlin [4216]: l
+Wed Oct  7 23:11:31 2026 :: Log Trentlin [4216]: wake
+Wed Oct  7 23:11:33 2026 :: Log Trentlin [4216]: d
+Wed Oct  7 23:11:33 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4216
+Wed Oct  7 23:11:35 2026 :: Log Trentlin [4208]: e
+Wed Oct  7 23:11:35 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Wed Oct  7 23:11:35 2026 :: Log Trentlin [4207]: e
+Wed Oct  7 23:11:35 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Wed Oct  7 23:11:36 2026 :: Log Trentlin [4202]: e
+Wed Oct  7 23:11:36 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Oct  7 23:11:37 2026 :: Log Trentlin [4201]: e
+Wed Oct  7 23:11:37 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Wed Oct  7 23:11:39 2026 :: Log Trentlin [2427]: n
+Wed Oct  7 23:11:39 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct  7 23:11:40 2026 :: Log Trentlin [2404]: n
+Wed Oct  7 23:11:40 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Oct  7 23:11:40 2026 :: Log Trentlin [2401]: e
+Wed Oct  7 23:11:40 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Oct  7 23:11:41 2026 :: Log Trentlin [2403]: e
+Wed Oct  7 23:11:41 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Wed Oct  7 23:11:41 2026 :: Log Trentlin [2420]: e
+Wed Oct  7 23:11:41 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Wed Oct  7 23:11:41 2026 :: Log Trentlin [2421]: e
+Wed Oct  7 23:11:41 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Wed Oct  7 23:11:41 2026 :: Log Trentlin [2422]: e
+Wed Oct  7 23:11:41 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Wed Oct  7 23:11:42 2026 :: Log Trentlin [2423]: e
+Wed Oct  7 23:11:42 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Wed Oct  7 23:11:43 2026 :: Log Trentlin [2424]: e
+Wed Oct  7 23:11:43 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Wed Oct  7 23:11:43 2026 :: Log Trentlin [2425]: e
+Wed Oct  7 23:11:43 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Wed Oct  7 23:11:43 2026 :: Log Trentlin [2426]: e
+Wed Oct  7 23:11:46 2026 :: Log Trentlin [2426]: open east
+Wed Oct  7 23:11:46 2026 :: Log Trentlin [2426]: e
+Wed Oct  7 23:11:46 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Wed Oct  7 23:11:46 2026 :: Log Trentlin [2440]: e
+Wed Oct  7 23:11:46 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Wed Oct  7 23:11:47 2026 :: Log Trentlin [3503]: e
+Wed Oct  7 23:11:47 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Wed Oct  7 23:11:48 2026 :: Log Trentlin [3502]: e
+Wed Oct  7 23:11:48 2026 :: Log Trentlin [3525]: arrived (Along the Eastern Road) from 3502
+Wed Oct  7 23:11:48 2026 :: Log Trentlin [3525]: e
+Wed Oct  7 23:11:48 2026 :: Log Trentlin [3526]: arrived (Along the Eastern Road) from 3525
+Wed Oct  7 23:11:50 2026 :: Log Trentlin [3526]: n
+Wed Oct  7 23:11:50 2026 :: Log Trentlin [38]: arrived (Well Kept Path) from 3526
+Wed Oct  7 23:11:51 2026 :: Log Trentlin [38]: n
+Wed Oct  7 23:11:51 2026 :: Log Trentlin [1100]: arrived (A well kept path) from 38
+Wed Oct  7 23:11:51 2026 :: Log Trentlin [1100]: n
+Wed Oct  7 23:11:51 2026 :: Log Trentlin [1101]: arrived (A well kept path) from 1100
+Wed Oct  7 23:11:52 2026 :: Log Trentlin [1101]: n
+Wed Oct  7 23:11:52 2026 :: Log Trentlin [1102]: arrived (A well kept path) from 1101
+Wed Oct  7 23:11:53 2026 :: Log Trentlin [1102]: n
+Wed Oct  7 23:11:53 2026 :: Log Trentlin [1103]: arrived (Entrance to the Shire) from 1102
+Wed Oct  7 23:11:54 2026 :: Log Trentlin [1103]: e
+Wed Oct  7 23:11:54 2026 :: Log Trentlin [1104]: arrived (Bywater Road) from 1103
+Wed Oct  7 23:11:55 2026 :: Log Trentlin [1104]: e
+Wed Oct  7 23:11:55 2026 :: Log Trentlin [1106]: arrived (Bywater Road) from 1104
+Wed Oct  7 23:11:56 2026 :: Log Trentlin [1106]: e
+Wed Oct  7 23:11:56 2026 :: Log Trentlin [1109]: arrived (A bend in the road) from 1106
+Wed Oct  7 23:11:58 2026 :: Log Trentlin [1109]: get all corpse
+Wed Oct  7 23:12:01 2026 :: Log Trentlin [1109]: wear all
+Wed Oct  7 23:12:03 2026 :: Log Trentlin [1109]: i
+Wed Oct  7 23:12:05 2026 :: Log Trentlin [1109]: l s
+Wed Oct  7 23:12:06 2026 :: Log Trentlin [1109]: l sh
+Wed Oct  7 23:12:10 2026 :: Log Trentlin [1109]: k sh
+Wed Oct  7 23:12:16 2026 :: Log Trentlin [1109]: kick
+Wed Oct  7 23:12:20 2026 :: Log Trentlin [1109]: kick
+Wed Oct  7 23:12:24 2026 :: Log Trentlin [1109]: kick
+Wed Oct  7 23:12:29 2026 :: Log Trentlin [1109]: kick
+Wed Oct  7 23:12:31 2026 :: Log Trentlin [1109]: get all cor
+Wed Oct  7 23:12:33 2026 :: Log Trentlin [1109]: sco
+Wed Oct  7 23:12:35 2026 :: Log Trentlin [1109]: wear lea
+Wed Oct  7 23:12:38 2026 :: Log Trentlin [1109]: wear ve
+Wed Oct  7 23:12:40 2026 :: Log Trentlin [1109]: sco
+Wed Oct  7 23:13:03 2026 :: Log Trentlin [1109]: i
+Wed Oct  7 23:13:06 2026 :: Log Trentlin [1109]: wear jerk
+Wed Oct  7 23:13:09 2026 :: Log Trentlin [1109]: drop vest
+Wed Oct  7 23:13:09 2026 :: Log Trentlin [1109]: l
+Wed Oct  7 23:13:12 2026 :: Log Trentlin [1109]: sac cor
+Wed Oct  7 23:13:12 2026 :: Log Trentlin [1109]: sac cor
+Wed Oct  7 23:13:14 2026 :: Log Trentlin [1109]: sca
+Wed Oct  7 23:13:16 2026 :: Log Trentlin [1109]: e
+Wed Oct  7 23:13:16 2026 :: Log Trentlin [1110]: arrived (Sheriff Post of the Eastern Shire) from 1109
+Wed Oct  7 23:13:17 2026 :: Log Trentlin [1110]: con th
+Wed Oct  7 23:13:18 2026 :: Log Trentlin [1110]: l th
+Wed Oct  7 23:13:20 2026 :: Log Trentlin [1110]: e
+Wed Oct  7 23:13:20 2026 :: Log Trentlin [1111]: arrived (Thain's Office) from 1110
+Wed Oct  7 23:13:23 2026 :: Log Trentlin [1111]: w
+Wed Oct  7 23:13:23 2026 :: Log Trentlin [1110]: arrived (Sheriff Post of the Eastern Shire) from 1111
+Wed Oct  7 23:13:23 2026 :: Log Trentlin [1110]: s
+Wed Oct  7 23:13:24 2026 :: Log Trentlin [1110]: w
+Wed Oct  7 23:13:24 2026 :: Log Trentlin [1109]: arrived (A bend in the road) from 1110
+Wed Oct  7 23:13:25 2026 :: Log Trentlin [1109]: n
+Wed Oct  7 23:13:25 2026 :: Log Trentlin [1109]: w
+Wed Oct  7 23:13:25 2026 :: Log Trentlin [1106]: arrived (Bywater Road) from 1109
+Wed Oct  7 23:13:27 2026 :: Log Trentlin [1106]: n
+Wed Oct  7 23:13:27 2026 :: Log Trentlin [1107]: arrived (The House of Arms) from 1106
+Wed Oct  7 23:13:29 2026 :: Log Trentlin [1107]: list
+Wed Oct  7 23:13:31 2026 :: Log Trentlin [1107]: con bla
+Wed Oct  7 23:13:33 2026 :: Log Trentlin [1107]: s
+Wed Oct  7 23:13:33 2026 :: Log Trentlin [1106]: arrived (Bywater Road) from 1107
+Wed Oct  7 23:13:35 2026 :: Log Trentlin [1106]: s
+Wed Oct  7 23:13:35 2026 :: Log Trentlin [1108]: arrived (Kid'n Keep) from 1106
+Wed Oct  7 23:13:37 2026 :: Log Trentlin [1108]: con to
+Wed Oct  7 23:13:38 2026 :: Log Trentlin [1108]: l to
+Wed Oct  7 23:13:40 2026 :: Log Trentlin [1108]: con nur
+Wed Oct  7 23:13:42 2026 :: Log Trentlin [1108]: n
+Wed Oct  7 23:13:42 2026 :: Log Trentlin [1106]: arrived (Bywater Road) from 1108
+Wed Oct  7 23:13:43 2026 :: Log Trentlin [1106]: w
+Wed Oct  7 23:13:43 2026 :: Log Trentlin [1104]: arrived (Bywater Road) from 1106
+Wed Oct  7 23:13:43 2026 :: Log Trentlin [1104]: w
+Wed Oct  7 23:13:43 2026 :: Log Trentlin [1103]: arrived (Entrance to the Shire) from 1104
+Wed Oct  7 23:13:44 2026 :: Log Trentlin [1103]: w
+Wed Oct  7 23:13:44 2026 :: Log Trentlin [1118]: arrived (Bywater Road) from 1103
+Wed Oct  7 23:13:46 2026 :: Log Trentlin [1118]: sca
+Wed Oct  7 23:13:48 2026 :: Log Trentlin [1118]: w
+Wed Oct  7 23:13:48 2026 :: Log Trentlin [1120]: arrived (Bywater Road) from 1118
+Wed Oct  7 23:13:49 2026 :: Log Trentlin [1120]: sca
+Wed Oct  7 23:13:50 2026 :: Log Trentlin [1120]: s
+Wed Oct  7 23:13:50 2026 :: Log Trentlin [1121]: arrived (The Grocer's Delight) from 1120
+Wed Oct  7 23:13:51 2026 :: Log Trentlin [1121]: list
