@@ -60199,3 +60199,59 @@ Wed Oct  7 01:00:23 2026 :: Log Alaric [1831]: east
 Wed Oct  7 01:00:23 2026 :: Log Alaric [1833]: arrived (The Snow-filled Land) from 1831
 Wed Oct  7 01:00:23 2026 :: Log Alaric [1833]: north
 Wed Oct  7 01:00:23 2026 :: Log Alaric [1832]: arrived (The Snow-filled Land) from 1833
+Wed Oct  7 01:00:25 2026 :: Log Alaric [1832]: north
+Wed Oct  7 01:00:25 2026 :: Log Alaric [1833]: arrived (The Snow-filled Land) from 1832
+Wed Oct  7 01:00:25 2026 :: Log Alaric [1833]: east
+Wed Oct  7 01:00:25 2026 :: Log Alaric [1807]: arrived (The Gnome Outpost) from 1833
+Wed Oct  7 01:00:25 2026 :: Log Alaric [1807]: down
+Wed Oct  7 01:00:25 2026 :: Log Alaric [1808]: arrived (The Tight Passage) from 1807
+Wed Oct  7 01:00:25 2026 :: Log Alaric [1808]: down
+Wed Oct  7 01:00:25 2026 :: Log Alaric [1809]: arrived (The Even Tighter Passage) from 1808
+Wed Oct  7 01:00:26 2026 :: Log Alaric [1809]: down
+Wed Oct  7 01:00:26 2026 :: Log Alaric [1810]: arrived (The Center Chamber) from 1809
+Wed Oct  7 01:00:26 2026 :: Log Alaric [1810]: east
+Wed Oct  7 01:00:26 2026 :: Log Alaric [1811]: arrived (A Passageway) from 1810
+Wed Oct  7 01:00:26 2026 :: Log Alaric [1811]: east
+Wed Oct  7 01:00:26 2026 :: Log Alaric [1812]: arrived (The Cold Passageway) from 1811
+Wed Oct  7 01:00:26 2026 :: Log Alaric [1812]: north
+Wed Oct  7 01:00:26 2026 :: Log Alaric [1821]: arrived (The Guard's Dining Hall) from 1812
+Wed Oct  7 01:00:27 2026 :: Log Alaric [1821]: north
+Wed Oct  7 01:00:27 2026 :: Log Alaric [1823]: arrived (The Frost Giant Guard Quarters) from 1821
+Wed Oct  7 01:00:27 2026 :: Log Alaric [1823]: north
+Wed Oct  7 01:00:27 2026 :: Log Alaric [1826]: arrived (The connecting tunnel) from 1823
+Wed Oct  7 01:00:27 2026 :: Log Alaric [1826]: north
+Wed Oct  7 01:00:27 2026 :: Log Alaric [1824]: arrived (The White Dragon's Lair) from 1826
+Wed Oct  7 01:00:29 2026 :: Log Alaric [1824]: te
+Wed Oct  7 01:00:36 2026 :: Log Alaric [1824]: sh
+Wed Oct  7 01:00:38 2026 :: Log Alaric [1824]: recal
+Wed Oct  7 01:00:38 2026 :: Log Alaric [5975]: arrived (On the River) from 1824
+Wed Oct  7 01:00:38 2026 :: Log Alaric [5975]: recal
+Wed Oct  7 01:00:38 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 5975
+Wed Oct  7 01:00:39 2026 :: Log Alaric [4207]: recal
+Wed Oct  7 01:00:39 2026 :: Log Alaric [4207]: r e 3
+Wed Oct  7 01:00:39 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Wed Oct  7 01:00:39 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Oct  7 01:00:39 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Wed Oct  7 01:00:40 2026 :: Log Alaric [2427]: n
+Wed Oct  7 01:00:40 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct  7 01:00:40 2026 :: Log Alaric [2404]: n
+Wed Oct  7 01:00:40 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Oct  7 01:00:40 2026 :: Log Alaric [2401]: u
+Wed Oct  7 01:00:40 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct  7 01:00:41 2026 :: Log Alaric [2410]: u
+Wed Oct  7 01:00:41 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct  7 01:00:41 2026 :: Log Alaric [2411]: u
+Wed Oct  7 01:00:41 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct  7 01:00:41 2026 :: Log Alaric [2414]: u
+Wed Oct  7 01:00:41 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct  7 01:00:43 2026 :: Log Alaric [2497]: aq co
+Wed Oct  7 01:00:43 2026 :: Log Alaric [2497]: quest complete: 13 gold, 88 quest points (streak bonus 217%)
+Wed Oct  7 01:00:45 2026 :: Log Alaric [2497]: aq ga no
+Wed Oct  7 01:00:46 2026 :: Log Alaric [2497]: score
+Wed Oct  7 01:00:49 2026 :: Log Alaric [2497]: en do
+Wed Oct  7 01:00:49 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Oct  7 01:00:51 2026 :: Log Alaric [2401]: quit
+Wed Oct  7 01:00:51 2026 :: Alaric has quit.
+Wed Oct  7 01:00:51 2026 :: [QUIT] Player rejoined the real world.
+Wed Oct  7 01:04:00 2026 :: Sock.sinaddr:  34.198.201.66
+Wed Oct  7 01:04:00 2026 :: EOF encountered on read.
