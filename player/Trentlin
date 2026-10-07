@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1791414097
+LogO 1791414525
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown ~
 ChangesSeen ~
 Cast none
-Levl 7
-Plyd 4464
+Levl 8
+Plyd 4660
 ListRemorts ~
 NumRemorts 0
-Note 0
+Note 1544841593
 Scro 22
-Room 4649
-HMV  90 96 192 192 119 132
+Room 4411
+HMV  99 110 195 219 133 138
 NewGold 38
 NewPlat 8
-NewCopp 67
+NewCopp 78
 NewSilv 11
 BankCP 0
 IntTime 1791399612
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 51
+AchKills 54
 AchQuests 2
 AchDeaths 0
 AchExplore 0
@@ -53,19 +53,19 @@ Achv visit-gangland 1791056925
 Achv carry-one-platinum 1791054979
 Achv four-denominations 1791055231
 Achv visit-froboz 1791055958
-LastOut  1791414097
-SesLogin 1791414001
-SesDur   96
-SesExpG  440
+LastOut  1791414384
+SesLogin 1791414294
+SesDur   90
+SesExpG  0
 SesLvlG  0
-SesKill  1
+SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
 QuestPnts 104
 QuestStrk 2
-QuestNext 12
-Exp  17787
+QuestNext 9
+Exp  18052
 Act  65740
 AfBy 512
 Comm 24576
@@ -92,23 +92,23 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  4
-Prac 1
-Trai 1
+Pos  8
+Prac 5
+Trai 2
 Save  3
-Alig  -52
+Alig  -60
 Hit   2
 Dam   6
 ACs 79 71 69 99
 Attr 14 16 13 12 19
 AMod 0 10 11 0 7
 Pass TrjPUdRVdu8MY~
-Titl  the Veteran~
+Titl  the Swordsman~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 96 192 136
-Cond 0 4 48
+HMVP 110 219 142
+Cond 0 0 43
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -155,7 +155,7 @@ Wear 0
 Cost 0
 Cond 99
 Repd 0
-Val  0 0 127 0 0
+Val  0 0 122 0 0
 End
 
 #O
