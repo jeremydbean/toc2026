@@ -59317,3 +59317,223 @@ Wed Oct  7 00:14:38 2026 :: Log Alaric [17036]: sh
 Wed Oct  7 00:14:45 2026 :: Log Alaric [17036]: sh
 Wed Oct  7 00:14:48 2026 :: Log Alaric [17036]: sh
 Wed Oct  7 00:14:51 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:14:54 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:15:02 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:15:24 2026 :: Log Alaric [17036]: who
+Wed Oct  7 00:15:24 2026 :: Log Alaric [17036]: score
+Wed Oct  7 00:15:24 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:15:36 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:15:42 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:15:47 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:15:52 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:15:57 2026 :: Log Alaric [17036]: look mas
+Wed Oct  7 00:15:57 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:16:06 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:16:14 2026 :: Log Alaric [17036]: who
+Wed Oct  7 00:16:14 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:16:21 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:16:28 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:16:34 2026 :: Log Alaric [17036]: who
+Wed Oct  7 00:16:34 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:16:48 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:16:52 2026 :: Log Alaric [17036]: who
+Wed Oct  7 00:16:52 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:16:58 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:17:04 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:17:11 2026 :: Log Alaric [17036]: who
+Wed Oct  7 00:17:11 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:17:21 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:17:34 2026 :: Log Alaric [17036]: who
+Wed Oct  7 00:17:36 2026 :: Log Alaric [17036]: flee
+Wed Oct  7 00:17:36 2026 :: Log Alaric [17035]: arrived (hallway) from 17036
+Wed Oct  7 00:17:38 2026 :: Log Alaric [17035]: recal
+Wed Oct  7 00:17:38 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 17035
+Wed Oct  7 00:17:39 2026 :: Log Alaric [4207]: w
+Wed Oct  7 00:17:39 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Wed Oct  7 00:17:40 2026 :: Log Alaric [4208]: eq
+Wed Oct  7 00:17:42 2026 :: Log Alaric [4208]: i
+Wed Oct  7 00:17:49 2026 :: Log Alaric [4208]: wear shield
+Wed Oct  7 00:17:55 2026 :: Log Alaric [4208]: heal all
+Wed Oct  7 00:17:55 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Wed Oct  7 00:17:55 2026 :: Log Alaric [4208]: r e 4
+Wed Oct  7 00:17:55 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Wed Oct  7 00:17:55 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Wed Oct  7 00:17:55 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Oct  7 00:17:55 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Wed Oct  7 00:17:56 2026 :: Log Alaric [2427]: n
+Wed Oct  7 00:17:56 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct  7 00:17:56 2026 :: Log Alaric [2404]: n
+Wed Oct  7 00:17:56 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Oct  7 00:17:57 2026 :: Log Alaric [2401]: west
+Wed Oct  7 00:17:57 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Wed Oct  7 00:17:58 2026 :: Log Alaric [2405]: west
+Wed Oct  7 00:17:58 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Wed Oct  7 00:17:58 2026 :: Log Alaric [2433]: west
+Wed Oct  7 00:17:58 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Wed Oct  7 00:17:58 2026 :: Log Alaric [2434]: west
+Wed Oct  7 00:17:58 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Wed Oct  7 00:17:58 2026 :: Log Alaric [2435]: west
+Wed Oct  7 00:17:58 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Wed Oct  7 00:17:59 2026 :: Log Alaric [2436]: west
+Wed Oct  7 00:17:59 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Wed Oct  7 00:17:59 2026 :: Log Alaric [2437]: west
+Wed Oct  7 00:17:59 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Wed Oct  7 00:17:59 2026 :: Log Alaric [2438]: open west
+Wed Oct  7 00:17:59 2026 :: Log Alaric [2438]: west
+Wed Oct  7 00:17:59 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Wed Oct  7 00:18:00 2026 :: Log Alaric [2439]: west
+Wed Oct  7 00:18:00 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Wed Oct  7 00:18:01 2026 :: Log Alaric [6000]: west
+Wed Oct  7 00:18:01 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Wed Oct  7 00:18:01 2026 :: Log Alaric [6001]: west
+Wed Oct  7 00:18:01 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Wed Oct  7 00:18:01 2026 :: Log Alaric [6002]: west
+Wed Oct  7 00:18:01 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Wed Oct  7 00:18:01 2026 :: Log Alaric [6003]: west
+Wed Oct  7 00:18:01 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Wed Oct  7 00:18:02 2026 :: Log Alaric [6004]: west
+Wed Oct  7 00:18:02 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Wed Oct  7 00:18:02 2026 :: Log Alaric [6100]: west
+Wed Oct  7 00:18:02 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Wed Oct  7 00:18:02 2026 :: Log Alaric [6101]: west
+Wed Oct  7 00:18:02 2026 :: Log Alaric [6102]: arrived (A narrow trail through the deep, dark forest) from 6101
+Wed Oct  7 00:18:02 2026 :: Log Alaric [6102]: west
+Wed Oct  7 00:18:02 2026 :: Log Alaric [6103]: arrived (A narrow trail through the deep, dark forest) from 6102
+Wed Oct  7 00:18:03 2026 :: Log Alaric [6103]: north
+Wed Oct  7 00:18:03 2026 :: Log Alaric [6150]: arrived (The narrow trail.) from 6103
+Wed Oct  7 00:18:03 2026 :: Log Alaric [6150]: north
+Wed Oct  7 00:18:03 2026 :: Log Alaric [6151]: arrived (The narrow trail.) from 6150
+Wed Oct  7 00:18:03 2026 :: Log Alaric [6151]: north
+Wed Oct  7 00:18:03 2026 :: Log Alaric [17001]: arrived (The Gates) from 6151
+Wed Oct  7 00:18:03 2026 :: Log Alaric [17001]: af
+Wed Oct  7 00:18:08 2026 :: Log Alaric [17001]: c gho
+Wed Oct  7 00:18:13 2026 :: Log Alaric [17001]: l
+Wed Oct  7 00:18:14 2026 :: Log Alaric [17001]: n
+Wed Oct  7 00:18:14 2026 :: Log Alaric [17002]: arrived (Entry way) from 17001
+Wed Oct  7 00:18:15 2026 :: Log Alaric [17002]: n
+Wed Oct  7 00:18:15 2026 :: Log Alaric [17003]: arrived (CrossRoads) from 17002
+Wed Oct  7 00:18:16 2026 :: Log Alaric [17003]: u
+Wed Oct  7 00:18:16 2026 :: Log Alaric [17018]: arrived (T-junction) from 17003
+Wed Oct  7 00:18:19 2026 :: Log Alaric [17018]: u
+Wed Oct  7 00:18:20 2026 :: Log Alaric [17018]: s
+Wed Oct  7 00:18:20 2026 :: Log Alaric [17020]: arrived (Officers mess) from 17018
+Wed Oct  7 00:18:20 2026 :: Log Alaric [17020]: s
+Wed Oct  7 00:18:21 2026 :: Sock.sinaddr:  178.156.181.172
+Wed Oct  7 00:18:21 2026 :: Log Alaric [17020]: w
+Wed Oct  7 00:18:21 2026 :: Log Alaric [17021]: arrived (Training room) from 17020
+Wed Oct  7 00:18:21 2026 :: EOF encountered on read.
+Wed Oct  7 00:18:22 2026 :: Log Alaric [17021]: s
+Wed Oct  7 00:18:22 2026 :: Log Alaric [17021]: n
+Wed Oct  7 00:18:22 2026 :: Log Alaric [17022]: arrived (Three way intersection) from 17021
+Wed Oct  7 00:18:23 2026 :: Log Alaric [17022]: w
+Wed Oct  7 00:18:23 2026 :: Log Alaric [17024]: arrived (Musty corner) from 17022
+Wed Oct  7 00:18:24 2026 :: Log Alaric [17024]: s
+Wed Oct  7 00:18:24 2026 :: Log Alaric [17025]: arrived (Transportation room) from 17024
+Wed Oct  7 00:18:32 2026 :: Log Alaric [17025]: l
+Wed Oct  7 00:18:32 2026 :: Log Alaric [17027]: arrived (Entry hall) from 17025
+Wed Oct  7 00:18:33 2026 :: Log Alaric [17027]: n
+Wed Oct  7 00:18:33 2026 :: Log Alaric [17029]: arrived (Plush Hallway) from 17027
+Wed Oct  7 00:18:34 2026 :: Log Alaric [17029]: n
+Wed Oct  7 00:18:34 2026 :: Log Alaric [17030]: arrived (Ambush) from 17029
+Wed Oct  7 00:18:35 2026 :: Log Alaric [17030]: e
+Wed Oct  7 00:18:35 2026 :: Log Alaric [17031]: arrived (A turn in the hall) from 17030
+Wed Oct  7 00:18:36 2026 :: Log Alaric [17031]: s
+Wed Oct  7 00:18:36 2026 :: Log Alaric [17032]: arrived (Triple Junction) from 17031
+Wed Oct  7 00:18:37 2026 :: Log Alaric [17032]: s
+Wed Oct  7 00:18:37 2026 :: Log Alaric [17034]: arrived (Passage up) from 17032
+Wed Oct  7 00:18:39 2026 :: Log Alaric [17034]: u
+Wed Oct  7 00:18:39 2026 :: Log Alaric [17035]: arrived (hallway) from 17034
+Wed Oct  7 00:18:40 2026 :: Log Alaric [17035]: e
+Wed Oct  7 00:18:40 2026 :: Log Alaric [17036]: arrived (A triple junction) from 17035
+Wed Oct  7 00:18:46 2026 :: Log Alaric [17036]: recal
+Wed Oct  7 00:18:46 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 17036
+Wed Oct  7 00:18:47 2026 :: Log Alaric [4207]: w
+Wed Oct  7 00:18:47 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Wed Oct  7 00:18:48 2026 :: Log Alaric [4208]: heal all
+Wed Oct  7 00:18:48 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Wed Oct  7 00:18:50 2026 :: Log Alaric [4208]: r e 4
+Wed Oct  7 00:18:50 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Wed Oct  7 00:18:50 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Wed Oct  7 00:18:50 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Oct  7 00:18:50 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Wed Oct  7 00:18:50 2026 :: Log Alaric [2427]: n
+Wed Oct  7 00:18:50 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct  7 00:18:51 2026 :: Log Alaric [2404]: n
+Wed Oct  7 00:18:51 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Oct  7 00:18:52 2026 :: Log Alaric [2401]: west
+Wed Oct  7 00:18:52 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Wed Oct  7 00:18:52 2026 :: Log Alaric [2405]: west
+Wed Oct  7 00:18:52 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Wed Oct  7 00:18:52 2026 :: Log Alaric [2433]: west
+Wed Oct  7 00:18:52 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Wed Oct  7 00:18:52 2026 :: Log Alaric [2434]: west
+Wed Oct  7 00:18:52 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Wed Oct  7 00:18:53 2026 :: Log Alaric [2435]: west
+Wed Oct  7 00:18:53 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Wed Oct  7 00:18:53 2026 :: Log Alaric [2436]: west
+Wed Oct  7 00:18:53 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Wed Oct  7 00:18:53 2026 :: Log Alaric [2437]: west
+Wed Oct  7 00:18:53 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Wed Oct  7 00:18:53 2026 :: Log Alaric [2438]: west
+Wed Oct  7 00:18:53 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Wed Oct  7 00:18:54 2026 :: Log Alaric [2439]: west
+Wed Oct  7 00:18:54 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Wed Oct  7 00:18:54 2026 :: Log Alaric [6000]: west
+Wed Oct  7 00:18:54 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Wed Oct  7 00:18:54 2026 :: Log Alaric [6001]: west
+Wed Oct  7 00:18:54 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Wed Oct  7 00:18:54 2026 :: Log Alaric [6002]: west
+Wed Oct  7 00:18:54 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Wed Oct  7 00:18:55 2026 :: Log Alaric [6003]: west
+Wed Oct  7 00:18:55 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Wed Oct  7 00:18:55 2026 :: Log Alaric [6004]: west
+Wed Oct  7 00:18:55 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Wed Oct  7 00:18:55 2026 :: Log Alaric [6100]: west
+Wed Oct  7 00:18:55 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Wed Oct  7 00:18:55 2026 :: Log Alaric [6101]: west
+Wed Oct  7 00:18:55 2026 :: Log Alaric [6102]: arrived (A narrow trail through the deep, dark forest) from 6101
+Wed Oct  7 00:18:56 2026 :: Log Alaric [6102]: west
+Wed Oct  7 00:18:56 2026 :: Log Alaric [6103]: arrived (A narrow trail through the deep, dark forest) from 6102
+Wed Oct  7 00:18:56 2026 :: Log Alaric [6103]: north
+Wed Oct  7 00:18:56 2026 :: Log Alaric [6150]: arrived (The narrow trail.) from 6103
+Wed Oct  7 00:18:56 2026 :: Log Alaric [6150]: north
+Wed Oct  7 00:18:56 2026 :: Log Alaric [6151]: arrived (The narrow trail.) from 6150
+Wed Oct  7 00:18:56 2026 :: Log Alaric [6151]: north
+Wed Oct  7 00:18:56 2026 :: Log Alaric [17001]: arrived (The Gates) from 6151
+Wed Oct  7 00:18:59 2026 :: Log Alaric [17001]: n
+Wed Oct  7 00:18:59 2026 :: Log Alaric [17002]: arrived (Entry way) from 17001
+Wed Oct  7 00:19:00 2026 :: Log Alaric [17002]: n
+Wed Oct  7 00:19:00 2026 :: Log Alaric [17003]: arrived (CrossRoads) from 17002
+Wed Oct  7 00:19:01 2026 :: Log Alaric [17003]: u
+Wed Oct  7 00:19:01 2026 :: Log Alaric [17018]: arrived (T-junction) from 17003
+Wed Oct  7 00:19:03 2026 :: Log Alaric [17018]: s
+Wed Oct  7 00:19:03 2026 :: Log Alaric [17020]: arrived (Officers mess) from 17018
+Wed Oct  7 00:19:04 2026 :: Log Alaric [17020]: w
+Wed Oct  7 00:19:04 2026 :: Log Alaric [17021]: arrived (Training room) from 17020
+Wed Oct  7 00:19:05 2026 :: Log Alaric [17021]: n
+Wed Oct  7 00:19:05 2026 :: Log Alaric [17022]: arrived (Three way intersection) from 17021
+Wed Oct  7 00:19:06 2026 :: Log Alaric [17022]: w
+Wed Oct  7 00:19:06 2026 :: Log Alaric [17024]: arrived (Musty corner) from 17022
+Wed Oct  7 00:19:07 2026 :: Log Alaric [17024]: s
+Wed Oct  7 00:19:07 2026 :: Log Alaric [17025]: arrived (Transportation room) from 17024
+Wed Oct  7 00:19:13 2026 :: Log Alaric [17025]: l
+Wed Oct  7 00:19:15 2026 :: Log Alaric [17027]: arrived (Entry hall) from 17025
+Wed Oct  7 00:19:16 2026 :: Log Alaric [17027]: n
+Wed Oct  7 00:19:16 2026 :: Log Alaric [17029]: arrived (Plush Hallway) from 17027
+Wed Oct  7 00:19:17 2026 :: Log Alaric [17029]: n
+Wed Oct  7 00:19:17 2026 :: Log Alaric [17030]: arrived (Ambush) from 17029
+Wed Oct  7 00:19:18 2026 :: Log Alaric [17030]: n
+Wed Oct  7 00:19:18 2026 :: Log Alaric [17030]: e
+Wed Oct  7 00:19:18 2026 :: Log Alaric [17031]: arrived (A turn in the hall) from 17030
+Wed Oct  7 00:19:19 2026 :: Log Alaric [17031]: s
+Wed Oct  7 00:19:19 2026 :: Log Alaric [17032]: arrived (Triple Junction) from 17031
+Wed Oct  7 00:19:20 2026 :: Log Alaric [17032]: s
+Wed Oct  7 00:19:20 2026 :: Log Alaric [17034]: arrived (Passage up) from 17032
+Wed Oct  7 00:19:22 2026 :: Log Alaric [17034]: u
+Wed Oct  7 00:19:22 2026 :: Log Alaric [17035]: arrived (hallway) from 17034
+Wed Oct  7 00:19:23 2026 :: Log Alaric [17035]: e
+Wed Oct  7 00:19:23 2026 :: Log Alaric [17036]: arrived (A triple junction) from 17035
+Wed Oct  7 00:19:26 2026 :: Log Alaric [17036]: look mas
+Wed Oct  7 00:19:35 2026 :: Log Alaric [17036]: vis
+Wed Oct  7 00:19:38 2026 :: Log Alaric [17036]: sh
+Wed Oct  7 00:19:51 2026 :: Log Alaric [17036]: sh
