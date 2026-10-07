@@ -61177,3 +61177,28 @@ Wed Oct  7 13:43:00 2026 :: Sock.sinaddr:  77.91.71.55
 Wed Oct  7 13:43:00 2026 :: EOF encountered on read.
 Wed Oct  7 13:45:18 2026 :: Sock.sinaddr:  52.87.72.16
 Wed Oct  7 13:45:18 2026 :: EOF encountered on read.
+Wed Oct  7 13:49:58 2026 :: Loading Eclipse's playerfile
+Wed Oct  7 13:50:01 2026 :: Eclipse@97.248.95.144 has connected.
+Wed Oct  7 13:50:08 2026 :: Log Eclipse [4207]: arrived (Before the Altar.) from 0
+Wed Oct  7 13:50:13 2026 :: Log Eclipse [4207]: who
+Wed Oct  7 13:50:22 2026 :: Sock.sinaddr:  5.161.73.160
+Wed Oct  7 13:50:22 2026 :: EOF encountered on read.
+Wed Oct  7 13:50:48 2026 :: Log Eclipse [4207]: reports
+Wed Oct  7 13:50:53 2026 :: Log Eclipse [4207]: reports bugs
+Wed Oct  7 13:51:56 2026 :: Log Eclipse [4207]: pray
+Wed Oct  7 13:51:56 2026 :: Log Eclipse [8]: arrived (The Oracle's Sanctum) from 4207
+Wed Oct  7 13:51:56 2026 :: Oracle: Eclipse prayed from room 4207 (Before the Altar.) and entered her sanctum.
+Wed Oct  7 13:52:10 2026 :: Log Eclipse [8]: eq
+Wed Oct  7 13:52:13 2026 :: Log Eclipse [8]: inv
+Wed Oct  7 13:52:38 2026 :: Loading Callista's playerfile
+Wed Oct  7 13:52:40 2026 :: Callista@97.248.95.144 has connected.
+Wed Oct  7 13:52:40 2026 :: Callista shares an address with Eclipse: 2 players on from 97.248.95.144.
+Wed Oct  7 13:52:41 2026 :: Log Callista [3718]: arrived (The Store in Mud School) from 0
+Wed Oct  7 13:52:44 2026 :: Log Callista [3718]: inv
+Wed Oct  7 13:52:45 2026 :: Log Callista [3718]: eq
+Wed Oct  7 13:52:50 2026 :: Log Callista [3718]: pray
+Wed Oct  7 13:53:02 2026 :: Log Eclipse [8]: d
+Wed Oct  7 13:53:02 2026 :: Log Eclipse [4207]: arrived (Before the Altar.) from 8
+Wed Oct  7 13:53:16 2026 :: Log Callista [3718]: pray
+Wed Oct  7 13:53:16 2026 :: Log Callista [8]: arrived (The Oracle's Sanctum) from 3718
+Wed Oct  7 13:53:16 2026 :: Oracle: Callista prayed from room 3718 (The Store in Mud School) and entered her sanctum.
