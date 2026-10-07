@@ -61202,3 +61202,25 @@ Wed Oct  7 13:53:02 2026 :: Log Eclipse [4207]: arrived (Before the Altar.) from
 Wed Oct  7 13:53:16 2026 :: Log Callista [3718]: pray
 Wed Oct  7 13:53:16 2026 :: Log Callista [8]: arrived (The Oracle's Sanctum) from 3718
 Wed Oct  7 13:53:16 2026 :: Oracle: Callista prayed from room 3718 (The Store in Mud School) and entered her sanctum.
+Wed Oct  7 13:53:35 2026 :: Log Callista [8]: say what's the next best weapon than the one I have and where can I get it
+Wed Oct  7 13:53:35 2026 :: Log Callista [8]: asked the Oracle: what's the next best weapon than the one I have and where can I get it
+Wed Oct  7 13:53:40 2026 :: Oracle answered Callista in room 8: `compare upgrades` will show you the best weapon available for your level and where to find it.
+Wed Oct  7 13:54:04 2026 :: Log Callista [8]: compare upgrades
+Wed Oct  7 13:54:39 2026 :: Log Callista [8]: eat bread
+Wed Oct  7 13:55:09 2026 :: Log Callista [8]: compare upgrades wield
+Wed Oct  7 13:55:28 2026 :: Sock.sinaddr:  54.87.112.51
+Wed Oct  7 13:55:28 2026 :: EOF encountered on read.
+Wed Oct  7 13:56:13 2026 :: Log Callista [8]: scan
+Wed Oct  7 13:56:16 2026 :: Log Callista [8]: l
+Wed Oct  7 13:56:19 2026 :: Log Callista [8]: d
+Wed Oct  7 13:56:19 2026 :: Log Callista [3718]: arrived (The Store in Mud School) from 8
+Wed Oct  7 13:57:16 2026 :: Loading Callista's playerfile
+Wed Oct  7 13:57:23 2026 :: Closing link to Callista.
+Wed Oct  7 13:57:23 2026 :: Callista@97.248.95.144 reconnected.
+Wed Oct  7 13:57:23 2026 :: Callista shares an address with Eclipse: 2 players on from 97.248.95.144.
+Wed Oct  7 13:57:29 2026 :: Log Callista [3718]: l
+Wed Oct  7 13:57:31 2026 :: Log Callista [3718]: l
+Wed Oct  7 13:57:33 2026 :: Log Callista [3718]: n
+Wed Oct  7 13:57:33 2026 :: Log Callista [3717]: arrived (A Room in Mud School) from 3718
+Wed Oct  7 13:57:35 2026 :: Log Callista [3717]: scan
+Wed Oct  7 13:57:40 2026 :: Log Callista [3717]: (refused) map
