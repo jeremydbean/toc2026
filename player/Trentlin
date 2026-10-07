@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1791415198
+LogO 1791415490
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,16 +16,16 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 8
-Plyd 5333
+Plyd 5625
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 2497
-HMV  99 110 219 219 34 138
+Room 3506
+HMV  53 110 219 219 57 138
 NewGold 54
 NewPlat 8
-NewCopp 24
+NewCopp 37
 NewSilv 12
 BankCP 0
 IntTime 1791399612
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 57
+AchKills 60
 AchQuests 3
 AchDeaths 1
 AchExplore 0
@@ -68,8 +68,8 @@ SesDead  0
 SesQuest 0
 QuestPnts 152
 QuestStrk 3
-QuestNext 15
-Exp  18339
+QuestNext 10
+Exp  18667
 Act  65740
 AfBy 512
 Comm 24576
@@ -97,9 +97,8 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 5
 Save  3
-Alig  -62
+Alig  -54
 Hit   2
 Dam   6
 ACs 79 71 69 99
@@ -111,7 +110,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 110 219 142
-Cond 0 18 33
+Cond 0 13 28
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -137,7 +136,7 @@ Sk 75 'bash'
 Sk 1 'disarm'
 Sk 1 'heroic grip'
 Sk 75 'kick'
-Sk 1 'parry'
+Sk 75 'parry'
 Sk 1 'rescue'
 Sk 75 'second attack'
 Sk 1 'scrolls'
@@ -158,7 +157,7 @@ Wear 0
 Cost 0
 Cond 99
 Repd 0
-Val  0 0 112 0 0
+Val  0 0 107 0 0
 End
 
 #O
@@ -354,6 +353,26 @@ Nest 0
 Wear -1
 Lev  1
 Cost 21
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3500
+Nest 0
+Wear -1
+Lev  5
+Cost 10000
+Cond 75
+Repd 0
+End
+
+#O
+Vnum 3074
+Nest 0
+Wear -1
+Lev  5
+Cost 1500000
 Cond 100
 Repd 0
 End
