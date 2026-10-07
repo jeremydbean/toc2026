@@ -58954,3 +58954,53 @@ Tue Oct  6 23:59:40 2026 :: Log Alaric [29210]: w
 Tue Oct  6 23:59:40 2026 :: Log Alaric [29211]: arrived (Twist in the Maze) from 29210
 Tue Oct  6 23:59:42 2026 :: Log Alaric [29211]: n
 Tue Oct  6 23:59:42 2026 :: Log Alaric [29212]: arrived (Twist in the Maze) from 29211
+Tue Oct  6 23:59:43 2026 :: Log Alaric [29212]: oe
+Tue Oct  6 23:59:44 2026 :: Log Alaric [29212]: scan
+Tue Oct  6 23:59:46 2026 :: Log Alaric [29212]: e
+Tue Oct  6 23:59:46 2026 :: Log Alaric [29213]: arrived (Dead End) from 29212
+Tue Oct  6 23:59:48 2026 :: Log Alaric [29213]: close west
+Tue Oct  6 23:59:49 2026 :: Log Alaric [29213]: cv
+Tue Oct  6 23:59:55 2026 :: Log Alaric [29213]: cw
+Wed Oct  7 00:00:00 2026 :: Log Alaric [29213]: cs
+Wed Oct  7 00:00:03 2026 :: Log Alaric [29213]: cs
+Wed Oct  7 00:00:07 2026 :: Log Alaric [29213]: cs
+Wed Oct  7 00:00:11 2026 :: Log Alaric [29213]: order all kill mad
+Wed Oct  7 00:00:11 2026 :: Log skeleton: kill mad
+Wed Oct  7 00:00:11 2026 :: Log skeleton: kill mad
+Wed Oct  7 00:00:11 2026 :: Log skeleton: kill mad
+Wed Oct  7 00:00:11 2026 :: Log wraith: kill mad
+Wed Oct  7 00:00:11 2026 :: Log vampire: kill mad
+Wed Oct  7 00:00:17 2026 :: Log Alaric [29213]: te
+Wed Oct  7 00:00:27 2026 :: Log Alaric [29213]: te
+Wed Oct  7 00:00:38 2026 :: Log Alaric [29213]: te
+Wed Oct  7 00:00:48 2026 :: Log Alaric [29213]: who
+Wed Oct  7 00:00:48 2026 :: Log Alaric [29213]: te
+Wed Oct  7 00:00:58 2026 :: Log Alaric [29213]: te
+Wed Oct  7 00:01:10 2026 :: Log Alaric [29213]: te
+Wed Oct  7 00:01:19 2026 :: Log Alaric [29213]: te
+Wed Oct  7 00:01:31 2026 :: Log Alaric [29213]: te
+Wed Oct  7 00:01:36 2026 :: Log Alaric [29213]: ow
+Wed Oct  7 00:01:37 2026 :: Log Alaric [29213]: w
+Wed Oct  7 00:01:37 2026 :: Log Alaric [29212]: arrived (Twist in the Maze) from 29213
+Wed Oct  7 00:01:40 2026 :: Log Alaric [29212]: w
+Wed Oct  7 00:01:40 2026 :: Log Alaric [29214]: arrived (Twist in the Maze) from 29212
+Wed Oct  7 00:01:41 2026 :: Log Alaric [29214]: te
+Wed Oct  7 00:01:53 2026 :: Log Alaric [29214]: te
+Wed Oct  7 00:02:02 2026 :: Log Alaric [29214]: te
+Wed Oct  7 00:02:10 2026 :: Log Alaric [29214]: who
+Wed Oct  7 00:02:10 2026 :: Log Alaric [29214]: te
+Wed Oct  7 00:02:19 2026 :: Log Alaric [29214]: te
+Wed Oct  7 00:02:32 2026 :: Log Alaric [29214]: l
+Wed Oct  7 00:02:32 2026 :: Log Alaric [29214]: nof
+Wed Oct  7 00:02:34 2026 :: Log Alaric [29214]: nof
+Wed Oct  7 00:02:36 2026 :: Log Alaric [29214]: gr
+Wed Oct  7 00:02:36 2026 :: Log Alaric [29214]: l
+Wed Oct  7 00:02:38 2026 :: Log Alaric [29214]: l i cor
+Wed Oct  7 00:02:41 2026 :: Log Alaric [29214]: get all cor
+Wed Oct  7 00:02:43 2026 :: Log Alaric [29214]: i
+Wed Oct  7 00:02:51 2026 :: Log Alaric [29214]: who
+Wed Oct  7 00:02:52 2026 :: Log Alaric [29214]: eq
+Wed Oct  7 00:02:58 2026 :: Log Alaric [29214]: worth
+Wed Oct  7 00:02:59 2026 :: Log Alaric [29214]: score
+Wed Oct  7 00:03:07 2026 :: Sock.sinaddr:  3.212.128.62
+Wed Oct  7 00:03:08 2026 :: EOF encountered on read.
