@@ -1,1 +1,2 @@
 [29209] Alaric: The website does not include weapons that can be dual wielded for Thieves when looking at the Gear Finder section.
+[ 7805] Alaric: There is a quest for reaching "The Storage Room" in the Vallet of the Elves area. The MUD generates a quest to a room that doesn't not have access by the player. Using the command "walk quest" does not attempt to path. Manually walking around the Valley of the Elves area and looking at room names on the mapper seems to verify that there is a no room that is accessible.
