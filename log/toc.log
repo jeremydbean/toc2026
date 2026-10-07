@@ -61061,3 +61061,78 @@ Wed Oct  7 12:22:17 2026 :: Log Alaric [4207]: who
 Wed Oct  7 12:22:21 2026 :: Log Alaric [4207]: who
 Wed Oct  7 12:22:24 2026 :: Log Alaric [4207]: worth
 Wed Oct  7 12:22:28 2026 :: Log Alaric [4207]: walk
+Wed Oct  7 12:22:50 2026 :: Log Alaric [4207]: wake
+Wed Oct  7 12:22:51 2026 :: Log Alaric [4207]: look
+Wed Oct  7 12:22:54 2026 :: Log Alaric [4207]: sc
+Wed Oct  7 12:22:56 2026 :: Log Alaric [4207]: e
+Wed Oct  7 12:22:56 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Wed Oct  7 12:22:57 2026 :: Log Alaric [4202]: e
+Wed Oct  7 12:22:57 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Oct  7 12:22:58 2026 :: Log Alaric [4201]: e
+Wed Oct  7 12:22:58 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Wed Oct  7 12:22:58 2026 :: Log Alaric [2427]: n
+Wed Oct  7 12:22:58 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct  7 12:22:59 2026 :: Log Alaric [2404]: n
+Wed Oct  7 12:22:59 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Oct  7 12:23:00 2026 :: Log Alaric [2401]: n
+Wed Oct  7 12:23:00 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Wed Oct  7 12:23:00 2026 :: Log Alaric [2402]: n
+Wed Oct  7 12:23:00 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Wed Oct  7 12:23:01 2026 :: Log Alaric [2415]: e
+Wed Oct  7 12:23:01 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Wed Oct  7 12:23:02 2026 :: Log Alaric [2485]: eq
+Wed Oct  7 12:23:06 2026 :: Log Alaric [2485]: kill ci
+Wed Oct  7 12:23:11 2026 :: Log Alaric [2485]: e
+Wed Oct  7 12:23:11 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2485
+Wed Oct  7 12:23:11 2026 :: Log Alaric [2486]: n
+Wed Oct  7 12:23:11 2026 :: Log Alaric [2483]: arrived (Fountain of Market Plaza.) from 2486
+Wed Oct  7 12:23:11 2026 :: Log Alaric [2483]: e
+Wed Oct  7 12:23:11 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 2483
+Wed Oct  7 12:23:11 2026 :: Log Alaric [2484]: e
+Wed Oct  7 12:23:11 2026 :: Log Alaric [4]: arrived (The First National Bank of Dresden.) from 2484
+Wed Oct  7 12:23:12 2026 :: Log Alaric [4]: e
+Wed Oct  7 12:23:12 2026 :: Log Alaric [4]: sc
+Wed Oct  7 12:23:23 2026 :: Log Alaric [4]: deposit 825 platinum
+Wed Oct  7 12:23:26 2026 :: Log Alaric [4]: w
+Wed Oct  7 12:23:26 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 4
+Wed Oct  7 12:23:26 2026 :: Log Alaric [2484]: s
+Wed Oct  7 12:23:26 2026 :: Log Alaric [2487]: arrived (Market Plaza.) from 2484
+Wed Oct  7 12:23:26 2026 :: Log Alaric [2487]: w
+Wed Oct  7 12:23:26 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2487
+Wed Oct  7 12:23:29 2026 :: Log Alaric [2486]: w
+Wed Oct  7 12:23:29 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2486
+Wed Oct  7 12:23:30 2026 :: Log Alaric [2485]: w
+Wed Oct  7 12:23:30 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2485
+Wed Oct  7 12:23:33 2026 :: Log Alaric [2415]: kill ci
+Wed Oct  7 12:23:43 2026 :: Log Alaric [2415]: (refused) affects
+Wed Oct  7 12:23:43 2026 :: Log Alaric [2415]: (refused) affects
+Wed Oct  7 12:23:51 2026 :: Log Alaric [2415]: affect
+Wed Oct  7 12:23:57 2026 :: Log Alaric [2415]: who
+Wed Oct  7 12:23:59 2026 :: Log Alaric [2415]: look
+Wed Oct  7 12:24:00 2026 :: Sock.sinaddr:  52.22.236.30
+Wed Oct  7 12:24:00 2026 :: EOF encountered on read.
+Wed Oct  7 12:24:48 2026 :: Log Alaric [2415]: bug Within the web client, the button, "Afffects" uses the command: affects. This should not be plural, the sent command to the MUD should be affect. Otherwise the MUD interprets it as an invalid command
+Wed Oct  7 12:24:51 2026 :: Log Alaric [2415]: l
+Wed Oct  7 12:24:58 2026 :: Log Alaric [2415]: s
+Wed Oct  7 12:24:58 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2415
+Wed Oct  7 12:25:01 2026 :: Log Alaric [2402]: kill if
+Wed Oct  7 12:25:04 2026 :: Log Alaric [2402]: kill if
+Wed Oct  7 12:25:06 2026 :: Log Alaric [2402]: kill Fido
+Wed Oct  7 12:25:11 2026 :: Log Alaric [2402]: bu
+Wed Oct  7 12:25:18 2026 :: Log Alaric [2402]: s
+Wed Oct  7 12:25:18 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2402
+Wed Oct  7 12:25:20 2026 :: Log Alaric [2401]: u
+Wed Oct  7 12:25:20 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct  7 12:25:21 2026 :: Log Alaric [2410]: u
+Wed Oct  7 12:25:21 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct  7 12:25:21 2026 :: Log Alaric [2411]: u
+Wed Oct  7 12:25:21 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct  7 12:25:22 2026 :: Log Alaric [2414]: u
+Wed Oct  7 12:25:22 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct  7 12:25:29 2026 :: Log Alaric [2497]: aquest request
+Wed Oct  7 12:25:34 2026 :: Log Alaric [2497]: sc
+Wed Oct  7 12:25:41 2026 :: Log Alaric [2497]: who
+Wed Oct  7 12:25:49 2026 :: Log Alaric [2497]: quit
+Wed Oct  7 12:25:49 2026 :: Alaric has quit.
+Wed Oct  7 12:25:49 2026 :: [QUIT] Player rejoined the real world.
+Wed Oct  7 12:25:55 2026 :: EOF encountered on read.
