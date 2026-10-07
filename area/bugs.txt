@@ -1,0 +1,1 @@
+[29209] Alaric: The website does not include weapons that can be dual wielded for Thieves when looking at the Gear Finder section.
