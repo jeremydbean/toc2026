@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1791415490
+LogO 1791415969
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 8
-Plyd 5625
+Plyd 6104
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 3506
-HMV  53 110 219 219 57 138
-NewGold 54
-NewPlat 8
-NewCopp 37
-NewSilv 12
+Room 4209
+HMV  12 110 219 219 47 138
+NewGold 57
+NewPlat 9
+NewCopp 109
+NewSilv 18
 BankCP 0
 IntTime 1791399612
 IntTotal 0
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 60
+AchKills 63
 AchQuests 3
 AchDeaths 1
 AchExplore 0
@@ -57,19 +57,20 @@ Achv carry-one-platinum 1791054979
 Achv four-denominations 1791055231
 Achv visit-froboz 1791055958
 Achv visit-glitter-palace 1791414563
-LastOut  1791414384
-SesLogin 1791414294
-SesDur   90
-SesExpG  0
-SesLvlG  0
-SesKill  0
+Achv visit-new-thalos 1791415830
+LastOut  1791415969
+SesLogin 1791414428
+SesDur   1541
+SesExpG  1356
+SesLvlG  1
+SesKill  12
 SesPK    0
-SesDead  0
-SesQuest 0
+SesDead  1
+SesQuest 1
 QuestPnts 152
 QuestStrk 3
-QuestNext 10
-Exp  18667
+QuestNext 2
+Exp  19143
 Act  65740
 AfBy 512
 Comm 24576
@@ -96,12 +97,12 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
-Save  3
-Alig  -54
-Hit   2
-Dam   6
-ACs 79 71 69 99
+Pos  4
+Save  4
+Alig  -56
+Hit   1
+Dam   4
+ACs 71 60 58 99
 Attr 14 16 15 12 19
 AMod 0 10 11 0 7
 Pass TrjPUdRVdu8MY~
@@ -110,7 +111,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 110 219 142
-Cond 0 13 28
+Cond 0 5 20
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -132,7 +133,7 @@ Sk 1 'shield block'
 Sk 30 'spear'
 Sk 82 'sword'
 Sk 30 'whip'
-Sk 75 'bash'
+Sk 76 'bash'
 Sk 1 'disarm'
 Sk 1 'heroic grip'
 Sk 75 'kick'
@@ -157,7 +158,7 @@ Wear 0
 Cost 0
 Cond 99
 Repd 0
-Val  0 0 107 0 0
+Val  0 0 99 0 0
 End
 
 #O
@@ -172,7 +173,7 @@ End
 #O
 Vnum 3702
 Nest 0
-Wear 16
+Wear -1
 Cost 0
 Cond 97
 Repd 0
@@ -243,15 +244,6 @@ Nest 0
 Wear 9
 Cost 0
 Cond 100
-Repd 0
-End
-
-#O
-Vnum 3710
-Nest 0
-Wear 10
-Cost 0
-Cond 99
 Repd 0
 End
 
@@ -358,21 +350,42 @@ Repd 0
 End
 
 #O
-Vnum 3500
+Vnum 3074
 Nest 0
-Wear -1
+Wear 7
 Lev  5
-Cost 10000
-Cond 75
+Cost 1500000
+Cond 100
 Repd 0
 End
 
 #O
-Vnum 3074
+Vnum 3505
 Nest 0
-Wear -1
+Wear 16
+Lev  6
+Cost 82000
+Cond 99
+Repd 0
+Affect -1 6 -1 1 24 0 0
+End
+
+#O
+Vnum 3077
+Nest 0
+Wear 10
 Lev  5
 Cost 1500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 58
+Nest 0
+Wear -1
+Time 246
+Cost 0
 Cond 100
 Repd 0
 End
