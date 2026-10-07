@@ -61556,3 +61556,123 @@ Wed Oct  7 21:32:40 2026 :: EOF encountered on read.
 Wed Oct  7 21:35:34 2026 :: Sock.sinaddr:  69.164.217.245
 Wed Oct  7 21:37:44 2026 :: Sock.sinaddr:  178.156.187.238
 Wed Oct  7 21:37:44 2026 :: EOF encountered on read.
+Wed Oct  7 21:39:04 2026 :: Sock.sinaddr:  208.126.22.104
+Wed Oct  7 21:39:06 2026 :: Loading Alaric's playerfile
+Wed Oct  7 21:39:07 2026 :: Alaric@208.126.22.104 has connected.
+Wed Oct  7 21:39:07 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Wed Oct  7 21:39:09 2026 :: Log Alaric [2497]: who
+Wed Oct  7 21:39:11 2026 :: Log Alaric [2497]: af
+Wed Oct  7 21:39:12 2026 :: Log Alaric [2497]: l
+Wed Oct  7 21:39:14 2026 :: Log Alaric [2497]: en do
+Wed Oct  7 21:39:14 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Oct  7 21:39:16 2026 :: Log Alaric [2401]: aq ti
+Wed Oct  7 21:39:19 2026 :: Log Alaric [2401]: jump rock
+Wed Oct  7 21:39:19 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Wed Oct  7 21:39:19 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 1607
+Wed Oct  7 21:39:22 2026 :: Log Alaric [4208]: l
+Wed Oct  7 21:39:23 2026 :: Log Alaric [4208]: af
+Wed Oct  7 21:39:25 2026 :: Log Alaric [4208]: r e 4
+Wed Oct  7 21:39:25 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Wed Oct  7 21:39:25 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Wed Oct  7 21:39:25 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Oct  7 21:39:25 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Wed Oct  7 21:39:25 2026 :: Log Alaric [2427]: n
+Wed Oct  7 21:39:25 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct  7 21:39:26 2026 :: Log Alaric [2404]: n
+Wed Oct  7 21:39:26 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Oct  7 21:39:28 2026 :: Log Alaric [2401]: r e 27
+Wed Oct  7 21:39:28 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Oct  7 21:39:28 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Wed Oct  7 21:39:28 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Wed Oct  7 21:39:28 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Wed Oct  7 21:39:28 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Wed Oct  7 21:39:28 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Wed Oct  7 21:39:28 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Wed Oct  7 21:39:28 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Wed Oct  7 21:39:28 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Wed Oct  7 21:39:28 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Wed Oct  7 21:39:28 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Wed Oct  7 21:39:28 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Wed Oct  7 21:39:28 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Wed Oct  7 21:39:28 2026 :: Log Alaric [3527]: arrived (The Checkpoint) from 3526
+Wed Oct  7 21:39:28 2026 :: Log Alaric [3528]: arrived (Along the Eastern Road) from 3527
+Wed Oct  7 21:39:28 2026 :: Log Alaric [3529]: arrived (Along the Eastern Road) from 3528
+Wed Oct  7 21:39:28 2026 :: Log Alaric [3530]: arrived (Near the Sands of Sorrow) from 3529
+Wed Oct  7 21:39:28 2026 :: Log Alaric [3531]: arrived (Near the Sands of Sorrow) from 3530
+Wed Oct  7 21:39:28 2026 :: Log Alaric [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Wed Oct  7 21:39:28 2026 :: Log Alaric [42]: arrived (On the Outskirts of New Thalos) from 3532
+Wed Oct  7 21:39:28 2026 :: Log Alaric [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Wed Oct  7 21:39:28 2026 :: Log Alaric [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Wed Oct  7 21:39:28 2026 :: Log Alaric [9524]: arrived (West Main Street) from 9523
+Wed Oct  7 21:39:28 2026 :: Log Alaric [9525]: arrived (West Main Street) from 9524
+Wed Oct  7 21:39:28 2026 :: Log Alaric [9526]: arrived (West Main Street) from 9525
+Wed Oct  7 21:39:28 2026 :: Log Alaric [9509]: arrived (The Western Market Square) from 9526
+Wed Oct  7 21:39:28 2026 :: Log Alaric [9506]: arrived (The Center of Market Square) from 9509
+Wed Oct  7 21:39:29 2026 :: Log Alaric [9506]: r n 15
+Wed Oct  7 21:39:29 2026 :: Log Alaric [9515]: arrived (The Northern Market Square) from 9506
+Wed Oct  7 21:39:29 2026 :: Log Alaric [9518]: arrived (Sultan's Walk) from 9515
+Wed Oct  7 21:39:29 2026 :: Log Alaric [9519]: arrived (Sultan's Walk) from 9518
+Wed Oct  7 21:39:29 2026 :: Log Alaric [9520]: arrived (Sultan's Walk) from 9519
+Wed Oct  7 21:39:29 2026 :: Log Alaric [9521]: arrived (Sultan's Walk) from 9520
+Wed Oct  7 21:39:29 2026 :: Log Alaric [9522]: arrived (Inside the Northern Gate of New Thalos) from 9521
+Wed Oct  7 21:39:29 2026 :: Log Alaric [9667]: arrived (Outside the Northern Gate of New Thalos) from 9522
+Wed Oct  7 21:39:29 2026 :: Log Alaric [9781]: arrived (On the Plains) from 9667
+Wed Oct  7 21:39:29 2026 :: Log Alaric [9782]: arrived (On the Plains) from 9781
+Wed Oct  7 21:39:29 2026 :: Log Alaric [9783]: arrived (Edge of the forest) from 9782
+Wed Oct  7 21:39:29 2026 :: Log Alaric [64]: arrived (Misty Clearing) from 9783
+Wed Oct  7 21:39:29 2026 :: Log Alaric [29001]: arrived (Entrance to the Fortress) from 64
+Wed Oct  7 21:39:29 2026 :: Log Alaric [29002]: arrived (Inside Korzath's Private Fortress) from 29001
+Wed Oct  7 21:39:29 2026 :: Log Alaric [29003]: arrived (Grand Foyer) from 29002
+Wed Oct  7 21:39:29 2026 :: Log Alaric [29004]: arrived (Center Tunnelway) from 29003
+Wed Oct  7 21:39:31 2026 :: Log Alaric [29004]: te
+Wed Oct  7 21:39:35 2026 :: Log Alaric [29004]: te
+Wed Oct  7 21:39:38 2026 :: Log Alaric [29004]: te
+Wed Oct  7 21:39:41 2026 :: Log Alaric [29004]: te
+Wed Oct  7 21:39:54 2026 :: Log Alaric [29004]: who
+Wed Oct  7 21:39:54 2026 :: Log Alaric [29004]: te
+Wed Oct  7 21:40:01 2026 :: Log Alaric [29004]: get ke cor
+Wed Oct  7 21:40:01 2026 :: Log Alaric [29004]: unl north
+Wed Oct  7 21:40:01 2026 :: Log Alaric [29004]: on
+Wed Oct  7 21:40:01 2026 :: Log Alaric [29004]: n
+Wed Oct  7 21:40:01 2026 :: Log Alaric [29201]: arrived (Heroes Hall) from 29004
+Wed Oct  7 21:40:02 2026 :: Log Alaric [29201]: n
+Wed Oct  7 21:40:02 2026 :: Log Alaric [29202]: arrived (Hall of Past Heroes) from 29201
+Wed Oct  7 21:40:02 2026 :: Log Alaric [29202]: w
+Wed Oct  7 21:40:02 2026 :: Log Alaric [29203]: arrived (Passage to the Maze) from 29202
+Wed Oct  7 21:40:03 2026 :: Log Alaric [29203]: w
+Wed Oct  7 21:40:03 2026 :: Log Alaric [29204]: arrived (Twist in the Maze) from 29203
+Wed Oct  7 21:40:04 2026 :: Log Alaric [29204]: wo
+Wed Oct  7 21:40:04 2026 :: Log Alaric [29204]: te
+Wed Oct  7 21:40:08 2026 :: Log Alaric [29204]: te
+Wed Oct  7 21:40:11 2026 :: Log Alaric [29204]: te
+Wed Oct  7 21:40:27 2026 :: Log Alaric [29204]: who
+Wed Oct  7 21:40:47 2026 :: Log Alaric [29204]: who
+Wed Oct  7 21:40:48 2026 :: Log Alaric [29204]: te
+Wed Oct  7 21:40:55 2026 :: Log Alaric [29204]: l
+Wed Oct  7 21:40:56 2026 :: Log Alaric [29204]: s
+Wed Oct  7 21:40:56 2026 :: Log Alaric [29205]: arrived (Twist in the Maze) from 29204
+Wed Oct  7 21:40:57 2026 :: Log Alaric [29205]: te
+Wed Oct  7 21:41:01 2026 :: Log Alaric [29205]: te
+Wed Oct  7 21:41:04 2026 :: Log Alaric [29205]: te
+Wed Oct  7 21:41:07 2026 :: Log Alaric [29205]: te
+Wed Oct  7 21:41:19 2026 :: Log Alaric [29205]: te
+Wed Oct  7 21:41:22 2026 :: Log Alaric [29205]: te
+Wed Oct  7 21:41:25 2026 :: Log Alaric [29205]: te
+Wed Oct  7 21:41:36 2026 :: Log Alaric [29205]: who
+Wed Oct  7 21:41:37 2026 :: Log Alaric [29205]: te
+Wed Oct  7 21:41:46 2026 :: Log Alaric [29205]: sh
+Wed Oct  7 21:42:07 2026 :: Log Alaric [29205]: l
+Wed Oct  7 21:42:08 2026 :: Log Alaric [29205]: e
+Wed Oct  7 21:42:08 2026 :: Log Alaric [29206]: arrived (Twist in the Maze) from 29205
+Wed Oct  7 21:42:09 2026 :: Log Alaric [29206]: wo
+Wed Oct  7 21:42:10 2026 :: Log Alaric [29206]: af
+Wed Oct  7 21:42:11 2026 :: Log Alaric [29206]: te
+Wed Oct  7 21:42:16 2026 :: Log Alaric [29206]: te
+Wed Oct  7 21:42:23 2026 :: Log Alaric [29206]: who
+Wed Oct  7 21:42:23 2026 :: Log Alaric [29206]: te
+Wed Oct  7 21:42:29 2026 :: Log Alaric [29206]: te
+Wed Oct  7 21:42:42 2026 :: Log Alaric [29206]: te
+Wed Oct  7 21:42:48 2026 :: Sock.sinaddr:  178.156.185.231
+Wed Oct  7 21:42:48 2026 :: EOF encountered on read.
+Wed Oct  7 21:42:53 2026 :: Log Alaric [29206]: who
+Wed Oct  7 21:42:54 2026 :: Log Alaric [29206]: te
