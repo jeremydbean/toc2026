@@ -61380,3 +61380,83 @@ Wed Oct  7 17:54:22 2026 :: Sock.sinaddr:  18.116.205.62
 Wed Oct  7 17:54:22 2026 :: EOF encountered on read.
 Wed Oct  7 17:59:27 2026 :: Sock.sinaddr:  3.149.57.90
 Wed Oct  7 17:59:27 2026 :: EOF encountered on read.
+Wed Oct  7 18:02:08 2026 :: Loading Alaric's playerfile
+Wed Oct  7 18:02:10 2026 :: Alaric@208.127.191.100 has connected.
+Wed Oct  7 18:02:10 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Wed Oct  7 18:02:13 2026 :: Log Alaric [2497]: who
+Wed Oct  7 18:02:17 2026 :: Log Alaric [2497]: aquest re
+Wed Oct  7 18:02:27 2026 :: Log Alaric [2497]: (refused) affects
+Wed Oct  7 18:02:31 2026 :: Log Alaric [2497]: score
+Wed Oct  7 18:02:32 2026 :: Log Alaric [2497]: equipment
+Wed Oct  7 18:02:35 2026 :: Log Alaric [2497]: inventory
+Wed Oct  7 18:02:39 2026 :: Log Alaric [2497]: skills
+Wed Oct  7 18:02:55 2026 :: Log Alaric [2497]: gainlist
+Wed Oct  7 18:03:47 2026 :: Log Alaric [2497]: help evil eye
+Wed Oct  7 18:04:07 2026 :: Log Alaric [2497]: help new
+Wed Oct  7 18:04:17 2026 :: Log Alaric [2497]: help neutrality
+Wed Oct  7 18:04:32 2026 :: Sock.sinaddr:  52.15.147.27
+Wed Oct  7 18:04:32 2026 :: EOF encountered on read.
+Wed Oct  7 18:04:49 2026 :: Log Alaric [2497]: prac
+Wed Oct  7 18:04:59 2026 :: Log Alaric [2497]: aquest request
+Wed Oct  7 18:05:02 2026 :: Log Alaric [2497]: walkto quest
+Wed Oct  7 18:05:11 2026 :: Log Alaric [2497]: walkto gangland
+Wed Oct  7 18:05:11 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Oct  7 18:05:12 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Oct  7 18:05:12 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Wed Oct  7 18:05:13 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Wed Oct  7 18:05:14 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Wed Oct  7 18:05:15 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Wed Oct  7 18:05:15 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Wed Oct  7 18:05:16 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Wed Oct  7 18:05:17 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Wed Oct  7 18:05:18 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Wed Oct  7 18:05:21 2026 :: Log Alaric [2101]: e
+Wed Oct  7 18:05:21 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Wed Oct  7 18:05:22 2026 :: Log Alaric [2102]: e
+Wed Oct  7 18:05:22 2026 :: Log Alaric [2103]: arrived (Along White Dragon Boulevard) from 2102
+Wed Oct  7 18:05:23 2026 :: Log Alaric [2103]: e
+Wed Oct  7 18:05:23 2026 :: Log Alaric [2104]: arrived (White Dragon Boulevard at Armory) from 2103
+Wed Oct  7 18:05:23 2026 :: Log Alaric [2104]: e
+Wed Oct  7 18:05:23 2026 :: Log Alaric [2105]: arrived (White Dragon Blvd.) from 2104
+Wed Oct  7 18:05:24 2026 :: Log Alaric [2105]: e
+Wed Oct  7 18:05:24 2026 :: Log Alaric [2106]: arrived (Corner of Ice and White Dragon) from 2105
+Wed Oct  7 18:05:24 2026 :: Log Alaric [2106]: e
+Wed Oct  7 18:05:24 2026 :: Log Alaric [2107]: arrived (White Dragon Boulevard) from 2106
+Wed Oct  7 18:05:25 2026 :: Log Alaric [2107]: e
+Wed Oct  7 18:05:25 2026 :: Log Alaric [2108]: arrived (Corner of Bronze and White Dragon) from 2107
+Wed Oct  7 18:05:26 2026 :: Log Alaric [2108]: e
+Wed Oct  7 18:05:27 2026 :: Log Alaric [2108]: s
+Wed Oct  7 18:05:27 2026 :: Log Alaric [2115]: arrived (Bronze Dragon Street at wizard's back door) from 2108
+Wed Oct  7 18:05:29 2026 :: Log Alaric [2115]: aq info I
+Wed Oct  7 18:05:30 2026 :: Log Alaric [2115]: s
+Wed Oct  7 18:05:30 2026 :: Log Alaric [2120]: arrived (Bronze Dragon Street) from 2115
+Wed Oct  7 18:05:32 2026 :: Log Alaric [2120]: s
+Wed Oct  7 18:05:32 2026 :: Log Alaric [2125]: arrived (Bronze Dragon Street at Warehouse) from 2120
+Wed Oct  7 18:05:34 2026 :: Log Alaric [2125]: s
+Wed Oct  7 18:05:34 2026 :: Log Alaric [2130]: arrived (Yellow Dragon Road) from 2125
+Wed Oct  7 18:05:36 2026 :: Log Alaric [2130]: get all
+Wed Oct  7 18:05:38 2026 :: Log Alaric [2130]: recall
+Wed Oct  7 18:05:38 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 2130
+Wed Oct  7 18:05:40 2026 :: Log Alaric [4207]: r e 3
+Wed Oct  7 18:05:40 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Wed Oct  7 18:05:40 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Oct  7 18:05:40 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Wed Oct  7 18:05:42 2026 :: Log Alaric [2427]: n
+Wed Oct  7 18:05:42 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct  7 18:05:42 2026 :: Log Alaric [2404]: n
+Wed Oct  7 18:05:42 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Oct  7 18:05:43 2026 :: Log Alaric [2401]: u
+Wed Oct  7 18:05:43 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct  7 18:05:43 2026 :: Log Alaric [2410]: u
+Wed Oct  7 18:05:43 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct  7 18:05:43 2026 :: Log Alaric [2411]: u
+Wed Oct  7 18:05:43 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct  7 18:05:43 2026 :: Log Alaric [2414]: u
+Wed Oct  7 18:05:43 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct  7 18:05:45 2026 :: Log Alaric [2497]: aquest com
+Wed Oct  7 18:05:45 2026 :: Log Alaric [2497]: quest complete: 24 gold, 12 quest points (streak bonus 0%)
+Wed Oct  7 18:05:50 2026 :: Log Alaric [2497]: aq gamble no
+Wed Oct  7 18:05:54 2026 :: Log Alaric [2497]: score
+Wed Oct  7 18:05:56 2026 :: Log Alaric [2497]: who
+Wed Oct  7 18:05:57 2026 :: Log Alaric [2497]: changes
+Wed Oct  7 18:06:02 2026 :: Log Alaric [2497]: af
