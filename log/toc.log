@@ -60362,3 +60362,275 @@ Wed Oct  7 01:20:14 2026 :: Log Alaric [29206]: te
 Wed Oct  7 01:20:24 2026 :: Log Alaric [29206]: s
 Wed Oct  7 01:20:24 2026 :: Log Alaric [29207]: arrived (Twist in the Maze) from 29206
 Wed Oct  7 01:20:26 2026 :: Log Alaric [29207]: te
+Wed Oct  7 01:20:35 2026 :: Log Alaric [29207]: te
+Wed Oct  7 01:20:43 2026 :: Log Alaric [29207]: te
+Wed Oct  7 01:20:53 2026 :: Log Alaric [29207]: who
+Wed Oct  7 01:20:53 2026 :: Log Alaric [29207]: te
+Wed Oct  7 01:21:02 2026 :: Log Alaric [29207]: sc
+Wed Oct  7 01:21:03 2026 :: Log Alaric [29207]: te
+Wed Oct  7 01:21:09 2026 :: Log Alaric [29207]: te
+Wed Oct  7 01:21:21 2026 :: Log Alaric [29207]: te
+Wed Oct  7 01:21:30 2026 :: Log Alaric [29207]: recal
+Wed Oct  7 01:21:30 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 29207
+Wed Oct  7 01:21:31 2026 :: Log Alaric [4207]: r e 3
+Wed Oct  7 01:21:31 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Wed Oct  7 01:21:31 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Oct  7 01:21:31 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Wed Oct  7 01:21:31 2026 :: Log Alaric [2427]: n
+Wed Oct  7 01:21:31 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct  7 01:21:31 2026 :: Log Alaric [2404]: n
+Wed Oct  7 01:21:31 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Oct  7 01:21:31 2026 :: Log Alaric [2401]: u
+Wed Oct  7 01:21:31 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct  7 01:21:32 2026 :: Log Alaric [2410]: u
+Wed Oct  7 01:21:32 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct  7 01:21:32 2026 :: Log Alaric [2411]: u
+Wed Oct  7 01:21:32 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct  7 01:21:32 2026 :: Log Alaric [2414]: u
+Wed Oct  7 01:21:32 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct  7 01:21:32 2026 :: Log Alaric [2497]: aq re
+Wed Oct  7 01:21:46 2026 :: Log Alaric [2497]: en do
+Wed Oct  7 01:21:46 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Oct  7 01:21:51 2026 :: Log Alaric [2401]: east
+Wed Oct  7 01:21:51 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Oct  7 01:21:52 2026 :: Log Alaric [2403]: east
+Wed Oct  7 01:21:52 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Wed Oct  7 01:21:52 2026 :: Log Alaric [2420]: east
+Wed Oct  7 01:21:52 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Wed Oct  7 01:21:52 2026 :: Log Alaric [2421]: east
+Wed Oct  7 01:21:52 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Wed Oct  7 01:21:52 2026 :: Log Alaric [2422]: east
+Wed Oct  7 01:21:52 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Wed Oct  7 01:21:53 2026 :: Log Alaric [2423]: east
+Wed Oct  7 01:21:53 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Wed Oct  7 01:21:53 2026 :: Log Alaric [2424]: east
+Wed Oct  7 01:21:53 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Wed Oct  7 01:21:53 2026 :: Log Alaric [2425]: east
+Wed Oct  7 01:21:53 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Wed Oct  7 01:21:53 2026 :: Log Alaric [2426]: open east
+Wed Oct  7 01:21:54 2026 :: Log Alaric [2426]: east
+Wed Oct  7 01:21:54 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Wed Oct  7 01:22:00 2026 :: Log Alaric [2440]: east
+Wed Oct  7 01:22:00 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Wed Oct  7 01:22:01 2026 :: Log Alaric [3503]: east
+Wed Oct  7 01:22:01 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Wed Oct  7 01:22:01 2026 :: Log Alaric [3502]: east
+Wed Oct  7 01:22:01 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Wed Oct  7 01:22:01 2026 :: Log Alaric [3525]: east
+Wed Oct  7 01:22:01 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Wed Oct  7 01:22:01 2026 :: Log Alaric [3526]: north
+Wed Oct  7 01:22:01 2026 :: Log Alaric [38]: arrived (Well Kept Path) from 3526
+Wed Oct  7 01:22:02 2026 :: Log Alaric [38]: north
+Wed Oct  7 01:22:02 2026 :: Log Alaric [1100]: arrived (A well kept path) from 38
+Wed Oct  7 01:22:02 2026 :: Log Alaric [1100]: north
+Wed Oct  7 01:22:02 2026 :: Log Alaric [1101]: arrived (A well kept path) from 1100
+Wed Oct  7 01:22:02 2026 :: Log Alaric [1101]: north
+Wed Oct  7 01:22:02 2026 :: Log Alaric [1102]: arrived (A well kept path) from 1101
+Wed Oct  7 01:22:02 2026 :: Log Alaric [1102]: north
+Wed Oct  7 01:22:02 2026 :: Log Alaric [1103]: arrived (Entrance to the Shire) from 1102
+Wed Oct  7 01:22:03 2026 :: Log Alaric [1103]: west
+Wed Oct  7 01:22:03 2026 :: Log Alaric [1118]: arrived (Bywater Road) from 1103
+Wed Oct  7 01:22:03 2026 :: Log Alaric [1118]: west
+Wed Oct  7 01:22:03 2026 :: Log Alaric [1120]: arrived (Bywater Road) from 1118
+Wed Oct  7 01:22:03 2026 :: Log Alaric [1120]: west
+Wed Oct  7 01:22:03 2026 :: Log Alaric [1122]: arrived (Bywater Road) from 1120
+Wed Oct  7 01:22:03 2026 :: Log Alaric [1122]: west
+Wed Oct  7 01:22:03 2026 :: Log Alaric [1126]: arrived (Took Hill) from 1122
+Wed Oct  7 01:22:04 2026 :: Log Alaric [1126]: west
+Wed Oct  7 01:22:04 2026 :: Log Alaric [1128]: arrived (A grassy field) from 1126
+Wed Oct  7 01:22:04 2026 :: Log Alaric [1128]: west
+Wed Oct  7 01:22:04 2026 :: Log Alaric [1130]: arrived (Western end of grassy field) from 1128
+Wed Oct  7 01:22:04 2026 :: Log Alaric [1130]: north
+Wed Oct  7 01:22:04 2026 :: Log Alaric [1127]: arrived (Northern end of grassy field) from 1130
+Wed Oct  7 01:22:04 2026 :: Log Alaric [1127]: north
+Wed Oct  7 01:22:04 2026 :: Log Alaric [7800]: arrived (A Path through the Fields) from 1127
+Wed Oct  7 01:22:06 2026 :: Log Alaric [7800]: n
+Wed Oct  7 01:22:06 2026 :: Log Alaric [7801]: arrived (Along the Path) from 7800
+Wed Oct  7 01:22:06 2026 :: Log Alaric [7801]: n
+Wed Oct  7 01:22:06 2026 :: Log Alaric [7804]: arrived (The Overlook) from 7801
+Wed Oct  7 01:22:07 2026 :: Log Alaric [7804]: n
+Wed Oct  7 01:22:07 2026 :: Log Alaric [7804]: n
+Wed Oct  7 01:22:07 2026 :: Log Alaric [7804]: n
+Wed Oct  7 01:22:07 2026 :: Log Alaric [7804]: n
+Wed Oct  7 01:22:08 2026 :: Log Alaric [7804]: n
+Wed Oct  7 01:22:09 2026 :: Log Alaric [7804]: l
+Wed Oct  7 01:22:09 2026 :: Log Alaric [7804]: d
+Wed Oct  7 01:22:09 2026 :: Log Alaric [7805]: arrived (The Entrance to the Valley of the Elves) from 7804
+Wed Oct  7 01:22:10 2026 :: Log Alaric [7805]: d
+Wed Oct  7 01:22:10 2026 :: Log Alaric [7805]: n
+Wed Oct  7 01:22:10 2026 :: Log Alaric [7810]: arrived (The Valley of the Elves) from 7805
+Wed Oct  7 01:22:11 2026 :: Log Alaric [7810]: n
+Wed Oct  7 01:22:11 2026 :: Log Alaric [7815]: arrived (The Valley of the Elves) from 7810
+Wed Oct  7 01:22:11 2026 :: Log Alaric [7815]: n
+Wed Oct  7 01:22:11 2026 :: Log Alaric [7820]: arrived (The Valley of the Elves) from 7815
+Wed Oct  7 01:22:11 2026 :: Log Alaric [7820]: n
+Wed Oct  7 01:22:11 2026 :: Log Alaric [7824]: arrived (The Edge of the Valley) from 7820
+Wed Oct  7 01:22:11 2026 :: Log Alaric [7824]: n
+Wed Oct  7 01:22:11 2026 :: Log Alaric [7826]: arrived (A Trail Leading from the Valley) from 7824
+Wed Oct  7 01:22:12 2026 :: Log Alaric [7826]: n
+Wed Oct  7 01:22:12 2026 :: Log Alaric [7827]: arrived (Along the Trail) from 7826
+Wed Oct  7 01:22:12 2026 :: Log Alaric [7827]: n
+Wed Oct  7 01:22:12 2026 :: Log Alaric [7827]: e
+Wed Oct  7 01:22:12 2026 :: Log Alaric [7828]: arrived (A Bend in the Trail) from 7827
+Wed Oct  7 01:22:13 2026 :: Log Alaric [7828]: n
+Wed Oct  7 01:22:13 2026 :: Log Alaric [7829]: arrived (A Smaller Valley) from 7828
+Wed Oct  7 01:22:13 2026 :: Log Alaric [7829]: n
+Wed Oct  7 01:22:13 2026 :: Log Alaric [7834]: arrived (The Elf Home) from 7829
+Wed Oct  7 01:22:14 2026 :: Log Alaric [7834]: ex
+Wed Oct  7 01:22:15 2026 :: Log Alaric [7834]: os
+Wed Oct  7 01:22:15 2026 :: Log Alaric [7834]: ex
+Wed Oct  7 01:22:16 2026 :: Log Alaric [7834]: e
+Wed Oct  7 01:22:16 2026 :: Log Alaric [7835]: arrived (The Kitchen) from 7834
+Wed Oct  7 01:22:18 2026 :: Log Alaric [7835]: ex
+Wed Oct  7 01:22:18 2026 :: Log Alaric [7835]: n
+Wed Oct  7 01:22:18 2026 :: Log Alaric [7839]: arrived (The Storage Room) from 7835
+Wed Oct  7 01:22:21 2026 :: Log Alaric [7839]: u
+Wed Oct  7 01:22:21 2026 :: Log Alaric [7848]: arrived (Study) from 7839
+Wed Oct  7 01:22:22 2026 :: Log Alaric [7848]: os
+Wed Oct  7 01:22:23 2026 :: Log Alaric [7848]: ow
+Wed Oct  7 01:22:24 2026 :: Log Alaric [7848]: ex
+Wed Oct  7 01:22:25 2026 :: Log Alaric [7848]: c pass
+Wed Oct  7 01:22:31 2026 :: Log Alaric [7848]: aq info
+Wed Oct  7 01:22:32 2026 :: Log Alaric [7848]: l
+Wed Oct  7 01:22:34 2026 :: Log Alaric [7848]: w
+Wed Oct  7 01:22:34 2026 :: Log Alaric [7847]: arrived (The Sleeping Quarters) from 7848
+Wed Oct  7 01:22:35 2026 :: Log Alaric [7847]: s
+Wed Oct  7 01:22:35 2026 :: Log Alaric [7845]: arrived (The Elders' Room) from 7847
+Wed Oct  7 01:22:38 2026 :: Log Alaric [7845]: e
+Wed Oct  7 01:22:38 2026 :: Log Alaric [7846]: arrived (The Storage Room) from 7845
+Wed Oct  7 01:22:41 2026 :: Log Alaric [7846]: n
+Wed Oct  7 01:22:41 2026 :: Log Alaric [7848]: arrived (Study) from 7846
+Wed Oct  7 01:22:43 2026 :: Log Alaric [7848]: d
+Wed Oct  7 01:22:43 2026 :: Log Alaric [7839]: arrived (The Storage Room) from 7848
+Wed Oct  7 01:22:45 2026 :: Log Alaric [7839]: ex
+Wed Oct  7 01:22:46 2026 :: Log Alaric [7839]: w
+Wed Oct  7 01:22:46 2026 :: Log Alaric [7838]: arrived (The Living Room) from 7839
+Wed Oct  7 01:22:48 2026 :: Log Alaric [7838]: s
+Wed Oct  7 01:22:48 2026 :: Log Alaric [7834]: arrived (The Elf Home) from 7838
+Wed Oct  7 01:22:50 2026 :: Log Alaric [7834]: s
+Wed Oct  7 01:22:50 2026 :: Log Alaric [7829]: arrived (A Smaller Valley) from 7834
+Wed Oct  7 01:22:53 2026 :: Log Alaric [7829]: (refused) ss
+Wed Oct  7 01:22:53 2026 :: Log Alaric [7829]: w
+Wed Oct  7 01:22:53 2026 :: Log Alaric [7830]: arrived (A Trail in the Valley) from 7829
+Wed Oct  7 01:22:55 2026 :: Log Alaric [7830]: e
+Wed Oct  7 01:22:55 2026 :: Log Alaric [7829]: arrived (A Smaller Valley) from 7830
+Wed Oct  7 01:22:55 2026 :: Log Alaric [7829]: s
+Wed Oct  7 01:22:55 2026 :: Log Alaric [7828]: arrived (A Bend in the Trail) from 7829
+Wed Oct  7 01:22:55 2026 :: Log Alaric [7828]: w
+Wed Oct  7 01:22:55 2026 :: Log Alaric [7827]: arrived (Along the Trail) from 7828
+Wed Oct  7 01:22:56 2026 :: Log Alaric [7827]: w
+Wed Oct  7 01:22:56 2026 :: Log Alaric [7868]: arrived (A Bend in the Trail) from 7827
+Wed Oct  7 01:22:56 2026 :: Log Alaric [7868]: w
+Wed Oct  7 01:22:58 2026 :: Log Alaric [7868]: n
+Wed Oct  7 01:22:58 2026 :: Log Alaric [7869]: arrived (A Bend in the Trail) from 7868
+Wed Oct  7 01:22:59 2026 :: Log Alaric [7869]: w
+Wed Oct  7 01:22:59 2026 :: Log Alaric [7870]: arrived (The Small Valley) from 7869
+Wed Oct  7 01:22:59 2026 :: Log Alaric [7870]: ex
+Wed Oct  7 01:23:02 2026 :: Log Alaric [7870]: w
+Wed Oct  7 01:23:02 2026 :: Log Alaric [7878]: arrived (Inside the Small Shack) from 7870
+Wed Oct  7 01:23:03 2026 :: Log Alaric [7878]: d
+Wed Oct  7 01:23:03 2026 :: Log Alaric [7879]: arrived (Beneath the Small Shack) from 7878
+Wed Oct  7 01:23:05 2026 :: Log Alaric [7879]: s
+Wed Oct  7 01:23:05 2026 :: Log Alaric [7880]: arrived (The Den of the Pyrohydra) from 7879
+Wed Oct  7 01:23:06 2026 :: Log Alaric [7880]: w
+Wed Oct  7 01:23:06 2026 :: Log Alaric [7881]: arrived (The Workroom) from 7880
+Wed Oct  7 01:23:08 2026 :: Log Alaric [7881]: e
+Wed Oct  7 01:23:08 2026 :: Log Alaric [7880]: arrived (The Den of the Pyrohydra) from 7881
+Wed Oct  7 01:23:09 2026 :: Log Alaric [7880]: n
+Wed Oct  7 01:23:09 2026 :: Log Alaric [7879]: arrived (Beneath the Small Shack) from 7880
+Wed Oct  7 01:23:16 2026 :: Log Alaric [7879]: score
+Wed Oct  7 01:23:17 2026 :: Log Alaric [7879]: who
+Wed Oct  7 01:23:18 2026 :: Log Alaric [7879]: l
+Wed Oct  7 01:23:20 2026 :: Log Alaric [7879]: u
+Wed Oct  7 01:23:20 2026 :: Log Alaric [7878]: arrived (Inside the Small Shack) from 7879
+Wed Oct  7 01:23:21 2026 :: Log Alaric [7878]: e
+Wed Oct  7 01:23:21 2026 :: Log Alaric [7870]: arrived (The Small Valley) from 7878
+Wed Oct  7 01:23:22 2026 :: Log Alaric [7870]: n
+Wed Oct  7 01:23:22 2026 :: Log Alaric [7871]: arrived (The Small Valley) from 7870
+Wed Oct  7 01:23:23 2026 :: Log Alaric [7871]: n
+Wed Oct  7 01:23:23 2026 :: Log Alaric [7871]: w
+Wed Oct  7 01:23:23 2026 :: Log Alaric [7873]: arrived (The Small Valley) from 7871
+Wed Oct  7 01:23:24 2026 :: Log Alaric [7873]: ex
+Wed Oct  7 01:23:27 2026 :: Log Alaric [7873]: w
+Wed Oct  7 01:23:27 2026 :: Log Alaric [7874]: arrived (The Small Valley) from 7873
+Wed Oct  7 01:23:28 2026 :: Log Alaric [7874]: ex
+Wed Oct  7 01:23:28 2026 :: Log Alaric [7874]: s
+Wed Oct  7 01:23:28 2026 :: Log Alaric [7875]: arrived (The Small Valley) from 7874
+Wed Oct  7 01:23:29 2026 :: Log Alaric [7875]: e
+Wed Oct  7 01:23:30 2026 :: Log Alaric [7875]: s
+Wed Oct  7 01:23:30 2026 :: Log Alaric [7876]: arrived (The Small Valley) from 7875
+Wed Oct  7 01:23:30 2026 :: Log Alaric [7876]: e
+Wed Oct  7 01:23:30 2026 :: Log Alaric [7877]: arrived (The Small Valley) from 7876
+Wed Oct  7 01:23:31 2026 :: Log Alaric [7877]: e
+Wed Oct  7 01:23:31 2026 :: Log Alaric [7872]: arrived (The Small Valley) from 7877
+Wed Oct  7 01:23:32 2026 :: Log Alaric [7872]: e
+Wed Oct  7 01:23:33 2026 :: Log Alaric [7872]: e
+Wed Oct  7 01:23:34 2026 :: Log Alaric [7872]: n
+Wed Oct  7 01:23:34 2026 :: Log Alaric [7870]: arrived (The Small Valley) from 7872
+Wed Oct  7 01:23:35 2026 :: Log Alaric [7870]: s
+Wed Oct  7 01:23:35 2026 :: Log Alaric [7872]: arrived (The Small Valley) from 7870
+Wed Oct  7 01:23:36 2026 :: Log Alaric [7872]: n
+Wed Oct  7 01:23:36 2026 :: Log Alaric [7870]: arrived (The Small Valley) from 7872
+Wed Oct  7 01:23:36 2026 :: Log Alaric [7870]: e
+Wed Oct  7 01:23:36 2026 :: Log Alaric [7869]: arrived (A Bend in the Trail) from 7870
+Wed Oct  7 01:23:37 2026 :: Log Alaric [7869]: s
+Wed Oct  7 01:23:37 2026 :: Log Alaric [7868]: arrived (A Bend in the Trail) from 7869
+Wed Oct  7 01:23:37 2026 :: Log Alaric [7868]: e
+Wed Oct  7 01:23:37 2026 :: Log Alaric [7827]: arrived (Along the Trail) from 7868
+Wed Oct  7 01:23:38 2026 :: Log Alaric [7827]: e
+Wed Oct  7 01:23:38 2026 :: Log Alaric [7828]: arrived (A Bend in the Trail) from 7827
+Wed Oct  7 01:23:38 2026 :: Log Alaric [7828]: n
+Wed Oct  7 01:23:38 2026 :: Log Alaric [7829]: arrived (A Smaller Valley) from 7828
+Wed Oct  7 01:23:41 2026 :: Log Alaric [7829]: n
+Wed Oct  7 01:23:41 2026 :: Log Alaric [7834]: arrived (The Elf Home) from 7829
+Wed Oct  7 01:23:41 2026 :: Log Alaric [7834]: ex
+Wed Oct  7 01:23:43 2026 :: Log Alaric [7834]: e
+Wed Oct  7 01:23:43 2026 :: Log Alaric [7835]: arrived (The Kitchen) from 7834
+Wed Oct  7 01:23:43 2026 :: Log Alaric [7835]: ex
+Wed Oct  7 01:23:45 2026 :: Log Alaric [7835]: n
+Wed Oct  7 01:23:45 2026 :: Log Alaric [7839]: arrived (The Storage Room) from 7835
+Wed Oct  7 01:24:17 2026 :: Sock.sinaddr:  3.212.128.62
+Wed Oct  7 01:24:17 2026 :: EOF encountered on read.
+Wed Oct  7 01:24:18 2026 :: Log Alaric [7839]: open secert
+Wed Oct  7 01:24:20 2026 :: Log Alaric [7839]: open secret
+Wed Oct  7 01:24:25 2026 :: Log Alaric [7839]: w
+Wed Oct  7 01:24:25 2026 :: Log Alaric [7838]: arrived (The Living Room) from 7839
+Wed Oct  7 01:24:27 2026 :: Log Alaric [7838]: open secret
+Wed Oct  7 01:24:28 2026 :: Log Alaric [7838]: s
+Wed Oct  7 01:24:28 2026 :: Log Alaric [7834]: arrived (The Elf Home) from 7838
+Wed Oct  7 01:24:30 2026 :: Log Alaric [7834]: open secret
+Wed Oct  7 01:24:31 2026 :: Log Alaric [7834]: e
+Wed Oct  7 01:24:31 2026 :: Log Alaric [7835]: arrived (The Kitchen) from 7834
+Wed Oct  7 01:24:35 2026 :: Log Alaric [7835]: n
+Wed Oct  7 01:24:35 2026 :: Log Alaric [7839]: arrived (The Storage Room) from 7835
+Wed Oct  7 01:24:35 2026 :: Log Alaric [7839]: ex
+Wed Oct  7 01:24:37 2026 :: Log Alaric [7839]: u
+Wed Oct  7 01:24:37 2026 :: Log Alaric [7848]: arrived (Study) from 7839
+Wed Oct  7 01:24:39 2026 :: Log Alaric [7848]: os
+Wed Oct  7 01:24:39 2026 :: Log Alaric [7848]: ex
+Wed Oct  7 01:24:40 2026 :: Log Alaric [7848]: s
+Wed Oct  7 01:24:40 2026 :: Log Alaric [7846]: arrived (The Storage Room) from 7848
+Wed Oct  7 01:24:45 2026 :: Log Alaric [7846]: open secret
+Wed Oct  7 01:24:47 2026 :: Log Alaric [7846]: w
+Wed Oct  7 01:24:47 2026 :: Log Alaric [7845]: arrived (The Elders' Room) from 7846
+Wed Oct  7 01:24:48 2026 :: Log Alaric [7845]: open secret
+Wed Oct  7 01:24:50 2026 :: Log Alaric [7845]: n
+Wed Oct  7 01:24:50 2026 :: Log Alaric [7847]: arrived (The Sleeping Quarters) from 7845
+Wed Oct  7 01:24:52 2026 :: Log Alaric [7847]: open secret
+Wed Oct  7 01:24:53 2026 :: Log Alaric [7847]: e
+Wed Oct  7 01:24:53 2026 :: Log Alaric [7848]: arrived (Study) from 7847
+Wed Oct  7 01:24:54 2026 :: Log Alaric [7848]: open secret
+Wed Oct  7 01:24:57 2026 :: Log Alaric [7848]: d
+Wed Oct  7 01:24:57 2026 :: Log Alaric [7839]: arrived (The Storage Room) from 7848
+Wed Oct  7 01:25:15 2026 :: Log Alaric [7839]: s
+Wed Oct  7 01:25:15 2026 :: Log Alaric [7835]: arrived (The Kitchen) from 7839
+Wed Oct  7 01:25:18 2026 :: Log Alaric [7835]: n
+Wed Oct  7 01:25:18 2026 :: Log Alaric [7839]: arrived (The Storage Room) from 7835
+Wed Oct  7 01:25:19 2026 :: Log Alaric [7839]: u
+Wed Oct  7 01:25:19 2026 :: Log Alaric [7848]: arrived (Study) from 7839
+Wed Oct  7 01:25:20 2026 :: Log Alaric [7848]: s
+Wed Oct  7 01:25:20 2026 :: Log Alaric [7846]: arrived (The Storage Room) from 7848
+Wed Oct  7 01:25:23 2026 :: Log Alaric [7846]: open secret door
+Wed Oct  7 01:25:26 2026 :: Log Alaric [7846]: open door
+Wed Oct  7 01:25:28 2026 :: Log Alaric [7846]: unl door
+Wed Oct  7 01:25:33 2026 :: Log Alaric [7846]: sc
