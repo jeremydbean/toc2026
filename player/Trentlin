@@ -1,10 +1,10 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1791058300
+LogO 1791414097
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
-Ignoring  ~
+Ignoring ~
 Race dwarf~
 Sex  1
 Cla  3
@@ -13,28 +13,29 @@ Psionic  0
 PsiGrant 0
 PsiSpec ~
 PsiKnown ~
+ChangesSeen ~
 Cast none
 Levl 7
-Plyd 4359
+Plyd 4464
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 2401
-HMV  75 96 192 192 93 132
-NewGold 34
-NewPlat 7
-NewCopp 37
-NewSilv 4
+Room 4649
+HMV  90 96 192 192 119 132
+NewGold 38
+NewPlat 8
+NewCopp 67
+NewSilv 11
 BankCP 0
-IntTime 1791054012
+IntTime 1791399612
 IntTotal 0
 Dcount 0
 SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 50
+AchKills 51
 AchQuests 2
 AchDeaths 0
 AchExplore 0
@@ -52,19 +53,19 @@ Achv visit-gangland 1791056925
 Achv carry-one-platinum 1791054979
 Achv four-denominations 1791055231
 Achv visit-froboz 1791055958
-LastOut  1791058300
-SesLogin 1791053973
-SesDur   4327
-SesExpG  17347
-SesLvlG  7
-SesKill  50
+LastOut  1791414097
+SesLogin 1791414001
+SesDur   96
+SesExpG  440
+SesLvlG  0
+SesKill  1
 SesPK    0
 SesDead  0
-SesQuest 2
+SesQuest 0
 QuestPnts 104
 QuestStrk 2
-QuestNext 14
-Exp  17347
+QuestNext 12
+Exp  17787
 Act  65740
 AfBy 512
 Comm 24576
@@ -91,11 +92,11 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
+Pos  4
 Prac 1
 Trai 1
 Save  3
-Alig  -47
+Alig  -52
 Hit   2
 Dam   6
 ACs 79 71 69 99
@@ -107,7 +108,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 96 192 136
-Cond 0 5 42
+Cond 0 4 48
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -154,7 +155,7 @@ Wear 0
 Cost 0
 Cond 99
 Repd 0
-Val  0 0 128 0 0
+Val  0 0 127 0 0
 End
 
 #O
@@ -162,7 +163,7 @@ Vnum 3704
 Nest 0
 Wear 11
 Cost 0
-Cond 99
+Cond 98
 Repd 0
 End
 
@@ -199,7 +200,7 @@ Vnum 3705
 Nest 0
 Wear 4
 Cost 0
-Cond 100
+Cond 99
 Repd 0
 End
 

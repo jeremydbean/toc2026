@@ -61866,3 +61866,79 @@ Wed Oct  7 22:48:45 2026 :: Sock.sinaddr:  178.156.184.20
 Wed Oct  7 22:48:46 2026 :: EOF encountered on read.
 Wed Oct  7 22:53:50 2026 :: Sock.sinaddr:  178.156.181.172
 Wed Oct  7 22:53:50 2026 :: EOF encountered on read.
+Wed Oct  7 22:58:55 2026 :: Sock.sinaddr:  178.156.189.113
+Wed Oct  7 22:58:55 2026 :: EOF encountered on read.
+Wed Oct  7 22:59:52 2026 :: Loading Trentlin's playerfile
+Wed Oct  7 22:59:56 2026 :: Trentlin@24.2.118.125 has connected.
+Wed Oct  7 23:00:01 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 0
+Wed Oct  7 23:00:03 2026 :: Log Trentlin [2401]: who
+Wed Oct  7 23:00:05 2026 :: Log Trentlin [2401]: u
+Wed Oct  7 23:00:05 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct  7 23:00:06 2026 :: Log Trentlin [2410]: u
+Wed Oct  7 23:00:06 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct  7 23:00:09 2026 :: Log Trentlin [2411]: u
+Wed Oct  7 23:00:09 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct  7 23:00:09 2026 :: Log Trentlin [2414]: u
+Wed Oct  7 23:00:09 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct  7 23:00:13 2026 :: Log Trentlin [2497]: aquest request
+Wed Oct  7 23:00:16 2026 :: Log Trentlin [2497]: enter door
+Wed Oct  7 23:00:16 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Wed Oct  7 23:00:18 2026 :: Log Trentlin [2401]: k c
+Wed Oct  7 23:00:22 2026 :: Log Trentlin [2401]: kick
+Wed Oct  7 23:00:27 2026 :: Log Trentlin [2401]: kick
+Wed Oct  7 23:00:35 2026 :: Log Trentlin [2401]: kick
+Wed Oct  7 23:00:44 2026 :: Log Trentlin [2401]: bash
+Wed Oct  7 23:01:02 2026 :: Log Trentlin [2401]: flee
+Wed Oct  7 23:01:02 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Oct  7 23:01:02 2026 :: Log Trentlin [2403]: flee
+Wed Oct  7 23:01:02 2026 :: Log Trentlin [2403]: flee
+Wed Oct  7 23:01:07 2026 :: Log Trentlin [2403]: s
+Wed Oct  7 23:01:07 2026 :: Log Trentlin [2408]: arrived (Southeastern Oak Tree Square.) from 2403
+Wed Oct  7 23:01:08 2026 :: Log Trentlin [2408]: w
+Wed Oct  7 23:01:08 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2408
+Wed Oct  7 23:01:09 2026 :: Log Trentlin [2404]: s
+Wed Oct  7 23:01:09 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 2404
+Wed Oct  7 23:01:09 2026 :: Log Trentlin [2427]: w
+Wed Oct  7 23:01:09 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Wed Oct  7 23:01:11 2026 :: Log Trentlin [4201]: w
+Wed Oct  7 23:01:11 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4201
+Wed Oct  7 23:01:12 2026 :: Log Trentlin [4202]: s
+Wed Oct  7 23:01:12 2026 :: Log Trentlin [4206]: arrived (Halls of Healing.) from 4202
+Wed Oct  7 23:01:14 2026 :: Log Trentlin [4206]: (refused) dri]
+Wed Oct  7 23:01:16 2026 :: Log Trentlin [4206]: dri
+Wed Oct  7 23:01:16 2026 :: Log Trentlin [4206]: w
+Wed Oct  7 23:01:16 2026 :: Log Trentlin [4205]: arrived (Halls of Healing.) from 4206
+Wed Oct  7 23:01:17 2026 :: Log Trentlin [4205]: s
+Wed Oct  7 23:01:17 2026 :: Log Trentlin [4209]: arrived (Private Prayer Room.) from 4205
+Wed Oct  7 23:01:17 2026 :: Log Trentlin [4209]: sleep
+Wed Oct  7 23:01:19 2026 :: Log Trentlin [4209]: wake
+Wed Oct  7 23:01:19 2026 :: Log Trentlin [4209]: n
+Wed Oct  7 23:01:19 2026 :: Log Trentlin [4205]: arrived (Halls of Healing.) from 4209
+Wed Oct  7 23:01:20 2026 :: Log Trentlin [4205]: e
+Wed Oct  7 23:01:20 2026 :: Log Trentlin [4206]: arrived (Halls of Healing.) from 4205
+Wed Oct  7 23:01:20 2026 :: Log Trentlin [4206]: n
+Wed Oct  7 23:01:20 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4206
+Wed Oct  7 23:01:22 2026 :: Log Trentlin [4202]: n
+Wed Oct  7 23:01:22 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Wed Oct  7 23:01:24 2026 :: Log Trentlin [4203]: e
+Wed Oct  7 23:01:25 2026 :: Log Trentlin [4203]: s
+Wed Oct  7 23:01:25 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4203
+Wed Oct  7 23:01:26 2026 :: Log Trentlin [4202]: e
+Wed Oct  7 23:01:26 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Wed Oct  7 23:01:27 2026 :: Log Trentlin [4201]: e
+Wed Oct  7 23:01:27 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Wed Oct  7 23:01:28 2026 :: Log Trentlin [2427]: n
+Wed Oct  7 23:01:28 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct  7 23:01:28 2026 :: Log Trentlin [2404]: n
+Wed Oct  7 23:01:28 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Wed Oct  7 23:01:29 2026 :: Log Trentlin [2401]: k c
+Wed Oct  7 23:01:31 2026 :: Log Trentlin [2401]: bash
+Wed Oct  7 23:01:34 2026 :: Log Trentlin [2401]: sac cor
+Wed Oct  7 23:01:35 2026 :: Log Trentlin [2401]: d
+Wed Oct  7 23:01:35 2026 :: Log Trentlin [4649]: arrived (Entrance to the Hall of Hero's.) from 2401
+Wed Oct  7 23:01:36 2026 :: Log Trentlin [4649]: sleep
+Wed Oct  7 23:01:37 2026 :: Log Trentlin [4649]: quit
+Wed Oct  7 23:01:37 2026 :: Trentlin has quit.
+Wed Oct  7 23:01:37 2026 :: [QUIT] Player rejoined the real world.
+Wed Oct  7 23:03:14 2026 :: Sock.sinaddr:  24.2.118.125
+Wed Oct  7 23:03:15 2026 :: EOF encountered on read.
