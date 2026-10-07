@@ -61255,3 +61255,31 @@ Wed Oct  7 14:25:58 2026 :: Sock.sinaddr:  3.133.226.214
 Wed Oct  7 14:25:58 2026 :: EOF encountered on read.
 Wed Oct  7 14:31:03 2026 :: Sock.sinaddr:  5.161.177.47
 Wed Oct  7 14:31:03 2026 :: EOF encountered on read.
+Wed Oct  7 14:34:15 2026 :: Sock.sinaddr:  97.248.95.144
+Wed Oct  7 14:34:16 2026 :: Loading Look's playerfile
+Wed Oct  7 14:34:34 2026 :: Sock.sinaddr:  45.33.14.5
+Wed Oct  7 14:35:06 2026 :: Loading Eclipse's playerfile
+Wed Oct  7 14:35:12 2026 :: Closing link to Eclipse.
+Wed Oct  7 14:35:12 2026 :: Eclipse@144.sub-97-248-95.myvzw.com reconnected.
+Wed Oct  7 14:35:18 2026 :: Log Eclipse [4207]: goto 9988
+Wed Oct  7 14:35:18 2026 :: Log Eclipse [9988]: arrived (Eclipse's Seat of Power.) from 4207
+Wed Oct  7 14:35:40 2026 :: Log Eclipse [9988]: /
+Wed Oct  7 14:35:40 2026 :: Log Eclipse [4207]: arrived (Before the Altar.) from 9988
+Wed Oct  7 14:36:08 2026 :: Log Eclipse [4207]: quit
+Wed Oct  7 14:36:08 2026 :: Eclipse has quit.
+Wed Oct  7 14:36:08 2026 :: [QUIT] Player rejoined the real world.
+Wed Oct  7 14:36:09 2026 :: Sock.sinaddr:  34.198.201.66
+Wed Oct  7 14:36:10 2026 :: EOF encountered on read.
+Wed Oct  7 14:36:24 2026 :: Sock.sinaddr:  97.248.95.144
+Wed Oct  7 14:36:28 2026 :: Loading Callista's playerfile
+Wed Oct  7 14:36:31 2026 :: Callista@144.sub-97-248-95.myvzw.com has connected.
+Wed Oct  7 14:36:32 2026 :: Log Callista [3717]: arrived (A Room in Mud School) from 0
+Wed Oct  7 14:37:26 2026 :: Log Callista [3717]: quit
+Wed Oct  7 14:37:26 2026 :: Callista has quit.
+Wed Oct  7 14:37:26 2026 :: [QUIT] Player rejoined the real world.
+Wed Oct  7 14:37:33 2026 :: Loading Eclipse's playerfile
+Wed Oct  7 14:37:35 2026 :: Eclipse@97.248.95.144 has connected.
+Wed Oct  7 14:37:37 2026 :: Log Eclipse [4207]: arrived (Before the Altar.) from 0
+Wed Oct  7 14:37:40 2026 :: Log Eclipse [4207]: who
+Wed Oct  7 14:37:54 2026 :: Log Eclipse [4207]: goto 9988
+Wed Oct  7 14:37:54 2026 :: Log Eclipse [9988]: arrived (Eclipse's Seat of Power.) from 4207
