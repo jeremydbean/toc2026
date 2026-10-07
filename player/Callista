@@ -1,7 +1,7 @@
 #PLAYER
 Name Callista~
 Id   15369
-LogO 1791381503
+LogO 1791381609
 Vers 4
 Prom ~
 Ignoring ~
@@ -16,13 +16,13 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 4
-Plyd 6236
+Plyd 6342
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
 Room 3717
-HMV  43 43 185 240 118 118
+HMV  43 43 197 240 118 118
 NewGold 0
 NewPlat 0
 NewCopp 39
@@ -43,9 +43,9 @@ AchMaps 0
 AchCompass 0
 AchTriforce 0
 Achv first-kill 1789976858
-LastOut  1791381443
-SesLogin 1790343870
-SesDur   433
+LastOut  1791381609
+SesLogin 1791381161
+SesDur   448
 SesExpG  0
 SesLvlG  0
 SesKill  0
@@ -95,7 +95,7 @@ Pnts 0
 TSex 2
 LLev 0
 HMVP 43 240 118
-Cond 0 20 17
+Cond 0 19 16
 Alias bong cast 'magic missile'~
 Sk 1 'armor'
 Sk 1 'burning hands'
@@ -133,7 +133,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 97 0 0
+Val  0 0 96 0 0
 End
 
 #O

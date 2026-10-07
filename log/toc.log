@@ -61224,3 +61224,10 @@ Wed Oct  7 13:57:33 2026 :: Log Callista [3718]: n
 Wed Oct  7 13:57:33 2026 :: Log Callista [3717]: arrived (A Room in Mud School) from 3718
 Wed Oct  7 13:57:35 2026 :: Log Callista [3717]: scan
 Wed Oct  7 13:57:40 2026 :: Log Callista [3717]: (refused) map
+Wed Oct  7 14:00:09 2026 :: Log Callista [3717]: quit
+Wed Oct  7 14:00:09 2026 :: Callista has quit.
+Wed Oct  7 14:00:09 2026 :: [QUIT] Player rejoined the real world.
+Wed Oct  7 14:00:17 2026 :: Log Eclipse [4207]: who
+Wed Oct  7 14:00:22 2026 :: Log Eclipse [4207]: motd
+Wed Oct  7 14:00:33 2026 :: Sock.sinaddr:  3.149.57.90
+Wed Oct  7 14:00:33 2026 :: EOF encountered on read.
