@@ -61283,3 +61283,7 @@ Wed Oct  7 14:37:37 2026 :: Log Eclipse [4207]: arrived (Before the Altar.) from
 Wed Oct  7 14:37:40 2026 :: Log Eclipse [4207]: who
 Wed Oct  7 14:37:54 2026 :: Log Eclipse [4207]: goto 9988
 Wed Oct  7 14:37:54 2026 :: Log Eclipse [9988]: arrived (Eclipse's Seat of Power.) from 4207
+Wed Oct  7 14:40:51 2026 :: Sock.sinaddr:  204.76.203.219
+Wed Oct  7 14:41:01 2026 :: EOF encountered on read.
+Wed Oct  7 14:41:14 2026 :: Sock.sinaddr:  3.133.226.214
+Wed Oct  7 14:41:14 2026 :: EOF encountered on read.

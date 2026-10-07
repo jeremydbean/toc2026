@@ -1,7 +1,7 @@
 #PLAYER
 Name Eclipse~
 Id   2891
-LogO 1791383768
+LogO 1791384021
 Vers 4
 Desc Blah
 ~
@@ -19,13 +19,13 @@ ChangesSeen ~
 Cast none
 Levl 70
 Tru  70
-Plyd 10935203
+Plyd 10935371
 ListRemorts 0  0 ~
 NumRemorts 1
 Note 1790386686
 ReportsSeen 3 0 0
 Scro 22
-Room 4207
+Room 9988
 HMV  4051 4051 2370 2370 3714 3714
 NewGold 24
 NewPlat 4
@@ -354,26 +354,26 @@ Gr 'mage default'
 Gr 'necro default'
 Gr 'mage guild'
 Gr 'necromancy'
-AffD 'empower'   0  -1 -100  17          0          0
-AffD 'empower'   0  -1  20  19          0          0
-AffD 'empower'   0  -1  20  18          0          0
-AffD 'empower'   0  -1  15   5          0          0
-AffD 'empower'   0  -1  11   2          0          0
-AffD 'empower'   0  -1  15   4          0          0
-AffD 'empower'   0  -1  15   3          0          0
-AffD 'giant strength'  48  -1  15   1          0          0
-AffD 'divine protection'  45  -1   0   0          0       4096
-AffD 'fire shield'  47  -1   0   0          0          8
-AffD 'protection evil'  45  -1   0   0       8192          0
-AffD 'pass door'  45  -1   0   0    1048576          0
-AffD 'fly'   0  -1   0   0     524288          0
-AffD 'haste'   0  -1   4   2    2097152          0
-AffD 'sanctuary'   0  -1   0   0        128          0
-AffD 'empower'   0  -1   0   0          0          0
-AffD 'titanic'   0  -1  50  16          0          0
-AffD 'titanic'   0  -1 3095  14          0          0
-AffD 'titanic'   0  -1 1975  12          0          0
 AffD 'titanic'   0  -1 3380  13          0          0
+AffD 'titanic'   0  -1 1975  12          0          0
+AffD 'titanic'   0  -1 3095  14          0          0
+AffD 'titanic'   0  -1  50  16          0          0
+AffD 'empower'   0  -1   0   0          0          0
+AffD 'sanctuary'   0  -1   0   0        128          0
+AffD 'haste'   0  -1   4   2    2097152          0
+AffD 'fly'   0  -1   0   0     524288          0
+AffD 'pass door'  45  -1   0   0    1048576          0
+AffD 'protection evil'  45  -1   0   0       8192          0
+AffD 'fire shield'  47  -1   0   0          0          8
+AffD 'divine protection'  45  -1   0   0          0       4096
+AffD 'giant strength'  48  -1  15   1          0          0
+AffD 'empower'   0  -1  15   3          0          0
+AffD 'empower'   0  -1  15   4          0          0
+AffD 'empower'   0  -1  11   2          0          0
+AffD 'empower'   0  -1  15   5          0          0
+AffD 'empower'   0  -1  20  18          0          0
+AffD 'empower'   0  -1  20  19          0          0
+AffD 'empower'   0  -1 -100  17          0          0
 End
 
 #O
