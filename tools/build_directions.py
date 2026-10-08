@@ -698,6 +698,8 @@ def write_route_help(routes):
         "it for you, a room every half second, opening doors that are shut",
         "but not locked.  Name a place by any part of its name: WALKTO",
         "TEMPLE, WALKTO MORIA, WALKTO NECRO MASTER, WALKTO MAGE GUILD.",
+        "An area built in game is found by its name as well, once a way",
+        "into it has been dug.",
         "",
         "You stop when you arrive, when you type any other command, when a",
         "fight starts, when you sit, rest or sleep, when you run out of",

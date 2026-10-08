@@ -6683,6 +6683,7 @@ void do_rlink( CHAR_DATA *ch, char *argument )
         if ( !str_cmp( arg2, "open" ) )
         {
             set_exit_lock( pexit, 0 );
+            build_forget_door( here, door );
             snprintf( buf, sizeof(buf), "The way %s is open.\n\r",
                       dir_name[door] );
         }
@@ -6771,6 +6772,8 @@ void do_rlink( CHAR_DATA *ch, char *argument )
                     back->key = pexit->key;
                 else
                     set_exit_lock( back, pexit->lock );
+                if ( pexit->lock == 0 )
+                    build_forget_door( there, rev_dir[door] );
                 snprintf( buf, sizeof(buf), "The way back, %s from room %d, "
                           "matches.\n\r", dir_name[rev_dir[door]], there->vnum );
                 send_to_char( buf, ch );
@@ -6792,6 +6795,7 @@ void do_rlink( CHAR_DATA *ch, char *argument )
 
         there = pexit->u1.to_room;
         here->exit[door] = NULL;
+        build_forget_door( here, door );
 
         snprintf( buf, sizeof(buf), "The way %s closes up.\n\r",
                   dir_name[door] );
@@ -6804,6 +6808,7 @@ void do_rlink( CHAR_DATA *ch, char *argument )
           && may_edit_room( ch, there ) )
         {
             there->exit[rev_dir[door]] = NULL;
+            build_forget_door( there, rev_dir[door] );
             snprintf( buf, sizeof(buf), "So does the way %s out of room %d.\n\r",
                       dir_name[rev_dir[door]], there->vnum );
             send_to_char( buf, ch );
@@ -7009,7 +7014,6 @@ void do_rset( CHAR_DATA *ch, char *argument )
     char arg2 [MAX_INPUT_LENGTH];
     char arg3 [MAX_INPUT_LENGTH];
     ROOM_INDEX_DATA *location;
-    int value;
 
     smash_tilde( argument );
     argument = one_argument( argument, arg1 );
@@ -7021,8 +7025,9 @@ void do_rset( CHAR_DATA *ch, char *argument )
 	send_to_char( "Syntax:\n\r",ch);
 	send_to_char( "  set room <location> <field> <value>\n\r",ch);
 	send_to_char( "  Field being one of:\n\r",                      ch );
-	send_to_char( "    flags sector\n\r",                           ch );
-	send_to_char( "    name description      (text, not numbers)\n\r", ch );
+	send_to_char( "    name <text>           desc <text>  (desc + <text> adds)\n\r", ch );
+	send_to_char( "    flags +indoors -dark ...   sector forest\n\r", ch );
+	send_to_char( "    detail <keyword> <text>    (RSHOW <vnum> reads a room)\n\r", ch );
 	return;
     }
 
@@ -7041,64 +7046,21 @@ void do_rset( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    /* Flags take letters now, so they come before the numeric check too. */
-    if ( !str_prefix( arg2, "flags" ) )
+    /* Flags, ground, description and details take words (build.c);
+       the old flag letters and sector numbers still work there too. */
     {
-        int updated;
+        bool changed;
 
-        if ( !flags_from_argument( arg3, location->room_flags, &updated ) )
-        {
-            send_to_char( "Flags are letters, as STAT shows them: 'flags AJK'.\n\r", ch );
-            send_to_char( "Lead with + to add or - to remove, or give a number.\n\r", ch );
+        if ( build_set_room( ch, location, arg2, arg3, &changed ) )
             return;
-        }
-
-        location->room_flags = updated;
-        snprintf( buf, sizeof(buf), "Room %d flags are now: %s\n\r",
-                  location->vnum, room_flag_name( location->room_flags ) );
-        send_to_char( buf, ch );
-        return;
     }
 
-    /* The text fields go first: everything below this point needs a
-       number, and the check that enforces that would reject them. */
     if ( !str_cmp( arg2, "name" ) )
     {
 	free_string( location->name );
 	location->name = str_dup( arg3 );
 	snprintf(buf, sizeof(buf),"Room %d renamed to '%s'.\n\r",
 		 location->vnum, arg3);
-	send_to_char(buf,ch);
-	return;
-    }
-
-    if ( !str_cmp( arg2, "description" ) || !str_cmp( arg2, "desc" ) )
-    {
-	free_string( location->description );
-	location->description = str_dup( arg3 );
-	snprintf(buf, sizeof(buf),"Description of room %d replaced.\n\r",
-		 location->vnum);
-	send_to_char(buf,ch);
-	return;
-    }
-
-    /*
-	* Snarf the value.
-	*/
-    if ( !is_number( arg3 ) )
-    {
-	send_to_char( "Value must be numeric.\n\r", ch );
-	return;
-    }
-    value = atoi( arg3 );
-
-    /*
-	* Set something.
-	*/
-    if ( !str_prefix( arg2, "sector" ) )
-    {
-   location->sector_type   = clamp_sh_int( value );
-	snprintf(buf, sizeof(buf),"Sector set to %d.\n\r",value);
 	send_to_char(buf,ch);
 	return;
     }

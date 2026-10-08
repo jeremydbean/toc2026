@@ -2485,8 +2485,9 @@ to disk, and until you type it nothing you built survives a reboot.
   goto 29200                       a room forms out of nothing
   set room 29200 name The Long Gallery
   set room 29200 desc A hall of cracked mirrors runs north.
-  set room 29200 flags +AJ         indoors and no-mob
-  set room 29200 sector 0          inside
+  set room 29200 flags +indoors +no_mob
+  set room 29200 sector inside
+  rshow                            read the room back in those words
   rlink north 29201                dig on, and the way back comes free
   rsave confirm                    keep it
 
@@ -2771,6 +2772,16 @@ clears.  Give a field alone to list its names.
   set mob 21003 act +aggressive -wimpy
   set mob 21003 resist +fire +cold
 
+A shop
+  shop                    makes it a shopkeeper (markup 120%, pays 80%)
+  shop markup <percent>   what buyers pay, of an item's value
+  shop pays <percent>     what it pays for what it buys
+  shop buys <types>       up to five item types: weapon armor potion ...
+  shop hours <open> <close>    0 to 23
+  shop none               closes the shop
+  It sells what it carries, and never runs out: PLACE OBJ <vnum> ON
+  <its vnum> stocks it.
+
 A mobile already in the world keeps the form it was made with; PURGE it
 and LOAD MOB <vnum> to see the change.  ASAVE keeps the prototype.
 
@@ -2840,6 +2851,19 @@ already in the world keep their old values; LOAD a fresh one to see a
 change.  ASAVE keeps the prototype.
 
 See also: OCREATE, ASAVE, BUILDING, MSHOW
+~
+
+68 RSHOW~
+Syntax: rshow
+        rshow <room vnum>
+
+RSHOW reads a room in the words SET ROOM and RLINK take: its name and
+area, its kind of ground, its flags by name, its description, each exit
+with where it goes and what kind of way it is (open way, door, door that
+cannot be picked, secret door), its key and keywords, its details, and how
+many resets it has.  With no vnum it reads the room you are in.
+
+See also: SET, RLINK, RESETS, MSHOW, OSHOW, BUILDING
 ~
 
 69 BUILD WIZARD~
@@ -5254,8 +5278,27 @@ SET OBJ
     37 action
 
 SET ROOM
-  Numbers     flags sector
-  Text        name description
+  Words       flags sector
+  Text        name desc detail
+
+  In words, as RSHOW prints them:
+    set room 21001 flags +indoors -dark     names: +adds, -takes away
+    set room 21001 flags none               clears them
+    set room 21001 sector forest            inside city field forest hills
+                                            mountain water_swim water_noswim
+                                            underwater air desert underground
+    set room 21001 desc A long hall.        replaces, wrapped for you
+    set room 21001 desc + More of it.       adds a line
+    set room 21001 detail altar A stone altar, cracked.
+                                            what LOOK ALTAR shows; detail
+                                            altar + ... adds, none removes
+  A typed ; separates commands, so write \; for a semicolon in a text.
+  Flag names: dark jail no_mob indoors cult_entrance death_trap private
+  safe solitary pet_shop no_recall imp_only gods_only heroes_only
+  newbies_only law hp_regen mana_regen arena castle_join silent
+  no_teleport always_lit bank.  River, teleport and room-affect rooms keep
+  data a save cannot write yet, so those flags are not set by hand.
+  The old letters and sector numbers below still work.
 
   A room you made yourself with GOTO is yours to change at any staff rank.
   A room that came out of an area file may only be changed by an

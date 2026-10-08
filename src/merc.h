@@ -3118,6 +3118,9 @@ void    mob_index_set_wealth ( MOB_INDEX_DATA *pMobIndex, long total );
 MOB_INDEX_DATA *new_mob_index ( int vnum, MOB_INDEX_DATA *copy_from );
 bool    build_set_mob   ( CHAR_DATA *ch, char *argument );
 bool    build_set_obj   ( CHAR_DATA *ch, char *argument );
+bool    build_set_room  ( CHAR_DATA *ch, ROOM_INDEX_DATA *room, const char *field,
+                          char *value, bool *changed );
+void    build_forget_door ( ROOM_INDEX_DATA *room, int door );
 bool    build_wizard_active ( CHAR_DATA *ch );
 void    build_wizard_input  ( CHAR_DATA *ch, const char *line );
 void    build_wizard_clear  ( CHAR_DATA *ch );

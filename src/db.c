@@ -2443,6 +2443,13 @@ void reset_area( AREA_DATA *pArea )
             if ( ( pexit = pRoomIndex->exit[pReset->arg2] ) == NULL )
                 break;
 
+            /* No longer a door -- a builder made it an open way (RLINK OPEN)
+               since this reset was placed. Closing it now would block a
+               doorway nobody can open. load_resets demands a door for
+               every 'D' it reads, so only a building session gets here. */
+            if ( !IS_SET( pexit->exit_info, EX_ISDOOR ) )
+                break;
+
             /*
              * A Hyrule seal that somebody has opened -- a bombed wall, a
              * burned bush -- stays open while anybody is in Hyrule. The
@@ -2647,6 +2654,15 @@ static bool room_is_saveable( ROOM_INDEX_DATA *room, char *why, size_t why_size 
         snprintf( why, why_size,
             "room %d carries a room affect, which is not stored in the room",
             room->vnum );
+        return false;
+    }
+
+    /* fread_flag reads no minus sign: a negative word written out would
+       desync load_rooms, which then exits, and the game would not boot. */
+    if ( room->room_flags < 0 || room->room_flags2 < 0 )
+    {
+        snprintf( why, why_size,
+            "room %d has a flag word the file format cannot hold", room->vnum );
         return false;
     }
 

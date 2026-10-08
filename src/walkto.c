@@ -28,6 +28,7 @@
 #include "interp.h"
 
 extern char * const dir_name[];
+extern AREA_DATA *area_first;
 bool has_key( CHAR_DATA *ch, int key );
 
 #define WALKTO_FILE            "walkto.dat"
@@ -1098,6 +1099,45 @@ static int walkto_find( const char *argument, int *also, int others[3] )
 }
 
 
+/*
+ * An area built in game (ANEW) whose name the words match: its lowest
+ * room, and the area's name in *name. Asked only when no published place
+ * matches, so a built area cannot take a name from the shipped world.
+ */
+static ROOM_INDEX_DATA *walkto_built_area( const char *argument, const char **name )
+{
+    char want[MAX_INPUT_LENGTH];
+    char hay[MAX_INPUT_LENGTH];
+    AREA_DATA *pArea;
+
+    walk_words( argument, want, sizeof(want) );
+    if ( want[0] == '\0' )
+        return NULL;
+
+    for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
+    {
+        int vnum;
+
+        if ( !area_is_built( pArea ) || pArea->name == NULL )
+            continue;
+        walk_words( pArea->name, hay, sizeof(hay) );
+        if ( !walk_words_match( want, hay ) )
+            continue;
+        for ( vnum = pArea->min_vnum; vnum <= pArea->max_vnum; vnum++ )
+        {
+            ROOM_INDEX_DATA *room = get_room_index( vnum );
+
+            if ( room != NULL && room->area == pArea )
+            {
+                *name = pArea->name;
+                return room;
+            }
+        }
+    }
+    return NULL;
+}
+
+
 /* ---------------------------------------------------------------------
  * The lists.
  * ------------------------------------------------------------------- */
@@ -1393,9 +1433,12 @@ void do_walkto( CHAR_DATA *ch, char *argument )
         name = target->name;
         who = "";
     }
-    else
+    else if ( ( found = walkto_find( argument, &also, others ) ) < 0 )
     {
-        if ( ( found = walkto_find( argument, &also, others ) ) < 0 )
+        /* Not a published place: perhaps an area built in game, which
+           walkto.dat cannot list -- it is generated and committed, and
+           built areas arrive by the state sync. */
+        if ( ( target = walkto_built_area( argument, &name ) ) == NULL )
         {
             snprintf( buf, sizeof(buf),
                       "You know of nowhere called '%s'.  WALKTO lists the places.\n\r",
@@ -1403,6 +1446,11 @@ void do_walkto( CHAR_DATA *ch, char *argument )
             send_to_char( buf, ch );
             return;
         }
+        also = 0;
+        who = "";
+    }
+    else
+    {
         if ( ( target = get_room_index( walkto_dests[found].vnum ) ) == NULL )
         {
             send_to_char( "That place is not in the world just now.\n\r", ch );

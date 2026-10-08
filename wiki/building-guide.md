@@ -132,8 +132,10 @@ in it, in the workshop area. Now give it some character:
 ```
 set room 29200 name The Long Gallery
 set room 29200 desc A hall of cracked mirrors runs north, catching torchlight.
-set room 29200 flags +AJ
-set room 29200 sector 0
+set room 29200 flags +indoors +no_mob
+set room 29200 sector inside
+set room 29200 detail mirrors The glass is cracked into a hundred faces.
+rshow
 ```
 
 Dig an exit north, and the way back comes free:
@@ -321,6 +323,24 @@ the same floor the moment you set a level, hitroll, damage or armour, and
 says what it raised, so MSHOW never shows you a number a reboot would
 quietly change. Set the level first, then tune upward from there.
 
+### A shop
+
+A shopkeeper sells what it carries -- and a shopkeeper's stock never runs
+out -- and buys the item types you name:
+
+```
+set mob 29210 shop                     a shop: markup 120%, pays 80%, open all day
+set mob 29210 shop markup 150          buyers pay 150% of an item's value
+set mob 29210 shop pays 50             it pays 50% for what it buys
+set mob 29210 shop buys weapon armor   up to five item types
+set mob 29210 shop hours 6 22          open from 6 to 22
+set mob 29210 shop none                not a shop any more
+place mob 29210                        stand it in its stall
+place obj 29221 on 29210               its stock: one reset per thing it sells
+```
+
+MSHOW shows the terms on its `shop:` line.
+
 ### Seeing it
 
 `LOAD MOB 29210` puts one in front of you. A mobile already in the world
@@ -471,7 +491,14 @@ placed in its room, however long it survives.
 the mobile or object in the room now stays until you PURGE it.
 
 Resets live in the area and are written by `ASAVE`, so they need an area
-made with ANEW. A door's lock wants a key to be any use: `rlink <dir> key
+made with ANEW.
+
+**Getting players there.** `WALKTO <area name>` finds an area built in game
+by its name, and walks there by the same rules as everywhere else -- so it
+needs a way in. A built area starts unconnected: an implementor links it to
+the world (RLINK from a shipped room, which only an implementor may edit).
+The published routes on the website and in Mudlet are generated from the
+shipped world and do not list built areas. A door's lock wants a key to be any use: `rlink <dir> key
 <vnum>` names one.
 
 ---
@@ -507,14 +534,24 @@ you are standing in; with a name, the first area whose name matches.
 |---|---|
 | `goto <vnum>` | Go to a room; if the vnum is free, make it first. |
 | `set room <vnum> name <text>` | Name the room. |
-| `set room <vnum> desc <text>` | Set the room description. |
-| `set room <vnum> flags <letters>` | Room flags: `+AJ` adds, `-A` removes, a number sets. |
-| `set room <vnum> sector <n>` | Terrain type (inside, city, forest, water...). |
-| `rstat [vnum]` | Inspect a room: flags, sector, exits, contents. |
+| `set room <vnum> desc <text>` | Set the description, wrapped for you. `desc + <text>` adds a line. |
+| `set room <vnum> flags <names>` | Room flags by name: `+indoors -dark`, `none`. The old letters (`+AJ`) still work. |
+| `set room <vnum> sector <name>` | The ground: `inside city field forest hills mountain water_swim water_noswim underwater air desert underground`. |
+| `set room <vnum> detail <keyword> <text>` | What `LOOK <keyword>` shows here. `+ <text>` adds, `none` removes. |
+| `rshow [vnum]` | Read a room in those words: flags, ground, description, exits and their doors, details, resets. |
 
 `set room` works on any room you may edit: the room you name must be in a
-buildable area (or you must be an implementor). `rstat` shows the letters
-each flag uses, which is what `set room ... flags` expects.
+buildable area (or you must be an implementor).
+
+Room flag names: `dark` `jail` `no_mob` `indoors` `cult_entrance`
+`death_trap` `private` `safe` `solitary` `pet_shop` `no_recall` `imp_only`
+`gods_only` `heroes_only` `newbies_only` `law` `hp_regen` `mana_regen`
+`arena` `castle_join` `silent` `no_teleport` `always_lit` `bank`. River,
+teleport and room-affect rooms keep data a save cannot write yet, so those
+flags are not set by hand.
+
+A typed `;` separates commands, so write `\;` for a semicolon inside a
+description. (The guided builder takes semicolons as they are.)
 
 ### Exits
 
@@ -646,6 +683,9 @@ In-game building was built in phases, all of them now shipped:
   git with the state sync, and survive deploys.
 - **The guided builder** -- BUILD AREA, ROOM, MOB and OBJ ask a question at
   a time and build through the same commands.
+- **Rooms in words, shops, and WALKTO** -- SET ROOM flags, ground and
+  details by name with RSHOW; SET MOB <vnum> SHOP; WALKTO finds a built
+  area by its name.
 
 That is the whole of the plan. Ideas for more go to `IDEA` in game.
 

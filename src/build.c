@@ -39,6 +39,10 @@ struct build_flag
     long        bit;
 };
 
+/* Shops (at the end of the file, after the object tables they name). */
+static void shop_words( SHOP_DATA *s, char *out, size_t size );
+static bool mob_shop_edit( CHAR_DATA *ch, MOB_INDEX_DATA *m, char *value );
+
 /* The names are the ones MSHOW prints and SET accepts, one word each. */
 static const struct build_flag act_names[] =
 {
@@ -261,6 +265,22 @@ static const struct build_flag position_names[] =
     { "resting",  POS_RESTING  }, { "sleeping", POS_SLEEPING },
     { NULL, 0 }
 };
+
+
+/*
+ * A prototype string, through str_perm (see there). str_perm gives back
+ * an empty string when the game's string space is full, which used to let
+ * an edit report success and keep nothing; the builder is told instead.
+ */
+static char *perm_text( CHAR_DATA *ch, const char *text )
+{
+    char *kept = str_perm( text );
+
+    if ( text != NULL && text[0] != '\0' && kept[0] == '\0' )
+        send_to_char( "The game's string space is full, so that text was not kept.  "
+                      "Tell an implementor.\n\r", ch );
+    return kept;
+}
 
 
 /* A name in a table: an exact match first, then the first it begins. */
@@ -736,8 +756,17 @@ static void show_mob( CHAR_DATA *ch, MOB_INDEX_DATA *m )
     toc_strlcat( out, buf, size );
 
     spec = m->spec_fun != NULL ? special_name( m->spec_fun ) : "none";
-    snprintf( buf, sizeof(buf), "special: %s   shop: %s   actions: %d\n\r",
-              spec, m->pShop != NULL ? "yes" : "no", actions );
+    snprintf( buf, sizeof(buf), "special: %s   actions: %d\n\r", spec, actions );
+    toc_strlcat( out, buf, size );
+    if ( m->pShop != NULL )
+    {
+        char terms[256];
+
+        shop_words( m->pShop, terms, sizeof(terms) );
+        snprintf( buf, sizeof(buf), "shop:    %s\n\r", terms );
+    }
+    else
+        snprintf( buf, sizeof(buf), "shop:    none\n\r" );
     toc_strlcat( out, buf, size );
 
     toc_strlcat( out, "(Mobiles already loaded keep their old form; LOAD one to "
@@ -776,6 +805,7 @@ static void mob_field_help( CHAR_DATA *ch )
         "  ac <n>  or  ac pierce|bash|slash|exotic <n>   (lower is better)\n\r"
         "  position <pos>  default <pos>   (standing sitting resting sleeping)\n\r"
         "  wealth <n>    material <name>   special <name>|none\n\r"
+        "  shop  (then: markup <%>  pays <%>  buys <types>  hours <o> <c>  none)\n\r"
         "  act affect affect2 offense immune resist vulnerable form parts\n\r"
         "      +name adds, -name takes away, none clears:  act +aggressive -wimpy\n\r"
         "MSHOW <vnum> shows the mobile in these words.  ASAVE keeps changes.\n\r",
@@ -817,6 +847,9 @@ bool build_set_mob( CHAR_DATA *ch, char *argument )
               strchr( "aeiou", LOWER( race_table[m->race].name[0] ) ) ? "an" : "a",
               race_table[m->race].name );
 
+    if ( !str_cmp( field, "shop" ) )
+        return mob_shop_edit( ch, m, value );
+
     /* Every field below wants a value; an empty one would match every
        name, since str_prefix calls "" a prefix of anything. */
     if ( value[0] == '\0' )
@@ -828,11 +861,11 @@ bool build_set_mob( CHAR_DATA *ch, char *argument )
     /* ---- words ---- */
     if ( !str_prefix( field, "keywords" ) || !str_cmp( field, "name" ) )
     {
-        m->player_name = str_perm( value );
+        m->player_name = perm_text( ch, value );
     }
     else if ( !str_prefix( field, "short" ) )
     {
-        m->short_descr = str_perm( value );
+        m->short_descr = perm_text( ch, value );
     }
     else if ( !str_prefix( field, "long" ) )
     {
@@ -840,7 +873,7 @@ bool build_set_mob( CHAR_DATA *ch, char *argument )
 
         snprintf( text, sizeof(text), "%s\n\r", value );
         text[0] = UPPER( text[0] );
-        m->long_descr = str_perm( text );
+        m->long_descr = perm_text( ch, text );
     }
     else if ( !str_prefix( field, "description" ) )
     {
@@ -867,7 +900,7 @@ bool build_set_mob( CHAR_DATA *ch, char *argument )
             return false;
         }
         text[0] = UPPER( text[0] );
-        m->description = str_perm( text );
+        m->description = perm_text( ch, text );
     }
 
     /* ---- what it is ---- */
@@ -2118,11 +2151,12 @@ static bool obj_grants_edit( CHAR_DATA *ch, OBJ_INDEX_DATA *o, char *value )
 
 /* An extra description: "detail runes The runes spell a name.", "detail
    runes + more", "detail runes none". */
+static bool obj_detail_apply( CHAR_DATA *ch, OBJ_INDEX_DATA *o, const char *keyword,
+                              char *value );
+
 static bool obj_detail_edit( CHAR_DATA *ch, OBJ_INDEX_DATA *o, char *value )
 {
     char keyword[MAX_INPUT_LENGTH];
-    char text[2 * MAX_STRING_LENGTH];
-    EXTRA_DESCR_DATA *ed, *prev = NULL;
 
     value = one_argument( value, keyword );
     while ( isspace( (unsigned char) *value ) )
@@ -2135,6 +2169,15 @@ static bool obj_detail_edit( CHAR_DATA *ch, OBJ_INDEX_DATA *o, char *value )
                       "Quote several keywords: detail 'runes markings' <text>\n\r", ch );
         return false;
     }
+    return obj_detail_apply( ch, o, keyword, value );
+}
+
+/* The detail under exactly these keywords: set, added to, or taken away. */
+static bool obj_detail_apply( CHAR_DATA *ch, OBJ_INDEX_DATA *o, const char *keyword,
+                              char *value )
+{
+    char text[2 * MAX_STRING_LENGTH];
+    EXTRA_DESCR_DATA *ed, *prev = NULL;
 
     for ( ed = o->extra_descr; ed != NULL; prev = ed, ed = ed->next )
         if ( !str_cmp( ed->keyword, keyword ) )
@@ -2165,7 +2208,7 @@ static bool obj_detail_edit( CHAR_DATA *ch, OBJ_INDEX_DATA *o, char *value )
     if ( ed == NULL )
     {
         ed          = alloc_perm( sizeof(*ed) );
-        ed->keyword = str_perm( keyword );
+        ed->keyword = perm_text( ch, keyword );
         ed->next    = NULL;
         /* At the end, so details read in the order they were added. */
         if ( o->extra_descr == NULL )
@@ -2180,7 +2223,7 @@ static bool obj_detail_edit( CHAR_DATA *ch, OBJ_INDEX_DATA *o, char *value )
         }
         top_ed++;
     }
-    ed->description = str_perm( text );
+    ed->description = perm_text( ch, text );
     return true;
 }
 
@@ -2279,13 +2322,13 @@ bool build_set_obj( CHAR_DATA *ch, char *argument )
             return false;
     }
     else if ( !str_prefix( field, "keywords" ) || !str_cmp( field, "name" ) )
-        o->name = str_perm( value );
+        o->name = perm_text( ch, value );
     else if ( !str_prefix( field, "short" ) )
-        o->short_descr = str_perm( value );
+        o->short_descr = perm_text( ch, value );
     else if ( !str_prefix( field, "long" ) )
     {
         value[0] = UPPER( value[0] );
-        o->description = str_perm( value );
+        o->description = perm_text( ch, value );
     }
     else if ( !str_prefix( field, "material" ) )
     {
@@ -2399,11 +2442,10 @@ bool build_set_obj( CHAR_DATA *ch, char *argument )
     else if ( !str_prefix( field, "description" ) )
     {
         /* What LOOK <object> shows is a detail under the object's own
-           keywords; without one, LOOK repeats the long line. */
-        char detail[2 * MAX_INPUT_LENGTH];
-
-        snprintf( detail, sizeof(detail), "'%s' %s", o->name, value );
-        if ( !obj_detail_edit( ch, o, detail ) )
+           keywords; without one, LOOK repeats the long line. Passed as
+           they are, not quoted into a line to be parsed again: keywords
+           with an apostrophe would close the quote early (review). */
+        if ( !obj_detail_apply( ch, o, o->name, value ) )
             return false;
     }
     else if ( LOWER( field[0] ) == 'v' && field[1] >= '0' && field[1] <= '4'
@@ -2544,6 +2586,33 @@ static void reset_append( AREA_DATA *pArea, RESET_DATA *r )
     pArea->reset_last = r;
 }
 
+/*
+ * The way out of this room in this direction is no longer a door (RLINK
+ * OPEN), or no longer there (RLINK NONE): its 'D' resets go, or RESETS
+ * would list them and the next ASAVE drop them without a word.
+ */
+void build_forget_door( ROOM_INDEX_DATA *room, int door )
+{
+    AREA_DATA *pArea;
+    RESET_DATA *r, *prev = NULL, *next;
+
+    if ( room == NULL || ( pArea = room->area ) == NULL )
+        return;
+    for ( r = pArea->reset_first; r != NULL; r = next )
+    {
+        next = r->next;
+        if ( r->command == 'D' && r->arg1 == room->vnum && r->arg2 == door )
+        {
+            if ( prev == NULL ) pArea->reset_first = next; else prev->next = next;
+            if ( pArea->reset_last == r )
+                pArea->reset_last = prev;
+            continue;
+        }
+        prev = r;
+    }
+}
+
+
 /* A door has one state: placing it again changes the reset it has. */
 static void set_door_reset( AREA_DATA *pArea, int room_vnum, int door, int state )
 {
@@ -2575,22 +2644,29 @@ static void reset_insert_after( AREA_DATA *pArea, RESET_DATA *after, RESET_DATA 
 static void recount_mob_resets( AREA_DATA *pArea, int vnum )
 {
     RESET_DATA *r, *o;
+    AREA_DATA *other;
+    int in_world = 0;
+
+    /* reset_area holds an M back once the mobile's count across the whole
+       world reaches the cap, so the cap counts every area's M resets for
+       it -- a shipped mobile placed here as well as in its own area would
+       otherwise stop coming back after its first death (review,
+       2026-10-08). */
+    for ( other = area_first; other != NULL; other = other->next )
+        for ( o = other->reset_first; o != NULL; o = o->next )
+            if ( o->command == 'M' && o->arg1 == vnum )
+                in_world++;
 
     for ( r = pArea->reset_first; r != NULL; r = r->next )
     {
-        int in_area = 0, in_room = 0;
+        int in_room = 0;
 
         if ( r->command != 'M' || r->arg1 != vnum )
             continue;
         for ( o = pArea->reset_first; o != NULL; o = o->next )
-        {
-            if ( o->command != 'M' || o->arg1 != vnum )
-                continue;
-            in_area++;
-            if ( o->arg3 == r->arg3 )
+            if ( o->command == 'M' && o->arg1 == vnum && o->arg3 == r->arg3 )
                 in_room++;
-        }
-        r->arg2     = (sh_int) UMAX( r->arg2, in_area );
+        r->arg2     = (sh_int) UMAX( r->arg2, in_world );
         r->room_max = (sh_int) in_room;
     }
 }
@@ -3590,6 +3666,26 @@ void build_wizard_input( CHAR_DATA *ch, const char *line )
     }
     q = &steps[ch->pcdata->wizard_step];
 
+    /*
+     * A room build works on the room it started in, and only that one.
+     * Its answers write to ch->in_room, and a /GOTO, a teleport trap, a
+     * flee or a summons can move the builder between questions -- after
+     * which the next answer would have renamed whatever room they landed
+     * in, the Temple included (review, 2026-10-08). So the room must
+     * still be the one being built, and still be one they may edit.
+     */
+    if ( ch->pcdata->wizard_kind == WIZ_ROOM
+      && ( ch->in_room == NULL || ch->in_room->vnum != ch->pcdata->wizard_vnum
+        || !may_edit_room( ch, ch->in_room ) ) )
+    {
+        snprintf( buf, sizeof(buf), "You are no longer in room %d, so that build has "
+                  "stopped.  BUILD ROOM there to\n\rcarry on; ASAVE keeps what is "
+                  "done.\n\r", ch->pcdata->wizard_vnum );
+        send_to_char( buf, ch );
+        build_wizard_clear( ch );
+        return;
+    }
+
     switch ( q->kind )
     {
     case Q_AREASIZE:
@@ -3858,9 +3954,23 @@ void build_wizard_input( CHAR_DATA *ch, const char *line )
     case Q_SAVE:
         if ( wiz_yes( answer, true ) )
         {
-            if ( area_is_built( ch->in_room->area ) )
-                do_asave( ch, "" );
-            else
+            /* The area being built: the room's (checked above for a room
+               build), or the one the new mobile or object belongs to --
+               not wherever the builder has wandered. */
+            AREA_DATA *pArea = ch->pcdata->wizard_kind == WIZ_ROOM
+                             ? ch->in_room->area
+                             : area_for_vnum( ch->pcdata->wizard_vnum );
+
+            if ( pArea == NULL )
+                send_to_char( "There is no area to save.\n\r", ch );
+            else if ( area_is_built( pArea ) )
+            {
+                if ( pArea == ch->in_room->area )
+                    do_asave( ch, "" );
+                else
+                    do_asave( ch, pArea->name );
+            }
+            else if ( pArea == ch->in_room->area )
                 do_rsave( ch, "confirm" );
         }
         wiz_next( ch );
@@ -3951,4 +4061,641 @@ void do_build( CHAR_DATA *ch, char *argument )
     }
 
     do_build( ch, "" );
+}
+
+
+/*
+ * ------------------------------------------------------------------------
+ * Rooms: SET ROOM in words, and RSHOW.
+ *
+ * SET ROOM took flag letters (+AJ) and a sector number, the last corner of
+ * building that wanted the file format by heart. It takes names now --
+ * flags +indoors -dark, sector forest -- and the letters still work, so no
+ * builder's habit breaks: a single letter is a letter, a word is a name.
+ * do_rset in act_wiz.c keeps NAME and hands the rest here.
+ * ------------------------------------------------------------------------
+ */
+
+static const struct build_flag room_flag_names[] =
+{
+    { "dark",          ROOM_DARK          }, { "jail",         ROOM_JAIL         },
+    { "no_mob",        ROOM_NO_MOB        }, { "indoors",      ROOM_INDOORS      },
+    { "cult_entrance", ROOM_CULT_ENTRANCE }, { "death_trap",   ROOM_DT           },
+    { "private",       ROOM_PRIVATE       }, { "safe",         ROOM_SAFE         },
+    { "solitary",      ROOM_SOLITARY      }, { "pet_shop",     ROOM_PET_SHOP     },
+    { "no_recall",     ROOM_NO_RECALL     }, { "imp_only",     ROOM_IMP_ONLY     },
+    { "gods_only",     ROOM_GODS_ONLY     }, { "heroes_only",  ROOM_HEROES_ONLY  },
+    { "newbies_only",  ROOM_NEWBIES_ONLY  }, { "law",          ROOM_LAW          },
+    { "hp_regen",      ROOM_HP_REGEN      }, { "mana_regen",   ROOM_MANA_REGEN   },
+    { "arena",         ROOM_ARENA         }, { "castle_join",  ROOM_CASTLE_JOIN  },
+    { "silent",        ROOM_SILENT        },
+    { NULL, 0 }
+};
+
+/* The second word: written only when the first carries ROOM_FLAGS2. */
+static const struct build_flag room_flag2_names[] =
+{
+    { "no_teleport", ROOM2_NO_TPORT   }, { "always_lit", ROOM2_ALWAYS_LIT },
+    { "bank",        ROOM2_BANK       },
+    { NULL, 0 }
+};
+
+/* Rooms whose data lives outside the room, which a save cannot write
+   (room_is_saveable in db.c): their flags are not set by hand. */
+#define ROOM_UNSAVEABLE ( ROOM_RIVER | ROOM_TELEPORT | ROOM_AFFECTED_BY )
+
+/* A room flag by name: exact, or a prefix of three letters or more -- a
+   shorter word is one of the old flag letters. */
+static const struct build_flag *room_name_find( const struct build_flag *t,
+                                                const char *name )
+{
+    const struct build_flag *f;
+
+    for ( f = t; f->name != NULL; f++ )
+        if ( !str_cmp( name, f->name ) )
+            return f;
+    if ( strlen( name ) < 3 )
+        return NULL;
+    for ( f = t; f->name != NULL; f++ )
+        if ( !str_prefix( name, f->name ) )
+            return f;
+    return NULL;
+}
+
+
+/* The next space-separated word, case kept: one_argument lowercases, and
+   the old flag letters are capitals (D is indoors; d is a different bit). */
+static char *word_keep_case( char *src, char *dst, size_t size )
+{
+    size_t n = 0;
+
+    while ( isspace( (unsigned char) *src ) )
+        src++;
+    while ( *src != '\0' && !isspace( (unsigned char) *src ) )
+    {
+        if ( n < size - 1 )
+            dst[n++] = *src;
+        src++;
+    }
+    dst[n] = '\0';
+    return src;
+}
+
+static bool room_flags_edit( CHAR_DATA *ch, ROOM_INDEX_DATA *room, char *value )
+{
+    char word[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    long one = room->room_flags;
+    long two = room->room_flags2;
+
+    if ( !str_cmp( value, "none" ) )
+    {
+        one &= ROOM_UNSAVEABLE;
+        two = 0;
+    }
+    else for ( ; ; )
+    {
+        const struct build_flag *f;
+        const char *name;
+        bool remove;
+
+        value = word_keep_case( value, word, sizeof(word) );
+        if ( word[0] == '\0' )
+            break;
+        remove = ( word[0] == '-' );
+        name   = ( word[0] == '-' || word[0] == '+' ) ? word + 1 : word;
+
+        if ( ( f = room_name_find( room_flag_names, name ) ) != NULL )
+        {
+            if ( remove ) REMOVE_BIT( one, f->bit ); else SET_BIT( one, f->bit );
+        }
+        else if ( ( f = room_name_find( room_flag2_names, name ) ) != NULL )
+        {
+            if ( remove ) REMOVE_BIT( two, f->bit ); else SET_BIT( two, f->bit );
+        }
+        else
+        {
+            int updated;
+            const char *c;
+            bool letters = ( name[0] != '\0' );
+
+            /* The old way: capital letters as STAT shows them, or a number.
+               A lowercase word that is no flag's name is a typo, and must
+               not be read as letters -- "+river" would set four bits. */
+            for ( c = name; *c != '\0'; c++ )
+                if ( !isupper( (unsigned char) *c ) && !isdigit( (unsigned char) *c ) )
+                    letters = false;
+            if ( !letters || !flags_from_argument( word, (int) one, &updated ) )
+            {
+                table_names( room_flag_names, buf, sizeof(buf) );
+                send_to_char( "Room flags: ", ch );
+                send_to_char( buf, ch );
+                table_names( room_flag2_names, buf, sizeof(buf) );
+                send_to_char( " ", ch );
+                send_to_char( buf, ch );
+                send_to_char( "\n\r  +name adds, -name takes away, none clears.\n\r", ch );
+                return false;
+            }
+            if ( updated < 0 )
+            {
+                /* 2147483648 reads as INT_MIN, which no save can write. */
+                send_to_char( "That number is beyond the flags a room can hold.\n\r", ch );
+                return false;
+            }
+            if ( ( (long) updated & ~one & ROOM_UNSAVEABLE ) != 0 )
+            {
+                send_to_char( "River, teleport and room-affect rooms keep data a save "
+                              "cannot write yet,\n\rso those flags are not set by hand.\n\r",
+                              ch );
+                return false;
+            }
+            one = updated;
+        }
+    }
+
+    if ( two != 0 )
+        SET_BIT( one, ROOM_FLAGS2 );
+    else
+        REMOVE_BIT( one, ROOM_FLAGS2 );
+    room->room_flags  = (int) one;
+    room->room_flags2 = (int) two;
+    return true;
+}
+
+
+/* What LOOK <keyword> shows in this room: "runes The runes read...",
+   "runes + more", "runes none". */
+static bool room_detail_edit( CHAR_DATA *ch, ROOM_INDEX_DATA *room, char *value )
+{
+    char keyword[MAX_INPUT_LENGTH];
+    char text[2 * MAX_STRING_LENGTH];
+    EXTRA_DESCR_DATA *ed, *prev = NULL;
+
+    value = one_argument( value, keyword );
+    while ( isspace( (unsigned char) *value ) )
+        value++;
+    if ( keyword[0] == '\0' || value[0] == '\0' )
+    {
+        send_to_char( "Syntax: set room <vnum> detail <keyword> <text>\n\r"
+                      "        set room <vnum> detail <keyword> + <text>    add to it\n\r"
+                      "        set room <vnum> detail <keyword> none        take it away\n\r"
+                      "Quote several keywords: detail 'altar stone' <text>\n\r", ch );
+        return false;
+    }
+
+    for ( ed = room->extra_descr; ed != NULL; prev = ed, ed = ed->next )
+        if ( !str_cmp( ed->keyword, keyword ) )
+            break;
+
+    if ( !str_cmp( value, "none" ) )
+    {
+        if ( ed == NULL )
+        {
+            send_to_char( "This room has no such detail.\n\r", ch );
+            return false;
+        }
+        if ( prev == NULL ) room->extra_descr = ed->next; else prev->next = ed->next;
+        return true;
+    }
+
+    text[0] = '\0';
+    if ( value[0] == '+' && ed != NULL )
+        toc_strlcpy( text, ed->description, sizeof(text) );
+    wrap_into( value[0] == '+' ? value + 1 : value, text, sizeof(text) );
+    if ( strlen( text ) >= MAX_STRING_LENGTH - 2 )
+    {
+        send_to_char( "That detail is too long.\n\r", ch );
+        return false;
+    }
+    text[0] = UPPER( text[0] );
+
+    if ( ed == NULL )
+    {
+        ed          = alloc_perm( sizeof(*ed) );
+        ed->keyword = str_dup( keyword );
+        ed->next    = room->extra_descr;
+        room->extra_descr = ed;
+        top_ed++;
+    }
+    else
+        free_string( ed->description );
+    ed->description = str_dup( text );
+    return true;
+}
+
+
+/*
+ * SET ROOM's fields in words. True when the field was one of these --
+ * whether or not the value was taken -- so do_rset knows not to look
+ * further; *changed says whether it was.
+ */
+bool build_set_room( CHAR_DATA *ch, ROOM_INDEX_DATA *room, const char *field,
+                     char *value, bool *changed )
+{
+    char buf[MAX_STRING_LENGTH];
+    char flags[1024];
+
+    *changed = false;
+
+    if ( !str_prefix( field, "flags" ) )
+    {
+        if ( !room_flags_edit( ch, room, value ) )
+            return true;
+        flag_names( room_flag_names, room->room_flags, flags, sizeof(flags) );
+        if ( room->room_flags2 != 0 )
+        {
+            char more[512];
+
+            flag_names( room_flag2_names, room->room_flags2, more, sizeof(more) );
+            if ( !str_cmp( flags, "none" ) ) flags[0] = '\0';
+            else toc_strlcat( flags, " ", sizeof(flags) );
+            toc_strlcat( flags, more, sizeof(flags) );
+        }
+        snprintf( buf, sizeof(buf), "Room %d flags are now: %s\n\r", room->vnum, flags );
+        send_to_char( buf, ch );
+        *changed = true;
+        return true;
+    }
+
+    if ( !str_prefix( field, "sector" ) || !str_cmp( field, "ground" ) )
+    {
+        const struct build_flag *f = NULL;
+        int sector;
+
+        if ( is_number( value ) )
+            sector = atoi( value );
+        else if ( ( f = flag_find( sector_names, value ) ) != NULL )
+            sector = (int) f->bit;
+        else
+            sector = -1;
+        if ( sector < 0 || sector >= SECT_MAX )
+        {
+            table_names( sector_names, buf, sizeof(buf) );
+            send_to_char( "Ground: ", ch );
+            send_to_char( buf, ch );
+            send_to_char( "\n\r", ch );
+            return true;
+        }
+        room->sector_type = (sh_int) sector;
+        snprintf( buf, sizeof(buf), "Room %d is %s ground now.\n\r", room->vnum,
+                  enum_name( sector_names, sector ) );
+        send_to_char( buf, ch );
+        *changed = true;
+        return true;
+    }
+
+    if ( !str_prefix( field, "description" ) )
+    {
+        char text[2 * MAX_STRING_LENGTH];
+
+        text[0] = '\0';
+        if ( value[0] == '+' )
+            toc_strlcpy( text, room->description, sizeof(text) );
+        wrap_into( value[0] == '+' ? value + 1 : value, text, sizeof(text) );
+        if ( strlen( text ) >= MAX_STRING_LENGTH - 2 )
+        {
+            send_to_char( "That description is too long.\n\r", ch );
+            return true;
+        }
+        text[0] = UPPER( text[0] );
+        free_string( room->description );
+        room->description = str_dup( text );
+        snprintf( buf, sizeof(buf), "Description of room %d %s.\n\r", room->vnum,
+                  value[0] == '+' ? "added to" : "replaced" );
+        send_to_char( buf, ch );
+        *changed = true;
+        return true;
+    }
+
+    if ( !str_prefix( field, "details" ) || !str_prefix( field, "extra" ) )
+    {
+        if ( room_detail_edit( ch, room, value ) )
+        {
+            snprintf( buf, sizeof(buf), "Room %d's details are set.\n\r", room->vnum );
+            send_to_char( buf, ch );
+            *changed = true;
+        }
+        return true;
+    }
+
+    return false;
+}
+
+
+/* What a door is, by its lock number, as RLINK names it. */
+static const char *exit_kind( const EXIT_DATA *pexit )
+{
+    switch ( pexit->lock )
+    {
+    case 0:  return "open way";
+    case 1:  return "door";
+    case 2:  return "door that cannot be picked";
+    case 3:  return "door";
+    case 4:  return "secret door";
+    case 5:  return "trapped door";
+    }
+    return "way";
+}
+
+
+/* RSHOW [vnum] -- a room in the words SET ROOM and RLINK take. */
+void do_rshow( CHAR_DATA *ch, char *argument )
+{
+    static char out[4 * MAX_STRING_LENGTH];
+    const size_t size = sizeof(out);
+    char buf[MAX_STRING_LENGTH];
+    char flags[1024];
+    ROOM_INDEX_DATA *room = ch->in_room;
+    EXTRA_DESCR_DATA *ed;
+    RESET_DATA *r;
+    ROOM_INDEX_DATA *context = NULL;
+    int door, resets = 0;
+
+    if ( argument[0] != '\0' )
+    {
+        if ( !is_number( argument ) || strlen( argument ) > 5
+          || ( room = get_room_index( atoi( argument ) ) ) == NULL )
+        {
+            send_to_char( "Syntax: rshow [room vnum]\n\r", ch );
+            return;
+        }
+    }
+    if ( room == NULL )
+        return;
+
+    out[0] = '\0';
+    snprintf( buf, sizeof(buf), "Room %d, in %s%s.\n\r", room->vnum,
+              room->area != NULL && room->area->name != NULL ? room->area->name : "no area",
+              area_is_buildable( room->area ) ? "" : " (shipped: implementor only)" );
+    toc_strlcat( out, buf, size );
+    snprintf( buf, sizeof(buf), "name:   %s\n\rground: %s\n\r", room->name,
+              enum_name( sector_names, room->sector_type ) );
+    toc_strlcat( out, buf, size );
+
+    flag_names( room_flag_names, room->room_flags, flags, sizeof(flags) );
+    if ( room->room_flags2 != 0 )
+    {
+        char more[512];
+
+        flag_names( room_flag2_names, room->room_flags2, more, sizeof(more) );
+        if ( !str_cmp( flags, "none" ) ) flags[0] = '\0';
+        else toc_strlcat( flags, " ", sizeof(flags) );
+        toc_strlcat( flags, more, sizeof(flags) );
+    }
+    if ( IS_SET( room->room_flags, ROOM_RIVER ) )        toc_strlcat( flags, " (river)", sizeof(flags) );
+    if ( IS_SET( room->room_flags, ROOM_TELEPORT ) )     toc_strlcat( flags, " (teleport)", sizeof(flags) );
+    if ( IS_SET( room->room_flags, ROOM_AFFECTED_BY ) )  toc_strlcat( flags, " (room affect)", sizeof(flags) );
+    snprintf( buf, sizeof(buf), "flags:  %s\n\rdesc:\n\r", flags );
+    toc_strlcat( out, buf, size );
+    toc_strlcat( out, room->description != NULL && room->description[0] != '\0'
+                      ? room->description : "  (none)\n\r", size );
+    if ( room->description != NULL && room->description[0] != '\0'
+      && room->description[strlen( room->description ) - 1] != '\r'
+      && room->description[strlen( room->description ) - 1] != '\n' )
+        toc_strlcat( out, "\n\r", size );
+
+    toc_strlcat( out, "exits:\n\r", size );
+    for ( door = 0; door <= 9; door++ )
+    {
+        EXIT_DATA *pexit = room->exit[door];
+        ROOM_INDEX_DATA *to;
+
+        if ( pexit == NULL )
+            continue;
+        to = pexit->u1.to_room;
+        snprintf( buf, sizeof(buf), "  %-9s to %d (%s), %s", dir_name[door],
+                  to != NULL ? to->vnum : -1, to != NULL ? to->name : "nowhere",
+                  exit_kind( pexit ) );
+        toc_strlcat( out, buf, size );
+        if ( pexit->key > 0 )
+        {
+            snprintf( buf, sizeof(buf), ", key %d", pexit->key );
+            toc_strlcat( out, buf, size );
+        }
+        if ( pexit->keyword != NULL && pexit->keyword[0] != '\0' )
+        {
+            snprintf( buf, sizeof(buf), ", called '%s'", pexit->keyword );
+            toc_strlcat( out, buf, size );
+        }
+        toc_strlcat( out, "\n\r", size );
+    }
+
+    buf[0] = '\0';
+    for ( ed = room->extra_descr; ed != NULL; ed = ed->next )
+    {
+        if ( buf[0] != '\0' )
+            toc_strlcat( buf, ", ", sizeof(buf) );
+        toc_strlcat( buf, ed->keyword, sizeof(buf) );
+    }
+    snprintf( flags, sizeof(flags), "details: %s\n\r", buf[0] != '\0' ? buf : "none" );
+    toc_strlcat( out, flags, size );
+
+    if ( room->area != NULL )
+        for ( r = room->area->reset_first; r != NULL; r = r->next )
+        {
+            ROOM_INDEX_DATA *where = reset_room( r, context );
+
+            if ( r->command == 'M' || r->command == 'O' )
+                context = where;
+            if ( where == room )
+                resets++;
+        }
+    snprintf( buf, sizeof(buf), "resets: %d%s\n\r", resets,
+              resets > 0 ? "  (RESETS lists them)" : "" );
+    toc_strlcat( out, buf, size );
+    page_to_char( out, ch );
+}
+
+
+/*
+ * ------------------------------------------------------------------------
+ * Shops: SET MOB <vnum> SHOP ...
+ *
+ * get_cost in act_obj.c charges a buyer value * profit_buy / 100 and pays
+ * a seller value * profit_sell / 100, for the item types in buy_type and
+ * nothing else; the keeper trades between open_hour and close_hour. In
+ * words those are the markup, what it pays, what it buys and its hours.
+ * What it sells is whatever it carries: PLACE OBJ <vnum> ON <keeper> gives
+ * it stock, and a shopkeeper's stock never runs out.
+ * ------------------------------------------------------------------------
+ */
+
+extern SHOP_DATA *shop_last;
+extern int top_shop;
+
+static void shop_words( SHOP_DATA *s, char *out, size_t size )
+{
+    char types[256];
+    int i;
+
+    types[0] = '\0';
+    for ( i = 0; i < MAX_TRADE; i++ )
+    {
+        if ( s->buy_type[i] <= 0 )
+            continue;
+        if ( types[0] != '\0' )
+            toc_strlcat( types, " ", sizeof(types) );
+        toc_strlcat( types, enum_name( type_names, s->buy_type[i] ), sizeof(types) );
+    }
+    snprintf( out, size, "markup %d%%, pays %d%%, buys %s, open %d to %d",
+              s->profit_buy, s->profit_sell, types[0] != '\0' ? types : "nothing",
+              s->open_hour, s->close_hour );
+}
+
+
+static void shop_unlink( SHOP_DATA *s )
+{
+    SHOP_DATA *p, *prev = NULL;
+
+    for ( p = shop_first; p != NULL; prev = p, p = p->next )
+    {
+        if ( p != s )
+            continue;
+        if ( prev == NULL ) shop_first = p->next; else prev->next = p->next;
+        if ( shop_last == p )
+            shop_last = prev;
+        top_shop--;
+        return;
+    }
+}
+
+
+static void shop_help( CHAR_DATA *ch )
+{
+    send_to_char( "Syntax: set mob <vnum> shop                  make it a shopkeeper\n\r"
+                  "        set mob <vnum> shop markup <percent>  what buyers pay, of value\n\r"
+                  "        set mob <vnum> shop pays <percent>    what it pays sellers\n\r"
+                  "        set mob <vnum> shop buys <types>      what it will buy: weapon armor ...\n\r"
+                  "        set mob <vnum> shop hours <open> <close>   0 to 23\n\r"
+                  "        set mob <vnum> shop none              no longer a shop\n\r"
+                  "It sells what it carries: PLACE OBJ <vnum> ON <its vnum>.\n\r", ch );
+}
+
+
+/* SET MOB <vnum> SHOP ...; true when something changed. */
+static bool mob_shop_edit( CHAR_DATA *ch, MOB_INDEX_DATA *m, char *value )
+{
+    char word[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    SHOP_DATA *s = m->pShop;
+    char *rest;
+
+    rest = one_argument( value, word );
+
+    if ( !str_cmp( word, "none" ) || !str_cmp( word, "no" ) )
+    {
+        if ( s == NULL )
+        {
+            send_to_char( "It keeps no shop.\n\r", ch );
+            return false;
+        }
+        shop_unlink( s );
+        m->pShop = NULL;
+        send_to_char( "It keeps no shop now.\n\r", ch );
+        return true;
+    }
+
+    if ( s == NULL )
+    {
+        int i;
+
+        s              = alloc_perm( sizeof(*s) );
+        s->keeper      = m->vnum;
+        for ( i = 0; i < MAX_TRADE; i++ )
+            s->buy_type[i] = 0;
+        s->profit_buy  = 120;
+        s->profit_sell = 80;
+        s->open_hour   = 0;
+        s->close_hour  = 23;
+        s->next        = NULL;
+        if ( shop_first == NULL )
+            shop_first = s;
+        if ( shop_last != NULL )
+            shop_last->next = s;
+        shop_last = s;
+        top_shop++;
+        m->pShop = s;
+        if ( word[0] == '\0' || !str_cmp( word, "yes" ) )
+        {
+            send_to_char( "It keeps a shop now: markup 120%, pays 80%, buys nothing, "
+                          "open all day.\n\r", ch );
+            return true;
+        }
+    }
+    else if ( word[0] == '\0' )
+    {
+        shop_help( ch );
+        return false;
+    }
+
+    if ( !str_prefix( word, "markup" ) || !str_prefix( word, "pays" ) )
+    {
+        long n = plain_number( rest, 1000 );
+        bool markup = !str_prefix( word, "markup" );
+
+        if ( n < 0 || ( markup && n < 1 ) )
+        {
+            send_to_char( "Give a percentage: shop markup 120, shop pays 80.\n\r", ch );
+            return false;
+        }
+        if ( markup ) s->profit_buy = (sh_int) n; else s->profit_sell = (sh_int) n;
+    }
+    else if ( !str_prefix( word, "buys" ) )
+    {
+        sh_int types[MAX_TRADE];
+        int count = 0, i;
+
+        for ( i = 0; i < MAX_TRADE; i++ )
+            types[i] = 0;
+        for ( ; ; )
+        {
+            const struct build_flag *f;
+
+            rest = one_argument( rest, word );
+            if ( word[0] == '\0' || !str_cmp( word, "nothing" ) )
+                break;
+            if ( ( f = flag_find( type_names, word ) ) == NULL )
+            {
+                snprintf( buf, sizeof(buf), "There is no item type called '%s'.\n\r", word );
+                send_to_char( buf, ch );
+                return false;
+            }
+            if ( count >= MAX_TRADE )
+            {
+                snprintf( buf, sizeof(buf), "A shop buys at most %d types.\n\r", MAX_TRADE );
+                send_to_char( buf, ch );
+                return false;
+            }
+            types[count++] = (sh_int) f->bit;
+        }
+        for ( i = 0; i < MAX_TRADE; i++ )
+            s->buy_type[i] = types[i];
+    }
+    else if ( !str_prefix( word, "hours" ) )
+    {
+        char second[MAX_INPUT_LENGTH];
+        long open, close;
+
+        rest = one_argument( rest, word );
+        one_argument( rest, second );
+        open  = plain_number( word, 23 );
+        close = plain_number( second, 23 );
+        if ( open < 0 || close < 0 )
+        {
+            send_to_char( "Hours are 0 to 23: shop hours 6 22.\n\r", ch );
+            return false;
+        }
+        s->open_hour  = (sh_int) open;
+        s->close_hour = (sh_int) close;
+    }
+    else
+    {
+        shop_help( ch );
+        return false;
+    }
+
+    shop_words( s, word, sizeof(word) );
+    snprintf( buf, sizeof(buf), "Its shop: %s.\n\r", word );
+    send_to_char( buf, ch );
+    return true;
 }

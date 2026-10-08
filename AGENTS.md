@@ -881,7 +881,14 @@ line while it runs (`build_wizard_input`, called from comm.c **before**
 `split_typed_commands`, since a description may hold a semicolon) and
 builds only by calling the commands themselves, so it can never make what
 they would refuse; `build_set_mob`/`build_set_obj` return whether the
-change took so it can ask again. Rules the code depends on:
+change took so it can ask again. SET ROOM's flags, sector, desc and
+detail are `build_set_room` too; its old flag letters still work, read
+with `word_keep_case` because `one_argument` lowercases and the letters
+are capitals -- and only capitals or digits count as letters, or a
+mistyped name would set bits. WALKTO finds a built area by name at run
+time (`walkto_built_area`): the generated, committed `walkto.dat`,
+`directions.json` and HELP WALKTO must never read `area/built/`, or each
+state sync would leave them stale and fail CI. Rules the code depends on:
 
 - **An area made with ANEW owns its vnum range**, declared in an
   `#AREADATA` header (`load_areadata`). Mobiles and objects carry no area

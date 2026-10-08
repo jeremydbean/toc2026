@@ -158,4 +158,5 @@ jobs:
         run: |
           bash scripts/test-parallel.sh test_training_dummy test_compare_live \
             test_oracle_sanctum_live test_stash test_remort_gear_live \
-            test_hyrule_access test_old_bug_reports
+            test_hyrule_access test_old_bug_reports \
+            test_building_mobs_objs test_building_wizard test_building_rooms_shops

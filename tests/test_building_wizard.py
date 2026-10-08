@@ -111,6 +111,15 @@ class WizardTests(unittest.TestCase):
                 self.answer(imm, "floor", "Save the area now", 1.5)
                 self.answer(imm, "yes", "Object %d is built" % obj, 2.0)
 
+                # --- leaving the room mid-build stops it -----------------
+                # Its answers write to the room you stand in, so a /GOTO
+                # must not let the next one rename the Temple (review).
+                self.answer(imm, "build room", "What is this room called")
+                run(imm, "/goto 4207", 1.5)
+                self.answer(imm, "Hijacked", "no longer in room")
+                self.assertNotIn("Hijacked", run(imm, "look", 1.5))
+                run(imm, f"goto {lo + 1}", 1.5)
+
                 # --- CANCEL ----------------------------------------------
                 self.answer(imm, "build mob", "Which vnum")
                 self.answer(imm, "cancel", "Build stopped")
