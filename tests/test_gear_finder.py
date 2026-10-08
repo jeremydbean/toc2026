@@ -137,6 +137,28 @@ class GearFinderTests(unittest.TestCase):
             return asyncio.run(server.get_best_gear(
                 class_name=class_name, race_name="human", level=level, limit=10))
 
+    def test_a_thief_is_offered_a_second_weapon_in_the_shield_slot(self) -> None:
+        """Dual wield puts the second weapon in the shield slot (SECONDARY).
+        A thief has it from level 17, so from then the shield slot ranks
+        one-handed weapons too -- the next best after the main hand's, and
+        never a two-handed one, which SECONDARY refuses (Alaric's report,
+        2026-10-07)."""
+        best = item(30, 5, "AN", ("1", "4", "6", "3", "0"))
+        next_ = item(31, 5, "AN", ("1", "3", "6", "3", "0"))
+        two_handed = item(32, 5, "AN", ("1", "9", "9", "3", "F"))
+        buckler = item(33, 9, "AJ", ("2", "2", "2", "2", "0"))
+
+        result = self.find_as("thief", best, next_, two_handed, buckler, level=20)
+        second = [i for i in result["Shield"] if i.get("second_weapon")]
+        self.assertEqual([i["vnum"] for i in second], [31])
+        self.assertIn("SECONDARY", second[0]["source"])
+        self.assertIn(33, [i["vnum"] for i in result["Shield"]])
+
+        # Not before the skill, and not for a class without it.
+        for cls, lvl in (("thief", 16), ("warrior", 50)):
+            shields = self.find_as(cls, best, next_, buckler, level=lvl)["Shield"]
+            self.assertEqual([i["vnum"] for i in shields], [33], (cls, lvl))
+
     def test_damage_outranks_a_plain_hp_roll_for_a_fighter(self) -> None:
         dmg = item(20, 9, "AB", affects=[(19, 8)])    # +8 damroll
         hp = item(21, 9, "AB", affects=[(13, 50)])    # +50 hit points

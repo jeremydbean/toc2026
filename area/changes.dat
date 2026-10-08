@@ -3,6 +3,14 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261008a 2026-10-08
+WALKTO QUEST walks you to where the quest master sent you, and the quest
+master now only sends you somewhere you can walk to -- no more quests to
+rooms nobody can reach. AFFECTS works as well as AFFECT, and the browser
+client's Affects button works again. On the website, the Gear Finder now
+offers a thief a second weapon for the off hand (SECONDARY) from level
+17, when dual wield is learned.
+
 @ 20261005d 2026-10-05
 BUY and TRAIN take a count: BUY 10 FLY buys ten potions, TRAIN HP 10 uses
 ten sessions. Each stops at the first one you cannot afford, carry or

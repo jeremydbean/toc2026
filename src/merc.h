@@ -3357,6 +3357,8 @@ void    walkto_load      ( void );
 void    changes_load     ( void );
 void    walkto_update    ( void );
 void    walkto_clear     ( CHAR_DATA *ch );
+void    walkto_mark_reachable ( CHAR_DATA *ch );
+bool    walkto_reached   ( ROOM_INDEX_DATA *room );
 void    walkto_interrupt ( CHAR_DATA *ch, const char *line );
 bool    walkto_trainer_place ( const char *name, char *place, size_t place_size,
                                char *walk, size_t walk_size );

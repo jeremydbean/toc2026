@@ -568,6 +568,84 @@ static int walk_find( CHAR_DATA *ch, ROOM_INDEX_DATA *target, WALK_MOVE *first )
 }
 
 
+/*
+ * Every room this character could walk to from where they stand, by the
+ * rules walk_find walks by: walk_find with no target, run to exhaustion.
+ * walkto_reached() then answers for any room, until the next search.
+ *
+ * The quest master asks it before choosing a target. It used to choose
+ * from every suitable mobile in the world, and sent Alaric to a Storage
+ * Room in the Valley of the Elves that no way he could walk reached --
+ * which WALKTO QUEST, built on the same search, then could not find a way
+ * to either (bug report, 2026-10-07).
+ */
+void walkto_mark_reachable( CHAR_DATA *ch )
+{
+    ROOM_INDEX_DATA *src = ch->in_room;
+    ROOM_INDEX_DATA *closed[WALK_MAX_CLOSED];
+    WALK_MOVE moves[WALK_MAX_MOVES];
+    bool flying, boat;
+    int nclosed, i;
+
+    if ( ++walk_generation == 0 )
+    {
+        memset( walk_seen_gen, 0, sizeof(walk_seen_gen) );
+        memset( walk_closed_gen, 0, sizeof(walk_closed_gen) );
+        walk_generation = 1;
+    }
+    if ( src == NULL || !walk_slot( src->vnum ) )
+        return;
+
+    nclosed = guild_closed_rooms( ch, closed, WALK_MAX_CLOSED );
+    for ( i = 0; i < nclosed; i++ )
+        if ( closed[i] != NULL && walk_slot( closed[i]->vnum ) )
+            walk_closed_gen[closed[i]->vnum] = walk_generation;
+
+    flying = IS_AFFECTED(ch, AFF_FLYING) || IS_IMMORTAL(ch);
+    boat   = IS_IMMORTAL(ch) || walk_has_boat( ch );
+
+    walk_heap_size = 0;
+    walk_seen_gen[src->vnum] = walk_generation;
+    walk_cost[src->vnum] = 0;
+    walk_done[src->vnum] = false;
+    walk_heap_push( 0, src );
+
+    while ( walk_heap_size > 0 )
+    {
+        WALK_HEAP_NODE node = walk_heap_pop();
+        ROOM_INDEX_DATA *here = node.room;
+        int n, j;
+
+        if ( walk_done[here->vnum] || node.cost > walk_cost[here->vnum] )
+            continue;
+        walk_done[here->vnum] = true;
+
+        n = walk_moves( ch, here, NULL, moves, flying, boat );
+        for ( j = 0; j < n; j++ )
+        {
+            int v = moves[j].to->vnum;
+            int cost = node.cost + moves[j].cost;
+
+            if ( walk_seen_gen[v] == walk_generation
+            &&   ( walk_done[v] || walk_cost[v] <= cost ) )
+                continue;
+            walk_seen_gen[v] = walk_generation;
+            walk_cost[v] = cost;
+            walk_done[v] = false;
+            walk_heap_push( cost, moves[j].to );
+        }
+    }
+}
+
+/* Whether the last walkto_mark_reachable() reached this room. */
+bool walkto_reached( ROOM_INDEX_DATA *room )
+{
+    return room != NULL && walk_slot( room->vnum )
+        && walk_seen_gen[room->vnum] == walk_generation
+        && walk_done[room->vnum];
+}
+
+
 /* ---------------------------------------------------------------------
  * Walking it.
  * ------------------------------------------------------------------- */
@@ -1294,6 +1372,22 @@ void do_walkto( CHAR_DATA *ch, char *argument )
         if ( ( target = get_room_index( atoi( argument ) ) ) == NULL )
         {
             send_to_char( "No room has that number.\n\r", ch );
+            return;
+        }
+        name = target->name;
+        who = "";
+    }
+    else if ( !str_cmp( argument, "quest" ) )
+    {
+        /* Where the quest master said the target was. A mobile may have
+           wandered on since; this walks to the room it was named in. */
+        found = -1;
+        also = 0;
+        if ( !IS_SET(ch->act, PLR_QUESTOR) || ch->questroom <= 0
+        ||   ( target = get_room_index( ch->questroom ) ) == NULL )
+        {
+            send_to_char( "You are not on a quest.  The quest master gives "
+                          "you one: QUEST REQUEST.\n\r", ch );
             return;
         }
         name = target->name;

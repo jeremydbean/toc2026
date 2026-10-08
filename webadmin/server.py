@@ -4032,6 +4032,21 @@ GEAR_RACE_ONLY = ("human-only", "elf-only", "dwarf-only", "halfling-only",
                   "saurian-only")
 
 
+# The level each class can first have "dual wield" (skill_table in const.c;
+# the Assassin guildmaster teaches it to thieves). No other class reaches
+# it below immortal level.
+DUAL_WIELD_LEVEL = {"thief": 17}
+
+
+def _gear_two_handed(values) -> bool:
+    """WEAPON_TWO_HANDS (F) in a weapon's flags, value[4]: SECONDARY
+    refuses one."""
+    try:
+        return bool(parse_flag_value(str(values[4])) & flag_bit("F"))
+    except (IndexError, TypeError, ValueError):
+        return False
+
+
 def _gear_natural_slot(obj, item_type: int) -> Optional[str]:
     """The one slot WEAR would put this in, or None."""
     if item_type == ITEM_TYPE_LIGHT:
@@ -4264,7 +4279,7 @@ async def get_best_gear(
         score, breakdown = gear_item_score(obj, item_type_num, slot, values, weights)
         affects_decoded = decode_applies(obj.affects)
 
-        best_items[slot].append({
+        entry = {
             "score": round(score, 2),
             "score_breakdown": breakdown,
             "vnum": obj.vnum,
@@ -4273,7 +4288,21 @@ async def get_best_gear(
             "affects": affects_decoded,
             "area": obj.area_name,
             "source": source_label,
-        })
+        }
+        best_items[slot].append(entry)
+
+        # A class that dual wields holds its second weapon in the shield
+        # slot (SECONDARY, do_secondary in act_obj.c), any weapon that is
+        # not two-handed -- so its shield slot ranks weapons too. Missing
+        # this was Alaric's report, 2026-10-07: no dual-wield weapons for
+        # thieves.
+        if (slot == "wield" and level >= DUAL_WIELD_LEVEL.get(class_name, 999)
+                and not _gear_two_handed(values)):
+            second = dict(entry)
+            second["source"] = (source_label + "; " if source_label else "") + \
+                "as a second weapon (SECONDARY)"
+            second["second_weapon"] = True
+            best_items["shield"].append(second)
 
     # Sort and limit. Ties go to the higher-level item, then the vnum, so
     # the same question always gets the same answer.
@@ -4284,6 +4313,12 @@ async def get_best_gear(
     taken: dict[str, int] = {}
     for key, label in GEAR_FINDER_SLOTS:
         items = best_items[key]
+        if key == "shield":
+            # Dual wielding means a one-handed weapon in the main hand,
+            # and the best of those is already there: the second weapon
+            # is the next best one-handed, as with a pair of rings.
+            first = next((i for i in items if i.get("second_weapon")), None)
+            items = [i for i in items if i is not first]
         if key in taken:
             # The second of a pair: whatever topped the first is already
             # worn there, so this one starts from the next best.

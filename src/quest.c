@@ -1422,11 +1422,16 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
        appropriate and accessible to the requesting player. */
 
     closed_count = guild_closed_rooms( ch, closed, QUEST_CLOSED_ROOMS_MAX );
+    /* Only a target this character could walk to from here, by WALKTO's
+       own rules, so WALKTO QUEST always finds the way it is asked for. */
+    walkto_mark_reachable( ch );
     victim = NULL;
     FOR_EACH_CHARACTER( iter, candidate )
     {
 	if ( !automatic_quest_target_is_suitable(ch, questman, candidate,
 	                                         closed, closed_count) )
+	    continue;
+	if ( !walkto_reached( candidate->in_room ) )
 	    continue;
 	if ( number_range(1, ++candidate_count) == 1 )
 	    victim = candidate;

@@ -153,6 +153,9 @@ const	struct	cmd_type	cmd_table	[] =
     { "report",		do_report,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "rules",		do_rules,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "affect",		do_affect,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
+    /* What players type in every client, and what the web client's
+       Affects button sent: longer than "affect", so no prefix of it. */
+    { "affects",        do_affect,      POS_DEAD,        0,  LOG_NORMAL, 0 },
     { "ask",            do_ask,         POS_RESTING,     0,  LOG_NORMAL, 1 },
     { "pray",           do_pray,        POS_RESTING,     0,  LOG_NORMAL, 1 },
     { "attribute",	do_attribute,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
