@@ -128,7 +128,16 @@ rsync -a --delete \
   --exclude 'area/*.txt.tmp' \
   --exclude 'area/bugs.txt.*' --exclude 'area/typos.txt.*' \
   --exclude 'area/ideas.txt.*' \
+  --exclude 'area/built/' \
   "$BUILD/" "$CURRENT/"
+# area/built/ is what builders made in game (ANEW). The live copy is the
+# newest -- git's is up to one state sync behind -- so a deploy never
+# writes over it. It only fills in a built file the live tree lacks, as
+# after a rebuild from the repository.
+if [ -d "$BUILD/area/built" ]; then
+    mkdir -p "$CURRENT/area/built"
+    rsync -a --ignore-existing "$BUILD/area/built/" "$CURRENT/area/built/"
+fi
 # Those three are REPORTS CLEAR's archives (bugs.txt.<stamp>): it renames
 # rather than deletes because they are the only record of what players
 # said, and before they were listed here --delete removed them on the

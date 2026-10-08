@@ -95,8 +95,8 @@ and its own file.
 anew 29200 29249 The Sunken Grotto
 ```
 
-This claims vnums 29200-29249, writes `area/the_sunken_grotto.are`, lists
-it so it loads next reboot, and links it live right now. From this moment a
+This claims vnums 29200-29249, writes `area/built/the_sunken_grotto.are`,
+lists it so it loads next reboot, and links it live right now. From this moment a
 room you make anywhere in 29200-29249 is born into the Grotto, not the
 workshop:
 
@@ -422,10 +422,10 @@ made with ANEW. A door's lock wants a key to be any use: `rlink <dir> key
 `anew <low vnum> <high vnum> <name>`
 
 Creates a new area. The range must be empty and must not overlap another
-area. Writes `area/<slug>.are` with an `#AREADATA` header recording the
-range and your name as builder, adds it to `area.lst`, and links it live so
-you can build at once. See the deploy caution under
-[Saving and deploys](#saving-and-deploys).
+area. Writes `area/built/<slug>.are` with an `#AREADATA` header recording
+the range and your name as builder, adds it to `area/built/built.lst`, and
+links it live so you can build at once. See
+[Saving and deploys](#saving-and-deploys) for how it reaches git.
 
 #### ALIST / ASTAT
 
@@ -514,13 +514,18 @@ and names it. A reset that points at something gone -- a mobile never
 saved, a door taken out since -- would stop the game at the next boot, so
 it is left out of the file, and ASAVE says how many it dropped.
 
-**2. Reach the repository.** The live server runs from a copy that a code
-deploy rebuilds from git. A new `.are` file and an `area.lst` entry made in
-game live only on the running server; **a deploy will drop an area that was
-never committed to the repository.** Player files and logs are synced to git
-automatically; area files you create are not, yet. Until that is wired up
-(see the Roadmap), tell an implementor when you have built something worth
-keeping so it can be committed. This is a known limitation, not a bug.
+**2. It reaches the repository on its own.** An area made with ANEW lives
+in `area/built/`, with its own list, `area/built/built.lst`, which the game
+loads after the shipped world's `area.lst`. Building never touches
+`area.lst`. Every five minutes the server's state sync commits
+`area/built/` to git along with the player files, so a lost server loses
+at most the last few minutes; a code deploy leaves the live `area/built/`
+exactly as it is, and only fills in a built file the server is missing.
+The workshop, `custom.are`, is synced the same way. Save backups
+(`*.bak`) stay on the server.
+
+What is not saved with ASAVE or RSAVE is in memory only, and a reboot or a
+deploy loses it.
 
 ---
 
@@ -568,14 +573,14 @@ In-game building is being filled out in phases. Shipped so far:
   the values each type gives meaning to, affects, powers and details.
 - **Resets** -- PLACE, RESETS and UNPLACE: mobiles, their gear, objects,
   containers' contents and door states that come back, saved with ASAVE.
+- **Repository persistence** -- built areas live in `area/built/`, reach
+  git with the state sync, and survive deploys.
 
-Coming, in order:
+Coming:
 
 - **A guided wizard** -- a step-by-step builder that asks what you want and
   runs the commands for you, for people who would rather be led than
   memorise syntax.
-- **Repository persistence** -- built areas reaching git on their own, so a
-  deploy keeps them.
 
 ---
 

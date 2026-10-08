@@ -3099,6 +3099,12 @@ const char *guild_group_name ( int guild );
 /* In-game building. */
 #define BUILDER_AREA_FILE   "custom.are"
 #define AREA_LIST_FILE      "area.lst"
+/* Areas made with ANEW live apart from the shipped world, in a directory
+   of their own with a list of their own, loaded after area.lst. Building
+   then never edits area.lst -- which is code -- and the state sync can
+   carry the whole directory to git, and deploys leave it alone. */
+#define BUILT_AREA_DIR      "built"
+#define BUILT_AREA_LIST     "built/built.lst"
 bool    save_area_rooms ( AREA_DATA *pArea, char *why, size_t why_size );
 bool    save_area_full  ( AREA_DATA *pArea, char *why, size_t why_size );
 void    mob_index_set_wealth ( MOB_INDEX_DATA *pMobIndex, long total );
@@ -3108,8 +3114,10 @@ void    build_set_obj   ( CHAR_DATA *ch, char *argument );
 OBJ_INDEX_DATA *new_obj_index ( int vnum, OBJ_INDEX_DATA *copy_from );
 AREA_DATA *area_for_vnum ( int vnum );
 bool    area_is_buildable ( AREA_DATA *pArea );
+bool    area_is_built   ( AREA_DATA *pArea );
 bool    may_build_area   ( CHAR_DATA *ch, AREA_DATA *pArea );
-bool    append_area_to_list ( const char *basename, char *why, size_t why_size );
+bool    append_area_to_list ( const char *list, const char *entry,
+                              char *why, size_t why_size );
 bool    is_loopback_ip  ( uint32_t ip );
 extern bool dns_lookup_enabled;
 int     get_curr_stat   ( CHAR_DATA *ch, int stat );

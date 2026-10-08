@@ -415,6 +415,27 @@ SPELL_NAMES = {
     600: "enchant item",
 }
 
+BUILT_AREA_LIST = "built/built.lst"
+
+
+def listed_area_files(area_directory: Path) -> List[str]:
+    """Every file the game loads, in its order: area.lst's entries, then
+    the areas built in game with ANEW, from built/built.lst (db.c's boot
+    reads them after area.lst). The built list is missing until somebody
+    builds an area."""
+    names: List[str] = []
+    for list_name in ("area.lst", BUILT_AREA_LIST):
+        path = Path(area_directory) / list_name
+        if not path.exists():
+            continue
+        for raw in path.read_text(encoding="latin-1", errors="ignore").splitlines():
+            line = raw.strip()
+            if not line or line.startswith("$"):
+                continue
+            names.append(line)
+    return names
+
+
 def split_area_name(raw: str) -> tuple:
     """Separate an area's builder handle from the zone's own name.
 
@@ -1145,17 +1166,16 @@ class AreaParser:
         self.shopkeepers.clear()
         self.errors.clear()
 
-        with open(area_list_file, 'r', encoding='latin-1', errors='ignore') as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith('$') and line.endswith('.are'):
-                    area_file = self.area_directory / line
-                    if area_file.exists():
-                        try:
-                            self.parse_area_file(area_file)
-                        except Exception as e:
-                            self.errors.append({"file": line, "error": str(e)})
-                            print(f"Error parsing {line}: {e}")
+        for line in listed_area_files(self.area_directory):
+            if not line.endswith('.are'):
+                continue
+            area_file = self.area_directory / line
+            if area_file.exists():
+                try:
+                    self.parse_area_file(area_file)
+                except Exception as e:
+                    self.errors.append({"file": line, "error": str(e)})
+                    print(f"Error parsing {line}: {e}")
         
         # Build cross-references
         self._build_cross_references()
@@ -1213,35 +1233,46 @@ class AreaParser:
         
         area_info = self._extract_area_info(content)
         area_name = area_info["name"]
-        
+
+        # Named as the area list names it: the bare file name for the
+        # shipped world, built/<name>.are for an area made in game.
+        try:
+            list_name = filepath.relative_to(self.area_directory).as_posix()
+        except ValueError:
+            list_name = filepath.name
+
         area = Area(
-            filename=filepath.name, 
+            filename=list_name,
             name=area_name,
             credits=area_info["credits"]
         )
-        self.areas[filepath.name] = area
-        
+        self.areas[list_name] = area
+
         # Parse each section
-        self._parse_mobiles(content, filepath.name, area_name)
-        self._parse_objects(content, filepath.name, area_name)
-        self._parse_rooms(content, filepath.name, area_name)
-        self._parse_resets(content, filepath.name)
+        self._parse_mobiles(content, list_name, area_name)
+        self._parse_objects(content, list_name, area_name)
+        self._parse_rooms(content, list_name, area_name)
+        self._parse_resets(content, list_name)
         self._parse_specials(content)
         self._parse_shops(content)
         
         # Calculate vnum range for this area
         vnums = []
         for vnum, mob in self.mobiles.items():
-            if mob.area_file == filepath.name:
+            if mob.area_file == list_name:
                 vnums.append(vnum)
         for vnum, obj in self.objects.items():
-            if obj.area_file == filepath.name:
+            if obj.area_file == list_name:
                 vnums.append(vnum)
         for vnum, room in self.rooms.items():
-            if room.area_file == filepath.name:
+            if room.area_file == list_name:
                 vnums.append(vnum)
                 
-        if vnums:
+        declared = area_info.get("vnum_range")
+        if declared:
+            # An ANEW area says what it owns, built on or not.
+            area.vnums = f"{declared[0]} - {declared[1]}"
+        elif vnums:
             area.vnums = f"{min(vnums)} - {max(vnums)}"
             # Also try to extract builder from credits if possible, or leave empty
             # Usually builder is part of the name or credits in some formats, but here it's mixed.
@@ -1250,36 +1281,27 @@ class AreaParser:
     
     def _extract_area_info(self, content: str) -> Dict[str, Any]:
         """Extract area info from #AREA section"""
+        # An area built in game (ANEW) opens with #AREADATA instead:
+        # keyword lines -- Name <text>~, Builders <names>~, VNUMs <lo> <hi>
+        # -- up to End, which load_areadata in db.c reads.
+        # ROM OLC writes the same header -- sinistra.are shipped in it --
+        # with the credits braces in its Name, so that is read like an
+        # #AREA line.
+        data = re.search(r'^#AREADATA\b(.*?)^End\b', content, re.M | re.S)
+        if data:
+            block = data.group(1)
+            name_m = re.search(r'^\s*Name\s+(.*?)~', block, re.M | re.S)
+            vnums_m = re.search(r'^\s*VNUMs\s+(-?\d+)\s+(-?\d+)', block, re.M)
+            raw_line = name_m.group(1).strip() if name_m else "Unnamed Area"
+            info = self._area_info_from_line(raw_line)
+            info["vnum_range"] = ((int(vnums_m.group(1)), int(vnums_m.group(2)))
+                                  if vnums_m else None)
+            return info
+
         match = re.search(r'#AREA\s+([^\n]+?)~', content, re.MULTILINE)
         if match:
-            raw_line = match.group(1).strip()
-            # Format: { credits } Name
-            # e.g. { 1 5 } Hatchet Mud School
-            # e.g. {None } Diku Limbo
-            
-            credits_match = re.match(r'\{(.*?)\}\s*(.*)', raw_line)
-            if credits_match:
-                name = credits_match.group(2).strip()
-                builder, zone = split_area_name(name)
-                return {
-                    "credits": credits_match.group(1).strip(),
-                    # `name` is left exactly as the file writes it. The
-                    # directions router and the native-parser parity test
-                    # both compare against it.
-                    "name": name,
-                    "builder": builder,
-                    "zone": zone,
-                    "display_name": format_area_name(name),
-                }
-            builder, zone = split_area_name(raw_line)
-            return {
-                "name": raw_line,
-                "credits": "",
-                "builder": builder,
-                "zone": zone,
-                "display_name": format_area_name(raw_line),
-            }
-            
+            return self._area_info_from_line(match.group(1).strip())
+
         # Check for HELPS
         if re.search(r'#HELPS', content):
              return {"name": "Help File", "credits": ""}
@@ -1289,7 +1311,35 @@ class AreaParser:
              return {"name": "Socials File", "credits": ""}
 
         return {"name": "Unknown Area", "credits": ""}
-    
+
+    def _area_info_from_line(self, raw_line: str) -> Dict[str, Any]:
+        """The name, credits, builder and zone in an #AREA line's text."""
+        # Format: { credits } Name
+        # e.g. { 1 5 } Hatchet Mud School
+        # e.g. {None } Diku Limbo
+        credits_match = re.match(r'\{(.*?)\}\s*(.*)', raw_line, re.S)
+        if credits_match:
+            name = credits_match.group(2).strip()
+            builder, zone = split_area_name(name)
+            return {
+                "credits": credits_match.group(1).strip(),
+                # `name` is left exactly as the file writes it. The
+                # directions router and the native-parser parity test
+                # both compare against it.
+                "name": name,
+                "builder": builder,
+                "zone": zone,
+                "display_name": format_area_name(name),
+            }
+        builder, zone = split_area_name(raw_line)
+        return {
+            "name": raw_line,
+            "credits": "",
+            "builder": builder,
+            "zone": zone,
+            "display_name": format_area_name(raw_line),
+        }
+
     def _read_to_tilde(self, lines: List[str], index: int) -> tuple[str, int]:
         """Read lines until hitting a tilde, return combined text and new index"""
         text_parts = []

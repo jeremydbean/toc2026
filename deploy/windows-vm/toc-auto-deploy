@@ -89,7 +89,8 @@ changed=$(git -C "$BUILD" diff --name-only "$live" "$target" -- . \
     ':(exclude)area/pkilldata.txt' ':(exclude)area/wizlist.txt' \
     ':(exclude)area/maxload.txt' ':(exclude)area/offense.txt' \
     ':(exclude)area/relics.txt' ':(exclude)area/not.txt' \
-    ':(exclude)area/ban.txt' ':(exclude)area/dpsboard.txt')
+    ':(exclude)area/ban.txt' ':(exclude)area/dpsboard.txt' \
+    ':(exclude)area/built')
 live_short=$(git -C "$BUILD" rev-parse --short "$live")
 if [ -z "$changed" ]; then
     status "live at $live_short; main ($short) differs only in docs, tests or state"

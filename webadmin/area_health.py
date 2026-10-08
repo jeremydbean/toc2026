@@ -5,9 +5,9 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 try:
-    from webadmin.area_parser import AreaParser, flag_bit, parse_flag_value
+    from webadmin.area_parser import AreaParser, flag_bit, listed_area_files, parse_flag_value
 except ImportError:  # pragma: no cover - supports direct script execution
-    from area_parser import AreaParser, flag_bit, parse_flag_value
+    from area_parser import AreaParser, flag_bit, listed_area_files, parse_flag_value
 
 
 REVERSE_DIRECTIONS = {0: 2, 1: 3, 2: 0, 3: 1, 4: 5, 5: 4}
@@ -50,9 +50,9 @@ def _listed_area_files(area_directory: Path) -> Tuple[List[str], List[str]]:
     if not area_list_file.exists():
         return listed, ["area.lst"]
 
-    for raw_line in area_list_file.read_text(encoding="latin-1", errors="ignore").splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("$") or not line.endswith(".are"):
+    # area.lst and then the built areas' list, as the game loads them.
+    for line in listed_area_files(area_directory):
+        if not line.endswith(".are"):
             continue
         listed.append(line)
         if not (area_directory / line).exists():
@@ -102,7 +102,8 @@ def _declares_area(area_directory: Path, filename: str) -> bool:
 
     for raw_line in path.read_text(encoding="latin-1", errors="ignore").splitlines():
         fields = raw_line.strip().split(maxsplit=1)
-        if fields and fields[0] == "#AREA":
+        # #AREADATA is the header an area built in game (ANEW) carries.
+        if fields and fields[0] in ("#AREA", "#AREADATA"):
             return True
     return False
 

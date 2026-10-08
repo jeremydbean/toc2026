@@ -1,8 +1,9 @@
 """In-game area building: ANEW makes a buildable area that survives a reboot.
 
 Phase 1 of the in-game building subsystem (owner, 2026-10-06). ANEW declares
-an area with its own vnum range, writes a stub .are with an #AREADATA header,
-lists it in area.lst, and links it live. A room made with GOTO inside the
+an area with its own vnum range, writes a stub .are with an #AREADATA header
+in area/built/, lists it in built/built.lst (never area.lst, which is code),
+and links it live. A room made with GOTO inside the
 range belongs to the new area and is editable; RSAVE writes it into the file;
 after a reboot the area reloads with its range and the room persists.
 """
@@ -26,6 +27,42 @@ def run(client, command: str, settle: float = 1.2) -> str:
     client.send(command)
     client.drain(settle)
     return client.transcript[mark:]
+
+
+class BuiltAreaPersistenceTests(unittest.TestCase):
+    """A built area reaches git and survives deploys (phase 7).
+
+    It used to live on the host alone, and a code deploy -- which rebuilds
+    area/ from git -- would have dropped it. Now ANEW writes into
+    area/built/, which the state sync commits and deploys leave alone."""
+
+    def test_the_state_sync_carries_area_built_to_git(self) -> None:
+        sync = (ROOT / "deploy" / "windows-vm" / "toc-state-sync").read_text()
+        self.assertIn('BUILT_DIR="area/built"', sync)
+        self.assertRegex(sync, r"rsync -a --exclude '\*\.bak' --exclude '\*\.tmp'")
+        self.assertIn('git add -f -A "$BUILT_DIR"', sync)
+        # Never --delete: a missing built area is a fault, not a retirement.
+        block = sync[sync.index('if [ -d "$TOC_ROOT/$BUILT_DIR" ]'):]
+        block = block[:block.index("fi")]
+        self.assertNotIn("--delete", block)
+
+    def test_a_deploy_never_writes_over_the_live_built_areas(self) -> None:
+        deploy = (ROOT / "deploy" / "windows-vm" / "toc-deploy").read_text()
+        self.assertIn("--exclude 'area/built/'", deploy)
+        self.assertIn('rsync -a --ignore-existing "$BUILD/area/built/"', deploy)
+
+    def test_built_areas_are_ignored_by_git_ci_and_the_auto_deployer(self) -> None:
+        self.assertIn("area/built/", (ROOT / ".gitignore").read_text())
+        self.assertIn("'area/built/**'",
+                      (ROOT / ".github" / "workflows" / "validate.yml").read_text())
+        self.assertIn("':(exclude)area/built'",
+                      (ROOT / "deploy" / "windows-vm" / "toc-auto-deploy").read_text())
+
+    def test_the_game_loads_the_built_list_after_area_lst(self) -> None:
+        db = (ROOT / "src" / "db.c").read_text(encoding="latin-1")
+        boot = db[db.index("fpList = fopen( AREA_LIST,"):]
+        self.assertLess(boot.index("fclose( fpList );"),
+                        boot.index("fopen( BUILT_AREA_LIST"))
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
@@ -67,13 +104,16 @@ class AreaBuildingTests(unittest.TestCase):
                 imm.send("quit")
                 self.assertTrue(imm.wait_closed())
 
-            # The stub file and the area.lst entry exist in the tree.
+            # The stub file is in area/built/ and listed in the built list;
+            # area.lst, which is code, is untouched.
             area_dir = mud.root / "area"
-            files = [p.name for p in area_dir.glob("*.are")
+            files = [p.name for p in (area_dir / "built").glob("*.are")
                      if "mossy" in p.name.lower()]
-            self.assertTrue(files, "no .are file written for the new area")
-            self.assertIn(files[0],
-                          (area_dir / "area.lst").read_text(encoding="latin-1"))
+            self.assertTrue(files, "no .are file written in area/built/")
+            self.assertIn(f"built/{files[0]}",
+                          (area_dir / "built" / "built.lst").read_text(encoding="latin-1"))
+            self.assertNotIn(files[0],
+                             (area_dir / "area.lst").read_text(encoding="latin-1"))
 
             # Reboot: the area reloads from its file with range and room.
             mud.restart()

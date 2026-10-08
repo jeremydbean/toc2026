@@ -22,8 +22,10 @@
 #else
 #include <sys/types.h>
 #include <sys/time.h>
+#include <sys/stat.h>   /* mkdir, for ANEW's built/ directory */
 #include <dirent.h>
 #endif
+#include <errno.h>
 #include <stdio.h>
 #include <string.h>
 #include <strings.h> /* for bzero() */
@@ -6011,7 +6013,8 @@ static void area_slug( const char *name, char *out, size_t size )
 /*
  * ANEW <low> <high> <name> -- make a new buildable area with its own vnum
  * range. It writes a stub .are (an #AREADATA header and an empty #ROOMS
- * section), lists it in area.lst so it loads next boot, and links it live
+ * section) in built/, lists it in built/built.lst so it loads next boot
+ * (after area.lst), and links it live
  * so building can start at once. GOTO a vnum in the range to make a room;
  * RSAVE writes the rooms into the file.
  */
@@ -6083,7 +6086,22 @@ void do_anew( CHAR_DATA *ch, char *argument )
         }
     }
 
-    area_slug( argument, slug, sizeof(slug) );
+    /* built/<name>.are: areas made in game live apart from the shipped
+       world (see BUILT_AREA_DIR), which is what lets the state sync carry
+       them to git and deploys leave them be. */
+    {
+        char base[MAX_INPUT_LENGTH];
+
+        area_slug( argument, base, sizeof(base) );
+        snprintf( slug, sizeof(slug), "%s/%s", BUILT_AREA_DIR, base );
+        if ( mkdir( BUILT_AREA_DIR, 0775 ) != 0 && errno != EEXIST )
+        {
+            snprintf( buf, sizeof(buf), "Could not make the %s directory.\n\r",
+                      BUILT_AREA_DIR );
+            send_to_char( buf, ch );
+            return;
+        }
+    }
 
     if ( ( fp = fopen( slug, "r" ) ) != NULL )
     {
@@ -6113,12 +6131,12 @@ void do_anew( CHAR_DATA *ch, char *argument )
              argument, ch->name != NULL ? ch->name : "All", lo, hi );
     fclose( fp );
 
-    if ( !append_area_to_list( slug, why, sizeof(why) ) )
+    if ( !append_area_to_list( BUILT_AREA_LIST, slug, why, sizeof(why) ) )
     {
         snprintf( buf, sizeof(buf),
                   "Wrote %s but could not list it in %s (%s); add it by "
                   "hand before the next boot.\n\r",
-                  slug, AREA_LIST_FILE, why );
+                  slug, BUILT_AREA_LIST, why );
         send_to_char( buf, ch );
         /* Fall through and link it live anyway. */
     }
@@ -6357,11 +6375,11 @@ void do_asave( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( pArea->min_vnum <= 0 )
+    if ( !area_is_built( pArea ) )
     {
-        send_to_char( "That area has no vnum range of its own, so ASAVE cannot "
-                      "tell which mobiles\n\rand objects are its.  RSAVE writes "
-                      "its rooms.  Areas made with ANEW save whole.\n\r", ch );
+        send_to_char( "That area was not made with ANEW, so ASAVE will not write "
+                      "it whole.\n\rRSAVE writes its rooms.  Areas made with ANEW "
+                      "save whole.\n\r", ch );
         return;
     }
 
@@ -6900,7 +6918,7 @@ void do_rsave( CHAR_DATA *ch, char *argument )
 
     /* An area made with ANEW is saved whole: writing only its rooms would
        leave the mobiles and objects built beside them out of the file. */
-    if ( pArea->min_vnum > 0 )
+    if ( area_is_built( pArea ) )
     {
         if ( str_cmp( arg1, "confirm" ) )
         {

@@ -27,6 +27,7 @@ on:
       - 'area/not.txt'
       - 'area/ban.txt'
       - 'area/dpsboard.txt'
+      - 'area/built/**'
   pull_request:
 
 # A push while a run is going makes that run pointless: it is

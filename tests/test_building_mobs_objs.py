@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import re
 import unittest
+from pathlib import Path
 
 from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
 
@@ -75,7 +76,7 @@ class MobObjBuildingTests(unittest.TestCase):
                 self.assertTrue(client.wait_closed())
             patch_player_file(mud, "Zbuildtwo", Levl=70, Room=4207)
 
-            area_path = mud.root / "area" / AREA_FILE
+            area_path = mud.root / "area" / "built" / AREA_FILE
 
             with mud.connect(timeout=120) as imm:
                 login(imm, "Zbuildtwo", PASSWORD)
@@ -157,6 +158,25 @@ class MobObjBuildingTests(unittest.TestCase):
                              "the area file changed when saved again after a reboot")
             backups = list(area_path.parent.glob(AREA_FILE + ".*.bak"))
             self.assertTrue(backups, "no backup kept of the previous file")
+
+            # The website's parser reads what the game wrote: the
+            # #AREADATA header, and every section, from the built list.
+            import sys
+            sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+            from webadmin.area_parser import AreaParser
+
+            parser = AreaParser(mud.root / "area")
+            parser.parse_all()
+            key = f"built/{AREA_FILE}"
+            self.assertIn(key, parser.areas)
+            self.assertEqual(parser.areas[key].name, "Zed Copy Works")
+            self.assertEqual(parser.areas[key].vnums, f"{LO} - {HI}")
+            for vnum in MOB_COPIES:
+                self.assertEqual(parser.mobiles[vnum].area_file, key)
+            for vnum in OBJ_COPIES:
+                self.assertEqual(parser.objects[vnum].area_file, key)
+            self.assertIn(ROOM, parser.rooms)
+            self.assertIn(21003, parser.shopkeepers)
 
 
 if __name__ == "__main__":

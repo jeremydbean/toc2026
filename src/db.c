@@ -467,7 +467,35 @@ void boot_db( void )
             load_area_file( get_seasonal_area(strArea) );
         }
         fclose( fpList );
- 
+
+        /* Then the areas built in game (ANEW), from their own list. It is
+           missing until somebody builds one, and that is no error. Loaded
+           last, so a reset in one can name anything shipped. */
+        if ( ( fpList = fopen( BUILT_AREA_LIST, "r" ) ) != NULL )
+        {
+            for ( ; ; )
+            {
+                char note[MAX_INPUT_LENGTH * 2];
+                FILE *probe;
+
+                toc_strlcpy( strArea, fread_word( fpList ), sizeof(strArea) );
+                if ( strArea[0] == '$' || strArea[0] == '\0' )
+                    break;
+                /* A built area that is listed but gone is a builder's
+                   loss, not a reason to keep the whole game down. */
+                if ( ( probe = fopen( strArea, "r" ) ) == NULL )
+                {
+                    snprintf( note, sizeof(note), "Boot_db: built area %s is "
+                              "listed but missing; skipped.", strArea );
+                    log_string( note );
+                    continue;
+                }
+                fclose( probe );
+                load_area_file( strArea );
+            }
+            fclose( fpList );
+        }
+
         /*
          * The area that rooms built in game belong to.
          *
@@ -697,7 +725,7 @@ AREA_DATA *area_for_vnum( int vnum )
 
     for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
     {
-        if ( pArea->min_vnum > 0
+        if ( area_is_built( pArea )
           && vnum >= pArea->min_vnum && vnum <= pArea->max_vnum )
             return pArea;
     }
@@ -706,12 +734,27 @@ AREA_DATA *area_for_vnum( int vnum )
 }
 
 
-/* A shipped area declared no range and is read-mostly; a buildable area
-   (ANEW, or the builder workshop) carries one and may be edited freely. */
+/*
+ * An area made in game with ANEW: one whose file is in built/. A declared
+ * range alone is not enough -- sinistra.are shipped in ROM OLC's own
+ * #AREADATA format, VNUMs and all, and read as buildable by anyone it
+ * named until 2026-10-08.
+ */
+bool area_is_built( AREA_DATA *pArea )
+{
+    size_t n = strlen( BUILT_AREA_DIR );
+
+    return pArea != NULL && pArea->min_vnum > 0 && pArea->file_name != NULL
+        && !strncmp( pArea->file_name, BUILT_AREA_DIR, n )
+        && pArea->file_name[n] == '/';
+}
+
+
+/* A shipped area is read-mostly; a buildable area (ANEW, or the builder
+   workshop) may be edited freely by whoever may build there. */
 bool area_is_buildable( AREA_DATA *pArea )
 {
-    return pArea != NULL
-      && ( pArea->min_vnum > 0 || pArea == new_area );
+    return pArea != NULL && ( area_is_built( pArea ) || pArea == new_area );
 }
  
  
@@ -3310,9 +3353,9 @@ bool save_area_full( AREA_DATA *pArea, char *why, size_t why_size )
     int vnum;
     int dropped;
 
-    if ( pArea == NULL || pArea->min_vnum <= 0 )
+    if ( !area_is_built( pArea ) )
     {
-        snprintf( why, why_size, "that area declares no vnum range" );
+        snprintf( why, why_size, "only an area made with ANEW is saved whole" );
         return false;
     }
     if ( pArea->file_name == NULL || pArea->file_name[0] == '\0' )
@@ -3623,12 +3666,14 @@ static bool is_area_list_terminator( const char *line )
 
 
 /*
- * Put a new area file into area.lst so it loads at the next boot, inserted
- * just before the '$' terminator. A no-op if it is already listed. The
- * file is rewritten through a temp and renamed, like the room saver, so a
- * failure leaves area.lst exactly as it was.
+ * Put an area file into an area list (area.lst, or the built areas' own
+ * list) so it loads at the next boot, inserted just before the '$'
+ * terminator. A no-op if it is already listed; a list that does not exist
+ * yet is made. The file is rewritten through a temp and renamed, like the
+ * room saver, so a failure leaves the list exactly as it was.
  */
-bool append_area_to_list( const char *basename, char *why, size_t why_size )
+bool append_area_to_list( const char *list, const char *basename,
+                          char *why, size_t why_size )
 {
     char temp_path[MAX_INPUT_LENGTH + 32];
     char line[MAX_STRING_LENGTH];
@@ -3642,13 +3687,21 @@ bool append_area_to_list( const char *basename, char *why, size_t why_size )
         return false;
     }
 
-    if ( ( in = fopen( AREA_LIST_FILE, "r" ) ) == NULL )
+    if ( ( in = fopen( list, "r" ) ) == NULL )
     {
-        snprintf( why, why_size, "cannot read %s", AREA_LIST_FILE );
-        return false;
+        /* The first built area makes the built list. */
+        if ( ( out = fopen( list, "w" ) ) == NULL )
+        {
+            snprintf( why, why_size, "cannot write %s", list );
+            return false;
+        }
+        fprintf( out, "%s\n$\n", basename );
+        fclose( out );
+        snprintf( why, why_size, "%s", list );
+        return true;
     }
 
-    snprintf( temp_path, sizeof(temp_path), "%s.tmp", AREA_LIST_FILE );
+    snprintf( temp_path, sizeof(temp_path), "%s.tmp", list );
     if ( ( out = fopen( temp_path, "w" ) ) == NULL )
     {
         fclose( in );
@@ -3699,13 +3752,13 @@ bool append_area_to_list( const char *basename, char *why, size_t why_size )
 
     fclose( out );
 
-    if ( rename( temp_path, AREA_LIST_FILE ) != 0 )
+    if ( rename( temp_path, list ) != 0 )
     {
-        snprintf( why, why_size, "could not replace %s", AREA_LIST_FILE );
+        snprintf( why, why_size, "could not replace %s", list );
         return false;
     }
 
-    snprintf( why, why_size, "%s", AREA_LIST_FILE );
+    snprintf( why, why_size, "%s", list );
     return true;
 }
 

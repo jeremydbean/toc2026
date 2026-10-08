@@ -2604,19 +2604,19 @@ vnum in it -- and must not overlap another area.  Pick a free block with
 RLIST, VNUM, or ALIST.  Keep an area under 5000 vnums; rooms themselves
 run from 1 to WORLD_SIZE.
 
-ANEW writes a stub file, area/<name>.are, carrying an #AREADATA header with
-the range and your name as its builder, and lists it in area.lst so it
-loads at the next reboot.  It is linked live at once, so you can GOTO a
-vnum in the range straightaway: the room is born into the new area, not the
-workshop.  Build as usual (SET ROOM, RLINK) and RSAVE CONFIRM to write it.
+ANEW writes a stub file, area/built/<name>.are, carrying an #AREADATA
+header with the range and your name as its builder, and lists it in
+built/built.lst so it loads at the next reboot, after the shipped world.
+It is linked live at once, so you can GOTO a vnum in the range
+straightaway: the room is born into the new area, not the workshop.  Build
+as usual and ASAVE to write it.
 
 Anyone named in the area's Builders line may build there; an implementor
 may build anywhere.  ASTAT shows who.
 
-A caution about deploys: a file made in game lives only on the running
-server until it is committed to the repository.  A code deploy rebuilds the
-area directory from git and will drop an area that was never committed.
-Tell an implementor when you have made one worth keeping.
+What you save is kept.  Every few minutes the server copies the built
+areas into the game's repository along with the player files, and a code
+update leaves them where they are.  What you have not saved is not.
 
 See also: BUILDING, ALIST, ASTAT, RLINK, RSAVE
 ~

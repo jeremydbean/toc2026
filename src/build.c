@@ -2504,7 +2504,7 @@ static ROOM_INDEX_DATA *placeable_room( CHAR_DATA *ch )
 
     if ( room == NULL )
         return NULL;
-    if ( room->area == NULL || room->area->min_vnum <= 0 )
+    if ( !area_is_built( room->area ) )
     {
         send_to_char( "Resets are kept by ASAVE, which only an area made with ANEW "
                       "has.  Build in one.\n\r", ch );
@@ -2960,7 +2960,7 @@ void do_place( CHAR_DATA *ch, char *argument )
 
             if ( there != NULL && ( back = there->exit[rev_dir[door]] ) != NULL
               && back->u1.to_room == room && IS_SET( back->exit_info, EX_ISDOOR )
-              && there->area != NULL && there->area->min_vnum > 0
+              && area_is_built( there->area )
               && may_build_area( ch, there->area )
               && back->lock != 4 && back->lock != 5 )
             {

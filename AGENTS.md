@@ -882,6 +882,16 @@ resets and a guided wizard to come). Three rules the code depends on:
   pointer, so the range is how `save_area_full` in `db.c` knows what to
   write, and why MCREATE/OCREATE refuse a vnum outside one. RSAVE on such
   an area saves it whole; a legacy `#AREA` area still saves rooms only.
+- **Built areas live in `area/built/`**, listed in `area/built/built.lst`
+  (`BUILT_AREA_DIR`/`BUILT_AREA_LIST`), which boot loads after `area.lst`
+  and skips a missing file in rather than exiting. Building never edits
+  `area.lst`, which is code. `toc-state-sync` commits the directory (no
+  `--delete`, no `*.bak`/`*.tmp`), `toc-deploy` excludes it and only fills
+  in missing files with `--ignore-existing`, and `.gitignore`,
+  `validate.yml`'s `paths-ignore` and `toc-auto-deploy`'s excludes all
+  name it -- `tests/test_building_areas.py` checks each. The Python tools
+  read both lists through `listed_area_files()` in `area_parser.py`, and
+  key a built area as `built/<name>.are`.
 - **The writer is the loader's exact inverse**, and
   `tests/test_building_mobs_objs.py` holds it to that: save, reboot, save,
   byte for byte. Change a loader and change its writer in the same commit.
@@ -1052,7 +1062,8 @@ See `SECURITY.md` for mitigation and reporting procedures.
 
 `deploy/windows-vm/toc-state-sync` runs **every five minutes** on
 whichever host is running the game and commits `player/`, `gods/`,
-`log/` and the `area/` runtime files to `main` **in plaintext**. It
+`log/`, the `area/` runtime files and the areas built in game
+(`area/built/`, see In-Game Building) to `main` **in plaintext**. It
 commits nothing when nothing changed.
 
 The interval was widened twice while chasing CI noise and put back

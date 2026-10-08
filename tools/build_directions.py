@@ -268,7 +268,9 @@ def load_world():
         if not path.is_file():
             continue
         text = path.read_text("latin-1")
-        am = re.search(r"#AREA\s+(.*?)~", text, re.S)
+        # An area built in game (ANEW) is headed #AREADATA, Name <text>~.
+        dm = re.search(r"^#AREADATA\b.*?^\s*Name\s+(.*?)~", text, re.S | re.M)
+        am = dm or re.search(r"#AREA\s+(.*?)~", text, re.S)
         aname = re.sub(r"\{.*?\}", "", am.group(1)).strip() if am else fname
         aname = re.sub(r"\s+", " ", aname)
 

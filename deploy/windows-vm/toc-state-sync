@@ -60,6 +60,7 @@ STATE_FILES="area/notes.txt area/bugs.txt area/ideas.txt area/typos.txt
 # a cleared file sat in git for ever, where toc-restore would have laid
 # the cleared reports back down.
 REPORT_FILES="area/bugs.txt area/ideas.txt area/typos.txt"
+BUILT_DIR="area/built"
 
 [ -d "$TOC_ROOT/player" ] || { echo "no player dir at $TOC_ROOT" >&2; exit 1; }
 [ -r "$GIT_SSH_KEY" ] || { echo "no deploy key at $GIT_SSH_KEY" >&2; exit 1; }
@@ -97,6 +98,17 @@ for f in $STATE_FILES; do
     cp "$TOC_ROOT/$f" "$STATE_REPO/$f"
 done
 
+# Areas built in game with ANEW: area/built/, the area files and their
+# own list (BUILT_AREA_LIST in merc.h). Without this a built area lived on
+# the host alone. Each save's dated backup and any temp file stay behind.
+# No --delete: a built area missing from the host means something went
+# wrong, not that it was retired, and a sync must not delete it from git.
+if [ -d "$TOC_ROOT/$BUILT_DIR" ]; then
+    mkdir -p "$STATE_REPO/$BUILT_DIR"
+    rsync -a --exclude '*.bak' --exclude '*.tmp' \
+        "$TOC_ROOT/$BUILT_DIR/" "$STATE_REPO/$BUILT_DIR/"
+fi
+
 for f in $REPORT_FILES; do
     for archive in "$TOC_ROOT/$f".*; do
         [ -f "$archive" ] || continue
@@ -117,6 +129,7 @@ done
 for f in $STATE_FILES; do
     [ -f "$STATE_REPO/$f" ] && git add -f "$f"
 done
+[ -d "$STATE_REPO/$BUILT_DIR" ] && git add -f -A "$BUILT_DIR"
 
 if git diff --cached --quiet; then
     exit 0
