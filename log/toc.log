@@ -63153,3 +63153,14 @@ Thu Oct  8 00:25:06 2026 :: Sock.sinaddr:  5.161.73.160
 Thu Oct  8 00:25:07 2026 :: EOF encountered on read.
 Thu Oct  8 00:30:11 2026 :: Sock.sinaddr:  5.161.177.47
 Thu Oct  8 00:30:11 2026 :: EOF encountered on read.
+Thu Oct  8 00:34:43 2026 :: Sock.sinaddr:  208.126.22.104
+Thu Oct  8 00:34:44 2026 :: Loading Alaric's playerfile
+Thu Oct  8 00:34:45 2026 :: Alaric@208.126.22.104 has connected.
+Thu Oct  8 00:34:46 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 0
+Thu Oct  8 00:34:48 2026 :: Log Alaric [4210]: who
+Thu Oct  8 00:34:53 2026 :: Log Alaric [4210]: wo
+Thu Oct  8 00:34:54 2026 :: Log Alaric [4210]: wake
+Thu Oct  8 00:34:54 2026 :: Log Alaric [4210]: l
+Thu Oct  8 00:34:56 2026 :: Log Alaric [4210]: sleep
+Thu Oct  8 00:35:15 2026 :: Sock.sinaddr:  34.198.201.66
+Thu Oct  8 00:35:15 2026 :: EOF encountered on read.
