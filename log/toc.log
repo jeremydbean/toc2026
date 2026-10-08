@@ -64724,3 +64724,40 @@ Thu Oct  8 23:46:32 2026 :: Sock.sinaddr:  5.161.117.52
 Thu Oct  8 23:46:33 2026 :: EOF encountered on read.
 Thu Oct  8 23:51:36 2026 :: Sock.sinaddr:  52.87.72.16
 Thu Oct  8 23:51:36 2026 :: EOF encountered on read.
+Thu Oct  8 23:55:39 2026 :: Sock.sinaddr:  208.126.22.104
+Thu Oct  8 23:55:41 2026 :: Loading Alaric's playerfile
+Thu Oct  8 23:55:42 2026 :: Alaric@208.126.22.104 has connected.
+Thu Oct  8 23:55:42 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Thu Oct  8 23:55:44 2026 :: Log Alaric [2497]: who
+Thu Oct  8 23:55:46 2026 :: Log Alaric [2497]: aq ti
+Thu Oct  8 23:55:47 2026 :: Log Alaric [2497]: wake
+Thu Oct  8 23:55:47 2026 :: Log Alaric [2497]: l
+Thu Oct  8 23:55:48 2026 :: Log Alaric [2497]: af
+Thu Oct  8 23:55:49 2026 :: Log Alaric [2497]: c arm
+Thu Oct  8 23:55:54 2026 :: Log Alaric [2497]: c shield
+Thu Oct  8 23:56:02 2026 :: Log Alaric [2497]: c major
+Thu Oct  8 23:56:06 2026 :: Log Alaric [2497]: c major
+Thu Oct  8 23:56:10 2026 :: Log Alaric [2497]: c major
+Thu Oct  8 23:56:18 2026 :: Log Alaric [2497]: c can
+Thu Oct  8 23:56:23 2026 :: Log Alaric [2497]: nos
+Thu Oct  8 23:56:23 2026 :: Log Alaric [2497]: c can
+Thu Oct  8 23:56:27 2026 :: Log Alaric [2497]: c can
+Thu Oct  8 23:56:33 2026 :: Log Alaric [2497]: nos
+Thu Oct  8 23:56:33 2026 :: Log Alaric [2497]: c major
+Thu Oct  8 23:56:37 2026 :: Log Alaric [2497]: af
+Thu Oct  8 23:56:41 2026 :: Sock.sinaddr:  178.156.184.20
+Thu Oct  8 23:56:41 2026 :: EOF encountered on read.
+Thu Oct  8 23:56:44 2026 :: Log Alaric [2497]: c arm
+Thu Oct  8 23:56:48 2026 :: Log Alaric [2497]: c arm
+Thu Oct  8 23:56:54 2026 :: Log Alaric [2497]: c shield
+Thu Oct  8 23:57:00 2026 :: Log Alaric [2497]: c shield
+Thu Oct  8 23:57:06 2026 :: Log Alaric [2497]: c shroud
+Thu Oct  8 23:57:11 2026 :: Log Alaric [2497]: c shroud
+Thu Oct  8 23:57:17 2026 :: Log Alaric [2497]: c shroud
+Thu Oct  8 23:57:26 2026 :: Log Alaric [2497]: help major
+Thu Oct  8 23:57:52 2026 :: Log Alaric [2497]: help enchant
+Thu Oct  8 23:58:08 2026 :: Log Alaric [2497]: who
+Thu Oct  8 23:58:10 2026 :: Log Alaric [2497]: stash
+Thu Oct  8 23:58:14 2026 :: Log Alaric [2497]: time
+Thu Oct  8 23:58:16 2026 :: Log Alaric [2497]: wake
+Thu Oct  8 23:58:17 2026 :: Log Alaric [2497]: changes
