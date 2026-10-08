@@ -63509,3 +63509,41 @@ Thu Oct  8 01:20:13 2026 :: Log Alaric [2127]: east
 Thu Oct  8 01:20:13 2026 :: Log Alaric [2128]: arrived (Yellow Dragon Road) from 2127
 Thu Oct  8 01:20:13 2026 :: Log Alaric [2128]: south
 Thu Oct  8 01:20:13 2026 :: Log Alaric [2133]: arrived (NO MAN'S LAND) from 2128
+Thu Oct  8 01:20:13 2026 :: Log Alaric [2133]: south
+Thu Oct  8 01:20:13 2026 :: Log Alaric [2138]: arrived (NO MAN'S LAND) from 2133
+Thu Oct  8 01:20:13 2026 :: Log Alaric [2138]: south
+Thu Oct  8 01:20:13 2026 :: Log Alaric [2143]: arrived (Another corner of Hector and Achilles streets) from 2138
+Thu Oct  8 01:20:14 2026 :: Log Alaric [2143]: east
+Thu Oct  8 01:20:14 2026 :: Log Alaric [2144]: arrived (Hector Street at Jeweler) from 2143
+Thu Oct  8 01:20:14 2026 :: Log Alaric [2144]: east
+Thu Oct  8 01:20:14 2026 :: Log Alaric [2145]: arrived (Corner of Ajax and Hector) from 2144
+Thu Oct  8 01:20:14 2026 :: Log Alaric [2145]: south
+Thu Oct  8 01:20:14 2026 :: Log Alaric [2149]: arrived (Ajax Avenue at chapel) from 2145
+Thu Oct  8 01:20:14 2026 :: Log Alaric [2149]: south
+Thu Oct  8 01:20:14 2026 :: Log Alaric [2154]: arrived (Ajax street at Weaponshop (or whats left of it)) from 2149
+Thu Oct  8 01:20:15 2026 :: Log Alaric [2154]: west
+Thu Oct  8 01:20:15 2026 :: Log Alaric [2153]: arrived (What is left of the weaponshop) from 2154
+Thu Oct  8 01:20:17 2026 :: Log Alaric [2153]: get all
+Thu Oct  8 01:20:17 2026 :: Log Alaric [2153]: recal
+Thu Oct  8 01:20:17 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2153
+Thu Oct  8 01:20:17 2026 :: Log Alaric [2497]: recal
+Thu Oct  8 01:20:18 2026 :: Log Alaric [2497]: recal
+Thu Oct  8 01:20:18 2026 :: Log Alaric [2497]: aq co
+Thu Oct  8 01:20:18 2026 :: Log Alaric [2497]: quest complete: 18 gold, 157 quest points, emergency (streak bonus 50%)
+Thu Oct  8 01:20:20 2026 :: Log Alaric [2497]: aq ga no
+Thu Oct  8 01:20:21 2026 :: Log Alaric [2497]: sc
+Thu Oct  8 01:20:55 2026 :: Sock.sinaddr:  5.161.113.195
+Thu Oct  8 01:20:56 2026 :: EOF encountered on read.
+Thu Oct  8 01:24:20 2026 :: Log Alaric [2497]: af
+Thu Oct  8 01:24:23 2026 :: Log Alaric [2497]: c arm
+Thu Oct  8 01:24:29 2026 :: Log Alaric [2497]: c shroud
+Thu Oct  8 01:24:37 2026 :: Log Alaric [2497]: c pass
+Thu Oct  8 01:24:41 2026 :: Log Alaric [2497]: c pass
+Thu Oct  8 01:24:52 2026 :: Log Alaric [2497]: help protective
+Thu Oct  8 01:25:00 2026 :: Log Alaric [2497]: l
+Thu Oct  8 01:25:02 2026 :: Log Alaric [2497]: en do
+Thu Oct  8 01:25:02 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Thu Oct  8 01:25:03 2026 :: Log Alaric [2401]: c rope
+Thu Oct  8 01:25:06 2026 :: Log Alaric [2401]: c rope
+Thu Oct  8 01:25:06 2026 :: Log Alaric [6754]: arrived (In a pocket dimension.
+) from 2401
