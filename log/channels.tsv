@@ -714,3 +714,10 @@
 1791415188	say	questor thews	Excellent work! The realm is in your debt!
 1791415188	say	questor thews	Streak of 3 in a row! A +20% bonus has been added!
 1791415188	say	questor thews	Here's your 16 gold - well earned!
+1791420210	say	questor thews	Thank you for answering the call, brave Alaric!
+1791420210	say	questor thews	You have 18 minutes to complete this quest.
+1791420210	say	questor thews	The realm is counting on you!
+1791420212	question	Alaric	walk
+1791420239	say	questor thews	Splendid - you've returned victorious!
+1791420239	say	questor thews	Streak of 3 in a row! A +20% bonus has been added!
+1791420239	say	questor thews	Here's your 7 gold - well earned!
