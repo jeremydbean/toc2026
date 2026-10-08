@@ -63794,3 +63794,10 @@ Thu Oct  8 01:45:57 2026 :: Log Alaric [2497]: aq ga no
 Thu Oct  8 01:45:58 2026 :: Log Alaric [2497]: sc
 Thu Oct  8 01:46:19 2026 :: Sock.sinaddr:  178.156.184.20
 Thu Oct  8 01:46:20 2026 :: EOF encountered on read.
+Thu Oct  8 01:51:24 2026 :: Sock.sinaddr:  178.156.184.20
+Thu Oct  8 01:51:24 2026 :: EOF encountered on read.
+Thu Oct  8 01:52:59 2026 :: Sock.sinaddr:  216.226.78.30
+Thu Oct  8 01:52:59 2026 :: EOF encountered on read.
+Thu Oct  8 01:54:29 2026 :: Log Alaric [2497]: wake
+Thu Oct  8 01:54:30 2026 :: Log Alaric [2497]: aq re
+Thu Oct  8 01:54:43 2026 :: Log Alaric [2497]: aq abort
