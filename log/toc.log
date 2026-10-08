@@ -63465,3 +63465,47 @@ Thu Oct  8 01:05:41 2026 :: Sock.sinaddr:  5.161.215.244
 Thu Oct  8 01:05:42 2026 :: EOF encountered on read.
 Thu Oct  8 01:10:46 2026 :: Sock.sinaddr:  52.22.236.30
 Thu Oct  8 01:10:46 2026 :: EOF encountered on read.
+Thu Oct  8 01:15:51 2026 :: Sock.sinaddr:  5.161.215.244
+Thu Oct  8 01:15:51 2026 :: EOF encountered on read.
+Thu Oct  8 01:20:04 2026 :: Log Alaric [2497]: l
+Thu Oct  8 01:20:06 2026 :: Log Alaric [2497]: aq re
+Thu Oct  8 01:20:08 2026 :: Log Alaric [2497]: enter door
+Thu Oct  8 01:20:08 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Thu Oct  8 01:20:08 2026 :: Log Alaric [2401]: east
+Thu Oct  8 01:20:08 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Thu Oct  8 01:20:09 2026 :: Log Alaric [2403]: east
+Thu Oct  8 01:20:09 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Thu Oct  8 01:20:09 2026 :: Log Alaric [2420]: east
+Thu Oct  8 01:20:09 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Thu Oct  8 01:20:09 2026 :: Log Alaric [2421]: south
+Thu Oct  8 01:20:09 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Thu Oct  8 01:20:09 2026 :: Log Alaric [2441]: east
+Thu Oct  8 01:20:09 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Thu Oct  8 01:20:10 2026 :: Log Alaric [2442]: south
+Thu Oct  8 01:20:10 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Thu Oct  8 01:20:10 2026 :: Log Alaric [2443]: east
+Thu Oct  8 01:20:10 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Thu Oct  8 01:20:10 2026 :: Log Alaric [2444]: east
+Thu Oct  8 01:20:10 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Thu Oct  8 01:20:10 2026 :: Log Alaric [2445]: east
+Thu Oct  8 01:20:10 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Thu Oct  8 01:20:11 2026 :: Log Alaric [2101]: east
+Thu Oct  8 01:20:11 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Thu Oct  8 01:20:11 2026 :: Log Alaric [2102]: south
+Thu Oct  8 01:20:11 2026 :: Log Alaric [2109]: arrived (An over-grown lot) from 2102
+Thu Oct  8 01:20:11 2026 :: Log Alaric [2109]: east
+Thu Oct  8 01:20:11 2026 :: Log Alaric [2110]: arrived (East end of an over-grown plot of land) from 2109
+Thu Oct  8 01:20:11 2026 :: Log Alaric [2110]: south
+Thu Oct  8 01:20:11 2026 :: Log Alaric [2116]: arrived (Dracolich Plaza) from 2110
+Thu Oct  8 01:20:12 2026 :: Log Alaric [2116]: east
+Thu Oct  8 01:20:12 2026 :: Log Alaric [2117]: arrived (Shortcut) from 2116
+Thu Oct  8 01:20:12 2026 :: Log Alaric [2117]: south
+Thu Oct  8 01:20:12 2026 :: Log Alaric [2121]: arrived (Shortcut) from 2117
+Thu Oct  8 01:20:12 2026 :: Log Alaric [2121]: east
+Thu Oct  8 01:20:12 2026 :: Log Alaric [2122]: arrived (Ice Dragon Way) from 2121
+Thu Oct  8 01:20:12 2026 :: Log Alaric [2122]: south
+Thu Oct  8 01:20:12 2026 :: Log Alaric [2127]: arrived (Yellow Dragon Road) from 2122
+Thu Oct  8 01:20:13 2026 :: Log Alaric [2127]: east
+Thu Oct  8 01:20:13 2026 :: Log Alaric [2128]: arrived (Yellow Dragon Road) from 2127
+Thu Oct  8 01:20:13 2026 :: Log Alaric [2128]: south
+Thu Oct  8 01:20:13 2026 :: Log Alaric [2133]: arrived (NO MAN'S LAND) from 2128
