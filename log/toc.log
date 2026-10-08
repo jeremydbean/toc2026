@@ -63673,3 +63673,57 @@ Thu Oct  8 01:27:15 2026 :: Log Alaric [2497]: c anim
 Thu Oct  8 01:27:18 2026 :: Log Alaric [2497]: prac
 Thu Oct  8 01:31:05 2026 :: Sock.sinaddr:  5.161.177.47
 Thu Oct  8 01:31:05 2026 :: EOF encountered on read.
+Thu Oct  8 01:35:41 2026 :: Log Alaric [2497]: wake
+Thu Oct  8 01:35:42 2026 :: Log Alaric [2497]: l
+Thu Oct  8 01:35:43 2026 :: Log Alaric [2497]: aq re
+Thu Oct  8 01:35:45 2026 :: Log Alaric [2497]: enter door
+Thu Oct  8 01:35:45 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Thu Oct  8 01:35:45 2026 :: Log Alaric [2401]: east
+Thu Oct  8 01:35:45 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Thu Oct  8 01:35:46 2026 :: Log Alaric [2403]: east
+Thu Oct  8 01:35:46 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Thu Oct  8 01:35:46 2026 :: Log Alaric [2420]: east
+Thu Oct  8 01:35:46 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Thu Oct  8 01:35:46 2026 :: Log Alaric [2421]: south
+Thu Oct  8 01:35:46 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Thu Oct  8 01:35:46 2026 :: Log Alaric [2441]: east
+Thu Oct  8 01:35:46 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Thu Oct  8 01:35:47 2026 :: Log Alaric [2442]: south
+Thu Oct  8 01:35:47 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Thu Oct  8 01:35:47 2026 :: Log Alaric [2443]: east
+Thu Oct  8 01:35:47 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Thu Oct  8 01:35:47 2026 :: Log Alaric [2444]: east
+Thu Oct  8 01:35:47 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Thu Oct  8 01:35:47 2026 :: Log Alaric [2445]: east
+Thu Oct  8 01:35:47 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Thu Oct  8 01:35:48 2026 :: Log Alaric [2101]: east
+Thu Oct  8 01:35:48 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Thu Oct  8 01:35:48 2026 :: Log Alaric [2102]: east
+Thu Oct  8 01:35:48 2026 :: Log Alaric [2103]: arrived (Along White Dragon Boulevard) from 2102
+Thu Oct  8 01:35:48 2026 :: Log Alaric [2103]: east
+Thu Oct  8 01:35:48 2026 :: Log Alaric [2104]: arrived (White Dragon Boulevard at Armory) from 2103
+Thu Oct  8 01:35:48 2026 :: Log Alaric [2104]: east
+Thu Oct  8 01:35:48 2026 :: Log Alaric [2105]: arrived (White Dragon Blvd.) from 2104
+Thu Oct  8 01:35:49 2026 :: Log Alaric [2105]: east
+Thu Oct  8 01:35:49 2026 :: Log Alaric [2106]: arrived (Corner of Ice and White Dragon) from 2105
+Thu Oct  8 01:35:49 2026 :: Log Alaric [2106]: south
+Thu Oct  8 01:35:49 2026 :: Log Alaric [2113]: arrived (Ice Dragon Bend) from 2106
+Thu Oct  8 01:35:49 2026 :: Log Alaric [2113]: west
+Thu Oct  8 01:35:49 2026 :: Log Alaric [2112]: arrived (A Bend in the Way) from 2113
+Thu Oct  8 01:35:50 2026 :: Log Alaric [2112]: te
+Thu Oct  8 01:35:54 2026 :: Log Alaric [2112]: recal
+Thu Oct  8 01:35:54 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2112
+Thu Oct  8 01:35:54 2026 :: Log Alaric [2497]: recal
+Thu Oct  8 01:35:55 2026 :: Log Alaric [2497]: recal
+Thu Oct  8 01:35:55 2026 :: Log Alaric [2497]: recal
+Thu Oct  8 01:35:55 2026 :: Log Alaric [2497]: aq co
+Thu Oct  8 01:35:55 2026 :: Log Alaric [2497]: quest complete: 27 gold, 52 quest points (streak bonus 60%)
+Thu Oct  8 01:35:55 2026 :: Log Alaric [2497]: aq ga no
+Thu Oct  8 01:35:58 2026 :: Log Alaric [2497]: score
+Thu Oct  8 01:36:03 2026 :: Log Alaric [2497]: i
+Thu Oct  8 01:36:10 2026 :: Sock.sinaddr:  5.161.73.160
+Thu Oct  8 01:36:10 2026 :: EOF encountered on read.
+Thu Oct  8 01:36:11 2026 :: Log Alaric [2497]: stash put soul
+Thu Oct  8 01:36:11 2026 :: Log Alaric [2497]: stashed The Soul Dagger (vnum 17021)
+Thu Oct  8 01:37:16 2026 :: Sock.sinaddr:  216.226.78.30
+Thu Oct  8 01:37:16 2026 :: EOF encountered on read.
