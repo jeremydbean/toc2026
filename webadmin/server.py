@@ -126,7 +126,7 @@ async def verify_token(request: Request, x_admin_token: str = Header(default="")
 try:
     from webadmin.area_health import build_area_health
     from webadmin.area_parser import AreaParser, APPLY_LOCATIONS
-    from webadmin.area_parser import parse_flag_value, flag_bit
+    from webadmin.area_parser import parse_flag_value, flag_bit, format_area_name
     from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values, SECTOR_TYPES
     from webadmin.area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS, ROOM_FLAGS
     from webadmin import oracle
@@ -134,7 +134,7 @@ try:
 except ImportError:
     from area_health import build_area_health
     from area_parser import AreaParser, APPLY_LOCATIONS
-    from area_parser import parse_flag_value, flag_bit
+    from area_parser import parse_flag_value, flag_bit, format_area_name
     from area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values, SECTOR_TYPES
     from area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS, ROOM_FLAGS
     import oracle
@@ -563,10 +563,15 @@ def _oracle_help_records(entries: list) -> list:
     return _ORACLE_HELP_INDEX["records"]
 
 
-def _oracle_help_lines(question: str, entries: list, limit: int = 2) -> list:
+def _oracle_help_lines(question: str, entries: list, limit: int = 2,
+                       search: bool = True) -> list:
     """The help entries that answer the question. A keyword named outright
     ("sanctuary") wins; otherwise the bodies are searched, so "where can I
-    store my loot?" still finds STASH, which it never names."""
+    store my loot?" still finds STASH, which it never names. `search` False
+    keeps only the topics named outright: for a gear question the body
+    search finds combat skills whose text mentions weapons -- "the next
+    best weapon" brought HELP BASH and HELP TRIP -- and the gear finder has
+    the answer anyway."""
     ql = " " + " ".join(re.findall(r"[a-z0-9']+", (question or "").lower())) + " "
     picked: list = []
     named = []
@@ -585,7 +590,8 @@ def _oracle_help_lines(question: str, entries: list, limit: int = 2) -> list:
     # the topic named is not always the one that answers ("what was said on
     # gossip while I was offline" names GOSSIP and wants HISTORY).
     picked = [e for _b, _l, e in named[:limit]]
-    for _s, rec in oracle.rank(question, _oracle_help_records(entries)):
+    for _s, rec in (oracle.rank(question, _oracle_help_records(entries))
+                    if search else []):
         if len(picked) >= limit:
             break
         if rec["entry"] not in picked:
@@ -596,6 +602,19 @@ def _oracle_help_lines(question: str, entries: list, limit: int = 2) -> list:
         body = " ".join(body.split())[:1500]
         lines.append("HELP %s -- %s" % (entry.get("title", "?").upper(), body))
     return lines
+
+
+# Words that name a piece of gear outright, unlike the looser hints above
+# ("where", "best", "drop") that ask for the gear finder's help but also
+# begin questions about anything else.
+_ORACLE_GEAR_NOUNS = ("gear", "upgrade", "armor", "armour", "equip", "slot", "bis",
+                      "ring", "amulet", "shield", "boots", "helm", "cloak", "wield",
+                      "weapon", "sword", "axe", "mace", "dagger", "whip", "spear",
+                      "flail", "polearm", "staff", "blade")
+
+
+def _oracle_names_gear(ql: str) -> bool:
+    return any(w in ql for w in _ORACLE_GEAR_NOUNS)
 
 
 _ORACLE_TOP_HINTS = ("most powerful", "strongest", "best weapon", "deadliest",
@@ -683,7 +702,8 @@ def _oracle_gear_where(item: Dict[str, Any], objs, mobs) -> str:
     """'from the pirate in Pirate Ship': the finder's own source when it gave
     one -- it has already ruled out carriers a player cannot loot -- else the
     first carrier on file."""
-    area = item.get("area", "?")
+    # "The Shire (Poohb)", not the raw "Poohb   The Shire" of the file.
+    area = format_area_name(item.get("area", "") or "") or "?"
     source = item.get("source")
     if source:
         return "%s in %s" % (source, area)
@@ -984,7 +1004,8 @@ def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] 
 
     # The game's own help on whatever spell, skill or command was named.
     try:
-        lines += _oracle_help_lines(question, load_player_help())
+        lines += _oracle_help_lines(question, load_player_help(),
+                                    search=not _oracle_names_gear(ql))
     except Exception:
         pass
 
@@ -1006,6 +1027,18 @@ def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] 
         if bis:
             lines.append("Obtainable best-in-slot for this class and level -- "
                          + "; ".join(bis) + ".")
+        # A question about a weapon gets the weapon said outright. In a list
+        # of eighteen slots she passed it by: asked for "the next best
+        # weapon" twice on 2026-10-07, she answered "compare upgrades" and
+        # "I cannot see what swords are available to you".
+        wielded = best.get("Wielded") or []
+        if wielded and any(w in ql for w in _ORACLE_WEAPON_WORDS):
+            top = wielded[0]
+            lines.append("Asked about a weapon: the best weapon this supplicant can "
+                         "get at level %s is %s (lvl %s), %s. Name it in the answer, "
+                         "and where it is." % (lvl, top.get("name", "?"),
+                                               top.get("level", "?"),
+                                               _oracle_gear_where(top, objs, mobs)))
 
     # "The most powerful weapon in the game" is not a best-in-slot question --
     # it has no level -- so answer it at the mortal cap, from the same finder.
@@ -3188,7 +3221,10 @@ async def websocket_logs(websocket: WebSocket) -> None:
                 print(f"Log WebSocket error: {result}")
         try:
             await websocket.close()
-        except RuntimeError:
+        except (RuntimeError, WebSocketDisconnect, OSError):
+            # Closing a socket the browser already dropped raises one of
+            # these (uvicorn's ClientDisconnected is an OSError); it is
+            # gone either way, and a traceback per dropped tab was noise.
             pass
 
 
@@ -3260,7 +3296,10 @@ async def websocket_events(websocket: WebSocket) -> None:
                 print(f"Event WebSocket error: {result}")
         try:
             await websocket.close()
-        except RuntimeError:
+        except (RuntimeError, WebSocketDisconnect, OSError):
+            # Closing a socket the browser already dropped raises one of
+            # these (uvicorn's ClientDisconnected is an OSError); it is
+            # gone either way, and a traceback per dropped tab was noise.
             pass
 
 
@@ -4622,7 +4661,10 @@ async def websocket_endpoint(websocket: WebSocket) -> None:
                 pass
         try:
             await websocket.close()
-        except RuntimeError:
+        except (RuntimeError, WebSocketDisconnect, OSError):
+            # Closing a socket the browser already dropped raises one of
+            # these (uvicorn's ClientDisconnected is an OSError); it is
+            # gone either way, and a traceback per dropped tab was noise.
             pass
     
 

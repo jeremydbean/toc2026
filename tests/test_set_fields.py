@@ -158,8 +158,12 @@ class SetRoomTests(unittest.TestCase):
                 here = run(god, "stat room", settle=3.0)
                 vnum = re.search(r"Vnum: (\d+)", here).group(1)
 
+                # A number still works, and so, since 2026-10-08, does the
+                # sector's name; the reply names it either way.
                 reply = run(god, f"set room {vnum} sector 1")
-                self.assertIn("Sector set to 1", reply)
+                self.assertIn("is city ground now", reply)
+                reply = run(god, f"set room {vnum} sector forest")
+                self.assertIn("is forest ground now", reply)
 
 
 if __name__ == "__main__":

@@ -316,6 +316,38 @@ class GearFinderTests(unittest.TestCase):
         self.assertIn("Excalibur", ctx)             # obtainable BiS
         self.assertIn("Camelot", ctx)               # where to get it
 
+    def test_a_weapon_question_gets_the_weapon_said_outright(self) -> None:
+        """Asked for "the next best weapon" twice on 2026-10-07, the Oracle
+        passed over the weapon in an eighteen-slot list and answered
+        "compare upgrades". The weapon now has a line of its own, with a
+        readable area name, and no combat-skill help rides along: the help
+        body search had brought HELP BASH and HELP TRIP to that question."""
+        from webadmin import server
+
+        prof = {"class_name": "mage", "race": "elf", "level": 4, "equipment": []}
+        fake_parser = SimpleNamespace(objects={}, mobs={})
+
+        async def fake_best(**_kw):
+            return {"Light": [{"vnum": 1, "name": "a prism cube", "level": 4,
+                               "area": "Haze    Korzath's Fortress"}],
+                    "Wielded": [{"vnum": 2, "name": "a bardiche", "level": 3,
+                                 "area": "Poohb   The Shire"}]}
+
+        help_entries = [{"title": "bash", "keywords": ["BASH"],
+                         "body": "Hurl yourself with your weapon at the best target."}]
+        with patch.object(server, "parse_player_file", lambda n: prof), \
+                patch.object(server, "parser", fake_parser), \
+                patch.object(server, "get_best_gear", fake_best), \
+                patch.object(server, "load_player_help", lambda: help_entries):
+            ctx = server._oracle_context(
+                "Callista", "what's the next best weapon than the one I have?")
+
+        self.assertIn("Asked about a weapon: the best weapon this supplicant can get "
+                      "at level 4 is a bardiche", ctx)
+        self.assertIn("The Shire (Poohb)", ctx)
+        self.assertNotIn("Poohb   The Shire", ctx)
+        self.assertNotIn("HELP BASH", ctx)
+
     def test_oracle_context_skips_bis_for_non_gear_questions(self) -> None:
         from webadmin import server
 
