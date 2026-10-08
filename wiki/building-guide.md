@@ -5,13 +5,15 @@ areas, rooms, and -- as the later phases land -- mobiles, objects, and the
 resets that make them respawn. Everything here is done with ordinary
 commands at the prompt; you never leave the game or edit a file by hand.
 
-Building commands are god-level (level 69 and up). If a command answers
-"Huh?" you are not high enough, or it has not shipped yet -- check the
-Roadmap at the end.
+Building commands are god-level (level 69 and up; MSHOW, OSHOW, ALIST,
+ASTAT and RESETS from 68). If a command answers "Huh?" you are not high
+enough.
 
-> **New to this?** Read [Concepts](#concepts) once, then jump to
-> [Your first room](#your-first-room). Keep [Command reference](#command-reference)
-> open beside you.
+> **New to this?** Type `build` and let the game ask you what you want --
+> see [The guided builder](#the-guided-builder). When you want to know what
+> it is doing, read [Concepts](#concepts) and
+> [Your first room](#your-first-room), and keep the
+> [Command reference](#command-reference) open beside you.
 
 ---
 
@@ -45,6 +47,73 @@ drops it.
 **Strings end at a tilde.** When a command takes a description, it reads to
 the end of what you typed. You do not type the `~` yourself; the game adds
 it. Colour codes like `{R` (bright red) work in names and descriptions.
+
+---
+
+## The guided builder
+
+`BUILD` asks you what you want, one question at a time, and builds it with
+the same commands the rest of this guide describes -- so it can make
+anything they can, and refuses exactly what they would.
+
+```
+build area      a new area: how many rooms, what it is called -- then its first room
+build room      the room you are standing in, and rooms dug out from it
+build mob       a mobile for the area you are in
+build obj       an object for the area you are in
+```
+
+A session looks like this:
+
+```
+> build area
+How many rooms will it have, roughly?  [20]
+> 6
+What is the area called?
+> The Sunken Grotto
+Created area 'The Sunken Grotto' (21000-21019) in built/the_sunken_grotto.are.
+Building room 21000.
+What is this room called?
+> The Mouth of the Grotto
+Describe it, a line at a time.  A line with only a . on it ends the description.
+> Water drips from a low ceiling; the air smells of salt.
+> .
+What kind of ground is it?  inside city field forest hills mountain ...
+> underground
+Dig a way out?  Give a direction to dig a new room that way, or press Enter.
+> north
+...
+```
+
+| You type | It means |
+|---|---|
+| an answer | That value, checked as the command would check it. A bad one is refused in the command's words and asked again. |
+| Enter | Keep what is there and go on. |
+| `.` | End a description. Descriptions are typed a line at a time and wrapped for you; any punctuation is fine, semicolons included. |
+| `cancel` | Stop. What was made so far stays; `ASAVE` keeps it. |
+| `/<command>` | Run a command without leaving the build: `/look`, `/say hang on`. |
+
+What each one asks:
+
+- **BUILD AREA** -- roughly how many rooms (it allows twice that, in tens,
+  to grow into) and the area's name. It finds a free block of vnums clear
+  of every other area, runs ANEW, takes you to the first room, and goes on
+  as BUILD ROOM.
+- **BUILD ROOM** -- the room's name, its description, what kind of ground
+  it is; then whether to dig a new room in some direction. Digging walks
+  you into the new room and asks the same of it; Enter at the dig question
+  finishes and offers to save. You end up in the last room you dug.
+- **BUILD MOB** -- the vnum (the next free one is offered), whether to copy
+  an existing mobile, its keywords, short and long text, description,
+  race, sex, level, alignment and attack; then any other field you like
+  (`act +aggressive`, `hp 4d10+80`); then whether to place it in this room
+  and save.
+- **BUILD OBJ** -- the same start, then its type, and the questions that
+  type needs: a weapon's class, dice and attack; armour's AC; a light's
+  hours; a container's capacity and lid; a drink's liquid and size; a
+  potion's spells; a wand's spell and charges. Then wear slots, level,
+  weight and price, any other field, and where to place it (`floor`,
+  `on <mob>`, `worn <mob>`, `in <container>`, or `no`).
 
 ---
 
@@ -560,9 +629,9 @@ exit and it keeps the flags you set.
 
 ---
 
-## Roadmap
+## What has been built
 
-In-game building is being filled out in phases. Shipped so far:
+In-game building was built in phases, all of them now shipped:
 
 - **Areas and rooms** -- ANEW/ALIST/ASTAT, GOTO-to-create, SET ROOM, RLINK,
   RSAVE.
@@ -575,12 +644,10 @@ In-game building is being filled out in phases. Shipped so far:
   containers' contents and door states that come back, saved with ASAVE.
 - **Repository persistence** -- built areas live in `area/built/`, reach
   git with the state sync, and survive deploys.
+- **The guided builder** -- BUILD AREA, ROOM, MOB and OBJ ask a question at
+  a time and build through the same commands.
 
-Coming:
-
-- **A guided wizard** -- a step-by-step builder that asks what you want and
-  runs the commands for you, for people who would rather be led than
-  memorise syntax.
+That is the whole of the plan. Ideas for more go to `IDEA` in game.
 
 ---
 

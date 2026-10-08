@@ -973,7 +973,14 @@ void game_loop_unix( int control )
                 }
                 /* A typed line with semicolons is several commands; an
                    alias's own lines were split when it was expanded. */
-                if ( d->incomm_from_alias || split_typed_commands( d ) )
+                /* A build under way takes the typed line whole -- before
+                   the split, since a description may hold a semicolon. */
+                if ( !d->incomm_from_alias && build_wizard_active( ch ) )
+                {
+                    walkto_interrupt( ch, d->incomm );
+                    build_wizard_input( ch, d->incomm );
+                }
+                else if ( d->incomm_from_alias || split_typed_commands( d ) )
                 {
                     /* Any command but WALKTO ends a walk under way. */
                     walkto_interrupt( ch, d->incomm );
@@ -1475,6 +1482,7 @@ void close_socket( DESCRIPTOR_DATA *dclose )
                 ch->pcdata->last_logout = (long)current_time;
             /* Nobody walks on without a link, or resumes on reconnecting. */
             walkto_clear( ch );
+            build_wizard_clear( ch );
 	    ch->desc = NULL;
 	}
 	else

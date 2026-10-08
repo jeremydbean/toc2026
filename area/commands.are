@@ -2469,8 +2469,13 @@ PRACTICE to improve skills once you have learned them.
 See also: GAINLIST, GAIN, PRACTICE, TRAIN
 ~
 
-69 BUILDING BUILD OLC~
+69 BUILDING OLC~
 Building rooms without leaving the game.
+
+The easy way in: BUILD.  BUILD AREA, BUILD ROOM, BUILD MOB and BUILD OBJ
+ask what you want a question at a time and do the rest.  See HELP BUILD.
+Everything below is what it does for you, for when you would rather type
+it yourself.
 
 GOTO <vnum> to a number no room uses makes one on the spot.  SET ROOM
 gives it a name, a description, flags and a sector.  RLINK connects it to
@@ -2835,6 +2840,45 @@ already in the world keep their old values; LOAD a fresh one to see a
 change.  ASAVE keeps the prototype.
 
 See also: OCREATE, ASAVE, BUILDING, MSHOW
+~
+
+69 BUILD WIZARD~
+Syntax: build area
+        build room
+        build mob
+        build obj
+
+BUILD is the guided way to build.  It asks what you want, one question at
+a time, and makes it with the same commands you could type yourself --
+ANEW, RLINK, MCREATE, SET MOB, SET OBJ, PLACE, ASAVE -- so it can build
+anything they can and nothing they would refuse.
+
+  build area   asks how many rooms and what to call it, finds a free block
+               of vnums, makes the area and takes you to its first room
+  build room   names and describes the room you stand in, its kind of
+               ground, then offers to dig a new room in any direction and
+               walks you into it to build that one too
+  build mob    a mobile for the area you are in: names, description, race,
+               sex, level, how it fights, any other field you like, and
+               whether to place it in this room
+  build obj    an object: names, description, its type and what that type
+               needs (a weapon's class and dice, a drink's liquid...), where
+               it is worn, level, weight, price, and where to place it
+
+Every question says what it wants and gives an example.
+
+  Enter        keep what is there and go on
+  .            ends a description (they are typed a line at a time)
+  cancel       stop; what was made so far stays, ASAVE keeps it
+  /<command>   run a command without leaving the build: /look, /say hi
+
+A bad answer is refused in the command's own words and asked again.  A
+description can hold any punctuation, semicolons included.
+
+BUILD ROOM leaves you in the last room you dug, and BUILD MOB and BUILD
+OBJ place what they make in the room you are standing in.
+
+See also: BUILDING, ANEW, MSHOW, OSHOW, PLACE
 ~
 
 69 PLACE RESETS UNPLACE~

@@ -454,6 +454,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "mshow",          do_mshow,       POS_DEAD,       L2,  LOG_NORMAL, 1 },
     { "ocreate",        do_ocreate,     POS_DEAD,       L1,  LOG_ALWAYS, 1 },
     { "oshow",          do_oshow,       POS_DEAD,       L2,  LOG_NORMAL, 1 },
+    { "build",          do_build,       POS_DEAD,       L1,  LOG_ALWAYS, 1 },
     { "place",          do_place,       POS_DEAD,       L1,  LOG_ALWAYS, 1 },
     { "resets",         do_resets,      POS_DEAD,       L2,  LOG_NORMAL, 1 },
     { "unplace",        do_unplace,     POS_DEAD,       L1,  LOG_ALWAYS, 1 },

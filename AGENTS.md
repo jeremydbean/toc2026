@@ -385,7 +385,7 @@ Live-test gotchas that look like product bugs and are not:
 - `src/act_move.c`: movement, exits, traps, recall, run/speedwalk
 - `src/walkto.c`: WALKTO -- named destinations, pathfinding from the
   player's room, and the paced walk
-- `src/build.c`: in-game building in words -- SET MOB/OBJ <vnum>, MSHOW, OSHOW, PLACE/RESETS/UNPLACE,
+- `src/build.c`: in-game building in words -- SET MOB/OBJ <vnum>, MSHOW, OSHOW, PLACE/RESETS/UNPLACE, BUILD,
   with the name tables for every mobile and object flag word; ANEW/ASAVE/MCREATE/
   OCREATE are in `act_wiz.c` and the area writer in `db.c`
 - `src/act_info.c`: displays, leveling, remort
@@ -873,9 +873,15 @@ a guard, a guild hall or an area entrance.
 
 ## In-Game Building
 
-The player-facing reference is `wiki/building-guide.md`; it is built in
-phases (areas and rooms; MCREATE/OCREATE and ASAVE; English SET MOB/OBJ,
-resets and a guided wizard to come). Three rules the code depends on:
+The player-facing reference is `wiki/building-guide.md`. It was built in
+phases, all shipped by 2026-10-08: ANEW/ALIST/ASTAT; MCREATE/OCREATE and
+ASAVE; SET MOB/OBJ <vnum> in words with MSHOW/OSHOW; PLACE/RESETS/UNPLACE;
+built areas in git; and BUILD, the guided builder. BUILD takes every typed
+line while it runs (`build_wizard_input`, called from comm.c **before**
+`split_typed_commands`, since a description may hold a semicolon) and
+builds only by calling the commands themselves, so it can never make what
+they would refuse; `build_set_mob`/`build_set_obj` return whether the
+change took so it can ask again. Rules the code depends on:
 
 - **An area made with ANEW owns its vnum range**, declared in an
   `#AREADATA` header (`load_areadata`). Mobiles and objects carry no area

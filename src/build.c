@@ -787,7 +787,7 @@ static void mob_field_help( CHAR_DATA *ch )
  * SET MOB <vnum> <field> <value>: reached from do_set when the target is a
  * number, so "set mob guard ..." still edits a mobile in the world.
  */
-void build_set_mob( CHAR_DATA *ch, char *argument )
+bool build_set_mob( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
     char field[MAX_INPUT_LENGTH];
@@ -805,12 +805,12 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
     toc_strlcpy( value, argument, sizeof(value) );
 
     if ( ( m = editable_mob( ch, arg1 ) ) == NULL )
-        return;
+        return false;
 
     if ( field[0] == '\0' )
     {
         show_mob( ch, m );
-        return;
+        return false;
     }
 
     snprintf( race_why, sizeof(race_why), "that is part of being %s %s",
@@ -822,7 +822,7 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
     if ( value[0] == '\0' )
     {
         mob_field_help( ch );
-        return;
+        return false;
     }
 
     /* ---- words ---- */
@@ -859,12 +859,12 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
         else
         {
             mob_field_help( ch );
-            return;
+            return false;
         }
         if ( strlen( text ) >= MAX_STRING_LENGTH - 2 )
         {
             send_to_char( "That description is too long.\n\r", ch );
-            return;
+            return false;
         }
         text[0] = UPPER( text[0] );
         m->description = str_perm( text );
@@ -879,7 +879,7 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
         {
             send_to_char( "No such race.  Try human, elf, dwarf, giant, dragon, "
                           "wolf, bear...\n\r", ch );
-            return;
+            return false;
         }
         m->race        = (sh_int) race;
         /* What load_mobiles ORs in at every boot, ORed in now; form and
@@ -897,7 +897,7 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
     {
         const struct build_flag *f = flag_find( sex_names, value );
 
-        if ( f == NULL ) { send_to_char( "Sex is male, female or neutral.\n\r", ch ); return; }
+        if ( f == NULL ) { send_to_char( "Sex is male, female or neutral.\n\r", ch ); return false; }
         m->sex = (sh_int) f->bit;
     }
     else if ( !str_prefix( field, "size" ) )
@@ -907,7 +907,7 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
         if ( f == NULL )
         {
             send_to_char( "Size is tiny, small, medium, large, huge or giant.\n\r", ch );
-            return;
+            return false;
         }
         m->size = (sh_int) f->bit;
     }
@@ -920,7 +920,7 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
             send_to_char( "Materials: adamantite brass bronze cloth copper food "
                           "glass gold herb iron\n\r  leather paper pill silver "
                           "'spell component' steel stone vellum wood unknown\n\r", ch );
-            return;
+            return false;
         }
         m->material = (sh_int) mat;
     }
@@ -933,7 +933,7 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
         if ( !is_number( value ) || level < 1 || level > 200 )
         {
             send_to_char( "Level is a number from 1 to 200.\n\r", ch );
-            return;
+            return false;
         }
         kill_table[URANGE(0, m->level, MAX_LEVEL-1)].number--;
         m->level = (sh_int) level;
@@ -955,7 +955,7 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
         {
             send_to_char( "Alignment is good, neutral, evil, or a number from "
                           "-1000 to 1000.\n\r", ch );
-            return;
+            return false;
         }
         m->alignment = (sh_int) align;
     }
@@ -964,7 +964,7 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
         if ( !is_number( value ) || strlen( value ) > 4 )
         {
             send_to_char( "Hitroll is a number.\n\r", ch );
-            return;
+            return false;
         }
         m->hitroll = (sh_int) atoi( value );
         apply_level_clamps( ch, m );
@@ -978,7 +978,7 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
         {
             send_to_char( "Hit points are dice: 4d10+80 (four ten-sided dice, plus "
                           "80).\n\r", ch );
-            return;
+            return false;
         }
         m->hit[DICE_NUMBER] = n;
         m->hit[DICE_TYPE]   = t;
@@ -993,7 +993,7 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
           || b < -32768 || b > 32767 )
         {
             send_to_char( "Give dice: 2d6+3 (two six-sided dice, plus 3).\n\r", ch );
-            return;
+            return false;
         }
         dice[DICE_NUMBER] = (sh_int) n;
         dice[DICE_TYPE]   = (sh_int) t;
@@ -1010,7 +1010,7 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
             send_to_char( "Attacks: ", ch );
             send_to_char( buf, ch );
             send_to_char( "\n\r", ch );
-            return;
+            return false;
         }
         m->dam_type = (sh_int) at;
     }
@@ -1036,7 +1036,7 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
         {
             send_to_char( "Armour is a number, lower is better: ac -20, or ac "
                           "slash -40.\n\r", ch );
-            return;
+            return false;
         }
         ac = URANGE( -10000, atoi( rest ), 10000 );
         for ( i = 0; i < 4; i++ )
@@ -1050,7 +1050,7 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
         {
             send_to_char( "Wealth is a number (0 means what a mobile of its level "
                           "usually carries).\n\r", ch );
-            return;
+            return false;
         }
         mob_index_set_wealth( m, atol( value ) );
     }
@@ -1062,7 +1062,7 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
         if ( f == NULL )
         {
             send_to_char( "Positions: standing sitting resting sleeping.\n\r", ch );
-            return;
+            return false;
         }
         if ( !str_prefix( field, "default" ) )
             m->default_pos = (sh_int) f->bit;
@@ -1077,13 +1077,13 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
         {
             send_to_char( "Give a special's name, or NONE.  HELP SPECIALS lists "
                           "them.\n\r", ch );
-            return;
+            return false;
         }
         if ( str_cmp( value, "none" ) && ( fun = spec_named( value ) ) == NULL )
         {
             snprintf( buf, sizeof(buf), "There is no special called %s.\n\r", value );
             send_to_char( buf, ch );
-            return;
+            return false;
         }
         m->spec_fun = fun;
     }
@@ -1095,77 +1095,78 @@ void build_set_mob( CHAR_DATA *ch, char *argument )
 
         race_fixed = race_table[m->race].act | ACT_IS_NPC;
         if ( !flag_edit( ch, act_names, &bits, "act flag", value, race_fixed, race_why ) )
-            return;
+            return false;
         m->act = bits | ACT_IS_NPC;
     }
     else if ( !str_cmp( field, "act2" ) )
     {
         if ( !flag_edit( ch, act2_names, &m->act2, "act2 flag", value, 0, race_why ) )
-            return;
+            return false;
     }
     else if ( !str_cmp( field, "affect2" ) || !str_cmp( field, "aff2" ) )
     {
         if ( !flag_edit( ch, affect2_names, &m->affected_by2, "affect", value, 0,
                          race_why ) )
-            return;
+            return false;
     }
     else if ( !str_prefix( field, "affects" ) || !str_cmp( field, "aff" ) )
     {
         if ( !flag_edit( ch, affect_names, &m->affected_by, "affect", value,
                          race_table[m->race].aff, race_why ) )
-            return;
+            return false;
     }
     else if ( !str_cmp( field, "offense2" ) || !str_cmp( field, "off2" ) )
     {
         if ( !flag_edit( ch, off2_names, &m->off_flags2, "offense", value, 0,
                          race_why ) )
-            return;
+            return false;
     }
     else if ( !str_prefix( field, "offense" ) || !str_prefix( field, "offence" ) )
     {
         if ( !flag_edit( ch, off_names, &m->off_flags, "offense", value,
                          race_table[m->race].off, race_why ) )
-            return;
+            return false;
     }
     else if ( !str_prefix( field, "immune" ) || !str_prefix( field, "immunities" ) )
     {
         if ( !flag_edit( ch, imm_names, &m->imm_flags, "immunity", value,
                          race_table[m->race].imm, race_why ) )
-            return;
+            return false;
     }
     else if ( !str_prefix( field, "resist" ) || !str_prefix( field, "resistances" ) )
     {
         if ( !flag_edit( ch, res_names, &m->res_flags, "resistance", value,
                          race_table[m->race].res, race_why ) )
-            return;
+            return false;
     }
     else if ( !str_prefix( field, "vulnerable" ) || !str_prefix( field, "vulnerabilities" ) )
     {
         if ( !flag_edit( ch, vuln_names, &m->vuln_flags, "vulnerability", value,
                          race_table[m->race].vuln, race_why ) )
-            return;
+            return false;
     }
     else if ( !str_prefix( field, "form" ) )
     {
         if ( !flag_edit( ch, form_names, &m->form, "form", value,
                          race_table[m->race].form, race_why ) )
-            return;
+            return false;
     }
     else if ( !str_prefix( field, "parts" ) )
     {
         if ( !flag_edit( ch, part_names, &m->parts, "part", value,
                          race_table[m->race].parts, race_why ) )
-            return;
+            return false;
     }
     else
     {
         mob_field_help( ch );
-        return;
+        return false;
     }
 
     snprintf( buf, sizeof(buf), "Mobile %d's %s is set.  MSHOW %d to look; ASAVE "
               "to keep it.\n\r", m->vnum, field, m->vnum );
     send_to_char( buf, ch );
+    return true;
 }
 
 
@@ -2237,7 +2238,7 @@ static bool obj_flags_edit( CHAR_DATA *ch, OBJ_INDEX_DATA *o, char *value )
  * SET OBJ <vnum> <field> <value>: reached from do_set when the target is a
  * number, so "set obj sword ..." still edits an object in the world.
  */
-void build_set_obj( CHAR_DATA *ch, char *argument )
+bool build_set_obj( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
     char field[MAX_INPUT_LENGTH];
@@ -2256,12 +2257,12 @@ void build_set_obj( CHAR_DATA *ch, char *argument )
     toc_strlcpy( value, argument, sizeof(value) );
 
     if ( ( o = editable_obj( ch, arg1 ) ) == NULL )
-        return;
+        return false;
 
     if ( field[0] == '\0' )
     {
         show_obj( ch, o );
-        return;
+        return false;
     }
 
     /* A field with no value only ever means "what goes here?" -- and an
@@ -2269,13 +2270,13 @@ void build_set_obj( CHAR_DATA *ch, char *argument )
     if ( value[0] == '\0' && str_prefix( field, "flags" ) )
     {
         obj_field_help( ch );
-        return;
+        return false;
     }
 
     if ( ( r = set_obj_value_field( ch, o, field, value ) ) != 0 )
     {
         if ( r < 0 )
-            return;
+            return false;
     }
     else if ( !str_prefix( field, "keywords" ) || !str_cmp( field, "name" ) )
         o->name = str_perm( value );
@@ -2295,7 +2296,7 @@ void build_set_obj( CHAR_DATA *ch, char *argument )
             send_to_char( "Materials: adamantite brass bronze cloth copper food "
                           "glass gold herb iron\n\r  leather paper pill silver "
                           "'spell component' steel stone vellum wood unknown\n\r", ch );
-            return;
+            return false;
         }
         o->material = (sh_int) mat;
     }
@@ -2306,7 +2307,7 @@ void build_set_obj( CHAR_DATA *ch, char *argument )
             table_names( type_names, buf, sizeof(buf) );
             send_to_char( "Types: ", ch ); send_to_char( buf, ch );
             send_to_char( "\n\r", ch );
-            return;
+            return false;
         }
         if ( o->item_type != f->bit )
         {
@@ -2330,7 +2331,7 @@ void build_set_obj( CHAR_DATA *ch, char *argument )
         if ( ( n = plain_number( value, 200 ) ) < 0 )
         {
             send_to_char( "Level is a number from 0 to 200.\n\r", ch );
-            return;
+            return false;
         }
         o->level = (sh_int) n;
     }
@@ -2339,7 +2340,7 @@ void build_set_obj( CHAR_DATA *ch, char *argument )
         if ( ( n = plain_number( value, 30000 ) ) < 0 )
         {
             send_to_char( "Weight is a number from 0 to 30000.\n\r", ch );
-            return;
+            return false;
         }
         o->weight = (sh_int) n;
     }
@@ -2349,7 +2350,7 @@ void build_set_obj( CHAR_DATA *ch, char *argument )
         {
             send_to_char( "Give a price: 5g 20s, 1p, 3 gold, or a number of "
                           "copper.\n\r", ch );
-            return;
+            return false;
         }
         o->cost = n;
     }
@@ -2359,7 +2360,7 @@ void build_set_obj( CHAR_DATA *ch, char *argument )
         {
             send_to_char( "Condition: perfect good average worn damaged broken "
                           "ruined.\n\r", ch );
-            return;
+            return false;
         }
         o->condition = (sh_int) f->bit;
     }
@@ -2368,13 +2369,13 @@ void build_set_obj( CHAR_DATA *ch, char *argument )
         long bits = (unsigned short) o->wear_flags;
 
         if ( !flag_edit( ch, wear_names, &bits, "wear slot", value, 0, "" ) )
-            return;
+            return false;
         o->wear_flags = (sh_int) bits;
     }
     else if ( !str_prefix( field, "flags" ) || !str_prefix( field, "extra" ) )
     {
         if ( !obj_flags_edit( ch, o, value ) )
-            return;
+            return false;
     }
     else if ( !str_prefix( field, "affects" ) || !str_prefix( field, "grants" )
            || !str_prefix( field, "powers" ) )
@@ -2384,16 +2385,16 @@ void build_set_obj( CHAR_DATA *ch, char *argument )
             send_to_char( "Somebody is wearing one of these.  Its affects come off "
                           "as they went on,\n\rso they cannot change under it: have "
                           "it taken off first.\n\r", ch );
-            return;
+            return false;
         }
         if ( !str_prefix( field, "affects" ) ? !obj_affect_edit( ch, o, value )
                                              : !obj_grants_edit( ch, o, value ) )
-            return;
+            return false;
     }
     else if ( !str_prefix( field, "details" ) )
     {
         if ( !obj_detail_edit( ch, o, value ) )
-            return;
+            return false;
     }
     else if ( !str_prefix( field, "description" ) )
     {
@@ -2403,7 +2404,7 @@ void build_set_obj( CHAR_DATA *ch, char *argument )
 
         snprintf( detail, sizeof(detail), "'%s' %s", o->name, value );
         if ( !obj_detail_edit( ch, o, detail ) )
-            return;
+            return false;
     }
     else if ( LOWER( field[0] ) == 'v' && field[1] >= '0' && field[1] <= '4'
            && field[2] == '\0' )
@@ -2411,7 +2412,7 @@ void build_set_obj( CHAR_DATA *ch, char *argument )
         if ( ( n = plain_number( value, 2000000000L ) ) < 0 )
         {
             send_to_char( "A value is a number, 0 or more.\n\r", ch );
-            return;
+            return false;
         }
         o->value[field[1] - '0'] = (int) n;
     }
@@ -2421,12 +2422,13 @@ void build_set_obj( CHAR_DATA *ch, char *argument )
                   enum_name( type_names, o->item_type ), field );
         send_to_char( buf, ch );
         obj_field_help( ch );
-        return;
+        return false;
     }
 
     snprintf( buf, sizeof(buf), "Object %d's %s is set.  OSHOW %d to look; ASAVE "
               "to keep it.\n\r", o->vnum, field, o->vnum );
     send_to_char( buf, ch );
+    return true;
 }
 
 
@@ -3161,4 +3163,792 @@ void do_unplace( CHAR_DATA *ch, char *argument )
               "it is purged.\n\r", line,
               removed > 1 ? " and what it carried or held" : "" );
     send_to_char( buf, ch );
+}
+
+
+/*
+ * ------------------------------------------------------------------------
+ * BUILD: the guided builder.
+ *
+ * For a builder who would rather be asked than remember syntax. BUILD
+ * AREA, BUILD ROOM, BUILD MOB and BUILD OBJ each ask one question at a
+ * time, and every answer goes through the very commands a builder could
+ * type -- ANEW, GOTO, RLINK, MCREATE, SET MOB, SET OBJ, PLACE, ASAVE --
+ * so the wizard can never make something those would refuse. A refused
+ * answer is refused in the command's own words and the question is asked
+ * again; a blank answer keeps what is there.
+ *
+ * While a build is under way, comm.c hands every typed line here before
+ * anything else (and before the line is split on semicolons, which a
+ * description may well contain). CANCEL stops; a line beginning with "/"
+ * runs as an ordinary command, so LOOK or SAY need not end the build.
+ * ------------------------------------------------------------------------
+ */
+
+#define WIZ_AREA  1
+#define WIZ_ROOM  2
+#define WIZ_MOB   3
+#define WIZ_OBJ   4
+
+/* What a question does with its answer. */
+#define Q_VNUM      1   /* which vnum to make it at                       */
+#define Q_COPY      2   /* blank, or a copy of a vnum                     */
+#define Q_SET       3   /* SET MOB/OBJ <vnum> <field> <answer>            */
+#define Q_DESC      4   /* description, a line at a time, "." to end      */
+#define Q_MORE      5   /* "<field> <value>" until a blank line           */
+#define Q_PLACE     6   /* make it come back here                         */
+#define Q_SAVE      7   /* ASAVE                                          */
+#define Q_ROOMNAME  8
+#define Q_ROOMDESC  9
+#define Q_SECTOR    10
+#define Q_EXIT      11  /* dig a way out, or finish                       */
+#define Q_AREASIZE  12
+#define Q_AREANAME  13
+#define Q_END       0
+
+struct wiz_q
+{
+    int         kind;
+    int         item_type;      /* objects: the type it is asked for; 0 any */
+    const char *field;
+    const char *ask;
+};
+
+static const struct wiz_q wiz_area_steps[] =
+{
+    { Q_AREASIZE, 0, NULL,
+      "How many rooms will it have, roughly?  [20]  (It gets room to grow.)" },
+    { Q_AREANAME, 0, NULL,
+      "What is the area called?  e.g. The Sunken Grotto" },
+    { Q_END, 0, NULL, NULL }
+};
+
+static const struct wiz_q wiz_room_steps[] =
+{
+    { Q_ROOMNAME, 0, NULL,
+      "What is this room called?  e.g. The Mouth of the Grotto" },
+    { Q_ROOMDESC, 0, NULL,
+      "Describe it, a line at a time.  A line with only a . on it ends the\n\r"
+      "description; an empty one keeps what is there." },
+    { Q_SECTOR, 0, NULL,
+      "What kind of ground is it?  inside city field forest hills mountain\n\r"
+      "water_swim water_noswim underwater air desert underground  [Enter keeps it]" },
+    { Q_EXIT, 0, NULL,
+      "Dig a way out?  Give a direction (north, up, southeast...) to dig a new\n\r"
+      "room that way, or press Enter to finish." },
+    { Q_SAVE, 0, NULL, "Save the area now?  (yes/no)  [yes]" },
+    { Q_END, 0, NULL, NULL }
+};
+
+static const struct wiz_q wiz_mob_steps[] =
+{
+    { Q_VNUM, 0, NULL, "Which vnum should it have?" },
+    { Q_COPY, 0, NULL,
+      "Start from a copy of an existing mobile?  Give its vnum, or press Enter\n\r"
+      "for a blank one." },
+    { Q_SET, 0, "keywords", "What will players call it?  e.g. dwarf smith" },
+    { Q_SET, 0, "short", "How does it read in a sentence?  e.g. a burly dwarf smith" },
+    { Q_SET, 0, "long",
+      "What line shows it in the room?  e.g. A burly dwarf smith works here." },
+    { Q_DESC, 0, NULL,
+      "What does LOOK at it show?  A line at a time; a line with only a . ends\n\r"
+      "it, and an empty one keeps what is there." },
+    { Q_SET, 0, "race", "What race?  human elf dwarf giant dragon wolf ...  [Enter keeps it]" },
+    { Q_SET, 0, "sex", "Male, female or neutral?  [Enter keeps it]" },
+    { Q_SET, 0, "level", "What level?  [Enter keeps it]" },
+    { Q_SET, 0, "alignment", "Good, neutral or evil?  [Enter keeps it]" },
+    { Q_SET, 0, "attack", "How does it hit?  punch slash bite claw pound ...  [Enter keeps it]" },
+    { Q_MORE, 0, NULL,
+      "Anything else?  Give a field and a value -- act +aggressive, hp 4d10+80,\n\r"
+      "offense +parry, special cast_mage (HELP MSHOW lists them) -- or press\n\r"
+      "Enter to finish." },
+    { Q_PLACE, 0, NULL,
+      "Place it in this room, so it is here after every reset?  (yes/no)  [yes]" },
+    { Q_SAVE, 0, NULL, "Save the area now?  (yes/no)  [yes]" },
+    { Q_END, 0, NULL, NULL }
+};
+
+static const struct wiz_q wiz_obj_steps[] =
+{
+    { Q_VNUM, 0, NULL, "Which vnum should it have?" },
+    { Q_COPY, 0, NULL,
+      "Start from a copy of an existing object?  Give its vnum, or press Enter\n\r"
+      "for a blank one." },
+    { Q_SET, 0, "keywords", "What will players call it?  e.g. sword runed" },
+    { Q_SET, 0, "short", "How does it read in a sentence?  e.g. a runed sword" },
+    { Q_SET, 0, "long",
+      "What line shows it on the ground?  e.g. A runed sword lies here." },
+    { Q_DESC, 0, NULL,
+      "What does LOOK at it show?  A line at a time; a line with only a . ends\n\r"
+      "it, and an empty one keeps what is there." },
+    { Q_SET, 0, "type",
+      "What kind of thing is it?  weapon armor clothing light container drink\n\r"
+      "food potion pill scroll wand staff treasure key ...  [Enter keeps it]" },
+    { Q_SET, ITEM_WEAPON, "class",
+      "What kind of weapon?  sword dagger axe mace spear flail whip polearm bow" },
+    { Q_SET, ITEM_WEAPON, "dice",   "Its damage dice?  e.g. 2d6" },
+    { Q_SET, ITEM_WEAPON, "attack", "How does it hit?  slash pierce pound ..." },
+    { Q_SET, ITEM_ARMOR, "ac",      "How much armour does it give?  e.g. 5 (higher is better)" },
+    { Q_SET, ITEM_CLOTHING, "ac",   "How much armour does it give?  e.g. 1 (higher is better)" },
+    { Q_SET, ITEM_LIGHT, "hours",   "How many hours does it burn?  A number, or infinite." },
+    { Q_SET, ITEM_CONTAINER, "capacity", "How much weight does it hold?  e.g. 100" },
+    { Q_SET, ITEM_CONTAINER, "container",
+      "A lid?  +closeable +closed +locked +pickproof, or Enter for none" },
+    { Q_SET, ITEM_DRINK_CON, "liquid",   "What is in it?  water beer wine ale milk ..." },
+    { Q_SET, ITEM_DRINK_CON, "capacity", "How many drinks does it hold?  e.g. 10" },
+    { Q_SET, ITEM_DRINK_CON, "amount",   "How full is it?  A number, or full." },
+    { Q_SET, ITEM_FOOD, "hours",    "How many hours does it fill you for?  e.g. 6" },
+    { Q_SET, ITEM_MONEY, "coins",   "How many coins?" },
+    { Q_SET, ITEM_MONEY, "coin",    "Copper, silver, gold or platinum?" },
+    { Q_SET, ITEM_POTION, "spells", "Which spells?  e.g. 'cure light' armor" },
+    { Q_SET, ITEM_PILL, "spells",   "Which spells?  e.g. 'cure light' armor" },
+    { Q_SET, ITEM_SCROLL, "spells", "Which spells?  e.g. 'cure light' armor" },
+    { Q_SET, ITEM_WAND, "spell",    "Which spell?  e.g. 'magic missile'" },
+    { Q_SET, ITEM_STAFF, "spell",   "Which spell?  e.g. 'magic missile'" },
+    { Q_SET, ITEM_WAND, "charges",  "How many charges?" },
+    { Q_SET, ITEM_STAFF, "charges", "How many charges?" },
+    { Q_SET, 0, "wear",
+      "Where is it worn?  +take lets it be picked up; then +wield +hold +finger\n\r"
+      "+neck +torso +head +legs +feet +hands +arms +shield +waist +wrist  [Enter keeps it]" },
+    { Q_SET, 0, "level",  "What level is it for?  [Enter keeps it]" },
+    { Q_SET, 0, "weight", "How heavy is it?  [Enter keeps it]" },
+    { Q_SET, 0, "cost",   "What is it worth?  e.g. 5g 20s  [Enter keeps it]" },
+    { Q_MORE, 0, NULL,
+      "Anything else?  Give a field and a value -- affect +hitroll 2, grants\n\r"
+      "+haste, flags +glow, detail runes They read... (HELP OSHOW lists them) --\n\r"
+      "or press Enter to finish." },
+    { Q_PLACE, 0, NULL,
+      "Place it so it comes back?  floor, on <mobile vnum>, worn <mobile vnum>,\n\r"
+      "in <container vnum>, or no.  [no]" },
+    { Q_SAVE, 0, NULL, "Save the area now?  (yes/no)  [yes]" },
+    { Q_END, 0, NULL, NULL }
+};
+
+static const struct build_flag sector_names[] =
+{
+    { "inside",       SECT_INSIDE       }, { "city",        SECT_CITY        },
+    { "field",        SECT_FIELD        }, { "forest",      SECT_FOREST      },
+    { "hills",        SECT_HILLS        }, { "mountain",    SECT_MOUNTAIN    },
+    { "water_swim",   SECT_WATER_SWIM   }, { "water_noswim", SECT_WATER_NOSWIM },
+    { "underwater",   SECT_UNDER_WATER  }, { "air",         SECT_AIR         },
+    { "desert",       SECT_DESERT       }, { "underground", SECT_UNDERGROUND },
+    { NULL, 0 }
+};
+
+
+static const struct wiz_q *wiz_steps( int kind )
+{
+    switch ( kind )
+    {
+    case WIZ_AREA: return wiz_area_steps;
+    case WIZ_ROOM: return wiz_room_steps;
+    case WIZ_MOB:  return wiz_mob_steps;
+    case WIZ_OBJ:  return wiz_obj_steps;
+    }
+    return NULL;
+}
+
+bool build_wizard_active( CHAR_DATA *ch )
+{
+    return ch != NULL && !IS_NPC( ch ) && ch->pcdata != NULL
+        && ch->pcdata->wizard_kind != 0;
+}
+
+void build_wizard_clear( CHAR_DATA *ch )
+{
+    if ( ch == NULL || IS_NPC( ch ) || ch->pcdata == NULL )
+        return;
+    ch->pcdata->wizard_kind  = 0;
+    ch->pcdata->wizard_step  = 0;
+    ch->pcdata->wizard_vnum  = 0;
+    ch->pcdata->wizard_extra = 0;
+}
+
+
+/* Whether this question is one to ask now: an object's value questions
+   are asked only for the type it has become. */
+static bool wiz_applies( CHAR_DATA *ch, const struct wiz_q *q )
+{
+    OBJ_INDEX_DATA *o;
+
+    if ( q->item_type == 0 )
+        return true;
+    o = get_obj_index( ch->pcdata->wizard_vnum );
+    return o != NULL && o->item_type == q->item_type;
+}
+
+/* Ask the question the build is on, skipping any that do not apply; at
+   the end of the list, the build is done. */
+static void wiz_ask( CHAR_DATA *ch )
+{
+    const struct wiz_q *steps = wiz_steps( ch->pcdata->wizard_kind );
+    char buf[MAX_STRING_LENGTH];
+
+    if ( steps == NULL )
+    {
+        build_wizard_clear( ch );
+        return;
+    }
+
+    while ( steps[ch->pcdata->wizard_step].kind != Q_END
+         && !wiz_applies( ch, &steps[ch->pcdata->wizard_step] ) )
+        ch->pcdata->wizard_step++;
+
+    if ( steps[ch->pcdata->wizard_step].kind == Q_END )
+    {
+        int vnum = ch->pcdata->wizard_vnum;
+        int kind = ch->pcdata->wizard_kind;
+
+        build_wizard_clear( ch );
+        if ( kind == WIZ_MOB )
+            snprintf( buf, sizeof(buf), "Done.  Mobile %d is built: MSHOW %d to read it, "
+                      "SET MOB %d to change it.\n\r", vnum, vnum, vnum );
+        else if ( kind == WIZ_OBJ )
+            snprintf( buf, sizeof(buf), "Done.  Object %d is built: OSHOW %d to read it, "
+                      "SET OBJ %d to change it.\n\r", vnum, vnum, vnum );
+        else
+            snprintf( buf, sizeof(buf), "Done.  BUILD ROOM builds where you stand, "
+                      "BUILD MOB and BUILD OBJ fill it.\n\r" );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( steps[ch->pcdata->wizard_step].kind == Q_VNUM && ch->pcdata->wizard_vnum > 0 )
+        snprintf( buf, sizeof(buf), "\n\r%s  [%d]\n\r",
+                  steps[ch->pcdata->wizard_step].ask, ch->pcdata->wizard_vnum );
+    else
+        snprintf( buf, sizeof(buf), "\n\r%s\n\r", steps[ch->pcdata->wizard_step].ask );
+    send_to_char( buf, ch );
+}
+
+static void wiz_next( CHAR_DATA *ch )
+{
+    ch->pcdata->wizard_step++;
+    ch->pcdata->wizard_extra = 0;
+    wiz_ask( ch );
+}
+
+
+/* The first free mobile, object or room vnum in an area's range, or 0. */
+static int wiz_free_vnum( AREA_DATA *pArea, int kind )
+{
+    int vnum;
+
+    if ( !area_is_built( pArea ) )
+        return 0;
+    for ( vnum = pArea->min_vnum; vnum <= pArea->max_vnum; vnum++ )
+    {
+        if ( kind == WIZ_MOB && get_mob_index( vnum ) == NULL )
+            return vnum;
+        if ( kind == WIZ_OBJ && get_obj_index( vnum ) == NULL )
+            return vnum;
+        if ( kind == WIZ_ROOM && get_room_index( vnum ) == NULL )
+            return vnum;
+    }
+    return 0;
+}
+
+/* A room vnum to dig to from here: the next free one in this area's range,
+   or for the workshop the next free one above this room. */
+static int wiz_dig_vnum( ROOM_INDEX_DATA *here )
+{
+    int vnum;
+
+    if ( area_is_built( here->area ) )
+        return wiz_free_vnum( here->area, WIZ_ROOM );
+    for ( vnum = here->vnum + 1; vnum <= WORLD_SIZE; vnum++ )
+        if ( get_room_index( vnum ) == NULL && area_for_vnum( vnum ) == NULL )
+            return vnum;
+    return 0;
+}
+
+
+/*
+ * A free block of `size' vnums for a new area: no room, mobile or object
+ * in it, and clear of every area's declared range and of the span of
+ * every area's rooms -- a gap inside a shipped area's numbers is that
+ * area's, not free. 0 when there is none.
+ */
+static int wiz_free_block( int size )
+{
+    static bool used[WORLD_SIZE + 1];
+    AREA_DATA *pArea;
+    int vnum, run = 0;
+
+    memset( used, 0, sizeof(used) );
+    for ( vnum = 1; vnum <= WORLD_SIZE; vnum++ )
+        if ( get_room_index( vnum ) != NULL || get_mob_index( vnum ) != NULL
+          || get_obj_index( vnum ) != NULL )
+            used[vnum] = true;
+
+    for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
+    {
+        int lo = WORLD_SIZE + 1, hi = 0, v;
+
+        if ( pArea->min_vnum > 0 )
+        {
+            lo = pArea->min_vnum;
+            hi = UMIN( pArea->max_vnum, WORLD_SIZE );
+        }
+        for ( v = 1; v <= WORLD_SIZE; v++ )
+        {
+            ROOM_INDEX_DATA *room = get_room_index( v );
+
+            if ( room != NULL && room->area == pArea )
+            {
+                lo = UMIN( lo, v );
+                hi = UMAX( hi, v );
+            }
+        }
+        for ( v = lo; v <= hi; v++ )
+            used[v] = true;
+    }
+
+    /* From 1000 up: the low numbers are the old world's. */
+    for ( vnum = 1000; vnum <= WORLD_SIZE; vnum++ )
+    {
+        run = used[vnum] ? 0 : run + 1;
+        if ( run == size )
+            return vnum - size + 1;
+    }
+    return 0;
+}
+
+
+/* Hand a line to the editor for the prototype being built. */
+static bool wiz_set( CHAR_DATA *ch, const char *field, const char *value )
+{
+    char cmd[MAX_STRING_LENGTH];
+
+    snprintf( cmd, sizeof(cmd), "%d %s %s", ch->pcdata->wizard_vnum, field, value );
+    return ch->pcdata->wizard_kind == WIZ_MOB ? build_set_mob( ch, cmd )
+                                              : build_set_obj( ch, cmd );
+}
+
+static bool wiz_yes( const char *answer, bool dflt )
+{
+    if ( answer[0] == '\0' )
+        return dflt;
+    return !str_prefix( answer, "yes" );
+}
+
+
+/* Start the room questions for the room the builder is standing in. */
+static void wiz_start_room( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    ch->pcdata->wizard_kind  = WIZ_ROOM;
+    ch->pcdata->wizard_step  = 0;
+    ch->pcdata->wizard_vnum  = ch->in_room->vnum;
+    ch->pcdata->wizard_extra = 0;
+    snprintf( buf, sizeof(buf), "Building room %d.  CANCEL stops; /<command> runs "
+              "a command meanwhile.\n\r", ch->in_room->vnum );
+    send_to_char( buf, ch );
+    wiz_ask( ch );
+}
+
+
+/* One answer, to the question the build is on. */
+void build_wizard_input( CHAR_DATA *ch, const char *line )
+{
+    char answer[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    const struct wiz_q *steps, *q;
+    size_t len;
+
+    if ( !build_wizard_active( ch ) )
+        return;
+
+    while ( isspace( (unsigned char) *line ) )
+        line++;
+    toc_strlcpy( answer, line, sizeof(answer) );
+    len = strlen( answer );
+    while ( len > 0 && isspace( (unsigned char) answer[len - 1] ) )
+        answer[--len] = '\0';
+    smash_tilde( answer );
+
+    if ( !str_cmp( answer, "cancel" ) )
+    {
+        build_wizard_clear( ch );
+        send_to_char( "Build stopped.  What it made so far stays; ASAVE keeps it.\n\r", ch );
+        return;
+    }
+    if ( answer[0] == '/' )
+    {
+        interpret( ch, answer + 1 );
+        if ( build_wizard_active( ch ) )
+            wiz_ask( ch );
+        return;
+    }
+
+    steps = wiz_steps( ch->pcdata->wizard_kind );
+    if ( steps == NULL )
+    {
+        build_wizard_clear( ch );
+        return;
+    }
+    q = &steps[ch->pcdata->wizard_step];
+
+    switch ( q->kind )
+    {
+    case Q_AREASIZE:
+    {
+        long rooms = answer[0] == '\0' ? 20 : plain_number( answer, 1000 );
+
+        if ( rooms < 1 )
+        {
+            send_to_char( "A number of rooms, from 1 to 1000.\n\r", ch );
+            return;
+        }
+        /* Twice that, in tens: room to grow, and a range easy to read. */
+        ch->pcdata->wizard_extra = (int) UMAX( 10, ( ( rooms * 2 + 9 ) / 10 ) * 10 );
+        ch->pcdata->wizard_step++;
+        wiz_ask( ch );
+        return;
+    }
+
+    case Q_AREANAME:
+    {
+        char cmd[MAX_STRING_LENGTH];
+        int size = UMAX( 10, ch->pcdata->wizard_extra );
+        int lo;
+
+        if ( answer[0] == '\0' )
+        {
+            send_to_char( "It needs a name.\n\r", ch );
+            return;
+        }
+        if ( ( lo = wiz_free_block( size ) ) == 0 )
+        {
+            send_to_char( "There is no free block of vnums that size.  Try fewer rooms, "
+                          "or ANEW a range by hand.\n\r", ch );
+            build_wizard_clear( ch );
+            return;
+        }
+        snprintf( cmd, sizeof(cmd), "%d %d %s", lo, lo + size - 1, answer );
+        do_anew( ch, cmd );
+        if ( area_for_vnum( lo ) == NULL )
+        {
+            /* ANEW said why. */
+            build_wizard_clear( ch );
+            return;
+        }
+        snprintf( cmd, sizeof(cmd), "%d", lo );
+        do_goto( ch, cmd );
+        if ( ch->in_room == NULL || ch->in_room->vnum != lo )
+        {
+            build_wizard_clear( ch );
+            return;
+        }
+        wiz_start_room( ch );
+        return;
+    }
+
+    case Q_ROOMNAME:
+        if ( answer[0] != '\0' )
+        {
+            free_string( ch->in_room->name );
+            ch->in_room->name = str_dup( answer );
+        }
+        wiz_next( ch );
+        return;
+
+    case Q_ROOMDESC:
+    {
+        char text[2 * MAX_STRING_LENGTH];
+
+        if ( !str_cmp( answer, "." ) || ( answer[0] == '\0' ) )
+        {
+            wiz_next( ch );
+            return;
+        }
+        text[0] = '\0';
+        if ( ch->pcdata->wizard_extra > 0 )
+            toc_strlcpy( text, ch->in_room->description, sizeof(text) );
+        wrap_into( answer, text, sizeof(text) );
+        if ( strlen( text ) >= MAX_STRING_LENGTH - 2 )
+        {
+            send_to_char( "That is as long as a description can be.\n\r", ch );
+            wiz_next( ch );
+            return;
+        }
+        text[0] = UPPER( text[0] );
+        free_string( ch->in_room->description );
+        ch->in_room->description = str_dup( text );
+        ch->pcdata->wizard_extra++;
+        send_to_char( "  (more, or . to end)\n\r", ch );
+        return;
+    }
+
+    case Q_SECTOR:
+    {
+        const struct build_flag *f;
+
+        if ( answer[0] != '\0' )
+        {
+            if ( ( f = flag_find( sector_names, answer ) ) == NULL )
+            {
+                send_to_char( "Not a kind of ground I know.\n\r", ch );
+                return;
+            }
+            ch->in_room->sector_type = (sh_int) f->bit;
+        }
+        wiz_next( ch );
+        return;
+    }
+
+    case Q_EXIT:
+    {
+        char cmd[MAX_INPUT_LENGTH];
+        int door, to;
+
+        if ( answer[0] == '\0' || !str_cmp( answer, "no" ) )
+        {
+            wiz_next( ch );
+            return;
+        }
+        for ( door = 0; door <= 9; door++ )
+            if ( !str_prefix( answer, dir_name[door] ) )
+                break;
+        if ( door > 9 )
+        {
+            send_to_char( "That is not a direction.\n\r", ch );
+            return;
+        }
+        if ( ch->in_room->exit[door] != NULL )
+        {
+            send_to_char( "There is a way that way already.\n\r", ch );
+            return;
+        }
+        if ( ( to = wiz_dig_vnum( ch->in_room ) ) == 0 )
+        {
+            send_to_char( "This area has no vnums left for a room.\n\r", ch );
+            wiz_next( ch );
+            return;
+        }
+        snprintf( cmd, sizeof(cmd), "%s %d", dir_name[door], to );
+        do_rlink( ch, cmd );
+        if ( ch->in_room->exit[door] == NULL )
+            return;
+        /* Walk through and build the new room the same way. */
+        snprintf( cmd, sizeof(cmd), "%d", to );
+        do_goto( ch, cmd );
+        wiz_start_room( ch );
+        return;
+    }
+
+    case Q_VNUM:
+    {
+        int vnum = ch->pcdata->wizard_vnum;
+        bool taken;
+
+        if ( answer[0] != '\0' )
+        {
+            if ( !is_number( answer ) || strlen( answer ) > 5 )
+            {
+                send_to_char( "A vnum is a number.\n\r", ch );
+                return;
+            }
+            vnum = atoi( answer );
+        }
+        taken = ch->pcdata->wizard_kind == WIZ_MOB ? get_mob_index( vnum ) != NULL
+                                                   : get_obj_index( vnum ) != NULL;
+        if ( vnum <= 0 || area_for_vnum( vnum ) == NULL
+          || !may_build_area( ch, area_for_vnum( vnum ) ) )
+        {
+            send_to_char( "That vnum is not in an area you can build in.\n\r", ch );
+            return;
+        }
+        if ( taken )
+        {
+            send_to_char( "Something already has that vnum.\n\r", ch );
+            return;
+        }
+        ch->pcdata->wizard_vnum = vnum;
+        wiz_next( ch );
+        return;
+    }
+
+    case Q_COPY:
+    {
+        char cmd[MAX_INPUT_LENGTH];
+
+        if ( answer[0] != '\0' && !is_number( answer ) )
+        {
+            send_to_char( "Give a vnum to copy, or press Enter for a blank one.\n\r", ch );
+            return;
+        }
+        snprintf( cmd, sizeof(cmd), "%d %s", ch->pcdata->wizard_vnum, answer );
+        if ( ch->pcdata->wizard_kind == WIZ_MOB )
+            do_mcreate( ch, cmd );
+        else
+            do_ocreate( ch, cmd );
+        if ( ( ch->pcdata->wizard_kind == WIZ_MOB
+               ? (void *) get_mob_index( ch->pcdata->wizard_vnum )
+               : (void *) get_obj_index( ch->pcdata->wizard_vnum ) ) == NULL )
+            return;     /* MCREATE/OCREATE said why; ask again */
+        wiz_next( ch );
+        return;
+    }
+
+    case Q_SET:
+        if ( answer[0] != '\0' && !wiz_set( ch, q->field, answer ) )
+            return;     /* refused in SET's own words; ask again */
+        wiz_next( ch );
+        return;
+
+    case Q_DESC:
+    {
+        char value[MAX_INPUT_LENGTH + 4];
+
+        if ( !str_cmp( answer, "." ) || answer[0] == '\0' )
+        {
+            wiz_next( ch );
+            return;
+        }
+        snprintf( value, sizeof(value), "%s%s",
+                  ch->pcdata->wizard_extra > 0 ? "+ " : "", answer );
+        if ( wiz_set( ch, "desc", value ) )
+            ch->pcdata->wizard_extra++;
+        send_to_char( "  (more, or . to end)\n\r", ch );
+        return;
+    }
+
+    case Q_MORE:
+    {
+        char field[MAX_INPUT_LENGTH];
+        const char *rest;
+
+        if ( answer[0] == '\0' || !str_cmp( answer, "done" ) )
+        {
+            wiz_next( ch );
+            return;
+        }
+        rest = one_argument( answer, field );
+        wiz_set( ch, field, rest );
+        send_to_char( "  (another, or Enter to finish)\n\r", ch );
+        return;
+    }
+
+    case Q_PLACE:
+    {
+        char cmd[MAX_INPUT_LENGTH];
+
+        if ( ch->pcdata->wizard_kind == WIZ_MOB )
+        {
+            if ( wiz_yes( answer, true ) )
+            {
+                snprintf( cmd, sizeof(cmd), "mob %d", ch->pcdata->wizard_vnum );
+                do_place( ch, cmd );
+            }
+        }
+        else if ( answer[0] != '\0' && str_cmp( answer, "no" ) )
+        {
+            if ( !str_prefix( answer, "floor" ) )
+                snprintf( cmd, sizeof(cmd), "obj %d", ch->pcdata->wizard_vnum );
+            else
+                snprintf( cmd, sizeof(cmd), "obj %d %s", ch->pcdata->wizard_vnum, answer );
+            do_place( ch, cmd );
+        }
+        wiz_next( ch );
+        return;
+    }
+
+    case Q_SAVE:
+        if ( wiz_yes( answer, true ) )
+        {
+            if ( area_is_built( ch->in_room->area ) )
+                do_asave( ch, "" );
+            else
+                do_rsave( ch, "confirm" );
+        }
+        wiz_next( ch );
+        return;
+    }
+
+    snprintf( buf, sizeof(buf), "The build lost its place; it has stopped.\n\r" );
+    send_to_char( buf, ch );
+    build_wizard_clear( ch );
+}
+
+
+/* BUILD -- start a guided build. */
+void do_build( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    AREA_DATA *here;
+
+    if ( IS_NPC( ch ) || ch->pcdata == NULL || ch->in_room == NULL )
+        return;
+
+    one_argument( argument, arg );
+    here = ch->in_room->area;
+
+    if ( arg[0] == '\0' )
+    {
+        send_to_char(
+            "BUILD asks you what you want, a question at a time, and builds it.\n\r"
+            "  build area     a new area of your own, and its first room\n\r"
+            "  build room     the room you are standing in, and rooms beyond it\n\r"
+            "  build mob      a mobile for the area you are in\n\r"
+            "  build obj      an object for the area you are in\n\r"
+            "Press Enter to keep an answer, CANCEL to stop, and start a line with /\n\r"
+            "to run a command along the way (/look).  HELP BUILDING has the rest.\n\r",
+            ch );
+        return;
+    }
+
+    if ( build_wizard_active( ch ) )
+        build_wizard_clear( ch );
+
+    if ( !str_prefix( arg, "area" ) )
+    {
+        ch->pcdata->wizard_kind = WIZ_AREA;
+        ch->pcdata->wizard_step = 0;
+        send_to_char( "A new area.  CANCEL stops at any question.\n\r", ch );
+        wiz_ask( ch );
+        return;
+    }
+
+    if ( !str_prefix( arg, "room" ) )
+    {
+        if ( !may_edit_room( ch, ch->in_room ) )
+        {
+            send_to_char( "This room is not yours to build: BUILD AREA makes a "
+                          "place of your own.\n\r", ch );
+            return;
+        }
+        wiz_start_room( ch );
+        return;
+    }
+
+    if ( !str_prefix( arg, "mobile" ) || !str_prefix( arg, "object" ) )
+    {
+        int kind = !str_prefix( arg, "mobile" ) ? WIZ_MOB : WIZ_OBJ;
+
+        if ( !area_is_built( here ) || !may_build_area( ch, here ) )
+        {
+            send_to_char( "Stand in an area you built (BUILD AREA makes one) -- "
+                          "the new one goes in its range.\n\r", ch );
+            return;
+        }
+        ch->pcdata->wizard_kind  = kind;
+        ch->pcdata->wizard_step  = 0;
+        ch->pcdata->wizard_vnum  = wiz_free_vnum( here, kind );
+        ch->pcdata->wizard_extra = 0;
+        if ( ch->pcdata->wizard_vnum == 0 )
+        {
+            build_wizard_clear( ch );
+            send_to_char( "This area's range is full.\n\r", ch );
+            return;
+        }
+        send_to_char( kind == WIZ_MOB ? "A new mobile.  CANCEL stops at any question.\n\r"
+                                      : "A new object.  CANCEL stops at any question.\n\r",
+                      ch );
+        wiz_ask( ch );
+        return;
+    }
+
+    do_build( ch, "" );
 }

@@ -366,6 +366,7 @@ DECLARE_DO_FUN(	do_asave	);
 DECLARE_DO_FUN(	do_mcreate	);
 DECLARE_DO_FUN(	do_mshow	);
 DECLARE_DO_FUN(	do_oshow	);
+DECLARE_DO_FUN(	do_build	);
 DECLARE_DO_FUN(	do_place	);
 DECLARE_DO_FUN(	do_resets	);
 DECLARE_DO_FUN(	do_unplace	);

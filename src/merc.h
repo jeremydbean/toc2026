@@ -2207,6 +2207,13 @@ struct  pc_data
     int                 walkto_steps;
     int                 walkto_waited;
     int                 walkto_expect;
+    /* BUILD, the guided builder (build.c): which kind of build is under
+       way (0 when none), the question it is on, the vnum it is building,
+       and a scratch count. Not saved; a dropped link ends it. */
+    int                 wizard_kind;
+    int                 wizard_step;
+    int                 wizard_vnum;
+    int                 wizard_extra;
 
     /* The player chose their title with TITLE, so a level-up must not
        replace it with the class title. TITLE DEFAULT clears it. Saved as
@@ -3109,13 +3116,17 @@ bool    save_area_rooms ( AREA_DATA *pArea, char *why, size_t why_size );
 bool    save_area_full  ( AREA_DATA *pArea, char *why, size_t why_size );
 void    mob_index_set_wealth ( MOB_INDEX_DATA *pMobIndex, long total );
 MOB_INDEX_DATA *new_mob_index ( int vnum, MOB_INDEX_DATA *copy_from );
-void    build_set_mob   ( CHAR_DATA *ch, char *argument );
-void    build_set_obj   ( CHAR_DATA *ch, char *argument );
+bool    build_set_mob   ( CHAR_DATA *ch, char *argument );
+bool    build_set_obj   ( CHAR_DATA *ch, char *argument );
+bool    build_wizard_active ( CHAR_DATA *ch );
+void    build_wizard_input  ( CHAR_DATA *ch, const char *line );
+void    build_wizard_clear  ( CHAR_DATA *ch );
 OBJ_INDEX_DATA *new_obj_index ( int vnum, OBJ_INDEX_DATA *copy_from );
 AREA_DATA *area_for_vnum ( int vnum );
 bool    area_is_buildable ( AREA_DATA *pArea );
 bool    area_is_built   ( AREA_DATA *pArea );
 bool    may_build_area   ( CHAR_DATA *ch, AREA_DATA *pArea );
+bool    may_edit_room    ( CHAR_DATA *ch, ROOM_INDEX_DATA *room );
 bool    append_area_to_list ( const char *list, const char *entry,
                               char *why, size_t why_size );
 bool    is_loopback_ip  ( uint32_t ip );
