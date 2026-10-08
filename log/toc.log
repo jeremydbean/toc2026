@@ -63299,3 +63299,63 @@ Thu Oct  8 00:44:09 2026 :: Log Alaric [2497]: whois alaric
 Thu Oct  8 00:44:11 2026 :: Log Alaric [2497]: who
 Thu Oct  8 00:44:12 2026 :: Log Alaric [2497]: (refused) finger
 Thu Oct  8 00:44:14 2026 :: Log Alaric [2497]: who
+Thu Oct  8 00:45:24 2026 :: Sock.sinaddr:  178.156.187.238
+Thu Oct  8 00:45:24 2026 :: EOF encountered on read.
+Thu Oct  8 00:46:10 2026 :: Log Alaric [2497]: bug The web client does not operate like a normal MUD client, it does not recognize certain commands. There may be a disconnect between the web client and commands that have been added since it's creation. An example of this is the "walkto" command. The command appears to work, but does not recognize the following command, "walk quest". It states that there is no destination called quest.
+Thu Oct  8 00:46:12 2026 :: Log Alaric [2497]: who
+Thu Oct  8 00:46:14 2026 :: Log Alaric [2497]: note list
+Thu Oct  8 00:46:29 2026 :: Log Alaric [2497]: note read 25
+Thu Oct  8 00:46:56 2026 :: Log Alaric [2497]: who
+Thu Oct  8 00:46:57 2026 :: Log Alaric [2497]: i
+Thu Oct  8 00:47:01 2026 :: Log Alaric [2497]: comp chain
+Thu Oct  8 00:48:49 2026 :: Log Alaric [2497]: aq re
+Thu Oct  8 00:48:51 2026 :: Log Alaric [2497]: enter door
+Thu Oct  8 00:48:51 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Thu Oct  8 00:48:52 2026 :: Log Alaric [2401]: east
+Thu Oct  8 00:48:52 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Thu Oct  8 00:48:52 2026 :: Log Alaric [2403]: east
+Thu Oct  8 00:48:52 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Thu Oct  8 00:48:52 2026 :: Log Alaric [2420]: east
+Thu Oct  8 00:48:52 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Thu Oct  8 00:48:52 2026 :: Log Alaric [2421]: south
+Thu Oct  8 00:48:52 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Thu Oct  8 00:48:53 2026 :: Log Alaric [2441]: east
+Thu Oct  8 00:48:53 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Thu Oct  8 00:48:53 2026 :: Log Alaric [2442]: south
+Thu Oct  8 00:48:53 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Thu Oct  8 00:48:53 2026 :: Log Alaric [2443]: east
+Thu Oct  8 00:48:53 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Thu Oct  8 00:48:53 2026 :: Log Alaric [2444]: east
+Thu Oct  8 00:48:53 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Thu Oct  8 00:48:54 2026 :: Log Alaric [2445]: east
+Thu Oct  8 00:48:54 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Thu Oct  8 00:48:54 2026 :: Log Alaric [2101]: east
+Thu Oct  8 00:48:54 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Thu Oct  8 00:48:54 2026 :: Log Alaric [2102]: east
+Thu Oct  8 00:48:54 2026 :: Log Alaric [2103]: arrived (Along White Dragon Boulevard) from 2102
+Thu Oct  8 00:48:54 2026 :: Log Alaric [2103]: east
+Thu Oct  8 00:48:54 2026 :: Log Alaric [2104]: arrived (White Dragon Boulevard at Armory) from 2103
+Thu Oct  8 00:48:55 2026 :: Log Alaric [2104]: south
+Thu Oct  8 00:48:55 2026 :: Log Alaric [2111]: arrived (Armory) from 2104
+Thu Oct  8 00:48:55 2026 :: Log Alaric [2111]: south
+Thu Oct  8 00:48:55 2026 :: Log Alaric [2117]: arrived (Shortcut) from 2111
+Thu Oct  8 00:48:55 2026 :: Log Alaric [2117]: south
+Thu Oct  8 00:48:55 2026 :: Log Alaric [2121]: arrived (Shortcut) from 2117
+Thu Oct  8 00:48:55 2026 :: Log Alaric [2121]: east
+Thu Oct  8 00:48:55 2026 :: Log Alaric [2122]: arrived (Ice Dragon Way) from 2121
+Thu Oct  8 00:48:56 2026 :: Log Alaric [2122]: north
+Thu Oct  8 00:48:56 2026 :: Log Alaric [2118]: arrived (Ice Dragon Way) from 2122
+Thu Oct  8 00:48:57 2026 :: Log Alaric [2118]: te
+Thu Oct  8 00:49:01 2026 :: Log Alaric [2118]: recal
+Thu Oct  8 00:49:01 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2118
+Thu Oct  8 00:49:01 2026 :: Log Alaric [2497]: recal
+Thu Oct  8 00:49:02 2026 :: Log Alaric [2497]: recal
+Thu Oct  8 00:49:02 2026 :: Log Alaric [2497]: aq co
+Thu Oct  8 00:49:02 2026 :: Log Alaric [2497]: quest complete: 1 gold, 35 quest points (streak bonus 30%)
+Thu Oct  8 00:49:02 2026 :: Log Alaric [2497]: aq ga no
+Thu Oct  8 00:49:04 2026 :: Log Alaric [2497]: score
+Thu Oct  8 00:49:05 2026 :: Log Alaric [2497]: who
+Thu Oct  8 00:49:17 2026 :: Log Alaric [2497]: sc
+Thu Oct  8 00:49:22 2026 :: Log Alaric [2497]: train
+Thu Oct  8 00:49:26 2026 :: Log Alaric [2497]: af
+Thu Oct  8 00:49:27 2026 :: Log Alaric [2497]: eq
