@@ -64375,3 +64375,6 @@ Thu Oct  8 13:29:27 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 
 Thu Oct  8 13:29:27 2026 :: ROM is ready to rock on port 9000.
 Thu Oct  8 13:29:27 2026 :: Automated backup complete.
 Thu Oct  8 13:29:27 2026 :: Daily backup complete.
+Thu Oct  8 13:32:08 2026 :: Sock.sinaddr:  178.156.187.238
+Thu Oct  8 13:32:08 2026 :: EOF encountered on read.
+Thu Oct  8 13:35:09 2026 :: Sock.sinaddr:  45.33.109.18
