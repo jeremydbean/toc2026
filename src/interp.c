@@ -202,6 +202,13 @@ const	struct	cmd_type	cmd_table	[] =
     { "noloot",		do_noloot,	POS_DEAD,        0,  LOG_NORMAL, 1 },
     { "nosummon",	do_nosummon,	POS_DEAD,        0,  LOG_NORMAL, 1 },
     { "outfit",		do_outfit,	POS_RESTING,	 0,  LOG_ALWAYS, 1 },
+    /* What a new player types for the sub issue kit: Farslayer tried
+       ISSUE SUBISSUE and ISSUE REISSUE across two sessions in Mud School
+       (watched log, 2026-10-04 and 10-06), and HELP OUTFIT's "see also"
+       named a SUBISSUE topic that did not exist. */
+    { "issue",          do_outfit,      POS_RESTING,     0,  LOG_ALWAYS, 0 },
+    { "reissue",        do_outfit,      POS_RESTING,     0,  LOG_ALWAYS, 0 },
+    { "subissue",       do_outfit,      POS_RESTING,     0,  LOG_ALWAYS, 0 },
     { "password",	do_password,	POS_DEAD,	 0,  LOG_NEVER,  1 },
     { "prompt",		do_prompt,	POS_DEAD,        0,  LOG_NORMAL, 1 },
     { "scroll",		do_scroll,	POS_DEAD,	 0,  LOG_NORMAL, 1 },

@@ -68,6 +68,11 @@ class LiveTests(unittest.TestCase):
 
                 self.assertIn("not on a quest", run(player, "walk quest"))
 
+                # Mud School's kit: what a new player types for it works,
+                # and HELP finds it by those words (watched log, 2026-10-06).
+                self.assertIn("OUTFIT", run(player, "help subissue").upper())
+                self.assertNotIn("Huh?", run(player, "issue"))
+
                 asked = run(player, "aquest request", 2.5)
                 self.assertRegex(asked, r"(?i)quest", asked)
                 if "no suitable quests" in asked:

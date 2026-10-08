@@ -3,6 +3,10 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261008b 2026-10-08
+In Mud School, ISSUE, REISSUE and SUBISSUE now hand out your sub issue
+gear, just as OUTFIT does, and HELP SUBISSUE finds it.
+
 @ 20261008a 2026-10-08
 WALKTO QUEST walks you to where the quest master sent you, and the quest
 master now only sends you somewhere you can walk to -- no more quests to

@@ -3151,13 +3151,6 @@ void shadowmeld_on_attack( CHAR_DATA *ch )
 
 void raw_kill( CHAR_DATA *ch, CHAR_DATA *victim )
 {
-    watch_log( victim, "died to %s",
-        ch == NULL ? "nothing" :
-        ( IS_NPC(ch) ? ch->short_descr : ch->name ) );
-    watch_log( ch, "killed %s",
-        victim == NULL ? "nothing" :
-        ( IS_NPC(victim) ? victim->short_descr : victim->name ) );
-
     raw_kill_internal( ch, victim, false );
 }
 
@@ -3209,6 +3202,19 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
             victim );
         return;
     }
+
+    /* Both sides of a death, for whoever is watching either. This sat in
+       raw_kill, which damage() never calls -- an ordinary death in combat
+       comes straight here -- so in three weeks of watched play not one
+       combat death or kill reached the log (2026-10-08). Below the
+       deaths that are not deaths: Ganon re-forming, the dummy, the
+       character who cannot die. */
+    watch_log( victim, "died to %s",
+        ch == NULL ? "nothing" :
+        ( IS_NPC(ch) ? ch->short_descr : ch->name ) );
+    if ( ch != NULL )
+        watch_log( ch, "killed %s",
+            IS_NPC(victim) ? victim->short_descr : victim->name );
 
     stop_fighting( victim, true );
 

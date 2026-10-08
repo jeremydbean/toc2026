@@ -2465,7 +2465,17 @@ bool adjust_coin_balance(CHAR_DATA *ch, long amount, int coin_type)
 
     *balance += amount;
     if (amount != 0)
+    {
+        /* One pile: picking coins up, looting, splitting, giving. Only
+           gain_copper was watched, and nothing players do much goes
+           through it -- three weeks of watched play logged no coin at all
+           (2026-10-08), which is the exploit this log is for. */
+        watch_log(ch, "coin %+ld %s", amount,
+                  coin_type == TYPE_PLATINUM ? "platinum" :
+                  coin_type == TYPE_GOLD     ? "gold" :
+                  coin_type == TYPE_SILVER   ? "silver" : "copper");
         achievement_check_economy(ch, true);
+    }
     return true;
 }
 
@@ -2506,6 +2516,7 @@ bool spend_copper( CHAR_DATA *ch, long copper )
         return false;
 
     normalize_coins( ch, total - copper );
+    watch_log( ch, "copper -%ld", copper );
     achievement_check_economy( ch, true );
     return true;
 }
@@ -6215,6 +6226,7 @@ void add_money(CHAR_DATA *ch, long amount)
   }
 
   normalize_coins(ch, total_copper);
+  watch_log(ch, "gold %+ld", amount);
   achievement_check_economy(ch, true);
 }
 

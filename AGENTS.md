@@ -1385,10 +1385,16 @@ It is wired where a bug or a cheat shows itself:
   the command log alone cannot reconstruct a route.
 - `advance_level` -- `level 34 -> 35`, and whether it was an advance or
   a restore.
-- `gain_copper` -- any change. Coin from nowhere is the oldest exploit
-  there is.
-- `raw_kill` -- both sides of it, so a death has a cause and a kill has
-  a victim.
+- Every purse change -- `adjust_coin_balance` (picking up, looting,
+  splitting, giving), `gain_copper`, `spend_copper` and `add_money`.
+  Coin from nowhere is the oldest exploit there is. Until 2026-10-08 only
+  `gain_copper` was watched, and three weeks of watched play logged no
+  coin at all: nothing players do much goes through it.
+- `raw_kill_internal` -- both sides of a death, so a death has a cause
+  and a kill has a victim. Not `raw_kill`: `damage()`, every ordinary
+  combat death, calls the internal one directly, and with the hook in
+  the wrapper not one combat death was ever logged.
+  `tests/test_watch_log_events.py`.
 
 Staff actions that change shared state should reach `log_string` and
 not only `wizinfo`: wizinfo tells whoever is online at that moment and
