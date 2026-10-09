@@ -67714,3 +67714,13 @@ Fri Oct  9 17:22:27 2026 :: Sock.sinaddr:  34.198.201.66
 Fri Oct  9 17:22:28 2026 :: EOF encountered on read.
 Fri Oct  9 17:27:32 2026 :: Sock.sinaddr:  5.161.73.160
 Fri Oct  9 17:27:32 2026 :: EOF encountered on read.
+Fri Oct  9 17:32:20 2026 :: Loading Alaric's playerfile
+Fri Oct  9 17:32:22 2026 :: Alaric@208.127.191.100 has connected.
+Fri Oct  9 17:32:23 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Fri Oct  9 17:32:27 2026 :: Log Alaric [2497]: who
+Fri Oct  9 17:32:29 2026 :: Log Alaric [2497]: aq it
+Fri Oct  9 17:32:35 2026 :: Log Alaric [2497]: aq time
+Fri Oct  9 17:32:37 2026 :: Sock.sinaddr:  5.161.194.92
+Fri Oct  9 17:32:37 2026 :: EOF encountered on read.
+Fri Oct  9 17:32:39 2026 :: Log Alaric [2497]: af
+Fri Oct  9 17:32:41 2026 :: Log Alaric [2497]: affect
