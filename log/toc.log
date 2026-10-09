@@ -67937,3 +67937,29 @@ Fri Oct  9 18:03:28 2026 :: Log Alaric [2497]: who
 Fri Oct  9 18:03:31 2026 :: Log Alaric [2497]: aq time
 Fri Oct  9 18:03:34 2026 :: Log Alaric [2497]: who
 Fri Oct  9 18:04:31 2026 :: Log Alaric [2497]: who
+Fri Oct  9 18:04:33 2026 :: Log Alaric [2497]: sc
+Fri Oct  9 18:07:30 2026 :: Log Alaric [2497]: aq request
+Fri Oct  9 18:07:33 2026 :: Log Alaric [2497]: walk quest
+Fri Oct  9 18:07:33 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Fri Oct  9 18:07:34 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Fri Oct  9 18:07:35 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Fri Oct  9 18:07:35 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Fri Oct  9 18:07:36 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Fri Oct  9 18:07:37 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Fri Oct  9 18:07:38 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Fri Oct  9 18:07:38 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Fri Oct  9 18:07:39 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Fri Oct  9 18:07:40 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Fri Oct  9 18:07:41 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Fri Oct  9 18:07:41 2026 :: Log Alaric [2109]: arrived (An over-grown lot) from 2102
+Fri Oct  9 18:07:45 2026 :: Log Alaric [2109]: get all
+Fri Oct  9 18:07:45 2026 :: Log Alaric [2109]: recal
+Fri Oct  9 18:07:45 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2109
+Fri Oct  9 18:07:46 2026 :: Log Alaric [2497]: recal
+Fri Oct  9 18:07:48 2026 :: Log Alaric [2497]: aq complete
+Fri Oct  9 18:07:48 2026 :: Log Alaric [2497]: gold +30
+Fri Oct  9 18:07:48 2026 :: Log Alaric [2497]: quest complete: 30 gold, 76 quest points (streak bonus 100%)
+Fri Oct  9 18:07:50 2026 :: Log Alaric [2497]: aq ga no
+Fri Oct  9 18:07:51 2026 :: Log Alaric [2497]: sc
+Fri Oct  9 18:08:10 2026 :: Sock.sinaddr:  54.87.112.51
+Fri Oct  9 18:08:10 2026 :: EOF encountered on read.
