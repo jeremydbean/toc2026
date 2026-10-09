@@ -68515,3 +68515,92 @@ Fri Oct  9 21:00:40 2026 :: Sock.sinaddr:  178.156.185.127
 Fri Oct  9 21:00:41 2026 :: EOF encountered on read.
 Fri Oct  9 21:05:45 2026 :: Sock.sinaddr:  5.161.75.7
 Fri Oct  9 21:05:45 2026 :: EOF encountered on read.
+Fri Oct  9 21:10:07 2026 :: Log Alaric [2497]: aq re
+Fri Oct  9 21:10:11 2026 :: Log Alaric [2497]: enter door
+Fri Oct  9 21:10:11 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Fri Oct  9 21:10:11 2026 :: Log Alaric [2401]: east
+Fri Oct  9 21:10:11 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Fri Oct  9 21:10:11 2026 :: Log Alaric [2403]: east
+Fri Oct  9 21:10:11 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Fri Oct  9 21:10:12 2026 :: Log Alaric [2420]: east
+Fri Oct  9 21:10:12 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Fri Oct  9 21:10:12 2026 :: Log Alaric [2421]: east
+Fri Oct  9 21:10:12 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Fri Oct  9 21:10:12 2026 :: Log Alaric [2422]: east
+Fri Oct  9 21:10:12 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Fri Oct  9 21:10:12 2026 :: Log Alaric [2423]: east
+Fri Oct  9 21:10:12 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Fri Oct  9 21:10:13 2026 :: Log Alaric [2424]: east
+Fri Oct  9 21:10:13 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Fri Oct  9 21:10:13 2026 :: Log Alaric [2425]: east
+Fri Oct  9 21:10:13 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Fri Oct  9 21:10:13 2026 :: Log Alaric [2426]: open east
+Fri Oct  9 21:10:13 2026 :: Log Alaric [2426]: east
+Fri Oct  9 21:10:13 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Fri Oct  9 21:10:20 2026 :: Log Alaric [2440]: afk
+Fri Oct  9 21:10:21 2026 :: Log Alaric [2440]: east
+Fri Oct  9 21:10:21 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Fri Oct  9 21:10:21 2026 :: Log Alaric [3503]: east
+Fri Oct  9 21:10:21 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Fri Oct  9 21:10:21 2026 :: Log Alaric [3502]: south
+Fri Oct  9 21:10:21 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 3502
+Fri Oct  9 21:10:22 2026 :: Log Alaric [5261]: southeast
+Fri Oct  9 21:10:22 2026 :: Log Alaric [35]: arrived (Lava Forest) from 5261
+Fri Oct  9 21:10:22 2026 :: Log Alaric [35]: northeast
+Fri Oct  9 21:10:22 2026 :: Log Alaric [36]: arrived (The Lava Tube) from 35
+Fri Oct  9 21:10:22 2026 :: Log Alaric [36]: east
+Fri Oct  9 21:10:22 2026 :: Log Alaric [37]: arrived (Lava Field) from 36
+Fri Oct  9 21:10:22 2026 :: Log Alaric [37]: southeast
+Fri Oct  9 21:10:22 2026 :: Log Alaric [2900]: arrived (Obsidian hills) from 37
+Fri Oct  9 21:10:23 2026 :: Log Alaric [2900]: south
+Fri Oct  9 21:10:23 2026 :: Log Alaric [2901]: arrived (Obsidian hills) from 2900
+Fri Oct  9 21:10:23 2026 :: Log Alaric [2901]: south
+Fri Oct  9 21:10:23 2026 :: Log Alaric [2902]: arrived (Obsidian hills) from 2901
+Fri Oct  9 21:10:23 2026 :: Log Alaric [2902]: east
+Fri Oct  9 21:10:23 2026 :: Log Alaric [2903]: arrived (Mountain side) from 2902
+Fri Oct  9 21:10:23 2026 :: Log Alaric [2903]: south
+Fri Oct  9 21:10:23 2026 :: Log Alaric [2904]: arrived (Mountain side) from 2903
+Fri Oct  9 21:10:24 2026 :: Log Alaric [2904]: south
+Fri Oct  9 21:10:24 2026 :: Log Alaric [2905]: arrived (Mountain top) from 2904
+Fri Oct  9 21:10:24 2026 :: Log Alaric [2905]: south
+Fri Oct  9 21:10:24 2026 :: Log Alaric [2906]: arrived (Entrance to the mountain) from 2905
+Fri Oct  9 21:10:24 2026 :: Log Alaric [2906]: down
+Fri Oct  9 21:10:24 2026 :: Log Alaric [2910]: arrived (Inside the mountain) from 2906
+Fri Oct  9 21:10:24 2026 :: Log Alaric [2910]: down
+Fri Oct  9 21:10:24 2026 :: Log Alaric [2913]: arrived (Inside the mountain) from 2910
+Fri Oct  9 21:10:25 2026 :: Log Alaric [2913]: down
+Fri Oct  9 21:10:25 2026 :: Log Alaric [2916]: arrived (Bottom of the mountain) from 2913
+Fri Oct  9 21:10:25 2026 :: Log Alaric [2916]: north
+Fri Oct  9 21:10:25 2026 :: Log Alaric [2917]: arrived (The tunnel) from 2916
+Fri Oct  9 21:10:25 2026 :: Log Alaric [2917]: north
+Fri Oct  9 21:10:25 2026 :: Log Alaric [2918]: arrived (Bend in the tunnel) from 2917
+Fri Oct  9 21:10:25 2026 :: Log Alaric [2918]: east
+Fri Oct  9 21:10:25 2026 :: Log Alaric [2919]: arrived (The tunnel) from 2918
+Fri Oct  9 21:10:26 2026 :: Log Alaric [2919]: north
+Fri Oct  9 21:10:26 2026 :: Log Alaric [2921]: arrived (The tunnel) from 2919
+Fri Oct  9 21:10:26 2026 :: Log Alaric [2921]: north
+Fri Oct  9 21:10:26 2026 :: Log Alaric [2923]: arrived (The tunnel) from 2921
+Fri Oct  9 21:10:26 2026 :: Log Alaric [2923]: east
+Fri Oct  9 21:10:26 2026 :: Log Alaric [2927]: arrived (Outside the temple) from 2923
+Fri Oct  9 21:10:26 2026 :: Log Alaric [2927]: east
+Fri Oct  9 21:10:26 2026 :: Log Alaric [2928]: arrived (Entrance to the temple) from 2927
+Fri Oct  9 21:10:27 2026 :: Log Alaric [2928]: open east
+Fri Oct  9 21:10:27 2026 :: Log Alaric [2928]: east
+Fri Oct  9 21:10:27 2026 :: Log Alaric [2929]: arrived (Inside the Temple) from 2928
+Fri Oct  9 21:10:29 2026 :: Log Alaric [2929]: te
+Fri Oct  9 21:10:29 2026 :: Log Alaric [2929]: killed a fire newt priest
+Fri Oct  9 21:10:29 2026 :: Log Alaric [2929]: coin +2 platinum
+Fri Oct  9 21:10:29 2026 :: Log Alaric [2929]: coin +12 silver
+Fri Oct  9 21:10:29 2026 :: Log Alaric [2929]: coin +17 copper
+Fri Oct  9 21:10:29 2026 :: Log Alaric [2929]: coin +7 gold
+Fri Oct  9 21:10:33 2026 :: Log Alaric [2929]: recal
+Fri Oct  9 21:10:33 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2929
+Fri Oct  9 21:10:33 2026 :: Log Alaric [2497]: recal
+Fri Oct  9 21:10:34 2026 :: Log Alaric [2497]: recal
+Fri Oct  9 21:10:34 2026 :: Log Alaric [2497]: aq co
+Fri Oct  9 21:10:34 2026 :: Log Alaric [2497]: gold +20
+Fri Oct  9 21:10:34 2026 :: Log Alaric [2497]: quest complete: 20 gold, 56 quest points (streak bonus 127%)
+Fri Oct  9 21:10:34 2026 :: Log Alaric [2497]: aq ga no
+Fri Oct  9 21:10:38 2026 :: Log Alaric [2497]: sc
+Fri Oct  9 21:10:48 2026 :: Sock.sinaddr:  52.15.147.27
+Fri Oct  9 21:10:49 2026 :: EOF encountered on read.
