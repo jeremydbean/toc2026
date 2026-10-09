@@ -68118,3 +68118,52 @@ Fri Oct  9 19:18:59 2026 :: Log Alaric [2497]: aq ga no
 Fri Oct  9 19:19:12 2026 :: Sock.sinaddr:  5.161.75.7
 Fri Oct  9 19:19:12 2026 :: EOF encountered on read.
 Fri Oct  9 19:19:33 2026 :: Log Alaric [2497]: sc
+Fri Oct  9 19:23:44 2026 :: Log Alaric [2497]: who
+Fri Oct  9 19:23:54 2026 :: Log Alaric [2497]: aq time
+Fri Oct  9 19:23:57 2026 :: Log Alaric [2497]: sc
+Fri Oct  9 19:24:07 2026 :: Log Alaric [2497]: c major
+Fri Oct  9 19:24:15 2026 :: Sock.sinaddr:  5.161.177.47
+Fri Oct  9 19:24:16 2026 :: EOF encountered on read.
+Fri Oct  9 19:24:20 2026 :: Log Alaric [2497]: aq request
+Fri Oct  9 19:24:24 2026 :: Log Alaric [2497]: walk quest
+Fri Oct  9 19:24:24 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Fri Oct  9 19:24:24 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Fri Oct  9 19:24:25 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Fri Oct  9 19:24:26 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Fri Oct  9 19:24:27 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Fri Oct  9 19:24:27 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Fri Oct  9 19:24:28 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Fri Oct  9 19:24:29 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Fri Oct  9 19:24:30 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Fri Oct  9 19:24:30 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Fri Oct  9 19:24:31 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Fri Oct  9 19:24:32 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Fri Oct  9 19:24:33 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 3502
+Fri Oct  9 19:24:33 2026 :: Log Alaric [5260]: arrived (The dwarf forest) from 5261
+Fri Oct  9 19:24:34 2026 :: Log Alaric [5259]: arrived (The dwarf forest) from 5260
+Fri Oct  9 19:24:35 2026 :: Log Alaric [5258]: arrived (The dwarf forest) from 5259
+Fri Oct  9 19:24:36 2026 :: Log Alaric [5262]: arrived (The dwarf forest) from 5258
+Fri Oct  9 19:24:36 2026 :: Log Alaric [5263]: arrived (The darker dwarf forest) from 5262
+Fri Oct  9 19:24:37 2026 :: Log Alaric [5264]: arrived (The darker dwarf forest) from 5263
+Fri Oct  9 19:24:38 2026 :: Log Alaric [5265]: arrived (The darker dwarf forest) from 5264
+Fri Oct  9 19:24:39 2026 :: Log Alaric [5266]: arrived (The darker dwarf forest) from 5265
+Fri Oct  9 19:24:39 2026 :: Log Alaric [5267]: arrived (A valley in the dark dwarf forest) from 5266
+Fri Oct  9 19:24:40 2026 :: Log Alaric [62]: arrived (Minor Path) from 5267
+Fri Oct  9 19:24:41 2026 :: Log Alaric [1701]: arrived (Main Eastern Road) from 62
+Fri Oct  9 19:24:42 2026 :: Log Alaric [1702]: arrived (Crossroads to the Wilderness) from 1701
+Fri Oct  9 19:24:42 2026 :: Log Alaric [1703]: arrived (Trading Post) from 1702
+Fri Oct  9 19:24:47 2026 :: Log Alaric [1703]: te
+Fri Oct  9 19:24:47 2026 :: Log Alaric [1703]: killed a trapper
+Fri Oct  9 19:24:47 2026 :: Log Alaric [1703]: killed a trapper
+Fri Oct  9 19:24:47 2026 :: Log Alaric [1703]: killed a hunter
+Fri Oct  9 19:24:51 2026 :: Log Alaric [1703]: killed a hunter
+Fri Oct  9 19:24:55 2026 :: Log Alaric [1703]: te
+Fri Oct  9 19:24:57 2026 :: Log Alaric [1703]: killed a ranger
+Fri Oct  9 19:24:58 2026 :: Log Alaric [1703]: recal
+Fri Oct  9 19:24:58 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 1703
+Fri Oct  9 19:24:58 2026 :: Log Alaric [2497]: recal
+Fri Oct  9 19:24:58 2026 :: Log Alaric [2497]: recal
+Fri Oct  9 19:24:58 2026 :: Log Alaric [2497]: aq complete
+Fri Oct  9 19:24:58 2026 :: Log Alaric [2497]: gold +22
+Fri Oct  9 19:24:58 2026 :: Log Alaric [2497]: quest complete: 22 gold, 82 quest points (streak bonus 112%)
+Fri Oct  9 19:24:59 2026 :: Log Alaric [2497]: aq ga no
