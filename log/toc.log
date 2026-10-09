@@ -68233,3 +68233,85 @@ Fri Oct  9 20:20:05 2026 :: Sock.sinaddr:  5.161.73.160
 Fri Oct  9 20:20:05 2026 :: EOF encountered on read.
 Fri Oct  9 20:25:08 2026 :: Sock.sinaddr:  178.156.189.113
 Fri Oct  9 20:25:08 2026 :: EOF encountered on read.
+Fri Oct  9 20:29:53 2026 :: Sock.sinaddr:  208.126.22.104
+Fri Oct  9 20:29:54 2026 :: Loading Alaric's playerfile
+Fri Oct  9 20:29:55 2026 :: Alaric@208.126.22.104 has connected.
+Fri Oct  9 20:29:55 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Fri Oct  9 20:29:57 2026 :: Log Alaric [2497]: aq ti
+Fri Oct  9 20:29:59 2026 :: Log Alaric [2497]: aq re
+Fri Oct  9 20:30:02 2026 :: Log Alaric [2497]: enter door
+Fri Oct  9 20:30:02 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Fri Oct  9 20:30:02 2026 :: Log Alaric [2401]: east
+Fri Oct  9 20:30:02 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Fri Oct  9 20:30:03 2026 :: Log Alaric [2403]: east
+Fri Oct  9 20:30:03 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Fri Oct  9 20:30:03 2026 :: Log Alaric [2420]: east
+Fri Oct  9 20:30:03 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Fri Oct  9 20:30:03 2026 :: Log Alaric [2421]: east
+Fri Oct  9 20:30:03 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Fri Oct  9 20:30:03 2026 :: Log Alaric [2422]: east
+Fri Oct  9 20:30:03 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Fri Oct  9 20:30:04 2026 :: Log Alaric [2423]: east
+Fri Oct  9 20:30:04 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Fri Oct  9 20:30:04 2026 :: Log Alaric [2424]: east
+Fri Oct  9 20:30:04 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Fri Oct  9 20:30:04 2026 :: Log Alaric [2425]: east
+Fri Oct  9 20:30:04 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Fri Oct  9 20:30:04 2026 :: Log Alaric [2426]: open east
+Fri Oct  9 20:30:05 2026 :: Log Alaric [2426]: east
+Fri Oct  9 20:30:05 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Fri Oct  9 20:30:06 2026 :: Log Alaric [2440]: east
+Fri Oct  9 20:30:06 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Fri Oct  9 20:30:06 2026 :: Log Alaric [3503]: east
+Fri Oct  9 20:30:06 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Fri Oct  9 20:30:07 2026 :: Log Alaric [3502]: east
+Fri Oct  9 20:30:07 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Fri Oct  9 20:30:07 2026 :: Log Alaric [3525]: east
+Fri Oct  9 20:30:07 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Fri Oct  9 20:30:07 2026 :: Log Alaric [3526]: north
+Fri Oct  9 20:30:07 2026 :: Log Alaric [38]: arrived (Well Kept Path) from 3526
+Fri Oct  9 20:30:07 2026 :: Log Alaric [38]: north
+Fri Oct  9 20:30:07 2026 :: Log Alaric [1100]: arrived (A well kept path) from 38
+Fri Oct  9 20:30:08 2026 :: Log Alaric [1100]: north
+Fri Oct  9 20:30:08 2026 :: Log Alaric [1101]: arrived (A well kept path) from 1100
+Fri Oct  9 20:30:08 2026 :: Log Alaric [1101]: north
+Fri Oct  9 20:30:08 2026 :: Log Alaric [1102]: arrived (A well kept path) from 1101
+Fri Oct  9 20:30:08 2026 :: Log Alaric [1102]: north
+Fri Oct  9 20:30:08 2026 :: Log Alaric [1103]: arrived (Entrance to the Shire) from 1102
+Fri Oct  9 20:30:08 2026 :: Log Alaric [1103]: west
+Fri Oct  9 20:30:08 2026 :: Log Alaric [1118]: arrived (Bywater Road) from 1103
+Fri Oct  9 20:30:09 2026 :: Log Alaric [1118]: west
+Fri Oct  9 20:30:09 2026 :: Log Alaric [1120]: arrived (Bywater Road) from 1118
+Fri Oct  9 20:30:09 2026 :: Log Alaric [1120]: west
+Fri Oct  9 20:30:09 2026 :: Log Alaric [1122]: arrived (Bywater Road) from 1120
+Fri Oct  9 20:30:09 2026 :: Log Alaric [1122]: west
+Fri Oct  9 20:30:09 2026 :: Log Alaric [1126]: arrived (Took Hill) from 1122
+Fri Oct  9 20:30:09 2026 :: Log Alaric [1126]: west
+Fri Oct  9 20:30:09 2026 :: Log Alaric [1128]: arrived (A grassy field) from 1126
+Fri Oct  9 20:30:10 2026 :: Log Alaric [1128]: west
+Fri Oct  9 20:30:10 2026 :: Log Alaric [1130]: arrived (Western end of grassy field) from 1128
+Fri Oct  9 20:30:10 2026 :: Log Alaric [1130]: north
+Fri Oct  9 20:30:10 2026 :: Log Alaric [1127]: arrived (Northern end of grassy field) from 1130
+Fri Oct  9 20:30:10 2026 :: Log Alaric [1127]: north
+Fri Oct  9 20:30:10 2026 :: Log Alaric [7800]: arrived (A Path through the Fields) from 1127
+Fri Oct  9 20:30:10 2026 :: Log Alaric [7800]: north
+Fri Oct  9 20:30:10 2026 :: Log Alaric [7801]: arrived (Along the Path) from 7800
+Fri Oct  9 20:30:11 2026 :: Log Alaric [7801]: east
+Fri Oct  9 20:30:11 2026 :: Log Alaric [7803]: arrived (A Small Trail) from 7801
+Fri Oct  9 20:30:11 2026 :: Log Alaric [7803]: north
+Fri Oct  9 20:30:11 2026 :: Log Alaric [7849]: arrived (Along a Windy Trail on the Rim of the Valley) from 7803
+Fri Oct  9 20:30:11 2026 :: Log Alaric [7849]: east
+Fri Oct  9 20:30:11 2026 :: Log Alaric [7850]: arrived (Along a Windy Trail on the Rim of the Valley) from 7849
+Fri Oct  9 20:30:13 2026 :: Log Alaric [7850]: get all
+Fri Oct  9 20:30:13 2026 :: Sock.sinaddr:  178.156.185.231
+Fri Oct  9 20:30:14 2026 :: EOF encountered on read.
+Fri Oct  9 20:30:14 2026 :: Log Alaric [7850]: recal
+Fri Oct  9 20:30:14 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 7850
+Fri Oct  9 20:30:14 2026 :: Log Alaric [2497]: recal
+Fri Oct  9 20:30:14 2026 :: Log Alaric [2497]: recal
+Fri Oct  9 20:30:15 2026 :: Log Alaric [2497]: aq co
+Fri Oct  9 20:30:15 2026 :: Log Alaric [2497]: gold +16
+Fri Oct  9 20:30:15 2026 :: Log Alaric [2497]: quest complete: 16 gold, 52 quest points, rush (streak bonus 118%)
+Fri Oct  9 20:30:16 2026 :: Log Alaric [2497]: aq ga no
+Fri Oct  9 20:30:17 2026 :: Log Alaric [2497]: sc
+Fri Oct  9 20:30:19 2026 :: Log Alaric [2497]: who
