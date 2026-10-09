@@ -68167,3 +68167,44 @@ Fri Oct  9 19:24:58 2026 :: Log Alaric [2497]: aq complete
 Fri Oct  9 19:24:58 2026 :: Log Alaric [2497]: gold +22
 Fri Oct  9 19:24:58 2026 :: Log Alaric [2497]: quest complete: 22 gold, 82 quest points (streak bonus 112%)
 Fri Oct  9 19:24:59 2026 :: Log Alaric [2497]: aq ga no
+Fri Oct  9 19:27:49 2026 :: Log Alaric [2497]: sc
+Fri Oct  9 19:28:14 2026 :: Log Alaric [2497]: aq request
+Fri Oct  9 19:28:18 2026 :: Log Alaric [2497]: walk quest
+Fri Oct  9 19:28:18 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Fri Oct  9 19:28:18 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Fri Oct  9 19:28:19 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Fri Oct  9 19:28:20 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Fri Oct  9 19:28:21 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Fri Oct  9 19:28:21 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Fri Oct  9 19:28:22 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Fri Oct  9 19:28:23 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Fri Oct  9 19:28:24 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Fri Oct  9 19:28:24 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Fri Oct  9 19:28:25 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Fri Oct  9 19:28:26 2026 :: Log Alaric [2103]: arrived (Along White Dragon Boulevard) from 2102
+Fri Oct  9 19:28:27 2026 :: Log Alaric [2110]: arrived (East end of an over-grown plot of land) from 2103
+Fri Oct  9 19:28:27 2026 :: Log Alaric [2116]: arrived (Dracolich Plaza) from 2110
+Fri Oct  9 19:28:28 2026 :: Log Alaric [2117]: arrived (Shortcut) from 2116
+Fri Oct  9 19:28:29 2026 :: Log Alaric [2121]: arrived (Shortcut) from 2117
+Fri Oct  9 19:28:30 2026 :: Log Alaric [2122]: arrived (Ice Dragon Way) from 2121
+Fri Oct  9 19:28:30 2026 :: Log Alaric [2127]: arrived (Yellow Dragon Road) from 2122
+Fri Oct  9 19:28:31 2026 :: Log Alaric [2128]: arrived (Yellow Dragon Road) from 2127
+Fri Oct  9 19:28:32 2026 :: Log Alaric [2129]: arrived (Yellow Dragon Road) from 2128
+Fri Oct  9 19:28:33 2026 :: Log Alaric [2134]: arrived (NO MAN'S LAND) from 2129
+Fri Oct  9 19:28:33 2026 :: Log Alaric [2135]: arrived (NO MAN'S LAND) from 2134
+Fri Oct  9 19:28:35 2026 :: Log Alaric [2135]: te
+Fri Oct  9 19:28:35 2026 :: Log Alaric [2135]: killed a patrolman
+Fri Oct  9 19:28:35 2026 :: Log Alaric [2135]: killed a patrolman
+Fri Oct  9 19:28:41 2026 :: Log Alaric [2135]: recal
+Fri Oct  9 19:28:41 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2135
+Fri Oct  9 19:28:42 2026 :: Log Alaric [2497]: recal
+Fri Oct  9 19:28:45 2026 :: Log Alaric [2497]: aq complete
+Fri Oct  9 19:28:45 2026 :: Log Alaric [2497]: gold +12
+Fri Oct  9 19:28:45 2026 :: Log Alaric [2497]: quest complete: 12 gold, 62 quest points (streak bonus 115%)
+Fri Oct  9 19:28:48 2026 :: Log Alaric [2497]: aq ga no
+Fri Oct  9 19:28:51 2026 :: Log Alaric [2497]: sc
+Fri Oct  9 19:29:20 2026 :: Sock.sinaddr:  178.156.187.238
+Fri Oct  9 19:29:20 2026 :: EOF encountered on read.
+Fri Oct  9 19:29:32 2026 :: Log Alaric [2497]: who
+Fri Oct  9 19:29:34 2026 :: EOF encountered on read.
+Fri Oct  9 19:29:34 2026 :: Closing link to Alaric.
