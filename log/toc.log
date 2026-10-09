@@ -66487,3 +66487,114 @@ Fri Oct  9 01:17:55 2026 :: Sock.sinaddr:  3.149.57.90
 Fri Oct  9 01:17:55 2026 :: EOF encountered on read.
 Fri Oct  9 01:22:59 2026 :: Sock.sinaddr:  52.22.236.30
 Fri Oct  9 01:22:59 2026 :: EOF encountered on read.
+Fri Oct  9 01:27:51 2026 :: Log Alaric [29212]: te
+Fri Oct  9 01:27:59 2026 :: Log Alaric [29212]: sh
+Fri Oct  9 01:28:03 2026 :: Sock.sinaddr:  178.156.181.172
+Fri Oct  9 01:28:03 2026 :: EOF encountered on read.
+Fri Oct  9 01:28:04 2026 :: Log Alaric [29212]: sh
+Fri Oct  9 01:28:14 2026 :: Log Alaric [29212]: sh
+Fri Oct  9 01:28:14 2026 :: Log Alaric [29212]: killed a Shadowman
+Fri Oct  9 01:28:14 2026 :: Log Alaric [29212]: coin +6 platinum
+Fri Oct  9 01:28:14 2026 :: Log Alaric [29212]: coin +30 silver
+Fri Oct  9 01:28:14 2026 :: Log Alaric [29212]: coin +41 copper
+Fri Oct  9 01:28:14 2026 :: Log Alaric [29212]: coin +17 gold
+Fri Oct  9 01:28:19 2026 :: Log Alaric [29212]: recal
+Fri Oct  9 01:28:19 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 29212
+Fri Oct  9 01:28:19 2026 :: Log Alaric [2497]: recal
+Fri Oct  9 01:28:19 2026 :: Log Alaric [2497]: recal
+Fri Oct  9 01:28:19 2026 :: Log Alaric [2497]: aq re
+Fri Oct  9 01:28:21 2026 :: Log Alaric [2497]: enter door
+Fri Oct  9 01:28:21 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Fri Oct  9 01:28:21 2026 :: Log Alaric [2401]: east
+Fri Oct  9 01:28:21 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Fri Oct  9 01:28:21 2026 :: Log Alaric [2403]: east
+Fri Oct  9 01:28:21 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Fri Oct  9 01:28:21 2026 :: Log Alaric [2420]: east
+Fri Oct  9 01:28:21 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Fri Oct  9 01:28:22 2026 :: Log Alaric [2421]: south
+Fri Oct  9 01:28:22 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Fri Oct  9 01:28:22 2026 :: Log Alaric [2441]: east
+Fri Oct  9 01:28:22 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Fri Oct  9 01:28:22 2026 :: Log Alaric [2442]: south
+Fri Oct  9 01:28:22 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Fri Oct  9 01:28:22 2026 :: Log Alaric [2443]: east
+Fri Oct  9 01:28:22 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Fri Oct  9 01:28:23 2026 :: Log Alaric [2444]: east
+Fri Oct  9 01:28:23 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Fri Oct  9 01:28:23 2026 :: Log Alaric [2445]: east
+Fri Oct  9 01:28:23 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Fri Oct  9 01:28:23 2026 :: Log Alaric [2101]: east
+Fri Oct  9 01:28:23 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Fri Oct  9 01:28:23 2026 :: Log Alaric [2102]: east
+Fri Oct  9 01:28:23 2026 :: Log Alaric [2103]: arrived (Along White Dragon Boulevard) from 2102
+Fri Oct  9 01:28:24 2026 :: Log Alaric [2103]: east
+Fri Oct  9 01:28:24 2026 :: Log Alaric [2104]: arrived (White Dragon Boulevard at Armory) from 2103
+Fri Oct  9 01:28:26 2026 :: Log Alaric [2104]: get all
+Fri Oct  9 01:28:27 2026 :: Log Alaric [2104]: recal
+Fri Oct  9 01:28:27 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2104
+Fri Oct  9 01:28:27 2026 :: Log Alaric [2497]: recal
+Fri Oct  9 01:28:28 2026 :: Log Alaric [2497]: aq co
+Fri Oct  9 01:28:28 2026 :: Log Alaric [2497]: gold +19
+Fri Oct  9 01:28:28 2026 :: Log Alaric [2497]: quest complete: 19 gold, 62 quest points (streak bonus 65%)
+Fri Oct  9 01:28:29 2026 :: Log Alaric [2497]: aq ga no
+Fri Oct  9 01:28:33 2026 :: Log Alaric [2497]: who
+Fri Oct  9 01:28:34 2026 :: Log Alaric [2497]: i
+Fri Oct  9 01:28:34 2026 :: Log Alaric [2497]: eq
+Fri Oct  9 01:28:38 2026 :: Log Alaric [2497]: l
+Fri Oct  9 01:28:39 2026 :: Log Alaric [2497]: en do
+Fri Oct  9 01:28:39 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Fri Oct  9 01:28:40 2026 :: Log Alaric [2401]: n
+Fri Oct  9 01:28:40 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Fri Oct  9 01:28:40 2026 :: Log Alaric [2402]: n
+Fri Oct  9 01:28:40 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Fri Oct  9 01:28:41 2026 :: Log Alaric [2415]: e
+Fri Oct  9 01:28:41 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Fri Oct  9 01:28:42 2026 :: Log Alaric [2485]: e
+Fri Oct  9 01:28:42 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2485
+Fri Oct  9 01:28:42 2026 :: Log Alaric [2486]: n
+Fri Oct  9 01:28:42 2026 :: Log Alaric [2483]: arrived (Fountain of Market Plaza.) from 2486
+Fri Oct  9 01:28:43 2026 :: Log Alaric [2483]: e
+Fri Oct  9 01:28:43 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 2483
+Fri Oct  9 01:28:43 2026 :: Log Alaric [2484]: e
+Fri Oct  9 01:28:43 2026 :: Log Alaric [4]: arrived (The First National Bank of Dresden.) from 2484
+Fri Oct  9 01:28:43 2026 :: Log Alaric [4]: e
+Fri Oct  9 01:28:43 2026 :: Log Alaric [4]: e
+Fri Oct  9 01:28:44 2026 :: Log Alaric [4]: sc
+Fri Oct  9 01:28:48 2026 :: Log Alaric [4]: depos 400 platinum
+Fri Oct  9 01:28:48 2026 :: Log Alaric [4]: w
+Fri Oct  9 01:28:48 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 4
+Fri Oct  9 01:28:49 2026 :: Log Alaric [2484]: s
+Fri Oct  9 01:28:49 2026 :: Log Alaric [2487]: arrived (Market Plaza.) from 2484
+Fri Oct  9 01:28:49 2026 :: Log Alaric [2487]: w
+Fri Oct  9 01:28:49 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2487
+Fri Oct  9 01:28:49 2026 :: Log Alaric [2486]: w
+Fri Oct  9 01:28:49 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2486
+Fri Oct  9 01:28:50 2026 :: Log Alaric [2485]: w
+Fri Oct  9 01:28:50 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2485
+Fri Oct  9 01:28:50 2026 :: Log Alaric [2415]: w
+Fri Oct  9 01:28:50 2026 :: Log Alaric [2470]: arrived (Wizards Way.) from 2415
+Fri Oct  9 01:28:51 2026 :: Log Alaric [2470]: e
+Fri Oct  9 01:28:51 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2470
+Fri Oct  9 01:28:51 2026 :: Log Alaric [2415]: s
+Fri Oct  9 01:28:51 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2415
+Fri Oct  9 01:28:53 2026 :: Log Alaric [2402]: n
+Fri Oct  9 01:28:53 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Fri Oct  9 01:28:55 2026 :: Log Alaric [2415]: kill ci
+Fri Oct  9 01:28:55 2026 :: Log Alaric [2415]: killed a citizen of Dresden
+Fri Oct  9 01:28:55 2026 :: Log Alaric [2415]: coin +1 platinum
+Fri Oct  9 01:28:55 2026 :: Log Alaric [2415]: coin +7 silver
+Fri Oct  9 01:28:55 2026 :: Log Alaric [2415]: coin +10 copper
+Fri Oct  9 01:28:55 2026 :: Log Alaric [2415]: coin +4 gold
+Fri Oct  9 01:28:58 2026 :: Log Alaric [2415]: s
+Fri Oct  9 01:28:58 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2415
+Fri Oct  9 01:28:58 2026 :: Log Alaric [2402]: kill ci
+Fri Oct  9 01:28:58 2026 :: Log Alaric [2402]: killed a citizen of Dresden
+Fri Oct  9 01:28:58 2026 :: Log Alaric [2402]: coin +1 platinum
+Fri Oct  9 01:28:58 2026 :: Log Alaric [2402]: coin +7 silver
+Fri Oct  9 01:28:58 2026 :: Log Alaric [2402]: coin +10 copper
+Fri Oct  9 01:28:58 2026 :: Log Alaric [2402]: coin +4 gold
+Fri Oct  9 01:29:07 2026 :: Log Alaric [2402]: s
+Fri Oct  9 01:29:07 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2402
+Fri Oct  9 01:29:07 2026 :: Log Alaric [2401]: score
+Fri Oct  9 01:29:12 2026 :: Log Alaric [2401]: who
+Fri Oct  9 01:29:13 2026 :: Log Alaric [2401]: score
