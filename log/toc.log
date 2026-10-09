@@ -66136,3 +66136,81 @@ Fri Oct  9 00:47:58 2026 :: Log Alaric [29209]: coin +20 silver
 Fri Oct  9 00:47:58 2026 :: Log Alaric [29209]: coin +27 copper
 Fri Oct  9 00:47:58 2026 :: Log Alaric [29209]: coin +11 gold
 Fri Oct  9 00:47:59 2026 :: Log Alaric [29209]: l
+Fri Oct  9 00:49:07 2026 :: Log Alaric [29209]: c force
+Fri Oct  9 00:49:14 2026 :: Log Alaric [29209]: n
+Fri Oct  9 00:49:14 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 29209
+Fri Oct  9 00:49:15 2026 :: Log Alaric [29210]: te
+Fri Oct  9 00:49:20 2026 :: Log Alaric [29210]: te
+Fri Oct  9 00:49:23 2026 :: Log Alaric [29210]: te
+Fri Oct  9 00:49:26 2026 :: Log Alaric [29210]: te
+Fri Oct  9 00:49:29 2026 :: Log Alaric [29210]: te
+Fri Oct  9 00:49:32 2026 :: Log Alaric [29210]: te
+Fri Oct  9 00:49:35 2026 :: Log Alaric [29210]: te
+Fri Oct  9 00:49:35 2026 :: Log Alaric [29210]: killed a deranged madman
+Fri Oct  9 00:49:35 2026 :: Log Alaric [29210]: coin +5 platinum
+Fri Oct  9 00:49:35 2026 :: Log Alaric [29210]: coin +23 silver
+Fri Oct  9 00:49:35 2026 :: Log Alaric [29210]: coin +31 copper
+Fri Oct  9 00:49:35 2026 :: Log Alaric [29210]: coin +13 gold
+Fri Oct  9 00:49:35 2026 :: Log Alaric [29210]: killed an Animated Skeleton
+Fri Oct  9 00:49:35 2026 :: Log Alaric [29210]: coin +4 platinum
+Fri Oct  9 00:49:35 2026 :: Log Alaric [29210]: coin +20 silver
+Fri Oct  9 00:49:35 2026 :: Log Alaric [29210]: coin +27 copper
+Fri Oct  9 00:49:35 2026 :: Log Alaric [29210]: coin +11 gold
+Fri Oct  9 00:49:52 2026 :: Sock.sinaddr:  65.49.1.94
+Fri Oct  9 00:49:52 2026 :: EOF encountered on read.
+Fri Oct  9 00:51:00 2026 :: Log Alaric [29210]: w
+Fri Oct  9 00:51:00 2026 :: Log Alaric [29211]: arrived (Twist in the Maze) from 29210
+Fri Oct  9 00:51:03 2026 :: Log Alaric [29211]: n
+Fri Oct  9 00:51:03 2026 :: Log Alaric [29212]: arrived (Twist in the Maze) from 29211
+Fri Oct  9 00:51:03 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:51:08 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:51:11 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:51:14 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:51:17 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:51:20 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:51:23 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:51:26 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:51:29 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:51:32 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:51:35 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:51:35 2026 :: Log Alaric [29212]: killed a Shadowman
+Fri Oct  9 00:51:35 2026 :: Log Alaric [29212]: coin +6 platinum
+Fri Oct  9 00:51:35 2026 :: Log Alaric [29212]: coin +30 silver
+Fri Oct  9 00:51:35 2026 :: Log Alaric [29212]: coin +41 copper
+Fri Oct  9 00:51:35 2026 :: Log Alaric [29212]: coin +17 gold
+Fri Oct  9 00:51:35 2026 :: Log Alaric [29212]: killed a deranged madman
+Fri Oct  9 00:51:35 2026 :: Log Alaric [29212]: coin +5 platinum
+Fri Oct  9 00:51:35 2026 :: Log Alaric [29212]: coin +23 silver
+Fri Oct  9 00:51:35 2026 :: Log Alaric [29212]: coin +31 copper
+Fri Oct  9 00:51:35 2026 :: Log Alaric [29212]: coin +13 gold
+Fri Oct  9 00:52:31 2026 :: Sock.sinaddr:  5.161.117.52
+Fri Oct  9 00:52:31 2026 :: EOF encountered on read.
+Fri Oct  9 00:53:56 2026 :: Log Alaric [29212]: recal
+Fri Oct  9 00:53:56 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 29212
+Fri Oct  9 00:53:57 2026 :: Log Alaric [2497]: aq re
+Fri Oct  9 00:53:59 2026 :: Log Alaric [2497]: enter door
+Fri Oct  9 00:53:59 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Fri Oct  9 00:53:59 2026 :: Log Alaric [2401]: east
+Fri Oct  9 00:53:59 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Fri Oct  9 00:54:00 2026 :: Log Alaric [2403]: east
+Fri Oct  9 00:54:00 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Fri Oct  9 00:54:00 2026 :: Log Alaric [2420]: east
+Fri Oct  9 00:54:00 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Fri Oct  9 00:54:00 2026 :: Log Alaric [2421]: south
+Fri Oct  9 00:54:00 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Fri Oct  9 00:54:00 2026 :: Log Alaric [2441]: east
+Fri Oct  9 00:54:00 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Fri Oct  9 00:54:01 2026 :: Log Alaric [2442]: south
+Fri Oct  9 00:54:01 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Fri Oct  9 00:54:01 2026 :: Log Alaric [2443]: east
+Fri Oct  9 00:54:01 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Fri Oct  9 00:54:01 2026 :: Log Alaric [2444]: east
+Fri Oct  9 00:54:01 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Fri Oct  9 00:54:01 2026 :: Log Alaric [2445]: east
+Fri Oct  9 00:54:01 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Fri Oct  9 00:54:02 2026 :: Log Alaric [2101]: east
+Fri Oct  9 00:54:02 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Fri Oct  9 00:54:02 2026 :: Log Alaric [2102]: south
+Fri Oct  9 00:54:02 2026 :: Log Alaric [2109]: arrived (An over-grown lot) from 2102
+Fri Oct  9 00:54:02 2026 :: Log Alaric [2109]: east
+Fri Oct  9 00:54:02 2026 :: Log Alaric [2110]: arrived (East end of an over-grown plot of land) from 2109
