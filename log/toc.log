@@ -65695,3 +65695,97 @@ Fri Oct  9 00:33:48 2026 :: Log Alaric [29207]: coin +5 platinum
 Fri Oct  9 00:33:48 2026 :: Log Alaric [29207]: coin +23 silver
 Fri Oct  9 00:33:48 2026 :: Log Alaric [29207]: coin +31 copper
 Fri Oct  9 00:33:48 2026 :: Log Alaric [29207]: coin +13 gold
+Fri Oct  9 00:33:54 2026 :: Log Alaric [29207]: l
+Fri Oct  9 00:33:54 2026 :: Log Alaric [29207]: killed a killer clown
+Fri Oct  9 00:33:54 2026 :: Log Alaric [29207]: coin +5 platinum
+Fri Oct  9 00:33:54 2026 :: Log Alaric [29207]: coin +23 silver
+Fri Oct  9 00:33:54 2026 :: Log Alaric [29207]: coin +31 copper
+Fri Oct  9 00:33:54 2026 :: Log Alaric [29207]: coin +13 gold
+Fri Oct  9 00:33:59 2026 :: Log Alaric [29207]: w
+Fri Oct  9 00:33:59 2026 :: Log Alaric [29208]: arrived (Twist the Maze) from 29207
+Fri Oct  9 00:34:02 2026 :: Log Alaric [29208]: w
+Fri Oct  9 00:34:02 2026 :: Log Alaric [29209]: arrived (Twist in the Maze) from 29208
+Fri Oct  9 00:34:04 2026 :: Log Alaric [29209]: sh sk
+Fri Oct  9 00:34:16 2026 :: Log Alaric [29209]: sh
+Fri Oct  9 00:34:25 2026 :: Log Alaric [29209]: te
+Fri Oct  9 00:34:34 2026 :: Log Alaric [29209]: te
+Fri Oct  9 00:34:39 2026 :: Log Alaric [29209]: n
+Fri Oct  9 00:34:39 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 29209
+Fri Oct  9 00:34:40 2026 :: Log Alaric [29210]: te
+Fri Oct  9 00:34:42 2026 :: Log Alaric [29210]: killed an Animated Skeleton
+Fri Oct  9 00:34:42 2026 :: Log Alaric [29210]: coin +4 platinum
+Fri Oct  9 00:34:42 2026 :: Log Alaric [29210]: coin +20 silver
+Fri Oct  9 00:34:42 2026 :: Log Alaric [29210]: coin +27 copper
+Fri Oct  9 00:34:42 2026 :: Log Alaric [29210]: coin +11 gold
+Fri Oct  9 00:34:50 2026 :: Log Alaric [29210]: te
+Fri Oct  9 00:35:00 2026 :: Log Alaric [29210]: te
+Fri Oct  9 00:35:07 2026 :: Log Alaric [29210]: te
+Fri Oct  9 00:35:16 2026 :: Log Alaric [29210]: te
+Fri Oct  9 00:35:26 2026 :: Log Alaric [29210]: who
+Fri Oct  9 00:35:26 2026 :: Log Alaric [29210]: te
+Fri Oct  9 00:35:27 2026 :: Log Alaric [29210]: killed a deranged madman
+Fri Oct  9 00:35:27 2026 :: Log Alaric [29210]: coin +5 platinum
+Fri Oct  9 00:35:27 2026 :: Log Alaric [29210]: coin +23 silver
+Fri Oct  9 00:35:27 2026 :: Log Alaric [29210]: coin +31 copper
+Fri Oct  9 00:35:27 2026 :: Log Alaric [29210]: coin +13 gold
+Fri Oct  9 00:35:34 2026 :: Log Alaric [29210]: s
+Fri Oct  9 00:35:34 2026 :: Log Alaric [29209]: arrived (Twist in the Maze) from 29210
+Fri Oct  9 00:35:34 2026 :: Log Alaric [29209]: sh sk
+Fri Oct  9 00:35:36 2026 :: Log Alaric [29209]: killed an Animated Skeleton
+Fri Oct  9 00:35:36 2026 :: Log Alaric [29209]: coin +4 platinum
+Fri Oct  9 00:35:36 2026 :: Log Alaric [29209]: coin +20 silver
+Fri Oct  9 00:35:36 2026 :: Log Alaric [29209]: coin +27 copper
+Fri Oct  9 00:35:36 2026 :: Log Alaric [29209]: coin +11 gold
+Fri Oct  9 00:35:43 2026 :: Log Alaric [29209]: wo
+Fri Oct  9 00:35:43 2026 :: Log Alaric [29209]: n
+Fri Oct  9 00:35:43 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 29209
+Fri Oct  9 00:35:43 2026 :: Log Alaric [29210]: w
+Fri Oct  9 00:35:43 2026 :: Log Alaric [29211]: arrived (Twist in the Maze) from 29210
+Fri Oct  9 00:35:44 2026 :: Log Alaric [29211]: te
+Fri Oct  9 00:35:59 2026 :: Log Alaric [29211]: te
+Fri Oct  9 00:36:10 2026 :: Log Alaric [29211]: te
+Fri Oct  9 00:36:22 2026 :: Log Alaric [29211]: who
+Fri Oct  9 00:36:22 2026 :: Log Alaric [29211]: te
+Fri Oct  9 00:36:29 2026 :: Log Alaric [29211]: te
+Fri Oct  9 00:36:29 2026 :: Log Alaric [29211]: killed a deranged madman
+Fri Oct  9 00:36:29 2026 :: Log Alaric [29211]: coin +5 platinum
+Fri Oct  9 00:36:29 2026 :: Log Alaric [29211]: coin +23 silver
+Fri Oct  9 00:36:29 2026 :: Log Alaric [29211]: coin +31 copper
+Fri Oct  9 00:36:29 2026 :: Log Alaric [29211]: coin +13 gold
+Fri Oct  9 00:36:55 2026 :: Log Alaric [29211]: n
+Fri Oct  9 00:36:55 2026 :: Log Alaric [29212]: arrived (Twist in the Maze) from 29211
+Fri Oct  9 00:36:56 2026 :: Log Alaric [29212]: sh sk
+Fri Oct  9 00:36:57 2026 :: Log Alaric [29212]: killed an Animated Skeleton
+Fri Oct  9 00:36:57 2026 :: Log Alaric [29212]: coin +4 platinum
+Fri Oct  9 00:36:57 2026 :: Log Alaric [29212]: coin +20 silver
+Fri Oct  9 00:36:57 2026 :: Log Alaric [29212]: coin +27 copper
+Fri Oct  9 00:36:57 2026 :: Log Alaric [29212]: coin +11 gold
+Fri Oct  9 00:37:03 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:37:13 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:37:19 2026 :: Sock.sinaddr:  178.156.185.127
+Fri Oct  9 00:37:19 2026 :: EOF encountered on read.
+Fri Oct  9 00:37:23 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:37:32 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:37:40 2026 :: Log Alaric [29212]: te
+Fri Oct  9 00:37:40 2026 :: Log Alaric [29212]: killed a Shadowman
+Fri Oct  9 00:37:40 2026 :: Log Alaric [29212]: coin +6 platinum
+Fri Oct  9 00:37:40 2026 :: Log Alaric [29212]: coin +30 silver
+Fri Oct  9 00:37:40 2026 :: Log Alaric [29212]: coin +41 copper
+Fri Oct  9 00:37:40 2026 :: Log Alaric [29212]: coin +17 gold
+Fri Oct  9 00:37:49 2026 :: Log Alaric [29212]: scan
+Fri Oct  9 00:37:55 2026 :: Log Alaric [29212]: c force
+Fri Oct  9 00:38:01 2026 :: Log Alaric [29212]: c force
+Fri Oct  9 00:38:12 2026 :: Log Alaric [29212]: w
+Fri Oct  9 00:38:12 2026 :: Log Alaric [29214]: arrived (Twist in the Maze) from 29212
+Fri Oct  9 00:38:12 2026 :: Log Alaric [29214]: te
+Fri Oct  9 00:38:21 2026 :: Log Alaric [29214]: te
+Fri Oct  9 00:38:29 2026 :: Log Alaric [29214]: te
+Fri Oct  9 00:38:35 2026 :: Log Alaric [29214]: te
+Fri Oct  9 00:38:35 2026 :: Log Alaric [29214]: killed a deranged madman
+Fri Oct  9 00:38:35 2026 :: Log Alaric [29214]: coin +5 platinum
+Fri Oct  9 00:38:35 2026 :: Log Alaric [29214]: coin +23 silver
+Fri Oct  9 00:38:35 2026 :: Log Alaric [29214]: coin +31 copper
+Fri Oct  9 00:38:35 2026 :: Log Alaric [29214]: coin +13 gold
+Fri Oct  9 00:38:44 2026 :: Log Alaric [29214]: te
+Fri Oct  9 00:38:47 2026 :: Log Alaric [29214]: te
+Fri Oct  9 00:38:50 2026 :: Log Alaric [29214]: te
