@@ -69084,3 +69084,62 @@ Fri Oct  9 22:52:16 2026 :: Sock.sinaddr:  54.167.223.174
 Fri Oct  9 22:52:16 2026 :: EOF encountered on read.
 Fri Oct  9 22:57:22 2026 :: Sock.sinaddr:  52.15.147.27
 Fri Oct  9 22:57:22 2026 :: EOF encountered on read.
+Fri Oct  9 23:01:42 2026 :: Log Alaric [2497]: aq re
+Fri Oct  9 23:01:44 2026 :: Log Alaric [2497]: enter door
+Fri Oct  9 23:01:44 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Fri Oct  9 23:01:44 2026 :: Log Alaric [2401]: south
+Fri Oct  9 23:01:44 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Fri Oct  9 23:01:44 2026 :: Log Alaric [2404]: south
+Fri Oct  9 23:01:44 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 2404
+Fri Oct  9 23:01:45 2026 :: Log Alaric [2427]: south
+Fri Oct  9 23:01:45 2026 :: Log Alaric [2428]: arrived (Main Processional.) from 2427
+Fri Oct  9 23:01:45 2026 :: Log Alaric [2428]: south
+Fri Oct  9 23:01:45 2026 :: Log Alaric [2429]: arrived (Bridge of the Mermaids.) from 2428
+Fri Oct  9 23:01:45 2026 :: Log Alaric [2429]: south
+Fri Oct  9 23:01:45 2026 :: Log Alaric [2430]: arrived (Main Processional.) from 2429
+Fri Oct  9 23:01:45 2026 :: Log Alaric [2430]: south
+Fri Oct  9 23:01:45 2026 :: Log Alaric [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Fri Oct  9 23:01:46 2026 :: Log Alaric [2431]: open south
+Fri Oct  9 23:01:46 2026 :: Log Alaric [2431]: south
+Fri Oct  9 23:01:46 2026 :: Log Alaric [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Fri Oct  9 23:01:48 2026 :: Log Alaric [2432]: south
+Fri Oct  9 23:01:48 2026 :: Log Alaric [3505]: arrived (The Trail to Miden'nir) from 2432
+Fri Oct  9 23:01:48 2026 :: Log Alaric [3505]: south
+Fri Oct  9 23:01:48 2026 :: Log Alaric [3507]: arrived (A Burned Cart) from 3505
+Fri Oct  9 23:01:49 2026 :: Log Alaric [3507]: south
+Fri Oct  9 23:01:49 2026 :: Log Alaric [3510]: arrived (A Crossroads) from 3507
+Fri Oct  9 23:01:49 2026 :: Log Alaric [3510]: south
+Fri Oct  9 23:01:49 2026 :: Log Alaric [3516]: arrived (Muddy Ground) from 3510
+Fri Oct  9 23:01:49 2026 :: Log Alaric [3516]: down
+Fri Oct  9 23:01:49 2026 :: Log Alaric [19]: arrived (Soggy Cave) from 3516
+Fri Oct  9 23:01:49 2026 :: Log Alaric [19]: south
+Fri Oct  9 23:01:49 2026 :: Log Alaric [2801]: arrived (Wastedump) from 19
+Fri Oct  9 23:01:50 2026 :: Log Alaric [2801]: south
+Fri Oct  9 23:01:50 2026 :: Log Alaric [2803]: arrived (Troll's Living Room) from 2801
+Fri Oct  9 23:01:50 2026 :: Log Alaric [2803]: west
+Fri Oct  9 23:01:50 2026 :: Log Alaric [2802]: arrived (Troll's Larder) from 2803
+Fri Oct  9 23:01:51 2026 :: Log Alaric [2802]: te
+Fri Oct  9 23:01:51 2026 :: Log Alaric [2802]: killed the roving beast
+Fri Oct  9 23:01:51 2026 :: Log Alaric [2802]: coin +6 silver
+Fri Oct  9 23:01:51 2026 :: Log Alaric [2802]: coin +21 copper
+Fri Oct  9 23:01:51 2026 :: Log Alaric [2802]: killed a fat worm
+Fri Oct  9 23:01:51 2026 :: Log Alaric [2802]: coin +4 copper
+Fri Oct  9 23:01:51 2026 :: Log Alaric [2802]: killed a fat worm
+Fri Oct  9 23:01:51 2026 :: Log Alaric [2802]: coin +4 copper
+Fri Oct  9 23:01:51 2026 :: Log Alaric [2802]: killed the young troll
+Fri Oct  9 23:01:51 2026 :: Log Alaric [2802]: coin +11 silver
+Fri Oct  9 23:01:51 2026 :: Log Alaric [2802]: coin +17 copper
+Fri Oct  9 23:01:51 2026 :: Log Alaric [2802]: killed the young troll
+Fri Oct  9 23:01:51 2026 :: Log Alaric [2802]: coin +11 silver
+Fri Oct  9 23:01:51 2026 :: Log Alaric [2802]: coin +17 copper
+Fri Oct  9 23:01:56 2026 :: Log Alaric [2802]: recal
+Fri Oct  9 23:01:56 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2802
+Fri Oct  9 23:01:56 2026 :: Log Alaric [2497]: recal
+Fri Oct  9 23:01:56 2026 :: Log Alaric [2497]: recal
+Fri Oct  9 23:01:56 2026 :: Log Alaric [2497]: recal
+Fri Oct  9 23:01:57 2026 :: Log Alaric [2497]: aq co
+Fri Oct  9 23:01:57 2026 :: Log Alaric [2497]: gold +6
+Fri Oct  9 23:01:57 2026 :: Log Alaric [2497]: quest complete: 6 gold, 88 quest points (streak bonus 147%)
+Fri Oct  9 23:01:57 2026 :: Log Alaric [2497]: aq ga no
+Fri Oct  9 23:01:59 2026 :: Log Alaric [2497]: score
+Fri Oct  9 23:02:01 2026 :: Log Alaric [2497]: who
