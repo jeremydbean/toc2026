@@ -69080,3 +69080,7 @@ Fri Oct  9 22:50:30 2026 :: Log Alaric [2497]: help block
 Fri Oct  9 22:50:33 2026 :: Log Alaric [2497]: help shield
 Fri Oct  9 22:50:39 2026 :: Log Alaric [2497]: help shieldblock
 Fri Oct  9 22:50:43 2026 :: Log Alaric [2497]: help shield block
+Fri Oct  9 22:52:16 2026 :: Sock.sinaddr:  54.167.223.174
+Fri Oct  9 22:52:16 2026 :: EOF encountered on read.
+Fri Oct  9 22:57:22 2026 :: Sock.sinaddr:  52.15.147.27
+Fri Oct  9 22:57:22 2026 :: EOF encountered on read.
