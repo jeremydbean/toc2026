@@ -73424,3 +73424,60 @@ Sat Oct 10 12:49:45 2026 :: Log Alaric [9403]: bs fl
 Sat Oct 10 12:49:54 2026 :: Log Alaric [9403]: look fl
 Sat Oct 10 12:49:59 2026 :: Sock.sinaddr:  52.87.72.16
 Sat Oct 10 12:49:59 2026 :: EOF encountered on read.
+Sat Oct 10 12:51:34 2026 :: Log Alaric [9403]: killed Foreman Floyd
+Sat Oct 10 12:51:34 2026 :: Log Alaric [9403]: coin +1 silver
+Sat Oct 10 12:51:34 2026 :: Log Alaric [9403]: coin +1 copper
+Sat Oct 10 12:51:48 2026 :: Log Alaric [9403]: l i cor
+Sat Oct 10 12:51:50 2026 :: Log Alaric [9403]: l
+Sat Oct 10 12:51:52 2026 :: Log Alaric [9403]: s
+Sat Oct 10 12:51:52 2026 :: Log Alaric [9404]: arrived (Foreman's Bathroom) from 9403
+Sat Oct 10 12:51:54 2026 :: Log Alaric [9404]: bs sl
+Sat Oct 10 12:51:54 2026 :: Log Alaric [9404]: killed The toxic slime
+Sat Oct 10 12:52:30 2026 :: Log Alaric [9404]: n
+Sat Oct 10 12:52:30 2026 :: Log Alaric [9403]: arrived (Foreman's Office) from 9404
+Sat Oct 10 12:52:30 2026 :: Log Alaric [9403]: n
+Sat Oct 10 12:52:30 2026 :: Log Alaric [9400]: arrived (Entrance to the Mob Factory) from 9403
+Sat Oct 10 12:52:31 2026 :: Log Alaric [9400]: scan
+Sat Oct 10 12:52:32 2026 :: Log Alaric [9400]: e
+Sat Oct 10 12:52:32 2026 :: Log Alaric [9407]: arrived (Entrance Hallway to Mob Factory) from 9400
+Sat Oct 10 12:52:35 2026 :: Log Alaric [9407]: e
+Sat Oct 10 12:52:35 2026 :: Log Alaric [9412]: arrived (Entrance Hallway to Mob Factory) from 9407
+Sat Oct 10 12:52:36 2026 :: Log Alaric [9412]: scan
+Sat Oct 10 12:52:37 2026 :: Log Alaric [9412]: bs he
+Sat Oct 10 12:52:58 2026 :: Log Alaric [9412]: killed The Cityguard head
+Sat Oct 10 12:53:07 2026 :: Log Alaric [9412]: n
+Sat Oct 10 12:53:07 2026 :: Log Alaric [9411]: arrived (Mob Factory Inspection Room) from 9412
+Sat Oct 10 12:53:07 2026 :: Log Alaric [9411]: bs fi
+Sat Oct 10 12:53:13 2026 :: Log Alaric [9411]: killed The mutant beastly fido
+Sat Oct 10 12:53:23 2026 :: Log Alaric [9411]: bs wo
+Sat Oct 10 12:53:23 2026 :: Log Alaric [9411]: killed The factory worker
+Sat Oct 10 12:53:42 2026 :: Log Alaric [9411]: s
+Sat Oct 10 12:53:42 2026 :: Log Alaric [9412]: arrived (Entrance Hallway to Mob Factory) from 9411
+Sat Oct 10 12:53:42 2026 :: Log Alaric [9412]: bs he
+Sat Oct 10 12:53:55 2026 :: Log Alaric [9412]: killed The Cityguard head
+Sat Oct 10 12:54:05 2026 :: Log Alaric [9412]: wo
+Sat Oct 10 12:54:06 2026 :: Log Alaric [9412]: l
+Sat Oct 10 12:54:08 2026 :: Log Alaric [9412]: scan
+Sat Oct 10 12:54:09 2026 :: Log Alaric [9412]: e
+Sat Oct 10 12:54:09 2026 :: Log Alaric [9417]: arrived (Primary Assembly Line) from 9412
+Sat Oct 10 12:54:11 2026 :: Log Alaric [9417]: bs he
+Sat Oct 10 12:54:28 2026 :: Log Alaric [9417]: killed The Cityguard head
+Sat Oct 10 12:54:35 2026 :: Log Alaric [9417]: bs wo
+Sat Oct 10 12:54:40 2026 :: Log Alaric [9417]: killed The factory worker
+Sat Oct 10 12:54:50 2026 :: Log Alaric [9417]: scan
+Sat Oct 10 12:54:53 2026 :: Log Alaric [9417]: s
+Sat Oct 10 12:54:53 2026 :: Log Alaric [9418]: arrived (Primary Assembly Line) from 9417
+Sat Oct 10 12:54:54 2026 :: Log Alaric [9418]: bs fi
+Sat Oct 10 12:54:55 2026 :: Log Alaric [9418]: killed The mutant beastly fido
+Sat Oct 10 12:55:03 2026 :: Sock.sinaddr:  3.212.128.62
+Sat Oct 10 12:55:03 2026 :: EOF encountered on read.
+Sat Oct 10 12:55:10 2026 :: Log Alaric [9418]: bs wo
+Sat Oct 10 12:55:24 2026 :: Log Alaric [9418]: s
+Sat Oct 10 12:55:24 2026 :: Log Alaric [9419]: arrived (Primary Assembly Line) from 9418
+Sat Oct 10 12:55:24 2026 :: Log Alaric [9419]: kill wo
+Sat Oct 10 12:55:24 2026 :: Log Alaric [9419]: killed The factory worker
+Sat Oct 10 12:55:31 2026 :: Log Alaric [9419]: bs wo
+Sat Oct 10 12:55:37 2026 :: Log Alaric [9419]: killed The factory worker
+Sat Oct 10 12:55:48 2026 :: Log Alaric [9419]: scan
+Sat Oct 10 12:55:51 2026 :: Log Alaric [9419]: e
+Sat Oct 10 12:55:51 2026 :: Log Alaric [9424]: arrived (Secondary Assembly Line) from 9419
