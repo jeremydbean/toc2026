@@ -76339,3 +76339,82 @@ Sat Oct 10 16:32:50 2026 :: Log Alaric [29031]: arrived (Main Intersection) from
 Sat Oct 10 16:32:52 2026 :: Log Alaric [29031]: w
 Sat Oct 10 16:32:52 2026 :: Log Alaric [29039]: arrived (Dining Hall) from 29031
 Sat Oct 10 16:32:53 2026 :: Log Alaric [29039]: bs wa
+Sat Oct 10 16:33:07 2026 :: Log Alaric [29039]: look wa
+Sat Oct 10 16:33:32 2026 :: Log Alaric [29039]: get kn cor
+Sat Oct 10 16:33:32 2026 :: Log Alaric [29039]: wear kn
+Sat Oct 10 16:33:33 2026 :: Log Alaric [29039]: e
+Sat Oct 10 16:33:33 2026 :: Log Alaric [29031]: arrived (Main Intersection) from 29039
+Sat Oct 10 16:33:34 2026 :: Log Alaric [29031]: kill wa
+Sat Oct 10 16:33:38 2026 :: Log Alaric [29031]: n
+Sat Oct 10 16:33:38 2026 :: Log Alaric [29044]: arrived (Path to Main Apartments) from 29031
+Sat Oct 10 16:33:38 2026 :: Log Alaric [29044]: kill wa
+Sat Oct 10 16:33:38 2026 :: Log Alaric [29044]: killed a waiter
+Sat Oct 10 16:33:38 2026 :: Log Alaric [29044]: coin +3 silver
+Sat Oct 10 16:33:38 2026 :: Log Alaric [29044]: coin +5 copper
+Sat Oct 10 16:33:38 2026 :: Log Alaric [29044]: coin +2 gold
+Sat Oct 10 16:33:42 2026 :: Log Alaric [29044]: get kn cor
+Sat Oct 10 16:33:42 2026 :: Log Alaric [29044]: wear kn
+Sat Oct 10 16:33:46 2026 :: Log Alaric [29044]: drop da
+Sat Oct 10 16:33:47 2026 :: Log Alaric [29044]: sac da
+Sat Oct 10 16:33:47 2026 :: Log Alaric [29044]: coin +10 copper
+Sat Oct 10 16:33:48 2026 :: Log Alaric [29044]: wake
+Sat Oct 10 16:33:48 2026 :: Log Alaric [29044]: l
+Sat Oct 10 16:33:51 2026 :: Log Alaric [29044]: w
+Sat Oct 10 16:33:51 2026 :: Log Alaric [29044]: s
+Sat Oct 10 16:33:51 2026 :: Log Alaric [29031]: arrived (Main Intersection) from 29044
+Sat Oct 10 16:33:52 2026 :: Log Alaric [29031]: w
+Sat Oct 10 16:33:52 2026 :: Log Alaric [29039]: arrived (Dining Hall) from 29031
+Sat Oct 10 16:33:52 2026 :: Sock.sinaddr:  3.12.251.153
+Sat Oct 10 16:33:52 2026 :: EOF encountered on read.
+Sat Oct 10 16:33:52 2026 :: Log Alaric [29039]: n
+Sat Oct 10 16:33:52 2026 :: Log Alaric [29040]: arrived (Dining Room) from 29039
+Sat Oct 10 16:33:54 2026 :: Log Alaric [29040]: bs wa
+Sat Oct 10 16:34:16 2026 :: Log Alaric [29040]: n
+Sat Oct 10 16:34:16 2026 :: Log Alaric [29041]: arrived (Dining Room) from 29040
+Sat Oct 10 16:34:16 2026 :: Log Alaric [29041]: kill wa
+Sat Oct 10 16:34:19 2026 :: Log Alaric [29041]: killed a waiter
+Sat Oct 10 16:34:19 2026 :: Log Alaric [29041]: coin +3 silver
+Sat Oct 10 16:34:19 2026 :: Log Alaric [29041]: coin +5 copper
+Sat Oct 10 16:34:19 2026 :: Log Alaric [29041]: coin +2 gold
+Sat Oct 10 16:34:24 2026 :: Log Alaric [29041]: bs wa
+Sat Oct 10 16:34:56 2026 :: Log Alaric [29041]: s
+Sat Oct 10 16:34:56 2026 :: Log Alaric [29040]: arrived (Dining Room) from 29041
+Sat Oct 10 16:34:56 2026 :: Log Alaric [29040]: kill wa
+Sat Oct 10 16:34:58 2026 :: Log Alaric [29040]: killed a waiter
+Sat Oct 10 16:34:58 2026 :: Log Alaric [29040]: coin +3 silver
+Sat Oct 10 16:34:58 2026 :: Log Alaric [29040]: coin +5 copper
+Sat Oct 10 16:34:58 2026 :: Log Alaric [29040]: coin +2 gold
+Sat Oct 10 16:35:03 2026 :: Log Alaric [29040]: worth
+Sat Oct 10 16:35:05 2026 :: Log Alaric [29040]: recal
+Sat Oct 10 16:35:05 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 29040
+Sat Oct 10 16:35:07 2026 :: Log Alaric [4207]: e
+Sat Oct 10 16:35:07 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 16:35:08 2026 :: Log Alaric [4202]: e
+Sat Oct 10 16:35:08 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 10 16:35:08 2026 :: Log Alaric [4201]: e
+Sat Oct 10 16:35:08 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sat Oct 10 16:35:09 2026 :: Log Alaric [2427]: w
+Sat Oct 10 16:35:09 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Sat Oct 10 16:35:09 2026 :: Log Alaric [4201]: w
+Sat Oct 10 16:35:09 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4201
+Sat Oct 10 16:35:10 2026 :: Log Alaric [4202]: w
+Sat Oct 10 16:35:10 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4202
+Sat Oct 10 16:35:10 2026 :: Log Alaric [4207]: w
+Sat Oct 10 16:35:10 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sat Oct 10 16:35:11 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 16:35:11 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 16:35:14 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 16:35:14 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 16:35:17 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 16:35:17 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 16:35:20 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 16:35:20 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 16:35:23 2026 :: Log Alaric [4208]: r e 4
+Sat Oct 10 16:35:23 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sat Oct 10 16:35:23 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 16:35:23 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 10 16:35:23 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sat Oct 10 16:35:24 2026 :: Log Alaric [2427]: n
+Sat Oct 10 16:35:24 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 10 16:35:24 2026 :: Log Alaric [2404]: n
+Sat Oct 10 16:35:24 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
