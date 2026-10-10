@@ -72570,3 +72570,106 @@ Sat Oct 10 12:04:19 2026 :: Sock.sinaddr:  52.87.72.16
 Sat Oct 10 12:04:19 2026 :: EOF encountered on read.
 Sat Oct 10 12:09:24 2026 :: Sock.sinaddr:  3.20.63.178
 Sat Oct 10 12:09:24 2026 :: EOF encountered on read.
+Sat Oct 10 12:11:51 2026 :: Sock.sinaddr:  208.126.22.104
+Sat Oct 10 12:11:53 2026 :: Loading Alaric's playerfile
+Sat Oct 10 12:11:54 2026 :: Alaric@208.126.22.104 has connected.
+Sat Oct 10 12:11:55 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 0
+Sat Oct 10 12:11:58 2026 :: Log Alaric [2402]: who
+Sat Oct 10 12:11:59 2026 :: Log Alaric [2402]: gr
+Sat Oct 10 12:12:00 2026 :: Log Alaric [2402]: wake
+Sat Oct 10 12:12:00 2026 :: Log Alaric [2402]: l
+Sat Oct 10 12:12:01 2026 :: Log Alaric [2402]: time
+Sat Oct 10 12:12:05 2026 :: Log Alaric [2402]: s
+Sat Oct 10 12:12:05 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2402
+Sat Oct 10 12:12:06 2026 :: Log Alaric [2401]: wo
+Sat Oct 10 12:12:10 2026 :: Log Alaric [2401]: s
+Sat Oct 10 12:12:10 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Sat Oct 10 12:12:10 2026 :: Log Alaric [2404]: s
+Sat Oct 10 12:12:10 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 2404
+Sat Oct 10 12:12:10 2026 :: Log Alaric [2427]: w
+Sat Oct 10 12:12:10 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Sat Oct 10 12:12:11 2026 :: Log Alaric [4201]: w
+Sat Oct 10 12:12:11 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4201
+Sat Oct 10 12:12:11 2026 :: Log Alaric [4202]: n
+Sat Oct 10 12:12:11 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sat Oct 10 12:12:12 2026 :: Log Alaric [4203]: n
+Sat Oct 10 12:12:12 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sat Oct 10 12:12:14 2026 :: Log Alaric [4210]: sl
+Sat Oct 10 12:14:04 2026 :: Log Alaric [4210]: sleep
+Sat Oct 10 12:14:06 2026 :: Log Alaric [4210]: gr
+Sat Oct 10 12:14:10 2026 :: Log Alaric [4210]: skil
+Sat Oct 10 12:14:27 2026 :: Sock.sinaddr:  52.22.236.30
+Sat Oct 10 12:14:27 2026 :: EOF encountered on read.
+Sat Oct 10 12:14:42 2026 :: Log Alaric [4210]: gainlist
+Sat Oct 10 12:14:58 2026 :: Log Alaric [4210]: track
+Sat Oct 10 12:15:00 2026 :: Log Alaric [4210]: wake
+Sat Oct 10 12:15:02 2026 :: Log Alaric [4210]: sneak
+Sat Oct 10 12:15:03 2026 :: Log Alaric [4210]: af
+Sat Oct 10 12:15:05 2026 :: Log Alaric [4210]: sn
+Sat Oct 10 12:15:06 2026 :: Log Alaric [4210]: af
+Sat Oct 10 12:15:09 2026 :: Log Alaric [4210]: track lamia
+Sat Oct 10 12:15:10 2026 :: Log Alaric [4210]: track lamia
+Sat Oct 10 12:15:11 2026 :: Log Alaric [4210]: track lamia
+Sat Oct 10 12:15:11 2026 :: Log Alaric [4210]: track lamia
+Sat Oct 10 12:15:11 2026 :: Log Alaric [4210]: s
+Sat Oct 10 12:15:11 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sat Oct 10 12:15:12 2026 :: Log Alaric [4203]: s
+Sat Oct 10 12:15:12 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sat Oct 10 12:15:12 2026 :: Log Alaric [4202]: e
+Sat Oct 10 12:15:12 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 10 12:15:12 2026 :: Log Alaric [4201]: e
+Sat Oct 10 12:15:12 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sat Oct 10 12:15:13 2026 :: Log Alaric [2427]: n
+Sat Oct 10 12:15:13 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 10 12:15:13 2026 :: Log Alaric [2404]: n
+Sat Oct 10 12:15:13 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Oct 10 12:15:15 2026 :: Log Alaric [2401]: track lamia
+Sat Oct 10 12:15:17 2026 :: Log Alaric [2401]: track lamia
+Sat Oct 10 12:15:17 2026 :: Log Alaric [2401]: track lamia
+Sat Oct 10 12:15:18 2026 :: Log Alaric [2401]: track lamia
+Sat Oct 10 12:15:18 2026 :: Log Alaric [2401]: track lamia
+Sat Oct 10 12:15:18 2026 :: Log Alaric [2401]: track lamia
+Sat Oct 10 12:15:18 2026 :: Log Alaric [2401]: track lamia
+Sat Oct 10 12:15:19 2026 :: Log Alaric [2401]: track lamia
+Sat Oct 10 12:15:19 2026 :: Log Alaric [2401]: track lamia
+Sat Oct 10 12:15:19 2026 :: Log Alaric [2401]: track lamia
+Sat Oct 10 12:15:20 2026 :: Log Alaric [2401]: track lamia
+Sat Oct 10 12:15:21 2026 :: Log Alaric [2401]: r e 8
+Sat Oct 10 12:15:21 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Oct 10 12:15:21 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Oct 10 12:15:21 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Oct 10 12:15:21 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sat Oct 10 12:15:21 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sat Oct 10 12:15:21 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sat Oct 10 12:15:21 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Oct 10 12:15:21 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Oct 10 12:15:22 2026 :: Log Alaric [2426]: oe
+Sat Oct 10 12:15:24 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:25 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:25 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:26 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:26 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:27 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:27 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:27 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:27 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:28 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:28 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:28 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:28 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:29 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:29 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:29 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:30 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:30 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:30 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:30 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:31 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:31 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:31 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:31 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:32 2026 :: Log Alaric [2426]: track lamia
+Sat Oct 10 12:15:32 2026 :: 208.126.22.104 input spamming!
+Sat Oct 10 12:15:32 2026 :: Log Alaric [2426]: quit
+Sat Oct 10 12:15:32 2026 :: Alaric has quit.
+Sat Oct 10 12:15:32 2026 :: [QUIT] Player rejoined the real world.

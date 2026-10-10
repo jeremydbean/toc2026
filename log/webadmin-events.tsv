@@ -2460,3 +2460,7 @@
 1791597969	wizinfo	8	Alaric has left the game (5h 36m).
 1791609671	wizinfo	62	Automated backup complete.
 1791624091	wizinfo	62	Automated backup complete.
+1791634314	wizinfo	60	Alaric@208.126.22.104 has connected.
+1791634315	wizinfo	8	Alaric has entered the game.
+1791634532	wizinfo	8	Alaric has left the game (3m).
+1791634532	wizinfo	60	BUG!!!! [Room: known] Alaric is active but not in hunting list
