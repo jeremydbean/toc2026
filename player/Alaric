@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791654273
+LogO 1791654823
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,19 +15,19 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 ChangesSeen 20261008b:3 20261008a:3 20261005d:3 20261005c:3 20261005a:3 20261005b:3 20261004t:3 20261004s:3 20261004a:3 20261004b:3 20261004c:3 20261004d:3 20261004e:3 20261004f:3 20261004g:3 20261004h:3 20261004i:3 20261004j:3 20261004k:3 20261004l:3 20261004m:3 20261004n:3 20261004o:3 20261004p:3 20261004q:3 20261004r:3 20261003a:3 20261003b:3 20261003c:3 20261003d:3 20261003e:3 20261003f:3 20261003g:3 20261003h:3 20261003i:3 20261003j:3 20261003k:3 20261003l:3 20261003m:3 20261002a:3 20261002b:3 20261002c:3 20261001a:3 20261001b:3 20261001c:3 20261001d:3 20261001e:3 20261001f:3 20261001g:3 20261001h:3 20261001i:3 20261001j:3 20261001k:3 20261001l:3 20261001m:3 20261001n:3 20261001o:3 20261001p:3 20261001q:3 20261001r:3 20261001s:3 20261001t:3 20261001u:3 20261001v:3 20261001w:3 20261001x:3 20261001y:3 20261001z:3 20260925a:3 20260925b:3 20260925c:3 20260925d:3 20260925e:3 20260925f:3 20260925g:3 20260925h:3 20260925i:3 20260925j:3 20260925k:3 20260925l:3 20260925m:3 20260925n:3 20260925o:3 20260925p:3 20260925q:3 20260925r:3 20260925s:3 20260925t:3 20260925u:3 20260925v:3 20260925w:3 20260925x:3 20260925y:3 20260925z:3 20260924a:3 20260924b:3 20260924c:3 20260924d:3 20260924e:3~
 Cast none
-Levl 18
-Plyd 498012
+Levl 19
+Plyd 498562
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
 StashMax 150
 Scro 22
-Room 13228
-HMV  490 602 810 819 351 520
-NewGold 98
-NewPlat 181
-NewCopp 155
-NewSilv 132
+Room 25265
+HMV  619 619 847 847 189 528
+NewGold 38
+NewPlat 184
+NewCopp 82
+NewSilv 54
 BankCP 2561882160
 IntTime 1791593884
 IntTotal 34882160
@@ -36,7 +36,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 2026
+AchKills 2032
 AchQuests 253
 AchDeaths 2
 AchExplore 5
@@ -110,14 +110,14 @@ Achv visit-oz 1791127353
 Achv visit-high-tower 1791329329
 Achv visit-ultima 1791329350
 Achv visit-korzath-fortress 1790899622
-LastOut  1791634532
-SesLogin 1791634315
-SesDur   217
-SesExpG  0
-SesLvlG  0
-SesKill  0
+LastOut  1791654823
+SesLogin 1791634544
+SesDur   20279
+SesExpG  23873
+SesLvlG  11
+SesKill  169
 SesPK    0
-SesDead  0
+SesDead  1
 SesQuest 0
 RecallRoom 4207
 RecallSet  1791596015
@@ -125,7 +125,7 @@ QuestPnts 5094
 QuestStrk 10
 CasinoWon  51
 CasinoLost 304
-Exp  41662
+Exp  43866
 Act  4195532
 AfBy 33280
 Comm 24576
@@ -153,21 +153,21 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 9
-Trai 14
+Prac 13
+Trai 15
 Save  1
-Alig  1040
-Hit   13
-Dam   12
-ACs 14 13 4 73
+Alig  1000
+Hit   14
+Dam   13
+ACs 4 1 -4 73
 Attr 20 13 13 18 19
-AMod 1 10 10 1 10
+AMod 2 10 10 4 10
 Pass Al3w9zuAlwpyY~
-Titl  the Killer~
+Titl  the Brigand~
 Pnts 5080
 TSex 1
 LLev 0
-HMVP 631 819 520
+HMVP 648 847 528
 Cond 0 -1 -1
 Alias k kick~
 Alias sm smite~
@@ -200,7 +200,7 @@ Sk 77 'backstab'
 Sk 75 'bash'
 Sk 79 'dodge'
 Sk 75 'dual wield'
-Sk 76 'parry'
+Sk 77 'parry'
 Sk 1 'trip'
 Sk 77 'second attack'
 Sk 1 'hide'
@@ -214,7 +214,7 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
-AffD 'sneak'   8   5   0   0      32768          0
+AffD 'sneak'   6  10   0   0      32768          0
 End
 
 #O
@@ -241,7 +241,7 @@ End
 Vnum 51
 Nest 0
 Wear -1
-Time 125
+Time 116
 Cost 0
 Cond 100
 Repd 0
@@ -262,15 +262,6 @@ Nest 0
 Wear 6
 Cost 0
 Cond 91
-Repd 0
-End
-
-#O
-Vnum 3711
-Nest 0
-Wear 12
-Cost 0
-Cond 98
 Repd 0
 End
 
@@ -322,7 +313,7 @@ Nest 0
 Wear 1
 Lev  7
 Cost 36000
-Cond 100
+Cond 98
 Repd 0
 End
 
@@ -332,7 +323,7 @@ Nest 0
 Wear 10
 Lev  3
 Cost 120
-Cond 95
+Cond 93
 Repd 0
 End
 
@@ -396,7 +387,7 @@ Nest 0
 Wear 3
 Lev  11
 Cost 2800000
-Cond 97
+Cond 95
 Repd 0
 Val  5 5 5 0 0
 End
@@ -410,17 +401,6 @@ Cost 270000
 Cond 100
 Repd 0
 Val  4 4 6 0 0
-End
-
-#O
-Vnum 29015
-Nest 0
-Wear 16
-Lev  15
-Cost 1000000
-Cond 100
-Repd 0
-Affect -1 15 -1 1 24 0 0
 End
 
 #O
@@ -442,6 +422,28 @@ Lev  19
 Cost 3500000
 Cond 100
 Repd 0
+End
+
+#O
+Vnum 25106
+Nest 0
+Wear 12
+Lev  17
+Cost 10000000
+Cond 97
+Repd 0
+Val  6 7 5 0 0
+End
+
+#O
+Vnum 29015
+Nest 0
+Wear 16
+Lev  15
+Cost 1000000
+Cond 100
+Repd 0
+Affect -1 15 -1 1 24 0 0
 End
 
 #END
