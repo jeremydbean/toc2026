@@ -69841,3 +69841,75 @@ Sat Oct 10 00:02:43 2026 :: Log Alaric [29512]: w
 Sat Oct 10 00:02:43 2026 :: Log Alaric [29511]: arrived (The Blockade) from 29512
 Sat Oct 10 00:02:44 2026 :: Log Alaric [29511]: w
 Sat Oct 10 00:02:44 2026 :: Log Alaric [29513]: arrived (A Place Of High Sorcery) from 29511
+Sat Oct 10 00:03:11 2026 :: Log Alaric [29513]: look plaque
+Sat Oct 10 00:03:14 2026 :: Log Alaric [29513]: look tapestry
+Sat Oct 10 00:03:14 2026 :: Log Alaric [29513]: e
+Sat Oct 10 00:03:14 2026 :: Log Alaric [29511]: arrived (The Blockade) from 29513
+Sat Oct 10 00:03:16 2026 :: Log Alaric [29511]: w
+Sat Oct 10 00:03:16 2026 :: Log Alaric [29513]: arrived (A Place Of High Sorcery) from 29511
+Sat Oct 10 00:03:17 2026 :: Log Alaric [29513]: e
+Sat Oct 10 00:03:17 2026 :: Log Alaric [29511]: arrived (The Blockade) from 29513
+Sat Oct 10 00:03:18 2026 :: Log Alaric [29511]: e
+Sat Oct 10 00:03:18 2026 :: Log Alaric [29512]: arrived (Dark) from 29511
+Sat Oct 10 00:03:19 2026 :: Sock.sinaddr:  5.161.75.7
+Sat Oct 10 00:03:19 2026 :: EOF encountered on read.
+Sat Oct 10 00:03:41 2026 :: Log Alaric [29512]: w
+Sat Oct 10 00:03:41 2026 :: Log Alaric [29511]: arrived (The Blockade) from 29512
+Sat Oct 10 00:04:02 2026 :: Log Alaric [29511]: open darktower
+Sat Oct 10 00:04:03 2026 :: Log Alaric [29511]: n
+Sat Oct 10 00:04:03 2026 :: Log Alaric [29514]: arrived (Road to the Cradle) from 29511
+Sat Oct 10 00:04:03 2026 :: Log Alaric [29514]: ex
+Sat Oct 10 00:04:04 2026 :: Log Alaric [29514]: n
+Sat Oct 10 00:04:04 2026 :: Log Alaric [29515]: arrived (Stairway) from 29514
+Sat Oct 10 00:04:04 2026 :: Log Alaric [29515]: ex
+Sat Oct 10 00:04:09 2026 :: Log Alaric [29515]: d
+Sat Oct 10 00:04:09 2026 :: Log Alaric [29516]: arrived (Hallway) from 29515
+Sat Oct 10 00:04:14 2026 :: Log Alaric [29516]: sh
+Sat Oct 10 00:04:20 2026 :: Log Alaric [29516]: te
+Sat Oct 10 00:04:24 2026 :: Log Alaric [29516]: te
+Sat Oct 10 00:04:31 2026 :: Log Alaric [29516]: c energ
+Sat Oct 10 00:04:38 2026 :: Log Alaric [29516]: c energy drain
+Sat Oct 10 00:04:42 2026 :: Log Alaric [29516]: c energy drain
+Sat Oct 10 00:04:46 2026 :: Log Alaric [29516]: c energy drain
+Sat Oct 10 00:04:52 2026 :: Log Alaric [29516]: c energy drain
+Sat Oct 10 00:04:57 2026 :: Log Alaric [29516]: c energy drain
+Sat Oct 10 00:05:01 2026 :: Log Alaric [29516]: te
+Sat Oct 10 00:05:08 2026 :: Log Alaric [29516]: look
+Sat Oct 10 00:05:09 2026 :: Log Alaric [29516]: flee
+Sat Oct 10 00:05:09 2026 :: Log Alaric [29517]: arrived (Hallway) from 29516
+Sat Oct 10 00:05:10 2026 :: Alaric killed by Security Droid at 29517
+Sat Oct 10 00:05:10 2026 :: Snapshot of Alaric taken before death (PRESTORE Alaric to see it).
+Sat Oct 10 00:05:10 2026 :: Log Alaric [29517]: died to Security Droid
+Sat Oct 10 00:05:10 2026 :: Log Alaric [4216]: arrived (Death room.) from 29517
+Sat Oct 10 00:05:10 2026 :: Log Alaric [4216]: flee
+Sat Oct 10 00:05:11 2026 :: Log Alaric [4216]: flee
+Sat Oct 10 00:05:12 2026 :: Log Alaric [4216]: flee
+Sat Oct 10 00:05:13 2026 :: Log Alaric [4216]: wake
+Sat Oct 10 00:05:15 2026 :: Log Alaric [4216]: tk corpse
+Sat Oct 10 00:05:20 2026 :: Log Alaric [4216]: drop cor
+Sat Oct 10 00:05:20 2026 :: Log Alaric [4216]: l i cor
+Sat Oct 10 00:05:23 2026 :: Log Alaric [4216]: sac cor
+Sat Oct 10 00:05:25 2026 :: Log Alaric [4216]: tk alaric
+Sat Oct 10 00:05:28 2026 :: Log Alaric [4216]: l
+Sat Oct 10 00:05:29 2026 :: Log Alaric [4216]: d
+Sat Oct 10 00:05:29 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4216
+Sat Oct 10 00:05:32 2026 :: Log Alaric [4208]: tk corpse
+Sat Oct 10 00:05:36 2026 :: Log Alaric [4208]: drop corpse
+Sat Oct 10 00:05:37 2026 :: Log Alaric [4208]: l
+Sat Oct 10 00:05:39 2026 :: Log Alaric [4208]: e
+Sat Oct 10 00:05:39 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sat Oct 10 00:05:40 2026 :: Log Alaric [4207]: e
+Sat Oct 10 00:05:40 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 00:05:41 2026 :: Log Alaric [4202]: n
+Sat Oct 10 00:05:41 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sat Oct 10 00:05:41 2026 :: Log Alaric [4203]: n
+Sat Oct 10 00:05:41 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sat Oct 10 00:05:42 2026 :: Log Alaric [4210]: sleep
+Sat Oct 10 00:06:49 2026 :: Log Alaric [4210]: tk alaric
+Sat Oct 10 00:06:50 2026 :: Log Alaric [4210]: wake
+Sat Oct 10 00:06:52 2026 :: Log Alaric [4210]: tk alaric
+Sat Oct 10 00:06:53 2026 :: Log Alaric [4210]: tk alaric
+Sat Oct 10 00:06:58 2026 :: Log Alaric [4210]: tk corpse
+Sat Oct 10 00:07:01 2026 :: Log Alaric [4210]: sleep
+Sat Oct 10 00:07:34 2026 :: Log Alaric [4210]: gr
+Sat Oct 10 00:07:55 2026 :: Log Alaric [4210]: sc
