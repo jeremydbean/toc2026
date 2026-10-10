@@ -76432,3 +76432,60 @@ Sat Oct 10 16:54:12 2026 :: Sock.sinaddr:  54.87.112.51
 Sat Oct 10 16:54:12 2026 :: EOF encountered on read.
 Sat Oct 10 16:59:17 2026 :: Sock.sinaddr:  3.12.251.153
 Sat Oct 10 16:59:17 2026 :: EOF encountered on read.
+Sat Oct 10 17:04:21 2026 :: Sock.sinaddr:  52.22.236.30
+Sat Oct 10 17:04:21 2026 :: EOF encountered on read.
+Sat Oct 10 17:06:37 2026 :: Log Alaric [2401]: wake
+Sat Oct 10 17:06:37 2026 :: Log Alaric [2401]: l
+Sat Oct 10 17:06:40 2026 :: Log Alaric [2401]: west
+Sat Oct 10 17:06:40 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sat Oct 10 17:06:40 2026 :: Log Alaric [2405]: west
+Sat Oct 10 17:06:40 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sat Oct 10 17:06:40 2026 :: Log Alaric [2433]: west
+Sat Oct 10 17:06:40 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sat Oct 10 17:06:41 2026 :: Log Alaric [2434]: west
+Sat Oct 10 17:06:41 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sat Oct 10 17:06:41 2026 :: Log Alaric [2435]: west
+Sat Oct 10 17:06:41 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sat Oct 10 17:06:41 2026 :: Log Alaric [2436]: west
+Sat Oct 10 17:06:41 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sat Oct 10 17:06:41 2026 :: Log Alaric [2437]: west
+Sat Oct 10 17:06:41 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sat Oct 10 17:06:42 2026 :: Log Alaric [2438]: open west
+Sat Oct 10 17:06:42 2026 :: Log Alaric [2438]: west
+Sat Oct 10 17:06:42 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sat Oct 10 17:06:58 2026 :: Log Alaric [2439]: prac
+Sat Oct 10 17:07:02 2026 :: Log Alaric [2439]: help bash
+Sat Oct 10 17:07:06 2026 :: Log Alaric [2439]: gainlist
+Sat Oct 10 17:07:19 2026 :: Log Alaric [2439]: practicelist
+Sat Oct 10 17:07:57 2026 :: Log Alaric [2439]: help bash
+Sat Oct 10 17:08:00 2026 :: Log Alaric [2439]: l
+Sat Oct 10 17:08:09 2026 :: Log Alaric [2439]: walkto jazair
+Sat Oct 10 17:08:09 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2439
+Sat Oct 10 17:08:10 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2438
+Sat Oct 10 17:08:10 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2437
+Sat Oct 10 17:08:11 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2436
+Sat Oct 10 17:08:12 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2435
+Sat Oct 10 17:08:13 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2434
+Sat Oct 10 17:08:13 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2433
+Sat Oct 10 17:08:14 2026 :: Log Alaric [2406]: arrived (Northwestern Oak Tree Square.) from 2405
+Sat Oct 10 17:08:15 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2406
+Sat Oct 10 17:08:16 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Sat Oct 10 17:08:16 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Sat Oct 10 17:08:17 2026 :: Log Alaric [2482]: arrived (Nomads Tent.) from 2485
+Sat Oct 10 17:08:19 2026 :: Log Alaric [2482]: prac
+Sat Oct 10 17:08:22 2026 :: Log Alaric [2482]: prac bash
+Sat Oct 10 17:08:22 2026 :: Log Alaric [2482]: prac bash
+Sat Oct 10 17:08:23 2026 :: Log Alaric [2482]: prac bash
+Sat Oct 10 17:08:23 2026 :: Log Alaric [2482]: prac bash
+Sat Oct 10 17:08:23 2026 :: Log Alaric [2482]: prac bash
+Sat Oct 10 17:08:23 2026 :: Log Alaric [2482]: prac bash
+Sat Oct 10 17:08:24 2026 :: Log Alaric [2482]: prac
+Sat Oct 10 17:08:26 2026 :: Log Alaric [2482]: prac
+Sat Oct 10 17:08:28 2026 :: Log Alaric [2482]: prac bash
+Sat Oct 10 17:08:28 2026 :: Log Alaric [2482]: prac bash
+Sat Oct 10 17:08:28 2026 :: Log Alaric [2482]: prac bash
+Sat Oct 10 17:08:29 2026 :: Log Alaric [2482]: prac bash
+Sat Oct 10 17:08:29 2026 :: Log Alaric [2482]: prac bash
+Sat Oct 10 17:08:29 2026 :: Log Alaric [2482]: prac bash
+Sat Oct 10 17:08:30 2026 :: Log Alaric [2482]: score
+Sat Oct 10 17:08:31 2026 :: Log Alaric [2482]: l
