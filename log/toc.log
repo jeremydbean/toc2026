@@ -73392,3 +73392,35 @@ Sat Oct 10 12:45:04 2026 :: Log Alaric [29045]: n
 Sat Oct 10 12:45:04 2026 :: Log Alaric [29046]: arrived (Path to Main Apartments) from 29045
 Sat Oct 10 12:45:05 2026 :: Log Alaric [29046]: look gu
 Sat Oct 10 12:45:08 2026 :: Log Alaric [29046]: bs gu
+Sat Oct 10 12:45:50 2026 :: Log Alaric [29046]: recal
+Sat Oct 10 12:45:50 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 29046
+Sat Oct 10 12:45:51 2026 :: Log Alaric [4207]: recal
+Sat Oct 10 12:45:52 2026 :: Log Alaric [4207]: e
+Sat Oct 10 12:45:52 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 12:45:53 2026 :: Log Alaric [4202]: n
+Sat Oct 10 12:45:53 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sat Oct 10 12:45:53 2026 :: Log Alaric [4203]: n
+Sat Oct 10 12:45:53 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sat Oct 10 12:45:54 2026 :: Log Alaric [4210]: sleep
+Sat Oct 10 12:49:31 2026 :: Log Alaric [4210]: s
+Sat Oct 10 12:49:31 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sat Oct 10 12:49:32 2026 :: Log Alaric [4203]: s
+Sat Oct 10 12:49:32 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sat Oct 10 12:49:32 2026 :: Log Alaric [4202]: w
+Sat Oct 10 12:49:32 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4202
+Sat Oct 10 12:49:33 2026 :: Log Alaric [4207]: u
+Sat Oct 10 12:49:33 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 4207
+Sat Oct 10 12:49:33 2026 :: Log Alaric [3700]: u
+Sat Oct 10 12:49:33 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3700
+Sat Oct 10 12:49:34 2026 :: Log Alaric [3772]: e
+Sat Oct 10 12:49:34 2026 :: Log Alaric [3773]: arrived (Newbie Train Still In The Station) from 3772
+Sat Oct 10 12:49:39 2026 :: Log Alaric [3774]: arrived (Newbie Train - Mob Factory Stop) from 3773
+Sat Oct 10 12:49:40 2026 :: Log Alaric [3774]: e
+Sat Oct 10 12:49:40 2026 :: Log Alaric [9400]: arrived (Entrance to the Mob Factory) from 3774
+Sat Oct 10 12:49:42 2026 :: Log Alaric [9400]: scan
+Sat Oct 10 12:49:44 2026 :: Log Alaric [9400]: s
+Sat Oct 10 12:49:44 2026 :: Log Alaric [9403]: arrived (Foreman's Office) from 9400
+Sat Oct 10 12:49:45 2026 :: Log Alaric [9403]: bs fl
+Sat Oct 10 12:49:54 2026 :: Log Alaric [9403]: look fl
+Sat Oct 10 12:49:59 2026 :: Sock.sinaddr:  52.87.72.16
+Sat Oct 10 12:49:59 2026 :: EOF encountered on read.
