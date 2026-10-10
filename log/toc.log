@@ -80299,3 +80299,232 @@ Sat Oct 10 22:06:27 2026 :: Log Alaric [4208]: heal ref
 Sat Oct 10 22:06:27 2026 :: Log Alaric [4208]: gold -10
 Sat Oct 10 22:06:30 2026 :: Log Alaric [4208]: quaff fly
 Sat Oct 10 22:06:31 2026 :: Log Alaric [4208]: af
+Sat Oct 10 22:06:33 2026 :: Log Alaric [4208]: stealth
+Sat Oct 10 22:06:35 2026 :: Log Alaric [4208]: af
+Sat Oct 10 22:06:36 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 22:06:36 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 22:06:40 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 22:06:40 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 22:06:45 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 22:06:45 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 22:06:48 2026 :: Log Alaric [4208]: r e 4
+Sat Oct 10 22:06:48 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sat Oct 10 22:06:48 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 22:06:48 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 10 22:06:48 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sat Oct 10 22:06:48 2026 :: Log Alaric [2427]: n
+Sat Oct 10 22:06:48 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 10 22:06:49 2026 :: Log Alaric [2404]: n
+Sat Oct 10 22:06:49 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Oct 10 22:06:49 2026 :: Log Alaric [2401]: r w 7
+Sat Oct 10 22:06:49 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sat Oct 10 22:06:49 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sat Oct 10 22:06:49 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sat Oct 10 22:06:49 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sat Oct 10 22:06:49 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sat Oct 10 22:06:49 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sat Oct 10 22:06:49 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sat Oct 10 22:06:49 2026 :: Log Alaric [2438]: open w
+Sat Oct 10 22:06:49 2026 :: Log Alaric [2438]: w
+Sat Oct 10 22:06:49 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sat Oct 10 22:06:50 2026 :: Log Alaric [2439]: r n 3
+Sat Oct 10 22:06:50 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Sat Oct 10 22:06:50 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Sat Oct 10 22:06:50 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Sat Oct 10 22:06:50 2026 :: Log Alaric [3902]: e
+Sat Oct 10 22:06:50 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Sat Oct 10 22:06:50 2026 :: Log Alaric [3903]: e
+Sat Oct 10 22:06:50 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Sat Oct 10 22:06:50 2026 :: Log Alaric [3904]: r n 5
+Sat Oct 10 22:06:50 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Sat Oct 10 22:06:50 2026 :: Log Alaric [315]: arrived (Gallow hill) from 300
+Sat Oct 10 22:06:50 2026 :: Log Alaric [320]: arrived (Grassy plains) from 315
+Sat Oct 10 22:06:50 2026 :: Log Alaric [322]: arrived (Grassy foothills) from 320
+Sat Oct 10 22:06:50 2026 :: Log Alaric [324]: arrived (The steep foothills) from 322
+Sat Oct 10 22:06:51 2026 :: Log Alaric [324]: e
+Sat Oct 10 22:06:51 2026 :: Log Alaric [325]: arrived (The steep foothills) from 324
+Sat Oct 10 22:06:51 2026 :: Log Alaric [325]: e
+Sat Oct 10 22:06:51 2026 :: Log Alaric [326]: arrived (The pool in the foothills) from 325
+Sat Oct 10 22:06:51 2026 :: Log Alaric [326]: n
+Sat Oct 10 22:06:51 2026 :: Log Alaric [10]: arrived (A path upwards) from 326
+Sat Oct 10 22:06:51 2026 :: Log Alaric [10]: u
+Sat Oct 10 22:06:51 2026 :: Log Alaric [11]: arrived (Struggling upward) from 10
+Sat Oct 10 22:06:52 2026 :: Log Alaric [11]: u
+Sat Oct 10 22:06:52 2026 :: Log Alaric [12]: arrived (Breathless) from 11
+Sat Oct 10 22:06:52 2026 :: Log Alaric [12]: n
+Sat Oct 10 22:06:52 2026 :: Log Alaric [13]: arrived (Downward path) from 12
+Sat Oct 10 22:06:52 2026 :: Log Alaric [13]: d
+Sat Oct 10 22:06:52 2026 :: Log Alaric [14]: arrived (End of the Mountain) from 13
+Sat Oct 10 22:06:52 2026 :: Log Alaric [14]: e
+Sat Oct 10 22:06:52 2026 :: Log Alaric [2300]: arrived (The dark woods) from 14
+Sat Oct 10 22:06:53 2026 :: Log Alaric [2300]: s
+Sat Oct 10 22:06:53 2026 :: Log Alaric [2301]: arrived (The dark woods) from 2300
+Sat Oct 10 22:06:53 2026 :: Log Alaric [2301]: s
+Sat Oct 10 22:06:53 2026 :: Log Alaric [2302]: arrived (The small intersection in the forest) from 2301
+Sat Oct 10 22:06:53 2026 :: Log Alaric [2302]: s
+Sat Oct 10 22:06:53 2026 :: Log Alaric [2303]: arrived (The edge of the forest and hills) from 2302
+Sat Oct 10 22:06:53 2026 :: Log Alaric [2303]: w
+Sat Oct 10 22:06:53 2026 :: Log Alaric [2309]: arrived (The rocky path) from 2303
+Sat Oct 10 22:06:54 2026 :: Log Alaric [2309]: s
+Sat Oct 10 22:06:54 2026 :: Log Alaric [2308]: arrived (The rocky path) from 2309
+Sat Oct 10 22:06:54 2026 :: Log Alaric [2308]: e
+Sat Oct 10 22:06:54 2026 :: Log Alaric [2307]: arrived (The bloody intersection) from 2308
+Sat Oct 10 22:06:54 2026 :: Log Alaric [2307]: e
+Sat Oct 10 22:06:54 2026 :: Log Alaric [2306]: arrived (A turn in the path) from 2307
+Sat Oct 10 22:06:54 2026 :: Log Alaric [2306]: n
+Sat Oct 10 22:06:54 2026 :: Log Alaric [2305]: arrived (The dark forest path) from 2306
+Sat Oct 10 22:06:55 2026 :: Log Alaric [2305]: e
+Sat Oct 10 22:06:55 2026 :: Log Alaric [2327]: arrived (The swampy path) from 2305
+Sat Oct 10 22:06:55 2026 :: Log Alaric [2327]: e
+Sat Oct 10 22:06:55 2026 :: Log Alaric [2328]: arrived (The swampy path) from 2327
+Sat Oct 10 22:06:55 2026 :: Log Alaric [2328]: e
+Sat Oct 10 22:06:55 2026 :: Log Alaric [2329]: arrived (The swampy path) from 2328
+Sat Oct 10 22:06:55 2026 :: Log Alaric [2329]: e
+Sat Oct 10 22:06:55 2026 :: Log Alaric [2330]: arrived (The turn in the swampy path) from 2329
+Sat Oct 10 22:06:56 2026 :: Log Alaric [2330]: s
+Sat Oct 10 22:06:56 2026 :: Log Alaric [2331]: arrived (The swampy path) from 2330
+Sat Oct 10 22:06:56 2026 :: Log Alaric [2331]: e
+Sat Oct 10 22:06:56 2026 :: Log Alaric [2335]: arrived (Lost in the Mist) from 2331
+Sat Oct 10 22:06:56 2026 :: Log Alaric [2335]: ex
+Sat Oct 10 22:06:57 2026 :: Log Alaric [2335]: n
+Sat Oct 10 22:06:57 2026 :: Log Alaric [2337]: arrived (Lost in the Mist) from 2335
+Sat Oct 10 22:06:58 2026 :: Log Alaric [2337]: ex
+Sat Oct 10 22:06:59 2026 :: Log Alaric [2337]: w
+Sat Oct 10 22:06:59 2026 :: Log Alaric [2332]: arrived (Lost in the Mist) from 2337
+Sat Oct 10 22:06:59 2026 :: Log Alaric [2332]: ex
+Sat Oct 10 22:07:00 2026 :: Log Alaric [2332]: n
+Sat Oct 10 22:07:00 2026 :: Log Alaric [2334]: arrived (Lost in the Mist) from 2332
+Sat Oct 10 22:07:01 2026 :: Log Alaric [2334]: ex
+Sat Oct 10 22:07:02 2026 :: Log Alaric [2334]: e
+Sat Oct 10 22:07:02 2026 :: Log Alaric [2332]: arrived (Lost in the Mist) from 2334
+Sat Oct 10 22:07:02 2026 :: Log Alaric [2332]: ex
+Sat Oct 10 22:07:03 2026 :: Log Alaric [2332]: e
+Sat Oct 10 22:07:03 2026 :: Log Alaric [2335]: arrived (Lost in the Mist) from 2332
+Sat Oct 10 22:07:04 2026 :: Log Alaric [2335]: ex
+Sat Oct 10 22:07:05 2026 :: Log Alaric [2335]: s
+Sat Oct 10 22:07:05 2026 :: Log Alaric [2333]: arrived (Lost in the Mist) from 2335
+Sat Oct 10 22:07:06 2026 :: Log Alaric [2333]: ex
+Sat Oct 10 22:07:07 2026 :: Log Alaric [2333]: w
+Sat Oct 10 22:07:07 2026 :: Log Alaric [2335]: arrived (Lost in the Mist) from 2333
+Sat Oct 10 22:07:07 2026 :: Log Alaric [2335]: ex
+Sat Oct 10 22:07:08 2026 :: Log Alaric [2335]: n
+Sat Oct 10 22:07:08 2026 :: Log Alaric [2337]: arrived (Lost in the Mist) from 2335
+Sat Oct 10 22:07:09 2026 :: Log Alaric [2337]: ex
+Sat Oct 10 22:07:10 2026 :: Log Alaric [2337]: e
+Sat Oct 10 22:07:10 2026 :: Log Alaric [2338]: arrived (Lost in the Mist) from 2337
+Sat Oct 10 22:07:10 2026 :: Log Alaric [2338]: ex
+Sat Oct 10 22:07:11 2026 :: Log Alaric [2338]: w
+Sat Oct 10 22:07:11 2026 :: Log Alaric [2337]: arrived (Lost in the Mist) from 2338
+Sat Oct 10 22:07:12 2026 :: Log Alaric [2337]: ex
+Sat Oct 10 22:07:13 2026 :: Log Alaric [2337]: n
+Sat Oct 10 22:07:13 2026 :: Log Alaric [2335]: arrived (Lost in the Mist) from 2337
+Sat Oct 10 22:07:13 2026 :: Log Alaric [2335]: ex
+Sat Oct 10 22:07:15 2026 :: Log Alaric [2335]: w
+Sat Oct 10 22:07:15 2026 :: Log Alaric [2331]: arrived (The swampy path) from 2335
+Sat Oct 10 22:07:16 2026 :: Log Alaric [2331]: e
+Sat Oct 10 22:07:16 2026 :: Log Alaric [2335]: arrived (Lost in the Mist) from 2331
+Sat Oct 10 22:07:17 2026 :: Log Alaric [2335]: n
+Sat Oct 10 22:07:17 2026 :: Log Alaric [2337]: arrived (Lost in the Mist) from 2335
+Sat Oct 10 22:07:17 2026 :: Log Alaric [2337]: ex
+Sat Oct 10 22:07:18 2026 :: Log Alaric [2337]: s
+Sat Oct 10 22:07:18 2026 :: Log Alaric [2338]: arrived (Lost in the Mist) from 2337
+Sat Oct 10 22:07:18 2026 :: Log Alaric [2338]: ex
+Sat Oct 10 22:07:19 2026 :: Log Alaric [2338]: e
+Sat Oct 10 22:07:19 2026 :: Log Alaric [2337]: arrived (Lost in the Mist) from 2338
+Sat Oct 10 22:07:20 2026 :: Log Alaric [2337]: ex
+Sat Oct 10 22:07:21 2026 :: Log Alaric [2337]: n
+Sat Oct 10 22:07:21 2026 :: Log Alaric [2335]: arrived (Lost in the Mist) from 2337
+Sat Oct 10 22:07:21 2026 :: Log Alaric [2335]: ex
+Sat Oct 10 22:07:23 2026 :: Log Alaric [2335]: n
+Sat Oct 10 22:07:23 2026 :: Log Alaric [2337]: arrived (Lost in the Mist) from 2335
+Sat Oct 10 22:07:23 2026 :: Log Alaric [2337]: ex
+Sat Oct 10 22:07:25 2026 :: Log Alaric [2337]: w
+Sat Oct 10 22:07:25 2026 :: Log Alaric [2332]: arrived (Lost in the Mist) from 2337
+Sat Oct 10 22:07:25 2026 :: Log Alaric [2332]: ex
+Sat Oct 10 22:07:26 2026 :: Log Alaric [2332]: n
+Sat Oct 10 22:07:26 2026 :: Log Alaric [2334]: arrived (Lost in the Mist) from 2332
+Sat Oct 10 22:07:27 2026 :: Log Alaric [2334]: ex
+Sat Oct 10 22:07:28 2026 :: Log Alaric [2334]: n
+Sat Oct 10 22:07:28 2026 :: Log Alaric [2332]: arrived (Lost in the Mist) from 2334
+Sat Oct 10 22:07:28 2026 :: Log Alaric [2332]: ex
+Sat Oct 10 22:07:29 2026 :: Log Alaric [2332]: n
+Sat Oct 10 22:07:29 2026 :: Log Alaric [2334]: arrived (Lost in the Mist) from 2332
+Sat Oct 10 22:07:30 2026 :: Log Alaric [2334]: ex
+Sat Oct 10 22:07:31 2026 :: Log Alaric [2334]: e
+Sat Oct 10 22:07:31 2026 :: Log Alaric [2332]: arrived (Lost in the Mist) from 2334
+Sat Oct 10 22:07:32 2026 :: Log Alaric [2332]: ex
+Sat Oct 10 22:07:33 2026 :: Log Alaric [2332]: n
+Sat Oct 10 22:07:33 2026 :: Log Alaric [2334]: arrived (Lost in the Mist) from 2332
+Sat Oct 10 22:07:33 2026 :: Log Alaric [2334]: ex
+Sat Oct 10 22:07:34 2026 :: Log Alaric [2334]: e
+Sat Oct 10 22:07:34 2026 :: Log Alaric [2332]: arrived (Lost in the Mist) from 2334
+Sat Oct 10 22:07:35 2026 :: Log Alaric [2332]: ex
+Sat Oct 10 22:07:36 2026 :: Log Alaric [2332]: s
+Sat Oct 10 22:07:36 2026 :: Log Alaric [2337]: arrived (Lost in the Mist) from 2332
+Sat Oct 10 22:07:36 2026 :: Log Alaric [2337]: ex
+Sat Oct 10 22:07:37 2026 :: Log Alaric [2337]: e
+Sat Oct 10 22:07:37 2026 :: Log Alaric [2338]: arrived (Lost in the Mist) from 2337
+Sat Oct 10 22:07:38 2026 :: Log Alaric [2338]: ex
+Sat Oct 10 22:07:39 2026 :: Log Alaric [2338]: s
+Sat Oct 10 22:07:39 2026 :: Log Alaric [2336]: arrived (Lost in the Mist) from 2338
+Sat Oct 10 22:07:40 2026 :: Log Alaric [2336]: ex
+Sat Oct 10 22:07:41 2026 :: Log Alaric [2336]: s
+Sat Oct 10 22:07:41 2026 :: Log Alaric [2339]: arrived (The solid path) from 2336
+Sat Oct 10 22:07:42 2026 :: Log Alaric [2339]: n
+Sat Oct 10 22:07:42 2026 :: Log Alaric [2340]: arrived (A forested path) from 2339
+Sat Oct 10 22:07:43 2026 :: Log Alaric [2340]: n
+Sat Oct 10 22:07:43 2026 :: Log Alaric [2341]: arrived (The gate before the Ogre Village) from 2340
+Sat Oct 10 22:07:43 2026 :: Log Alaric [2341]: n
+Sat Oct 10 22:07:43 2026 :: Log Alaric [2343]: arrived (Inside the gates) from 2341
+Sat Oct 10 22:07:43 2026 :: Log Alaric [2343]: n
+Sat Oct 10 22:07:43 2026 :: Log Alaric [2346]: arrived (The firepit before the lodge) from 2343
+Sat Oct 10 22:07:44 2026 :: Log Alaric [2346]: n
+Sat Oct 10 22:07:44 2026 :: Log Alaric [2348]: arrived (The entryway to the lodge) from 2346
+Sat Oct 10 22:07:44 2026 :: Log Alaric [2348]: n
+Sat Oct 10 22:07:44 2026 :: Log Alaric [2349]: arrived (The throne room) from 2348
+Sat Oct 10 22:07:44 2026 :: Log Alaric [2349]: n
+Sat Oct 10 22:07:44 2026 :: Log Alaric [2350]: arrived (The chieftain's room) from 2349
+Sat Oct 10 22:07:44 2026 :: Log Alaric [2350]: n
+Sat Oct 10 22:07:45 2026 :: Log Alaric [2350]: n
+Sat Oct 10 22:07:45 2026 :: Log Alaric [2350]: n
+Sat Oct 10 22:07:45 2026 :: Log Alaric [2350]: n
+Sat Oct 10 22:07:45 2026 :: Log Alaric [2350]: n
+Sat Oct 10 22:07:47 2026 :: Log Alaric [2350]: look og
+Sat Oct 10 22:07:50 2026 :: Log Alaric [2350]: con og
+Sat Oct 10 22:07:52 2026 :: Log Alaric [2350]: bs og
+Sat Oct 10 22:08:12 2026 :: Log Alaric [2350]: to
+Sat Oct 10 22:08:21 2026 :: Log Alaric [2350]: to
+Sat Oct 10 22:08:24 2026 :: Log Alaric [2350]: get sword
+Sat Oct 10 22:08:24 2026 :: Log Alaric [2350]: wear sword
+Sat Oct 10 22:08:27 2026 :: Log Alaric [2350]: to
+Sat Oct 10 22:08:28 2026 :: Log Alaric [2350]: to
+Sat Oct 10 22:08:36 2026 :: Log Alaric [2350]: to
+Sat Oct 10 22:08:36 2026 :: Log Alaric [2350]: get sword
+Sat Oct 10 22:08:37 2026 :: Log Alaric [2350]: wear sword
+Sat Oct 10 22:08:38 2026 :: Log Alaric [2350]: to
+Sat Oct 10 22:08:39 2026 :: Log Alaric [2350]: to
+Sat Oct 10 22:08:40 2026 :: Sock.sinaddr:  5.161.113.195
+Sat Oct 10 22:08:40 2026 :: EOF encountered on read.
+Sat Oct 10 22:08:44 2026 :: Log Alaric [2350]: get sword
+Sat Oct 10 22:08:44 2026 :: Log Alaric [2350]: wear sword
+Sat Oct 10 22:08:45 2026 :: Log Alaric [2350]: to
+Sat Oct 10 22:08:51 2026 :: Log Alaric [2350]: to
+Sat Oct 10 22:09:00 2026 :: Log Alaric [2350]: to
+Sat Oct 10 22:09:08 2026 :: Log Alaric [2350]: killed the Ogre Chieftain
+Sat Oct 10 22:09:08 2026 :: Log Alaric [2350]: coin +3 silver
+Sat Oct 10 22:09:08 2026 :: Log Alaric [2350]: coin +5 copper
+Sat Oct 10 22:09:08 2026 :: Log Alaric [2350]: coin +2 gold
+Sat Oct 10 22:09:16 2026 :: Log Alaric [2350]: l i cor
+Sat Oct 10 22:09:19 2026 :: Log Alaric [2350]: get og cor
+Sat Oct 10 22:09:20 2026 :: Log Alaric [2350]: sc
+Sat Oct 10 22:09:21 2026 :: Log Alaric [2350]: wear og
+Sat Oct 10 22:09:22 2026 :: Log Alaric [2350]: sc
+Sat Oct 10 22:09:24 2026 :: Log Alaric [2350]: recal
+Sat Oct 10 22:09:24 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 2350
+Sat Oct 10 22:09:25 2026 :: Log Alaric [4207]: e
+Sat Oct 10 22:09:25 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 22:09:25 2026 :: Log Alaric [4202]: n
+Sat Oct 10 22:09:25 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sat Oct 10 22:09:25 2026 :: Log Alaric [4203]: n
+Sat Oct 10 22:09:25 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sat Oct 10 22:09:26 2026 :: Log Alaric [4210]: sleep
