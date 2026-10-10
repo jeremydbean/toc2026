@@ -75221,3 +75221,59 @@ Sat Oct 10 15:06:59 2026 :: Sock.sinaddr:  52.15.147.27
 Sat Oct 10 15:06:59 2026 :: EOF encountered on read.
 Sat Oct 10 15:07:08 2026 :: Log Alaric [4210]: l
 Sat Oct 10 15:07:11 2026 :: Log Alaric [4210]: gr
+Sat Oct 10 15:07:12 2026 :: Log Alaric [4210]: wake
+Sat Oct 10 15:07:12 2026 :: Log Alaric [4210]: l
+Sat Oct 10 15:07:14 2026 :: Log Alaric [4210]: s
+Sat Oct 10 15:07:14 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sat Oct 10 15:07:14 2026 :: Log Alaric [4203]: s
+Sat Oct 10 15:07:14 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sat Oct 10 15:07:14 2026 :: Log Alaric [4202]: e
+Sat Oct 10 15:07:14 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 10 15:07:14 2026 :: Log Alaric [4201]: e
+Sat Oct 10 15:07:14 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sat Oct 10 15:07:15 2026 :: Log Alaric [2427]: n
+Sat Oct 10 15:07:15 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 10 15:07:15 2026 :: Log Alaric [2404]: n
+Sat Oct 10 15:07:15 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Oct 10 15:07:17 2026 :: Log Alaric [2401]: walkto solace
+Sat Oct 10 15:07:17 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sat Oct 10 15:07:18 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sat Oct 10 15:07:18 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sat Oct 10 15:07:19 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sat Oct 10 15:07:20 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sat Oct 10 15:07:21 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sat Oct 10 15:07:21 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sat Oct 10 15:07:22 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sat Oct 10 15:07:23 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sat Oct 10 15:07:24 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sat Oct 10 15:07:24 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sat Oct 10 15:07:25 2026 :: Log Alaric [6011]: arrived (A small path through the light forest) from 6002
+Sat Oct 10 15:07:26 2026 :: Log Alaric [6008]: arrived (The forest clearing) from 6011
+Sat Oct 10 15:07:27 2026 :: Log Alaric [6007]: arrived (An intersection in the dense forest) from 6008
+Sat Oct 10 15:07:27 2026 :: Log Alaric [6012]: arrived (An intersection in the dense forest) from 6007
+Sat Oct 10 15:07:28 2026 :: Log Alaric [6021]: arrived (A small path in the dense forest) from 6012
+Sat Oct 10 15:07:29 2026 :: Log Alaric [6020]: arrived (A small path in the dense forest) from 6021
+Sat Oct 10 15:07:30 2026 :: Log Alaric [6019]: arrived (A small path in the dense forest) from 6020
+Sat Oct 10 15:07:30 2026 :: Log Alaric [6018]: arrived (An intersection in the light forest) from 6019
+Sat Oct 10 15:07:31 2026 :: Log Alaric [51]: arrived (The top of the cliff.) from 6018
+Sat Oct 10 15:07:32 2026 :: Log Alaric [13001]: arrived (Rock Outcropping) from 51
+Sat Oct 10 15:07:33 2026 :: Log Alaric [13002]: arrived (Small Grove) from 13001
+Sat Oct 10 15:07:33 2026 :: Log Alaric [13003]: arrived (Entrance to the Town of Solace) from 13002
+Sat Oct 10 15:07:34 2026 :: Log Alaric [13201]: arrived (Gateway to Solace) from 13003
+Sat Oct 10 15:07:41 2026 :: Log Alaric [13201]: bs to
+Sat Oct 10 15:08:16 2026 :: Log Alaric [13201]: killed Townguard
+Sat Oct 10 15:08:16 2026 :: Log Alaric [13201]: coin +2 silver
+Sat Oct 10 15:08:16 2026 :: Log Alaric [13201]: coin +3 copper
+Sat Oct 10 15:08:16 2026 :: Log Alaric [13201]: coin +1 gold
+Sat Oct 10 15:08:23 2026 :: Log Alaric [13201]: bs to
+Sat Oct 10 15:08:52 2026 :: Log Alaric [13201]: killed Townguard
+Sat Oct 10 15:08:52 2026 :: Log Alaric [13201]: coin +2 silver
+Sat Oct 10 15:08:52 2026 :: Log Alaric [13201]: coin +3 copper
+Sat Oct 10 15:08:52 2026 :: Log Alaric [13201]: coin +1 gold
+Sat Oct 10 15:08:59 2026 :: Log Alaric [13201]: bs to
+Sat Oct 10 15:09:34 2026 :: Log Alaric [13201]: killed Townguard
+Sat Oct 10 15:09:34 2026 :: Log Alaric [13201]: coin +2 silver
+Sat Oct 10 15:09:34 2026 :: Log Alaric [13201]: coin +3 copper
+Sat Oct 10 15:09:34 2026 :: Log Alaric [13201]: coin +1 gold
+Sat Oct 10 15:12:03 2026 :: Sock.sinaddr:  3.149.57.90
+Sat Oct 10 15:12:04 2026 :: EOF encountered on read.
