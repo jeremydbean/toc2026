@@ -75453,3 +75453,11 @@ Sat Oct 10 15:22:51 2026 :: Log Alaric [29041]: bs wa
 Sat Oct 10 15:25:54 2026 :: Log Alaric [29041]: bs wa
 Sat Oct 10 15:27:19 2026 :: Sock.sinaddr:  3.20.63.178
 Sat Oct 10 15:27:19 2026 :: EOF encountered on read.
+Sat Oct 10 15:28:56 2026 :: Log Alaric [29041]: l
+Sat Oct 10 15:28:57 2026 :: Log Alaric [29041]: w
+Sat Oct 10 15:28:57 2026 :: Log Alaric [29042]: arrived (Dining Room) from 29041
+Sat Oct 10 15:28:59 2026 :: Log Alaric [29042]: kill wa
+Sat Oct 10 15:31:59 2026 :: Log Alaric [29042]: s
+Sat Oct 10 15:31:59 2026 :: Log Alaric [29043]: arrived (Dining Room) from 29042
+Sat Oct 10 15:31:59 2026 :: Log Alaric [29043]: kill wa
+Sat Oct 10 15:32:07 2026 :: Log Alaric [29043]: bs wa
