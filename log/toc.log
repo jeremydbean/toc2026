@@ -71635,3 +71635,81 @@ Sat Oct 10 01:33:56 2026 :: Log Alaric [2427]: n
 Sat Oct 10 01:33:56 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
 Sat Oct 10 01:33:59 2026 :: Log Alaric [2404]: bs ja
 Sat Oct 10 01:33:59 2026 :: Log Alaric [2404]: killed the janitor
+Sat Oct 10 01:34:11 2026 :: Log Alaric [2404]: s
+Sat Oct 10 01:34:11 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 2404
+Sat Oct 10 01:34:12 2026 :: Log Alaric [2427]: s
+Sat Oct 10 01:34:12 2026 :: Log Alaric [2428]: arrived (Main Processional.) from 2427
+Sat Oct 10 01:34:12 2026 :: Log Alaric [2428]: s
+Sat Oct 10 01:34:12 2026 :: Log Alaric [2429]: arrived (Bridge of the Mermaids.) from 2428
+Sat Oct 10 01:34:12 2026 :: Log Alaric [2429]: s
+Sat Oct 10 01:34:12 2026 :: Log Alaric [2430]: arrived (Main Processional.) from 2429
+Sat Oct 10 01:34:12 2026 :: Log Alaric [2430]: gr
+Sat Oct 10 01:34:14 2026 :: Log Alaric [2430]: s
+Sat Oct 10 01:34:14 2026 :: Log Alaric [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Sat Oct 10 01:34:16 2026 :: Log Alaric [2431]: s
+Sat Oct 10 01:34:17 2026 :: Log Alaric [2431]: os
+Sat Oct 10 01:34:17 2026 :: Log Alaric [2431]: s
+Sat Oct 10 01:34:17 2026 :: Log Alaric [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Sat Oct 10 01:34:18 2026 :: Log Alaric [2432]: s
+Sat Oct 10 01:34:18 2026 :: Log Alaric [3505]: arrived (The Trail to Miden'nir) from 2432
+Sat Oct 10 01:34:18 2026 :: Log Alaric [3505]: s
+Sat Oct 10 01:34:18 2026 :: Log Alaric [3507]: arrived (A Burned Cart) from 3505
+Sat Oct 10 01:34:19 2026 :: Log Alaric [3507]: n
+Sat Oct 10 01:34:19 2026 :: Log Alaric [3505]: arrived (The Trail to Miden'nir) from 3507
+Sat Oct 10 01:34:20 2026 :: Log Alaric [3505]: bs go
+Sat Oct 10 01:34:23 2026 :: Log Alaric [3505]: trip
+Sat Oct 10 01:34:30 2026 :: Log Alaric [3505]: trip
+Sat Oct 10 01:34:37 2026 :: Log Alaric [3505]: trip
+Sat Oct 10 01:34:40 2026 :: Sock.sinaddr:  3.133.226.214
+Sat Oct 10 01:34:40 2026 :: EOF encountered on read.
+Sat Oct 10 01:34:42 2026 :: Log Alaric [3505]: trip
+Sat Oct 10 01:34:52 2026 :: Log Alaric [3505]: trip
+Sat Oct 10 01:35:02 2026 :: Log Alaric [3505]: trip
+Sat Oct 10 01:35:16 2026 :: Log Alaric [3505]: killed the goblin
+Sat Oct 10 01:35:21 2026 :: Log Alaric [3505]: skil
+Sat Oct 10 01:35:24 2026 :: Log Alaric [3505]: wo
+Sat Oct 10 01:35:24 2026 :: Log Alaric [3505]: l
+Sat Oct 10 01:35:26 2026 :: Log Alaric [3505]: ex
+Sat Oct 10 01:35:27 2026 :: Log Alaric [3505]: w
+Sat Oct 10 01:35:27 2026 :: Log Alaric [3570]: arrived (The Front of the Inn) from 3505
+Sat Oct 10 01:35:28 2026 :: Log Alaric [3570]: s
+Sat Oct 10 01:35:28 2026 :: Log Alaric [3572]: arrived (South of the Inn) from 3570
+Sat Oct 10 01:35:29 2026 :: Log Alaric [3572]: s
+Sat Oct 10 01:35:29 2026 :: Log Alaric [3575]: arrived (The Ambush Point) from 3572
+Sat Oct 10 01:35:30 2026 :: Log Alaric [3575]: w
+Sat Oct 10 01:35:30 2026 :: Log Alaric [3581]: arrived (On the Trail of the Horsemen) from 3575
+Sat Oct 10 01:35:31 2026 :: Log Alaric [3581]: w
+Sat Oct 10 01:35:31 2026 :: Log Alaric [3582]: arrived (On the Trail of the Horsemen) from 3581
+Sat Oct 10 01:35:33 2026 :: Log Alaric [3582]: bs ho
+Sat Oct 10 01:35:45 2026 :: Log Alaric [3582]: trip
+Sat Oct 10 01:35:49 2026 :: Log Alaric [3582]: trip
+Sat Oct 10 01:35:53 2026 :: Log Alaric [3582]: trip
+Sat Oct 10 01:35:57 2026 :: Log Alaric [3582]: trip
+Sat Oct 10 01:36:25 2026 :: Log Alaric [3582]: who
+Sat Oct 10 01:36:25 2026 :: Log Alaric [3582]: trip
+Sat Oct 10 01:36:35 2026 :: Log Alaric [3582]: trip
+Sat Oct 10 01:36:53 2026 :: Log Alaric [3582]: skil
+Sat Oct 10 01:36:56 2026 :: Log Alaric [3582]: e
+Sat Oct 10 01:36:56 2026 :: Log Alaric [3581]: arrived (On the Trail of the Horsemen) from 3582
+Sat Oct 10 01:36:58 2026 :: Log Alaric [3581]: bs ho
+Sat Oct 10 01:37:06 2026 :: Log Alaric [3581]: kill ho
+Sat Oct 10 01:37:14 2026 :: Log Alaric [3581]: trip
+Sat Oct 10 01:37:22 2026 :: Log Alaric [3581]: killed the dark horseman
+Sat Oct 10 01:37:22 2026 :: Log Alaric [3581]: coin +2 platinum
+Sat Oct 10 01:37:22 2026 :: Log Alaric [3581]: coin +10 silver
+Sat Oct 10 01:37:22 2026 :: Log Alaric [3581]: coin +13 copper
+Sat Oct 10 01:37:22 2026 :: Log Alaric [3581]: coin +5 gold
+Sat Oct 10 01:37:23 2026 :: Log Alaric [3581]: trip
+Sat Oct 10 01:37:25 2026 :: Log Alaric [3581]: l i cor
+Sat Oct 10 01:37:27 2026 :: Log Alaric [3581]: get cl cor
+Sat Oct 10 01:37:28 2026 :: Log Alaric [3581]: wear cl
+Sat Oct 10 01:37:29 2026 :: Log Alaric [3581]: l
+Sat Oct 10 01:37:31 2026 :: Log Alaric [3581]: drop cl
+Sat Oct 10 01:37:31 2026 :: Log Alaric [3581]: w
+Sat Oct 10 01:37:31 2026 :: Log Alaric [3582]: arrived (On the Trail of the Horsemen) from 3581
+Sat Oct 10 01:37:32 2026 :: Log Alaric [3582]: s
+Sat Oct 10 01:37:32 2026 :: Log Alaric [3583]: arrived (On the Trail of the Horsemen) from 3582
+Sat Oct 10 01:37:34 2026 :: Log Alaric [3583]: bs ho
+Sat Oct 10 01:37:50 2026 :: Log Alaric [3583]: trip
+Sat Oct 10 01:37:54 2026 :: Log Alaric [3583]: trip
+Sat Oct 10 01:38:02 2026 :: Log Alaric [3583]: trip
