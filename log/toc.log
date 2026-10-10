@@ -72247,3 +72247,48 @@ Sat Oct 10 02:04:02 2026 :: Log Alaric [2403]: scan
 Sat Oct 10 02:04:04 2026 :: Log Alaric [2403]: e
 Sat Oct 10 02:04:04 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
 Sat Oct 10 02:04:05 2026 :: Log Alaric [2420]: bs ci
+Sat Oct 10 02:04:27 2026 :: Log Alaric [2420]: killed a citizen of Dresden
+Sat Oct 10 02:04:27 2026 :: Log Alaric [2420]: coin +3 silver
+Sat Oct 10 02:04:27 2026 :: Log Alaric [2420]: coin +5 copper
+Sat Oct 10 02:04:27 2026 :: Log Alaric [2420]: coin +2 gold
+Sat Oct 10 02:04:30 2026 :: Log Alaric [2420]: trip
+Sat Oct 10 02:04:31 2026 :: Log Alaric [2420]: scan
+Sat Oct 10 02:04:32 2026 :: Log Alaric [2420]: w
+Sat Oct 10 02:04:32 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2420
+Sat Oct 10 02:04:33 2026 :: Log Alaric [2403]: scan
+Sat Oct 10 02:04:34 2026 :: Log Alaric [2403]: n
+Sat Oct 10 02:04:34 2026 :: Log Alaric [2407]: arrived (Northeastern Oak Tree Square.) from 2403
+Sat Oct 10 02:04:35 2026 :: Log Alaric [2407]: bs ci
+Sat Oct 10 02:04:50 2026 :: Log Alaric [2407]: eq
+Sat Oct 10 02:04:50 2026 :: Log Alaric [2407]: trip
+Sat Oct 10 02:05:05 2026 :: Log Alaric [2407]: trip
+Sat Oct 10 02:05:11 2026 :: Sock.sinaddr:  34.198.201.66
+Sat Oct 10 02:05:12 2026 :: EOF encountered on read.
+Sat Oct 10 02:05:22 2026 :: Log Alaric [2407]: skil
+Sat Oct 10 02:05:33 2026 :: Log Alaric [2407]: killed a citizen of Dresden
+Sat Oct 10 02:05:33 2026 :: Log Alaric [2407]: coin +1 platinum
+Sat Oct 10 02:05:33 2026 :: Log Alaric [2407]: coin +7 silver
+Sat Oct 10 02:05:33 2026 :: Log Alaric [2407]: coin +10 copper
+Sat Oct 10 02:05:33 2026 :: Log Alaric [2407]: coin +4 gold
+Sat Oct 10 02:05:39 2026 :: Log Alaric [2407]: scan
+Sat Oct 10 02:05:41 2026 :: Log Alaric [2407]: w
+Sat Oct 10 02:05:41 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2407
+Sat Oct 10 02:05:42 2026 :: Log Alaric [2402]: bs ci
+Sat Oct 10 02:05:59 2026 :: Log Alaric [2402]: trip
+Sat Oct 10 02:06:00 2026 :: Log Alaric [2402]: killed a citizen of Dresden
+Sat Oct 10 02:06:00 2026 :: Log Alaric [2402]: coin +1 platinum
+Sat Oct 10 02:06:00 2026 :: Log Alaric [2402]: coin +7 silver
+Sat Oct 10 02:06:00 2026 :: Log Alaric [2402]: coin +10 copper
+Sat Oct 10 02:06:00 2026 :: Log Alaric [2402]: coin +4 gold
+Sat Oct 10 02:06:09 2026 :: Log Alaric [2402]: quit
+Sat Oct 10 02:06:09 2026 :: Alaric has quit.
+Sat Oct 10 02:06:09 2026 :: [QUIT] Player rejoined the real world.
+Sat Oct 10 02:06:27 2026 :: Sock.sinaddr:  44.220.185.95
+Sat Oct 10 02:06:27 2026 :: Sock.sinaddr:  44.220.185.95
+Sat Oct 10 02:06:27 2026 :: EOF encountered on read.
+Sat Oct 10 02:06:28 2026 :: Sock.sinaddr:  44.220.185.95
+Sat Oct 10 02:06:28 2026 :: EOF encountered on read.
+Sat Oct 10 02:06:28 2026 :: Sock.sinaddr:  44.220.185.95
+Sat Oct 10 02:06:28 2026 :: Sock.sinaddr:  44.220.185.95
+Sat Oct 10 02:06:28 2026 :: EOF encountered on read.
+Sat Oct 10 02:06:33 2026 :: EOF encountered on read.
