@@ -75605,3 +75605,63 @@ Sat Oct 10 15:52:13 2026 :: Log Alaric [13261]: killed Townguard
 Sat Oct 10 15:52:13 2026 :: Log Alaric [13261]: coin +2 silver
 Sat Oct 10 15:52:13 2026 :: Log Alaric [13261]: coin +3 copper
 Sat Oct 10 15:52:13 2026 :: Log Alaric [13261]: coin +1 gold
+Sat Oct 10 15:52:43 2026 :: Sock.sinaddr:  3.149.57.90
+Sat Oct 10 15:52:43 2026 :: EOF encountered on read.
+Sat Oct 10 15:52:43 2026 :: Log Alaric [13261]: killed Townguard
+Sat Oct 10 15:52:43 2026 :: Log Alaric [13261]: coin +2 silver
+Sat Oct 10 15:52:43 2026 :: Log Alaric [13261]: coin +3 copper
+Sat Oct 10 15:52:43 2026 :: Log Alaric [13261]: coin +1 gold
+Sat Oct 10 15:52:53 2026 :: Log Alaric [13261]: d
+Sat Oct 10 15:52:53 2026 :: Log Alaric [13220]: arrived (Southwest Guardpost and Watchtower.) from 13261
+Sat Oct 10 15:52:53 2026 :: Log Alaric [13220]: n
+Sat Oct 10 15:52:53 2026 :: Log Alaric [13221]: arrived (Harvest Road.) from 13220
+Sat Oct 10 15:52:57 2026 :: Log Alaric [13221]: n
+Sat Oct 10 15:52:57 2026 :: Log Alaric [13222]: arrived (Harvest Road.) from 13221
+Sat Oct 10 15:52:58 2026 :: Log Alaric [13222]: n
+Sat Oct 10 15:52:58 2026 :: Log Alaric [13223]: arrived (Harvest Road.) from 13222
+Sat Oct 10 15:52:59 2026 :: Log Alaric [13223]: n
+Sat Oct 10 15:52:59 2026 :: Log Alaric [13224]: arrived (Corner of West Gullen Way and Harvest Road.) from 13223
+Sat Oct 10 15:53:00 2026 :: Log Alaric [13224]: n
+Sat Oct 10 15:53:02 2026 :: Log Alaric [13224]: e
+Sat Oct 10 15:53:02 2026 :: Log Alaric [13225]: arrived (West Gullen Way) from 13224
+Sat Oct 10 15:53:04 2026 :: Log Alaric [13225]: bs to
+Sat Oct 10 15:53:28 2026 :: Log Alaric [13225]: killed Townguard
+Sat Oct 10 15:53:28 2026 :: Log Alaric [13225]: coin +2 silver
+Sat Oct 10 15:53:28 2026 :: Log Alaric [13225]: coin +3 copper
+Sat Oct 10 15:53:28 2026 :: Log Alaric [13225]: coin +1 gold
+Sat Oct 10 15:53:46 2026 :: Log Alaric [13225]: e
+Sat Oct 10 15:53:46 2026 :: Log Alaric [13226]: arrived (West Gullen Way) from 13225
+Sat Oct 10 15:53:47 2026 :: Log Alaric [13226]: e
+Sat Oct 10 15:53:47 2026 :: Log Alaric [13227]: arrived (West Gullen Way) from 13226
+Sat Oct 10 15:53:49 2026 :: Log Alaric [13227]: bs to
+Sat Oct 10 15:54:07 2026 :: Log Alaric [13227]: killed Townguard
+Sat Oct 10 15:54:07 2026 :: Log Alaric [13227]: coin +2 silver
+Sat Oct 10 15:54:07 2026 :: Log Alaric [13227]: coin +3 copper
+Sat Oct 10 15:54:07 2026 :: Log Alaric [13227]: coin +1 gold
+Sat Oct 10 15:54:16 2026 :: Log Alaric [13227]: scan
+Sat Oct 10 15:54:18 2026 :: Log Alaric [13227]: e
+Sat Oct 10 15:54:18 2026 :: Log Alaric [13205]: arrived (Intersection at Main Road.) from 13227
+Sat Oct 10 15:54:19 2026 :: Log Alaric [13205]: bs to
+Sat Oct 10 15:54:37 2026 :: Log Alaric [13205]: killed Townguard
+Sat Oct 10 15:54:37 2026 :: Log Alaric [13205]: coin +2 silver
+Sat Oct 10 15:54:37 2026 :: Log Alaric [13205]: coin +3 copper
+Sat Oct 10 15:54:37 2026 :: Log Alaric [13205]: coin +1 gold
+Sat Oct 10 15:54:47 2026 :: Log Alaric [13205]: scan
+Sat Oct 10 15:54:49 2026 :: Log Alaric [13205]: e
+Sat Oct 10 15:54:49 2026 :: Log Alaric [13206]: arrived (East Gullen Way) from 13205
+Sat Oct 10 15:54:50 2026 :: Log Alaric [13206]: bs to
+Sat Oct 10 15:55:10 2026 :: Log Alaric [13206]: killed Townguard
+Sat Oct 10 15:55:10 2026 :: Log Alaric [13206]: coin +2 silver
+Sat Oct 10 15:55:10 2026 :: Log Alaric [13206]: coin +3 copper
+Sat Oct 10 15:55:10 2026 :: Log Alaric [13206]: coin +1 gold
+Sat Oct 10 15:55:17 2026 :: Log Alaric [13206]: bs to
+Sat Oct 10 15:55:40 2026 :: Log Alaric [13206]: killed Townguard
+Sat Oct 10 15:55:40 2026 :: Log Alaric [13206]: coin +2 silver
+Sat Oct 10 15:55:40 2026 :: Log Alaric [13206]: coin +3 copper
+Sat Oct 10 15:55:40 2026 :: Log Alaric [13206]: coin +1 gold
+Sat Oct 10 15:55:42 2026 :: Log Alaric [13206]: scan
+Sat Oct 10 15:55:43 2026 :: Log Alaric [13206]: e
+Sat Oct 10 15:55:43 2026 :: Log Alaric [13207]: arrived (East Gullen Way) from 13206
+Sat Oct 10 15:55:50 2026 :: Log Alaric [13207]: gr
+Sat Oct 10 15:55:52 2026 :: Log Alaric [13207]: sleep
+Sat Oct 10 15:55:53 2026 :: Log Alaric [13207]: sc
