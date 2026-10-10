@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791635400
+LogO 1791636036
 Vers 4
 Prom ~
 Ignoring ~
@@ -16,18 +16,18 @@ PsiKnown torment,telekinesis,mindbar,mind leech~
 ChangesSeen 20261008b:3 20261008a:3 20261005d:3 20261005c:3 20261005a:3 20261005b:3 20261004t:3 20261004s:3 20261004a:3 20261004b:3 20261004c:3 20261004d:3 20261004e:3 20261004f:3 20261004g:3 20261004h:3 20261004i:3 20261004j:3 20261004k:3 20261004l:3 20261004m:3 20261004n:3 20261004o:3 20261004p:3 20261004q:3 20261004r:3 20261003a:3 20261003b:3 20261003c:3 20261003d:3 20261003e:3 20261003f:3 20261003g:3 20261003h:3 20261003i:3 20261003j:3 20261003k:3 20261003l:3 20261003m:3 20261002a:3 20261002b:3 20261002c:3 20261001a:3 20261001b:3 20261001c:3 20261001d:3 20261001e:3 20261001f:3 20261001g:3 20261001h:3 20261001i:3 20261001j:3 20261001k:3 20261001l:3 20261001m:3 20261001n:3 20261001o:3 20261001p:3 20261001q:3 20261001r:3 20261001s:3 20261001t:3 20261001u:3 20261001v:3 20261001w:3 20261001x:3 20261001y:3 20261001z:3 20260925a:3 20260925b:3 20260925c:3 20260925d:3 20260925e:3 20260925f:3 20260925g:3 20260925h:3 20260925i:3 20260925j:3 20260925k:3 20260925l:3 20260925m:3 20260925n:3 20260925o:3 20260925p:3 20260925q:3 20260925r:3 20260925s:3 20260925t:3 20260925u:3 20260925v:3 20260925w:3 20260925x:3 20260925y:3 20260925z:3 20260924a:3 20260924b:3 20260924c:3 20260924d:3 20260924e:3~
 Cast none
 Levl 9
-Plyd 479139
+Plyd 479775
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
 StashMax 150
 Scro 22
-Room 2103
-HMV  333 493 567 567 434 448
-NewGold 50
+Room 29012
+HMV  334 493 567 567 332 473
+NewGold 33
 NewPlat 145
-NewCopp 73
-NewSilv 8
+NewCopp 83
+NewSilv 15
 BankCP 2561882160
 IntTime 1791593884
 IntTotal 34882160
@@ -36,7 +36,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 1873
+AchKills 1881
 AchQuests 253
 AchDeaths 1
 AchExplore 5
@@ -124,7 +124,7 @@ QuestPnts 5094
 QuestStrk 10
 CasinoWon  51
 CasinoLost 304
-Exp  21716
+Exp  22450
 Act  4195532
 AfBy 512
 Comm 24576
@@ -158,9 +158,9 @@ Save  1
 Alig  1000
 Hit   3
 Dam   4
-ACs 49 42 38 76
+ACs 41 34 27 76
 Attr 20 13 13 18 19
-AMod 0 10 10 0 11
+AMod 1 10 10 0 11
 Pass Al3w9zuAlwpyY~
 Titl  the Sharper~
 Pnts 5080
@@ -188,7 +188,7 @@ Sk 1 'mind leech'
 Sk 1 'telekinesis'
 Sk 1 'torment'
 Sk 7 'axe'
-Sk 84 'dagger'
+Sk 85 'dagger'
 Sk 5 'flail'
 Sk 10 'mace'
 Sk 3 'polearm'
@@ -212,7 +212,7 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
-AffD 'armor'  17  46 -20  17          0          0
+AffD 'armor'  16  36 -20  17          0          0
 End
 
 #O
@@ -239,7 +239,7 @@ End
 Vnum 51
 Nest 0
 Wear -1
-Time 440
+Time 430
 Cost 0
 Cond 100
 Repd 0
@@ -250,7 +250,7 @@ Vnum 3703
 Nest 0
 Wear 5
 Cost 0
-Cond 97
+Cond 95
 Repd 0
 End
 
@@ -268,7 +268,7 @@ Vnum 3706
 Nest 0
 Wear 6
 Cost 0
-Cond 96
+Cond 93
 Repd 0
 End
 
@@ -278,15 +278,6 @@ Nest 0
 Wear 12
 Cost 0
 Cond 98
-Repd 0
-End
-
-#O
-Vnum 3707
-Nest 0
-Wear 7
-Cost 0
-Cond 96
 Repd 0
 End
 
@@ -317,15 +308,6 @@ Nest 0
 Wear 9
 Cost 0
 Cond 96
-Repd 0
-End
-
-#O
-Vnum 3710
-Nest 0
-Wear 10
-Cost 0
-Cond 98
 Repd 0
 End
 
@@ -399,6 +381,26 @@ Cost 4200000
 Cond 90
 Repd 0
 Val  2 4 3 11 0
+End
+
+#O
+Vnum 29006
+Nest 0
+Wear 10
+Lev  3
+Cost 120
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29007
+Nest 0
+Wear 7
+Lev  3
+Cost 120
+Cond 100
+Repd 0
 End
 
 #STASH
