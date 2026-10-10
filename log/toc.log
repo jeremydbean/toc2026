@@ -72673,3 +72673,343 @@ Sat Oct 10 12:15:32 2026 :: 208.126.22.104 input spamming!
 Sat Oct 10 12:15:32 2026 :: Log Alaric [2426]: quit
 Sat Oct 10 12:15:32 2026 :: Alaric has quit.
 Sat Oct 10 12:15:32 2026 :: [QUIT] Player rejoined the real world.
+Sat Oct 10 12:15:38 2026 :: Sock.sinaddr:  208.126.22.104
+Sat Oct 10 12:15:40 2026 :: Loading Alaric's playerfile
+Sat Oct 10 12:15:42 2026 :: Alaric@208.126.22.104 has connected.
+Sat Oct 10 12:15:44 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 0
+Sat Oct 10 12:15:51 2026 :: Log Alaric [2426]: r e 17
+Sat Oct 10 12:15:53 2026 :: Log Alaric [2426]: wake
+Sat Oct 10 12:15:53 2026 :: Log Alaric [2426]: oe
+Sat Oct 10 12:15:55 2026 :: Log Alaric [2426]: r e 19
+Sat Oct 10 12:15:55 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Oct 10 12:15:55 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sat Oct 10 12:15:55 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sat Oct 10 12:15:55 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Sat Oct 10 12:15:55 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Sat Oct 10 12:15:55 2026 :: Log Alaric [3527]: arrived (The Checkpoint) from 3526
+Sat Oct 10 12:15:55 2026 :: Log Alaric [3528]: arrived (Along the Eastern Road) from 3527
+Sat Oct 10 12:15:55 2026 :: Log Alaric [3529]: arrived (Along the Eastern Road) from 3528
+Sat Oct 10 12:15:55 2026 :: Log Alaric [3530]: arrived (Near the Sands of Sorrow) from 3529
+Sat Oct 10 12:15:55 2026 :: Log Alaric [3531]: arrived (Near the Sands of Sorrow) from 3530
+Sat Oct 10 12:15:55 2026 :: Log Alaric [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Sat Oct 10 12:15:55 2026 :: Log Alaric [42]: arrived (On the Outskirts of New Thalos) from 3532
+Sat Oct 10 12:15:55 2026 :: Log Alaric [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Sat Oct 10 12:15:55 2026 :: Log Alaric [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sat Oct 10 12:15:55 2026 :: Log Alaric [9524]: arrived (West Main Street) from 9523
+Sat Oct 10 12:15:55 2026 :: Log Alaric [9525]: arrived (West Main Street) from 9524
+Sat Oct 10 12:15:55 2026 :: Log Alaric [9526]: arrived (West Main Street) from 9525
+Sat Oct 10 12:15:55 2026 :: Log Alaric [9509]: arrived (The Western Market Square) from 9526
+Sat Oct 10 12:15:55 2026 :: Log Alaric [9506]: arrived (The Center of Market Square) from 9509
+Sat Oct 10 12:15:56 2026 :: Log Alaric [9506]: track lamia
+Sat Oct 10 12:15:57 2026 :: Log Alaric [9506]: track lamia
+Sat Oct 10 12:15:58 2026 :: Log Alaric [9506]: track lamia
+Sat Oct 10 12:15:58 2026 :: Log Alaric [9506]: track lamia
+Sat Oct 10 12:15:58 2026 :: Log Alaric [9506]: track lamia
+Sat Oct 10 12:15:58 2026 :: Log Alaric [9506]: track lamia
+Sat Oct 10 12:15:59 2026 :: Log Alaric [9506]: track lamia
+Sat Oct 10 12:15:59 2026 :: Log Alaric [9506]: track lamia
+Sat Oct 10 12:15:59 2026 :: Log Alaric [9506]: track lamia
+Sat Oct 10 12:15:59 2026 :: Log Alaric [9506]: track lamia
+Sat Oct 10 12:16:02 2026 :: Log Alaric [9506]: recal
+Sat Oct 10 12:16:02 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 9506
+Sat Oct 10 12:16:02 2026 :: Log Alaric [4207]: w
+Sat Oct 10 12:16:02 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sat Oct 10 12:16:06 2026 :: Log Alaric [4208]: l i cor
+Sat Oct 10 12:16:08 2026 :: Log Alaric [4208]: sac cor
+Sat Oct 10 12:16:09 2026 :: Log Alaric [4208]: gr
+Sat Oct 10 12:16:12 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:16:12 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:16:16 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:16:16 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:16:19 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:16:19 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:16:22 2026 :: Log Alaric [4208]: r e 4
+Sat Oct 10 12:16:22 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sat Oct 10 12:16:22 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 12:16:22 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 10 12:16:22 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sat Oct 10 12:16:22 2026 :: Log Alaric [2427]: n
+Sat Oct 10 12:16:22 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 10 12:16:22 2026 :: Log Alaric [2404]: n
+Sat Oct 10 12:16:22 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Oct 10 12:16:26 2026 :: Log Alaric [2401]: walkto jenk
+Sat Oct 10 12:16:42 2026 :: Log Alaric [2401]: r w 7
+Sat Oct 10 12:16:42 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sat Oct 10 12:16:42 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sat Oct 10 12:16:42 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sat Oct 10 12:16:42 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sat Oct 10 12:16:42 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sat Oct 10 12:16:42 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sat Oct 10 12:16:42 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sat Oct 10 12:16:42 2026 :: Log Alaric [2438]: open west
+Sat Oct 10 12:16:42 2026 :: Log Alaric [2438]: w
+Sat Oct 10 12:16:42 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sat Oct 10 12:16:43 2026 :: Log Alaric [2439]: r n 3
+Sat Oct 10 12:16:43 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Sat Oct 10 12:16:43 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Sat Oct 10 12:16:43 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Sat Oct 10 12:16:43 2026 :: Log Alaric [3902]: e
+Sat Oct 10 12:16:43 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Sat Oct 10 12:16:43 2026 :: Log Alaric [3903]: e
+Sat Oct 10 12:16:43 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Sat Oct 10 12:16:43 2026 :: Log Alaric [3904]: r n 5
+Sat Oct 10 12:16:43 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Sat Oct 10 12:16:43 2026 :: Log Alaric [315]: arrived (Gallow hill) from 300
+Sat Oct 10 12:16:43 2026 :: Log Alaric [320]: arrived (Grassy plains) from 315
+Sat Oct 10 12:16:43 2026 :: Log Alaric [322]: arrived (Grassy foothills) from 320
+Sat Oct 10 12:16:43 2026 :: Log Alaric [324]: arrived (The steep foothills) from 322
+Sat Oct 10 12:16:44 2026 :: Log Alaric [324]: w
+Sat Oct 10 12:16:44 2026 :: Log Alaric [323]: arrived (The steep foothills) from 324
+Sat Oct 10 12:16:44 2026 :: Log Alaric [323]: w
+Sat Oct 10 12:16:44 2026 :: Log Alaric [24]: arrived (Crossing the Foothills) from 323
+Sat Oct 10 12:16:44 2026 :: Log Alaric [24]: r n
+Sat Oct 10 12:16:44 2026 :: Log Alaric [29]: arrived (Steepened Path) from 24
+Sat Oct 10 12:16:44 2026 :: Log Alaric [8846]: arrived (Mountain Pass) from 29
+Sat Oct 10 12:16:44 2026 :: Log Alaric [8845]: arrived (Mountain Pass) from 8846
+Sat Oct 10 12:16:44 2026 :: Log Alaric [8845]: wa
+Sat Oct 10 12:16:45 2026 :: Log Alaric [8845]: e
+Sat Oct 10 12:16:45 2026 :: Log Alaric [8844]: arrived (Mountain Pass) from 8845
+Sat Oct 10 12:16:45 2026 :: Log Alaric [8844]: s
+Sat Oct 10 12:16:45 2026 :: Log Alaric [8843]: arrived (Dirt Road) from 8844
+Sat Oct 10 12:16:45 2026 :: Log Alaric [8843]: r e 7
+Sat Oct 10 12:16:45 2026 :: Log Alaric [8842]: arrived (Dirt Road) from 8843
+Sat Oct 10 12:16:45 2026 :: Log Alaric [8841]: arrived (Dirt Road) from 8842
+Sat Oct 10 12:16:45 2026 :: Log Alaric [8834]: arrived (View of a City) from 8841
+Sat Oct 10 12:16:45 2026 :: Log Alaric [8835]: arrived (Near the City) from 8834
+Sat Oct 10 12:16:45 2026 :: Log Alaric [8777]: arrived (Moon Gate) from 8835
+Sat Oct 10 12:16:45 2026 :: Log Alaric [8732]: arrived (Intersection) from 8777
+Sat Oct 10 12:16:45 2026 :: Log Alaric [8731]: arrived (Moon Gate Road, West) from 8732
+Sat Oct 10 12:16:45 2026 :: Log Alaric [8731]: s
+Sat Oct 10 12:16:45 2026 :: Log Alaric [8739]: arrived (Jenk's Place) from 8731
+Sat Oct 10 12:16:47 2026 :: Log Alaric [8739]: buy quick
+Sat Oct 10 12:16:47 2026 :: Log Alaric [8739]: sc
+Sat Oct 10 12:16:52 2026 :: Log Alaric [8739]: list
+Sat Oct 10 12:16:57 2026 :: Log Alaric [8739]: recal
+Sat Oct 10 12:16:57 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 8739
+Sat Oct 10 12:16:57 2026 :: Log Alaric [4207]: w
+Sat Oct 10 12:16:57 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sat Oct 10 12:16:59 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:16:59 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:17:03 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:17:03 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:17:10 2026 :: Log Alaric [4208]: (refused) #3 track lamia
+Sat Oct 10 12:17:33 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:33 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:33 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:34 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:34 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:34 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:34 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:35 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:35 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:35 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:35 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:17:35 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:17:55 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:56 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:56 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:56 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:56 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:57 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:57 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:57 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:57 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:58 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:58 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:58 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:58 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:59 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:59 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:59 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:17:59 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:17:59 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:18:08 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:08 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:09 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:09 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:09 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:09 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:10 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:10 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:10 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:10 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:11 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:11 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:11 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:11 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:12 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:12 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:12 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:18:12 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:18:23 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:23 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:24 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:24 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:24 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:24 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:25 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:25 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:25 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:25 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:26 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:26 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:26 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:26 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:27 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:27 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:27 2026 :: Log Alaric [4208]: gr
+Sat Oct 10 12:18:28 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:28 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:29 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:29 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:29 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:29 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:30 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:30 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:30 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:30 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:31 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:31 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:31 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:31 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:32 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:32 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:32 2026 :: Log Alaric [4208]: gr
+Sat Oct 10 12:18:33 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:33 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:33 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:34 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:34 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:34 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:34 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:35 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:35 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:35 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:35 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:36 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:36 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:36 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:36 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:37 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:37 2026 :: Log Alaric [4208]: gr
+Sat Oct 10 12:18:38 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:38 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:38 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:38 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:39 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:39 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:39 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:39 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:40 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:40 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:40 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:40 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:41 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:41 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:41 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:41 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:42 2026 :: Log Alaric [4208]: gr
+Sat Oct 10 12:18:42 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:43 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:43 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:43 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:43 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:44 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:44 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:44 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:44 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:45 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:45 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:45 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:45 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:46 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:46 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:46 2026 :: Log Alaric [4208]: track lamia
+Sat Oct 10 12:18:46 2026 :: Log Alaric [4208]: gr
+Sat Oct 10 12:18:47 2026 :: Log Alaric [4208]: spel
+Sat Oct 10 12:18:48 2026 :: Log Alaric [4208]: skil
+Sat Oct 10 12:19:03 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:19:03 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:19:07 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:19:07 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:19:11 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:19:11 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:19:16 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:19:16 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:19:19 2026 :: Log Alaric [4208]: r e 4
+Sat Oct 10 12:19:19 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sat Oct 10 12:19:19 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 12:19:19 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 10 12:19:19 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sat Oct 10 12:19:19 2026 :: Log Alaric [2427]: n
+Sat Oct 10 12:19:19 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 10 12:19:19 2026 :: Log Alaric [2404]: n
+Sat Oct 10 12:19:19 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Oct 10 12:19:19 2026 :: Log Alaric [2401]: r e 8
+Sat Oct 10 12:19:19 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Oct 10 12:19:19 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Oct 10 12:19:19 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Oct 10 12:19:19 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sat Oct 10 12:19:19 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sat Oct 10 12:19:19 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sat Oct 10 12:19:19 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Oct 10 12:19:19 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Oct 10 12:19:20 2026 :: Log Alaric [2426]: oe
+Sat Oct 10 12:19:24 2026 :: Log Alaric [2426]: r e 19
+Sat Oct 10 12:19:24 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Oct 10 12:19:24 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sat Oct 10 12:19:24 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sat Oct 10 12:19:24 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Sat Oct 10 12:19:24 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Sat Oct 10 12:19:24 2026 :: Log Alaric [3527]: arrived (The Checkpoint) from 3526
+Sat Oct 10 12:19:24 2026 :: Log Alaric [3528]: arrived (Along the Eastern Road) from 3527
+Sat Oct 10 12:19:24 2026 :: Log Alaric [3529]: arrived (Along the Eastern Road) from 3528
+Sat Oct 10 12:19:24 2026 :: Log Alaric [3530]: arrived (Near the Sands of Sorrow) from 3529
+Sat Oct 10 12:19:24 2026 :: Log Alaric [3531]: arrived (Near the Sands of Sorrow) from 3530
+Sat Oct 10 12:19:24 2026 :: Log Alaric [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Sat Oct 10 12:19:24 2026 :: Log Alaric [42]: arrived (On the Outskirts of New Thalos) from 3532
+Sat Oct 10 12:19:24 2026 :: Log Alaric [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Sat Oct 10 12:19:24 2026 :: Log Alaric [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sat Oct 10 12:19:24 2026 :: Log Alaric [9524]: arrived (West Main Street) from 9523
+Sat Oct 10 12:19:24 2026 :: Log Alaric [9525]: arrived (West Main Street) from 9524
+Sat Oct 10 12:19:24 2026 :: Log Alaric [9526]: arrived (West Main Street) from 9525
+Sat Oct 10 12:19:24 2026 :: Log Alaric [9509]: arrived (The Western Market Square) from 9526
+Sat Oct 10 12:19:24 2026 :: Log Alaric [9506]: arrived (The Center of Market Square) from 9509
+Sat Oct 10 12:19:25 2026 :: Log Alaric [9506]: s
+Sat Oct 10 12:19:25 2026 :: Log Alaric [9505]: arrived (The Southern Market Square) from 9506
+Sat Oct 10 12:19:25 2026 :: Log Alaric [9505]: s
+Sat Oct 10 12:19:25 2026 :: Log Alaric [9504]: arrived (The Medina) from 9505
+Sat Oct 10 12:19:25 2026 :: Log Alaric [9504]: s
+Sat Oct 10 12:19:25 2026 :: Log Alaric [9503]: arrived (The Medina) from 9504
+Sat Oct 10 12:19:26 2026 :: Log Alaric [9503]: s
+Sat Oct 10 12:19:26 2026 :: Log Alaric [9510]: arrived (The Common Square) from 9503
+Sat Oct 10 12:19:26 2026 :: Log Alaric [9510]: s
+Sat Oct 10 12:19:26 2026 :: Log Alaric [9512]: arrived (The Southern Bridge) from 9510
+Sat Oct 10 12:19:26 2026 :: Log Alaric [9512]: s
+Sat Oct 10 12:19:26 2026 :: Log Alaric [9513]: arrived (Inside the South Gate of New Thalos) from 9512
+Sat Oct 10 12:19:31 2026 :: Sock.sinaddr:  5.161.177.47
+Sat Oct 10 12:19:31 2026 :: Log Alaric [9513]: track lamie
+Sat Oct 10 12:19:31 2026 :: EOF encountered on read.
+Sat Oct 10 12:19:33 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:34 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:35 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:36 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:36 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:36 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:39 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:39 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:39 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:40 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:40 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:40 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:40 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:41 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:41 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:41 2026 :: Log Alaric [9513]: track lamia
+Sat Oct 10 12:19:51 2026 :: Log Alaric [9513]: where lamia
+Sat Oct 10 12:19:55 2026 :: Log Alaric [9513]: s
+Sat Oct 10 12:19:56 2026 :: Log Alaric [9513]: os
+Sat Oct 10 12:19:56 2026 :: Log Alaric [9513]: s
+Sat Oct 10 12:19:56 2026 :: Log Alaric [9511]: arrived (Outside the Southern Gate of New Thalos) from 9513
+Sat Oct 10 12:20:00 2026 :: Log Alaric [9511]: look lam
+Sat Oct 10 12:20:12 2026 :: Log Alaric [9511]: look lamia
