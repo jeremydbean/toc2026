@@ -75023,3 +75023,58 @@ Sat Oct 10 14:57:01 2026 :: Log Alaric [8739]: buy quick
 Sat Oct 10 14:57:01 2026 :: Log Alaric [8739]: copper -337500
 Sat Oct 10 14:57:01 2026 :: Log Alaric [8739]: bought a quick sheathe (vnum 8713) for 337500 copper from Jenk
 Sat Oct 10 14:57:02 2026 :: Log Alaric [8739]: sc
+Sat Oct 10 14:57:04 2026 :: Log Alaric [8739]: wear quick
+Sat Oct 10 14:57:05 2026 :: Log Alaric [8739]: sc
+Sat Oct 10 14:57:07 2026 :: Log Alaric [8739]: drop sub
+Sat Oct 10 14:57:10 2026 :: Log Alaric [8739]: recal
+Sat Oct 10 14:57:10 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 8739
+Sat Oct 10 14:57:18 2026 :: Log Alaric [4207]: eq
+Sat Oct 10 14:57:25 2026 :: Log Alaric [4207]: l
+Sat Oct 10 14:57:27 2026 :: Log Alaric [4207]: e
+Sat Oct 10 14:57:27 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 14:57:28 2026 :: Log Alaric [4202]: n
+Sat Oct 10 14:57:28 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sat Oct 10 14:57:28 2026 :: Log Alaric [4203]: n
+Sat Oct 10 14:57:28 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sat Oct 10 14:57:29 2026 :: Log Alaric [4210]: sleep
+Sat Oct 10 15:01:18 2026 :: Log Alaric [4210]: s
+Sat Oct 10 15:01:18 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sat Oct 10 15:01:18 2026 :: Log Alaric [4203]: s
+Sat Oct 10 15:01:18 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sat Oct 10 15:01:19 2026 :: Log Alaric [4202]: e
+Sat Oct 10 15:01:19 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 10 15:01:19 2026 :: Log Alaric [4201]: e
+Sat Oct 10 15:01:19 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sat Oct 10 15:01:20 2026 :: Log Alaric [2427]: n
+Sat Oct 10 15:01:20 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 10 15:01:20 2026 :: Log Alaric [2404]: n
+Sat Oct 10 15:01:20 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Oct 10 15:01:23 2026 :: Log Alaric [2401]: gain
+Sat Oct 10 15:01:28 2026 :: Log Alaric [2401]: walkto solace
+Sat Oct 10 15:01:28 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sat Oct 10 15:01:29 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sat Oct 10 15:01:30 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sat Oct 10 15:01:30 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sat Oct 10 15:01:31 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sat Oct 10 15:01:32 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sat Oct 10 15:01:33 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sat Oct 10 15:01:33 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sat Oct 10 15:01:34 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sat Oct 10 15:01:35 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sat Oct 10 15:01:36 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sat Oct 10 15:01:36 2026 :: Log Alaric [6011]: arrived (A small path through the light forest) from 6002
+Sat Oct 10 15:01:37 2026 :: Log Alaric [6008]: arrived (The forest clearing) from 6011
+Sat Oct 10 15:01:38 2026 :: Log Alaric [6007]: arrived (An intersection in the dense forest) from 6008
+Sat Oct 10 15:01:39 2026 :: Log Alaric [6012]: arrived (An intersection in the dense forest) from 6007
+Sat Oct 10 15:01:39 2026 :: Log Alaric [6021]: arrived (A small path in the dense forest) from 6012
+Sat Oct 10 15:01:40 2026 :: Log Alaric [6020]: arrived (A small path in the dense forest) from 6021
+Sat Oct 10 15:01:41 2026 :: Log Alaric [6019]: arrived (A small path in the dense forest) from 6020
+Sat Oct 10 15:01:42 2026 :: Log Alaric [6018]: arrived (An intersection in the light forest) from 6019
+Sat Oct 10 15:01:42 2026 :: Log Alaric [51]: arrived (The top of the cliff.) from 6018
+Sat Oct 10 15:01:43 2026 :: Log Alaric [13001]: arrived (Rock Outcropping) from 51
+Sat Oct 10 15:01:44 2026 :: Log Alaric [13002]: arrived (Small Grove) from 13001
+Sat Oct 10 15:01:45 2026 :: Log Alaric [13003]: arrived (Entrance to the Town of Solace) from 13002
+Sat Oct 10 15:01:45 2026 :: Log Alaric [13201]: arrived (Gateway to Solace) from 13003
+Sat Oct 10 15:01:49 2026 :: Log Alaric [13201]: bs to
+Sat Oct 10 15:01:54 2026 :: Sock.sinaddr:  54.167.223.174
+Sat Oct 10 15:01:54 2026 :: EOF encountered on read.
