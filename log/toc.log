@@ -75277,3 +75277,17 @@ Sat Oct 10 15:09:34 2026 :: Log Alaric [13201]: coin +3 copper
 Sat Oct 10 15:09:34 2026 :: Log Alaric [13201]: coin +1 gold
 Sat Oct 10 15:12:03 2026 :: Sock.sinaddr:  3.149.57.90
 Sat Oct 10 15:12:04 2026 :: EOF encountered on read.
+Sat Oct 10 15:16:08 2026 :: Log Alaric [13201]: l
+Sat Oct 10 15:16:08 2026 :: Log Alaric [13201]: af
+Sat Oct 10 15:16:12 2026 :: Log Alaric [13201]: scan
+Sat Oct 10 15:16:13 2026 :: Log Alaric [13201]: w
+Sat Oct 10 15:16:13 2026 :: Log Alaric [13217]: arrived (Small Alleyway.) from 13201
+Sat Oct 10 15:16:13 2026 :: Log Alaric [13217]: w
+Sat Oct 10 15:16:13 2026 :: Log Alaric [13218]: arrived (Small Alleyway.) from 13217
+Sat Oct 10 15:16:15 2026 :: Log Alaric [13218]: bs to
+Sat Oct 10 15:16:53 2026 :: Log Alaric [13218]: killed Townguard
+Sat Oct 10 15:16:53 2026 :: Log Alaric [13218]: coin +2 silver
+Sat Oct 10 15:16:53 2026 :: Log Alaric [13218]: coin +3 copper
+Sat Oct 10 15:16:53 2026 :: Log Alaric [13218]: coin +1 gold
+Sat Oct 10 15:17:08 2026 :: Sock.sinaddr:  52.87.72.16
+Sat Oct 10 15:17:08 2026 :: EOF encountered on read.
