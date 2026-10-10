@@ -75798,3 +75798,242 @@ Sat Oct 10 16:20:07 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 
 Sat Oct 10 16:20:08 2026 :: Log Alaric [4203]: n
 Sat Oct 10 16:20:08 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
 Sat Oct 10 16:20:08 2026 :: Log Alaric [4210]: sleep
+Sat Oct 10 16:23:34 2026 :: Sock.sinaddr:  5.161.113.195
+Sat Oct 10 16:23:34 2026 :: EOF encountered on read.
+Sat Oct 10 16:25:09 2026 :: Log Alaric [4210]: gr
+Sat Oct 10 16:25:10 2026 :: Log Alaric [4210]: wake
+Sat Oct 10 16:25:10 2026 :: Log Alaric [4210]: l
+Sat Oct 10 16:25:11 2026 :: Log Alaric [4210]: s
+Sat Oct 10 16:25:11 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sat Oct 10 16:25:12 2026 :: Log Alaric [4203]: s
+Sat Oct 10 16:25:12 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sat Oct 10 16:25:12 2026 :: Log Alaric [4202]: e
+Sat Oct 10 16:25:12 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 10 16:25:12 2026 :: Log Alaric [4201]: e
+Sat Oct 10 16:25:12 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sat Oct 10 16:25:12 2026 :: Log Alaric [2427]: n
+Sat Oct 10 16:25:12 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 10 16:25:13 2026 :: Log Alaric [2404]: n
+Sat Oct 10 16:25:13 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Oct 10 16:25:13 2026 :: Log Alaric [2401]: r e 8
+Sat Oct 10 16:25:13 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Oct 10 16:25:13 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Oct 10 16:25:13 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Oct 10 16:25:13 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sat Oct 10 16:25:13 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sat Oct 10 16:25:13 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sat Oct 10 16:25:13 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Oct 10 16:25:13 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Oct 10 16:25:14 2026 :: Log Alaric [2426]: oe
+Sat Oct 10 16:25:14 2026 :: Log Alaric [2426]: e
+Sat Oct 10 16:25:14 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Oct 10 16:25:14 2026 :: Log Alaric [2440]: e
+Sat Oct 10 16:25:14 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sat Oct 10 16:25:15 2026 :: Log Alaric [3503]: e
+Sat Oct 10 16:25:15 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sat Oct 10 16:25:15 2026 :: Log Alaric [3502]: n
+Sat Oct 10 16:25:15 2026 :: Log Alaric [3501]: arrived (The Lane) from 3502
+Sat Oct 10 16:25:15 2026 :: Log Alaric [3501]: n
+Sat Oct 10 16:25:15 2026 :: Log Alaric [3500]: arrived (The Plains) from 3501
+Sat Oct 10 16:25:15 2026 :: Log Alaric [3500]: nw
+Sat Oct 10 16:25:15 2026 :: Log Alaric [21]: arrived (A twisting path) from 3500
+Sat Oct 10 16:25:16 2026 :: Log Alaric [21]: w
+Sat Oct 10 16:25:16 2026 :: Log Alaric [22]: arrived (Before the great circle) from 21
+Sat Oct 10 16:25:16 2026 :: Log Alaric [22]: s
+Sat Oct 10 16:25:16 2026 :: Log Alaric [23]: arrived (The Great Portal) from 22
+Sat Oct 10 16:25:17 2026 :: Log Alaric [23]: en po
+Sat Oct 10 16:25:17 2026 :: Log Alaric [10000]: arrived (Before the crystal bridge.) from 23
+Sat Oct 10 16:25:17 2026 :: Log Alaric [10000]: n
+Sat Oct 10 16:25:17 2026 :: Log Alaric [10001]: arrived (A crystal bridge.) from 10000
+Sat Oct 10 16:25:18 2026 :: Log Alaric [10001]: n
+Sat Oct 10 16:25:18 2026 :: Log Alaric [10002]: arrived (Royal Island.) from 10001
+Sat Oct 10 16:25:18 2026 :: Log Alaric [10002]: on
+Sat Oct 10 16:25:19 2026 :: Log Alaric [10002]: n
+Sat Oct 10 16:25:19 2026 :: Log Alaric [10003]: arrived (The Glitter Palace's Grand Gate.) from 10002
+Sat Oct 10 16:25:19 2026 :: Log Alaric [10003]: on
+Sat Oct 10 16:25:20 2026 :: Log Alaric [10003]: n
+Sat Oct 10 16:25:20 2026 :: Log Alaric [10004]: arrived (A large hall.) from 10003
+Sat Oct 10 16:25:21 2026 :: Log Alaric [10004]: n
+Sat Oct 10 16:25:21 2026 :: Log Alaric [10006]: arrived (A large hall.) from 10004
+Sat Oct 10 16:25:22 2026 :: Log Alaric [10006]: n
+Sat Oct 10 16:25:22 2026 :: Log Alaric [10007]: arrived (A large hall.) from 10006
+Sat Oct 10 16:25:22 2026 :: Log Alaric [10007]: n
+Sat Oct 10 16:25:22 2026 :: Log Alaric [10008]: arrived (A high domed intersection.) from 10007
+Sat Oct 10 16:25:24 2026 :: Log Alaric [10008]: w
+Sat Oct 10 16:25:24 2026 :: Log Alaric [10009]: arrived (The western wing.) from 10008
+Sat Oct 10 16:25:25 2026 :: Log Alaric [10009]: w
+Sat Oct 10 16:25:25 2026 :: Log Alaric [10010]: arrived (The western wing.) from 10009
+Sat Oct 10 16:25:27 2026 :: Log Alaric [10010]: on
+Sat Oct 10 16:25:27 2026 :: Log Alaric [10010]: ex
+Sat Oct 10 16:25:28 2026 :: Log Alaric [10010]: scan
+Sat Oct 10 16:25:29 2026 :: Log Alaric [10010]: w
+Sat Oct 10 16:25:29 2026 :: Log Alaric [10012]: arrived (The end of the western wing.) from 10010
+Sat Oct 10 16:25:31 2026 :: Log Alaric [10012]: os
+Sat Oct 10 16:25:31 2026 :: Log Alaric [10012]: s
+Sat Oct 10 16:25:31 2026 :: Log Alaric [10013]: arrived (Secretaries office.) from 10012
+Sat Oct 10 16:25:32 2026 :: Log Alaric [10013]: os
+Sat Oct 10 16:25:33 2026 :: Log Alaric [10013]: s
+Sat Oct 10 16:25:33 2026 :: Log Alaric [10014]: arrived (C.O.'s office.) from 10013
+Sat Oct 10 16:25:35 2026 :: Log Alaric [10014]: look com
+Sat Oct 10 16:25:38 2026 :: Log Alaric [10014]: look re
+Sat Oct 10 16:25:39 2026 :: Log Alaric [10014]: n
+Sat Oct 10 16:25:39 2026 :: Log Alaric [10013]: arrived (Secretaries office.) from 10014
+Sat Oct 10 16:25:40 2026 :: Log Alaric [10013]: e
+Sat Oct 10 16:25:41 2026 :: Log Alaric [10013]: e
+Sat Oct 10 16:25:42 2026 :: Log Alaric [10013]: n
+Sat Oct 10 16:25:42 2026 :: Log Alaric [10012]: arrived (The end of the western wing.) from 10013
+Sat Oct 10 16:25:42 2026 :: Log Alaric [10012]: e
+Sat Oct 10 16:25:42 2026 :: Log Alaric [10010]: arrived (The western wing.) from 10012
+Sat Oct 10 16:25:42 2026 :: Log Alaric [10010]: e
+Sat Oct 10 16:25:42 2026 :: Log Alaric [10009]: arrived (The western wing.) from 10010
+Sat Oct 10 16:25:43 2026 :: Log Alaric [10009]: e
+Sat Oct 10 16:25:43 2026 :: Log Alaric [10008]: arrived (A high domed intersection.) from 10009
+Sat Oct 10 16:25:44 2026 :: Log Alaric [10008]: n
+Sat Oct 10 16:25:44 2026 :: Log Alaric [10025]: arrived (The northern wing.) from 10008
+Sat Oct 10 16:25:44 2026 :: Log Alaric [10025]: n
+Sat Oct 10 16:25:44 2026 :: Log Alaric [10026]: arrived (The northern wing.) from 10025
+Sat Oct 10 16:25:46 2026 :: Log Alaric [10026]: n
+Sat Oct 10 16:25:46 2026 :: Log Alaric [10027]: arrived (The northern wing.) from 10026
+Sat Oct 10 16:25:47 2026 :: Log Alaric [10027]: u
+Sat Oct 10 16:25:47 2026 :: Log Alaric [10028]: arrived (The royal stairway.) from 10027
+Sat Oct 10 16:25:49 2026 :: Log Alaric [10028]: u
+Sat Oct 10 16:25:49 2026 :: Log Alaric [10029]: arrived (A grand hallway.) from 10028
+Sat Oct 10 16:25:52 2026 :: Log Alaric [10029]: look col
+Sat Oct 10 16:25:53 2026 :: Log Alaric [10029]: l
+Sat Oct 10 16:25:55 2026 :: Log Alaric [10029]: n
+Sat Oct 10 16:25:55 2026 :: Log Alaric [10030]: arrived (A grand hallway.) from 10029
+Sat Oct 10 16:25:57 2026 :: Log Alaric [10030]: n
+Sat Oct 10 16:25:57 2026 :: Log Alaric [10031]: arrived (An intersection.) from 10030
+Sat Oct 10 16:25:59 2026 :: Log Alaric [10031]: scan
+Sat Oct 10 16:26:01 2026 :: Log Alaric [10031]: e
+Sat Oct 10 16:26:01 2026 :: Log Alaric [10032]: arrived (A cul-de-sac.) from 10031
+Sat Oct 10 16:26:02 2026 :: Log Alaric [10032]: scan
+Sat Oct 10 16:26:02 2026 :: Log Alaric [10032]: oe
+Sat Oct 10 16:26:03 2026 :: Log Alaric [10032]: scan
+Sat Oct 10 16:26:04 2026 :: Log Alaric [10032]: w
+Sat Oct 10 16:26:04 2026 :: Log Alaric [10031]: arrived (An intersection.) from 10032
+Sat Oct 10 16:26:04 2026 :: Log Alaric [10031]: w
+Sat Oct 10 16:26:04 2026 :: Log Alaric [10033]: arrived (A grand hallway.) from 10031
+Sat Oct 10 16:26:05 2026 :: Log Alaric [10033]: w
+Sat Oct 10 16:26:05 2026 :: Log Alaric [10034]: arrived (Intersection in the hall of commerce.) from 10033
+Sat Oct 10 16:26:07 2026 :: Log Alaric [10034]: scan
+Sat Oct 10 16:26:08 2026 :: Log Alaric [10034]: s
+Sat Oct 10 16:26:08 2026 :: Log Alaric [10041]: arrived (The hall of commerce.) from 10034
+Sat Oct 10 16:26:09 2026 :: Log Alaric [10041]: scan
+Sat Oct 10 16:26:09 2026 :: Log Alaric [10041]: oe
+Sat Oct 10 16:26:10 2026 :: Log Alaric [10041]: scan
+Sat Oct 10 16:26:10 2026 :: Log Alaric [10041]: e
+Sat Oct 10 16:26:10 2026 :: Log Alaric [10040]: arrived (Jack, the Ripper's, Butcher Shoppe.) from 10041
+Sat Oct 10 16:26:12 2026 :: Log Alaric [10040]: look ja
+Sat Oct 10 16:26:14 2026 :: Log Alaric [10040]: con ja
+Sat Oct 10 16:26:19 2026 :: Log Alaric [10040]: bs jack
+Sat Oct 10 16:26:48 2026 :: Log Alaric [10040]: get scal
+Sat Oct 10 16:26:48 2026 :: Log Alaric [10040]: wear scal
+Sat Oct 10 16:26:57 2026 :: Alaric killed by Jack the Ripper at 10040
+Sat Oct 10 16:26:57 2026 :: Snapshot of Alaric taken before death (PRESTORE Alaric to see it).
+Sat Oct 10 16:26:57 2026 :: Log Alaric [10040]: died to Jack the Ripper
+Sat Oct 10 16:26:57 2026 :: Log Alaric [4216]: arrived (Death room.) from 10040
+Sat Oct 10 16:27:11 2026 :: Log Alaric [4216]: look
+Sat Oct 10 16:27:13 2026 :: Log Alaric [4216]: wake
+Sat Oct 10 16:27:14 2026 :: Log Alaric [4216]: l
+Sat Oct 10 16:27:17 2026 :: Log Alaric [4216]: d
+Sat Oct 10 16:27:17 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4216
+Sat Oct 10 16:27:20 2026 :: Log Alaric [4208]: r e 4
+Sat Oct 10 16:27:20 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sat Oct 10 16:27:20 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 16:27:20 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 10 16:27:20 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sat Oct 10 16:27:21 2026 :: Log Alaric [2427]: n
+Sat Oct 10 16:27:21 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 10 16:27:21 2026 :: Log Alaric [2404]: n
+Sat Oct 10 16:27:21 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Oct 10 16:27:22 2026 :: Log Alaric [2401]: r e 8
+Sat Oct 10 16:27:22 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Oct 10 16:27:22 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Oct 10 16:27:22 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Oct 10 16:27:22 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sat Oct 10 16:27:22 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sat Oct 10 16:27:22 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sat Oct 10 16:27:22 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Oct 10 16:27:22 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Oct 10 16:27:23 2026 :: Log Alaric [2426]: oe
+Sat Oct 10 16:27:23 2026 :: Log Alaric [2426]: e
+Sat Oct 10 16:27:23 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Oct 10 16:27:23 2026 :: Log Alaric [2440]: e
+Sat Oct 10 16:27:23 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sat Oct 10 16:27:23 2026 :: Log Alaric [3503]: e
+Sat Oct 10 16:27:23 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sat Oct 10 16:27:24 2026 :: Log Alaric [3502]: n
+Sat Oct 10 16:27:24 2026 :: Log Alaric [3501]: arrived (The Lane) from 3502
+Sat Oct 10 16:27:24 2026 :: Log Alaric [3501]: n
+Sat Oct 10 16:27:24 2026 :: Log Alaric [3500]: arrived (The Plains) from 3501
+Sat Oct 10 16:27:24 2026 :: Log Alaric [3500]: nw
+Sat Oct 10 16:27:24 2026 :: Log Alaric [21]: arrived (A twisting path) from 3500
+Sat Oct 10 16:27:25 2026 :: Log Alaric [21]: w
+Sat Oct 10 16:27:25 2026 :: Log Alaric [22]: arrived (Before the great circle) from 21
+Sat Oct 10 16:27:25 2026 :: Log Alaric [22]: s
+Sat Oct 10 16:27:25 2026 :: Log Alaric [23]: arrived (The Great Portal) from 22
+Sat Oct 10 16:27:25 2026 :: Log Alaric [23]: s
+Sat Oct 10 16:27:25 2026 :: Log Alaric [23]: s
+Sat Oct 10 16:27:26 2026 :: Log Alaric [23]: en po
+Sat Oct 10 16:27:26 2026 :: Log Alaric [10000]: arrived (Before the crystal bridge.) from 23
+Sat Oct 10 16:27:27 2026 :: Log Alaric [10000]: n
+Sat Oct 10 16:27:27 2026 :: Log Alaric [10001]: arrived (A crystal bridge.) from 10000
+Sat Oct 10 16:27:27 2026 :: Log Alaric [10001]: n
+Sat Oct 10 16:27:27 2026 :: Log Alaric [10002]: arrived (Royal Island.) from 10001
+Sat Oct 10 16:27:28 2026 :: Log Alaric [10002]: on
+Sat Oct 10 16:27:29 2026 :: Log Alaric [10002]: n
+Sat Oct 10 16:27:29 2026 :: Log Alaric [10003]: arrived (The Glitter Palace's Grand Gate.) from 10002
+Sat Oct 10 16:27:30 2026 :: Log Alaric [10003]: on
+Sat Oct 10 16:27:30 2026 :: Log Alaric [10003]: n
+Sat Oct 10 16:27:30 2026 :: Log Alaric [10004]: arrived (A large hall.) from 10003
+Sat Oct 10 16:27:30 2026 :: Log Alaric [10004]: n
+Sat Oct 10 16:27:30 2026 :: Log Alaric [10006]: arrived (A large hall.) from 10004
+Sat Oct 10 16:27:30 2026 :: Log Alaric [10006]: n
+Sat Oct 10 16:27:30 2026 :: Log Alaric [10007]: arrived (A large hall.) from 10006
+Sat Oct 10 16:27:31 2026 :: Log Alaric [10007]: n
+Sat Oct 10 16:27:31 2026 :: Log Alaric [10008]: arrived (A high domed intersection.) from 10007
+Sat Oct 10 16:27:31 2026 :: Log Alaric [10008]: n
+Sat Oct 10 16:27:31 2026 :: Log Alaric [10025]: arrived (The northern wing.) from 10008
+Sat Oct 10 16:27:31 2026 :: Log Alaric [10025]: n
+Sat Oct 10 16:27:31 2026 :: Log Alaric [10026]: arrived (The northern wing.) from 10025
+Sat Oct 10 16:27:31 2026 :: Log Alaric [10026]: n
+Sat Oct 10 16:27:31 2026 :: Log Alaric [10027]: arrived (The northern wing.) from 10026
+Sat Oct 10 16:27:32 2026 :: Log Alaric [10027]: n
+Sat Oct 10 16:27:34 2026 :: Log Alaric [10027]: u
+Sat Oct 10 16:27:34 2026 :: Log Alaric [10028]: arrived (The royal stairway.) from 10027
+Sat Oct 10 16:27:35 2026 :: Log Alaric [10028]: u
+Sat Oct 10 16:27:35 2026 :: Log Alaric [10029]: arrived (A grand hallway.) from 10028
+Sat Oct 10 16:27:35 2026 :: Log Alaric [10029]: n
+Sat Oct 10 16:27:35 2026 :: Log Alaric [10030]: arrived (A grand hallway.) from 10029
+Sat Oct 10 16:27:36 2026 :: Log Alaric [10030]: n
+Sat Oct 10 16:27:36 2026 :: Log Alaric [10031]: arrived (An intersection.) from 10030
+Sat Oct 10 16:27:36 2026 :: Log Alaric [10031]: w
+Sat Oct 10 16:27:36 2026 :: Log Alaric [10033]: arrived (A grand hallway.) from 10031
+Sat Oct 10 16:27:37 2026 :: Log Alaric [10033]: w
+Sat Oct 10 16:27:37 2026 :: Log Alaric [10034]: arrived (Intersection in the hall of commerce.) from 10033
+Sat Oct 10 16:27:37 2026 :: Log Alaric [10034]: s
+Sat Oct 10 16:27:37 2026 :: Log Alaric [10041]: arrived (The hall of commerce.) from 10034
+Sat Oct 10 16:27:38 2026 :: Log Alaric [10041]: oe
+Sat Oct 10 16:27:39 2026 :: Log Alaric [10041]: ex
+Sat Oct 10 16:27:40 2026 :: Log Alaric [10041]: scan
+Sat Oct 10 16:27:44 2026 :: Log Alaric [10041]: e
+Sat Oct 10 16:27:44 2026 :: Log Alaric [10040]: arrived (Jack, the Ripper's, Butcher Shoppe.) from 10041
+Sat Oct 10 16:27:44 2026 :: Log Alaric [10040]: get all cor
+Sat Oct 10 16:27:45 2026 :: Log Alaric [10040]: w
+Sat Oct 10 16:27:45 2026 :: Log Alaric [10041]: arrived (The hall of commerce.) from 10040
+Sat Oct 10 16:27:47 2026 :: Log Alaric [10041]: wear all
+Sat Oct 10 16:27:47 2026 :: Log Alaric [10041]: i
+Sat Oct 10 16:27:49 2026 :: Log Alaric [10041]: eq
+Sat Oct 10 16:27:53 2026 :: Log Alaric [10041]: e
+Sat Oct 10 16:27:53 2026 :: Log Alaric [10040]: arrived (Jack, the Ripper's, Butcher Shoppe.) from 10041
+Sat Oct 10 16:27:54 2026 :: Log Alaric [10040]: look ja
+Sat Oct 10 16:27:56 2026 :: Log Alaric [10040]: l i cor
+Sat Oct 10 16:27:58 2026 :: Log Alaric [10040]: w
+Sat Oct 10 16:27:58 2026 :: Log Alaric [10041]: arrived (The hall of commerce.) from 10040
+Sat Oct 10 16:28:01 2026 :: Log Alaric [10041]: n
+Sat Oct 10 16:28:01 2026 :: Log Alaric [10034]: arrived (Intersection in the hall of commerce.) from 10041
+Sat Oct 10 16:28:01 2026 :: Log Alaric [10034]: e
+Sat Oct 10 16:28:01 2026 :: Log Alaric [10033]: arrived (A grand hallway.) from 10034
+Sat Oct 10 16:28:02 2026 :: Log Alaric [10033]: e
+Sat Oct 10 16:28:02 2026 :: Log Alaric [10031]: arrived (An intersection.) from 10033
