@@ -70534,3 +70534,66 @@ Sat Oct 10 00:27:18 2026 :: Log Alaric [2497]: quest complete: 5 gold, 48 quest 
 Sat Oct 10 00:27:18 2026 :: Log Alaric [2497]: aq ga no
 Sat Oct 10 00:27:20 2026 :: Log Alaric [2497]: sc
 Sat Oct 10 00:27:59 2026 :: Log Alaric [2497]: eq
+Sat Oct 10 00:28:42 2026 :: Sock.sinaddr:  3.149.57.90
+Sat Oct 10 00:28:42 2026 :: EOF encountered on read.
+Sat Oct 10 00:30:41 2026 :: Log Alaric [2497]: aq r=i
+Sat Oct 10 00:30:43 2026 :: Log Alaric [2497]: i
+Sat Oct 10 00:30:55 2026 :: Log Alaric [2497]: aq re
+Sat Oct 10 00:30:57 2026 :: Log Alaric [2497]: enter door
+Sat Oct 10 00:30:57 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sat Oct 10 00:30:57 2026 :: Log Alaric [2401]: east
+Sat Oct 10 00:30:57 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Oct 10 00:30:57 2026 :: Log Alaric [2403]: east
+Sat Oct 10 00:30:57 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Oct 10 00:30:58 2026 :: Log Alaric [2420]: east
+Sat Oct 10 00:30:58 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Oct 10 00:30:58 2026 :: Log Alaric [2421]: south
+Sat Oct 10 00:30:58 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Sat Oct 10 00:30:58 2026 :: Log Alaric [2441]: east
+Sat Oct 10 00:30:58 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Sat Oct 10 00:30:58 2026 :: Log Alaric [2442]: south
+Sat Oct 10 00:30:58 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Sat Oct 10 00:30:59 2026 :: Log Alaric [2443]: east
+Sat Oct 10 00:30:59 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Sat Oct 10 00:30:59 2026 :: Log Alaric [2444]: east
+Sat Oct 10 00:30:59 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Sat Oct 10 00:30:59 2026 :: Log Alaric [2445]: east
+Sat Oct 10 00:30:59 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Sat Oct 10 00:30:59 2026 :: Log Alaric [2101]: east
+Sat Oct 10 00:30:59 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Sat Oct 10 00:31:00 2026 :: Log Alaric [2102]: south
+Sat Oct 10 00:31:00 2026 :: Log Alaric [2109]: arrived (An over-grown lot) from 2102
+Sat Oct 10 00:31:00 2026 :: Log Alaric [2109]: east
+Sat Oct 10 00:31:00 2026 :: Log Alaric [2110]: arrived (East end of an over-grown plot of land) from 2109
+Sat Oct 10 00:31:00 2026 :: Log Alaric [2110]: south
+Sat Oct 10 00:31:00 2026 :: Log Alaric [2116]: arrived (Dracolich Plaza) from 2110
+Sat Oct 10 00:31:00 2026 :: Log Alaric [2116]: east
+Sat Oct 10 00:31:00 2026 :: Log Alaric [2117]: arrived (Shortcut) from 2116
+Sat Oct 10 00:31:01 2026 :: Log Alaric [2117]: south
+Sat Oct 10 00:31:01 2026 :: Log Alaric [2121]: arrived (Shortcut) from 2117
+Sat Oct 10 00:31:01 2026 :: Log Alaric [2121]: east
+Sat Oct 10 00:31:01 2026 :: Log Alaric [2122]: arrived (Ice Dragon Way) from 2121
+Sat Oct 10 00:31:01 2026 :: Log Alaric [2122]: south
+Sat Oct 10 00:31:01 2026 :: Log Alaric [2127]: arrived (Yellow Dragon Road) from 2122
+Sat Oct 10 00:31:01 2026 :: Log Alaric [2127]: east
+Sat Oct 10 00:31:01 2026 :: Log Alaric [2128]: arrived (Yellow Dragon Road) from 2127
+Sat Oct 10 00:31:02 2026 :: Log Alaric [2128]: south
+Sat Oct 10 00:31:02 2026 :: Log Alaric [2133]: arrived (NO MAN'S LAND) from 2128
+Sat Oct 10 00:31:02 2026 :: Log Alaric [2133]: south
+Sat Oct 10 00:31:02 2026 :: Log Alaric [2138]: arrived (NO MAN'S LAND) from 2133
+Sat Oct 10 00:31:02 2026 :: Log Alaric [2138]: east
+Sat Oct 10 00:31:02 2026 :: Log Alaric [2139]: arrived (NO MAN'S LAND) from 2138
+Sat Oct 10 00:31:02 2026 :: Log Alaric [2139]: east
+Sat Oct 10 00:31:02 2026 :: Log Alaric [2140]: arrived (NO MAN'S LAND) from 2139
+Sat Oct 10 00:31:03 2026 :: Log Alaric [2140]: south
+Sat Oct 10 00:31:03 2026 :: Log Alaric [2145]: arrived (Corner of Ajax and Hector) from 2140
+Sat Oct 10 00:31:05 2026 :: Log Alaric [2145]: get all
+Sat Oct 10 00:31:05 2026 :: Log Alaric [2145]: recal
+Sat Oct 10 00:31:05 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2145
+Sat Oct 10 00:31:05 2026 :: Log Alaric [2497]: recal
+Sat Oct 10 00:31:07 2026 :: Log Alaric [2497]: aq co
+Sat Oct 10 00:31:07 2026 :: Log Alaric [2497]: gold +19
+Sat Oct 10 00:31:07 2026 :: Log Alaric [2497]: quest complete: 19 gold, 18 quest points (streak bonus 30%)
+Sat Oct 10 00:31:08 2026 :: Log Alaric [2497]: aq ga no
+Sat Oct 10 00:31:09 2026 :: Log Alaric [2497]: sc
+Sat Oct 10 00:31:11 2026 :: Log Alaric [2497]: who
