@@ -73572,3 +73572,155 @@ Sat Oct 10 13:00:36 2026 :: Log Alaric [4208]: heal ref
 Sat Oct 10 13:00:36 2026 :: Log Alaric [4208]: gold -10
 Sat Oct 10 13:00:40 2026 :: Log Alaric [4208]: heal ref
 Sat Oct 10 13:00:40 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 13:00:57 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 13:00:57 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 13:01:04 2026 :: Log Alaric [4208]: r e 4
+Sat Oct 10 13:01:04 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sat Oct 10 13:01:04 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 13:01:04 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 10 13:01:04 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sat Oct 10 13:01:04 2026 :: Log Alaric [2427]: n
+Sat Oct 10 13:01:04 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 10 13:01:04 2026 :: Log Alaric [2404]: n
+Sat Oct 10 13:01:04 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Oct 10 13:01:05 2026 :: Log Alaric [2401]: r e 8
+Sat Oct 10 13:01:05 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Oct 10 13:01:05 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Oct 10 13:01:05 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Oct 10 13:01:05 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sat Oct 10 13:01:05 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sat Oct 10 13:01:05 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sat Oct 10 13:01:05 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Oct 10 13:01:05 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Oct 10 13:01:05 2026 :: Log Alaric [2426]: oe
+Sat Oct 10 13:01:09 2026 :: Log Alaric [2426]: r e 19
+Sat Oct 10 13:01:09 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Oct 10 13:01:09 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sat Oct 10 13:01:09 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sat Oct 10 13:01:09 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Sat Oct 10 13:01:09 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Sat Oct 10 13:01:09 2026 :: Log Alaric [3527]: arrived (The Checkpoint) from 3526
+Sat Oct 10 13:01:09 2026 :: Log Alaric [3528]: arrived (Along the Eastern Road) from 3527
+Sat Oct 10 13:01:09 2026 :: Log Alaric [3529]: arrived (Along the Eastern Road) from 3528
+Sat Oct 10 13:01:09 2026 :: Log Alaric [3530]: arrived (Near the Sands of Sorrow) from 3529
+Sat Oct 10 13:01:09 2026 :: Log Alaric [3531]: arrived (Near the Sands of Sorrow) from 3530
+Sat Oct 10 13:01:09 2026 :: Log Alaric [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Sat Oct 10 13:01:09 2026 :: Log Alaric [42]: arrived (On the Outskirts of New Thalos) from 3532
+Sat Oct 10 13:01:09 2026 :: Log Alaric [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Sat Oct 10 13:01:09 2026 :: Log Alaric [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sat Oct 10 13:01:09 2026 :: Log Alaric [9524]: arrived (West Main Street) from 9523
+Sat Oct 10 13:01:09 2026 :: Log Alaric [9525]: arrived (West Main Street) from 9524
+Sat Oct 10 13:01:09 2026 :: Log Alaric [9526]: arrived (West Main Street) from 9525
+Sat Oct 10 13:01:09 2026 :: Log Alaric [9509]: arrived (The Western Market Square) from 9526
+Sat Oct 10 13:01:09 2026 :: Log Alaric [9506]: arrived (The Center of Market Square) from 9509
+Sat Oct 10 13:01:10 2026 :: Log Alaric [9506]: n
+Sat Oct 10 13:01:10 2026 :: Log Alaric [9515]: arrived (The Northern Market Square) from 9506
+Sat Oct 10 13:01:11 2026 :: Log Alaric [9515]: n
+Sat Oct 10 13:01:11 2026 :: Log Alaric [9518]: arrived (Sultan's Walk) from 9515
+Sat Oct 10 13:01:11 2026 :: Log Alaric [9518]: n
+Sat Oct 10 13:01:11 2026 :: Log Alaric [9519]: arrived (Sultan's Walk) from 9518
+Sat Oct 10 13:01:11 2026 :: Log Alaric [9519]: n
+Sat Oct 10 13:01:11 2026 :: Log Alaric [9520]: arrived (Sultan's Walk) from 9519
+Sat Oct 10 13:01:12 2026 :: Log Alaric [9520]: n
+Sat Oct 10 13:01:12 2026 :: Log Alaric [9521]: arrived (Sultan's Walk) from 9520
+Sat Oct 10 13:01:17 2026 :: Log Alaric [9521]: n
+Sat Oct 10 13:01:17 2026 :: Log Alaric [9522]: arrived (Inside the Northern Gate of New Thalos) from 9521
+Sat Oct 10 13:01:17 2026 :: Log Alaric [9522]: n
+Sat Oct 10 13:01:19 2026 :: Log Alaric [9522]: on
+Sat Oct 10 13:01:19 2026 :: Log Alaric [9522]: n
+Sat Oct 10 13:01:19 2026 :: Log Alaric [9667]: arrived (Outside the Northern Gate of New Thalos) from 9522
+Sat Oct 10 13:01:20 2026 :: Log Alaric [9667]: n
+Sat Oct 10 13:01:20 2026 :: Log Alaric [9781]: arrived (On the Plains) from 9667
+Sat Oct 10 13:01:20 2026 :: Log Alaric [9781]: n
+Sat Oct 10 13:01:20 2026 :: Log Alaric [9782]: arrived (On the Plains) from 9781
+Sat Oct 10 13:01:21 2026 :: Log Alaric [9782]: n
+Sat Oct 10 13:01:21 2026 :: Log Alaric [9783]: arrived (Edge of the forest) from 9782
+Sat Oct 10 13:01:21 2026 :: Log Alaric [9783]: n
+Sat Oct 10 13:01:21 2026 :: Log Alaric [64]: arrived (Misty Clearing) from 9783
+Sat Oct 10 13:01:22 2026 :: Log Alaric [64]: n
+Sat Oct 10 13:01:22 2026 :: Log Alaric [29001]: arrived (Entrance to the Fortress) from 64
+Sat Oct 10 13:01:22 2026 :: Log Alaric [29001]: n
+Sat Oct 10 13:01:22 2026 :: Log Alaric [29002]: arrived (Inside Korzath's Private Fortress) from 29001
+Sat Oct 10 13:01:23 2026 :: Log Alaric [29002]: n
+Sat Oct 10 13:01:23 2026 :: Log Alaric [29003]: arrived (Grand Foyer) from 29002
+Sat Oct 10 13:01:24 2026 :: Log Alaric [29003]: nw
+Sat Oct 10 13:01:24 2026 :: Log Alaric [29005]: arrived (Before an Iron Door) from 29003
+Sat Oct 10 13:01:26 2026 :: Log Alaric [29005]: bs gu
+Sat Oct 10 13:01:32 2026 :: Log Alaric [29005]: killed Scared Guard
+Sat Oct 10 13:01:32 2026 :: Log Alaric [29005]: coin +1 silver
+Sat Oct 10 13:01:32 2026 :: Log Alaric [29005]: coin +1 copper
+Sat Oct 10 13:01:43 2026 :: Log Alaric [29005]: get ke cor
+Sat Oct 10 13:01:43 2026 :: Log Alaric [29005]: unl west
+Sat Oct 10 13:01:43 2026 :: Log Alaric [29005]: ow
+Sat Oct 10 13:01:44 2026 :: Log Alaric [29005]: w
+Sat Oct 10 13:01:44 2026 :: Log Alaric [29006]: arrived (Corridor) from 29005
+Sat Oct 10 13:01:46 2026 :: Log Alaric [29006]: bs so
+Sat Oct 10 13:01:50 2026 :: Log Alaric [29006]: killed a Soldier
+Sat Oct 10 13:01:50 2026 :: Log Alaric [29006]: coin +2 silver
+Sat Oct 10 13:01:50 2026 :: Log Alaric [29006]: coin +3 copper
+Sat Oct 10 13:01:50 2026 :: Log Alaric [29006]: coin +1 gold
+Sat Oct 10 13:01:59 2026 :: Log Alaric [29006]: s
+Sat Oct 10 13:01:59 2026 :: Log Alaric [29007]: arrived (Corridor) from 29006
+Sat Oct 10 13:01:59 2026 :: Log Alaric [29007]: bs so
+Sat Oct 10 13:02:02 2026 :: Log Alaric [29007]: s
+Sat Oct 10 13:02:02 2026 :: Log Alaric [29008]: arrived (Corridor) from 29007
+Sat Oct 10 13:02:04 2026 :: Log Alaric [29008]: bs so
+Sat Oct 10 13:02:17 2026 :: Log Alaric [29008]: killed a Soldier
+Sat Oct 10 13:02:17 2026 :: Log Alaric [29008]: coin +2 silver
+Sat Oct 10 13:02:17 2026 :: Log Alaric [29008]: coin +3 copper
+Sat Oct 10 13:02:17 2026 :: Log Alaric [29008]: coin +1 gold
+Sat Oct 10 13:02:26 2026 :: Log Alaric [29008]: s
+Sat Oct 10 13:02:26 2026 :: Log Alaric [29010]: arrived (Turn in the Corridor) from 29008
+Sat Oct 10 13:02:28 2026 :: Log Alaric [29010]: w
+Sat Oct 10 13:02:28 2026 :: Log Alaric [29011]: arrived (Entrance to the Barracks) from 29010
+Sat Oct 10 13:02:30 2026 :: Log Alaric [29011]: bs so
+Sat Oct 10 13:02:47 2026 :: Log Alaric [29011]: n
+Sat Oct 10 13:02:47 2026 :: Log Alaric [29012]: arrived (Hallway through the Barracks) from 29011
+Sat Oct 10 13:02:47 2026 :: Log Alaric [29012]: kill so
+Sat Oct 10 13:02:47 2026 :: Log Alaric [29012]: killed a Soldier
+Sat Oct 10 13:02:47 2026 :: Log Alaric [29012]: coin +2 silver
+Sat Oct 10 13:02:47 2026 :: Log Alaric [29012]: coin +3 copper
+Sat Oct 10 13:02:47 2026 :: Log Alaric [29012]: coin +1 gold
+Sat Oct 10 13:02:54 2026 :: Log Alaric [29012]: bs so
+Sat Oct 10 13:03:23 2026 :: Log Alaric [29012]: killed a Soldier
+Sat Oct 10 13:03:23 2026 :: Log Alaric [29012]: coin +2 silver
+Sat Oct 10 13:03:23 2026 :: Log Alaric [29012]: coin +3 copper
+Sat Oct 10 13:03:23 2026 :: Log Alaric [29012]: coin +1 gold
+Sat Oct 10 13:03:30 2026 :: Log Alaric [29012]: l
+Sat Oct 10 13:03:32 2026 :: Log Alaric [29012]: w
+Sat Oct 10 13:03:32 2026 :: Log Alaric [29013]: arrived (Hallway through the Barracks) from 29012
+Sat Oct 10 13:03:35 2026 :: Log Alaric [29013]: bs so
+Sat Oct 10 13:03:53 2026 :: Log Alaric [29013]: killed a Soldier
+Sat Oct 10 13:03:53 2026 :: Log Alaric [29013]: coin +2 silver
+Sat Oct 10 13:03:53 2026 :: Log Alaric [29013]: coin +3 copper
+Sat Oct 10 13:03:53 2026 :: Log Alaric [29013]: coin +1 gold
+Sat Oct 10 13:04:01 2026 :: Log Alaric [29013]: bs gu
+Sat Oct 10 13:04:21 2026 :: Log Alaric [29013]: eq
+Sat Oct 10 13:04:23 2026 :: Log Alaric [29013]: level 10 -> 11 (earned)
+Sat Oct 10 13:04:23 2026 :: Alaric has achieved level 11!
+Sat Oct 10 13:04:23 2026 :: Log Alaric [29013]: killed an Orc guard
+Sat Oct 10 13:04:23 2026 :: Log Alaric [29013]: coin +2 silver
+Sat Oct 10 13:04:23 2026 :: Log Alaric [29013]: coin +3 copper
+Sat Oct 10 13:04:23 2026 :: Log Alaric [29013]: coin +1 gold
+Sat Oct 10 13:04:33 2026 :: Log Alaric [29013]: l
+Sat Oct 10 13:04:36 2026 :: Log Alaric [29013]: w
+Sat Oct 10 13:04:36 2026 :: Log Alaric [29016]: arrived (Hallway through the Barracks) from 29013
+Sat Oct 10 13:04:38 2026 :: Log Alaric [29016]: bs so
+Sat Oct 10 13:04:56 2026 :: Log Alaric [29016]: killed a Soldier
+Sat Oct 10 13:04:56 2026 :: Log Alaric [29016]: coin +2 silver
+Sat Oct 10 13:04:56 2026 :: Log Alaric [29016]: coin +3 copper
+Sat Oct 10 13:04:56 2026 :: Log Alaric [29016]: coin +1 gold
+Sat Oct 10 13:05:03 2026 :: Log Alaric [29016]: bs gu
+Sat Oct 10 13:05:12 2026 :: Sock.sinaddr:  3.149.57.90
+Sat Oct 10 13:05:13 2026 :: EOF encountered on read.
+Sat Oct 10 13:05:20 2026 :: Log Alaric [29016]: killed an Orc guard
+Sat Oct 10 13:05:20 2026 :: Log Alaric [29016]: coin +2 silver
+Sat Oct 10 13:05:20 2026 :: Log Alaric [29016]: coin +3 copper
+Sat Oct 10 13:05:20 2026 :: Log Alaric [29016]: coin +1 gold
+Sat Oct 10 13:05:37 2026 :: Log Alaric [29016]: recal
+Sat Oct 10 13:05:37 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 29016
+Sat Oct 10 13:05:37 2026 :: Log Alaric [4207]: recal
+Sat Oct 10 13:05:38 2026 :: Log Alaric [4207]: w
+Sat Oct 10 13:05:38 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sat Oct 10 13:05:40 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 13:05:40 2026 :: Log Alaric [4208]: gold -10
