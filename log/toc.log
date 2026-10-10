@@ -74425,3 +74425,64 @@ Sat Oct 10 13:31:05 2026 :: Log Alaric [10006]: coin +1 platinum
 Sat Oct 10 13:31:05 2026 :: Log Alaric [10006]: coin +5 silver
 Sat Oct 10 13:31:05 2026 :: Log Alaric [10006]: coin +6 copper
 Sat Oct 10 13:31:05 2026 :: Log Alaric [10006]: coin +2 gold
+Sat Oct 10 13:31:14 2026 :: Log Alaric [10006]: n
+Sat Oct 10 13:31:14 2026 :: Log Alaric [10007]: arrived (A large hall.) from 10006
+Sat Oct 10 13:31:14 2026 :: Log Alaric [10007]: n
+Sat Oct 10 13:31:14 2026 :: Log Alaric [10008]: arrived (A high domed intersection.) from 10007
+Sat Oct 10 13:31:18 2026 :: Log Alaric [10008]: e
+Sat Oct 10 13:31:18 2026 :: Log Alaric [10015]: arrived (The eastern wing.) from 10008
+Sat Oct 10 13:31:19 2026 :: Log Alaric [10015]: e
+Sat Oct 10 13:31:19 2026 :: Log Alaric [10016]: arrived (The eastern wing.) from 10015
+Sat Oct 10 13:31:19 2026 :: Log Alaric [10016]: e
+Sat Oct 10 13:31:19 2026 :: Log Alaric [10019]: arrived (The eastern wing.) from 10016
+Sat Oct 10 13:31:20 2026 :: Log Alaric [10019]: e
+Sat Oct 10 13:31:20 2026 :: Log Alaric [10020]: arrived (The barracks.) from 10019
+Sat Oct 10 13:31:23 2026 :: Log Alaric [10020]: wo
+Sat Oct 10 13:31:24 2026 :: Log Alaric [10020]: who
+Sat Oct 10 13:31:25 2026 :: Log Alaric [10020]: bs re
+Sat Oct 10 13:31:40 2026 :: Log Alaric [10020]: bs re
+Sat Oct 10 13:31:43 2026 :: Log Alaric [10020]: killed the rebel mob
+Sat Oct 10 13:31:43 2026 :: Log Alaric [10020]: coin +2 platinum
+Sat Oct 10 13:31:43 2026 :: Log Alaric [10020]: coin +12 silver
+Sat Oct 10 13:31:43 2026 :: Log Alaric [10020]: coin +17 copper
+Sat Oct 10 13:31:43 2026 :: Log Alaric [10020]: coin +7 gold
+Sat Oct 10 13:32:02 2026 :: Log Alaric [10020]: bs re
+Sat Oct 10 13:32:54 2026 :: Log Alaric [10020]: w
+Sat Oct 10 13:32:54 2026 :: Log Alaric [10019]: arrived (The eastern wing.) from 10020
+Sat Oct 10 13:32:54 2026 :: Log Alaric [10019]: kill re
+Sat Oct 10 13:32:55 2026 :: Log Alaric [10019]: killed the rebel mob
+Sat Oct 10 13:32:55 2026 :: Log Alaric [10019]: coin +2 platinum
+Sat Oct 10 13:32:55 2026 :: Log Alaric [10019]: coin +12 silver
+Sat Oct 10 13:32:55 2026 :: Log Alaric [10019]: coin +17 copper
+Sat Oct 10 13:32:55 2026 :: Log Alaric [10019]: coin +7 gold
+Sat Oct 10 13:33:00 2026 :: Log Alaric [10019]: e
+Sat Oct 10 13:33:00 2026 :: Log Alaric [10020]: arrived (The barracks.) from 10019
+Sat Oct 10 13:33:00 2026 :: Log Alaric [10020]: e
+Sat Oct 10 13:33:00 2026 :: Log Alaric [10023]: arrived (The barracks.) from 10020
+Sat Oct 10 13:33:02 2026 :: Log Alaric [10023]: wo
+Sat Oct 10 13:33:05 2026 :: Log Alaric [10023]: bs gu
+Sat Oct 10 13:33:43 2026 :: Log Alaric [10023]: killed the palace guard
+Sat Oct 10 13:33:43 2026 :: Log Alaric [10023]: coin +1 platinum
+Sat Oct 10 13:33:43 2026 :: Log Alaric [10023]: coin +7 silver
+Sat Oct 10 13:33:43 2026 :: Log Alaric [10023]: coin +10 copper
+Sat Oct 10 13:33:43 2026 :: Log Alaric [10023]: coin +4 gold
+Sat Oct 10 13:34:24 2026 :: Log Alaric [10023]: l
+Sat Oct 10 13:34:28 2026 :: Log Alaric [10023]: bs gu
+Sat Oct 10 13:34:49 2026 :: Log Alaric [10023]: killed the palace guard
+Sat Oct 10 13:34:49 2026 :: Log Alaric [10023]: coin +1 platinum
+Sat Oct 10 13:34:49 2026 :: Log Alaric [10023]: coin +7 silver
+Sat Oct 10 13:34:49 2026 :: Log Alaric [10023]: coin +10 copper
+Sat Oct 10 13:34:49 2026 :: Log Alaric [10023]: coin +4 gold
+Sat Oct 10 13:35:32 2026 :: Log Alaric [10023]: l
+Sat Oct 10 13:35:33 2026 :: Log Alaric [10023]: os
+Sat Oct 10 13:35:34 2026 :: Log Alaric [10023]: s
+Sat Oct 10 13:35:34 2026 :: Log Alaric [10024]: arrived (A sleeping room.) from 10023
+Sat Oct 10 13:35:36 2026 :: Log Alaric [10024]: bs gu
+Sat Oct 10 13:35:40 2026 :: Sock.sinaddr:  178.156.187.238
+Sat Oct 10 13:35:40 2026 :: EOF encountered on read.
+Sat Oct 10 13:35:55 2026 :: Log Alaric [10024]: killed the palace guard
+Sat Oct 10 13:35:55 2026 :: Log Alaric [10024]: coin +1 platinum
+Sat Oct 10 13:35:55 2026 :: Log Alaric [10024]: coin +7 silver
+Sat Oct 10 13:35:55 2026 :: Log Alaric [10024]: coin +10 copper
+Sat Oct 10 13:35:55 2026 :: Log Alaric [10024]: coin +4 gold
+Sat Oct 10 13:36:05 2026 :: Log Alaric [10024]: bs gu
