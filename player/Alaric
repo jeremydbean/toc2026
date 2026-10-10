@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791594367
+LogO 1791594685
 Vers 4
 Prom ~
 Ignoring ~
@@ -16,18 +16,18 @@ PsiKnown torment,telekinesis,mindbar,mind leech~
 ChangesSeen 20261008b:1 20261008a:1 20261005d:3 20261005c:3 20261005a:3 20261005b:3 20261004t:3 20261004s:3 20261004a:3 20261004b:3 20261004c:3 20261004d:3 20261004e:3 20261004f:3 20261004g:3 20261004h:3 20261004i:3 20261004j:3 20261004k:3 20261004l:3 20261004m:3 20261004n:3 20261004o:3 20261004p:3 20261004q:3 20261004r:3 20261003a:3 20261003b:3 20261003c:3 20261003d:3 20261003e:3 20261003f:3 20261003g:3 20261003h:3 20261003i:3 20261003j:3 20261003k:3 20261003l:3 20261003m:3 20261002a:3 20261002b:3 20261002c:3 20261001a:3 20261001b:3 20261001c:3 20261001d:3 20261001e:3 20261001f:3 20261001g:3 20261001h:3 20261001i:3 20261001j:3 20261001k:3 20261001l:3 20261001m:3 20261001n:3 20261001o:3 20261001p:3 20261001q:3 20261001r:3 20261001s:3 20261001t:3 20261001u:3 20261001v:3 20261001w:3 20261001x:3 20261001y:3 20261001z:3 20260925a:3 20260925b:3 20260925c:3 20260925d:3 20260925e:3 20260925f:3 20260925g:3 20260925h:3 20260925i:3 20260925j:3 20260925k:3 20260925l:3 20260925m:3 20260925n:3 20260925o:3 20260925p:3 20260925q:3 20260925r:3 20260925s:3 20260925t:3 20260925u:3 20260925v:3 20260925w:3 20260925x:3 20260925y:3 20260925z:3 20260924a:3 20260924b:3 20260924c:3 20260924d:3 20260924e:3~
 Cast none
 Levl 55
-Plyd 474458
+Plyd 474776
 ListRemorts 3  3 ~
 NumRemorts 1
 Note 1790386686
 StashMax 150
 Scro 22
 Room 2497
-HMV  1115 1115 4396 4396 304 499
-NewGold 41
+HMV  1115 1115 4133 4396 324 499
+NewGold 71
 NewPlat 131
-NewCopp 89
-NewSilv 29
+NewCopp 91
+NewSilv 30
 BankCP 2561882160
 IntTime 1791593884
 IntTotal 34882160
@@ -36,8 +36,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 1818
-AchQuests 251
+AchKills 1820
+AchQuests 252
 AchDeaths 1
 AchExplore 5
 AchMaps 5
@@ -119,14 +119,15 @@ SesDead  0
 SesQuest 3
 RecallRoom 2497
 RecallSet  1791420205
-QuestPnts 4850
-QuestStrk 8
+QuestPnts 4975
+QuestStrk 9
 CasinoWon  51
 CasinoLost 304
-QuestNext 4
+QuestNext 3
 Exp  172092
 Act  4195532
-AfBy 524800
+AfBy 1573504
+AfBy2 520
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -155,10 +156,10 @@ Pos  8
 Prac 31
 Trai 9
 Save  6
-Alig  864
+Alig  884
 Hit   52
 Dam   66
-ACs -253 -224 -263 -3
+ACs -388 -359 -398 -138
 Attr 18 13 13 18 15
 AMod 10 -1 2 5 -2
 Pass Al3w9zuAlwpyY~
@@ -245,8 +246,13 @@ Gr 'life & undeath'
 Gr 'necromancy'
 Gr 'necro protective'
 Gr 'necro transportation'
-AffD 'infravision'  20  55   0   0        512          0
-AffD 'fly'  40   3   0   0     524288          0
+AffD 'fly'  39  57   0   0     524288          0
+AffD 'pass door'  52  24   0   0    1048576          0
+AffD 'major globe'  49  21 -135  17          0          0
+AffD 'death shroud'   0   1   0   0          0          8
+AffD 'force sword'  30   1   0   0          0        512
+AffD 'sanctuary'   0  11   0   0        128          0
+AffD 'infravision'  20  50   0   0        512          0
 End
 
 #O
@@ -363,7 +369,7 @@ Lev  35
 Cost 7500000
 Cond 99
 Repd 0
-Val  0 0 7294 0 0
+Val  0 0 7289 0 0
 Affect -1 35 -1 -19 12 0 0
 End
 
@@ -992,7 +998,7 @@ End
 Vnum 51
 Nest 0
 Wear -1
-Time 519
+Time 514
 Cost 0
 Cond 100
 Repd 0
