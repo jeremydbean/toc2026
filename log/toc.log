@@ -78191,3 +78191,226 @@ Sat Oct 10 19:12:05 2026 :: Log Alaric [25265]: killed a drow female
 Sat Oct 10 19:12:05 2026 :: Log Alaric [25265]: coin +17 silver
 Sat Oct 10 19:12:05 2026 :: Log Alaric [25265]: coin +165 copper
 Sat Oct 10 19:12:05 2026 :: Log Alaric [25265]: coin +31 gold
+Sat Oct 10 19:15:05 2026 :: Log Alaric [25265]: eq
+Sat Oct 10 19:15:09 2026 :: Log Alaric [25265]: bs dr
+Sat Oct 10 19:15:32 2026 :: Log Alaric [25265]: killed a drow female
+Sat Oct 10 19:15:32 2026 :: Log Alaric [25265]: coin +17 silver
+Sat Oct 10 19:15:32 2026 :: Log Alaric [25265]: coin +165 copper
+Sat Oct 10 19:15:32 2026 :: Log Alaric [25265]: coin +31 gold
+Sat Oct 10 19:16:15 2026 :: Sock.sinaddr:  5.161.117.52
+Sat Oct 10 19:16:15 2026 :: EOF encountered on read.
+Sat Oct 10 19:16:17 2026 :: Log Alaric [25265]: bs dr
+Sat Oct 10 19:16:50 2026 :: Log Alaric [25265]: killed a drow female
+Sat Oct 10 19:16:50 2026 :: Log Alaric [25265]: coin +17 silver
+Sat Oct 10 19:16:50 2026 :: Log Alaric [25265]: coin +165 copper
+Sat Oct 10 19:16:50 2026 :: Log Alaric [25265]: coin +31 gold
+Sat Oct 10 19:17:10 2026 :: Log Alaric [25265]: recal
+Sat Oct 10 19:17:10 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 25265
+Sat Oct 10 19:17:11 2026 :: Log Alaric [4207]: w
+Sat Oct 10 19:17:11 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sat Oct 10 19:17:12 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 19:17:12 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 19:17:15 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 19:17:15 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 19:17:18 2026 :: Log Alaric [4208]: r e 4
+Sat Oct 10 19:17:18 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sat Oct 10 19:17:18 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 19:17:18 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 10 19:17:18 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sat Oct 10 19:17:18 2026 :: Log Alaric [2427]: n
+Sat Oct 10 19:17:18 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 10 19:17:18 2026 :: Log Alaric [2404]: n
+Sat Oct 10 19:17:18 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Oct 10 19:17:18 2026 :: Log Alaric [2401]: n
+Sat Oct 10 19:17:18 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sat Oct 10 19:17:19 2026 :: Log Alaric [2402]: n
+Sat Oct 10 19:17:19 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Sat Oct 10 19:17:21 2026 :: Log Alaric [2415]: w
+Sat Oct 10 19:17:21 2026 :: Log Alaric [2470]: arrived (Wizards Way.) from 2415
+Sat Oct 10 19:17:21 2026 :: Log Alaric [2470]: w
+Sat Oct 10 19:17:21 2026 :: Log Alaric [2471]: arrived (Wizards Way.) from 2470
+Sat Oct 10 19:17:21 2026 :: Log Alaric [2471]: w
+Sat Oct 10 19:17:21 2026 :: Log Alaric [2472]: arrived (Corner of Wizards Way and Magic Street.) from 2471
+Sat Oct 10 19:17:22 2026 :: Log Alaric [2472]: w
+Sat Oct 10 19:17:23 2026 :: Log Alaric [2472]: n
+Sat Oct 10 19:17:23 2026 :: Log Alaric [2473]: arrived (Magic Street.) from 2472
+Sat Oct 10 19:17:23 2026 :: Log Alaric [2473]: w
+Sat Oct 10 19:17:23 2026 :: Log Alaric [2474]: arrived (Bidom's Magic Shop.) from 2473
+Sat Oct 10 19:17:25 2026 :: Log Alaric [2474]: buy fly
+Sat Oct 10 19:17:25 2026 :: Log Alaric [2474]: copper -21000
+Sat Oct 10 19:17:25 2026 :: Log Alaric [2474]: bought a potion of flying (vnum 3091) for 21000 copper from the wizard
+Sat Oct 10 19:17:26 2026 :: Log Alaric [2474]: buy fly
+Sat Oct 10 19:17:26 2026 :: Log Alaric [2474]: copper -21000
+Sat Oct 10 19:17:26 2026 :: Log Alaric [2474]: bought a potion of flying (vnum 3091) for 21000 copper from the wizard
+Sat Oct 10 19:17:26 2026 :: Log Alaric [2474]: buy fly
+Sat Oct 10 19:17:26 2026 :: Log Alaric [2474]: copper -21000
+Sat Oct 10 19:17:26 2026 :: Log Alaric [2474]: bought a potion of flying (vnum 3091) for 21000 copper from the wizard
+Sat Oct 10 19:17:27 2026 :: Log Alaric [2474]: buy fly
+Sat Oct 10 19:17:27 2026 :: Log Alaric [2474]: copper -21000
+Sat Oct 10 19:17:27 2026 :: Log Alaric [2474]: bought a potion of flying (vnum 3091) for 21000 copper from the wizard
+Sat Oct 10 19:17:27 2026 :: Log Alaric [2474]: buy fly
+Sat Oct 10 19:17:27 2026 :: Log Alaric [2474]: copper -21000
+Sat Oct 10 19:17:27 2026 :: Log Alaric [2474]: bought a potion of flying (vnum 3091) for 21000 copper from the wizard
+Sat Oct 10 19:17:27 2026 :: Log Alaric [2474]: buy fly
+Sat Oct 10 19:17:27 2026 :: Log Alaric [2474]: copper -21000
+Sat Oct 10 19:17:27 2026 :: Log Alaric [2474]: bought a potion of flying (vnum 3091) for 21000 copper from the wizard
+Sat Oct 10 19:17:27 2026 :: Log Alaric [2474]: buy fly
+Sat Oct 10 19:17:27 2026 :: Log Alaric [2474]: copper -21000
+Sat Oct 10 19:17:27 2026 :: Log Alaric [2474]: bought a potion of flying (vnum 3091) for 21000 copper from the wizard
+Sat Oct 10 19:17:28 2026 :: Log Alaric [2474]: buy fly
+Sat Oct 10 19:17:28 2026 :: Log Alaric [2474]: copper -21000
+Sat Oct 10 19:17:28 2026 :: Log Alaric [2474]: bought a potion of flying (vnum 3091) for 21000 copper from the wizard
+Sat Oct 10 19:17:28 2026 :: Log Alaric [2474]: buy fly
+Sat Oct 10 19:17:28 2026 :: Log Alaric [2474]: copper -21000
+Sat Oct 10 19:17:28 2026 :: Log Alaric [2474]: bought a potion of flying (vnum 3091) for 21000 copper from the wizard
+Sat Oct 10 19:17:28 2026 :: Log Alaric [2474]: buy fly
+Sat Oct 10 19:17:28 2026 :: Log Alaric [2474]: copper -21000
+Sat Oct 10 19:17:28 2026 :: Log Alaric [2474]: bought a potion of flying (vnum 3091) for 21000 copper from the wizard
+Sat Oct 10 19:17:29 2026 :: Log Alaric [2474]: buy true
+Sat Oct 10 19:17:29 2026 :: Log Alaric [2474]: copper -32550
+Sat Oct 10 19:17:29 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sat Oct 10 19:17:30 2026 :: Log Alaric [2474]: buy true
+Sat Oct 10 19:17:30 2026 :: Log Alaric [2474]: copper -32550
+Sat Oct 10 19:17:30 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sat Oct 10 19:17:30 2026 :: Log Alaric [2474]: buy true
+Sat Oct 10 19:17:30 2026 :: Log Alaric [2474]: copper -32550
+Sat Oct 10 19:17:30 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sat Oct 10 19:17:30 2026 :: Log Alaric [2474]: buy true
+Sat Oct 10 19:17:30 2026 :: Log Alaric [2474]: copper -32550
+Sat Oct 10 19:17:30 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sat Oct 10 19:17:31 2026 :: Log Alaric [2474]: buy true
+Sat Oct 10 19:17:31 2026 :: Log Alaric [2474]: copper -32550
+Sat Oct 10 19:17:31 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sat Oct 10 19:17:31 2026 :: Log Alaric [2474]: buy true
+Sat Oct 10 19:17:31 2026 :: Log Alaric [2474]: copper -32550
+Sat Oct 10 19:17:31 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sat Oct 10 19:17:31 2026 :: Log Alaric [2474]: buy true
+Sat Oct 10 19:17:31 2026 :: Log Alaric [2474]: copper -32550
+Sat Oct 10 19:17:31 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sat Oct 10 19:17:31 2026 :: Log Alaric [2474]: buy true
+Sat Oct 10 19:17:31 2026 :: Log Alaric [2474]: copper -32550
+Sat Oct 10 19:17:31 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sat Oct 10 19:17:32 2026 :: Log Alaric [2474]: buy true
+Sat Oct 10 19:17:32 2026 :: Log Alaric [2474]: copper -32550
+Sat Oct 10 19:17:32 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sat Oct 10 19:17:32 2026 :: Log Alaric [2474]: buy true
+Sat Oct 10 19:17:32 2026 :: Log Alaric [2474]: copper -32550
+Sat Oct 10 19:17:32 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sat Oct 10 19:17:32 2026 :: Log Alaric [2474]: buy true
+Sat Oct 10 19:17:32 2026 :: Log Alaric [2474]: copper -32550
+Sat Oct 10 19:17:32 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Sat Oct 10 19:17:32 2026 :: Log Alaric [2474]: quaff fly
+Sat Oct 10 19:17:34 2026 :: Log Alaric [2474]: east
+Sat Oct 10 19:17:34 2026 :: Log Alaric [2473]: arrived (Magic Street.) from 2474
+Sat Oct 10 19:17:34 2026 :: Log Alaric [2473]: south
+Sat Oct 10 19:17:34 2026 :: Log Alaric [2472]: arrived (Corner of Wizards Way and Magic Street.) from 2473
+Sat Oct 10 19:17:34 2026 :: Log Alaric [2472]: east
+Sat Oct 10 19:17:34 2026 :: Log Alaric [2471]: arrived (Wizards Way.) from 2472
+Sat Oct 10 19:17:35 2026 :: Log Alaric [2471]: east
+Sat Oct 10 19:17:35 2026 :: Log Alaric [2470]: arrived (Wizards Way.) from 2471
+Sat Oct 10 19:17:35 2026 :: Log Alaric [2470]: east
+Sat Oct 10 19:17:35 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2470
+Sat Oct 10 19:17:35 2026 :: Log Alaric [2415]: south
+Sat Oct 10 19:17:35 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2415
+Sat Oct 10 19:17:35 2026 :: Log Alaric [2402]: east
+Sat Oct 10 19:17:35 2026 :: Log Alaric [2407]: arrived (Northeastern Oak Tree Square.) from 2402
+Sat Oct 10 19:17:36 2026 :: Log Alaric [2407]: south
+Sat Oct 10 19:17:36 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2407
+Sat Oct 10 19:17:36 2026 :: Log Alaric [2403]: east
+Sat Oct 10 19:17:36 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Oct 10 19:17:36 2026 :: Log Alaric [2420]: east
+Sat Oct 10 19:17:36 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Oct 10 19:17:36 2026 :: Log Alaric [2421]: east
+Sat Oct 10 19:17:36 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sat Oct 10 19:17:37 2026 :: Log Alaric [2422]: east
+Sat Oct 10 19:17:37 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sat Oct 10 19:17:37 2026 :: Log Alaric [2423]: east
+Sat Oct 10 19:17:37 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sat Oct 10 19:17:37 2026 :: Log Alaric [2424]: east
+Sat Oct 10 19:17:37 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Oct 10 19:17:37 2026 :: Log Alaric [2425]: east
+Sat Oct 10 19:17:37 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Oct 10 19:17:38 2026 :: Log Alaric [2426]: open east
+Sat Oct 10 19:17:38 2026 :: Log Alaric [2426]: east
+Sat Oct 10 19:17:38 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Oct 10 19:17:40 2026 :: Log Alaric [2440]: east
+Sat Oct 10 19:17:40 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sat Oct 10 19:17:40 2026 :: Log Alaric [3503]: east
+Sat Oct 10 19:17:40 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sat Oct 10 19:17:40 2026 :: Log Alaric [3502]: east
+Sat Oct 10 19:17:40 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Sat Oct 10 19:17:41 2026 :: Log Alaric [3525]: east
+Sat Oct 10 19:17:41 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Sat Oct 10 19:17:41 2026 :: Log Alaric [3526]: south
+Sat Oct 10 19:17:41 2026 :: Log Alaric [55]: arrived (Dusty Path) from 3526
+Sat Oct 10 19:17:41 2026 :: Log Alaric [55]: east
+Sat Oct 10 19:17:41 2026 :: Log Alaric [1501]: arrived (Entrance to Gnome Village) from 55
+Sat Oct 10 19:17:41 2026 :: Log Alaric [1501]: east
+Sat Oct 10 19:17:41 2026 :: Log Alaric [1502]: arrived (A Dusty Path) from 1501
+Sat Oct 10 19:17:42 2026 :: Log Alaric [1502]: east
+Sat Oct 10 19:17:42 2026 :: Log Alaric [1503]: arrived (A Road in the Village) from 1502
+Sat Oct 10 19:17:42 2026 :: Log Alaric [1503]: south
+Sat Oct 10 19:17:42 2026 :: Log Alaric [1507]: arrived (A Road in the Village) from 1503
+Sat Oct 10 19:17:42 2026 :: Log Alaric [1507]: south
+Sat Oct 10 19:17:42 2026 :: Log Alaric [1508]: arrived (A Road in the Village) from 1507
+Sat Oct 10 19:17:42 2026 :: Log Alaric [1508]: south
+Sat Oct 10 19:17:42 2026 :: Log Alaric [1517]: arrived (Path by a Stream) from 1508
+Sat Oct 10 19:17:43 2026 :: Log Alaric [1517]: south
+Sat Oct 10 19:17:43 2026 :: Log Alaric [1520]: arrived (On the Stream) from 1517
+Sat Oct 10 19:17:43 2026 :: Log Alaric [1520]: south
+Sat Oct 10 19:17:43 2026 :: Log Alaric [1522]: arrived (The Field of Mice's Dreams) from 1520
+Sat Oct 10 19:17:43 2026 :: Log Alaric [1522]: south
+Sat Oct 10 19:17:43 2026 :: Log Alaric [24001]: arrived (Forest Clearing) from 1522
+Sat Oct 10 19:17:48 2026 :: Log Alaric [24001]: open down
+Sat Oct 10 19:17:48 2026 :: Log Alaric [24001]: ex
+Sat Oct 10 19:17:50 2026 :: Log Alaric [24001]: d
+Sat Oct 10 19:17:50 2026 :: Log Alaric [24002]: arrived (Entrance Hall) from 24001
+Sat Oct 10 19:17:53 2026 :: Log Alaric [24002]: on
+Sat Oct 10 19:17:53 2026 :: Log Alaric [24002]: os
+Sat Oct 10 19:17:54 2026 :: Log Alaric [24002]: ow
+Sat Oct 10 19:17:55 2026 :: Log Alaric [24002]: scan
+Sat Oct 10 19:17:55 2026 :: Log Alaric [24002]: ex
+Sat Oct 10 19:17:57 2026 :: Log Alaric [24002]: d
+Sat Oct 10 19:17:58 2026 :: Log Alaric [24002]: l
+Sat Oct 10 19:18:00 2026 :: Log Alaric [24002]: n
+Sat Oct 10 19:18:00 2026 :: Log Alaric [24003]: arrived (Puck's Room) from 24002
+Sat Oct 10 19:18:01 2026 :: Log Alaric [24003]: s
+Sat Oct 10 19:18:01 2026 :: Log Alaric [24002]: arrived (Entrance Hall) from 24003
+Sat Oct 10 19:18:02 2026 :: Log Alaric [24002]: w
+Sat Oct 10 19:18:02 2026 :: Log Alaric [24006]: arrived (Guarded Burrow) from 24002
+Sat Oct 10 19:18:03 2026 :: Log Alaric [24006]: os
+Sat Oct 10 19:18:04 2026 :: Log Alaric [24006]: s
+Sat Oct 10 19:18:08 2026 :: Log Alaric [24006]: bs br
+Sat Oct 10 19:18:18 2026 :: Log Alaric [24006]: killed a stern brownie
+Sat Oct 10 19:18:18 2026 :: Log Alaric [24006]: coin +1 platinum
+Sat Oct 10 19:18:18 2026 :: Log Alaric [24006]: coin +5 silver
+Sat Oct 10 19:18:18 2026 :: Log Alaric [24006]: coin +6 copper
+Sat Oct 10 19:18:18 2026 :: Log Alaric [24006]: coin +2 gold
+Sat Oct 10 19:18:25 2026 :: Log Alaric [24006]: bs br
+Sat Oct 10 19:18:27 2026 :: Log Alaric [24006]: bash
+Sat Oct 10 19:18:33 2026 :: Log Alaric [24006]: killed a stern brownie
+Sat Oct 10 19:18:33 2026 :: Log Alaric [24006]: coin +1 platinum
+Sat Oct 10 19:18:33 2026 :: Log Alaric [24006]: coin +5 silver
+Sat Oct 10 19:18:33 2026 :: Log Alaric [24006]: coin +6 copper
+Sat Oct 10 19:18:33 2026 :: Log Alaric [24006]: coin +2 gold
+Sat Oct 10 19:18:42 2026 :: Log Alaric [24006]: l i cor
+Sat Oct 10 19:18:44 2026 :: Log Alaric [24006]: sac cor
+Sat Oct 10 19:18:44 2026 :: Log Alaric [24006]: coin +26 copper
+Sat Oct 10 19:18:45 2026 :: Log Alaric [24006]: l i cor
+Sat Oct 10 19:18:47 2026 :: Log Alaric [24006]: get ke cor
+Sat Oct 10 19:18:49 2026 :: Log Alaric [24006]: unl south
+Sat Oct 10 19:18:49 2026 :: Log Alaric [24006]: os
+Sat Oct 10 19:18:50 2026 :: Log Alaric [24006]: s
+Sat Oct 10 19:18:50 2026 :: Log Alaric [24008]: arrived (Hall of the Faerie Queen) from 24006
+Sat Oct 10 19:18:52 2026 :: Log Alaric [24008]: look qu
+Sat Oct 10 19:18:54 2026 :: Log Alaric [24008]: bs qu
+Sat Oct 10 19:19:29 2026 :: Log Alaric [24008]: look qu
+Sat Oct 10 19:19:33 2026 :: Log Alaric [24008]: killed the Faerie Queen
+Sat Oct 10 19:19:33 2026 :: Log Alaric [24008]: coin +5 platinum
+Sat Oct 10 19:19:33 2026 :: Log Alaric [24008]: coin +25 silver
+Sat Oct 10 19:19:33 2026 :: Log Alaric [24008]: coin +34 copper
+Sat Oct 10 19:19:33 2026 :: Log Alaric [24008]: coin +14 gold
+Sat Oct 10 19:19:35 2026 :: Log Alaric [24008]: get ball cor
+Sat Oct 10 19:19:36 2026 :: Log Alaric [24008]: sc
+Sat Oct 10 19:19:37 2026 :: Log Alaric [24008]: wear ball
+Sat Oct 10 19:19:38 2026 :: Log Alaric [24008]: sc
