@@ -73013,3 +73013,116 @@ Sat Oct 10 12:19:56 2026 :: Log Alaric [9513]: s
 Sat Oct 10 12:19:56 2026 :: Log Alaric [9511]: arrived (Outside the Southern Gate of New Thalos) from 9513
 Sat Oct 10 12:20:00 2026 :: Log Alaric [9511]: look lam
 Sat Oct 10 12:20:12 2026 :: Log Alaric [9511]: look lamia
+Sat Oct 10 12:20:47 2026 :: Log Alaric [9511]: killed the raggety dervish
+Sat Oct 10 12:20:53 2026 :: Log Alaric [9511]: look lam
+Sat Oct 10 12:21:29 2026 :: Log Alaric [9511]: killed the lamia
+Sat Oct 10 12:21:32 2026 :: Log Alaric [9511]: l i cor
+Sat Oct 10 12:21:41 2026 :: Log Alaric [9511]: killed the dirt devil
+Sat Oct 10 12:22:32 2026 :: Log Alaric [9511]: recal
+Sat Oct 10 12:22:32 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 9511
+Sat Oct 10 12:22:32 2026 :: Log Alaric [4207]: w
+Sat Oct 10 12:22:32 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sat Oct 10 12:22:34 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:22:34 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:22:37 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:22:37 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:22:40 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:22:40 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:22:43 2026 :: Log Alaric [4208]: r e 4
+Sat Oct 10 12:22:43 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sat Oct 10 12:22:43 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 12:22:43 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 10 12:22:43 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sat Oct 10 12:22:43 2026 :: Log Alaric [2427]: n
+Sat Oct 10 12:22:43 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 10 12:22:43 2026 :: Log Alaric [2404]: n
+Sat Oct 10 12:22:43 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Oct 10 12:22:43 2026 :: Log Alaric [2401]: r e 8
+Sat Oct 10 12:22:43 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Oct 10 12:22:43 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Oct 10 12:22:43 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Oct 10 12:22:43 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sat Oct 10 12:22:43 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sat Oct 10 12:22:43 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sat Oct 10 12:22:43 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Oct 10 12:22:43 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Oct 10 12:22:44 2026 :: Log Alaric [2426]: open east
+Sat Oct 10 12:22:44 2026 :: Log Alaric [2426]: r e 3
+Sat Oct 10 12:22:44 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Oct 10 12:22:44 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sat Oct 10 12:22:44 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sat Oct 10 12:22:44 2026 :: Log Alaric [3502]: r s 4
+Sat Oct 10 12:22:44 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 3502
+Sat Oct 10 12:22:44 2026 :: Log Alaric [5260]: arrived (The dwarf forest) from 5261
+Sat Oct 10 12:22:44 2026 :: Log Alaric [5259]: arrived (The dwarf forest) from 5260
+Sat Oct 10 12:22:44 2026 :: Log Alaric [5258]: arrived (The dwarf forest) from 5259
+Sat Oct 10 12:22:44 2026 :: Log Alaric [5258]: r w 4
+Sat Oct 10 12:22:44 2026 :: Log Alaric [5257]: arrived (A trail at the end of the dwarf forest) from 5258
+Sat Oct 10 12:22:44 2026 :: Log Alaric [5256]: arrived (A trail at the end of the dwarf forest) from 5257
+Sat Oct 10 12:22:44 2026 :: Log Alaric [5200]: arrived (The Grand Gate of Thalos) from 5256
+Sat Oct 10 12:22:44 2026 :: Log Alaric [5201]: arrived (Main Street) from 5200
+Sat Oct 10 12:22:50 2026 :: Log Alaric [5201]: scan
+Sat Oct 10 12:22:56 2026 :: Log Alaric [5201]: ex
+Sat Oct 10 12:22:57 2026 :: Log Alaric [5201]: s
+Sat Oct 10 12:22:57 2026 :: Log Alaric [5255]: arrived (A back alley) from 5201
+Sat Oct 10 12:22:58 2026 :: Log Alaric [5255]: scan
+Sat Oct 10 12:22:59 2026 :: Log Alaric [5255]: s
+Sat Oct 10 12:22:59 2026 :: Log Alaric [5253]: arrived (A back alley) from 5255
+Sat Oct 10 12:22:59 2026 :: Log Alaric [5253]: scan
+Sat Oct 10 12:23:00 2026 :: Log Alaric [5253]: s
+Sat Oct 10 12:23:00 2026 :: Log Alaric [5252]: arrived (Under a ruined watchtower) from 5253
+Sat Oct 10 12:23:02 2026 :: Log Alaric [5252]: where lamia
+Sat Oct 10 12:23:04 2026 :: Log Alaric [5252]: n
+Sat Oct 10 12:23:04 2026 :: Log Alaric [5253]: arrived (A back alley) from 5252
+Sat Oct 10 12:23:06 2026 :: Log Alaric [5253]: track pet
+Sat Oct 10 12:23:10 2026 :: Log Alaric [5253]: track pet lamia
+Sat Oct 10 12:23:13 2026 :: Log Alaric [5253]: l
+Sat Oct 10 12:23:15 2026 :: Log Alaric [5253]: s
+Sat Oct 10 12:23:15 2026 :: Log Alaric [5252]: arrived (Under a ruined watchtower) from 5253
+Sat Oct 10 12:23:16 2026 :: Log Alaric [5252]: scan
+Sat Oct 10 12:23:17 2026 :: Log Alaric [5252]: w
+Sat Oct 10 12:23:17 2026 :: Log Alaric [5251]: arrived (A back alley) from 5252
+Sat Oct 10 12:23:18 2026 :: Log Alaric [5251]: scan
+Sat Oct 10 12:23:19 2026 :: Log Alaric [5251]: w
+Sat Oct 10 12:23:19 2026 :: Log Alaric [5214]: arrived (A side street) from 5251
+Sat Oct 10 12:23:20 2026 :: Log Alaric [5214]: scan
+Sat Oct 10 12:23:21 2026 :: Log Alaric [5214]: look la
+Sat Oct 10 12:23:24 2026 :: Log Alaric [5214]: bs la
+Sat Oct 10 12:24:23 2026 :: Log Alaric [5214]: level 8 -> 9 (earned)
+Sat Oct 10 12:24:23 2026 :: Alaric has achieved level 9!
+Sat Oct 10 12:24:23 2026 :: Log Alaric [5214]: killed The lamia
+Sat Oct 10 12:24:23 2026 :: Log Alaric [5214]: coin +1 silver
+Sat Oct 10 12:24:23 2026 :: Log Alaric [5214]: coin +1 copper
+Sat Oct 10 12:24:35 2026 :: Sock.sinaddr:  5.161.117.52
+Sat Oct 10 12:24:35 2026 :: EOF encountered on read.
+Sat Oct 10 12:24:41 2026 :: Log Alaric [5214]: l i cor
+Sat Oct 10 12:24:42 2026 :: Log Alaric [5214]: get da cor
+Sat Oct 10 12:24:44 2026 :: Log Alaric [5214]: comp da
+Sat Oct 10 12:24:46 2026 :: Log Alaric [5214]: wear da
+Sat Oct 10 12:24:51 2026 :: Log Alaric [5214]: drop da
+Sat Oct 10 12:24:54 2026 :: Log Alaric [5214]: sc
+Sat Oct 10 12:24:55 2026 :: Log Alaric [5214]: wake
+Sat Oct 10 12:24:56 2026 :: Log Alaric [5214]: l
+Sat Oct 10 12:24:58 2026 :: Log Alaric [5214]: recal
+Sat Oct 10 12:24:58 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 5214
+Sat Oct 10 12:25:01 2026 :: Log Alaric [4207]: w
+Sat Oct 10 12:25:01 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sat Oct 10 12:25:02 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:25:02 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:25:05 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 10 12:25:05 2026 :: Log Alaric [4208]: gold -10
+Sat Oct 10 12:25:18 2026 :: Log Alaric [4208]: e
+Sat Oct 10 12:25:18 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sat Oct 10 12:25:19 2026 :: Log Alaric [4207]: u
+Sat Oct 10 12:25:19 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 4207
+Sat Oct 10 12:25:19 2026 :: Log Alaric [3700]: u
+Sat Oct 10 12:25:19 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3700
+Sat Oct 10 12:25:20 2026 :: Log Alaric [3772]: ex
+Sat Oct 10 12:25:22 2026 :: Log Alaric [3772]: u
+Sat Oct 10 12:25:22 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 3772
+Sat Oct 10 12:25:25 2026 :: Log Alaric [3795]: d
+Sat Oct 10 12:25:25 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3795
+Sat Oct 10 12:25:25 2026 :: Log Alaric [3772]: ex
+Sat Oct 10 12:25:26 2026 :: Log Alaric [3772]: e
+Sat Oct 10 12:25:26 2026 :: Log Alaric [3773]: arrived (Newbie Train Still In The Station) from 3772
+Sat Oct 10 12:25:31 2026 :: Log Alaric [3774]: arrived (Newbie Train - Mob Factory Stop) from 3773
