@@ -73126,3 +73126,31 @@ Sat Oct 10 12:25:25 2026 :: Log Alaric [3772]: ex
 Sat Oct 10 12:25:26 2026 :: Log Alaric [3772]: e
 Sat Oct 10 12:25:26 2026 :: Log Alaric [3773]: arrived (Newbie Train Still In The Station) from 3772
 Sat Oct 10 12:25:31 2026 :: Log Alaric [3774]: arrived (Newbie Train - Mob Factory Stop) from 3773
+Sat Oct 10 12:25:36 2026 :: Log Alaric [3775]: arrived (Newbie Train - Gang Land Stop) from 3774
+Sat Oct 10 12:25:40 2026 :: Log Alaric [3775]: e
+Sat Oct 10 12:25:40 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 3775
+Sat Oct 10 12:25:42 2026 :: Log Alaric [2101]: e
+Sat Oct 10 12:25:42 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Sat Oct 10 12:25:45 2026 :: Log Alaric [2102]: bs ga
+Sat Oct 10 12:25:53 2026 :: Log Alaric [2102]: killed a gang member
+Sat Oct 10 12:26:02 2026 :: Log Alaric [2102]: bs ga
+Sat Oct 10 12:26:20 2026 :: Log Alaric [2102]: killed a gang member
+Sat Oct 10 12:26:36 2026 :: Log Alaric [2102]: l
+Sat Oct 10 12:26:38 2026 :: Log Alaric [2102]: skil
+Sat Oct 10 12:26:43 2026 :: Log Alaric [2102]: bs va
+Sat Oct 10 12:27:47 2026 :: Log Alaric [2102]: killed a vandal
+Sat Oct 10 12:27:55 2026 :: Log Alaric [2102]: bs br
+Sat Oct 10 12:28:53 2026 :: Log Alaric [2102]: trip
+Sat Oct 10 12:28:53 2026 :: Log Alaric [2102]: killed a bruiser
+Sat Oct 10 12:29:02 2026 :: Log Alaric [2102]: look
+Sat Oct 10 12:29:05 2026 :: Log Alaric [2102]: bs ga
+Sat Oct 10 12:29:17 2026 :: Log Alaric [2102]: killed a gang member
+Sat Oct 10 12:29:30 2026 :: Log Alaric [2102]: scan
+Sat Oct 10 12:29:31 2026 :: Log Alaric [2102]: e
+Sat Oct 10 12:29:31 2026 :: Log Alaric [2103]: arrived (Along White Dragon Boulevard) from 2102
+Sat Oct 10 12:29:32 2026 :: Log Alaric [2103]: bs ga
+Sat Oct 10 12:29:40 2026 :: Sock.sinaddr:  178.156.185.231
+Sat Oct 10 12:29:40 2026 :: EOF encountered on read.
+Sat Oct 10 12:29:44 2026 :: Log Alaric [2103]: killed a gang member
+Sat Oct 10 12:30:05 2026 :: Log Alaric [2103]: killed a gang member
+Sat Oct 10 12:30:29 2026 :: Log Alaric [2103]: killed a gang member
