@@ -71936,3 +71936,83 @@ Sat Oct 10 01:49:08 2026 :: Log Alaric [2803]: coin +14 silver
 Sat Oct 10 01:49:08 2026 :: Log Alaric [2803]: coin +2 copper
 Sat Oct 10 01:49:08 2026 :: Log Alaric [2803]: bs trol
 Sat Oct 10 01:49:08 2026 :: Log Alaric [2803]: bs trol
+Sat Oct 10 01:49:13 2026 :: Log Alaric [2803]: l i cor
+Sat Oct 10 01:49:31 2026 :: Log Alaric [2803]: trip
+Sat Oct 10 01:49:44 2026 :: Log Alaric [2803]: score
+Sat Oct 10 01:49:47 2026 :: Log Alaric [2803]: trip
+Sat Oct 10 01:49:55 2026 :: Sock.sinaddr:  3.212.128.62
+Sat Oct 10 01:49:56 2026 :: EOF encountered on read.
+Sat Oct 10 01:50:01 2026 :: Log Alaric [2803]: trip
+Sat Oct 10 01:50:10 2026 :: Log Alaric [2803]: who
+Sat Oct 10 01:50:10 2026 :: Log Alaric [2803]: trip
+Sat Oct 10 01:50:21 2026 :: Log Alaric [2803]: trip
+Sat Oct 10 01:50:35 2026 :: Log Alaric [2803]: killed the medium troll
+Sat Oct 10 01:50:35 2026 :: Log Alaric [2803]: coin +6 silver
+Sat Oct 10 01:50:35 2026 :: Log Alaric [2803]: coin +2 copper
+Sat Oct 10 01:50:37 2026 :: Log Alaric [2803]: l i cor
+Sat Oct 10 01:50:39 2026 :: Log Alaric [2803]: ex
+Sat Oct 10 01:50:44 2026 :: Log Alaric [2803]: s
+Sat Oct 10 01:50:44 2026 :: Log Alaric [2805]: arrived (Troll's Bedroom) from 2803
+Sat Oct 10 01:50:44 2026 :: Log Alaric [2805]: get opal bed
+Sat Oct 10 01:50:46 2026 :: Log Alaric [2805]: wear opal
+Sat Oct 10 01:50:47 2026 :: Log Alaric [2805]: recal
+Sat Oct 10 01:50:47 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 2805
+Sat Oct 10 01:50:49 2026 :: Log Alaric [4207]: e
+Sat Oct 10 01:50:49 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 01:50:50 2026 :: Log Alaric [4202]: n
+Sat Oct 10 01:50:50 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sat Oct 10 01:50:50 2026 :: Log Alaric [4203]: n
+Sat Oct 10 01:50:50 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sat Oct 10 01:50:50 2026 :: Log Alaric [4210]: sleep
+Sat Oct 10 01:50:52 2026 :: Log Alaric [4210]: score
+Sat Oct 10 01:50:53 2026 :: Log Alaric [4210]: eq
+Sat Oct 10 01:51:15 2026 :: Log Alaric [4210]: wo
+Sat Oct 10 01:52:02 2026 :: Log Alaric [4210]: gr
+Sat Oct 10 01:53:18 2026 :: Log Alaric [4210]: wake
+Sat Oct 10 01:53:19 2026 :: Log Alaric [4210]: l
+Sat Oct 10 01:53:20 2026 :: Log Alaric [4210]: s
+Sat Oct 10 01:53:20 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sat Oct 10 01:53:20 2026 :: Log Alaric [4203]: s
+Sat Oct 10 01:53:20 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sat Oct 10 01:53:20 2026 :: Log Alaric [4202]: e
+Sat Oct 10 01:53:20 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 10 01:53:20 2026 :: Log Alaric [4201]: e
+Sat Oct 10 01:53:20 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sat Oct 10 01:53:21 2026 :: Log Alaric [2427]: s
+Sat Oct 10 01:53:21 2026 :: Log Alaric [2428]: arrived (Main Processional.) from 2427
+Sat Oct 10 01:53:21 2026 :: Log Alaric [2428]: s
+Sat Oct 10 01:53:21 2026 :: Log Alaric [2429]: arrived (Bridge of the Mermaids.) from 2428
+Sat Oct 10 01:53:21 2026 :: Log Alaric [2429]: s
+Sat Oct 10 01:53:21 2026 :: Log Alaric [2430]: arrived (Main Processional.) from 2429
+Sat Oct 10 01:53:21 2026 :: Log Alaric [2430]: s
+Sat Oct 10 01:53:21 2026 :: Log Alaric [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Sat Oct 10 01:53:22 2026 :: Log Alaric [2431]: os
+Sat Oct 10 01:53:23 2026 :: Log Alaric [2431]: s
+Sat Oct 10 01:53:23 2026 :: Log Alaric [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Sat Oct 10 01:53:23 2026 :: Log Alaric [2432]: s
+Sat Oct 10 01:53:23 2026 :: Log Alaric [3505]: arrived (The Trail to Miden'nir) from 2432
+Sat Oct 10 01:53:24 2026 :: Log Alaric [3505]: s
+Sat Oct 10 01:53:24 2026 :: Log Alaric [3507]: arrived (A Burned Cart) from 3505
+Sat Oct 10 01:53:25 2026 :: Log Alaric [3507]: ex
+Sat Oct 10 01:53:26 2026 :: Log Alaric [3507]: n
+Sat Oct 10 01:53:26 2026 :: Log Alaric [3505]: arrived (The Trail to Miden'nir) from 3507
+Sat Oct 10 01:53:26 2026 :: Log Alaric [3505]: ex
+Sat Oct 10 01:53:27 2026 :: Log Alaric [3505]: w
+Sat Oct 10 01:53:27 2026 :: Log Alaric [3570]: arrived (The Front of the Inn) from 3505
+Sat Oct 10 01:53:29 2026 :: Log Alaric [3570]: s
+Sat Oct 10 01:53:29 2026 :: Log Alaric [3572]: arrived (South of the Inn) from 3570
+Sat Oct 10 01:53:30 2026 :: Log Alaric [3572]: ex
+Sat Oct 10 01:53:31 2026 :: Log Alaric [3572]: s
+Sat Oct 10 01:53:31 2026 :: Log Alaric [3575]: arrived (The Ambush Point) from 3572
+Sat Oct 10 01:53:31 2026 :: Log Alaric [3575]: w
+Sat Oct 10 01:53:31 2026 :: Log Alaric [3581]: arrived (On the Trail of the Horsemen) from 3575
+Sat Oct 10 01:53:32 2026 :: Log Alaric [3581]: w
+Sat Oct 10 01:53:32 2026 :: Log Alaric [3582]: arrived (On the Trail of the Horsemen) from 3581
+Sat Oct 10 01:53:34 2026 :: Log Alaric [3582]: s
+Sat Oct 10 01:53:34 2026 :: Log Alaric [3583]: arrived (On the Trail of the Horsemen) from 3582
+Sat Oct 10 01:53:35 2026 :: Log Alaric [3583]: e
+Sat Oct 10 01:53:35 2026 :: Log Alaric [3583]: w
+Sat Oct 10 01:53:35 2026 :: Log Alaric [3584]: arrived (A Dead End Trail) from 3583
+Sat Oct 10 01:53:38 2026 :: Log Alaric [3584]: bs ho
+Sat Oct 10 01:53:49 2026 :: Log Alaric [3584]: look ho
+Sat Oct 10 01:53:53 2026 :: Log Alaric [3584]: trip
