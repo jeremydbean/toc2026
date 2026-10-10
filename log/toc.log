@@ -73309,3 +73309,86 @@ Sat Oct 10 12:40:30 2026 :: Log Alaric [29011]: l i cor
 Sat Oct 10 12:40:31 2026 :: Log Alaric [29011]: l
 Sat Oct 10 12:40:34 2026 :: Log Alaric [29011]: n
 Sat Oct 10 12:40:34 2026 :: Log Alaric [29012]: arrived (Hallway through the Barracks) from 29011
+Sat Oct 10 12:40:39 2026 :: Log Alaric [29012]: bs so
+Sat Oct 10 12:40:42 2026 :: Log Alaric [29012]: killed a Soldier
+Sat Oct 10 12:40:42 2026 :: Log Alaric [29012]: coin +2 silver
+Sat Oct 10 12:40:42 2026 :: Log Alaric [29012]: coin +3 copper
+Sat Oct 10 12:40:42 2026 :: Log Alaric [29012]: coin +1 gold
+Sat Oct 10 12:40:52 2026 :: Log Alaric [29012]: l i cor
+Sat Oct 10 12:40:53 2026 :: Log Alaric [29012]: w
+Sat Oct 10 12:40:53 2026 :: Log Alaric [29013]: arrived (Hallway through the Barracks) from 29012
+Sat Oct 10 12:40:56 2026 :: Log Alaric [29013]: bs gu
+Sat Oct 10 12:41:21 2026 :: Log Alaric [29013]: killed an Orc guard
+Sat Oct 10 12:41:21 2026 :: Log Alaric [29013]: coin +2 silver
+Sat Oct 10 12:41:21 2026 :: Log Alaric [29013]: coin +3 copper
+Sat Oct 10 12:41:21 2026 :: Log Alaric [29013]: coin +1 gold
+Sat Oct 10 12:41:28 2026 :: Log Alaric [29013]: l i cor
+Sat Oct 10 12:41:33 2026 :: Log Alaric [29013]: eq
+Sat Oct 10 12:41:36 2026 :: Log Alaric [29013]: l
+Sat Oct 10 12:41:39 2026 :: Log Alaric [29013]: w
+Sat Oct 10 12:41:39 2026 :: Log Alaric [29016]: arrived (Hallway through the Barracks) from 29013
+Sat Oct 10 12:41:40 2026 :: Log Alaric [29016]: w
+Sat Oct 10 12:41:40 2026 :: Log Alaric [29017]: arrived (Hallway through the Barracks) from 29016
+Sat Oct 10 12:41:41 2026 :: Log Alaric [29017]: w
+Sat Oct 10 12:41:41 2026 :: Log Alaric [29020]: arrived (Hallway through the Barracks) from 29017
+Sat Oct 10 12:41:42 2026 :: Log Alaric [29020]: w
+Sat Oct 10 12:41:42 2026 :: Log Alaric [29021]: arrived (End of the Barracks) from 29020
+Sat Oct 10 12:41:44 2026 :: Log Alaric [29021]: w
+Sat Oct 10 12:41:45 2026 :: Log Alaric [29021]: n
+Sat Oct 10 12:41:45 2026 :: Log Alaric [29024]: arrived (Hallway) from 29021
+Sat Oct 10 12:41:47 2026 :: Log Alaric [29024]: n
+Sat Oct 10 12:41:47 2026 :: Log Alaric [29025]: arrived (Servant's Apartments) from 29024
+Sat Oct 10 12:41:49 2026 :: Log Alaric [29025]: bs ser
+Sat Oct 10 12:42:25 2026 :: Log Alaric [29025]: skil
+Sat Oct 10 12:42:25 2026 :: Log Alaric [29025]: trip
+Sat Oct 10 12:42:42 2026 :: Log Alaric [29025]: s
+Sat Oct 10 12:42:42 2026 :: Log Alaric [29024]: arrived (Hallway) from 29025
+Sat Oct 10 12:42:42 2026 :: Log Alaric [29024]: kill ser
+Sat Oct 10 12:42:47 2026 :: Log Alaric [29024]: n
+Sat Oct 10 12:42:47 2026 :: Log Alaric [29025]: arrived (Servant's Apartments) from 29024
+Sat Oct 10 12:42:47 2026 :: Log Alaric [29025]: kill ser
+Sat Oct 10 12:42:47 2026 :: Log Alaric [29025]: killed a servant
+Sat Oct 10 12:42:47 2026 :: Log Alaric [29025]: coin +3 silver
+Sat Oct 10 12:42:47 2026 :: Log Alaric [29025]: coin +5 copper
+Sat Oct 10 12:42:47 2026 :: Log Alaric [29025]: coin +2 gold
+Sat Oct 10 12:42:53 2026 :: Log Alaric [29025]: l i cor
+Sat Oct 10 12:42:55 2026 :: Log Alaric [29025]: get all cor
+Sat Oct 10 12:42:57 2026 :: Log Alaric [29025]: comp tray
+Sat Oct 10 12:42:59 2026 :: Log Alaric [29025]: wear tr
+Sat Oct 10 12:43:01 2026 :: Log Alaric [29025]: comp glov
+Sat Oct 10 12:43:07 2026 :: Log Alaric [29025]: wear gl
+Sat Oct 10 12:43:10 2026 :: Log Alaric [29025]: i
+Sat Oct 10 12:43:16 2026 :: Log Alaric [29025]: l
+Sat Oct 10 12:43:17 2026 :: Log Alaric [29025]: n
+Sat Oct 10 12:43:17 2026 :: Log Alaric [29030]: arrived (Hallway) from 29025
+Sat Oct 10 12:43:19 2026 :: Log Alaric [29030]: bs ser
+Sat Oct 10 12:44:21 2026 :: Log Alaric [29030]: trip
+Sat Oct 10 12:44:26 2026 :: Log Alaric [29030]: n
+Sat Oct 10 12:44:26 2026 :: Log Alaric [29031]: arrived (Main Intersection) from 29030
+Sat Oct 10 12:44:28 2026 :: Log Alaric [29031]: kill ser
+Sat Oct 10 12:44:37 2026 :: Log Alaric [29031]: w
+Sat Oct 10 12:44:37 2026 :: Log Alaric [29039]: arrived (Dining Hall) from 29031
+Sat Oct 10 12:44:37 2026 :: Log Alaric [29039]: kill ser
+Sat Oct 10 12:44:44 2026 :: Log Alaric [29039]: e
+Sat Oct 10 12:44:44 2026 :: Log Alaric [29031]: arrived (Main Intersection) from 29039
+Sat Oct 10 12:44:44 2026 :: Log Alaric [29031]: kill ser
+Sat Oct 10 12:44:46 2026 :: Log Alaric [29031]: level 9 -> 10 (earned)
+Sat Oct 10 12:44:46 2026 :: Alaric has achieved level 10!
+Sat Oct 10 12:44:46 2026 :: Log Alaric [29031]: killed a servant
+Sat Oct 10 12:44:46 2026 :: Log Alaric [29031]: coin +3 silver
+Sat Oct 10 12:44:46 2026 :: Log Alaric [29031]: coin +5 copper
+Sat Oct 10 12:44:46 2026 :: Log Alaric [29031]: coin +2 gold
+Sat Oct 10 12:44:53 2026 :: Log Alaric [29031]: l i cor
+Sat Oct 10 12:44:54 2026 :: Sock.sinaddr:  5.161.117.52
+Sat Oct 10 12:44:54 2026 :: EOF encountered on read.
+Sat Oct 10 12:44:54 2026 :: Log Alaric [29031]: wear gl
+Sat Oct 10 12:44:57 2026 :: Log Alaric [29031]: drop su
+Sat Oct 10 12:45:00 2026 :: Log Alaric [29031]: n
+Sat Oct 10 12:45:00 2026 :: Log Alaric [29044]: arrived (Path to Main Apartments) from 29031
+Sat Oct 10 12:45:01 2026 :: Log Alaric [29044]: e
+Sat Oct 10 12:45:01 2026 :: Log Alaric [29045]: arrived (Path to Main Apartments) from 29044
+Sat Oct 10 12:45:03 2026 :: Log Alaric [29045]: scan
+Sat Oct 10 12:45:04 2026 :: Log Alaric [29045]: n
+Sat Oct 10 12:45:04 2026 :: Log Alaric [29046]: arrived (Path to Main Apartments) from 29045
+Sat Oct 10 12:45:05 2026 :: Log Alaric [29046]: look gu
+Sat Oct 10 12:45:08 2026 :: Log Alaric [29046]: bs gu
