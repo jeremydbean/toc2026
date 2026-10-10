@@ -71363,3 +71363,135 @@ Sat Oct 10 01:23:25 2026 :: Log Alaric [3786]: l i cor
 Sat Oct 10 01:23:26 2026 :: Log Alaric [3786]: bs st
 Sat Oct 10 01:23:42 2026 :: Log Alaric [3786]: killed the student
 Sat Oct 10 01:23:50 2026 :: Log Alaric [3786]: l i cor
+Sat Oct 10 01:23:52 2026 :: Log Alaric [3786]: e
+Sat Oct 10 01:23:52 2026 :: Log Alaric [3784]: arrived (The Hallway) from 3786
+Sat Oct 10 01:23:52 2026 :: Log Alaric [3784]: e
+Sat Oct 10 01:23:52 2026 :: Log Alaric [3785]: arrived (A Classroom) from 3784
+Sat Oct 10 01:23:53 2026 :: Log Alaric [3785]: look st
+Sat Oct 10 01:23:55 2026 :: Log Alaric [3785]: bs st
+Sat Oct 10 01:24:00 2026 :: Log Alaric [3785]: killed the sleeping student
+Sat Oct 10 01:24:09 2026 :: Log Alaric [3785]: w
+Sat Oct 10 01:24:09 2026 :: Log Alaric [3784]: arrived (The Hallway) from 3785
+Sat Oct 10 01:24:09 2026 :: Log Alaric [3784]: n
+Sat Oct 10 01:24:09 2026 :: Log Alaric [3787]: arrived (A hallway) from 3784
+Sat Oct 10 01:24:09 2026 :: Log Alaric [3787]: w
+Sat Oct 10 01:24:09 2026 :: Log Alaric [3789]: arrived (The clasroom) from 3787
+Sat Oct 10 01:24:09 2026 :: Log Alaric [3789]: look st
+Sat Oct 10 01:24:11 2026 :: Log Alaric [3789]: e
+Sat Oct 10 01:24:11 2026 :: Log Alaric [3787]: arrived (A hallway) from 3789
+Sat Oct 10 01:24:12 2026 :: Log Alaric [3787]: e
+Sat Oct 10 01:24:12 2026 :: Log Alaric [3788]: arrived (A classroom) from 3787
+Sat Oct 10 01:24:12 2026 :: Log Alaric [3788]: look st
+Sat Oct 10 01:24:14 2026 :: Log Alaric [3788]: w
+Sat Oct 10 01:24:14 2026 :: Log Alaric [3787]: arrived (A hallway) from 3788
+Sat Oct 10 01:24:17 2026 :: Log Alaric [3787]: n
+Sat Oct 10 01:24:17 2026 :: Log Alaric [3790]: arrived (The gym) from 3787
+Sat Oct 10 01:24:19 2026 :: Log Alaric [3790]: look st
+Sat Oct 10 01:24:20 2026 :: Log Alaric [3790]: s
+Sat Oct 10 01:24:20 2026 :: Log Alaric [3787]: arrived (A hallway) from 3790
+Sat Oct 10 01:24:20 2026 :: Log Alaric [3787]: u
+Sat Oct 10 01:24:20 2026 :: Log Alaric [3200]: arrived (At the top of the stairs.) from 3787
+Sat Oct 10 01:24:21 2026 :: Log Alaric [3200]: s
+Sat Oct 10 01:24:21 2026 :: Log Alaric [3201]: arrived (The hallway.) from 3200
+Sat Oct 10 01:24:22 2026 :: Log Alaric [3201]: w
+Sat Oct 10 01:24:22 2026 :: Log Alaric [3210]: arrived (Warrior's classroom.) from 3201
+Sat Oct 10 01:24:23 2026 :: Log Alaric [3210]: look st
+Sat Oct 10 01:24:27 2026 :: Log Alaric [3210]: bs st
+Sat Oct 10 01:24:31 2026 :: Sock.sinaddr:  178.156.185.231
+Sat Oct 10 01:24:31 2026 :: EOF encountered on read.
+Sat Oct 10 01:25:00 2026 :: Log Alaric [3210]: killed a student
+Sat Oct 10 01:25:53 2026 :: Log Alaric [3210]: l i cor
+Sat Oct 10 01:25:53 2026 :: Log Alaric [3210]: get shi cor
+Sat Oct 10 01:25:53 2026 :: Log Alaric [3210]: wear shi
+Sat Oct 10 01:25:56 2026 :: Log Alaric [3210]: e
+Sat Oct 10 01:25:56 2026 :: Log Alaric [3201]: arrived (The hallway.) from 3210
+Sat Oct 10 01:25:56 2026 :: Log Alaric [3201]: e
+Sat Oct 10 01:25:56 2026 :: Log Alaric [3211]: arrived (Cleric's classroom.) from 3201
+Sat Oct 10 01:25:57 2026 :: Log Alaric [3211]: look st
+Sat Oct 10 01:25:59 2026 :: Log Alaric [3211]: w
+Sat Oct 10 01:25:59 2026 :: Log Alaric [3201]: arrived (The hallway.) from 3211
+Sat Oct 10 01:25:59 2026 :: Log Alaric [3201]: s
+Sat Oct 10 01:25:59 2026 :: Log Alaric [3202]: arrived (The hallway.) from 3201
+Sat Oct 10 01:25:59 2026 :: Log Alaric [3202]: w
+Sat Oct 10 01:25:59 2026 :: Log Alaric [3212]: arrived (Thief's classroom.) from 3202
+Sat Oct 10 01:26:01 2026 :: Log Alaric [3212]: look st
+Sat Oct 10 01:26:03 2026 :: Log Alaric [3212]: bs st
+Sat Oct 10 01:26:21 2026 :: Log Alaric [3212]: killed a student thief
+Sat Oct 10 01:26:30 2026 :: Log Alaric [3212]: get da cor
+Sat Oct 10 01:26:30 2026 :: Log Alaric [3212]: wear da
+Sat Oct 10 01:26:32 2026 :: Log Alaric [3212]: wo
+Sat Oct 10 01:26:33 2026 :: Log Alaric [3212]: bs st
+Sat Oct 10 01:26:39 2026 :: Log Alaric [3212]: killed a student thief
+Sat Oct 10 01:26:48 2026 :: Log Alaric [3212]: l
+Sat Oct 10 01:26:49 2026 :: Log Alaric [3212]: wo
+Sat Oct 10 01:26:50 2026 :: Log Alaric [3212]: e
+Sat Oct 10 01:26:50 2026 :: Log Alaric [3202]: arrived (The hallway.) from 3212
+Sat Oct 10 01:26:51 2026 :: Log Alaric [3202]: e
+Sat Oct 10 01:26:51 2026 :: Log Alaric [3213]: arrived (Mage's classroom.) from 3202
+Sat Oct 10 01:26:52 2026 :: Log Alaric [3213]: bs st
+Sat Oct 10 01:26:54 2026 :: Log Alaric [3213]: level 4 -> 5 (earned)
+Sat Oct 10 01:26:54 2026 :: Alaric has achieved level 5!
+Sat Oct 10 01:26:54 2026 :: Log Alaric [3213]: killed a student of magic
+Sat Oct 10 01:27:02 2026 :: Log Alaric [3213]: bs st
+Sat Oct 10 01:27:09 2026 :: Log Alaric [3213]: killed a student of magic
+Sat Oct 10 01:27:14 2026 :: Log Alaric [3213]: l i cor
+Sat Oct 10 01:27:15 2026 :: Log Alaric [3213]: l i 2.cor
+Sat Oct 10 01:27:17 2026 :: Log Alaric [3213]: w
+Sat Oct 10 01:27:17 2026 :: Log Alaric [3202]: arrived (The hallway.) from 3213
+Sat Oct 10 01:27:17 2026 :: Log Alaric [3202]: n
+Sat Oct 10 01:27:17 2026 :: Log Alaric [3201]: arrived (The hallway.) from 3202
+Sat Oct 10 01:27:19 2026 :: Log Alaric [3201]: d
+Sat Oct 10 01:27:19 2026 :: Log Alaric [3201]: n
+Sat Oct 10 01:27:19 2026 :: Log Alaric [3200]: arrived (At the top of the stairs.) from 3201
+Sat Oct 10 01:27:20 2026 :: Log Alaric [3200]: d
+Sat Oct 10 01:27:20 2026 :: Log Alaric [3787]: arrived (A hallway) from 3200
+Sat Oct 10 01:27:20 2026 :: Log Alaric [3787]: s
+Sat Oct 10 01:27:20 2026 :: Log Alaric [3784]: arrived (The Hallway) from 3787
+Sat Oct 10 01:27:21 2026 :: Log Alaric [3784]: s
+Sat Oct 10 01:27:21 2026 :: Log Alaric [3717]: arrived (A Room in Mud School) from 3784
+Sat Oct 10 01:27:22 2026 :: Log Alaric [3717]: e
+Sat Oct 10 01:27:23 2026 :: Log Alaric [3717]: oe
+Sat Oct 10 01:27:25 2026 :: Log Alaric [3717]: e
+Sat Oct 10 01:27:25 2026 :: Log Alaric [3719]: arrived (A Room in Mud School) from 3717
+Sat Oct 10 01:27:26 2026 :: Log Alaric [3719]: n
+Sat Oct 10 01:27:26 2026 :: Log Alaric [3720]: arrived (The Darkened Room) from 3719
+Sat Oct 10 01:27:27 2026 :: Log Alaric [3720]: bs cl
+Sat Oct 10 01:27:27 2026 :: Log Alaric [3720]: killed the clown
+Sat Oct 10 01:27:35 2026 :: Log Alaric [3720]: l i cor
+Sat Oct 10 01:27:36 2026 :: Log Alaric [3720]: get key cor
+Sat Oct 10 01:27:38 2026 :: Log Alaric [3720]: get all cor
+Sat Oct 10 01:27:39 2026 :: Log Alaric [3720]: wear all
+Sat Oct 10 01:27:40 2026 :: Log Alaric [3720]: s
+Sat Oct 10 01:27:40 2026 :: Log Alaric [3719]: arrived (A Room in Mud School) from 3720
+Sat Oct 10 01:27:41 2026 :: Log Alaric [3719]: unl east
+Sat Oct 10 01:27:42 2026 :: Log Alaric [3719]: oe
+Sat Oct 10 01:27:43 2026 :: Log Alaric [3719]: e
+Sat Oct 10 01:27:43 2026 :: Log Alaric [3721]: arrived (The End of Mud School!) from 3719
+Sat Oct 10 01:27:44 2026 :: Log Alaric [3721]: bs go
+Sat Oct 10 01:27:53 2026 :: Log Alaric [3721]: gr
+Sat Oct 10 01:28:01 2026 :: Log Alaric [3721]: score
+Sat Oct 10 01:28:07 2026 :: Log Alaric [3721]: worth
+Sat Oct 10 01:28:12 2026 :: Log Alaric [3721]: killed the educated goblin
+Sat Oct 10 01:28:12 2026 :: Log Alaric [3721]: coin +1 copper
+Sat Oct 10 01:28:14 2026 :: Log Alaric [3721]: l i cor
+Sat Oct 10 01:28:17 2026 :: Log Alaric [3721]: get all cor
+Sat Oct 10 01:28:19 2026 :: Log Alaric [3721]: stash put dip
+Sat Oct 10 01:28:19 2026 :: Log Alaric [3721]: stashed a mud school diploma (vnum 3715)
+Sat Oct 10 01:28:20 2026 :: Log Alaric [3721]: eq
+Sat Oct 10 01:28:21 2026 :: Log Alaric [3721]: l
+Sat Oct 10 01:28:23 2026 :: Log Alaric [3721]: on
+Sat Oct 10 01:28:23 2026 :: Log Alaric [3721]: ex
+Sat Oct 10 01:28:25 2026 :: Log Alaric [3721]: n
+Sat Oct 10 01:28:25 2026 :: Log Alaric [3722]: arrived (South Wall of Arena) from 3721
+Sat Oct 10 01:28:26 2026 :: Log Alaric [3722]: w
+Sat Oct 10 01:28:26 2026 :: Log Alaric [3723]: arrived (South Wall of Arena) from 3722
+Sat Oct 10 01:28:27 2026 :: Log Alaric [3723]: n
+Sat Oct 10 01:28:27 2026 :: Log Alaric [3728]: arrived (Arena) from 3723
+Sat Oct 10 01:28:27 2026 :: Log Alaric [3728]: n
+Sat Oct 10 01:28:27 2026 :: Log Alaric [3733]: arrived (Arena) from 3728
+Sat Oct 10 01:28:28 2026 :: Log Alaric [3733]: n
+Sat Oct 10 01:28:28 2026 :: Log Alaric [3738]: arrived (Arena) from 3733
+Sat Oct 10 01:28:30 2026 :: Log Alaric [3738]: bs sn
+Sat Oct 10 01:28:30 2026 :: Log Alaric [3738]: killed the snail
+Sat Oct 10 01:28:30 2026 :: Log Alaric [3738]: coin +1 copper
+Sat Oct 10 01:28:38 2026 :: Log Alaric [3738]: bs bo
