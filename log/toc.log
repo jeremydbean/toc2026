@@ -79810,3 +79810,118 @@ Sat Oct 10 21:29:00 2026 :: Log Alaric [7580]: arrived (Before the temple) from 
 Sat Oct 10 21:33:08 2026 :: Sock.sinaddr:  5.161.177.47
 Sat Oct 10 21:33:08 2026 :: EOF encountered on read.
 Sat Oct 10 21:33:56 2026 :: Sock.sinaddr:  45.79.8.221
+Sat Oct 10 21:37:35 2026 :: Log Alaric [7580]: l
+Sat Oct 10 21:37:36 2026 :: Log Alaric [7580]: w
+Sat Oct 10 21:37:36 2026 :: Log Alaric [7581]: arrived (In the temple) from 7580
+Sat Oct 10 21:37:38 2026 :: Log Alaric [7581]: w
+Sat Oct 10 21:37:38 2026 :: Log Alaric [7586]: arrived (A hallway) from 7581
+Sat Oct 10 21:37:40 2026 :: Log Alaric [7586]: u
+Sat Oct 10 21:37:41 2026 :: Log Alaric [7586]: open up
+Sat Oct 10 21:37:42 2026 :: Log Alaric [7586]: u
+Sat Oct 10 21:37:42 2026 :: Log Alaric [7597]: arrived (On a spiral staircase) from 7586
+Sat Oct 10 21:37:43 2026 :: Log Alaric [7597]: u
+Sat Oct 10 21:37:43 2026 :: Log Alaric [7598]: arrived (At the door) from 7597
+Sat Oct 10 21:37:45 2026 :: Log Alaric [7598]: open up
+Sat Oct 10 21:37:46 2026 :: Log Alaric [7598]: u
+Sat Oct 10 21:37:46 2026 :: Log Alaric [7599]: arrived (Study of the Sage) from 7598
+Sat Oct 10 21:37:47 2026 :: Log Alaric [7599]: prac
+Sat Oct 10 21:38:00 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:00 2026 :: Log Alaric [7599]: prac
+Sat Oct 10 21:38:03 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:04 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:04 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:04 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:04 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:05 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:05 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:05 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:06 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:06 2026 :: Log Alaric [7599]: prac
+Sat Oct 10 21:38:09 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:09 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:09 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:10 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:10 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:10 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:10 2026 :: Log Alaric [7599]: prac torm
+Sat Oct 10 21:38:14 2026 :: Sock.sinaddr:  178.156.184.20
+Sat Oct 10 21:38:14 2026 :: EOF encountered on read.
+Sat Oct 10 21:38:19 2026 :: Log Alaric [7599]: prac tele
+Sat Oct 10 21:38:22 2026 :: Log Alaric [7599]: prac mindb
+Sat Oct 10 21:38:24 2026 :: Log Alaric [7599]: prac
+Sat Oct 10 21:38:31 2026 :: Log Alaric [7599]: gain
+Sat Oct 10 21:38:32 2026 :: Log Alaric [7599]: l
+Sat Oct 10 21:38:34 2026 :: Log Alaric [7599]: recal
+Sat Oct 10 21:38:34 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 7599
+Sat Oct 10 21:38:36 2026 :: Log Alaric [4207]: e
+Sat Oct 10 21:38:36 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 21:38:36 2026 :: Log Alaric [4202]: n
+Sat Oct 10 21:38:36 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sat Oct 10 21:38:36 2026 :: Log Alaric [4203]: n
+Sat Oct 10 21:38:36 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sat Oct 10 21:38:37 2026 :: Log Alaric [4210]: sleep
+Sat Oct 10 21:38:37 2026 :: Log Alaric [4210]: gr
+Sat Oct 10 21:38:44 2026 :: Log Alaric [4210]: af
+Sat Oct 10 21:38:45 2026 :: Log Alaric [4210]: sc
+Sat Oct 10 21:40:05 2026 :: Log Alaric [4210]: gr
+Sat Oct 10 21:40:09 2026 :: Log Alaric [4210]: alias
+Sat Oct 10 21:40:19 2026 :: Log Alaric [4210]: alias delete te
+Sat Oct 10 21:40:25 2026 :: Log Alaric [4210]: alias delete cv
+Sat Oct 10 21:40:26 2026 :: Log Alaric [4210]: alias delete cw
+Sat Oct 10 21:40:27 2026 :: Log Alaric [4210]: alias delete cs
+Sat Oct 10 21:40:29 2026 :: Log Alaric [4210]: alias
+Sat Oct 10 21:40:44 2026 :: Log Alaric [4210]: to
+Sat Oct 10 21:40:45 2026 :: Log Alaric [4210]: wake
+Sat Oct 10 21:40:46 2026 :: Log Alaric [4210]: to
+Sat Oct 10 21:40:58 2026 :: Log Alaric [4210]: gr
+Sat Oct 10 21:40:59 2026 :: Log Alaric [4210]: wake
+Sat Oct 10 21:40:59 2026 :: Log Alaric [4210]: l
+Sat Oct 10 21:41:00 2026 :: Log Alaric [4210]: s
+Sat Oct 10 21:41:00 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sat Oct 10 21:41:00 2026 :: Log Alaric [4203]: s
+Sat Oct 10 21:41:00 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sat Oct 10 21:41:00 2026 :: Log Alaric [4202]: e
+Sat Oct 10 21:41:00 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 10 21:41:01 2026 :: Log Alaric [4201]: e
+Sat Oct 10 21:41:01 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sat Oct 10 21:41:01 2026 :: Log Alaric [2427]: n
+Sat Oct 10 21:41:01 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 10 21:41:01 2026 :: Log Alaric [2404]: n
+Sat Oct 10 21:41:01 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Oct 10 21:41:09 2026 :: Log Alaric [2401]: r e 8
+Sat Oct 10 21:41:09 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Oct 10 21:41:09 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Oct 10 21:41:09 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Oct 10 21:41:09 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sat Oct 10 21:41:09 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sat Oct 10 21:41:09 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sat Oct 10 21:41:09 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Oct 10 21:41:09 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Oct 10 21:41:10 2026 :: Log Alaric [2426]: oe
+Sat Oct 10 21:41:11 2026 :: Log Alaric [2426]: r e 19
+Sat Oct 10 21:41:11 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Oct 10 21:41:11 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sat Oct 10 21:41:11 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sat Oct 10 21:41:11 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Sat Oct 10 21:41:11 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Sat Oct 10 21:41:11 2026 :: Log Alaric [3527]: arrived (The Checkpoint) from 3526
+Sat Oct 10 21:41:11 2026 :: Log Alaric [3528]: arrived (Along the Eastern Road) from 3527
+Sat Oct 10 21:41:11 2026 :: Log Alaric [3529]: arrived (Along the Eastern Road) from 3528
+Sat Oct 10 21:41:11 2026 :: Log Alaric [3530]: arrived (Near the Sands of Sorrow) from 3529
+Sat Oct 10 21:41:11 2026 :: Log Alaric [3531]: arrived (Near the Sands of Sorrow) from 3530
+Sat Oct 10 21:41:11 2026 :: Log Alaric [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Sat Oct 10 21:41:11 2026 :: Log Alaric [42]: arrived (On the Outskirts of New Thalos) from 3532
+Sat Oct 10 21:41:11 2026 :: Log Alaric [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Sat Oct 10 21:41:11 2026 :: Log Alaric [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sat Oct 10 21:41:11 2026 :: Log Alaric [9524]: arrived (West Main Street) from 9523
+Sat Oct 10 21:41:11 2026 :: Log Alaric [9525]: arrived (West Main Street) from 9524
+Sat Oct 10 21:41:11 2026 :: Log Alaric [9526]: arrived (West Main Street) from 9525
+Sat Oct 10 21:41:11 2026 :: Log Alaric [9509]: arrived (The Western Market Square) from 9526
+Sat Oct 10 21:41:11 2026 :: Log Alaric [9506]: arrived (The Center of Market Square) from 9509
+Sat Oct 10 21:41:12 2026 :: Log Alaric [9506]: r n 6
+Sat Oct 10 21:41:12 2026 :: Log Alaric [9515]: arrived (The Northern Market Square) from 9506
+Sat Oct 10 21:41:12 2026 :: Log Alaric [9518]: arrived (Sultan's Walk) from 9515
+Sat Oct 10 21:41:12 2026 :: Log Alaric [9519]: arrived (Sultan's Walk) from 9518
+Sat Oct 10 21:41:12 2026 :: Log Alaric [9520]: arrived (Sultan's Walk) from 9519
+Sat Oct 10 21:41:12 2026 :: Log Alaric [9521]: arrived (Sultan's Walk) from 9520
+Sat Oct 10 21:41:12 2026 :: Log Alaric [9522]: arrived (Inside the Northern Gate of New Thalos) from 9521
