@@ -75461,3 +75461,40 @@ Sat Oct 10 15:31:59 2026 :: Log Alaric [29042]: s
 Sat Oct 10 15:31:59 2026 :: Log Alaric [29043]: arrived (Dining Room) from 29042
 Sat Oct 10 15:31:59 2026 :: Log Alaric [29043]: kill wa
 Sat Oct 10 15:32:07 2026 :: Log Alaric [29043]: bs wa
+Sat Oct 10 15:32:24 2026 :: Sock.sinaddr:  178.156.184.20
+Sat Oct 10 15:32:24 2026 :: EOF encountered on read.
+Sat Oct 10 15:32:41 2026 :: Log Alaric [29043]: e
+Sat Oct 10 15:32:41 2026 :: Log Alaric [29040]: arrived (Dining Room) from 29043
+Sat Oct 10 15:32:41 2026 :: Log Alaric [29040]: kill wa
+Sat Oct 10 15:32:41 2026 :: Log Alaric [29040]: killed a waiter
+Sat Oct 10 15:32:41 2026 :: Log Alaric [29040]: coin +3 silver
+Sat Oct 10 15:32:41 2026 :: Log Alaric [29040]: coin +5 copper
+Sat Oct 10 15:32:41 2026 :: Log Alaric [29040]: coin +2 gold
+Sat Oct 10 15:32:46 2026 :: Log Alaric [29040]: n
+Sat Oct 10 15:32:46 2026 :: Log Alaric [29041]: arrived (Dining Room) from 29040
+Sat Oct 10 15:32:49 2026 :: Log Alaric [29041]: bs wa
+Sat Oct 10 15:33:00 2026 :: Log Alaric [29041]: killed a waiter
+Sat Oct 10 15:33:00 2026 :: Log Alaric [29041]: coin +3 silver
+Sat Oct 10 15:33:00 2026 :: Log Alaric [29041]: coin +5 copper
+Sat Oct 10 15:33:00 2026 :: Log Alaric [29041]: coin +2 gold
+Sat Oct 10 15:33:06 2026 :: Log Alaric [29041]: w
+Sat Oct 10 15:33:06 2026 :: Log Alaric [29042]: arrived (Dining Room) from 29041
+Sat Oct 10 15:33:07 2026 :: Log Alaric [29042]: kill wa
+Sat Oct 10 15:33:15 2026 :: Log Alaric [29042]: killed a waiter
+Sat Oct 10 15:33:15 2026 :: Log Alaric [29042]: coin +3 silver
+Sat Oct 10 15:33:15 2026 :: Log Alaric [29042]: coin +5 copper
+Sat Oct 10 15:33:15 2026 :: Log Alaric [29042]: coin +2 gold
+Sat Oct 10 15:33:25 2026 :: Log Alaric [29042]: recal
+Sat Oct 10 15:33:25 2026 :: Log Alaric [1417]: arrived (The master of illusion's chamber) from 29042
+Sat Oct 10 15:33:27 2026 :: Log Alaric [1417]: recal
+Sat Oct 10 15:33:27 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 1417
+Sat Oct 10 15:33:29 2026 :: Log Alaric [4207]: e
+Sat Oct 10 15:33:29 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 10 15:33:30 2026 :: Log Alaric [4202]: n
+Sat Oct 10 15:33:30 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sat Oct 10 15:33:30 2026 :: Log Alaric [4203]: n
+Sat Oct 10 15:33:30 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sat Oct 10 15:33:31 2026 :: Log Alaric [4210]: sleep
+Sat Oct 10 15:33:31 2026 :: Log Alaric [4210]: gr
+Sat Oct 10 15:33:32 2026 :: Log Alaric [4210]: sc
+Sat Oct 10 15:33:33 2026 :: Log Alaric [4210]: skil
