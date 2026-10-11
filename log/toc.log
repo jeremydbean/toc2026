@@ -83968,3 +83968,30 @@ Sun Oct 11 14:00:52 2026 :: Log Alaric [29063]: bs gu
 Sun Oct 11 14:00:53 2026 :: Log Alaric [29063]: s
 Sun Oct 11 14:00:53 2026 :: Log Alaric [29065]: arrived (Service Hallway) from 29063
 Sun Oct 11 14:00:55 2026 :: Log Alaric [29065]: bs gu
+Sun Oct 11 14:01:54 2026 :: Log Alaric [29065]: e
+Sun Oct 11 14:01:54 2026 :: Log Alaric [29066]: arrived (Service Hallway) from 29065
+Sun Oct 11 14:01:54 2026 :: Log Alaric [29066]: kill gu
+Sun Oct 11 14:02:00 2026 :: Log Alaric [29066]: killed a security guard
+Sun Oct 11 14:02:00 2026 :: Log Alaric [29066]: coin +1 platinum
+Sun Oct 11 14:02:00 2026 :: Log Alaric [29066]: coin +7 silver
+Sun Oct 11 14:02:00 2026 :: Log Alaric [29066]: coin +10 copper
+Sun Oct 11 14:02:00 2026 :: Log Alaric [29066]: coin +4 gold
+Sun Oct 11 14:02:05 2026 :: Log Alaric [29066]: bs gu
+Sun Oct 11 14:02:24 2026 :: Log Alaric [29066]: killed a security guard
+Sun Oct 11 14:02:24 2026 :: Log Alaric [29066]: coin +1 platinum
+Sun Oct 11 14:02:24 2026 :: Log Alaric [29066]: coin +7 silver
+Sun Oct 11 14:02:24 2026 :: Log Alaric [29066]: coin +10 copper
+Sun Oct 11 14:02:24 2026 :: Log Alaric [29066]: coin +4 gold
+Sun Oct 11 14:02:58 2026 :: Log Alaric [29066]: recal
+Sun Oct 11 14:02:58 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 29066
+Sun Oct 11 14:02:58 2026 :: Log Alaric [4207]: recal
+Sun Oct 11 14:02:59 2026 :: Log Alaric [4207]: recal
+Sun Oct 11 14:02:59 2026 :: Log Alaric [4207]: e
+Sun Oct 11 14:02:59 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 11 14:02:59 2026 :: Log Alaric [4202]: n
+Sun Oct 11 14:02:59 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 11 14:02:59 2026 :: Log Alaric [4203]: n
+Sun Oct 11 14:02:59 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 11 14:03:00 2026 :: Log Alaric [4210]: sleep
+Sun Oct 11 14:03:23 2026 :: Sock.sinaddr:  5.161.194.92
+Sun Oct 11 14:03:23 2026 :: EOF encountered on read.
