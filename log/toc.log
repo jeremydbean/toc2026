@@ -83342,3 +83342,12 @@ Sun Oct 11 02:47:50 2026 :: Sock.sinaddr:  52.87.72.16
 Sun Oct 11 02:47:50 2026 :: EOF encountered on read.
 Sun Oct 11 02:52:55 2026 :: Sock.sinaddr:  3.212.128.62
 Sun Oct 11 02:52:55 2026 :: EOF encountered on read.
+Sun Oct 11 02:56:55 2026 :: Sock.sinaddr:  198.235.24.96
+Sun Oct 11 02:56:56 2026 :: EOF encountered on read.
+Sun Oct 11 02:58:00 2026 :: Sock.sinaddr:  178.156.181.172
+Sun Oct 11 02:58:01 2026 :: EOF encountered on read.
+Sun Oct 11 02:59:15 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sun Oct 11 02:59:19 2026 :: Log WebAdmin: fsave
+Sun Oct 11 02:59:25 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sun Oct 11 02:59:28 2026 :: Received signal 15; saving players and shutting down.
+Sun Oct 11 02:59:28 2026 :: Normal termination of game.
