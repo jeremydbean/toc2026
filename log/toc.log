@@ -89260,3 +89260,42 @@ Sun Oct 11 21:16:57 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16
 Sun Oct 11 21:17:03 2026 :: Log Alaric [16001]: bs sa
 Sun Oct 11 21:21:00 2026 :: Sock.sinaddr:  54.87.112.51
 Sun Oct 11 21:21:01 2026 :: EOF encountered on read.
+Sun Oct 11 21:25:32 2026 :: Log Alaric [16001]: l
+Sun Oct 11 21:25:33 2026 :: Log Alaric [16001]: n
+Sun Oct 11 21:25:33 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16001
+Sun Oct 11 21:25:33 2026 :: Log Alaric [16002]: bs sa
+Sun Oct 11 21:25:47 2026 :: Log Alaric [16002]: s
+Sun Oct 11 21:25:47 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16002
+Sun Oct 11 21:25:47 2026 :: Log Alaric [16001]: kill sa
+Sun Oct 11 21:25:48 2026 :: Log Alaric [16001]: n
+Sun Oct 11 21:25:48 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16001
+Sun Oct 11 21:25:49 2026 :: Log Alaric [16002]: kill sa
+Sun Oct 11 21:25:51 2026 :: Log Alaric [16002]: killed The sailor
+Sun Oct 11 21:25:51 2026 :: Log Alaric [16002]: coin +2 platinum
+Sun Oct 11 21:25:51 2026 :: Log Alaric [16002]: coin +10 silver
+Sun Oct 11 21:25:51 2026 :: Log Alaric [16002]: coin +13 copper
+Sun Oct 11 21:25:51 2026 :: Log Alaric [16002]: coin +5 gold
+Sun Oct 11 21:25:57 2026 :: Log Alaric [16002]: scan
+Sun Oct 11 21:26:03 2026 :: Log Alaric [16002]: n
+Sun Oct 11 21:26:03 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Sun Oct 11 21:26:03 2026 :: Log Alaric [16003]: bs dr
+Sun Oct 11 21:26:04 2026 :: Sock.sinaddr:  178.156.187.238
+Sun Oct 11 21:26:05 2026 :: EOF encountered on read.
+Sun Oct 11 21:26:27 2026 :: Log Alaric [16003]: get dagger
+Sun Oct 11 21:26:27 2026 :: Log Alaric [16003]: wear dagger
+Sun Oct 11 21:26:34 2026 :: Log Alaric [16003]: to
+Sun Oct 11 21:26:48 2026 :: Log Alaric [16003]: killed The drunk pirate
+Sun Oct 11 21:26:48 2026 :: Log Alaric [16003]: coin +1 platinum
+Sun Oct 11 21:26:48 2026 :: Log Alaric [16003]: coin +5 silver
+Sun Oct 11 21:26:48 2026 :: Log Alaric [16003]: coin +6 copper
+Sun Oct 11 21:26:48 2026 :: Log Alaric [16003]: coin +2 gold
+Sun Oct 11 21:26:54 2026 :: Log Alaric [16003]: recal
+Sun Oct 11 21:26:54 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16003
+Sun Oct 11 21:26:54 2026 :: Log Alaric [4207]: recal
+Sun Oct 11 21:26:54 2026 :: Log Alaric [4207]: e
+Sun Oct 11 21:26:54 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 11 21:26:55 2026 :: Log Alaric [4202]: n
+Sun Oct 11 21:26:55 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 11 21:26:55 2026 :: Log Alaric [4203]: n
+Sun Oct 11 21:26:55 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 11 21:26:55 2026 :: Log Alaric [4210]: sleep
