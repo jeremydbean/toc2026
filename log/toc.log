@@ -87269,3 +87269,162 @@ Sun Oct 11 18:53:02 2026 :: Log Alaric [4210]: sleep
 Sun Oct 11 18:53:36 2026 :: Sock.sinaddr:  178.156.185.231
 Sun Oct 11 18:53:37 2026 :: EOF encountered on read.
 Sun Oct 11 18:54:02 2026 :: Log Alaric [4210]: sc
+Sun Oct 11 18:55:33 2026 :: Sock.sinaddr:  204.76.203.219
+Sun Oct 11 18:55:34 2026 :: Log Alaric [4210]: who
+Sun Oct 11 18:55:35 2026 :: Log Alaric [4210]: i
+Sun Oct 11 18:55:42 2026 :: Log Alaric [4210]: comp gl
+Sun Oct 11 18:55:43 2026 :: EOF encountered on read.
+Sun Oct 11 18:55:48 2026 :: Log Alaric [4210]: eq
+Sun Oct 11 18:56:51 2026 :: Log Alaric [4210]: wake
+Sun Oct 11 18:56:55 2026 :: Log Alaric [4210]: south
+Sun Oct 11 18:56:55 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sun Oct 11 18:56:55 2026 :: Log Alaric [4203]: south
+Sun Oct 11 18:56:55 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sun Oct 11 18:56:55 2026 :: Log Alaric [4202]: east
+Sun Oct 11 18:56:55 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Oct 11 18:56:55 2026 :: Log Alaric [4201]: east
+Sun Oct 11 18:56:55 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sun Oct 11 18:56:56 2026 :: Log Alaric [2427]: north
+Sun Oct 11 18:56:56 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 11 18:56:56 2026 :: Log Alaric [2404]: east
+Sun Oct 11 18:56:56 2026 :: Log Alaric [2408]: arrived (Southeastern Oak Tree Square.) from 2404
+Sun Oct 11 18:56:56 2026 :: Log Alaric [2408]: north
+Sun Oct 11 18:56:56 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2408
+Sun Oct 11 18:56:56 2026 :: Log Alaric [2403]: east
+Sun Oct 11 18:56:56 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sun Oct 11 18:56:57 2026 :: Log Alaric [2420]: east
+Sun Oct 11 18:56:57 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sun Oct 11 18:56:57 2026 :: Log Alaric [2421]: east
+Sun Oct 11 18:56:57 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sun Oct 11 18:56:57 2026 :: Log Alaric [2422]: east
+Sun Oct 11 18:56:57 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sun Oct 11 18:56:57 2026 :: Log Alaric [2423]: east
+Sun Oct 11 18:56:57 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sun Oct 11 18:56:58 2026 :: Log Alaric [2424]: east
+Sun Oct 11 18:56:58 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sun Oct 11 18:56:58 2026 :: Log Alaric [2425]: east
+Sun Oct 11 18:56:58 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sun Oct 11 18:56:58 2026 :: Log Alaric [2426]: open east
+Sun Oct 11 18:56:58 2026 :: Log Alaric [2426]: east
+Sun Oct 11 18:56:58 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sun Oct 11 18:57:00 2026 :: Log Alaric [2440]: east
+Sun Oct 11 18:57:00 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sun Oct 11 18:57:00 2026 :: Log Alaric [3503]: east
+Sun Oct 11 18:57:00 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sun Oct 11 18:57:01 2026 :: Log Alaric [3502]: south
+Sun Oct 11 18:57:01 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 3502
+Sun Oct 11 18:57:01 2026 :: Log Alaric [5261]: south
+Sun Oct 11 18:57:01 2026 :: Log Alaric [5260]: arrived (The dwarf forest) from 5261
+Sun Oct 11 18:57:01 2026 :: Log Alaric [5260]: south
+Sun Oct 11 18:57:01 2026 :: Log Alaric [5259]: arrived (The dwarf forest) from 5260
+Sun Oct 11 18:57:01 2026 :: Log Alaric [5259]: south
+Sun Oct 11 18:57:01 2026 :: Log Alaric [5258]: arrived (The dwarf forest) from 5259
+Sun Oct 11 18:57:02 2026 :: Log Alaric [5258]: east
+Sun Oct 11 18:57:02 2026 :: Log Alaric [5262]: arrived (The dwarf forest) from 5258
+Sun Oct 11 18:57:02 2026 :: Log Alaric [5262]: east
+Sun Oct 11 18:57:02 2026 :: Log Alaric [5263]: arrived (The darker dwarf forest) from 5262
+Sun Oct 11 18:57:02 2026 :: Log Alaric [5263]: south
+Sun Oct 11 18:57:02 2026 :: Log Alaric [5264]: arrived (The darker dwarf forest) from 5263
+Sun Oct 11 18:57:02 2026 :: Log Alaric [5264]: east
+Sun Oct 11 18:57:02 2026 :: Log Alaric [5265]: arrived (The darker dwarf forest) from 5264
+Sun Oct 11 18:57:03 2026 :: Log Alaric [5265]: east
+Sun Oct 11 18:57:03 2026 :: Log Alaric [5266]: arrived (The darker dwarf forest) from 5265
+Sun Oct 11 18:57:03 2026 :: Log Alaric [5266]: down
+Sun Oct 11 18:57:03 2026 :: Log Alaric [5267]: arrived (A valley in the dark dwarf forest) from 5266
+Sun Oct 11 18:57:03 2026 :: Log Alaric [5267]: north
+Sun Oct 11 18:57:03 2026 :: Log Alaric [5271]: arrived (The Valley in the dark dwarf forest) from 5267
+Sun Oct 11 18:57:03 2026 :: Log Alaric [5271]: north
+Sun Oct 11 18:57:03 2026 :: Log Alaric [5272]: arrived (A dim trail in the dwarf forest) from 5271
+Sun Oct 11 18:57:04 2026 :: Log Alaric [5272]: north
+Sun Oct 11 18:57:04 2026 :: Log Alaric [5273]: arrived (A dim trail in the dwarf forest) from 5272
+Sun Oct 11 18:57:04 2026 :: Log Alaric [5273]: east
+Sun Oct 11 18:57:04 2026 :: Log Alaric [5280]: arrived (A dark bend in the forest) from 5273
+Sun Oct 11 18:57:04 2026 :: Log Alaric [5280]: south
+Sun Oct 11 18:57:04 2026 :: Log Alaric [39]: arrived (Dark Path) from 5280
+Sun Oct 11 18:57:04 2026 :: Log Alaric [39]: east
+Sun Oct 11 18:57:04 2026 :: Log Alaric [6500]: arrived (Path to Dwarven Village) from 39
+Sun Oct 11 18:57:05 2026 :: Log Alaric [6500]: north
+Sun Oct 11 18:57:05 2026 :: Log Alaric [6501]: arrived (Path, base of mountain) from 6500
+Sun Oct 11 18:57:05 2026 :: Log Alaric [6501]: north
+Sun Oct 11 18:57:05 2026 :: Log Alaric [6502]: arrived (Path, middle of mountain) from 6501
+Sun Oct 11 18:57:05 2026 :: Log Alaric [6502]: north
+Sun Oct 11 18:57:05 2026 :: Log Alaric [6503]: arrived (Top of mountain) from 6502
+Sun Oct 11 18:57:05 2026 :: Log Alaric [6503]: east
+Sun Oct 11 18:57:05 2026 :: Log Alaric [6540]: arrived (Dark path) from 6503
+Sun Oct 11 18:57:06 2026 :: Log Alaric [6540]: open east
+Sun Oct 11 18:57:06 2026 :: Log Alaric [6540]: east
+Sun Oct 11 18:57:10 2026 :: Log Alaric [6540]: open east
+Sun Oct 11 18:57:10 2026 :: Log Alaric [6540]: east
+Sun Oct 11 18:57:12 2026 :: Log Alaric [6540]: pick east
+Sun Oct 11 18:57:18 2026 :: Log Alaric [6540]: kill gu
+Sun Oct 11 18:57:32 2026 :: Log Alaric [6540]: killed the dwarven guard
+Sun Oct 11 18:57:32 2026 :: Log Alaric [6540]: coin +1 platinum
+Sun Oct 11 18:57:32 2026 :: Log Alaric [6540]: coin +5 silver
+Sun Oct 11 18:57:32 2026 :: Log Alaric [6540]: coin +6 copper
+Sun Oct 11 18:57:32 2026 :: Log Alaric [6540]: coin +2 gold
+Sun Oct 11 18:57:33 2026 :: Log Alaric [6540]: to
+Sun Oct 11 18:57:34 2026 :: Log Alaric [6540]: to
+Sun Oct 11 18:57:35 2026 :: Log Alaric [6540]: to
+Sun Oct 11 18:57:41 2026 :: Log Alaric [6540]: l i cor
+Sun Oct 11 18:57:42 2026 :: Log Alaric [6540]: get key cor
+Sun Oct 11 18:57:44 2026 :: Log Alaric [6540]: to
+Sun Oct 11 18:57:51 2026 :: Log Alaric [6540]: to
+Sun Oct 11 18:57:52 2026 :: Log Alaric [6540]: to
+Sun Oct 11 18:57:54 2026 :: Log Alaric [6540]: to
+Sun Oct 11 18:57:56 2026 :: Log Alaric [6540]: killed the dwarven guard
+Sun Oct 11 18:57:56 2026 :: Log Alaric [6540]: coin +1 platinum
+Sun Oct 11 18:57:56 2026 :: Log Alaric [6540]: coin +5 silver
+Sun Oct 11 18:57:56 2026 :: Log Alaric [6540]: coin +6 copper
+Sun Oct 11 18:57:56 2026 :: Log Alaric [6540]: coin +2 gold
+Sun Oct 11 18:57:57 2026 :: Log Alaric [6540]: to
+Sun Oct 11 18:57:58 2026 :: Log Alaric [6540]: l i cor
+Sun Oct 11 18:58:01 2026 :: Log Alaric [6540]: get key cor
+Sun Oct 11 18:58:02 2026 :: Log Alaric [6540]: unl east
+Sun Oct 11 18:58:03 2026 :: Log Alaric [6540]: oe
+Sun Oct 11 18:58:05 2026 :: Log Alaric [6540]: east
+Sun Oct 11 18:58:05 2026 :: Log Alaric [6541]: arrived (Mine entrance) from 6540
+Sun Oct 11 18:58:05 2026 :: Log Alaric [6541]: down
+Sun Oct 11 18:58:05 2026 :: Log Alaric [6542]: arrived (Inside the mine) from 6541
+Sun Oct 11 18:58:05 2026 :: Log Alaric [6542]: down
+Sun Oct 11 18:58:05 2026 :: Log Alaric [6554]: arrived (Bottom of mineshaft) from 6542
+Sun Oct 11 18:58:05 2026 :: Log Alaric [6554]: east
+Sun Oct 11 18:58:05 2026 :: Log Alaric [6543]: arrived (Path in the mine) from 6554
+Sun Oct 11 18:58:06 2026 :: Log Alaric [6543]: east
+Sun Oct 11 18:58:06 2026 :: Log Alaric [6544]: arrived (Mine crossroad) from 6543
+Sun Oct 11 18:58:06 2026 :: Log Alaric [6544]: open north
+Sun Oct 11 18:58:06 2026 :: Log Alaric [6544]: north
+Sun Oct 11 18:58:08 2026 :: Log Alaric [6544]: on
+Sun Oct 11 18:58:10 2026 :: Log Alaric [6544]: open north
+Sun Oct 11 18:58:10 2026 :: Log Alaric [6544]: north
+Sun Oct 11 18:58:10 2026 :: Log Alaric [6544]: unl north
+Sun Oct 11 18:58:13 2026 :: Log Alaric [6544]: scan
+Sun Oct 11 18:58:15 2026 :: Log Alaric [6544]: w
+Sun Oct 11 18:58:15 2026 :: Log Alaric [6543]: arrived (Path in the mine) from 6544
+Sun Oct 11 18:58:17 2026 :: Log Alaric [6543]: bs lead
+Sun Oct 11 18:58:23 2026 :: Log Alaric [6543]: killed the dwarven mine leader
+Sun Oct 11 18:58:23 2026 :: Log Alaric [6543]: coin +5 platinum
+Sun Oct 11 18:58:23 2026 :: Log Alaric [6543]: coin +25 silver
+Sun Oct 11 18:58:23 2026 :: Log Alaric [6543]: coin +34 copper
+Sun Oct 11 18:58:23 2026 :: Log Alaric [6543]: coin +14 gold
+Sun Oct 11 18:58:31 2026 :: Log Alaric [6543]: l i cor
+Sun Oct 11 18:58:35 2026 :: Log Alaric [6543]: l
+Sun Oct 11 18:58:39 2026 :: Log Alaric [6543]: scan
+Sun Oct 11 18:58:40 2026 :: Log Alaric [6543]: ex
+Sun Oct 11 18:58:41 2026 :: Sock.sinaddr:  178.156.181.172
+Sun Oct 11 18:58:41 2026 :: EOF encountered on read.
+Sun Oct 11 18:58:43 2026 :: Log Alaric [6543]: bs min
+Sun Oct 11 18:58:43 2026 :: Log Alaric [6543]: killed the dwarven miner
+Sun Oct 11 18:58:51 2026 :: Log Alaric [6543]: l i cor
+Sun Oct 11 18:58:51 2026 :: Log Alaric [6543]: get key cor
+Sun Oct 11 18:58:52 2026 :: Log Alaric [6543]: bs min
+Sun Oct 11 18:58:52 2026 :: Log Alaric [6543]: killed the dwarven miner
+Sun Oct 11 18:59:01 2026 :: Log Alaric [6543]: l i cor
+Sun Oct 11 18:59:02 2026 :: Log Alaric [6543]: e
+Sun Oct 11 18:59:02 2026 :: Log Alaric [6544]: arrived (Mine crossroad) from 6543
+Sun Oct 11 18:59:03 2026 :: Log Alaric [6544]: s
+Sun Oct 11 18:59:03 2026 :: Log Alaric [6551]: arrived (Mining equipment room) from 6544
+Sun Oct 11 18:59:04 2026 :: Log Alaric [6551]: scan
+Sun Oct 11 18:59:06 2026 :: Log Alaric [6551]: get pick
+Sun Oct 11 18:59:07 2026 :: Log Alaric [6551]: n
+Sun Oct 11 18:59:07 2026 :: Log Alaric [6544]: arrived (Mine crossroad) from 6551
+Sun Oct 11 18:59:09 2026 :: Log Alaric [6544]: unl north
