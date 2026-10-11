@@ -81597,3 +81597,210 @@ Sun Oct 11 00:53:10 2026 :: Log Alaric [6002]: arrived (A trail through the ligh
 Sun Oct 11 00:53:10 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6002
 Sun Oct 11 00:53:11 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 6001
 Sun Oct 11 00:53:12 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 6000
+Sun Oct 11 00:53:13 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2439
+Sun Oct 11 00:53:13 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2438
+Sun Oct 11 00:53:14 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2437
+Sun Oct 11 00:53:15 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2436
+Sun Oct 11 00:53:16 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2435
+Sun Oct 11 00:53:16 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2434
+Sun Oct 11 00:53:17 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2433
+Sun Oct 11 00:53:18 2026 :: Log Alaric [2406]: arrived (Northwestern Oak Tree Square.) from 2405
+Sun Oct 11 00:53:19 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2406
+Sun Oct 11 00:53:19 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Sun Oct 11 00:53:20 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Sun Oct 11 00:53:21 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2485
+Sun Oct 11 00:53:22 2026 :: Log Alaric [2483]: arrived (Fountain of Market Plaza.) from 2486
+Sun Oct 11 00:53:22 2026 :: Log Alaric [2480]: arrived (Market Plaza.) from 2483
+Sun Oct 11 00:53:23 2026 :: Log Alaric [2481]: arrived (Market Plaza.) from 2480
+Sun Oct 11 00:53:24 2026 :: Log Alaric [2514]: arrived (Dark Alley.) from 2481
+Sun Oct 11 00:53:25 2026 :: Log Alaric [2505]: arrived (Dark Alley.) from 2514
+Sun Oct 11 00:53:25 2026 :: Log Alaric [2506]: arrived (Dead End.) from 2505
+Sun Oct 11 00:53:26 2026 :: Log Alaric [7030]: arrived (The Quadruple Junction Under the Garbage) from 2506
+Sun Oct 11 00:53:27 2026 :: Log Alaric [7022]: arrived (The odd room with smooth walls) from 7030
+Sun Oct 11 00:53:28 2026 :: Log Alaric [7112]: arrived (An odd intersection) from 7022
+Sun Oct 11 00:53:28 2026 :: Log Alaric [7104]: arrived (A junction in the sewer pipes) from 7112
+Sun Oct 11 00:53:29 2026 :: Log Alaric [7103]: arrived (A muddy bend in the sewer system) from 7104
+Sun Oct 11 00:53:30 2026 :: Log Alaric [7101]: arrived (Under the mudhole) from 7103
+Sun Oct 11 00:53:31 2026 :: Log Alaric [25160]: arrived (The Trade Route.) from 7101
+Sun Oct 11 00:53:31 2026 :: Log Alaric [25159]: arrived (The Trade Route.) from 25160
+Sun Oct 11 00:53:32 2026 :: Log Alaric [25158]: arrived (The Trade Route.) from 25159
+Sun Oct 11 00:53:33 2026 :: Log Alaric [25153]: arrived (The Trade Route.) from 25158
+Sun Oct 11 00:53:34 2026 :: Log Alaric [25152]: arrived (The passage in between.) from 25153
+Sun Oct 11 00:53:34 2026 :: Log Alaric [25151]: arrived (The hole in the wall.) from 25152
+Sun Oct 11 00:53:35 2026 :: Log Alaric [25150]: arrived (The small corridor.) from 25151
+Sun Oct 11 00:53:36 2026 :: Log Alaric [25149]: arrived (The small corridor.) from 25150
+Sun Oct 11 00:53:37 2026 :: Log Alaric [25148]: arrived (The small corridor.) from 25149
+Sun Oct 11 00:53:37 2026 :: Log Alaric [25144]: arrived (A hole in the wall.) from 25148
+Sun Oct 11 00:53:38 2026 :: Log Alaric [25143]: arrived (The intersection.) from 25144
+Sun Oct 11 00:53:39 2026 :: Log Alaric [25186]: arrived (The shaft upwards.) from 25143
+Sun Oct 11 00:53:40 2026 :: Log Alaric [2235]: arrived (A cave opening) from 25186
+Sun Oct 11 00:53:40 2026 :: Log Alaric [2234]: arrived (Tunnel) from 2235
+Sun Oct 11 00:53:41 2026 :: Log Alaric [2236]: arrived (The End of the tunnel) from 2234
+Sun Oct 11 00:53:42 2026 :: Log Alaric [2202]: arrived (The Foyer) from 2236
+Sun Oct 11 00:53:43 2026 :: Log Alaric [2201]: arrived (The Tower Gates) from 2202
+Sun Oct 11 00:53:43 2026 :: Log Alaric [1304]: arrived (The Shadow Grove) from 2201
+Sun Oct 11 00:53:44 2026 :: Log Alaric [1305]: arrived (The Shadow Grove) from 1304
+Sun Oct 11 00:53:45 2026 :: Log Alaric [1308]: arrived (The Shadow Grove) from 1305
+Sun Oct 11 00:53:46 2026 :: Log Alaric [1300]: arrived (Entrance to the Shadow Grove) from 1308
+Sun Oct 11 00:53:49 2026 :: Log Alaric [1300]: ex
+Sun Oct 11 00:53:50 2026 :: Log Alaric [1300]: n
+Sun Oct 11 00:53:50 2026 :: Log Alaric [1308]: arrived (The Shadow Grove) from 1300
+Sun Oct 11 00:53:51 2026 :: Log Alaric [1308]: ex
+Sun Oct 11 00:53:52 2026 :: Log Alaric [1308]: e
+Sun Oct 11 00:53:52 2026 :: Log Alaric [1305]: arrived (The Shadow Grove) from 1308
+Sun Oct 11 00:53:53 2026 :: Log Alaric [1305]: ex
+Sun Oct 11 00:53:54 2026 :: Log Alaric [1305]: n
+Sun Oct 11 00:53:54 2026 :: Log Alaric [1304]: arrived (The Shadow Grove) from 1305
+Sun Oct 11 00:53:54 2026 :: Log Alaric [1304]: ex
+Sun Oct 11 00:53:57 2026 :: Log Alaric [1304]: e
+Sun Oct 11 00:53:57 2026 :: Log Alaric [1307]: arrived (The Shadow Grove) from 1304
+Sun Oct 11 00:53:58 2026 :: Log Alaric [1307]: ex
+Sun Oct 11 00:53:59 2026 :: Log Alaric [1307]: n
+Sun Oct 11 00:53:59 2026 :: Log Alaric [1308]: arrived (The Shadow Grove) from 1307
+Sun Oct 11 00:54:00 2026 :: Log Alaric [1308]: ex
+Sun Oct 11 00:54:01 2026 :: Log Alaric [1308]: w
+Sun Oct 11 00:54:01 2026 :: Log Alaric [1307]: arrived (The Shadow Grove) from 1308
+Sun Oct 11 00:54:02 2026 :: Log Alaric [1307]: ex
+Sun Oct 11 00:54:02 2026 :: Log Alaric [1307]: s
+Sun Oct 11 00:54:02 2026 :: Log Alaric [1301]: arrived (The Shadow Grove) from 1307
+Sun Oct 11 00:54:03 2026 :: Log Alaric [1301]: ex
+Sun Oct 11 00:54:04 2026 :: Log Alaric [1301]: w
+Sun Oct 11 00:54:04 2026 :: Log Alaric [1304]: arrived (The Shadow Grove) from 1301
+Sun Oct 11 00:54:04 2026 :: Log Alaric [1304]: ex
+Sun Oct 11 00:54:06 2026 :: Log Alaric [1304]: n
+Sun Oct 11 00:54:06 2026 :: Log Alaric [2201]: arrived (The Tower Gates) from 1304
+Sun Oct 11 00:54:08 2026 :: Log Alaric [2201]: on
+Sun Oct 11 00:54:11 2026 :: Log Alaric [2201]: bs ha
+Sun Oct 11 00:54:11 2026 :: Log Alaric [2201]: killed the dragon hatchling
+Sun Oct 11 00:54:11 2026 :: Log Alaric [2201]: coin +2 platinum
+Sun Oct 11 00:54:11 2026 :: Log Alaric [2201]: coin +10 silver
+Sun Oct 11 00:54:11 2026 :: Log Alaric [2201]: coin +13 copper
+Sun Oct 11 00:54:11 2026 :: Log Alaric [2201]: coin +5 gold
+Sun Oct 11 00:54:19 2026 :: Log Alaric [2201]: l i cor
+Sun Oct 11 00:54:19 2026 :: Log Alaric [2201]: get key cor
+Sun Oct 11 00:54:22 2026 :: Log Alaric [2201]: unl north
+Sun Oct 11 00:54:22 2026 :: Log Alaric [2201]: on
+Sun Oct 11 00:54:22 2026 :: Log Alaric [2201]: n
+Sun Oct 11 00:54:22 2026 :: Log Alaric [2202]: arrived (The Foyer) from 2201
+Sun Oct 11 00:54:24 2026 :: Log Alaric [2202]: track kitten
+Sun Oct 11 00:54:25 2026 :: Log Alaric [2202]: track kitten
+Sun Oct 11 00:54:25 2026 :: Log Alaric [2202]: track kitten
+Sun Oct 11 00:54:25 2026 :: Log Alaric [2202]: track kitten
+Sun Oct 11 00:54:26 2026 :: Log Alaric [2202]: track kitten
+Sun Oct 11 00:54:26 2026 :: Log Alaric [2202]: track kitten
+Sun Oct 11 00:54:28 2026 :: Log Alaric [2202]: n
+Sun Oct 11 00:54:28 2026 :: Log Alaric [2203]: arrived (Hallway) from 2202
+Sun Oct 11 00:54:29 2026 :: Log Alaric [2203]: n
+Sun Oct 11 00:54:29 2026 :: Log Alaric [2204]: arrived (Hallway) from 2203
+Sun Oct 11 00:54:32 2026 :: Log Alaric [2204]: track apprentice
+Sun Oct 11 00:54:34 2026 :: Log Alaric [2204]: track apprentice
+Sun Oct 11 00:54:35 2026 :: Log Alaric [2204]: track apprentice
+Sun Oct 11 00:54:35 2026 :: Log Alaric [2204]: track apprentice
+Sun Oct 11 00:54:35 2026 :: Log Alaric [2204]: track apprentice
+Sun Oct 11 00:54:36 2026 :: Log Alaric [2204]: track apprentice
+Sun Oct 11 00:54:36 2026 :: Log Alaric [2204]: s
+Sun Oct 11 00:54:36 2026 :: Log Alaric [2203]: arrived (Hallway) from 2204
+Sun Oct 11 00:54:37 2026 :: Log Alaric [2203]: s
+Sun Oct 11 00:54:37 2026 :: Log Alaric [2202]: arrived (The Foyer) from 2203
+Sun Oct 11 00:54:38 2026 :: Log Alaric [2202]: track apprentice
+Sun Oct 11 00:54:39 2026 :: Log Alaric [2202]: track apprentice
+Sun Oct 11 00:54:39 2026 :: Log Alaric [2202]: track apprentice
+Sun Oct 11 00:54:40 2026 :: Log Alaric [2202]: track apprentice
+Sun Oct 11 00:54:40 2026 :: Log Alaric [2202]: track apprentice
+Sun Oct 11 00:54:40 2026 :: Log Alaric [2202]: track apprentice
+Sun Oct 11 00:54:40 2026 :: Log Alaric [2202]: track apprentice
+Sun Oct 11 00:54:41 2026 :: Log Alaric [2202]: track apprentice
+Sun Oct 11 00:54:41 2026 :: Log Alaric [2202]: track apprentice
+Sun Oct 11 00:54:43 2026 :: Log Alaric [2202]: s
+Sun Oct 11 00:54:43 2026 :: Log Alaric [2201]: arrived (The Tower Gates) from 2202
+Sun Oct 11 00:54:47 2026 :: Log Alaric [2201]: e
+Sun Oct 11 00:54:47 2026 :: Log Alaric [1304]: arrived (The Shadow Grove) from 2201
+Sun Oct 11 00:54:49 2026 :: Log Alaric [1304]: track apprentice
+Sun Oct 11 00:54:50 2026 :: Log Alaric [1304]: track apprentice
+Sun Oct 11 00:54:51 2026 :: Log Alaric [1304]: track apprentice
+Sun Oct 11 00:54:52 2026 :: Log Alaric [1304]: track apprentice
+Sun Oct 11 00:54:52 2026 :: Log Alaric [1304]: track apprentice
+Sun Oct 11 00:54:53 2026 :: Log Alaric [1304]: s
+Sun Oct 11 00:54:53 2026 :: Log Alaric [1305]: arrived (The Shadow Grove) from 1304
+Sun Oct 11 00:54:55 2026 :: Log Alaric [1305]: track apprentice
+Sun Oct 11 00:54:55 2026 :: Log Alaric [1305]: track apprentice
+Sun Oct 11 00:54:56 2026 :: Log Alaric [1305]: track apprentice
+Sun Oct 11 00:54:56 2026 :: Log Alaric [1305]: track apprentice
+Sun Oct 11 00:54:56 2026 :: Log Alaric [1305]: track apprentice
+Sun Oct 11 00:54:57 2026 :: Log Alaric [1305]: track apprentice
+Sun Oct 11 00:54:57 2026 :: Log Alaric [1305]: track apprentice
+Sun Oct 11 00:54:57 2026 :: Log Alaric [1305]: e
+Sun Oct 11 00:54:57 2026 :: Log Alaric [1302]: arrived (The Shadow Grove) from 1305
+Sun Oct 11 00:54:59 2026 :: Log Alaric [1302]: track apprentice
+Sun Oct 11 00:55:00 2026 :: Log Alaric [1302]: track apprentice
+Sun Oct 11 00:55:00 2026 :: Log Alaric [1302]: track apprentice
+Sun Oct 11 00:55:00 2026 :: Log Alaric [1302]: track apprentice
+Sun Oct 11 00:55:01 2026 :: Log Alaric [1302]: track apprentice
+Sun Oct 11 00:55:02 2026 :: Log Alaric [1302]: w
+Sun Oct 11 00:55:02 2026 :: Log Alaric [1311]: arrived (A small clearing) from 1302
+Sun Oct 11 00:55:04 2026 :: Log Alaric [1311]: track apprentice
+Sun Oct 11 00:55:05 2026 :: Log Alaric [1311]: track apprentice
+Sun Oct 11 00:55:06 2026 :: Log Alaric [1311]: track apprentice
+Sun Oct 11 00:55:06 2026 :: Log Alaric [1311]: track apprentice
+Sun Oct 11 00:55:06 2026 :: Log Alaric [1311]: track apprentice
+Sun Oct 11 00:55:06 2026 :: Log Alaric [1311]: track apprentice
+Sun Oct 11 00:55:07 2026 :: Log Alaric [1311]: track apprentice
+Sun Oct 11 00:55:07 2026 :: Log Alaric [1311]: track apprentice
+Sun Oct 11 00:55:07 2026 :: Log Alaric [1311]: track apprentice
+Sun Oct 11 00:55:11 2026 :: Log Alaric [1311]: n
+Sun Oct 11 00:55:11 2026 :: Log Alaric [1312]: arrived (Entrance to the High Tower) from 1311
+Sun Oct 11 00:55:12 2026 :: Log Alaric [1312]: ex
+Sun Oct 11 00:55:26 2026 :: Log Alaric [1312]: open gate
+Sun Oct 11 00:55:31 2026 :: Log Alaric [1312]: con go
+Sun Oct 11 00:55:33 2026 :: Log Alaric [1312]: bs go
+Sun Oct 11 00:56:07 2026 :: Sock.sinaddr:  5.161.117.52
+Sun Oct 11 00:56:07 2026 :: EOF encountered on read.
+Sun Oct 11 00:56:12 2026 :: Log Alaric [1312]: killed the golem
+Sun Oct 11 00:56:12 2026 :: Log Alaric [1312]: coin +5 platinum
+Sun Oct 11 00:56:12 2026 :: Log Alaric [1312]: coin +25 silver
+Sun Oct 11 00:56:12 2026 :: Log Alaric [1312]: coin +33 copper
+Sun Oct 11 00:56:12 2026 :: Log Alaric [1312]: coin +14 gold
+Sun Oct 11 00:56:16 2026 :: Log Alaric [1312]: to
+Sun Oct 11 00:56:17 2026 :: Log Alaric [1312]: l i cor
+Sun Oct 11 00:56:18 2026 :: Log Alaric [1312]: l
+Sun Oct 11 00:56:20 2026 :: Log Alaric [1312]: enter tower
+Sun Oct 11 00:56:23 2026 :: Log Alaric [1312]: enter gate
+Sun Oct 11 00:56:26 2026 :: Log Alaric [1312]: open diamond
+Sun Oct 11 00:56:29 2026 :: Log Alaric [1312]: enter diamond
+Sun Oct 11 00:56:38 2026 :: Sock.sinaddr:  64.62.156.202
+Sun Oct 11 00:56:39 2026 :: EOF encountered on read.
+Sun Oct 11 00:56:56 2026 :: Log Alaric [1312]: unlock diamond
+Sun Oct 11 00:57:01 2026 :: Log Alaric [1312]: unlock gate
+Sun Oct 11 00:57:04 2026 :: Log Alaric [1312]: l
+Sun Oct 11 00:57:05 2026 :: Log Alaric [1312]: n
+Sun Oct 11 00:57:05 2026 :: Log Alaric [1313]: arrived (Inside the High Tower of Sorcerery) from 1312
+Sun Oct 11 00:57:10 2026 :: Log Alaric [1313]: ex
+Sun Oct 11 00:57:11 2026 :: Log Alaric [1313]: scan
+Sun Oct 11 00:57:12 2026 :: Log Alaric [1313]: n
+Sun Oct 11 00:57:12 2026 :: Log Alaric [1314]: arrived (Common Room) from 1313
+Sun Oct 11 00:57:13 2026 :: Log Alaric [1314]: n
+Sun Oct 11 00:57:13 2026 :: Log Alaric [1317]: arrived (Dark Hallway) from 1314
+Sun Oct 11 00:57:13 2026 :: Log Alaric [1317]: n
+Sun Oct 11 00:57:14 2026 :: Log Alaric [1317]: s
+Sun Oct 11 00:57:14 2026 :: Log Alaric [1314]: arrived (Common Room) from 1317
+Sun Oct 11 00:57:17 2026 :: Log Alaric [1314]: track kitten
+Sun Oct 11 00:57:17 2026 :: Log Alaric [1314]: track kitten
+Sun Oct 11 00:57:17 2026 :: Log Alaric [1314]: track kitten
+Sun Oct 11 00:57:18 2026 :: Log Alaric [1314]: track kitten
+Sun Oct 11 00:57:18 2026 :: Log Alaric [1314]: track kitten
+Sun Oct 11 00:57:18 2026 :: Log Alaric [1314]: track kitten
+Sun Oct 11 00:57:18 2026 :: Log Alaric [1314]: track kitten
+Sun Oct 11 00:57:19 2026 :: Log Alaric [1314]: track kitten
+Sun Oct 11 00:57:19 2026 :: Log Alaric [1314]: s
+Sun Oct 11 00:57:19 2026 :: Log Alaric [1313]: arrived (Inside the High Tower of Sorcerery) from 1314
+Sun Oct 11 00:57:21 2026 :: Log Alaric [1313]: track kitten
+Sun Oct 11 00:57:22 2026 :: Log Alaric [1313]: track kitten
+Sun Oct 11 00:57:22 2026 :: Log Alaric [1313]: track kitten
+Sun Oct 11 00:57:22 2026 :: Log Alaric [1313]: track kitten
+Sun Oct 11 00:57:23 2026 :: Log Alaric [1313]: track kitten
+Sun Oct 11 00:57:23 2026 :: Log Alaric [1313]: track kitten
+Sun Oct 11 00:57:27 2026 :: Log Alaric [1313]: e
+Sun Oct 11 00:57:27 2026 :: Log Alaric [1315]: arrived (The Hallway) from 1313
+Sun Oct 11 00:57:29 2026 :: Log Alaric [1315]: sleep
+Sun Oct 11 00:57:30 2026 :: Log Alaric [1315]: gr
+Sun Oct 11 00:57:31 2026 :: Log Alaric [1315]: sc
