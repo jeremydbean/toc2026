@@ -1,0 +1,1 @@
+[29060] Alaric: The Pick Lock skill may be broken. With 75% skill in Pick Lock, I have been unable to pick a single door. I have over 50 attempts at unlocking doors, without a single success. Please validate.
