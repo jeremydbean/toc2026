@@ -81432,3 +81432,168 @@ Sun Oct 11 00:43:47 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healin
 Sun Oct 11 00:43:47 2026 :: Log Alaric [4210]: sleep
 Sun Oct 11 00:45:57 2026 :: Sock.sinaddr:  5.161.117.52
 Sun Oct 11 00:45:57 2026 :: EOF encountered on read.
+Sun Oct 11 00:50:40 2026 :: Log Alaric [4210]: wake
+Sun Oct 11 00:50:40 2026 :: Log Alaric [4210]: l
+Sun Oct 11 00:50:41 2026 :: Log Alaric [4210]: gr
+Sun Oct 11 00:50:49 2026 :: Log Alaric [4210]: s
+Sun Oct 11 00:50:49 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sun Oct 11 00:50:49 2026 :: Log Alaric [4203]: s
+Sun Oct 11 00:50:49 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sun Oct 11 00:50:50 2026 :: Log Alaric [4202]: e
+Sun Oct 11 00:50:50 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Oct 11 00:50:50 2026 :: Log Alaric [4201]: e
+Sun Oct 11 00:50:50 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sun Oct 11 00:50:51 2026 :: Log Alaric [2427]: n
+Sun Oct 11 00:50:51 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 11 00:50:51 2026 :: Log Alaric [2404]: n
+Sun Oct 11 00:50:51 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sun Oct 11 00:51:02 2026 :: Sock.sinaddr:  54.87.112.51
+Sun Oct 11 00:51:02 2026 :: EOF encountered on read.
+Sun Oct 11 00:51:35 2026 :: Log Alaric [2401]: r w 7
+Sun Oct 11 00:51:35 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Oct 11 00:51:35 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Oct 11 00:51:35 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Oct 11 00:51:35 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Oct 11 00:51:35 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Oct 11 00:51:35 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Oct 11 00:51:35 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Oct 11 00:51:36 2026 :: Log Alaric [2438]: open west
+Sun Oct 11 00:51:36 2026 :: Log Alaric [2438]: r w 10
+Sun Oct 11 00:51:36 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Oct 11 00:51:36 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sun Oct 11 00:51:36 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sun Oct 11 00:51:36 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sun Oct 11 00:51:36 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Sun Oct 11 00:51:36 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Sun Oct 11 00:51:36 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Sun Oct 11 00:51:36 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Sun Oct 11 00:51:36 2026 :: Log Alaric [6102]: arrived (A narrow trail through the deep, dark forest) from 6101
+Sun Oct 11 00:51:36 2026 :: Log Alaric [6103]: arrived (A narrow trail through the deep, dark forest) from 6102
+Sun Oct 11 00:51:36 2026 :: Log Alaric [6103]: s
+Sun Oct 11 00:51:36 2026 :: Log Alaric [6108]: arrived (A narrow trail through the deep, dark forest) from 6103
+Sun Oct 11 00:51:36 2026 :: Log Alaric [6108]: s
+Sun Oct 11 00:51:36 2026 :: Log Alaric [6107]: arrived (A small path in the deep, dark forest) from 6108
+Sun Oct 11 00:51:37 2026 :: Log Alaric [6107]: e
+Sun Oct 11 00:51:37 2026 :: Log Alaric [6106]: arrived (A junction in the deep, dark forest) from 6107
+Sun Oct 11 00:51:37 2026 :: Log Alaric [6106]: s
+Sun Oct 11 00:51:37 2026 :: Log Alaric [6117]: arrived (A junction in the deep, dark forest) from 6106
+Sun Oct 11 00:51:37 2026 :: Log Alaric [6117]: w
+Sun Oct 11 00:51:37 2026 :: Log Alaric [6116]: arrived (A small path in the deep, dark forest) from 6117
+Sun Oct 11 00:51:37 2026 :: Log Alaric [6116]: s
+Sun Oct 11 00:51:37 2026 :: Log Alaric [6115]: arrived (A small path in the deep, dark forest) from 6116
+Sun Oct 11 00:51:38 2026 :: Log Alaric [6115]: w
+Sun Oct 11 00:51:38 2026 :: Log Alaric [6114]: arrived (A junction in the deep, dark forest) from 6115
+Sun Oct 11 00:51:38 2026 :: Log Alaric [6114]: w
+Sun Oct 11 00:51:38 2026 :: Log Alaric [6122]: arrived (A small path in the deep, dark forest) from 6114
+Sun Oct 11 00:51:38 2026 :: Log Alaric [6122]: s
+Sun Oct 11 00:51:38 2026 :: Log Alaric [6123]: arrived (A junction on the river bank in the deep, dark forest) from 6122
+Sun Oct 11 00:51:38 2026 :: Log Alaric [6123]: s
+Sun Oct 11 00:51:39 2026 :: Log Alaric [6123]: w
+Sun Oct 11 00:51:39 2026 :: Log Alaric [6125]: arrived (A small path on the river bank in the deep, dark forest) from 6123
+Sun Oct 11 00:51:39 2026 :: Log Alaric [6125]: sw
+Sun Oct 11 00:51:39 2026 :: Log Alaric [6125]: w
+Sun Oct 11 00:51:39 2026 :: Log Alaric [6125]: n
+Sun Oct 11 00:51:39 2026 :: Log Alaric [6126]: arrived (A narrow trail through the deep, dark forest) from 6125
+Sun Oct 11 00:51:40 2026 :: Log Alaric [6126]: n
+Sun Oct 11 00:51:40 2026 :: Log Alaric [6127]: arrived (A narrow trail through the deep, dark forest) from 6126
+Sun Oct 11 00:51:42 2026 :: Log Alaric [6127]: ex
+Sun Oct 11 00:51:49 2026 :: Log Alaric [6127]: e
+Sun Oct 11 00:51:49 2026 :: Log Alaric [6112]: arrived (A narrow trail through the deep, dark forest) from 6127
+Sun Oct 11 00:51:49 2026 :: Log Alaric [6112]: ex
+Sun Oct 11 00:51:50 2026 :: Log Alaric [6112]: w
+Sun Oct 11 00:51:50 2026 :: Log Alaric [6127]: arrived (A narrow trail through the deep, dark forest) from 6112
+Sun Oct 11 00:51:51 2026 :: Log Alaric [6127]: s
+Sun Oct 11 00:51:51 2026 :: Log Alaric [6126]: arrived (A narrow trail through the deep, dark forest) from 6127
+Sun Oct 11 00:51:52 2026 :: Log Alaric [6126]: ex
+Sun Oct 11 00:51:53 2026 :: Log Alaric [6126]: e
+Sun Oct 11 00:51:53 2026 :: Log Alaric [6126]: ex
+Sun Oct 11 00:52:07 2026 :: Log Alaric [6126]: l
+Sun Oct 11 00:52:10 2026 :: Log Alaric [6126]: ex
+Sun Oct 11 00:52:13 2026 :: Log Alaric [6126]: track kitten
+Sun Oct 11 00:52:14 2026 :: Log Alaric [6126]: track kitten
+Sun Oct 11 00:52:14 2026 :: Log Alaric [6126]: track kitten
+Sun Oct 11 00:52:14 2026 :: Log Alaric [6126]: track kitten
+Sun Oct 11 00:52:15 2026 :: Log Alaric [6126]: track kitten
+Sun Oct 11 00:52:15 2026 :: Log Alaric [6126]: track kitten
+Sun Oct 11 00:52:16 2026 :: Log Alaric [6126]: n
+Sun Oct 11 00:52:16 2026 :: Log Alaric [6127]: arrived (A narrow trail through the deep, dark forest) from 6126
+Sun Oct 11 00:52:18 2026 :: Log Alaric [6127]: e
+Sun Oct 11 00:52:18 2026 :: Log Alaric [6112]: arrived (A narrow trail through the deep, dark forest) from 6127
+Sun Oct 11 00:52:20 2026 :: Log Alaric [6112]: track kitten
+Sun Oct 11 00:52:20 2026 :: Log Alaric [6112]: track kitten
+Sun Oct 11 00:52:21 2026 :: Log Alaric [6112]: track kitten
+Sun Oct 11 00:52:21 2026 :: Log Alaric [6112]: track kitten
+Sun Oct 11 00:52:21 2026 :: Log Alaric [6112]: track kitten
+Sun Oct 11 00:52:22 2026 :: Log Alaric [6112]: n
+Sun Oct 11 00:52:22 2026 :: Log Alaric [6111]: arrived (A narrow trail through the deep, dark forest) from 6112
+Sun Oct 11 00:52:24 2026 :: Log Alaric [6111]: n
+Sun Oct 11 00:52:24 2026 :: Log Alaric [6110]: arrived (A narrow trail through the deep, dark forest) from 6111
+Sun Oct 11 00:52:26 2026 :: Log Alaric [6110]: track kitten
+Sun Oct 11 00:52:26 2026 :: Log Alaric [6110]: track kitten
+Sun Oct 11 00:52:26 2026 :: Log Alaric [6110]: track kitten
+Sun Oct 11 00:52:27 2026 :: Log Alaric [6110]: track kitten
+Sun Oct 11 00:52:27 2026 :: Log Alaric [6110]: track kitten
+Sun Oct 11 00:52:27 2026 :: Log Alaric [6110]: track kitten
+Sun Oct 11 00:52:27 2026 :: Log Alaric [6110]: track kitten
+Sun Oct 11 00:52:28 2026 :: Log Alaric [6110]: e
+Sun Oct 11 00:52:28 2026 :: Log Alaric [6109]: arrived (A narrow trail through the deep, dark forest) from 6110
+Sun Oct 11 00:52:29 2026 :: Log Alaric [6109]: e
+Sun Oct 11 00:52:29 2026 :: Log Alaric [6108]: arrived (A narrow trail through the deep, dark forest) from 6109
+Sun Oct 11 00:52:31 2026 :: Log Alaric [6108]: track kitten
+Sun Oct 11 00:52:32 2026 :: Log Alaric [6108]: track kitten
+Sun Oct 11 00:52:32 2026 :: Log Alaric [6108]: track kitten
+Sun Oct 11 00:52:32 2026 :: Log Alaric [6108]: track kitten
+Sun Oct 11 00:52:33 2026 :: Log Alaric [6108]: track kitten
+Sun Oct 11 00:52:33 2026 :: Log Alaric [6108]: track kitten
+Sun Oct 11 00:52:33 2026 :: Log Alaric [6108]: track kitten
+Sun Oct 11 00:52:33 2026 :: Log Alaric [6108]: track kitten
+Sun Oct 11 00:52:34 2026 :: Log Alaric [6108]: track kitten
+Sun Oct 11 00:52:34 2026 :: Log Alaric [6108]: track kitten
+Sun Oct 11 00:52:34 2026 :: Log Alaric [6108]: n
+Sun Oct 11 00:52:34 2026 :: Log Alaric [6103]: arrived (A narrow trail through the deep, dark forest) from 6108
+Sun Oct 11 00:52:36 2026 :: Log Alaric [6103]: ex
+Sun Oct 11 00:52:38 2026 :: Log Alaric [6103]: track kitten
+Sun Oct 11 00:52:38 2026 :: Log Alaric [6103]: track kitten
+Sun Oct 11 00:52:39 2026 :: Log Alaric [6103]: track kitten
+Sun Oct 11 00:52:39 2026 :: Log Alaric [6103]: track kitten
+Sun Oct 11 00:52:39 2026 :: Log Alaric [6103]: track kitten
+Sun Oct 11 00:52:39 2026 :: Log Alaric [6103]: track kitten
+Sun Oct 11 00:52:40 2026 :: Log Alaric [6103]: track kitten
+Sun Oct 11 00:52:40 2026 :: Log Alaric [6103]: track kitten
+Sun Oct 11 00:52:41 2026 :: Log Alaric [6103]: e
+Sun Oct 11 00:52:41 2026 :: Log Alaric [6102]: arrived (A narrow trail through the deep, dark forest) from 6103
+Sun Oct 11 00:52:42 2026 :: Log Alaric [6102]: e
+Sun Oct 11 00:52:42 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6102
+Sun Oct 11 00:52:43 2026 :: Log Alaric [6101]: ex
+Sun Oct 11 00:52:45 2026 :: Log Alaric [6101]: track kitten
+Sun Oct 11 00:52:45 2026 :: Log Alaric [6101]: track kitten
+Sun Oct 11 00:52:46 2026 :: Log Alaric [6101]: track kitten
+Sun Oct 11 00:52:46 2026 :: Log Alaric [6101]: track kitten
+Sun Oct 11 00:52:46 2026 :: Log Alaric [6101]: track kitten
+Sun Oct 11 00:52:46 2026 :: Log Alaric [6101]: track kitten
+Sun Oct 11 00:52:47 2026 :: Log Alaric [6101]: track kitten
+Sun Oct 11 00:52:47 2026 :: Log Alaric [6101]: track kitten
+Sun Oct 11 00:52:47 2026 :: Log Alaric [6101]: track kitten
+Sun Oct 11 00:52:48 2026 :: Log Alaric [6101]: track kitten
+Sun Oct 11 00:52:49 2026 :: Log Alaric [6101]: track kitten
+Sun Oct 11 00:52:50 2026 :: Log Alaric [6101]: e
+Sun Oct 11 00:52:50 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6101
+Sun Oct 11 00:52:52 2026 :: Log Alaric [6100]: track kitten
+Sun Oct 11 00:52:52 2026 :: Log Alaric [6100]: track kitten
+Sun Oct 11 00:52:53 2026 :: Log Alaric [6100]: track kitten
+Sun Oct 11 00:52:53 2026 :: Log Alaric [6100]: track kitten
+Sun Oct 11 00:52:53 2026 :: Log Alaric [6100]: track kitten
+Sun Oct 11 00:52:53 2026 :: Log Alaric [6100]: track kitten
+Sun Oct 11 00:52:54 2026 :: Log Alaric [6100]: track kitten
+Sun Oct 11 00:52:54 2026 :: Log Alaric [6100]: track kitten
+Sun Oct 11 00:52:54 2026 :: Log Alaric [6100]: track kitten
+Sun Oct 11 00:52:54 2026 :: Log Alaric [6100]: e
+Sun Oct 11 00:52:54 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6100
+Sun Oct 11 00:52:56 2026 :: Log Alaric [6004]: ex
+Sun Oct 11 00:53:02 2026 :: Log Alaric [6004]: walkto shadow grove
+Sun Oct 11 00:53:09 2026 :: Log Alaric [6004]: walkto high tower
+Sun Oct 11 00:53:09 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6004
+Sun Oct 11 00:53:10 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6003
+Sun Oct 11 00:53:10 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6002
+Sun Oct 11 00:53:11 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 6001
+Sun Oct 11 00:53:12 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 6000
