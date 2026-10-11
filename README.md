@@ -36,6 +36,7 @@ and a large collection of hand-built areas.
 | Mudlet player | [Official Mudlet package](mudlet/README.md) |
 | Server host | [Hosting Guide](wiki/hosting-guide.md) |
 | Live production host, deploys, or something broken | [Disaster Recovery](wiki/disaster-recovery.md) (Oracle Cloud) |
+| Working from a new/other machine | [New Machine Setup](wiki/new-machine-setup.md) |
 | Retired Windows VM host (history) | [Windows Production Runbook](wiki/windows-production-hosting.md) |
 | Mudlet listing submission | [Listing Handoff](mudlet/listing-submission.md) |
 | Immortal/operator | [Operator Guide](wiki/operator-guide.md) |

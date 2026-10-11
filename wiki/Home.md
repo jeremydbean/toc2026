@@ -27,6 +27,8 @@ objects. The live game runs on Oracle Cloud (`toc.jeremybean.com`); see
 
 - [Disaster Recovery](disaster-recovery.md) - the current Oracle Cloud host:
   deploys, backups, self-restart, and rebuilding on a fresh machine
+- [New Machine Setup](new-machine-setup.md) - full control from any other
+  machine: ship by push, set up the SSH key, and recover if the key is lost
 - [Windows Production Runbook](windows-production-hosting.md) - retired Hyper-V
   VM deployment (history; the game moved to Oracle on 2026-10-01)
 - [Mudlet Listing Handoff](../mudlet/listing-submission.md) - readiness checks,
