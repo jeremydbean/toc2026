@@ -81395,3 +81395,40 @@ Sun Oct 11 00:43:00 2026 :: Log Alaric [2445]: arrived (End of River Road.) from
 Sun Oct 11 00:43:00 2026 :: Log Alaric [4501]: arrived (Before an open doorway.) from 2445
 Sun Oct 11 00:43:01 2026 :: Log Alaric [4502]: arrived (Entry Hall.) from 4501
 Sun Oct 11 00:43:02 2026 :: Log Alaric [4503]: arrived (Hallway.) from 4502
+Sun Oct 11 00:43:03 2026 :: Log Alaric [4506]: arrived (Hallway.) from 4503
+Sun Oct 11 00:43:03 2026 :: Log Alaric [4510]: arrived (Hallway.) from 4506
+Sun Oct 11 00:43:04 2026 :: Log Alaric [4512]: arrived (Chapter Room.) from 4510
+Sun Oct 11 00:43:05 2026 :: Log Alaric [4517]: arrived (Hallway.) from 4512
+Sun Oct 11 00:43:06 2026 :: Log Alaric [4518]: arrived (Storeroom.) from 4517
+Sun Oct 11 00:43:06 2026 :: Log Alaric [4528]: arrived (Storeroom.) from 4518
+Sun Oct 11 00:43:07 2026 :: Log Alaric [4531]: arrived (Dark Hallway.) from 4528
+Sun Oct 11 00:43:08 2026 :: Log Alaric [4532]: arrived (Complete Darkness!) from 4531
+Sun Oct 11 00:43:10 2026 :: Log Alaric [4532]: sc
+Sun Oct 11 00:43:12 2026 :: Log Alaric [4532]: prac
+Sun Oct 11 00:43:14 2026 :: Log Alaric [4532]: prac track
+Sun Oct 11 00:43:15 2026 :: Log Alaric [4532]: prac
+Sun Oct 11 00:43:18 2026 :: Log Alaric [4532]: prac track
+Sun Oct 11 00:43:23 2026 :: Log Alaric [4532]: prac stealth
+Sun Oct 11 00:43:24 2026 :: Log Alaric [4532]: prac stealth
+Sun Oct 11 00:43:25 2026 :: Log Alaric [4532]: prac
+Sun Oct 11 00:43:28 2026 :: Log Alaric [4532]: sc
+Sun Oct 11 00:43:36 2026 :: Log Alaric [4532]: l
+Sun Oct 11 00:43:38 2026 :: Log Alaric [4532]: recal
+Sun Oct 11 00:43:38 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4532
+Sun Oct 11 00:43:39 2026 :: Log Alaric [4207]: w
+Sun Oct 11 00:43:39 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Oct 11 00:43:40 2026 :: Log Alaric [4208]: heal ref
+Sun Oct 11 00:43:40 2026 :: Log Alaric [4208]: gold -10
+Sun Oct 11 00:43:43 2026 :: Log Alaric [4208]: heal ref
+Sun Oct 11 00:43:43 2026 :: Log Alaric [4208]: gold -10
+Sun Oct 11 00:43:46 2026 :: Log Alaric [4208]: e
+Sun Oct 11 00:43:46 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sun Oct 11 00:43:46 2026 :: Log Alaric [4207]: e
+Sun Oct 11 00:43:46 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 11 00:43:46 2026 :: Log Alaric [4202]: n
+Sun Oct 11 00:43:46 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 11 00:43:47 2026 :: Log Alaric [4203]: n
+Sun Oct 11 00:43:47 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 11 00:43:47 2026 :: Log Alaric [4210]: sleep
+Sun Oct 11 00:45:57 2026 :: Sock.sinaddr:  5.161.117.52
+Sun Oct 11 00:45:57 2026 :: EOF encountered on read.
