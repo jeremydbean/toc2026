@@ -309,10 +309,10 @@ class StashDeathTests(unittest.TestCase):
 
             # Offline: the file is changed in place and the copy freed. The
             # restore above took its own "before stashrestore" copy, so the
-            # death snapshot's number has moved down the list.
-            listing = run(keeper, "prestore zhoarder", 2.5)
-            number = re.search(r"\[\s*(\d+)\][^\n]*before death", listing).group(1)
-            reply = run(keeper, "prestore zhoarder %s stash" % number, 3.0)
+            # death snapshot's number has moved down the list -- which is
+            # what the stamp is for.
+            stamp = re.search(r"before death\s+stamp (\d{8}_\d{6})", listing).group(1)
+            reply = run(keeper, "prestore zhoarder %s stash" % stamp, 3.0)
             self.assertIn("Restored 1 object", reply)
             self.assertIn("now holds 3 of", reply)
 

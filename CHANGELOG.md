@@ -18,6 +18,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   (they keep playing and are told) or offline. `stash_restore_from_file`
   in `save.c` reads the `#STASH` section with the loader's own
   `fread_obj`, enchantments and nesting included. `tests/test_stash.py`.
+- **PRESTORE takes a snapshot's stamp as well as its list number.** The
+  list shows `stamp 20261010_162657` beside each entry; every save adds a
+  snapshot at the top and renumbers the rest, so a number typed after
+  listing could name the wrong file while the player is online.
 
 ### Fixed
 

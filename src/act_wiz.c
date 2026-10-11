@@ -10641,8 +10641,8 @@ void do_prestore( CHAR_DATA *ch, char *argument )
     if ( arg1[0] == '\0' )
     {
         send_to_char( "Syntax: prestore <player>\n\r", ch );
-        send_to_char( "        prestore <player> <number>\n\r", ch );
-        send_to_char( "        prestore <player> <number> stash\n\r", ch );
+        send_to_char( "        prestore <player> <number|stamp>\n\r", ch );
+        send_to_char( "        prestore <player> <number|stamp> stash\n\r", ch );
         return;
     }
 
@@ -10755,25 +10755,54 @@ void do_prestore( CHAR_DATA *ch, char *argument )
                     snprintf( label, sizeof(label), "  -- before %s", tag );
                 else
                     label[0] = '\0';
+                /* The stamp is the stable name: every save adds a
+                   snapshot at the top and moves the numbers down. */
                 if ( snap_level > 0 )
-                    snprintf( buf, sizeof(buf), "  [%2d] %s  (level %d)%s\n\r",
-                              i + 1, datebuf, snap_level, label );
+                    snprintf( buf, sizeof(buf), "  [%2d] %s  (level %d)%s  stamp %.15s\n\r",
+                              i + 1, datebuf, snap_level, label, ts );
                 else
-                    snprintf( buf, sizeof(buf), "  [%2d] %s%s\n\r",
-                              i + 1, datebuf, label );
+                    snprintf( buf, sizeof(buf), "  [%2d] %s%s  stamp %.15s\n\r",
+                              i + 1, datebuf, label, ts );
             }
             send_to_char( buf, ch );
         }
-        send_to_char( "Use 'prestore <player> <number>' to restore.\n\r", ch );
+        send_to_char( "Use 'prestore <player> <number>' or 'prestore <player> <stamp>' to restore.\n\r", ch );
     }
     else
     {
-        /* RESTORE mode */
-        n = atoi( arg2 );
+        /* RESTORE mode: by list number, or by the stamp the list shows.
+           The numbers move every time a save adds a snapshot at the top,
+           so a number typed a minute after listing can name the wrong
+           file; the stamp cannot. A prefix of it will do if it is
+           unique -- 20261010_1626 names a minute. */
+        n = 0;
+        if ( is_number( arg2 ) )
+            n = atoi( arg2 );
+        else if ( strlen( arg2 ) >= 8 )
+        {
+            int matches = 0;
+
+            for ( i = 0; i < count; i++ )
+            {
+                if ( !str_prefix( arg2, versions[i] + namelen + 1 ) )
+                {
+                    n = i + 1;
+                    matches++;
+                }
+            }
+            if ( matches > 1 )
+            {
+                snprintf( buf, sizeof(buf),
+                          "%s names %d of %s's snapshots; give more of the stamp.\n\r",
+                          arg2, matches, capname );
+                send_to_char( buf, ch );
+                return;
+            }
+        }
         if ( n < 1 || n > count )
         {
             snprintf( buf, sizeof(buf),
-                      "Invalid number. Choose 1-%d (use 'prestore %s' to list).\n\r",
+                      "Invalid snapshot. Choose 1-%d or a stamp (use 'prestore %s' to list).\n\r",
                       count, capname );
             send_to_char( buf, ch );
             return;

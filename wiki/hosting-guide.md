@@ -349,7 +349,7 @@ backup                 show the next scheduled archive times
 backup now             create the four-hour style archive immediately
 backup daily           create the daily archive immediately
 prestore <player>      list numbered player snapshots
-prestore <player> <n>  restore a selected snapshot
+prestore <player> <n>  restore a selected snapshot (n is a list number or a stamp)
 prestore <player> <n> stash
                        put back only that snapshot's stash
 ```

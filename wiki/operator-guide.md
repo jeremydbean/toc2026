@@ -201,11 +201,13 @@ push alone does not prove the backup can be restored.
 ```text
 prestore <player>
 prestore <player> list
-prestore <player> <number>
-prestore <player> <number> stash
+prestore <player> <number|stamp>
+prestore <player> <number|stamp> stash
 ```
 
-The list is newest first and includes the snapshot's level when readable.
+The list is newest first and includes the snapshot's level when readable,
+and the stamp to type: the numbers move whenever a save adds a snapshot,
+the stamp does not.
 Before restoring:
 
 1. Confirm identity and the exact loss window with the player.
