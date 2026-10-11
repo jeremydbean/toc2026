@@ -7,6 +7,7 @@ carry it.
 from __future__ import annotations
 
 import pathlib
+import re
 import unittest
 
 from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
@@ -223,10 +224,9 @@ class StashSourceTests(unittest.TestCase):
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class StashDeathTests(unittest.TestCase):
-    def test_a_death_keeps_the_stash(self) -> None:
-        """A mortal stashes a bag, is slain, and the bag is still there --
-        at once and after a fresh login, which reads the player file.
-        tests/test_bug_reports_oct10.py pins the source; this plays it."""
+    def world(self) -> LiveMud:
+        """A mortal hoarder and a keeper of implementor rank, both at
+        the recall point."""
         mud = LiveMud()
         mud.__enter__()
         self.addCleanup(mud.__exit__, None, None, None)
@@ -237,21 +237,31 @@ class StashDeathTests(unittest.TestCase):
                 client.send("quit")
                 self.assertTrue(client.wait_closed())
             patch_player_file(mud, name, Levl=level, Room=RECALL)
+        return mud
 
+    @staticmethod
+    def stash_a_bag_and_die(hero, keeper) -> None:
+        """The keeper hands the hero a bag, the hero stashes it, and the
+        keeper slays them. The death snapshot then holds the bag."""
+        run(keeper, "load obj 3032", 1.6)          # a bag
+        run(keeper, "give bag zhoarder", 1.6)
+        assert "away for safe keeping" in run(hero, "stash put bag", 1.8)
+        assert "bag" in run(hero, "stash", 1.8)
+        mark = len(hero.transcript)
+        keeper.send("slay zhoarder")
+        hero.drain(2.5)                 # the hero's own socket reads the blow
+        # A slay says it its own way; the first-death achievement does not.
+        assert "first true death" in hero.transcript[mark:], hero.transcript[mark:]
+
+    def test_a_death_keeps_the_stash(self) -> None:
+        """A mortal stashes a bag, is slain, and the bag is still there --
+        at once and after a fresh login, which reads the player file.
+        tests/test_bug_reports_oct10.py pins the source; this plays it."""
+        mud = self.world()
         with mud.connect(timeout=120) as hero, mud.connect(timeout=120) as keeper:
             login(hero, "Zhoarder", PASSWORD)
             login(keeper, "Zkeeper", PASSWORD)
-            run(keeper, "load obj 3032", 1.6)          # a bag
-            run(keeper, "give bag zhoarder", 1.6)
-            self.assertIn("away for safe keeping",
-                          run(hero, "stash put bag", 1.8))
-            self.assertIn("bag", run(hero, "stash", 1.8))
-
-            mark = len(hero.transcript)
-            keeper.send("slay zhoarder")
-            hero.drain(2.5)                 # the hero's own socket reads the blow
-            # A slay says it its own way; the first-death achievement does not.
-            self.assertIn("first true death", hero.transcript[mark:])
+            self.stash_a_bag_and_die(hero, keeper)
             self.assertIn("bag", run(hero, "stash", 2.0))
             hero.drain(1.0)
             hero.send("quit")
@@ -260,6 +270,55 @@ class StashDeathTests(unittest.TestCase):
         with mud.connect(timeout=120) as hero:
             login(hero, "Zhoarder", PASSWORD)
             self.assertIn("bag", run(hero, "stash", 2.0))
+
+    def test_staff_can_put_a_snapshots_stash_back(self) -> None:
+        """PRESTORE <player> <n> STASH reads only the #STASH section of a
+        snapshot and adds it to the character as they are: the hero keeps
+        playing, is told, and the level is untouched. Written for the two
+        stashes Alaric lost to deaths on 2026-10-10, whose death snapshots
+        still hold them."""
+        mud = self.world()
+        with mud.connect(timeout=120) as hero, mud.connect(timeout=120) as keeper:
+            login(hero, "Zhoarder", PASSWORD)
+            login(keeper, "Zkeeper", PASSWORD)
+            self.stash_a_bag_and_die(hero, keeper)
+            self.assertIn("holds 1 of", run(hero, "stash", 2.0))
+
+            listing = run(keeper, "prestore zhoarder", 2.5)
+            death = re.search(r"\[\s*(\d+)\][^\n]*before death", listing)
+            self.assertIsNotNone(death, listing)
+            number = death.group(1)
+
+            # A word other than STASH is refused before anything happens.
+            self.assertIn("only thing to restore",
+                          run(keeper, "prestore zhoarder %s gold" % number, 2.0))
+
+            reply = run(keeper, "prestore zhoarder %s stash" % number, 3.0)
+            self.assertIn("Restored 1 object", reply)
+            self.assertIn("now holds 2 of", reply)
+
+            # The hero is still here, was told, and has two bags now.
+            told = run(hero, "stash", 2.5)
+            self.assertIn("back into your stash", told)
+            self.assertIn("holds 2 of", told)
+            hero.drain(1.0)
+            hero.send("quit")
+            self.assertTrue(hero.wait_closed())
+            saved = (mud.player_dir / "Zhoarder").read_text(encoding="latin-1")
+            self.assertRegex(saved, r"(?m)^Levl 20$")
+
+            # Offline: the file is changed in place and the copy freed. The
+            # restore above took its own "before stashrestore" copy, so the
+            # death snapshot's number has moved down the list.
+            listing = run(keeper, "prestore zhoarder", 2.5)
+            number = re.search(r"\[\s*(\d+)\][^\n]*before death", listing).group(1)
+            reply = run(keeper, "prestore zhoarder %s stash" % number, 3.0)
+            self.assertIn("Restored 1 object", reply)
+            self.assertIn("now holds 3 of", reply)
+
+        with mud.connect(timeout=120) as hero:
+            login(hero, "Zhoarder", PASSWORD)
+            self.assertIn("holds 3 of", run(hero, "stash", 2.0))
 
 
 if __name__ == "__main__":

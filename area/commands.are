@@ -6303,6 +6303,7 @@ See also: FINGER, TRAIL, PSTAT
 63 PRESTORE~
 Syntax: prestore <player>
         prestore <player> <number>
+        prestore <player> <number> stash
 
 PRESTORE manages versioned snapshots of a player's save file.
 
@@ -6324,6 +6325,16 @@ Up to 30 versions are kept per player; older ones are pruned automatically.
 If the target player is currently online, they are saved and disconnected
 before the restore takes effect.  They must reconnect to use the restored
 character.
+
+PRESTORE <player> <number> STASH puts back only the stash that snapshot
+holds, added to whatever the stash holds now, and changes nothing else
+about the character: levels, gear and gold stay as they are.  It works
+on a player who is online (they keep playing and are told) or offline.
+A snapshot marked "before death" was taken before the character was
+extracted, so it holds the stash as it was at the moment of death.
+Nothing is removed, so a restore that was not needed leaves duplicates
+to take out rather than a loss.  A copy of the character is taken first
+(shown as "before stashrestore").
 
 See also: ACTIVITY, FINGER, PSTAT
 ~

@@ -8,6 +8,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **PRESTORE <player> <n> STASH** puts back only the stash a snapshot
+  holds, added to whatever the stash holds now, and changes nothing else
+  about the character. A death snapshot is taken before the dead are
+  extracted, so it holds the stash as it was at the moment of death --
+  which is what the stash bug below emptied. Works on a player online
+  (they keep playing and are told) or offline. `stash_restore_from_file`
+  in `save.c` reads the `#STASH` section with the loader's own
+  `fread_obj`, enchantments and nesting included. `tests/test_stash.py`.
+
 ### Fixed
 
 - **Dying emptied the stash.** A player's death extracts them without

@@ -350,11 +350,18 @@ backup now             create the four-hour style archive immediately
 backup daily           create the daily archive immediately
 prestore <player>      list numbered player snapshots
 prestore <player> <n>  restore a selected snapshot
+prestore <player> <n> stash
+                       put back only that snapshot's stash
 ```
 
 `prestore` validates the selection, protects the current file with a safety
 copy, and replaces through a temporary file. Follow its live output and ensure
 the affected player is disconnected before restoration.
+
+`prestore <player> <n> stash` restores the stash alone, added to what the
+stash holds now, and leaves levels, gear and gold as they are; the player
+may stay online. A snapshot listed as "before death" holds the stash at
+the moment of death.
 
 ### Off-Host Backup
 

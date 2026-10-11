@@ -1646,6 +1646,92 @@ static void fread_skill_name( FILE *fp, char *dest, size_t size )
 }
 
 
+/*
+ * Put the stash a saved file holds into a character's stash, and change
+ * nothing else about them. PRESTORE <player> <n> STASH uses it on a
+ * snapshot: a death snapshot is taken before the dead character is
+ * extracted, so when a death emptied the stash (it did, until
+ * 2026-10-10) the snapshot still holds everything, and a whole-file
+ * restore would take the character's levels with it.
+ *
+ * The objects are read by fread_obj exactly as login reads them --
+ * enchantments, Hyrule levels and nesting included -- and are added to
+ * whatever the stash holds now. Returns how many objects the stash
+ * gained, or -1 if the file could not be read.
+ */
+int stash_restore_from_file( CHAR_DATA *ch, const char *path )
+{
+    FILE *fp;
+    char line[MAX_INPUT_LENGTH];
+    int iNest;
+    int before;
+    bool found = false;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || path == NULL )
+        return -1;
+
+    if ( ( fp = fopen( path, "r" ) ) == NULL )
+        return -1;
+
+    /* Everything up to the marker is the character, which stays as it
+       is: skip it a line at a time rather than loading it onto them. */
+    while ( fgets( line, (int) sizeof(line), fp ) != NULL )
+    {
+        if ( !strncmp( line, "#STASH", 6 )
+        &&   ( line[6] == '\n' || line[6] == '\r' || line[6] == '\0' ) )
+        {
+            found = true;
+            break;
+        }
+    }
+
+    if ( !found )
+    {
+        fclose( fp );
+        return 0;
+    }
+
+    for ( iNest = 0; iNest < MAX_NEST; iNest++ )
+        rgObjNest[iNest] = NULL;
+    before = stash_count( ch );
+    fread_to_stash = true;
+
+    for ( ; ; )
+    {
+        char letter;
+        char *word;
+
+        if ( feof( fp ) )
+            break;
+        letter = fread_letter( fp );
+        if ( letter == '*' )
+        {
+            fread_to_eol( fp );
+            continue;
+        }
+        if ( letter != '#' )
+        {
+            bug( "stash_restore_from_file: # not found.", 0 );
+            break;
+        }
+
+        word = fread_word( fp );
+        if      ( !str_cmp( word, "O"      ) ) fread_obj( ch, fp );
+        else if ( !str_cmp( word, "OBJECT" ) ) fread_obj( ch, fp );
+        else if ( !str_cmp( word, "END"    ) ) break;
+        else
+        {
+            bug( "stash_restore_from_file: bad section.", 0 );
+            break;
+        }
+    }
+
+    fread_to_stash = false;
+    fclose( fp );
+    return stash_count( ch ) - before;
+}
+
+
 void fread_char( CHAR_DATA *ch, FILE *fp )
 {
     char buf[MAX_STRING_LENGTH];

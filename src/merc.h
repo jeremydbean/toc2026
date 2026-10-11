@@ -2792,6 +2792,7 @@ void    stash_offer_notice ( CHAR_DATA *ch );
 void    stash_link_report ( CHAR_DATA *ch, char *buf, size_t size );
 void    stash_receive   ( CHAR_DATA *ch, OBJ_DATA *obj );
 void    stash_extract   ( CHAR_DATA *ch );
+int     stash_restore_from_file ( CHAR_DATA *ch, const char *path );
 void    gainlist_by_trainer ( CHAR_DATA *ch, char *argument );
 void    abilities_oracle_summary ( CHAR_DATA *ch, char *out, size_t size );
 bool    is_psionic_sn   ( int sn );

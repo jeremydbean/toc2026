@@ -10508,10 +10508,107 @@ void do_activity( CHAR_DATA *ch, char *argument )
  * Syntax: prestore <player>          -- list available versions with dates
  *         prestore <player> <number> -- restore that numbered version
  */
+/*
+ * PRESTORE <player> <n> STASH: put the stash a snapshot holds back into
+ * the character and change nothing else about them. Alaric lost his
+ * stash to a death twice on 2026-10-10 -- extract_char freed it and the
+ * next save wrote it empty -- and the whole-file restore would have
+ * taken his new life's levels with it. The death snapshot is taken
+ * before the dead are extracted, so it still holds everything.
+ *
+ * The objects are read as login reads them and added to whatever the
+ * stash holds now; nothing is removed, so a restore nobody needed is a
+ * duplicate to take out, not a loss. Works on a character who is
+ * online (into the live stash, saved at once) or offline (a loaded
+ * copy, saved and freed).
+ */
+static void prestore_stash( CHAR_DATA *ch, const char *capname,
+                            const char *srcpath, const char *version )
+{
+    DESCRIPTOR_DATA offline_desc;
+    CHAR_DATA *victim;
+    char buf[MAX_STRING_LENGTH];
+    bool logging_in = false;
+    bool offline = false;
+    int added;
+
+    victim = player_in_game( capname, &logging_in );
+    if ( victim != NULL && logging_in )
+    {
+        send_to_char( "They are logging in; try again in a moment.\n\r", ch );
+        return;
+    }
+    if ( victim == NULL )
+    {
+        if ( ( victim = offline_player_load( &offline_desc, capname, NULL ) ) == NULL )
+        {
+            send_to_char( "No player by that name is online or saved.\n\r", ch );
+            return;
+        }
+        offline = true;
+    }
+
+    if ( victim == ch )
+    {
+        send_to_char( "You cannot prestore yourself.\n\r", ch );
+        return;
+    }
+    if ( IS_NPC( victim ) || victim->pcdata == NULL || rank_protects( ch, victim ) )
+    {
+        send_to_char( "You failed.\n\r", ch );
+        if ( offline )
+            extract_char( victim, true );
+        return;
+    }
+
+    /* A copy of them as they are, in case this was the mistake. */
+    player_snapshot_milestone( victim, "stashrestore", true );
+
+    added = stash_restore_from_file( victim, srcpath );
+    if ( added < 0 )
+    {
+        bug( "prestore_stash: cannot read snapshot", 0 );
+        send_to_char( "Error: cannot read snapshot file.\n\r", ch );
+        if ( offline )
+            extract_char( victim, true );
+        return;
+    }
+
+    save_char_obj( victim );
+
+    snprintf( buf, sizeof(buf),
+              "%s restored %d stash object%s to %s from %s%s",
+              ch->name, added, added == 1 ? "" : "s", capname, version,
+              offline ? " while offline" : "" );
+    log_string( buf );
+
+    snprintf( buf, sizeof(buf),
+              "Restored %d object%s from %s into %s's stash, which now holds %d of %d.\n\r",
+              added, added == 1 ? "" : "s", version, capname,
+              stash_count( victim ), victim->pcdata->stash_max );
+    send_to_char( buf, ch );
+    if ( added == 0 )
+        send_to_char( "That snapshot's stash was empty.\n\r", ch );
+
+    if ( offline )
+    {
+        /* The loaded copy is saved; it never entered the game. */
+        extract_char( victim, true );
+    }
+    else if ( added > 0 )
+    {
+        snprintf( buf, sizeof(buf),
+                  "An immortal has put %d object%s back into your stash.\n\r",
+                  added, added == 1 ? "" : "s" );
+        send_to_char( buf, victim );
+    }
+}
+
 void do_prestore( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
+    char arg3[MAX_INPUT_LENGTH];
     char vdir[MAX_STRING_LENGTH];
     char buf[MAX_STRING_LENGTH];
     char capname[MAX_INPUT_LENGTH];
@@ -10538,12 +10635,14 @@ void do_prestore( CHAR_DATA *ch, char *argument )
     struct dirent *de;
 
     argument = one_argument( argument, arg1 );
-    one_argument( argument, arg2 );
+    argument = one_argument( argument, arg2 );
+    one_argument( argument, arg3 );
 
     if ( arg1[0] == '\0' )
     {
         send_to_char( "Syntax: prestore <player>\n\r", ch );
         send_to_char( "        prestore <player> <number>\n\r", ch );
+        send_to_char( "        prestore <player> <number> stash\n\r", ch );
         return;
     }
 
@@ -10682,6 +10781,19 @@ void do_prestore( CHAR_DATA *ch, char *argument )
 
         snprintf( srcpath, sizeof(srcpath), "%s%s/%s",
                   PLAYER_VER_DIR, capname, versions[n - 1] );
+
+        /* Only the stash, onto the character as they are now. */
+        if ( !str_cmp( arg3, "stash" ) )
+        {
+            prestore_stash( ch, capname, srcpath, versions[n - 1] );
+            return;
+        }
+        if ( arg3[0] != '\0' )
+        {
+            send_to_char( "The only thing to restore on its own is STASH.\n\r", ch );
+            return;
+        }
+
         snprintf( dstpath, sizeof(dstpath), "%s%s",
                   PLAYER_DIR, capname );
         snprintf( tmppath, sizeof(tmppath), "%s.restore.tmp", dstpath );

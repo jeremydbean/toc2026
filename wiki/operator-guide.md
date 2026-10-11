@@ -202,6 +202,7 @@ push alone does not prove the backup can be restored.
 prestore <player>
 prestore <player> list
 prestore <player> <number>
+prestore <player> <number> stash
 ```
 
 The list is newest first and includes the snapshot's level when readable.
