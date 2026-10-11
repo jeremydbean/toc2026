@@ -87428,3 +87428,52 @@ Sun Oct 11 18:59:06 2026 :: Log Alaric [6551]: get pick
 Sun Oct 11 18:59:07 2026 :: Log Alaric [6551]: n
 Sun Oct 11 18:59:07 2026 :: Log Alaric [6544]: arrived (Mine crossroad) from 6551
 Sun Oct 11 18:59:09 2026 :: Log Alaric [6544]: unl north
+Sun Oct 11 18:59:10 2026 :: Log Alaric [6544]: on
+Sun Oct 11 18:59:11 2026 :: Log Alaric [6544]: n
+Sun Oct 11 18:59:11 2026 :: Log Alaric [6546]: arrived (Mine Maze) from 6544
+Sun Oct 11 18:59:13 2026 :: Log Alaric [6546]: e
+Sun Oct 11 18:59:13 2026 :: Log Alaric [6547]: arrived (Maze inscription) from 6546
+Sun Oct 11 18:59:14 2026 :: Log Alaric [6547]: scan
+Sun Oct 11 18:59:15 2026 :: Log Alaric [6547]: n
+Sun Oct 11 18:59:15 2026 :: Log Alaric [6548]: arrived (Maze) from 6547
+Sun Oct 11 18:59:16 2026 :: Log Alaric [6548]: scan
+Sun Oct 11 18:59:16 2026 :: Log Alaric [6548]: n
+Sun Oct 11 18:59:16 2026 :: Log Alaric [6549]: arrived (Maze) from 6548
+Sun Oct 11 18:59:16 2026 :: Log Alaric [6549]: s
+Sun Oct 11 18:59:18 2026 :: Log Alaric [6549]: w
+Sun Oct 11 18:59:18 2026 :: Log Alaric [6548]: arrived (Maze) from 6549
+Sun Oct 11 18:59:19 2026 :: Log Alaric [6548]: n
+Sun Oct 11 18:59:19 2026 :: Log Alaric [6549]: arrived (Maze) from 6548
+Sun Oct 11 18:59:20 2026 :: Log Alaric [6549]: scan
+Sun Oct 11 18:59:21 2026 :: Log Alaric [6549]: w
+Sun Oct 11 18:59:21 2026 :: Log Alaric [6548]: arrived (Maze) from 6549
+Sun Oct 11 18:59:22 2026 :: Log Alaric [6548]: n
+Sun Oct 11 18:59:22 2026 :: Log Alaric [6549]: arrived (Maze) from 6548
+Sun Oct 11 18:59:22 2026 :: Log Alaric [6549]: n
+Sun Oct 11 18:59:22 2026 :: Log Alaric [6550]: arrived (Maze) from 6549
+Sun Oct 11 18:59:24 2026 :: Log Alaric [6550]: w
+Sun Oct 11 18:59:24 2026 :: Log Alaric [6552]: arrived (Solved the Maze.) from 6550
+Sun Oct 11 18:59:27 2026 :: Log Alaric [6552]: ex
+Sun Oct 11 18:59:29 2026 :: Log Alaric [6552]: w
+Sun Oct 11 18:59:29 2026 :: Log Alaric [6553]: arrived (The Mazekeeper's Room) from 6552
+Sun Oct 11 18:59:30 2026 :: Log Alaric [6553]: list
+Sun Oct 11 18:59:34 2026 :: Log Alaric [6553]: look ma
+Sun Oct 11 18:59:59 2026 :: Log Alaric [6553]: quaff fly
+Sun Oct 11 19:00:04 2026 :: Log Alaric [6553]: to
+Sun Oct 11 19:00:17 2026 :: Log Alaric [6553]: to
+Sun Oct 11 19:00:34 2026 :: Log Alaric [6553]: who
+Sun Oct 11 19:00:36 2026 :: Log Alaric [6553]: flee
+Sun Oct 11 19:00:37 2026 :: Log Alaric [6553]: flee
+Sun Oct 11 19:00:37 2026 :: Log Alaric [6553]: flee
+Sun Oct 11 19:00:37 2026 :: Log Alaric [6552]: arrived (Solved the Maze.) from 6553
+Sun Oct 11 19:00:39 2026 :: Log Alaric [6552]: recal
+Sun Oct 11 19:00:39 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 6552
+Sun Oct 11 19:00:40 2026 :: Log Alaric [4207]: e
+Sun Oct 11 19:00:40 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 11 19:00:40 2026 :: Log Alaric [4202]: n
+Sun Oct 11 19:00:40 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 11 19:00:41 2026 :: Log Alaric [4203]: n
+Sun Oct 11 19:00:41 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 11 19:00:41 2026 :: Log Alaric [4210]: sleep
+Sun Oct 11 19:03:47 2026 :: Sock.sinaddr:  3.133.226.214
+Sun Oct 11 19:03:47 2026 :: EOF encountered on read.
