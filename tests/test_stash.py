@@ -221,5 +221,46 @@ class StashSourceTests(unittest.TestCase):
         self.assertIn("stash_extract( ch )", self.handler)
 
 
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class StashDeathTests(unittest.TestCase):
+    def test_a_death_keeps_the_stash(self) -> None:
+        """A mortal stashes a bag, is slain, and the bag is still there --
+        at once and after a fresh login, which reads the player file.
+        tests/test_bug_reports_oct10.py pins the source; this plays it."""
+        mud = LiveMud()
+        mud.__enter__()
+        self.addCleanup(mud.__exit__, None, None, None)
+        for name, level in (("Zhoarder", 20), ("Zkeeper", 70)):
+            with mud.connect(timeout=120) as client:
+                create_character(client, name, PASSWORD)
+                client.drain(1.0)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            patch_player_file(mud, name, Levl=level, Room=RECALL)
+
+        with mud.connect(timeout=120) as hero, mud.connect(timeout=120) as keeper:
+            login(hero, "Zhoarder", PASSWORD)
+            login(keeper, "Zkeeper", PASSWORD)
+            run(keeper, "load obj 3032", 1.6)          # a bag
+            run(keeper, "give bag zhoarder", 1.6)
+            self.assertIn("away for safe keeping",
+                          run(hero, "stash put bag", 1.8))
+            self.assertIn("bag", run(hero, "stash", 1.8))
+
+            mark = len(hero.transcript)
+            keeper.send("slay zhoarder")
+            hero.drain(2.5)                 # the hero's own socket reads the blow
+            # A slay says it its own way; the first-death achievement does not.
+            self.assertIn("first true death", hero.transcript[mark:])
+            self.assertIn("bag", run(hero, "stash", 2.0))
+            hero.drain(1.0)
+            hero.send("quit")
+            self.assertTrue(hero.wait_closed())
+
+        with mud.connect(timeout=120) as hero:
+            login(hero, "Zhoarder", PASSWORD)
+            self.assertIn("bag", run(hero, "stash", 2.0))
+
+
 if __name__ == "__main__":
     unittest.main()
