@@ -2610,8 +2610,11 @@ void extract_char( CHAR_DATA *ch, bool fPull )
 
     /* The stash is not in ch->carrying, so the loop above never sees it.
        It has already been written to the player file by this point;
-       these are the copies in memory and nothing else points at them. */
-    if ( !IS_NPC(ch) )
+       these are the copies in memory and nothing else points at them.
+       Only when the character is leaving: a death (fPull false) keeps
+       them playing, and freeing the stash then let the next save write
+       it empty -- every death emptied the dead player's stash. */
+    if ( !IS_NPC(ch) && fPull )
         stash_extract( ch );
 
     char_from_room( ch );

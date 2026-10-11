@@ -10,6 +10,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Dying emptied the stash.** A player's death extracts them without
+  pulling them from the game, but `extract_char` freed the stash in
+  memory either way, so the next save wrote it empty. Only a character
+  who is leaving has their stash freed now. HISTORY with nothing to
+  show says "any channel", not "every channel". Both from Alaric's
+  reports. `tests/test_bug_reports_oct10.py`.
 - **Ganon no longer collapses to one hit point from a punch.** Hit points,
   mana and moves were `sh_int`, so Ganon's 36,000 wrapped negative when he
   spawned and the first blow counted as fatal. The ashen Gleeok and the

@@ -1009,6 +1009,11 @@ void do_history( CHAR_DATA *ch, char *argument )
     if ( arg[0] == '\0' )
     {
         count = history_gather( ch, gathered, HISTORY_GATHER_MAX, -1, true, 0 );
+        if ( count == 0 )
+        {
+            send_to_char( "Nothing has been said on any channel.\n\r", ch );
+            return;
+        }
         history_print( ch, gathered, count, wanted, "every channel" );
         return;
     }

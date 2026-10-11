@@ -3,6 +3,10 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261010a 2026-10-10
+Dying no longer empties your stash. HISTORY with nothing to show now
+says nothing has been said on any channel.
+
 @ 20261008b 2026-10-08
 In Mud School, ISSUE, REISSUE and SUBISSUE now hand out your sub issue
 gear, just as OUTFIT does, and HELP SUBISSUE finds it.
