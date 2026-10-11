@@ -89414,3 +89414,5 @@ Sun Oct 11 21:33:28 2026 :: Log Alaric [4210]: stash
 Sun Oct 11 21:33:30 2026 :: Log Alaric [4210]: wake
 Sun Oct 11 21:33:31 2026 :: Log Alaric [4210]: stash
 Sun Oct 11 21:33:35 2026 :: Log Alaric [4210]: sleep
+Sun Oct 11 21:36:14 2026 :: Sock.sinaddr:  5.161.215.244
+Sun Oct 11 21:36:14 2026 :: EOF encountered on read.
