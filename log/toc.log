@@ -89258,3 +89258,5 @@ Sun Oct 11 21:16:56 2026 :: Log Alaric [16000]: arrived (Beginning of the Pier) 
 Sun Oct 11 21:16:57 2026 :: Log Alaric [16000]: n
 Sun Oct 11 21:16:57 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16000
 Sun Oct 11 21:17:03 2026 :: Log Alaric [16001]: bs sa
+Sun Oct 11 21:21:00 2026 :: Sock.sinaddr:  54.87.112.51
+Sun Oct 11 21:21:01 2026 :: EOF encountered on read.
