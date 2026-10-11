@@ -1665,6 +1665,8 @@ int stash_restore_from_file( CHAR_DATA *ch, const char *path )
     char line[MAX_INPUT_LENGTH];
     int iNest;
     int before;
+    int snapshot_version = -1;
+    sh_int live_version;
     bool found = false;
 
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || path == NULL )
@@ -1677,6 +1679,13 @@ int stash_restore_from_file( CHAR_DATA *ch, const char *path )
        is: skip it a line at a time rather than loading it onto them. */
     while ( fgets( line, (int) sizeof(line), fp ) != NULL )
     {
+        /* fread_obj lays out Cost and the affect fields by the version
+           of the file it is reading -- which it takes from ch. That is
+           the live character's version, not the snapshot's, so note the
+           snapshot's own and read with that. */
+        if ( snapshot_version < 0 && !strncmp( line, "Vers", 4 )
+        &&   ( line[4] == ' ' || !strncmp( line + 4, "ion ", 4 ) ) )
+            snapshot_version = atoi( strchr( line, ' ' ) );
         if ( !strncmp( line, "#STASH", 6 )
         &&   ( line[6] == '\n' || line[6] == '\r' || line[6] == '\0' ) )
         {
@@ -1694,6 +1703,9 @@ int stash_restore_from_file( CHAR_DATA *ch, const char *path )
     for ( iNest = 0; iNest < MAX_NEST; iNest++ )
         rgObjNest[iNest] = NULL;
     before = stash_count( ch );
+    live_version = ch->version;
+    if ( snapshot_version >= 0 )
+        ch->version = (sh_int) snapshot_version;
     fread_to_stash = true;
 
     for ( ; ; )
@@ -1727,6 +1739,7 @@ int stash_restore_from_file( CHAR_DATA *ch, const char *path )
     }
 
     fread_to_stash = false;
+    ch->version = live_version;
     fclose( fp );
     return stash_count( ch ) - before;
 }

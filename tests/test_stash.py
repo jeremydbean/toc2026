@@ -312,6 +312,10 @@ class StashDeathTests(unittest.TestCase):
             # death snapshot's number has moved down the list -- which is
             # what the stamp is for.
             stamp = re.search(r"before death\s+stamp (\d{8}_\d{6})", listing).group(1)
+            # The date half alone is digits only and eight long: a stamp,
+            # not a list number, and today it names every snapshot.
+            self.assertIn("give more of the stamp",
+                          run(keeper, "prestore zhoarder %s stash" % stamp[:8], 2.0))
             reply = run(keeper, "prestore zhoarder %s stash" % stamp, 3.0)
             self.assertIn("Restored 1 object", reply)
             self.assertIn("now holds 3 of", reply)

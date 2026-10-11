@@ -10776,11 +10776,13 @@ void do_prestore( CHAR_DATA *ch, char *argument )
            file; the stamp cannot. A prefix of it will do if it is
            unique -- 20261010_1626 names a minute. */
         n = 0;
-        if ( is_number( arg2 ) )
-            n = atoi( arg2 );
-        else if ( strlen( arg2 ) >= 8 )
+        if ( strlen( arg2 ) >= 8 )
         {
+            /* Eight or more characters is a stamp, digits only or not:
+               a list number is never that long, and the date half of a
+               stamp (20261010) has no underscore to tell it apart. */
             int matches = 0;
+            int exact = 0;
 
             for ( i = 0; i < count; i++ )
             {
@@ -10788,7 +10790,17 @@ void do_prestore( CHAR_DATA *ch, char *argument )
                 {
                     n = i + 1;
                     matches++;
+                    /* The whole name typed -- "20261010_162657.death", or
+                       the bare stamp of an untagged copy -- beats a copy
+                       taken the same second with a tag on it. */
+                    if ( !str_cmp( arg2, versions[i] + namelen + 1 ) )
+                        exact = i + 1;
                 }
+            }
+            if ( matches > 1 && exact > 0 )
+            {
+                n = exact;
+                matches = 1;
             }
             if ( matches > 1 )
             {
@@ -10799,6 +10811,8 @@ void do_prestore( CHAR_DATA *ch, char *argument )
                 return;
             }
         }
+        else if ( is_number( arg2 ) )
+            n = atoi( arg2 );
         if ( n < 1 || n > count )
         {
             snprintf( buf, sizeof(buf),
