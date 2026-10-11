@@ -81335,3 +81335,5 @@ Sun Oct 11 00:17:42 2026 :: Log Alaric [29060]: coin +1 platinum
 Sun Oct 11 00:17:42 2026 :: Log Alaric [29060]: coin +5 silver
 Sun Oct 11 00:17:42 2026 :: Log Alaric [29060]: coin +6 copper
 Sun Oct 11 00:17:42 2026 :: Log Alaric [29060]: coin +2 gold
+Sun Oct 11 00:20:35 2026 :: Sock.sinaddr:  18.116.205.62
+Sun Oct 11 00:20:35 2026 :: EOF encountered on read.
