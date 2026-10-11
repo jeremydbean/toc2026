@@ -84522,3 +84522,84 @@ Sun Oct 11 14:30:52 2026 :: Log Alaric [9339]: pick up
 Sun Oct 11 14:30:55 2026 :: Log Alaric [9339]: pick up
 Sun Oct 11 14:30:58 2026 :: Log Alaric [9339]: pick up
 Sun Oct 11 14:31:01 2026 :: Log Alaric [9339]: sc
+Sun Oct 11 14:31:46 2026 :: Log Alaric [9339]: open up
+Sun Oct 11 14:31:47 2026 :: Log Alaric [9339]: l
+Sun Oct 11 14:31:49 2026 :: Log Alaric [9339]: u
+Sun Oct 11 14:31:56 2026 :: Log Alaric [9339]: s
+Sun Oct 11 14:31:56 2026 :: Log Alaric [9342]: arrived (On a Hill) from 9339
+Sun Oct 11 14:31:58 2026 :: Log Alaric [9342]: scan
+Sun Oct 11 14:32:03 2026 :: Log Alaric [9342]: e
+Sun Oct 11 14:32:03 2026 :: Log Alaric [9353]: arrived (Inside a Gigantic Clam) from 9342
+Sun Oct 11 14:32:05 2026 :: Log Alaric [9353]: look fi
+Sun Oct 11 14:32:07 2026 :: Log Alaric [9353]: w
+Sun Oct 11 14:32:07 2026 :: Log Alaric [9342]: arrived (On a Hill) from 9353
+Sun Oct 11 14:32:07 2026 :: Log Alaric [9342]: n
+Sun Oct 11 14:32:07 2026 :: Log Alaric [9339]: arrived (On the Mystic Chains) from 9342
+Sun Oct 11 14:32:10 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:32:14 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:32:17 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:32:20 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:32:23 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:32:26 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:32:29 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:32:32 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:32:35 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:32:38 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:32:41 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:32:44 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:32:47 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:32:50 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:32:53 2026 :: Log Alaric [9339]: sc
+Sun Oct 11 14:33:23 2026 :: Log Alaric [9339]: l
+Sun Oct 11 14:33:28 2026 :: Log Alaric [9339]: help pick
+Sun Oct 11 14:33:32 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:33:37 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:33:41 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:33:45 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:33:49 2026 :: Log Alaric [9339]: pick up
+Sun Oct 11 14:33:51 2026 :: Sock.sinaddr:  3.212.128.62
+Sun Oct 11 14:33:51 2026 :: EOF encountered on read.
+Sun Oct 11 14:34:09 2026 :: Sock.sinaddr:  172.104.210.105
+Sun Oct 11 14:34:35 2026 :: Log Alaric [9339]: scan
+Sun Oct 11 14:34:44 2026 :: Log Alaric [9339]: s
+Sun Oct 11 14:34:44 2026 :: Log Alaric [9342]: arrived (On a Hill) from 9339
+Sun Oct 11 14:34:44 2026 :: Log Alaric [9342]: bs ari
+Sun Oct 11 14:34:58 2026 :: Log Alaric [9342]: to
+Sun Oct 11 14:35:07 2026 :: Log Alaric [9342]: to
+Sun Oct 11 14:35:16 2026 :: Log Alaric [9342]: to
+Sun Oct 11 14:35:16 2026 :: Log Alaric [9342]: killed Aries
+Sun Oct 11 14:35:16 2026 :: Log Alaric [9342]: coin +1 platinum
+Sun Oct 11 14:35:16 2026 :: Log Alaric [9342]: coin +6 silver
+Sun Oct 11 14:35:16 2026 :: Log Alaric [9342]: coin +8 copper
+Sun Oct 11 14:35:16 2026 :: Log Alaric [9342]: coin +3 gold
+Sun Oct 11 14:35:21 2026 :: Log Alaric [9342]: l i cor
+Sun Oct 11 14:35:24 2026 :: Log Alaric [9342]: get shoo cor
+Sun Oct 11 14:35:25 2026 :: Log Alaric [9342]: n
+Sun Oct 11 14:35:25 2026 :: Log Alaric [9339]: arrived (On the Mystic Chains) from 9342
+Sun Oct 11 14:35:26 2026 :: Log Alaric [9339]: unl up
+Sun Oct 11 14:35:28 2026 :: Log Alaric [9339]: open up
+Sun Oct 11 14:35:29 2026 :: Log Alaric [9339]: scan
+Sun Oct 11 14:35:31 2026 :: Log Alaric [9339]: u
+Sun Oct 11 14:35:31 2026 :: Log Alaric [9354]: arrived (End of the Mystic Chains) from 9339
+Sun Oct 11 14:35:33 2026 :: Log Alaric [9354]: open up
+Sun Oct 11 14:35:36 2026 :: Log Alaric [9354]: unl up
+Sun Oct 11 14:35:38 2026 :: Log Alaric [9354]: pick up
+Sun Oct 11 14:35:47 2026 :: Log Alaric [9354]: d
+Sun Oct 11 14:35:47 2026 :: Log Alaric [9339]: arrived (On the Mystic Chains) from 9354
+Sun Oct 11 14:35:47 2026 :: Log Alaric [9339]: e
+Sun Oct 11 14:35:47 2026 :: Log Alaric [9351]: arrived (On a Mountain Peak) from 9339
+Sun Oct 11 14:35:48 2026 :: Log Alaric [9351]: l i cor
+Sun Oct 11 14:35:49 2026 :: Log Alaric [9351]: w
+Sun Oct 11 14:35:49 2026 :: Log Alaric [9339]: arrived (On the Mystic Chains) from 9351
+Sun Oct 11 14:35:50 2026 :: Log Alaric [9339]: ex
+Sun Oct 11 14:35:53 2026 :: Log Alaric [9339]: u
+Sun Oct 11 14:35:57 2026 :: Log Alaric [9339]: open up
+Sun Oct 11 14:35:57 2026 :: Log Alaric [9339]: u
+Sun Oct 11 14:35:58 2026 :: Log Alaric [9339]: l
+Sun Oct 11 14:36:00 2026 :: Log Alaric [9339]: scan
+Sun Oct 11 14:36:09 2026 :: Log Alaric [9339]: ex
+Sun Oct 11 14:36:11 2026 :: Log Alaric [9339]: e
+Sun Oct 11 14:36:11 2026 :: Log Alaric [9351]: arrived (On a Mountain Peak) from 9339
+Sun Oct 11 14:36:12 2026 :: Log Alaric [9351]: ex
+Sun Oct 11 14:36:14 2026 :: Log Alaric [9351]: look cap
+Sun Oct 11 14:36:16 2026 :: Log Alaric [9351]: bs cap
