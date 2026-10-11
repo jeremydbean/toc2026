@@ -4654,6 +4654,12 @@ char *get_extra_descr( const char *name, EXTRA_DESCR_DATA *ed )
 MOB_INDEX_DATA *get_mob_index( int vnum )
 {
     MOB_INDEX_DATA *pMobIndex;
+
+    /* vnum % MAX_KEY_HASH is negative for a negative vnum, and indexes
+       before the table. is_number() accepts a leading minus, so a typed
+       "-5" reached here from MSHOW, OSHOW and PLACE (2026-10-11). */
+    if ( vnum < 0 )
+        return NULL;
  
     for ( pMobIndex  = mob_index_hash[vnum % MAX_KEY_HASH];
           pMobIndex != NULL;
@@ -4681,6 +4687,12 @@ MOB_INDEX_DATA *get_mob_index( int vnum )
 OBJ_INDEX_DATA *get_obj_index( int vnum )
 {
     OBJ_INDEX_DATA *pObjIndex;
+
+    /* vnum % MAX_KEY_HASH is negative for a negative vnum, and indexes
+       before the table. is_number() accepts a leading minus, so a typed
+       "-5" reached here from MSHOW, OSHOW and PLACE (2026-10-11). */
+    if ( vnum < 0 )
+        return NULL;
  
     for ( pObjIndex  = obj_index_hash[vnum % MAX_KEY_HASH];
           pObjIndex != NULL;
@@ -4708,6 +4720,12 @@ OBJ_INDEX_DATA *get_obj_index( int vnum )
 ROOM_INDEX_DATA *get_room_index( int vnum )
 {
     ROOM_INDEX_DATA *pRoomIndex;
+
+    /* vnum % MAX_KEY_HASH is negative for a negative vnum, and indexes
+       before the table. is_number() accepts a leading minus, so a typed
+       "-5" reached here from MSHOW, OSHOW and PLACE (2026-10-11). */
+    if ( vnum < 0 )
+        return NULL;
  
     for ( pRoomIndex  = room_index_hash[vnum % MAX_KEY_HASH];
           pRoomIndex != NULL;

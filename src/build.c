@@ -3652,7 +3652,20 @@ void build_wizard_input( CHAR_DATA *ch, const char *line )
     }
     if ( answer[0] == '/' )
     {
+        /* The command may end the character: /quit and /delete free ch
+           and its descriptor, /switch moves the descriptor to a mobile.
+           Only a descriptor still in the list and still holding ch may
+           be asked the next question; the freed one was being written
+           to (2026-10-11). */
+        DESCRIPTOR_DATA *mine = ch->desc;
+        DESCRIPTOR_DATA *scan;
+
         interpret( ch, answer + 1 );
+        for ( scan = descriptor_list; scan != NULL; scan = scan->next )
+            if ( scan == mine )
+                break;
+        if ( mine == NULL || scan == NULL || scan->character != ch )
+            return;
         if ( build_wizard_active( ch ) )
             wiz_ask( ch );
         return;

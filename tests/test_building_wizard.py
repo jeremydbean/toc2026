@@ -11,11 +11,14 @@ from __future__ import annotations
 
 import re
 import unittest
+from pathlib import Path
 
 from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
 
 SKIP = skip_reason()
 PASSWORD = "Zbuildpw6"
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def run(client, command: str, settle: float = 1.0) -> str:
@@ -159,3 +162,30 @@ class WizardTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class WizardSourceTests(unittest.TestCase):
+    """Two things a review found on 2026-10-11."""
+
+    def test_a_slash_command_that_ends_the_character_asks_nothing_more(self) -> None:
+        """/quit inside BUILD frees ch and its descriptor; the wizard then
+        wrote its next question into the freed descriptor. The slash
+        branch must look the descriptor up again before asking."""
+        source = (ROOT / "src" / "build.c").read_text(encoding="latin-1")
+        body = source[source.index("void build_wizard_input("):]
+        branch = body[body.index("if ( answer[0] == '/' )"):]
+        branch = branch[:branch.index("wiz_ask( ch )")]
+        self.assertIn("interpret( ch, answer + 1 )", branch)
+        self.assertIn("descriptor_list", branch)
+        self.assertIn("->character != ch", branch)
+
+    def test_index_lookups_refuse_a_negative_vnum(self) -> None:
+        """is_number accepts a leading minus, and vnum % MAX_KEY_HASH is
+        negative for a negative vnum: MSHOW -5 read before the hash
+        table. The three lookups refuse it at the top."""
+        source = (ROOT / "src" / "db.c").read_text(encoding="latin-1")
+        for name in ("get_mob_index", "get_obj_index", "get_room_index"):
+            with self.subTest(lookup=name):
+                body = source[source.index(f"*{name}( int vnum )"):]
+                body = body[:body.index("_index_hash[vnum % MAX_KEY_HASH]")]
+                self.assertIn("if ( vnum < 0 )", body)
