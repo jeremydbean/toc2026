@@ -86939,3 +86939,87 @@ Sun Oct 11 18:33:48 2026 :: Log Alaric [29060]: unl easr
 Sun Oct 11 18:33:48 2026 :: Log Alaric [29060]: oe
 Sun Oct 11 18:33:48 2026 :: Log Alaric [29060]: e
 Sun Oct 11 18:33:52 2026 :: Log Alaric [29060]: unl easr
+Sun Oct 11 18:33:54 2026 :: Log Alaric [29060]: unl east
+Sun Oct 11 18:33:56 2026 :: Log Alaric [29060]: oe
+Sun Oct 11 18:33:56 2026 :: Log Alaric [29060]: e
+Sun Oct 11 18:33:56 2026 :: Log Alaric [29061]: arrived (Corridor) from 29060
+Sun Oct 11 18:33:57 2026 :: Log Alaric [29061]: close west
+Sun Oct 11 18:33:58 2026 :: Log Alaric [29061]: bs gu
+Sun Oct 11 18:34:24 2026 :: Log Alaric [29061]: eq
+Sun Oct 11 18:34:26 2026 :: Log Alaric [29061]: i
+Sun Oct 11 18:34:31 2026 :: Log Alaric [29061]: drop skul
+Sun Oct 11 18:34:32 2026 :: Log Alaric [29061]: sac sk
+Sun Oct 11 18:34:32 2026 :: Log Alaric [29061]: coin +38 copper
+Sun Oct 11 18:34:36 2026 :: Log Alaric [29061]: stash put ogr
+Sun Oct 11 18:34:36 2026 :: Log Alaric [29061]: stashed gauntlets of ogre power (vnum 2390)
+Sun Oct 11 18:34:37 2026 :: Log Alaric [29061]: i
+Sun Oct 11 18:34:42 2026 :: Log Alaric [29061]: killed a security guard
+Sun Oct 11 18:34:42 2026 :: Log Alaric [29061]: coin +1 platinum
+Sun Oct 11 18:34:42 2026 :: Log Alaric [29061]: coin +7 silver
+Sun Oct 11 18:34:42 2026 :: Log Alaric [29061]: coin +10 copper
+Sun Oct 11 18:34:42 2026 :: Log Alaric [29061]: coin +4 gold
+Sun Oct 11 18:34:46 2026 :: Log Alaric [29061]: l
+Sun Oct 11 18:34:49 2026 :: Log Alaric [29061]: bs gu
+Sun Oct 11 18:35:43 2026 :: Log Alaric [29061]: s
+Sun Oct 11 18:35:43 2026 :: Log Alaric [29062]: arrived (Corridor) from 29061
+Sun Oct 11 18:35:43 2026 :: Log Alaric [29062]: kill gu
+Sun Oct 11 18:36:30 2026 :: Log Alaric [29062]: n
+Sun Oct 11 18:36:30 2026 :: Log Alaric [29061]: arrived (Corridor) from 29062
+Sun Oct 11 18:36:31 2026 :: Log Alaric [29061]: kill gu
+Sun Oct 11 18:36:31 2026 :: Log Alaric [29061]: killed a security guard
+Sun Oct 11 18:36:31 2026 :: Log Alaric [29061]: coin +1 platinum
+Sun Oct 11 18:36:31 2026 :: Log Alaric [29061]: coin +7 silver
+Sun Oct 11 18:36:31 2026 :: Log Alaric [29061]: coin +10 copper
+Sun Oct 11 18:36:31 2026 :: Log Alaric [29061]: coin +4 gold
+Sun Oct 11 18:36:36 2026 :: Log Alaric [29061]: bs gu
+Sun Oct 11 18:36:42 2026 :: Log Alaric [29061]: kill gu
+Sun Oct 11 18:36:45 2026 :: Log Alaric [29061]: killed a security guard
+Sun Oct 11 18:36:45 2026 :: Log Alaric [29061]: coin +1 platinum
+Sun Oct 11 18:36:45 2026 :: Log Alaric [29061]: coin +7 silver
+Sun Oct 11 18:36:45 2026 :: Log Alaric [29061]: coin +10 copper
+Sun Oct 11 18:36:45 2026 :: Log Alaric [29061]: coin +4 gold
+Sun Oct 11 18:36:51 2026 :: Log Alaric [29061]: s
+Sun Oct 11 18:36:51 2026 :: Log Alaric [29062]: arrived (Corridor) from 29061
+Sun Oct 11 18:36:51 2026 :: Log Alaric [29062]: bs gu
+Sun Oct 11 18:36:52 2026 :: Log Alaric [29062]: s
+Sun Oct 11 18:36:52 2026 :: Log Alaric [29063]: arrived (Corridor) from 29062
+Sun Oct 11 18:36:53 2026 :: Log Alaric [29063]: bs gu
+Sun Oct 11 18:36:54 2026 :: Log Alaric [29063]: s
+Sun Oct 11 18:36:54 2026 :: Log Alaric [29065]: arrived (Service Hallway) from 29063
+Sun Oct 11 18:36:55 2026 :: Log Alaric [29065]: bs gu
+Sun Oct 11 18:37:37 2026 :: Log Alaric [29065]: killed a security guard
+Sun Oct 11 18:37:37 2026 :: Log Alaric [29065]: coin +1 platinum
+Sun Oct 11 18:37:37 2026 :: Log Alaric [29065]: coin +7 silver
+Sun Oct 11 18:37:37 2026 :: Log Alaric [29065]: coin +10 copper
+Sun Oct 11 18:37:37 2026 :: Log Alaric [29065]: coin +4 gold
+Sun Oct 11 18:37:46 2026 :: Log Alaric [29065]: e
+Sun Oct 11 18:37:46 2026 :: Log Alaric [29066]: arrived (Service Hallway) from 29065
+Sun Oct 11 18:37:46 2026 :: Log Alaric [29066]: bs gu
+Sun Oct 11 18:38:14 2026 :: Log Alaric [29066]: who
+Sun Oct 11 18:38:17 2026 :: Log Alaric [29066]: to
+Sun Oct 11 18:38:19 2026 :: Log Alaric [29066]: to
+Sun Oct 11 18:38:21 2026 :: Sock.sinaddr:  178.156.184.20
+Sun Oct 11 18:38:22 2026 :: EOF encountered on read.
+Sun Oct 11 18:38:22 2026 :: Log Alaric [29066]: killed a security guard
+Sun Oct 11 18:38:22 2026 :: Log Alaric [29066]: coin +1 platinum
+Sun Oct 11 18:38:22 2026 :: Log Alaric [29066]: coin +7 silver
+Sun Oct 11 18:38:22 2026 :: Log Alaric [29066]: coin +10 copper
+Sun Oct 11 18:38:22 2026 :: Log Alaric [29066]: coin +4 gold
+Sun Oct 11 18:38:33 2026 :: Log Alaric [29066]: e
+Sun Oct 11 18:38:33 2026 :: Log Alaric [29067]: arrived (Service Hallway) from 29066
+Sun Oct 11 18:38:35 2026 :: Log Alaric [29067]: e
+Sun Oct 11 18:38:35 2026 :: Log Alaric [29070]: arrived (Service Hallway) from 29067
+Sun Oct 11 18:38:36 2026 :: Log Alaric [29070]: e
+Sun Oct 11 18:38:36 2026 :: Log Alaric [29071]: arrived (T-Junction) from 29070
+Sun Oct 11 18:38:37 2026 :: Log Alaric [29071]: e
+Sun Oct 11 18:38:37 2026 :: Log Alaric [29072]: arrived (Machine Room) from 29071
+Sun Oct 11 18:38:41 2026 :: Log Alaric [29072]: recal
+Sun Oct 11 18:38:41 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 29072
+Sun Oct 11 18:38:42 2026 :: Log Alaric [4207]: e
+Sun Oct 11 18:38:42 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 11 18:38:42 2026 :: Log Alaric [4202]: n
+Sun Oct 11 18:38:42 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 11 18:38:42 2026 :: Log Alaric [4203]: n
+Sun Oct 11 18:38:42 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 11 18:38:43 2026 :: Log Alaric [4210]: sleep
+Sun Oct 11 18:38:44 2026 :: Log Alaric [4210]: sc
