@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1791702533
+LogO 1791706218
 Vers 4
 Desc You see something very special about him.
 ~
@@ -19,7 +19,7 @@ ChangesSeen ~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6471351
+Plyd 6475036
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
@@ -102,7 +102,7 @@ Achv visit-mob-factory 1790913596
 Achv visit-glitter-palace 1790800614
 Achv visit-underdark 1790842210
 Achv visit-high-tower 1790800570
-LastOut  1791122337
+LastOut  1791702533
 SesLogin 1791121830
 SesDur   507
 SesExpG  0
