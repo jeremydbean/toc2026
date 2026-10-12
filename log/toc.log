@@ -93088,3 +93088,16 @@ Mon Oct 12 18:36:39 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 
 Mon Oct 12 18:36:40 2026 :: Log Alaric [4203]: n
 Mon Oct 12 18:36:40 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
 Mon Oct 12 18:36:41 2026 :: Log Alaric [4210]: sleep
+Mon Oct 12 18:38:28 2026 :: Log Alaric [4210]: sc
+Mon Oct 12 18:38:32 2026 :: Log Alaric [4210]: ex
+Mon Oct 12 18:38:36 2026 :: Log Alaric [4210]: eq 
+Mon Oct 12 18:38:45 2026 :: Log Alaric [4210]: wake
+Mon Oct 12 18:38:46 2026 :: Log Alaric [4210]: sc
+Mon Oct 12 18:38:48 2026 :: Log Alaric [4210]: wear dip
+Mon Oct 12 18:38:50 2026 :: Log Alaric [4210]: sc
+Mon Oct 12 18:38:53 2026 :: Log Alaric [4210]: sleep
+Mon Oct 12 18:40:34 2026 :: Sock.sinaddr:  178.156.185.127
+Mon Oct 12 18:40:34 2026 :: EOF encountered on read.
+Mon Oct 12 18:41:11 2026 :: Log Alaric [4210]: quit
+Mon Oct 12 18:41:11 2026 :: Alaric has quit.
+Mon Oct 12 18:41:11 2026 :: [QUIT] Player rejoined the real world.
