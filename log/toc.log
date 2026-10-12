@@ -91686,3 +91686,65 @@ Mon Oct 12 01:02:31 2026 :: Log Alaric [29062]: coin +1 platinum
 Mon Oct 12 01:02:31 2026 :: Log Alaric [29062]: coin +7 silver
 Mon Oct 12 01:02:31 2026 :: Log Alaric [29062]: coin +10 copper
 Mon Oct 12 01:02:31 2026 :: Log Alaric [29062]: coin +4 gold
+Mon Oct 12 01:02:40 2026 :: Log Alaric [29062]: s
+Mon Oct 12 01:02:40 2026 :: Log Alaric [29063]: arrived (Corridor) from 29062
+Mon Oct 12 01:02:42 2026 :: Log Alaric [29063]: bs head
+Mon Oct 12 01:02:56 2026 :: Log Alaric [29063]: dirt
+Mon Oct 12 01:03:08 2026 :: Log Alaric [29063]: dirt
+Mon Oct 12 01:03:22 2026 :: Log Alaric [29063]: dirt
+Mon Oct 12 01:03:37 2026 :: Log Alaric [29063]: killed a head of security
+Mon Oct 12 01:03:37 2026 :: Log Alaric [29063]: coin +1 platinum
+Mon Oct 12 01:03:37 2026 :: Log Alaric [29063]: coin +8 silver
+Mon Oct 12 01:03:37 2026 :: Log Alaric [29063]: coin +12 copper
+Mon Oct 12 01:03:37 2026 :: Log Alaric [29063]: coin +5 gold
+Mon Oct 12 01:03:45 2026 :: Log Alaric [29063]: l
+Mon Oct 12 01:04:15 2026 :: Sock.sinaddr:  3.133.226.214
+Mon Oct 12 01:04:15 2026 :: EOF encountered on read.
+Mon Oct 12 01:04:46 2026 :: Log Alaric [29063]: open sweet
+Mon Oct 12 01:05:27 2026 :: Log Alaric [29063]: open hole
+Mon Oct 12 01:05:28 2026 :: Log Alaric [29063]: l
+Mon Oct 12 01:05:30 2026 :: Log Alaric [29063]: w
+Mon Oct 12 01:05:30 2026 :: Log Alaric [29064]: arrived (Secret Storage) from 29063
+Mon Oct 12 01:05:34 2026 :: Log Alaric [29064]: get da
+Mon Oct 12 01:05:35 2026 :: Log Alaric [29064]: comp da
+Mon Oct 12 01:05:39 2026 :: Log Alaric [29064]: drop da
+Mon Oct 12 01:05:39 2026 :: Log Alaric [29064]: e
+Mon Oct 12 01:05:39 2026 :: Log Alaric [29063]: arrived (Corridor) from 29064
+Mon Oct 12 01:05:40 2026 :: Log Alaric [29063]: s
+Mon Oct 12 01:05:40 2026 :: Log Alaric [29065]: arrived (Service Hallway) from 29063
+Mon Oct 12 01:05:42 2026 :: Log Alaric [29065]: e
+Mon Oct 12 01:05:42 2026 :: Log Alaric [29066]: arrived (Service Hallway) from 29065
+Mon Oct 12 01:05:44 2026 :: Log Alaric [29066]: bs gu
+Mon Oct 12 01:05:44 2026 :: Alaric finished a security guard... *FATALITY*. [Room: 29066]
+Mon Oct 12 01:05:44 2026 :: Log Alaric [29066]: killed a security guard
+Mon Oct 12 01:05:44 2026 :: Log Alaric [29066]: coin +1 platinum
+Mon Oct 12 01:05:44 2026 :: Log Alaric [29066]: coin +7 silver
+Mon Oct 12 01:05:44 2026 :: Log Alaric [29066]: coin +10 copper
+Mon Oct 12 01:05:44 2026 :: Log Alaric [29066]: coin +4 gold
+Mon Oct 12 01:05:57 2026 :: Log Alaric [29066]: bs gu
+Mon Oct 12 01:06:25 2026 :: Log Alaric [29066]: e
+Mon Oct 12 01:06:25 2026 :: Log Alaric [29067]: arrived (Service Hallway) from 29066
+Mon Oct 12 01:06:25 2026 :: Log Alaric [29067]: kill gu
+Mon Oct 12 01:06:25 2026 :: Log Alaric [29067]: killed a security guard
+Mon Oct 12 01:06:25 2026 :: Log Alaric [29067]: coin +1 platinum
+Mon Oct 12 01:06:25 2026 :: Log Alaric [29067]: coin +7 silver
+Mon Oct 12 01:06:25 2026 :: Log Alaric [29067]: coin +10 copper
+Mon Oct 12 01:06:25 2026 :: Log Alaric [29067]: coin +4 gold
+Mon Oct 12 01:06:34 2026 :: Log Alaric [29067]: bs he
+Mon Oct 12 01:06:46 2026 :: Log Alaric [29067]: dirt
+Mon Oct 12 01:07:10 2026 :: Log Alaric [29067]: killed a head of security
+Mon Oct 12 01:07:10 2026 :: Log Alaric [29067]: coin +1 platinum
+Mon Oct 12 01:07:10 2026 :: Log Alaric [29067]: coin +8 silver
+Mon Oct 12 01:07:10 2026 :: Log Alaric [29067]: coin +12 copper
+Mon Oct 12 01:07:10 2026 :: Log Alaric [29067]: coin +5 gold
+Mon Oct 12 01:07:11 2026 :: Log Alaric [29067]: dirt
+Mon Oct 12 01:07:13 2026 :: Log Alaric [29067]: recal
+Mon Oct 12 01:07:13 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 29067
+Mon Oct 12 01:07:14 2026 :: Log Alaric [4207]: e
+Mon Oct 12 01:07:14 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Mon Oct 12 01:07:14 2026 :: Log Alaric [4202]: n
+Mon Oct 12 01:07:14 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Mon Oct 12 01:07:14 2026 :: Log Alaric [4203]: n
+Mon Oct 12 01:07:14 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Mon Oct 12 01:07:15 2026 :: Log Alaric [4210]: sleep
+Mon Oct 12 01:07:17 2026 :: Log Alaric [4210]: score
