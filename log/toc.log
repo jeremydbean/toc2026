@@ -91044,3 +91044,53 @@ Mon Oct 12 00:22:12 2026 :: Log Alaric [4507]: gain dirt
 Mon Oct 12 00:22:13 2026 :: Log Alaric [4507]: prac
 Mon Oct 12 00:22:16 2026 :: Log Alaric [4507]: prac dirt
 Mon Oct 12 00:22:16 2026 :: Log Alaric [4507]: prac dirt
+Mon Oct 12 00:22:16 2026 :: Log Alaric [4507]: prac dirt
+Mon Oct 12 00:22:17 2026 :: Log Alaric [4507]: prac dirt
+Mon Oct 12 00:22:17 2026 :: Log Alaric [4507]: prac dirt
+Mon Oct 12 00:22:17 2026 :: Log Alaric [4507]: prac dirt
+Mon Oct 12 00:22:17 2026 :: Log Alaric [4507]: prac dirt
+Mon Oct 12 00:22:18 2026 :: Log Alaric [4507]: prac dirt
+Mon Oct 12 00:22:26 2026 :: Log Alaric [4507]: walkto mizry
+Mon Oct 12 00:22:26 2026 :: Log Alaric [4506]: arrived (Hallway.) from 4507
+Mon Oct 12 00:22:27 2026 :: Log Alaric [4510]: arrived (Hallway.) from 4506
+Mon Oct 12 00:22:28 2026 :: Log Alaric [4512]: arrived (Chapter Room.) from 4510
+Mon Oct 12 00:22:28 2026 :: Log Alaric [4517]: arrived (Hallway.) from 4512
+Mon Oct 12 00:22:29 2026 :: Log Alaric [4518]: arrived (Storeroom.) from 4517
+Mon Oct 12 00:22:30 2026 :: Log Alaric [4528]: arrived (Storeroom.) from 4518
+Mon Oct 12 00:22:31 2026 :: Log Alaric [4531]: arrived (Dark Hallway.) from 4528
+Mon Oct 12 00:22:31 2026 :: Log Alaric [4532]: arrived (Complete Darkness!) from 4531
+Mon Oct 12 00:22:33 2026 :: Log Alaric [4532]: gain
+Mon Oct 12 00:22:36 2026 :: Log Alaric [4532]: gain fatal
+Mon Oct 12 00:22:37 2026 :: Log Alaric [4532]: prac
+Mon Oct 12 00:22:40 2026 :: Log Alaric [4532]: prac fatal
+Mon Oct 12 00:22:41 2026 :: Log Alaric [4532]: prac
+Mon Oct 12 00:22:45 2026 :: Log Alaric [4532]: prac fatal
+Mon Oct 12 00:22:46 2026 :: Log Alaric [4532]: prac fatal
+Mon Oct 12 00:22:46 2026 :: Log Alaric [4532]: prac fatal
+Mon Oct 12 00:22:46 2026 :: Log Alaric [4532]: prac fatal
+Mon Oct 12 00:22:46 2026 :: Log Alaric [4532]: prac fatal
+Mon Oct 12 00:22:47 2026 :: Log Alaric [4532]: prac fatal
+Mon Oct 12 00:22:47 2026 :: Log Alaric [4532]: prac fatal
+Mon Oct 12 00:22:47 2026 :: Log Alaric [4532]: prac fatal
+Mon Oct 12 00:22:50 2026 :: Log Alaric [4532]: prac stealth
+Mon Oct 12 00:22:50 2026 :: Log Alaric [4532]: prac stealth
+Mon Oct 12 00:22:50 2026 :: Log Alaric [4532]: prac stealth
+Mon Oct 12 00:22:51 2026 :: Log Alaric [4532]: prac stealth
+Mon Oct 12 00:22:51 2026 :: Log Alaric [4532]: prac stealth
+Mon Oct 12 00:22:51 2026 :: Log Alaric [4532]: prac stealth
+Mon Oct 12 00:22:51 2026 :: Log Alaric [4532]: prac
+Mon Oct 12 00:22:53 2026 :: Log Alaric [4532]: gain
+Mon Oct 12 00:22:55 2026 :: Log Alaric [4532]: sc
+Mon Oct 12 00:22:56 2026 :: Log Alaric [4532]: wake
+Mon Oct 12 00:22:56 2026 :: Log Alaric [4532]: l
+Mon Oct 12 00:23:03 2026 :: Log Alaric [4532]: recaL
+Mon Oct 12 00:23:03 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4532
+Mon Oct 12 00:23:04 2026 :: Log Alaric [4207]: E
+Mon Oct 12 00:23:04 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Mon Oct 12 00:23:04 2026 :: Log Alaric [4202]: N
+Mon Oct 12 00:23:04 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Mon Oct 12 00:23:04 2026 :: Log Alaric [4203]: N
+Mon Oct 12 00:23:04 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Mon Oct 12 00:23:05 2026 :: Log Alaric [4210]: SLEEP
+Mon Oct 12 00:23:37 2026 :: Sock.sinaddr:  178.156.185.127
+Mon Oct 12 00:23:37 2026 :: EOF encountered on read.
