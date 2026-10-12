@@ -91922,3 +91922,41 @@ Mon Oct 12 01:22:48 2026 :: Log Alaric [16000]: arrived (Beginning of the Pier) 
 Mon Oct 12 01:22:48 2026 :: Log Alaric [16000]: n
 Mon Oct 12 01:22:48 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16000
 Mon Oct 12 01:22:50 2026 :: Log Alaric [16001]: bs sail
+Mon Oct 12 01:23:08 2026 :: Log Alaric [16001]: eat guano
+Mon Oct 12 01:23:08 2026 :: Log Alaric [16001]: dirt
+Mon Oct 12 01:23:32 2026 :: Log Alaric [16001]: level 36 -> 37 (earned)
+Mon Oct 12 01:23:32 2026 :: Alaric has achieved level 37!
+Mon Oct 12 01:23:32 2026 :: Log Alaric [16001]: killed The sailor
+Mon Oct 12 01:23:32 2026 :: Log Alaric [16001]: coin +2 platinum
+Mon Oct 12 01:23:32 2026 :: Log Alaric [16001]: coin +10 silver
+Mon Oct 12 01:23:32 2026 :: Log Alaric [16001]: coin +13 copper
+Mon Oct 12 01:23:32 2026 :: Log Alaric [16001]: coin +5 gold
+Mon Oct 12 01:23:57 2026 :: Log Alaric [16001]: wake
+Mon Oct 12 01:23:57 2026 :: Log Alaric [16001]: l
+Mon Oct 12 01:23:58 2026 :: Log Alaric [16001]: n
+Mon Oct 12 01:23:58 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16001
+Mon Oct 12 01:23:59 2026 :: Log Alaric [16002]: n
+Mon Oct 12 01:23:59 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Mon Oct 12 01:24:01 2026 :: Log Alaric [16003]: bs sa
+Mon Oct 12 01:24:15 2026 :: Log Alaric [16003]: dirt
+Mon Oct 12 01:24:29 2026 :: Log Alaric [16003]: killed The sailor
+Mon Oct 12 01:24:29 2026 :: Log Alaric [16003]: coin +2 platinum
+Mon Oct 12 01:24:29 2026 :: Log Alaric [16003]: coin +10 silver
+Mon Oct 12 01:24:29 2026 :: Log Alaric [16003]: coin +13 copper
+Mon Oct 12 01:24:29 2026 :: Log Alaric [16003]: coin +5 gold
+Mon Oct 12 01:24:34 2026 :: Sock.sinaddr:  5.161.75.7
+Mon Oct 12 01:24:35 2026 :: EOF encountered on read.
+Mon Oct 12 01:24:37 2026 :: Log Alaric [16003]: recal
+Mon Oct 12 01:24:37 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16003
+Mon Oct 12 01:24:37 2026 :: Log Alaric [4207]: recal
+Mon Oct 12 01:24:37 2026 :: Log Alaric [4207]: recal
+Mon Oct 12 01:24:38 2026 :: Log Alaric [4207]: e
+Mon Oct 12 01:24:38 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Mon Oct 12 01:24:38 2026 :: Log Alaric [4202]: n
+Mon Oct 12 01:24:38 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Mon Oct 12 01:24:38 2026 :: Log Alaric [4203]: n
+Mon Oct 12 01:24:38 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Mon Oct 12 01:24:38 2026 :: Log Alaric [4210]: sleep
+Mon Oct 12 01:25:15 2026 :: Log Alaric [4210]: score
+Mon Oct 12 01:25:18 2026 :: Log Alaric [4210]: skil
+Mon Oct 12 01:25:58 2026 :: Log Alaric [4210]: sc
