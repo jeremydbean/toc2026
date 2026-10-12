@@ -94090,3 +94090,28 @@ Mon Oct 12 23:35:33 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16
 Mon Oct 12 23:35:36 2026 :: Log Alaric [16001]: eat gu
 Mon Oct 12 23:35:37 2026 :: Log Alaric [16001]: i
 Mon Oct 12 23:35:41 2026 :: Log Alaric [16001]: bs sa
+Mon Oct 12 23:38:11 2026 :: Log Alaric [16001]: n
+Mon Oct 12 23:38:11 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16001
+Mon Oct 12 23:38:11 2026 :: Log Alaric [16002]: kill sa
+Mon Oct 12 23:38:17 2026 :: Log Alaric [16002]: n
+Mon Oct 12 23:38:17 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Mon Oct 12 23:38:17 2026 :: Log Alaric [16003]: kill sa
+Mon Oct 12 23:38:17 2026 :: Log Alaric [16003]: killed The sailor
+Mon Oct 12 23:38:17 2026 :: Log Alaric [16003]: coin +2 platinum
+Mon Oct 12 23:38:17 2026 :: Log Alaric [16003]: coin +10 silver
+Mon Oct 12 23:38:17 2026 :: Log Alaric [16003]: coin +13 copper
+Mon Oct 12 23:38:17 2026 :: Log Alaric [16003]: coin +5 gold
+Mon Oct 12 23:38:24 2026 :: Log Alaric [16003]: scan
+Mon Oct 12 23:38:25 2026 :: Log Alaric [16003]: n
+Mon Oct 12 23:38:25 2026 :: Log Alaric [16004]: arrived (A Turn at the Pier) from 16003
+Mon Oct 12 23:38:26 2026 :: Log Alaric [16004]: scan
+Mon Oct 12 23:38:32 2026 :: Log Alaric [16004]: w
+Mon Oct 12 23:38:32 2026 :: Log Alaric [16084]: arrived (Seashells Galore) from 16004
+Mon Oct 12 23:38:32 2026 :: Log Alaric [16084]: bs dru
+Mon Oct 12 23:39:05 2026 :: Log Alaric [16084]: killed The drunk pirate
+Mon Oct 12 23:39:05 2026 :: Log Alaric [16084]: coin +1 platinum
+Mon Oct 12 23:39:05 2026 :: Log Alaric [16084]: coin +5 silver
+Mon Oct 12 23:39:05 2026 :: Log Alaric [16084]: coin +6 copper
+Mon Oct 12 23:39:05 2026 :: Log Alaric [16084]: coin +2 gold
+Mon Oct 12 23:40:06 2026 :: Sock.sinaddr:  178.156.184.20
+Mon Oct 12 23:40:06 2026 :: EOF encountered on read.
