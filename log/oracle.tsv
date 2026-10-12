@@ -66,3 +66,7 @@
 1791381196	3718	SUMMON	Callista	
 1791381215	8	Q	Callista	what's the next best weapon than the one I have and where can I get it
 1791381220	8	A	Callista	`compare upgrades` will show you the best weapon available for your level and where to find it.
+1791766676	4210	SUMMON	Alaric	
+1791766700	8	Q	Alaric	If a player has the skill Fatality at 100 percent, what are the actual chances of the skill's success?
+1791766708	8	A	Alaric	I cannot see the exact success rate; HELP FATALITY states only that backstab carries "a small chance" of causing fatality based on skill percentage, but does not give the formula.
+1791766720	8	DONE	Alaric	done
