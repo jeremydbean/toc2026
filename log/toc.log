@@ -92059,3 +92059,25 @@ Mon Oct 12 01:31:10 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 
 Mon Oct 12 01:31:10 2026 :: Log Alaric [4203]: n
 Mon Oct 12 01:31:10 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
 Mon Oct 12 01:31:11 2026 :: Log Alaric [4210]: sleep
+Mon Oct 12 01:33:27 2026 :: Log Alaric [4210]: score
+Mon Oct 12 01:33:31 2026 :: Log Alaric [4210]: where hermie
+Mon Oct 12 01:33:33 2026 :: Log Alaric [4210]: wake
+Mon Oct 12 01:33:33 2026 :: Log Alaric [4210]: s
+Mon Oct 12 01:33:33 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Mon Oct 12 01:33:33 2026 :: Log Alaric [4203]: s
+Mon Oct 12 01:33:33 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Mon Oct 12 01:33:34 2026 :: Log Alaric [4202]: w
+Mon Oct 12 01:33:34 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4202
+Mon Oct 12 01:33:34 2026 :: Log Alaric [4207]: w
+Mon Oct 12 01:33:34 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Mon Oct 12 01:33:36 2026 :: Log Alaric [4208]: e
+Mon Oct 12 01:33:36 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Mon Oct 12 01:33:36 2026 :: Log Alaric [4207]: e
+Mon Oct 12 01:33:36 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Mon Oct 12 01:33:36 2026 :: Log Alaric [4202]: n
+Mon Oct 12 01:33:36 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Mon Oct 12 01:33:37 2026 :: Log Alaric [4203]: n
+Mon Oct 12 01:33:37 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Mon Oct 12 01:33:37 2026 :: Log Alaric [4210]: sleep
+Mon Oct 12 01:34:43 2026 :: Sock.sinaddr:  5.161.117.52
+Mon Oct 12 01:34:43 2026 :: EOF encountered on read.
