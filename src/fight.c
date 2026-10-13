@@ -4955,8 +4955,10 @@ void do_backstab( CHAR_DATA *ch, char *argument )
 
     if( victim->hit < victim->max_hit/3 )
     {
+        /* Not a missed roll: a wounded victim cannot be caught unawares,
+           and "You failed." read as one (2026-10-13). */
         WAIT_STATE( ch, skill_table[gsn_backstab].beats );
-        act( "You failed.", ch,  NULL, victim, TO_CHAR );
+        act( "$N is hurt and suspicious ... you can't sneak up.", ch,  NULL, victim, TO_CHAR );
         return;
     }
 

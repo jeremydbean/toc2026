@@ -3,6 +3,15 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261013a 2026-10-13
+PICK now tells you at once when a lock cannot be picked at all, instead
+of answering "You failed" as if you had missed the roll; a missed roll
+is a fumble, told a different way each time, and means the lock can open
+so trying again is worth it. STEAL fumbles the same way instead of
+saying "Oops", a RECALL the gods do not answer says so, and BACKSTAB on
+a wounded target tells you they are hurt and suspicious rather than
+"You failed".
+
 @ 20261010a 2026-10-10
 Dying no longer empties your stash. HISTORY with nothing to show now
 says nothing has been said on any channel.

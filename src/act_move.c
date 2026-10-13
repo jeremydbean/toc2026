@@ -2534,6 +2534,46 @@ void do_unlock( CHAR_DATA *ch, char *argument )
 
 
 
+/* The skill roll, once the lock is known to be one that can open. A
+   miss is a fumble, said a different way each time (owner, 2026-10-13);
+   a lock that cannot open never gets here and says so instead. */
+static bool pick_lock_roll_fails( CHAR_DATA *ch )
+{
+    static const char *fumble[] =
+    {
+	"Your pick slips and the tumblers drop back into place.",
+	"You fumble at the keyhole and the pick skitters out of it.",
+	"The pick catches, bends a little, and the lock holds.",
+	"You feel the tumblers begin to give, then lose them again.",
+	"A tumbler clicks over... and settles back.  Not this time.",
+    };
+
+    if ( IS_NPC(ch) )
+	return false;
+    if ( number_percent( ) > ch->pcdata->learned[gsn_pick_lock] )
+    {
+	send_to_char( fumble[number_range( 0, 4 )], ch );
+	send_to_char( "\n\r", ch );
+	check_improve( ch, gsn_pick_lock, false, 2 );
+	return true;
+    }
+    return false;
+}
+
+/* A recall prayer the gods did not answer. */
+static void recall_miss_message( CHAR_DATA *ch )
+{
+    static const char *unheard[] =
+    {
+	"You stumble over the words of your prayer, and nothing happens.",
+	"Your prayer goes up and comes back unanswered.",
+	"The gods are listening to somebody else just now.",
+    };
+
+    send_to_char( unheard[number_range( 0, 2 )], ch );
+    send_to_char( "\n\r", ch );
+}
+
 void do_pick( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
@@ -2572,13 +2612,11 @@ void do_pick( CHAR_DATA *ch, char *argument )
 	}
     }
 
-    if ( !IS_NPC(ch) && number_percent( ) > ch->pcdata->learned[gsn_pick_lock] )
-    {
-	send_to_char( "You failed.\n\r", ch);
-	check_improve(ch,gsn_pick_lock,false,2);
-	return;
-    }
-
+    /* A lock that can never open says so before any roll: the roll used
+       to come first, so a pickproof door answered "You failed." like a
+       missed roll, and a thief at 75% spent 150 attempts on three such
+       doors before filing a bug (Alaric, 2026-10-11). Most locked doors
+       in the world are pickproof, so the difference matters. */
     if ( ( obj = get_obj_here( ch, arg ) ) != NULL )
     {
 	/* 'pick object' */
@@ -2591,7 +2629,9 @@ void do_pick( CHAR_DATA *ch, char *argument )
 	if ( !IS_SET(obj->value[1], CONT_LOCKED) )
 	    { send_to_char( "It's already unlocked.\n\r",  ch ); return; }
 	if ( IS_SET(obj->value[1], CONT_PICKPROOF) )
-	    { send_to_char( "You failed.\n\r",             ch ); return; }
+	    { send_to_char( "This lock is beyond any pick; it cannot be picked.\n\r", ch ); return; }
+	if ( pick_lock_roll_fails( ch ) )
+	    return;
 	if ( IS_SET(obj->value[1], CONT_TRAPPED) )
 	    { trapped(ch, obj, obj->value[4]); return; }
 
@@ -2619,11 +2659,13 @@ void do_pick( CHAR_DATA *ch, char *argument )
 	if ( !IS_SET(pexit->exit_info, EX_LOCKED) )
 	    { send_to_char( "It's already unlocked.\n\r",  ch ); return; }
 	if ( IS_SET(pexit->exit_info, EX_PICKPROOF) && !IS_IMMORTAL(ch))
-	    { send_to_char( "You failed.\n\r",             ch ); return; }
+	    { send_to_char( "This lock is beyond any pick; it cannot be picked.\n\r", ch ); return; }
 	if ( IS_SET(pexit->exit_info, EX_WIZLOCKED) && !IS_IMMORTAL(ch))
 	    { send_to_char( "This lock is magical. You can't pick it.\n\r", ch);
 	      return;
 	    }
+	if ( pick_lock_roll_fails( ch ) )
+	    return;
 	if ( IS_SET(pexit->exit_info, EX_TRAPPED) )
 	  {
 	    trapped(ch,NULL, pexit->trap);
@@ -3469,7 +3511,7 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
         }
       check_improve(ch,gsn_recall,false,5);
       WAIT_STATE(ch,4);
-      send_to_char("You failed!\n\r",ch);
+      recall_miss_message(ch);
       return;
    }
 
@@ -3515,7 +3557,7 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
 
       check_improve(ch,gsn_recall,false,5);
       WAIT_STATE(ch,4);
-      send_to_char("You failed!\n\r",ch);
+      recall_miss_message(ch);
       return;
 }
 

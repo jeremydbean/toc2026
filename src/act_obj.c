@@ -4393,7 +4393,14 @@ void do_steal( CHAR_DATA *ch, char *argument )
     ||   victim->position == POS_FIGHTING
     || ( !IS_NPC(ch) && percent > chance ) )
     {
-	send_to_char( "Oops.\n\r", ch );
+	/* A fumble, said a different way each time (owner, 2026-10-13). */
+	switch ( number_range( 0, 3 ) )
+	{
+	case 0:  act( "Your fingers close on nothing, and $N feels the tug.", ch, NULL, victim, TO_CHAR ); break;
+	case 1:  act( "Your hand brushes $N's belongings and comes away empty.", ch, NULL, victim, TO_CHAR ); break;
+	case 2:  act( "You fumble the lift, and $N turns at the rustle.", ch, NULL, victim, TO_CHAR ); break;
+	default: act( "You get your hand in -- and $N's hand closes on your wrist.", ch, NULL, victim, TO_CHAR ); break;
+	}
 	act( "$n tried to steal from you.\n\r", ch, NULL, victim, TO_VICT    );
 	act( "$n tried to steal from $N.\n\r",  ch, NULL, victim, TO_NOTVICT );
 	switch(number_range(0,3))

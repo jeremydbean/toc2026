@@ -1623,6 +1623,11 @@ the PICK LOCK skill.  Success opens the lock without a key.  Difficulty
 depends on the lock's strength and your skill level.  A failed attempt
 may alert nearby mobs.
 
+Some locks cannot be picked at all, and the game says so on the first
+try: "This lock is beyond any pick".  A fumble -- the pick slipping, the
+tumblers dropping back -- is a missed roll on a lock that can open, and
+is worth trying again.
+
 See also: OPEN, LOCK, UNLOCK, STEAL
 ~
 
