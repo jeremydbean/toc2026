@@ -95709,3 +95709,64 @@ Tue Oct 13 01:42:20 2026 :: Log Alaric [16002]: n
 Tue Oct 13 01:42:20 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
 Tue Oct 13 01:42:21 2026 :: Log Alaric [16003]: look pi
 Tue Oct 13 01:42:23 2026 :: Log Alaric [16003]: bs pi
+Tue Oct 13 01:42:33 2026 :: Log Alaric [16003]: kill pi
+Tue Oct 13 01:42:40 2026 :: Log Alaric [16003]: dirt
+Tue Oct 13 01:42:59 2026 :: Log Alaric [16003]: killed The angry pirate
+Tue Oct 13 01:42:59 2026 :: Log Alaric [16003]: coin +1 platinum
+Tue Oct 13 01:42:59 2026 :: Log Alaric [16003]: coin +5 silver
+Tue Oct 13 01:42:59 2026 :: Log Alaric [16003]: coin +6 copper
+Tue Oct 13 01:42:59 2026 :: Log Alaric [16003]: coin +2 gold
+Tue Oct 13 01:42:59 2026 :: Log Alaric [16003]: who
+Tue Oct 13 01:42:59 2026 :: Log Alaric [16003]: to
+Tue Oct 13 01:43:02 2026 :: Log Alaric [16003]: s
+Tue Oct 13 01:43:02 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16003
+Tue Oct 13 01:43:03 2026 :: Log Alaric [16002]: s
+Tue Oct 13 01:43:03 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16002
+Tue Oct 13 01:43:05 2026 :: Log Alaric [16001]: bs sa
+Tue Oct 13 01:43:26 2026 :: Log Alaric [16001]: dirt
+Tue Oct 13 01:43:35 2026 :: Log Alaric [16001]: killed The sailor
+Tue Oct 13 01:43:35 2026 :: Log Alaric [16001]: coin +2 platinum
+Tue Oct 13 01:43:35 2026 :: Log Alaric [16001]: coin +10 silver
+Tue Oct 13 01:43:35 2026 :: Log Alaric [16001]: coin +13 copper
+Tue Oct 13 01:43:35 2026 :: Log Alaric [16001]: coin +5 gold
+Tue Oct 13 01:43:44 2026 :: Log Alaric [16001]: s
+Tue Oct 13 01:43:44 2026 :: Log Alaric [16000]: arrived (Beginning of the Pier) from 16001
+Tue Oct 13 01:43:46 2026 :: Log Alaric [16000]: s
+Tue Oct 13 01:43:46 2026 :: Log Alaric [41]: arrived (The new pier) from 16000
+Tue Oct 13 01:43:47 2026 :: Log Alaric [41]: n
+Tue Oct 13 01:43:47 2026 :: Log Alaric [16000]: arrived (Beginning of the Pier) from 41
+Tue Oct 13 01:43:47 2026 :: Log Alaric [16000]: n
+Tue Oct 13 01:43:47 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16000
+Tue Oct 13 01:43:48 2026 :: Log Alaric [16001]: scan
+Tue Oct 13 01:43:48 2026 :: Log Alaric [16001]: n
+Tue Oct 13 01:43:48 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16001
+Tue Oct 13 01:43:49 2026 :: Log Alaric [16002]: scan
+Tue Oct 13 01:43:50 2026 :: Log Alaric [16002]: n
+Tue Oct 13 01:43:50 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Tue Oct 13 01:43:51 2026 :: Log Alaric [16003]: scan
+Tue Oct 13 01:43:52 2026 :: Log Alaric [16003]: n
+Tue Oct 13 01:43:52 2026 :: Log Alaric [16004]: arrived (A Turn at the Pier) from 16003
+Tue Oct 13 01:43:52 2026 :: Log Alaric [16004]: scan
+Tue Oct 13 01:43:59 2026 :: Log Alaric [16004]: e
+Tue Oct 13 01:43:59 2026 :: Log Alaric [16005]: arrived (Plankway to the Royal Eagle) from 16004
+Tue Oct 13 01:43:59 2026 :: Log Alaric [16005]: bs sai
+Tue Oct 13 01:43:59 2026 :: Alaric finished The sailor... *FATALITY*. [Room: 16005]
+Tue Oct 13 01:43:59 2026 :: Log Alaric [16005]: killed The sailor
+Tue Oct 13 01:43:59 2026 :: Log Alaric [16005]: coin +2 platinum
+Tue Oct 13 01:43:59 2026 :: Log Alaric [16005]: coin +10 silver
+Tue Oct 13 01:43:59 2026 :: Log Alaric [16005]: coin +13 copper
+Tue Oct 13 01:43:59 2026 :: Log Alaric [16005]: coin +5 gold
+Tue Oct 13 01:44:11 2026 :: Log Alaric [16005]: recal
+Tue Oct 13 01:44:11 2026 :: Log Alaric [28035]: arrived (A Fork in the Tunnel) from 16005
+Tue Oct 13 01:44:12 2026 :: Log Alaric [28035]: recal
+Tue Oct 13 01:44:12 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 28035
+Tue Oct 13 01:44:12 2026 :: Log Alaric [4207]: e
+Tue Oct 13 01:44:12 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Tue Oct 13 01:44:12 2026 :: Log Alaric [4202]: n
+Tue Oct 13 01:44:12 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Tue Oct 13 01:44:12 2026 :: Log Alaric [4203]: n
+Tue Oct 13 01:44:12 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Tue Oct 13 01:44:13 2026 :: Log Alaric [4210]: sleep
+Tue Oct 13 01:47:00 2026 :: Sock.sinaddr:  3.20.63.178
+Tue Oct 13 01:47:00 2026 :: EOF encountered on read.
+Tue Oct 13 01:47:00 2026 :: Log Alaric [4210]: who
