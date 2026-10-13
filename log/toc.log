@@ -95165,3 +95165,5 @@ Tue Oct 13 01:01:23 2026 :: Log Alaric [16001]: coin +2 platinum
 Tue Oct 13 01:01:23 2026 :: Log Alaric [16001]: coin +10 silver
 Tue Oct 13 01:01:23 2026 :: Log Alaric [16001]: coin +13 copper
 Tue Oct 13 01:01:23 2026 :: Log Alaric [16001]: coin +5 gold
+Tue Oct 13 01:06:23 2026 :: Sock.sinaddr:  178.156.185.231
+Tue Oct 13 01:06:23 2026 :: EOF encountered on read.
