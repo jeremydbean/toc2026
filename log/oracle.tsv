@@ -70,3 +70,10 @@
 1791766700	8	Q	Alaric	If a player has the skill Fatality at 100 percent, what are the actual chances of the skill's success?
 1791766708	8	A	Alaric	I cannot see the exact success rate; HELP FATALITY states only that backstab carries "a small chance" of causing fatality based on skill percentage, but does not give the formula.
 1791766720	8	DONE	Alaric	done
+1791910487	4210	SUMMON	Alaric	
+1791910506	8	Q	Alaric	Tell me some upgrades I could find for my arm slot
+1791910513	8	A	Alaric	`compare upgrades arms` will show you the best arm gear available at your level and where each mob carries or sells it.
+1791910530	8	Q	Alaric	What are the best pieces of gear I could get for my bracers?
+1791910533	8	A	Alaric	Your best wrist gear is a Flaming Bracelet (level 35) from A Crimson Death in The Abyss for your right wrist, and a white bracer (level 40) from Sir Galahad in Camelot for your left -- you already wear the left one.
+1791910558	8	Q	Alaric	How do I get to Camelot from center of town?
+1791910561	8	A	Alaric	From Oak Tree Square, the route is: r w 7; open gate; r w 8; r s 2; w; s; w; s; r w 2; r s 5; r e 2; s; e; s; r w 2; n; w (37 rooms).

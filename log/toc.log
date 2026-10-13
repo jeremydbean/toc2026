@@ -96757,3 +96757,53 @@ Tue Oct 13 16:45:24 2026 :: Sock.sinaddr:  5.161.215.244
 Tue Oct 13 16:45:24 2026 :: EOF encountered on read.
 Tue Oct 13 16:50:28 2026 :: Sock.sinaddr:  3.20.63.178
 Tue Oct 13 16:50:28 2026 :: EOF encountered on read.
+Tue Oct 13 16:54:02 2026 :: Loading Alaric's playerfile
+Tue Oct 13 16:54:03 2026 :: Alaric@208.127.191.100 has connected.
+Tue Oct 13 16:54:04 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 0
+Tue Oct 13 16:54:07 2026 :: Sock.sinaddr:  204.76.203.219
+Tue Oct 13 16:54:08 2026 :: Log Alaric [4210]: score
+Tue Oct 13 16:54:17 2026 :: EOF encountered on read.
+Tue Oct 13 16:54:19 2026 :: Log Alaric [4210]: look
+Tue Oct 13 16:54:20 2026 :: Log Alaric [4210]: s
+Tue Oct 13 16:54:20 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Tue Oct 13 16:54:21 2026 :: Log Alaric [4203]: s
+Tue Oct 13 16:54:21 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Tue Oct 13 16:54:21 2026 :: Log Alaric [4202]: e
+Tue Oct 13 16:54:21 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Tue Oct 13 16:54:21 2026 :: Log Alaric [4201]: e
+Tue Oct 13 16:54:21 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Tue Oct 13 16:54:22 2026 :: Log Alaric [2427]: n
+Tue Oct 13 16:54:22 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Oct 13 16:54:22 2026 :: Log Alaric [2404]: n
+Tue Oct 13 16:54:22 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Oct 13 16:54:22 2026 :: Log Alaric [2401]: d
+Tue Oct 13 16:54:22 2026 :: Log Alaric [4649]: arrived (Entrance to the Hall of Hero's.) from 2401
+Tue Oct 13 16:54:23 2026 :: Log Alaric [4649]: s
+Tue Oct 13 16:54:23 2026 :: Log Alaric [2419]: arrived (The Training Yard) from 4649
+Tue Oct 13 16:54:26 2026 :: Log Alaric [2419]: recal
+Tue Oct 13 16:54:26 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 2419
+Tue Oct 13 16:54:28 2026 :: Log Alaric [4207]: e
+Tue Oct 13 16:54:28 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Tue Oct 13 16:54:28 2026 :: Log Alaric [4202]: n
+Tue Oct 13 16:54:28 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Tue Oct 13 16:54:29 2026 :: Log Alaric [4203]: n
+Tue Oct 13 16:54:29 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Tue Oct 13 16:54:47 2026 :: Log Alaric [4210]: pray
+Tue Oct 13 16:54:47 2026 :: Log Alaric [8]: arrived (The Oracle's Sanctum) from 4210
+Tue Oct 13 16:54:47 2026 :: Oracle: Alaric prayed from room 4210 (Room of Peace and Healing.) and entered her sanctum.
+Tue Oct 13 16:55:06 2026 :: Log Alaric [8]: say Tell me some upgrades I could find for my arm slot
+Tue Oct 13 16:55:06 2026 :: Log Alaric [8]: asked the Oracle: Tell me some upgrades I could find for my arm slot
+Tue Oct 13 16:55:13 2026 :: Oracle answered Alaric in room 8: `compare upgrades arms` will show you the best arm gear available at your level and where each mob carries or sells it.
+Tue Oct 13 16:55:30 2026 :: Log Alaric [8]: say What are the best pieces of gear I could get for my bracers?
+Tue Oct 13 16:55:30 2026 :: Log Alaric [8]: asked the Oracle: What are the best pieces of gear I could get for my bracers?
+Tue Oct 13 16:55:33 2026 :: Oracle answered Alaric in room 8: Your best wrist gear is a Flaming Bracelet (level 35) from A Crimson Death in The Abyss for your right wrist, and a white bracer (level 40) from Sir Galahad in Camelot for your left -- you already wear the left one.
+Tue Oct 13 16:55:34 2026 :: Sock.sinaddr:  52.15.147.27
+Tue Oct 13 16:55:34 2026 :: EOF encountered on read.
+Tue Oct 13 16:55:58 2026 :: Log Alaric [8]: say How do I get to Camelot from center of town?
+Tue Oct 13 16:55:58 2026 :: Log Alaric [8]: asked the Oracle: How do I get to Camelot from center of town?
+Tue Oct 13 16:56:01 2026 :: Oracle answered Alaric in room 8: From Oak Tree Square, the route is: r w 7; open gate; r w 8; r s 2; w; s; w; s; r w 2; r s 5; r e 2; s; e; s; r w 2; n; w (37 rooms).
+Tue Oct 13 16:56:11 2026 :: Log Alaric [8]: skills
+Tue Oct 13 16:56:15 2026 :: Log Alaric [8]: who
+Tue Oct 13 16:56:29 2026 :: Log Alaric [8]: quit
+Tue Oct 13 16:56:29 2026 :: Alaric has quit.
+Tue Oct 13 16:56:29 2026 :: [QUIT] Player rejoined the real world.
