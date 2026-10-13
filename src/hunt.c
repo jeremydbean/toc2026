@@ -526,7 +526,7 @@ void do_track( CHAR_DATA *ch, char *argument )
 
     if( !IS_NPC(ch) && ch->pcdata->learned[gsn_tracking] < 1)
     {
-      send_to_char("Huh?",ch);
+      send_to_char("Huh?\n\r",ch);
       return;
     }
 

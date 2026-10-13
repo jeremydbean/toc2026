@@ -4393,6 +4393,13 @@ void do_steal( CHAR_DATA *ch, char *argument )
     ||   victim->position == POS_FIGHTING
     || ( !IS_NPC(ch) && percent > chance ) )
     {
+	/* A victim too far above you is never a matter of luck: say so,
+	   rather than a fumble that invites another try. The attempt still
+	   costs what an attempt costs -- they noticed. */
+	if ( ch->level + 5 < victim->level )
+	    act( "$N is far too wary for someone of your experience; $E catches your hand at once.",
+		 ch, NULL, victim, TO_CHAR );
+	else
 	/* A fumble, said a different way each time (owner, 2026-10-13). */
 	switch ( number_range( 0, 3 ) )
 	{
