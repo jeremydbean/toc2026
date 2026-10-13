@@ -95395,3 +95395,29 @@ Tue Oct 13 01:22:12 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16
 Tue Oct 13 01:22:12 2026 :: Log Alaric [16001]: n
 Tue Oct 13 01:22:12 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16001
 Tue Oct 13 01:22:13 2026 :: Log Alaric [16002]: scan
+Tue Oct 13 01:22:17 2026 :: Log Alaric [16002]: n
+Tue Oct 13 01:22:17 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Tue Oct 13 01:22:17 2026 :: Log Alaric [16003]: bs an
+Tue Oct 13 01:22:38 2026 :: Log Alaric [16003]: dirt
+Tue Oct 13 01:22:56 2026 :: Log Alaric [16003]: to
+Tue Oct 13 01:22:57 2026 :: Log Alaric [16003]: to
+Tue Oct 13 01:23:04 2026 :: Log Alaric [16003]: get dagger
+Tue Oct 13 01:23:04 2026 :: Log Alaric [16003]: wear dagger
+Tue Oct 13 01:23:05 2026 :: Log Alaric [16003]: flee
+Tue Oct 13 01:23:08 2026 :: Log Alaric [16003]: flee
+Tue Oct 13 01:23:08 2026 :: Log Alaric [16004]: arrived (A Turn at the Pier) from 16003
+Tue Oct 13 01:23:09 2026 :: Log Alaric [16004]: recal
+Tue Oct 13 01:23:09 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16004
+Tue Oct 13 01:23:09 2026 :: Log Alaric [4207]: recal
+Tue Oct 13 01:23:10 2026 :: Log Alaric [4207]: e
+Tue Oct 13 01:23:10 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Tue Oct 13 01:23:11 2026 :: Log Alaric [4202]: n
+Tue Oct 13 01:23:11 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Tue Oct 13 01:23:11 2026 :: Log Alaric [4203]: n
+Tue Oct 13 01:23:11 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Tue Oct 13 01:23:11 2026 :: Log Alaric [4210]: sleep
+Tue Oct 13 01:24:55 2026 :: Log Alaric [4210]: sc
+Tue Oct 13 01:25:22 2026 :: Log Alaric [4210]: eq
+Tue Oct 13 01:25:35 2026 :: Log Alaric [4210]: i
+Tue Oct 13 01:26:41 2026 :: Sock.sinaddr:  3.133.226.214
+Tue Oct 13 01:26:42 2026 :: EOF encountered on read.
