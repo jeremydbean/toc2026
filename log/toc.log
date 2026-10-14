@@ -97332,3 +97332,39 @@ Wed Oct 14 01:18:56 2026 :: Log Alaric [16001]: who
 Wed Oct 14 01:18:56 2026 :: Log Alaric [16001]: worth
 Wed Oct 14 01:23:02 2026 :: Sock.sinaddr:  178.156.181.172
 Wed Oct 14 01:23:02 2026 :: EOF encountered on read.
+Wed Oct 14 01:28:08 2026 :: Sock.sinaddr:  5.161.215.244
+Wed Oct 14 01:28:08 2026 :: EOF encountered on read.
+Wed Oct 14 01:29:44 2026 :: Log Alaric [16001]: wake
+Wed Oct 14 01:29:44 2026 :: Log Alaric [16001]: l
+Wed Oct 14 01:29:47 2026 :: Log Alaric [16001]: scan
+Wed Oct 14 01:29:48 2026 :: Log Alaric [16001]: l
+Wed Oct 14 01:29:49 2026 :: Log Alaric [16001]: s
+Wed Oct 14 01:29:49 2026 :: Log Alaric [16000]: arrived (Beginning of the Pier) from 16001
+Wed Oct 14 01:29:50 2026 :: Log Alaric [16000]: n
+Wed Oct 14 01:29:50 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16000
+Wed Oct 14 01:29:51 2026 :: Log Alaric [16001]: n
+Wed Oct 14 01:29:51 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16001
+Wed Oct 14 01:29:53 2026 :: Log Alaric [16002]: bs sa
+Wed Oct 14 01:30:48 2026 :: Log Alaric [16002]: scan
+Wed Oct 14 01:30:48 2026 :: Log Alaric [16002]: n
+Wed Oct 14 01:30:48 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Wed Oct 14 01:30:49 2026 :: Log Alaric [16003]: kill sa
+Wed Oct 14 01:30:56 2026 :: Log Alaric [16003]: s
+Wed Oct 14 01:30:56 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16003
+Wed Oct 14 01:30:56 2026 :: Log Alaric [16002]: kill sa
+Wed Oct 14 01:31:05 2026 :: Log Alaric [16002]: s
+Wed Oct 14 01:31:05 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16002
+Wed Oct 14 01:31:05 2026 :: Log Alaric [16001]: kill sa
+Wed Oct 14 01:31:05 2026 :: Log Alaric [16001]: killed The sailor
+Wed Oct 14 01:31:05 2026 :: Log Alaric [16001]: coin +2 platinum
+Wed Oct 14 01:31:05 2026 :: Log Alaric [16001]: coin +10 silver
+Wed Oct 14 01:31:05 2026 :: Log Alaric [16001]: coin +13 copper
+Wed Oct 14 01:31:05 2026 :: Log Alaric [16001]: coin +5 gold
+Wed Oct 14 01:31:10 2026 :: Log Alaric [16001]: n
+Wed Oct 14 01:31:10 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16001
+Wed Oct 14 01:31:10 2026 :: Log Alaric [16002]: n
+Wed Oct 14 01:31:10 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Wed Oct 14 01:31:10 2026 :: Log Alaric [16003]: scan
+Wed Oct 14 01:31:12 2026 :: Log Alaric [16003]: n
+Wed Oct 14 01:31:12 2026 :: Log Alaric [16004]: arrived (A Turn at the Pier) from 16003
+Wed Oct 14 01:31:13 2026 :: Log Alaric [16004]: bs sa
