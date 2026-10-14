@@ -2741,3 +2741,5 @@
 1791980875	wizinfo	62	Automated backup complete.
 1791988201	wizinfo	60	New Trap: [Room: 30626]
 1791990053	wizinfo	60	Player-state backup to GitHub is not working (last run reported 'exit-code'). Saves are still on disk but are not leaving this machine.
+1791991734	wizinfo	60	{ ALL } Drakk   City of Dresden has been struck by a tornado.
+1791991741	wizinfo	60	{ ALL } Drakk   City of Dresden is no longer a disaster area.
