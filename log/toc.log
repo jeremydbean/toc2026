@@ -97368,3 +97368,64 @@ Wed Oct 14 01:31:10 2026 :: Log Alaric [16003]: scan
 Wed Oct 14 01:31:12 2026 :: Log Alaric [16003]: n
 Wed Oct 14 01:31:12 2026 :: Log Alaric [16004]: arrived (A Turn at the Pier) from 16003
 Wed Oct 14 01:31:13 2026 :: Log Alaric [16004]: bs sa
+Wed Oct 14 01:33:12 2026 :: Sock.sinaddr:  5.161.194.92
+Wed Oct 14 01:33:12 2026 :: EOF encountered on read.
+Wed Oct 14 01:33:21 2026 :: Log Alaric [16004]: s
+Wed Oct 14 01:33:21 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16004
+Wed Oct 14 01:33:21 2026 :: Log Alaric [16003]: kill sa
+Wed Oct 14 01:33:26 2026 :: Log Alaric [16003]: s
+Wed Oct 14 01:33:26 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16003
+Wed Oct 14 01:33:26 2026 :: Log Alaric [16002]: kill sa
+Wed Oct 14 01:33:27 2026 :: Log Alaric [16002]: killed The sailor
+Wed Oct 14 01:33:27 2026 :: Log Alaric [16002]: coin +2 platinum
+Wed Oct 14 01:33:27 2026 :: Log Alaric [16002]: coin +10 silver
+Wed Oct 14 01:33:27 2026 :: Log Alaric [16002]: coin +13 copper
+Wed Oct 14 01:33:27 2026 :: Log Alaric [16002]: coin +5 gold
+Wed Oct 14 01:33:34 2026 :: Log Alaric [16002]: n
+Wed Oct 14 01:33:34 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Wed Oct 14 01:33:35 2026 :: Log Alaric [16003]: n
+Wed Oct 14 01:33:35 2026 :: Log Alaric [16004]: arrived (A Turn at the Pier) from 16003
+Wed Oct 14 01:33:36 2026 :: Log Alaric [16004]: scan
+Wed Oct 14 01:33:42 2026 :: Log Alaric [16004]: w
+Wed Oct 14 01:33:42 2026 :: Log Alaric [16084]: arrived (Seashells Galore) from 16004
+Wed Oct 14 01:33:42 2026 :: Log Alaric [16084]: bs dr
+Wed Oct 14 01:34:27 2026 :: Log Alaric [16084]: killed The drunk pirate
+Wed Oct 14 01:34:27 2026 :: Log Alaric [16084]: coin +1 platinum
+Wed Oct 14 01:34:27 2026 :: Log Alaric [16084]: coin +5 silver
+Wed Oct 14 01:34:27 2026 :: Log Alaric [16084]: coin +6 copper
+Wed Oct 14 01:34:27 2026 :: Log Alaric [16084]: coin +2 gold
+Wed Oct 14 01:35:35 2026 :: Log Alaric [16084]: wake
+Wed Oct 14 01:35:35 2026 :: Log Alaric [16084]: l
+Wed Oct 14 01:35:39 2026 :: Log Alaric [16084]: buy guano
+Wed Oct 14 01:35:39 2026 :: Log Alaric [16084]: copper -10800
+Wed Oct 14 01:35:39 2026 :: Log Alaric [16084]: bought guano (vnum 16046) for 10800 copper from She
+Wed Oct 14 01:35:40 2026 :: Log Alaric [16084]: buy guano
+Wed Oct 14 01:35:40 2026 :: Log Alaric [16084]: copper -10800
+Wed Oct 14 01:35:40 2026 :: Log Alaric [16084]: bought guano (vnum 16046) for 10800 copper from She
+Wed Oct 14 01:35:40 2026 :: Log Alaric [16084]: buy guano
+Wed Oct 14 01:35:40 2026 :: Log Alaric [16084]: copper -10800
+Wed Oct 14 01:35:40 2026 :: Log Alaric [16084]: bought guano (vnum 16046) for 10800 copper from She
+Wed Oct 14 01:35:40 2026 :: Log Alaric [16084]: buy guano
+Wed Oct 14 01:35:40 2026 :: Log Alaric [16084]: copper -10800
+Wed Oct 14 01:35:40 2026 :: Log Alaric [16084]: bought guano (vnum 16046) for 10800 copper from She
+Wed Oct 14 01:35:40 2026 :: Log Alaric [16084]: buy guano
+Wed Oct 14 01:35:40 2026 :: Log Alaric [16084]: copper -10800
+Wed Oct 14 01:35:40 2026 :: Log Alaric [16084]: bought guano (vnum 16046) for 10800 copper from She
+Wed Oct 14 01:35:41 2026 :: Log Alaric [16084]: buy guano
+Wed Oct 14 01:35:41 2026 :: Log Alaric [16084]: copper -10800
+Wed Oct 14 01:35:41 2026 :: Log Alaric [16084]: bought guano (vnum 16046) for 10800 copper from She
+Wed Oct 14 01:35:41 2026 :: Log Alaric [16084]: buy guano
+Wed Oct 14 01:35:41 2026 :: Log Alaric [16084]: copper -10800
+Wed Oct 14 01:35:41 2026 :: Log Alaric [16084]: bought guano (vnum 16046) for 10800 copper from She
+Wed Oct 14 01:35:41 2026 :: Log Alaric [16084]: recal
+Wed Oct 14 01:35:41 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16084
+Wed Oct 14 01:35:41 2026 :: Log Alaric [4207]: recal
+Wed Oct 14 01:35:42 2026 :: Log Alaric [4207]: recal
+Wed Oct 14 01:35:42 2026 :: Log Alaric [4207]: recal
+Wed Oct 14 01:35:42 2026 :: Log Alaric [4207]: e
+Wed Oct 14 01:35:42 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Wed Oct 14 01:35:42 2026 :: Log Alaric [4202]: n
+Wed Oct 14 01:35:42 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Wed Oct 14 01:35:43 2026 :: Log Alaric [4203]: n
+Wed Oct 14 01:35:43 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Wed Oct 14 01:35:43 2026 :: Log Alaric [4210]: sleep
