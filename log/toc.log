@@ -98773,3 +98773,36 @@ Wed Oct 14 23:43:26 2026 :: Sock.sinaddr:  18.116.205.62
 Wed Oct 14 23:43:26 2026 :: EOF encountered on read.
 Wed Oct 14 23:45:33 2026 :: Sock.sinaddr:  204.76.203.219
 Wed Oct 14 23:45:43 2026 :: EOF encountered on read.
+Wed Oct 14 23:48:31 2026 :: Sock.sinaddr:  18.116.205.62
+Wed Oct 14 23:48:31 2026 :: EOF encountered on read.
+Wed Oct 14 23:49:07 2026 :: Log Alaric [16003]: wake
+Wed Oct 14 23:49:07 2026 :: Log Alaric [16003]: l
+Wed Oct 14 23:49:12 2026 :: Log Alaric [16003]: eq
+Wed Oct 14 23:49:14 2026 :: Log Alaric [16003]: bs mid
+Wed Oct 14 23:49:49 2026 :: Log Alaric [16003]: get dagger
+Wed Oct 14 23:49:55 2026 :: Log Alaric [16003]: wear dagger
+Wed Oct 14 23:50:07 2026 :: Log Alaric [16003]: level 40 -> 41 (earned)
+Wed Oct 14 23:50:07 2026 :: Alaric has achieved level 41!
+Wed Oct 14 23:50:07 2026 :: Log Alaric [16003]: killed The midshipman
+Wed Oct 14 23:50:07 2026 :: Log Alaric [16003]: coin +1 platinum
+Wed Oct 14 23:50:07 2026 :: Log Alaric [16003]: coin +5 silver
+Wed Oct 14 23:50:07 2026 :: Log Alaric [16003]: coin +6 copper
+Wed Oct 14 23:50:07 2026 :: Log Alaric [16003]: coin +2 gold
+Wed Oct 14 23:50:30 2026 :: Log Alaric [16003]: recal
+Wed Oct 14 23:50:30 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16003
+Wed Oct 14 23:50:31 2026 :: Log Alaric [4207]: recal
+Wed Oct 14 23:50:31 2026 :: Log Alaric [4207]: w
+Wed Oct 14 23:50:31 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Wed Oct 14 23:50:31 2026 :: Log Alaric [4208]: stash get peg
+Wed Oct 14 23:50:31 2026 :: Log Alaric [4208]: withdrew a pegleg (vnum 16013) from the stash
+Wed Oct 14 23:50:32 2026 :: Log Alaric [4208]: sc
+Wed Oct 14 23:50:34 2026 :: Log Alaric [4208]: wear peg
+Wed Oct 14 23:50:35 2026 :: Log Alaric [4208]: sc
+Wed Oct 14 23:50:53 2026 :: Log Alaric [4208]: comp leg
+Wed Oct 14 23:51:03 2026 :: Log Alaric [4208]: sc
+Wed Oct 14 23:51:06 2026 :: Log Alaric [4208]: wear leg
+Wed Oct 14 23:51:06 2026 :: Log Alaric [4208]: sc
+Wed Oct 14 23:51:12 2026 :: Log Alaric [4208]: stash put peg
+Wed Oct 14 23:51:12 2026 :: Log Alaric [4208]: stashed a pegleg (vnum 16013)
+Wed Oct 14 23:51:13 2026 :: Log Alaric [4208]: eq
+Wed Oct 14 23:51:15 2026 :: Log Alaric [4208]: stash
