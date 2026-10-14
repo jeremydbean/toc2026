@@ -2740,3 +2740,4 @@
 1791979193	wizinfo	60	New Object Trap: a mighty stone sarcophagus [Vnum: 28010]
 1791980875	wizinfo	62	Automated backup complete.
 1791988201	wizinfo	60	New Trap: [Room: 30626]
+1791990053	wizinfo	60	Player-state backup to GitHub is not working (last run reported 'exit-code'). Saves are still on disk but are not leaving this machine.
