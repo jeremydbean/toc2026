@@ -97713,3 +97713,73 @@ Wed Oct 14 01:51:55 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16
 Wed Oct 14 01:51:55 2026 :: Log Alaric [16003]: bs sa
 Wed Oct 14 01:52:01 2026 :: Log Alaric [16003]: n
 Wed Oct 14 01:52:03 2026 :: Log Alaric [16003]: dirt
+Wed Oct 14 01:52:22 2026 :: Log Alaric [16003]: killed The sailor
+Wed Oct 14 01:52:22 2026 :: Log Alaric [16003]: coin +2 platinum
+Wed Oct 14 01:52:22 2026 :: Log Alaric [16003]: coin +10 silver
+Wed Oct 14 01:52:22 2026 :: Log Alaric [16003]: coin +13 copper
+Wed Oct 14 01:52:22 2026 :: Log Alaric [16003]: coin +5 gold
+Wed Oct 14 01:52:31 2026 :: Log Alaric [16003]: n
+Wed Oct 14 01:52:31 2026 :: Log Alaric [16004]: arrived (A Turn at the Pier) from 16003
+Wed Oct 14 01:52:31 2026 :: Log Alaric [16004]: scan
+Wed Oct 14 01:52:35 2026 :: Log Alaric [16004]: dirt
+Wed Oct 14 01:52:52 2026 :: Alaric killed by The drunk pirate at 16004
+Wed Oct 14 01:52:52 2026 :: Snapshot of Alaric taken before death (PRESTORE Alaric to see it).
+Wed Oct 14 01:52:52 2026 :: Log Alaric [16004]: died to The drunk pirate
+Wed Oct 14 01:52:52 2026 :: Log Alaric [4216]: arrived (Death room.) from 16004
+Wed Oct 14 01:53:17 2026 :: Log Alaric [4216]: wake
+Wed Oct 14 01:53:17 2026 :: Log Alaric [4216]: d
+Wed Oct 14 01:53:17 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4216
+Wed Oct 14 01:53:17 2026 :: Log Alaric [4208]: d
+Wed Oct 14 01:53:21 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:22 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:25 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:26 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:26 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:27 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:27 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:28 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:28 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:29 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:29 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:30 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:30 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:31 2026 :: Sock.sinaddr:  3.133.226.214
+Wed Oct 14 01:53:31 2026 :: EOF encountered on read.
+Wed Oct 14 01:53:31 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:32 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:32 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:33 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:34 2026 :: Log Alaric [4208]: sc
+Wed Oct 14 01:53:35 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:35 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:36 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:36 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:37 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:37 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:38 2026 :: Log Alaric [4208]: tk alaric
+Wed Oct 14 01:53:41 2026 :: Log Alaric [4208]: drop cor
+Wed Oct 14 01:53:42 2026 :: Log Alaric [4208]: get all cor
+Wed Oct 14 01:53:43 2026 :: Log Alaric [4208]: quaff tr
+Wed Oct 14 01:53:45 2026 :: Log Alaric [4208]: get all cor
+Wed Oct 14 01:53:46 2026 :: Log Alaric [4208]: wear all
+Wed Oct 14 01:53:47 2026 :: Log Alaric [4208]: i
+Wed Oct 14 01:53:49 2026 :: Log Alaric [4208]: eq
+Wed Oct 14 01:53:53 2026 :: Log Alaric [4208]: second scal
+Wed Oct 14 01:53:55 2026 :: Log Alaric [4208]: wear helm
+Wed Oct 14 01:53:57 2026 :: Log Alaric [4208]: wear dip
+Wed Oct 14 01:53:58 2026 :: Log Alaric [4208]: wake
+Wed Oct 14 01:53:59 2026 :: Log Alaric [4208]: l
+Wed Oct 14 01:53:59 2026 :: Log Alaric [4208]: sc
+Wed Oct 14 01:54:02 2026 :: Log Alaric [4208]: e
+Wed Oct 14 01:54:02 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Wed Oct 14 01:54:02 2026 :: Log Alaric [4207]: e
+Wed Oct 14 01:54:02 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Wed Oct 14 01:54:03 2026 :: Log Alaric [4202]: n
+Wed Oct 14 01:54:03 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Wed Oct 14 01:54:03 2026 :: Log Alaric [4203]: n
+Wed Oct 14 01:54:03 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Wed Oct 14 01:54:04 2026 :: Log Alaric [4210]: sleep
+Wed Oct 14 01:56:38 2026 :: Log Alaric [4210]: eq
+Wed Oct 14 01:56:40 2026 :: Log Alaric [4210]: quit
+Wed Oct 14 01:56:40 2026 :: Alaric has quit.
+Wed Oct 14 01:56:40 2026 :: [QUIT] Player rejoined the real world.
