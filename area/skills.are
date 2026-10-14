@@ -1159,6 +1159,10 @@ Mage: 5  Cleric:5  Thief:free  Warrior: 5
 Monks and necromancers cannot learn pick lock, since they cannot join the
 thieves' guild.
 
+Some locks cannot be picked at all, and the game says so on the first
+try.  A fumble is a missed roll on a lock that can open, and is worth
+trying again.
+
 Trainer: Picky (?/T), Tia (T/?), mud school adept (practice only, no gain)
 
 See also: SLEIGHT OF HAND, STEAL, SNEAK

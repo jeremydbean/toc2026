@@ -221,6 +221,30 @@ Before restoring:
 Do not extract a full server archive to recover one character unless the
 version history is unavailable and a staged file-by-file restore is required.
 
+### Restoring A Lost Stash
+
+A snapshot marked `before death` is taken before the dead character is
+extracted, so it holds the stash exactly as it stood when they died. When
+a stash has been lost, put it back from that copy alone rather than the
+whole file, which would roll back levels, gear and gold as well:
+
+```text
+prestore alaric
+prestore alaric 20261010_162657 stash
+```
+
+Use the stamp when the player is online: their autosaves renumber the
+list under you. The restore adds the snapshot's stash to whatever the
+stash holds now and saves at once; the player keeps playing and is told,
+or if offline finds it at their next login. The count it reports is of
+top-level objects, as `stash` itself counts; anything inside a container
+came back inside it. Each restore takes its own `before stashrestore`
+copy, and nothing is removed, so a restore that turns out not to have
+been needed leaves duplicates to take out rather than a loss. The
+command's log line reaches `log/toc.log`, and the state sync carries it
+to GitHub within five minutes, so a session without host access can
+confirm the result.
+
 ## Player Account Incidents
 
 ### Forgotten Or Compromised Password

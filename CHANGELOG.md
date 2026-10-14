@@ -21,10 +21,36 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - **PRESTORE takes a snapshot's stamp as well as its list number.** The
   list shows `stamp 20261010_162657` beside each entry; every save adds a
   snapshot at the top and renumbers the rest, so a number typed after
-  listing could name the wrong file while the player is online.
+  listing could name the wrong file while the player is online. Eight or
+  more characters is always a stamp, so the date alone works, and a whole
+  file name beats an untagged copy from the same second. The stash
+  restore lays the objects out by the snapshot's own `Vers` line rather
+  than the live character's, so an old snapshot does not come back with
+  every cost divided by ten thousand. Alaric's two lost stashes were put
+  back this way on 2026-10-11.
 
 ### Fixed
 
+- **PICK says when a lock cannot be picked, and a miss is a fumble.** A
+  pickproof lock answered "You failed." exactly as a missed roll does,
+  with the roll made before the door was looked at; 165 of the 229 doors
+  a reset locks are pickproof, so a thief at 75% spent 150 attempts on
+  three of them (Alaric, 2026-10-11). It now says "This lock is beyond
+  any pick" on the first try, and a missed roll is one of five fumbles.
+  STEAL fumbles one of four ways instead of "Oops.", and a steal from a
+  victim more than five levels up says they are too wary; an unanswered
+  RECALL says so instead of "You failed!"; BACKSTAB on a victim under a
+  third of their health says they are hurt and suspicious. TRACK's
+  "Huh?" for an untrained player ends its line. `tests/test_pick_lock.py`.
+- **BUILD used a freed character after `/quit`.** The wizard's slash
+  escape ran the command and then asked its next question through the
+  character's descriptor, which `/quit` and `/delete` had freed and
+  `/switch` had moved. It re-finds the descriptor in the live list first.
+- **A negative vnum read before the index tables.** `is_number` accepts a
+  leading minus, so `MSHOW -5`, `OSHOW -5` and the PLACE forms indexed
+  the hash table at a negative offset. The three lookups refuse a
+  negative vnum, which also closes stock MLOAD.
+  `tests/test_building_wizard.py`.
 - **Dying emptied the stash.** A player's death extracts them without
   pulling them from the game, but `extract_char` freed the stash in
   memory either way, so the next save wrote it empty. Only a character

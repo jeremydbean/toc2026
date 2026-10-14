@@ -82,6 +82,7 @@ Contextual movement may also be attached to `push`, `pull`, `move`, `turn`,
 | Commands | Use |
 |---|---|
 | `get`, `take` | Pick up an object or retrieve it from a container |
+| `pick` | Pick a lock on a door or container; a lock that cannot be picked says so at once |
 | `put` | Place an object in a container |
 | `drop` | Drop an object |
 | `give` | Give an object or currency to another character |
@@ -210,7 +211,7 @@ Some channel commands are level-gated or may be disabled by local rules.
 |---|---|
 | `aquest` | Main automated quest command family |
 | `pkill` | Review or control supported PK state |
-| `steal` | Attempt theft; rules and consequences apply |
+| `steal` | Attempt theft; rules and consequences apply. A fumble is bad luck; "too wary" means the target is beyond your level |
 | `murder` | Explicit player-hostile attack |
 
 Use `rules`, `help pkill`, `help aquest`, and local staff guidance before taking

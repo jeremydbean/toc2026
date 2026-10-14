@@ -2113,6 +2113,8 @@ dexterity and awareness, and whether you are hidden or sneaking when
 you attempt it.  A failed steal is always noticed by the target and
 nearby bystanders, flagging you as a criminal.  You cannot steal from
 players in safe rooms or during active combat.
+A target more than five levels above you can never be robbed, and you
+are told they are too wary rather than left to try again.
 
 See also: SNEAK, HIDE, PICK
 ~

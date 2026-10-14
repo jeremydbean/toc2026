@@ -373,6 +373,14 @@ Live-test gotchas that look like product bugs and are not:
   are proving is then standing before the first blow instead of racing
   it. A live test that passes in ~57s and fails in ~30s is usually
   failing its first assertion, not behaving differently.
+- **A client only reads its own socket while it drains.** In a two-client
+  test the hero's death message is not in `hero.transcript` after
+  `run(keeper, "slay zhoarder")`: nothing pumped the hero's socket. Drain
+  the client whose output you assert on.
+- **The test servers append to tracked runtime logs.** A module run from
+  the repository root leaves `log/webadmin-events.tsv` and `log/toc.log`
+  modified, and `git rebase` then refuses with "unstaged changes". Check
+  them out before rebasing; they are never part of a change.
 
 ## Source Ownership Map
 
@@ -534,6 +542,20 @@ For each changed command or gameplay path, check:
 - save/reload behavior and old player files
 - help text and actual behavior agreement
 - color enabled/disabled, paging enabled/disabled, and narrow terminal layout
+
+**A refusal is not a miss** (owner, 2026-10-13). When a skill cannot work
+-- a pickproof lock, a steal from somebody five levels above you, a
+backstab on a victim under a third of their health -- say why, before any
+roll, in words a missed roll never uses. PICK answered a pickproof door
+with the same "You failed." as a missed roll, with the roll made before
+the door was even looked at, and a thief at 75% spent 150 attempts on
+three such doors before filing a bug; 165 of the 229 doors a reset locks
+are pickproof, so that was most of the skill. A missed roll is a fumble
+now, told one of several ways (`pick_lock_roll_fails` in `act_move.c`,
+STEAL's four in `act_obj.c`, RECALL's `recall_miss_message`), and the
+refusals have their own lines. `tests/test_pick_lock.py` plays a
+pickproof door, a fumble at 0% and a pick at 100%. The spells' and staff
+commands' "You failed." are not this pattern and were left alone.
 
 Do not label deliberate random recall as a bug. It can choose any room that is
 eligible and not protected.
@@ -912,6 +934,18 @@ state sync would leave them stale and fail CI. Rules the code depends on:
   first; spell values are written as slots; a reset the loader would exit
   on is left out and counted. One difference is the game's own: boot makes
   a room with no exits NO_MOB (`fix_exits`).
+- **BUILD's slash escape re-finds its descriptor.** `/quit`, `/delete`
+  and `/switch` inside the wizard free the character and its descriptor
+  or move the descriptor to a mobile, and the next question was written
+  into released memory. `build_wizard_input` looks its descriptor up in
+  `descriptor_list` after `interpret` and asks only if it still holds
+  `ch`. Any command run on behalf of a character must assume the
+  character may be gone when it returns.
+- **The index lookups refuse a negative vnum.** `is_number` accepts a
+  leading minus and `vnum % MAX_KEY_HASH` is negative for a negative vnum,
+  so `MSHOW -5` read before `mob_index_hash`. `get_mob_index`,
+  `get_obj_index` and `get_room_index` return NULL below zero, which also
+  covers stock MLOAD and anything else that forgot to check.
 - **A prototype string made after boot goes through `str_perm`, never
   `str_dup`.** `create_object` and `create_mobile` give an instance its
   prototype's strings by pointer, and extracting the instance frees them
@@ -1232,6 +1266,19 @@ about an hour). Put `[deploy now]` in a commit message to skip the CI
 wait for an urgent fix; `toc-deploy` still refuses anything that does not
 build or whose world does not load. A desktop session may still run
 `toc-deploy` by hand for an immediate deploy; the two share a lock.
+
+**Nothing pasted into a cloud session's chat gets it onto the host**
+(2026-10-11). Its sandbox has no `ssh` binary, its only outbound path is
+an HTTPS proxy with a domain allowlist that does not include the game
+host, a connection to port 22 is refused at the network layer, and the
+harness refuses attempts to tunnel out or to add a git-carried command
+runner as a containment escape. An SSH key, the dashboard token or
+`chmod 600` on a key file changes none of that, so do not ask for them;
+the owner pasted the key three times before this was written down. What
+such a session can do is everything that lands by push, and it can
+verify a staff action from the synced log. A staff command that has to
+run on the host -- a PRESTORE, an ANNOUNCE -- is the desktop's job or
+the owner's, in game.
 
 **A cloud session has HTTPS only** -- no SSH, no key, no project memory;
 this file is all it gets, and the sandbox's proxy will not let it reach
@@ -1764,6 +1811,41 @@ to shrink a stash below what is already in it, which would strand
 items nobody could reach.
 
 `set` also answers to `player` now, not only `mobile` and `character`.
+
+**A death keeps the stash; only leaving the game frees it.** `extract_char`
+freed `pcdata->stash` on every call until 2026-10-10, and a death calls it
+with `fPull` false while the player stays in the game, so the next save
+wrote an empty stash. Alaric lost 51 objects to one death and 65 more to
+the next, after re-stashing his gear for a remort in between. The free
+sits under `fPull` now, and `tests/test_stash.py` slays a character and
+checks the bag is still there, at once and after a fresh login.
+
+**The death snapshot is the way back.** `player_snapshot_milestone(victim,
+"death", true)` runs before the dead are extracted, so a `before death`
+copy in `player/versions/<Name>/` holds the stash as it stood at the
+moment of death. `PRESTORE <player> <stamp|number> STASH`
+(`prestore_stash` in `act_wiz.c`, `stash_restore_from_file` in `save.c`)
+reads only that copy's `#STASH` section with the loader's own `fread_obj`
+-- enchantments, Hyrule levels and nesting included, laid out by the
+snapshot's own `Vers` line, not the live character's -- and adds it to
+whatever the stash holds now, changing nothing else. It works on a
+player who is online (the live stash, saved at once, and they are told)
+or offline (a loaded copy through `offline_player_load`, saved and
+freed), takes a `stashrestore` copy first, and may push the count past
+`stash_max`, which only refuses deposits until it fits. "Restored 35
+objects" counts top-level objects, as the stash does; the 30 inside a
+pack came back inside it. The whole-file restore would have taken a new
+life's levels with it, which is why this exists. Alaric's two stashes
+were put back this way on 2026-10-11 and survived his next death.
+
+**Pick a snapshot by its stamp when the player is online.** Every save
+adds a snapshot at the top of the PRESTORE list and renumbers the rest,
+so a number typed a minute after listing can name the wrong file; the
+list prints `stamp 20261010_162657` beside each entry and PRESTORE takes
+it, or a unique prefix. Eight or more characters is always a stamp
+(`20261010` alone is digits, and a list number is never that long); a
+whole file name, `20261010_162657.death`, beats an untagged copy taken
+the same second.
 
 ## The Note Board
 

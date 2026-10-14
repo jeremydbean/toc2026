@@ -175,6 +175,11 @@ Door and container commands include `open`, `close`, `lock`, `unlock`, `pick`,
 and `doorbash`. Most accept a direction or object name. Hidden doors may need to
 be discovered before the normal door commands can target them.
 
+Some locks cannot be picked at all, and `pick` says so on the first try. A
+fumble -- the pick slipping, the tumblers dropping back -- means the lock can
+open and the roll missed, so trying again is worth it. Most locked doors in the
+world are of the first kind; a key or `doorbash` is the way through them.
+
 ### Recall
 
 `recall`, or `/`, prays for transport to your recall point. It costs half your
