@@ -97330,3 +97330,5 @@ Wed Oct 14 01:18:50 2026 :: Log Alaric [2]: arrived (Limbo) from 16001
 Wed Oct 14 01:18:50 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 2
 Wed Oct 14 01:18:56 2026 :: Log Alaric [16001]: who
 Wed Oct 14 01:18:56 2026 :: Log Alaric [16001]: worth
+Wed Oct 14 01:23:02 2026 :: Sock.sinaddr:  178.156.181.172
+Wed Oct 14 01:23:02 2026 :: EOF encountered on read.
