@@ -98383,3 +98383,9 @@ Wed Oct 14 17:02:33 2026 :: Log Alaric [2]: arrived (Limbo) from 4210
 Wed Oct 14 17:02:34 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 2
 Wed Oct 14 17:02:34 2026 :: Log Alaric [4210]: who
 Wed Oct 14 17:02:34 2026 :: Log Alaric [4210]: worth
+Wed Oct 14 17:07:31 2026 :: Sock.sinaddr:  52.22.236.30
+Wed Oct 14 17:07:31 2026 :: EOF encountered on read.
+Wed Oct 14 17:10:41 2026 :: Sock.sinaddr:  91.231.89.214
+Wed Oct 14 17:10:42 2026 :: Sock.sinaddr:  91.231.89.215
+Wed Oct 14 17:10:42 2026 :: EOF encountered on read.
+Wed Oct 14 17:10:45 2026 :: EOF encountered on read.
