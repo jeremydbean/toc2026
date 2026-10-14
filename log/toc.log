@@ -98765,3 +98765,11 @@ Wed Oct 14 23:33:16 2026 :: Sock.sinaddr:  3.149.57.90
 Wed Oct 14 23:33:16 2026 :: EOF encountered on read.
 Wed Oct 14 23:38:21 2026 :: Sock.sinaddr:  178.156.187.238
 Wed Oct 14 23:38:21 2026 :: EOF encountered on read.
+Wed Oct 14 23:42:16 2026 :: Log Alaric [2]: arrived (Limbo) from 16003
+Wed Oct 14 23:42:17 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 2
+Wed Oct 14 23:42:17 2026 :: Log Alaric [16003]: who
+Wed Oct 14 23:42:17 2026 :: Log Alaric [16003]: worth
+Wed Oct 14 23:43:26 2026 :: Sock.sinaddr:  18.116.205.62
+Wed Oct 14 23:43:26 2026 :: EOF encountered on read.
+Wed Oct 14 23:45:33 2026 :: Sock.sinaddr:  204.76.203.219
+Wed Oct 14 23:45:43 2026 :: EOF encountered on read.
