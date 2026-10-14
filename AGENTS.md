@@ -627,6 +627,16 @@ bug line -- which is how Alaric lost four satchels of bombs when the
 Hyrule NES pass retired 30542. `tests/test_retired_objects.py` checks
 every row points from a vnum that is gone to one that exists.
 
+**What was inside a vanished container is kept, not lost.** The loader
+frees its placeholder for a vnum it cannot find, but the `Nest` key had
+already pointed `rgObjNest` at that placeholder, so the objects saved
+inside were linked into freed memory -- lost at best, and in the test
+world the login hung at the name prompt (2026-10-14). The incomplete
+branch clears the slot now and a nested object whose parent slot is
+NULL falls back to the character, or the stash when reading one, with a
+"kept loose" log line. `tests/test_lost_containers.py` loads a gone
+container holding a bag holding bombs, in both places.
+
 **Check that the generator still reproduces the file before regenerating.**
 It had drifted: 197 rooms in `area/hyrule.are` carried recall and always-lit
 flags that had been applied to the generated output by hand, and

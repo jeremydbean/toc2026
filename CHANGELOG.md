@@ -31,6 +31,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **What was inside a vanished container is kept at login.** `fread_obj`
+  frees its placeholder for an object whose vnum no longer exists, but the
+  Nest key had already pointed the nesting table at it, so everything
+  saved inside was linked into freed memory: lost at best, and in the
+  test world the login hung at the name prompt. The slot is cleared and
+  such contents are kept loose, in the inventory or the stash, with a log
+  line naming them. `tests/test_lost_containers.py`.
 - **PICK says when a lock cannot be picked, and a miss is a fumble.** A
   pickproof lock answered "You failed." exactly as a missed roll does,
   with the roll made before the door was looked at; 165 of the 229 doors

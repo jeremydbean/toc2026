@@ -2547,6 +2547,7 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
     OBJ_DATA *obj;
     char *word;
     int iNest;
+    int iSlot;
     bool fMatch;
     bool fNest;
     bool fVnum;
@@ -2746,6 +2747,14 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 		if ( !fNest || !fVnum || obj->pIndexData == NULL)
 		{
 		    bug( "Fread_obj: incomplete object.", 0 );
+		    /* The Nest key pointed its slot at this placeholder.
+		       Left there, everything saved inside the vanished
+		       container was linked into freed memory and lost at
+		       login (2026-10-14); cleared, its contents fall back
+		       to the character below. */
+		    for ( iSlot = 0; iSlot < MAX_NEST; iSlot++ )
+			if ( rgObjNest[iSlot] == obj )
+			    rgObjNest[iSlot] = NULL;
 		    free_string( obj->name        );
 		    free_string( obj->description );
 		    free_string( obj->short_descr );
@@ -2809,8 +2818,18 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
                         log_string("To container");
                     }
 */
-                    if ( iNest == 0 && fread_to_stash
-                      && ch->pcdata != NULL ) {
+                    /* A nested object whose container did not load (a
+                       vanished vnum) is kept loose rather than lost. */
+                    if ( iNest > 0 && rgObjNest[iNest-1] == NULL )
+                    {
+                        snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+                            "Fread_obj: the container holding %d on %s is gone; kept loose.",
+                            obj->pIndexData->vnum,
+                            ch != NULL && ch->name != NULL ? ch->name : "(nobody)" );
+                        log_string( log_buf );
+                    }
+                    if ( fread_to_stash && ch->pcdata != NULL
+                      && ( iNest == 0 || rgObjNest[iNest-1] == NULL ) ) {
                        /* Kept at the altar: carried by nobody, in no
                           room, and weighing nothing on the character. */
                        obj->next_content    = ch->pcdata->stash;
@@ -2819,7 +2838,7 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
                        obj->in_room         = NULL;
                        obj->in_obj          = NULL;
                     }
-                    else if ( iNest == 0 || rgObjNest[iNest] == NULL ) {
+                    else if ( iNest == 0 || rgObjNest[iNest-1] == NULL ) {
                        obj->next_content =  ch->carrying;
                        ch->carrying      =  obj;
                        obj->carried_by   =  ch;
