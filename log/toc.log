@@ -98584,3 +98584,11 @@ Wed Oct 14 20:23:42 2026 :: Log Alaric [16000]: n
 Wed Oct 14 20:23:42 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16000
 Wed Oct 14 20:23:44 2026 :: Log Alaric [16001]: bs sa
 Wed Oct 14 20:24:00 2026 :: Log Alaric [16001]: dirt
+Wed Oct 14 20:24:09 2026 :: Log Alaric [16001]: killed The sailor
+Wed Oct 14 20:24:09 2026 :: Log Alaric [16001]: coin +2 platinum
+Wed Oct 14 20:24:09 2026 :: Log Alaric [16001]: coin +10 silver
+Wed Oct 14 20:24:09 2026 :: Log Alaric [16001]: coin +13 copper
+Wed Oct 14 20:24:09 2026 :: Log Alaric [16001]: coin +5 gold
+Wed Oct 14 20:24:17 2026 :: Log Alaric [16001]: worth
+Wed Oct 14 20:25:23 2026 :: Sock.sinaddr:  178.156.185.231
+Wed Oct 14 20:25:23 2026 :: EOF encountered on read.
