@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792026116
+LogO 1792026412
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 8
-Plyd 6504
+Plyd 6800
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 2155
-HMV  47 110 219 219 83 138
-NewGold 57
+Room 14015
+HMV  83 110 219 219 138 138
+NewGold 79
 NewPlat 9
-NewCopp 109
-NewSilv 18
+NewCopp 9
+NewSilv 19
 BankCP 0
 IntTime 1792004412
 IntTotal 0
@@ -35,8 +35,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 65
-AchQuests 3
+AchKills 66
+AchQuests 4
 AchDeaths 1
 AchExplore 0
 AchMaps 0
@@ -68,10 +68,10 @@ SesKill  12
 SesPK    0
 SesDead  1
 SesQuest 1
-QuestPnts 152
-QuestStrk 3
-QuestNext 30
-Exp  19270
+QuestPnts 250
+QuestStrk 4
+QuestNext 11
+Exp  19309
 Act  65740
 AfBy 512
 Comm 24576
@@ -99,10 +99,10 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Save  4
-Alig  -65
-Hit   1
-Dam   4
+Save  3
+Alig  -74
+Hit   2
+Dam   6
 ACs 62 57 58 99
 Attr 14 16 15 12 19
 AMod 0 10 11 0 7
@@ -112,7 +112,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 110 219 142
-Cond 0 22 12
+Cond 0 33 7
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -126,7 +126,7 @@ Sk 1 'magic missile'
 Sk 1 'refresh'
 Sk 1 'shield'
 Sk 30 'axe'
-Sk 81 'dagger'
+Sk 82 'dagger'
 Sk 25 'flail'
 Sk 25 'mace'
 Sk 35 'polearm'
@@ -159,7 +159,7 @@ Wear 0
 Cost 0
 Cond 99
 Repd 0
-Val  0 0 91 0 0
+Val  0 0 86 0 0
 End
 
 #O
@@ -174,7 +174,7 @@ End
 #O
 Vnum 3702
 Nest 0
-Wear -1
+Wear 16
 Cost 0
 Cond 97
 Repd 0
@@ -343,7 +343,7 @@ End
 #O
 Vnum 3505
 Nest 0
-Wear 16
+Wear -1
 Lev  6
 Cost 82000
 Cond 99
@@ -365,7 +365,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 239
+Time 234
 Cost 0
 Cond 100
 Repd 0
