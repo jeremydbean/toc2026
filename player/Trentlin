@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1791415969
+LogO 1792025732
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,7 +16,7 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 8
-Plyd 6104
+Plyd 6120
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
@@ -28,7 +28,7 @@ NewPlat 9
 NewCopp 109
 NewSilv 18
 BankCP 0
-IntTime 1791399612
+IntTime 1792004412
 IntTotal 0
 Dcount 0
 SavedOnce 1
