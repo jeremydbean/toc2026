@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792115524
+LogO 1792147932
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,13 +16,13 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 8
-Plyd 7240
+Plyd 7382
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
 Room 4210
-HMV  43 110 219 219 53 138
+HMV  34 110 219 219 42 138
 NewGold 83
 NewPlat 10
 NewCopp 59
@@ -71,8 +71,7 @@ SesDead  0
 SesQuest 0
 QuestPnts 250
 QuestStrk 4
-QuestNext 3
-Exp  19875
+Exp  19865
 Act  65740
 AfBy 512
 Comm 24576
@@ -113,7 +112,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 110 219 142
-Cond 0 26 48
+Cond 0 24 46
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -160,7 +159,7 @@ Wear 0
 Cost 0
 Cond 99
 Repd 0
-Val  0 0 79 0 0
+Val  0 0 77 0 0
 End
 
 #O
@@ -274,7 +273,7 @@ Nest 0
 Wear 6
 Lev  2
 Cost 500
-Cond 100
+Cond 99
 Repd 0
 End
 
@@ -366,7 +365,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 226
+Time 224
 Cost 0
 Cond 100
 Repd 0
