@@ -100562,3 +100562,15 @@ Fri Oct 16 05:28:05 2026 :: Sock.sinaddr:  71.6.235.34
 Fri Oct 16 05:28:05 2026 :: EOF encountered on read.
 Fri Oct 16 05:29:16 2026 :: Sock.sinaddr:  3.12.251.153
 Fri Oct 16 05:29:17 2026 :: EOF encountered on read.
+Fri Oct 16 05:30:13 2026 :: Sock.sinaddr:  3.129.187.38
+Fri Oct 16 05:30:14 2026 :: EOF encountered on read.
+Fri Oct 16 05:30:16 2026 :: Sock.sinaddr:  3.129.187.38
+Fri Oct 16 05:31:08 2026 :: Log Alaric [2]: arrived (Limbo) from 4210
+Fri Oct 16 05:31:08 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 2
+Fri Oct 16 05:31:08 2026 :: Log Alaric [4210]: who
+Fri Oct 16 05:31:08 2026 :: Log Alaric [4210]: worth
+Fri Oct 16 05:32:39 2026 :: Sock.sinaddr:  3.129.187.38
+Fri Oct 16 05:32:40 2026 :: EOF encountered on read.
+Fri Oct 16 05:33:12 2026 :: Sock.sinaddr:  3.129.187.38
+Fri Oct 16 05:34:21 2026 :: Sock.sinaddr:  178.156.184.20
+Fri Oct 16 05:34:21 2026 :: EOF encountered on read.
