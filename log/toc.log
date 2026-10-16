@@ -101480,3 +101480,162 @@ Fri Oct 16 20:48:50 2026 :: Log Trentlin [2143]: s
 Fri Oct 16 20:48:50 2026 :: Log Trentlin [2147]: arrived (Achilles Avenue) from 2143
 Fri Oct 16 20:48:52 2026 :: Log Trentlin [2147]: n
 Fri Oct 16 20:48:52 2026 :: Log Trentlin [2143]: arrived (Another corner of Hector and Achilles streets) from 2147
+Fri Oct 16 20:48:54 2026 :: Log Trentlin [2143]: ex
+Fri Oct 16 20:48:55 2026 :: Log Trentlin [2143]: s
+Fri Oct 16 20:48:55 2026 :: Log Trentlin [2147]: arrived (Achilles Avenue) from 2143
+Fri Oct 16 20:48:56 2026 :: Log Trentlin [2147]: s
+Fri Oct 16 20:48:56 2026 :: Log Trentlin [2152]: arrived (A bend in the road) from 2147
+Fri Oct 16 20:48:57 2026 :: Log Trentlin [2152]: s
+Fri Oct 16 20:48:57 2026 :: Log Trentlin [2157]: arrived (A bend in Ajax) from 2152
+Fri Oct 16 20:48:59 2026 :: Log Trentlin [2157]: s
+Fri Oct 16 20:48:59 2026 :: Log Trentlin [2164]: arrived (Ajax Street) from 2157
+Fri Oct 16 20:49:00 2026 :: Log Trentlin [2164]: m
+Fri Oct 16 20:49:01 2026 :: Log Trentlin [2164]: m
+Fri Oct 16 20:49:02 2026 :: Log Trentlin [2164]: n
+Fri Oct 16 20:49:02 2026 :: Log Trentlin [2157]: arrived (A bend in Ajax) from 2164
+Fri Oct 16 20:49:02 2026 :: Log Trentlin [2157]: n
+Fri Oct 16 20:49:02 2026 :: Log Trentlin [2152]: arrived (A bend in the road) from 2157
+Fri Oct 16 20:49:02 2026 :: Log Trentlin [2152]: ex
+Fri Oct 16 20:49:04 2026 :: Log Trentlin [2152]: n
+Fri Oct 16 20:49:04 2026 :: Log Trentlin [2147]: arrived (Achilles Avenue) from 2152
+Fri Oct 16 20:49:05 2026 :: Log Trentlin [2147]: ex
+Fri Oct 16 20:49:06 2026 :: Log Trentlin [2147]: n
+Fri Oct 16 20:49:06 2026 :: Log Trentlin [2143]: arrived (Another corner of Hector and Achilles streets) from 2147
+Fri Oct 16 20:49:07 2026 :: Log Trentlin [2143]: w
+Fri Oct 16 20:49:07 2026 :: Log Trentlin [2142]: arrived (Hector Street at Bakery) from 2143
+Fri Oct 16 20:49:09 2026 :: Log Trentlin [2142]: e
+Fri Oct 16 20:49:09 2026 :: Log Trentlin [2143]: arrived (Another corner of Hector and Achilles streets) from 2142
+Fri Oct 16 20:49:09 2026 :: Log Trentlin [2143]: e
+Fri Oct 16 20:49:09 2026 :: Log Trentlin [2144]: arrived (Hector Street at Jeweler) from 2143
+Fri Oct 16 20:49:11 2026 :: Log Trentlin [2144]: w
+Fri Oct 16 20:49:11 2026 :: Log Trentlin [2143]: arrived (Another corner of Hector and Achilles streets) from 2144
+Fri Oct 16 20:49:11 2026 :: Log Trentlin [2143]: w
+Fri Oct 16 20:49:11 2026 :: Log Trentlin [2142]: arrived (Hector Street at Bakery) from 2143
+Fri Oct 16 20:49:13 2026 :: Log Trentlin [2142]: w
+Fri Oct 16 20:49:13 2026 :: Log Trentlin [2141]: arrived (Bend in Hector Street) from 2142
+Fri Oct 16 20:49:15 2026 :: Log Trentlin [2141]: ex
+Fri Oct 16 20:49:16 2026 :: Log Trentlin [2141]: s
+Fri Oct 16 20:49:16 2026 :: Log Trentlin [2146]: arrived (Hector Street) from 2141
+Fri Oct 16 20:49:17 2026 :: Log Trentlin [2146]: ex
+Fri Oct 16 20:49:18 2026 :: Log Trentlin [2146]: s
+Fri Oct 16 20:49:18 2026 :: Log Trentlin [2150]: arrived (First intersection of Hector and Achilles) from 2146
+Fri Oct 16 20:49:18 2026 :: Log Trentlin [2150]: ex
+Fri Oct 16 20:49:20 2026 :: Log Trentlin [2150]: s
+Fri Oct 16 20:49:20 2026 :: Log Trentlin [2156]: arrived (Achilles avenue at entrance to park) from 2150
+Fri Oct 16 20:49:21 2026 :: Log Trentlin [2156]: ex
+Fri Oct 16 20:49:23 2026 :: Log Trentlin [2156]: s
+Fri Oct 16 20:49:23 2026 :: Log Trentlin [2163]: arrived (Achilles Avenue) from 2156
+Fri Oct 16 20:49:24 2026 :: Log Trentlin [2163]: ex
+Fri Oct 16 20:49:25 2026 :: Log Trentlin [2163]: s
+Fri Oct 16 20:49:25 2026 :: Log Trentlin [2167]: arrived (Intersection of Achilles and Solomon) from 2163
+Fri Oct 16 20:49:26 2026 :: Log Trentlin [2167]: get all
+Fri Oct 16 20:49:28 2026 :: Log Trentlin [2167]: con tr
+Fri Oct 16 20:49:29 2026 :: Log Trentlin [2167]: l tr
+Fri Oct 16 20:49:31 2026 :: Log Trentlin [2167]: con trol
+Fri Oct 16 20:49:33 2026 :: Log Trentlin [2167]: l troll
+Fri Oct 16 20:49:34 2026 :: Log Trentlin [2167]: sca
+Fri Oct 16 20:49:35 2026 :: Log Trentlin [2167]: e
+Fri Oct 16 20:49:35 2026 :: Log Trentlin [2168]: arrived (Solomon Street) from 2167
+Fri Oct 16 20:49:36 2026 :: Log Trentlin [2168]: e
+Fri Oct 16 20:49:36 2026 :: Log Trentlin [2169]: arrived (Intersection of Ajax and Solomon) from 2168
+Fri Oct 16 20:49:37 2026 :: Log Trentlin [2169]: e
+Fri Oct 16 20:49:37 2026 :: Log Trentlin [2170]: arrived (Hallway) from 2169
+Fri Oct 16 20:49:39 2026 :: Log Trentlin [2170]: sca
+Fri Oct 16 20:49:42 2026 :: Log Trentlin [2170]: l br
+Fri Oct 16 20:49:44 2026 :: Log Trentlin [2170]: n
+Fri Oct 16 20:49:44 2026 :: Log Trentlin [2165]: arrived (The inn/pub) from 2170
+Fri Oct 16 20:49:47 2026 :: Log Trentlin [2165]: n
+Fri Oct 16 20:49:47 2026 :: Log Trentlin [2158]: arrived (Ajax street) from 2165
+Fri Oct 16 20:49:48 2026 :: Log Trentlin [2158]: n
+Fri Oct 16 20:49:49 2026 :: Log Trentlin [2158]: e
+Fri Oct 16 20:49:49 2026 :: Log Trentlin [2159]: arrived (Curve in the road) from 2158
+Fri Oct 16 20:49:50 2026 :: Log Trentlin [2159]: sca
+Fri Oct 16 20:49:51 2026 :: Log Trentlin [2159]: n
+Fri Oct 16 20:49:51 2026 :: Log Trentlin [2154]: arrived (Ajax street at Weaponshop (or whats left of it)) from 2159
+Fri Oct 16 20:49:52 2026 :: Log Trentlin [2154]: n
+Fri Oct 16 20:49:52 2026 :: Log Trentlin [2149]: arrived (Ajax Avenue at chapel) from 2154
+Fri Oct 16 20:49:53 2026 :: Log Trentlin [2149]: sca
+Fri Oct 16 20:49:54 2026 :: Log Trentlin [2149]: n
+Fri Oct 16 20:49:54 2026 :: Log Trentlin [2145]: arrived (Corner of Ajax and Hector) from 2149
+Fri Oct 16 20:49:55 2026 :: Log Trentlin [2145]: n
+Fri Oct 16 20:49:55 2026 :: Log Trentlin [2140]: arrived (NO MAN'S LAND) from 2145
+Fri Oct 16 20:49:55 2026 :: Log Trentlin [2140]: n
+Fri Oct 16 20:49:55 2026 :: Log Trentlin [2135]: arrived (NO MAN'S LAND) from 2140
+Fri Oct 16 20:49:56 2026 :: Log Trentlin [2135]: n
+Fri Oct 16 20:49:56 2026 :: Log Trentlin [2135]: w
+Fri Oct 16 20:49:56 2026 :: Log Trentlin [2134]: arrived (NO MAN'S LAND) from 2135
+Fri Oct 16 20:49:57 2026 :: Log Trentlin [2134]: n
+Fri Oct 16 20:49:57 2026 :: Log Trentlin [2129]: arrived (Yellow Dragon Road) from 2134
+Fri Oct 16 20:49:59 2026 :: Log Trentlin [2129]: e
+Fri Oct 16 20:49:59 2026 :: Log Trentlin [2130]: arrived (Yellow Dragon Road) from 2129
+Fri Oct 16 20:50:00 2026 :: Log Trentlin [2130]: n
+Fri Oct 16 20:50:00 2026 :: Log Trentlin [2125]: arrived (Bronze Dragon Street at Warehouse) from 2130
+Fri Oct 16 20:50:02 2026 :: Log Trentlin [2125]: l do
+Fri Oct 16 20:50:04 2026 :: Log Trentlin [2125]: n
+Fri Oct 16 20:50:04 2026 :: Log Trentlin [2120]: arrived (Bronze Dragon Street) from 2125
+Fri Oct 16 20:50:06 2026 :: Log Trentlin [2120]: sca
+Fri Oct 16 20:50:06 2026 :: Log Trentlin [2120]: n
+Fri Oct 16 20:50:06 2026 :: Log Trentlin [2115]: arrived (Bronze Dragon Street at wizard's back door) from 2120
+Fri Oct 16 20:50:07 2026 :: Log Trentlin [2115]: n
+Fri Oct 16 20:50:07 2026 :: Log Trentlin [2108]: arrived (Corner of Bronze and White Dragon) from 2115
+Fri Oct 16 20:50:09 2026 :: Log Trentlin [2108]: w
+Fri Oct 16 20:50:10 2026 :: Log Trentlin [2108]: sca
+Fri Oct 16 20:50:12 2026 :: Log Trentlin [2108]: gr
+Fri Oct 16 20:50:14 2026 :: Log Trentlin [2108]: reca
+Fri Oct 16 20:50:16 2026 :: Log Trentlin [2108]: w
+Fri Oct 16 20:50:16 2026 :: Log Trentlin [2107]: arrived (White Dragon Boulevard) from 2108
+Fri Oct 16 20:50:16 2026 :: Log Trentlin [2107]: reca
+Fri Oct 16 20:50:18 2026 :: Log Trentlin [2107]: reca
+Fri Oct 16 20:50:20 2026 :: Log Trentlin [2107]: reca
+Fri Oct 16 20:50:21 2026 :: Log Trentlin [2107]: w
+Fri Oct 16 20:50:21 2026 :: Log Trentlin [2106]: arrived (Corner of Ice and White Dragon) from 2107
+Fri Oct 16 20:50:22 2026 :: Log Trentlin [2106]: w
+Fri Oct 16 20:50:22 2026 :: Log Trentlin [2105]: arrived (White Dragon Blvd.) from 2106
+Fri Oct 16 20:50:22 2026 :: Log Trentlin [2105]: w
+Fri Oct 16 20:50:22 2026 :: Log Trentlin [2104]: arrived (White Dragon Boulevard at Armory) from 2105
+Fri Oct 16 20:50:23 2026 :: Log Trentlin [2104]: reca
+Fri Oct 16 20:50:26 2026 :: Log Trentlin [2104]: w
+Fri Oct 16 20:50:26 2026 :: Log Trentlin [2103]: arrived (Along White Dragon Boulevard) from 2104
+Fri Oct 16 20:50:26 2026 :: Log Trentlin [2103]: recall
+Fri Oct 16 20:50:26 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 2103
+Fri Oct 16 20:50:27 2026 :: Log Trentlin [4207]: e
+Fri Oct 16 20:50:27 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Fri Oct 16 20:50:28 2026 :: Log Trentlin [4202]: e
+Fri Oct 16 20:50:28 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Fri Oct 16 20:50:29 2026 :: Log Trentlin [4201]: e
+Fri Oct 16 20:50:29 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Fri Oct 16 20:50:30 2026 :: Log Trentlin [2427]: n
+Fri Oct 16 20:50:30 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Fri Oct 16 20:50:30 2026 :: Log Trentlin [2404]: n
+Fri Oct 16 20:50:30 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Fri Oct 16 20:50:31 2026 :: Log Trentlin [2401]: u
+Fri Oct 16 20:50:32 2026 :: Log Trentlin [2401]: u
+Fri Oct 16 20:50:33 2026 :: Log Trentlin [2401]: (refused) slew
+Fri Oct 16 20:50:34 2026 :: Log Trentlin [2401]: gr
+Fri Oct 16 20:50:35 2026 :: Log Trentlin [2401]: slee
+Fri Oct 16 20:50:36 2026 :: Log Trentlin [2401]: gr
+Fri Oct 16 20:50:54 2026 :: Log Trentlin [2401]: gr
+Fri Oct 16 20:50:56 2026 :: Log Trentlin [2401]: who
+Fri Oct 16 20:50:58 2026 :: Log Trentlin [2401]: sco
+Fri Oct 16 20:51:10 2026 :: Log Trentlin [2401]: help bank
+Fri Oct 16 20:51:36 2026 :: Log Trentlin [2401]: gr
+Fri Oct 16 20:51:37 2026 :: Log Trentlin [2401]: wake
+Fri Oct 16 20:51:37 2026 :: Log Trentlin [2401]: u
+Fri Oct 16 20:51:37 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Fri Oct 16 20:51:37 2026 :: Log Trentlin [2410]: u
+Fri Oct 16 20:51:37 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Fri Oct 16 20:51:38 2026 :: Log Trentlin [2411]: u
+Fri Oct 16 20:51:38 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Fri Oct 16 20:51:38 2026 :: Log Trentlin [2414]: u
+Fri Oct 16 20:51:38 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Fri Oct 16 20:51:40 2026 :: Log Trentlin [2497]: aquest complete
+Fri Oct 16 20:51:40 2026 :: Log Trentlin [2497]: gold +30
+Fri Oct 16 20:51:40 2026 :: Log Trentlin [2497]: quest complete: 30 gold, 28 quest points (streak bonus 40%)
+Fri Oct 16 20:51:51 2026 :: Log Trentlin [2497]: aquest gamble yes
+Fri Oct 16 20:51:54 2026 :: Log Trentlin [2497]: enter door
+Fri Oct 16 20:51:54 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Fri Oct 16 20:51:56 2026 :: Log Trentlin [2401]: quit
+Fri Oct 16 20:51:56 2026 :: Trentlin has quit.
+Fri Oct 16 20:51:56 2026 :: [QUIT] Player rejoined the real world.
+Fri Oct 16 20:53:13 2026 :: Sock.sinaddr:  5.161.215.244
+Fri Oct 16 20:53:13 2026 :: EOF encountered on read.

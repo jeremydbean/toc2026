@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792183698
+LogO 1792183916
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 9
-Plyd 7938
+Plyd 8156
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 2102
-HMV  110 122 244 244 105 144
-NewGold 101
-NewPlat 14
-NewCopp 129
-NewSilv 57
+Room 2401
+HMV  122 122 244 244 26 144
+NewGold 31
+NewPlat 15
+NewCopp 29
+NewSilv 58
 BankCP 0
 IntTime 1792177212
 IntTotal 0
@@ -36,7 +36,7 @@ Corpses	0
 PkRec 0
 PkGiv 0
 AchKills 78
-AchQuests 4
+AchQuests 5
 AchDeaths 1
 AchExplore 0
 AchMaps 0
@@ -45,6 +45,7 @@ AchTriforce 0
 Achv level-5 1791055385
 Achv first-kill 1791054159
 Achv first-quest 1791057078
+Achv five-quest-streak 1792183900
 Achv quest-gamble-win 1791057092
 Achv visit-mud-school 1791053973
 Achv visit-casino 1791056149
@@ -60,18 +61,18 @@ Achv carry-ten-platinum 1792115503
 Achv visit-froboz 1791055958
 Achv visit-glitter-palace 1791414563
 Achv visit-new-thalos 1791415830
-LastOut  1792148220
-SesLogin 1792147794
-SesDur   426
-SesExpG  979
-SesLvlG  1
-SesKill  7
+LastOut  1792183916
+SesLogin 1792183433
+SesDur   483
+SesExpG  518
+SesLvlG  0
+SesKill  3
 SesPK    0
 SesDead  0
-SesQuest 0
-QuestPnts 250
-QuestStrk 4
-QuestNext 30
+SesQuest 1
+QuestPnts 306
+QuestStrk 5
+QuestNext 15
 Exp  21372
 Act  65740
 AfBy 512
@@ -113,7 +114,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 122 244 148
-Cond 0 15 37
+Cond 0 12 34
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -160,7 +161,7 @@ Wear 0
 Cost 0
 Cond 99
 Repd 0
-Val  0 0 68 0 0
+Val  0 0 65 0 0
 End
 
 #O
@@ -366,7 +367,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 216
+Time 212
 Cost 0
 Cond 100
 Repd 0
