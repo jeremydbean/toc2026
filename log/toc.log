@@ -100337,3 +100337,74 @@ Fri Oct 16 01:40:47 2026 :: Sock.sinaddr:  5.161.117.52
 Fri Oct 16 01:40:48 2026 :: EOF encountered on read.
 Fri Oct 16 01:45:51 2026 :: Sock.sinaddr:  5.161.61.238
 Fri Oct 16 01:45:52 2026 :: EOF encountered on read.
+Fri Oct 16 01:50:26 2026 :: Sock.sinaddr:  24.2.118.125
+Fri Oct 16 01:50:28 2026 :: Loading Trentlin's playerfile
+Fri Oct 16 01:50:30 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Fri Oct 16 01:50:31 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 0
+Fri Oct 16 01:50:32 2026 :: Log Trentlin [4210]: gr
+Fri Oct 16 01:50:33 2026 :: Log Trentlin [4210]: who
+Fri Oct 16 01:50:43 2026 :: Log Trentlin [4210]: gr
+Fri Oct 16 01:50:44 2026 :: Log Trentlin [4210]: wake
+Fri Oct 16 01:50:45 2026 :: Log Trentlin [4210]: s
+Fri Oct 16 01:50:45 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4210
+Fri Oct 16 01:50:46 2026 :: Log Trentlin [4203]: s
+Fri Oct 16 01:50:46 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4203
+Fri Oct 16 01:50:46 2026 :: Log Trentlin [4202]: e
+Fri Oct 16 01:50:46 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Fri Oct 16 01:50:46 2026 :: Log Trentlin [4201]: e
+Fri Oct 16 01:50:46 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Fri Oct 16 01:50:47 2026 :: Log Trentlin [2427]: n
+Fri Oct 16 01:50:47 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Fri Oct 16 01:50:48 2026 :: Log Trentlin [2404]: n
+Fri Oct 16 01:50:48 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Fri Oct 16 01:50:49 2026 :: Log Trentlin [2401]: n
+Fri Oct 16 01:50:49 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2401
+Fri Oct 16 01:50:50 2026 :: Log Trentlin [2402]: n
+Fri Oct 16 01:50:50 2026 :: Log Trentlin [2415]: arrived (Main Processional.) from 2402
+Fri Oct 16 01:50:52 2026 :: Log Trentlin [2415]: k ci
+Fri Oct 16 01:50:56 2026 :: Sock.sinaddr:  18.116.205.62
+Fri Oct 16 01:50:56 2026 :: Log Trentlin [2415]: kick
+Fri Oct 16 01:50:57 2026 :: EOF encountered on read.
+Fri Oct 16 01:51:01 2026 :: Log Trentlin [2415]: kick
+Fri Oct 16 01:51:06 2026 :: Log Trentlin [2415]: kick
+Fri Oct 16 01:51:12 2026 :: Log Trentlin [2415]: kick
+Fri Oct 16 01:51:18 2026 :: Log Trentlin [2415]: kick
+Fri Oct 16 01:51:22 2026 :: Log Trentlin [2415]: kick
+Fri Oct 16 01:51:27 2026 :: Log Trentlin [2415]: kick
+Fri Oct 16 01:51:39 2026 :: Log Trentlin [2415]: kick
+Fri Oct 16 01:51:43 2026 :: Log Trentlin [2415]: kick
+Fri Oct 16 01:51:43 2026 :: Log Trentlin [2415]: killed a citizen of Dresden
+Fri Oct 16 01:51:43 2026 :: Log Trentlin [2415]: coin +1 platinum
+Fri Oct 16 01:51:43 2026 :: Log Trentlin [2415]: coin +7 silver
+Fri Oct 16 01:51:43 2026 :: Log Trentlin [2415]: coin +10 copper
+Fri Oct 16 01:51:43 2026 :: Log Trentlin [2415]: coin +4 gold
+Fri Oct 16 01:51:50 2026 :: Log Trentlin [2415]: sac co
+Fri Oct 16 01:51:50 2026 :: Log Trentlin [2415]: coin +20 copper
+Fri Oct 16 01:51:50 2026 :: Log Trentlin [2415]: s
+Fri Oct 16 01:51:50 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2415
+Fri Oct 16 01:51:51 2026 :: Log Trentlin [2402]: s
+Fri Oct 16 01:51:51 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2402
+Fri Oct 16 01:51:52 2026 :: Log Trentlin [2401]: s
+Fri Oct 16 01:51:52 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Fri Oct 16 01:51:53 2026 :: Log Trentlin [2404]: s
+Fri Oct 16 01:51:53 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 2404
+Fri Oct 16 01:51:53 2026 :: Log Trentlin [2427]: w
+Fri Oct 16 01:51:53 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Fri Oct 16 01:51:54 2026 :: Log Trentlin [4201]: w
+Fri Oct 16 01:51:54 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4201
+Fri Oct 16 01:51:55 2026 :: Log Trentlin [4202]: w
+Fri Oct 16 01:51:55 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4202
+Fri Oct 16 01:51:56 2026 :: Log Trentlin [4207]: s
+Fri Oct 16 01:51:56 2026 :: Log Trentlin [4205]: arrived (Halls of Healing.) from 4207
+Fri Oct 16 01:51:56 2026 :: Log Trentlin [4205]: e
+Fri Oct 16 01:51:56 2026 :: Log Trentlin [4206]: arrived (Halls of Healing.) from 4205
+Fri Oct 16 01:51:57 2026 :: Log Trentlin [4206]: dri
+Fri Oct 16 01:51:58 2026 :: Log Trentlin [4206]: dri
+Fri Oct 16 01:51:58 2026 :: Log Trentlin [4206]: dri
+Fri Oct 16 01:51:59 2026 :: Log Trentlin [4206]: n
+Fri Oct 16 01:51:59 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4206
+Fri Oct 16 01:51:59 2026 :: Log Trentlin [4202]: n
+Fri Oct 16 01:51:59 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Fri Oct 16 01:51:59 2026 :: Log Trentlin [4203]: n
+Fri Oct 16 01:51:59 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Fri Oct 16 01:52:01 2026 :: Log Trentlin [4210]: sleep
