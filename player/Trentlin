@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792147932
+LogO 1792148220
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -15,18 +15,18 @@ PsiSpec ~
 PsiKnown ~
 ChangesSeen ~
 Cast none
-Levl 8
-Plyd 7382
+Levl 9
+Plyd 7670
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 4210
-HMV  34 110 219 219 42 138
-NewGold 83
-NewPlat 10
-NewCopp 59
-NewSilv 26
+Room 4649
+HMV  79 122 244 244 65 144
+NewGold 93
+NewPlat 12
+NewCopp 108
+NewSilv 43
 BankCP 0
 IntTime 1792090812
 IntTotal 0
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 68
+AchKills 75
 AchQuests 4
 AchDeaths 1
 AchExplore 0
@@ -60,18 +60,18 @@ Achv carry-ten-platinum 1792115503
 Achv visit-froboz 1791055958
 Achv visit-glitter-palace 1791414563
 Achv visit-new-thalos 1791415830
-LastOut  1792115524
-SesLogin 1792115431
-SesDur   93
-SesExpG  415
-SesLvlG  0
-SesKill  1
+LastOut  1792148220
+SesLogin 1792147794
+SesDur   426
+SesExpG  979
+SesLvlG  1
+SesKill  7
 SesPK    0
 SesDead  0
 SesQuest 0
 QuestPnts 250
 QuestStrk 4
-Exp  19865
+Exp  20854
 Act  65740
 AfBy 512
 Comm 24576
@@ -100,19 +100,19 @@ Color 15 6
 Color 16 6
 Pos  4
 Save  3
-Alig  -79
+Alig  -94
 Hit   2
 Dam   6
 ACs 62 57 58 99
-Attr 14 16 15 12 19
+Attr 14 16 16 12 19
 AMod 0 10 11 0 7
 Pass TrjPUdRVdu8MY~
-Titl  the Swordsman~
+Titl  the Fencer~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 110 219 142
-Cond 0 24 46
+HMVP 122 244 148
+Cond 0 19 41
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -130,9 +130,9 @@ Sk 82 'dagger'
 Sk 25 'flail'
 Sk 25 'mace'
 Sk 35 'polearm'
-Sk 1 'shield block'
+Sk 75 'shield block'
 Sk 30 'spear'
-Sk 82 'sword'
+Sk 84 'sword'
 Sk 30 'whip'
 Sk 76 'bash'
 Sk 1 'disarm'
@@ -159,7 +159,7 @@ Wear 0
 Cost 0
 Cond 99
 Repd 0
-Val  0 0 77 0 0
+Val  0 0 72 0 0
 End
 
 #O
@@ -167,7 +167,7 @@ Vnum 3704
 Nest 0
 Wear 11
 Cost 0
-Cond 98
+Cond 97
 Repd 0
 End
 
@@ -365,7 +365,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 224
+Time 219
 Cost 0
 Cond 100
 Repd 0
