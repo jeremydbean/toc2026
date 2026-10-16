@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792115503
+LogO 1792115524
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,16 +16,16 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 8
-Plyd 7219
+Plyd 7240
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 2415
-HMV  43 110 219 219 70 138
+Room 4210
+HMV  43 110 219 219 53 138
 NewGold 83
 NewPlat 10
-NewCopp 39
+NewCopp 59
 NewSilv 26
 BankCP 0
 IntTime 1792090812
@@ -60,12 +60,12 @@ Achv carry-ten-platinum 1792115503
 Achv visit-froboz 1791055958
 Achv visit-glitter-palace 1791414563
 Achv visit-new-thalos 1791415830
-LastOut  1792028839
-SesLogin 1792028605
-SesDur   234
-SesExpG  -14
+LastOut  1792115524
+SesLogin 1792115431
+SesDur   93
+SesExpG  415
 SesLvlG  0
-SesKill  0
+SesKill  1
 SesPK    0
 SesDead  0
 SesQuest 0
@@ -99,7 +99,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
+Pos  4
 Save  3
 Alig  -79
 Hit   2
@@ -113,7 +113,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 110 219 142
-Cond 0 26 0
+Cond 0 26 48
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -366,7 +366,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 227
+Time 226
 Cost 0
 Cond 100
 Repd 0
