@@ -104501,3 +104501,85 @@ Sat Oct 17 12:37:47 2026 :: EOF encountered on read.
 Sat Oct 17 12:37:51 2026 :: Log Trentlin [4109]: help gain
 Sat Oct 17 12:37:56 2026 :: Log Trentlin [4109]: gain list
 Sat Oct 17 12:38:16 2026 :: Log Trentlin [4109]: help gainlist
+Sat Oct 17 12:38:25 2026 :: Log Trentlin [4109]: gainlist
+Sat Oct 17 12:38:53 2026 :: Log Trentlin [4109]: help despair
+Sat Oct 17 12:38:56 2026 :: Log Trentlin [4109]: help smite
+Sat Oct 17 12:39:04 2026 :: Log Trentlin [4109]: i
+Sat Oct 17 12:39:05 2026 :: Log Trentlin [4109]: wake
+Sat Oct 17 12:39:08 2026 :: Log Trentlin [4109]: eat bread
+Sat Oct 17 12:39:09 2026 :: Log Trentlin [4109]: sleep
+Sat Oct 17 12:39:15 2026 :: Log Trentlin [4109]: gr
+Sat Oct 17 12:39:19 2026 :: Log Trentlin [4109]: gr
+Sat Oct 17 12:39:26 2026 :: Log Trentlin [4109]: gr
+Sat Oct 17 12:39:30 2026 :: Log Trentlin [4109]: gainlist
+Sat Oct 17 12:39:40 2026 :: Log Trentlin [4109]: help arcane studies
+Sat Oct 17 12:40:00 2026 :: Log Trentlin [4109]: wake
+Sat Oct 17 12:40:00 2026 :: Log Trentlin [4109]: sca
+Sat Oct 17 12:40:02 2026 :: Log Trentlin [4109]: s
+Sat Oct 17 12:40:02 2026 :: Log Trentlin [4114]: arrived (The golden cave) from 4109
+Sat Oct 17 12:40:03 2026 :: Log Trentlin [4114]: k ma
+Sat Oct 17 12:40:07 2026 :: Log Trentlin [4114]: kick
+Sat Oct 17 12:40:16 2026 :: Log Trentlin [4114]: bash
+Sat Oct 17 12:40:42 2026 :: Log Trentlin [4114]: flee
+Sat Oct 17 12:40:42 2026 :: Log Trentlin [4115]: arrived (The dark passage.) from 4114
+Sat Oct 17 12:40:42 2026 :: Log Trentlin [4115]: flee
+Sat Oct 17 12:40:42 2026 :: Log Trentlin [4115]: flee
+Sat Oct 17 12:40:42 2026 :: Log Trentlin [4115]: flee
+Sat Oct 17 12:40:43 2026 :: Log Trentlin [4115]: reca
+Sat Oct 17 12:40:43 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4115
+Sat Oct 17 12:40:46 2026 :: Log Trentlin [4207]: w
+Sat Oct 17 12:40:46 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sat Oct 17 12:40:48 2026 :: Log Trentlin [4208]: heal
+Sat Oct 17 12:40:58 2026 :: Log Trentlin [4208]: heal light
+Sat Oct 17 12:40:58 2026 :: Log Trentlin [4208]: gold -50
+Sat Oct 17 12:41:03 2026 :: Log Trentlin [4208]: wo
+Sat Oct 17 12:41:03 2026 :: Log Trentlin [4208]: aff
+Sat Oct 17 12:41:10 2026 :: Log Trentlin [4208]: heal heal
+Sat Oct 17 12:41:10 2026 :: Log Trentlin [4208]: gold -500
+Sat Oct 17 12:41:14 2026 :: Log Trentlin [4208]: wo
+Sat Oct 17 12:41:19 2026 :: Log Trentlin [4208]: e
+Sat Oct 17 12:41:19 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sat Oct 17 12:41:19 2026 :: Log Trentlin [4207]: e
+Sat Oct 17 12:41:19 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 17 12:41:19 2026 :: Log Trentlin [4202]: e
+Sat Oct 17 12:41:19 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 17 12:41:20 2026 :: Log Trentlin [4201]: e
+Sat Oct 17 12:41:20 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Sat Oct 17 12:41:21 2026 :: Log Trentlin [2427]: n
+Sat Oct 17 12:41:21 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 17 12:41:21 2026 :: Log Trentlin [2404]: n
+Sat Oct 17 12:41:21 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sat Oct 17 12:41:22 2026 :: Log Trentlin [2401]: u
+Sat Oct 17 12:41:22 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sat Oct 17 12:41:22 2026 :: Log Trentlin [2410]: u
+Sat Oct 17 12:41:22 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sat Oct 17 12:41:23 2026 :: Log Trentlin [2411]: u
+Sat Oct 17 12:41:23 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sat Oct 17 12:41:23 2026 :: Log Trentlin [2414]: u
+Sat Oct 17 12:41:23 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sat Oct 17 12:41:24 2026 :: Log Trentlin [2497]: aquest list
+Sat Oct 17 12:41:49 2026 :: Log Trentlin [2497]: aquest request
+Sat Oct 17 12:41:57 2026 :: Log Trentlin [2497]: enter door
+Sat Oct 17 12:41:57 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sat Oct 17 12:42:51 2026 :: Sock.sinaddr:  52.22.236.30
+Sat Oct 17 12:42:51 2026 :: EOF encountered on read.
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [2401]: r s 6
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 2404
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [2428]: arrived (Main Processional.) from 2427
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [2429]: arrived (Bridge of the Mermaids.) from 2428
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [2430]: arrived (Main Processional.) from 2429
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [2431]: open south
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [2431]: r s 5
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [3505]: arrived (The Trail to Miden'nir) from 2432
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [3507]: arrived (A Burned Cart) from 3505
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [3510]: arrived (A Crossroads) from 3507
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [3516]: arrived (Muddy Ground) from 3510
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [3516]: d
+Sat Oct 17 12:43:14 2026 :: Log Trentlin [19]: arrived (Soggy Cave) from 3516
+Sat Oct 17 12:43:17 2026 :: Log Trentlin [19]: s
+Sat Oct 17 12:43:17 2026 :: Log Trentlin [2801]: arrived (Wastedump) from 19
+Sat Oct 17 12:43:18 2026 :: Log Trentlin [2801]: sca
+Sat Oct 17 12:43:20 2026 :: Log Trentlin [2801]: kick
