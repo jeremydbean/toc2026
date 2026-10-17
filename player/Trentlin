@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792244298
+LogO 1792249102
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,13 +16,13 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 11
-Plyd 12359
+Plyd 12376
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 4207
-HMV  153 153 296 296 29 160
+Room 2497
+HMV  153 153 296 296 10 160
 NewGold 62
 NewPlat 13
 NewCopp 50
@@ -78,6 +78,7 @@ SesQuest 0
 QuestPnts 486
 QuestStrk 7
 CasinoLost 4
+QuestNext 30
 Exp  26177
 Act  65740
 AfBy 512
