@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792242065
+LogO 1792242369
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 10
-Plyd 10301
+Plyd 10605
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 2497
-HMV  123 139 269 269 69 154
-NewGold 96
-NewPlat 13
-NewCopp 126
-NewSilv 44
+Room 2479
+HMV  139 139 269 269 39 154
+NewGold 12
+NewPlat 15
+NewCopp 60
+NewSilv 92
 BankCP 0
 IntTime 1792177212
 IntTotal 0
@@ -35,8 +35,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 95
-AchQuests 6
+AchKills 100
+AchQuests 7
 AchDeaths 2
 AchExplore 0
 AchMaps 0
@@ -45,6 +45,7 @@ AchTriforce 0
 Achv level-5 1791055385
 Achv level-10 1792240482
 Achv first-kill 1791054159
+Achv hundred-kills 1792242368
 Achv first-quest 1791057078
 Achv five-quest-streak 1792183900
 Achv quest-gamble-win 1791057092
@@ -73,10 +74,10 @@ SesKill  3
 SesPK    0
 SesDead  0
 SesQuest 0
-QuestPnts 422
-QuestStrk 6
-QuestNext 30
-Exp  23693
+QuestPnts 486
+QuestStrk 7
+QuestNext 13
+Exp  24001
 Act  65740
 AfBy 512
 Comm 24576
@@ -105,7 +106,7 @@ Color 15 6
 Color 16 6
 Pos  8
 Save  3
-Alig  -134
+Alig  -128
 Hit   4
 Dam   8
 ACs 59 54 54 99
@@ -117,7 +118,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 139 269 154
-Cond 0 2 45
+Cond 0 23 40
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -164,7 +165,7 @@ Wear 0
 Cost 0
 Cond 99
 Repd 0
-Val  0 0 32 0 0
+Val  0 0 27 0 0
 End
 
 #O
@@ -350,7 +351,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 176
+Time 171
 Cost 0
 Cond 100
 Repd 0
@@ -375,6 +376,51 @@ Cost 270000
 Cond 100
 Repd 0
 Val  4 4 5 0 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
 End
 
 #END
