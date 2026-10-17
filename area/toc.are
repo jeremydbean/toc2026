@@ -1324,7 +1324,7 @@ verb used in the damage message.  Listed from least damage to most damage:
 See also: COMBAT, ATTACK, WIMPY
 ~
 
-0 DYING~
+0 DYING DEATH CORPSE CORPSES~
 When your character dies, you are reincarnated back at the Altar of the Temple
 of Devota.  Your corpse is left behind in the room where you were killed,
 together with all of your equipment.  Your gold stays with you, however.

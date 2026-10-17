@@ -556,7 +556,7 @@ travel.  Use DISMOUNT to climb off.
 See also: ENTER, DISMOUNT
 ~
 
-0 CASTLE~
+0 CASTLE CASTLES~
 Syntax: castle
 Syntax: castle <message>
 
@@ -4271,7 +4271,7 @@ name and how long is left.
 See also: SCORE, IDENTIFY, ATTRIBUTE
 ~
 
-0 ATTRIBUTE ATTRIBUTES~
+0 ATTRIBUTE ATTRIBUTES STATS STRENGTH INTELLIGENCE WISDOM DEXTERITY CONSTITUTION DEX~
 Syntax: attribute
 
 Displays a quick summary of your five core attributes: Strength,
@@ -6673,6 +6673,16 @@ invisibility level and room vnum.  With a player name, shows extended
 status info for that character.
 
 See also: WIZLIST
+~
+
+0 TRAITOR~
+A character marked (TRAITOR) has been flagged by the staff for betraying
+the game or its players.  Guildmasters and trainers refuse to teach a
+traitor, and city guards treat one as they treat the WANTED.  The flag is
+set and lifted by the staff alone; if you believe yours is a mistake,
+send a NOTE to immortal.
+
+See also: WANTED, NOTE
 ~
 
 0 $~

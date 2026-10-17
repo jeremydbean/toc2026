@@ -3,6 +3,10 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261017a 2026-10-17
+HELP answers more of what new players ask: STRENGTH, DEXTERITY and the
+other attributes by name, STATS, DEATH and CORPSE, CASTLES, and TRAITOR.
+
 @ 20261013a 2026-10-13
 PICK now tells you at once when a lock cannot be picked at all, instead
 of answering "You failed" as if you had missed the roll; a missed roll
