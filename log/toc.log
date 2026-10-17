@@ -111041,3 +111041,9 @@ Sat Oct 17 21:11:48 2026 :: Sock.sinaddr:  198.235.24.229
 Sat Oct 17 21:11:48 2026 :: EOF encountered on read.
 Sat Oct 17 21:16:22 2026 :: Sock.sinaddr:  178.156.185.127
 Sat Oct 17 21:16:22 2026 :: EOF encountered on read.
+Sat Oct 17 21:21:26 2026 :: Sock.sinaddr:  178.156.185.127
+Sat Oct 17 21:21:26 2026 :: EOF encountered on read.
+Sat Oct 17 21:23:27 2026 :: Log Alaric [2]: arrived (Limbo) from 1589
+Sat Oct 17 21:23:27 2026 :: Log Alaric [1589]: arrived (Hermit's Lair) from 2
+Sat Oct 17 21:23:27 2026 :: Log Alaric [1589]: who
+Sat Oct 17 21:23:27 2026 :: Log Alaric [1589]: worth
