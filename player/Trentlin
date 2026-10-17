@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792240909
+LogO 1792241219
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 10
-Plyd 9145
+Plyd 9455
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
 Room 2497
-HMV  121 139 234 269 66 150
-NewGold 93
-NewPlat 12
-NewCopp 56
-NewSilv 86
+HMV  139 139 269 269 55 150
+NewGold 13
+NewPlat 13
+NewCopp 62
+NewSilv 92
 BankCP 0
 IntTime 1792177212
 IntTotal 0
@@ -35,8 +35,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 87
-AchQuests 5
+AchKills 88
+AchQuests 6
 AchDeaths 1
 AchExplore 0
 AchMaps 0
@@ -72,10 +72,10 @@ SesKill  3
 SesPK    0
 SesDead  0
 SesQuest 0
-QuestPnts 306
-QuestStrk 5
-QuestNext 30
-Exp  22560
+QuestPnts 422
+QuestStrk 6
+QuestNext 14
+Exp  22628
 Act  65740
 AfBy 512
 Comm 24576
@@ -111,14 +111,14 @@ Hit   9
 Dam   6
 ACs 62 57 58 99
 Attr 14 16 16 12 19
-AMod -1 10 11 0 7
+AMod 0 10 11 0 7
 Pass TrjPUdRVdu8MY~
 Titl  the Combatant~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 139 269 154
-Cond 0 21 16
+Cond 0 17 12
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -156,10 +156,9 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'bless'  50  65  -7  24          0          0
-AffD 'bless'  51  65   7  18          0          0
-AffD 'change sex'  53  25  -1   6          0          0
-AffD 'chill touch'  51   1  -1   1          0          0
+AffD 'bless'  48  61  -7  24          0          0
+AffD 'bless'  51  61   7  18          0          0
+AffD 'change sex'  52  21  -1   6          0          0
 End
 
 #O
@@ -169,7 +168,7 @@ Wear 0
 Cost 0
 Cond 99
 Repd 0
-Val  0 0 47 0 0
+Val  0 0 43 0 0
 End
 
 #O
@@ -186,7 +185,7 @@ Vnum 3702
 Nest 0
 Wear 16
 Cost 0
-Cond 95
+Cond 94
 Repd 0
 End
 
@@ -205,7 +204,7 @@ Vnum 3708
 Nest 0
 Wear 8
 Cost 0
-Cond 97
+Cond 96
 Repd 0
 End
 
@@ -365,7 +364,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 194
+Time 190
 Cost 0
 Cond 100
 Repd 0
