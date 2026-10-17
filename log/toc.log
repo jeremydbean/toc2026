@@ -108705,3 +108705,201 @@ Sat Oct 17 15:30:01 2026 :: Log Trentlin [3532]: e
 Sat Oct 17 15:30:01 2026 :: Log Trentlin [42]: arrived (On the Outskirts of New Thalos) from 3532
 Sat Oct 17 15:30:01 2026 :: Log Trentlin [42]: e
 Sat Oct 17 15:30:01 2026 :: Log Trentlin [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Sat Oct 17 15:30:03 2026 :: Log Trentlin [9669]: e
+Sat Oct 17 15:30:03 2026 :: Log Trentlin [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sat Oct 17 15:30:05 2026 :: Log Trentlin [9523]: con g
+Sat Oct 17 15:30:06 2026 :: Log Trentlin [9523]: l g
+Sat Oct 17 15:30:07 2026 :: Log Trentlin [9523]: sca
+Sat Oct 17 15:30:10 2026 :: Log Trentlin [9523]: e
+Sat Oct 17 15:30:10 2026 :: Log Trentlin [9524]: arrived (West Main Street) from 9523
+Sat Oct 17 15:30:11 2026 :: Log Trentlin [9524]: con pr
+Sat Oct 17 15:30:12 2026 :: Log Trentlin [9524]: l pr
+Sat Oct 17 15:30:14 2026 :: Log Trentlin [9524]: sca
+Sat Oct 17 15:30:16 2026 :: Log Trentlin [9524]: n
+Sat Oct 17 15:30:16 2026 :: Log Trentlin [9620]: arrived (The Temple Square) from 9524
+Sat Oct 17 15:30:17 2026 :: Log Trentlin [9620]: con b
+Sat Oct 17 15:30:17 2026 :: Log Trentlin [9620]: l b
+Sat Oct 17 15:30:19 2026 :: Log Trentlin [9620]: sca
+Sat Oct 17 15:30:21 2026 :: Log Trentlin [9620]: n
+Sat Oct 17 15:30:21 2026 :: Log Trentlin [9613]: arrived (The Temple Gates) from 9620
+Sat Oct 17 15:30:23 2026 :: Log Trentlin [9613]: sca
+Sat Oct 17 15:30:26 2026 :: Sock.sinaddr:  34.198.201.66
+Sat Oct 17 15:30:26 2026 :: Log Trentlin [9613]: n
+Sat Oct 17 15:30:26 2026 :: Log Trentlin [9609]: arrived (Inside the Temple) from 9613
+Sat Oct 17 15:30:26 2026 :: EOF encountered on read.
+Sat Oct 17 15:30:27 2026 :: Log Trentlin [9609]: con b
+Sat Oct 17 15:30:27 2026 :: Log Trentlin [9609]: l b
+Sat Oct 17 15:30:28 2026 :: Log Trentlin [9609]: k b
+Sat Oct 17 15:30:39 2026 :: Log Trentlin [9609]: bash
+Sat Oct 17 15:30:47 2026 :: Log Trentlin [9609]: killed the bodyguard
+Sat Oct 17 15:30:47 2026 :: Log Trentlin [9609]: coin +2 silver
+Sat Oct 17 15:30:47 2026 :: Log Trentlin [9609]: coin +3 copper
+Sat Oct 17 15:30:47 2026 :: Log Trentlin [9609]: coin +1 gold
+Sat Oct 17 15:30:54 2026 :: Log Trentlin [9609]: sca
+Sat Oct 17 15:30:54 2026 :: Log Trentlin [9609]: l in cor
+Sat Oct 17 15:30:56 2026 :: Log Trentlin [9609]: sac cor
+Sat Oct 17 15:30:56 2026 :: Log Trentlin [9609]: coin +20 copper
+Sat Oct 17 15:31:00 2026 :: Log Trentlin [9609]: w
+Sat Oct 17 15:31:00 2026 :: Log Trentlin [9608]: arrived (Inside the Temple) from 9609
+Sat Oct 17 15:31:01 2026 :: Log Trentlin [9608]: con mer
+Sat Oct 17 15:31:02 2026 :: Log Trentlin [9608]: l mer
+Sat Oct 17 15:31:04 2026 :: Log Trentlin [9608]: k pro
+Sat Oct 17 15:31:08 2026 :: Log Trentlin [9608]: bash
+Sat Oct 17 15:31:18 2026 :: Log Trentlin [9608]: bash
+Sat Oct 17 15:31:20 2026 :: Log Trentlin [9608]: n
+Sat Oct 17 15:31:20 2026 :: Log Trentlin [9604]: arrived (Chamber of the High Priest) from 9608
+Sat Oct 17 15:31:23 2026 :: Log Trentlin [9604]: k pro
+Sat Oct 17 15:31:23 2026 :: Log Trentlin [9604]: killed the wandering prophet
+Sat Oct 17 15:31:28 2026 :: Log Trentlin [9604]: l pr
+Sat Oct 17 15:31:28 2026 :: Log Trentlin [9604]: con pr
+Sat Oct 17 15:31:28 2026 :: Log Trentlin [9604]: s
+Sat Oct 17 15:31:28 2026 :: Log Trentlin [9608]: arrived (Inside the Temple) from 9604
+Sat Oct 17 15:31:31 2026 :: Log Trentlin [9608]: k mer
+Sat Oct 17 15:31:33 2026 :: Log Alaric [1589]: who
+Sat Oct 17 15:31:33 2026 :: Log Alaric [1589]: bash
+Sat Oct 17 15:31:36 2026 :: Log Trentlin [9608]: bash
+Sat Oct 17 15:31:48 2026 :: Log Trentlin [9608]: bash
+Sat Oct 17 15:32:00 2026 :: Log Trentlin [9608]: bash
+Sat Oct 17 15:32:01 2026 :: Log Trentlin [9608]: e
+Sat Oct 17 15:32:01 2026 :: Log Trentlin [9609]: arrived (Inside the Temple) from 9608
+Sat Oct 17 15:32:02 2026 :: Log Trentlin [9609]: k mer
+Sat Oct 17 15:32:02 2026 :: Log Trentlin [9609]: killed A nomad merchant
+Sat Oct 17 15:32:07 2026 :: Log Trentlin [9609]: sca
+Sat Oct 17 15:32:08 2026 :: Log Trentlin [9609]: l in cor
+Sat Oct 17 15:32:09 2026 :: Log Trentlin [9609]: sac cor
+Sat Oct 17 15:32:09 2026 :: Log Trentlin [9609]: coin +20 copper
+Sat Oct 17 15:32:10 2026 :: Log Trentlin [9609]: e
+Sat Oct 17 15:32:10 2026 :: Log Trentlin [9610]: arrived (Donation Room) from 9609
+Sat Oct 17 15:32:10 2026 :: Log Trentlin [9610]: sca
+Sat Oct 17 15:32:12 2026 :: Log Trentlin [9610]: k pro
+Sat Oct 17 15:32:18 2026 :: Log Trentlin [9610]: bash
+Sat Oct 17 15:32:27 2026 :: Log Trentlin [9610]: killed the wandering prophet
+Sat Oct 17 15:32:28 2026 :: Log Trentlin [9610]: bash
+Sat Oct 17 15:32:29 2026 :: Log Trentlin [9610]: bash prop
+Sat Oct 17 15:32:31 2026 :: Log Alaric [1589]: (refused) leader
+Sat Oct 17 15:32:35 2026 :: Log Alaric [1589]: t op
+Sat Oct 17 15:32:39 2026 :: Log Trentlin [9610]: bash prop
+Sat Oct 17 15:32:40 2026 :: Log Alaric [1589]: top
+Sat Oct 17 15:32:42 2026 :: Log Trentlin [9610]: killed the wandering prophet
+Sat Oct 17 15:32:47 2026 :: Log Trentlin [9610]: sco
+Sat Oct 17 15:32:49 2026 :: Log Trentlin [9610]: w
+Sat Oct 17 15:32:49 2026 :: Log Trentlin [9609]: arrived (Inside the Temple) from 9610
+Sat Oct 17 15:32:49 2026 :: Log Trentlin [9609]: s
+Sat Oct 17 15:32:49 2026 :: Log Trentlin [9613]: arrived (The Temple Gates) from 9609
+Sat Oct 17 15:32:51 2026 :: Log Trentlin [9613]: d
+Sat Oct 17 15:32:51 2026 :: Log Trentlin [9620]: arrived (The Temple Square) from 9613
+Sat Oct 17 15:32:52 2026 :: Log Trentlin [9620]: sca
+Sat Oct 17 15:32:55 2026 :: Log Trentlin [9620]: k bo
+Sat Oct 17 15:32:59 2026 :: Log Trentlin [9620]: bash
+Sat Oct 17 15:33:03 2026 :: Log Alaric [1589]: prac
+Sat Oct 17 15:33:09 2026 :: Log Trentlin [9620]: bash
+Sat Oct 17 15:33:13 2026 :: Log Alaric [1589]: bash
+Sat Oct 17 15:33:19 2026 :: Log Trentlin [9620]: bash
+Sat Oct 17 15:33:28 2026 :: Log Trentlin [9620]: bash
+Sat Oct 17 15:33:36 2026 :: Log Trentlin [9620]: killed the bodyguard
+Sat Oct 17 15:33:36 2026 :: Log Trentlin [9620]: coin +2 silver
+Sat Oct 17 15:33:36 2026 :: Log Trentlin [9620]: coin +3 copper
+Sat Oct 17 15:33:36 2026 :: Log Trentlin [9620]: coin +1 gold
+Sat Oct 17 15:33:37 2026 :: Log Trentlin [9620]: bash
+Sat Oct 17 15:33:37 2026 :: Log Trentlin [9620]: l in cor
+Sat Oct 17 15:33:38 2026 :: Log Trentlin [9620]: sac cor
+Sat Oct 17 15:33:38 2026 :: Log Trentlin [9620]: coin +20 copper
+Sat Oct 17 15:33:39 2026 :: Log Trentlin [9620]: sca
+Sat Oct 17 15:33:41 2026 :: Log Trentlin [9620]: u
+Sat Oct 17 15:33:41 2026 :: Log Trentlin [9613]: arrived (The Temple Gates) from 9620
+Sat Oct 17 15:33:42 2026 :: Log Trentlin [9613]: s
+Sat Oct 17 15:33:42 2026 :: Log Trentlin [9620]: arrived (The Temple Square) from 9613
+Sat Oct 17 15:33:43 2026 :: Log Trentlin [9620]: s
+Sat Oct 17 15:33:43 2026 :: Log Trentlin [9524]: arrived (West Main Street) from 9620
+Sat Oct 17 15:33:45 2026 :: Log Trentlin [9524]: e
+Sat Oct 17 15:33:45 2026 :: Log Trentlin [9525]: arrived (West Main Street) from 9524
+Sat Oct 17 15:33:47 2026 :: Log Trentlin [9525]: con f
+Sat Oct 17 15:33:48 2026 :: Log Trentlin [9525]: l f
+Sat Oct 17 15:33:49 2026 :: Log Trentlin [9525]: sca
+Sat Oct 17 15:33:51 2026 :: Log Trentlin [9525]: e
+Sat Oct 17 15:33:51 2026 :: Log Trentlin [9526]: arrived (West Main Street) from 9525
+Sat Oct 17 15:33:52 2026 :: Log Trentlin [9526]: e
+Sat Oct 17 15:33:52 2026 :: Log Trentlin [9509]: arrived (The Western Market Square) from 9526
+Sat Oct 17 15:33:53 2026 :: Log Trentlin [9509]: e
+Sat Oct 17 15:33:53 2026 :: Log Trentlin [9506]: arrived (The Center of Market Square) from 9509
+Sat Oct 17 15:33:54 2026 :: Log Trentlin [9506]: sca
+Sat Oct 17 15:33:56 2026 :: Log Trentlin [9506]: dri
+Sat Oct 17 15:33:56 2026 :: Log Trentlin [9506]: dri
+Sat Oct 17 15:33:57 2026 :: Log Trentlin [9506]: w
+Sat Oct 17 15:33:57 2026 :: Log Trentlin [9509]: arrived (The Western Market Square) from 9506
+Sat Oct 17 15:33:58 2026 :: Log Trentlin [9509]: con ta
+Sat Oct 17 15:33:59 2026 :: Log Trentlin [9509]: l ta
+Sat Oct 17 15:34:00 2026 :: Log Trentlin [9509]: k ta
+Sat Oct 17 15:34:03 2026 :: Log Trentlin [9509]: bash
+Sat Oct 17 15:34:09 2026 :: Log Trentlin [9509]: killed the tax collector
+Sat Oct 17 15:34:12 2026 :: Log Trentlin [9509]: bash
+Sat Oct 17 15:34:13 2026 :: Log Trentlin [9509]: sca
+Sat Oct 17 15:34:16 2026 :: Log Trentlin [9509]: e
+Sat Oct 17 15:34:16 2026 :: Log Trentlin [9506]: arrived (The Center of Market Square) from 9509
+Sat Oct 17 15:34:18 2026 :: Log Trentlin [9506]: s
+Sat Oct 17 15:34:18 2026 :: Log Trentlin [9505]: arrived (The Southern Market Square) from 9506
+Sat Oct 17 15:34:19 2026 :: Log Trentlin [9505]: e
+Sat Oct 17 15:34:19 2026 :: Log Trentlin [9507]: arrived (The Southeastern Market Square) from 9505
+Sat Oct 17 15:34:20 2026 :: Log Trentlin [9507]: w
+Sat Oct 17 15:34:20 2026 :: Log Trentlin [9505]: arrived (The Southern Market Square) from 9507
+Sat Oct 17 15:34:21 2026 :: Log Trentlin [9505]: s
+Sat Oct 17 15:34:21 2026 :: Log Trentlin [9504]: arrived (The Medina) from 9505
+Sat Oct 17 15:34:24 2026 :: Log Trentlin [9504]: n
+Sat Oct 17 15:34:24 2026 :: Log Trentlin [9505]: arrived (The Southern Market Square) from 9504
+Sat Oct 17 15:34:25 2026 :: Log Trentlin [9505]: w
+Sat Oct 17 15:34:25 2026 :: Log Trentlin [9508]: arrived (The Southwestern Market Square) from 9505
+Sat Oct 17 15:34:26 2026 :: Log Trentlin [9508]: w
+Sat Oct 17 15:34:26 2026 :: Log Trentlin [9628]: arrived (The General Store) from 9508
+Sat Oct 17 15:34:27 2026 :: Log Trentlin [9628]: list
+Sat Oct 17 15:34:31 2026 :: Log Trentlin [9628]: e
+Sat Oct 17 15:34:31 2026 :: Log Trentlin [9508]: arrived (The Southwestern Market Square) from 9628
+Sat Oct 17 15:34:31 2026 :: Log Trentlin [9508]: s
+Sat Oct 17 15:34:31 2026 :: Log Trentlin [9635]: arrived (The Bread Stand) from 9508
+Sat Oct 17 15:34:33 2026 :: Log Trentlin [9635]: list
+Sat Oct 17 15:34:34 2026 :: Log Trentlin [9635]: n
+Sat Oct 17 15:34:34 2026 :: Log Trentlin [9508]: arrived (The Southwestern Market Square) from 9635
+Sat Oct 17 15:34:35 2026 :: Log Trentlin [9508]: e
+Sat Oct 17 15:34:35 2026 :: Log Trentlin [9505]: arrived (The Southern Market Square) from 9508
+Sat Oct 17 15:34:35 2026 :: Log Trentlin [9505]: e
+Sat Oct 17 15:34:35 2026 :: Log Trentlin [9507]: arrived (The Southeastern Market Square) from 9505
+Sat Oct 17 15:34:35 2026 :: Log Trentlin [9507]: e
+Sat Oct 17 15:34:35 2026 :: Log Trentlin [9629]: arrived (Abdul's Armor) from 9507
+Sat Oct 17 15:34:36 2026 :: Log Trentlin [9629]: list
+Sat Oct 17 15:34:37 2026 :: Log Trentlin [9629]: w
+Sat Oct 17 15:34:37 2026 :: Log Trentlin [9507]: arrived (The Southeastern Market Square) from 9629
+Sat Oct 17 15:34:38 2026 :: Log Trentlin [9507]: s
+Sat Oct 17 15:34:38 2026 :: Log Trentlin [9636]: arrived (Igor's Implements of Destruction) from 9507
+Sat Oct 17 15:34:38 2026 :: Log Trentlin [9636]: list
+Sat Oct 17 15:34:42 2026 :: Log Trentlin [9636]: n
+Sat Oct 17 15:34:42 2026 :: Log Trentlin [9507]: arrived (The Southeastern Market Square) from 9636
+Sat Oct 17 15:34:43 2026 :: Log Trentlin [9507]: n
+Sat Oct 17 15:34:43 2026 :: Log Trentlin [9517]: arrived (The Eastern Market Square) from 9507
+Sat Oct 17 15:34:44 2026 :: Log Trentlin [9517]: e
+Sat Oct 17 15:34:44 2026 :: Log Trentlin [9527]: arrived (East Main Street) from 9517
+Sat Oct 17 15:34:45 2026 :: Log Trentlin [9527]: w
+Sat Oct 17 15:34:45 2026 :: Log Trentlin [9517]: arrived (The Eastern Market Square) from 9527
+Sat Oct 17 15:34:46 2026 :: Log Trentlin [9517]: n
+Sat Oct 17 15:34:46 2026 :: Log Trentlin [9516]: arrived (The Northeastern Market Square) from 9517
+Sat Oct 17 15:34:46 2026 :: Log Trentlin [9516]: e
+Sat Oct 17 15:34:46 2026 :: Log Trentlin [9622]: arrived (The Butchery) from 9516
+Sat Oct 17 15:34:47 2026 :: Log Trentlin [9622]: list
+Sat Oct 17 15:34:48 2026 :: Log Trentlin [9622]: w
+Sat Oct 17 15:34:48 2026 :: Log Trentlin [9516]: arrived (The Northeastern Market Square) from 9622
+Sat Oct 17 15:34:49 2026 :: Log Trentlin [9516]: n
+Sat Oct 17 15:34:49 2026 :: Log Trentlin [9615]: arrived (Vera's Veggies) from 9516
+Sat Oct 17 15:34:50 2026 :: Log Trentlin [9615]: list
+Sat Oct 17 15:34:51 2026 :: Log Trentlin [9615]: s
+Sat Oct 17 15:34:51 2026 :: Log Trentlin [9516]: arrived (The Northeastern Market Square) from 9615
+Sat Oct 17 15:34:52 2026 :: Log Trentlin [9516]: w
+Sat Oct 17 15:34:52 2026 :: Log Trentlin [9515]: arrived (The Northern Market Square) from 9516
+Sat Oct 17 15:34:52 2026 :: Log Trentlin [9515]: w
+Sat Oct 17 15:34:52 2026 :: Log Trentlin [9514]: arrived (The Northwestern Market Square) from 9515
+Sat Oct 17 15:34:53 2026 :: Log Trentlin [9514]: n
+Sat Oct 17 15:34:53 2026 :: Log Trentlin [9614]: arrived (Ahkeem's Stuff) from 9514
+Sat Oct 17 15:34:54 2026 :: Log Trentlin [9614]: list
+Sat Oct 17 15:34:56 2026 :: Log Trentlin [9614]: s
+Sat Oct 17 15:34:56 2026 :: Log Trentlin [9514]: arrived (The Northwestern Market Square) from 9614
+Sat Oct 17 15:34:56 2026 :: Log Trentlin [9514]: w
+Sat Oct 17 15:34:56 2026 :: Log Trentlin [9621]: arrived (The Bank) from 9514
+Sat Oct 17 15:34:57 2026 :: Log Trentlin [9621]: list
+Sat Oct 17 15:34:58 2026 :: Log Trentlin [9621]: wo
