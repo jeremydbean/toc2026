@@ -105827,3 +105827,109 @@ Sat Oct 17 13:18:26 2026 :: Log Trentlin [4208]: gr
 Sat Oct 17 13:18:28 2026 :: Log Trentlin [4208]: aff
 Sat Oct 17 13:18:36 2026 :: Log Trentlin [4208]: gr
 Sat Oct 17 13:18:39 2026 :: Log Trentlin [4208]: help tick
+Sat Oct 17 13:18:59 2026 :: Log Trentlin [4208]: gr
+Sat Oct 17 13:19:01 2026 :: Log Trentlin [4208]: sco
+Sat Oct 17 13:19:08 2026 :: Log Trentlin [4208]: help castle
+Sat Oct 17 13:19:15 2026 :: Log Trentlin [4208]: help castles
+Sat Oct 17 13:19:17 2026 :: Log Trentlin [4208]: gr
+Sat Oct 17 13:19:24 2026 :: Log Trentlin [4208]: gr
+Sat Oct 17 13:19:42 2026 :: Log Trentlin [4208]: gr
+Sat Oct 17 13:19:43 2026 :: Log Trentlin [4208]: wake
+Sat Oct 17 13:19:44 2026 :: Log Trentlin [4208]: e
+Sat Oct 17 13:19:44 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sat Oct 17 13:19:44 2026 :: Log Trentlin [4207]: e
+Sat Oct 17 13:19:44 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 17 13:19:46 2026 :: Log Trentlin [4202]: e
+Sat Oct 17 13:19:46 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sat Oct 17 13:19:46 2026 :: Log Trentlin [4201]: n
+Sat Oct 17 13:19:46 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 4201
+Sat Oct 17 13:19:48 2026 :: Log Trentlin [2433]: e
+Sat Oct 17 13:19:48 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2433
+Sat Oct 17 13:19:49 2026 :: Log Trentlin [2405]: e
+Sat Oct 17 13:19:49 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2405
+Sat Oct 17 13:19:53 2026 :: Log Trentlin [2401]: r s 2
+Sat Oct 17 13:19:53 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Sat Oct 17 13:19:53 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 2404
+Sat Oct 17 13:19:53 2026 :: Log Trentlin [2427]: r w 3
+Sat Oct 17 13:19:53 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Sat Oct 17 13:19:53 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4201
+Sat Oct 17 13:19:53 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4202
+Sat Oct 17 13:19:53 2026 :: Log Trentlin [4207]: r u 3
+Sat Oct 17 13:19:53 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Sat Oct 17 13:19:53 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Sat Oct 17 13:19:53 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Sat Oct 17 13:19:54 2026 :: Log Trentlin [3795]: enter portal
+Sat Oct 17 13:19:54 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Sat Oct 17 13:19:55 2026 :: Log Trentlin [15000]: e
+Sat Oct 17 13:19:55 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Sat Oct 17 13:19:56 2026 :: Log Trentlin [15001]: e
+Sat Oct 17 13:19:56 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Sat Oct 17 13:19:57 2026 :: Log Trentlin [15002]: sca
+Sat Oct 17 13:19:58 2026 :: Log Trentlin [15002]: s
+Sat Oct 17 13:19:58 2026 :: Log Trentlin [15026]: arrived (Leonard Hall Lobby) from 15002
+Sat Oct 17 13:20:02 2026 :: Log Trentlin [15026]: open east
+Sat Oct 17 13:20:03 2026 :: Log Trentlin [15026]: sca
+Sat Oct 17 13:20:05 2026 :: Log Trentlin [15026]: open west
+Sat Oct 17 13:20:06 2026 :: Log Trentlin [15026]: n
+Sat Oct 17 13:20:06 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15026
+Sat Oct 17 13:20:08 2026 :: Log Trentlin [15002]: open north
+Sat Oct 17 13:20:09 2026 :: Log Trentlin [15002]: e
+Sat Oct 17 13:20:09 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Sat Oct 17 13:20:10 2026 :: Log Trentlin [15003]: sca
+Sat Oct 17 13:20:12 2026 :: Log Trentlin [15003]: s
+Sat Oct 17 13:20:12 2026 :: Log Trentlin [15027]: arrived (Mary Rotte Cafeteria Entrance) from 15003
+Sat Oct 17 13:20:13 2026 :: Log Trentlin [15027]: con fr
+Sat Oct 17 13:20:14 2026 :: Log Trentlin [15027]: l fr
+Sat Oct 17 13:20:15 2026 :: Log Trentlin [15027]: sca
+Sat Oct 17 13:20:17 2026 :: Log Trentlin [15027]: s
+Sat Oct 17 13:20:17 2026 :: Log Trentlin [15045]: arrived (Dining Hall) from 15027
+Sat Oct 17 13:20:18 2026 :: Log Trentlin [15045]: sca
+Sat Oct 17 13:20:20 2026 :: Log Trentlin [15045]: s
+Sat Oct 17 13:20:20 2026 :: Log Trentlin [15047]: arrived (Dining Hall) from 15045
+Sat Oct 17 13:20:22 2026 :: Log Trentlin [15047]: con em
+Sat Oct 17 13:20:23 2026 :: Log Trentlin [15047]: l em
+Sat Oct 17 13:20:25 2026 :: Log Trentlin [15047]: e
+Sat Oct 17 13:20:25 2026 :: Log Trentlin [15048]: arrived (Dining Hall) from 15047
+Sat Oct 17 13:20:27 2026 :: Log Trentlin [15048]: l em
+Sat Oct 17 13:20:28 2026 :: Log Trentlin [15048]: con em
+Sat Oct 17 13:20:30 2026 :: Log Trentlin [15048]: w
+Sat Oct 17 13:20:30 2026 :: Log Trentlin [15047]: arrived (Dining Hall) from 15048
+Sat Oct 17 13:20:33 2026 :: Log Trentlin [15047]: k em
+Sat Oct 17 13:20:40 2026 :: Log Trentlin [15047]: kick
+Sat Oct 17 13:20:48 2026 :: Log Trentlin [15047]: kick
+Sat Oct 17 13:20:55 2026 :: Log Trentlin [15047]: kick
+Sat Oct 17 13:21:25 2026 :: Log Trentlin [15047]: flee
+Sat Oct 17 13:21:25 2026 :: Log Trentlin [15045]: arrived (Dining Hall) from 15047
+Sat Oct 17 13:21:25 2026 :: Log Trentlin [15045]: flee
+Sat Oct 17 13:21:27 2026 :: Log Trentlin [15045]: sca
+Sat Oct 17 13:21:28 2026 :: Log Trentlin [15045]: l fr
+Sat Oct 17 13:21:29 2026 :: Log Trentlin [15045]: con fr
+Sat Oct 17 13:21:30 2026 :: Log Trentlin [15045]: l
+Sat Oct 17 13:21:31 2026 :: Log Trentlin [15045]: n
+Sat Oct 17 13:21:31 2026 :: Log Trentlin [15027]: arrived (Mary Rotte Cafeteria Entrance) from 15045
+Sat Oct 17 13:21:33 2026 :: Log Trentlin [15027]: n
+Sat Oct 17 13:21:33 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15027
+Sat Oct 17 13:21:35 2026 :: Log Trentlin [15003]: sleep
+Sat Oct 17 13:21:36 2026 :: Log Trentlin [15003]: gr
+Sat Oct 17 13:22:51 2026 :: Log Trentlin [15003]: gr
+Sat Oct 17 13:22:52 2026 :: Log Trentlin [15003]: att
+Sat Oct 17 13:22:59 2026 :: Log Trentlin [15003]: gr
+Sat Oct 17 13:23:04 2026 :: Log Trentlin [15003]: wake
+Sat Oct 17 13:23:05 2026 :: Log Trentlin [15003]: eq
+Sat Oct 17 13:23:08 2026 :: Log Trentlin [15003]: att
+Sat Oct 17 13:23:09 2026 :: Log Trentlin [15003]: rem jack
+Sat Oct 17 13:23:10 2026 :: Log Trentlin [15003]: att
+Sat Oct 17 13:23:18 2026 :: Log Trentlin [15003]: wear jack
+Sat Oct 17 13:23:26 2026 :: Log Trentlin [15003]: help attributes
+Sat Oct 17 13:23:29 2026 :: Sock.sinaddr:  5.161.177.47
+Sat Oct 17 13:23:29 2026 :: EOF encountered on read.
+Sat Oct 17 13:23:35 2026 :: Log Trentlin [15003]: eq
+Sat Oct 17 13:23:36 2026 :: Log Trentlin [15003]: att
+Sat Oct 17 13:23:38 2026 :: Log Trentlin [15003]: rem sle
+Sat Oct 17 13:23:38 2026 :: Log Trentlin [15003]: att
+Sat Oct 17 13:23:40 2026 :: Log Trentlin [15003]: wear slee
+Sat Oct 17 13:23:45 2026 :: Log Trentlin [15003]: att
+Sat Oct 17 13:23:47 2026 :: Log Trentlin [15003]: rem jack
+Sat Oct 17 13:23:47 2026 :: Log Trentlin [15003]: att
+Sat Oct 17 13:23:50 2026 :: Log Trentlin [15003]: rem jack
+Sat Oct 17 13:23:50 2026 :: Log Trentlin [15003]: att
