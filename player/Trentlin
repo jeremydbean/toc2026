@@ -1,12 +1,12 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792252119
+LogO 1792280637
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
 Race dwarf~
-Sex  0
+Sex  1
 Cla  3
 Gui  3
 Psionic  0
@@ -16,26 +16,26 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 12
-Plyd 15393
+Plyd 15528
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 4207
+Room 2402
 HMV  176 176 321 321 191 191
-NewGold 40
-NewPlat 4
-NewCopp 113
-NewSilv 15
-BankCP 15000000
-IntTime 1792177212
-IntTotal 0
+NewGold 44
+NewPlat 5
+NewCopp 143
+NewSilv 22
+BankCP 15037500
+IntTime 1792263612
+IntTotal 37500
 Dcount 0
 SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 142
+AchKills 143
 AchQuests 10
 AchDeaths 2
 AchExplore 0
@@ -62,6 +62,7 @@ Achv visit-shire 1791414577
 Achv first-death 1791414685
 Achv first-deposit 1792251305
 Achv bank-one-platinum 1792251305
+Achv first-interest 1792280516
 Achv carry-one-platinum 1791054979
 Achv four-denominations 1791055231
 Achv carry-ten-platinum 1792115503
@@ -82,8 +83,8 @@ SesQuest 3
 QuestPnts 646
 QuestStrk 10
 CasinoLost 4
-QuestNext 8
-Exp  28425
+QuestNext 5
+Exp  28569
 Act  65740
 AfBy 512
 Comm 24576
@@ -113,10 +114,10 @@ Color 16 6
 Pos  8
 Trai 1
 Save  5
-Alig  -180
+Alig  -186
 Hit   11
 Dam   12
-ACs 15 3 -4 75
+ACs 35 23 16 95
 Attr 16 16 16 12 19
 AMod 1 10 10 1 7
 Pass TrjPUdRVdu8MY~
@@ -125,7 +126,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 166 321 166
-Cond 0 3 34
+Cond 0 0 31
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -163,8 +164,6 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'  39   2 -20  17          0          0
-AffD 'change sex'   0   2  -1   6          0          0
 End
 
 #O
@@ -243,7 +242,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 92
+Time 90
 Cost 0
 Cond 100
 Repd 0
@@ -305,16 +304,6 @@ Wear 9
 Lev  8
 Cost 330000
 Cond 90
-Repd 0
-End
-
-#O
-Vnum 2913
-Nest 0
-Wear -1
-Lev  10
-Cost 3000000
-Cond 100
 Repd 0
 End
 
@@ -455,6 +444,17 @@ Cost 11000
 Cond 100
 Repd 0
 Affect -1 6 -1 3 20 0 0
+End
+
+#O
+Vnum 25106
+Nest 0
+Wear -1
+Lev  18
+Cost 10000000
+Cond 100
+Repd 0
+Val  7 5 5 0 0
 End
 
 #END
