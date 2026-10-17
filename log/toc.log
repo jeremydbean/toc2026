@@ -110990,3 +110990,20 @@ Sat Oct 17 20:10:20 2026 :: Sock.sinaddr:  5.161.215.244
 Sat Oct 17 20:10:20 2026 :: EOF encountered on read.
 Sat Oct 17 20:15:26 2026 :: Sock.sinaddr:  178.156.189.249
 Sat Oct 17 20:15:26 2026 :: EOF encountered on read.
+Sat Oct 17 20:20:01 2026 :: Sock.sinaddr:  208.126.22.104
+Sat Oct 17 20:20:11 2026 :: Loading Alaric's playerfile
+Sat Oct 17 20:20:11 2026 :: Alaric@208.126.22.104 has connected.
+Sat Oct 17 20:20:12 2026 :: Log Alaric [1589]: arrived (Hermit's Lair) from 0
+Sat Oct 17 20:20:13 2026 :: Log Alaric [1589]: who
+Sat Oct 17 20:20:15 2026 :: Log Alaric [1589]: changes
+Sat Oct 17 20:20:29 2026 :: Sock.sinaddr:  3.212.128.62
+Sat Oct 17 20:20:29 2026 :: EOF encountered on read.
+Sat Oct 17 20:20:34 2026 :: Log Alaric [1589]: help strength
+Sat Oct 17 20:20:44 2026 :: Log Alaric [1589]: help attributes
+Sat Oct 17 20:20:55 2026 :: Log Alaric [1589]: who
+Sat Oct 17 20:21:29 2026 :: Log Alaric [1589]: l
+Sat Oct 17 20:21:31 2026 :: Log Alaric [1589]: kill her
+Sat Oct 17 20:21:37 2026 :: Log Alaric [1589]: level
+Sat Oct 17 20:21:44 2026 :: Log Alaric [1589]: level
+Sat Oct 17 20:21:46 2026 :: Log Alaric [1589]: prac
+Sat Oct 17 20:21:50 2026 :: Log Alaric [1589]: af
