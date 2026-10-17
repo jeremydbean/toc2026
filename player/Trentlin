@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792241219
+LogO 1792241472
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 10
-Plyd 9455
+Plyd 9708
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 2497
-HMV  139 139 269 269 55 150
-NewGold 13
-NewPlat 13
-NewCopp 62
-NewSilv 92
+Room 2483
+HMV  139 139 269 269 42 154
+NewGold 82
+NewPlat 10
+NewCopp 67
+NewSilv 20
 BankCP 0
 IntTime 1792177212
 IntTotal 0
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 88
+AchKills 89
 AchQuests 6
 AchDeaths 1
 AchExplore 0
@@ -74,8 +74,8 @@ SesDead  0
 SesQuest 0
 QuestPnts 422
 QuestStrk 6
-QuestNext 14
-Exp  22628
+QuestNext 10
+Exp  22848
 Act  65740
 AfBy 512
 Comm 24576
@@ -103,13 +103,12 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 4
 Trai 1
 Save  -4
-Alig  -110
-Hit   9
-Dam   6
-ACs 62 57 58 99
+Alig  -116
+Hit   11
+Dam   8
+ACs 59 54 54 99
 Attr 14 16 16 12 19
 AMod 0 10 11 0 7
 Pass TrjPUdRVdu8MY~
@@ -118,7 +117,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 139 269 154
-Cond 0 17 12
+Cond 0 12 7
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -131,7 +130,7 @@ Sk 1 'lightning bolt'
 Sk 1 'magic missile'
 Sk 1 'refresh'
 Sk 1 'shield'
-Sk 30 'axe'
+Sk 75 'axe'
 Sk 82 'dagger'
 Sk 25 'flail'
 Sk 25 'mace'
@@ -156,9 +155,9 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'bless'  48  61  -7  24          0          0
-AffD 'bless'  51  61   7  18          0          0
-AffD 'change sex'  52  21  -1   6          0          0
+AffD 'bless'  48  56  -7  24          0          0
+AffD 'bless'  51  56   7  18          0          0
+AffD 'change sex'  52  16  -1   6          0          0
 End
 
 #O
@@ -168,7 +167,7 @@ Wear 0
 Cost 0
 Cond 99
 Repd 0
-Val  0 0 43 0 0
+Val  0 0 38 0 0
 End
 
 #O
@@ -187,16 +186,6 @@ Wear 16
 Cost 0
 Cond 94
 Repd 0
-End
-
-#O
-Vnum 3712
-Nest 0
-Wear 13
-Cost 0
-Cond 96
-Repd 0
-Affect -1 0 -1 -4 14 0 0
 End
 
 #O
@@ -364,7 +353,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 190
+Time 186
 Cost 0
 Cond 100
 Repd 0
@@ -378,6 +367,17 @@ Lev  4
 Cost 240
 Cond 99
 Repd 0
+End
+
+#O
+Vnum 8713
+Nest 0
+Wear 13
+Lev  9
+Cost 270000
+Cond 100
+Repd 0
+Val  4 4 5 0 0
 End
 
 #END
