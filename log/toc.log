@@ -110933,3 +110933,6 @@ Sat Oct 17 18:37:52 2026 :: Log Alaric [1589]: who
 Sat Oct 17 18:37:53 2026 :: Log Alaric [1589]: worth
 Sat Oct 17 18:38:56 2026 :: Sock.sinaddr:  52.22.236.30
 Sat Oct 17 18:38:56 2026 :: EOF encountered on read.
+Sat Oct 17 18:43:22 2026 :: Sock.sinaddr:  45.158.127.112
+Sat Oct 17 18:44:01 2026 :: Sock.sinaddr:  178.156.181.172
+Sat Oct 17 18:44:01 2026 :: EOF encountered on read.
