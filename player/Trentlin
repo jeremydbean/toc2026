@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792243580
+LogO 1792243735
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,13 +16,13 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 11
-Plyd 11816
+Plyd 11971
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 15047
-HMV  123 153 296 296 160 160
+Room 4210
+HMV  66 153 296 296 71 160
 NewGold 48
 NewPlat 11
 NewCopp 15
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 108
+AchKills 110
 AchQuests 7
 AchDeaths 2
 AchExplore 0
@@ -65,19 +65,19 @@ Achv visit-froboz 1791055958
 Achv visit-azeroth 1792241612
 Achv visit-glitter-palace 1791414563
 Achv visit-new-thalos 1791415830
-LastOut  1792240096
-SesLogin 1792239880
-SesDur   216
-SesExpG  690
-SesLvlG  0
-SesKill  3
+LastOut  1792243735
+SesLogin 1792240145
+SesDur   3590
+SesExpG  3270
+SesLvlG  2
+SesKill  29
 SesPK    0
-SesDead  0
-SesQuest 0
+SesDead  1
+SesQuest 2
 QuestPnts 486
 QuestStrk 7
 CasinoLost 4
-Exp  25128
+Exp  25332
 Act  65740
 AfBy 512
 Comm 24576
@@ -104,10 +104,10 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
+Pos  4
 Prac 1
 Save  3
-Alig  -156
+Alig  -157
 Hit   4
 Dam   8
 ACs 31 28 28 77
@@ -119,7 +119,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 153 296 160
-Cond 0 3 33
+Cond 0 8 31
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -157,7 +157,7 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'  48  10 -20  17          0          0
+AffD 'armor'  48   8 -20  17          0          0
 End
 
 #O
@@ -167,7 +167,7 @@ Wear 0
 Cost 0
 Cond 99
 Repd 0
-Val  0 0 7 0 0
+Val  0 0 5 0 0
 End
 
 #O
@@ -302,7 +302,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 151
+Time 148
 Cost 0
 Cond 100
 Repd 0
@@ -393,6 +393,17 @@ Cost 54000
 Cond 100
 Repd 0
 Affect -1 8 -1 -4 2 0 0
+End
+
+#O
+Vnum 15014
+Nest 0
+Wear -1
+Lev  12
+Cost 150000
+Cond 100
+Repd 0
+Val  4 6 5 0 0
 End
 
 #END
