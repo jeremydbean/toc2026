@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792249947
+LogO 1792250310
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -15,18 +15,18 @@ PsiSpec ~
 PsiKnown ~
 ChangesSeen ~
 Cast none
-Levl 11
-Plyd 13221
+Levl 12
+Plyd 13584
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 4065
-HMV  60 153 296 296 160 160
-NewGold 72
+Room 2497
+HMV  147 166 308 321 79 166
+NewGold 102
 NewPlat 13
-NewCopp 638
-NewSilv 54
+NewCopp 97
+NewSilv 72
 BankCP 0
 IntTime 1792177212
 IntTotal 0
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 122
+AchKills 124
 AchQuests 8
 AchDeaths 2
 AchExplore 0
@@ -78,8 +78,8 @@ SesQuest 0
 QuestPnts 572
 QuestStrk 8
 CasinoLost 4
-QuestNext 3
-Exp  26713
+QuestNext 30
+Exp  27023
 Act  65740
 AfBy 512
 Comm 24576
@@ -107,21 +107,21 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 1
+Trai 1
 Save  3
-Alig  -174
+Alig  -180
 Hit   4
 Dam   8
 ACs 26 21 23 74
 Attr 16 16 16 12 19
 AMod 1 10 10 -4 7
 Pass TrjPUdRVdu8MY~
-Titl  the Hero~
+Titl  the Myrmidon~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 153 296 160
-Cond 0 12 10
+HMVP 166 321 166
+Cond 0 8 4
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -144,7 +144,7 @@ Sk 30 'spear'
 Sk 85 'sword'
 Sk 30 'whip'
 Sk 76 'bash'
-Sk 1 'disarm'
+Sk 61 'disarm'
 Sk 1 'heroic grip'
 Sk 79 'kick'
 Sk 76 'parry'
@@ -159,7 +159,7 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'  43  12 -20  17          0          0
+AffD 'armor'  42   6 -20  17          0          0
 End
 
 #O
@@ -284,7 +284,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 128
+Time 121
 Cost 0
 Cond 100
 Repd 0
@@ -377,27 +377,7 @@ Lev  1
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 31 0 0
-End
-
-#O
-Vnum 4004
-Nest 0
-Wear -1
-Lev  3
-Cost 120
-Cond 90
-Repd 0
-End
-
-#O
-Vnum 40
-Nest 0
-Wear -1
-Time 582
-Cost 0
-Cond 100
-Repd 0
+Val  0 0 25 0 0
 End
 
 #O
