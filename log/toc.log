@@ -107536,3 +107536,6 @@ Sat Oct 17 14:48:27 2026 :: Log Alaric [1588]: north
 Sat Oct 17 14:48:27 2026 :: Log Alaric [1589]: arrived (Hermit's Lair) from 1588
 Sat Oct 17 14:48:36 2026 :: Log Alaric [1589]: kill cr
 Sat Oct 17 14:48:54 2026 :: Log Alaric [1589]: bash
+Sat Oct 17 14:49:50 2026 :: Sock.sinaddr:  3.20.63.178
+Sat Oct 17 14:49:51 2026 :: EOF encountered on read.
+Sat Oct 17 14:53:06 2026 :: Log Alaric [1589]: bash
