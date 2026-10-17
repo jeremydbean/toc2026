@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792281017
+LogO 1792281327
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -15,18 +15,18 @@ PsiSpec ~
 PsiKnown ~
 ChangesSeen ~
 Cast none
-Levl 12
-Plyd 15908
+Levl 14
+Plyd 16218
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 2497
-HMV  146 176 319 321 171 191
-NewGold 68
+Room 13220
+HMV  187 200 326 373 91 203
+NewGold 75
 NewPlat 5
-NewCopp 43
-NewSilv 23
+NewCopp 274
+NewSilv 37
 BankCP 15037500
 IntTime 1792263612
 IntTotal 37500
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 145
+AchKills 152
 AchQuests 11
 AchDeaths 2
 AchExplore 0
@@ -59,6 +59,7 @@ Achv visit-gangland 1791056925
 Achv visit-moria 1792240539
 Achv visit-thalos 1791414546
 Achv visit-shire 1791414577
+Achv visit-solace 1792281055
 Achv first-death 1791414685
 Achv first-deposit 1792251305
 Achv bank-one-platinum 1792251305
@@ -80,14 +81,14 @@ SesKill  27
 SesPK    0
 SesDead  0
 SesQuest 3
-QuestPnts 646
+QuestPnts 736
 QuestStrk 11
-QuestGmbl 45
 CasinoLost 4
-QuestNext 15
-Exp  28722
+QuestNext 10
+Exp  31680
 Act  65740
-AfBy 512
+AfBy 3678848
+AfBy2 4104
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -113,21 +114,22 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Trai 1
+Prac 8
+Trai 3
 Save  5
-Alig  -188
-Hit   11
-Dam   12
-ACs 15 3 -4 75
+Alig  -261
+Hit   31
+Dam   53
+ACs -125 -137 -144 -65
 Attr 16 16 16 12 19
-AMod 1 10 10 1 7
+AMod 20 25 25 20 22
 Pass TrjPUdRVdu8MY~
-Titl  the Myrmidon~
+Titl  the Mercenary~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 166 321 166
-Cond 0 19 26
+HMVP 190 373 178
+Cond 0 13 20
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -141,7 +143,7 @@ Sk 1 'magic missile'
 Sk 1 'refresh'
 Sk 1 'shield'
 Sk 75 'axe'
-Sk 82 'dagger'
+Sk 83 'dagger'
 Sk 25 'flail'
 Sk 25 'mace'
 Sk 35 'polearm'
@@ -165,7 +167,29 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'   0  22 -20  17          0          0
+AffD 'empower'   0  27 -100  17          0          0
+AffD 'empower'   0  27  20  19          0          0
+AffD 'empower'   0  27  20  18          0          0
+AffD 'empower'   0  27  15   5          0          0
+AffD 'empower'   0  27  11   2          0          0
+AffD 'empower'   0  27  15   4          0          0
+AffD 'empower'   0  27  15   3          0          0
+AffD 'giant strength'   0  27  15   1          0          0
+AffD 'divine protection'   0  27   0   0          0       4096
+AffD 'fire shield'   0  27   0   0          0          8
+AffD 'protection evil'   0  27   0   0       8192          0
+AffD 'pass door'   0  27   0   0    1048576          0
+AffD 'fly'   0  27   0   0     524288          0
+AffD 'haste'   0  27   4   2    2097152          0
+AffD 'sanctuary'   0  27   0   0        128          0
+AffD 'empower'   0  27   0   0          0          0
+AffD 'power gloves'   0  27  21  19          0          0
+AffD 'sanctuary'   0  27   0   0        128          0
+AffD 'haste'   0  27   4   2    2097152          0
+AffD 'fly'   0  27   0   0     524288          0
+AffD 'giant strength'   0  27   4   1          0          0
+AffD 'stone skin'   0  26 -40  17          0          0
+AffD 'armor'   0  26 -20  17          0          0
 End
 
 #O
@@ -244,7 +268,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 84
+Time 78
 Cost 0
 Cond 100
 Repd 0
@@ -454,10 +478,21 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 578
+Time 572
 Cost 0
 Cond 100
 Repd 0
+End
+
+#O
+Vnum 13301
+Nest 0
+Wear -1
+Lev  15
+Cost 100000
+Cond 100
+Repd 0
+Affect -1 15 -1 -1 14 0 0
 End
 
 #END
