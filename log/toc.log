@@ -102240,3 +102240,93 @@ Sat Oct 17 01:01:11 2026 :: Log Alaric [10049]: scan
 Sat Oct 17 01:01:12 2026 :: Log Alaric [10049]: s
 Sat Oct 17 01:01:12 2026 :: Log Alaric [10050]: arrived (An Room of Adamant.) from 10049
 Sat Oct 17 01:01:13 2026 :: Log Alaric [10050]: look pr
+Sat Oct 17 01:01:25 2026 :: Log Alaric [10050]: bs pr
+Sat Oct 17 01:01:41 2026 :: Log Alaric [10050]: get dagger
+Sat Oct 17 01:01:41 2026 :: Log Alaric [10050]: wear dagger
+Sat Oct 17 01:01:41 2026 :: Log Alaric [10050]: dirt
+Sat Oct 17 01:01:59 2026 :: Log Alaric [10050]: to
+Sat Oct 17 01:02:00 2026 :: Log Alaric [10050]: to
+Sat Oct 17 01:02:02 2026 :: Log Alaric [10050]: to
+Sat Oct 17 01:02:07 2026 :: Sock.sinaddr:  178.156.185.127
+Sat Oct 17 01:02:07 2026 :: EOF encountered on read.
+Sat Oct 17 01:02:20 2026 :: Log Alaric [10050]: look
+Sat Oct 17 01:02:34 2026 :: Log Alaric [10050]: get all cor
+Sat Oct 17 01:02:35 2026 :: Log Alaric [10050]: flee
+Sat Oct 17 01:02:35 2026 :: Log Alaric [10051]: arrived (The shrine of adamant.) from 10050
+Sat Oct 17 01:02:37 2026 :: Log Alaric [10051]: recal
+Sat Oct 17 01:02:37 2026 :: Log Alaric [10051]: n
+Sat Oct 17 01:02:37 2026 :: Log Alaric [10050]: arrived (An Room of Adamant.) from 10051
+Sat Oct 17 01:02:38 2026 :: Log Alaric [10050]: n
+Sat Oct 17 01:02:38 2026 :: Log Alaric [10049]: arrived (A dark back passage.) from 10050
+Sat Oct 17 01:02:38 2026 :: Log Alaric [10049]: n
+Sat Oct 17 01:02:38 2026 :: Log Alaric [10048]: arrived (Temple of Adamant.) from 10049
+Sat Oct 17 01:02:38 2026 :: Log Alaric [10048]: n
+Sat Oct 17 01:02:38 2026 :: Log Alaric [10047]: arrived (A secret hallway.) from 10048
+Sat Oct 17 01:02:39 2026 :: Log Alaric [10047]: n
+Sat Oct 17 01:02:39 2026 :: Log Alaric [10046]: arrived (A cul-de-sac.) from 10047
+Sat Oct 17 01:02:40 2026 :: Log Alaric [10046]: n
+Sat Oct 17 01:02:40 2026 :: Log Alaric [10042]: arrived (The hall of commerce.) from 10046
+Sat Oct 17 01:02:42 2026 :: Log Alaric [10042]: s
+Sat Oct 17 01:02:42 2026 :: Log Alaric [10046]: arrived (A cul-de-sac.) from 10042
+Sat Oct 17 01:02:43 2026 :: Log Alaric [10046]: scan
+Sat Oct 17 01:02:43 2026 :: Log Alaric [10046]: s
+Sat Oct 17 01:02:43 2026 :: Log Alaric [10047]: arrived (A secret hallway.) from 10046
+Sat Oct 17 01:02:44 2026 :: Log Alaric [10047]: scan
+Sat Oct 17 01:02:45 2026 :: Log Alaric [10047]: sleep
+Sat Oct 17 01:03:16 2026 :: Sock.sinaddr:  45.79.252.166
+Sat Oct 17 01:03:16 2026 :: Log Alaric [10047]: wake
+Sat Oct 17 01:03:16 2026 :: Log Alaric [10047]: n
+Sat Oct 17 01:03:16 2026 :: Log Alaric [10046]: arrived (A cul-de-sac.) from 10047
+Sat Oct 17 01:03:16 2026 :: Log Alaric [10046]: n
+Sat Oct 17 01:03:16 2026 :: Log Alaric [10042]: arrived (The hall of commerce.) from 10046
+Sat Oct 17 01:03:17 2026 :: Log Alaric [10042]: n
+Sat Oct 17 01:03:17 2026 :: Log Alaric [10041]: arrived (The hall of commerce.) from 10042
+Sat Oct 17 01:03:18 2026 :: Log Alaric [10041]: n
+Sat Oct 17 01:03:18 2026 :: Log Alaric [10034]: arrived (Intersection in the hall of commerce.) from 10041
+Sat Oct 17 01:03:18 2026 :: Log Alaric [10034]: e
+Sat Oct 17 01:03:18 2026 :: Log Alaric [10033]: arrived (A grand hallway.) from 10034
+Sat Oct 17 01:03:18 2026 :: Log Alaric [10033]: e
+Sat Oct 17 01:03:18 2026 :: Log Alaric [10031]: arrived (An intersection.) from 10033
+Sat Oct 17 01:03:19 2026 :: Log Alaric [10031]: e
+Sat Oct 17 01:03:19 2026 :: Log Alaric [10032]: arrived (A cul-de-sac.) from 10031
+Sat Oct 17 01:03:19 2026 :: Log Alaric [10032]: e
+Sat Oct 17 01:03:21 2026 :: Log Alaric [10032]: oe
+Sat Oct 17 01:03:21 2026 :: Log Alaric [10032]: e
+Sat Oct 17 01:03:21 2026 :: Log Alaric [10179]: arrived (In the elevator.) from 10032
+Sat Oct 17 01:03:22 2026 :: Log Alaric [10179]: os
+Sat Oct 17 01:03:22 2026 :: Log Alaric [10179]: s
+Sat Oct 17 01:03:22 2026 :: Log Alaric [10180]: arrived (Outside the palace.) from 10179
+Sat Oct 17 01:03:23 2026 :: Log Alaric [10180]: w
+Sat Oct 17 01:03:23 2026 :: Log Alaric [10003]: arrived (The Glitter Palace's Grand Gate.) from 10180
+Sat Oct 17 01:03:24 2026 :: Log Alaric [10003]: r s
+Sat Oct 17 01:03:24 2026 :: Log Alaric [10002]: arrived (Royal Island.) from 10003
+Sat Oct 17 01:03:24 2026 :: Log Alaric [10001]: arrived (A crystal bridge.) from 10002
+Sat Oct 17 01:03:24 2026 :: Log Alaric [10000]: arrived (Before the crystal bridge.) from 10001
+Sat Oct 17 01:03:25 2026 :: Log Alaric [10000]: wake
+Sat Oct 17 01:03:26 2026 :: Log Alaric [10000]: en po
+Sat Oct 17 01:03:26 2026 :: Log Alaric [23]: arrived (The Great Portal) from 10000
+Sat Oct 17 01:03:27 2026 :: Sock.sinaddr:  45.79.252.166
+Sat Oct 17 01:03:27 2026 :: EOF encountered on read.
+Sat Oct 17 01:03:27 2026 :: Log Alaric [23]: recal
+Sat Oct 17 01:03:27 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 23
+Sat Oct 17 01:03:28 2026 :: Log Alaric [4207]: e
+Sat Oct 17 01:03:28 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sat Oct 17 01:03:28 2026 :: Log Alaric [4202]: n
+Sat Oct 17 01:03:28 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sat Oct 17 01:03:28 2026 :: Log Alaric [4203]: n
+Sat Oct 17 01:03:28 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sat Oct 17 01:03:29 2026 :: Log Alaric [4210]: sleep
+Sat Oct 17 01:03:31 2026 :: Log Alaric [4210]: af
+Sat Oct 17 01:03:32 2026 :: Sock.sinaddr:  45.79.252.166
+Sat Oct 17 01:03:32 2026 :: EOF encountered on read.
+Sat Oct 17 01:03:37 2026 :: EOF encountered on read.
+Sat Oct 17 01:03:37 2026 :: Sock.sinaddr:  45.79.252.166
+Sat Oct 17 01:03:44 2026 :: Sock.sinaddr:  45.79.252.166
+Sat Oct 17 01:03:44 2026 :: EOF encountered on read.
+Sat Oct 17 01:03:52 2026 :: EOF encountered on read.
+Sat Oct 17 01:03:52 2026 :: Sock.sinaddr:  45.79.252.166
+Sat Oct 17 01:03:57 2026 :: EOF encountered on read.
+Sat Oct 17 01:03:57 2026 :: Sock.sinaddr:  45.79.252.166
+Sat Oct 17 01:04:02 2026 :: EOF encountered on read.
+Sat Oct 17 01:05:07 2026 :: Sock.sinaddr:  45.79.252.166
+Sat Oct 17 01:05:07 2026 :: EOF encountered on read.
