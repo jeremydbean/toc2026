@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792243233
+LogO 1792243580
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,13 +16,13 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 11
-Plyd 11469
+Plyd 11816
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
 Room 15047
-HMV  153 153 296 296 133 160
+HMV  123 153 296 296 160 160
 NewGold 48
 NewPlat 11
 NewCopp 15
@@ -77,7 +77,7 @@ SesQuest 0
 QuestPnts 486
 QuestStrk 7
 CasinoLost 4
-Exp  25132
+Exp  25128
 Act  65740
 AfBy 512
 Comm 24576
@@ -119,7 +119,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 153 296 160
-Cond 0 8 38
+Cond 0 3 33
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -144,7 +144,7 @@ Sk 30 'whip'
 Sk 76 'bash'
 Sk 1 'disarm'
 Sk 1 'heroic grip'
-Sk 78 'kick'
+Sk 79 'kick'
 Sk 76 'parry'
 Sk 1 'rescue'
 Sk 75 'second attack'
@@ -157,7 +157,7 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'  49  15 -20  17          0          0
+AffD 'armor'  48  10 -20  17          0          0
 End
 
 #O
@@ -167,7 +167,7 @@ Wear 0
 Cost 0
 Cond 99
 Repd 0
-Val  0 0 12 0 0
+Val  0 0 7 0 0
 End
 
 #O
@@ -238,16 +238,6 @@ Repd 0
 End
 
 #O
-Vnum 103
-Nest 0
-Wear -1
-Lev  2
-Cost 20
-Cond 100
-Repd 0
-End
-
-#O
 Vnum 101
 Nest 0
 Wear 6
@@ -284,7 +274,7 @@ Nest 0
 Wear 1
 Lev  7
 Cost 36000
-Cond 99
+Cond 98
 Repd 0
 End
 
@@ -312,7 +302,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 156
+Time 151
 Cost 0
 Cond 100
 Repd 0
