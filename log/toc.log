@@ -110427,3 +110427,9 @@ Sat Oct 17 15:54:23 2026 :: Log Alaric [1588]: arrived (A Small Mine Shaft) from
 Sat Oct 17 15:54:24 2026 :: Log Alaric [1588]: north
 Sat Oct 17 15:54:24 2026 :: Log Alaric [1589]: arrived (Hermit's Lair) from 1588
 Sat Oct 17 15:54:32 2026 :: Log Alaric [1589]: bash
+Sat Oct 17 15:55:49 2026 :: Sock.sinaddr:  5.161.113.195
+Sat Oct 17 15:55:49 2026 :: EOF encountered on read.
+Sat Oct 17 15:58:17 2026 :: Sock.sinaddr:  87.236.176.211
+Sat Oct 17 15:58:18 2026 :: EOF encountered on read.
+Sat Oct 17 15:58:30 2026 :: Sock.sinaddr:  195.96.139.185
+Sat Oct 17 15:58:32 2026 :: EOF encountered on read.
