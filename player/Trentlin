@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792251783
+LogO 1792252119
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,16 +16,16 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 12
-Plyd 15057
+Plyd 15393
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
 Room 4207
-HMV  120 166 321 321 80 166
+HMV  176 176 321 321 191 191
 NewGold 40
 NewPlat 4
-NewCopp 29
+NewCopp 113
 NewSilv 15
 BankCP 15000000
 IntTime 1792177212
@@ -70,19 +70,19 @@ Achv visit-mob-factory 1792244162
 Achv visit-azeroth 1792241612
 Achv visit-glitter-palace 1791414563
 Achv visit-new-thalos 1791415830
-LastOut  1792244298
-SesLogin 1792243912
-SesDur   386
-SesExpG  845
-SesLvlG  0
-SesKill  5
+LastOut  1792252119
+SesLogin 1792249089
+SesDur   3030
+SesExpG  2248
+SesLvlG  1
+SesKill  27
 SesPK    0
 SesDead  0
-SesQuest 0
+SesQuest 3
 QuestPnts 646
 QuestStrk 10
 CasinoLost 4
-QuestNext 13
+QuestNext 8
 Exp  28425
 Act  65740
 AfBy 512
@@ -112,20 +112,20 @@ Color 15 6
 Color 16 6
 Pos  8
 Trai 1
-Save  4
+Save  5
 Alig  -180
 Hit   11
 Dam   12
-ACs 16 3 -1 73
+ACs 15 3 -4 75
 Attr 16 16 16 12 19
-AMod 1 10 10 0 7
+AMod 1 10 10 1 7
 Pass TrjPUdRVdu8MY~
 Titl  the Myrmidon~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 166 321 166
-Cond 0 8 39
+Cond 0 3 34
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -163,17 +163,8 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'  39   7 -20  17          0          0
-AffD 'change sex'   0   7  -1   6          0          0
-End
-
-#O
-Vnum 3708
-Nest 0
-Wear 8
-Cost 0
-Cond 96
-Repd 0
+AffD 'armor'  39   2 -20  17          0          0
+AffD 'change sex'   0   2  -1   6          0          0
 End
 
 #O
@@ -241,7 +232,7 @@ End
 #O
 Vnum 3074
 Nest 0
-Wear 7
+Wear -1
 Lev  5
 Cost 1500000
 Cond 96
@@ -249,20 +240,10 @@ Repd 0
 End
 
 #O
-Vnum 3077
-Nest 0
-Wear -1
-Lev  5
-Cost 1500000
-Cond 99
-Repd 0
-End
-
-#O
 Vnum 58
 Nest 0
 Wear -1
-Time 98
+Time 92
 Cost 0
 Cond 100
 Repd 0
@@ -315,38 +296,6 @@ Cost 150000
 Cond 100
 Repd 0
 Val  4 6 5 0 0
-End
-
-#O
-Vnum 6507
-Nest 0
-Wear 0
-Lev  1
-Cost 0
-Cond 100
-Repd 0
-Val  0 0 1 0 0
-End
-
-#O
-Vnum 3116
-Nest 0
-Wear 11
-Lev  10
-Cost 5750000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3351
-Nest 0
-Wear 16
-Lev  11
-Cost 0
-Cond 100
-Repd 0
-Val  2 4 4 11 0
 End
 
 #O
@@ -446,19 +395,9 @@ Repd 0
 End
 
 #O
-Vnum 29013
-Nest 0
-Wear -1
-Lev  10
-Cost 1000000
-Cond 100
-Repd 0
-End
-
-#O
 Vnum 29007
 Nest 0
-Wear -1
+Wear 7
 Lev  3
 Cost 120
 Cond 100
@@ -473,6 +412,49 @@ Lev  3
 Cost 120
 Cond 100
 Repd 0
+End
+
+#O
+Vnum 29012
+Nest 0
+Wear 11
+Lev  9
+Cost 49000
+Cond 100
+Repd 0
+Affect -1 9 -1 1 20 0 0
+End
+
+#O
+Vnum 5252
+Nest 0
+Wear 16
+Lev  8
+Cost 4200000
+Cond 90
+Repd 0
+Val  2 3 6 11 0
+End
+
+#O
+Vnum 29010
+Nest 0
+Wear 8
+Lev  6
+Cost 11000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29011
+Nest 0
+Wear -1
+Lev  6
+Cost 11000
+Cond 100
+Repd 0
+Affect -1 6 -1 3 20 0 0
 End
 
 #END
