@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792249667
+LogO 1792249947
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 11
-Plyd 12941
+Plyd 13221
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 4030
-HMV  24 153 296 296 160 160
-NewGold 43
+Room 4065
+HMV  60 153 296 296 160 160
+NewGold 72
 NewPlat 13
-NewCopp 171
-NewSilv 46
+NewCopp 638
+NewSilv 54
 BankCP 0
 IntTime 1792177212
 IntTotal 0
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 121
+AchKills 122
 AchQuests 8
 AchDeaths 2
 AchExplore 0
@@ -78,10 +78,10 @@ SesQuest 0
 QuestPnts 572
 QuestStrk 8
 CasinoLost 4
-QuestNext 8
-Exp  26509
+QuestNext 3
+Exp  26713
 Act  65740
-AfBy 4608
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -108,20 +108,20 @@ Color 15 6
 Color 16 6
 Pos  8
 Prac 1
-Save  4
-Alig  -175
+Save  3
+Alig  -174
 Hit   4
 Dam   8
-ACs 32 29 29 78
+ACs 26 21 23 74
 Attr 16 16 16 12 19
-AMod -1 10 11 -4 7
+AMod 1 10 10 -4 7
 Pass TrjPUdRVdu8MY~
 Titl  the Hero~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 153 296 160
-Cond 0 17 15
+Cond 0 12 10
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -159,8 +159,7 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'poison'   1  10  -2   1       4096          0
-AffD 'armor'  44  17 -20  17          0          0
+AffD 'armor'  43  12 -20  17          0          0
 End
 
 #O
@@ -231,16 +230,6 @@ Repd 0
 End
 
 #O
-Vnum 101
-Nest 0
-Wear 6
-Lev  2
-Cost 500
-Cond 99
-Repd 0
-End
-
-#O
 Vnum 3052
 Nest 0
 Wear 15
@@ -295,7 +284,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 133
+Time 128
 Cost 0
 Cond 100
 Repd 0
@@ -359,16 +348,6 @@ Repd 0
 End
 
 #O
-Vnum 3116
-Nest 0
-Wear 11
-Lev  10
-Cost 5750000
-Cond 100
-Repd 0
-End
-
-#O
 Vnum 2109
 Nest 0
 Wear 9
@@ -398,17 +377,7 @@ Lev  1
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 36 0 0
-End
-
-#O
-Vnum 3029
-Nest 0
-Wear -1
-Lev  10
-Cost 100000
-Cond 90
-Repd 0
+Val  0 0 31 0 0
 End
 
 #O
@@ -418,6 +387,36 @@ Wear -1
 Lev  3
 Cost 120
 Cond 90
+Repd 0
+End
+
+#O
+Vnum 40
+Nest 0
+Wear -1
+Time 582
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 4051
+Nest 0
+Wear 6
+Lev  7
+Cost 240000
+Cond 90
+Repd 0
+End
+
+#O
+Vnum 3116
+Nest 0
+Wear 11
+Lev  10
+Cost 5750000
+Cond 100
 Repd 0
 End
 
