@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792242722
+LogO 1792242930
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 11
-Plyd 10958
+Plyd 11166
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 2404
-HMV  95 153 269 296 97 160
-NewGold 44
-NewPlat 10
-NewCopp 5
-NewSilv 9
+Room 2114
+HMV  90 153 271 296 124 160
+NewGold 48
+NewPlat 11
+NewCopp 15
+NewSilv 16
 BankCP 0
 IntTime 1792177212
 IntTotal 0
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 104
+AchKills 106
 AchQuests 7
 AchDeaths 2
 AchExplore 0
@@ -77,8 +77,8 @@ SesQuest 0
 QuestPnts 486
 QuestStrk 7
 CasinoLost 4
-QuestNext 8
-Exp  24891
+QuestNext 4
+Exp  25006
 Act  65740
 AfBy 512
 Comm 24576
@@ -106,23 +106,22 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 5
-Trai 1
+Prac 1
 Save  3
-Alig  -158
+Alig  -157
 Hit   4
 Dam   8
-ACs 55 50 50 97
-Attr 15 16 16 12 19
-AMod 0 10 11 0 7
+ACs 31 28 28 77
+Attr 16 16 16 12 19
+AMod 1 10 11 -4 7
 Pass TrjPUdRVdu8MY~
 Titl  the Hero~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 153 296 160
-Cond 0 17 47
-Sk 1 'armor'
+Cond 0 13 43
+Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
 Sk 1 'detect invis'
@@ -159,6 +158,7 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
+AffD 'armor'  51  20 -20  17          0          0
 End
 
 #O
@@ -168,7 +168,7 @@ Wear 0
 Cost 0
 Cond 99
 Repd 0
-Val  0 0 21 0 0
+Val  0 0 17 0 0
 End
 
 #O
@@ -230,15 +230,6 @@ Affect -1 7 -1 4 22 0 0
 End
 
 #O
-Vnum 3709
-Nest 0
-Wear 9
-Cost 0
-Cond 98
-Repd 0
-End
-
-#O
 Vnum 3715
 Nest 0
 Wear 17
@@ -289,18 +280,6 @@ Affect -1 5 -1 -3 5 0 0
 End
 
 #O
-Vnum 12001
-Nest 0
-Wear -1
-Lev  5
-Cost 2000000
-Cond 100
-Repd 0
-Val  0 4 3 0 0
-Affect -1 5 -1 4 20 0 0
-End
-
-#O
 Vnum 2803
 Nest 0
 Wear 1
@@ -345,7 +324,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 164
+Time 161
 Cost 0
 Cond 100
 Repd 0
@@ -425,6 +404,17 @@ Lev  10
 Cost 5750000
 Cond 100
 Repd 0
+End
+
+#O
+Vnum 2109
+Nest 0
+Wear 9
+Lev  8
+Cost 54000
+Cond 100
+Repd 0
+Affect -1 8 -1 -4 2 0 0
 End
 
 #END
