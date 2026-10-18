@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792283087
+LogO 1792283274
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 21
-Plyd 17978
+Plyd 18165
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 25265
-HMV  1552 1567 2890 2915 1196 1230
-NewGold 599
+Room 4208
+HMV  1567 1567 2915 2915 1230 1230
+NewGold 825
 NewPlat 5
-NewCopp 4965
-NewSilv 654
+NewCopp 6923
+NewSilv 914
 BankCP 15037500
 IntTime 1792263612
 IntTotal 37500
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 199
+AchKills 209
 AchQuests 11
 AchDeaths 2
 AchExplore 0
@@ -76,21 +76,21 @@ Achv visit-azeroth 1792241612
 Achv visit-glitter-palace 1791414563
 Achv visit-underdark 1792281756
 Achv visit-new-thalos 1791415830
-LastOut  1792252119
-SesLogin 1792249089
-SesDur   3030
-SesExpG  2248
-SesLvlG  1
-SesKill  27
+LastOut  1792283274
+SesLogin 1792280504
+SesDur   2770
+SesExpG  20755
+SesLvlG  9
+SesKill  67
 SesPK    0
 SesDead  0
-SesQuest 3
+SesQuest 1
 QuestPnts 736
 QuestStrk 11
 CasinoLost 4
-Exp  47411
+Exp  49180
 Act  65740
-AfBy 3678908
+AfBy 3678910
 AfBy2 4106
 Comm 24576
 Mounted 0
@@ -120,19 +120,19 @@ Pos  8
 Prac 21
 Trai 4
 Save  -3
-Alig  -671
+Alig  -774
 Hit   56
 Dam   74
 ACs -99 -106 -112 -11
 Attr 16 16 16 12 19
-AMod 21 25 25 23 25
+AMod 36 25 25 27 25
 Pass TrjPUdRVdu8MY~
 Titl  the Grand Knight~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 287 550 220
-Cond 0 10 45
+Cond 0 7 42
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -172,45 +172,54 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'titanic'   0  15  50  16          0          0
-AffD 'titanic'   0  15 1010  14          0          0
-AffD 'titanic'   0  15 2365  12          0          0
-AffD 'titanic'   0  15 1270  13          0          0
-AffD 'shroud'   0  21 -35  17          0          0
-AffD 'detect evil'   0  21   0   0          4          0
-AffD 'detect good'   0  21   0   0          0          2
-AffD 'detect magic'   1  21   0   0         16          0
-AffD 'detect hidden'  33  21   0   0         32          0
-AffD 'detect invis'  43  21   0   0          8          0
-AffD 'frenzy'  36  21 110  17          0          0
-AffD 'frenzy'  15  21  11  19          0          0
-AffD 'frenzy'  39  21  11  18          0          0
-AffD 'shield'  43  21 -20  17          0          0
-AffD 'bless'  44  21  -8  24          0          0
-AffD 'bless'  44  21   8  18          0          0
-AffD 'empower'   0   0 -100  17          0          0
-AffD 'empower'   0   0  20  19          0          0
-AffD 'empower'   0   0  20  18          0          0
-AffD 'empower'   0   0  15   5          0          0
-AffD 'empower'   0   0  11   2          0          0
-AffD 'empower'   0   0  15   4          0          0
-AffD 'empower'   0   0  15   3          0          0
-AffD 'giant strength'   0  21  15   1          0          0
-AffD 'divine protection'   0  21   0   0          0       4096
-AffD 'fire shield'   0  21   0   0          0          8
-AffD 'protection evil'   0  21   0   0       8192          0
-AffD 'pass door'   0  21   0   0    1048576          0
-AffD 'fly'   0  21   0   0     524288          0
-AffD 'haste'   0  21   4   2    2097152          0
-AffD 'sanctuary'   0  21   0   0        128          0
-AffD 'empower'   0   0   0   0          0          0
-AffD 'power gloves'   0  21  21  19          0          0
-AffD 'sanctuary'   0  21   0   0        128          0
-AffD 'haste'   0  21   4   2    2097152          0
-AffD 'fly'   0  21   0   0     524288          0
-AffD 'giant strength'   0  21   4   1          0          0
-AffD 'stone skin'   0  21 -40  17          0          0
-AffD 'armor'   0  21 -20  17          0          0
+AffD 'empower'  41  29 -100  17          0          0
+AffD 'empower'  44  29  20  19          0          0
+AffD 'empower'  45  29  20  18          0          0
+AffD 'empower'  46  29  15   5          0          0
+AffD 'empower'  47  29  11   2          0          0
+AffD 'empower'  46  29  15   4          0          0
+AffD 'empower'  39  29  15   3          0          0
+AffD 'giant strength'  39  29  15   1          0          0
+AffD 'divine protection'   0  29   0   0          0       4096
+AffD 'fire shield'   0  29   0   0          0          8
+AffD 'protection evil'   0  29   0   0       8192          0
+AffD 'pass door'   0  29   0   0    1048576          0
+AffD 'fly'   0  29   0   0     524288          0
+AffD 'haste'   0  29   4   2    2097152          0
+AffD 'sanctuary'   0  29   0   0        128          0
+AffD 'empower'   0  29   0   0          0          0
+AffD 'invis'  10  29   0   0          2          0
+AffD 'titanic'   0  12  50  16          0          0
+AffD 'titanic'   0  12 1010  14          0          0
+AffD 'titanic'   0  12 2365  12          0          0
+AffD 'titanic'   0  12 1270  13          0          0
+AffD 'shroud'   0  29 -35  17          0          0
+AffD 'detect evil'   0  29   0   0          4          0
+AffD 'detect good'   0  29   0   0          0          2
+AffD 'detect magic'   1  29   0   0         16          0
+AffD 'detect hidden'  32  29   0   0         32          0
+AffD 'detect invis'  41  29   0   0          8          0
+AffD 'frenzy'  35  29 110  17          0          0
+AffD 'frenzy'  14  29  11  19          0          0
+AffD 'frenzy'  39  29  11  18          0          0
+AffD 'shield'  43  29 -20  17          0          0
+AffD 'bless'  44  29  -8  24          0          0
+AffD 'bless'  44  29   8  18          0          0
+AffD 'giant strength'   0  29  15   1          0          0
+AffD 'divine protection'   0  29   0   0          0       4096
+AffD 'fire shield'   0  29   0   0          0          8
+AffD 'protection evil'   0  29   0   0       8192          0
+AffD 'pass door'   0  29   0   0    1048576          0
+AffD 'fly'   0  29   0   0     524288          0
+AffD 'haste'   0  29   4   2    2097152          0
+AffD 'sanctuary'   0  29   0   0        128          0
+AffD 'power gloves'   0  29  21  19          0          0
+AffD 'sanctuary'   0  29   0   0        128          0
+AffD 'haste'   0  29   4   2    2097152          0
+AffD 'fly'   0  29   0   0     524288          0
+AffD 'giant strength'   0  29   4   1          0          0
+AffD 'stone skin'   0  29 -40  17          0          0
+AffD 'armor'   0  29 -20  17          0          0
 End
 
 #O
@@ -268,7 +277,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 51
+Time 48
 Cost 0
 Cond 100
 Repd 0
@@ -436,7 +445,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 545
+Time 542
 Cost 0
 Cond 100
 Repd 0
