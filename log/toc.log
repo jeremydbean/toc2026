@@ -127670,3 +127670,6 @@ Sun Oct 18 17:13:32 2026 :: Log Alaric [4210]: sleep
 Sun Oct 18 17:13:32 2026 :: Log Alaric [4210]: gr
 Sun Oct 18 17:14:45 2026 :: Sock.sinaddr:  3.212.128.62
 Sun Oct 18 17:14:45 2026 :: EOF encountered on read.
+Sun Oct 18 17:17:23 2026 :: Sock.sinaddr:  69.5.169.54
+Sun Oct 18 17:19:49 2026 :: Sock.sinaddr:  5.161.177.47
+Sun Oct 18 17:19:49 2026 :: EOF encountered on read.
