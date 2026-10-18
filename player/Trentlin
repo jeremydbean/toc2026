@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792336633
+LogO 1792337017
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -16,18 +16,18 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 27
-Plyd 27555
+Plyd 27939
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 StashMax 75
 Scro 22
-Room 29061
-HMV  -13 381 530 696 85 256
-NewGold 103
-NewPlat 11
-NewCopp 62
-NewSilv 98
+Room 4210
+HMV  169 381 502 696 97 256
+NewGold 123
+NewPlat 16
+NewCopp 112
+NewSilv 133
 BankCP 45037500
 IntTime 1792263612
 IntTotal 37500
@@ -36,9 +36,9 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 283
+AchKills 288
 AchQuests 17
-AchDeaths 3
+AchDeaths 4
 AchExplore 0
 AchMaps 0
 AchCompass 0
@@ -83,20 +83,20 @@ Achv visit-glitter-palace 1791414563
 Achv visit-underdark 1792281756
 Achv visit-new-thalos 1791415830
 Achv visit-korzath-fortress 1792287816
-LastOut  1792293507
-SesLogin 1792289399
-SesDur   4108
-SesExpG  3320
+LastOut  1792337017
+SesLogin 1792333478
+SesDur   3539
+SesExpG  2525
 SesLvlG  1
-SesKill  23
+SesKill  17
 SesPK    0
-SesDead  0
+SesDead  2
 SesQuest 3
 QuestPnts 1116
 QuestStrk 6
 CasinoLost 4
-QuestNext 12
-Exp  61818
+QuestNext 4
+Exp  62678
 Act  65740
 AfBy 512
 Comm 24576
@@ -123,7 +123,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  0
+Pos  4
 Prac 7
 Trai 1
 Save  5
@@ -139,12 +139,12 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 371 696 256
-Cond 0 18 38
+Cond 0 11 48
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
 Sk 1 'detect invis'
-Sk 76 'faerie fire'
+Sk 77 'faerie fire'
 Sk 75 'fly'
 Sk 75 'giant strength'
 Sk 1 'identify'
@@ -159,13 +159,13 @@ Sk 25 'mace'
 Sk 35 'polearm'
 Sk 77 'shield block'
 Sk 30 'spear'
-Sk 98 'sword'
+Sk 99 'sword'
 Sk 75 'whip'
 Sk 76 'bash'
 Sk 75 'disarm'
 Sk 1 'heroic grip'
 Sk 76 'dodge'
-Sk 83 'enhanced damage'
+Sk 84 'enhanced damage'
 Sk 81 'kick'
 Sk 78 'parry'
 Sk 1 'rescue'
@@ -183,8 +183,8 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'giant strength'  27  23   3   1          0          0
-AffD 'armor'   0  16 -20  17          0          0
+AffD 'armor'   0  18 -20  17          0          0
+AffD 'giant strength'   2  21   3   1          0          0
 End
 
 #O
@@ -286,7 +286,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 382
+Time 375
 Cost 0
 Cond 100
 Repd 0
@@ -403,7 +403,7 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 679
+Time 672
 Cost 0
 Cond 100
 Repd 0
@@ -448,7 +448,7 @@ Lev  14
 Cost 100000
 Cond 100
 Repd 0
-Val  0 0 9945 0 0
+Val  0 0 9939 0 0
 End
 
 #O

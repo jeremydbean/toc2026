@@ -123637,3 +123637,87 @@ Sun Oct 18 15:20:05 2026 :: Log Trentlin [29061]: s
 Sun Oct 18 15:20:05 2026 :: Log Trentlin [29062]: arrived (Corridor) from 29061
 Sun Oct 18 15:20:06 2026 :: Log Trentlin [29062]: s
 Sun Oct 18 15:20:06 2026 :: Log Trentlin [29063]: arrived (Corridor) from 29062
+Sun Oct 18 15:20:08 2026 :: Log Trentlin [29063]: k gua
+Sun Oct 18 15:20:12 2026 :: Log Trentlin [29063]: c fae
+Sun Oct 18 15:20:16 2026 :: Log Trentlin [29063]: c fae
+Sun Oct 18 15:20:23 2026 :: Log Trentlin [29063]: smite
+Sun Oct 18 15:20:35 2026 :: Log Trentlin [29063]: smite
+Sun Oct 18 15:20:45 2026 :: Log Trentlin [29063]: smite
+Sun Oct 18 15:20:49 2026 :: Log Trentlin [29063]: killed a security guard
+Sun Oct 18 15:20:49 2026 :: Log Trentlin [29063]: coin +1 platinum
+Sun Oct 18 15:20:49 2026 :: Log Trentlin [29063]: coin +7 silver
+Sun Oct 18 15:20:49 2026 :: Log Trentlin [29063]: coin +10 copper
+Sun Oct 18 15:20:49 2026 :: Log Trentlin [29063]: coin +4 gold
+Sun Oct 18 15:20:56 2026 :: Automated backup complete.
+Sun Oct 18 15:20:58 2026 :: Log Trentlin [29063]: k gua
+Sun Oct 18 15:21:04 2026 :: Log Trentlin [29063]: c fae
+Sun Oct 18 15:21:11 2026 :: Log Trentlin [29063]: smite
+Sun Oct 18 15:21:24 2026 :: Log Trentlin [29063]: smite
+Sun Oct 18 15:21:33 2026 :: Log Trentlin [29063]: smite
+Sun Oct 18 15:21:33 2026 :: Log Trentlin [29063]: n
+Sun Oct 18 15:21:33 2026 :: Log Trentlin [29062]: arrived (Corridor) from 29063
+Sun Oct 18 15:21:36 2026 :: Log Trentlin [29062]: bash gua
+Sun Oct 18 15:21:40 2026 :: Log Trentlin [29062]: killed a security guard
+Sun Oct 18 15:21:40 2026 :: Log Trentlin [29062]: coin +1 platinum
+Sun Oct 18 15:21:40 2026 :: Log Trentlin [29062]: coin +7 silver
+Sun Oct 18 15:21:40 2026 :: Log Trentlin [29062]: coin +10 copper
+Sun Oct 18 15:21:40 2026 :: Log Trentlin [29062]: coin +4 gold
+Sun Oct 18 15:21:45 2026 :: Log Trentlin [29062]: bash gua
+Sun Oct 18 15:21:45 2026 :: Log Trentlin [29062]: ski
+Sun Oct 18 15:21:46 2026 :: Log Trentlin [29062]: s
+Sun Oct 18 15:21:46 2026 :: Log Trentlin [29063]: arrived (Corridor) from 29062
+Sun Oct 18 15:21:47 2026 :: Log Trentlin [29063]: s
+Sun Oct 18 15:21:47 2026 :: Log Trentlin [29065]: arrived (Service Hallway) from 29063
+Sun Oct 18 15:21:48 2026 :: Log Trentlin [29065]: s
+Sun Oct 18 15:21:48 2026 :: Log Trentlin [29065]: e
+Sun Oct 18 15:21:48 2026 :: Log Trentlin [29066]: arrived (Service Hallway) from 29065
+Sun Oct 18 15:21:49 2026 :: Log Trentlin [29066]: e
+Sun Oct 18 15:21:49 2026 :: Log Trentlin [29067]: arrived (Service Hallway) from 29066
+Sun Oct 18 15:21:51 2026 :: Log Trentlin [29067]: k gua
+Sun Oct 18 15:21:55 2026 :: Log Trentlin [29067]: c fae
+Sun Oct 18 15:21:58 2026 :: Log Trentlin [29067]: c fae
+Sun Oct 18 15:22:05 2026 :: Log Trentlin [29067]: smite
+Sun Oct 18 15:22:14 2026 :: Log Trentlin [29067]: smite
+Sun Oct 18 15:22:23 2026 :: Log Trentlin [29067]: smite
+Sun Oct 18 15:22:35 2026 :: Log Trentlin [29067]: bash
+Sun Oct 18 15:22:36 2026 :: Log Trentlin [29067]: e
+Sun Oct 18 15:22:36 2026 :: Log Trentlin [29070]: arrived (Service Hallway) from 29067
+Sun Oct 18 15:22:36 2026 :: Log Trentlin [29070]: bash guard
+Sun Oct 18 15:22:48 2026 :: Log Trentlin [29070]: e
+Sun Oct 18 15:22:48 2026 :: Log Trentlin [29071]: arrived (T-Junction) from 29070
+Sun Oct 18 15:22:49 2026 :: Log Trentlin [29071]: bash guard
+Sun Oct 18 15:22:52 2026 :: Log Trentlin [29071]: killed a security guard
+Sun Oct 18 15:22:52 2026 :: Log Trentlin [29071]: coin +1 platinum
+Sun Oct 18 15:22:52 2026 :: Log Trentlin [29071]: coin +7 silver
+Sun Oct 18 15:22:52 2026 :: Log Trentlin [29071]: coin +10 copper
+Sun Oct 18 15:22:52 2026 :: Log Trentlin [29071]: coin +4 gold
+Sun Oct 18 15:23:00 2026 :: Log Trentlin [29071]: recall
+Sun Oct 18 15:23:00 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 29071
+Sun Oct 18 15:23:01 2026 :: Log Trentlin [4207]: w
+Sun Oct 18 15:23:01 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Oct 18 15:23:02 2026 :: Log Trentlin [4208]: e
+Sun Oct 18 15:23:02 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sun Oct 18 15:23:05 2026 :: Log Trentlin [4207]: where hermie
+Sun Oct 18 15:23:07 2026 :: Sock.sinaddr:  5.161.177.47
+Sun Oct 18 15:23:07 2026 :: EOF encountered on read.
+Sun Oct 18 15:23:07 2026 :: Log Trentlin [4207]: e
+Sun Oct 18 15:23:07 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 15:23:08 2026 :: Log Trentlin [4202]: s
+Sun Oct 18 15:23:08 2026 :: Log Trentlin [4206]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 15:23:09 2026 :: Log Trentlin [4206]: dri
+Sun Oct 18 15:23:09 2026 :: Log Trentlin [4206]: dri
+Sun Oct 18 15:23:10 2026 :: Log Trentlin [4206]: n
+Sun Oct 18 15:23:10 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4206
+Sun Oct 18 15:23:10 2026 :: Log Trentlin [4202]: n
+Sun Oct 18 15:23:10 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 15:23:10 2026 :: Log Trentlin [4203]: n
+Sun Oct 18 15:23:10 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 15:23:10 2026 :: Log Trentlin [4210]: n
+Sun Oct 18 15:23:11 2026 :: Log Trentlin [4210]: sleep
+Sun Oct 18 15:23:13 2026 :: Log Trentlin [4210]: sk
+Sun Oct 18 15:23:15 2026 :: Log Trentlin [4210]: gainlist
+Sun Oct 18 15:23:33 2026 :: Log Trentlin [4210]: gr
+Sun Oct 18 15:23:34 2026 :: Log Trentlin [4210]: who
+Sun Oct 18 15:23:37 2026 :: Log Trentlin [4210]: quit
+Sun Oct 18 15:23:37 2026 :: Trentlin has quit.
+Sun Oct 18 15:23:37 2026 :: [QUIT] Player rejoined the real world.
