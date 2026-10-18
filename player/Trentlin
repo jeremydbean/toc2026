@@ -1,9 +1,9 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792290856
+LogO 1792291112
 Vers 4
-Prom < %h/%H hp %v/%V mv %E>%c~
+Prom < %h/%H %m/%M %v/%V>%c~
 Ignoring ~
 Race dwarf~
 Sex  1
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 25
-Plyd 21746
+Plyd 22002
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 2497
-HMV  351 351 654 654 64 244
-NewGold 29
-NewPlat 24
-NewCopp 1
-NewSilv 85
+Room 4207
+HMV  351 351 654 654 41 244
+NewGold 33
+NewPlat 20
+NewCopp 11
+NewSilv 92
 BankCP 15037500
 IntTime 1792263612
 IntTotal 37500
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 253
+AchKills 254
 AchQuests 13
 AchDeaths 2
 AchExplore 0
@@ -93,7 +93,7 @@ SesQuest 0
 QuestPnts 862
 QuestStrk 2
 CasinoLost 4
-QuestNext 14
+QuestNext 9
 Exp  57640
 Act  65740
 AfBy 512
@@ -121,7 +121,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
+Pos  4
 Prac 28
 Trai 3
 Save  5
@@ -137,7 +137,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 341 654 244
-Cond 0 21 44
+Cond 0 16 39
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -179,7 +179,7 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'  13  16 -20  17          0          0
+AffD 'armor'  12  11 -20  17          0          0
 End
 
 #O
@@ -324,7 +324,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 483
+Time 479
 Cost 0
 Cond 100
 Repd 0
