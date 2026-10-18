@@ -124489,3 +124489,91 @@ Sun Oct 18 16:10:38 2026 :: Log Alaric [16001]: n
 Sun Oct 18 16:10:38 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16001
 Sun Oct 18 16:10:38 2026 :: Log Alaric [16002]: n
 Sun Oct 18 16:10:38 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Sun Oct 18 16:10:39 2026 :: Log Alaric [16003]: n
+Sun Oct 18 16:10:39 2026 :: Log Alaric [16004]: arrived (A Turn at the Pier) from 16003
+Sun Oct 18 16:10:40 2026 :: Log Alaric [16004]: e
+Sun Oct 18 16:10:40 2026 :: Log Alaric [16005]: arrived (Plankway to the Royal Eagle) from 16004
+Sun Oct 18 16:10:41 2026 :: Log Alaric [16005]: prac
+Sun Oct 18 16:10:49 2026 :: Log Alaric [16005]: u
+Sun Oct 18 16:10:49 2026 :: Log Alaric [16021]: arrived (Entrance to the Royal Eagle - Main Deck) from 16005
+Sun Oct 18 16:10:50 2026 :: Log Alaric [16021]: e
+Sun Oct 18 16:10:50 2026 :: Log Alaric [16022]: arrived (Main Deck) from 16021
+Sun Oct 18 16:10:51 2026 :: Log Alaric [16022]: s
+Sun Oct 18 16:10:51 2026 :: Log Alaric [16017]: arrived (Main Deck of the Royal Eagle) from 16022
+Sun Oct 18 16:10:52 2026 :: Log Alaric [16017]: scan
+Sun Oct 18 16:10:53 2026 :: Log Alaric [16017]: bs sw
+Sun Oct 18 16:11:11 2026 :: Log Alaric [16017]: who
+Sun Oct 18 16:11:12 2026 :: Log Alaric [16017]: dirt
+Sun Oct 18 16:11:29 2026 :: Log Alaric [16017]: who
+Sun Oct 18 16:11:30 2026 :: Log Alaric [16017]: dirt
+Sun Oct 18 16:11:57 2026 :: Log Alaric [16017]: who
+Sun Oct 18 16:12:00 2026 :: Log Alaric [16017]: dirt
+Sun Oct 18 16:12:11 2026 :: Log Alaric [16017]: killed The swashbuckler
+Sun Oct 18 16:12:11 2026 :: Log Alaric [16017]: coin +1 platinum
+Sun Oct 18 16:12:11 2026 :: Log Alaric [16017]: coin +6 silver
+Sun Oct 18 16:12:11 2026 :: Log Alaric [16017]: coin +8 copper
+Sun Oct 18 16:12:11 2026 :: Log Alaric [16017]: coin +3 gold
+Sun Oct 18 16:12:19 2026 :: Log Alaric [16017]: score
+Sun Oct 18 16:12:21 2026 :: Log Alaric [16017]: wake
+Sun Oct 18 16:12:21 2026 :: Log Alaric [16017]: l
+Sun Oct 18 16:12:25 2026 :: Log Alaric [16017]: bs sa
+Sun Oct 18 16:12:41 2026 :: Log Alaric [16017]: killed The sailor
+Sun Oct 18 16:12:41 2026 :: Log Alaric [16017]: coin +2 platinum
+Sun Oct 18 16:12:41 2026 :: Log Alaric [16017]: coin +10 silver
+Sun Oct 18 16:12:41 2026 :: Log Alaric [16017]: coin +13 copper
+Sun Oct 18 16:12:41 2026 :: Log Alaric [16017]: coin +5 gold
+Sun Oct 18 16:12:48 2026 :: Log Alaric [16017]: recal
+Sun Oct 18 16:12:48 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16017
+Sun Oct 18 16:12:48 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 16:12:48 2026 :: Log Alaric [4207]: w
+Sun Oct 18 16:12:48 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Oct 18 16:12:50 2026 :: Log Alaric [4208]: e
+Sun Oct 18 16:12:50 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sun Oct 18 16:12:50 2026 :: Log Alaric [4207]: e
+Sun Oct 18 16:12:50 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 16:12:50 2026 :: Log Alaric [4202]: n
+Sun Oct 18 16:12:50 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 16:12:50 2026 :: Log Alaric [4203]: n
+Sun Oct 18 16:12:50 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 16:12:51 2026 :: Log Alaric [4210]: sleep
+Sun Oct 18 16:13:02 2026 :: Sock.sinaddr:  71.150.190.10
+Sun Oct 18 16:13:04 2026 :: Loading Look's playerfile
+Sun Oct 18 16:13:51 2026 :: EOF encountered on read.
+Sun Oct 18 16:13:51 2026 :: Sock.sinaddr:  71.150.190.10
+Sun Oct 18 16:13:52 2026 :: Sock.sinaddr:  52.87.72.16
+Sun Oct 18 16:13:53 2026 :: EOF encountered on read.
+Sun Oct 18 16:14:04 2026 :: Sock.sinaddr:  24.2.118.125
+Sun Oct 18 16:14:07 2026 :: Loading Trentlin's playerfile
+Sun Oct 18 16:14:21 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Sun Oct 18 16:14:22 2026 :: EOF encountered on read.
+Sun Oct 18 16:14:22 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 0
+Sun Oct 18 16:14:23 2026 :: Log Trentlin [4210]: gr
+Sun Oct 18 16:14:24 2026 :: Log Trentlin [4210]: who
+Sun Oct 18 16:14:30 2026 :: Log Trentlin [4210]: gro
+Sun Oct 18 16:14:40 2026 :: Log Trentlin [4210]: gr
+Sun Oct 18 16:14:41 2026 :: Log Trentlin [4210]: l
+Sun Oct 18 16:14:45 2026 :: Log Trentlin [4210]: aquest time
+Sun Oct 18 16:14:48 2026 :: Log Trentlin [4210]: gr
+Sun Oct 18 16:14:55 2026 :: Log Trentlin [4210]: gr
+Sun Oct 18 16:15:03 2026 :: Log Trentlin [4210]: gr
+Sun Oct 18 16:15:10 2026 :: Log Trentlin [4210]: gr
+Sun Oct 18 16:15:14 2026 :: Log Trentlin [4210]: sk
+Sun Oct 18 16:15:16 2026 :: Log Trentlin [4210]: wake
+Sun Oct 18 16:15:16 2026 :: Log Trentlin [4210]: s
+Sun Oct 18 16:15:16 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4210
+Sun Oct 18 16:15:17 2026 :: Log Trentlin [4203]: w
+Sun Oct 18 16:15:17 2026 :: Log Trentlin [4204]: arrived (Halls of Healing.) from 4203
+Sun Oct 18 16:15:18 2026 :: Log Trentlin [4204]: s
+Sun Oct 18 16:15:18 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4204
+Sun Oct 18 16:15:18 2026 :: Log Trentlin [4207]: w
+Sun Oct 18 16:15:18 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Oct 18 16:15:19 2026 :: Log Trentlin [4208]: e
+Sun Oct 18 16:15:19 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sun Oct 18 16:15:19 2026 :: Log Alaric [4210]: gos Hey, saw your message earlier
+Sun Oct 18 16:15:19 2026 :: Log Trentlin [4207]: e
+Sun Oct 18 16:15:19 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 16:15:20 2026 :: Log Trentlin [4202]: e
+Sun Oct 18 16:15:20 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Oct 18 16:15:21 2026 :: Log Alaric [4210]: who
+Sun Oct 18 16:15:22 2026 :: Log Alaric [4210]: wake
+Sun Oct 18 16:15:22 2026 :: Log Alaric [4210]: l
