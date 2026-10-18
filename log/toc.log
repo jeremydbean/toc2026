@@ -114977,3 +114977,99 @@ Sun Oct 18 00:40:20 2026 :: Log Alaric [16052]: bs pi
 Sun Oct 18 00:40:55 2026 :: Log Alaric [16052]: s
 Sun Oct 18 00:40:55 2026 :: Log Alaric [16050]: arrived (Bow of the Royal Eagle) from 16052
 Sun Oct 18 00:40:55 2026 :: Log Alaric [16050]: kill pi
+Sun Oct 18 00:41:02 2026 :: Log Alaric [16050]: e
+Sun Oct 18 00:41:02 2026 :: Log Alaric [16051]: arrived (Bow of the Royal Eagle) from 16050
+Sun Oct 18 00:41:02 2026 :: Log Alaric [16051]: kill pi
+Sun Oct 18 00:41:03 2026 :: Log Alaric [16051]: killed The pirate
+Sun Oct 18 00:41:03 2026 :: Log Alaric [16051]: coin +2 platinum
+Sun Oct 18 00:41:03 2026 :: Log Alaric [16051]: coin +12 silver
+Sun Oct 18 00:41:03 2026 :: Log Alaric [16051]: coin +17 copper
+Sun Oct 18 00:41:03 2026 :: Log Alaric [16051]: coin +7 gold
+Sun Oct 18 00:41:07 2026 :: Log Alaric [16051]: w
+Sun Oct 18 00:41:08 2026 :: Log Alaric [16051]: bs sw
+Sun Oct 18 00:41:14 2026 :: Log Alaric [16051]: bash
+Sun Oct 18 00:41:42 2026 :: Sock.sinaddr:  147.185.132.128
+Sun Oct 18 00:41:42 2026 :: Sock.sinaddr:  147.185.132.128
+Sun Oct 18 00:41:42 2026 :: EOF encountered on read.
+Sun Oct 18 00:41:50 2026 :: Log Alaric [16051]: who
+Sun Oct 18 00:41:51 2026 :: Log Alaric [16051]: bash
+Sun Oct 18 00:42:12 2026 :: Log Alaric [16051]: w
+Sun Oct 18 00:42:12 2026 :: Log Alaric [16050]: arrived (Bow of the Royal Eagle) from 16051
+Sun Oct 18 00:42:12 2026 :: Log Alaric [16050]: kill pi
+Sun Oct 18 00:42:18 2026 :: Log Alaric [16050]: e
+Sun Oct 18 00:42:18 2026 :: Log Alaric [16051]: arrived (Bow of the Royal Eagle) from 16050
+Sun Oct 18 00:42:18 2026 :: Log Alaric [16051]: kill pi
+Sun Oct 18 00:42:18 2026 :: Log Alaric [16051]: killed The pirate
+Sun Oct 18 00:42:18 2026 :: Log Alaric [16051]: coin +2 platinum
+Sun Oct 18 00:42:18 2026 :: Log Alaric [16051]: coin +12 silver
+Sun Oct 18 00:42:18 2026 :: Log Alaric [16051]: coin +17 copper
+Sun Oct 18 00:42:18 2026 :: Log Alaric [16051]: coin +7 gold
+Sun Oct 18 00:42:23 2026 :: Log Alaric [16051]: w
+Sun Oct 18 00:42:23 2026 :: Log Alaric [16050]: arrived (Bow of the Royal Eagle) from 16051
+Sun Oct 18 00:42:23 2026 :: Log Alaric [16050]: bs sw
+Sun Oct 18 00:42:45 2026 :: Log Alaric [16050]: level 48 -> 49 (earned)
+Sun Oct 18 00:42:45 2026 :: Alaric has achieved level 49!
+Sun Oct 18 00:42:45 2026 :: Log Alaric [16050]: killed The swashbuckler
+Sun Oct 18 00:42:45 2026 :: Log Alaric [16050]: coin +1 platinum
+Sun Oct 18 00:42:45 2026 :: Log Alaric [16050]: coin +6 silver
+Sun Oct 18 00:42:45 2026 :: Log Alaric [16050]: coin +8 copper
+Sun Oct 18 00:42:45 2026 :: Log Alaric [16050]: coin +3 gold
+Sun Oct 18 00:42:48 2026 :: Log Alaric [16050]: get exc
+Sun Oct 18 00:42:48 2026 :: Log Alaric [16050]: wear exc
+Sun Oct 18 00:43:39 2026 :: Log Alaric [16050]: scan
+Sun Oct 18 00:43:40 2026 :: Log Alaric [16050]: l
+Sun Oct 18 00:43:43 2026 :: Log Alaric [16050]: s
+Sun Oct 18 00:43:43 2026 :: Log Alaric [16047]: arrived (Bow of the Royal Eagle) from 16050
+Sun Oct 18 00:43:44 2026 :: Log Alaric [16047]: bs pi
+Sun Oct 18 00:43:57 2026 :: Log Alaric [16047]: get exc
+Sun Oct 18 00:43:57 2026 :: Log Alaric [16047]: wear exc
+Sun Oct 18 00:44:13 2026 :: Log Alaric [16047]: e
+Sun Oct 18 00:44:13 2026 :: Log Alaric [16048]: arrived (Bow of the Royal Eagle) from 16047
+Sun Oct 18 00:44:15 2026 :: Log Alaric [16048]: kill pi
+Sun Oct 18 00:44:32 2026 :: Log Alaric [16048]: bs pi
+Sun Oct 18 00:44:32 2026 :: Log Alaric [16048]: bs pi
+Sun Oct 18 00:44:32 2026 :: Log Alaric [16048]: bs pi
+Sun Oct 18 00:44:33 2026 :: Log Alaric [16048]: bs pi
+Sun Oct 18 00:44:33 2026 :: Log Alaric [16048]: bs pi
+Sun Oct 18 00:44:33 2026 :: Log Alaric [16048]: bs pi
+Sun Oct 18 00:44:33 2026 :: Log Alaric [16048]: killed The drunk pirate
+Sun Oct 18 00:44:33 2026 :: Log Alaric [16048]: coin +1 platinum
+Sun Oct 18 00:44:33 2026 :: Log Alaric [16048]: coin +5 silver
+Sun Oct 18 00:44:33 2026 :: Log Alaric [16048]: coin +6 copper
+Sun Oct 18 00:44:33 2026 :: Log Alaric [16048]: coin +2 gold
+Sun Oct 18 00:44:34 2026 :: Log Alaric [16048]: bs pi
+Sun Oct 18 00:44:41 2026 :: Sock.sinaddr:  5.161.177.47
+Sun Oct 18 00:44:42 2026 :: EOF encountered on read.
+Sun Oct 18 00:44:42 2026 :: Log Alaric [16048]: kill pi
+Sun Oct 18 00:44:42 2026 :: Log Alaric [16048]: killed The pirate
+Sun Oct 18 00:44:42 2026 :: Log Alaric [16048]: coin +2 platinum
+Sun Oct 18 00:44:42 2026 :: Log Alaric [16048]: coin +12 silver
+Sun Oct 18 00:44:42 2026 :: Log Alaric [16048]: coin +17 copper
+Sun Oct 18 00:44:42 2026 :: Log Alaric [16048]: coin +7 gold
+Sun Oct 18 00:44:52 2026 :: Log Alaric [16048]: bs pi
+Sun Oct 18 00:45:04 2026 :: Log Alaric [16048]: kill pi
+Sun Oct 18 00:45:12 2026 :: Log Alaric [16048]: killed The pirate
+Sun Oct 18 00:45:12 2026 :: Log Alaric [16048]: coin +2 platinum
+Sun Oct 18 00:45:12 2026 :: Log Alaric [16048]: coin +12 silver
+Sun Oct 18 00:45:12 2026 :: Log Alaric [16048]: coin +17 copper
+Sun Oct 18 00:45:12 2026 :: Log Alaric [16048]: coin +7 gold
+Sun Oct 18 00:45:18 2026 :: Log Alaric [16048]: scan
+Sun Oct 18 00:45:19 2026 :: Log Alaric [16048]: s
+Sun Oct 18 00:45:19 2026 :: Log Alaric [16044]: arrived (Main Deck) from 16048
+Sun Oct 18 00:45:19 2026 :: Log Alaric [16044]: s
+Sun Oct 18 00:45:19 2026 :: Log Alaric [16039]: arrived (Main Deck) from 16044
+Sun Oct 18 00:45:20 2026 :: Log Alaric [16039]: s
+Sun Oct 18 00:45:20 2026 :: Log Alaric [16034]: arrived (Main Deck) from 16039
+Sun Oct 18 00:45:20 2026 :: Log Alaric [16034]: s
+Sun Oct 18 00:45:20 2026 :: Log Alaric [16029]: arrived (Main Deck) from 16034
+Sun Oct 18 00:45:20 2026 :: Log Alaric [16029]: s
+Sun Oct 18 00:45:20 2026 :: Log Alaric [16024]: arrived (Main Deck) from 16029
+Sun Oct 18 00:45:20 2026 :: Log Alaric [16024]: s
+Sun Oct 18 00:45:20 2026 :: Log Alaric [16019]: arrived (Main Deck of the Royal Eagle) from 16024
+Sun Oct 18 00:45:21 2026 :: Log Alaric [16019]: s
+Sun Oct 18 00:45:21 2026 :: Log Alaric [16019]: s
+Sun Oct 18 00:45:22 2026 :: Log Alaric [16019]: e
+Sun Oct 18 00:45:22 2026 :: Log Alaric [16020]: arrived (Main Deck of the Royal Eagle - Starboard) from 16019
+Sun Oct 18 00:45:23 2026 :: Log Alaric [16020]: u
+Sun Oct 18 00:45:23 2026 :: Log Alaric [16015]: arrived (Aft Deck - Starboard Side) from 16020
+Sun Oct 18 00:45:25 2026 :: Log Alaric [16015]: bs pi
