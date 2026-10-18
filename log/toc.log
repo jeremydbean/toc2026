@@ -129979,3 +129979,33 @@ Sun Oct 18 23:02:10 2026 :: Log Alaric [16079]: coin +8 copper
 Sun Oct 18 23:02:10 2026 :: Log Alaric [16079]: coin +3 gold
 Sun Oct 18 23:05:00 2026 :: Sock.sinaddr:  178.156.181.172
 Sun Oct 18 23:05:00 2026 :: EOF encountered on read.
+Sun Oct 18 23:06:13 2026 :: Log Alaric [16079]: l
+Sun Oct 18 23:06:13 2026 :: Log Alaric [16079]: w
+Sun Oct 18 23:06:13 2026 :: Log Alaric [16078]: arrived (The Mast) from 16079
+Sun Oct 18 23:06:13 2026 :: Log Alaric [16078]: scan
+Sun Oct 18 23:06:15 2026 :: Log Alaric [16078]: u
+Sun Oct 18 23:06:15 2026 :: Log Alaric [16081]: arrived (The Mast) from 16078
+Sun Oct 18 23:06:16 2026 :: Log Alaric [16081]: scan
+Sun Oct 18 23:06:17 2026 :: Log Alaric [16081]: w
+Sun Oct 18 23:06:17 2026 :: Log Alaric [16080]: arrived (Out on the Mast) from 16081
+Sun Oct 18 23:06:18 2026 :: Log Alaric [16080]: bs sw
+Sun Oct 18 23:07:07 2026 :: Log Alaric [16080]: killed The swashbuckler
+Sun Oct 18 23:07:07 2026 :: Log Alaric [16080]: coin +1 platinum
+Sun Oct 18 23:07:07 2026 :: Log Alaric [16080]: coin +6 silver
+Sun Oct 18 23:07:07 2026 :: Log Alaric [16080]: coin +8 copper
+Sun Oct 18 23:07:07 2026 :: Log Alaric [16080]: coin +3 gold
+Sun Oct 18 23:07:32 2026 :: Log Alaric [16080]: recal
+Sun Oct 18 23:07:32 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16080
+Sun Oct 18 23:07:33 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 23:07:33 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 23:07:33 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 23:07:33 2026 :: Log Alaric [4207]: e
+Sun Oct 18 23:07:33 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 23:07:34 2026 :: Log Alaric [4202]: n
+Sun Oct 18 23:07:34 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 23:07:34 2026 :: Log Alaric [4203]: n
+Sun Oct 18 23:07:34 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 23:07:34 2026 :: Log Alaric [4210]: where herm
+Sun Oct 18 23:07:34 2026 :: Log Alaric [4210]: sleep
+Sun Oct 18 23:10:04 2026 :: Sock.sinaddr:  178.156.184.20
+Sun Oct 18 23:10:04 2026 :: EOF encountered on read.
