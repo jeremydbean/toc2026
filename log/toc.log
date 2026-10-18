@@ -130009,3 +130009,115 @@ Sun Oct 18 23:07:34 2026 :: Log Alaric [4210]: where herm
 Sun Oct 18 23:07:34 2026 :: Log Alaric [4210]: sleep
 Sun Oct 18 23:10:04 2026 :: Sock.sinaddr:  178.156.184.20
 Sun Oct 18 23:10:04 2026 :: EOF encountered on read.
+Sun Oct 18 23:11:08 2026 :: Log Alaric [4210]: who
+Sun Oct 18 23:11:10 2026 :: Log Alaric [4210]: score
+Sun Oct 18 23:12:26 2026 :: Log Alaric [4210]: gr
+Sun Oct 18 23:12:42 2026 :: Log Alaric [4210]: who
+Sun Oct 18 23:13:28 2026 :: Log Alaric [4210]: gr
+Sun Oct 18 23:13:37 2026 :: Log Alaric [4210]: sc
+Sun Oct 18 23:13:44 2026 :: Log Alaric [4210]: wake
+Sun Oct 18 23:13:44 2026 :: Log Alaric [4210]: l
+Sun Oct 18 23:13:45 2026 :: Log Alaric [4210]: s
+Sun Oct 18 23:13:45 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sun Oct 18 23:13:45 2026 :: Log Alaric [4203]: s
+Sun Oct 18 23:13:45 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sun Oct 18 23:13:46 2026 :: Log Alaric [4202]: e
+Sun Oct 18 23:13:46 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Oct 18 23:13:46 2026 :: Log Alaric [4201]: e
+Sun Oct 18 23:13:46 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sun Oct 18 23:13:46 2026 :: Log Alaric [2427]: n
+Sun Oct 18 23:13:46 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 18 23:13:46 2026 :: Log Alaric [2404]: n
+Sun Oct 18 23:13:46 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sun Oct 18 23:13:48 2026 :: Log Alaric [2401]: u
+Sun Oct 18 23:13:48 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sun Oct 18 23:13:48 2026 :: Log Alaric [2410]: u
+Sun Oct 18 23:13:48 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Sun Oct 18 23:13:48 2026 :: Log Alaric [2411]: u
+Sun Oct 18 23:13:48 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Sun Oct 18 23:13:48 2026 :: Log Alaric [2414]: u
+Sun Oct 18 23:13:48 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sun Oct 18 23:13:49 2026 :: Log Alaric [2497]: u
+Sun Oct 18 23:13:49 2026 :: Log Alaric [2497]: aq re
+Sun Oct 18 23:13:53 2026 :: Log Alaric [2497]: enter door
+Sun Oct 18 23:13:53 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Oct 18 23:13:53 2026 :: Log Alaric [2401]: east
+Sun Oct 18 23:13:53 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Oct 18 23:13:53 2026 :: Log Alaric [2403]: east
+Sun Oct 18 23:13:53 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sun Oct 18 23:13:54 2026 :: Log Alaric [2420]: east
+Sun Oct 18 23:13:54 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sun Oct 18 23:13:54 2026 :: Log Alaric [2421]: east
+Sun Oct 18 23:13:54 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sun Oct 18 23:13:54 2026 :: Log Alaric [2422]: east
+Sun Oct 18 23:13:54 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sun Oct 18 23:13:54 2026 :: Log Alaric [2423]: east
+Sun Oct 18 23:13:54 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sun Oct 18 23:13:55 2026 :: Log Alaric [2424]: east
+Sun Oct 18 23:13:55 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sun Oct 18 23:13:55 2026 :: Log Alaric [2425]: east
+Sun Oct 18 23:13:55 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sun Oct 18 23:13:55 2026 :: Log Alaric [2426]: open east
+Sun Oct 18 23:13:55 2026 :: Log Alaric [2426]: east
+Sun Oct 18 23:13:55 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sun Oct 18 23:13:57 2026 :: Log Alaric [2440]: east
+Sun Oct 18 23:13:57 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sun Oct 18 23:13:57 2026 :: Log Alaric [3503]: east
+Sun Oct 18 23:13:57 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sun Oct 18 23:13:58 2026 :: Log Alaric [3502]: south
+Sun Oct 18 23:13:58 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 3502
+Sun Oct 18 23:13:58 2026 :: Log Alaric [5261]: southeast
+Sun Oct 18 23:13:58 2026 :: Log Alaric [35]: arrived (Lava Forest) from 5261
+Sun Oct 18 23:13:58 2026 :: Log Alaric [35]: northeast
+Sun Oct 18 23:13:58 2026 :: Log Alaric [36]: arrived (The Lava Tube) from 35
+Sun Oct 18 23:13:58 2026 :: Log Alaric [36]: east
+Sun Oct 18 23:13:58 2026 :: Log Alaric [37]: arrived (Lava Field) from 36
+Sun Oct 18 23:13:59 2026 :: Log Alaric [37]: southeast
+Sun Oct 18 23:13:59 2026 :: Log Alaric [2900]: arrived (Obsidian hills) from 37
+Sun Oct 18 23:13:59 2026 :: Log Alaric [2900]: south
+Sun Oct 18 23:13:59 2026 :: Log Alaric [2901]: arrived (Obsidian hills) from 2900
+Sun Oct 18 23:13:59 2026 :: Log Alaric [2901]: south
+Sun Oct 18 23:13:59 2026 :: Log Alaric [2902]: arrived (Obsidian hills) from 2901
+Sun Oct 18 23:13:59 2026 :: Log Alaric [2902]: east
+Sun Oct 18 23:13:59 2026 :: Log Alaric [2903]: arrived (Mountain side) from 2902
+Sun Oct 18 23:14:00 2026 :: Log Alaric [2903]: south
+Sun Oct 18 23:14:00 2026 :: Log Alaric [2904]: arrived (Mountain side) from 2903
+Sun Oct 18 23:14:00 2026 :: Log Alaric [2904]: south
+Sun Oct 18 23:14:00 2026 :: Log Alaric [2905]: arrived (Mountain top) from 2904
+Sun Oct 18 23:14:00 2026 :: Log Alaric [2905]: south
+Sun Oct 18 23:14:00 2026 :: Log Alaric [2906]: arrived (Entrance to the mountain) from 2905
+Sun Oct 18 23:14:00 2026 :: Log Alaric [2906]: down
+Sun Oct 18 23:14:00 2026 :: Log Alaric [2910]: arrived (Inside the mountain) from 2906
+Sun Oct 18 23:14:01 2026 :: Log Alaric [2910]: east
+Sun Oct 18 23:14:01 2026 :: Log Alaric [2911]: arrived (Guard room) from 2910
+Sun Oct 18 23:14:02 2026 :: Log Alaric [2911]: get all
+Sun Oct 18 23:14:03 2026 :: Log Alaric [2911]: recal
+Sun Oct 18 23:14:03 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 2911
+Sun Oct 18 23:14:04 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 23:14:04 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 23:14:04 2026 :: Log Alaric [4207]: r e 3
+Sun Oct 18 23:14:04 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 23:14:04 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Oct 18 23:14:04 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sun Oct 18 23:14:05 2026 :: Log Alaric [2427]: n
+Sun Oct 18 23:14:05 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 18 23:14:05 2026 :: Log Alaric [2404]: n
+Sun Oct 18 23:14:05 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sun Oct 18 23:14:05 2026 :: Log Alaric [2401]: u
+Sun Oct 18 23:14:05 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sun Oct 18 23:14:06 2026 :: Log Alaric [2410]: u
+Sun Oct 18 23:14:06 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Sun Oct 18 23:14:06 2026 :: Log Alaric [2411]: u
+Sun Oct 18 23:14:06 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Sun Oct 18 23:14:06 2026 :: Log Alaric [2414]: u
+Sun Oct 18 23:14:06 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sun Oct 18 23:14:06 2026 :: Log Alaric [2497]: u
+Sun Oct 18 23:14:08 2026 :: Log Alaric [2497]: aq co
+Sun Oct 18 23:14:08 2026 :: Log Alaric [2497]: gold +29
+Sun Oct 18 23:14:08 2026 :: Log Alaric [2497]: quest complete: 29 gold, 43 quest points (streak bonus 80%)
+Sun Oct 18 23:14:09 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct 18 23:14:10 2026 :: Log Alaric [2497]: en do
+Sun Oct 18 23:14:10 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Oct 18 23:14:18 2026 :: Log Alaric [2401]: who
+Sun Oct 18 23:15:09 2026 :: Sock.sinaddr:  178.156.187.238
+Sun Oct 18 23:15:09 2026 :: EOF encountered on read.
