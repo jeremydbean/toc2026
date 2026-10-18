@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792293107
+LogO 1792293427
 Vers 4
 Prom < %h/%H %m/%M %v/%V>%c~
 Ignoring ~
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 26
-Plyd 23997
+Plyd 24317
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 29003
-HMV  313 367 681 681 83 250
-NewGold 85
-NewPlat 29
-NewCopp 177
-NewSilv 87
+Room 29061
+HMV  194 367 681 681 176 250
+NewGold 93
+NewPlat 31
+NewCopp 433
+NewSilv 101
 BankCP 15037500
 IntTime 1792263612
 IntTotal 37500
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 268
+AchKills 270
 AchQuests 14
 AchDeaths 2
 AchExplore 0
@@ -93,7 +93,7 @@ SesQuest 0
 QuestPnts 930
 QuestStrk 3
 CasinoLost 4
-Exp  59585
+Exp  59942
 Act  65740
 AfBy 512
 Comm 24576
@@ -125,17 +125,17 @@ Prac 9
 Save  5
 Alig  -1000
 Hit   17
-Dam   30
-ACs -20 -22 -30 80
+Dam   28
+ACs -20 -24 -30 80
 Attr 16 16 16 12 19
-AMod 8 10 10 4 10
+AMod 10 10 9 5 10
 Pass TrjPUdRVdu8MY~
 Titl  the Greater Demon Slayer~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 357 681 250
-Cond 0 30 4
+Cond 0 25 0
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -161,7 +161,7 @@ Sk 76 'bash'
 Sk 75 'disarm'
 Sk 1 'heroic grip'
 Sk 76 'dodge'
-Sk 78 'enhanced damage'
+Sk 79 'enhanced damage'
 Sk 81 'kick'
 Sk 78 'parry'
 Sk 1 'rescue'
@@ -179,8 +179,8 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'  10  11 -20  17          0          0
-AffD 'giant strength'  22  12   3   1          0          0
+AffD 'armor'   9   6 -20  17          0          0
+AffD 'giant strength'  21   7   3   1          0          0
 End
 
 #O
@@ -225,22 +225,12 @@ Repd 0
 End
 
 #O
-Vnum 3074
-Nest 0
-Wear -1
-Lev  5
-Cost 1500000
-Cond 96
-Repd 0
-End
-
-#O
 Vnum 8713
 Nest 0
 Wear 13
 Lev  9
 Cost 270000
-Cond 100
+Cond 97
 Repd 0
 Val  4 4 5 0 0
 End
@@ -265,17 +255,6 @@ Cost 2800000
 Cond 96
 Repd 0
 Val  4 5 6 0 0
-End
-
-#O
-Vnum 10028
-Nest 0
-Wear 7
-Lev  15
-Cost 1900000
-Cond 100
-Repd 0
-Val  6 6 6 0 0
 End
 
 #O
@@ -325,7 +304,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 444
+Time 439
 Cost 0
 Cond 100
 Repd 0
@@ -409,30 +388,9 @@ Val  6 7 7 0 0
 End
 
 #O
-Vnum 3504
-Nest 0
-Wear -1
-Lev  7
-Cost 33000
-Cond 90
-Repd 0
-End
-
-#O
-Vnum 3504
-Nest 0
-Wear -1
-Lev  7
-Cost 33000
-Cond 90
-Repd 0
-Affect -1 7 -1 4 23 0 0
-End
-
-#O
 Vnum 9214
 Nest 0
-Wear -1
+Wear 7
 Lev  22
 Cost 50600000
 Cond 100
@@ -471,39 +429,6 @@ Repd 0
 End
 
 #O
-Vnum 29028
-Nest 0
-Wear -1
-Lev  27
-Cost 3000000
-Cond 97
-Repd 0
-End
-
-#O
-Vnum 29029
-Nest 0
-Wear -1
-Lev  27
-Cost 1000000
-Cond 99
-Repd 0
-Val  0 0 -1 0 0
-Affect -1 27 -1 -1 5 0 0
-End
-
-#O
-Vnum 29030
-Nest 0
-Wear -1
-Lev  29
-Cost 1500000
-Cond 100
-Repd 0
-Affect -1 29 -1 -2 19 0 0
-End
-
-#O
 Vnum 29032
 Nest 0
 Wear -1
@@ -511,17 +436,6 @@ Lev  29
 Cost 5000000
 Cond 100
 Repd 0
-End
-
-#O
-Vnum 29033
-Nest 0
-Wear -1
-Lev  30
-Cost 1000000
-Cond 100
-Repd 0
-Spell 3 'create spring'
 End
 
 #O
@@ -567,11 +481,12 @@ End
 #O
 Vnum 24002
 Nest 0
-Wear -1
+Wear 0
 Lev  14
 Cost 100000
 Cond 100
 Repd 0
+Val  0 0 9994 0 0
 End
 
 #STASH
@@ -646,6 +561,38 @@ Cost 150000
 Cond 97
 Repd 0
 Val  4 6 5 0 0
+End
+
+#O
+Vnum 10028
+Nest 0
+Wear -1
+Lev  15
+Cost 1900000
+Cond 100
+Repd 0
+Val  6 6 6 0 0
+End
+
+#O
+Vnum 3504
+Nest 0
+Wear -1
+Lev  7
+Cost 33000
+Cond 90
+Repd 0
+Affect -1 7 -1 4 23 0 0
+End
+
+#O
+Vnum 3504
+Nest 0
+Wear -1
+Lev  7
+Cost 33000
+Cond 90
+Repd 0
 End
 
 #END
