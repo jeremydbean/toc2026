@@ -1,9 +1,9 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792333723
+LogO 1792333995
 Vers 4
-Prom < %h/%H %m/%M %v/%V>%c~
+Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
 Race dwarf~
 Sex  1
@@ -16,18 +16,18 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 26
-Plyd 24645
+Plyd 24917
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 StashMax 75
 Scro 22
-Room 9519
-HMV  367 367 681 681 27 250
-NewGold 64
-NewPlat 30
-NewCopp 43
-NewSilv 12
+Room 29061
+HMV  175 367 596 681 166 250
+NewGold 70
+NewPlat 32
+NewCopp 167
+NewSilv 24
 BankCP 15037500
 IntTime 1792263612
 IntTotal 37500
@@ -36,7 +36,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 271
+AchKills 273
 AchQuests 15
 AchDeaths 2
 AchExplore 0
@@ -94,8 +94,8 @@ SesQuest 3
 QuestPnts 984
 QuestStrk 4
 CasinoLost 4
-QuestNext 14
-Exp  60153
+QuestNext 10
+Exp  60509
 Act  65740
 AfBy 512
 Comm 24576
@@ -126,9 +126,9 @@ Pos  8
 Prac 9
 Save  5
 Alig  -1000
-Hit   17
-Dam   28
-ACs -20 -24 -30 80
+Hit   13
+Dam   30
+ACs -28 -31 -37 76
 Attr 16 16 16 12 19
 AMod 10 10 9 5 10
 Pass TrjPUdRVdu8MY~
@@ -137,7 +137,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 357 681 250
-Cond 0 19 43
+Cond 0 14 38
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -157,13 +157,13 @@ Sk 25 'mace'
 Sk 35 'polearm'
 Sk 77 'shield block'
 Sk 30 'spear'
-Sk 95 'sword'
+Sk 96 'sword'
 Sk 30 'whip'
 Sk 76 'bash'
 Sk 75 'disarm'
 Sk 1 'heroic grip'
 Sk 76 'dodge'
-Sk 79 'enhanced damage'
+Sk 80 'enhanced damage'
 Sk 81 'kick'
 Sk 78 'parry'
 Sk 1 'rescue'
@@ -181,8 +181,8 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'giant strength'  20   1   3   1          0          0
-AffD 'armor'   4   0 -20  17          0          0
+AffD 'giant strength'  19  23   3   1          0          0
+AffD 'armor'   3  20 -20  17          0          0
 End
 
 #O
@@ -238,28 +238,6 @@ Val  4 4 5 0 0
 End
 
 #O
-Vnum 10022
-Nest 0
-Wear 4
-Lev  11
-Cost 2800000
-Cond 99
-Repd 0
-Val  5 5 6 0 0
-End
-
-#O
-Vnum 10022
-Nest 0
-Wear 3
-Lev  11
-Cost 2800000
-Cond 96
-Repd 0
-Val  4 5 6 0 0
-End
-
-#O
 Vnum 10027
 Nest 0
 Wear 5
@@ -306,7 +284,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 433
+Time 428
 Cost 0
 Cond 100
 Repd 0
@@ -370,7 +348,7 @@ End
 #O
 Vnum 1395
 Nest 0
-Wear -1
+Wear 4
 Lev  24
 Cost 50000000
 Cond 99
@@ -381,7 +359,7 @@ End
 #O
 Vnum 1395
 Nest 0
-Wear -1
+Wear 3
 Lev  23
 Cost 50000000
 Cond 98
@@ -488,7 +466,7 @@ Lev  14
 Cost 100000
 Cond 100
 Repd 0
-Val  0 0 9988 0 0
+Val  0 0 9983 0 0
 End
 
 #STASH
@@ -595,6 +573,28 @@ Lev  7
 Cost 33000
 Cond 90
 Repd 0
+End
+
+#O
+Vnum 10022
+Nest 0
+Wear -1
+Lev  11
+Cost 2800000
+Cond 96
+Repd 0
+Val  4 5 6 0 0
+End
+
+#O
+Vnum 10022
+Nest 0
+Wear -1
+Lev  11
+Cost 2800000
+Cond 99
+Repd 0
+Val  5 5 6 0 0
 End
 
 #END
