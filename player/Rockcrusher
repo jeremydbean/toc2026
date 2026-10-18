@@ -1,8 +1,8 @@
 #PLAYER
 Name Rockcrusher~
 Id   3259
-LogO 1789616624
-Vers 3
+LogO 1792339835
+Vers 4
 Desc You hear a dripping noise.  It gets louder and louder and louder...
 It won't go away!!!  You frantically slap yourself and smash your fists
 into the sides of your head, trying to get the noise to leave.
@@ -34,9 +34,11 @@ Gui  4
 Psionic  1
 PsiGrant 0
 PsiSpec ~
+PsiKnown confuse,ego whip,psionic armor,shift~
+ChangesSeen ~
 Cast none
 Levl 52
-Plyd 1038484
+Plyd 1039095
 ListRemorts ~
 NumRemorts 0
 Note 950989152
@@ -49,6 +51,7 @@ NewCopp 0
 NewSilv 0
 BankCP 0
 IntTime 0
+IntTotal 0
 Dcount 0
 SavedOnce 1
 Corpses	0
@@ -73,6 +76,10 @@ Achv day-played 1789615323
 Achv week-played 1789615323
 Achv carry-one-platinum 1789615323
 Achv carry-hundred-platinum 1789615323
+Achv level-35 1792339835
+Achv level-45 1792339835
+Achv carry-ten-platinum 1792339835
+LastOut  0
 SesLogin 0
 SesDur   0
 SesExpG  0
@@ -165,7 +172,7 @@ Vnum 29206
 Nest 0
 Wear 13
 Lev  50
-Cost 2000
+Cost 20000000
 Cond 100
 Repd 0
 End
@@ -175,7 +182,7 @@ Vnum 725
 Nest 0
 Wear 9
 Lev  46
-Cost 950
+Cost 9500000
 Cond 100
 Repd 0
 End
@@ -185,7 +192,7 @@ Vnum 703
 Nest 0
 Wear 11
 Lev  47
-Cost 2000
+Cost 20000000
 Cond 100
 Repd 0
 End
@@ -195,7 +202,7 @@ Vnum 29032
 Nest 0
 Wear 12
 Lev  29
-Cost 500
+Cost 5000000
 Cond 100
 Repd 0
 End
@@ -205,7 +212,7 @@ Vnum 9224
 Nest 1
 Wear -1
 Lev  8
-Cost 729
+Cost 7290000
 Cond 100
 Repd 0
 Val  150 132 0 0 0
@@ -217,7 +224,7 @@ Nest 1
 ExtF 0
 Wear -1
 Lev  37
-Cost 190
+Cost 1900000
 Cond 100
 Repd 0
 End
@@ -228,7 +235,7 @@ Nest 1
 ExtF 3
 Wear -1
 Lev  51
-Cost 2000
+Cost 20000000
 Cond 100
 Repd 0
 End
@@ -238,7 +245,7 @@ Vnum 9322
 Nest 1
 Wear -1
 Lev  29
-Cost 1250
+Cost 12500000
 Cond 100
 Repd 0
 End
@@ -258,7 +265,7 @@ Vnum 9212
 Nest 1
 Wear -1
 Lev  20
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -268,7 +275,7 @@ Vnum 9212
 Nest 1
 Wear -1
 Lev  20
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -278,7 +285,7 @@ Vnum 2321
 Nest 1
 Wear -1
 Lev  29
-Cost 3000
+Cost 30000000
 Cond 100
 Repd 0
 End
@@ -288,7 +295,7 @@ Vnum 2321
 Nest 1
 Wear -1
 Lev  29
-Cost 3000
+Cost 30000000
 Cond 100
 Repd 0
 End
@@ -297,19 +304,7 @@ End
 Vnum 3092
 Nest 1
 Wear -1
-Cost 150
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
-End
-
-#O
-Vnum 3092
-Nest 1
-Wear -1
-Cost 150
+Cost 1500000
 Cond 100
 Repd 0
 Spell 1 'detect invis'
@@ -321,7 +316,7 @@ End
 Vnum 3092
 Nest 1
 Wear -1
-Cost 150
+Cost 1500000
 Cond 100
 Repd 0
 Spell 1 'detect invis'
@@ -333,7 +328,7 @@ End
 Vnum 3092
 Nest 1
 Wear -1
-Cost 150
+Cost 1500000
 Cond 100
 Repd 0
 Spell 1 'detect invis'
@@ -345,7 +340,7 @@ End
 Vnum 3092
 Nest 1
 Wear -1
-Cost 150
+Cost 1500000
 Cond 100
 Repd 0
 Spell 1 'detect invis'
@@ -357,7 +352,7 @@ End
 Vnum 3092
 Nest 1
 Wear -1
-Cost 150
+Cost 1500000
 Cond 100
 Repd 0
 Spell 1 'detect invis'
@@ -369,7 +364,19 @@ End
 Vnum 3092
 Nest 1
 Wear -1
-Cost 150
+Cost 1500000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 1
+Wear -1
+Cost 1500000
 Cond 100
 Repd 0
 Spell 1 'detect invis'
@@ -383,7 +390,7 @@ Nest 1
 ExtF 3146818
 Wear -1
 Lev  48
-Cost 2500
+Cost 25000000
 Cond 100
 Repd 0
 End
@@ -403,7 +410,7 @@ Vnum 9937
 Nest 1
 Wear -1
 Lev  1
-Cost 1
+Cost 10000
 Cond 100
 Repd 0
 End
@@ -431,7 +438,7 @@ Vnum 29218
 Nest 1
 Wear -1
 Lev  51
-Cost 2500
+Cost 25000000
 Cond 100
 Repd 0
 End
@@ -442,7 +449,7 @@ Nest 1
 ExtF 21
 Wear -1
 Lev  30
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -452,7 +459,7 @@ Vnum 717
 Nest 1
 Wear -1
 Lev  40
-Cost 450
+Cost 4500000
 Cond 100
 Repd 0
 End
@@ -462,7 +469,7 @@ Vnum 717
 Nest 1
 Wear -1
 Lev  40
-Cost 450
+Cost 4500000
 Cond 100
 Repd 0
 End
@@ -472,7 +479,7 @@ Vnum 16016
 Nest 1
 Wear -1
 Lev  52
-Cost 2368
+Cost 23680000
 Cond 100
 Repd 0
 End
@@ -482,7 +489,7 @@ Vnum 29215
 Nest 1
 Wear -1
 Lev  51
-Cost 5000
+Cost 50000000
 Cond 100
 Repd 0
 End
@@ -493,7 +500,7 @@ Nest 1
 ExtF 20
 Wear -1
 Lev  43
-Cost 950
+Cost 9500000
 Cond 100
 Repd 0
 End
@@ -503,7 +510,7 @@ Vnum 16030
 Nest 1
 Wear -1
 Lev  52
-Cost 2560
+Cost 25600000
 Cond 100
 Repd 0
 End
@@ -523,7 +530,7 @@ Vnum 16033
 Nest 1
 Wear -1
 Lev  52
-Cost 2409
+Cost 24090000
 Cond 100
 Repd 0
 End
@@ -544,7 +551,7 @@ Vnum 29049
 Nest 1
 Wear -1
 Lev  45
-Cost 1500
+Cost 15000000
 Cond 100
 Repd 0
 Val  0 0 -1 0 0
@@ -556,7 +563,7 @@ Nest 0
 ExtF 64
 Wear 7
 Lev  30
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -566,7 +573,7 @@ Vnum 20503
 Nest 0
 Wear 17
 Lev  38
-Cost 12000
+Cost 120000000
 Cond 100
 Repd 0
 End
@@ -588,7 +595,7 @@ Nest 0
 ExtF 4
 Wear 2
 Lev  48
-Cost 750
+Cost 7500000
 Cond 100
 Repd 0
 End
@@ -599,7 +606,7 @@ Nest 0
 ExtF 4
 Wear 1
 Lev  48
-Cost 750
+Cost 7500000
 Cond 100
 Repd 0
 End
@@ -609,7 +616,7 @@ Vnum 10051
 Nest 0
 Wear 4
 Lev  50
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -619,7 +626,7 @@ Vnum 10051
 Nest 0
 Wear 3
 Lev  50
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -640,7 +647,7 @@ Nest 0
 ExtF 20
 Wear 6
 Lev  45
-Cost 950
+Cost 9500000
 Cond 100
 Repd 0
 End
@@ -660,7 +667,7 @@ Vnum 20130
 Nest 0
 Wear 15
 Lev  35
-Cost 500
+Cost 5000000
 Cond 100
 Repd 0
 End
@@ -670,7 +677,7 @@ Vnum 20130
 Nest 0
 Wear 14
 Lev  35
-Cost 500
+Cost 5000000
 Cond 99
 Repd 0
 End
@@ -680,7 +687,7 @@ Vnum 29209
 Nest 0
 Wear 10
 Lev  51
-Cost 2000
+Cost 20000000
 Cond 100
 Repd 0
 End
