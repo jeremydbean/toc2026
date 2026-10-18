@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792333995
+LogO 1792334275
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -16,19 +16,19 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 26
-Plyd 24917
+Plyd 25197
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 StashMax 75
 Scro 22
-Room 29061
-HMV  175 367 596 681 166 250
-NewGold 70
-NewPlat 32
-NewCopp 167
-NewSilv 24
-BankCP 15037500
+Room 29071
+HMV  149 367 666 681 95 250
+NewGold 74
+NewPlat 3
+NewCopp 31
+NewSilv 33
+BankCP 45037500
 IntTime 1792263612
 IntTotal 37500
 Dcount 0
@@ -36,7 +36,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 273
+AchKills 274
 AchQuests 15
 AchDeaths 2
 AchExplore 0
@@ -94,8 +94,8 @@ SesQuest 3
 QuestPnts 984
 QuestStrk 4
 CasinoLost 4
-QuestNext 10
-Exp  60509
+QuestNext 6
+Exp  60730
 Act  65740
 AfBy 512
 Comm 24576
@@ -122,7 +122,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
+Pos  4
 Prac 9
 Save  5
 Alig  -1000
@@ -137,7 +137,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 357 681 250
-Cond 0 14 38
+Cond 0 33 44
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -157,7 +157,7 @@ Sk 25 'mace'
 Sk 35 'polearm'
 Sk 77 'shield block'
 Sk 30 'spear'
-Sk 96 'sword'
+Sk 97 'sword'
 Sk 30 'whip'
 Sk 76 'bash'
 Sk 75 'disarm'
@@ -181,8 +181,8 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'giant strength'  19  23   3   1          0          0
-AffD 'armor'   3  20 -20  17          0          0
+AffD 'giant strength'  17  18   3   1          0          0
+AffD 'armor'   2  15 -20  17          0          0
 End
 
 #O
@@ -284,7 +284,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 428
+Time 423
 Cost 0
 Cond 100
 Repd 0
@@ -299,17 +299,6 @@ Cost 100000
 Cond 100
 Repd 0
 Affect -1 15 -1 -1 14 0 0
-End
-
-#O
-Vnum 10029
-Nest 0
-Wear 16
-Lev  14
-Cost 2000000
-Cond 100
-Repd 0
-Val  1 4 5 3 0
 End
 
 #O
@@ -440,15 +429,6 @@ Affect -1 36 -1 -16 14 0 0
 End
 
 #O
-Vnum 3009
-Nest 0
-Wear -1
-Cost 10000
-Cond 100
-Repd 0
-End
-
-#O
 Vnum 4619
 Nest 0
 Wear 6
@@ -466,7 +446,18 @@ Lev  14
 Cost 100000
 Cond 100
 Repd 0
-Val  0 0 9983 0 0
+Val  0 0 9978 0 0
+End
+
+#O
+Vnum 10029
+Nest 0
+Wear 16
+Lev  14
+Cost 2000000
+Cond 100
+Repd 0
+Val  1 4 5 3 0
 End
 
 #STASH
