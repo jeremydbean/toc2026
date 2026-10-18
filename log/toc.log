@@ -115244,3 +115244,46 @@ Sun Oct 18 00:55:58 2026 :: Log Alaric [16033]: coin +1 platinum
 Sun Oct 18 00:55:58 2026 :: Log Alaric [16033]: coin +6 silver
 Sun Oct 18 00:55:58 2026 :: Log Alaric [16033]: coin +8 copper
 Sun Oct 18 00:55:58 2026 :: Log Alaric [16033]: coin +3 gold
+Sun Oct 18 00:56:29 2026 :: Log Alaric [16033]: l
+Sun Oct 18 00:56:31 2026 :: Log Alaric [16033]: u
+Sun Oct 18 00:56:31 2026 :: Log Alaric [16078]: arrived (The Mast) from 16033
+Sun Oct 18 00:56:32 2026 :: Log Alaric [16078]: scan
+Sun Oct 18 00:56:33 2026 :: Log Alaric [16078]: bs sw
+Sun Oct 18 00:56:53 2026 :: Log Alaric [16078]: scan
+Sun Oct 18 00:56:58 2026 :: Log Alaric [16078]: dirt
+Sun Oct 18 00:57:22 2026 :: Log Alaric [16078]: killed The swashbuckler
+Sun Oct 18 00:57:22 2026 :: Log Alaric [16078]: coin +1 platinum
+Sun Oct 18 00:57:22 2026 :: Log Alaric [16078]: coin +6 silver
+Sun Oct 18 00:57:22 2026 :: Log Alaric [16078]: coin +8 copper
+Sun Oct 18 00:57:22 2026 :: Log Alaric [16078]: coin +3 gold
+Sun Oct 18 00:57:29 2026 :: Log Alaric [16078]: e
+Sun Oct 18 00:57:29 2026 :: Log Alaric [16079]: arrived (Out on the Mast) from 16078
+Sun Oct 18 00:57:29 2026 :: Log Alaric [16079]: bs sw
+Sun Oct 18 00:57:55 2026 :: Log Alaric [16079]: get exc
+Sun Oct 18 00:57:55 2026 :: Log Alaric [16079]: wear exc
+Sun Oct 18 00:58:13 2026 :: Log Alaric [16079]: killed The swashbuckler
+Sun Oct 18 00:58:13 2026 :: Log Alaric [16079]: coin +1 platinum
+Sun Oct 18 00:58:13 2026 :: Log Alaric [16079]: coin +6 silver
+Sun Oct 18 00:58:13 2026 :: Log Alaric [16079]: coin +8 copper
+Sun Oct 18 00:58:13 2026 :: Log Alaric [16079]: coin +3 gold
+Sun Oct 18 00:58:25 2026 :: Log Alaric [16079]: w
+Sun Oct 18 00:58:25 2026 :: Log Alaric [16078]: arrived (The Mast) from 16079
+Sun Oct 18 00:58:26 2026 :: Log Alaric [16078]: u
+Sun Oct 18 00:58:26 2026 :: Log Alaric [16081]: arrived (The Mast) from 16078
+Sun Oct 18 00:58:27 2026 :: Log Alaric [16081]: scan
+Sun Oct 18 00:58:29 2026 :: Log Alaric [16081]: u
+Sun Oct 18 00:58:29 2026 :: Log Alaric [16083]: arrived (Crow's Nest) from 16081
+Sun Oct 18 00:58:31 2026 :: Log Alaric [16083]: bs look
+Sun Oct 18 00:59:34 2026 :: Log Alaric [16083]: get exc
+Sun Oct 18 00:59:34 2026 :: Log Alaric [16083]: wear exc
+Sun Oct 18 00:59:55 2026 :: Sock.sinaddr:  178.156.185.231
+Sun Oct 18 00:59:55 2026 :: EOF encountered on read.
+Sun Oct 18 01:00:07 2026 :: Log Alaric [16083]: get exc
+Sun Oct 18 01:00:08 2026 :: Log Alaric [16083]: wear exc
+Sun Oct 18 01:00:37 2026 :: Log Alaric [16083]: dirt
+Sun Oct 18 01:00:46 2026 :: Log Alaric [16083]: get exc
+Sun Oct 18 01:00:47 2026 :: Log Alaric [16083]: wear exc
+Sun Oct 18 01:01:05 2026 :: Log Alaric [16083]: get exc
+Sun Oct 18 01:01:05 2026 :: Log Alaric [16083]: wear exc
+Sun Oct 18 01:01:07 2026 :: Log Alaric [16083]: dirt
+Sun Oct 18 01:01:09 2026 :: Log Alaric [16083]: to
