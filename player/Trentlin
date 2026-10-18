@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792336053
+LogO 1792336402
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -16,18 +16,18 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 27
-Plyd 26975
+Plyd 27324
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 StashMax 75
 Scro 22
-Room 2401
-HMV  315 381 546 696 175 256
-NewGold 81
-NewPlat 6
-NewCopp 108
-NewSilv 23
+Room 2497
+HMV  381 381 696 696 38 256
+NewGold 93
+NewPlat 8
+NewCopp 36
+NewSilv 79
 BankCP 45037500
 IntTime 1792263612
 IntTotal 37500
@@ -36,8 +36,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 277
-AchQuests 16
+AchKills 280
+AchQuests 17
 AchDeaths 3
 AchExplore 0
 AchMaps 0
@@ -92,11 +92,11 @@ SesKill  23
 SesPK    0
 SesDead  0
 SesQuest 3
-QuestPnts 1068
-QuestStrk 5
+QuestPnts 1116
+QuestStrk 6
 CasinoLost 4
-QuestNext 4
-Exp  61067
+QuestNext 15
+Exp  61417
 Act  65740
 AfBy 512
 Comm 24576
@@ -132,14 +132,14 @@ Hit   13
 Dam   30
 ACs -28 -31 -37 76
 Attr 16 16 16 12 19
-AMod 10 10 9 5 10
+AMod 7 10 9 5 10
 Pass TrjPUdRVdu8MY~
 Titl  the Dragon Slayer~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 371 696 256
-Cond 0 3 44
+Cond 0 22 42
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -169,7 +169,7 @@ Sk 83 'enhanced damage'
 Sk 81 'kick'
 Sk 78 'parry'
 Sk 1 'rescue'
-Sk 75 'second attack'
+Sk 76 'second attack'
 Sk 75 'third attack'
 Sk 75 'despair'
 Sk 75 'fast healing'
@@ -183,8 +183,7 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'   0   1 -20  17          0          0
-AffD 'giant strength'  23   3   3   1          0          0
+AffD 'armor'   0  20 -20  17          0          0
 End
 
 #O
@@ -224,7 +223,7 @@ Nest 0
 Wear 1
 Lev  7
 Cost 36000
-Cond 97
+Cond 92
 Repd 0
 End
 
@@ -286,7 +285,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 393
+Time 386
 Cost 0
 Cond 100
 Repd 0
@@ -403,7 +402,7 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 690
+Time 683
 Cost 0
 Cond 100
 Repd 0
@@ -448,7 +447,7 @@ Lev  14
 Cost 100000
 Cond 100
 Repd 0
-Val  0 0 9955 0 0
+Val  0 0 9949 0 0
 End
 
 #O
@@ -463,17 +462,6 @@ Val  1 4 5 3 0
 End
 
 #O
-Vnum 30604
-Nest 0
-Wear -1
-Lev  27
-Cost 100000
-Cond 100
-Repd 0
-Spell 1 'cure critical'
-End
-
-#O
 Vnum 3091
 Nest 0
 Wear -1
@@ -491,6 +479,51 @@ Cost 20000
 Cond 100
 Repd 0
 Spell 1 'fly'
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
 End
 
 #STASH
