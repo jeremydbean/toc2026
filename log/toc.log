@@ -129659,3 +129659,63 @@ Sun Oct 18 22:24:23 2026 :: EOF encountered on read.
 Sun Oct 18 22:24:28 2026 :: Log Alaric [16033]: get just
 Sun Oct 18 22:24:29 2026 :: Log Alaric [16033]: wear just
 Sun Oct 18 22:24:29 2026 :: Log Alaric [16033]: dirt
+Sun Oct 18 22:25:11 2026 :: Log Alaric [16033]: killed The swashbuckler
+Sun Oct 18 22:25:11 2026 :: Log Alaric [16033]: coin +1 platinum
+Sun Oct 18 22:25:11 2026 :: Log Alaric [16033]: coin +6 silver
+Sun Oct 18 22:25:11 2026 :: Log Alaric [16033]: coin +8 copper
+Sun Oct 18 22:25:11 2026 :: Log Alaric [16033]: coin +3 gold
+Sun Oct 18 22:25:26 2026 :: Log Alaric [16033]: scan
+Sun Oct 18 22:25:30 2026 :: Log Alaric [16033]: u
+Sun Oct 18 22:25:30 2026 :: Log Alaric [16078]: arrived (The Mast) from 16033
+Sun Oct 18 22:25:30 2026 :: Log Alaric [16078]: scan
+Sun Oct 18 22:25:32 2026 :: Log Alaric [16078]: e
+Sun Oct 18 22:25:32 2026 :: Log Alaric [16079]: arrived (Out on the Mast) from 16078
+Sun Oct 18 22:25:33 2026 :: Log Alaric [16079]: bs sw
+Sun Oct 18 22:26:35 2026 :: Log Alaric [16079]: killed The swashbuckler
+Sun Oct 18 22:26:35 2026 :: Log Alaric [16079]: coin +1 platinum
+Sun Oct 18 22:26:35 2026 :: Log Alaric [16079]: coin +6 silver
+Sun Oct 18 22:26:35 2026 :: Log Alaric [16079]: coin +8 copper
+Sun Oct 18 22:26:35 2026 :: Log Alaric [16079]: coin +3 gold
+Sun Oct 18 22:28:15 2026 :: Log Alaric [16079]: w
+Sun Oct 18 22:28:15 2026 :: Log Alaric [16078]: arrived (The Mast) from 16079
+Sun Oct 18 22:28:15 2026 :: Log Alaric [16078]: scan
+Sun Oct 18 22:28:16 2026 :: Log Alaric [16078]: recal
+Sun Oct 18 22:28:16 2026 :: Log Alaric [2557]: arrived (Commander's Office.) from 16078
+Sun Oct 18 22:28:17 2026 :: Log Alaric [2557]: e
+Sun Oct 18 22:28:19 2026 :: Log Alaric [2557]: look com
+Sun Oct 18 22:28:24 2026 :: Log Alaric [2557]: os
+Sun Oct 18 22:28:24 2026 :: Log Alaric [2557]: s
+Sun Oct 18 22:28:24 2026 :: Log Alaric [2556]: arrived (Commander's Reception Area.) from 2557
+Sun Oct 18 22:28:29 2026 :: Log Alaric [2556]: d
+Sun Oct 18 22:28:29 2026 :: Log Alaric [2552]: arrived (Guards Room.) from 2556
+Sun Oct 18 22:28:32 2026 :: Log Alaric [2552]: os
+Sun Oct 18 22:28:33 2026 :: Log Alaric [2552]: s
+Sun Oct 18 22:28:33 2026 :: Log Alaric [2550]: arrived (Entrance to the Mayor's Office.) from 2552
+Sun Oct 18 22:28:35 2026 :: Log Alaric [2550]: look go
+Sun Oct 18 22:28:38 2026 :: Log Alaric [2550]: ow
+Sun Oct 18 22:28:38 2026 :: Log Alaric [2550]: ex
+Sun Oct 18 22:28:42 2026 :: Log Alaric [2550]: ex
+Sun Oct 18 22:28:44 2026 :: Log Alaric [2550]: ow
+Sun Oct 18 22:28:45 2026 :: Log Alaric [2550]: ex
+Sun Oct 18 22:28:47 2026 :: Log Alaric [2550]: pick west
+Sun Oct 18 22:28:53 2026 :: Log Alaric [2550]: l
+Sun Oct 18 22:28:54 2026 :: Log Alaric [2550]: scan
+Sun Oct 18 22:28:59 2026 :: Log Alaric [2550]: con gor
+Sun Oct 18 22:29:01 2026 :: Log Alaric [2550]: bs go
+Sun Oct 18 22:29:22 2026 :: Log Alaric [2550]: look
+Sun Oct 18 22:29:22 2026 :: Log Alaric [2550]: flee
+Sun Oct 18 22:29:22 2026 :: Log Alaric [2553]: arrived (Guards Room.) from 2550
+Sun Oct 18 22:29:22 2026 :: Log Alaric [2553]: flee
+Sun Oct 18 22:29:24 2026 :: Log Alaric [2553]: recal
+Sun Oct 18 22:29:24 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 2553
+Sun Oct 18 22:29:26 2026 :: Log Alaric [4207]: e
+Sun Oct 18 22:29:26 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 22:29:26 2026 :: Sock.sinaddr:  52.87.72.16
+Sun Oct 18 22:29:26 2026 :: EOF encountered on read.
+Sun Oct 18 22:29:27 2026 :: Log Alaric [4202]: n
+Sun Oct 18 22:29:27 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 22:29:27 2026 :: Log Alaric [4203]: n
+Sun Oct 18 22:29:27 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 22:29:28 2026 :: Log Alaric [4210]: where herm
+Sun Oct 18 22:29:29 2026 :: Log Alaric [4210]: sleep
+Sun Oct 18 22:29:30 2026 :: Log Alaric [4210]: sc
