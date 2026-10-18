@@ -114737,3 +114737,193 @@ Sun Oct 18 00:30:43 2026 :: Log Alaric [16018]: coin +2 platinum
 Sun Oct 18 00:30:43 2026 :: Log Alaric [16018]: coin +12 silver
 Sun Oct 18 00:30:43 2026 :: Log Alaric [16018]: coin +17 copper
 Sun Oct 18 00:30:43 2026 :: Log Alaric [16018]: coin +7 gold
+Sun Oct 18 00:30:52 2026 :: Log Alaric [16018]: recal
+Sun Oct 18 00:30:52 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16018
+Sun Oct 18 00:30:53 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 00:30:53 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 00:30:53 2026 :: Log Alaric [4207]: w
+Sun Oct 18 00:30:53 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Oct 18 00:30:55 2026 :: Log Alaric [4208]: stash get exc
+Sun Oct 18 00:30:55 2026 :: Log Alaric [4208]: withdrew Excalibur (vnum 700) from the stash
+Sun Oct 18 00:30:57 2026 :: Log Alaric [4208]: stash get scab
+Sun Oct 18 00:30:57 2026 :: Log Alaric [4208]: withdrew Arthur's scabbard (vnum 721) from the stash
+Sun Oct 18 00:30:58 2026 :: Log Alaric [4208]: sc
+Sun Oct 18 00:31:00 2026 :: Log Alaric [4208]: wear sca
+Sun Oct 18 00:31:02 2026 :: Log Alaric [4208]: sc
+Sun Oct 18 00:31:03 2026 :: Log Alaric [4208]: wake
+Sun Oct 18 00:31:03 2026 :: Log Alaric [4208]: l
+Sun Oct 18 00:31:05 2026 :: Log Alaric [4208]: stash put quick
+Sun Oct 18 00:31:05 2026 :: Log Alaric [4208]: stashed a quick sheathe (vnum 8713)
+Sun Oct 18 00:31:08 2026 :: Log Alaric [4208]: wear exc
+Sun Oct 18 00:31:10 2026 :: Log Alaric [4208]: r e 4
+Sun Oct 18 00:31:10 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sun Oct 18 00:31:10 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 00:31:10 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Oct 18 00:31:10 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sun Oct 18 00:31:11 2026 :: Log Alaric [2427]: n
+Sun Oct 18 00:31:11 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 18 00:31:11 2026 :: Log Alaric [2404]: n
+Sun Oct 18 00:31:11 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sun Oct 18 00:31:13 2026 :: Log Alaric [2401]: r e 8
+Sun Oct 18 00:31:13 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Oct 18 00:31:13 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sun Oct 18 00:31:13 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sun Oct 18 00:31:13 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sun Oct 18 00:31:13 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sun Oct 18 00:31:13 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sun Oct 18 00:31:13 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sun Oct 18 00:31:13 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sun Oct 18 00:31:13 2026 :: Log Alaric [2426]: oe
+Sun Oct 18 00:31:14 2026 :: Log Alaric [2426]: r e 25
+Sun Oct 18 00:31:14 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sun Oct 18 00:31:14 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sun Oct 18 00:31:14 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sun Oct 18 00:31:14 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Sun Oct 18 00:31:14 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Sun Oct 18 00:31:14 2026 :: Log Alaric [3527]: arrived (The Checkpoint) from 3526
+Sun Oct 18 00:31:14 2026 :: Log Alaric [3528]: arrived (Along the Eastern Road) from 3527
+Sun Oct 18 00:31:14 2026 :: Log Alaric [3529]: arrived (Along the Eastern Road) from 3528
+Sun Oct 18 00:31:14 2026 :: Log Alaric [3530]: arrived (Near the Sands of Sorrow) from 3529
+Sun Oct 18 00:31:14 2026 :: Log Alaric [3531]: arrived (Near the Sands of Sorrow) from 3530
+Sun Oct 18 00:31:14 2026 :: Log Alaric [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Sun Oct 18 00:31:14 2026 :: Log Alaric [42]: arrived (On the Outskirts of New Thalos) from 3532
+Sun Oct 18 00:31:14 2026 :: Log Alaric [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Sun Oct 18 00:31:14 2026 :: Log Alaric [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sun Oct 18 00:31:14 2026 :: Log Alaric [9524]: arrived (West Main Street) from 9523
+Sun Oct 18 00:31:14 2026 :: Log Alaric [9525]: arrived (West Main Street) from 9524
+Sun Oct 18 00:31:14 2026 :: Log Alaric [9526]: arrived (West Main Street) from 9525
+Sun Oct 18 00:31:14 2026 :: Log Alaric [9509]: arrived (The Western Market Square) from 9526
+Sun Oct 18 00:31:14 2026 :: Log Alaric [9506]: arrived (The Center of Market Square) from 9509
+Sun Oct 18 00:31:14 2026 :: Log Alaric [9517]: arrived (The Eastern Market Square) from 9506
+Sun Oct 18 00:31:14 2026 :: Log Alaric [9527]: arrived (East Main Street) from 9517
+Sun Oct 18 00:31:14 2026 :: Log Alaric [9528]: arrived (East Main Street) from 9527
+Sun Oct 18 00:31:14 2026 :: Log Alaric [9529]: arrived (East Main Street) from 9528
+Sun Oct 18 00:31:14 2026 :: Log Alaric [9530]: arrived (East Main Street) from 9529
+Sun Oct 18 00:31:14 2026 :: Log Alaric [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9530
+Sun Oct 18 00:31:15 2026 :: Log Alaric [9531]: oe
+Sun Oct 18 00:31:16 2026 :: Log Alaric [9531]: r e 6
+Sun Oct 18 00:31:16 2026 :: Log Alaric [9668]: arrived (Outside the Eastern Gate of New Thalos) from 9531
+Sun Oct 18 00:31:16 2026 :: Log Alaric [9790]: arrived (On a road) from 9668
+Sun Oct 18 00:31:16 2026 :: Log Alaric [9791]: arrived (On a road) from 9790
+Sun Oct 18 00:31:16 2026 :: Log Alaric [9792]: arrived (On a road) from 9791
+Sun Oct 18 00:31:16 2026 :: Log Alaric [9793]: arrived (On a road) from 9792
+Sun Oct 18 00:31:16 2026 :: Log Alaric [9794]: arrived (Near the shore) from 9793
+Sun Oct 18 00:31:16 2026 :: Log Alaric [9794]: n
+Sun Oct 18 00:31:16 2026 :: Log Alaric [41]: arrived (The new pier) from 9794
+Sun Oct 18 00:31:16 2026 :: Log Alaric [41]: n
+Sun Oct 18 00:31:16 2026 :: Log Alaric [16000]: arrived (Beginning of the Pier) from 41
+Sun Oct 18 00:31:17 2026 :: Log Alaric [16000]: n
+Sun Oct 18 00:31:17 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16000
+Sun Oct 18 00:31:19 2026 :: Log Alaric [16001]: bs sa
+Sun Oct 18 00:31:27 2026 :: Log Alaric [16001]: prac
+Sun Oct 18 00:31:29 2026 :: Log Alaric [16001]: killed The sailor
+Sun Oct 18 00:31:29 2026 :: Log Alaric [16001]: coin +2 platinum
+Sun Oct 18 00:31:29 2026 :: Log Alaric [16001]: coin +10 silver
+Sun Oct 18 00:31:29 2026 :: Log Alaric [16001]: coin +13 copper
+Sun Oct 18 00:31:29 2026 :: Log Alaric [16001]: coin +5 gold
+Sun Oct 18 00:31:31 2026 :: Log Alaric [16001]: n
+Sun Oct 18 00:31:31 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16001
+Sun Oct 18 00:31:32 2026 :: Log Alaric [16002]: n
+Sun Oct 18 00:31:32 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Sun Oct 18 00:31:34 2026 :: Log Alaric [16003]: bs dr
+Sun Oct 18 00:31:42 2026 :: Log Alaric [16003]: bs sail
+Sun Oct 18 00:31:44 2026 :: Log Alaric [16003]: killed The drunk pirate
+Sun Oct 18 00:31:44 2026 :: Log Alaric [16003]: coin +1 platinum
+Sun Oct 18 00:31:44 2026 :: Log Alaric [16003]: coin +5 silver
+Sun Oct 18 00:31:44 2026 :: Log Alaric [16003]: coin +6 copper
+Sun Oct 18 00:31:44 2026 :: Log Alaric [16003]: coin +2 gold
+Sun Oct 18 00:31:46 2026 :: Log Alaric [16003]: bs sail
+Sun Oct 18 00:32:00 2026 :: Log Alaric [16003]: s
+Sun Oct 18 00:32:00 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16003
+Sun Oct 18 00:32:00 2026 :: Log Alaric [16002]: kill sa
+Sun Oct 18 00:32:05 2026 :: Log Alaric [16002]: killed The sailor
+Sun Oct 18 00:32:05 2026 :: Log Alaric [16002]: coin +2 platinum
+Sun Oct 18 00:32:05 2026 :: Log Alaric [16002]: coin +10 silver
+Sun Oct 18 00:32:05 2026 :: Log Alaric [16002]: coin +13 copper
+Sun Oct 18 00:32:05 2026 :: Log Alaric [16002]: coin +5 gold
+Sun Oct 18 00:32:12 2026 :: Log Alaric [16002]: n
+Sun Oct 18 00:32:12 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Sun Oct 18 00:32:13 2026 :: Log Alaric [16003]: n
+Sun Oct 18 00:32:13 2026 :: Log Alaric [16004]: arrived (A Turn at the Pier) from 16003
+Sun Oct 18 00:32:15 2026 :: Log Alaric [16004]: e
+Sun Oct 18 00:32:15 2026 :: Log Alaric [16005]: arrived (Plankway to the Royal Eagle) from 16004
+Sun Oct 18 00:32:16 2026 :: Log Alaric [16005]: u
+Sun Oct 18 00:32:16 2026 :: Log Alaric [16021]: arrived (Entrance to the Royal Eagle - Main Deck) from 16005
+Sun Oct 18 00:32:17 2026 :: Log Alaric [16021]: scan
+Sun Oct 18 00:32:18 2026 :: Log Alaric [16021]: e
+Sun Oct 18 00:32:18 2026 :: Log Alaric [16022]: arrived (Main Deck) from 16021
+Sun Oct 18 00:32:19 2026 :: Log Alaric [16022]: scan
+Sun Oct 18 00:32:19 2026 :: Log Alaric [16022]: e
+Sun Oct 18 00:32:19 2026 :: Log Alaric [16023]: arrived (Main Deck) from 16022
+Sun Oct 18 00:32:20 2026 :: Log Alaric [16023]: scan
+Sun Oct 18 00:32:21 2026 :: Log Alaric [16023]: e
+Sun Oct 18 00:32:21 2026 :: Log Alaric [16024]: arrived (Main Deck) from 16023
+Sun Oct 18 00:32:22 2026 :: Log Alaric [16024]: scan
+Sun Oct 18 00:32:23 2026 :: Log Alaric [16024]: e
+Sun Oct 18 00:32:23 2026 :: Log Alaric [16025]: arrived (Main Deck - Starboard) from 16024
+Sun Oct 18 00:32:23 2026 :: Log Alaric [16025]: scan
+Sun Oct 18 00:32:24 2026 :: Log Alaric [16025]: n
+Sun Oct 18 00:32:24 2026 :: Log Alaric [16030]: arrived (Main Deck - Starboard) from 16025
+Sun Oct 18 00:32:25 2026 :: Log Alaric [16030]: scan
+Sun Oct 18 00:32:25 2026 :: Log Alaric [16030]: w
+Sun Oct 18 00:32:25 2026 :: Log Alaric [16029]: arrived (Main Deck) from 16030
+Sun Oct 18 00:32:26 2026 :: Log Alaric [16029]: scan
+Sun Oct 18 00:32:27 2026 :: Log Alaric [16029]: w
+Sun Oct 18 00:32:27 2026 :: Log Alaric [16028]: arrived (Main Deck) from 16029
+Sun Oct 18 00:32:28 2026 :: Log Alaric [16028]: scan
+Sun Oct 18 00:32:29 2026 :: Log Alaric [16028]: n
+Sun Oct 18 00:32:29 2026 :: Log Alaric [16033]: arrived (Base of the Mast) from 16028
+Sun Oct 18 00:32:30 2026 :: Log Alaric [16033]: bs sw
+Sun Oct 18 00:32:53 2026 :: Log Alaric [16033]: killed The swashbuckler
+Sun Oct 18 00:32:53 2026 :: Log Alaric [16033]: coin +1 platinum
+Sun Oct 18 00:32:53 2026 :: Log Alaric [16033]: coin +6 silver
+Sun Oct 18 00:32:53 2026 :: Log Alaric [16033]: coin +8 copper
+Sun Oct 18 00:32:53 2026 :: Log Alaric [16033]: coin +3 gold
+Sun Oct 18 00:33:02 2026 :: Log Alaric [16033]: comp dagg
+Sun Oct 18 00:33:04 2026 :: Log Alaric [16033]: wake
+Sun Oct 18 00:33:05 2026 :: Log Alaric [16033]: l
+Sun Oct 18 00:33:08 2026 :: Log Alaric [16033]: e
+Sun Oct 18 00:33:08 2026 :: Log Alaric [16034]: arrived (Main Deck) from 16033
+Sun Oct 18 00:33:09 2026 :: Log Alaric [16034]: w
+Sun Oct 18 00:33:09 2026 :: Log Alaric [16033]: arrived (Base of the Mast) from 16034
+Sun Oct 18 00:33:10 2026 :: Log Alaric [16033]: scan
+Sun Oct 18 00:33:11 2026 :: Log Alaric [16033]: u
+Sun Oct 18 00:33:11 2026 :: Log Alaric [16078]: arrived (The Mast) from 16033
+Sun Oct 18 00:33:11 2026 :: Log Alaric [16078]: scan
+Sun Oct 18 00:33:13 2026 :: Log Alaric [16078]: e
+Sun Oct 18 00:33:13 2026 :: Log Alaric [16079]: arrived (Out on the Mast) from 16078
+Sun Oct 18 00:33:14 2026 :: Log Alaric [16079]: bs sw
+Sun Oct 18 00:33:51 2026 :: Log Alaric [16079]: l
+Sun Oct 18 00:33:53 2026 :: Log Alaric [16079]: killed The swashbuckler
+Sun Oct 18 00:33:53 2026 :: Log Alaric [16079]: coin +1 platinum
+Sun Oct 18 00:33:53 2026 :: Log Alaric [16079]: coin +6 silver
+Sun Oct 18 00:33:53 2026 :: Log Alaric [16079]: coin +8 copper
+Sun Oct 18 00:33:53 2026 :: Log Alaric [16079]: coin +3 gold
+Sun Oct 18 00:33:54 2026 :: Log Alaric [16079]: w
+Sun Oct 18 00:33:54 2026 :: Log Alaric [16078]: arrived (The Mast) from 16079
+Sun Oct 18 00:33:54 2026 :: Log Alaric [16078]: scan
+Sun Oct 18 00:33:56 2026 :: Log Alaric [16078]: u
+Sun Oct 18 00:33:56 2026 :: Log Alaric [16081]: arrived (The Mast) from 16078
+Sun Oct 18 00:33:56 2026 :: Log Alaric [16081]: scan
+Sun Oct 18 00:33:58 2026 :: Log Alaric [16081]: w
+Sun Oct 18 00:33:58 2026 :: Log Alaric [16080]: arrived (Out on the Mast) from 16081
+Sun Oct 18 00:33:58 2026 :: Log Alaric [16080]: bs sw
+Sun Oct 18 00:34:14 2026 :: Log Alaric [16080]: comp dagg
+Sun Oct 18 00:34:32 2026 :: Sock.sinaddr:  18.116.205.62
+Sun Oct 18 00:34:32 2026 :: EOF encountered on read.
+Sun Oct 18 00:34:32 2026 :: Log Alaric [16080]: killed The swashbuckler
+Sun Oct 18 00:34:32 2026 :: Log Alaric [16080]: coin +1 platinum
+Sun Oct 18 00:34:32 2026 :: Log Alaric [16080]: coin +6 silver
+Sun Oct 18 00:34:32 2026 :: Log Alaric [16080]: coin +8 copper
+Sun Oct 18 00:34:32 2026 :: Log Alaric [16080]: coin +3 gold
+Sun Oct 18 00:34:35 2026 :: Log Alaric [16080]: wake
+Sun Oct 18 00:34:35 2026 :: Log Alaric [16080]: e
+Sun Oct 18 00:34:35 2026 :: Log Alaric [16081]: arrived (The Mast) from 16080
+Sun Oct 18 00:34:36 2026 :: Log Alaric [16081]: u
+Sun Oct 18 00:34:36 2026 :: Log Alaric [16083]: arrived (Crow's Nest) from 16081
+Sun Oct 18 00:34:39 2026 :: Log Alaric [16083]: bs look
+Sun Oct 18 00:35:30 2026 :: Log Alaric [16083]: get dagger
+Sun Oct 18 00:35:30 2026 :: Log Alaric [16083]: wear dagger
+Sun Oct 18 00:35:30 2026 :: Log Alaric [16083]: dirt
+Sun Oct 18 00:35:56 2026 :: Log Alaric [16083]: comp dagg
+Sun Oct 18 00:35:57 2026 :: Log Alaric [16083]: get exc
