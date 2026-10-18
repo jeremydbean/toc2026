@@ -125372,3 +125372,217 @@ Sun Oct 18 16:25:46 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 290
 Sun Oct 18 16:25:46 2026 :: Log Alaric [9330]: bs and
 Sun Oct 18 16:25:47 2026 :: Log Trentlin [29003]: ne
 Sun Oct 18 16:25:47 2026 :: Log Trentlin [29060]: arrived (Corridor) from 29003
+Sun Oct 18 16:25:48 2026 :: Log Trentlin [29060]: get key
+Sun Oct 18 16:25:49 2026 :: Log Alaric [9330]: killed poor Andromeda
+Sun Oct 18 16:25:49 2026 :: Log Alaric [9330]: coin +2 silver
+Sun Oct 18 16:25:49 2026 :: Log Alaric [9330]: coin +3 copper
+Sun Oct 18 16:25:49 2026 :: Log Alaric [9330]: coin +1 gold
+Sun Oct 18 16:25:50 2026 :: Log Trentlin [29060]: unlock east
+Sun Oct 18 16:25:51 2026 :: Log Trentlin [29060]: open east
+Sun Oct 18 16:25:53 2026 :: Log Trentlin [29060]: drop key
+Sun Oct 18 16:25:53 2026 :: Log Trentlin [29060]: e
+Sun Oct 18 16:25:53 2026 :: Log Trentlin [29061]: arrived (Corridor) from 29060
+Sun Oct 18 16:25:54 2026 :: Log Trentlin [29061]: s
+Sun Oct 18 16:25:54 2026 :: Log Trentlin [29062]: arrived (Corridor) from 29061
+Sun Oct 18 16:25:58 2026 :: Log Alaric [9330]: l i cor
+Sun Oct 18 16:25:59 2026 :: Log Trentlin [29062]: k g
+Sun Oct 18 16:25:59 2026 :: Log Alaric [9330]: u
+Sun Oct 18 16:25:59 2026 :: Log Alaric [9339]: arrived (On the Mystic Chains) from 9330
+Sun Oct 18 16:26:01 2026 :: Log Alaric [9339]: e
+Sun Oct 18 16:26:01 2026 :: Log Alaric [9351]: arrived (On a Mountain Peak) from 9339
+Sun Oct 18 16:26:03 2026 :: Log Alaric [9351]: bs cap
+Sun Oct 18 16:26:03 2026 :: Log Trentlin [29062]: c fae
+Sun Oct 18 16:26:10 2026 :: Log Trentlin [29062]: smite
+Sun Oct 18 16:26:21 2026 :: Log Trentlin [29062]: smite
+Sun Oct 18 16:26:26 2026 :: Log Alaric [9351]: dirt
+Sun Oct 18 16:26:32 2026 :: Log Trentlin [29062]: smite
+Sun Oct 18 16:26:32 2026 :: Log Trentlin [29062]: killed a security guard
+Sun Oct 18 16:26:32 2026 :: Log Trentlin [29062]: coin +1 platinum
+Sun Oct 18 16:26:32 2026 :: Log Trentlin [29062]: coin +7 silver
+Sun Oct 18 16:26:32 2026 :: Log Trentlin [29062]: coin +10 copper
+Sun Oct 18 16:26:32 2026 :: Log Trentlin [29062]: coin +4 gold
+Sun Oct 18 16:26:37 2026 :: Log Alaric [9351]: killed Capricon
+Sun Oct 18 16:26:37 2026 :: Log Alaric [9351]: coin +1 platinum
+Sun Oct 18 16:26:37 2026 :: Log Alaric [9351]: coin +6 silver
+Sun Oct 18 16:26:37 2026 :: Log Alaric [9351]: coin +8 copper
+Sun Oct 18 16:26:37 2026 :: Log Alaric [9351]: coin +3 gold
+Sun Oct 18 16:26:40 2026 :: Log Trentlin [29062]: k ga
+Sun Oct 18 16:26:40 2026 :: Log Trentlin [29062]: c fae
+Sun Oct 18 16:26:42 2026 :: Log Trentlin [29062]: k g
+Sun Oct 18 16:26:45 2026 :: Log Alaric [9351]: l i cor
+Sun Oct 18 16:26:46 2026 :: Log Trentlin [29062]: c fae
+Sun Oct 18 16:26:50 2026 :: Log Alaric [9351]: gos Think I can get a good light
+Sun Oct 18 16:26:51 2026 :: Log Trentlin [29062]: c fae
+Sun Oct 18 16:26:52 2026 :: Log Alaric [9351]: get all cor
+Sun Oct 18 16:26:52 2026 :: Log Alaric [9351]: e
+Sun Oct 18 16:26:52 2026 :: Log Alaric [9352]: arrived (Inside a Waterfall) from 9351
+Sun Oct 18 16:26:54 2026 :: Log Alaric [9352]: bs aq
+Sun Oct 18 16:27:01 2026 :: Log Trentlin [29062]: smite
+Sun Oct 18 16:27:08 2026 :: Log Trentlin [29062]: smite
+Sun Oct 18 16:27:14 2026 :: Log Alaric [9352]: killed Aquarius
+Sun Oct 18 16:27:14 2026 :: Log Alaric [9352]: coin +1 platinum
+Sun Oct 18 16:27:14 2026 :: Log Alaric [9352]: coin +6 silver
+Sun Oct 18 16:27:14 2026 :: Log Alaric [9352]: coin +8 copper
+Sun Oct 18 16:27:14 2026 :: Log Alaric [9352]: coin +3 gold
+Sun Oct 18 16:27:16 2026 :: Log Trentlin [29062]: go ok be back at recall in a few
+Sun Oct 18 16:27:18 2026 :: Log Alaric [9352]: l i cor
+Sun Oct 18 16:27:18 2026 :: Log Trentlin [29062]: smite
+Sun Oct 18 16:27:18 2026 :: Log Trentlin [29062]: killed a security guard
+Sun Oct 18 16:27:18 2026 :: Log Trentlin [29062]: coin +1 platinum
+Sun Oct 18 16:27:18 2026 :: Log Trentlin [29062]: coin +7 silver
+Sun Oct 18 16:27:18 2026 :: Log Trentlin [29062]: coin +10 copper
+Sun Oct 18 16:27:18 2026 :: Log Trentlin [29062]: coin +4 gold
+Sun Oct 18 16:27:19 2026 :: Log Alaric [9352]: l
+Sun Oct 18 16:27:20 2026 :: Log Alaric [9352]: w
+Sun Oct 18 16:27:20 2026 :: Log Alaric [9351]: arrived (On a Mountain Peak) from 9352
+Sun Oct 18 16:27:21 2026 :: Log Alaric [9351]: w
+Sun Oct 18 16:27:21 2026 :: Log Alaric [9339]: arrived (On the Mystic Chains) from 9351
+Sun Oct 18 16:27:21 2026 :: Log Alaric [9339]: w
+Sun Oct 18 16:27:21 2026 :: Log Alaric [9345]: arrived (Along the seashore) from 9339
+Sun Oct 18 16:27:23 2026 :: Log Alaric [9345]: bs can
+Sun Oct 18 16:27:27 2026 :: Log Trentlin [29062]: k gu
+Sun Oct 18 16:27:30 2026 :: Log Trentlin [29062]: c fae
+Sun Oct 18 16:27:36 2026 :: Log Trentlin [29062]: smite
+Sun Oct 18 16:27:36 2026 :: Log Alaric [9345]: i
+Sun Oct 18 16:27:36 2026 :: Log Alaric [9345]: wear just
+Sun Oct 18 16:27:48 2026 :: Log Trentlin [29062]: smite
+Sun Oct 18 16:27:52 2026 :: Log Alaric [9345]: gos It's in Galaxy. There's an obscene amount of keys to get to the top. Have to figure it out :)
+Sun Oct 18 16:27:56 2026 :: Log Alaric [9345]: killed Cancer
+Sun Oct 18 16:27:56 2026 :: Log Alaric [9345]: coin +1 platinum
+Sun Oct 18 16:27:56 2026 :: Log Alaric [9345]: coin +6 silver
+Sun Oct 18 16:27:56 2026 :: Log Alaric [9345]: coin +8 copper
+Sun Oct 18 16:27:56 2026 :: Log Alaric [9345]: coin +3 gold
+Sun Oct 18 16:27:57 2026 :: Log Trentlin [29062]: smite
+Sun Oct 18 16:27:58 2026 :: Log Alaric [9345]: wear mace
+Sun Oct 18 16:27:59 2026 :: Log Alaric [9345]: l i cor
+Sun Oct 18 16:28:04 2026 :: Log Alaric [9345]: get fl cor
+Sun Oct 18 16:28:06 2026 :: Log Trentlin [29062]: n
+Sun Oct 18 16:28:06 2026 :: Log Trentlin [29061]: arrived (Corridor) from 29062
+Sun Oct 18 16:28:07 2026 :: Log Trentlin [29061]: bash g
+Sun Oct 18 16:28:07 2026 :: Log Alaric [9345]: get can cor
+Sun Oct 18 16:28:10 2026 :: Log Alaric [9345]: eat candy
+Sun Oct 18 16:28:11 2026 :: Log Trentlin [29061]: killed a security guard
+Sun Oct 18 16:28:11 2026 :: Log Trentlin [29061]: coin +1 platinum
+Sun Oct 18 16:28:11 2026 :: Log Trentlin [29061]: coin +7 silver
+Sun Oct 18 16:28:11 2026 :: Log Trentlin [29061]: coin +10 copper
+Sun Oct 18 16:28:11 2026 :: Log Trentlin [29061]: coin +4 gold
+Sun Oct 18 16:28:11 2026 :: Log Alaric [9345]: af
+Sun Oct 18 16:28:12 2026 :: Log Alaric [9345]: w
+Sun Oct 18 16:28:12 2026 :: Log Alaric [9346]: arrived (Within the Deep Jungle) from 9345
+Sun Oct 18 16:28:14 2026 :: Log Alaric [9346]: bs le
+Sun Oct 18 16:28:18 2026 :: Log Trentlin [29061]: s
+Sun Oct 18 16:28:18 2026 :: Log Trentlin [29062]: arrived (Corridor) from 29061
+Sun Oct 18 16:28:18 2026 :: Log Trentlin [29062]: s
+Sun Oct 18 16:28:18 2026 :: Log Trentlin [29063]: arrived (Corridor) from 29062
+Sun Oct 18 16:28:18 2026 :: Log Trentlin [29063]: s
+Sun Oct 18 16:28:18 2026 :: Log Trentlin [29065]: arrived (Service Hallway) from 29063
+Sun Oct 18 16:28:18 2026 :: Log Trentlin [29065]: aff
+Sun Oct 18 16:28:21 2026 :: Log Trentlin [29065]: e
+Sun Oct 18 16:28:21 2026 :: Log Trentlin [29066]: arrived (Service Hallway) from 29065
+Sun Oct 18 16:28:22 2026 :: Log Trentlin [29066]: e
+Sun Oct 18 16:28:22 2026 :: Log Trentlin [29067]: arrived (Service Hallway) from 29066
+Sun Oct 18 16:28:23 2026 :: Log Trentlin [29067]: e
+Sun Oct 18 16:28:23 2026 :: Log Trentlin [29070]: arrived (Service Hallway) from 29067
+Sun Oct 18 16:28:24 2026 :: Log Trentlin [29070]: e
+Sun Oct 18 16:28:24 2026 :: Log Trentlin [29071]: arrived (T-Junction) from 29070
+Sun Oct 18 16:28:25 2026 :: Log Trentlin [29071]: n
+Sun Oct 18 16:28:25 2026 :: Log Trentlin [29080]: arrived (Hallway) from 29071
+Sun Oct 18 16:28:25 2026 :: Log Trentlin [29080]: n
+Sun Oct 18 16:28:25 2026 :: Log Trentlin [29082]: arrived (Engineering Department) from 29080
+Sun Oct 18 16:28:26 2026 :: Log Trentlin [29082]: w
+Sun Oct 18 16:28:26 2026 :: Log Trentlin [29081]: arrived (Engineering Department) from 29082
+Sun Oct 18 16:28:28 2026 :: Log Trentlin [29081]: con en
+Sun Oct 18 16:28:31 2026 :: Log Trentlin [29081]: k en
+Sun Oct 18 16:28:34 2026 :: Log Trentlin [29081]: c fae
+Sun Oct 18 16:28:41 2026 :: Log Alaric [9346]: killed Leo
+Sun Oct 18 16:28:41 2026 :: Log Alaric [9346]: coin +1 platinum
+Sun Oct 18 16:28:41 2026 :: Log Alaric [9346]: coin +6 silver
+Sun Oct 18 16:28:41 2026 :: Log Alaric [9346]: coin +8 copper
+Sun Oct 18 16:28:41 2026 :: Log Alaric [9346]: coin +3 gold
+Sun Oct 18 16:28:45 2026 :: Log Trentlin [29081]: smite
+Sun Oct 18 16:28:47 2026 :: Log Alaric [9346]: l i cor
+Sun Oct 18 16:28:49 2026 :: Log Alaric [9346]: e
+Sun Oct 18 16:28:49 2026 :: Log Alaric [9345]: arrived (Along the seashore) from 9346
+Sun Oct 18 16:28:50 2026 :: Log Alaric [9345]: w
+Sun Oct 18 16:28:50 2026 :: Log Alaric [9346]: arrived (Within the Deep Jungle) from 9345
+Sun Oct 18 16:28:50 2026 :: Log Alaric [9346]: e
+Sun Oct 18 16:28:50 2026 :: Log Alaric [9345]: arrived (Along the seashore) from 9346
+Sun Oct 18 16:28:51 2026 :: Log Alaric [9345]: e
+Sun Oct 18 16:28:51 2026 :: Log Alaric [9339]: arrived (On the Mystic Chains) from 9345
+Sun Oct 18 16:28:52 2026 :: Log Alaric [9339]: s
+Sun Oct 18 16:28:52 2026 :: Log Alaric [9342]: arrived (On a Hill) from 9339
+Sun Oct 18 16:28:54 2026 :: Log Alaric [9342]: bs ar
+Sun Oct 18 16:28:56 2026 :: Log Trentlin [29081]: smite
+Sun Oct 18 16:28:57 2026 :: Log Trentlin [29081]: flee
+Sun Oct 18 16:28:57 2026 :: Log Trentlin [29081]: flee
+Sun Oct 18 16:28:57 2026 :: Log Trentlin [29081]: flee
+Sun Oct 18 16:28:57 2026 :: Log Trentlin [29081]: flee
+Sun Oct 18 16:28:59 2026 :: Log Trentlin [29081]: get all
+Sun Oct 18 16:29:01 2026 :: Log Trentlin [29081]: wear ti
+Sun Oct 18 16:29:02 2026 :: Log Trentlin [29081]: l
+Sun Oct 18 16:29:04 2026 :: Log Trentlin [29081]: e
+Sun Oct 18 16:29:04 2026 :: Log Trentlin [29082]: arrived (Engineering Department) from 29081
+Sun Oct 18 16:29:04 2026 :: Log Trentlin [29082]: s
+Sun Oct 18 16:29:05 2026 :: Log Trentlin [29082]: flee
+Sun Oct 18 16:29:05 2026 :: Log Trentlin [29082]: flee
+Sun Oct 18 16:29:06 2026 :: Sock.sinaddr:  178.156.181.172
+Sun Oct 18 16:29:06 2026 :: EOF encountered on read.
+Sun Oct 18 16:29:07 2026 :: Log Trentlin [29082]: s
+Sun Oct 18 16:29:07 2026 :: Log Trentlin [29080]: arrived (Hallway) from 29082
+Sun Oct 18 16:29:07 2026 :: Log Trentlin [29080]: s
+Sun Oct 18 16:29:07 2026 :: Log Trentlin [29071]: arrived (T-Junction) from 29080
+Sun Oct 18 16:29:08 2026 :: Log Trentlin [29071]: s
+Sun Oct 18 16:29:09 2026 :: Log Trentlin [29071]: reca
+Sun Oct 18 16:29:11 2026 :: Log Alaric [9342]: killed Aries
+Sun Oct 18 16:29:11 2026 :: Log Alaric [9342]: coin +1 platinum
+Sun Oct 18 16:29:11 2026 :: Log Alaric [9342]: coin +6 silver
+Sun Oct 18 16:29:11 2026 :: Log Alaric [9342]: coin +8 copper
+Sun Oct 18 16:29:11 2026 :: Log Alaric [9342]: coin +3 gold
+Sun Oct 18 16:29:12 2026 :: Log Trentlin [29071]: recall
+Sun Oct 18 16:29:14 2026 :: Log Trentlin [29071]: recall
+Sun Oct 18 16:29:14 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 29071
+Sun Oct 18 16:29:15 2026 :: Log Trentlin [4207]: w
+Sun Oct 18 16:29:15 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Oct 18 16:29:17 2026 :: Log Trentlin [4208]: wo
+Sun Oct 18 16:29:18 2026 :: Log Trentlin [4208]: heal
+Sun Oct 18 16:29:23 2026 :: Log Trentlin [4208]: heal heal
+Sun Oct 18 16:29:23 2026 :: Log Trentlin [4208]: gold -500
+Sun Oct 18 16:29:27 2026 :: Log Trentlin [4208]: wo
+Sun Oct 18 16:29:30 2026 :: Log Trentlin [4208]: e
+Sun Oct 18 16:29:30 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sun Oct 18 16:29:32 2026 :: Log Trentlin [4207]: e
+Sun Oct 18 16:29:32 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 16:29:34 2026 :: Log Trentlin [4202]: n
+Sun Oct 18 16:29:34 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 16:29:34 2026 :: Log Trentlin [4203]: n
+Sun Oct 18 16:29:34 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 16:29:35 2026 :: Log Trentlin [4210]: sleep
+Sun Oct 18 16:29:35 2026 :: Log Trentlin [4210]: gro
+Sun Oct 18 16:29:44 2026 :: Log Alaric [9342]: l i cor
+Sun Oct 18 16:29:48 2026 :: Log Alaric [9342]: get spring cor
+Sun Oct 18 16:29:48 2026 :: Log Alaric [9342]: s
+Sun Oct 18 16:29:49 2026 :: Log Alaric [9342]: l
+Sun Oct 18 16:29:51 2026 :: Log Alaric [9342]: w
+Sun Oct 18 16:29:51 2026 :: Log Alaric [9343]: arrived (Inside a Spanish Bull-Ring) from 9342
+Sun Oct 18 16:29:53 2026 :: Log Alaric [9343]: bs t
+Sun Oct 18 16:30:26 2026 :: Log Alaric [9343]: killed Taurus
+Sun Oct 18 16:30:26 2026 :: Log Alaric [9343]: coin +1 platinum
+Sun Oct 18 16:30:26 2026 :: Log Alaric [9343]: coin +6 silver
+Sun Oct 18 16:30:26 2026 :: Log Alaric [9343]: coin +8 copper
+Sun Oct 18 16:30:26 2026 :: Log Alaric [9343]: coin +3 gold
+Sun Oct 18 16:30:32 2026 :: Log Alaric [9343]: l i cor
+Sun Oct 18 16:30:34 2026 :: Log Alaric [9343]: w
+Sun Oct 18 16:30:34 2026 :: Log Alaric [9344]: arrived (Inside a study) from 9343
+Sun Oct 18 16:30:36 2026 :: Log Alaric [9344]: bs gem
+Sun Oct 18 16:30:47 2026 :: Log Alaric [9344]: killed Gemini
+Sun Oct 18 16:30:47 2026 :: Log Alaric [9344]: coin +1 platinum
+Sun Oct 18 16:30:47 2026 :: Log Alaric [9344]: coin +6 silver
+Sun Oct 18 16:30:47 2026 :: Log Alaric [9344]: coin +8 copper
+Sun Oct 18 16:30:47 2026 :: Log Alaric [9344]: coin +3 gold
+Sun Oct 18 16:30:55 2026 :: Log Alaric [9344]: l i cor
+Sun Oct 18 16:30:56 2026 :: Log Alaric [9344]: e
+Sun Oct 18 16:30:56 2026 :: Log Alaric [9343]: arrived (Inside a Spanish Bull-Ring) from 9344
+Sun Oct 18 16:30:56 2026 :: Log Alaric [9343]: e
+Sun Oct 18 16:30:56 2026 :: Log Alaric [9342]: arrived (On a Hill) from 9343
+Sun Oct 18 16:30:57 2026 :: Log Alaric [9342]: e
+Sun Oct 18 16:30:57 2026 :: Log Alaric [9353]: arrived (Inside a Gigantic Clam) from 9342
