@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792290545
+LogO 1792290856
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 25
-Plyd 21435
+Plyd 21746
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 29062
-HMV  207 351 654 654 241 244
-NewGold 102
-NewPlat 22
-NewCopp 137
-NewSilv 76
+Room 2497
+HMV  351 351 654 654 64 244
+NewGold 29
+NewPlat 24
+NewCopp 1
+NewSilv 85
 BankCP 15037500
 IntTime 1792263612
 IntTotal 37500
@@ -35,8 +35,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 251
-AchQuests 12
+AchKills 253
+AchQuests 13
 AchDeaths 2
 AchExplore 0
 AchMaps 0
@@ -53,6 +53,7 @@ Achv first-quest 1791057078
 Achv ten-quests 1792251647
 Achv five-quest-streak 1792183900
 Achv ten-quest-streak 1792251647
+Achv quest-rush 1792290848
 Achv quest-gamble-win 1791057092
 Achv visit-mud-school 1791053973
 Achv visit-casino 1791056149
@@ -89,10 +90,11 @@ SesKill  39
 SesPK    0
 SesDead  0
 SesQuest 0
-QuestPnts 774
-QuestStrk 1
+QuestPnts 862
+QuestStrk 2
 CasinoLost 4
-Exp  57379
+QuestNext 14
+Exp  57640
 Act  65740
 AfBy 512
 Comm 24576
@@ -135,7 +137,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 341 654 244
-Cond 0 26 38
+Cond 0 21 44
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -161,7 +163,7 @@ Sk 76 'bash'
 Sk 75 'disarm'
 Sk 1 'heroic grip'
 Sk 76 'dodge'
-Sk 75 'enhanced damage'
+Sk 76 'enhanced damage'
 Sk 81 'kick'
 Sk 78 'parry'
 Sk 1 'rescue'
@@ -177,7 +179,7 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'  14  21 -20  17          0          0
+AffD 'armor'  13  16 -20  17          0          0
 End
 
 #O
@@ -322,7 +324,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 489
+Time 483
 Cost 0
 Cond 100
 Repd 0
