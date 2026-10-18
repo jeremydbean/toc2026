@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792335491
+LogO 1792335785
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -16,18 +16,18 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 27
-Plyd 26413
+Plyd 26707
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 StashMax 75
 Scro 22
-Room 2427
-HMV  381 381 696 696 95 256
-NewGold 1
-NewPlat 5
-NewCopp 71
-NewSilv 94
+Room 2401
+HMV  381 381 683 696 145 256
+NewGold 74
+NewPlat 4
+NewCopp 91
+NewSilv 11
 BankCP 45037500
 IntTime 1792263612
 IntTotal 37500
@@ -36,7 +36,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 275
+AchKills 276
 AchQuests 16
 AchDeaths 3
 AchExplore 0
@@ -56,6 +56,7 @@ Achv five-quest-streak 1792183900
 Achv ten-quest-streak 1792251647
 Achv quest-rush 1792290848
 Achv quest-gamble-win 1791057092
+Achv hyrule-arrival 1792335492
 Achv visit-mud-school 1791053973
 Achv visit-casino 1791056149
 Achv visit-smurf 1791055506
@@ -94,8 +95,8 @@ SesQuest 3
 QuestPnts 1068
 QuestStrk 5
 CasinoLost 4
-QuestNext 15
-Exp  60777
+QuestNext 10
+Exp  61057
 Act  65740
 AfBy 512
 Comm 24576
@@ -123,7 +124,7 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 11
+Prac 7
 Trai 1
 Save  5
 Alig  -1000
@@ -138,7 +139,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 371 696 256
-Cond 0 13 32
+Cond 0 8 27
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -159,7 +160,7 @@ Sk 35 'polearm'
 Sk 77 'shield block'
 Sk 30 'spear'
 Sk 98 'sword'
-Sk 30 'whip'
+Sk 75 'whip'
 Sk 76 'bash'
 Sk 75 'disarm'
 Sk 1 'heroic grip'
@@ -182,8 +183,8 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'   0  11 -20  17          0          0
-AffD 'giant strength'  26  13   3   1          0          0
+AffD 'armor'   0   6 -20  17          0          0
+AffD 'giant strength'  25   8   3   1          0          0
 End
 
 #O
@@ -285,7 +286,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 403
+Time 398
 Cost 0
 Cond 100
 Repd 0
@@ -402,7 +403,7 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 700
+Time 695
 Cost 0
 Cond 100
 Repd 0
@@ -447,7 +448,7 @@ Lev  14
 Cost 100000
 Cond 100
 Repd 0
-Val  0 0 9965 0 0
+Val  0 0 9960 0 0
 End
 
 #O
@@ -457,8 +458,39 @@ Wear 16
 Lev  14
 Cost 2000000
 Cond 100
-Repd 0
+Repd 1
 Val  1 4 5 3 0
+End
+
+#O
+Vnum 30604
+Nest 0
+Wear -1
+Lev  27
+Cost 100000
+Cond 100
+Repd 0
+Spell 1 'cure critical'
+End
+
+#O
+Vnum 3091
+Nest 0
+Wear -1
+Cost 20000
+Cond 100
+Repd 0
+Spell 1 'fly'
+End
+
+#O
+Vnum 3091
+Nest 0
+Wear -1
+Cost 20000
+Cond 100
+Repd 0
+Spell 1 'fly'
 End
 
 #STASH
