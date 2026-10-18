@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792287178
+LogO 1792287554
 Vers 4
 Prom ~
 Ignoring ~
@@ -16,18 +16,18 @@ PsiKnown torment,telekinesis,mindbar,mind leech~
 ChangesSeen 20261017a:1 20261013a:3 20261010a:3 20261008b:3 20261008a:3 20261005d:3 20261005c:3 20261005a:3 20261005b:3 20261004t:3 20261004s:3 20261004a:3 20261004b:3 20261004c:3 20261004d:3 20261004e:3 20261004f:3 20261004g:3 20261004h:3 20261004i:3 20261004j:3 20261004k:3 20261004l:3 20261004m:3 20261004n:3 20261004o:3 20261004p:3 20261004q:3 20261004r:3 20261003a:3 20261003b:3 20261003c:3 20261003d:3 20261003e:3 20261003f:3 20261003g:3 20261003h:3 20261003i:3 20261003j:3 20261003k:3 20261003l:3 20261003m:3 20261002a:3 20261002b:3 20261002c:3 20261001a:3 20261001b:3 20261001c:3 20261001d:3 20261001e:3 20261001f:3 20261001g:3 20261001h:3 20261001i:3 20261001j:3 20261001k:3 20261001l:3 20261001m:3 20261001n:3 20261001o:3 20261001p:3 20261001q:3 20261001r:3 20261001s:3 20261001t:3 20261001u:3 20261001v:3 20261001w:3 20261001x:3 20261001y:3 20261001z:3 20260925a:3 20260925b:3 20260925c:3 20260925d:3 20260925e:3 20260925f:3 20260925g:3 20260925h:3 20260925i:3 20260925j:3 20260925k:3 20260925l:3 20260925m:3 20260925n:3 20260925o:3 20260925p:3 20260925q:3 20260925r:3 20260925s:3 20260925t:3 20260925u:3 20260925v:3 20260925w:3 20260925x:3 20260925y:3 20260925z:3 20260924a:3 20260924b:3 20260924c:3 20260924d:3 20260924e:3~
 Cast none
 Levl 52
-Plyd 720876
+Plyd 721252
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
 StashMax 150
 Scro 22
-Room 29205
-HMV  5947 1187 10246 1751 548 732
-NewGold 558
-NewPlat 281
-NewCopp 1495
-NewSilv 1083
+Room 4208
+HMV  631 1187 1751 1751 558 724
+NewGold 571
+NewPlat 286
+NewCopp 1526
+NewSilv 1106
 BankCP 3271248097
 IntTime 1792285084
 IntTotal 94248097
@@ -36,7 +36,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 2563
+AchKills 2564
 AchQuests 253
 AchDeaths 7
 AchExplore 5
@@ -128,7 +128,7 @@ QuestPnts 94
 QuestStrk 10
 CasinoWon  51
 CasinoLost 304
-Exp  129107
+Exp  129610
 Act  4261068
 AfBy 512
 Comm 24576
@@ -158,13 +158,13 @@ Color 16 6
 Pos  8
 Prac 71
 Trai 34
-Save  -1
+Save  1
 Alig  1000
-Hit   51
-Dam   59
-ACs -173 -182 -135 -25
+Hit   53
+Dam   61
+ACs -183 -190 -147 -31
 Attr 20 13 13 18 19
-AMod 14 10 9 7 12
+AMod 14 8 9 9 12
 Pass Al3w9zuAlwpyY~
 Titl  the Hero of the Fourth Order~
 Pnts 5080
@@ -197,7 +197,7 @@ Sk 97 'sword'
 Sk 20 'whip'
 Sk 82 'backstab'
 Sk 76 'bash'
-Sk 84 'dirt kicking'
+Sk 86 'dirt kicking'
 Sk 91 'dodge'
 Sk 100 'dual wield'
 Sk 75 'fatality'
@@ -365,7 +365,7 @@ Nest 0
 Wear 14
 Lev  40
 Cost 4500000
-Cond 93
+Cond 91
 Repd 0
 End
 
@@ -380,18 +380,6 @@ Repd 0
 End
 
 #O
-Vnum 10047
-Nest 0
-Wear 11
-Lev  31
-Cost 20000000
-Cond 98
-Repd 0
-Affect -1 31 -1 1 17 0 0
-Affect -1 31 -1 -2 22 0 0
-End
-
-#O
 Vnum 3020
 Nest 0
 Wear -1
@@ -408,26 +396,6 @@ Wear -1
 Lev  5
 Cost 20000
 Cond 90
-Repd 0
-End
-
-#O
-Vnum 16006
-Nest 0
-Wear 1
-Lev  43
-Cost 22600000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 16006
-Nest 0
-Wear 2
-Lev  43
-Cost 22600000
-Cond 100
 Repd 0
 End
 
@@ -554,11 +522,20 @@ Repd 0
 Affect -1 53 -1 2 20 0 0
 End
 
-#STASH
 #O
 Vnum 16033
 Nest 0
-Wear -1
+Wear 2
+Lev  52
+Cost 24090000
+Cond 98
+Repd 0
+End
+
+#O
+Vnum 16033
+Nest 0
+Wear 1
 Lev  52
 Cost 24090000
 Cond 100
@@ -567,15 +544,18 @@ Affect -1 52 -1 -2 3 0 0
 End
 
 #O
-Vnum 16033
+Vnum 29207
 Nest 0
-Wear -1
-Lev  52
-Cost 24090000
-Cond 98
+ExtF 3
+Wear 11
+Lev  51
+Cost 20000000
+Cond 99
 Repd 0
+Affect -1 51 -1 -8 14 0 0
 End
 
+#STASH
 #O
 Vnum 9213
 Nest 0
@@ -736,18 +716,6 @@ Lev  53
 Cost 50000000
 Cond 100
 Repd 0
-End
-
-#O
-Vnum 29207
-Nest 0
-ExtF 3
-Wear -1
-Lev  51
-Cost 20000000
-Cond 99
-Repd 0
-Affect -1 51 -1 -8 14 0 0
 End
 
 #O
@@ -1779,6 +1747,38 @@ Lev  25
 Cost 250000000
 Cond 59
 Repd 1
+End
+
+#O
+Vnum 16006
+Nest 0
+Wear -1
+Lev  43
+Cost 22600000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 16006
+Nest 0
+Wear -1
+Lev  43
+Cost 22600000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 10047
+Nest 0
+Wear -1
+Lev  31
+Cost 20000000
+Cond 98
+Repd 0
+Affect -1 31 -1 1 17 0 0
+Affect -1 31 -1 -2 22 0 0
 End
 
 #END

@@ -116738,3 +116738,267 @@ Sun Oct 18 01:36:33 2026 :: Log Trentlin [25265]: gro
 Sun Oct 18 01:36:34 2026 :: Log Trentlin [25265]: l
 Sun Oct 18 01:36:37 2026 :: Log Trentlin [25265]: recall
 Sun Oct 18 01:36:37 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 25265
+Sun Oct 18 01:36:40 2026 :: Log Trentlin [4207]: w
+Sun Oct 18 01:36:40 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Oct 18 01:36:44 2026 :: Log Trentlin [4208]: heal refresh
+Sun Oct 18 01:36:44 2026 :: Log Trentlin [4208]: gold -10
+Sun Oct 18 01:36:47 2026 :: Log Trentlin [4208]: heal refresh
+Sun Oct 18 01:36:47 2026 :: Log Trentlin [4208]: gold -10
+Sun Oct 18 01:36:50 2026 :: Log Trentlin [4208]: heal heal
+Sun Oct 18 01:36:50 2026 :: Log Trentlin [4208]: gold -500
+Sun Oct 18 01:36:53 2026 :: Log Trentlin [4208]: e
+Sun Oct 18 01:36:53 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sun Oct 18 01:36:53 2026 :: Log Trentlin [4207]: e
+Sun Oct 18 01:36:53 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 01:36:53 2026 :: Log Trentlin [4202]: e
+Sun Oct 18 01:36:53 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Oct 18 01:36:53 2026 :: Log Trentlin [4201]: n
+Sun Oct 18 01:36:53 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 4201
+Sun Oct 18 01:36:54 2026 :: Log Trentlin [2433]: n
+Sun Oct 18 01:36:56 2026 :: Log Trentlin [2433]: e
+Sun Oct 18 01:36:56 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2433
+Sun Oct 18 01:36:57 2026 :: Log Trentlin [2405]: e
+Sun Oct 18 01:36:57 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2405
+Sun Oct 18 01:37:11 2026 :: Log Alaric [4210]: gr
+Sun Oct 18 01:37:16 2026 :: Log Trentlin [2401]: gro
+Sun Oct 18 01:37:17 2026 :: Log Trentlin [2401]: sco
+Sun Oct 18 01:37:20 2026 :: Log Trentlin [2401]: att
+Sun Oct 18 01:37:21 2026 :: Log Trentlin [2401]: aff
+Sun Oct 18 01:37:41 2026 :: Log Alaric [4210]: wake
+Sun Oct 18 01:37:42 2026 :: Log Alaric [4210]: s
+Sun Oct 18 01:37:42 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sun Oct 18 01:37:42 2026 :: Log Alaric [4203]: s
+Sun Oct 18 01:37:42 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sun Oct 18 01:37:42 2026 :: Log Alaric [4202]: w
+Sun Oct 18 01:37:42 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4202
+Sun Oct 18 01:37:42 2026 :: Log Alaric [4207]: w
+Sun Oct 18 01:37:42 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Oct 18 01:37:45 2026 :: Log Alaric [4208]: stash get assass
+Sun Oct 18 01:37:45 2026 :: Log Alaric [4208]: withdrew An assassin's ring (vnum 16033) from the stash
+Sun Oct 18 01:37:45 2026 :: Log Alaric [4208]: stash get assass
+Sun Oct 18 01:37:45 2026 :: Log Alaric [4208]: withdrew An assassin's ring (vnum 16033) from the stash
+Sun Oct 18 01:37:46 2026 :: Log Alaric [4208]: eq
+Sun Oct 18 01:37:48 2026 :: Log Alaric [4208]: sc
+Sun Oct 18 01:37:51 2026 :: Log Alaric [4208]: rem pirate
+Sun Oct 18 01:37:51 2026 :: Log Alaric [4208]: rem pirate
+Sun Oct 18 01:37:53 2026 :: Log Alaric [4208]: wear assass
+Sun Oct 18 01:37:53 2026 :: Log Alaric [4208]: wear assass
+Sun Oct 18 01:37:55 2026 :: Log Alaric [4208]: sc
+Sun Oct 18 01:38:02 2026 :: Log Trentlin [2401]: l
+Sun Oct 18 01:38:03 2026 :: Log Alaric [4208]: stash put pir
+Sun Oct 18 01:38:03 2026 :: Log Alaric [4208]: stashed a pirate's ring (vnum 16006)
+Sun Oct 18 01:38:03 2026 :: Log Alaric [4208]: stash put pir
+Sun Oct 18 01:38:03 2026 :: Log Alaric [4208]: stashed a pirate's ring (vnum 16006)
+Sun Oct 18 01:38:05 2026 :: Log Alaric [4208]: eq
+Sun Oct 18 01:38:06 2026 :: Log Trentlin [2401]: r e 8
+Sun Oct 18 01:38:06 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Oct 18 01:38:06 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Sun Oct 18 01:38:06 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Sun Oct 18 01:38:06 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Sun Oct 18 01:38:06 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Sun Oct 18 01:38:06 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Sun Oct 18 01:38:06 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sun Oct 18 01:38:06 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sun Oct 18 01:38:06 2026 :: Log Trentlin [2426]: open gate
+Sun Oct 18 01:38:06 2026 :: Log Trentlin [2426]: r e 2
+Sun Oct 18 01:38:06 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sun Oct 18 01:38:06 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Sun Oct 18 01:38:07 2026 :: Log Trentlin [3503]: n
+Sun Oct 18 01:38:07 2026 :: Log Trentlin [20100]: arrived (Entrance to the Prison) from 3503
+Sun Oct 18 01:38:09 2026 :: Log Trentlin [20100]: sca
+Sun Oct 18 01:38:09 2026 :: Log Trentlin [20100]: l
+Sun Oct 18 01:38:11 2026 :: Log Trentlin [20100]: con ra
+Sun Oct 18 01:38:12 2026 :: Log Trentlin [20100]: n
+Sun Oct 18 01:38:12 2026 :: Log Trentlin [20101]: arrived (The Prison of Dresden) from 20100
+Sun Oct 18 01:38:20 2026 :: Log Trentlin [20101]: con ga
+Sun Oct 18 01:38:20 2026 :: Log Alaric [4208]: score
+Sun Oct 18 01:38:20 2026 :: Log Alaric [4208]: l
+Sun Oct 18 01:38:21 2026 :: Log Alaric [4208]: e
+Sun Oct 18 01:38:21 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sun Oct 18 01:38:21 2026 :: Log Trentlin [20101]: n
+Sun Oct 18 01:38:21 2026 :: Log Trentlin [20102]: arrived (A Bright Intersection) from 20101
+Sun Oct 18 01:38:21 2026 :: Log Alaric [4207]: e
+Sun Oct 18 01:38:21 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 01:38:22 2026 :: Log Alaric [4202]: n
+Sun Oct 18 01:38:22 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 01:38:22 2026 :: Log Alaric [4203]: n
+Sun Oct 18 01:38:22 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 01:38:22 2026 :: Log Trentlin [20102]: sca
+Sun Oct 18 01:38:22 2026 :: Log Alaric [4210]: sleep
+Sun Oct 18 01:38:23 2026 :: Log Alaric [4210]: gr
+Sun Oct 18 01:38:24 2026 :: Log Alaric [4210]: sc
+Sun Oct 18 01:38:25 2026 :: Log Trentlin [20102]: n
+Sun Oct 18 01:38:25 2026 :: Log Trentlin [20103]: arrived (A Dark Intersection) from 20102
+Sun Oct 18 01:38:27 2026 :: Log Trentlin [20103]: con wo
+Sun Oct 18 01:38:28 2026 :: Log Trentlin [20103]: sca
+Sun Oct 18 01:38:30 2026 :: Log Trentlin [20103]: e
+Sun Oct 18 01:38:30 2026 :: Log Trentlin [20152]: arrived (A Guard Room) from 20103
+Sun Oct 18 01:38:33 2026 :: Log Trentlin [20152]: con p
+Sun Oct 18 01:38:34 2026 :: Log Trentlin [20152]: con g
+Sun Oct 18 01:38:35 2026 :: Log Trentlin [20152]: e
+Sun Oct 18 01:38:35 2026 :: Log Trentlin [20153]: arrived (A cellblock) from 20152
+Sun Oct 18 01:38:36 2026 :: Log Trentlin [20153]: sca
+Sun Oct 18 01:38:38 2026 :: Log Trentlin [20153]: sca
+Sun Oct 18 01:38:40 2026 :: Log Trentlin [20153]: e
+Sun Oct 18 01:38:40 2026 :: Log Trentlin [20154]: arrived (A cellblock) from 20153
+Sun Oct 18 01:38:40 2026 :: Log Trentlin [20154]: sca
+Sun Oct 18 01:38:41 2026 :: Log Trentlin [20154]: n
+Sun Oct 18 01:38:41 2026 :: Log Trentlin [20159]: arrived (A cell) from 20154
+Sun Oct 18 01:38:43 2026 :: Log Trentlin [20159]: con p
+Sun Oct 18 01:38:44 2026 :: Log Trentlin [20159]: l p
+Sun Oct 18 01:38:45 2026 :: Log Trentlin [20159]: k p
+Sun Oct 18 01:38:49 2026 :: Log Trentlin [20159]: killed the prisoner
+Sun Oct 18 01:38:53 2026 :: Log Trentlin [20159]: s
+Sun Oct 18 01:38:53 2026 :: Log Trentlin [20154]: arrived (A cellblock) from 20159
+Sun Oct 18 01:38:53 2026 :: Log Trentlin [20154]: w
+Sun Oct 18 01:38:53 2026 :: Log Trentlin [20153]: arrived (A cellblock) from 20154
+Sun Oct 18 01:38:53 2026 :: Log Trentlin [20153]: n
+Sun Oct 18 01:38:53 2026 :: Log Trentlin [20157]: arrived (A cell) from 20153
+Sun Oct 18 01:38:54 2026 :: Log Trentlin [20157]: k p
+Sun Oct 18 01:39:02 2026 :: Log Alaric [4210]: wake
+Sun Oct 18 01:39:02 2026 :: Log Alaric [4210]: s
+Sun Oct 18 01:39:02 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sun Oct 18 01:39:02 2026 :: Log Alaric [4203]: s
+Sun Oct 18 01:39:02 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sun Oct 18 01:39:02 2026 :: Log Alaric [4202]: w
+Sun Oct 18 01:39:02 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4202
+Sun Oct 18 01:39:03 2026 :: Log Alaric [4207]: w
+Sun Oct 18 01:39:03 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Oct 18 01:39:03 2026 :: Log Alaric [4208]: w
+Sun Oct 18 01:39:04 2026 :: Log Trentlin [20157]: killed the prisoner
+Sun Oct 18 01:39:06 2026 :: Log Alaric [4208]: stash get bone
+Sun Oct 18 01:39:06 2026 :: Log Alaric [4208]: withdrew a bone mace (vnum 29207) from the stash
+Sun Oct 18 01:39:08 2026 :: Log Trentlin [20157]: s
+Sun Oct 18 01:39:08 2026 :: Log Trentlin [20153]: arrived (A cellblock) from 20157
+Sun Oct 18 01:39:08 2026 :: Log Trentlin [20153]: s
+Sun Oct 18 01:39:08 2026 :: Log Trentlin [20158]: arrived (A cell) from 20153
+Sun Oct 18 01:39:08 2026 :: Log Alaric [4208]: sec mace
+Sun Oct 18 01:39:09 2026 :: Log Trentlin [20158]: k p
+Sun Oct 18 01:39:11 2026 :: Log Trentlin [20158]: n
+Sun Oct 18 01:39:11 2026 :: Log Trentlin [20153]: arrived (A cellblock) from 20158
+Sun Oct 18 01:39:12 2026 :: Log Trentlin [20153]: e
+Sun Oct 18 01:39:12 2026 :: Log Trentlin [20154]: arrived (A cellblock) from 20153
+Sun Oct 18 01:39:12 2026 :: Log Trentlin [20154]: s
+Sun Oct 18 01:39:12 2026 :: Log Trentlin [20160]: arrived (A cell) from 20154
+Sun Oct 18 01:39:13 2026 :: Log Trentlin [20160]: k p
+Sun Oct 18 01:39:14 2026 :: Log Alaric [4208]: stash put pra
+Sun Oct 18 01:39:14 2026 :: Log Alaric [4208]: stashed (Chanted) Prayers to the Creator (vnum 10047)
+Sun Oct 18 01:39:16 2026 :: Log Alaric [4208]: e
+Sun Oct 18 01:39:16 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sun Oct 18 01:39:16 2026 :: Log Alaric [4207]: e
+Sun Oct 18 01:39:16 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 01:39:16 2026 :: Log Alaric [4202]: n
+Sun Oct 18 01:39:16 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 01:39:17 2026 :: Log Alaric [4203]: n
+Sun Oct 18 01:39:17 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 01:39:17 2026 :: Log Alaric [4210]: sleep
+Sun Oct 18 01:39:18 2026 :: Log Alaric [4210]: sc
+Sun Oct 18 01:39:23 2026 :: Log Trentlin [20160]: kick
+Sun Oct 18 01:39:25 2026 :: Log Trentlin [20160]: level 22 -> 23 (earned)
+Sun Oct 18 01:39:25 2026 :: Trentlin has achieved level 23!
+Sun Oct 18 01:39:25 2026 :: Log Trentlin [20160]: killed the prisoner
+Sun Oct 18 01:39:29 2026 :: Log Trentlin [20160]: n
+Sun Oct 18 01:39:29 2026 :: Log Trentlin [20154]: arrived (A cellblock) from 20160
+Sun Oct 18 01:39:29 2026 :: Log Trentlin [20154]: e
+Sun Oct 18 01:39:29 2026 :: Log Trentlin [20155]: arrived (A cellblock) from 20154
+Sun Oct 18 01:39:29 2026 :: Log Trentlin [20155]: s
+Sun Oct 18 01:39:29 2026 :: Log Trentlin [20162]: arrived (A cell) from 20155
+Sun Oct 18 01:39:30 2026 :: Log Trentlin [20162]: k p
+Sun Oct 18 01:39:34 2026 :: Log Trentlin [20162]: killed the prisoner
+Sun Oct 18 01:39:34 2026 :: Log Trentlin [20162]: kick
+Sun Oct 18 01:39:35 2026 :: Log Trentlin [20162]: n
+Sun Oct 18 01:39:35 2026 :: Log Trentlin [20155]: arrived (A cellblock) from 20162
+Sun Oct 18 01:39:37 2026 :: Log Trentlin [20155]: n
+Sun Oct 18 01:39:37 2026 :: Log Trentlin [20161]: arrived (A cell) from 20155
+Sun Oct 18 01:39:38 2026 :: Log Trentlin [20161]: k p
+Sun Oct 18 01:39:43 2026 :: Log Trentlin [20161]: killed the prisoner
+Sun Oct 18 01:39:47 2026 :: Log Trentlin [20161]: s
+Sun Oct 18 01:39:47 2026 :: Log Trentlin [20155]: arrived (A cellblock) from 20161
+Sun Oct 18 01:39:47 2026 :: Log Trentlin [20155]: e
+Sun Oct 18 01:39:47 2026 :: Log Trentlin [20156]: arrived (An alcove) from 20155
+Sun Oct 18 01:39:47 2026 :: Log Trentlin [20156]: n
+Sun Oct 18 01:39:48 2026 :: Log Trentlin [20156]: k p
+Sun Oct 18 01:39:49 2026 :: Log Trentlin [20156]: w
+Sun Oct 18 01:39:49 2026 :: Log Trentlin [20155]: arrived (A cellblock) from 20156
+Sun Oct 18 01:39:49 2026 :: Log Trentlin [20155]: s
+Sun Oct 18 01:39:49 2026 :: Log Trentlin [20162]: arrived (A cell) from 20155
+Sun Oct 18 01:39:51 2026 :: Log Trentlin [20162]: k p
+Sun Oct 18 01:39:53 2026 :: Log Trentlin [20162]: n
+Sun Oct 18 01:39:53 2026 :: Log Trentlin [20155]: arrived (A cellblock) from 20162
+Sun Oct 18 01:39:53 2026 :: Log Trentlin [20155]: w
+Sun Oct 18 01:39:53 2026 :: Log Trentlin [20154]: arrived (A cellblock) from 20155
+Sun Oct 18 01:39:54 2026 :: Log Trentlin [20154]: w
+Sun Oct 18 01:39:54 2026 :: Log Trentlin [20153]: arrived (A cellblock) from 20154
+Sun Oct 18 01:39:54 2026 :: Log Trentlin [20153]: w
+Sun Oct 18 01:39:54 2026 :: Log Trentlin [20152]: arrived (A Guard Room) from 20153
+Sun Oct 18 01:39:56 2026 :: Log Trentlin [20152]: w
+Sun Oct 18 01:39:56 2026 :: Log Trentlin [20103]: arrived (A Dark Intersection) from 20152
+Sun Oct 18 01:39:57 2026 :: Log Trentlin [20103]: n
+Sun Oct 18 01:39:57 2026 :: Log Trentlin [20104]: arrived (A long hallway) from 20103
+Sun Oct 18 01:39:58 2026 :: Log Trentlin [20104]: e
+Sun Oct 18 01:39:58 2026 :: Log Trentlin [20184]: arrived (Deep dank hall) from 20104
+Sun Oct 18 01:40:00 2026 :: Log Trentlin [20184]: l p
+Sun Oct 18 01:40:02 2026 :: Log Trentlin [20184]: e
+Sun Oct 18 01:40:02 2026 :: Log Trentlin [20185]: arrived (The showers) from 20184
+Sun Oct 18 01:40:07 2026 :: Log Trentlin [20185]: killed A steam monster
+Sun Oct 18 01:40:08 2026 :: Log Trentlin [20185]: con mon
+Sun Oct 18 01:40:11 2026 :: Log Trentlin [20185]: l in cor
+Sun Oct 18 01:40:14 2026 :: Log Trentlin [20185]: get all
+Sun Oct 18 01:40:15 2026 :: Log Trentlin [20185]: w
+Sun Oct 18 01:40:15 2026 :: Log Trentlin [20184]: arrived (Deep dank hall) from 20185
+Sun Oct 18 01:40:16 2026 :: Log Trentlin [20184]: w
+Sun Oct 18 01:40:16 2026 :: Log Trentlin [20104]: arrived (A long hallway) from 20184
+Sun Oct 18 01:40:17 2026 :: Log Trentlin [20104]: e
+Sun Oct 18 01:40:17 2026 :: Log Trentlin [20184]: arrived (Deep dank hall) from 20104
+Sun Oct 18 01:40:18 2026 :: Log Trentlin [20184]: con to
+Sun Oct 18 01:40:19 2026 :: Log Trentlin [20184]: w
+Sun Oct 18 01:40:19 2026 :: Log Trentlin [20104]: arrived (A long hallway) from 20184
+Sun Oct 18 01:40:20 2026 :: Log Trentlin [20104]: w
+Sun Oct 18 01:40:21 2026 :: Log Trentlin [20104]: s
+Sun Oct 18 01:40:21 2026 :: Log Trentlin [20103]: arrived (A Dark Intersection) from 20104
+Sun Oct 18 01:40:22 2026 :: Log Trentlin [20103]: w
+Sun Oct 18 01:40:22 2026 :: Log Trentlin [20141]: arrived (Guard Room) from 20103
+Sun Oct 18 01:40:24 2026 :: Log Trentlin [20141]: w
+Sun Oct 18 01:40:24 2026 :: Log Trentlin [20142]: arrived (A cellblock) from 20141
+Sun Oct 18 01:40:25 2026 :: Log Trentlin [20142]: n
+Sun Oct 18 01:40:25 2026 :: Log Trentlin [20150]: arrived (A cell) from 20142
+Sun Oct 18 01:40:26 2026 :: Log Trentlin [20150]: k p
+Sun Oct 18 01:40:28 2026 :: Sock.sinaddr:  198.199.85.100
+Sun Oct 18 01:40:31 2026 :: Sock.sinaddr:  198.199.85.100
+Sun Oct 18 01:40:31 2026 :: EOF encountered on read.
+Sun Oct 18 01:40:34 2026 :: EOF encountered on read.
+Sun Oct 18 01:40:36 2026 :: Log Trentlin [20150]: kick
+Sun Oct 18 01:40:36 2026 :: Sock.sinaddr:  18.116.205.62
+Sun Oct 18 01:40:37 2026 :: EOF encountered on read.
+Sun Oct 18 01:40:40 2026 :: Log Trentlin [20150]: killed the prisoner
+Sun Oct 18 01:40:41 2026 :: Log Trentlin [20150]: kick
+Sun Oct 18 01:40:42 2026 :: Log Trentlin [20150]: s
+Sun Oct 18 01:40:42 2026 :: Log Trentlin [20142]: arrived (A cellblock) from 20150
+Sun Oct 18 01:40:42 2026 :: Log Trentlin [20142]: s
+Sun Oct 18 01:40:42 2026 :: Log Trentlin [20151]: arrived (A cell) from 20142
+Sun Oct 18 01:40:43 2026 :: Log Trentlin [20151]: k p
+Sun Oct 18 01:40:52 2026 :: Log Trentlin [20151]: killed the prisoner
+Sun Oct 18 01:40:56 2026 :: Log Trentlin [20151]: k rat
+Sun Oct 18 01:40:56 2026 :: Log Trentlin [20151]: killed the rat
+Sun Oct 18 01:41:00 2026 :: Log Trentlin [20151]: n
+Sun Oct 18 01:41:00 2026 :: Log Trentlin [20142]: arrived (A cellblock) from 20151
+Sun Oct 18 01:41:00 2026 :: Log Trentlin [20142]: w
+Sun Oct 18 01:41:00 2026 :: Log Trentlin [20143]: arrived (A cellblock) from 20142
+Sun Oct 18 01:41:01 2026 :: Log Trentlin [20143]: s
+Sun Oct 18 01:41:01 2026 :: Log Trentlin [20149]: arrived (A cell) from 20143
+Sun Oct 18 01:41:02 2026 :: Log Trentlin [20149]: k pr
+Sun Oct 18 01:41:16 2026 :: Log Trentlin [20149]: killed the prisoner
+Sun Oct 18 01:41:20 2026 :: Log Trentlin [20149]: n
+Sun Oct 18 01:41:20 2026 :: Log Trentlin [20143]: arrived (A cellblock) from 20149
+Sun Oct 18 01:41:20 2026 :: Log Trentlin [20143]: n
+Sun Oct 18 01:41:20 2026 :: Log Trentlin [20148]: arrived (A cell) from 20143
+Sun Oct 18 01:41:20 2026 :: Log Trentlin [20148]: k pr
+Sun Oct 18 01:41:28 2026 :: Log Trentlin [20148]: killed the prisoner
+Sun Oct 18 01:41:32 2026 :: Log Alaric [4210]: who
+Sun Oct 18 01:41:33 2026 :: Log Trentlin [20148]: s
+Sun Oct 18 01:41:33 2026 :: Log Trentlin [20143]: arrived (A cellblock) from 20148
+Sun Oct 18 01:41:33 2026 :: Log Trentlin [20143]: w
+Sun Oct 18 01:41:33 2026 :: Log Trentlin [20144]: arrived (A cellblock) from 20143
+Sun Oct 18 01:41:34 2026 :: Log Trentlin [20144]: s
+Sun Oct 18 01:41:34 2026 :: Log Trentlin [20147]: arrived (A cell) from 20144
+Sun Oct 18 01:41:36 2026 :: Log Trentlin [20147]: k pr
