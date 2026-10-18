@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792293427
+LogO 1792293507
 Vers 4
 Prom < %h/%H %m/%M %v/%V>%c~
 Ignoring ~
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 26
-Plyd 24317
+Plyd 24397
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 29061
-HMV  194 367 681 681 176 250
-NewGold 93
-NewPlat 31
-NewCopp 433
-NewSilv 101
+Room 4210
+HMV  56 367 681 681 89 250
+NewGold 97
+NewPlat 32
+NewCopp 443
+NewSilv 108
 BankCP 15037500
 IntTime 1792263612
 IntTotal 37500
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 270
+AchKills 271
 AchQuests 14
 AchDeaths 2
 AchExplore 0
@@ -81,19 +81,19 @@ Achv visit-glitter-palace 1791414563
 Achv visit-underdark 1792281756
 Achv visit-new-thalos 1791415830
 Achv visit-korzath-fortress 1792287816
-LastOut  1792288709
-SesLogin 1792286592
-SesDur   2117
-SesExpG  7653
-SesLvlG  4
-SesKill  39
+LastOut  1792293507
+SesLogin 1792289399
+SesDur   4108
+SesExpG  3320
+SesLvlG  1
+SesKill  23
 SesPK    0
 SesDead  0
-SesQuest 0
+SesQuest 3
 QuestPnts 930
 QuestStrk 3
 CasinoLost 4
-Exp  59942
+Exp  60153
 Act  65740
 AfBy 512
 Comm 24576
@@ -120,7 +120,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
+Pos  4
 Prac 9
 Save  5
 Alig  -1000
@@ -135,7 +135,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 357 681 250
-Cond 0 25 0
+Cond 0 24 48
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -153,7 +153,7 @@ Sk 83 'dagger'
 Sk 25 'flail'
 Sk 25 'mace'
 Sk 35 'polearm'
-Sk 76 'shield block'
+Sk 77 'shield block'
 Sk 30 'spear'
 Sk 95 'sword'
 Sk 30 'whip'
@@ -179,8 +179,8 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'   9   6 -20  17          0          0
-AffD 'giant strength'  21   7   3   1          0          0
+AffD 'armor'   8   5 -20  17          0          0
+AffD 'giant strength'  21   6   3   1          0          0
 End
 
 #O
@@ -304,7 +304,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 439
+Time 437
 Cost 0
 Cond 100
 Repd 0
@@ -486,7 +486,7 @@ Lev  14
 Cost 100000
 Cond 100
 Repd 0
-Val  0 0 9994 0 0
+Val  0 0 9993 0 0
 End
 
 #STASH
