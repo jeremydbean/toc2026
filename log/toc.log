@@ -127952,3 +127952,21 @@ Sun Oct 18 17:35:07 2026 :: Log Alaric [4210]: score
 Sun Oct 18 17:35:08 2026 :: Log Alaric [4210]: eq
 Sun Oct 18 17:40:10 2026 :: Sock.sinaddr:  5.161.177.47
 Sun Oct 18 17:40:11 2026 :: EOF encountered on read.
+Sun Oct 18 17:45:13 2026 :: Sock.sinaddr:  5.161.113.195
+Sun Oct 18 17:45:14 2026 :: EOF encountered on read.
+Sun Oct 18 17:46:12 2026 :: Log Alaric [4210]: wake
+Sun Oct 18 17:46:14 2026 :: Log Alaric [4210]: where herm
+Sun Oct 18 17:46:15 2026 :: Log Alaric [4210]: wake
+Sun Oct 18 17:46:15 2026 :: Log Alaric [4210]: s
+Sun Oct 18 17:46:15 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sun Oct 18 17:46:16 2026 :: Log Alaric [4203]: s
+Sun Oct 18 17:46:16 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sun Oct 18 17:46:16 2026 :: Log Alaric [4202]: e
+Sun Oct 18 17:46:16 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Oct 18 17:46:16 2026 :: Log Alaric [4201]: e
+Sun Oct 18 17:46:16 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sun Oct 18 17:46:17 2026 :: Log Alaric [2427]: n
+Sun Oct 18 17:46:17 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 18 17:46:17 2026 :: Log Alaric [2404]: n
+Sun Oct 18 17:46:17 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sun Oct 18 17:46:25 2026 :: Log Alaric [2401]: eq
