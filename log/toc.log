@@ -118633,3 +118633,81 @@ Sun Oct 18 02:26:47 2026 :: Log Trentlin [29003]: sco
 Sun Oct 18 02:26:51 2026 :: Log Trentlin [29003]: help alignment
 Sun Oct 18 02:27:01 2026 :: Log Trentlin [29003]: wo
 Sun Oct 18 02:27:02 2026 :: Log Trentlin [29003]: (refused) fgro
+Sun Oct 18 02:27:07 2026 :: Log Trentlin [29003]: gr
+Sun Oct 18 02:27:21 2026 :: Log Trentlin [29003]: gainlist
+Sun Oct 18 02:27:32 2026 :: Log Trentlin [29003]: sco
+Sun Oct 18 02:27:35 2026 :: Log Trentlin [29003]: gr
+Sun Oct 18 02:27:54 2026 :: Log Trentlin [29003]: gr
+Sun Oct 18 02:28:00 2026 :: Log Trentlin [29003]: gr
+Sun Oct 18 02:28:01 2026 :: Log Trentlin [29003]: wake
+Sun Oct 18 02:28:02 2026 :: Log Trentlin [29003]: l
+Sun Oct 18 02:28:03 2026 :: Log Trentlin [29003]: e
+Sun Oct 18 02:28:06 2026 :: Log Trentlin [29003]: ne
+Sun Oct 18 02:28:06 2026 :: Log Trentlin [29060]: arrived (Corridor) from 29003
+Sun Oct 18 02:28:07 2026 :: Log Trentlin [29060]: e
+Sun Oct 18 02:28:07 2026 :: Log Trentlin [29061]: arrived (Corridor) from 29060
+Sun Oct 18 02:28:08 2026 :: Log Trentlin [29061]: e
+Sun Oct 18 02:28:09 2026 :: Log Trentlin [29061]: e
+Sun Oct 18 02:28:10 2026 :: Log Trentlin [29061]: w
+Sun Oct 18 02:28:10 2026 :: Log Trentlin [29060]: arrived (Corridor) from 29061
+Sun Oct 18 02:28:12 2026 :: Log Trentlin [29060]: k g
+Sun Oct 18 02:28:13 2026 :: Log Trentlin [29060]: sw
+Sun Oct 18 02:28:13 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29060
+Sun Oct 18 02:28:15 2026 :: Log Trentlin [29003]: sca
+Sun Oct 18 02:28:17 2026 :: Log Trentlin [29003]: ne
+Sun Oct 18 02:28:17 2026 :: Log Trentlin [29060]: arrived (Corridor) from 29003
+Sun Oct 18 02:28:18 2026 :: Log Trentlin [29060]: e
+Sun Oct 18 02:28:18 2026 :: Log Trentlin [29061]: arrived (Corridor) from 29060
+Sun Oct 18 02:28:19 2026 :: Log Trentlin [29061]: l
+Sun Oct 18 02:28:21 2026 :: Log Trentlin [29061]: s
+Sun Oct 18 02:28:21 2026 :: Log Trentlin [29062]: arrived (Corridor) from 29061
+Sun Oct 18 02:28:21 2026 :: Log Trentlin [29062]: sca
+Sun Oct 18 02:28:23 2026 :: Log Trentlin [29062]: con g
+Sun Oct 18 02:28:24 2026 :: Log Trentlin [29062]: k g
+Sun Oct 18 02:28:36 2026 :: Log Trentlin [29062]: bash
+Sun Oct 18 02:28:54 2026 :: Log Trentlin [29062]: bash
+Sun Oct 18 02:29:08 2026 :: Log Trentlin [29062]: bash
+Sun Oct 18 02:29:29 2026 :: Log Trentlin [29062]: bash
+Sun Oct 18 02:29:40 2026 :: Log Trentlin [29062]: killed a security guard
+Sun Oct 18 02:29:40 2026 :: Log Trentlin [29062]: coin +1 platinum
+Sun Oct 18 02:29:40 2026 :: Log Trentlin [29062]: coin +7 silver
+Sun Oct 18 02:29:40 2026 :: Log Trentlin [29062]: coin +10 copper
+Sun Oct 18 02:29:40 2026 :: Log Trentlin [29062]: coin +4 gold
+Sun Oct 18 02:29:48 2026 :: Log Trentlin [29062]: sac cp
+Sun Oct 18 02:29:48 2026 :: Log Trentlin [29062]: sac co
+Sun Oct 18 02:29:48 2026 :: Log Trentlin [29062]: coin +54 copper
+Sun Oct 18 02:30:15 2026 :: Log Trentlin [29062]: gr
+Sun Oct 18 02:30:16 2026 :: Log Trentlin [29062]: reca
+Sun Oct 18 02:30:18 2026 :: Log Trentlin [29062]: recall
+Sun Oct 18 02:30:20 2026 :: Log Trentlin [29062]: recall
+Sun Oct 18 02:30:22 2026 :: Log Trentlin [29062]: recall
+Sun Oct 18 02:30:22 2026 :: Log Trentlin [12]: arrived (Breathless) from 29062
+Sun Oct 18 02:30:23 2026 :: Log Trentlin [12]: recall
+Sun Oct 18 02:30:23 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 12
+Sun Oct 18 02:30:25 2026 :: Log Trentlin [4207]: e
+Sun Oct 18 02:30:25 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 02:30:25 2026 :: Log Trentlin [4202]: n
+Sun Oct 18 02:30:25 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 02:30:26 2026 :: Log Trentlin [4203]: n
+Sun Oct 18 02:30:26 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 02:30:26 2026 :: Log Trentlin [4210]: n
+Sun Oct 18 02:30:28 2026 :: Log Trentlin [4210]: s
+Sun Oct 18 02:30:28 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4210
+Sun Oct 18 02:30:28 2026 :: Log Trentlin [4203]: s
+Sun Oct 18 02:30:28 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4203
+Sun Oct 18 02:30:29 2026 :: Log Trentlin [4202]: s
+Sun Oct 18 02:30:29 2026 :: Log Trentlin [4206]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 02:30:29 2026 :: Log Trentlin [4206]: dri
+Sun Oct 18 02:30:29 2026 :: Log Trentlin [4206]: dri
+Sun Oct 18 02:30:30 2026 :: Log Trentlin [4206]: dri
+Sun Oct 18 02:30:30 2026 :: Log Trentlin [4206]: n
+Sun Oct 18 02:30:30 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4206
+Sun Oct 18 02:30:30 2026 :: Log Trentlin [4202]: n
+Sun Oct 18 02:30:30 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 02:30:30 2026 :: Log Trentlin [4203]: n
+Sun Oct 18 02:30:30 2026 :: Log Trentlin [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 02:30:31 2026 :: Log Trentlin [4210]: n
+Sun Oct 18 02:30:31 2026 :: Log Trentlin [4210]: sleep
+Sun Oct 18 02:31:24 2026 :: Sock.sinaddr:  3.133.226.214
+Sun Oct 18 02:31:25 2026 :: EOF encountered on read.
+Sun Oct 18 02:31:54 2026 :: Log Trentlin [4210]: gr
