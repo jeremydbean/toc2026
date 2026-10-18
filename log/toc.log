@@ -120705,3 +120705,10 @@ Sun Oct 18 13:51:47 2026 :: Sock.sinaddr:  18.116.205.62
 Sun Oct 18 13:51:47 2026 :: EOF encountered on read.
 Sun Oct 18 13:52:05 2026 :: Log Alaric [16004]: l
 Sun Oct 18 13:52:07 2026 :: Log Alaric [16004]: bs sa
+Sun Oct 18 13:56:20 2026 :: Log Alaric [16004]: bs sa
+Sun Oct 18 13:56:23 2026 :: Log Alaric [16004]: e
+Sun Oct 18 13:56:23 2026 :: Log Alaric [16005]: arrived (Plankway to the Royal Eagle) from 16004
+Sun Oct 18 13:56:24 2026 :: Log Alaric [16005]: kill sa
+Sun Oct 18 13:56:33 2026 :: Log Alaric [16005]: bs sa
+Sun Oct 18 13:56:52 2026 :: Sock.sinaddr:  52.87.72.16
+Sun Oct 18 13:56:52 2026 :: EOF encountered on read.
