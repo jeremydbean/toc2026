@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792336402
+LogO 1792336633
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -16,18 +16,18 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 27
-Plyd 27324
+Plyd 27555
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 StashMax 75
 Scro 22
-Room 2497
-HMV  381 381 696 696 38 256
-NewGold 93
-NewPlat 8
-NewCopp 36
-NewSilv 79
+Room 29061
+HMV  -13 381 530 696 85 256
+NewGold 103
+NewPlat 11
+NewCopp 62
+NewSilv 98
 BankCP 45037500
 IntTime 1792263612
 IntTotal 37500
@@ -36,7 +36,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 280
+AchKills 283
 AchQuests 17
 AchDeaths 3
 AchExplore 0
@@ -95,8 +95,8 @@ SesQuest 3
 QuestPnts 1116
 QuestStrk 6
 CasinoLost 4
-QuestNext 15
-Exp  61417
+QuestNext 12
+Exp  61818
 Act  65740
 AfBy 512
 Comm 24576
@@ -123,7 +123,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
+Pos  0
 Prac 7
 Trai 1
 Save  5
@@ -132,19 +132,19 @@ Hit   13
 Dam   30
 ACs -28 -31 -37 76
 Attr 16 16 16 12 19
-AMod 7 10 9 5 10
+AMod 10 10 9 5 10
 Pass TrjPUdRVdu8MY~
 Titl  the Dragon Slayer~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 371 696 256
-Cond 0 22 42
+Cond 0 18 38
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
 Sk 1 'detect invis'
-Sk 75 'faerie fire'
+Sk 76 'faerie fire'
 Sk 75 'fly'
 Sk 75 'giant strength'
 Sk 1 'identify'
@@ -169,21 +169,22 @@ Sk 83 'enhanced damage'
 Sk 81 'kick'
 Sk 78 'parry'
 Sk 1 'rescue'
-Sk 76 'second attack'
+Sk 77 'second attack'
 Sk 75 'third attack'
 Sk 75 'despair'
 Sk 75 'fast healing'
 Sk 1 'scrolls'
 Sk 1 'wands'
 Sk 66 'recall'
-Sk 79 'smite'
+Sk 82 'smite'
 Gr 'rom basics'
 Gr 'mage basics'
 Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'   0  20 -20  17          0          0
+AffD 'giant strength'  27  23   3   1          0          0
+AffD 'armor'   0  16 -20  17          0          0
 End
 
 #O
@@ -285,7 +286,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 386
+Time 382
 Cost 0
 Cond 100
 Repd 0
@@ -402,7 +403,7 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 683
+Time 679
 Cost 0
 Cond 100
 Repd 0
@@ -447,7 +448,7 @@ Lev  14
 Cost 100000
 Cond 100
 Repd 0
-Val  0 0 9949 0 0
+Val  0 0 9945 0 0
 End
 
 #O
