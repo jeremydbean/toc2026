@@ -117782,3 +117782,93 @@ Sun Oct 18 01:56:13 2026 :: Log Trentlin [2488]: compare bands
 Sun Oct 18 01:56:21 2026 :: Log Trentlin [2488]: wear bands
 Sun Oct 18 01:56:26 2026 :: Log Trentlin [2488]: compare plat
 Sun Oct 18 01:56:38 2026 :: Log Trentlin [2488]: compare pack
+Sun Oct 18 01:56:48 2026 :: Log Trentlin [2488]: i
+Sun Oct 18 01:56:54 2026 :: Log Trentlin [2488]: compare light
+Sun Oct 18 01:57:01 2026 :: Log Trentlin [2488]: compare power
+Sun Oct 18 01:57:08 2026 :: Log Trentlin [2488]: wear power
+Sun Oct 18 01:57:15 2026 :: Log Trentlin [2488]: stash glove
+Sun Oct 18 01:57:21 2026 :: Log Trentlin [2488]: stash put glove
+Sun Oct 18 01:57:21 2026 :: Log Trentlin [2488]: stashed swordsman's gloves (vnum 4101)
+Sun Oct 18 01:57:23 2026 :: Log Trentlin [2488]: i
+Sun Oct 18 01:57:27 2026 :: Log Trentlin [2488]: stash put dagger
+Sun Oct 18 01:57:27 2026 :: Log Trentlin [2488]: stashed a long slim dagger (vnum 5252)
+Sun Oct 18 01:57:34 2026 :: Log Trentlin [2488]: stash put soldier
+Sun Oct 18 01:57:34 2026 :: Log Trentlin [2488]: stashed some soldier arm plates (vnum 29006)
+Sun Oct 18 01:57:35 2026 :: Log Trentlin [2488]: stash put soldier
+Sun Oct 18 01:57:35 2026 :: Log Trentlin [2488]: stashed some soldier leggings (vnum 29007)
+Sun Oct 18 01:57:40 2026 :: Log Trentlin [2488]: stash put armor
+Sun Oct 18 01:57:40 2026 :: Log Trentlin [2488]: stashed a Standard military battle armor (vnum 10057)
+Sun Oct 18 01:57:42 2026 :: Log Trentlin [2488]: compare knife
+Sun Oct 18 01:57:49 2026 :: Log Trentlin [2488]: stash put knife
+Sun Oct 18 01:57:49 2026 :: Log Trentlin [2488]: stashed a carving knife (vnum 29015)
+Sun Oct 18 01:57:50 2026 :: Log Trentlin [2488]: i
+Sun Oct 18 01:57:56 2026 :: Log Trentlin [2488]: compare vest
+Sun Oct 18 01:58:04 2026 :: Log Alaric [4210]: who
+Sun Oct 18 01:58:07 2026 :: Log Trentlin [2488]: compare bracer
+Sun Oct 18 01:58:12 2026 :: Log Trentlin [2488]: l
+Sun Oct 18 01:58:14 2026 :: Log Trentlin [2488]: recall
+Sun Oct 18 01:58:14 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 2488
+Sun Oct 18 01:58:15 2026 :: Log Alaric [4210]: gr
+Sun Oct 18 01:58:15 2026 :: Log Trentlin [4207]: w
+Sun Oct 18 01:58:15 2026 :: Log Trentlin [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Oct 18 01:58:16 2026 :: Log Alaric [4210]: score
+Sun Oct 18 01:58:17 2026 :: Log Alaric [4210]: sl
+Sun Oct 18 01:58:18 2026 :: Log Alaric [4210]: l
+Sun Oct 18 01:58:21 2026 :: Log Trentlin [4208]: l in pit
+Sun Oct 18 01:58:22 2026 :: Log Trentlin [4208]: e
+Sun Oct 18 01:58:22 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 4208
+Sun Oct 18 01:58:25 2026 :: Log Trentlin [4207]: (refused) lwho
+Sun Oct 18 01:58:26 2026 :: Log Trentlin [4207]: sco
+Sun Oct 18 01:58:29 2026 :: Log Trentlin [4207]: quit
+Sun Oct 18 01:58:29 2026 :: Trentlin has quit.
+Sun Oct 18 01:58:29 2026 :: [QUIT] Player rejoined the real world.
+Sun Oct 18 01:59:41 2026 :: Log Alaric [4210]: af
+Sun Oct 18 01:59:53 2026 :: Log Alaric [4210]: wake
+Sun Oct 18 01:59:53 2026 :: Log Alaric [4210]: s
+Sun Oct 18 01:59:53 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sun Oct 18 01:59:54 2026 :: Log Alaric [4203]: s
+Sun Oct 18 01:59:54 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sun Oct 18 01:59:54 2026 :: Log Alaric [4202]: e
+Sun Oct 18 01:59:54 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Oct 18 01:59:54 2026 :: Log Alaric [4201]: e
+Sun Oct 18 01:59:54 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sun Oct 18 01:59:55 2026 :: Log Alaric [2427]: n
+Sun Oct 18 01:59:55 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 18 01:59:55 2026 :: Log Alaric [2404]: n
+Sun Oct 18 01:59:55 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sun Oct 18 01:59:55 2026 :: Log Alaric [2401]: w
+Sun Oct 18 01:59:55 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Oct 18 01:59:56 2026 :: Log Alaric [2405]: w
+Sun Oct 18 01:59:56 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Oct 18 01:59:56 2026 :: Log Alaric [2433]: w
+Sun Oct 18 01:59:56 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Oct 18 01:59:56 2026 :: Log Alaric [2434]: w
+Sun Oct 18 01:59:56 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Oct 18 01:59:56 2026 :: Log Alaric [2435]: w
+Sun Oct 18 01:59:56 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Oct 18 01:59:57 2026 :: Log Alaric [2436]: w
+Sun Oct 18 01:59:57 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Oct 18 01:59:57 2026 :: Log Alaric [2437]: stealth
+Sun Oct 18 01:59:59 2026 :: Log Alaric [2437]: n
+Sun Oct 18 01:59:59 2026 :: Log Alaric [4601]: arrived (Entrance to the Temple of Breas.) from 2437
+Sun Oct 18 02:00:01 2026 :: Log Alaric [4601]: bs gu
+Sun Oct 18 02:00:29 2026 :: Log Alaric [4601]: dirt
+Sun Oct 18 02:00:55 2026 :: Sock.sinaddr:  3.212.128.62
+Sun Oct 18 02:00:55 2026 :: EOF encountered on read.
+Sun Oct 18 02:01:13 2026 :: Log Alaric [4601]: who
+Sun Oct 18 02:01:20 2026 :: Log Alaric [4601]: flee
+Sun Oct 18 02:01:20 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 4601
+Sun Oct 18 02:01:20 2026 :: Log Alaric [2437]: flee
+Sun Oct 18 02:01:21 2026 :: Log Alaric [2437]: flee
+Sun Oct 18 02:01:21 2026 :: Log Alaric [2437]: flee
+Sun Oct 18 02:01:21 2026 :: Log Alaric [2437]: flee
+Sun Oct 18 02:01:21 2026 :: Log Alaric [2437]: recal
+Sun Oct 18 02:01:21 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 2437
+Sun Oct 18 02:01:22 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 02:01:23 2026 :: Log Alaric [4207]: e
+Sun Oct 18 02:01:23 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 02:01:23 2026 :: Log Alaric [4202]: n
+Sun Oct 18 02:01:23 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 02:01:23 2026 :: Log Alaric [4203]: n
+Sun Oct 18 02:01:23 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 02:01:27 2026 :: Log Alaric [4210]: sleep

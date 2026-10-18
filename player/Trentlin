@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792288458
+LogO 1792288709
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 25
-Plyd 20034
+Plyd 20285
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 4210
-HMV  351 351 654 654 237 244
-NewGold 71
+Room 4207
+HMV  351 351 654 654 74 244
+NewGold 66
 NewPlat 20
-NewCopp 167
-NewSilv 113
+NewCopp 67
+NewSilv 64
 BankCP 15037500
 IntTime 1792263612
 IntTotal 37500
@@ -80,15 +80,15 @@ Achv visit-glitter-palace 1791414563
 Achv visit-underdark 1792281756
 Achv visit-new-thalos 1791415830
 Achv visit-korzath-fortress 1792287816
-LastOut  1792283274
-SesLogin 1792280504
-SesDur   2770
-SesExpG  20755
-SesLvlG  9
-SesKill  67
+LastOut  1792288709
+SesLogin 1792286592
+SesDur   2117
+SesExpG  7653
+SesLvlG  4
+SesKill  39
 SesPK    0
 SesDead  0
-SesQuest 1
+SesQuest 0
 QuestPnts 736
 CasinoLost 4
 Exp  56833
@@ -124,17 +124,17 @@ Trai 8
 Save  5
 Alig  -1000
 Hit   17
-Dam   22
-ACs 6 -1 -7 94
+Dam   26
+ACs 8 0 -4 100
 Attr 16 16 16 12 19
-AMod 2 10 10 4 10
+AMod 5 10 10 4 10
 Pass TrjPUdRVdu8MY~
 Titl  the Demon Slayer~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 341 654 244
-Cond 0 0 11
+Cond 0 46 8
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -231,7 +231,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 18
+Time 14
 Cost 0
 Cond 100
 Repd 0
@@ -257,16 +257,6 @@ Cost 150000
 Cond 97
 Repd 0
 Val  4 6 5 0 0
-End
-
-#O
-Vnum 4101
-Nest 0
-Wear 9
-Lev  8
-Cost 330000
-Cond 90
-Repd 0
 End
 
 #O
@@ -314,47 +304,6 @@ Val  5 5 6 0 0
 End
 
 #O
-Vnum 10057
-Nest 0
-Wear -1
-Lev  11
-Cost 16000000
-Cond 100
-Repd 0
-Val  5 5 5 0 0
-End
-
-#O
-Vnum 29015
-Nest 0
-Wear -1
-Lev  15
-Cost 1000000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29007
-Nest 0
-Wear -1
-Lev  3
-Cost 120
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29006
-Nest 0
-Wear 10
-Lev  3
-Cost 120
-Cond 98
-Repd 0
-End
-
-#O
 Vnum 29012
 Nest 0
 Wear 11
@@ -390,7 +339,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 512
+Time 508
 Cost 0
 Cond 100
 Repd 0
@@ -405,17 +354,6 @@ Cost 100000
 Cond 100
 Repd 0
 Affect -1 15 -1 -1 14 0 0
-End
-
-#O
-Vnum 5252
-Nest 0
-Wear -1
-Lev  8
-Cost 4200000
-Cond 90
-Repd 0
-Val  2 3 6 11 0
 End
 
 #O
@@ -519,7 +457,7 @@ End
 #O
 Vnum 9213
 Nest 0
-Wear -1
+Wear 10
 Lev  22
 Cost 55660000
 Cond 100
@@ -529,29 +467,9 @@ End
 #O
 Vnum 2390
 Nest 0
-Wear -1
+Wear 9
 Lev  23
 Cost 100000000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 1651
-Nest 0
-Wear -1
-Lev  10
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 1603
-Nest 1
-Wear -1
-Lev  2
-Cost 500
 Cond 100
 Repd 0
 End
@@ -639,6 +557,96 @@ Cost 7000000
 Cond 100
 Repd 0
 Affect -1 36 -1 -16 14 0 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#STASH
+#O
+Vnum 4101
+Nest 0
+Wear -1
+Lev  8
+Cost 330000
+Cond 90
+Repd 0
+End
+
+#O
+Vnum 5252
+Nest 0
+Wear -1
+Lev  8
+Cost 4200000
+Cond 90
+Repd 0
+Val  2 3 6 11 0
+End
+
+#O
+Vnum 29006
+Nest 0
+Wear -1
+Lev  3
+Cost 120
+Cond 98
+Repd 0
+End
+
+#O
+Vnum 29007
+Nest 0
+Wear -1
+Lev  3
+Cost 120
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 10057
+Nest 0
+Wear -1
+Lev  11
+Cost 16000000
+Cond 100
+Repd 0
+Val  5 5 5 0 0
+End
+
+#O
+Vnum 29015
+Nest 0
+Wear -1
+Lev  15
+Cost 1000000
+Cond 100
+Repd 0
 End
 
 #END
