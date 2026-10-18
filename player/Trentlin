@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792292837
+LogO 1792293107
 Vers 4
 Prom < %h/%H %m/%M %v/%V>%c~
 Ignoring ~
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 26
-Plyd 23727
+Plyd 23997
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 29061
-HMV  314 367 681 681 107 250
-NewGold 77
-NewPlat 27
-NewCopp 103
-NewSilv 73
+Room 29003
+HMV  313 367 681 681 83 250
+NewGold 85
+NewPlat 29
+NewCopp 177
+NewSilv 87
 BankCP 15037500
 IntTime 1792263612
 IntTotal 37500
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 266
+AchKills 268
 AchQuests 14
 AchDeaths 2
 AchExplore 0
@@ -93,8 +93,7 @@ SesQuest 0
 QuestPnts 930
 QuestStrk 3
 CasinoLost 4
-QuestNext 4
-Exp  59127
+Exp  59585
 Act  65740
 AfBy 512
 Comm 24576
@@ -122,8 +121,7 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 11
-Trai 1
+Prac 9
 Save  5
 Alig  -1000
 Hit   17
@@ -137,7 +135,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 357 681 250
-Cond 0 35 9
+Cond 0 30 4
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -169,6 +167,7 @@ Sk 78 'parry'
 Sk 1 'rescue'
 Sk 75 'second attack'
 Sk 75 'third attack'
+Sk 75 'despair'
 Sk 75 'fast healing'
 Sk 1 'scrolls'
 Sk 1 'wands'
@@ -180,8 +179,8 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'  10  16 -20  17          0          0
-AffD 'giant strength'  25  17   3   1          0          0
+AffD 'armor'  10  11 -20  17          0          0
+AffD 'giant strength'  22  12   3   1          0          0
 End
 
 #O
@@ -326,7 +325,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 449
+Time 444
 Cost 0
 Cond 100
 Repd 0
