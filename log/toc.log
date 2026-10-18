@@ -129374,3 +129374,13 @@ Sun Oct 18 21:44:01 2026 :: Log Alaric [16051]: coin +3 gold
 Sun Oct 18 21:44:17 2026 :: Log Alaric [16051]: recal
 Sun Oct 18 21:44:17 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16051
 Sun Oct 18 21:44:17 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 21:44:17 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 21:44:18 2026 :: Log Alaric [4207]: e
+Sun Oct 18 21:44:18 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 21:44:18 2026 :: Log Alaric [4202]: n
+Sun Oct 18 21:44:18 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 21:44:19 2026 :: Log Alaric [4203]: n
+Sun Oct 18 21:44:19 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 21:44:19 2026 :: Log Alaric [4210]: sleep
+Sun Oct 18 21:48:49 2026 :: Sock.sinaddr:  178.156.185.127
+Sun Oct 18 21:48:49 2026 :: EOF encountered on read.
