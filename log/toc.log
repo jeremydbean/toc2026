@@ -127624,3 +127624,49 @@ Sun Oct 18 17:09:49 2026 :: Log Alaric [4210]: sleep
 Sun Oct 18 17:10:55 2026 :: Log Alaric [4210]: who
 Sun Oct 18 17:10:55 2026 :: Log Alaric [4210]: i
 Sun Oct 18 17:10:56 2026 :: Log Alaric [4210]: prac
+Sun Oct 18 17:11:28 2026 :: Log Alaric [4210]: score
+Sun Oct 18 17:11:38 2026 :: Log Alaric [4210]: i
+Sun Oct 18 17:11:39 2026 :: Log Alaric [4210]: eq
+Sun Oct 18 17:11:47 2026 :: Log Alaric [4210]: stash
+Sun Oct 18 17:11:49 2026 :: Log Alaric [4210]: wake
+Sun Oct 18 17:11:51 2026 :: Log Alaric [4210]: stash
+Sun Oct 18 17:12:22 2026 :: Log Alaric [4210]: stash get div
+Sun Oct 18 17:12:24 2026 :: Log Alaric [4210]: w
+Sun Oct 18 17:12:25 2026 :: Log Alaric [4210]: s
+Sun Oct 18 17:12:25 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sun Oct 18 17:12:26 2026 :: Log Alaric [4203]: s
+Sun Oct 18 17:12:26 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sun Oct 18 17:12:26 2026 :: Log Alaric [4202]: w
+Sun Oct 18 17:12:26 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4202
+Sun Oct 18 17:12:26 2026 :: Log Alaric [4207]: w
+Sun Oct 18 17:12:26 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Oct 18 17:12:26 2026 :: Log Alaric [4208]: w
+Sun Oct 18 17:12:27 2026 :: Log Alaric [4208]: stash get div
+Sun Oct 18 17:12:27 2026 :: Log Alaric [4208]: withdrew Divine Breast Plate (vnum 28114) from the stash
+Sun Oct 18 17:12:29 2026 :: Log Alaric [4208]: comp div
+Sun Oct 18 17:12:32 2026 :: Log Alaric [4208]: wear div
+Sun Oct 18 17:12:36 2026 :: Log Alaric [4208]: stash put plate
+Sun Oct 18 17:12:36 2026 :: Log Alaric [4208]: stashed Knights of the Silver Hand Full Plate (vnum 28129)
+Sun Oct 18 17:12:39 2026 :: Log Alaric [4208]: stash get pack
+Sun Oct 18 17:12:39 2026 :: Log Alaric [4208]: withdrew A *NEWBIE* pack! (vnum 29032) from the stash
+Sun Oct 18 17:12:41 2026 :: Log Alaric [4208]: l i pack
+Sun Oct 18 17:12:57 2026 :: Log Alaric [4208]: get bronze pack
+Sun Oct 18 17:12:58 2026 :: Log Alaric [4208]: comp arm
+Sun Oct 18 17:13:20 2026 :: Log Alaric [4208]: stash put bronz
+Sun Oct 18 17:13:20 2026 :: Log Alaric [4208]: stashed bronze arm plates (vnum 29209)
+Sun Oct 18 17:13:27 2026 :: Log Alaric [4208]: stash put pack
+Sun Oct 18 17:13:27 2026 :: Log Alaric [4208]: stashed A *NEWBIE* pack! (vnum 29032)
+Sun Oct 18 17:13:27 2026 :: Log Alaric [4208]: wake
+Sun Oct 18 17:13:28 2026 :: Log Alaric [4208]: l
+Sun Oct 18 17:13:30 2026 :: Log Alaric [4208]: e
+Sun Oct 18 17:13:30 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sun Oct 18 17:13:30 2026 :: Log Alaric [4207]: e
+Sun Oct 18 17:13:30 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 17:13:31 2026 :: Log Alaric [4202]: n
+Sun Oct 18 17:13:31 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 17:13:31 2026 :: Log Alaric [4203]: n
+Sun Oct 18 17:13:31 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 17:13:32 2026 :: Log Alaric [4210]: sleep
+Sun Oct 18 17:13:32 2026 :: Log Alaric [4210]: gr
+Sun Oct 18 17:14:45 2026 :: Sock.sinaddr:  3.212.128.62
+Sun Oct 18 17:14:45 2026 :: EOF encountered on read.
