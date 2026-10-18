@@ -117570,3 +117570,215 @@ Sun Oct 18 01:51:44 2026 :: Log Trentlin [4210]: sleep
 Sun Oct 18 01:51:46 2026 :: Log Trentlin [4210]: u
 Sun Oct 18 01:51:47 2026 :: Log Trentlin [4210]: i
 Sun Oct 18 01:51:47 2026 :: Log Alaric [4210]: look tr
+Sun Oct 18 01:51:49 2026 :: Log Alaric [4210]: wake
+Sun Oct 18 01:51:50 2026 :: Log Alaric [4210]: s
+Sun Oct 18 01:51:50 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sun Oct 18 01:51:50 2026 :: Log Alaric [4203]: s
+Sun Oct 18 01:51:50 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sun Oct 18 01:51:50 2026 :: Log Alaric [4202]: e
+Sun Oct 18 01:51:50 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Oct 18 01:51:51 2026 :: Log Alaric [4201]: e
+Sun Oct 18 01:51:51 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sun Oct 18 01:51:51 2026 :: Log Trentlin [4210]: gro
+Sun Oct 18 01:51:51 2026 :: Log Alaric [2427]: n
+Sun Oct 18 01:51:51 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 18 01:51:51 2026 :: Log Alaric [2404]: n
+Sun Oct 18 01:51:51 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sun Oct 18 01:51:52 2026 :: Log Alaric [2401]: sc
+Sun Oct 18 01:51:54 2026 :: Log Alaric [2401]: n
+Sun Oct 18 01:51:54 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sun Oct 18 01:51:55 2026 :: Log Trentlin [4210]: sk
+Sun Oct 18 01:51:55 2026 :: Log Alaric [2402]: n
+Sun Oct 18 01:51:55 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Sun Oct 18 01:51:56 2026 :: Log Alaric [2415]: e
+Sun Oct 18 01:51:56 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Sun Oct 18 01:51:57 2026 :: Log Alaric [2485]: e
+Sun Oct 18 01:51:57 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2485
+Sun Oct 18 01:51:57 2026 :: Log Alaric [2486]: n
+Sun Oct 18 01:51:57 2026 :: Log Alaric [2483]: arrived (Fountain of Market Plaza.) from 2486
+Sun Oct 18 01:51:57 2026 :: Log Alaric [2483]: e
+Sun Oct 18 01:51:57 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 2483
+Sun Oct 18 01:51:58 2026 :: Log Alaric [2484]: e
+Sun Oct 18 01:51:58 2026 :: Log Alaric [4]: arrived (The First National Bank of Dresden.) from 2484
+Sun Oct 18 01:51:58 2026 :: Log Alaric [4]: e
+Sun Oct 18 01:51:58 2026 :: Log Alaric [4]: e
+Sun Oct 18 01:51:58 2026 :: Log Alaric [4]: e
+Sun Oct 18 01:52:01 2026 :: Log Trentlin [4210]: gain list
+Sun Oct 18 01:52:02 2026 :: Log Alaric [4]: withd 500 platinum
+Sun Oct 18 01:52:03 2026 :: Log Trentlin [4210]: help gain
+Sun Oct 18 01:52:03 2026 :: Log Alaric [4]: w
+Sun Oct 18 01:52:03 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 4
+Sun Oct 18 01:52:03 2026 :: Log Alaric [2484]: s
+Sun Oct 18 01:52:03 2026 :: Log Alaric [2487]: arrived (Market Plaza.) from 2484
+Sun Oct 18 01:52:04 2026 :: Log Alaric [2487]: w
+Sun Oct 18 01:52:04 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2487
+Sun Oct 18 01:52:04 2026 :: Log Alaric [2486]: w
+Sun Oct 18 01:52:04 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2486
+Sun Oct 18 01:52:04 2026 :: Log Alaric [2485]: w
+Sun Oct 18 01:52:04 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2485
+Sun Oct 18 01:52:05 2026 :: Log Alaric [2415]: s
+Sun Oct 18 01:52:05 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2415
+Sun Oct 18 01:52:06 2026 :: Log Alaric [2402]: s
+Sun Oct 18 01:52:06 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2402
+Sun Oct 18 01:52:06 2026 :: Log Alaric [2401]: w
+Sun Oct 18 01:52:06 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Oct 18 01:52:07 2026 :: Log Trentlin [4210]: help gainlist
+Sun Oct 18 01:52:07 2026 :: Log Alaric [2405]: w
+Sun Oct 18 01:52:07 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Oct 18 01:52:07 2026 :: Log Alaric [2433]: w
+Sun Oct 18 01:52:07 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Oct 18 01:52:07 2026 :: Log Alaric [2434]: w
+Sun Oct 18 01:52:07 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Oct 18 01:52:07 2026 :: Log Alaric [2435]: w
+Sun Oct 18 01:52:07 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Oct 18 01:52:08 2026 :: Log Alaric [2436]: w
+Sun Oct 18 01:52:08 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Oct 18 01:52:08 2026 :: Log Alaric [2437]: ex
+Sun Oct 18 01:52:09 2026 :: Log Alaric [2437]: n
+Sun Oct 18 01:52:09 2026 :: Log Alaric [4601]: arrived (Entrance to the Temple of Breas.) from 2437
+Sun Oct 18 01:52:11 2026 :: Log Alaric [4601]: con gu
+Sun Oct 18 01:52:12 2026 :: Log Trentlin [4210]: gainlist
+Sun Oct 18 01:52:13 2026 :: Log Alaric [4601]: bs gu
+Sun Oct 18 01:52:18 2026 :: Log Trentlin [4210]: gro
+Sun Oct 18 01:52:19 2026 :: Log Trentlin [4210]: sco
+Sun Oct 18 01:52:22 2026 :: Log Trentlin [4210]: gro
+Sun Oct 18 01:52:44 2026 :: Log Alaric [4601]: get just
+Sun Oct 18 01:52:44 2026 :: Log Alaric [4601]: wear just
+Sun Oct 18 01:52:44 2026 :: Log Alaric [4601]: gos Oh! That Great War Helm the cleric guild has is amongst the best helm for quite awhile
+Sun Oct 18 01:52:44 2026 :: Log Alaric [4601]: dirt
+Sun Oct 18 01:53:17 2026 :: Log Alaric [4601]: who
+Sun Oct 18 01:53:18 2026 :: Log Alaric [4601]: dirt
+Sun Oct 18 01:53:32 2026 :: Log Alaric [4601]: wear exc
+Sun Oct 18 01:53:44 2026 :: Log Alaric [4601]: wear just
+Sun Oct 18 01:53:55 2026 :: Log Alaric [4601]: dirt
+Sun Oct 18 01:54:12 2026 :: Log Alaric [4601]: to
+Sun Oct 18 01:54:40 2026 :: Log Alaric [4601]: who
+Sun Oct 18 01:54:45 2026 :: Log Trentlin [4210]: i
+Sun Oct 18 01:54:47 2026 :: Log Trentlin [4210]: wake
+Sun Oct 18 01:54:48 2026 :: Log Trentlin [4210]: eat pie
+Sun Oct 18 01:54:49 2026 :: Log Trentlin [4210]: s
+Sun Oct 18 01:54:49 2026 :: Log Trentlin [4203]: arrived (Halls of Healing.) from 4210
+Sun Oct 18 01:54:50 2026 :: Log Trentlin [4203]: s
+Sun Oct 18 01:54:50 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4203
+Sun Oct 18 01:54:51 2026 :: Log Trentlin [4202]: e
+Sun Oct 18 01:54:51 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Oct 18 01:54:51 2026 :: Log Trentlin [4201]: e
+Sun Oct 18 01:54:51 2026 :: Log Trentlin [2427]: arrived (Main Processional.) from 4201
+Sun Oct 18 01:54:51 2026 :: Log Trentlin [2427]: e
+Sun Oct 18 01:54:52 2026 :: Log Trentlin [2427]: n
+Sun Oct 18 01:54:52 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 18 01:54:52 2026 :: Log Trentlin [2404]: n
+Sun Oct 18 01:54:52 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sun Oct 18 01:54:52 2026 :: Log Alaric [4601]: flee
+Sun Oct 18 01:54:52 2026 :: Log Trentlin [2401]: n
+Sun Oct 18 01:54:52 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sun Oct 18 01:54:53 2026 :: Log Alaric [4601]: flee
+Sun Oct 18 01:54:53 2026 :: Log Trentlin [2402]: n
+Sun Oct 18 01:54:53 2026 :: Log Trentlin [2415]: arrived (Main Processional.) from 2402
+Sun Oct 18 01:54:54 2026 :: Log Trentlin [2415]: e
+Sun Oct 18 01:54:54 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2415
+Sun Oct 18 01:54:54 2026 :: Log Alaric [4601]: flee
+Sun Oct 18 01:54:54 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 4601
+Sun Oct 18 01:54:55 2026 :: Log Trentlin [2485]: n
+Sun Oct 18 01:54:55 2026 :: Log Trentlin [2482]: arrived (Nomads Tent.) from 2485
+Sun Oct 18 01:54:55 2026 :: Log Alaric [2437]: recal
+Sun Oct 18 01:54:55 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 2437
+Sun Oct 18 01:54:56 2026 :: Log Trentlin [2482]: n
+Sun Oct 18 01:54:56 2026 :: Log Trentlin [2479]: arrived (Market Plaza.) from 2482
+Sun Oct 18 01:54:56 2026 :: Log Alaric [4207]: e
+Sun Oct 18 01:54:56 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 01:54:56 2026 :: Log Trentlin [2479]: n
+Sun Oct 18 01:54:56 2026 :: Log Trentlin [2488]: arrived (Bakery.) from 2479
+Sun Oct 18 01:54:57 2026 :: Log Alaric [4202]: n
+Sun Oct 18 01:54:57 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 01:54:57 2026 :: Log Alaric [4203]: n
+Sun Oct 18 01:54:57 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 01:54:57 2026 :: Log Trentlin [2488]: n
+Sun Oct 18 01:54:58 2026 :: Log Alaric [4210]: sleep
+Sun Oct 18 01:54:58 2026 :: Log Trentlin [2488]: list
+Sun Oct 18 01:54:59 2026 :: Log Alaric [4210]: sc
+Sun Oct 18 01:55:00 2026 :: Log Trentlin [2488]: (refused) buyn pie
+Sun Oct 18 01:55:00 2026 :: Log Trentlin [2488]: (refused) buyn pie
+Sun Oct 18 01:55:00 2026 :: Log Trentlin [2488]: (refused) buyn pie
+Sun Oct 18 01:55:01 2026 :: Log Trentlin [2488]: (refused) buyn pie
+Sun Oct 18 01:55:01 2026 :: Log Trentlin [2488]: (refused) buyn pie
+Sun Oct 18 01:55:03 2026 :: Log Trentlin [2488]: buy pie
+Sun Oct 18 01:55:03 2026 :: Log Trentlin [2488]: buy pie
+Sun Oct 18 01:55:04 2026 :: Log Trentlin [2488]: buy pie
+Sun Oct 18 01:55:04 2026 :: Log Trentlin [2488]: buy pie
+Sun Oct 18 01:55:04 2026 :: Log Trentlin [2488]: buy pie
+Sun Oct 18 01:55:04 2026 :: Log Trentlin [2488]: buy pie
+Sun Oct 18 01:55:05 2026 :: Log Trentlin [2488]: eat pie
+Sun Oct 18 01:55:05 2026 :: Log Trentlin [2488]: eat pie
+Sun Oct 18 01:55:06 2026 :: Log Trentlin [2488]: eat pie
+Sun Oct 18 01:55:06 2026 :: Log Trentlin [2488]: reca
+Sun Oct 18 01:55:06 2026 :: Log Trentlin [4207]: arrived (Before the Altar.) from 2488
+Sun Oct 18 01:55:07 2026 :: Log Trentlin [4207]: i
+Sun Oct 18 01:55:09 2026 :: Log Trentlin [4207]: compare bra
+Sun Oct 18 01:55:16 2026 :: Log Trentlin [4207]: compare chest
+Sun Oct 18 01:55:17 2026 :: Log Trentlin [4207]: l chest
+Sun Oct 18 01:55:20 2026 :: Log Trentlin [4207]: open chest
+Sun Oct 18 01:55:23 2026 :: Log Trentlin [4207]: l in chest
+Sun Oct 18 01:55:28 2026 :: Log Trentlin [4207]: get all chest
+Sun Oct 18 01:55:34 2026 :: Log Trentlin [4207]: drop chest
+Sun Oct 18 01:55:37 2026 :: Log Trentlin [4207]: eat pie
+Sun Oct 18 01:55:38 2026 :: Log Trentlin [4207]: i
+Sun Oct 18 01:55:40 2026 :: Log Trentlin [4207]: eat pie
+Sun Oct 18 01:55:41 2026 :: Log Trentlin [4207]: eat pie
+Sun Oct 18 01:55:41 2026 :: Log Trentlin [4207]: eat pie
+Sun Oct 18 01:55:43 2026 :: Log Trentlin [4207]: eat pie
+Sun Oct 18 01:55:44 2026 :: Log Trentlin [4207]: s
+Sun Oct 18 01:55:44 2026 :: Log Trentlin [4205]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 01:55:44 2026 :: Log Trentlin [4205]: e
+Sun Oct 18 01:55:44 2026 :: Log Trentlin [4206]: arrived (Halls of Healing.) from 4205
+Sun Oct 18 01:55:45 2026 :: Log Trentlin [4206]: e
+Sun Oct 18 01:55:46 2026 :: Log Trentlin [4206]: n
+Sun Oct 18 01:55:46 2026 :: Log Trentlin [4202]: arrived (Halls of Healing.) from 4206
+Sun Oct 18 01:55:47 2026 :: Log Trentlin [4202]: e
+Sun Oct 18 01:55:47 2026 :: Log Trentlin [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Oct 18 01:55:47 2026 :: Log Trentlin [4201]: n
+Sun Oct 18 01:55:47 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 4201
+Sun Oct 18 01:55:47 2026 :: Log Trentlin [2433]: n
+Sun Oct 18 01:55:49 2026 :: Log Trentlin [2433]: e
+Sun Oct 18 01:55:49 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2433
+Sun Oct 18 01:55:49 2026 :: Log Trentlin [2405]: e
+Sun Oct 18 01:55:49 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2405
+Sun Oct 18 01:55:50 2026 :: Sock.sinaddr:  5.161.194.92
+Sun Oct 18 01:55:50 2026 :: EOF encountered on read.
+Sun Oct 18 01:55:50 2026 :: Log Trentlin [2401]: n
+Sun Oct 18 01:55:50 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sun Oct 18 01:55:51 2026 :: Log Trentlin [2402]: n
+Sun Oct 18 01:55:51 2026 :: Log Trentlin [2415]: arrived (Main Processional.) from 2402
+Sun Oct 18 01:55:51 2026 :: Log Trentlin [2415]: e
+Sun Oct 18 01:55:51 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2415
+Sun Oct 18 01:55:52 2026 :: Log Trentlin [2485]: n
+Sun Oct 18 01:55:52 2026 :: Log Trentlin [2482]: arrived (Nomads Tent.) from 2485
+Sun Oct 18 01:55:52 2026 :: Log Trentlin [2482]: n
+Sun Oct 18 01:55:52 2026 :: Log Trentlin [2479]: arrived (Market Plaza.) from 2482
+Sun Oct 18 01:55:52 2026 :: Log Trentlin [2479]: n
+Sun Oct 18 01:55:52 2026 :: Log Trentlin [2488]: arrived (Bakery.) from 2479
+Sun Oct 18 01:55:53 2026 :: Log Trentlin [2488]: list
+Sun Oct 18 01:55:55 2026 :: Log Trentlin [2488]: buy pie
+Sun Oct 18 01:55:55 2026 :: Log Trentlin [2488]: copper -11000
+Sun Oct 18 01:55:55 2026 :: Log Trentlin [2488]: bought a big pot pie (vnum 3009) for 11000 copper from the baker
+Sun Oct 18 01:55:56 2026 :: Log Trentlin [2488]: buy pie
+Sun Oct 18 01:55:56 2026 :: Log Trentlin [2488]: copper -11000
+Sun Oct 18 01:55:56 2026 :: Log Trentlin [2488]: bought a big pot pie (vnum 3009) for 11000 copper from the baker
+Sun Oct 18 01:55:57 2026 :: Log Trentlin [2488]: buy pie
+Sun Oct 18 01:55:57 2026 :: Log Trentlin [2488]: copper -11000
+Sun Oct 18 01:55:57 2026 :: Log Trentlin [2488]: bought a big pot pie (vnum 3009) for 11000 copper from the baker
+Sun Oct 18 01:55:57 2026 :: Log Trentlin [2488]: buy pie
+Sun Oct 18 01:55:57 2026 :: Log Trentlin [2488]: copper -11000
+Sun Oct 18 01:55:57 2026 :: Log Trentlin [2488]: bought a big pot pie (vnum 3009) for 11000 copper from the baker
+Sun Oct 18 01:55:57 2026 :: Log Trentlin [2488]: buy pie
+Sun Oct 18 01:55:57 2026 :: Log Trentlin [2488]: copper -11000
+Sun Oct 18 01:55:57 2026 :: Log Trentlin [2488]: bought a big pot pie (vnum 3009) for 11000 copper from the baker
+Sun Oct 18 01:55:59 2026 :: Log Trentlin [2488]: eat pie
+Sun Oct 18 01:55:59 2026 :: Log Trentlin [2488]: eat pie
+Sun Oct 18 01:56:01 2026 :: Log Trentlin [2488]: i
+Sun Oct 18 01:56:03 2026 :: Log Trentlin [2488]: (refused) compate gog
+Sun Oct 18 01:56:07 2026 :: Log Trentlin [2488]: compare gog
+Sun Oct 18 01:56:13 2026 :: Log Trentlin [2488]: compare bands
+Sun Oct 18 01:56:21 2026 :: Log Trentlin [2488]: wear bands
+Sun Oct 18 01:56:26 2026 :: Log Trentlin [2488]: compare plat
+Sun Oct 18 01:56:38 2026 :: Log Trentlin [2488]: compare pack

@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792288292
+LogO 1792288458
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring ~
@@ -16,17 +16,17 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 25
-Plyd 19868
+Plyd 20034
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 29073
-HMV  37 351 621 654 202 244
-NewGold 58
-NewPlat 15
-NewCopp 136
-NewSilv 90
+Room 4210
+HMV  351 351 654 654 237 244
+NewGold 71
+NewPlat 20
+NewCopp 167
+NewSilv 113
 BankCP 15037500
 IntTime 1792263612
 IntTotal 37500
@@ -35,7 +35,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 247
+AchKills 248
 AchQuests 11
 AchDeaths 2
 AchExplore 0
@@ -91,10 +91,9 @@ SesDead  0
 SesQuest 1
 QuestPnts 736
 CasinoLost 4
-Exp  56829
+Exp  56833
 Act  65740
-AfBy 3678908
-AfBy2 4106
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -122,20 +121,20 @@ Color 16 6
 Pos  8
 Prac 37
 Trai 8
-Save  -3
+Save  5
 Alig  -1000
-Hit   56
-Dam   74
-ACs -99 -106 -112 -11
+Hit   17
+Dam   22
+ACs 6 -1 -7 94
 Attr 16 16 16 12 19
-AMod 36 25 25 27 25
+AMod 2 10 10 4 10
 Pass TrjPUdRVdu8MY~
 Titl  the Demon Slayer~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 341 654 244
-Cond 0 4 15
+Cond 0 0 11
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -168,56 +167,13 @@ Sk 75 'second attack'
 Sk 75 'third attack'
 Sk 1 'scrolls'
 Sk 1 'wands'
-Sk 64 'recall'
+Sk 66 'recall'
 Gr 'rom basics'
 Gr 'mage basics'
 Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'   0   2 -20  17          0          0
-AffD 'stone skin'   0   2 -40  17          0          0
-AffD 'giant strength'   0   2   4   1          0          0
-AffD 'fly'   0   2   0   0     524288          0
-AffD 'haste'   0   2   4   2    2097152          0
-AffD 'sanctuary'   0   2   0   0        128          0
-AffD 'power gloves'   0   2  21  19          0          0
-AffD 'sanctuary'   0   2   0   0        128          0
-AffD 'haste'   0   2   4   2    2097152          0
-AffD 'fly'   0   2   0   0     524288          0
-AffD 'pass door'   0   2   0   0    1048576          0
-AffD 'protection evil'   0   2   0   0       8192          0
-AffD 'fire shield'   0   2   0   0          0          8
-AffD 'divine protection'   0   2   0   0          0       4096
-AffD 'giant strength'   0   2  15   1          0          0
-AffD 'bless'  35   2   8  18          0          0
-AffD 'bless'  38   2  -8  24          0          0
-AffD 'shield'  38   2 -20  17          0          0
-AffD 'frenzy'  31   2  11  18          0          0
-AffD 'frenzy'   7   2  11  19          0          0
-AffD 'frenzy'  32   2 110  17          0          0
-AffD 'detect invis'  35   2   0   0          8          0
-AffD 'detect hidden'  24   2   0   0         32          0
-AffD 'detect magic'   0   2   0   0         16          0
-AffD 'detect good'   0   2   0   0          0          2
-AffD 'detect evil'   0   2   0   0          4          0
-AffD 'shroud'   0   2 -35  17          0          0
-AffD 'empower'   0   2   0   0          0          0
-AffD 'sanctuary'   0   2   0   0        128          0
-AffD 'haste'   0   2   4   2    2097152          0
-AffD 'fly'   0   2   0   0     524288          0
-AffD 'pass door'   0   2   0   0    1048576          0
-AffD 'protection evil'   0   2   0   0       8192          0
-AffD 'fire shield'   0   2   0   0          0          8
-AffD 'divine protection'   0   2   0   0          0       4096
-AffD 'giant strength'  34   2  15   1          0          0
-AffD 'empower'  37   2  15   3          0          0
-AffD 'empower'  40   2  15   4          0          0
-AffD 'empower'  42   2  11   2          0          0
-AffD 'empower'  41   2  15   5          0          0
-AffD 'empower'  38   2  20  18          0          0
-AffD 'empower'  36   2  20  19          0          0
-AffD 'empower'  34   2 -100  17          0          0
 End
 
 #O
@@ -275,7 +231,7 @@ End
 Vnum 58
 Nest 0
 Wear -1
-Time 21
+Time 18
 Cost 0
 Cond 100
 Repd 0
@@ -434,7 +390,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 515
+Time 512
 Cost 0
 Cond 100
 Repd 0
@@ -662,6 +618,27 @@ Cost 1000000
 Cond 100
 Repd 0
 Spell 3 'create spring'
+End
+
+#O
+Vnum 29040
+Nest 0
+Wear -1
+Lev  36
+Cost 2800000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29041
+Nest 0
+Wear -1
+Lev  36
+Cost 7000000
+Cond 100
+Repd 0
+Affect -1 36 -1 -16 14 0 0
 End
 
 #END
