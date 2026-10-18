@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792290070
+LogO 1792331233
 Vers 4
 Prom ~
 Ignoring ~
@@ -16,18 +16,18 @@ PsiKnown torment,telekinesis,mindbar,mind leech~
 ChangesSeen 20261017a:1 20261013a:3 20261010a:3 20261008b:3 20261008a:3 20261005d:3 20261005c:3 20261005a:3 20261005b:3 20261004t:3 20261004s:3 20261004a:3 20261004b:3 20261004c:3 20261004d:3 20261004e:3 20261004f:3 20261004g:3 20261004h:3 20261004i:3 20261004j:3 20261004k:3 20261004l:3 20261004m:3 20261004n:3 20261004o:3 20261004p:3 20261004q:3 20261004r:3 20261003a:3 20261003b:3 20261003c:3 20261003d:3 20261003e:3 20261003f:3 20261003g:3 20261003h:3 20261003i:3 20261003j:3 20261003k:3 20261003l:3 20261003m:3 20261002a:3 20261002b:3 20261002c:3 20261001a:3 20261001b:3 20261001c:3 20261001d:3 20261001e:3 20261001f:3 20261001g:3 20261001h:3 20261001i:3 20261001j:3 20261001k:3 20261001l:3 20261001m:3 20261001n:3 20261001o:3 20261001p:3 20261001q:3 20261001r:3 20261001s:3 20261001t:3 20261001u:3 20261001v:3 20261001w:3 20261001x:3 20261001y:3 20261001z:3 20260925a:3 20260925b:3 20260925c:3 20260925d:3 20260925e:3 20260925f:3 20260925g:3 20260925h:3 20260925i:3 20260925j:3 20260925k:3 20260925l:3 20260925m:3 20260925n:3 20260925o:3 20260925p:3 20260925q:3 20260925r:3 20260925s:3 20260925t:3 20260925u:3 20260925v:3 20260925w:3 20260925x:3 20260925y:3 20260925z:3 20260924a:3 20260924b:3 20260924c:3 20260924d:3 20260924e:3~
 Cast none
 Levl 52
-Plyd 723768
+Plyd 723935
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
 StashMax 150
 Scro 22
-Room 4210
-HMV  1187 1187 1751 1751 329 724
-NewGold 102
+Room 16002
+HMV  1058 1197 1751 1751 363 732
+NewGold 83
 NewPlat 215
 NewCopp 59
-NewSilv 122
+NewSilv 22
 BankCP 3046248097
 IntTime 1792285084
 IntTotal 94248097
@@ -128,7 +128,7 @@ QuestPnts 94
 QuestStrk 10
 CasinoWon  51
 CasinoLost 304
-Exp  130119
+Exp  130135
 Act  4261068
 AfBy 524800
 Comm 24576
@@ -162,9 +162,9 @@ Save  1
 Alig  1000
 Hit   53
 Dam   61
-ACs -223 -230 -187 -71
+ACs -218 -225 -182 -66
 Attr 20 13 13 18 19
-AMod 14 8 9 9 12
+AMod 15 8 10 7 12
 Pass Al3w9zuAlwpyY~
 Titl  the Hero of the Fourth Order~
 Pnts 5080
@@ -190,7 +190,7 @@ Sk 75 'torment'
 Sk 7 'axe'
 Sk 100 'dagger'
 Sk 5 'flail'
-Sk 41 'mace'
+Sk 43 'mace'
 Sk 3 'polearm'
 Sk 5 'spear'
 Sk 99 'sword'
@@ -216,8 +216,8 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
-AffD 'fly'  36  17   0   0     524288          0
-AffD 'stone skin'  28  14 -40  17          0          0
+AffD 'stone skin'  28  10 -40  17          0          0
+AffD 'fly'  35  13   0   0     524288          0
 End
 
 #O
@@ -281,9 +281,9 @@ Lev  22
 Cost 55660000
 Cond 79
 Repd 0
-Affect -1 22 -1 -1 4 0 0
-Affect -1 22 -1 1 1 0 0
 Affect -1 22 -1 3 24 0 0
+Affect -1 22 -1 1 1 0 0
+Affect -1 22 -1 -1 4 0 0
 End
 
 #O
@@ -418,7 +418,7 @@ End
 Vnum 700
 Nest 0
 ExtF 3146818
-Wear -1
+Wear 11
 Lev  48
 Cost 25000000
 Cond 100
@@ -510,18 +510,6 @@ Cost 24090000
 Cond 100
 Repd 0
 Affect -1 52 -1 -2 3 0 0
-End
-
-#O
-Vnum 29207
-Nest 0
-ExtF 3
-Wear 11
-Lev  51
-Cost 20000000
-Cond 99
-Repd 0
-Affect -1 51 -1 -8 14 0 0
 End
 
 #O
@@ -651,8 +639,8 @@ Lev  51
 Cost 50000000
 Cond 99
 Repd 0
-Affect -1 51 -1 4 23 0 0
 Affect -1 51 -1 20 14 0 0
+Affect -1 51 -1 4 23 0 0
 End
 
 #O
@@ -706,9 +694,9 @@ Lev  29
 Cost 30000000
 Cond 100
 Repd 0
-Affect -1 29 -1 -4 2 0 0
-Affect -1 29 -1 -1 1 0 0
 Affect -1 29 -1 -4 1 0 0
+Affect -1 29 -1 -1 1 0 0
+Affect -1 29 -1 -4 2 0 0
 End
 
 #O
@@ -720,8 +708,8 @@ Lev  52
 Cost 50000000
 Cond 100
 Repd 0
-Affect -1 52 -1 5 17 0 0
 Affect -1 52 -1 2 24 0 0
+Affect -1 52 -1 5 17 0 0
 End
 
 #O
@@ -793,8 +781,8 @@ Lev  52
 Cost 23680000
 Cond 100
 Repd 0
-Affect -1 52 -1 3 22 0 0
 Affect -1 52 -1 2 24 0 0
+Affect -1 52 -1 3 22 0 0
 End
 
 #O
@@ -805,9 +793,9 @@ Lev  23
 Cost 13000000
 Cond 100
 Repd 0
-Affect -1 23 -1 -9 12 0 0
-Affect -1 23 -1 -4 1 0 0
 Affect -1 23 -1 31 14 0 0
+Affect -1 23 -1 -4 1 0 0
+Affect -1 23 -1 -9 12 0 0
 End
 
 #O
@@ -1028,8 +1016,8 @@ Lev  53
 Cost 15000000
 Cond 99
 Repd 0
-Affect -1 53 -1 1 4 0 0
 Affect -1 53 -1 -1 2 0 0
+Affect -1 53 -1 1 4 0 0
 End
 
 #O
@@ -1468,8 +1456,8 @@ Lev  41
 Cost 14980000
 Cond 100
 Repd 0
-Affect -1 41 -1 -2 1 0 0
 Affect -1 41 -1 -2 4 0 0
+Affect -1 41 -1 -2 1 0 0
 End
 
 #O
@@ -1502,8 +1490,8 @@ Lev  23
 Cost 13000000
 Cond 88
 Repd 0
-Affect -1 23 -1 -5 12 0 0
 Affect -1 23 -1 1 17 0 0
+Affect -1 23 -1 -5 12 0 0
 End
 
 #O
@@ -1623,8 +1611,8 @@ Cost 23000000
 Cond 98
 Repd 0
 Affect -1 32 -1 -4 4 0 0
-Affect -1 32 -1 2 24 0 0
 Affect -1 32 -1 3 22 0 0
+Affect -1 32 -1 2 24 0 0
 Affect -1 32 -1 -4 4 0 0
 End
 
@@ -1704,9 +1692,9 @@ Lev  49
 Cost 40000000
 Cond 100
 Repd 0
-Affect -1 49 -1 3 24 0 0
-Affect -1 49 -1 -1 12 0 0
 Affect -1 49 -1 -1 13 0 0
+Affect -1 49 -1 -1 12 0 0
+Affect -1 49 -1 3 24 0 0
 End
 
 #O
@@ -1757,8 +1745,8 @@ Lev  31
 Cost 20000000
 Cond 98
 Repd 0
-Affect -1 31 -1 1 17 0 0
 Affect -1 31 -1 -2 22 0 0
+Affect -1 31 -1 1 17 0 0
 End
 
 #END
