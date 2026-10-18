@@ -120686,3 +120686,22 @@ Sun Oct 18 13:47:40 2026 :: Log Alaric [16002]: coin +2 platinum
 Sun Oct 18 13:47:40 2026 :: Log Alaric [16002]: coin +10 silver
 Sun Oct 18 13:47:40 2026 :: Log Alaric [16002]: coin +13 copper
 Sun Oct 18 13:47:40 2026 :: Log Alaric [16002]: coin +5 gold
+Sun Oct 18 13:50:18 2026 :: Log Alaric [16002]: l
+Sun Oct 18 13:50:19 2026 :: Log Alaric [16002]: eq
+Sun Oct 18 13:50:22 2026 :: Log Alaric [16002]: get mace
+Sun Oct 18 13:50:23 2026 :: Log Alaric [16002]: wear mace
+Sun Oct 18 13:50:25 2026 :: Log Alaric [16002]: l
+Sun Oct 18 13:50:26 2026 :: Log Alaric [16002]: n
+Sun Oct 18 13:50:26 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Sun Oct 18 13:50:26 2026 :: Log Alaric [16003]: n
+Sun Oct 18 13:50:26 2026 :: Log Alaric [16004]: arrived (A Turn at the Pier) from 16003
+Sun Oct 18 13:50:29 2026 :: Log Alaric [16004]: bs dr
+Sun Oct 18 13:51:07 2026 :: Log Alaric [16004]: killed The drunk pirate
+Sun Oct 18 13:51:07 2026 :: Log Alaric [16004]: coin +1 platinum
+Sun Oct 18 13:51:07 2026 :: Log Alaric [16004]: coin +5 silver
+Sun Oct 18 13:51:07 2026 :: Log Alaric [16004]: coin +6 copper
+Sun Oct 18 13:51:07 2026 :: Log Alaric [16004]: coin +2 gold
+Sun Oct 18 13:51:47 2026 :: Sock.sinaddr:  18.116.205.62
+Sun Oct 18 13:51:47 2026 :: EOF encountered on read.
+Sun Oct 18 13:52:05 2026 :: Log Alaric [16004]: l
+Sun Oct 18 13:52:07 2026 :: Log Alaric [16004]: bs sa
