@@ -127451,3 +127451,46 @@ Sun Oct 18 16:50:40 2026 :: Log Alaric [29001]: arrived (Entrance to the Fortres
 Sun Oct 18 16:50:40 2026 :: Log Alaric [29002]: arrived (Inside Korzath's Private Fortress) from 29001
 Sun Oct 18 16:50:40 2026 :: Log Alaric [29003]: arrived (Grand Foyer) from 29002
 Sun Oct 18 16:50:40 2026 :: Log Alaric [29004]: arrived (Center Tunnelway) from 29003
+Sun Oct 18 16:51:13 2026 :: Log Alaric [29004]: unl north
+Sun Oct 18 16:51:13 2026 :: Log Alaric [29004]: on
+Sun Oct 18 16:51:13 2026 :: Log Alaric [29004]: n
+Sun Oct 18 16:51:13 2026 :: Log Alaric [29201]: arrived (Heroes Hall) from 29004
+Sun Oct 18 16:51:14 2026 :: Log Alaric [29201]: n
+Sun Oct 18 16:51:14 2026 :: Log Alaric [29202]: arrived (Hall of Past Heroes) from 29201
+Sun Oct 18 16:51:15 2026 :: Log Alaric [29202]: n
+Sun Oct 18 16:51:16 2026 :: Log Alaric [29202]: w
+Sun Oct 18 16:51:16 2026 :: Log Alaric [29203]: arrived (Passage to the Maze) from 29202
+Sun Oct 18 16:51:18 2026 :: Log Alaric [29203]: stealth
+Sun Oct 18 16:51:19 2026 :: Log Alaric [29203]: w
+Sun Oct 18 16:51:19 2026 :: Log Alaric [29204]: arrived (Twist in the Maze) from 29203
+Sun Oct 18 16:51:20 2026 :: Log Alaric [29204]: bs cl
+Sun Oct 18 16:51:37 2026 :: Log Alaric [29204]: who
+Sun Oct 18 16:51:38 2026 :: Log Alaric [29204]: dirt
+Sun Oct 18 16:52:02 2026 :: Log Alaric [29204]: flee
+Sun Oct 18 16:52:02 2026 :: Log Alaric [29205]: arrived (Twist in the Maze) from 29204
+Sun Oct 18 16:52:02 2026 :: Log Alaric [29205]: flee
+Sun Oct 18 16:52:02 2026 :: Log Alaric [29205]: flee
+Sun Oct 18 16:52:02 2026 :: Log Alaric [29205]: flee
+Sun Oct 18 16:52:03 2026 :: Log Alaric [29205]: flee
+Sun Oct 18 16:52:03 2026 :: Log Alaric [29205]: recal
+Sun Oct 18 16:52:03 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 29205
+Sun Oct 18 16:52:03 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 16:52:03 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 16:52:04 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 16:52:04 2026 :: Log Alaric [4207]: e
+Sun Oct 18 16:52:04 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 16:52:05 2026 :: Log Alaric [4202]: w
+Sun Oct 18 16:52:05 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4202
+Sun Oct 18 16:52:05 2026 :: Log Alaric [4207]: w
+Sun Oct 18 16:52:05 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Oct 18 16:52:06 2026 :: Log Alaric [4208]: e
+Sun Oct 18 16:52:06 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sun Oct 18 16:52:07 2026 :: Log Alaric [4207]: e
+Sun Oct 18 16:52:07 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 16:52:07 2026 :: Log Alaric [4202]: n
+Sun Oct 18 16:52:07 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 16:52:07 2026 :: Log Alaric [4203]: n
+Sun Oct 18 16:52:07 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 16:52:08 2026 :: Log Alaric [4210]: sleep
+Sun Oct 18 16:54:27 2026 :: Sock.sinaddr:  178.156.185.127
+Sun Oct 18 16:54:27 2026 :: EOF encountered on read.
