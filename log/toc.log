@@ -128743,3 +128743,37 @@ Sun Oct 18 19:17:06 2026 :: Log Alaric [16048]: scan
 Sun Oct 18 19:17:09 2026 :: Log Alaric [16048]: n
 Sun Oct 18 19:17:09 2026 :: Log Alaric [16051]: arrived (Bow of the Royal Eagle) from 16048
 Sun Oct 18 19:17:09 2026 :: Log Alaric [16051]: bs mid
+Sun Oct 18 19:17:42 2026 :: Log Alaric [16051]: w
+Sun Oct 18 19:17:42 2026 :: Log Alaric [16050]: arrived (Bow of the Royal Eagle) from 16051
+Sun Oct 18 19:17:43 2026 :: Log Alaric [16050]: kill mi
+Sun Oct 18 19:17:43 2026 :: Log Alaric [16050]: killed The midshipman
+Sun Oct 18 19:17:43 2026 :: Log Alaric [16050]: coin +1 platinum
+Sun Oct 18 19:17:43 2026 :: Log Alaric [16050]: coin +5 silver
+Sun Oct 18 19:17:43 2026 :: Log Alaric [16050]: coin +6 copper
+Sun Oct 18 19:17:43 2026 :: Log Alaric [16050]: coin +2 gold
+Sun Oct 18 19:17:49 2026 :: Log Alaric [16050]: s
+Sun Oct 18 19:17:49 2026 :: Log Alaric [16047]: arrived (Bow of the Royal Eagle) from 16050
+Sun Oct 18 19:17:49 2026 :: Log Alaric [16047]: s
+Sun Oct 18 19:17:49 2026 :: Log Alaric [16043]: arrived (Main Deck) from 16047
+Sun Oct 18 19:17:52 2026 :: Log Alaric [16043]: bs pi
+Sun Oct 18 19:17:52 2026 :: Alaric finished The pirate... *FATALITY*. [Room: 16043]
+Sun Oct 18 19:17:52 2026 :: Log Alaric [16043]: killed The pirate
+Sun Oct 18 19:17:52 2026 :: Log Alaric [16043]: coin +2 platinum
+Sun Oct 18 19:17:52 2026 :: Log Alaric [16043]: coin +12 silver
+Sun Oct 18 19:17:52 2026 :: Log Alaric [16043]: coin +17 copper
+Sun Oct 18 19:17:52 2026 :: Log Alaric [16043]: coin +7 gold
+Sun Oct 18 19:18:03 2026 :: Log Alaric [16043]: recal
+Sun Oct 18 19:18:03 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16043
+Sun Oct 18 19:18:03 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 19:18:03 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 19:18:03 2026 :: Log Alaric [4207]: e
+Sun Oct 18 19:18:03 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 19:18:04 2026 :: Log Alaric [4202]: n
+Sun Oct 18 19:18:04 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 19:18:04 2026 :: Log Alaric [4203]: n
+Sun Oct 18 19:18:04 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 19:18:04 2026 :: Log Alaric [4210]: sleep
+Sun Oct 18 19:18:58 2026 :: Daily backup complete.
+Sun Oct 18 19:21:29 2026 :: Automated backup complete.
+Sun Oct 18 19:21:39 2026 :: Sock.sinaddr:  5.161.113.195
+Sun Oct 18 19:21:40 2026 :: EOF encountered on read.
