@@ -129498,3 +129498,53 @@ Sun Oct 18 21:54:08 2026 :: Log Alaric [16028]: arrived (Main Deck) from 16023
 Sun Oct 18 21:54:08 2026 :: Log Alaric [16028]: n
 Sun Oct 18 21:54:08 2026 :: Log Alaric [16033]: arrived (Base of the Mast) from 16028
 Sun Oct 18 21:54:08 2026 :: Log Alaric [16033]: bs sw
+Sun Oct 18 21:54:31 2026 :: Log Alaric [16033]: who
+Sun Oct 18 21:54:32 2026 :: Log Alaric [16033]: dirt
+Sun Oct 18 21:54:54 2026 :: Log Alaric [16033]: killed The swashbuckler
+Sun Oct 18 21:54:54 2026 :: Log Alaric [16033]: coin +1 platinum
+Sun Oct 18 21:54:54 2026 :: Log Alaric [16033]: coin +6 silver
+Sun Oct 18 21:54:54 2026 :: Log Alaric [16033]: coin +8 copper
+Sun Oct 18 21:54:54 2026 :: Log Alaric [16033]: coin +3 gold
+Sun Oct 18 21:55:02 2026 :: Log Alaric [16033]: scan
+Sun Oct 18 21:55:04 2026 :: Log Alaric [16033]: u
+Sun Oct 18 21:55:04 2026 :: Log Alaric [16078]: arrived (The Mast) from 16033
+Sun Oct 18 21:55:05 2026 :: Log Alaric [16078]: bs sw
+Sun Oct 18 21:55:08 2026 :: Log Alaric [16078]: scan
+Sun Oct 18 21:55:09 2026 :: Log Alaric [16078]: e
+Sun Oct 18 21:55:09 2026 :: Log Alaric [16079]: arrived (Out on the Mast) from 16078
+Sun Oct 18 21:55:10 2026 :: Log Alaric [16079]: bs sw
+Sun Oct 18 21:55:33 2026 :: Log Alaric [16079]: killed The swashbuckler
+Sun Oct 18 21:55:33 2026 :: Log Alaric [16079]: coin +1 platinum
+Sun Oct 18 21:55:33 2026 :: Log Alaric [16079]: coin +6 silver
+Sun Oct 18 21:55:33 2026 :: Log Alaric [16079]: coin +8 copper
+Sun Oct 18 21:55:33 2026 :: Log Alaric [16079]: coin +3 gold
+Sun Oct 18 21:57:26 2026 :: Log Alaric [16079]: scan
+Sun Oct 18 21:57:27 2026 :: Log Alaric [16079]: l
+Sun Oct 18 21:57:28 2026 :: Log Alaric [16079]: w
+Sun Oct 18 21:57:28 2026 :: Log Alaric [16078]: arrived (The Mast) from 16079
+Sun Oct 18 21:57:29 2026 :: Log Alaric [16078]: scan
+Sun Oct 18 21:57:32 2026 :: Log Alaric [16078]: u
+Sun Oct 18 21:57:32 2026 :: Log Alaric [16081]: arrived (The Mast) from 16078
+Sun Oct 18 21:57:34 2026 :: Log Alaric [16081]: bs sw
+Sun Oct 18 21:58:01 2026 :: Log Alaric [16081]: eat gu
+Sun Oct 18 21:58:02 2026 :: Log Alaric [16081]: dirt
+Sun Oct 18 21:58:15 2026 :: Log Alaric [16081]: killed The swashbuckler
+Sun Oct 18 21:58:15 2026 :: Log Alaric [16081]: coin +1 platinum
+Sun Oct 18 21:58:15 2026 :: Log Alaric [16081]: coin +6 silver
+Sun Oct 18 21:58:15 2026 :: Log Alaric [16081]: coin +8 copper
+Sun Oct 18 21:58:15 2026 :: Log Alaric [16081]: coin +3 gold
+Sun Oct 18 21:58:25 2026 :: Log Alaric [16081]: recal
+Sun Oct 18 21:58:25 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16081
+Sun Oct 18 21:58:26 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 21:58:26 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 21:58:26 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 21:58:26 2026 :: Log Alaric [4207]: e
+Sun Oct 18 21:58:26 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 21:58:27 2026 :: Log Alaric [4202]: n
+Sun Oct 18 21:58:27 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 21:58:27 2026 :: Log Alaric [4203]: n
+Sun Oct 18 21:58:27 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 21:58:27 2026 :: Log Alaric [4210]: where herm
+Sun Oct 18 21:58:27 2026 :: Log Alaric [4210]: sleep
+Sun Oct 18 21:58:57 2026 :: Sock.sinaddr:  178.156.185.231
+Sun Oct 18 21:58:57 2026 :: EOF encountered on read.
