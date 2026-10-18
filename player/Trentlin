@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792341211
+LogO 1792341611
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -16,18 +16,18 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 28
-Plyd 29103
+Plyd 29503
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 StashMax 75
 Scro 22
-Room 3528
-HMV  16 386 416 723 50 262
+Room 2497
+HMV  277 396 723 723 39 312
 NewGold 52
 NewPlat 17
-NewCopp 58
-NewSilv 67
+NewCopp 84
+NewSilv 28
 BankCP 45037500
 IntTime 1792263612
 IntTotal 37500
@@ -36,7 +36,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 294
+AchKills 295
 AchQuests 18
 AchDeaths 5
 AchExplore 0
@@ -95,8 +95,8 @@ SesQuest 3
 QuestPnts 1116
 QuestStrk 7
 CasinoLost 4
-QuestNext 6
-Exp  63358
+QuestNext 30
+Exp  63379
 Act  65740
 AfBy 512
 Comm 24576
@@ -125,17 +125,20 @@ Color 15 6
 Color 16 6
 Pos  8
 Prac 11
-Alig  -1000
-ACs 100 100 100 100
+Save  5
+Alig  -1002
+Hit   12
+Dam   30
+ACs -25 -28 -34 76
 Attr 18 16 16 12 19
-AMod 0 0 0 0 0
+AMod 11 10 9 4 10
 Pass TrjPUdRVdu8MY~
 Titl  the Greater Dragon Slayer~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 386 723 262
-Cond 0 16 46
+Cond 0 10 40
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -148,7 +151,7 @@ Sk 1 'lightning bolt'
 Sk 1 'magic missile'
 Sk 76 'refresh'
 Sk 1 'shield'
-Sk 75 'axe'
+Sk 76 'axe'
 Sk 83 'dagger'
 Sk 25 'flail'
 Sk 25 'mace'
@@ -179,6 +182,360 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
+AffD 'armor'  17  19 -20  17          0          0
+AffD 'giant strength'  26  23   3   1          0          0
+End
+
+#O
+Vnum 4444
+Nest 0
+Wear -1
+Lev  40
+Cost 23000000
+Cond 100
+Repd 0
+Affect -1 40 -1 1 20 0 0
+End
+
+#O
+Vnum 2803
+Nest 0
+Wear 2
+Lev  7
+Cost 36000
+Cond 100
+Repd 0
+Affect -1 7 -1 4 22 0 0
+End
+
+#O
+Vnum 3715
+Nest 0
+Wear 17
+Cost 0
+Cond 80
+Repd 0
+End
+
+#O
+Vnum 2803
+Nest 0
+Wear 1
+Lev  7
+Cost 36000
+Cond 92
+Repd 0
+End
+
+#O
+Vnum 8713
+Nest 0
+Wear 13
+Lev  9
+Cost 270000
+Cond 97
+Repd 0
+Val  4 4 5 0 0
+End
+
+#O
+Vnum 10027
+Nest 0
+Wear 5
+Lev  13
+Cost 2100000
+Cond 100
+Repd 0
+Val  5 5 6 0 0
+End
+
+#O
+Vnum 29012
+Nest 0
+Wear 11
+Lev  9
+Cost 49000
+Cond 100
+Repd 1
+Affect -1 9 -1 1 20 0 0
+End
+
+#O
+Vnum 25106
+Nest 0
+Wear 12
+Lev  18
+Cost 10000000
+Cond 100
+Repd 0
+Val  7 5 5 0 0
+End
+
+#O
+Vnum 53
+Nest 0
+Wear -1
+Time 349
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 13301
+Nest 0
+Wear -1
+Lev  15
+Cost 100000
+Cond 100
+Repd 0
+Affect -1 15 -1 -1 14 0 0
+End
+
+#O
+Vnum 1388
+Nest 0
+Wear 15
+Lev  18
+Cost 85000000
+Cond 92
+Repd 0
+Val  5 6 6 0 0
+End
+
+#O
+Vnum 1388
+Nest 0
+Wear 14
+Lev  18
+Cost 85000000
+Cond 89
+Repd 0
+Val  5 7 5 0 0
+End
+
+#O
+Vnum 10042
+Nest 0
+Wear -1
+Lev  23
+Cost 13000000
+Cond 87
+Repd 0
+Affect -1 23 -1 1 18 0 0
+End
+
+#O
+Vnum 1395
+Nest 0
+Wear 4
+Lev  24
+Cost 50000000
+Cond 99
+Repd 0
+Val  7 6 8 0 0
+End
+
+#O
+Vnum 1395
+Nest 0
+Wear 3
+Lev  23
+Cost 50000000
+Cond 98
+Repd 0
+Val  6 7 7 0 0
+End
+
+#O
+Vnum 9214
+Nest 0
+Wear 7
+Lev  22
+Cost 50600000
+Cond 100
+Repd 0
+Affect -1 22 -1 -5 19 0 0
+End
+
+#O
+Vnum 9213
+Nest 0
+Wear 10
+Lev  22
+Cost 55660000
+Cond 98
+Repd 0
+End
+
+#O
+Vnum 2390
+Nest 0
+Wear 9
+Lev  23
+Cost 100000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29032
+Nest 0
+Wear -1
+Lev  29
+Cost 5000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 73
+Nest 1
+Wear -1
+Time 646
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29040
+Nest 0
+Wear -1
+Lev  36
+Cost 2800000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29041
+Nest 0
+Wear -1
+Lev  36
+Cost 7000000
+Cond 100
+Repd 0
+Affect -1 36 -1 -16 14 0 0
+End
+
+#O
+Vnum 4619
+Nest 0
+Wear 6
+Lev  25
+Cost 250000000
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 24002
+Nest 0
+Wear 0
+Lev  14
+Cost 100000
+Cond 100
+Repd 0
+Val  0 0 9915 0 0
+End
+
+#O
+Vnum 3091
+Nest 0
+Wear -1
+Cost 20000
+Cond 100
+Repd 0
+Spell 1 'fly'
+End
+
+#O
+Vnum 3091
+Nest 0
+Wear -1
+Cost 20000
+Cond 100
+Repd 0
+Spell 1 'fly'
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 7623
+Nest 0
+Wear 8
+Lev  25
+Cost 1500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 17702
+Nest 0
+Wear 16
+Lev  25
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 9321
+Nest 0
+Wear -1
+Lev  25
+Cost 17500000
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 9317
+Nest 0
+Wear -1
+Lev  20
+Cost 18000000
+Cond 100
+Repd 0
+Affect -1 20 -1 3 22 0 0
 End
 
 #STASH
