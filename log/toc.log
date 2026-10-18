@@ -118029,3 +118029,296 @@ Sun Oct 18 02:11:21 2026 :: Log Trentlin [2497]: quest complete: 30 gold, 19 que
 Sun Oct 18 02:11:32 2026 :: Log Trentlin [2497]: aquest gamble yes
 Sun Oct 18 02:11:34 2026 :: Log Trentlin [2497]: enter door
 Sun Oct 18 02:11:34 2026 :: Log Trentlin [2401]: arrived (Center of Oak Tree Square.) from 2497
+Sun Oct 18 02:12:17 2026 :: Log Trentlin [2401]: gro
+Sun Oct 18 02:12:18 2026 :: Log Trentlin [2401]: e
+Sun Oct 18 02:12:18 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Oct 18 02:12:18 2026 :: Log Trentlin [2403]: e
+Sun Oct 18 02:12:18 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Sun Oct 18 02:12:18 2026 :: Log Trentlin [2420]: e
+Sun Oct 18 02:12:18 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Sun Oct 18 02:12:19 2026 :: Log Trentlin [2421]: e
+Sun Oct 18 02:12:19 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Sun Oct 18 02:12:20 2026 :: Log Trentlin [2422]: e
+Sun Oct 18 02:12:20 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Sun Oct 18 02:12:21 2026 :: Log Trentlin [2423]: e
+Sun Oct 18 02:12:21 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Sun Oct 18 02:12:22 2026 :: Log Trentlin [2424]: e
+Sun Oct 18 02:12:22 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sun Oct 18 02:12:22 2026 :: Log Trentlin [2425]: n
+Sun Oct 18 02:12:22 2026 :: Log Trentlin [4401]: arrived (Before Gates to the Citadel of War.) from 2425
+Sun Oct 18 02:12:22 2026 :: Log Trentlin [4401]: n
+Sun Oct 18 02:12:22 2026 :: Log Trentlin [4402]: arrived (Tunnel to courtyard.) from 4401
+Sun Oct 18 02:12:23 2026 :: Log Trentlin [4402]: n
+Sun Oct 18 02:12:23 2026 :: Log Trentlin [4403]: arrived (Courtyard.) from 4402
+Sun Oct 18 02:12:23 2026 :: Log Trentlin [4403]: n
+Sun Oct 18 02:12:23 2026 :: Log Trentlin [4411]: arrived (Center of Courtyard.) from 4403
+Sun Oct 18 02:12:24 2026 :: Log Trentlin [4411]: n
+Sun Oct 18 02:12:24 2026 :: Log Trentlin [4407]: arrived (Courtyard.) from 4411
+Sun Oct 18 02:12:25 2026 :: Log Trentlin [4407]: s
+Sun Oct 18 02:12:25 2026 :: Log Trentlin [4411]: arrived (Center of Courtyard.) from 4407
+Sun Oct 18 02:12:25 2026 :: Log Trentlin [4411]: prac
+Sun Oct 18 02:12:28 2026 :: Log Trentlin [4411]: gain list
+Sun Oct 18 02:12:33 2026 :: Log Trentlin [4411]: help berserk
+Sun Oct 18 02:12:44 2026 :: Log Trentlin [4411]: n
+Sun Oct 18 02:12:44 2026 :: Log Trentlin [4407]: arrived (Courtyard.) from 4411
+Sun Oct 18 02:12:45 2026 :: Log Trentlin [4407]: s
+Sun Oct 18 02:12:45 2026 :: Log Trentlin [4411]: arrived (Center of Courtyard.) from 4407
+Sun Oct 18 02:12:45 2026 :: Log Trentlin [4411]: w
+Sun Oct 18 02:12:45 2026 :: Log Trentlin [4409]: arrived (Western Courtyard.) from 4411
+Sun Oct 18 02:12:45 2026 :: Log Trentlin [4409]: w
+Sun Oct 18 02:12:45 2026 :: Log Trentlin [4412]: arrived (Forge.) from 4409
+Sun Oct 18 02:12:46 2026 :: Log Trentlin [4412]: prac
+Sun Oct 18 02:12:48 2026 :: Log Trentlin [4412]: gain list]
+Sun Oct 18 02:12:51 2026 :: Log Trentlin [4412]: gain list
+Sun Oct 18 02:12:55 2026 :: Log Alaric [4210]: wake
+Sun Oct 18 02:12:55 2026 :: Log Alaric [4210]: l
+Sun Oct 18 02:12:57 2026 :: Log Alaric [4210]: s
+Sun Oct 18 02:12:57 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4210
+Sun Oct 18 02:12:57 2026 :: Log Alaric [4203]: s
+Sun Oct 18 02:12:57 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4203
+Sun Oct 18 02:12:58 2026 :: Log Alaric [4202]: w
+Sun Oct 18 02:12:58 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4202
+Sun Oct 18 02:12:58 2026 :: Log Alaric [4207]: w
+Sun Oct 18 02:12:58 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Oct 18 02:13:00 2026 :: Log Alaric [4208]: where
+Sun Oct 18 02:13:01 2026 :: Log Trentlin [4412]: gain enhanced
+Sun Oct 18 02:13:02 2026 :: Log Trentlin [4412]: prac
+Sun Oct 18 02:13:04 2026 :: Log Alaric [4208]: e
+Sun Oct 18 02:13:04 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sun Oct 18 02:13:04 2026 :: Log Alaric [4207]: e
+Sun Oct 18 02:13:04 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 02:13:04 2026 :: Log Trentlin [4412]: prac enhance
+Sun Oct 18 02:13:04 2026 :: Log Alaric [4202]: e
+Sun Oct 18 02:13:04 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Oct 18 02:13:04 2026 :: Log Alaric [4201]: e
+Sun Oct 18 02:13:04 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sun Oct 18 02:13:05 2026 :: Log Trentlin [4412]: prac enhance
+Sun Oct 18 02:13:05 2026 :: Log Alaric [2427]: e
+Sun Oct 18 02:13:05 2026 :: Log Trentlin [4412]: prac enhance
+Sun Oct 18 02:13:05 2026 :: Log Alaric [2427]: n
+Sun Oct 18 02:13:05 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 18 02:13:05 2026 :: Log Alaric [2404]: n
+Sun Oct 18 02:13:05 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sun Oct 18 02:13:06 2026 :: Log Trentlin [4412]: prac enhance
+Sun Oct 18 02:13:06 2026 :: Log Trentlin [4412]: prac enhance
+Sun Oct 18 02:13:07 2026 :: Log Trentlin [4412]: prac enhance
+Sun Oct 18 02:13:08 2026 :: Log Alaric [2401]: track trentlin
+Sun Oct 18 02:13:09 2026 :: Log Alaric [2401]: track trentlin
+Sun Oct 18 02:13:10 2026 :: Log Alaric [2401]: track trentlin
+Sun Oct 18 02:13:10 2026 :: Log Alaric [2401]: track trentlin
+Sun Oct 18 02:13:10 2026 :: Log Alaric [2401]: track trentlin
+Sun Oct 18 02:13:10 2026 :: Log Alaric [2401]: e
+Sun Oct 18 02:13:10 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Oct 18 02:13:11 2026 :: Log Alaric [2403]: e
+Sun Oct 18 02:13:11 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sun Oct 18 02:13:12 2026 :: Log Alaric [2420]: scan
+Sun Oct 18 02:13:13 2026 :: Log Alaric [2420]: where
+Sun Oct 18 02:13:14 2026 :: Log Alaric [2420]: e
+Sun Oct 18 02:13:14 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sun Oct 18 02:13:14 2026 :: Log Alaric [2421]: e
+Sun Oct 18 02:13:14 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sun Oct 18 02:13:17 2026 :: Log Alaric [2422]: w
+Sun Oct 18 02:13:17 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2422
+Sun Oct 18 02:13:17 2026 :: Log Alaric [2421]: w
+Sun Oct 18 02:13:17 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2421
+Sun Oct 18 02:13:17 2026 :: Log Alaric [2420]: w
+Sun Oct 18 02:13:17 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2420
+Sun Oct 18 02:13:18 2026 :: Log Alaric [2403]: w
+Sun Oct 18 02:13:18 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2403
+Sun Oct 18 02:13:20 2026 :: Log Alaric [2401]: s
+Sun Oct 18 02:13:20 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Sun Oct 18 02:13:20 2026 :: Log Alaric [2404]: s
+Sun Oct 18 02:13:20 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 2404
+Sun Oct 18 02:13:20 2026 :: Log Alaric [2427]: w
+Sun Oct 18 02:13:20 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 2427
+Sun Oct 18 02:13:20 2026 :: Log Alaric [4201]: w
+Sun Oct 18 02:13:20 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4201
+Sun Oct 18 02:13:21 2026 :: Log Alaric [4202]: w
+Sun Oct 18 02:13:21 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4202
+Sun Oct 18 02:13:23 2026 :: Log Alaric [4207]: where
+Sun Oct 18 02:13:24 2026 :: Log Alaric [4207]: i
+Sun Oct 18 02:13:28 2026 :: Log Alaric [4207]: score
+Sun Oct 18 02:13:32 2026 :: Log Trentlin [4412]: sco
+Sun Oct 18 02:13:33 2026 :: Log Trentlin [4412]: e
+Sun Oct 18 02:13:33 2026 :: Log Trentlin [4409]: arrived (Western Courtyard.) from 4412
+Sun Oct 18 02:13:34 2026 :: Log Trentlin [4409]: e
+Sun Oct 18 02:13:34 2026 :: Log Trentlin [4411]: arrived (Center of Courtyard.) from 4409
+Sun Oct 18 02:13:35 2026 :: Log Trentlin [4411]: n
+Sun Oct 18 02:13:35 2026 :: Log Trentlin [4407]: arrived (Courtyard.) from 4411
+Sun Oct 18 02:13:36 2026 :: Log Trentlin [4407]: s
+Sun Oct 18 02:13:36 2026 :: Log Trentlin [4411]: arrived (Center of Courtyard.) from 4407
+Sun Oct 18 02:13:38 2026 :: Log Trentlin [4411]: gain list
+Sun Oct 18 02:13:39 2026 :: Log Alaric [4207]: w
+Sun Oct 18 02:13:39 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Oct 18 02:13:40 2026 :: Log Trentlin [4411]: n
+Sun Oct 18 02:13:40 2026 :: Log Trentlin [4407]: arrived (Courtyard.) from 4411
+Sun Oct 18 02:13:41 2026 :: Log Trentlin [4407]: n
+Sun Oct 18 02:13:41 2026 :: Log Alaric [4208]: stash
+Sun Oct 18 02:13:42 2026 :: Log Trentlin [4407]: n
+Sun Oct 18 02:13:47 2026 :: Log Trentlin [4407]: open north
+Sun Oct 18 02:13:47 2026 :: Log Trentlin [4407]: n
+Sun Oct 18 02:13:47 2026 :: Log Trentlin [4452]: arrived (Entry Room.) from 4407
+Sun Oct 18 02:14:03 2026 :: Log Alaric [4208]: e
+Sun Oct 18 02:14:03 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Sun Oct 18 02:14:07 2026 :: Log Alaric [4207]: where
+Sun Oct 18 02:14:08 2026 :: Log Alaric [4207]: who
+Sun Oct 18 02:14:10 2026 :: Log Alaric [4207]: where
+Sun Oct 18 02:14:18 2026 :: Log Alaric [4207]: where
+Sun Oct 18 02:14:18 2026 :: Log Alaric [4207]: where
+Sun Oct 18 02:14:19 2026 :: Log Alaric [4207]: who
+Sun Oct 18 02:14:23 2026 :: Log Alaric [4207]: where
+Sun Oct 18 02:14:24 2026 :: Log Alaric [4207]: e
+Sun Oct 18 02:14:24 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 02:14:26 2026 :: Log Alaric [4202]: e
+Sun Oct 18 02:14:26 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Sun Oct 18 02:14:26 2026 :: Log Alaric [4201]: e
+Sun Oct 18 02:14:26 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Sun Oct 18 02:14:27 2026 :: Log Alaric [2427]: n
+Sun Oct 18 02:14:27 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 18 02:14:28 2026 :: Log Alaric [2404]: n
+Sun Oct 18 02:14:28 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Sun Oct 18 02:14:29 2026 :: Log Alaric [2401]: where
+Sun Oct 18 02:14:30 2026 :: Log Alaric [2401]: where
+Sun Oct 18 02:14:38 2026 :: Log Alaric [2401]: where
+Sun Oct 18 02:14:39 2026 :: Log Alaric [2401]: who
+Sun Oct 18 02:14:42 2026 :: Log Alaric [2401]: r e 7
+Sun Oct 18 02:14:42 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Oct 18 02:14:42 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sun Oct 18 02:14:42 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sun Oct 18 02:14:42 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sun Oct 18 02:14:42 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sun Oct 18 02:14:42 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sun Oct 18 02:14:42 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sun Oct 18 02:14:43 2026 :: Log Alaric [2425]: n
+Sun Oct 18 02:14:43 2026 :: Log Alaric [4401]: arrived (Before Gates to the Citadel of War.) from 2425
+Sun Oct 18 02:14:44 2026 :: Log Alaric [4401]: track trentlin
+Sun Oct 18 02:14:45 2026 :: Log Alaric [4401]: track trentlin
+Sun Oct 18 02:14:45 2026 :: Log Alaric [4401]: track trentlin
+Sun Oct 18 02:14:46 2026 :: Log Alaric [4401]: track trentlin
+Sun Oct 18 02:14:46 2026 :: Log Alaric [4401]: track trentlin
+Sun Oct 18 02:14:48 2026 :: Log Alaric [4401]: where
+Sun Oct 18 02:14:49 2026 :: Log Alaric [4401]: where
+Sun Oct 18 02:14:49 2026 :: Log Alaric [4401]: where
+Sun Oct 18 02:14:52 2026 :: Log Alaric [4401]: who
+Sun Oct 18 02:14:52 2026 :: Log Alaric [4401]: score
+Sun Oct 18 02:14:58 2026 :: Log Trentlin [4452]: l
+Sun Oct 18 02:15:00 2026 :: Log Trentlin [4452]: n
+Sun Oct 18 02:15:00 2026 :: Log Trentlin [4457]: arrived (Hallway.) from 4452
+Sun Oct 18 02:15:01 2026 :: Log Trentlin [4457]: u
+Sun Oct 18 02:15:02 2026 :: Log Trentlin [4457]: w
+Sun Oct 18 02:15:04 2026 :: Log Trentlin [4457]: w
+Sun Oct 18 02:15:06 2026 :: Log Trentlin [4457]: open westy
+Sun Oct 18 02:15:08 2026 :: Log Alaric [4401]: where
+Sun Oct 18 02:15:08 2026 :: Log Trentlin [4457]: open west
+Sun Oct 18 02:15:08 2026 :: Log Trentlin [4457]: w
+Sun Oct 18 02:15:08 2026 :: Log Trentlin [4456]: arrived (Great Hall.) from 4457
+Sun Oct 18 02:15:11 2026 :: Log Trentlin [4456]: l
+Sun Oct 18 02:15:12 2026 :: Log Trentlin [4456]: s
+Sun Oct 18 02:15:12 2026 :: Log Trentlin [4453]: arrived (Great Hall.) from 4456
+Sun Oct 18 02:15:14 2026 :: Log Trentlin [4453]: l
+Sun Oct 18 02:15:17 2026 :: Log Trentlin [4453]: open west
+Sun Oct 18 02:15:17 2026 :: Log Trentlin [4453]: w
+Sun Oct 18 02:15:17 2026 :: Log Trentlin [4454]: arrived (Kitchen.) from 4453
+Sun Oct 18 02:15:18 2026 :: Log Trentlin [4454]: l
+Sun Oct 18 02:15:20 2026 :: Log Trentlin [4454]: e
+Sun Oct 18 02:15:20 2026 :: Log Trentlin [4453]: arrived (Great Hall.) from 4454
+Sun Oct 18 02:15:22 2026 :: Log Trentlin [4453]: open east
+Sun Oct 18 02:15:22 2026 :: Log Trentlin [4453]: e
+Sun Oct 18 02:15:22 2026 :: Log Trentlin [4452]: arrived (Entry Room.) from 4453
+Sun Oct 18 02:15:23 2026 :: Log Trentlin [4452]: (refused) u]
+Sun Oct 18 02:15:25 2026 :: Log Trentlin [4452]: e
+Sun Oct 18 02:15:25 2026 :: Log Trentlin [4463]: arrived (Bottom of stairway.) from 4452
+Sun Oct 18 02:15:25 2026 :: Log Alaric [4401]: where
+Sun Oct 18 02:15:26 2026 :: Log Trentlin [4463]: u
+Sun Oct 18 02:15:26 2026 :: Log Trentlin [4464]: arrived (Top of stairway.) from 4463
+Sun Oct 18 02:15:26 2026 :: Log Alaric [4401]: where
+Sun Oct 18 02:15:27 2026 :: Log Trentlin [4464]: u
+Sun Oct 18 02:15:27 2026 :: Log Alaric [4401]: where
+Sun Oct 18 02:15:28 2026 :: Log Alaric [4401]: where
+Sun Oct 18 02:15:29 2026 :: Log Trentlin [4464]: n
+Sun Oct 18 02:15:29 2026 :: Log Trentlin [4466]: arrived (Hallway.) from 4464
+Sun Oct 18 02:15:30 2026 :: Log Alaric [4401]: recal
+Sun Oct 18 02:15:30 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4401
+Sun Oct 18 02:15:30 2026 :: Log Trentlin [4466]: w
+Sun Oct 18 02:15:30 2026 :: Log Trentlin [4467]: arrived (Hallway.) from 4466
+Sun Oct 18 02:15:31 2026 :: Log Alaric [4207]: where
+Sun Oct 18 02:15:32 2026 :: Log Trentlin [4467]: l
+Sun Oct 18 02:15:36 2026 :: Log Trentlin [4467]: open north
+Sun Oct 18 02:15:36 2026 :: Log Trentlin [4467]: n
+Sun Oct 18 02:15:36 2026 :: Log Trentlin [4471]: arrived (Captains Room.) from 4467
+Sun Oct 18 02:15:37 2026 :: Log Trentlin [4471]: prac
+Sun Oct 18 02:15:39 2026 :: Log Trentlin [4471]: l
+Sun Oct 18 02:15:40 2026 :: Log Trentlin [4471]: w
+Sun Oct 18 02:15:42 2026 :: Log Trentlin [4471]: s
+Sun Oct 18 02:15:42 2026 :: Log Trentlin [4467]: arrived (Hallway.) from 4471
+Sun Oct 18 02:15:43 2026 :: Log Trentlin [4467]: w
+Sun Oct 18 02:15:43 2026 :: Log Trentlin [4470]: arrived (Guard Room.) from 4467
+Sun Oct 18 02:15:43 2026 :: Log Trentlin [4470]: n
+Sun Oct 18 02:15:46 2026 :: Log Trentlin [4470]: open north
+Sun Oct 18 02:15:47 2026 :: Log Trentlin [4470]: n
+Sun Oct 18 02:15:47 2026 :: Log Trentlin [4426]: arrived (Battlements.) from 4470
+Sun Oct 18 02:15:48 2026 :: Log Trentlin [4426]: prac
+Sun Oct 18 02:15:49 2026 :: Log Trentlin [4426]: sca
+Sun Oct 18 02:15:49 2026 :: Log Trentlin [4426]: ex
+Sun Oct 18 02:15:51 2026 :: Log Trentlin [4426]: w
+Sun Oct 18 02:15:51 2026 :: Log Trentlin [4425]: arrived (Battlements.) from 4426
+Sun Oct 18 02:15:52 2026 :: Log Trentlin [4425]: ex
+Sun Oct 18 02:15:52 2026 :: Log Trentlin [4425]: s
+Sun Oct 18 02:15:53 2026 :: Log Trentlin [4425]: w
+Sun Oct 18 02:15:54 2026 :: Log Trentlin [4425]: ex
+Sun Oct 18 02:15:56 2026 :: Log Trentlin [4425]: open west
+Sun Oct 18 02:15:56 2026 :: Log Alaric [4207]: where
+Sun Oct 18 02:15:56 2026 :: Log Trentlin [4425]: w
+Sun Oct 18 02:15:56 2026 :: Log Trentlin [4424]: arrived (Inside Northwestern Tower.) from 4425
+Sun Oct 18 02:15:57 2026 :: Log Trentlin [4424]: ex
+Sun Oct 18 02:15:57 2026 :: Log Alaric [4207]: where
+Sun Oct 18 02:15:58 2026 :: Log Trentlin [4424]: sca
+Sun Oct 18 02:15:59 2026 :: Log Alaric [4207]: score
+Sun Oct 18 02:16:01 2026 :: Log Alaric [4207]: who
+Sun Oct 18 02:16:06 2026 :: Log Trentlin [4424]: open up
+Sun Oct 18 02:16:06 2026 :: Log Trentlin [4424]: u
+Sun Oct 18 02:16:06 2026 :: Log Trentlin [4438]: arrived (Top of the Northwestern Tower.) from 4424
+Sun Oct 18 02:16:08 2026 :: Log Trentlin [4438]: e
+Sun Oct 18 02:16:09 2026 :: Log Trentlin [4438]: d
+Sun Oct 18 02:16:09 2026 :: Log Trentlin [4424]: arrived (Inside Northwestern Tower.) from 4438
+Sun Oct 18 02:16:09 2026 :: Log Trentlin [4424]: s
+Sun Oct 18 02:16:09 2026 :: Sock.sinaddr:  178.156.189.249
+Sun Oct 18 02:16:10 2026 :: EOF encountered on read.
+Sun Oct 18 02:16:12 2026 :: Log Trentlin [4424]: open south
+Sun Oct 18 02:16:12 2026 :: Log Trentlin [4424]: s
+Sun Oct 18 02:16:12 2026 :: Log Trentlin [4423]: arrived (Battlements.) from 4424
+Sun Oct 18 02:16:13 2026 :: Log Trentlin [4423]: sca
+Sun Oct 18 02:16:14 2026 :: Log Trentlin [4423]: e
+Sun Oct 18 02:16:15 2026 :: Log Trentlin [4423]: s
+Sun Oct 18 02:16:15 2026 :: Log Trentlin [4422]: arrived (Battlements.) from 4423
+Sun Oct 18 02:16:16 2026 :: Log Trentlin [4422]: k
+Sun Oct 18 02:16:23 2026 :: Log Trentlin [4422]: open south
+Sun Oct 18 02:16:23 2026 :: Log Trentlin [4422]: s
+Sun Oct 18 02:16:23 2026 :: Log Trentlin [4421]: arrived (Inside Southwestern Tower.) from 4422
+Sun Oct 18 02:16:23 2026 :: Log Alaric [4207]: gos A nice thing is to use the walk command to go directly to whatever trainer you're after
+Sun Oct 18 02:16:24 2026 :: Log Trentlin [4421]: sca
+Sun Oct 18 02:16:24 2026 :: Log Alaric [4207]: where
+Sun Oct 18 02:16:33 2026 :: Log Trentlin [4421]: help warruor
+Sun Oct 18 02:16:37 2026 :: Log Trentlin [4421]: help warrior
+Sun Oct 18 02:16:42 2026 :: Log Trentlin [4421]: north
+Sun Oct 18 02:16:42 2026 :: Log Trentlin [4422]: arrived (Battlements.) from 4421
+Sun Oct 18 02:16:43 2026 :: Log Trentlin [4422]: north
+Sun Oct 18 02:16:43 2026 :: Log Trentlin [4423]: arrived (Battlements.) from 4422
+Sun Oct 18 02:16:43 2026 :: Log Trentlin [4423]: north
+Sun Oct 18 02:16:43 2026 :: Log Trentlin [4424]: arrived (Inside Northwestern Tower.) from 4423
+Sun Oct 18 02:16:43 2026 :: Log Trentlin [4424]: east
+Sun Oct 18 02:16:43 2026 :: Log Trentlin [4425]: arrived (Battlements.) from 4424
+Sun Oct 18 02:16:43 2026 :: Log Trentlin [4425]: east
+Sun Oct 18 02:16:43 2026 :: Log Trentlin [4426]: arrived (Battlements.) from 4425
+Sun Oct 18 02:16:44 2026 :: Log Trentlin [4426]: south
+Sun Oct 18 02:16:44 2026 :: Log Trentlin [4470]: arrived (Guard Room.) from 4426
+Sun Oct 18 02:16:44 2026 :: Log Trentlin [4470]: open west
+Sun Oct 18 02:16:44 2026 :: Log Trentlin [4470]: west
+Sun Oct 18 02:16:44 2026 :: Log Trentlin [4468]: arrived (Masters Chambers.) from 4470
+Sun Oct 18 02:16:46 2026 :: Log Trentlin [4468]: prac
+Sun Oct 18 02:16:48 2026 :: Log Trentlin [4468]: gain list
+Sun Oct 18 02:16:49 2026 :: Log Alaric [4207]: gos Gainlist and practicelist are newer commands as well that make running around in your guild a bit easier
+Sun Oct 18 02:16:50 2026 :: Log Alaric [4207]: who
+Sun Oct 18 02:16:58 2026 :: Log Trentlin [4468]: gain smite
+Sun Oct 18 02:17:00 2026 :: Log Trentlin [4468]: prac smite
+Sun Oct 18 02:17:00 2026 :: Log Trentlin [4468]: prac smite
