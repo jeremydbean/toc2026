@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792292159
+LogO 1792292337
 Vers 4
 Prom < %h/%H %m/%M %v/%V>%c~
 Ignoring ~
@@ -15,16 +15,16 @@ PsiSpec ~
 PsiKnown ~
 ChangesSeen ~
 Cast none
-Levl 25
-Plyd 23049
+Levl 26
+Plyd 23227
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 2497
-HMV  290 351 654 654 13 244
-NewGold 1
-NewPlat 24
+Room 29060
+HMV  139 367 629 681 120 250
+NewGold 71
+NewPlat 23
 NewCopp 9
 NewSilv 45
 BankCP 15037500
@@ -93,8 +93,8 @@ SesQuest 0
 QuestPnts 930
 QuestStrk 3
 CasinoLost 4
-QuestNext 15
-Exp  58343
+QuestNext 11
+Exp  58607
 Act  65740
 AfBy 512
 Comm 24576
@@ -122,7 +122,8 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 15
+Prac 19
+Trai 1
 Save  5
 Alig  -1000
 Hit   17
@@ -131,12 +132,12 @@ ACs 0 -2 -10 100
 Attr 16 16 16 12 19
 AMod 5 10 10 4 10
 Pass TrjPUdRVdu8MY~
-Titl  the Demon Slayer~
+Titl  the Greater Demon Slayer~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 341 654 244
-Cond 0 0 22
+HMVP 357 681 250
+Cond 0 45 19
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -323,7 +324,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 461
+Time 458
 Cost 0
 Cond 100
 Repd 0
@@ -541,24 +542,6 @@ Cost 7000000
 Cond 100
 Repd 0
 Affect -1 36 -1 -16 14 0 0
-End
-
-#O
-Vnum 3009
-Nest 0
-Wear -1
-Cost 10000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 0
-Wear -1
-Cost 10000
-Cond 100
-Repd 0
 End
 
 #O
