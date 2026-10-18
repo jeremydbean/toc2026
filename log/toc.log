@@ -115073,3 +115073,59 @@ Sun Oct 18 00:45:22 2026 :: Log Alaric [16020]: arrived (Main Deck of the Royal 
 Sun Oct 18 00:45:23 2026 :: Log Alaric [16020]: u
 Sun Oct 18 00:45:23 2026 :: Log Alaric [16015]: arrived (Aft Deck - Starboard Side) from 16020
 Sun Oct 18 00:45:25 2026 :: Log Alaric [16015]: bs pi
+Sun Oct 18 00:46:33 2026 :: Log Alaric [16015]: killed The angry pirate
+Sun Oct 18 00:46:33 2026 :: Log Alaric [16015]: coin +1 platinum
+Sun Oct 18 00:46:33 2026 :: Log Alaric [16015]: coin +5 silver
+Sun Oct 18 00:46:33 2026 :: Log Alaric [16015]: coin +6 copper
+Sun Oct 18 00:46:33 2026 :: Log Alaric [16015]: coin +2 gold
+Sun Oct 18 00:46:42 2026 :: Log Alaric [16015]: l
+Sun Oct 18 00:46:45 2026 :: Log Alaric [16015]: l i cor
+Sun Oct 18 00:46:47 2026 :: Log Alaric [16015]: scan
+Sun Oct 18 00:46:50 2026 :: Log Alaric [16015]: w
+Sun Oct 18 00:46:50 2026 :: Log Alaric [16014]: arrived (Aft Deck) from 16015
+Sun Oct 18 00:46:50 2026 :: Log Alaric [16014]: bs pi
+Sun Oct 18 00:47:30 2026 :: Log Alaric [16014]: killed The angry pirate
+Sun Oct 18 00:47:30 2026 :: Log Alaric [16014]: coin +1 platinum
+Sun Oct 18 00:47:30 2026 :: Log Alaric [16014]: coin +5 silver
+Sun Oct 18 00:47:30 2026 :: Log Alaric [16014]: coin +6 copper
+Sun Oct 18 00:47:30 2026 :: Log Alaric [16014]: coin +2 gold
+Sun Oct 18 00:47:45 2026 :: Log Alaric [16014]: l
+Sun Oct 18 00:47:46 2026 :: Log Alaric [16014]: bs buc
+Sun Oct 18 00:48:24 2026 :: Log Alaric [16014]: killed The bucaneer
+Sun Oct 18 00:48:24 2026 :: Log Alaric [16014]: coin +4 platinum
+Sun Oct 18 00:48:24 2026 :: Log Alaric [16014]: coin +19 silver
+Sun Oct 18 00:48:24 2026 :: Log Alaric [16014]: coin +25 copper
+Sun Oct 18 00:48:24 2026 :: Log Alaric [16014]: coin +10 gold
+Sun Oct 18 00:48:32 2026 :: Log Alaric [16014]: scan
+Sun Oct 18 00:48:35 2026 :: Log Alaric [16014]: w
+Sun Oct 18 00:48:35 2026 :: Log Alaric [16013]: arrived (Center Aft Deck) from 16014
+Sun Oct 18 00:48:36 2026 :: Log Alaric [16013]: bs pi
+Sun Oct 18 00:49:22 2026 :: Log Alaric [16013]: killed The angry pirate
+Sun Oct 18 00:49:22 2026 :: Log Alaric [16013]: coin +1 platinum
+Sun Oct 18 00:49:22 2026 :: Log Alaric [16013]: coin +5 silver
+Sun Oct 18 00:49:22 2026 :: Log Alaric [16013]: coin +6 copper
+Sun Oct 18 00:49:22 2026 :: Log Alaric [16013]: coin +2 gold
+Sun Oct 18 00:49:37 2026 :: Log Alaric [16013]: scan
+Sun Oct 18 00:49:39 2026 :: Log Alaric [16013]: recal
+Sun Oct 18 00:49:39 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16013
+Sun Oct 18 00:49:41 2026 :: Log Alaric [4207]: i
+Sun Oct 18 00:49:46 2026 :: Sock.sinaddr:  5.161.73.160
+Sun Oct 18 00:49:46 2026 :: EOF encountered on read.
+Sun Oct 18 00:49:50 2026 :: Log Alaric [4207]: stash put star
+Sun Oct 18 00:49:50 2026 :: Log Alaric [4207]: stashed a Silver star-hilted dagger (vnum 10049)
+Sun Oct 18 00:49:52 2026 :: Log Alaric [4207]: e
+Sun Oct 18 00:49:52 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 00:49:53 2026 :: Log Alaric [4202]: gr
+Sun Oct 18 00:49:54 2026 :: Log Alaric [4202]: w
+Sun Oct 18 00:49:54 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4202
+Sun Oct 18 00:49:54 2026 :: Log Alaric [4207]: w
+Sun Oct 18 00:49:54 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Sun Oct 18 00:49:56 2026 :: Log Alaric [4208]: heal all
+Sun Oct 18 00:49:56 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Sun Oct 18 00:50:05 2026 :: Log Alaric [4208]: i
+Sun Oct 18 00:50:12 2026 :: Log Alaric [4208]: stash get plate
+Sun Oct 18 00:50:12 2026 :: Log Alaric [4208]: withdrew Knights of the Silver Hand Full Plate (vnum 28129) from the stash
+Sun Oct 18 00:50:14 2026 :: Log Alaric [4208]: wear plate
+Sun Oct 18 00:50:17 2026 :: Log Alaric [4208]: comp robe
+Sun Oct 18 00:50:22 2026 :: Log Alaric [4208]: stash put robe
+Sun Oct 18 00:50:22 2026 :: Log Alaric [4208]: stashed some Black velvet robes (vnum 10048)
