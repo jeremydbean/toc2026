@@ -128891,3 +128891,21 @@ Sun Oct 18 19:40:03 2026 :: Log Alaric [16079]: coin +8 copper
 Sun Oct 18 19:40:03 2026 :: Log Alaric [16079]: coin +3 gold
 Sun Oct 18 19:41:55 2026 :: Sock.sinaddr:  178.156.187.238
 Sun Oct 18 19:41:55 2026 :: EOF encountered on read.
+Sun Oct 18 19:42:57 2026 :: Log Alaric [16079]: l
+Sun Oct 18 19:42:58 2026 :: Log Alaric [16079]: recal
+Sun Oct 18 19:42:58 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16079
+Sun Oct 18 19:42:58 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 19:42:58 2026 :: Log Alaric [4207]: recal
+Sun Oct 18 19:42:58 2026 :: Log Alaric [4207]: e
+Sun Oct 18 19:42:58 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Sun Oct 18 19:42:59 2026 :: Log Alaric [4202]: n
+Sun Oct 18 19:42:59 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Sun Oct 18 19:42:59 2026 :: Log Alaric [4203]: n
+Sun Oct 18 19:42:59 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Sun Oct 18 19:42:59 2026 :: Log Alaric [4210]: sleep
+Sun Oct 18 19:43:04 2026 :: Log Alaric [4210]: prac
+Sun Oct 18 19:43:13 2026 :: Log Alaric [4210]: quit
+Sun Oct 18 19:43:13 2026 :: Alaric has quit.
+Sun Oct 18 19:43:13 2026 :: [QUIT] Player rejoined the real world.
+Sun Oct 18 19:47:00 2026 :: Sock.sinaddr:  5.161.75.7
+Sun Oct 18 19:47:00 2026 :: EOF encountered on read.
