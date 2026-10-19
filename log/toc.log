@@ -132029,3 +132029,46 @@ Mon Oct 19 01:11:28 2026 :: Log Alaric [16033]: arrived (Base of the Mast) from 
 Mon Oct 19 01:11:28 2026 :: Log Alaric [16033]: n
 Mon Oct 19 01:11:28 2026 :: Log Alaric [16038]: arrived (Main Deck) from 16033
 Mon Oct 19 01:11:29 2026 :: Log Alaric [16038]: bs sw
+Mon Oct 19 01:11:58 2026 :: Log Alaric [16038]: who
+Mon Oct 19 01:11:59 2026 :: Log Alaric [16038]: dirt
+Mon Oct 19 01:12:03 2026 :: Sock.sinaddr:  34.198.201.66
+Mon Oct 19 01:12:04 2026 :: EOF encountered on read.
+Mon Oct 19 01:12:22 2026 :: Log Alaric [16038]: killed The swashbuckler
+Mon Oct 19 01:12:22 2026 :: Log Alaric [16038]: coin +1 platinum
+Mon Oct 19 01:12:22 2026 :: Log Alaric [16038]: coin +6 silver
+Mon Oct 19 01:12:22 2026 :: Log Alaric [16038]: coin +8 copper
+Mon Oct 19 01:12:22 2026 :: Log Alaric [16038]: coin +3 gold
+Mon Oct 19 01:12:33 2026 :: Log Alaric [16038]: s
+Mon Oct 19 01:12:33 2026 :: Log Alaric [16033]: arrived (Base of the Mast) from 16038
+Mon Oct 19 01:12:33 2026 :: Log Alaric [16033]: u
+Mon Oct 19 01:12:33 2026 :: Log Alaric [16078]: arrived (The Mast) from 16033
+Mon Oct 19 01:12:34 2026 :: Log Alaric [16078]: scan
+Mon Oct 19 01:12:36 2026 :: Log Alaric [16078]: bs sw
+Mon Oct 19 01:13:22 2026 :: Log Alaric [16078]: killed The swashbuckler
+Mon Oct 19 01:13:22 2026 :: Log Alaric [16078]: coin +1 platinum
+Mon Oct 19 01:13:22 2026 :: Log Alaric [16078]: coin +6 silver
+Mon Oct 19 01:13:22 2026 :: Log Alaric [16078]: coin +8 copper
+Mon Oct 19 01:13:22 2026 :: Log Alaric [16078]: coin +3 gold
+Mon Oct 19 01:14:36 2026 :: Log Alaric [16078]: u
+Mon Oct 19 01:14:36 2026 :: Log Alaric [16081]: arrived (The Mast) from 16078
+Mon Oct 19 01:14:36 2026 :: Log Alaric [16081]: scan
+Mon Oct 19 01:14:38 2026 :: Log Alaric [16081]: w
+Mon Oct 19 01:14:38 2026 :: Log Alaric [16080]: arrived (Out on the Mast) from 16081
+Mon Oct 19 01:14:39 2026 :: Log Alaric [16080]: bs sw
+Mon Oct 19 01:15:00 2026 :: Log Alaric [16080]: flee
+Mon Oct 19 01:15:00 2026 :: Log Alaric [16081]: arrived (The Mast) from 16080
+Mon Oct 19 01:15:00 2026 :: Log Alaric [16081]: flee
+Mon Oct 19 01:15:00 2026 :: Log Alaric [16081]: flee
+Mon Oct 19 01:15:01 2026 :: Log Alaric [16081]: recal
+Mon Oct 19 01:15:01 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16081
+Mon Oct 19 01:15:03 2026 :: Log Alaric [4207]: w
+Mon Oct 19 01:15:03 2026 :: Log Alaric [4208]: arrived (Altar of the Temple of Devota.) from 4207
+Mon Oct 19 01:15:04 2026 :: Log Alaric [4208]: e
+Mon Oct 19 01:15:04 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 4208
+Mon Oct 19 01:15:04 2026 :: Log Alaric [4207]: e
+Mon Oct 19 01:15:04 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Mon Oct 19 01:15:04 2026 :: Log Alaric [4202]: n
+Mon Oct 19 01:15:04 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Mon Oct 19 01:15:04 2026 :: Log Alaric [4203]: n
+Mon Oct 19 01:15:04 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Mon Oct 19 01:15:05 2026 :: Log Alaric [4210]: sleep
