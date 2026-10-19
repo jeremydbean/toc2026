@@ -131409,3 +131409,10 @@ Mon Oct 19 00:25:31 2026 :: Log Alaric [16023]: scan
 Mon Oct 19 00:25:33 2026 :: Log Alaric [16023]: s
 Mon Oct 19 00:25:33 2026 :: Log Alaric [16018]: arrived (Main Deck of the Royal Eagle) from 16023
 Mon Oct 19 00:25:33 2026 :: Log Alaric [16018]: bs sw
+Mon Oct 19 00:26:13 2026 :: Log Alaric [16018]: killed The swashbuckler
+Mon Oct 19 00:26:13 2026 :: Log Alaric [16018]: coin +1 platinum
+Mon Oct 19 00:26:13 2026 :: Log Alaric [16018]: coin +6 silver
+Mon Oct 19 00:26:13 2026 :: Log Alaric [16018]: coin +8 copper
+Mon Oct 19 00:26:13 2026 :: Log Alaric [16018]: coin +3 gold
+Mon Oct 19 00:26:19 2026 :: Sock.sinaddr:  5.161.113.195
+Mon Oct 19 00:26:19 2026 :: EOF encountered on read.
