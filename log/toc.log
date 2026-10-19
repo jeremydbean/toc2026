@@ -133877,3 +133877,17 @@ Mon Oct 19 14:44:43 2026 :: Sock.sinaddr:  52.22.236.30
 Mon Oct 19 14:44:44 2026 :: EOF encountered on read.
 Mon Oct 19 14:49:48 2026 :: Sock.sinaddr:  178.156.181.172
 Mon Oct 19 14:49:49 2026 :: EOF encountered on read.
+Mon Oct 19 14:54:53 2026 :: Sock.sinaddr:  3.12.251.153
+Mon Oct 19 14:54:53 2026 :: EOF encountered on read.
+Mon Oct 19 14:58:15 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Mon Oct 19 14:58:19 2026 :: Log WebAdmin: fsave
+Mon Oct 19 14:58:25 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Mon Oct 19 14:58:28 2026 :: Received signal 15; saving players and shutting down.
+Mon Oct 19 14:58:28 2026 :: Normal termination of game.
+Mon Oct 19 14:58:30 2026 ::  INIT OK 
+Mon Oct 19 14:58:30 2026 :: walkto_load: 157 destinations.
+Mon Oct 19 14:58:30 2026 :: changes_load: 108 entries.
+Mon Oct 19 14:58:30 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Mon Oct 19 14:58:30 2026 :: ROM is ready to rock on port 9000.
+Mon Oct 19 14:58:30 2026 :: Automated backup complete.
+Mon Oct 19 14:58:30 2026 :: Daily backup complete.
