@@ -130988,3 +130988,68 @@ Mon Oct 19 00:00:47 2026 :: Log Alaric [9528]: arrived (East Main Street) from 9
 Mon Oct 19 00:00:47 2026 :: Log Alaric [9529]: arrived (East Main Street) from 9528
 Mon Oct 19 00:00:47 2026 :: Log Alaric [9530]: arrived (East Main Street) from 9529
 Mon Oct 19 00:00:47 2026 :: Log Alaric [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9530
+Mon Oct 19 00:00:47 2026 :: Log Alaric [9531]: oe
+Mon Oct 19 00:00:48 2026 :: Log Alaric [9531]: r e 6
+Mon Oct 19 00:00:48 2026 :: Log Alaric [9668]: arrived (Outside the Eastern Gate of New Thalos) from 9531
+Mon Oct 19 00:00:48 2026 :: Log Alaric [9790]: arrived (On a road) from 9668
+Mon Oct 19 00:00:48 2026 :: Log Alaric [9791]: arrived (On a road) from 9790
+Mon Oct 19 00:00:48 2026 :: Log Alaric [9792]: arrived (On a road) from 9791
+Mon Oct 19 00:00:48 2026 :: Log Alaric [9793]: arrived (On a road) from 9792
+Mon Oct 19 00:00:48 2026 :: Log Alaric [9794]: arrived (Near the shore) from 9793
+Mon Oct 19 00:00:48 2026 :: Log Alaric [9794]: r n 6
+Mon Oct 19 00:00:48 2026 :: Log Alaric [41]: arrived (The new pier) from 9794
+Mon Oct 19 00:00:48 2026 :: Log Alaric [16000]: arrived (Beginning of the Pier) from 41
+Mon Oct 19 00:00:48 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16000
+Mon Oct 19 00:00:48 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16001
+Mon Oct 19 00:00:48 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Mon Oct 19 00:00:48 2026 :: Log Alaric [16004]: arrived (A Turn at the Pier) from 16003
+Mon Oct 19 00:00:51 2026 :: Log Alaric [16004]: e
+Mon Oct 19 00:00:51 2026 :: Log Alaric [16005]: arrived (Plankway to the Royal Eagle) from 16004
+Mon Oct 19 00:00:52 2026 :: Log Alaric [16005]: u
+Mon Oct 19 00:00:52 2026 :: Log Alaric [16021]: arrived (Entrance to the Royal Eagle - Main Deck) from 16005
+Mon Oct 19 00:00:53 2026 :: Log Alaric [16021]: e
+Mon Oct 19 00:00:53 2026 :: Log Alaric [16022]: arrived (Main Deck) from 16021
+Mon Oct 19 00:00:53 2026 :: Sock.sinaddr:  178.156.189.249
+Mon Oct 19 00:00:53 2026 :: Log Alaric [16022]: e
+Mon Oct 19 00:00:53 2026 :: Log Alaric [16023]: arrived (Main Deck) from 16022
+Mon Oct 19 00:00:53 2026 :: EOF encountered on read.
+Mon Oct 19 00:00:54 2026 :: Log Alaric [16023]: scan
+Mon Oct 19 00:00:55 2026 :: Log Alaric [16023]: n
+Mon Oct 19 00:00:55 2026 :: Log Alaric [16028]: arrived (Main Deck) from 16023
+Mon Oct 19 00:00:56 2026 :: Log Alaric [16028]: scan
+Mon Oct 19 00:00:57 2026 :: Log Alaric [16028]: n
+Mon Oct 19 00:00:57 2026 :: Log Alaric [16033]: arrived (Base of the Mast) from 16028
+Mon Oct 19 00:00:58 2026 :: Log Alaric [16033]: scan
+Mon Oct 19 00:00:59 2026 :: Log Alaric [16033]: u
+Mon Oct 19 00:00:59 2026 :: Log Alaric [16078]: arrived (The Mast) from 16033
+Mon Oct 19 00:00:59 2026 :: Log Alaric [16078]: scan
+Mon Oct 19 00:01:00 2026 :: Log Alaric [16078]: d
+Mon Oct 19 00:01:00 2026 :: Log Alaric [16033]: arrived (Base of the Mast) from 16078
+Mon Oct 19 00:01:01 2026 :: Log Alaric [16033]: n
+Mon Oct 19 00:01:01 2026 :: Log Alaric [16038]: arrived (Main Deck) from 16033
+Mon Oct 19 00:01:01 2026 :: Log Alaric [16038]: n
+Mon Oct 19 00:01:01 2026 :: Log Alaric [16043]: arrived (Main Deck) from 16038
+Mon Oct 19 00:01:02 2026 :: Log Alaric [16043]: scan
+Mon Oct 19 00:01:03 2026 :: Log Alaric [16043]: w
+Mon Oct 19 00:01:03 2026 :: Log Alaric [16042]: arrived (Main Deck) from 16043
+Mon Oct 19 00:01:04 2026 :: Log Alaric [16042]: bs pi
+Mon Oct 19 00:01:42 2026 :: Log Alaric [16042]: s
+Mon Oct 19 00:01:42 2026 :: Log Alaric [16037]: arrived (Main Deck) from 16042
+Mon Oct 19 00:01:43 2026 :: Log Alaric [16037]: kill pi
+Mon Oct 19 00:01:48 2026 :: Log Alaric [16037]: e
+Mon Oct 19 00:01:48 2026 :: Log Alaric [16038]: arrived (Main Deck) from 16037
+Mon Oct 19 00:01:48 2026 :: Log Alaric [16038]: kill pi
+Mon Oct 19 00:01:50 2026 :: Log Alaric [16038]: killed The pirate
+Mon Oct 19 00:01:50 2026 :: Log Alaric [16038]: coin +2 platinum
+Mon Oct 19 00:01:50 2026 :: Log Alaric [16038]: coin +12 silver
+Mon Oct 19 00:01:50 2026 :: Log Alaric [16038]: coin +17 copper
+Mon Oct 19 00:01:50 2026 :: Log Alaric [16038]: coin +7 gold
+Mon Oct 19 00:01:55 2026 :: Log Alaric [16038]: recal
+Mon Oct 19 00:01:55 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16038
+Mon Oct 19 00:01:55 2026 :: Log Alaric [4207]: recal
+Mon Oct 19 00:01:55 2026 :: Log Alaric [4207]: e
+Mon Oct 19 00:01:55 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Mon Oct 19 00:01:56 2026 :: Log Alaric [4202]: n
+Mon Oct 19 00:01:56 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Mon Oct 19 00:01:56 2026 :: Log Alaric [4203]: n
+Mon Oct 19 00:01:56 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
