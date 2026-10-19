@@ -131294,3 +131294,38 @@ Mon Oct 19 00:15:46 2026 :: Log Alaric [16023]: scan
 Mon Oct 19 00:15:47 2026 :: Log Alaric [16023]: s
 Mon Oct 19 00:15:47 2026 :: Log Alaric [16018]: arrived (Main Deck of the Royal Eagle) from 16023
 Mon Oct 19 00:15:48 2026 :: Log Alaric [16018]: bs sw
+Mon Oct 19 00:16:08 2026 :: Sock.sinaddr:  34.198.201.66
+Mon Oct 19 00:16:08 2026 :: EOF encountered on read.
+Mon Oct 19 00:16:39 2026 :: Log Alaric [16018]: killed The swashbuckler
+Mon Oct 19 00:16:39 2026 :: Log Alaric [16018]: coin +1 platinum
+Mon Oct 19 00:16:39 2026 :: Log Alaric [16018]: coin +6 silver
+Mon Oct 19 00:16:39 2026 :: Log Alaric [16018]: coin +8 copper
+Mon Oct 19 00:16:39 2026 :: Log Alaric [16018]: coin +3 gold
+Mon Oct 19 00:17:45 2026 :: Log Alaric [16018]: n
+Mon Oct 19 00:17:45 2026 :: Log Alaric [16023]: arrived (Main Deck) from 16018
+Mon Oct 19 00:17:45 2026 :: Log Alaric [16023]: n
+Mon Oct 19 00:17:45 2026 :: Log Alaric [16028]: arrived (Main Deck) from 16023
+Mon Oct 19 00:17:45 2026 :: Log Alaric [16028]: scan
+Mon Oct 19 00:17:48 2026 :: Log Alaric [16028]: n
+Mon Oct 19 00:17:48 2026 :: Log Alaric [16033]: arrived (Base of the Mast) from 16028
+Mon Oct 19 00:17:49 2026 :: Log Alaric [16033]: bs sw
+Mon Oct 19 00:18:42 2026 :: Log Alaric [16033]: dirt
+Mon Oct 19 00:18:51 2026 :: Log Alaric [16033]: killed The swashbuckler
+Mon Oct 19 00:18:51 2026 :: Log Alaric [16033]: coin +1 platinum
+Mon Oct 19 00:18:51 2026 :: Log Alaric [16033]: coin +6 silver
+Mon Oct 19 00:18:51 2026 :: Log Alaric [16033]: coin +8 copper
+Mon Oct 19 00:18:51 2026 :: Log Alaric [16033]: coin +3 gold
+Mon Oct 19 00:18:59 2026 :: Log Alaric [16033]: recal
+Mon Oct 19 00:18:59 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 16033
+Mon Oct 19 00:18:59 2026 :: Log Alaric [4207]: recal
+Mon Oct 19 00:18:59 2026 :: Log Alaric [4207]: recal
+Mon Oct 19 00:18:59 2026 :: Log Alaric [4207]: recal
+Mon Oct 19 00:19:00 2026 :: Log Alaric [4207]: e
+Mon Oct 19 00:19:00 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Mon Oct 19 00:19:00 2026 :: Log Alaric [4202]: n
+Mon Oct 19 00:19:00 2026 :: Log Alaric [4203]: arrived (Halls of Healing.) from 4202
+Mon Oct 19 00:19:00 2026 :: Log Alaric [4203]: n
+Mon Oct 19 00:19:00 2026 :: Log Alaric [4210]: arrived (Room of Peace and Healing.) from 4203
+Mon Oct 19 00:19:00 2026 :: Log Alaric [4210]: where herm
+Mon Oct 19 00:19:01 2026 :: Log Alaric [4210]: sleep
+Mon Oct 19 00:20:22 2026 :: Log Alaric [4210]: sc
