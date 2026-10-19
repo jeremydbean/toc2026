@@ -132426,3 +132426,417 @@ Mon Oct 19 01:30:19 2026 :: Log Alaric [2497]: wake
 Mon Oct 19 01:30:19 2026 :: Log Alaric [2497]: l
 Mon Oct 19 01:30:24 2026 :: Log Alaric [2497]: aq re
 Mon Oct 19 01:31:46 2026 :: Log Alaric [2497]: ach
+Mon Oct 19 01:31:55 2026 :: Log Alaric [2497]: ach crafting
+Mon Oct 19 01:32:10 2026 :: Log Alaric [2497]: ach collection
+Mon Oct 19 01:32:22 2026 :: Sock.sinaddr:  5.161.194.92
+Mon Oct 19 01:32:22 2026 :: EOF encountered on read.
+Mon Oct 19 01:32:44 2026 :: Log Alaric [2497]: eat guano
+Mon Oct 19 01:32:46 2026 :: Log Alaric [2497]: walkto zeus
+Mon Oct 19 01:32:53 2026 :: Log Alaric [2497]: enter door
+Mon Oct 19 01:32:53 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Mon Oct 19 01:32:54 2026 :: Log Alaric [2401]: west
+Mon Oct 19 01:32:54 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Mon Oct 19 01:32:54 2026 :: Log Alaric [2405]: west
+Mon Oct 19 01:32:54 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Mon Oct 19 01:32:54 2026 :: Log Alaric [2433]: west
+Mon Oct 19 01:32:54 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Mon Oct 19 01:32:54 2026 :: Log Alaric [2434]: west
+Mon Oct 19 01:32:54 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Mon Oct 19 01:32:55 2026 :: Log Alaric [2435]: west
+Mon Oct 19 01:32:55 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Mon Oct 19 01:32:55 2026 :: Log Alaric [2436]: west
+Mon Oct 19 01:32:55 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Mon Oct 19 01:32:55 2026 :: Log Alaric [2437]: west
+Mon Oct 19 01:32:55 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Mon Oct 19 01:32:55 2026 :: Log Alaric [2438]: open west
+Mon Oct 19 01:32:56 2026 :: Log Alaric [2438]: west
+Mon Oct 19 01:32:56 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Mon Oct 19 01:32:58 2026 :: Log Alaric [2439]: west
+Mon Oct 19 01:32:58 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Mon Oct 19 01:32:58 2026 :: Log Alaric [6000]: west
+Mon Oct 19 01:32:58 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Mon Oct 19 01:32:58 2026 :: Log Alaric [6001]: west
+Mon Oct 19 01:32:58 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Mon Oct 19 01:32:58 2026 :: Log Alaric [6002]: west
+Mon Oct 19 01:32:58 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Mon Oct 19 01:32:59 2026 :: Log Alaric [6003]: west
+Mon Oct 19 01:32:59 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Mon Oct 19 01:32:59 2026 :: Log Alaric [6004]: west
+Mon Oct 19 01:32:59 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Mon Oct 19 01:32:59 2026 :: Log Alaric [6100]: west
+Mon Oct 19 01:32:59 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Mon Oct 19 01:32:59 2026 :: Log Alaric [6101]: west
+Mon Oct 19 01:32:59 2026 :: Log Alaric [6102]: arrived (A narrow trail through the deep, dark forest) from 6101
+Mon Oct 19 01:33:00 2026 :: Log Alaric [6102]: west
+Mon Oct 19 01:33:00 2026 :: Log Alaric [6103]: arrived (A narrow trail through the deep, dark forest) from 6102
+Mon Oct 19 01:33:00 2026 :: Log Alaric [6103]: south
+Mon Oct 19 01:33:00 2026 :: Log Alaric [6108]: arrived (A narrow trail through the deep, dark forest) from 6103
+Mon Oct 19 01:33:00 2026 :: Log Alaric [6108]: west
+Mon Oct 19 01:33:00 2026 :: Log Alaric [6109]: arrived (A narrow trail through the deep, dark forest) from 6108
+Mon Oct 19 01:33:00 2026 :: Log Alaric [6109]: west
+Mon Oct 19 01:33:00 2026 :: Log Alaric [6110]: arrived (A narrow trail through the deep, dark forest) from 6109
+Mon Oct 19 01:33:01 2026 :: Log Alaric [6110]: south
+Mon Oct 19 01:33:01 2026 :: Log Alaric [6111]: arrived (A narrow trail through the deep, dark forest) from 6110
+Mon Oct 19 01:33:01 2026 :: Log Alaric [6111]: south
+Mon Oct 19 01:33:01 2026 :: Log Alaric [6112]: arrived (A narrow trail through the deep, dark forest) from 6111
+Mon Oct 19 01:33:01 2026 :: Log Alaric [6112]: west
+Mon Oct 19 01:33:01 2026 :: Log Alaric [6127]: arrived (A narrow trail through the deep, dark forest) from 6112
+Mon Oct 19 01:33:01 2026 :: Log Alaric [6127]: south
+Mon Oct 19 01:33:01 2026 :: Log Alaric [6126]: arrived (A narrow trail through the deep, dark forest) from 6127
+Mon Oct 19 01:33:02 2026 :: Log Alaric [6126]: west
+Mon Oct 19 01:33:02 2026 :: Log Alaric [6128]: arrived (A narrow trail through the deep, dark forest) from 6126
+Mon Oct 19 01:33:02 2026 :: Log Alaric [6128]: west
+Mon Oct 19 01:33:02 2026 :: Log Alaric [6129]: arrived (A narrow trail through the deep, dark forest) from 6128
+Mon Oct 19 01:33:02 2026 :: Log Alaric [6129]: west
+Mon Oct 19 01:33:02 2026 :: Log Alaric [6135]: arrived (A dusty trail in the deep, dark forest) from 6129
+Mon Oct 19 01:33:02 2026 :: Log Alaric [6135]: north
+Mon Oct 19 01:33:02 2026 :: Log Alaric [6136]: arrived (A dusty trail in the deep, dark forest) from 6135
+Mon Oct 19 01:33:03 2026 :: Log Alaric [6136]: west
+Mon Oct 19 01:33:03 2026 :: Log Alaric [6137]: arrived (At the end of the trail through the deep, dark forest) from 6136
+Mon Oct 19 01:33:03 2026 :: Log Alaric [6137]: north
+Mon Oct 19 01:33:03 2026 :: Log Alaric [30]: arrived (Forest Clearing) from 6137
+Mon Oct 19 01:33:03 2026 :: Log Alaric [30]: northwest
+Mon Oct 19 01:33:03 2026 :: Log Alaric [31]: arrived (A Twisting Path) from 30
+Mon Oct 19 01:33:03 2026 :: Log Alaric [31]: north
+Mon Oct 19 01:33:03 2026 :: Log Alaric [901]: arrived (Mountain) from 31
+Mon Oct 19 01:33:07 2026 :: Log Alaric [901]: ex
+Mon Oct 19 01:33:08 2026 :: Log Alaric [901]: u
+Mon Oct 19 01:33:08 2026 :: Log Alaric [902]: arrived (Mountain) from 901
+Mon Oct 19 01:33:09 2026 :: Log Alaric [902]: u
+Mon Oct 19 01:33:09 2026 :: Log Alaric [903]: arrived (Mountain) from 902
+Mon Oct 19 01:33:10 2026 :: Log Alaric [903]: e
+Mon Oct 19 01:33:11 2026 :: Log Alaric [903]: (refused) xn
+Mon Oct 19 01:33:12 2026 :: Log Alaric [903]: ex
+Mon Oct 19 01:33:13 2026 :: Log Alaric [903]: n
+Mon Oct 19 01:33:13 2026 :: Log Alaric [904]: arrived (Entrance) from 903
+Mon Oct 19 01:33:13 2026 :: Log Alaric [904]: ex
+Mon Oct 19 01:33:14 2026 :: Log Alaric [904]: n
+Mon Oct 19 01:33:14 2026 :: Log Alaric [905]: arrived (Zeus Street) from 904
+Mon Oct 19 01:33:15 2026 :: Log Alaric [905]: n
+Mon Oct 19 01:33:15 2026 :: Log Alaric [906]: arrived (Zeus Street) from 905
+Mon Oct 19 01:33:15 2026 :: Log Alaric [906]: n
+Mon Oct 19 01:33:15 2026 :: Log Alaric [907]: arrived (Zeus Street) from 906
+Mon Oct 19 01:33:16 2026 :: Log Alaric [907]: n
+Mon Oct 19 01:33:16 2026 :: Log Alaric [908]: arrived (Zeus Street) from 907
+Mon Oct 19 01:33:16 2026 :: Log Alaric [908]: n
+Mon Oct 19 01:33:16 2026 :: Log Alaric [909]: arrived (Castle Entryway) from 908
+Mon Oct 19 01:33:17 2026 :: Log Alaric [909]: n
+Mon Oct 19 01:33:17 2026 :: Log Alaric [910]: arrived (Throne Room) from 909
+Mon Oct 19 01:33:17 2026 :: Log Alaric [910]: n
+Mon Oct 19 01:33:17 2026 :: Log Alaric [923]: arrived (Stairway) from 910
+Mon Oct 19 01:33:20 2026 :: Log Alaric [923]: u
+Mon Oct 19 01:33:20 2026 :: Log Alaric [939]: arrived (Second Floor) from 923
+Mon Oct 19 01:33:22 2026 :: Log Alaric [939]: scan
+Mon Oct 19 01:33:25 2026 :: Log Alaric [939]: open up
+Mon Oct 19 01:33:27 2026 :: Log Alaric [939]: ex
+Mon Oct 19 01:33:28 2026 :: Log Alaric [939]: u
+Mon Oct 19 01:33:28 2026 :: Log Alaric [948]: arrived (Hall of Gods) from 939
+Mon Oct 19 01:33:29 2026 :: Log Alaric [948]: ex
+Mon Oct 19 01:33:31 2026 :: Log Alaric [948]: scan
+Mon Oct 19 01:33:31 2026 :: Log Alaric [948]: n
+Mon Oct 19 01:33:31 2026 :: Log Alaric [951]: arrived (The Portal) from 948
+Mon Oct 19 01:33:37 2026 :: Log Alaric [951]: look sign
+Mon Oct 19 01:33:39 2026 :: Log Alaric [951]: l
+Mon Oct 19 01:33:41 2026 :: Log Alaric [951]: en po
+Mon Oct 19 01:33:42 2026 :: Log Alaric [951]: s
+Mon Oct 19 01:33:42 2026 :: Log Alaric [948]: arrived (Hall of Gods) from 951
+Mon Oct 19 01:33:43 2026 :: Log Alaric [948]: d
+Mon Oct 19 01:33:43 2026 :: Log Alaric [939]: arrived (Second Floor) from 948
+Mon Oct 19 01:33:43 2026 :: Log Alaric [939]: n
+Mon Oct 19 01:33:43 2026 :: Log Alaric [940]: arrived (Northern Hall) from 939
+Mon Oct 19 01:33:44 2026 :: Log Alaric [940]: n
+Mon Oct 19 01:33:44 2026 :: Log Alaric [947]: arrived (Bed Room) from 940
+Mon Oct 19 01:33:45 2026 :: Log Alaric [947]: scan
+Mon Oct 19 01:33:45 2026 :: Log Alaric [947]: s
+Mon Oct 19 01:33:45 2026 :: Log Alaric [940]: arrived (Northern Hall) from 947
+Mon Oct 19 01:33:46 2026 :: Log Alaric [940]: s
+Mon Oct 19 01:33:46 2026 :: Log Alaric [939]: arrived (Second Floor) from 940
+Mon Oct 19 01:33:46 2026 :: Log Alaric [939]: w
+Mon Oct 19 01:33:46 2026 :: Log Alaric [942]: arrived (Western Hall) from 939
+Mon Oct 19 01:33:46 2026 :: Log Alaric [942]: w
+Mon Oct 19 01:33:46 2026 :: Log Alaric [945]: arrived (Bed Room) from 942
+Mon Oct 19 01:33:47 2026 :: Log Alaric [945]: e
+Mon Oct 19 01:33:47 2026 :: Log Alaric [942]: arrived (Western Hall) from 945
+Mon Oct 19 01:33:47 2026 :: Log Alaric [942]: e
+Mon Oct 19 01:33:47 2026 :: Log Alaric [939]: arrived (Second Floor) from 942
+Mon Oct 19 01:33:49 2026 :: Log Alaric [939]: scan
+Mon Oct 19 01:33:50 2026 :: Log Alaric [939]: u
+Mon Oct 19 01:33:50 2026 :: Log Alaric [948]: arrived (Hall of Gods) from 939
+Mon Oct 19 01:33:51 2026 :: Log Alaric [948]: scan
+Mon Oct 19 01:33:52 2026 :: Log Alaric [948]: n
+Mon Oct 19 01:33:52 2026 :: Log Alaric [951]: arrived (The Portal) from 948
+Mon Oct 19 01:33:58 2026 :: Log Alaric [951]: s
+Mon Oct 19 01:33:58 2026 :: Log Alaric [948]: arrived (Hall of Gods) from 951
+Mon Oct 19 01:34:02 2026 :: Log Alaric [948]: e
+Mon Oct 19 01:34:03 2026 :: Log Alaric [948]: w
+Mon Oct 19 01:34:05 2026 :: Log Alaric [948]: d
+Mon Oct 19 01:34:05 2026 :: Log Alaric [939]: arrived (Second Floor) from 948
+Mon Oct 19 01:34:06 2026 :: Log Alaric [939]: ex
+Mon Oct 19 01:34:10 2026 :: Log Alaric [939]: e
+Mon Oct 19 01:34:10 2026 :: Log Alaric [943]: arrived (Eastern Hall) from 939
+Mon Oct 19 01:34:10 2026 :: Log Alaric [943]: ex
+Mon Oct 19 01:34:11 2026 :: Log Alaric [943]: e
+Mon Oct 19 01:34:11 2026 :: Log Alaric [946]: arrived (Bed Room) from 943
+Mon Oct 19 01:34:12 2026 :: Log Alaric [946]: ex
+Mon Oct 19 01:34:12 2026 :: Log Alaric [946]: w
+Mon Oct 19 01:34:12 2026 :: Log Alaric [943]: arrived (Eastern Hall) from 946
+Mon Oct 19 01:34:13 2026 :: Log Alaric [943]: w
+Mon Oct 19 01:34:13 2026 :: Log Alaric [939]: arrived (Second Floor) from 943
+Mon Oct 19 01:34:13 2026 :: Log Alaric [939]: s
+Mon Oct 19 01:34:13 2026 :: Log Alaric [941]: arrived (Southern Hall) from 939
+Mon Oct 19 01:34:14 2026 :: Log Alaric [941]: s
+Mon Oct 19 01:34:14 2026 :: Log Alaric [944]: arrived (Bed Room) from 941
+Mon Oct 19 01:34:15 2026 :: Log Alaric [944]: n
+Mon Oct 19 01:34:15 2026 :: Log Alaric [941]: arrived (Southern Hall) from 944
+Mon Oct 19 01:34:15 2026 :: Log Alaric [941]: n
+Mon Oct 19 01:34:15 2026 :: Log Alaric [939]: arrived (Second Floor) from 941
+Mon Oct 19 01:34:16 2026 :: Log Alaric [939]: n
+Mon Oct 19 01:34:16 2026 :: Log Alaric [940]: arrived (Northern Hall) from 939
+Mon Oct 19 01:34:17 2026 :: Log Alaric [940]: n
+Mon Oct 19 01:34:17 2026 :: Log Alaric [947]: arrived (Bed Room) from 940
+Mon Oct 19 01:34:18 2026 :: Log Alaric [947]: s
+Mon Oct 19 01:34:18 2026 :: Log Alaric [940]: arrived (Northern Hall) from 947
+Mon Oct 19 01:34:18 2026 :: Log Alaric [940]: s
+Mon Oct 19 01:34:18 2026 :: Log Alaric [939]: arrived (Second Floor) from 940
+Mon Oct 19 01:34:19 2026 :: Log Alaric [939]: u
+Mon Oct 19 01:34:19 2026 :: Log Alaric [948]: arrived (Hall of Gods) from 939
+Mon Oct 19 01:34:23 2026 :: Log Alaric [948]: track zeus
+Mon Oct 19 01:34:24 2026 :: Log Alaric [948]: track zeus
+Mon Oct 19 01:34:24 2026 :: Log Alaric [948]: track zeus
+Mon Oct 19 01:34:25 2026 :: Log Alaric [948]: track zeus
+Mon Oct 19 01:34:26 2026 :: Log Alaric [948]: where az
+Mon Oct 19 01:34:29 2026 :: Log Alaric [948]: where zeus
+Mon Oct 19 01:34:32 2026 :: Log Alaric [948]: where zues
+Mon Oct 19 01:34:34 2026 :: Log Alaric [948]: l
+Mon Oct 19 01:34:35 2026 :: Log Alaric [948]: wake
+Mon Oct 19 01:34:35 2026 :: Log Alaric [948]: l
+Mon Oct 19 01:34:36 2026 :: Log Alaric [948]: d
+Mon Oct 19 01:34:36 2026 :: Log Alaric [939]: arrived (Second Floor) from 948
+Mon Oct 19 01:34:37 2026 :: Log Alaric [939]: d
+Mon Oct 19 01:34:37 2026 :: Log Alaric [923]: arrived (Stairway) from 939
+Mon Oct 19 01:34:39 2026 :: Log Alaric [923]: s
+Mon Oct 19 01:34:39 2026 :: Log Alaric [910]: arrived (Throne Room) from 923
+Mon Oct 19 01:34:42 2026 :: Log Alaric [910]: scan
+Mon Oct 19 01:34:43 2026 :: Log Alaric [910]: open down
+Mon Oct 19 01:34:43 2026 :: Log Alaric [910]: ex
+Mon Oct 19 01:34:44 2026 :: Log Alaric [910]: d
+Mon Oct 19 01:34:44 2026 :: Log Alaric [918]: arrived (Dungeon) from 910
+Mon Oct 19 01:34:47 2026 :: Log Alaric [918]: scan
+Mon Oct 19 01:34:49 2026 :: Log Alaric [918]: where zeus
+Mon Oct 19 01:34:52 2026 :: Log Alaric [918]: track zeus
+Mon Oct 19 01:34:53 2026 :: Log Alaric [918]: track zeus
+Mon Oct 19 01:34:53 2026 :: Log Alaric [918]: track zeus
+Mon Oct 19 01:34:53 2026 :: Log Alaric [918]: track zeus
+Mon Oct 19 01:34:53 2026 :: Log Alaric [918]: track zeus
+Mon Oct 19 01:34:55 2026 :: Log Alaric [918]: (refused) wakje
+Mon Oct 19 01:34:55 2026 :: Log Alaric [918]: l
+Mon Oct 19 01:34:56 2026 :: Log Alaric [918]: u
+Mon Oct 19 01:34:56 2026 :: Log Alaric [910]: arrived (Throne Room) from 918
+Mon Oct 19 01:34:57 2026 :: Log Alaric [910]: n
+Mon Oct 19 01:34:57 2026 :: Log Alaric [923]: arrived (Stairway) from 910
+Mon Oct 19 01:34:59 2026 :: Log Alaric [923]: s
+Mon Oct 19 01:34:59 2026 :: Log Alaric [910]: arrived (Throne Room) from 923
+Mon Oct 19 01:34:59 2026 :: Log Alaric [910]: w
+Mon Oct 19 01:35:00 2026 :: Log Alaric [910]: s
+Mon Oct 19 01:35:00 2026 :: Log Alaric [909]: arrived (Castle Entryway) from 910
+Mon Oct 19 01:35:02 2026 :: Log Alaric [909]: ex
+Mon Oct 19 01:35:05 2026 :: Log Alaric [909]: e
+Mon Oct 19 01:35:05 2026 :: Log Alaric [915]: arrived (Eastern Wing) from 909
+Mon Oct 19 01:35:06 2026 :: Log Alaric [915]: e
+Mon Oct 19 01:35:06 2026 :: Log Alaric [916]: arrived (Eastern Wing) from 915
+Mon Oct 19 01:35:06 2026 :: Log Alaric [916]: n
+Mon Oct 19 01:35:06 2026 :: Log Alaric [917]: arrived (Eastern Wing) from 916
+Mon Oct 19 01:35:07 2026 :: Log Alaric [917]: n
+Mon Oct 19 01:35:07 2026 :: Log Alaric [933]: arrived (Stable) from 917
+Mon Oct 19 01:35:08 2026 :: Log Alaric [933]: scan
+Mon Oct 19 01:35:10 2026 :: Log Alaric [933]: where z
+Mon Oct 19 01:35:12 2026 :: Log Alaric [933]: where zeus
+Mon Oct 19 01:35:13 2026 :: Log Alaric [933]: recal
+Mon Oct 19 01:35:13 2026 :: Log Alaric [4207]: arrived (Before the Altar.) from 933
+Mon Oct 19 01:35:16 2026 :: Log Alaric [4207]: track zewus
+Mon Oct 19 01:35:19 2026 :: Log Alaric [4207]: track zeus
+Mon Oct 19 01:35:20 2026 :: Log Alaric [4207]: quaff true
+Mon Oct 19 01:35:22 2026 :: Log Alaric [4207]: l
+Mon Oct 19 01:35:24 2026 :: Log Alaric [4207]: e
+Mon Oct 19 01:35:24 2026 :: Log Alaric [4202]: arrived (Halls of Healing.) from 4207
+Mon Oct 19 01:35:24 2026 :: Log Alaric [4202]: e
+Mon Oct 19 01:35:24 2026 :: Log Alaric [4201]: arrived (Entrance to the Temple of Devota.) from 4202
+Mon Oct 19 01:35:24 2026 :: Log Alaric [4201]: e
+Mon Oct 19 01:35:24 2026 :: Log Alaric [2427]: arrived (Main Processional.) from 4201
+Mon Oct 19 01:35:25 2026 :: Log Alaric [2427]: n
+Mon Oct 19 01:35:25 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Mon Oct 19 01:35:25 2026 :: Log Alaric [2404]: n
+Mon Oct 19 01:35:25 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Mon Oct 19 01:35:25 2026 :: Log Alaric [2401]: n
+Mon Oct 19 01:35:25 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Mon Oct 19 01:35:26 2026 :: Log Alaric [2402]: n
+Mon Oct 19 01:35:26 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2402
+Mon Oct 19 01:35:26 2026 :: Log Alaric [2415]: w
+Mon Oct 19 01:35:26 2026 :: Log Alaric [2470]: arrived (Wizards Way.) from 2415
+Mon Oct 19 01:35:26 2026 :: Log Alaric [2470]: w
+Mon Oct 19 01:35:26 2026 :: Log Alaric [2471]: arrived (Wizards Way.) from 2470
+Mon Oct 19 01:35:27 2026 :: Log Alaric [2471]: w
+Mon Oct 19 01:35:27 2026 :: Log Alaric [2472]: arrived (Corner of Wizards Way and Magic Street.) from 2471
+Mon Oct 19 01:35:27 2026 :: Log Alaric [2472]: n
+Mon Oct 19 01:35:27 2026 :: Log Alaric [2473]: arrived (Magic Street.) from 2472
+Mon Oct 19 01:35:27 2026 :: Log Alaric [2473]: w
+Mon Oct 19 01:35:27 2026 :: Log Alaric [2474]: arrived (Bidom's Magic Shop.) from 2473
+Mon Oct 19 01:35:28 2026 :: Log Alaric [2474]: buy true
+Mon Oct 19 01:35:28 2026 :: Log Alaric [2474]: copper -32550
+Mon Oct 19 01:35:28 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Mon Oct 19 01:35:29 2026 :: Log Alaric [2474]: buy true
+Mon Oct 19 01:35:29 2026 :: Log Alaric [2474]: copper -32550
+Mon Oct 19 01:35:29 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Mon Oct 19 01:35:29 2026 :: Log Alaric [2474]: buy true
+Mon Oct 19 01:35:29 2026 :: Log Alaric [2474]: copper -32550
+Mon Oct 19 01:35:29 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Mon Oct 19 01:35:30 2026 :: Log Alaric [2474]: buy true
+Mon Oct 19 01:35:30 2026 :: Log Alaric [2474]: copper -32550
+Mon Oct 19 01:35:30 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Mon Oct 19 01:35:30 2026 :: Log Alaric [2474]: buy true
+Mon Oct 19 01:35:30 2026 :: Log Alaric [2474]: copper -32550
+Mon Oct 19 01:35:30 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Mon Oct 19 01:35:30 2026 :: Log Alaric [2474]: buy true
+Mon Oct 19 01:35:30 2026 :: Log Alaric [2474]: copper -32550
+Mon Oct 19 01:35:30 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Mon Oct 19 01:35:30 2026 :: Log Alaric [2474]: buy true
+Mon Oct 19 01:35:30 2026 :: Log Alaric [2474]: copper -32550
+Mon Oct 19 01:35:30 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Mon Oct 19 01:35:31 2026 :: Log Alaric [2474]: buy true
+Mon Oct 19 01:35:31 2026 :: Log Alaric [2474]: copper -32550
+Mon Oct 19 01:35:31 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Mon Oct 19 01:35:31 2026 :: Log Alaric [2474]: buy true
+Mon Oct 19 01:35:31 2026 :: Log Alaric [2474]: copper -32550
+Mon Oct 19 01:35:31 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Mon Oct 19 01:35:31 2026 :: Log Alaric [2474]: buy true
+Mon Oct 19 01:35:31 2026 :: Log Alaric [2474]: copper -32550
+Mon Oct 19 01:35:31 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Mon Oct 19 01:35:31 2026 :: Log Alaric [2474]: buy true
+Mon Oct 19 01:35:31 2026 :: Log Alaric [2474]: copper -32550
+Mon Oct 19 01:35:31 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Mon Oct 19 01:35:32 2026 :: Log Alaric [2474]: buy true
+Mon Oct 19 01:35:32 2026 :: Log Alaric [2474]: copper -32550
+Mon Oct 19 01:35:32 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Mon Oct 19 01:35:32 2026 :: Log Alaric [2474]: buy true
+Mon Oct 19 01:35:32 2026 :: Log Alaric [2474]: copper -32550
+Mon Oct 19 01:35:32 2026 :: Log Alaric [2474]: bought a potion of true sight (vnum 3092) for 32550 copper from the wizard
+Mon Oct 19 01:35:32 2026 :: Log Alaric [2474]: quaff true
+Mon Oct 19 01:35:33 2026 :: Log Alaric [2474]: l
+Mon Oct 19 01:35:37 2026 :: Log Alaric [2474]: east
+Mon Oct 19 01:35:37 2026 :: Log Alaric [2473]: arrived (Magic Street.) from 2474
+Mon Oct 19 01:35:37 2026 :: Log Alaric [2473]: south
+Mon Oct 19 01:35:37 2026 :: Log Alaric [2472]: arrived (Corner of Wizards Way and Magic Street.) from 2473
+Mon Oct 19 01:35:37 2026 :: Log Alaric [2472]: east
+Mon Oct 19 01:35:37 2026 :: Log Alaric [2471]: arrived (Wizards Way.) from 2472
+Mon Oct 19 01:35:37 2026 :: Log Alaric [2471]: east
+Mon Oct 19 01:35:37 2026 :: Log Alaric [2470]: arrived (Wizards Way.) from 2471
+Mon Oct 19 01:35:38 2026 :: Log Alaric [2470]: east
+Mon Oct 19 01:35:38 2026 :: Log Alaric [2415]: arrived (Main Processional.) from 2470
+Mon Oct 19 01:35:38 2026 :: Log Alaric [2415]: south
+Mon Oct 19 01:35:38 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2415
+Mon Oct 19 01:35:38 2026 :: Log Alaric [2402]: south
+Mon Oct 19 01:35:38 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2402
+Mon Oct 19 01:35:38 2026 :: Log Alaric [2401]: west
+Mon Oct 19 01:35:38 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Mon Oct 19 01:35:39 2026 :: Log Alaric [2405]: west
+Mon Oct 19 01:35:39 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Mon Oct 19 01:35:39 2026 :: Log Alaric [2433]: west
+Mon Oct 19 01:35:39 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Mon Oct 19 01:35:39 2026 :: Log Alaric [2434]: west
+Mon Oct 19 01:35:39 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Mon Oct 19 01:35:39 2026 :: Log Alaric [2435]: west
+Mon Oct 19 01:35:39 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Mon Oct 19 01:35:40 2026 :: Log Alaric [2436]: west
+Mon Oct 19 01:35:40 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Mon Oct 19 01:35:40 2026 :: Log Alaric [2437]: west
+Mon Oct 19 01:35:40 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Mon Oct 19 01:35:40 2026 :: Log Alaric [2438]: open west
+Mon Oct 19 01:35:40 2026 :: Log Alaric [2438]: west
+Mon Oct 19 01:35:40 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Mon Oct 19 01:35:43 2026 :: Log Alaric [2439]: west
+Mon Oct 19 01:35:43 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Mon Oct 19 01:35:43 2026 :: Log Alaric [6000]: west
+Mon Oct 19 01:35:43 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Mon Oct 19 01:35:44 2026 :: Log Alaric [6001]: west
+Mon Oct 19 01:35:44 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Mon Oct 19 01:35:44 2026 :: Log Alaric [6002]: west
+Mon Oct 19 01:35:44 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Mon Oct 19 01:35:44 2026 :: Log Alaric [6003]: west
+Mon Oct 19 01:35:44 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Mon Oct 19 01:35:44 2026 :: Log Alaric [6004]: west
+Mon Oct 19 01:35:44 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Mon Oct 19 01:35:45 2026 :: Log Alaric [6100]: west
+Mon Oct 19 01:35:45 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Mon Oct 19 01:35:45 2026 :: Log Alaric [6101]: west
+Mon Oct 19 01:35:45 2026 :: Log Alaric [6102]: arrived (A narrow trail through the deep, dark forest) from 6101
+Mon Oct 19 01:35:45 2026 :: Log Alaric [6102]: west
+Mon Oct 19 01:35:45 2026 :: Log Alaric [6103]: arrived (A narrow trail through the deep, dark forest) from 6102
+Mon Oct 19 01:35:45 2026 :: Log Alaric [6103]: south
+Mon Oct 19 01:35:45 2026 :: Log Alaric [6108]: arrived (A narrow trail through the deep, dark forest) from 6103
+Mon Oct 19 01:35:46 2026 :: Log Alaric [6108]: west
+Mon Oct 19 01:35:46 2026 :: Log Alaric [6109]: arrived (A narrow trail through the deep, dark forest) from 6108
+Mon Oct 19 01:35:46 2026 :: Log Alaric [6109]: west
+Mon Oct 19 01:35:46 2026 :: Log Alaric [6110]: arrived (A narrow trail through the deep, dark forest) from 6109
+Mon Oct 19 01:35:46 2026 :: Log Alaric [6110]: south
+Mon Oct 19 01:35:46 2026 :: Log Alaric [6111]: arrived (A narrow trail through the deep, dark forest) from 6110
+Mon Oct 19 01:35:46 2026 :: Log Alaric [6111]: south
+Mon Oct 19 01:35:46 2026 :: Log Alaric [6112]: arrived (A narrow trail through the deep, dark forest) from 6111
+Mon Oct 19 01:35:47 2026 :: Log Alaric [6112]: west
+Mon Oct 19 01:35:47 2026 :: Log Alaric [6127]: arrived (A narrow trail through the deep, dark forest) from 6112
+Mon Oct 19 01:35:47 2026 :: Log Alaric [6127]: south
+Mon Oct 19 01:35:47 2026 :: Log Alaric [6126]: arrived (A narrow trail through the deep, dark forest) from 6127
+Mon Oct 19 01:35:47 2026 :: Log Alaric [6126]: west
+Mon Oct 19 01:35:47 2026 :: Log Alaric [6128]: arrived (A narrow trail through the deep, dark forest) from 6126
+Mon Oct 19 01:35:47 2026 :: Log Alaric [6128]: west
+Mon Oct 19 01:35:47 2026 :: Log Alaric [6129]: arrived (A narrow trail through the deep, dark forest) from 6128
+Mon Oct 19 01:35:48 2026 :: Log Alaric [6129]: west
+Mon Oct 19 01:35:48 2026 :: Log Alaric [6135]: arrived (A dusty trail in the deep, dark forest) from 6129
+Mon Oct 19 01:35:48 2026 :: Log Alaric [6135]: north
+Mon Oct 19 01:35:48 2026 :: Log Alaric [6136]: arrived (A dusty trail in the deep, dark forest) from 6135
+Mon Oct 19 01:35:48 2026 :: Log Alaric [6136]: west
+Mon Oct 19 01:35:48 2026 :: Log Alaric [6137]: arrived (At the end of the trail through the deep, dark forest) from 6136
+Mon Oct 19 01:35:48 2026 :: Log Alaric [6137]: north
+Mon Oct 19 01:35:48 2026 :: Log Alaric [30]: arrived (Forest Clearing) from 6137
+Mon Oct 19 01:35:49 2026 :: Log Alaric [30]: northwest
+Mon Oct 19 01:35:49 2026 :: Log Alaric [31]: arrived (A Twisting Path) from 30
+Mon Oct 19 01:35:49 2026 :: Log Alaric [31]: north
+Mon Oct 19 01:35:49 2026 :: Log Alaric [901]: arrived (Mountain) from 31
+Mon Oct 19 01:35:51 2026 :: Log Alaric [901]: u
+Mon Oct 19 01:35:51 2026 :: Log Alaric [902]: arrived (Mountain) from 901
+Mon Oct 19 01:35:51 2026 :: Log Alaric [902]: u
+Mon Oct 19 01:35:51 2026 :: Log Alaric [903]: arrived (Mountain) from 902
+Mon Oct 19 01:35:52 2026 :: Log Alaric [903]: u
+Mon Oct 19 01:35:52 2026 :: Log Alaric [903]: u
+Mon Oct 19 01:35:52 2026 :: Log Alaric [903]: n
+Mon Oct 19 01:35:52 2026 :: Log Alaric [904]: arrived (Entrance) from 903
+Mon Oct 19 01:35:53 2026 :: Log Alaric [904]: n
+Mon Oct 19 01:35:53 2026 :: Log Alaric [905]: arrived (Zeus Street) from 904
+Mon Oct 19 01:35:53 2026 :: Log Alaric [905]: n
+Mon Oct 19 01:35:53 2026 :: Log Alaric [906]: arrived (Zeus Street) from 905
+Mon Oct 19 01:35:53 2026 :: Log Alaric [906]: n
+Mon Oct 19 01:35:53 2026 :: Log Alaric [907]: arrived (Zeus Street) from 906
+Mon Oct 19 01:35:54 2026 :: Log Alaric [907]: track zeus
+Mon Oct 19 01:35:55 2026 :: Log Alaric [907]: track zeus
+Mon Oct 19 01:35:55 2026 :: Log Alaric [907]: track zeus
+Mon Oct 19 01:35:56 2026 :: Log Alaric [907]: track zeus
+Mon Oct 19 01:35:56 2026 :: Log Alaric [907]: track zeus
+Mon Oct 19 01:35:57 2026 :: Log Alaric [907]: track zeus
+Mon Oct 19 01:35:57 2026 :: Log Alaric [907]: track zeus
+Mon Oct 19 01:35:58 2026 :: Log Alaric [907]: n
+Mon Oct 19 01:35:58 2026 :: Log Alaric [908]: arrived (Zeus Street) from 907
+Mon Oct 19 01:35:59 2026 :: Log Alaric [908]: n
+Mon Oct 19 01:35:59 2026 :: Log Alaric [909]: arrived (Castle Entryway) from 908
+Mon Oct 19 01:35:59 2026 :: Log Alaric [909]: n
+Mon Oct 19 01:35:59 2026 :: Log Alaric [910]: arrived (Throne Room) from 909
+Mon Oct 19 01:35:59 2026 :: Log Alaric [910]: n
+Mon Oct 19 01:35:59 2026 :: Log Alaric [923]: arrived (Stairway) from 910
+Mon Oct 19 01:36:03 2026 :: Log Alaric [923]: look z
+Mon Oct 19 01:36:04 2026 :: Log Alaric [923]: s
+Mon Oct 19 01:36:04 2026 :: Log Alaric [910]: arrived (Throne Room) from 923
+Mon Oct 19 01:36:06 2026 :: Log Alaric [910]: con z
+Mon Oct 19 01:36:10 2026 :: Log Alaric [910]: look zeu
+Mon Oct 19 01:36:21 2026 :: Log Alaric [910]: eat guano
+Mon Oct 19 01:36:25 2026 :: Log Alaric [910]: bs ze
+Mon Oct 19 01:36:43 2026 :: Log Alaric [910]: flee
+Mon Oct 19 01:36:45 2026 :: Log Alaric [910]: flee
+Mon Oct 19 01:36:45 2026 :: Log Alaric [909]: arrived (Castle Entryway) from 910
