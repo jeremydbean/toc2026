@@ -1298,7 +1298,7 @@ to everyone listening on that channel so other players can help.
 See also: GOSSIP, TELL, CHANNELS
 ~
 
-0 BANK~
+0 BANK INTEREST~
 There is no BANK command: banking is four commands, and all of them work
 only inside a bank room.  Entering one tells you that you are in a bank.
 
@@ -6683,6 +6683,44 @@ set and lifted by the staff alone; if you believe yours is a mistake,
 send a NOTE to immortal.
 
 See also: WANTED, NOTE
+~
+
+0 ALIGNMENT ALIGN GOOD EVIL NEUTRAL~
+Your alignment runs from -1000 (utterly evil) to 1000 (saintly) and shows
+on SCORE.  You are good at 300 and above, evil at -300 and below, and
+neutral in between.
+
+Killing moves it.  Each kill shifts you away from your victim's alignment:
+slaying the evil makes you better, slaying the good makes you worse, and
+the game tells you when the change is large.  Mobiles are not moved by
+their kills.
+
+What it touches:
+  - Gear.  An item marked anti-good, anti-evil or anti-neutral zaps off
+    the moment someone of that alignment wears it.
+  - Spells.  KNOW ALIGNMENT reads another's; DETECT GOOD and DETECT EVIL
+    mark them in the room; DISPEL GOOD, DISPEL EVIL and PROTECTION EVIL
+    bite by alignment.
+
+See also: SCORE, 'KNOW ALIGNMENT', 'DETECT EVIL', 'DETECT GOOD'
+~
+
+0 CLASS CLASSES~
+Six classes are played in Times of Chaos.  Each has a help entry of its
+own, written by its guildmaster:
+
+  WARRIOR      strength, heavy weapons and armour; the front line
+  THIEF        dexterity, daggers, stealth and backstab
+  MAGE         intelligence, offensive and utility magic
+  CLERIC       wisdom, healing and protective magic
+  MONK         hand to hand, nerve strikes and discipline
+  NECROMANCER  the dead raised to fight for you
+
+HELP <class> reads it.  Your class is chosen when the character is made
+and changes only at a REMORT, where every life must be a different class;
+HELP REMORT has the rules.  Guilds are a separate choice: HELP GUILDS.
+
+See also: RACES, GUILDS, REMORT, ATTRIBUTES
 ~
 
 0 $~

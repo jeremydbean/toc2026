@@ -1,0 +1,510 @@
+{
+ "area": [
+  "#AREA   { ALL } Soul.   All Hallow's Eve Village~",
+  ""
+ ],
+ "text": {
+  "MOBILES": {
+   "2401": [
+    "Maliki wand shopkeeper~",
+    "Maliki~",
+    "A ghost of Maliki floats thru the walls.",
+    "~",
+    "He looks at you and shouts BOO! then cackles insanely.",
+    "~"
+   ],
+   "2402": [
+    "jeweller~",
+    "the jeweller~",
+    "A misty apparition is floating around.",
+    "~",
+    "As you look closely you can see gems shimmering and rolling thru the mist.",
+    "~"
+   ],
+   "2403": [
+    "bud mercenary shopkeeper~",
+    "Bud, the Mercenary Shopkeeper~",
+    "The headless horseman stands here, holding a pumpkin under his arm.",
+    "~",
+    "This is a TERRIFYING person!  He stands about 8' tall and is dressed in black",
+    "but his body ends at the neck.  Under his arm he carries a pumpkin.... NO!",
+    "A jack-o-lantern that flickers and grins evilly at you.  As you study him",
+    "closer you see the large sword under his robe, his hand twitching on the hilt.",
+    "Then you notice him looking at YOUR HEAD considering it thoughtfully!",
+    "~"
+   ],
+   "2404": [
+    "mercenary pet~",
+    "the mercenary witch~",
+    "A large witch is here to do your bidding.",
+    "~",
+    "This witch is clothed all in black, but an eerie green glow emanates from",
+    "under her hat.  You may want to pay her to accompany you on your",
+    "haunting tonight.",
+    "~"
+   ],
+   "2405": [
+    "elf scout pet ~",
+    "the ghoulish scout~",
+    "A ghoul is watching everything carefully.",
+    "~",
+    "The ghoul looks like an agile fighter but would rather leave the heavy",
+    "fighting to the stout warriors.",
+    "~"
+   ],
+   "2406": [
+    "bodyguard pet~",
+    "the ghostly bodyguard~",
+    "A ghost stands here ready to protect his master.",
+    "~",
+    "The ghost may seem to disappear, but will faithfully protect his mortal.",
+    "~"
+   ],
+   "2407": [
+    "dwarf warrior pet~",
+    "the goblin  warrior~",
+    "A stout goblin warrior is here leaning on an axe.",
+    "~",
+    "The stout goblin warrior looks like he could handle himself against great",
+    "odds.",
+    "~"
+   ],
+   "2408": [
+    "giant gladiator pet~",
+    "the giant demon~",
+    "A fierce looking giant demon is here, with brimstone sparking at his",
+    "fingertips.",
+    "~",
+    "The fierce looking giant demon looks like he has survived haunted many mortals",
+    "in the past, and perhaps claimed their souls as well.",
+    "~"
+   ],
+   "2409": [
+    "nomad warrior~",
+    "the spectral warrior~",
+    "A shimmering spectral warrior hovers here with its arms crossed across",
+    "his chest.",
+    "~",
+    "The spectral warrior has been called from the Netherworld to do your",
+    "bidding this Halloween.",
+    "~"
+   ],
+   "2420": [
+    "paco shopowner~",
+    "Paco~",
+    "Paco is dressed up and handing out candy.",
+    "~",
+    "Paco looks like he is of puerto rican descent.  He wears a mustache and keeps",
+    "his hair very neat.  As he looks at you a warm smile washes over his face and",
+    "he says, \"Feliz Navidad?, oh, sorry, wrong holiday!\"",
+    "~"
+   ],
+   "2421": [
+    "wizard~",
+    "the sinister clown~",
+    "A sinister clown, with blood soaked fangs paces behind the counter.",
+    "~",
+    "The wicked old clown looks like an escapee from an H. P. Lovecraft",
+    "horror circus. He is equipped with fine floppy shoes and is wearing a large",
+    "rubber nose that is constantly dripping blood.",
+    "~"
+   ],
+   "2422": [
+    "baker~",
+    "the good fairy~",
+    "The fairy looks at you with a twinkle, wiping flour from her face with one",
+    "hand.",
+    "~",
+    "A young, nubile, nice looking fairy. But you can see that she has many items",
+    "to bake this Halloween, so she doesn't have time for extra curricular events.",
+    "~"
+   ],
+   "2423": [
+    "grocer~",
+    "the ghoul~",
+    "A ghoul stands at the counter, with a slightly dead look on its face.",
+    "~",
+    "A tall ghoul, who moves two 200 pound corpses around on his shoulders.",
+    "~"
+   ],
+   "2424": [
+    "weaponsmith~",
+    "the undead weaponsmith~",
+    "An undead spirit, serving as a weaponsmith.",
+    "~",
+    "An undead spirit, currently called to serve as weaponsmith.",
+    "~"
+   ],
+   "2425": [
+    "spectre~",
+    "the spectre~",
+    "A spectre, all dressed in black.",
+    "~",
+    "Well COUNT your money and your luck!",
+    "~"
+   ],
+   "2426": [
+    "captain~",
+    "the drowned captain~",
+    "A drowned and long dead captain stands here, selling boats.",
+    "~",
+    "This captain was nibbled at by more sharks than you have eaten pies.",
+    "~"
+   ],
+   "2427": [
+    "leatherface~",
+    "Leatherface~",
+    "Leatherface is sitting by the table, sewing a human skin cap.",
+    "~",
+    "When not making movies about a chainsaw murderer in Texas, Leatherface",
+    "creates unique, human skin apparel, which he offers here to sell.",
+    "~"
+   ],
+   "2428": [
+    "skeleton bartender~",
+    "the skeleton~",
+    "A skeleton watches you calmly, while it skillfully mixes a bloody mary.",
+    "~",
+    "A tired looking skeleton who hates trouble in his bar.",
+    "~"
+   ],
+   "2429": [
+    "murderous melancholy mel~",
+    "Murderous Melancholy~",
+    "Murderous Melancholy is here, with a sack full of fingers, bones and eyeballs.",
+    "~",
+    "Ragged brown hair frames a ghostly, pale face.  Puffy eyelids surround two",
+    "sky blue, haunting eyes.  An old, brown robe is wrapped around her frail",
+    "frame.  She looks up from her pile of fingers and eyeballs and looks inquiringly",
+    "at you, giving you a sickly smile.",
+    "~"
+   ],
+   "2430": [
+    "ghoul~",
+    "the ghoul~",
+    "A ghoul is here, looking for victims.",
+    "~",
+    "He looks pretty nasty with his missing eyes, dripping flesh, and maggot",
+    "riddled face.",
+    "~"
+   ],
+   "2431": [
+    "demon~",
+    "the demon~",
+    "A singing, happy demon wanders around, singing about blood and gore.",
+    "~",
+    "A demon who seems to be very happy, with all this mayhem and death around.",
+    "~"
+   ],
+   "2432": [
+    "gremlin~",
+    "the gremlin~",
+    "A gremlin is here, looking for some fresh blood.",
+    "~",
+    "The gremlin looks like it is having the time of its life.",
+    "~"
+   ],
+   "2433": [
+    "cat~",
+    "a black cat~",
+    "A black cat hisses at you.",
+    "~",
+    "The black cat is half mad and more than a little mean.",
+    "~"
+   ],
+   "2434": [
+    "trick treater~",
+    "the trick or treater~",
+    "A trick or treater is here.",
+    "~",
+    "The trick or treater is dressed in a white sheet, in a bad attempt to pass",
+    "as a ghost.  He demands that you give him candy or else!",
+    "~"
+   ],
+   "2435": [
+    "zombie~",
+    "the zombie~",
+    "A zombie is walking around, messing things up.",
+    "~",
+    "~"
+   ],
+   "2436": [
+    "broom~",
+    "a broom~",
+    "A witch's broom hovers slightly above the ground here.",
+    "~",
+    "Basically a gnarled, yet straight stick, with straw bound to one end.",
+    "~"
+   ],
+   "2437": [
+    "skeletal panther~",
+    "a skeletal panther~",
+    "A skeletal panther crouches, ready to pounce here.",
+    "~",
+    "Black bones gleaming, this skeletal panther is a horrendous sight.",
+    "~"
+   ],
+   "2438": [
+    "white wyrm~",
+    "a white wyrm~",
+    "A large white wyrm slithers here.",
+    "~",
+    "The wyrm is a cross between a large serpent and a small dragon. It is about",
+    "10 meters in length, with the body of an enormous white snake, and the head",
+    "of a dragon.  Clearly a formidable opponent.",
+    "~"
+   ],
+   "2439": [
+    "griffon~",
+    "a griffon~",
+    "A jet black griffon stands here.",
+    "~",
+    "The griffon has recently been broken well enough to ride, though still a bit",
+    "rambunctious. He is entirely black, and is a steed worthy of its owner.",
+    "~"
+   ],
+   "2440": [
+    "undead warhorse pet~",
+    "the undead warhorse~",
+    "A massive undead warhorse stomps noisily here.",
+    "~",
+    "This formerly living warhorse is enormous. It was specially bred for knights",
+    "to ride to war... which is exactly what ended its glorious life. It is a",
+    "mottled grey color, due to the putrificaion of is body. Upon its great barrel",
+    "chest, you can still barely make out the coat of arms brand of its owner. This",
+    "beast would be a formidable mount in battle.",
+    "~"
+   ],
+   "2441": [
+    "mastadon pet~",
+    "the mastadon~",
+    "An enormous fur-covered elephant swings his trunk here.",
+    "~",
+    "The prehistoric creature was found in the icy lands to the north.  A group of",
+    "necromancers from the guild thawed its carcass and with great magic, returned",
+    "it to life.  Ridden into battle, a mastadon would be a difficult steed to stop.",
+    "When seated on a mastadon, the rider has the advantage of height and is next to",
+    "impossible to dismount.",
+    "~"
+   ],
+   "4201": [
+    "healer witch devota thepit~             ",
+    "the huge witch~",
+    "A huge witch is hovering around here, cackling and rubbing her",
+    "hands together.",
+    "~",
+    "If you dare to, ask her to heal you.  Be careful not to offend though, or",
+    "she may turn you into a toad.",
+    "",
+    "Type 'heal' to see a listing of spells.",
+    "~"
+   ],
+   "4202": [
+    "watcher grim reaper~",
+    "The Grim Reaper~",
+    "The Grim Reaper is here looking for souls to bring back to the Netherworld.",
+    "~",
+    "The Grim Reaper is waiting for the witching hour so he can collect his souls",
+    "and return home with his collection.  He stands nearly 8 feet tall, and is",
+    "covered by a huge, black robe and cowl. Two red eyes burn brightly beneath",
+    "the hood, and an enormous scythe he holds in his massive boney hand.",
+    "~"
+   ]
+  },
+  "ROOMS": {
+   "2401": [
+    "Center of Oak Tree Square.~",
+    "This is the center of the square.  It is dominated by the trunk of the biggest",
+    "oak tree you have ever seen.  It must be at least 10 feet in diameter and one",
+    "hundred feet tall!  As you look up, you can see some kind of structure",
+    "nestles in the branches high above you.  You also see a large portal carved",
+    "into the side of the tree, with an unearthly light emanating from within.",
+    "Taking a closer look you see a staircase leading down into the mighty tree.",
+    "Near the base of a tree is a sign.",
+    "",
+    "There are lit pumpkins around the base of the Oak tree.",
+    "~"
+   ],
+   "2415": [
+    "Main Processional decorated for Halloween.~",
+    "You are on a very well made stone road that goes through the center of town.",
+    "There is a lot more traffic on this road than on any other you have seen in",
+    "town.  To the North you see the towers of Drakkar's Palace.  To the east you",
+    "can hear the sounds of a market and to the west you see the tall spires of",
+    "what can only be the University of Magic.",
+    "~"
+   ],
+   "2416": [
+    "Main Processional decorated for Halloween.~",
+    "You are on a very well made stone road that goes through the center of town.",
+    "There is a lot more traffic on this road than on any other you have seen in",
+    "town.  To the North you see the towers of Drakkar's Palace.  To the east you",
+    "can hear the sounds of a market and to the west you see the tall spires of",
+    "what can only be the University of Magic.",
+    "~"
+   ],
+   "2417": [
+    "Main Processional decorated for Halloween.~",
+    "You are on a very well made stone road that goes through the center of town.",
+    "There is a lot more traffic on this road than on any other you have seen in",
+    "town.  To the North you see the gates to Drakkar's Palace.  To the east you",
+    "can hear the sounds of a market and to the west you see the tall spires of",
+    "what can only be the University of Magic.",
+    "~"
+   ],
+   "2427": [
+    "Main Processional decorated for Halloween.~",
+    "You are on a very well made stone road that goes through the center of town.",
+    "There is a lot more traffic on this road than on any other you have seen in",
+    "town.  To the North you see the an enormous tree.  To the west are broad steps",
+    "up to the temple of Devota.  South leads to the southern gates of the city.",
+    "~"
+   ],
+   "2428": [
+    "Main Processional decorated for Halloween.~",
+    "You are on a very well made stone road that goes through the center of town.",
+    "There is a lot more traffic on this road than on any other you have seen in",
+    "town.  To the North you see the an enormous tree.  South leads over a bridge",
+    "to the southern gates of the city.",
+    "~"
+   ],
+   "2430": [
+    "Main Processional decorated for Halloween.~",
+    "You are on a very well made stone road that goes through the center of town.",
+    "There is a lot more traffic on this road than on any other you have seen in",
+    "town.  Just to the north is the Bridge of the Mermaids, and in the distance",
+    "you see the an enormous tree.  The southern gates are to the south.",
+    "~"
+   ],
+   "2487": [
+    "Market Plaza.~",
+    "The Market Plaza is alive with activity.  There are booths and tents all over",
+    "the plaza.  You see people going in and out of the open doorways of all the",
+    "surrounding buildings.",
+    "~"
+   ],
+   "2496": [
+    "Main Processional decorated for Halloween.~",
+    "You are on a very well made stone road that goes through the center of town.",
+    "There is a lot more traffic on this road than on any other you have seen in",
+    "town.  To the North you see the towers of Drakkar's Palace.  To the east you",
+    "can hear the sounds of a market and to the west you see the tall spires of",
+    "what can only be the University of Magic.",
+    "~"
+   ],
+   "4201": [
+    "Entrance to the Haunted House.~",
+    "You are at the top of a broad stone stairway looking up at the entrance to",
+    "huge black stone house.  There are gargoyles on the rooftops and erie music",
+    "is coming from inside.",
+    "~"
+   ],
+   "4202": [
+    "Halls of Horror.~",
+    "You are in a large domed room that has murals all over the ceiling depicting",
+    "horrifying pictures of all types of monsters eating you and your friends!",
+    "There are cobwebs everywhere, and screams are heard echoing around you!",
+    "~"
+   ],
+   "4203": [
+    "Halls of Horror.~",
+    "You are in a large domed room that has murals all over the ceiling depicting",
+    "horrifying pictures of all types of monsters eating you and your friends!",
+    "There are cobwebs everywhere, and screams are heard echoing around you!",
+    "~"
+   ],
+   "4204": [
+    "Halls of Horror.~",
+    "You are in a large domed room that has murals all over the ceiling depicting",
+    "horrifying pictures of all types of monsters eating you and your friends!",
+    "There are cobwebs everywhere, and screams are heard echoing around you!",
+    "~"
+   ],
+   "4205": [
+    "Halls of Horror.~",
+    "You are in a large domed room that has murals all over the ceiling depicting",
+    "horrifying pictures of all types of monsters eating you and your friends!",
+    "There are cobwebs everywhere, and screams are heard echoing around you!",
+    "~"
+   ],
+   "4206": [
+    "Halls of Horror.~",
+    "You are in a large domed room that has murals all over the ceiling depicting",
+    "horrifying pictures of all types of monsters eating you and your friends!",
+    "There are cobwebs everywhere, and screams are heard echoing around you!",
+    "~"
+   ],
+   "4207": [
+    "Before the Sacrificial Altar.~",
+    "The once bright altar room is now dark, you hear muffled scream around you and",
+    "you smell the scent of fresh blood.",
+    "~"
+   ],
+   "4208": [
+    "Sacrificial Altar!~",
+    "Before you is a horrifying sight!  There is a witch behind the altar with",
+    "a dagger poised above the heart of a helpless maiden!  Fake blood is",
+    "everywhere.",
+    "~"
+   ],
+   "4209": [
+    "Private Death Room.~",
+    "There are coffins strewn about the room.  Some are open others are not.",
+    "You hear the muffled knocking as if someone was trying to get out of one of",
+    "the coffins.  There ia a few corpses lying in the corner.",
+    "~"
+   ],
+   "4210": [
+    "Room of Poison, Plague, and Pestilence.~",
+    "There are poison and plague victims in this room.  They reach out to you",
+    "for help as you enter.  Some seem to be dead but alive!",
+    "~"
+   ]
+  }
+ },
+ "records": {
+  "MOBILES": {
+   "2442": [
+    "#2442",
+    "flame~",
+    "a possessed flame~",
+    "A searing jack o'lantern flame burns brightly here",
+    "~",
+    "This is the result when you play with fire.",
+    "~",
+    "fido~",
+    "AFGHU 0 -200 S",
+    "5 2 6d10+50 1d1+99 3d4+2 10",
+    "10 10 10 10",
+    "0 AB 0 0",
+    "8 8 3 0",
+    "0 0 S 0",
+    ""
+   ]
+  },
+  "OBJECTS": {
+   "2403": [
+    "#2403",
+    "jack jacko lantern pumpkin~",
+    "a jack o'lantern~",
+    "A large orange pumpkin, complete with carved face, and glowing candle~",
+    "glass~",
+    "36 BOV 0",
+    "0 0 0 0 0",
+    "0 100 0 P"
+   ]
+  }
+ },
+ "resets": [
+  "O 0 2403 5 2401",
+  "H 0 2403 1 2442",
+  "O 0 2403 5 2431",
+  "H 0 2403 1 2442",
+  "O 0 2403 5 2426",
+  "H 0 2403 1 2442",
+  "O 0 2403 5 2438",
+  "H 0 2403 1 2442",
+  "O 0 2403 5 3502",
+  "H 0 2403 1 2442"
+ ]
+}

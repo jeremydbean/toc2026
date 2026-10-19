@@ -1,0 +1,284 @@
+{
+ "area": [
+  "#AREA   {None } Diku    Limbo~",
+  "",
+  "",
+  ""
+ ],
+ "text": {
+  "MOBILES": {
+   "99": [
+    "great pumpkin herbie~",
+    "the Great Pumpkin~",
+    "the Great Pumpkin has arrived.",
+    "~",
+    "The Great Pumpkin comes only on Halloween, flying through the skies delivering",
+    "toys to all the good little boys and girls of the world.",
+    "~"
+   ],
+   "4444": [
+    "elite guard vampire~",
+    "an elite vampire~",
+    "An elite vampire smiles at you with gleaming white fangs.",
+    "~",
+    "He is a powerfully built man with rigid facial features.  His black",
+    "cape shimmers in the moonlight and a spot of blood stains his",
+    "collar.  Don't cause trouble around him, he will not like his victims",
+    "stolen away.",
+    "~"
+   ],
+   "4445": [
+    "elite guard Krill undead~",
+    "Krill the Undead~",
+    "Krill the undead guard of Dresden wanders here.",
+    "~",
+    "Krill was a powerfully built human with rigid facial features.",
+    "His fangs are polished with silver and his smouldering eyes",
+    "burn fear into the hearts of men, and lust into the hearts of women.",
+    "~"
+   ],
+   "4446": [
+    "elite guard dwarf Stehnrik werewolf~",
+    "Stehnrik the werewolf~",
+    "Stenrik the werewolf of London is here.",
+    "~",
+    "Stehnrik is a powerfully built werewolf with rigid facial features.",
+    "Hair bulges from inside his shirt and trousers.  His snout is wet and gleaming.",
+    "He howls at the moon and sharpens his claws as the drools in your direction.",
+    "~"
+   ],
+   "4447": [
+    "elite guard dwarf vampire~",
+    "an elite dwarven vampire~",
+    "An elite dwarven vampire flies through the air and lands here.",
+    "~",
+    "He is a dark man with rigid facial features.  Tall, dark, handsome",
+    "and incredibly frightening.  He hasn't noticed you yet, and you look",
+    "away trying to avoid his red burning gaze.",
+    "~"
+   ],
+   "4448": [
+    "elite guard elf shevian~",
+    "Shevian of Transylvania~",
+    "Shevian of Transylvania is sharpening his fangs here.",
+    "~",
+    "He is one of the most powerful vampires in the world. A beautiful",
+    "woman is held in his arms, unconscious, with a small trickle of blood",
+    "running from her neck.  He gazes at you and you freeze in terror.",
+    "~"
+   ],
+   "4449": [
+    "elite guard elf vampire~",
+    "an elite elven vampire~",
+    "An elite elven vampire flies through the air and lands here.",
+    "~",
+    "He is a dark man with rigid facial features.  Tall, dark, handsome",
+    "and incredibly frightening.  He hasn't noticed you yet, and you look",
+    "away trying to avoid his red burning gaze.",
+    "~"
+   ],
+   "4450": [
+    "elite guard hobbit Borip vampire~",
+    "Borip the Vampire~",
+    "Borip, a visiting vampire from the Coast of France, stands here.",
+    "~",
+    "He is dressed stylishly in a black tuxedo with a crisp, starched, white",
+    "shirt.  His black, silk cape is lined with a brilliant red. He smiles charmingly",
+    "at you and asks you to be dinner.",
+    "~"
+   ],
+   "4451": [
+    "elite guard hobbit vampire~",
+    "an elite hobbit vampire~",
+    "An elite hobbit vampire flies through the air and lands here.",
+    "~",
+    "He is a dark man with rigid facial features.  Tall, dark, handsome",
+    "and incredibly frightening.  He hasn't noticed you yet, and you look",
+    "away trying to avoid his red burning gaze.",
+    "~"
+   ],
+   "4452": [
+    "regular guard vampire~",
+    "the small vampire~",
+    "A small vampire stands here looking around at all the people.",
+    "~",
+    "Although he is new to this business, don't underestimate him.  He",
+    "looks as though he may sink his teeth into anyone, without considering",
+    "the quality of the blood.",
+    "~"
+   ],
+   "4453": [
+    "captain guard Dracula~",
+    "Count Dracula~",
+    "Count Dracula stands here proudly.",
+    "~",
+    "Count Dracula stands here proudly surveying his new town.  He",
+    "turns to you as you walk in and narrows his eyes.  Then shrugs you",
+    "off as not worth the trouble and goes back about his business.",
+    "~"
+   ],
+   "4454": [
+    "commander guard undead~",
+    "Commander of the Undead~",
+    "The Commander of the Undead is here, gathering up his troops.",
+    "~",
+    "The Commander wears a glowing shroud and gathers up pieces",
+    "of skin that fall from his face.  One eyeball is half out of its socket",
+    "and swivels independent of the other one to stare at you.",
+    "~"
+   ],
+   "4455": [
+    "sergeant guard undead~",
+    "Undead Sergeant~",
+    "The Undead Sergeant stands here oozing slime and maggots.",
+    "~",
+    "He stands here rotting away waiting for his commander's orders.",
+    "Maggots crawl on his flesh and the stench is awful.  He reaches out",
+    "with a hand oozing with open sores and tries to grab at you.",
+    "~"
+   ],
+   "4456": [
+    "guard cityguard vampire~",
+    "a Vampire~",
+    "A vampire stands here.",
+    "~",
+    "A big strong vampire of Dresden.",
+    "~"
+   ],
+   "4457": [
+    "guard cityguard vampire~",
+    "a Vampire~",
+    "A vampire stands here.",
+    "~",
+    "A big strong Vampire of Dresden.",
+    "~"
+   ],
+   "4458": [
+    "citizen dresden warlock~",
+    "a warlock of dresden~",
+    "A warlock practices evil spells here..",
+    "~",
+    "An ugly old warlock cackles at you.",
+    "~"
+   ],
+   "4459": [
+    "citizen dresden witch~",
+    "a witch of Dresden~",
+    "A witch flies here on her broom.",
+    "~",
+    "A younger hag smiles and offers you some poisoned apple.",
+    "~"
+   ],
+   "4467": [
+    "mayor duke dresden~",
+    "the Undead Duke of Dresden~",
+    "The Undead Duke of Dresden greets you with an evil smile.",
+    "He shakes your hand, and then quickly bites it.",
+    "~",
+    "The Duke is a spectral wraith with wispy hair and a shimmering presence.  He",
+    "carries his trusty long sword at his side wherever he goes.  The Duke holds a",
+    "lot of power in Dresden... attacking him would only get you killed.",
+    "~"
+   ],
+   "4468": [
+    "guard cityguard skeleton~",
+    "a skeleton~",
+    "A skeleton stands here rattling his bones.",
+    "~",
+    "A skeleton stalks the night.",
+    "~"
+   ],
+   "4469": [
+    "guard cityguard wraith~",
+    "a wraith~",
+    "A wraith fades in and out of sight here.",
+    "~",
+    "An unearthly wraith of tremendous power.",
+    "~"
+   ],
+   "4470": [
+    "guard cityguard skeleton~",
+    "a skeleton~",
+    "A skeleton stands here rattling in his chains.",
+    "~",
+    "A skeleton rattles his chains and shouts BOO!",
+    "~"
+   ],
+   "4471": [
+    "guard cityguard skeleton~",
+    "a skeleton~",
+    "A skeleton stalks the night.",
+    "~",
+    "A skeleton crumbling into decay stumbles towards you.",
+    "~"
+   ],
+   "4473": [
+    "guard guardian hell~",
+    "A Guardian of Hell~",
+    "A Guardian stands here, guarding the entrance from the living.",
+    "The Guardian says 'Do you tire of living?'",
+    "~",
+    "No scars mar the surface of his face.  His black eyes hold no mercy, nor",
+    "compassion.  He is always looking for new ways to kill people.  Don't tempt",
+    "him or you'll wind up getting your body parts scraped up from the sidewalk",
+    "with a gravedigger's trowel.",
+    "~"
+   ],
+   "4475": [
+    "atropos~",
+    "Atropos~",
+    "Atropos, the cutter of the thread of life glares at you!",
+    "~",
+    "Atropos, one of the mythical greek fates is the cutter of thread. Like",
+    "her two sisters, Clotho and Lachesis, she has a job determining the",
+    "fate of your life. She is the one to fear, as she is the total embodiment",
+    "of death itself.",
+    "~"
+   ],
+   "4476": [
+    "lachesis~",
+    "Lachesis~",
+    "Lachesis, the weaver of thread is here glaring at you!",
+    "~",
+    "Lachesis, like her sisters Atropos and Clothos has a job in the scheme of",
+    "life. She weaves the thread of your life, making it what it is. She knows",
+    "all your hopes and desires, and makes the fullness of life what it is.",
+    "It would not be good to anger her.",
+    "~"
+   ],
+   "7550": [
+    "ghost~",
+    "A ghost~",
+    "A gaseous form drifts through the room.",
+    "~",
+    "~"
+   ]
+  },
+  "ROOMS": {
+   "2": [
+    "Limbo~",
+    "   You are floating in a formless void, detached from all sensation of physical",
+    "matter, surrounded by swirling glowing light, which fades into the relative",
+    "darkness around you without any trace of edges or shadow.",
+    "   Ghostly jack-o-lanterns drift through the void, their candle flames guttering",
+    "in no wind at all.  Shadowy shapes flit at the edges of your vision, and",
+    "something that might be a cackle echoes from no particular direction.",
+    "   There is a \"No Tipping\" notice pinned to the darkness.  Someone has drawn",
+    "a skull on it in what you hope is paint.",
+    "~"
+   ],
+   "4": [
+    "The First National Bank of Dresden.~",
+    "\tThe first thing you notice upon entering this place is how",
+    "white everything seems to be. The chairs are white, the walls and floor are",
+    "white... lets face it, EVERYTHING is white.  Cobwebs drape every corner,",
+    "and carved pumpkins glow balefully on the teller's counter.  A patient teller",
+    "waits along the north wall, wearing a painted skull mask -- though you are",
+    "not entirely sure it IS a mask.  One other thing you notice is a sign hanging",
+    "on the eastern wall...",
+    "~"
+   ]
+  }
+ },
+ "records": {}
+}

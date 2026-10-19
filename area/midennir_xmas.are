@@ -142,7 +142,7 @@ A rusted sword lies on the ground.~
 iron~
 5 0 AN
 1 2 4 2 0
-5 4 50 A
+5 4 10000 A
 E
 sword~
 It looks heavier than your average short sword, but it could use some oiling.
@@ -156,7 +156,7 @@ A blackened spear with an evil-looking blade lies here.~
 iron~
 5 0 AN
 8 2 5 25 F
-3 8 130 A
+3 8 160 A
 E
 spear~
 This used to be a boar spear, but it has been used for more dangerous game.
@@ -170,7 +170,7 @@ A helmet with sharp black horns sits here.~
 iron~
 9 0 AE
 3 5 4 0 1
-5 3 100 A  
+5 3 20000 A
 #3503
 cloak stained~
 a stained travelling cloak~
@@ -178,7 +178,7 @@ A worn and stained cloak is crumpled up on the floor.~
 cloth~
 9 0 AC
 2 3 4 0 1
-3 4 20 A
+3 4 24 A
 #3504
 bracer leather enchanted~
 an enchanted leather bracer~
@@ -186,7 +186,7 @@ A leather bracer with mystic symbols sits here.~
 leather~
 9 0 AM
 2 4 4 2 0
-7 1 400 G
+7 1 33000 G
 A
 18 1
 E
@@ -200,7 +200,7 @@ A wide-bladed knife sits undisturbed on the floor.~
 mithril~
 5 GK AN
 2 2 4 2 0
-6 1 750 P
+6 1 82000 P
 A
 18 1
 E
@@ -556,7 +556,7 @@ The trees get thicker as you go east.
 ~
 0 0 3516
 D2
-More trees and some small snow-covered hills.
+More trees and some small hills.
 ~
 ~
 0 0 3518
@@ -584,7 +584,7 @@ The trees get VERY thick to the south. You can barely see...
 ~
 0 0 3519
 D3
-Some light trees and a pale winter sky.
+Some light trees and daylight.
 ~
 ~
 0 0 3515
@@ -706,10 +706,10 @@ More dark forest.
 0 0 3522
 E
 carcass body corpse carcasses bodies corpses~
-   The corpses looked as if they had been pierced by a large, jagged
+   The corpses looked as if they have been pierced by a large, jagged
 spear. The damage these people sustained is simply amazing. Worse, the
-lips on the bodies are deep blue with cold, and the wounds are rimmed with
-ice -- they have been here since before the first snow.
+lips on the bodies are a light shade of blue, hinting at poison in
+their systems.
 ~
 S
 #3522
@@ -726,12 +726,12 @@ You see daylight and a trail to follow.
 ~
 0 0 3518
 D1
-The stench seems to be coming from this direction.
+The stench seems to becoming from this direction.
 ~
 ~
 0 0 3521
 D2
-A tall row of snow-capped bushes.
+A tall row of bushes
 ~
 ~
 0 0 28161
@@ -754,7 +754,7 @@ D1
 ~
 0 -1 3551
 D3
-The light grows stronger in this direction.
+The sky becomes lighter in this direction.
 ~
 ~
 0 0 3521
@@ -813,7 +813,7 @@ nights are even more dangerous than the heat.
 ~
 30 0 1
 D1
-The road continues east towards New Thalos.
+The continues east towards New Thalos.
 ~
 ~
 0 -1 3528
@@ -1011,10 +1011,9 @@ You see the main passageway.
 ~
 0 -1 3553
 E
-twigs leaves bed~
+twigs leaves bead~
      The twigs and leaves have all been piled together as a makeshift bed for
-some small humanoid. Among them you spot a couple of bright baubles, likely
-stolen from travelers.
+some small humanoid.
 ~
 S
 #3555
@@ -1139,7 +1138,7 @@ east around the inn.
 ~
 4 0 3
 D1
-You can return around the inn this way.
+You can go around the inn this way.
 ~
 ~
 0 0 3572
@@ -1164,7 +1163,7 @@ The bar is here, manned by the innkeeper.
 ~
 0 0 3576
 D1
-You can leave now and return to the cold outside.
+You can leave now and return to fresher air.
 ~
 ~
 0 0 3570
@@ -1191,7 +1190,7 @@ The inn lies to the north.
 ~
 0 0 3572
 D3
-A trail thru the snowy woods.
+A trail thru the woods.
 ~
 ~
 0 0 3581
@@ -1328,7 +1327,7 @@ The forest is lighter in this direction.
 ~
 0 0 3505
 D2
-More and darker snowy woods.
+More and darker woods.
 ~
 ~
 0 0 3510

@@ -796,6 +796,57 @@ python3 check_resets.py
 python3 scripts/area_lint.py --fail-on critical --limit 100
 ```
 
+## The Seasonal Areas Are Generated
+
+`src/season.c` swaps three areas for a holiday copy **at boot**: `dresden`,
+`limbo` and `midennir` load as `<base>_halloween.are` from Oct 18 to Nov 1
+(Hallows End) and as `<base>_xmas.are` from Dec 16 to Jan 6 (Winter Veil).
+The copies are built by `python3 scripts/build_seasonal_areas.py` (`make
+seasonal-areas`) from the base file as it is now plus an overlay in
+`data/seasonal/<base>_<tag>.json`: the `#AREA` line, the flavour text of
+the rooms and mobiles a season decorates (name and description only), the
+records that exist only in season (the Halloween vendor 2442 and treat
+2403) and the resets that place them. Every object, exit, stat line,
+price and ordinary reset comes from the base, so the in-season world can
+no longer fall behind it. `scripts/validate.sh` runs `--check`, and
+`tests/test_seasonal_areas.py` holds each copy to a superset of its base.
+
+They were hand-kept snapshots of an older world until 2026-10-19, and
+nobody noticed what they lacked because they only load in season: the
+Halloween dresden had no room 4216, where every killed player is moved,
+so a boot during Hallows End would have crashed the game on the first
+death; limbo had no Oracle (97), no Hermie (98), no sanctum (8) and no
+Rest Area (9); the Quest Master (7551) was gone from dresden and sat in
+limbo instead, which is a fatal duplicate once dresden has him; and
+every object still carried its pre-copper gold price. The live server
+had booted on Oct 17, so it was running the base files through the
+first days of the season, and the next deploy would have found all of
+it. Rules this leaves:
+
+- **Edit the base, not the copy, then rebuild.** A hand edit to a
+  `_halloween` or `_xmas` file is overwritten by the next build. Flavour
+  text goes in the overlay JSON; a seasonal record goes in its
+  `records`, and may not use a vnum any base area has.
+- **The in-season totals differ from the baseline.** Hallows End adds
+  one mobile and one object (`mobs=2495 objects=3722`); Winter Veil adds
+  none. `../merc --check-area` loads by today's date, so a count that
+  moved on the 18th is the calendar, not a lost record. To validate the
+  other season, copy `area/` somewhere and list the variant files in
+  that copy's `area.lst` directly: `get_seasonal_area` only maps the
+  base names.
+- **`TOC_SEASON` overrides the calendar** (`get_current_season` in
+  `season.c`): `none` boots the ordinary world, `halloween` or `xmas` a
+  season out of its dates. `tests/live_mud.py` sets `none` by default,
+  so a module run in late October or December is not asserting on
+  decorated room names; `tests/test_seasonal_areas.py` passes a season
+  through `extra_env` to boot each holiday world and check it whole --
+  the square wears its pumpkins, Hermie, the Oracle and the Quest
+  Master exist, and a slain mortal lands in the death room.
+- **The Python tools do not know the seasons.** `area_lint.py`,
+  `check_exits.py` and the shop price test read `area.lst`, so they
+  check the base files only; the generator is what keeps the copies
+  honest.
+
 ## The Sanitizer Job Plays
 
 The `sanitize` CI job used to boot the world and idle for 45 seconds, which

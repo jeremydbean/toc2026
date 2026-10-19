@@ -413,6 +413,17 @@ Key rules:
 Use structured parsers/generators for bulk edits. Do not use global string
 replacement across area files without parsing section boundaries.
 
+## Seasonal Area Variants
+
+`src/season.c` loads `dresden`, `limbo` and `midennir` as `_halloween.are`
+copies from Oct 18 to Nov 1 and as `_xmas.are` copies from Dec 16 to Jan 6.
+The copies are generated: `python3 scripts/build_seasonal_areas.py` (or
+`make seasonal-areas`) rebuilds them from the base files plus
+`data/seasonal/<base>_<tag>.json`, which holds only what a season changes
+(the area name, decorated room and mobile text, seasonal-only records and
+their resets). Edit the base file or the overlay, never the copy, and
+rebuild in the same commit; `scripts/validate.sh` fails on a stale copy.
+
 ## Hyrule Generated Content
 
 Source of truth:

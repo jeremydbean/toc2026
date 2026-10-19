@@ -1,0 +1,430 @@
+{
+ "area": [
+  "#AREA\t{ 5 15} Copper  Miden'nir~",
+  "",
+  "",
+  ""
+ ],
+ "text": {
+  "MOBILES": {
+   "3500": [
+    "wyvern~",
+    "the wyvern~",
+    "A monstrous wyvern slowly circles just above your head, its breath steaming in the cold air.",
+    "~",
+    "This huge winged creature looks really menacing.  A dusting of snow coats its",
+    "scales -- proof it has been roosting somewhere up in the frozen peaks.  You",
+    "are happy it doesn't APPEAR to be very hungry ... yet.",
+    "~"
+   ],
+   "3501": [
+    "goblin mountain~",
+    "the goblin~",
+    "A goblin wearing a crooked Father Winter hat stomps through the snow, grumbling.",
+    "~",
+    "You see before you a small and twisted creature with knotted muscles.  Someone",
+    "has jammed a bright red hat onto its head, and it doesn't look pleased about",
+    "it in the slightest.",
+    "~"
+   ],
+   "3503": [
+    "innkeeper~",
+    "the Innkeeper~",
+    "The Innkeeper stands here, pouring mugs of warm spiced cider.",
+    "~",
+    "The Innkeeper has strung evergreen boughs along the bar and hung a small",
+    "wreath above the door.  He seems almost cheerful for once, humming a winter",
+    "carol under his breath while he works.",
+    "~"
+   ],
+   "3504": [
+    "bard~",
+    "the bard~",
+    "A bard sits here attempting to play a winter carol, with modest success.",
+    "~",
+    "The bard has traded his usual bitter expression for a faintly festive one.",
+    "He is playing a slow, pretty carol -- though the audience is thin and the",
+    "warm mulled wine he keeps refilling seems to be helping his performance.",
+    "~"
+   ],
+   "3506": [
+    "goblin lieutenant~",
+    "the goblin lieutenant~",
+    "A goblin dressed as a Father Winter workshop elf sorts through a sack of baubles.",
+    "~",
+    "The goblin lieutenant has traded his usual scowl for a look of intense",
+    "concentration as he counts through shiny trinkets in a tattered burlap sack.",
+    "He glances up with obvious irritation -- you've interrupted his inventory.",
+    "~"
+   ],
+   "3507": [
+    "goblin leader~",
+    "the goblin leader~",
+    "A fat goblin in a red coat, wearing a badly glued white beard, surveys the room.",
+    "~",
+    "The goblin leader has fully embraced the Winter Veil spirit -- or at least his",
+    "interpretation of it.  The beard is crooked, the coat is three sizes too",
+    "big, and there are several suspicious bulges that suggest stolen goods.  He",
+    "grabs for his shortsword all the same.",
+    "~"
+   ]
+  },
+  "ROOMS": {
+   "3500": [
+    "The Plains~",
+    "   You are standing on the plains. A thin layer of snow has settled across",
+    "the flatlands, turning the vast desolate expanse a clean, quiet white.",
+    "The wind cuts like a blade without a single tree to bar its way. Someone",
+    "has left a faint path; it wanders uncertainly toward the hills far north.",
+    "~"
+   ],
+   "3501": [
+    "The Lane~",
+    "   You are strolling along a pleasant, snowy lane. The tall, stately trees",
+    "lining the road are dusted with frost, their bare branches glittering in",
+    "the pale winter light. You can follow the road north or south.",
+    "~"
+   ],
+   "3502": [
+    "The Cross Roads~",
+    "Here, the great eastern road intersects with an older road. A light snowfall",
+    "has blanketed the intersection; you can still make out the wheel ruts of",
+    "recent travelers. Dresden lies west. The mines of Moria are to the north.",
+    "~"
+   ],
+   "3503": [
+    "City Entrance~",
+    "   You stand on the outskirts of Dresden, the capital. The road leads east",
+    "into the frosted forest, and to the west it becomes the main street of the",
+    "town. Colored lanterns have been hung from the gateposts for the Winter",
+    "Veil season, swaying gently in the cold breeze.",
+    "~"
+   ],
+   "3505": [
+    "The Trail to Miden'nir~",
+    "     You are in a lightly frosted forest. Pine boughs droop under the weight",
+    "of fresh snow. A path leads south, and the passage east is easy enough.",
+    "To the west, a thin ribbon of smoke rises above the snow-covered treetops.",
+    "The sprawl of Dresden lies north.",
+    "~"
+   ],
+   "3506": [
+    "The Miden'nir~",
+    "     You are in a dark, snow-hushed forest. The trees are heavy with ice",
+    "crystals, and every branch is outlined in white. To the east, mountains",
+    "block passage. The lighter forest to the west or south offer a way to travel.",
+    "~"
+   ],
+   "3507": [
+    "A Burned Cart~",
+    "    There is a smoldering cart here with several snow-dusted arrows sticking",
+    "in it. The snow around the cart has been melted by residual heat, leaving a",
+    "dark ring of mud. Whatever happened here, the forest has grown quieter",
+    "since then.",
+    "~"
+   ],
+   "3508": [
+    "On a Small Path~",
+    "     A path is here, leading east and south through the snow-covered woods of",
+    "Miden'nir. Mountains slash the scenery to the west of here.",
+    "~"
+   ],
+   "3509": [
+    "The Miden'nir~",
+    "     The trees of Miden'nir stand snow-laden and silent. The canopy above is",
+    "thick enough that only a dusting has reached the forest floor. The trees",
+    "become too thick to the west, but you may go north, south, or toward the",
+    "mountains east.",
+    "~"
+   ],
+   "3510": [
+    "A Crossroads~",
+    "     Here footworn paths meet leading north, south and east. The trees seem to",
+    "be closing in on you at this point. Snow fills in your footprints almost as",
+    "fast as you make them in this hushed corner of the forest.",
+    "~"
+   ],
+   "3511": [
+    "The Trail~",
+    "     You are on a north-south trail through the snowy woods. To the west,",
+    "impassable snow-capped mountains glare at you, and the thick undergrowth",
+    "prevents any movement westward.",
+    "~"
+   ],
+   "3512": [
+    "The Miden'nir~",
+    "     The trees of Miden'nir stand silent, laden with snow. You can go north",
+    "toward the mountains, or west to the lighter forest, but the frozen slopes",
+    "prevent any movement east.",
+    "~"
+   ],
+   "3513": [
+    "The Miden'nir~",
+    "    The forest is dark and cold. To the west it grows even darker and colder.",
+    "Something evil still hides among these snow-smothered trees.  The forest",
+    "gets lighter to the north.  A bitter wind kicks up flurries of snow.",
+    "~"
+   ],
+   "3514": [
+    "Deep Forest~",
+    "     It is quite dark and bitterly cold here; frozen forest surrounds you.",
+    "With each step, the forest seems to close around you. Your breath fogs",
+    "the air in front of your face. It might just be time to head back somewhere",
+    "warm.",
+    "~"
+   ],
+   "3515": [
+    "Light Forest~",
+    "     The forest is lighter here and you can pick your way along the trail.",
+    "Snow lies thick on every branch. To the east the forest becomes dark and",
+    "denser. South, the trail continues.",
+    "~"
+   ],
+   "3516": [
+    "Muddy Ground~",
+    "     The ground here is frozen solid rather than muddy, and patches of snow",
+    "fill in the hollows. Your boots crunch rather than squelch. You can go in",
+    "any of the four cardinal directions from here.",
+    "~"
+   ],
+   "3517": [
+    "Near the Mountains~",
+    "    The most prominent feature here is the snow-plastered mountains to the",
+    "east. You can only go north and west from here as the frozen rocks stop",
+    "all other movement.",
+    "~"
+   ],
+   "3518": [
+    "The Fading Trail~",
+    "     The trail becomes nearly impassable here under the accumulated snow.",
+    "You can go north as the forest is relatively sparse. To the south you can",
+    "make out a footpath pressed into the white.",
+    "~"
+   ],
+   "3519": [
+    "The Dark Path~",
+    "     You are hemmed in by snow-laden trees on either side of you.  The path",
+    "continues north and south, and while it is much too thick to explore west,",
+    "you can head off into the frozen woods.",
+    "~"
+   ],
+   "3520": [
+    "The Dark Forest~",
+    "     You stomp your way through knee-deep snow and frozen underbrush.  The",
+    "dark forest of Miden'nir is thick here, the branches above so dense that",
+    "little snow has reached the ground directly below. You find paths south",
+    "and west.",
+    "~"
+   ],
+   "3521": [
+    "Carnage~",
+    "     Here, you see a gruesome sight. Blood stains the snow red -- on the",
+    "trees and soaked into the frozen ground. Two frost-rimed carcasses lie",
+    "before you. The forest is impassable to the south, but other directions",
+    "look clear.",
+    "~"
+   ],
+   "3522": [
+    "Deep in the Forest of Miden'nir~",
+    "   There is a sickening stench here even through the cold. The smell of",
+    "blood and death mingles with the crisp winter air.",
+    "To the north you catch glimpses of pale grey sky. To the east you",
+    "simply cannot see. To the south is a tall row of snow-capped bushes.",
+    "The trees are close and the cold is stifling.~"
+   ],
+   "3523": [
+    "The Dark Forest~",
+    "   The branches above you block out the pale winter sun, making the forest",
+    "very dark. The forest continues east toward the mountains. The air is",
+    "still and freezing -- a stench comes from the west and an ugly feeling",
+    "causes the hair to rise on the back of your neck.",
+    "~"
+   ],
+   "3525": [
+    "Along the Eastern Road~",
+    "     You are walking along a snow-dusted road between Dresden and the eastern",
+    "lands. A northern road crosses to the west, towards Dresden.  ",
+    "~"
+   ],
+   "3526": [
+    "Along the Eastern Road~",
+    "     You are travelling down the road toward the east. The road to Dresden",
+    "is west of you, and a heavily guarded checkpoint is east.  A very dim path",
+    "leads north and a dirt path wanders off south. Snow fills the ditches on",
+    "either side.",
+    "~"
+   ],
+   "3527": [
+    "The Checkpoint~",
+    "     You are met by a group of heavily armored knights stamping their feet",
+    "against the cold. They check you over for contraband and then allow you",
+    "to pass on. One cautions you not to stray into the desert, where the cold",
+    "nights are even more dangerous than the heat.",
+    "~"
+   ],
+   "3528": [
+    "Along the Eastern Road~",
+    "  You are walking along a well-travelled road, just east of a heavily ",
+    "guarded checkpoint. The snow that lies thick to the west begins to thin",
+    "as you move toward the warmer desert climate ahead.",
+    "~"
+   ],
+   "3529": [
+    "Along the Eastern Road~",
+    "  The snow has all but disappeared here as the desert climate takes hold.",
+    "The temperature swings are brutal -- hot by day, bitterly cold by night.",
+    "Ahead of you the road is partially buried by creeping sands.",
+    "~"
+   ],
+   "3550": [
+    "At The Foot of The Dark Hills~",
+    "You find yourself at the foot of a range of dark, snow-capped hills that",
+    "stretch off to the north. In the distance you can just make out the tops",
+    "of mist-covered mountains wreathed in low cloud.",
+    "~"
+   ],
+   "3551": [
+    "The Deep in the Forest of Miden'nir~",
+    "   The branches above you block out the pale winter light. The forest here",
+    "is very dark and very cold.  The forest continues west, but ice-locked",
+    "mountains block all other directions, except south where a small tunnel",
+    "is dug into the mountainside, and up a mountain pass.",
+    "~"
+   ],
+   "3552": [
+    "A Tunnel in the Mountains~",
+    "     The walls of this tunnel were carved out by the goblins of this forest.",
+    "The floor is well worn and continues south into the mountain, or north",
+    "back into the frozen forest. Ice has formed along the lower walls.",
+    "~"
+   ],
+   "3554": [
+    "A Small Alcove~",
+    "     A small alcove has been carved out here.  There are a bunch of twigs",
+    "and leaves thrown into a pile here, probably serving as a bed.  A handful",
+    "of small, shiny objects are tucked in among the leaves.",
+    "~"
+   ],
+   "3556": [
+    "The Goblin Headquarters~",
+    "     The tunnel widens into a large (well, large for goblins) cavern that",
+    "serves as the living quarters for the goblins of Miden'nir.  A sad",
+    "collection of stolen Winter Veil decorations has been tacked to the",
+    "cave walls: tinsel, a single unlit candle, and a pine bough that has",
+    "seen better days.  Gnawed bones are strewn about the floor.",
+    "~"
+   ],
+   "3570": [
+    "The Front of the Inn~",
+    "     You are standing on a well-worn path which opens into a clearing.",
+    "An old, wooden building is here with smoke billowing from its chimney.",
+    "A painted sign hangs on the porch to the west, and someone has hung a",
+    "festive evergreen wreath on the front door -- a small but genuine",
+    "gesture of celebration even out here in the deep, cold forest.",
+    "~"
+   ],
+   "3571": [
+    "North of the Inn~",
+    "     You are standing north of the inn in a light snowfall.  The air here",
+    "is filled with the smell of smoke and something warm and spiced cooking.",
+    "South, the front porch is waiting for you.",
+    "~"
+   ],
+   "3572": [
+    "South of the Inn~",
+    "     You are standing south of the inn.  You could go north and enter",
+    "through the front door, or west to the rear of the establishment.  You",
+    "hear muffled cries from a tiny trail leading south. The cold is biting.",
+    "~"
+   ],
+   "3573": [
+    "Behind the Inn~",
+    "     You now stand behind the inn in the cold. The keep has thrown his",
+    "garbage out as usual, but the cold has at least muted the smell somewhat.",
+    "A couple of piles of rubbish are to the west. You can return north or",
+    "east around the inn.",
+    "~"
+   ],
+   "3574": [
+    "The Woodsman Inn~",
+    "    You are in the common room of the Woodsman Inn. Evergreen boughs have",
+    "been draped along the rafters and a pair of red candles burn on the bar,",
+    "filling the room with a warm pine scent. A thin haze of wood smoke sits in",
+    "the air. The bard is attempting a winter carol in the corner. You can go",
+    "north to the bar or south for a quieter table.",
+    "~"
+   ],
+   "3575": [
+    "The Ambush Point~",
+    "     This is an overgrown foot-trail south of the inn, now blanketed in snow.",
+    "A number of bushes are trampled and branches have been knocked down.",
+    "Obviously there has been a battle here rather recently.",
+    "~"
+   ],
+   "3576": [
+    "The Bar~",
+    "     This is where people use to come and enjoy the food and hospitality",
+    "of the innkeeper. These days he only serves the hardy few. Sprigs of pine",
+    "and holly have been tucked behind the bottles behind the bar, and a pot of",
+    "spiced cider sits warming by the fire. You can leave south to the common room.",
+    "~"
+   ],
+   "3577": [
+    "The Bard's Table~",
+    "     You are in a darker corner in the Inn.  A large round table with a few",
+    "wooden chairs sits here.  The bard has placed a small sprig of holly as a",
+    "centerpiece -- a surprisingly tender touch.",
+    "~"
+   ],
+   "3578": [
+    "Garbage dump~",
+    "You stand knee deep in garbage, which at least smells slightly less terrible",
+    "than usual in the cold.  YECCH!!! The ice has not improved the situation",
+    "much at all.",
+    "~"
+   ],
+   "3579": [
+    "A Quieter Section of the Inn~",
+    "There seems to be no one in this end of the Woodsman. It is warm here by",
+    "the hearthstone, probably a safe place to rest and warm your bones ...",
+    "~"
+   ],
+   "3581": [
+    "On the Trail of the Horsemen~",
+    "  The path continues east and west of here.  Fresh tracks are almost",
+    "gone, swallowed by new snow -- but you can still make out the horsemen's",
+    "trail heading west.",
+    "~"
+   ],
+   "3582": [
+    "On the Trail of the Horsemen~",
+    "  The path continues east and south. The tracks in the snow show the",
+    "horsemen turned south. The wind is picking up, threatening to bury",
+    "the trail entirely.",
+    "~"
+   ],
+   "3583": [
+    "On the Trail of the Horsemen~",
+    "  The trail of the horsemen continues east and north along this snowy",
+    "path through the forest.  The tracks are still relatively fresh.",
+    "~"
+   ],
+   "3584": [
+    "A Dead End Trail~",
+    "  The path comes to an abrupt end here, as the frozen trees close around",
+    "you.  Fresh snow-pressed tracks cover the ground and end right here.",
+    "The horsemen must be nearby.  You notice an opening in the underbrush",
+    "to the south.",
+    "~"
+   ],
+   "3585": [
+    "AMBUSH~",
+    "     You are in a light forest dusted with snow. A path leads south, but the",
+    "passage to the east is easy enough. To the west, smoke can be seen rising",
+    "above the snow-covered treetops. The sprawl of Dresden lies north.",
+    "~"
+   ]
+  }
+ },
+ "records": {}
+}

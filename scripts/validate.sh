@@ -100,6 +100,7 @@ check "Python syntax" \
     scripts/extract_zelda_doors.py \
     scripts/build_hyrule_manifest.py \
     scripts/build_hyrule_area.py \
+    scripts/build_seasonal_areas.py \
     scripts/build_mudlet_package.py \
     scripts/test_mudlet_handshake.py
 
@@ -108,6 +109,14 @@ check "Python syntax" \
 check "Mudlet package and starter map" \
   "python3 scripts/build_mudlet_package.py   (then commit mudlet/)" \
   "$python_bin" scripts/build_mudlet_package.py --check
+
+# The holiday copies of dresden, limbo and midennir are built from the base
+# files plus data/seasonal/; a base edit without a rebuild leaves the
+# in-season world behind it, which is how the Halloween dresden came to
+# lack the death room (October 2026).
+check "Seasonal area variants" \
+  "python3 scripts/build_seasonal_areas.py   (then commit area/*_halloween.are and *_xmas.are)" \
+  "$python_bin" scripts/build_seasonal_areas.py --check
 
 area_checks() {
   local rc=0

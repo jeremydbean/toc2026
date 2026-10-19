@@ -31,6 +31,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **The seasonal area copies are generated, and no longer years behind.**
+  `dresden`, `limbo` and `midennir` load as `_halloween` copies from
+  Oct 18 and `_xmas` copies from Dec 16, and the copies were hand-kept
+  snapshots of an older world: the Halloween dresden had no room 4216,
+  where the dead are moved, so a boot in season would have crashed on
+  the first death; limbo lacked the Oracle, Hermie and the sanctum; the
+  Quest Master was duplicated; every price was still in gold.
+  `scripts/build_seasonal_areas.py` now builds each copy from the base
+  plus an overlay of its flavour text and seasonal records in
+  `data/seasonal/`, `validate.sh` checks it, and
+  `tests/test_seasonal_areas.py` holds each copy to a superset of its
+  base. `TOC_SEASON=none|halloween|xmas` overrides the calendar; the live
+  test fixture sets `none` so the suite does not depend on the date. HELP
+  ALIGNMENT, HELP CLASS and HELP INTEREST were added in the same push.
 - **What was inside a vanished container is kept at login.** `fread_obj`
   frees its placeholder for an object whose vnum no longer exists, but the
   Nest key had already pointed the nesting table at it, so everything

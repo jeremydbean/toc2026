@@ -29,7 +29,7 @@ OBJS := $(filter-out $(SRC_DIR)/nicedb.o $(AREA_DIR)/resolve.o $(SRC_DIR)/webser
 DEPS     := $(OBJS:.o=.d)
 TARGET   := merc
 
-.PHONY: all clean hyrule-area hyrule-manifest test-hyrule
+.PHONY: all clean hyrule-area hyrule-manifest test-hyrule seasonal-areas
 
 all: $(TARGET)
 
@@ -38,6 +38,9 @@ hyrule-area: data/hyrule_first_quest.json data/hyrule_room_prose.json data/hyrul
 
 hyrule-manifest: scripts/build_hyrule_manifest.py
 	$(PYTHON) scripts/build_hyrule_manifest.py
+
+seasonal-areas: scripts/build_seasonal_areas.py $(wildcard data/seasonal/*.json) area/dresden.are area/limbo.are area/midennir.are
+	$(PYTHON) scripts/build_seasonal_areas.py
 
 test-hyrule: hyrule-area
 	$(PYTHON) -m unittest tests.test_hyrule_progression -v

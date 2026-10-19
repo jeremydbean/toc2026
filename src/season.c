@@ -13,6 +13,7 @@
 
 #include <time.h>
 #include <string.h>
+#include <stdlib.h>
 #include "merc.h"
 #include "list.h"
 
@@ -33,6 +34,23 @@ static SEASON_TYPE get_current_season( void )
     time_t     now;
     struct tm *tm_now;
     int        mon, day;
+    const char *forced;
+
+    /* TOC_SEASON in the environment overrides the calendar: "none" for
+       the ordinary world, "halloween" or "xmas" for a season out of its
+       dates. The live tests set "none" so a run in late October or
+       December is not asserting on decorated room names, and set a
+       season on purpose to check its world boots whole (2026-10-19). */
+    forced = getenv( "TOC_SEASON" );
+    if ( forced != NULL && forced[0] != '\0' )
+    {
+        if ( !str_cmp( forced, "none" ) || !str_cmp( forced, "off" ) )
+            return SEASON_NORMAL;
+        if ( !str_cmp( forced, "halloween" ) )
+            return SEASON_HALLOWEEN;
+        if ( !str_cmp( forced, "xmas" ) || !str_cmp( forced, "christmas" ) )
+            return SEASON_CHRISTMAS;
+    }
 
     now    = time( NULL );
     tm_now = localtime( &now );
