@@ -134530,3 +134530,166 @@ Mon Oct 19 23:44:43 2026 :: Log Alaric [16028]: arrived (Main Deck) from 16023
 Mon Oct 19 23:44:43 2026 :: Log Alaric [16028]: n
 Mon Oct 19 23:44:43 2026 :: Log Alaric [16033]: arrived (Base of the Mast) from 16028
 Mon Oct 19 23:44:44 2026 :: Log Alaric [16033]: bs sw
+Mon Oct 19 23:45:34 2026 :: Log Alaric [16033]: killed The swashbuckler
+Mon Oct 19 23:45:34 2026 :: Log Alaric [16033]: coin +1 platinum
+Mon Oct 19 23:45:34 2026 :: Log Alaric [16033]: coin +6 silver
+Mon Oct 19 23:45:34 2026 :: Log Alaric [16033]: coin +8 copper
+Mon Oct 19 23:45:34 2026 :: Log Alaric [16033]: coin +3 gold
+Mon Oct 19 23:45:36 2026 :: Log Alaric [16033]: scan
+Mon Oct 19 23:45:38 2026 :: Log Alaric [16033]: u
+Mon Oct 19 23:45:38 2026 :: Log Alaric [16078]: arrived (The Mast) from 16033
+Mon Oct 19 23:45:38 2026 :: Log Alaric [16078]: scan
+Mon Oct 19 23:45:40 2026 :: Log Alaric [16078]: e
+Mon Oct 19 23:45:40 2026 :: Log Alaric [16079]: arrived (Out on the Mast) from 16078
+Mon Oct 19 23:45:41 2026 :: Log Alaric [16079]: bs sw
+Mon Oct 19 23:46:43 2026 :: Log Alaric [16079]: killed The swashbuckler
+Mon Oct 19 23:46:43 2026 :: Log Alaric [16079]: coin +1 platinum
+Mon Oct 19 23:46:43 2026 :: Log Alaric [16079]: coin +6 silver
+Mon Oct 19 23:46:43 2026 :: Log Alaric [16079]: coin +8 copper
+Mon Oct 19 23:46:43 2026 :: Log Alaric [16079]: coin +3 gold
+Mon Oct 19 23:46:44 2026 :: Log Alaric [16079]: who
+Mon Oct 19 23:46:46 2026 :: Log Alaric [16079]: recal
+Mon Oct 19 23:46:46 2026 :: Log Alaric [4207]: arrived (Before the Sacrificial Altar.) from 16079
+Mon Oct 19 23:46:46 2026 :: Log Alaric [4207]: recal
+Mon Oct 19 23:46:46 2026 :: Log Alaric [4207]: recal
+Mon Oct 19 23:46:46 2026 :: Log Alaric [4207]: recal
+Mon Oct 19 23:46:47 2026 :: Log Alaric [4207]: e
+Mon Oct 19 23:46:47 2026 :: Log Alaric [4202]: arrived (Halls of Horror.) from 4207
+Mon Oct 19 23:46:47 2026 :: Log Alaric [4202]: n
+Mon Oct 19 23:46:47 2026 :: Log Alaric [4203]: arrived (Halls of Horror.) from 4202
+Mon Oct 19 23:46:48 2026 :: Log Alaric [4203]: n
+Mon Oct 19 23:46:48 2026 :: Log Alaric [4210]: arrived (Room of Poison, Plague, and Pestilence.) from 4203
+Mon Oct 19 23:46:48 2026 :: Log Alaric [4210]: sleep
+Mon Oct 19 23:46:49 2026 :: Log Alaric [4210]: eq
+Mon Oct 19 23:46:52 2026 :: Log Alaric [4210]: i
+Mon Oct 19 23:47:42 2026 :: Sock.sinaddr:  178.156.181.172
+Mon Oct 19 23:47:42 2026 :: EOF encountered on read.
+Mon Oct 19 23:47:55 2026 :: Log Alaric [4210]: who
+Mon Oct 19 23:47:56 2026 :: Log Alaric [4210]: score
+Mon Oct 19 23:47:57 2026 :: Log Alaric [4210]: (refused) times
+Mon Oct 19 23:47:59 2026 :: Log Alaric [4210]: time
+Mon Oct 19 23:48:02 2026 :: Log Alaric [4210]: changes
+Mon Oct 19 23:48:15 2026 :: Log Alaric [4210]: wake
+Mon Oct 19 23:48:15 2026 :: Log Alaric [4210]: l
+Mon Oct 19 23:48:16 2026 :: Log Alaric [4210]: s
+Mon Oct 19 23:48:16 2026 :: Log Alaric [4203]: arrived (Halls of Horror.) from 4210
+Mon Oct 19 23:48:17 2026 :: Log Alaric [4203]: s
+Mon Oct 19 23:48:17 2026 :: Log Alaric [4202]: arrived (Halls of Horror.) from 4203
+Mon Oct 19 23:48:17 2026 :: Log Alaric [4202]: e
+Mon Oct 19 23:48:17 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted House.) from 4202
+Mon Oct 19 23:48:17 2026 :: Log Alaric [4201]: e
+Mon Oct 19 23:48:17 2026 :: Log Alaric [2427]: arrived (Main Processional decorated for Halloween.) from 4201
+Mon Oct 19 23:48:17 2026 :: Log Alaric [2427]: n
+Mon Oct 19 23:48:17 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Mon Oct 19 23:48:18 2026 :: Log Alaric [2404]: n
+Mon Oct 19 23:48:18 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Mon Oct 19 23:48:18 2026 :: Log Alaric [2401]: u
+Mon Oct 19 23:48:18 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Mon Oct 19 23:48:18 2026 :: Log Alaric [2410]: u
+Mon Oct 19 23:48:18 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Mon Oct 19 23:48:18 2026 :: Log Alaric [2411]: u
+Mon Oct 19 23:48:18 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Mon Oct 19 23:48:19 2026 :: Log Alaric [2414]: u
+Mon Oct 19 23:48:19 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Mon Oct 19 23:48:19 2026 :: Log Alaric [2497]: aq re
+Mon Oct 19 23:48:22 2026 :: Log Alaric [2497]: enter door
+Mon Oct 19 23:48:22 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Mon Oct 19 23:48:22 2026 :: Log Alaric [2401]: east
+Mon Oct 19 23:48:22 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Mon Oct 19 23:48:23 2026 :: Log Alaric [2403]: east
+Mon Oct 19 23:48:23 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Mon Oct 19 23:48:23 2026 :: Log Alaric [2420]: east
+Mon Oct 19 23:48:23 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Mon Oct 19 23:48:23 2026 :: Log Alaric [2421]: south
+Mon Oct 19 23:48:23 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Mon Oct 19 23:48:23 2026 :: Log Alaric [2441]: east
+Mon Oct 19 23:48:23 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Mon Oct 19 23:48:24 2026 :: Log Alaric [2442]: south
+Mon Oct 19 23:48:24 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Mon Oct 19 23:48:24 2026 :: Log Alaric [2443]: east
+Mon Oct 19 23:48:24 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Mon Oct 19 23:48:24 2026 :: Log Alaric [2444]: east
+Mon Oct 19 23:48:24 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Mon Oct 19 23:48:24 2026 :: Log Alaric [2445]: east
+Mon Oct 19 23:48:24 2026 :: Log Alaric [2101]: arrived (A Dark Alleyway) from 2445
+Mon Oct 19 23:48:25 2026 :: Log Alaric [2101]: east
+Mon Oct 19 23:48:25 2026 :: Log Alaric [2102]: arrived (Beginning of White Dragon Boulevard) from 2101
+Mon Oct 19 23:48:25 2026 :: Log Alaric [2102]: south
+Mon Oct 19 23:48:25 2026 :: Log Alaric [2109]: arrived (An over-grown lot) from 2102
+Mon Oct 19 23:48:25 2026 :: Log Alaric [2109]: east
+Mon Oct 19 23:48:25 2026 :: Log Alaric [2110]: arrived (East end of an over-grown plot of land) from 2109
+Mon Oct 19 23:48:25 2026 :: Log Alaric [2110]: south
+Mon Oct 19 23:48:25 2026 :: Log Alaric [2116]: arrived (Dracolich Plaza) from 2110
+Mon Oct 19 23:48:26 2026 :: Log Alaric [2116]: east
+Mon Oct 19 23:48:26 2026 :: Log Alaric [2117]: arrived (Shortcut) from 2116
+Mon Oct 19 23:48:26 2026 :: Log Alaric [2117]: south
+Mon Oct 19 23:48:26 2026 :: Log Alaric [2121]: arrived (Shortcut) from 2117
+Mon Oct 19 23:48:26 2026 :: Log Alaric [2121]: east
+Mon Oct 19 23:48:26 2026 :: Log Alaric [2122]: arrived (Ice Dragon Way) from 2121
+Mon Oct 19 23:48:26 2026 :: Log Alaric [2122]: south
+Mon Oct 19 23:48:26 2026 :: Log Alaric [2127]: arrived (Yellow Dragon Road) from 2122
+Mon Oct 19 23:48:27 2026 :: Log Alaric [2127]: east
+Mon Oct 19 23:48:27 2026 :: Log Alaric [2128]: arrived (Yellow Dragon Road) from 2127
+Mon Oct 19 23:48:27 2026 :: Log Alaric [2128]: south
+Mon Oct 19 23:48:27 2026 :: Log Alaric [2133]: arrived (NO MAN'S LAND) from 2128
+Mon Oct 19 23:48:27 2026 :: Log Alaric [2133]: south
+Mon Oct 19 23:48:27 2026 :: Log Alaric [2138]: arrived (NO MAN'S LAND) from 2133
+Mon Oct 19 23:48:27 2026 :: Log Alaric [2138]: south
+Mon Oct 19 23:48:27 2026 :: Log Alaric [2143]: arrived (Another corner of Hector and Achilles streets) from 2138
+Mon Oct 19 23:48:28 2026 :: Log Alaric [2143]: east
+Mon Oct 19 23:48:28 2026 :: Log Alaric [2144]: arrived (Hector Street at Jeweler) from 2143
+Mon Oct 19 23:48:28 2026 :: Log Alaric [2144]: east
+Mon Oct 19 23:48:28 2026 :: Log Alaric [2145]: arrived (Corner of Ajax and Hector) from 2144
+Mon Oct 19 23:48:28 2026 :: Log Alaric [2145]: south
+Mon Oct 19 23:48:28 2026 :: Log Alaric [2149]: arrived (Ajax Avenue at chapel) from 2145
+Mon Oct 19 23:48:28 2026 :: Log Alaric [2149]: south
+Mon Oct 19 23:48:28 2026 :: Log Alaric [2154]: arrived (Ajax street at Weaponshop (or whats left of it)) from 2149
+Mon Oct 19 23:48:29 2026 :: Log Alaric [2154]: south
+Mon Oct 19 23:48:29 2026 :: Log Alaric [2159]: arrived (Curve in the road) from 2154
+Mon Oct 19 23:48:30 2026 :: Log Alaric [2159]: get all
+Mon Oct 19 23:48:30 2026 :: Log Alaric [2159]: recal
+Mon Oct 19 23:48:30 2026 :: Log Alaric [4207]: arrived (Before the Sacrificial Altar.) from 2159
+Mon Oct 19 23:48:31 2026 :: Log Alaric [4207]: recal
+Mon Oct 19 23:48:31 2026 :: Log Alaric [4207]: recal
+Mon Oct 19 23:48:31 2026 :: Log Alaric [4207]: r e 3
+Mon Oct 19 23:48:31 2026 :: Log Alaric [4202]: arrived (Halls of Horror.) from 4207
+Mon Oct 19 23:48:31 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted House.) from 4202
+Mon Oct 19 23:48:31 2026 :: Log Alaric [2427]: arrived (Main Processional decorated for Halloween.) from 4201
+Mon Oct 19 23:48:33 2026 :: Log Alaric [2427]: n
+Mon Oct 19 23:48:33 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Mon Oct 19 23:48:33 2026 :: Log Alaric [2404]: n
+Mon Oct 19 23:48:33 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Mon Oct 19 23:48:33 2026 :: Log Alaric [2401]: u
+Mon Oct 19 23:48:33 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Mon Oct 19 23:48:33 2026 :: Log Alaric [2410]: u
+Mon Oct 19 23:48:33 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Mon Oct 19 23:48:34 2026 :: Log Alaric [2411]: u
+Mon Oct 19 23:48:34 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Mon Oct 19 23:48:34 2026 :: Log Alaric [2414]: u
+Mon Oct 19 23:48:34 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Mon Oct 19 23:48:34 2026 :: Log Alaric [2497]: u
+Mon Oct 19 23:48:35 2026 :: Log Alaric [2497]: aq co
+Mon Oct 19 23:48:35 2026 :: Log Alaric [2497]: gold +23
+Mon Oct 19 23:48:35 2026 :: Log Alaric [2497]: quest complete: 23 gold, 149 quest points, rush (streak bonus 133%)
+Mon Oct 19 23:48:37 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct 19 23:48:38 2026 :: Log Alaric [2497]: score
+Mon Oct 19 23:48:39 2026 :: Log Alaric [2497]: en do
+Mon Oct 19 23:48:39 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Mon Oct 19 23:48:42 2026 :: Log Alaric [2401]: open pump
+Mon Oct 19 23:48:43 2026 :: Log Alaric [2401]: killed a possessed flame
+Mon Oct 19 23:48:43 2026 :: Log Alaric [2401]: coin +3 silver
+Mon Oct 19 23:48:43 2026 :: Log Alaric [2401]: coin +8 copper
+Mon Oct 19 23:48:45 2026 :: Log Alaric [2401]: l i cor
+Mon Oct 19 23:48:47 2026 :: Log Alaric [2401]: s
+Mon Oct 19 23:48:47 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Mon Oct 19 23:48:47 2026 :: Log Alaric [2404]: s
+Mon Oct 19 23:48:47 2026 :: Log Alaric [2427]: arrived (Main Processional decorated for Halloween.) from 2404
+Mon Oct 19 23:48:48 2026 :: Log Alaric [2427]: w
+Mon Oct 19 23:48:48 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted House.) from 2427
+Mon Oct 19 23:48:48 2026 :: Log Alaric [4201]: w
+Mon Oct 19 23:48:48 2026 :: Log Alaric [4202]: arrived (Halls of Horror.) from 4201
+Mon Oct 19 23:48:48 2026 :: Log Alaric [4202]: n
+Mon Oct 19 23:48:48 2026 :: Log Alaric [4203]: arrived (Halls of Horror.) from 4202
+Mon Oct 19 23:48:48 2026 :: Log Alaric [4203]: n
+Mon Oct 19 23:48:48 2026 :: Log Alaric [4210]: arrived (Room of Poison, Plague, and Pestilence.) from 4203
+Mon Oct 19 23:48:49 2026 :: Log Alaric [4210]: sleep
