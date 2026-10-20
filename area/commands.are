@@ -1078,6 +1078,45 @@ to all players.  Older entries scroll off as new ones are added.
 See also: CHANGES, MOTD
 ~
 
+0 HITROLL DAMROLL HR DR 'TO HIT'~
+Hitroll and damroll are the two numbers SCORE shows beside your armour.
+
+  HITROLL  how often your blows land.  Each point is a little more likely
+           to get past your opponent's armour and defences.
+  DAMROLL  how hard they land.  Each point is added to every blow that
+           connects, so it counts for more the more often you swing.
+
+Both come from your strength, your gear and spells such as BLESS, GIANT
+STRENGTH and FRENZY.  COMPARE weighs a piece of gear by what it does to
+your damage, which is mostly these two, and the website's Gear Finder
+does the same for every slot at once.
+
+See also: SCORE, COMPARE, ATTRIBUTES, AFFECTS
+~
+
+0 KEEPSAKE KEEPSAKES TROPHY 'KEEPSAKE TROPHY'~
+The keepsake trophy is a quest reward for heroes (level 51 and up): a
+silver questmaster's sigil, sold for 600 quest points with AQUEST BUY
+TROPHY.  It does nothing in a fight.  It is proof, to anyone who looks at
+it, that you served the questmasters well beyond a single contract.
+
+The other end-game rewards on AQUEST LIST are the Legendary Boon (gold and
+practices) and the Surprise Cache (a bundle of potions).
+
+See also: AQUEST, HEROLEVELS
+~
+
+0 GOD GODS IMMORTAL IMMORTALS STAFF WIZLIST~
+The immortals are the people who run Times of Chaos.  WIZLIST names them.
+They may be in the game unseen, so WHO does not always show them.
+
+To reach them, write a NOTE to immortal, or file what you found with BUG,
+TYPO or IDEA, which they read.  They can reset a forgotten password,
+restore something a bug took from you, and answer what the help does not.
+
+See also: NOTE, BUG, RULES, WIZLIST
+~
+
 0 RULES~
 Syntax: rules
 
@@ -2070,7 +2109,7 @@ Attempt to conceal yourself in the shadows of the current room.  While
 hidden you do not appear on the room's character list to non-sneaking
 players and most mobs.  Moving, attacking, or casting a spell breaks
 hiding immediately.  The chance to hide successfully depends on your
-HIDE skill and the lighting level in the room.
+HIDE skill, and HIDE tells you whether it worked.
 
 See also: SNEAK, STEALTH, STEEL, BACKSTAB
 ~
@@ -3687,7 +3726,7 @@ contents in one step.  Particularly useful for inspecting corpses and packs.
 See also: LOOK, INVENTORY, GET
 ~
 
-51 EXCHANGE~
+0 EXCHANGE~
 Syntax: exchange
 
 If you are a hero, you may exchange experience for more practices.  The cost
@@ -3810,6 +3849,10 @@ their wounds and ills on a fee for service basis.  The HEAL command without
 an argument shows a list of the healer's services.  To receive healing, be
 sure you have sufficient money and type heal <name of spell>.
 
+HEAL REFRESH buys as many castings as your legs need, at the price of one
+each, and says how many it took; if your purse runs short it buys what it
+can.  Hermie, when she is about, does all of this for nothing: HELP BUFF.
+
 For information on the heal spell used by those of the cleric class (and
 members of the cleric's guild), read help for HEALSPELL.
 
@@ -3824,7 +3867,8 @@ HELP without any arguments shows a one-page command summary.
 
 HELP <keyword> shows a page of help on that keyword.  The keywords include
 all the commands, spells, and skills listed in the game.  Type HELP INDEX
-for an alphabetical listing of all keywords.
+for an alphabetical listing of all keywords.  A word with no help names
+any topic within a letter or two of it, so a typo finds its way.
 
 See also: KEYWORDS, COMMANDS, SOCIALS
 ~
@@ -4037,6 +4081,11 @@ See also: DELETE, QUIT, SAVE
 0 PRACTICE~
 Syntax: PRACTICE
 Syntax: PRACTICE <skill|spell>
+Syntax: PRACTICE <skill|spell> <count|max>
+
+With a count, PRACTICE spends that many sessions at once: 'practice dodge
+5'.  MAX spends as many as it takes to reach your adept level.  Either
+stops when you are learned or out of sessions, and says where you got to.
 
 PRACTICE without an argument tells you your current ability level in all
 the skills and spells available to you.  You can check this anywhere.
@@ -4813,7 +4862,7 @@ similar to the other public channels, like gossip, etc. The equals sign,
 
 Immortals may also use the hero channel.
 
-See also: GOSSIP, CHANNELS, HEROQUEST
+See also: GOSSIP, CHANNELS, HEROQUEST, HEROLEVELS
 ~
 
 0 CHANNELS~
@@ -6730,7 +6779,7 @@ What it touches:
 See also: SCORE, 'KNOW ALIGNMENT', 'DETECT EVIL', 'DETECT GOOD'
 ~
 
-0 CLASS CLASSES~
+0 CLASS CLASSES MULTICLASS~
 Six classes are played in Times of Chaos.  Each has a help entry of its
 own, written by its guildmaster:
 
@@ -6744,6 +6793,12 @@ own, written by its guildmaster:
 HELP <class> reads it.  Your class is chosen when the character is made
 and changes only at a REMORT, where every life must be a different class;
 HELP REMORT has the rules.  Guilds are a separate choice: HELP GUILDS.
+
+There is no multiclassing as such.  A class with a guild is the nearest
+thing: a warrior in the thieves' guild (W/T) learns from both trainers,
+and a full warrior (W/W) gets what only the full class gets, like third
+attack.  Over several remorts a character lives as several classes in
+turn and keeps some of what each life earned.
 
 See also: RACES, GUILDS, REMORT, ATTRIBUTES
 ~

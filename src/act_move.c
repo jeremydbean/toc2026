@@ -3104,18 +3104,24 @@ void do_shadowmeld( CHAR_DATA *ch, char *argument )
 void do_hide( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
-    send_to_char( "You attempt to hide.\n\r", ch );
 
     if ( IS_AFFECTED(ch, AFF_HIDE) )
 	REMOVE_BIT(ch->affected_by, AFF_HIDE);
 
+    /* Say whether it worked. "You attempt to hide." for both outcomes
+       left a thief at 1% typing HIDE thirteen times running, hidden in
+       none of them (October 2026). AFFECTS shows it either way. */
     if ( IS_NPC(ch) || number_percent( ) < ch->pcdata->learned[gsn_hide] )
     {
 	SET_BIT(ch->affected_by, AFF_HIDE);
+	send_to_char( "You slip into the shadows, hidden.\n\r", ch );
 	check_improve(ch,gsn_hide,true,3);
     }
     else
+    {
+	send_to_char( "You look for somewhere to hide, and find nowhere that would cover you.\n\r", ch );
 	check_improve(ch,gsn_hide,false,3);
+    }
 
     return;
 }

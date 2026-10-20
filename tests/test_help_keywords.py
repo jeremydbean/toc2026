@@ -23,6 +23,11 @@ SKIP = skip_reason()
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PASSWORD = "Zhelper1pass"
 
+# Topics deliberately gated at a mortal level: each describes a command or
+# channel the character cannot use below it, and a lower level asking
+# should get nothing rather than a description of something they lack.
+ALLOWED_GATES = {"TEACHLIST", "CGOS CASTLECHAT CC -", "HERO ="}
+
 # word asked -> text the topic a mortal gets must contain
 WANTED = {
     "quest": "questmaster",
@@ -34,11 +39,65 @@ WANTED = {
     "hermie": "free healer",
     "chat": "gossip",
     "fourth attack": "no fourth attack",
+    # 2026-10-20, the October logs since the 1st:
+    "hero": "hero status is reached",
+    "herolevels": "hero status is reached",
+    "herolevel": "hero status is reached",
+    "exchange": "exchange experience for more practices",
+    "despair": "despair",
+    "mind leech": "mind leech",
+    "mindleech": "mind leech",
+    "shieldblock": "parrying with a shield",
+    "block": "parrying with a shield",
+    "hitroll": "how often your blows land",
+    "damroll": "how often your blows land",
+    "keepsake": "questmaster's sigil",
+    "multiclass": "no multiclassing",
+    "start": "mud school",
+    "gods": "run times of chaos",
+    "god": "run times of chaos",
 }
 
 
-def mortal_help_topics() -> list[tuple[list[str], str]]:
-    """(keywords, text) of every help a mortal may read, in load order."""
+def one_argument(s: str) -> tuple[str, str]:
+    """ROM's one_argument: a quoted run is one word; words are lowercased."""
+    s = s.lstrip(" ")
+    if not s:
+        return "", ""
+    end = " "
+    if s[0] in "'\"":
+        end, s = s[0], s[1:]
+    i = s.find(end)
+    if i < 0:
+        return s.lower(), ""
+    return s[:i].lower(), s[i + 1:].lstrip(" ")
+
+
+def words_of(s: str) -> list[str]:
+    out = []
+    while True:
+        word, s = one_argument(s)
+        if not word:
+            return out
+        out.append(word)
+
+
+def is_name(string: str, namelist: str) -> bool:
+    """handler.c's is_name: every word asked must prefix some keyword."""
+    names = words_of(namelist)
+    for part in words_of(string):
+        for name in names:
+            if string.lower() == name:
+                return True
+            if name.startswith(part):
+                break
+        else:
+            return False
+    return True
+
+
+def mortal_help_topics() -> list[tuple[str, str]]:
+    """(keyword line, text) of every help any mortal may read, in load order."""
     order = [l.strip() for l in (ROOT / "area" / "area.lst").read_text(encoding="latin-1").splitlines()]
     out = []
     for entry in order:
@@ -50,22 +109,19 @@ def mortal_help_topics() -> list[tuple[list[str], str]]:
             continue
         body = text[text.index("#HELPS") + len("#HELPS"):]
         for m in re.finditer(r"^(-?\d+) ([^~\n]+)~\n(.*?)^~", body, re.M | re.S):
-            level, keys, help_text = int(m.group(1)), m.group(2), m.group(3)
-            if level > 0:
-                continue
-            words = [w.strip("'").lower() for w in re.findall(r"'[^']+'|\S+", keys)]
-            out.append((words, help_text))
+            if int(m.group(1)) <= 0:
+                out.append((m.group(2), m.group(3)))
     return out
 
 
 def lookup(topics, asked: str) -> str | None:
-    """do_help's two passes: an exact keyword first, then a prefix."""
-    asked = asked.lower()
-    for words, text in topics:
-        if asked in words:
+    """do_help's two passes: an exact keyword (split on spaces), then is_name."""
+    argall = " ".join(words_of(asked))
+    for keys, text in topics:
+        if any(argall == w.lower() for w in keys.split()):
             return text
-    for words, text in topics:
-        if any(w.startswith(asked) for w in words):
+    for keys, text in topics:
+        if is_name(argall, keys):
             return text
     return None
 
@@ -78,6 +134,34 @@ class HelpKeywordSourceTests(unittest.TestCase):
                 text = lookup(topics, asked)
                 self.assertIsNotNone(text, f"HELP {asked} finds nothing a mortal may read")
                 self.assertIn(expect.lower(), text.lower())
+
+    def test_no_player_topic_is_locked_behind_a_level(self) -> None:
+        """A level between 1 and 59 on a help hides it from every mortal
+        below that level. DESPAIR sat at 25, the psionics at 15, EXCHANGE
+        and HEROLEVELS at 51 -- and a remort is level 3 holding its
+        psionics, so it could not read about its own powers."""
+        locked = []
+        listed = [l.strip() for l in (ROOT / "area" / "area.lst").read_text(encoding="latin-1").splitlines()]
+        for name in listed:
+            path = ROOT / "area" / name
+            if not path.is_file():
+                continue
+            text = path.read_text(encoding="latin-1")
+            if "#HELPS" not in text:
+                continue
+            helps = text[text.index("#HELPS"):]
+            helps = helps[:helps.index("$~")] if "$~" in helps else helps
+            for m in re.finditer(r"^(\d+) ([^~\n]+)~$", helps, re.M):
+                if 1 < int(m.group(1)) < 60 and m.group(2) not in ALLOWED_GATES:
+                    locked.append(f"{path.name}: {m.group(1)} {m.group(2)}")
+        self.assertEqual([], locked)
+
+    def test_help_suggests_a_near_keyword(self) -> None:
+        source = (ROOT / "src" / "act_info.c").read_text(encoding="latin-1")
+        body = source[source.index("void do_help( CHAR_DATA *ch, char *argument )"):]
+        body = body[:body.index("\n}\n")]
+        self.assertIn("help_suggest( ch, argall )", body)
+        self.assertNotIn('send_to_char( "No help on that word', body)
 
     def test_chat_is_gossip(self) -> None:
         interp = (ROOT / "src" / "interp.c").read_text(encoding="latin-1")
@@ -120,6 +204,12 @@ class HelpKeywordLiveTests(unittest.TestCase):
                 self.assertIn("no accounts here", ask("help account"))
                 self.assertIn("no fourth attack", ask("help fourth attack"))
                 self.assertIn("You gossip 'hello'", ask("chat hello"))
+                self.assertIn("hero status is reached", ask("help hero").lower())
+                self.assertIn("despair", ask("help despair").lower())
+                self.assertIn("Did you mean: PRAY", ask("help prayy"))
+                self.assertIn("Did you mean:", ask("help warruor"))
+                self.assertIn("No help on that word.", ask("help zzqqxx"))
+                self.assertNotIn("Did you mean", ask("help zzqqxx"))
 
 
 if __name__ == "__main__":

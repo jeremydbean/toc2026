@@ -10,6 +10,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **PRACTICE <skill> <count|max>** spends that many sessions at once
+  and says where it got to; players typed the same PRACTICE six to nine
+  times running at a guildmaster. `tests/test_player_frictions.py`.
+- **HELP suggests near keywords on a miss** (`help_suggest` in
+  `act_info.c`, an edit distance of one, or two for words of six letters
+  or more, over the topics the asker may read): `help prayy`, `help
+  dummyy` and `help warruor` were all in the logs.
+- **HELP HITROLL, KEEPSAKE, GODS, START and MULTICLASS** answer, and
+  SHIELDBLOCK and BLOCK reach SHIELD BLOCK.
 - **The Hallows End rooms answer LOOK.** A seasonal overlay may carry
   `extras`: extra descriptions the generator adds to a room before its
   closing `S`, and `tests/test_seasonal_areas.py` strips again when it
@@ -60,6 +69,21 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **TRACK told a missed roll as a find.** It pointed a random way with
+  the same "You find a trail" as a good roll, so trackers typed it
+  four to seven times running to take a vote. A miss says the trail was
+  lost; a hit says how far off the quarry is, as HELP TRACK always
+  promised; both improve the skill, which TRACK never did.
+- **HIDE says whether it worked**, instead of "You attempt to hide."
+  either way: a thief at 1% hid thirteen times running.
+- **The temple healer's REFRESH fills the pool in one command**, at 10
+  gold a casting as before; players bought it five times in a row.
+- **Player help was locked behind levels.** Every psionic power's topic
+  sat at 15, DESPAIR and PHASE at 25, EXCHANGE and HEROLEVELS at 51, so
+  a remort -- level 3 with its psionics -- could not read about its own
+  powers, and HELP HERO below 51 reached HEROIC GRIP. All are level 0;
+  HEROLEVELS answers HERO for mortals, and its practice range now
+  matches the code's 5 to 7.
 - **The holiday bosses stand still and start nothing.** The Headless
   Horseman and Father Winter were aggressive and wandered Dresden like
   any mobile, so a boss announced in the square had "fled" by the time

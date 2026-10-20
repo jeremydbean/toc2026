@@ -82,7 +82,7 @@ void do_heal(CHAR_DATA *ch, char *argument)
 	send_to_char("  disease: cure disease         100 gold\n\r",ch);
 	send_to_char("  poison:  cure poison	       75 gold\n\r",ch); 
 	send_to_char("  uncurse: remove one curse     250 gold\n\r",ch);
-	send_to_char("  refresh: restore movement      10 gold\n\r",ch);
+	send_to_char("  refresh: restore movement      10 gold a casting, as many as it takes\n\r",ch);
 	send_to_char("  mana:    restore mana	      100 gold\n\r",ch);
 	send_to_char(" Type heal <type> to be healed.\n\r",ch);
 	return;
@@ -172,6 +172,47 @@ void do_heal(CHAR_DATA *ch, char *argument)
 	    act("$N says 'Type 'heal' for a list of spells.'",
 	        ch,NULL,mob,TO_CHAR);
 	    return;
+    }
+
+    /*
+     * REFRESH is a slice of mob->level moves for 10 gold, so a tired
+     * player bought it five times running (the October 2026 logs). Sell
+     * every slice the pool needs in one go, at the same price a slice,
+     * as many as the purse covers.
+     */
+    if ( spell == spell_refresh && mob->level > 0 )
+    {
+        int missing = ch->max_move - ch->move;
+        int slices, buy;
+        char buf[MAX_STRING_LENGTH];
+
+        if ( missing <= 0 )
+        {
+            act( "$N says 'Your legs are as fresh as I can make them.'",
+                ch, NULL, mob, TO_CHAR );
+            return;
+        }
+        slices = ( missing + mob->level - 1 ) / mob->level;
+        slices = UMIN( slices, 1000 );
+        for ( buy = slices; buy > 0 && !has_enough_gold( ch, cost * buy ); buy-- )
+            ;
+        if ( buy == 0 )
+        {
+            act("$N says 'You do not have enough gold for my services.'",
+                ch,NULL,mob,TO_CHAR);
+            return;
+        }
+        WAIT_STATE(ch,PULSE_VIOLENCE);
+        add_money( ch, -1 * cost * buy );
+        act("$n utters the words '$T'.",mob,NULL,words,TO_ROOM);
+        ch->move = (int) UMIN( (long) ch->move + (long) buy * mob->level,
+                               (long) ch->max_move );
+        snprintf( buf, sizeof(buf), "%s (%d casting%s, %d gold.)\n\r",
+            ch->move >= ch->max_move ? "You feel fully refreshed!"
+                                     : "You feel less tired; that is all you can pay for.",
+            buy, buy == 1 ? "" : "s", cost * buy );
+        send_to_char( buf, ch );
+        return;
     }
 
     if (!has_enough_gold(ch, cost))

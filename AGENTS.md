@@ -557,6 +557,20 @@ refusals have their own lines. `tests/test_pick_lock.py` plays a
 pickproof door, a fumble at 0% and a pick at 100%. The spells' and staff
 commands' "You failed." are not this pattern and were left alone.
 
+**A miss is not a lie, either** (2026-10-20). TRACK answered a missed
+roll with a random direction in the same words as a found trail, and
+HIDE said "You attempt to hide." whichever way the roll went; the logs
+show players repeating both to find out. Say which it was.
+`tests/test_player_frictions.py`.
+
+**A player help topic is level 0.** A level from 1 to 59 on a help hides
+it from every mortal below it, and a remort is level 3 again with all
+its powers. Only a topic describing a command or channel the reader
+cannot use below that level keeps a gate (`ALLOWED_GATES` in
+`tests/test_help_keywords.py`). A group's own name is answered from
+`group_table` when no topic matches (`help necro maladictions` lists the
+members), so do not add a group's name as a keyword to a written topic.
+
 Do not label deliberate random recall as a bug. It can choose any room that is
 eligible and not protected.
 

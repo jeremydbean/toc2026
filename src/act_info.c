@@ -2223,6 +2223,114 @@ static bool help_keyword_exact( const char *argument, const char *keywords )
 }
 
 
+/*
+ * Edit distance between two short words, capped: anything past "limit"
+ * is just "too far", which is all help_suggest needs to know.
+ */
+static int help_word_distance( const char *a, const char *b, int limit )
+{
+    int prev[MAX_INPUT_LENGTH + 1], cur[MAX_INPUT_LENGTH + 1];
+    int la = (int) strlen( a ), lb = (int) strlen( b );
+    int i, j;
+
+    if ( la > MAX_INPUT_LENGTH || lb > MAX_INPUT_LENGTH
+    ||   la - lb > limit || lb - la > limit )
+        return limit + 1;
+    for ( j = 0; j <= lb; j++ )
+        prev[j] = j;
+    for ( i = 1; i <= la; i++ )
+    {
+        int best;
+
+        cur[0] = best = i;
+        for ( j = 1; j <= lb; j++ )
+        {
+            int cost = ( LOWER(a[i-1]) == LOWER(b[j-1]) ) ? 0 : 1;
+            int v = prev[j-1] + cost;
+
+            if ( prev[j] + 1 < v ) v = prev[j] + 1;
+            if ( cur[j-1] + 1 < v ) v = cur[j-1] + 1;
+            cur[j] = v;
+            if ( v < best ) best = v;
+        }
+        if ( best > limit )
+            return limit + 1;
+        memcpy( prev, cur, sizeof(int) * (size_t)( lb + 1 ) );
+    }
+    return prev[lb];
+}
+
+/*
+ * HELP found nothing: name the readable topics within a typo of what was
+ * asked. "help prayy", "help dummyy" and "help warruor" in the October
+ * 2026 logs each got a flat "No help on that word." with PRAY, DUMMY and
+ * WARRIOR one letter away.
+ */
+static void help_suggest( CHAR_DATA *ch, const char *asked )
+{
+    HELP_DATA *pHelp;
+    char out[MAX_STRING_LENGTH];
+    char seen[MAX_STRING_LENGTH];
+    char keys[MAX_STRING_LENGTH];
+    char word[MAX_INPUT_LENGTH];
+    char *rest;
+    int limit = strlen( asked ) >= 6 ? 2 : 1;
+    int found = 0;
+
+    out[0] = '\0';
+    seen[0] = ' ';
+    seen[1] = '\0';
+    if ( strlen( asked ) >= 3 )
+    {
+        for ( pHelp = help_first; pHelp != NULL && found < 6; pHelp = pHelp->next )
+        {
+            if ( pHelp->level > get_trust( ch ) || pHelp->keyword == NULL )
+                continue;
+            toc_strlcpy( keys, pHelp->keyword, sizeof(keys) );
+            rest = keys;
+            for ( ;; )
+            {
+                char probe[MAX_INPUT_LENGTH + 2];
+
+                rest = one_argument( rest, word );
+                if ( word[0] == '\0' || found >= 6 )
+                    break;
+                if ( strlen( word ) < 3
+                ||   help_word_distance( asked, word, limit ) > limit )
+                    continue;
+                snprintf( probe, sizeof(probe), " %s ", word );
+                if ( strstr( seen, probe ) != NULL )
+                    continue;
+                toc_strlcat( seen, word, sizeof(seen) );
+                toc_strlcat( seen, " ", sizeof(seen) );
+                if ( found++ > 0 )
+                    toc_strlcat( out, ", ", sizeof(out) );
+                {
+                    char upper[MAX_INPUT_LENGTH];
+                    size_t k;
+
+                    for ( k = 0; word[k] != '\0' && k + 1 < sizeof(upper); k++ )
+                        upper[k] = (char) UPPER( word[k] );
+                    upper[k] = '\0';
+                    toc_strlcat( out, upper, sizeof(out) );
+                }
+            }
+        }
+    }
+
+    if ( found == 0 )
+        send_to_char( "No help on that word.\n\r", ch );
+    else
+    {
+        char line[MAX_STRING_LENGTH];
+
+        snprintf( line, sizeof(line),
+                  "No help on that word.  Did you mean: %s?\n\r", out );
+        send_to_char( line, ch );
+    }
+}
+
+
 void do_help( CHAR_DATA *ch, char *argument )
 {
     HELP_DATA *pHelp;
@@ -2318,7 +2426,7 @@ void do_help( CHAR_DATA *ch, char *argument )
 	}
     }
 
-    send_to_char( "No help on that word.\n\r", ch );
+    help_suggest( ch, argall );
     return;
 }
 
@@ -3750,6 +3858,39 @@ void do_practice(CHAR_DATA *ch, char *argument)
     if (argument[0]!='\0')
     {
         int adept;
+        int count = 1;
+        int done = 0;
+        char what[MAX_INPUT_LENGTH];
+        char *last;
+
+        /*
+         * PRACTICE <skill> <count|max>. One session per command meant
+         * typing the same PRACTICE six to nine times at a guildmaster
+         * (October 2026 logs); a trailing number, or MAX, spends that
+         * many at once and stops at adept or at the last session.
+         */
+        toc_strlcpy( what, argument, sizeof(what) );
+        while ( what[0] != '\0' && what[strlen(what) - 1] == ' ' )
+            what[strlen(what) - 1] = '\0';
+        if ( ( last = strrchr( what, ' ' ) ) != NULL )
+        {
+            if ( !str_cmp( last + 1, "max" ) || !str_cmp( last + 1, "all" ) )
+            {
+                count = 1000;
+                *last = '\0';
+            }
+            else if ( is_number( last + 1 ) )
+            {
+                if ( strlen( last + 1 ) > 3 || ( count = atoi( last + 1 ) ) < 1 )
+                {
+                    send_to_char( "Practice how many times?\n\r", ch );
+                    return;
+                }
+                *last = '\0';
+            }
+            while ( what[0] != '\0' && what[strlen(what) - 1] == ' ' )
+                what[strlen(what) - 1] = '\0';
+        }
 
         if ( !IS_AWAKE(ch) )
         {
@@ -3767,7 +3908,8 @@ void do_practice(CHAR_DATA *ch, char *argument)
         for ( i = 0 ; (i < MAX_TEACH) && (sn < 0); i++ )
         {
 	    if ((gmdata.can_teach[i] != NULL)
-            && !str_prefix(argument,gmdata.can_teach[i]))
+            && what[0] != '\0'
+            && !str_prefix(what,gmdata.can_teach[i]))
                 sn = skill_lookup(gmdata.can_teach[i]);
         }
 
@@ -3804,28 +3946,45 @@ void do_practice(CHAR_DATA *ch, char *argument)
         }
         else
         {
-            ch->practice--;
-            ch->pcdata->learned[sn] = (int16_t)(
-                ch->pcdata->learned[sn] +
-                ( sn == gsn_heros_grip
-                    ? HEROS_GRIP_PRACTICE_GAIN
-                    : int_app[get_curr_stat(ch,STAT_INT)].learn /
-                      skill_table[sn].rating[ch->class] ));
+            while ( done < count && ch->practice > 0
+                 && ch->pcdata->learned[sn] < adept )
+            {
+                ch->practice--;
+                done++;
+                ch->pcdata->learned[sn] = (int16_t)(
+                    ch->pcdata->learned[sn] +
+                    ( sn == gsn_heros_grip
+                        ? HEROS_GRIP_PRACTICE_GAIN
+                        : int_app[get_curr_stat(ch,STAT_INT)].learn /
+                          skill_table[sn].rating[ch->class] ));
+                if ( ch->pcdata->learned[sn] > adept )
+                    ch->pcdata->learned[sn] = (int16_t)adept;
+            }
+
             if ( ch->pcdata->learned[sn] < adept )
             {
-                act( "You practice $T.",
-                    ch, NULL, skill_table[sn].name, TO_CHAR );
+                if ( done == 1 )
+                    act( "You practice $T.",
+                        ch, NULL, skill_table[sn].name, TO_CHAR );
+                else
+                {
+                    snprintf( buf, sizeof(buf),
+                        "You practice %s %d times, to %d%%.\n\r",
+                        skill_table[sn].name, done, ch->pcdata->learned[sn] );
+                    send_to_char( buf, ch );
+                }
 			 act( "$n practices $T.",
                     ch, NULL, skill_table[sn].name, TO_ROOM );
             }
             else
             {
-                ch->pcdata->learned[sn] = (int16_t)adept;
 		act( "You are now learned at $T.",
                     ch, NULL, skill_table[sn].name, TO_CHAR );
                 act( "$n is now learned at $T.",
                     ch, NULL, skill_table[sn].name, TO_ROOM );
             }
+            if ( done < count && count != 1000 && ch->practice <= 0 )
+                send_to_char( "You have no practice sessions left.\n\r", ch );
             return;
         }
     }

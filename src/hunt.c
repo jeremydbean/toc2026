@@ -592,31 +592,40 @@ void do_track( CHAR_DATA *ch, char *argument )
 		ch, NULL, vict, TO_CHAR );
 	    break;
 	default:
+	    WAIT_STATE( ch, skill_table[gsn_tracking].beats );
+
 	    /*
-	     * Give a random direction if the player misses the die roll.
-	     * ----------------------------------------------------------
+	     * A missed roll loses the trail. It used to point a random way
+	     * and say "You find a trail" exactly as a good roll does, so a
+	     * tracker could not tell the two apart and typed TRACK four to
+	     * seven times running to take a vote (the October 2026 logs,
+	     * dozens of times). A refusal is not a miss, and a miss is not
+	     * a lie: it says so.
 	     */
 	    if (( IS_NPC (ch) && number_percent () > 75)        /* NPC @ 25% */
 	        ||  (!IS_NPC (ch) && number_percent () >            /* PC @ norm */
 		     ch->pcdata->learned[gsn_tracking]))
 	    {
-	        int rnd_attempts = 0;
-	        do
+		static const char * const lost[] =
 		{
-		    dir = number_door();
-		    if (++rnd_attempts > 100)
-		        break; /* give up: use whatever direction was found by BFS */
-		} while ( (ch->in_room->exit[dir] == NULL)
-			 || (ch->in_room->exit[dir]->u1.to_room == NULL) );
+		    "The trail is faint here, and you lose it.",
+		    "You cast about for signs of $N's passing and find nothing you trust.",
+		    "Too many tracks cross here; you cannot pick out $N's.",
+		    "You think you have $N's trail, then lose it again."
+		};
+
+		act( lost[number_range(0, 3)], ch, NULL, ch->hunting, TO_CHAR );
+		check_improve( ch, gsn_tracking, false, 2 );
+		break;
 	    }
 
-	    /*
-	     * Display the results of the search.
-	     * ----------------------------------
-	     */
-            snprintf(buf, sizeof(buf), "You find a trail %s from here for %s!\n\r",
+            snprintf(buf, sizeof(buf), "You find a trail %s from here for %s, %s.\n\r",
                      dir_name[dir],
-                     IS_NPC(ch->hunting) ? ch->hunting->short_descr : ch->hunting->name);
+                     IS_NPC(ch->hunting) ? ch->hunting->short_descr : ch->hunting->name,
+                     distance <= 1 ? "just beyond"
+                   : distance <= 5 ? "not far off"
+                   : distance <= 15 ? "some way off"
+                   : "a long way off");
             send_to_char(buf, ch);
 
             if (IS_IMMORTAL(ch))
@@ -625,7 +634,7 @@ void do_track( CHAR_DATA *ch, char *argument )
                 send_to_char(buf, ch);
             }
 
-	    WAIT_STATE( ch, skill_table[gsn_tracking].beats );
+	    check_improve( ch, gsn_tracking, true, 2 );
 	    break;
     }
 }                                       /* End do_track. */

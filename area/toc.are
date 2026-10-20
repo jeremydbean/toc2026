@@ -27,7 +27,7 @@ Angels (65)      Avatars (64)      Immortals (63)	Martyr (62)
 See also: GODS, DEMIGODS, IMMORTAL
 ~
 
--1 'NEWBIE INFO'~
+-1 'NEWBIE INFO' START BEGIN BEGINNER 'GETTING STARTED'~
 Be welcome oh adventurer.  Since you are new to the game, your best course
 of action is to traverse the mud school before journeying on to other realms.
 It's designed to help you learn the basics of the game.  Make sure you read
@@ -338,13 +338,13 @@ that PC and your Hero will SUFFER SEVERE PENALTIES, NO EXCEPTIONS!!!
 See also: HERO, HEROLEVELS, QUESTS
 ~
 
-51 HEROLEVELS~
+0 HEROLEVELS HEROLEVEL HERO HEROES 'HERO LEVELS'~
 Hero status is reached when a character attains level 51.  At that point
 normal experience leveling stops; experience is accumulated for other uses.
 
 The primary use of accumulated hero experience is exchanging it for
 additional practice sessions.  Each exchange costs 5,000 experience points
-and grants between 4 and 6 practices at random.  Exchanges must be made
+and grants between 5 and 7 practices at random.  Exchanges must be made
 with the guru located in Hero Hall.
 
 Heroes may also embark on special quests through the Questmaster to earn
@@ -1198,7 +1198,7 @@ necromancers have these spells in their own groups, or not at all.
 See also: SPELLGROUP, GAIN
 ~
 
--1 MALADICTIONS~
+-1 MALADICTIONS MALADICTION~
 This group is open to all spell casters.  Spells are listed by class:
 
 M/M: Blindness, Curse, Energy Drain, Poison, Weaken, Maze
