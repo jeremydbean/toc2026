@@ -8512,9 +8512,12 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* The flag and nothing else. This also zeroed psionic -- which made a
+       character already holding powers read as never awakened -- and
+       last_level, which sends the next login through reset_char's full
+       rebuild of the permanent stats: two side effects a grant has no
+       business having (found reviewing psionics, 2026-10-20). */
     victim->pcdata->psionic_grant_pending = true;
-    victim->pcdata->psionic = 0;
-    victim->pcdata->last_level = 0;
     send_to_char( "Grant flag applied. They will receive psionics the next time they gain a "
                   "level.\n\r", ch );
 

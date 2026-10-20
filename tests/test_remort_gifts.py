@@ -193,6 +193,75 @@ class PsionicsStack(unittest.TestCase):
             )
 
 
+class RemortReviewSourceTests(unittest.TestCase):
+    """What the 2026-10-20 review of remorts and psionics fixed."""
+
+    def setUp(self) -> None:
+        self.info = (ROOT / "src" / "act_info.c").read_text(encoding="latin-1")
+        self.wiz = (ROOT / "src" / "act_wiz.c").read_text(encoding="latin-1")
+        self.stubs = (ROOT / "src" / "stubs.c").read_text(encoding="latin-1")
+
+    def body(self, text: str, start: str) -> str:
+        part = text[text.index(start):]
+        return part[:part.index("\n}\n")]
+
+    def test_a_remort_and_a_login_pay_the_sets_the_same_way(self) -> None:
+        remort = self.body(self.info, "void do_remort(")
+        self.assertIn("psionic_remort_grant( ch )", remort)
+        self.assertNotIn("grant_psionics(", remort)
+        login_ = self.body(self.stubs, "void psionic_login(")
+        self.assertIn("psionic_remort_grant( ch )", login_)
+
+    def test_a_deferred_grantpsi_touches_only_its_flag(self) -> None:
+        grant = self.body(self.wiz, "void do_grantpsi(")
+        self.assertNotIn("psionic = 0", grant)
+        self.assertNotIn("last_level = 0", grant)
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class RemortKeepsWhatItShould(unittest.TestCase):
+    def test_a_staff_shadowmeld_survives_a_remort_and_salir_says_when(self) -> None:
+        """A shadowmeld an immortal gave before the fourth remort is kept
+        through the next one, and Salir tells a level 3 holding powers
+        when each can be trained instead of "You can't practice that."
+        """
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zkeeper", PASSWORD)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+
+            patch_player_file(
+                mud, "Zkeeper",
+                Levl=FIRST_REMORT_LEVEL + 1, NumRemorts=1, Tru=70,
+                Cla=MAGE, Gui=MAGE, ListRemorts="~", PsiKnown="~",
+                Room=4207,
+            )
+
+            with mud.connect(timeout=120) as client:
+                login(client, "Zkeeper", PASSWORD)
+                run(client, "set skill zkeeper shadowmeld 30", 1.2)
+                self.assertIn(
+                    "remorted to level 3",
+                    run(client, "remort %s warrior cleric human" % PASSWORD, 3.0),
+                )
+                # Salir (mob 57) teaches every power; a level 3 holds them
+                # but cannot train one until its level.
+                run(client, "load mob 57", 1.4)
+                held = sorted(psionics(mud, "Zkeeper"))
+                self.assertTrue(held, "the second remort gave no powers")
+                reply = run(client, "practice %s" % held[0], 1.6)
+                self.assertRegex(reply, r"You hold %s, but cannot train it until level \d+\."
+                                 % re.escape(held[0]))
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+
+            text = (mud.player_dir / "Zkeeper").read_text(encoding="latin-1")
+            self.assertEqual(len(psionics(mud, "Zkeeper")), 4)
+            self.assertRegex(text, re.compile(r"^Sk\s+30 'shadowmeld'$", re.M),
+                             "a staff-granted shadowmeld was lost to the remort")
+
+
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class ClassHistory(unittest.TestCase):
     def test_a_class_you_have_lived_is_refused_and_any_guild_is_not(

@@ -728,6 +728,36 @@ int grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
 }
 
 /*
+ * What the remorts owe, by the sets: everything known handed back, and
+ * the count topped up. A pending GRANTPSI list is the next level's to
+ * pay, not the remort's or the login's, so it is put aside for the
+ * grant and put back after -- neither spent on the sets nor cleared.
+ * do_remort called grant_psionics directly, which would have spent a
+ * pending list on the remort and cleared the flag; no player can reach
+ * that today -- a grant above level 21 pays at login -- but the two
+ * callers now cannot drift apart (reviewing remorts, 2026-10-20).
+ */
+int psionic_remort_grant( CHAR_DATA *ch )
+{
+    char *spec;
+    bool pending;
+    int added;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return 0;
+
+    spec    = ch->pcdata->psionic_grant_spec;
+    pending = ch->pcdata->psionic_grant_pending;
+
+    ch->pcdata->psionic_grant_spec = str_dup( "" );
+    added = grant_psionics( ch, 100, true );
+    free_string( ch->pcdata->psionic_grant_spec );
+    ch->pcdata->psionic_grant_spec = spec != NULL ? spec : str_dup( "" );
+    ch->pcdata->psionic_grant_pending = pending;
+    return added;
+}
+
+/*
  * Everything psionic that happens as a player enters the game, in order:
  * powers a remort wiped come back at 1%, a remorted character short of
  * what their remorts give is topped up, and a pending GRANTPSI above the
@@ -743,19 +773,7 @@ void psionic_login( CHAR_DATA *ch )
     psionic_restore_known( ch );
 
     if ( psionic_owed_by_remorts( ch ) )
-    {
-        /* What the remorts owe, by the sets. A pending GRANTPSI list is
-           the next level's to pay, not this login's: put it aside so the
-           top-up neither spends it nor clears the flag. */
-        char *spec = ch->pcdata->psionic_grant_spec;
-        bool pending = ch->pcdata->psionic_grant_pending;
-
-        ch->pcdata->psionic_grant_spec = str_dup( "" );
-        grant_psionics( ch, 100, true );
-        free_string( ch->pcdata->psionic_grant_spec );
-        ch->pcdata->psionic_grant_spec = spec;
-        ch->pcdata->psionic_grant_pending = pending;
-    }
+        psionic_remort_grant( ch );
 
     do_check_psi( ch, "" );
 }

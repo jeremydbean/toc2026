@@ -2,13 +2,24 @@
 
 0 PSIONICS~
 
-Psionics are mental abilities unlocked beginning at remort 2.  A qualifying
-character receives one random skill from each of four disciplines, for four
-skills total.  The final remort grants all 17 skills.  For information on
-training a learned psionic skill, read help on SALIR.  Individual skills are
-ASTRAL WALK, CLAIRVOYANCE, CONFUSE, EGO WHIP, ENERVATE, MIND LEECH, MINDBAR,
-MINDBLAST, NIGHTMARE, PROJECT, PSIONIC ARMOR, PSYCHIC SHIELD, PYROTECHNICS,
-SHIFT, TELEKINESIS, TORMENT, and TRANSFUSION.
+Psionics are mental abilities, given by remorting and now and then by the
+immortals.  They come in four disciplines:
+
+  Assault   ego whip, torment, nightmare, mindblast
+  Astral    astral walk, shift, project, telekinesis
+  Defense   mindbar, psionic armor, psychic shield, transfusion
+  Control   clairvoyance, confuse, mind leech, enervate, pyrotechnics
+
+The 2nd remort gives one power from each discipline, chosen at random, the
+3rd a second from each and the 4th a third: 4, then 8, then 12.  They stack.
+The 5th and final remort gives all 17.  A remort wipes your skills, but the
+powers you were given come back each life at 1%.
+
+Each power opens at its own level, from 17 (psionic armor) to 28
+(transfusion); below that you hold it but cannot use or train it.  Salir
+trains them all, and says when a power you hold will open.
+
+See also: SALIR, REMORT, GAIN
 
 See also: GAIN, SALIR
 ~

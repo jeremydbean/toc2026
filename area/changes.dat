@@ -3,6 +3,12 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261020g 2026-10-20
+Salir, and every trainer, now says when you can train a skill you hold
+but are too low for, instead of "You can't practice that." A remort
+no longer takes away a shadowmeld an immortal gave you. HELP PSIONICS
+lists the four disciplines and what each remort gives.
+
 @ 20261020f 2026-10-20
 RECALL on the spot you would recall to now says so and names it,
 instead of a bare "You are already there."

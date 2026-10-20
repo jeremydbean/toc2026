@@ -69,6 +69,19 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Remort and psionics review (2026-10-20).** A trainer answered a
+  skill the character holds but is below the level of with "You can't
+  practice that."; it names the level now, which is what a remorted
+  level 3 sent to Salir by the awakening banner needed to hear. A
+  shadowmeld given with SET SKILL before the fourth remort was wiped by
+  the next remort; it is kept. GRANTPSI's deferred flag also zeroed
+  `psionic` and `last_level`, the second forcing a full `reset_char` at
+  the next login; it sets the flag alone. `do_remort` and the login
+  top-up pay a remort's powers through one helper,
+  `psionic_remort_grant`, that sets a pending GRANTPSI list aside --
+  `do_remort` would have spent one on the remort, a case no player can
+  reach today. HELP PSIONICS lists the disciplines and every remort's
+  share. `tests/test_remort_gifts.py`.
 - **RECALL on your own recall point names it.** "You are already
   there." read as one more failed recall to a player whose client sends
   RECALL several times over; it says "You are already standing at your

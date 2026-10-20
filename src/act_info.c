@@ -3914,6 +3914,21 @@ void do_practice(CHAR_DATA *ch, char *argument)
         }
 
 
+        /* Held, but not yet usable: a remort is level 3 holding psionics
+           that open between 17 and 28, and the awakening sends them to
+           Salir, who only said "You can't practice that." */
+        if ( sn >= 0 && !IS_NPC(ch)
+        &&   ch->pcdata->learned[sn] >= 1
+        &&   skill_table[sn].rating[ch->class] != 0
+        &&   ch->level < skill_table[sn].skill_level[ch->class] )
+        {
+            snprintf( buf, sizeof(buf),
+                "You hold %s, but cannot train it until level %d.\n\r",
+                skill_table[sn].name, skill_table[sn].skill_level[ch->class] );
+            send_to_char( buf, ch );
+            return;
+        }
+
         if ( sn < 0 || ( !IS_NPC(ch)
         &&   (ch->level < skill_table[sn].skill_level[ch->class]
         ||    ch->pcdata->learned[sn] < 1 /* skill is not known */
@@ -5495,7 +5510,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
    /* Grant psionic powers on 2nd remort and beyond (they are wiped with
     * all other skills and must be re-awarded each time). */
    if ( ch->pcdata->num_remorts >= 2 )
-       grant_psionics( ch, 100, true );
+       psionic_remort_grant( ch );
    else
        /* The first remort awards none, but must not take away powers the
           character already had -- an awakening at 18-21 or a GRANTPSI.
@@ -5509,6 +5524,10 @@ void do_remort( CHAR_DATA *ch, char *arg)
    &&   gsn_shadowmeld > 0 )
        ch->pcdata->learned[gsn_shadowmeld] =
            (sh_int)UMAX( kept_meld, SHADOWMELD_GRANTED_AT );
+   /* Before the fourth remort the skill is held only by an immortal's
+      SET SKILL, and the wipe above took it: put back what was there. */
+   else if ( gsn_shadowmeld > 0 && kept_meld > 0 )
+       ch->pcdata->learned[gsn_shadowmeld] = (sh_int)kept_meld;
 
    ch->position = POS_STANDING;
 

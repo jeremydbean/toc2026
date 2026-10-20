@@ -1643,6 +1643,25 @@ through. The exception is **above** the band: there is no level check
 left to wait for, so a grant to a character past 21 lands at once,
 exactly as though the roll had hit.
 
+**In practice nobody rolls the band any more** (checked 2026-10-20).
+A second or later remort pays its powers *at the remort*
+(`psionic_remort_grant`, which `do_remort` and `psionic_login` share),
+so `psionic` is 1 before the character is level 4, and a remorted
+character short of their due is topped up at every login. A GRANTPSI
+pays on the next level gained, or at once above 21. The band roll in
+`do_check_psi` is the fallback for a remort-owed character a grant
+somehow left with nothing. The "one in three finish the band with
+nothing" below describes no path a player can reach today; it is kept
+as history, not as a rule to preserve.
+
+**A remorted character holds powers it cannot use yet.** The powers'
+skill levels run from 17 (psionic armor) to 28 (transfusion), and
+`get_skill` returns 0 below them, so a level 3 holds them at 1% and
+can neither use nor practise them until each opens. Salir says so
+("You hold mindbar, but cannot train it until level 22.") -- any
+trainer does, for any skill held below its level -- where it used to
+say "You can't practice that."
+
 **Every power starts at 1% until practised** (owner, 2026-10-04: trained
 with Salir, as the awakening message says) -- a new one from
 `psionic_learn` and one handed back after a remort alike. The restore
@@ -1844,7 +1863,12 @@ lets a grant work on a character who has never remorted.
 
 `do_remort` reads the practised value **before** the skill wipe and puts
 back `UMAX(kept, SHADOWMELD_GRANTED_AT)`, so a later remort never costs
-it. `load_char_obj` grants it to anyone at `REMORTS_FOR_SHADOWMELD` who
+it -- and before the fourth remort it puts back whatever was kept, so a
+shadowmeld an immortal gave with SET SKILL survives the next remort too
+(it was wiped until 2026-10-20). **GRANTPSI's deferred flag sets the flag
+and nothing else**: it also zeroed `psionic` and `last_level`, and the
+second sends the next login through `reset_char`'s full rebuild of the
+permanent stats. `load_char_obj` grants it to anyone at `REMORTS_FOR_SHADOWMELD` who
 holds none, which carries the characters who earned it when it was a flat
 flag.
 
