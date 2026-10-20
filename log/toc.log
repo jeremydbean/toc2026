@@ -137955,3 +137955,215 @@ Tue Oct 20 01:00:44 2026 :: Log Trentlin [30413]: arrived (Level 1: Hall of Thre
 Tue Oct 20 01:00:46 2026 :: Log Trentlin [30413]: con a
 Tue Oct 20 01:00:47 2026 :: Log Trentlin [30413]: l a
 Tue Oct 20 01:00:49 2026 :: Log Trentlin [30413]: e
+Tue Oct 20 01:00:52 2026 :: Log Trentlin [30413]: s
+Tue Oct 20 01:00:52 2026 :: Log Trentlin [30411]: arrived (Level 1: Hall of Grasping Walls) from 30413
+Tue Oct 20 01:00:54 2026 :: Log Trentlin [30411]: get key
+Tue Oct 20 01:00:54 2026 :: Log Trentlin [30411]: l wal
+Tue Oct 20 01:00:55 2026 :: Log Killuminati [2403]: w
+Tue Oct 20 01:00:55 2026 :: Log Killuminati [2401]: arrived (Center of Oak Tree Square.) from 2403
+Tue Oct 20 01:00:55 2026 :: Log Trentlin [30411]: con wal
+Tue Oct 20 01:00:58 2026 :: Log Trentlin [30411]: k wall
+Tue Oct 20 01:00:58 2026 :: Log Trentlin [30411]: killed a wallmaster
+Tue Oct 20 01:00:58 2026 :: Log Trentlin [30411]: coin +1 gold
+Tue Oct 20 01:00:58 2026 :: Log Trentlin [30411]: coin +3 silver
+Tue Oct 20 01:00:58 2026 :: Log Trentlin [30411]: coin +12 copper
+Tue Oct 20 01:01:00 2026 :: Log Alaric [29215]: killed a deranged madman
+Tue Oct 20 01:01:00 2026 :: Log Alaric [29215]: coin +5 platinum
+Tue Oct 20 01:01:00 2026 :: Log Alaric [29215]: coin +23 silver
+Tue Oct 20 01:01:00 2026 :: Log Alaric [29215]: coin +31 copper
+Tue Oct 20 01:01:00 2026 :: Log Alaric [29215]: coin +13 gold
+Tue Oct 20 01:01:05 2026 :: Log Trentlin [30411]: l in cor
+Tue Oct 20 01:01:05 2026 :: Log Trentlin [30411]: n
+Tue Oct 20 01:01:05 2026 :: Log Trentlin [30413]: arrived (Level 1: Hall of Threefold Scorches) from 30411
+Tue Oct 20 01:01:07 2026 :: Log Trentlin [30413]: k aqw
+Tue Oct 20 01:01:08 2026 :: Log Trentlin [30413]: k aq
+Tue Oct 20 01:01:13 2026 :: Log Trentlin [30413]: c fae
+Tue Oct 20 01:01:17 2026 :: Log Trentlin [30413]: smite
+Tue Oct 20 01:01:26 2026 :: Log Trentlin [30413]: smite
+Tue Oct 20 01:01:33 2026 :: Log Trentlin [30413]: killed Aquamentus
+Tue Oct 20 01:01:33 2026 :: Log Trentlin [30413]: coin +16 silver
+Tue Oct 20 01:01:33 2026 :: Log Trentlin [30413]: coin +26 copper
+Tue Oct 20 01:01:33 2026 :: Log Trentlin [30413]: coin +10 gold
+Tue Oct 20 01:01:43 2026 :: Log Trentlin [30413]: l in cor
+Tue Oct 20 01:01:43 2026 :: Log Alaric [29215]: n
+Tue Oct 20 01:01:43 2026 :: Log Alaric [29214]: arrived (Twist in the Maze) from 29215
+Tue Oct 20 01:01:44 2026 :: Log Alaric [29214]: e
+Tue Oct 20 01:01:44 2026 :: Log Alaric [29212]: arrived (Twist in the Maze) from 29214
+Tue Oct 20 01:01:44 2026 :: Log Alaric [29212]: scan
+Tue Oct 20 01:01:47 2026 :: Log Alaric [29212]: stealth
+Tue Oct 20 01:01:48 2026 :: Log Trentlin [30413]: get all cor
+Tue Oct 20 01:01:50 2026 :: Log Trentlin [30413]: i
+Tue Oct 20 01:01:52 2026 :: Log Alaric [29212]: n
+Tue Oct 20 01:01:52 2026 :: Log Alaric [29218]: arrived (Twist in the Maze) from 29212
+Tue Oct 20 01:01:52 2026 :: Log Alaric [29218]: bs lie
+Tue Oct 20 01:01:55 2026 :: Log Trentlin [30413]: compare horn
+Tue Oct 20 01:01:57 2026 :: Log Trentlin [30413]: drop hor
+Tue Oct 20 01:01:58 2026 :: Log Trentlin [30413]: i
+Tue Oct 20 01:02:01 2026 :: Log Trentlin [30413]: compare ring
+Tue Oct 20 01:02:05 2026 :: Log Trentlin [30413]: drop ring
+Tue Oct 20 01:02:06 2026 :: Log Trentlin [30413]: i
+Tue Oct 20 01:02:09 2026 :: Log Trentlin [30413]: compare bel
+Tue Oct 20 01:02:10 2026 :: Log Trentlin [30413]: drop bel
+Tue Oct 20 01:02:13 2026 :: Log Trentlin [30413]: compare buck
+Tue Oct 20 01:02:20 2026 :: Log Trentlin [30413]: wear buck
+Tue Oct 20 01:02:22 2026 :: Log Alaric [29218]: get just
+Tue Oct 20 01:02:22 2026 :: Log Trentlin [30413]: drop sh
+Tue Oct 20 01:02:22 2026 :: Log Alaric [29218]: wear just
+Tue Oct 20 01:02:25 2026 :: Log Trentlin [30413]: get sh
+Tue Oct 20 01:02:26 2026 :: Log Trentlin [30413]: drop shie
+Tue Oct 20 01:02:28 2026 :: Log Trentlin [30413]: i
+Tue Oct 20 01:02:31 2026 :: Log Trentlin [30413]: compare hear
+Tue Oct 20 01:02:35 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Tue Oct 20 01:02:38 2026 :: Log Trentlin [30413]: save
+Tue Oct 20 01:02:39 2026 :: Log WebAdmin: fsave
+Tue Oct 20 01:02:45 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Tue Oct 20 01:02:46 2026 :: Log Alaric [29218]: killed an insane lieutenant
+Tue Oct 20 01:02:46 2026 :: Log Alaric [29218]: coin +8 platinum
+Tue Oct 20 01:02:46 2026 :: Log Alaric [29218]: coin +38 silver
+Tue Oct 20 01:02:46 2026 :: Log Alaric [29218]: coin +51 copper
+Tue Oct 20 01:02:46 2026 :: Log Alaric [29218]: coin +21 gold
+Tue Oct 20 01:02:48 2026 :: Received signal 15; saving players and shutting down.
+Tue Oct 20 01:02:48 2026 :: Closing link to Rockcrusher.
+Tue Oct 20 01:02:48 2026 :: Closing link to Killuminati.
+Tue Oct 20 01:02:48 2026 :: Closing link to Trentlin.
+Tue Oct 20 01:02:48 2026 :: Closing link to Alaric.
+Tue Oct 20 01:02:48 2026 :: Normal termination of game.
+Tue Oct 20 01:02:49 2026 ::  INIT OK 
+Tue Oct 20 01:02:49 2026 :: walkto_load: 157 destinations.
+Tue Oct 20 01:02:49 2026 :: changes_load: 109 entries.
+Tue Oct 20 01:02:49 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Tue Oct 20 01:02:49 2026 :: ROM is ready to rock on port 9000.
+Tue Oct 20 01:02:49 2026 :: Automated backup complete.
+Tue Oct 20 01:02:49 2026 :: Daily backup complete.
+Tue Oct 20 01:02:55 2026 :: Sock.sinaddr:  24.2.118.125
+Tue Oct 20 01:02:57 2026 :: Loading Trentlin's playerfile
+Tue Oct 20 01:02:59 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Tue Oct 20 01:03:00 2026 :: Log Trentlin [30413]: arrived (Level 1: Hall of Threefold Scorches) from 0
+Tue Oct 20 01:03:01 2026 :: Sock.sinaddr:  208.126.22.104
+Tue Oct 20 01:03:03 2026 :: Log Trentlin [30413]: i
+Tue Oct 20 01:03:03 2026 :: Loading Alaric's playerfile
+Tue Oct 20 01:03:04 2026 :: Alaric@208.126.22.104 has connected.
+Tue Oct 20 01:03:06 2026 :: Log Trentlin [30413]: compare hear
+Tue Oct 20 01:03:07 2026 :: Log Alaric [29218]: arrived (Twist in the Maze) from 0
+Tue Oct 20 01:03:07 2026 :: Log Alaric [29218]: stealth
+Tue Oct 20 01:03:09 2026 :: Log Trentlin [30413]: wear hear
+Tue Oct 20 01:03:11 2026 :: Log Alaric [29218]: af
+Tue Oct 20 01:03:11 2026 :: Log Trentlin [30413]: compare di
+Tue Oct 20 01:03:12 2026 :: Log Trentlin [30413]: att
+Tue Oct 20 01:03:13 2026 :: Log Trentlin [30413]: wear di
+Tue Oct 20 01:03:14 2026 :: Log Alaric [29218]: bs li
+Tue Oct 20 01:03:14 2026 :: Log Trentlin [30413]: att
+Tue Oct 20 01:03:20 2026 :: Log Trentlin [30413]: unlock east
+Tue Oct 20 01:03:21 2026 :: Log Trentlin [30413]: l
+Tue Oct 20 01:03:22 2026 :: Log Trentlin [30413]: e
+Tue Oct 20 01:03:26 2026 :: Log Trentlin [30413]: open east
+Tue Oct 20 01:03:27 2026 :: Log Trentlin [30413]: i
+Tue Oct 20 01:03:30 2026 :: Log Alaric [29218]: changes
+Tue Oct 20 01:03:32 2026 :: Log Trentlin [30413]: l
+Tue Oct 20 01:03:34 2026 :: Log Trentlin [30413]: k aq
+Tue Oct 20 01:03:39 2026 :: Log Trentlin [30413]: c fae
+Tue Oct 20 01:03:44 2026 :: Log Trentlin [30413]: smite
+Tue Oct 20 01:03:49 2026 :: Sock.sinaddr:  54.87.112.51
+Tue Oct 20 01:03:49 2026 :: EOF encountered on read.
+Tue Oct 20 01:03:52 2026 :: Log Alaric [29218]: gos Lol, realized I saw you first? :)
+Tue Oct 20 01:03:55 2026 :: Log Alaric [29218]: get just
+Tue Oct 20 01:03:56 2026 :: Log Alaric [29218]: wear just
+Tue Oct 20 01:03:56 2026 :: Log Trentlin [30413]: smite
+Tue Oct 20 01:03:56 2026 :: Log Trentlin [30413]: killed Aquamentus
+Tue Oct 20 01:03:56 2026 :: Log Trentlin [30413]: coin +20 silver
+Tue Oct 20 01:03:56 2026 :: Log Trentlin [30413]: coin +39 copper
+Tue Oct 20 01:03:56 2026 :: Log Trentlin [30413]: coin +1 gold
+Tue Oct 20 01:04:05 2026 :: Log Trentlin [30413]: l in cor
+Tue Oct 20 01:04:07 2026 :: Log Alaric [29218]: killed an insane lieutenant
+Tue Oct 20 01:04:07 2026 :: Log Alaric [29218]: coin +8 platinum
+Tue Oct 20 01:04:07 2026 :: Log Alaric [29218]: coin +38 silver
+Tue Oct 20 01:04:07 2026 :: Log Alaric [29218]: coin +51 copper
+Tue Oct 20 01:04:07 2026 :: Log Alaric [29218]: coin +21 gold
+Tue Oct 20 01:04:08 2026 :: Log Trentlin [30413]: get key cor
+Tue Oct 20 01:04:09 2026 :: Log Alaric [29218]: scan
+Tue Oct 20 01:04:09 2026 :: Log Trentlin [30413]: l
+Tue Oct 20 01:04:11 2026 :: Log Trentlin [30413]: i
+Tue Oct 20 01:04:14 2026 :: Log Trentlin [30413]: unlock east
+Tue Oct 20 01:04:14 2026 :: Log Alaric [29218]: stealth
+Tue Oct 20 01:04:16 2026 :: Log Alaric [29218]: s
+Tue Oct 20 01:04:16 2026 :: Log Alaric [29212]: arrived (Twist in the Maze) from 29218
+Tue Oct 20 01:04:16 2026 :: Log Trentlin [30413]: open east
+Tue Oct 20 01:04:17 2026 :: Log Trentlin [30413]: e
+Tue Oct 20 01:04:17 2026 :: Log Trentlin [30414]: arrived (Level 1: Eagle's Golden Sanctum) from 30413
+Tue Oct 20 01:04:18 2026 :: Log Alaric [29212]: bs shadow
+Tue Oct 20 01:04:19 2026 :: Log Trentlin [30414]: get all
+Tue Oct 20 01:04:21 2026 :: Log Trentlin [30414]: get tri
+Tue Oct 20 01:04:22 2026 :: Sock.sinaddr:  71.150.190.10
+Tue Oct 20 01:04:23 2026 :: Log Trentlin [30414]: l in tri
+Tue Oct 20 01:04:26 2026 :: Log Trentlin [30414]: l in tri
+Tue Oct 20 01:04:27 2026 :: Loading Rockcrusher's playerfile
+Tue Oct 20 01:04:28 2026 :: Log Trentlin [30414]: l in ches
+Tue Oct 20 01:04:30 2026 :: Rockcrusher@71.150.190.10 has connected.
+Tue Oct 20 01:04:30 2026 :: Log Trentlin [30414]: open ches
+Tue Oct 20 01:04:31 2026 :: Log Alaric [29212]: changes
+Tue Oct 20 01:04:33 2026 :: Log Trentlin [30414]: unlock chest
+Tue Oct 20 01:04:35 2026 :: Log Trentlin [30414]: open chest
+Tue Oct 20 01:04:36 2026 :: Log Trentlin [30414]: get all chest
+Tue Oct 20 01:04:37 2026 :: Log Rockcrusher [4209]: arrived (Private Death Room.) from 0
+Tue Oct 20 01:04:40 2026 :: Log Trentlin [30414]: compare boom
+Tue Oct 20 01:04:44 2026 :: Log Trentlin [30414]: drop boom
+Tue Oct 20 01:04:45 2026 :: Log Trentlin [30414]: l
+Tue Oct 20 01:04:48 2026 :: Log Alaric [29212]: mindbar
+Tue Oct 20 01:04:49 2026 :: Log Alaric [29212]: mindbar
+Tue Oct 20 01:04:49 2026 :: Log Trentlin [30414]: enter light
+Tue Oct 20 01:04:49 2026 :: Log Trentlin [30271]: arrived (The Eagle's Gate) from 30414
+Tue Oct 20 01:04:50 2026 :: Log Alaric [29212]: mindbar
+Tue Oct 20 01:04:50 2026 :: Log Alaric [29212]: mindbar
+Tue Oct 20 01:04:51 2026 :: Log Alaric [29212]: mindbar
+Tue Oct 20 01:04:51 2026 :: Log Alaric [29212]: mindbar
+Tue Oct 20 01:04:52 2026 :: Log Alaric [29212]: mindbar
+Tue Oct 20 01:04:52 2026 :: Log Alaric [29212]: mindbar
+Tue Oct 20 01:04:53 2026 :: Log Alaric [29212]: mindbar
+Tue Oct 20 01:04:55 2026 :: Log Alaric [29212]: gr
+Tue Oct 20 01:04:55 2026 :: Log Rockcrusher [4209]: note read
+Tue Oct 20 01:04:56 2026 :: Log Alaric [29212]: killed a Shadowman
+Tue Oct 20 01:04:56 2026 :: Log Alaric [29212]: coin +6 platinum
+Tue Oct 20 01:04:56 2026 :: Log Alaric [29212]: coin +30 silver
+Tue Oct 20 01:04:56 2026 :: Log Alaric [29212]: coin +41 copper
+Tue Oct 20 01:04:56 2026 :: Log Alaric [29212]: coin +17 gold
+Tue Oct 20 01:04:56 2026 :: Log Alaric [29212]: mindbar
+Tue Oct 20 01:04:58 2026 :: Log Rockcrusher [4209]: note read
+Tue Oct 20 01:05:02 2026 :: Log Alaric [29212]: look
+Tue Oct 20 01:05:03 2026 :: Log Alaric [29212]: bs mad
+Tue Oct 20 01:05:04 2026 :: Log Rockcrusher [4209]: note read
+Tue Oct 20 01:05:10 2026 :: Log Rockcrusher [4209]: note read
+Tue Oct 20 01:05:21 2026 :: Log Trentlin [30271]: play recorder
+Tue Oct 20 01:05:23 2026 :: Log Trentlin [30271]: l
+Tue Oct 20 01:05:26 2026 :: Log Rockcrusher [4209]: note read
+Tue Oct 20 01:05:31 2026 :: Log Rockcrusher [4209]: note read
+Tue Oct 20 01:05:34 2026 :: Log Trentlin [30271]: e
+Tue Oct 20 01:05:34 2026 :: Log Trentlin [30272]: arrived (The River Landing) from 30271
+Tue Oct 20 01:05:35 2026 :: Log Trentlin [30272]: e
+Tue Oct 20 01:05:36 2026 :: Log Rockcrusher [4209]: note read
+Tue Oct 20 01:05:38 2026 :: Log Trentlin [30272]: s
+Tue Oct 20 01:05:38 2026 :: Log Trentlin [30256]: arrived (Lake Hylia Sand Bar) from 30272
+Tue Oct 20 01:05:38 2026 :: Log Trentlin [30256]: e
+Tue Oct 20 01:05:39 2026 :: Log Trentlin [30256]: n
+Tue Oct 20 01:05:39 2026 :: Log Trentlin [30272]: arrived (The River Landing) from 30256
+Tue Oct 20 01:05:40 2026 :: Log Rockcrusher [4209]: note read
+Tue Oct 20 01:05:40 2026 :: Log Trentlin [30272]: n
+Tue Oct 20 01:05:40 2026 :: Log Trentlin [30288]: arrived (The Withered Thicket) from 30272
+Tue Oct 20 01:05:40 2026 :: Log Trentlin [30288]: e
+Tue Oct 20 01:05:40 2026 :: Log Trentlin [30289]: arrived (The Sandy Flats) from 30288
+Tue Oct 20 01:05:41 2026 :: Log Trentlin [30289]: e
+Tue Oct 20 01:05:41 2026 :: Log Trentlin [30290]: arrived (The Dune Strip) from 30289
+Tue Oct 20 01:05:42 2026 :: Log Rockcrusher [4209]: note read
+Tue Oct 20 01:05:42 2026 :: Log Trentlin [30290]: e
+Tue Oct 20 01:05:42 2026 :: Log Trentlin [30291]: arrived (Below the Lost Hills) from 30290
+Tue Oct 20 01:05:44 2026 :: Log Trentlin [30291]: n
+Tue Oct 20 01:05:46 2026 :: Log Trentlin [30291]: s
+Tue Oct 20 01:05:46 2026 :: Log Trentlin [30275]: arrived (The Blowing Sands) from 30291
+Tue Oct 20 01:05:46 2026 :: Log Trentlin [30275]: s
+Tue Oct 20 01:05:46 2026 :: Log Trentlin [30259]: arrived (Eastern Thicket) from 30275
+Tue Oct 20 01:05:47 2026 :: Log Trentlin [30259]: s
+Tue Oct 20 01:05:47 2026 :: Log Trentlin [30243]: arrived (Eastwood Glade) from 30259
+Tue Oct 20 01:05:48 2026 :: Log Trentlin [30243]: e
+Tue Oct 20 01:05:48 2026 :: Log Trentlin [30244]: arrived (Pinewood Rise) from 30243
+Tue Oct 20 01:05:49 2026 :: Log Trentlin [30244]: e
+Tue Oct 20 01:05:49 2026 :: Log Trentlin [30245]: arrived (Moblin Hollow) from 30244
+Tue Oct 20 01:05:52 2026 :: Log Rockcrusher [4209]: note read

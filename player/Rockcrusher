@@ -1,7 +1,7 @@
 #PLAYER
 Name Rockcrusher~
 Id   3259
-LogO 1792457967
+LogO 1792458168
 Vers 4
 Desc You hear a dripping noise.  It gets louder and louder and louder...
 It won't go away!!!  You frantically slap yourself and smash your fists
@@ -38,7 +38,7 @@ PsiKnown confuse,ego whip,psionic armor,shift~
 ChangesSeen ~
 Cast none
 Levl 52
-Plyd 1039647
+Plyd 1039848
 ListRemorts ~
 NumRemorts 0
 Note 953360284
@@ -164,7 +164,7 @@ Sk 83 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'psionic armor'   0  12   0   0          0          0
+AffD 'psionic armor'   0   8   0   0          0          0
 End
 
 #O
