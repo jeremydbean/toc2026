@@ -1,7 +1,7 @@
 #PLAYER
 Name Rockcrusher~
 Id   3259
-LogO 1792339835
+LogO 1792457674
 Vers 4
 Desc You hear a dripping noise.  It gets louder and louder and louder...
 It won't go away!!!  You frantically slap yourself and smash your fists
@@ -38,19 +38,19 @@ PsiKnown confuse,ego whip,psionic armor,shift~
 ChangesSeen ~
 Cast none
 Levl 52
-Plyd 1039095
+Plyd 1039354
 ListRemorts ~
 NumRemorts 0
-Note 950989152
+Note 953360284
 Scro 22
 Room 4210
-HMV  697 861 793 923 431 431
+HMV  861 861 923 923 431 431
 NewGold 23891
 NewPlat 0
 NewCopp 0
 NewSilv 0
 BankCP 0
-IntTime 0
+IntTime 1792457457
 IntTotal 0
 Dcount 0
 SavedOnce 1
@@ -98,7 +98,7 @@ On_Quest 0
 Quest_Pause 0
 Pk_State 1
 Jw_Timer 0
-ColFlag 0
+ColFlag 1
 Color 0 0
 Color 1 8
 Color 2 5
@@ -116,7 +116,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  4
+Pos  8
 Prac 5
 Save  -16
 Alig  1000
@@ -125,7 +125,7 @@ Dam   19
 ACs -65 -61 -69 18
 Attr 17 15 18 16 21
 AMod 12 6 6 2 -5
-Pass Ro4.OLn/IT9Wg~
+Pass Ro2/vznh6iEYY~
 Ariv $n says 'Did you know you dropped your weapon to $T?'~
 Dprt $n says 'Wow! Go $t and you'll see some naked women!'~
 Titl  the Madness in Your Mind~
@@ -133,7 +133,7 @@ Pnts 40
 TSex 1
 LLev 218
 HMVP 886 363 406
-Cond 0 30 48
+Cond 0 24 24
 Sk 92 'confuse'
 Sk 84 'ego whip'
 Sk 59 'psionic armor'
@@ -164,7 +164,7 @@ Sk 83 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'psionic armor'   0  20   0   0          0          0
+AffD 'psionic armor'   0  16   0   0          0          0
 End
 
 #O

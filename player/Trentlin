@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792457398
+LogO 1792457702
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -16,18 +16,18 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 29
-Plyd 31728
+Plyd 32032
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 StashMax 75
 Scro 22
-Room 30400
-HMV  412 412 650 749 112 318
-NewGold 63
-NewPlat 30
-NewCopp 128
-NewSilv 70
+Room 30217
+HMV  402 402 749 749 310 318
+NewGold 83
+NewPlat 25
+NewCopp 30
+NewSilv 71
 BankCP 45262686
 IntTime 1792436412
 IntTotal 262686
@@ -36,12 +36,12 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 312
+AchKills 313
 AchQuests 21
 AchDeaths 6
 AchExplore 1
 AchMaps 0
-AchCompass 0
+AchCompass 1
 AchTriforce 0
 Achv level-5 1791055385
 Achv level-10 1792240482
@@ -97,7 +97,7 @@ SesQuest 2
 QuestPnts 1116
 QuestStrk 10
 CasinoLost 4
-QuestNext 12
+QuestNext 7
 Exp  65343
 Act  65740
 AfBy 512
@@ -128,20 +128,20 @@ Color 16 6
 Pos  8
 Prac 7
 Trai 1
-Save  5
+Save  4
 Alig  -1000
-Hit   9
-Dam   28
-ACs -5 -8 -14 96
+Hit   12
+Dam   30
+ACs -33 -35 -40 68
 Attr 18 16 16 12 19
-AMod 10 10 9 4 10
+AMod 11 10 9 4 10
 Pass TrjPUdRVdu8MY~
 Titl  the Underlord~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 402 749 268
-Cond 0 17 30
+Cond 0 12 47
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 75 'chill touch'
@@ -185,7 +185,8 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'giant strength'   0   3   3   1          0          0
+AffD 'giant strength'   0  28   3   1          0          0
+AffD 'armor'  25  19 -20  17          0          0
 End
 
 #O
@@ -252,17 +253,6 @@ Val  5 5 6 0 0
 End
 
 #O
-Vnum 29012
-Nest 0
-Wear 11
-Lev  9
-Cost 49000
-Cond 100
-Repd 1
-Affect -1 9 -1 1 20 0 0
-End
-
-#O
 Vnum 25106
 Nest 0
 Wear 12
@@ -277,7 +267,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 313
+Time 308
 Cost 0
 Cond 100
 Repd 0
@@ -394,7 +384,7 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 610
+Time 605
 Cost 0
 Cond 100
 Repd 0
@@ -439,7 +429,7 @@ Lev  14
 Cost 100000
 Cond 100
 Repd 0
-Val  0 0 9878 0 0
+Val  0 0 9873 0 0
 End
 
 #O
@@ -514,7 +504,7 @@ End
 #O
 Vnum 17702
 Nest 0
-Wear -1
+Wear 16
 Lev  25
 Cost 1000000
 Cond 100
@@ -525,7 +515,7 @@ End
 Vnum 30219
 Nest 0
 ExtF 2097281
-Wear 16
+Wear -1
 Lev  1
 Cost 0
 Cond 100
@@ -538,6 +528,85 @@ Nest 0
 Wear -1
 Lev  1
 Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30489
+Nest 0
+Wear -1
+Lev  2
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30544
+Nest 0
+ExtF 0
+Wear 11
+Lev  14
+Cost 1600000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30545
+Nest 0
+ExtF 0
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30546
+Nest 0
+ExtF 0
+Wear -1
+Lev  5
+Cost 600000
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 30546
+Nest 0
+ExtF 0
+Wear -1
+Lev  5
+Cost 600000
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 30695
+Nest 0
+ShD  four bombs~
+ExtF 0
+Wear -1
+Lev  1
+Cost 200000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30543
+Nest 0
+ExtF 0
+Wear -1
+Lev  8
+Cost 800000
 Cond 100
 Repd 0
 End
@@ -689,6 +758,17 @@ Cost 2000000
 Cond 100
 Repd 1
 Val  1 4 5 3 0
+End
+
+#O
+Vnum 29012
+Nest 0
+Wear -1
+Lev  9
+Cost 49000
+Cond 100
+Repd 1
+Affect -1 9 -1 1 20 0 0
 End
 
 #END
