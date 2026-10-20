@@ -149,6 +149,26 @@ class BlackMarketSourceTests(unittest.TestCase):
                         "never while somebody is standing with him")
         self.assertIn("room->area != avoid", body("src/blackmarket.c", "static ROOM_INDEX_DATA *bm_random_room_away("))
 
+    def test_only_standing_there_or_scanning_sees_him(self) -> None:
+        """CLAIRVOYANCE looks at a friend's room by setting in_room without
+        moving the looker there; that must not show him."""
+        sees = body("src/blackmarket.c", "bool black_market_sees(")
+        self.assertIn("if ( scan )", sees)
+        self.assertIn("rch == looker", sees)
+        self.assertIn("black_market_sees( ch, black_market_holder( obj ) )",
+                      body("src/handler.c", "bool can_see_obj("))
+
+    def test_he_never_dies_and_a_hand_loaded_copy_is_not_the_market(self) -> None:
+        kill = body("src/fight.c", "static void raw_kill_internal(")
+        self.assertLess(kill.index("black_market_cheats_death( ch, victim )"),
+                        kill.index("make_corpse( victim );"))
+        self.assertIn("keeper != black_market_dealer",
+                      body("src/blackmarket.c", "bool black_market_buy_refuses("))
+        forget = body("src/blackmarket.c", "void black_market_forget(")
+        self.assertIn("BM_AWAY_MIN, BM_AWAY_MAX", forget,
+                      "however he went, he is away for the away time")
+        self.assertIn("is_unfindable_mob( vict )", body("src/fight.c", "void add_hate ("))
+
     def test_appearances_and_purchases_reach_staff(self) -> None:
         arrive = body("src/blackmarket.c", "bool black_market_arrive(")
         record = body("src/blackmarket.c", "void black_market_record(")
@@ -208,6 +228,13 @@ class BlackMarketLiveTests(unittest.TestCase):
                             self.assertGreaterEqual(int(level), 29, sample)
                 status = run(fixer, "blackmarket", 1.6)
                 stock = [int(v) for v in re.findall(r"\((\d+)\)\s*$", status, re.M)]
+
+                # Clairvoyance on somebody standing with him shows the room,
+                # not him.
+                run(fixer, "set skill zbuyer clairvoyance 100", 1.0)
+                seen = run(buyer, "clairvoyance zrival", 2.0)
+                self.assertIn("image of", seen)
+                self.assertNotIn("Vesh", seen)
 
                 # One room away, SCAN shows him; nothing else does.
                 self.assertIn("Vesh", run(buyer, "scan", 1.8))

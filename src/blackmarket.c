@@ -42,6 +42,7 @@
 #include "db.h"
 
 extern AREA_DATA *area_first;
+extern bool scan;           /* act_info.c: true while do_scan steps rooms */
 
 CHAR_DATA *black_market_dealer = NULL;
 
@@ -176,6 +177,8 @@ bool is_black_market_dealer( const CHAR_DATA *ch )
  */
 bool black_market_sees( const CHAR_DATA *looker, const CHAR_DATA *dealer )
 {
+    const CHAR_DATA *rch;
+
     if ( looker == NULL || dealer == NULL )
         return false;
     if ( !IS_NPC(looker) && IS_TRUSTED( (CHAR_DATA *) looker, LEVEL_IMMORTAL ) )
@@ -183,7 +186,19 @@ bool black_market_sees( const CHAR_DATA *looker, const CHAR_DATA *dealer )
     if ( IS_NPC(looker) && looker->pIndexData != NULL
     &&   looker->pIndexData->vnum == MOB_VNUM_PSIONIC_PROJECTION )
         return false;
-    return looker->in_room != NULL && looker->in_room == dealer->in_room;
+    if ( looker->in_room == NULL || looker->in_room != dealer->in_room )
+        return false;
+    /* SCAN steps the scanner into each neighbour for a moment, and that is
+       the one remote look allowed (do_scan keeps it to one room out). */
+    if ( scan )
+        return true;
+    /* Anything else that sets in_room to a distant room without moving
+       the looker there -- CLAIRVOYANCE looks at a friend's room that way --
+       is not standing with him: the looker must be in the room's list. */
+    for ( rch = dealer->in_room->people; rch != NULL; rch = rch->next_in_room )
+        if ( rch == looker )
+            return true;
+    return false;
 }
 
 /* The dealer and the treasure goblin: seen in their own room and nowhere
@@ -193,14 +208,20 @@ bool is_unfindable_mob( const CHAR_DATA *ch )
     return is_black_market_dealer( ch ) || is_treasure_goblin( ch );
 }
 
-/* Whether an object is the dealer's, however deep in a container. */
-bool black_market_holds( const OBJ_DATA *obj )
+/* The dealer carrying an object, however deep in a container, or NULL. */
+CHAR_DATA *black_market_holder( const OBJ_DATA *obj )
 {
     int depth = 0;
 
     while ( obj != NULL && obj->in_obj != NULL && depth++ < 32 )
         obj = obj->in_obj;
-    return obj != NULL && is_black_market_dealer( obj->carried_by );
+    return obj != NULL && is_black_market_dealer( obj->carried_by )
+         ? obj->carried_by : NULL;
+}
+
+bool black_market_holds( const OBJ_DATA *obj )
+{
+    return black_market_holder( obj ) != NULL;
 }
 
 static bool bm_skip_area( const AREA_DATA *area )
@@ -850,6 +871,41 @@ void black_market_depart( void )
     log_string( line );
 }
 
+/*
+ * raw_kill_internal asks this first: the dealer never dies. Whatever would
+ * have killed him -- a death ray, a mobile, a trap -- he slips away from,
+ * whole; staff who slay him send him off the world instead, so his stock
+ * never lands in a corpse. True when the death is called off.
+ */
+bool black_market_cheats_death( CHAR_DATA *killer, CHAR_DATA *dealer )
+{
+    if ( !is_black_market_dealer( dealer ) )
+        return false;
+    if ( dealer != black_market_dealer )
+    {
+        /* A copy loaded by hand: let it go quietly, stock and all. */
+        OBJ_DATA *obj, *obj_next;
+
+        for ( obj = dealer->carrying; obj != NULL; obj = obj_next )
+        {
+            obj_next = obj->next_content;
+            extract_obj( obj );
+        }
+        return false;
+    }
+    if ( killer != NULL && !IS_NPC(killer) && IS_TRUSTED( killer, LEVEL_IMMORTAL ) )
+    {
+        black_market_depart();
+        return true;
+    }
+    stop_fighting( dealer, true );
+    dealer->hit = dealer->max_hit;
+    dealer->position = POS_STANDING;
+    bm_teleport( dealer, bm_random_room(),
+        "$n spits blood, grins, and is not there any more.", "nearly killed" );
+    return true;
+}
+
 /* extract_char calls this, so a PURGE or a quit cannot leave a dangling
    pointer. */
 void black_market_forget( CHAR_DATA *ch )
@@ -860,6 +916,11 @@ void black_market_forget( CHAR_DATA *ch )
     {
         black_market_dealer = NULL;
         bm_buyer = NULL;
+        bm_sale_ends = 0;
+        bm_sold_out = false;
+        /* However he went -- a purge, anything -- he is away for a while,
+           not back on his old leaving time with a fresh stock. */
+        bm_next_change = current_time + number_range( BM_AWAY_MIN, BM_AWAY_MAX );
     }
     if ( ch == bm_buyer )
         bm_buyer = NULL;
@@ -898,9 +959,16 @@ void black_market_update( void )
         return;
     }
 
-    if ( dealer->in_room == NULL || dealer->fighting != NULL
-    ||   dealer->position != POS_STANDING )
+    if ( dealer->in_room == NULL )
         return;
+    /* Nothing ends a fight with a shopkeeper but the shopkeeper: a spell
+       or a stray mobile may have started one, and a dealer stuck in it
+       would never move or leave. */
+    if ( dealer->fighting != NULL )
+        stop_fighting( dealer, true );
+    if ( dealer->position != POS_STANDING )
+        dealer->position = POS_STANDING;
+    dealer->move = dealer->max_move;    /* he walks all day */
 
     /* A sale under way: the window closes, the buyer walks off, or the
        buyer has had one of everything -- and he is gone, so the next
@@ -997,6 +1065,13 @@ bool black_market_buy_refuses( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *obj )
         act( "$n tells you 'I don't deal with errand boys.'", keeper, NULL, ch, TO_VICT );
         return true;
     }
+    /* A copy staff loaded by hand is not the black market: no stock id, no
+       sale window, nothing to record against. */
+    if ( keeper != black_market_dealer )
+    {
+        act( "$n tells you 'Not today. Find me another time.'", keeper, NULL, ch, TO_VICT );
+        return true;
+    }
     if ( bm_already_bought( ch, obj->pIndexData->vnum ) )
     {
         act( "$n tells you 'One to a customer. You've had your $p.'",
@@ -1019,8 +1094,8 @@ void black_market_record( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *obj )
     char price[MAX_INPUT_LENGTH];
     char line[MAX_STRING_LENGTH * 2];
 
-    if ( !is_black_market_dealer( keeper ) || obj == NULL
-    ||   IS_NPC(ch) || ch->pcdata == NULL )
+    if ( !is_black_market_dealer( keeper ) || keeper != black_market_dealer
+    ||   obj == NULL || IS_NPC(ch) || ch->pcdata == NULL )
         return;
     if ( ch->pcdata->black_market_stock != bm_stock_id
     ||   ch->pcdata->black_market_bought == NULL )

@@ -39,6 +39,7 @@
  */
 #include <time.h>
 #include <stdlib.h>
+#include <limits.h>
 #include "merc.h"
 
 extern char * const dir_name[];
@@ -173,7 +174,8 @@ static int gob_pick_exit( CHAR_DATA *gob )
 /* Stunned, asleep, knocked down: in no state to run. */
 static bool gob_pinned( CHAR_DATA *gob )
 {
-    return IS_AFFECTED2(gob, AFF2_STUNNED) || gob->position < POS_FIGHTING;
+    return IS_AFFECTED2(gob, AFF2_STUNNED) || IS_AFFECTED(gob, AFF_SLEEP)
+        || gob->position < POS_FIGHTING;
 }
 
 static void gob_teleport( CHAR_DATA *gob, AREA_DATA *avoid, const char *why )
@@ -317,15 +319,20 @@ void treasure_goblin_struck( CHAR_DATA *ch, CHAR_DATA *gob )
 
     if ( was_in == NULL )
         return;
-    gob_hp = gob->hit;
-    gob_chased = true;
-    gob_last_company = current_time;
-    gob_last_hit = current_time;
-    if ( gob_portal_at != 0 )
+    /* The chase's clocks belong to the one goblin the world keeps; a copy
+       staff loaded by hand runs and spills, but must not move them. */
+    if ( gob == treasure_goblin )
     {
-        gob_portal_at = 0;
-        act( "The half-open portal collapses as $n yelps in pain!",
-             gob, NULL, NULL, TO_ROOM );
+        gob_hp = gob->hit;
+        gob_chased = true;
+        gob_last_company = current_time;
+        gob_last_hit = current_time;
+        if ( gob_portal_at != 0 )
+        {
+            gob_portal_at = 0;
+            act( "The half-open portal collapses as $n yelps in pain!",
+                 gob, NULL, NULL, TO_ROOM );
+        }
     }
 
     {
@@ -358,6 +365,31 @@ void treasure_goblin_struck( CHAR_DATA *ch, CHAR_DATA *gob )
 }
 
 /*
+ * raw_kill_internal asks this first. An instant kill -- a death ray, a
+ * fatality, a farslayer -- would end the chase with one word, so it lands
+ * as a hard blow instead: the largest share, and he runs. Only a death
+ * damage() has already decided (POS_DEAD), or a slay by staff, kills him.
+ * True when the death is called off.
+ */
+bool treasure_goblin_cheats_death( CHAR_DATA *killer, CHAR_DATA *gob )
+{
+    if ( !is_treasure_goblin( gob ) || gob->position == POS_DEAD )
+        return false;
+    if ( killer != NULL && !IS_NPC(killer) && IS_TRUSTED( killer, LEVEL_IMMORTAL ) )
+        return false;
+    gob->hit -= ( gob->max_hit + GOBLIN_BLOWS_MIN - 1 ) / GOBLIN_BLOWS_MIN;
+    if ( gob->hit < 1 )
+    {
+        gob->position = POS_DEAD;
+        return false;
+    }
+    act( "$n reels from the blow -- but a treasure goblin is harder to kill than that!",
+         gob, NULL, NULL, TO_ROOM );
+    treasure_goblin_struck( killer, gob );
+    return true;
+}
+
+/*
  * Before make_corpse: the hoard goes into his purse, so it comes out in
  * the corpse as coin piles, and the kill is told to staff.
  */
@@ -367,8 +399,15 @@ void treasure_goblin_slain( CHAR_DATA *ch, CHAR_DATA *gob )
     char where[MAX_STRING_LENGTH];
     char line[MAX_STRING_LENGTH * 2 + MAX_INPUT_LENGTH];
     char price[MAX_INPUT_LENGTH];
-    long hoard = GOBLIN_HOARD_KILLS
-               * black_market_kill_value( who != NULL ? who->level : 1 );
+    long per_kill, hoard;
+
+    /* A trap or his own fall is nobody's kill. */
+    if ( who == gob )
+        who = NULL;
+    per_kill = black_market_kill_value( who != NULL ? who->level : 1 );
+    /* Where long is 32 bits, two hundred level 59 kills do not fit. */
+    hoard = per_kill > LONG_MAX / ( 2 * GOBLIN_HOARD_KILLS )
+          ? LONG_MAX / 2 : GOBLIN_HOARD_KILLS * per_kill;
 
     /* Give or take a quarter. */
     hoard = hoard / 4 * 3 + number_range( 0, 100 ) * ( hoard / 200 );
@@ -429,12 +468,23 @@ void treasure_goblin_update( void )
     else
         gob_hp = gob->hit;
 
-    /* Nothing else lifts a stun from a mobile that never attacks. */
-    if ( IS_AFFECTED2(gob, AFF2_STUNNED) && number_percent() <= GOBLIN_UNSTUN_ODDS )
+    /* He runs all day. */
+    gob->move = gob->max_move;
+
+    /* Nothing else lifts a stun from a mobile that never attacks, and
+       nothing stands him up: a stunning blow, a sleep spell or a bash
+       holds him a few seconds, never for the rest of the fight. */
+    if ( gob->hit > 0
+    &&   ( IS_AFFECTED2(gob, AFF2_STUNNED) || IS_AFFECTED(gob, AFF_SLEEP)
+        || ( gob->position >= POS_STUNNED && gob->position < POS_FIGHTING ) )
+    &&   number_percent() <= GOBLIN_UNSTUN_ODDS )
     {
         affect_strip( gob, gsn_stunning_blow );
+        affect_strip( gob, gsn_sleep );
         REMOVE_BIT( gob->affected_by2, AFF2_STUNNED );
-        act( "$n shakes $s head and blinks, no longer dazed.", gob, NULL, NULL, TO_ROOM );
+        REMOVE_BIT( gob->affected_by, AFF_SLEEP );
+        gob->position = gob->fighting != NULL ? POS_FIGHTING : POS_STANDING;
+        act( "$n shakes $s head and scrambles up, no longer dazed.", gob, NULL, NULL, TO_ROOM );
     }
 
     if ( gob_has_company( gob ) )

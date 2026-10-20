@@ -24,7 +24,11 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   with the room. Staff command GOBLIN. `tests/test_treasure_goblin.py`.
   He and the black market dealer each cross to another area after ten
   minutes in one, never while a player is with them or a sale or chase
-  is under way.
+  is under way. Neither shows through CLAIRVOYANCE on somebody standing
+  with them; a death ray or fatality is one hard blow to the goblin and
+  never kills the dealer, who slips away whole; sleep and knockdowns
+  hold the goblin only a few seconds, like a stun; neither holds a
+  grudge; and a copy staff load by hand cannot sell or disturb a chase.
 - **SLEEP in the Oracle's sanctum** sends you out at once
   (`oracle_refuses_sleep`). `tests/test_oracle_sanctum_live.py`.
 - **The black market** (`src/blackmarket.c`, owner's design, 2026-10-20).

@@ -2293,6 +2293,24 @@ When the window closes, the buyer leaves his room, or the buyer has had
 one of everything, he vanishes to a random room with a line to the room.
 His stock stays the same for the whole visit.
 
+**Edge cases, checked 2026-10-20.** `black_market_sees()` wants the
+looker in the room's `people` list, not just `in_room` pointing there:
+CLAIRVOYANCE sets `in_room` to a friend's room for its LOOK, and showed
+him. SCAN does the same on purpose and is let through by its own `scan`
+flag. `can_see_obj` asks the holder (`black_market_holder`), so a copy
+staff MLOAD does not read the real dealer's room. That copy is not the
+market either: `black_market_buy_refuses` sends anyone away from a
+keeper that is not `black_market_dealer`, so it cannot open a sale
+window or record a purchase against the live stock. **He never dies**:
+`black_market_cheats_death()`, asked first in `raw_kill_internal`, sends
+him off whole to a random room (a staff slay sends him off the world
+instead, so no corpse ever holds his stock), and `black_market_forget`
+gives any other exit the away time, so he cannot come straight back with
+a fresh stock on his old leaving time. A fight somebody started with him
+is stopped each pulse, and his moves are topped up so a walk never
+strands him. `add_hate` and a backstab's fatality refuse him and the
+goblin both.
+
 **Ten minutes in one area and he crosses the world** (owner,
 2026-10-20): `bm_area_stale()` times the area he stands in, and at
 `BM_AREA_MAX` he vanishes to a room in another (`bm_random_room_away`)
@@ -2405,7 +2423,17 @@ level. `treasure_goblin_slain()` runs in `raw_kill_internal` before
 into the corpse as piles, with half the time
 `black_market_gear_for_level()` -- the best placed piece for a random
 slot within five levels below the killer's -- and a tenth of the time a
-black market rarity. Appearances and kills go to the log and WIZINFO
+black market rarity.
+
+**An instant kill is a hard blow.** `treasure_goblin_cheats_death()`,
+asked first in `raw_kill_internal`, turns a death ray, a fatality or a
+farslayer into one blow of the largest share (a thirteenth) and a flight;
+only a death `damage()` already decided (`POS_DEAD`) or a staff slay kills
+him. A stun, a sleep spell or a bash pins him, and he shakes any of them
+off at `GOBLIN_UNSTUN_ODDS` a pulse; his moves are topped up so he never
+runs out. A copy staff MLOAD runs and spills like him but leaves the real
+goblin's chase clocks alone, and his hoard is capped where `long` is 32
+bits. Appearances and kills go to the log and WIZINFO
 with the room; escapes and drifts to the log. Staff command GOBLIN.
 `tests/test_treasure_goblin.py` chases one down live.
 

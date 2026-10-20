@@ -84,6 +84,23 @@ class TreasureGoblinSourceTests(unittest.TestCase):
         self.assertLess(update.index("if ( gob_chased )"), update.index("GOBLIN_AREA_MAX"),
                         "a chase is the portal's business, not this")
 
+    def test_an_instant_kill_is_only_a_hard_blow(self) -> None:
+        kill = body("src/fight.c", "static void raw_kill_internal(")
+        self.assertLess(kill.index("treasure_goblin_cheats_death( ch, victim )"),
+                        kill.index("make_corpse( victim );"))
+        cheat = body("src/goblin.c", "bool treasure_goblin_cheats_death(")
+        self.assertIn("gob->position == POS_DEAD", cheat, "a death damage() decided stands")
+        self.assertIn("treasure_goblin_struck( killer, gob );", cheat)
+        self.assertIn("is_unfindable_mob( victim )", body("src/fight.c", "void do_backstab("))
+
+    def test_nothing_pins_him_for_long(self) -> None:
+        update = body("src/goblin.c", "void treasure_goblin_update(")
+        for term in ("AFF2_STUNNED", "AFF_SLEEP", "POS_FIGHTING", "gob->move = gob->max_move"):
+            self.assertIn(term, update)
+        struck = body("src/goblin.c", "void treasure_goblin_struck(")
+        self.assertIn("if ( gob == treasure_goblin )", struck,
+                      "a hand-loaded copy does not move the real one's clocks")
+
     def test_test_worlds_start_without_one(self) -> None:
         live = (ROOT / "tests" / "live_mud.py").read_text(encoding="utf-8")
         self.assertIn('env.setdefault("TOC_NO_GOBLIN", "1")', live)

@@ -3390,6 +3390,8 @@ extern CHAR_DATA *black_market_dealer;
 bool    is_black_market_dealer   ( const CHAR_DATA *ch );
 bool    black_market_sees        ( const CHAR_DATA *looker, const CHAR_DATA *dealer );
 bool    black_market_holds       ( const OBJ_DATA *obj );
+CHAR_DATA *black_market_holder   ( const OBJ_DATA *obj );
+bool    black_market_cheats_death ( CHAR_DATA *killer, CHAR_DATA *dealer );
 void    black_market_update      ( void );
 void    black_market_restock     ( void );
 bool    black_market_arrive      ( ROOM_INDEX_DATA *room );
@@ -3414,6 +3416,7 @@ void    treasure_goblin_forget   ( CHAR_DATA *ch );
 int     treasure_goblin_blow     ( CHAR_DATA *gob, int dam );
 void    treasure_goblin_struck   ( CHAR_DATA *ch, CHAR_DATA *gob );
 void    treasure_goblin_slain    ( CHAR_DATA *ch, CHAR_DATA *gob );
+bool    treasure_goblin_cheats_death ( CHAR_DATA *killer, CHAR_DATA *gob );
 void    treasure_goblin_update   ( void );
 
 /* hunt.c */

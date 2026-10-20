@@ -3435,7 +3435,7 @@ bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
 bool can_see_obj( CHAR_DATA *ch, const OBJ_DATA *obj )
 {
     /* His goods are where he is: LOCATE OBJECT and the rest find nothing. */
-    if ( black_market_holds( obj ) && !black_market_sees( ch, black_market_dealer ) )
+    if ( black_market_holds( obj ) && !black_market_sees( ch, black_market_holder( obj ) ) )
         return false;
 
     if ( !IS_NPC(ch)

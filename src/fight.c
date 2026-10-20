@@ -3164,6 +3164,13 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
         return;
     }
 
+    /* The black market dealer never dies, and the treasure goblin is only
+       ever worn down: an instant kill is a hard blow to him (goblin.c,
+       blackmarket.c). */
+    if ( black_market_cheats_death( ch, victim )
+    ||   treasure_goblin_cheats_death( ch, victim ) )
+        return;
+
     /* Every instant kill -- a fatality, a death ray, a slay -- arrives
        here without passing the yard's guard in damage(), so this is the
        one place that can promise the training dummy never dies. It
@@ -4993,6 +5000,11 @@ void do_backstab( CHAR_DATA *ch, char *argument )
     if ( is_training_dummy( victim ) )
         chance = 0;
 
+    /* Nor the treasure goblin, whose death is a chase, or the black market
+       dealer: fatality() pays group_gain before it kills. */
+    if ( is_unfindable_mob( victim ) )
+        chance = 0;
+
     /* The divinely warded never suffer a fatality. */
     if ( is_divinely_warded( victim ) )
         chance = 0;
@@ -5566,7 +5578,7 @@ void add_hate (CHAR_DATA *ch, CHAR_DATA *vict)
        fight -- it only answers one. Left to hate, it charged the next
        player in a group the moment the first one's run ended,
        screaming at them for fleeing. */
-    if ( is_training_dummy( vict ) )
+    if ( is_training_dummy( vict ) || is_unfindable_mob( vict ) )
 	return;
 
     if ( check_hate(vict, ch) ) /* No need to doubely hate em */
