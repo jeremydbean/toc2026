@@ -99,9 +99,15 @@ class RecallPointTests(unittest.TestCase):
                 for _ in range(20):
                     arrived = run(client, "recall", 2.0)
                     if ("Oak Tree Square" in arrived
-                            or "already there" in arrived):
+                            or "already standing at your recall point" in arrived):
                         break
                 self.assertIn("Oak Tree Square", arrived, arrived)
+
+                # Recalling again on the point says so, and names it --
+                # not one more prayer that went unanswered.
+                again = run(client, "recall", 1.5)
+                self.assertIn("You are already standing at your recall point, "
+                              "Center of Oak Tree Square.", again, again)
 
                 back = run(client, "recall default", 1.5)
                 self.assertIn("back to the Temple", back, back)

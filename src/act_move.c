@@ -3430,10 +3430,24 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
     location = home;
 
     /* Checked before the prayer, so standing on your own recall point
-       does not announce a prayer that then does nothing. */
+       does not announce a prayer that then does nothing. It names the
+       place: a bare "You are already there." read as one more failed
+       recall to a player whose client sends RECALL several times over
+       (owner, 2026-10-20). */
     if ( ch->in_room == location )
     {
-        send_to_char( "You are already there.\n\r", ch );
+        char where[MAX_STRING_LENGTH];
+        size_t len;
+
+        toc_strlcpy( where, location->name != NULL ? location->name : "here",
+                     sizeof(where) );
+        len = strlen( where );
+        while ( len > 0 && ( where[len - 1] == '.' || where[len - 1] == ' ' ) )
+            where[--len] = '\0';
+        snprintf( buf, sizeof(buf),
+                  "You are already standing at your recall point, %s.\n\r",
+                  where );
+        send_to_char( buf, ch );
         return;
     }
 

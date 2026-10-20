@@ -69,6 +69,11 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **RECALL on your own recall point names it.** "You are already
+  there." read as one more failed recall to a player whose client sends
+  RECALL several times over; it says "You are already standing at your
+  recall point, <room>." now (owner, 2026-10-20).
+  `tests/test_recall_point.py`.
 - **TRACK told a missed roll as a find.** It pointed a random way with
   the same "You find a trail" as a good roll, so trackers typed it
   four to seven times running to take a vote. A miss says the trail was

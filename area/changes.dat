@@ -3,6 +3,10 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261020f 2026-10-20
+RECALL on the spot you would recall to now says so and names it,
+instead of a bare "You are already there."
+
 @ 20261020e 2026-10-20
 TRACK no longer points a random way when you miss: it says the trail
 was lost, and a good roll says how far off your quarry is. HIDE tells
