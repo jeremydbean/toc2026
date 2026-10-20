@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792456507
+LogO 1792456795
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -16,18 +16,18 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 28
-Plyd 30837
+Plyd 31125
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 StashMax 75
 Scro 22
-Room 29061
-HMV  381 396 632 723 80 312
-NewGold 29
-NewPlat 26
-NewCopp 22
-NewSilv 26
+Room 29065
+HMV  368 396 582 723 208 312
+NewGold 41
+NewPlat 29
+NewCopp 214
+NewSilv 47
 BankCP 45262686
 IntTime 1792436412
 IntTotal 262686
@@ -36,7 +36,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 306
+AchKills 309
 AchQuests 20
 AchDeaths 6
 AchExplore 0
@@ -97,8 +97,8 @@ SesQuest 2
 QuestPnts 1116
 QuestStrk 9
 CasinoLost 4
-QuestNext 11
-Exp  64794
+QuestNext 6
+Exp  65180
 Act  65740
 AfBy 512
 Comm 24576
@@ -140,7 +140,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 386 723 262
-Cond 0 32 45
+Cond 0 27 40
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 75 'chill touch'
@@ -184,8 +184,8 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'giant strength'   0  18   3   1          0          0
-AffD 'armor'   0  14 -20  17          0          0
+AffD 'giant strength'   0  13   3   1          0          0
+AffD 'armor'   0   9 -20  17          0          0
 End
 
 #O
@@ -277,7 +277,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 328
+Time 323
 Cost 0
 Cond 100
 Repd 0
@@ -394,7 +394,7 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 625
+Time 620
 Cost 0
 Cond 100
 Repd 0
@@ -439,7 +439,7 @@ Lev  14
 Cost 100000
 Cond 100
 Repd 0
-Val  0 0 9893 0 0
+Val  0 0 9888 0 0
 End
 
 #O
