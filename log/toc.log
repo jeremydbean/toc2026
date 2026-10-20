@@ -143800,3 +143800,114 @@ Tue Oct 20 12:09:06 2026 :: Sock.sinaddr:  178.156.184.20
 Tue Oct 20 12:09:06 2026 :: EOF encountered on read.
 Tue Oct 20 12:14:12 2026 :: Sock.sinaddr:  3.212.128.62
 Tue Oct 20 12:14:12 2026 :: EOF encountered on read.
+Tue Oct 20 12:19:18 2026 :: Sock.sinaddr:  52.15.147.27
+Tue Oct 20 12:19:18 2026 :: EOF encountered on read.
+Tue Oct 20 12:20:17 2026 :: Sock.sinaddr:  24.2.118.125
+Tue Oct 20 12:20:18 2026 :: Loading Trentlin's playerfile
+Tue Oct 20 12:20:19 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Tue Oct 20 12:20:20 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 0
+Tue Oct 20 12:20:20 2026 :: Log Trentlin [4207]: gr
+Tue Oct 20 12:20:21 2026 :: Log Trentlin [4207]: wake
+Tue Oct 20 12:20:22 2026 :: Log Trentlin [4207]: l
+Tue Oct 20 12:20:23 2026 :: Log Trentlin [4207]: who
+Tue Oct 20 12:20:23 2026 :: Log Trentlin [4207]: e
+Tue Oct 20 12:20:23 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Tue Oct 20 12:20:24 2026 :: Log Trentlin [4202]: e
+Tue Oct 20 12:20:24 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Tue Oct 20 12:20:24 2026 :: Log Trentlin [4201]: n
+Tue Oct 20 12:20:24 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 4201
+Tue Oct 20 12:20:25 2026 :: Log Trentlin [2433]: n
+Tue Oct 20 12:20:28 2026 :: Log Trentlin [2433]: aquest time
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [2433]: r e 20
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2433
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2405
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [3525]: arrived (Along the Eastern Road) from 3502
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [3526]: arrived (Along the Eastern Road) from 3525
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [3527]: arrived (The Checkpoint) from 3526
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [3528]: arrived (Along the Eastern Road) from 3527
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [3529]: arrived (Along the Eastern Road) from 3528
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [3530]: arrived (Near the Sands of Sorrow) from 3529
+Tue Oct 20 12:20:29 2026 :: Log Trentlin [3531]: arrived (Near the Sands of Sorrow) from 3530
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [3531]: r e 20
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [42]: arrived (On the Outskirts of New Thalos) from 3532
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9524]: arrived (West Main Street) from 9523
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9525]: arrived (West Main Street) from 9524
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9526]: arrived (West Main Street) from 9525
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9509]: arrived (The Western Market Square) from 9526
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9506]: arrived (The Center of Market Square) from 9509
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9517]: arrived (The Eastern Market Square) from 9506
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9527]: arrived (East Main Street) from 9517
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9528]: arrived (East Main Street) from 9527
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9529]: arrived (East Main Street) from 9528
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9530]: arrived (East Main Street) from 9529
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9530
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9668]: arrived (Outside the Eastern Gate of New Thalos) from 9531
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9790]: arrived (On a road) from 9668
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9791]: arrived (On a road) from 9790
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9792]: arrived (On a road) from 9791
+Tue Oct 20 12:20:30 2026 :: Log Trentlin [9793]: arrived (On a road) from 9792
+Tue Oct 20 12:20:31 2026 :: Log Trentlin [9793]: e
+Tue Oct 20 12:20:31 2026 :: Log Trentlin [9794]: arrived (Near the shore) from 9793
+Tue Oct 20 12:20:32 2026 :: Log Trentlin [9794]: n
+Tue Oct 20 12:20:32 2026 :: Log Trentlin [41]: arrived (The new pier) from 9794
+Tue Oct 20 12:20:32 2026 :: Log Trentlin [41]: n
+Tue Oct 20 12:20:32 2026 :: Log Trentlin [16000]: arrived (Beginning of the Pier) from 41
+Tue Oct 20 12:20:33 2026 :: Log Trentlin [16000]: n
+Tue Oct 20 12:20:33 2026 :: Log Trentlin [16001]: arrived (Along the Pier) from 16000
+Tue Oct 20 12:20:34 2026 :: Log Trentlin [16001]: n
+Tue Oct 20 12:20:34 2026 :: Log Trentlin [16002]: arrived (Along the Pier) from 16001
+Tue Oct 20 12:20:35 2026 :: Log Trentlin [16002]: n
+Tue Oct 20 12:20:35 2026 :: Log Trentlin [16003]: arrived (Along the Pier) from 16002
+Tue Oct 20 12:20:35 2026 :: Log Trentlin [16003]: n
+Tue Oct 20 12:20:35 2026 :: Log Trentlin [16004]: arrived (A Turn at the Pier) from 16003
+Tue Oct 20 12:20:37 2026 :: Log Trentlin [16004]: smite
+Tue Oct 20 12:20:45 2026 :: Log Trentlin [16004]: smite
+Tue Oct 20 12:20:45 2026 :: Log Trentlin [16004]: killed The drunk pirate
+Tue Oct 20 12:20:45 2026 :: Log Trentlin [16004]: coin +1 platinum
+Tue Oct 20 12:20:45 2026 :: Log Trentlin [16004]: coin +5 silver
+Tue Oct 20 12:20:45 2026 :: Log Trentlin [16004]: coin +6 copper
+Tue Oct 20 12:20:45 2026 :: Log Trentlin [16004]: coin +2 gold
+Tue Oct 20 12:21:10 2026 :: Log Trentlin [16004]: e
+Tue Oct 20 12:21:10 2026 :: Log Trentlin [16005]: arrived (Plankway to the Royal Eagle) from 16004
+Tue Oct 20 12:21:11 2026 :: Log Trentlin [16005]: u
+Tue Oct 20 12:21:11 2026 :: Log Trentlin [16021]: arrived (Entrance to the Royal Eagle - Main Deck) from 16005
+Tue Oct 20 12:21:13 2026 :: Log Trentlin [16021]: k swas
+Tue Oct 20 12:21:19 2026 :: Log Trentlin [16021]: eat pot
+Tue Oct 20 12:21:19 2026 :: Log Trentlin [16021]: smite
+Tue Oct 20 12:21:27 2026 :: Log Trentlin [16021]: smite
+Tue Oct 20 12:21:34 2026 :: Log Trentlin [16021]: smite
+Tue Oct 20 12:21:38 2026 :: Log Trentlin [16021]: killed The swashbuckler
+Tue Oct 20 12:21:38 2026 :: Log Trentlin [16021]: coin +1 platinum
+Tue Oct 20 12:21:38 2026 :: Log Trentlin [16021]: coin +6 silver
+Tue Oct 20 12:21:38 2026 :: Log Trentlin [16021]: coin +8 copper
+Tue Oct 20 12:21:38 2026 :: Log Trentlin [16021]: coin +3 gold
+Tue Oct 20 12:21:42 2026 :: Log Trentlin [16021]: smite
+Tue Oct 20 12:21:42 2026 :: Log Trentlin [16021]: sca
+Tue Oct 20 12:21:44 2026 :: Log Trentlin [16021]: s
+Tue Oct 20 12:21:44 2026 :: Log Trentlin [16016]: arrived (Main Deck of the Royal Eagle - Port) from 16021
+Tue Oct 20 12:21:45 2026 :: Log Trentlin [16016]: sca
+Tue Oct 20 12:21:46 2026 :: Log Trentlin [16016]: e
+Tue Oct 20 12:21:46 2026 :: Log Trentlin [16017]: arrived (Main Deck of the Royal Eagle) from 16016
+Tue Oct 20 12:21:46 2026 :: Log Trentlin [16017]: sca
+Tue Oct 20 12:21:48 2026 :: Log Trentlin [16017]: e
+Tue Oct 20 12:21:48 2026 :: Log Trentlin [16018]: arrived (Main Deck of the Royal Eagle) from 16017
+Tue Oct 20 12:21:49 2026 :: Log Trentlin [16018]: k swas
+Tue Oct 20 12:21:52 2026 :: Log Trentlin [16018]: smite
+Tue Oct 20 12:22:06 2026 :: Log Trentlin [16018]: smite
+Tue Oct 20 12:22:15 2026 :: Log Trentlin [16018]: smite
+Tue Oct 20 12:22:15 2026 :: Trentlin weapon has been smited!
+
