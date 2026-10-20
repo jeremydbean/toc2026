@@ -139680,3 +139680,388 @@ Tue Oct 20 01:31:03 2026 :: Log Alaric [29268]: arrived (Battleground Arena) fro
 Tue Oct 20 01:31:03 2026 :: Log Trentlin [4210]: s
 Tue Oct 20 01:31:03 2026 :: Log Trentlin [4203]: arrived (The Hall of Cobwebs) from 4210
 Tue Oct 20 01:31:04 2026 :: Log Alaric [29268]: scan
+Tue Oct 20 01:31:04 2026 :: Log Trentlin [4203]: s
+Tue Oct 20 01:31:04 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4203
+Tue Oct 20 01:31:05 2026 :: Log Trentlin [4202]: e
+Tue Oct 20 01:31:05 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Tue Oct 20 01:31:05 2026 :: Log Trentlin [4201]: e
+Tue Oct 20 01:31:05 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Tue Oct 20 01:31:06 2026 :: Log Trentlin [2427]: n
+Tue Oct 20 01:31:06 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Oct 20 01:31:06 2026 :: Log Alaric [29268]: look x
+Tue Oct 20 01:31:06 2026 :: Log Trentlin [2404]: n
+Tue Oct 20 01:31:06 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Tue Oct 20 01:31:07 2026 :: Log Alaric [29268]: n
+Tue Oct 20 01:31:07 2026 :: Log Alaric [29273]: arrived (Battleground Arena) from 29268
+Tue Oct 20 01:31:07 2026 :: Log Trentlin [2401]: e
+Tue Oct 20 01:31:07 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Tue Oct 20 01:31:08 2026 :: Log Alaric [29273]: scan
+Tue Oct 20 01:31:08 2026 :: Log Trentlin [2403]: e
+Tue Oct 20 01:31:08 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Tue Oct 20 01:31:08 2026 :: Log Trentlin [2420]: e
+Tue Oct 20 01:31:08 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Tue Oct 20 01:31:08 2026 :: Log Trentlin [2421]: e
+Tue Oct 20 01:31:08 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Tue Oct 20 01:31:09 2026 :: Log Trentlin [2422]: e
+Tue Oct 20 01:31:09 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Tue Oct 20 01:31:09 2026 :: Log Trentlin [2423]: e
+Tue Oct 20 01:31:09 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Tue Oct 20 01:31:09 2026 :: Log Trentlin [2424]: e
+Tue Oct 20 01:31:09 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Tue Oct 20 01:31:09 2026 :: Log Trentlin [2425]: e
+Tue Oct 20 01:31:09 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Tue Oct 20 01:31:10 2026 :: Log Trentlin [2426]: e
+Tue Oct 20 01:31:10 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Tue Oct 20 01:31:11 2026 :: Log Trentlin [2440]: e
+Tue Oct 20 01:31:11 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Tue Oct 20 01:31:11 2026 :: Log Alaric [29273]: n
+Tue Oct 20 01:31:11 2026 :: Log Alaric [29278]: arrived (Battleground Arena) from 29273
+Tue Oct 20 01:31:11 2026 :: Log Trentlin [3503]: e
+Tue Oct 20 01:31:11 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Tue Oct 20 01:31:12 2026 :: Log Alaric [29278]: scan
+Tue Oct 20 01:31:12 2026 :: Log Trentlin [3502]: e
+Tue Oct 20 01:31:12 2026 :: Log Trentlin [3525]: arrived (Along the Eastern Road) from 3502
+Tue Oct 20 01:31:13 2026 :: Log Trentlin [3525]: e
+Tue Oct 20 01:31:13 2026 :: Log Trentlin [3526]: arrived (Along the Eastern Road) from 3525
+Tue Oct 20 01:31:13 2026 :: Log Trentlin [3526]: e
+Tue Oct 20 01:31:13 2026 :: Log Trentlin [3527]: arrived (The Checkpoint) from 3526
+Tue Oct 20 01:31:14 2026 :: Log Trentlin [3527]: e
+Tue Oct 20 01:31:14 2026 :: Log Trentlin [3528]: arrived (Along the Eastern Road) from 3527
+Tue Oct 20 01:31:14 2026 :: Log Trentlin [3528]: e
+Tue Oct 20 01:31:14 2026 :: Log Trentlin [3529]: arrived (Along the Eastern Road) from 3528
+Tue Oct 20 01:31:15 2026 :: Log Trentlin [3529]: e
+Tue Oct 20 01:31:15 2026 :: Log Trentlin [3530]: arrived (Near the Sands of Sorrow) from 3529
+Tue Oct 20 01:31:15 2026 :: Log Alaric [29278]: w
+Tue Oct 20 01:31:15 2026 :: Log Alaric [29277]: arrived (Battleground Arena) from 29278
+Tue Oct 20 01:31:15 2026 :: Log Trentlin [3530]: e
+Tue Oct 20 01:31:15 2026 :: Log Trentlin [3531]: arrived (Near the Sands of Sorrow) from 3530
+Tue Oct 20 01:31:16 2026 :: Log Trentlin [3531]: e
+Tue Oct 20 01:31:16 2026 :: Log Trentlin [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Tue Oct 20 01:31:16 2026 :: Log Alaric [29277]: look da
+Tue Oct 20 01:31:17 2026 :: Log Trentlin [3532]: e
+Tue Oct 20 01:31:17 2026 :: Log Trentlin [42]: arrived (On the Outskirts of New Thalos) from 3532
+Tue Oct 20 01:31:17 2026 :: Log Trentlin [42]: e
+Tue Oct 20 01:31:17 2026 :: Log Trentlin [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Tue Oct 20 01:31:17 2026 :: Log Trentlin [9669]: e
+Tue Oct 20 01:31:17 2026 :: Log Trentlin [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Tue Oct 20 01:31:17 2026 :: Log Alaric [29277]: e
+Tue Oct 20 01:31:17 2026 :: Log Alaric [29278]: arrived (Battleground Arena) from 29277
+Tue Oct 20 01:31:17 2026 :: Log Trentlin [9523]: e
+Tue Oct 20 01:31:17 2026 :: Log Trentlin [9524]: arrived (West Main Street) from 9523
+Tue Oct 20 01:31:18 2026 :: Log Trentlin [9524]: e
+Tue Oct 20 01:31:18 2026 :: Log Trentlin [9525]: arrived (West Main Street) from 9524
+Tue Oct 20 01:31:18 2026 :: Log Alaric [29278]: n
+Tue Oct 20 01:31:18 2026 :: Log Alaric [29283]: arrived (Battleground Arena) from 29278
+Tue Oct 20 01:31:18 2026 :: Log Trentlin [9525]: e
+Tue Oct 20 01:31:18 2026 :: Log Trentlin [9526]: arrived (West Main Street) from 9525
+Tue Oct 20 01:31:18 2026 :: Log Trentlin [9526]: e
+Tue Oct 20 01:31:18 2026 :: Log Trentlin [9509]: arrived (The Western Market Square) from 9526
+Tue Oct 20 01:31:19 2026 :: Log Trentlin [9509]: e
+Tue Oct 20 01:31:19 2026 :: Log Trentlin [9506]: arrived (The Center of Market Square) from 9509
+Tue Oct 20 01:31:19 2026 :: Log Trentlin [9506]: e
+Tue Oct 20 01:31:19 2026 :: Log Trentlin [9517]: arrived (The Eastern Market Square) from 9506
+Tue Oct 20 01:31:20 2026 :: Log Alaric [29283]: look sun
+Tue Oct 20 01:31:20 2026 :: Log Trentlin [9517]: e
+Tue Oct 20 01:31:20 2026 :: Log Trentlin [9527]: arrived (East Main Street) from 9517
+Tue Oct 20 01:31:20 2026 :: Log Trentlin [9527]: e
+Tue Oct 20 01:31:20 2026 :: Log Trentlin [9528]: arrived (East Main Street) from 9527
+Tue Oct 20 01:31:21 2026 :: Log Alaric [29283]: n
+Tue Oct 20 01:31:21 2026 :: Log Alaric [29288]: arrived (Battleground Arena) from 29283
+Tue Oct 20 01:31:21 2026 :: Log Trentlin [9528]: e
+Tue Oct 20 01:31:21 2026 :: Log Trentlin [9529]: arrived (East Main Street) from 9528
+Tue Oct 20 01:31:22 2026 :: Log Trentlin [9529]: e
+Tue Oct 20 01:31:22 2026 :: Log Trentlin [9530]: arrived (East Main Street) from 9529
+Tue Oct 20 01:31:23 2026 :: Log Trentlin [9530]: e
+Tue Oct 20 01:31:23 2026 :: Log Trentlin [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9530
+Tue Oct 20 01:31:23 2026 :: Log Alaric [29288]: look war
+Tue Oct 20 01:31:24 2026 :: Log Trentlin [9531]: e
+Tue Oct 20 01:31:24 2026 :: Log Trentlin [9668]: arrived (Outside the Eastern Gate of New Thalos) from 9531
+Tue Oct 20 01:31:24 2026 :: Log Trentlin [9668]: e
+Tue Oct 20 01:31:24 2026 :: Log Trentlin [9790]: arrived (On a road) from 9668
+Tue Oct 20 01:31:25 2026 :: Log Alaric [29288]: scan
+Tue Oct 20 01:31:25 2026 :: Log Trentlin [9790]: e
+Tue Oct 20 01:31:25 2026 :: Log Trentlin [9791]: arrived (On a road) from 9790
+Tue Oct 20 01:31:26 2026 :: Log Trentlin [9791]: e
+Tue Oct 20 01:31:26 2026 :: Log Trentlin [9792]: arrived (On a road) from 9791
+Tue Oct 20 01:31:26 2026 :: Log Alaric [29288]: on
+Tue Oct 20 01:31:26 2026 :: Log Trentlin [9792]: e
+Tue Oct 20 01:31:26 2026 :: Log Trentlin [9793]: arrived (On a road) from 9792
+Tue Oct 20 01:31:26 2026 :: Log Alaric [29288]: scan
+Tue Oct 20 01:31:27 2026 :: Log Trentlin [9793]: e
+Tue Oct 20 01:31:27 2026 :: Log Trentlin [9794]: arrived (Near the shore) from 9793
+Tue Oct 20 01:31:28 2026 :: Log Alaric [29288]: w
+Tue Oct 20 01:31:28 2026 :: Log Alaric [29287]: arrived (Battleground Arena) from 29288
+Tue Oct 20 01:31:29 2026 :: Log Alaric [29287]: scan
+Tue Oct 20 01:31:29 2026 :: Log Trentlin [9794]: n
+Tue Oct 20 01:31:29 2026 :: Log Trentlin [41]: arrived (The new pier) from 9794
+Tue Oct 20 01:31:30 2026 :: Log Trentlin [41]: n
+Tue Oct 20 01:31:30 2026 :: Log Trentlin [16000]: arrived (Beginning of the Pier) from 41
+Tue Oct 20 01:31:30 2026 :: Log Trentlin [16000]: n
+Tue Oct 20 01:31:30 2026 :: Log Trentlin [16001]: arrived (Along the Pier) from 16000
+Tue Oct 20 01:31:31 2026 :: Log Alaric [29287]: n
+Tue Oct 20 01:31:31 2026 :: Log Alaric [29292]: arrived (Battleground Arena) from 29287
+Tue Oct 20 01:31:32 2026 :: Log Alaric [29292]: look ps
+Tue Oct 20 01:31:34 2026 :: Log Trentlin [16001]: k sa
+Tue Oct 20 01:31:34 2026 :: Log Alaric [29292]: look doom
+Tue Oct 20 01:31:37 2026 :: Log Alaric [29292]: s
+Tue Oct 20 01:31:37 2026 :: Log Alaric [29287]: arrived (Battleground Arena) from 29292
+Tue Oct 20 01:31:38 2026 :: Log Alaric [29287]: w
+Tue Oct 20 01:31:38 2026 :: Log Alaric [29286]: arrived (Battleground Arena) from 29287
+Tue Oct 20 01:31:41 2026 :: Log Alaric [29286]: n
+Tue Oct 20 01:31:41 2026 :: Log Alaric [29291]: arrived (Battleground Arena) from 29286
+Tue Oct 20 01:31:42 2026 :: Log Alaric [29291]: s
+Tue Oct 20 01:31:42 2026 :: Log Alaric [29286]: arrived (Battleground Arena) from 29291
+Tue Oct 20 01:31:42 2026 :: Log Trentlin [16001]: smite
+Tue Oct 20 01:31:42 2026 :: Log Alaric [29286]: w
+Tue Oct 20 01:31:42 2026 :: Log Alaric [29285]: arrived (Battleground Arena) from 29286
+Tue Oct 20 01:31:44 2026 :: Log Alaric [29285]: look ps
+Tue Oct 20 01:31:46 2026 :: Log Alaric [29285]: scan
+Tue Oct 20 01:31:46 2026 :: Log Trentlin [16001]: killed The sailor
+Tue Oct 20 01:31:46 2026 :: Log Trentlin [16001]: coin +2 platinum
+Tue Oct 20 01:31:46 2026 :: Log Trentlin [16001]: coin +10 silver
+Tue Oct 20 01:31:46 2026 :: Log Trentlin [16001]: coin +13 copper
+Tue Oct 20 01:31:46 2026 :: Log Trentlin [16001]: coin +5 gold
+Tue Oct 20 01:31:47 2026 :: Log Alaric [29285]: on
+Tue Oct 20 01:31:47 2026 :: Log Alaric [29285]: n
+Tue Oct 20 01:31:47 2026 :: Log Alaric [29290]: arrived (Battleground Arena) from 29285
+Tue Oct 20 01:31:48 2026 :: Log Alaric [29290]: look doo
+Tue Oct 20 01:31:50 2026 :: Log Alaric [29290]: eq
+Tue Oct 20 01:31:51 2026 :: Log Alaric [29290]: s
+Tue Oct 20 01:31:51 2026 :: Log Alaric [29285]: arrived (Battleground Arena) from 29290
+Tue Oct 20 01:31:52 2026 :: Log Alaric [29285]: scan
+Tue Oct 20 01:31:53 2026 :: Log Alaric [29285]: w
+Tue Oct 20 01:31:53 2026 :: Log Alaric [29284]: arrived (Battleground Arena) from 29285
+Tue Oct 20 01:31:55 2026 :: Log Alaric [29284]: scan
+Tue Oct 20 01:31:55 2026 :: Log Trentlin [16001]: l
+Tue Oct 20 01:31:55 2026 :: Log Trentlin [16001]: l
+Tue Oct 20 01:31:56 2026 :: Log Alaric [29284]: on
+Tue Oct 20 01:31:56 2026 :: Log Alaric [29284]: scan
+Tue Oct 20 01:31:57 2026 :: Log Trentlin [16001]: n
+Tue Oct 20 01:31:57 2026 :: Log Trentlin [16002]: arrived (Along the Pier) from 16001
+Tue Oct 20 01:31:58 2026 :: Log Alaric [29284]: s
+Tue Oct 20 01:31:58 2026 :: Log Alaric [29279]: arrived (Battleground Arena) from 29284
+Tue Oct 20 01:31:59 2026 :: Log Trentlin [16002]: k sa
+Tue Oct 20 01:31:59 2026 :: Log Alaric [29279]: look sun
+Tue Oct 20 01:32:00 2026 :: Log Alaric [29279]: e
+Tue Oct 20 01:32:00 2026 :: Log Alaric [29280]: arrived (Battleground Arena) from 29279
+Tue Oct 20 01:32:01 2026 :: Log Alaric [29280]: scan
+Tue Oct 20 01:32:02 2026 :: Log Alaric [29280]: e
+Tue Oct 20 01:32:02 2026 :: Log Alaric [29281]: arrived (Battleground Arena) from 29280
+Tue Oct 20 01:32:03 2026 :: Log Trentlin [16002]: smite
+Tue Oct 20 01:32:03 2026 :: Log Alaric [29281]: e
+Tue Oct 20 01:32:03 2026 :: Log Alaric [29282]: arrived (Battleground Arena) from 29281
+Tue Oct 20 01:32:06 2026 :: Log Alaric [29282]: look doo
+Tue Oct 20 01:32:07 2026 :: Log Alaric [29282]: e
+Tue Oct 20 01:32:07 2026 :: Log Alaric [29283]: arrived (Battleground Arena) from 29282
+Tue Oct 20 01:32:10 2026 :: Log Trentlin [16002]: killed The sailor
+Tue Oct 20 01:32:10 2026 :: Log Trentlin [16002]: coin +2 platinum
+Tue Oct 20 01:32:10 2026 :: Log Trentlin [16002]: coin +10 silver
+Tue Oct 20 01:32:10 2026 :: Log Trentlin [16002]: coin +13 copper
+Tue Oct 20 01:32:10 2026 :: Log Trentlin [16002]: coin +5 gold
+Tue Oct 20 01:32:10 2026 :: Log Alaric [29283]: s
+Tue Oct 20 01:32:10 2026 :: Log Alaric [29278]: arrived (Battleground Arena) from 29283
+Tue Oct 20 01:32:11 2026 :: Log Alaric [29278]: w
+Tue Oct 20 01:32:11 2026 :: Log Alaric [29277]: arrived (Battleground Arena) from 29278
+Tue Oct 20 01:32:14 2026 :: Log Alaric [29277]: look ev
+Tue Oct 20 01:32:16 2026 :: Log Alaric [29277]: w
+Tue Oct 20 01:32:16 2026 :: Log Alaric [29276]: arrived (Battleground Arena) from 29277
+Tue Oct 20 01:32:16 2026 :: Log Trentlin [16002]: n
+Tue Oct 20 01:32:16 2026 :: Log Trentlin [16003]: arrived (Along the Pier) from 16002
+Tue Oct 20 01:32:16 2026 :: Log Alaric [29276]: scan
+Tue Oct 20 01:32:18 2026 :: Log Trentlin [16003]: n
+Tue Oct 20 01:32:18 2026 :: Log Trentlin [16004]: arrived (A Turn at the Pier) from 16003
+Tue Oct 20 01:32:18 2026 :: Log Alaric [29276]: w
+Tue Oct 20 01:32:18 2026 :: Log Alaric [29275]: arrived (Battleground Arena) from 29276
+Tue Oct 20 01:32:20 2026 :: Log Trentlin [16004]: k sa
+Tue Oct 20 01:32:20 2026 :: Log Alaric [29275]: look x
+Tue Oct 20 01:32:21 2026 :: Log Alaric [29275]: w
+Tue Oct 20 01:32:21 2026 :: Log Alaric [29274]: arrived (Battleground Arena) from 29275
+Tue Oct 20 01:32:24 2026 :: Log Alaric [29274]: s
+Tue Oct 20 01:32:24 2026 :: Log Alaric [29269]: arrived (Battleground Arena) from 29274
+Tue Oct 20 01:32:26 2026 :: Log Alaric [29269]: look no
+Tue Oct 20 01:32:30 2026 :: Log Trentlin [16004]: smite
+Tue Oct 20 01:32:32 2026 :: Log Alaric [29269]: scan
+Tue Oct 20 01:32:33 2026 :: Log Alaric [29269]: ow
+Tue Oct 20 01:32:35 2026 :: Log Alaric [29269]: s
+Tue Oct 20 01:32:35 2026 :: Log Alaric [29264]: arrived (Battleground Arena) from 29269
+Tue Oct 20 01:32:36 2026 :: Log Alaric [29264]: s
+Tue Oct 20 01:32:36 2026 :: Log Alaric [29259]: arrived (Battleground Arena) from 29264
+Tue Oct 20 01:32:37 2026 :: Log Alaric [29259]: look ne
+Tue Oct 20 01:32:38 2026 :: Log Alaric [29259]: n
+Tue Oct 20 01:32:38 2026 :: Log Alaric [29264]: arrived (Battleground Arena) from 29259
+Tue Oct 20 01:32:40 2026 :: Log Trentlin [16004]: smite
+Tue Oct 20 01:32:40 2026 :: Log Alaric [29264]: n
+Tue Oct 20 01:32:40 2026 :: Log Alaric [29269]: arrived (Battleground Arena) from 29264
+Tue Oct 20 01:32:40 2026 :: Log Trentlin [16004]: s
+Tue Oct 20 01:32:40 2026 :: Log Trentlin [16003]: arrived (Along the Pier) from 16004
+Tue Oct 20 01:32:40 2026 :: Log Trentlin [16003]: k sa
+Tue Oct 20 01:32:40 2026 :: Log Trentlin [16003]: killed The sailor
+Tue Oct 20 01:32:40 2026 :: Log Trentlin [16003]: coin +2 platinum
+Tue Oct 20 01:32:40 2026 :: Log Trentlin [16003]: coin +10 silver
+Tue Oct 20 01:32:40 2026 :: Log Trentlin [16003]: coin +13 copper
+Tue Oct 20 01:32:40 2026 :: Log Trentlin [16003]: coin +5 gold
+Tue Oct 20 01:32:42 2026 :: Log Alaric [29269]: look no
+Tue Oct 20 01:32:45 2026 :: Log Trentlin [16003]: n
+Tue Oct 20 01:32:45 2026 :: Log Trentlin [16004]: arrived (A Turn at the Pier) from 16003
+Tue Oct 20 01:32:45 2026 :: Log Trentlin [16004]: n
+Tue Oct 20 01:32:45 2026 :: Log Trentlin [25100]: arrived (North of the pier) from 16004
+Tue Oct 20 01:32:46 2026 :: Log Trentlin [25100]: n
+Tue Oct 20 01:32:46 2026 :: Log Trentlin [25101]: arrived (A split in the path.) from 25100
+Tue Oct 20 01:32:46 2026 :: Log Alaric [29269]: bs cord
+Tue Oct 20 01:32:47 2026 :: Log Trentlin [25101]: sca
+Tue Oct 20 01:32:47 2026 :: Log Alaric [29269]: bs no
+Tue Oct 20 01:32:48 2026 :: Log Trentlin [25101]: w
+Tue Oct 20 01:32:48 2026 :: Log Trentlin [25108]: arrived (The path.) from 25101
+Tue Oct 20 01:32:49 2026 :: Log Trentlin [25108]: e
+Tue Oct 20 01:32:49 2026 :: Log Trentlin [25101]: arrived (A split in the path.) from 25108
+Tue Oct 20 01:32:49 2026 :: Log Trentlin [25101]: n
+Tue Oct 20 01:32:49 2026 :: Log Trentlin [25102]: arrived (Before the bend in the trail.) from 25101
+Tue Oct 20 01:32:51 2026 :: Log Trentlin [25102]: s
+Tue Oct 20 01:32:51 2026 :: Log Trentlin [25101]: arrived (A split in the path.) from 25102
+Tue Oct 20 01:32:51 2026 :: Log Trentlin [25101]: s
+Tue Oct 20 01:32:51 2026 :: Log Trentlin [25100]: arrived (North of the pier) from 25101
+Tue Oct 20 01:32:52 2026 :: Log Trentlin [25100]: s
+Tue Oct 20 01:32:52 2026 :: Log Trentlin [16004]: arrived (A Turn at the Pier) from 25100
+Tue Oct 20 01:32:54 2026 :: Log Trentlin [16004]: ex
+Tue Oct 20 01:32:55 2026 :: Log Trentlin [16004]: w
+Tue Oct 20 01:32:55 2026 :: Log Trentlin [16084]: arrived (Seashells Galore) from 16004
+Tue Oct 20 01:32:56 2026 :: Log Trentlin [16084]: list
+Tue Oct 20 01:32:57 2026 :: Log Trentlin [16084]: get a
+Tue Oct 20 01:32:58 2026 :: Log Trentlin [16084]: wear a
+Tue Oct 20 01:32:59 2026 :: Log Trentlin [16084]: smite
+Tue Oct 20 01:33:09 2026 :: Log Trentlin [16084]: smite
+Tue Oct 20 01:33:19 2026 :: Log Trentlin [16084]: smite
+Tue Oct 20 01:33:22 2026 :: Log Trentlin [16084]: killed The drunk pirate
+Tue Oct 20 01:33:22 2026 :: Log Trentlin [16084]: coin +1 platinum
+Tue Oct 20 01:33:22 2026 :: Log Trentlin [16084]: coin +5 silver
+Tue Oct 20 01:33:22 2026 :: Log Trentlin [16084]: coin +6 copper
+Tue Oct 20 01:33:22 2026 :: Log Trentlin [16084]: coin +2 gold
+Tue Oct 20 01:33:30 2026 :: Log Alaric [29269]: scan
+Tue Oct 20 01:33:30 2026 :: Log Trentlin [16084]: l in co
+Tue Oct 20 01:33:34 2026 :: Log Alaric [29269]: e
+Tue Oct 20 01:33:34 2026 :: Log Alaric [29270]: arrived (Battleground Arena) from 29269
+Tue Oct 20 01:33:34 2026 :: Log Alaric [29270]: bash no
+Tue Oct 20 01:33:35 2026 :: Log Trentlin [16084]: get shirt co
+Tue Oct 20 01:33:36 2026 :: Log Trentlin [16084]: get pants co
+Tue Oct 20 01:33:39 2026 :: Log Trentlin [16084]: e
+Tue Oct 20 01:33:39 2026 :: Log Trentlin [16004]: arrived (A Turn at the Pier) from 16084
+Tue Oct 20 01:33:40 2026 :: Log Trentlin [16004]: e
+Tue Oct 20 01:33:40 2026 :: Log Trentlin [16005]: arrived (Plankway to the Royal Eagle) from 16004
+Tue Oct 20 01:33:42 2026 :: Log Trentlin [16005]: con b
+Tue Oct 20 01:33:42 2026 :: Log Trentlin [16005]: l b
+Tue Oct 20 01:33:44 2026 :: Log Trentlin [16005]: sca
+Tue Oct 20 01:33:45 2026 :: Log Trentlin [16005]: u
+Tue Oct 20 01:33:45 2026 :: Log Trentlin [16021]: arrived (Entrance to the Royal Eagle - Main Deck) from 16005
+Tue Oct 20 01:33:46 2026 :: Log Trentlin [16021]: k mid
+Tue Oct 20 01:33:51 2026 :: Log Trentlin [16021]: smite
+Tue Oct 20 01:33:51 2026 :: Log Alaric [29270]: who
+Tue Oct 20 01:33:52 2026 :: Log Alaric [29270]: bash
+Tue Oct 20 01:33:58 2026 :: Log Trentlin [16021]: killed The midshipman
+Tue Oct 20 01:33:58 2026 :: Log Trentlin [16021]: coin +1 platinum
+Tue Oct 20 01:33:58 2026 :: Log Trentlin [16021]: coin +5 silver
+Tue Oct 20 01:33:58 2026 :: Log Trentlin [16021]: coin +6 copper
+Tue Oct 20 01:33:58 2026 :: Log Trentlin [16021]: coin +2 gold
+Tue Oct 20 01:34:06 2026 :: Log Alaric [29270]: w
+Tue Oct 20 01:34:06 2026 :: Log Alaric [29269]: arrived (Battleground Arena) from 29270
+Tue Oct 20 01:34:06 2026 :: Log Trentlin [16021]: l in co
+Tue Oct 20 01:34:06 2026 :: Log Alaric [29269]: kill no
+Tue Oct 20 01:34:06 2026 :: Log Alaric [29269]: killed a Nothingman
+Tue Oct 20 01:34:06 2026 :: Log Alaric [29269]: coin +8 platinum
+Tue Oct 20 01:34:06 2026 :: Log Alaric [29269]: coin +38 silver
+Tue Oct 20 01:34:06 2026 :: Log Alaric [29269]: coin +51 copper
+Tue Oct 20 01:34:06 2026 :: Log Alaric [29269]: coin +21 gold
+Tue Oct 20 01:34:06 2026 :: Log Trentlin [16021]: sca
+Tue Oct 20 01:34:11 2026 :: Log Trentlin [16021]: s
+Tue Oct 20 01:34:11 2026 :: Log Trentlin [16016]: arrived (Main Deck of the Royal Eagle - Port) from 16021
+Tue Oct 20 01:34:12 2026 :: Log Trentlin [16016]: con p
+Tue Oct 20 01:34:13 2026 :: Log Alaric [29269]: l i cor
+Tue Oct 20 01:34:14 2026 :: Log Trentlin [16016]: l p
+Tue Oct 20 01:34:15 2026 :: Log Trentlin [16016]: k p
+Tue Oct 20 01:34:18 2026 :: Log Alaric [29269]: get cord cor
+Tue Oct 20 01:34:19 2026 :: Sock.sinaddr:  178.156.189.249
+Tue Oct 20 01:34:19 2026 :: EOF encountered on read.
+Tue Oct 20 01:34:19 2026 :: Log Trentlin [16016]: smite
+Tue Oct 20 01:34:19 2026 :: Log Alaric [29269]: comp cord
+Tue Oct 20 01:34:23 2026 :: Log Alaric [29269]: wear cord
+Tue Oct 20 01:34:26 2026 :: Log Alaric [29269]: stash put pla
+Tue Oct 20 01:34:26 2026 :: Log Alaric [29269]: stashed some platinum leg bands (vnum 9214)
+Tue Oct 20 01:34:27 2026 :: Log Alaric [29269]: scan
+Tue Oct 20 01:34:29 2026 :: Log Alaric [29269]: stealth
+Tue Oct 20 01:34:30 2026 :: Log Alaric [29269]: eq
+Tue Oct 20 01:34:34 2026 :: Log Trentlin [16016]: smite
+Tue Oct 20 01:34:47 2026 :: Log Trentlin [16016]: smite
+Tue Oct 20 01:34:56 2026 :: Log Trentlin [16016]: smite
+Tue Oct 20 01:34:57 2026 :: Log Trentlin [16016]: u
+Tue Oct 20 01:34:57 2026 :: Log Trentlin [16011]: arrived (Aft Deck - Port Side) from 16016
+Tue Oct 20 01:34:58 2026 :: Log Trentlin [16011]: k p
+Tue Oct 20 01:35:01 2026 :: Log Alaric [29269]: l
+Tue Oct 20 01:35:02 2026 :: Log Alaric [29269]: af
+Tue Oct 20 01:35:02 2026 :: Log Trentlin [16011]: smite
+Tue Oct 20 01:35:04 2026 :: Log Trentlin [16011]: level 32 -> 33 (earned)
+Tue Oct 20 01:35:04 2026 :: Trentlin has achieved level 33!
+Tue Oct 20 01:35:04 2026 :: Log Trentlin [16011]: killed The pirate
+Tue Oct 20 01:35:04 2026 :: Log Trentlin [16011]: coin +2 platinum
+Tue Oct 20 01:35:04 2026 :: Log Trentlin [16011]: coin +12 silver
+Tue Oct 20 01:35:04 2026 :: Log Trentlin [16011]: coin +17 copper
+Tue Oct 20 01:35:04 2026 :: Log Trentlin [16011]: coin +7 gold
+Tue Oct 20 01:35:05 2026 :: Log Alaric [29269]: s
+Tue Oct 20 01:35:05 2026 :: Log Alaric [29264]: arrived (Battleground Arena) from 29269
+Tue Oct 20 01:35:06 2026 :: Log Alaric [29264]: s
+Tue Oct 20 01:35:06 2026 :: Log Alaric [29259]: arrived (Battleground Arena) from 29264
+Tue Oct 20 01:35:07 2026 :: Log Alaric [29259]: s
+Tue Oct 20 01:35:07 2026 :: Log Alaric [29254]: arrived (Battleground Arena) from 29259
+Tue Oct 20 01:35:08 2026 :: Log Alaric [29254]: s
+Tue Oct 20 01:35:08 2026 :: Log Alaric [29249]: arrived (Battleground Arena) from 29254
+Tue Oct 20 01:35:09 2026 :: Log Alaric [29249]: s
+Tue Oct 20 01:35:09 2026 :: Log Alaric [29244]: arrived (Cornerground) from 29249
+Tue Oct 20 01:35:11 2026 :: Log Alaric [29244]: n
+Tue Oct 20 01:35:11 2026 :: Log Alaric [29249]: arrived (Battleground Arena) from 29244
+Tue Oct 20 01:35:11 2026 :: Log Alaric [29249]: e
+Tue Oct 20 01:35:11 2026 :: Log Alaric [29250]: arrived (Battleground Arena) from 29249
+Tue Oct 20 01:35:12 2026 :: Log Trentlin [16011]: get all co
+Tue Oct 20 01:35:12 2026 :: Log Alaric [29250]: e
+Tue Oct 20 01:35:12 2026 :: Log Alaric [29251]: arrived (Battleground Arena) from 29250
+Tue Oct 20 01:35:12 2026 :: Log Trentlin [16011]: sca
+Tue Oct 20 01:35:14 2026 :: Log Alaric [29251]: scan
+Tue Oct 20 01:35:14 2026 :: Log Trentlin [16011]: d
+Tue Oct 20 01:35:14 2026 :: Log Trentlin [16016]: arrived (Main Deck of the Royal Eagle - Port) from 16011
+Tue Oct 20 01:35:15 2026 :: Log Alaric [29251]: e
+Tue Oct 20 01:35:15 2026 :: Log Alaric [29252]: arrived (Battleground Arena) from 29251
+Tue Oct 20 01:35:16 2026 :: Log Trentlin [16016]: k sa
+Tue Oct 20 01:35:16 2026 :: Log Alaric [29252]: look ne
+Tue Oct 20 01:35:19 2026 :: Log Alaric [29252]: scan
+Tue Oct 20 01:35:20 2026 :: Log Trentlin [16016]: smite
+Tue Oct 20 01:35:21 2026 :: Log Alaric [29252]: s
+Tue Oct 20 01:35:21 2026 :: Log Alaric [29247]: arrived (Battleground Arena) from 29252
+Tue Oct 20 01:35:23 2026 :: Log Alaric [29247]: look mi
+Tue Oct 20 01:35:25 2026 :: Log Alaric [29247]: bs mi
+Tue Oct 20 01:35:33 2026 :: Log Trentlin [16016]: u
+Tue Oct 20 01:35:33 2026 :: Log Trentlin [16011]: arrived (Aft Deck - Port Side) from 16016
+Tue Oct 20 01:35:33 2026 :: Log Trentlin [16011]: k sa
+Tue Oct 20 01:35:33 2026 :: Log Trentlin [16011]: killed The sailor
+Tue Oct 20 01:35:33 2026 :: Log Trentlin [16011]: coin +2 platinum
+Tue Oct 20 01:35:33 2026 :: Log Trentlin [16011]: coin +10 silver
+Tue Oct 20 01:35:33 2026 :: Log Trentlin [16011]: coin +13 copper
+Tue Oct 20 01:35:33 2026 :: Log Trentlin [16011]: coin +5 gold
+Tue Oct 20 01:35:37 2026 :: Log Trentlin [16011]: d
+Tue Oct 20 01:35:37 2026 :: Log Trentlin [16016]: arrived (Main Deck of the Royal Eagle - Port) from 16011
+Tue Oct 20 01:35:38 2026 :: Log Trentlin [16016]: sca
+Tue Oct 20 01:35:39 2026 :: Log Trentlin [16016]: e
+Tue Oct 20 01:35:39 2026 :: Log Trentlin [16017]: arrived (Main Deck of the Royal Eagle) from 16016
+Tue Oct 20 01:35:40 2026 :: Log Trentlin [16017]: sca
+Tue Oct 20 01:35:41 2026 :: Log Trentlin [16017]: e
+Tue Oct 20 01:35:41 2026 :: Log Trentlin [16018]: arrived (Main Deck of the Royal Eagle) from 16017
+Tue Oct 20 01:35:42 2026 :: Log Trentlin [16018]: sca
+Tue Oct 20 01:35:44 2026 :: Log Trentlin [16018]: n
+Tue Oct 20 01:35:44 2026 :: Log Trentlin [16023]: arrived (Main Deck) from 16018
+Tue Oct 20 01:35:45 2026 :: Log Trentlin [16023]: con swa
+Tue Oct 20 01:35:46 2026 :: Log Trentlin [16023]: l swa
+Tue Oct 20 01:35:46 2026 :: Log Alaric [29247]: who
+Tue Oct 20 01:35:49 2026 :: Log Trentlin [16023]: k swa
+Tue Oct 20 01:35:50 2026 :: Log Alaric [29247]: bash
+Tue Oct 20 01:35:53 2026 :: Log Trentlin [16023]: smite
+Tue Oct 20 01:36:04 2026 :: Log Alaric [29247]: killed a minotaur warrior
+Tue Oct 20 01:36:04 2026 :: Log Alaric [29247]: coin +9 platinum
+Tue Oct 20 01:36:04 2026 :: Log Alaric [29247]: coin +43 silver
+Tue Oct 20 01:36:04 2026 :: Log Alaric [29247]: coin +58 copper
+Tue Oct 20 01:36:04 2026 :: Log Alaric [29247]: coin +24 gold
