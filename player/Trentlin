@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792455886
+LogO 1792456197
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -16,18 +16,18 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 28
-Plyd 30216
+Plyd 30527
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 StashMax 75
 Scro 22
-Room 4208
-HMV  396 396 723 723 202 312
-NewGold 85
+Room 2497
+HMV  396 396 723 723 130 312
+NewGold 97
 NewPlat 23
-NewCopp 304
-NewSilv 68
+NewCopp 1006
+NewSilv 210
 BankCP 45262686
 IntTime 1792436412
 IntTotal 262686
@@ -36,7 +36,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 302
+AchKills 304
 AchQuests 19
 AchDeaths 6
 AchExplore 0
@@ -84,6 +84,7 @@ Achv visit-glitter-palace 1791414563
 Achv visit-underdark 1792281756
 Achv visit-new-thalos 1791415830
 Achv visit-korzath-fortress 1792287816
+Achv visit-ice-keep 1792455929
 LastOut  1792342213
 SesLogin 1792340062
 SesDur   2151
@@ -96,8 +97,8 @@ SesQuest 2
 QuestPnts 1116
 QuestStrk 8
 CasinoLost 4
-QuestNext 2
-Exp  64170
+QuestNext 30
+Exp  64579
 Act  65740
 AfBy 512
 Comm 24576
@@ -125,24 +126,24 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 11
+Prac 7
 Save  5
 Alig  -1000
 Hit   12
 Dam   30
-ACs -5 -8 -14 96
+ACs -25 -28 -34 76
 Attr 18 16 16 12 19
-AMod 8 10 9 4 10
+AMod 11 10 9 4 10
 Pass TrjPUdRVdu8MY~
 Titl  the Greater Dragon Slayer~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 386 723 262
-Cond 0 18 44
+Cond 0 13 39
 Sk 75 'armor'
 Sk 1 'burning hands'
-Sk 1 'chill touch'
+Sk 75 'chill touch'
 Sk 1 'detect invis'
 Sk 77 'faerie fire'
 Sk 75 'fly'
@@ -152,7 +153,7 @@ Sk 1 'lightning bolt'
 Sk 1 'magic missile'
 Sk 76 'refresh'
 Sk 1 'shield'
-Sk 78 'axe'
+Sk 80 'axe'
 Sk 83 'dagger'
 Sk 25 'flail'
 Sk 25 'mace'
@@ -176,13 +177,15 @@ Sk 75 'fast healing'
 Sk 1 'scrolls'
 Sk 1 'wands'
 Sk 66 'recall'
-Sk 85 'smite'
+Sk 88 'smite'
 Gr 'rom basics'
 Gr 'mage basics'
 Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
+AffD 'giant strength'   0  23   3   1          0          0
+AffD 'armor'   0  19 -20  17          0          0
 End
 
 #O
@@ -265,7 +268,7 @@ Nest 0
 Wear 12
 Lev  18
 Cost 10000000
-Cond 100
+Cond 99
 Repd 0
 Val  7 5 5 0 0
 End
@@ -274,7 +277,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 338
+Time 332
 Cost 0
 Cond 100
 Repd 0
@@ -391,7 +394,7 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 635
+Time 629
 Cost 0
 Cond 100
 Repd 0
@@ -436,7 +439,7 @@ Lev  14
 Cost 100000
 Cond 100
 Repd 0
-Val  0 0 9903 0 0
+Val  0 0 9898 0 0
 End
 
 #O
