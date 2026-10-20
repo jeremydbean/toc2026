@@ -2293,6 +2293,12 @@ When the window closes, the buyer leaves his room, or the buyer has had
 one of everything, he vanishes to a random room with a line to the room.
 His stock stays the same for the whole visit.
 
+**Ten minutes in one area and he crosses the world** (owner,
+2026-10-20): `bm_area_stale()` times the area he stands in, and at
+`BM_AREA_MAX` he vanishes to a room in another (`bm_random_room_away`)
+-- only when nobody is with him and no sale is open. The treasure goblin
+does the same at `GOBLIN_AREA_MAX` while nobody is with or after him.
+
 **Logged.** Arrivals (room, area file, stock size, how long) and every
 purchase (buyer, item, vnum, price, room) go to `log_string` and to
 WIZINFO at immortal level; departures and every vanishing (from, to and

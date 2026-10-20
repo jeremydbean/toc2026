@@ -76,6 +76,14 @@ class TreasureGoblinSourceTests(unittest.TestCase):
         struck = body("src/goblin.c", "void treasure_goblin_struck(")
         self.assertIn("portal collapses", struck)
 
+    def test_too_long_in_one_area_and_he_crosses_the_world(self) -> None:
+        source = (ROOT / "src" / "goblin.c").read_text(encoding="latin-1")
+        self.assertIn("#define GOBLIN_AREA_MAX     ( 10 * 60 )", source)
+        update = body("src/goblin.c", "void treasure_goblin_update(")
+        self.assertIn('gob_teleport( gob, gob_area, "too long in one area" )', update)
+        self.assertLess(update.index("if ( gob_chased )"), update.index("GOBLIN_AREA_MAX"),
+                        "a chase is the portal's business, not this")
+
     def test_test_worlds_start_without_one(self) -> None:
         live = (ROOT / "tests" / "live_mud.py").read_text(encoding="utf-8")
         self.assertIn('env.setdefault("TOC_NO_GOBLIN", "1")', live)

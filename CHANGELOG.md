@@ -22,6 +22,9 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   holds the best piece for some slot at the killer's level and now and
   then a black market rarity. Spawns and kills reach WIZINFO and the log
   with the room. Staff command GOBLIN. `tests/test_treasure_goblin.py`.
+  He and the black market dealer each cross to another area after ten
+  minutes in one, never while a player is with them or a sale or chase
+  is under way.
 - **SLEEP in the Oracle's sanctum** sends you out at once
   (`oracle_refuses_sleep`). `tests/test_oracle_sanctum_live.py`.
 - **The black market** (`src/blackmarket.c`, owner's design, 2026-10-20).

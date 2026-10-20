@@ -139,6 +139,16 @@ class BlackMarketSourceTests(unittest.TestCase):
         away = (seconds("BM_AWAY_MIN") + seconds("BM_AWAY_MAX")) / 2
         self.assertAlmostEqual(0.10, here / (here + away), delta=0.02)
 
+    def test_too_long_in_one_area_and_he_crosses_the_world(self) -> None:
+        source = (ROOT / "src" / "blackmarket.c").read_text(encoding="latin-1")
+        self.assertIn("#define BM_AREA_MAX        ( 10 * 60 )", source)
+        update = body("src/blackmarket.c", "void black_market_update(")
+        self.assertIn("bm_random_room_away( dealer->in_room->area )", update)
+        self.assertLess(update.index("bm_has_customer( dealer ) )\n    {"),
+                        update.index("bm_area_stale( dealer )"),
+                        "never while somebody is standing with him")
+        self.assertIn("room->area != avoid", body("src/blackmarket.c", "static ROOM_INDEX_DATA *bm_random_room_away("))
+
     def test_appearances_and_purchases_reach_staff(self) -> None:
         arrive = body("src/blackmarket.c", "bool black_market_arrive(")
         record = body("src/blackmarket.c", "void black_market_record(")

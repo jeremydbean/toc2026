@@ -1176,8 +1176,8 @@ Syntax: goblin                (where he is, his hit points, the chase)
 There is always one treasure goblin (mob 29941): a new one appears at a
 random room a minute to three after the last is killed.  He wanders a
 step every half minute or so and drifts to a random room every twenty to
-forty minutes while nobody is after him, never into a room he could not
-be struck in.  Each landed blow spills four to eight kills' worth of
+forty minutes while nobody is after him, and to another area after ten
+minutes in one, never into a room he could not be struck in.  Each landed blow spills four to eight kills' worth of
 coin at the striker's level and sends him out a random exit; it takes a
 thirteenth to an eighteenth of his health by how hard it hit, so a kill
 is 12 to 17 flights.  A minute without a blow and he opens a portal and
@@ -1201,7 +1201,8 @@ Syntax: blackmarket                (where he is, how long, stock, pool)
 Vesh, the black market (mob 29940), comes for twenty to forty minutes,
 then is away for three to six hours; his first visit after a boot is ten
 minutes to six hours in.  While he is about he moves every 45-75 seconds,
-one move in eight a vanishing to a random room.  A mortal with him has
+one move in eight a vanishing to a random room, and after ten minutes
+in one area he crosses to another.  A mortal with him has
 90 seconds to start buying; the first purchase gives that buyer alone 60
 seconds, and 30 more per purchase, then he vanishes.  He carries five
 items at most from a pool of the three best pieces per slot in every

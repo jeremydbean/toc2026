@@ -54,6 +54,11 @@ static time_t gob_last_company = 0;
    into rooms nobody could strike him in. */
 static time_t gob_next_drift = 0;
 static time_t gob_next_step = 0;
+/* The area he is in, and since when: GOBLIN_AREA_MAX there with nobody
+   after him and he crosses to another (owner, 2026-10-20). */
+static AREA_DATA *gob_area = NULL;
+static time_t gob_area_since = 0;
+#define GOBLIN_AREA_MAX     ( 10 * 60 )
 #define GOBLIN_STEP_MIN     20
 #define GOBLIN_STEP_MAX     50
 /* Hit points he may not regenerate past: the chase keeps its progress. */
@@ -133,13 +138,14 @@ static bool gob_room_ok( ROOM_INDEX_DATA *room )
         && room->vnum != ROOM_VNUM_TEMPLE && room->vnum != ROOM_VNUM_ALTAR;
 }
 
-static ROOM_INDEX_DATA *gob_random_room( void )
+/* A room he may land in, anywhere but in `avoid` (NULL: anywhere). */
+static ROOM_INDEX_DATA *gob_random_room( AREA_DATA *avoid )
 {
     int tries;
 
     for ( tries = 0; tries < 20; tries++ )
     {
-        ROOM_INDEX_DATA *room = black_market_random_room();
+        ROOM_INDEX_DATA *room = black_market_random_room( avoid );
 
         if ( room != NULL && gob_room_ok( room ) )
             return room;
@@ -170,9 +176,9 @@ static bool gob_pinned( CHAR_DATA *gob )
     return IS_AFFECTED2(gob, AFF2_STUNNED) || gob->position < POS_FIGHTING;
 }
 
-static void gob_teleport( CHAR_DATA *gob, const char *why )
+static void gob_teleport( CHAR_DATA *gob, AREA_DATA *avoid, const char *why )
 {
-    ROOM_INDEX_DATA *to = gob_random_room();
+    ROOM_INDEX_DATA *to = gob_random_room( avoid );
     char from[MAX_STRING_LENGTH], where[MAX_STRING_LENGTH];
     char line[MAX_STRING_LENGTH * 2 + 128];
 
@@ -209,7 +215,7 @@ bool treasure_goblin_spawn( ROOM_INDEX_DATA *room )
         bug( "Treasure goblin: mobile %d is missing.", MOB_VNUM_TREASURE_GOBLIN );
         return false;
     }
-    if ( room == NULL && ( room = gob_random_room() ) == NULL )
+    if ( room == NULL && ( room = gob_random_room( NULL ) ) == NULL )
         return false;
 
     treasure_goblin = create_mobile( pMob );
@@ -218,6 +224,7 @@ bool treasure_goblin_spawn( ROOM_INDEX_DATA *room )
          treasure_goblin, NULL, NULL, TO_ROOM );
     gob_hp = treasure_goblin->max_hit;
     gob_chased = false;
+    gob_area = NULL;                /* a new goblin starts a fresh clock */
     gob_portal_at = 0;
     gob_next_drift = current_time + number_range( GOBLIN_DRIFT_MIN, GOBLIN_DRIFT_MAX );
 
@@ -347,7 +354,7 @@ void treasure_goblin_struck( CHAR_DATA *ch, CHAR_DATA *gob )
         move_char( gob, door, false );
     }
     if ( gob->in_room == was_in )
-        gob_teleport( gob, "nowhere to run" );
+        gob_teleport( gob, NULL, "nowhere to run" );
 }
 
 /*
@@ -442,7 +449,7 @@ void treasure_goblin_update( void )
         if ( gob_portal_at != 0 )
         {
             if ( current_time >= gob_portal_at )
-                gob_teleport( gob, current_time - gob_last_company >= GOBLIN_ALONE
+                gob_teleport( gob, NULL, current_time - gob_last_company >= GOBLIN_ALONE
                               ? "left alone after a chase" : "nobody struck him" );
         }
         else if ( current_time - gob_last_hit >= GOBLIN_ALONE )
@@ -455,8 +462,19 @@ void treasure_goblin_update( void )
     }
     if ( gob_has_company( gob ) )
         return;
+    /* Too long in one area: across the world to another. */
+    if ( gob->in_room->area != gob_area )
+    {
+        gob_area = gob->in_room->area;
+        gob_area_since = current_time;
+    }
+    else if ( current_time - gob_area_since >= GOBLIN_AREA_MAX )
+    {
+        gob_teleport( gob, gob_area, "too long in one area" );
+        return;
+    }
     if ( current_time >= gob_next_drift )
-        gob_teleport( gob, "drifting" );
+        gob_teleport( gob, NULL, "drifting" );
     else if ( current_time >= gob_next_step )
     {
         int door = gob_pick_exit( gob );

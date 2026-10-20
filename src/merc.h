@@ -3400,7 +3400,7 @@ bool    black_market_buy_refuses ( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *o
 void    black_market_record      ( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *obj );
 bool    is_unfindable_mob        ( const CHAR_DATA *ch );
 bool    black_market_room_ok     ( ROOM_INDEX_DATA *room );
-ROOM_INDEX_DATA *black_market_random_room ( void );
+ROOM_INDEX_DATA *black_market_random_room ( AREA_DATA *avoid );
 int     black_market_gear_for_level ( int level );
 int     black_market_rarity      ( void );
 long    black_market_kill_value  ( int level );

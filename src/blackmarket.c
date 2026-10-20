@@ -73,6 +73,11 @@ static long bm_stock_id = 0;
 
 static time_t bm_next_move = 0;
 static time_t bm_browse_since = 0;
+/* The area he is in, and since when: BM_AREA_MAX there and he crosses
+   the world to another (owner, 2026-10-20). */
+static AREA_DATA *bm_area = NULL;
+static time_t bm_area_since = 0;
+#define BM_AREA_MAX        ( 10 * 60 )
 static CHAR_DATA *bm_buyer = NULL;
 static time_t bm_sale_ends = 0;
 static bool bm_sold_out = false;
@@ -600,7 +605,8 @@ static bool bm_room_ok( ROOM_INDEX_DATA *room )
     return true;
 }
 
-static ROOM_INDEX_DATA *bm_random_room( void )
+/* A room he may stand in, anywhere but in `avoid` (NULL: anywhere). */
+static ROOM_INDEX_DATA *bm_random_room_away( AREA_DATA *avoid )
 {
     int tries;
 
@@ -608,10 +614,28 @@ static ROOM_INDEX_DATA *bm_random_room( void )
     {
         ROOM_INDEX_DATA *room = random_scatter_room( NULL );
 
-        if ( bm_room_ok( room ) )
+        if ( bm_room_ok( room ) && ( avoid == NULL || room->area != avoid ) )
             return room;
     }
     return NULL;
+}
+
+static ROOM_INDEX_DATA *bm_random_room( void )
+{
+    return bm_random_room_away( NULL );
+}
+
+/* Whether he has been BM_AREA_MAX in the area he stands in; notes a new
+   area as he enters it. */
+static bool bm_area_stale( CHAR_DATA *dealer )
+{
+    if ( dealer->in_room->area != bm_area )
+    {
+        bm_area = dealer->in_room->area;
+        bm_area_since = current_time;
+        return false;
+    }
+    return current_time - bm_area_since >= BM_AREA_MAX;
 }
 
 /* A mortal standing with him: staff watching do not hold him. */
@@ -693,9 +717,9 @@ bool black_market_room_ok( ROOM_INDEX_DATA *room )
     return bm_room_ok( room );
 }
 
-ROOM_INDEX_DATA *black_market_random_room( void )
+ROOM_INDEX_DATA *black_market_random_room( AREA_DATA *avoid )
 {
-    return bm_random_room();
+    return bm_random_room_away( avoid );
 }
 
 static bool bm_has_customer( CHAR_DATA *dealer )
@@ -791,6 +815,7 @@ bool black_market_arrive( ROOM_INDEX_DATA *room )
          black_market_dealer, NULL, NULL, TO_ROOM );
     black_market_restock();
     bm_end_business();
+    bm_area = NULL;                 /* a new visit starts a fresh clock */
 
     stay = number_range( BM_STAY_MIN, BM_STAY_MAX );
     bm_next_change = current_time + stay;
@@ -918,6 +943,14 @@ void black_market_update( void )
         return;
     }
     bm_browse_since = 0;
+
+    /* Too long in one area: across the world to another. */
+    if ( bm_area_stale( dealer ) )
+    {
+        bm_teleport( dealer, bm_random_room_away( dealer->in_room->area ), NULL,
+                     "too long in one area" );
+        return;
+    }
 
     if ( current_time < bm_next_move )
         return;
