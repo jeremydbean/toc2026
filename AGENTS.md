@@ -2191,6 +2191,25 @@ own kit goes back on, and `mirror_find_carried` only considers items at
 `WEAR_NONE`, so a mirrored copy of something the immortal owns one of too
 cannot be picked up in place of the original.
 
+## Wizinvis Leaves No Trace
+
+`wizinvis_hides(wch, looker)` in `handler.c` is the one test for whether
+a wizinvis player is hidden from somebody: `PLR_WIZINVIS` at a level
+above the looker's `sight_trust()`. `can_see` asks it first, and
+`act_new` in `comm.c` asks it to **drop** a wizinvis actor's `TO_ROOM`
+and `TO_NOTVICT` messages for anyone it hides them from, rather than
+deliver them with "someone" in the name's place (owner, 2026-10-20:
+nobody below the level sees anything). `PERS()` says "someone" for
+anyone unseen; it used to say "An Immortal" for an unseen immortal,
+which announced every wizinvis recall to the room. Messages aimed at a
+victim (`TO_VICT`) still land, as "someone": being slain or handed
+something with no message at all would be worse. `do_say` tells a
+wizinvis speaker when nobody below the level heard, and its chat-pane
+loop skips them too; a new per-listener loop that bypasses `act()` --
+as `do_goto`'s bamf loop and the GMCP feeds do -- has to ask the helper
+itself. `tests/test_wizinvis.py` walks, speaks and recalls past a
+mortal both ways.
+
 ## Staff Invulnerability
 
 `is_invulnerable(ch)` is the one test, and it asks

@@ -6532,7 +6532,13 @@ See also: REBOOT, SHUTDOWN, WIZLOCK
 Syntax: invis [level]
 
 INVIS makes you invisible to all players below the specified trust level
-(default: your own level).  Use VISIBLE to reappear.
+(default: your own level).  INVIS again, or INVIS 0, takes it off; VISIBLE
+strips spells and hiding, not this.
+
+While you are wizinvis, players below the level see nothing of you at all:
+not your arrival, your recall, your SAY or your socials.  A SAY nobody
+below the level heard tells you so.  Speak on a channel, TELL, or drop the
+invis to be heard in a room.
 
 See also: WIZINVIS, HOLYLIGHT
 ~

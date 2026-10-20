@@ -31,6 +31,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **A wizinvis immortal is not announced to the room.** `PERS()` named
+  an unseen immortal "An Immortal" rather than "someone", so every
+  room message of theirs -- `$n appears in the room.` on recall, arrivals,
+  departures, says and socials -- told every mortal present that a
+  wizinvis immortal was there, although HELP WIZINVIS promised that
+  their actions produce no messages. `wizinvis_hides()` in `handler.c`
+  is the one test now: `can_see` asks it, and `act()` drops a wizinvis
+  actor's TO_ROOM and TO_NOTVICT messages for anybody it hides them
+  from, while a message aimed at a victim still lands as "someone".
+  A SAY nobody below the level heard tells the speaker so, and the
+  chat pane feed skips them too. `INVIS 0` now takes wizinvis off, as
+  the help always said. `tests/test_wizinvis.py` (owner, 2026-10-20).
 - **The seasonal area copies are generated, and no longer years behind.**
   `dresden`, `limbo` and `midennir` load as `_halloween` copies from
   Oct 18 and `_xmas` copies from Dec 16, and the copies were hand-kept

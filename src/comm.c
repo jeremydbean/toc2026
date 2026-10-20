@@ -3620,6 +3620,17 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
             continue;
         if ( type == TO_NOTVICT && (to == ch || to == vch) )
             continue;
+
+        /*
+         * A wizinvis actor leaves no trace with those below the level:
+         * not "someone has arrived", not "someone appears in the room".
+         * Messages aimed at a victim still land, as "someone" -- being
+         * slain or handed something with no message at all would be
+         * worse than knowing somebody did it.
+         */
+        if ( ( type == TO_ROOM || type == TO_NOTVICT )
+          && wizinvis_hides( ch, to ) )
+            continue;
  
         dstring_clear( &buf );
         allow_color = color_is_enabled( to );

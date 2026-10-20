@@ -7943,6 +7943,19 @@ void do_invis( CHAR_DATA *ch, char *argument )
     /* do the level thing */
     {
       level = atoi(arg);
+      if ( level == 0 && is_number( arg ) )
+      {
+          if ( IS_SET(ch->act, PLR_WIZINVIS) )
+          {
+              REMOVE_BIT(ch->act, PLR_WIZINVIS);
+              ch->invis_level = 0;
+              act( "$n slowly fades into existence.", ch, NULL, NULL, TO_ROOM );
+              send_to_char( "You slowly fade back into existence.\n\r", ch );
+          }
+          else
+              send_to_char( "You are not wizinvis.\n\r", ch );
+          return;
+      }
       if (level < 2 || level > get_trust(ch))
       {
 	send_to_char("Invis level must be between 2 and your level.\n\r",ch);

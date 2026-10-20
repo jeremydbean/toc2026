@@ -521,9 +521,7 @@ void show_char_to_char( CHAR_DATA *list, CHAR_DATA *ch )
 	if ( rch == ch )
 	    continue;
 
-	if ( !IS_NPC(rch)
-	&&   IS_SET(rch->act, PLR_WIZINVIS)
-	&&   sight_trust( ch ) < rch->invis_level )
+	if ( wizinvis_hides( rch, ch ) )
 	    continue;
 
 	if ( can_see( ch, rch ) )

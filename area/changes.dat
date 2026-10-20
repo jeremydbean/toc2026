@@ -3,6 +3,12 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261020a 2026-10-20
+A wizinvis immortal leaves no trace with players below the level: no
+"An Immortal appears in the room" when they recall, no arrivals or
+departures, and their SAY and socials are not shown. Anybody you cannot
+see is "someone" now, immortal or not.
+
 @ 20261019b 2026-10-19
 Hallows End is on until the first of November: Dresden, Limbo and Mud
 School take their Halloween dress at the next reboot, with everything

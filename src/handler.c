@@ -3326,15 +3326,29 @@ bool online_can_list( CHAR_DATA *ch, const CHAR_DATA *wch )
 }
 
 
+/*
+ * Whether wch's wizinvis hides them from looker: a player carrying
+ * PLR_WIZINVIS at a level above the looker's sight trust. can_see asks
+ * it first, and act() asks it to drop a wizinvis actor's messages to
+ * the room altogether rather than deliver them as "someone" -- the
+ * owner's rule (2026-10-20): nobody below the level sees anything.
+ */
+bool wizinvis_hides( const CHAR_DATA *wch, const CHAR_DATA *looker )
+{
+    if ( wch == NULL || looker == NULL || wch == looker )
+        return false;
+    return !IS_NPC(wch)
+        && IS_SET(wch->act, PLR_WIZINVIS)
+        && sight_trust( looker ) < wch->invis_level;
+}
+
 bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
 {
 /* RT changed so that WIZ_INVIS has levels */
     if ( ch == victim )
 	return true;
 
-    if ( !IS_NPC(victim)
-    &&   IS_SET(victim->act, PLR_WIZINVIS)
-    &&   sight_trust( ch ) < victim->invis_level )
+    if ( wizinvis_hides( victim, ch ) )
 	return false;
 
     if ( IS_NPC(ch) && IS_AFFECTED2(victim, AFF2_GHOST))

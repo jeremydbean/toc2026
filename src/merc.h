@@ -2621,7 +2621,10 @@ extern sh_int  gsn_petrify;
 #define replace_string( pstr, nstr )    {free_string( ( pstr ) ); pstr = str_dup( ( nstr) ); }
 
 /* Description macros. */
-#define PERS(ch, looker)        ( can_see( looker, (ch) ) ? ( IS_NPC(ch) ? (ch)->short_descr : (ch)->name ) : (IS_IMMORTAL(ch) ? "An Immortal" : "someone" ) )
+/* Whoever cannot be seen is "someone" -- an unseen immortal included. It
+   used to read "An Immortal", which told every mortal in the room that a
+   wizinvis immortal had just arrived (owner, 2026-10-20). */
+#define PERS(ch, looker)        ( can_see( looker, (ch) ) ? ( IS_NPC(ch) ? (ch)->short_descr : (ch)->name ) : "someone" )
 
 struct  social_type
 {
@@ -3249,6 +3252,7 @@ OBJ_DATA *unique_ring_twin        ( CHAR_DATA *ch, OBJ_DATA *obj, int slot );
 int     equipment_affects       ( const CHAR_DATA *ch, const char **names,
                                   OBJ_DATA **sources, int max );
 bool    can_see         ( CHAR_DATA *ch, const CHAR_DATA *victim );
+bool    wizinvis_hides  ( const CHAR_DATA *wch, const CHAR_DATA *looker );
 bool    online_can_list ( CHAR_DATA *ch, const CHAR_DATA *wch );
 bool    can_see_obj     ( CHAR_DATA *ch, const OBJ_DATA *obj );
 bool    can_see_room    ( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex);

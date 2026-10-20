@@ -2488,6 +2488,7 @@ void do_note( CHAR_DATA *ch, char *argument )
 void do_say( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
+    bool unheard = false;
 
     if ( argument[0] == '\0' )
     {
@@ -2541,8 +2542,23 @@ void do_say( CHAR_DATA *ch, char *argument )
                 continue;
             if ( rch != ch && rch->position < POS_RESTING )
                 continue;
+            if ( wizinvis_hides( ch, rch ) )
+            {
+                unheard = true;
+                continue;
+            }
             gmcp_send_channel( rch->desc, "say", channel_speaker( ch ), argument );
         }
+    }
+
+    /* act() dropped the line for them, so say so: a wizinvis speaker
+       otherwise sees "You say" and believes it was heard. */
+    if ( unheard )
+    {
+        snprintf( buf, sizeof(buf),
+            "(You are wizinvis: nobody below level %d here heard that.)\n\r",
+            ch->invis_level );
+        send_to_char( buf, ch );
     }
 
     /* Anything said in the Oracle's sanctum is said to her -- it is a
