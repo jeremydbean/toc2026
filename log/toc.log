@@ -144612,3 +144612,8 @@ Tue Oct 20 12:54:50 2026 :: Sock.sinaddr:  34.198.201.66
 Tue Oct 20 12:54:50 2026 :: EOF encountered on read.
 Tue Oct 20 12:59:54 2026 :: Sock.sinaddr:  54.167.223.174
 Tue Oct 20 12:59:54 2026 :: EOF encountered on read.
+Tue Oct 20 13:04:59 2026 :: Sock.sinaddr:  18.116.205.62
+Tue Oct 20 13:04:59 2026 :: EOF encountered on read.
+Tue Oct 20 13:07:32 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Tue Oct 20 13:07:36 2026 :: Log WebAdmin: fsave
+Tue Oct 20 13:07:42 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
