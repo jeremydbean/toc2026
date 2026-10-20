@@ -4804,8 +4804,14 @@ static bool buy_one( CHAR_DATA *ch, CHAR_DATA *keeper, char *argument )
     if ( hyrule_buy_refuses( ch, obj ) )
 	return false;
 
+    /* One of each from a black market stock (blackmarket.c). */
+    if ( black_market_buy_refuses( ch, keeper, obj ) )
+	return false;
+
     roll = number_percent();
-    if (!IS_NPC(ch) && roll < ch->pcdata->learned[gsn_haggle]) {
+    /* The black market's price is the price. */
+    if ( !IS_NPC(ch) && !is_black_market_dealer( keeper )
+    &&   roll < ch->pcdata->learned[gsn_haggle]) {
 	cost -= obj->cost / 2 * roll / 100;
     {
         char price_buf[MAX_INPUT_LENGTH];
@@ -4845,6 +4851,7 @@ static bool buy_one( CHAR_DATA *ch, CHAR_DATA *keeper, char *argument )
         obj->short_descr, obj->pIndexData->vnum, cost, keeper->short_descr );
     /* A bigger bomb bag becomes room in yours; bombs join your bombs. */
     hyrule_bought( ch, obj );
+    black_market_record( ch, keeper, obj );
     return true;
 }
 
@@ -4883,14 +4890,23 @@ void do_list( CHAR_DATA *ch, char *argument )
 
                 /* cost is gold; the purse is copper. Say which. */
                 format_price( cost, price_buf, sizeof(price_buf) );
-                snprintf( buf, sizeof(buf), "[%2d %10s] %s.\n\r",
-                    obj->level, price_buf, obj->short_descr);
+                snprintf( buf, sizeof(buf), "[%2d %10s] %s.%s\n\r",
+                    obj->level, price_buf, obj->short_descr,
+                    black_market_bought( ch, keeper, obj )
+                        ? "  (you have had yours)" : "");
 		send_to_char( buf, ch );
 	    }
 	}
 
 	if ( !found )
 	    send_to_char( "You can't buy anything here.\n\r", ch );
+
+	if ( is_black_market_dealer( keeper ) )
+	{
+	    act( "$n murmurs, 'One of each to a customer. I won't be here long.'",
+		 keeper, NULL, ch, TO_VICT );
+	    return;
+	}
 
 	/* Seasonal shop flavour message */
 	{

@@ -1405,6 +1405,8 @@ typedef struct hyrule_dungeon_gate
 /* Seasonal event boss mobs (seasonal.are) */
 #define MOB_VNUM_EVENT_HORSEMAN    29910  /* Hallows End: the Headless Horseman */
 #define MOB_VNUM_EVENT_FATHER      29911  /* Winter Veil: Father Winter */
+#define MOB_VNUM_BLACK_MARKET      29940  /* the wandering black market dealer */
+#define MOB_VNUM_PSIONIC_PROJECTION 7550  /* what PROJECT walks through distant rooms */
 
 /* Seasonal event boss drop items (seasonal.are) */
 #define OBJ_VNUM_HORSEMAN_REAPER   29920  /* the Headless Horseman's Reaper (weapon) */
@@ -2068,6 +2070,11 @@ struct  pc_data
     bool                psionic_grant_pending;
     char * psionic_grant_spec;
     char * psionic_known;
+    /* The black market: the stock (its id) this character last bought
+       from, and the vnums bought from it -- one of each. BlackMarket,
+       case 'B'. */
+    long   black_market_stock;
+    char * black_market_bought;
     char * changes_seen;     /* CHANGES: "id:count ...", changes.c */
     /* Not saved: a tell scrollback for the length of the session. */
     char * tell_history [TELL_HISTORY_LINES];
@@ -3374,6 +3381,21 @@ void    group_remove    ( CHAR_DATA *ch, const char *name);
 SF * spec_lookup     ( const char *name );
 char * special_name    ( SPEC_FUN *spec );
 int     guild_closed_rooms ( CHAR_DATA *ch, ROOM_INDEX_DATA **out, int max );
+int     guild_hall_rooms   ( ROOM_INDEX_DATA **out, int max );
+
+/* blackmarket.c */
+extern CHAR_DATA *black_market_dealer;
+bool    is_black_market_dealer   ( const CHAR_DATA *ch );
+bool    black_market_sees        ( const CHAR_DATA *looker, const CHAR_DATA *dealer );
+bool    black_market_holds       ( const OBJ_DATA *obj );
+void    black_market_update      ( void );
+void    black_market_restock     ( void );
+bool    black_market_arrive      ( ROOM_INDEX_DATA *room );
+void    black_market_depart      ( void );
+void    black_market_forget      ( CHAR_DATA *ch );
+bool    black_market_bought      ( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *obj );
+bool    black_market_buy_refuses ( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *obj );
+void    black_market_record      ( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *obj );
 
 /* hunt.c */
 void    hunt_victim     ( CHAR_DATA *ch, int ANNOY );

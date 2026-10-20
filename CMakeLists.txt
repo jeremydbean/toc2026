@@ -68,6 +68,7 @@ set(SRC_FILES
     src/build.c
     src/changes.c
     src/abilities.c
+    src/blackmarket.c
     src/wizlist.c
 )
 

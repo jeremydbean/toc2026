@@ -4598,6 +4598,7 @@ void free_char( CHAR_DATA *ch )
         free_string( ch->pcdata->psionic_grant_spec );
         free_string( ch->pcdata->psionic_known  );
         free_string( ch->pcdata->changes_seen   );
+        free_string( ch->pcdata->black_market_bought );
         for ( i = 0; i < TELL_HISTORY_LINES; i++ )
         {
             if ( ch->pcdata->tell_history[i] != NULL )

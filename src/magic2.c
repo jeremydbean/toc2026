@@ -44,7 +44,6 @@ extern ROOM_INDEX_DATA *	room_index_hash		[MAX_KEY_HASH];
 extern int top_room;
 extern AREA_DATA * new_area;
 
-#define MOB_VNUM_PSIONIC_PROJECTION 7550
 
 static bool psionic_defense_active( CHAR_DATA *victim )
 {

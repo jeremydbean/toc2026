@@ -2571,6 +2571,8 @@ void extract_char( CHAR_DATA *ch, bool fPull )
     OBJ_DATA *obj_next;
     LIST_ITERATOR iter;
 
+    black_market_forget( ch );
+
     if(ch->in_object != NULL )
     {
       if( !IS_NPC(ch) )
@@ -3351,6 +3353,11 @@ bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
     if ( wizinvis_hides( victim, ch ) )
 	return false;
 
+    /* The black market dealer is seen in his own room and nowhere else
+       (blackmarket.c): nothing finds him from afar. */
+    if ( is_black_market_dealer( victim ) && !black_market_sees( ch, victim ) )
+	return false;
+
     if ( IS_NPC(ch) && IS_AFFECTED2(victim, AFF2_GHOST))
 	return false;
 
@@ -3425,6 +3432,10 @@ bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
  */
 bool can_see_obj( CHAR_DATA *ch, const OBJ_DATA *obj )
 {
+    /* His goods are where he is: LOCATE OBJECT and the rest find nothing. */
+    if ( black_market_holds( obj ) && !black_market_sees( ch, black_market_dealer ) )
+        return false;
+
     if ( !IS_NPC(ch)
     &&   ( IS_SET(ch->act, PLR_HOLYLIGHT) || triforce_sight( ch ) ) )
         return true;

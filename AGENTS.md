@@ -2267,6 +2267,94 @@ alias, not a refusal. Public channel lines in `log/channels.tsv` are the
 third sweep: a shopkeeper saying "I don't trade with folks I can't see"
 twice in three days is why the keeper now says what is hiding you.
 
+## The Black Market
+
+`src/blackmarket.c` (owner's design, 2026-10-20). Vesh the Smuggler, mob
+29940 (`MOB_VNUM_BLACK_MARKET`) in `seasonal.are` with a shop that buys
+nothing, is **a rare spawn, in the world about one hour in ten**: a visit
+of twenty to forty minutes, three to six hours away, the first visit ten
+minutes to six hours after a boot. His long description opens `(Rare)`
+and his LOOK says plainly what he is and how he trades. While he is
+about, `black_market_update()` (every mobile pulse) moves him every 45-75
+seconds -- a step through an exit, or one move in eight a vanishing to a
+random room -- never into a room `bm_room_ok()` refuses: guild halls
+(`guild_hall_rooms()` in `special.c`, `guild_closed_rooms`' walk with
+nobody admitted), staff, newbie, hero, private, no-mob, death-trap and
+exitless rooms, and Hyrule, the yard, `seasonal.are`, the Quest Zone and
+Temple Despair.
+
+**One find, one customer** (owner, 2026-10-20: so several people cannot
+buy from him in one place, but whoever finds him has time to buy one of
+everything). A mortal standing with him has `BM_BROWSE_MAX` (90 s) to
+start buying before he moves on. The first purchase opens a sale window
+for that buyer alone -- `BM_SALE_FIRST` (60 s) plus `BM_SALE_MORE` (30 s)
+per further purchase -- and anyone else is told he is with a customer.
+When the window closes, the buyer leaves his room, or the buyer has had
+one of everything, he vanishes to a random room with a line to the room.
+His stock stays the same for the whole visit.
+
+**Logged.** Arrivals (room, area file, stock size, how long) and every
+purchase (buyer, item, vnum, price, room) go to `log_string` and to
+WIZINFO at immortal level; departures and every vanishing (from, to and
+why) to the log. `bm_where()` writes the room the same way in each.
+
+**He is seen in his own room and nowhere else.** `can_see` asks
+`black_market_sees()` after the wizinvis test and before the immortal-mob
+shortcut: staff see him anywhere, nobody else from another room, and
+PROJECT's stand-in (`MOB_VNUM_PSIONIC_PROJECTION`, now in `merc.h`) never.
+Every remote finder -- `get_char_world`, `travel_target`, WHERE,
+clairvoyance, TRACK, summon -- goes through `can_see`, so they all miss
+him; `can_see_obj` hides his goods (`black_market_holds`), which is what
+LOCATE OBJECT asks, and `oracle_can_see_char` refuses him by name. SCAN
+steps the scanner into each neighbour, so it sees him one room out, and
+skips him further out. A new way of finding a character elsewhere must go
+through `can_see` or ask `is_black_market_dealer` itself. TELEKINESIS
+only pulls what lies in rooms, so his pack is out of its reach anyway.
+
+**The stock is chosen from the world, at run time, and the pool is
+hundreds deep** (owner, 2026-10-20). `bm_build_gear()` marks every object
+a G or E reset puts on a mobile outside the skipped areas and staff rooms,
+then keeps, for each wear slot (`wear_obj`'s order) in each band of five
+levels **from `BM_GEAR_MIN_LEVEL` (29) up** (owner, 2026-10-20: best in
+slot from 29, and below that only what is otherwise rare or
+unobtainable), the three highest scorers (`BM_PER_SLOT`): damroll,
+hitroll and stats first, then hit points, armour and a weapon's average
+blow -- up to 294 pieces; BLACKMARKET reports how many the world fills.
+The rarities below come at any level. Load-limited,
+no-drop, no-remove, rot-death and quest-token items are never sold. **He
+carries `BM_STOCK_MAX` (five) things at most**: a holiday boss's drop at
+40%, a training cake at 30% (the two holiday cakes and Valhalla's wedding
+cake, 9955) and a lucky clover at 30% (Valhalla's 9943 and 9944) are
+rolled first, and the rest is drawn from the pool, each made with
+`create_object` at a negative level so nothing is randomised.
+
+**Nothing progression-based, ever** (owner, 2026-10-20). `bm_progression()`
+refuses Hyrule's whole object range (`BM_HYRULE_OBJ_FIRST`-`LAST`,
+30200-30999: the Triforce and its pieces, the Master Sword, the
+guardians' keys and treasures), every `ITEM_KEY`, and any object a door
+or a container in the world takes as its key; both the gear table and
+`bm_stock_one` ask it, so a hand-written rare list cannot slip one in.
+
+**Prices.** The standard price is sixty kills of the item's level
+(`bm_kill_value`, the averages of `mob_index_set_wealth`) or three times
+its cost, whichever is more, and a cake forty level-50 kills. **Anything
+no reset puts on a mobile costs `BM_RARE_MARKUP` (five) times that**
+(owner, 2026-10-20: black market stuff is expensive and hard to get) --
+the holiday drops, the cakes, the clovers. Rounded to whole coins, never
+haggled. Because the standard is anchored to the item's level, a low
+level rare piece stays cheap even marked up: the level 5 clover is about
+fifteen gold.
+
+**One of each, per character, per stock.** The stock's id is the time it
+was rolled; `pcdata->black_market_stock` and `black_market_bought` (the
+vnums) save as `BlackMarket <id> <vnums>~` under **case 'B'**, written
+at the purchase. A new visit is a new allowance. `extract_char` calls
+`black_market_forget`, so a PURGE cannot leave a dangling pointer, and
+`is_safe` already refuses any shopkeeper. `TOC_BLACK_MARKET_STILL` holds
+his wandering, his browsing limit and his departure for the live tests;
+the sale window still runs, so the tests can watch it end.
+`tests/test_black_market.py`.
+
 ## The Holiday Bosses
 
 The Headless Horseman (29910) and Father Winter (29911) in

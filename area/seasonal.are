@@ -74,6 +74,28 @@ BCE ABCDEF 0 0
 8 8 1 3000
 0 0 S 0
 
+#29940
+vesh smuggler dealer black market marketeer~
+Vesh the Smuggler~
+(Rare) Vesh the Smuggler, the wandering black market, hunches over his pack.
+~
+A lean man in a patched grey cloak, hood pulled low, with a pack of
+oilcloth bundles slung at his hip.  This is Vesh, the black market, and
+seeing him at all is luck: he is in the world only now and then, never in
+one place for long, and nothing finds him from afar.  His bundles hold
+what Dresden's merchants cannot get you -- the finest pieces some hunter
+carries, holiday treasures out of season, now and then a cake that
+teaches.  LIST shows his goods and BUY takes one.  He sells one of each to
+a customer, he does not haggle, and once he has your coin he is gone.
+~
+human~
+ABMUV DFJP 0 S
+60 0 1d1+30000 1d1+1000 1d4+5 13
+0 0 0 0
+BCE ABCDEF 0 0
+8 8 1 3000
+0 0 M 0
+
 #0
 
 
@@ -313,6 +335,7 @@ and nutmeg.  A cinnamon stick rests across the rim.
 #SHOPS
 29930 9 0 0 0 0 120 60 0 23
 29931 19 0 0 0 0 120 60 0 23
+29940 0 0 0 0 0 100 0 0 23
 0
 
 

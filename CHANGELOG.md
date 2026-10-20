@@ -10,6 +10,31 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **The black market** (`src/blackmarket.c`, owner's design, 2026-10-20).
+  Vesh the Smuggler (mob 29940 in `seasonal.are`, a shopkeeper that buys
+  nothing, `(Rare)` in his room line) is in the world about one hour in
+  ten: twenty to forty minutes, then three to six hours away. He moves
+  every minute or so, now and then vanishing to a random room, never
+  into a guild hall, a staff or newbie room, or an area nothing leads
+  to. Nothing finds him from afar: `can_see` allows his own room only
+  (and staff) and refuses PROJECT's stand-in, `can_see_obj` hides his
+  goods from LOCATE OBJECT, SCAN sees him one room out and no further,
+  and the Oracle does not know him. He carries five things at most,
+  drawn each visit from a pool of hundreds -- the three best pieces the
+  world places on a mobile for every slot in every band of five levels
+  from 29 up -- plus, at any level, sometimes a holiday boss's drop out of season, a training
+  cake (the holiday cakes or Valhalla's wedding cake) or a lucky clover.
+  Prices are sixty kills of the item's level (a cake forty level-50
+  kills) or three times its value, five times that for anything no
+  reset puts on a mobile, rounded. Never anything progression-based:
+  Hyrule's whole object range, any key, or anything a door or container
+  takes as its key. One of each to a character per stock, kept as
+  `BlackMarket <stock> <vnums>` (case 'B') and saved at the purchase. A
+  finder has ninety seconds to start buying; the first purchase gives
+  that buyer alone a window to buy the rest, and when it closes or the
+  buyer walks off he vanishes elsewhere. Arrivals and purchases reach
+  the log and WIZINFO with the room. Staff command BLACKMARKET.
+  `tests/test_black_market.py`.
 - **PRACTICE <skill> <count|max>** spends that many sessions at once
   and says where it got to; players typed the same PRACTICE six to nine
   times running at a guildmaster. `tests/test_player_frictions.py`.

@@ -1821,16 +1821,32 @@ static int guild_guard_door( DO_FUN *cmd )
 
 #define GUILD_GUARD_POSTS    32
 
+/* ch NULL: nobody is admitted, so every hall is walked. */
+static int guild_rooms_behind( CHAR_DATA *ch, ROOM_INDEX_DATA **out, int max );
+
 int guild_closed_rooms( CHAR_DATA *ch, ROOM_INDEX_DATA **out, int max )
+{
+    if ( ch == NULL || IS_NPC(ch) || out == NULL || max <= 0 )
+        return 0;
+    return guild_rooms_behind( ch, out, max );
+}
+
+/* Every room inside any guild hall: where somebody could not follow.
+   The black market dealer never stands in one. */
+int guild_hall_rooms( ROOM_INDEX_DATA **out, int max )
+{
+    if ( out == NULL || max <= 0 )
+        return 0;
+    return guild_rooms_behind( NULL, out, max );
+}
+
+static int guild_rooms_behind( CHAR_DATA *ch, ROOM_INDEX_DATA **out, int max )
 {
     ROOM_INDEX_DATA *hall[GUILD_HALL_MAX_ROOMS];
     ROOM_INDEX_DATA *posts[GUILD_GUARD_POSTS];
     int post_count = 0;
     int total = 0;
     int i;
-
-    if ( ch == NULL || IS_NPC(ch) || out == NULL || max <= 0 )
-        return 0;
 
     /* Every post that would turn this character away. A hall can have
        several doors -- the University has three -- and the walk inside
@@ -1839,7 +1855,7 @@ int guild_closed_rooms( CHAR_DATA *ch, ROOM_INDEX_DATA **out, int max )
     {
         ROOM_INDEX_DATA *post;
 
-        if ( !guild_guard_admits( &gg_table[i], ch )
+        if ( ( ch == NULL || !guild_guard_admits( &gg_table[i], ch ) )
         &&   ( post = get_room_index( gg_table[i].room_num ) ) != NULL )
             posts[post_count++] = post;
     }
@@ -1851,7 +1867,7 @@ int guild_closed_rooms( CHAR_DATA *ch, ROOM_INDEX_DATA **out, int max )
         int door, count, head, j;
         bool open_world = false;
 
-        if ( guild_guard_admits( &gg_table[i], ch ) )
+        if ( ch != NULL && guild_guard_admits( &gg_table[i], ch ) )
             continue;
         if ( ( door = guild_guard_door( gg_table[i].cmd ) ) < 0
         ||   ( guard_room = get_room_index( gg_table[i].room_num ) ) == NULL

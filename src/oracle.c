@@ -744,6 +744,10 @@ static bool oracle_can_see_char( CHAR_DATA *asker, CHAR_DATA *vch )
         return TRUE;
     if ( oracle_is_staff( vch ) )
         return FALSE;
+    /* Nor where the black market dealer is, or what he carries
+       (oracle_can_locate_obj asks this of his goods' holder). */
+    if ( is_black_market_dealer( vch ) )
+        return FALSE;
     if ( !IS_NPC(vch)
       && ( IS_SET(vch->act, PLR_WIZINVIS) || IS_SET(vch->act, PLR_CLOAKED) ) )
         return FALSE;

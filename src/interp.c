@@ -497,6 +497,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "oracle",         do_oracle,      POS_DEAD,       L4,  LOG_ALWAYS, 1 },
     { "spellpurge",     do_spellpurge,  POS_DEAD,       L4,  LOG_ALWAYS, 1 },
     { "summonevent",    do_summonevent, POS_DEAD,       L5,  LOG_ALWAYS, 1 },
+    { "blackmarket",    do_blackmarket, POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "resetpwd",       do_resetpwd,    POS_DEAD,       L5,  LOG_NEVER,  1 },
     { "newbie",         do_newbie,      POS_DEAD,       L10, LOG_ALWAYS, 1 },
     { "snoop",          do_snoop,       POS_DEAD,       L3,  LOG_ALWAYS, 1 },

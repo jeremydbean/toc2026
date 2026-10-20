@@ -647,6 +647,9 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "PsiGrant %d\n", ch->pcdata->psionic_grant_pending ? 1 : 0 );
     fprintf( fp, "PsiSpec %s~\n", ch->pcdata->psionic_grant_spec ? ch->pcdata->psionic_grant_spec : "" );
     fprintf( fp, "PsiKnown %s~\n", ch->pcdata->psionic_known ? ch->pcdata->psionic_known : "" );
+    if ( ch->pcdata->black_market_stock != 0 )
+        fprintf( fp, "BlackMarket %ld %s~\n", ch->pcdata->black_market_stock,
+                 ch->pcdata->black_market_bought ? ch->pcdata->black_market_bought : "" );
     fprintf( fp, "ChangesSeen %s~\n", ch->pcdata->changes_seen ? ch->pcdata->changes_seen : "" );
     fprintf( fp, "Cast %s\n",	get_castlename( ch->pcdata->castle) );
     fprintf( fp, "Levl %d\n",	ch->level		);
@@ -1384,6 +1387,8 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->psionic_grant_spec      = str_dup( "" );
     ch->pcdata->psionic_known           = str_dup( "" );
     ch->pcdata->changes_seen            = str_dup( "" );
+    ch->pcdata->black_market_stock      = 0;
+    ch->pcdata->black_market_bought     = str_dup( "" );
     {
 	int iWear;
 
@@ -1548,6 +1553,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     if ( ch->pcdata->psionic_grant_spec    == NULL ) ch->pcdata->psionic_grant_spec    = str_dup( "" );
     if ( ch->pcdata->psionic_known         == NULL ) ch->pcdata->psionic_known         = str_dup( "" );
     if ( ch->pcdata->changes_seen          == NULL ) ch->pcdata->changes_seen          = str_dup( "" );
+    if ( ch->pcdata->black_market_bought   == NULL ) ch->pcdata->black_market_bought   = str_dup( "" );
     if ( ch->pcdata->list_remorts          == NULL ) ch->pcdata->list_remorts          = str_dup( "" );
 
     /* Powers learned before the list existed still count towards it.
@@ -1908,6 +1914,16 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "BankCP",	ch->pcdata->bank,	fread_long( fp ) );
 	    KEY( "Bin",		ch->pcdata->bamfin,	fread_string( fp ) );
 	    KEY( "Bout",	ch->pcdata->bamfout,	fread_string( fp ) );
+	    /* What was bought from the black market's stock <id>: one of
+	       each (blackmarket.c). */
+	    if ( !str_cmp( word, "BlackMarket" ) )
+	    {
+		ch->pcdata->black_market_stock = fread_long( fp );
+		free_string( ch->pcdata->black_market_bought );
+		ch->pcdata->black_market_bought = fread_string( fp );
+		fMatch = true;
+		break;
+	    }
 	    break;
 
 	case 'C':

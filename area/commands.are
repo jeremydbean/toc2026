@@ -1117,6 +1117,53 @@ restore something a bug took from you, and answer what the help does not.
 See also: NOTE, BUG, RULES, WIZLIST
 ~
 
+0 'BLACK MARKET' DEALER MARKET VESH SMUGGLER~
+Rumour has it a smuggler called Vesh walks the world selling what cannot
+be had anywhere else: some of the finest gear a level 29 or better can
+wear, holiday
+treasures out of season, and now and then a cake that teaches as much as
+a training session, or a lucky clover.
+
+He is rarely about -- in the world perhaps one hour in ten -- and while
+he is, he never stays put: he moves on every minute or so, and now and
+then simply vanishes and turns up somewhere else entirely.  Nothing finds
+him from afar: no spell, no tracking, no asking around.  You will see him
+if you walk into his room, or if you SCAN and he is standing one room
+away.  He does not wait on gawkers: start buying within a minute and a
+half or he moves on.
+
+LIST shows what he has -- five things at most -- BUY buys it, and he buys
+nothing from you.  His prices are steep and not for haggling, and what
+cannot be had anywhere else costs five times as much again.  He sells
+one of each to a customer, and while he is selling to you nobody else
+may buy.  Once you have had what you want, or walk away, he is gone, and
+the next customer has to find him again.  What he carries changes every
+time he comes back.
+
+See also: SCAN, LIST, BUY
+~
+
+60 BLACKMARKET~
+Syntax: blackmarket                (where he is, how long, stock, pool)
+        blackmarket summon         (bring him into the world now)
+        blackmarket here           (bring him, or move him, to your room)
+        blackmarket restock        (lay out a new stock)
+        blackmarket dismiss        (send him away)
+
+Vesh, the black market (mob 29940), comes for twenty to forty minutes,
+then is away for three to six hours; his first visit after a boot is ten
+minutes to six hours in.  While he is about he moves every 45-75 seconds,
+one move in eight a vanishing to a random room.  A mortal with him has
+90 seconds to start buying; the first purchase gives that buyer alone 60
+seconds, and 30 more per purchase, then he vanishes.  He carries five
+items at most from a pool of the three best pieces per slot in every
+five levels from 29, plus rarities at any level.  Appearances and purchases come to WIZINFO
+and the log with the room.  Staff see him anywhere; mortals only in his
+room, or one room away with SCAN.
+
+See also: 'BLACK MARKET'
+~
+
 0 RULES~
 Syntax: rules
 
