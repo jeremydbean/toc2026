@@ -142499,3 +142499,205 @@ Tue Oct 20 02:46:49 2026 :: Log Trentlin [16047]: smite
 Tue Oct 20 02:46:51 2026 :: Log Trentlin [16047]: n
 Tue Oct 20 02:46:51 2026 :: Log Trentlin [16050]: arrived (Bow of the Royal Eagle) from 16047
 Tue Oct 20 02:46:52 2026 :: Log Trentlin [16050]: k pir
+Tue Oct 20 02:46:57 2026 :: Log Trentlin [16050]: w
+Tue Oct 20 02:46:57 2026 :: Log Trentlin [16049]: arrived (Bow of the Royal Eagle) from 16050
+Tue Oct 20 02:46:57 2026 :: Log Trentlin [16049]: k pir
+Tue Oct 20 02:47:03 2026 :: Log Trentlin [16049]: e
+Tue Oct 20 02:47:03 2026 :: Log Trentlin [16050]: arrived (Bow of the Royal Eagle) from 16049
+Tue Oct 20 02:47:03 2026 :: Log Trentlin [16050]: k poir
+Tue Oct 20 02:47:03 2026 :: Log Trentlin [16050]: k pir
+Tue Oct 20 02:47:04 2026 :: Log Trentlin [16050]: killed The pirate
+Tue Oct 20 02:47:04 2026 :: Log Trentlin [16050]: coin +2 platinum
+Tue Oct 20 02:47:04 2026 :: Log Trentlin [16050]: coin +12 silver
+Tue Oct 20 02:47:04 2026 :: Log Trentlin [16050]: coin +17 copper
+Tue Oct 20 02:47:04 2026 :: Log Trentlin [16050]: coin +7 gold
+Tue Oct 20 02:47:09 2026 :: Log Trentlin [16050]: reca
+Tue Oct 20 02:47:11 2026 :: Log Trentlin [16050]: recall
+Tue Oct 20 02:47:13 2026 :: Log Trentlin [16050]: recall
+Tue Oct 20 02:47:13 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 16050
+Tue Oct 20 02:47:14 2026 :: Log Trentlin [4207]: w
+Tue Oct 20 02:47:14 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Tue Oct 20 02:47:15 2026 :: Log Trentlin [4208]: heal all
+Tue Oct 20 02:47:15 2026 :: Spellup: Hermie gave Trentlin the full list (30 ticks) in room 4208.
+Tue Oct 20 02:47:16 2026 :: Log Trentlin [4208]: e
+Tue Oct 20 02:47:16 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4208
+Tue Oct 20 02:47:16 2026 :: Log Trentlin [4207]: e
+Tue Oct 20 02:47:16 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Tue Oct 20 02:47:16 2026 :: Log Trentlin [4202]: e
+Tue Oct 20 02:47:16 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Tue Oct 20 02:47:17 2026 :: Log Trentlin [4201]: e
+Tue Oct 20 02:47:17 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Tue Oct 20 02:47:17 2026 :: Log Trentlin [2427]: n
+Tue Oct 20 02:47:17 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Oct 20 02:47:18 2026 :: Log Trentlin [2404]: n
+Tue Oct 20 02:47:18 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Tue Oct 20 02:47:21 2026 :: Log Trentlin [2401]: r w 7
+Tue Oct 20 02:47:21 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Tue Oct 20 02:47:21 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Tue Oct 20 02:47:21 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Tue Oct 20 02:47:21 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Tue Oct 20 02:47:21 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Tue Oct 20 02:47:21 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Tue Oct 20 02:47:21 2026 :: Log Trentlin [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Tue Oct 20 02:47:22 2026 :: Log Trentlin [2438]: open west
+Tue Oct 20 02:47:22 2026 :: Log Trentlin [2438]: w
+Tue Oct 20 02:47:22 2026 :: Log Trentlin [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Tue Oct 20 02:47:22 2026 :: Log Trentlin [2439]: r n 3
+Tue Oct 20 02:47:22 2026 :: Log Trentlin [3900]: arrived (West trail around Dresden) from 2439
+Tue Oct 20 02:47:22 2026 :: Log Trentlin [3901]: arrived (West trail around Dresden) from 3900
+Tue Oct 20 02:47:22 2026 :: Log Trentlin [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Tue Oct 20 02:47:22 2026 :: Log Trentlin [3902]: e
+Tue Oct 20 02:47:22 2026 :: Log Trentlin [3903]: arrived (Dusty trail along north wall.) from 3902
+Tue Oct 20 02:47:23 2026 :: Log Trentlin [3903]: e
+Tue Oct 20 02:47:23 2026 :: Log Trentlin [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Tue Oct 20 02:47:23 2026 :: Log Trentlin [3904]: r n
+Tue Oct 20 02:47:23 2026 :: Log Trentlin [300]: arrived (Path in the plains) from 3904
+Tue Oct 20 02:47:23 2026 :: Log Trentlin [315]: arrived (Gallow hill) from 300
+Tue Oct 20 02:47:23 2026 :: Log Trentlin [320]: arrived (Grassy plains) from 315
+Tue Oct 20 02:47:23 2026 :: Log Trentlin [322]: arrived (Grassy foothills) from 320
+Tue Oct 20 02:47:23 2026 :: Log Trentlin [324]: arrived (The steep foothills) from 322
+Tue Oct 20 02:47:23 2026 :: Log Trentlin [45]: arrived (Base of Mount Ulmo) from 324
+Tue Oct 20 02:47:23 2026 :: Log Trentlin [1000]: arrived (A mountain path) from 45
+Tue Oct 20 02:47:23 2026 :: Log Trentlin [1001]: arrived (A mountain path) from 1000
+Tue Oct 20 02:47:23 2026 :: Log Trentlin [1001]: stand
+Tue Oct 20 02:47:23 2026 :: Log Trentlin [1001]: u
+Tue Oct 20 02:47:23 2026 :: Log Trentlin [1002]: arrived (A mountain path) from 1001
+Tue Oct 20 02:47:24 2026 :: Log Trentlin [1002]: n
+Tue Oct 20 02:47:24 2026 :: Log Trentlin [1003]: arrived (Mt. Ulmo Pass) from 1002
+Tue Oct 20 02:47:24 2026 :: Log Trentlin [1003]: d
+Tue Oct 20 02:47:24 2026 :: Log Trentlin [1004]: arrived (A sloping path down the hill) from 1003
+Tue Oct 20 02:47:24 2026 :: Log Trentlin [1004]: n
+Tue Oct 20 02:47:24 2026 :: Log Trentlin [1005]: arrived (A sloping path down the hill) from 1004
+Tue Oct 20 02:47:24 2026 :: Log Trentlin [1005]: n
+Tue Oct 20 02:47:24 2026 :: Log Trentlin [1006]: arrived (The Upper Argo) from 1005
+Tue Oct 20 02:47:25 2026 :: Log Trentlin [1006]: n
+Tue Oct 20 02:47:25 2026 :: Log Trentlin [1007]: arrived (A clearing) from 1006
+Tue Oct 20 02:47:26 2026 :: Log Trentlin [1007]: sca
+Tue Oct 20 02:47:27 2026 :: Log Trentlin [1007]: n
+Tue Oct 20 02:47:27 2026 :: Log Trentlin [1015]: arrived (A clearing) from 1007
+Tue Oct 20 02:47:31 2026 :: Log Trentlin [1015]: l im
+Tue Oct 20 02:47:32 2026 :: Log Trentlin [1015]: con im
+Tue Oct 20 02:47:33 2026 :: Log Trentlin [1015]: k im
+Tue Oct 20 02:47:38 2026 :: Log Trentlin [1015]: smite
+Tue Oct 20 02:47:43 2026 :: Log Trentlin [1015]: killed an Orgeem Imp
+Tue Oct 20 02:47:43 2026 :: Log Trentlin [1015]: coin +2 silver
+Tue Oct 20 02:47:43 2026 :: Log Trentlin [1015]: coin +3 copper
+Tue Oct 20 02:47:43 2026 :: Log Trentlin [1015]: coin +1 gold
+Tue Oct 20 02:47:46 2026 :: Log Trentlin [1015]: sco
+Tue Oct 20 02:47:48 2026 :: Log Trentlin [1015]: n
+Tue Oct 20 02:47:48 2026 :: Log Trentlin [1020]: arrived (A clearing) from 1015
+Tue Oct 20 02:47:49 2026 :: Log Trentlin [1020]: n
+Tue Oct 20 02:47:49 2026 :: Log Trentlin [1026]: arrived (A clearing) from 1020
+Tue Oct 20 02:47:50 2026 :: Log Trentlin [1026]: sca
+Tue Oct 20 02:47:51 2026 :: Log Trentlin [1026]: n
+Tue Oct 20 02:47:51 2026 :: Log Trentlin [1031]: arrived (A clearing) from 1026
+Tue Oct 20 02:47:51 2026 :: Log Trentlin [1031]: sca
+Tue Oct 20 02:47:54 2026 :: Log Trentlin [1031]: smite
+Tue Oct 20 02:48:05 2026 :: Log Trentlin [1031]: smite
+Tue Oct 20 02:48:07 2026 :: Log Trentlin [1031]: killed an Orgeem Imp
+Tue Oct 20 02:48:07 2026 :: Log Trentlin [1031]: coin +2 silver
+Tue Oct 20 02:48:07 2026 :: Log Trentlin [1031]: coin +3 copper
+Tue Oct 20 02:48:07 2026 :: Log Trentlin [1031]: coin +1 gold
+Tue Oct 20 02:48:14 2026 :: Log Trentlin [1031]: w
+Tue Oct 20 02:48:14 2026 :: Log Trentlin [1030]: arrived (A bushy clearing) from 1031
+Tue Oct 20 02:48:14 2026 :: Log Trentlin [1030]: con dra
+Tue Oct 20 02:48:14 2026 :: Log Trentlin [1030]: l dra
+Tue Oct 20 02:48:17 2026 :: Log Trentlin [1030]: sca
+Tue Oct 20 02:48:19 2026 :: Log Trentlin [1030]: w
+Tue Oct 20 02:48:19 2026 :: Log Trentlin [1029]: arrived (A bushy clearing) from 1030
+Tue Oct 20 02:48:20 2026 :: Log Trentlin [1029]: con re
+Tue Oct 20 02:48:23 2026 :: Log Trentlin [1029]: n
+Tue Oct 20 02:48:23 2026 :: Log Trentlin [1039]: arrived (A bushy clearing) from 1029
+Tue Oct 20 02:48:25 2026 :: Log Trentlin [1039]: sca
+Tue Oct 20 02:48:26 2026 :: Log Trentlin [1039]: con to
+Tue Oct 20 02:48:27 2026 :: Log Trentlin [1039]: l to
+Tue Oct 20 02:48:29 2026 :: Log Trentlin [1039]: e
+Tue Oct 20 02:48:29 2026 :: Log Trentlin [1038]: arrived (A bushy clearing) from 1039
+Tue Oct 20 02:48:29 2026 :: Log Trentlin [1038]: e
+Tue Oct 20 02:48:29 2026 :: Log Trentlin [1037]: arrived (A clearing) from 1038
+Tue Oct 20 02:48:30 2026 :: Log Trentlin [1037]: sca
+Tue Oct 20 02:48:31 2026 :: Log Trentlin [1037]: e
+Tue Oct 20 02:48:31 2026 :: Log Trentlin [1036]: arrived (A bushy clearing) from 1037
+Tue Oct 20 02:48:32 2026 :: Log Trentlin [1036]: sca
+Tue Oct 20 02:48:32 2026 :: Log Trentlin [1036]: n
+Tue Oct 20 02:48:32 2026 :: Log Trentlin [1043]: arrived (A bushy clearing) from 1036
+Tue Oct 20 02:48:33 2026 :: Log Trentlin [1043]: n
+Tue Oct 20 02:48:34 2026 :: Log Trentlin [1043]: e
+Tue Oct 20 02:48:34 2026 :: Log Trentlin [1044]: arrived (A bushy clearing) from 1043
+Tue Oct 20 02:48:36 2026 :: Log Trentlin [1044]: con tr
+Tue Oct 20 02:48:36 2026 :: Log Trentlin [1044]: l tr
+Tue Oct 20 02:48:38 2026 :: Log Trentlin [1044]: con tro
+Tue Oct 20 02:48:39 2026 :: Log Trentlin [1044]: l tro
+Tue Oct 20 02:48:41 2026 :: Log Trentlin [1044]: k tro
+Tue Oct 20 02:48:45 2026 :: Log Trentlin [1044]: smite
+Tue Oct 20 02:48:53 2026 :: Log Trentlin [1044]: smite
+Tue Oct 20 02:49:02 2026 :: Log Trentlin [1044]: smite
+Tue Oct 20 02:49:08 2026 :: Log Trentlin [1044]: smite
+Tue Oct 20 02:49:16 2026 :: Log Trentlin [1044]: killed a Black Troll
+Tue Oct 20 02:49:16 2026 :: Log Trentlin [1044]: coin +1 platinum
+Tue Oct 20 02:49:16 2026 :: Log Trentlin [1044]: coin +5 silver
+Tue Oct 20 02:49:16 2026 :: Log Trentlin [1044]: coin +6 copper
+Tue Oct 20 02:49:16 2026 :: Log Trentlin [1044]: coin +2 gold
+Tue Oct 20 02:49:19 2026 :: Log Trentlin [1044]: smite
+Tue Oct 20 02:49:21 2026 :: Log Trentlin [1044]: get drago cor
+Tue Oct 20 02:49:22 2026 :: Log Trentlin [1044]: sco
+Tue Oct 20 02:49:23 2026 :: Log Trentlin [1044]: compare drag
+Tue Oct 20 02:49:32 2026 :: Log Trentlin [1044]: wear dra
+Tue Oct 20 02:49:34 2026 :: Log Trentlin [1044]: l
+Tue Oct 20 02:49:35 2026 :: Log Trentlin [1044]: sca
+Tue Oct 20 02:49:36 2026 :: Log Trentlin [1044]: n
+Tue Oct 20 02:49:36 2026 :: Log Trentlin [1047]: arrived (A bushy clearing) from 1044
+Tue Oct 20 02:49:37 2026 :: Log Trentlin [1047]: k im
+Tue Oct 20 02:49:41 2026 :: Log Trentlin [1047]: smite
+Tue Oct 20 02:49:50 2026 :: Log Trentlin [1047]: smite
+Tue Oct 20 02:49:56 2026 :: Log Trentlin [1047]: smite
+Tue Oct 20 02:50:04 2026 :: Log Trentlin [1047]: killed an Orgeem Imp
+Tue Oct 20 02:50:04 2026 :: Log Trentlin [1047]: coin +2 silver
+Tue Oct 20 02:50:04 2026 :: Log Trentlin [1047]: coin +3 copper
+Tue Oct 20 02:50:04 2026 :: Log Trentlin [1047]: coin +1 gold
+Tue Oct 20 02:50:05 2026 :: Log Trentlin [1047]: smite
+Tue Oct 20 02:50:06 2026 :: Log Trentlin [1047]: e
+Tue Oct 20 02:50:06 2026 :: Log Trentlin [1046]: arrived (A bushy clearing) from 1047
+Tue Oct 20 02:50:06 2026 :: Log Trentlin [1046]: sca
+Tue Oct 20 02:50:08 2026 :: Log Trentlin [1046]: n
+Tue Oct 20 02:50:08 2026 :: Log Trentlin [1051]: arrived (A small clearing) from 1046
+Tue Oct 20 02:50:09 2026 :: Log Trentlin [1051]: con tr
+Tue Oct 20 02:50:09 2026 :: Log Trentlin [1051]: l tr
+Tue Oct 20 02:50:11 2026 :: Log Trentlin [1051]: con tro
+Tue Oct 20 02:50:12 2026 :: Log Trentlin [1051]: l tro
+Tue Oct 20 02:50:14 2026 :: Log Trentlin [1051]: k tro
+Tue Oct 20 02:50:22 2026 :: Log Trentlin [1051]: smite
+Tue Oct 20 02:50:25 2026 :: Sock.sinaddr:  5.161.194.92
+Tue Oct 20 02:50:25 2026 :: EOF encountered on read.
+Tue Oct 20 02:50:32 2026 :: Log Trentlin [1051]: smite
+Tue Oct 20 02:50:47 2026 :: Log Trentlin [1051]: smite
+Tue Oct 20 02:50:53 2026 :: Log Trentlin [1051]: smite
+Tue Oct 20 02:51:00 2026 :: Log Trentlin [1051]: smite
+Tue Oct 20 02:51:01 2026 :: Log Trentlin [1051]: killed a Whitish Troll
+Tue Oct 20 02:51:01 2026 :: Log Trentlin [1051]: coin +1 platinum
+Tue Oct 20 02:51:01 2026 :: Log Trentlin [1051]: coin +7 silver
+Tue Oct 20 02:51:01 2026 :: Log Trentlin [1051]: coin +10 copper
+Tue Oct 20 02:51:01 2026 :: Log Trentlin [1051]: coin +4 gold
+Tue Oct 20 02:51:09 2026 :: Log Trentlin [1051]: get swo cor
+Tue Oct 20 02:51:10 2026 :: Log Trentlin [1051]: compare swo
+Tue Oct 20 02:51:13 2026 :: Log Trentlin [1051]: sca
+Tue Oct 20 02:51:16 2026 :: Log Trentlin [1051]: recal
+Tue Oct 20 02:51:18 2026 :: Log Trentlin [1051]: recal
+Tue Oct 20 02:51:18 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 1051
+Tue Oct 20 02:51:20 2026 :: Log Trentlin [4207]: sco
+Tue Oct 20 02:51:22 2026 :: Log Trentlin [4207]: i
+Tue Oct 20 02:51:26 2026 :: Log Trentlin [4207]: w
+Tue Oct 20 02:51:26 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Tue Oct 20 02:51:28 2026 :: Log Trentlin [4208]: heal curse
+Tue Oct 20 02:51:30 2026 :: Log Trentlin [4208]: heal all
+Tue Oct 20 02:51:30 2026 :: Spellup: Hermie gave Trentlin the full list (30 ticks) in room 4208.
+Tue Oct 20 02:51:33 2026 :: Log Trentlin [4208]: heal uncurse
+Tue Oct 20 02:51:33 2026 :: Spellup: Hermie gave Trentlin remove curse (30 ticks) in room 4208.
+Tue Oct 20 02:51:36 2026 :: Log Trentlin [4208]: heal uncurse
+Tue Oct 20 02:51:36 2026 :: Spellup: Hermie gave Trentlin remove curse (30 ticks) in room 4208.
+Tue Oct 20 02:51:37 2026 :: Log Trentlin [4208]: aff
+Tue Oct 20 02:51:38 2026 :: Log Trentlin [4208]: i
+Tue Oct 20 02:51:40 2026 :: Log Trentlin [4208]: eq
+Tue Oct 20 02:51:45 2026 :: Log Trentlin [4208]: wear a
+Tue Oct 20 02:51:47 2026 :: Log Trentlin [4208]: drop dra
+Tue Oct 20 02:51:55 2026 :: Log Trentlin [4208]: wear buck
