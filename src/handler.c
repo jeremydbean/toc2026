@@ -3448,6 +3448,12 @@ bool can_see_obj( CHAR_DATA *ch, const OBJ_DATA *obj )
     if ( IS_AFFECTED( ch, AFF_BLIND ) && obj->item_type != ITEM_POTION)
 	return false;
 
+    /* The dealer shows his goods by his own shuttered lantern: he wanders
+       into dark rooms and night fields, where LIST would otherwise answer
+       that nothing is for sale while he offers one of each. */
+    if ( black_market_holds( obj ) )
+	return true;
+
     if ( obj->item_type == ITEM_LIGHT && obj->value[2] != 0 )
 	return true;
 

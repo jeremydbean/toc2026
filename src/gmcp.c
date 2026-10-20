@@ -12,7 +12,7 @@
 #include "merc.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.5.5"
+#define TOC_MUDLET_PACKAGE_VERSION "1.5.6"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \
@@ -569,6 +569,7 @@ void gmcp_send_quest( DESCRIPTOR_DATA *d )
     toc_strlcat( json, ",\"kind\":", sizeof(json) );
     gmcp_json_append_quoted( json, sizeof(json),
         !active ? "none"
+      : ch->questdaily ? "daily"
       : ch->questemergency ? "emergency"
       : ch->questrush ? "rush" : "normal" );
 
@@ -604,10 +605,14 @@ void gmcp_send_quest( DESCRIPTOR_DATA *d )
                              region, sizeof(region) );
             /* The target room's vnum, so the Mudlet client can walk
                there: the map keys rooms by vnum, so WALK QUEST is just
-               gotoRoom(num). Only present when the target is located. */
-            toc_strlcat( json, ",\"num\":", sizeof(json) );
-            snprintf( number, sizeof(number), "%d", ch->questroom );
-            toc_strlcat( json, number, sizeof(json) );
+               gotoRoom(num). Staff only, as WALKTO QUEST is (owner,
+               2026-10-20): a mortal's client falls back to the area. */
+            if ( IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+            {
+                toc_strlcat( json, ",\"num\":", sizeof(json) );
+                snprintf( number, sizeof(number), "%d", ch->questroom );
+                toc_strlcat( json, number, sizeof(json) );
+            }
             toc_strlcat( json, ",\"room\":", sizeof(json) );
             gmcp_json_append_quoted( json, sizeof(json), where->name );
             toc_strlcat( json, ",\"area\":", sizeof(json) );

@@ -3633,6 +3633,10 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
         if ( ( type == TO_ROOM || type == TO_NOTVICT )
           && wizinvis_hides( ch, to ) )
             continue;
+        /* ...nor as the one acted on: "the goblin's slash hits someone"
+           tells the room somebody is standing there. */
+        if ( type == TO_NOTVICT && vch != NULL && wizinvis_hides( vch, to ) )
+            continue;
  
         dstring_clear( &buf );
         allow_color = color_is_enabled( to );

@@ -94,6 +94,10 @@ class GmcpPayloadTests(unittest.TestCase):
         # there -- the map keys rooms by vnum, so WALK QUEST is gotoRoom.
         self.assertIn(r'\"num\"', body)
         self.assertIn("ch->questroom", body)
+        # ...for staff only, as WALKTO QUEST is (owner, 2026-10-20).
+        self.assertLess(body.index("IS_TRUSTED( ch, LEVEL_IMMORTAL )"),
+                        body.index(r'\"num\"'))
+        self.assertIn('"daily"', body)
 
     def test_the_target_feed_respects_sight(self) -> None:
         """You cannot watch the health of something you cannot see."""

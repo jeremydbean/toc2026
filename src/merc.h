@@ -2159,6 +2159,7 @@ struct  pc_data
     int                 daily_done;           /* daily quests finished that day */
     int                 daily_streak;         /* days running with all three done */
     long                daily_last_full;      /* the last day all three were done */
+    long                daily_wait_until;     /* no daily before this (a given-up one) */
     /* Training-yard run; deliberately not persisted. */
     long                dummy_dealt;
     long                dummy_taken;
@@ -3435,7 +3436,8 @@ bool    treasure_goblin_spawn    ( ROOM_INDEX_DATA *room );
 void    treasure_goblin_dismiss  ( void );
 void    treasure_goblin_forget   ( CHAR_DATA *ch );
 int     treasure_goblin_blow     ( CHAR_DATA *gob, int dam );
-void    treasure_goblin_struck   ( CHAR_DATA *ch, CHAR_DATA *gob );
+void    treasure_goblin_struck   ( CHAR_DATA *ch, CHAR_DATA *gob, bool held );
+bool    treasure_goblin_held     ( CHAR_DATA *gob );
 void    treasure_goblin_slain    ( CHAR_DATA *ch, CHAR_DATA *gob );
 bool    treasure_goblin_cheats_death ( CHAR_DATA *killer, CHAR_DATA *gob );
 void    treasure_goblin_update   ( void );

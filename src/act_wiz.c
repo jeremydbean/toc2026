@@ -8847,7 +8847,7 @@ void do_bowl( CHAR_DATA *ch, char *argument )
 
 	    act("You pick up $N and hurl them up into the sky!",ch,NULL,victim,TO_CHAR);
 	    act("$n picks up $N and hurls them into the sky!",ch,NULL,victim,TO_ROOM);
-	    snprintf(buf, sizeof(buf),"%s picks you up and hurls you into the sky!",ch->name);
+	    act("$n picks you up and hurls you into the sky!",ch,NULL,victim,TO_VICT);
 	    char_from_room(victim);
 	    char_to_room(victim,location);
 	    do_look(victim,"auto");
@@ -8902,7 +8902,7 @@ void do_bowl( CHAR_DATA *ch, char *argument )
 
     act("You pick up $N and hurl them up into the sky!",ch,NULL,victim,TO_CHAR);
     act("$n picks up $N and hurls them into the sky!",ch,NULL,victim,TO_ROOM);
-    snprintf(buf, sizeof(buf),"%s picks you up and hurls you into the sky!",ch->name);
+    act("$n picks you up and hurls you into the sky!",ch,NULL,victim,TO_VICT);
     char_from_room(victim);
     char_to_room(victim,location);
     do_look(victim,"auto");

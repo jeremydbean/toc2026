@@ -37,6 +37,19 @@ static long rest_level_span( CHAR_DATA *ch )
     return UMAX( 1, exp_per_level( ch, ch->pcdata->points ) );
 }
 
+/* The pool never holds more than a level and a half of the level the
+   character is now: a hero's full pool carried through a remort would
+   otherwise double ten levels of a level 3's kills. */
+static void rest_xp_clamp( CHAR_DATA *ch )
+{
+    long cap = rest_level_span( ch ) * REST_CAP_PERCENT / 100;
+
+    if ( ch->pcdata->rest_xp > cap )
+        ch->pcdata->rest_xp = cap;
+    if ( ch->pcdata->rest_xp < 0 )
+        ch->pcdata->rest_xp = 0;
+}
+
 /* Whether experience would be paid at all: gain_exp's own refusals. */
 static bool rest_xp_usable( CHAR_DATA *ch )
 {
@@ -88,6 +101,7 @@ void rest_xp_on_login( CHAR_DATA *ch )
          ? (long) current_time - ch->pcdata->last_logout : 0;
     span = rest_level_span( ch );
     cap = span * REST_CAP_PERCENT / 100;
+    rest_xp_clamp( ch );
 
     if ( ch->pcdata->rest_eligible && away >= REST_MIN_AWAY && rest_xp_usable( ch ) )
     {
@@ -108,10 +122,14 @@ void rest_xp_on_login( CHAR_DATA *ch )
             send_to_char( buf, ch );
         }
     }
-    else if ( !ch->pcdata->rest_eligible && away >= 60 * 60 && rest_xp_usable( ch ) )
-        send_to_char( "You slept rough last time.  Quit somewhere safe -- a "
-                      "healing room, the Temple, your recall point -- to come "
-                      "back rested.\n\r", ch );
+    else if ( !ch->pcdata->rest_eligible && away >= 60 * 60 && rest_xp_usable( ch )
+         &&   ch->pcdata->rest_xp < cap )
+        /* Not "you slept rough": a crash, a lost link or a file from
+           before rest existed land here too, and none of them chose
+           where to lie down. */
+        send_to_char( "You come back unrested: only QUIT somewhere safe -- "
+                      "a healing room, the Temple, your recall point -- "
+                      "banks rest while you are away.\n\r", ch );
     ch->pcdata->rest_eligible = false;
 }
 
@@ -124,13 +142,13 @@ int rest_xp_bonus( CHAR_DATA *ch, int xp )
     if ( xp <= 0 || IS_NPC(ch) || ch->pcdata == NULL
     ||   ch->pcdata->rest_xp <= 0 || !rest_xp_usable( ch ) )
         return 0;
+    rest_xp_clamp( ch );
     bonus = UMIN( (long) xp, ch->pcdata->rest_xp );
     ch->pcdata->rest_xp -= bonus;
-    if ( ch->pcdata->rest_xp <= 0 )
-    {
+    if ( ch->pcdata->rest_xp < 0 )
         ch->pcdata->rest_xp = 0;
-        send_to_char( "You no longer feel rested.\n\r", ch );
-    }
+    /* group_gain says "You no longer feel rested" after the experience
+       line, when the pool reads empty. */
     return (int) bonus;
 }
 

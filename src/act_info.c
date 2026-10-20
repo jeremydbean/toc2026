@@ -3968,17 +3968,21 @@ void do_practice(CHAR_DATA *ch, char *argument)
         }
         else
         {
+            /* At least a point a session: a low intelligence against a
+               hard skill divided down to nothing, and PRACTICE MAX then
+               spent every session the character had for no gain. */
+            int gain = sn == gsn_heros_grip
+                ? HEROS_GRIP_PRACTICE_GAIN
+                : UMAX( 1, int_app[get_curr_stat(ch,STAT_INT)].learn /
+                           UMAX( 1, skill_table[sn].rating[ch->class] ) );
+
             while ( done < count && ch->practice > 0
                  && ch->pcdata->learned[sn] < adept )
             {
                 ch->practice--;
                 done++;
                 ch->pcdata->learned[sn] = (int16_t)(
-                    ch->pcdata->learned[sn] +
-                    ( sn == gsn_heros_grip
-                        ? HEROS_GRIP_PRACTICE_GAIN
-                        : int_app[get_curr_stat(ch,STAT_INT)].learn /
-                          skill_table[sn].rating[ch->class] ));
+                    ch->pcdata->learned[sn] + gain );
                 if ( ch->pcdata->learned[sn] > adept )
                     ch->pcdata->learned[sn] = (int16_t)adept;
             }

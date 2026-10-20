@@ -4643,15 +4643,20 @@ CHAR_DATA *find_keeper( CHAR_DATA *ch )
 	do_say( keeper, "I don't trade with folks I can't see." );
 	/* Say why, or the player checks AFFECTS and guesses (two did, in
 	   October 2026). Each is something they can undo. */
-	if ( IS_AFFECTED(ch, AFF_INVISIBLE) )
-	    send_to_char( "(You are invisible. VISIBLE will fix that.)\n\r", ch );
-	else if ( IS_AFFECTED2(ch, AFF2_GHOST) )
+	/* In can_see's order, and only a flag the keeper cannot see through:
+	   an invisible player in a dark shop was told VISIBLE would fix it,
+	   typed VISIBLE, and was refused again. A mobile never sees a ghost. */
+	if ( IS_AFFECTED2(ch, AFF2_GHOST) )
 	    send_to_char( "(You are a ghost. VISIBLE will fix that.)\n\r", ch );
+	else if ( ch->in_room != NULL && room_is_dark( ch->in_room )
+	     &&   !IS_AFFECTED(keeper, AFF_INFRARED) )
+	    send_to_char( "(It is too dark here for the keeper to make you out.)\n\r", ch );
+	else if ( IS_AFFECTED(ch, AFF_INVISIBLE)
+	     &&   !IS_AFFECTED(keeper, AFF_DETECT_INVIS) )
+	    send_to_char( "(You are invisible. VISIBLE will fix that.)\n\r", ch );
 	else if ( IS_AFFECTED(ch, AFF_HIDE) || IS_AFFECTED2(ch, AFF2_STEALTH)
 	     ||   IS_AFFECTED2(ch, AFF2_SHADOWMELD) )
 	    send_to_char( "(You are hidden. VISIBLE will fix that.)\n\r", ch );
-	else if ( ch->in_room != NULL && room_is_dark( ch->in_room ) )
-	    send_to_char( "(It is too dark here for the keeper to make you out.)\n\r", ch );
 	return NULL;
     }
 
@@ -4778,6 +4783,12 @@ static bool buy_one( CHAR_DATA *ch, CHAR_DATA *keeper, char *argument )
 	return false;
     }
 
+    /* One of each from a black market stock, and one customer at a time
+       (blackmarket.c) -- asked first, so a second customer hears he is
+       busy rather than what they cannot afford. */
+    if ( black_market_buy_refuses( ch, keeper, obj ) )
+	return false;
+
      if(!has_enough_copper(ch, cost)) {
          act( "$n tells you 'You can't afford to buy $p'.",
              keeper, obj, ch, TO_VICT );
@@ -4804,9 +4815,6 @@ static bool buy_one( CHAR_DATA *ch, CHAR_DATA *keeper, char *argument )
     if ( hyrule_buy_refuses( ch, obj ) )
 	return false;
 
-    /* One of each from a black market stock (blackmarket.c). */
-    if ( black_market_buy_refuses( ch, keeper, obj ) )
-	return false;
 
     roll = number_percent();
     /* The black market's price is the price. */
@@ -5476,8 +5484,10 @@ void do_use( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    /* Bombs are counted, not carried one by one. */
-    if ( !str_prefix( arg, "bombs" ) && strlen( arg ) >= 3 )
+    /* Bombs are counted, not carried one by one -- but USE BOMB BAG is
+       the bag, not a bomb thrown at something called "bag". */
+    if ( !str_prefix( arg, "bombs" ) && strlen( arg ) >= 3
+    &&   ( rest[0] == '\0' || get_obj_carry( ch, argument ) == NULL ) )
     {
         if ( rest[0] == '\0' )
         {
@@ -5501,6 +5511,18 @@ void do_use( CHAR_DATA *ch, char *argument )
             }
             if ( obj->item_type == ITEM_PORTAL )
             {
+                /* ENTER is a standing command and USE is a resting one:
+                   without this, USE PORTAL was a flee with no roll. */
+                if ( ch->position == POS_FIGHTING || ch->fighting != NULL )
+                {
+                    send_to_char( "No way!  You are still fighting!\n\r", ch );
+                    return;
+                }
+                if ( ch->position < POS_STANDING )
+                {
+                    send_to_char( "Better stand up first.\n\r", ch );
+                    return;
+                }
                 do_enter( ch, arg );
                 return;
             }
@@ -5542,6 +5564,15 @@ void do_use( CHAR_DATA *ch, char *argument )
         return;
     case ITEM_WAND:
     case ITEM_STAFF:
+        /* A spare in the pack is found before the one held: use that one. */
+        if ( obj->wear_loc != WEAR_HOLD )
+        {
+            OBJ_DATA *held = get_eq_char( ch, WEAR_HOLD );
+
+            if ( held != NULL && held->item_type == obj->item_type
+            &&   is_name( arg, held->name ) )
+                obj = held;
+        }
         if ( obj->wear_loc != WEAR_HOLD )
         {
             act( "Hold $p first, then use it.", ch, obj, NULL, TO_CHAR );

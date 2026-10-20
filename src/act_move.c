@@ -3109,6 +3109,15 @@ void do_hide( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
 
+    /* A refusal, not a miss: can_see shows anyone fighting, hidden or
+       not, so a good roll mid-fight would have claimed a hiding nobody
+       could tell from standing in the open. */
+    if ( ch->fighting != NULL )
+    {
+	send_to_char( "Not while you are fighting -- everyone is watching you.\n\r", ch );
+	return;
+    }
+
     if ( IS_AFFECTED(ch, AFF_HIDE) )
 	REMOVE_BIT(ch->affected_by, AFF_HIDE);
 
@@ -3423,9 +3432,6 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
     }
 
 /* Crash bug fix - Rico 7/19/98 */
-    if(!IS_NPC(ch) && ch->pcdata->mounted)
-      do_dismount(ch,"");
-
     if ( home == NULL )
     {
         send_to_char( "You are completely lost.\n\r", ch );
@@ -3448,12 +3454,19 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
         len = strlen( where );
         while ( len > 0 && ( where[len - 1] == '.' || where[len - 1] == ' ' ) )
             where[--len] = '\0';
-        snprintf( buf, sizeof(buf),
-                  "You are already standing at your recall point, %s.\n\r",
+        /* A recall ring or a rescue goes to the Temple, not to the
+           point the prayer would choose. */
+        snprintf( buf, sizeof(buf), own_prayer
+                  ? "You are already standing at your recall point, %s.\n\r"
+                  : "You are already at %s.\n\r",
                   where );
         send_to_char( buf, ch );
         return;
     }
+
+    /* Dismounted only for a journey that is going to happen. */
+    if(!IS_NPC(ch) && ch->pcdata->mounted)
+      do_dismount(ch,"");
 
     act( "$n prays for a way out!", ch, 0, 0, TO_ROOM );
 

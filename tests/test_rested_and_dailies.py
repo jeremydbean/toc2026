@@ -171,6 +171,10 @@ class RestedAndDailyLiveTests(unittest.TestCase):
                               run(client, "aquest daily request", 2.0))
                 # Abandoning a daily breaks no streak and sets no cooldown.
                 run(client, "aquest abort", 2.0)
+                # ...but the next daily waits ten minutes, or abandoning
+                # would reroll the target until it stood next door.
+                self.assertIn("Come back in 10 minutes",
+                              run(client, "aquest daily request", 2.0))
                 self.assertNotIn("Return in", run(client, "aquest request", 2.5))
                 client.send("quit")
                 client.wait_closed()
@@ -182,7 +186,7 @@ class RestedAndDailyLiveTests(unittest.TestCase):
             with mud.connect(timeout=120) as client:
                 login(client, "Zrough", PASSWORD)
                 client.drain(1.5)
-                self.assertIn("slept rough", client.transcript)
+                self.assertIn("You come back unrested", client.transcript)
                 self.assertIn("You are not rested.", run(client, "rested", 1.4))
 
 

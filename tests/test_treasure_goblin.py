@@ -44,7 +44,7 @@ class TreasureGoblinSourceTests(unittest.TestCase):
         self.assertLess(dmg.index("treasure_goblin_blow( victim, dam )"),
                         dmg.index("dam_message( ch, victim, dam, dt, immune );"),
                         "the share is taken before the message")
-        self.assertIn("treasure_goblin_struck( ch, victim );", dmg)
+        self.assertIn("treasure_goblin_struck( ch, victim, goblin_held );", dmg)
         source = (ROOT / "src" / "goblin.c").read_text(encoding="latin-1")
         self.assertIn("#define GOBLIN_BLOWS_MIN    13", source, "twelve flights at least")
         self.assertIn("#define GOBLIN_BLOWS_MAX    18", source)
@@ -90,7 +90,7 @@ class TreasureGoblinSourceTests(unittest.TestCase):
                         kill.index("make_corpse( victim );"))
         cheat = body("src/goblin.c", "bool treasure_goblin_cheats_death(")
         self.assertIn("gob->position == POS_DEAD", cheat, "a death damage() decided stands")
-        self.assertIn("treasure_goblin_struck( killer, gob );", cheat)
+        self.assertIn("treasure_goblin_struck( killer, gob, false );", cheat)
         self.assertIn("is_unfindable_mob( victim )", body("src/fight.c", "void do_backstab("))
 
     def test_nothing_pins_him_for_long(self) -> None:

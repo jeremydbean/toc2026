@@ -2326,10 +2326,26 @@ goblin both.
 -- only when nobody is with him and no sale is open. The treasure goblin
 does the same at `GOBLIN_AREA_MAX` while nobody is with or after him.
 
-**Logged.** Arrivals (room, area file, stock size, how long) and every
-purchase (buyer, item, vnum, price, room) go to `log_string` and to
-WIZINFO at immortal level; departures and every vanishing (from, to and
-why) to the log. `bm_where()` writes the room the same way in each.
+**Logged -- but never where he is now.** `log/` reaches a public
+repository every five minutes, and he stays twenty to forty minutes, so a
+logged room was a map to him (found in review, 2026-10-20: the synced log
+named his room within minutes). Arrivals (stock size, how long) and
+purchases (buyer, item, vnum, price) go to the log without a room;
+WIZINFO, which only staff online see, carries the room as well.
+Departures and vanishings log the room he *left* and why, never where he
+went, and a staff summons logs who called him, not to where. The goblin
+follows the same rule. `bm_where()` writes a room the same way wherever
+one is allowed.
+
+**Rooms he never stands in**, beyond the list above: `ROOM_TELEPORT` and
+`ROOM_RIVER`, which carry mobiles too (one drops on the Temple altar,
+one in a no-mob death trap), and any room holding another shopkeeper --
+`find_keeper` takes the first in the room, so he took over the shop.
+Nobody may FOLLOW him or the goblin (`do_follow` asks
+`is_unfindable_mob`): it walked a follower after every step and every
+flight. His goods are seen by anyone with him who is not blind, dark
+room or not (`can_see_obj`), since he wanders into night fields where
+LIST otherwise said nothing was for sale.
 
 **He is seen in his own room and nowhere else.** `can_see` asks
 `black_market_sees()` after the wizinvis test and before the immortal-mob
@@ -2356,8 +2372,10 @@ blow -- up to 294 pieces; BLACKMARKET reports how many the world fills.
 The rarities below come at any level. Load-limited,
 no-drop, no-remove, rot-death and quest-token items are never sold. **He
 carries `BM_STOCK_MAX` (five) things at most**: a holiday boss's drop at
-40%, a training cake at 30% (the two holiday cakes and Valhalla's wedding
-cake, 9955) and a lucky clover at 30% (Valhalla's 9943 and 9944) are
+40%, a training cake at 30% (the two holiday cakes; Valhalla's wedding
+cake, 9955, was taken off the list because `maxload.txt` limits it to one,
+and `bm_stock_one` now refuses anything load-limited) and a lucky clover
+at 30% (Valhalla's 9943 and 9944) are
 rolled first, and the rest is drawn from the pool, each made with
 `create_object` at a negative level so nothing is randomised.
 
@@ -2438,12 +2456,22 @@ black market rarity.
 asked first in `raw_kill_internal`, turns a death ray, a fatality or a
 farslayer into one blow of the largest share (a thirteenth) and a flight;
 only a death `damage()` already decided (`POS_DEAD`) or a staff slay kills
-him. A stun, a sleep spell or a bash pins him, and he shakes any of them
-off at `GOBLIN_UNSTUN_ODDS` a pulse; his moves are topped up so he never
-runs out. A copy staff MLOAD runs and spills like him but leaves the real
+him -- and the blow is a share of where the last real blow left him:
+a farslayer sets his hit points to 1 before `raw_kill`, so
+`cheats_death` puts back `gob_hp` before subtracting. Healing does not
+help him either: `treasure_goblin_blow` and `_struck` hold him at or
+below `gob_hp`, or a cleric healing between a partner's blows kept him
+spilling coin for ever. A stun, a sleep spell, a bash or a trip pins
+him: `damage()` reads `goblin_held` **before** `set_fighting` stands him
+up and wakes him, and a bash, trip or stunning blow holds him for the
+blow that carries it (a stunning blow's stun is laid on after `damage()`
+returns, which a goblin who had already run never received). He shakes
+a pin off at `GOBLIN_UNSTUN_ODDS` a pulse; his moves are topped up so he
+never runs out. A copy staff MLOAD runs and spills like him but leaves the real
 goblin's chase clocks alone, and his hoard is capped where `long` is 32
-bits. Appearances and kills go to the log and WIZINFO
-with the room; escapes and drifts to the log. Staff command GOBLIN.
+bits. Appearances go to the log and WIZINFO, the room to WIZINFO only;
+kills to both with the room (he is dead); escapes and drifts to the log
+with the room he left. Staff command GOBLIN.
 `tests/test_treasure_goblin.py` chases one down live.
 
 ## Rested Experience And Daily Quests
@@ -2464,6 +2492,13 @@ would refuse it (level 50, the remort cap). Saved as `Rested <pool>
 away is a relog, not a rest, and banks nothing; the minutes are capped at
 what fills the pool before they multiply a level's span, which a hero's
 span times a long absence would otherwise overflow in a 32-bit `long`.
+`rest_xp_clamp()` holds the pool to a level and a half **of the level
+the character is now**, at login and at every draw: the cap used to be
+applied only when rest was added, so a hero's pool carried through a
+remort doubled about ten levels of a level 3's kills. The login line for
+somebody who did not quit somewhere safe says they come back unrested,
+not that they "slept rough": a crash, a lost link and a file from before
+rest existed all land there too.
 
 **Dailies** live in `quest.c`, beside the ordinary quest and apart from
 it: `ch->questdaily` marks one, cleared on the line after every
@@ -2476,7 +2511,13 @@ for a month buys about one train): a point a daily, one for the set, and
 `DAILY_TRAIN_COST` (160) against a perfect month's 162, which
 `tests/test_rested_and_dailies.py` recomputes from the constants. Change
 one and check the month still lands on a train. Abort, timeout and logout spare a daily the streak and the
-cooldown. `quest_update` decrements the cooldown and a quest's countdown
+cooldown. **Giving a daily up costs `DAILY_GIVE_UP_WAIT`** (ten minutes
+before the next daily, saved as `DailyWait <epoch>` under **case 'D'**
+while it runs): without it, abandoning and asking again rerolled the
+target until it stood next door. A request that finds no target puts
+`nextquest` back as it was, since `generate_quest` sets it. GMCP's quest
+feed sends the target room's `num` to staff only, as WALKTO QUEST is;
+the Mudlet client falls back to walking to the area. `quest_update` decrements the cooldown and a quest's countdown
 side by side -- they were an if/else, which froze a daily taken during a
 cooldown. Saved as `Daily <points> <day> <done> <streak> <last full day>`
 under **case 'D'**, the day

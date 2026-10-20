@@ -149,6 +149,27 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Second review of 2026-10-20's work.** The published `log/toc.log`
+  named the black market dealer's and the goblin's current room every few
+  minutes; it now logs only where they were, and WIZINFO carries where
+  they are. Teleport and river rooms carried both into the Temple altar
+  (where nobody may strike the goblin) and a death trap; the dealer took
+  over any shop he wandered into; his goods vanished in the dark; the
+  load-limited wedding cake was sold without limit. A cleric healing the
+  goblin between blows kept him spilling coin for ever; a farslayer
+  killed him outright half the time; bash, trip and stunning blow never
+  held him; FOLLOW made the chase automatic. USE PORTAL was a flee with
+  no roll and no standing. A daily could be abandoned and asked again to
+  reroll its target (ten minutes now), a failed daily request set the
+  ordinary cooldown, and GMCP still sent mortals the quest room. A
+  hero's rested pool survived a remort whole. HIDE claimed success
+  mid-fight; PRACTICE MAX could spend every session for nothing at low
+  intelligence; BOWL told its victim nothing; a wizinvis victim was named
+  to the room in fight messages; a wizinvis tell began lower case;
+  shopkeepers blamed invisibility in a dark room; a recall ring on the
+  Temple floor talked about your recall point, and RECALL there
+  dismounted you. `tests/test_review_oct20_late.py`.
+
 - **Bugs in the day's new features** (2026-10-20 review). The widened
   quest pool could name The Watcher (level 55, in the Temple, where no
   fight is allowed) and Hermie; the filter now asks `is_protected_npc`

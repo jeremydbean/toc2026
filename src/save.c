@@ -727,6 +727,8 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "Daily %d %ld %d %d %ld\n", ch->pcdata->daily_points,
              ch->pcdata->daily_day, ch->pcdata->daily_done,
              ch->pcdata->daily_streak, ch->pcdata->daily_last_full );
+    if ( ch->pcdata->daily_wait_until > (long) current_time )
+        fprintf( fp, "DailyWait %ld\n", ch->pcdata->daily_wait_until );
     fprintf( fp, "SesLogin %ld\n", ch->pcdata->last_session_login );
     fprintf( fp, "SesDur   %ld\n", ch->pcdata->last_session_dur );
     fprintf( fp, "SesExpG  %ld\n", ch->pcdata->last_session_exp_gain );
@@ -1384,6 +1386,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->daily_done              = 0;
     ch->pcdata->daily_streak            = 0;
     ch->pcdata->daily_last_full         = 0;
+    ch->pcdata->daily_wait_until        = 0;
     ch->pcdata->last_session_login      = 0;
     ch->pcdata->last_session_dur        = 0;
     ch->pcdata->last_session_exp_gain   = 0;
@@ -1998,6 +2001,15 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 		ch->pcdata->daily_done      = URANGE( 0, done, 100 );
 		ch->pcdata->daily_streak    = streak > 0 ? streak : 0;
 		ch->pcdata->daily_last_full = last_full;
+		fMatch = true;
+		break;
+	    }
+	    /* When a daily given up lets the next one be asked for. */
+	    if ( !str_cmp( word, "DailyWait" ) )
+	    {
+		long until = fread_long( fp );
+
+		ch->pcdata->daily_wait_until = until > 0 ? until : 0;
 		fMatch = true;
 		break;
 	    }

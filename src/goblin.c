@@ -178,10 +178,16 @@ static bool gob_pinned( CHAR_DATA *gob )
         || gob->position < POS_FIGHTING;
 }
 
+/* For damage(), before it stands him up for the fight. */
+bool treasure_goblin_held( CHAR_DATA *gob )
+{
+    return gob != NULL && gob_pinned( gob );
+}
+
 static void gob_teleport( CHAR_DATA *gob, AREA_DATA *avoid, const char *why )
 {
     ROOM_INDEX_DATA *to = gob_random_room( avoid );
-    char from[MAX_STRING_LENGTH], where[MAX_STRING_LENGTH];
+    char from[MAX_STRING_LENGTH];
     char line[MAX_STRING_LENGTH * 2 + 128];
 
     gob_chased = false;
@@ -197,9 +203,9 @@ static void gob_teleport( CHAR_DATA *gob, AREA_DATA *avoid, const char *why )
     char_to_room( gob, to );
     act( "A shimmering rift tears open and $n tumbles out, clutching $s sack.",
          gob, NULL, NULL, TO_ROOM );
-    gob_where( to, where, sizeof(where) );
-    snprintf( line, sizeof(line), "Treasure goblin: vanished from %s to %s (%s).",
-              from, where, why );
+    /* Not where he went: log/ is published every five minutes. */
+    snprintf( line, sizeof(line), "Treasure goblin: vanished from %s (%s).",
+              from, why );
     log_string( line );
 }
 
@@ -230,9 +236,9 @@ bool treasure_goblin_spawn( ROOM_INDEX_DATA *room )
     gob_portal_at = 0;
     gob_next_drift = current_time + number_range( GOBLIN_DRIFT_MIN, GOBLIN_DRIFT_MAX );
 
+    log_string( "Treasure goblin: appeared." );
     gob_where( room, where, sizeof(where) );
     snprintf( line, sizeof(line), "Treasure goblin: appeared in %s.", where );
-    log_string( line );
     wizinfo( line, LEVEL_IMMORTAL );
     return true;
 }
@@ -274,6 +280,9 @@ int treasure_goblin_blow( CHAR_DATA *gob, int dam )
 
     if ( dam <= 0 || gob->max_hit <= 0 )
         return dam;
+    /* A heal since the last blow is undone before this one lands. */
+    if ( gob == treasure_goblin && gob->hit > gob_hp )
+        gob->hit = gob_hp;
     for ( i = 0; i < (int)( sizeof(step) / sizeof(step[0]) ); i++ )
         if ( dam >= step[i] )
             blows--;
@@ -311,7 +320,7 @@ static OBJ_DATA *gob_spill( ROOM_INDEX_DATA *room, long copper )
  * damage() calls this once a blow has landed and he is still alive: coin
  * spills, and unless something holds him he bolts through a random exit.
  */
-void treasure_goblin_struck( CHAR_DATA *ch, CHAR_DATA *gob )
+void treasure_goblin_struck( CHAR_DATA *ch, CHAR_DATA *gob, bool held )
 {
     OBJ_DATA *coins;
     int door;
@@ -323,7 +332,11 @@ void treasure_goblin_struck( CHAR_DATA *ch, CHAR_DATA *gob )
        staff loaded by hand runs and spills, but must not move them. */
     if ( gob == treasure_goblin )
     {
-        gob_hp = gob->hit;
+        /* Never higher than the last blow left him: a heal between blows
+           would otherwise be the new ceiling, and a cleric could keep him
+           spilling coin for ever. */
+        gob_hp = UMIN( gob_hp, gob->hit );
+        gob->hit = gob_hp;
         gob_chased = true;
         gob_last_company = current_time;
         gob_last_hit = current_time;
@@ -346,8 +359,12 @@ void treasure_goblin_struck( CHAR_DATA *ch, CHAR_DATA *gob )
                  gob, coins, NULL, TO_ROOM );
     }
 
-    if ( gob_pinned( gob ) )
+    if ( held || gob_pinned( gob ) )
     {
+        /* damage() stood him up for the fight; a held goblin stays down
+           until treasure_goblin_update's roll lets him up. */
+        if ( held && gob->position > POS_RESTING )
+            gob->position = POS_RESTING;
         act( "$n flails about, too dazed to run!", gob, NULL, NULL, TO_ROOM );
         return;
     }
@@ -377,6 +394,10 @@ bool treasure_goblin_cheats_death( CHAR_DATA *killer, CHAR_DATA *gob )
         return false;
     if ( killer != NULL && !IS_NPC(killer) && IS_TRUSTED( killer, LEVEL_IMMORTAL ) )
         return false;
+    /* What the instant kill did to his hit points first (a farslayer
+       sets them to 1) is not the blow; the blow is the share below. */
+    if ( gob == treasure_goblin && gob->hit < gob_hp )
+        gob->hit = gob_hp;
     gob->hit -= ( gob->max_hit + GOBLIN_BLOWS_MIN - 1 ) / GOBLIN_BLOWS_MIN;
     if ( gob->hit < 1 )
     {
@@ -385,7 +406,7 @@ bool treasure_goblin_cheats_death( CHAR_DATA *killer, CHAR_DATA *gob )
     }
     act( "$n reels from the blow -- but a treasure goblin is harder to kill than that!",
          gob, NULL, NULL, TO_ROOM );
-    treasure_goblin_struck( killer, gob );
+    treasure_goblin_struck( killer, gob, false );
     return true;
 }
 
@@ -578,8 +599,7 @@ void do_goblin( CHAR_DATA *ch, char *argument )
         snprintf( buf, sizeof(buf), "The treasure goblin is in room %d.\n\r",
                   treasure_goblin->in_room->vnum );
         send_to_char( buf, ch );
-        snprintf( buf, sizeof(buf), "%s called a treasure goblin to room %d.",
-                  ch->name, treasure_goblin->in_room->vnum );
+        snprintf( buf, sizeof(buf), "%s called a treasure goblin.", ch->name );
         log_string( buf );
         return;
     }

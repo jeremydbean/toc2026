@@ -217,6 +217,11 @@ static int quest_streak_bonus( const CHAR_DATA *ch )
  */
 #define DAILY_QUESTS_PER_DAY    3
 #define DAILY_MINUTES           30
+/* Giving a daily up -- abandoning it, or leaving the game with it --
+   means this long before the next: otherwise a player could abandon
+   and ask again until the target stood next door. Never the ordinary
+   cooldown. */
+#define DAILY_GIVE_UP_WAIT      ( 10 * 60 )
 #define DAILY_POINTS_PER_QUEST  1
 #define DAILY_SET_BONUS         1   /* for the last of the day's three */
 #define DAILY_PRACTICE_COST     16
@@ -467,16 +472,33 @@ static void quest_daily_request( CHAR_DATA *ch )
         do_say(questman, "You've done your three for today. Come back tomorrow!");
         return;
     }
+    if ( ch->pcdata->daily_wait_until > (long) current_time )
+    {
+        long minutes = ( ch->pcdata->daily_wait_until - (long) current_time + 59 ) / 60;
 
-    remove_automatic_quest_tokens(ch);
-    ch->questgiver = NULL;
-    ch->questmob = 0;
-    ch->questobj = 0;
-    ch->countdown = 0;
-    ch->questrush = false;
-    ch->questemergency = false;
-    ch->questdaily = false;
-    generate_quest(ch, questman);
+        snprintf(buf, sizeof(buf),
+            "You gave the last one up, %s. Come back in %ld minute%s.",
+            ch->name, minutes, minutes == 1 ? "" : "s");
+        do_say(questman, buf);
+        return;
+    }
+
+    {
+        /* generate_quest sets the ordinary cooldown when it finds nothing;
+           a daily never touches it. */
+        sh_int nextquest = ch->nextquest;
+
+        remove_automatic_quest_tokens(ch);
+        ch->questgiver = NULL;
+        ch->questmob = 0;
+        ch->questobj = 0;
+        ch->countdown = 0;
+        ch->questrush = false;
+        ch->questemergency = false;
+        ch->questdaily = false;
+        generate_quest(ch, questman);
+        ch->nextquest = nextquest;
+    }
     if ( ch->questmob > 0 || ch->questobj > 0 )
     {
         ch->countdown = (sh_int) DAILY_MINUTES;
@@ -682,6 +704,8 @@ void quest_handle_logout( CHAR_DATA *ch )
     ch->questdaily = false;
     if ( daily )
     {
+        if ( ch->pcdata != NULL )
+            ch->pcdata->daily_wait_until = (long) current_time + DAILY_GIVE_UP_WAIT;
         send_to_char( "Leaving the game abandons your daily quest.\n\r", ch );
         return;
     }
@@ -775,13 +799,17 @@ void do_quest(CHAR_DATA *ch, char *argument)
 		    ch->countdown == 1 ? "" : "s");
 		send_to_char(buf, ch);
 	    }
-	    if (ch->questemergency)
+	    if (ch->questdaily)
+		send_to_char(
+		    "{09|{00 {0BDaily task - pays coin and daily points, not quest points.{00\n\r", ch);
+	    else if (ch->questemergency)
 		send_to_char(
 		    "{09|{00 {0C** EMERGENCY CONTRACT - five times the reward if you make it! **{00\n\r", ch);
 	    else if (ch->questrush)
 		send_to_char(
 		    "{09|{00 {0C** RUSH CONTRACT - double reward for finishing on time! **{00\n\r", ch);
-	    if (ch->queststreak > 0)
+	    /* A daily neither pays nor costs the streak. */
+	    if (ch->queststreak > 0 && !ch->questdaily)
 	    {
 		int bonus_pct = quest_streak_bonus(ch);
 		snprintf(buf, sizeof(buf),
@@ -1596,7 +1624,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	    ch->questemergency = false;
 	    ch->questdaily = false;
 	    if (daily)
-		;
+		ch->pcdata->daily_wait_until = (long) current_time + DAILY_GIVE_UP_WAIT;
 	    else if( ch->level >= 50 )
 		ch->nextquest = 7;
 	    else

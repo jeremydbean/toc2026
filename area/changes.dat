@@ -3,6 +3,14 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261020l 2026-10-20
+Fixes: bash, trip and stunning blow now hold the treasure goblin, and
+nobody can FOLLOW him or the black market dealer. Abandoning a daily
+quest means ten minutes before the next. HIDE says plainly when you are
+fighting. PRACTICE always teaches at least a point a session. The
+dealer's goods can be seen in the dark, and he no longer takes over
+other shops. Mudlet shows DAILY on the quest bar.
+
 @ 20261020k 2026-10-20
 Rested experience: quit in a safe or healing room, the Temple, the altar
 or your recall point, and each hour away banks bonus experience -- kills

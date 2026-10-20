@@ -54,7 +54,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.5.5"
+tocMudlet.version = "1.5.6"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -984,6 +984,7 @@ function tocMudlet.onQuest()
     or P.text
   local kind = quest.kind == "emergency" and "EMERGENCY "
     or quest.kind == "rush" and "RUSH "
+    or quest.kind == "daily" and "DAILY "
     or ""
   local verb = quest.kill and "Kill" or "Fetch"
 

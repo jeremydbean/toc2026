@@ -31,7 +31,7 @@ TEMPLE = 4207          # the dealer is called here
 NEXT_DOOR = 4202       # east of the Temple
 TWO_AWAY = 4201        # east again
 # The holiday drops and cakes, the wedding cake and the lucky clovers.
-RARITIES = set(range(29920, 29928)) | {9955, 9943, 9944}
+RARITIES = set(range(29920, 29928)) | {9943, 9944}
 
 
 def body(path: str, start: str) -> str:
@@ -119,8 +119,13 @@ class BlackMarketSourceTests(unittest.TestCase):
         price = body("src/blackmarket.c", "static long bm_price(")
         self.assertIn("!bm_placed[pObj->vnum]", price)
         self.assertIn("price *= BM_RARE_MARKUP", price)
-        for vnum in ("9955", "9943", "9944"):      # wedding cake, lucky clovers
+        for vnum in ("9943", "9944"):      # the lucky clovers
             self.assertIn(vnum, source)
+        # The wedding cake is load-limited to one: never stocked, and the
+        # stocking itself refuses anything maxload.txt limits.
+        self.assertNotIn("9955", body("src/blackmarket.c", "static const int bm_cakes[]"))
+        self.assertIn("get_maxload_index( pObj->vnum ) != NULL",
+                      body("src/blackmarket.c", "static bool bm_stock_one("))
 
     def test_rare_and_small_stock_from_a_big_pool(self) -> None:
         """Owner, 2026-10-20: hundreds of possible items, five at a time,

@@ -2200,9 +2200,10 @@ DAILY QUESTS
   from 30 and 4 from 100. Daily points are not quest points: AQUEST DAILY
   BUY TRAIN spends 160 for a train -- a month of every daily -- and AQUEST
   DAILY BUY PRACTICE 16 for a practice; a count after either buys several.
-  A daily never touches your quest streak or your cooldown, and giving one
-  up costs only the try. The day turns over at midnight UTC; AQUEST DAILY
-  shows how many you have done, your streak and your points.
+  A daily never touches your quest streak or your cooldown; giving one up,
+  by abandoning it or leaving the game, means ten minutes before the next
+  daily. The day turns over at midnight UTC; AQUEST DAILY shows how many
+  you have done, your streak and your points.
 
 See also: QUEST, TOPTEN, RESTED
 ~

@@ -114,11 +114,12 @@ static const int bm_boss_drops[] =
     OBJ_VNUM_WINTER_HAMMER,   OBJ_VNUM_WINTER_MANTLE,
     OBJ_VNUM_PUMPKIN_CHARM,   OBJ_VNUM_SNOWFLAKE_PEND
 };
-/* Training cakes: the holidays' two, and Valhalla's wedding cake, which
-   nothing in the world places. */
+/* Training cakes: the holidays' two. Valhalla's wedding cake (9955) was
+   here until 2026-10-20, but maxload.txt limits it to one in the world,
+   and a dealer selling one per visit made it unlimited. */
 static const int bm_cakes[] =
 {
-    OBJ_VNUM_HORSEMAN_CAKE, OBJ_VNUM_WINTER_CAKE, 9955
+    OBJ_VNUM_HORSEMAN_CAKE, OBJ_VNUM_WINTER_CAKE
 };
 /* Valhalla's two lucky clovers (levels 5 and 20), held in the hand;
    nothing places them either. */
@@ -275,8 +276,10 @@ long black_market_kill_value( int level )
 
 #define BM_PRICE_KILLS      60
 #define BM_CAKE_PRICE_KILLS 40      /* at level 50 */
-/* Far below LONG_MAX, so the markup cannot overflow it. */
-#define BM_PRICE_CAP        ( LONG_MAX / 64 )
+/* Far enough below LONG_MAX that the markup, and then get_cost's
+   multiply by the shop's profit percentage, cannot overflow it: on a
+   32-bit long that is about four million copper before the markup. */
+#define BM_PRICE_CAP        ( LONG_MAX / ( BM_RARE_MARKUP * 100 ) )
 
 /* A dealer names round sums: whole platinum, whole gold or whole silver,
    so LIST reads "811p" and not "811p 20g 60s". */
@@ -533,7 +536,9 @@ static bool bm_stock_one( CHAR_DATA *dealer, int vnum )
     if ( bm_stock_count( dealer ) >= BM_STOCK_MAX )
         return false;
     if ( ( pObj = get_obj_index( vnum ) ) == NULL || pObj->level < 0
-    ||   bm_progression( pObj ) )
+    ||   bm_progression( pObj )
+    /* A load-limited item is unique by design, whatever list named it. */
+    ||   get_maxload_index( pObj->vnum ) != NULL )
         return false;
     for ( obj = dealer->carrying; obj != NULL; obj = obj->next_content )
         if ( obj->pIndexData == pObj )
@@ -608,8 +613,25 @@ static bool bm_room_ok( ROOM_INDEX_DATA *room )
     ||   IS_SET( room->room_flags, ROOM_HEROES_ONLY )
     ||   IS_SET( room->room_flags, ROOM_NEWBIES_ONLY )
     ||   IS_SET( room->room_flags, ROOM_PET_SHOP )
-    ||   IS_SET( room->room_flags, ROOM_ARENA ) )
+    ||   IS_SET( room->room_flags, ROOM_ARENA )
+    /* Rooms that carry whoever stands in them: room_update moves mobiles
+       too, and one drops on the Temple altar, another in a death trap. */
+    ||   IS_SET( room->room_flags, ROOM_TELEPORT )
+    ||   IS_SET( room->room_flags, ROOM_RIVER ) )
         return false;
+
+    /* Not in another keeper's shop: find_keeper takes the first
+       shopkeeper in the room, and that would be him, for as long as he
+       stood there. */
+    {
+        CHAR_DATA *rch;
+
+        for ( rch = room->people; rch != NULL; rch = rch->next_in_room )
+            if ( IS_NPC(rch) && rch->pIndexData != NULL
+            &&   rch->pIndexData->pShop != NULL
+            &&   rch->pIndexData->vnum != MOB_VNUM_BLACK_MARKET )
+                return false;
+    }
 
     for ( door = 0; door <= 9; door++ )
         if ( room->exit[door] != NULL && room->exit[door]->u1.to_room != NULL )
@@ -772,7 +794,7 @@ static void bm_end_business( void )
 static void bm_teleport( CHAR_DATA *dealer, ROOM_INDEX_DATA *to,
                          const char *farewell, const char *why )
 {
-    char from[MAX_STRING_LENGTH], where[MAX_STRING_LENGTH];
+    char from[MAX_STRING_LENGTH];
     char line[MAX_STRING_LENGTH * 2 + 128];
 
     bm_end_business();
@@ -787,9 +809,11 @@ static void bm_teleport( CHAR_DATA *dealer, ROOM_INDEX_DATA *to,
     char_to_room( dealer, to );
     act( "$n slips out of the shadows, a heavy pack over $s shoulder.",
          dealer, NULL, NULL, TO_ROOM );
-    bm_where( to, where, sizeof(where) );
+    /* Where he went stays out of the log: log/ is published every five
+       minutes, and a published room is a map to him. Where he was is
+       history. */
     snprintf( line, sizeof(line), "Black market: the dealer vanished from %s "
-              "to %s (%s).", from, where, why );
+              "(%s).", from, why );
     log_string( line );
 }
 
@@ -841,10 +865,14 @@ bool black_market_arrive( ROOM_INDEX_DATA *room )
     stay = number_range( BM_STAY_MIN, BM_STAY_MAX );
     bm_next_change = current_time + stay;
     bm_where( room, where, sizeof(where) );
+    /* The room for staff online; the published log only that he came. */
+    snprintf( line, sizeof(line), "Black market: the dealer appeared with "
+              "%d items (stock %ld), for %ld minutes.",
+              bm_stock_count( black_market_dealer ), bm_stock_id, stay / 60 );
+    log_string( line );
     snprintf( line, sizeof(line), "Black market: the dealer appeared in %s with "
               "%d items (stock %ld), for %ld minutes.", where,
               bm_stock_count( black_market_dealer ), bm_stock_id, stay / 60 );
-    log_string( line );
     wizinfo( line, LEVEL_IMMORTAL );
     return true;
 }
@@ -1127,9 +1155,11 @@ void black_market_record( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *obj )
 
     format_price( bm_price( obj->pIndexData ), price, sizeof(price) );
     bm_where( keeper->in_room, where, sizeof(where) );
+    snprintf( line, sizeof(line), "Black market: %s bought %s (%d) for %s.",
+              ch->name, obj->short_descr, obj->pIndexData->vnum, price );
+    log_string( line );
     snprintf( line, sizeof(line), "Black market: %s bought %s (%d) for %s in %s.",
               ch->name, obj->short_descr, obj->pIndexData->vnum, price, where );
-    log_string( line );
     wizinfo( line, LEVEL_IMMORTAL );
 }
 
@@ -1209,8 +1239,7 @@ void do_blackmarket( CHAR_DATA *ch, char *argument )
         snprintf( buf, sizeof(buf), "The dealer is in room %d.\n\r",
                   black_market_dealer->in_room->vnum );
         send_to_char( buf, ch );
-        snprintf( buf, sizeof(buf), "%s called the black market dealer to room %d.",
-                  ch->name, black_market_dealer->in_room->vnum );
+        snprintf( buf, sizeof(buf), "%s called the black market dealer.", ch->name );
         log_string( buf );
         return;
     }
