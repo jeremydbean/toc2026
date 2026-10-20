@@ -144880,3 +144880,20 @@ Tue Oct 20 18:20:07 2026 :: Sock.sinaddr:  3.133.226.214
 Tue Oct 20 18:20:08 2026 :: EOF encountered on read.
 Tue Oct 20 18:25:11 2026 :: Sock.sinaddr:  5.161.73.160
 Tue Oct 20 18:25:11 2026 :: EOF encountered on read.
+Tue Oct 20 18:27:52 2026 :: Black market: the dealer appeared in room 8795 (Hallway, kerofk.are) with 5 items (stock 1792520872), for 33 minutes.
+Tue Oct 20 18:29:53 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Tue Oct 20 18:29:57 2026 :: Log WebAdmin: fsave
+Tue Oct 20 18:30:00 2026 :: Treasure goblin: vanished from room 13310 (Hallway, solace.are) to room 20575 (The Wood-Path, emerald.are) (too long in one area).
+Tue Oct 20 18:30:03 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Tue Oct 20 18:30:06 2026 :: Received signal 15; saving players and shutting down.
+Tue Oct 20 18:30:06 2026 :: Normal termination of game.
+Tue Oct 20 18:30:07 2026 ::  INIT OK 
+Tue Oct 20 18:30:07 2026 :: walkto_load: 157 destinations.
+Tue Oct 20 18:30:07 2026 :: changes_load: 119 entries.
+Tue Oct 20 18:30:07 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Tue Oct 20 18:30:07 2026 :: ROM is ready to rock on port 9000.
+Tue Oct 20 18:30:07 2026 :: Treasure goblin: appeared in room 1565 (Mine Shaft, gnome.are).
+Tue Oct 20 18:30:07 2026 :: Automated backup complete.
+Tue Oct 20 18:30:07 2026 :: Daily backup complete.
+Tue Oct 20 18:30:16 2026 :: Sock.sinaddr:  52.15.147.27
+Tue Oct 20 18:30:16 2026 :: EOF encountered on read.
