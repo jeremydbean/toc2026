@@ -135129,3 +135129,98 @@ Tue Oct 20 00:05:19 2026 :: Log Alaric [4207]: arrived (Before the Sacrificial A
 Tue Oct 20 00:05:20 2026 :: Log Alaric [4207]: recal
 Tue Oct 20 00:05:20 2026 :: Log Alaric [4207]: recal
 Tue Oct 20 00:05:20 2026 :: Log Alaric [4207]: recal
+Tue Oct 20 00:05:20 2026 :: Log Alaric [4207]: r e 3
+Tue Oct 20 00:05:20 2026 :: Log Alaric [4202]: arrived (Halls of Horror.) from 4207
+Tue Oct 20 00:05:20 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted House.) from 4202
+Tue Oct 20 00:05:20 2026 :: Log Alaric [2427]: arrived (Main Processional decorated for Halloween.) from 4201
+Tue Oct 20 00:05:21 2026 :: Log Alaric [2427]: n
+Tue Oct 20 00:05:21 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Oct 20 00:05:21 2026 :: Log Alaric [2404]: n
+Tue Oct 20 00:05:21 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Oct 20 00:05:21 2026 :: Log Alaric [2401]: u
+Tue Oct 20 00:05:21 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Tue Oct 20 00:05:21 2026 :: Log Alaric [2410]: u
+Tue Oct 20 00:05:21 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Tue Oct 20 00:05:22 2026 :: Log Alaric [2411]: u
+Tue Oct 20 00:05:22 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Tue Oct 20 00:05:22 2026 :: Log Alaric [2414]: u
+Tue Oct 20 00:05:22 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Tue Oct 20 00:05:22 2026 :: Log Alaric [2497]: u
+Tue Oct 20 00:05:22 2026 :: Log Alaric [2497]: aq co
+Tue Oct 20 00:05:22 2026 :: Log Alaric [2497]: gold +14
+Tue Oct 20 00:05:22 2026 :: Log Alaric [2497]: quest complete: 14 gold, 58 quest points, rush (streak bonus 142%)
+Tue Oct 20 00:05:23 2026 :: Log Alaric [2497]: aq ga no
+Tue Oct 20 00:05:25 2026 :: Log Alaric [2497]: score
+Tue Oct 20 00:05:30 2026 :: Log Alaric [2497]: score
+Tue Oct 20 00:05:31 2026 :: Log Alaric [2497]: i
+Tue Oct 20 00:05:33 2026 :: Log Alaric [2497]: s
+Tue Oct 20 00:05:34 2026 :: Log Alaric [2497]: s
+Tue Oct 20 00:05:34 2026 :: Log Alaric [2497]: w
+Tue Oct 20 00:05:34 2026 :: Log Alaric [2497]: w
+Tue Oct 20 00:05:35 2026 :: Log Alaric [2497]: n
+Tue Oct 20 00:05:35 2026 :: Log Alaric [2497]: n
+Tue Oct 20 00:05:36 2026 :: Log Alaric [2497]: l
+Tue Oct 20 00:05:37 2026 :: Log Alaric [2497]: recal
+Tue Oct 20 00:05:37 2026 :: Log Alaric [4207]: arrived (Before the Sacrificial Altar.) from 2497
+Tue Oct 20 00:05:38 2026 :: Log Alaric [4207]: heal ref
+Tue Oct 20 00:05:39 2026 :: Log Alaric [4207]: w
+Tue Oct 20 00:05:39 2026 :: Log Alaric [4208]: arrived (Sacrificial Altar!) from 4207
+Tue Oct 20 00:05:40 2026 :: Log Alaric [4208]: heal ref
+Tue Oct 20 00:05:40 2026 :: Log Alaric [4208]: gold -10
+Tue Oct 20 00:05:45 2026 :: Log Alaric [4208]: heal ref
+Tue Oct 20 00:05:45 2026 :: Log Alaric [4208]: gold -10
+Tue Oct 20 00:05:48 2026 :: Log Alaric [4208]: heal ref
+Tue Oct 20 00:05:48 2026 :: Log Alaric [4208]: gold -10
+Tue Oct 20 00:05:51 2026 :: Log Alaric [4208]: e
+Tue Oct 20 00:05:51 2026 :: Log Alaric [4207]: arrived (Before the Sacrificial Altar.) from 4208
+Tue Oct 20 00:05:51 2026 :: Log Alaric [4207]: e
+Tue Oct 20 00:05:51 2026 :: Log Alaric [4202]: arrived (Halls of Horror.) from 4207
+Tue Oct 20 00:05:51 2026 :: Log Alaric [4202]: n
+Tue Oct 20 00:05:51 2026 :: Log Alaric [4203]: arrived (Halls of Horror.) from 4202
+Tue Oct 20 00:05:51 2026 :: Log Alaric [4203]: n
+Tue Oct 20 00:05:51 2026 :: Log Alaric [4210]: arrived (Room of Poison, Plague, and Pestilence.) from 4203
+Tue Oct 20 00:05:52 2026 :: Log Alaric [4210]: sleep
+Tue Oct 20 00:07:58 2026 :: Sock.sinaddr:  5.161.117.52
+Tue Oct 20 00:07:58 2026 :: EOF encountered on read.
+Tue Oct 20 00:08:53 2026 :: Log Alaric [4210]: wake
+Tue Oct 20 00:08:53 2026 :: Log Alaric [4210]: l
+Tue Oct 20 00:08:54 2026 :: Log Alaric [4210]: s
+Tue Oct 20 00:08:54 2026 :: Log Alaric [4203]: arrived (Halls of Horror.) from 4210
+Tue Oct 20 00:08:54 2026 :: Log Alaric [4203]: s
+Tue Oct 20 00:08:54 2026 :: Log Alaric [4202]: arrived (Halls of Horror.) from 4203
+Tue Oct 20 00:08:54 2026 :: Log Alaric [4202]: e
+Tue Oct 20 00:08:54 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted House.) from 4202
+Tue Oct 20 00:08:55 2026 :: Log Alaric [4201]: e
+Tue Oct 20 00:08:55 2026 :: Log Alaric [2427]: arrived (Main Processional decorated for Halloween.) from 4201
+Tue Oct 20 00:08:55 2026 :: Log Alaric [2427]: n
+Tue Oct 20 00:08:55 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Oct 20 00:08:55 2026 :: Log Alaric [2404]: n
+Tue Oct 20 00:08:55 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Oct 20 00:08:56 2026 :: Log Alaric [2401]: u
+Tue Oct 20 00:08:56 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Tue Oct 20 00:08:56 2026 :: Log Alaric [2410]: u
+Tue Oct 20 00:08:56 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Tue Oct 20 00:08:56 2026 :: Log Alaric [2411]: u
+Tue Oct 20 00:08:56 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Tue Oct 20 00:08:56 2026 :: Log Alaric [2414]: u
+Tue Oct 20 00:08:56 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Tue Oct 20 00:10:15 2026 :: Log Alaric [2497]: aq re
+Tue Oct 20 00:10:16 2026 :: Log Alaric [2497]: enter door
+Tue Oct 20 00:10:16 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Oct 20 00:10:17 2026 :: Log Alaric [2401]: west
+Tue Oct 20 00:10:17 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Tue Oct 20 00:10:17 2026 :: Log Alaric [2405]: west
+Tue Oct 20 00:10:17 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Tue Oct 20 00:10:17 2026 :: Log Alaric [2433]: west
+Tue Oct 20 00:10:17 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Tue Oct 20 00:10:17 2026 :: Log Alaric [2434]: west
+Tue Oct 20 00:10:17 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Tue Oct 20 00:10:18 2026 :: Log Alaric [2435]: west
+Tue Oct 20 00:10:18 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Tue Oct 20 00:10:18 2026 :: Log Alaric [2436]: west
+Tue Oct 20 00:10:18 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Tue Oct 20 00:10:18 2026 :: Log Alaric [2437]: west
+Tue Oct 20 00:10:18 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Tue Oct 20 00:10:18 2026 :: Log Alaric [2438]: open west
+Tue Oct 20 00:10:19 2026 :: Log Alaric [2438]: west
+Tue Oct 20 00:10:19 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
