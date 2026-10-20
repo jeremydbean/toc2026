@@ -1,7 +1,7 @@
 #PLAYER
 Name Rockcrusher~
 Id   3259
-LogO 1792458977
+LogO 1792459376
 Vers 4
 Desc You hear a dripping noise.  It gets louder and louder and louder...
 It won't go away!!!  You frantically slap yourself and smash your fists
@@ -38,17 +38,17 @@ PsiKnown confuse,ego whip,psionic armor,shift~
 ChangesSeen ~
 Cast none
 Levl 52
-Plyd 1040558
+Plyd 1040957
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 4209
-HMV  861 861 923 923 431 431
+Room 2562
+HMV  861 861 923 923 387 431
 NewGold 23891
 NewPlat 0
-NewCopp 0
-NewSilv 0
+NewCopp 13
+NewSilv 1
 BankCP 0
 IntTime 1792457457
 IntTotal 0
@@ -57,7 +57,7 @@ SavedOnce 1
 Corpses	0
 PkRec 4
 PkGiv 0
-AchKills 0
+AchKills 1
 AchQuests 0
 AchDeaths 0
 AchExplore 0
@@ -74,11 +74,14 @@ Achv level-40 1789615323
 Achv level-50 1789615323
 Achv day-played 1789615323
 Achv week-played 1789615323
+Achv first-kill 1792459314
+Achv visit-astral 1792459086
 Achv carry-one-platinum 1789615323
 Achv carry-hundred-platinum 1789615323
 Achv level-35 1792339835
 Achv level-45 1792339835
 Achv carry-ten-platinum 1792339835
+Achv visit-pet-shop 1792459357
 LastOut  0
 SesLogin 0
 SesDur   0
@@ -117,7 +120,7 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 5
+Prac 3
 Save  -16
 Alig  1000
 Hit   11
@@ -136,7 +139,7 @@ HMVP 886 363 406
 Cond 0 24 24
 Sk 92 'confuse'
 Sk 84 'ego whip'
-Sk 59 'psionic armor'
+Sk 75 'psionic armor'
 Sk 80 'shift'
 Sk 8 'axe'
 Sk 81 'dagger'
