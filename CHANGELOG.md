@@ -10,6 +10,19 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **The Hallows End rooms answer LOOK.** A seasonal overlay may carry
+  `extras`: extra descriptions the generator adds to a room before its
+  closing `S`, and `tests/test_seasonal_areas.py` strips again when it
+  holds the room's exits and flags to the base. Dresden's 19 decorated
+  rooms carry 41 (players had typed `look pump`, `look coffins`).
+- **CHAT is GOSSIP**, and HELP answers QUEST (which reached QUESTION by
+  prefix), QUESTING, QUESTPOINT, QUESTOR, THEWS, HERMIE (the BUFF topic,
+  with where she stands), ACCOUNT and FOURTH ATTACK: the words three days
+  of watched play typed and got nothing for. `tests/test_help_keywords.py`
+  mines nothing; it pins the list.
+- **A shopkeeper who cannot see you says why** -- invisible, a ghost,
+  hidden, or a dark room -- beside "I don't trade with folks I can't
+  see." Two players checked AFFECTS and guessed.
 - **LOOK at a holiday boss lists what it drops.** The Headless Horseman's
   and Father Winter's drop tables moved into `season.c` (`EVENT_DROP`),
   where `make_corpse` rolls them and LOOK reads them back in words

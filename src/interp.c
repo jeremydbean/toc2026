@@ -224,6 +224,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "emote",		do_emote,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { ".",		do_gossip,	POS_SLEEPING,	 0,  LOG_NORMAL, 0 },
     { "gossip",		do_gossip,	POS_SLEEPING,	 0,  LOG_NORMAL, 1 },
+    { "chat",		do_gossip,	POS_SLEEPING,	 0,  LOG_NORMAL, 1 },
     { ",",		do_emote,	POS_RESTING,	 0,  LOG_NORMAL, 0 },
     { "gtell",		do_gtell,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { ";",		do_gtell,	POS_DEAD,	 0,  LOG_NORMAL, 0 },

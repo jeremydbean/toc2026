@@ -625,5 +625,353 @@
   "H 0 2403 1 2442",
   "O 0 2403 5 3502",
   "H 0 2403 1 2442"
- ]
+ ],
+ "extras": {
+  "ROOMS": {
+   "2401": [
+    {
+     "keywords": "pumpkins pumpkin lantern lanterns jack-o-lantern",
+     "lines": [
+      "Every pumpkin has been carved by a different hand: some grin, some scowl,",
+      "one has been given a moustache and one, high up, is weeping candle wax. Lit",
+      "from inside, they turn the whole square the colour of a hearth."
+     ]
+    },
+    {
+     "keywords": "bats bat",
+     "lines": [
+      "Paper bats on black thread, cut by the schoolchildren. In a breeze they turn",
+      "slowly and look, for a moment, as if they are choosing."
+     ]
+    },
+    {
+     "keywords": "beware paint",
+     "lines": [
+      "BEWARE, in dripping red paint over the Mayor's sign, with a small skull",
+      "underneath that did not come out quite right. It washes off, the Mayor has",
+      "been assured."
+     ]
+    }
+   ],
+   "2415": [
+    {
+     "keywords": "lanterns lantern paper",
+     "lines": [
+      "Orange paper lanterns with a candle in each, strung from eave to eave across",
+      "the road. One has caught and is smouldering gently; a guardsman is watching",
+      "it with professional interest."
+     ]
+    }
+   ],
+   "2416": [
+    {
+     "keywords": "scarecrows scarecrow",
+     "lines": [
+      "Cast-off guard uniforms stuffed with straw and topped with a carved pumpkin,",
+      "propped on broom handles along the kerb. The nearest has turned its head",
+      "toward you since you arrived. Students of the University are known for this",
+      "sort of thing."
+     ]
+    }
+   ],
+   "2496": [
+    {
+     "keywords": "candles candle jars jar",
+     "lines": [
+      "Hundreds of stubby candles in jars of red and amber glass, lining both",
+      "gutters. The wax runs between the cobbles in little rivers, and somebody",
+      "will be scraping it up for a week."
+     ]
+    }
+   ],
+   "2417": [
+    {
+     "keywords": "guards guard crown leaves",
+     "lines": [
+      "Palace guards in full kit and a crown of autumn leaves apiece, standing very",
+      "straight and looking at nothing. Their captain lost a bet."
+     ]
+    },
+    {
+     "keywords": "jack-o-lanterns jack-o-lantern barrels pumpkins",
+     "lines": [
+      "Two pumpkins the size of wine barrels, carved into roaring faces and lit",
+      "with a lamp apiece, flank the palace gateway. Each took four men to lift."
+     ]
+    }
+   ],
+   "2427": [
+    {
+     "keywords": "cloth drapes steps music organ",
+     "lines": [
+      "Black cloth drapes the temple steps from the road to the doors, and from",
+      "behind the doors comes the same three organ chords, over and over. The",
+      "acolytes' haunted house is open. Admission is a coin for the orphanage."
+     ]
+    }
+   ],
+   "2428": [
+    {
+     "keywords": "children child sheets masks",
+     "lines": [
+      "Children in bedsheets, paper masks and their parents' boots, running from",
+      "door to door with sacks that are already heavier than they are."
+     ]
+    },
+    {
+     "keywords": "ribbons ribbon railing",
+     "lines": [
+      "Black ribbon wound round every post of the bridge railing, tied in bows that",
+      "are coming undone in the wind."
+     ]
+    }
+   ],
+   "2430": [
+    {
+     "keywords": "carts cart pumpkins farm",
+     "lines": [
+      "Farm carts heaped with pumpkins, turnips and late apples, queued at the",
+      "gate. The farmers look pleased: Hallows End is their best week of the year."
+     ]
+    },
+    {
+     "keywords": "toll gatekeepers gatekeeper",
+     "lines": [
+      "The gatekeepers are demanding a sweet of everyone under four feet tall as",
+      "the price of the city, and getting it, and sharing the proceeds in plain",
+      "view."
+     ]
+    }
+   ],
+   "2487": [
+    {
+     "keywords": "booths booth tents tent stalls",
+     "lines": [
+      "Toffee apples, carved turnips, masks for a copper, cobweb lace, candles that",
+      "burn green, and a man selling 'genuine ghost in a bottle', which is a",
+      "bottle."
+     ]
+    },
+    {
+     "keywords": "tub bobbing apples",
+     "lines": [
+      "A wash tub of cold water with apples floating in it and a ring of wet",
+      "children around it. The rule is hands behind your back. The rule is not",
+      "being followed."
+     ]
+    },
+    {
+     "keywords": "bunting",
+     "lines": [
+      "Strings of orange and black bunting, criss-crossed above the plaza from",
+      "every upper window."
+     ]
+    }
+   ],
+   "4201": [
+    {
+     "keywords": "gargoyles gargoyle",
+     "lines": [
+      "Pasteboard gargoyles, painted grey and glued to the architrave, glaring down",
+      "at the stairs. One has lost a wing to the wind and glares on regardless."
+     ]
+    },
+    {
+     "keywords": "sign",
+     "lines": [
+      "ENTER IF YOU DARE, in letters meant to look like blood. They look like jam.",
+      "Underneath, smaller: all proceeds to the Orphanage of Devota."
+     ]
+    },
+    {
+     "keywords": "organ music",
+     "lines": [
+      "Somewhere inside the temple a wheezing organ plays three ominous chords and",
+      "then plays them again. The novice at the keys knows no others."
+     ]
+    }
+   ],
+   "4202": [
+    {
+     "keywords": "gauze cloth murals mural",
+     "lines": [
+      "Yards of grey gauze hung from the dome, hiding the murals of healers at",
+      "their work. It stirs though there is no wind, and the shapes behind it are",
+      "only shapes."
+     ]
+    },
+    {
+     "keywords": "whispers whisper",
+     "lines": [
+      "Dozens of whispers from behind the gauze, saying your name, or something",
+      "very like it. Novices with their lips to the cloth, almost certainly."
+     ]
+    }
+   ],
+   "4203": [
+    {
+     "keywords": "cobwebs cobweb webs web",
+     "lines": [
+      "Sheets of cobweb thick enough to hide the dome. Most of it is spun sugar and",
+      "cotton; some of it, in the corners, has an occupant."
+     ]
+    },
+    {
+     "keywords": "spiders spider",
+     "lines": [
+      "Fat rubber spiders on threads, dropped from above as you pass and hauled",
+      "back up again by somebody giggling in the dark."
+     ]
+    }
+   ],
+   "4204": [
+    {
+     "keywords": "skulls skull turnips turnip",
+     "lines": [
+      "Rows of carved turnips on shelves of black crepe, each with a candle inside",
+      "so its eyes and teeth glow. The novices carved them, and carved them well. A",
+      "few have been given hair."
+     ]
+    },
+    {
+     "keywords": "shelves shelf crepe",
+     "lines": [
+      "Shelves draped in black crepe, lined with the glowing skulls, climbing the",
+      "wall into the dark of the dome."
+     ]
+    }
+   ],
+   "4205": [
+    {
+     "keywords": "candles candle",
+     "lines": [
+      "A thousand stubby candles on every ledge and flagstone. A draught from",
+      "nowhere guttering them all at once is a novice with a bellows behind the",
+      "pillar, trying not to laugh."
+     ]
+    },
+    {
+     "keywords": "murals mural",
+     "lines": [
+      "In the dark moments the murals of Devota's healers seem to move. In the",
+      "light ones they are paint."
+     ]
+    }
+   ],
+   "4206": [
+    {
+     "keywords": "drapes drape dome black",
+     "lines": [
+      "Black cloth drawn over the dome so the hall feels twice as high and far",
+      "emptier than it is."
+     ]
+    },
+    {
+     "keywords": "footsteps footstep echo",
+     "lines": [
+      "Your own steps, coming back a half-beat late and a little heavier. When you",
+      "stop, so do they. Eventually."
+     ]
+    }
+   ],
+   "4207": [
+    {
+     "keywords": "candles candle steps",
+     "lines": [
+      "Rows of candles climbing the three steps to the altar, their flames leaning",
+      "in the draught from the doors."
+     ]
+    },
+    {
+     "keywords": "fog mist ice",
+     "lines": [
+      "A fog of dry ice rolling down the altar steps and pooling around your",
+      "ankles. It is cold, and smells faintly of the kitchens where they keep the",
+      "ice."
+     ]
+    },
+    {
+     "keywords": "altar shroud shrouded cloth",
+     "lines": [
+      "The altar of Devota under a black shroud for the night. The marble shows",
+      "white at the hem where the cloth is too short."
+     ]
+    }
+   ],
+   "4208": [
+    {
+     "keywords": "cloth shroud black",
+     "lines": [
+      "Black cloth over the white marble altar, pinned at the corners with",
+      "candlesticks. Devota's own statue has been left uncovered, with a witch's",
+      "hat on her head."
+     ]
+    },
+    {
+     "keywords": "hat witch's",
+     "lines": [
+      "A pointed black hat, slightly crooked, on the head of the statue of Devota.",
+      "She does not seem to mind."
+     ]
+    },
+    {
+     "keywords": "acolytes acolyte sacrifice maiden dagger",
+     "lines": [
+      "Two acolytes in robes and skull paint and a novice in a white shift. Every",
+      "quarter hour the dagger (wood) rises, the maiden shrieks, the beet juice",
+      "flies, and the maiden gets up again for the applause. The bladder is",
+      "refilled between shows."
+     ]
+    },
+    {
+     "keywords": "statue devota",
+     "lines": [
+      "Devota, Goddess of Peace and Healing, in white marble, looking out over her",
+      "temple with the same patient smile she wears all year, under a witch's hat."
+     ]
+    }
+   ],
+   "4209": [
+    {
+     "keywords": "coffins coffin",
+     "lines": [
+      "A dozen coffins, plain pine, open and shut, borrowed from Mister Harrow the",
+      "undertaker on condition they come back clean. The open ones hold straw and a",
+      "candle. The shut ones you cannot speak for."
+     ]
+    },
+    {
+     "keywords": "knocking",
+     "lines": [
+      "A slow, patient knocking from inside one of the shut coffins. It has just",
+      "stopped. It is probably a novice. It is probably a novice."
+     ]
+    },
+    {
+     "keywords": "candles candle rack",
+     "lines": [
+      "The prayer room's rack of candles, burning green tonight: a pinch of copper",
+      "salts in each, the sexton says, and quite safe."
+     ]
+    }
+   ],
+   "4210": [
+    {
+     "keywords": "patients patient novices novice",
+     "lines": [
+      "Novices in grey paint and bandages, lying on the cots and the floor, moaning",
+      "and reaching for you. They beg you not to leave them in voices they have",
+      "clearly practised. One has a bag of candy under the blanket."
+     ]
+    },
+    {
+     "keywords": "cots cot basin towels",
+     "lines": [
+      "The two cots, the wash basin and the towels of the healing room, exactly as",
+      "they always are, under a layer of grey paint handprints."
+     ]
+    }
+   ]
+  }
+ }
 }

@@ -920,10 +920,16 @@ See also: STASH, RECALL
 
 ~
 
-0 BUFF~
+0 BUFF HERMIE~
 Syntax: heal
         heal <spell>
         buff <spell>
+
+Hermie is the free healer.  She stands at the altar of the Temple of Devota
+(one west of where RECALL lands) for six hours after every reboot, and the
+immortals place her there, or anywhere, when they choose; WHERE HERMIE finds
+her if she is in your area.  She is not a quest and not random: when she is
+about, everything she does is free.
 
 Ask Hermie for a spell.  She works exactly like the healer at the pit -
 HEAL on its own reads out what she offers, HEAL <name> asks for one -
@@ -940,6 +946,19 @@ REFRESH, HEAL and MANA fill the pool rather than topping it up, and
 VITALS does all three, so there is no reason to ask twice.
 
 See also: HEAL, SPELLUP
+~
+
+0 ACCOUNT ACCOUNTS LOGIN~
+There are no accounts here.  Each character is its own login: the name you
+typed at the prompt and that character's password.  Make as many characters
+as you like, and log into each by name.
+
+PASSWORD changes the password of the character you are playing.  Only the
+first eight letters count.  There is no way to recover a forgotten one by
+mail: ask an immortal, who can reset it.  DELETE removes the character you
+are playing, for good.
+
+See also: PASSWORD, DELETE, WHO
 ~
 
 0 REPORTS~
@@ -1968,7 +1987,7 @@ Requires the TRIP skill; failure makes you lose footing yourself briefly.
 See also: BASH, KICK, NERVE
 ~
 
-0 AQUEST~
+0 AQUEST QUEST QUESTING QUESTPOINT QUESTPOINTS QUESTOR THEWS~
 Syntax: aquest <info|points|time|gamble>          anywhere
 Syntax: aquest <request|complete|list|buy|abort>  at a questmaster
 
@@ -4659,7 +4678,7 @@ more information.
 See also: NOTE
 ~
 
-0 GOSSIP .~
+0 GOSSIP CHAT .~
 Syntax: gossip <message>
 Syntax: gossip
 Syntax: . <message>

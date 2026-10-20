@@ -13,8 +13,10 @@ because the files only load in season.
 
 So the copies are generated now. The overlay in data/seasonal/ holds only
 what a season changes: the #AREA line, the flavour text of rooms and
-mobiles (name and description), the records that exist only in season
-(a vendor, a treat), and the resets, shops and specials that place them.
+mobiles (name and description), extra descriptions a decorated room
+answers LOOK with (the pumpkins, the coffins), the records that exist
+only in season (a vendor, a treat), and the resets, shops and specials
+that place them.
 Everything else -- every object, every exit, every stat line, every price,
 every reset of the ordinary world -- comes from the base file as it is
 today, so the seasonal world can never again fall behind it.
@@ -125,6 +127,36 @@ def with_flavour(rec: list[str], section: str, text: list[str]) -> list[str]:
     return [rec[0]] + text + rec[text_fields(rec, TEXT_FIELDS[section]):]
 
 
+def extra_lines(extras: list[dict]) -> list[str]:
+    """The E records an overlay adds to a room, as the loader reads them:
+    E, keywords~, the text, ~."""
+    out: list[str] = []
+    for extra in extras:
+        out += ["E", extra["keywords"] + "~"] + list(extra["lines"]) + ["~"]
+    return out
+
+
+def with_extras(rec: list[str], extras: list[dict]) -> list[str]:
+    """A room record with the overlay's extra descriptions added before its
+    closing S, so a seasonal room can answer LOOK <pumpkins>."""
+    if not extras:
+        return rec
+    end = len(rec) - 1 - rec[::-1].index("S")
+    return rec[:end] + extra_lines(extras) + rec[end:]
+
+
+def without_extras(rec: list[str], extras: list[dict]) -> list[str]:
+    """The inverse of with_extras, for tests that compare a seasonal room's
+    exits and flags to the base's."""
+    added = extra_lines(extras)
+    if not added:
+        return rec
+    text = "\n".join(rec)
+    block = "\n".join(added) + "\n"
+    assert text.count(block) == 1, "the overlay's extras are not in the record once"
+    return text.replace(block, "", 1).split("\n")
+
+
 def vnums_in(line: str) -> set[int]:
     return {int(n) for n in re.findall(r"\b(\d+)\b", line.split(";")[0].split("*")[0])}
 
@@ -142,9 +174,12 @@ def build(base_lines: list[str], overlay: dict) -> list[str]:
             head, recs, tail = records(body)
             out.extend(head)
             texts = overlay.get("text", {}).get(name, {})
+            extras = overlay.get("extras", {}).get(name, {})
             for vnum, rec in recs.items():
                 if str(vnum) in texts:
                     rec = with_flavour(rec, name, texts[str(vnum)])
+                if name == "ROOMS" and str(vnum) in extras:
+                    rec = with_extras(rec, extras[str(vnum)])
                 out.extend(rec)
             for vnum in sorted(int(v) for v in extra.get(name, {})):
                 if vnum not in recs:

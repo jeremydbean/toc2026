@@ -842,6 +842,13 @@ it. Rules this leaves:
   through `extra_env` to boot each holiday world and check it whole --
   the square wears its pumpkins, Hermie, the Oracle and the Quest
   Master exist, and a slain mortal lands in the death room.
+- **A room's LOOK details go in the overlay's `extras`.** `{"ROOMS":
+  {"<vnum>": [{"keywords": ..., "lines": [...]}]}}`; the generator adds
+  them as `E` records before the room's closing `S` (`with_extras`), and
+  the seasonal test strips them with `without_extras` before holding the
+  room's exits and flags to the base. Players look at what a description
+  names (`look pump`, `look coffins` in the October 2026 logs), so a
+  decorated room's nouns should each have one.
 - **The Python tools do not know the seasons.** `area_lint.py`,
   `check_exits.py` and the shop price test read `area.lst`, so they
   check the base files only; the generator is what keeps the copies
@@ -2206,6 +2213,21 @@ saved; a relog ends the mirror. The pack is filled before the immortal's
 own kit goes back on, and `mirror_find_carried` only considers items at
 `WEAR_NONE`, so a mirrored copy of something the immortal owns one of too
 cannot be picked up in place of the original.
+
+## Mining The Watch Log For Gaps
+
+Two cheap sweeps find real gaps, and both were run on 2026-10-20
+(`tests/test_help_keywords.py` pins what they found): every `help <x>`
+a watched character typed, checked against the keywords of the topics a
+mortal may read (an exact keyword wins in `do_help`, then a prefix, so
+`help quest` reached QUESTION until QUEST was a keyword of AQUEST); and
+the first word of every logged command, checked against the command
+table and the socials -- a word refused many times is a command players
+expect (`chat`, nine times). Alias names are logged as typed before the
+expansion, so a short word repeated hundreds of times (`oe`) is somebody's
+alias, not a refusal. Public channel lines in `log/channels.tsv` are the
+third sweep: a shopkeeper saying "I don't trade with folks I can't see"
+twice in three days is why the keeper now says what is hiding you.
 
 ## The Holiday Bosses
 

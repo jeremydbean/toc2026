@@ -4641,6 +4641,17 @@ CHAR_DATA *find_keeper( CHAR_DATA *ch )
     if ( !can_see( keeper, ch ) )
     {
 	do_say( keeper, "I don't trade with folks I can't see." );
+	/* Say why, or the player checks AFFECTS and guesses (two did, in
+	   October 2026). Each is something they can undo. */
+	if ( IS_AFFECTED(ch, AFF_INVISIBLE) )
+	    send_to_char( "(You are invisible. VISIBLE will fix that.)\n\r", ch );
+	else if ( IS_AFFECTED2(ch, AFF2_GHOST) )
+	    send_to_char( "(You are a ghost. VISIBLE will fix that.)\n\r", ch );
+	else if ( IS_AFFECTED(ch, AFF_HIDE) || IS_AFFECTED2(ch, AFF2_STEALTH)
+	     ||   IS_AFFECTED2(ch, AFF2_SHADOWMELD) )
+	    send_to_char( "(You are hidden. VISIBLE will fix that.)\n\r", ch );
+	else if ( ch->in_room != NULL && room_is_dark( ch->in_room ) )
+	    send_to_char( "(It is too dark here for the keeper to make you out.)\n\r", ch );
 	return NULL;
     }
 

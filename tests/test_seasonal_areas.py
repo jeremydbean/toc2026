@@ -78,15 +78,19 @@ class SeasonalAreaTests(unittest.TestCase):
                         self.assertEqual(differing, [], f"objects differing from base in {base}_{tag}: {differing[:10]}")
 
     def test_the_rooms_and_mobiles_differ_from_the_base_only_in_text(self) -> None:
+        """...and, for a room, in the extra descriptions the overlay adds."""
         for base, tag in VARIANTS:
+            overlay = json.loads((gen.DATA / f"{base}_{tag}.json").read_text(encoding="utf-8"))
             for name in ("ROOMS", "MOBILES"):
                 b = section_records(AREA / f"{base}.are", name)
                 s = section_records(AREA / f"{base}_{tag}.are", name)
+                extras = overlay.get("extras", {}).get(name, {})
                 for vnum in b:
                     with self.subTest(variant=f"{base}_{tag}", section=name, vnum=vnum):
                         n = gen.TEXT_FIELDS[name]
+                        srec = gen.without_extras(s[vnum], extras.get(str(vnum), []))
                         self.assertEqual(b[vnum][gen.text_fields(b[vnum], n):],
-                                         s[vnum][gen.text_fields(s[vnum], n):],
+                                         srec[gen.text_fields(srec, n):],
                                          "numbers, exits or stats differ from the base")
 
     def test_the_critical_records_are_present(self) -> None:
@@ -154,6 +158,10 @@ class SeasonBootTests(unittest.TestCase):
                 run(keeper, "scroll 0", 1.0)           # MSHOW pages; a page eats the next command
                 # The Oak Tree Square wears its pumpkins; Hermie and the Oracle exist.
                 self.assertIn("pumpkins", run(keeper, "goto 2401", 2.0))
+                # The decorations answer LOOK (players tried "look pump").
+                self.assertIn("carved", run(keeper, "look pumpkins", 1.6))
+                self.assertIn("knocking", run(keeper, "goto 4209", 2.0))
+                self.assertIn("undertaker", run(keeper, "look coffins", 1.6))
                 self.assertIn("Hermie", run(keeper, "mshow 98", 1.6))
                 self.assertIn("Oracle", run(keeper, "mshow 97", 1.6))
                 self.assertIn("Quest Master", run(keeper, "mshow 7551", 1.6))
