@@ -25,13 +25,15 @@
 
 #define REST_PERCENT_PER_HOUR   5       /* of a level, per hour away */
 #define REST_CAP_PERCENT        150     /* a level and a half at most */
+#define REST_MIN_AWAY           ( 15 * 60 )  /* a relog is not a rest */
 
 /* A level's worth of experience at this character's level. Below hero it
    is exp_per_level; a hero's levels follow next_xp_level's own steps. */
 static long rest_level_span( CHAR_DATA *ch )
 {
+    /* next_xp_level(L) - next_xp_level(L - 1), for a hero. */
     if ( ch->level >= LEVEL_HERO )
-        return 10000L + (long) HERO_STEP_XP * ( ch->level - LEVEL_HERO + 1 );
+        return 10000L + (long) HERO_STEP_XP * ( ch->level - LEVEL_HERO );
     return UMAX( 1, exp_per_level( ch, ch->pcdata->points ) );
 }
 
@@ -87,10 +89,14 @@ void rest_xp_on_login( CHAR_DATA *ch )
     span = rest_level_span( ch );
     cap = span * REST_CAP_PERCENT / 100;
 
-    if ( ch->pcdata->rest_eligible && away > 0 && rest_xp_usable( ch ) )
+    if ( ch->pcdata->rest_eligible && away >= REST_MIN_AWAY && rest_xp_usable( ch ) )
     {
-        /* Whole minutes, so a short break still counts for something. */
-        gained = span * REST_PERCENT_PER_HOUR / 100 * ( away / 60 ) / 60;
+        /* Whole minutes, capped at what fills the pool from nothing, so
+           a year away cannot overflow a 32-bit long. */
+        long minutes = UMIN( away / 60,
+                             60L * REST_CAP_PERCENT / REST_PERCENT_PER_HOUR );
+
+        gained = span * REST_PERCENT_PER_HOUR / 100 * minutes / 60;
         if ( gained > 0 && ch->pcdata->rest_xp < cap )
         {
             ch->pcdata->rest_xp = UMIN( cap, ch->pcdata->rest_xp + gained );

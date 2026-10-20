@@ -2141,6 +2141,15 @@ seen.
 Exclude another area by name there rather than by adding a second
 mechanism.
 
+**Summon immunity is not a reason** (2026-10-20): `AB` is the builders'
+default and refusing it left five areas in the pool. It had also been
+the only thing keeping out mobiles nobody may fight -- The Watcher, level
+55, stands in the Temple where `is_safe` refuses every blow -- so the
+filter now asks `is_protected_npc()`, refuses anything standing in the
+Temple or at the altar, and names Hermie, the dealer, the goblin and the
+holiday bosses. A quest for a mobile that cannot be killed is a quest
+that can only time out.
+
 ## Hunters And NO_MOB
 
 A hunting mobile stops at the edge of a `ROOM_NO_MOB` room exactly as
@@ -2451,7 +2460,10 @@ banks `REST_PERCENT_PER_HOUR` (5) of a level per hour since `last_logout`,
 to `REST_CAP_PERCENT` (150). `group_gain` adds `rest_xp_bonus()` to each
 kill: as much again, while the pool lasts, and nothing where `gain_exp`
 would refuse it (level 50, the remort cap). Saved as `Rested <pool>
-<eligible>` under **case 'R'**.
+<eligible>` under **case 'R'**. Less than `REST_MIN_AWAY` (15 minutes)
+away is a relog, not a rest, and banks nothing; the minutes are capped at
+what fills the pool before they multiply a level's span, which a hero's
+span times a long absence would otherwise overflow in a 32-bit `long`.
 
 **Dailies** live in `quest.c`, beside the ordinary quest and apart from
 it: `ch->questdaily` marks one, cleared on the line after every
@@ -2468,7 +2480,11 @@ cooldown. `quest_update` decrements the cooldown and a quest's countdown
 side by side -- they were an if/else, which froze a daily taken during a
 cooldown. Saved as `Daily <points> <day> <done> <streak> <last full day>`
 under **case 'D'**, the day
-being `current_time / 86400`. **Read each saved value into a local
+being `current_time / 86400`. **The day does not turn under a daily
+that is out**: `quest_daily_rollover` waits for `questdaily` to clear, and
+a finished set's streak is judged by `daily_day`, the day it was taken --
+otherwise a third daily finished at five past midnight UTC counted toward
+the new day and cost the set and the streak. **Read each saved value into a local
 before clamping it**: `UMAX`/`URANGE` evaluate their argument more than
 once, and a `fread_number` inside one reads the file twice and desyncs the
 loader -- the first draft of these keys hung the login.

@@ -1221,7 +1221,7 @@ Temple, the altar where the pit healer stands, or your own recall point --
 and you come back rested: each hour away banks 5% of a level of bonus
 experience, up to 150%.  While you are rested, every kill earns double
 experience until the bonus is spent.  Quitting anywhere else banks
-nothing.
+nothing, and neither does coming back within fifteen minutes.
 
 RESTED shows how much you have and whether the room you stand in would
 let you rest.  Rest is kept, not spent, at a level where you earn no

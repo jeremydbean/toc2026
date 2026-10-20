@@ -52,6 +52,14 @@ class RestedSourceTests(unittest.TestCase):
         self.assertIn("was_in_room", body("src/rested.c", "void rest_xp_on_quit("),
                       "the idle are judged by the room the void took them from")
 
+    def test_the_pool_cannot_overflow_and_a_relog_is_no_rest(self) -> None:
+        login_ = body("src/rested.c", "void rest_xp_on_login(")
+        self.assertIn("away >= REST_MIN_AWAY", login_)
+        self.assertIn("60L * REST_CAP_PERCENT / REST_PERCENT_PER_HOUR", login_,
+                      "minutes are capped before they multiply a level's span")
+        span = body("src/rested.c", "static long rest_level_span(")
+        self.assertIn("ch->level - LEVEL_HERO", span, "a hero's level, not the one after")
+
     def test_kills_draw_on_the_pool(self) -> None:
         source = (ROOT / "src" / "fight.c").read_text(encoding="latin-1")
         self.assertIn("rest_xp_bonus( gch, xp )", source)
@@ -98,6 +106,19 @@ class DailySourceTests(unittest.TestCase):
                     for day in range(1, 31))
         self.assertGreaterEqual(month, train)
         self.assertLess(month, 2 * train, "about one train, not two")
+
+    def test_a_daily_out_at_midnight_belongs_to_the_day_it_was_taken(self) -> None:
+        roll = body("src/quest.c", "static void quest_daily_rollover(")
+        self.assertLess(roll.index("if ( ch->questdaily )"), roll.index("daily_done = 0"))
+        daily = body("src/quest.c", "static void complete_daily_quest(")
+        self.assertIn("long set_day = ch->pcdata->daily_day;", daily)
+        self.assertIn("daily_last_full = set_day;", daily)
+
+    def test_no_quest_for_a_mobile_nobody_may_fight(self) -> None:
+        pick = body("src/quest.c", "static bool automatic_quest_target_is_suitable(")
+        for term in ("is_protected_npc(victim)", "ROOM_VNUM_TEMPLE", "ROOM_VNUM_ALTAR",
+                     "MOB_VNUM_SPELLUP", "is_unfindable_mob(victim)"):
+            self.assertIn(term, pick)
 
     def test_paid_in_daily_points_not_quest_points(self) -> None:
         daily = body("src/quest.c", "static void complete_daily_quest(")

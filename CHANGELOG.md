@@ -149,6 +149,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Bugs in the day's new features** (2026-10-20 review). The widened
+  quest pool could name The Watcher (level 55, in the Temple, where no
+  fight is allowed) and Hermie; the filter now asks `is_protected_npc`
+  and refuses the Temple and the altar. A daily taken before midnight UTC
+  and finished after it counted toward the new day, breaking the set and
+  the streak; the day now waits for the daily. Rested experience could
+  overflow a 32-bit `long` after a long absence at hero levels, used the
+  next level's span for a hero, and paid for a relog; it now caps the
+  minutes, uses the right level, and wants 15 minutes away.
+
 - **Remort and psionics review (2026-10-20).** A trainer answered a
   skill the character holds but is below the level of with "You can't
   practice that."; it names the level now, which is what a remorted

@@ -248,6 +248,12 @@ static void quest_daily_rollover( CHAR_DATA *ch )
 
     if ( IS_NPC(ch) || ch->pcdata == NULL )
         return;
+    /* A daily taken before midnight belongs to the day it was taken:
+       rolling over under it counted it toward the new day, and a third
+       finished at five past midnight cost yesterday's set -- and the
+       streak with it. The day turns once nothing is out. */
+    if ( ch->questdaily )
+        return;
     if ( ch->pcdata->daily_day != today )
     {
         ch->pcdata->daily_day = today;
@@ -271,15 +277,16 @@ static void complete_daily_quest( CHAR_DATA *ch, CHAR_DATA *questman,
         ch->pcdata->daily_done++;
     if ( ch->pcdata->daily_done == DAILY_QUESTS_PER_DAY )
     {
-        long today = (long) ( current_time / 86400 );
+        /* The set's own day, which is the day its quests were taken. */
+        long set_day = ch->pcdata->daily_day;
 
         /* A set finished the day after the last one carries the streak
            on; any gap starts it again at one. */
-        if ( ch->pcdata->daily_last_full == today - 1 )
+        if ( ch->pcdata->daily_last_full == set_day - 1 )
             ch->pcdata->daily_streak = UMIN( ch->pcdata->daily_streak + 1, 100000 );
-        else if ( ch->pcdata->daily_last_full != today )
+        else if ( ch->pcdata->daily_last_full != set_day )
             ch->pcdata->daily_streak = 1;
-        ch->pcdata->daily_last_full = today;
+        ch->pcdata->daily_last_full = set_day;
         streak_bonus = daily_streak_bonus( ch->pcdata->daily_streak );
         points += DAILY_SET_BONUS + streak_bonus;
     }
@@ -1724,8 +1731,17 @@ static bool automatic_quest_target_is_suitable( CHAR_DATA *ch,
      * 2026-10-20). The black market dealer and the treasure goblin are
      * never anybody's quest: they cannot be found from afar. Nor is a
      * holiday boss, which is everybody's fight and announced as one.
+     *
+     * Summon immunity had also been the only thing keeping out mobiles
+     * nobody may attack: The Watcher stands in the Temple, where is_safe
+     * refuses every fight, at level 55. Anything is_protected_npc names,
+     * anything standing in the Temple or at the altar, and Hermie are no
+     * quest either.
      */
     if ( index->level < (ch->level < 6 ? 1 : 3) || index->level > ch->level
+    ||   is_protected_npc(victim)
+    ||   room->vnum == ROOM_VNUM_TEMPLE || room->vnum == ROOM_VNUM_ALTAR
+    ||   index->vnum == MOB_VNUM_SPELLUP
     ||   is_unfindable_mob(victim)
     ||   index->vnum == MOB_VNUM_EVENT_HORSEMAN
     ||   index->vnum == MOB_VNUM_EVENT_FATHER
