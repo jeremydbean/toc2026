@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792457128
+LogO 1792457398
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -16,18 +16,18 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 29
-Plyd 31458
+Plyd 31728
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 StashMax 75
 Scro 22
-Room 4210
-HMV  309 412 610 749 214 318
-NewGold 45
+Room 30400
+HMV  412 412 650 749 112 318
+NewGold 63
 NewPlat 30
-NewCopp 278
-NewSilv 54
+NewCopp 128
+NewSilv 70
 BankCP 45262686
 IntTime 1792436412
 IntTotal 262686
@@ -36,10 +36,10 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 310
-AchQuests 20
+AchKills 312
+AchQuests 21
 AchDeaths 6
-AchExplore 0
+AchExplore 1
 AchMaps 0
 AchCompass 0
 AchTriforce 0
@@ -95,9 +95,9 @@ SesPK    0
 SesDead  2
 SesQuest 2
 QuestPnts 1116
-QuestStrk 9
+QuestStrk 10
 CasinoLost 4
-QuestNext 1
+QuestNext 12
 Exp  65343
 Act  65740
 AfBy 512
@@ -125,23 +125,23 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  4
+Pos  8
 Prac 7
 Trai 1
 Save  5
 Alig  -1000
-Hit   12
-Dam   30
-ACs -25 -28 -34 76
+Hit   9
+Dam   28
+ACs -5 -8 -14 96
 Attr 18 16 16 12 19
-AMod 11 10 9 4 10
+AMod 10 10 9 4 10
 Pass TrjPUdRVdu8MY~
 Titl  the Underlord~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 402 749 268
-Cond 0 22 35
+Cond 0 17 30
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 75 'chill touch'
@@ -185,8 +185,7 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'giant strength'   0   8   3   1          0          0
-AffD 'armor'   0   4 -20  17          0          0
+AffD 'giant strength'   0   3   3   1          0          0
 End
 
 #O
@@ -278,7 +277,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 318
+Time 313
 Cost 0
 Cond 100
 Repd 0
@@ -395,7 +394,7 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 615
+Time 610
 Cost 0
 Cond 100
 Repd 0
@@ -440,7 +439,7 @@ Lev  14
 Cost 100000
 Cond 100
 Repd 0
-Val  0 0 9883 0 0
+Val  0 0 9878 0 0
 End
 
 #O
@@ -515,9 +514,30 @@ End
 #O
 Vnum 17702
 Nest 0
-Wear 16
+Wear -1
 Lev  25
 Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30219
+Nest 0
+ExtF 2097281
+Wear 16
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30227
+Nest 0
+Wear -1
+Lev  1
+Cost 0
 Cond 100
 Repd 0
 End
