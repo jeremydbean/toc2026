@@ -10,6 +10,25 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **Rested experience** (`src/rested.c`, owner's design after WoW's,
+  2026-10-20). Quitting in a safe room, a healing room, the Temple, the
+  altar or your recall point banks 5% of a level per hour away, to 150%;
+  kills pay double from the pool while it lasts, never where gain_exp would
+  throw it away. Saved as `Rested <pool> <eligible>` (case 'R'). RESTED.
+- **Daily quests** (`quest.c`). AQUEST DAILY REQUEST: three a day, 30
+  minutes each, no rush or emergency, paying coin and daily points --
+  `Daily <points> <day> <done> <streak> <last full day>` (case 'D'), apart
+  from quest points -- spent with AQUEST DAILY BUY PRACTICE (16) or TRAIN
+  (160). A point a daily and one for the day's set, plus a daily-streak
+  bonus of 1/2/3/4 from 7/14/30/100 days running, so a perfect month from
+  a standing start earns 162: one train (owner). A daily needs and sets
+  no cooldown and never touches the quest streak; `quest_update` now runs
+  the cooldown and a quest's countdown side by side. Seven achievements:
+  a first daily, a full day, 7/30/100-day streaks, a train bought with
+  daily points, and Well Rested. `tests/test_rested_and_dailies.py`.
+- **WALKTO QUEST is for immortals only** (owner, 2026-10-20). The Mudlet
+  package's own WALK QUEST, which reads the quest room from GMCP, is
+  unchanged.
 - **Quests come from the whole world again** (`automatic_quest_target_is_suitable`).
   The filter refused summon-immune mobiles, and `AB` is the builders'
   default: 1,696 of the 1,849 mobile kinds a level 43 could be sent after

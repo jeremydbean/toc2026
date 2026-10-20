@@ -44,8 +44,9 @@ class AchievementSystemTests(unittest.TestCase):
         # A tripwire, not a limit: it should move only when somebody
         # meant to move it. 127 until 2026-09-28, when exploration went
         # from 3 to 22 and combat from 9 to 15; 196 from 2026-10-01 with
-        # Top of the Board, for the training yard's benchmark record.
-        self.assertEqual(len(self.entries), 196)
+        # Top of the Board, for the training yard's benchmark record;
+        # 203 from 2026-10-20 with six daily-quest feats and Well Rested.
+        self.assertEqual(len(self.entries), 203)
 
         keys = [entry["key"] for entry in self.entries]
         self.assertEqual(len(keys), len(set(keys)))
@@ -174,7 +175,19 @@ class AchievementSystemTests(unittest.TestCase):
         book = book[:book.index("\n}\n")]
         self.assertIn("achievement_check_state(ch, true)", book)
         self.assertEqual(fight.count("record_player_kill( ch, victim );"), 2)
-        self.assertEqual(quest.count("achievement_record_quest(ch)"), 1)
+        # One call in each of the two ways a quest is completed: an
+        # ordinary quest and a daily (2026-10-20), never two in one.
+        self.assertEqual(quest.count("achievement_record_quest(ch)"), 2)
+        for completion in ("static void complete_automatic_quest(", "static void complete_daily_quest("):
+            fn = quest[quest.index(completion):]
+            fn = fn[:fn.index("\n}\n")]
+            self.assertEqual(fn.count("achievement_record_quest(ch)"), 1, completion)
+        for event in ("ACHIEVEMENT_EVENT_DAILY_QUEST", "ACHIEVEMENT_EVENT_DAILY_SET",
+                      "ACHIEVEMENT_EVENT_DAILY_STREAK_WEEK", "ACHIEVEMENT_EVENT_DAILY_STREAK_MONTH",
+                      "ACHIEVEMENT_EVENT_DAILY_STREAK_HUNDRED", "ACHIEVEMENT_EVENT_DAILY_TRAIN"):
+            self.assertIn(event, quest)
+        self.assertIn("ACHIEVEMENT_EVENT_WELL_RESTED",
+                      (ROOT / "src" / "rested.c").read_text(encoding="latin-1"))
         for event in (
             "ACHIEVEMENT_EVENT_QUEST_RUSH",
             "ACHIEVEMENT_EVENT_QUEST_LAST_MINUTE",

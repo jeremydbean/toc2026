@@ -3103,6 +3103,8 @@ case CON_DEFAULT_CHOICE:
 	    /* Psionics owed or handed back: here, past the password and with
 	       a real descriptor, never inside load_char_obj. */
 	    psionic_login( ch );
+	    /* Rested experience banked while they were away (rested.c). */
+	    rest_xp_on_login( ch );
 
             snprintf( buf, sizeof(buf), "%s has entered the game.", ch->name );
             wizinfo( buf, ch->level );

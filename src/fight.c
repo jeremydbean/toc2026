@@ -3457,9 +3457,19 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
 
 */
 	xp = xp_compute( gch, victim, group_levels, members );
-	snprintf(buf, sizeof(buf), "You receive %d experience points.\n\r", xp );
-	send_to_char( buf, gch );
-	gain_exp( gch, xp );
+	{
+	    /* Rested: as much again from the pool while it lasts. */
+	    int rested = rest_xp_bonus( gch, xp );
+
+	    if ( rested > 0 )
+		snprintf(buf, sizeof(buf),
+		    "You receive %d experience points (%d of them rested).\n\r",
+		    xp + rested, rested );
+	    else
+		snprintf(buf, sizeof(buf), "You receive %d experience points.\n\r", xp );
+	    send_to_char( buf, gch );
+	    gain_exp( gch, xp + rested );
+	}
 
 	for ( obj = gch->carrying; obj != NULL; obj = obj_next )
 	{

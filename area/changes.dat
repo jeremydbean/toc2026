@@ -3,6 +3,15 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261020k 2026-10-20
+Rested experience: quit in a safe or healing room, the Temple, the altar
+or your recall point, and each hour away banks bonus experience -- kills
+pay double until it is spent. RESTED shows it. Daily quests: AQUEST DAILY
+REQUEST, three a day, pays daily points; keep a daily streak going and
+they pay more. A month of every daily buys a train with AQUEST DAILY BUY.
+New achievements for both. WALKTO QUEST is now for immortals only.
+HELP RESTED, HELP AQUEST.
+
 @ 20261020j 2026-10-20
 USE <item> now does the obvious thing with whatever you hold: quaff,
 recite, eat, drink, zap, play or wear it. A command the game does not

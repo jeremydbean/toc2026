@@ -1,7 +1,8 @@
 """Alaric's bug reports of 2026-10-07 (area/bugs.txt).
 
 - "walk quest" said there was no destination called quest. WALKTO QUEST
-  now walks to the room the quest master named.
+  now walks to the room the quest master named -- for immortals only
+  since 2026-10-20 (owner: finding the quarry is the quest).
 - A quest sent him to a Storage Room in the Valley of the Elves that no
   way he could walk reached. The quest master now chooses only targets
   this character could walk to by WALKTO's own rules
@@ -52,11 +53,13 @@ class SourceTests(unittest.TestCase):
 class LiveTests(unittest.TestCase):
     def test_walk_quest_and_affects(self) -> None:
         with LiveMud() as mud:
-            with mud.connect(timeout=120) as client:
-                create_character(client, "Zreporter", PASSWORD)
-                client.send("quit")
-                self.assertTrue(client.wait_closed())
+            for name in ("Zreporter", "Zwalker"):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PASSWORD)
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
             patch_player_file(mud, "Zreporter", Levl=20, Room=QUEST_ROOM)
+            patch_player_file(mud, "Zwalker", Levl=20, Tru=70, Room=QUEST_ROOM)
 
             with mud.connect(timeout=120) as player:
                 login(player, "Zreporter", PASSWORD)
@@ -66,13 +69,21 @@ class LiveTests(unittest.TestCase):
                 self.assertNotIn("Huh?", out, out)
                 self.assertRegex(out, r"(?i)affected", out)
 
-                self.assertIn("not on a quest", run(player, "walk quest"))
+                self.assertIn("is for immortals", run(player, "walk quest"))
 
                 # Mud School's kit: what a new player types for it works,
                 # and HELP finds it by those words (watched log, 2026-10-06).
                 self.assertIn("OUTFIT", run(player, "help subissue").upper())
                 self.assertNotIn("Huh?", run(player, "issue"))
 
+                player.send("quit")
+                player.wait_closed()
+
+            # An immortal, by trust, still walks to the quest.
+            with mud.connect(timeout=120) as player:
+                login(player, "Zwalker", PASSWORD)
+                run(player, "scroll 0")
+                self.assertIn("not on a quest", run(player, "walk quest"))
                 asked = run(player, "aquest request", 2.5)
                 self.assertRegex(asked, r"(?i)quest", asked)
                 if "no suitable quests" in asked:

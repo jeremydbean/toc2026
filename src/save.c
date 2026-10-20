@@ -719,6 +719,14 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "PkGiv %ld\n",ch->pcdata->pkills_given );
     achievement_write_char( ch, fp );
     fprintf( fp, "LastOut  %ld\n", ch->pcdata->last_logout );
+    /* Rested experience and whether they lay down somewhere to rest
+       (rested.c); daily quest points, the day and how many that day
+       (quest.c). */
+    fprintf( fp, "Rested %ld %d\n", ch->pcdata->rest_xp,
+             ch->pcdata->rest_eligible ? 1 : 0 );
+    fprintf( fp, "Daily %d %ld %d %d %ld\n", ch->pcdata->daily_points,
+             ch->pcdata->daily_day, ch->pcdata->daily_done,
+             ch->pcdata->daily_streak, ch->pcdata->daily_last_full );
     fprintf( fp, "SesLogin %ld\n", ch->pcdata->last_session_login );
     fprintf( fp, "SesDur   %ld\n", ch->pcdata->last_session_dur );
     fprintf( fp, "SesExpG  %ld\n", ch->pcdata->last_session_exp_gain );
@@ -1369,6 +1377,13 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->session_deaths          = 0;
     ch->pcdata->session_quests          = 0;
     ch->pcdata->last_logout             = 0;
+    ch->pcdata->rest_xp                 = 0;
+    ch->pcdata->rest_eligible           = FALSE;
+    ch->pcdata->daily_points            = 0;
+    ch->pcdata->daily_day               = 0;
+    ch->pcdata->daily_done              = 0;
+    ch->pcdata->daily_streak            = 0;
+    ch->pcdata->daily_last_full         = 0;
     ch->pcdata->last_session_login      = 0;
     ch->pcdata->last_session_dur        = 0;
     ch->pcdata->last_session_exp_gain   = 0;
@@ -1968,6 +1983,24 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'D':
+	    /* Daily quest points, the day, and how many done that day. */
+	    if ( !str_cmp( word, "Daily" ) )
+	    {
+		/* One read per value: the clamping macros would read twice. */
+		int points = fread_number( fp );
+		long day = fread_long( fp );
+		int done = fread_number( fp );
+		int streak = fread_number( fp );
+		long last_full = fread_long( fp );
+
+		ch->pcdata->daily_points    = points > 0 ? points : 0;
+		ch->pcdata->daily_day       = day;
+		ch->pcdata->daily_done      = URANGE( 0, done, 100 );
+		ch->pcdata->daily_streak    = streak > 0 ? streak : 0;
+		ch->pcdata->daily_last_full = last_full;
+		fMatch = true;
+		break;
+	    }
 	    KEY( "Damroll",	ch->damroll,		(sh_int)(fread_number( fp )) );
 	    KEY( "Dam",		ch->damroll,		(sh_int)(fread_number( fp )) );
 	    KEY( "Depart",	ch->pcdata->depart,	fread_string( fp ) );
@@ -2142,6 +2175,16 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	case 'R':
 	    KEY( "Race",        ch->race,
 				(sh_int)(race_lookup(fread_string( fp ))) );
+	    if ( !str_cmp( word, "Rested" ) )
+	    {
+		/* One read per value: UMAX would read the file twice. */
+		long pool = fread_long( fp );
+
+		ch->pcdata->rest_xp       = pool > 0 ? pool : 0;
+		ch->pcdata->rest_eligible = fread_number( fp ) != 0;
+		fMatch = true;
+		break;
+	    }
 	    KEY( "RecallRoom",	ch->pcdata->recall_vnum,   fread_number( fp ) );
 	    KEY( "RecallSet",	ch->pcdata->recall_set_at, fread_long( fp ) );
 

@@ -148,6 +148,13 @@ static const ACHIEVEMENT_DEFINITION achievement_table[] =
     { "quest-emergency", "When It Could Not Wait", "Complete an emergency contract before its five-minute timer expires.", ACH_CAT_QUESTS, 40, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_QUEST_EMERGENCY, 0 },
     { "quest-last-minute", "Under the Wire", "Complete an automatic quest in its final minute.", ACH_CAT_QUESTS, 20, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_QUEST_LAST_MINUTE, 0 },
     { "quest-gamble-win", "Double or Nothing", "Win an automatic-quest double-or-nothing gamble.", ACH_CAT_QUESTS, 15, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_QUEST_GAMBLE_WIN, 0 },
+    { "daily-first", "Daily Bread", "Complete a daily quest.", ACH_CAT_QUESTS, 5, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DAILY_QUEST, 0 },
+    { "daily-full-day", "A Full Day's Work", "Complete all three daily quests in one day.", ACH_CAT_QUESTS, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DAILY_SET, 0 },
+    { "daily-streak-week", "Seven Days Running", "Complete every daily quest seven days in a row.", ACH_CAT_QUESTS, 25, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DAILY_STREAK_WEEK, 0 },
+    { "daily-streak-month", "A Month of Devotion", "Complete every daily quest thirty days in a row.", ACH_CAT_QUESTS, 60, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DAILY_STREAK_MONTH, 0 },
+    { "daily-streak-hundred", "Clockwork", "Complete every daily quest a hundred days in a row.", ACH_CAT_QUESTS, 100, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DAILY_STREAK_HUNDRED, 0 },
+    { "daily-train", "Earned the Hard Way", "Trade daily points for a train.", ACH_CAT_QUESTS, 30, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DAILY_TRAIN, 0 },
+    { "well-rested", "Well Rested", "Come back to the game rested.", ACH_CAT_CHARACTER, 5, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_WELL_RESTED, 0 },
     { "quest-keepsake", "A Token of Esteem", "Acquire a questmaster's keepsake trophy.", ACH_CAT_QUESTS, 20, false, ACH_REQ_OBJECT, 20306, 0 },
 
     { "hyrule-arrival", "A Hero Awakens", "Be teleported into the First Quest entrance of Hyrule.", ACH_CAT_EXPLORATION, 10, false, ACH_REQ_ROOM, 30200, 0 },

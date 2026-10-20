@@ -59,7 +59,7 @@ documentation.
   campaign with all nine First Quest dungeons.
 - Advanced in-game `compare` analysis that models a player's complete loadout,
   class, guild, level, skills, spells, and selected gameplay focus.
-- A permanent 196-achievement progression system with points, earned dates,
+- A permanent 203-achievement progression system with points, earned dates,
   hidden discoveries, live progress, retroactive milestones, group boss credit,
   world bosses, rare relics, crafting, banking and casino feats, unusual deaths,
   and complete Hyrule dungeon, map, compass, shard, and boss tracking.

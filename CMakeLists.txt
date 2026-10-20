@@ -70,6 +70,7 @@ set(SRC_FILES
     src/abilities.c
     src/blackmarket.c
     src/goblin.c
+    src/rested.c
     src/wizlist.c
 )
 

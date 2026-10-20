@@ -196,6 +196,309 @@ static int quest_streak_bonus( const CHAR_DATA *ch )
     return UMIN(bonus, QUEST_STREAK_BONUS_MAX);
 }
 
+/* ------------------------------------------------------------------ */
+/*
+ * Daily quests (owner's design, 2026-10-20, after World of Warcraft's).
+ * AQUEST DAILY REQUEST hands out the same kind of quest as AQUEST REQUEST,
+ * DAILY_QUESTS_PER_DAY of them a day (the day is UTC, time / 86400), with
+ * no rush or emergency roll and DAILY_MINUTES to do it in. A daily pays
+ * daily points -- apart from quest points, kept in pcdata->daily_points
+ * and saved as "Daily <points> <day> <done>" -- and the usual coin, and
+ * AQUEST DAILY BUY PRACTICE or TRAIN spends them. A daily stands apart from
+ * the ordinary quest: it neither needs nor sets the cooldown, never touches
+ * the quest streak, and losing one costs only the try.
+ *
+ * The daily streak is days in a row with all three done, and the day's
+ * set pays more the longer it runs (daily_streak_bonus). The prices are
+ * set so that a month of every daily, from a standing start, buys one
+ * train (owner, 2026-10-20): 6 days at 4, 7 at 5, 16 at 6 and one at 7 is
+ * 162 against a train's 160; a streak past thirty days earns about 1.3 a
+ * month. A practice is a tenth of a train.
+ */
+#define DAILY_QUESTS_PER_DAY    3
+#define DAILY_MINUTES           30
+#define DAILY_POINTS_PER_QUEST  1
+#define DAILY_SET_BONUS         1   /* for the last of the day's three */
+#define DAILY_PRACTICE_COST     16
+#define DAILY_TRAIN_COST        160
+
+/* What a set pays on top, by how many days running it makes. */
+static int daily_streak_bonus( int streak )
+{
+    if ( streak >= 100 ) return 4;
+    if ( streak >= 30 )  return 3;
+    if ( streak >= 14 )  return 2;
+    if ( streak >= 7 )   return 1;
+    return 0;
+}
+
+/* The streak as it stands today: a day missed has ended it, even before
+   the next set says so. */
+static int daily_streak_now( CHAR_DATA *ch )
+{
+    long today = (long) ( current_time / 86400 );
+
+    return ch->pcdata->daily_last_full >= today - 1 ? ch->pcdata->daily_streak : 0;
+}
+
+/* A new UTC day starts a new count. */
+static void quest_daily_rollover( CHAR_DATA *ch )
+{
+    long today = (long) ( current_time / 86400 );
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+    if ( ch->pcdata->daily_day != today )
+    {
+        ch->pcdata->daily_day = today;
+        ch->pcdata->daily_done = 0;
+    }
+}
+
+static void complete_daily_quest( CHAR_DATA *ch, CHAR_DATA *questman,
+                                  int kills_min, int kills_max )
+{
+    char buf[MAX_STRING_LENGTH];
+    char price[MAX_INPUT_LENGTH];
+    long reward = number_range(kills_min, kills_max)
+                * black_market_kill_value( ch->level );
+    int points = DAILY_POINTS_PER_QUEST;
+
+    int streak_bonus = 0;
+
+    quest_daily_rollover(ch);
+    if ( ch->pcdata->daily_done < 100 )
+        ch->pcdata->daily_done++;
+    if ( ch->pcdata->daily_done == DAILY_QUESTS_PER_DAY )
+    {
+        long today = (long) ( current_time / 86400 );
+
+        /* A set finished the day after the last one carries the streak
+           on; any gap starts it again at one. */
+        if ( ch->pcdata->daily_last_full == today - 1 )
+            ch->pcdata->daily_streak = UMIN( ch->pcdata->daily_streak + 1, 100000 );
+        else if ( ch->pcdata->daily_last_full != today )
+            ch->pcdata->daily_streak = 1;
+        ch->pcdata->daily_last_full = today;
+        streak_bonus = daily_streak_bonus( ch->pcdata->daily_streak );
+        points += DAILY_SET_BONUS + streak_bonus;
+    }
+    if ( ch->pcdata->daily_points <= INT_MAX - points )
+        ch->pcdata->daily_points += points;
+
+    REMOVE_BIT(ch->act, PLR_QUESTOR);
+    ch->questgiver = NULL;
+    ch->countdown = 0;
+    ch->questmob = 0;
+    ch->questobj = 0;
+    ch->questrush = false;
+    ch->questemergency = false;
+    ch->questdaily = false;
+    if ( ch->pcdata->session_quests < INT_MAX )
+        ch->pcdata->session_quests++;
+    achievement_record_quest(ch);
+    achievement_record_event(ch, ACHIEVEMENT_EVENT_DAILY_QUEST, true);
+    if ( ch->pcdata->daily_done == DAILY_QUESTS_PER_DAY )
+    {
+        achievement_record_event(ch, ACHIEVEMENT_EVENT_DAILY_SET, true);
+        if ( ch->pcdata->daily_streak >= 7 )
+            achievement_record_event(ch, ACHIEVEMENT_EVENT_DAILY_STREAK_WEEK, true);
+        if ( ch->pcdata->daily_streak >= 30 )
+            achievement_record_event(ch, ACHIEVEMENT_EVENT_DAILY_STREAK_MONTH, true);
+        if ( ch->pcdata->daily_streak >= 100 )
+            achievement_record_event(ch, ACHIEVEMENT_EVENT_DAILY_STREAK_HUNDRED, true);
+    }
+
+    gain_copper(ch, UMAX(1L, reward));
+    format_price( UMAX(1L, reward), price, sizeof(price) );
+    do_say(questman, "Your daily task is done. Well worked!");
+    snprintf(buf, sizeof(buf), "Here's your %s - and %d daily point%s.",
+        price, points, points == 1 ? "" : "s");
+    do_say(questman, buf);
+    if ( ch->pcdata->daily_done == DAILY_QUESTS_PER_DAY )
+    {
+        if ( streak_bonus > 0 )
+            snprintf(buf, sizeof(buf),
+                "That's all three for today - day %d of your streak, %d points extra!",
+                ch->pcdata->daily_streak, DAILY_SET_BONUS + streak_bonus);
+        else
+            snprintf(buf, sizeof(buf),
+                "That's all three for today - day %d of your streak, a point extra!",
+                ch->pcdata->daily_streak);
+        do_say(questman, buf);
+    }
+    snprintf(buf, sizeof(buf),
+        "You have %d daily point%s. AQUEST DAILY BUY PRACTICE (%d) or TRAIN (%d) spends them.\n\r",
+        ch->pcdata->daily_points, ch->pcdata->daily_points == 1 ? "" : "s",
+        DAILY_PRACTICE_COST, DAILY_TRAIN_COST);
+    send_to_char(buf, ch);
+    watch_log( ch, "daily quest complete: %s, %d daily points (%d today)",
+        price, points, ch->pcdata->daily_done );
+    save_char_obj(ch);
+}
+
+static void quest_daily_status( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+    long next_day = ( (long) ( current_time / 86400 ) + 1 ) * 86400;
+    long left = next_day - (long) current_time;
+
+    int streak = daily_streak_now( ch );
+
+    snprintf(buf, sizeof(buf),
+        "{09.-[ Daily Quests ]-------------------------------------------.{00\n\r"
+        "{09|{00 Done today:   {0D%d{00 of %d   (a new day in %ldh %02ldm)\n\r"
+        "{09|{00 Daily points: {0D%d{00\n\r"
+        "{09|{00 Daily streak: {0D%d{00 day%s; a full day now pays {0D%d{00 extra\n\r"
+        "{09|{00 Each daily pays %d point and coin; all three in a day pay %d more,\n\r"
+        "{09|{00 and more again at 7, 14, 30 and 100 days running.\n\r"
+        "{09|{00 AQUEST DAILY REQUEST  take one, at a questmaster\n\r"
+        "{09|{00 AQUEST DAILY BUY PRACTICE [n]  %d points each\n\r"
+        "{09|{00 AQUEST DAILY BUY TRAIN [n]     %d points each\n\r"
+        "{09'-------------------------------------------------------------'{00\n\r",
+        ch->pcdata->daily_done, DAILY_QUESTS_PER_DAY, left / 3600, ( left % 3600 ) / 60,
+        ch->pcdata->daily_points, streak, streak == 1 ? "" : "s",
+        DAILY_SET_BONUS + daily_streak_bonus( streak + 1 ),
+        DAILY_POINTS_PER_QUEST, DAILY_SET_BONUS,
+        DAILY_PRACTICE_COST, DAILY_TRAIN_COST);
+    send_to_char(buf, ch);
+}
+
+static void quest_daily_buy( CHAR_DATA *ch, char *argument )
+{
+    char what[MAX_INPUT_LENGTH], count[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
+    bool train;
+    int n = 1, cost, have;
+
+    argument = one_argument( argument, what );
+    one_argument( argument, count );
+    if ( what[0] != '\0' && !str_prefix( what, "practices" ) )
+        train = false;
+    else if ( what[0] != '\0' && !str_prefix( what, "trains" ) )
+        train = true;
+    else
+    {
+        send_to_char("Buy what? AQUEST DAILY BUY PRACTICE [n] or AQUEST DAILY BUY TRAIN [n].\n\r", ch);
+        return;
+    }
+    if ( count[0] != '\0' )
+    {
+        if ( !is_number( count ) || strlen( count ) > 4
+        ||   ( n = atoi( count ) ) < 1 || n > 100 )
+        {
+            send_to_char("Buy how many? From 1 to 100.\n\r", ch);
+            return;
+        }
+    }
+    cost = n * ( train ? DAILY_TRAIN_COST : DAILY_PRACTICE_COST );
+    if ( cost > ch->pcdata->daily_points )
+    {
+        snprintf(buf, sizeof(buf),
+            "That costs %d daily points, and you have %d.\n\r",
+            cost, ch->pcdata->daily_points);
+        send_to_char(buf, ch);
+        return;
+    }
+    have = train ? ch->train : ch->practice;
+    if ( have > SHRT_MAX - n )
+    {
+        send_to_char("You cannot hold that many.\n\r", ch);
+        return;
+    }
+    ch->pcdata->daily_points -= cost;
+    if ( train )
+        ch->train = (sh_int) ( ch->train + n );
+    else
+        ch->practice = (sh_int) ( ch->practice + n );
+    snprintf(buf, sizeof(buf),
+        "You trade %d daily point%s for %d %s%s. %d point%s left.\n\r",
+        cost, cost == 1 ? "" : "s", n, train ? "train" : "practice",
+        n == 1 ? "" : "s", ch->pcdata->daily_points,
+        ch->pcdata->daily_points == 1 ? "" : "s");
+    send_to_char(buf, ch);
+    watch_log( ch, "daily points: %d spent on %d %s", cost, n, train ? "trains" : "practices" );
+    if ( train )
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_DAILY_TRAIN, true );
+    save_char_obj(ch);
+}
+
+static void quest_daily_request( CHAR_DATA *ch )
+{
+    CHAR_DATA *questman;
+    char buf[MAX_STRING_LENGTH];
+
+    for ( questman = ch->in_room != NULL ? ch->in_room->people : NULL;
+          questman != NULL; questman = questman->next_in_room )
+        if ( IS_NPC(questman) && IS_SET(questman->act, ACT_QUESTM) )
+            break;
+    if ( questman == NULL )
+    {
+        send_to_char("Daily quests are handed out by a questmaster.\n\r", ch);
+        return;
+    }
+    if ( questman->fighting != NULL )
+    {
+        send_to_char("Wait until the fighting stops.\n\r", ch);
+        return;
+    }
+    if ( ch->questgamble_pts > 0 )
+    {
+        send_to_char(
+            "Resolve your pending AQUEST GAMBLE offer before requesting another quest.\n\r", ch);
+        return;
+    }
+    act( "$n asks $N for the day's work.", ch, NULL, questman, TO_ROOM );
+    act( "You ask $N for the day's work.", ch, NULL, questman, TO_CHAR );
+    if ( IS_SET(ch->act, PLR_QUESTOR) )
+    {
+        snprintf(buf, sizeof(buf), "Finish the quest you have first, %s.", ch->name);
+        do_say(questman, buf);
+        return;
+    }
+    if ( ch->pcdata->daily_done >= DAILY_QUESTS_PER_DAY )
+    {
+        do_say(questman, "You've done your three for today. Come back tomorrow!");
+        return;
+    }
+
+    remove_automatic_quest_tokens(ch);
+    ch->questgiver = NULL;
+    ch->questmob = 0;
+    ch->questobj = 0;
+    ch->countdown = 0;
+    ch->questrush = false;
+    ch->questemergency = false;
+    ch->questdaily = false;
+    generate_quest(ch, questman);
+    if ( ch->questmob > 0 || ch->questobj > 0 )
+    {
+        ch->countdown = (sh_int) DAILY_MINUTES;
+        ch->questdaily = true;
+        SET_BIT(ch->act, PLR_QUESTOR);
+        snprintf(buf, sizeof(buf),
+            "That's daily task %d of %d. You have %d minutes.",
+            ch->pcdata->daily_done + 1, DAILY_QUESTS_PER_DAY, ch->countdown);
+        do_say(questman, buf);
+    }
+    save_char_obj(ch);
+}
+
+/* AQUEST DAILY [REQUEST | BUY PRACTICE|TRAIN [n]] */
+static void quest_daily( CHAR_DATA *ch, char *arg2, char *argument )
+{
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+    quest_daily_rollover(ch);
+    if ( arg2[0] == '\0' || !str_prefix( arg2, "status" ) )
+        quest_daily_status(ch);
+    else if ( !str_prefix( arg2, "request" ) )
+        quest_daily_request(ch);
+    else if ( !str_prefix( arg2, "buy" ) )
+        quest_daily_buy(ch, argument);
+    else
+        send_to_char("Syntax: AQUEST DAILY [REQUEST | BUY PRACTICE [n] | BUY TRAIN [n]]\n\r", ch);
+}
+
 /*
  * The coin is counted in kills at the questor's level (the same measure
  * the black market prices by), kills_min to kill_max of them. It was a
@@ -217,6 +520,13 @@ static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
     long reward = number_range(kills_min, kills_max)
                 * black_market_kill_value( ch->level );
     int streak_bonus = quest_streak_bonus(ch);
+
+    /* A daily is paid in daily points, apart from all of this. */
+    if ( ch->questdaily )
+    {
+        complete_daily_quest( ch, questman, kills_min, kills_max );
+        return;
+    }
 
     /* An emergency replaces the rush multiplier rather than stacking
        with it: the two are alternatives at request time and a quest is
@@ -264,6 +574,7 @@ static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
     ch->questobj = 0;
     ch->questrush = false;
     ch->questemergency = false;
+    ch->questdaily = false;
     if ( ch->queststreak < 0 )
         ch->queststreak = 0;
     if ( ch->queststreak < SHRT_MAX )
@@ -347,8 +658,11 @@ void quest_record_kill( CHAR_DATA *killer, CHAR_DATA *victim )
 
 void quest_handle_logout( CHAR_DATA *ch )
 {
+    bool daily;
+
     if ( ch == NULL || IS_NPC(ch) || !IS_SET(ch->act, PLR_QUESTOR) )
         return;
+    daily = ch->questdaily;
 
     remove_automatic_quest_tokens(ch);
     REMOVE_BIT(ch->act, PLR_QUESTOR);
@@ -358,6 +672,12 @@ void quest_handle_logout( CHAR_DATA *ch )
     ch->questobj = 0;
     ch->questrush = false;
     ch->questemergency = false;
+    ch->questdaily = false;
+    if ( daily )
+    {
+        send_to_char( "Leaving the game abandons your daily quest.\n\r", ch );
+        return;
+    }
     ch->queststreak = 0;
     ch->nextquest = ch->level >= 50 ? 5 : 15;
     send_to_char(
@@ -373,6 +693,7 @@ static void quest_show_commands( CHAR_DATA *ch )
 	"{09|{00  {04POINTS   {00 Check your quest point balance\n\r"
 	"{09|{00  {04TIME     {00 Check your quest timer\n\r"
 	"{09|{00  {04GAMBLE   {00 Double-or-nothing your pending points\n\r"
+	"{09|{00  {04DAILY    {00 Daily quests and their points (DAILY REQUEST, BUY)\n\r"
 	"{09|{00\n\r"
 	"{09|{00  {01At a questmaster:{00\n\r"
 	"{09|{00  {04REQUEST  {00 Seek a quest from the questmaster\n\r"
@@ -630,6 +951,12 @@ void do_quest(CHAR_DATA *ch, char *argument)
             save_char_obj(ch);
             return;
         }
+    }
+
+    if ( !str_prefix(arg1, "daily") && arg1[0] != '\0' )
+    {
+        quest_daily( ch, arg2, argument );
+        return;
     }
 
     if ( arg1[0] == '\0'
@@ -1090,6 +1417,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	ch->countdown = 0;
 	ch->questrush = false;
 	ch->questemergency = false;
+	ch->questdaily = false;
 
 	switch (number_range(0, 3))
 	{
@@ -1139,6 +1467,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 		ch->countdown = (sh_int)(number_range(5, 8));
 		ch->questrush = true;
 		ch->questemergency = false;
+		ch->questdaily = false;
 		send_to_char(
 		    "\n\r{0C** RUSH CONTRACT! Double reward - finish before time runs out! **{00\n\r\n\r",
 		    ch);
@@ -1153,6 +1482,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 		ch->countdown = (sh_int)(number_range(10,30));
 		ch->questrush = false;
 		ch->questemergency = false;
+		ch->questdaily = false;
 		snprintf(buf, sizeof(buf),
 		    "You have %d minutes to complete this quest.", ch->countdown);
 		do_say(questman, buf);
@@ -1221,17 +1551,24 @@ void do_quest(CHAR_DATA *ch, char *argument)
 
         if( IS_SET(ch->act, PLR_QUESTOR) )
         {
+            bool daily = ch->questdaily;
+
             snprintf(buf, sizeof(buf),
 		"Very well, %s. Your quest obligation is lifted.", ch->name);
 	    do_say(questman,buf);
-	    if (ch->queststreak > 0)
+	    /* A daily is apart from the streak and the cooldown: dropping
+	       one costs only that day's chance at it. */
+	    if (daily)
+		;
+	    else if (ch->queststreak > 0)
 	    {
 		snprintf(buf, sizeof(buf),
 		    "You had a streak of %d in a row - all gone now!", ch->queststreak);
 		do_say(questman, buf);
 		send_to_char("{07Your winning streak has been broken!{00\n\r", ch);
 	    }
-	    ch->queststreak = 0;
+	    if (!daily)
+		ch->queststreak = 0;
 	    switch (number_range(0, 2))
 	    {
 		case 0: do_say(questman,
@@ -1250,7 +1587,10 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	    ch->questobj   = 0;
 	    ch->questrush  = false;
 	    ch->questemergency = false;
-	    if( ch->level >= 50 )
+	    ch->questdaily = false;
+	    if (daily)
+		;
+	    else if( ch->level >= 50 )
 		ch->nextquest = 7;
 	    else
 		ch->nextquest = 15;
@@ -1453,7 +1793,8 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 
     closed_count = guild_closed_rooms( ch, closed, QUEST_CLOSED_ROOMS_MAX );
     /* Only a target this character could walk to from here, by WALKTO's
-       own rules, so WALKTO QUEST always finds the way it is asked for. */
+       own rules, so WALKTO QUEST (immortals only) and WALKTO <area> always
+       find the way. */
     walkto_mark_reachable( ch );
     victim = NULL;
     FOR_EACH_CHARACTER( iter, candidate )
@@ -1631,6 +1972,10 @@ void quest_update(void)
     {
         if (IS_NPC(ch)) continue;
 
+        /* The cooldown and a quest's own countdown run side by side: a
+           daily may be taken while the ordinary cooldown runs, and its
+           clock used to stand still until the cooldown was over. An
+           ordinary questor never has a cooldown running. */
         if (ch->nextquest > 0)
         {
             ch->nextquest--;
@@ -1639,12 +1984,26 @@ void quest_update(void)
             {
                 send_to_char("You may now quest again.\n\r",ch);
 		save_char_obj(ch);
-                continue;
             }
         }
-        else if (IS_SET(ch->act,PLR_QUESTOR))
+        if (IS_SET(ch->act,PLR_QUESTOR))
         {
-            if (--ch->countdown <= 0)
+            if (--ch->countdown <= 0 && ch->questdaily)
+            {
+                /* A daily lost to the clock costs nothing but the try. */
+                send_to_char("You have run out of time for your daily quest.\n\r", ch);
+		remove_automatic_quest_tokens(ch);
+                REMOVE_BIT(ch->act, PLR_QUESTOR);
+                ch->questgiver = NULL;
+                ch->countdown = 0;
+                ch->questmob = 0;
+                ch->questobj = 0;
+		ch->questrush = false;
+		ch->questemergency = false;
+		ch->questdaily = false;
+		save_char_obj(ch);
+            }
+            else if (ch->countdown <= 0)
 	    {
     	        char buf [MAX_STRING_LENGTH];
 
@@ -1670,6 +2029,7 @@ void quest_update(void)
                 ch->questobj = 0;
 		ch->questrush = false;
 		ch->questemergency = false;
+		ch->questdaily = false;
 		save_char_obj(ch);
             }
             if (ch->countdown > 0 && ch->countdown < 6)

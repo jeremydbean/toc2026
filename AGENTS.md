@@ -2437,6 +2437,42 @@ bits. Appearances and kills go to the log and WIZINFO
 with the room; escapes and drifts to the log. Staff command GOBLIN.
 `tests/test_treasure_goblin.py` chases one down live.
 
+## Rested Experience And Daily Quests
+
+Both after World of Warcraft (owner, 2026-10-20).
+
+**Rested** lives in `src/rested.c`. `rest_xp_on_quit()` runs in `do_quit`
+before the save and asks `rest_room_ok()`: safe, hit point or mana
+regeneration rooms, the Temple, the altar (the pit healer) or the
+character's `recall_room()`, never a jail; an idle character already moved
+into the void is judged by `was_in_room`. `rest_xp_on_login()` runs in the
+nanny beside `psionic_login` -- a real login only, never a reconnect -- and
+banks `REST_PERCENT_PER_HOUR` (5) of a level per hour since `last_logout`,
+to `REST_CAP_PERCENT` (150). `group_gain` adds `rest_xp_bonus()` to each
+kill: as much again, while the pool lasts, and nothing where `gain_exp`
+would refuse it (level 50, the remort cap). Saved as `Rested <pool>
+<eligible>` under **case 'R'**.
+
+**Dailies** live in `quest.c`, beside the ordinary quest and apart from
+it: `ch->questdaily` marks one, cleared on the line after every
+`questemergency` clear (`tests/test_rested_and_dailies.py` checks), and
+`complete_automatic_quest` hands a daily to `complete_daily_quest`, which
+pays coin and daily points and never touches the gamble, the streak or
+`nextquest`. **The prices are a promise** (owner, 2026-10-20: every daily
+for a month buys about one train): a point a daily, one for the set, and
+`daily_streak_bonus()` for days in a row with all three; a train is
+`DAILY_TRAIN_COST` (160) against a perfect month's 162, which
+`tests/test_rested_and_dailies.py` recomputes from the constants. Change
+one and check the month still lands on a train. Abort, timeout and logout spare a daily the streak and the
+cooldown. `quest_update` decrements the cooldown and a quest's countdown
+side by side -- they were an if/else, which froze a daily taken during a
+cooldown. Saved as `Daily <points> <day> <done> <streak> <last full day>`
+under **case 'D'**, the day
+being `current_time / 86400`. **Read each saved value into a local
+before clamping it**: `UMAX`/`URANGE` evaluate their argument more than
+once, and a `fread_number` inside one reads the file twice and desyncs the
+loader -- the first draft of these keys hung the login.
+
 ## The Oracle's Sanctum Is No Inn
 
 SLEEP in room 8 (`ROOM_VNUM_ORACLE`) is refused by

@@ -149,7 +149,14 @@ typedef enum
     ACHIEVEMENT_EVENT_SLOTS_JACKPOT,
     ACHIEVEMENT_EVENT_ROULETTE_STRAIGHT,
     ACHIEVEMENT_EVENT_POKER_ROYAL_FLUSH,
-    ACHIEVEMENT_EVENT_DPS_CHAMPION
+    ACHIEVEMENT_EVENT_DPS_CHAMPION,
+    ACHIEVEMENT_EVENT_DAILY_QUEST,
+    ACHIEVEMENT_EVENT_DAILY_SET,
+    ACHIEVEMENT_EVENT_DAILY_STREAK_WEEK,
+    ACHIEVEMENT_EVENT_DAILY_STREAK_MONTH,
+    ACHIEVEMENT_EVENT_DAILY_STREAK_HUNDRED,
+    ACHIEVEMENT_EVENT_DAILY_TRAIN,
+    ACHIEVEMENT_EVENT_WELL_RESTED
 } achievement_event_type;
 
 typedef void (*script_event_callback)( script_event_type type, void *payload, void *context );
@@ -890,6 +897,11 @@ void  oracle_on_char_from_room args( ( CHAR_DATA *ch ) );
 void  oracle_process_queries args( ( void ) );
 int   oracle_saved_room args( ( CHAR_DATA *ch ) );
 int   text_edit_distance args( ( const char *a, const char *b, int limit ) );
+/* rested.c */
+bool  rest_room_ok     args( ( CHAR_DATA *ch, ROOM_INDEX_DATA *room ) );
+void  rest_xp_on_quit  args( ( CHAR_DATA *ch ) );
+void  rest_xp_on_login args( ( CHAR_DATA *ch ) );
+int   rest_xp_bonus    args( ( CHAR_DATA *ch, int xp ) );
 bool  oracle_refuses_sleep args( ( CHAR_DATA *ch ) );
 bool  is_oracle_mob   args( ( CHAR_DATA *ch ) );
 bool  is_killuminati  args( ( CHAR_DATA *ch ) );
@@ -2016,6 +2028,7 @@ struct  char_data
     sh_int              questgamble_pts;/* points withheld pending double-or-nothing offer */
     bool                questrush;      /* current quest is a rush contract */
     bool                questemergency; /* current quest is an emergency */
+    bool                questdaily;     /* current quest is a daily (quest.c) */
 };
 
 /* Hate data */
@@ -2139,6 +2152,13 @@ struct  pc_data
 
     /* Last session snapshot (persisted to player file) */
     long                last_logout;          /* when they last left the game */
+    long                rest_xp;              /* rested bonus experience left (rested.c) */
+    bool                rest_eligible;        /* quit somewhere they could rest */
+    int                 daily_points;         /* daily quest points, apart from quest points */
+    long                daily_day;            /* the day (time / 86400) daily_done counts */
+    int                 daily_done;           /* daily quests finished that day */
+    int                 daily_streak;         /* days running with all three done */
+    long                daily_last_full;      /* the last day all three were done */
     /* Training-yard run; deliberately not persisted. */
     long                dummy_dealt;
     long                dummy_taken;

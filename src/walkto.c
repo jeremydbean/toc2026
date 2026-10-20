@@ -1420,7 +1420,16 @@ void do_walkto( CHAR_DATA *ch, char *argument )
     else if ( !str_cmp( argument, "quest" ) )
     {
         /* Where the quest master said the target was. A mobile may have
-           wandered on since; this walks to the room it was named in. */
+           wandered on since; this walks to the room it was named in.
+           Immortals only (owner, 2026-10-20): finding the quarry from
+           the quest master's directions is the quest. */
+        if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+        {
+            send_to_char( "WALKTO QUEST is for immortals.  The quest master told "
+                          "you the area and the room; AQUEST INFO repeats it, and "
+                          "WALKTO <area> takes you to the area.\n\r", ch );
+            return;
+        }
         found = -1;
         also = 0;
         if ( !IS_SET(ch->act, PLR_QUESTOR) || ch->questroom <= 0

@@ -1213,6 +1213,23 @@ room, or one room away with SCAN.
 See also: 'BLACK MARKET'
 ~
 
+0 RESTED 'REST XP' 'RESTED XP'~
+Syntax: rested
+
+Quit somewhere a body could rest -- a safe room, a room that heals, the
+Temple, the altar where the pit healer stands, or your own recall point --
+and you come back rested: each hour away banks 5% of a level of bonus
+experience, up to 150%.  While you are rested, every kill earns double
+experience until the bonus is spent.  Quitting anywhere else banks
+nothing.
+
+RESTED shows how much you have and whether the room you stand in would
+let you rest.  Rest is kept, not spent, at a level where you earn no
+experience.
+
+See also: QUIT, RECALL, AQUEST
+~
+
 0 USE~
 Syntax: use <item> [target]
 
@@ -2139,6 +2156,7 @@ See also: BASH, KICK, NERVE
 0 AQUEST QUEST QUESTING QUESTPOINT QUESTPOINTS QUESTOR THEWS~
 Syntax: aquest <info|points|time|gamble>          anywhere
 Syntax: aquest <request|complete|list|buy|abort>  at a questmaster
+Syntax: aquest daily [request|buy practice|buy train [n]]
 
 Every subcommand may be abbreviated to its first letter, and AQUEST on its
 own prints the list.  Checking on yourself works wherever you are standing;
@@ -2173,7 +2191,20 @@ STREAKS
   fifty, and 1% each after that, to a ceiling of 300%. Aborting, timing out,
   or quitting during an active quest breaks the streak and loses all of it.
 
-See also: QUEST, TOPTEN
+DAILY QUESTS
+  AQUEST DAILY REQUEST, at a questmaster, gives one of the day's three daily
+  quests: the same kind of target, thirty minutes to do it, no rush and no
+  emergency. Each pays coin and 1 daily point, and finishing all three in a
+  day pays 1 more. Days in a row with all three done are your daily streak,
+  and a full day pays more as it grows: 1 extra from 7 days, 2 from 14, 3
+  from 30 and 4 from 100. Daily points are not quest points: AQUEST DAILY
+  BUY TRAIN spends 160 for a train -- a month of every daily -- and AQUEST
+  DAILY BUY PRACTICE 16 for a practice; a count after either buys several.
+  A daily never touches your quest streak or your cooldown, and giving one
+  up costs only the try. The day turns over at midnight UTC; AQUEST DAILY
+  shows how many you have done, your streak and your points.
+
+See also: QUEST, TOPTEN, RESTED
 ~
 
 0 TOPTEN~

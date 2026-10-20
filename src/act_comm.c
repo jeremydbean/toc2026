@@ -3893,6 +3893,8 @@ void do_quit( CHAR_DATA *ch, char *argument )
     log_string("[QUIT] Player rejoined the real world.");
 
     quest_handle_logout(ch);
+    /* Where they lay down decides whether they come back rested. */
+    rest_xp_on_quit( ch );
     
     /* Snapshot session stats so they can be viewed offline */
     {
