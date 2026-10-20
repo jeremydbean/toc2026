@@ -13,6 +13,18 @@ From the October 2026 watch logs (2026-10-20):
   slice the pool needs now, at the same price a slice.
 - PRACTICE spent one session a command; a trailing count or MAX spends
   that many.
+
+And from the same day's refusals and channels:
+
+- A command nobody knows said only "Huh?" -- to "comapre", "heall",
+  "logout", "logoff", and a new player trying "talk salir", "learn" and
+  "speak" at a trainer. It suggests the command within a typo now, and
+  names the right one for the words players reach for.
+- USE did not exist ("use bomb" in a Hyrule dungeon); it finds the item
+  and hands the line to the verb for it.
+- Alignment went past -1000: the branch for victims within 500 of the
+  slayer was the one group_gain left unclamped ("my alignment just
+  alternates between -1000 and -1005").
 """
 from __future__ import annotations
 
@@ -42,6 +54,14 @@ class FrictionSourceTests(unittest.TestCase):
         self.assertNotIn("number_door()", track)
         self.assertIn("check_improve( ch, gsn_tracking, false", track)
         self.assertIn("check_improve( ch, gsn_tracking, true", track)
+
+    def test_alignment_is_clamped_however_it_moves(self) -> None:
+
+        source = (ROOT / "src" / "fight.c").read_text(encoding="latin-1")
+        block = source[source.index("/* do alignment computations */"):source.index("/* calculate exp multiplier */")]
+        self.assertIn("URANGE( -1000, gch->alignment - change, 1000 )", block)
+        self.assertNotIn("gch->alignment -= change", block)
+        self.assertIn('"risen"', block, "a rise is not reported as lowered")
 
     def test_hide_says_which(self) -> None:
         hide = body("src/act_move.c", "void do_hide(")
@@ -113,6 +133,39 @@ class FrictionLiveTests(unittest.TestCase):
                 self.assertIn("Practice how many times?", self.run_cmd(client, "practice sword 0", 1.6))
                 reply = self.run_cmd(client, "practice sword max", 2.0)
                 self.assertIn("You are now learned at sword.", reply)
+
+
+    def test_huh_suggests_and_use_finds_the_verb(self) -> None:
+        with LiveMud() as mud:
+            for name in ("Zhinter", "Zhkeeper"):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PASSWORD)
+                    client.drain(1.0)
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
+            patch_player_file(mud, "Zhinter", Levl=20, Room=TEMPLE)
+            patch_player_file(mud, "Zhkeeper", Levl=70, Room=TEMPLE)
+
+            with mud.connect(timeout=120) as keeper, mud.connect(timeout=120) as client:
+                login(keeper, "Zhkeeper", PASSWORD)
+                login(client, "Zhinter", PASSWORD)
+                self.run_cmd(client, "scroll 0", 1.0)
+
+                self.assertIn("Huh? Did you mean COMPARE", self.run_cmd(client, "comapre sword", 1.4))
+                self.assertIn("To leave the game, type QUIT.", self.run_cmd(client, "logout", 1.4))
+                self.assertIn("PRACTICE", self.run_cmd(client, "learn", 1.4))
+                self.assertIn("SAY", self.run_cmd(client, "talk salir", 1.4))
+                reply = self.run_cmd(client, "xqzv", 1.4)
+                self.assertIn("Huh?", reply)
+                self.assertNotIn("Did you mean", reply)
+
+                self.assertIn("Use what?", self.run_cmd(client, "use", 1.4))
+                self.assertIn("Bomb what?", self.run_cmd(client, "use bomb", 1.4))
+                self.assertIn("You don't have that.", self.run_cmd(client, "use zzzwidget", 1.4))
+                self.run_cmd(keeper, "load obj 3083", 1.4)       # cure light wounds
+                self.run_cmd(keeper, "give potion zhinter", 1.6)
+                client.drain(1.0)
+                self.assertIn("You quaff", self.run_cmd(client, "use potion", 2.0))
 
 
 if __name__ == "__main__":

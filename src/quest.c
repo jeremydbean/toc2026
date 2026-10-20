@@ -196,15 +196,26 @@ static int quest_streak_bonus( const CHAR_DATA *ch )
     return UMIN(bonus, QUEST_STREAK_BONUS_MAX);
 }
 
+/*
+ * The coin is counted in kills at the questor's level (the same measure
+ * the black market prices by), kills_min to kill_max of them. It was a
+ * flat one to thirty gold at every level, so a level 50 -- whose every
+ * kill drops some thirteen platinum -- was told "Here's your 3 gold -
+ * well earned!" (2026-10-20 channel log). A rush doubles the coin and an
+ * emergency multiplies it as it does the points: the quest master
+ * promises "double your reward", not double the points.
+ */
 static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
-                                      int gold_min, int gold_max )
+                                      int kills_min, int kills_max )
 {
     char buf[MAX_STRING_LENGTH];
+    char price[MAX_INPUT_LENGTH];
     bool completed_rush = ch->questrush;
     bool completed_emergency = ch->questemergency;
     bool completed_last_minute = ch->countdown == 1;
     int pointreward = number_range(10,40);
-    int reward = number_range(gold_min, gold_max);
+    long reward = number_range(kills_min, kills_max)
+                * black_market_kill_value( ch->level );
     int streak_bonus = quest_streak_bonus(ch);
 
     /* An emergency replaces the rush multiplier rather than stacking
@@ -216,6 +227,11 @@ static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
     else if ( completed_rush )
         pointreward *= 2;
     pointreward += (pointreward * streak_bonus) / 100;
+    if ( completed_emergency )
+        reward *= QUEST_EMERGENCY_MULTIPLIER;
+    else if ( completed_rush )
+        reward *= 2;
+    reward = UMAX( 1L, reward );
 
     switch (number_range(0, 2))
     {
@@ -261,12 +277,13 @@ static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
     if ( completed_last_minute )
         achievement_record_event(ch, ACHIEVEMENT_EVENT_QUEST_LAST_MINUTE, true);
 
-    add_money(ch, reward);
+    gain_copper(ch, reward);
     ch->questgamble_pts = (sh_int)pointreward;
-    watch_log( ch, "quest complete: %d gold, %d quest points%s%s (streak bonus %d%%)",
-        reward, pointreward, completed_rush ? ", rush" : "",
+    format_price( reward, price, sizeof(price) );
+    watch_log( ch, "quest complete: %s, %d quest points%s%s (streak bonus %d%%)",
+        price, pointreward, completed_rush ? ", rush" : "",
         completed_emergency ? ", emergency" : "", streak_bonus );
-    snprintf(buf, sizeof(buf), "Here's your %d gold - well earned!", reward);
+    snprintf(buf, sizeof(buf), "Here's your %s - well earned!", price);
     do_say(questman, buf);
     send_to_char(
         "{09.-[ Double-or-Nothing Gamble Offer ]-------------------------.{00\n\r", ch);
@@ -1160,7 +1177,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	{
 	    if (ch->questmob == -1 && ch->countdown > 0)
 	    {
-		complete_automatic_quest(ch, questman, 1, 30);
+		complete_automatic_quest(ch, questman, 4, 12);
 	        return;
 	    }
 	    else if (ch->questobj > 0 && ch->countdown > 0)
@@ -1172,7 +1189,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 		    act("You hand $p to $N.",ch, obj, questman, TO_CHAR);
 		    act("$n hands $p to $N.",ch, obj, questman, TO_ROOM);
 		    remove_automatic_quest_tokens(ch);
-		    complete_automatic_quest(ch, questman, 15, 30);
+		    complete_automatic_quest(ch, questman, 6, 12);
 		    return;
 		}
 		else
@@ -1357,8 +1374,21 @@ static bool automatic_quest_target_is_suitable( CHAR_DATA *ch,
      * Vermin are not a quest for anyone who has left Mud School, but
      * for somebody who has not they are the only quest there is.
      */
+    /*
+     * Summon immunity is not a reason. It was: stock ROM's quest code
+     * skipped summon-immune mobiles, and in this world "AB" is every
+     * builder's default -- 1,696 of the 1,849 mobile kinds from level 3
+     * to 43 carry it. The pool was left with the five areas that happen
+     * not to, and a level 43 was sent to Gang Land eleven quests in
+     * twenty-two ("starting to wonder if its bugged", Trentlin,
+     * 2026-10-20). The black market dealer and the treasure goblin are
+     * never anybody's quest: they cannot be found from afar. Nor is a
+     * holiday boss, which is everybody's fight and announced as one.
+     */
     if ( index->level < (ch->level < 6 ? 1 : 3) || index->level > ch->level
-    ||   IS_SET(index->imm_flags, IMM_SUMMON)
+    ||   is_unfindable_mob(victim)
+    ||   index->vnum == MOB_VNUM_EVENT_HORSEMAN
+    ||   index->vnum == MOB_VNUM_EVENT_FATHER
     ||   index->pShop != NULL
     ||   IS_SET(index->act, ACT_GAIN)
     ||   IS_SET(index->act, ACT_TRAIN)

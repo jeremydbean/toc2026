@@ -889,6 +889,7 @@ bool  oracle_here     args( ( CHAR_DATA *ch ) );
 void  oracle_on_char_from_room args( ( CHAR_DATA *ch ) );
 void  oracle_process_queries args( ( void ) );
 int   oracle_saved_room args( ( CHAR_DATA *ch ) );
+int   text_edit_distance args( ( const char *a, const char *b, int limit ) );
 bool  oracle_refuses_sleep args( ( CHAR_DATA *ch ) );
 bool  is_oracle_mob   args( ( CHAR_DATA *ch ) );
 bool  is_killuminati  args( ( CHAR_DATA *ch ) );

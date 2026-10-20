@@ -265,9 +265,13 @@ class BlackMarketLiveTests(unittest.TestCase):
                 self.assertIn("(you have had yours)", run(buyer, "list", 1.8))
                 self.assertIn("uninterested", run(buyer, "sell '%s'" % want, 1.8))
                 # The sale is the buyer's alone while it lasts.
+                # (The stock is random; a keyword line may not resolve for a
+                # shop lookup, so every other piece is tried and none may sell.)
                 others = [keywords[v] for v in stock if v in keywords and v != vnum]
+                replies = [run(rival, "buy %s" % kw, 2.0) for kw in others]
+                self.assertFalse(any("You buy" in r for r in replies), replies)
                 if others:
-                    self.assertIn("with a customer", run(rival, "buy %s" % others[0], 2.0))
+                    self.assertTrue(any("with a customer" in r for r in replies), replies)
 
                 # The buyer walks off, and he is gone from the Temple.
                 run(buyer, "east", 1.6)

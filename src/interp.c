@@ -291,6 +291,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "turn",		do_turn,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "junk",           do_sacrifice,   POS_RESTING,     0,  LOG_NORMAL, 0 },
     { "unlock",		do_unlock,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
+    { "use",		do_use,		POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "value",		do_value,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "wear",		do_wear,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "zap",		do_zap,		POS_RESTING,	 0,  LOG_NORMAL, 1 },
@@ -734,6 +735,87 @@ int alias_split( const char *body, char (*out)[MAX_INPUT_LENGTH], int max )
 }
 
 
+/*
+ * What a command nobody knows is answered with. A bare "Huh?" taught
+ * nothing: the October 2026 logs have "comapre" twice, "heall all",
+ * "logout" and "logoff" in a row, and a new player at Salir trying "talk
+ * salir", "learn" and "speak" before giving up. The words players reach
+ * for get the command that does it; anything else within a typo of a
+ * command they may use gets a "Did you mean".
+ */
+static const struct
+{
+    const char *word;
+    const char *hint;
+} command_hints[] =
+{
+    { "logout",  "To leave the game, type QUIT." },
+    { "logoff",  "To leave the game, type QUIT." },
+    { "learn",   "A trainer teaches with PRACTICE <skill>; GAIN buys a new one. "
+                 "GAINLIST shows what you can buy." },
+    { "talk",    "To talk to someone here, SAY it; TELL <name> reaches them anywhere." },
+    { "speak",   "To talk to someone here, SAY it; TELL <name> reaches them anywhere." },
+    { NULL,      NULL }
+};
+
+static void command_not_found_hint( CHAR_DATA *ch, const char *word )
+{
+    char out[MAX_STRING_LENGTH];
+    const char *found[3];
+    int nfound = 0, i, cmd, pass, limit;
+    int trust = get_trust( ch );
+
+    for ( i = 0; command_hints[i].word != NULL; i++ )
+        if ( !str_cmp( word, command_hints[i].word ) )
+        {
+            snprintf( out, sizeof(out), "Huh? %s\n\r", command_hints[i].hint );
+            send_to_char( out, ch );
+            return;
+        }
+
+    limit = strlen( word ) >= 6 ? 2 : 1;
+    if ( strlen( word ) >= 3 )
+    {
+        /* Closest first: everything one letter off, then two. */
+        for ( pass = 1; pass <= limit && nfound < 3; pass++ )
+            for ( cmd = 0; cmd_table[cmd].name[0] != '\0' && nfound < 3; cmd++ )
+            {
+                bool dup = false;
+
+                if ( !cmd_table[cmd].show || cmd_table[cmd].level > trust
+                ||   strlen( cmd_table[cmd].name ) < 3
+                ||   text_edit_distance( word, cmd_table[cmd].name, pass ) != pass )
+                    continue;
+                for ( i = 0; i < nfound; i++ )
+                    if ( !str_cmp( found[i], cmd_table[cmd].name ) )
+                        dup = true;
+                if ( !dup )
+                    found[nfound++] = cmd_table[cmd].name;
+            }
+    }
+
+    if ( nfound == 0 )
+    {
+        send_to_char( "Huh?\n\r", ch );
+        return;
+    }
+    toc_strlcpy( out, "Huh? Did you mean ", sizeof(out) );
+    for ( i = 0; i < nfound; i++ )
+    {
+        char name[MAX_INPUT_LENGTH];
+        int k;
+
+        toc_strlcpy( name, found[i], sizeof(name) );
+        for ( k = 0; name[k] != '\0'; k++ )
+            name[k] = UPPER( name[k] );
+        if ( i > 0 )
+            toc_strlcat( out, i == nfound - 1 ? " or " : ", ", sizeof(out) );
+        toc_strlcat( out, name, sizeof(out) );
+    }
+    toc_strlcat( out, "?\n\r", sizeof(out) );
+    send_to_char( out, ch );
+}
+
 void interpret( CHAR_DATA *ch, char *argument )
 {
     char command[MAX_INPUT_LENGTH];
@@ -1023,7 +1105,7 @@ void interpret( CHAR_DATA *ch, char *argument )
             bool social = check_social( ch, command, argument );
 
             if ( !social )
-                send_to_char( "Huh?\n\r", ch );
+                command_not_found_hint( ch, command );
 
             if ( watched && logline[0] != '\0' )
             {

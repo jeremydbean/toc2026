@@ -10,6 +10,21 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **Quests come from the whole world again** (`automatic_quest_target_is_suitable`).
+  The filter refused summon-immune mobiles, and `AB` is the builders'
+  default: 1,696 of the 1,849 mobile kinds a level 43 could be sent after
+  carry it, so the pool was five areas and Gang Land took half of all
+  quests. The dealer, the goblin and the holiday bosses are excluded by
+  name instead. **Quest coin is counted in kills** at the questor's level
+  (4-12 for a kill quest, 6-12 for a recovery, doubled on a rush and
+  multiplied on an emergency) instead of a flat 1-30 gold.
+- **Alignment is clamped on every kill.** `group_gain`'s branch for victims
+  within 500 of the slayer was not, so a slayer at -1000 went to -1005 and
+  back; the message also said "lowered" for a rise.
+- **USE <item>** hands the line to the verb for the item, and an unknown
+  command suggests the one within a typo, or names the right one for
+  LOGOUT, LOGOFF, LEARN, TALK and SPEAK (`command_not_found_hint`).
+  `tests/test_player_frictions.py`.
 - **The treasure goblin** (`src/goblin.c`, owner's design after Diablo's,
   2026-10-20). Mob 29941; there is always one somewhere, hidden from afar
   like the black market dealer and never in a room he could not be struck

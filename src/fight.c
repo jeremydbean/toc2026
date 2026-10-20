@@ -3568,39 +3568,26 @@ base_exp = 200 + 50 * (level_range - 4);
 	/* no change */
     }
 
-    else if (align > 500) /* monster is more good than slayer */
+    else
     {
-	change = (align / 100);
-	/*change = UMAX(1,change);*/
-	gch->alignment = (sh_int)(UMAX(-1000,gch->alignment - change));
-	if (IS_SET(gch->act,PLR_DAMAGE_NUMBERS))
-		{
-		snprintf(buf, sizeof(buf), "Your alignment has lowered by %d.\n\r",change);
-		send_to_char(buf,gch);
-		}
-    }
+	/* The slayer moves away from the victim's alignment, a point per
+	   hundred between them: killing the good makes you more evil, the
+	   evil more good. This was three branches of the same sum, and the
+	   one for victims within 500 of you was not clamped, so a slayer at
+	   -1000 killing something at -500 went to -1005, and the next kill
+	   through a clamped branch put them back -- "my alignment just
+	   alternates between -1000 and -1005" (Trentlin, 2026-10-20). */
+	int was = gch->alignment;
 
-    else if (align < -500) /* monster is more evil than slayer */
-    {
-	change = -(align / 100); /* F8: negated so slayer gains good alignment */
-	/*change = UMAX(1,change);*/
-	gch->alignment = (sh_int)(UMIN(1000,gch->alignment + change));
-	if (IS_SET(gch->act,PLR_DAMAGE_NUMBERS))
-		{
-		snprintf(buf, sizeof(buf), "Your alignment has lowered by %d.\n\r",change);
-		send_to_char(buf,gch);
-		}
-    }
-
-    else /* improve this someday */
-    {
-	change = (align / 100);
-	gch->alignment -= change;
-	if (IS_SET(gch->act,PLR_DAMAGE_NUMBERS))
-		{
-		snprintf(buf, sizeof(buf), "Your alignment has lowered by %d.\n\r",change);
-		send_to_char(buf,gch);
-		}
+	change = align / 100;
+	gch->alignment = (sh_int) URANGE( -1000, gch->alignment - change, 1000 );
+	change = was - gch->alignment;     /* what actually moved */
+	if ( change != 0 && IS_SET(gch->act,PLR_DAMAGE_NUMBERS) )
+	{
+	    snprintf(buf, sizeof(buf), "Your alignment has %s by %d.\n\r",
+		change > 0 ? "lowered" : "risen", change > 0 ? change : -change);
+	    send_to_char(buf,gch);
+	}
     }
 
     /* calculate exp multiplier */

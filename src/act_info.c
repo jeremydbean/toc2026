@@ -2260,6 +2260,13 @@ static int help_word_distance( const char *a, const char *b, int limit )
     return prev[lb];
 }
 
+/* The same measure for anybody else who needs to catch a typo: the
+   command interpreter's "Huh?" (interp.c). */
+int text_edit_distance( const char *a, const char *b, int limit )
+{
+    return help_word_distance( a, b, limit );
+}
+
 /*
  * HELP found nothing: name the readable topics within a typo of what was
  * asked. "help prayy", "help dummyy" and "help warruor" in the October

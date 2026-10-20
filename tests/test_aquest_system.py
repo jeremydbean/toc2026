@@ -387,6 +387,24 @@ class EmergencyContractTests(unittest.TestCase):
             r"if \( completed_emergency \)\s*\n\s*pointreward \*= "
             r"QUEST_EMERGENCY_MULTIPLIER;\s*\n\s*else if \( completed_rush \)")
 
+    def test_summon_immunity_is_no_bar_to_a_quest(self) -> None:
+        """Nearly every mobile carries IMM_SUMMON ("AB" is the builders'
+        default), so refusing it left five areas in the pool and a level 43
+        was sent to Gang Land half the time (2026-10-20)."""
+        filt = self.quest.split("static bool automatic_quest_target_is_suitable", 1)[1]
+        filt = filt[:filt.index("\n}\n")]
+        self.assertNotIn("IMM_SUMMON", filt)
+        for term in ("is_unfindable_mob(victim)", "MOB_VNUM_EVENT_HORSEMAN", "MOB_VNUM_EVENT_FATHER"):
+            self.assertIn(term, filt)
+
+    def test_the_coin_is_counted_in_kills_at_the_questors_level(self) -> None:
+        body = self.quest.split("static void complete_automatic_quest", 1)[1]
+        body = body[:body.index("\n}\n")]
+        self.assertIn("black_market_kill_value( ch->level )", body)
+        self.assertIn("gain_copper(ch, reward)", body)
+        self.assertIn("format_price( reward, price, sizeof(price) )", body)
+        self.assertNotIn("%d gold - well earned", body)
+
     def test_the_flag_is_read_before_anything_clears_it(self) -> None:
         body = self.quest.split("static void complete_automatic_quest", 1)[1]
         read_at = body.index("completed_emergency = ch->questemergency")

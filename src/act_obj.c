@@ -5454,6 +5454,124 @@ void do_bomb( CHAR_DATA *ch, char *argument )
     }
 }
 
+/*
+ * USE <item> [target]: the verb for whatever it is. Players coming from
+ * other games type USE first -- "use bomb" in a Hyrule dungeon, October
+ * 2026 -- and every one of these verbs already exists; USE only finds the
+ * item and hands the line to the right one, so nothing here can do what
+ * the verb itself would refuse.
+ */
+void do_use( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char line[MAX_INPUT_LENGTH * 2];
+    char *rest;
+    OBJ_DATA *obj;
+
+    rest = one_argument( argument, arg );
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "Use what?  USE <item> [target] eats, drinks, quaffs, recites, "
+                      "zaps, wears or plays it, whichever it is.\n\r", ch );
+        return;
+    }
+
+    /* Bombs are counted, not carried one by one. */
+    if ( !str_prefix( arg, "bombs" ) && strlen( arg ) >= 3 )
+    {
+        if ( rest[0] == '\0' )
+        {
+            send_to_char( "Bomb what?  BOMB <a cracked wall, or a foe>.\n\r", ch );
+            return;
+        }
+        do_bomb( ch, rest );
+        return;
+    }
+
+    if ( ( obj = get_obj_carry( ch, arg ) ) == NULL
+    &&   ( obj = get_obj_wear( ch, arg ) ) == NULL )
+    {
+        /* Something in the room: a fountain to drink from, a portal. */
+        if ( ( obj = get_obj_list( ch, arg, ch->in_room->contents ) ) != NULL )
+        {
+            if ( obj->item_type == ITEM_FOUNTAIN )
+            {
+                do_drink( ch, arg );
+                return;
+            }
+            if ( obj->item_type == ITEM_PORTAL )
+            {
+                do_enter( ch, arg );
+                return;
+            }
+            act( "You can't think how to use $p.  LOOK at it, or at the room, for a clue.",
+                 ch, obj, NULL, TO_CHAR );
+            return;
+        }
+        send_to_char( "You don't have that.\n\r", ch );
+        return;
+    }
+
+    if ( is_name( "recorder", obj->name ) || is_name( "whistle", obj->name )
+    ||   is_name( "ocarina", obj->name ) )
+    {
+        do_play( ch, argument );
+        return;
+    }
+    if ( obj->item_type == ITEM_LIGHT && is_name( "candle", obj->name )
+    &&   rest[0] != '\0' )
+    {
+        do_burn( ch, rest );
+        return;
+    }
+
+    switch ( obj->item_type )
+    {
+    case ITEM_POTION:
+        do_quaff( ch, arg );
+        return;
+    case ITEM_SCROLL:
+        do_recite( ch, argument );
+        return;
+    case ITEM_PILL:
+    case ITEM_FOOD:
+        do_eat( ch, arg );
+        return;
+    case ITEM_DRINK_CON:
+        do_drink( ch, arg );
+        return;
+    case ITEM_WAND:
+    case ITEM_STAFF:
+        if ( obj->wear_loc != WEAR_HOLD )
+        {
+            act( "Hold $p first, then use it.", ch, obj, NULL, TO_CHAR );
+            return;
+        }
+        if ( obj->item_type == ITEM_WAND )
+            do_zap( ch, rest );
+        else
+            do_brandish( ch, "" );
+        return;
+    case ITEM_KEY:
+        send_to_char( "A key works by itself: UNLOCK the door or chest it fits.\n\r", ch );
+        return;
+    case ITEM_CONTAINER:
+        snprintf( line, sizeof(line), "in %s", arg );
+        do_look( ch, line );
+        return;
+    default:
+        break;
+    }
+
+    if ( obj->wear_loc == WEAR_NONE
+    &&   ( obj->wear_flags & ~ITEM_TAKE ) != 0 )
+    {
+        do_wear( ch, arg );
+        return;
+    }
+    act( "You can't think how to use $p.  LOOK at it for a clue.", ch, obj, NULL, TO_CHAR );
+}
+
 void do_play( CHAR_DATA *ch, char *argument )
 {
     OBJ_DATA *instrument;

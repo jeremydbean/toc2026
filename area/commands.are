@@ -1213,6 +1213,20 @@ room, or one room away with SCAN.
 See also: 'BLACK MARKET'
 ~
 
+0 USE~
+Syntax: use <item> [target]
+
+USE finds the item and does the obvious thing with it: quaffs a potion,
+recites a scroll, eats food or a pill, drinks from a flask or a fountain,
+zaps a held wand at the target, brandishes a held staff, plays an
+instrument, wears or wields gear, looks inside a container and enters a
+portal.  USE BOMB <target> sets a bomb against a cracked wall or a foe,
+and USE CANDLE <target> burns with a candle.  A key needs no using:
+UNLOCK the door or chest it fits.
+
+See also: QUAFF, RECITE, ZAP, BRANDISH, EAT, DRINK, WEAR, PLAY, BOMB
+~
+
 0 RULES~
 Syntax: rules
 
