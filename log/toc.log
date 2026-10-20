@@ -138951,3 +138951,227 @@ Tue Oct 20 01:15:53 2026 :: Log Alaric [5633]: scan
 Tue Oct 20 01:15:56 2026 :: Log Alaric [5633]: n
 Tue Oct 20 01:15:56 2026 :: Log Alaric [5632]: arrived (Sapphire pillar) from 5633
 Tue Oct 20 01:15:58 2026 :: Log Alaric [5632]: look el
+Tue Oct 20 01:15:59 2026 :: Log Alaric [5632]: scan
+Tue Oct 20 01:16:00 2026 :: Log Trentlin [29100]: smite
+Tue Oct 20 01:16:00 2026 :: Log Trentlin [29100]: killed a metalurgist
+Tue Oct 20 01:16:00 2026 :: Log Trentlin [29100]: coin +5 platinum
+Tue Oct 20 01:16:00 2026 :: Log Trentlin [29100]: coin +23 silver
+Tue Oct 20 01:16:00 2026 :: Log Trentlin [29100]: coin +31 copper
+Tue Oct 20 01:16:00 2026 :: Log Trentlin [29100]: coin +13 gold
+Tue Oct 20 01:16:01 2026 :: Log Alaric [5632]: w
+Tue Oct 20 01:16:01 2026 :: Log Alaric [5631]: arrived (Northern marble hall) from 5632
+Tue Oct 20 01:16:02 2026 :: Log Alaric [5631]: look gu
+Tue Oct 20 01:16:05 2026 :: Log Alaric [5631]: look 2.gu
+Tue Oct 20 01:16:06 2026 :: Log Alaric [5631]: wake
+Tue Oct 20 01:16:06 2026 :: Log Alaric [5631]: l
+Tue Oct 20 01:16:07 2026 :: Log Alaric [5631]: s
+Tue Oct 20 01:16:07 2026 :: Log Alaric [5635]: arrived (Below the huge golden throne) from 5631
+Tue Oct 20 01:16:07 2026 :: Log Alaric [5635]: s
+Tue Oct 20 01:16:07 2026 :: Log Alaric [5627]: arrived (Southern marble hall) from 5635
+Tue Oct 20 01:16:08 2026 :: Log Alaric [5627]: s
+Tue Oct 20 01:16:08 2026 :: Log Alaric [5625]: arrived (Behind the curtain) from 5627
+Tue Oct 20 01:16:08 2026 :: Log Trentlin [29100]: sac cor
+Tue Oct 20 01:16:08 2026 :: Log Trentlin [29100]: coin +70 copper
+Tue Oct 20 01:16:09 2026 :: Log Trentlin [29100]: k met
+Tue Oct 20 01:16:12 2026 :: Log Trentlin [29100]: smite
+Tue Oct 20 01:16:12 2026 :: Log Trentlin [29100]: get axe
+Tue Oct 20 01:16:12 2026 :: Log Trentlin [29100]: wear axe
+Tue Oct 20 01:16:12 2026 :: Log Alaric [5625]: look li
+Tue Oct 20 01:16:13 2026 :: Log Trentlin [29100]: smite
+Tue Oct 20 01:16:15 2026 :: Log Alaric [5625]: dirt
+Tue Oct 20 01:16:20 2026 :: Log Rockcrusher [4209]: commands
+Tue Oct 20 01:16:25 2026 :: Log Trentlin [29100]: smite
+Tue Oct 20 01:16:25 2026 :: Log Trentlin [29100]: killed a metalurgist
+Tue Oct 20 01:16:25 2026 :: Log Trentlin [29100]: coin +5 platinum
+Tue Oct 20 01:16:25 2026 :: Log Trentlin [29100]: coin +23 silver
+Tue Oct 20 01:16:25 2026 :: Log Trentlin [29100]: coin +31 copper
+Tue Oct 20 01:16:25 2026 :: Log Trentlin [29100]: coin +13 gold
+Tue Oct 20 01:16:32 2026 :: Log Trentlin [29100]: l
+Tue Oct 20 01:16:33 2026 :: Log Trentlin [29100]: n
+Tue Oct 20 01:16:33 2026 :: Log Trentlin [29098]: arrived (Metalurgy Plant) from 29100
+Tue Oct 20 01:16:34 2026 :: Log Trentlin [29098]: s
+Tue Oct 20 01:16:34 2026 :: Log Trentlin [29100]: arrived (Metalurgy Plant) from 29098
+Tue Oct 20 01:16:34 2026 :: Log Trentlin [29100]: w
+Tue Oct 20 01:16:35 2026 :: Log Trentlin [29100]: n
+Tue Oct 20 01:16:35 2026 :: Log Trentlin [29098]: arrived (Metalurgy Plant) from 29100
+Tue Oct 20 01:16:36 2026 :: Log Trentlin [29098]: e
+Tue Oct 20 01:16:36 2026 :: Log Trentlin [29097]: arrived (Metalurgy Plant) from 29098
+Tue Oct 20 01:16:37 2026 :: Log Rockcrusher [4209]: lore
+Tue Oct 20 01:16:37 2026 :: Log Trentlin [29097]: s
+Tue Oct 20 01:16:37 2026 :: Log Trentlin [29099]: arrived (Metalurgy Plant) from 29097
+Tue Oct 20 01:16:38 2026 :: Log Trentlin [29099]: e
+Tue Oct 20 01:16:38 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29099
+Tue Oct 20 01:16:39 2026 :: Log Trentlin [29090]: e
+Tue Oct 20 01:16:39 2026 :: Log Trentlin [29093]: arrived (Metalworks) from 29090
+Tue Oct 20 01:16:40 2026 :: Log Trentlin [29093]: sca
+Tue Oct 20 01:16:41 2026 :: Log Trentlin [29093]: e
+Tue Oct 20 01:16:41 2026 :: Log Trentlin [29094]: arrived (Metalworks) from 29093
+Tue Oct 20 01:16:44 2026 :: Log Trentlin [29094]: con bla
+Tue Oct 20 01:16:46 2026 :: Log Rockcrusher [4209]: rules
+Tue Oct 20 01:16:46 2026 :: Log Trentlin [29094]: smite
+Tue Oct 20 01:16:57 2026 :: Log Trentlin [29094]: smite
+Tue Oct 20 01:16:58 2026 :: Log Trentlin [29094]: get ax
+Tue Oct 20 01:16:58 2026 :: Log Trentlin [29094]: wear ax
+Tue Oct 20 01:16:59 2026 :: Log Rockcrusher [4209]: abilities
+Tue Oct 20 01:17:01 2026 :: Log Trentlin [29094]: smite
+Tue Oct 20 01:17:02 2026 :: Log Trentlin [29094]: get ax
+Tue Oct 20 01:17:03 2026 :: Log Trentlin [29094]: wear ax
+Tue Oct 20 01:17:04 2026 :: Log Trentlin [29094]: smite
+Tue Oct 20 01:17:12 2026 :: Log Alaric [5625]: dirt
+Tue Oct 20 01:17:18 2026 :: Log Trentlin [29094]: get ax
+Tue Oct 20 01:17:18 2026 :: Log Trentlin [29094]: wear ax
+Tue Oct 20 01:17:18 2026 :: Log Trentlin [29094]: smite
+Tue Oct 20 01:17:18 2026 :: Log Trentlin [29094]: killed a blacksmith
+Tue Oct 20 01:17:18 2026 :: Log Trentlin [29094]: coin +6 platinum
+Tue Oct 20 01:17:18 2026 :: Log Trentlin [29094]: coin +30 silver
+Tue Oct 20 01:17:18 2026 :: Log Trentlin [29094]: coin +41 copper
+Tue Oct 20 01:17:18 2026 :: Log Trentlin [29094]: coin +17 gold
+Tue Oct 20 01:17:27 2026 :: Log Trentlin [29094]: l in cor
+Tue Oct 20 01:17:29 2026 :: Log Trentlin [29094]: get all cor
+Tue Oct 20 01:17:30 2026 :: Log Trentlin [29094]: smite
+Tue Oct 20 01:17:33 2026 :: Log Alaric [5625]: dirt
+Tue Oct 20 01:17:40 2026 :: Log Trentlin [29094]: smite
+Tue Oct 20 01:17:51 2026 :: Log Trentlin [29094]: smite
+Tue Oct 20 01:17:51 2026 :: Log Trentlin [29094]: killed a blacksmith
+Tue Oct 20 01:17:51 2026 :: Log Trentlin [29094]: coin +6 platinum
+Tue Oct 20 01:17:51 2026 :: Log Trentlin [29094]: coin +30 silver
+Tue Oct 20 01:17:51 2026 :: Log Trentlin [29094]: coin +41 copper
+Tue Oct 20 01:17:51 2026 :: Log Trentlin [29094]: coin +17 gold
+Tue Oct 20 01:17:52 2026 :: Log Rockcrusher [4209]: walkto salir the monk
+Tue Oct 20 01:17:52 2026 :: Log Rockcrusher [4205]: arrived (Halls of Horror.) from 4209
+Tue Oct 20 01:17:53 2026 :: Log Rockcrusher [4207]: arrived (Before the Sacrificial Altar.) from 4205
+Tue Oct 20 01:17:53 2026 :: Log Rockcrusher [4202]: arrived (Halls of Horror.) from 4207
+Tue Oct 20 01:17:54 2026 :: Log Alaric [5625]: killed the undead lich
+Tue Oct 20 01:17:54 2026 :: Log Alaric [5625]: coin +12 platinum
+Tue Oct 20 01:17:54 2026 :: Log Alaric [5625]: coin +56 silver
+Tue Oct 20 01:17:54 2026 :: Log Alaric [5625]: coin +75 copper
+Tue Oct 20 01:17:54 2026 :: Log Alaric [5625]: coin +31 gold
+Tue Oct 20 01:17:54 2026 :: Log Rockcrusher [4201]: arrived (Entrance to the Haunted House.) from 4202
+Tue Oct 20 01:17:55 2026 :: Log Rockcrusher [2433]: arrived (Temple Boulevard.) from 4201
+Tue Oct 20 01:17:56 2026 :: Log Rockcrusher [2434]: arrived (Temple Boulevard.) from 2433
+Tue Oct 20 01:17:56 2026 :: Log Rockcrusher [2435]: arrived (Temple Boulevard.) from 2434
+Tue Oct 20 01:17:57 2026 :: Log Rockcrusher [2436]: arrived (Temple Boulevard.) from 2435
+Tue Oct 20 01:17:58 2026 :: Log Rockcrusher [2437]: arrived (Temple Boulevard.) from 2436
+Tue Oct 20 01:17:59 2026 :: Log Rockcrusher [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Tue Oct 20 01:17:59 2026 :: Log Trentlin [29094]: l
+Tue Oct 20 01:17:59 2026 :: Log Trentlin [29094]: sca
+Tue Oct 20 01:17:59 2026 :: Log Rockcrusher [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Tue Oct 20 01:18:00 2026 :: Log Rockcrusher [3900]: arrived (West trail around Dresden) from 2439
+Tue Oct 20 01:18:00 2026 :: Log Alaric [5625]: l i cor
+Tue Oct 20 01:18:01 2026 :: Log Trentlin [29094]: s
+Tue Oct 20 01:18:01 2026 :: Log Trentlin [29096]: arrived (Metalworks) from 29094
+Tue Oct 20 01:18:01 2026 :: Log Rockcrusher [3901]: arrived (West trail around Dresden) from 3900
+Tue Oct 20 01:18:02 2026 :: Log Rockcrusher [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Tue Oct 20 01:18:02 2026 :: Log Alaric [5625]: n
+Tue Oct 20 01:18:02 2026 :: Log Alaric [5627]: arrived (Southern marble hall) from 5625
+Tue Oct 20 01:18:02 2026 :: Log Rockcrusher [3903]: arrived (Dusty trail along north wall.) from 3902
+Tue Oct 20 01:18:03 2026 :: Log Trentlin [29096]: smite
+Tue Oct 20 01:18:03 2026 :: Log Rockcrusher [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Tue Oct 20 01:18:04 2026 :: Log Rockcrusher [300]: arrived (Path in the plains) from 3904
+Tue Oct 20 01:18:05 2026 :: Log Rockcrusher [315]: arrived (Gallow hill) from 300
+Tue Oct 20 01:18:05 2026 :: Log Rockcrusher [61]: arrived (Before the Rainbow) from 315
+Tue Oct 20 01:18:06 2026 :: Log Rockcrusher [7500]: arrived (The Bottom of the Rainbow) from 61
+Tue Oct 20 01:18:06 2026 :: Log Alaric [5627]: gos brb
+Tue Oct 20 01:18:07 2026 :: Log Rockcrusher [7501]: arrived (On the Rainbow) from 7500
+Tue Oct 20 01:18:07 2026 :: Log Alaric [5627]: quit
+Tue Oct 20 01:18:07 2026 :: Alaric has quit.
+Tue Oct 20 01:18:07 2026 :: [QUIT] Player rejoined the real world.
+Tue Oct 20 01:18:08 2026 :: Log Rockcrusher [7502]: arrived (On the Rainbow) from 7501
+Tue Oct 20 01:18:08 2026 :: Log Rockcrusher [7503]: arrived (On the Rainbow) from 7502
+Tue Oct 20 01:18:09 2026 :: Log Rockcrusher [7504]: arrived (On the Rainbow) from 7503
+Tue Oct 20 01:18:10 2026 :: Log Rockcrusher [7505]: arrived (The Glowing Bridge at the Rainbow's End) from 7504
+Tue Oct 20 01:18:11 2026 :: Log Rockcrusher [7506]: arrived (The Astral Gate) from 7505
+Tue Oct 20 01:18:11 2026 :: Log Rockcrusher [7507]: arrived (Into the Astral Plane) from 7506
+Tue Oct 20 01:18:12 2026 :: Log Rockcrusher [7508]: arrived (Exploring the Astral Plane) from 7507
+Tue Oct 20 01:18:13 2026 :: Log Rockcrusher [7514]: arrived (Roaming the Astral Plane) from 7508
+Tue Oct 20 01:18:14 2026 :: Log Rockcrusher [7518]: arrived (Wandering the Astral Plane) from 7514
+Tue Oct 20 01:18:14 2026 :: Log Rockcrusher [7533]: arrived (Lost in the Astral Plane) from 7518
+Tue Oct 20 01:18:15 2026 :: Log Rockcrusher [7530]: arrived (Traversing the Astral Plane) from 7533
+Tue Oct 20 01:18:16 2026 :: Log Rockcrusher [7545]: arrived (Deep Within the Astral Plane) from 7530
+Tue Oct 20 01:18:17 2026 :: Log Rockcrusher [7580]: arrived (Before the temple) from 7545
+Tue Oct 20 01:18:17 2026 :: Log Rockcrusher [7581]: arrived (In the temple) from 7580
+Tue Oct 20 01:18:18 2026 :: Log Rockcrusher [7586]: arrived (A hallway) from 7581
+Tue Oct 20 01:18:19 2026 :: Log Rockcrusher [7597]: arrived (On a spiral staircase) from 7586
+Tue Oct 20 01:18:20 2026 :: Log Rockcrusher [7598]: arrived (At the door) from 7597
+Tue Oct 20 01:18:20 2026 :: Log Rockcrusher [7599]: arrived (Study of the Sage) from 7598
+Tue Oct 20 01:18:26 2026 :: Log Trentlin [29096]: get ax
+Tue Oct 20 01:18:26 2026 :: Log Trentlin [29096]: wear ax
+Tue Oct 20 01:18:26 2026 :: Log Trentlin [29096]: smite
+Tue Oct 20 01:18:28 2026 :: Log Rockcrusher [7599]: (refused) talk salir
+Tue Oct 20 01:18:31 2026 :: Log Rockcrusher [7599]: (refused) salir
+Tue Oct 20 01:18:33 2026 :: Log Rockcrusher [7599]: train
+Tue Oct 20 01:18:35 2026 :: Log Trentlin [29096]: smite
+Tue Oct 20 01:18:36 2026 :: Log Rockcrusher [7599]: commands
+Tue Oct 20 01:18:43 2026 :: Log Trentlin [29096]: get ax
+Tue Oct 20 01:18:44 2026 :: Log Trentlin [29096]: wear ax
+Tue Oct 20 01:18:44 2026 :: Log Rockcrusher [7599]: listen
+Tue Oct 20 01:18:44 2026 :: Log Trentlin [29096]: smite
+Tue Oct 20 01:18:48 2026 :: Log Trentlin [29096]: level 31 -> 32 (earned)
+Tue Oct 20 01:18:48 2026 :: Trentlin has achieved level 32!
+Tue Oct 20 01:18:48 2026 :: Log Trentlin [29096]: killed a blacksmith
+Tue Oct 20 01:18:48 2026 :: Log Trentlin [29096]: coin +6 platinum
+Tue Oct 20 01:18:48 2026 :: Log Trentlin [29096]: coin +30 silver
+Tue Oct 20 01:18:48 2026 :: Log Trentlin [29096]: coin +41 copper
+Tue Oct 20 01:18:48 2026 :: Log Trentlin [29096]: coin +17 gold
+Tue Oct 20 01:18:52 2026 :: Log Trentlin [29096]: smite
+Tue Oct 20 01:18:52 2026 :: Log Trentlin [29096]: recall
+Tue Oct 20 01:18:54 2026 :: Log Trentlin [29096]: l
+Tue Oct 20 01:18:55 2026 :: Log Trentlin [29096]: w
+Tue Oct 20 01:18:55 2026 :: Log Trentlin [29095]: arrived (Metalworks) from 29096
+Tue Oct 20 01:18:56 2026 :: Log Trentlin [29095]: n
+Tue Oct 20 01:18:56 2026 :: Log Trentlin [29093]: arrived (Metalworks) from 29095
+Tue Oct 20 01:18:56 2026 :: Log Trentlin [29093]: w
+Tue Oct 20 01:18:56 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29093
+Tue Oct 20 01:18:58 2026 :: Log Trentlin [29090]: n
+Tue Oct 20 01:18:58 2026 :: Log Trentlin [29103]: arrived (Checkpoint) from 29090
+Tue Oct 20 01:18:59 2026 :: Log Trentlin [29103]: sca
+Tue Oct 20 01:19:01 2026 :: Log Trentlin [29103]: recall
+Tue Oct 20 01:19:03 2026 :: Sock.sinaddr:  5.161.117.52
+Tue Oct 20 01:19:03 2026 :: EOF encountered on read.
+Tue Oct 20 01:19:04 2026 :: Log Trentlin [29103]: recall
+Tue Oct 20 01:19:04 2026 :: Log Trentlin [4207]: arrived (Before the Sacrificial Altar.) from 29103
+Tue Oct 20 01:19:06 2026 :: Log Trentlin [4207]: e
+Tue Oct 20 01:19:06 2026 :: Log Trentlin [4202]: arrived (Halls of Horror.) from 4207
+Tue Oct 20 01:19:07 2026 :: Log Trentlin [4202]: n
+Tue Oct 20 01:19:07 2026 :: Log Trentlin [4203]: arrived (Halls of Horror.) from 4202
+Tue Oct 20 01:19:07 2026 :: Log Trentlin [4203]: n
+Tue Oct 20 01:19:07 2026 :: Log Trentlin [4210]: arrived (Room of Poison, Plague, and Pestilence.) from 4203
+Tue Oct 20 01:19:08 2026 :: Log Trentlin [4210]: n
+Tue Oct 20 01:19:08 2026 :: Log Trentlin [4210]: sleep
+Tue Oct 20 01:19:09 2026 :: Log Trentlin [4210]: afk
+Tue Oct 20 01:19:12 2026 :: Log Rockcrusher [7599]: train
+Tue Oct 20 01:19:16 2026 :: Log Rockcrusher [7599]: look
+Tue Oct 20 01:19:25 2026 :: Log Rockcrusher [7599]: (refused) learn
+Tue Oct 20 01:19:32 2026 :: Log Rockcrusher [7599]: (refused) speak
+Tue Oct 20 01:19:35 2026 :: Log Rockcrusher [7599]: commands
+Tue Oct 20 01:19:45 2026 :: Log Rockcrusher [7599]: examine salir
+Tue Oct 20 01:19:49 2026 :: Sock.sinaddr:  208.126.22.104
+Tue Oct 20 01:19:51 2026 :: Loading Alaric's playerfile
+Tue Oct 20 01:19:52 2026 :: Alaric@208.126.22.104 has connected.
+Tue Oct 20 01:19:53 2026 :: Log Alaric [5627]: arrived (Southern marble hall) from 0
+Tue Oct 20 01:19:55 2026 :: Log Alaric [5627]: look gu
+Tue Oct 20 01:19:58 2026 :: Log Alaric [5627]: look 2.gu
+Tue Oct 20 01:20:00 2026 :: Log Alaric [5627]: bs 2.gu
+Tue Oct 20 01:20:02 2026 :: Log Rockcrusher [7599]: question salir
+Tue Oct 20 01:20:25 2026 :: Log Rockcrusher [7599]: practice
+Tue Oct 20 01:20:27 2026 :: Log Alaric [5627]: killed the elven hall guard
+Tue Oct 20 01:20:27 2026 :: Log Alaric [5627]: coin +2 platinum
+Tue Oct 20 01:20:27 2026 :: Log Alaric [5627]: coin +12 silver
+Tue Oct 20 01:20:27 2026 :: Log Alaric [5627]: coin +17 copper
+Tue Oct 20 01:20:27 2026 :: Log Alaric [5627]: coin +7 gold
+Tue Oct 20 01:20:32 2026 :: Log Alaric [5627]: bs gu
+Tue Oct 20 01:20:33 2026 :: Log Alaric [5627]: bs gu
+Tue Oct 20 01:20:33 2026 :: Log Alaric [5627]: get brac cor
+Tue Oct 20 01:20:34 2026 :: Log Rockcrusher [7599]: practice psionic armor
+Tue Oct 20 01:20:36 2026 :: Log Alaric [5627]: com pbrac
+Tue Oct 20 01:20:36 2026 :: Log Rockcrusher [7599]: practice psionic armor
+Tue Oct 20 01:20:37 2026 :: Log Alaric [5627]: com pbrac
+Tue Oct 20 01:20:39 2026 :: Log Rockcrusher [7599]: practice
+Tue Oct 20 01:20:40 2026 :: Log Alaric [5627]: comp brac
+Tue Oct 20 01:20:44 2026 :: Log Rockcrusher [7599]: practice confuse
+Tue Oct 20 01:20:50 2026 :: Log Rockcrusher [7599]: practice psionic armor
+Tue Oct 20 01:20:52 2026 :: Log Alaric [5627]: rem white
+Tue Oct 20 01:20:52 2026 :: Do_remove: Alaric : white
+Tue Oct 20 01:20:54 2026 :: Log Alaric [5627]: wear elv
+Tue Oct 20 01:20:56 2026 :: Log Rockcrusher [7599]: practice shift
+Tue Oct 20 01:20:59 2026 :: Log Rockcrusher [7599]: practice
