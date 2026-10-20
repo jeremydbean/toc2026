@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792499794
+LogO 1792499983
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -16,18 +16,18 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 43
-Plyd 39960
+Plyd 40149
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 StashMax 75
 Scro 22
-Room 4210
-HMV  1857 640 6394 1119 506 364
-NewGold 117
-NewPlat 22
-NewCopp 125
-NewSilv 62
+Room 2401
+HMV  676 676 1125 1125 349 364
+NewGold 67
+NewPlat 5
+NewCopp 130
+NewSilv 67
 BankCP 195262686
 IntTime 1792436412
 IntTotal 262686
@@ -36,7 +36,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 407
+AchKills 408
 AchQuests 24
 AchDeaths 6
 AchExplore 1
@@ -92,19 +92,19 @@ Achv visit-underdark 1792281756
 Achv visit-new-thalos 1791415830
 Achv visit-korzath-fortress 1792287816
 Achv visit-ice-keep 1792455929
-LastOut  1792497829
-SesLogin 1792497319
-SesDur   510
-SesExpG  1831
+LastOut  1792499983
+SesLogin 1792498820
+SesDur   1163
+SesExpG  3938
 SesLvlG  1
-SesKill  7
+SesKill  16
 SesPK    0
 SesDead  0
 SesQuest 1
 QuestPnts 1168
 QuestStrk 13
 CasinoLost 4
-QuestNext 7
+QuestNext 4
 Exp  98904
 Act  65740
 AfBy 512
@@ -133,20 +133,20 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Save  -8
+Save  -6
 Alig  -1005
-Hit   11
-Dam   38
-ACs -14 -13 -19 86
+Hit   14
+Dam   42
+ACs -58 -59 -63 64
 Attr 22 16 18 16 19
-AMod 4 10 9 2 10
+AMod 6 10 8 2 10
 Pass TrjPUdRVdu8MY~
 Titl  the Master Warrior~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 640 1119 352
-Cond 0 9 41
+Cond 0 6 48
 Sk 75 'armor'
 Sk 1 'burning hands'
 Sk 75 'chill touch'
@@ -192,17 +192,9 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-End
-
-#O
-Vnum 4444
-Nest 0
-Wear -1
-Lev  40
-Cost 23000000
-Cond 100
-Repd 0
-Affect -1 40 -1 1 20 0 0
+AffD 'bless'   0  39  -4  24          0          0
+AffD 'bless'  47  39   4  18          0          0
+AffD 'armor'  39  22 -20  17          0          0
 End
 
 #O
@@ -251,7 +243,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 181
+Time 178
 Cost 0
 Cond 100
 Repd 0
@@ -303,7 +295,7 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 478
+Time 475
 Cost 0
 Cond 100
 Repd 0
@@ -338,7 +330,7 @@ Lev  14
 Cost 100000
 Cond 95
 Repd 0
-Val  0 0 9747 0 0
+Val  0 0 9744 0 0
 End
 
 #O
@@ -484,7 +476,7 @@ End
 #O
 Vnum 30654
 Nest 0
-Wear -1
+Wear 11
 Lev  8
 Cost 3200000
 Cond 100
@@ -550,19 +542,6 @@ Spell 3 'heal'
 End
 
 #O
-Vnum 29036
-Nest 0
-Wear -1
-Lev  35
-Cost 1500000
-Cond 100
-Repd 0
-Spell 1 'armor'
-Spell 2 'bless'
-Spell 3 'heal'
-End
-
-#O
 Vnum 29039
 Nest 0
 Wear 10
@@ -575,7 +554,7 @@ End
 #O
 Vnum 16006
 Nest 0
-Wear -1
+Wear 2
 Lev  43
 Cost 22600000
 Cond 100
@@ -617,7 +596,7 @@ End
 #O
 Vnum 16006
 Nest 0
-Wear -1
+Wear 1
 Lev  43
 Cost 22600000
 Cond 100
@@ -740,7 +719,7 @@ End
 #O
 Vnum 17702
 Nest 0
-Wear -1
+Wear 16
 Lev  25
 Cost 1000000
 Cond 100
@@ -750,7 +729,7 @@ End
 #O
 Vnum 1006
 Nest 0
-Wear 16
+Wear -1
 Lev  39
 Cost 15000000
 Cond 100
