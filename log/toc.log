@@ -135224,3 +135224,180 @@ Tue Oct 20 00:10:18 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates
 Tue Oct 20 00:10:18 2026 :: Log Alaric [2438]: open west
 Tue Oct 20 00:10:19 2026 :: Log Alaric [2438]: west
 Tue Oct 20 00:10:19 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Tue Oct 20 00:10:21 2026 :: Log Alaric [2439]: west
+Tue Oct 20 00:10:21 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Tue Oct 20 00:10:21 2026 :: Log Alaric [6000]: west
+Tue Oct 20 00:10:21 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Tue Oct 20 00:10:21 2026 :: Log Alaric [6001]: west
+Tue Oct 20 00:10:21 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Tue Oct 20 00:10:22 2026 :: Log Alaric [6002]: west
+Tue Oct 20 00:10:22 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Tue Oct 20 00:10:22 2026 :: Log Alaric [6003]: west
+Tue Oct 20 00:10:22 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Tue Oct 20 00:10:22 2026 :: Log Alaric [6004]: west
+Tue Oct 20 00:10:22 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Tue Oct 20 00:10:22 2026 :: Log Alaric [6100]: west
+Tue Oct 20 00:10:22 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Tue Oct 20 00:10:23 2026 :: Log Alaric [6101]: south
+Tue Oct 20 00:10:23 2026 :: Log Alaric [6104]: arrived (A small path in the deep, dark forest) from 6101
+Tue Oct 20 00:10:23 2026 :: Log Alaric [6104]: south
+Tue Oct 20 00:10:23 2026 :: Log Alaric [6105]: arrived (A small path in the deep, dark forest) from 6104
+Tue Oct 20 00:10:23 2026 :: Log Alaric [6105]: west
+Tue Oct 20 00:10:23 2026 :: Log Alaric [6106]: arrived (A junction in the deep, dark forest) from 6105
+Tue Oct 20 00:10:23 2026 :: Log Alaric [6106]: south
+Tue Oct 20 00:10:23 2026 :: Log Alaric [6117]: arrived (A junction in the deep, dark forest) from 6106
+Tue Oct 20 00:10:24 2026 :: Log Alaric [6117]: west
+Tue Oct 20 00:10:24 2026 :: Log Alaric [6116]: arrived (A small path in the deep, dark forest) from 6117
+Tue Oct 20 00:10:24 2026 :: Log Alaric [6116]: south
+Tue Oct 20 00:10:24 2026 :: Log Alaric [6115]: arrived (A small path in the deep, dark forest) from 6116
+Tue Oct 20 00:10:24 2026 :: Log Alaric [6115]: west
+Tue Oct 20 00:10:24 2026 :: Log Alaric [6114]: arrived (A junction in the deep, dark forest) from 6115
+Tue Oct 20 00:10:24 2026 :: Log Alaric [6114]: west
+Tue Oct 20 00:10:24 2026 :: Log Alaric [6122]: arrived (A small path in the deep, dark forest) from 6114
+Tue Oct 20 00:10:25 2026 :: Log Alaric [6122]: south
+Tue Oct 20 00:10:25 2026 :: Log Alaric [6123]: arrived (A junction on the river bank in the deep, dark forest) from 6122
+Tue Oct 20 00:10:25 2026 :: Log Alaric [6123]: south
+Tue Oct 20 00:10:28 2026 :: Log Alaric [6123]: eat guano
+Tue Oct 20 00:10:29 2026 :: Log Alaric [6123]: open south
+Tue Oct 20 00:10:29 2026 :: Log Alaric [6123]: south
+Tue Oct 20 00:10:29 2026 :: Log Alaric [9774]: arrived (On the Dark River) from 6123
+Tue Oct 20 00:10:29 2026 :: Log Alaric [9774]: west
+Tue Oct 20 00:10:29 2026 :: Log Alaric [9775]: arrived (On the Dark River) from 9774
+Tue Oct 20 00:10:30 2026 :: Log Alaric [9775]: west
+Tue Oct 20 00:10:30 2026 :: Log Alaric [5979]: arrived (On the River) from 9775
+Tue Oct 20 00:10:30 2026 :: Log Alaric [5979]: west
+Tue Oct 20 00:10:30 2026 :: Log Alaric [5978]: arrived (On the River) from 5979
+Tue Oct 20 00:10:30 2026 :: Log Alaric [5978]: west
+Tue Oct 20 00:10:30 2026 :: Log Alaric [5977]: arrived (On the River) from 5978
+Tue Oct 20 00:10:30 2026 :: Log Alaric [5977]: north
+Tue Oct 20 00:10:30 2026 :: Log Alaric [5749]: arrived (Levee) from 5977
+Tue Oct 20 00:10:31 2026 :: Log Alaric [5749]: north
+Tue Oct 20 00:10:31 2026 :: Log Alaric [5745]: arrived (Alley at Levee) from 5749
+Tue Oct 20 00:10:31 2026 :: Log Alaric [5745]: west
+Tue Oct 20 00:10:31 2026 :: Log Alaric [5726]: arrived (The Dark Alley) from 5745
+Tue Oct 20 00:10:31 2026 :: Log Alaric [5726]: west
+Tue Oct 20 00:10:31 2026 :: Log Alaric [5725]: arrived (The Common Square) from 5726
+Tue Oct 20 00:10:32 2026 :: Log Alaric [5725]: south
+Tue Oct 20 00:10:32 2026 :: Log Alaric [5730]: arrived (The Dump) from 5725
+Tue Oct 20 00:10:32 2026 :: Log Alaric [5730]: south
+Tue Oct 20 00:10:32 2026 :: Log Alaric [5954]: arrived (The South Bridge) from 5730
+Tue Oct 20 00:10:32 2026 :: Log Alaric [5954]: south
+Tue Oct 20 00:10:32 2026 :: Log Alaric [5802]: arrived (Promenade) from 5954
+Tue Oct 20 00:10:32 2026 :: Log Alaric [5802]: west
+Tue Oct 20 00:10:32 2026 :: Log Alaric [5801]: arrived (Promenade) from 5802
+Tue Oct 20 00:10:33 2026 :: Log Alaric [5801]: west
+Tue Oct 20 00:10:33 2026 :: Log Alaric [5800]: arrived (Northwest end of Concourse) from 5801
+Tue Oct 20 00:10:33 2026 :: Log Alaric [5800]: west
+Tue Oct 20 00:10:33 2026 :: Log Alaric [10200]: arrived (The beach) from 5800
+Tue Oct 20 00:10:33 2026 :: Log Alaric [10200]: north
+Tue Oct 20 00:10:33 2026 :: Log Alaric [29501]: arrived (The Steel Bridge) from 10200
+Tue Oct 20 00:10:33 2026 :: Log Alaric [29501]: north
+Tue Oct 20 00:10:33 2026 :: Log Alaric [29502]: arrived (In the Water/On the Shore) from 29501
+Tue Oct 20 00:10:34 2026 :: Log Alaric [29502]: north
+Tue Oct 20 00:10:34 2026 :: Log Alaric [29577]: arrived (Entrance to The City of Lud) from 29502
+Tue Oct 20 00:10:34 2026 :: Log Alaric [29577]: north
+Tue Oct 20 00:10:34 2026 :: Log Alaric [29506]: arrived (Center of Lud) from 29577
+Tue Oct 20 00:10:34 2026 :: Log Alaric [29506]: north
+Tue Oct 20 00:10:34 2026 :: Log Alaric [29509]: arrived (The Street Of The Turtle) from 29506
+Tue Oct 20 00:10:34 2026 :: Log Alaric [29509]: north
+Tue Oct 20 00:10:34 2026 :: Log Alaric [29511]: arrived (The Blockade) from 29509
+Tue Oct 20 00:10:35 2026 :: Log Alaric [29511]: north
+Tue Oct 20 00:10:39 2026 :: Log Alaric [29511]: open north
+Tue Oct 20 00:10:39 2026 :: Log Alaric [29511]: north
+Tue Oct 20 00:10:41 2026 :: Log Alaric [29511]: aq info
+Tue Oct 20 00:11:00 2026 :: Log Alaric [29511]: stealth
+Tue Oct 20 00:11:02 2026 :: Log Alaric [29511]: stealth
+Tue Oct 20 00:11:02 2026 :: Log Alaric [29511]: l
+Tue Oct 20 00:11:08 2026 :: Log Alaric [29511]: open darktower
+Tue Oct 20 00:11:09 2026 :: Log Alaric [29511]: l
+Tue Oct 20 00:11:10 2026 :: Log Alaric [29511]: ex
+Tue Oct 20 00:11:11 2026 :: Log Alaric [29511]: scan
+Tue Oct 20 00:11:11 2026 :: Log Alaric [29511]: n
+Tue Oct 20 00:11:11 2026 :: Log Alaric [29514]: arrived (Road to the Cradle) from 29511
+Tue Oct 20 00:11:12 2026 :: Log Alaric [29514]: scan
+Tue Oct 20 00:11:14 2026 :: Log Alaric [29514]: quaff true
+Tue Oct 20 00:11:14 2026 :: Log Alaric [29514]: l
+Tue Oct 20 00:11:15 2026 :: Log Alaric [29514]: n
+Tue Oct 20 00:11:15 2026 :: Log Alaric [29515]: arrived (Stairway) from 29514
+Tue Oct 20 00:11:16 2026 :: Log Alaric [29515]: scan
+Tue Oct 20 00:11:19 2026 :: Log Alaric [29515]: d
+Tue Oct 20 00:11:19 2026 :: Log Alaric [29516]: arrived (Hallway) from 29515
+Tue Oct 20 00:11:22 2026 :: Log Alaric [29516]: l
+Tue Oct 20 00:11:24 2026 :: Log Alaric [29516]: look dr
+Tue Oct 20 00:11:25 2026 :: Log Alaric [29516]: con dr
+Tue Oct 20 00:11:31 2026 :: Log Alaric [29516]: af
+Tue Oct 20 00:11:33 2026 :: Log Alaric [29516]: bs dr
+Tue Oct 20 00:11:47 2026 :: Log Alaric [29516]: flee
+Tue Oct 20 00:11:47 2026 :: Log Alaric [29515]: arrived (Stairway) from 29516
+Tue Oct 20 00:11:49 2026 :: Log Alaric [29515]: recal
+Tue Oct 20 00:11:50 2026 :: Log Alaric [29515]: recal
+Tue Oct 20 00:11:52 2026 :: Log Alaric [29515]: flee
+Tue Oct 20 00:11:52 2026 :: Log Alaric [29516]: arrived (Hallway) from 29515
+Tue Oct 20 00:11:54 2026 :: Log Alaric [29516]: stealth
+Tue Oct 20 00:11:58 2026 :: Log Alaric [29516]: ex
+Tue Oct 20 00:12:01 2026 :: Log Alaric [29516]: ex
+Tue Oct 20 00:12:02 2026 :: Log Alaric [29516]: u
+Tue Oct 20 00:12:02 2026 :: Log Alaric [29515]: arrived (Stairway) from 29516
+Tue Oct 20 00:12:04 2026 :: Log Alaric [29515]: ex
+Tue Oct 20 00:12:05 2026 :: Log Alaric [29515]: s
+Tue Oct 20 00:12:05 2026 :: Log Alaric [29514]: arrived (Road to the Cradle) from 29515
+Tue Oct 20 00:12:06 2026 :: Log Alaric [29514]: s
+Tue Oct 20 00:12:06 2026 :: Log Alaric [29511]: arrived (The Blockade) from 29514
+Tue Oct 20 00:12:07 2026 :: Log Alaric [29511]: s
+Tue Oct 20 00:12:07 2026 :: Log Alaric [29509]: arrived (The Street Of The Turtle) from 29511
+Tue Oct 20 00:12:08 2026 :: Log Alaric [29509]: s
+Tue Oct 20 00:12:08 2026 :: Log Alaric [29506]: arrived (Center of Lud) from 29509
+Tue Oct 20 00:12:08 2026 :: Log Alaric [29506]: s
+Tue Oct 20 00:12:08 2026 :: Log Alaric [29577]: arrived (Entrance to The City of Lud) from 29506
+Tue Oct 20 00:12:08 2026 :: Log Alaric [29577]: s
+Tue Oct 20 00:12:08 2026 :: Log Alaric [29502]: arrived (In the Water/On the Shore) from 29577
+Tue Oct 20 00:12:09 2026 :: Log Alaric [29502]: s
+Tue Oct 20 00:12:09 2026 :: Log Alaric [29501]: arrived (The Steel Bridge) from 29502
+Tue Oct 20 00:12:09 2026 :: Log Alaric [29501]: s
+Tue Oct 20 00:12:09 2026 :: Log Alaric [29501]: s
+Tue Oct 20 00:12:09 2026 :: Log Alaric [29501]: recal
+Tue Oct 20 00:12:12 2026 :: Log Alaric [29501]: jump chasm
+Tue Oct 20 00:12:12 2026 :: Log Alaric [29496]: arrived (Above the City of Lud) from 29501
+Tue Oct 20 00:12:13 2026 :: Log Alaric [29496]: recal
+Tue Oct 20 00:12:13 2026 :: Log Alaric [4207]: arrived (Before the Sacrificial Altar.) from 29496
+Tue Oct 20 00:12:16 2026 :: Log Alaric [4207]: r e 3
+Tue Oct 20 00:12:16 2026 :: Log Alaric [4202]: arrived (Halls of Horror.) from 4207
+Tue Oct 20 00:12:16 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted House.) from 4202
+Tue Oct 20 00:12:16 2026 :: Log Alaric [2427]: arrived (Main Processional decorated for Halloween.) from 4201
+Tue Oct 20 00:12:16 2026 :: Log Alaric [2427]: n
+Tue Oct 20 00:12:16 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Tue Oct 20 00:12:16 2026 :: Log Alaric [2404]: n
+Tue Oct 20 00:12:16 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2404
+Tue Oct 20 00:12:17 2026 :: Log Alaric [2401]: u
+Tue Oct 20 00:12:17 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Tue Oct 20 00:12:17 2026 :: Log Alaric [2410]: u
+Tue Oct 20 00:12:17 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Tue Oct 20 00:12:18 2026 :: Log Alaric [2411]: u
+Tue Oct 20 00:12:18 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Tue Oct 20 00:12:18 2026 :: Log Alaric [2414]: u
+Tue Oct 20 00:12:18 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Tue Oct 20 00:12:18 2026 :: Log Alaric [2497]: u
+Tue Oct 20 00:12:19 2026 :: Log Alaric [2497]: u
+Tue Oct 20 00:12:20 2026 :: Log Alaric [2497]: aq abort
+Tue Oct 20 00:12:21 2026 :: Log Alaric [2497]: en do
+Tue Oct 20 00:12:21 2026 :: Log Alaric [2401]: arrived (Center of Oak Tree Square.) from 2497
+Tue Oct 20 00:12:23 2026 :: Log Alaric [2401]: jump rock
+Tue Oct 20 00:12:23 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Tue Oct 20 00:12:23 2026 :: Log Alaric [4208]: arrived (Sacrificial Altar!) from 1607
+Tue Oct 20 00:12:25 2026 :: Log Alaric [4208]: heal ref
+Tue Oct 20 00:12:25 2026 :: Log Alaric [4208]: gold -10
+Tue Oct 20 00:12:29 2026 :: Log Alaric [4208]: heal ref
+Tue Oct 20 00:12:29 2026 :: Log Alaric [4208]: gold -10
+Tue Oct 20 00:12:32 2026 :: Log Alaric [4208]: heal ref
+Tue Oct 20 00:12:32 2026 :: Log Alaric [4208]: gold -10
+Tue Oct 20 00:12:35 2026 :: Log Alaric [4208]: e
+Tue Oct 20 00:12:35 2026 :: Log Alaric [4207]: arrived (Before the Sacrificial Altar.) from 4208
+Tue Oct 20 00:12:35 2026 :: Log Alaric [4207]: e
+Tue Oct 20 00:12:35 2026 :: Log Alaric [4202]: arrived (Halls of Horror.) from 4207
+Tue Oct 20 00:12:35 2026 :: Log Alaric [4202]: n
+Tue Oct 20 00:12:35 2026 :: Log Alaric [4203]: arrived (Halls of Horror.) from 4202
+Tue Oct 20 00:12:36 2026 :: Log Alaric [4203]: n
+Tue Oct 20 00:12:36 2026 :: Log Alaric [4210]: arrived (Room of Poison, Plague, and Pestilence.) from 4203
+Tue Oct 20 00:12:36 2026 :: Log Alaric [4210]: sleep
+Tue Oct 20 00:13:02 2026 :: Sock.sinaddr:  178.156.184.20
+Tue Oct 20 00:13:02 2026 :: EOF encountered on read.
