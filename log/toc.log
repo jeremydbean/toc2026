@@ -144711,3 +144711,7 @@ Tue Oct 20 14:38:40 2026 :: Sock.sinaddr:  20.163.3.195
 Tue Oct 20 14:41:30 2026 :: Sock.sinaddr:  178.156.189.249
 Tue Oct 20 14:41:30 2026 :: EOF encountered on read.
 Tue Oct 20 14:42:46 2026 :: Black market: the dealer appeared in room 24123 (Inside a Log House, coven.are) with 5 items (stock 1792507366), for 36 minutes.
+Tue Oct 20 14:43:34 2026 :: Black market: the dealer vanished from room 24123 (Inside a Log House, coven.are) to room 926 (Residence, olympus.are) (wandering).
+Tue Oct 20 14:46:34 2026 :: Sock.sinaddr:  3.133.226.214
+Tue Oct 20 14:46:34 2026 :: EOF encountered on read.
+Tue Oct 20 14:48:14 2026 :: Treasure goblin: vanished from room 637 (Impy Way, ofcol.are) to room 9228 (By the River, canyon.are) (too long in one area).
