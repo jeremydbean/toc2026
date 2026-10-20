@@ -4233,10 +4233,11 @@ void do_scan( CHAR_DATA *ch, char *argument )
 			 &&   get_trust( ch ) < get_trust( rch ) )
 			   continue;
 
-		    /* The black market dealer is seen one room out and no
-		       further: a hero's or an immortal's longer scan does
-		       not reach him (staff find him with BLACKMARKET). */
-		    if ( is_black_market_dealer( rch ) && counter > 1 )
+		    /* The black market dealer and the treasure goblin are
+		       seen one room out and no further: a hero's or an
+		       immortal's longer scan does not reach them (staff find
+		       them with BLACKMARKET and GOBLIN). */
+		    if ( is_unfindable_mob( rch ) && counter > 1 )
 			continue;
 
 		    if ( can_see( ch, rch ) )

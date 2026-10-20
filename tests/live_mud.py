@@ -380,6 +380,10 @@ class LiveMud:
         # and from Dec 16 the Christmas ones, which rename rooms the tests
         # look for. Pass extra_env={"TOC_SEASON": "halloween"} to see one.
         env.setdefault("TOC_SEASON", "none")
+        # A treasure goblin appears somewhere at boot and wanders; a test
+        # world starts without one so it cannot walk into somebody's
+        # assertions. Pass extra_env={"TOC_NO_GOBLIN": None} to see him.
+        env.setdefault("TOC_NO_GOBLIN", "1")
         env.update(self.extra_env)
         for key, value in self.extra_env.items():
             if value is None:

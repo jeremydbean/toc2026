@@ -3,7 +3,9 @@
 PRAY takes the supplicant out of the world into her sanctum; every way out
 puts them back in the room they prayed from, dazed for a tick: saying DONE,
 walking down through the bead curtain, and quitting inside (the file saves
-the room they prayed from, never the sanctum).
+the room they prayed from, never the sanctum). Lying down to SLEEP there is
+a way out too, whether you meant it or not: she sends you home at once
+(owner, 2026-10-20).
 """
 import unittest
 
@@ -28,7 +30,7 @@ def make(mud, name):
 class OracleSanctumLive(unittest.TestCase):
     def test_every_way_out_returns_you_to_where_you_prayed(self):
         with LiveMud() as mud:
-            for name in ("Zpraydone", "Zpraydown", "Zprayquit"):
+            for name in ("Zpraydone", "Zpraydown", "Zprayquit", "Zpraysleep"):
                 make(mud, name)
 
             # DONE sends you home, dazed.
@@ -49,6 +51,19 @@ class OracleSanctumLive(unittest.TestCase):
                 self.assertIn("The Oracle's Sanctum", out)
                 out = client.command("down", 1.5)
                 self.assertIn(TEMPLE_NAME, out)
+                self.assertIn("dazed", out)
+                client.send("quit")
+                client.wait_closed()
+
+            # Sleeping there is not allowed: out at once, awake and dazed.
+            with mud.connect(timeout=120) as client:
+                login(client, "Zpraysleep", PW)
+                out = client.command("pray", 1.5)
+                self.assertIn("The Oracle's Sanctum", out)
+                out = client.command("sleep", 1.5)
+                self.assertIn("no inn", out)
+                self.assertIn(TEMPLE_NAME, out)
+                self.assertNotIn("You go to sleep", out)
                 self.assertIn("dazed", out)
                 client.send("quit")
                 client.wait_closed()

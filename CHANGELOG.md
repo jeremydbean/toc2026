@@ -10,6 +10,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **The treasure goblin** (`src/goblin.c`, owner's design after Diablo's,
+  2026-10-20). Mob 29941; there is always one somewhere, hidden from afar
+  like the black market dealer and never in a room he could not be struck
+  in. He never fights back: each landed blow spills coin and sends him out
+  a random exit, and takes a thirteenth to an eighteenth of his health by
+  how hard it hit, so a kill is twelve to seventeen flights at any level.
+  Stuns pin him. A minute without a blow and he opens a portal and is
+  gone elsewhere; a blow while it opens collapses it. Coin spilt and
+  hoarded is counted in kills at the striker's level; his corpse often
+  holds the best piece for some slot at the killer's level and now and
+  then a black market rarity. Spawns and kills reach WIZINFO and the log
+  with the room. Staff command GOBLIN. `tests/test_treasure_goblin.py`.
+- **SLEEP in the Oracle's sanctum** sends you out at once
+  (`oracle_refuses_sleep`). `tests/test_oracle_sanctum_live.py`.
 - **The black market** (`src/blackmarket.c`, owner's design, 2026-10-20).
   Vesh the Smuggler (mob 29940 in `seasonal.are`, a shopkeeper that buys
   nothing, `(Rare)` in his room line) is in the world about one hour in

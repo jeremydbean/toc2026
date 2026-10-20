@@ -889,6 +889,7 @@ bool  oracle_here     args( ( CHAR_DATA *ch ) );
 void  oracle_on_char_from_room args( ( CHAR_DATA *ch ) );
 void  oracle_process_queries args( ( void ) );
 int   oracle_saved_room args( ( CHAR_DATA *ch ) );
+bool  oracle_refuses_sleep args( ( CHAR_DATA *ch ) );
 bool  is_oracle_mob   args( ( CHAR_DATA *ch ) );
 bool  is_killuminati  args( ( CHAR_DATA *ch ) );
 bool  is_divinely_warded args( ( CHAR_DATA *ch ) );
@@ -1407,6 +1408,7 @@ typedef struct hyrule_dungeon_gate
 #define MOB_VNUM_EVENT_FATHER      29911  /* Winter Veil: Father Winter */
 #define MOB_VNUM_BLACK_MARKET      29940  /* the wandering black market dealer */
 #define MOB_VNUM_PSIONIC_PROJECTION 7550  /* what PROJECT walks through distant rooms */
+#define MOB_VNUM_TREASURE_GOBLIN   29941  /* the treasure goblin (goblin.c) */
 
 /* Seasonal event boss drop items (seasonal.are) */
 #define OBJ_VNUM_HORSEMAN_REAPER   29920  /* the Headless Horseman's Reaper (weapon) */
@@ -3396,6 +3398,23 @@ void    black_market_forget      ( CHAR_DATA *ch );
 bool    black_market_bought      ( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *obj );
 bool    black_market_buy_refuses ( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *obj );
 void    black_market_record      ( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *obj );
+bool    is_unfindable_mob        ( const CHAR_DATA *ch );
+bool    black_market_room_ok     ( ROOM_INDEX_DATA *room );
+ROOM_INDEX_DATA *black_market_random_room ( void );
+int     black_market_gear_for_level ( int level );
+int     black_market_rarity      ( void );
+long    black_market_kill_value  ( int level );
+
+/* goblin.c */
+extern CHAR_DATA *treasure_goblin;
+bool    is_treasure_goblin       ( const CHAR_DATA *ch );
+bool    treasure_goblin_spawn    ( ROOM_INDEX_DATA *room );
+void    treasure_goblin_dismiss  ( void );
+void    treasure_goblin_forget   ( CHAR_DATA *ch );
+int     treasure_goblin_blow     ( CHAR_DATA *gob, int dam );
+void    treasure_goblin_struck   ( CHAR_DATA *ch, CHAR_DATA *gob );
+void    treasure_goblin_slain    ( CHAR_DATA *ch, CHAR_DATA *gob );
+void    treasure_goblin_update   ( void );
 
 /* hunt.c */
 void    hunt_victim     ( CHAR_DATA *ch, int ANNOY );

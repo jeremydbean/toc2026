@@ -96,6 +96,28 @@ BCE ABCDEF 0 0
 8 8 1 3000
 0 0 M 0
 
+#29941
+treasure goblin~
+a treasure goblin~
+(Rare) A treasure goblin staggers under a sack bulging with stolen coin.
+~
+A wiry, grey-green goblin no taller than your knee, bent double under a
+sack far too big for him.  Coins leak from a dozen holes in it with every
+step.  This is a treasure goblin -- rare, quick and a coward to the bone.
+He never fights back: strike him and he spills a fistful of platinum and
+bolts for the nearest exit, so you will have to chase him, room after
+room, for a dozen blows and more.  Lose his trail for long and he tears
+open a rift and is gone.  Stun him and he cannot run.  Run him down and
+the whole sack is yours.
+~
+goblin~
+ABMUV DFJ 0 S
+5 0 1d1+1399 1d1+0 1d1+0 0
+10 10 10 10
+0 AB 0 0
+8 8 1 0
+0 0 S 0
+
 #0
 
 

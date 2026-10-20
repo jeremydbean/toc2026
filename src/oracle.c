@@ -392,6 +392,51 @@ void oracle_on_char_from_room( CHAR_DATA *ch )
 }
 
 
+/*
+ * SLEEP in her sanctum is shown the door at once (owner, 2026-10-20): it is
+ * a place to ask, not a bed. Her supplicant's audience ends and they are
+ * sent home dazed, as SAY DONE would; anyone else in there goes where they
+ * would be saved -- the Temple. Staff may do as they like.
+ */
+bool oracle_refuses_sleep( CHAR_DATA *ch )
+{
+    ROOM_INDEX_DATA *home;
+    char line[MAX_STRING_LENGTH];
+
+    if ( ch == NULL || IS_NPC(ch) || ch->in_room == NULL
+      || ch->in_room->vnum != ROOM_VNUM_ORACLE
+      || IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+        return FALSE;
+
+    send_to_char( "The Oracle's eyes snap open.  'My sanctum is no inn, child.  Out.'\n\r", ch );
+    act( "The Oracle's eyes snap open as $n settles down to sleep.",
+        ch, NULL, NULL, TO_ROOM );
+    snprintf( line, sizeof(line), "Oracle: %s tried to sleep in the sanctum and was sent out.",
+              ch->name );
+    log_string( line );
+
+    if ( oracle_mob != NULL && ch->name != NULL
+      && !str_cmp( ch->name, oracle_summoner ) )
+    {
+        oracle_dismiss( TRUE );
+        return TRUE;
+    }
+
+    home = get_room_index( oracle_saved_room( ch ) );
+    if ( home == NULL )
+        home = get_room_index( ROOM_VNUM_TEMPLE );
+    if ( home == NULL )
+        return TRUE;
+    send_to_char( "The incense thickens into mist, and the sanctum fades away.\n\r", ch );
+    char_from_room( ch );
+    char_to_room( ch, home );
+    act( "$n steps out of a thinning curl of incense smoke.", ch, NULL, NULL, TO_ROOM );
+    do_look( ch, "auto" );
+    oracle_come_back( ch );
+    return TRUE;
+}
+
+
 /* Does what was said match one of these phrases?  Trailing punctuation is
    ignored, so "done.", "Done!" and "thanks?" all count. */
 static bool oracle_said_one_of( const char *said, const char * const *words )
@@ -744,9 +789,10 @@ static bool oracle_can_see_char( CHAR_DATA *asker, CHAR_DATA *vch )
         return TRUE;
     if ( oracle_is_staff( vch ) )
         return FALSE;
-    /* Nor where the black market dealer is, or what he carries
-       (oracle_can_locate_obj asks this of his goods' holder). */
-    if ( is_black_market_dealer( vch ) )
+    /* Nor where the black market dealer or the treasure goblin is, or
+       what the dealer carries (oracle_can_locate_obj asks this of his
+       goods' holder). */
+    if ( is_unfindable_mob( vch ) )
         return FALSE;
     if ( !IS_NPC(vch)
       && ( IS_SET(vch->act, PLR_WIZINVIS) || IS_SET(vch->act, PLR_CLOAKED) ) )

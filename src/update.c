@@ -2966,6 +2966,7 @@ void update_handler( void )
 	pulse_mobile	= PULSE_MOBILE;
 	mobile_update	( );
 	black_market_update( );
+	treasure_goblin_update( );
     }
 
     if ( --pulse_violence <= 0 )

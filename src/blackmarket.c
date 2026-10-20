@@ -181,6 +181,13 @@ bool black_market_sees( const CHAR_DATA *looker, const CHAR_DATA *dealer )
     return looker->in_room != NULL && looker->in_room == dealer->in_room;
 }
 
+/* The dealer and the treasure goblin: seen in their own room and nowhere
+   else, by the same rule (black_market_sees). */
+bool is_unfindable_mob( const CHAR_DATA *ch )
+{
+    return is_black_market_dealer( ch ) || is_treasure_goblin( ch );
+}
+
 /* Whether an object is the dealer's, however deep in a container. */
 bool black_market_holds( const OBJ_DATA *obj )
 {
@@ -232,6 +239,12 @@ static long bm_kill_value( int level )
     if ( level < 30 ) return 10208L * level;
     if ( level < 50 ) return 15306L * level;
     return 270402L * level;
+}
+
+/* The treasure goblin pays in the same currency. */
+long black_market_kill_value( int level )
+{
+    return bm_kill_value( level );
 }
 
 #define BM_PRICE_KILLS      60
@@ -602,6 +615,89 @@ static ROOM_INDEX_DATA *bm_random_room( void )
 }
 
 /* A mortal standing with him: staff watching do not hold him. */
+/*
+ * What the treasure goblin's sack holds for whoever killed him: the best
+ * piece the world places on a mobile for one slot, chosen at random, among
+ * pieces of the killer's level or up to five below it (owner,
+ * 2026-10-20). The window widens to ten levels if those five hold nothing.
+ */
+int black_market_gear_for_level( int level )
+{
+    int best_vnum[BM_SLOTS];
+    double best_score[BM_SLOTS];
+    int width, s, iHash;
+
+    if ( !bm_gear_built )
+        bm_build_gear();
+    level = URANGE( 1, level, LEVEL_HERO4 + 4 );
+    for ( width = 5; width <= 10; width += 5 )
+    {
+        int slots[BM_SLOTS], n = 0;
+
+        for ( s = 0; s < BM_SLOTS; s++ )
+        {
+            best_vnum[s] = 0;
+            best_score[s] = 0.0;
+        }
+        for ( iHash = 0; iHash < MAX_KEY_HASH; iHash++ )
+        {
+            OBJ_INDEX_DATA *pObj;
+
+            for ( pObj = obj_index_hash[iHash]; pObj != NULL; pObj = pObj->next )
+            {
+                double score;
+
+                if ( pObj->level > level || pObj->level < level - width
+                ||   !bm_vnum_ok( pObj->vnum ) || !bm_placed[pObj->vnum]
+                ||   !bm_sellable( pObj ) )
+                    continue;
+                if ( pObj->item_type != ITEM_ARMOR && pObj->item_type != ITEM_WEAPON
+                &&   pObj->item_type != ITEM_CLOTHING
+                &&   pObj->item_type != ITEM_TREASURE
+                &&   pObj->item_type != ITEM_LIGHT )
+                    continue;
+                if ( ( s = bm_slot_of( pObj->wear_flags ) ) < 0 )
+                    continue;
+                if ( ( score = bm_gear_score( pObj ) ) <= 0.0 )
+                    continue;
+                if ( score > best_score[s]
+                ||   ( score == best_score[s] && pObj->vnum < best_vnum[s] ) )
+                {
+                    best_score[s] = score;
+                    best_vnum[s] = pObj->vnum;
+                }
+            }
+        }
+        for ( s = 0; s < BM_SLOTS; s++ )
+            if ( best_vnum[s] != 0 )
+                slots[n++] = s;
+        if ( n > 0 )
+            return best_vnum[slots[number_range( 0, n - 1 )]];
+    }
+    return 0;
+}
+
+int black_market_rarity( void )
+{
+    switch ( number_range( 0, 2 ) )
+    {
+    case 0:  return BM_PICK( bm_boss_drops );
+    case 1:  return BM_PICK( bm_cakes );
+    default: return BM_PICK( bm_charms );
+    }
+}
+
+/* The treasure goblin keeps to the same rooms. */
+bool black_market_room_ok( ROOM_INDEX_DATA *room )
+{
+    return bm_room_ok( room );
+}
+
+ROOM_INDEX_DATA *black_market_random_room( void )
+{
+    return bm_random_room();
+}
+
 static bool bm_has_customer( CHAR_DATA *dealer )
 {
     CHAR_DATA *rch;

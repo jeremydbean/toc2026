@@ -2839,6 +2839,10 @@ void do_sleep( CHAR_DATA *ch, char *argument )
     UNUSED_PARAM(argument);
     int chance = 0;
 
+    /* The Oracle's sanctum is no inn (oracle.c). */
+    if ( oracle_refuses_sleep( ch ) )
+	return;
+
     if(!IS_NPC(ch) && ch->pcdata->mounted)
     {
       send_to_char("You must dismount first.\n\r",ch);

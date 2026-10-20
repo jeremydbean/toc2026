@@ -721,6 +721,10 @@ void multi_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
     if (ch->position < POS_RESTING)
 	return;
 
+    /* The treasure goblin never strikes back. */
+    if ( is_treasure_goblin( ch ) )
+	return;
+
     if( IS_AFFECTED2(ch, AFF2_STUNNED) )
     {
 	 if( !check_recover(ch) )
@@ -1399,6 +1403,11 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     if ( victim->position == POS_DEAD )
 	return false;
 
+    /* The treasure goblin is worn down by blows, never by his own poison
+       or plague: only a chase kills him (goblin.c). */
+    if ( ch == victim && is_treasure_goblin( victim ) )
+	return false;
+
     hyrule_silver_arrow_hit = dam > 0 && is_hyrule_ganon(victim)
         && is_silver_arrow_attack(ch, dt);
 
@@ -1644,6 +1653,12 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	immune = true;
 	dam = 0;
     }
+
+    /* A landed blow takes a share of the treasure goblin's health set by
+       how hard it hit: anyone patient enough kills him, the hardest
+       hitter in thirteen blows and the gentlest in eighteen. */
+    if ( dam > 0 && is_treasure_goblin( victim ) )
+	dam = treasure_goblin_blow( victim, dam );
 
     dam_message( ch, victim, dam, dt, immune );
 
@@ -2021,6 +2036,11 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     &&   victim->hit <= victim->wimpy
     &&   victim->wait < PULSE_VIOLENCE / 2 )
 	do_flee( victim, "" );
+
+    /* The treasure goblin spills coin and runs from every blow. He may
+       be in another room when this returns; callers ask gone_after_blow. */
+    if ( dam > 0 && is_treasure_goblin( victim ) )
+	treasure_goblin_struck( ch, victim );
 
     if ( IS_AFFECTED2(ch, AFF2_STEALTH) )
     {
@@ -3241,6 +3261,8 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
       if ( !IS_NPC(victim) )
         achievement_record_death( victim );
       death_cry( victim );
+      if ( is_treasure_goblin( victim ) )
+        treasure_goblin_slain( ch, victim );
       make_corpse( victim );
       if ( IS_NPC(victim) )
       {

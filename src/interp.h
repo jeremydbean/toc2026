@@ -326,6 +326,7 @@ DECLARE_DO_FUN(do_psychic_shield);
 DECLARE_DO_FUN( do_pstat        );
 DECLARE_DO_FUN( do_grantpsi);
 DECLARE_DO_FUN( do_blackmarket );
+DECLARE_DO_FUN( do_goblin );
 DECLARE_DO_FUN( do_pull		);
 DECLARE_DO_FUN( do_push		);
 DECLARE_DO_FUN(	do_purge	);

@@ -64,10 +64,10 @@ def run(client, command: str, settle: float = 1.6) -> str:
 class BlackMarketSourceTests(unittest.TestCase):
     def test_sight_is_his_own_room_only(self) -> None:
         see = body("src/handler.c", "bool can_see(")
-        self.assertIn("is_black_market_dealer( victim ) && !black_market_sees( ch, victim )", see)
-        self.assertLess(see.index("wizinvis_hides"), see.index("is_black_market_dealer"),
+        self.assertIn("is_unfindable_mob( victim ) && !black_market_sees( ch, victim )", see)
+        self.assertLess(see.index("wizinvis_hides"), see.index("is_unfindable_mob"),
                         "checked before the immortal-mobile shortcut below it")
-        self.assertLess(see.index("is_black_market_dealer"), see.index("PLR_HOLYLIGHT"))
+        self.assertLess(see.index("is_unfindable_mob"), see.index("PLR_HOLYLIGHT"))
         obj = body("src/handler.c", "bool can_see_obj(")
         self.assertIn("black_market_holds( obj )", obj)
         sees = body("src/blackmarket.c", "bool black_market_sees(")
@@ -75,9 +75,11 @@ class BlackMarketSourceTests(unittest.TestCase):
 
     def test_scan_stops_at_one_room_and_the_oracle_does_not_know(self) -> None:
         scan = body("src/act_info.c", "void do_scan(")
-        self.assertIn("is_black_market_dealer( rch ) && counter > 1", scan)
+        self.assertIn("is_unfindable_mob( rch ) && counter > 1", scan)
         oracle = body("src/oracle.c", "static bool oracle_can_see_char(")
-        self.assertIn("is_black_market_dealer( vch )", oracle)
+        self.assertIn("is_unfindable_mob( vch )", oracle)
+        self.assertIn("is_black_market_dealer( ch ) || is_treasure_goblin( ch )",
+                      body("src/blackmarket.c", "bool is_unfindable_mob("))
 
     def test_a_purge_cannot_leave_a_dangling_dealer(self) -> None:
         self.assertIn("black_market_forget( ch );", body("src/handler.c", "void extract_char("))

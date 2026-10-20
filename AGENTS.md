@@ -2355,6 +2355,62 @@ his wandering, his browsing limit and his departure for the live tests;
 the sale window still runs, so the tests can watch it end.
 `tests/test_black_market.py`.
 
+## The Treasure Goblin
+
+`src/goblin.c` (owner's design, 2026-10-20, after Diablo's). Mob 29941
+(`MOB_VNUM_TREASURE_GOBLIN`) in `seasonal.are`. **There is always one**:
+`treasure_goblin_update()` (every mobile pulse) spawns one at boot and
+another a minute to three after a death, at a room `gob_room_ok()`
+allows -- the black market's rooms (`black_market_room_ok`) less safe
+rooms, the Temple and the altar, because a goblin nobody may strike is a
+goblin nobody can finish. He is a sentinel to `mobile_update` and does
+his own wandering under the same rule. **He is hidden as the dealer is**:
+`is_unfindable_mob()` covers both in `can_see`, SCAN and the Oracle.
+`TOC_NO_GOBLIN` stops the automatic spawn and `tests/live_mud.py` sets
+it by default; `TOC_GOBLIN_STILL` holds his wandering and his portal.
+
+**The chase.** `damage()` asks `treasure_goblin_blow()` before its
+message: a landed blow takes a share of his health set by how hard it
+hit -- one thirteenth for 160 damage and up, one eighteenth below 15
+(owner, 2026-10-20: a level 50 must not finish him in a few blows, and
+a low level must still be able to) -- so hit points never decide who
+can kill him and the floor is twelve flights. After the blow, if he
+lives, `treasure_goblin_struck()` spills coin and sends him through a
+random exit with `move_char`, after `stop_fighting(gob, true)`, so a
+caller's `ch->fighting != victim` check stops the swings that follow;
+`gone_after_blow()` reads him as gone. Pinned -- `AFF2_STUNNED`, or
+below `POS_FIGHTING` -- he stays, and he shakes a stun off at
+`GOBLIN_UNSTUN_ODDS` a pulse because `check_recover` only runs for a
+mobile that attacks. `multi_hit` returns at once for him: he never
+strikes back. His own poison and plague do nothing to him. His hit
+points are clamped each pulse so a tick's regeneration cannot undo a
+chase.
+
+**The portal.** As in Diablo, a chase has to be kept up: `GOBLIN_ALONE`
+(60 s) without a blow and he starts a portal, through it a pulse later
+to a random room, wounds kept; a blow while it opens collapses it, and
+a pinned goblin opens none.
+
+**The money is counted in kills.** Spills are four to eight, and the
+hoard about two hundred, of `black_market_kill_value()` at the striker's
+or killer's level (a pet's master's), so it is worth chasing at every
+level. `treasure_goblin_slain()` runs in `raw_kill_internal` before
+`make_corpse`: the hoard goes into his purse with `gain_copper` and out
+into the corpse as piles, with half the time
+`black_market_gear_for_level()` -- the best placed piece for a random
+slot within five levels below the killer's -- and a tenth of the time a
+black market rarity. Appearances and kills go to the log and WIZINFO
+with the room; escapes and drifts to the log. Staff command GOBLIN.
+`tests/test_treasure_goblin.py` chases one down live.
+
+## The Oracle's Sanctum Is No Inn
+
+SLEEP in room 8 (`ROOM_VNUM_ORACLE`) is refused by
+`oracle_refuses_sleep()`, asked first in `do_sleep` (owner, 2026-10-20:
+kick them out immediately). Her supplicant's audience ends through
+`oracle_dismiss(TRUE)`; anyone else goes to `oracle_saved_room()`'s
+answer. Staff are exempt. `tests/test_oracle_sanctum_live.py`.
+
 ## The Holiday Bosses
 
 The Headless Horseman (29910) and Father Winter (29911) in

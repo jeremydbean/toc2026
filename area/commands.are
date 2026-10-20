@@ -1143,6 +1143,54 @@ time he comes back.
 See also: SCAN, LIST, BUY
 ~
 
+0 'TREASURE GOBLIN' GOBLIN~
+There is always a treasure goblin somewhere in the world: a wiry little
+thief bent under a sack of stolen coin.  Nothing finds him from afar --
+no spell, no tracking, no asking around -- but SCAN shows him one room
+away, and he leaves a trail of dropped coin wherever he runs.
+
+He never fights back.  Every blow that lands spills coin from his sack
+and sends him scurrying out through a random exit, so killing him is a
+chase: twelve rooms at the very least for the hardest hitter, a few more
+for a gentler one.  Anyone patient enough can finish him.  A stun, a
+sleep or a knockdown pins him where he stands, though not for long.
+
+Keep at him.  Let a minute go by without landing a blow -- because you
+lost him, or because you stood there -- and he tears open a portal and
+is gone somewhere else, wounds and all.  A blow while the portal opens
+slams it shut.
+
+Run him down and his sack bursts: a great deal of coin for someone of
+your level, often a fine piece of gear for your level too, and now and
+then something rarer.  Another goblin turns up somewhere soon after.
+
+See also: SCAN, 'BLACK MARKET'
+~
+
+60 GOBLIN~
+Syntax: goblin                (where he is, his hit points, the chase)
+        goblin spawn          (a new one at a random room, if none)
+        goblin here           (a new one in your room, replacing any)
+        goblin dismiss        (send him away; another comes soon)
+
+There is always one treasure goblin (mob 29941): a new one appears at a
+random room a minute to three after the last is killed.  He wanders a
+step every half minute or so and drifts to a random room every twenty to
+forty minutes while nobody is after him, never into a room he could not
+be struck in.  Each landed blow spills four to eight kills' worth of
+coin at the striker's level and sends him out a random exit; it takes a
+thirteenth to an eighteenth of his health by how hard it hit, so a kill
+is 12 to 17 flights.  A minute without a blow and he opens a portal and
+teleports.  His sack holds about two hundred kills' worth of coin at the
+killer's level, half the time the best piece in some slot for the
+killer's level, and a tenth of the time a black market rarity.
+Appearances and kills come to WIZINFO and the log with the room.  Staff
+see him anywhere; mortals only in his room, or one room away with SCAN.
+BLACKMARKET SUMMON does the same for the black market.
+
+See also: 'TREASURE GOBLIN', BLACKMARKET
+~
+
 60 BLACKMARKET~
 Syntax: blackmarket                (where he is, how long, stock, pool)
         blackmarket summon         (bring him into the world now)

@@ -69,6 +69,7 @@ set(SRC_FILES
     src/changes.c
     src/abilities.c
     src/blackmarket.c
+    src/goblin.c
     src/wizlist.c
 )
 
