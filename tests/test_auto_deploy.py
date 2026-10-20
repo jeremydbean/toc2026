@@ -63,6 +63,9 @@ class AutoDeployDecisionTests(unittest.TestCase):
         (self.bin / "curl").write_text(
             "#!/bin/sh\n[ -n \"$FAKE_CI\" ] || exit 7\nprintf '%s' \"$FAKE_CI\"\n")
         (self.bin / "logger").write_text("#!/bin/sh\nexit 0\n")
+        # A fake player count: what the game would answer over MSSP.
+        (self.bin / "players").write_text(
+            "#!/bin/sh\nprintf '%s\\n' \"${FAKE_PLAYERS:-0}\"\n")
         # A fake toc-deploy: records the commit it was pinned to.
         self.calls = self.tmp / "deploy-calls"
         (self.bin / "toc-deploy").write_text(
@@ -94,13 +97,15 @@ class AutoDeployDecisionTests(unittest.TestCase):
             "status": status, "conclusion": conclusion,
             "created_at": "2026-10-05T00:00:00Z"}]})
 
-    def run_script(self, fake_ci: str = "", deploy_fails: bool = False) -> str:
+    def run_script(self, fake_ci: str = "", deploy_fails: bool = False,
+                   players: str = "0") -> str:
         env = dict(os.environ,
                    PATH=f"{self.bin}{os.pathsep}{os.environ['PATH']}",
                    BUILD=str(self.build), CURRENT=str(self.current),
                    STATE_DIR=str(self.state), TOC_DEPLOY_LOCK=str(self.tmp / "lock"),
                    TOC_DEPLOY_BIN=str(self.bin / "toc-deploy"),
-                   FAKE_CI=fake_ci, FAKE_DEPLOY_FAILS="1" if deploy_fails else "")
+                   FAKE_CI=fake_ci, FAKE_DEPLOY_FAILS="1" if deploy_fails else "",
+                   TOC_PLAYERS_PROBE=str(self.bin / "players"), FAKE_PLAYERS=players)
         subprocess.run(["sh", str(SCRIPT)], env=env, capture_output=True, text=True)
         return (self.current / "log" / "auto-deploy.status").read_text() \
             if (self.current / "log" / "auto-deploy.status").exists() else ""
@@ -158,6 +163,24 @@ class AutoDeployDecisionTests(unittest.TestCase):
         self.assertIn("[deploy now]", self.run_script(fake_ci=""))
         self.assertEqual([f"{code} 1"], self.deploys())
 
+    def test_players_online_hold_the_deploy_until_the_game_is_empty(self) -> None:
+        """Owner, 2026-10-20: do not reboot while players are on. The
+        held commit is not marked attempted, so the first empty tick
+        ships it; a game that does not answer has nobody to protect."""
+        code = self.commit("fix [deploy now]", {"src/game.c": "int h;\n"})
+        status = self.run_script(players="3")
+        self.assertIn("holding", status)
+        self.assertIn("3 player(s) online", status)
+        self.assertEqual([], self.deploys())
+        self.assertFalse((self.state / "attempted").exists())
+        self.run_script(players="1")
+        self.assertEqual([], self.deploys())
+        self.assertIn("deployed", self.run_script(players="0"))
+        self.assertEqual([f"{code} 1"], self.deploys())
+        newer = self.commit("again [deploy now]", {"src/game.c": "int i;\n"})
+        self.assertIn("deployed", self.run_script(players="unknown"))
+        self.assertEqual([f"{code} 1", f"{newer} 1"], self.deploys())
+
     def test_a_failed_deploy_is_not_retried_every_tick(self) -> None:
         code = self.commit("fix", {"src/game.c": "int f;\n"})
         green = self.ci(code, "completed", "success")
@@ -168,6 +191,34 @@ class AutoDeployDecisionTests(unittest.TestCase):
         newer = self.commit("fix the fix", {"src/game.c": "int g;\n"})
         self.run_script(self.ci(newer, "completed", "success"))
         self.assertEqual(2, len(self.deploys()), "a new commit is tried")
+
+
+try:
+    from live_mud import LiveMud, skip_reason
+    LIVE_SKIP = skip_reason()
+except ImportError as exc:  # pragma: no cover
+    LIVE_SKIP = str(exc)
+
+
+@unittest.skipIf(LIVE_SKIP is not None, LIVE_SKIP or "")
+class PlayersProbeLiveTests(unittest.TestCase):
+    def test_the_mssp_probe_counts_who_is_playing(self) -> None:
+        """The script's own probe, run against a real server: one player
+        in CON_PLAYING reads as 1, a port nobody listens on as unknown."""
+        script = SCRIPT.read_text()
+        start = script.index("\n", script.index("<<'PY'")) + 1
+        probe = script[start:script.index("\nPY\n")]
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                from live_mud import create_character
+                create_character(client, "Zcounted", "Zcount1pass")
+                client.drain(1.0)
+                out = subprocess.run(["python3", "-", "127.0.0.1", str(mud.port)],
+                                     input=probe, capture_output=True, text=True, timeout=30)
+                self.assertEqual("1", out.stdout.strip(), out.stderr)
+        out = subprocess.run(["python3", "-", "127.0.0.1", "1"], input=probe,
+                             capture_output=True, text=True, timeout=30)
+        self.assertEqual("unknown", out.stdout.strip())
 
 
 class AutoDeploySourceTests(unittest.TestCase):

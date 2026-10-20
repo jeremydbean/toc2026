@@ -83,7 +83,11 @@ healthy. It never takes player state from git.
 `main` every ten minutes and deploys new code once CI's Validate run for
 it passes, pinned to that commit and rolling itself back if the game
 does not come back healthy; `[deploy now]` in a commit message skips the
-CI wait. Docs, tests and state-sync commits never trigger it. What it
+CI wait. It never restarts the game while anybody is playing: the
+status reads `holding <sha>: N player(s) online` and it looks again
+every ten minutes until the game is empty (owner, 2026-10-20). A deploy
+by hand is the override. Docs, tests and state-sync commits never
+trigger it. What it
 decided last is in `/srv/toc/current/log/auto-deploy.status` (also in
 git, via the state sync), the live commit in `log/deployed-commit`, and
 its history in `journalctl -t toc-auto-deploy`. To stop it:

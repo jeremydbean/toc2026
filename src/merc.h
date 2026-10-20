@@ -3410,6 +3410,23 @@ bool        verify_event_boss       ( void );
 void        spawn_event_boss        ( int forced_vnum );
 void        despawn_event_boss      ( void );
 void        record_event_boss_defeat( CHAR_DATA *boss );
+
+/* One line of an event boss's drop table: what may lie on the corpse and
+   how often. The table is read by make_corpse to roll the loot and by
+   LOOK to tell a player what the boss will drop, so the two cannot
+   disagree. role: PRIMARY is rolled; FALLBACK is rolled too and added
+   anyway when nothing else fell; RARE is rolled and never counted. */
+#define EVENT_DROP_PRIMARY   0
+#define EVENT_DROP_FALLBACK  1
+#define EVENT_DROP_RARE      2
+typedef struct event_drop
+{
+    int vnum;
+    int chance;      /* percent */
+    int role;
+} EVENT_DROP;
+const EVENT_DROP *event_boss_drops     ( int mob_vnum );
+void              event_boss_show_drops( CHAR_DATA *victim, CHAR_DATA *ch );
 void        tick_event_boss         ( void );
 int         get_event_boss_vnum     ( void );
 void        spawn_seasonal_vendors  ( void );

@@ -10,6 +10,22 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **LOOK at a holiday boss lists what it drops.** The Headless Horseman's
+  and Father Winter's drop tables moved into `season.c` (`EVENT_DROP`),
+  where `make_corpse` rolls them and LOOK reads them back in words
+  ("half the time", "always when nothing else fell"), so the two cannot
+  disagree. `tests/test_event_boss.py`.
+- **Hallows End Dresden is dressed room by room.** The 19 rooms and 33
+  mobiles the season decorates each have a name of their own now (the
+  five Halls of Horror are the Hall of Whispers, of Cobwebs, the Gallery
+  of Grinning Skulls, the Hall of Guttering Candles and of Hollow
+  Footsteps) and a full description, written as the town's festival
+  rather than a massacre; Bud is the Pumpkin Knight rather than a second
+  Headless Horseman. `data/seasonal/dresden_halloween.json`.
+- **The automatic deploy waits for an empty game** (owner, 2026-10-20).
+  `toc-auto-deploy` reads the game's player count over MSSP and holds a
+  commit while anybody is playing, looking again every ten minutes; a
+  deploy by hand is the override. `tests/test_auto_deploy.py`.
 - **PRESTORE <player> <n> STASH** puts back only the stash a snapshot
   holds, added to whatever the stash holds now, and changes nothing else
   about the character. A death snapshot is taken before the dead are
@@ -31,6 +47,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **The holiday bosses stand still and start nothing.** The Headless
+  Horseman and Father Winter were aggressive and wandered Dresden like
+  any mobile, so a boss announced in the square had "fled" by the time
+  anyone arrived -- the undead race's departure line -- and attacked
+  whoever it met. Both are sentinel now and neither is aggressive
+  (owner, 2026-10-20).
 - **A wizinvis immortal is not announced to the room.** `PERS()` named
   an unseen immortal "An Immortal" rather than "someone", so every
   room message of theirs -- `$n appears in the room.` on recall, arrivals,

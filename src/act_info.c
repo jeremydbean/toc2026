@@ -438,6 +438,7 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
     {
 	act( "You see nothing special about $M.", ch, NULL, victim, TO_CHAR );
     }
+    event_boss_show_drops( victim, ch );
 
     if ( victim->max_hit > 0 )
 	percent = ( 100 * victim->hit ) / victim->max_hit;

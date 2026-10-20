@@ -2961,54 +2961,31 @@ void make_corpse( CHAR_DATA *ch )
             add_loot_to_corpse( corpse, drop_vnum );
     }
 
-    /* Event boss drops: guaranteed rare loot + small chance of training cake. */
+    /* Event boss drops: the table in season.c, which LOOK shows players,
+       so what they were told and what falls cannot differ. */
     if ( IS_NPC(ch) && ch->pIndexData != NULL )
     {
-        int vnum = ch->pIndexData->vnum;
+        const EVENT_DROP *table = event_boss_drops( ch->pIndexData->vnum );
 
-        if ( vnum == MOB_VNUM_EVENT_HORSEMAN || vnum == MOB_VNUM_EVENT_FATHER )
+        if ( table != NULL )
         {
-            /* Determine which drop pool to use based on which boss died. */
-            int weapon_vnum, armor_vnum, trinket_vnum, cake_vnum;
-            bool primary_drop = false;
+            bool fell = false;
+            int fallback = 0;
+            int i;
 
-            if ( vnum == MOB_VNUM_EVENT_HORSEMAN )
+            for ( i = 0; table[i].vnum != 0; i++ )
             {
-                weapon_vnum  = OBJ_VNUM_HORSEMAN_REAPER;
-                armor_vnum   = OBJ_VNUM_HORSEMAN_HELM;
-                trinket_vnum = OBJ_VNUM_PUMPKIN_CHARM;
-                cake_vnum    = OBJ_VNUM_HORSEMAN_CAKE;
-            }
-            else
-            {
-                weapon_vnum  = OBJ_VNUM_WINTER_HAMMER;
-                armor_vnum   = OBJ_VNUM_WINTER_MANTLE;
-                trinket_vnum = OBJ_VNUM_SNOWFLAKE_PEND;
-                cake_vnum    = OBJ_VNUM_WINTER_CAKE;
+                if ( table[i].role == EVENT_DROP_FALLBACK )
+                    fallback = table[i].vnum;
+                if ( number_percent() <= table[i].chance
+                &&   add_loot_to_corpse( corpse, table[i].vnum )
+                &&   table[i].role != EVENT_DROP_RARE )
+                    fell = true;
             }
 
-            /* 50% chance: drop the weapon */
-            if ( number_percent() <= 50 )
-                if ( add_loot_to_corpse(corpse, weapon_vnum) )
-                    primary_drop = true;
-
-            /* 50% chance: drop the armor */
-            if ( number_percent() <= 50 )
-                if ( add_loot_to_corpse(corpse, armor_vnum) )
-                    primary_drop = true;
-
-            /* 75% chance: drop a trinket */
-            if ( number_percent() <= 75 )
-                if ( add_loot_to_corpse(corpse, trinket_vnum) )
-                    primary_drop = true;
-
-            /* A two-day event boss should never leave an empty rare table. */
-            if ( !primary_drop )
-                add_loot_to_corpse( corpse, trinket_vnum );
-
-            /* 5% chance: drop a training cake (very rare) */
-            if ( number_percent() <= 5 )
-                add_loot_to_corpse( corpse, cake_vnum );
+            /* A two-day event boss never leaves an empty rare table. */
+            if ( !fell && fallback != 0 )
+                add_loot_to_corpse( corpse, fallback );
 
             record_event_boss_defeat( ch );
         }

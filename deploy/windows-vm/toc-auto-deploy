@@ -18,7 +18,13 @@
 #     [deploy now] skips that wait; toc-deploy still refuses one that
 #     will not build or whose world will not load;
 #   * this exact commit has not already been tried and failed, so a bad
-#     push restarts the game once, not every ten minutes.
+#     push restarts the game once, not every ten minutes;
+#   * nobody is playing (owner, 2026-10-20: do not reboot while players
+#     are on). The game's own count of playing descriptors is read over
+#     MSSP; while it is above zero the commit is held, not tried, and the
+#     next tick looks again. A game that does not answer has nobody to
+#     protect and is deployed. A deploy by hand (toc-deploy) is the
+#     override, and still warns and saves everyone first.
 #
 # Then it runs toc-deploy pinned to that commit, so code pushed while it
 # was waiting for CI cannot ride along unchecked, with rollback on: an
@@ -38,6 +44,11 @@ LOCK="${TOC_DEPLOY_LOCK:-/run/toc-deploy.lock}"
 DEPLOY_BIN="${TOC_DEPLOY_BIN:-/usr/local/sbin/toc-deploy}"
 MARKER="$CURRENT/log/deployed-commit"
 STATUS="$CURRENT/log/auto-deploy.status"
+GAME_HOST="${MUD_HOST:-127.0.0.1}"
+GAME_PORT="${MUD_PORT:-9000}"
+# A command printing the number of players online, or "unknown". The
+# default asks the game itself; tests point it at a fake.
+PLAYERS_PROBE="${TOC_PLAYERS_PROBE:-}"
 
 mkdir -p "$STATE_DIR"
 
@@ -49,6 +60,48 @@ mkdir -p "$STATE_DIR"
 export GIT_CONFIG_COUNT=1
 export GIT_CONFIG_KEY_0=safe.directory
 export GIT_CONFIG_VALUE_0="$BUILD"
+
+# How many descriptors the game has in CON_PLAYING, by its own count
+# over MSSP (the same ask webadmin's probe_game makes), or "unknown".
+players_online() {
+    if [ -n "$PLAYERS_PROBE" ]; then
+        "$PLAYERS_PROBE" 2>/dev/null || echo unknown
+        return
+    fi
+    python3 - "$GAME_HOST" "$GAME_PORT" <<'PY' 2>/dev/null || echo unknown
+import socket, sys, time
+host, port = sys.argv[1], int(sys.argv[2])
+IAC, SB, SE, DO, MSSP = 255, 250, 240, 253, 70
+try:
+    with socket.create_connection((host, port), timeout=3) as s:
+        s.sendall(bytes([IAC, DO, MSSP]))
+        s.settimeout(3)
+        buf, deadline = b"", time.monotonic() + 3
+        marker, end = bytes([IAC, SB, MSSP]), bytes([IAC, SE])
+        while time.monotonic() < deadline and len(buf) < 65536:
+            chunk = s.recv(4096)
+            if not chunk:
+                break
+            buf += chunk
+            a = buf.find(marker)
+            if a < 0:
+                continue
+            b = buf.find(end, a + 3)
+            if b < 0:
+                continue
+            body = buf[a + 3:b]
+            # MSSP: VAR(1) name VAL(2) value, repeated.
+            for part in body.split(b"\x01")[1:]:
+                name, _, val = part.partition(b"\x02")
+                if name == b"PLAYERS" and val.strip().lstrip(b"-").isdigit():
+                    print(max(0, int(val.strip())))
+                    sys.exit(0)
+            break
+except OSError:
+    pass
+print("unknown")
+PY
+}
 
 status() {
     printf '%s %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$*" > "$STATUS.tmp" &&
@@ -137,6 +190,17 @@ else:
             exit 0 ;;
     esac
 fi
+
+# Nobody loses a session to an automatic restart: hold the commit while
+# anybody is playing, and look again next tick. Not recorded as attempted,
+# so it is tried the moment the game is empty.
+players=$(players_online)
+case "$players" in
+    0|unknown) ;;
+    *)
+        status "holding $short ($why): $players player(s) online; deploying when the game is empty"
+        exit 0 ;;
+esac
 
 echo "$target" > "$STATE_DIR/attempted"
 status "deploying $short ($why)"

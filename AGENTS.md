@@ -1377,9 +1377,25 @@ The SSH user is **ubuntu** (the VM used `tocadmin`; that is history).
 broken: what is down, how to deploy, whether the backups are working,
 and how to rebuild on a new machine.
 
-**Deploy whenever the change is ready, connected players or not.** The
-owner settled this on 2026-09-29: do not hold, do not ask, and do not
-wait for an empty mud. By the time the stop is reached the update has
+**The automatic deploy waits for an empty game** (owner, 2026-10-20: do
+not reboot while players are on). `toc-auto-deploy` asks the game for
+its count of playing descriptors over MSSP (`players_online`, the same
+question webadmin's `probe_game` asks) and holds a commit -- status
+`holding <sha>: N player(s) online` -- until it reads zero, looking
+again every ten minutes; it is not marked attempted, so the first empty
+tick ships it. A game that does not answer has nobody to protect and is
+deployed. `tests/test_auto_deploy.py` plays the gate and runs the probe
+against a live server. The host's copy of the script only updates at
+the end of a healthy deploy, so the first deploy after this rule landed
+had to be timed by hand against the synced login journal.
+`toc-deploy` run by hand is the override, and it still warns and saves
+everyone first. A cloud session that must ship while people are on has
+no override: it pushes and waits.
+
+*Superseded for automatic deploys by the rule above; still how a deploy
+by hand behaves.* **Deploy whenever the change is ready, connected
+players or not.** The owner settled this on 2026-09-29: do not hold, do
+not ask, and do not wait for an empty mud. By the time the stop is reached the update has
 already been fetched, built and validated, and holding a validated
 update until nobody is on is the worse failure -- the Pi's updater
 waited up to fifteen minutes and then went ahead regardless, which is
@@ -2191,6 +2207,20 @@ own kit goes back on, and `mirror_find_carried` only considers items at
 `WEAR_NONE`, so a mirrored copy of something the immortal owns one of too
 cannot be picked up in place of the original.
 
+## The Holiday Bosses
+
+The Headless Horseman (29910) and Father Winter (29911) in
+`area/seasonal.are` are **not aggressive and do not wander** (owner,
+2026-10-20): `ABGV`, sentinel and stay-area. They were `AFGV`, so a
+boss announced in the square had walked off by the time anyone arrived
+-- the undead race's departure line read as fleeing -- and attacked
+whoever it met on the way. Their drop tables are `horseman_drops` and
+`father_winter_drops` in `season.c` (`EVENT_DROP`: vnum, percent, role),
+read by `make_corpse` to roll the loot and by `show_char_to_char_1`
+through `event_boss_show_drops()` so LOOK tells the player what falls
+and how often; the FALLBACK row is added when nothing else fell. Change
+a drop in the table, nowhere else. `tests/test_event_boss.py`.
+
 ## Wizinvis Leaves No Trace
 
 `wizinvis_hides(wch, looker)` in `handler.c` is the one test for whether
@@ -2203,7 +2233,11 @@ nobody below the level sees anything). `PERS()` says "someone" for
 anyone unseen; it used to say "An Immortal" for an unseen immortal,
 which announced every wizinvis recall to the room. Messages aimed at a
 victim (`TO_VICT`) still land, as "someone": being slain or handed
-something with no message at all would be worse. `do_say` tells a
+something with no message at all would be worse. The per-recipient
+loops that bypass `act()` were audited on 2026-10-20 and each already
+asks: `do_goto`'s bamf loop (trust against `invis_level`), WHO and the
+GMCP online feed (`online_can_list`), `show_char_to_char`, `do_count`,
+`do_where`, `do_scan` and the GMCP room list (`can_see`). `do_say` tells a
 wizinvis speaker when nobody below the level heard, and its chat-pane
 loop skips them too; a new per-listener loop that bypasses `act()` --
 as `do_goto`'s bamf loop and the GMCP feeds do -- has to ask the helper

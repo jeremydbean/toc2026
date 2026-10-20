@@ -263,6 +263,87 @@ void record_event_boss_defeat( CHAR_DATA *boss )
 
 
 /* -----------------------------------------------------------
+ * What each boss leaves on its corpse. make_corpse rolls these and LOOK
+ * reads them back (owner, 2026-10-20: looking at the boss should say
+ * what it drops), so a change here changes both.
+ * ----------------------------------------------------------- */
+static const EVENT_DROP horseman_drops[] =
+{
+    { OBJ_VNUM_HORSEMAN_REAPER, 50, EVENT_DROP_PRIMARY  },
+    { OBJ_VNUM_HORSEMAN_HELM,   50, EVENT_DROP_PRIMARY  },
+    { OBJ_VNUM_PUMPKIN_CHARM,   75, EVENT_DROP_FALLBACK },
+    { OBJ_VNUM_HORSEMAN_CAKE,    5, EVENT_DROP_RARE     },
+    { 0, 0, 0 }
+};
+
+static const EVENT_DROP father_winter_drops[] =
+{
+    { OBJ_VNUM_WINTER_HAMMER,   50, EVENT_DROP_PRIMARY  },
+    { OBJ_VNUM_WINTER_MANTLE,   50, EVENT_DROP_PRIMARY  },
+    { OBJ_VNUM_SNOWFLAKE_PEND,  75, EVENT_DROP_FALLBACK },
+    { OBJ_VNUM_WINTER_CAKE,      5, EVENT_DROP_RARE     },
+    { 0, 0, 0 }
+};
+
+const EVENT_DROP *event_boss_drops( int mob_vnum )
+{
+    if ( mob_vnum == MOB_VNUM_EVENT_HORSEMAN )
+        return horseman_drops;
+    if ( mob_vnum == MOB_VNUM_EVENT_FATHER )
+        return father_winter_drops;
+    return NULL;
+}
+
+static const char *drop_chance_words( int chance )
+{
+    switch ( chance )
+    {
+        case 100: return "every time";
+        case  75: return "three times in four";
+        case  50: return "half the time";
+        case  25: return "one time in four";
+        case  10: return "one time in ten";
+        case   5: return "one time in twenty";
+        default:  return NULL;
+    }
+}
+
+/* Appended to LOOK <boss>: the table above, in words. Nothing for any
+   other mobile, so it is safe to call for every look. */
+void event_boss_show_drops( CHAR_DATA *victim, CHAR_DATA *ch )
+{
+    const EVENT_DROP *table;
+    OBJ_INDEX_DATA *pObj;
+    char buf[MAX_STRING_LENGTH];
+    char odds[64];
+    const char *words;
+    int i;
+
+    if ( victim == NULL || !IS_NPC(victim) || victim->pIndexData == NULL )
+        return;
+    if ( ( table = event_boss_drops( victim->pIndexData->vnum ) ) == NULL )
+        return;
+
+    snprintf( buf, sizeof(buf), "\n\rSlain, %s leaves on the corpse:\n\r",
+              victim->short_descr );
+    send_to_char( buf, ch );
+    for ( i = 0; table[i].vnum != 0; i++ )
+    {
+        if ( ( pObj = get_obj_index( table[i].vnum ) ) == NULL )
+            continue;
+        if ( ( words = drop_chance_words( table[i].chance ) ) != NULL )
+            toc_strlcpy( odds, words, sizeof(odds) );
+        else
+            snprintf( odds, sizeof(odds), "%d%% of the time", table[i].chance );
+        snprintf( buf, sizeof(buf), "  %-40s %s%s\n\r", pObj->short_descr, odds,
+                  table[i].role == EVENT_DROP_FALLBACK
+                      ? ", and always when nothing else fell" : "" );
+        send_to_char( buf, ch );
+    }
+}
+
+
+/* -----------------------------------------------------------
  * Return the boss vnum appropriate for the current season.
  * Falls back to the Headless Horseman if called off-season.
  * ----------------------------------------------------------- */

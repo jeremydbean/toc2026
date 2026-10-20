@@ -40,11 +40,16 @@ http://www.ofchaos.com/Building/building.html
 
 #MOBILES
 #2401
-Maliki wand shopkeeper~
-Maliki~
-A ghost of Maliki floats thru the walls.
+maliki wand shopkeeper spectre~
+Maliki the sheeted spectre~
+Maliki drifts about under a bedsheet with two eyeholes, talking to the
+walls.
 ~
-He looks at you and shouts BOO! then cackles insanely.
+He has cut two eyeholes in a good linen sheet, put it over his head and
+declared himself a spectre. The sheet does not hide his wands, which poke
+out at odd angles, nor his habit of turning to the wall mid-sentence to
+finish the conversation there. When he notices you he shouts BOO! and
+cackles for rather longer than the joke deserves.
 ~
 gnome~
 ABJKMRV DF 0 S
@@ -55,11 +60,15 @@ ACDEIK ABCD 0 0
 0 0 M 0
 
 #2402
-jeweller~
-the jeweller~
-A misty apparition is floating around.
+jeweller jeweler vampire caped~
+the caped jeweller~
+A pale jeweller in a high-collared black cape counts gems by candlelight.
 ~
-As you look closely you can see gems shimmering and rolling thru the mist.
+Powdered white, with a widow's peak drawn on in kohl and a pair of wax fangs
+he keeps taking out to speak, the jeweller is doing his very best impression
+of a vampire. The gems spread before him catch the candlelight and throw it
+back in red. He would like you to know he does not bite, and that everything
+is still full price.
 ~
 human~
 ABMV N 0 S
@@ -70,15 +79,16 @@ FHKNQ ABCFG D 0
 0 0 M 0
 
 #2403
-bud mercenary shopkeeper~
-Bud, the Mercenary Shopkeeper~
-The headless horseman stands here, holding a pumpkin under his arm.
+bud mercenary master pumpkin knight~
+Bud the Pumpkin Knight~
+Bud, the famous dwarven Mercenary Master, glowers from inside a carved
+pumpkin helm.
 ~
-This is a TERRIFYING person!  He stands about 8' tall and is dressed in black
-but his body ends at the neck.  Under his arm he carries a pumpkin.... NO!
-A jack-o-lantern that flickers and grins evilly at you.  As you study him
-closer you see the large sword under his robe, his hand twitching on the hilt.
-Then you notice him looking at YOUR HEAD considering it thoughtfully!
+Somebody has hollowed a pumpkin the size of a cauldron, carved a scowl in it
+and set it over Bud's head, and the dwarf has decided to wear it with
+dignity. His cigar smoke leaks out through the carved mouth. He still has
+mercenaries to hire out, and he still expects to be paid in coin rather than
+candy, as the scowl makes plain.
 ~
 dwarf~
 ABMV N 0 S
@@ -88,13 +98,14 @@ FHKNQ ABC D 0
 8 8 1 5000
 0 0 M 0
 #2404
-mercenary pet~
-the mercenary witch~
-A large witch is here to do your bidding.
+mercenary witch hired pet~
+the hired witch~
+A hired witch taps her broom against the floor, waiting to be paid.
 ~
-This witch is clothed all in black, but an eerie green glow emanates from
-under her hat.  You may want to pay her to accompany you on your
-haunting tonight.
+Clothed all in black under a pointed hat, with a green glow leaking from
+somewhere beneath its brim, this witch sells her wand arm to whoever pays.
+She will follow you on your haunting tonight and curse whatever you point
+her at, for the usual rate.
 ~
 human~
 ABIU S 0 S
@@ -104,12 +115,14 @@ W AB C 0
 8 8 1 0
 0 0 M 0
 #2405
-elf scout pet ~
-the ghoulish scout~
-A ghoul is watching everything carefully.
+scout scarecrow elf elven pet~
+the scarecrow scout~
+A scarecrow scout, straw poking from its sleeves, watches the road.
 ~
-The ghoul looks like an agile fighter but would rather leave the heavy
-fighting to the stout warriors.
+Under the sacking mask and the straw stuffing there is a small, agile elven
+scout who takes the costume rather seriously, and holds very still until
+something moves. It would rather spot the ambush than fight it, and leaves
+the heavy work to the stout warriors.
 ~
 elf~
 ABIU JPS 0 S
@@ -119,11 +132,15 @@ NW AB C 0
 8 8 1 0
 0 0 M 0
 #2406
-bodyguard pet~
-the ghostly bodyguard~
-A ghost stands here ready to protect his master.
+bodyguard shrouded pet~
+the shrouded bodyguard~
+A bodyguard wrapped head to foot in grave-shrouds stands ready to take a
+blow.
 ~
-The ghost may seem to disappear, but will faithfully protect his mortal.
+Yards of grey linen are wound about this bodyguard, trailing behind him like
+a mummy's, and he moves in them surprisingly well. He will put himself
+between his master and anything that comes, which is what the shrouds are
+for: they hide the bruises.
 ~
 human~
 ABIU FS 0 S
@@ -133,12 +150,14 @@ NW AB C 0
 8 8 1 0
 0 0 L 0
 #2407
-dwarf warrior pet~
-the goblin  warrior~
-A stout goblin warrior is here leaning on an axe.
+dwarf dwarven gravedigger warrior pet~
+the dwarven gravedigger~
+A stout dwarven gravedigger leans on a long-handled shovel, for hire.
 ~
-The stout goblin warrior looks like he could handle himself against great
-odds.
+A stout dwarf in a sexton's black coat and battered hat, mud to the knees,
+leaning on a shovel that has clearly dug a great deal. It is also a very
+good weapon in a dwarf's hands. He looks like he could handle himself
+against great odds, and bury them afterwards.
 ~
 dwarf~
 ABIU JS 0 S
@@ -148,13 +167,14 @@ CDLW AB C 0
 8 8 1 0
 0 0 M 0
 #2408
-giant gladiator pet~
-the giant demon~
-A fierce looking giant demon is here, with brimstone sparking at his
-fingertips.
+giant gladiator ogre masked pet~
+the giant in the ogre mask~
+A giant gladiator in a papier-mache ogre mask flexes for the crowd.
 ~
-The fierce looking giant demon looks like he has survived haunted many mortals
-in the past, and perhaps claimed their souls as well.
+The mask is lumpy, tusked and painted a lurid green, and the giant behind it
+is enormous enough that it hardly seems necessary. He fingers the blade of
+his sword and roars at children, who roar back. He has survived many arenas
+and would survive a few more at your side.
 ~
 giant~
 ABIU S 0 S
@@ -164,13 +184,15 @@ CW AB C 0
 8 8 1 0
 0 0 G 0
 #2409
-nomad warrior~
-the spectral warrior~
-A shimmering spectral warrior hovers here with its arms crossed across
-his chest.
+nomad nomadic warrior skull painted pet~
+the skull-painted nomad~
+A proud nomadic warrior, his face painted as a skull, stands poised for
+battle.
 ~
-The spectral warrior has been called from the Netherworld to do your
-bidding this Halloween.
+White paint over bone-dark skin turns his face into a grinning death's head,
+and the effect is spoiled only by how calmly he stands. The nomadic warrior
+is here to be hired, and he will fight tonight exactly as he fights every
+other night: very well.
 ~
 human~
 ABIU S 0 S
@@ -180,13 +202,15 @@ CW AB C 0
 8 8 1 0
 0 0 H 0
 #2420
-paco shopowner~
-Paco~
-Paco is dressed up and handing out candy.
+paco shopowner candy devil~
+Paco in his devil costume~
+Paco, in a cheap red devil costume, hands out candy from a bucket.
 ~
-Paco looks like he is of puerto rican descent.  He wears a mustache and keeps
-his hair very neat.  As he looks at you a warm smile washes over his face and
-he says, "Feliz Navidad?, oh, sorry, wrong holiday!"
+Paco has horns on a headband, a tail on a wire and a pitchfork made of
+painted wood, and a bucket of candy that he pushes at everyone who comes
+near. His moustache is as neat as ever. As he looks at you a warm smile
+washes over his face and he says, "Feliz Navidad? Oh, sorry, wrong holiday!"
+and gives you a toffee.
 ~
 human~
 ABMV N 0 S
@@ -196,13 +220,14 @@ FHKNQ ABC D 0
 8 8 1 10
 0 0 M 0
 #2421
-wizard~
-the sinister clown~
-A sinister clown, with blood soaked fangs paces behind the counter.
+wizard clown greasepaint~
+the grease-painted clown~
+A clown in cracked greasepaint paces behind the counter, grinning too wide.
 ~
-The wicked old clown looks like an escapee from an H. P. Lovecraft
-horror circus. He is equipped with fine floppy shoes and is wearing a large
-rubber nose that is constantly dripping blood.
+The wizard has painted his face white, drawn his mouth on far too large and
+put a red rubber nose over his own, and the result is deeply unsettling,
+mostly because he keeps talking to himself in exactly the voice he always
+uses. The floppy shoes squeak. He is still selling what he always sells.
 ~
 human~
 ABMV D 0 S
@@ -212,13 +237,14 @@ AF ABCD 0 0
 8 8 1 5000
 0 0 M 0
 #2422
-baker~
-the good fairy~
-The fairy looks at you with a twinkle, wiping flour from her face with one
-hand.
+baker ghostly floured~
+the ghostly baker~
+The baker, floured white as a ghost, sets out trays of skull-shaped bread.
 ~
-A young, nubile, nice looking fairy. But you can see that she has many items
-to bake this Halloween, so she doesn't have time for extra curricular events.
+The baker has not bothered with a costume: a day of baking for the fair has
+left him white from hair to boots and he has decided that will do. He wipes
+flour from his face with one hand and looks at you calmly. The skull loaves,
+pumpkin tarts and little marzipan bones on his trays are very good.
 ~
 human~
 ABMV 0 0 S
@@ -228,11 +254,14 @@ CDF ABCD 0 0
 8 8 1 500
 0 0 M 0
 #2423
-grocer~
-the ghoul~
-A ghoul stands at the counter, with a slightly dead look on its face.
+grocer mummy mummified bandaged~
+the mummified grocer~
+A grocer wound head to foot in bandages waits at the counter, unamused.
 ~
-A tall ghoul, who moves two 200 pound corpses around on his shoulders.
+Somebody, probably his children, has wrapped the grocer in bandages from
+scalp to ankle, leaving one eye and his mouth free, and he is serving
+customers in it with the slightly impatient look he always has. The bandages
+are coming loose at the wrists. He does not want to talk about it.
 ~
 human~
 ABMV 0 0 S
@@ -242,11 +271,15 @@ EFJ ABCD 0 0
 8 8 1 5000
 0 0 M 0
 #2424
-weaponsmith~
-the undead weaponsmith~
-An undead spirit, serving as a weaponsmith.
+weaponsmith headsman hooded~
+the hooded headsman~
+A weaponsmith in a headsman's black hood hones an axe for the festival.
 ~
-An undead spirit, currently called to serve as weaponsmith.
+A black executioner's hood with two ragged eyeholes, a leather apron, a bare
+chest smudged with soot, and the biggest axe in the shop across his knees,
+which he is sharpening slowly and with evident pleasure. The weaponsmith
+does this every year and sells more axes on Hallows End than in the rest of
+autumn together.
 ~
 human~
 ABMTVZ C 0 0 S
@@ -256,11 +289,13 @@ CEIK ABCD 0 0
 8 8 1 5000
 0 0 M 0
 #2425
-spectre~
-the spectre~
-A spectre, all dressed in black.
+thief plague masked beaked~
+the plague-masked thief~
+A thief in a long-beaked plague mask lingers in the lamplight, hands quick.
 ~
-Well COUNT your money and your luck!
+A leather mask with a long bird's beak and glass eyes hides the thief's face
+completely, which suits a thief. The rest is black, as always. The hands are
+the thing to watch, if you can, so count your money, and your luck.
 ~
 human~
 ACHS PQ 0 S
@@ -270,11 +305,14 @@ EFJN AB 0 0
 8 8 3 100
 0 0 M 0
 #2426
-captain~
+captain drowned seaweed~
 the drowned captain~
-A drowned and long dead captain stands here, selling boats.
+A captain in seaweed and barnacles sells boats, dripping on the dock.
 ~
-This captain was nibbled at by more sharks than you have eaten pies.
+A retired captain who has gone to some trouble: his coat is hung with real
+seaweed, his beard with real barnacles, and a small crab has been persuaded
+to sit on his hat. He drips. He has been nibbled at by more sharks than you
+have eaten pies, he says, and he will still sell you a boat.
 ~
 human~
 ABMTV 0 0 S
@@ -284,12 +322,15 @@ CEI ABCD 0 0
 8 8 1 1300
 0 0 M 0
 #2427
-leatherface~
-Leatherface~
-Leatherface is sitting by the table, sewing a human skin cap.
+leather worker stitched masked~
+the masked leather worker~
+The leather worker sits by the table, sewing a grinning mask of stitched
+hide.
 ~
-When not making movies about a chainsaw murderer in Texas, Leatherface
-creates unique, human skin apparel, which he offers here to sell.
+The leather worker is sewing a mask: a face of stitched hide pieces,
+grinning crookedly, with thread for scars. It is one of a pile. Masks are
+what sells on Hallows End, and these are good enough to frighten a horse,
+which the stables have already complained about.
 ~
 human~
 ABMV 0 0 S
@@ -299,11 +340,14 @@ AFN ABCD 0 0
 8 8 2 5000
 0 0 M 0
 #2428
-skeleton bartender~
-the skeleton~
-A skeleton watches you calmly, while it skillfully mixes a bloody mary.
+bartender skeleton barkeep~
+the skeleton barkeep~
+A barkeep painted up as a skeleton mixes a bloody mary without a drop spilt.
 ~
-A tired looking skeleton who hates trouble in his bar.
+Black clothes with bones painted on them in white, a skull of greasepaint
+over a tired, patient face, and the same skilful hands as ever behind the
+bar. The skeleton barkeep hates trouble in his bar and will tell you so,
+bones and all.
 ~
 human~
 ABMV 0 0 S
@@ -313,14 +357,16 @@ FHJN AB CD 0
 8 8 1 150
 0 0 M 0
 #2429
-murderous melancholy mel~
-Murderous Melancholy~
-Murderous Melancholy is here, with a sack full of fingers, bones and eyeballs.
+melancholy mel clerk widow veiled~
+Melancholy in widow's weeds~
+Melancholy, veiled in black widow's weeds, sorts guild papers by
+candlelight.
 ~
-Ragged brown hair frames a ghostly, pale face.  Puffy eyelids surround two
-sky blue, haunting eyes.  An old, brown robe is wrapped around her frail
-frame.  She looks up from her pile of fingers and eyeballs and looks inquiringly
-at you, giving you a sickly smile.
+Ragged brown hair frames a pale face behind a black lace veil, and two sky
+blue eyes look out of it, haunting as ever. She has dressed as a widow for
+the festival, which on Melancholy is barely a change. Her sack of permits,
+guild papers and maps sits beside a bowl of rubber fingers and glass
+eyeballs that she offers you with a sickly, hopeful smile.
 ~
 human~
 ABMV 0 0 S
@@ -330,12 +376,14 @@ FG ABCD 0 0
 8 8 2 1000
 0 0 M 0
 #2430
-ghoul~
-the ghoul~
-A ghoul is here, looking for victims.
+vagabond grave robber graverobber~
+the grave-robber~
+A grave-robber with a muddy spade is here, sizing up your purse.
 ~
-He looks pretty nasty with his missing eyes, dripping flesh, and maggot
-riddled face.
+Mud to the elbows, a spade over one shoulder and a sack that clinks, the
+vagabond has decided grave-robber is the costume that suits him, and he may
+not be entirely in costume. He is looking for victims, as always; tonight he
+calls it looking for clients.
 ~
 human~
 ACS 0 -200 S
@@ -345,11 +393,14 @@ BJNQ AB 0 C
 8 8 1 18
 0 0 M 0
 #2431
-demon~
-the demon~
-A singing, happy demon wanders around, singing about blood and gore.
+drunk horned devil singing~
+the horned drunk~
+A happy drunk in crooked devil horns wanders about, singing about Moria.
 ~
-A demon who seems to be very happy, with all this mayhem and death around.
+The horns are on a headband that has slid over one ear, the tail is
+dragging, and the song is the same song about Moria that he sings every
+other night of the year, but louder. He is having a wonderful Hallows End
+and would like you to have one too.
 ~
 human~
 AG 0 400 S
@@ -359,11 +410,14 @@ U AB 0 C
 8 8 1 65
 0 0 M 0
 #2432
-gremlin~
-the gremlin~
-A gremlin is here, looking for some fresh blood.
+beggar pumpkin bowl~
+the pumpkin-bowl beggar~
+A beggar holds out a hollowed pumpkin, asking for a few coins or a sweet.
 ~
-The gremlin looks like it is having the time of its life.
+The beggar has carved his begging bowl out of a pumpkin for the night, and
+it works: children who would never give him a coin drop candy in it without
+a thought, and he is doing better than he has all year. He asks you for a
+few coins anyway, from habit.
 ~
 human~
 AB 0 400 S
@@ -373,11 +427,13 @@ FJNU AB 0 C
 8 8 2 0
 0 0 M 0
 #2433
-cat~
+cat black alley~
 a black cat~
-A black cat hisses at you.
+A black cat hisses at you from the shadows, tail lashing.
 ~
-The black cat is half mad and more than a little mean.
+A black alley cat, half mad and more than a little mean, and tonight of all
+nights entirely sure of its own importance. Somebody has tied an orange
+ribbon round its neck. It is not pleased about that either.
 ~
 cat~
 AFGHU 0 -200 S
@@ -387,12 +443,14 @@ DR AB 0 C
 8 8 3 0
 0 0 S 0
 #2434
-trick treater~
-the trick or treater~
-A trick or treater is here.
+trick treater fido sheet~
+the trick-or-treater~
+A small trick-or-treater in a bedsheet demands candy, or else.
 ~
-The trick or treater is dressed in a white sheet, in a bad attempt to pass
-as a ghost.  He demands that you give him candy or else!
+The sheet has eyeholes cut too far apart, so the trick-or-treater keeps
+tilting its head to see out of one at a time. It shoves a sack at you and
+demands candy, or else, and seems unclear on what the else would be. It is
+quite short.
 ~
 fido~
 AFGHU 0 -200 S
@@ -402,10 +460,14 @@ AFGHU 0 -200 S
 8 8 1 0
 0 0 S 0
 #2435
-zombie~
-the zombie~
-A zombie is walking around, messing things up.
+janitor zombie shambling~
+the shambling janitor~
+A janitor in zombie greasepaint shambles about, sweeping up candy wrappers.
 ~
+Grey greasepaint, a torn uniform and a convincing shamble, undone slightly
+by the broom and dustpan and the way he mutters about the mess. The janitor
+is cleaning up after the fair as he cleans up after everything, and has gone
+as a zombie because, he says, it is how he feels.
 ~
 human~
 AGH 0 900 S
@@ -415,11 +477,14 @@ NU AB 0 C
 8 8 1 10
 0 0 M 0
 #2436
-broom~
-a broom~
-A witch's broom hovers slightly above the ground here.
+broom witch pony~
+a witch's broom~
+A witch's broom hovers at knee height, bristles twitching to be ridden.
 ~
-Basically a gnarled, yet straight stick, with straw bound to one end.
+A gnarled but straight stick with straw bound to one end, hanging in the air
+at exactly the height of a cute little pony's back and quivering slightly.
+It will take you places, the stable-hand swears, and it is much easier to
+feed.
 ~
 horse~
 ABIUW S 0 S
@@ -429,11 +494,13 @@ IW AB C 0
 8 8 1 0
 0 0 M 0
 #2437
-skeletal panther~
-a skeletal panther~
-A skeletal panther crouches, ready to pounce here.
+mule pack skeletal bones~
+a skeletal pack mule~
+A pack mule painted in white bones stands patiently under its load.
 ~
-Black bones gleaming, this skeletal panther is a horrendous sight.
+Somebody with time and a pot of whitewash has painted a full skeleton on
+this weary pack mule, ribs, skull and all, and the mule has borne it as it
+bears everything. It is a horrendous sight, in a mild sort of way.
 ~
 horse~
 ABIUW S 0 S
@@ -443,13 +510,13 @@ IW AB C 0
 8 8 1 0
 0 0 M 0
 #2438
-white wyrm~
-a white wyrm~
-A large white wyrm slithers here.
+gelding ghost draped sheet~
+the ghost-draped gelding~
+A handsome gelding draped in a white sheet, eyeholes and all, stands here.
 ~
-The wyrm is a cross between a large serpent and a small dragon. It is about
-10 meters in length, with the body of an enormous white snake, and the head
-of a dragon.  Clearly a formidable opponent.
+A handsome gelding wearing a bedsheet with two eyeholes, through which it
+regards you with enormous patience. The sheet is tied under its belly with a
+bootlace. It is, the stables insist, a ghost horse.
 ~
 horse~
 ABIUW S 0 S
@@ -459,12 +526,14 @@ IW AB C 0
 8 8 1 0
 0 0 M 0
 #2439
-griffon~
-a griffon~
-A jet black griffon stands here.
+stallion black night lantern~
+the night-black stallion~
+A jet black stallion stands here with a jack-o-lantern hung from its saddle.
 ~
-The griffon has recently been broken well enough to ride, though still a bit
-rambunctious. He is entirely black, and is a steed worthy of its owner.
+The stallion needed no costume: jet black from nose to tail, it only needed
+the carved pumpkin lantern that swings from its saddle-horn and lights its
+eyes orange from below. It stamps once and looks like something out of a
+story about a headless rider.
 ~
 horse~
 ABIUW S 0 S
@@ -474,15 +543,15 @@ IW AB C 0
 8 8 1 0
 0 0 M 0
 #2440
-undead warhorse pet~
-the undead warhorse~
-A massive undead warhorse stomps noisily here.
+warhorse bone barded pet~
+the bone-barded warhorse~
+A massive warhorse in barding painted with bones stomps noisily here.
 ~
-This formerly living warhorse is enormous. It was specially bred for knights
-to ride to war... which is exactly what ended its glorious life. It is a
-mottled grey color, due to the putrificaion of is body. Upon its great barrel
-chest, you can still barely make out the coat of arms brand of its owner. This
-beast would be a formidable mount in battle.
+A massive warhorse, bred to carry knights to war, in black barding on which
+someone has painted a horse's skeleton in white, ribs across the flanks and
+a long skull over its face. It stomps and blows and looks, in the lantern
+light, like death's own charger. It would be a formidable mount in battle,
+paint or no paint.
 ~
 horse~
 ABIUW S 0 S
@@ -492,15 +561,15 @@ IW AB C 0
 8 8 1 0
 0 0 M 0
 #2441
-mastadon pet~
-the mastadon~
-An enormous fur-covered elephant swings his trunk here.
+elephant shrouded bunting pet~
+the shrouded elephant~
+An enormous elephant draped in black bunting swings his trunk here.
 ~
-The prehistoric creature was found in the icy lands to the north.  A group of
-necromancers from the guild thawed its carcass and with great magic, returned
-it to life.  Ridden into battle, a mastadon would be a difficult steed to stop.
-When seated on a mastadon, the rider has the advantage of height and is next to
-impossible to dismount.
+The elephant has been dressed for Hallows End in yards of black bunting and
+a headdress of paper bats, and he swings his trunk at the children who run
+shrieking around his feet. Ridden into battle an elephant is a difficult
+steed to stop, and seated on one the rider has the advantage of height and
+is next to impossible to dismount, bats or no bats.
 ~
 horse~
 ABIUW S 0 S
@@ -527,14 +596,14 @@ ACDEFHIKLNOT ABP CD 0
 8 8 1 0
 0 0 H 0
 #4201
-healer witch devota thepit~             
-the huge witch~
-A huge witch is hovering around here, cackling and rubbing her
-hands together.
+healer witch devota thepit~
+the cackling witch-healer~
+A healer of Devota in a witch's hat and wax warts cackles over a cauldron.
 ~
-If you dare to, ask her to heal you.  Be careful not to offend though, or
-she may turn you into a toad.
-
+Under the pointed hat, the wax warts and the green greasepaint is a disciple
+of Devota who runs the haunted temple's healing stall and has thrown herself
+into the part. She cackles at everyone. If you dare to, ask her to heal you;
+she will do it properly, and only threaten to turn you into a toad.
 Type 'heal' to see a listing of spells.
 ~
 human~
@@ -547,12 +616,15 @@ FHIK ABCD 0 0
 #4202
 watcher grim reaper~
 The Grim Reaper~
-The Grim Reaper is here looking for souls to bring back to the Netherworld.
+The Grim Reaper stands guard over the city, scythe in hand, looking for
+souls.
 ~
-The Grim Reaper is waiting for the witching hour so he can collect his souls
-and return home with his collection.  He stands nearly 8 feet tall, and is
-covered by a huge, black robe and cowl. Two red eyes burn brightly beneath
-the hood, and an enormous scythe he holds in his massive boney hand.
+For Hallows End the formless shape that guards the city has taken the oldest
+shape of all: a huge black robe and cowl, two red eyes burning beneath the
+hood, and an enormous scythe held in one bony hand. It is waiting for the
+witching hour to collect its souls and go home, and until then it watches
+the square as it always does. The costume is the only thing about it that is
+pretend.
 ~
 human~
 ABMTV CDFHJT 1000 S
@@ -1903,16 +1975,16 @@ glass~
 
 #ROOMS
 #2401
-Center of Oak Tree Square.~
-This is the center of the square.  It is dominated by the trunk of the biggest
-oak tree you have ever seen.  It must be at least 10 feet in diameter and one
-hundred feet tall!  As you look up, you can see some kind of structure
-nestles in the branches high above you.  You also see a large portal carved
-into the side of the tree, with an unearthly light emanating from within.
-Taking a closer look you see a staircase leading down into the mighty tree.
-Near the base of a tree is a sign.
-
-There are lit pumpkins around the base of the Oak tree.
+Oak Tree Square on Hallows Eve~
+This is the center of the square, dominated by the trunk of the biggest oak
+tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+every one of its lower boughs is hung with a carved pumpkin, and the lit
+pumpkins throw a hundred grinning orange faces across the flagstones. Paper
+bats turn slowly on threads among the leaves. High in the branches you can
+make out some kind of structure, and the portal carved into the side of the
+tree glows a sickly green for the occasion; a staircase leads down into the
+mighty trunk. Near the base of the tree a sign has been painted over with a
+dripping red BEWARE, which the children of Dresden find hilarious.
 ~
 24 0 1
 D0
@@ -2344,12 +2416,14 @@ You the see darkness of the deeper parts of the tree below.
 0 -1 2411
 S
 #2415
-Main Processional decorated for Halloween.~
-You are on a very well made stone road that goes through the center of town.
-There is a lot more traffic on this road than on any other you have seen in
-town.  To the North you see the towers of Drakkar's Palace.  To the east you
-can hear the sounds of a market and to the west you see the tall spires of
-what can only be the University of Magic.
+Main Processional, Strung with Lanterns~
+You are on a very well made stone road that goes through the center of town,
+and tonight it belongs to Hallows End. Orange paper lanterns swing on cords
+strung from eave to eave, and the crowd beneath them is thick with masks,
+horns and painted faces. To the north the towers of Drakkar's Palace stand
+black against the sky; to the east you can hear the market, louder than
+usual, and to the west the tall spires of the University of Magic flicker
+with coloured witchlights.
 ~
 24 0 1
 D0
@@ -2374,12 +2448,14 @@ You see Wizards Way.
 0 -1 2470
 S
 #2416
-Main Processional decorated for Halloween.~
-You are on a very well made stone road that goes through the center of town.
-There is a lot more traffic on this road than on any other you have seen in
-town.  To the North you see the towers of Drakkar's Palace.  To the east you
-can hear the sounds of a market and to the west you see the tall spires of
-what can only be the University of Magic.
+Main Processional, Among the Scarecrows~
+You are on a very well made stone road that goes through the center of town,
+and tonight it belongs to Hallows End. Scarecrows have been propped along
+both kerbs, each one dressed in some guardsman's cast-off uniform and given
+a pumpkin for a head. One of them keeps turning to watch you, which is
+probably a student's joke. The palace towers rise to the north, the market
+clatters to the east, and the spires of the University of Magic stand to the
+west.
 ~
 24 0 1
 D0
@@ -2405,12 +2481,14 @@ Fireball Lane extends off to the west.
 0 -1 2478
 S
 #2417
-Main Processional decorated for Halloween.~
-You are on a very well made stone road that goes through the center of town.
-There is a lot more traffic on this road than on any other you have seen in
-town.  To the North you see the gates to Drakkar's Palace.  To the east you
-can hear the sounds of a market and to the west you see the tall spires of
-what can only be the University of Magic.
+Main Processional, Before the Palace Gates~
+You are on a very well made stone road that goes through the center of town,
+and tonight it belongs to Hallows End. The gates of Drakkar's Palace stand
+just to the north, and the guards on them have let the festival get as far
+as their helmets: each wears a crown of autumn leaves and looks faintly
+embarrassed about it. Two great jack-o-lanterns the size of wine barrels
+flank the gateway. East lies the market, west the spires of the University
+of Magic.
 ~
 24 0 1
 D0
@@ -2606,11 +2684,14 @@ Battle Road.
 0 -1 2425
 S
 #2427
-Main Processional decorated for Halloween.~
-You are on a very well made stone road that goes through the center of town.
-There is a lot more traffic on this road than on any other you have seen in
-town.  To the North you see the an enormous tree.  To the west are broad steps
-up to the temple of Devota.  South leads to the southern gates of the city.
+Main Processional, Below the Temple Steps~
+You are on a very well made stone road that goes through the center of town,
+and tonight it belongs to Hallows End. To the north the enormous oak fills
+the end of the road, a constellation of lit pumpkins in its branches. To the
+west broad steps climb to the Temple of Devota, except that tonight the
+steps are draped in black cloth and eerie organ music is drifting down them:
+the acolytes have turned their temple into a haunted house for the festival.
+South leads to the southern gates of the city.
 ~
 24 0 1
 D0
@@ -2630,11 +2711,13 @@ White marble steps lead up to the Temple of Devota.
 0 -1 4201
 S
 #2428
-Main Processional decorated for Halloween.~
-You are on a very well made stone road that goes through the center of town.
-There is a lot more traffic on this road than on any other you have seen in
-town.  To the North you see the an enormous tree.  South leads over a bridge
-to the southern gates of the city.
+Main Processional, Toward the Mermaids' Bridge~
+You are on a very well made stone road that goes through the center of town,
+and tonight it belongs to Hallows End. Children run past you in sheets and
+masks, clutching bags of candy and shrieking happily at nothing. To the
+north the enormous oak glows with its hundred pumpkins; south the road runs
+over a bridge toward the southern gates of the city, and someone has tied
+black ribbons to every post of its railing.
 ~
 24 0 1
 D0
@@ -2670,11 +2753,14 @@ You see the southern gates in the distance.
 0 -1 2430
 S
 #2430
-Main Processional decorated for Halloween.~
-You are on a very well made stone road that goes through the center of town.
-There is a lot more traffic on this road than on any other you have seen in
-town.  Just to the north is the Bridge of the Mermaids, and in the distance
-you see the an enormous tree.  The southern gates are to the south.
+Main Processional, at the Southern Gates~
+You are on a very well made stone road that goes through the center of town,
+and tonight it belongs to Hallows End. Just to the north is the Bridge of
+the Mermaids, its railing wound with black ribbon, and far beyond it the
+enormous oak is a dome of orange light. The southern gates stand to the
+south, a little busier than usual with farm carts bringing in pumpkins by
+the hundredweight, and the gatekeepers are charging a candy toll of everyone
+under four feet tall.
 ~
 24 0 1
 D0
@@ -4065,10 +4151,13 @@ ______________________________
 ~
 S
 #2487
-Market Plaza.~
-The Market Plaza is alive with activity.  There are booths and tents all over
-the plaza.  You see people going in and out of the open doorways of all the
-surrounding buildings.
+Market Plaza, the Hallows Fair~
+The Market Plaza has given itself over to the fair. Booths and tents crowd
+the flagstones under strings of orange and black bunting, selling toffee
+apples, carved turnips, cheap masks, cobweb lace and candles that burn
+green. A bobbing-tub stands in the middle of it all, surrounded by wet and
+delighted children. People costumed as everything from ghosts to guardsmen
+go in and out of the open doorways of the surrounding buildings.
 ~
 24 0 1
 D0
@@ -4235,12 +4324,14 @@ The golden letters say :-
 ~
 S
 #2496
-Main Processional decorated for Halloween.~
-You are on a very well made stone road that goes through the center of town.
-There is a lot more traffic on this road than on any other you have seen in
-town.  To the North you see the towers of Drakkar's Palace.  To the east you
-can hear the sounds of a market and to the west you see the tall spires of
-what can only be the University of Magic.
+Main Processional, Where the Candles Burn~
+You are on a very well made stone road that goes through the center of town,
+and tonight it belongs to Hallows End. Hundreds of stubby candles line the
+gutters in jars of coloured glass, so the whole road glows red and amber
+from below and every face above it is lit from underneath like a
+storyteller's. Wax drips and pools between the cobbles. The towers of
+Drakkar's Palace are to the north, the sounds of the market to the east, and
+the spires of the University of Magic to the west.
 ~
 24 0 1
 D0
@@ -5198,10 +5289,15 @@ The dusty trail leads to outside the east gate of Dresden.
 0 -1 2440
 S
 #4201
-Entrance to the Haunted House.~
+Entrance to the Haunted Temple~
 You are at the top of a broad stone stairway looking up at the entrance to
-huge black stone house.  There are gargoyles on the rooftops and erie music
-is coming from inside.
+the Temple of Devota, which for one night a year is not peaceful at all.
+Black cloth hangs over the white marble, pasteboard gargoyles glare down
+from the architrave, and a wheezing organ somewhere inside plays the same
+three ominous chords over and over. The plaque above the arched entrance has
+been covered by a sign reading ENTER IF YOU DARE, in letters that are meant
+to look like blood and look like jam. The acolytes run this every Hallows
+End for the orphanage, and they take it very seriously.
 ~
 42 4 1
 D0
@@ -5231,10 +5327,12 @@ people and leave your quarrels outside.  May Devota protect you.
 ~
 S
 #4202
-Halls of Horror.~
-You are in a large domed room that has murals all over the ceiling depicting
-horrifying pictures of all types of monsters eating you and your friends!
-There are cobwebs everywhere, and screams are heard echoing around you!
+The Hall of Whispers~
+You are in a large domed room, and the murals of healers tending the wounded
+have been hidden behind yards of grey gauze that stirs in a wind you cannot
+feel. From somewhere behind the cloth come whispers, dozens of them, saying
+your name, or something very like it. Novices with their mouths to the
+gauze, probably, but the hair on your neck is not convinced.
 ~
 42 8 0
 D0
@@ -5258,10 +5356,11 @@ Before the Altar.
 0 -1 4207
 S
 #4203
-Halls of Horror.~
-You are in a large domed room that has murals all over the ceiling depicting
-horrifying pictures of all types of monsters eating you and your friends!
-There are cobwebs everywhere, and screams are heard echoing around you!
+The Hall of Cobwebs~
+Cobweb hangs from the dome in sheets so thick the murals above are only
+shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+corners, is not. Fat rubber spiders drop on threads as you pass and are
+hauled back up again by giggling acolytes somewhere above.
 ~
 42 8 0
 D0
@@ -5281,10 +5380,12 @@ Halls of Healing.
 0 -1 4204
 S
 #4204
-Halls of Horror.~
-You are in a large domed room that has murals all over the ceiling depicting
-horrifying pictures of all types of monsters eating you and your friends!
-There are cobwebs everywhere, and screams are heard echoing around you!
+The Gallery of Grinning Skulls~
+Rows of skulls line the walls of this domed hall on shelves of black crepe,
+each with a candle guttering inside so its eyes and teeth glow. They are
+turnips, mostly, carved by the temple's novices, but the carving is very
+good and a few of them have been given hair. Something in the back row is
+definitely watching you.
 ~
 42 8 0
 D0
@@ -5304,10 +5405,12 @@ Before the Altar.
 0 -1 4207
 S
 #4205
-Halls of Horror.~
-You are in a large domed room that has murals all over the ceiling depicting
-horrifying pictures of all types of monsters eating you and your friends!
-There are cobwebs everywhere, and screams are heard echoing around you!
+The Hall of Guttering Candles~
+A thousand candles stand on every ledge and flagstone of this domed hall,
+and a draught from nowhere keeps making them gutter all at once, so that the
+room plunges toward darkness and swims back again. In the dark moments you
+are fairly sure the murals move. In the light ones a novice with a bellows
+is trying not to laugh.
 ~
 42 8 0
 D0
@@ -5327,10 +5430,11 @@ Private Prayer Room.
 0 -1 4209
 S
 #4206
-Halls of Horror.~
-You are in a large domed room that has murals all over the ceiling depicting
-horrifying pictures of all types of monsters eating you and your friends!
-There are cobwebs everywhere, and screams are heard echoing around you!
+The Hall of Hollow Footsteps~
+The dome overhead has been draped black so this hall feels twice as high and
+far emptier than it is. Every step you take comes back a half-beat late and
+a little heavier, as though somebody larger were walking just behind you.
+When you stop, so does it. Eventually.
 ~
 42 8 0
 D0
@@ -5345,9 +5449,14 @@ Halls of Healing.
 0 -1 4205
 S
 #4207
-Before the Sacrificial Altar.~
-The once bright altar room is now dark, you hear muffled scream around you and
-you smell the scent of fresh blood.
+Before the Shrouded Altar~
+Before you are three steps up to the altar of Devota, Goddess of Peace and
+Healing, who tonight is shrouded in black like the rest of her temple. Rows
+of candles climb the steps, a fog of dry ice rolls down them around your
+ankles, and the organ chords from the entrance are loudest here. For all the
+gloom, the room is still the heart of the temple, and travellers still
+arrive on these flagstones with a flash of light and a sigh of relief,
+costume or no costume.
 ~
 42 12 0
 D0
@@ -5389,10 +5498,14 @@ and Lore MUD.
 ~
 S
 #4208
-Sacrificial Altar!~
-Before you is a horrifying sight!  There is a witch behind the altar with
-a dagger poised above the heart of a helpless maiden!  Fake blood is
-everywhere.
+The Shrouded Altar of Devota~
+The altar is still an enormous piece of white marble under its black cloth,
+and the statue of Devota behind it still looks out over her temple with the
+same patient smile, though somebody has hung a witch's hat on her. Before
+the altar two acolytes in robes and skull paint perform the Sacrifice every
+quarter hour: a great deal of shrieking, a wooden dagger and a bladder of
+beet juice, and the maiden always gets up for the applause. The stash is
+kept here as it always is, whatever the decor.
 ~
 42 CDK 0
 D1
@@ -5402,10 +5515,13 @@ Before the Altar.
 0 -1 4207
 S
 #4209
-Private Death Room.~
-There are coffins strewn about the room.  Some are open others are not.
-You hear the muffled knocking as if someone was trying to get out of one of
-the coffins.  There ia a few corpses lying in the corner.
+The Coffin Room~
+The pews of the private prayer room have been stacked against one wall to
+make space for a dozen coffins, open and shut, borrowed from a sympathetic
+undertaker. From inside one of the shut ones comes a slow, patient knocking.
+The rack of candles is still here, burning green, and the sense that Devota
+herself is watching over you has not entirely gone away, which is a comfort,
+because the knocking has just stopped.
 ~
 42 CDJKU 0
 D0
@@ -5415,9 +5531,12 @@ Halls of Healing.
 0 -1 4205
 S
 #4210
-Room of Poison, Plague, and Pestilence.~
-There are poison and plague victims in this room.  They reach out to you
-for help as you enter.  Some seem to be dead but alive!
+The Sickroom of the Restless~
+The two cots, the wash basin and the towels of the healing room are all
+still here, and so are the patients: novices in grey paint and bandages who
+moan and reach for you as you pass and beg, in voices they have clearly
+practised, for you not to leave them. The one nearest the door has a very
+convincing cough and a bag of candy under the blanket.
 ~
 42 CDJKT 0
 D2
