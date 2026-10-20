@@ -144951,3 +144951,18 @@ Tue Oct 20 19:36:12 2026 :: EOF encountered on read.
 Tue Oct 20 19:40:40 2026 :: Treasure goblin: vanished from room 1104 (Bywater Road, shire.are) to room 19161 (The Torture Chamber, rome.are) (too long in one area).
 Tue Oct 20 19:41:16 2026 :: Sock.sinaddr:  52.87.72.16
 Tue Oct 20 19:41:16 2026 :: EOF encountered on read.
+Tue Oct 20 19:46:20 2026 :: Sock.sinaddr:  178.156.184.20
+Tue Oct 20 19:46:20 2026 :: EOF encountered on read.
+Tue Oct 20 19:50:00 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Tue Oct 20 19:50:04 2026 :: Log WebAdmin: fsave
+Tue Oct 20 19:50:10 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Tue Oct 20 19:50:13 2026 :: Received signal 15; saving players and shutting down.
+Tue Oct 20 19:50:13 2026 :: Normal termination of game.
+Tue Oct 20 19:50:14 2026 ::  INIT OK 
+Tue Oct 20 19:50:14 2026 :: walkto_load: 157 destinations.
+Tue Oct 20 19:50:14 2026 :: changes_load: 119 entries.
+Tue Oct 20 19:50:14 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Tue Oct 20 19:50:14 2026 :: ROM is ready to rock on port 9000.
+Tue Oct 20 19:50:14 2026 :: Treasure goblin: appeared in room 5673 (Crown of the trees, tarin.are).
+Tue Oct 20 19:50:14 2026 :: Automated backup complete.
+Tue Oct 20 19:50:14 2026 :: Daily backup complete.
