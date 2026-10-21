@@ -949,3 +949,89 @@
 1792621301	cmd	Trentlin	49	30272	hyrule.are	standing	100	0	-	south		The River Landing
 1792621302	cmd	Trentlin	49	30271	hyrule.are	standing	100	0	-	west		The Eagle's Gate
 1792621303	cmd	Trentlin	49	30401	hyrule.are	standing	100	0	-	down		Level 1: Eagle Gate
+1792621441	cmd	Trentlin	49	30403	hyrule.are	standing	100	0	-	north		Level 1: Rattling Passage
+1792621441	cmd	Trentlin	49	30405	hyrule.are	standing	100	0	-	north		Level 1: Diamond-Tiled Crossing
+1792621442	cmd	Trentlin	49	30405	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792621442	cmd	Trentlin	49	30406	hyrule.are	standing	100	0	-	east		Level 1: Keese-Fouled Gallery
+1792621444	cmd	Trentlin	49	30406	hyrule.are	standing	100	0	-	get	com	You get the Eagle dungeon compass.
+1792621445	cmd	Trentlin	49	30406	hyrule.are	standing	100	0	-	look	com	The needle points north -- at the bare wall, as though the way lay through the stone.
+1792621448	cmd	Trentlin	49	30405	hyrule.are	standing	100	0	-	west		Level 1: Diamond-Tiled Crossing
+1792621448	cmd	Trentlin	49	30403	hyrule.are	standing	100	0	-	south		Level 1: Rattling Passage
+1792621449	cmd	Trentlin	49	30401	hyrule.are	standing	100	0	-	south		Level 1: Eagle Gate
+1792621449	cmd	Trentlin	49	30401	hyrule.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792621451	cmd	Trentlin	49	30271	hyrule.are	standing	100	0	-	up		The Eagle's Gate
+1792621452	cmd	Trentlin	49	30272	hyrule.are	standing	100	0	-	east		The River Landing
+1792621453	cmd	Trentlin	49	30271	hyrule.are	standing	100	0	-	west		The Eagle's Gate
+1792621454	cmd	Trentlin	49	30401	hyrule.are	standing	100	0	-	down		Level 1: Eagle Gate
+1792621454	cmd	Trentlin	49	30403	hyrule.are	standing	100	0	-	north		Level 1: Rattling Passage
+1792621454	cmd	Trentlin	49	30405	hyrule.are	standing	100	0	-	north		Level 1: Diamond-Tiled Crossing
+1792621455	cmd	Trentlin	49	30405	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792621455	cmd	Trentlin	49	30405	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792621456	cmd	Trentlin	49	30406	hyrule.are	standing	100	0	-	east		Level 1: Keese-Fouled Gallery
+1792621456	cmd	Trentlin	49	30406	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792621459	cmd	Trentlin	49	30406	hyrule.are	standing	100	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!
+1792621461	cmd	Trentlin	49	30410	hyrule.are	standing	100	0	-	north		Level 1: Scarred Hall
+1792621464	cmd	Trentlin	49	30410	hyrule.are	standing	100	0	-	consider	g	You can kill a red goriya naked and weaponless.
+1792621465	cmd	Trentlin	49	30410	hyrule.are	standing	100	0	-	look	g	Lanky and not yet grown into its long snout, this goriya wears red armour a
+1792621466	cmd	Trentlin	49	30411	hyrule.are	standing	100	0	-	east		Level 1: Hall of Grasping Walls
+1792621468	cmd	Trentlin	49	30411	hyrule.are	standing	100	0	-	get	all	You get a small key.
+1792621469	cmd	Trentlin	49	30413	hyrule.are	standing	100	0	-	north		Level 1: Hall of Threefold Scorches
+1792621472	cmd	Trentlin	49	30413	hyrule.are	standing	100	0	-	east		The eagle has been Wizard Locked. You can not pass
+1792621474	cmd	Trentlin	49	30413	hyrule.are	standing	100	0	-	consider	a	You can kill Aquamentus naked and weaponless.
+1792621475	cmd	Trentlin	49	30413	hyrule.are	standing	100	0	-	look	a	A great green dragon with a single sharp horn on its head, standing
+1792621475	cmd	Trentlin	49	30413	hyrule.are	standing	100	0	-	kill	a	Your cleave MANGLES Aquamentus!
+1792621479	cmd	Trentlin	49	30413	hyrule.are	fighting	100	0	fight	smite		Your smite *** DEVASTATES *** Aquamentus!
+1792621489	cmd	Trentlin	49	30413	hyrule.are	fighting	100	0	fight	smite		Your smite *** DEVASTATES *** Aquamentus!
+1792621497	cmd	Trentlin	49	30413	hyrule.are	standing	100	0	-	look	in cir	You do not see that here.
+1792621498	cmd	Trentlin	49	30413	hyrule.are	standing	100	0	-	look	in cr	You do not see that here.
+1792621498	cmd	Trentlin	49	30413	hyrule.are	standing	100	0	-	look	in cor	Corpse of Aquamentus contains:
+1792621501	cmd	Trentlin	49	30413	hyrule.are	standing	100	0	-	get	key cor	You get the Eagle's key from corpse of Aquamentus.
+1792621504	cmd	Trentlin	49	30413	hyrule.are	standing	100	0	-	unlock	east	There is a flash of light as you unlock the eagle.
+1792621506	cmd	Trentlin	49	30413	hyrule.are	standing	100	0	-	open	east	Ok.
+1792621506	cmd	Trentlin	49	30414	hyrule.are	standing	100	0	-	east		Level 1: Eagle's Golden Sanctum
+1792621510	cmd	Trentlin	49	30414	hyrule.are	standing	100	0	-	get	tri	I see no tri here.
+1792621513	cmd	Trentlin	49	30414	hyrule.are	standing	100	0	-	look	in ches	It is closed.
+1792621515	cmd	Trentlin	49	30414	hyrule.are	standing	100	0	-	unlock	chest	*Click*
+1792621516	cmd	Trentlin	49	30414	hyrule.are	standing	100	0	-	open	chest	Ok.
+1792621517	cmd	Trentlin	49	30414	hyrule.are	standing	100	0	-	look	in chest	The Eagle's treasure chest contains:
+1792621522	cmd	Trentlin	49	30414	hyrule.are	standing	100	0	-	get	tri chest	You get the first Triforce shard from the Eagle's treasure chest.
+1792621524	cmd	Trentlin	49	30414	hyrule.are	standing	100	0	-	inventory		You are carrying:
+1792621526	cmd	Trentlin	49	30414	hyrule.are	standing	100	0	-	drop	tri	You can't let go of it.
+1792621527	cmd	Trentlin	49	30414	hyrule.are	standing	100	0	-	look		Level 1: Eagle's Golden Sanctum
+1792621530	cmd	Trentlin	49	30271	hyrule.are	standing	100	0	-	enter	light	You enter the Eagle's returning light
+1792621556	cmd	Trentlin	49	30272	hyrule.are	standing	100	0	-	east		The River Landing
+1792621557	cmd	Trentlin	49	30256	hyrule.are	standing	100	0	-	south		Lake Hylia Sand Bar
+1792621559	cmd	Trentlin	49	30240	hyrule.are	standing	100	0	-	south		Crossroads South of the Lake
+1792621559	cmd	Trentlin	49	30241	hyrule.are	standing	100	0	-	east		Flower Field
+1792621560	cmd	Trentlin	49	30242	hyrule.are	standing	100	0	-	east		Rolling Green Downs
+1792621561	cmd	Trentlin	49	30243	hyrule.are	standing	100	0	-	east		Eastwood Glade
+1792621562	cmd	Trentlin	49	30244	hyrule.are	standing	100	0	-	east		Pinewood Rise
+1792621563	cmd	Trentlin	49	30245	hyrule.are	standing	100	0	-	east		Moblin Hollow
+1792621566	cmd	Trentlin	49	30246	hyrule.are	standing	100	0	-	east		Candlemaker's Dead End
+1792621568	cmd	Trentlin	49	30245	hyrule.are	standing	100	0	-	west		Moblin Hollow
+1792621568	cmd	Trentlin	49	30261	hyrule.are	standing	100	0	-	north		Wooded Crossroads
+1792621569	cmd	Trentlin	49	30277	hyrule.are	standing	100	0	-	north		The Armos Shore
+1792621571	cmd	Trentlin	49	30293	hyrule.are	standing	100	0	-	north		Lake Hylia, North Shore
+1792621573	cmd	Trentlin	49	30277	hyrule.are	standing	100	0	-	south		The Armos Shore
+1792621573	cmd	Trentlin	49	30261	hyrule.are	standing	100	0	-	south		Wooded Crossroads
+1792621574	cmd	Trentlin	49	30260	hyrule.are	standing	100	0	-	west		The Eastern Dock
+1792621575	cmd	Trentlin	49	30276	hyrule.are	standing	100	0	-	north		The Moon Gate
+1792621577	cmd	Trentlin	49	30418	hyrule.are	standing	100	0	-	down		Level 2: Crescent Gate
+1792621578	cmd	Trentlin	49	30418	hyrule.are	standing	100	0	-	scan		a rope                             -to the North.
+1792621580	cmd	Trentlin	49	30419	hyrule.are	standing	100	0	-	east		Level 2: Shed Skin Chamber
+1792621581	cmd	Trentlin	49	30419	hyrule.are	standing	100	0	-	consider	r	You can kill a rope naked and weaponless.
+1792621582	cmd	Trentlin	49	30419	hyrule.are	standing	100	0	-	look	r	A slender young snake, barely an arm's length, banded red and orange with a
+1792621586	cmd	Trentlin	49	30422	hyrule.are	standing	100	0	-	north		Level 2: Moonstone Crossroads
+1792621588	cmd	Trentlin	49	30423	hyrule.are	standing	100	0	-	east		Level 2: Dripping Chamber
+1792621591	cmd	Trentlin	49	30423	hyrule.are	standing	100	0	-	get	moon	You get the Moon dungeon compass.
+1792621593	cmd	Trentlin	49	30423	hyrule.are	standing	100	0	-	drop	eagle	You drop the Eagle's key.
+1792621593	cmd	Trentlin	49	30423	hyrule.are	standing	100	0	-	drop	eagle	You drop the Eagle dungeon compass.
+1792621595	cmd	Trentlin	49	30423	hyrule.are	standing	100	0	-	look	moon	The needle points north -- at the bare wall, as though the way lay through the stone.
+1792621604	cmd	Trentlin	49	30423	hyrule.are	standing	100	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!
+1792621606	cmd	Trentlin	49	30425	hyrule.are	standing	100	0	-	north		Level 2: Cracked Eastern Room
+1792621609	cmd	Trentlin	49	30425	hyrule.are	standing	100	0	-	look	in ches	The Moon's equipment chest contains:
+1792621613	cmd	Trentlin	49	30424	hyrule.are	standing	100	0	-	west		Level 2: Gouged Hall
+1792621616	cmd	Trentlin	49	30424	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792621620	cmd	Trentlin	49	30424	hyrule.are	standing	100	0	-	kill	g	Your cleave === OBLITERATES === a red goriya!
+1792621625	cmd	Trentlin	49	30424	hyrule.are	standing	100	0	-	open	north	Ok.
+1792621627	cmd	Trentlin	49	30422	hyrule.are	standing	100	0	-	south		Level 2: Moonstone Crossroads
