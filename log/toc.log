@@ -148233,3 +148233,22 @@ Wed Oct 21 18:57:28 2026 :: Sock.sinaddr:  54.167.223.174
 Wed Oct 21 18:57:28 2026 :: EOF encountered on read.
 Wed Oct 21 19:02:33 2026 :: Sock.sinaddr:  3.20.63.178
 Wed Oct 21 19:02:33 2026 :: EOF encountered on read.
+Wed Oct 21 19:05:09 2026 :: Black market: the dealer vanished from room 24205 (The Aisle Of Pews, crypt.are) (too long in one area).
+Wed Oct 21 19:06:13 2026 :: Black market: the dealer vanished from room 11046 (The Private Chambers, ancala.are) (wandering).
+Wed Oct 21 19:06:41 2026 :: Treasure goblin: vanished from room 5802 (Promenade, mid_ruin.are) (too long in one area).
+Wed Oct 21 19:07:25 2026 :: Black market: the dealer vanished from room 9679 (Hall, newthalo.are) (wandering).
+Wed Oct 21 19:07:37 2026 :: Sock.sinaddr:  178.156.189.249
+Wed Oct 21 19:07:38 2026 :: EOF encountered on read.
+Wed Oct 21 19:09:14 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Wed Oct 21 19:09:18 2026 :: Log WebAdmin: fsave
+Wed Oct 21 19:09:24 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Wed Oct 21 19:09:27 2026 :: Received signal 15; saving players and shutting down.
+Wed Oct 21 19:09:27 2026 :: Normal termination of game.
+Wed Oct 21 19:09:28 2026 ::  INIT OK 
+Wed Oct 21 19:09:28 2026 :: walkto_load: 157 destinations.
+Wed Oct 21 19:09:28 2026 :: changes_load: 130 entries.
+Wed Oct 21 19:09:28 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Wed Oct 21 19:09:28 2026 :: ROM is ready to rock on port 9000.
+Wed Oct 21 19:09:28 2026 :: Treasure goblin: appeared.
+Wed Oct 21 19:09:28 2026 :: Automated backup complete.
+Wed Oct 21 19:09:28 2026 :: Daily backup complete.
