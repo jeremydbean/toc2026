@@ -152975,3 +152975,114 @@ Wed Oct 21 23:53:03 2026 :: Log Trentlin [30508]: arrived (Level 6: Taloned Corn
 Wed Oct 21 23:53:04 2026 :: Log Trentlin [30508]: e
 Wed Oct 21 23:53:06 2026 :: Log Trentlin [30508]: k v
 Wed Oct 21 23:53:11 2026 :: Log Trentlin [30508]: smite
+Wed Oct 21 23:53:17 2026 :: Log Trentlin [30508]: killed a vire
+Wed Oct 21 23:53:17 2026 :: Log Trentlin [30508]: coin +6 silver
+Wed Oct 21 23:53:17 2026 :: Log Trentlin [30508]: coin +422 copper
+Wed Oct 21 23:53:17 2026 :: Log Trentlin [30508]: coin +108 gold
+Wed Oct 21 23:53:21 2026 :: Log Trentlin [30508]: sco
+Wed Oct 21 23:53:23 2026 :: Log Trentlin [30508]: l comp
+Wed Oct 21 23:53:24 2026 :: Log Trentlin [30508]: e
+Wed Oct 21 23:53:24 2026 :: Log Trentlin [30509]: arrived (Level 6: Sorcerer's Stair) from 30508
+Wed Oct 21 23:53:27 2026 :: Log Trentlin [30509]: l com
+Wed Oct 21 23:53:28 2026 :: Log Trentlin [30509]: d
+Wed Oct 21 23:53:28 2026 :: Log Trentlin [30520]: arrived (Level 6: Eastern Stairwell) from 30509
+Wed Oct 21 23:53:29 2026 :: Log Trentlin [30520]: s
+Wed Oct 21 23:53:29 2026 :: Log Trentlin [30514]: arrived (Level 6: Eastern Bend) from 30520
+Wed Oct 21 23:53:31 2026 :: Log Trentlin [30514]: l comp
+Wed Oct 21 23:53:33 2026 :: Log Trentlin [30514]: w
+Wed Oct 21 23:53:33 2026 :: Log Trentlin [30513]: arrived (Level 6: Threshold of the Nest) from 30514
+Wed Oct 21 23:53:35 2026 :: Log Trentlin [30513]: l comp
+Wed Oct 21 23:53:36 2026 :: Log Trentlin [30513]: n
+Wed Oct 21 23:53:36 2026 :: Log Trentlin [30519]: arrived (Level 6: Gohma's Nest) from 30513
+Wed Oct 21 23:53:39 2026 :: Log Trentlin [30519]: con g
+Wed Oct 21 23:53:40 2026 :: Log Trentlin [30519]: l g
+Wed Oct 21 23:53:43 2026 :: Log Trentlin [30519]: n
+Wed Oct 21 23:53:44 2026 :: Log Trentlin [30519]: k go
+Wed Oct 21 23:53:50 2026 :: Log Trentlin [30519]: smite
+Wed Oct 21 23:54:01 2026 :: Log Trentlin [30519]: smite
+Wed Oct 21 23:54:10 2026 :: Log Trentlin [30519]: smite
+Wed Oct 21 23:54:18 2026 :: Log Trentlin [30519]: smite
+Wed Oct 21 23:54:31 2026 :: Log Trentlin [30519]: smite
+Wed Oct 21 23:54:39 2026 :: Log Trentlin [30519]: smite
+Wed Oct 21 23:54:48 2026 :: Log Trentlin [30519]: smite
+Wed Oct 21 23:55:16 2026 :: Log Trentlin [30519]: wear bow
+Wed Oct 21 23:55:17 2026 :: Log Trentlin [30519]: killed Gohma
+Wed Oct 21 23:55:17 2026 :: Log Trentlin [30519]: coin +250 silver
+Wed Oct 21 23:55:17 2026 :: Log Trentlin [30519]: coin +259 copper
+Wed Oct 21 23:55:17 2026 :: Log Trentlin [30519]: coin +51 gold
+Wed Oct 21 23:55:25 2026 :: Log Trentlin [30519]: wear las
+Wed Oct 21 23:55:27 2026 :: Log Trentlin [30519]: get all cor
+Wed Oct 21 23:55:28 2026 :: Log Trentlin [30519]: l
+Wed Oct 21 23:55:30 2026 :: Log Trentlin [30519]: n
+Wed Oct 21 23:55:32 2026 :: Log Trentlin [30519]: unlock north
+Wed Oct 21 23:55:33 2026 :: Log Trentlin [30519]: n
+Wed Oct 21 23:55:33 2026 :: Log Trentlin [30524]: arrived (Level 6: Dragon's Glowing Sanctum) from 30519
+Wed Oct 21 23:55:37 2026 :: Log Trentlin [30524]: unlock chest
+Wed Oct 21 23:55:39 2026 :: Log Trentlin [30524]: open chest
+Wed Oct 21 23:55:42 2026 :: Log Trentlin [30524]: get all chest
+Wed Oct 21 23:55:47 2026 :: Log Trentlin [30524]: enter light
+Wed Oct 21 23:55:47 2026 :: Log Trentlin [30282]: arrived (The Dragon's Gate) from 30524
+Wed Oct 21 23:56:01 2026 :: Log Trentlin [30282]: play recorder
+Wed Oct 21 23:56:01 2026 :: Log Trentlin [30250]: arrived (The Still Pond) from 30282
+Wed Oct 21 23:56:10 2026 :: Log Trentlin [30250]: play recorder 7
+Wed Oct 21 23:56:12 2026 :: Log Trentlin [30250]: l
+Wed Oct 21 23:56:14 2026 :: Log Trentlin [30250]: d
+Wed Oct 21 23:56:14 2026 :: Log Trentlin [30527]: arrived (Level 7: Demon's Gate) from 30250
+Wed Oct 21 23:56:17 2026 :: Log Trentlin [30527]: recall
+Wed Oct 21 23:56:19 2026 :: Log Trentlin [30527]: u
+Wed Oct 21 23:56:19 2026 :: Log Trentlin [30250]: arrived (The Still Pond) from 30527
+Wed Oct 21 23:56:20 2026 :: Log Trentlin [30250]: recall
+Wed Oct 21 23:56:20 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 30250
+Wed Oct 21 23:56:22 2026 :: Log Trentlin [4207]: w
+Wed Oct 21 23:56:22 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Wed Oct 21 23:56:22 2026 :: Log Trentlin [4208]: w
+Wed Oct 21 23:56:23 2026 :: Log Trentlin [4208]: heal all
+Wed Oct 21 23:56:23 2026 :: Spellup: Hermie gave Trentlin the full list (30 ticks) in room 4208.
+Wed Oct 21 23:56:24 2026 :: Log Trentlin [4208]: e
+Wed Oct 21 23:56:24 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4208
+Wed Oct 21 23:56:24 2026 :: Log Trentlin [4207]: s
+Wed Oct 21 23:56:24 2026 :: Log Trentlin [4205]: arrived (The Hall of Guttering Candles) from 4207
+Wed Oct 21 23:56:25 2026 :: Log Trentlin [4205]: e
+Wed Oct 21 23:56:25 2026 :: Log Trentlin [4206]: arrived (The Hall of Hollow Footsteps) from 4205
+Wed Oct 21 23:56:26 2026 :: Log Trentlin [4206]: i
+Wed Oct 21 23:56:28 2026 :: Log Trentlin [4206]: drop compa
+Wed Oct 21 23:56:28 2026 :: Log Trentlin [4206]: drop compa
+Wed Oct 21 23:56:29 2026 :: Log Trentlin [4206]: drop compa
+Wed Oct 21 23:56:29 2026 :: Log Trentlin [4206]: drop compa
+Wed Oct 21 23:56:30 2026 :: Log Trentlin [4206]: drop ke
+Wed Oct 21 23:56:31 2026 :: Log Trentlin [4206]: i
+Wed Oct 21 23:56:33 2026 :: Log Trentlin [4206]: compare gaunt
+Wed Oct 21 23:56:39 2026 :: Log Trentlin [4206]: wear gaun
+Wed Oct 21 23:56:43 2026 :: Log Trentlin [4206]: stash put gaunt
+Wed Oct 21 23:56:43 2026 :: Log Trentlin [4206]: stashed gauntlets of ogre power (vnum 2390)
+Wed Oct 21 23:56:44 2026 :: Log Trentlin [4206]: i
+Wed Oct 21 23:56:46 2026 :: Log Trentlin [4206]: compare boot
+Wed Oct 21 23:56:54 2026 :: Log Trentlin [4206]: wear boot
+Wed Oct 21 23:56:58 2026 :: Log Trentlin [4206]: stash put horse
+Wed Oct 21 23:56:58 2026 :: Log Trentlin [4206]: stashed horseshoes (vnum 7623)
+Wed Oct 21 23:56:59 2026 :: Log Trentlin [4206]: i
+Wed Oct 21 23:57:01 2026 :: Log Trentlin [4206]: compare heart
+Wed Oct 21 23:57:05 2026 :: Log Trentlin [4206]: drop hear
+Wed Oct 21 23:57:06 2026 :: Log Trentlin [4206]: sac hear
+Wed Oct 21 23:57:06 2026 :: Log Trentlin [4206]: coin +80 copper
+Wed Oct 21 23:57:07 2026 :: Log Trentlin [4206]: i
+Wed Oct 21 23:57:08 2026 :: Sock.sinaddr:  18.116.205.62
+Wed Oct 21 23:57:08 2026 :: EOF encountered on read.
+Wed Oct 21 23:57:11 2026 :: Log Trentlin [4206]: drop heart
+Wed Oct 21 23:57:11 2026 :: Log Trentlin [4206]: drop heart
+Wed Oct 21 23:57:13 2026 :: Log Trentlin [4206]: sac heart
+Wed Oct 21 23:57:13 2026 :: Log Trentlin [4206]: coin +80 copper
+Wed Oct 21 23:57:14 2026 :: Log Trentlin [4206]: eq
+Wed Oct 21 23:57:16 2026 :: Log Trentlin [4206]: i
+Wed Oct 21 23:57:20 2026 :: Log Trentlin [4206]: compare cloa
+Wed Oct 21 23:57:22 2026 :: Log Trentlin [4206]: drop cloa
+Wed Oct 21 23:57:24 2026 :: Log Trentlin [4206]: compare lan
+Wed Oct 21 23:57:54 2026 :: Log Trentlin [4206]: wear la
+Wed Oct 21 23:58:01 2026 :: Log Trentlin [4206]: drop las
+Wed Oct 21 23:58:02 2026 :: Log Trentlin [4206]: sac las
+Wed Oct 21 23:58:02 2026 :: Log Trentlin [4206]: coin +74 copper
+Wed Oct 21 23:58:03 2026 :: Log Trentlin [4206]: i
+Wed Oct 21 23:58:11 2026 :: Log Trentlin [4206]: drop bloom
+Wed Oct 21 23:58:12 2026 :: Log Trentlin [4206]: sac bloo
+Wed Oct 21 23:58:12 2026 :: Log Trentlin [4206]: coin +40 copper
+Wed Oct 21 23:58:13 2026 :: Log Trentlin [4206]: i

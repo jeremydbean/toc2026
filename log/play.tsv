@@ -2509,3 +2509,82 @@
 1792626784	cmd	Trentlin	49	30508	hyrule.are	standing	100	0	-	east		The shutter is sealed fast, and will not open while enemies remain here.
 1792626786	cmd	Trentlin	49	30508	hyrule.are	standing	100	0	-	kill	v	Your slash ^^^ DESTROYS ^^^ a vire!
 1792626791	cmd	Trentlin	49	30508	hyrule.are	fighting	100	0	fight	smite		Your smite === OBLITERATES === a vire!
+1792626801	cmd	Trentlin	49	30508	hyrule.are	standing	100	0	-	score		--------------------------------------------------------------
+1792626803	cmd	Trentlin	49	30508	hyrule.are	standing	100	0	-	look	comp	The needle swings east.
+1792626804	cmd	Trentlin	49	30509	hyrule.are	standing	100	0	-	east		The shutter opens now that the chamber is clear.
+1792626807	cmd	Trentlin	49	30509	hyrule.are	standing	100	0	-	look	com	The needle swings downward, to the stair below.
+1792626808	cmd	Trentlin	49	30520	hyrule.are	standing	100	0	-	down		Level 6: Eastern Stairwell
+1792626809	cmd	Trentlin	49	30514	hyrule.are	standing	100	0	-	south		Level 6: Eastern Bend
+1792626811	cmd	Trentlin	49	30514	hyrule.are	standing	100	0	-	look	comp	The needle swings west.
+1792626813	cmd	Trentlin	49	30513	hyrule.are	standing	100	0	-	west		Level 6: Threshold of the Nest
+1792626815	cmd	Trentlin	49	30513	hyrule.are	standing	100	0	-	look	comp	The needle swings north.
+1792626816	cmd	Trentlin	49	30519	hyrule.are	standing	100	0	-	north		Level 6: Gohma's Nest
+1792626819	cmd	Trentlin	49	30519	hyrule.are	standing	100	0	-	consider	g	Gohma is no match for you.
+1792626820	cmd	Trentlin	49	30519	hyrule.are	standing	100	0	-	look	g	A huge, armoured, crablike monster with great pincers and a single
+1792626823	cmd	Trentlin	49	30519	hyrule.are	standing	100	0	-	north		The dragon has been Wizard Locked. You can not pass
+1792626824	cmd	Trentlin	49	30519	hyrule.are	standing	100	0	-	kill	go	Your slash ^^^ DESTROYS ^^^ Gohma!
+1792626830	cmd	Trentlin	49	30519	hyrule.are	fighting	98	0	fight	smite		Your smite misses Gohma.
+1792626841	cmd	Trentlin	49	30519	hyrule.are	fighting	95	0	fight	smite		Your smite <<< ERADICATES >>> Gohma!
+1792626850	cmd	Trentlin	49	30519	hyrule.are	fighting	93	0	fight	smite		Your smite <<< ERADICATES >>> Gohma!
+1792626858	cmd	Trentlin	49	30519	hyrule.are	fighting	91	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Gohma!
+1792626871	cmd	Trentlin	49	30519	hyrule.are	fighting	90	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Gohma!
+1792626879	cmd	Trentlin	49	30519	hyrule.are	fighting	87	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Gohma!
+1792626888	cmd	Trentlin	49	30519	hyrule.are	fighting	84	1	fight	smite		Your smite === OBLITERATES === Gohma!
+1792626916	cmd	Trentlin	49	30519	hyrule.are	fighting	76	0	fight	wear	bow	You stop using a Manhandla thorn lash.
+1792626925	cmd	Trentlin	49	30519	hyrule.are	standing	76	0	-	wear	las	You stop using a short bow.
+1792626927	cmd	Trentlin	49	30519	hyrule.are	standing	76	0	-	get	all cor	You get a dragon-banner cloak from corpse of Gohma.
+1792626928	cmd	Trentlin	49	30519	hyrule.are	standing	76	0	-	look		Level 6: Gohma's Nest
+1792626930	cmd	Trentlin	49	30519	hyrule.are	standing	76	0	-	north		The dragon has been Wizard Locked. You can not pass
+1792626932	cmd	Trentlin	49	30519	hyrule.are	standing	76	0	-	unlock	north	There is a flash of light as you unlock the dragon.
+1792626933	cmd	Trentlin	49	30524	hyrule.are	standing	76	0	-	north		Level 6: Dragon's Glowing Sanctum
+1792626937	cmd	Trentlin	49	30524	hyrule.are	standing	76	0	-	unlock	chest	*Click*
+1792626939	cmd	Trentlin	49	30524	hyrule.are	standing	76	0	-	open	chest	Ok.
+1792626942	cmd	Trentlin	49	30524	hyrule.are	standing	76	0	-	get	all chest	You get the Recorder from the Dragon's treasure chest.
+1792626947	cmd	Trentlin	49	30282	hyrule.are	standing	76	0	-	enter	light	You enter the Dragon's returning light
+1792626961	cmd	Trentlin	49	30250	hyrule.are	standing	76	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room.
+1792626970	cmd	Trentlin	49	30250	hyrule.are	standing	76	0	-	play	recorder 7	You play the Recorder, and an ancient melody fills the room.
+1792626972	cmd	Trentlin	49	30250	hyrule.are	standing	76	0	-	look		The Still Pond
+1792626974	cmd	Trentlin	49	30527	hyrule.are	standing	76	0	-	down		Level 7: Demon's Gate
+1792626977	cmd	Trentlin	49	30527	hyrule.are	standing	76	0	-	recall		The Gods have forsaken you.
+1792626979	cmd	Trentlin	49	30250	hyrule.are	standing	76	0	-	up		The Still Pond
+1792626980	cmd	Trentlin	49	4207	dresden_halloween.are	standing	76	0	-	recall		Before the Shrouded Altar
+1792626982	cmd	Trentlin	49	4208	dresden_halloween.are	standing	76	0	-	west		The Shrouded Altar of Devota
+1792626982	cmd	Trentlin	49	4208	dresden_halloween.are	standing	76	0	-	west		Alas, you cannot go that way.
+1792626983	cmd	Trentlin	49	4208	dresden_halloween.are	standing	76	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792626984	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792626984	cmd	Trentlin	49	4205	dresden_halloween.are	standing	100	0	-	south		The Hall of Guttering Candles
+1792626985	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	east		The Hall of Hollow Footsteps
+1792626986	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792626988	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	drop	compa	You drop the Dragon dungeon compass.
+1792626988	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	drop	compa	You do not have that item.
+1792626989	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	drop	compa	You do not have that item.
+1792626989	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	drop	compa	You do not have that item.
+1792626990	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	drop	ke	You drop the Dragon's key.
+1792626991	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792626993	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	compare	gaunt	A) a pair of pincer gauntlets (level 40)
+1792626999	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	wear	gaun	You stop using gauntlets of ogre power.
+1792627003	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	stash	put gaunt	You put gauntlets of ogre power away for safe keeping.
+1792627004	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792627006	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	compare	boot	A) a pair of pincer-toed boots (level 40)
+1792627014	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	wear	boot	You stop using horseshoes.
+1792627018	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	stash	put horse	You put horseshoes away for safe keeping.
+1792627019	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792627021	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	compare	heart	A) the Dragon's Heart Container (level 40)
+1792627025	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	drop	hear	You drop the Dragon's Heart Container.
+1792627026	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	sacrifice	hear	The Gods give you 80 copper coins for your sacrifice.
+1792627027	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792627031	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	drop	heart	You drop the Heart Guard of the Dragon.
+1792627031	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	drop	heart	You do not have that item.
+1792627033	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	sacrifice	heart	The Gods give you 80 copper coins for your sacrifice.
+1792627034	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	equipment		You are using:
+1792627036	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792627040	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	compare	cloa	A) a dragon-banner cloak (level 40)
+1792627042	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	drop	cloa	You drop a dragon-banner cloak.
+1792627044	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	compare	lan	A) the Gohma eye-lance (level 40)
+1792627074	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	wear	la	You stop using a Manhandla thorn lash.
+1792627081	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	drop	las	You drop a Manhandla thorn lash.
+1792627082	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	sacrifice	las	The Gods give you 74 copper coins for your sacrifice.
+1792627083	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792627091	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	drop	bloom	You drop the Manhandla bloom-whip.
+1792627092	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	sacrifice	bloo	The Gods give you 40 copper coins for your sacrifice.
+1792627093	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
