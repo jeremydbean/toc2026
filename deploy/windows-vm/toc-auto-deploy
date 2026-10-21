@@ -205,12 +205,23 @@ esac
 echo "$target" > "$STATE_DIR/attempted"
 status "deploying $short ($why)"
 logger -t toc-auto-deploy "deploying $short ($why)" 2>/dev/null || true
-if TOC_DEPLOY_LOCKED=1 TOC_DEPLOY_REF="$target" TOC_DEPLOY_ROLLBACK=1 \
-        "$DEPLOY_BIN" > "$STATE_DIR/last.log" 2>&1; then
+rc=0
+TOC_DEPLOY_LOCKED=1 TOC_DEPLOY_REF="$target" TOC_DEPLOY_ROLLBACK=1 \
+    "$DEPLOY_BIN" > "$STATE_DIR/last.log" 2>&1 || rc=$?
+if [ "$rc" = 0 ]; then
     status "deployed $short ($why)"
     logger -t toc-auto-deploy "deployed $short" 2>/dev/null || true
 else
-    status "deploy of $short FAILED and was rolled back; not retrying this commit -- see $STATE_DIR/last.log"
+    # toc-deploy's exit status says how far it got; it used to be read as
+    # "rolled back" whatever happened, including a build that failed
+    # before the game was touched.
+    case "$rc" in
+        10) how="FAILED and was rolled back" ;;
+        11) how="FAILED; rolled back but the game is NOT healthy" ;;
+        12) how="FAILED; the new code is not healthy and was not rolled back" ;;
+        *)  how="FAILED before the game was touched (status $rc)" ;;
+    esac
+    status "deploy of $short $how; not retrying this commit -- see $STATE_DIR/last.log"
     logger -p daemon.err -t toc-auto-deploy "deploy of $short failed" 2>/dev/null || true
     tail -25 "$STATE_DIR/last.log"
     exit 1

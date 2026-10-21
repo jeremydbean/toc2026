@@ -884,7 +884,11 @@ class HyruleProgressionTests(unittest.TestCase):
         # Every place holylight grants sight asks the Triforce too, and the
         # wizinvis and incognito levels are read against the sight trust.
         can_see = handler.split("bool can_see( CHAR_DATA *ch", 1)[1].split("\n}", 1)[0]
-        self.assertIn("sight_trust( ch ) < victim->invis_level", can_see)
+        # Wizinvis moved into wizinvis_hides(), which act() asks as well;
+        # can_see asks it first and it reads the looker's sight trust.
+        self.assertIn("wizinvis_hides( victim, ch )", can_see)
+        hides = handler.split("bool wizinvis_hides( const CHAR_DATA *wch, const CHAR_DATA *looker )", 1)[1].split("\n}", 1)[0]
+        self.assertIn("sight_trust( looker ) < wch->invis_level", hides)
         self.assertIn("sight_trust( ch ) < victim->cloak_level", can_see)
         self.assertIn("triforce_sight( ch )", can_see)
         can_see_obj = handler.split("bool can_see_obj(", 1)[1].split("\n}", 1)[0]

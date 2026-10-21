@@ -329,6 +329,7 @@ class LiveMud:
         self.tmp: tempfile.TemporaryDirectory | None = None
         self.proc: subprocess.Popen | None = None
         self.root: Path | None = None
+        self._output_path: Path | None = None
 
     @property
     def player_dir(self) -> Path:
@@ -389,13 +390,22 @@ class LiveMud:
             if value is None:
                 env.pop(key, None)
 
-        self.proc = subprocess.Popen(
-            [str(binary), str(self.port)],
-            cwd=self.root / "area",
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            env=env,
-        )
+        # To a file, not a pipe: log_string writes to stderr and nothing
+        # read the pipe while the game ran, so a session that logged 64 KiB
+        # would block the server in write() mid-test -- a hang that would
+        # look like a slow reply.
+        self._output_path = self.root / "server-output.log"
+        output = open(self._output_path, "ab")
+        try:
+            self.proc = subprocess.Popen(
+                [str(binary), str(self.port)],
+                cwd=self.root / "area",
+                stdout=output,
+                stderr=subprocess.STDOUT,
+                env=env,
+            )
+        finally:
+            output.close()
         self._wait_for_port()
 
     def restart(self) -> None:
@@ -411,8 +421,6 @@ class LiveMud:
             except subprocess.TimeoutExpired:
                 self.proc.kill()
                 self.proc.wait(timeout=15)
-        if self.proc is not None and self.proc.stdout is not None:
-            self.proc.stdout.close()
         self.proc = None
 
     def _wait_for_port(self, timeout: float = 120.0) -> None:
@@ -428,20 +436,23 @@ class LiveMud:
                     return
             except OSError:
                 time.sleep(0.25)
+        # __exit__ never runs when __enter__ raises, so nothing else would
+        # stop a server that is still booting.
+        if self.proc is not None:
+            self.proc.kill()
+            self.proc.wait(timeout=15)
         raise AssertionError(
             f"server did not open port {self.port}:\n" + self.server_output()
         )
 
     def server_output(self) -> str:
-        if self.proc is None or self.proc.stdout is None:
+        """The last 4000 characters the server wrote, so far."""
+        path = self._output_path
+        if path is None:
             return "<no output captured>"
         try:
-            self.proc.kill()
+            return path.read_bytes().decode("latin-1", "replace")[-4000:]
         except OSError:
-            pass
-        try:
-            return self.proc.stdout.read().decode("latin-1", "replace")[-4000:]
-        except Exception:
             return "<output unavailable>"
 
     def connect(self, timeout: float = 30.0) -> MudClient:

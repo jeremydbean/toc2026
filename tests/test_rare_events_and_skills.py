@@ -98,7 +98,11 @@ class RareEventAndSkillTests(unittest.TestCase):
         corpse = function_body(self.fight, "void make_corpse", "void death_cry")
 
         self.assertIn("obj_to_obj( drop, corpse )", self.fight)
-        self.assertIn("if ( !primary_drop )", corpse)
+        # The drop table lives in season.c now; a boss whose rolls left
+        # nothing but rares still drops the table's fallback.
+        self.assertIn("event_boss_drops( ch->pIndexData->vnum )", corpse)
+        self.assertIn("if ( !fell && fallback != 0 )", corpse)
+        self.assertIn("add_loot_to_corpse( corpse, fallback )", corpse)
         self.assertIn("record_event_boss_defeat( ch )", corpse)
         self.assertNotIn("event_boss_mob = NULL", corpse)
         self.assertIn("void record_event_boss_defeat", self.season)

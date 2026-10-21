@@ -77,7 +77,14 @@ sudo /usr/local/sbin/toc-deploy --dry-run  # build and validate only
 
 It archives the running code to `/srv/toc/rollback-code-<stamp>.tgz`
 first and prints the rollback command if the game does not come back
-healthy. It never takes player state from git.
+healthy. A world that fails `--check-area` stops it before anything is
+touched, and a step that fails after the game was stopped (an rsync out
+of disk) rolls the archive back and restarts the game, by hand or not.
+Its exit status says how far it got -- 10 rolled back and healthy, 11
+rolled back but not healthy, 12 new code not healthy and left alone,
+anything else stopped before the game was touched -- and the
+auto-deployer's status line says the same. It never takes player state
+from git.
 
 **Usually you do not need to run it.** `toc-auto-deploy.timer` checks
 `main` every ten minutes and deploys new code once CI's Validate run for

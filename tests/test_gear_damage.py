@@ -57,8 +57,12 @@ class GearDamageTests(unittest.TestCase):
                          "repair must never destroy the item")
         self.assertNotIn("number_repair >= 25", dr,
                          "the breaks-on-25th-repair path must be gone")
-        self.assertIn("obj->condition = 100", dr)
-        self.assertIn("REMOVE_BIT(obj->extra_flags, ITEM_DAMAGED)", dr)
+        # REPAIR and REPAIR ALL both mend through repair_mend().
+        self.assertIn("repair_mend( ch, rpr, obj, cost );", dr)
+        mend = body(read("src", "act_obj.c"), "static void repair_mend(")
+        self.assertNotIn("extract_obj", mend)
+        self.assertIn("obj->condition = 100", mend)
+        self.assertIn("REMOVE_BIT(obj->extra_flags, ITEM_DAMAGED)", mend)
 
 
 if __name__ == "__main__":

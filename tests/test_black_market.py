@@ -308,7 +308,13 @@ class BlackMarketLiveTests(unittest.TestCase):
                 run(buyer, "west", 1.6)
                 self.assertIn("One to a customer", run(buyer, "buy %s" % want, 2.0))
                 # He cannot be attacked, and when dismissed he is gone.
-                self.assertIn("shopkeeper wouldn't like that", run(buyer, "kill vesh", 1.6))
+                # Waited for, not drained for: the purchase saved the buyer,
+                # and under the sanitizer build with a second server on the
+                # runner that save outlasted a fixed 1.6 s window (CI run
+                # 411 read an empty reply here).
+                buyer.buffer = ""
+                buyer.send("kill vesh")
+                buyer.expect("shopkeeper wouldn't like that", timeout=15)
                 self.assertIn("gone", run(fixer, "blackmarket dismiss", 1.6))
                 buyer.drain(1.0)
                 self.assertNotIn("(Rare) Vesh", run(buyer, "look", 1.6))

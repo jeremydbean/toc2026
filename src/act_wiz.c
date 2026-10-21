@@ -40,6 +40,12 @@
 #include <netdb.h>
 #include "merc.h"
 #include "interp.h"
+
+/* macOS hides NI_MAXHOST under _POSIX_C_SOURCE; comm.c does the same. */
+#ifndef NI_MAXHOST
+#define NI_MAXHOST 1025
+#endif
+
 #pragma GCC diagnostic ignored "-Wcomment"
 #pragma GCC diagnostic ignored "-Wformat-truncation"
 
