@@ -1035,3 +1035,213 @@
 1792621620	cmd	Trentlin	49	30424	hyrule.are	standing	100	0	-	kill	g	Your cleave === OBLITERATES === a red goriya!
 1792621625	cmd	Trentlin	49	30424	hyrule.are	standing	100	0	-	open	north	Ok.
 1792621627	cmd	Trentlin	49	30422	hyrule.are	standing	100	0	-	south		Level 2: Moonstone Crossroads
+1792621629	cmd	Trentlin	49	30424	hyrule.are	standing	100	0	-	north		Level 2: Gouged Hall
+1792621629	cmd	Trentlin	49	30426	hyrule.are	standing	100	0	-	north		Level 2: Long Hall of the Moon
+1792621631	cmd	Trentlin	49	30426	hyrule.are	standing	100	0	-	scan		a blue goriya                      -to the East.
+1792621633	cmd	Trentlin	49	30428	hyrule.are	standing	100	0	-	north		Level 2: Silent Chamber
+1792621634	cmd	Trentlin	49	30428	hyrule.are	standing	100	0	-	scan		a rope                             -to the North.
+1792621635	cmd	Trentlin	49	30430	hyrule.are	standing	100	0	-	north		Level 2: Serpent Hall
+1792621637	cmd	Trentlin	49	30430	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792621639	cmd	Trentlin	49	30430	hyrule.are	standing	100	0	-	kill	rop	Your cleave === OBLITERATES === a rope!
+1792621643	cmd	Trentlin	49	30432	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear.
+1792621649	cmd	Trentlin	49	30432	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792621651	cmd	Trentlin	49	30432	hyrule.are	standing	100	0	-	kill	g	Your cleave <<< ERADICATES >>> a red goriya!
+1792621655	cmd	Trentlin	49	30432	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear.
+1792621664	cmd	Trentlin	49	30430	hyrule.are	standing	100	0	-	south		Level 2: Serpent Hall
+1792621665	cmd	Trentlin	49	30428	hyrule.are	standing	100	0	-	south		Level 2: Silent Chamber
+1792621666	cmd	Trentlin	49	30426	hyrule.are	standing	100	0	-	south		Level 2: Long Hall of the Moon
+1792621667	cmd	Trentlin	49	30424	hyrule.are	standing	100	0	-	south		Level 2: Gouged Hall
+1792621669	cmd	Trentlin	49	30424	hyrule.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792621672	cmd	Trentlin	49	30422	hyrule.are	standing	100	0	-	south		Level 2: Moonstone Crossroads
+1792621674	cmd	Trentlin	49	30419	hyrule.are	standing	100	0	-	south		Level 2: Shed Skin Chamber
+1792621676	cmd	Trentlin	49	30418	hyrule.are	standing	100	0	-	west		Level 2: Crescent Gate
+1792621677	cmd	Trentlin	49	30276	hyrule.are	standing	100	0	-	up		The Moon Gate
+1792621679	cmd	Trentlin	49	30260	hyrule.are	standing	100	0	-	south		The Eastern Dock
+1792621680	cmd	Trentlin	49	30261	hyrule.are	standing	100	0	-	east		Wooded Crossroads
+1792621681	cmd	Trentlin	49	30262	hyrule.are	standing	100	0	-	east		Armos Sentinel Grove
+1792621683	cmd	Trentlin	49	30261	hyrule.are	standing	100	0	-	west		Wooded Crossroads
+1792621683	cmd	Trentlin	49	30245	hyrule.are	standing	100	0	-	south		Moblin Hollow
+1792621684	cmd	Trentlin	49	30229	hyrule.are	standing	100	0	-	south		The Lion's Thicket
+1792621684	cmd	Trentlin	49	30228	hyrule.are	standing	100	0	-	west		Dark Pine Stand
+1792621684	cmd	Trentlin	49	30227	hyrule.are	standing	100	0	-	west		Shaded Grove
+1792621685	cmd	Trentlin	49	30226	hyrule.are	standing	100	0	-	west		Riverbank Thicket
+1792621685	cmd	Trentlin	49	30225	hyrule.are	standing	100	0	-	west		River Bend
+1792621686	cmd	Trentlin	49	30224	hyrule.are	standing	100	0	-	west		Bush Row
+1792621687	cmd	Trentlin	49	30208	hyrule.are	standing	100	0	-	south		Meadow East of the Cave
+1792621688	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	west		The First Quest Begins
+1792621688	cmd	Trentlin	49	30207	hyrule.are	standing	100	0	-	west		Crags West of the Start
+1792621689	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	east		The First Quest Begins
+1792621690	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	north		Rock Wall Above the Start
+1792621691	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	west		Candle Shop Knoll
+1792621692	cmd	Trentlin	49	30682	hyrule.are	standing	100	0	-	down		The Waxlight Shop
+1792621694	cmd	Trentlin	49	30682	hyrule.are	standing	100	0	-	list		[Lv Price] Item
+1792621695	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	up		Candle Shop Knoll
+1792621696	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	west		Forest Stream
+1792621698	cmd	Trentlin	49	30237	hyrule.are	standing	100	0	-	north		Shore Below the Snake
+1792621699	cmd	Trentlin	49	30253	hyrule.are	standing	100	0	-	north		Isle of the Snake
+1792621703	cmd	Trentlin	49	30237	hyrule.are	standing	100	0	-	south		Shore Below the Snake
+1792621703	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	south		Forest Stream
+1792621704	cmd	Trentlin	49	30206	hyrule.are	standing	100	0	-	south		Sandy Glade
+1792621705	cmd	Trentlin	49	30332	hyrule.are	standing	100	0	-	down		Sand-Floored Hermitage
+1792621707	cmd	Trentlin	49	30332	hyrule.are	standing	100	0	-	list		You can't do that here.
+1792621711	cmd	Trentlin	49	30206	hyrule.are	standing	100	0	-	up		Sandy Glade
+1792621713	cmd	Trentlin	49	30207	hyrule.are	standing	100	0	-	east		Crags West of the Start
+1792621714	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	north		Candle Shop Knoll
+1792621715	cmd	Trentlin	49	30682	hyrule.are	standing	100	0	-	down		The Waxlight Shop
+1792621717	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	up		Candle Shop Knoll
+1792621717	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792621719	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	east		Rock Wall Above the Start
+1792621720	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792621720	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	south		The First Quest Begins
+1792621723	cmd	Trentlin	49	30650	hyrule.are	standing	100	0	-	down		The Old Man's Cave
+1792621725	cmd	Trentlin	49	30650	hyrule.are	standing	100	0	-	look	in arm	A cedar starter armory contains:
+1792621727	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	up		The First Quest Begins
+1792621728	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	north		Rock Wall Above the Start
+1792621729	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792621730	cmd	Trentlin	49	30224	hyrule.are	standing	100	0	-	east		Bush Row
+1792621732	cmd	Trentlin	49	30240	hyrule.are	standing	100	0	-	north		Crossroads South of the Lake
+1792621733	cmd	Trentlin	49	30239	hyrule.are	standing	100	0	-	west		Lakeside Meadow
+1792621734	cmd	Trentlin	49	30238	hyrule.are	standing	100	0	-	west		Lake Hylia, Southwest Bank
+1792621736	cmd	Trentlin	49	30237	hyrule.are	standing	100	0	-	west		Shore Below the Snake
+1792621737	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	south		Forest Stream
+1792621738	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	east		Candle Shop Knoll
+1792621739	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	east		Rock Wall Above the Start
+1792621740	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	west		Candle Shop Knoll
+1792621740	cmd	Trentlin	49	30682	hyrule.are	standing	100	0	-	down		The Waxlight Shop
+1792621742	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	up		Candle Shop Knoll
+1792621742	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	west		Forest Stream
+1792621742	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	west		The Lost Woods
+1792621744	cmd	Trentlin	49	30694	hyrule.are	standing	100	0	-	up		Simmering Herb Cellar
+1792621745	cmd	Trentlin	49	30694	hyrule.are	standing	100	0	-	list		An old woman smelling of herbs looks you over for a royal seal. "Show me the Princess's letter first."
+1792621748	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	down		The Lost Woods
+1792621749	cmd	Trentlin	49	30219	hyrule.are	standing	100	0	-	west		Bramble Wood
+1792621750	cmd	Trentlin	49	30235	hyrule.are	standing	100	0	-	north		The Fairy Path
+1792621751	cmd	Trentlin	49	30251	hyrule.are	standing	100	0	-	north		Fairy Pond of the Woods
+1792621754	cmd	Trentlin	49	30251	hyrule.are	standing	100	0	-	drink		You are no longer thirsty.
+1792621754	cmd	Trentlin	49	30251	hyrule.are	standing	100	0	-	drink		You are no longer thirsty.
+1792621755	cmd	Trentlin	49	30235	hyrule.are	standing	100	0	-	south		The Fairy Path
+1792621756	cmd	Trentlin	49	30234	hyrule.are	standing	100	0	-	west		Lost Woods Crossing
+1792621757	cmd	Trentlin	49	30233	hyrule.are	standing	100	0	-	west		Deepwood Corner
+1792621758	cmd	Trentlin	49	30217	hyrule.are	standing	100	0	-	south		The Tangled Woods
+1792621760	cmd	Trentlin	49	30216	hyrule.are	standing	100	0	-	west		Western Meadow Edge
+1792621762	cmd	Trentlin	49	30232	hyrule.are	standing	100	0	-	north		Western Crags
+1792621762	cmd	Trentlin	49	30232	hyrule.are	standing	100	0	-	north		You need the Raft to cross that water.
+1792621764	cmd	Trentlin	49	30216	hyrule.are	standing	100	0	-	south		Western Meadow Edge
+1792621764	cmd	Trentlin	49	30217	hyrule.are	standing	100	0	-	east		The Tangled Woods
+1792621765	cmd	Trentlin	49	30218	hyrule.are	standing	100	0	-	east		Old Forest Clearing
+1792621765	cmd	Trentlin	49	30203	hyrule.are	standing	100	0	-	south		Southern Woods
+1792621766	cmd	Trentlin	49	30204	hyrule.are	standing	100	0	-	east		Path to the Manji
+1792621767	cmd	Trentlin	49	30205	hyrule.are	standing	100	0	-	east		Grove of the Manji
+1792621769	cmd	Trentlin	49	30205	hyrule.are	standing	100	0	-	down		A seal shaped like the Triforce bars the way into the Manji. It opens
+1792621772	cmd	Trentlin	49	30204	hyrule.are	standing	100	0	-	west		Path to the Manji
+1792621773	cmd	Trentlin	49	30203	hyrule.are	standing	100	0	-	west		Southern Woods
+1792621774	cmd	Trentlin	49	30202	hyrule.are	standing	100	0	-	west		Woodland Rock Face
+1792621775	cmd	Trentlin	49	30201	hyrule.are	standing	100	0	-	west		Southwest Meadow
+1792621776	cmd	Trentlin	49	30330	hyrule.are	standing	100	0	-	down		The Whispering Hearth
+1792621778	cmd	Trentlin	49	30330	hyrule.are	standing	100	0	-	recall		Your prayer goes up and comes back unanswered.
+1792621781	cmd	Trentlin	49	30330	hyrule.are	standing	100	0	-	list		You can't do that here.
+1792621783	cmd	Trentlin	49	30330	hyrule.are	standing	100	0	-	give	woman gold	You do not have that item.
+1792621788	cmd	Trentlin	49	30330	hyrule.are	standing	100	0	-	give	1 gold woman	A sharp-eyed old woman pushes the coins back at you. "Pay me and I'll talk."
+1792621793	cmd	Trentlin	49	30330	hyrule.are	standing	100	0	-	give	10 gold woman	You pay a sharp-eyed old woman.
+1792621798	cmd	Trentlin	49	30330	hyrule.are	standing	100	0	-	give	10 plat woman	With the new monetary system, you need to specify which type of coin.
+1792621806	cmd	Trentlin	49	30330	hyrule.are	standing	100	0	-	give	10 platinum woman	You give a sharp-eyed old woman 10 platinum.
+1792621812	cmd	Trentlin	49	30330	hyrule.are	standing	100	0	-	look		The Whispering Hearth
+1792621813	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792621815	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota
+1792621815	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792621816	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792621816	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792621817	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792621817	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792621817	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792621818	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792621819	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792621822	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	run	s 2	Southern Oak Tree Square.
+1792621823	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	run	w 3	Entrance to the Haunted Temple
+1792621823	cmd	Trentlin	49	3795	school.are	standing	100	0	-	run	u 3	Entrance to Mud School
+1792621823	cmd	Trentlin	49	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal
+1792621823	cmd	Trentlin	49	15004	campus.are	standing	100	0	-	run	e 4	Campus Crescent
+1792621824	cmd	Trentlin	49	15013	campus.are	standing	100	0	-	run	n 4	University Avenue
+1792621824	cmd	Trentlin	49	15068	campus.are	standing	100	0	-	run	e 2	The Back Hall
+1792621824	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering Hyrule arcade cabinet
+1792621826	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	north		Rock Wall Above the Start
+1792621827	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792621829	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	south		The First Quest Begins
+1792621829	cmd	Trentlin	49	30207	hyrule.are	standing	100	0	-	west		Crags West of the Start
+1792621830	cmd	Trentlin	49	30206	hyrule.are	standing	100	0	-	west		Sandy Glade
+1792621831	cmd	Trentlin	49	30332	hyrule.are	standing	100	0	-	down		Sand-Floored Hermitage
+1792621833	cmd	Trentlin	49	30206	hyrule.are	standing	100	0	-	up		Sandy Glade
+1792621836	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	north		Forest Stream
+1792621837	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	east		Candle Shop Knoll
+1792621838	cmd	Trentlin	49	30682	hyrule.are	standing	100	0	-	down		The Waxlight Shop
+1792621839	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	up		Candle Shop Knoll
+1792621840	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	east		Rock Wall Above the Start
+1792621841	cmd	Trentlin	49	30224	hyrule.are	standing	100	0	-	east		Bush Row
+1792621843	cmd	Trentlin	49	30240	hyrule.are	standing	100	0	-	north		Crossroads South of the Lake
+1792621844	cmd	Trentlin	49	30239	hyrule.are	standing	100	0	-	west		Lakeside Meadow
+1792621845	cmd	Trentlin	49	30238	hyrule.are	standing	100	0	-	west		Lake Hylia, Southwest Bank
+1792621846	cmd	Trentlin	49	30237	hyrule.are	standing	100	0	-	west		Shore Below the Snake
+1792621847	cmd	Trentlin	49	30236	hyrule.are	standing	100	0	-	west		Forest River Ford
+1792621848	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	south		The Lost Woods
+1792621850	cmd	Trentlin	49	30694	hyrule.are	standing	100	0	-	up		Simmering Herb Cellar
+1792621852	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	down		The Lost Woods
+1792621853	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621856	cmd	Trentlin	49	30219	hyrule.are	standing	100	0	-	west		Bramble Wood
+1792621857	cmd	Trentlin	49	30219	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621860	cmd	Trentlin	49	30218	hyrule.are	standing	100	0	-	west		Old Forest Clearing
+1792621862	cmd	Trentlin	49	30218	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621863	cmd	Trentlin	49	30218	hyrule.are	standing	100	0	-	scan		a blue moblin                      -to the North.
+1792621863	cmd	Trentlin	49	30234	hyrule.are	standing	100	0	-	north		Lost Woods Crossing
+1792621864	cmd	Trentlin	49	30233	hyrule.are	standing	100	0	-	west		Deepwood Corner
+1792621865	cmd	Trentlin	49	30233	hyrule.are	standing	100	0	-	down		Alas, you cannot go that way.
+1792621866	cmd	Trentlin	49	30217	hyrule.are	standing	100	0	-	south		The Tangled Woods
+1792621867	cmd	Trentlin	49	30216	hyrule.are	standing	100	0	-	west		Western Meadow Edge
+1792621869	cmd	Trentlin	49	30232	hyrule.are	standing	100	0	-	north		Western Crags
+1792621870	cmd	Trentlin	49	30232	hyrule.are	standing	100	0	-	north		You need the Raft to cross that water.
+1792621871	cmd	Trentlin	49	30216	hyrule.are	standing	100	0	-	south		Western Meadow Edge
+1792621871	cmd	Trentlin	49	30217	hyrule.are	standing	100	0	-	east		The Tangled Woods
+1792621872	cmd	Trentlin	49	30218	hyrule.are	standing	100	0	-	east		Old Forest Clearing
+1792621873	cmd	Trentlin	49	30218	hyrule.are	standing	100	0	-	down		Alas, you cannot go that way.
+1792621875	cmd	Trentlin	49	30203	hyrule.are	standing	100	0	-	south		Southern Woods
+1792621876	cmd	Trentlin	49	30204	hyrule.are	standing	100	0	-	east		Path to the Manji
+1792621876	cmd	Trentlin	49	30205	hyrule.are	standing	100	0	-	east		Grove of the Manji
+1792621877	cmd	Trentlin	49	30204	hyrule.are	standing	100	0	-	west		Path to the Manji
+1792621879	cmd	Trentlin	49	30219	hyrule.are	standing	100	0	-	north		Bramble Wood
+1792621879	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	east		The Lost Woods
+1792621880	cmd	Trentlin	49	30750	hyrule.are	standing	100	0	-	north		The Lost Woods
+1792621881	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	north		The Lost Woods
+1792621883	cmd	Trentlin	49	30694	hyrule.are	standing	100	0	-	up		Simmering Herb Cellar
+1792621884	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	down		The Lost Woods
+1792621884	cmd	Trentlin	49	30750	hyrule.are	standing	100	0	-	north		The Lost Woods
+1792621885	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	north		The Lost Woods
+1792621887	cmd	Trentlin	49	30750	hyrule.are	standing	100	0	-	north		The Lost Woods
+1792621888	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	north		The Lost Woods
+1792621889	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621892	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	east		Forest Stream
+1792621892	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621896	cmd	Trentlin	49	30206	hyrule.are	standing	100	0	-	south		Sandy Glade
+1792621897	cmd	Trentlin	49	30206	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621897	cmd	Trentlin	49	30332	hyrule.are	standing	100	0	-	down		Sand-Floored Hermitage
+1792621900	cmd	Trentlin	49	30206	hyrule.are	standing	100	2	-	up		Sandy Glade
+1792621901	cmd	Trentlin	49	30207	hyrule.are	standing	100	0	-	east		Crags West of the Start
+1792621902	cmd	Trentlin	49	30207	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621907	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	east		The First Quest Begins
+1792621908	cmd	Trentlin	49	30650	hyrule.are	standing	100	0	-	down		The Old Man's Cave
+1792621909	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	up		The First Quest Begins
+1792621912	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621913	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	north		Rock Wall Above the Start
+1792621914	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621915	cmd	Trentlin	49	30224	hyrule.are	standing	100	0	-	east		Bush Row
+1792621915	cmd	Trentlin	49	30224	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621916	cmd	Trentlin	49	30240	hyrule.are	standing	100	0	-	north		Crossroads South of the Lake
+1792621917	cmd	Trentlin	49	30240	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621918	cmd	Trentlin	49	30241	hyrule.are	standing	100	0	-	east		Flower Field
+1792621919	cmd	Trentlin	49	30242	hyrule.are	standing	100	0	-	east		Rolling Green Downs
+1792621920	cmd	Trentlin	49	30242	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621921	cmd	Trentlin	49	30243	hyrule.are	standing	100	0	-	east		Eastwood Glade
+1792621922	cmd	Trentlin	49	30243	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621923	cmd	Trentlin	49	30244	hyrule.are	standing	100	0	-	east		Pinewood Rise
+1792621923	cmd	Trentlin	49	30244	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621924	cmd	Trentlin	49	30228	hyrule.are	standing	100	0	-	south		Dark Pine Stand
+1792621925	cmd	Trentlin	49	30228	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621927	cmd	Trentlin	49	30229	hyrule.are	standing	100	0	-	east		The Lion's Thicket
