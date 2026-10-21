@@ -164,8 +164,11 @@ class AdditionalRareMechanicTests(unittest.TestCase):
         self.assertIn("save_char_obj(ch)", converter)
 
     def test_multi_race_restrictions_are_allowed_race_lists(self) -> None:
+        # The checks live in wear_requirements_check since 2026-10-21;
+        # wear_requirements_met (WEAR) and wear_requirements_quiet (OUTFIT)
+        # both call it.
         requirements = function_body(
-            self.act_obj, "static bool wear_requirements_met", "void do_secondary"
+            self.act_obj, "static bool wear_requirements_check", "static bool wear_requirements_met"
         )
 
         self.assertIn("allowed_races = obj->extra_flags2", requirements)
