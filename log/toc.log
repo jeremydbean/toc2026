@@ -147810,3 +147810,122 @@ Wed Oct 21 12:05:46 2026 :: Log Trentlin [16050]: coin +3 gold
 Wed Oct 21 12:05:52 2026 :: Log Trentlin [16050]: kick
 Wed Oct 21 12:05:52 2026 :: Log Trentlin [16050]: recall
 Wed Oct 21 12:05:52 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 16050
+Wed Oct 21 12:05:54 2026 :: Log Trentlin [4207]: e
+Wed Oct 21 12:05:54 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 21 12:05:54 2026 :: Log Trentlin [4202]: e
+Wed Oct 21 12:05:54 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 21 12:05:55 2026 :: Log Trentlin [4201]: e
+Wed Oct 21 12:05:55 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Wed Oct 21 12:05:55 2026 :: Log Trentlin [2427]: n
+Wed Oct 21 12:05:55 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct 21 12:05:56 2026 :: Log Trentlin [2404]: n
+Wed Oct 21 12:05:56 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Wed Oct 21 12:05:57 2026 :: Log Trentlin [2401]: n
+Wed Oct 21 12:05:57 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2401
+Wed Oct 21 12:05:59 2026 :: Log Trentlin [2402]: n
+Wed Oct 21 12:05:59 2026 :: Log Trentlin [2415]: arrived (Main Processional, Strung with Lanterns) from 2402
+Wed Oct 21 12:05:59 2026 :: Log Trentlin [2415]: e
+Wed Oct 21 12:05:59 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2415
+Wed Oct 21 12:06:00 2026 :: Log Trentlin [2485]: s
+Wed Oct 21 12:06:00 2026 :: Log Trentlin [2494]: arrived (Weapons Shop.) from 2485
+Wed Oct 21 12:06:02 2026 :: Log Trentlin [2494]: repair axe
+Wed Oct 21 12:06:02 2026 :: Log Trentlin [2494]: copper -1041002
+Wed Oct 21 12:06:04 2026 :: Log Trentlin [2494]: wear axe
+Wed Oct 21 12:06:05 2026 :: Log Trentlin [2494]: n
+Wed Oct 21 12:06:05 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2494
+Wed Oct 21 12:06:05 2026 :: Log Trentlin [2485]: w
+Wed Oct 21 12:06:05 2026 :: Log Trentlin [2415]: arrived (Main Processional, Strung with Lanterns) from 2485
+Wed Oct 21 12:06:06 2026 :: Log Trentlin [2415]: s
+Wed Oct 21 12:06:06 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2415
+Wed Oct 21 12:06:06 2026 :: Log Trentlin [2402]: e
+Wed Oct 21 12:06:06 2026 :: Log Trentlin [2407]: arrived (Northeastern Oak Tree Square.) from 2402
+Wed Oct 21 12:06:06 2026 :: Log Trentlin [2407]: e
+Wed Oct 21 12:06:07 2026 :: Log Trentlin [2407]: s
+Wed Oct 21 12:06:07 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2407
+Wed Oct 21 12:06:08 2026 :: Log Trentlin [2403]: s
+Wed Oct 21 12:06:08 2026 :: Log Trentlin [2408]: arrived (Southeastern Oak Tree Square.) from 2403
+Wed Oct 21 12:06:09 2026 :: Log Trentlin [2408]: s
+Wed Oct 21 12:06:09 2026 :: Log Trentlin [2537]: arrived (Paco's Pawn Shop.) from 2408
+Wed Oct 21 12:06:12 2026 :: Log Trentlin [2537]: n
+Wed Oct 21 12:06:12 2026 :: Log Trentlin [2408]: arrived (Southeastern Oak Tree Square.) from 2537
+Wed Oct 21 12:06:13 2026 :: Log Trentlin [2408]: e
+Wed Oct 21 12:06:13 2026 :: Log Trentlin [2408]: w
+Wed Oct 21 12:06:13 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2408
+Wed Oct 21 12:06:14 2026 :: Log Trentlin [2404]: w
+Wed Oct 21 12:06:14 2026 :: Log Trentlin [2409]: arrived (Southwestern Oak Tree Square.) from 2404
+Wed Oct 21 12:06:15 2026 :: Log Trentlin [2409]: w
+Wed Oct 21 12:06:16 2026 :: Log Trentlin [2409]: w
+Wed Oct 21 12:06:16 2026 :: Log Trentlin [2409]: n
+Wed Oct 21 12:06:16 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2409
+Wed Oct 21 12:06:17 2026 :: Log Trentlin [2405]: n
+Wed Oct 21 12:06:17 2026 :: Log Trentlin [2406]: arrived (Northwestern Oak Tree Square.) from 2405
+Wed Oct 21 12:06:18 2026 :: Log Trentlin [2406]: e
+Wed Oct 21 12:06:18 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2406
+Wed Oct 21 12:06:19 2026 :: Log Trentlin [2402]: s
+Wed Oct 21 12:06:19 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2402
+Wed Oct 21 12:06:20 2026 :: Log Trentlin [2401]: wo
+Wed Oct 21 12:06:24 2026 :: Log Trentlin [2401]: sco
+Wed Oct 21 12:06:30 2026 :: Log Trentlin [2401]: prac
+Wed Oct 21 12:06:35 2026 :: Sock.sinaddr:  3.20.63.178
+Wed Oct 21 12:06:35 2026 :: EOF encountered on read.
+Wed Oct 21 12:06:37 2026 :: Log Trentlin [2401]: walkto vladamir
+Wed Oct 21 12:06:37 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Wed Oct 21 12:06:38 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Wed Oct 21 12:06:39 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Wed Oct 21 12:06:39 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Wed Oct 21 12:06:40 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Wed Oct 21 12:06:41 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Wed Oct 21 12:06:42 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Wed Oct 21 12:06:42 2026 :: Log Trentlin [4401]: arrived (Before Gates to the Citadel of War.) from 2425
+Wed Oct 21 12:06:43 2026 :: Log Trentlin [4402]: arrived (Tunnel to courtyard.) from 4401
+Wed Oct 21 12:06:44 2026 :: Log Trentlin [4403]: arrived (Courtyard.) from 4402
+Wed Oct 21 12:06:45 2026 :: Log Trentlin [4411]: arrived (Center of Courtyard.) from 4403
+Wed Oct 21 12:06:45 2026 :: Log Trentlin [4407]: arrived (Courtyard.) from 4411
+Wed Oct 21 12:06:46 2026 :: Log Trentlin [4452]: arrived (Entry Room.) from 4407
+Wed Oct 21 12:06:47 2026 :: Log Trentlin [4463]: arrived (Bottom of stairway.) from 4452
+Wed Oct 21 12:06:48 2026 :: Log Trentlin [4464]: arrived (Top of stairway.) from 4463
+Wed Oct 21 12:06:48 2026 :: Log Trentlin [4466]: arrived (Hallway.) from 4464
+Wed Oct 21 12:06:49 2026 :: Log Trentlin [4467]: arrived (Hallway.) from 4466
+Wed Oct 21 12:06:50 2026 :: Log Trentlin [4470]: arrived (Guard Room.) from 4467
+Wed Oct 21 12:06:51 2026 :: Log Trentlin [4468]: arrived (Masters Chambers.) from 4470
+Wed Oct 21 12:06:52 2026 :: Log Trentlin [4468]: prac
+Wed Oct 21 12:06:55 2026 :: Log Trentlin [4468]: prac door
+Wed Oct 21 12:06:56 2026 :: Log Trentlin [4468]: prac door
+Wed Oct 21 12:06:57 2026 :: Log Trentlin [4468]: reca
+Wed Oct 21 12:06:57 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4468
+Wed Oct 21 12:06:58 2026 :: Log Trentlin [4207]: w
+Wed Oct 21 12:06:58 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Wed Oct 21 12:07:00 2026 :: Log Trentlin [4208]: heal refresh
+Wed Oct 21 12:07:00 2026 :: Log Trentlin [4208]: gold -50
+Wed Oct 21 12:07:04 2026 :: Log Trentlin [4208]: e
+Wed Oct 21 12:07:04 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4208
+Wed Oct 21 12:07:05 2026 :: Log Trentlin [4207]: e
+Wed Oct 21 12:07:05 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 21 12:07:05 2026 :: Log Trentlin [4202]: e
+Wed Oct 21 12:07:05 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 21 12:07:05 2026 :: Log Trentlin [4201]: e
+Wed Oct 21 12:07:05 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Wed Oct 21 12:07:05 2026 :: Log Trentlin [2427]: n
+Wed Oct 21 12:07:05 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct 21 12:07:06 2026 :: Log Trentlin [2404]: n
+Wed Oct 21 12:07:06 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Wed Oct 21 12:07:06 2026 :: Log Trentlin [2401]: note
+Wed Oct 21 12:07:16 2026 :: Treasure goblin: vanished from room 7698 (The Dungeon, ultima.are) (too long in one area).
+Wed Oct 21 12:07:25 2026 :: Log Trentlin [2401]: note read 25
+Wed Oct 21 12:07:44 2026 :: Log Trentlin [2401]: wh
+Wed Oct 21 12:07:50 2026 :: Log Trentlin [2401]: s
+Wed Oct 21 12:07:50 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Wed Oct 21 12:07:50 2026 :: Log Trentlin [2404]: s
+Wed Oct 21 12:07:50 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Wed Oct 21 12:07:51 2026 :: Log Trentlin [2427]: w
+Wed Oct 21 12:07:51 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 2427
+Wed Oct 21 12:07:52 2026 :: Log Trentlin [4201]: w
+Wed Oct 21 12:07:52 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4201
+Wed Oct 21 12:07:53 2026 :: Log Trentlin [4202]: n
+Wed Oct 21 12:07:53 2026 :: Log Trentlin [4203]: arrived (The Hall of Cobwebs) from 4202
+Wed Oct 21 12:07:53 2026 :: Log Trentlin [4203]: n
+Wed Oct 21 12:07:53 2026 :: Log Trentlin [4210]: arrived (The Sickroom of the Restless) from 4203
+Wed Oct 21 12:07:55 2026 :: Log Trentlin [4210]: sleep
+Wed Oct 21 12:07:55 2026 :: Log Trentlin [4210]: quit
+Wed Oct 21 12:07:55 2026 :: Trentlin has quit.
+Wed Oct 21 12:07:55 2026 :: [QUIT] Player rejoined the real world.
