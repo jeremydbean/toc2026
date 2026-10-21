@@ -98,10 +98,18 @@ class ChannelHistory(unittest.TestCase):
                 with mud.connect(timeout=120) as two:
                     login(two, "Hearly", PASSWORD)
 
+                    run(one, "gossip a public matter", 1.8)
                     run(one, "tell Hearly a private matter", 1.8)
 
                     self.assertIn(
                         "a private matter", run(one, "history tell", 2.0))
+                    # The tells alone: HISTORY TELL gathered every channel
+                    # too (audit, 2026-10-21).
+                    two.drain(1.0)          # the gossip itself, live
+                    said = run(two, "history tell", 2.0)
+                    self.assertIn("on your tells", said, said)
+                    self.assertNotIn("a public matter",
+                                     said[said.index("on your tells"):], said)
                     self.assertIn(
                         "a private matter", run(two, "history tell", 2.0))
 

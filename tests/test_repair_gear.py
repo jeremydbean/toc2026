@@ -125,12 +125,20 @@ class RepairTests(unittest.TestCase):
         self.assertLessEqual(platinum, 10, cost_line[0])
 
     def test_repair_restores_armour_filed_down_by_damage(self) -> None:
-        """A dented shield loses a point of AC and two thirds of its worth.
+        """A dented shield loses a point of AC; repair puts it back.
 
-        check_shield_block does that permanently; nothing used to put it
-        back, so a shield that had been repaired ten times was ten points
-        worse than the one on the shelf. Repair now restores both, up to
-        -- never past -- the prototype it was made from.
+        check_shield_block, heat metal and acid breath file armour down,
+        and nothing used to put it back, so a shield that had been
+        repaired ten times was ten points worse than the one on the
+        shelf. Repair restores the values, up to -- never past -- the
+        prototype it was made from.
+
+        Worth is the other way round (audit, 2026-10-21): repair used to
+        raise obj->cost to the prototype's, and a purchase caps obj->cost
+        at what was paid so nothing can be bought low and sold high. Buy
+        at a discount, wear a point off, repair, sell elsewhere at full
+        price: 194,776 copper from nothing. Repair never touches worth
+        now, and damage no longer cuts it.
         """
         with LiveMud() as mud:
             # Plenty of coin: the quote is a few kills at the helmet's level.
@@ -142,14 +150,23 @@ class RepairTests(unittest.TestCase):
                 run(client, "load obj 4619")
                 before = run(client, "stat obj helmet", settle=1.5)
 
-                # Stand in for a beating: file the armour down and cut
-                # the price the way a damaged shield gets cut.
+                # Stand in for a beating after a discounted purchase: the
+                # armour filed down, the worth capped at what was paid.
                 run(client, "set obj helmet v0 0")
                 run(client, "set obj helmet cost 1")
                 run(client, "set obj helmet condition 20")
 
                 run(client, "repair helmet", settle=2.0)
                 after = run(client, "stat obj helmet", settle=1.5)
+
+                # A piece dented before dents lowered condition: perfect
+                # by condition, filed down by value. REPAIR must see it.
+                run(client, "drop helmet")
+                run(client, "purge")
+                run(client, "load obj 4619")
+                run(client, "set obj helmet v0 0")
+                old_dent = run(client, "repair helmet", settle=2.0)
+                old_after = run(client, "stat obj helmet", settle=1.5)
 
         def cost_of(text: str) -> int:
             m = re.search(r"Cost:\s*(-?\d+)", text)
@@ -163,12 +180,12 @@ class RepairTests(unittest.TestCase):
                 raise AssertionError("no Values in stat output:\n" + text)
             return int(m.group(1))
 
-        self.assertEqual(
-            cost_of(before), cost_of(after),
-            "repair should restore the worth the damage took off")
+        self.assertEqual(cost_of(after), 1, "repair must not raise worth past what was paid")
         self.assertEqual(
             first_value(before), first_value(after),
             "repair should restore the armour value the damage filed down")
+        self.assertNotIn("perfect condition", old_dent.lower(), old_dent)
+        self.assertEqual(first_value(before), first_value(old_after))
 
     def test_an_undamaged_item_is_refused(self) -> None:
         with LiveMud() as mud:

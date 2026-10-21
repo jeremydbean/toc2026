@@ -3180,18 +3180,26 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                         {
                             if( IS_OBJ_STAT( obj_lose, ITEM_NOREMOVE) )
                             {
+                                /* Take the worn bonus off at the old values
+                                   (unequip_char adds), file the piece down,
+                                   then put it back at the new ones
+                                   (equip_char subtracts). The signs were the
+                                   other way round, so every heat left the
+                                   wearer better armoured, for good. */
                                 if ( ( iWear = obj_lose->wear_loc ) != WEAR_NONE )
                                 {
                                     for (i = 0; i < 4; i ++)
-                                        victim->armor[i] -= apply_ac( obj_lose, iWear, i );
+                                        victim->armor[i] += apply_ac( obj_lose, iWear, i );
                                 }
                                 for (i = 0; i < 4; i ++)
                                     obj_lose->value[i] -= 1;
-                                obj_lose->cost       = obj_lose->cost/3;
+                                /* Wear REPAIR sees, not a cut in worth. */
+                                obj_lose->condition = (sh_int) UMAX( 1,
+                                    obj_lose->condition - REPAIR_DENT_WEAR );
                                 if ( iWear != WEAR_NONE )
                                 {
                                     for (i = 0; i < 4; i++)
-                                        victim->armor[i] += apply_ac( obj_lose, iWear, i );
+                                        victim->armor[i] -= apply_ac( obj_lose, iWear, i );
                                 }
                                 dam = GET_DAMROLL(ch) + dice(2, ch->level/2);
                                 damage( ch, victim, dam, sn, DAM_FIRE );
@@ -3204,16 +3212,15 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                                      victim, obj_lose, NULL, TO_ROOM );
                                 send_to_char("Your armor warps from the heat and falls into your pack -- take it to a repair shop.\n\r",
                                              victim);
-                                if ( ( iWear = obj_lose->wear_loc ) != WEAR_NONE )
-                                {
-                                    for (i = 0; i < 4; i ++)
-                                        victim->armor[i] -= apply_ac( obj_lose, iWear, i );
-                                }
+                                /* Off first, at the values equip_char took
+                                   away: unequip_char gives back exactly
+                                   those. Filing it down first gave back
+                                   less, and the extra subtraction this
+                                   used to make kept a bonus for good. */
+                                if ( obj_lose->wear_loc != WEAR_NONE )
+                                    unequip_char(victim, obj_lose);
                                 for (i = 0; i < 4; i ++)
                                     obj_lose->value[i] -= 1;
-                                obj_lose->cost       = obj_lose->cost/3;
-                                if ( iWear != WEAR_NONE )
-                                    unequip_char(victim, obj_lose);
                                 SET_BIT(obj_lose->extra_flags, ITEM_DAMAGED);
                                 obj_lose->condition = 0;
                                 dam = GET_DAMROLL(ch) + dice(1, ch->level/2);
@@ -4840,15 +4847,18 @@ void spell_acid_breath( int sn, int level, CHAR_DATA *ch, void *vo )
 		{
 		    act( "$p is pitted and etched!",
 			victim, obj_lose, NULL, TO_CHAR );
+		    /* Bonus off at the old values, back on at the new --
+		       the same reversed signs heat metal had. */
 		    if ( ( iWear = obj_lose->wear_loc ) != WEAR_NONE )
 			for (i = 0; i < 4; i ++)
-			    victim->armor[i] -= apply_ac( obj_lose, iWear, i );
+			    victim->armor[i] += apply_ac( obj_lose, iWear, i );
 		    for (i = 0; i < 4; i ++)
 		    	obj_lose->value[i] -= 1;
-		    obj_lose->cost      = 0;
+		    obj_lose->condition = (sh_int) UMAX( 1,
+			obj_lose->condition - REPAIR_DENT_WEAR );
 		    if ( iWear != WEAR_NONE )
 			for (i = 0; i < 4; i++)
-			    victim->armor[i] += apply_ac( obj_lose, iWear, i );
+			    victim->armor[i] -= apply_ac( obj_lose, iWear, i );
 		}
 		break;
 

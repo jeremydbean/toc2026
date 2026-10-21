@@ -437,7 +437,7 @@ void playlog_bug_context( char *buf, size_t size )
 void playlog_bug( const char *message )
 {
     char fields[PLAY_LINE];
-    char text[PLAY_LINE - 64];
+    char text[PLAY_LINE - 128];        /* room for the tab and the line */
 
     play_clean( text, sizeof(text), message );
     snprintf( fields, sizeof(fields), "%s\t%s", text,

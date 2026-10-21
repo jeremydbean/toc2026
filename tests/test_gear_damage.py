@@ -63,6 +63,23 @@ class GearDamageTests(unittest.TestCase):
         self.assertNotIn("extract_obj", mend)
         self.assertIn("obj->condition = 100", mend)
         self.assertIn("REMOVE_BIT(obj->extra_flags, ITEM_DAMAGED)", mend)
+        # Worth is never raised by repair: that undid the purchase cap.
+        self.assertNotIn("obj->cost =", mend)
+
+    def test_damage_is_wear_not_worth(self):
+        """Audit 2026-10-21: a dent cut a shield's worth to a third and
+        left condition at 100, so REPAIR called it perfect. Damage now
+        lowers condition and never touches obj->cost; a shop pays a
+        third for a broken piece instead."""
+        block = body(read("src", "fight.c"), "bool check_shield_block(")
+        self.assertIn("obj->condition - REPAIR_DENT_WEAR", block)
+        self.assertNotIn("obj->cost", block)
+        magic = read("src", "magic.c")
+        for spell in ("void spell_heat_metal(", "void spell_acid_breath("):
+            self.assertNotIn("->cost", body(magic, spell), spell)
+            self.assertIn("REPAIR_DENT_WEAR", body(magic, spell), spell)
+        cost = body(read("src", "act_obj.c"), "long get_cost(")
+        self.assertIn("IS_OBJ_STAT(obj, ITEM_DAMAGED)", cost)
 
 
 if __name__ == "__main__":

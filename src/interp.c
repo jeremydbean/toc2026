@@ -640,7 +640,7 @@ static const char *watch_room_tag( CHAR_DATA *ch, char *buf, size_t size )
 void watch_log( CHAR_DATA *ch, const char *fmt, ... )
 {
     char body[2 * MAX_INPUT_LENGTH];
-    char line[2 * MAX_INPUT_LENGTH];
+    char line[3 * MAX_INPUT_LENGTH];   /* the body, the name and the room */
     char where[16];
     va_list args;
 
@@ -667,8 +667,12 @@ void watch_log( CHAR_DATA *ch, const char *fmt, ... )
  */
 static bool command_hides_arguments( const char *name )
 {
+    /* ALIAS too: its body is any command, a password one included, and
+       "alias <name>" answers with the body. Logging it wrote a tell's
+       words or a password into the published journal (audit,
+       2026-10-21). */
     static const char * const secret[] =
-    { "password", "resetpwd", "delete", "delet", "remort", NULL };
+    { "password", "resetpwd", "delete", "delet", "remort", "alias", NULL };
     int i;
 
     if ( name == NULL )
@@ -681,6 +685,49 @@ static bool command_hides_arguments( const char *name )
     return FALSE;
 }
 
+
+/*
+ * How private a typed line is: LINE_SECRET never has its words written
+ * anywhere, LINE_PRIVATE only for a character flagged with LOG <name>.
+ * AT, FORCE and ORDER carry another command after their first word, and
+ * that command's privacy is theirs: "at 3001 tell x ..." is a tell.
+ */
+#define LINE_PUBLIC  0
+#define LINE_PRIVATE 1
+#define LINE_SECRET  2
+
+static int line_privacy( const char *name, const char *args )
+{
+    char skip[MAX_INPUT_LENGTH], inner[MAX_INPUT_LENGTH];
+    const char *rest;
+    int i;
+
+    if ( command_hides_arguments( name ) )
+        return LINE_SECRET;
+    if ( command_is_private( name ) )
+        return LINE_PRIVATE;
+    if ( args == NULL || ( str_cmp( name, "at" ) && str_cmp( name, "force" )
+                           && str_cmp( name, "order" ) ) )
+        return LINE_PUBLIC;
+
+    rest = one_argument( (char *) args, skip );
+    if ( !isalpha( (unsigned char) rest[0] ) && rest[0] != '\0'
+    &&   !isspace( (unsigned char) rest[0] ) )
+    {
+        inner[0] = rest[0];     /* a punctuation command, like ' */
+        inner[1] = '\0';
+        rest++;
+    }
+    else
+        rest = one_argument( (char *) rest, inner );
+    if ( inner[0] == '\0' )
+        return LINE_PUBLIC;
+    /* The first command the word could be, as interpret would take it. */
+    for ( i = 0; cmd_table[i].name[0] != '\0'; i++ )
+        if ( !str_prefix( inner, cmd_table[i].name ) )
+            return line_privacy( cmd_table[i].name, rest );
+    return LINE_PUBLIC;
+}
 
 /*
  * The social whose name is exactly this word, or -1. A linear walk, but
@@ -1162,16 +1209,15 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
          * buries the handful of lines where something really was.
          */
         bool quiet  = ( cmd_table[cmd].log == LOG_NEVER );
-        bool secret = command_hides_arguments( cmd_table[cmd].name )
-                   || ( !IS_SET(ch->act, PLR_LOG)
-                        && command_is_private( cmd_table[cmd].name ) );
+        int privacy = line_privacy( cmd_table[cmd].name, argument );
+        bool secret = privacy == LINE_SECRET
+                   || ( !IS_SET(ch->act, PLR_LOG) && privacy == LINE_PRIVATE );
 
         /* The play journal never holds a private or password command's
            words, watched in full or not: it is published. */
         play_note( ch, cmd_table[cmd].name,
-                   ( secret || command_is_private( cmd_table[cmd].name ) )
-                       ? cmd_table[cmd].name : logline,
-                   secret || command_is_private( cmd_table[cmd].name ), false );
+                   privacy != LINE_PUBLIC ? cmd_table[cmd].name : logline,
+                   privacy != LINE_PUBLIC, false );
 
         if ( watched )
         {
@@ -1193,7 +1239,8 @@ static void interpret_body( CHAR_DATA *ch, char *argument )
         if ( !watched && logline[0] != '\0'
              && ( fLogAll || cmd_table[cmd].log == LOG_ALWAYS ) )
         {
-            snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Log %s: %s", ch->name, logline );
+            snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Log %s: %s", ch->name,
+                      privacy != LINE_PUBLIC ? cmd_table[cmd].name : logline );
             log_string( log_buf );
         }
 

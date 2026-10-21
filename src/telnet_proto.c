@@ -7,6 +7,7 @@
 #include <arpa/telnet.h>
 #include <stdlib.h>
 #include <zlib.h>
+#include <sys/socket.h>
 
 #include "merc.h"
 #include "telnet_proto.h"
@@ -95,6 +96,10 @@ static void telnet_start_compression( DESCRIPTOR_DATA *d )
     d->out_compress = stream;
 }
 
+/*
+ * Abandon the stream: for a socket that is closing, where nobody will
+ * read what a finished stream would have said.
+ */
 void telnet_end_compression( DESCRIPTOR_DATA *d )
 {
     z_stream *stream;
@@ -104,16 +109,62 @@ void telnet_end_compression( DESCRIPTOR_DATA *d )
 
     stream = (z_stream *) d->out_compress;
 
-    /*
-     * Clear the pointer first: deflateEnd() must not re-enter the compressed
-     * write path, and the socket is going away regardless.
-     */
+    /* Clear the pointer first: deflateEnd() must not re-enter the
+       compressed write path. */
     d->out_compress = NULL;
     deflateEnd( stream );
     free( stream );
 
     free( d->out_compress_buf );
     d->out_compress_buf = NULL;
+}
+
+/*
+ * Finish the stream for a connection that stays open: a client's DONT
+ * COMPRESS2. The client is decoding a deflate stream and only knows it
+ * has ended when it reads the end; abandoning it and writing plaintext
+ * after it was garbage to every decoder -- zlib's "invalid stored block
+ * lengths" (audit, 2026-10-21). Z_FINISH writes the end, and only then
+ * does output go out plain. A stream that cannot finish leaves nothing a
+ * client could read, so the connection is closed instead (false).
+ */
+static bool telnet_finish_compression( DESCRIPTOR_DATA *d )
+{
+    z_stream *stream;
+    bool ok = true;
+    int status;
+
+    if ( d == NULL || d->out_compress == NULL )
+        return true;
+
+    stream = (z_stream *) d->out_compress;
+    stream->next_in  = NULL;
+    stream->avail_in = 0;
+    do
+    {
+        size_t produced;
+
+        stream->next_out  = (Bytef *) d->out_compress_buf;
+        stream->avail_out = MCCP_BUFFER_SIZE;
+        status = deflate( stream, Z_FINISH );
+        if ( status != Z_OK && status != Z_STREAM_END )
+        {
+            ok = false;
+            break;
+        }
+        produced = MCCP_BUFFER_SIZE - stream->avail_out;
+        if ( produced > 0
+        &&   !write_raw_to_descriptor( d, (const char *) d->out_compress_buf,
+                                       (int) produced ) )
+        {
+            ok = false;
+            break;
+        }
+    }
+    while ( status != Z_STREAM_END );
+
+    telnet_end_compression( d );
+    return ok;
 }
 
 bool telnet_write_compressed( DESCRIPTOR_DATA *d, const char *txt, int length )
@@ -141,17 +192,30 @@ bool telnet_write_compressed( DESCRIPTOR_DATA *d, const char *txt, int length )
     stream->next_in  = (Bytef *)(uintptr_t) txt;
     stream->avail_in = (uInt) remaining;
 
-    while ( stream->avail_in > 0 )
+    /*
+     * Until the flush is complete, not merely until the input is taken:
+     * deflate can swallow the last of the input with the flushed output
+     * still inside it, and a full buffer is how it says so. Stopping at
+     * avail_in == 0 left the tail of a big write -- seven bytes of 8,192
+     * in the audit's case (2026-10-21) -- waiting for the next one.
+     */
+    do
     {
+        int status;
+
         stream->next_out  = (Bytef *) d->out_compress_buf;
         stream->avail_out = MCCP_BUFFER_SIZE;
 
-        if ( deflate( stream, Z_SYNC_FLUSH ) != Z_OK )
+        status = deflate( stream, Z_SYNC_FLUSH );
+        if ( status == Z_BUF_ERROR )
+            break;      /* nothing was left to flush: done */
+        if ( status != Z_OK )
         {
-            /* Stream is unusable; drop back to plain output rather than
-             * silently losing the player's session. */
+            /* The stream is unusable, and the client is still decoding
+               it: plaintext now would be garbage to it, and the input
+               was partly consumed. Drop the connection instead. */
             telnet_end_compression( d );
-            return write_raw_to_descriptor( d, txt, length );
+            return false;
         }
 
         {
@@ -163,6 +227,7 @@ bool telnet_write_compressed( DESCRIPTOR_DATA *d, const char *txt, int length )
                 return false;
         }
     }
+    while ( stream->avail_in > 0 || stream->avail_out == 0 );
 
     return true;
 }
@@ -450,8 +515,11 @@ size_t telnet_filter_input( DESCRIPTOR_DATA *d, const char *raw, size_t length,
                 case TELOPT_COMPRESS2:
                     if ( wanted )
                         telnet_start_compression( d );
-                    else
-                        telnet_end_compression( d );
+                    else if ( !telnet_finish_compression( d )
+                         &&   d->descriptor >= 0 )
+                        /* Nothing more can reach them readably: the main
+                           loop reads end-of-file and closes it as usual. */
+                        shutdown( d->descriptor, SHUT_RDWR );
                     break;
                 default:
                     /* Refuse anything we do not implement, once. */

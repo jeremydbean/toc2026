@@ -797,6 +797,9 @@ static int history_compare( const void *a, const void *b )
  * client stopped capturing wants what was said, and a channel they
  * cannot read is never gathered at all.
  */
+#define HISTORY_ALL_CHANNELS  (-1)
+#define HISTORY_NO_CHANNELS   (-2)   /* HISTORY TELL: the tells alone */
+
 static int history_gather( CHAR_DATA *ch, HISTORY_ENTRY *out, int limit,
                            int only_channel, bool want_tells, time_t since )
 {
@@ -808,6 +811,11 @@ static int history_gather( CHAR_DATA *ch, HISTORY_ENTRY *out, int limit,
     {
         int held, start;
 
+        /* HISTORY TELL passed -2 and this asked only ">= 0", so it
+           gathered every channel too, and the gossip ate the count the
+           tells were asked for (audit, 2026-10-21). */
+        if ( only_channel == HISTORY_NO_CHANNELS )
+            break;
         if ( only_channel >= 0 && index != only_channel )
             continue;
         if ( !history_may_read( ch, index ) )
@@ -1000,7 +1008,8 @@ void do_history( CHAR_DATA *ch, char *argument )
     /* HISTORY TELL: the character's own, and nobody else's. */
     if ( !str_cmp( arg, "tell" ) || !str_cmp( arg, "tells" ) )
     {
-        count = history_gather( ch, gathered, HISTORY_GATHER_MAX, -2, true, 0 );
+        count = history_gather( ch, gathered, HISTORY_GATHER_MAX,
+                               HISTORY_NO_CHANNELS, true, 0 );
         history_print( ch, gathered, count, wanted, "your tells" );
         return;
     }
@@ -1008,7 +1017,8 @@ void do_history( CHAR_DATA *ch, char *argument )
     /* HISTORY: everything this character could have heard. */
     if ( arg[0] == '\0' )
     {
-        count = history_gather( ch, gathered, HISTORY_GATHER_MAX, -1, true, 0 );
+        count = history_gather( ch, gathered, HISTORY_GATHER_MAX,
+                               HISTORY_ALL_CHANNELS, true, 0 );
         if ( count == 0 )
         {
             send_to_char( "Nothing has been said on any channel.\n\r", ch );

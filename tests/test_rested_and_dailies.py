@@ -190,5 +190,39 @@ class RestedAndDailyLiveTests(unittest.TestCase):
                 self.assertIn("You are not rested.", run(client, "rested", 1.4))
 
 
+    def test_a_restart_is_not_time_away(self) -> None:
+        """Audit 2026-10-21: SIGTERM saved everyone before close_socket
+        stamped the departure, so the file kept an hour-old LastOut and
+        the restart counted the whole sitting as time away -- a fresh
+        fifteen-minute wait came back as ready at once. A playing
+        character's save now writes LastOut as the moment of the save."""
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zrestart", PASSWORD)
+                client.drain(1.0)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            an_hour_ago = int(time.time()) - 3600
+            patch_player_file(mud, "Zrestart", Levl=20, Room=QUESTMASTER,
+                              LastOut=an_hour_ago, QuestNext=0)
+
+            with mud.connect(timeout=120) as client:
+                login(client, "Zrestart", PASSWORD)
+                run(client, "scroll 0", 1.0)
+                run(client, "aquest request", 2.5)
+                run(client, "aquest abort", 2.0)
+                self.assertIn("Return in", run(client, "aquest request", 2.0))
+            mud.restart()
+
+            saved = (mud.player_dir / "Zrestart").read_text(encoding="latin-1")
+            last_out = int(re.search(r"(?m)^LastOut\s+(\d+)", saved).group(1))
+            self.assertGreater(last_out, an_hour_ago + 3000, "the shutdown is the departure")
+            self.assertRegex(saved, r"(?m)^QuestNext [1-9]")
+            with mud.connect(timeout=120) as client:
+                login(client, "Zrestart", PASSWORD)
+                run(client, "scroll 0", 1.0)
+                self.assertIn("Return in", run(client, "aquest request", 2.0))
+
+
 if __name__ == "__main__":
     unittest.main()

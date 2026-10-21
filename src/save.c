@@ -618,6 +618,30 @@ void save_char_obj( CHAR_DATA *ch )
 
 
 /*
+ * LastOut as the file should hold it. Somebody in the game is written as
+ * leaving now: a shutdown saves everyone before close_socket stamps the
+ * departure, and a crash leaves only the last autosave, so the file kept
+ * the previous logout and the next login counted the whole sitting as
+ * time away -- a fresh fifteen-minute quest wait came back as "Ready to
+ * quest!" seconds after a restart (audit, 2026-10-21). Memory keeps the
+ * previous logout, which HISTORY's "while you were away" line marks.
+ * A link-dead body was stamped when the link went; an offline load has
+ * no descriptor and keeps what it read.
+ */
+static long saved_last_logout( CHAR_DATA *ch )
+{
+    DESCRIPTOR_DATA *d;
+
+    if ( ch->desc != NULL )
+	return ch->desc->connected == CON_PLAYING
+	    ? (long) current_time : ch->pcdata->last_logout;
+    for ( d = descriptor_list; d != NULL; d = d->next )
+	if ( d->original == ch && d->connected == CON_PLAYING )
+	    return (long) current_time;     /* switched into a mobile */
+    return ch->pcdata->last_logout;
+}
+
+/*
  * Write the char.
  */
 void fwrite_char( CHAR_DATA *ch, FILE *fp )
@@ -719,7 +743,7 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "PkRec %ld\n",ch->pcdata->pkills_received );
     fprintf( fp, "PkGiv %ld\n",ch->pcdata->pkills_given );
     achievement_write_char( ch, fp );
-    fprintf( fp, "LastOut  %ld\n", ch->pcdata->last_logout );
+    fprintf( fp, "LastOut  %ld\n", saved_last_logout( ch ) );
     /* Rested experience and whether they lay down somewhere to rest
        (rested.c); daily quest points, the day and how many that day
        (quest.c). */
@@ -3140,23 +3164,80 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 
 /* save and recall corpses for newcorpse in act_wiz.c */
 
+/* Nothing but whitespace left: how the old "99 99" end marker ends. */
+static bool corpse_history_at_end( FILE *fp )
+{
+    int c;
+
+    do
+	c = getc( fp );
+    while ( c != EOF && isspace( c ) );
+    if ( c == EOF )
+	return true;
+    ungetc( c, fp );
+    return false;
+}
+
+/*
+ * Read up to `rows` corpse records; the number read, or -1 for a file
+ * that is not one. The end is "-1 -1". Files written before 2026-10-21
+ * end "99 99", which is also how a 99-item record begins: the old readers
+ * stopped there and lost it and every older one (audit, 2026-10-21). An
+ * old end marker is the last thing in its file, so 99 is the end only
+ * when nothing follows it. fscanf rather than fread_number, which exits
+ * the game on a truncated file.
+ */
+int corpse_history_read( FILE *fp, int (*cont)[CORPSE_VALUES],
+                         int (*level)[CORPSE_VALUES], int rows )
+{
+    int n = 0, c, count, levels;
+
+    while ( n < rows )
+    {
+	if ( fscanf( fp, "%d %d", &count, &levels ) != 2 )
+	    break;                  /* no end marker: keep what was read */
+	if ( count == -1 )
+	    break;
+	if ( count == 99 && corpse_history_at_end( fp ) )
+	    break;
+	if ( count < 1 || count > CORPSE_MAX_ITEMS )
+	    return -1;
+	cont[n][0]  = count;
+	level[n][0] = levels;
+	for ( c = 1; c <= count + 1; c++ )
+	    if ( fscanf( fp, "%d %d", &cont[n][c], &level[n][c] ) != 2 )
+		return -1;
+	n++;
+    }
+    return n;
+}
+
+static void corpse_history_write( FILE *fp, int *cont, int *level )
+{
+    int c, checksum1 = 0, checksum2 = 0;
+
+    fprintf( fp, "%d %d ", cont[0], level[0] );
+    for ( c = 1; c <= cont[0]; c++ )
+    {
+	fprintf( fp, "%d %d ", cont[c], level[c] );
+	checksum1 += cont[c];
+	checksum2 += level[c];
+    }
+    fprintf( fp, "%d %d ", checksum1, checksum2 );
+}
+
 void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
 {
-    enum { CORPSE_ROWS = 6, CORPSE_VALUES = 1024,
-           CORPSE_MAX_ITEMS = CORPSE_VALUES - 3 };
     FILE 	*fp;
     OBJ_DATA	*obj, *obj_next;
     OBJ_DATA	*obj_nest, *objn_next;
     char	strsave[MAX_INPUT_LENGTH];
     char 	buf[MAX_STRING_LENGTH];
-    int		corpse_cont[CORPSE_ROWS][CORPSE_VALUES];
-    int		item_level[CORPSE_ROWS][CORPSE_VALUES];
-    int		c = 1, i;
-    int		checksum1 = 0;
-    int 	checksum2 = 0;
+    /* Row 0 is this corpse; 1 onward the older ones, as read. */
+    static int	corpse_cont[CORPSE_HISTORY_ROWS][CORPSE_VALUES];
+    static int	item_level[CORPSE_HISTORY_ROWS][CORPSE_VALUES];
+    int		c = 1, i, older = 0;
     int         previous_corpses;
-    bool	first;
-    bool        malformed = false;
 
     if(corpse == NULL || !corpse->contains)
 	return;
@@ -3175,10 +3256,8 @@ void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
             bug("corpse_back: invalid or oversized corpse contents.", 0);
             return;
         }
-	corpse_cont[5][c] = obj->pIndexData->vnum;
-	item_level[5][c] = obj->level;
-	checksum1 += corpse_cont[5][c];
-	checksum2 += item_level[5][c];
+	corpse_cont[0][c] = obj->pIndexData->vnum;
+	item_level[0][c] = obj->level;
 	++c;
 	if( obj->contains )
 	{
@@ -3190,10 +3269,8 @@ void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
                     bug("corpse_back: invalid or oversized nested contents.", 0);
                     return;
                 }
-		corpse_cont[5][c] = obj_nest->pIndexData->vnum;
-		item_level[5][c] = obj_nest->level;
-		checksum1 += corpse_cont[5][c];
-		checksum2 += item_level[5][c];
+		corpse_cont[0][c] = obj_nest->pIndexData->vnum;
+		item_level[0][c] = obj_nest->level;
 		++c;
 	    }
 	}
@@ -3202,18 +3279,11 @@ void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
     if( c <= 1 )
 	return;
 
-    corpse_cont[5][0] = c - 1;
-    item_level[5][0] = c - 1;
-    corpse_cont[5][c+1] = checksum1;
-    item_level[5][c+1] = checksum2;
+    corpse_cont[0][0] = c - 1;
+    item_level[0][0] = c - 1;
 
     previous_corpses = ch->pcdata->corpses;
-    if( previous_corpses == 0 )
-	first = true;
-    else
-	first = false;
-
-    if( ch->pcdata->corpses >= 5 )
+    if( ch->pcdata->corpses >= CORPSE_HISTORY_ROWS )
     	ch->pcdata->corpses = 1;
     else
 	++ch->pcdata->corpses;
@@ -3227,73 +3297,28 @@ void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
     snprintf(strsave, sizeof(strsave), "%s%s.cps", PLAYER_DIR, ( ch->name ));
 #endif
 
-    if( first )
+    /* The older corpses, unless this is the first. */
+    if ( previous_corpses != 0 )
     {
-	if( !( fp = fopen( strsave, "w" ) ) )
+	if( !(fp = fopen( strsave, "r" ) ) )
 	{
-            snprintf( buf, sizeof(buf), "Corpses back: fopen %s: ", ch->name );
+	    snprintf( buf, sizeof(buf), "Corpse back: fopen %s: ", ch->name );
 	    bug( buf, 0 );
 	    perror( strsave );
 	    ch->pcdata->corpses = previous_corpses;
 	    fpReserve = fopen( NULL_FILE, "r" );
 	    return;
-   	}
-	for( i = 0; i < c ; i++ )
-	{
-	    fprintf( fp, "%d ", corpse_cont[5][i] );
-	    fprintf( fp, "%d ", item_level[5][i] );
 	}
-	fprintf( fp, "%d ", corpse_cont[5][i+1] );
-	fprintf( fp, "%d ", item_level[5][i+1] );
-	fprintf( fp, "99 99" );
-	if (fclose(fp) != 0)
-        {
-            bug("corpse_back: failed to finish corpse history file.", 0);
-            perror(strsave);
-            ch->pcdata->corpses = previous_corpses;
-        }
-	fpReserve = fopen( NULL_FILE, "r" );
-	return;
-    }
-
-    if( !(fp = fopen( strsave, "r" ) ) )
-    {
-        snprintf( buf, sizeof(buf), "Corpse back: fopen %s: ", ch->name );
-	bug( buf, 0 );
-	perror( strsave );
-	ch->pcdata->corpses = previous_corpses;
-	fpReserve = fopen( NULL_FILE, "r" );
-	return;
-    }
-    for( i = 4; i > 0; i-- )
-    {
-	corpse_cont[i][0] = fread_number( fp );
-	item_level[i][0] = fread_number( fp );
-
-	if ( corpse_cont[i][0] == 99 )
-	    break;
-
-	if ( corpse_cont[i][0] < 0
-	  || corpse_cont[i][0] > CORPSE_MAX_ITEMS )
+	older = corpse_history_read( fp, corpse_cont + 1, item_level + 1,
+				     CORPSE_HISTORY_ROWS - 1 );
+	fclose( fp );
+	if ( older < 0 )
 	{
-	    malformed = true;
-	    break;
+	    bug("corpse_back: invalid item count in corpse history.", 0);
+	    ch->pcdata->corpses = previous_corpses;
+	    fpReserve = fopen( NULL_FILE, "r" );
+	    return;
 	}
-
-	for( c = 1; c < corpse_cont[i][0] +2 ; c++ )
-	{
-	    corpse_cont[i][c] = fread_number( fp );
-	    item_level[i][c] = fread_number( fp );
-	}
-    }
-    fclose( fp );
-
-    if (malformed)
-    {
-	bug("corpse_back: invalid item count in corpse history.", 0);
-	ch->pcdata->corpses = previous_corpses;
-	fpReserve = fopen( NULL_FILE, "r" );
-	return;
     }
 
     if( !( fp = fopen( strsave, "w" ) ) )
@@ -3305,27 +3330,9 @@ void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
 	fpReserve = fopen( NULL_FILE, "r" );
 	return;
     }
-    for( i = 5; i > 0 ; i-- )
-    {
-	if( corpse_cont[i][0] == 99 )
-	    break;
-
-	fprintf( fp, "%d ", corpse_cont[i][0] );
-	fprintf( fp, "%d ", item_level[i][0] );
-	checksum1 = 0;
-	checksum2 = 0;
-
-	for( c = 1; c < corpse_cont[i][0] +1 ; c++ )
-	{
-	    fprintf( fp, "%d ", corpse_cont[i][c] );
-	    fprintf( fp, "%d ", item_level[i][c] );
-	    checksum1 += corpse_cont[i][c];
-	    checksum2 += item_level[i][c];
-	}
-	fprintf( fp, "%d ", checksum1 );
-	fprintf( fp, "%d ", checksum2 );
-    }
-    fprintf( fp, "99 99" );
+    for( i = 0; i <= older ; i++ )
+	corpse_history_write( fp, corpse_cont[i], item_level[i] );
+    fprintf( fp, "-1 -1" );
     if (fclose( fp ) != 0)
     {
 	bug("corpse_back: failed to finish corpse history file.", 0);

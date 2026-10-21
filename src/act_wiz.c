@@ -8632,8 +8632,9 @@ void do_newcorpse( CHAR_DATA *ch, char *argument )
     char	arg2[MAX_INPUT_LENGTH];
     int		i, c;
     int 	number;
-    int		corpse_cont[5][1024];
-    int		item_level[5][1024];
+    int		held;
+    static int	corpse_cont[CORPSE_HISTORY_ROWS][CORPSE_VALUES];
+    static int	item_level[CORPSE_HISTORY_ROWS][CORPSE_VALUES];
     int		checksum1, checksum2;
 
     argument = one_argument( argument, arg1 );
@@ -8682,25 +8683,19 @@ void do_newcorpse( CHAR_DATA *ch, char *argument )
         fpReserve = fopen( NULL_FILE, "r" );
         return;
     }
-    else
-    {
-	for( i = 0; i < 5 ; i++ )
-      	{
-	    corpse_cont[i][0] = fread_number( fp );
-	    item_level[i][0]  = fread_number( fp );
-
-	    if( corpse_cont[i][0] == 99 )
-		break;
-
-	    for( c = 1; c < corpse_cont[i][0]+2 ; c++ )
-	    {
-		corpse_cont[i][c]	= fread_number( fp );
-		item_level[i][c]	= fread_number( fp );
-	    }
-	}
-        fclose( fp );
-    }
+    /* The shared reader: bounded counts, no exit on a truncated file,
+       and the number of records it really found -- this read unchecked
+       counts into uninitialised arrays and then trusted any slot from
+       1 to 5 (audit, 2026-10-21). */
+    held = corpse_history_read( fp, corpse_cont, item_level,
+                                CORPSE_HISTORY_ROWS );
+    fclose( fp );
     fpReserve = fopen( NULL_FILE, "r" );
+    if ( held < 0 )
+    {
+	send_to_char( "That corpse history is damaged.\n\r", ch );
+	return;
+    }
 
     if( arg2[0] == '\0' )
     {
@@ -8709,11 +8704,8 @@ void do_newcorpse( CHAR_DATA *ch, char *argument )
 	send_to_char( "Corpse #  Contents   Flag\n\r",ch);
 	send_to_char( "--------------------------\n\r",ch);
 
-	for( i = 0; i < 5 ; i++ )
+	for( i = 0; i < held ; i++ )
 	{
-	    if( corpse_cont[i][0] == 99 )
-		break;
-
 	    snprintf( buf, sizeof(buf), "  %d		%3d   ", i+1, corpse_cont[i][0] );
 	    send_to_char( buf,ch );
 	    checksum1 = 0;
@@ -8738,13 +8730,13 @@ void do_newcorpse( CHAR_DATA *ch, char *argument )
 	number = atoi( arg2 );
 	--number;
 
-	if( number < 0 || number > 4 )
+	if( number < 0 || number >= CORPSE_HISTORY_ROWS )
 	{
 	    send_to_char( "Corpse number must be within 1 - 5\n\r",ch);
 	    return;
 	}
 
-	if( corpse_cont[number][0] == 99 )
+	if( number >= held )
 	{
 	    send_to_char( "They don't have that many corpses.\n\r",ch);
 	    return;

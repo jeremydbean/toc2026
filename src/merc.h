@@ -1548,6 +1548,11 @@ typedef struct hyrule_dungeon_gate
 #define ITEM_DAMAGED            (aa)
 #define ITEM_HEATED             (bb)
 
+/* Condition a dent, a heat or an etch takes off armour, so REPAIR sees
+   the filed-down values it puts back. Never below 1: zero with no
+   ITEM_DAMAGED is not a state the rest of the game expects. */
+#define REPAIR_DENT_WEAR        10
+
 /* Second group of extra flags */
 #define ITEM2_HUMAN_ONLY        (A)
 #define ITEM2_ELF_ONLY          (B)
@@ -3418,6 +3423,14 @@ void save_wizlist      ( void );
 void    save_char_obj   ( CHAR_DATA *ch );
 bool    load_char_obj   ( DESCRIPTOR_DATA *d, char *name );
 void    corpse_back     ( CHAR_DATA *ch, OBJ_DATA *corpse );
+/* A corpse history (corpse/<name>.cps) holds the last CORPSE_HISTORY_ROWS
+   corpses, newest first. Row r: [0] the count, [1..count] the items,
+   [count+1] the checksum; vnums in one array, levels in the other. */
+#define CORPSE_HISTORY_ROWS 5
+#define CORPSE_VALUES       1024
+#define CORPSE_MAX_ITEMS    ( CORPSE_VALUES - 3 )
+int     corpse_history_read( FILE *fp, int (*cont)[CORPSE_VALUES],
+                             int (*level)[CORPSE_VALUES], int rows );
 void    player_snapshot ( const char *name );  /* versioned snapshot of player file */
 void    player_snapshot_force ( const char *name ); /* unthrottled pre-restore snapshot */
 void    player_snapshot_milestone ( CHAR_DATA *ch, const char *tag, bool save_first );

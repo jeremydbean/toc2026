@@ -46,7 +46,11 @@ class PlaylogSourceTests(unittest.TestCase):
 
     def test_private_words_are_never_journalled(self) -> None:
         interp = source("interp.c")
-        self.assertIn("secret || command_is_private( cmd_table[cmd].name ), false );", interp)
+        self.assertIn("privacy != LINE_PUBLIC, false );", interp)
+        # ALIAS bodies hold any command, and AT/FORCE/ORDER carry one.
+        self.assertIn('"remort", "alias", NULL', interp)
+        for wrapper in ('"at"', '"force"', '"order"'):
+            self.assertIn(wrapper, interp[interp.index("static int line_privacy("):])
         playlog = source("playlog.c")
         self.assertIn('secret ? "(withheld)" : reply', playlog)
         self.assertIn("room_hides_from_log( ch->in_room )", playlog)
@@ -90,6 +94,8 @@ class PlaylogLiveTests(unittest.TestCase):
                 login(client, "Zplayer", PASSWORD)
                 client.drain(1.0)
                 for line in ("look", "frobnicate foo bar", "tell zplayer opensesame",
+                             "alias zpriv tell zplayer aliasmarker",
+                             "alias zpriv", "zpriv",
                              "score", "bug the fountain will not fill my skin"):
                     client.send(line)
                     client.drain(1.2)
@@ -112,6 +118,13 @@ class PlaylogLiveTests(unittest.TestCase):
 
             self.assertEqual(by_cmd["tell"][12], "(withheld)")
             self.assertNotIn("opensesame", text, "a tell's words never reach the journal")
+            # Audit 2026-10-21: an alias's body -- defined, shown or run --
+            # reached the journal and the watch log.
+            self.assertEqual(by_cmd["alias"][12], "(withheld)")
+            for sink in (text,
+                         (mud.root / "log" / "toc.log").read_text(encoding="latin-1"),
+                         mud.server_output()):
+                self.assertNotIn("aliasmarker", sink)
 
             report = [r for r in mine if r[1] == "report"]
             self.assertEqual(report[0][6], "bug")
@@ -122,7 +135,7 @@ class PlaylogLiveTests(unittest.TestCase):
             # The last one: the first is the session that made the character.
             self.assertEqual(session[-1][6], "quit")
             commands = int(next(f for f in session[-1] if f.endswith(" commands")).split()[0])
-            self.assertGreaterEqual(commands, 6, "five typed, and the QUIT itself")
+            self.assertGreaterEqual(commands, 9, "eight typed, and the QUIT itself")
             self.assertIn("1 refused", "\t".join(session[-1]))
 
     @unittest.skipIf(os.environ.get("TOC_SERVER_BINARY"),

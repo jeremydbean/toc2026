@@ -77,6 +77,40 @@ class StashLinkTests(unittest.TestCase):
             listing = run(client, "stash of Zalpha", 2.2)
             self.assertIn("bag", listing, listing)
 
+    def test_a_second_link_keeps_the_first(self) -> None:
+        """Audit 2026-10-21: the list was freed and then read, so the
+        second LINK wrote allocator bytes in front of the first name and
+        the first partner was locked out for good."""
+        mud = self.pair()
+        with mud.connect(timeout=120) as client:
+            create_character(client, "Zgammaray", PASSWORD)
+            client.drain(1.0)
+            client.send("quit")
+            self.assertTrue(client.wait_closed())
+        patch_player_file(mud, "Zgammaray", Levl=60, Tru=70, Room=ALTAR)
+
+        def links(name: str) -> str:
+            text = (mud.player_dir / name).read_text(encoding="latin-1")
+            line = next(l for l in text.split("\n") if l.startswith("StashLinks "))
+            return line[len("StashLinks "):].rstrip("~")
+
+        with mud.connect(timeout=120) as client:
+            login(client, "Zalpha", PASSWORD)
+            run(client, "stash link Zbeta", 1.8)
+            run(client, "stash link Zgammaray", 1.8)
+            self.assertEqual(links("Zalpha"), "Zbeta Zgammaray")
+            run(client, "stash unlink Zgammaray", 1.8)
+            self.assertEqual(links("Zalpha"), "Zbeta")
+            run(client, "stash link Zgammaray", 1.8)
+            client.send("quit")
+            self.assertTrue(client.wait_closed())
+        self.assertEqual(links("Zalpha"), "Zbeta Zgammaray")
+
+        with mud.connect(timeout=120) as client:
+            login(client, "Zbeta", PASSWORD)
+            self.assertIn("now share a stash", run(client, "stash link Zalpha", 2.2))
+            self.assertNotIn("do not share", run(client, "stash of Zalpha", 2.2))
+
     def test_taking_from_a_linked_stash_moves_it(self) -> None:
         mud = self.pair()
         with mud.connect(timeout=120) as client:

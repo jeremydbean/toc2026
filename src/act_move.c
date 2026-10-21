@@ -1381,9 +1381,13 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 
     if(IS_SET(ch->in_room->room_flags, ROOM_AFFECTED_BY) )
     {
+      ROOM_INDEX_DATA *trap_room = ch->in_room;
+
       room_affect(ch,ch->in_room, door);
-      /* room_affect may kill ch via a trap; char_from_room sets in_room=NULL */
-      if ( ch->in_room == NULL )
+      /* A trap that kills a player moves them to the death room rather
+	 than leaving in_room NULL, so asking for NULL let the dead walk
+	 on through the exit (audit, 2026-10-21). */
+      if ( gone_after_blow( ch, trap_room ) )
           return;
     }
 
@@ -1440,7 +1444,7 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     if(IS_SET(ch->in_room->room_flags, ROOM_AFFECTED_BY) )
     {
       room_affect(ch,ch->in_room, rev_dir[door]);
-      if ( ch->in_room == NULL )  /* ch killed by arrival room trap */
+      if ( gone_after_blow( ch, to_room ) )  /* killed by an arrival trap */
           return;
     }
 
@@ -5075,8 +5079,10 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
 
     if(IS_SET(temp_ch->in_room->room_flags, ROOM_AFFECTED_BY) )
     {
+      ROOM_INDEX_DATA *trap_room = temp_ch->in_room;
+
       room_affect(temp_ch,temp_ch->in_room, door);
-      if ( temp_ch->in_room == NULL )  /* temp_ch killed by departure trap */
+      if ( gone_after_blow( temp_ch, trap_room ) )  /* killed by a departure trap */
           return;
     }
 
@@ -5090,7 +5096,7 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
     if(IS_SET(ch->in_room->room_flags, ROOM_AFFECTED_BY) )
     {
       room_affect(ch,ch->in_room, rev_dir[door]);
-      if ( ch->in_room == NULL )  /* ch killed by arrival trap */
+      if ( gone_after_blow( ch, to_room ) )  /* killed by an arrival trap */
           return;
     }
 
@@ -5106,7 +5112,7 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
     if(IS_SET(ch->in_room->room_flags, ROOM_AFFECTED_BY) )
     {
       room_affect(ch,ch->in_room, door);
-      if ( ch->in_room == NULL )  /* ch killed by room trap after look */
+      if ( gone_after_blow( ch, to_room ) )  /* killed by a trap after look */
           return;
     }
 

@@ -2328,21 +2328,23 @@ bool is_safe_spell(CHAR_DATA *ch, CHAR_DATA *victim, bool area )
     if ( is_oracle_mob(victim) || is_hyrule_bystander(victim) )
 	return true;
 
-    /* no fighting in safe rooms
-    if (IS_SET(ch->in_room->room_flags,ROOM_SAFE))
-	return true; */
+    /* The Temple, the altar and safe rooms refuse a spell exactly as
+       is_safe refuses a blow. Both tests sat commented out here, so a
+       poison or a curse landed where MURDER was refused and the poison
+       then ticked the victim's hit points away (audit, 2026-10-21).
+       Callers print their own refusal. */
+    if ( ch->in_room->vnum == ROOM_VNUM_TEMPLE
+    ||   victim->in_room->vnum == ROOM_VNUM_TEMPLE
+    ||   ch->in_room->vnum == ROOM_VNUM_ALTAR
+    ||   victim->in_room->vnum == ROOM_VNUM_ALTAR )
+	return true;
+
+    if ( IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+    ||   IS_SET(victim->in_room->room_flags, ROOM_SAFE) )
+	return true;
 
     if (victim->fighting == ch)
 	return false;
-/*
-    if ((ch->in_room->vnum == ROOM_VNUM_TEMPLE) ||
-	(victim->in_room->vnum == ROOM_VNUM_TEMPLE) ||
-        (ch->in_room->vnum == ROOM_VNUM_ALTAR) ||
-	(victim->in_room->vnum == ROOM_VNUM_ALTAR)) {
-        send_to_char( "Not in the temple my dear.\n\r",ch);
-        return true;
-    }
-*/
     if (IS_NPC(ch))
     {
 	/* charmed mobs and pets cannot attack players */
@@ -2631,7 +2633,13 @@ bool check_shield_block( CHAR_DATA *ch, CHAR_DATA *victim )
 	    obj->value[i] -= 1;
 	 for (i = 0; i < 4; i ++)
 	   victim->armor[i] -= apply_ac( obj, iWear, i );
-	 obj->cost  = obj->cost/3;
+	 /* The dent is wear REPAIR can see. It used to cut the shield's
+	    worth to a third and leave condition at 100, so REPAIR called a
+	    dented shield perfect -- and repair raising the worth back undid
+	    the price cap a purchase sets (audit, 2026-10-21). Worth is no
+	    longer how damage is recorded; a shop pays less for a broken
+	    piece in get_cost. */
+	 obj->condition = (sh_int) UMAX( 1, obj->condition - REPAIR_DENT_WEAR );
 	 damaged = true;
 	 for (i = 0; i < 4; i++)
 	 {

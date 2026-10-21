@@ -999,9 +999,16 @@ void do_stash( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        free_string( ch->pcdata->stash_links );
-        ch->pcdata->stash_links = stash_name_list(
-            ch->pcdata->stash_links, one, !undoing );
+        /* Build from the old list before freeing it: the pool reuses a
+           freed block's first bytes, so reading it after the free put
+           allocator bytes in front of every name after the first. */
+        {
+            char *links = stash_name_list(
+                ch->pcdata->stash_links, one, !undoing );
+
+            free_string( ch->pcdata->stash_links );
+            ch->pcdata->stash_links = links;
+        }
 
         /* Answering an offer clears it: it is no longer outstanding. */
         if ( !undoing && is_name( one, ch->pcdata->stash_offers ) )
@@ -4698,6 +4705,11 @@ long get_cost( CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy )
 	    }
 	}
 
+	/* A broken piece fetches a third. Damage used to cut obj->cost
+	   itself, and repair then had to guess what to put back. */
+	if ( IS_OBJ_STAT(obj, ITEM_DAMAGED) )
+	    cost /= 3;
+
 	num_found = 0;
 	for ( obj2 = keeper->carrying; obj2; obj2 = obj2->next_content )
 	{
@@ -6244,13 +6256,18 @@ static void repair_mend( CHAR_DATA *ch, CHAR_DATA *rpr, OBJ_DATA *obj, long cost
 	spend_copper( ch, cost );
         obj->condition = 100;
 
-        /* check_shield_block files a dented shield's armour values down a
-           point and cuts its worth to a third, and nothing ever put
-           either back: a "repaired" shield stayed permanently weaker and
-           cheaper than the one that was bought, however often it was
-           paid for. Undo that, but never raise a piece above the
+        /* check_shield_block, heat metal and acid breath file armour
+           values down a point, and nothing ever put them back: a
+           "repaired" shield stayed permanently weaker than the one that
+           was bought. Undo that, but never raise a piece above the
            prototype it was made from, so an immortal's deliberate tuning
-           and an enchanter's work are left alone. */
+           and an enchanter's work are left alone.
+
+           Worth is not touched. Repair used to raise obj->cost to the
+           prototype's, which undid the cap a discounted purchase puts on
+           it: buy at 1,305,000, wear one point off, repair for 224 and
+           sell at 1,500,000 elsewhere (audit, 2026-10-21). Damage no
+           longer cuts worth, so there is nothing to give back. */
         if ( obj->pIndexData != NULL )
         {
             int  slot    = obj->wear_loc;
@@ -6278,8 +6295,6 @@ static void repair_mend( CHAR_DATA *ch, CHAR_DATA *rpr, OBJ_DATA *obj, long cost
                     equip_char( ch, obj, slot );
             }
 
-            if ( obj->cost < obj->pIndexData->cost )
-                obj->cost = obj->pIndexData->cost;
         }
 
         act( "$N repairs your $p.", ch, obj, rpr, TO_CHAR );
@@ -6294,10 +6309,21 @@ static void repair_mend( CHAR_DATA *ch, CHAR_DATA *rpr, OBJ_DATA *obj, long cost
     }
 }
 
-/* Whether REPAIR has anything to do for this item. */
+/* Whether REPAIR has anything to do for this item: worn, broken, or
+   armour filed below its prototype -- which is how a shield dented
+   before dents lowered condition still reads (condition 100). REPAIR and
+   REPAIR ALL both ask this. */
 static bool repair_needed( OBJ_DATA *obj )
 {
-    return obj->condition < 100 || IS_OBJ_STAT(obj, ITEM_DAMAGED);
+    int i;
+
+    if ( obj->condition < 100 || IS_OBJ_STAT(obj, ITEM_DAMAGED) )
+        return true;
+    if ( obj->item_type == ITEM_ARMOR && obj->pIndexData != NULL )
+        for ( i = 0; i < 4; i++ )
+            if ( obj->value[i] < obj->pIndexData->value[i] )
+                return true;
+    return false;
 }
 
 /*
@@ -6412,7 +6438,7 @@ void do_repair( CHAR_DATA *ch, char *argument )
     /* A flagged item always needs repairing, whatever the number says.
        Testing condition alone once left items that combat had flagged but
        not decremented both unwearable and unrepairable. */
-    if(obj->condition >= 100 && !IS_OBJ_STAT(obj, ITEM_DAMAGED)) {
+    if ( !repair_needed( obj ) ) {
         snprintf(buf, sizeof(buf), "But %s is already in perfect condition!\n\r",
                 obj->short_descr);
         send_to_char(buf,ch);
