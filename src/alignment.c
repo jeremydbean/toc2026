@@ -113,7 +113,7 @@ void alignment_check_gear( CHAR_DATA *ch )
  * and takes off gear that will not stay on the new side. A vampiric weapon
  * moves its wielder a point a hit and is quiet: one line a swing was
  * spam, and zapping the weapon mid-swing would pull it out from under the
- * blow it is landing. The next kill's check catches up.
+ * blow it is landing; violence_update checks the gear at the round's end.
  */
 void alignment_shift( CHAR_DATA *ch, int delta, bool loud )
 {
@@ -390,7 +390,10 @@ void do_alignment( CHAR_DATA *ch, char *argument )
 
     UNUSED_PARAM(argument);
     if ( IS_NPC(ch) || ch->pcdata == NULL )
+    {
+        send_to_char( "Only a player's alignment is tended that way.\n\r", ch );
         return;
+    }
     tier = alignment_tier( ch->alignment );
 
     if ( tier == 0 )
@@ -460,7 +463,10 @@ void do_devote( CHAR_DATA *ch, char *argument )
     int delta;
 
     if ( IS_NPC(ch) || ch->pcdata == NULL )
+    {
+        send_to_char( "Only a player's alignment is tended that way.\n\r", ch );
         return;
+    }
     one_argument( argument, arg );
     if ( arg[0] == '\0' )
     {
@@ -511,7 +517,21 @@ void do_devote( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    cost = black_market_kill_value( ch->level ) * ALIGN_DEED_KILLS;
+    /* A devotion that can only go part of the way -- LIGHT at 950, or
+       BALANCE five from the middle -- costs that part of the price. */
+    {
+        int moves = URANGE( -1000, ch->alignment + delta, 1000 ) - ch->alignment;
+
+        if ( moves < 0 )
+            moves = -moves;
+        long whole = black_market_kill_value( ch->level ) * ALIGN_DEED_KILLS;
+
+        /* In two parts, so a level 60's price times a hundred cannot
+           overflow a 32-bit long. */
+        cost = whole / ALIGN_DEED_SHIFT * moves
+             + whole % ALIGN_DEED_SHIFT * moves / ALIGN_DEED_SHIFT;
+        cost = UMAX( 1, cost );
+    }
     format_price( cost, price, sizeof(price) );
     if ( !has_enough_copper( ch, cost ) )
     {

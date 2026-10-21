@@ -4140,6 +4140,10 @@ bool remove_curse_has_work( CHAR_DATA *victim )
         return false;
     if ( is_affected( victim, gsn_curse ) )
         return true;
+    /* NOSUMMON closes a player's gear to the spell (spell_remove_curse
+       refuses it), so cursed gear is no work while it is on. */
+    if ( !IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON) )
+        return false;
     for ( obj = victim->carrying; obj != NULL; obj = obj->next_content )
         if ( ( IS_OBJ_STAT(obj, ITEM_NODROP) || IS_OBJ_STAT(obj, ITEM_NOREMOVE) )
         &&   !hyrule_bound_object( obj ) )

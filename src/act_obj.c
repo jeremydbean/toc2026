@@ -4998,7 +4998,19 @@ void do_sell( CHAR_DATA *ch, char *argument )
     {
         send_to_char("You haggle with the shopkeeper.\n\r",ch);
         cost += obj->cost / 2 * roll / 100;
-        cost = UMIN(cost,95 * alignment_price(ch,keeper,get_cost(keeper,obj,true),true) / 100);
+        cost = UMIN(cost,95 * get_cost(keeper,obj,true) / 100);
+        /* Never above what the thing is worth. Every shop sells at its
+           worth or more, so a sale above it was a loop: buy at one shop,
+           haggle at a dearer one, repeat (found in review, 2026-10-21 --
+           the alignment discount added shops selling at worth). */
+        {
+            long worth = obj->cost;
+
+            if ( ( obj->item_type == ITEM_STAFF || obj->item_type == ITEM_WAND )
+            &&   obj->value[1] > 0 )
+                worth = worth * obj->value[2] / obj->value[1];
+            cost = UMIN( cost, worth );
+        }
         {
             /* What the keeper can actually pay, across every
                denomination -- this compared against his gold coins
@@ -5493,7 +5505,8 @@ void do_use( CHAR_DATA *ch, char *argument )
        the bag, not a bomb thrown at something called "bag", and the bag
        is what the whole line names, not whatever "bomb" finds first. */
     if ( !str_prefix( arg, "bombs" ) && strlen( arg ) >= 3 && rest[0] != '\0'
-    &&   ( obj = get_obj_carry( ch, argument ) ) != NULL )
+    &&   ( ( obj = get_obj_carry( ch, argument ) ) != NULL
+    ||     ( obj = get_obj_wear( ch, argument ) ) != NULL ) )   /* a held bag too */
     {
         toc_strlcpy( arg, argument, sizeof(arg) );
         rest = arg + strlen( arg );     /* nothing after the whole name */
@@ -6310,7 +6323,10 @@ static void repair_all( CHAR_DATA *ch, CHAR_DATA *rpr )
         {
             long cost;
 
-            if ( !repair_needed( obj ) || !can_see_obj( ch, obj ) )
+            /* By touch: it is your own kit, and the smith can see it
+               even when you cannot -- in the dark this used to report
+               everything in perfect condition (review, 2026-10-21). */
+            if ( !repair_needed( obj ) )
                 continue;
             cost = repair_cost_copper( obj );
             if ( !has_enough_copper( ch, cost ) )
@@ -6330,7 +6346,7 @@ static void repair_all( CHAR_DATA *ch, CHAR_DATA *rpr )
             break;
     }
     for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
-        if ( repair_needed( obj ) && can_see_obj( ch, obj ) )
+        if ( repair_needed( obj ) )
             skipped++;
     if ( mended == 0 && skipped == 0 )
     {

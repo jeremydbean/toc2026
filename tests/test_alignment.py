@@ -125,7 +125,10 @@ class AlignmentSourceTests(unittest.TestCase):
         act_obj = source("act_obj.c")
         calls = len(re.findall(r"get_cost\s*\(\s*keeper", act_obj))
         wrapped = len(re.findall(r"alignment_price\(\s*ch,\s*keeper,\s*get_cost\(", act_obj))
-        self.assertEqual((calls, wrapped), (5, 5), "every shop price goes through alignment_price")
+        # Every price shown or paid goes through alignment_price; the fifth
+        # call is the haggle cap, which must stay the unadjusted list price
+        # (test_haggling_never_pays_above_worth).
+        self.assertEqual((calls, wrapped), (5, 4), "every shop price goes through alignment_price")
         price = body("alignment.c", "long alignment_price(")
         self.assertIn("is_black_market_dealer( keeper )", price, "the dealer never haggles")
         self.assertIn("return ours == theirs ? cost : cost - share;", price,
@@ -176,10 +179,28 @@ class AlignmentSourceTests(unittest.TestCase):
         self.assertIn("dam += victim->hit;", drain, "overkill is not drained")
         self.assertIn("alignment_check_gear( gch );", body("fight.c", "void group_gain("))
 
+    def test_haggling_never_pays_above_worth(self) -> None:
+        sell = source("act_obj.c")
+        sell = sell[sell.index("You haggle with the shopkeeper"):]
+        sell = sell[:sell.index("purse")]
+        self.assertIn("cost = UMIN(cost,95 * get_cost(keeper,obj,true) / 100);", sell,
+                      "the cap is the unadjusted price: the other side's markup raised it")
+        self.assertIn("cost = UMIN( cost, worth );", sell)
+        self.assertIn("xp = base_exp * alignment_xp_percent( gch, victim ) / 100;\n\n"
+                      "    alignment_kill( gch, victim );", body("fight.c", "int xp_compute("),
+                      "experience reads the alignment the slayer struck with")
+        self.assertIn("alignment_check_gear( ch );", body("fight.c", "void violence_update("))
+
+    def test_the_healer_refuses_what_nosummon_closes(self) -> None:
+        work = body("magic.c", "bool remove_curse_has_work(")
+        self.assertIn("PLR_NOSUMMON", work)
+        self.assertIn("Type NOSUMMON to open it", source("misc.c"))
+
     def test_gmcp_status_carries_the_tier(self) -> None:
         gmcp = source("gmcp.c")
         self.assertIn('",\\"tier\\":"', gmcp)
-        self.assertIn("d->gmcp_last_alignment != ch->alignment", gmcp)
+        self.assertIn("d->gmcp_last_tier != alignment_tier( ch->alignment )", gmcp)
+        self.assertNotIn('",\\\\"alignment\\\\":"', gmcp, "the tier alone: a number would go stale")
         self.assertIn("status.tier", (ROOT / "mudlet" / "package" / "TimesOfChaos.xml")
                       .read_text(encoding="utf-8"))
 

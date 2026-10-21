@@ -1574,6 +1574,14 @@ only by the default, `command_is_private()` withholds the words of
 TELL, REPLY and GTELL: `log/` is published, and AGENTS' rule on private
 messages holds. One flagged with LOG <name> is recorded in full.
 
+**A watched line names no room the black market dealer or the treasure
+goblin stands in** (`room_hides_from_log()` in `interp.c`; the room is
+written `-`, and an arrival into or out of such a room names neither).
+Their own lines never logged where they are now, but every player is
+watched, so a buyer's `buy cake` beside the room vnum published him all
+the same (review, 2026-10-21). A new line that writes a room must go
+through `watch_room_tag()` or ask the helper.
+
 **`watch_log(ch, fmt, ...)`** is the hook for everything a command log
 cannot see. It returns immediately unless that character carries
 `PLR_LOG`, which is one bit test, which is why it can sit somewhere as
@@ -2595,14 +2603,15 @@ what they did. The rules:
   shown to a player must be wrapped the same way. **Nothing may pay a
   player above list or sell below worth**: no shop's buyback exceeds 100,
   so that is what keeps buying at one shop and selling at another from
-  being a loop. The first draft paid a tenth more to a keeper's own side,
+  being a loop -- and **a haggled sale is capped at worth** for the same
+  reason, from the unadjusted list price. The first draft paid a tenth more to a keeper's own side,
   which opened thousands of them; `test_alignment.py` brute-forces the
   floor and checks every shop's buyback.
 - **`alignment_shift(ch, delta, loud)`**: loud reports small moves to
   DAMAGENUMBERS and takes off gear when the side changes. A vampiric
   weapon's point a hit is quiet -- a line a swing was spam, and zapping
   the weapon mid-swing pulls it out from under the blow. Tier changes are
-  always announced. GMCP `Char.Status` carries `alignment` and `tier`.
+  always announced. GMCP `Char.Status` carries the `tier`, resent only when it changes.
 - **The dark's drain** counts only the hit points the victim had and
   never the treasure goblin, whose damage is a share of his health.
 - **Gear checks** are `alignment_rejects_obj()`; `test_alignment.py`

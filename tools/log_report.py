@@ -39,9 +39,17 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 STAMP = re.compile(r"^(\w{3} \w{3} [ \d]\d \d\d:\d\d:\d\d \d{4}) :: (.*)$")
-WATCHED = re.compile(r"^Log (\w+) \[(\d+)\]: (.*)$")
+WATCHED = re.compile(r"^Log (\w+) \[(-|\d+)\]: (.*)$")   # "-": a room the game hides
 IPV4 = re.compile(r"\b\d{1,3}(?:\.\d{1,3}){3}\b")
+IPV6 = re.compile(r"(?<![\w:])(?:[0-9a-fA-F]{1,4}:){3,7}[0-9a-fA-F]{1,4}(?![\w:])"
+                  r"|(?<![\w:])[0-9a-fA-F]{0,4}(?::[0-9a-fA-F]{0,4})*::[0-9a-fA-F:]*")
 HOST = re.compile(r"@\S+")
+# A resolved address (DNS lookup is on by default): name.isp.tld.
+HOSTNAME = re.compile(r"\b(?:[A-Za-z0-9-]+\.)+(?:com|net|org|edu|gov|mil|io|co|us|uk|ca|au|de|fr|"
+                      r"nl|ru|br|jp|info|biz|[a-z]{2})\b")
+# Lines that exist to name a player's address; nothing in them is worth
+# printing once the address is gone.
+ADDRESS_LINES = ("shares an address", "Sock.sinaddr")
 # What watch_log writes beside the typed commands: purse changes, trades,
 # the stash, socials. Not commands, so not counted as typed.
 EVENT_LINE = re.compile(r"^(?:(?:coin|gold|copper|silver|platinum) [+-]\d"
@@ -57,7 +65,10 @@ NOISY = {"l", "look", "sc", "scan", "n", "s", "e", "w", "u", "d", "ne", "nw", "s
 
 def clean(text: str) -> str:
     """Never print an address or a hostname."""
-    return HOST.sub("@<host>", IPV4.sub("<ip>", text))
+    if any(marker in text for marker in ADDRESS_LINES):
+        return "(a line about a player's address, left out)"
+    text = IPV6.sub("<ip>", IPV4.sub("<ip>", text))
+    return HOSTNAME.sub("<host>", HOST.sub("@<host>", text))
 
 
 def git_show(ref: str, path: str) -> str:
@@ -160,7 +171,10 @@ def main() -> int:
 
     print("\n== refused commands")
     for player, words in sorted(unknown.items()):
-        common = [f"{w} x{n}" for w, n in words.most_common() if n < 50][:12]
+        # A word refused once is left out: a password typed at the wrong
+        # moment is refused exactly once, and log/ is public anyway --
+        # this report is not going to repeat it.
+        common = [f"{w} x{n}" for w, n in words.most_common() if 2 <= n < 50][:12]
         aliases = [f"{w} x{n}" for w, n in words.most_common() if n >= 50]
         if common:
             print(f"  {player:<14} {', '.join(common)}")

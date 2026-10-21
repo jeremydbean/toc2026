@@ -271,7 +271,11 @@ class LoggingSourceTests(unittest.TestCase):
         self.assertIn("logline[0] = '\\0'", block)
 
     def test_the_room_is_recorded(self) -> None:
-        self.assertIn('"Log %s [%d]: %s%s"', self.interp)
+        # The room is a tag since 2026-10-21: its vnum, or "-" where the
+        # black market dealer or the treasure goblin stands
+        # (room_hides_from_log), so the public log is no map to either.
+        self.assertIn('"Log %s [%s]: %s%s"', self.interp)
+        self.assertIn("watch_room_tag( ch, where, sizeof(where) )", self.interp)
 
     def test_a_curse_that_resists_says_so(self) -> None:
         """250 gold and complete silence was the old behaviour."""

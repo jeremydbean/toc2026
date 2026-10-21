@@ -156,8 +156,15 @@ void do_heal(CHAR_DATA *ch, char *argument)
 	       uncurses in two sittings on 2026-10-20. */
 	    if ( !remove_curse_has_work( ch ) )
 	    {
-		act( "$N says 'I see no curse on you or on anything you carry.'",
-		    ch, NULL, mob, TO_CHAR );
+		/* Gear NOSUMMON closes to the spell: say so, not "no curse"
+		   -- the healer used to take the money and do nothing. */
+		if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_NOSUMMON) )
+		    act( "$N says 'Your gear is closed to my magic while you "
+			 "shun summoning. Type NOSUMMON to open it, then ask again.'",
+			ch, NULL, mob, TO_CHAR );
+		else
+		    act( "$N says 'I see no curse on you or on anything you carry.'",
+			ch, NULL, mob, TO_CHAR );
 		return;
 	    }
 	    break;

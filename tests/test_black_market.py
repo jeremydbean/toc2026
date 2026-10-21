@@ -294,6 +294,10 @@ class BlackMarketLiveTests(unittest.TestCase):
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
             self.assertIn("Black market: Zbuyer bought", log)
             self.assertIn("Black market: the dealer vanished from room %d" % TEMPLE, log)
+            # The buyer is watched (LOG ALL), and log/ is public within
+            # minutes: their lines beside the dealer name no room.
+            self.assertRegex(log, r"Log Zbuyer \[-\]: buy ")
+            self.assertNotRegex(log, r"Log Zbuyer \[%d\]: (buy|list)" % TEMPLE)
 
             # A relog does not hand the allowance back.
             with mud.connect(timeout=120) as buyer, mud.connect(timeout=120) as fixer:

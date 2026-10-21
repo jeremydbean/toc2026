@@ -387,7 +387,7 @@ static bool gear_item_usable( CHAR_DATA *ch, OBJ_DATA *obj, int slot,
     }
     if ( alignment_rejects_obj( ch, obj ) )
     {
-        snprintf( reason, reason_size, "it rejects the %s", alignment_tier_name( ch->alignment ) );
+        snprintf( reason, reason_size, "made for another side" );
         return false;
     }
     if ( !gear_race_allowed( ch, obj ) )

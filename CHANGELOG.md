@@ -32,7 +32,7 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   dark spell as it does after a kill; a vampiric weapon's point a hit is
   quiet; the dark's drain counts only hit points the victim had and never
   the treasure goblin's share-of-health blows. GMCP `Char.Status` carries
-  `alignment` and `tier`, and the Mudlet package (1.5.7) shows the tier. Gear checks share one helper, and WEAR,
+  the `tier`, and the Mudlet package (1.5.7) shows the tier. Gear checks share one helper, and WEAR,
   IDENTIFY and COMPARE say which side an item is for. `tests/test_alignment.py`.
 
 - **Login fixes** (`src/fixes.c`; owner, 2026-10-21): the standard way to
@@ -180,6 +180,25 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   back this way on 2026-10-11.
 
 ### Fixed
+
+- **From the full review of 2026-10-21's work.** Haggling could pay above
+  an item's worth, so buying at one shop and haggling at a dearer one was
+  a loop (it predates the alignment prices, which added more shops selling
+  at worth); a haggled sale is now capped at worth, and the cap reads the
+  unadjusted list price. Experience reads the alignment the slayer struck
+  with, before the kill moves it. Gear a vampiric weapon's quiet shift
+  carries you out of comes off at the end of the round. DEVOTE charges for
+  the part of the move it can make. GMCP `Char.Status` resends only on a
+  tier change. Watched log lines name no room while the black market
+  dealer or the treasure goblin stands in it (`room_hides_from_log`): a
+  buyer's `buy` with the room beside it was a map to him. The weapon
+  login fix acts only on characters the creation bug made -- this
+  login's mage-groups fix found them, or two or more weapons sit exactly
+  on the mage's values -- after review showed one weapon trained to 8 or
+  10 would have been knocked back. `tools/log_report.py` strips hostnames
+  and IPv6, drops the address-sharing staff lines, and leaves out a word
+  refused only once. The healer refuses, free, an uncurse NOSUMMON
+  blocks; REPAIR ALL works in the dark; USE BOMB BAG finds a held bag.
 
 - **Alignment has a way back from either end.** Since the 2026-10-20
   clamp fix every kill moved the slayer away from the victim, so at -1000

@@ -356,7 +356,7 @@ void gmcp_send_character( DESCRIPTOR_DATA *d )
       || d->gmcp_last_level != ch->level
       || d->gmcp_last_class != ch->class
       || d->gmcp_last_race != ch->race
-      || d->gmcp_last_alignment != ch->alignment )
+      || d->gmcp_last_tier != alignment_tier( ch->alignment ) )
     {
         class_name = IS_NPC(ch) ? "mobile" : class_table[ch->class].name;
         toc_strlcpy( json, "{\"name\":", sizeof(json) );
@@ -368,10 +368,10 @@ void gmcp_send_character( DESCRIPTOR_DATA *d )
         gmcp_json_append_quoted( json, sizeof(json), class_name );
         toc_strlcat( json, ",\"race\":", sizeof(json) );
         gmcp_json_append_quoted( json, sizeof(json), race_table[ch->race].name );
-        /* The alignment and its tier (alignment.c), for the status bar. */
-        toc_strlcat( json, ",\"alignment\":", sizeof(json) );
-        snprintf( number, sizeof(number), "%d", ch->alignment );
-        toc_strlcat( json, number, sizeof(json) );
+        /* The alignment tier (alignment.c), for the status bar. Only the
+           tier: it is what changes the payload, so a vampiric weapon's
+           point a swing does not resend Char.Status every blow, and a
+           number sent alongside would go stale between tiers. */
         toc_strlcat( json, ",\"tier\":", sizeof(json) );
         gmcp_json_append_quoted( json, sizeof(json), alignment_tier_name( ch->alignment ) );
         toc_strlcat( json, "}", sizeof(json) );
@@ -381,7 +381,7 @@ void gmcp_send_character( DESCRIPTOR_DATA *d )
         d->gmcp_last_level = ch->level;
         d->gmcp_last_class = ch->class;
         d->gmcp_last_race = ch->race;
-        d->gmcp_last_alignment = ch->alignment;
+        d->gmcp_last_tier = (sh_int) alignment_tier( ch->alignment );
         d->gmcp_status_valid = true;
     }
 }

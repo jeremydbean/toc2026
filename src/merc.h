@@ -571,7 +571,7 @@ struct  descriptor_data
     sh_int              gmcp_last_level;
     sh_int              gmcp_last_class;
     sh_int              gmcp_last_race;
-    sh_int              gmcp_last_alignment;
+    sh_int              gmcp_last_tier;
     int                 gmcp_last_room;
     uint32_t            gmcp_last_affect_hash;
     uint32_t            gmcp_last_quest_hash;
@@ -2854,6 +2854,7 @@ void    gainlist_by_trainer ( CHAR_DATA *ch, char *argument );
 void    abilities_oracle_summary ( CHAR_DATA *ch, char *out, size_t size );
 bool    is_psionic_sn   ( int sn );
 void    watch_log       ( CHAR_DATA *ch, const char *fmt, ... );
+bool    room_hides_from_log ( ROOM_INDEX_DATA *room );
 void    save_notes      ( void );
 void    check_sex       ( CHAR_DATA *ch);
 void    add_follower    ( CHAR_DATA *ch, CHAR_DATA *master );

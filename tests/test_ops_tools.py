@@ -80,6 +80,20 @@ class LogReportTests(unittest.TestCase):
         cleaned = self.report.clean(line)
         self.assertNotIn("203.0.113.9", cleaned)
         self.assertNotIn("example.net", cleaned)
+        # Found in review, 2026-10-21: a resolved name with no "@", IPv6,
+        # and the staff line that exists to name an address.
+        for line, secret in (
+                ("on from cpe-12-34.res.rr.com today", "rr.com"),
+                ("from 2001:db8::1 now", "2001:db8"),
+                ("Zed shares an address with Bob: 2 players on from home.example.org.", "Bob")):
+            self.assertNotIn(secret, self.report.clean(line), line)
+        self.assertEqual(self.report.clean("a ghost wails at 12:34"), "a ghost wails at 12:34")
+        self.assertTrue(self.report.WATCHED.match("Log Zed [-]: buy cake"),
+                        "a room the game hides is still a watched line")
+
+    def test_a_word_refused_once_is_not_printed(self) -> None:
+        source = (ROOT / "tools" / "log_report.py").read_text(encoding="utf-8")
+        self.assertIn("if 2 <= n < 50", source, "a password typed by mistake is refused once")
 
     def test_watch_log_events_are_not_commands(self) -> None:
         for event in ("coin +4 platinum", "gold -250", "bought a pie (vnum 3009) for 1 copper",

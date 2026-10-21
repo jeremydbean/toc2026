@@ -3,6 +3,12 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261021h 2026-10-21
+Haggling still raises what a shopkeeper pays you, but never above what the
+thing is worth. REPAIR ALL works in the dark, USE BOMB BAG finds a bag you
+are holding, and the pit healer will not take your money for an uncurse
+while NOSUMMON closes your gear to it -- it tells you instead.
+
 @ 20261021g 2026-10-21
 Alignment is rebuilt. It has seven tiers now -- Paragon, Virtuous and Kind
 of the light, Balanced, and Ruthless, Vile and Fiend of the dark -- and

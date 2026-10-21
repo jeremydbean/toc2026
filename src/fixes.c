@@ -45,17 +45,31 @@ typedef struct player_fix
     bool        staff_too;              /* false: staff skip it, unmarked */
 } PLAYER_FIX;
 
+/* Whether this login's mage-groups fix found the creation bug's groups:
+   the weapon fix, which runs next, trusts that over its own guess. Reset
+   by player_fixes_login for every character. */
+static bool fix_found_mage_groups;
+
 static bool fix_stray_mage_groups( CHAR_DATA *ch )
 {
-    return rescind_stray_mage_groups( ch );
+    fix_found_mage_groups = rescind_stray_mage_groups( ch );
+    return fix_found_mage_groups;
 }
 
 /*
  * The same creation bug ran the class's weapon floors for class 0 too,
  * so every new non-mage started with the mage's -- dagger at 80, whip at
- * 20 -- wherever those beat their own. A weapon still at exactly the
- * mage's value above the class's own was never practised or used since,
- * so it goes back to the class's value; anything trained off it stays.
+ * 20 -- wherever those beat their own, and a weapon still at exactly that
+ * value goes back to the class's own; anything trained off it stays.
+ *
+ * Only for a character the bug made. Nothing on file dates a character,
+ * and the small mage values (spear 8, axe 10, flail 7) are easy to reach
+ * by use, so one weapon on one of them proves nothing: an older thief
+ * whose spear had climbed to 8 would have lost three points (found in
+ * review, 2026-10-21, before it touched anyone). A victim is a character
+ * this same login just took the mage groups from, or one holding two or
+ * more weapons at exactly the mage's values -- the bug set them all at
+ * once, and use does not land two of them on the mark by chance.
  */
 static bool fix_mage_weapon_floors( CHAR_DATA *ch )
 {
@@ -66,12 +80,24 @@ static bool fix_mage_weapon_floors( CHAR_DATA *ch )
     };
     char list[MAX_STRING_LENGTH];
     char buf[MAX_STRING_LENGTH * 2];
-    int i;
+    int i, matches;
 
     if ( IS_NPC(ch) || ch->pcdata == NULL || ch->class == CLASS_MAGE
     ||   ch->class < 0 || ch->class >= MAX_CLASS )
         return false;
     list[0] = '\0';
+    matches = 0;
+    for ( i = 0; i < 8; i++ )
+    {
+        int sn = *prof_gsn[i];
+        int mage = class_table[CLASS_MAGE].weapon_prof[i];
+
+        if ( sn > 0 && mage > class_table[ch->class].weapon_prof[i]
+        &&   ch->pcdata->learned[sn] == mage )
+            matches++;
+    }
+    if ( matches == 0 || ( matches < 2 && !fix_found_mage_groups ) )
+        return false;
     for ( i = 0; i < 8; i++ )
     {
         int sn = *prof_gsn[i];
@@ -159,6 +185,7 @@ void player_fixes_login( CHAR_DATA *ch, bool new_character )
 
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
         return;
+    fix_found_mage_groups = false;
     for ( i = 0; i < PLAYER_FIX_COUNT; i++ )
     {
         if ( fix_done( ch->pcdata->fixes_done, player_fixes[i].id ) )

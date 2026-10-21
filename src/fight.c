@@ -495,6 +495,11 @@ void violence_update( void )
 	    &&   ch->pcdata->meter_active )
 		ch->pcdata->meter_rounds++;
 	    multi_hit( ch, victim, TYPE_UNDEFINED );
+	    /* A vampiric weapon moves its wielder quietly, mid-swing, where
+	       nothing can be taken off; the round's end is where gear that
+	       will not follow them across a line comes off (alignment.c). */
+	    if ( !IS_NPC(ch) && ch->in_room != NULL )
+		alignment_check_gear( ch );
 	}
 	else
 	    stop_fighting( ch, false );
@@ -3565,10 +3570,11 @@ base_exp = 200 + 50 * (level_range - 4);
        doors, and the table below it paid as little as a quarter of a kill
        for choosing the wrong victim. Now the other side pays more and
        nothing pays less. */
-    alignment_kill( gch, victim );
-
-    /* calculate exp multiplier */
+    /* calculate exp multiplier -- from the alignment the slayer had when
+       they struck, before this kill moves it */
     xp = base_exp * alignment_xp_percent( gch, victim ) / 100;
+
+    alignment_kill( gch, victim );
 
     /* more exp at the low levels. Raised from 10 to 25. EC */
     if (gch->level < 6)

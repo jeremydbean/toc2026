@@ -1706,10 +1706,20 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
        command to show for it, so every arrival is written down. After the
        move, with the room left behind named: written before it, the line's
        room read [0] every time -- char_from_room had already run. */
+    /* Neither end is named when the dealer or the goblin stands there
+       (room_hides_from_log): log/ is public within minutes. */
     if ( player_is_watched( ch ) )
-        watch_log( ch, "arrived (%s) from %d",
-            pRoomIndex->name != NULL ? pRoomIndex->name : "?",
-            ch->last_room_vnum );
+    {
+        char from[16];
+
+        if ( room_hides_from_log( get_room_index( ch->last_room_vnum ) ) )
+            snprintf( from, sizeof(from), "-" );
+        else
+            snprintf( from, sizeof(from), "%d", ch->last_room_vnum );
+        watch_log( ch, "arrived (%s) from %s",
+            room_hides_from_log( pRoomIndex ) ? "-"
+            : pRoomIndex->name != NULL ? pRoomIndex->name : "?", from );
+    }
 
     if ( !IS_NPC(ch) )
     {

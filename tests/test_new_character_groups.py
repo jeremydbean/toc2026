@@ -110,22 +110,30 @@ class NewCharacterLiveTests(unittest.TestCase):
                 client.drain(2.0)
                 self.assertNotIn("gave you the mage's starting spells", client.transcript)
 
+    def _weapon_fixture(self, mud, name: str, groups: bool) -> pathlib.Path:
+        with mud.connect(timeout=120) as client:
+            create_character(client, name, name + "1pass")
+            client.drain(1.0)
+            client.send("quit")
+            self.assertTrue(client.wait_closed())
+        path = mud.player_dir / name
+        text = path.read_text(encoding="latin-1")
+        text = re.sub(r"(?m)^Fixes .*\n", "", text)
+        text = re.sub(r"(?m)^Sk \d+ 'dagger'$", "Sk 80 'dagger'", text)
+        if groups:
+            text = text.replace("Gr 'warrior basics'",
+                                "Gr 'mage basics'\nGr 'warrior basics'\nGr 'mage default'", 1)
+        path.write_text(text, encoding="latin-1")
+        return path
+
     def test_a_weapon_left_at_the_mage_floor_goes_back_to_the_class(self) -> None:
         """The same bug ran the mage's weapon floors: a new warrior started
-        with dagger 80 for a warrior's 30. A value still exactly 80 was
-        never trained, so it goes back; 89 above stays (the test above)."""
+        with dagger 80 for a warrior's 30. On a character the bug made --
+        here, one the same login took the mage groups from -- a value still
+        exactly 80 was never trained, so it goes back; 89 above stays (the
+        test above)."""
         with LiveMud() as mud:
-            with mud.connect(timeout=120) as client:
-                create_character(client, "Zdagger", "Zdagger1pass")
-                client.drain(1.0)
-                client.send("quit")
-                self.assertTrue(client.wait_closed())
-            path = mud.player_dir / "Zdagger"
-            text = path.read_text(encoding="latin-1")
-            text = re.sub(r"(?m)^Fixes .*\n", "", text)
-            text = re.sub(r"(?m)^Sk \d+ 'dagger'$", "Sk 80 'dagger'", text)
-            path.write_text(text, encoding="latin-1")
-
+            path = self._weapon_fixture(mud, "Zdagger", groups=True)
             with mud.connect(timeout=120) as client:
                 login(client, "Zdagger", "Zdagger1pass")
                 client.drain(2.0)
@@ -137,6 +145,30 @@ class NewCharacterLiveTests(unittest.TestCase):
             self.assertIn("Sk 30 'dagger'", saved)
             self.assertIn("20261021-mage-weapons", saved)
 
+    def test_one_weapon_on_a_mage_value_proves_nothing(self) -> None:
+        """Found in review before it touched anyone: an older character
+        whose weapon reached a mage value by use (a thief's spear at 8, a
+        cleric's dagger at 80) would have been knocked back. With no mage
+        groups and a single match, the fix leaves the weapon alone."""
+        with LiveMud() as mud:
+            path = self._weapon_fixture(mud, "Zveteran", groups=False)
+            with mud.connect(timeout=120) as client:
+                login(client, "Zveteran", "Zveteran1pass")
+                client.drain(2.0)
+                self.assertNotIn("a mage's weapon skills", client.transcript)
+                client.send("quit")
+                client.wait_closed()
+            saved = path.read_text(encoding="latin-1")
+            self.assertIn("Sk 80 'dagger'", saved)
+            self.assertIn("20261021-mage-weapons", saved, "marked, not pending for ever")
+
+    def test_the_weapon_fix_wants_two_matches_or_the_groups(self) -> None:
+        source = (ROOT / "src" / "fixes.c").read_text(encoding="latin-1")
+        self.assertIn("if ( matches == 0 || ( matches < 2 && !fix_found_mage_groups ) )", source)
+        self.assertIn("fix_found_mage_groups = false;", source)
+        self.assertLess(source.index('"20261021-mage-groups"'),
+                        source.index('"20261021-mage-weapons"'),
+                        "the groups fix must run first: the weapon fix reads what it found")
 
 if __name__ == "__main__":
     unittest.main()

@@ -606,10 +606,41 @@ static bool command_is_private( const char *name )
     return FALSE;
 }
 
+/*
+ * The black market dealer and the treasure goblin are never logged where
+ * they are now: log/ reaches a public repository within five minutes, and
+ * a watched buyer's "buy cake" with the room beside it was a map to the
+ * dealer (found in review, 2026-10-21). A room holding either is written
+ * as "-" in every watched line.
+ */
+bool room_hides_from_log( ROOM_INDEX_DATA *room )
+{
+    CHAR_DATA *rch;
+
+    if ( room == NULL )
+        return false;
+    for ( rch = room->people; rch != NULL; rch = rch->next_in_room )
+        if ( IS_NPC(rch) && is_unfindable_mob( rch ) )
+            return true;
+    return false;
+}
+
+static const char *watch_room_tag( CHAR_DATA *ch, char *buf, size_t size )
+{
+    if ( ch->in_room == NULL )
+        snprintf( buf, size, "0" );
+    else if ( room_hides_from_log( ch->in_room ) )
+        snprintf( buf, size, "-" );
+    else
+        snprintf( buf, size, "%d", ch->in_room->vnum );
+    return buf;
+}
+
 void watch_log( CHAR_DATA *ch, const char *fmt, ... )
 {
     char body[2 * MAX_INPUT_LENGTH];
     char line[2 * MAX_INPUT_LENGTH];
+    char where[16];
     va_list args;
 
     if ( !player_is_watched( ch ) )
@@ -619,10 +650,8 @@ void watch_log( CHAR_DATA *ch, const char *fmt, ... )
     vsnprintf( body, sizeof(body), fmt, args );
     va_end( args );
 
-    snprintf( line, sizeof(line), "Log %s [%d]: %s",
-        ch->name,
-        ch->in_room != NULL ? ch->in_room->vnum : 0,
-        body );
+    snprintf( line, sizeof(line), "Log %s [%s]: %s",
+        ch->name, watch_room_tag( ch, where, sizeof(where) ), body );
     log_string( line );
 }
 
@@ -1057,9 +1086,11 @@ void interpret( CHAR_DATA *ch, char *argument )
         {
             /* Where it happened, too. Half of reading one of these
                afterwards is working out where the character was. */
-            snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Log %s [%d]: %s%s",
+            char where[16];
+
+            snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Log %s [%s]: %s%s",
                 ch->name,
-                ch->in_room != NULL ? ch->in_room->vnum : 0,
+                watch_room_tag( ch, where, sizeof(where) ),
                 secret ? cmd_table[cmd].name : logline,
                 secret ? " (arguments withheld)" : "" );
             log_string( log_buf );
@@ -1114,10 +1145,12 @@ void interpret( CHAR_DATA *ch, char *argument )
 
             if ( watched && logline[0] != '\0' )
             {
+                char where[16];
+
                 snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
-                    "Log %s [%d]: (%s) %s",
+                    "Log %s [%s]: (%s) %s",
                     ch->name,
-                    ch->in_room != NULL ? ch->in_room->vnum : 0,
+                    watch_room_tag( ch, where, sizeof(where) ),
                     social ? "social" : "refused",
                     logline );
                 log_string( log_buf );
