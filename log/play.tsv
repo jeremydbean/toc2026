@@ -232,3 +232,58 @@
 1792618595	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	north		Sharp Climb to the Top
 1792618595	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	scan		You don't see anything near you.
 1792618598	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	open	secret	I see no secret here.
+1792618600	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	open	door	I see no door here.
+1792618602	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	say	friend	You say 'friend'
+1792618603	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	look		Sharp Climb to the Top
+1792618605	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	look	sign	A small sign written in dwarven greets you....maybe you should find the
+1792618684	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	look		Sharp Climb to the Top
+1792618687	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	open	truelove	You open a secret door.
+1792618688	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	look		Sharp Climb to the Top
+1792618689	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	exits		Obvious exits:
+1792618690	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	east		Alas, you cannot go that way.
+1792618692	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	north		Alas, you cannot go that way.
+1792618693	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	west		Alas, you cannot go that way.
+1792618693	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	down		Alas, you cannot go that way.
+1792618697	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	open	truelove	It's already open.
+1792618698	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	look		Sharp Climb to the Top
+1792618700	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	enter	truelove	You do not see that here.
+1792618701	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	east		Alas, you cannot go that way.
+1792618702	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	north		Alas, you cannot go that way.
+1792618703	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	up		Alas, you cannot go that way.
+1792618704	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	ne		Alas, you cannot go that way.
+1792618705	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	nw		Alas, you cannot go that way.
+1792618705	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	se		Alas, you cannot go that way.
+1792618706	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	nw		Alas, you cannot go that way.
+1792618707	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	sw		Alas, you cannot go that way.
+1792618710	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	open	friend	You open a secret door.
+1792618711	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	look		Sharp Climb to the Top
+1792618713	cmd	Trentlin	48	25018	mountain.are	standing	81	0	-	west		around the back
+1792618714	cmd	Trentlin	48	25018	mountain.are	standing	81	0	-	scan		The Thrush                         -to the West.
+1792618715	cmd	Trentlin	48	25019	mountain.are	standing	81	0	-	west		The Backdoor
+1792618716	cmd	Trentlin	48	25019	mountain.are	standing	81	0	-	consider	tr	You are unable to affect your victim.
+1792618717	cmd	Trentlin	48	25019	mountain.are	standing	81	0	-	look	tr	You see nothing special about him.
+1792618719	cmd	Trentlin	48	25019	mountain.are	standing	81	0	-	look	thr	This is a very amazing bird that you have stumbles across, he sits there
+1792618721	cmd	Trentlin	48	25019	mountain.are	standing	81	0	-	consider	thr	You are unable to affect your victim.
+1792618750	cmd	Trentlin	48	25019	mountain.are	standing	81	0	-	scan		You don't see anything near you.
+1792618751	cmd	Trentlin	48	25019	mountain.are	standing	81	0	-	open	dawn	You open a secret door.
+1792618752	cmd	Trentlin	48	25019	mountain.are	standing	81	0	-	look		The Backdoor
+1792618754	cmd	Trentlin	48	25019	mountain.are	standing	81	0	-	scan		You don't see anything near you.
+1792618754	cmd	Trentlin	48	25020	mountain.are	standing	81	0	-	north		The Dark Path
+1792618755	cmd	Trentlin	48	25020	mountain.are	standing	81	0	-	scan		The Thrush                         -to the South.
+1792618757	cmd	Trentlin	48	25021	mountain.are	standing	81	1	-	north		Outside the lair
+1792618758	cmd	Trentlin	48	25021	mountain.are	standing	81	0	-	scan		You don't see anything near you.
+1792618760	cmd	Trentlin	48	25021	mountain.are	standing	81	0	-	open	lair	I see no lair here.
+1792618794	cmd	Trentlin	48	25021	mountain.are	standing	81	0	-	open	door	You open a secret door.
+1792618795	cmd	Trentlin	48	25021	mountain.are	standing	82	0	-	scan		You don't see anything near you.
+1792618800	cmd	Trentlin	48	25021	mountain.are	standing	82	0	-	look		Outside the lair
+1792618802	cmd	Trentlin	48	25021	mountain.are	standing	82	0	-	consider	sma	Death will thank you for your gift.
+1792618804	cmd	Trentlin	48	25021	mountain.are	standing	82	0	-	look	sma	Smaug is one of the oldest dragons known to written history...The great red
+1792618805	cmd	Trentlin	48	25022	mountain.are	standing	82	0	-	north		The Lair
+1792618808	cmd	Trentlin	48	25022	mountain.are	standing	82	0	-	open	ne	Ok.
+1792618809	cmd	Trentlin	48	25022	mountain.are	standing	82	0	-	scan		Smaug                              -to the South.
+1792618810	cmd	Trentlin	48	25023	mountain.are	standing	82	0	-	ne		Treasure vault
+1792618813	cmd	Trentlin	48	25023	mountain.are	standing	82	0	-	look	in ches	It is closed.
+1792618814	cmd	Trentlin	48	25023	mountain.are	standing	82	0	-	open	ches	It's locked.
+1792618816	cmd	Trentlin	48	25022	mountain.are	standing	82	0	-	sw		The Lair
+1792618818	cmd	Trentlin	48	25021	mountain.are	standing	82	1	-	south		Outside the lair
+1792618818	cmd	Trentlin	48	25020	mountain.are	standing	82	0	-	south		The Dark Path
