@@ -1547,10 +1547,17 @@ world that fails `--check-area` stops it before the game is stopped (the
 check was piped into `tail`, and `/bin/sh` has no pipefail -- so was
 `toc-restore`'s); no install begins without a rollback archive that
 reads back whole; and any failure between stopping the game and starting
-it rolls back through an EXIT trap. Its exit status says how far it got
--- 10 rolled back and healthy, 11 rolled back and still unhealthy, 12 new
-code unhealthy and left alone, anything else stopped before the game was
-touched -- and `toc-auto-deploy`'s status line says the same.
+it rolls back through an EXIT trap. A stop that fails part way, or an
+archive that cannot be made, installs nothing and has nothing to roll
+back from: both services are started again on the code they were
+running and their health checked (`restart_unchanged`). `disrupted`
+says a stop was asked for and `installing` that the archive exists and
+files may have changed; the trap reads them in that order. Its exit
+status says how far it got -- 10 rolled back and healthy, 11 rolled back
+and still unhealthy, 12 new code unhealthy and left alone, 13 nothing
+installed and the old code healthy again, 14 nothing installed and not
+healthy, anything else stopped before the game was touched -- and
+`toc-auto-deploy`'s status line says the same.
 **`toc-game-recovery` takes the deploy lock** (`/run/toc-deploy.lock`,
 non-blocking, after its own) and leaves the game alone while a deploy
 holds it: a deploy stops the game on purpose and builds in the tree
@@ -3176,7 +3183,12 @@ test that fails on the old code. Keep them.
   from a loaded copy, and refuses a snapshot without `#END` before
   disturbing anybody (`tests/test_prestore.py`). Snapshots are written
   to `.partial` and renamed into place, so a crash mid-copy leaves
-  nothing PRESTORE offers.
+  nothing PRESTORE offers. **The chosen snapshot is pinned
+  (`player_snapshot_pin`) until PRESTORE returns**: its own safety copies
+  -- the forced pre-restore snapshot, the online target's save, the STASH
+  form's milestone -- each rotate the directory, and at the limit the
+  oldest copy, the one being restored, was deleted before it was opened.
+  `do_prestore` is a wrapper that unpins on every way out.
 - **Limited items are counted by whole subtree at every change of
   hands** (`maxload_subtree` in `handler.c`, used by the four transfer
   functions and the stash). The shallow counts undercounted a bag packed
@@ -3191,6 +3203,11 @@ test that fails on the old code. Keep them.
   at its owner's side goes to the Temple with them; OUTFIT fills each
   empty slot, from a matching starter item already carried where there
   is one; practices and trains saturate at `SHRT_MAX`, never cut.
+  OUTFIT takes only a carried piece `wear_requirements_quiet` (the WEAR
+  checks, silent) accepts and confirms `equip_char` kept it, so a broken
+  or heated piece is left in the pack and a new one made; and a monk's
+  hand to hand gets the same `STARTING_WEAPON_SKILL` floor as the weapon
+  a class starts with, since a monk who kept a sword has no dagger.
 - **No output may reach `alloc_mem` or the buffer ceiling whole.**
   `alloc_mem`'s largest block is 32,704 bytes and a larger request
   aborts the game; a descriptor's buffer stops at 32,000. CHANGES ALL

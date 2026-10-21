@@ -117,6 +117,59 @@ class RemortReportTests(unittest.TestCase):
             self.assertRegex(text, r"(?m)^Prac 32767$")
             self.assertRegex(text, r"(?m)^Trai 30009$")
 
+    def test_a_broken_starter_piece_is_not_put_on(self) -> None:
+        """Review 2026-10-21: OUTFIT's new slot filler equipped a carried
+        starter piece without WEAR's checks, so a broken vest went on
+        unrepaired. A broken copy stays in the pack; a new one is made."""
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zbrokevest", PW)
+                client.drain(1.0)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            patch_player_file(mud, "Zbrokevest", Levl=54, Room=TEMPLE)
+            path = mud.player_dir / "Zbrokevest"
+            text = path.read_text(encoding="latin-1")
+            text = re.sub(r"#O\nVnum 3703\nNest 0\nWear \d+\n(.*?)Cond \d+\n",
+                          lambda m: "#O\nVnum 3703\nNest 0\nWear -1\nExtF 67108864\n"
+                                    + m.group(1) + "Cond 0\n", text, count=1, flags=re.S)
+            self.assertIn("ExtF 67108864", text)
+            path.write_text(text, encoding="latin-1")
+
+            with mud.connect(timeout=120) as client:
+                login(client, "Zbrokevest", PW)
+                run(client, "scroll 0")
+                self.assertIn("damaged and cannot be used", run(client, "wear vest"))
+                run(client, "remort %s mage none human" % PW, 3.5)
+                worn = run(client, "equipment")
+                self.assertIn("vest", worn.lower(), worn)
+                self.assertNotIn("Damaged", worn, "the broken vest is not what went on")
+                self.assertIn("Damaged", run(client, "inventory"), "and it is kept, still broken")
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+
+    def test_a_monk_with_a_kept_sword_still_fights_unarmed(self) -> None:
+        """Review 2026-10-21: a remort into monk that kept a school sword
+        floored sword and left hand to hand at the group's 1%."""
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zmonkish", PW)
+                client.drain(1.0)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            patch_player_file(mud, "Zmonkish", Levl=54, Room=TEMPLE)
+            with mud.connect(timeout=120) as client:
+                login(client, "Zmonkish", PW)
+                run(client, "scroll 0")
+                run(client, "remort %s monk none human" % PW, 3.5)
+                self.assertNotIn("dagger", run(client, "equipment").lower())
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            text = saved(mud, "Zmonkish")
+            hand = re.search(r"(?m)^Sk (\d+) 'hand to hand'$", text)
+            self.assertIsNotNone(hand, text[:400])
+            self.assertGreaterEqual(int(hand.group(1)), STARTING_WEAPON_SKILL)
+
 
 if __name__ == "__main__":
     unittest.main()

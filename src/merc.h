@@ -3251,6 +3251,7 @@ void    obj_from_room   ( OBJ_DATA *obj );
 void    obj_to_room     ( OBJ_DATA *obj, ROOM_INDEX_DATA *pRoomIndex );
 void    obj_to_obj      ( OBJ_DATA *obj, OBJ_DATA *obj_to );
 void    maxload_subtree ( OBJ_DATA *obj, int signval, bool self );
+bool    wear_requirements_quiet ( CHAR_DATA *ch, OBJ_DATA *obj );
 void    obj_from_obj    ( OBJ_DATA *obj );
 void    extract_obj     ( OBJ_DATA *obj );
 void    extract_obj_player  ( OBJ_DATA *obj );
@@ -3434,6 +3435,7 @@ int     corpse_history_read( FILE *fp, int (*cont)[CORPSE_VALUES],
                              int (*level)[CORPSE_VALUES], int rows );
 void    player_snapshot ( const char *name );  /* versioned snapshot of player file */
 void    player_snapshot_force ( const char *name ); /* unthrottled pre-restore snapshot */
+void    player_snapshot_pin ( const char *file ); /* rotation skips it; NULL unpins */
 void    player_snapshot_milestone ( CHAR_DATA *ch, const char *tag, bool save_first );
 
 /* skills.c */

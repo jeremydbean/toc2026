@@ -205,7 +205,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   cursed (CI on dc3a8c80), and macOS could not build comm.c (inet_aton).
   CHANGES ALL outgrew 32 KB, which aborted the game in the pager's
   allocator (paging on) or closed the connection (paging off); long
-  output now goes out in pieces either way.
+  output now goes out in pieces either way. Follow-up review: PRESTORE of
+  the oldest snapshot deleted it before opening it (its own pre-restore
+  copy rotated it out); a `systemctl stop` that failed part way left the
+  game down with no recovery and was reported as untouched (now restarted,
+  exit 13/14); OUTFIT put on broken starter gear; and a remorted monk who
+  kept a sword was left with hand to hand at 1%.
 
 - **The October 2026 audit** (outside review, 2026-10-21). Native: stash
   LINK read its list after freeing it and corrupted the first partner's

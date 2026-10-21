@@ -232,6 +232,8 @@ else
         10) how="FAILED and was rolled back" ;;
         11) how="FAILED; rolled back but the game is NOT healthy" ;;
         12) how="FAILED; the new code is not healthy and was not rolled back" ;;
+        13) how="FAILED to install; the game was restarted on its old code and is healthy" ;;
+        14) how="FAILED to install; the game was restarted on its old code and is NOT healthy" ;;
         *)  how="FAILED before the game was touched (status $rc)" ;;
     esac
     status "deploy of $short $how; not retrying this commit -- see $STATE_DIR/last.log"

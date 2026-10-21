@@ -3,6 +3,12 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261021l 2026-10-21
+A remort no longer puts on a broken starter piece from your pack: it
+stays in the pack and you get a fresh one. A monk who remorts while
+carrying a weapon now starts with hand to hand trained, as every monk
+should.
+
 @ 20261021k 2026-10-21
 Remort keeps your pet: if it was beside you, it comes to the Temple with
 you. A remort with old school gear in your pack now gets its starting

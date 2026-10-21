@@ -3227,7 +3227,14 @@ bool remove_obj( CHAR_DATA *ch, int iWear, bool fReplace )
     return true;
 }
 
-static bool wear_requirements_met( CHAR_DATA *ch, OBJ_DATA *obj )
+/*
+ * Whether ch may put obj on: hot, over level, broken, the wrong side or
+ * the wrong race. `speak` says why not; OUTFIT asks quietly
+ * (wear_requirements_quiet), so the two cannot disagree -- OUTFIT once put
+ * a broken vest on without the repair WEAR demands (remort review,
+ * 2026-10-21).
+ */
+static bool wear_requirements_check( CHAR_DATA *ch, OBJ_DATA *obj, bool speak )
 {
     char buf[MAX_STRING_LENGTH];
     int allowed_races;
@@ -3240,33 +3247,39 @@ static bool wear_requirements_met( CHAR_DATA *ch, OBJ_DATA *obj )
 
     if ( IS_OBJ_STAT(obj, ITEM_HEATED) )
     {
-        act( "$p is still scorching hot -- you can't wear it yet!", ch, obj, NULL, TO_CHAR );
+        if ( speak )
+            act( "$p is still scorching hot -- you can't wear it yet!", ch, obj, NULL, TO_CHAR );
         return false;
     }
 
     if ( ch->level < obj->level )
     {
-        snprintf( buf, sizeof(buf), "You must be level %d to use this object.\n\r",
-            obj->level );
-        send_to_char( buf, ch );
-        act( "$n tries to use $p, but is too inexperienced.",
-            ch, obj, NULL, TO_ROOM );
+        if ( speak )
+        {
+            snprintf( buf, sizeof(buf), "You must be level %d to use this object.\n\r",
+                obj->level );
+            send_to_char( buf, ch );
+            act( "$n tries to use $p, but is too inexperienced.",
+                ch, obj, NULL, TO_ROOM );
+        }
         return false;
     }
 
     if ( IS_OBJ_STAT(obj, ITEM_DAMAGED) )
     {
-        send_to_char( "This item is damaged and cannot be used again until repaired.\n\r", ch );
+        if ( speak )
+            send_to_char( "This item is damaged and cannot be used again until repaired.\n\r", ch );
         return false;
     }
 
     if ( alignment_rejects_obj( ch, obj ) )
     {
-        char buf[MAX_STRING_LENGTH];
-
-        snprintf( buf, sizeof(buf), "$p rejects you: it is for %s, and you are %s.",
-                  alignment_obj_requirement( obj ), alignment_tier_name( ch->alignment ) );
-        act( buf, ch, obj, NULL, TO_CHAR );
+        if ( speak )
+        {
+            snprintf( buf, sizeof(buf), "$p rejects you: it is for %s, and you are %s.",
+                      alignment_obj_requirement( obj ), alignment_tier_name( ch->alignment ) );
+            act( buf, ch, obj, NULL, TO_CHAR );
+        }
         return false;
     }
 
@@ -3291,13 +3304,26 @@ static bool wear_requirements_met( CHAR_DATA *ch, OBJ_DATA *obj )
     && ( wearer_race_flag == 0
       || !IS_SET(allowed_races, wearer_race_flag) ) )
     {
-        snprintf( buf, sizeof(buf), "%s was not fashioned for your race.\n\r",
-                  capitalize(obj->short_descr) );
-        send_to_char( buf, ch );
+        if ( speak )
+        {
+            snprintf( buf, sizeof(buf), "%s was not fashioned for your race.\n\r",
+                      capitalize(obj->short_descr) );
+            send_to_char( buf, ch );
+        }
         return false;
     }
 
     return true;
+}
+
+static bool wear_requirements_met( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    return wear_requirements_check( ch, obj, true );
+}
+
+bool wear_requirements_quiet( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    return wear_requirements_check( ch, obj, false );
 }
 
 /* function for use with dual wield skill */

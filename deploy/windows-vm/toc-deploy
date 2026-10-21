@@ -32,6 +32,8 @@ say() { printf '\n== %s\n' "$*"; }
 EXIT_ROLLED_BACK=10        # new code failed; the old is back and healthy
 EXIT_ROLLBACK_UNHEALTHY=11 # rolled back, and the old is not healthy either
 EXIT_UNHEALTHY=12          # new code not healthy, left for a person
+EXIT_RESTARTED=13          # stopped, nothing installed, old code back and healthy
+EXIT_RESTART_UNHEALTHY=14  # stopped, nothing installed, and not healthy again
 
 healthy() {
     curl --fail --silent --max-time 3 http://127.0.0.1:9001/api/health |
@@ -60,19 +62,48 @@ rollback() {
     exit $EXIT_ROLLBACK_UNHEALTHY
 }
 
+# The code that was running, started again on the files it ran from.
+# For a stop that failed part way -- systemd may have stopped the web
+# service and not the game, or the reverse -- and for an archive that
+# could not be made: nothing was installed and there is no archive to
+# roll back from, so starting both is the whole of the recovery, and the
+# exit status says whether it worked (review, 2026-10-21: a failed stop
+# used to end the script under set -e with whatever it had stopped left
+# down, reported as "failed before the game was touched").
+restart_unchanged() {
+    systemctl start toc-game || true
+    sleep 8
+    systemctl start toc-web || true
+    sleep 6
+    if healthy; then
+        echo "   nothing installed; the running code is back and healthy" >&2
+        exit $EXIT_RESTARTED
+    fi
+    echo "   NOTHING INSTALLED, AND NOT HEALTHY AGAIN -- toc-game-recovery will keep trying" >&2
+    exit $EXIT_RESTART_UNHEALTHY
+}
+
 # set -e between stopping the game and starting it again used to leave
 # it stopped on a half-copied tree -- an rsync that ran out of disk, a
 # chown -- with no rollback, because the rollback lived only after the
 # health check. Whatever stops the install now rolls it back, by hand or
 # not: there is no running game to leave alone.
+# disrupted: a stop has been asked for, so the services may be down.
+# installing: the archive exists and files may have changed.
+disrupted=0
 installing=0
 install_failed() {
     st=$?
     trap - EXIT
-    [ "$installing" = 1 ] || exit "$st"
-    installing=0
-    echo "   INSTALL FAILED (status $st) after the game was stopped -- rolling back" >&2
-    rollback
+    if [ "$installing" = 1 ]; then
+        installing=0
+        echo "   INSTALL FAILED (status $st) after the game was stopped -- rolling back" >&2
+        rollback
+    fi
+    [ "$disrupted" = 1 ] || exit "$st"
+    disrupted=0
+    echo "   FAILED (status $st) after asking the game to stop -- restarting it" >&2
+    restart_unchanged
 }
 trap install_failed EXIT
 
@@ -164,16 +195,19 @@ fi
 say "installing"
 stamp=$(date +%Y%m%d-%H%M%S)
 ARCHIVE="${TOC_ROLLBACK_DIR:-/srv/toc}/rollback-code-$stamp.tgz"
-systemctl stop toc-web toc-game
+disrupted=1
+if ! systemctl stop toc-web toc-game; then
+    echo "   COULD NOT STOP THE GAME CLEANLY -- nothing installed, restarting it" >&2
+    disrupted=0
+    restart_unchanged
+fi
 # Nothing is copied without a way back: the archive must be made and must
 # read back whole, or the game restarts on the code it was running.
 if ! tar czf "$ARCHIVE" -C "$CURRENT" merc src area webadmin ||
    ! tar tzf "$ARCHIVE" >/dev/null; then
     echo "   COULD NOT ARCHIVE THE RUNNING CODE -- nothing installed, restarting it" >&2
-    systemctl start toc-game || true
-    sleep 8
-    systemctl start toc-web || true
-    exit 1
+    disrupted=0
+    restart_unchanged
 fi
 installing=1
 
@@ -257,6 +291,7 @@ sleep 8
 systemctl start toc-web
 sleep 4
 installing=0
+disrupted=0
 printf '   game=%s web=%s\n' "$(systemctl is-active toc-game)" "$(systemctl is-active toc-web)"
 
 n=0

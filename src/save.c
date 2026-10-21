@@ -185,6 +185,16 @@ static bool snapshot_ensure_dir( const char *path )
  * The PLAYER_VER_MAX most recent versions are kept; older ones are pruned.
  * Safe to call even if the player file does not yet exist (first save).
  */
+/*
+ * The one snapshot PRESTORE is reading from. Its own pre-restore copies
+ * -- player_snapshot_force, a save of the player still in the game, the
+ * STASH form's milestone -- each rotate the directory, and the oldest
+ * copy, the one most often restored, was the first to go: deleted before
+ * it was opened (review, 2026-10-21). The rotation passes it over while
+ * it is pinned; the next rotation after takes it as usual.
+ */
+static char snapshot_pinned[MAX_INPUT_LENGTH];
+
 static void player_snapshot_internal( const char *name, bool force,
                                       const char *tag )
 {
@@ -428,6 +438,9 @@ static void player_snapshot_internal( const char *name, bool force,
                 for ( i = 0; i < count - keep; i++ )
                 {
                     char to_del[MAX_STRING_LENGTH];
+                    if ( snapshot_pinned[0] != '\0'
+                      && strcmp( entries[i], snapshot_pinned ) == 0 )
+                        continue;
                     if ( snapshot_join_path( to_del, sizeof(to_del), vdir,
                                              entries[i] ) )
                         remove( to_del );
@@ -436,6 +449,15 @@ static void player_snapshot_internal( const char *name, bool force,
 #undef VER_SCAN_MAX
         }
     }
+}
+
+
+void player_snapshot_pin( const char *file )
+{
+    if ( file == NULL )
+        snapshot_pinned[0] = '\0';
+    else
+        toc_strlcpy( snapshot_pinned, file, sizeof(snapshot_pinned) );
 }
 
 

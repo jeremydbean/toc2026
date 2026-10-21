@@ -306,9 +306,13 @@ static bool outfit_slot( CHAR_DATA *ch, int wear, int vnum, bool free_item )
 
     if ( get_eq_char( ch, wear ) != NULL )
 	return false;
+    /* Only a copy WEAR would let them put on: a broken, hot, over-level
+       or wrong-race one stays in the pack as it is, and the next match
+       or a new one is used instead. */
     for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
 	if ( obj->wear_loc == WEAR_NONE && obj->pIndexData != NULL
-	&&   obj->pIndexData->vnum == vnum && can_see_obj( ch, obj ) )
+	&&   obj->pIndexData->vnum == vnum && can_see_obj( ch, obj )
+	&&   wear_requirements_quiet( ch, obj ) )
 	    break;
     if ( obj == NULL )
     {
@@ -320,7 +324,7 @@ static bool outfit_slot( CHAR_DATA *ch, int wear, int vnum, bool free_item )
 	obj_to_char( obj, ch );
     }
     equip_char( ch, obj, wear );
-    return true;
+    return get_eq_char( ch, wear ) == obj;   /* equip_char can still refuse */
 }
 
 void do_outfit ( CHAR_DATA *ch, char *argument )
@@ -372,6 +376,13 @@ void do_outfit ( CHAR_DATA *ch, char *argument )
 	if ( weapon_sn > 0
 	  && ch->pcdata->learned[weapon_sn] < STARTING_WEAPON_SKILL )
 	    ch->pcdata->learned[weapon_sn] = STARTING_WEAPON_SKILL;
+
+	/* A monk fights unarmed whatever is in hand: a remort that kept a
+	   school sword floored sword above and left hand to hand at the
+	   group's 1% (remort review, 2026-10-21). */
+	if ( ch->class == CLASS_MONK && gsn_hand_to_hand > 0
+	  && ch->pcdata->learned[gsn_hand_to_hand] < STARTING_WEAPON_SKILL )
+	    ch->pcdata->learned[gsn_hand_to_hand] = STARTING_WEAPON_SKILL;
 
 	if ( gsn_recall > 0
 	  && ch->pcdata->learned[gsn_recall] < STARTING_RECALL_SKILL )
@@ -10678,7 +10689,7 @@ static void prestore_stash( CHAR_DATA *ch, const char *capname,
     }
 }
 
-void do_prestore( CHAR_DATA *ch, char *argument )
+static void prestore_command( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
@@ -10903,6 +10914,9 @@ void do_prestore( CHAR_DATA *ch, char *argument )
 
         snprintf( srcpath, sizeof(srcpath), "%s%s/%s",
                   PLAYER_VER_DIR, capname, versions[n - 1] );
+        /* Every save and copy below rotates the snapshots; none may take
+           this one. do_prestore unpins it on every way out. */
+        player_snapshot_pin( versions[n - 1] );
 
         /* Only the stash, onto the character as they are now. */
         if ( !str_cmp( arg3, "stash" ) )
@@ -11084,6 +11098,12 @@ void do_prestore( CHAR_DATA *ch, char *argument )
     }
 
     return;
+}
+
+void do_prestore( CHAR_DATA *ch, char *argument )
+{
+    prestore_command( ch, argument );
+    player_snapshot_pin( NULL );
 }
 
 
