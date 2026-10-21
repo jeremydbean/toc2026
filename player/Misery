@@ -1,7 +1,7 @@
 #PLAYER
 Name Misery~
 Id   59089
-LogO 1790895313
+LogO 1792546411
 Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
@@ -107,29 +107,30 @@ Psionic  1
 PsiGrant 0
 PsiSpec ~
 PsiKnown clairvoyance,confuse,ego whip,mindbar~
+ChangesSeen ~
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1677581
+Plyd 1677804
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 1
+Room 17109
 HMV  2318 2318 1035 1035 368 368
-NewGold 74
-NewPlat 5132
-NewCopp 2
-NewSilv 20
-BankCP 1113678360874
-IntTime 1790873489
-IntTotal 24606340079
+NewGold 182
+NewPlat 7584
+NewCopp 64
+NewSilv 99
+BankCP 1133167732188
+IntTime 1792515089
+IntTotal 44095711393
 Dcount 0
 SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 24
-AchKills 3
+AchKills 4
 AchQuests 3
 AchDeaths 0
 AchExplore 0
@@ -172,12 +173,14 @@ Achv bank-thousand-platinum 1790711500
 Achv carry-ten-platinum 1790711500
 Achv carry-thousand-platinum 1790711500
 Achv benchmark-champion 1790837597
-LastOut  1790895313
-SesLogin 1790895094
-SesDur   219
+LastOut  1792546411
+Rested 0 0
+Daily 0 0 0 0 0
+SesLogin 1792546190
+SesDur   221
 SesExpG  0
 SesLvlG  0
-SesKill  0
+SesKill  1
 SesPK    0
 SesDead  0
 SesQuest 0
@@ -228,7 +231,7 @@ Pnts 40
 TSex 2
 LLev 3
 HMVP 1783 760 418
-Cond 0 100 100
+Cond 0 24 24
 Alias / who~
 Alias f flee~
 Alias ] recall~
@@ -456,8 +459,8 @@ Lev  51
 Cost 5000000
 Cond 100
 Repd 0
-Affect -1 51 -1 -8 17 0 0
 Affect -1 51 -1 4 24 0 0
+Affect -1 51 -1 -8 17 0 0
 End
 
 #O
@@ -1595,6 +1598,17 @@ Cost 0
 Cond 97
 Repd 0
 Val  12 11 12 -1 0
+End
+
+#O
+Vnum 9944
+Nest 0
+Wear -1
+Lev  20
+Cost 0
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
 End
 
 #END

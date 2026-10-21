@@ -146081,3 +146081,52 @@ Wed Oct 21 01:21:25 2026 :: Sock.sinaddr:  52.87.72.16
 Wed Oct 21 01:21:26 2026 :: EOF encountered on read.
 Wed Oct 21 01:26:30 2026 :: Sock.sinaddr:  5.161.73.160
 Wed Oct 21 01:26:30 2026 :: EOF encountered on read.
+Wed Oct 21 01:29:42 2026 :: Loading Misery's playerfile
+Wed Oct 21 01:29:43 2026 :: Closing link to Misery.
+Wed Oct 21 01:29:48 2026 :: Loading Misery's playerfile
+Wed Oct 21 01:29:49 2026 :: Misery@108.81.26.245 has connected.
+Wed Oct 21 01:29:50 2026 :: Log Misery [1]: arrived (The Void) from 0
+Wed Oct 21 01:30:03 2026 :: Log Misery [1]: /
+Wed Oct 21 01:30:08 2026 :: Log Misery [1]: mwhere trea
+Wed Oct 21 01:30:09 2026 :: Log Misery [1]: wor
+Wed Oct 21 01:30:16 2026 :: Log Misery [1]: goto 29941
+Wed Oct 21 01:30:16 2026 :: Log Misery [29941]: arrived (An Empty Room) from 1
+Wed Oct 21 01:30:22 2026 :: Log Misery [29941]: goto 29871
+Wed Oct 21 01:30:22 2026 :: Log Misery [29871]: arrived (An Empty Room) from 29941
+Wed Oct 21 01:30:28 2026 :: Treasure goblin: vanished from room 29072 (Machine Room, korzath1.are) (too long in one area).
+Wed Oct 21 01:30:38 2026 :: Log Misery [29871]: goto 'treasure goblin'
+Wed Oct 21 01:30:45 2026 :: Log Misery [29871]: goto 4.goblin
+Wed Oct 21 01:30:45 2026 :: Log Misery [25126]: arrived (At the top of a shaft.) from 29871
+Wed Oct 21 01:30:51 2026 :: Log Misery [25126]: mwhere treasure
+Wed Oct 21 01:30:56 2026 :: Log Misery [25126]: goto treasure
+Wed Oct 21 01:30:56 2026 :: Log Misery [17110]: arrived (The Bog) from 25126
+Wed Oct 21 01:31:01 2026 :: Log Misery [17110]: kill tr
+Wed Oct 21 01:31:06 2026 :: Log Misery [17110]: w
+Wed Oct 21 01:31:06 2026 :: Log Misery [17109]: arrived (The Bog) from 17110
+Wed Oct 21 01:31:06 2026 :: Log Misery [17109]: e
+Wed Oct 21 01:31:06 2026 :: Log Misery [17110]: arrived (The Bog) from 17109
+Wed Oct 21 01:31:08 2026 :: Log Misery [17110]: get all
+Wed Oct 21 01:31:08 2026 :: Log Misery [17110]: coin +48 copper
+Wed Oct 21 01:31:08 2026 :: Log Misery [17110]: coin +2 silver
+Wed Oct 21 01:31:08 2026 :: Log Misery [17110]: coin +61 gold
+Wed Oct 21 01:31:08 2026 :: Log Misery [17110]: coin +87 platinum
+Wed Oct 21 01:31:09 2026 :: Log Misery [17110]: w
+Wed Oct 21 01:31:09 2026 :: Log Misery [17109]: arrived (The Bog) from 17110
+Wed Oct 21 01:31:10 2026 :: Log Misery [17109]: kill tr
+Wed Oct 21 01:31:10 2026 :: Log Misery [17109]: killed a treasure goblin
+Wed Oct 21 01:31:10 2026 :: Treasure goblin: his sack held lucky clover (9944).
+Wed Oct 21 01:31:10 2026 :: Treasure goblin: slain by Misery in room 17109 (The Bog, highland.are), dropping 2365p 47g 66s 96c.
+Wed Oct 21 01:31:10 2026 :: Log Misery [17109]: coin +2365 platinum
+Wed Oct 21 01:31:10 2026 :: Log Misery [17109]: coin +77 silver
+Wed Oct 21 01:31:10 2026 :: Log Misery [17109]: coin +14 copper
+Wed Oct 21 01:31:10 2026 :: Log Misery [17109]: coin +47 gold
+Wed Oct 21 01:31:23 2026 :: Log Misery [17109]: look in cor
+Wed Oct 21 01:31:25 2026 :: Log Misery [17109]: get all cor
+Wed Oct 21 01:31:29 2026 :: Log Misery [17109]: look
+Wed Oct 21 01:31:35 2026 :: Sock.sinaddr:  5.161.117.52
+Wed Oct 21 01:31:35 2026 :: EOF encountered on read.
+Wed Oct 21 01:32:16 2026 :: Treasure goblin: appeared.
+Wed Oct 21 01:33:24 2026 :: Log Misery [17109]: save
+Wed Oct 21 01:33:31 2026 :: Log Misery [17109]: quit
+Wed Oct 21 01:33:31 2026 :: Misery has quit.
+Wed Oct 21 01:33:31 2026 :: [QUIT] Player rejoined the real world.
