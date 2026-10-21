@@ -61,7 +61,7 @@ class NewCharacterLiveTests(unittest.TestCase):
             self.assertNotIn("Gr 'mage default'", saved)
             self.assertNotIn("'magic missile'", saved)
             # Born correct: every login fix is marked, none is run.
-            self.assertIn("Fixes 20261021-mage-groups~", saved)
+            self.assertIn("Fixes 20261021-mage-groups 20261021-mage-weapons~", saved)
 
     def test_the_stray_groups_are_taken_back_and_the_practice_refunded(self) -> None:
         """Owner, 2026-10-21: remove the mage spells from anyone who should
@@ -102,13 +102,40 @@ class NewCharacterLiveTests(unittest.TestCase):
             self.assertNotIn("'magic missile'", saved)
             self.assertIn("Sk 89 'dagger'", saved, "a skill owed anyway keeps its training")
             self.assertIn("Prac %d" % (5 + refunded), saved)
-            self.assertIn("Fixes 20261021-mage-groups~", saved, "applied once, and recorded")
+            self.assertIn("20261021-mage-groups", saved, "applied once, and recorded")
 
             # Once is enough: the next login says nothing.
             with mud.connect(timeout=120) as client:
                 login(client, "Zstray", "Zstray1pass")
                 client.drain(2.0)
                 self.assertNotIn("gave you the mage's starting spells", client.transcript)
+
+    def test_a_weapon_left_at_the_mage_floor_goes_back_to_the_class(self) -> None:
+        """The same bug ran the mage's weapon floors: a new warrior started
+        with dagger 80 for a warrior's 30. A value still exactly 80 was
+        never trained, so it goes back; 89 above stays (the test above)."""
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zdagger", "Zdagger1pass")
+                client.drain(1.0)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            path = mud.player_dir / "Zdagger"
+            text = path.read_text(encoding="latin-1")
+            text = re.sub(r"(?m)^Fixes .*\n", "", text)
+            text = re.sub(r"(?m)^Sk \d+ 'dagger'$", "Sk 80 'dagger'", text)
+            path.write_text(text, encoding="latin-1")
+
+            with mud.connect(timeout=120) as client:
+                login(client, "Zdagger", "Zdagger1pass")
+                client.drain(2.0)
+                self.assertIn("a mage's weapon skills", client.transcript)
+                self.assertIn("dagger 80% to 30%", client.transcript)
+                client.send("quit")
+                client.wait_closed()
+            saved = path.read_text(encoding="latin-1")
+            self.assertIn("Sk 30 'dagger'", saved)
+            self.assertIn("20261021-mage-weapons", saved)
 
 
 if __name__ == "__main__":

@@ -1100,7 +1100,13 @@ fixture's file -- **and deletes the fixture's `Fixes` line**, since a
 fixture is a new character and would otherwise skip the fix -- logs in,
 checks the correction, and checks a second login says nothing (see
 `tests/test_new_character_groups.py`). Staff list them with `FIXES` and
-see a player's with `FIXES <player>`.
+see an online player's with `FIXES <player>`. A row says whether staff
+get the fix; one that does not skips them **without marking**, so a
+builder whose trust is later taken away still gets it. The second fix,
+`20261021-mage-weapons`, undoes the same creation bug's other half --
+the mage's weapon floors (dagger 80, whip 20) applied to every new
+character -- for a weapon still at exactly the mage's value, which was
+never trained since.
 
 ## Travel Spells Keep Room Rules
 

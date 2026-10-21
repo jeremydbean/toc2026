@@ -1195,7 +1195,7 @@ See also: 'TREASURE GOBLIN', BLACKMARKET
 
 60 FIXES~
 Syntax: fixes                (every login fix, oldest first)
-        fixes <player>       (which of them that player has had)
+        fixes <player>       (which of them an online player has had)
 
 A login fix corrects characters after a bug has been fixed: it runs once
 for each character, the next time they log in, tells them what changed,
