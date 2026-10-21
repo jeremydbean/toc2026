@@ -1728,3 +1728,176 @@
 1792622848	cmd	Trentlin	49	2488	dresden_halloween.are	standing	100	0	-	eat	pot	You eat a big pot pie.
 1792622848	cmd	Trentlin	49	2488	dresden_halloween.are	standing	100	0	-	eat	pot	You eat a big pot pie.
 1792622848	cmd	Trentlin	49	2488	dresden_halloween.are	standing	100	0	-	eat	pot	You are too full to eat more.
+1792622848	cmd	Trentlin	49	2488	dresden_halloween.are	standing	100	0	-	eat	pot	You are too full to eat more.
+1792622849	cmd	Trentlin	49	2488	dresden_halloween.are	standing	100	0	-	recall		Your prayer goes up and comes back unanswered.
+1792622850	cmd	Trentlin	49	2488	dresden_halloween.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792622850	cmd	Trentlin	49	2488	dresden_halloween.are	standing	100	0	-	heal	uncurse	You can't do that here.
+1792622851	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792622852	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota
+1792622854	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	Hermie turns to you with a wink.
+1792622855	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	Hermie turns to you with a wink.
+1792622856	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	Hermie turns to you with a wink.
+1792622856	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	Hermie turns to you with a wink.
+1792622856	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	Hermie turns to you with a wink.
+1792622858	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792622858	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792622858	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792622859	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792622860	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792622861	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792622861	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792622879	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	run	s 2	Southern Oak Tree Square.
+1792622879	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	run	w 3	Entrance to the Haunted Temple
+1792622879	cmd	Trentlin	49	3795	school.are	standing	100	0	-	run	u 3	Entrance to Mud School
+1792622879	cmd	Trentlin	49	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal
+1792622880	cmd	Trentlin	49	15004	campus.are	standing	100	0	-	run	e 4	Campus Crescent
+1792622880	cmd	Trentlin	49	15013	campus.are	standing	100	0	-	run	n 4	University Avenue
+1792622880	cmd	Trentlin	49	15068	campus.are	standing	100	0	-	run	e 2	The Back Hall
+1792622880	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering Hyrule arcade cabinet
+1792622881	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	equipment		You are using:
+1792622891	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622894	cmd	Trentlin	49	30208	hyrule.are	standing	100	0	-	east		Meadow East of the Cave
+1792622895	cmd	Trentlin	49	30208	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622896	cmd	Trentlin	49	30224	hyrule.are	standing	100	0	-	north		Bush Row
+1792622896	cmd	Trentlin	49	30224	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622899	cmd	Trentlin	49	30225	hyrule.are	standing	100	0	-	east		River Bend
+1792622900	cmd	Trentlin	49	30225	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622902	cmd	Trentlin	49	30226	hyrule.are	standing	100	0	-	east		Riverbank Thicket
+1792622902	cmd	Trentlin	49	30226	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622904	cmd	Trentlin	49	30227	hyrule.are	standing	100	0	-	east		Shaded Grove
+1792622904	cmd	Trentlin	49	30227	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622906	cmd	Trentlin	49	30243	hyrule.are	standing	100	0	-	north		Eastwood Glade
+1792622907	cmd	Trentlin	49	30243	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622908	cmd	Trentlin	49	30244	hyrule.are	standing	100	0	-	east		Pinewood Rise
+1792622909	cmd	Trentlin	49	30244	hyrule.are	standing	100	2	-	exits		Obvious exits:
+1792622911	cmd	Trentlin	49	30245	hyrule.are	standing	100	0	-	east		Moblin Hollow
+1792622911	cmd	Trentlin	49	30245	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622913	cmd	Trentlin	49	30261	hyrule.are	standing	100	0	-	north		Wooded Crossroads
+1792622914	cmd	Trentlin	49	30261	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622915	cmd	Trentlin	49	30261	hyrule.are	standing	100	0	-	look	sign	You do not see that here.
+1792622916	cmd	Trentlin	49	30277	hyrule.are	standing	100	0	-	north		The Armos Shore
+1792622917	cmd	Trentlin	49	30293	hyrule.are	standing	100	0	-	north		Lake Hylia, North Shore
+1792622919	cmd	Trentlin	49	30293	hyrule.are	standing	100	0	-	north		You need the Stepladder to cross that gap.
+1792622920	cmd	Trentlin	49	30292	hyrule.are	standing	100	0	-	west		Lake Hylia, North Cliffs
+1792622921	cmd	Trentlin	49	30291	hyrule.are	standing	100	0	-	west		Below the Lost Hills
+1792622922	cmd	Trentlin	49	30291	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622924	cmd	Trentlin	49	30291	hyrule.are	standing	100	0	-	north		You need the Stepladder to cross that gap.
+1792622925	cmd	Trentlin	49	30291	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622926	cmd	Trentlin	49	30290	hyrule.are	standing	100	0	-	west		The Dune Strip
+1792622926	cmd	Trentlin	49	30289	hyrule.are	standing	100	0	-	west		The Sandy Flats
+1792622927	cmd	Trentlin	49	30288	hyrule.are	standing	100	0	-	west		The Withered Thicket
+1792622928	cmd	Trentlin	49	30288	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622929	cmd	Trentlin	49	30287	hyrule.are	standing	100	0	-	west		Foot of Death Mountain
+1792622930	cmd	Trentlin	49	30287	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622932	cmd	Trentlin	49	30303	hyrule.are	standing	100	0	-	north		The Lost Hills
+1792622932	cmd	Trentlin	49	30303	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622935	cmd	Trentlin	49	30753	hyrule.are	standing	100	0	-	north		The Lost Hills
+1792622936	cmd	Trentlin	49	30754	hyrule.are	standing	100	0	-	north		The Lost Hills
+1792622937	cmd	Trentlin	49	30754	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622939	cmd	Trentlin	49	30302	hyrule.are	standing	100	0	-	west		The Rumbling Gully
+1792622940	cmd	Trentlin	49	30302	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622942	cmd	Trentlin	49	30301	hyrule.are	standing	100	0	-	west		Highland Overlook
+1792622943	cmd	Trentlin	49	30301	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622946	cmd	Trentlin	49	30301	hyrule.are	standing	100	0	-	scan		a tumbling boulder                 -to the East.
+1792622947	cmd	Trentlin	49	30301	hyrule.are	standing	100	0	-	south		You need the Stepladder to cross that gap.
+1792622947	cmd	Trentlin	49	30301	hyrule.are	standing	100	0	-	list		You can't do that here.
+1792622948	cmd	Trentlin	49	30300	hyrule.are	standing	100	0	-	west		The Crumbling Scarp
+1792622948	cmd	Trentlin	49	30300	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622950	cmd	Trentlin	49	30299	hyrule.are	standing	100	0	-	west		Broken Stone Terrace
+1792622951	cmd	Trentlin	49	30299	hyrule.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792622951	cmd	Trentlin	49	30298	hyrule.are	standing	100	0	-	west		The Shieldmaker's Bluff
+1792622953	cmd	Trentlin	49	30298	hyrule.are	standing	100	0	-	north		You need the Stepladder to cross that gap.
+1792622954	cmd	Trentlin	49	30298	hyrule.are	standing	100	0	-	north		You need the Stepladder to cross that gap.
+1792622954	cmd	Trentlin	49	30299	hyrule.are	standing	100	0	-	east		Broken Stone Terrace
+1792622954	cmd	Trentlin	49	30300	hyrule.are	standing	100	0	-	east		The Crumbling Scarp
+1792622955	cmd	Trentlin	49	30301	hyrule.are	standing	100	0	-	east		Highland Overlook
+1792622955	cmd	Trentlin	49	30302	hyrule.are	standing	100	0	-	east		The Rumbling Gully
+1792622955	cmd	Trentlin	49	30303	hyrule.are	standing	100	0	-	east		The Lost Hills
+1792622955	cmd	Trentlin	49	30287	hyrule.are	standing	100	0	-	south		Foot of Death Mountain
+1792622956	cmd	Trentlin	49	30287	hyrule.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792622956	cmd	Trentlin	49	30287	hyrule.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792622957	cmd	Trentlin	49	30288	hyrule.are	standing	100	0	-	east		The Withered Thicket
+1792622957	cmd	Trentlin	49	30272	hyrule.are	standing	100	0	-	south		The River Landing
+1792622957	cmd	Trentlin	49	30256	hyrule.are	standing	100	0	-	south		Lake Hylia Sand Bar
+1792622958	cmd	Trentlin	49	30255	hyrule.are	standing	100	0	-	west		Lake Hylia, South Shore
+1792622959	cmd	Trentlin	49	30254	hyrule.are	standing	100	0	-	west		Lake Hylia, Western Reeds
+1792622961	cmd	Trentlin	49	30238	hyrule.are	standing	100	0	-	south		Lake Hylia, Southwest Bank
+1792622962	cmd	Trentlin	49	30237	hyrule.are	standing	100	0	-	west		Shore Below the Snake
+1792622962	cmd	Trentlin	49	30237	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622967	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	south		Forest Stream
+1792622981	cmd	Trentlin	49	30237	hyrule.are	standing	100	0	-	north		Shore Below the Snake
+1792622982	cmd	Trentlin	49	30253	hyrule.are	standing	100	0	-	north		Isle of the Snake
+1792622984	cmd	Trentlin	49	30456	hyrule.are	standing	100	0	-	enter	raft	You enter a waiting dungeon raft
+1792622987	cmd	Trentlin	49	30456	hyrule.are	standing	100	0	-	scan		a blue darknut                     -to the North.
+1792622989	cmd	Trentlin	49	30455	hyrule.are	standing	100	0	-	west		Level 4: Dripping Roost
+1792622991	cmd	Trentlin	49	30456	hyrule.are	standing	100	0	-	east		Level 4: Mouth of the Snake
+1792622992	cmd	Trentlin	49	30457	hyrule.are	standing	100	0	-	north		Level 4: Moat Crossing
+1792622993	cmd	Trentlin	49	30458	hyrule.are	standing	100	0	-	east		Level 4: Serpent Coil Chamber
+1792622995	cmd	Trentlin	49	30458	hyrule.are	standing	100	0	-	get	all	You get the Snake dungeon compass.
+1792622997	cmd	Trentlin	49	30458	hyrule.are	standing	100	0	-	look	compa	The needle swings west.
+1792623000	cmd	Trentlin	49	30457	hyrule.are	standing	100	0	-	west		Level 4: Moat Crossing
+1792623001	cmd	Trentlin	49	30460	hyrule.are	standing	100	0	-	north		Level 4: Seeping Gallery
+1792623002	cmd	Trentlin	49	30459	hyrule.are	standing	100	2	-	west		Level 4: Lane of Blocks
+1792623003	cmd	Trentlin	49	30461	hyrule.are	standing	100	0	-	north		Level 4: Still Corridor
+1792623004	cmd	Trentlin	49	30461	hyrule.are	standing	100	0	-	look	comp	The needle swings north.
+1792623006	cmd	Trentlin	49	30462	hyrule.are	standing	100	0	-	north		Level 4: Crackling Antechamber
+1792623008	cmd	Trentlin	49	30465	hyrule.are	standing	100	0	-	north		Level 4: Divided Hall
+1792623010	cmd	Trentlin	49	30465	hyrule.are	standing	100	0	-	scan		a gel                              -to the East.
+1792623011	cmd	Trentlin	49	30465	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792623014	cmd	Trentlin	49	30465	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792623016	cmd	Trentlin	49	30465	hyrule.are	standing	100	0	-	kill	v	Your whip MANGLES a vire!
+1792623021	cmd	Trentlin	49	30465	hyrule.are	standing	100	0	-	smite		Smite whom?
+1792623022	cmd	Trentlin	49	30467	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear.
+1792623023	cmd	Trentlin	49	30471	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear.
+1792623026	cmd	Trentlin	49	30467	hyrule.are	standing	100	0	-	south		Level 4: Cold Crossing
+1792623027	cmd	Trentlin	49	30465	hyrule.are	standing	100	0	-	south		Level 4: Divided Hall
+1792623027	cmd	Trentlin	49	30466	hyrule.are	standing	100	0	-	east		Level 4: Slick Chamber
+1792623031	cmd	Trentlin	49	30466	hyrule.are	standing	100	0	-	look	in ches	The Snake's equipment chest contains:
+1792623036	cmd	Trentlin	49	30463	hyrule.are	standing	100	0	-	south		Level 4: Hall of Biting Serpents
+1792623037	cmd	Trentlin	49	30463	hyrule.are	standing	100	0	-	east		The shutter is sealed fast, and will not open while enemies remain here.
+1792623039	cmd	Trentlin	49	30463	hyrule.are	standing	100	0	-	kill	v	Your whip ^^^ DESTROYS ^^^ a vire!
+1792623043	refused	Trentlin	49	30463	hyrule.are	fighting	100	0	fight	(unknown)		Huh? Did you mean SMITE?
+1792623043	cmd	Trentlin	49	30463	hyrule.are	standing	100	0	-	smite		Smite whom?
+1792623044	cmd	Trentlin	49	30464	hyrule.are	standing	100	0	-	east		The shutter opens now that the chamber is clear.
+1792623047	cmd	Trentlin	49	30464	hyrule.are	standing	100	0	-	look	com	The needle swings west.
+1792623049	cmd	Trentlin	49	30463	hyrule.are	standing	100	0	-	west		Level 4: Hall of Biting Serpents
+1792623049	cmd	Trentlin	49	30466	hyrule.are	standing	100	0	-	north		Level 4: Slick Chamber
+1792623050	cmd	Trentlin	49	30465	hyrule.are	standing	100	0	-	west		Level 4: Divided Hall
+1792623050	cmd	Trentlin	49	30467	hyrule.are	standing	100	0	-	north		Level 4: Cold Crossing
+1792623052	cmd	Trentlin	49	30467	hyrule.are	standing	100	0	-	look	com	The needle points east -- at the bare wall, as though the way lay through the stone.
+1792623059	cmd	Trentlin	49	30471	hyrule.are	standing	100	0	-	north		Level 4: Serpent Hearth Cell
+1792623060	cmd	Trentlin	49	30471	hyrule.are	standing	100	0	-	scan		You don't see anything near you.
+1792623061	cmd	Trentlin	49	30467	hyrule.are	standing	100	0	-	south		Level 4: Cold Crossing
+1792623061	cmd	Trentlin	49	30467	hyrule.are	standing	100	0	-	scan		a damp-robed old man               -to the North.
+1792623063	cmd	Trentlin	49	30471	hyrule.are	standing	100	0	-	north		Level 4: Serpent Hearth Cell
+1792623064	cmd	Trentlin	49	30471	hyrule.are	standing	100	0	-	consider	man	A damp-robed old man is no enemy of yours.
+1792623065	cmd	Trentlin	49	30471	hyrule.are	standing	100	0	-	look	man	His robe is wet to the knees and never seems to dry, though the fires on
+1792623066	cmd	Trentlin	49	30471	hyrule.are	standing	100	0	-	list		You can't do that here.
+1792623068	cmd	Trentlin	49	30471	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792623069	cmd	Trentlin	49	30467	hyrule.are	standing	100	0	-	south		Level 4: Cold Crossing
+1792623073	cmd	Trentlin	49	30467	hyrule.are	standing	100	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!
+1792623074	cmd	Trentlin	49	30468	hyrule.are	standing	100	0	-	east		Level 4: The Sealed Heart
+1792623075	cmd	Trentlin	49	30468	hyrule.are	standing	100	0	-	scan		You don't see anything near you.
+1792623083	cmd	Trentlin	49	30468	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792623084	cmd	Trentlin	49	30468	hyrule.are	standing	100	0	-	look	com	The needle points east -- at the bare wall, as though the way lay through the stone.
+1792623087	cmd	Trentlin	49	30468	hyrule.are	standing	100	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!
+1792623089	cmd	Trentlin	49	30469	hyrule.are	standing	100	0	-	east		Level 4: Knight's Approach
+1792623091	cmd	Trentlin	49	30469	hyrule.are	standing	100	0	-	scan		a blade trap                       -to the North.
+1792623092	cmd	Trentlin	49	30469	hyrule.are	standing	100	0	-	east		The shutter is sealed fast, and will not open while enemies remain here.
+1792623094	cmd	Trentlin	49	30469	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792623095	cmd	Trentlin	49	30469	hyrule.are	standing	100	0	-	look	com	The needle swings east.
+1792623097	cmd	Trentlin	49	30473	hyrule.are	standing	100	0	-	north		Level 4: Gauntlet of Blades
+1792623098	cmd	Trentlin	49	30472	hyrule.are	standing	100	0	-	west		Level 4: Rafter Roost
+1792623099	cmd	Trentlin	49	30473	hyrule.are	standing	100	0	-	east		Level 4: Gauntlet of Blades
+1792623100	cmd	Trentlin	49	30469	hyrule.are	standing	100	0	-	south		Level 4: Knight's Approach
+1792623100	cmd	Trentlin	49	30469	hyrule.are	standing	100	0	-	east		The shutter is sealed fast, and will not open while enemies remain here.
+1792623101	cmd	Trentlin	49	30469	hyrule.are	standing	100	0	-	kill	v	Your whip ^^^ DESTROYS ^^^ a vire!
+1792623106	cmd	Trentlin	49	30469	hyrule.are	fighting	100	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a vire!
+1792623113	cmd	Trentlin	49	30469	hyrule.are	standing	100	0	-	kill	da	Your whip ^^^ DESTROYS ^^^ a blue darknut!
+1792623116	cmd	Trentlin	49	30469	hyrule.are	fighting	100	0	fight	smite		You have become better at whip!
+1792623125	cmd	Trentlin	49	30469	hyrule.are	standing	99	0	-	smite		Smite whom?
+1792623125	cmd	Trentlin	49	30470	hyrule.are	standing	99	0	-	east		The shutter opens now that the chamber is clear.
+1792623127	cmd	Trentlin	49	30470	hyrule.are	standing	99	0	-	look	gl	A massive dragon with two long, snakelike necks, each ending in a
+1792623128	cmd	Trentlin	49	30470	hyrule.are	standing	99	0	-	kill	gl	Gleeok parries your attack.
+1792623132	cmd	Trentlin	49	30470	hyrule.are	fighting	99	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Gleeok!
+1792623142	cmd	Trentlin	49	30470	hyrule.are	fighting	97	0	fight	smite		Your smite misses Gleeok.
