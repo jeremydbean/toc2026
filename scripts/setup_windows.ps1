@@ -7,6 +7,7 @@ param(
     [switch]$NoStart,
     [switch]$NoBrowser,
     [switch]$SkipPrerequisites,
+    [switch]$ImportPlayers,
     [switch]$ElevatedPrerequisitesOnly
 )
 
@@ -134,7 +135,7 @@ if (-not $SkipPrerequisites) {
 }
 
 Refresh-ProcessPath
-Initialize-TocInstance -Network $Network
+Initialize-TocInstance -Network $Network -ImportPlayers:$ImportPlayers
 
 if ($restartRequired) {
     Write-Host ''
@@ -147,7 +148,7 @@ if ($restartRequired) {
 if ($NoStart) {
     Write-Host ''
     Write-Host 'Installation and configuration are complete.' -ForegroundColor Green
-    Write-Host 'Run .\toc.ps1 build when you are ready to start.'
+    Write-Host 'Run .\toc.ps1 start when you are ready.'
     return
 }
 
@@ -161,12 +162,15 @@ Write-Host 'Docker Desktop may display its license or first-run setup once.' `
 Write-Host 'Complete that prompt if it appears; this installer will wait for Docker.'
 Start-TocDocker
 
-& (Join-Path $script:TocRepoRoot 'toc.ps1') build
+& (Join-Path $script:TocRepoRoot 'toc.ps1') start
 
 if (-not $NoBrowser) {
-    Open-TocDashboard
+    Open-TocClient
 }
 
 Write-Host ''
+Write-Host 'Next: create a character in the game, QUIT, then run' -ForegroundColor Green
+Write-Host '  .\toc.ps1 promote <name>'
+Write-Host 'to make it your administrator.'
 Write-Host 'Future starts: double-click Start-ToC.cmd or run .\toc.ps1 start' `
     -ForegroundColor Green

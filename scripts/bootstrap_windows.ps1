@@ -1,9 +1,16 @@
-# Fresh-machine bootstrap: install Git, clone ToC, and run the full installer.
+# Fresh-machine bootstrap for Windows: install Git, fetch Times of Chaos,
+# and run the full installer (Docker Desktop on WSL 2). From PowerShell:
+#
+#   & ([scriptblock]::Create((irm https://raw.githubusercontent.com/jeremydbean/toc2026/main/scripts/bootstrap_windows.ps1)))
+#
+# Add -Public to accept game connections from other computers, and
+# -ImportPlayers to start with the repository's characters.
 
 [CmdletBinding()]
 param(
     [string]$InstallDirectory = (Join-Path $env:USERPROFILE 'TimesOfChaos'),
-    [switch]$Public
+    [switch]$Public,
+    [switch]$ImportPlayers
 )
 
 $ErrorActionPreference = 'Stop'
@@ -59,14 +66,16 @@ if ($installParent) {
 $gitDirectory = Join-Path $InstallDirectory '.git'
 if (Test-Path -LiteralPath $gitDirectory) {
     Write-Host "Using existing checkout: $InstallDirectory" -ForegroundColor Green
-    $changes = & $git -C $InstallDirectory status --porcelain
+    # Game data an older install kept in the checkout is not a code change.
+    $changes = & $git -C $InstallDirectory status --porcelain -- . ':(exclude)player' `
+        ':(exclude)gods' ':(exclude)heroes' ':(exclude)log'
     if (-not $changes) {
         & $git -C $InstallDirectory pull --ff-only
         if ($LASTEXITCODE -ne 0) {
-            throw 'The existing checkout could not be fast-forwarded.'
+            Write-Warning 'The existing checkout could not be updated; continuing with the version it has.'
         }
     } else {
-        Write-Warning 'The existing checkout has local changes; setup will preserve them without pulling.'
+        Write-Warning 'The existing checkout has local code changes; setup will preserve them without pulling.'
     }
 } else {
     if ((Test-Path -LiteralPath $InstallDirectory) -and
@@ -74,11 +83,15 @@ if (Test-Path -LiteralPath $gitDirectory) {
         throw "Install directory is not empty and is not a Git checkout: $InstallDirectory"
     }
     Write-Host "Downloading Times of Chaos to $InstallDirectory..." -ForegroundColor Cyan
-    & $git clone $repository $InstallDirectory
+    # The latest commit only (the history carries years of player saves),
+    # and files byte for byte as committed: Git for Windows' default CRLF
+    # conversion would otherwise rewrite the area files a local image
+    # build copies in.
+    & $git clone --depth 1 -c core.autocrlf=false $repository $InstallDirectory
     if ($LASTEXITCODE -ne 0) {
         throw 'The Times of Chaos repository could not be cloned.'
     }
 }
 
 $network = if ($Public) { 'Public' } else { 'Local' }
-& (Join-Path $InstallDirectory 'install.ps1') -Network $network
+& (Join-Path $InstallDirectory 'install.ps1') -Network $network -ImportPlayers:$ImportPlayers

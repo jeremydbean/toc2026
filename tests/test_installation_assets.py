@@ -113,18 +113,32 @@ class InstallationAssetsTests(unittest.TestCase):
         self.assertIn("${WEB_ADMIN_BIND:-127.0.0.1}", compose)
         self.assertIn("WEB_ADMIN_LOCAL_UNLOCK=${WEB_ADMIN_LOCAL_UNLOCK:-1}", compose)
         self.assertIn("healthcheck:", compose)
-        for directory in ("player", "gods", "heroes", "corpse", "log", "backups"):
-            with self.subTest(directory=directory):
-                self.assertIn(f"./{directory}:/app/{directory}", compose)
+        # Every path the game writes is in the state folder, outside the
+        # checkout -- the live world included, which the old layout kept
+        # inside the container and lost on every rebuild (2026-10-21).
+        mounts = {f"${{TOC_STATE:-./state}}/{d}:/app/{d}"
+                  for d in ("area", "player", "gods", "heroes", "corpse", "log", "backups")}
+        self.assertEqual(mounts - set(re.findall(r"\$\{TOC_STATE[^\s]*:/app/\w+", compose)), set())
+        # The game saves everyone on SIGTERM; give it the time to.
+        self.assertIn("stop_grace_period: 60s", compose)
+        self.assertIn("image: ${TOC_IMAGE:-ghcr.io/jeremydbean/toc2026:latest}", compose)
 
     def test_private_runtime_data_is_excluded_from_images(self):
         dockerignore = set(read(".dockerignore").splitlines())
-        for entry in (".env", "backups", "corpse", "gods", "heroes", "log", "player"):
+        for entry in (".env", "backups", "corpse", "gods", "heroes", "log", "player",
+                      "state", "area/bugs.txt*", "area/notes.txt", "area/ban.txt",
+                      "area/maxload.txt", "area/shutdown.txt"):
             with self.subTest(entry=entry):
                 self.assertIn(entry, dockerignore)
 
         dockerfile = read("Dockerfile")
-        self.assertIn("mkdir -p player gods heroes corpse log backups", dockerfile)
+        # The image's mount points exist and the world is loaded at build
+        # time, so an image whose areas do not boot is never produced.
+        self.assertIn("mkdir -p /app/area /app/player /app/gods /app/heroes /app/corpse /app/log /app/backups",
+                      dockerfile)
+        self.assertIn("../merc --check-area", dockerfile)
+        self.assertIn("COPY --from=build /src/area /app/dist/area", dockerfile)
+        self.assertNotIn("valgrind", dockerfile)
 
     def test_launchers_expose_the_documented_lifecycle(self):
         for relative_path in ("toc.ps1", "toc.sh"):
@@ -142,6 +156,10 @@ class InstallationAssetsTests(unittest.TestCase):
                     "open",
                     "play",
                     "admin",
+                    "promote",
+                    "backup",
+                    "restore",
+                    "uninstall",
                 ):
                     self.assertIn(command, launcher)
 

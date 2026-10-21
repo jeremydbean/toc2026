@@ -25,3 +25,34 @@ SpectrumSniper_*
 bettercap*
 mutesleep.sh
 starwars_wifi_passwords.txt
+
+# The installers' state folder: everything a running game wrote.
+state
+# Runtime files the game writes into area/. The image ships code only;
+# the entrypoint's sync never copies these into a live world anyway.
+area/bugs.txt*
+area/typos.txt*
+area/ideas.txt*
+area/notes.txt
+area/ban.txt
+area/maxload.txt
+area/pkilldata.txt
+area/wizlist.txt
+area/offense.txt
+area/relics.txt
+area/not.txt
+area/dpsboard.txt
+area/shutdown.txt
+area/oracle.*
+area/*.tmp
+area/nohup.out
+# Build trees and material the image does not use.
+build
+build-*
+bin
+archive
+zStartup
+tests
+wiki
+notes
+*.log

@@ -79,15 +79,16 @@ SSH into the Ubuntu instance, then run:
 uname -m
 sudo apt-get update
 sudo apt-get install -y git ca-certificates
-git clone https://github.com/jeremydbean/toc2026.git
+git clone --depth 1 https://github.com/jeremydbean/toc2026.git
 cd toc2026
-./install.sh --local
+./install.sh --local            # or --native to run without Docker
 ./toc.sh status
 ```
 
-`uname -m` should report `aarch64`. The existing installer installs Docker and
-Compose, builds the game for the host architecture, generates private
-configuration, and starts both services. Initially keep them local while
+`uname -m` should report `aarch64`. The installer installs Docker and Compose,
+pulls the arm64 image (or builds the game for the host architecture when none
+is published), generates private configuration, and starts both services; see
+the [Install Guide](install-guide.md). Initially keep them local while
 validating the installation.
 
 From your own computer, forward the dashboard through SSH (replace `SERVER_IP`):

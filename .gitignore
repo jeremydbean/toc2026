@@ -60,3 +60,8 @@ area/built/
 area/bugs.txt.*
 area/typos.txt.*
 area/ideas.txt.*
+
+# The installers keep everything a running game writes here (Docker and
+# native installs alike); see wiki/install-guide.md.
+/state/
+/toc-backups/

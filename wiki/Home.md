@@ -35,6 +35,8 @@ objects. The live game runs on Oracle Cloud (`toc.jeremybean.com`); see
   clean-profile verification, and default-game review
 - [Web Admin Guide](web-admin-guide.md) - dashboard authentication, world and
   player inspection, maps, logs, game console, operations, API use, and fixes
+- [Install Guide](install-guide.md) - one-command installs on Windows, macOS and
+  Linux (Docker or native), updates, backups, promoting your administrator.
 - [Hosting Guide](hosting-guide.md) - Docker/native setup, configuration,
   persistence, web API, firewalling, service management, upgrades, backups, and
   troubleshooting
@@ -42,9 +44,9 @@ objects. The live game runs on Oracle Cloud (`toc.jeremybean.com`); see
   reboot, player restore, moderation, incidents, and maintenance records
 - [Security Policy](../SECURITY.md) - Telnet/DES limitations, dashboard exposure,
   token handling, hardening, reporting, and incident response
-- [Installation Guide](INSTALLING-ToC-ON-A-RASPBERRY-PI-UBUNTU-WIN10-BASH-SHELL.md)
-  - automated desktop/server setup plus the native headless Raspberry Pi
-    appliance, systemd lifecycle, browser access, backups, and updates
+- [Raspberry Pi appliance](../deploy/README.md) - the native headless Pi
+  profile: systemd lifecycle, watchdogs, browser access, backups, and updates
+  (the old Installation Guide page now points to the Install Guide)
 
 ## Developers
 

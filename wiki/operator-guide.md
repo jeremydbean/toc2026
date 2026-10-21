@@ -109,7 +109,7 @@ The Docker Compose service uses `restart: unless-stopped`, which can restart the
 whole container even after a clean in-game shutdown. To keep it stopped, run:
 
 ```bash
-docker compose stop
+./toc.sh stop        # or: docker compose stop
 ```
 
 On the native Pi appliance, use systemd instead:
@@ -277,7 +277,8 @@ and document the security limitation rather than promising modern protection.
 
 1. Stop automatic login/save activity for that character.
 2. Preserve the file exactly as found.
-3. Check `player/versions/<Name>/` and `backups/` without modifying them.
+3. Check `player/versions/<Name>/` and `backups/` (under `state/` in an
+   installed copy) without modifying them.
 4. Review logs around the last successful save and failure.
 5. Use `prestore` if the live parser can safely list snapshots; otherwise stage
    an offline restore while the game is stopped.

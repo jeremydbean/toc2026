@@ -1,19 +1,37 @@
+# Times of Chaos under Docker Compose. Use the launchers (./toc.sh or
+# .\toc.ps1), which create .env, pick a prebuilt image or build one, and
+# wait for the game to answer; plain `docker compose up -d` also works.
+#
+# Everything the game writes lives under ./state (TOC_STATE in .env), one
+# folder to back up or move: characters, immortals, logs, backups, and
+# the live world with its notes, reports and builders' areas. The code
+# comes from the image, so an update replaces it and keeps all of that.
 services:
   game:
-    build: .
-    container_name: toc2026_game
+    # A prebuilt image when the installer could pull one, else this
+    # checkout built locally under the same name (`toc.sh build`).
+    image: ${TOC_IMAGE:-ghcr.io/jeremydbean/toc2026:latest}
+    build:
+      context: .
+      # Behind a proxy or mirror: TOC_BASE_IMAGE for another Ubuntu 24.04
+      # source, TOC_BUILD_NETWORK=host when builds cannot resolve names.
+      network: ${TOC_BUILD_NETWORK:-default}
+      args:
+        BASE_IMAGE: ${TOC_BASE_IMAGE:-ubuntu:24.04}
+    container_name: ${TOC_CONTAINER:-toc2026_game}
     ports:
       # The generated .env keeps both services local by default. Set
-      # MUD_BIND=0.0.0.0 when remote players should be able to connect.
+      # MUD_BIND=0.0.0.0 (install --public) for remote players.
       - "${MUD_BIND:-127.0.0.1}:${MUD_PORT:-9000}:9000"
       - "${WEB_ADMIN_BIND:-127.0.0.1}:${WEB_ADMIN_PORT:-9001}:9001"
     volumes:
-      - ./player:/app/player       # Player save files (persistent)
-      - ./log:/app/log             # Server logs (persistent)
-      - ./backups:/app/backups     # Backup archives (persistent)
-      - ./gods:/app/gods           # Immortal state (persistent)
-      - ./heroes:/app/heroes       # Hero state (persistent)
-      - ./corpse:/app/corpse       # Recoverable player corpses (persistent)
+      - ${TOC_STATE:-./state}/area:/app/area          # live world and runtime files
+      - ${TOC_STATE:-./state}/player:/app/player      # character files and snapshots
+      - ${TOC_STATE:-./state}/gods:/app/gods          # immortal state
+      - ${TOC_STATE:-./state}/heroes:/app/heroes      # hero state
+      - ${TOC_STATE:-./state}/corpse:/app/corpse      # recoverable corpses
+      - ${TOC_STATE:-./state}/log:/app/log            # logs and journals
+      - ${TOC_STATE:-./state}/backups:/app/backups    # player archives
     environment:
       - PORT=9000
       - MUD_PORT=9000
@@ -26,6 +44,13 @@ services:
       - TOC_GID=${TOC_GID:-1000}
       # Admin operations remain disabled when this host variable is empty.
       - WEB_ADMIN_TOKEN=${WEB_ADMIN_TOKEN:-}
+      # Optional: the name the dashboard shows players, extra origins
+      # allowed to open the browser client, and the Oracle (off unless
+      # ORACLE_ENABLED=1 and a key are set).
+      - MUD_PUBLIC_HOST=${MUD_PUBLIC_HOST:-}
+      - WEB_ALLOWED_ORIGINS=${WEB_ALLOWED_ORIGINS:-}
+      - ORACLE_ENABLED=${ORACLE_ENABLED:-0}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
     healthcheck:
       test:
         - CMD
@@ -35,7 +60,10 @@ services:
       interval: 10s
       timeout: 3s
       retries: 12
-      start_period: 30s
+      start_period: 60s
+    # A stop sends SIGTERM, which the game answers by saving every player
+    # before it exits; give it time to finish.
+    stop_grace_period: 60s
     # unless-stopped applies after any container-process exit, including a clean
-    # in-game shutdown. Use `docker compose stop`/`down` to keep it stopped.
+    # in-game shutdown. Use `toc.sh stop` / `docker compose stop` to keep it stopped.
     restart: unless-stopped

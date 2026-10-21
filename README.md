@@ -34,6 +34,7 @@ and a large collection of hand-built areas.
 | New player | [Player Guide](wiki/player-guide.md) |
 | Returning player | [Player Command Reference](wiki/player-command-reference.md) |
 | Mudlet player | [Official Mudlet package](mudlet/README.md) |
+| Running your own copy | [Install Guide](wiki/install-guide.md) |
 | Server host | [Hosting Guide](wiki/hosting-guide.md) |
 | Live production host, deploys, or something broken | [Disaster Recovery](wiki/disaster-recovery.md) (Oracle Cloud) |
 | Working from a new/other machine | [New Machine Setup](wiki/new-machine-setup.md) |
@@ -82,127 +83,63 @@ documentation.
 
 ## Easy Install
 
-The automatic installer is now the recommended path. It installs missing host
-prerequisites, creates private configuration and persistent data directories,
-starts Docker, builds ToC, waits for the game to become healthy, and opens the
-local dashboard. It is idempotent: rerunning it preserves the admin token and
-runtime data.
+One command installs everything missing, starts the game and prints where to
+play. It is safe to rerun, keeps your characters and settings, and works the
+same way on every platform. The full walkthrough -- options, updating,
+backups, letting others connect, troubleshooting -- is the
+**[Install Guide](wiki/install-guide.md)**.
 
-The default installation is local-only. The game and dashboard bind to
-`127.0.0.1`; remote players cannot connect until the host explicitly selects
-public-game mode. Public-game mode exposes only the Telnet game port by default.
-The dashboard remains local. The dedicated trusted-LAN Pi appliance documented
-below is an explicit separate profile, not a change to these generic defaults.
+| Platform | Paste this |
+|---|---|
+| Windows 10/11 (PowerShell) | `& ([scriptblock]::Create((irm https://raw.githubusercontent.com/jeremydbean/toc2026/main/scripts/bootstrap_windows.ps1)))` |
+| macOS (Terminal) | `curl -fsSLo /tmp/toc-install.sh https://raw.githubusercontent.com/jeremydbean/toc2026/main/scripts/bootstrap_macos.sh && bash /tmp/toc-install.sh` |
+| Linux (Debian, Ubuntu, Raspberry Pi OS, Fedora, RHEL, Arch, openSUSE) | `curl -fsSLo /tmp/toc-install.sh https://raw.githubusercontent.com/jeremydbean/toc2026/main/scripts/bootstrap_linux.sh && bash /tmp/toc-install.sh` |
 
-### Existing Checkout: One Click
+From a checkout you already have: double-click `Install-ToC.cmd` (Windows) or
+`Install-ToC.command` (macOS), or run `./install.sh` / `.\install.ps1`.
 
-| Platform | Easy button | Terminal equivalent |
-|---|---|---|
-| Windows 10/11 | Double-click `Install-ToC.cmd` | `.\install.ps1` |
-| macOS | Double-click `Install-ToC.command` | `./install.sh` |
-| Debian, Ubuntu, Raspberry Pi OS | Run `./install.sh` | `./install.sh` |
+- **Docker or native.** The default runs in Docker (Docker Desktop on Windows
+  and macOS), from a prebuilt image when one is published and built locally
+  when not. On Linux and macOS, add `--native` to compile and run without
+  Docker; on a systemd host the game then starts at boot as a service.
+- **Local by default.** Only this computer can connect. Add `--public`
+  (Windows: `-Public`, or `-Network Public` for `install.ps1`) to open the
+  game port to others; the dashboard always stays local.
+- **Your data in one place.** Characters, logs and the live world -- notes,
+  reports, bans, builders' areas -- live in `state/`, the dashboard token in
+  `.env`. Updates replace the code and keep both.
+- **Become the administrator.** Create a character, `QUIT`, then
+  `./toc.sh promote <name>`.
 
-To accept remote game connections during installation:
+Day to day (`.\toc.ps1` on Windows; `Start-ToC.cmd` / `Start-ToC.command`
+start the game and open it):
 
-```powershell
-# Windows
-.\install.ps1 -Network Public
-```
+| Command | Does |
+|---|---|
+| `./toc.sh start` / `stop` / `restart` | Run it; a stop saves every player first |
+| `./toc.sh play` / `admin` | Open the web client / dashboard |
+| `./toc.sh status` / `logs` / `doctor` | See what it is doing; check the install |
+| `./toc.sh update` | Update to the newest version |
+| `./toc.sh promote <name>` | Make a character the implementor |
+| `./toc.sh backup` / `restore <archive>` | Archive or restore `.env` and `state/` |
+| `./toc.sh uninstall [--purge]` | Remove it, keeping (or deleting) the data |
 
-```bash
-# macOS or Linux
-./install.sh --public
-```
-
-### Fresh Windows Machine
-
-Open PowerShell, paste this block, and approve the normal Windows installer
-prompts:
-
-```powershell
-$bootstrap = Join-Path $env:TEMP 'toc-bootstrap.ps1'
-Invoke-WebRequest `
-  'https://raw.githubusercontent.com/jeremydbean/toc2026/main/scripts/bootstrap_windows.ps1' `
-  -OutFile $bootstrap
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File $bootstrap
-```
-
-The bootstrap installs Git with `winget`, clones ToC to
-`$HOME\TimesOfChaos`, and runs the full installer. Add `-Public` to the final
-command to expose the game port. Windows may require one restart after enabling
-WSL 2. If so, rerun the same block or double-click `Install-ToC.cmd` afterward;
-the first pass is preserved.
-
-### Fresh Mac
-
-Open Terminal and paste:
-
-```bash
-bootstrap="$(mktemp /tmp/toc-bootstrap.XXXXXX)"
-curl -fsSL \
-  https://raw.githubusercontent.com/jeremydbean/toc2026/main/scripts/bootstrap_macos.sh \
-  -o "$bootstrap"
-bash "$bootstrap"
-```
-
-The bootstrap starts Apple's Command Line Tools installer when necessary,
-installs Homebrew and Docker Desktop, clones ToC to `~/TimesOfChaos`, and starts
-the game. Run the last line as `bash "$bootstrap" --public` for a public game.
-If macOS opens an Apple or Docker first-run agreement, complete it and rerun the
-same command; no completed step is repeated destructively.
-
-### Fresh Debian, Ubuntu, Or Raspberry Pi OS
-
-Download and run the maintained bootstrap:
-
-```bash
-bootstrap="$(mktemp /tmp/toc-bootstrap.XXXXXX)"
-curl -fsSL \
-  https://raw.githubusercontent.com/jeremydbean/toc2026/main/scripts/bootstrap_linux.sh \
-  -o "$bootstrap"
-bash "$bootstrap"
-```
-
-Use `bash "$bootstrap" --public` on an intended Internet/LAN host. Review
-[SECURITY.md](SECURITY.md) and firewall the game port before inviting players.
-
-For a dedicated headless Raspberry Pi that runs only ToC, use the native
-systemd appliance instead of Docker. Its checked-in configuration is designed
-for constrained memory, starts both processes during boot, restarts crashes,
-detects frozen game loops and failed web health, uses bounded local repair and
-reboot/rebuild recovery, backs up player files off-device, deploys validated
-`main` updates, and applies OS updates in a controlled weekly window. See the
-[Raspberry Pi appliance runbook](deploy/README.md) and
-[`deploy/pi.env.example`](deploy/pi.env.example).
-
-### Day-To-Day Launcher
-
-After installation, double-click `Start-ToC.cmd` on Windows or
-`Start-ToC.command` on macOS. Terminal users have the same controls:
-
-| Purpose | Windows | macOS/Linux |
-|---|---|---|
-| Start | `.\toc.ps1 start` | `./toc.sh start` |
-| Stop and keep data | `.\toc.ps1 stop` | `./toc.sh stop` |
-| Restart | `.\toc.ps1 restart` | `./toc.sh restart` |
-| Status/health | `.\toc.ps1 status` | `./toc.sh status` |
-| Follow logs | `.\toc.ps1 logs` | `./toc.sh logs` |
-| Diagnose setup | `.\toc.ps1 doctor` | `./toc.sh doctor` |
-| Update/rebuild | `.\toc.ps1 update` | `./toc.sh update` |
-| Open game client | `.\toc.ps1 play` | `./toc.sh play` |
-| Open administration | `.\toc.ps1 admin` | `./toc.sh admin` |
-
-Open the first-party web client at `http://127.0.0.1:9001/client`, or connect a
-traditional MUD client to `localhost:9000`. The administration dashboard is
-`http://127.0.0.1:9001`. Protected actions use the generated token in `.env`;
-the installers never print or replace an existing token. Both interfaces ship
-all browser assets locally and do not require internet access after installation.
+Open the web client at `http://127.0.0.1:9001/client`, or connect a MUD client
+to `localhost:9000`. The administration dashboard is `http://127.0.0.1:9001`;
+on this computer it unlocks itself, elsewhere it asks for `WEB_ADMIN_TOKEN`
+from `.env`, which the installers never print or replace.
 
 To reach the live public server instead of a local copy, use
 `http://toc.jeremybean.com:9001/client` for the browser client and
 `http://toc.jeremybean.com:9001/` for the dashboard. Keep the `:9001`
 port -- a bare URL targets port 80, where ToC does not listen. The game
 itself is `toc.jeremybean.com` port `9000` for any MUD client.
+
+For a dedicated headless Raspberry Pi that runs only ToC, the native systemd
+appliance adds watchdogs, bounded recovery, off-device player backups,
+validated `main` updates and a weekly OS maintenance window. See the
+[Raspberry Pi appliance runbook](deploy/README.md) and
+[`deploy/pi.env.example`](deploy/pi.env.example).
 
 ### Mudlet (Recommended Desktop Client)
 
@@ -224,10 +161,12 @@ launch. The project cannot accept those terms for the host. Docker documents
 its current [Windows installation requirements](https://docs.docker.com/desktop/setup/install/windows-install/)
 and [macOS requirements](https://docs.docker.com/desktop/setup/install/mac-install/).
 
-## Native Build
+## Building From Source
 
-The native runtime is POSIX-oriented. Use Linux, macOS, or WSL 2. Direct native
-Windows builds are not a supported path.
+This section is for developers working on the code. To *run* the game
+natively, `./install.sh --native` does all of this and keeps the game's data
+out of the checkout. The native runtime is POSIX-oriented: Linux, macOS, or
+WSL 2. Direct native Windows builds are not a supported path.
 
 ### Ubuntu or Debian
 
@@ -247,7 +186,12 @@ cd ..
 
 `startup.sh` runs from the repository root, changes into `area/`, writes to
 `log/toc.log`, restarts after an unexpected exit, and stops after an intentional
-in-game `shutdown`.
+in-game `shutdown`. Run this way, the game writes into the checkout itself
+(`player/`, `log/`, `area/`), some of which git tracks; an installed copy
+keeps all of that in `state/` instead.
+
+Set `TOC_BIND_ADDRESS=127.0.0.1` to keep the game on one interface; unset, it
+listens on all of them.
 
 ### Fedora, RHEL, or Rocky Linux
 
@@ -323,6 +267,12 @@ administer. The game itself should still run in Docker or WSL.
 
 | Variable | Default | Purpose |
 |---|---:|---|
+| `TOC_MODE` | `docker` | Installed copies: `docker` or `native` |
+| `TOC_STATE` | `./state` | Installed copies: the folder holding everything the game writes |
+| `TOC_IMAGE` | `ghcr.io/jeremydbean/toc2026:latest` | Docker: the image to run, pulled or built under this name |
+| `TOC_BUILD` | unset | Docker: `local` always builds the image from the checkout |
+| `TOC_BASE_IMAGE` / `TOC_BUILD_NETWORK` | `ubuntu:24.04` / `default` | Docker builds behind a mirror or proxy |
+| `TOC_BIND_ADDRESS` | unset | The one IPv4 address the game listens on (native installs set it from `MUD_BIND`); unset listens on all |
 | `MUD_BIND` | `127.0.0.1` | Host interface for the published game port; use `0.0.0.0` for remote players |
 | `MUD_PORT` | `9000` | Game port published on the host |
 | `MUD_HOST` | `127.0.0.1` | Game host used by the dashboard health check and browser console |
@@ -358,20 +308,28 @@ because the private `.env` is not replaced.
 
 ## Persistent Data
 
-These paths contain mutable runtime state:
+An installed copy keeps every path the game writes in one folder, `state/`
+(`TOC_STATE`), beside the private `.env`; the checkout holds code only, so
+an update can always replace it. Docker mounts these as the container's
+`/app/*`; a native install runs the game from `state/area` with `state/merc`.
 
 | Path | Contents | Back up? |
 |---|---|---|
-| `player/` | Character files and `versions/` snapshots | Yes, sensitive |
-| `gods/` | Immortal state | Yes, sensitive |
-| `heroes/` | Hero state | Yes |
-| `corpse/` | Recoverable player corpses | Yes |
-| `backups/` | Compressed player archives | Yes, sensitive |
-| `log/` | Server logs | As required |
-| `area/webadmin.queue` | Transient dashboard command queue | No |
+| `state/player/` | Character files and `versions/` snapshots | Yes, sensitive |
+| `state/gods/` | Immortal state | Yes, sensitive |
+| `state/heroes/` | Hero state | Yes |
+| `state/area/` | The live world: notes, reports, max-load counts, bans, PK standings, builders' areas | Yes |
+| `state/corpse/` | Recoverable player corpses | Yes |
+| `state/backups/` | The game's compressed player archives | Yes, sensitive |
+| `state/log/` | Server logs and journals | As required |
+| `.env` | Settings and the dashboard token | Yes, secret |
 
-The Compose file bind-mounts all six mutable directories in this table. Keep
-them with `.env` when moving or restoring an installation.
+`./toc.sh backup` archives `.env` and `state/` after asking the game to save
+everyone; `./toc.sh restore` puts an archive back. Installations from before
+2026-10-21 kept these in the checkout's own `player/`, `gods/`, `heroes/` and
+`log/` (and, under Docker, the live world inside the container); the first
+start of the new version moves them into `state/`. A game run by hand from
+the checkout (`startup.sh`) still writes in the checkout.
 
 The game creates a player archive every four hours and a daily archive every 24
 hours, pruning archives older than 30 days. Player saves also retain up to 30
@@ -491,6 +449,7 @@ then regenerate and test instead of hand-editing generated output.
 - [Player Guide](wiki/player-guide.md)
 - [Player Command Reference](wiki/player-command-reference.md)
 - [Psionics Guide](wiki/psionics.md)
+- [Install Guide](wiki/install-guide.md)
 - [Hosting Guide](wiki/hosting-guide.md)
 - [Operator Guide](wiki/operator-guide.md)
 - [Developer Guide](wiki/developer-guide.md)

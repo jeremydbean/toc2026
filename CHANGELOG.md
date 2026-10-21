@@ -10,6 +10,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **One-command installs on every platform** (2026-10-21; see
+  [the Install Guide](wiki/install-guide.md)). A single pasted line installs
+  and starts the game on Windows, macOS or Linux (apt, dnf, pacman and
+  zypper distributions now, not only Debian), from a shallow clone.
+  `--native` compiles and runs it without Docker on Linux and macOS, with
+  systemd services that start at boot where available. Docker installs pull
+  a prebuilt amd64/arm64 image from `ghcr.io/jeremydbean/toc2026`, published
+  after CI passes, and build locally when none can be fetched. New launcher
+  commands: `promote` (make your character the implementor), `backup`,
+  `restore` and `uninstall`.
+- **`TOC_BIND_ADDRESS`** keeps the game listening on one address; native
+  installs use it for local-only play.
+
+
 - **The play journal** (`src/playlog.c`; owner, 2026-10-21). `log/play.tsv`
   records every player command with what the game answered and how long
   it took, BUG lines with the command that was running, tick anomalies,
@@ -189,6 +203,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   back this way on 2026-10-11.
 
 ### Fixed
+
+- **Installed copies lost data and stopped updating** (2026-10-21). Docker
+  installs kept the live world in the container, so every rebuild or
+  `update` lost notes, bug reports, max-load counts, bans and builders'
+  areas; and they wrote characters into the checkout's tracked `player/`,
+  so `update` refused after the first save. Everything the game writes now
+  lives in `state/`, the world is synced from new code with the production
+  deploy's rules, and existing installations are moved there on their first
+  start. `docker stop` killed the game without saving: the stop now reaches
+  it and every player is saved. Container logs no longer show every line
+  twice. The image is Ubuntu 24.04, like the production host, checks the
+  world while it builds, and drops valgrind.
 
 - **The second October audit and the remort report** (2026-10-21).
   Full PRESTORE judged presence by sight, skipped the rank check for an

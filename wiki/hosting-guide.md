@@ -48,71 +48,51 @@ Read [SECURITY.md](../SECURITY.md) before opening firewall ports. At minimum:
 
 ## Automated Installation
 
-The maintained installer is the recommended Docker Compose path. It installs
-prerequisites, creates private configuration, starts Docker, builds the image,
-launches the service, and waits for the game health check.
+Installing is one command on Windows, macOS and Linux; the
+**[Install Guide](install-guide.md)** has the commands, every option,
+updating, backups and troubleshooting. In short, from a checkout:
 
-From an existing checkout:
+```bash
+./install.sh --public              # Docker (the default)
+./install.sh --native --public     # compiled here, systemd services on Linux
+```
 
 ```powershell
-# Windows; omit -Network Public for a local-only game.
 .\install.ps1 -Network Public -NoBrowser
 ```
 
-```bash
-# macOS, Debian/Ubuntu, or Raspberry Pi OS.
-./install.sh --public --no-start
-./toc.sh build
-```
+The installer writes `.env` (settings and a random dashboard token) once and
+never replaces a value in it, keeps everything the game writes in `state/`
+(`TOC_STATE`), and waits for the game to answer before it returns. Docker
+installs pull `ghcr.io/jeremydbean/toc2026` (amd64 and arm64, published after
+CI passes on `main`) and build the checkout instead when no image can be
+fetched or `TOC_BUILD=local` is set. Native installs build in the checkout,
+load the world in a scratch copy, and run the game from `state/` exactly as
+production runs from `/srv/toc/current`.
 
-Windows and macOS also provide `Install-ToC.cmd` and `Install-ToC.command` for
-interactive desktop installs. Fresh-machine bootstrap commands and all options
-are in the [Installation Guide](INSTALLING-ToC-ON-A-RASPBERRY-PI-UBUNTU-WIN10-BASH-SHELL.md).
-
-The automatic prerequisites are:
+Prerequisites it installs:
 
 - Windows: `winget`, Git, current WSL 2, and Docker Desktop
-- macOS: Apple Command Line Tools, Homebrew, Git, and Docker Desktop
-- Debian-family Linux: Git, OpenSSL, Docker Engine, and Compose v2
-- Approximately 2 GB free disk for build layers, image, logs, and backups
-
-Docker Desktop may require a host to accept its own subscription terms. Windows
-may require one restart after first enabling WSL 2. macOS may display Apple's
-Command Line Tools installer. Rerun the same idempotent ToC installer after an
-operating-system handoff.
+- macOS: Apple Command Line Tools, Homebrew, Git, and Docker Desktop (native:
+  Homebrew's Python instead of Docker Desktop)
+- Linux (apt, dnf, pacman, zypper): Git, OpenSSL, and Docker Engine with Compose
+  v2 from the distribution or Docker's official install script (native: a C
+  compiler, make, rsync, libxcrypt, zlib, and Python 3.10+)
+- Approximately 2 GB free disk for images or build output, logs, and backups
 
 After installation:
 
 ```text
-MUD port:   localhost:9000
-Web client: http://127.0.0.1:9001/client
-Admin:      http://127.0.0.1:9001
-Health:     http://127.0.0.1:9001/api/health
+Play in a browser: http://127.0.0.1:9001/client
+MUD client:        localhost port 9000
+Administration:    http://127.0.0.1:9001
+Health:            http://127.0.0.1:9001/api/health
 ```
 
 The generated `.env` is ignored by Git. On a shared host, restrict its
-permissions and never paste its token into tickets or chat.
-
-## Manual Compose Installation
-
-Hosts that manage their own prerequisites can use the same configuration path
-without package installation:
-
-```bash
-git clone https://github.com/jeremydbean/toc2026.git
-cd toc2026
-./install.sh --skip-prerequisites --no-start --public
-./toc.sh build
-```
-
-On Windows, the equivalent is:
-
-```powershell
-git clone https://github.com/jeremydbean/toc2026.git
-Set-Location toc2026
-.\install.ps1 -SkipPrerequisites -NoStart -Network Public
-.\toc.ps1 build
-```
+permissions and never paste its token into tickets or chat. Make your own
+administrator with `./toc.sh promote <name>` once the character exists and
+has quit.
 
 ## Network Binding
 
@@ -168,7 +148,7 @@ its published port as defense in depth when maintaining a custom Compose file.
 ## Compose Lifecycle
 
 The launchers are the normal interface because they start Docker when needed,
-preserve configuration, and wait for health:
+preserve configuration, fetch or build the image, and wait for health:
 
 ```bash
 ./toc.sh start
@@ -177,14 +157,18 @@ preserve configuration, and wait for health:
 ./toc.sh restart
 ./toc.sh stop
 ./toc.sh update
+./toc.sh backup
 ```
 
 Windows uses the same command names through `.\toc.ps1`. Raw Compose remains
 available for automation and troubleshooting:
 
 ```bash
-# Build and start/recreate as needed.
-docker compose up --build -d
+# Fetch the published image, or build this checkout under the same name.
+docker compose pull game || docker compose build game
+
+# Start/recreate as needed.
+docker compose up -d
 
 # Show container and port state.
 docker compose ps
@@ -211,7 +195,19 @@ when the entrypoint exits cleanly after an in-game `shutdown`. Use
 
 The entrypoint itself runs `merc` in a loop. An in-game `reboot` or unexpected
 game exit restarts `merc` after five seconds. An in-game `shutdown` writes
-`area/shutdown.txt`, causing the entrypoint to exit cleanly.
+`area/shutdown.txt`, causing the entrypoint to exit cleanly. A `docker stop`
+(and so `./toc.sh stop`) is passed to the game, which saves every player before
+it exits; `stop_grace_period` gives it 60 seconds. Before 2026-10-21 the stop
+reached only the entrypoint shell and Docker killed the game unsaved ten
+seconds later.
+
+On every start the entrypoint first brings the live world in `/app/area` (the
+`state/area` mount) up to date from the image's copy in `/app/dist/area`
+(`scripts/toc_sync_area.sh`, the same rules as `toc-deploy`): new and changed
+area files arrive, files the code dropped go, and notes, reports, max-load
+counts, bans, the PK board, `custom.are` and `area/built/` are kept. The
+game's stdout and stderr go to `log/game.log`, which is what `docker logs`
+shows; the game writes `log/toc.log` itself.
 
 ## Container Entrypoint Modes
 
@@ -234,6 +230,9 @@ docker run --rm toc2026 9500
 # Start with new-character creation locked.
 docker run --rm toc2026 newlock 9000
 
+# Only bring /app/area up to date from the image, then exit.
+docker run --rm -v "$PWD/state/area:/app/area" toc2026 sync
+
 # Run another image command.
 docker run --rm -it toc2026 bash
 ```
@@ -247,6 +246,14 @@ consistent.
 
 | Variable | Default | Used by | Meaning |
 |---|---:|---|---|
+| `TOC_MODE` | `docker` | Launchers | `docker` or `native` |
+| `TOC_STATE` | `./state` | Launchers, Compose | Folder holding everything the game writes |
+| `TOC_IMAGE` | `ghcr.io/jeremydbean/toc2026:latest` | Compose | Image to run; local builds are tagged with it |
+| `TOC_BUILD` | unset | Launchers | `local` always builds instead of pulling |
+| `TOC_BASE_IMAGE` | `ubuntu:24.04` | Compose build | Base image source, for a mirror |
+| `TOC_BUILD_NETWORK` | `default` | Compose build | `host` where builds cannot resolve names |
+| `TOC_BIND_ADDRESS` | unset | `merc` | Listen on this one IPv4 address only; native installs set it from `MUD_BIND` |
+| `TOC_SERVICE` | unset | Native launcher | `systemd` when the installer created `timesofchaos-game`/`-web` |
 | `MUD_BIND` | `127.0.0.1` | Compose host | Published game interface; `0.0.0.0` accepts remote players |
 | `MUD_PORT` | `9000` | Compose host | Published host game port |
 | `WEB_ADMIN_BIND` | `127.0.0.1` | Compose host | Published dashboard interface |
@@ -299,20 +306,28 @@ Run the module from the repository root when using relative defaults.
 ## Persistent Data And Permissions
 
 The Docker build context excludes player, god, hero, corpse, log, backup, and
-`.env` data. Runtime images therefore contain empty state directories rather
-than the host's private files. Legacy hashes still exist in public Git history
-and must not be treated as private credentials. Container-local changes
-disappear when a container is replaced, so the checked-in Compose file persists
-every mutable game directory:
+`.env` data, the `state/` folder, and the runtime files the game writes into
+`area/` (reports, notes, bans, max-load counts). Runtime images therefore
+contain code and an empty world's mount points rather than the host's private
+files. Legacy hashes still exist in public Git history and must not be treated
+as private credentials. Container-local changes disappear when a container is
+replaced, so the checked-in Compose file persists every path the game writes,
+all under one folder outside the checkout:
 
 ```text
-./player   -> /app/player
-./gods     -> /app/gods
-./heroes   -> /app/heroes
-./corpse   -> /app/corpse
-./log      -> /app/log
-./backups  -> /app/backups
+./state/area     -> /app/area      the live world and its runtime files
+./state/player   -> /app/player
+./state/gods     -> /app/gods
+./state/heroes   -> /app/heroes
+./state/corpse   -> /app/corpse
+./state/log      -> /app/log
+./state/backups  -> /app/backups
 ```
+
+Installs from before 2026-10-21 mounted `./player`, `./gods` and the rest
+straight from the checkout -- which git tracks, so `update` refused after the
+first save -- and kept `/app/area` inside the container, where each rebuild
+lost it. The launchers move both into `state/` on the first start.
 
 Do not mount the entire repository over `/app`; that can hide the built image
 and create confusing version skew.
@@ -384,6 +399,9 @@ restore on a non-production copy.
 
 ### Archive Restore Procedure
 
+For an installed copy, `./toc.sh backup` and `./toc.sh restore <archive>` do
+all of this for `.env` and the whole `state/` folder. By hand:
+
 1. Announce maintenance and stop the Compose service.
 2. Copy the current `player/` directory to a separate safety location.
 3. Extract the selected archive into a new staging directory, not directly over
@@ -399,6 +417,14 @@ Always inspect with `tar tzf <archive>` before extracting because `tar`
 normalizes parent-path components differently across implementations.
 
 ## Native Linux Deployment
+
+`./install.sh --native` is the supported native installation: it installs the
+packages, builds, loads the world in a scratch copy, creates a virtualenv for
+the dashboard in `state/venv`, runs the game from `state/` (never the
+checkout), and installs `timesofchaos-game.service` and
+`timesofchaos-web.service` on a systemd host. `./toc.sh update` builds and
+checks the new version while the old one runs and stops it only for the copy.
+The manual steps below remain for development and hand-built hosts.
 
 ### Build
 
@@ -673,6 +699,12 @@ dependent; see [Operator Guide](operator-guide.md).
 
 ## Updating A Running Host
 
+For an installed copy, `./toc.sh update` is the whole procedure: it refuses
+a checkout with local code changes, fast-forwards it, then pulls the matching
+image (Docker) or builds and loads the new world while the old game runs
+(native), and restarts. `state/` is never touched. The manual procedure for
+hand-managed hosts:
+
 Use a maintenance window for code or area changes.
 
 1. Review release notes and local changes with `git status`.
@@ -945,6 +977,19 @@ apply the appropriate container volume label (`:Z` for a private bind mount)
 according to local policy. Do not disable SELinux globally or make player files
 world writable.
 
+### Update Refuses: "this checkout has local code changes"
+
+The launcher found edits to tracked code. Commit or stash them. Game data is
+not counted: an installation from before the `state/` folder that still has
+modified `player/` files in the checkout is moved and restored automatically.
+
+### An Older Docker Install Lost Its Notes Or Max-Load Counts
+
+Before 2026-10-21 the live world lived inside the container and each rebuild
+replaced it. The current launchers copy it out of the old container into
+`state/area` before replacing it; anything lost in earlier rebuilds is not
+recoverable from the host.
+
 ### Container Reappears After Shutdown
 
 `restart: unless-stopped` restarts a cleanly exited container. Use
@@ -953,7 +998,7 @@ desired in-game shutdown semantics.
 
 ### Backups Are Empty Or Missing
 
-Confirm `backups/` is writable, `tar` and `find` exist in the runtime, the game
+Confirm `backups/` (`state/backups/` in an installed copy) is writable, `tar` and `find` exist in the runtime, the game
 has reached its scheduled interval, and logs contain no `do_backup` errors.
 Trigger `backup now`, then inspect both the in-game response/log and host
 directory.

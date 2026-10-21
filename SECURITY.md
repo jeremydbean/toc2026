@@ -185,6 +185,7 @@ They are sensitive even though they are plain files.
 Protect:
 
 ```text
+state/              an installed copy keeps all of the below in here
 player/
 player/versions/
 gods/
@@ -193,6 +194,7 @@ backups/
 log/
 .env
 area/webadmin.queue
+toc-backups/        what ./toc.sh backup writes: .env and state/ together
 ```
 
 Do not commit real character data, attach it to public issues, or use it as a
@@ -261,9 +263,16 @@ or untrusted host. The checked-in `deploy/pi.env.example` is a narrow exception
 for a dedicated trusted-LAN appliance; it still requires a strong token,
 disables local auto-unlock, and assumes the router does not forward port 9001.
 
-`.dockerignore` excludes `.env`, player, god, hero, corpse, log, and backup
-data from the image build context. Do not override those exclusions in a
-private deployment; use the checked-in bind mounts for runtime state.
+`.dockerignore` excludes `.env`, `state/`, player, god, hero, corpse, log, and
+backup data, and the runtime files the game writes into `area/` (reports,
+notes, bans), from the image build context, so neither a local build nor the
+published `ghcr.io/jeremydbean/toc2026` image carries any of it. Do not
+override those exclusions in a private deployment; use the checked-in bind
+mounts under `state/` for runtime state.
+
+A native install (`./install.sh --native`) keeps the game on `127.0.0.1` by
+setting `TOC_BIND_ADDRESS` from `MUD_BIND`; without it the game listens on
+every interface, so a hand-run `merc` on a public host needs a firewall.
 
 The container entrypoint begins as root only to map the `toc` account to the
 configured `TOC_UID`/`TOC_GID` and adjust mounted runtime directories. It then

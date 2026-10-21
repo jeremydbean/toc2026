@@ -22,6 +22,8 @@ Maintained documentation:
 - `wiki/player-command-reference.md`: player command map
 - `wiki/achievements.md`: achievement catalog, command views, persistence, and hooks
 - `wiki/game-client-guide.md`: browser terminal, ANSI, paging, and client controls
+- `wiki/install-guide.md`: one-command installs (Docker or native), updates,
+  backups, promote, uninstall -- for anyone running their own copy
 - `wiki/hosting-guide.md`: deployment/configuration/persistence
 - `wiki/disaster-recovery.md`: current Oracle Cloud hosting, deploy and recovery
 - `wiki/windows-production-hosting.md`: retired Hyper-V VM operations (history)
@@ -136,10 +138,10 @@ The root compatibility file named `startup` and `area/startup.sh` delegate to
 the maintained root `startup.sh`. Files under `zStartup/` are archived history
 and must not be used as current launchers.
 
-Docker:
+Installed copies (Docker by default, `--native` without it):
 
 ```bash
-./install.sh --skip-prerequisites
+./install.sh --skip-prerequisites      # or --native
 ./toc.sh status
 ./toc.sh logs
 ./toc.sh stop
@@ -148,7 +150,8 @@ Docker:
 Windows uses `install.ps1` and `toc.ps1`. Docker Compose binds both ports to
 loopback by default; `--public`/`-Network Public` exposes only the game port.
 Compose uses `restart: unless-stopped`, so use the launcher `stop` command when
-the container must remain off.
+the container must remain off. See "The Installers" below for what they
+depend on.
 
 ## Validation
 
@@ -881,6 +884,64 @@ it. Rules this leaves:
   `check_exits.py` and the shop price test read `area.lst`, so they
   check the base files only; the generator is what keeps the copies
   honest.
+
+## The Installers
+
+`install.sh`/`install.ps1` and `toc.sh`/`toc.ps1` install and run a copy for
+anyone (rebuilt 2026-10-21; the guide is `wiki/install-guide.md`). They are
+not how the live host is deployed -- that is `toc-deploy` -- but they follow
+its model, and the rules below are what keep an installed copy's characters
+safe:
+
+- **The game never writes into the checkout.** Everything it writes is in
+  `state/` (`TOC_STATE`): `area`, `player`, `gods`, `heroes`, `corpse`,
+  `log`, `backups`. Before this, Docker bind-mounted the checkout's
+  `player/`, `gods/` and `heroes/`, which git tracks, so the first save made
+  `toc.sh update` refuse for good; and it kept the live world inside the
+  container, so every rebuild lost the notes, reports, max-load counts and
+  bans. A new path the game writes must land under `state/`.
+- **The live world is code plus state, synced like production.**
+  `scripts/toc_sync_area.sh` brings `state/area` up to date from the code's
+  `area/` with `toc-deploy`'s rules (runtime `.txt` files kept, `custom.are`
+  and `built/` only filled in, a shutdown marker never carried over).
+  `tests/test_install_layout.py` holds its exclude list and `runtime_txt`
+  to `toc-deploy`'s: change one, change both. It compares checksums, because
+  rsync's size-and-mtime check skipped a same-size edit made within the
+  second.
+- **The entrypoint (`docker-entrypoint.sh`) and the native runner
+  (`scripts/toc_run_game.sh`) forward SIGTERM to merc** and wait for it, so
+  a stop saves every player. The shell is PID 1 in the container and ignored
+  the signal before; Docker then killed the game unsaved. `merc`'s output
+  goes to `log/game.log`: it writes `log/toc.log` itself and copies each line
+  to stderr, so redirecting it into `toc.log` doubled every line.
+- **`TOC_BIND_ADDRESS`** (`init_socket` in `comm.c`) keeps the game on one
+  IPv4 address; native installs set it from `MUD_BIND` so local-only means
+  local-only without Docker. Unset, the game listens everywhere, as it
+  always did -- production does not set it. A value that is not an address
+  exits rather than widening.
+- **The image is Ubuntu 24.04, like production**, loads the world at build
+  time (`--check-area`), and ships no runtime state: `.dockerignore` excludes
+  `state/` and the runtime files under `area/`.
+  `.github/workflows/docker-image.yml` publishes amd64 and arm64 to
+  `ghcr.io/jeremydbean/toc2026` only after Validate passes on `main`. The
+  package starts private; the owner makes it public once. Launchers pull it
+  and build locally when the pull fails or `TOC_BUILD=local`.
+- **An installation from before `state/` is moved on its first start**
+  (`toc_prepare_state`): an old container -- one whose `/app/area` is not a
+  bind mount -- is stopped first so its players save, the checkout's data
+  directories are copied, the container's world is copied out and the
+  container removed. `update` then puts git's copies of the checkout's
+  `player/`, `gods/`, `heroes/` and `log/` back so it can fast-forward, one
+  tracked directory at a time. Nothing is deleted.
+- **A new world starts empty**; `--import-players` (`-ImportPlayers`) copies
+  the repository's characters in. `toc.sh promote <name>` makes the owner's
+  character the implementor from its file (logged out, a copy kept in
+  `state/backups/`).
+- **`update` finishes in the newly pulled launcher** (`exec toc.sh
+  _finish-update`), so a fix to the launcher applies to the update that
+  brings it. The bash and PowerShell launchers mirror each other; change
+  both. `toc.ps1` writes player files in Latin-1 with LF, and PowerShell 5.1
+  has no `[Text.Encoding]::Latin1` -- use `GetEncoding(28591)`.
 
 ## The Sanitizer Job Plays
 

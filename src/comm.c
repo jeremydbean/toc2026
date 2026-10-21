@@ -635,6 +635,26 @@ int init_socket( int port )
     sa.sin_family   = AF_INET;
     sa.sin_port     = htons( (unsigned short)port );
 
+    /*
+     * TOC_BIND_ADDRESS keeps the game on one interface -- 127.0.0.1 for
+     * a native install meant for this computer only, as Docker's port
+     * binding does for the container. Unset, it listens everywhere, as
+     * it always has. A value that is not an IPv4 address is refused
+     * rather than quietly widened to every interface.
+     */
+    {
+        const char *bind_address = getenv( "TOC_BIND_ADDRESS" );
+
+        if ( bind_address != NULL && bind_address[0] != '\0'
+          && inet_pton( AF_INET, bind_address, &sa.sin_addr ) != 1 )
+        {
+            fprintf( stderr, "Init_socket: TOC_BIND_ADDRESS '%s' is not an IPv4 address\n",
+                     bind_address );
+            close( fd );
+            exit( 1 );
+        }
+    }
+
     /* Use generic casting to struct sockaddr * to avoid strict-aliasing warnings */
     if ( bind( fd, (struct sockaddr *) &sa, sizeof(sa) ) < 0 )
     {

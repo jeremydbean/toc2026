@@ -4,7 +4,8 @@ param(
     [string]$Network = 'Preserve',
     [switch]$NoStart,
     [switch]$NoBrowser,
-    [switch]$SkipPrerequisites
+    [switch]$SkipPrerequisites,
+    [switch]$ImportPlayers
 )
 
 $ErrorActionPreference = 'Stop'
