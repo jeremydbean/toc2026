@@ -147691,3 +147691,122 @@ Wed Oct 21 12:00:52 2026 :: Log Trentlin [41]: n
 Wed Oct 21 12:00:52 2026 :: Log Trentlin [16000]: arrived (Beginning of the Pier) from 41
 Wed Oct 21 12:00:53 2026 :: Log Trentlin [16000]: n
 Wed Oct 21 12:00:53 2026 :: Log Trentlin [16001]: arrived (Along the Pier) from 16000
+Wed Oct 21 12:00:55 2026 :: Log Trentlin [16001]: k sai
+Wed Oct 21 12:00:59 2026 :: Log Trentlin [16001]: smite
+Wed Oct 21 12:00:59 2026 :: Log Trentlin [16001]: killed The sailor
+Wed Oct 21 12:00:59 2026 :: Log Trentlin [16001]: coin +2 platinum
+Wed Oct 21 12:00:59 2026 :: Log Trentlin [16001]: coin +10 silver
+Wed Oct 21 12:00:59 2026 :: Log Trentlin [16001]: coin +13 copper
+Wed Oct 21 12:00:59 2026 :: Log Trentlin [16001]: coin +5 gold
+Wed Oct 21 12:01:06 2026 :: Log Trentlin [16001]: n
+Wed Oct 21 12:01:06 2026 :: Log Trentlin [16002]: arrived (Along the Pier) from 16001
+Wed Oct 21 12:01:07 2026 :: Log Trentlin [16002]: n
+Wed Oct 21 12:01:07 2026 :: Log Trentlin [16003]: arrived (Along the Pier) from 16002
+Wed Oct 21 12:01:08 2026 :: Log Trentlin [16003]: n
+Wed Oct 21 12:01:08 2026 :: Log Trentlin [16004]: arrived (A Turn at the Pier) from 16003
+Wed Oct 21 12:01:11 2026 :: Log Trentlin [16004]: get all
+Wed Oct 21 12:01:12 2026 :: Log Trentlin [16004]: e
+Wed Oct 21 12:01:12 2026 :: Log Trentlin [16005]: arrived (Plankway to the Royal Eagle) from 16004
+Wed Oct 21 12:01:14 2026 :: Log Trentlin [16005]: k dr
+Wed Oct 21 12:01:17 2026 :: Log Trentlin [16005]: smite
+Wed Oct 21 12:01:19 2026 :: Log Trentlin [16005]: killed The drunk pirate
+Wed Oct 21 12:01:19 2026 :: Log Trentlin [16005]: coin +1 platinum
+Wed Oct 21 12:01:19 2026 :: Log Trentlin [16005]: coin +5 silver
+Wed Oct 21 12:01:19 2026 :: Log Trentlin [16005]: coin +6 copper
+Wed Oct 21 12:01:19 2026 :: Log Trentlin [16005]: coin +2 gold
+Wed Oct 21 12:01:26 2026 :: Log Trentlin [16005]: u
+Wed Oct 21 12:01:26 2026 :: Log Trentlin [16021]: arrived (Entrance to the Royal Eagle - Main Deck) from 16005
+Wed Oct 21 12:01:26 2026 :: Log Trentlin [16021]: sca
+Wed Oct 21 12:01:27 2026 :: Log Trentlin [16021]: put cat pack
+Wed Oct 21 12:01:30 2026 :: Sock.sinaddr:  178.156.185.127
+Wed Oct 21 12:01:31 2026 :: EOF encountered on read.
+Wed Oct 21 12:01:33 2026 :: Log Trentlin [16021]: n
+Wed Oct 21 12:01:33 2026 :: Log Trentlin [16026]: arrived (Main Deck - Port) from 16021
+Wed Oct 21 12:01:33 2026 :: Log Trentlin [16026]: sca
+Wed Oct 21 12:01:35 2026 :: Log Trentlin [16026]: n
+Wed Oct 21 12:01:35 2026 :: Log Trentlin [16031]: arrived (Main Deck - Port) from 16026
+Wed Oct 21 12:01:36 2026 :: Log Trentlin [16031]: sca
+Wed Oct 21 12:01:37 2026 :: Log Trentlin [16031]: e
+Wed Oct 21 12:01:37 2026 :: Log Trentlin [16032]: arrived (Main Deck) from 16031
+Wed Oct 21 12:01:38 2026 :: Log Trentlin [16032]: con p
+Wed Oct 21 12:01:40 2026 :: Log Trentlin [16032]: sca
+Wed Oct 21 12:01:46 2026 :: Log Trentlin [16032]: k pir
+Wed Oct 21 12:01:50 2026 :: Log Trentlin [16032]: smite
+Wed Oct 21 12:02:01 2026 :: Log Trentlin [16032]: smite
+Wed Oct 21 12:02:12 2026 :: Black market: the dealer left the world from room 18242 (A small hallway, gelidia.are).
+Wed Oct 21 12:02:13 2026 :: Log Trentlin [16032]: bash
+Wed Oct 21 12:02:26 2026 :: Log Trentlin [16032]: bash
+Wed Oct 21 12:02:37 2026 :: Log Trentlin [16032]: killed The pirate
+Wed Oct 21 12:02:37 2026 :: Log Trentlin [16032]: coin +2 platinum
+Wed Oct 21 12:02:37 2026 :: Log Trentlin [16032]: coin +12 silver
+Wed Oct 21 12:02:37 2026 :: Log Trentlin [16032]: coin +17 copper
+Wed Oct 21 12:02:37 2026 :: Log Trentlin [16032]: coin +7 gold
+Wed Oct 21 12:02:38 2026 :: Log Trentlin [16032]: bash
+Wed Oct 21 12:02:39 2026 :: Log Trentlin [16032]: l
+Wed Oct 21 12:02:40 2026 :: Log Trentlin [16032]: sca
+Wed Oct 21 12:02:44 2026 :: Log Trentlin [16032]: n
+Wed Oct 21 12:02:44 2026 :: Log Trentlin [16037]: arrived (Main Deck) from 16032
+Wed Oct 21 12:02:44 2026 :: Log Trentlin [16037]: k dr
+Wed Oct 21 12:02:49 2026 :: Log Trentlin [16037]: smite
+Wed Oct 21 12:02:49 2026 :: Log Trentlin [16037]: killed The drunk pirate
+Wed Oct 21 12:02:49 2026 :: Log Trentlin [16037]: coin +1 platinum
+Wed Oct 21 12:02:49 2026 :: Log Trentlin [16037]: coin +5 silver
+Wed Oct 21 12:02:49 2026 :: Log Trentlin [16037]: coin +6 copper
+Wed Oct 21 12:02:49 2026 :: Log Trentlin [16037]: coin +2 gold
+Wed Oct 21 12:02:57 2026 :: Log Trentlin [16037]: k pir
+Wed Oct 21 12:03:03 2026 :: Log Trentlin [16037]: smite
+Wed Oct 21 12:03:11 2026 :: Log Trentlin [16037]: sco
+Wed Oct 21 12:03:14 2026 :: Log Trentlin [16037]: smite
+Wed Oct 21 12:03:26 2026 :: Log Trentlin [16037]: smite
+Wed Oct 21 12:03:37 2026 :: Log Trentlin [16037]: smite
+Wed Oct 21 12:03:39 2026 :: Log Trentlin [16037]: sca
+Wed Oct 21 12:03:41 2026 :: Log Trentlin [16037]: n
+Wed Oct 21 12:03:41 2026 :: Log Trentlin [16042]: arrived (Main Deck) from 16037
+Wed Oct 21 12:03:43 2026 :: Log Trentlin [16042]: k pir
+Wed Oct 21 12:03:48 2026 :: Log Trentlin [16042]: sca
+Wed Oct 21 12:03:49 2026 :: Log Trentlin [16042]: w
+Wed Oct 21 12:03:49 2026 :: Log Trentlin [16041]: arrived (Main Deck - Port) from 16042
+Wed Oct 21 12:03:51 2026 :: Log Trentlin [16041]: bash pir
+Wed Oct 21 12:03:55 2026 :: Log Trentlin [16041]: killed The pirate
+Wed Oct 21 12:03:55 2026 :: Log Trentlin [16041]: coin +2 platinum
+Wed Oct 21 12:03:55 2026 :: Log Trentlin [16041]: coin +12 silver
+Wed Oct 21 12:03:55 2026 :: Log Trentlin [16041]: coin +17 copper
+Wed Oct 21 12:03:55 2026 :: Log Trentlin [16041]: coin +7 gold
+Wed Oct 21 12:03:59 2026 :: Log Trentlin [16041]: bash pir
+Wed Oct 21 12:04:00 2026 :: Log Trentlin [16041]: e
+Wed Oct 21 12:04:00 2026 :: Log Trentlin [16042]: arrived (Main Deck) from 16041
+Wed Oct 21 12:04:00 2026 :: Log Trentlin [16042]: e
+Wed Oct 21 12:04:00 2026 :: Log Trentlin [16043]: arrived (Main Deck) from 16042
+Wed Oct 21 12:04:02 2026 :: Log Trentlin [16043]: k swas
+Wed Oct 21 12:04:06 2026 :: Log Trentlin [16043]: smite
+Wed Oct 21 12:04:26 2026 :: Log Trentlin [16043]: smite
+Wed Oct 21 12:04:37 2026 :: Log Trentlin [16043]: smite
+Wed Oct 21 12:04:37 2026 :: Log Trentlin [16043]: killed The swashbuckler
+Wed Oct 21 12:04:37 2026 :: Log Trentlin [16043]: coin +1 platinum
+Wed Oct 21 12:04:37 2026 :: Log Trentlin [16043]: coin +6 silver
+Wed Oct 21 12:04:37 2026 :: Log Trentlin [16043]: coin +8 copper
+Wed Oct 21 12:04:37 2026 :: Log Trentlin [16043]: coin +3 gold
+Wed Oct 21 12:04:45 2026 :: Log Trentlin [16043]: sca
+Wed Oct 21 12:04:47 2026 :: Log Trentlin [16043]: quaff glow
+Wed Oct 21 12:04:49 2026 :: Log Trentlin [16043]: n
+Wed Oct 21 12:04:49 2026 :: Log Trentlin [16047]: arrived (Bow of the Royal Eagle) from 16043
+Wed Oct 21 12:04:50 2026 :: Log Trentlin [16047]: sca
+Wed Oct 21 12:04:54 2026 :: Log Trentlin [16047]: n
+Wed Oct 21 12:04:54 2026 :: Log Trentlin [16050]: arrived (Bow of the Royal Eagle) from 16047
+Wed Oct 21 12:04:55 2026 :: Log Trentlin [16050]: k swas
+Wed Oct 21 12:04:59 2026 :: Log Trentlin [16050]: smite
+Wed Oct 21 12:05:14 2026 :: Log Trentlin [16050]: smite
+Wed Oct 21 12:05:14 2026 :: Trentlin weapon has been smited!
+
+Wed Oct 21 12:05:23 2026 :: Log Trentlin [16050]: wear scal
+Wed Oct 21 12:05:24 2026 :: Log Trentlin [16050]: smite
+Wed Oct 21 12:05:35 2026 :: Log Trentlin [16050]: smite
+Wed Oct 21 12:05:44 2026 :: Log Trentlin [16050]: smite
+Wed Oct 21 12:05:46 2026 :: Log Trentlin [16050]: killed The swashbuckler
+Wed Oct 21 12:05:46 2026 :: Log Trentlin [16050]: coin +1 platinum
+Wed Oct 21 12:05:46 2026 :: Log Trentlin [16050]: coin +6 silver
+Wed Oct 21 12:05:46 2026 :: Log Trentlin [16050]: coin +8 copper
+Wed Oct 21 12:05:46 2026 :: Log Trentlin [16050]: coin +3 gold
+Wed Oct 21 12:05:52 2026 :: Log Trentlin [16050]: kick
+Wed Oct 21 12:05:52 2026 :: Log Trentlin [16050]: recall
+Wed Oct 21 12:05:52 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 16050
