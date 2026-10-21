@@ -123,3 +123,112 @@
 1792618209	cmd	Trentlin	47	16033	pirate.are	fighting	96	0	fight	smite		Your smite ^^^ DESTROYS ^^^ The swashbuckler!
 1792618223	cmd	Trentlin	47	16033	pirate.are	fighting	96	0	fight	smite		Your smite decimates The swashbuckler!
 1792618232	cmd	Trentlin	47	16033	pirate.are	fighting	95	0	fight	smite		Your smite maims The swashbuckler!
+1792618299	cmd	Trentlin	47	16033	pirate.are	standing	95	0	-	scan		The pirate                         -to the North.
+1792618299	cmd	Trentlin	47	16033	pirate.are	standing	95	0	-	scan		The pirate                         -to the North.
+1792618301	cmd	Trentlin	47	16028	pirate.are	standing	95	0	-	south		Main Deck
+1792618303	cmd	Trentlin	47	16033	pirate.are	standing	95	0	-	north		Base of the Mast
+1792618304	cmd	Trentlin	47	16078	pirate.are	standing	95	0	-	up		The Mast
+1792618305	cmd	Trentlin	47	16079	pirate.are	standing	95	0	-	east		Out on the Mast
+1792618306	cmd	Trentlin	47	16079	pirate.are	standing	95	0	-	kill	swas	A Tin Axe bites deep into The swashbuckler!
+1792618310	cmd	Trentlin	47	16079	pirate.are	fighting	95	0	fight	smite		Your smite ^^^ DESTROYS ^^^ The swashbuckler!
+1792618319	cmd	Trentlin	47	16079	pirate.are	fighting	95	0	fight	smite		Your smite ^^^ DESTROYS ^^^ The swashbuckler!
+1792618329	cmd	Trentlin	47	16079	pirate.are	fighting	95	0	fight	smite		A Tin Axe bites deep into The swashbuckler!
+1792618336	cmd	Trentlin	47	16078	pirate.are	standing	95	0	-	west		The Mast
+1792618336	cmd	Trentlin	47	16077	pirate.are	standing	95	0	-	west		Out on the Mast
+1792618337	cmd	Trentlin	47	16078	pirate.are	standing	95	0	-	east		The Mast
+1792618337	cmd	Trentlin	47	16081	pirate.are	standing	95	0	-	up		The Mast
+1792618339	cmd	Trentlin	47	16082	pirate.are	standing	95	0	-	east		Out on the Mast
+1792618339	cmd	Trentlin	47	16081	pirate.are	standing	95	0	-	west		The Mast
+1792618340	cmd	Trentlin	47	16080	pirate.are	standing	95	0	-	west		Out on the Mast
+1792618342	cmd	Trentlin	47	16080	pirate.are	standing	95	0	-	kill	swas	The swashbuckler blocks your attack with his shield.
+1792618345	cmd	Trentlin	47	16080	pirate.are	fighting	95	0	fight	smite		Your smite ^^^ DESTROYS ^^^ The swashbuckler!
+1792618356	cmd	Trentlin	47	16080	pirate.are	fighting	95	0	fight	smite		Your smite *** DEVASTATES *** The swashbuckler!
+1792618365	cmd	Trentlin	47	16080	pirate.are	standing	95	0	-	smite		Smite whom?
+1792618366	cmd	Trentlin	47	16081	pirate.are	standing	95	0	-	east		The Mast
+1792618367	cmd	Trentlin	47	16078	pirate.are	standing	95	0	-	down		The Mast
+1792618367	cmd	Trentlin	47	16033	pirate.are	standing	95	0	-	down		Base of the Mast
+1792618367	cmd	Trentlin	47	16033	pirate.are	standing	95	0	-	down		Alas, you cannot go that way.
+1792618368	cmd	Trentlin	47	16033	pirate.are	standing	95	0	-	down		Alas, you cannot go that way.
+1792618368	cmd	Trentlin	47	16033	pirate.are	standing	95	0	-	down		Alas, you cannot go that way.
+1792618368	cmd	Trentlin	47	16033	pirate.are	standing	95	0	-	scan		The pirate                         -to the North.
+1792618370	cmd	Trentlin	47	16038	pirate.are	standing	95	0	-	north		Main Deck
+1792618370	cmd	Trentlin	47	16038	pirate.are	standing	95	0	-	scan		The midshipman                     -to the North.
+1792618372	cmd	Trentlin	47	16043	pirate.are	standing	95	0	-	north		Main Deck
+1792618372	cmd	Trentlin	47	16043	pirate.are	standing	95	0	-	scan		The pirate                         -to the South.
+1792618373	cmd	Trentlin	47	16047	pirate.are	standing	95	0	-	north		Bow of the Royal Eagle
+1792618374	cmd	Trentlin	47	16047	pirate.are	standing	95	0	-	scan		The pirate                         -to the North.
+1792618376	cmd	Trentlin	47	16050	pirate.are	standing	95	0	-	north		Bow of the Royal Eagle
+1792618377	cmd	Trentlin	47	16050	pirate.are	standing	95	0	-	kill	swas	A Tin Axe bites deep into The swashbuckler!
+1792618382	cmd	Trentlin	47	16050	pirate.are	fighting	95	0	fight	smite		Your smite *** DEVASTATES *** The swashbuckler!
+1792618392	cmd	Trentlin	47	16050	pirate.are	fighting	95	0	fight	smite		Your smite === OBLITERATES === The swashbuckler!
+1792618409	cmd	Trentlin	48	16050	pirate.are	standing	94	0	-	smite		Smite whom?
+1792618409	cmd	Trentlin	48	16050	pirate.are	standing	94	0	-	recall		Your prayer goes up and comes back unanswered.
+1792618411	cmd	Trentlin	48	4207	dresden_halloween.are	standing	94	0	-	recall		Before the Shrouded Altar
+1792618412	cmd	Trentlin	48	4208	dresden_halloween.are	standing	94	0	-	west		The Shrouded Altar of Devota
+1792618413	cmd	Trentlin	48	4208	dresden_halloween.are	standing	94	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792618419	cmd	Trentlin	48	4208	dresden_halloween.are	standing	100	0	-	score		--------------------------------------------------------------
+1792618421	cmd	Trentlin	48	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792618421	cmd	Trentlin	48	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792618422	cmd	Trentlin	48	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792618423	cmd	Trentlin	48	2433	dresden_halloween.are	standing	100	2	-	north		Temple Boulevard.
+1792618424	cmd	Trentlin	48	2405	dresden_halloween.are	standing	100	0	-	east		Western Oak Tree Square.
+1792618425	cmd	Trentlin	48	2401	dresden_halloween.are	standing	100	0	-	east		Oak Tree Square on Hallows Eve
+1792618429	cmd	Trentlin	48	2438	dresden_halloween.are	standing	100	0	-	run	w 7	Western Oak Tree Square.
+1792618430	cmd	Trentlin	48	2438	dresden_halloween.are	standing	100	0	-	open	gate	Ok.
+1792618430	cmd	Trentlin	48	6103	haon.are	standing	100	0	-	run	w 10	Outside the Western Gates of Dresden.
+1792618430	cmd	Trentlin	48	6108	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest
+1792618430	cmd	Trentlin	48	6110	haon.are	standing	100	0	-	run	w 2	A narrow trail through the deep, dark forest
+1792618431	cmd	Trentlin	48	6112	haon.are	standing	100	0	-	run	s 2	A narrow trail through the deep, dark forest
+1792618431	cmd	Trentlin	48	6127	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest
+1792618431	cmd	Trentlin	48	6126	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest
+1792618431	cmd	Trentlin	48	6135	haon.are	standing	100	0	-	run	w 3	A narrow trail through the deep, dark forest
+1792618432	cmd	Trentlin	48	6136	haon.are	standing	100	0	-	north		A dusty trail in the deep, dark forest
+1792618432	cmd	Trentlin	48	6137	haon.are	standing	100	0	-	west		At the end of the trail through the deep, dark forest
+1792618432	cmd	Trentlin	48	30	connect.are	standing	100	0	-	north		Forest Clearing
+1792618432	cmd	Trentlin	48	31	connect.are	standing	100	0	-	nw		A Twisting Path
+1792618433	cmd	Trentlin	48	33	connect.are	standing	100	0	-	run	w 2	An unused path
+1792618433	cmd	Trentlin	48	34	connect.are	standing	100	0	-	nw		The Wind Gap
+1792618433	cmd	Trentlin	48	25001	mountain.are	standing	100	0	-	north		A small mountain crevice
+1792618435	cmd	Trentlin	48	25001	mountain.are	standing	100	0	-	scan		You don't see anything near you.
+1792618436	cmd	Trentlin	48	25002	mountain.are	standing	100	0	-	north		Near the river
+1792618437	cmd	Trentlin	48	25002	mountain.are	standing	100	0	-	scan		You don't see anything near you.
+1792618438	cmd	Trentlin	48	25002	mountain.are	standing	100	0	-	exits		Obvious exits:
+1792618441	cmd	Trentlin	48	25004	mountain.are	standing	100	0	-	north		Beginning of the climb
+1792618442	cmd	Trentlin	48	25004	mountain.are	standing	100	0	-	scan		You don't see anything near you.
+1792618443	cmd	Trentlin	48	25005	mountain.are	standing	100	0	-	nw		Hard Climb
+1792618443	cmd	Trentlin	48	25005	mountain.are	standing	100	0	-	scan		You don't see anything near you.
+1792618446	cmd	Trentlin	48	25006	mountain.are	standing	100	0	-	north		Head of the Bridge
+1792618446	cmd	Trentlin	48	25006	mountain.are	standing	100	0	-	scan		You don't see anything near you.
+1792618447	cmd	Trentlin	48	25007	mountain.are	standing	100	0	-	west		On the bridge
+1792618448	cmd	Trentlin	48	25007	mountain.are	standing	100	0	-	scan		You don't see anything near you.
+1792618449	cmd	Trentlin	48	25008	mountain.are	standing	100	0	-	west		Middle of the Bridge
+1792618449	cmd	Trentlin	48	25008	mountain.are	standing	100	0	-	scan		You don't see anything near you.
+1792618450	cmd	Trentlin	48	25009	mountain.are	standing	100	0	-	west		End of the Bridge
+1792618451	cmd	Trentlin	48	25009	mountain.are	standing	100	0	-	scan		A Black Raven                      -to the Northwest.
+1792618452	cmd	Trentlin	48	25015	mountain.are	standing	100	0	-	nw		Onward and Upward
+1792618453	cmd	Trentlin	48	25015	mountain.are	standing	100	0	-	consider	ra	A Black Raven laughs at you mercilessly.
+1792618454	cmd	Trentlin	48	25015	mountain.are	standing	100	0	-	look	ra	This is one of the many eye's and ears of the wyrm smaug, they serve as his
+1792618455	cmd	Trentlin	48	25015	mountain.are	standing	100	0	-	kill	ra	Your cleave mauls A Black Raven.
+1792618459	cmd	Trentlin	48	25015	mountain.are	fighting	100	0	fight	smite		Your smite DISEMBOWELS A Black Raven!
+1792618471	cmd	Trentlin	48	25015	mountain.are	fighting	97	0	fight	smite		A Tin Axe bites deep into A Black Raven!
+1792618482	cmd	Trentlin	48	25015	mountain.are	fighting	96	0	fight	smite		Your smite MASSACRES A Black Raven!
+1792618494	cmd	Trentlin	48	25015	mountain.are	fighting	93	0	fight	smite		Your smite MANGLES A Black Raven!
+1792618506	cmd	Trentlin	48	25015	mountain.are	fighting	92	0	fight	smite		Your smite *** DEVASTATES *** A Black Raven!
+1792618512	cmd	Trentlin	48	25015	mountain.are	fighting	92	0	fight	score		--------------------------------------------------------------
+1792618526	cmd	Trentlin	48	25015	mountain.are	fighting	91	0	fight	smite		Your smite DISMEMBERS A Black Raven!
+1792618539	cmd	Trentlin	48	25015	mountain.are	fighting	89	0	fight	smite		Your smite misses A Black Raven.
+1792618546	cmd	Trentlin	48	25015	mountain.are	fighting	87	0	fight	wear	tro	You stop using A Tin Axe.
+1792618548	cmd	Trentlin	48	25015	mountain.are	fighting	86	0	fight	smite		Your smite wounds A Black Raven.
+1792618557	cmd	Trentlin	48	25015	mountain.are	fighting	84	0	fight	smite		Your smite misses A Black Raven.
+1792618566	cmd	Trentlin	48	25015	mountain.are	fighting	83	0	fight	wear	ax	You stop using (Dark) a Troll Sword.
+1792618569	cmd	Trentlin	48	25015	mountain.are	fighting	82	0	fight	smite		Your smite devastates A Black Raven!
+1792618581	cmd	Trentlin	48	25015	mountain.are	standing	81	0	-	wear	dra	You stop using A Tin Axe.
+1792618583	cmd	Trentlin	48	25015	mountain.are	standing	81	0	-	look	in co	Corpse of A Black Raven contains:
+1792618587	cmd	Trentlin	48	25015	mountain.are	standing	81	0	-	look		Onward and Upward
+1792618588	cmd	Trentlin	48	25015	mountain.are	standing	81	0	-	eat	pot	You eat a big pot pie.
+1792618591	cmd	Trentlin	48	25015	mountain.are	standing	81	0	-	scan		You don't see anything near you.
+1792618593	cmd	Trentlin	48	25016	mountain.are	standing	81	0	-	north		Causeway
+1792618594	cmd	Trentlin	48	25016	mountain.are	standing	81	0	-	scan		You don't see anything near you.
+1792618595	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	north		Sharp Climb to the Top
+1792618595	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	scan		You don't see anything near you.
+1792618598	cmd	Trentlin	48	25017	mountain.are	standing	81	0	-	open	secret	I see no secret here.
