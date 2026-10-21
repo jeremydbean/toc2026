@@ -190,6 +190,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **The second October audit and the remort report** (2026-10-21).
+  Full PRESTORE judged presence by sight, skipped the rank check for an
+  unseen or offline target and could be saved over; snapshots could be
+  published half-written; NEWCORPSE rebuilt from a record with a bad
+  checksum; cross-room SHOOT bypassed damage(); limited items were
+  counted shallowly when bags were nested; the auto-deployer retried a
+  failed payload after each state sync, let an old `[deploy now]` cover
+  newer code and an older green run cover `[skip ci]` code; CI's
+  whitespace check never saw a commit; a disconnect unmasked an unsent
+  password. Remort dropped a pet outside the Temple, got no starter kit
+  with old school gear carried, and cut practices and trains above
+  30,000. The healer named NOSUMMON to a new character with nothing
+  cursed (CI on dc3a8c80), and macOS could not build comm.c (inet_aton).
+
 - **The October 2026 audit** (outside review, 2026-10-21). Native: stash
   LINK read its list after freeing it and corrupted the first partner's
   name; heat metal and acid breath left a permanent AC bonus; hostile

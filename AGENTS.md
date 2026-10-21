@@ -1422,9 +1422,15 @@ healthy. Docs, tests and state-sync commits never trigger it, and a
 commit that failed to deploy is not retried until something newer lands.
 So a session that can only push -- a cloud session -- still ships: push,
 and the game updates about ten minutes after CI goes green (CI takes
-about an hour). Put `[deploy now]` in a commit message to skip the CI
-wait for an urgent fix; `toc-deploy` still refuses anything that does not
-build or whose world does not load. A desktop session may still run
+about an hour). Put `[deploy now]` in the message of the commit that
+changes the code to skip the CI wait for an urgent fix -- it covers that
+commit's code and state-only commits on top of it, never later code
+(audit, 2026-10-21); `toc-deploy` still refuses anything that does not
+build or whose world does not load. Every auto-deploy decision is about
+the newest commit that changed deployable content: the failed-attempt
+record, the override and the CI run (which must be on that commit or a
+descendant, so a `[skip ci]` code commit is never covered by an older
+green run). A desktop session may still run
 `toc-deploy` by hand for an immediate deploy; the two share a lock.
 
 **Nothing pasted into a cloud session's chat gets it onto the host**
@@ -3157,6 +3163,26 @@ test that fails on the old code. Keep them.
   the answer**: the guild in `_oracle_cache_key`, and a digest of the
   asker's ABILITIES in `oracle.poll_once`, the one place that has them
   (`tests/test_oracle.py`).
+- **Full PRESTORE finds its target with `player_in_game`, never by
+  sight**, refuses a login in progress, rank-checks an offline target
+  from a loaded copy, and refuses a snapshot without `#END` before
+  disturbing anybody (`tests/test_prestore.py`). Snapshots are written
+  to `.partial` and renamed into place, so a crash mid-copy leaves
+  nothing PRESTORE offers.
+- **Limited items are counted by whole subtree at every change of
+  hands** (`maxload_subtree` in `handler.c`, used by the four transfer
+  functions and the stash). The shallow counts undercounted a bag packed
+  into another carried bag and overcounted at a quit two deep
+  (`tests/test_maxload_nesting.py`). Totals already wrong in
+  `maxload.txt` are not reconciled by this; that is a separate decision.
+- **Cross-room SHOOT goes through `damage()`** and undoes the fight it
+  starts between rooms (`tests/test_ranged_shot.py`).
+- **Leaving password mode clears the field** in both browser consoles
+  (`tests/test_secret_input.js`).
+- **Remort** (report, 2026-10-21; `tests/test_remort_report.py`): a pet
+  at its owner's side goes to the Temple with them; OUTFIT fills each
+  empty slot, from a matching starter item already carried where there
+  is one; practices and trains saturate at `SHRT_MAX`, never cut.
 - **The dashboard's player-file parser tracks sections**: the player
   block ends at its `End`, `#PET` and `#STASH` are not the player's, so a
   character carrying nothing no longer reads their pet's stats as their own

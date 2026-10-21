@@ -91,8 +91,9 @@ from git.
 **Usually you do not need to run it.** `toc-auto-deploy.timer` checks
 `main` every ten minutes and deploys new code once CI's Validate run for
 it passes, pinned to that commit and rolling itself back if the game
-does not come back healthy; `[deploy now]` in a commit message skips the
-CI wait. It never restarts the game while anybody is playing: the
+does not come back healthy; `[deploy now]` in the message of the commit
+carrying the code skips the CI wait for that code (not for code pushed
+after it). It never restarts the game while anybody is playing: the
 status reads `holding <sha>: N player(s) online` and it looks again
 every ten minutes until the game is empty (owner, 2026-10-20). A deploy
 by hand is the override. Docs, tests and state-sync commits never

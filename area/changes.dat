@@ -3,6 +3,15 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261021k 2026-10-21
+Remort keeps your pet: if it was beside you, it comes to the Temple with
+you. A remort with old school gear in your pack now gets its starting
+kit -- OUTFIT puts on a matching piece you carry or makes a new one, for
+each empty slot. Practices and trains above 30,000 are no longer cut at a
+remort. Arrows shot into the next room now respect immunities and
+sanctuary. The web client never shows an unsent password if the
+connection drops.
+
 @ 20261021j 2026-10-21
 Fixes from a code review: hostile spells are refused in the Temple and
 safe rooms, as attacks are; heat metal and acid breath no longer leave you
