@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792499983
+LogO 1792545181
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -16,21 +16,21 @@ PsiKnown ~
 ChangesSeen ~
 Cast none
 Levl 43
-Plyd 40149
+Plyd 40173
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 StashMax 75
 Scro 22
-Room 2401
-HMV  676 676 1125 1125 349 364
+Room 4208
+HMV  676 676 1125 1125 340 364
 NewGold 67
 NewPlat 5
 NewCopp 130
 NewSilv 67
-BankCP 195262686
-IntTime 1792436412
-IntTotal 262686
+BankCP 195750842
+IntTime 1792522812
+IntTotal 750842
 Dcount 0
 SavedOnce 1
 Corpses	0
@@ -93,6 +93,8 @@ Achv visit-new-thalos 1791415830
 Achv visit-korzath-fortress 1792287816
 Achv visit-ice-keep 1792455929
 LastOut  1792499983
+Rested 0 0
+Daily 0 0 0 0 0
 SesLogin 1792498820
 SesDur   1163
 SesExpG  3938
@@ -192,9 +194,9 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'bless'   0  39  -4  24          0          0
-AffD 'bless'  47  39   4  18          0          0
 AffD 'armor'  39  22 -20  17          0          0
+AffD 'bless'  47  39   4  18          0          0
+AffD 'bless'   0  39  -4  24          0          0
 End
 
 #O
@@ -691,8 +693,8 @@ Lev  51
 Cost 24360000
 Cond 100
 Repd 0
-Affect -1 51 -1 -1 17 0 0
 Affect -1 51 -1 -1 4 0 0
+Affect -1 51 -1 -1 17 0 0
 End
 
 #O
