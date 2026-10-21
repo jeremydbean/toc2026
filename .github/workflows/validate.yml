@@ -74,12 +74,20 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r webadmin/requirements.txt -r scripts/requirements.txt
 
+      # The whitespace check looks at what this push committed, so it
+      # needs the commit the branch pointed at before it. Depth 1 is
+      # enough: git diff compares trees, not history.
+      - name: Fetch the push's base for the whitespace check
+        if: github.event_name == 'push' && github.event.before != '0000000000000000000000000000000000000000'
+        run: git fetch --no-tags --depth=1 origin "${{ github.event.before }}" || true
+
       - name: Run validation suite
         env:
           # validate.sh does `make clean` first, on purpose -- this
           # codebase has been bitten by stale objects before -- so the
           # compiler cache is what stops that costing a full rebuild.
           CC: ccache gcc
+          TOC_WHITESPACE_BASE: ${{ github.event.before }}
         run: bash scripts/validate.sh
 
   sanitize:

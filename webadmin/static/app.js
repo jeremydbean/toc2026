@@ -1825,13 +1825,20 @@
         if (nearBottom) element.scrollTop = element.scrollHeight;
     }
 
+    // Leaving password mode discards what was typed in it before the field
+    // is unmasked, and a closed connection leaves it (audit, 2026-10-21):
+    // an unsent password used to stay in the field, and showed.
+    function setConsoleSecret(secret) {
+        const input = byId("console-input");
+        if (state.terminal.secretInput && !secret) input.value = "";
+        state.terminal.secretInput = secret;
+        input.type = secret ? "password" : "text";
+        input.placeholder = secret ? "Password" : "Command";
+    }
+
     const consoleOutput = TocConsoleOutput.create(
         (text, className) => appendTerminal(byId("game-terminal"), text, className),
-        (secret) => {
-            state.terminal.secretInput = secret;
-            byId("console-input").type = secret ? "password" : "text";
-            byId("console-input").placeholder = secret ? "Password" : "Command";
-        },
+        setConsoleSecret,
     );
 
     function connectConsole() {
@@ -1863,6 +1870,7 @@
         });
         socket.addEventListener("close", () => {
             if (state.terminal.socket === socket) state.terminal.socket = null;
+            setConsoleSecret(false);
             setConsoleConnected(false, state.terminal.failed ? "Game unavailable" : "Disconnected");
             appendTerminal(byId("game-terminal"), "\n[Disconnected]\n");
         });

@@ -132,38 +132,51 @@ fi
 
 # Code is everything a deploy carries into the live tree except what the
 # running game owns (the state sync's paths, as validate.yml lists them)
-# and what never runs there.
-changed=$(git -C "$BUILD" diff --name-only "$live" "$target" -- . \
-    ':(exclude)player' ':(exclude)gods' ':(exclude)heroes' ':(exclude)log' \
-    ':(exclude)notes' ':(exclude)wiki' ':(exclude)tests' ':(exclude).github' \
-    ':(exclude,glob)**/*.md' \
-    ':(exclude,glob)area/notes.txt' ':(exclude,glob)area/bugs.txt*' \
-    ':(exclude,glob)area/ideas.txt*' ':(exclude,glob)area/typos.txt*' \
-    ':(exclude)area/pkilldata.txt' ':(exclude)area/wizlist.txt' \
-    ':(exclude)area/maxload.txt' ':(exclude)area/offense.txt' \
-    ':(exclude)area/relics.txt' ':(exclude)area/not.txt' \
-    ':(exclude)area/ban.txt' ':(exclude)area/dpsboard.txt' \
-    ':(exclude)area/built')
+# and what never runs there. One list, for every question below.
+deployable() {
+    git -C "$BUILD" "$@" -- . \
+        ':(exclude)player' ':(exclude)gods' ':(exclude)heroes' ':(exclude)log' \
+        ':(exclude)notes' ':(exclude)wiki' ':(exclude)tests' ':(exclude).github' \
+        ':(exclude,glob)**/*.md' \
+        ':(exclude,glob)area/notes.txt' ':(exclude,glob)area/bugs.txt*' \
+        ':(exclude,glob)area/ideas.txt*' ':(exclude,glob)area/typos.txt*' \
+        ':(exclude)area/pkilldata.txt' ':(exclude)area/wizlist.txt' \
+        ':(exclude)area/maxload.txt' ':(exclude)area/offense.txt' \
+        ':(exclude)area/relics.txt' ':(exclude)area/not.txt' \
+        ':(exclude)area/ban.txt' ':(exclude)area/dpsboard.txt' \
+        ':(exclude)area/built'
+}
+changed=$(deployable diff --name-only "$live" "$target")
 live_short=$(git -C "$BUILD" rev-parse --short "$live")
 if [ -z "$changed" ]; then
     status "live at $live_short; main ($short) differs only in docs, tests or state"
     exit 0
 fi
 
-if [ "$(cat "$STATE_DIR/attempted" 2>/dev/null || true)" = "$target" ]; then
+# What is being shipped is the newest commit that changed deployable
+# content; the tip above it carries only state, docs and tests. Every
+# decision is about that commit (audit, 2026-10-21): the failed-attempt
+# record was the tip, so each state sync made a failed payload new again;
+# a [deploy now] anywhere in the range passed newer, unchecked code; and
+# a green run on an older commit covered code marked [skip ci] after it.
+effective=$(deployable log -1 --format=%H "$live..$target")
+effective_short=$(git -C "$BUILD" rev-parse --short "$effective")
+
+if [ "$(cat "$STATE_DIR/attempted" 2>/dev/null || true)" = "$effective" ]; then
     exit 0
 fi
 
-if git -C "$BUILD" log --format=%B "$live..$target" | grep -qF '[deploy now]'; then
-    why="[deploy now]"
+if git -C "$BUILD" log -1 --format=%B "$effective" | grep -qF '[deploy now]'; then
+    why="[deploy now] on $effective_short"
 else
     # The newest commit CI runs for. State syncs carry [skip ci], and a
     # commit pushed on top of another cancels the older run, so this is
-    # the one whose verdict covers everything before it.
+    # the one whose verdict covers everything before it -- provided the
+    # code being shipped is before it.
     ci=$(git -C "$BUILD" log -1 --format=%H --invert-grep --fixed-strings \
         --grep='[skip ci]' "$live..$target")
-    if [ -z "$ci" ]; then
-        status "code changed but no commit after $live_short runs CI; not deploying $short"
+    if [ -z "$ci" ] || ! git -C "$BUILD" merge-base --is-ancestor "$effective" "$ci"; then
+        status "code in $effective_short has no CI run after it (marked [skip ci]?); not deploying $short"
         exit 0
     fi
     ci_short=$(git -C "$BUILD" rev-parse --short "$ci")
@@ -202,7 +215,7 @@ case "$players" in
         exit 0 ;;
 esac
 
-echo "$target" > "$STATE_DIR/attempted"
+echo "$effective" > "$STATE_DIR/attempted"
 status "deploying $short ($why)"
 logger -t toc-auto-deploy "deploying $short ($why)" 2>/dev/null || true
 rc=0

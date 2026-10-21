@@ -289,9 +289,15 @@
         recordTranscript(visible);
     }
 
+    // Leaving password mode -- the server stopped hiding input, or the
+    // connection closed or restarted -- discards whatever was typed in it
+    // before the field is unmasked. A disconnect used to show an unsent
+    // password in plain text, and submitting it after a reconnect sent it
+    // as a command into history and the transcript (audit, 2026-10-21).
     function setSecretInput(secret) {
-        state.secretInput = secret;
         const input = byId("command-input");
+        if (state.secretInput && !secret) input.value = "";
+        state.secretInput = secret;
         input.type = secret ? "password" : "text";
         input.placeholder = secret ? "Password" : "Command";
     }

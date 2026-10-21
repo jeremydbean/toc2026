@@ -58,6 +58,12 @@ class CommandSequenceUnitTests(unittest.TestCase):
             cwd=ROOT, capture_output=True, text=True, timeout=30)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
+    def test_an_unsent_password_is_never_unmasked(self) -> None:
+        result = subprocess.run(
+            [NODE, "--test", str(ROOT / "tests" / "test_secret_input.js")],
+            cwd=ROOT, capture_output=True, text=True, timeout=30)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
     def test_both_consoles_send_the_line_whole(self) -> None:
         client = (ROOT / "webadmin" / "static" / "client.js").read_text()
         app = (ROOT / "webadmin" / "static" / "app.js").read_text()

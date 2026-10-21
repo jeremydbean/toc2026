@@ -192,6 +192,43 @@ class AutoDeployDecisionTests(unittest.TestCase):
         self.run_script(self.ci(newer, "completed", "success"))
         self.assertEqual(2, len(self.deploys()), "a new commit is tried")
 
+    def test_state_syncs_do_not_retry_a_failed_payload(self) -> None:
+        """Audit 2026-10-21: the failed-attempt record was the tip, so a
+        state sync on top made the same failed code new again."""
+        code = self.commit("fix", {"src/game.c": "int j;\n"})
+        green = self.ci(code, "completed", "success")
+        self.run_script(green, deploy_fails=True)
+        for n in range(3):
+            self.commit("State sync: %d files [skip ci]" % n, {"log/toc.log": "x%d\n" % n})
+            self.run_script(green)
+        self.assertEqual(1, len(self.deploys()), "one attempt for one payload")
+        fixed = self.commit("fix the fix", {"src/game.c": "int k;\n"})
+        self.run_script(self.ci(fixed, "completed", "success"))
+        self.assertEqual(2, len(self.deploys()))
+
+    def test_an_old_deploy_now_does_not_pass_newer_code(self) -> None:
+        """Audit 2026-10-21: [deploy now] anywhere in live..target passed
+        a later, unchecked commit too."""
+        self.commit("hotfix [deploy now]", {"src/game.c": "int l;\n"})
+        newer = self.commit("more code", {"src/game.c": "int m;\n"})
+        status = self.run_script(self.ci(newer, "completed", "failure"))
+        self.assertEqual([], self.deploys(), status)
+        # A state sync on top of an override still ships under it.
+        override = self.commit("hotfix again [deploy now]", {"src/game.c": "int n;\n"})
+        sync = self.commit("State sync [skip ci]", {"player/Zed": "y\n"})
+        self.assertIn("[deploy now] on", self.run_script(fake_ci=""))
+        self.assertEqual([f"{sync} 1"], self.deploys())
+        self.assertNotEqual(override, sync)
+
+    def test_ci_on_an_older_commit_does_not_cover_skipped_code(self) -> None:
+        """Audit 2026-10-21: green CI on C passed D, which changed code but
+        carried [skip ci]."""
+        good = self.commit("good", {"src/game.c": "int good;\n"})
+        self.commit("sneak [skip ci]", {"src/game.c": "int unchecked;\n"})
+        status = self.run_script(self.ci(good, "completed", "success"))
+        self.assertIn("no CI run after it", status)
+        self.assertEqual([], self.deploys())
+
 
 try:
     from live_mud import LiveMud, skip_reason

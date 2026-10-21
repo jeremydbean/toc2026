@@ -143,9 +143,33 @@ check "Unit tests" \
 # steps ago by running --check-area, and merc's own banner ends in a
 # space -- so an unfiltered check fails on output this script caused,
 # which is the worst kind of red. The check is about source hygiene.
+#
+# A bare `git diff --check` compares the working tree to the index, which
+# in a fresh CI checkout is always clean, so committed whitespace was
+# never checked there (audit, 2026-10-21). Locally it checks what is
+# unstaged and what is staged; given TOC_WHITESPACE_BASE (CI passes the
+# push's "before"), it checks the committed range too. The state the
+# game writes is excluded with log/.
+whitespace_check() {
+  local exclude=(-- . ':(exclude)log' ':(exclude)player' ':(exclude)gods'
+                 ':(exclude)heroes' ':(exclude,glob)area/*.txt')
+  local status=0
+  git diff --check "${exclude[@]}" || status=1
+  git diff --cached --check "${exclude[@]}" || status=1
+  local base="${TOC_WHITESPACE_BASE:-}"
+  if [ -n "$base" ] && [ "${base//0/}" != "" ]; then
+    if git cat-file -e "${base}^{commit}" 2>/dev/null; then
+      git diff --check "$base" HEAD "${exclude[@]}" || status=1
+    else
+      printf 'whitespace: base %s is not available; committed range not checked\n' "$base"
+    fi
+  fi
+  return "$status"
+}
+
 check "Git whitespace check" \
   "remove the trailing whitespace git diff --check names" \
-  git diff --check -- . ':(exclude)log'
+  whitespace_check
 
 if [ "${#failures[@]}" -eq 0 ]; then
   printf '\nValidation complete.\n'
