@@ -2105,3 +2105,81 @@
 1792623670	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	help	heroquest	HEROQUEST
 1792623705	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	help	herolevels	HEROLEVELS HEROLEVEL HERO HEROES 'HERO LEVELS'
 1792623712	session	Trentlin	49	2497	dresden_halloween.are	quit	2745s	+0 levels	+24 exp	+55861505 copper	18 kills	0 deaths	3 quests	1350 commands	6 refused
+1792625775	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	6	-	aquest	request	You approach Questor Thews and ask for a quest.
+1792625779	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792625783	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	south		Southern Oak Tree Square.
+1792625783	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	south		Main Processional, Below the Temple Steps
+1792625783	cmd	Trentlin	49	2428	dresden_halloween.are	standing	100	0	-	south		Main Processional, Toward the Mermaids' Bridge
+1792625784	cmd	Trentlin	49	2429	dresden_halloween.are	standing	100	0	-	south		Bridge of the Mermaids.
+1792625784	cmd	Trentlin	49	2430	dresden_halloween.are	standing	100	0	-	south		Main Processional, at the Southern Gates
+1792625785	cmd	Trentlin	49	2431	dresden_halloween.are	standing	100	0	-	south		Inside the Southern Gates of Dresden.
+1792625785	cmd	Trentlin	49	2432	dresden_halloween.are	standing	100	0	-	south		Outside the Southern Gates of Dresden.
+1792625786	cmd	Trentlin	49	3505	midennir_halloween.are	standing	100	0	-	south		The Trail to Miden'nir
+1792625787	cmd	Trentlin	49	3507	midennir_halloween.are	standing	100	0	-	south		A Burned Cart
+1792625788	cmd	Trentlin	49	3507	midennir_halloween.are	standing	100	0	-	exits		Obvious exits:
+1792625788	cmd	Trentlin	49	3510	midennir_halloween.are	standing	100	0	-	south		A Crossroads
+1792625789	cmd	Trentlin	49	3510	midennir_halloween.are	standing	100	0	-	exits		Obvious exits:
+1792625790	cmd	Trentlin	49	3516	midennir_halloween.are	standing	100	0	-	south		Muddy Ground
+1792625790	cmd	Trentlin	49	3516	midennir_halloween.are	standing	100	0	-	exits		Obvious exits:
+1792625791	cmd	Trentlin	49	3519	midennir_halloween.are	standing	100	0	-	south		The Dark Path
+1792625792	cmd	Trentlin	49	3519	midennir_halloween.are	standing	100	0	-	exits		Obvious exits:
+1792625794	cmd	Trentlin	49	3520	midennir_halloween.are	standing	100	0	-	east		The Dark Forest
+1792625794	cmd	Trentlin	49	3520	midennir_halloween.are	standing	100	0	-	exits		Obvious exits:
+1792625795	cmd	Trentlin	49	3523	midennir_halloween.are	standing	100	0	-	south		The Dark Forest
+1792625795	cmd	Trentlin	49	3523	midennir_halloween.are	standing	100	0	-	exits		Obvious exits:
+1792625798	cmd	Trentlin	49	3551	midennir_halloween.are	standing	100	0	-	east		The Deep in the Forest of Miden'nir
+1792625799	cmd	Trentlin	49	3551	midennir_halloween.are	standing	100	0	-	exits		Obvious exits:
+1792625801	cmd	Trentlin	49	3552	midennir_halloween.are	standing	100	0	-	south		A Tunnel in the Mountains
+1792625802	cmd	Trentlin	49	3553	midennir_halloween.are	standing	100	0	-	south		A Tunnel in the Mountains
+1792625803	cmd	Trentlin	49	3553	midennir_halloween.are	standing	100	0	-	exits		Obvious exits:
+1792625804	cmd	Trentlin	49	3555	midennir_halloween.are	standing	100	0	-	south		A Tunnel in the Mountains
+1792625805	cmd	Trentlin	49	3556	midennir_halloween.are	standing	100	0	-	south		The Goblin Headquarters
+1792625808	cmd	Trentlin	49	3555	midennir_halloween.are	standing	100	0	-	north		A Tunnel in the Mountains
+1792625808	cmd	Trentlin	49	3553	midennir_halloween.are	standing	100	0	-	north		A Tunnel in the Mountains
+1792625809	cmd	Trentlin	49	3552	midennir_halloween.are	standing	100	0	-	north		A Tunnel in the Mountains
+1792625809	cmd	Trentlin	49	3552	midennir_halloween.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792625810	cmd	Trentlin	49	3551	midennir_halloween.are	standing	100	0	-	north		The Deep in the Forest of Miden'nir
+1792625810	cmd	Trentlin	49	3523	midennir_halloween.are	standing	100	0	-	west		The Dark Forest
+1792625811	cmd	Trentlin	49	3521	midennir_halloween.are	standing	100	0	-	west		Carnage
+1792625811	cmd	Trentlin	49	3522	midennir_halloween.are	standing	100	0	-	west		Deep in the Forest of Miden'nir
+1792625812	cmd	Trentlin	49	3522	midennir_halloween.are	standing	100	0	-	exits		Obvious exits:
+1792625814	cmd	Trentlin	49	28161	azeroth.are	standing	100	0	-	south		Watch Your Step!
+1792625815	cmd	Trentlin	49	28161	azeroth.are	standing	100	0	-	exits		Obvious exits:
+1792625816	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792625848	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792625848	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792625848	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792625848	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792625849	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792625849	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792625852	cmd	Trentlin	49	2438	dresden_halloween.are	standing	100	0	-	run	w 7	Western Oak Tree Square.
+1792625852	cmd	Trentlin	49	2438	dresden_halloween.are	standing	100	0	-	open	gate	Ok.
+1792625852	cmd	Trentlin	49	6103	haon.are	standing	100	0	-	run	w 10	Outside the Western Gates of Dresden.
+1792625852	cmd	Trentlin	49	6151	haon.are	standing	100	0	-	run	n 2	The narrow trail.
+1792625853	cmd	Trentlin	49	5622	tarin.are	standing	100	0	-	run	w 2	Forest Junction
+1792625853	cmd	Trentlin	49	3601	dkforest.are	standing	100	0	-	run	s 3	In the deeper forest
+1792625854	cmd	Trentlin	49	3602	dkforest.are	standing	100	0	-	south		Entering the forest
+1792625856	cmd	Trentlin	49	3602	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625857	cmd	Trentlin	49	3612	dkforest.are	standing	100	0	-	west		Western path through the forest
+1792625858	cmd	Trentlin	49	3612	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625861	cmd	Trentlin	49	3612	dkforest.are	standing	100	0	-	consider	sp	You can kill A small forest spirit naked and weaponless.
+1792625862	cmd	Trentlin	49	3612	dkforest.are	standing	100	0	-	look	sp	This small twisted creature looks like it belongs in this horrid forest, it
+1792625862	cmd	Trentlin	49	3613	dkforest.are	standing	100	0	-	south		Turn in the path
+1792625864	cmd	Trentlin	49	3614	dkforest.are	standing	100	0	-	west		An intersection
+1792625867	cmd	Trentlin	49	3614	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625869	cmd	Trentlin	49	3615	dkforest.are	standing	100	0	-	south		The mushroom covered path
+1792625869	cmd	Trentlin	49	3615	dkforest.are	standing	100	0	-	scan		A shambling mound                  -to the North.
+1792625871	cmd	Trentlin	49	3615	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625873	cmd	Trentlin	49	3628	dkforest.are	standing	100	0	-	south		Intersection on the mushroom path
+1792625874	cmd	Trentlin	49	3628	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625875	cmd	Trentlin	49	3629	dkforest.are	standing	100	0	-	east		In the mushrooms
+1792625875	cmd	Trentlin	49	3629	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625877	cmd	Trentlin	49	3638	dkforest.are	standing	100	0	-	east		In the mushroom forest
+1792625877	cmd	Trentlin	49	3638	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625879	cmd	Trentlin	49	3639	dkforest.are	standing	100	0	-	north		Lost in the Mushrooms
+1792625879	cmd	Trentlin	49	3639	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625880	cmd	Trentlin	49	3640	dkforest.are	standing	100	0	-	north		In the fungus
+1792625880	cmd	Trentlin	49	3640	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625881	cmd	Trentlin	49	3639	dkforest.are	standing	100	0	-	west		Lost in the Mushrooms
+1792625882	cmd	Trentlin	49	3639	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625883	cmd	Trentlin	49	3640	dkforest.are	standing	100	0	-	north		In the fungus
