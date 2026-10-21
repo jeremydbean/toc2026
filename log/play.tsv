@@ -1245,3 +1245,216 @@
 1792621924	cmd	Trentlin	49	30228	hyrule.are	standing	100	0	-	south		Dark Pine Stand
 1792621925	cmd	Trentlin	49	30228	hyrule.are	standing	100	0	-	exits		Obvious exits:
 1792621927	cmd	Trentlin	49	30229	hyrule.are	standing	100	0	-	east		The Lion's Thicket
+1792621929	cmd	Trentlin	49	30229	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621929	cmd	Trentlin	49	30229	hyrule.are	standing	100	0	-	scan		a blue moblin                      -to the North.
+1792621932	cmd	Trentlin	49	30228	hyrule.are	standing	100	0	-	west		Dark Pine Stand
+1792621932	cmd	Trentlin	49	30227	hyrule.are	standing	100	0	-	west		Shaded Grove
+1792621933	cmd	Trentlin	49	30226	hyrule.are	standing	100	0	-	west		Riverbank Thicket
+1792621934	cmd	Trentlin	49	30225	hyrule.are	standing	100	0	-	west		River Bend
+1792621935	cmd	Trentlin	49	30224	hyrule.are	standing	100	0	-	west		Bush Row
+1792621936	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	west		Rock Wall Above the Start
+1792621938	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	south		The First Quest Begins
+1792621939	cmd	Trentlin	49	30208	hyrule.are	standing	100	0	-	east		Meadow East of the Cave
+1792621940	cmd	Trentlin	49	30209	hyrule.are	standing	100	0	-	east		Stone Field
+1792621941	cmd	Trentlin	49	30210	hyrule.are	standing	100	0	-	east		Rocky Southern Ridge
+1792621942	cmd	Trentlin	49	30211	hyrule.are	standing	100	0	-	east		Southern Sands
+1792621943	cmd	Trentlin	49	30212	hyrule.are	standing	100	0	-	east		Leever Dunes
+1792621944	cmd	Trentlin	49	30213	hyrule.are	standing	100	0	-	east		Southern Shore Path
+1792621945	cmd	Trentlin	49	30214	hyrule.are	standing	100	0	-	east		Southeast Grassland
+1792621946	cmd	Trentlin	49	30214	hyrule.are	standing	100	0	-	down		Alas, you cannot go that way.
+1792621947	cmd	Trentlin	49	30215	hyrule.are	standing	100	0	-	east		Southeast Coast
+1792621947	cmd	Trentlin	49	30231	hyrule.are	standing	100	0	-	north		Coastal Shop Cave
+1792621948	cmd	Trentlin	49	30230	hyrule.are	standing	100	0	-	west		Eastern Wood Path
+1792621949	cmd	Trentlin	49	30229	hyrule.are	standing	100	0	-	west		The Lion's Thicket
+1792621949	cmd	Trentlin	49	30228	hyrule.are	standing	100	0	-	west		Dark Pine Stand
+1792621950	cmd	Trentlin	49	30244	hyrule.are	standing	100	0	-	north		Pinewood Rise
+1792621951	cmd	Trentlin	49	30244	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792621951	cmd	Trentlin	49	30243	hyrule.are	standing	100	0	-	west		Eastwood Glade
+1792621952	cmd	Trentlin	49	30259	hyrule.are	standing	100	0	-	north		Eastern Thicket
+1792621953	cmd	Trentlin	49	30258	hyrule.are	standing	100	0	-	west		Craggy Rise
+1792621954	cmd	Trentlin	49	30258	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621955	cmd	Trentlin	49	30683	hyrule.are	standing	100	0	-	down		Ledge-Shadowed Armoury
+1792621957	cmd	Trentlin	49	30683	hyrule.are	standing	100	0	-	list		a jovial merchant says 'I don't trade with folks I can't see.'
+1792621959	cmd	Trentlin	49	30683	hyrule.are	standing	100	0	-	visible		Ok.
+1792621960	cmd	Trentlin	49	30683	hyrule.are	standing	100	0	-	list		[Lv Price] Item
+1792621961	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792621962	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792621962	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792621964	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792621965	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792621965	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792621965	cmd	Trentlin	49	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792621966	cmd	Trentlin	49	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792621966	cmd	Trentlin	49	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792621966	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792621968	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	6	-	aquest	request	You approach Questor Thews and ask for a quest.
+1792621974	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792621978	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	south		Southern Oak Tree Square.
+1792621978	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	south		Main Processional, Below the Temple Steps
+1792621979	cmd	Trentlin	49	2428	dresden_halloween.are	standing	100	0	-	south		Main Processional, Toward the Mermaids' Bridge
+1792621979	cmd	Trentlin	49	2429	dresden_halloween.are	standing	100	0	-	south		Bridge of the Mermaids.
+1792621979	cmd	Trentlin	49	2430	dresden_halloween.are	standing	100	0	-	south		Main Processional, at the Southern Gates
+1792621979	cmd	Trentlin	49	2431	dresden_halloween.are	standing	100	0	-	south		Inside the Southern Gates of Dresden.
+1792621982	cmd	Trentlin	49	2431	dresden_halloween.are	standing	100	0	-	open	south	Ok.
+1792621982	cmd	Trentlin	49	2432	dresden_halloween.are	standing	100	0	-	south		Outside the Southern Gates of Dresden.
+1792621983	cmd	Trentlin	49	3505	midennir_halloween.are	standing	100	0	-	south		The Trail to Miden'nir
+1792621983	cmd	Trentlin	49	3507	midennir_halloween.are	standing	100	0	-	south		A Burned Cart
+1792621984	cmd	Trentlin	49	3510	midennir_halloween.are	standing	100	0	-	south		A Crossroads
+1792621986	cmd	Trentlin	49	3516	midennir_halloween.are	standing	100	0	-	south		Muddy Ground
+1792621988	cmd	Trentlin	49	3519	midennir_halloween.are	standing	100	0	-	south		The Dark Path
+1792621989	cmd	Trentlin	49	3521	midennir_halloween.are	standing	100	2	-	south		Carnage
+1792621990	cmd	Trentlin	49	3521	midennir_halloween.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792621991	cmd	Trentlin	49	3522	midennir_halloween.are	standing	100	0	-	west		Deep in the Forest of Miden'nir
+1792621992	cmd	Trentlin	49	3522	midennir_halloween.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792621993	cmd	Trentlin	49	28161	azeroth.are	standing	100	0	-	south		Watch Your Step!
+1792621995	cmd	Trentlin	49	28101	azeroth.are	standing	100	0	-	enter	por	You enter The Dark Portal
+1792621996	cmd	Trentlin	49	28161	azeroth.are	standing	100	0	-	enter	por	You enter The Dark Portal
+1792621997	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792621998	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792621998	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792621999	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792621999	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792621999	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792621999	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792622015	cmd	Trentlin	49	2431	dresden_halloween.are	standing	100	0	-	run	s 6	Southern Oak Tree Square.
+1792622015	cmd	Trentlin	49	2431	dresden_halloween.are	standing	100	0	-	open	south	It's already open.
+1792622015	cmd	Trentlin	49	2432	dresden_halloween.are	standing	100	0	-	south		Outside the Southern Gates of Dresden.
+1792622015	cmd	Trentlin	49	3505	midennir_halloween.are	standing	100	0	-	south		The Trail to Miden'nir
+1792622016	cmd	Trentlin	49	3550	midennir_halloween.are	standing	100	0	-	run	e 2	The Miden'nir
+1792622016	cmd	Trentlin	49	4014	moria.are	standing	100	0	-	run	n 7	Entering the hills
+1792622018	cmd	Trentlin	49	4014	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622022	cmd	Trentlin	49	4015	moria.are	standing	100	0	-	east		The tunnel
+1792622024	cmd	Trentlin	49	4014	moria.are	standing	100	0	-	west		The tunnel
+1792622024	cmd	Trentlin	49	4013	moria.are	standing	100	0	-	west		The tunnel
+1792622025	cmd	Trentlin	49	4012	moria.are	standing	100	0	-	west		The tunnel
+1792622027	cmd	Trentlin	49	4016	moria.are	standing	100	0	-	north		The large cave
+1792622028	cmd	Trentlin	49	4017	moria.are	standing	100	0	-	east		The large cave
+1792622029	cmd	Trentlin	49	4016	moria.are	standing	100	0	-	west		The large cave
+1792622030	cmd	Trentlin	49	4023	moria.are	standing	100	0	-	west		The large cave
+1792622031	cmd	Trentlin	49	4022	moria.are	standing	100	0	-	south		The damp tunnel
+1792622033	cmd	Trentlin	49	4022	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622034	cmd	Trentlin	49	4022	moria.are	standing	100	0	-	scan		the centipede                      -to the North.
+1792622034	cmd	Trentlin	49	4023	moria.are	standing	100	0	-	north		The large cave
+1792622035	cmd	Trentlin	49	4016	moria.are	standing	100	0	-	east		The large cave
+1792622035	cmd	Trentlin	49	4012	moria.are	standing	100	0	-	south		The tunnel
+1792622036	cmd	Trentlin	49	4013	moria.are	standing	100	0	-	east		The tunnel
+1792622037	cmd	Trentlin	49	4014	moria.are	standing	100	0	-	east		The tunnel
+1792622038	cmd	Trentlin	49	4014	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622039	cmd	Trentlin	49	4011	moria.are	standing	100	0	-	south		The tunnel
+1792622040	cmd	Trentlin	49	4010	moria.are	standing	100	0	-	south		The cave
+1792622042	cmd	Trentlin	49	4011	moria.are	standing	100	0	-	north		The tunnel
+1792622042	cmd	Trentlin	49	4014	moria.are	standing	100	0	-	north		The tunnel
+1792622043	cmd	Trentlin	49	4015	moria.are	standing	100	0	-	east		The tunnel
+1792622044	cmd	Trentlin	49	4019	moria.are	standing	100	0	-	north		The tunnel
+1792622045	cmd	Trentlin	49	4026	moria.are	standing	100	0	-	north		The many tunnels
+1792622046	cmd	Trentlin	49	4026	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622048	cmd	Trentlin	49	4027	moria.are	standing	100	0	-	east		The tunnel
+1792622049	cmd	Trentlin	49	4027	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622050	cmd	Trentlin	49	4027	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622051	cmd	Trentlin	49	4020	moria.are	standing	100	0	-	south		The hole
+1792622052	cmd	Trentlin	49	4020	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622053	cmd	Trentlin	49	4064	moria.are	standing	100	0	-	down		The tunnel
+1792622054	cmd	Trentlin	49	4063	moria.are	standing	100	0	-	west		The maze
+1792622055	cmd	Trentlin	49	4063	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622056	cmd	Trentlin	49	4058	moria.are	standing	100	0	-	north		The maze
+1792622056	cmd	Trentlin	49	4058	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622057	cmd	Trentlin	49	4057	moria.are	standing	100	0	-	west		The maze
+1792622058	cmd	Trentlin	49	4057	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622058	cmd	Trentlin	49	4062	moria.are	standing	100	0	-	south		The maze
+1792622060	cmd	Trentlin	49	4065	moria.are	standing	100	0	-	east		The maze
+1792622061	cmd	Trentlin	49	4066	moria.are	standing	100	0	-	east		The maze
+1792622062	cmd	Trentlin	49	4066	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622064	cmd	Trentlin	49	4069	moria.are	standing	100	0	-	south		The large cave
+1792622065	cmd	Trentlin	49	4069	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622067	cmd	Trentlin	49	4068	moria.are	standing	100	0	-	west		The large cave
+1792622068	cmd	Trentlin	49	4068	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622069	cmd	Trentlin	49	4070	moria.are	standing	100	0	-	south		The large cave
+1792622069	cmd	Trentlin	49	4070	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622070	cmd	Trentlin	49	4071	moria.are	standing	100	0	-	east		The large cave
+1792622070	cmd	Trentlin	49	4071	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622072	cmd	Trentlin	49	4072	moria.are	standing	100	0	-	east		The tunnel
+1792622073	cmd	Trentlin	49	4072	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622075	cmd	Trentlin	49	4073	moria.are	standing	100	0	-	east		End of tunnel
+1792622076	cmd	Trentlin	49	4073	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622077	cmd	Trentlin	49	4073	moria.are	standing	100	0	-	consider	wa	You can kill the warrior naked and weaponless.
+1792622078	cmd	Trentlin	49	4073	moria.are	standing	100	0	-	look	wa	He seems to know his way with weapons.  And he wants
+1792622079	cmd	Trentlin	49	4072	moria.are	standing	100	0	-	west		The tunnel
+1792622079	cmd	Trentlin	49	4074	moria.are	standing	100	0	-	south		The hole
+1792622080	cmd	Trentlin	49	4074	moria.are	standing	100	1	-	scan		You don't see anything near you.
+1792622081	cmd	Trentlin	49	4171	moria.are	standing	100	0	-	down		End of maze
+1792622082	cmd	Trentlin	49	4171	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622082	cmd	Trentlin	49	4167	moria.are	standing	100	0	-	north		The wet maze
+1792622084	cmd	Trentlin	49	4167	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622086	cmd	Trentlin	49	4168	moria.are	standing	100	0	-	east		The end of the tunnel
+1792622088	cmd	Trentlin	49	4164	moria.are	standing	100	0	-	north		The entrance to the small maze
+1792622090	cmd	Trentlin	49	4164	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622092	cmd	Trentlin	49	4160	moria.are	standing	100	0	-	north		In the tunnel at the inscription
+1792622092	cmd	Trentlin	49	4160	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622093	cmd	Trentlin	49	4156	moria.are	standing	100	0	-	north		The long tunnel
+1792622094	cmd	Trentlin	49	4156	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622094	cmd	Trentlin	49	4151	moria.are	standing	100	0	-	north		The small passage
+1792622096	cmd	Trentlin	49	4151	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622098	cmd	Trentlin	49	4155	moria.are	standing	100	0	-	west		The large tunnel
+1792622098	cmd	Trentlin	49	4155	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622099	cmd	Trentlin	49	4154	moria.are	standing	100	0	-	west		The large tunnel
+1792622099	cmd	Trentlin	49	4153	moria.are	standing	100	0	-	west		The large tunnel
+1792622101	cmd	Trentlin	49	4153	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622102	cmd	Trentlin	49	4152	moria.are	standing	100	0	-	north		The tunnel
+1792622103	cmd	Trentlin	49	4104	moria.are	standing	100	0	-	east		The long tunnel
+1792622103	cmd	Trentlin	49	4103	moria.are	standing	100	0	-	east		The long tunnel
+1792622105	cmd	Trentlin	49	4103	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622106	cmd	Trentlin	49	4106	moria.are	standing	100	0	-	south		The golden cave
+1792622109	cmd	Trentlin	49	4106	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622109	cmd	Trentlin	49	4103	moria.are	standing	100	0	-	north		The long tunnel
+1792622110	cmd	Trentlin	49	4102	moria.are	standing	100	0	-	east		The long tunnel
+1792622110	cmd	Trentlin	49	4101	moria.are	standing	100	0	-	east		The long tunnel
+1792622111	cmd	Trentlin	49	4100	moria.are	standing	100	0	-	east		The tunnel
+1792622112	cmd	Trentlin	49	4052	moria.are	standing	100	0	-	north		The tunnel
+1792622113	cmd	Trentlin	49	4051	moria.are	standing	100	0	-	west		The tunnel
+1792622114	cmd	Trentlin	49	4050	moria.are	standing	100	0	-	west		The tunnel
+1792622116	cmd	Trentlin	49	4053	moria.are	standing	100	0	-	south		The tunnel
+1792622117	cmd	Trentlin	49	4054	moria.are	standing	100	0	-	east		The light cave
+1792622118	cmd	Trentlin	49	4054	moria.are	standing	100	0	-	exits		Obvious exits:
+1792622121	cmd	Trentlin	49	4056	moria.are	standing	100	0	-	south		The light cave
+1792622122	cmd	Trentlin	49	4061	moria.are	standing	100	0	-	south		The light cave
+1792622123	cmd	Trentlin	49	4060	moria.are	standing	100	0	-	west		The tunnel
+1792622125	cmd	Trentlin	49	4060	moria.are	standing	100	0	-	get	all	You get The Crown of Eclipse.
+1792622126	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792622127	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792622127	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792622127	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792622128	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792622128	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792622128	cmd	Trentlin	49	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792622128	cmd	Trentlin	49	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792622129	cmd	Trentlin	49	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792622129	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792622131	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	1	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792622135	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	aquest	gamble no	Wise choice. You safely collect 73 quest points.
+1792622137	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792622137	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota
+1792622138	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792622140	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792622140	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792622140	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792622140	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792622141	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792622141	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792622151	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	run	s 2	Southern Oak Tree Square.
+1792622151	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	run	w 3	Entrance to the Haunted Temple
+1792622151	cmd	Trentlin	49	3795	school.are	standing	100	0	-	run	u 3	Entrance to Mud School
+1792622151	cmd	Trentlin	49	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal
+1792622152	cmd	Trentlin	49	15004	campus.are	standing	100	0	-	run	e 4	Campus Crescent
+1792622152	cmd	Trentlin	49	15013	campus.are	standing	100	0	-	run	n 4	University Avenue
+1792622152	cmd	Trentlin	49	15068	campus.are	standing	100	0	-	run	e 2	The Back Hall
+1792622152	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering Hyrule arcade cabinet
+1792622226	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	north		Rock Wall Above the Start
+1792622227	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	west		Candle Shop Knoll
+1792622229	cmd	Trentlin	49	30682	hyrule.are	standing	100	0	-	down		The Waxlight Shop
+1792622230	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	up		Candle Shop Knoll
+1792622230	cmd	Trentlin	49	30207	hyrule.are	standing	100	0	-	south		Crags West of the Start
+1792622231	cmd	Trentlin	49	30206	hyrule.are	standing	100	0	-	west		Sandy Glade
+1792622233	cmd	Trentlin	49	30332	hyrule.are	standing	100	0	-	down		Sand-Floored Hermitage
+1792622234	cmd	Trentlin	49	30206	hyrule.are	standing	100	0	-	up		Sandy Glade
+1792622235	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	north		Forest Stream
+1792622237	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	exits		Obvious exits:
