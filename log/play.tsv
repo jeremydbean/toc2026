@@ -2183,3 +2183,136 @@
 1792625881	cmd	Trentlin	49	3639	dkforest.are	standing	100	0	-	west		Lost in the Mushrooms
 1792625882	cmd	Trentlin	49	3639	dkforest.are	standing	100	0	-	exits		Obvious exits:
 1792625883	cmd	Trentlin	49	3640	dkforest.are	standing	100	0	-	north		In the fungus
+1792625884	cmd	Trentlin	49	3640	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625884	cmd	Trentlin	49	3639	dkforest.are	standing	100	0	-	west		Lost in the Mushrooms
+1792625885	cmd	Trentlin	49	3638	dkforest.are	standing	100	0	-	south		In the mushroom forest
+1792625886	cmd	Trentlin	49	3638	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625886	cmd	Trentlin	49	3629	dkforest.are	standing	100	0	-	west		In the mushrooms
+1792625887	cmd	Trentlin	49	3629	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625888	cmd	Trentlin	49	3630	dkforest.are	standing	100	0	-	south		Along a faint path
+1792625889	cmd	Trentlin	49	3630	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625890	cmd	Trentlin	49	3631	dkforest.are	standing	100	0	-	east		A dark cave
+1792625890	cmd	Trentlin	49	3631	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625891	cmd	Trentlin	49	3630	dkforest.are	standing	100	0	-	west		Along a faint path
+1792625892	cmd	Trentlin	49	3629	dkforest.are	standing	100	0	-	north		In the mushrooms
+1792625893	cmd	Trentlin	49	3628	dkforest.are	standing	100	0	-	west		Intersection on the mushroom path
+1792625895	cmd	Trentlin	49	3628	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625896	cmd	Trentlin	49	3615	dkforest.are	standing	100	0	-	north		The mushroom covered path
+1792625897	cmd	Trentlin	49	3614	dkforest.are	standing	100	0	-	north		An intersection
+1792625898	cmd	Trentlin	49	3614	dkforest.are	standing	100	0	-	exits		Obvious exits:
+1792625900	cmd	Trentlin	49	3613	dkforest.are	standing	100	0	-	east		Turn in the path
+1792625900	cmd	Trentlin	49	3613	dkforest.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792625902	cmd	Trentlin	49	3612	dkforest.are	standing	100	0	-	north		Western path through the forest
+1792625902	cmd	Trentlin	49	3602	dkforest.are	standing	100	0	-	east		Entering the forest
+1792625903	cmd	Trentlin	49	3603	dkforest.are	standing	100	0	-	east		Eastern path through the forest
+1792625903	cmd	Trentlin	49	3604	dkforest.are	standing	100	0	-	east		The eastern path
+1792625904	cmd	Trentlin	49	3605	dkforest.are	standing	100	0	-	east		A clearing in the forest
+1792625905	cmd	Trentlin	49	3606	dkforest.are	standing	100	0	-	south		A faint path
+1792625906	cmd	Trentlin	49	3607	dkforest.are	standing	100	0	-	east		Following the faint path
+1792625908	cmd	Trentlin	49	3608	dkforest.are	standing	100	0	-	north		Following the faint path
+1792625909	cmd	Trentlin	49	3609	dkforest.are	standing	100	0	-	north		Encounter in the forest
+1792625911	cmd	Trentlin	49	3609	dkforest.are	standing	100	3	-	get	all	You get The Amulet of Soulcrusher.
+1792625913	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792625914	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792625914	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792625914	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792625915	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792625915	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792625915	cmd	Trentlin	49	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792625915	cmd	Trentlin	49	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792625916	cmd	Trentlin	49	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792625916	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792625917	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	1	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792625921	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	aquest	gamble no	Wise choice. You safely collect 64 quest points.
+1792625923	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792625926	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	aquest	points	Quest Points: 1567
+1792625943	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	run	s 2	Southern Oak Tree Square.
+1792625943	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	run	w 3	Entrance to the Haunted Temple
+1792625943	cmd	Trentlin	49	3795	school.are	standing	100	0	-	run	u 3	Entrance to Mud School
+1792625943	cmd	Trentlin	49	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal
+1792625944	cmd	Trentlin	49	15004	campus.are	standing	100	0	-	run	e 4	Campus Crescent
+1792625944	cmd	Trentlin	49	15013	campus.are	standing	100	0	-	run	n 4	University Avenue
+1792625944	cmd	Trentlin	49	15068	campus.are	standing	100	0	-	run	e 2	The Back Hall
+1792625944	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering Hyrule arcade cabinet
+1792625977	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792625979	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	north		Rock Wall Above the Start
+1792625979	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792625981	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	south		The First Quest Begins
+1792625981	cmd	Trentlin	49	30208	hyrule.are	standing	100	0	-	east		Meadow East of the Cave
+1792625982	cmd	Trentlin	49	30209	hyrule.are	standing	100	0	-	east		Stone Field
+1792625982	cmd	Trentlin	49	30209	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792625984	cmd	Trentlin	49	30208	hyrule.are	standing	100	0	-	west		Meadow East of the Cave
+1792625984	cmd	Trentlin	49	30224	hyrule.are	standing	100	0	-	north		Bush Row
+1792625985	cmd	Trentlin	49	30240	hyrule.are	standing	100	0	-	north		Crossroads South of the Lake
+1792625986	cmd	Trentlin	49	30240	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792625988	cmd	Trentlin	49	30256	hyrule.are	standing	100	0	-	north		Lake Hylia Sand Bar
+1792625989	cmd	Trentlin	49	30256	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792625990	cmd	Trentlin	49	30272	hyrule.are	standing	100	0	-	north		The River Landing
+1792625997	cmd	Trentlin	49	30272	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792625998	cmd	Trentlin	49	30288	hyrule.are	standing	100	0	-	north		The Withered Thicket
+1792625999	cmd	Trentlin	49	30289	hyrule.are	standing	100	0	-	east		The Sandy Flats
+1792625999	cmd	Trentlin	49	30290	hyrule.are	standing	100	0	-	east		The Dune Strip
+1792626008	cmd	Trentlin	49	30291	hyrule.are	standing	100	0	-	east		Below the Lost Hills
+1792626011	cmd	Trentlin	49	30307	hyrule.are	standing	100	0	-	north		Hills Below the Basin
+1792626011	cmd	Trentlin	49	30323	hyrule.are	standing	100	0	-	north		The Lizard's Gate
+1792626021	cmd	Trentlin	49	30476	hyrule.are	standing	100	0	-	down		Level 5: Lizard's Gate
+1792626024	cmd	Trentlin	49	30476	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792626025	cmd	Trentlin	49	30477	hyrule.are	standing	100	0	-	east		Level 5: Echoing Chamber
+1792626027	cmd	Trentlin	49	30477	hyrule.are	standing	100	0	-	get	all	You get a small key.
+1792626029	cmd	Trentlin	49	30477	hyrule.are	standing	100	0	-	look	po	Round and milk-white, this pols voice has enormous floppy ears that twitch
+1792626029	cmd	Trentlin	49	30477	hyrule.are	standing	100	0	-	inventory		You are carrying:
+1792626033	cmd	Trentlin	49	30477	hyrule.are	standing	100	0	-	look	bomb	Four bombs to a purchase. BOMB a cracked wall or rock to open it, or
+1792626037	cmd	Trentlin	49	30476	hyrule.are	standing	100	0	-	west		Level 5: Lizard's Gate
+1792626037	cmd	Trentlin	49	30480	hyrule.are	standing	100	0	-	north		Level 5: Embalmers' Hall
+1792626039	cmd	Trentlin	49	30481	hyrule.are	standing	100	0	-	east		Level 5: Grey Brick Fireside
+1792626041	cmd	Trentlin	49	30481	hyrule.are	standing	100	0	-	list		You can't do that here.
+1792626044	cmd	Trentlin	49	30480	hyrule.are	standing	100	0	-	west		Level 5: Embalmers' Hall
+1792626045	cmd	Trentlin	49	30480	hyrule.are	standing	100	0	-	scan		a half-deaf old man                -to the East.
+1792626046	cmd	Trentlin	49	30481	hyrule.are	standing	100	0	-	east		Level 5: Grey Brick Fireside
+1792626047	cmd	Trentlin	49	30481	hyrule.are	standing	100	0	-	consider	ma	A half-deaf old man is no enemy of yours.
+1792626048	cmd	Trentlin	49	30481	hyrule.are	standing	100	0	-	look	ma	He is nearly deaf, and so he shouts everything, then winces at the echo.
+1792626052	cmd	Trentlin	49	30481	hyrule.are	standing	100	0	-	bomb	south	You set a bomb beside a cracked south wall and dive aside. The blast opens a passage!
+1792626053	cmd	Trentlin	49	30477	hyrule.are	standing	100	0	-	south		Level 5: Echoing Chamber
+1792626054	cmd	Trentlin	49	30476	hyrule.are	standing	100	0	-	west		Level 5: Lizard's Gate
+1792626055	cmd	Trentlin	49	30477	hyrule.are	standing	100	0	-	east		Level 5: Echoing Chamber
+1792626056	cmd	Trentlin	49	30481	hyrule.are	standing	100	0	-	north		Level 5: Grey Brick Fireside
+1792626056	cmd	Trentlin	49	30480	hyrule.are	standing	100	0	-	west		Level 5: Embalmers' Hall
+1792626057	cmd	Trentlin	49	30480	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792626060	cmd	Trentlin	49	30480	hyrule.are	standing	100	0	-	kill	g	A gibdo parries your attack.
+1792626065	cmd	Trentlin	49	30480	hyrule.are	fighting	100	0	fight	smite		Your smite wounds a gibdo.
+1792626071	cmd	Trentlin	49	30480	hyrule.are	fighting	100	0	fight	smite		Your smite *** DEVASTATES *** a gibdo!
+1792626095	cmd	Trentlin	49	30480	hyrule.are	standing	100	0	-	look		Level 5: Embalmers' Hall
+1792626095	cmd	Trentlin	49	30480	hyrule.are	standing	100	0	-	look	in co	Corpse of a gibdo contains:
+1792626096	cmd	Trentlin	49	30483	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear.
+1792626098	cmd	Trentlin	49	30483	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792626099	cmd	Trentlin	49	30483	hyrule.are	standing	100	0	-	consider	do	You can kill a dodongo naked and weaponless.
+1792626100	cmd	Trentlin	49	30483	hyrule.are	standing	100	0	-	look	do	A young dodongo, still knee-high to a horse, with a hide the colour of wet
+1792626101	cmd	Trentlin	49	30483	hyrule.are	standing	100	0	-	kill	do	Your whip ^^^ DESTROYS ^^^ a dodongo!
+1792626105	cmd	Trentlin	49	30483	hyrule.are	fighting	100	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a dodongo!
+1792626113	cmd	Trentlin	49	30483	hyrule.are	fighting	100	0	fight	smite		Your smite *** DEVASTATES *** a dodongo!
+1792626122	cmd	Trentlin	49	30482	hyrule.are	standing	100	0	-	west		The shutter opens now that the chamber is clear.
+1792626124	cmd	Trentlin	49	30482	hyrule.are	standing	100	0	-	south		The shutter is sealed fast, and will not open while enemies remain here.
+1792626126	cmd	Trentlin	49	30482	hyrule.are	standing	100	0	-	kill	z	A zol dodges your attack.
+1792626130	cmd	Trentlin	49	30482	hyrule.are	standing	100	0	-	smite		Smite whom?
+1792626130	cmd	Trentlin	49	30479	hyrule.are	standing	100	0	-	south		The shutter opens now that the chamber is clear.
+1792626138	cmd	Trentlin	49	30482	hyrule.are	standing	100	0	-	north		Level 5: Slime-Glazed Vault
+1792626138	cmd	Trentlin	49	30483	hyrule.are	standing	100	0	-	east		Level 5: Hall of Heavy Tracks
+1792626139	cmd	Trentlin	49	30484	hyrule.are	standing	100	0	-	east		Level 5: Gray Junction
+1792626141	cmd	Trentlin	49	30486	hyrule.are	standing	100	0	-	north		Level 5: Shuffling Passage
+1792626142	cmd	Trentlin	49	30485	hyrule.are	standing	100	0	-	west		Level 5: Hushed Archive
+1792626146	cmd	Trentlin	49	30485	hyrule.are	standing	100	0	-	look	in ches	The Lizard's equipment chest contains:
+1792626158	cmd	Trentlin	49	30483	hyrule.are	standing	100	0	-	south		Level 5: Hall of Heavy Tracks
+1792626160	cmd	Trentlin	49	30485	hyrule.are	standing	100	0	-	north		Level 5: Hushed Archive
+1792626160	cmd	Trentlin	49	30486	hyrule.are	standing	100	0	-	east		Level 5: Shuffling Passage
+1792626162	cmd	Trentlin	49	30488	hyrule.are	standing	100	0	-	north		Level 5: Lizard Shrine
+1792626164	cmd	Trentlin	49	30488	hyrule.are	standing	100	0	-	get	com	You get the Lizard dungeon compass.
+1792626165	cmd	Trentlin	49	30488	hyrule.are	standing	100	0	-	look	com	The needle swings north.
+1792626167	cmd	Trentlin	49	30492	hyrule.are	standing	100	2	-	north		Level 5: Bat-Haunted Tomb
+1792626169	cmd	Trentlin	49	30492	hyrule.are	standing	100	0	-	look	com	The needle swings west.
+1792626170	cmd	Trentlin	49	30491	hyrule.are	standing	100	0	-	west		Level 5: Ossuary
+1792626171	cmd	Trentlin	49	30490	hyrule.are	standing	100	0	-	west		Level 5: Whispering Gallery
+1792626173	cmd	Trentlin	49	30490	hyrule.are	standing	100	0	-	look	com	The needle swings west.
+1792626174	cmd	Trentlin	49	30489	hyrule.are	standing	100	0	-	west		Level 5: Digdogger's Den
+1792626176	cmd	Trentlin	49	30489	hyrule.are	standing	100	0	-	look	d	An enormous, spiny urchin with one great staring eye, bouncing slowly
+1792626177	cmd	Trentlin	49	30489	hyrule.are	standing	100	0	-	kill	d	Your whip ^^^ DESTROYS ^^^ Digdogger!
+1792626181	cmd	Trentlin	49	30489	hyrule.are	fighting	95	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Digdogger!
