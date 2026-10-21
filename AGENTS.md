@@ -2335,6 +2335,28 @@ alias, not a refusal. Public channel lines in `log/channels.tsv` are the
 third sweep: a shopkeeper saying "I don't trade with folks I can't see"
 twice in three days is why the keeper now says what is hiding you.
 
+**Two tools do those sweeps now** (2026-10-21), both reading the synced
+files from `origin/main` after a `git fetch`, both from the repository
+root, both stripping addresses from what they print:
+
+- `python3 tools/log_report.py [--since 2026-10-20] [--player Name]` --
+  players, `BUG:` lines with the commands before them, refused words
+  (frequent ones listed apart as likely aliases), the same command five
+  or more times running, deaths, black market and goblin events, coin
+  picked up, and public chat. Never tells; they are not in the logs.
+- `python3 tools/audit_players.py [--json] [--no-objects]` -- every
+  mortal file against the game's own tables (`const.c`, `fixes.c`,
+  `retired_objects`, the area files): a group or skill the class cannot
+  hold, out-of-range values, a level past the remort cap, objects whose
+  vnum is gone, and login fixes not yet applied. It exits 1 on any
+  finding but a pending fix. The creation bug that handed every new
+  character the mage's groups would have shown here weeks before a
+  player asked about it in chat.
+
+A routine runs both each morning in a fresh cloud session and reports
+without changing anything. `tests/test_ops_tools.py` holds the table
+parsing to the source.
+
 ## The Black Market
 
 `src/blackmarket.c` (owner's design, 2026-10-20). Vesh the Smuggler, mob
