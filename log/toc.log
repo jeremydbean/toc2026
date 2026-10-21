@@ -152659,3 +152659,156 @@ Wed Oct 21 23:42:54 2026 :: Log Trentlin [30489]: arrived (Level 5: Digdogger's 
 Wed Oct 21 23:42:56 2026 :: Log Trentlin [30489]: l d
 Wed Oct 21 23:42:57 2026 :: Log Trentlin [30489]: k d
 Wed Oct 21 23:43:01 2026 :: Log Trentlin [30489]: smite
+Wed Oct 21 23:43:17 2026 :: Log Trentlin [30489]: smite
+Wed Oct 21 23:43:23 2026 :: Log Trentlin [30489]: smite
+Wed Oct 21 23:43:29 2026 :: Log Trentlin [30489]: smite
+Wed Oct 21 23:43:35 2026 :: Log Trentlin [30489]: smite
+Wed Oct 21 23:43:46 2026 :: Log Trentlin [30489]: smite
+Wed Oct 21 23:43:52 2026 :: Log Trentlin [30489]: smite
+Wed Oct 21 23:43:52 2026 :: Log Trentlin [30489]: killed Digdogger
+Wed Oct 21 23:43:52 2026 :: Log Trentlin [30489]: coin +33 platinum
+Wed Oct 21 23:43:52 2026 :: Log Trentlin [30489]: coin +155 silver
+Wed Oct 21 23:43:52 2026 :: Log Trentlin [30489]: coin +208 copper
+Wed Oct 21 23:43:52 2026 :: Log Trentlin [30489]: coin +87 gold
+Wed Oct 21 23:44:01 2026 :: Log Trentlin [30489]: l in cor
+Wed Oct 21 23:44:04 2026 :: Log Trentlin [30489]: get all cor
+Wed Oct 21 23:44:04 2026 :: Log Trentlin [30489]: l
+Wed Oct 21 23:44:07 2026 :: Log Trentlin [30489]: n
+Wed Oct 21 23:44:10 2026 :: Log Trentlin [30489]: unlock niorth
+Wed Oct 21 23:44:10 2026 :: Log Trentlin [30489]: s
+Wed Oct 21 23:44:10 2026 :: Log Trentlin [30487]: arrived (Level 5: Sealed Crypt) from 30489
+Wed Oct 21 23:44:12 2026 :: Log Trentlin [30487]: n
+Wed Oct 21 23:44:12 2026 :: Log Trentlin [30489]: arrived (Level 5: Digdogger's Den) from 30487
+Wed Oct 21 23:44:15 2026 :: Log Trentlin [30489]: unlock north
+Wed Oct 21 23:44:20 2026 :: Log Trentlin [30489]: open noirth
+Wed Oct 21 23:44:21 2026 :: Log Trentlin [30489]: n
+Wed Oct 21 23:44:21 2026 :: Log Trentlin [30493]: arrived (Level 5: Sanctum of Turning Lizards) from 30489
+Wed Oct 21 23:44:26 2026 :: Log Trentlin [30493]: unlock chest
+Wed Oct 21 23:44:27 2026 :: Log Trentlin [30493]: get all chest
+Wed Oct 21 23:44:29 2026 :: Log Trentlin [30493]: open chest
+Wed Oct 21 23:44:31 2026 :: Log Trentlin [30493]: get all chest
+Wed Oct 21 23:44:34 2026 :: Log Trentlin [30493]: enter light
+Wed Oct 21 23:44:34 2026 :: Log Trentlin [30323]: arrived (The Lizard's Gate) from 30493
+Wed Oct 21 23:44:48 2026 :: Log Trentlin [30323]: l
+Wed Oct 21 23:44:49 2026 :: Log Trentlin [30323]: i
+Wed Oct 21 23:44:52 2026 :: Log Trentlin [30323]: compare heart
+Wed Oct 21 23:45:04 2026 :: Log Trentlin [30323]: wear heart
+Wed Oct 21 23:45:17 2026 :: Log Trentlin [30323]: stash put diploma
+Wed Oct 21 23:45:17 2026 :: Log Trentlin [30323]: stashed a mud school diploma (vnum 3715)
+Wed Oct 21 23:45:18 2026 :: Log Trentlin [30323]: i
+Wed Oct 21 23:45:19 2026 :: Log Trentlin [30323]: sco
+Wed Oct 21 23:45:21 2026 :: Log Trentlin [30323]: i
+Wed Oct 21 23:45:26 2026 :: Log Trentlin [30323]: compare cloa
+Wed Oct 21 23:45:29 2026 :: Log Trentlin [30323]: drop cloa
+Wed Oct 21 23:45:32 2026 :: Log Trentlin [30323]: drop key
+Wed Oct 21 23:45:34 2026 :: Log Trentlin [30323]: drop comp
+Wed Oct 21 23:45:35 2026 :: Log Trentlin [30323]: i
+Wed Oct 21 23:45:38 2026 :: Log Trentlin [30323]: compare helm
+Wed Oct 21 23:45:47 2026 :: Log Trentlin [30323]: drop helm
+Wed Oct 21 23:45:49 2026 :: Log Trentlin [30323]: i
+Wed Oct 21 23:45:54 2026 :: Log Trentlin [30323]: compare heart
+Wed Oct 21 23:46:01 2026 :: Log Trentlin [30323]: rem coll
+Wed Oct 21 23:46:04 2026 :: Log Trentlin [30323]: wear heart
+Wed Oct 21 23:46:09 2026 :: Log Trentlin [30323]: stash put collar
+Wed Oct 21 23:46:09 2026 :: Log Trentlin [30323]: stashed a spiked collar (vnum 1395)
+Wed Oct 21 23:46:10 2026 :: Log Trentlin [30323]: i
+Wed Oct 21 23:46:13 2026 :: Log Trentlin [30323]: compare grea
+Wed Oct 21 23:46:20 2026 :: Log Trentlin [30323]: drop grea
+Wed Oct 21 23:46:21 2026 :: Log Trentlin [30323]: i
+Wed Oct 21 23:46:28 2026 :: Log Trentlin [30323]: (refused) com[are fla
+Wed Oct 21 23:46:29 2026 :: Log Trentlin [30323]: compare fla
+Wed Oct 21 23:46:36 2026 :: Log Trentlin [30323]: drop fla
+Wed Oct 21 23:46:37 2026 :: Log Trentlin [30323]: i
+Wed Oct 21 23:46:47 2026 :: Log Trentlin [30323]: compare axe
+Wed Oct 21 23:46:58 2026 :: Log Trentlin [30323]: l
+Wed Oct 21 23:46:59 2026 :: Sock.sinaddr:  5.161.113.195
+Wed Oct 21 23:47:00 2026 :: EOF encountered on read.
+Wed Oct 21 23:47:00 2026 :: Log Trentlin [30323]: s
+Wed Oct 21 23:47:00 2026 :: Log Trentlin [30307]: arrived (Hills Below the Basin) from 30323
+Wed Oct 21 23:47:01 2026 :: Log Trentlin [30307]: w
+Wed Oct 21 23:47:01 2026 :: Log Trentlin [30306]: arrived (The Springing Hills) from 30307
+Wed Oct 21 23:47:04 2026 :: Log Trentlin [30306]: w
+Wed Oct 21 23:47:04 2026 :: Log Trentlin [30305]: arrived (Rolling Stone Ravine) from 30306
+Wed Oct 21 23:47:05 2026 :: Log Trentlin [30305]: w
+Wed Oct 21 23:47:05 2026 :: Log Trentlin [30304]: arrived (The Boulder Run) from 30305
+Wed Oct 21 23:47:06 2026 :: Log Trentlin [30304]: w
+Wed Oct 21 23:47:06 2026 :: Log Trentlin [30303]: arrived (The Lost Hills) from 30304
+Wed Oct 21 23:47:23 2026 :: Log Trentlin [30303]: ex
+Wed Oct 21 23:47:26 2026 :: Log Trentlin [30303]: w
+Wed Oct 21 23:47:26 2026 :: Log Trentlin [30302]: arrived (The Rumbling Gully) from 30303
+Wed Oct 21 23:47:27 2026 :: Log Trentlin [30302]: ex
+Wed Oct 21 23:47:27 2026 :: Log Trentlin [30302]: w
+Wed Oct 21 23:47:27 2026 :: Log Trentlin [30301]: arrived (Highland Overlook) from 30302
+Wed Oct 21 23:47:28 2026 :: Log Trentlin [30301]: ex
+Wed Oct 21 23:47:29 2026 :: Log Trentlin [30301]: w
+Wed Oct 21 23:47:29 2026 :: Log Trentlin [30300]: arrived (The Crumbling Scarp) from 30301
+Wed Oct 21 23:47:29 2026 :: Log Trentlin [30300]: ex
+Wed Oct 21 23:47:30 2026 :: Log Trentlin [30300]: w
+Wed Oct 21 23:47:30 2026 :: Log Trentlin [30299]: arrived (Broken Stone Terrace) from 30300
+Wed Oct 21 23:47:31 2026 :: Log Trentlin [30299]: ex
+Wed Oct 21 23:47:33 2026 :: Log Trentlin [30299]: w
+Wed Oct 21 23:47:33 2026 :: Log Trentlin [30298]: arrived (The Shieldmaker's Bluff) from 30299
+Wed Oct 21 23:47:35 2026 :: Log Trentlin [30298]: ex
+Wed Oct 21 23:47:37 2026 :: Log Trentlin [30298]: e
+Wed Oct 21 23:47:37 2026 :: Log Trentlin [30299]: arrived (Broken Stone Terrace) from 30298
+Wed Oct 21 23:47:37 2026 :: Log Trentlin [30299]: n
+Wed Oct 21 23:47:37 2026 :: Log Trentlin [30315]: arrived (Rockfall Crest) from 30299
+Wed Oct 21 23:47:38 2026 :: Log Trentlin [30315]: n
+Wed Oct 21 23:47:38 2026 :: Log Trentlin [30315]: w
+Wed Oct 21 23:47:38 2026 :: Log Trentlin [30314]: arrived (The High Boulder Pass) from 30315
+Wed Oct 21 23:47:40 2026 :: Log Trentlin [30314]: w
+Wed Oct 21 23:47:40 2026 :: Log Trentlin [30313]: arrived (Lynel Ridge) from 30314
+Wed Oct 21 23:47:41 2026 :: Log Trentlin [30313]: w
+Wed Oct 21 23:47:41 2026 :: Log Trentlin [30312]: arrived (Death Mountain's Western Summit) from 30313
+Wed Oct 21 23:47:42 2026 :: Log Trentlin [30312]: reca
+Wed Oct 21 23:47:42 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 30312
+Wed Oct 21 23:47:44 2026 :: Log Trentlin [4207]: w
+Wed Oct 21 23:47:44 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Wed Oct 21 23:47:44 2026 :: Log Trentlin [4208]: w
+Wed Oct 21 23:47:45 2026 :: Log Trentlin [4208]: heal all
+Wed Oct 21 23:47:45 2026 :: Spellup: Hermie gave Trentlin the full list (30 ticks) in room 4208.
+Wed Oct 21 23:47:46 2026 :: Log Trentlin [4208]: e
+Wed Oct 21 23:47:46 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4208
+Wed Oct 21 23:47:46 2026 :: Log Trentlin [4207]: e
+Wed Oct 21 23:47:46 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 21 23:47:46 2026 :: Log Trentlin [4202]: e
+Wed Oct 21 23:47:46 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 21 23:47:47 2026 :: Log Trentlin [4201]: e
+Wed Oct 21 23:47:47 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Wed Oct 21 23:47:47 2026 :: Log Trentlin [2427]: e
+Wed Oct 21 23:47:48 2026 :: Log Trentlin [2427]: n
+Wed Oct 21 23:47:48 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct 21 23:47:48 2026 :: Log Trentlin [2404]: n
+Wed Oct 21 23:47:48 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Wed Oct 21 23:47:59 2026 :: Log Trentlin [2401]: r s 2
+Wed Oct 21 23:47:59 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Wed Oct 21 23:47:59 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Wed Oct 21 23:47:59 2026 :: Log Trentlin [2427]: r w 3
+Wed Oct 21 23:47:59 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 2427
+Wed Oct 21 23:47:59 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4201
+Wed Oct 21 23:47:59 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4202
+Wed Oct 21 23:47:59 2026 :: Log Trentlin [4207]: r u 3
+Wed Oct 21 23:47:59 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Wed Oct 21 23:47:59 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Wed Oct 21 23:47:59 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Wed Oct 21 23:47:59 2026 :: Log Trentlin [3795]: enter portal
+Wed Oct 21 23:47:59 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Wed Oct 21 23:48:00 2026 :: Log Trentlin [15000]: r e 4
+Wed Oct 21 23:48:00 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Wed Oct 21 23:48:00 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Wed Oct 21 23:48:00 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Wed Oct 21 23:48:00 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Wed Oct 21 23:48:00 2026 :: Log Trentlin [15004]: r n 4
+Wed Oct 21 23:48:00 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15004
+Wed Oct 21 23:48:00 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15010
+Wed Oct 21 23:48:00 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15011
+Wed Oct 21 23:48:00 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15012
+Wed Oct 21 23:48:00 2026 :: Log Trentlin [15013]: r e 2
+Wed Oct 21 23:48:00 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15013
+Wed Oct 21 23:48:00 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
+Wed Oct 21 23:48:00 2026 :: Log Trentlin [15068]: enter cabinet
+Wed Oct 21 23:48:00 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
+Wed Oct 21 23:48:07 2026 :: Log Trentlin [30200]: w
+Wed Oct 21 23:48:07 2026 :: Log Trentlin [30207]: arrived (Crags West of the Start) from 30200
+Wed Oct 21 23:48:09 2026 :: Log Trentlin [30207]: w
+Wed Oct 21 23:48:09 2026 :: Log Trentlin [30206]: arrived (Sandy Glade) from 30207

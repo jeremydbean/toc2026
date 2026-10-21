@@ -2316,3 +2316,97 @@
 1792626176	cmd	Trentlin	49	30489	hyrule.are	standing	100	0	-	look	d	An enormous, spiny urchin with one great staring eye, bouncing slowly
 1792626177	cmd	Trentlin	49	30489	hyrule.are	standing	100	0	-	kill	d	Your whip ^^^ DESTROYS ^^^ Digdogger!
 1792626181	cmd	Trentlin	49	30489	hyrule.are	fighting	95	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Digdogger!
+1792626197	cmd	Trentlin	49	30489	hyrule.are	fighting	82	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Digdogger!
+1792626203	cmd	Trentlin	49	30489	hyrule.are	fighting	79	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Digdogger!
+1792626209	cmd	Trentlin	49	30489	hyrule.are	fighting	73	0	fight	smite		Your smite *** DEVASTATES *** Digdogger!
+1792626215	cmd	Trentlin	49	30489	hyrule.are	fighting	68	0	fight	smite		Your smite === OBLITERATES === Digdogger!
+1792626226	cmd	Trentlin	49	30489	hyrule.are	fighting	58	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Digdogger!
+1792626232	cmd	Trentlin	49	30489	hyrule.are	fighting	52	0	fight	smite		Your smite *** DEVASTATES *** Digdogger!
+1792626241	cmd	Trentlin	49	30489	hyrule.are	standing	52	0	-	look	in cor	Corpse of Digdogger contains:
+1792626244	cmd	Trentlin	49	30489	hyrule.are	standing	52	0	-	get	all cor	You get a frilled lizard cloak from corpse of Digdogger.
+1792626244	cmd	Trentlin	49	30489	hyrule.are	standing	52	0	-	look		Level 5: Digdogger's Den
+1792626247	cmd	Trentlin	49	30489	hyrule.are	standing	52	0	-	north		The lizard has been Wizard Locked. You can not pass
+1792626250	cmd	Trentlin	49	30489	hyrule.are	standing	52	0	-	unlock	niorth	I see no niorth here.
+1792626250	cmd	Trentlin	49	30487	hyrule.are	standing	52	0	-	south		The shutter opens now that the chamber is clear.
+1792626252	cmd	Trentlin	49	30489	hyrule.are	standing	52	0	-	north		Level 5: Digdogger's Den
+1792626255	cmd	Trentlin	49	30489	hyrule.are	standing	52	0	-	unlock	north	There is a flash of light as you unlock the lizard.
+1792626260	cmd	Trentlin	49	30489	hyrule.are	standing	52	0	-	open	noirth	I see no noirth here.
+1792626261	cmd	Trentlin	49	30493	hyrule.are	standing	52	0	-	north		Level 5: Sanctum of Turning Lizards
+1792626266	cmd	Trentlin	49	30493	hyrule.are	standing	52	0	-	unlock	chest	*Click*
+1792626267	cmd	Trentlin	49	30493	hyrule.are	standing	52	0	-	get	all chest	The chest is closed.
+1792626269	cmd	Trentlin	49	30493	hyrule.are	standing	52	0	-	open	chest	Ok.
+1792626271	cmd	Trentlin	49	30493	hyrule.are	standing	52	0	-	get	all chest	You get a short bow from the Lizard's treasure chest.
+1792626274	cmd	Trentlin	49	30323	hyrule.are	standing	52	0	-	enter	light	You enter the Lizard's returning light
+1792626288	cmd	Trentlin	49	30323	hyrule.are	standing	52	0	-	look		The Lizard's Gate
+1792626289	cmd	Trentlin	49	30323	hyrule.are	standing	52	0	-	inventory		You are carrying:
+1792626292	cmd	Trentlin	49	30323	hyrule.are	standing	52	0	-	compare	heart	A) the Lizard's Heart Container (level 33)
+1792626304	cmd	Trentlin	49	30323	hyrule.are	standing	52	0	-	wear	heart	You stop using a mud school diploma.
+1792626317	cmd	Trentlin	49	30323	hyrule.are	standing	51	1	-	stash	put diploma	You put a mud school diploma away for safe keeping.
+1792626318	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	inventory		You are carrying:
+1792626319	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	score		--------------------------------------------------------------
+1792626321	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	inventory		You are carrying:
+1792626326	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	compare	cloa	A) a frilled lizard cloak (level 33)
+1792626329	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	drop	cloa	You drop a frilled lizard cloak.
+1792626332	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	drop	key	You drop the Lizard's key.
+1792626334	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	drop	comp	You drop the Lizard dungeon compass.
+1792626335	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	inventory		You are carrying:
+1792626338	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	compare	helm	A) a lizard-crest helm (level 33)
+1792626347	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	drop	helm	You drop a lizard-crest helm.
+1792626349	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	inventory		You are carrying:
+1792626354	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	compare	heart	A) the Heart Guard of the Lizard (level 33)
+1792626361	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	remove	coll	You stop using a spiked collar.
+1792626364	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	wear	heart	You wear the Heart Guard of the Lizard around your neck.
+1792626369	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	stash	put collar	You put a spiked collar away for safe keeping.
+1792626370	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	inventory		You are carrying:
+1792626373	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	compare	grea	A) a pair of spined greaves (level 33)
+1792626380	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	drop	grea	You drop a pair of spined greaves.
+1792626381	cmd	Trentlin	49	30323	hyrule.are	standing	51	0	-	inventory		You are carrying:
+1792626388	refused	Trentlin	49	30323	hyrule.are	standing	52	0	-	(unknown)		Huh? Did you mean COMPARE?
+1792626389	cmd	Trentlin	49	30323	hyrule.are	standing	52	0	-	compare	fla	A) the Digdogger urchin flail (level 33)
+1792626396	cmd	Trentlin	49	30323	hyrule.are	standing	52	0	-	drop	fla	You drop the Digdogger urchin flail.
+1792626397	cmd	Trentlin	49	30323	hyrule.are	standing	52	0	-	inventory		You are carrying:
+1792626407	cmd	Trentlin	49	30323	hyrule.are	standing	52	0	-	compare	axe	A) A Tin Axe (level 25)
+1792626418	cmd	Trentlin	49	30323	hyrule.are	standing	52	0	-	look		The Lizard's Gate
+1792626420	cmd	Trentlin	49	30307	hyrule.are	standing	52	0	-	south		Hills Below the Basin
+1792626421	cmd	Trentlin	49	30306	hyrule.are	standing	52	0	-	west		The Springing Hills
+1792626424	cmd	Trentlin	49	30305	hyrule.are	standing	52	0	-	west		Rolling Stone Ravine
+1792626425	cmd	Trentlin	49	30304	hyrule.are	standing	52	0	-	west		The Boulder Run
+1792626426	cmd	Trentlin	49	30303	hyrule.are	standing	52	0	-	west		The Lost Hills
+1792626443	cmd	Trentlin	49	30303	hyrule.are	standing	52	0	-	exits		Obvious exits:
+1792626446	cmd	Trentlin	49	30302	hyrule.are	standing	52	0	-	west		The Rumbling Gully
+1792626447	cmd	Trentlin	49	30302	hyrule.are	standing	52	0	-	exits		Obvious exits:
+1792626447	cmd	Trentlin	49	30301	hyrule.are	standing	52	0	-	west		Highland Overlook
+1792626448	cmd	Trentlin	49	30301	hyrule.are	standing	52	0	-	exits		Obvious exits:
+1792626449	cmd	Trentlin	49	30300	hyrule.are	standing	52	0	-	west		The Crumbling Scarp
+1792626449	cmd	Trentlin	49	30300	hyrule.are	standing	52	0	-	exits		Obvious exits:
+1792626450	cmd	Trentlin	49	30299	hyrule.are	standing	52	0	-	west		Broken Stone Terrace
+1792626451	cmd	Trentlin	49	30299	hyrule.are	standing	52	0	-	exits		Obvious exits:
+1792626453	cmd	Trentlin	49	30298	hyrule.are	standing	52	0	-	west		The Shieldmaker's Bluff
+1792626455	cmd	Trentlin	49	30298	hyrule.are	standing	52	0	-	exits		Obvious exits:
+1792626457	cmd	Trentlin	49	30299	hyrule.are	standing	52	0	-	east		Broken Stone Terrace
+1792626457	cmd	Trentlin	49	30315	hyrule.are	standing	52	0	-	north		Rockfall Crest
+1792626458	cmd	Trentlin	49	30315	hyrule.are	standing	52	0	-	north		Alas, you cannot go that way.
+1792626458	cmd	Trentlin	49	30314	hyrule.are	standing	52	0	-	west		The High Boulder Pass
+1792626460	cmd	Trentlin	49	30313	hyrule.are	standing	52	0	-	west		Lynel Ridge
+1792626461	cmd	Trentlin	49	30312	hyrule.are	standing	296	0	-	west		Death Mountain's Western Summit
+1792626462	cmd	Trentlin	49	4207	dresden_halloween.are	standing	296	0	-	recall		Before the Shrouded Altar
+1792626464	cmd	Trentlin	49	4208	dresden_halloween.are	standing	296	0	-	west		The Shrouded Altar of Devota
+1792626464	cmd	Trentlin	49	4208	dresden_halloween.are	standing	296	0	-	west		Alas, you cannot go that way.
+1792626465	cmd	Trentlin	49	4208	dresden_halloween.are	standing	296	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792626466	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792626466	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792626466	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792626467	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792626467	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792626468	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792626468	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792626479	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	run	s 2	Southern Oak Tree Square.
+1792626479	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	run	w 3	Entrance to the Haunted Temple
+1792626479	cmd	Trentlin	49	3795	school.are	standing	100	0	-	run	u 3	Entrance to Mud School
+1792626479	cmd	Trentlin	49	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal
+1792626480	cmd	Trentlin	49	15004	campus.are	standing	100	0	-	run	e 4	Campus Crescent
+1792626480	cmd	Trentlin	49	15013	campus.are	standing	100	0	-	run	n 4	University Avenue
+1792626480	cmd	Trentlin	49	15068	campus.are	standing	100	0	-	run	e 2	The Back Hall
+1792626480	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering Hyrule arcade cabinet
+1792626487	cmd	Trentlin	49	30207	hyrule.are	standing	100	0	-	west		Crags West of the Start
+1792626489	cmd	Trentlin	49	30206	hyrule.are	standing	100	0	-	west		Sandy Glade
