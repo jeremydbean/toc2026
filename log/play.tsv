@@ -2410,3 +2410,102 @@
 1792626480	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering Hyrule arcade cabinet
 1792626487	cmd	Trentlin	49	30207	hyrule.are	standing	100	0	-	west		Crags West of the Start
 1792626489	cmd	Trentlin	49	30206	hyrule.are	standing	100	0	-	west		Sandy Glade
+1792626489	cmd	Trentlin	49	30206	hyrule.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792626491	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	north		Forest Stream
+1792626492	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	west		The Lost Woods
+1792626493	cmd	Trentlin	49	30219	hyrule.are	standing	100	0	-	west		Bramble Wood
+1792626494	cmd	Trentlin	49	30218	hyrule.are	standing	100	0	-	west		Old Forest Clearing
+1792626495	cmd	Trentlin	49	30217	hyrule.are	standing	100	0	-	west		The Tangled Woods
+1792626495	cmd	Trentlin	49	30216	hyrule.are	standing	100	0	-	west		Western Meadow Edge
+1792626503	cmd	Trentlin	49	30232	hyrule.are	standing	100	0	-	north		Western Crags
+1792626504	cmd	Trentlin	49	30248	hyrule.are	standing	100	0	-	north		The Graveyard's Southern Fence
+1792626506	cmd	Trentlin	49	30249	hyrule.are	standing	100	0	-	east		Hollow of Headstones
+1792626507	cmd	Trentlin	49	30249	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792626509	cmd	Trentlin	49	30248	hyrule.are	standing	100	0	-	west		The Graveyard's Southern Fence
+1792626509	cmd	Trentlin	49	30264	hyrule.are	standing	100	0	-	north		The Graveyard, Lower Rows
+1792626510	cmd	Trentlin	49	30265	hyrule.are	standing	100	0	-	east		The Graveyard Gate
+1792626511	cmd	Trentlin	49	30266	hyrule.are	standing	100	0	-	east		Ghost Hill
+1792626520	cmd	Trentlin	49	30282	hyrule.are	standing	100	0	-	north		The Dragon's Gate
+1792626524	cmd	Trentlin	49	30282	hyrule.are	standing	100	0	-	consider	l	You can kill a red lynel naked and weaponless.
+1792626525	cmd	Trentlin	49	30282	hyrule.are	standing	100	0	-	look	l	Powerful and scarred, this red lynel has a mane of deep copper that the
+1792626526	cmd	Trentlin	49	30501	hyrule.are	standing	100	0	-	down		Level 6: Dragon's Gate
+1792626528	cmd	Trentlin	49	30500	hyrule.are	standing	100	0	-	west		Level 6: Scorched Antechamber
+1792626530	cmd	Trentlin	49	30500	hyrule.are	standing	100	0	-	consider	w	You can kill a red wizzrobe naked and weaponless.
+1792626530	cmd	Trentlin	49	30500	hyrule.are	standing	100	0	-	look	w	Its orange-red robe is patterned with flame shapes stitched in black
+1792626532	cmd	Trentlin	49	30503	hyrule.are	standing	100	0	-	north		Level 6: Slime Cistern
+1792626534	cmd	Trentlin	49	30503	hyrule.are	standing	100	0	-	get	co	You get the Dragon dungeon compass.
+1792626535	cmd	Trentlin	49	30503	hyrule.are	standing	100	0	-	look	co	The needle swings north.
+1792626536	cmd	Trentlin	49	30505	hyrule.are	standing	100	0	-	north		Level 6: Smoky Roost
+1792626537	cmd	Trentlin	49	30505	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792626539	cmd	Trentlin	49	30505	hyrule.are	standing	100	0	-	kill	ke	Your whip ^^^ DESTROYS ^^^ a keese!
+1792626545	cmd	Trentlin	49	30506	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear.
+1792626547	cmd	Trentlin	49	30506	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792626549	cmd	Trentlin	49	30506	hyrule.are	standing	100	0	-	kill	tra	Your whip *** DEVASTATES *** a blade trap!
+1792626554	cmd	Trentlin	49	30506	hyrule.are	fighting	100	0	fight	smite		Your smite *** DEVASTATES *** a blade trap!
+1792626564	cmd	Trentlin	49	30506	hyrule.are	fighting	98	0	fight	wear	a	You wield A Tin Axe.
+1792626570	cmd	Trentlin	49	30507	hyrule.are	standing	99	0	-	north		The shutter opens now that the chamber is clear.
+1792626572	cmd	Trentlin	49	30507	hyrule.are	standing	99	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792626573	cmd	Trentlin	49	30507	hyrule.are	standing	99	0	-	kill	b	Your cleave mauls a bubble.
+1792626577	cmd	Trentlin	49	30507	hyrule.are	fighting	99	0	fight	smite		Your smite misses a bubble.
+1792626591	cmd	Trentlin	49	30507	hyrule.are	standing	99	0	-	look		Level 6: Flickering Hall
+1792626592	cmd	Trentlin	49	30507	hyrule.are	standing	99	0	-	look	in cor	Corpse of a bubble contains:
+1792626596	cmd	Trentlin	49	30507	hyrule.are	standing	99	0	-	get	fair cor	You get a bottled fairy from corpse of a bubble.
+1792626597	cmd	Trentlin	49	30507	hyrule.are	standing	99	0	-	open	fair	That's not a container.
+1792626599	cmd	Trentlin	49	30507	hyrule.are	standing	99	0	-	open	bott	That's not a container.
+1792626600	cmd	Trentlin	49	30507	hyrule.are	standing	99	0	-	eat	bott	That's not edible.
+1792626602	cmd	Trentlin	49	30507	hyrule.are	standing	99	0	-	quaff	bot	You quaff a bottled fairy.
+1792626606	cmd	Trentlin	49	30507	hyrule.are	standing	100	0	-	kill	w	A blue wizzrobe parries your attack.
+1792626611	cmd	Trentlin	49	30507	hyrule.are	fighting	99	0	fight	smite		Your smite === OBLITERATES === a blue wizzrobe!
+1792626619	cmd	Trentlin	49	30507	hyrule.are	standing	99	0	-	look	in cor	Corpse of a blue wizzrobe contains:
+1792626622	cmd	Trentlin	49	30507	hyrule.are	standing	99	0	-	get	bott cor	You get a bottled fairy from corpse of a blue wizzrobe.
+1792626623	cmd	Trentlin	49	30511	hyrule.are	standing	99	0	-	north		The shutter opens now that the chamber is clear.
+1792626624	cmd	Trentlin	49	30511	hyrule.are	standing	99	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792626627	cmd	Trentlin	49	30511	hyrule.are	standing	99	0	-	kill	w	Your cleave *** DEMOLISHES *** a red wizzrobe!
+1792626633	cmd	Trentlin	49	30511	hyrule.are	fighting	100	0	fight	smite		Your smite misses a red wizzrobe.
+1792626642	cmd	Trentlin	49	30511	hyrule.are	standing	100	0	-	get	bot cor	I see nothing like that in the cor.
+1792626643	cmd	Trentlin	49	30511	hyrule.are	standing	100	0	-	sacrifice	cor	The Gods give you 76 copper coins for your sacrifice.
+1792626645	cmd	Trentlin	49	30511	hyrule.are	standing	100	0	-	kill	wi	Your cleave === OBLITERATES === a blue wizzrobe!
+1792626649	cmd	Trentlin	49	30511	hyrule.are	fighting	100	0	fight	smite		Your smite <<< ERADICATES >>> a blue wizzrobe!
+1792626655	cmd	Trentlin	49	30511	hyrule.are	standing	100	0	-	look	in cor	Corpse of a blue wizzrobe contains:
+1792626659	cmd	Trentlin	49	30511	hyrule.are	standing	100	0	-	get	bot cor	You get a bottled fairy from corpse of a blue wizzrobe.
+1792626661	cmd	Trentlin	49	30515	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear.
+1792626662	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	east		The shutter opens now that the chamber is clear.
+1792626665	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	look	in chest	The Dragon's equipment chest contains:
+1792626668	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	look	comp	The needle swings south.
+1792626673	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	get	all chest	You get a pair of water-crossing greaves from the Dragon's equipment chest.
+1792626674	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	inventory		You are carrying:
+1792626677	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	compare	grea	A) a pair of water-crossing greaves (level 39)
+1792626679	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	drop	grea	You drop a pair of water-crossing greaves.
+1792626683	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	inventory		You are carrying:
+1792626686	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	compare	heart	A) the Heart Guard of the Manji (level 20)
+1792626688	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	drop	heart	You drop the Heart Guard of the Manji.
+1792626690	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	inventory		You are carrying:
+1792626692	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	compare	las	A) a Manhandla thorn lash (level 37)
+1792626703	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	wear	las	You stop using A Tin Axe.
+1792626704	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	inventory		You are carrying:
+1792626706	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	compare	boot	A) a pair of Vire-wing boots (level 38)
+1792626707	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	drop	boot	You drop a pair of Vire-wing boots.
+1792626708	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	inventory		You are carrying:
+1792626710	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	compare	sh	A) a Manji knight's shield (level 36)
+1792626716	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	drop	sh	You drop a Manji knight's shield.
+1792626717	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	inventory		You are carrying:
+1792626721	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	compare	cross	A) a labyrinth crossblade (level 35)
+1792626725	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	drop	cross	You drop a labyrinth crossblade.
+1792626726	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	inventory		You are carrying:
+1792626730	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	compare	breas	A) a red Darknut breastplate (level 34)
+1792626732	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	drop	breas	You drop a red Darknut breastplate.
+1792626733	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	inventory		You are carrying:
+1792626742	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	look		Level 6: Hall of Many Doors
+1792626746	cmd	Trentlin	49	30516	hyrule.are	standing	100	0	-	look	com	The needle swings south.
+1792626750	cmd	Trentlin	49	30512	hyrule.are	standing	100	0	-	south		Level 6: Ash Chamber
+1792626751	cmd	Trentlin	49	30512	hyrule.are	standing	100	0	-	look	comp	The needle swings south.
+1792626752	cmd	Trentlin	49	30512	hyrule.are	standing	100	0	-	south		The shutter is sealed fast, and will not open while enemies remain here.
+1792626755	cmd	Trentlin	49	30512	hyrule.are	standing	100	0	-	look	comp	The needle swings south.
+1792626755	cmd	Trentlin	49	30512	hyrule.are	standing	100	0	-	kill	w	A red wizzrobe dodges your attack.
+1792626763	cmd	Trentlin	49	30512	hyrule.are	fighting	100	0	fight	smite		Your smite misses a red wizzrobe.
+1792626772	cmd	Trentlin	49	30512	hyrule.are	standing	99	0	-	kill	wi	A blue wizzrobe dodges your attack.
+1792626776	cmd	Trentlin	49	30512	hyrule.are	fighting	100	0	fight	smite		Your smite === OBLITERATES === a blue wizzrobe!
+1792626783	cmd	Trentlin	49	30508	hyrule.are	standing	100	0	-	south		The shutter opens now that the chamber is clear.
+1792626784	cmd	Trentlin	49	30508	hyrule.are	standing	100	0	-	east		The shutter is sealed fast, and will not open while enemies remain here.
+1792626786	cmd	Trentlin	49	30508	hyrule.are	standing	100	0	-	kill	v	Your slash ^^^ DESTROYS ^^^ a vire!
+1792626791	cmd	Trentlin	49	30508	hyrule.are	fighting	100	0	fight	smite		Your smite === OBLITERATES === a vire!

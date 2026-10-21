@@ -152812,3 +152812,166 @@ Wed Oct 21 23:48:07 2026 :: Log Trentlin [30200]: w
 Wed Oct 21 23:48:07 2026 :: Log Trentlin [30207]: arrived (Crags West of the Start) from 30200
 Wed Oct 21 23:48:09 2026 :: Log Trentlin [30207]: w
 Wed Oct 21 23:48:09 2026 :: Log Trentlin [30206]: arrived (Sandy Glade) from 30207
+Wed Oct 21 23:48:09 2026 :: Log Trentlin [30206]: w
+Wed Oct 21 23:48:11 2026 :: Log Trentlin [30206]: n
+Wed Oct 21 23:48:11 2026 :: Log Trentlin [30221]: arrived (Forest Stream) from 30206
+Wed Oct 21 23:48:12 2026 :: Log Trentlin [30221]: w
+Wed Oct 21 23:48:12 2026 :: Log Trentlin [30220]: arrived (The Lost Woods) from 30221
+Wed Oct 21 23:48:13 2026 :: Log Trentlin [30220]: w
+Wed Oct 21 23:48:13 2026 :: Log Trentlin [30219]: arrived (Bramble Wood) from 30220
+Wed Oct 21 23:48:14 2026 :: Log Trentlin [30219]: w
+Wed Oct 21 23:48:14 2026 :: Log Trentlin [30218]: arrived (Old Forest Clearing) from 30219
+Wed Oct 21 23:48:15 2026 :: Log Trentlin [30218]: w
+Wed Oct 21 23:48:15 2026 :: Log Trentlin [30217]: arrived (The Tangled Woods) from 30218
+Wed Oct 21 23:48:15 2026 :: Log Trentlin [30217]: w
+Wed Oct 21 23:48:15 2026 :: Log Trentlin [30216]: arrived (Western Meadow Edge) from 30217
+Wed Oct 21 23:48:23 2026 :: Log Trentlin [30216]: n
+Wed Oct 21 23:48:23 2026 :: Log Trentlin [30232]: arrived (Western Crags) from 30216
+Wed Oct 21 23:48:24 2026 :: Log Trentlin [30232]: n
+Wed Oct 21 23:48:24 2026 :: Log Trentlin [30248]: arrived (The Graveyard's Southern Fence) from 30232
+Wed Oct 21 23:48:26 2026 :: Log Trentlin [30248]: e
+Wed Oct 21 23:48:26 2026 :: Log Trentlin [30249]: arrived (Hollow of Headstones) from 30248
+Wed Oct 21 23:48:27 2026 :: Log Trentlin [30249]: e
+Wed Oct 21 23:48:29 2026 :: Log Trentlin [30249]: w
+Wed Oct 21 23:48:29 2026 :: Log Trentlin [30248]: arrived (The Graveyard's Southern Fence) from 30249
+Wed Oct 21 23:48:29 2026 :: Log Trentlin [30248]: n
+Wed Oct 21 23:48:29 2026 :: Log Trentlin [30264]: arrived (The Graveyard, Lower Rows) from 30248
+Wed Oct 21 23:48:30 2026 :: Log Trentlin [30264]: e
+Wed Oct 21 23:48:30 2026 :: Log Trentlin [30265]: arrived (The Graveyard Gate) from 30264
+Wed Oct 21 23:48:31 2026 :: Log Trentlin [30265]: e
+Wed Oct 21 23:48:31 2026 :: Log Trentlin [30266]: arrived (Ghost Hill) from 30265
+Wed Oct 21 23:48:40 2026 :: Log Trentlin [30266]: n
+Wed Oct 21 23:48:40 2026 :: Log Trentlin [30282]: arrived (The Dragon's Gate) from 30266
+Wed Oct 21 23:48:44 2026 :: Log Trentlin [30282]: con l
+Wed Oct 21 23:48:45 2026 :: Log Trentlin [30282]: l l
+Wed Oct 21 23:48:46 2026 :: Log Trentlin [30282]: d
+Wed Oct 21 23:48:46 2026 :: Log Trentlin [30501]: arrived (Level 6: Dragon's Gate) from 30282
+Wed Oct 21 23:48:48 2026 :: Log Trentlin [30501]: w
+Wed Oct 21 23:48:48 2026 :: Log Trentlin [30500]: arrived (Level 6: Scorched Antechamber) from 30501
+Wed Oct 21 23:48:50 2026 :: Log Trentlin [30500]: con w
+Wed Oct 21 23:48:50 2026 :: Log Trentlin [30500]: l w
+Wed Oct 21 23:48:52 2026 :: Log Trentlin [30500]: n
+Wed Oct 21 23:48:52 2026 :: Log Trentlin [30503]: arrived (Level 6: Slime Cistern) from 30500
+Wed Oct 21 23:48:54 2026 :: Log Trentlin [30503]: get co
+Wed Oct 21 23:48:55 2026 :: Log Trentlin [30503]: l co
+Wed Oct 21 23:48:56 2026 :: Log Trentlin [30503]: n
+Wed Oct 21 23:48:56 2026 :: Log Trentlin [30505]: arrived (Level 6: Smoky Roost) from 30503
+Wed Oct 21 23:48:57 2026 :: Log Trentlin [30505]: n
+Wed Oct 21 23:48:59 2026 :: Log Trentlin [30505]: k ke
+Wed Oct 21 23:49:02 2026 :: Log Trentlin [30505]: killed a keese
+Wed Oct 21 23:49:02 2026 :: Log Trentlin [30505]: coin +184 silver
+Wed Oct 21 23:49:02 2026 :: Log Trentlin [30505]: coin +66 copper
+Wed Oct 21 23:49:02 2026 :: Log Trentlin [30505]: coin +37 gold
+Wed Oct 21 23:49:05 2026 :: Log Trentlin [30505]: n
+Wed Oct 21 23:49:05 2026 :: Log Trentlin [30506]: arrived (Level 6: Crossed Grooves of the Dragon) from 30505
+Wed Oct 21 23:49:07 2026 :: Log Trentlin [30506]: n
+Wed Oct 21 23:49:09 2026 :: Log Trentlin [30506]: k tra
+Wed Oct 21 23:49:14 2026 :: Log Trentlin [30506]: smite
+Wed Oct 21 23:49:14 2026 :: Trentlin's weapon was broken by a smite.
+Wed Oct 21 23:49:24 2026 :: Log Trentlin [30506]: wear a
+Wed Oct 21 23:49:29 2026 :: Log Trentlin [30506]: killed a blade trap
+Wed Oct 21 23:49:29 2026 :: Log Trentlin [30506]: coin +151 silver
+Wed Oct 21 23:49:29 2026 :: Log Trentlin [30506]: coin +27 copper
+Wed Oct 21 23:49:29 2026 :: Log Trentlin [30506]: coin +95 gold
+Wed Oct 21 23:49:30 2026 :: Log Trentlin [30506]: n
+Wed Oct 21 23:49:30 2026 :: Log Trentlin [30507]: arrived (Level 6: Flickering Hall) from 30506
+Wed Oct 21 23:49:32 2026 :: Log Trentlin [30507]: n
+Wed Oct 21 23:49:33 2026 :: Log Trentlin [30507]: k b
+Wed Oct 21 23:49:37 2026 :: Log Trentlin [30507]: smite
+Wed Oct 21 23:49:44 2026 :: Log Trentlin [30507]: killed a bubble
+Wed Oct 21 23:49:44 2026 :: Log Trentlin [30507]: coin +71 silver
+Wed Oct 21 23:49:44 2026 :: Log Trentlin [30507]: coin +153 copper
+Wed Oct 21 23:49:44 2026 :: Log Trentlin [30507]: coin +18 gold
+Wed Oct 21 23:49:51 2026 :: Log Trentlin [30507]: l
+Wed Oct 21 23:49:52 2026 :: Log Trentlin [30507]: l in cor
+Wed Oct 21 23:49:56 2026 :: Log Trentlin [30507]: get fair cor
+Wed Oct 21 23:49:57 2026 :: Log Trentlin [30507]: open fair
+Wed Oct 21 23:49:59 2026 :: Log Trentlin [30507]: open bott
+Wed Oct 21 23:50:00 2026 :: Log Trentlin [30507]: eat bott
+Wed Oct 21 23:50:02 2026 :: Log Trentlin [30507]: quaff bot
+Wed Oct 21 23:50:06 2026 :: Log Trentlin [30507]: k w
+Wed Oct 21 23:50:11 2026 :: Log Trentlin [30507]: smite
+Wed Oct 21 23:50:11 2026 :: Log Trentlin [30507]: killed a blue wizzrobe
+Wed Oct 21 23:50:11 2026 :: Log Trentlin [30507]: coin +7 silver
+Wed Oct 21 23:50:11 2026 :: Log Trentlin [30507]: coin +366 copper
+Wed Oct 21 23:50:11 2026 :: Log Trentlin [30507]: coin +51 gold
+Wed Oct 21 23:50:19 2026 :: Log Trentlin [30507]: l in cor
+Wed Oct 21 23:50:22 2026 :: Log Trentlin [30507]: get bott cor
+Wed Oct 21 23:50:23 2026 :: Log Trentlin [30507]: n
+Wed Oct 21 23:50:23 2026 :: Log Trentlin [30511]: arrived (Level 6: Statue Gallery) from 30507
+Wed Oct 21 23:50:24 2026 :: Log Trentlin [30511]: n
+Wed Oct 21 23:50:27 2026 :: Log Trentlin [30511]: k w
+Wed Oct 21 23:50:33 2026 :: Log Trentlin [30511]: smite
+Wed Oct 21 23:50:35 2026 :: Log Trentlin [30511]: killed a red wizzrobe
+Wed Oct 21 23:50:35 2026 :: Log Trentlin [30511]: coin +86 silver
+Wed Oct 21 23:50:35 2026 :: Log Trentlin [30511]: coin +383 copper
+Wed Oct 21 23:50:35 2026 :: Log Trentlin [30511]: coin +105 gold
+Wed Oct 21 23:50:42 2026 :: Log Trentlin [30511]: get bot cor
+Wed Oct 21 23:50:43 2026 :: Log Trentlin [30511]: sac cor
+Wed Oct 21 23:50:43 2026 :: Log Trentlin [30511]: coin +76 copper
+Wed Oct 21 23:50:45 2026 :: Log Trentlin [30511]: k wi
+Wed Oct 21 23:50:49 2026 :: Log Trentlin [30511]: smite
+Wed Oct 21 23:50:49 2026 :: Log Trentlin [30511]: killed a blue wizzrobe
+Wed Oct 21 23:50:49 2026 :: Log Trentlin [30511]: coin +7 silver
+Wed Oct 21 23:50:49 2026 :: Log Trentlin [30511]: coin +366 copper
+Wed Oct 21 23:50:49 2026 :: Log Trentlin [30511]: coin +51 gold
+Wed Oct 21 23:50:55 2026 :: Log Trentlin [30511]: l in cor
+Wed Oct 21 23:50:59 2026 :: Log Trentlin [30511]: get bot cor
+Wed Oct 21 23:51:01 2026 :: Log Trentlin [30511]: n
+Wed Oct 21 23:51:01 2026 :: Log Trentlin [30515]: arrived (Level 6: Hushed Red Vault) from 30511
+Wed Oct 21 23:51:02 2026 :: Log Trentlin [30515]: e
+Wed Oct 21 23:51:02 2026 :: Log Trentlin [30516]: arrived (Level 6: Hall of Many Doors) from 30515
+Wed Oct 21 23:51:05 2026 :: Log Trentlin [30516]: l in chest
+Wed Oct 21 23:51:08 2026 :: Treasure goblin: vanished from room 29098 (Metalurgy Plant, korzath1.are) (too long in one area).
+Wed Oct 21 23:51:08 2026 :: Log Trentlin [30516]: l comp
+Wed Oct 21 23:51:13 2026 :: Log Trentlin [30516]: get all chest
+Wed Oct 21 23:51:14 2026 :: Log Trentlin [30516]: i
+Wed Oct 21 23:51:17 2026 :: Log Trentlin [30516]: compare grea
+Wed Oct 21 23:51:19 2026 :: Log Trentlin [30516]: drop grea
+Wed Oct 21 23:51:23 2026 :: Log Trentlin [30516]: i
+Wed Oct 21 23:51:26 2026 :: Log Trentlin [30516]: compare heart
+Wed Oct 21 23:51:28 2026 :: Log Trentlin [30516]: drop heart
+Wed Oct 21 23:51:30 2026 :: Log Trentlin [30516]: i
+Wed Oct 21 23:51:32 2026 :: Log Trentlin [30516]: compare las
+Wed Oct 21 23:51:43 2026 :: Log Trentlin [30516]: wear las
+Wed Oct 21 23:51:44 2026 :: Log Trentlin [30516]: i
+Wed Oct 21 23:51:46 2026 :: Log Trentlin [30516]: compare boot
+Wed Oct 21 23:51:47 2026 :: Log Trentlin [30516]: drop boot
+Wed Oct 21 23:51:48 2026 :: Log Trentlin [30516]: i
+Wed Oct 21 23:51:50 2026 :: Log Trentlin [30516]: compare sh
+Wed Oct 21 23:51:56 2026 :: Log Trentlin [30516]: drop sh
+Wed Oct 21 23:51:57 2026 :: Log Trentlin [30516]: i
+Wed Oct 21 23:52:01 2026 :: Log Trentlin [30516]: compare cross
+Wed Oct 21 23:52:05 2026 :: Sock.sinaddr:  5.161.117.52
+Wed Oct 21 23:52:05 2026 :: EOF encountered on read.
+Wed Oct 21 23:52:05 2026 :: Log Trentlin [30516]: drop cross
+Wed Oct 21 23:52:06 2026 :: Log Trentlin [30516]: i
+Wed Oct 21 23:52:10 2026 :: Log Trentlin [30516]: compare breas
+Wed Oct 21 23:52:12 2026 :: Log Trentlin [30516]: drop breas
+Wed Oct 21 23:52:13 2026 :: Log Trentlin [30516]: i
+Wed Oct 21 23:52:22 2026 :: Log Trentlin [30516]: l
+Wed Oct 21 23:52:26 2026 :: Log Trentlin [30516]: l com
+Wed Oct 21 23:52:30 2026 :: Log Trentlin [30516]: s
+Wed Oct 21 23:52:30 2026 :: Log Trentlin [30512]: arrived (Level 6: Ash Chamber) from 30516
+Wed Oct 21 23:52:31 2026 :: Log Trentlin [30512]: l comp
+Wed Oct 21 23:52:32 2026 :: Log Trentlin [30512]: s
+Wed Oct 21 23:52:35 2026 :: Log Trentlin [30512]: l comp
+Wed Oct 21 23:52:35 2026 :: Log Trentlin [30512]: k w
+Wed Oct 21 23:52:43 2026 :: Log Trentlin [30512]: smite
+Wed Oct 21 23:52:44 2026 :: Log Trentlin [30512]: killed a red wizzrobe
+Wed Oct 21 23:52:44 2026 :: Log Trentlin [30512]: coin +8 gold
+Wed Oct 21 23:52:44 2026 :: Log Trentlin [30512]: coin +86 silver
+Wed Oct 21 23:52:44 2026 :: Log Trentlin [30512]: coin +383 copper
+Wed Oct 21 23:52:44 2026 :: Log Trentlin [30512]: coin +105 gold
+Wed Oct 21 23:52:52 2026 :: Log Trentlin [30512]: k wi
+Wed Oct 21 23:52:56 2026 :: Log Trentlin [30512]: smite
+Wed Oct 21 23:52:56 2026 :: Log Trentlin [30512]: killed a blue wizzrobe
+Wed Oct 21 23:52:56 2026 :: Log Trentlin [30512]: coin +8 gold
+Wed Oct 21 23:52:56 2026 :: Log Trentlin [30512]: coin +7 silver
+Wed Oct 21 23:52:56 2026 :: Log Trentlin [30512]: coin +366 copper
+Wed Oct 21 23:52:56 2026 :: Log Trentlin [30512]: coin +51 gold
+Wed Oct 21 23:53:03 2026 :: Log Trentlin [30512]: s
+Wed Oct 21 23:53:03 2026 :: Log Trentlin [30508]: arrived (Level 6: Taloned Corner) from 30512
+Wed Oct 21 23:53:04 2026 :: Log Trentlin [30508]: e
+Wed Oct 21 23:53:06 2026 :: Log Trentlin [30508]: k v
+Wed Oct 21 23:53:11 2026 :: Log Trentlin [30508]: smite
