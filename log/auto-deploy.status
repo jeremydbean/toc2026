@@ -1,1 +1,1 @@
-2026-10-21T20:49:18Z waiting for CI on 28b30428 (in_progress) before deploying 0a7321e3
+2026-10-21T20:59:19Z not deploying f605dd78: CI on 28b30428 says failure; push a fix
