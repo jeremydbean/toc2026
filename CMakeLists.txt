@@ -73,6 +73,7 @@ set(SRC_FILES
     src/goblin.c
     src/rested.c
     src/alignment.c
+    src/playlog.c
     src/wizlist.c
 )
 

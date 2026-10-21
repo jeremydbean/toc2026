@@ -239,7 +239,8 @@ class LoggingSourceTests(unittest.TestCase):
         body = self.interp.split("if ( !found )")[1]
         body = body.split("Character not in position")[0]
 
-        self.assertIn("bool social = check_social( ch, command, argument );",
+        # Declared apart since the play journal notes the word first.
+        self.assertIn("social = check_social( ch, command, argument );",
                       body)
         self.assertIn('social ? "social" : "refused"', body)
         self.assertLess(

@@ -10,6 +10,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **The play journal** (`src/playlog.c`; owner, 2026-10-21). `log/play.tsv`
+  records every player command with what the game answered and how long
+  it took, BUG lines with the command that was running, tick anomalies,
+  session summaries and BUG/TYPO/IDEA reports with the last few commands;
+  `log/crash.log` gets the last 128 commands from a signal handler when
+  the game crashes. Private and password commands' words and answers are
+  never written, and an unknown word is written alone. `tools/log_report.py`
+  reads all of it. `tests/test_playlog.py`.
+
 - **Alignment, rebuilt** (`src/alignment.c`; owner, 2026-10-21: "more
   modern"). Still one number, saved as ever, with IS_GOOD/IS_EVIL at
   +/-300; around it: seven named tiers (Paragon, Virtuous, Kind; Balanced;

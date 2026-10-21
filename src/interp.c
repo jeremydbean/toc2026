@@ -13,6 +13,7 @@
 #endif
 #include <ctype.h>
 #include <stdarg.h>   /* watch_log takes a format and arguments */
+#include <sys/time.h> /* the play journal times each command */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -850,7 +851,90 @@ static void command_not_found_hint( CHAR_DATA *ch, const char *word )
     send_to_char( out, ch );
 }
 
+/*
+ * What interpret_body decided about the command, for the play journal
+ * (playlog.c): its name, the line as it may be written down, whether its
+ * words are withheld, and whether the game refused it.
+ */
+static int         interp_depth;
+static bool        play_begun;
+static bool        play_secret;
+static bool        play_refused;
+static const char *play_cmd_name;
+static char        play_shown[MAX_INPUT_LENGTH];
+
+static void play_note( CHAR_DATA *ch, const char *name, const char *shown,
+                       bool secret, bool refused )
+{
+    if ( interp_depth != 1 || ch == NULL || IS_NPC(ch) || play_begun )
+        return;
+    play_cmd_name = name;
+    toc_strlcpy( play_shown, shown, sizeof(play_shown) );
+    play_secret = secret;
+    play_refused = refused;
+    play_begun = true;
+    playlog_begin( ch, play_shown );
+}
+
+static void interpret_body( CHAR_DATA *ch, char *argument );
+
+/*
+ * Every command goes through here once: the body runs it, and for a
+ * player at the outermost level (not a command one command runs for
+ * another, like AT or FORCE) the play journal records what it did, what
+ * the game answered and how long it took. QUIT frees the character and
+ * the descriptor, so both are found again before anything is read.
+ */
 void interpret( CHAR_DATA *ch, char *argument )
+{
+    DESCRIPTOR_DATA *d, *scan;
+    struct timeval t0, t1;
+    int out_before = 0, pos, hp_pct;
+    bool fighting, still = false;
+    long ms;
+
+    if ( interp_depth > 0 || ch == NULL || IS_NPC(ch) )
+    {
+        interp_depth++;
+        interpret_body( ch, argument );
+        interp_depth--;
+        return;
+    }
+
+    d = ch->desc;
+    if ( d != NULL )
+        out_before = d->outtop;
+    pos = ch->position;
+    hp_pct = ch->max_hit > 0 ? ch->hit * 100 / ch->max_hit : 0;
+    fighting = ch->fighting != NULL;
+    play_begun = false;
+    gettimeofday( &t0, NULL );
+
+    interp_depth = 1;
+    interpret_body( ch, argument );
+    interp_depth = 0;
+
+    if ( !play_begun )
+        return;
+    play_begun = false;
+    gettimeofday( &t1, NULL );
+    ms = ( t1.tv_sec - t0.tv_sec ) * 1000L + ( t1.tv_usec - t0.tv_usec ) / 1000L;
+    for ( scan = descriptor_list; scan != NULL; scan = scan->next )
+        if ( scan == d && scan->character == ch )
+            still = true;
+    if ( !still || d == NULL || d->outtop < out_before )
+    {
+        /* Gone (QUIT) or link lost: what it did is in the session line. */
+        playlog_end( still ? ch : NULL, play_cmd_name, play_shown, play_secret,
+                     play_refused, NULL, 0, ms, pos, hp_pct, fighting );
+        return;
+    }
+    playlog_end( ch, play_cmd_name, play_shown, play_secret, play_refused,
+                 d->outbuf + out_before, d->outtop - out_before,
+                 ms, pos, hp_pct, fighting );
+}
+
+static void interpret_body( CHAR_DATA *ch, char *argument )
 {
     char command[MAX_INPUT_LENGTH];
     char logline[MAX_INPUT_LENGTH];
@@ -1082,6 +1166,13 @@ void interpret( CHAR_DATA *ch, char *argument )
                    || ( !IS_SET(ch->act, PLR_LOG)
                         && command_is_private( cmd_table[cmd].name ) );
 
+        /* The play journal never holds a private or password command's
+           words, watched in full or not: it is published. */
+        play_note( ch, cmd_table[cmd].name,
+                   ( secret || command_is_private( cmd_table[cmd].name ) )
+                       ? cmd_table[cmd].name : logline,
+                   secret || command_is_private( cmd_table[cmd].name ), false );
+
         if ( watched )
         {
             /* Where it happened, too. Half of reading one of these
@@ -1138,9 +1229,18 @@ void interpret( CHAR_DATA *ch, char *argument )
          * happened.
          */
         {
-            bool social = check_social( ch, command, argument );
+            bool social;
 
-            if ( !social )
+            /* A word the game does not know is written alone: a password
+               typed at the wrong moment is one, and this file is public. */
+            play_note( ch, "(unknown)", command, false, true );
+            social = check_social( ch, command, argument );
+            if ( social )
+            {
+                play_cmd_name = "(social)";
+                play_refused = false;
+            }
+            else
                 command_not_found_hint( ch, command );
 
             if ( watched && logline[0] != '\0' )
@@ -1164,6 +1264,7 @@ void interpret( CHAR_DATA *ch, char *argument )
      */
     if ( ch->position < cmd_table[cmd].position )
     {
+	play_refused = true;
 	switch( ch->position )
 	{
 	case POS_DEAD:

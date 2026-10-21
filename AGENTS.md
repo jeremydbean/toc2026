@@ -1613,6 +1613,54 @@ not only `wizinfo`: wizinfo tells whoever is online at that moment and
 nobody afterwards, which is no use when the question is asked a week
 later. `REPORTS CLEAR` does both.
 
+## The Play Journal
+
+`src/playlog.c` (owner, 2026-10-21: "really advanced logging for players
+who play to help identify potential bugs through gameplay"). The watch
+log says what a player typed; the journal says what happened, in columns
+`tools/log_report.py` reads:
+
+- **`log/play.tsv`**, tab-separated: epoch, kind, name, level, room,
+  area, then the kind's fields. `cmd`/`refused`: position, hp%, ms,
+  fight, command, args, the first line the game answered. `bug`: the
+  BUG message and what was running. `anomaly`: what and the numbers.
+  `report`: BUG/TYPO/IDEA, the text, hp, the last `PLAY_RECENT`
+  commands. `session`: at QUIT, link loss and shutdown, what the sitting
+  came to. Trimmed past `PLAY_JOURNAL_MAX` lines to the newest
+  `PLAY_JOURNAL_KEEP`, like the channel journal; the whole of `log/`
+  reaches git with the state sync and CI ignores it.
+- **`interpret()` is now a wrapper** round `interpret_body()`: it times
+  the command, snapshots `d->outtop`, and after the body finds the
+  descriptor again (QUIT frees it) before reading the answer from
+  `d->outbuf`. Only the outermost call for a player is recorded, so AT,
+  FORCE and ORDER do not double up. `play_note()` in the body is where
+  the command, its shown line and its privacy are decided: **a private
+  or password command's words and answer are never written, watched in
+  full or not, and an unknown word is written alone** -- `log/` is
+  public, and a password typed at the wrong moment is an unknown word.
+  A room holding the dealer or the goblin is `-`.
+- **Every `BUG:` line says what was running** -- whose command, which
+  room, or the update phase (`playlog_phase`, set in `update_handler`)
+  -- and lands in the journal too. Not at boot, where FILE/LINE says it.
+- **`log/crash.log`**: `playlog_boot()` (after `boot_db`) opens it and
+  installs a handler for SEGV, BUS, FPE, ILL and ABRT that writes the
+  last `CRASH_RING` commands and the phase with `write()` only, then
+  re-raises. Nothing in the handler may call stdio, malloc or
+  log_string. It is not installed under AddressSanitizer, whose report
+  is worth more. `tests/test_playlog.py` crashes a live server with
+  SIGSEGV and reads the file.
+- **Anomalies** (`playlog_tick`, from `char_update` each tick): hit
+  points far over max, negative coin, practices or trains, fighting
+  nobody or across rooms, and -- not for staff -- level past the remort
+  cap, more than three levels of experience or two thousand kills of
+  coin in one tick. One line per kind per player per ten minutes, to the
+  journal and to toc.log as `ANOMALY:`.
+
+`tools/log_report.py` prints the slowest commands, what the game said no
+with (grouped by command and answer -- the cheapest way to find a command
+that confuses players), anomalies, BUG lines with context, reports with
+their commands, sessions and crashes. The morning routine runs it.
+
 ## Hermie
 
 `spellup` places her; `buff` is how a player asks. She is modelled on

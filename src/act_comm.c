@@ -3643,6 +3643,7 @@ void do_bug( CHAR_DATA *ch, char *argument )
 {
     /* Code Safety: Secure file append using safe fprintf format */
     append_file( ch, BUG_FILE, argument );
+    playlog_report( ch, "bug", argument );   /* with the last few commands */
     send_to_char( "Bug logged.\n\r", ch );
     return;
 }
@@ -3651,6 +3652,7 @@ void do_typo( CHAR_DATA *ch, char *argument )
 {
     /* Code Safety: Secure file append */
     append_file( ch, TYPO_FILE, argument );
+    playlog_report( ch, "typo", argument );   /* with the last few commands */
     send_to_char( "Typo logged.\n\r", ch );
     return;
 }
@@ -3659,6 +3661,7 @@ void do_idea( CHAR_DATA *ch, char *argument )
 {
     /* Code Safety: Secure file append */
     append_file( ch, IDEA_FILE, argument );
+    playlog_report( ch, "idea", argument );   /* with the last few commands */
     send_to_char( "Idea logged.\n\r", ch );
     return;
 }
@@ -3905,6 +3908,9 @@ void do_quit( CHAR_DATA *ch, char *argument )
     /* Where they lay down decides whether they come back rested. */
     rest_xp_on_quit( ch );
     
+    /* What the sitting came to, for the play journal (playlog.c). */
+    playlog_session( ch, "quit" );
+
     /* Snapshot session stats so they can be viewed offline */
     {
         long dur = (long)(current_time - ch->pcdata->session_logon);

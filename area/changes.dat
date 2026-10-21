@@ -3,6 +3,12 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261021i 2026-10-21
+BUG, TYPO and IDEA now keep the room you are in and your last few
+commands with the report, so type them right where something went wrong.
+The game also records what it answers your commands (never tells,
+replies, group tells or passwords) to help find bugs. See HELP BUG.
+
 @ 20261021h 2026-10-21
 Haggling still raises what a shopkeeper pays you, but never above what the
 thing is worth. REPAIR ALL works in the dark, USE BOMB BAG finds a bag you

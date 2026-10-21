@@ -6539,6 +6539,16 @@ void bug( const char *str, int param )
 
     toc_strlcpy( buf, "[*****] BUG: ", sizeof(buf) );
     snprintf( buf + strlen(buf), sizeof(buf) - strlen(buf), str, param );
+    /* Which command, whose, and where: a BUG line with none of that was
+       a puzzle (playlog.c). Not at boot, where FILE/LINE above says it. */
+    if ( fpArea == NULL )
+    {
+        char context[MAX_INPUT_LENGTH];
+
+        playlog_bug_context( context, sizeof(context) );
+        toc_strlcat( buf, context, sizeof(buf) );
+        playlog_bug( buf + strlen( "[*****] BUG: " ) );
+    }
     log_string( buf );
 
     return;

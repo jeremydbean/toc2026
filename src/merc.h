@@ -235,6 +235,7 @@ typedef struct script_loop_prepoll_payload
 #define MAX_CLASS               6
 #define MAX_PC_RACE             6
 #define MAX_ALIASES             20
+#define PLAY_RECENT             6     /* commands kept for a BUG report (playlog.c) */
 #define ALIAS_MAX_COMMANDS      10   /* commands one alias may hold */
 #define ALIAS_MAX_QUEUED        20   /* alias lines waiting in one inbuf */
 #define MAX_HUNTERS             50
@@ -903,6 +904,19 @@ bool  rest_room_ok     args( ( CHAR_DATA *ch, ROOM_INDEX_DATA *room ) );
 void  rest_xp_on_quit  args( ( CHAR_DATA *ch ) );
 void  rest_xp_on_login args( ( CHAR_DATA *ch ) );
 int   rest_xp_bonus    args( ( CHAR_DATA *ch, int xp ) );
+/* playlog.c -- the play journal, crash recorder and anomaly checks */
+extern const char *playlog_phase;
+void  playlog_boot           args( ( void ) );
+void  playlog_begin          args( ( CHAR_DATA *ch, const char *shown ) );
+void  playlog_end            args( ( CHAR_DATA *ch, const char *cmd_name, const char *shown,
+                                     bool secret, bool refused, const char *out, int out_len,
+                                     long ms, int pos_before, int hp_pct_before,
+                                     bool fighting_before ) );
+void  playlog_bug_context    args( ( char *buf, size_t size ) );
+void  playlog_bug            args( ( const char *message ) );
+void  playlog_report         args( ( CHAR_DATA *ch, const char *kind, const char *text ) );
+void  playlog_tick           args( ( CHAR_DATA *ch ) );
+void  playlog_session        args( ( CHAR_DATA *ch, const char *how ) );
 /* alignment.c -- tiers, what moves alignment and what it gives */
 #define ALIGN_DEED_SHIFT       100          /* one DEVOTE */
 #define ALIGN_DEED_COOLDOWN    ( 30 * 60 )  /* seconds between DEVOTEs */
@@ -2182,6 +2196,16 @@ struct  pc_data
     long                daily_last_full;      /* the last day all three were done */
     long                daily_wait_until;     /* no daily before this (a given-up one) */
     long                align_deed_at;        /* no DEVOTE before this */
+    /* playlog.c, never saved */
+    bool                play_baseline;        /* the tick's checks have a start */
+    long                play_last_exp;
+    long                play_last_wealth;
+    long                play_start_wealth;
+    time_t              play_anom_last[8];    /* one line a kind a while */
+    int                 play_cmds;
+    int                 play_refused;
+    char                play_recent[PLAY_RECENT][96];
+    int                 play_recent_next;
     char *              fixes_done;           /* login fixes applied (fixes.c) */
     /* Training-yard run; deliberately not persisted. */
     long                dummy_dealt;

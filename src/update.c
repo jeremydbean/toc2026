@@ -1389,7 +1389,11 @@ void char_update( void )
 
         /* Bank interest check (once per real day per player) */
         if ( !IS_NPC(ch) )
+        {
             bank_interest( ch );
+            /* The play journal's sanity checks (playlog.c). */
+            playlog_tick( ch );
+        }
 
 //	if ( ch->timer > 20 )
 //	    ch_quit = ch;
@@ -2951,6 +2955,7 @@ void update_handler( void )
     if ( --pulse_area     <= 0 )
     {
 	pulse_area	= number_range( PULSE_AREA / 2, 3 * PULSE_AREA / 2 );
+	playlog_phase = "area_update";
 	area_update	( );
 	sanity_check	( );
 	quest_update	( );
@@ -2966,6 +2971,7 @@ void update_handler( void )
     if ( --pulse_mobile   <= 0 )
     {
 	pulse_mobile	= PULSE_MOBILE;
+	playlog_phase = "mobile_update";
 	mobile_update	( );
 	black_market_update( );
 	treasure_goblin_update( );
@@ -2974,6 +2980,7 @@ void update_handler( void )
     if ( --pulse_violence <= 0 )
     {
 	pulse_violence	= PULSE_VIOLENCE;
+	playlog_phase = "violence_update";
 	violence_update	( );
     }
 
@@ -2988,8 +2995,10 @@ void update_handler( void )
     {
 	pulse_point     = number_range( 2*PULSE_TICK/3, 4*PULSE_TICK/3 );
 	weather_update	( );
+	playlog_phase = "char_update";
 	char_update	( );
 	btick_update	();
+	playlog_phase = "obj_update";
 	obj_update	( );
 	room_aff_update ( );
 //	update_relics   ();  REMOVERELIC
@@ -3002,11 +3011,13 @@ void update_handler( void )
     }
 
     /* Every pulse: walkto.c paces each walker by their own lag. */
+    playlog_phase = "walkto_update";
     walkto_update( );
 
     if ( --pulse_aggr <= 0 )
     {
 	pulse_aggr	= PULSE_AGGR;
+	playlog_phase = "aggr_update";
 	aggr_update( );
 	hate_update( );
     }
@@ -3024,6 +3035,7 @@ void update_handler( void )
         tick_event_boss();
     }
 
+    playlog_phase = "game loop";
     tail_chain( );
     return;
 }

@@ -560,6 +560,7 @@ int main( int argc, char **argv )
 #if defined(unix)
     control = init_socket( port );
     boot_db( );
+    playlog_boot( );        /* the crash recorder, once the world is up */
     spellup_boot_place( );
     snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "ROM is ready to rock on port %d.", port );
     log_string( log_buf );
@@ -1472,9 +1473,12 @@ void close_socket( DESCRIPTOR_DATA *dclose )
             wizinfo( buf, ch->level );
             if ( !IS_NPC(ch) && ch->pcdata != NULL
               && ch->pcdata->session_logon > 0 )
+            {
                 record_logout( ch->name, dclose->host,
                     shutting_down ? "shutdown" : "linkdead",
                     (long)(current_time - ch->pcdata->session_logon) );
+                playlog_session( ch, shutting_down ? "shutdown" : "linkdead" );
+            }
             /* Losing the link is leaving, as far as HISTORY cares:
                without this a dropped player would be shown everything
                said since their last clean quit. */

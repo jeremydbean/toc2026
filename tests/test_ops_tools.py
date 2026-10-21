@@ -91,6 +91,13 @@ class LogReportTests(unittest.TestCase):
         self.assertTrue(self.report.WATCHED.match("Log Zed [-]: buy cake"),
                         "a room the game hides is still a watched line")
 
+    def test_the_journal_spots_a_refusal(self) -> None:
+        for reply in ("You can't do that.", "They aren't here.", "Huh?",
+                      "There is no door in that direction.", "You don't have that."):
+            self.assertTrue(self.report.SAID_NO.match(reply), reply)
+        for reply in ("The Temple of Dresden", "You wear a sword.", "Ok."):
+            self.assertFalse(self.report.SAID_NO.match(reply), reply)
+
     def test_a_word_refused_once_is_not_printed(self) -> None:
         source = (ROOT / "tools" / "log_report.py").read_text(encoding="utf-8")
         self.assertIn("if 2 <= n < 50", source, "a password typed by mistake is refused once")

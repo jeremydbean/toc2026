@@ -197,6 +197,8 @@ def main() -> int:
     for player, kinds in sorted(coin.items(), key=lambda kv: -kv[1]["platinum"])[:15]:
         print(f"  {player:<14} {kinds['platinum']}p {kinds['gold']}g")
 
+    journal_report(args, since)
+
     print("\n== public chat")
     rows = []
     for raw in git_show(args.ref, "log/channels.tsv").splitlines():
@@ -214,6 +216,65 @@ def main() -> int:
     if not rows:
         print("  (none)")
     return 0
+
+
+# The play journal (src/playlog.c): epoch, kind, name, level, room, area,
+# then the kind's fields. A cmd/refused row continues position, hp%, ms,
+# fight, command, args, reply.
+SAID_NO = re.compile(
+    r"^(You can't|You cannot|You don't|You do not|You aren't|You are not|You have no|"
+    r"You need|You must|You're not|There is no|There's no|They aren't here|You see no|"
+    r"Huh|What\?|Nothing|No one|Not |You failed|You lack|That isn't|It isn't|You haven't)",
+    re.IGNORECASE)
+
+
+def journal_report(args, since) -> None:
+    rows = []
+    for raw in git_show(args.ref, "log/play.tsv").splitlines():
+        fields = raw.split("\t")
+        if len(fields) < 6 or not fields[0].isdigit():
+            continue
+        if datetime.fromtimestamp(int(fields[0]), timezone.utc) < since:
+            continue
+        if args.player and fields[2].lower() != args.player.lower() and fields[1] != "bug":
+            continue
+        rows.append(fields)
+    print(f"\n== play journal ({len(rows)} records)")
+    commands = [r for r in rows if r[1] in ("cmd", "refused") and len(r) >= 13]
+
+    slow = sorted((r for r in commands if r[8].isdigit() and int(r[8]) >= 250),
+                  key=lambda r: -int(r[8]))[:10]
+    print("  slowest commands (250 ms and up):")
+    for r in slow:
+        print(f"    {r[8]:>6} ms  {r[2]:<12} {r[10]} {clean(r[11])[:40]}  [room {r[4]}]")
+    if not slow:
+        print("    (none)")
+
+    said_no = Counter((r[10], clean(r[12])[:90]) for r in commands
+                      if r[1] == "cmd" and SAID_NO.match(r[12]))
+    print("  what the game said no with (command: answer, times):")
+    for (command, reply), n in said_no.most_common(15):
+        print(f"    x{n:<4} {command}: {reply}")
+    if not said_no:
+        print("    (none)")
+
+    for kind, title in (("anomaly", "anomalies"), ("bug", "BUG lines with what was running"),
+                        ("report", "player reports with their last commands"),
+                        ("session", "sessions")):
+        picked = [r for r in rows if r[1] == kind]
+        print(f"  {title} ({len(picked)}):")
+        for r in picked[-15:]:
+            when = datetime.fromtimestamp(int(r[0]), timezone.utc)
+            print(f"    {when:%m-%d %H:%M} {r[2]:<12} {clean(' | '.join(r[6:]))[:160]}")
+
+    crash = git_show(args.ref, "log/crash.log")
+    blocks = [b for b in crash.split("=== crash:")[1:]]
+    print(f"\n== crashes ({len(blocks)} on record)")
+    for block in blocks[-3:]:
+        lines = block.strip().splitlines()
+        print(f"  signal{clean(lines[0])[:120]}")
+        for line in lines[1:-1][-8:]:
+            print(f"    {clean(line)[:140]}")
 
 
 if __name__ == "__main__":

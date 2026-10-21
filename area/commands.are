@@ -4879,10 +4879,14 @@ Syntax: bug <message>
 Syntax: idea <message>
 Syntax: typo <message>
 
-These commands are essentially an artifact of mud history.  They still
-exist and record a lot of bugs, ideas and typos to the implementors, but
-it is preferable to use the bug and idea note forums.  See help NOTE for
-more information.
+These record a bug, an idea or a typo for the staff, and they are read.
+Type them where the trouble is: the room you are in, your level and your
+last few commands are kept with the report, so "bug the fountain will not
+fill my waterskin" right after trying is all it takes.  Longer reports can
+go on the bug and idea note boards (see NOTE).
+
+What you type and what the game answers is recorded to help find bugs.
+Tells, replies, group tells and passwords never are.
 
 See also: NOTE
 ~
