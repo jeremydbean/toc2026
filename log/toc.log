@@ -146667,3 +146667,19 @@ Wed Oct 21 02:12:18 2026 :: EOF encountered on read.
 Wed Oct 21 02:13:03 2026 :: Treasure goblin: vanished from room 20116 (A broom closet, prison.are) (too long in one area).
 Wed Oct 21 02:17:23 2026 :: Sock.sinaddr:  52.15.147.27
 Wed Oct 21 02:17:23 2026 :: EOF encountered on read.
+Wed Oct 21 02:22:28 2026 :: Sock.sinaddr:  178.156.187.238
+Wed Oct 21 02:22:28 2026 :: EOF encountered on read.
+Wed Oct 21 02:22:59 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Wed Oct 21 02:23:03 2026 :: Log WebAdmin: fsave
+Wed Oct 21 02:23:08 2026 :: Treasure goblin: vanished from room 7760 (The Graveyard, ultima.are) (too long in one area).
+Wed Oct 21 02:23:09 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Wed Oct 21 02:23:12 2026 :: Received signal 15; saving players and shutting down.
+Wed Oct 21 02:23:12 2026 :: Normal termination of game.
+Wed Oct 21 02:23:13 2026 ::  INIT OK 
+Wed Oct 21 02:23:13 2026 :: walkto_load: 157 destinations.
+Wed Oct 21 02:23:13 2026 :: changes_load: 123 entries.
+Wed Oct 21 02:23:13 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Wed Oct 21 02:23:13 2026 :: ROM is ready to rock on port 9000.
+Wed Oct 21 02:23:13 2026 :: Treasure goblin: appeared.
+Wed Oct 21 02:23:13 2026 :: Automated backup complete.
+Wed Oct 21 02:23:13 2026 :: Daily backup complete.
