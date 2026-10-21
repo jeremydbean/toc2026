@@ -65,6 +65,10 @@ static time_t gob_area_since = 0;
 /* Hit points he may not regenerate past: the chase keeps its progress. */
 static int gob_hp = 0;
 static bool gob_chased = false;
+/* Flights from blows since he appeared, and whether the blow now landing
+   has used up this flight's share, so that he runs held or not. */
+static int gob_flights = 0;
+static bool gob_shaken_loose = false;
 /* The last blow, and the portal he is opening (0 when none). */
 static time_t gob_last_hit = 0;
 static time_t gob_portal_at = 0;
@@ -231,6 +235,8 @@ bool treasure_goblin_spawn( ROOM_INDEX_DATA *room )
     act( "A shimmering rift tears open and $n tumbles out, clutching $s sack.",
          treasure_goblin, NULL, NULL, TO_ROOM );
     gob_hp = treasure_goblin->max_hit;
+    gob_flights = 0;
+    gob_shaken_loose = false;
     gob_chased = false;
     gob_area = NULL;                /* a new goblin starts a fresh clock */
     gob_portal_at = 0;
@@ -273,6 +279,24 @@ void treasure_goblin_forget( CHAR_DATA *ch )
  * hero's two-hundred-point one one GOBLIN_BLOWS_MIN'th, and everything
  * between steps across. damage() asks this before its message.
  */
+/*
+ * The lowest his hit points may go before his next flight: one hardest
+ * share for every flight so far, and one more. Nothing that holds him --
+ * a bash, a stun, a sleep -- lets a fighter take more than that between
+ * flights, so he cannot die before his GOBLIN_BLOWS_MIN - 1th flight
+ * (owner, 2026-10-20: twelve flights at least). A bash used to hold him
+ * through whole rounds of blows, each taking a full share, and Misery
+ * finished one in two blows that a bash had worn down (2026-10-21).
+ */
+static int gob_floor( CHAR_DATA *gob )
+{
+    int share = ( gob->max_hit + GOBLIN_BLOWS_MIN - 1 ) / GOBLIN_BLOWS_MIN;
+
+    if ( gob != treasure_goblin )
+        return 0;
+    return gob->max_hit - ( gob_flights + 1 ) * share;
+}
+
 int treasure_goblin_blow( CHAR_DATA *gob, int dam )
 {
     static const int step[] = { 15, 30, 60, 100, 160 };   /* damage */
@@ -287,7 +311,23 @@ int treasure_goblin_blow( CHAR_DATA *gob, int dam )
         if ( dam >= step[i] )
             blows--;
     blows = URANGE( GOBLIN_BLOWS_MIN, blows, GOBLIN_BLOWS_MAX );
-    return ( gob->max_hit + blows - 1 ) / blows;
+    dam = ( gob->max_hit + blows - 1 ) / blows;
+    /* This flight's share is spent: the blow lands, takes nothing, and
+       knocks him loose to run, held or not. */
+    if ( gob == treasure_goblin && gob->hit - dam < gob_floor( gob ) )
+    {
+        int allowed = gob->hit - UMAX( gob_floor( gob ), 0 );
+
+        if ( allowed <= 0 )
+        {
+            gob_shaken_loose = true;
+            gob->hit++;                 /* the 1 below takes nothing */
+            return 1;
+        }
+        gob_shaken_loose = true;
+        dam = allowed;
+    }
+    return dam;
 }
 
 /* Copper laid on the floor as the fewest piles that carry it. */
@@ -359,6 +399,22 @@ void treasure_goblin_struck( CHAR_DATA *ch, CHAR_DATA *gob, bool held )
                  gob, coins, NULL, TO_ROOM );
     }
 
+    if ( gob_shaken_loose && gob == treasure_goblin )
+    {
+        /* Held or not, he has given up this flight's share: he runs. */
+        gob_shaken_loose = false;
+        held = false;
+        affect_strip( gob, gsn_stunning_blow );
+        affect_strip( gob, gsn_sleep );
+        REMOVE_BIT( gob->affected_by2, AFF2_STUNNED );
+        REMOVE_BIT( gob->affected_by, AFF_SLEEP );
+        if ( gob->position < POS_STANDING )
+        {
+            gob->position = POS_STANDING;
+            act( "The blow knocks $n loose, and he scrambles for the exit!",
+                 gob, NULL, NULL, TO_ROOM );
+        }
+    }
     if ( held || gob_pinned( gob ) )
     {
         /* damage() stood him up for the fight; a held goblin stays down
@@ -379,6 +435,8 @@ void treasure_goblin_struck( CHAR_DATA *ch, CHAR_DATA *gob, bool held )
     }
     if ( gob->in_room == was_in )
         gob_teleport( gob, NULL, "nowhere to run" );
+    if ( gob == treasure_goblin && gob->in_room != was_in )
+        gob_flights++;
 }
 
 /*
@@ -399,6 +457,8 @@ bool treasure_goblin_cheats_death( CHAR_DATA *killer, CHAR_DATA *gob )
     if ( gob == treasure_goblin && gob->hit < gob_hp )
         gob->hit = gob_hp;
     gob->hit -= ( gob->max_hit + GOBLIN_BLOWS_MIN - 1 ) / GOBLIN_BLOWS_MIN;
+    if ( gob == treasure_goblin && gob->hit < gob_floor( gob ) && gob_floor( gob ) > 0 )
+        gob->hit = gob_floor( gob );
     if ( gob->hit < 1 )
     {
         gob->position = POS_DEAD;
@@ -457,10 +517,10 @@ void treasure_goblin_slain( CHAR_DATA *ch, CHAR_DATA *gob )
     act( "$n's sack bursts open as $e falls, and a river of coin pours out!",
          gob, NULL, NULL, TO_ROOM );
     gob_where( gob->in_room, where, sizeof(where) );
-    snprintf( line, sizeof(line), "Treasure goblin: slain by %s in %s, dropping "
-              "%s.",
+    snprintf( line, sizeof(line), "Treasure goblin: slain by %s in %s after %d "
+              "flights, dropping %s.",
               who == NULL ? "nothing" : ( IS_NPC(who) ? who->short_descr : who->name ),
-              where, price );
+              where, gob == treasure_goblin ? gob_flights : 0, price );
     log_string( line );
     wizinfo( line, LEVEL_IMMORTAL );
 }

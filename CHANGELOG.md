@@ -149,6 +149,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **A held treasure goblin no longer dies in a few blows** (2026-10-21).
+  Bash, trip and stunning blow had just been made to hold him, and a hold
+  let a fighter's rounds land shares without a single flight: Trentlin's
+  bash wore one nearly to death and Misery finished it in two blows. His
+  hit points now stop at one share per flight, so twelve flights are the
+  floor whatever holds him, and the blow past that knocks him loose to
+  run. The kill line in the log says how many flights it took.
+
 - **Second review of 2026-10-20's work.** The published `log/toc.log`
   named the black market dealer's and the goblin's current room every few
   minutes; it now logs only where they were, and WIZINFO carries where

@@ -161,3 +161,46 @@ class TreasureGoblinLiveTests(unittest.TestCase):
 
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
             self.assertIn("Treasure goblin: slain by Zchaser", log)
+
+    def test_held_he_still_gives_up_one_share_a_flight(self) -> None:
+        """2026-10-21: a bash held him through whole rounds of blows, each
+        taking a full share, and Misery finished the worn-down goblin in
+        two blows. Held or not, he loses one hardest share per flight and
+        then runs."""
+        with LiveMud(extra_env={"TOC_GOBLIN_STILL": "1"}) as mud:
+            for name in ("Zbasher", "Zwarden"):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PASSWORD)
+                    client.drain(1.0)
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
+            patch_player_file(mud, "Zbasher", Levl=50, Room=4207)
+            patch_player_file(mud, "Zwarden", Levl=70, Room=START)
+
+            with mud.connect(timeout=120) as basher, mud.connect(timeout=120) as warden:
+                login(basher, "Zbasher", PASSWORD)
+                login(warden, "Zwarden", PASSWORD)
+                run(basher, "scroll 0", 1.0)
+                run(warden, "scroll 0", 1.0)
+                self.assertIn("in room %d" % START, run(warden, "goblin here", 2.0))
+                run(warden, "set skill zbasher bash 100", 1.2)
+                run(warden, "set char zbasher move 30000", 1.2)
+
+                pinned = False
+                for _ in range(12):
+                    status = run(warden, "goblin", 1.0)
+                    room = int(re.search(r"is in room (\d+)", status).group(1))
+                    run(warden, "transfer zbasher %d" % room, 1.0)
+                    reply = run(basher, "bash goblin", 9.0)   # and the rounds after
+                    if "too dazed to run" in reply:
+                        pinned = True
+                        break
+                self.assertTrue(pinned, "no bash landed in twelve tries")
+
+                status = run(warden, "goblin", 1.0)
+                hit, top = map(int, re.search(r"(\d+)/(\d+) hit points", status).groups())
+                flights = basher.transcript.count("scurries off") + basher.transcript.count("dives through it")
+                share = -(-top // 13)
+                self.assertLessEqual(top - hit, (flights + 1) * share,
+                                     "more than a share a flight came off a held goblin")
+                self.assertGreater(hit, 0)

@@ -3,6 +3,11 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261021a 2026-10-21
+The treasure goblin can be held by a bash, a trip or a stun, but only so
+long: one good blow while he is down and he is knocked loose and runs.
+Every goblin still takes at least twelve flights to bring down.
+
 @ 20261020l 2026-10-20
 Fixes: bash, trip and stunning blow now hold the treasure goblin, and
 nobody can FOLLOW him or the black market dealer. Abandoning a daily

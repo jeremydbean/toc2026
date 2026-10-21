@@ -2467,7 +2467,15 @@ up and wakes him, and a bash, trip or stunning blow holds him for the
 blow that carries it (a stunning blow's stun is laid on after `damage()`
 returns, which a goblin who had already run never received). He shakes
 a pin off at `GOBLIN_UNSTUN_ODDS` a pulse; his moves are topped up so he
-never runs out. A copy staff MLOAD runs and spills like him but leaves the real
+never runs out. **A hold never buys more than one share a flight**
+(`gob_floor()`): his hit points may not fall below one hardest share for
+every flight so far and one more, so he cannot die before his twelfth
+flight however he is held. The blow that would take more takes nothing,
+sets `gob_shaken_loose`, and he runs, stun or no stun. Without it a bash
+held him through whole rounds of a fighter's blows, each a full share:
+Trentlin's bash wore one down that way on 2026-10-21 and Misery finished
+it in two blows. Flights are counted (`gob_flights`) only when he leaves
+the room; the kill line says how many. A copy staff MLOAD runs and spills like him but leaves the real
 goblin's chase clocks alone, and his hoard is capped where `long` is 32
 bits. Appearances go to the log and WIZINFO, the room to WIZINFO only;
 kills to both with the room (he is dead); escapes and drifts to the log
