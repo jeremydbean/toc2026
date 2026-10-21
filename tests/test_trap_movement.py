@@ -64,14 +64,26 @@ class TrapMovementLiveTests(unittest.TestCase):
                 # The cloud's 2d8 kills a player on 1 hit point about one
                 # time in four (dead is -11); a survivor simply arrives,
                 # which is correct, so walk out until one does not.
+                #
+                # A survivor is also poisoned, and a poison tick can kill
+                # them in the Temple between tries -- CI, 2026-10-21: that
+                # death's "KILLED" was read with the next try's WEST, the
+                # dead walker was still resting in the Halls, and the test
+                # took it for the trap's. So each try stands the walker up,
+                # reads off anything already said, and counts only a death
+                # that came with this departure's gas.
                 for _ in range(40):
                     run(trapper, "restore ztrapper", 0.3)
                     run(trapper, "cast 'stinking cloud'", 0.8)
                     run(trapper, "restore zwalker", 0.4)
+                    run(trapper, "force zwalker stand", 0.4)
                     run(trapper, "transfer zwalker %d" % HALLS, 0.6)
+                    walker.drain(0.5)
                     said = run(walker, "west", 2.0)
-                    if "KILLED" in said:
+                    if "KILLED" in said and "Poison gas!" in said:
                         break
+                    if "KILLED" in said:
+                        continue   # the poison's tick, not the departure
                     # The control: a trap that does not kill lets the move
                     # finish.
                     self.assertRegex(run(trapper, "stat char zwalker", 1.4),
