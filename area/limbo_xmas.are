@@ -870,7 +870,7 @@ Prancer is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 human~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
 CDEFIKNQS ABLN EJK HIM
@@ -890,7 +890,7 @@ Dasher is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 human~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
 CDEFIKNQS ABLN EJK HIM
@@ -910,7 +910,7 @@ Dancer is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 dwarf~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -15 -14 -14 -10
 CDEFIKNQS ABLN EJK HIM
@@ -930,7 +930,7 @@ Donder is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 dwarf~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
 CDEFIKNQS ABLN EJK HIM
@@ -950,7 +950,7 @@ Blitzen is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 elf~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
 CDEFIKNQS ABLN EJK HIM
@@ -970,7 +970,7 @@ Cupid is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 elf~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
 CDEFIKNQS ABLN EJK HIM
@@ -994,7 +994,7 @@ And they wouldn't let him join in any of their reindeer games.
 So he grew up big and tough and ready to guard Santa!
 ~
 hobbit~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
 CDEFIKNQS ABLN EKJ MHI
@@ -1014,7 +1014,7 @@ Vixen is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 hobbit~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
 CDEFIKNQS ABLN EKJ MHI

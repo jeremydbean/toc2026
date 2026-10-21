@@ -668,6 +668,7 @@ static void credit_automatic_quest_kill( CHAR_DATA *ch, int target_vnum )
     send_to_char("You have almost finished your QUEST!\n\r", ch);
     send_to_char(
         "Return to any questmaster before it is too late!\n\r", ch);
+    alignment_quest_kill(ch, get_mob_index(target_vnum));
     ch->questmob = -1;
     save_char_obj(ch);
 }
@@ -2007,6 +2008,11 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 	    room->name, area_name);
 	quest_tell(questman, ch, buf);
     }
+    if ( alignment_quest_side( victim->pIndexData ) != 0 )
+	quest_tell(questman, ch,
+	    alignment_quest_side( victim->pIndexData ) > 0
+		? "Its death will serve the light."
+		: "Its death will serve the dark.");
 
   /* Guard: vnum must be positive and within hash range. */
 

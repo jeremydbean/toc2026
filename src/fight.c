@@ -1327,7 +1327,7 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
 	    if ( dam > 0 )
 		ch->hit = UMIN( ch->max_hit, ch->hit + dam/20 );
 	    if ( !IS_NPC(ch) )
-		ch->alignment = UMAX( -1000, ch->alignment - 1 );
+		alignment_shift( ch, -1 );
 	}
 
 	/* Sharp: frequent, modest.  Vorpal: rare, spiky. */
@@ -1599,6 +1599,9 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	  dam += dam/2;
     }
 
+    /* Holy and negative power by alignment tier (alignment.c). */
+    dam = alignment_damage_mod( ch, victim, dam, dam_type );
+
     switch(check_immune(victim,dam_type))
     {
 	case(IS_IMMUNE):
@@ -1695,6 +1698,8 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	/* A wound ends a Hyrule kill streak (hyrule_note_kill). */
 	if ( dam > 0 && victim != ch )
 	    hyrule_note_wound( victim );
+	/* The dark's weapon blows drink a share of what they take. */
+	alignment_drain( ch, victim, dam, dt );
     }
     if ( IS_NPC(victim) && victim->pIndexData != NULL )
     {
@@ -3479,9 +3484,7 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
 	    if ( obj->wear_loc == WEAR_NONE )
 		continue;
 
-	    if ( ( IS_OBJ_STAT(obj, ITEM_ANTI_EVIL)    && IS_EVIL(gch)    )
-	    ||   ( IS_OBJ_STAT(obj, ITEM_ANTI_GOOD)    && IS_GOOD(gch)    )
-	    ||   ( IS_OBJ_STAT(obj, ITEM_ANTI_NEUTRAL) && IS_NEUTRAL(gch) ) )
+	    if ( alignment_rejects_obj( gch, obj ) )
 	    {
 		act( "You are zapped by $p.", gch, obj, NULL, TO_CHAR );
 		act( "$n is zapped by $p.",   gch, obj, NULL, TO_ROOM );
@@ -3506,9 +3509,7 @@ int xp_compute( CHAR_DATA *gch, CHAR_DATA *victim, int total_levels,
 {
     int xp,base_exp;
     float group_bonus;
-    int align,level_range;
-    int change;
-    char buf[MAX_STRING_LENGTH];
+    int level_range;
 
     level_range = victim->level - gch->level + 3;
 
@@ -3573,134 +3574,16 @@ base_exp = 200 + 50 * (level_range - 4);
 
     /* do alignment computations */
 
-    align = victim->alignment - gch->alignment;
-
-    if (IS_SET(victim->act,ACT_NOALIGN))
-    {
-	/* no change */
-    }
-
-    else
-    {
-	/* The slayer moves away from the victim's alignment, a point per
-	   hundred between them: killing the good makes you more evil, the
-	   evil more good. This was three branches of the same sum, and the
-	   one for victims within 500 of you was not clamped, so a slayer at
-	   -1000 killing something at -500 went to -1005, and the next kill
-	   through a clamped branch put them back -- "my alignment just
-	   alternates between -1000 and -1005" (Trentlin, 2026-10-20).
-
-	   A victim within 500 of you says nothing about which side you are
-	   on, so it pulls you toward neutral instead, a point per hundred of
-	   your own alignment -- Merc's rule. Without it the ends were one-way
-	   doors: at -1000 every mobile is more good than you, so every kill
-	   pushed you further down and nothing could ever raise you (112
-	   characters sat at -1000 and 217 at 1000, 2026-10-21). */
-	int was = gch->alignment;
-
-	if ( align > 500 || align < -500 )
-	    change = align / 100;
-	else
-	    change = gch->alignment / 100;
-	gch->alignment = (sh_int) URANGE( -1000, gch->alignment - change, 1000 );
-	change = was - gch->alignment;     /* what actually moved */
-	if ( change != 0 && IS_SET(gch->act,PLR_DAMAGE_NUMBERS) )
-	{
-	    snprintf(buf, sizeof(buf), "Your alignment has %s by %d.\n\r",
-		change > 0 ? "lowered" : "risen", change > 0 ? change : -change);
-	    send_to_char(buf,gch);
-	}
-    }
+    /* You are what you slay (alignment.c): the evil move you toward the
+       light, the good toward the dark, the neutral not at all. The old
+       rule pushed you away from every victim, so the ends were one-way
+       doors, and the table below it paid as little as a quarter of a kill
+       for choosing the wrong victim. Now the other side pays more and
+       nothing pays less. */
+    alignment_kill( gch, victim );
 
     /* calculate exp multiplier */
-    if (IS_SET(victim->act,ACT_NOALIGN))
-	xp = base_exp;
-
-    else if (gch->alignment > 500)  /* for goodie two shoes */
-    {
-	if (victim->alignment < -750)
-	    xp = base_exp * 4/3;
-
-	else if (victim->alignment < -500)
-	    xp = base_exp * 5/4;
-
-	else if (victim->alignment > 250)
-	    xp = base_exp * 3/4;
-
-	else if (victim->alignment > 750)
-	    xp = base_exp / 4;
-
-	else if (victim->alignment > 500)
-	    xp = base_exp / 2;
-
-	else
-	    xp = base_exp;
-    }
-
-    else if (gch->alignment < -500) /* for baddies */
-    {
-	if (victim->alignment > 750)
-	    xp = base_exp * 5/4;
-
-	else if (victim->alignment > 500)
-	    xp = base_exp * 11/10;
-
-	else if (victim->alignment < -750)
-	    xp = base_exp * 1/2;
-
-	else if (victim->alignment < -500)
-	    xp = base_exp * 3/4;
-
-	else if (victim->alignment < -250)
-	    xp = base_exp * 9/10;
-
-	else
-	    xp = base_exp;
-    }
-
-    else if (gch->alignment > 200)  /* a little good */
-    {
-
-	if (victim->alignment < -500)
-	    xp = base_exp * 6/5;
-
-	else if (victim->alignment > 750)
-	    xp = base_exp * 1/2;
-
-	else if (victim->alignment > 0)
-	    xp = base_exp * 3/4;
-
-	else
-	    xp = base_exp;
-    }
-
-    else if (gch->alignment < -200) /* a little bad */
-    {
-	if (victim->alignment > 500)
-	    xp = base_exp * 6/5;
-
-	else if (victim->alignment < -750)
-	    xp = base_exp * 1/2;
-
-	else if (victim->alignment < 0)
-	    xp = base_exp * 3/4;
-
-	else
-	    xp = base_exp;
-    }
-
-    else /* neutral */
-    {
-
-	if (victim->alignment > 500 || victim->alignment < -500)
-	    xp = base_exp * 4/3;
-
-	else if (victim->alignment < 200 && victim->alignment > -200)
-	    xp = base_exp * 1/2;
-
-	else
-	    xp = base_exp;
-    }
+    xp = base_exp * alignment_xp_percent( gch, victim ) / 100;
 
     /* more exp at the low levels. Raised from 10 to 25. EC */
     if (gch->level < 6)

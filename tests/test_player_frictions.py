@@ -57,11 +57,14 @@ class FrictionSourceTests(unittest.TestCase):
 
     def test_alignment_is_clamped_however_it_moves(self) -> None:
 
-        source = (ROOT / "src" / "fight.c").read_text(encoding="latin-1")
-        block = source[source.index("/* do alignment computations */"):source.index("/* calculate exp multiplier */")]
-        self.assertIn("URANGE( -1000, gch->alignment - change, 1000 )", block)
-        self.assertNotIn("gch->alignment -= change", block)
+        # Every move goes through alignment_shift (src/alignment.c) since
+        # the rebuild of 2026-10-21; the kill is one caller of it.
+        source = (ROOT / "src" / "alignment.c").read_text(encoding="latin-1")
+        block = source[source.index("void alignment_shift("):source.index("void alignment_kill(")]
+        self.assertIn("now = URANGE( -1000, was + delta, 1000 );", block)
         self.assertIn('"risen"', block, "a rise is not reported as lowered")
+        fight = (ROOT / "src" / "fight.c").read_text(encoding="latin-1")
+        self.assertNotIn("gch->alignment -= change", fight)
 
     def test_hide_says_which(self) -> None:
         hide = body("src/act_move.c", "void do_hide(")

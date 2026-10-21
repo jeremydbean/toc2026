@@ -330,6 +330,8 @@ DECLARE_DO_FUN( do_fixes );
 DECLARE_DO_FUN( do_goblin );
 DECLARE_DO_FUN( do_use );
 DECLARE_DO_FUN( do_rested );
+DECLARE_DO_FUN( do_alignment );
+DECLARE_DO_FUN( do_devote );
 DECLARE_DO_FUN( do_pull		);
 DECLARE_DO_FUN( do_push		);
 DECLARE_DO_FUN(	do_purge	);

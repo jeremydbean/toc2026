@@ -3,12 +3,19 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261021g 2026-10-21
+Alignment is rebuilt. It has seven tiers now -- Paragon, Virtuous and Kind
+of the light, Balanced, and Ruthless, Vile and Fiend of the dark -- and
+each gives something: the light heals faster and strikes harder with holy
+power, the dark drains life with its blows, the balanced shrug off holy
+and negative damage. You are what you slay: the evil move you toward the
+light, the good toward the dark, the neutral not at all. Slaying the other
+side pays more experience, shopkeepers favour their own side, and DEVOTE
+at the Temple steers you on purpose. Type ALIGNMENT to see where you stand.
+
 @ 20261021f 2026-10-21
-Alignment is no longer stuck at -1000 or 1000. Killing something more
-than 500 away from you still moves you away from it; killing your own
-kind now pulls you a little toward neutral. An evil character who wants
-to climb back kills evil things; a good one who stays good kills evil.
-See HELP ALIGNMENT.
+Alignment is no longer stuck at -1000 or 1000: slaying the other side
+always moves you back. See the alignment entry above, and HELP ALIGNMENT.
 
 @ 20261021e 2026-10-21
 REPAIR ALL mends everything you wear and carry that needs it, cheapest

@@ -3264,11 +3264,13 @@ static bool wear_requirements_met( CHAR_DATA *ch, OBJ_DATA *obj )
         return false;
     }
 
-    if ( ( IS_OBJ_STAT(obj, ITEM_ANTI_EVIL) && IS_EVIL(ch) )
-        || ( IS_OBJ_STAT(obj, ITEM_ANTI_GOOD) && IS_GOOD(ch) )
-        || ( IS_OBJ_STAT(obj, ITEM_ANTI_NEUTRAL) && IS_NEUTRAL(ch) ) )
+    if ( alignment_rejects_obj( ch, obj ) )
     {
-        act( "$p rejects your alignment.", ch, obj, NULL, TO_CHAR );
+        char buf[MAX_STRING_LENGTH];
+
+        snprintf( buf, sizeof(buf), "$p rejects you: it is for %s, and you are %s.",
+                  alignment_obj_requirement( obj ), alignment_tier_name( ch->alignment ) );
+        act( buf, ch, obj, NULL, TO_CHAR );
         return false;
     }
 
@@ -4778,7 +4780,7 @@ static bool buy_one( CHAR_DATA *ch, CHAR_DATA *keeper, char *argument )
     int roll;
 
     obj  = get_obj_carry( keeper, argument );
-    cost = get_cost( keeper, obj, true );
+    cost = alignment_price( ch, keeper, get_cost( keeper, obj, true ), true );
 
     if(cost <= 0 || !can_see_obj(ch,obj)) {
 	act( "$n tells you 'I don't sell that -- try 'list''.",
@@ -4889,7 +4891,7 @@ void do_list( CHAR_DATA *ch, char *argument )
 	{
 	    if ( obj->wear_loc == WEAR_NONE
 	    &&   can_see_obj( ch, obj )
-	    &&   ( cost = get_cost( keeper, obj, true ) ) > 0
+	    &&   ( cost = alignment_price( ch, keeper, get_cost( keeper, obj, true ), true ) ) > 0
 	    &&   ( arg[0] == '\0'
  	       ||  is_name(arg,obj->name) ))
 	    {
@@ -4974,7 +4976,7 @@ void do_sell( CHAR_DATA *ch, char *argument )
     }
 
     /* won't buy rotting goods */
-    if ( obj->timer || ( cost = get_cost( keeper, obj, false ) ) <= 0 )
+    if ( obj->timer || ( cost = alignment_price( ch, keeper, get_cost( keeper, obj, false ), false ) ) <= 0 )
     {
 	act( "$n looks uninterested in $p.", keeper, obj, ch, TO_VICT );
 	return;
@@ -4996,7 +4998,7 @@ void do_sell( CHAR_DATA *ch, char *argument )
     {
         send_to_char("You haggle with the shopkeeper.\n\r",ch);
         cost += obj->cost / 2 * roll / 100;
-        cost = UMIN(cost,95 * get_cost(keeper,obj,true) / 100);
+        cost = UMIN(cost,95 * alignment_price(ch,keeper,get_cost(keeper,obj,true),true) / 100);
         {
             /* What the keeper can actually pay, across every
                denomination -- this compared against his gold coins
@@ -5084,7 +5086,7 @@ void do_value( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( cost = get_cost( keeper, obj, false ) ) <= 0 )
+    if ( ( cost = alignment_price( ch, keeper, get_cost( keeper, obj, false ), false ) ) <= 0 )
     {
 	act( "$n looks uninterested in $p.", keeper, obj, ch, TO_VICT );
 	return;

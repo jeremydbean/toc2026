@@ -1817,7 +1817,7 @@ void spell_demonfire(int sn, int level, CHAR_DATA *ch, void *vo)
 	send_to_char("The demons turn upon you!\n\r",ch);
     }
 
-    ch->alignment = UMAX(-1000, ch->alignment - 50);
+    alignment_shift( ch, -50 );
 
     if (victim != ch)
     {
@@ -2705,7 +2705,7 @@ void spell_energy_drain( int sn, int level, CHAR_DATA *ch, void *vo )
 	return;
     }
 
-    ch->alignment = UMAX(-1000, ch->alignment - 50);
+    alignment_shift( ch, -50 );
     if ( victim->level <= 2 )
     {
 	dam		 = ch->hit + 1;
@@ -3396,6 +3396,12 @@ void spell_identify( int sn, int level, CHAR_DATA *ch, void *vo )
             );
     }
     send_to_char( buf, ch );
+    if ( alignment_obj_requirement( obj )[0] != '\0' )
+    {
+        snprintf( buf, sizeof(buf), "It may be worn only by %s.\n\r",
+                  alignment_obj_requirement( obj ) );
+        send_to_char( buf, ch );
+    }
 
     switch ( obj->item_type )
     {
@@ -3568,6 +3574,18 @@ void spell_know_alignment( int sn, int level, CHAR_DATA *ch, void *vo )
     int ap;
 
     ap = victim->alignment;
+
+    if ( !IS_NPC(victim) )
+    {
+        char buf[MAX_STRING_LENGTH];
+
+        snprintf( buf, sizeof(buf), "$N is %s, %s.",
+                  alignment_tier_name( ap ),
+                  ap >= 300 ? "of the light" : ap <= -300 ? "of the dark"
+                            : "between the light and the dark" );
+        act( buf, ch, NULL, victim, TO_CHAR );
+        return;
+    }
 
          if ( ap >  700 ) msg = "$N has a pure and good aura.";
     else if ( ap >  350 ) msg = "$N is of excellent moral character.";

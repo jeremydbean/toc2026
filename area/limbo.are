@@ -873,7 +873,7 @@ faintly.  He is very helpful and will gladly lend a hand if you are a good
 and just person.
 ~
 human~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
 CDEFIKNQS ABLN EJK HIM
@@ -895,7 +895,7 @@ creater Glorianna gave to him when he was made.  He is very helpful and
 will lend a hand to you if you are a good and just person.
 ~
 human~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
 CDEFIKNQS ABLN EJK HIM
@@ -918,7 +918,7 @@ enemies without it.  He will only lend a hand to you if you are a good and
 just person.
 ~
 dwarf~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -15 -14 -14 -10
 CDEFIKNQS ABLN EJK HIM
@@ -941,7 +941,7 @@ strongest of enemies.  He is very helpful and will lend a hand to you if you
 are a good and just person.
 ~
 dwarf~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
 CDEFIKNQS ABLN EJK HIM
@@ -963,7 +963,7 @@ that his creater Silverstar gave to him when he was made.  He is very helpful
 and will lend a hand to you if you are for the cause of good.
 ~
 elf~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
 CDEFIKNQS ABLN EJK HIM
@@ -985,7 +985,7 @@ that his creater Silverstar gave to him when he was made.  He is very helpful
 and will lend a hand to you if you are for the cause of good.
 ~
 elf~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
 CDEFIKNQS ABLN EJK HIM
@@ -1007,7 +1007,7 @@ creater Perri gave to him when he was made.  He is very helpfull and will lend
 a hand to you if you are for the cause of good.
 ~
 hobbit~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
 CDEFIKNQS ABLN EKJ MHI
@@ -1029,7 +1029,7 @@ creater Perri gave to him when he was made.  He is very helpfull and will lend
 a hand to you if you are for the cause of good.
 ~
 hobbit~
-ACGTV DFN 0 M
+ACGTV DFN -800 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
 CDEFIKNQS ABLN EKJ MHI

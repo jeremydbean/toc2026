@@ -10,6 +10,23 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **Alignment, rebuilt** (`src/alignment.c`; owner, 2026-10-21: "more
+  modern"). Still one number, saved as ever, with IS_GOOD/IS_EVIL at
+  +/-300; around it: seven named tiers (Paragon, Virtuous, Kind; Balanced;
+  Ruthless, Vile, Fiend) shown by the new ALIGNMENT command and on SCORE;
+  kills move you toward the side opposite the victim's (neutral victims,
+  NOALIGN ones and foes fifteen levels below move nothing, eight below
+  half); a quest target of a side moves you 25 more; DEVOTE LIGHT, DARK or
+  BALANCE at the Temple moves 100 for twenty kills' coin, every thirty
+  minutes (`AlignDeed` under case 'A'). Perks by tier: the light gets
+  regeneration and holy damage, the dark a drain on weapon blows and
+  negative damage, the balanced a ward against both. The experience table
+  -- which paid as little as a quarter of a kill and had two branches it
+  could not reach -- is now 100% plus 10% a tier for slaying the other
+  side. Shopkeepers of your side charge a tenth less and pay a tenth more;
+  of the other side the reverse. Gear checks share one helper, and WEAR,
+  IDENTIFY and COMPARE say which side an item is for. `tests/test_alignment.py`.
+
 - **Login fixes** (`src/fixes.c`; owner, 2026-10-21): the standard way to
   correct characters after a bug fix. Each fix has a permanent id, runs
   once per character at their next login, is recorded in the player file

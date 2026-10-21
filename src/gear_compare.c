@@ -385,11 +385,9 @@ static bool gear_item_usable( CHAR_DATA *ch, OBJ_DATA *obj, int slot,
         snprintf( reason, reason_size, "needs repair" );
         return false;
     }
-    if ( (IS_OBJ_STAT( obj, ITEM_ANTI_EVIL ) && IS_EVIL( ch ))
-        || (IS_OBJ_STAT( obj, ITEM_ANTI_GOOD ) && IS_GOOD( ch ))
-        || (IS_OBJ_STAT( obj, ITEM_ANTI_NEUTRAL ) && IS_NEUTRAL( ch )) )
+    if ( alignment_rejects_obj( ch, obj ) )
     {
-        snprintf( reason, reason_size, "rejects your alignment" );
+        snprintf( reason, reason_size, "it rejects the %s", alignment_tier_name( ch->alignment ) );
         return false;
     }
     if ( !gear_race_allowed( ch, obj ) )

@@ -396,6 +396,27 @@ Study of the Sage, in the Astral Plane. See the [Psionics Guide](psionics.md)
 for the complete power list, costs, defensive interactions, and protected-room
 rules.
 
+### Alignment
+
+Alignment runs from -1000 to 1000 in seven tiers: Fiend, Vile and Ruthless
+of the dark; Balanced; Kind, Virtuous and Paragon of the light. You pick a
+starting side at creation, and from then on you are what you slay: killing
+evil moves you toward the light, killing good toward the dark, and killing
+neutral creatures moves nothing. Foes far below your level count for half or
+nothing. A quest target of either side moves you further, and `devote light`,
+`devote dark` or `devote balance` at the Temple steers you on purpose for an
+offering, once every thirty minutes.
+
+Each tier gives more the further it is from the middle. The light
+regenerates hit points faster and deals more holy damage; the dark's weapon
+blows drain a little life and its negative damage hits harder; the balanced
+take less holy and negative damage. Slaying the other side pays 10% more
+experience per tier, and no kill ever pays less. Shopkeepers of your side
+charge 10% less and pay 10% more, and those of the other side the reverse.
+Gear marked anti-good, anti-evil or anti-neutral still refuses that side;
+`identify` says who may wear it. Type `alignment` to see your tier, how far
+the next one is, what it gives you and when you may next devote.
+
 ## Achievements
 
 Achievements provide permanent, noncombat progression for a character. They

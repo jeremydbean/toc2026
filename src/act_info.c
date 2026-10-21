@@ -1787,15 +1787,14 @@ void do_score( CHAR_DATA *ch, char *argument )
       }
 
 
-      snprintf(buf, sizeof(buf),"| You are %8s                            %15s|\n\r",
-              (ch->alignment > 900 ? "angelic." :
-               (ch->alignment > 700 ? "saintly." :
-                (ch->alignment > 350 ? "good.   " :
-                 (ch->alignment > 100 ? "kind.   " :
-                  (ch->alignment > -100 ? "neutral." :
-                   (ch->alignment > -350 ? "mean.   " :
-                    (ch->alignment > -700 ? "evil.   " :
-                     (ch->alignment > -900 ? "demonic." : "satanic."))))))))," ");
+      {
+         /* The alignment tier (alignment.c); ALIGNMENT says the rest. */
+         char tier[16];
+
+         snprintf(tier, sizeof(tier), "%s.", alignment_tier_name(ch->alignment));
+         snprintf(buf, sizeof(buf),"| You are %-9s                           %15s|\n\r",
+              tier, " ");
+      }
       send_to_char(buf, ch);
 
       for (i = 0; i < 4; i++)

@@ -6919,24 +6919,49 @@ send a NOTE to immortal.
 See also: WANTED, NOTE
 ~
 
-0 ALIGNMENT ALIGN GOOD EVIL NEUTRAL~
-Your alignment runs from -1000 (utterly evil) to 1000 (saintly) and shows
-on SCORE.  You are good at 300 and above, evil at -300 and below, and
-neutral in between.
+0 ALIGNMENT ALIGN GOOD EVIL NEUTRAL DEVOTE~
+Syntax: alignment
+        devote light | dark | balance     (at the Temple)
 
-Killing moves it.  A victim more than 500 away from you shifts you away
-from it: slaying the evil makes you better, slaying the good makes you
-worse.  A victim within 500 of you -- your own kind -- pulls you a little
-toward neutral instead, so nobody is stuck at either end.  The further
-apart, the bigger the shift.  With DAMAGENUMBERS on, the game tells you
-each change.  Mobiles are not moved by their kills.
+Your alignment runs from -1000 to 1000 in seven tiers:
 
-What it touches:
-  - Gear.  An item marked anti-good, anti-evil or anti-neutral zaps off
-    the moment someone of that alignment wears it.
-  - Spells.  KNOW ALIGNMENT reads another's; DETECT GOOD and DETECT EVIL
-    mark them in the room; DISPEL GOOD, DISPEL EVIL and PROTECTION EVIL
-    bite by alignment.
+  Fiend  Vile  Ruthless | Balanced | Kind  Virtuous  Paragon
+  -900   -550    -300      -299..299   300    550       900
+
+Kind and brighter are of the light (good), Ruthless and darker of the
+dark (evil).  ALIGNMENT shows your tier, how far the next one is, what
+your tier gives you and when you may next DEVOTE; SCORE names the tier.
+
+What moves it -- you are what you slay:
+  - Slaying the evil moves you toward the light, slaying the good toward
+    the dark: a point for every hundred of the victim's alignment, half
+    for a foe eight or more levels below you, nothing fifteen below.
+    Slaying the neutral moves nothing.  To climb out of the dark, hunt
+    evil; to sink, hunt good.
+  - A quest target of either side moves you 25 further; the quest master
+    says which side its death serves.
+  - DEVOTE LIGHT, DARK or BALANCE at the Temple or its altar moves you
+    100 that way (BALANCE toward the middle) for an offering worth twenty
+    kills of your level, once every thirty minutes.
+You are told whenever you cross into a new tier; DAMAGENUMBERS shows
+every small change.
+
+What it gives (more for each tier further from the middle):
+  - Light: hit point regeneration +5/10/15%, holy damage +5/10/15%.
+  - Dark:  weapon blows drain 2/4/6% of their damage as hit points,
+           negative damage +5/10/15%.
+  - Balanced: holy and negative damage against you -15%.
+  - Experience: +10% a tier for slaying the other side (balanced: +10%
+    for slaying either).  No kill ever pays less for its alignment.
+  - Shops: a keeper of your side charges 10% less and pays 10% more; one
+    of the other side the reverse.  Neutral keepers, balanced customers
+    and the black market trade at the list price.
+  - Gear: an item marked anti-good, anti-evil or anti-neutral will not be
+    worn by that side, and zaps off if you cross over while wearing it.
+    IDENTIFY says who may wear it.
+  - Spells: KNOW ALIGNMENT names a player's tier; DETECT GOOD and DETECT
+    EVIL mark the sides; DISPEL GOOD, DISPEL EVIL and PROTECTION EVIL
+    bite by side.
 
 See also: SCORE, 'KNOW ALIGNMENT', 'DETECT EVIL', 'DETECT GOOD'
 ~

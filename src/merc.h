@@ -902,6 +902,25 @@ bool  rest_room_ok     args( ( CHAR_DATA *ch, ROOM_INDEX_DATA *room ) );
 void  rest_xp_on_quit  args( ( CHAR_DATA *ch ) );
 void  rest_xp_on_login args( ( CHAR_DATA *ch ) );
 int   rest_xp_bonus    args( ( CHAR_DATA *ch, int xp ) );
+/* alignment.c -- tiers, what moves alignment and what it gives */
+#define ALIGN_DEED_SHIFT       100          /* one DEVOTE */
+#define ALIGN_DEED_COOLDOWN    ( 30 * 60 )  /* seconds between DEVOTEs */
+#define ALIGN_DEED_KILLS       20           /* its price, in kills of your level */
+#define ALIGN_QUEST_SHIFT      25           /* a quest target of a side */
+int   alignment_tier         args( ( int alignment ) );
+const char *alignment_tier_name args( ( int alignment ) );
+int   alignment_side         args( ( int alignment ) );
+void  alignment_shift        args( ( CHAR_DATA *ch, int delta ) );
+void  alignment_kill         args( ( CHAR_DATA *gch, CHAR_DATA *victim ) );
+int   alignment_xp_percent   args( ( CHAR_DATA *gch, CHAR_DATA *victim ) );
+int   alignment_damage_mod   args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dam_type ) );
+void  alignment_drain        args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt ) );
+int   alignment_regen        args( ( CHAR_DATA *ch, int gain ) );
+long  alignment_price        args( ( CHAR_DATA *ch, CHAR_DATA *keeper, long cost, bool fBuy ) );
+bool  alignment_rejects_obj  args( ( CHAR_DATA *ch, OBJ_DATA *obj ) );
+const char *alignment_obj_requirement args( ( OBJ_DATA *obj ) );
+int   alignment_quest_side   args( ( MOB_INDEX_DATA *pMob ) );
+void  alignment_quest_kill   args( ( CHAR_DATA *ch, MOB_INDEX_DATA *pMob ) );
 bool  oracle_refuses_sleep args( ( CHAR_DATA *ch ) );
 bool  is_oracle_mob   args( ( CHAR_DATA *ch ) );
 bool  is_killuminati  args( ( CHAR_DATA *ch ) );
@@ -2160,6 +2179,7 @@ struct  pc_data
     int                 daily_streak;         /* days running with all three done */
     long                daily_last_full;      /* the last day all three were done */
     long                daily_wait_until;     /* no daily before this (a given-up one) */
+    long                align_deed_at;        /* no DEVOTE before this */
     char *              fixes_done;           /* login fixes applied (fixes.c) */
     /* Training-yard run; deliberately not persisted. */
     long                dummy_dealt;

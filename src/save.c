@@ -730,6 +730,8 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
              ch->pcdata->daily_streak, ch->pcdata->daily_last_full );
     if ( ch->pcdata->daily_wait_until > (long) current_time )
         fprintf( fp, "DailyWait %ld\n", ch->pcdata->daily_wait_until );
+    if ( ch->pcdata->align_deed_at > (long) current_time )
+        fprintf( fp, "AlignDeed %ld\n", ch->pcdata->align_deed_at );
     fprintf( fp, "SesLogin %ld\n", ch->pcdata->last_session_login );
     fprintf( fp, "SesDur   %ld\n", ch->pcdata->last_session_dur );
     fprintf( fp, "SesExpG  %ld\n", ch->pcdata->last_session_exp_gain );
@@ -1388,6 +1390,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->daily_streak            = 0;
     ch->pcdata->daily_last_full         = 0;
     ch->pcdata->daily_wait_until        = 0;
+    ch->pcdata->align_deed_at           = 0;
     ch->pcdata->last_session_login      = 0;
     ch->pcdata->last_session_dur        = 0;
     ch->pcdata->last_session_exp_gain   = 0;
@@ -1814,6 +1817,16 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "AffectedBy",	ch->affected_by,	fread_number( fp ) );
 	    KEY( "AfBy",	ch->affected_by,	fread_number( fp ) );
 	    KEY( "AfBy2",       ch->affected_by2,       fread_number( fp ) );
+	    if ( !str_cmp( word, "AlignDeed" ) )
+	    {
+		long until = fread_long( fp );
+
+		/* Never further off than one wait, whatever the file says. */
+		ch->pcdata->align_deed_at = until > 0
+		    ? UMIN( until, (long) current_time + ALIGN_DEED_COOLDOWN ) : 0;
+		fMatch = true;
+		break;
+	    }
 	    if ( !str_cmp( word, "Alignment" ) || !str_cmp( word, "Alig" ) )
 	    {
 		int align = fread_number( fp );

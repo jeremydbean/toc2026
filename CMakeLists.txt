@@ -72,6 +72,7 @@ set(SRC_FILES
     src/fixes.c
     src/goblin.c
     src/rested.c
+    src/alignment.c
     src/wizlist.c
 )
 

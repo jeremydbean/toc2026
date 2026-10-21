@@ -686,6 +686,8 @@ int hit_gain( CHAR_DATA *ch )
     if (!IS_NPC(ch) && ch->in_room != NULL && IS_SET(ch->in_room->room_flags, ROOM_HP_REGEN) )
 	gain *= 2;
 
+    gain = alignment_regen( ch, gain );     /* the light heals faster */
+
     return UMIN(gain, ch->max_hit - ch->hit);
 }
 

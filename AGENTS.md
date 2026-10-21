@@ -2565,6 +2565,42 @@ kills to both with the room (he is dead); escapes and drifts to the log
 with the room he left. Staff command GOBLIN.
 `tests/test_treasure_goblin.py` chases one down live.
 
+## Alignment
+
+`src/alignment.c` (owner, 2026-10-21: rebuilt to be "more modern"; the
+design was chosen from four options -- a tiered single axis, kills plus
+Temple deeds plus quests, tier perks plus an XP bonus plus shop prices,
+and existing values kept). The number is unchanged on disk (`Alig`) and
+`IS_GOOD`/`IS_EVIL` still start at 300/-300, so the 615 anti-good,
+anti-evil and anti-neutral items and every spell that reads a side mean
+what they did. The rules:
+
+- **Every change goes through `alignment_shift()`.** It clamps, tells a
+  DAMAGENUMBERS player the small moves, tells everyone a change of tier
+  and logs it with `watch_log`. Do not write `ch->alignment` anywhere
+  else in gameplay code; SET and the loader are the exceptions.
+- **You are what you slay** (`alignment_kill`, from `xp_compute`): the
+  side opposite the victim's, a point per hundred of its alignment, half
+  eight levels down, nothing fifteen down; neutral and `ACT_NOALIGN`
+  victims (every school monster, by race) move nothing. The old rule
+  pushed you away from every victim, so -1000 and 1000 were one-way doors.
+- **No kill pays less** (`alignment_xp_percent`): 100%, plus 10% a tier
+  for slaying the other side, 10% for the balanced slaying either.
+- **Perks are for players only**, at three hooks: `alignment_damage_mod`
+  before `check_immune` in `damage()`, `alignment_drain` inside the block
+  where hit points really come off (so the dummy, which absorbs, feeds
+  nobody), and `alignment_regen` at the end of `hit_gain`.
+- **Shop prices** go through `alignment_price()` at all five `get_cost`
+  call sites in `act_obj.c`; the black market is exempt. A new price
+  shown to a player must be wrapped the same way.
+- **Gear checks** are `alignment_rejects_obj()`; `test_alignment.py`
+  fails on an open-coded `ITEM_ANTI_EVIL && IS_EVIL`.
+- **DEVOTE** is a Temple deed (4207 or the altar 4208): `ALIGN_DEED_SHIFT`
+  for `ALIGN_DEED_KILLS` kills' coin, `ALIGN_DEED_COOLDOWN` apart, saved
+  as `AlignDeed <epoch>` under **case 'A'**, clamped to one wait on load.
+- `alignment` and `devote` sit after `alias` and `deposit` in the command
+  table, so `al` is still ALIAS and `de` still DEPART.
+
 ## Rested Experience And Daily Quests
 
 Both after World of Warcraft (owner, 2026-10-20).

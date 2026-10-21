@@ -66,6 +66,7 @@ Contextual movement may also be attached to `push`, `pull`, `move`, `turn`,
 |---|---|
 | `look`, `examine`, `read`, `listen` | Inspect the room, targets, text, or sound |
 | `score`, `attribute`, `affect` | Level, stats, resources, and active effects |
+| `alignment`, `devote light/dark/balance` | Your alignment tier, its perks and how to move it; `devote` works at the Temple |
 | `achievements [view]` | Points and progress for levels, bosses, relics, crafting, economy, unusual deaths, quests, exploration, and Hyrule |
 | `equipment`, `inventory`, `worth` | Worn items, carried items, and money |
 | `consider <target>`, `danger` | Estimate nearby danger |
