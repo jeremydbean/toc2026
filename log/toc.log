@@ -146615,3 +146615,19 @@ Wed Oct 21 01:49:10 2026 :: Log Trentlin [4210]: sleep
 Wed Oct 21 01:49:11 2026 :: Log Trentlin [4210]: quit
 Wed Oct 21 01:49:11 2026 :: Trentlin has quit.
 Wed Oct 21 01:49:11 2026 :: [QUIT] Player rejoined the real world.
+Wed Oct 21 01:51:58 2026 :: Sock.sinaddr:  178.156.184.20
+Wed Oct 21 01:51:58 2026 :: EOF encountered on read.
+Wed Oct 21 01:52:25 2026 :: Treasure goblin: vanished from room 734 (Inside the Curtain Wall, camelot.are) (too long in one area).
+Wed Oct 21 01:52:40 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Wed Oct 21 01:52:44 2026 :: Log WebAdmin: fsave
+Wed Oct 21 01:52:50 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Wed Oct 21 01:52:53 2026 :: Received signal 15; saving players and shutting down.
+Wed Oct 21 01:52:53 2026 :: Normal termination of game.
+Wed Oct 21 01:52:54 2026 ::  INIT OK 
+Wed Oct 21 01:52:54 2026 :: walkto_load: 157 destinations.
+Wed Oct 21 01:52:54 2026 :: changes_load: 121 entries.
+Wed Oct 21 01:52:54 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Wed Oct 21 01:52:54 2026 :: ROM is ready to rock on port 9000.
+Wed Oct 21 01:52:54 2026 :: Treasure goblin: appeared.
+Wed Oct 21 01:52:54 2026 :: Automated backup complete.
+Wed Oct 21 01:52:54 2026 :: Daily backup complete.
