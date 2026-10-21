@@ -1590,3 +1590,141 @@
 1792622534	cmd	Trentlin	49	30435	hyrule.are	standing	100	0	-	get	key cor	You get the Moon's key from corpse of The Dodongo.
 1792622535	cmd	Trentlin	49	30435	hyrule.are	standing	100	0	-	look		Level 2: Dodongo's Lair
 1792622537	cmd	Trentlin	49	30435	hyrule.are	standing	100	0	-	open	west	It's locked.
+1792622538	cmd	Trentlin	49	30435	hyrule.are	standing	100	0	-	unlock	west	There is a flash of light as you unlock the moon.
+1792622540	cmd	Trentlin	49	30435	hyrule.are	standing	100	0	-	open	west	Ok.
+1792622540	cmd	Trentlin	49	30434	hyrule.are	standing	100	0	-	west		Level 2: Crescent Moon Sanctum
+1792622543	cmd	Trentlin	49	30434	hyrule.are	standing	100	0	-	unlock	chest	*Click*
+1792622544	cmd	Trentlin	49	30434	hyrule.are	standing	100	0	-	open	chest	Ok.
+1792622546	cmd	Trentlin	49	30434	hyrule.are	standing	100	0	-	get	all chest	You get the Magical Boomerang from the Moon's treasure chest.
+1792622549	cmd	Trentlin	49	30276	hyrule.are	standing	100	0	-	enter	light	You enter the Moon's returning light
+1792622563	cmd	Trentlin	49	30276	hyrule.are	standing	100	0	-	look		The Moon Gate
+1792622565	cmd	Trentlin	49	30260	hyrule.are	standing	100	0	-	south		The Eastern Dock
+1792622566	cmd	Trentlin	49	30261	hyrule.are	standing	100	0	-	east		Wooded Crossroads
+1792622581	cmd	Trentlin	49	30261	hyrule.are	standing	600	0	-	exits		Obvious exits:
+1792622584	cmd	Trentlin	49	4207	dresden_halloween.are	standing	600	0	-	recall		Before the Shrouded Altar
+1792622586	cmd	Trentlin	49	4208	dresden_halloween.are	standing	600	0	-	west		The Shrouded Altar of Devota
+1792622586	cmd	Trentlin	49	4208	dresden_halloween.are	standing	600	0	-	west		Alas, you cannot go that way.
+1792622587	cmd	Trentlin	49	4208	dresden_halloween.are	standing	600	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792622588	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792622588	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792622588	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792622589	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792622589	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792622589	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792622589	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792622596	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	run	s 2	Southern Oak Tree Square.
+1792622596	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	run	w 3	Entrance to the Haunted Temple
+1792622596	cmd	Trentlin	49	3795	school.are	standing	100	0	-	run	u 3	Entrance to Mud School
+1792622597	cmd	Trentlin	49	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal
+1792622597	cmd	Trentlin	49	15004	campus.are	standing	100	0	-	run	e 4	Campus Crescent
+1792622597	cmd	Trentlin	49	15013	campus.are	standing	100	0	-	run	n 4	University Avenue
+1792622597	cmd	Trentlin	49	15068	campus.are	standing	100	0	-	run	e 2	The Back Hall
+1792622598	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering Hyrule arcade cabinet
+1792622600	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622603	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	north		Rock Wall Above the Start
+1792622607	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	west		Candle Shop Knoll
+1792622608	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622615	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	west		Forest Stream
+1792622616	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622618	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	west		The Lost Woods
+1792622619	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622620	cmd	Trentlin	49	30219	hyrule.are	standing	100	0	-	west		Bramble Wood
+1792622620	cmd	Trentlin	49	30219	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622622	cmd	Trentlin	49	30204	hyrule.are	standing	100	0	-	south		Path to the Manji
+1792622627	cmd	Trentlin	49	30204	hyrule.are	standing	100	0	-	look		Path to the Manji
+1792622629	cmd	Trentlin	49	30205	hyrule.are	standing	100	0	-	east		Grove of the Manji
+1792622630	cmd	Trentlin	49	30437	hyrule.are	standing	100	2	-	down		Level 3: Manji Gate
+1792622633	cmd	Trentlin	49	30436	hyrule.are	standing	100	0	-	west		Level 3: Ooze Chamber
+1792622637	cmd	Trentlin	49	30436	hyrule.are	standing	100	0	-	consider	z	You can kill a zol naked and weaponless.
+1792622637	cmd	Trentlin	49	30436	hyrule.are	standing	100	0	-	kill	z	Your cleave ^^^ DESTROYS ^^^ a zol!
+1792622643	cmd	Trentlin	49	30436	hyrule.are	standing	100	0	-	get	all	You get a stinking corpse.
+1792622644	cmd	Trentlin	49	30439	hyrule.are	standing	100	0	-	north		Level 3: Streaked Hall
+1792622644	cmd	Trentlin	49	30439	hyrule.are	standing	100	0	-	drop	corpse	You drop a stinking corpse.
+1792622646	cmd	Trentlin	49	30442	hyrule.are	standing	100	0	-	north		Level 3: Manji Crossing
+1792622648	cmd	Trentlin	49	30442	hyrule.are	standing	100	0	-	scan		a zol                              -to the North.
+1792622649	cmd	Trentlin	49	30441	hyrule.are	standing	100	0	-	west		Level 3: Hall of Blades
+1792622651	cmd	Trentlin	49	30441	hyrule.are	standing	100	0	-	get	all	You get the Manji dungeon compass.
+1792622653	cmd	Trentlin	49	30441	hyrule.are	standing	100	0	-	look	com	The needle swings north.
+1792622656	cmd	Trentlin	49	30446	hyrule.are	standing	100	0	-	north		Level 3: Bat Gallery
+1792622659	cmd	Trentlin	49	30447	hyrule.are	standing	100	0	-	east		Level 3: Hall of Three Locks
+1792622661	cmd	Trentlin	49	30447	hyrule.are	standing	100	2	-	look	com	The needle swings east.
+1792622662	cmd	Trentlin	49	30448	hyrule.are	standing	100	0	-	east		Level 3: Room of Sliding Blades
+1792622665	cmd	Trentlin	49	30448	hyrule.are	standing	100	0	-	look	com	The needle points east -- at the bare wall, as though the way lay through the stone.
+1792622667	cmd	Trentlin	49	30448	hyrule.are	standing	100	0	-	look	in chest	The Manji's equipment chest contains:
+1792622673	cmd	Trentlin	49	30448	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792622674	cmd	Trentlin	49	30448	hyrule.are	standing	100	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!
+1792622675	cmd	Trentlin	49	30449	hyrule.are	standing	100	0	-	east		Level 3: Manhandla's Lair
+1792622677	cmd	Trentlin	49	30449	hyrule.are	standing	100	0	-	look	man	A giant carnivorous plant with a thick central bulb and four snapping
+1792622679	cmd	Trentlin	49	30449	hyrule.are	standing	100	0	-	consider	man	You can kill Manhandla naked and weaponless.
+1792622680	cmd	Trentlin	49	30449	hyrule.are	standing	100	0	-	kill	man	Your cleave === OBLITERATES === Manhandla!
+1792622684	cmd	Trentlin	49	30449	hyrule.are	fighting	100	0	fight	smite		Your smite <<< ERADICATES >>> Manhandla!
+1792622693	cmd	Trentlin	49	30449	hyrule.are	fighting	99	0	fight	smite		A Tin Axe bites deep into Manhandla!
+1792622703	cmd	Trentlin	49	30449	hyrule.are	standing	99	0	-	look	in cor	Corpse of Manhandla contains:
+1792622706	cmd	Trentlin	49	30449	hyrule.are	standing	99	0	-	get	key cir	I see no cir here.
+1792622709	cmd	Trentlin	49	30449	hyrule.are	standing	99	0	-	get	whip cor	You get the Manhandla bloom-whip from corpse of Manhandla.
+1792622714	cmd	Trentlin	49	30449	hyrule.are	standing	99	0	-	get	key cor	You get the Manji's key from a stinking corpse.
+1792622715	cmd	Trentlin	49	30449	hyrule.are	standing	99	0	-	wear	wh	You stop using A Tin Axe.
+1792622717	cmd	Trentlin	49	30449	hyrule.are	standing	99	0	-	compare	axe	A) A Tin Axe (level 25)
+1792622734	cmd	Trentlin	49	30449	hyrule.are	standing	99	0	-	look		Level 3: Manhandla's Lair
+1792622737	cmd	Trentlin	49	30449	hyrule.are	standing	99	0	-	look	com	The needle points north, through the guardian's locked door: the Triforce chest is in the next room.
+1792622740	cmd	Trentlin	49	30449	hyrule.are	standing	99	0	-	unlock	north	There is a flash of light as you unlock the manji.
+1792622741	cmd	Trentlin	49	30451	hyrule.are	standing	99	0	-	north		Level 3: Sanctum of the Golden Cross
+1792622746	cmd	Trentlin	49	30451	hyrule.are	standing	99	0	-	unlock	chest	*Click*
+1792622750	cmd	Trentlin	49	30451	hyrule.are	standing	99	0	-	open	chest	Ok.
+1792622751	cmd	Trentlin	49	30451	hyrule.are	standing	99	0	-	get	all chest	You get the dungeon raft from the Manji's treasure chest.
+1792622754	cmd	Trentlin	49	30205	hyrule.are	standing	99	0	-	enter	light	You enter the Manji's returning light
+1792622793	cmd	Trentlin	49	30205	hyrule.are	standing	99	0	-	look		Grove of the Manji
+1792622796	cmd	Trentlin	49	30204	hyrule.are	standing	99	0	-	west		Path to the Manji
+1792622797	cmd	Trentlin	49	30219	hyrule.are	standing	99	0	-	north		Bramble Wood
+1792622798	cmd	Trentlin	49	30235	hyrule.are	standing	99	0	-	north		The Fairy Path
+1792622798	cmd	Trentlin	49	30251	hyrule.are	standing	99	0	-	north		Fairy Pond of the Woods
+1792622800	cmd	Trentlin	49	30251	hyrule.are	standing	100	0	-	drink		You are no longer thirsty.
+1792622800	cmd	Trentlin	49	30251	hyrule.are	standing	100	0	-	drink		You are no longer thirsty.
+1792622801	cmd	Trentlin	49	30235	hyrule.are	standing	100	0	-	south		The Fairy Path
+1792622802	cmd	Trentlin	49	30234	hyrule.are	standing	100	0	-	west		Lost Woods Crossing
+1792622802	cmd	Trentlin	49	30233	hyrule.are	standing	100	0	-	west		Deepwood Corner
+1792622803	cmd	Trentlin	49	30234	hyrule.are	standing	100	0	-	east		Lost Woods Crossing
+1792622804	cmd	Trentlin	49	30250	hyrule.are	standing	100	0	-	north		The Still Pond
+1792622808	cmd	Trentlin	49	30250	hyrule.are	standing	100	0	-	enter	raft	You can not enter the raft.
+1792622810	cmd	Trentlin	49	30234	hyrule.are	standing	100	0	-	south		Lost Woods Crossing
+1792622811	cmd	Trentlin	49	30233	hyrule.are	standing	100	0	-	west		Deepwood Corner
+1792622812	cmd	Trentlin	49	30217	hyrule.are	standing	100	0	-	south		The Tangled Woods
+1792622812	cmd	Trentlin	49	30216	hyrule.are	standing	100	0	-	west		Western Meadow Edge
+1792622813	cmd	Trentlin	49	30232	hyrule.are	standing	100	0	-	north		Western Crags
+1792622814	cmd	Trentlin	49	30248	hyrule.are	standing	100	0	-	north		The Graveyard's Southern Fence
+1792622815	cmd	Trentlin	49	30264	hyrule.are	standing	100	0	-	north		The Graveyard, Lower Rows
+1792622817	cmd	Trentlin	49	30264	hyrule.are	standing	100	0	-	consider	g	You can kill a ghini naked and weaponless.
+1792622818	cmd	Trentlin	49	30264	hyrule.are	standing	100	0	-	look	g	Grey as the lichen on the old headstones, this ghini drifts low over the
+1792622819	cmd	Trentlin	49	30264	hyrule.are	standing	100	0	-	scan		a ghini                            -to the North.
+1792622819	cmd	Trentlin	49	30280	hyrule.are	standing	100	0	-	north		The Old Graveyard
+1792622820	cmd	Trentlin	49	30280	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792622820	cmd	Trentlin	49	30281	hyrule.are	standing	100	0	-	east		The Hero's Grave
+1792622824	cmd	Trentlin	49	30265	hyrule.are	standing	100	0	-	south		The Graveyard Gate
+1792622825	cmd	Trentlin	49	30266	hyrule.are	standing	100	0	-	east		Ghost Hill
+1792622826	cmd	Trentlin	49	30266	hyrule.are	standing	100	0	-	north		You need the Stepladder to cross that gap.
+1792622828	cmd	Trentlin	49	30267	hyrule.are	standing	100	0	-	east		The Cracked Bluff
+1792622829	cmd	Trentlin	49	30267	hyrule.are	standing	100	0	-	north		You need the Stepladder to cross that gap.
+1792622831	cmd	Trentlin	49	30267	hyrule.are	standing	100	0	-	recall		Your prayer goes up and comes back unanswered.
+1792622833	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792622835	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792622835	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792622836	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792622836	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792622836	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792622837	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792622837	cmd	Trentlin	49	2402	dresden_halloween.are	standing	100	0	-	north		Northern Oak Tree Square.
+1792622837	cmd	Trentlin	49	2415	dresden_halloween.are	standing	100	0	-	north		Main Processional, Strung with Lanterns
+1792622838	cmd	Trentlin	49	2485	dresden_halloween.are	standing	100	0	-	east		Market Plaza.
+1792622838	cmd	Trentlin	49	2482	dresden_halloween.are	standing	100	0	-	north		Nomads Tent.
+1792622838	cmd	Trentlin	49	2479	dresden_halloween.are	standing	100	0	-	north		Market Plaza.
+1792622841	cmd	Trentlin	49	2479	dresden_halloween.are	standing	100	0	-	buy	pot	You can't do that here.
+1792622841	cmd	Trentlin	49	2479	dresden_halloween.are	standing	100	0	-	buy	pot	You can't do that here.
+1792622842	cmd	Trentlin	49	2479	dresden_halloween.are	standing	100	0	-	buy	pot	You can't do that here.
+1792622842	cmd	Trentlin	49	2488	dresden_halloween.are	standing	100	0	-	north		Bakery.
+1792622845	cmd	Trentlin	49	2488	dresden_halloween.are	standing	100	0	-	buy	pot	You buy a big pot pie.
+1792622845	cmd	Trentlin	49	2488	dresden_halloween.are	standing	100	0	-	buy	pot	You buy a big pot pie.
+1792622846	cmd	Trentlin	49	2488	dresden_halloween.are	standing	100	0	-	buy	pot	You buy a big pot pie.
+1792622846	cmd	Trentlin	49	2488	dresden_halloween.are	standing	100	0	-	buy	pot	You buy a big pot pie.
+1792622848	cmd	Trentlin	49	2488	dresden_halloween.are	standing	100	0	-	eat	pot	You eat a big pot pie.
+1792622848	cmd	Trentlin	49	2488	dresden_halloween.are	standing	100	0	-	eat	pot	You eat a big pot pie.
+1792622848	cmd	Trentlin	49	2488	dresden_halloween.are	standing	100	0	-	eat	pot	You are too full to eat more.
