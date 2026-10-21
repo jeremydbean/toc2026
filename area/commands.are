@@ -598,9 +598,11 @@ See also: SEARCH, SCAN, LOOK
 
 0 REPAIR~
 Syntax: repair <object>
+        repair all
 
 A smith mends a damaged item and restores it to full condition.  The item
-may be worn or in your pack.
+may be worn or in your pack.  REPAIR ALL mends everything you wear and
+carry that needs it, cheapest first, as far as your purse goes.
 
   - The price is a few kills' worth of coin at the item's level, in
     proportion to the damage: a dent costs little, a piece broken past
@@ -2178,7 +2180,8 @@ own prints the list.  Checking on yourself works wherever you are standing;
 the rest is business with the questmaster and needs one in the room.
 
 AQUEST INFO shows the active objective and time remaining, or your cooldown,
-quest points, pending gamble, and win streak. Suitable targets are selected
+quest points, pending gamble, and win streak.  The cooldown runs while you
+are logged out too. Suitable targets are selected
 from live, level-appropriate mobiles in rooms your character may enter.
 
 Every level may quest, immortals included. A target is never above your

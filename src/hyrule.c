@@ -608,6 +608,20 @@ static void secret_set( CHAR_DATA *ch, int bit )
     ch->pcdata->hyrule_secrets &= SECRET_MASK;
 }
 
+/*
+ * A Hyrule object that is NODROP on purpose -- a Triforce piece, a gift
+ * the old men hand over -- so one character cannot carry another through.
+ * REMOVE CURSE stripped NODROP from anything, which let a piece be
+ * dropped and given away (found 2026-10-21).
+ */
+bool hyrule_bound_object( const OBJ_DATA *obj )
+{
+    return obj != NULL && obj->pIndexData != NULL
+        && obj->pIndexData->vnum >= HYRULE_OBJ_FIRST
+        && obj->pIndexData->vnum <= HYRULE_OBJ_LAST
+        && IS_SET( obj->extra_flags, ITEM_NODROP );
+}
+
 static bool is_hyrule_vnum( int vnum )
 {
     return IS_HYRULE_ROOM_VNUM( vnum );

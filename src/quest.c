@@ -221,7 +221,6 @@ static int quest_streak_bonus( const CHAR_DATA *ch )
    means this long before the next: otherwise a player could abandon
    and ask again until the target stood next door. Never the ordinary
    cooldown. */
-#define DAILY_GIVE_UP_WAIT      ( 10 * 60 )
 #define DAILY_POINTS_PER_QUEST  1
 #define DAILY_SET_BONUS         1   /* for the last of the day's three */
 #define DAILY_PRACTICE_COST     16
@@ -244,6 +243,25 @@ static int daily_streak_now( CHAR_DATA *ch )
     long today = (long) ( current_time / 86400 );
 
     return ch->pcdata->daily_last_full >= today - 1 ? ch->pcdata->daily_streak : 0;
+}
+
+/*
+ * At login: the cooldown runs while you are away too (2026-10-21).
+ * quest_update counts it down only for characters in the game, so
+ * Trentlin, back nine hours after his last quest, was told to wait
+ * fourteen minutes; the daily's give-up wait already ran by the clock.
+ */
+void quest_login_cooldown( CHAR_DATA *ch )
+{
+    long away;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL || ch->nextquest <= 0
+    ||   ch->pcdata->last_logout <= 0 )
+        return;
+    away = ( (long) current_time - ch->pcdata->last_logout ) / 60;
+    if ( away <= 0 )
+        return;
+    ch->nextquest = (sh_int) UMAX( 0L, (long) ch->nextquest - UMIN( away, 32000L ) );
 }
 
 /* A new UTC day starts a new count. */

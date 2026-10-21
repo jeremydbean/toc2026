@@ -3202,7 +3202,7 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                             {
                                 act( "\n$n's $p warps and buckles from the heat, becoming unusable!",
                                      victim, obj_lose, NULL, TO_ROOM );
-                                send_to_char("Your armor warps from the heat and falls into your pack — take it to a repair shop.\n\r",
+                                send_to_char("Your armor warps from the heat and falls into your pack -- take it to a repair shop.\n\r",
                                              victim);
                                 if ( ( iWear = obj_lose->wear_loc ) != WEAR_NONE )
                                 {
@@ -3240,7 +3240,7 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                             {
                                 act( "\n$n's $p glows red-hot and warps, becoming unusable!",
                                      victim, obj_lose, NULL, TO_ROOM );
-                                send_to_char("Your weapon warps from the heat and falls into your pack — take it to a repair shop.\n\r",
+                                send_to_char("Your weapon warps from the heat and falls into your pack -- take it to a repair shop.\n\r",
                                              victim);
                                 if ( obj_lose->wear_loc != WEAR_NONE )
                                     unequip_char(victim, obj_lose);
@@ -4112,6 +4112,23 @@ void spell_refresh( int sn, int level, CHAR_DATA *ch, void *vo )
 
 
 
+/* Whether REMOVE CURSE could lift anything from this character: a curse
+   on them, or a cursed item that is not bound on purpose. */
+bool remove_curse_has_work( CHAR_DATA *victim )
+{
+    OBJ_DATA *obj;
+
+    if ( victim == NULL )
+        return false;
+    if ( is_affected( victim, gsn_curse ) )
+        return true;
+    for ( obj = victim->carrying; obj != NULL; obj = obj->next_content )
+        if ( ( IS_OBJ_STAT(obj, ITEM_NODROP) || IS_OBJ_STAT(obj, ITEM_NOREMOVE) )
+        &&   !hyrule_bound_object( obj ) )
+            return true;
+    return false;
+}
+
 void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     UNUSED_PARAM(sn);
@@ -4137,6 +4154,9 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
     {
 	if ((obj = get_eq_char(victim,iWear)) == NULL)
 	    continue;
+	/* Bound on purpose, not cursed: a Triforce piece stays yours. */
+	if ( hyrule_bound_object( obj ) )
+	    continue;
 
         if (IS_OBJ_STAT(obj,ITEM_NODROP) || IS_OBJ_STAT(obj,ITEM_NOREMOVE))
         {   /* attempt to remove curse */
@@ -4154,6 +4174,8 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
 
    for (obj = victim->carrying; (obj != NULL && !found); obj = obj->next_content)
    {
+        if ( hyrule_bound_object( obj ) )
+            continue;
         if (IS_OBJ_STAT(obj,ITEM_NODROP) || IS_OBJ_STAT(obj,ITEM_NOREMOVE))
         {   /* attempt to remove curse */
 	    cursed = true;

@@ -216,9 +216,14 @@ static void gob_teleport( CHAR_DATA *gob, AREA_DATA *avoid, const char *why )
     char from[MAX_STRING_LENGTH];
     char line[MAX_STRING_LENGTH * 2 + 128];
 
-    gob_chased = false;
-    gob_portal_at = 0;
-    gob_next_drift = current_time + number_range( GOBLIN_DRIFT_MIN, GOBLIN_DRIFT_MAX );
+    /* The chase's clocks are the real goblin's; a copy staff loaded by
+       hand teleporting must not reset them. */
+    if ( gob == treasure_goblin )
+    {
+        gob_chased = false;
+        gob_portal_at = 0;
+        gob_next_drift = current_time + number_range( GOBLIN_DRIFT_MIN, GOBLIN_DRIFT_MAX );
+    }
     if ( to == NULL || to == gob->in_room )
         return;
     gob_where( gob->in_room, from, sizeof(from) );

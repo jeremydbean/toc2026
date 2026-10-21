@@ -2601,7 +2601,7 @@ bool check_shield_block( CHAR_DATA *ch, CHAR_DATA *victim )
 	act( "\x02\x0BYour shield BUCKLES under $n's onslaught.\x02\x01", ch,
 	      NULL, victim, TO_VICT );
 	act( "\x02\x0BYou shatter $N's shield!\x02\x01", ch, NULL, victim, TO_CHAR );
-	send_to_char("Your shield cracks and falls into your pack — take it to a repair shop.\n\r", victim);
+	send_to_char("Your shield cracks and falls into your pack -- take it to a repair shop.\n\r", victim);
 	unequip_char(victim, obj);
 	SET_BIT(obj->extra_flags, ITEM_DAMAGED);
 	obj->condition = 0;
@@ -2630,7 +2630,7 @@ bool check_shield_block( CHAR_DATA *ch, CHAR_DATA *victim )
 	     act( "\x02\x0BYour shield buckles under $n's onslaught.\x02\x01", ch,
 		NULL, victim, TO_VICT );
 	     act( "\x02\x0BYou shatter $N's shield!\x02\x01", ch, NULL, victim, TO_CHAR );
-	     send_to_char("Your shield falls into your pack — take it to a repair shop.\n\r", victim);
+	     send_to_char("Your shield falls into your pack -- take it to a repair shop.\n\r", victim);
 	     unequip_char(victim, obj);
 	     SET_BIT(obj->extra_flags, ITEM_DAMAGED);
 	     obj->condition = 0;
@@ -3883,14 +3883,14 @@ void dam_message( CHAR_DATA *ch, CHAR_DATA *victim,int dam,int dt,bool immune )
 		}
 	else
 		{
-		/* buf1 — bystanders never see raw numbers */
+		/* buf1 -- bystanders never see raw numbers */
 		snprintf(buf1, sizeof(buf1), "$n's %s\x02\x0A %s\x02\x01 $N%c", attack, vp, punct);
-		/* buf2 — attacker sees numbers based on their own setting */
+		/* buf2 -- attacker sees numbers based on their own setting */
 		if (IS_SET(ch->act, PLR_DAMAGE_NUMBERS))
 			snprintf(buf2, sizeof(buf2), "Your %s\x02\x0A %s\x02\x01 $N%c [\x02\x0A-%d\x02\x01]", attack, vp, punct, dam);
 		else
 			snprintf(buf2, sizeof(buf2), "Your %s\x02\x0A %s\x02\x01 $N%c", attack, vp, punct);
-		/* buf3 — victim sees numbers based on their own setting */
+		/* buf3 -- victim sees numbers based on their own setting */
 		if (!IS_NPC(victim) && IS_SET(victim->act, PLR_DAMAGE_NUMBERS))
 			snprintf(buf3, sizeof(buf3), "$n's %s\x02\x0A %s\x02\x01 you%c [\x02\x0A-%d\x02\x01]", attack, vp, punct, dam);
 		else
@@ -4848,7 +4848,7 @@ void do_smite( CHAR_DATA *ch, char *argument )
 		weapondamage = number_percent();
         if (weapondamage < 4)
 		{
-           /* re-fetch weapon — it may have been disarmed during multi_hit */
+           /* re-fetch weapon -- it may have been disarmed during multi_hit */
            obj = get_eq_char( ch, WEAR_WIELD );
            if ( obj != NULL )
            {
@@ -4858,8 +4858,8 @@ void do_smite( CHAR_DATA *ch, char *argument )
                SET_BIT(obj->extra_flags, ITEM_DAMAGED);
                if ( obj->wear_loc != WEAR_NONE )
                    unequip_char(ch, obj);
-               send_to_char("Your weapon falls into your pack — take it to a repair shop.\n\r", ch);
-               snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "%s weapon has been smited!\n\r", ch->name);
+               send_to_char("Your weapon falls into your pack -- take it to a repair shop.\n\r", ch);
+               snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "%s's weapon was broken by a smite.", ch->name);
                log_string( log_buf );
                wizinfo( log_buf, MAX_LEVEL);
            }
@@ -5384,8 +5384,8 @@ void do_slay( CHAR_DATA *ch, char *argument )
         },
         {
             "You point at $M and $E simply ceases to exist.",
-            "$n points at you — and you simply cease to exist.",
-            "$n points at $N — and $E simply ceases to exist."
+            "$n points at you -- and you simply cease to exist.",
+            "$n points at $N -- and $E simply ceases to exist."
         },
         {
             "With a contemptuous wave of your hand, $N is torn apart at the seams!",
@@ -5394,12 +5394,12 @@ void do_slay( CHAR_DATA *ch, char *argument )
         },
         {
             "You utter a single word of power and $N explodes in a shower of gore!",
-            "$n utters a single word of power — you explode in a shower of gore!",
+            "$n utters a single word of power -- you explode in a shower of gore!",
             "$n utters a single word of power and $N explodes in a shower of gore!"
         },
         {
             "You snap your fingers and $N is instantly vaporized!",
-            "$n snaps $s fingers — you are instantly vaporized!",
+            "$n snaps $s fingers -- you are instantly vaporized!",
             "$n snaps $s fingers and $N is instantly vaporized!"
         },
         {
@@ -5418,9 +5418,9 @@ void do_slay( CHAR_DATA *ch, char *argument )
             "Ice crackles across $S skin as $n freezes $N solid, then shatters $M into a thousand pieces!"
         },
         {
-            "You snap your gaze to $M — $E implodes with a sickening crunch.",
-            "$n's gaze falls on you — you implode with a sickening crunch.",
-            "$n's gaze falls on $N — $E implodes with a sickening crunch."
+            "You snap your gaze to $M -- $E implodes with a sickening crunch.",
+            "$n's gaze falls on you -- you implode with a sickening crunch.",
+            "$n's gaze falls on $N -- $E implodes with a sickening crunch."
         },
         {
             "A pillar of holy fire descends from the heavens and consumes $M entirely!",
@@ -5448,9 +5448,9 @@ void do_slay( CHAR_DATA *ch, char *argument )
             "With a flick of $s wrist $n opens a void beneath $N, and $E falls forever into nothing."
         },
         {
-            "You lay a single finger against $S temple — $E drops like a puppet with cut strings.",
-            "$n lays a single finger against your temple — you drop like a puppet with cut strings.",
-            "$n lays a single finger against $S temple — $E drops like a puppet with cut strings."
+            "You lay a single finger against $S temple -- $E drops like a puppet with cut strings.",
+            "$n lays a single finger against your temple -- you drop like a puppet with cut strings.",
+            "$n lays a single finger against $S temple -- $E drops like a puppet with cut strings."
         },
         /* Mortal Kombat fatalities */
         {
@@ -5459,7 +5459,7 @@ void do_slay( CHAR_DATA *ch, char *argument )
             "FINISH HIM!  $n rips $N's spine clean from $S body and holds it aloft!  FATALITY."
         },
         {
-            "You grab $M by the skull and tear $S head free — spine dangling — then raise it high.  FATALITY.",
+            "You grab $M by the skull and tear $S head free -- spine dangling -- then raise it high.  FATALITY.",
             "$n grabs you by the skull and wrenches your head free!  FATALITY.",
             "$n tears $N's head clean off and raises it high, spine dangling.  FATALITY."
         },
@@ -5475,7 +5475,7 @@ void do_slay( CHAR_DATA *ch, char *argument )
         },
         {
             "Searing hellfire erupts beneath $N's feet, and when the flames die only a charred skeleton remains.  FATALITY.",
-            "Searing hellfire erupts beneath your feet — you are incinerated to the bone!  FATALITY.",
+            "Searing hellfire erupts beneath your feet -- you are incinerated to the bone!  FATALITY.",
             "Searing hellfire erupts beneath $N's feet, leaving only a charred skeleton.  FATALITY."
         },
         {
@@ -7020,7 +7020,7 @@ void damage_eq(CHAR_DATA *victim, int dam)
                 unequip_char(victim, obj);
                 SET_BIT(obj->extra_flags, ITEM_DAMAGED);
                 obj->condition = 0;
-                send_to_char("The item falls into your pack — take it to a repair shop.\n\r", victim);
+                send_to_char("The item falls into your pack -- take it to a repair shop.\n\r", victim);
                 if(number_percent() < 15)
                 {
                     depth++;

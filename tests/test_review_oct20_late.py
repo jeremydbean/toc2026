@@ -26,7 +26,7 @@ class UseAndFollow(unittest.TestCase):
 
     def test_use_bomb_bag_is_the_bag(self) -> None:
         use = body("src/act_obj.c", "void do_use(")
-        self.assertIn("get_obj_carry( ch, argument ) == NULL", use)
+        self.assertIn("( obj = get_obj_carry( ch, argument ) ) != NULL", use)
 
     def test_nobody_follows_the_goblin_or_the_dealer(self) -> None:
         follow = body("src/act_comm.c", "void do_follow(")

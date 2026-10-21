@@ -2020,7 +2020,10 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    {
 		long until = fread_long( fp );
 
-		ch->pcdata->daily_wait_until = until > 0 ? until : 0;
+		/* Never longer than one wait from now: a clock stepped back or
+		   a hand edit would otherwise refuse dailies for days. */
+		ch->pcdata->daily_wait_until = until > 0
+		    ? UMIN( until, (long) current_time + DAILY_GIVE_UP_WAIT ) : 0;
 		fMatch = true;
 		break;
 	    }

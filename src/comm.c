@@ -1952,7 +1952,7 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
 	if ( ch == NULL )
 	    return FALSE;
 
-        /* battle prompt — inserted BEFORE existing combat output so it
+        /* battle prompt -- inserted BEFORE existing combat output so it
          * appears above the damage messages from this round. */
         if ((victim = ch->fighting) != NULL && can_see(ch,victim) && d->outtop > 0)
         {
@@ -3003,7 +3003,7 @@ case CON_DEFAULT_CHOICE:
                 "Type 'password null <new password>' to fix.\n\r",0);
         }
 
-        /* Clear any pager state left from do_help(motd) — nanny bypasses the
+        /* Clear any pager state left from do_help(motd) -- nanny bypasses the
            pager loop so showstr_point can never be consumed from here. */
         if (d->showstr_head)
         {
@@ -3062,7 +3062,7 @@ case CON_DEFAULT_CHOICE:
 	        send_to_char("\n\r",ch);
 	        {
 	            int save_lines = ch->lines;
-	            ch->lines = 0; /* bypass pager — player can't press Enter yet */
+	            ch->lines = 0; /* bypass pager -- player can't press Enter yet */
 	            do_help(ch,"NEWBIE INFO");
 	            ch->lines = save_lines;
 	        }
@@ -3105,6 +3105,8 @@ case CON_DEFAULT_CHOICE:
 	    psionic_login( ch );
 	    /* Rested experience banked while they were away (rested.c). */
 	    rest_xp_on_login( ch );
+	    /* The quest cooldown ran while they were away (quest.c). */
+	    quest_login_cooldown( ch );
 	    /* Corrections for bugs since fixed, each once per character
 	       (fixes.c); a character just made is born correct. */
 	    player_fixes_login( ch, is_new_character );
@@ -3908,7 +3910,7 @@ void run_web_command(char *argument) {
             char_to_room( ch, room );
     }
     
-    /* Clean up — extract_char calls char_from_room internally */
+    /* Clean up -- extract_char calls char_from_room internally */
     extract_char(ch, TRUE);
 }
 

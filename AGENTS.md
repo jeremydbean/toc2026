@@ -467,6 +467,11 @@ Commands added or revived in September 2026, and where they live:
   size. Do not add `sprintf`, `strcpy`, or unbounded `strcat`.
 - Use `UNUSED_PARAM(x)` for intentionally unused parameters.
 - Preserve game output line endings (`\n\r`).
+- **Every string the game sends is ASCII.** Clients are told ISO-8859-1
+  and the web client decodes Latin-1, so a UTF-8 em dash reached players
+  as `â€"` (56 of them, found in the logs 2026-10-21). Write `--`.
+  `tests/test_source_ascii.py` fails on any byte above 127 inside a string
+  literal; comments may hold anything.
 - Use `send_to_char()` for immediate player text and `page_to_char()` for
   scrollable output. Both paths convert canonical `{HH}` color tokens; do not
   send raw player-facing color markup through `write_to_buffer()`.
@@ -2391,7 +2396,10 @@ went, and a staff summons logs who called him, not to where. The goblin
 follows the same rule. `bm_where()` writes a room the same way wherever
 one is allowed.
 
-**Rooms he never stands in**, beyond the list above: `ROOM_TELEPORT` and
+**Rooms he never stands in**, beyond the list above: sky, deep water and
+under water (`SECT_AIR`, `SECT_WATER_NOSWIM`, `SECT_UNDER_WATER`), which a
+walker cannot follow into and the goblin could not run out of -- the logs
+had him on a cloud, the Dragon Sea and a whirlpool; `ROOM_TELEPORT` and
 `ROOM_RIVER`, which carry mobiles too (one drops on the Temple altar,
 one in a no-mob death trap), and any room holding another shopkeeper --
 `find_keeper` takes the first in the room, so he took over the shop.
@@ -2561,6 +2569,14 @@ somebody who did not quit somewhere safe says they come back unrested,
 not that they "slept rough": a crash, a lost link and a file from before
 rest existed all land there too.
 
+**REMOVE CURSE leaves Hyrule's bound items alone** (`hyrule_bound_object`
+in `hyrule.c`: a NODROP object in `HYRULE_OBJ_FIRST`-`LAST`). Triforce
+pieces and the old men's gifts are NODROP so one character cannot carry
+another through, and the spell stripped NODROP from anything; the pit
+healer now refuses an uncurse, free, when `remove_curse_has_work` finds
+nothing to lift. **REPAIR ALL** mends everything worn and carried,
+cheapest first, as far as the purse goes (`repair_all`, `repair_mend`).
+
 **Dailies** live in `quest.c`, beside the ordinary quest and apart from
 it: `ch->questdaily` marks one, cleared on the line after every
 `questemergency` clear (`tests/test_rested_and_dailies.py` checks), and
@@ -2578,7 +2594,10 @@ while it runs): without it, abandoning and asking again rerolled the
 target until it stood next door. A request that finds no target puts
 `nextquest` back as it was, since `generate_quest` sets it. GMCP's quest
 feed sends the target room's `num` to staff only, as WALKTO QUEST is;
-the Mudlet client falls back to walking to the area. `quest_update` decrements the cooldown and a quest's countdown
+the Mudlet client falls back to walking to the area. **The ordinary
+cooldown runs while logged out too** (`quest_login_cooldown`, from the
+nanny): `quest_update` only counts characters in the game, and Trentlin,
+back after nine hours, was told to wait fourteen minutes. `quest_update` decrements the cooldown and a quest's countdown
 side by side -- they were an if/else, which froze a daily taken during a
 cooldown. Saved as `Daily <points> <day> <done> <streak> <last full day>`
 under **case 'D'**, the day

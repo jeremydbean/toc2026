@@ -3,6 +3,12 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261021e 2026-10-21
+REPAIR ALL mends everything you wear and carry that needs it, cheapest
+first. The quest cooldown now runs while you are logged out. The pit
+healer will not charge for an uncurse when nothing on you is cursed.
+Messages that showed odd symbols where a dash belonged read properly now.
+
 @ 20261021d 2026-10-21
 The treasure goblin can no longer be held at all: stuns, sleep, bash,
 trip and confusion are shaken off at once, and every blow that lands

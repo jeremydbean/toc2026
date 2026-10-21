@@ -4645,17 +4645,20 @@ CHAR_DATA *find_keeper( CHAR_DATA *ch )
 	   October 2026). Each is something they can undo. */
 	/* In can_see's order, and only a flag the keeper cannot see through:
 	   an invisible player in a dark shop was told VISIBLE would fix it,
-	   typed VISIBLE, and was refused again. A mobile never sees a ghost. */
+	   typed VISIBLE, and was refused again. A mobile never sees a ghost
+	   or a shadowmeld, whatever its level; a keeper of immortal level
+	   sees through the dark and invisibility (can_see's shortcut). */
 	if ( IS_AFFECTED2(ch, AFF2_GHOST) )
 	    send_to_char( "(You are a ghost. VISIBLE will fix that.)\n\r", ch );
+	else if ( IS_AFFECTED2(ch, AFF2_SHADOWMELD) )
+	    send_to_char( "(You are melded with the shadows. VISIBLE will fix that.)\n\r", ch );
 	else if ( ch->in_room != NULL && room_is_dark( ch->in_room )
-	     &&   !IS_AFFECTED(keeper, AFF_INFRARED) )
+	     &&   !IS_IMMORTAL(keeper) && !IS_AFFECTED(keeper, AFF_INFRARED) )
 	    send_to_char( "(It is too dark here for the keeper to make you out.)\n\r", ch );
-	else if ( IS_AFFECTED(ch, AFF_INVISIBLE)
+	else if ( IS_AFFECTED(ch, AFF_INVISIBLE) && !IS_IMMORTAL(keeper)
 	     &&   !IS_AFFECTED(keeper, AFF_DETECT_INVIS) )
 	    send_to_char( "(You are invisible. VISIBLE will fix that.)\n\r", ch );
-	else if ( IS_AFFECTED(ch, AFF_HIDE) || IS_AFFECTED2(ch, AFF2_STEALTH)
-	     ||   IS_AFFECTED2(ch, AFF2_SHADOWMELD) )
+	else if ( IS_AFFECTED(ch, AFF_HIDE) || IS_AFFECTED2(ch, AFF2_STEALTH) )
 	    send_to_char( "(You are hidden. VISIBLE will fix that.)\n\r", ch );
 	return NULL;
     }
@@ -5474,7 +5477,7 @@ void do_use( CHAR_DATA *ch, char *argument )
     char arg[MAX_INPUT_LENGTH];
     char line[MAX_INPUT_LENGTH * 2];
     char *rest;
-    OBJ_DATA *obj;
+    OBJ_DATA *obj = NULL;
 
     rest = one_argument( argument, arg );
     if ( arg[0] == '\0' )
@@ -5485,9 +5488,15 @@ void do_use( CHAR_DATA *ch, char *argument )
     }
 
     /* Bombs are counted, not carried one by one -- but USE BOMB BAG is
-       the bag, not a bomb thrown at something called "bag". */
-    if ( !str_prefix( arg, "bombs" ) && strlen( arg ) >= 3
-    &&   ( rest[0] == '\0' || get_obj_carry( ch, argument ) == NULL ) )
+       the bag, not a bomb thrown at something called "bag", and the bag
+       is what the whole line names, not whatever "bomb" finds first. */
+    if ( !str_prefix( arg, "bombs" ) && strlen( arg ) >= 3 && rest[0] != '\0'
+    &&   ( obj = get_obj_carry( ch, argument ) ) != NULL )
+    {
+        toc_strlcpy( arg, argument, sizeof(arg) );
+        rest = arg + strlen( arg );     /* nothing after the whole name */
+    }
+    else if ( !str_prefix( arg, "bombs" ) && strlen( arg ) >= 3 )
     {
         if ( rest[0] == '\0' )
         {
@@ -5498,7 +5507,8 @@ void do_use( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( ( obj = get_obj_carry( ch, arg ) ) == NULL
+    if ( obj == NULL
+    &&   ( obj = get_obj_carry( ch, arg ) ) == NULL
     &&   ( obj = get_obj_wear( ch, arg ) ) == NULL )
     {
         /* Something in the room: a fountain to drink from, a portal. */
@@ -6202,66 +6212,13 @@ static long repair_cost_copper( OBJ_DATA *obj )
     return (long)cost;
 }
 
-void do_repair( CHAR_DATA *ch, char *argument )
+/* Mend one item the character has already been charged for (REPAIR). */
+static void repair_mend( CHAR_DATA *ch, CHAR_DATA *rpr, OBJ_DATA *obj, long cost )
 {
     char buf[MAX_STRING_LENGTH];
     char price[MAX_INPUT_LENGTH];
-    CHAR_DATA *rpr;
-    OBJ_DATA *obj;
-    long cost;
-
-    if(IS_NPC(ch))
-	return;
-
-    if(argument[0] == '\0') {
-	send_to_char("Repair what?\n\r",ch);
-	return;
-    }
-
-    /* The help says repairs are done "on worn equipment", and that is
-       where damaged gear normally is: damage_eq only strips a piece off
-       once its condition goes below zero, so anything merely dented is
-       still being worn. Looking in the pack alone answered "You aren't
-       carrying that!" about a sword the character was holding. */
-    if((obj=get_obj_carry(ch,argument)) == NULL
-    && (obj=get_obj_wear(ch,argument)) == NULL) {
-        send_to_char("You aren't carrying or wearing that.\n\r",ch);
-        return;
-    }
-
-    /* A flagged item always needs repairing, whatever the number says.
-       Testing condition alone once left items that combat had flagged but
-       not decremented both unwearable and unrepairable. */
-    if(obj->condition >= 100 && !IS_OBJ_STAT(obj, ITEM_DAMAGED)) {
-        snprintf(buf, sizeof(buf), "But %s is already in perfect condition!\n\r",
-                obj->short_descr);
-        send_to_char(buf,ch);
-        return;
-    }
-
-    for(rpr = ch->in_room->people; rpr; rpr = rpr->next_in_room) {
-	if ( IS_NPC(rpr) && IS_SET(rpr->act2, ACT2_REPAIR) )
-	    break;
-    }
-
-    if(!rpr) {
-	send_to_char( "There's nobody here to repair that.\n\r", ch );
-	return;
-    }
-
-    cost = repair_cost_copper( obj );
 
     format_price( cost, price, sizeof(price) );
-
-    if(!has_enough_copper(ch, cost)) {
-        snprintf(buf, sizeof(buf),
-                "Repairing %s costs %s, which is more than you are carrying.  "
-                "It has been repaired %d times now.\n\r",
-                obj->short_descr, price, obj->number_repair);
-      send_to_char(buf,ch);
-      return;
-    }
-
     obj->number_repair++;
     /* Repairs never destroy a piece and never leave it short of new.  An
        item can be battered to where it must be repaired before it can be
@@ -6319,8 +6276,155 @@ void do_repair( CHAR_DATA *ch, char *argument )
         {
         REMOVE_BIT(obj->extra_flags, ITEM_DAMAGED);
         }
-       return;
     }
+}
+
+/* Whether REPAIR has anything to do for this item. */
+static bool repair_needed( OBJ_DATA *obj )
+{
+    return obj->condition < 100 || IS_OBJ_STAT(obj, ITEM_DAMAGED);
+}
+
+/*
+ * REPAIR ALL: everything worn or carried (not inside containers) that is
+ * worn down, cheapest first so a short purse mends the most it can.
+ * Trentlin repaired ten pieces one at a time on 2026-10-20 and tried
+ * REPAIR ALL in the middle of it.
+ */
+static void repair_all( CHAR_DATA *ch, CHAR_DATA *rpr )
+{
+    char buf[MAX_STRING_LENGTH];
+    char price[MAX_INPUT_LENGTH];
+    OBJ_DATA *obj;
+    long total = 0;
+    int mended = 0, skipped = 0;
+
+    for ( ;; )
+    {
+        OBJ_DATA *best = NULL;
+        long best_cost = 0;
+
+        for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+        {
+            long cost;
+
+            if ( !repair_needed( obj ) || !can_see_obj( ch, obj ) )
+                continue;
+            cost = repair_cost_copper( obj );
+            if ( !has_enough_copper( ch, cost ) )
+                continue;
+            if ( best == NULL || cost < best_cost )
+            {
+                best = obj;
+                best_cost = cost;
+            }
+        }
+        if ( best == NULL )
+            break;
+        repair_mend( ch, rpr, best, best_cost );    /* charges and mends */
+        total += best_cost;
+        mended++;
+        if ( mended >= 100 )
+            break;
+    }
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+        if ( repair_needed( obj ) && can_see_obj( ch, obj ) )
+            skipped++;
+    if ( mended == 0 && skipped == 0 )
+    {
+        send_to_char( "Everything you carry and wear is in perfect condition.\n\r", ch );
+        return;
+    }
+    format_price( total, price, sizeof(price) );
+    if ( mended > 0 )
+    {
+        snprintf( buf, sizeof(buf), "%d item%s repaired for %s in all.\n\r",
+                  mended, mended == 1 ? "" : "s", price );
+        send_to_char( buf, ch );
+    }
+    if ( skipped > 0 )
+    {
+        snprintf( buf, sizeof(buf), "%d more need%s repair, and you cannot afford %s.\n\r",
+                  skipped, skipped == 1 ? "s" : "", skipped == 1 ? "it" : "them" );
+        send_to_char( buf, ch );
+    }
+}
+
+void do_repair( CHAR_DATA *ch, char *argument )
+{
+    char buf[MAX_STRING_LENGTH];
+    char price[MAX_INPUT_LENGTH];
+    CHAR_DATA *rpr;
+    OBJ_DATA *obj;
+    long cost;
+
+    if(IS_NPC(ch))
+	return;
+
+    if(argument[0] == '\0') {
+	send_to_char("Repair what?  REPAIR <item>, or REPAIR ALL.\n\r",ch);
+	return;
+    }
+
+    if ( !str_cmp( argument, "all" ) )
+    {
+	for(rpr = ch->in_room->people; rpr; rpr = rpr->next_in_room)
+	    if ( IS_NPC(rpr) && IS_SET(rpr->act2, ACT2_REPAIR) )
+		break;
+	if ( rpr == NULL )
+	{
+	    send_to_char( "There's nobody here to repair that.\n\r", ch );
+	    return;
+	}
+	repair_all( ch, rpr );
+	return;
+    }
+
+    /* The help says repairs are done "on worn equipment", and that is
+       where damaged gear normally is: damage_eq only strips a piece off
+       once its condition goes below zero, so anything merely dented is
+       still being worn. Looking in the pack alone answered "You aren't
+       carrying that!" about a sword the character was holding. */
+    if((obj=get_obj_carry(ch,argument)) == NULL
+    && (obj=get_obj_wear(ch,argument)) == NULL) {
+        send_to_char("You aren't carrying or wearing that.\n\r",ch);
+        return;
+    }
+
+    /* A flagged item always needs repairing, whatever the number says.
+       Testing condition alone once left items that combat had flagged but
+       not decremented both unwearable and unrepairable. */
+    if(obj->condition >= 100 && !IS_OBJ_STAT(obj, ITEM_DAMAGED)) {
+        snprintf(buf, sizeof(buf), "But %s is already in perfect condition!\n\r",
+                obj->short_descr);
+        send_to_char(buf,ch);
+        return;
+    }
+
+    for(rpr = ch->in_room->people; rpr; rpr = rpr->next_in_room) {
+	if ( IS_NPC(rpr) && IS_SET(rpr->act2, ACT2_REPAIR) )
+	    break;
+    }
+
+    if(!rpr) {
+	send_to_char( "There's nobody here to repair that.\n\r", ch );
+	return;
+    }
+
+    cost = repair_cost_copper( obj );
+
+    format_price( cost, price, sizeof(price) );
+
+    if(!has_enough_copper(ch, cost)) {
+        snprintf(buf, sizeof(buf),
+                "Repairing %s costs %s, which is more than you are carrying.  "
+                "It has been repaired %d times now.\n\r",
+                obj->short_descr, price, obj->number_repair);
+      send_to_char(buf,ch);
+      return;
+    }
+
+    repair_mend( ch, rpr, obj, cost );      /* charges and mends */
 }
 
 long query_gold(CHAR_DATA *ch){
@@ -6976,7 +7080,7 @@ void do_roulette( CHAR_DATA *ch, char *argument )
             return;
         }
         straight_bet = true;
-        /* Validated OK — spin and evaluate below */
+        /* Validated OK -- spin and evaluate below */
     }
     else if ( str_cmp(arg2,"red")  && str_cmp(arg2,"black") &&
               str_cmp(arg2,"even") && str_cmp(arg2,"odd")   &&
@@ -7318,7 +7422,7 @@ void do_poker( CHAR_DATA *ch, char *argument )
     }
     else if ( rank == 0 )
     {
-        /* Push: return the stake — no win, no loss */
+        /* Push: return the stake -- no win, no loss */
         add_money( ch, amount );
         snprintf( buf, sizeof(buf),
             "%s -- push!  Your %ld gold is returned.  (Balance: %ld gold)\n\r",

@@ -152,6 +152,14 @@ void do_heal(CHAR_DATA *ch, char *argument)
 	    if ( argument[0] != '\0' )
 		act( "$N says 'I lift what I can reach, not what you name.'",
 		    ch, NULL, mob, TO_CHAR );
+	    /* Nothing to lift, nothing to pay: Trentlin paid for fifteen
+	       uncurses in two sittings on 2026-10-20. */
+	    if ( !remove_curse_has_work( ch ) )
+	    {
+		act( "$N says 'I see no curse on you or on anything you carry.'",
+		    ch, NULL, mob, TO_CHAR );
+		return;
+	    }
 	    break;
 
 	case 'r' :

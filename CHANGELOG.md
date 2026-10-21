@@ -156,6 +156,19 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **From the 2026-10-21 review and that day's player logs.** The goblin
+  and the black market dealer no longer land in sky, deep-water or
+  underwater rooms nobody can follow into. 56 UTF-8 em dashes in game
+  messages reached players as "â€"" ("Your weapon falls into your pack")
+  and are "--" now, with a test against any non-ASCII string. The quest
+  cooldown runs while logged out. REPAIR ALL. The pit healer no longer
+  charges for an uncurse with nothing to lift, and REMOVE CURSE no longer
+  strips NODROP from Triforce pieces and the old men's gifts, which let
+  one be given away. A staff copy of the goblin no longer resets the real
+  one's chase; a stale DailyWait is capped at load; a shadowmelded
+  customer is told so rather than that it is dark; USE BOMB BAG finds the
+  bag.
+
 - **Nothing holds the treasure goblin** (owner, 2026-10-21). Stuns, sleep,
   bash, trip, confuse and maze are shaken off at once and every landed
   blow sends him running; CONFUSE is refused before it costs mana (it did

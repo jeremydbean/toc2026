@@ -1136,7 +1136,7 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
                  ch, NULL, pexit->keyword, TO_CHAR );
             act( "The $d shudders and parts as $n steps through, sealing shut behind them.",
                  ch, NULL, pexit->keyword, TO_ROOM );
-            /* fall through — allow movement */
+            /* fall through -- allow movement */
         }
         else if (IS_AFFECTED(ch, AFF_PASS_DOOR) )
         {
@@ -1841,7 +1841,7 @@ void do_speedwalk( CHAR_DATA *ch, char *argument )
 
         if ( dlen == 0 )
         {
-            /* unrecognised character — skip it */
+            /* unrecognised character -- skip it */
             p++;
             continue;
         }
@@ -4989,7 +4989,7 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
                  temp_ch, NULL, pexit->keyword, TO_ROOM );
             act( "The $d shudders and parts before you as you ride through.",
                  temp_ch, NULL, pexit->keyword, TO_CHAR );
-            /* fall through — allow movement */
+            /* fall through -- allow movement */
         }
         else
         {

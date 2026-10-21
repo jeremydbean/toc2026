@@ -127,8 +127,8 @@ const char *get_seasonal_area( const char *area_file )
  * auto-despawns after two real hours.  Immortals may spawn or force-
  * despawn it with the "summonevent" command.
  *
- * Halloween: the Headless Horseman (vnum 29910) — undead, negative dmg
- * Winter Veil: Father Winter (vnum 29911) — human, cold dmg
+ * Halloween: the Headless Horseman (vnum 29910) -- undead, negative dmg
+ * Winter Veil: Father Winter (vnum 29911) -- human, cold dmg
  *
  * Rare drops (see seasonal.are #29920-29927):
  *   - Horseman's Reaper / Frostbite (powerful weapons)
@@ -178,10 +178,10 @@ static bool seasonal_character_exists( const CHAR_DATA *target )
  * ----------------------------------------------------------- */
 static const char *horseman_yells[] =
 {
-    "I seek a head to replace my own — yours will do nicely!",
+    "I seek a head to replace my own -- yours will do nicely!",
     "None shall leave Dresden alive this night!",
     "Your skull will adorn my saddle before dawn breaks!",
-    "The Horseman rides again — and all shall FEAR him!",
+    "The Horseman rides again -- and all shall FEAR him!",
     "Kneel before me, or I will take your head as a trophy!",
     NULL
 };
@@ -189,7 +189,7 @@ static const char *horseman_yells[] =
 static const char *father_winter_yells[] =
 {
     "You dare face Father Winter?  I shall freeze the marrow in your bones!",
-    "There is no warmth left in this world — only my eternal cold!",
+    "There is no warmth left in this world -- only my eternal cold!",
     "Your gifts are forfeit.  This Winter Veil belongs to ME!",
     "The blizzard has no mercy, and neither do I!",
     "Dresden shall be buried in ice before this night is through!",
@@ -369,7 +369,7 @@ void spawn_event_boss( int forced_vnum )
     int              vnum;
     char             msg[MAX_STRING_LENGTH];
 
-    /* Already alive — do not double-spawn. */
+    /* Already alive -- do not double-spawn. */
     if ( verify_event_boss() )
         return;
 
@@ -456,7 +456,7 @@ void tick_event_boss( void )
         return;
     }
 
-    /* --- Case 2: boss alive — check despawn timer --- */
+    /* --- Case 2: boss alive -- check despawn timer --- */
     if ( event_boss_mob != NULL )
     {
         time_t elapsed = time( NULL ) - event_boss_spawn_time;
@@ -523,7 +523,7 @@ void tick_event_boss( void )
         return;     /* boss is alive and handled */
     }
 
-    /* --- Case 4: no boss — roll for a new spawn (seasonal only) --- */
+    /* --- Case 4: no boss -- roll for a new spawn (seasonal only) --- */
     if ( get_current_season() != SEASON_NORMAL )
     {
         if ( number_range( 1, EVENT_BOSS_SPAWN_ODDS ) == 1 )

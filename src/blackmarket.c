@@ -620,6 +620,15 @@ static bool bm_room_ok( ROOM_INDEX_DATA *room )
     ||   IS_SET( room->room_flags, ROOM_RIVER ) )
         return false;
 
+    /* Not where a walker cannot follow: the sky needs flight, deep water
+       a boat, under the water gills -- the goblin was found on a cloud,
+       on the Dragon Sea and in a whirlpool (2026-10-20/21), and could not
+       even run out of them himself. */
+    if ( room->sector_type == SECT_AIR
+    ||   room->sector_type == SECT_WATER_NOSWIM
+    ||   room->sector_type == SECT_UNDER_WATER )
+        return false;
+
     /* Not in another keeper's shop: find_keeper takes the first
        shopkeeper in the room, and that would be him, for as long as he
        stood there. */

@@ -582,7 +582,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
 
     if ( jail == NULL || temple == NULL )
     {
-        send_to_char( "Jail or temple room not found — check ROOM_VNUM_JAIL/TEMPLE.\n\r", ch );
+        send_to_char( "Jail or temple room not found -- check ROOM_VNUM_JAIL/TEMPLE.\n\r", ch );
         return;
     }
 
@@ -9318,7 +9318,7 @@ void do_stasis( CHAR_DATA *ch, char *argument )
     else
     {
         SET_BIT( victim->act, PLR_STASIS );
-        send_to_char( "You are locked in place — you cannot move!\n\r", victim );
+        send_to_char( "You are locked in place -- you cannot move!\n\r", victim );
         snprintf( buf, sizeof(buf), "%s is now in stasis.\n\r", victim->name );
         send_to_char( buf, ch );
     }
@@ -9455,7 +9455,7 @@ void do_rename( CHAR_DATA *ch, char *argument )
     /* Record old save path before changing the name */
     snprintf( old_file, sizeof(old_file), "%s%s", PLAYER_DIR, capitalize(victim->name) );
 
-    /* Delete old player file — new one created by save_char_obj below */
+    /* Delete old player file -- new one created by save_char_obj below */
     unlink( old_file );
 
     /* Capitalize and apply new name */
@@ -11076,7 +11076,7 @@ static void empower_add_spell( CHAR_DATA *victim, AFFECT_DATA *af,
     affect_to_char( victim, af );
 }
 
-/* Spells granted by empower — used both for apply and for strip on toggle-off */
+/* Spells granted by empower -- used both for apply and for strip on toggle-off */
 static const char * const empower_spells[] =
 {
     "sanctuary",
@@ -11147,7 +11147,7 @@ void do_empower( CHAR_DATA *ch, char *argument )
         if ( duration < 1 ) duration = 100;
     }
 
-    /* Sentinel affect — type=gsn_empower, no bitvector, no location.
+    /* Sentinel affect -- type=gsn_empower, no bitvector, no location.
      * is_affected(gsn_empower) uses this for toggle detection.        */
     af.type       = gsn_empower;
     af.level      = (sh_int)ch->level;
@@ -11158,7 +11158,7 @@ void do_empower( CHAR_DATA *ch, char *argument )
     af.bitvector2 = 0;
     affect_to_char( victim, &af );
 
-    /* Granted spells — each uses its real spell type so affect shows by name */
+    /* Granted spells -- each uses its real spell type so affect shows by name */
     af.level    = (sh_int)ch->level;
     af.duration = (sh_int)duration;
 
@@ -11171,7 +11171,7 @@ void do_empower( CHAR_DATA *ch, char *argument )
     empower_add_spell( victim, &af, "divine protection",APPLY_NONE,   0,  0,                 AFF2_DIVINE_PROT );
     empower_add_spell( victim, &af, "giant strength",  APPLY_STR,    15,  0,                 0 );
 
-    /* Stat/combat boosts — type=gsn_empower so they group cleanly */
+    /* Stat/combat boosts -- type=gsn_empower so they group cleanly */
     af.type       = gsn_empower;
     af.bitvector  = 0;
     af.bitvector2 = 0;
@@ -12146,12 +12146,12 @@ void do_spellpurge( CHAR_DATA *ch, char *argument )
 
 
 /*
- * summonevent — immortal command to manually spawn or despawn the seasonal
+ * summonevent -- immortal command to manually spawn or despawn the seasonal
  *               event boss.  Works regardless of active season (for testing).
  *
  * Usage:
- *   summonevent         — spawn the boss (or despawn if already alive)
- *   summonevent status  — show current boss state without changing it
+ *   summonevent         -- spawn the boss (or despawn if already alive)
+ *   summonevent status  -- show current boss state without changing it
  */
 void do_summonevent( CHAR_DATA *ch, char *argument )
 {
@@ -12163,7 +12163,7 @@ void do_summonevent( CHAR_DATA *ch, char *argument )
     one_argument( argument, arg );
     season_name = get_season_name();   /* NULL if off-season */
 
-    /* Validate event_boss_mob — it may be a dangling pointer if the boss
+    /* Validate event_boss_mob -- it may be a dangling pointer if the boss
      * was killed by players since the last tick fired verify_event_boss(). */
     verify_event_boss();
 

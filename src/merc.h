@@ -3400,6 +3400,15 @@ int     group_lookup    (const char *name);
 void    gn_add          ( CHAR_DATA *ch, int gn);
 void    gn_remove       ( CHAR_DATA *ch, int gn);
 bool    rescind_stray_mage_groups ( CHAR_DATA *ch );
+/* Hyrule's object vnums (the generator's catalog range). */
+#define HYRULE_OBJ_FIRST        30200
+#define HYRULE_OBJ_LAST         30999
+bool    hyrule_bound_object  ( const OBJ_DATA *obj );
+bool    remove_curse_has_work ( CHAR_DATA *victim );
+void    quest_login_cooldown ( CHAR_DATA *ch );
+/* Giving a daily up -- abandoning it, or leaving the game with it -- means
+   this long before the next (quest.c); saved as DailyWait, capped on load. */
+#define DAILY_GIVE_UP_WAIT      ( 10 * 60 )
 void    player_fixes_login ( CHAR_DATA *ch, bool new_character );
 void    group_add       ( CHAR_DATA *ch, const char *name, bool deduct);
 void    group_remove    ( CHAR_DATA *ch, const char *name);

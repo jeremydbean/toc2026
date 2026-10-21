@@ -1458,7 +1458,7 @@ void char_update( void )
 	   room_affect(ch,ch->in_room, 10);
 	   /* room_affect() may kill ch via a trap (STINKING_CLOUD/VOLCANIC/SHOCKER).
 	    * char_from_room() sets ch->in_room = NULL on extraction; if NULL now,
-	    * ch is freed — do not touch it further this iteration. */
+	    * ch is freed -- do not touch it further this iteration. */
 	   if ( ch->in_room == NULL )
 	       continue;
 	}
@@ -2506,7 +2506,7 @@ void room_update( void )
 		to_room = get_room_index(pRoom->to_room);
 
 		if ( to_room == NULL )
-		    continue;   /* one misconfigured room, not every one after it; was: misconfigured teleport room — skip this tick */
+		    continue;   /* one misconfigured room, not every one after it; was: misconfigured teleport room -- skip this tick */
 
 		for (pChar = pRoom->room->people; pChar != NULL;
 			pChar = pCharNext)
@@ -2543,7 +2543,7 @@ void room_update( void )
 
                 pexit = pRoom->room->exit[pRoom->to_room];
                 if (pexit == NULL || pexit->u1.to_room == NULL)
-                    continue;  /* misconfigured river room — skip this room */
+                    continue;  /* misconfigured river room -- skip this room */
                 to_room = pexit->u1.to_room;
 
                 for (pChar = pRoom->room->people; pChar != NULL;

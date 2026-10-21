@@ -2636,7 +2636,7 @@ void do_tell( CHAR_DATA *ch, char *argument )
     char stamp[MAX_STRING_LENGTH];
     CHAR_DATA *victim;
 
-    /* If the sender is AFK, sending a tell means they're back — auto-clear */
+    /* If the sender is AFK, sending a tell means they're back -- auto-clear */
     if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_AFK) )
     {
         send_to_char( "AFK mode removed.\n\r", ch );
@@ -2755,7 +2755,7 @@ void do_reply( CHAR_DATA *ch, char *argument )
     char buf[MAX_STRING_LENGTH];
     char stamp[MAX_STRING_LENGTH];
 
-    /* If the sender is AFK, replying means they're back — auto-clear */
+    /* If the sender is AFK, replying means they're back -- auto-clear */
     if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_AFK) )
     {
         send_to_char( "AFK mode removed.\n\r", ch );
