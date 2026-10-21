@@ -1901,3 +1901,119 @@
 1792623128	cmd	Trentlin	49	30470	hyrule.are	standing	99	0	-	kill	gl	Gleeok parries your attack.
 1792623132	cmd	Trentlin	49	30470	hyrule.are	fighting	99	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Gleeok!
 1792623142	cmd	Trentlin	49	30470	hyrule.are	fighting	97	0	fight	smite		Your smite misses Gleeok.
+1792623154	cmd	Trentlin	49	30470	hyrule.are	fighting	96	0	fight	smite		Your smite === OBLITERATES === Gleeok!
+1792623164	cmd	Trentlin	49	30470	hyrule.are	fighting	94	0	fight	smite		Your smite misses Gleeok.
+1792623173	cmd	Trentlin	49	30470	hyrule.are	fighting	93	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Gleeok!
+1792623191	cmd	Trentlin	49	30470	hyrule.are	standing	92	0	-	look	in cor	Corpse of Gleeok contains:
+1792623199	cmd	Trentlin	49	30470	hyrule.are	standing	92	0	-	get	gla co	You get the Gleeok twin-fang glaive from corpse of Gleeok.
+1792623202	cmd	Trentlin	49	30470	hyrule.are	standing	92	0	-	compare	gla	A) the Gleeok twin-fang glaive (level 27)
+1792623214	cmd	Trentlin	49	30470	hyrule.are	standing	92	0	-	drop	troll	You can't let go of it.
+1792623215	cmd	Trentlin	49	30470	hyrule.are	standing	92	0	-	inventory		You are carrying:
+1792623219	cmd	Trentlin	49	30470	hyrule.are	standing	92	0	-	look	in cor	Corpse of Gleeok contains:
+1792623222	cmd	Trentlin	49	30470	hyrule.are	standing	92	0	-	get	all cor	You get a twin-headed mantle from corpse of Gleeok.
+1792623222	cmd	Trentlin	49	30470	hyrule.are	standing	92	0	-	look		Level 4: Hall of the Twin Necks
+1792623225	cmd	Trentlin	49	30470	hyrule.are	standing	92	0	-	unlock	north]	I see no north] here.
+1792623227	cmd	Trentlin	49	30470	hyrule.are	standing	92	0	-	unlock	north	There is a flash of light as you unlock the snake.
+1792623231	cmd	Trentlin	49	30474	hyrule.are	standing	92	0	-	north		Level 4: Sanctum of Bowed Serpents
+1792623233	cmd	Trentlin	49	30474	hyrule.are	standing	92	0	-	look	in ches	It is closed.
+1792623235	cmd	Trentlin	49	30474	hyrule.are	standing	93	0	-	unlock	chest	*Click*
+1792623238	cmd	Trentlin	49	30474	hyrule.are	standing	93	0	-	open	chest	Ok.
+1792623239	cmd	Trentlin	49	30474	hyrule.are	standing	93	0	-	get	all chest	You get the stepladder from the Snake's treasure chest.
+1792623244	cmd	Trentlin	49	30253	hyrule.are	standing	93	0	-	enter	light	You enter the Snake's returning light
+1792623263	cmd	Trentlin	49	4207	dresden_halloween.are	standing	93	0	-	recall		Before the Shrouded Altar
+1792623264	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	south		The Hall of Guttering Candles
+1792623266	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	compa	You drop the Snake dungeon compass.
+1792623266	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	compa	You drop the Manji dungeon compass.
+1792623266	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	compa	You drop the Moon dungeon compass.
+1792623267	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	compa	You do not have that item.
+1792623269	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	key	You drop the Snake's key.
+1792623269	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	key	You drop the Manji's key.
+1792623269	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	key	You drop a small key.
+1792623270	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	key	You drop the Moon's key.
+1792623270	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	key	You drop a small key.
+1792623272	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	key	You drop a small key.
+1792623272	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	key	You drop a small key.
+1792623272	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	key	You drop a small key.
+1792623272	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	key	You drop a small key.
+1792623273	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	key	You do not have that item.
+1792623273	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	key	You do not have that item.
+1792623273	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	key	You do not have that item.
+1792623273	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	drop	key	You do not have that item.
+1792623275	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	get	small	You get a small key.
+1792623275	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	get	small	You get a small key.
+1792623275	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	get	small	You get a small key.
+1792623275	cmd	Trentlin	49	4205	dresden_halloween.are	standing	93	0	-	get	small	You get a small key.
+1792623276	cmd	Trentlin	49	4207	dresden_halloween.are	standing	93	0	-	north		Before the Shrouded Altar
+1792623277	cmd	Trentlin	49	4208	dresden_halloween.are	standing	93	0	-	west		The Shrouded Altar of Devota
+1792623278	cmd	Trentlin	49	4208	dresden_halloween.are	standing	93	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792623278	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792623278	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792623279	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792623279	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792623279	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792623279	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792623280	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792623280	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792623280	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792623285	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	compare	contain	A) the Snake's Heart Container (level 27)
+1792623289	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	look	in contain	That is not a container.
+1792623292	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	drop	contain	You drop the Snake's Heart Container.
+1792623292	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	drop	contain	You do not have that item.
+1792623292	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	drop	contain	You do not have that item.
+1792623292	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	drop	contain	You do not have that item.
+1792623294	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	sacrifice	cont	The Gods give you 54 copper coins for your sacrifice.
+1792623295	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792623299	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	compare	guard	A) the Heart Guard of the Snake (level 27)
+1792623309	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	wear	guard	You stop using a spiked collar.
+1792623318	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	stash	put collar	You put a spiked collar away for safe keeping.
+1792623318	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792623321	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	compare	hau	A) a twin-dragon hauberk (level 27)
+1792623329	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	score		--------------------------------------------------------------
+1792623330	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	wear	ha	You stop using a Roman-style breastplate.
+1792623334	cmd	Trentlin	49	2401	dresden_halloween.are	standing	99	0	-	score		--------------------------------------------------------------
+1792623336	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792623347	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	stash	put breat	You are not carrying that.
+1792623351	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	stash	put brest	You are not carrying that.
+1792623356	refused	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	(unknown)		Huh? Did you mean STASH or STEALTH?
+1792623358	refused	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	(unknown)		Huh? Did you mean STASH or STEALTH?
+1792623365	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	stash	put roman	You put a Roman-style breastplate away for safe keeping.
+1792623366	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792623368	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	score		--------------------------------------------------------------
+1792623369	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	compare	sh	A small key is not something you can wear.
+1792623372	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	compare	shi	A) a coiled-snake shield (level 27)
+1792623380	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	wear	shi	You stop using a green scale buckler.
+1792623384	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	stash	put buckl	You put a green scale buckler away for safe keeping.
+1792623385	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792623389	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	compare	mant	A) a twin-headed mantle (level 27)
+1792623397	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	wear	mant	You stop using a commoner's piwafwi.
+1792623399	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	stash	put piwa	You put a commoner's piwafwi away for safe keeping.
+1792623402	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792623402	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	score		--------------------------------------------------------------
+1792623405	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792623409	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	compare	gla	A) the Gleeok twin-fang glaive (level 27)
+1792623418	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	skills		Level  1: axe                100%      dagger              89%      
+1792623421	cmd	Trentlin	49	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792623421	cmd	Trentlin	49	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792623421	cmd	Trentlin	49	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792623422	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792623422	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792623424	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	6	-	aquest	request	You approach Questor Thews and ask for a quest.
+1792623427	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792623444	cmd	Trentlin	49	2438	dresden_halloween.are	standing	100	0	-	run	w 7	Western Oak Tree Square.
+1792623444	cmd	Trentlin	49	2438	dresden_halloween.are	standing	100	0	-	open	gate	Ok.
+1792623445	cmd	Trentlin	49	6103	haon.are	standing	100	0	-	run	w 10	Outside the Western Gates of Dresden.
+1792623445	cmd	Trentlin	49	6108	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest
+1792623445	cmd	Trentlin	49	6110	haon.are	standing	100	0	-	run	w 2	A narrow trail through the deep, dark forest
+1792623445	cmd	Trentlin	49	6112	haon.are	standing	100	0	-	run	s 2	A narrow trail through the deep, dark forest
+1792623446	cmd	Trentlin	49	6127	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest
+1792623446	cmd	Trentlin	49	6126	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest
+1792623446	cmd	Trentlin	49	6135	haon.are	standing	100	0	-	run	w 3	A narrow trail through the deep, dark forest
+1792623446	cmd	Trentlin	49	6136	haon.are	standing	100	0	-	north		A dusty trail in the deep, dark forest
+1792623447	cmd	Trentlin	49	6137	haon.are	standing	100	0	-	west		At the end of the trail through the deep, dark forest
+1792623447	cmd	Trentlin	49	30	connect.are	standing	100	0	-	north		Forest Clearing
+1792623447	cmd	Trentlin	49	31	connect.are	standing	100	0	-	nw		A Twisting Path
+1792623447	cmd	Trentlin	49	901	olympus.are	standing	100	0	-	north		Mountain
+1792623449	cmd	Trentlin	49	902	olympus.are	standing	100	0	-	up		Mountain
+1792623450	cmd	Trentlin	49	903	olympus.are	standing	100	0	-	up		Mountain
+1792623451	cmd	Trentlin	49	904	olympus.are	standing	100	0	-	north		Entrance
+1792623453	cmd	Trentlin	49	905	olympus.are	standing	100	0	-	north		Zeus Street

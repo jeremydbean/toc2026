@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792622992
+LogO 1792623424
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -17,18 +17,18 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 49
-Plyd 46852
+Plyd 47284
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
 StashMax 75
 Scro 22
-Room 30457
-HMV  4932 4932 7725 7725 2380 2400
-NewGold 88
-NewPlat 106
-NewCopp 69
-NewSilv 89
+Room 2497
+HMV  4924 4924 7735 7822 2415 2419
+NewGold 225
+NewPlat 133
+NewCopp 715
+NewSilv 329
 BankCP 196240219
 IntTime 1792609212
 IntTotal 1240219
@@ -37,13 +37,13 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 460
+AchKills 465
 AchQuests 30
 AchDeaths 6
 AchExplore 15
 AchMaps 1
-AchCompass 7
-AchTriforce 7
+AchCompass 15
+AchTriforce 15
 Achv level-5 1791055385
 Achv level-10 1792240482
 Achv level-15 1792281423
@@ -86,6 +86,7 @@ Achv first-triforce-shard 1792458276
 Achv hyrule-eagle 1792458093
 Achv hyrule-moon 1792622517
 Achv hyrule-manji 1792622695
+Achv hyrule-snake 1792623184
 Achv level-35 1792461361
 Achv level-45 1792547281
 Achv carry-ten-platinum 1792115503
@@ -101,7 +102,7 @@ Achv visit-high-tower 1792621034
 Achv visit-ultima 1792621074
 Achv visit-korzath-fortress 1792287816
 Achv visit-ice-keep 1792455929
-LastOut  1792622992
+LastOut  1792623424
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1792617840
@@ -115,7 +116,8 @@ SesQuest 2
 QuestPnts 1377
 QuestStrk 19
 CasinoLost 4
-Exp  111516
+QuestNext 30
+Exp  111544
 Act  65740
 AfBy 3678910
 AfBy2 4106
@@ -146,29 +148,29 @@ Color 16 6
 Pos  8
 Prac 17
 Trai 3
-Save  -6
+Save  -9
 Alig  -932
-Hit   44
-Dam   115
-ACs -143 -144 -148 -21
+Hit   49
+Dam   118
+ACs -168 -172 -173 -78
 Attr 22 16 18 16 19
-AMod 69 25 23 33 25
+AMod 69 27 23 30 22
 Pass TrjPUdRVdu8MY~
 Titl  the Master Warrior~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 786 1276 388
-Cond 0 46 45
+Cond 0 38 37
 Sk 100 'axe'
 Sk 89 'dagger'
 Sk 25 'flail'
 Sk 75 'mace'
 Sk 81 'polearm'
-Sk 79 'shield block'
+Sk 80 'shield block'
 Sk 75 'spear'
 Sk 100 'sword'
-Sk 75 'whip'
+Sk 78 'whip'
 Sk 76 'bash'
 Sk 75 'destruction'
 Sk 75 'disarm'
@@ -190,29 +192,29 @@ Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
 AffD 'invis'  13  28   0   0          2          0
-AffD 'titanic'   0  24  50  16          0          0
-AffD 'titanic'   0  24 2000  14          0          0
-AffD 'titanic'   0  24 6410  12          0          0
-AffD 'titanic'   0  24 4110  13          0          0
-AffD 'empower'   0  24 -100  17          0          0
-AffD 'empower'  39  24  20  19          0          0
-AffD 'empower'   7  24  20  18          0          0
-AffD 'empower'   6  24  15   5          0          0
-AffD 'empower'  25  24  11   2          0          0
-AffD 'empower'   0  24  15   4          0          0
-AffD 'empower'   0  24  15   3          0          0
+AffD 'titanic'   0  16  50  16          0          0
+AffD 'titanic'   0  16 2000  14          0          0
+AffD 'titanic'   0  16 6410  12          0          0
+AffD 'titanic'   0  16 4110  13          0          0
+AffD 'empower'   0  16 -100  17          0          0
+AffD 'empower'  36  16  20  19          0          0
+AffD 'empower'   6  16  20  18          0          0
+AffD 'empower'   4  16  15   5          0          0
+AffD 'empower'  24  16  11   2          0          0
+AffD 'empower'   0  16  15   4          0          0
+AffD 'empower'   0  16  15   3          0          0
 AffD 'giant strength'   0  28  15   1          0          0
 AffD 'divine protection'  39  28   0   0          0       4096
-AffD 'fire shield'  12  28   0   0          0          8
-AffD 'protection evil'  42  28   0   0       8192          0
-AffD 'pass door'  38  28   0   0    1048576          0
-AffD 'fly'  43  28   0   0     524288          0
-AffD 'haste'  40  28   4   2    2097152          0
-AffD 'sanctuary'  41  28   0   0        128          0
-AffD 'empower'  43  24   0   0          0          0
+AffD 'fire shield'  11  28   0   0          0          8
+AffD 'protection evil'  41  28   0   0       8192          0
+AffD 'pass door'  37  28   0   0    1048576          0
+AffD 'fly'  41  28   0   0     524288          0
+AffD 'haste'  39  28   4   2    2097152          0
+AffD 'sanctuary'  39  28   0   0        128          0
+AffD 'empower'  43  16   0   0          0          0
 AffD 'bless'   0  28  -4  24          0          0
-AffD 'bless'  32  28   4  18          0          0
-AffD 'armor'   4  28 -20  17          0          0
+AffD 'bless'  31  28   4  18          0          0
+AffD 'armor'   3  28 -20  17          0          0
 AffD 'shield'   0  28 -20  17          0          0
 AffD 'stone skin'   0  28 -40  17          0          0
 AffD 'sanctuary'   0  28   0   0        128          0
@@ -280,32 +282,10 @@ Val  4 4 5 0 0
 End
 
 #O
-Vnum 10027
-Nest 0
-Wear 5
-Lev  13
-Cost 2100000
-Cond 95
-Repd 1
-Val  5 5 6 0 0
-End
-
-#O
-Vnum 25106
-Nest 0
-Wear 12
-Lev  18
-Cost 10000000
-Cond 97
-Repd 0
-Val  7 5 5 0 0
-End
-
-#O
 Vnum 53
 Nest 0
 Wear -1
-Time 64
+Time 56
 Cost 0
 Cond 100
 Repd 0
@@ -320,17 +300,6 @@ Cost 50000000
 Cond 99
 Repd 1
 Val  7 6 8 0 0
-End
-
-#O
-Vnum 1395
-Nest 0
-Wear 3
-Lev  23
-Cost 50000000
-Cond 100
-Repd 1
-Val  6 7 7 0 0
 End
 
 #O
@@ -357,7 +326,7 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 361
+Time 353
 Cost 0
 Cond 100
 Repd 0
@@ -367,7 +336,7 @@ End
 Vnum 37
 Nest 1
 Wear -1
-Time 88
+Time 80
 Cost 0
 Cond 100
 Repd 0
@@ -402,7 +371,7 @@ Lev  14
 Cost 100000
 Cond 94
 Repd 0
-Val  0 0 9630 0 0
+Val  0 0 9622 0 0
 End
 
 #O
@@ -459,27 +428,6 @@ Repd 0
 End
 
 #O
-Vnum 30227
-Nest 0
-Wear -1
-Lev  1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 30545
-Nest 0
-ExtF 0
-Wear -1
-Lev  1
-Cost 1000000
-Cond 100
-Repd 0
-End
-
-#O
 Vnum 30546
 Nest 0
 ExtF 0
@@ -514,36 +462,6 @@ Cost 200000
 Cond 100
 Repd 0
 Val  3 0 0 0 0
-End
-
-#O
-Vnum 30227
-Nest 0
-Wear -1
-Lev  1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 30227
-Nest 0
-Wear -1
-Lev  1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 30654
-Nest 0
-Wear 11
-Lev  8
-Cost 3200000
-Cond 100
-Repd 2
 End
 
 #O
@@ -761,31 +679,11 @@ Repd 3
 End
 
 #O
-Vnum 30227
-Nest 0
-Wear -1
-Lev  1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
 Vnum 30400
 Nest 0
 Wear -1
 Lev  2
 Cost 1000000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 30490
-Nest 0
-Wear -1
-Lev  8
-Cost 0
 Cond 100
 Repd 0
 End
@@ -817,26 +715,6 @@ Nest 0
 Wear -1
 Lev  8
 Cost 2000000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 30227
-Nest 0
-Wear -1
-Lev  1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 30491
-Nest 0
-Wear -1
-Lev  14
-Cost 0
 Cond 100
 Repd 0
 End
@@ -885,6 +763,122 @@ Vnum 3009
 Nest 0
 Wear -1
 Cost 10000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30585
+Nest 0
+Wear -1
+Lev  27
+Cost 43740000
+Cond 100
+Repd 0
+Affect -1 27 -1 -25 14 0 0
+End
+
+#O
+Vnum 30724
+Nest 0
+Wear 12
+Lev  27
+Cost 36450000
+Cond 100
+Repd 0
+Affect -1 27 -1 -1 13 0 0
+End
+
+#O
+Vnum 30666
+Nest 0
+Wear 11
+Lev  27
+Cost 36450000
+Cond 100
+Repd 0
+Affect -1 27 -1 -3 5 0 0
+End
+
+#O
+Vnum 30665
+Nest 0
+Wear 5
+Lev  27
+Cost 36450000
+Cond 100
+Repd 0
+Affect -1 27 -1 19 14 0 0
+End
+
+#O
+Vnum 30369
+Nest 0
+Wear 3
+Lev  27
+Cost 36450000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30412
+Nest 0
+Wear -1
+Lev  22
+Cost 101250000
+Cond 100
+Repd 0
+Affect -1 22 -1 1 24 0 0
+End
+
+#O
+Vnum 30403
+Nest 0
+Wear -1
+Lev  20
+Cost 4000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30227
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30545
+Nest 0
+ExtF 0
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30227
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30227
+Nest 0
+Wear -1
+Lev  1
+Cost 0
 Cond 100
 Repd 0
 End
@@ -1111,6 +1105,49 @@ Cost 36000
 Cond 87
 Repd 1
 Affect -1 7 -1 4 22 0 0
+End
+
+#O
+Vnum 1395
+Nest 0
+Wear -1
+Lev  23
+Cost 50000000
+Cond 100
+Repd 1
+Val  6 7 7 0 0
+End
+
+#O
+Vnum 10027
+Nest 0
+Wear -1
+Lev  13
+Cost 2100000
+Cond 95
+Repd 1
+Val  5 5 6 0 0
+End
+
+#O
+Vnum 30654
+Nest 0
+Wear -1
+Lev  8
+Cost 3200000
+Cond 100
+Repd 2
+End
+
+#O
+Vnum 25106
+Nest 0
+Wear -1
+Lev  18
+Cost 10000000
+Cond 97
+Repd 0
+Val  7 5 5 0 0
 End
 
 #END
