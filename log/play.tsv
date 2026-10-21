@@ -772,3 +772,180 @@
 1792621000	cmd	Trentlin	49	2497	dresden_halloween.are	standing	80	0	-	up		A sudden wind blows you from the tree!
 1792621002	cmd	Trentlin	49	2497	dresden_halloween.are	standing	80	6	-	aquest	request	You approach Questor Thews and ask for a quest.
 1792621005	cmd	Trentlin	49	2401	dresden_halloween.are	standing	80	0	-	enter	door	You enter The Rescue Portal
+1792621030	cmd	Trentlin	49	2438	dresden_halloween.are	standing	80	0	-	run	w 7	Western Oak Tree Square.
+1792621031	cmd	Trentlin	49	2438	dresden_halloween.are	standing	80	0	-	open	gate	Ok.
+1792621031	cmd	Trentlin	49	6101	haon.are	standing	80	0	-	run	w 8	Outside the Western Gates of Dresden.
+1792621031	cmd	Trentlin	49	6105	haon.are	standing	80	0	-	run	s 2	A small path in the deep, dark forest
+1792621031	cmd	Trentlin	49	6106	haon.are	standing	80	0	-	west		A junction in the deep, dark forest
+1792621032	cmd	Trentlin	49	6117	haon.are	standing	80	0	-	south		A junction in the deep, dark forest
+1792621032	cmd	Trentlin	49	6116	haon.are	standing	80	0	-	west		A small path in the deep, dark forest
+1792621032	cmd	Trentlin	49	6115	haon.are	standing	80	0	-	south		A small path in the deep, dark forest
+1792621032	cmd	Trentlin	49	6122	haon.are	standing	80	0	-	run	w 2	A junction in the deep, dark forest
+1792621033	cmd	Trentlin	49	9774	newthalo.are	standing	80	0	-	run	s 2	A junction on the river bank in the deep, dark forest
+1792621033	cmd	Trentlin	49	9775	newthalo.are	standing	80	0	-	west		On the Dark River
+1792621033	cmd	Trentlin	49	15	connect.are	standing	80	0	-	sw		Bend in River
+1792621033	cmd	Trentlin	49	16	connect.are	standing	80	0	-	west		Misty River
+1792621034	cmd	Trentlin	49	1307	htower.are	standing	80	0	-	run	n 5	==============================================================
+1792621034	cmd	Trentlin	49	1307	htower.are	standing	80	0	-	enter	red	You do not see that here.
+1792621034	cmd	Trentlin	49	1307	htower.are	standing	80	0	-	help	track	TRACK
+1792621041	cmd	Trentlin	49	1307	htower.are	standing	80	0	-	track	smithy	Huh?
+1792621049	cmd	Trentlin	49	1307	htower.are	standing	80	0	-	track	mr.	Huh?
+1792621051	cmd	Trentlin	49	1307	htower.are	standing	80	0	-	where	mr	You didn't find any mr.
+1792621055	cmd	Trentlin	49	1307	htower.are	standing	80	0	-	where	smithy	You didn't find any smithy.
+1792621056	cmd	Trentlin	49	1307	htower.are	standing	80	0	-	look		The Shadow Grove
+1792621060	cmd	Trentlin	49	1307	htower.are	standing	80	0	-	consider	gua	You can kill a shadow guardian naked and weaponless.
+1792621063	cmd	Trentlin	49	1307	htower.are	standing	80	0	-	exits		Obvious exits:
+1792621063	cmd	Trentlin	49	1301	htower.are	standing	80	0	-	east		The Shadow Grove
+1792621064	cmd	Trentlin	49	1301	htower.are	standing	80	0	-	exits		Obvious exits:
+1792621065	cmd	Trentlin	49	1307	htower.are	standing	80	0	-	east		The Shadow Grove
+1792621065	cmd	Trentlin	49	1307	htower.are	standing	80	0	-	exits		Obvious exits:
+1792621066	cmd	Trentlin	49	1301	htower.are	standing	80	0	-	east		The Shadow Grove
+1792621067	cmd	Trentlin	49	1301	htower.are	standing	80	0	-	scan		a shadow guardian                  -to the East.
+1792621068	cmd	Trentlin	49	1302	htower.are	standing	80	0	-	south		The Shadow Grove
+1792621069	cmd	Trentlin	49	1302	htower.are	standing	80	0	-	exits		Obvious exits:
+1792621070	cmd	Trentlin	49	1302	htower.are	standing	80	0	-	scan		a lost adventurer                  -to the South.
+1792621070	cmd	Trentlin	49	1311	htower.are	standing	80	0	-	south		A small clearing
+1792621074	cmd	Trentlin	49	7600	ultima.are	standing	80	0	-	enter	red	You enter a red moongate
+1792621080	cmd	Trentlin	49	7600	ultima.are	standing	80	0	-	where	smithy	Mr. Smithy                   Stables
+1792621084	cmd	Trentlin	49	7600	ultima.are	standing	81	0	-	track	smithy	Huh?
+1792621085	cmd	Trentlin	49	7601	ultima.are	standing	81	0	-	south		New Magincia Road
+1792621087	cmd	Trentlin	49	7601	ultima.are	standing	81	0	-	scan		the girl                           -to the South.
+1792621087	cmd	Trentlin	49	7602	ultima.are	standing	81	0	-	south		New Magincia Road
+1792621088	cmd	Trentlin	49	7602	ultima.are	standing	81	0	-	scan		the sheep                          -to the North.
+1792621089	cmd	Trentlin	49	7603	ultima.are	standing	81	0	-	south		The New Magincia Moongate
+1792621089	cmd	Trentlin	49	7603	ultima.are	standing	81	0	-	scan		the girl                           -to the North.
+1792621091	cmd	Trentlin	49	7603	ultima.are	standing	81	0	-	exits		Obvious exits:
+1792621092	cmd	Trentlin	49	7613	ultima.are	standing	81	0	-	east		Humility Lane
+1792621094	refused	Trentlin	49	7613	ultima.are	standing	81	0	-	(unknown)		Huh?
+1792621094	cmd	Trentlin	49	7612	ultima.are	standing	81	0	-	north		House
+1792621096	cmd	Trentlin	49	7611	ultima.are	standing	81	0	-	up		Attic
+1792621098	cmd	Trentlin	49	7612	ultima.are	standing	81	0	-	down		House
+1792621099	cmd	Trentlin	49	7613	ultima.are	standing	81	0	-	south		Humility Lane
+1792621099	cmd	Trentlin	49	7603	ultima.are	standing	81	0	-	west		The New Magincia Moongate
+1792621101	cmd	Trentlin	49	7608	ultima.are	standing	81	0	-	west		Humility Lane
+1792621102	cmd	Trentlin	49	7607	ultima.are	standing	81	0	-	north		Barn
+1792621103	cmd	Trentlin	49	7606	ultima.are	standing	81	0	-	north		Stables
+1792621106	cmd	Trentlin	49	7606	ultima.are	standing	81	0	-	kill	sm	Your cleave ^^^ DESTROYS ^^^ Mr. Smithy!
+1792621111	cmd	Trentlin	49	7606	ultima.are	standing	81	0	-	look	in co	Corpse of Mr. Smithy contains:
+1792621112	cmd	Trentlin	49	7607	ultima.are	standing	81	0	-	south		Barn
+1792621113	cmd	Trentlin	49	4207	dresden_halloween.are	standing	81	0	-	recall		Before the Shrouded Altar
+1792621115	cmd	Trentlin	49	4202	dresden_halloween.are	standing	81	0	-	east		The Hall of Whispers
+1792621115	cmd	Trentlin	49	4201	dresden_halloween.are	standing	81	0	-	east		Entrance to the Haunted Temple
+1792621116	cmd	Trentlin	49	2427	dresden_halloween.are	standing	81	0	-	east		Main Processional, Below the Temple Steps
+1792621117	cmd	Trentlin	49	2404	dresden_halloween.are	standing	81	0	-	north		Southern Oak Tree Square.
+1792621117	cmd	Trentlin	49	2401	dresden_halloween.are	standing	81	0	-	north		Oak Tree Square on Hallows Eve
+1792621118	cmd	Trentlin	49	2410	dresden_halloween.are	standing	81	0	-	up		Climbing the Oak Tree...
+1792621118	cmd	Trentlin	49	2411	dresden_halloween.are	standing	81	0	-	up		Up in the Oak Tree.
+1792621118	cmd	Trentlin	49	2414	dresden_halloween.are	standing	81	0	-	up		Top of the oak tree.
+1792621119	cmd	Trentlin	49	2497	dresden_halloween.are	standing	81	0	-	up		A sudden wind blows you from the tree!
+1792621120	cmd	Trentlin	49	2497	dresden_halloween.are	standing	81	0	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792621125	cmd	Trentlin	49	2497	dresden_halloween.are	standing	81	0	-	aquest	gamble yes	The dice BETRAY you! Your 53 quest points are lost.
+1792621127	cmd	Trentlin	49	2401	dresden_halloween.are	standing	81	0	-	enter	door	You enter The Rescue Portal
+1792621157	cmd	Trentlin	49	2427	dresden_halloween.are	standing	82	0	-	run	s 2	Southern Oak Tree Square.
+1792621157	cmd	Trentlin	49	4207	dresden_halloween.are	standing	82	0	-	run	w 3	Entrance to the Haunted Temple
+1792621158	cmd	Trentlin	49	3795	school.are	standing	82	0	-	run	u 3	Entrance to Mud School
+1792621158	cmd	Trentlin	49	15000	campus.are	standing	82	0	-	enter	portal	You enter A Portal
+1792621158	cmd	Trentlin	49	15004	campus.are	standing	82	0	-	run	e 4	Campus Crescent
+1792621158	cmd	Trentlin	49	15013	campus.are	standing	82	0	-	run	n 4	University Avenue
+1792621159	cmd	Trentlin	49	15068	campus.are	standing	82	0	-	run	e 2	The Back Hall
+1792621159	cmd	Trentlin	49	30200	hyrule.are	standing	82	0	-	enter	cabinet	You enter a flickering Hyrule arcade cabinet
+1792621164	cmd	Trentlin	49	30200	hyrule.are	standing	82	0	-	inventory		You are carrying:
+1792621170	cmd	Trentlin	49	30208	hyrule.are	standing	82	0	-	east		Meadow East of the Cave
+1792621170	cmd	Trentlin	49	30208	hyrule.are	standing	82	0	-	score		--------------------------------------------------------------
+1792621173	cmd	Trentlin	49	30208	hyrule.are	standing	82	0	-	affect		You are affected by:
+1792621181	cmd	Trentlin	49	4207	dresden_halloween.are	standing	82	0	-	recall		Before the Shrouded Altar
+1792621181	cmd	Trentlin	49	4208	dresden_halloween.are	standing	82	0	-	west		The Shrouded Altar of Devota
+1792621183	cmd	Trentlin	49	4208	dresden_halloween.are	standing	82	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792621184	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792621184	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792621184	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792621184	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792621185	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792621185	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792621189	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	run	s 2	Southern Oak Tree Square.
+1792621189	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	run	w 3	Entrance to the Haunted Temple
+1792621190	cmd	Trentlin	49	3795	school.are	standing	100	0	-	run	u 3	Entrance to Mud School
+1792621190	cmd	Trentlin	49	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal
+1792621190	cmd	Trentlin	49	15004	campus.are	standing	100	0	-	run	e 4	Campus Crescent
+1792621190	cmd	Trentlin	49	15013	campus.are	standing	100	0	-	run	n 4	University Avenue
+1792621191	cmd	Trentlin	49	15068	campus.are	standing	100	0	-	run	e 2	The Back Hall
+1792621191	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering Hyrule arcade cabinet
+1792621194	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	north		Rock Wall Above the Start
+1792621195	cmd	Trentlin	49	30224	hyrule.are	standing	100	0	-	east		Bush Row
+1792621197	cmd	Trentlin	49	30240	hyrule.are	standing	100	0	-	north		Crossroads South of the Lake
+1792621198	cmd	Trentlin	49	30256	hyrule.are	standing	100	0	-	north		Lake Hylia Sand Bar
+1792621201	cmd	Trentlin	49	30256	hyrule.are	standing	100	0	-	consider	lee	You can kill a red leever naked and weaponless.
+1792621202	cmd	Trentlin	49	30256	hyrule.are	standing	100	0	-	look	lee	This young red leever is little more than a spinning red knot, its hide
+1792621202	cmd	Trentlin	49	30272	hyrule.are	standing	100	0	-	north		The River Landing
+1792621203	cmd	Trentlin	49	30288	hyrule.are	standing	100	0	-	north		The Withered Thicket
+1792621205	cmd	Trentlin	49	30289	hyrule.are	standing	100	0	-	east		The Sandy Flats
+1792621206	cmd	Trentlin	49	30290	hyrule.are	standing	100	0	-	east		The Dune Strip
+1792621207	cmd	Trentlin	49	30291	hyrule.are	standing	100	0	-	east		Below the Lost Hills
+1792621209	cmd	Trentlin	49	30275	hyrule.are	standing	100	0	-	south		The Blowing Sands
+1792621209	cmd	Trentlin	49	30259	hyrule.are	standing	100	0	-	south		Eastern Thicket
+1792621212	cmd	Trentlin	49	30259	hyrule.are	standing	100	0	-	consider	mo	You can kill a red moblin naked and weaponless.
+1792621213	cmd	Trentlin	49	30259	hyrule.are	standing	100	0	-	look	mo	Moss stains streak the red fur of this lean, long-legged hunter, which has
+1792621214	cmd	Trentlin	49	30243	hyrule.are	standing	100	0	-	south		Eastwood Glade
+1792621216	cmd	Trentlin	49	30244	hyrule.are	standing	100	0	-	east		Pinewood Rise
+1792621217	cmd	Trentlin	49	30245	hyrule.are	standing	100	0	-	east		Moblin Hollow
+1792621218	cmd	Trentlin	49	30246	hyrule.are	standing	100	0	-	east		Candlemaker's Dead End
+1792621219	cmd	Trentlin	49	30685	hyrule.are	standing	100	0	-	down		Wick and Tallow Den
+1792621220	cmd	Trentlin	49	30685	hyrule.are	standing	100	0	-	list		a merchant in a patched cloak says 'I don't trade with folks I can't see.'
+1792621223	cmd	Trentlin	49	30685	hyrule.are	standing	100	0	-	visible		Ok.
+1792621223	cmd	Trentlin	49	30685	hyrule.are	standing	100	0	-	list		[Lv Price] Item
+1792621226	cmd	Trentlin	49	30246	hyrule.are	standing	100	0	-	up		Candlemaker's Dead End
+1792621227	cmd	Trentlin	49	30245	hyrule.are	standing	100	0	-	west		Moblin Hollow
+1792621228	cmd	Trentlin	49	30261	hyrule.are	standing	100	0	-	north		Wooded Crossroads
+1792621229	cmd	Trentlin	49	30262	hyrule.are	standing	100	0	-	east		Armos Sentinel Grove
+1792621233	cmd	Trentlin	49	30262	hyrule.are	standing	100	0	-	list		You can't do that here.
+1792621235	cmd	Trentlin	49	30262	hyrule.are	standing	100	0	-	consider	arm	You can kill an Armos knight naked and weaponless.
+1792621236	cmd	Trentlin	49	30262	hyrule.are	standing	100	0	-	look	arm	Small for its kind and green with moss, this armos has stood among these
+1792621236	cmd	Trentlin	49	30261	hyrule.are	standing	100	0	-	west		Wooded Crossroads
+1792621237	cmd	Trentlin	49	30245	hyrule.are	standing	100	0	-	south		Moblin Hollow
+1792621237	cmd	Trentlin	49	30229	hyrule.are	standing	100	0	-	south		The Lion's Thicket
+1792621238	cmd	Trentlin	49	30230	hyrule.are	standing	100	0	-	east		Eastern Wood Path
+1792621239	cmd	Trentlin	49	30231	hyrule.are	standing	100	0	-	east		Coastal Shop Cave
+1792621240	cmd	Trentlin	49	30686	hyrule.are	standing	100	1	-	down		The Salt-Air Arsenal
+1792621241	cmd	Trentlin	49	30686	hyrule.are	standing	100	0	-	list		[Lv Price] Item
+1792621245	cmd	Trentlin	49	30686	hyrule.are	standing	100	0	-	inventory		You are carrying:
+1792621249	cmd	Trentlin	49	30686	hyrule.are	standing	100	0	-	look		The Salt-Air Arsenal
+1792621250	cmd	Trentlin	49	30231	hyrule.are	standing	100	0	-	up		Coastal Shop Cave
+1792621251	cmd	Trentlin	49	30231	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792621251	cmd	Trentlin	49	30215	hyrule.are	standing	100	0	-	south		Southeast Coast
+1792621253	cmd	Trentlin	49	30214	hyrule.are	standing	100	0	-	west		Southeast Grassland
+1792621254	cmd	Trentlin	49	30213	hyrule.are	standing	100	0	-	west		Southern Shore Path
+1792621256	cmd	Trentlin	49	30214	hyrule.are	standing	100	0	-	east		Southeast Grassland
+1792621256	cmd	Trentlin	49	30215	hyrule.are	standing	100	0	-	east		Southeast Coast
+1792621256	cmd	Trentlin	49	30215	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792621257	cmd	Trentlin	49	30231	hyrule.are	standing	100	0	-	north		Coastal Shop Cave
+1792621257	cmd	Trentlin	49	30247	hyrule.are	standing	100	0	-	north		The Coast's Lonely Ledge
+1792621262	cmd	Trentlin	49	30247	hyrule.are	standing	100	0	-	look	gap	You do not see that here.
+1792621264	refused	Trentlin	49	30247	hyrule.are	standing	100	0	-	(unknown)		Huh?
+1792621265	cmd	Trentlin	49	30247	hyrule.are	standing	100	0	-	drink		Drink what?
+1792621266	cmd	Trentlin	49	30263	hyrule.are	standing	100	0	-	north		Eastern Cliffs
+1792621267	cmd	Trentlin	49	30279	hyrule.are	standing	100	0	-	north		Lake Hylia, Eastern Dock
+1792621268	cmd	Trentlin	49	30279	hyrule.are	standing	100	0	-	north		You need the Raft to cross that water.
+1792621270	cmd	Trentlin	49	30278	hyrule.are	standing	100	0	-	west		The Octorok Banks
+1792621272	cmd	Trentlin	49	30294	hyrule.are	standing	100	0	-	north		Lake Hylia, Northeast Shore
+1792621273	cmd	Trentlin	49	30293	hyrule.are	standing	100	0	-	west		Lake Hylia, North Shore
+1792621275	cmd	Trentlin	49	30293	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792621277	cmd	Trentlin	49	30293	hyrule.are	standing	100	0	-	north		You need the Stepladder to cross that gap.
+1792621280	cmd	Trentlin	49	30292	hyrule.are	standing	100	0	-	west		Lake Hylia, North Cliffs
+1792621282	cmd	Trentlin	49	30292	hyrule.are	standing	100	0	-	north		You need the Stepladder to cross that gap.
+1792621283	cmd	Trentlin	49	30291	hyrule.are	standing	100	0	-	west		Below the Lost Hills
+1792621285	cmd	Trentlin	49	30291	hyrule.are	standing	100	0	-	north		You need the Stepladder to cross that gap.
+1792621287	cmd	Trentlin	49	30290	hyrule.are	standing	100	0	-	west		The Dune Strip
+1792621288	cmd	Trentlin	49	30289	hyrule.are	standing	100	0	-	west		The Sandy Flats
+1792621289	cmd	Trentlin	49	30288	hyrule.are	standing	100	0	-	west		The Withered Thicket
+1792621290	cmd	Trentlin	49	30287	hyrule.are	standing	100	0	-	west		Foot of Death Mountain
+1792621291	cmd	Trentlin	49	30286	hyrule.are	standing	100	0	-	west		The Meadow Bluff
+1792621292	cmd	Trentlin	49	30270	hyrule.are	standing	100	0	-	south		The Sheltered Hollow
+1792621295	cmd	Trentlin	49	30269	hyrule.are	standing	100	0	-	west		The Quiet Glade
+1792621296	cmd	Trentlin	49	30269	hyrule.are	standing	100	0	-	north		You need the Stepladder to cross that gap.
+1792621297	cmd	Trentlin	49	30270	hyrule.are	standing	100	0	-	east		The Sheltered Hollow
+1792621298	cmd	Trentlin	49	30286	hyrule.are	standing	100	1	-	north		The Meadow Bluff
+1792621299	cmd	Trentlin	49	30287	hyrule.are	standing	100	0	-	east		Foot of Death Mountain
+1792621300	cmd	Trentlin	49	30288	hyrule.are	standing	100	0	-	east		The Withered Thicket
+1792621301	cmd	Trentlin	49	30272	hyrule.are	standing	100	0	-	south		The River Landing
+1792621302	cmd	Trentlin	49	30271	hyrule.are	standing	100	0	-	west		The Eagle's Gate
+1792621303	cmd	Trentlin	49	30401	hyrule.are	standing	100	0	-	down		Level 1: Eagle Gate
