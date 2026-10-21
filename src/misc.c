@@ -156,9 +156,12 @@ void do_heal(CHAR_DATA *ch, char *argument)
 	       uncurses in two sittings on 2026-10-20. */
 	    if ( !remove_curse_has_work( ch ) )
 	    {
-		/* Gear NOSUMMON closes to the spell: say so, not "no curse"
-		   -- the healer used to take the money and do nothing. */
-		if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_NOSUMMON) )
+		/* Cursed gear NOSUMMON closes to the spell: say so, not "no
+		   curse" -- the healer used to take the money and do nothing.
+		   With nothing cursed at all, NOSUMMON is beside the point
+		   (new characters start with it on). */
+		if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_NOSUMMON)
+		&&   remove_curse_gear_cursed( ch ) )
 		    act( "$N says 'Your gear is closed to my magic while you "
 			 "shun summoning. Type NOSUMMON to open it, then ask again.'",
 			ch, NULL, mob, TO_CHAR );

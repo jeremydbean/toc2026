@@ -3465,6 +3465,7 @@ bool    rescind_stray_mage_groups ( CHAR_DATA *ch );
 #define HYRULE_OBJ_LAST         30999
 bool    hyrule_bound_object  ( const OBJ_DATA *obj );
 bool    remove_curse_has_work ( CHAR_DATA *victim );
+bool    remove_curse_gear_cursed ( CHAR_DATA *victim );
 void    quest_login_cooldown ( CHAR_DATA *ch );
 /* Giving a daily up -- abandoning it, or leaving the game with it -- means
    this long before the next (quest.c); saved as DailyWait, capped on load. */

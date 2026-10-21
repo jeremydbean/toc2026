@@ -4139,10 +4139,20 @@ void spell_refresh( int sn, int level, CHAR_DATA *ch, void *vo )
 
 /* Whether REMOVE CURSE could lift anything from this character: a curse
    on them, or a cursed item that is not bound on purpose. */
-bool remove_curse_has_work( CHAR_DATA *victim )
+/* Whether anything carried or worn is cursed in a way the spell lifts. */
+bool remove_curse_gear_cursed( CHAR_DATA *victim )
 {
     OBJ_DATA *obj;
 
+    for ( obj = victim->carrying; obj != NULL; obj = obj->next_content )
+        if ( ( IS_OBJ_STAT(obj, ITEM_NODROP) || IS_OBJ_STAT(obj, ITEM_NOREMOVE) )
+        &&   !hyrule_bound_object( obj ) )
+            return true;
+    return false;
+}
+
+bool remove_curse_has_work( CHAR_DATA *victim )
+{
     if ( victim == NULL )
         return false;
     if ( is_affected( victim, gsn_curse ) )
@@ -4151,11 +4161,7 @@ bool remove_curse_has_work( CHAR_DATA *victim )
        refuses it), so cursed gear is no work while it is on. */
     if ( !IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON) )
         return false;
-    for ( obj = victim->carrying; obj != NULL; obj = obj->next_content )
-        if ( ( IS_OBJ_STAT(obj, ITEM_NODROP) || IS_OBJ_STAT(obj, ITEM_NOREMOVE) )
-        &&   !hyrule_bound_object( obj ) )
-            return true;
-    return false;
+    return remove_curse_gear_cursed( victim );
 }
 
 void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )

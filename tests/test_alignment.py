@@ -195,6 +195,10 @@ class AlignmentSourceTests(unittest.TestCase):
         work = body("magic.c", "bool remove_curse_has_work(")
         self.assertIn("PLR_NOSUMMON", work)
         self.assertIn("Type NOSUMMON to open it", source("misc.c"))
+        # Only when NOSUMMON is what hides cursed gear: a new character has
+        # it on and nothing cursed, and is told there is no curse (CI on
+        # dc3a8c80, test_review_oct21).
+        self.assertIn("remove_curse_gear_cursed( ch )", source("misc.c"))
 
     def test_gmcp_status_carries_the_tier(self) -> None:
         gmcp = source("gmcp.c")
