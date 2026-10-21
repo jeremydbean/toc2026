@@ -287,3 +287,180 @@
 1792618816	cmd	Trentlin	48	25022	mountain.are	standing	82	0	-	sw		The Lair
 1792618818	cmd	Trentlin	48	25021	mountain.are	standing	82	1	-	south		Outside the lair
 1792618818	cmd	Trentlin	48	25020	mountain.are	standing	82	0	-	south		The Dark Path
+1792618942	cmd	Trentlin	48	25019	mountain.are	standing	82	0	-	south		The Backdoor
+1792618944	cmd	Trentlin	48	25018	mountain.are	standing	82	0	-	east		around the back
+1792618944	cmd	Trentlin	48	25017	mountain.are	standing	82	0	-	east		Sharp Climb to the Top
+1792618945	cmd	Trentlin	48	25016	mountain.are	standing	82	0	-	south		Causeway
+1792618949	cmd	Trentlin	48	25016	mountain.are	standing	82	0	-	down		Alas, you cannot go that way.
+1792618949	cmd	Trentlin	48	25015	mountain.are	standing	82	0	-	south		Onward and Upward
+1792618951	cmd	Trentlin	48	25009	mountain.are	standing	82	0	-	se		End of the Bridge
+1792618954	cmd	Trentlin	48	25009	mountain.are	standing	82	0	-	exchange		Only heroes may trade experience for practice.
+1792618956	cmd	Trentlin	48	25009	mountain.are	standing	82	0	-	exits		Obvious exits:
+1792618959	cmd	Trentlin	48	25009	mountain.are	standing	82	0	-	down		Alas, you cannot go that way.
+1792618960	cmd	Trentlin	48	25008	mountain.are	standing	82	0	-	east		Middle of the Bridge
+1792618969	cmd	Trentlin	48	25012	mountain.are	standing	82	0	-	south		in the river
+1792618971	cmd	Trentlin	48	25013	mountain.are	standing	82	0	-	south		Last Chance
+1792618972	cmd	Trentlin	48	25003	mountain.are	standing	82	0	-	east		Next to the River
+1792618973	cmd	Trentlin	48	25002	mountain.are	standing	82	0	-	east		Near the river
+1792618975	cmd	Trentlin	48	25002	mountain.are	standing	82	0	-	scan		You don't see anything near you.
+1792618975	cmd	Trentlin	48	25002	mountain.are	standing	82	0	-	exits		Obvious exits:
+1792618979	cmd	Trentlin	48	25004	mountain.are	standing	82	0	-	north		Beginning of the climb
+1792619018	cmd	Trentlin	48	25002	mountain.are	standing	82	0	-	south		Near the river
+1792619019	cmd	Trentlin	48	25003	mountain.are	standing	82	0	-	west		Next to the River
+1792619022	cmd	Trentlin	48	25002	mountain.are	standing	82	0	-	east		Near the river
+1792619023	cmd	Trentlin	48	25002	mountain.are	standing	82	0	-	east		Alas, you cannot go that way.
+1792619023	cmd	Trentlin	48	25001	mountain.are	standing	82	0	-	south		A small mountain crevice
+1792619024	cmd	Trentlin	48	34	connect.are	standing	82	0	-	south		The Wind Gap
+1792619031	cmd	Trentlin	48	34	connect.are	standing	82	0	-	look	sign	This path leads to a once great dwarven kingdom, but be wary for it is 
+1792619034	cmd	Trentlin	48	33	connect.are	standing	82	0	-	se		Sharp turn
+1792619035	cmd	Trentlin	48	32	connect.are	standing	82	0	-	east		An unused path
+1792619036	cmd	Trentlin	48	31	connect.are	standing	82	0	-	east		A Twisting Path
+1792619037	cmd	Trentlin	48	901	olympus.are	standing	82	0	-	north		==============================================================
+1792619040	cmd	Trentlin	48	902	olympus.are	standing	82	0	-	up		Mountain
+1792619041	cmd	Trentlin	48	902	olympus.are	standing	82	0	-	scan		You don't see anything near you.
+1792619041	cmd	Trentlin	48	903	olympus.are	standing	82	0	-	up		Mountain
+1792619042	cmd	Trentlin	48	903	olympus.are	standing	82	0	-	scan		A citizen                          -to the North.
+1792619043	cmd	Trentlin	48	904	olympus.are	standing	82	0	-	north		Entrance
+1792619044	cmd	Trentlin	48	904	olympus.are	standing	82	0	-	consider	c	You can kill A citizen naked and weaponless.
+1792619045	cmd	Trentlin	48	904	olympus.are	standing	82	0	-	look	c	He looks happy and carefree.  He smiles and tips his hat to you.
+1792619046	cmd	Trentlin	48	905	olympus.are	standing	82	0	-	north		Zeus Street
+1792619046	cmd	Trentlin	48	906	olympus.are	standing	82	0	-	north		Zeus Street
+1792619047	cmd	Trentlin	48	907	olympus.are	standing	82	0	-	north		Zeus Street
+1792619047	cmd	Trentlin	48	908	olympus.are	standing	82	0	-	north		Zeus Street
+1792619048	cmd	Trentlin	48	909	olympus.are	standing	82	0	-	north		Castle Entryway
+1792619049	cmd	Trentlin	48	909	olympus.are	standing	82	0	-	scan		Zeus                               -to the North.
+1792619050	cmd	Trentlin	48	910	olympus.are	standing	82	0	-	north		Throne Room
+1792619051	cmd	Trentlin	48	910	olympus.are	standing	82	0	-	consider	z	Death will thank you for your gift.
+1792619052	cmd	Trentlin	48	910	olympus.are	standing	82	0	-	look	z	You see before you the greatest of the Olympians.  It seems as if he could
+1792619054	cmd	Trentlin	48	910	olympus.are	standing	82	0	-	scan		You don't see anything near you.
+1792619055	cmd	Trentlin	48	923	olympus.are	standing	82	0	-	north		Stairway
+1792619056	cmd	Trentlin	48	923	olympus.are	standing	82	0	-	scan		Zeus                               -to the South.
+1792619057	cmd	Trentlin	48	910	olympus.are	standing	82	0	-	south		Throne Room
+1792619058	cmd	Trentlin	48	918	olympus.are	standing	82	0	-	down		Dungeon
+1792619060	cmd	Trentlin	48	918	olympus.are	standing	82	0	-	consider	j	You can kill The Jailer naked and weaponless.
+1792619061	cmd	Trentlin	48	918	olympus.are	standing	82	0	-	look	j	He looks as though he has spent a lot of time underground, guarding the
+1792619061	cmd	Trentlin	48	918	olympus.are	standing	82	3	-	south		Alas, you cannot go that way.
+1792619063	cmd	Trentlin	48	918	olympus.are	standing	82	0	-	scan		Zeus                               -right above you.
+1792619063	cmd	Trentlin	48	919	olympus.are	standing	82	0	-	north		Dungeon
+1792619064	cmd	Trentlin	48	921	olympus.are	standing	82	0	-	west		Cell
+1792619066	cmd	Trentlin	48	919	olympus.are	standing	82	0	-	east		Dungeon
+1792619066	cmd	Trentlin	48	922	olympus.are	standing	82	0	-	east		Cell
+1792619067	cmd	Trentlin	48	919	olympus.are	standing	82	0	-	west		Dungeon
+1792619068	cmd	Trentlin	48	920	olympus.are	standing	82	0	-	north		Cell
+1792619068	cmd	Trentlin	48	920	olympus.are	standing	82	0	-	north		Alas, you cannot go that way.
+1792619070	cmd	Trentlin	48	920	olympus.are	standing	82	0	-	consider	pr	Prometheus says 'Do you feel lucky, punk?'.
+1792619071	cmd	Trentlin	48	920	olympus.are	standing	82	0	-	look	pr	This mortal risked the wrath of Zeus to give the gift of fire to humans.  He
+1792619076	cmd	Trentlin	48	919	olympus.are	standing	82	0	-	south		Dungeon
+1792619076	cmd	Trentlin	48	918	olympus.are	standing	82	0	-	south		Dungeon
+1792619077	cmd	Trentlin	48	910	olympus.are	standing	82	0	-	up		Throne Room
+1792619077	cmd	Trentlin	48	909	olympus.are	standing	82	0	-	south		Castle Entryway
+1792619078	cmd	Trentlin	48	915	olympus.are	standing	82	0	-	east		Eastern Wing
+1792619079	cmd	Trentlin	48	916	olympus.are	standing	82	0	-	east		Eastern Wing
+1792619080	cmd	Trentlin	48	917	olympus.are	standing	82	0	-	north		Eastern Wing
+1792619081	cmd	Trentlin	48	917	olympus.are	standing	82	0	-	scan		a pegasus                          -to the North.
+1792619082	cmd	Trentlin	48	933	olympus.are	standing	82	0	-	north		Stable
+1792619083	cmd	Trentlin	48	917	olympus.are	standing	82	0	-	south		Eastern Wing
+1792619083	cmd	Trentlin	48	916	olympus.are	standing	82	0	-	south		Eastern Wing
+1792619083	cmd	Trentlin	48	932	olympus.are	standing	82	0	-	south		Storage Room
+1792619084	cmd	Trentlin	48	932	olympus.are	standing	82	0	-	south		Alas, you cannot go that way.
+1792619085	cmd	Trentlin	48	916	olympus.are	standing	82	0	-	north		Eastern Wing
+1792619085	cmd	Trentlin	48	931	olympus.are	standing	82	0	-	east		Guest Quarters
+1792619086	cmd	Trentlin	48	931	olympus.are	standing	82	0	-	north		Alas, you cannot go that way.
+1792619087	cmd	Trentlin	48	931	olympus.are	standing	82	0	-	consider	ra	Death will thank you for your gift.
+1792619088	cmd	Trentlin	48	931	olympus.are	standing	82	0	-	look	ra	Ra is very bright!  It hurts your eyes to look at him, so you can tell little
+1792619089	cmd	Trentlin	48	916	olympus.are	standing	82	0	-	west		Eastern Wing
+1792619090	cmd	Trentlin	48	915	olympus.are	standing	82	0	-	west		Eastern Wing
+1792619090	cmd	Trentlin	48	909	olympus.are	standing	82	0	-	west		Castle Entryway
+1792619090	cmd	Trentlin	48	911	olympus.are	standing	82	0	-	west		Western Wing
+1792619091	cmd	Trentlin	48	912	olympus.are	standing	82	0	-	west		Western Wing
+1792619091	cmd	Trentlin	48	913	olympus.are	standing	82	0	-	north		Western Wing
+1792619092	cmd	Trentlin	48	914	olympus.are	standing	82	0	-	north		Kitchen
+1792619093	cmd	Trentlin	48	913	olympus.are	standing	82	0	-	south		Western Wing
+1792619094	cmd	Trentlin	48	912	olympus.are	standing	82	0	-	south		Western Wing
+1792619094	cmd	Trentlin	48	930	olympus.are	standing	82	0	-	south		Storage Room
+1792619094	cmd	Trentlin	48	930	olympus.are	standing	82	0	-	south		Alas, you cannot go that way.
+1792619095	cmd	Trentlin	48	912	olympus.are	standing	82	0	-	north		Western Wing
+1792619095	cmd	Trentlin	48	929	olympus.are	standing	82	0	-	west		Guest Quarters
+1792619098	cmd	Trentlin	48	929	olympus.are	standing	82	0	-	consider	od	Death will thank you for your gift.
+1792619098	cmd	Trentlin	48	929	olympus.are	standing	82	0	-	look	od	As you gaze at Odin, you realize how insignificant you truly are.  He towers
+1792619100	cmd	Trentlin	48	912	olympus.are	standing	82	0	-	east		Western Wing
+1792619100	cmd	Trentlin	48	911	olympus.are	standing	82	0	-	east		Western Wing
+1792619101	cmd	Trentlin	48	4207	dresden_halloween.are	standing	82	0	-	recall		Before the Shrouded Altar
+1792619102	cmd	Trentlin	48	4208	dresden_halloween.are	standing	82	0	-	west		The Shrouded Altar of Devota
+1792619103	cmd	Trentlin	48	4208	dresden_halloween.are	standing	82	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792619104	cmd	Trentlin	48	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792619104	cmd	Trentlin	48	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792619104	cmd	Trentlin	48	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792619104	cmd	Trentlin	48	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792619105	cmd	Trentlin	48	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792619105	cmd	Trentlin	48	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792619107	cmd	Trentlin	48	2401	dresden_halloween.are	standing	100	0	-	score		--------------------------------------------------------------
+1792619109	cmd	Trentlin	48	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792619109	cmd	Trentlin	48	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792619109	cmd	Trentlin	48	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792619110	cmd	Trentlin	48	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792619110	cmd	Trentlin	48	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792619111	cmd	Trentlin	48	2497	dresden_halloween.are	standing	100	6	-	aquest	request	You approach Questor Thews and ask for a quest.
+1792619119	cmd	Trentlin	48	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792619144	cmd	Trentlin	48	2401	dresden_halloween.are	standing	100	0	-	enter	doorr w 7	You do not see that here.
+1792619144	cmd	Trentlin	48	2401	dresden_halloween.are	standing	100	0	-	open	gate	I see no gate here.
+1792619144	cmd	Trentlin	48	2439	dresden_halloween.are	standing	100	0	-	run	w 8	Western Oak Tree Square.
+1792619145	cmd	Trentlin	48	2439	dresden_halloween.are	standing	100	0	-	run	s 2	You slam into a wall!.
+1792619145	refused	Trentlin	48	2439	dresden_halloween.are	resting	100	0	-	west		Nah... You feel too relaxed...
+1792619145	refused	Trentlin	48	2439	dresden_halloween.are	resting	100	0	-	south		Nah... You feel too relaxed...
+1792619145	refused	Trentlin	48	2439	dresden_halloween.are	resting	100	0	-	west		Nah... You feel too relaxed...
+1792619146	refused	Trentlin	48	2439	dresden_halloween.are	resting	100	0	-	south		Nah... You feel too relaxed...
+1792619146	refused	Trentlin	48	2439	dresden_halloween.are	resting	100	0	-	run	w 2	Nah... You feel too relaxed...
+1792619146	refused	Trentlin	48	2439	dresden_halloween.are	resting	100	0	-	run	s 2	Nah... You feel too relaxed...
+1792619146	refused	Trentlin	48	2439	dresden_halloween.are	resting	100	0	-	run	w 2	Nah... You feel too relaxed...
+1792619147	cmd	Trentlin	48	2439	dresden_halloween.are	resting	100	0	-	wake		You stand up.
+1792619149	cmd	Trentlin	48	2439	dresden_halloween.are	standing	100	0	-	look		Outside the Western Gates of Dresden.
+1792619168	cmd	Trentlin	48	6103	haon.are	standing	100	0	-	run	w 10	The edge of the forest
+1792619168	refused	Trentlin	48	6103	haon.are	resting	100	0	-	south		Nah... You feel too relaxed...
+1792619168	refused	Trentlin	48	6103	haon.are	resting	100	0	-	south		Nah... You feel too relaxed...
+1792619169	refused	Trentlin	48	6103	haon.are	resting	100	0	-	east		Nah... You feel too relaxed...
+1792619169	refused	Trentlin	48	6103	haon.are	resting	100	0	-	south		Nah... You feel too relaxed...
+1792619169	refused	Trentlin	48	6103	haon.are	resting	100	0	-	west		Nah... You feel too relaxed...
+1792619169	refused	Trentlin	48	6103	haon.are	resting	100	0	-	south		Nah... You feel too relaxed...
+1792619170	refused	Trentlin	48	6103	haon.are	resting	100	0	-	west		Nah... You feel too relaxed...
+1792619170	refused	Trentlin	48	6103	haon.are	resting	100	0	-	west		Nah... You feel too relaxed...
+1792619170	refused	Trentlin	48	6103	haon.are	resting	100	0	-	south		Nah... You feel too relaxed...
+1792619170	refused	Trentlin	48	6103	haon.are	resting	100	0	-	south		Nah... You feel too relaxed...
+1792619171	refused	Trentlin	48	6103	haon.are	resting	100	0	-	run	w 4	Nah... You feel too relaxed...
+1792619171	refused	Trentlin	48	6103	haon.are	resting	100	0	-	north		Nah... You feel too relaxed...
+1792619171	refused	Trentlin	48	6103	haon.are	resting	100	0	-	north		Nah... You feel too relaxed...
+1792619171	refused	Trentlin	48	6103	haon.are	resting	100	0	-	west		Nah... You feel too relaxed...
+1792619172	refused	Trentlin	48	6103	haon.are	resting	100	0	-	west		Nah... You feel too relaxed...
+1792619172	cmd	Trentlin	48	6103	haon.are	resting	100	0	-	wake		You stand up.
+1792619172	cmd	Trentlin	48	6103	haon.are	standing	100	0	-	recall		The gods are listening to somebody else just now.
+1792619174	cmd	Trentlin	48	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792619175	cmd	Trentlin	48	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota
+1792619176	cmd	Trentlin	48	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792619176	cmd	Trentlin	48	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792619177	cmd	Trentlin	48	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792619177	cmd	Trentlin	48	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792619177	cmd	Trentlin	48	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792619177	cmd	Trentlin	48	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792619178	cmd	Trentlin	48	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792619178	cmd	Trentlin	48	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792619178	cmd	Trentlin	48	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792619187	cmd	Trentlin	48	2438	dresden_halloween.are	standing	100	0	-	run	w 7	Western Oak Tree Square.
+1792619188	cmd	Trentlin	48	2438	dresden_halloween.are	standing	100	0	-	open	west	Ok.
+1792619188	cmd	Trentlin	48	6103	haon.are	standing	100	0	-	run	w 10	Outside the Western Gates of Dresden.
+1792619188	cmd	Trentlin	48	6108	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest
+1792619188	cmd	Trentlin	48	6107	haon.are	standing	100	0	-	south		A small path in the deep, dark forest
+1792619189	cmd	Trentlin	48	6106	haon.are	standing	100	0	-	east		A junction in the deep, dark forest
+1792619189	cmd	Trentlin	48	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest
+1792619189	cmd	Trentlin	48	6116	haon.are	standing	100	0	-	west		A small path in the deep, dark forest
+1792619189	cmd	Trentlin	48	6115	haon.are	standing	100	0	-	south		A small path in the deep, dark forest
+1792619190	cmd	Trentlin	48	6114	haon.are	standing	100	0	-	west		A junction in the deep, dark forest
+1792619190	cmd	Trentlin	48	6122	haon.are	standing	100	0	-	west		A small path in the deep, dark forest
+1792619190	cmd	Trentlin	48	6123	haon.are	standing	100	0	-	south		A junction on the river bank in the deep, dark forest
+1792619190	cmd	Trentlin	48	9774	newthalo.are	standing	100	0	-	south		On the Dark River
+1792619191	cmd	Trentlin	48	5977	mid_ruin.are	standing	100	0	-	run	w 4	On the Dark River
+1792619191	cmd	Trentlin	48	5749	mid_ruin.are	standing	100	0	-	north		Levee
+1792619191	cmd	Trentlin	48	5745	mid_ruin.are	standing	100	0	-	north		Alley at Levee
+1792619191	cmd	Trentlin	48	5726	mid_ruin.are	standing	100	0	-	west		The Dark Alley
+1792619192	cmd	Trentlin	48	5725	mid_ruin.are	standing	100	0	-	west		The Common Square
+1792619195	cmd	Trentlin	48	5725	mid_ruin.are	standing	100	0	-	exits		Obvious exits:
+1792619197	cmd	Trentlin	48	5724	mid_ruin.are	standing	100	0	-	west		Eastern End of Poor Alley
