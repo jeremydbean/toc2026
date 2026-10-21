@@ -660,3 +660,98 @@
 1792619807	cmd	Trentlin	49	25016	mountain.are	standing	546	0	-	flee		You aren't fighting anyone.
 1792619807	cmd	Trentlin	49	25016	mountain.are	standing	546	0	-	flee		You aren't fighting anyone.
 1792619808	cmd	Trentlin	49	4207	dresden_halloween.are	standing	546	0	-	recall		Before the Shrouded Altar
+1792619809	cmd	Trentlin	49	4208	dresden_halloween.are	standing	546	0	-	west		The Shrouded Altar of Devota
+1792619810	cmd	Trentlin	49	4208	dresden_halloween.are	standing	546	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792619811	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792619811	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792619812	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792619812	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792619812	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792619813	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792619813	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792619816	cmd	Trentlin	49	2438	dresden_halloween.are	standing	100	0	-	run	w 7	Western Oak Tree Square.
+1792619817	cmd	Trentlin	49	2438	dresden_halloween.are	standing	100	0	-	open	gate	Ok.
+1792619817	cmd	Trentlin	49	6103	haon.are	standing	100	0	-	run	w 10	Outside the Western Gates of Dresden.
+1792619817	cmd	Trentlin	49	6108	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest
+1792619817	cmd	Trentlin	49	6110	haon.are	standing	100	0	-	run	w 2	A narrow trail through the deep, dark forest
+1792619818	cmd	Trentlin	49	6112	haon.are	standing	100	0	-	run	s 2	A narrow trail through the deep, dark forest
+1792619818	cmd	Trentlin	49	6127	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest
+1792619818	cmd	Trentlin	49	6126	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest
+1792619818	cmd	Trentlin	49	6135	haon.are	standing	100	0	-	run	w 3	A narrow trail through the deep, dark forest
+1792619819	cmd	Trentlin	49	6136	haon.are	standing	100	0	-	north		A dusty trail in the deep, dark forest
+1792619819	cmd	Trentlin	49	6137	haon.are	standing	100	0	-	west		At the end of the trail through the deep, dark forest
+1792619819	cmd	Trentlin	49	30	connect.are	standing	100	0	-	north		Forest Clearing
+1792619819	cmd	Trentlin	49	31	connect.are	standing	100	0	-	nw		A Twisting Path
+1792619820	cmd	Trentlin	49	33	connect.are	standing	100	0	-	run	w 2	An unused path
+1792619820	cmd	Trentlin	49	34	connect.are	standing	100	0	-	nw		The Wind Gap
+1792619820	cmd	Trentlin	49	25001	mountain.are	standing	100	0	-	north		A small mountain crevice
+1792619822	cmd	Trentlin	49	25002	mountain.are	standing	100	0	-	north		Near the river
+1792619823	cmd	Trentlin	49	25004	mountain.are	standing	100	0	-	north		Beginning of the climb
+1792619824	cmd	Trentlin	49	25005	mountain.are	standing	100	0	-	nw		Hard Climb
+1792619825	cmd	Trentlin	49	25006	mountain.are	standing	100	0	-	north		Head of the Bridge
+1792619826	cmd	Trentlin	49	25007	mountain.are	standing	100	0	-	west		On the bridge
+1792619827	cmd	Trentlin	49	25008	mountain.are	standing	100	0	-	west		Middle of the Bridge
+1792619828	cmd	Trentlin	49	25009	mountain.are	standing	100	0	-	west		End of the Bridge
+1792619830	cmd	Trentlin	49	25015	mountain.are	standing	100	0	-	nw		Onward and Upward
+1792619832	cmd	Trentlin	49	25015	mountain.are	fighting	99	0	fight	smite		Your smite misses A Black Raven.
+1792619845	cmd	Trentlin	49	25015	mountain.are	fighting	96	0	fight	smite		Your smite *** DEVASTATES *** A Black Raven!
+1792619854	cmd	Trentlin	49	25015	mountain.are	fighting	95	0	fight	smite		Your smite misses A Black Raven.
+1792619864	cmd	Trentlin	49	25015	mountain.are	fighting	95	0	fight	smite		Your smite misses A Black Raven.
+1792619870	cmd	Trentlin	49	25015	mountain.are	fighting	95	0	fight	smite		Your smite *** DEVASTATES *** A Black Raven!
+1792619876	cmd	Trentlin	49	25015	mountain.are	fighting	95	0	fight	smite		Your smite misses A Black Raven.
+1792619917	cmd	Trentlin	49	25015	mountain.are	fighting	91	0	fight	smite		Your smite MASSACRES A Black Raven!
+1792619923	cmd	Trentlin	49	25015	mountain.are	fighting	90	0	fight	smite		Your smite maims A Black Raven!
+1792619938	cmd	Trentlin	49	25015	mountain.are	standing	89	0	-	smite		Smite whom?
+1792619940	cmd	Trentlin	49	25015	mountain.are	standing	89	0	-	look		Onward and Upward
+1792619941	cmd	Trentlin	49	25015	mountain.are	standing	89	0	-	mount		What do you want to ride?
+1792619943	cmd	Trentlin	49	25016	mountain.are	standing	89	0	-	north		Causeway
+1792619944	cmd	Trentlin	49	25017	mountain.are	standing	89	0	-	north		Sharp Climb to the Top
+1792619947	cmd	Trentlin	49	25017	mountain.are	standing	89	0	-	open	dawn	I see no dawn here.
+1792619956	cmd	Trentlin	49	25017	mountain.are	standing	89	0	-	open	secret	I see no secret here.
+1792619975	cmd	Trentlin	49	25017	mountain.are	standing	89	0	-	open	friend	You open a secret door.
+1792619975	cmd	Trentlin	49	25018	mountain.are	standing	89	0	-	west		around the back
+1792619976	cmd	Trentlin	49	25019	mountain.are	standing	89	0	-	west		The Backdoor
+1792619980	cmd	Trentlin	49	25019	mountain.are	standing	89	0	-	open	dawn	You open a secret door.
+1792619981	cmd	Trentlin	49	25019	mountain.are	standing	89	0	-	look		The Backdoor
+1792619982	cmd	Trentlin	49	25020	mountain.are	standing	89	0	-	north		The Dark Path
+1792619983	cmd	Trentlin	49	25021	mountain.are	standing	89	0	-	north		Outside the lair
+1792619985	cmd	Trentlin	49	25021	mountain.are	standing	89	0	-	consider	sma	Death will thank you for your gift.
+1792619987	refused	Trentlin	49	25021	mountain.are	standing	89	0	-	(unknown)		Huh?
+1792619991	refused	Trentlin	49	25021	mountain.are	standing	89	0	-	(unknown)		Huh?
+1792619992	cmd	Trentlin	49	25020	mountain.are	standing	89	0	-	south		The Dark Path
+1792620009	cmd	Trentlin	49	25021	mountain.are	standing	89	0	-	north		Outside the lair
+1792620012	refused	Trentlin	49	25021	mountain.are	standing	89	0	-	(unknown)		Huh?
+1792620015	cmd	Trentlin	49	25021	mountain.are	standing	89	0	-	open	door	You open a secret door.
+1792620018	cmd	Trentlin	49	25021	mountain.are	standing	89	0	-	pull	torch	Nothing seems to happen. Try something else?
+1792620020	cmd	Trentlin	49	25021	mountain.are	standing	89	0	-	look		Outside the lair
+1792620022	cmd	Trentlin	49	25021	mountain.are	standing	89	0	-	open	torch	I see no torch here.
+1792620023	cmd	Trentlin	49	25022	mountain.are	standing	89	0	-	north		The Lair
+1792620026	cmd	Trentlin	49	25023	mountain.are	standing	89	0	-	ne		Treasure vault
+1792620031	cmd	Trentlin	49	25023	mountain.are	standing	89	0	-	open	secret	I see no secret here.
+1792620032	cmd	Trentlin	49	25022	mountain.are	standing	89	0	-	sw		The Lair
+1792620032	cmd	Trentlin	49	25024	mountain.are	standing	89	0	-	nw		Treasure vault
+1792620034	cmd	Trentlin	49	25024	mountain.are	standing	89	0	-	open	secret	I see no secret here.
+1792620034	cmd	Trentlin	49	25022	mountain.are	standing	89	0	-	se		The Lair
+1792620035	cmd	Trentlin	49	25025	mountain.are	standing	89	0	-	se		Treasure vault
+1792620037	cmd	Trentlin	49	25025	mountain.are	standing	89	0	-	open	secret	I see no secret here.
+1792620038	cmd	Trentlin	49	25022	mountain.are	standing	89	0	-	nw		The Lair
+1792620038	cmd	Trentlin	49	25021	mountain.are	standing	89	0	-	south		Outside the lair
+1792620040	cmd	Trentlin	49	25021	mountain.are	standing	89	0	-	kill	sma	Smaug parries your attack.
+1792620048	cmd	Trentlin	49	25021	mountain.are	fighting	80	0	fight	flee		PANIC! You couldn't escape!
+1792620048	cmd	Trentlin	49	25021	mountain.are	fighting	80	0	fight	flee		PANIC! You couldn't escape!
+1792620048	cmd	Trentlin	49	25021	mountain.are	fighting	80	0	fight	flee		PANIC! You couldn't escape!
+1792620049	cmd	Trentlin	49	25021	mountain.are	fighting	80	0	fight	flee		Smaug is overcome with a feeling of despair and flees the battle.
+1792620049	cmd	Trentlin	49	25021	mountain.are	standing	80	0	-	flee		You aren't fighting anyone.
+1792620049	cmd	Trentlin	49	25021	mountain.are	standing	80	0	-	flee		You aren't fighting anyone.
+1792620049	cmd	Trentlin	49	25021	mountain.are	standing	80	0	-	flee		You aren't fighting anyone.
+1792620050	cmd	Trentlin	49	4207	dresden_halloween.are	fighting	79	0	fight	recall		Before the Shrouded Altar
+1792620051	cmd	Trentlin	49	4207	dresden_halloween.are	standing	79	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1792620051	cmd	Trentlin	49	4207	dresden_halloween.are	standing	79	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1792620058	cmd	Trentlin	49	4202	dresden_halloween.are	standing	79	0	-	east		The Hall of Whispers
+1792620060	cmd	Trentlin	49	4202	dresden_halloween.are	standing	79	0	-	eat	pot	You eat a big pot pie.
+1792620060	cmd	Trentlin	49	4202	dresden_halloween.are	standing	79	0	-	eat	pot	That's not edible.
+1792620061	cmd	Trentlin	49	4203	dresden_halloween.are	standing	79	0	-	north		The Hall of Cobwebs
+1792620061	cmd	Trentlin	49	4210	dresden_halloween.are	standing	79	0	-	north		The Sickroom of the Restless
+1792620062	cmd	Trentlin	49	4210	dresden_halloween.are	standing	79	0	-	sleep		You go to sleep.
+1792620089	cmd	Trentlin	49	4210	dresden_halloween.are	sleeping	79	0	-	group		Trentlin's group:
+1792620093	session	Trentlin	49	4210	dresden_halloween.are	quit	2253s	+3 levels	+6428 exp	+30455546 copper	15 kills	0 deaths	2 quests	753 commands	26 refused
