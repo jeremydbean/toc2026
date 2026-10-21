@@ -146046,3 +146046,36 @@ Wed Oct 21 01:19:30 2026 :: Log Trentlin [16038]: coin +38 gold
 Wed Oct 21 01:19:30 2026 :: Log Trentlin [16038]: get coins
 Wed Oct 21 01:19:30 2026 :: Log Trentlin [16038]: coin +5 platinum
 Wed Oct 21 01:19:32 2026 :: Log Trentlin [16038]: eat pot
+Wed Oct 21 01:19:35 2026 :: Log Trentlin [16038]: recall
+Wed Oct 21 01:19:35 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 16038
+Wed Oct 21 01:19:37 2026 :: Log Trentlin [4207]: e
+Wed Oct 21 01:19:37 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 21 01:19:37 2026 :: Log Trentlin [4202]: e
+Wed Oct 21 01:19:37 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 21 01:19:37 2026 :: Log Trentlin [4201]: n
+Wed Oct 21 01:19:37 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 4201
+Wed Oct 21 01:19:38 2026 :: Log Trentlin [2433]: n
+Wed Oct 21 01:19:39 2026 :: Log Trentlin [2433]: e
+Wed Oct 21 01:19:39 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2433
+Wed Oct 21 01:19:44 2026 :: Log Trentlin [2405]: recall
+Wed Oct 21 01:19:44 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 2405
+Wed Oct 21 01:19:45 2026 :: Log Trentlin [4207]: w
+Wed Oct 21 01:19:45 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Wed Oct 21 01:19:46 2026 :: Log Trentlin [4208]: heal heal
+Wed Oct 21 01:19:46 2026 :: Spellup: Hermie gave Trentlin heal (full) (30 ticks) in room 4208.
+Wed Oct 21 01:19:46 2026 :: Log Trentlin [4208]: e
+Wed Oct 21 01:19:46 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4208
+Wed Oct 21 01:19:47 2026 :: Log Trentlin [4207]: e
+Wed Oct 21 01:19:47 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Wed Oct 21 01:19:47 2026 :: Log Trentlin [4202]: n
+Wed Oct 21 01:19:47 2026 :: Log Trentlin [4203]: arrived (The Hall of Cobwebs) from 4202
+Wed Oct 21 01:19:47 2026 :: Log Trentlin [4203]: n
+Wed Oct 21 01:19:47 2026 :: Log Trentlin [4210]: arrived (The Sickroom of the Restless) from 4203
+Wed Oct 21 01:19:48 2026 :: Log Trentlin [4210]: n
+Wed Oct 21 01:19:48 2026 :: Log Trentlin [4210]: sleep
+Wed Oct 21 01:19:49 2026 :: Log Trentlin [4210]: quit
+Wed Oct 21 01:19:49 2026 :: Trentlin has quit.
+Wed Oct 21 01:19:49 2026 :: [QUIT] Player rejoined the real world.
+Wed Oct 21 01:20:23 2026 :: Treasure goblin: vanished from room 16037 (Main Deck, pirate.are) (left alone after a chase).
+Wed Oct 21 01:21:25 2026 :: Sock.sinaddr:  52.87.72.16
+Wed Oct 21 01:21:26 2026 :: EOF encountered on read.
