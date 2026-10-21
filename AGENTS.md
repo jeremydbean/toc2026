@@ -3183,6 +3183,14 @@ test that fails on the old code. Keep them.
   at its owner's side goes to the Temple with them; OUTFIT fills each
   empty slot, from a matching starter item already carried where there
   is one; practices and trains saturate at `SHRT_MAX`, never cut.
+- **No output may reach `alloc_mem` or the buffer ceiling whole.**
+  `alloc_mem`'s largest block is 32,704 bytes and a larger request
+  aborts the game; a descriptor's buffer stops at 32,000. CHANGES ALL
+  grew past both on 2026-10-21: with paging on the pager asked for one
+  block that size (a crash anyone could type), with paging off the
+  connection was closed. `write_to_buffer` now sends what is queued and
+  carries on, and `page_to_char` writes text too big for one pager block
+  unpaged (`tests/test_changes.py`). Keep both when touching either.
 - **The dashboard's player-file parser tracks sections**: the player
   block ends at its `End`, `#PET` and `#STASH` are not the player's, so a
   character carrying nothing no longer reads their pet's stats as their own

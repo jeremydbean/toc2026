@@ -2345,8 +2345,27 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
 
         if (d->outsize >= 32000)
         {
-	    bug("Buffer overflow. Closing.\n\r",0);
-	    close_socket(d);
+	    /*
+	     * As big as a buffer gets (alloc_mem's largest block is 32704):
+	     * send what is queued and carry on, rather than closing the
+	     * connection on somebody who asked for a long list. CHANGES ALL
+	     * passed this size on 2026-10-21 and dropped every reader with
+	     * paging off. A single piece bigger than the whole buffer goes
+	     * straight out.
+	     */
+	    if ( d->outtop > 0 )
+	    {
+		if ( !write_to_descriptor( d, d->outbuf, d->outtop ) )
+		{
+		    close_socket( d );
+		    return;
+		}
+		d->outtop = 0;
+		continue;
+	    }
+	    if ( ( prefix_len > 0 && !write_to_descriptor( d, prefix, prefix_len ) )
+	    ||   !write_to_descriptor( d, txt, length ) )
+		close_socket( d );
 	    return;
  	}
 	outbuf      = alloc_mem( 2 * d->outsize );
@@ -3448,6 +3467,20 @@ void page_to_char( const char *txt, CHAR_DATA *ch )
     dstring_init( &colorized );
     color_convert( txt, ch, color_is_enabled( ch ), &colorized );
     page_text = dstring_cstr( &colorized );
+
+    /*
+     * The pager holds its text in one alloc_mem block, and a request past
+     * the largest (32704) aborts the game. CHANGES ALL grew past that on
+     * 2026-10-21: anyone with paging on who typed it would have taken the
+     * game down. Text that big goes out unpaged; write_to_buffer sends it
+     * in pieces.
+     */
+    if ( strlen( page_text ) + 1u >= 32000u )
+    {
+        write_to_buffer( ch->desc, page_text, 0 );
+        dstring_free( &colorized );
+        return;
+    }
 
     if (ch->desc->showstr_head)
     {

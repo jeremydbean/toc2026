@@ -79,6 +79,27 @@ class LiveTests(unittest.TestCase):
             self.assertIn("Nothing new", fourth)
             self.assertEqual(first_lines_shown(everything), first_lines_shown(again))
 
+    def test_a_list_past_the_buffer_is_neither_a_crash_nor_a_disconnect(self) -> None:
+        """2026-10-21: CHANGES ALL grew past 32,704 bytes. With paging on
+        the pager asked alloc_mem for one block that big, and alloc_mem
+        aborts the game; with paging off write_to_buffer closed the
+        connection at 32,000. Neither may happen for any long output."""
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zreader", PASSWORD)
+                client.drain(1.0)
+                client.send("scroll 40")
+                client.drain(1.0)
+                said = client.command("changes all", settle=3.0)
+                self.assertIn(ENTRIES[0][2].strip(), said)
+                self.assertIn(ENTRIES[-1][2].strip(), said, "the oldest arrives too")
+                client.send("scroll 0")
+                client.drain(1.0)
+                said = client.command("changes all", settle=3.0)
+                self.assertIn(ENTRIES[-1][2].strip(), said)
+                self.assertIn("You say", client.command("say still here", settle=1.5))
+            self.assertIsNone(mud.proc.poll(), "the game is still running")
+
 
 if __name__ == "__main__":
     unittest.main()

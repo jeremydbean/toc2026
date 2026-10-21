@@ -203,6 +203,9 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   with old school gear carried, and cut practices and trains above
   30,000. The healer named NOSUMMON to a new character with nothing
   cursed (CI on dc3a8c80), and macOS could not build comm.c (inet_aton).
+  CHANGES ALL outgrew 32 KB, which aborted the game in the pager's
+  allocator (paging on) or closed the connection (paging off); long
+  output now goes out in pieces either way.
 
 - **The October 2026 audit** (outside review, 2026-10-21). Native: stash
   LINK read its list after freeing it and corrupted the first partner's
