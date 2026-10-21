@@ -6924,10 +6924,12 @@ Your alignment runs from -1000 (utterly evil) to 1000 (saintly) and shows
 on SCORE.  You are good at 300 and above, evil at -300 and below, and
 neutral in between.
 
-Killing moves it.  Each kill shifts you away from your victim's alignment:
-slaying the evil makes you better, slaying the good makes you worse, and
-the game tells you when the change is large.  Mobiles are not moved by
-their kills.
+Killing moves it.  A victim more than 500 away from you shifts you away
+from it: slaying the evil makes you better, slaying the good makes you
+worse.  A victim within 500 of you -- your own kind -- pulls you a little
+toward neutral instead, so nobody is stuck at either end.  The further
+apart, the bigger the shift.  With DAMAGENUMBERS on, the game tells you
+each change.  Mobiles are not moved by their kills.
 
 What it touches:
   - Gear.  An item marked anti-good, anti-evil or anti-neutral zaps off

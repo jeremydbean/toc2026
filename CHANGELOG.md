@@ -156,6 +156,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Alignment has a way back from either end.** Since the 2026-10-20
+  clamp fix every kill moved the slayer away from the victim, so at -1000
+  every mobile was "more good" and every kill pushed down: nothing could
+  raise you, and the same at 1000. The player-file audit found 112
+  mortals at -1000 and 217 at 1000. A victim within 500 of you now pulls
+  you toward neutral by a point per hundred of your own alignment
+  (Merc's rule, lost when the branches were merged); a victim further
+  off still pushes you away. The loader clamps a saved alignment, so
+  Sunfire's 1005 from the old unclamped branch reads as 1000.
+  `tests/test_alignment_ends.py`.
+
 - **From the 2026-10-21 review and that day's player logs.** The goblin
   and the black market dealer no longer land in sky, deep-water or
   underwater rooms nobody can follow into. 56 UTF-8 em dashes in game

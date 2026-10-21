@@ -3588,10 +3588,20 @@ base_exp = 200 + 50 * (level_range - 4);
 	   one for victims within 500 of you was not clamped, so a slayer at
 	   -1000 killing something at -500 went to -1005, and the next kill
 	   through a clamped branch put them back -- "my alignment just
-	   alternates between -1000 and -1005" (Trentlin, 2026-10-20). */
+	   alternates between -1000 and -1005" (Trentlin, 2026-10-20).
+
+	   A victim within 500 of you says nothing about which side you are
+	   on, so it pulls you toward neutral instead, a point per hundred of
+	   your own alignment -- Merc's rule. Without it the ends were one-way
+	   doors: at -1000 every mobile is more good than you, so every kill
+	   pushed you further down and nothing could ever raise you (112
+	   characters sat at -1000 and 217 at 1000, 2026-10-21). */
 	int was = gch->alignment;
 
-	change = align / 100;
+	if ( align > 500 || align < -500 )
+	    change = align / 100;
+	else
+	    change = gch->alignment / 100;
 	gch->alignment = (sh_int) URANGE( -1000, gch->alignment - change, 1000 );
 	change = was - gch->alignment;     /* what actually moved */
 	if ( change != 0 && IS_SET(gch->act,PLR_DAMAGE_NUMBERS) )

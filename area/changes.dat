@@ -3,6 +3,13 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261021f 2026-10-21
+Alignment is no longer stuck at -1000 or 1000. Killing something more
+than 500 away from you still moves you away from it; killing your own
+kind now pulls you a little toward neutral. An evil character who wants
+to climb back kills evil things; a good one who stays good kills evil.
+See HELP ALIGNMENT.
+
 @ 20261021e 2026-10-21
 REPAIR ALL mends everything you wear and carry that needs it, cheapest
 first. The quest cooldown now runs while you are logged out. The pit

@@ -1814,8 +1814,15 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "AffectedBy",	ch->affected_by,	fread_number( fp ) );
 	    KEY( "AfBy",	ch->affected_by,	fread_number( fp ) );
 	    KEY( "AfBy2",       ch->affected_by2,       fread_number( fp ) );
-	    KEY( "Alignment",	ch->alignment,		(sh_int)(fread_number( fp )) );
-	    KEY( "Alig",	ch->alignment,		(sh_int)(fread_number( fp )) );
+	    if ( !str_cmp( word, "Alignment" ) || !str_cmp( word, "Alig" ) )
+	    {
+		int align = fread_number( fp );
+
+		/* Kills before 2026-10-20 could leave 1005 or -1005 behind. */
+		ch->alignment = (sh_int) URANGE( -1000, align, 1000 );
+		fMatch = true;
+		break;
+	    }
 	    KEY( "Arrive",	ch->pcdata->arrive,	fread_string( fp ) );
 	    KEY( "Ariv",	ch->pcdata->arrive,	fread_string( fp ) );
 
