@@ -464,3 +464,90 @@
 1792619192	cmd	Trentlin	48	5725	mid_ruin.are	standing	100	0	-	west		The Common Square
 1792619195	cmd	Trentlin	48	5725	mid_ruin.are	standing	100	0	-	exits		Obvious exits:
 1792619197	cmd	Trentlin	48	5724	mid_ruin.are	standing	100	0	-	west		Eastern End of Poor Alley
+1792619200	cmd	Trentlin	48	5724	mid_ruin.are	standing	100	0	-	consider	wa	You can kill the Skeleton Warrior naked and weaponless.
+1792619200	cmd	Trentlin	48	5724	mid_ruin.are	standing	100	0	-	look	wa	These undead lords were created when their life essences were trapped
+1792619201	cmd	Trentlin	48	5744	mid_ruin.are	standing	100	0	-	west		Poor Alley
+1792619202	cmd	Trentlin	48	5743	mid_ruin.are	standing	100	0	-	west		Wall Road
+1792619202	cmd	Trentlin	48	5743	mid_ruin.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792619204	cmd	Trentlin	48	5742	mid_ruin.are	standing	100	0	-	north		Wall Road
+1792619205	cmd	Trentlin	48	5740	mid_ruin.are	standing	100	0	-	north		Inside the Broken West Gates of Old Midgaard
+1792619208	cmd	Trentlin	48	5740	mid_ruin.are	standing	100	0	-	look	ba	Weak of mind and character, Baaz appear as men with scaly, patterned skin
+1792619209	cmd	Trentlin	48	5740	mid_ruin.are	standing	100	0	-	(social)		You bonk the Baaz on the head for being such a moron.
+1792619213	cmd	Trentlin	48	5740	mid_ruin.are	standing	100	0	-	consider	ba	You can kill the Baaz naked and weaponless.
+1792619215	cmd	Trentlin	48	5740	mid_ruin.are	standing	100	0	-	kill	ba	Your grep *** DEMOLISHES *** the Baaz!
+1792619222	cmd	Trentlin	48	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792619223	cmd	Trentlin	48	4205	dresden_halloween.are	standing	100	0	-	south		The Hall of Guttering Candles
+1792619223	cmd	Trentlin	48	4206	dresden_halloween.are	standing	100	0	-	east		The Hall of Hollow Footsteps
+1792619224	cmd	Trentlin	48	4206	dresden_halloween.are	standing	100	0	-	drink		You are no longer thirsty.
+1792619224	cmd	Trentlin	48	4206	dresden_halloween.are	standing	100	0	-	drink		You are no longer thirsty.
+1792619224	cmd	Trentlin	48	4202	dresden_halloween.are	standing	100	0	-	north		The Hall of Whispers
+1792619225	cmd	Trentlin	48	4203	dresden_halloween.are	standing	100	0	-	north		The Hall of Cobwebs
+1792619226	cmd	Trentlin	48	4210	dresden_halloween.are	standing	100	0	-	north		The Sickroom of the Restless
+1792619226	cmd	Trentlin	48	4210	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792619227	cmd	Trentlin	48	4203	dresden_halloween.are	standing	100	0	-	south		The Hall of Cobwebs
+1792619227	cmd	Trentlin	48	4203	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792619228	cmd	Trentlin	48	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers
+1792619228	cmd	Trentlin	48	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792619228	cmd	Trentlin	48	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792619229	cmd	Trentlin	48	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792619229	cmd	Trentlin	48	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792619230	cmd	Trentlin	48	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792619231	cmd	Trentlin	48	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792619231	cmd	Trentlin	48	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792619231	cmd	Trentlin	48	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792619233	cmd	Trentlin	48	2497	dresden_halloween.are	standing	100	1	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792619237	cmd	Trentlin	48	2497	dresden_halloween.are	standing	100	0	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 88 quest points! **
+1792619239	cmd	Trentlin	48	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792619241	cmd	Trentlin	48	2401	dresden_halloween.are	standing	100	0	-	aquest	points	Quest Points: 1304
+1792619243	cmd	Trentlin	48	2401	dresden_halloween.are	standing	100	0	-	score		--------------------------------------------------------------
+1792619248	cmd	Trentlin	48	42	connect.are	standing	100	0	-	run	e 20	Eastern Oak Tree Square.
+1792619249	cmd	Trentlin	48	9795	newthalo.are	standing	100	0	-	run	e 20	Outside the West Gate of New Thalos
+1792619250	cmd	Trentlin	48	9794	newthalo.are	standing	100	0	-	west		Near the shore
+1792619251	cmd	Trentlin	48	41	connect.are	standing	100	0	-	north		The new pier
+1792619251	cmd	Trentlin	48	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier
+1792619251	cmd	Trentlin	48	16001	pirate.are	standing	100	0	-	north		Along the Pier
+1792619252	cmd	Trentlin	48	16002	pirate.are	standing	100	0	-	north		Along the Pier
+1792619252	cmd	Trentlin	48	16003	pirate.are	standing	100	0	-	north		Along the Pier
+1792619253	cmd	Trentlin	48	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier
+1792619253	cmd	Trentlin	48	16005	pirate.are	standing	100	0	-	east		Plankway to the Royal Eagle
+1792619255	cmd	Trentlin	48	16021	pirate.are	standing	100	0	-	up		Entrance to the Royal Eagle - Main Deck
+1792619256	cmd	Trentlin	48	16021	pirate.are	standing	100	0	-	scan		The sailor                         -to the East.
+1792619257	cmd	Trentlin	48	16021	pirate.are	standing	100	0	-	kill	swas	Your grep MUTILATES The swashbuckler!
+1792619260	cmd	Trentlin	48	16021	pirate.are	fighting	100	0	fight	smite		Your smite *** DEVASTATES *** The swashbuckler!
+1792619270	cmd	Trentlin	48	16021	pirate.are	fighting	99	0	fight	smite		Your smite scratches The swashbuckler.
+1792619278	cmd	Trentlin	48	16021	pirate.are	fighting	99	0	fight	smite		Your smite misses The swashbuckler.
+1792619284	cmd	Trentlin	48	16021	pirate.are	standing	99	0	-	score		--------------------------------------------------------------
+1792619286	cmd	Trentlin	48	16021	pirate.are	standing	99	0	-	scan		The sailor                         -to the South.
+1792619287	cmd	Trentlin	48	16016	pirate.are	standing	99	0	-	south		Main Deck of the Royal Eagle - Port
+1792619287	cmd	Trentlin	48	16016	pirate.are	standing	99	0	-	scan		The sailor                         -to the North.
+1792619288	cmd	Trentlin	48	16017	pirate.are	standing	99	0	-	east		Main Deck of the Royal Eagle
+1792619288	cmd	Trentlin	48	16017	pirate.are	standing	99	0	-	scan		The swashbuckler                   -to the East.
+1792619289	cmd	Trentlin	48	16018	pirate.are	standing	99	0	-	east		Main Deck of the Royal Eagle
+1792619291	cmd	Trentlin	48	16018	pirate.are	standing	99	0	-	kill	swas	The swashbuckler parries your attack.
+1792619295	cmd	Trentlin	48	16018	pirate.are	fighting	99	0	fight	smite		Your smite scratches The swashbuckler.
+1792619305	cmd	Trentlin	48	16018	pirate.are	fighting	98	0	fight	smite		Your smite mauls The swashbuckler.
+1792619314	cmd	Trentlin	48	16018	pirate.are	fighting	98	0	fight	smite		Your smite misses The swashbuckler.
+1792619327	cmd	Trentlin	48	16018	pirate.are	standing	98	0	-	smite		Smite whom?
+1792619328	cmd	Trentlin	48	16023	pirate.are	standing	98	0	-	north		Main Deck
+1792619329	cmd	Trentlin	48	16028	pirate.are	standing	98	0	-	north		Main Deck
+1792619329	cmd	Trentlin	48	16033	pirate.are	standing	98	0	-	north		Base of the Mast
+1792619332	cmd	Trentlin	48	16033	pirate.are	standing	99	0	-	kill	swas	The swashbuckler parries your attack.
+1792619336	cmd	Trentlin	48	16033	pirate.are	fighting	98	0	fight	smite		Your smite *** DEVASTATES *** The swashbuckler!
+1792619350	cmd	Trentlin	48	16033	pirate.are	fighting	97	0	fight	smite		Your smite misses The swashbuckler.
+1792619368	cmd	Trentlin	48	16033	pirate.are	standing	96	0	-	smite		Smite whom?
+1792619368	cmd	Trentlin	48	16078	pirate.are	standing	96	0	-	up		The Mast
+1792619369	cmd	Trentlin	48	16079	pirate.are	standing	96	0	-	east		Out on the Mast
+1792619371	cmd	Trentlin	48	16079	pirate.are	standing	96	0	-	kill	swas	The swashbuckler dodges your attack.
+1792619375	cmd	Trentlin	48	16079	pirate.are	fighting	97	0	fight	smite		Your smite MANGLES The swashbuckler!
+1792619382	cmd	Trentlin	48	16079	pirate.are	fighting	96	0	fight	smite		Your smite misses The swashbuckler.
+1792619394	cmd	Trentlin	48	16079	pirate.are	fighting	96	0	fight	smite		Your smite DISEMBOWELS The swashbuckler!
+1792619409	cmd	Trentlin	49	16079	pirate.are	fighting	95	1	fight	smite		Your smite *** DEMOLISHES *** The swashbuckler!
+1792619416	cmd	Trentlin	49	16078	pirate.are	standing	95	0	-	west		The Mast
+1792619416	cmd	Trentlin	49	16077	pirate.are	standing	95	0	-	west		Out on the Mast
+1792619417	cmd	Trentlin	49	16077	pirate.are	standing	95	0	-	skills		Level  1: axe                100%      dagger              89%      
+1792619422	cmd	Trentlin	49	16078	pirate.are	standing	95	0	-	east		The Mast
+1792619423	cmd	Trentlin	49	16081	pirate.are	standing	95	0	-	up		The Mast
+1792619424	cmd	Trentlin	49	16080	pirate.are	standing	95	0	-	west		Out on the Mast
+1792619425	cmd	Trentlin	49	16080	pirate.are	standing	95	0	-	kill	swas	Your grep *** DEVASTATES *** The swashbuckler!
+1792619429	cmd	Trentlin	49	16080	pirate.are	fighting	95	0	fight	smite		Your smite *** DEVASTATES *** The swashbuckler!
+1792619439	cmd	Trentlin	49	16080	pirate.are	fighting	95	0	fight	smite		Your smite *** DEVASTATES *** The swashbuckler!
