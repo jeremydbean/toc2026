@@ -35,3 +35,91 @@
 1792617879	cmd	Trentlin	46	20506	emerald.are	standing	85	0	-	scan		the mountain boogum                -to the East.
 1792617979	cmd	Trentlin	46	20506	emerald.are	standing	89	0	-	look		A Thickly-Wooded Dell
 1792617984	cmd	Trentlin	46	20509	emerald.are	standing	89	0	-	west		Road to the Vale of Clover
+1792618007	cmd	Trentlin	46	20506	emerald.are	standing	89	0	-	east		A Thickly-Wooded Dell
+1792618008	cmd	Trentlin	46	20507	emerald.are	standing	89	0	-	south		A Signpost in the Enchanted Forests
+1792618010	cmd	Trentlin	46	20531	emerald.are	standing	89	0	-	south		The Emerald Forest
+1792618012	cmd	Trentlin	46	20547	emerald.are	standing	89	0	-	south		The Emerald Forest
+1792618012	cmd	Trentlin	46	20547	emerald.are	standing	89	0	-	exits		Obvious exits:
+1792618013	cmd	Trentlin	46	20546	emerald.are	standing	89	0	-	south		The Only Stump in the Forest
+1792618014	cmd	Trentlin	46	20546	emerald.are	standing	89	0	-	exits		Obvious exits:
+1792618015	cmd	Trentlin	46	20545	emerald.are	standing	89	0	-	east		The Emerald Forest
+1792618015	cmd	Trentlin	46	20545	emerald.are	standing	89	0	-	exits		Obvious exits:
+1792618016	cmd	Trentlin	46	20544	emerald.are	standing	89	0	-	east		In the Emerald Forest
+1792618017	cmd	Trentlin	46	20544	emerald.are	standing	89	0	-	exits		Obvious exits:
+1792618018	cmd	Trentlin	46	20562	emerald.are	standing	89	0	-	south		In the Emerald Forest
+1792618018	cmd	Trentlin	46	20562	emerald.are	standing	89	0	-	exits		Obvious exits:
+1792618021	cmd	Trentlin	46	20563	emerald.are	standing	89	0	-	west		The Emerald Forest Choir
+1792618022	cmd	Trentlin	46	20563	emerald.are	standing	89	0	-	get	all	I see nothing here.
+1792618023	cmd	Trentlin	46	20563	emerald.are	standing	89	0	-	kill	kor	Kortho parries your attack.
+1792618028	cmd	Trentlin	46	20563	emerald.are	fighting	92	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Kortho!
+1792618038	cmd	Trentlin	46	20563	emerald.are	fighting	92	0	fight	smite		Your smite *** DEVASTATES *** Kortho!
+1792618046	cmd	Trentlin	46	20563	emerald.are	standing	93	0	-	smite		Smite whom?
+1792618046	cmd	Trentlin	46	20563	emerald.are	standing	93	0	-	look	in corpse	Corpse of Kortho contains:
+1792618047	cmd	Trentlin	46	20563	emerald.are	standing	93	0	-	recall		You stumble over the words of your prayer, and nothing happens.
+1792618050	cmd	Trentlin	46	20563	emerald.are	standing	93	0	-	recall		You stumble over the words of your prayer, and nothing happens.
+1792618051	cmd	Trentlin	46	4207	dresden_halloween.are	standing	93	0	-	recall		Before the Shrouded Altar
+1792618052	cmd	Trentlin	46	4202	dresden_halloween.are	standing	93	0	-	east		The Hall of Whispers
+1792618053	cmd	Trentlin	46	4201	dresden_halloween.are	standing	93	0	-	east		Entrance to the Haunted Temple
+1792618053	cmd	Trentlin	46	2433	dresden_halloween.are	standing	93	0	-	north		Temple Boulevard.
+1792618053	cmd	Trentlin	46	2433	dresden_halloween.are	standing	93	0	-	north		Alas, you cannot go that way.
+1792618054	cmd	Trentlin	46	2433	dresden_halloween.are	standing	93	0	-	up		Alas, you cannot go that way.
+1792618054	cmd	Trentlin	46	2433	dresden_halloween.are	standing	93	0	-	up		Alas, you cannot go that way.
+1792618055	cmd	Trentlin	46	2433	dresden_halloween.are	standing	93	0	-	up		Alas, you cannot go that way.
+1792618055	cmd	Trentlin	46	2433	dresden_halloween.are	standing	93	0	-	up		Alas, you cannot go that way.
+1792618055	cmd	Trentlin	46	2433	dresden_halloween.are	standing	93	0	-	up		Alas, you cannot go that way.
+1792618055	cmd	Trentlin	46	2433	dresden_halloween.are	standing	93	0	-	up		Alas, you cannot go that way.
+1792618057	cmd	Trentlin	46	2433	dresden_halloween.are	standing	93	0	-	aquest	c	You can't do that here.
+1792618058	cmd	Trentlin	46	2405	dresden_halloween.are	standing	93	0	-	east		Western Oak Tree Square.
+1792618059	cmd	Trentlin	46	2401	dresden_halloween.are	standing	93	0	-	east		Oak Tree Square on Hallows Eve
+1792618059	cmd	Trentlin	46	2410	dresden_halloween.are	standing	93	0	-	up		Climbing the Oak Tree...
+1792618059	cmd	Trentlin	46	2411	dresden_halloween.are	standing	93	0	-	up		Up in the Oak Tree.
+1792618060	cmd	Trentlin	46	2414	dresden_halloween.are	standing	93	0	-	up		Top of the oak tree.
+1792618060	cmd	Trentlin	46	2497	dresden_halloween.are	standing	93	0	-	up		A sudden wind blows you from the tree!
+1792618061	cmd	Trentlin	46	2497	dresden_halloween.are	standing	93	1	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792618067	cmd	Trentlin	46	2497	dresden_halloween.are	standing	93	0	-	aquest	gamble no	Wise choice. You safely collect 48 quest points.
+1792618069	cmd	Trentlin	46	2401	dresden_halloween.are	standing	93	0	-	enter	door	You enter The Rescue Portal
+1792618077	cmd	Trentlin	46	2401	dresden_halloween.are	standing	93	0	-	where	hermie	Hermie                       The Shrouded Altar of Devota
+1792618079	cmd	Trentlin	46	2404	dresden_halloween.are	standing	93	0	-	south		Southern Oak Tree Square.
+1792618079	cmd	Trentlin	46	2427	dresden_halloween.are	standing	93	0	-	south		Main Processional, Below the Temple Steps
+1792618079	cmd	Trentlin	46	4201	dresden_halloween.are	standing	93	0	-	west		Entrance to the Haunted Temple
+1792618079	cmd	Trentlin	46	4202	dresden_halloween.are	standing	93	0	-	west		The Hall of Whispers
+1792618080	cmd	Trentlin	46	4207	dresden_halloween.are	standing	93	0	-	west		Before the Shrouded Altar
+1792618080	cmd	Trentlin	46	4208	dresden_halloween.are	standing	93	1	-	west		The Shrouded Altar of Devota
+1792618082	cmd	Trentlin	46	4208	dresden_halloween.are	standing	93	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792618083	cmd	Trentlin	46	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792618083	cmd	Trentlin	46	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792618083	cmd	Trentlin	46	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792618084	cmd	Trentlin	46	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792618084	cmd	Trentlin	46	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792618085	cmd	Trentlin	46	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792618085	cmd	Trentlin	46	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792618086	cmd	Trentlin	46	42	connect.are	standing	100	0	-	run	e 20	Eastern Oak Tree Square.
+1792618087	cmd	Trentlin	46	9795	newthalo.are	standing	100	0	-	run	e 20	Outside the West Gate of New Thalos
+1792618088	cmd	Trentlin	46	9794	newthalo.are	standing	100	0	-	west		Near the shore
+1792618089	cmd	Trentlin	46	41	connect.are	standing	100	0	-	north		The new pier
+1792618089	cmd	Trentlin	46	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier
+1792618089	cmd	Trentlin	46	16001	pirate.are	standing	100	0	-	north		Along the Pier
+1792618090	cmd	Trentlin	46	16002	pirate.are	standing	100	0	-	north		Along the Pier
+1792618090	cmd	Trentlin	46	16003	pirate.are	standing	100	0	-	north		Along the Pier
+1792618091	cmd	Trentlin	46	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier
+1792618092	cmd	Trentlin	46	16005	pirate.are	standing	100	0	-	east		Plankway to the Royal Eagle
+1792618093	cmd	Trentlin	46	16021	pirate.are	standing	100	0	-	up		Entrance to the Royal Eagle - Main Deck
+1792618095	cmd	Trentlin	46	16021	pirate.are	standing	100	0	-	kill	swa	The swashbuckler dodges your attack.
+1792618098	cmd	Trentlin	46	16021	pirate.are	fighting	100	0	fight	smite		Your smite injures The swashbuckler.
+1792618109	cmd	Trentlin	46	16021	pirate.are	fighting	98	0	fight	smite		Your smite misses The swashbuckler.
+1792618118	cmd	Trentlin	46	16021	pirate.are	fighting	98	0	fight	smite		Your smite misses The swashbuckler.
+1792618125	cmd	Trentlin	46	16021	pirate.are	fighting	97	0	fight	aquest	points	Quest Points: 1216
+1792618128	cmd	Trentlin	46	16021	pirate.are	fighting	97	0	fight	smite		Your smite ^^^ DESTROYS ^^^ The swashbuckler!
+1792618194	cmd	Trentlin	47	16021	pirate.are	standing	95	0	-	scan		The sailor                         -to the East.
+1792618196	cmd	Trentlin	47	16022	pirate.are	standing	95	0	-	east		Main Deck
+1792618196	cmd	Trentlin	47	16022	pirate.are	standing	95	0	-	scan		The drunk pirate                   -to the East.
+1792618198	cmd	Trentlin	47	16017	pirate.are	standing	95	0	-	south		Main Deck of the Royal Eagle
+1792618200	cmd	Trentlin	47	16022	pirate.are	standing	95	0	-	north		Main Deck
+1792618200	cmd	Trentlin	47	16027	pirate.are	standing	95	0	-	north		Main Deck
+1792618201	cmd	Trentlin	47	16032	pirate.are	standing	95	0	-	north		Main Deck
+1792618202	cmd	Trentlin	47	16032	pirate.are	standing	95	0	-	scan		The pirate                         -to the North.
+1792618203	cmd	Trentlin	47	16033	pirate.are	standing	95	0	-	east		Base of the Mast
+1792618204	cmd	Trentlin	47	16033	pirate.are	standing	95	0	-	kill	swas	A Tin Axe bites deep into The swashbuckler!
+1792618209	cmd	Trentlin	47	16033	pirate.are	fighting	96	0	fight	smite		Your smite ^^^ DESTROYS ^^^ The swashbuckler!
+1792618223	cmd	Trentlin	47	16033	pirate.are	fighting	96	0	fight	smite		Your smite decimates The swashbuckler!
+1792618232	cmd	Trentlin	47	16033	pirate.are	fighting	95	0	fight	smite		Your smite maims The swashbuckler!
