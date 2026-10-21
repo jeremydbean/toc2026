@@ -500,6 +500,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "spellpurge",     do_spellpurge,  POS_DEAD,       L4,  LOG_ALWAYS, 1 },
     { "summonevent",    do_summonevent, POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "blackmarket",    do_blackmarket, POS_DEAD,       L5,  LOG_ALWAYS, 1 },
+    { "fixes",          do_fixes,       POS_DEAD,       L5,  LOG_NORMAL, 1 },
     { "goblin",         do_goblin,      POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "resetpwd",       do_resetpwd,    POS_DEAD,       L5,  LOG_NEVER,  1 },
     { "newbie",         do_newbie,      POS_DEAD,       L10, LOG_ALWAYS, 1 },

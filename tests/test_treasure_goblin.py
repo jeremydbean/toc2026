@@ -44,7 +44,7 @@ class TreasureGoblinSourceTests(unittest.TestCase):
         self.assertLess(dmg.index("treasure_goblin_blow( victim, dam )"),
                         dmg.index("dam_message( ch, victim, dam, dt, immune );"),
                         "the share is taken before the message")
-        self.assertIn("treasure_goblin_struck( ch, victim, goblin_held );", dmg)
+        self.assertIn("treasure_goblin_struck( ch, victim );", dmg)
         source = (ROOT / "src" / "goblin.c").read_text(encoding="latin-1")
         self.assertIn("#define GOBLIN_BLOWS_MIN    13", source, "twelve flights at least")
         self.assertIn("#define GOBLIN_BLOWS_MAX    18", source)
@@ -90,16 +90,26 @@ class TreasureGoblinSourceTests(unittest.TestCase):
                         kill.index("make_corpse( victim );"))
         cheat = body("src/goblin.c", "bool treasure_goblin_cheats_death(")
         self.assertIn("gob->position == POS_DEAD", cheat, "a death damage() decided stands")
-        self.assertIn("treasure_goblin_struck( killer, gob, false );", cheat)
+        self.assertIn("treasure_goblin_struck( killer, gob );", cheat)
         self.assertIn("is_unfindable_mob( victim )", body("src/fight.c", "void do_backstab("))
 
-    def test_nothing_pins_him_for_long(self) -> None:
+    def test_nothing_holds_him(self) -> None:
+        """Owner, 2026-10-21: immune to stuns; always runs after a hit."""
+        shake = body("src/goblin.c", "static bool gob_shake_off(")
+        for term in ("AFF2_STUNNED", "AFF_SLEEP", "gsn_stunning_blow", "gsn_sleep",
+                     '"confuse"', '"maze"', "POS_STANDING"):
+            self.assertIn(term, shake)
         update = body("src/goblin.c", "void treasure_goblin_update(")
-        for term in ("AFF2_STUNNED", "AFF_SLEEP", "POS_FIGHTING", "gob->move = gob->max_move"):
-            self.assertIn(term, update)
+        self.assertIn("gob_shake_off( gob )", update)
+        self.assertIn("gob->move = gob->max_move", update)
         struck = body("src/goblin.c", "void treasure_goblin_struck(")
+        self.assertNotIn("too dazed", struck)
+        self.assertLess(struck.index("gob_shake_off( gob )"), struck.index("move_char( gob, door, false )"))
         self.assertIn("if ( gob == treasure_goblin )", struck,
                       "a hand-loaded copy does not move the real one's clocks")
+        confuse = body("src/magic2.c", "void do_confuse(")
+        self.assertLess(confuse.index("treasure_goblin_refuses_daze( ch, victim )"),
+                        confuse.index("ch->mana -= mana_cost"), "refused before it costs")
 
     def test_test_worlds_start_without_one(self) -> None:
         live = (ROOT / "tests" / "live_mud.py").read_text(encoding="utf-8")
@@ -162,11 +172,11 @@ class TreasureGoblinLiveTests(unittest.TestCase):
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
             self.assertIn("Treasure goblin: slain by Zchaser", log)
 
-    def test_held_he_still_gives_up_one_share_a_flight(self) -> None:
+    def test_a_bash_sends_him_running_and_confuse_is_refused(self) -> None:
         """2026-10-21: a bash held him through whole rounds of blows, each
         taking a full share, and Misery finished the worn-down goblin in
-        two blows. Held or not, he loses one hardest share per flight and
-        then runs."""
+        two blows. Now a bash lands, and he runs like any other blow; and
+        CONFUSE, the one daze with no blow in it, is refused outright."""
         with LiveMud(extra_env={"TOC_GOBLIN_STILL": "1"}) as mud:
             for name in ("Zbasher", "Zwarden"):
                 with mud.connect(timeout=120) as client:
@@ -183,24 +193,28 @@ class TreasureGoblinLiveTests(unittest.TestCase):
                 run(basher, "scroll 0", 1.0)
                 run(warden, "scroll 0", 1.0)
                 self.assertIn("in room %d" % START, run(warden, "goblin here", 2.0))
+
+                # CONFUSE, from staff who hold it at 100%: refused, no mana.
+                run(warden, "set skill zwarden confuse 100", 1.2)
+                self.assertIn("one thought -- gold", run(warden, "confuse goblin", 1.6))
+
                 run(warden, "set skill zbasher bash 100", 1.2)
                 run(warden, "set char zbasher move 30000", 1.2)
-
-                pinned = False
+                landed = False
                 for _ in range(12):
                     status = run(warden, "goblin", 1.0)
                     room = int(re.search(r"is in room (\d+)", status).group(1))
                     run(warden, "transfer zbasher %d" % room, 1.0)
-                    reply = run(basher, "bash goblin", 9.0)   # and the rounds after
-                    if "too dazed to run" in reply:
-                        pinned = True
+                    reply = run(basher, "bash goblin", 4.0)
+                    if "spills from a hole" in reply:
+                        landed = True
+                        self.assertRegex(reply, r"scurries off|dives through it",
+                                         "a landed bash sends him running")
                         break
-                self.assertTrue(pinned, "no bash landed in twelve tries")
+                self.assertTrue(landed, "no bash landed in twelve tries")
+                self.assertNotIn("too dazed", basher.transcript)
 
                 status = run(warden, "goblin", 1.0)
                 hit, top = map(int, re.search(r"(\d+)/(\d+) hit points", status).groups())
-                flights = basher.transcript.count("scurries off") + basher.transcript.count("dives through it")
                 share = -(-top // 13)
-                self.assertLessEqual(top - hit, (flights + 1) * share,
-                                     "more than a share a flight came off a held goblin")
-                self.assertGreater(hit, 0)
+                self.assertLessEqual(top - hit, share, "one blow, one share")

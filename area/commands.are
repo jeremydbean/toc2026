@@ -1152,8 +1152,8 @@ away, and he leaves a trail of dropped coin wherever he runs.
 He never fights back.  Every blow that lands spills coin from his sack
 and sends him scurrying out through a random exit, so killing him is a
 chase: twelve rooms at the very least for the hardest hitter, a few more
-for a gentler one.  Anyone patient enough can finish him.  A stun, a
-sleep or a knockdown pins him where he stands, though not for long.
+for a gentler one.  Anyone patient enough can finish him.  Nothing holds
+him: stuns, sleep, a bash, confusion -- he shrugs them all off and runs.
 
 Keep at him.  Let a minute go by without landing a blow -- because you
 lost him, or because you stood there -- and he tears open a portal and
@@ -1180,15 +1180,30 @@ forty minutes while nobody is after him, and to another area after ten
 minutes in one, never into a room he could not be struck in.  Each landed blow spills four to eight kills' worth of
 coin at the striker's level and sends him out a random exit; it takes a
 thirteenth to an eighteenth of his health by how hard it hit, so a kill
-is 12 to 17 flights.  A minute without a blow and he opens a portal and
-teleports.  His sack holds about two hundred kills' worth of coin at the
+is 12 to 17 flights.  Nothing holds him: stuns, sleep, bash, trip and
+maze are shaken off at once, and CONFUSE is refused.  A minute without a
+blow and he opens a portal and teleports.  His sack holds about two hundred kills' worth of coin at the
 killer's level, half the time the best piece in some slot for the
 killer's level, and a tenth of the time a black market rarity.
-Appearances and kills come to WIZINFO and the log with the room.  Staff
+Appearances come to WIZINFO with the room and to the log without it (the
+log is published); kills to both, with the room and the flights.  Staff
 see him anywhere; mortals only in his room, or one room away with SCAN.
 BLACKMARKET SUMMON does the same for the black market.
 
 See also: 'TREASURE GOBLIN', BLACKMARKET
+~
+
+60 FIXES~
+Syntax: fixes                (every login fix, oldest first)
+        fixes <player>       (which of them that player has had)
+
+A login fix corrects characters after a bug has been fixed: it runs once
+for each character, the next time they log in, tells them what changed,
+and reports to WIZINFO and the log.  A character made after a fix was
+written is born correct and never runs it.  Fixes are written in the
+code (src/fixes.c), never by editing player files, which live on the
+game host.
+
 ~
 
 60 BLACKMARKET~

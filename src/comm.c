@@ -3105,9 +3105,9 @@ case CON_DEFAULT_CHOICE:
 	    psionic_login( ch );
 	    /* Rested experience banked while they were away (rested.c). */
 	    rest_xp_on_login( ch );
-	    /* The mage groups a creation bug handed every new character
-	       (skills.c); does nothing for anyone without them. */
-	    rescind_stray_mage_groups( ch );
+	    /* Corrections for bugs since fixed, each once per character
+	       (fixes.c); a character just made is born correct. */
+	    player_fixes_login( ch, is_new_character );
 
             snprintf( buf, sizeof(buf), "%s has entered the game.", ch->name );
             wizinfo( buf, ch->level );

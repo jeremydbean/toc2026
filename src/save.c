@@ -651,6 +651,7 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
         fprintf( fp, "BlackMarket %ld %s~\n", ch->pcdata->black_market_stock,
                  ch->pcdata->black_market_bought ? ch->pcdata->black_market_bought : "" );
     fprintf( fp, "ChangesSeen %s~\n", ch->pcdata->changes_seen ? ch->pcdata->changes_seen : "" );
+    fprintf( fp, "Fixes %s~\n", ch->pcdata->fixes_done ? ch->pcdata->fixes_done : "" );
     fprintf( fp, "Cast %s\n",	get_castlename( ch->pcdata->castle) );
     fprintf( fp, "Levl %d\n",	ch->level		);
     if (ch->trust != 0)
@@ -1405,6 +1406,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->psionic_grant_spec      = str_dup( "" );
     ch->pcdata->psionic_known           = str_dup( "" );
     ch->pcdata->changes_seen            = str_dup( "" );
+    ch->pcdata->fixes_done              = str_dup( "" );
     ch->pcdata->black_market_stock      = 0;
     ch->pcdata->black_market_bought     = str_dup( "" );
     {
@@ -1571,6 +1573,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     if ( ch->pcdata->psionic_grant_spec    == NULL ) ch->pcdata->psionic_grant_spec    = str_dup( "" );
     if ( ch->pcdata->psionic_known         == NULL ) ch->pcdata->psionic_known         = str_dup( "" );
     if ( ch->pcdata->changes_seen          == NULL ) ch->pcdata->changes_seen          = str_dup( "" );
+    if ( ch->pcdata->fixes_done            == NULL ) ch->pcdata->fixes_done            = str_dup( "" );
     if ( ch->pcdata->black_market_bought   == NULL ) ch->pcdata->black_market_bought   = str_dup( "" );
     if ( ch->pcdata->list_remorts          == NULL ) ch->pcdata->list_remorts          = str_dup( "" );
 
@@ -2043,6 +2046,11 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 		return;
 	    }
             KEY( "Exp",		ch->exp,		fread_long( fp ) );
+	    break;
+
+	case 'F':
+	    /* Login fixes already applied (fixes.c). */
+	    KEY( "Fixes",	ch->pcdata->fixes_done,	fread_string( fp ) );
 	    break;
 
 	case 'G':

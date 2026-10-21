@@ -17,14 +17,14 @@
  * (treasure_goblin_blow): the hardest hitter needs GOBLIN_BLOWS_MIN blows
  * -- twelve flights -- and the gentlest GOBLIN_BLOWS_MAX, so a level 3
  * and a level 59 both finish him and the strong one runs a few rooms
- * less (owner, 2026-10-20). A stun pins him: stunned, asleep or knocked
- * down he cannot run, though he shakes a stun off quickly.
+ * less (owner, 2026-10-20). Nothing holds him (owner, 2026-10-21): a
+ * stun, a sleep, a bash, confuse and maze are shaken off at once, and a
+ * landed blow always sends him running.
  *
  * As in Diablo, the chase has to be kept up: a tick without a blow --
  * whether his chaser lost him or stands there idle -- and he starts
  * tearing open a portal, and a pulse later is through it and somewhere
- * else, wounds and all. A blow while it opens collapses it; a stun stops
- * him opening one.
+ * else, wounds and all. A blow while it opens collapses it.
  *
  * Coin spilt and coin hoarded are counted in kills at the striker's level
  * (black_market_kill_value), so it is a good sum for a level 5 and for a
@@ -65,10 +65,8 @@ static time_t gob_area_since = 0;
 /* Hit points he may not regenerate past: the chase keeps its progress. */
 static int gob_hp = 0;
 static bool gob_chased = false;
-/* Flights from blows since he appeared, and whether the blow now landing
-   has used up this flight's share, so that he runs held or not. */
+/* Flights from blows since he appeared. */
 static int gob_flights = 0;
-static bool gob_shaken_loose = false;
 /* The last blow, and the portal he is opening (0 when none). */
 static time_t gob_last_hit = 0;
 static time_t gob_portal_at = 0;
@@ -80,7 +78,6 @@ static time_t gob_portal_at = 0;
 #define GOBLIN_ALONE        60          /* a tick without a blow: a portal */
 #define GOBLIN_DRIFT_MIN    ( 20 * 60 )
 #define GOBLIN_DRIFT_MAX    ( 40 * 60 )
-#define GOBLIN_UNSTUN_ODDS  25          /* percent per mobile pulse */
 /* Coin spilt on each blow, and the hoard in his corpse, in kills' worth
    of coin at the striker's level: at level 50 a kill is about 13
    platinum, so a hoard is about 2,700. */
@@ -175,17 +172,42 @@ static int gob_pick_exit( CHAR_DATA *gob )
     return n > 0 ? doors[number_range( 0, n - 1 )] : -1;
 }
 
-/* Stunned, asleep, knocked down: in no state to run. */
-static bool gob_pinned( CHAR_DATA *gob )
+/*
+ * Nothing holds him (owner, 2026-10-21: immune to stuns, and he always
+ * runs after a hit). A stunning blow, a bash or a trip, a sleep spell,
+ * confuse and maze are shaken off as soon as they land: held, a
+ * fighter's rounds took a share of his health a blow without a flight,
+ * and a confused or mazed goblin's step was chosen at random by
+ * move_char rather than by gob_pick_exit, into rooms he must never stand
+ * in. True when there was anything to shake off.
+ */
+static bool gob_shake_off( CHAR_DATA *gob )
 {
-    return IS_AFFECTED2(gob, AFF2_STUNNED) || IS_AFFECTED(gob, AFF_SLEEP)
-        || gob->position < POS_FIGHTING;
-}
+    static int sn_confuse = -2, sn_maze = -2;
+    bool was = false;
 
-/* For damage(), before it stands him up for the fight. */
-bool treasure_goblin_held( CHAR_DATA *gob )
-{
-    return gob != NULL && gob_pinned( gob );
+    if ( sn_confuse == -2 )
+    {
+        sn_confuse = skill_lookup( "confuse" );
+        sn_maze = skill_lookup( "maze" );
+    }
+    if ( IS_AFFECTED2(gob, AFF2_STUNNED) || IS_AFFECTED(gob, AFF_SLEEP)
+    ||   ( sn_confuse > 0 && is_affected( gob, sn_confuse ) )
+    ||   ( sn_maze > 0 && is_affected( gob, sn_maze ) )
+    ||   ( gob->position >= POS_STUNNED && gob->position < POS_FIGHTING
+        && gob->hit > 0 ) )
+        was = true;
+    affect_strip( gob, gsn_stunning_blow );
+    affect_strip( gob, gsn_sleep );
+    if ( sn_confuse > 0 )
+        affect_strip( gob, sn_confuse );
+    if ( sn_maze > 0 )
+        affect_strip( gob, sn_maze );
+    REMOVE_BIT( gob->affected_by2, AFF2_STUNNED );
+    REMOVE_BIT( gob->affected_by, AFF_SLEEP );
+    if ( gob->hit > 0 && gob->position >= POS_STUNNED && gob->position < POS_STANDING )
+        gob->position = gob->fighting != NULL ? POS_FIGHTING : POS_STANDING;
+    return was;
 }
 
 static void gob_teleport( CHAR_DATA *gob, AREA_DATA *avoid, const char *why )
@@ -236,7 +258,6 @@ bool treasure_goblin_spawn( ROOM_INDEX_DATA *room )
          treasure_goblin, NULL, NULL, TO_ROOM );
     gob_hp = treasure_goblin->max_hit;
     gob_flights = 0;
-    gob_shaken_loose = false;
     gob_chased = false;
     gob_area = NULL;                /* a new goblin starts a fresh clock */
     gob_portal_at = 0;
@@ -281,10 +302,10 @@ void treasure_goblin_forget( CHAR_DATA *ch )
  */
 /*
  * The lowest his hit points may go before his next flight: one hardest
- * share for every flight so far, and one more. Nothing that holds him --
- * a bash, a stun, a sleep -- lets a fighter take more than that between
- * flights, so he cannot die before his GOBLIN_BLOWS_MIN - 1th flight
- * (owner, 2026-10-20: twelve flights at least). A bash used to hold him
+ * share for every flight so far, and one more, so he cannot die before
+ * his GOBLIN_BLOWS_MIN - 1th flight (owner, 2026-10-20: twelve flights at
+ * least). Every landed blow sends him running now, which keeps that by
+ * itself; this is the guarantee behind it. A bash used to hold him
  * through whole rounds of blows, each taking a full share, and Misery
  * finished one in two blows that a bash had worn down (2026-10-21).
  */
@@ -312,19 +333,18 @@ int treasure_goblin_blow( CHAR_DATA *gob, int dam )
             blows--;
     blows = URANGE( GOBLIN_BLOWS_MIN, blows, GOBLIN_BLOWS_MAX );
     dam = ( gob->max_hit + blows - 1 ) / blows;
-    /* This flight's share is spent: the blow lands, takes nothing, and
-       knocks him loose to run, held or not. */
+    /* Every landed blow sends him running, so one share a flight is the
+       rule already; this keeps it if two blows ever land before he can
+       go -- the second takes nothing, and he still runs. */
     if ( gob == treasure_goblin && gob->hit - dam < gob_floor( gob ) )
     {
         int allowed = gob->hit - UMAX( gob_floor( gob ), 0 );
 
         if ( allowed <= 0 )
         {
-            gob_shaken_loose = true;
             gob->hit++;                 /* the 1 below takes nothing */
             return 1;
         }
-        gob_shaken_loose = true;
         dam = allowed;
     }
     return dam;
@@ -357,10 +377,24 @@ static OBJ_DATA *gob_spill( ROOM_INDEX_DATA *room, long copper )
 }
 
 /*
- * damage() calls this once a blow has landed and he is still alive: coin
- * spills, and unless something holds him he bolts through a random exit.
+ * A daze aimed at him -- CONFUSE, which does no damage and so never sent
+ * him running -- is refused before it costs anything, in words a failed
+ * roll never uses. True when refused.
  */
-void treasure_goblin_struck( CHAR_DATA *ch, CHAR_DATA *gob, bool held )
+bool treasure_goblin_refuses_daze( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    if ( !is_treasure_goblin( victim ) )
+        return false;
+    act( "$N's mind holds one thought -- gold -- and there is no room in it "
+         "for doubt.", ch, NULL, victim, TO_CHAR );
+    return true;
+}
+
+/*
+ * damage() calls this once a blow has landed and he is still alive: coin
+ * spills and he bolts through a random exit. Always: nothing holds him.
+ */
+void treasure_goblin_struck( CHAR_DATA *ch, CHAR_DATA *gob )
 {
     OBJ_DATA *coins;
     int door;
@@ -399,34 +433,13 @@ void treasure_goblin_struck( CHAR_DATA *ch, CHAR_DATA *gob, bool held )
                  gob, coins, NULL, TO_ROOM );
     }
 
-    if ( gob_shaken_loose && gob == treasure_goblin )
-    {
-        /* Held or not, he has given up this flight's share: he runs. */
-        gob_shaken_loose = false;
-        held = false;
-        affect_strip( gob, gsn_stunning_blow );
-        affect_strip( gob, gsn_sleep );
-        REMOVE_BIT( gob->affected_by2, AFF2_STUNNED );
-        REMOVE_BIT( gob->affected_by, AFF_SLEEP );
-        if ( gob->position < POS_STANDING )
-        {
-            gob->position = POS_STANDING;
-            act( "The blow knocks $n loose, and he scrambles for the exit!",
-                 gob, NULL, NULL, TO_ROOM );
-        }
-    }
-    if ( held || gob_pinned( gob ) )
-    {
-        /* damage() stood him up for the fight; a held goblin stays down
-           until treasure_goblin_update's roll lets him up. */
-        if ( held && gob->position > POS_RESTING )
-            gob->position = POS_RESTING;
-        act( "$n flails about, too dazed to run!", gob, NULL, NULL, TO_ROOM );
-        return;
-    }
+    if ( gob_shake_off( gob ) )
+        act( "$n shrugs off the daze in a heartbeat -- greed is a fine tonic.",
+             gob, NULL, NULL, TO_ROOM );
 
     /* The fight is over the moment he runs: nobody swings at the air. */
     stop_fighting( gob, true );
+    gob->position = POS_STANDING;
     if ( ( door = gob_pick_exit( gob ) ) >= 0 )
     {
         act( "$n clutches $s sack and scurries off $T!", gob, NULL,
@@ -466,7 +479,7 @@ bool treasure_goblin_cheats_death( CHAR_DATA *killer, CHAR_DATA *gob )
     }
     act( "$n reels from the blow -- but a treasure goblin is harder to kill than that!",
          gob, NULL, NULL, TO_ROOM );
-    treasure_goblin_struck( killer, gob, false );
+    treasure_goblin_struck( killer, gob );
     return true;
 }
 
@@ -552,25 +565,14 @@ void treasure_goblin_update( void )
     /* He runs all day. */
     gob->move = gob->max_move;
 
-    /* Nothing else lifts a stun from a mobile that never attacks, and
-       nothing stands him up: a stunning blow, a sleep spell or a bash
-       holds him a few seconds, never for the rest of the fight. */
-    if ( gob->hit > 0
-    &&   ( IS_AFFECTED2(gob, AFF2_STUNNED) || IS_AFFECTED(gob, AFF_SLEEP)
-        || ( gob->position >= POS_STUNNED && gob->position < POS_FIGHTING ) )
-    &&   number_percent() <= GOBLIN_UNSTUN_ODDS )
-    {
-        affect_strip( gob, gsn_stunning_blow );
-        affect_strip( gob, gsn_sleep );
-        REMOVE_BIT( gob->affected_by2, AFF2_STUNNED );
-        REMOVE_BIT( gob->affected_by, AFF_SLEEP );
-        gob->position = gob->fighting != NULL ? POS_FIGHTING : POS_STANDING;
+    /* Whatever landed without a blow -- a confuse, a sleep spell -- is
+       gone by the next pulse. */
+    if ( gob->hit > 0 && gob_shake_off( gob ) )
         act( "$n shakes $s head and scrambles up, no longer dazed.", gob, NULL, NULL, TO_ROOM );
-    }
 
     if ( gob_has_company( gob ) )
         gob_last_company = current_time;
-    if ( getenv( "TOC_GOBLIN_STILL" ) != NULL || gob_pinned( gob ) )
+    if ( getenv( "TOC_GOBLIN_STILL" ) != NULL )
         return;
 
     /* A chase not kept up: a tick without a blow, and he opens a portal;

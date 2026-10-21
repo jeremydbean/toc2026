@@ -1397,7 +1397,6 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     CHAR_DATA *vch;
     bool immune;
     bool hyrule_silver_arrow_hit;
-    bool goblin_held = false;
     int shield = 0;
     LIST_ITERATOR iter;
 
@@ -1408,13 +1407,6 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
        or plague: only a chase kills him (goblin.c). */
     if ( ch == victim && is_treasure_goblin( victim ) )
 	return false;
-    /* Whether he is held, read before set_fighting below stands him up
-       and wakes him: a bash or a trip lands him on the ground, a
-       stunning blow's stun is laid on after this returns, and either
-       has to hold him for the blow that carries it. */
-    if ( is_treasure_goblin( victim ) )
-	goblin_held = dt == gsn_bash || dt == gsn_trip || dt == gsn_stunning_blow
-	           || treasure_goblin_held( victim );
 
     hyrule_silver_arrow_hit = dam > 0 && is_hyrule_ganon(victim)
         && is_silver_arrow_attack(ch, dt);
@@ -2048,7 +2040,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     /* The treasure goblin spills coin and runs from every blow. He may
        be in another room when this returns; callers ask gone_after_blow. */
     if ( dam > 0 && is_treasure_goblin( victim ) )
-	treasure_goblin_struck( ch, victim, goblin_held );
+	treasure_goblin_struck( ch, victim );
 
     if ( IS_AFFECTED2(ch, AFF2_STEALTH) )
     {

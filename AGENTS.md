@@ -1067,8 +1067,8 @@ was found, and creation applies the chosen class's groups at
 
 **Those already made are corrected at login** (owner, 2026-10-21: remove
 the mage spells from anyone who should not have them and refund the
-practices). `rescind_stray_mage_groups()` in `skills.c`, called from the
-nanny beside `rest_xp_on_login`, takes `mage basics` and `mage default`
+practices). `rescind_stray_mage_groups()` in `skills.c`, the first login
+fix (below), takes `mage basics` and `mage default`
 from any mortal who is not a mage -- a remort wipes every group, so the
 bug is the only way one got there -- zeroes their members, then gives
 back through `apply_class_and_guild_skills` and the groups still held
@@ -1078,6 +1078,29 @@ come back refunds the sessions its percentage above 1% would cost at
 the character's intelligence now, which errs the player's way since some
 came from use. Staff are left alone. It logs and WIZINFOs what it took,
 and does nothing once the groups are gone.
+
+## Fixing Characters At Their Next Login
+
+**A bug that left characters wrong is corrected by a login fix, never by
+editing player files** (owner, 2026-10-21: a standard method). The files
+live on the host and the state sync only copies host to git, so an edit
+in the repository is overwritten five minutes later and never read.
+`src/fixes.c` holds `player_fixes[]`: an id that is never changed or
+reused, a line for the log, and a function. `player_fixes_login()`,
+called from the nanny once the character is in their room, runs each
+fix the character has not had, records its id in `pcdata->fixes_done`
+(`Fixes <id> <id>...~`, **case 'F'**), logs and WIZINFOs the ones that
+changed something, and saves once. A character made after a fix exists
+is born correct: a new character has every id marked and nothing run.
+An old file with no `Fixes` line runs every fix once. A fix function
+decides for itself who needs it (staff, class, level), says what it did
+in plain words to the player, returns whether it changed anything, and
+must be harmless on anyone. Its test plants the bug's leftovers in a
+fixture's file -- **and deletes the fixture's `Fixes` line**, since a
+fixture is a new character and would otherwise skip the fix -- logs in,
+checks the correction, and checks a second login says nothing (see
+`tests/test_new_character_groups.py`). Staff list them with `FIXES` and
+see a player's with `FIXES <player>`.
 
 ## Travel Spells Keep Room Rules
 
@@ -2454,18 +2477,22 @@ can kill him and the floor is twelve flights. After the blow, if he
 lives, `treasure_goblin_struck()` spills coin and sends him through a
 random exit with `move_char`, after `stop_fighting(gob, true)`, so a
 caller's `ch->fighting != victim` check stops the swings that follow;
-`gone_after_blow()` reads him as gone. Pinned -- `AFF2_STUNNED`, or
-below `POS_FIGHTING` -- he stays, and he shakes a stun off at
-`GOBLIN_UNSTUN_ODDS` a pulse because `check_recover` only runs for a
-mobile that attacks. `multi_hit` returns at once for him: he never
+`gone_after_blow()` reads him as gone. **Nothing holds him** (owner,
+2026-10-21: immune to stuns, always flees after a hit):
+`gob_shake_off()` strips a stunning blow, sleep, confuse and maze and
+stands him up, in `_struck` before every flight and every pulse in
+`treasure_goblin_update`, and `do_confuse` refuses him outright through
+`treasure_goblin_refuses_daze()` before any mana is spent -- confuse
+deals no damage, so it never made him run, and a confused mobile's
+step is picked at random by `move_char`, past `gob_pick_exit`'s choice
+of a room he may stand in. `multi_hit` returns at once for him: he never
 strikes back. His own poison and plague do nothing to him. His hit
 points are clamped each pulse so a tick's regeneration cannot undo a
 chase.
 
 **The portal.** As in Diablo, a chase has to be kept up: `GOBLIN_ALONE`
 (60 s) without a blow and he starts a portal, through it a pulse later
-to a random room, wounds kept; a blow while it opens collapses it, and
-a pinned goblin opens none.
+to a random room, wounds kept; a blow while it opens collapses it.
 
 **The money is counted in kills.** Spills are four to eight, and the
 hoard about two hundred, of `black_market_kill_value()` at the striker's
@@ -2486,21 +2513,16 @@ a farslayer sets his hit points to 1 before `raw_kill`, so
 `cheats_death` puts back `gob_hp` before subtracting. Healing does not
 help him either: `treasure_goblin_blow` and `_struck` hold him at or
 below `gob_hp`, or a cleric healing between a partner's blows kept him
-spilling coin for ever. A stun, a sleep spell, a bash or a trip pins
-him: `damage()` reads `goblin_held` **before** `set_fighting` stands him
-up and wakes him, and a bash, trip or stunning blow holds him for the
-blow that carries it (a stunning blow's stun is laid on after `damage()`
-returns, which a goblin who had already run never received). He shakes
-a pin off at `GOBLIN_UNSTUN_ODDS` a pulse; his moves are topped up so he
-never runs out. **A hold never buys more than one share a flight**
-(`gob_floor()`): his hit points may not fall below one hardest share for
-every flight so far and one more, so he cannot die before his twelfth
-flight however he is held. The blow that would take more takes nothing,
-sets `gob_shaken_loose`, and he runs, stun or no stun. Without it a bash
-held him through whole rounds of a fighter's blows, each a full share:
-Trentlin's bash wore one down that way on 2026-10-21 and Misery finished
-it in two blows. Flights are counted (`gob_flights`) only when he leaves
-the room; the kill line says how many. A copy staff MLOAD runs and spills like him but leaves the real
+spilling coin for ever. His moves are topped up so he never runs out.
+**One share a flight** (`gob_floor()`): his hit points may not fall
+below one hardest share for every flight so far and one more, so he
+cannot die before his twelfth flight; a blow that would take more
+takes nothing, and he still runs. History, so nobody brings it back:
+for one night bash, trip and stunning blow *held* him, and a hold let a
+fighter's rounds land shares with no flight -- Trentlin's bash wore one
+down that way on 2026-10-21 and Misery finished it in two blows. Flights
+are counted (`gob_flights`) only when he leaves the room; the kill line
+says how many. A copy staff MLOAD runs and spills like him but leaves the real
 goblin's chase clocks alone, and his hoard is capped where `long` is 32
 bits. Appearances go to the log and WIZINFO, the room to WIZINFO only;
 kills to both with the room (he is dead); escapes and drifts to the log

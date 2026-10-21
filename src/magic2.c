@@ -1494,6 +1494,10 @@ void do_confuse( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* The treasure goblin cannot be dazed (goblin.c). */
+    if ( treasure_goblin_refuses_daze( ch, victim ) )
+        return;
+
     mana_cost = ch->level + 50;
     if ( !IS_NPC(ch) )
     {

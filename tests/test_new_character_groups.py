@@ -23,9 +23,16 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 class NewCharacterSourceTests(unittest.TestCase):
     def test_the_cleanup_runs_at_login_and_spares_mages_and_staff(self) -> None:
         comm = (ROOT / "src" / "comm.c").read_text(encoding="latin-1")
-        self.assertIn("rescind_stray_mage_groups( ch );", comm)
+        self.assertIn("player_fixes_login( ch, is_new_character );", comm)
+        fixes = (ROOT / "src" / "fixes.c").read_text(encoding="latin-1")
+        self.assertIn('"20261021-mage-groups"', fixes)
+        self.assertIn("rescind_stray_mage_groups( ch )", fixes)
+        save = (ROOT / "src" / "save.c").read_text(encoding="latin-1")
+        reader = save[save.index("void fread_char("):save.index("void fread_pet(")]
+        case_f = reader[reader.index("\tcase 'F':"):reader.index("\tcase 'G':")]
+        self.assertIn('"Fixes"', case_f, "saved under the letter it starts with")
         skills = (ROOT / "src" / "skills.c").read_text(encoding="latin-1")
-        fn = skills[skills.index("void rescind_stray_mage_groups("):]
+        fn = skills[skills.index("bool rescind_stray_mage_groups("):]
         fn = fn[:fn.index("\n}\n")]
         self.assertIn("ch->class == CLASS_MAGE", fn)
         self.assertIn("IS_TRUSTED( ch, LEVEL_IMMORTAL )", fn)
@@ -53,6 +60,8 @@ class NewCharacterLiveTests(unittest.TestCase):
             self.assertNotIn("Gr 'mage basics'", saved)
             self.assertNotIn("Gr 'mage default'", saved)
             self.assertNotIn("'magic missile'", saved)
+            # Born correct: every login fix is marked, none is run.
+            self.assertIn("Fixes 20261021-mage-groups~", saved)
 
     def test_the_stray_groups_are_taken_back_and_the_practice_refunded(self) -> None:
         """Owner, 2026-10-21: remove the mage spells from anyone who should
@@ -68,6 +77,8 @@ class NewCharacterLiveTests(unittest.TestCase):
             # What the bug left on Trentlin: the two groups, their spells,
             # one practised, and the dagger the mage's spread raised.
             text = re.sub(r"(?m)^Prac .*$", "Prac 5", text)
+            # A file from before the fix: no fixes applied yet.
+            text = re.sub(r"(?m)^Fixes .*\n", "", text)
             text = re.sub(r"(?m)^Sk \d+ 'dagger'$", "Sk 89 'dagger'", text)
             text = text.replace("Gr 'warrior basics'",
                                 "Sk 76 'refresh'\nSk 1 'magic missile'\nSk 1 'scrolls'\n"
@@ -91,6 +102,7 @@ class NewCharacterLiveTests(unittest.TestCase):
             self.assertNotIn("'magic missile'", saved)
             self.assertIn("Sk 89 'dagger'", saved, "a skill owed anyway keeps its training")
             self.assertIn("Prac %d" % (5 + refunded), saved)
+            self.assertIn("Fixes 20261021-mage-groups~", saved, "applied once, and recorded")
 
             # Once is enough: the next login says nothing.
             with mud.connect(timeout=120) as client:

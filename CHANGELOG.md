@@ -10,6 +10,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **Login fixes** (`src/fixes.c`; owner, 2026-10-21): the standard way to
+  correct characters after a bug fix. Each fix has a permanent id, runs
+  once per character at their next login, is recorded in the player file
+  (`Fixes`, case 'F'), and is logged and WIZINFOed; a new character is
+  born with every fix marked. Staff command FIXES lists them. The stray
+  mage groups cleanup is the first.
+
 - **Rested experience** (`src/rested.c`, owner's design after WoW's,
   2026-10-20). Quitting in a safe room, a healing room, the Temple, the
   altar or your recall point banks 5% of a level per hour away, to 150%;
@@ -148,6 +155,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   back this way on 2026-10-11.
 
 ### Fixed
+
+- **Nothing holds the treasure goblin** (owner, 2026-10-21). Stuns, sleep,
+  bash, trip, confuse and maze are shaken off at once and every landed
+  blow sends him running; CONFUSE is refused before it costs mana (it did
+  no damage, so it never made him run, and a confused goblin's flight was
+  picked at random, past the rooms he must never enter).
 
 - **New characters no longer start with the mage's spells** (2026-10-21).
   The player-file loader filled in class groups for a character not yet

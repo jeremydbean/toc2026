@@ -2160,6 +2160,7 @@ struct  pc_data
     int                 daily_streak;         /* days running with all three done */
     long                daily_last_full;      /* the last day all three were done */
     long                daily_wait_until;     /* no daily before this (a given-up one) */
+    char *              fixes_done;           /* login fixes applied (fixes.c) */
     /* Training-yard run; deliberately not persisted. */
     long                dummy_dealt;
     long                dummy_taken;
@@ -3398,7 +3399,8 @@ void    check_improve   ( CHAR_DATA *ch, int sn, bool success, int multiplier );
 int     group_lookup    (const char *name);
 void    gn_add          ( CHAR_DATA *ch, int gn);
 void    gn_remove       ( CHAR_DATA *ch, int gn);
-void    rescind_stray_mage_groups ( CHAR_DATA *ch );
+bool    rescind_stray_mage_groups ( CHAR_DATA *ch );
+void    player_fixes_login ( CHAR_DATA *ch, bool new_character );
 void    group_add       ( CHAR_DATA *ch, const char *name, bool deduct);
 void    group_remove    ( CHAR_DATA *ch, const char *name);
 
@@ -3437,8 +3439,8 @@ bool    treasure_goblin_spawn    ( ROOM_INDEX_DATA *room );
 void    treasure_goblin_dismiss  ( void );
 void    treasure_goblin_forget   ( CHAR_DATA *ch );
 int     treasure_goblin_blow     ( CHAR_DATA *gob, int dam );
-void    treasure_goblin_struck   ( CHAR_DATA *ch, CHAR_DATA *gob, bool held );
-bool    treasure_goblin_held     ( CHAR_DATA *gob );
+void    treasure_goblin_struck   ( CHAR_DATA *ch, CHAR_DATA *gob );
+bool    treasure_goblin_refuses_daze ( CHAR_DATA *ch, CHAR_DATA *victim );
 void    treasure_goblin_slain    ( CHAR_DATA *ch, CHAR_DATA *gob );
 bool    treasure_goblin_cheats_death ( CHAR_DATA *killer, CHAR_DATA *gob );
 void    treasure_goblin_update   ( void );

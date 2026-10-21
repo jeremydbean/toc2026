@@ -44,12 +44,12 @@ class TheGoblin(unittest.TestCase):
         cheat = body("src/goblin.c", "bool treasure_goblin_cheats_death(")
         self.assertLess(cheat.index("gob->hit = gob_hp"), cheat.index("gob->hit -="))
 
-    def test_bash_trip_and_stunning_blow_hold_him(self) -> None:
+    def test_nothing_holds_him_any_more(self) -> None:
+        """Superseded 2026-10-21 (owner): no stun holds him; every landed
+        blow sends him running (tests/test_treasure_goblin.py)."""
         dmg = body("src/fight.c", "bool damage(")
-        held = dmg.index("goblin_held = dt == gsn_bash")
-        self.assertLess(held, dmg.index("set_fighting( victim, ch )"))
-        self.assertIn("gsn_stunning_blow", dmg[held:held + 200])
-        self.assertIn("treasure_goblin_struck( ch, victim, goblin_held )", dmg)
+        self.assertNotIn("goblin_held", dmg)
+        self.assertIn("treasure_goblin_struck( ch, victim );", dmg)
 
     def test_never_where_a_room_carries_him_or_another_keeper_trades(self) -> None:
         ok = body("src/blackmarket.c", "static bool bm_room_ok(")

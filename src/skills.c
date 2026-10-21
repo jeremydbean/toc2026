@@ -1012,9 +1012,10 @@ void group_add( CHAR_DATA *ch, const char *name, bool deduct)
  * practice sessions its percentage above the 1% it was handed out at
  * would have cost at the character's intelligence now -- some of it came
  * from use rather than practice, and the refund errs the player's way.
- * Runs at every login and does nothing once the groups are gone.
+ * The first login fix (fixes.c), which runs it once per character and
+ * saves; it does nothing for anyone without the groups.
  */
-void rescind_stray_mage_groups( CHAR_DATA *ch )
+bool rescind_stray_mage_groups( CHAR_DATA *ch )
 {
     static const char *const stray[] = { "mage basics", "mage default" };
     int old[MAX_SKILL];
@@ -1026,12 +1027,12 @@ void rescind_stray_mage_groups( CHAR_DATA *ch )
 
     if ( IS_NPC(ch) || ch->pcdata == NULL || ch->class == CLASS_MAGE
     ||   IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
-        return;
+        return false;
     for ( i = 0; i < 2; i++ )
         if ( ( gn = group_lookup( stray[i] ) ) != -1 && ch->pcdata->group_known[gn] )
             any = true;
     if ( !any )
-        return;
+        return false;
 
     for ( sn = 0; sn < MAX_SKILL; sn++ )
     {
@@ -1104,7 +1105,7 @@ void rescind_stray_mage_groups( CHAR_DATA *ch )
             send_to_char( buf, ch );
         }
     }
-    save_char_obj( ch );
+    return true;
 }
 
 /* used for processing a skill or group for deletion -- no points back! */
