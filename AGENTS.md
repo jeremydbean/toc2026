@@ -1524,6 +1524,11 @@ check rather than assume:
   `log/toc.log` stand in for the host's, up to five minutes stale. They
   carry player addresses, so filter IPs out of anything printed.
 
+**Give the owner times in Atlanta local time** (America/New_York: EDT,
+UTC-4, until the first Sunday of November, then EST, UTC-5) (owner,
+2026-10-21). GitHub, the logs and `log/deployed-commit` are in UTC:
+convert before reporting, and schedule check-ins with that in mind.
+
 Recount world totals from the tools (`area_lint.py`, `merc --check-area`)
 rather than copying a figure from a doc -- the baseline above was wrong
 for a day because one was copied.
