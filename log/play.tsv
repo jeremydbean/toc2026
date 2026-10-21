@@ -1458,3 +1458,135 @@
 1792622234	cmd	Trentlin	49	30206	hyrule.are	standing	100	0	-	up		Sandy Glade
 1792622235	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	north		Forest Stream
 1792622237	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622241	cmd	Trentlin	49	30237	hyrule.are	standing	100	0	-	north		Shore Below the Snake
+1792622242	cmd	Trentlin	49	30237	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622245	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	south		Forest Stream
+1792622245	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	west		The Lost Woods
+1792622246	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622247	cmd	Trentlin	49	30694	hyrule.are	standing	100	0	-	up		Simmering Herb Cellar
+1792622248	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	down		The Lost Woods
+1792622249	cmd	Trentlin	49	30219	hyrule.are	standing	100	0	-	west		Bramble Wood
+1792622250	cmd	Trentlin	49	30219	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622252	cmd	Trentlin	49	30218	hyrule.are	standing	100	0	-	west		Old Forest Clearing
+1792622253	cmd	Trentlin	49	30218	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622255	cmd	Trentlin	49	30234	hyrule.are	standing	100	0	-	north		Lost Woods Crossing
+1792622258	cmd	Trentlin	49	30234	hyrule.are	standing	100	0	-	consider	ch	They're not here.
+1792622259	cmd	Trentlin	49	30234	hyrule.are	standing	100	0	-	look	ch	You do not see that here.
+1792622261	cmd	Trentlin	49	30234	hyrule.are	standing	100	0	-	look	mob	A massive old moblin, broad as a door, with a hide gone the colour of slate
+1792622262	cmd	Trentlin	49	30234	hyrule.are	standing	100	0	-	consider	mob	A blue moblin is no match for you.
+1792622263	cmd	Trentlin	49	30233	hyrule.are	standing	100	0	-	west		Deepwood Corner
+1792622264	cmd	Trentlin	49	30217	hyrule.are	standing	100	0	-	south		The Tangled Woods
+1792622265	cmd	Trentlin	49	30216	hyrule.are	standing	100	0	-	west		Western Meadow Edge
+1792622267	cmd	Trentlin	49	30216	hyrule.are	standing	100	0	-	exits		Obvious exits:
+1792622268	cmd	Trentlin	49	30232	hyrule.are	standing	100	0	-	north		Western Crags
+1792622269	cmd	Trentlin	49	30232	hyrule.are	standing	100	0	-	north		You need the Raft to cross that water.
+1792622270	cmd	Trentlin	49	30216	hyrule.are	standing	100	0	-	south		Western Meadow Edge
+1792622271	cmd	Trentlin	49	30217	hyrule.are	standing	100	0	-	east		The Tangled Woods
+1792622271	cmd	Trentlin	49	30218	hyrule.are	standing	100	0	-	east		Old Forest Clearing
+1792622271	cmd	Trentlin	49	30219	hyrule.are	standing	100	0	-	east		Bramble Wood
+1792622272	cmd	Trentlin	49	30220	hyrule.are	standing	100	0	-	east		The Lost Woods
+1792622273	cmd	Trentlin	49	30221	hyrule.are	standing	100	0	-	east		Forest Stream
+1792622274	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	east		Candle Shop Knoll
+1792622275	cmd	Trentlin	49	30682	hyrule.are	standing	100	0	-	down		The Waxlight Shop
+1792622277	cmd	Trentlin	49	30222	hyrule.are	standing	100	0	-	up		Candle Shop Knoll
+1792622277	cmd	Trentlin	49	30223	hyrule.are	standing	100	0	-	east		Rock Wall Above the Start
+1792622277	cmd	Trentlin	49	30224	hyrule.are	standing	100	0	-	east		Bush Row
+1792622278	cmd	Trentlin	49	30225	hyrule.are	standing	100	0	-	east		River Bend
+1792622280	cmd	Trentlin	49	30241	hyrule.are	standing	100	0	-	north		Flower Field
+1792622282	cmd	Trentlin	49	30240	hyrule.are	standing	100	0	-	west		Crossroads South of the Lake
+1792622283	cmd	Trentlin	49	30256	hyrule.are	standing	100	0	-	north		Lake Hylia Sand Bar
+1792622283	cmd	Trentlin	49	30256	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792622284	cmd	Trentlin	49	30240	hyrule.are	standing	100	0	-	south		Crossroads South of the Lake
+1792622285	cmd	Trentlin	49	30241	hyrule.are	standing	100	0	-	east		Flower Field
+1792622285	cmd	Trentlin	49	30257	hyrule.are	standing	100	0	-	north		Boulder Meadow
+1792622287	cmd	Trentlin	49	30258	hyrule.are	standing	100	0	-	east		Craggy Rise
+1792622288	cmd	Trentlin	49	30683	hyrule.are	standing	100	0	-	down		Ledge-Shadowed Armoury
+1792622290	cmd	Trentlin	49	30683	hyrule.are	standing	100	0	-	list		a jovial merchant says 'I don't trade with folks I can't see.'
+1792622292	cmd	Trentlin	49	30683	hyrule.are	standing	100	0	-	visible		Ok.
+1792622293	cmd	Trentlin	49	30683	hyrule.are	standing	100	0	-	list		[Lv Price] Item
+1792622365	cmd	Trentlin	49	30683	hyrule.are	standing	100	0	-	buy	bombs	You buy four bombs.
+1792622366	cmd	Trentlin	49	30258	hyrule.are	standing	100	0	-	up		Craggy Rise
+1792622369	cmd	Trentlin	49	30274	hyrule.are	standing	100	0	-	north		The Peahat Fields
+1792622370	cmd	Trentlin	49	30290	hyrule.are	standing	100	0	-	north		The Dune Strip
+1792622371	cmd	Trentlin	49	30289	hyrule.are	standing	100	0	-	west		The Sandy Flats
+1792622372	cmd	Trentlin	49	30288	hyrule.are	standing	100	0	-	west		The Withered Thicket
+1792622373	cmd	Trentlin	49	30272	hyrule.are	standing	100	0	-	south		The River Landing
+1792622374	cmd	Trentlin	49	30271	hyrule.are	standing	100	0	-	west		The Eagle's Gate
+1792622375	cmd	Trentlin	49	30401	hyrule.are	standing	100	0	-	down		Level 1: Eagle Gate
+1792622377	cmd	Trentlin	49	30403	hyrule.are	standing	100	0	-	north		Level 1: Rattling Passage
+1792622377	cmd	Trentlin	49	30405	hyrule.are	standing	100	0	-	north		Level 1: Diamond-Tiled Crossing
+1792622378	cmd	Trentlin	49	30405	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792622378	cmd	Trentlin	49	30406	hyrule.are	standing	100	0	-	east		Level 1: Keese-Fouled Gallery
+1792622379	cmd	Trentlin	49	30406	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792622382	cmd	Trentlin	49	30406	hyrule.are	standing	100	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!
+1792622382	cmd	Trentlin	49	30410	hyrule.are	standing	100	0	-	north		Level 1: Scarred Hall
+1792622383	cmd	Trentlin	49	30411	hyrule.are	standing	100	0	-	east		Level 1: Hall of Grasping Walls
+1792622385	cmd	Trentlin	49	30413	hyrule.are	standing	100	0	-	north		Level 1: Hall of Threefold Scorches
+1792622387	cmd	Trentlin	49	30413	hyrule.are	standing	100	0	-	east		The eagle has been Wizard Locked. You can not pass
+1792622388	cmd	Trentlin	49	30413	hyrule.are	standing	100	0	-	kill	a	Your cleave *** DEVASTATES *** Aquamentus!
+1792622393	cmd	Trentlin	49	30413	hyrule.are	fighting	100	0	fight	smite		Your smite *** DEMOLISHES *** Aquamentus!
+1792622399	cmd	Trentlin	49	30413	hyrule.are	fighting	99	3	fight	smite		Your smite *** DEVASTATES *** Aquamentus!
+1792622405	cmd	Trentlin	49	30413	hyrule.are	standing	99	0	-	smite		Smite whom?
+1792622405	cmd	Trentlin	49	30413	hyrule.are	standing	99	0	-	smite		Smite whom?
+1792622405	cmd	Trentlin	49	30413	hyrule.are	standing	99	0	-	get	key corpse	You get the Eagle's key from corpse of Aquamentus.
+1792622406	cmd	Trentlin	49	30413	hyrule.are	standing	99	0	-	unlock	east	There is a flash of light as you unlock the eagle.
+1792622406	cmd	Trentlin	49	30413	hyrule.are	standing	99	0	-	open	east	Ok.
+1792622407	cmd	Trentlin	49	30413	hyrule.are	standing	99	0	-	drop	key	You drop the Eagle's key.
+1792622408	cmd	Trentlin	49	30413	hyrule.are	standing	99	0	-	get	key	You get the Eagle's key.
+1792622409	cmd	Trentlin	49	30414	hyrule.are	standing	99	0	-	east		Level 1: Eagle's Golden Sanctum
+1792622412	cmd	Trentlin	49	30414	hyrule.are	standing	99	0	-	unlock	chest	*Click*
+1792622414	cmd	Trentlin	49	30414	hyrule.are	standing	99	0	-	open	chest	Ok.
+1792622414	cmd	Trentlin	49	30413	hyrule.are	standing	99	0	-	west		Level 1: Hall of Threefold Scorches
+1792622415	cmd	Trentlin	49	30413	hyrule.are	standing	99	0	-	drop	key	You drop the Eagle's key.
+1792622416	cmd	Trentlin	49	30414	hyrule.are	standing	99	0	-	east		Level 1: Eagle's Golden Sanctum
+1792622419	cmd	Trentlin	49	30414	hyrule.are	standing	99	0	-	get	boom chest	You get a small boomerang from the Eagle's treasure chest.
+1792622421	cmd	Trentlin	49	30271	hyrule.are	standing	99	0	-	enter	light	You enter the Eagle's returning light
+1792622424	cmd	Trentlin	49	30271	hyrule.are	standing	100	0	-	eat	pot	That's not edible.
+1792622426	cmd	Trentlin	49	30271	hyrule.are	standing	100	0	-	eat	pie	That's not edible.
+1792622434	cmd	Trentlin	49	30272	hyrule.are	standing	100	0	-	east		The River Landing
+1792622436	cmd	Trentlin	49	30272	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792622436	cmd	Trentlin	49	30256	hyrule.are	standing	100	0	-	south		Lake Hylia Sand Bar
+1792622437	cmd	Trentlin	49	30256	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792622438	cmd	Trentlin	49	30240	hyrule.are	standing	100	0	-	south		Crossroads South of the Lake
+1792622438	cmd	Trentlin	49	30241	hyrule.are	standing	100	0	-	east		Flower Field
+1792622439	cmd	Trentlin	49	30242	hyrule.are	standing	100	0	-	east		Rolling Green Downs
+1792622440	cmd	Trentlin	49	30243	hyrule.are	standing	100	0	-	east		Eastwood Glade
+1792622441	cmd	Trentlin	49	30244	hyrule.are	standing	100	0	-	east		Pinewood Rise
+1792622442	cmd	Trentlin	49	30245	hyrule.are	standing	100	0	-	east		Moblin Hollow
+1792622444	cmd	Trentlin	49	30261	hyrule.are	standing	100	0	-	north		Wooded Crossroads
+1792622444	cmd	Trentlin	49	30277	hyrule.are	standing	100	0	-	north		The Armos Shore
+1792622446	cmd	Trentlin	49	30293	hyrule.are	standing	100	0	-	north		Lake Hylia, North Shore
+1792622447	cmd	Trentlin	49	30277	hyrule.are	standing	100	0	-	south		The Armos Shore
+1792622447	cmd	Trentlin	49	30261	hyrule.are	standing	100	0	-	south		Wooded Crossroads
+1792622448	cmd	Trentlin	49	30260	hyrule.are	standing	100	0	-	west		The Eastern Dock
+1792622449	cmd	Trentlin	49	30276	hyrule.are	standing	100	0	-	north		The Moon Gate
+1792622450	cmd	Trentlin	49	30418	hyrule.are	standing	100	0	-	down		Level 2: Crescent Gate
+1792622451	cmd	Trentlin	49	30421	hyrule.are	standing	100	0	-	north		Level 2: Blue Antechamber
+1792622452	cmd	Trentlin	49	30421	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792622453	cmd	Trentlin	49	30421	hyrule.are	standing	100	0	-	west		The shutter is sealed fast, and will not open while enemies remain here.
+1792622456	cmd	Trentlin	49	30421	hyrule.are	standing	100	0	-	kill	r	Your cleave <<< ERADICATES >>> a rope!
+1792622459	cmd	Trentlin	49	30420	hyrule.are	standing	100	0	-	west		The shutter opens now that the chamber is clear.
+1792622465	cmd	Trentlin	49	30420	hyrule.are	standing	100	0	-	look	comp	The needle swings east.
+1792622468	cmd	Trentlin	49	30421	hyrule.are	standing	100	0	-	east		Level 2: Blue Antechamber
+1792622469	cmd	Trentlin	49	30422	hyrule.are	standing	100	0	-	east		Level 2: Moonstone Crossroads
+1792622469	cmd	Trentlin	49	30424	hyrule.are	standing	100	0	-	north		Level 2: Gouged Hall
+1792622470	cmd	Trentlin	49	30424	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792622474	cmd	Trentlin	49	30424	hyrule.are	standing	100	0	-	kill	g	Your cleave === OBLITERATES === a red goriya!
+1792622479	cmd	Trentlin	49	30426	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear.
+1792622481	cmd	Trentlin	49	30428	hyrule.are	standing	100	0	-	north		Level 2: Silent Chamber
+1792622482	cmd	Trentlin	49	30430	hyrule.are	standing	100	0	-	north		Level 2: Serpent Hall
+1792622483	cmd	Trentlin	49	30430	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792622485	cmd	Trentlin	49	30430	hyrule.are	standing	100	0	-	kill	r	Your cleave === OBLITERATES === a rope!
+1792622489	cmd	Trentlin	49	30432	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear.
+1792622491	cmd	Trentlin	49	30432	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792622492	cmd	Trentlin	49	30432	hyrule.are	standing	100	0	-	kill	g	Your cleave ^^^ DESTROYS ^^^ a red goriya!
+1792622497	cmd	Trentlin	49	30435	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear.
+1792622499	cmd	Trentlin	49	30435	hyrule.are	standing	100	0	-	consider	d	You can kill The Dodongo naked and weaponless.
+1792622501	cmd	Trentlin	49	30435	hyrule.are	standing	100	0	-	look	d	An enormous, stocky dinosaur with a thick, armoured hide and a mouth
+1792622503	cmd	Trentlin	49	30435	hyrule.are	standing	100	0	-	kill	do	Your cleave === OBLITERATES === The Dodongo!
+1792622507	cmd	Trentlin	49	30435	hyrule.are	fighting	99	0	fight	smite		Your smite <<< ERADICATES >>> The Dodongo!
+1792622521	cmd	Trentlin	49	30435	hyrule.are	standing	100	0	-	smite		Smite whom?
+1792622522	cmd	Trentlin	49	30435	hyrule.are	standing	100	0	-	look	in cor	Corpse of The Dodongo contains:
+1792622534	cmd	Trentlin	49	30435	hyrule.are	standing	100	0	-	get	key cor	You get the Moon's key from corpse of The Dodongo.
+1792622535	cmd	Trentlin	49	30435	hyrule.are	standing	100	0	-	look		Level 2: Dodongo's Lair
+1792622537	cmd	Trentlin	49	30435	hyrule.are	standing	100	0	-	open	west	It's locked.
