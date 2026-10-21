@@ -755,3 +755,20 @@
 1792620062	cmd	Trentlin	49	4210	dresden_halloween.are	standing	79	0	-	sleep		You go to sleep.
 1792620089	cmd	Trentlin	49	4210	dresden_halloween.are	sleeping	79	0	-	group		Trentlin's group:
 1792620093	session	Trentlin	49	4210	dresden_halloween.are	quit	2253s	+3 levels	+6428 exp	+30455546 copper	15 kills	0 deaths	2 quests	753 commands	26 refused
+1792620969	cmd	Trentlin	49	4210	dresden_halloween.are	sleeping	80	0	-	note		Notes addressed to you:
+1792620976	cmd	Trentlin	49	4210	dresden_halloween.are	sleeping	80	0	-	note	read 26	From:    Trentlin
+1792620992	refused	Trentlin	49	4210	dresden_halloween.are	sleeping	80	0	-	look		In your dreams, or what?
+1792620993	cmd	Trentlin	49	4210	dresden_halloween.are	sleeping	80	0	-	wake		You wake and stand up.
+1792620994	cmd	Trentlin	49	4210	dresden_halloween.are	standing	80	0	-	look		The Sickroom of the Restless
+1792620995	cmd	Trentlin	49	4203	dresden_halloween.are	standing	80	0	-	south		The Hall of Cobwebs
+1792620995	cmd	Trentlin	49	4202	dresden_halloween.are	standing	80	0	-	south		The Hall of Whispers
+1792620996	cmd	Trentlin	49	4201	dresden_halloween.are	standing	80	0	-	east		Entrance to the Haunted Temple
+1792620996	cmd	Trentlin	49	2427	dresden_halloween.are	standing	80	0	-	east		Main Processional, Below the Temple Steps
+1792620998	cmd	Trentlin	49	2404	dresden_halloween.are	standing	80	0	-	north		Southern Oak Tree Square.
+1792620998	cmd	Trentlin	49	2401	dresden_halloween.are	standing	80	0	-	north		Oak Tree Square on Hallows Eve
+1792620999	cmd	Trentlin	49	2410	dresden_halloween.are	standing	80	0	-	up		Climbing the Oak Tree...
+1792621000	cmd	Trentlin	49	2411	dresden_halloween.are	standing	80	0	-	up		Up in the Oak Tree.
+1792621000	cmd	Trentlin	49	2414	dresden_halloween.are	standing	80	0	-	up		Top of the oak tree.
+1792621000	cmd	Trentlin	49	2497	dresden_halloween.are	standing	80	0	-	up		A sudden wind blows you from the tree!
+1792621002	cmd	Trentlin	49	2497	dresden_halloween.are	standing	80	6	-	aquest	request	You approach Questor Thews and ask for a quest.
+1792621005	cmd	Trentlin	49	2401	dresden_halloween.are	standing	80	0	-	enter	door	You enter The Rescue Portal

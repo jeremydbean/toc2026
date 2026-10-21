@@ -149786,3 +149786,38 @@ Wed Oct 21 22:05:27 2026 :: Sock.sinaddr:  178.156.189.113
 Wed Oct 21 22:05:27 2026 :: EOF encountered on read.
 Wed Oct 21 22:10:31 2026 :: Sock.sinaddr:  178.156.189.113
 Wed Oct 21 22:10:31 2026 :: EOF encountered on read.
+Wed Oct 21 22:13:09 2026 :: Treasure goblin: vanished from room 29462 (Trail up the mountains, world.are) (too long in one area).
+Wed Oct 21 22:15:36 2026 :: Sock.sinaddr:  5.161.75.7
+Wed Oct 21 22:15:36 2026 :: EOF encountered on read.
+Wed Oct 21 22:16:05 2026 :: Sock.sinaddr:  24.2.118.125
+Wed Oct 21 22:16:05 2026 :: Loading Trentlin's playerfile
+Wed Oct 21 22:16:07 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Wed Oct 21 22:16:07 2026 :: Log Trentlin [4210]: arrived (The Sickroom of the Restless) from 0
+Wed Oct 21 22:16:09 2026 :: Log Trentlin [4210]: note
+Wed Oct 21 22:16:16 2026 :: Log Trentlin [4210]: note read 26
+Wed Oct 21 22:16:32 2026 :: Log Trentlin [4210]: l
+Wed Oct 21 22:16:33 2026 :: Log Trentlin [4210]: wake
+Wed Oct 21 22:16:34 2026 :: Log Trentlin [4210]: l
+Wed Oct 21 22:16:35 2026 :: Log Trentlin [4210]: s
+Wed Oct 21 22:16:35 2026 :: Log Trentlin [4203]: arrived (The Hall of Cobwebs) from 4210
+Wed Oct 21 22:16:35 2026 :: Log Trentlin [4203]: s
+Wed Oct 21 22:16:35 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4203
+Wed Oct 21 22:16:36 2026 :: Log Trentlin [4202]: e
+Wed Oct 21 22:16:36 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Wed Oct 21 22:16:36 2026 :: Log Trentlin [4201]: e
+Wed Oct 21 22:16:36 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Wed Oct 21 22:16:38 2026 :: Log Trentlin [2427]: n
+Wed Oct 21 22:16:38 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Wed Oct 21 22:16:38 2026 :: Log Trentlin [2404]: n
+Wed Oct 21 22:16:38 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Wed Oct 21 22:16:39 2026 :: Log Trentlin [2401]: u
+Wed Oct 21 22:16:39 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Wed Oct 21 22:16:40 2026 :: Log Trentlin [2410]: u
+Wed Oct 21 22:16:40 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Wed Oct 21 22:16:40 2026 :: Log Trentlin [2411]: u
+Wed Oct 21 22:16:40 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Wed Oct 21 22:16:40 2026 :: Log Trentlin [2414]: u
+Wed Oct 21 22:16:40 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Wed Oct 21 22:16:42 2026 :: Log Trentlin [2497]: aquest request
+Wed Oct 21 22:16:45 2026 :: Log Trentlin [2497]: enter door
+Wed Oct 21 22:16:45 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
