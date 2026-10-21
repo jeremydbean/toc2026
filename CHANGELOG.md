@@ -154,7 +154,9 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   given a class, which is class 0, mage, so every new warrior, thief and
   cleric since 2026-09-19 held mage basics and mage default beside their
   own groups -- Trentlin found himself casting refresh. Characters
-  already made keep what they have.
+  already made have the spells taken back at their next login, with the
+  practice sessions spent on them refunded (`rescind_stray_mage_groups`;
+  owner, 2026-10-21).
 
 - **A held treasure goblin no longer dies in a few blows** (2026-10-21).
   Bash, trip and stunning blow had just been made to hold him, and a hold

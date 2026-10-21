@@ -3398,6 +3398,7 @@ void    check_improve   ( CHAR_DATA *ch, int sn, bool success, int multiplier );
 int     group_lookup    (const char *name);
 void    gn_add          ( CHAR_DATA *ch, int gn);
 void    gn_remove       ( CHAR_DATA *ch, int gn);
+void    rescind_stray_mage_groups ( CHAR_DATA *ch );
 void    group_add       ( CHAR_DATA *ch, const char *name, bool deduct);
 void    group_remove    ( CHAR_DATA *ch, const char *name);
 

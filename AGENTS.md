@@ -1065,6 +1065,20 @@ say whether casting refresh was a bug. It now runs only when the file
 was found, and creation applies the chosen class's groups at
 `CON_GET_ALIGNMENT`. `tests/test_new_character_groups.py`.
 
+**Those already made are corrected at login** (owner, 2026-10-21: remove
+the mage spells from anyone who should not have them and refund the
+practices). `rescind_stray_mage_groups()` in `skills.c`, called from the
+nanny beside `rest_xp_on_login`, takes `mage basics` and `mage default`
+from any mortal who is not a mage -- a remort wipes every group, so the
+bug is the only way one got there -- zeroes their members, then gives
+back through `apply_class_and_guild_skills` and the groups still held
+everything owed another way, at the percentage it had (the dagger every
+class wields, a spell in a group they bought). Each spell that does not
+come back refunds the sessions its percentage above 1% would cost at
+the character's intelligence now, which errs the player's way since some
+came from use. Staff are left alone. It logs and WIZINFOs what it took,
+and does nothing once the groups are gone.
+
 ## Travel Spells Keep Room Rules
 
 `travel_spell_refuses(ch, room)` in `act_move.c` is what earth travel,

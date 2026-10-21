@@ -996,6 +996,117 @@ void group_add( CHAR_DATA *ch, const char *name, bool deduct)
     }
 }
 
+/*
+ * Undo the creation bug of 2026-09-19 to 2026-10-21 (owner, 2026-10-21:
+ * remove the mage spells from anyone who should not have them and refund
+ * the practices). load_char_obj filled in class groups for the empty
+ * character a new name starts from, whose class was still 0 -- mage --
+ * so every new warrior, thief, cleric and monk also held mage basics and
+ * mage default. A remort wipes every group, so a mortal who is not a mage
+ * and holds either one has it from that bug and nothing else.
+ *
+ * What goes is whatever only those two groups gave: anything the class,
+ * guild, race or another group the character holds still owes them comes
+ * straight back at the percentage it had (the dagger every class wields,
+ * faerie fire through the weather group). Each spell removed refunds the
+ * practice sessions its percentage above the 1% it was handed out at
+ * would have cost at the character's intelligence now -- some of it came
+ * from use rather than practice, and the refund errs the player's way.
+ * Runs at every login and does nothing once the groups are gone.
+ */
+void rescind_stray_mage_groups( CHAR_DATA *ch )
+{
+    static const char *const stray[] = { "mage basics", "mage default" };
+    int old[MAX_SKILL];
+    bool member[MAX_SKILL];
+    char removed[MAX_STRING_LENGTH];
+    char buf[MAX_STRING_LENGTH * 2];
+    int i, j, sn, gn, refund = 0, count = 0;
+    bool any = false;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL || ch->class == CLASS_MAGE
+    ||   IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+        return;
+    for ( i = 0; i < 2; i++ )
+        if ( ( gn = group_lookup( stray[i] ) ) != -1 && ch->pcdata->group_known[gn] )
+            any = true;
+    if ( !any )
+        return;
+
+    for ( sn = 0; sn < MAX_SKILL; sn++ )
+    {
+        old[sn] = ch->pcdata->learned[sn];
+        member[sn] = false;
+    }
+
+    /* Take the two groups and everything in them away... */
+    for ( i = 0; i < 2; i++ )
+    {
+        if ( ( gn = group_lookup( stray[i] ) ) == -1 )
+            continue;
+        ch->pcdata->group_known[gn] = false;
+        for ( j = 0; j < MAX_IN_GROUP && group_table[gn].spells[j] != NULL; j++ )
+            if ( ( sn = skill_lookup( group_table[gn].spells[j] ) ) > 0 )
+            {
+                member[sn] = true;
+                ch->pcdata->learned[sn] = 0;
+            }
+    }
+
+    /* ...then give back everything still owed by another road. */
+    apply_class_and_guild_skills( ch );
+    for ( gn = 0; gn < MAX_GROUP && group_table[gn].name != NULL; gn++ )
+        if ( ch->pcdata->group_known[gn] )
+            gn_add( ch, gn );
+
+    removed[0] = '\0';
+    for ( sn = 0; sn < MAX_SKILL; sn++ )
+    {
+        int gain;
+
+        if ( !member[sn] || old[sn] <= 0 )
+            continue;
+        if ( ch->pcdata->learned[sn] > 0 )
+        {
+            /* Owed anyway: keep what was trained. */
+            ch->pcdata->learned[sn] = (int16_t) UMAX( ch->pcdata->learned[sn], old[sn] );
+            continue;
+        }
+        gain = UMAX( 1, int_app[get_curr_stat( ch, STAT_INT )].learn
+                        / UMAX( 1, skill_table[sn].rating[ch->class] ) );
+        if ( old[sn] > 1 )
+            refund += ( old[sn] - 1 + gain - 1 ) / gain;
+        count++;
+        if ( removed[0] != '\0' )
+            toc_strlcat( removed, ", ", sizeof(removed) );
+        snprintf( buf, sizeof(buf), "%s %d%%", skill_table[sn].name, old[sn] );
+        toc_strlcat( removed, buf, sizeof(removed) );
+    }
+
+    ch->practice = (sh_int) URANGE( 0, ch->practice + refund, 32000 );
+    snprintf( buf, sizeof(buf), "Stray mage groups: took %s's %s; refunded %d "
+              "practice%s.", ch->name, removed[0] != '\0' ? removed : "nothing",
+              refund, refund == 1 ? "" : "s" );
+    log_string( buf );
+    wizinfo( buf, LEVEL_IMMORTAL );
+    if ( count > 0 )
+    {
+        snprintf( buf, sizeof(buf), "{0BA correction:{00 a mistake when you were made "
+                  "gave you the mage's starting spells. They have been taken back "
+                  "(%s)%s.\n\r", removed,
+                  refund > 0 ? "" : "; you had spent no practices on them" );
+        send_to_char( buf, ch );
+        if ( refund > 0 )
+        {
+            snprintf( buf, sizeof(buf), "The %d practice session%s you spent on them "
+                      "%s been returned to you.\n\r", refund,
+                      refund == 1 ? "" : "s", refund == 1 ? "has" : "have" );
+            send_to_char( buf, ch );
+        }
+    }
+    save_char_obj( ch );
+}
+
 /* used for processing a skill or group for deletion -- no points back! */
 
 void group_remove(CHAR_DATA *ch, const char *name)
