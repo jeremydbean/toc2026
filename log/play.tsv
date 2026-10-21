@@ -551,3 +551,112 @@
 1792619425	cmd	Trentlin	49	16080	pirate.are	standing	95	0	-	kill	swas	Your grep *** DEVASTATES *** The swashbuckler!
 1792619429	cmd	Trentlin	49	16080	pirate.are	fighting	95	0	fight	smite		Your smite *** DEVASTATES *** The swashbuckler!
 1792619439	cmd	Trentlin	49	16080	pirate.are	fighting	95	0	fight	smite		Your smite *** DEVASTATES *** The swashbuckler!
+1792619537	cmd	Trentlin	49	16080	pirate.are	standing	95	0	-	scan		The bucaneer                       -to the East.
+1792619537	cmd	Trentlin	49	16080	pirate.are	standing	95	0	-	inventory		You are carrying:
+1792619543	cmd	Trentlin	49	16080	pirate.are	standing	95	0	-	compare	pearl	A) a pearl bracelet (level 46) -- can't use: what you wear there won't come off
+1792619558	cmd	Trentlin	49	16080	pirate.are	standing	96	0	-	compare	ring	A) An assassin's ring (level 52) -- can't use: needs level 52
+1792619566	cmd	Trentlin	49	16080	pirate.are	standing	96	0	-	compare	robe	A) some Black velvet robes (level 32) -- can't use: made for another side
+1792619577	cmd	Trentlin	49	16080	pirate.are	standing	96	0	-	look		Out on the Mast
+1792619579	cmd	Trentlin	49	16081	pirate.are	standing	96	0	-	east		The Mast
+1792619579	cmd	Trentlin	49	16082	pirate.are	standing	96	0	-	east		Out on the Mast
+1792619580	cmd	Trentlin	49	16081	pirate.are	standing	96	0	-	west		The Mast
+1792619581	cmd	Trentlin	49	16078	pirate.are	standing	96	0	-	down		The Mast
+1792619581	cmd	Trentlin	49	16033	pirate.are	standing	96	0	-	down		Base of the Mast
+1792619583	cmd	Trentlin	49	16028	pirate.are	standing	96	0	-	south		Main Deck
+1792619583	cmd	Trentlin	49	16023	pirate.are	standing	96	0	-	south		Main Deck
+1792619584	cmd	Trentlin	49	16018	pirate.are	standing	96	0	-	south		Main Deck of the Royal Eagle
+1792619585	cmd	Trentlin	49	16018	pirate.are	standing	96	0	-	south		Alas, you cannot go that way.
+1792619586	cmd	Trentlin	49	16019	pirate.are	standing	96	0	-	east		Main Deck of the Royal Eagle
+1792619587	cmd	Trentlin	49	16020	pirate.are	standing	96	0	-	east		Main Deck of the Royal Eagle - Starboard
+1792619588	cmd	Trentlin	49	16015	pirate.are	standing	96	0	-	up		Aft Deck - Starboard Side
+1792619590	cmd	Trentlin	49	16014	pirate.are	standing	96	0	-	west		Aft Deck
+1792619590	cmd	Trentlin	49	16013	pirate.are	standing	96	0	-	west		Center Aft Deck
+1792619591	cmd	Trentlin	49	16013	pirate.are	standing	96	0	-	consider	ca	Death will thank you for your gift.
+1792619593	cmd	Trentlin	49	16013	pirate.are	standing	96	0	-	look	ca	The captain is a man in his fifties.  What's left of his hair is slicked
+1792619594	cmd	Trentlin	49	16008	pirate.are	standing	96	0	-	south		Aft Deck South
+1792619596	cmd	Trentlin	49	16007	pirate.are	standing	96	2	-	west		Aft Deck South
+1792619597	cmd	Trentlin	49	16006	pirate.are	standing	96	0	-	west		Southwest Corner of Aft Deck
+1792619600	cmd	Trentlin	49	16006	pirate.are	fighting	93	0	fight	smite		Your smite misses The angry pirate.
+1792619608	cmd	Trentlin	49	16006	pirate.are	fighting	93	0	fight	smite		Your smite DISMEMBERS The angry pirate!
+1792619618	cmd	Trentlin	49	16006	pirate.are	fighting	91	0	fight	wear	ax	You wield A Tin Axe.
+1792619618	cmd	Trentlin	49	16006	pirate.are	fighting	91	0	fight	smite		Your smite DISMEMBERS The angry pirate!
+1792619632	cmd	Trentlin	49	16006	pirate.are	fighting	92	0	fight	smite		A Tin Axe bites deep into The angry pirate!
+1792619641	cmd	Trentlin	49	16006	pirate.are	standing	92	0	-	smite		Smite whom?
+1792619641	cmd	Trentlin	49	4207	dresden_halloween.are	standing	92	0	-	recall		Before the Shrouded Altar
+1792619642	cmd	Trentlin	49	4207	dresden_halloween.are	standing	92	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1792619642	cmd	Trentlin	49	4202	dresden_halloween.are	standing	92	0	-	east		The Hall of Whispers
+1792619643	cmd	Trentlin	49	4201	dresden_halloween.are	standing	92	0	-	east		Entrance to the Haunted Temple
+1792619645	cmd	Trentlin	49	2427	dresden_halloween.are	standing	92	0	-	east		Main Processional, Below the Temple Steps
+1792619645	cmd	Trentlin	49	2404	dresden_halloween.are	standing	92	0	-	north		Southern Oak Tree Square.
+1792619645	cmd	Trentlin	49	2401	dresden_halloween.are	standing	92	0	-	north		Oak Tree Square on Hallows Eve
+1792619646	cmd	Trentlin	49	2402	dresden_halloween.are	standing	92	0	-	north		Northern Oak Tree Square.
+1792619646	cmd	Trentlin	49	2407	dresden_halloween.are	standing	92	0	-	east		Northeastern Oak Tree Square.
+1792619646	cmd	Trentlin	49	2403	dresden_halloween.are	standing	92	0	-	south		Eastern Oak Tree Square.
+1792619647	cmd	Trentlin	49	2408	dresden_halloween.are	standing	92	0	-	south		Southeastern Oak Tree Square.
+1792619649	cmd	Trentlin	49	2408	dresden_halloween.are	standing	92	0	-	repair	drago	There's nobody here to repair that.
+1792619650	cmd	Trentlin	49	2404	dresden_halloween.are	standing	92	0	-	west		Southern Oak Tree Square.
+1792619651	cmd	Trentlin	49	2401	dresden_halloween.are	standing	92	0	-	north		Oak Tree Square on Hallows Eve
+1792619652	cmd	Trentlin	49	2402	dresden_halloween.are	standing	92	0	-	north		Northern Oak Tree Square.
+1792619652	cmd	Trentlin	49	2415	dresden_halloween.are	standing	92	0	-	north		Main Processional, Strung with Lanterns
+1792619653	cmd	Trentlin	49	2485	dresden_halloween.are	standing	92	0	-	east		Market Plaza.
+1792619654	cmd	Trentlin	49	2494	dresden_halloween.are	standing	92	0	-	south		Weapons Shop.
+1792619656	cmd	Trentlin	49	2494	dresden_halloween.are	standing	92	0	-	repair	drago	The hooded headsman repairs your (Dark) a Dragonlance.
+1792619658	cmd	Trentlin	49	2494	dresden_halloween.are	standing	92	0	-	repair	buck	The hooded headsman repairs your a green scale buckler.
+1792619660	cmd	Trentlin	49	2494	dresden_halloween.are	standing	92	0	-	wear	buck	You wear a green scale buckler as a shield.
+1792619661	cmd	Trentlin	49	2485	dresden_halloween.are	standing	91	0	-	north		Market Plaza.
+1792619661	cmd	Trentlin	49	2415	dresden_halloween.are	standing	91	0	-	west		Main Processional, Strung with Lanterns
+1792619662	cmd	Trentlin	49	2402	dresden_halloween.are	standing	91	0	-	south		Northern Oak Tree Square.
+1792619662	cmd	Trentlin	49	2401	dresden_halloween.are	standing	91	0	-	south		Oak Tree Square on Hallows Eve
+1792619663	cmd	Trentlin	49	2404	dresden_halloween.are	standing	91	0	-	south		Southern Oak Tree Square.
+1792619664	cmd	Trentlin	49	2427	dresden_halloween.are	standing	91	0	-	south		Main Processional, Below the Temple Steps
+1792619664	cmd	Trentlin	49	4201	dresden_halloween.are	standing	91	0	-	west		Entrance to the Haunted Temple
+1792619664	cmd	Trentlin	49	4202	dresden_halloween.are	standing	91	0	-	west		The Hall of Whispers
+1792619665	cmd	Trentlin	49	4207	dresden_halloween.are	standing	91	0	-	west		Before the Shrouded Altar
+1792619665	cmd	Trentlin	49	4208	dresden_halloween.are	standing	91	0	-	west		The Shrouded Altar of Devota
+1792619666	cmd	Trentlin	49	4208	dresden_halloween.are	standing	91	0	-	heal		Hermie says 'All of it free.  Anything on this list:'
+1792619668	cmd	Trentlin	49	4208	dresden_halloween.are	standing	91	0	-	heal	uncurse	Hermie turns to you with a wink.
+1792619672	cmd	Trentlin	49	4208	dresden_halloween.are	standing	91	0	-	heal	uncurse	Hermie turns to you with a wink.
+1792619683	cmd	Trentlin	49	4208	dresden_halloween.are	standing	91	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792619686	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	note	to immortal	Addressed to: immortal
+1792619716	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	note	+ I appear to be immune to uncurse. Anyway to address that?	Line added.
+1792619721	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	note	+ Thanks!	Line added.
+1792619728	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	note	subject Curses!	Subject: Curses!
+1792619733	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	note	post	Note sent.
+1792619734	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota
+1792619736	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792619736	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792619736	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792619738	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792619738	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792619739	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792619758	cmd	Trentlin	49	2438	dresden_halloween.are	standing	100	0	-	run	w 7	Western Oak Tree Square.
+1792619759	cmd	Trentlin	49	2438	dresden_halloween.are	standing	100	0	-	open	gate	Ok.
+1792619759	cmd	Trentlin	49	6103	haon.are	standing	100	0	-	run	w 10	Outside the Western Gates of Dresden.
+1792619759	cmd	Trentlin	49	6108	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest
+1792619759	cmd	Trentlin	49	6110	haon.are	standing	100	0	-	run	w 2	A narrow trail through the deep, dark forest
+1792619760	cmd	Trentlin	49	6112	haon.are	standing	100	0	-	run	s 2	A narrow trail through the deep, dark forest
+1792619760	cmd	Trentlin	49	6127	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest
+1792619760	cmd	Trentlin	49	6126	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest
+1792619760	cmd	Trentlin	49	6135	haon.are	standing	100	0	-	run	w 3	A narrow trail through the deep, dark forest
+1792619761	cmd	Trentlin	49	6136	haon.are	standing	100	0	-	north		A dusty trail in the deep, dark forest
+1792619761	cmd	Trentlin	49	6137	haon.are	standing	100	0	-	west		At the end of the trail through the deep, dark forest
+1792619761	cmd	Trentlin	49	30	connect.are	standing	100	0	-	north		Forest Clearing
+1792619761	cmd	Trentlin	49	31	connect.are	standing	100	0	-	nw		A Twisting Path
+1792619762	cmd	Trentlin	49	33	connect.are	standing	100	0	-	run	w 2	An unused path
+1792619762	cmd	Trentlin	49	34	connect.are	standing	100	0	-	nw		The Wind Gap
+1792619762	cmd	Trentlin	49	25001	mountain.are	standing	100	0	-	north		A small mountain crevice
+1792619764	cmd	Trentlin	49	25002	mountain.are	standing	100	0	-	north		Near the river
+1792619765	cmd	Trentlin	49	25004	mountain.are	standing	100	0	-	north		Beginning of the climb
+1792619767	cmd	Trentlin	49	25005	mountain.are	standing	100	0	-	nw		Hard Climb
+1792619768	cmd	Trentlin	49	25006	mountain.are	standing	100	0	-	north		Head of the Bridge
+1792619769	cmd	Trentlin	49	25007	mountain.are	standing	100	0	-	west		On the bridge
+1792619770	cmd	Trentlin	49	25008	mountain.are	standing	100	0	-	west		Middle of the Bridge
+1792619771	cmd	Trentlin	49	25009	mountain.are	standing	100	0	-	west		End of the Bridge
+1792619772	cmd	Trentlin	49	25015	mountain.are	standing	100	0	-	nw		Onward and Upward
+1792619775	cmd	Trentlin	49	25015	mountain.are	standing	100	0	-	kill	rav	A Black Raven parries your attack.
+1792619779	cmd	Trentlin	49	25015	mountain.are	fighting	99	0	fight	smite		Your smite misses A Black Raven.
+1792619800	cmd	Trentlin	49	25015	mountain.are	fighting	546	0	fight	smite		Your smite devastates A Black Raven!
+1792619806	cmd	Trentlin	49	25016	mountain.are	fighting	546	0	fight	flee		Causeway
+1792619807	cmd	Trentlin	49	25016	mountain.are	standing	546	0	-	flee		You aren't fighting anyone.
+1792619807	cmd	Trentlin	49	25016	mountain.are	standing	546	0	-	flee		You aren't fighting anyone.
+1792619808	cmd	Trentlin	49	4207	dresden_halloween.are	standing	546	0	-	recall		Before the Shrouded Altar
