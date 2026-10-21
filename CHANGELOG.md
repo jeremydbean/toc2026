@@ -149,6 +149,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **New characters no longer start with the mage's spells** (2026-10-21).
+  The player-file loader filled in class groups for a character not yet
+  given a class, which is class 0, mage, so every new warrior, thief and
+  cleric since 2026-09-19 held mage basics and mage default beside their
+  own groups -- Trentlin found himself casting refresh. Characters
+  already made keep what they have.
+
 - **A held treasure goblin no longer dies in a few blows** (2026-10-21).
   Bash, trip and stunning blow had just been made to hold him, and a hold
   let a fighter's rounds land shares without a single flight: Trentlin's

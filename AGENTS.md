@@ -1054,6 +1054,17 @@ keeps an unplaced pet, `nuke_pets` gives one a room before extracting
 it, and `free_char` clears the stash and an unplaced pet of a copy that
 never entered -- a wrong password, a reconnect.
 
+**`load_char_obj` fills a found character's gaps, never a new one's.**
+`apply_class_and_guild_skills()` runs at the end of the loader so a
+character short of something their class, guild or race owes them gets
+it at login -- but the loader also builds the empty character a new name
+starts from, whose class is still 0 (mage). Until 2026-10-21 every
+character made since 2026-09-19 therefore held mage basics and mage
+default beside their own class's groups; Trentlin, a warrior, asked in
+say whether casting refresh was a bug. It now runs only when the file
+was found, and creation applies the chosen class's groups at
+`CON_GET_ALIGNMENT`. `tests/test_new_character_groups.py`.
+
 ## Travel Spells Keep Room Rules
 
 `travel_spell_refuses(ch, room)` in `act_move.c` is what earth travel,

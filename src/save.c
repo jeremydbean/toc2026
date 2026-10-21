@@ -1608,8 +1608,16 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
      * was never revisited, so a character who missed one -- everybody
      * who remorted into a guild, for instance -- stayed short of it for
      * good. This fills gaps only.
+     *
+     * Only for a character that was found. A new one has no class yet --
+     * class 0, which is mage -- and was given the mage groups here before
+     * choosing, so every warrior, thief and cleric made since 2026-09-19
+     * also held mage basics and mage default (Trentlin, a dwarf warrior,
+     * found himself casting refresh). Creation applies the real class's
+     * groups once it is chosen (CON_GET_ALIGNMENT).
      */
-    apply_class_and_guild_skills( ch );
+    if ( found )
+        apply_class_and_guild_skills( ch );
 
     /* The psionics a remort or a grant owes them: psionic_login(), at
        game entry, not here. */
