@@ -2,3 +2,36 @@
 1792614552	cmd	Trentlin	46	4210	dresden_halloween.are	sleeping	68	0	-	group		Trentlin's group:
 1792614562	cmd	Trentlin	46	4210	dresden_halloween.are	sleeping	68	0	-	who		[46 Dwarf   W/W   ] Trentlin the Master Warrior
 1792614682	session	Trentlin	46	4210	dresden_halloween.are	quit	180s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	4 commands	0 refused
+1792617840	refused	Trentlin	46	4210	dresden_halloween.are	sleeping	84	0	-	look		In your dreams, or what?
+1792617842	cmd	Trentlin	46	4210	dresden_halloween.are	sleeping	84	0	-	wake		You wake and stand up.
+1792617842	cmd	Trentlin	46	4203	dresden_halloween.are	standing	84	0	-	south		The Hall of Cobwebs
+1792617843	cmd	Trentlin	46	4202	dresden_halloween.are	standing	84	0	-	south		The Hall of Whispers
+1792617843	cmd	Trentlin	46	4201	dresden_halloween.are	standing	84	0	-	east		Entrance to the Haunted Temple
+1792617844	cmd	Trentlin	46	2427	dresden_halloween.are	standing	84	0	-	east		Main Processional, Below the Temple Steps
+1792617844	cmd	Trentlin	46	2404	dresden_halloween.are	standing	84	0	-	north		Southern Oak Tree Square.
+1792617844	cmd	Trentlin	46	2401	dresden_halloween.are	standing	84	0	-	north		Oak Tree Square on Hallows Eve
+1792617845	cmd	Trentlin	46	2401	dresden_halloween.are	standing	84	0	-	score		--------------------------------------------------------------
+1792617847	cmd	Trentlin	46	2401	dresden_halloween.are	standing	84	0	-	look		Oak Tree Square on Hallows Eve
+1792617848	cmd	Trentlin	46	2410	dresden_halloween.are	standing	84	0	-	up		Climbing the Oak Tree...
+1792617848	cmd	Trentlin	46	2411	dresden_halloween.are	standing	84	0	-	up		Up in the Oak Tree.
+1792617849	cmd	Trentlin	46	2414	dresden_halloween.are	standing	84	0	-	up		Top of the oak tree.
+1792617849	cmd	Trentlin	46	2497	dresden_halloween.are	standing	84	0	-	up		A sudden wind blows you from the tree!
+1792617849	cmd	Trentlin	46	2497	dresden_halloween.are	standing	84	0	-	up		Alas, you cannot go that way.
+1792617851	cmd	Trentlin	46	2497	dresden_halloween.are	standing	84	6	-	aquest	request	You approach Questor Thews and ask for a quest.
+1792617856	cmd	Trentlin	46	2401	dresden_halloween.are	standing	85	0	-	enter	door	You enter The Rescue Portal
+1792617873	cmd	Trentlin	46	2431	dresden_halloween.are	standing	85	0	-	run	s 6	Southern Oak Tree Square.
+1792617873	cmd	Trentlin	46	2431	dresden_halloween.are	standing	85	0	-	open	south	Ok.
+1792617873	cmd	Trentlin	46	3507	midennir_halloween.are	standing	85	0	-	run	s 3	Outside the Southern Gates of Dresden.
+1792617874	cmd	Trentlin	46	3508	midennir_halloween.are	standing	85	0	-	west		On a Small Path
+1792617874	cmd	Trentlin	46	3511	midennir_halloween.are	standing	85	0	-	south		The Trail
+1792617874	cmd	Trentlin	46	3511	midennir_halloween.are	standing	85	0	-	open	secret	You open a secret door.
+1792617874	cmd	Trentlin	46	20501	emerald.are	standing	85	0	-	west		==============================================================
+1792617875	cmd	Trentlin	46	20502	emerald.are	standing	85	0	-	up		The Haunted Pine Forest
+1792617875	cmd	Trentlin	46	20503	emerald.are	standing	85	0	-	up		Near the Summit
+1792617875	cmd	Trentlin	46	20504	emerald.are	standing	85	0	-	south		A Mountain Pass
+1792617875	cmd	Trentlin	46	20505	emerald.are	standing	85	0	-	south		A Mountain Pass
+1792617876	cmd	Trentlin	46	20506	emerald.are	standing	85	0	-	west		A Thickly-Wooded Dell
+1792617877	cmd	Trentlin	46	20506	emerald.are	standing	85	0	-	exits		Obvious exits:
+1792617879	cmd	Trentlin	46	20506	emerald.are	standing	85	0	-	scan		the mountain boogum                -to the East.
+1792617979	cmd	Trentlin	46	20506	emerald.are	standing	89	0	-	look		A Thickly-Wooded Dell
+1792617984	cmd	Trentlin	46	20509	emerald.are	standing	89	0	-	west		Road to the Vale of Clover
