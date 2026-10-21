@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792550990
+LogO 1792551158
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -16,19 +16,19 @@ PsiKnown ~
 ChangesSeen ~
 Fixes 20261021-mage-groups~
 Cast none
-Levl 45
-Plyd 41753
+Levl 46
+Plyd 41921
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 StashMax 75
 Scro 22
-Room 16058
-HMV  2691 4086 6803 6803 2190 2196
-NewGold 97
-NewPlat 40
-NewCopp 152
-NewSilv 128
+Room 4210
+HMV  4161 4161 6828 6828 2198 2202
+NewGold 46
+NewPlat 48
+NewCopp 25
+NewSilv 18
 BankCP 195750842
 IntTime 1792522812
 IntTotal 750842
@@ -37,8 +37,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 423
-AchQuests 25
+AchKills 425
+AchQuests 26
 AchDeaths 6
 AchExplore 1
 AchMaps 1
@@ -95,23 +95,24 @@ Achv visit-underdark 1792281756
 Achv visit-new-thalos 1791415830
 Achv visit-korzath-fortress 1792287816
 Achv visit-ice-keep 1792455929
-LastOut  1792550197
-Rested 0 0
+LastOut  1792551158
+Rested 0 1
 Daily 0 0 0 0 0
-SesLogin 1792550175
-SesDur   22
-SesExpG  0
-SesLvlG  0
-SesKill  0
+SesLogin 1792550304
+SesDur   854
+SesExpG  2077
+SesLvlG  1
+SesKill  9
 SesPK    0
 SesDead  0
-SesQuest 0
+SesQuest 1
 QuestPnts 1168
-QuestStrk 14
+QuestStrk 15
 CasinoLost 4
-Exp  103449
+QuestNext 14
+Exp  103676
 Act  65740
-AfBy 3678908
+AfBy 3678910
 AfBy2 4106
 Comm 24576
 Mounted 0
@@ -137,9 +138,8 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
-Prac 32
-Trai 2
+Pos  4
+Prac 6
 Save  -6
 Alig  -1000
 Hit   45
@@ -152,8 +152,8 @@ Titl  the Master Warrior~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 670 1172 364
-Cond 0 4 21
+HMVP 745 1197 370
+Cond 0 1 18
 Sk 100 'axe'
 Sk 89 'dagger'
 Sk 25 'flail'
@@ -183,49 +183,50 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'bless'   0  19  -4  24          0          0
-AffD 'bless'  40  19   4  18          0          0
-AffD 'armor'  30  19 -20  17          0          0
-AffD 'shield'   0  19 -20  17          0          0
-AffD 'stone skin'   0  19 -40  17          0          0
-AffD 'sanctuary'   0  19   0   0        128          0
-AffD 'haste'   0  19   4   2    2097152          0
-AffD 'fly'   0  19   0   0     524288          0
-AffD 'pass door'   0  19   0   0    1048576          0
-AffD 'protection evil'   0  19   0   0       8192          0
-AffD 'fire shield'   0  19   0   0          0          8
-AffD 'divine protection'   0  19   0   0          0       4096
-AffD 'giant strength'   0  19   4   1          0          0
-AffD 'frenzy'   0  19  11  18          0          0
-AffD 'frenzy'   0  19  11  19          0          0
-AffD 'frenzy'   0  19 110  17          0          0
-AffD 'detect invis'   0  19   0   0          8          0
-AffD 'detect hidden'   0  19   0   0         32          0
-AffD 'detect magic'   0  19   0   0         16          0
-AffD 'detect good'   0  19   0   0          0          2
-AffD 'detect evil'   0  19   0   0          4          0
-AffD 'power gloves'   0  19  42  19          0          0
-AffD 'shroud'   0  19 -35  17          0          0
-AffD 'empower'   0   4   0   0          0          0
-AffD 'sanctuary'   0  19   0   0        128          0
-AffD 'haste'   0  19   4   2    2097152          0
-AffD 'fly'   0  19   0   0     524288          0
-AffD 'pass door'   0  19   0   0    1048576          0
-AffD 'protection evil'   0  19   0   0       8192          0
-AffD 'fire shield'   0  19   0   0          0          8
-AffD 'divine protection'   0  19   0   0          0       4096
-AffD 'giant strength'   0  19  15   1          0          0
-AffD 'empower'   0   4  15   3          0          0
-AffD 'empower'  45   4  15   4          0          0
-AffD 'empower'  43   4  11   2          0          0
-AffD 'empower'  38   4  15   5          0          0
-AffD 'empower'  41   4  20  18          0          0
-AffD 'empower'   0   4  20  19          0          0
-AffD 'empower'   0   4 -100  17          0          0
-AffD 'titanic'   0   4 3380  13          0          0
-AffD 'titanic'   0   4 5625  12          0          0
-AffD 'titanic'   0   4 1820  14          0          0
-AffD 'titanic'  48   4  50  16          0          0
+AffD 'invis'  47  30   0   0          2          0
+AffD 'bless'   0  30  -4  24          0          0
+AffD 'bless'  39  30   4  18          0          0
+AffD 'armor'  29  30 -20  17          0          0
+AffD 'shield'   0  30 -20  17          0          0
+AffD 'stone skin'   0  30 -40  17          0          0
+AffD 'sanctuary'   0  30   0   0        128          0
+AffD 'haste'   0  30   4   2    2097152          0
+AffD 'fly'   0  30   0   0     524288          0
+AffD 'pass door'   0  30   0   0    1048576          0
+AffD 'protection evil'   0  30   0   0       8192          0
+AffD 'fire shield'   0  30   0   0          0          8
+AffD 'divine protection'   0  30   0   0          0       4096
+AffD 'giant strength'   0  30   4   1          0          0
+AffD 'frenzy'   0  30  11  18          0          0
+AffD 'frenzy'   0  30  11  19          0          0
+AffD 'frenzy'   0  30 110  17          0          0
+AffD 'detect invis'   0  30   0   0          8          0
+AffD 'detect hidden'   0  30   0   0         32          0
+AffD 'detect magic'   0  30   0   0         16          0
+AffD 'detect good'   0  30   0   0          0          2
+AffD 'detect evil'   0  30   0   0          4          0
+AffD 'power gloves'   0  30  42  19          0          0
+AffD 'shroud'   0  30 -35  17          0          0
+AffD 'empower'   0   1   0   0          0          0
+AffD 'sanctuary'   0  30   0   0        128          0
+AffD 'haste'   0  30   4   2    2097152          0
+AffD 'fly'   0  30   0   0     524288          0
+AffD 'pass door'   0  30   0   0    1048576          0
+AffD 'protection evil'   0  30   0   0       8192          0
+AffD 'fire shield'   0  30   0   0          0          8
+AffD 'divine protection'   0  30   0   0          0       4096
+AffD 'giant strength'   0  30  15   1          0          0
+AffD 'empower'   0   1  15   3          0          0
+AffD 'empower'  44   1  15   4          0          0
+AffD 'empower'  43   1  11   2          0          0
+AffD 'empower'  37   1  15   5          0          0
+AffD 'empower'  41   1  20  18          0          0
+AffD 'empower'   0   1  20  19          0          0
+AffD 'empower'   0   1 -100  17          0          0
+AffD 'titanic'   0   1 3380  13          0          0
+AffD 'titanic'   0   1 5625  12          0          0
+AffD 'titanic'   0   1 1820  14          0          0
+AffD 'titanic'  48   1  50  16          0          0
 End
 
 #O
@@ -274,7 +275,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 151
+Time 148
 Cost 0
 Cond 100
 Repd 0
@@ -326,7 +327,7 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 448
+Time 445
 Cost 0
 Cond 100
 Repd 0
@@ -361,7 +362,7 @@ Lev  14
 Cost 100000
 Cond 95
 Repd 0
-Val  0 0 9717 0 0
+Val  0 0 9714 0 0
 End
 
 #O
