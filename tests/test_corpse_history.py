@@ -88,6 +88,16 @@ class CorpseHistoryLiveTests(unittest.TestCase):
                 self.assertEqual(listing(), [(99, "Valid")])
                 self.assertIn("create", run(staff, "newcorpse zdeceased 1", 1.5))
 
+                # Slots past what the file holds, a huge number, and a
+                # record whose checksum is wrong build nothing.
+                for slot in ("2", "5", "99999999999999999999"):
+                    self.assertNotIn("create", run(staff, "newcorpse zdeceased " + slot, 1.2), slot)
+                bad = record(3).split()
+                bad[-2] = str(int(bad[-2]) + 1)
+                cps.write_text(" ".join(bad) + " -1 -1", encoding="latin-1")
+                self.assertEqual(listing(), [(3, "Invalid")])
+                self.assertIn("checksum is wrong", run(staff, "newcorpse zdeceased 1", 1.2))
+
                 # A file cut short: refused, and the game is still up.
                 cps.write_text("5 5 %d 5 " % SWORD, encoding="latin-1")
                 self.assertIn("damaged", run(staff, "newcorpse zdeceased", 1.5))

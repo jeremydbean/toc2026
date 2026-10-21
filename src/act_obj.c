@@ -638,14 +638,7 @@ int stash_count( CHAR_DATA *ch )
  */
 static void stash_maxload( OBJ_DATA *obj, int signval )
 {
-    OBJ_DATA *inner;
-
-    if ( obj->pIndexData != NULL && get_maxload_index( obj->pIndexData->vnum ) != NULL )
-        add_maxload_index( obj->pIndexData->vnum, signval, 0 );
-    for ( inner = obj->contains; inner != NULL; inner = inner->next_content )
-        if ( inner->pIndexData != NULL
-        &&   get_maxload_index( inner->pIndexData->vnum ) != NULL )
-            add_maxload_index( inner->pIndexData->vnum, signval, 0 );
+    maxload_subtree( obj, signval, true );
 }
 
 void stash_receive( CHAR_DATA *ch, OBJ_DATA *obj )
@@ -672,18 +665,14 @@ void stash_extract( CHAR_DATA *ch )
 
     for ( obj = ch->pcdata->stash; obj != NULL; obj = next )
     {
-        OBJ_DATA *inner;
-
         next = obj->next_content;
         obj->next_content = NULL;
         /* Leaving with its owner, as what they carry does: still owned.
            extract_obj counted it as gone from the world; extract_obj_player
            counts nothing for an item that sits nowhere, but adds one for
-           each item it takes out of a bag -- so take that one off first. */
-        for ( inner = obj->contains; inner != NULL; inner = inner->next_content )
-            if ( inner->pIndexData != NULL
-            &&   get_maxload_index( inner->pIndexData->vnum ) != NULL )
-                add_maxload_index( inner->pIndexData->vnum, -1, 0 );
+           each item it takes out of a bag, at any depth -- so take those
+           off first. */
+        maxload_subtree( obj, -1, false );
         extract_obj_player( obj );
     }
 

@@ -192,6 +192,7 @@ static void player_snapshot_internal( const char *name, bool force,
     char src[MAX_STRING_LENGTH];
     char vdir[MAX_STRING_LENGTH];
     char dest[MAX_STRING_LENGTH];
+    char partial[MAX_STRING_LENGTH];
     FILE *in, *out;
     time_t now = current_time;
     struct tm *tm_now;
@@ -311,8 +312,21 @@ static void player_snapshot_internal( const char *name, bool force,
         }
     }
 
-    /* Copy src -> dest byte-by-byte (avoids shell dependency) */
-    if ( ( out = fopen( dest, "wb" ) ) == NULL )
+    /*
+     * Copy src -> a partial file, then rename it into place. Written
+     * straight to its final name, a copy the process died in the middle
+     * of stayed behind, named like any snapshot, and PRESTORE would put
+     * it over a good live file; a retry the same second then took it as
+     * done (audit, 2026-10-21). The partial name starts with a dot, so
+     * neither PRESTORE's list nor the rotation below ever matches it.
+     */
+    if ( !snapshot_join_path( partial, sizeof(partial), vdir, ".partial" ) )
+    {
+        fclose( in );
+        bug( "player_snapshot: partial path too long", 0 );
+        return;
+    }
+    if ( ( out = fopen( partial, "wb" ) ) == NULL )
     {
         fclose( in );
         bug( "player_snapshot: fopen dest failed", 0 );
@@ -333,8 +347,14 @@ static void player_snapshot_internal( const char *name, bool force,
         copy_failed = true;
     if ( copy_failed )
     {
-        remove( dest );
+        remove( partial );
         bug( "player_snapshot: snapshot copy failed", 0 );
+        return;
+    }
+    if ( rename( partial, dest ) != 0 )
+    {
+        remove( partial );
+        bug( "player_snapshot: could not publish the snapshot", 0 );
         return;
     }
 

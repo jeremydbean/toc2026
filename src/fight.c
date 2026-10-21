@@ -5946,11 +5946,11 @@ void do_shoot( CHAR_DATA *ch, char *argument )
 
     if(number_percent () < chance)
     {
+      ROOM_INDEX_DATA *target_room = victim->in_room;
+
       if(victim->position < POS_STANDING)
 	victim->position = POS_STANDING;
 
-      victim->hit -= dice(2,4);
-      update_pos(victim);
       check_improve( ch, gsn_archery, true, 4 );
 
       if(number_percent () > 25)
@@ -5963,17 +5963,21 @@ void do_shoot( CHAR_DATA *ch, char *argument )
 
       act("$n has been shot by an arrow!",victim,NULL,NULL,TO_ROOM);
 
-      if (victim->position == POS_DEAD)
-      {
-          if ( is_hyrule_ganon(victim) )
-          {
-              reform_hyrule_ganon( ch, victim );
-              return;
-          }
-          group_gain(ch, victim);
-          raw_kill(ch, victim);
+      /*
+       * Through damage(), as every other blow is: this subtracted 2d4
+       * from the hit points by hand, so piercing immunity, sanctuary and
+       * the rest never applied, and nor did the dummy's, the goblin's or
+       * Ganon's own rules (audit, 2026-10-21). dt is the skill, so no
+       * parry or dodge turns an arrow from another room. damage() sets
+       * both sides fighting; they are not in one room, so that is undone.
+       */
+      damage( ch, victim, dice(2,4), gsn_archery, DAM_PIERCE );
+      if ( gone_after_blow( victim, target_room ) )
           return;
-      }
+      if ( ch->fighting == victim )
+          stop_fighting( ch, false );
+      if ( victim->fighting == ch )
+          stop_fighting( victim, false );
 
       /* A sentinel holds its post: a shot used to pull guild guards, and
 	 the training dummy, out of where they stand. */

@@ -8727,7 +8727,8 @@ void do_newcorpse( CHAR_DATA *ch, char *argument )
 
     if( is_number( arg2 ) )
     {
-	number = atoi( arg2 );
+	/* A long string of digits is out of range, not an atoi overflow. */
+	number = strlen( arg2 ) > 2 ? -1 : atoi( arg2 );
 	--number;
 
 	if( number < 0 || number >= CORPSE_HISTORY_ROWS )
@@ -8739,6 +8740,21 @@ void do_newcorpse( CHAR_DATA *ch, char *argument )
 	if( number >= held )
 	{
 	    send_to_char( "They don't have that many corpses.\n\r",ch);
+	    return;
+	}
+
+	/* The listing marks a record Invalid when its checksums do not
+	   add up; rebuild nothing from one (audit, 2026-10-21). */
+	checksum1 = 0;
+	checksum2 = 0;
+	for( c = 1; c < corpse_cont[number][0]+1; c++ )
+	{
+	    checksum1 += corpse_cont[number][c];
+	    checksum2 += item_level[number][c];
+	}
+	if ( checksum1 != corpse_cont[number][c] || checksum2 != item_level[number][c] )
+	{
+	    send_to_char( "That corpse record is damaged (its checksum is wrong); nothing was made.\n\r", ch );
 	    return;
 	}
 
@@ -10536,6 +10552,51 @@ void do_activity( CHAR_DATA *ch, char *argument )
  * online (into the live stash, saved at once) or offline (a loaded
  * copy, saved and freed).
  */
+/*
+ * Whether a snapshot is a whole player file: save_char_obj ends every one
+ * with "#END". A copy cut short -- a crash while a snapshot was being
+ * written -- must never replace a good live file (audit, 2026-10-21).
+ */
+static bool prestore_snapshot_complete( const char *path )
+{
+    char tail[64];
+    FILE *fp;
+    long size;
+    size_t got;
+
+    if ( ( fp = fopen( path, "rb" ) ) == NULL )
+        return false;
+    if ( fseek( fp, 0, SEEK_END ) != 0 || ( size = ftell( fp ) ) < 0 )
+    {
+        fclose( fp );
+        return false;
+    }
+    if ( fseek( fp, size > (long) sizeof(tail) - 1 ? size - (long) sizeof(tail) + 1 : 0,
+                SEEK_SET ) != 0 )
+    {
+        fclose( fp );
+        return false;
+    }
+    got = fread( tail, 1, sizeof(tail) - 1, fp );
+    fclose( fp );
+    tail[got] = '\0';
+    return strstr( tail, "#END" ) != NULL;
+}
+
+/* A name a player could have: 2 to 12 letters, as offline_player_load
+   demands, before it is used in a path. */
+static bool prestore_name_ok( const char *name )
+{
+    size_t i, len = strlen( name );
+
+    if ( len < 2 || len > 12 )
+        return false;
+    for ( i = 0; i < len; i++ )
+        if ( !isalpha( (unsigned char) name[i] ) )
+            return false;
+    return true;
+}
+
 static void prestore_stash( CHAR_DATA *ch, const char *capname,
                             const char *srcpath, const char *version )
 {
@@ -10660,6 +10721,11 @@ void do_prestore( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    if ( !prestore_name_ok( arg1 ) )
+    {
+        send_to_char( "That is not a player's name.\n\r", ch );
+        return;
+    }
     toc_strlcpy( capname, capitalize( arg1 ), sizeof(capname) );
     snprintf( vdir, sizeof(vdir), "%s%s", PLAYER_VER_DIR, capname );
 
@@ -10855,12 +10921,53 @@ void do_prestore( CHAR_DATA *ch, char *argument )
                   PLAYER_DIR, capname );
         snprintf( tmppath, sizeof(tmppath), "%s.restore.tmp", dstpath );
 
-        /* If the player is online, save and disconnect first */
-        found_online = 0;
-        victim = get_char_world( ch, capname );
-        if ( victim != NULL && !IS_NPC( victim )
-        &&   !str_cmp( victim->name, capname ) )
+        /* Nothing is disturbed for a snapshot that is not whole. */
+        if ( !prestore_snapshot_complete( srcpath ) )
         {
+            send_to_char( "That snapshot is incomplete (no #END); the live file is unchanged.\n\r", ch );
+            return;
+        }
+
+        /*
+         * Who they are, whether anyone can see them or not. This asked
+         * get_char_world, which goes by sight: a wizinvis or melded target,
+         * or one at the password prompt, read as offline, so no rank check
+         * ran, and the copy still in the game saved over the restore
+         * (audit, 2026-10-21). An offline target is rank-checked from a
+         * loaded copy, as the STASH form always was.
+         */
+        found_online = 0;
+        {
+            bool logging_in = false;
+
+            victim = player_in_game( capname, &logging_in );
+            if ( victim != NULL && logging_in )
+            {
+                send_to_char( "They are logging in; try again in a moment.\n\r", ch );
+                return;
+            }
+            if ( victim == NULL )
+            {
+                DESCRIPTOR_DATA offline_desc;
+                CHAR_DATA *loaded = offline_player_load( &offline_desc, capname, NULL );
+
+                if ( loaded != NULL )
+                {
+                    bool refused = rank_protects( ch, loaded );
+
+                    extract_char( loaded, true );
+                    if ( refused )
+                    {
+                        send_to_char( "You failed.\n\r", ch );
+                        return;
+                    }
+                }
+            }
+        }
+        if ( victim != NULL )
+        {
+            DESCRIPTOR_DATA *d_next;
+
             if ( victim == ch )
             {
                 send_to_char( "You cannot prestore yourself.\n\r", ch );
@@ -10875,19 +10982,16 @@ void do_prestore( CHAR_DATA *ch, char *argument )
 
             found_online = 1;
             save_char_obj( victim );
-            if ( victim->desc != NULL )
+            send_to_char(
+                "An immortal is restoring your character to an earlier state.\n\r"
+                "Please reconnect.\n\r", victim );
+            /* Their own descriptor, or one switched into a mobile:
+               close_socket puts a switched one back in its body. */
+            for ( d = descriptor_list; d != NULL; d = d_next )
             {
-                send_to_char(
-                    "An immortal is restoring your character to an earlier state.\n\r"
-                    "Please reconnect.\n\r", victim );
-                for ( d = descriptor_list; d != NULL; d = d->next )
-                {
-                    if ( d == victim->desc )
-                    {
-                        close_socket( d );
-                        break;
-                    }
-                }
+                d_next = d->next;
+                if ( d->character == victim || d->original == victim )
+                    close_socket( d );
             }
             /* Extract the link-dead character so reconnection loads the
                restored file rather than reattaching to in-memory state. */

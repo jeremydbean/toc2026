@@ -1798,8 +1798,6 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
  */
 void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
 {
-    OBJ_DATA *obj1;
-
     /* ITEM_INVENTORY is a shopkeeper's endless stock, and make_corpse
        destroys it -- right for a shopkeeper, who must not drop his
        shelves, and wrong for a player. Hyrule's shop items, the Azeroth
@@ -1818,20 +1816,8 @@ void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
     ch->carry_number    += get_obj_number( obj );
     ch->carry_weight    += get_obj_weight( obj );
 /* Blackbird:  update maxloadfile in case of player */
-    if (!IS_NPC(ch)) {
-       if ((obj->pIndexData != NULL) &&
-           (get_maxload_index(obj->pIndexData->vnum) != NULL)) {
-              add_maxload_index( obj->pIndexData->vnum, +1, 0);
-       }
-       for (obj1 = obj->contains;
-            obj1 != NULL;
-            obj1 = obj1 -> next_content)
-       { if ((obj1->pIndexData != NULL) &&
-            (get_maxload_index(obj1->pIndexData->vnum) != NULL))
-         {  add_maxload_index( obj1->pIndexData->vnum, +1, 0);
-         }
-       }
-    }
+    if (!IS_NPC(ch))
+        maxload_subtree( obj, +1, true );
 
     if (!IS_NPC(ch) && obj->pIndexData != NULL)
         achievement_record_object(ch, obj->pIndexData->vnum,
@@ -1847,7 +1833,6 @@ void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
 void obj_from_char( OBJ_DATA *obj )
 {
     CHAR_DATA *ch;
-    OBJ_DATA *obj1;
 
 
     if ( ( ch = obj->carried_by ) == NULL )
@@ -1885,20 +1870,8 @@ void obj_from_char( OBJ_DATA *obj )
     ch->carry_number    -= get_obj_number( obj );
     ch->carry_weight    -= get_obj_weight( obj );
 /* Update max_load_file (Blackbird) */
-    if (!IS_NPC(ch)) {
-       if ((obj->pIndexData != NULL) &&
-           (get_maxload_index(obj->pIndexData->vnum) != NULL)) {
-              add_maxload_index( obj->pIndexData->vnum, -1, 0);
-       }
-       for (obj1 = obj->contains;
-            obj1 != NULL;
-            obj1 = obj1 -> next_content)
-       { if ((obj1->pIndexData != NULL) &&
-            (get_maxload_index(obj1->pIndexData->vnum) != NULL))
-         {  add_maxload_index( obj1->pIndexData->vnum, -1, 0);
-         }
-       }
-    }
+    if (!IS_NPC(ch))
+        maxload_subtree( obj, -1, true );
     return;
 }
 
@@ -2297,6 +2270,26 @@ void obj_to_room( OBJ_DATA *obj, ROOM_INDEX_DATA *pRoomIndex )
 
 
 /*
+ * Count a whole object tree into (+1) or out of (-1) what players own,
+ * for every limited item in it (maxload.c). Every change of hands takes
+ * the whole tree: the four transfer functions counted an object and at
+ * most its immediate contents, so a bag holding a limited item, put into
+ * another carried bag, left the item counted as back in the world --
+ * maxload.txt then undercounted it, and after a reboot a reset loaded
+ * another (audit, 2026-10-21). `self` false counts the contents only.
+ */
+void maxload_subtree( OBJ_DATA *obj, int signval, bool self )
+{
+    OBJ_DATA *inner;
+
+    if ( self && obj->pIndexData != NULL
+    &&   get_maxload_index( obj->pIndexData->vnum ) != NULL )
+        add_maxload_index( obj->pIndexData->vnum, signval, 0 );
+    for ( inner = obj->contains; inner != NULL; inner = inner->next_content )
+        maxload_subtree( inner, signval, true );
+}
+
+/*
  * Move an object into an object.
  */
 void obj_to_obj( OBJ_DATA *obj, OBJ_DATA *obj_to )
@@ -2314,11 +2307,8 @@ void obj_to_obj( OBJ_DATA *obj, OBJ_DATA *obj_to )
 	if ( obj_to->carried_by != NULL )
 	{
 /* Blackbird: Update maxloadfile */
-            if ((obj->pIndexData != NULL) &&
-                (get_maxload_index(obj->pIndexData->vnum) != NULL) &&
-                !IS_NPC(obj_to->carried_by) ) {
-                add_maxload_index( obj->pIndexData->vnum, +1, 0);
-            }
+            if ( !IS_NPC(obj_to->carried_by) )
+                maxload_subtree( obj, +1, true );
 	    obj_to->carried_by->carry_number += get_obj_number( obj );
 	    obj_to->carried_by->carry_weight += get_obj_weight( obj );
 	}
@@ -2374,11 +2364,8 @@ void obj_from_obj( OBJ_DATA *obj )
 	if ( obj_from->carried_by != NULL )
 	{
 /* Blackbird: Update maxloadfile */
-            if ((obj->pIndexData != NULL) &&
-                (get_maxload_index(obj->pIndexData->vnum) != NULL) &&
-                !IS_NPC(obj_from->carried_by) ) {
-                add_maxload_index( obj->pIndexData->vnum, -1, 0);
-            }
+            if ( !IS_NPC(obj_from->carried_by) )
+                maxload_subtree( obj, -1, true );
 	    obj_from->carried_by->carry_number -= get_obj_number( obj );
 	    obj_from->carried_by->carry_weight -= get_obj_weight( obj );
 	}
