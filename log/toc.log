@@ -146935,3 +146935,169 @@ Wed Oct 21 02:44:45 2026 :: Log Trentlin [16071]: disarm
 Wed Oct 21 02:44:57 2026 :: Log Trentlin [16071]: disarm
 Wed Oct 21 02:45:07 2026 :: Log Trentlin [16071]: disarm
 Wed Oct 21 02:45:16 2026 :: Log Trentlin [16071]: disarm
+Wed Oct 21 02:45:25 2026 :: Log Trentlin [16071]: get a
+Wed Oct 21 02:45:26 2026 :: Log Trentlin [16071]: wear a
+Wed Oct 21 02:45:26 2026 :: Log Trentlin [16071]: smite
+Wed Oct 21 02:45:36 2026 :: Log Trentlin [16071]: smite
+Wed Oct 21 02:45:42 2026 :: Log Trentlin [16071]: killed The First Mate
+Wed Oct 21 02:45:42 2026 :: Log Trentlin [16071]: coin +3 platinum
+Wed Oct 21 02:45:42 2026 :: Log Trentlin [16071]: coin +15 silver
+Wed Oct 21 02:45:42 2026 :: Log Trentlin [16071]: coin +20 copper
+Wed Oct 21 02:45:42 2026 :: Log Trentlin [16071]: coin +8 gold
+Wed Oct 21 02:45:46 2026 :: Log Trentlin [16071]: smite
+Wed Oct 21 02:45:48 2026 :: Log Trentlin [16071]: l in cor
+Wed Oct 21 02:45:52 2026 :: Log Trentlin [16071]: get dir cor
+Wed Oct 21 02:45:54 2026 :: Log Trentlin [16071]: get glo cor
+Wed Oct 21 02:45:57 2026 :: Log Trentlin [16071]: compare glo
+Wed Oct 21 02:46:00 2026 :: Log Trentlin [16071]: drop glo
+Wed Oct 21 02:46:02 2026 :: Log Trentlin [16071]: compare dir
+Wed Oct 21 02:46:04 2026 :: Log Trentlin [16071]: drop dir
+Wed Oct 21 02:46:05 2026 :: Log Trentlin [16071]: n
+Wed Oct 21 02:46:05 2026 :: Log Trentlin [16068]: arrived (Below Deck - Port) from 16071
+Wed Oct 21 02:46:06 2026 :: Log Trentlin [16068]: e
+Wed Oct 21 02:46:06 2026 :: Log Trentlin [16069]: arrived (Below Deck) from 16068
+Wed Oct 21 02:46:07 2026 :: Log Trentlin [16069]: s
+Wed Oct 21 02:46:07 2026 :: Log Trentlin [16072]: arrived (Captain's Quarters) from 16069
+Wed Oct 21 02:46:09 2026 :: Log Trentlin [16072]: l log
+Wed Oct 21 02:46:11 2026 :: Log Trentlin [16072]: l in log
+Wed Oct 21 02:46:13 2026 :: Log Trentlin [16072]: open log
+Wed Oct 21 02:46:18 2026 :: Log Trentlin [16072]: unlock log
+Wed Oct 21 02:46:20 2026 :: Log Trentlin [16072]: n
+Wed Oct 21 02:46:20 2026 :: Log Trentlin [16069]: arrived (Below Deck) from 16072
+Wed Oct 21 02:46:22 2026 :: Log Trentlin [16069]: u
+Wed Oct 21 02:46:22 2026 :: Log Trentlin [16018]: arrived (Main Deck of the Royal Eagle) from 16069
+Wed Oct 21 02:46:24 2026 :: Log Trentlin [16018]: n
+Wed Oct 21 02:46:24 2026 :: Log Trentlin [16023]: arrived (Main Deck) from 16018
+Wed Oct 21 02:46:25 2026 :: Log Trentlin [16023]: n
+Wed Oct 21 02:46:25 2026 :: Log Trentlin [16028]: arrived (Main Deck) from 16023
+Wed Oct 21 02:46:26 2026 :: Log Trentlin [16028]: n
+Wed Oct 21 02:46:26 2026 :: Log Trentlin [16033]: arrived (Base of the Mast) from 16028
+Wed Oct 21 02:46:28 2026 :: Log Trentlin [16033]: u
+Wed Oct 21 02:46:28 2026 :: Log Trentlin [16078]: arrived (The Mast) from 16033
+Wed Oct 21 02:46:29 2026 :: Log Trentlin [16078]: sca
+Wed Oct 21 02:46:31 2026 :: Log Trentlin [16078]: e
+Wed Oct 21 02:46:31 2026 :: Log Trentlin [16079]: arrived (Out on the Mast) from 16078
+Wed Oct 21 02:46:32 2026 :: Log Trentlin [16079]: k swas
+Wed Oct 21 02:46:35 2026 :: Log Trentlin [16079]: smite
+Wed Oct 21 02:47:09 2026 :: Log Trentlin [16079]: smite
+Wed Oct 21 02:47:22 2026 :: Log Trentlin [16079]: smite
+Wed Oct 21 02:47:36 2026 :: Log Trentlin [16079]: smite
+Wed Oct 21 02:47:51 2026 :: Log Trentlin [16079]: killed The swashbuckler
+Wed Oct 21 02:47:51 2026 :: Log Trentlin [16079]: coin +1 platinum
+Wed Oct 21 02:47:51 2026 :: Log Trentlin [16079]: coin +6 silver
+Wed Oct 21 02:47:51 2026 :: Log Trentlin [16079]: coin +8 copper
+Wed Oct 21 02:47:51 2026 :: Log Trentlin [16079]: coin +3 gold
+Wed Oct 21 02:47:53 2026 :: Sock.sinaddr:  5.161.194.92
+Wed Oct 21 02:47:53 2026 :: EOF encountered on read.
+Wed Oct 21 02:48:09 2026 :: Log Trentlin [16079]: sca
+Wed Oct 21 02:48:11 2026 :: Log Trentlin [16079]: l
+Wed Oct 21 02:48:11 2026 :: Log Trentlin [16079]: w
+Wed Oct 21 02:48:11 2026 :: Log Trentlin [16078]: arrived (The Mast) from 16079
+Wed Oct 21 02:48:12 2026 :: Log Trentlin [16078]: sca
+Wed Oct 21 02:48:13 2026 :: Log Trentlin [16078]: u
+Wed Oct 21 02:48:13 2026 :: Log Trentlin [16081]: arrived (The Mast) from 16078
+Wed Oct 21 02:48:14 2026 :: Log Trentlin [16081]: sca
+Wed Oct 21 02:48:15 2026 :: Log Trentlin [16081]: w
+Wed Oct 21 02:48:15 2026 :: Log Trentlin [16080]: arrived (Out on the Mast) from 16081
+Wed Oct 21 02:48:16 2026 :: Log Trentlin [16080]: k swas
+Wed Oct 21 02:48:20 2026 :: Log Trentlin [16080]: smite
+Wed Oct 21 02:48:26 2026 :: Log Trentlin [16080]: sk
+Wed Oct 21 02:48:28 2026 :: Log Trentlin [16080]: smite
+Wed Oct 21 02:48:36 2026 :: Log Trentlin [16080]: killed The swashbuckler
+Wed Oct 21 02:48:36 2026 :: Log Trentlin [16080]: coin +1 platinum
+Wed Oct 21 02:48:36 2026 :: Log Trentlin [16080]: coin +6 silver
+Wed Oct 21 02:48:36 2026 :: Log Trentlin [16080]: coin +8 copper
+Wed Oct 21 02:48:36 2026 :: Log Trentlin [16080]: coin +3 gold
+Wed Oct 21 02:48:40 2026 :: Log Trentlin [16080]: smite
+Wed Oct 21 02:48:40 2026 :: Log Trentlin [16080]: u
+Wed Oct 21 02:48:41 2026 :: Log Trentlin [16080]: e
+Wed Oct 21 02:48:41 2026 :: Log Trentlin [16081]: arrived (The Mast) from 16080
+Wed Oct 21 02:48:43 2026 :: Log Trentlin [16081]: u
+Wed Oct 21 02:48:43 2026 :: Log Trentlin [16083]: arrived (Crow's Nest) from 16081
+Wed Oct 21 02:48:44 2026 :: Log Trentlin [16083]: l l
+Wed Oct 21 02:48:46 2026 :: Log Trentlin [16083]: con l
+Wed Oct 21 02:48:47 2026 :: Log Trentlin [16083]: d
+Wed Oct 21 02:48:47 2026 :: Log Trentlin [16081]: arrived (The Mast) from 16083
+Wed Oct 21 02:48:48 2026 :: Log Trentlin [16081]: d
+Wed Oct 21 02:48:48 2026 :: Log Trentlin [16078]: arrived (The Mast) from 16081
+Wed Oct 21 02:48:48 2026 :: Log Trentlin [16078]: d
+Wed Oct 21 02:48:48 2026 :: Log Trentlin [16033]: arrived (Base of the Mast) from 16078
+Wed Oct 21 02:48:50 2026 :: Log Trentlin [16033]: n
+Wed Oct 21 02:48:50 2026 :: Log Trentlin [16038]: arrived (Main Deck) from 16033
+Wed Oct 21 02:48:51 2026 :: Log Trentlin [16038]: sca
+Wed Oct 21 02:48:52 2026 :: Log Trentlin [16038]: k swa
+Wed Oct 21 02:48:55 2026 :: Log Trentlin [16038]: smite
+Wed Oct 21 02:49:22 2026 :: Log Trentlin [16038]: smite
+Wed Oct 21 02:49:27 2026 :: Log Trentlin [16038]: killed The swashbuckler
+Wed Oct 21 02:49:27 2026 :: Log Trentlin [16038]: coin +1 platinum
+Wed Oct 21 02:49:27 2026 :: Log Trentlin [16038]: coin +6 silver
+Wed Oct 21 02:49:27 2026 :: Log Trentlin [16038]: coin +8 copper
+Wed Oct 21 02:49:27 2026 :: Log Trentlin [16038]: coin +3 gold
+Wed Oct 21 02:49:31 2026 :: Log Trentlin [16038]: smite
+Wed Oct 21 02:49:31 2026 :: Log Trentlin [16038]: l
+Wed Oct 21 02:49:32 2026 :: Log Trentlin [16038]: sca
+Wed Oct 21 02:49:34 2026 :: Log Trentlin [16038]: n
+Wed Oct 21 02:49:34 2026 :: Log Trentlin [16043]: arrived (Main Deck) from 16038
+Wed Oct 21 02:49:35 2026 :: Log Trentlin [16043]: sca
+Wed Oct 21 02:49:36 2026 :: Log Trentlin [16043]: n
+Wed Oct 21 02:49:36 2026 :: Log Trentlin [16047]: arrived (Bow of the Royal Eagle) from 16043
+Wed Oct 21 02:49:39 2026 :: Log Trentlin [16047]: d
+Wed Oct 21 02:49:39 2026 :: Log Trentlin [16053]: arrived (Stairs to the Main Deck) from 16047
+Wed Oct 21 02:49:41 2026 :: Log Trentlin [16053]: s
+Wed Oct 21 02:49:41 2026 :: Log Trentlin [16054]: arrived (Below Deck) from 16053
+Wed Oct 21 02:49:43 2026 :: Log Trentlin [16054]: s
+Wed Oct 21 02:49:43 2026 :: Log Trentlin [16057]: arrived (An Intersection Below Deck) from 16054
+Wed Oct 21 02:49:44 2026 :: Log Trentlin [16057]: e
+Wed Oct 21 02:49:44 2026 :: Log Trentlin [16058]: arrived (Sleeping Quarters) from 16057
+Wed Oct 21 02:49:46 2026 :: Log Trentlin [16058]: l r
+Wed Oct 21 02:49:48 2026 :: Log Trentlin [16058]: con r
+Wed Oct 21 02:49:49 2026 :: Log Trentlin [16058]: l ra
+Wed Oct 21 02:49:49 2026 :: Log Trentlin [16058]: con ra
+Wed Oct 21 02:49:51 2026 :: Log Trentlin [16058]: l p
+Wed Oct 21 02:49:52 2026 :: Log Trentlin [16058]: (refused) cpm [
+Wed Oct 21 02:49:53 2026 :: Log Trentlin [16058]: s
+Wed Oct 21 02:49:53 2026 :: Log Trentlin [16061]: arrived (Sleeping Quarters) from 16058
+Wed Oct 21 02:49:54 2026 :: Log Trentlin [16061]: s
+Wed Oct 21 02:49:54 2026 :: Log Trentlin [16064]: arrived (Sleeping Quarters) from 16061
+Wed Oct 21 02:49:55 2026 :: Log Trentlin [16064]: s
+Wed Oct 21 02:49:55 2026 :: Log Trentlin [16067]: arrived (Sleeping Quarters) from 16064
+Wed Oct 21 02:49:57 2026 :: Log Trentlin [16067]: n
+Wed Oct 21 02:49:57 2026 :: Log Trentlin [16064]: arrived (Sleeping Quarters) from 16067
+Wed Oct 21 02:49:57 2026 :: Log Trentlin [16064]: n
+Wed Oct 21 02:49:57 2026 :: Log Trentlin [16061]: arrived (Sleeping Quarters) from 16064
+Wed Oct 21 02:49:57 2026 :: Log Trentlin [16061]: n
+Wed Oct 21 02:49:57 2026 :: Log Trentlin [16058]: arrived (Sleeping Quarters) from 16061
+Wed Oct 21 02:49:57 2026 :: Log Trentlin [16058]: n
+Wed Oct 21 02:49:58 2026 :: Log Trentlin [16058]: w
+Wed Oct 21 02:49:58 2026 :: Log Trentlin [16057]: arrived (An Intersection Below Deck) from 16058
+Wed Oct 21 02:49:58 2026 :: Log Trentlin [16057]: w
+Wed Oct 21 02:49:58 2026 :: Log Trentlin [16056]: arrived (Sleeping Quarters) from 16057
+Wed Oct 21 02:49:59 2026 :: Log Trentlin [16056]: s
+Wed Oct 21 02:49:59 2026 :: Log Trentlin [16059]: arrived (Sleeping Quarters) from 16056
+Wed Oct 21 02:50:00 2026 :: Log Trentlin [16059]: s
+Wed Oct 21 02:50:00 2026 :: Log Trentlin [16062]: arrived (Sleeping Quarters) from 16059
+Wed Oct 21 02:50:00 2026 :: Log Trentlin [16062]: s
+Wed Oct 21 02:50:00 2026 :: Log Trentlin [16065]: arrived (Storeroom) from 16062
+Wed Oct 21 02:50:02 2026 :: Log Trentlin [16065]: e
+Wed Oct 21 02:50:02 2026 :: Log Trentlin [16066]: arrived (Storeroom) from 16065
+Wed Oct 21 02:50:05 2026 :: Log Trentlin [16066]: w
+Wed Oct 21 02:50:05 2026 :: Log Trentlin [16065]: arrived (Storeroom) from 16066
+Wed Oct 21 02:50:06 2026 :: Log Trentlin [16065]: (refused) nn
+Wed Oct 21 02:50:06 2026 :: Log Trentlin [16065]: (refused) nn
+Wed Oct 21 02:50:07 2026 :: Log Trentlin [16065]: n
+Wed Oct 21 02:50:07 2026 :: Log Trentlin [16062]: arrived (Sleeping Quarters) from 16065
+Wed Oct 21 02:50:07 2026 :: Log Trentlin [16062]: n
+Wed Oct 21 02:50:07 2026 :: Log Trentlin [16059]: arrived (Sleeping Quarters) from 16062
+Wed Oct 21 02:50:08 2026 :: Log Trentlin [16059]: n
+Wed Oct 21 02:50:08 2026 :: Log Trentlin [16056]: arrived (Sleeping Quarters) from 16059
+Wed Oct 21 02:50:08 2026 :: Log Trentlin [16056]: n
+Wed Oct 21 02:50:08 2026 :: Log Trentlin [16056]: e
+Wed Oct 21 02:50:08 2026 :: Log Trentlin [16057]: arrived (An Intersection Below Deck) from 16056
+Wed Oct 21 02:50:09 2026 :: Log Trentlin [16057]: s
+Wed Oct 21 02:50:09 2026 :: Log Trentlin [16060]: arrived (Below Deck) from 16057
+Wed Oct 21 02:50:09 2026 :: Log Trentlin [16060]: s
+Wed Oct 21 02:50:09 2026 :: Log Trentlin [16063]: arrived (The Kitchen) from 16060
+Wed Oct 21 02:50:11 2026 :: Log Trentlin [16063]: con c
+Wed Oct 21 02:50:12 2026 :: Log Trentlin [16063]: l c
+Wed Oct 21 02:50:13 2026 :: Log Trentlin [16063]: k co
+Wed Oct 21 02:50:23 2026 :: Log Trentlin [16063]: smite
