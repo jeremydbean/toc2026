@@ -145131,3 +145131,65 @@ Wed Oct 21 00:10:20 2026 :: EOF encountered on read.
 Wed Oct 21 00:12:02 2026 :: Treasure goblin: vanished from room 9235 (Elemental Bay, canyon.are) (too long in one area).
 Wed Oct 21 00:15:24 2026 :: Sock.sinaddr:  5.161.117.52
 Wed Oct 21 00:15:25 2026 :: EOF encountered on read.
+Wed Oct 21 00:19:09 2026 :: Sock.sinaddr:  208.126.22.104
+Wed Oct 21 00:19:16 2026 :: Loading Alaric's playerfile
+Wed Oct 21 00:19:17 2026 :: Alaric@208.126.22.104 has connected.
+Wed Oct 21 00:19:18 2026 :: Log Alaric [29209]: arrived (Twist in the Maze) from 0
+Wed Oct 21 00:19:20 2026 :: Log Alaric [29209]: changes
+Wed Oct 21 00:19:27 2026 :: Log Alaric [29209]: scan
+Wed Oct 21 00:19:30 2026 :: Log Alaric [29209]: n
+Wed Oct 21 00:19:30 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 29209
+Wed Oct 21 00:19:31 2026 :: Log Alaric [29210]: bs sk
+Wed Oct 21 00:19:37 2026 :: Log Alaric [29210]: killed an Animated Skeleton
+Wed Oct 21 00:19:37 2026 :: Log Alaric [29210]: coin +4 platinum
+Wed Oct 21 00:19:37 2026 :: Log Alaric [29210]: coin +20 silver
+Wed Oct 21 00:19:37 2026 :: Log Alaric [29210]: coin +27 copper
+Wed Oct 21 00:19:37 2026 :: Log Alaric [29210]: coin +11 gold
+Wed Oct 21 00:19:46 2026 :: Log Alaric [29210]: bs mad
+Wed Oct 21 00:20:18 2026 :: Log Alaric [29210]: dirt
+Wed Oct 21 00:20:29 2026 :: Sock.sinaddr:  5.161.73.160
+Wed Oct 21 00:20:29 2026 :: EOF encountered on read.
+Wed Oct 21 00:20:34 2026 :: Log Alaric [29210]: killed a deranged madman
+Wed Oct 21 00:20:34 2026 :: Log Alaric [29210]: coin +5 platinum
+Wed Oct 21 00:20:34 2026 :: Log Alaric [29210]: coin +23 silver
+Wed Oct 21 00:20:34 2026 :: Log Alaric [29210]: coin +31 copper
+Wed Oct 21 00:20:34 2026 :: Log Alaric [29210]: coin +13 gold
+Wed Oct 21 00:21:08 2026 :: Log Alaric [29210]: l
+Wed Oct 21 00:21:09 2026 :: Log Alaric [29210]: (refused) scna
+Wed Oct 21 00:21:09 2026 :: Log Alaric [29210]: scan
+Wed Oct 21 00:21:12 2026 :: Log Alaric [29210]: w
+Wed Oct 21 00:21:12 2026 :: Log Alaric [29211]: arrived (Twist in the Maze) from 29210
+Wed Oct 21 00:21:12 2026 :: Log Alaric [29211]: bs sk
+Wed Oct 21 00:21:33 2026 :: Log Alaric [29211]: n
+Wed Oct 21 00:21:33 2026 :: Log Alaric [29212]: arrived (Twist in the Maze) from 29211
+Wed Oct 21 00:21:34 2026 :: Log Alaric [29212]: kill sk
+Wed Oct 21 00:21:34 2026 :: Log Alaric [29212]: killed an Animated Skeleton
+Wed Oct 21 00:21:34 2026 :: Log Alaric [29212]: coin +4 platinum
+Wed Oct 21 00:21:34 2026 :: Log Alaric [29212]: coin +20 silver
+Wed Oct 21 00:21:34 2026 :: Log Alaric [29212]: coin +27 copper
+Wed Oct 21 00:21:34 2026 :: Log Alaric [29212]: coin +11 gold
+Wed Oct 21 00:22:04 2026 :: Log Alaric [29212]: get just
+Wed Oct 21 00:22:04 2026 :: Log Alaric [29212]: wear just
+Wed Oct 21 00:22:07 2026 :: Treasure goblin: vanished from room 2203 (Hallway, draconia.are) (too long in one area).
+Wed Oct 21 00:22:08 2026 :: Log Alaric [29212]: get exc
+Wed Oct 21 00:22:10 2026 :: Log Alaric [29212]: wear exc
+Wed Oct 21 00:22:19 2026 :: Log Alaric [29212]: who
+Wed Oct 21 00:22:22 2026 :: Log Alaric [29212]: dirt
+Wed Oct 21 00:22:28 2026 :: Log Alaric [29212]: killed a Shadowman
+Wed Oct 21 00:22:28 2026 :: Log Alaric [29212]: coin +6 platinum
+Wed Oct 21 00:22:28 2026 :: Log Alaric [29212]: coin +30 silver
+Wed Oct 21 00:22:28 2026 :: Log Alaric [29212]: coin +41 copper
+Wed Oct 21 00:22:28 2026 :: Log Alaric [29212]: coin +17 gold
+Wed Oct 21 00:22:36 2026 :: Log Alaric [29212]: s
+Wed Oct 21 00:22:37 2026 :: Log Alaric [29212]: e
+Wed Oct 21 00:23:06 2026 :: Log Alaric [29212]: l
+Wed Oct 21 00:23:07 2026 :: Log Alaric [29212]: get just
+Wed Oct 21 00:23:08 2026 :: Log Alaric [29212]: wear just
+Wed Oct 21 00:23:28 2026 :: Log Alaric [29212]: killed an insane lieutenant
+Wed Oct 21 00:23:28 2026 :: Log Alaric [29212]: coin +8 platinum
+Wed Oct 21 00:23:28 2026 :: Log Alaric [29212]: coin +38 silver
+Wed Oct 21 00:23:28 2026 :: Log Alaric [29212]: coin +51 copper
+Wed Oct 21 00:23:28 2026 :: Log Alaric [29212]: coin +21 gold
+Wed Oct 21 00:23:30 2026 :: Log Alaric [29212]: bs mad
+Wed Oct 21 00:23:40 2026 :: Log Alaric [29212]: get exc
+Wed Oct 21 00:23:55 2026 :: Log Alaric [29212]: l
