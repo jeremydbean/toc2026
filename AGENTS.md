@@ -2451,7 +2451,15 @@ root, both stripping addresses from what they print:
   vnum is gone, and login fixes not yet applied. It exits 1 on any
   finding but a pending fix. The creation bug that handed every new
   character the mage's groups would have shown here weeks before a
-  player asked about it in chat.
+  player asked about it in chat. Only files named 2-12 letters are
+  characters; `Kyrus.Bu` and the like are hand-kept copies.
+- `python3 tools/audit_maxload.py` -- each limited object's player-owned
+  count in `area/maxload.txt` against the copies the player files hold
+  at every depth, stash included. Read-only; it exits 1 when any count
+  differs. On 2026-10-21 all twelve differed slightly (the shallow
+  counting fixed that day), every one far below its cap; correcting the
+  totals is the owner's decision and would have to be done on the host,
+  since the state sync carries maxload.txt host to git.
 
 A routine runs both each morning in a fresh cloud session and reports
 without changing anything. `tests/test_ops_tools.py` holds the table

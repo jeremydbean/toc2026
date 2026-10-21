@@ -111,10 +111,16 @@ def group_members(groups: dict, name: str, seen: set | None = None) -> set:
 
 # ----------------------------------------------------------------- players
 
+# A character's file is named for them: 2 to 12 letters, capitalised.
+# Kyrus.Bu, Bugtest.deleted and Misery2 are copies somebody kept by hand,
+# not characters the game loads, and were audited (and counted) as such.
+CHARACTER_FILE = re.compile(r"[A-Z][a-z]{1,11}")
+
+
 def player_files(ref: str | None, directory: str | None):
     if directory:
         for path in sorted(Path(directory).iterdir()):
-            if path.is_file() and path.name[:1].isupper():
+            if path.is_file() and CHARACTER_FILE.fullmatch(path.name):
                 yield path.name, path.read_text(encoding="latin-1", errors="replace")
         return
     listing = subprocess.run(["git", "ls-tree", ref, "player/"], cwd=ROOT,
@@ -124,7 +130,7 @@ def player_files(ref: str | None, directory: str | None):
         if meta.split()[1] != "blob":
             continue
         base = name.split("/", 1)[1]
-        if not base[:1].isupper():
+        if not CHARACTER_FILE.fullmatch(base):
             continue
         text = subprocess.run(["git", "show", f"{ref}:{name}"], cwd=ROOT,
                               capture_output=True, check=True).stdout.decode("latin-1", "replace")

@@ -1,4 +1,5 @@
-"""The review tools: tools/audit_players.py and tools/log_report.py.
+"""The review tools: tools/audit_players.py, tools/audit_maxload.py and
+tools/log_report.py.
 
 Both read the game's own tables and the synced logs, so these hold the
 parts that could quietly stop working: that the tables still parse, that
@@ -69,6 +70,33 @@ class AuditTests(unittest.TestCase):
         text = PLAYER.replace("Alig  -1000", "Alig  1005").replace("Prac 8", "Prac -3")
         kinds = {f["kind"] for f in self.audit.audit_one("Ztest", text, self.tables, None)}
         self.assertTrue({"alignment", "counts"} <= kinds)
+
+
+class MaxloadAuditTests(unittest.TestCase):
+    def test_counts_every_depth_and_skips_copies(self) -> None:
+        import tempfile
+
+        tool = load("audit_maxload")
+        record = "#O\nVnum %d\nNest %d\nWear -1\nEnd\n\n"
+        with tempfile.TemporaryDirectory() as tmp:
+            players = pathlib.Path(tmp) / "player"
+            players.mkdir()
+            # A bag holding a bag holding the limited item, and one stashed.
+            (players / "Zhoarder").write_text(
+                "#PLAYER\nName Zhoarder~\nEnd\n\n" + record % (3032, 0)
+                + record % (3032, 1) + record % (3715, 2)
+                + "#STASH\n" + record % (3715, 0) + "#END\n")
+            # A hand-kept copy is not a character.
+            (players / "Zhoarder.Bu").write_text(record % (3715, 0))
+            maxload = pathlib.Path(tmp) / "maxload.txt"
+            maxload.write_text("ML 3715 2 3000\nML 911 1 2100\n$\n")
+            counted = {}
+            for name, text in tool.player_files(None, str(players)):
+                counted[name] = tool.held(text, {3715, 911})
+            self.assertEqual(list(counted), ["Zhoarder"])
+            self.assertEqual(counted["Zhoarder"][3715], 2)
+            self.assertEqual(tool.read_maxload(None, str(maxload)),
+                             {3715: (2, 3000), 911: (1, 2100)})
 
 
 class LogReportTests(unittest.TestCase):
