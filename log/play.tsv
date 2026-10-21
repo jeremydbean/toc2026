@@ -2017,3 +2017,91 @@
 1792623450	cmd	Trentlin	49	903	olympus.are	standing	100	0	-	up		Mountain
 1792623451	cmd	Trentlin	49	904	olympus.are	standing	100	0	-	north		Entrance
 1792623453	cmd	Trentlin	49	905	olympus.are	standing	100	0	-	north		Zeus Street
+1792623454	cmd	Trentlin	49	924	olympus.are	standing	100	0	-	west		Bakery
+1792623456	cmd	Trentlin	49	924	olympus.are	standing	100	0	-	list		[Lv Price] Item
+1792623456	cmd	Trentlin	49	905	olympus.are	standing	100	0	-	east		Zeus Street
+1792623457	cmd	Trentlin	49	906	olympus.are	standing	100	0	-	north		Zeus Street
+1792623458	cmd	Trentlin	49	926	olympus.are	standing	100	0	-	west		Residence
+1792623460	cmd	Trentlin	49	906	olympus.are	standing	100	0	-	east		Zeus Street
+1792623460	cmd	Trentlin	49	925	olympus.are	standing	100	0	-	east		Residence
+1792623462	cmd	Trentlin	49	925	olympus.are	standing	100	0	-	consider	at	Athena laughs at you mercilessly.
+1792623463	cmd	Trentlin	49	925	olympus.are	standing	100	0	-	look	at	Zeus' favorite daughter is sitting on a couch eating grapes.  She smiles at
+1792623463	cmd	Trentlin	49	906	olympus.are	standing	100	0	-	west		Zeus Street
+1792623463	cmd	Trentlin	49	926	olympus.are	standing	100	0	-	west		Residence
+1792623464	cmd	Trentlin	49	926	olympus.are	standing	100	0	-	consider	ap	You can kill an apprentice musician naked and weaponless.
+1792623465	cmd	Trentlin	49	926	olympus.are	standing	100	0	-	look	ap	This man has mastered his first profession, and is now studying music from the
+1792623466	cmd	Trentlin	49	926	olympus.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792623467	cmd	Trentlin	49	926	olympus.are	standing	100	0	-	consider	app	You can kill an apprentice musician naked and weaponless.
+1792623470	cmd	Trentlin	49	926	olympus.are	standing	100	0	-	look	apollo	This jovial God is strumming on a lyre.  He smiles at you and asks you to
+1792623472	cmd	Trentlin	49	906	olympus.are	standing	100	0	-	east		Zeus Street
+1792623472	cmd	Trentlin	49	907	olympus.are	standing	100	0	-	north		Zeus Street
+1792623473	cmd	Trentlin	49	927	olympus.are	standing	100	0	-	west		Mystic Shop
+1792623476	cmd	Trentlin	49	927	olympus.are	standing	100	0	-	list		You can't do that here.
+1792623477	cmd	Trentlin	49	907	olympus.are	standing	100	0	-	east		Zeus Street
+1792623478	cmd	Trentlin	49	908	olympus.are	standing	100	0	-	north		Zeus Street
+1792623479	cmd	Trentlin	49	928	olympus.are	standing	100	0	-	east		Ares Street
+1792623480	cmd	Trentlin	49	934	olympus.are	standing	100	0	-	east		Ares Street
+1792623481	cmd	Trentlin	49	935	olympus.are	standing	100	0	-	south		Armory
+1792623483	cmd	Trentlin	49	935	olympus.are	standing	100	0	-	list		You can't do that here.
+1792623485	cmd	Trentlin	49	935	olympus.are	standing	100	0	-	consider	sa	You can kill Samuel the Armourer naked and weaponless.
+1792623485	cmd	Trentlin	49	935	olympus.are	standing	100	0	-	look	sa	Samuel looks just like Clive the Weapons Master: VERY big and VERY tough.
+1792623486	cmd	Trentlin	49	934	olympus.are	standing	100	0	-	north		Ares Street
+1792623487	cmd	Trentlin	49	937	olympus.are	standing	100	0	-	north		Smithy
+1792623488	cmd	Trentlin	49	938	olympus.are	standing	100	0	-	west		The Planning Room
+1792623491	cmd	Trentlin	49	938	olympus.are	fighting	99	0	fight	consider	are	Death will thank you for your gift.
+1792623492	cmd	Trentlin	49	938	olympus.are	fighting	99	0	fight	flee		PANIC! You couldn't escape!
+1792623493	cmd	Trentlin	49	954	olympus.are	fighting	99	0	fight	flee		The Believer
+1792623495	cmd	Trentlin	49	938	olympus.are	standing	99	0	-	south		The Planning Room
+1792623495	cmd	Trentlin	49	937	olympus.are	standing	99	0	-	east		Smithy
+1792623499	cmd	Trentlin	49	937	olympus.are	standing	99	0	-	consider	he	Hephaestus laughs at you mercilessly.
+1792623499	cmd	Trentlin	49	937	olympus.are	standing	99	0	-	look	he	This God is the only one who is not physically perfect.  He is lame and very
+1792623500	cmd	Trentlin	49	934	olympus.are	standing	99	0	-	south		Ares Street
+1792623501	cmd	Trentlin	49	936	olympus.are	standing	99	0	-	east		Weapon Shop
+1792623502	cmd	Trentlin	49	936	olympus.are	standing	99	0	-	scan		A citizen                          -to the West.
+1792623503	cmd	Trentlin	49	936	olympus.are	standing	99	0	-	list		You can't do that here.
+1792623504	cmd	Trentlin	49	934	olympus.are	standing	99	0	-	west		Ares Street
+1792623504	cmd	Trentlin	49	928	olympus.are	standing	99	0	-	west		Ares Street
+1792623505	cmd	Trentlin	49	908	olympus.are	standing	99	0	-	west		Zeus Street
+1792623506	cmd	Trentlin	49	908	olympus.are	standing	99	0	-	west		Alas, you cannot go that way.
+1792623506	cmd	Trentlin	49	909	olympus.are	standing	99	0	-	north		Castle Entryway
+1792623508	cmd	Trentlin	49	909	olympus.are	standing	99	0	-	exits		Obvious exits:
+1792623509	cmd	Trentlin	49	915	olympus.are	standing	99	0	-	east		Eastern Wing
+1792623510	cmd	Trentlin	49	916	olympus.are	standing	99	0	-	east		Eastern Wing
+1792623511	cmd	Trentlin	49	917	olympus.are	standing	99	0	-	north		Eastern Wing
+1792623511	cmd	Trentlin	49	933	olympus.are	standing	99	0	-	north		Stable
+1792623513	cmd	Trentlin	49	933	olympus.are	standing	99	0	-	get	all	You get The Sceptre of Gravestone.
+1792623514	cmd	Trentlin	49	4207	dresden_halloween.are	standing	99	0	-	recall		Before the Shrouded Altar
+1792623515	cmd	Trentlin	49	4202	dresden_halloween.are	standing	99	0	-	east		The Hall of Whispers
+1792623515	cmd	Trentlin	49	4201	dresden_halloween.are	standing	99	0	-	east		Entrance to the Haunted Temple
+1792623516	cmd	Trentlin	49	2427	dresden_halloween.are	standing	99	0	-	east		Main Processional, Below the Temple Steps
+1792623516	cmd	Trentlin	49	2427	dresden_halloween.are	standing	99	0	-	east		Alas, you cannot go that way.
+1792623517	cmd	Trentlin	49	2404	dresden_halloween.are	standing	99	0	-	north		Southern Oak Tree Square.
+1792623517	cmd	Trentlin	49	2401	dresden_halloween.are	standing	99	0	-	north		Oak Tree Square on Hallows Eve
+1792623517	cmd	Trentlin	49	2410	dresden_halloween.are	standing	99	0	-	up		Climbing the Oak Tree...
+1792623518	cmd	Trentlin	49	2411	dresden_halloween.are	standing	99	0	-	up		Up in the Oak Tree.
+1792623518	cmd	Trentlin	49	2414	dresden_halloween.are	standing	99	0	-	up		Top of the oak tree.
+1792623518	cmd	Trentlin	49	2497	dresden_halloween.are	standing	99	0	-	up		A sudden wind blows you from the tree!
+1792623520	cmd	Trentlin	49	2497	dresden_halloween.are	standing	99	1	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792623523	cmd	Trentlin	49	2497	dresden_halloween.are	standing	99	0	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 126 quest points! **
+1792623526	cmd	Trentlin	49	2497	dresden_halloween.are	standing	99	0	-	aquest	points	Quest Points: 1503
+1792623527	cmd	Trentlin	49	4207	dresden_halloween.are	standing	99	0	-	recall		Before the Shrouded Altar
+1792623528	cmd	Trentlin	49	4208	dresden_halloween.are	standing	99	0	-	west		The Shrouded Altar of Devota
+1792623530	cmd	Trentlin	49	4208	dresden_halloween.are	standing	99	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792623532	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	aquest	list	You can't do that here.
+1792623533	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792623533	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792623534	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792623534	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792623534	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792623534	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792623535	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792623535	cmd	Trentlin	49	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792623535	cmd	Trentlin	49	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792623535	cmd	Trentlin	49	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792623536	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792623536	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	aquest	list	You ask Questor Thews for a list of quest items.
+1792623550	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	help	remort	REMORT
+1792623645	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	help	herolevels	HEROLEVELS HEROLEVEL HERO HEROES 'HERO LEVELS'
+1792623670	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	help	heroquest	HEROQUEST
+1792623705	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	help	herolevels	HEROLEVELS HEROLEVEL HERO HEROES 'HERO LEVELS'
+1792623712	session	Trentlin	49	2497	dresden_halloween.are	quit	2745s	+0 levels	+24 exp	+55861505 copper	18 kills	0 deaths	3 quests	1350 commands	6 refused
