@@ -1817,7 +1817,7 @@ void spell_demonfire(int sn, int level, CHAR_DATA *ch, void *vo)
 	send_to_char("The demons turn upon you!\n\r",ch);
     }
 
-    alignment_shift( ch, -50 );
+    alignment_shift( ch, -50, true );
 
     if (victim != ch)
     {
@@ -2705,7 +2705,7 @@ void spell_energy_drain( int sn, int level, CHAR_DATA *ch, void *vo )
 	return;
     }
 
-    alignment_shift( ch, -50 );
+    alignment_shift( ch, -50, true );
     if ( victim->level <= 2 )
     {
 	dam		 = ch->hit + 1;

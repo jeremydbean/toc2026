@@ -1327,7 +1327,7 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
 	    if ( dam > 0 )
 		ch->hit = UMIN( ch->max_hit, ch->hit + dam/20 );
 	    if ( !IS_NPC(ch) )
-		alignment_shift( ch, -1 );
+		alignment_shift( ch, -1, false );   /* quietly: every hit */
 	}
 
 	/* Sharp: frequent, modest.  Vorpal: rare, spiky. */
@@ -3441,9 +3441,6 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
 
     for ( gch = ch->in_room->people; gch != NULL; gch = gch->next_in_room )
     {
-	OBJ_DATA *obj;
-	OBJ_DATA *obj_next;
-
 	if ( !is_same_group( gch, ch ) || IS_NPC(gch))
 	    continue;
 
@@ -3478,20 +3475,8 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
 	    gain_exp( gch, xp + rested );
 	}
 
-	for ( obj = gch->carrying; obj != NULL; obj = obj_next )
-	{
-	    obj_next = obj->next_content;
-	    if ( obj->wear_loc == WEAR_NONE )
-		continue;
-
-	    if ( alignment_rejects_obj( gch, obj ) )
-	    {
-		act( "You are zapped by $p.", gch, obj, NULL, TO_CHAR );
-		act( "$n is zapped by $p.",   gch, obj, NULL, TO_ROOM );
-		obj_from_char( obj );
-		obj_to_room( obj, gch->in_room );
-	    }
-	}
+	/* The kill may have carried them across a line (alignment.c). */
+	alignment_check_gear( gch );
     }
 
     return;

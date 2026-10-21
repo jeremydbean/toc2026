@@ -571,6 +571,7 @@ struct  descriptor_data
     sh_int              gmcp_last_level;
     sh_int              gmcp_last_class;
     sh_int              gmcp_last_race;
+    sh_int              gmcp_last_alignment;
     int                 gmcp_last_room;
     uint32_t            gmcp_last_affect_hash;
     uint32_t            gmcp_last_quest_hash;
@@ -910,7 +911,8 @@ int   rest_xp_bonus    args( ( CHAR_DATA *ch, int xp ) );
 int   alignment_tier         args( ( int alignment ) );
 const char *alignment_tier_name args( ( int alignment ) );
 int   alignment_side         args( ( int alignment ) );
-void  alignment_shift        args( ( CHAR_DATA *ch, int delta ) );
+void  alignment_shift        args( ( CHAR_DATA *ch, int delta, bool loud ) );
+void  alignment_check_gear   args( ( CHAR_DATA *ch ) );
 void  alignment_kill         args( ( CHAR_DATA *gch, CHAR_DATA *victim ) );
 int   alignment_xp_percent   args( ( CHAR_DATA *gch, CHAR_DATA *victim ) );
 int   alignment_damage_mod   args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dam_type ) );

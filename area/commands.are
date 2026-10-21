@@ -6953,8 +6953,9 @@ What it gives (more for each tier further from the middle):
   - Balanced: holy and negative damage against you -15%.
   - Experience: +10% a tier for slaying the other side (balanced: +10%
     for slaying either).  No kill ever pays less for its alignment.
-  - Shops: a keeper of your side charges 10% less and pays 10% more; one
-    of the other side the reverse.  Neutral keepers, balanced customers
+  - Shops: a keeper of your side charges up to 10% less (never below
+    what the thing is worth); one of the other side charges 10% more and
+    pays 10% less for what you sell.  Neutral keepers, balanced customers
     and the black market trade at the list price.
   - Gear: an item marked anti-good, anti-evil or anti-neutral will not be
     worn by that side, and zaps off if you cross over while wearing it.

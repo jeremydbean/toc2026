@@ -24,8 +24,8 @@
  *    drains life with its blows and strikes harder with negative power,
  *    the balanced shrug off a share of both. Slaying the other side pays
  *    more experience; nothing pays less (the old table halved a kill for
- *    choosing the wrong victim). Shopkeepers of your side charge a tenth
- *    less and pay a tenth more; those of the other side the reverse.
+ *    choosing the wrong victim). Shopkeepers of your side charge up to a
+ *    tenth less; those of the other side a tenth more, and pay a tenth less.
  *  - Gear limits stay, and say which tier they turn away.
  *
  * Perks are for players. Mobiles keep their alignment for what it always
@@ -85,11 +85,37 @@ static int tier_floor( int tier )
 }
 
 /*
- * Every change to a player's alignment goes through here: it clamps, says
- * the small moves to anyone with DAMAGENUMBERS on, and says a change of
- * tier to everyone, because a tier is what the change is for.
+ * Worn gear that will not stay on this side comes off, as it always has
+ * after a kill -- now also after a DEVOTE, a quest or a dark spell.
  */
-void alignment_shift( CHAR_DATA *ch, int delta )
+void alignment_check_gear( CHAR_DATA *ch )
+{
+    OBJ_DATA *obj, *obj_next;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->in_room == NULL )
+        return;
+    for ( obj = ch->carrying; obj != NULL; obj = obj_next )
+    {
+        obj_next = obj->next_content;
+        if ( obj->wear_loc == WEAR_NONE || !alignment_rejects_obj( ch, obj ) )
+            continue;
+        act( "You are zapped by $p.", ch, obj, NULL, TO_CHAR );
+        act( "$n is zapped by $p.",   ch, obj, NULL, TO_ROOM );
+        obj_from_char( obj );
+        obj_to_room( obj, ch->in_room );
+    }
+}
+
+/*
+ * Every change to a player's alignment goes through here: it clamps, says
+ * a change of tier to everyone, because a tier is what the change is for,
+ * and -- when loud -- says the small moves to anyone with DAMAGENUMBERS on
+ * and takes off gear that will not stay on the new side. A vampiric weapon
+ * moves its wielder a point a hit and is quiet: one line a swing was
+ * spam, and zapping the weapon mid-swing would pull it out from under the
+ * blow it is landing. The next kill's check catches up.
+ */
+void alignment_shift( CHAR_DATA *ch, int delta, bool loud )
 {
     char buf[MAX_STRING_LENGTH];
     int was, now;
@@ -104,7 +130,7 @@ void alignment_shift( CHAR_DATA *ch, int delta )
     if ( IS_NPC(ch) )
         return;
 
-    if ( IS_SET(ch->act, PLR_DAMAGE_NUMBERS) )
+    if ( loud && IS_SET(ch->act, PLR_DAMAGE_NUMBERS) )
     {
         snprintf( buf, sizeof(buf), "Your alignment has %s by %d.\n\r",
                   now > was ? "risen" : "lowered",
@@ -120,6 +146,8 @@ void alignment_shift( CHAR_DATA *ch, int delta )
         watch_log( ch, "alignment %d -> %d (%s)", was, now,
                    alignment_tier_name( now ) );
     }
+    if ( loud && alignment_side( now ) != alignment_side( was ) )
+        alignment_check_gear( ch );
 }
 
 /* A slain mobile of a side moves the slayer toward the other side. */
@@ -138,7 +166,7 @@ void alignment_kill( CHAR_DATA *gch, CHAR_DATA *victim )
         return;
     if ( gap >= 8 )
         amount = ( amount + 1 ) / 2;
-    alignment_shift( gch, victim->alignment < 0 ? amount : -amount );
+    alignment_shift( gch, victim->alignment < 0 ? amount : -amount, true );
 }
 
 /* Experience for a kill, in percent. Never below a hundred. */
@@ -186,13 +214,21 @@ int alignment_damage_mod( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dam_typ
 
 /* The dark's weapon blows give back a share of what they take. Called
    only where hit points really came off, so the training dummy, which
-   absorbs every blow, feeds nobody. */
+   absorbs every blow, feeds nobody. Only what the victim had counts --
+   a killing blow of 500 on a foe with 20 left took 20 -- and never the
+   treasure goblin, whose "damage" is a share of his health set by the
+   chase, not by the blow. */
 void alignment_drain( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
 {
     int tier, heal;
 
-    if ( ch == NULL || IS_NPC(ch) || ch == victim || dam <= 0 || dt < TYPE_HIT
-    ||   ch->hit >= ch->max_hit )
+    if ( ch == NULL || IS_NPC(ch) || victim == NULL || ch == victim
+    ||   dam <= 0 || dt < TYPE_HIT || ch->hit >= ch->max_hit
+    ||   is_treasure_goblin( victim ) )
+        return;
+    if ( victim->hit < 0 )
+        dam += victim->hit;     /* hit points were already taken off */
+    if ( dam <= 0 )
         return;
     tier = alignment_tier( ch->alignment );
     if ( tier >= 0 )
@@ -215,15 +251,25 @@ int alignment_regen( CHAR_DATA *ch, int gain )
     return gain;
 }
 
-/* A shopkeeper of your side charges a tenth less and pays a tenth more;
-   one of the other side the reverse. Neutral keepers and balanced buyers
-   trade at the list price, and the black market never haggles. */
+/*
+ * A shopkeeper of your side charges a tenth less, never below what the
+ * thing is worth; one of the other side charges a tenth more and pays a
+ * tenth less. Nobody pays you more than list: no shop buys anything back
+ * for more than its worth (the highest buyback in the world is 100), so
+ * as long as nobody sells below worth either, no loop of buying at one
+ * shop and selling at another can turn a profit. The first draft paid a
+ * tenth more to your own side too, and that opened thousands of them.
+ * Neutral keepers and balanced customers trade at the list price, and
+ * the black market never haggles.
+ */
 long alignment_price( CHAR_DATA *ch, CHAR_DATA *keeper, long cost, bool fBuy )
 {
     int ours, theirs;
-    long share;
+    long share, worth;
+    int markup;
 
     if ( cost <= 0 || ch == NULL || IS_NPC(ch) || keeper == NULL
+    ||   keeper->pIndexData == NULL || keeper->pIndexData->pShop == NULL
     ||   is_black_market_dealer( keeper ) )
         return cost;
     ours = alignment_side( ch->alignment );
@@ -231,9 +277,17 @@ long alignment_price( CHAR_DATA *ch, CHAR_DATA *keeper, long cost, bool fBuy )
     if ( ours == 0 || theirs == 0 )
         return cost;
     share = cost / ALIGN_PRICE_SHARE;
-    if ( ( ours == theirs ) == fBuy )
-        return cost - share;
-    return cost + share;
+    if ( !fBuy )
+        return ours == theirs ? cost : cost - share;
+    if ( ours != theirs )
+        return cost + share;
+    /* What it is worth: the list price without the shop's markup, rounded
+       up so a copper of rounding cannot open a loop either. */
+    markup = keeper->pIndexData->pShop->profit_buy;
+    worth = markup > 100
+        ? cost / markup * 100 + ( cost % markup * 100 + markup - 1 ) / markup
+        : cost;
+    return UMIN( cost, UMAX( cost - share, worth ) );
 }
 
 bool alignment_rejects_obj( CHAR_DATA *ch, OBJ_DATA *obj )
@@ -276,7 +330,7 @@ void alignment_quest_kill( CHAR_DATA *ch, MOB_INDEX_DATA *pMob )
         return;
     send_to_char( side > 0 ? "Your hunt serves the light.\n\r"
                            : "Your hunt serves the dark.\n\r", ch );
-    alignment_shift( ch, side * ALIGN_QUEST_SHIFT );
+    alignment_shift( ch, side * ALIGN_QUEST_SHIFT, true );
 }
 
 /* ------------------------------------------------------------- commands */
@@ -376,9 +430,8 @@ void do_alignment( CHAR_DATA *ch, char *argument )
     send_to_char( "What it gives you:\n\r", ch );
     alignment_perks( ch, buf, sizeof(buf) );
     send_to_char( buf, ch );
-    send_to_char( "  Shopkeepers of your side charge 10% less and pay 10% more;\n\r"
-                  "  those of the other side the reverse. Neutral ones do neither.\n\r",
-                  ch );
+    send_to_char( "  Shopkeepers of your side charge up to 10% less; those of the\n\r"
+                  "  other side charge 10% more and pay 10% less.\n\r", ch );
 
     send_to_char( "What moves it:\n\r"
                   "  Slaying the evil raises it and slaying the good lowers it, more\n\r"
@@ -490,7 +543,7 @@ void do_devote( CHAR_DATA *ch, char *argument )
         act( "$n kneels before the altar in silence.", ch, NULL, NULL, TO_ROOM );
     }
 
-    alignment_shift( ch, delta );
+    alignment_shift( ch, delta, true );
     ch->pcdata->align_deed_at = (long) current_time + ALIGN_DEED_COOLDOWN;
     snprintf( buf, sizeof(buf), "You are %s (alignment %d).\n\r",
               alignment_tier_name( ch->alignment ), ch->alignment );

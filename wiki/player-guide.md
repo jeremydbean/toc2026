@@ -412,7 +412,8 @@ regenerates hit points faster and deals more holy damage; the dark's weapon
 blows drain a little life and its negative damage hits harder; the balanced
 take less holy and negative damage. Slaying the other side pays 10% more
 experience per tier, and no kill ever pays less. Shopkeepers of your side
-charge 10% less and pay 10% more, and those of the other side the reverse.
+charge up to 10% less (never below what an item is worth); those of the other
+side charge 10% more and pay 10% less for what you sell.
 Gear marked anti-good, anti-evil or anti-neutral still refuses that side;
 `identify` says who may wear it. Type `alignment` to see your tier, how far
 the next one is, what it gives you and when you may next devote.

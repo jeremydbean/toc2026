@@ -11,7 +11,8 @@ power, the dark drains life with its blows, the balanced shrug off holy
 and negative damage. You are what you slay: the evil move you toward the
 light, the good toward the dark, the neutral not at all. Slaying the other
 side pays more experience, shopkeepers favour their own side, and DEVOTE
-at the Temple steers you on purpose. Type ALIGNMENT to see where you stand.
+at the Temple steers you on purpose. Type ALIGNMENT to see where you stand;
+the Mudlet package (1.5.7) shows your tier beside your class.
 
 @ 20261021f 2026-10-21
 Alignment is no longer stuck at -1000 or 1000: slaying the other side

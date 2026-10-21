@@ -23,8 +23,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   negative damage, the balanced a ward against both. The experience table
   -- which paid as little as a quarter of a kill and had two branches it
   could not reach -- is now 100% plus 10% a tier for slaying the other
-  side. Shopkeepers of your side charge a tenth less and pay a tenth more;
-  of the other side the reverse. Gear checks share one helper, and WEAR,
+  side. Shopkeepers of your side charge up to a tenth less, never below
+  an item's worth; those of the other side charge a tenth more and pay a
+  tenth less. (A first draft also paid your own side a tenth more, which
+  let a buy at one shop and a sale at another turn a profit; no shop buys
+  back above worth, so with nobody selling below it there is no loop.)
+  Gear that will not follow you comes off after a DEVOTE, a quest or a
+  dark spell as it does after a kill; a vampiric weapon's point a hit is
+  quiet; the dark's drain counts only hit points the victim had and never
+  the treasure goblin's share-of-health blows. GMCP `Char.Status` carries
+  `alignment` and `tier`, and the Mudlet package (1.5.7) shows the tier. Gear checks share one helper, and WEAR,
   IDENTIFY and COMPARE say which side an item is for. `tests/test_alignment.py`.
 
 - **Login fixes** (`src/fixes.c`; owner, 2026-10-21): the standard way to

@@ -27,7 +27,9 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 PASSWORD = "Zalign1pass"
 FIELD = 4202            # east of the Temple: not safe
 TEMPLE = 4207
-GERBIL = 14001          # sentinel, and not a school monster (those are NOALIGN)
+SUB_SWORD = 3702        # the newbie sword, made 20d20 by the warden
+SILVER_PLATE = 631      # anti-evil body armour, ofcol.are
+WORKER = 12002          # sentinel, not wimpy, not a school monster (NOALIGN)
 
 
 def source(name: str) -> str:
@@ -100,7 +102,7 @@ class AlignmentSourceTests(unittest.TestCase):
 
     def test_the_ends_are_not_traps(self) -> None:
         kill = body("alignment.c", "void alignment_kill(")
-        self.assertIn("alignment_shift( gch, victim->alignment < 0 ? amount : -amount );", kill)
+        self.assertIn("alignment_shift( gch, victim->alignment < 0 ? amount : -amount, true );", kill)
         self.assertIn("alignment_side( victim->alignment ) == 0", kill,
                       "the neutral move nothing")
 
@@ -126,7 +128,60 @@ class AlignmentSourceTests(unittest.TestCase):
         self.assertEqual((calls, wrapped), (5, 5), "every shop price goes through alignment_price")
         price = body("alignment.c", "long alignment_price(")
         self.assertIn("is_black_market_dealer( keeper )", price, "the dealer never haggles")
-        self.assertIn("if ( ( ours == theirs ) == fBuy )\n        return cost - share;", price)
+        self.assertIn("return ours == theirs ? cost : cost - share;", price,
+                      "nobody is paid above list for what they sell")
+        self.assertIn("return UMIN( cost, UMAX( cost - share, worth ) );", price)
+
+    def test_no_shop_loop(self) -> None:
+        """Buying at one shop and selling at another can never profit: no
+        shop buys back above an item's worth, and the discount never sells
+        below it. The first draft paid a keeper's own side a tenth more,
+        which opened thousands of such loops."""
+        buybacks = []
+        listed = set((ROOT / "area" / "area.lst").read_text().split())
+        for path in (ROOT / "area").glob("*.are"):
+            if path.name not in listed:
+                continue
+            text = path.read_text(encoding="latin-1")
+            if "#SHOPS" not in text:
+                continue
+            for line in text.split("#SHOPS", 1)[1].splitlines()[1:]:
+                tokens = line.split(";")[0].split()
+                if not tokens:
+                    continue
+                if tokens[0] == "0":
+                    break
+                buybacks.append((int(tokens[7]), path.name, tokens[0]))
+        self.assertGreater(len(buybacks), 100)
+        self.assertLessEqual(max(buybacks)[0], 100, max(buybacks))
+        # The discount's floor, mirrored, never goes below worth.
+        for worth in range(1, 4000):
+            for markup in (101, 105, 110, 120, 150, 170, 250):
+                cost = worth * markup // 100
+                if cost <= 0:
+                    continue
+                floor = cost // markup * 100 + (cost % markup * 100 + markup - 1) // markup
+                self.assertGreaterEqual(min(cost, max(cost - cost // 10, floor)), worth)
+
+    def test_quiet_shifts_and_drain_guards(self) -> None:
+        shift = body("alignment.c", "void alignment_shift(")
+        self.assertIn("if ( loud && IS_SET(ch->act, PLR_DAMAGE_NUMBERS) )", shift)
+        self.assertIn("if ( loud && alignment_side( now ) != alignment_side( was ) )\n"
+                      "        alignment_check_gear( ch );", shift)
+        self.assertIn("alignment_shift( ch, -1, false );", source("fight.c"),
+                      "a vampiric weapon moves its wielder quietly")
+        self.assertNotIn("alignment_shift( ch, -1, true )", source("fight.c"))
+        drain = body("alignment.c", "void alignment_drain(")
+        self.assertIn("is_treasure_goblin( victim )", drain)
+        self.assertIn("dam += victim->hit;", drain, "overkill is not drained")
+        self.assertIn("alignment_check_gear( gch );", body("fight.c", "void group_gain("))
+
+    def test_gmcp_status_carries_the_tier(self) -> None:
+        gmcp = source("gmcp.c")
+        self.assertIn('",\\"tier\\":"', gmcp)
+        self.assertIn("d->gmcp_last_alignment != ch->alignment", gmcp)
+        self.assertIn("status.tier", (ROOT / "mudlet" / "package" / "TimesOfChaos.xml")
+                      .read_text(encoding="utf-8"))
 
     def test_commands_do_not_steal_prefixes(self) -> None:
         order = [m.group(1) for m in re.finditer(r'\{ "([a-z_]+)",', source("interp.c"))]
@@ -153,24 +208,33 @@ class AlignmentLiveTests(unittest.TestCase):
                     client.drain(1.0)
                     client.send("quit")
                     self.assertTrue(client.wait_closed())
-            patch_player_file(mud, "Zslayer", Levl=50, Room=FIELD, Alig=-1000, NewPlat=500)
+            patch_player_file(mud, "Zslayer", Levl=20, Room=FIELD, Alig=-1000, NewPlat=500)
             patch_player_file(mud, "Zwarden", Levl=70, Room=FIELD)
 
             with mud.connect(timeout=120) as slayer, mud.connect(timeout=120) as warden:
                 login(slayer, "Zslayer", PASSWORD)
                 login(warden, "Zwarden", PASSWORD)
                 run(slayer, "damagenumbers", 1.0)
+                # A new character has 20 hit points and a sword that scratches:
+                # give them a body that lasts and a blade that ends a fight.
+                run(warden, "set char zslayer hp 3000", 1.0)
+                run(warden, "load obj %d" % SUB_SWORD, 1.0)
+                run(warden, "set obj sword v1 20", 1.0)
+                run(warden, "set obj sword v2 20", 1.0)
+                run(warden, "set obj sword level 1", 1.0)
+                run(warden, "give sword zslayer", 1.0)
+                run(slayer, "wield sword", 1.5)
 
-                def gerbil(level: int, align: int) -> None:
+                def worker(level: int, align: int) -> None:
                     run(warden, "restore zslayer", 1.0)
-                    run(warden, "load mob %d" % GERBIL, 1.0)
-                    run(warden, "set mob gerbil level %d" % level, 1.0)
-                    run(warden, "set mob gerbil align %d" % align, 1.0)
+                    run(warden, "load mob %d" % WORKER, 1.0)
+                    run(warden, "set mob worker level %d" % level, 1.0)
+                    run(warden, "set mob worker align %d" % align, 1.0)
 
                 def slay() -> str:
-                    # A level 50 gerbil dodges; fight until it falls.
+                    # Fight until it falls: a blow can miss.
                     start = len(slayer.transcript)
-                    slayer.send("kill gerbil")
+                    slayer.send("kill worker")
                     for _ in range(10):
                         slayer.drain(3.0)
                         if "is DEAD" in slayer.transcript[start:]:
@@ -180,19 +244,19 @@ class AlignmentLiveTests(unittest.TestCase):
                     return slayer.transcript[start:]
 
                 # A Fiend slaying the evil climbs: the old rule pushed down.
-                gerbil(50, -800)
+                worker(15, -800)
                 self.assertIn("Your alignment has risen by 8.", slay())
 
                 # Across a tier line, everyone is told.
                 run(warden, "set char zslayer align -905", 1.0)
-                gerbil(50, -800)
+                worker(15, -800)
                 self.assertIn("Your soul brightens: you are now Vile.",
                               slay())
 
                 # The neutral move nothing; a foe far below you moves nothing.
-                gerbil(50, 0)
+                worker(15, 0)
                 self.assertNotIn("Your alignment has", slay())
-                gerbil(1, 900)
+                worker(1, 900)
                 self.assertNotIn("Your alignment has", slay())
 
                 card = run(slayer, "alignment", 3.5)   # behind the kill's lag
@@ -201,21 +265,29 @@ class AlignmentLiveTests(unittest.TestCase):
                 self.assertIn("drain 4%", card)
                 self.assertIn("You are Vile.", run(slayer, "score", 1.2))
 
-                # DEVOTE is a Temple deed, paid for, and then waits.
+                # DEVOTE is a Temple deed, paid for, and then waits -- and a
+                # devotion across a line takes off gear that will not follow.
                 self.assertIn("Devotion is made at the Temple", run(slayer, "devote light", 1.0))
+                run(warden, "set char zslayer align -250", 1.0)
+                run(warden, "load obj %d" % SILVER_PLATE, 1.0)
+                run(warden, "set obj plate level 1", 1.0)   # loaded at the warden's 70
+                run(warden, "give plate zslayer", 1.0)
+                self.assertIn("You wear silver plate on your body.", run(slayer, "wear plate", 1.5))
                 run(warden, "transfer zslayer %d" % TEMPLE, 1.0)
                 slayer.drain(1.0)
-                reply = run(slayer, "devote light", 4.0)
-                self.assertIn("upon the altar and pray for the light", reply)
-                self.assertIn("Your alignment has risen by 100.", reply)
+                reply = run(slayer, "devote dark", 4.0)
+                self.assertIn("whisper to what listens below", reply)
+                self.assertIn("Your alignment has lowered by 100.", reply)
+                self.assertIn("Your soul darkens: you are now Ruthless.", reply)
+                self.assertIn("You are zapped by silver plate.", reply)
                 self.assertIn("The gods will hear you again in 30 minutes.",
-                              run(slayer, "devote dark", 4.0))
+                              run(slayer, "devote light", 4.0))
 
                 slayer.send("quit")
                 self.assertTrue(slayer.wait_closed())
             text = saved(mud, "Zslayer")
             self.assertRegex(text, r"(?m)^AlignDeed \d+$")
-            self.assertRegex(text, r"(?m)^Alig\s+-797$")
+            self.assertRegex(text, r"(?m)^Alig\s+-350$")
 
             # A file left at 1005 by the old unclamped branch loads at 1000.
             patch_player_file(mud, "Zslayer", Alig=1005)

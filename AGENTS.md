@@ -2592,7 +2592,19 @@ what they did. The rules:
   nobody), and `alignment_regen` at the end of `hit_gain`.
 - **Shop prices** go through `alignment_price()` at all five `get_cost`
   call sites in `act_obj.c`; the black market is exempt. A new price
-  shown to a player must be wrapped the same way.
+  shown to a player must be wrapped the same way. **Nothing may pay a
+  player above list or sell below worth**: no shop's buyback exceeds 100,
+  so that is what keeps buying at one shop and selling at another from
+  being a loop. The first draft paid a tenth more to a keeper's own side,
+  which opened thousands of them; `test_alignment.py` brute-forces the
+  floor and checks every shop's buyback.
+- **`alignment_shift(ch, delta, loud)`**: loud reports small moves to
+  DAMAGENUMBERS and takes off gear when the side changes. A vampiric
+  weapon's point a hit is quiet -- a line a swing was spam, and zapping
+  the weapon mid-swing pulls it out from under the blow. Tier changes are
+  always announced. GMCP `Char.Status` carries `alignment` and `tier`.
+- **The dark's drain** counts only the hit points the victim had and
+  never the treasure goblin, whose damage is a share of his health.
 - **Gear checks** are `alignment_rejects_obj()`; `test_alignment.py`
   fails on an open-coded `ITEM_ANTI_EVIL && IS_EVIL`.
 - **DEVOTE** is a Temple deed (4207 or the altar 4208): `ALIGN_DEED_SHIFT`

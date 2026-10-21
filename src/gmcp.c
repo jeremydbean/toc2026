@@ -12,7 +12,7 @@
 #include "merc.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.5.6"
+#define TOC_MUDLET_PACKAGE_VERSION "1.5.7"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \
@@ -355,7 +355,8 @@ void gmcp_send_character( DESCRIPTOR_DATA *d )
       || d->gmcp_last_character != ch
       || d->gmcp_last_level != ch->level
       || d->gmcp_last_class != ch->class
-      || d->gmcp_last_race != ch->race )
+      || d->gmcp_last_race != ch->race
+      || d->gmcp_last_alignment != ch->alignment )
     {
         class_name = IS_NPC(ch) ? "mobile" : class_table[ch->class].name;
         toc_strlcpy( json, "{\"name\":", sizeof(json) );
@@ -367,6 +368,12 @@ void gmcp_send_character( DESCRIPTOR_DATA *d )
         gmcp_json_append_quoted( json, sizeof(json), class_name );
         toc_strlcat( json, ",\"race\":", sizeof(json) );
         gmcp_json_append_quoted( json, sizeof(json), race_table[ch->race].name );
+        /* The alignment and its tier (alignment.c), for the status bar. */
+        toc_strlcat( json, ",\"alignment\":", sizeof(json) );
+        snprintf( number, sizeof(number), "%d", ch->alignment );
+        toc_strlcat( json, number, sizeof(json) );
+        toc_strlcat( json, ",\"tier\":", sizeof(json) );
+        gmcp_json_append_quoted( json, sizeof(json), alignment_tier_name( ch->alignment ) );
         toc_strlcat( json, "}", sizeof(json) );
         telnet_send_gmcp( d, "Char.Status", json );
 
@@ -374,6 +381,7 @@ void gmcp_send_character( DESCRIPTOR_DATA *d )
         d->gmcp_last_level = ch->level;
         d->gmcp_last_class = ch->class;
         d->gmcp_last_race = ch->race;
+        d->gmcp_last_alignment = ch->alignment;
         d->gmcp_status_valid = true;
     }
 }

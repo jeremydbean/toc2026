@@ -54,7 +54,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.5.6"
+tocMudlet.version = "1.5.7"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -1296,10 +1296,11 @@ function tocMudlet.onStatus()
   if type(status) ~= "table" or not tocMudlet.ui.identity then return end
   tocMudlet.ui.identity:echo(string.format(
     [[<div style="color:%s;font-size:13pt"><b>%s</b></div>]] ..
-    [[<div style="color:%s">Level %s %s · %s</div>]],
+    [[<div style="color:%s">Level %s %s · %s%s</div>]],
     P.text, html(status.name or "Times of Chaos"), P.muted,
     html(status.level or "?"), html(titlecase(status.race or "")),
-    html(titlecase(status.class or ""))))
+    html(titlecase(status.class or "")),
+    status.tier and (" · " .. html(status.tier)) or ""))
 end
 
 local function styleGauge(gauge, first, second)
