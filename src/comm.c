@@ -4249,7 +4249,10 @@ bool proxy_header_accept( DESCRIPTOR_DATA *d, const char *line )
         src[length++] = *p++;
     src[length] = '\0';
 
-    if ( length == 0 || inet_aton( src, &parsed ) == 0 )
+    /* inet_pton, not inet_aton: macOS hides inet_aton under the feature
+       macros this file sets, and the build failed there (remort report,
+       2026-10-21). A PROXY header carries a dotted quad either way. */
+    if ( length == 0 || inet_pton( AF_INET, src, &parsed ) != 1 )
         return FALSE;
 
     /* A header naming loopback tells us nothing; keep what we had. */

@@ -293,10 +293,40 @@ ctime(&logon ) );
 #endif
 
 /* equips a character */
+/*
+ * Fill one empty slot: with the starter item for it if one is in the pack
+ * (a remort keeps its old school gear carried), else a new one. True when
+ * the slot was filled. A slot already worn is left as it is, so OUTFIT
+ * run again makes nothing.
+ */
+static bool outfit_slot( CHAR_DATA *ch, int wear, int vnum, bool free_item )
+{
+    OBJ_INDEX_DATA *proto;
+    OBJ_DATA *obj;
+
+    if ( get_eq_char( ch, wear ) != NULL )
+	return false;
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+	if ( obj->wear_loc == WEAR_NONE && obj->pIndexData != NULL
+	&&   obj->pIndexData->vnum == vnum && can_see_obj( ch, obj ) )
+	    break;
+    if ( obj == NULL )
+    {
+	if ( ( proto = get_obj_index( vnum ) ) == NULL )
+	    return false;
+	obj = create_object( proto, -1 * ch->level );
+	if ( free_item )
+	    obj->cost = 0;
+	obj_to_char( obj, ch );
+    }
+    equip_char( ch, obj, wear );
+    return true;
+}
+
 void do_outfit ( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
-    OBJ_DATA *obj;
+    bool filled = false;
 
     if (ch->level > 5 || IS_NPC(ch))
     {
@@ -304,43 +334,16 @@ void do_outfit ( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    /* The two skills a character needs to function, whatever happens to
-       the gear below -- a remort runs this after its skill wipe, and an
-       old school item in the pack used to return before reaching them.
-       Floors, not assignments: practice beyond them is kept. */
-    if ( ch->pcdata != NULL && gsn_recall > 0
-      && ch->pcdata->learned[gsn_recall] < STARTING_RECALL_SKILL )
-	ch->pcdata->learned[gsn_recall] = STARTING_RECALL_SKILL;
-
-    if ( ( obj = get_obj_carry( ch, "sub" ) ) != NULL )
-    {
-	   send_to_char( "You already have some equipment, put it on.\n\r", ch );
-	   return;
-    }
-
-    if ( ( obj = get_eq_char( ch, WEAR_LIGHT ) ) == NULL )
-    {
-	obj = create_object( get_obj_index(OBJ_VNUM_SCHOOL_BANNER), -1 * ch->level );
-	obj->cost = 0;
-	obj_to_char( obj, ch );
-	equip_char( ch, obj, WEAR_LIGHT );
-    }
-
-    if ( ( obj = get_eq_char( ch, WEAR_BODY ) ) == NULL )
-    {
-	obj = create_object( get_obj_index(OBJ_VNUM_SCHOOL_VEST), -1 * ch->level );
-	obj->cost = 0;
-	obj_to_char( obj, ch );
-	equip_char( ch, obj, WEAR_BODY );
-    }
-
-    if ( ( obj = get_eq_char( ch, WEAR_SHIELD ) ) == NULL )
-    {
-	obj = create_object( get_obj_index(OBJ_VNUM_SCHOOL_SHIELD), -1 * ch->level );
-	obj->cost = 0;
-	obj_to_char( obj, ch );
-	equip_char( ch, obj, WEAR_SHIELD );
-    }
+    /*
+     * Slot by slot. This returned "You already have some equipment, put
+     * it on." at the first carried item keyworded "sub" -- every school
+     * item is -- so a remort carrying one old piece got no starter gear at
+     * all, a new mage no dagger, and the weapon skill below was never
+     * floored (remort report, 2026-10-21).
+     */
+    filled |= outfit_slot( ch, WEAR_LIGHT,  OBJ_VNUM_SCHOOL_BANNER, true );
+    filled |= outfit_slot( ch, WEAR_BODY,   OBJ_VNUM_SCHOOL_VEST,   true );
+    filled |= outfit_slot( ch, WEAR_SHIELD, OBJ_VNUM_SCHOOL_SHIELD, true );
 
     /*
      * A monk fights with bare hands: "monk basics" is hand to hand and
@@ -349,13 +352,8 @@ void do_outfit ( CHAR_DATA *ch, char *argument )
      * weapon they had no use for, and floored the dagger skill below
      * instead of the one they fight with.
      */
-    if ( ch->class != CLASS_MONK
-    &&   ( obj = get_eq_char( ch, WEAR_WIELD ) ) == NULL )
-    {
-	obj = create_object( get_obj_index(class_table[ch->class].weapon), -1 * ch->level);
-	obj_to_char( obj, ch );
-	equip_char( ch, obj, WEAR_WIELD );
-    }
+    if ( ch->class != CLASS_MONK )
+	filled |= outfit_slot( ch, WEAR_WIELD, class_table[ch->class].weapon, false );
 
     /*
      * group_add() grants every starting skill at 1%, which is fine for the
@@ -380,7 +378,8 @@ void do_outfit ( CHAR_DATA *ch, char *argument )
 	    ch->pcdata->learned[gsn_recall] = STARTING_RECALL_SKILL;
     }
 
-    send_to_char("You have been equipped by the Gods.\n\r",ch);
+    send_to_char( filled ? "You have been equipped by the Gods.\n\r"
+                         : "You are already equipped.\n\r", ch );
     return;
 }
 

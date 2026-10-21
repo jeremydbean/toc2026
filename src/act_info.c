@@ -17,6 +17,7 @@
 #include <strings.h> /* for bzero() */
 #include <stdlib.h>
 #include <ctype.h>
+#include <limits.h>
 #include <time.h>
 #include "merc.h"
 #include "interp.h"
@@ -5433,11 +5434,14 @@ void do_remort( CHAR_DATA *ch, char *arg)
    ch->max_move = ch->pcdata->perm_move;
     /* The new life's starting practices and trains go on top of whatever
        was left unspent, which used to be thrown away (owner, 2026-10-04).
-       Clamped: both are 16-bit. */
+       Saturated at the field's own maximum, as quest boons and training
+       food are: the cap was 30,000, so a balance above it was cut
+       (31,000 practices came back as 30,000 -- remort report,
+       2026-10-21). */
     ch->practice = (int16_t)URANGE(0, (long)ch->practice
-                   + 15 + 2 * UMAX(1,ch->pcdata->num_remorts), 30000);
+                   + 15 + 2 * UMAX(1,ch->pcdata->num_remorts), SHRT_MAX);
     ch->train    = (int16_t)URANGE(0, (long)ch->train
-                   + 8 + 2 * UMAX(1,ch->pcdata->num_remorts), 30000);
+                   + 8 + 2 * UMAX(1,ch->pcdata->num_remorts), SHRT_MAX);
    ch->hit      = ch->max_hit;
    ch->mana     = ch->max_mana;
    ch->move     = ch->max_move;
@@ -5621,9 +5625,25 @@ void do_remort( CHAR_DATA *ch, char *arg)
    if ( ch->in_room != NULL && ch->in_room->vnum != ROOM_VNUM_TEMPLE
    &&   get_room_index( ROOM_VNUM_TEMPLE ) != NULL )
    {
+      ROOM_INDEX_DATA *temple = get_room_index( ROOM_VNUM_TEMPLE );
+      /* The pet the cleanup above kept comes too, if it was at their
+         side. It was left behind, and save_char_obj writes a pet only
+         from its owner's room, so the remort's own save dropped it and
+         a quit made the loss final (remort report, 2026-10-21). A pet
+         already somewhere else stays under the ordinary rule: one not
+         with its owner at a save is not kept. */
+      CHAR_DATA *pet = ( ch->pet != NULL && ch->pet->in_room == ch->in_room )
+                     ? ch->pet : NULL;
+
       act( "$n fades away into a new life.", ch, NULL, NULL, TO_ROOM );
       char_from_room( ch );
-      char_to_room( ch, get_room_index( ROOM_VNUM_TEMPLE ) );
+      char_to_room( ch, temple );
+      if ( pet != NULL )
+      {
+         act( "$n fades away after $s master.", pet, NULL, NULL, TO_ROOM );
+         char_from_room( pet );
+         char_to_room( pet, temple );
+      }
       act( "$n appears, beginning a new life.", ch, NULL, NULL, TO_ROOM );
       do_look( ch, "auto" );
    }
