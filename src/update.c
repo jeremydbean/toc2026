@@ -400,7 +400,7 @@ void advance_level( CHAR_DATA *ch, bool is_advance )
 
     }
 
-    if (guild == GUILD_NONE)
+    if (guild < 0 || guild >= MAX_CLASS)    /* GUILD_NONE, GUILD_ANY */
 	guild = ch->class;
 
       add_hp	= (sh_int)(con_app[get_curr_stat(ch,STAT_CON)].hitp +
@@ -722,16 +722,26 @@ int mana_gain( CHAR_DATA *ch )
 		check_improve(ch,gsn_meditation,true,8);
 	}
 
-	if( ch->class == CLASS_MONK ||
-	  ((!class_table[ch->class].fMana &&
-	   class_table[ch->pcdata->guild].fMana) ||
-	  (class_table[ch->class].fMana &&
-	   !class_table[ch->pcdata->guild].fMana)))
-	gain = (gain * (100 *3/4))/100;
+	/* No guild is GUILD_NONE (11), past the end of class_table's six:
+	   every tick read beyond the table for every guildless player --
+	   UBSan stopped the sanitizer CI job on it in test_black_market
+	   (2026-10-21). As advance_level does, no guild counts as one's own
+	   class. */
+	{
+	    int guild = ch->pcdata->guild >= 0 && ch->pcdata->guild < MAX_CLASS
+	              ? ch->pcdata->guild : ch->class;
 
-	if(!class_table[ch->pcdata->guild].fMana &&
-	   !class_table[ch->class].fMana )
-	  gain /=2;
+	    if( ch->class == CLASS_MONK ||
+	      ((!class_table[ch->class].fMana &&
+	       class_table[guild].fMana) ||
+	      (class_table[ch->class].fMana &&
+	       !class_table[guild].fMana)))
+	    gain = (gain * (100 *3/4))/100;
+
+	    if(!class_table[guild].fMana &&
+	       !class_table[ch->class].fMana )
+	      gain /=2;
+	}
 
 	switch ( ch->position )
 	{
