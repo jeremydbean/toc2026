@@ -162,7 +162,9 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertIn("Read-only appliance telemetry", page.text)
             self.assertIn("Resource monitor", page.text)
             self.assertIn('/api/host/resources', script.text)
-            self.assertIn("TocCommandSequence.parse(command)", script.text)
+            # The dashboard console sends a typed line whole and lets the
+            # game split it (audit, 2026-10-21); encode only counts it.
+            self.assertIn("TocCommandSequence.encode(command)", script.text)
             self.assertIn("const MAX_COMMANDS = 50", command_sequence.text)
             self.assertIn('next === ";"', command_sequence.text)
             self.assertIn("quoteCanOpen", command_sequence.text)
@@ -199,7 +201,7 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertIn('/api/auth/local', client_script.text)
             self.assertIn(r"/\r\n|\n\r/g", client_script.text)
             self.assertIn('if (typeof command !== "string") return false;', client_script.text)
-            self.assertIn("sendCommandSequence(input.value)", client_script.text)
+            self.assertIn("sendTypedLine(input.value)", client_script.text)
             self.assertIn('state.secretInput || !command.includes(";")', client_script.text)
             self.assertIn("TocCommandSequence.parse(command)", client_script.text)
             self.assertNotIn("if (!command) return false;", client_script.text)

@@ -610,6 +610,10 @@ carry that needs it, cheapest first, as far as your purse goes.
   - Nothing is ever destroyed by damage or by repair.  A badly battered
     item must be repaired before it can be worn again, and it always can
     be, all the way back to new.
+  - Armour a blow, heat or acid has filed down is put back to the values
+    it was made with.  Repair never changes what an item will sell for: a
+    shop pays a third of its worth for a broken piece, and the full worth
+    once it is mended.
   - REPAIR tells you how many times an item has been mended.
 
 Smiths are found in some guild halls, market districts, and weapon or

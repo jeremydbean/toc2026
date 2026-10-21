@@ -40,22 +40,23 @@ healthy() {
 
 # The old code and area files back, and the game restarted on them.
 rollback() {
+    restored=0
     systemctl stop toc-web toc-game || true
-    if [ -f "/srv/toc/rollback-code-$stamp.tgz" ]; then
-        tar xzf "/srv/toc/rollback-code-$stamp.tgz" -C "$CURRENT" || true
+    if tar xzf "$ARCHIVE" -C "$CURRENT"; then
+        restored=1
     else
-        echo "   no rollback archive was made; starting what is there" >&2
+        echo "   COULD NOT RESTORE $ARCHIVE -- starting what is there" >&2
     fi
     chown -R toc:toc "$CURRENT" || true
     systemctl start toc-game || true
     sleep 8
     systemctl start toc-web || true
     sleep 6
-    if healthy; then
+    if [ "$restored" = 1 ] && healthy; then
         echo "   rolled back and healthy" >&2
         exit $EXIT_ROLLED_BACK
     fi
-    echo "   ROLLED BACK BUT STILL NOT HEALTHY -- toc-game-recovery will keep trying" >&2
+    echo "   NOT HEALTHY AFTER THE ROLLBACK -- toc-game-recovery will keep trying" >&2
     exit $EXIT_ROLLBACK_UNHEALTHY
 }
 
@@ -162,13 +163,24 @@ fi
 
 say "installing"
 stamp=$(date +%Y%m%d-%H%M%S)
-installing=1
+ARCHIVE="${TOC_ROLLBACK_DIR:-/srv/toc}/rollback-code-$stamp.tgz"
 systemctl stop toc-web toc-game
-tar czf "/srv/toc/rollback-code-$stamp.tgz" -C "$CURRENT" merc src area webadmin 2>/dev/null || true
+# Nothing is copied without a way back: the archive must be made and must
+# read back whole, or the game restarts on the code it was running.
+if ! tar czf "$ARCHIVE" -C "$CURRENT" merc src area webadmin ||
+   ! tar tzf "$ARCHIVE" >/dev/null; then
+    echo "   COULD NOT ARCHIVE THE RUNNING CODE -- nothing installed, restarting it" >&2
+    systemctl start toc-game || true
+    sleep 8
+    systemctl start toc-web || true
+    exit 1
+fi
+installing=1
 
-# Everything except what the running game owns. custom.are is NOT in
-# this list on purpose -- it is tracked, area.lst loads it, and the
-# game will not boot without it.
+# Everything except what the running game owns. custom.are is excluded
+# here and seeded below rather than skipped: it is tracked and area.lst
+# loads it, so the game will not boot without it -- leaving it out
+# altogether is how it went missing on 2026-09-29.
 rsync -a --delete \
   --exclude '.git/' \
   --exclude 'player/' --exclude 'gods/' --exclude 'heroes/' \
@@ -184,8 +196,18 @@ rsync -a --delete \
   --exclude 'area/*.txt.tmp' \
   --exclude 'area/bugs.txt.*' --exclude 'area/typos.txt.*' \
   --exclude 'area/ideas.txt.*' \
-  --exclude 'area/built/' \
+  --exclude 'area/built/' --exclude 'area/custom.are' \
   "$BUILD/" "$CURRENT/"
+# custom.are is where RSAVE puts the workshop rooms builders make in game
+# (BUILDER_AREA_FILE), and the state sync carries it host to git. The
+# live copy is the newest; git's is up to one sync behind, more for a
+# deploy pinned to an older commit, and copying it over the live one
+# threw away whatever was saved since (audit, 2026-10-21). Like built/,
+# it is only filled in when the live tree has none. A change to it is
+# made in game, not in git: the next sync would overwrite git's anyway.
+if [ ! -f "$CURRENT/area/custom.are" ] && [ -f "$BUILD/area/custom.are" ]; then
+    cp "$BUILD/area/custom.are" "$CURRENT/area/custom.are"
+fi
 # area/built/ is what builders made in game (ANEW). The live copy is the
 # newest -- git's is up to one state sync behind -- so a deploy never
 # writes over it. It only fills in a built file the live tree lacks, as
@@ -312,5 +334,5 @@ if [ "${TOC_DEPLOY_ROLLBACK:-0}" = 1 ]; then
 fi
 
 echo "   DID NOT COME BACK HEALTHY. Roll back with:" >&2
-echo "   tar xzf /srv/toc/rollback-code-$stamp.tgz -C $CURRENT && systemctl restart toc-game toc-web" >&2
+echo "   tar xzf $ARCHIVE -C $CURRENT && systemctl restart toc-game toc-web" >&2
 exit $EXIT_UNHEALTHY

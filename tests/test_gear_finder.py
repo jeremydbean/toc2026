@@ -447,16 +447,36 @@ class GearFinderTests(unittest.TestCase):
         import tempfile
         from webadmin import server
 
-        prof = {"class_name": "warrior", "race": "human", "level": 30}
+        prof = {"class_name": "warrior", "race": "human", "level": 30,
+                "guild_name": "Knights"}
         with tempfile.TemporaryDirectory() as empty, \
                 patch.object(server, "parse_player_file", lambda n: prof), \
                 patch.object(server, "PLAYER_PATH", Path(empty)):
             self.assertEqual(server._oracle_cache_key("Tester", "How do I remort?"),
-                             "how do i remort|warrior|human|30")
+                             "how do i remort|warrior|human|30|knights")
             self.assertIsNone(server._oracle_cache_key(
                 "Tester", "what is my easiest upgrade?"))
             self.assertIsNone(server._oracle_cache_key(
                 "Tester", "who has the sword of justice?"))
+
+    def test_a_chest_nothing_opens_holds_no_loot(self) -> None:
+        """Audit 2026-10-21: a locked, pickproof chest with key -1 counted
+        as reachable, though UNLOCK wants a key and PICK refuses it."""
+        from webadmin import server
+
+        def chest(flags: str, key: str):
+            return SimpleNamespace(values=["100", flags, key, "0", "0"],
+                                   short_desc="an iron chest", carried_by=[])
+        room = SimpleNamespace(objects=[900], name="A Vault")
+        world = SimpleNamespace(rooms={1: room}, mobiles={}, objects={})
+        with patch.object(server, "parser", world), \
+                patch.object(server, "_gear_room_open", lambda r, lvl: True):
+            world.objects = {900: chest("BCD", "-1")}      # pickproof, locked
+            self.assertIsNone(server._gear_container_reachable(900, 30))
+            world.objects = {900: chest("CD", "-1")}       # a thief can pick it
+            self.assertIsNotNone(server._gear_container_reachable(900, 30))
+            world.objects = {900: chest("C", "-1")}        # merely closed
+            self.assertIsNotNone(server._gear_container_reachable(900, 30))
 
 
 if __name__ == "__main__":

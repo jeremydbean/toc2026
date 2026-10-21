@@ -112,6 +112,65 @@ class RouterReadsTheWholeWorld(unittest.TestCase):
                 self.assertIn(vnum, reach, f"{what} is unreachable")
 
 
+class LockedDoorsAreModelled(unittest.TestCase):
+    """Audit 2026-10-21: the router ignored 'D' resets, so four published
+    routes said "open door;e" at doors that reset locked -- the Crystalmir
+    farmhouse (13039 east, key 13006) on the way to the Abyss, Descent to
+    Hell and Valhalla, and a wizlocked door on the way to the Battleground
+    -- and a player following them stopped at "It's locked"."""
+
+    @staticmethod
+    def room(exits, keys=None, resets=None):
+        return {"name": "x", "area": "a", "flags": set(), "exits": exits,
+                "keys": keys or {}, "resets": resets or {}}
+
+    def test_an_unlocked_way_round_beats_a_locked_shortcut(self) -> None:
+        rooms = {
+            1: self.room({1: (2, 1, "door"), 2: (3, 0, "")},
+                         keys={1: 99}, resets={1: 2}),
+            2: self.room({}),
+            3: self.room({1: (4, 0, "")}),
+            4: self.room({0: (2, 0, "")}),
+        }
+        path = bd.shortest_paths(rooms, 1, {})[2]
+        self.assertEqual(bd.to_commands(rooms, path), "s;e;n")
+        self.assertEqual(bd.route_needs(rooms, path), [])
+
+    def test_a_locked_only_way_says_what_it_needs(self) -> None:
+        keyed = {1: self.room({1: (2, 1, "door")}, keys={1: 99}, resets={1: 2}),
+                 2: self.room({})}
+        path = bd.shortest_paths(keyed, 1, {})[2]
+        self.assertEqual(bd.to_commands(keyed, path), "unlock door;open door;e")
+        self.assertEqual(bd.route_needs(keyed, path), ["key 99"])
+        for state, key in ((3, 99), (2, -1)):    # wizlocked; no key exists
+            barred = {1: self.room({1: (2, 1, "door")}, keys={1: key},
+                                   resets={1: state}),
+                      2: self.room({})}
+            path = bd.shortest_paths(barred, 1, {})[2]
+            self.assertEqual(bd.to_commands(barred, path), "e")
+            self.assertEqual(bd.route_needs(barred, path), ["pass door"])
+
+    def test_room_flags_are_read_as_the_game_reads_them(self) -> None:
+        # fread_flag takes letters or a decimal number and reads no sign;
+        # "95  9 0" (two spaces) once fell through to an exit's "0 -1"
+        # line, read as the room's flags.
+        self.assertEqual(bd.flag_letters("9"), {"A", "D"})
+        self.assertEqual(bd.flag_letters("-1"), set())
+        self.assertEqual(bd.flag_letters("DI"), {"D", "I"})
+        self.assertEqual(bd.load_world()[9602]["flags"], {"A", "D"})
+
+    def test_the_farmhouse_door_is_read_as_locked(self) -> None:
+        rooms = bd.load_world()
+        self.assertEqual(rooms[13039]["resets"].get(1), 2)
+        self.assertEqual(bd.door_lock(rooms, 13039, 1), "key")
+        routes = json.loads((ROOT / "webadmin" / "directions.json").read_text())["routes"]
+        for route in routes:
+            commands = route.get("commands", "")
+            if route.get("status") == "computed" and "open door;e;u" in commands:
+                self.assertIn("unlock door;open door;e", commands, route["name"])
+                self.assertIn("key 13006", route.get("needs", []), route["name"])
+
+
 class TrapsAreNotDirections(unittest.TestCase):
     """The Oak Tree Square prank is not a way to Wyvern's Tower.
 

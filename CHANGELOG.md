@@ -190,6 +190,28 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **The October 2026 audit** (outside review, 2026-10-21). Native: stash
+  LINK read its list after freeing it and corrupted the first partner's
+  name; heat metal and acid breath left a permanent AC bonus; hostile
+  spells landed in the Temple and safe rooms; a lethal trap on an exit let
+  the dead walk on; repair raised worth back past a discounted purchase
+  (damage is now condition, never worth, and a shop pays a third for a
+  broken piece) and could not see a dented shield; a shutdown saved a
+  stale logout and cleared quest cooldowns; ALIAS bodies and AT/FORCE/ORDER
+  arguments reached the published logs; MCCP held back the tail of large
+  writes and broke the stream on DONT COMPRESS2; HISTORY TELL showed every
+  channel; a 99-item corpse record was read as the end marker. Web and
+  tools: both consoles split typed lines that the game splits again (they
+  now send them whole); the Oracle cached answers across players with
+  different skills and guilds; the dashboard parser read a pet's stats as
+  its owner's; routes walked through doors that reset locked (they now
+  avoid them, or say `unlock` and the key, or PASS DOOR), and rooms with
+  double-spaced headers lost their flags. Operations: a deploy copied git's
+  `custom.are` over builders' newer work, a failed world check or copy
+  after the stop was not caught, the auto-deployer reported every failure
+  as rolled back, and recovery ignored the deploy lock. Each has a test
+  that fails on the old code; AGENTS.md lists the contracts.
+
 - **From the full review of 2026-10-21's work.** Haggling could pay above
   an item's worth, so buying at one shop and haggling at a dearer one was
   a loop (it predates the alignment prices, which added more shops selling

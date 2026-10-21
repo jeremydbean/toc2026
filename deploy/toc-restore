@@ -72,10 +72,13 @@ echo "   built $(ls -la "$BUILD/merc" | awk '{print $5}') bytes"
 
 # ------------------------------------------------------------ world check
 say "checking the world loads"
-if ( cd "$BUILD/area" && ../merc --check-area 2>&1 | tail -1 ); then
-    :
+# Not piped into tail: /bin/sh has no pipefail, so the pipe's status was
+# tail's and a world that would not load passed (audit, 2026-10-21).
+if ( cd "$BUILD/area" && ../merc --check-area ) >/tmp/toc-restore-check.log 2>&1; then
+    tail -1 /tmp/toc-restore-check.log
 else
-    echo "   the world did not validate" >&2
+    echo "   the world did not validate; see /tmp/toc-restore-check.log" >&2
+    tail -15 /tmp/toc-restore-check.log >&2
     exit 1
 fi
 

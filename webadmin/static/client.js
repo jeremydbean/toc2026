@@ -421,6 +421,20 @@
         return args ? `${alias.command} ${args}` : alias.command;
     }
 
+    // The client's own alias for one command, or null: for
+    // TocCommandSequence.encode, which escapes what the player typed.
+    function expandAlias(command, escape) {
+        const trimmed = command.trim();
+        if (!trimmed) return null;
+        const separator = trimmed.search(/\s/);
+        const key = (separator === -1 ? trimmed : trimmed.slice(0, separator)).toLowerCase();
+        const args = escape(separator === -1 ? "" : trimmed.slice(separator).trim());
+        const alias = state.aliases.find((item) => item.key.toLowerCase() === key);
+        if (!alias) return null;
+        if (alias.command.includes("{args}")) return alias.command.replaceAll("{args}", args);
+        return args ? `${alias.command} ${args}` : alias.command;
+    }
+
     function transmitCommand(command) {
         const resolved = resolveAlias(command);
         state.socket.send(`${resolved}\n`);
@@ -473,10 +487,41 @@
         return true;
     }
 
+    // What the player typed goes to the game as one line: the game splits
+    // it (split_typed_commands in comm.c), keeping \; and quotes, ALIAS and
+    // password lines whole, and a BUILD answer for the wizard. Splitting it
+    // here first broke all four (audit, 2026-10-21). Generated routes still
+    // go a command a frame through sendCommandSequence: they hold none of
+    // those, and can be longer than one line may hold.
+    function sendTypedLine(command) {
+        if (typeof command !== "string") return false;
+        if (state.secretInput) return sendCommand(command);
+        if (!state.socket || state.socket.readyState !== WebSocket.OPEN || !state.connected) {
+            toast("The game is not connected.", "error");
+            return false;
+        }
+        if (!window.TocCommandSequence) {
+            toast("Command chaining is unavailable. Reload the client.", "error");
+            return false;
+        }
+        const { line, overflow } = window.TocCommandSequence.encode(command, expandAlias);
+        if (overflow) {
+            toast(`A command chain can contain at most ${window.TocCommandSequence.MAX_COMMANDS} commands.`, "error");
+            return false;
+        }
+        state.socket.send(`${line}\n`);
+        if (command && state.settings.localEcho) {
+            appendTerminalSegment(`> ${line}\n`, "terminal-local");
+            recordTranscript(`> ${line}\n`);
+        }
+        finishCommandEntry(command);
+        return true;
+    }
+
     function submitCommand(event) {
         event.preventDefault();
         const input = byId("command-input");
-        if (sendCommandSequence(input.value)) input.value = "";
+        if (sendTypedLine(input.value)) input.value = "";
     }
 
     function focusCommandFromTerminal() {
@@ -779,6 +824,15 @@
                 className: "route-steps",
                 text: (route.steps || []).join(", "),
             }));
+
+            // A door on the way resets locked: the key it wants, or PASS
+            // DOOR where nothing opens it (tools/build_directions.py).
+            if (route.needs && route.needs.length) {
+                card.append(node("p", {
+                    className: "route-note",
+                    text: `Locked on the way -- needs ${route.needs.join(", ")}.`,
+                }));
+            }
 
             if (route.note) {
                 card.append(node("p", { className: "route-note", text: route.note }));

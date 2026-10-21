@@ -43,6 +43,9 @@ COUNT_FILE="$STATE_DIR/recovery-failures"
 LAST_REBUILD_FILE="$STATE_DIR/recovery-last-rebuild"
 DEPLOYED_COMMIT_FILE="$STATE_DIR/deployed-commit"
 LOCK_FILE=${TOC_RECOVERY_LOCK:-/run/lock/toc-game-recovery.lock}
+# toc-deploy's and toc-auto-deploy's lock: they stop the game on purpose
+# and build in the same tree this resets.
+DEPLOY_LOCK=${TOC_DEPLOY_LOCK:-/run/toc-deploy.lock}
 
 GAME_PORT=${TOC_GAME_PORT:-9000}
 START_GRACE=${TOC_START_GRACE_SEC:-20}
@@ -89,6 +92,19 @@ install -d -m 0755 "$STATE_DIR"
 exec 9>"$LOCK_FILE"
 if ! flock -n 9; then
     log "another recovery run holds the lock; skipping."
+    exit 0
+fi
+
+# A deploy stops the game on purpose, and builds in $BUILD_ROOT. Taking
+# only this script's own lock let a run that fell inside one read the
+# stopped game as a failure, reset and clean the tree the deploy was
+# building in and install a binary over the one being copied (audit,
+# 2026-10-21). Held for the whole run, after our own lock and never
+# waited for, so the two scripts cannot deadlock; the game's state is
+# only judged once it is held.
+exec 8>"$DEPLOY_LOCK"
+if ! flock -n 8; then
+    log "a deploy is running; leaving the game to it."
     exit 0
 fi
 

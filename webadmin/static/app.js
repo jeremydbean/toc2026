@@ -1873,32 +1873,28 @@
         state.terminal.socket?.close();
     }
 
+    // The line goes to the game as typed; the game splits it
+    // (split_typed_commands in comm.c). Splitting it here first was a
+    // second parse that turned "\;" into a separator and cut ALIAS bodies,
+    // passwords and BUILD answers in two (audit, 2026-10-21).
     function sendConsoleCommand(event) {
         event.preventDefault();
         const input = byId("console-input");
         const command = input.value;
-        let commands = [command];
         if (!state.terminal.socket || state.terminal.socket.readyState !== WebSocket.OPEN) return;
         if (!state.terminal.secretInput && command.includes(";")) {
             if (!window.TocCommandSequence) {
                 toast("Command chaining is unavailable. Reload the dashboard.", "error");
                 return;
             }
-            const sequence = window.TocCommandSequence.parse(command);
-            if (sequence.overflow) {
+            if (window.TocCommandSequence.encode(command).overflow) {
                 toast(`A command chain can contain at most ${window.TocCommandSequence.MAX_COMMANDS} commands.`, "error");
                 return;
             }
-            commands = sequence.commands;
         }
-        commands.forEach((part) => {
-            state.terminal.socket.send(`${part}\n`);
-            if (!state.terminal.secretInput && part) {
-                appendTerminal(byId("game-terminal"), `> ${part}\n`);
-            }
-        });
-        const shouldRemember = commands.length > 0 || !command.includes(";");
-        if (!state.terminal.secretInput && shouldRemember && command) {
+        state.terminal.socket.send(`${command}\n`);
+        if (!state.terminal.secretInput && command) {
+            appendTerminal(byId("game-terminal"), `> ${command}\n`);
             if (state.terminal.history.at(-1) !== command) state.terminal.history.push(command);
             state.terminal.history = state.terminal.history.slice(-100);
         }

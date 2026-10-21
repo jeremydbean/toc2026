@@ -451,11 +451,20 @@ Commands added or revived in September 2026, and where they live:
   an alias is never alias-expanded again -- that is the recursion limit --
   and is exempt from the input-spam count and from `!`.
   A *typed* line with semicolons is split the same way by
-  `split_typed_commands()` in `comm.c`, on the browser client's rules
-  (`webadmin/static/command-sequence.js`: quotes and `\;` keep a
+  `split_typed_commands()` in `comm.c` (quotes and `\;` keep a
   semicolon), with the rest queued through `queue_alias_input()` -- so a
   chained command is not alias-expanded either. A line whose first word is
   ALIAS, UNALIAS or a password command is never split.
+  **The browser consoles send a typed line whole and let the game split
+  it** (audit, 2026-10-21). They used to split it themselves and send the
+  pieces, and the game split each piece again: `say left\;quit` quit, an
+  ALIAS body was cut at its first semicolon, and a BUILD answer or a
+  password became two commands. `TocCommandSequence.encode` in
+  `webadmin/static/command-sequence.js` returns the line to send; only
+  the play client's own aliases make it rebuild one, escaping every
+  literal semicolon. Generated routes still go a command a frame
+  (`sendCommandSequence`): they hold none of those and can run past the
+  game's 20 commands a line.
 
 ## C Change Rules
 
@@ -933,7 +942,7 @@ click answers "cannot find a path using known exits". Teleport rooms are
 deliberately not in it: they carry you on a timer with no command to
 send, so there is nothing a client could walk.
 
-Two rules keep the output honest, and both were learned the hard way:
+Three rules keep the output honest, all learned the hard way:
 
 - **Price the edges.** Routing is Dijkstra, not breadth-first. A door, a
   portal or a rope costs one; a room that carries you costs eight, because
@@ -948,6 +957,16 @@ Two rules keep the output honest, and both were learned the hard way:
   Tower was once the single command `crawl hole`. Ejectors are excluded from
   routing, though `load_world()` still reports them, because the parity test
   against the dashboard parser depends on that staying faithful.
+- **A door is as a reset leaves it.** `load_world()` reads the `D`
+  resets and the exits' keys, and `door_lock()` says how a door is held:
+  locked with a key that exists ("key"), or wizlocked or keyless
+  ("barred", which only PASS DOOR gets past -- `move_char` lets it through
+  any closed door). Either costs `LOCKED_COST`, so any way round wins;
+  where none exists the route says `unlock <door>` before `open`, or no
+  `open` at all for a barred one, and carries `needs` (`key 13006`,
+  `pass door`), which the client's Routes panel shows. Four routes said
+  "open door;e" at the Crystalmir farmhouse door (13039 east, reset
+  locked) until 2026-10-21 and stopped at "It's locked".
 
 90 of the 93 areas holding rooms have a route. Dresden has none because it
 contains the start room. The Quest Zone (20301-20313) and Temple Despair
@@ -1193,9 +1212,9 @@ is still WAKE.
 - Bound payloads and result limits; reject newlines/control data that can split
   queue records.
 - Preserve the last known-good parser when reload validation fails.
-- Keep semicolon command parsing shared across both browser consoles. Preserve
-  quoted and escaped semicolons, cap batches, store one history entry, and
-  never split password input.
+- A typed line goes to the game whole from both consoles; the game splits
+  it (see Commands above). Do not split it in the browser again. Store one
+  history entry, and never touch password input.
 - Add tests for no/wrong/correct token, malformed bodies, boundaries,
   filesystem races, and failed parser reload.
 - Document authentication status for every new route.
@@ -1510,7 +1529,26 @@ that act on the world; do the rest in game.
 `toc-deploy` exists because doing this by hand is how `area/custom.are`
 went missing: it is tracked in git *and* listed in `area.lst`, so
 treating it as a runtime file and excluding it left the game unable to
-boot. The script carries the exclude list that is actually correct.
+boot. **It is excluded now and seeded only when missing**, like
+`area/built/` (audit, 2026-10-21): RSAVE writes builders' workshop rooms
+there and the state sync carries it host to git, so git's copy is up to
+a sync behind and copying it over the live one lost what was saved
+since. A change to it is made in game. `tests/test_deploy_install.py`
+runs the script's own rsync and seeding on synthetic trees.
+
+**How `toc-deploy` fails** (`tests/test_deploy_failures.py`, stubbed): a
+world that fails `--check-area` stops it before the game is stopped (the
+check was piped into `tail`, and `/bin/sh` has no pipefail -- so was
+`toc-restore`'s); no install begins without a rollback archive that
+reads back whole; and any failure between stopping the game and starting
+it rolls back through an EXIT trap. Its exit status says how far it got
+-- 10 rolled back and healthy, 11 rolled back and still unhealthy, 12 new
+code unhealthy and left alone, anything else stopped before the game was
+touched -- and `toc-auto-deploy`'s status line says the same.
+**`toc-game-recovery` takes the deploy lock** (`/run/toc-deploy.lock`,
+non-blocking, after its own) and leaves the game alone while a deploy
+holds it: a deploy stops the game on purpose and builds in the tree
+recovery would reset.
 
 **It is a free-tier box, and that is the one soft spot.** The Oracle
 account is still on the 30-day trial; upgrading it to Pay As You Go --
@@ -3058,6 +3096,71 @@ finds it from WALK DUMMY.
 The quest master excludes the yard by file name beside Hyrule
 (`QUEST_EXCLUDED_YARD`): the dummy cannot die, so a quest to kill it
 could never finish.
+
+## Contracts From The October 2026 Audit
+
+An outside audit (2026-10-21) found these; each is fixed, and each has a
+test that fails on the old code. Keep them.
+
+- **Build a replacement string before freeing the old one.** `do_stash`
+  freed `stash_links` and then read it to build the new list; the pool
+  reuses a freed block's first bytes, so a second LINK wrote allocator
+  bytes before the first partner's name and locked them out
+  (`tests/test_stash_link.py`). ASan cannot see this through the pool.
+- **Changing a worn piece's armour values: `+= apply_ac` at the old
+  values, change them, `-= apply_ac` at the new** -- `unequip_char` adds
+  and `equip_char` subtracts. Heat metal and acid breath had the signs the
+  other way round and left a permanent AC bonus; heat metal also filed a
+  removable piece down before unequipping it. Unequip first, then file
+  (`tests/test_armor_bookkeeping.py`).
+- **`is_safe_spell` refuses the Temple, the altar and `ROOM_SAFE` exactly
+  as `is_safe` does.** Both tests were commented out, so poison landed
+  where MURDER was refused (`tests/test_safe_room_spells.py`).
+- **After anything that can kill, ask `gone_after_blow(ch, room)`, never
+  `in_room == NULL`.** A slain player is moved to the death room, not
+  extracted, so a lethal trap on the way out let the dead walk through
+  the exit (`tests/test_trap_movement.py`; every `room_affect` call in
+  `act_move.c` and `update.c`).
+- **Damage is condition, never worth.** A dent, a heat or an etch files
+  armour down and takes `REPAIR_DENT_WEAR` condition, so REPAIR sees it;
+  `obj->cost` is left alone, and a shop pays a third for an
+  `ITEM_DAMAGED` piece in `get_cost`. Repair restores condition and armour
+  values, never worth: raising `obj->cost` to the prototype's undid the cap
+  a discounted purchase sets, and bought low and sold high
+  (`tests/test_repair_gear.py`, `tests/test_gear_damage.py`).
+  `repair_needed` also counts armour filed below its prototype, which is
+  how a shield dented before this reads.
+- **A playing character's save writes `LastOut` as now**
+  (`saved_last_logout` in `save.c`); memory keeps the previous logout for
+  HISTORY's marker. A shutdown saved everyone before `close_socket`
+  stamped the departure, so a restart counted the sitting as time away
+  and cleared quest cooldowns (`tests/test_rested_and_dailies.py`).
+- **A command's privacy is its inner command's.** `line_privacy()` in
+  `interp.c`: ALIAS is secret (its body may hold a password, and `alias
+  <name>` answers with it), and AT, FORCE and ORDER take the privacy of
+  the command they carry. Every log sink -- the journal, the watch log,
+  the unwatched LOG_ALWAYS line -- asks it (`tests/test_playlog.py`).
+- **MCCP drains until the flush is done, and DONT COMPRESS2 finishes the
+  stream** (`Z_FINISH` to `Z_STREAM_END`) before any plaintext; a stream
+  that cannot finish closes the connection rather than writing plaintext
+  into it. `tests/test_mccp.c` runs the real `telnet_proto.c` and
+  `tests/test_mccp.py` decodes it with zlib.
+- **HISTORY TELL is tells only** (`HISTORY_NO_CHANNELS`,
+  `tests/test_channel_history.py`).
+- **Corpse histories end `-1 -1`.** `99 99` also began a 99-item record;
+  `corpse_history_read` (`save.c`) takes `99` as the old end marker only
+  when nothing follows it, bounds every count, never exits on a short
+  file, and returns how many records it found -- NEWCORPSE checks a slot
+  against that (`tests/test_corpse_history.py`). Nothing writes these at
+  present: `corpse_back`'s call in `fight.c` is commented out.
+- **The Oracle's answer cache keys on everything per-player that changes
+  the answer**: the guild in `_oracle_cache_key`, and a digest of the
+  asker's ABILITIES in `oracle.poll_once`, the one place that has them
+  (`tests/test_oracle.py`).
+- **The dashboard's player-file parser tracks sections**: the player
+  block ends at its `End`, `#PET` and `#STASH` are not the player's, so a
+  character carrying nothing no longer reads their pet's stats as their own
+  (`tests/test_player_file_parser.py`).
 
 ## Completion Standard
 

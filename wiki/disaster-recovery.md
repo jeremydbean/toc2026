@@ -49,7 +49,9 @@ have actually caused it:
 - **`custom.are: No such file or directory`** -- `area/custom.are` is
   tracked in git and listed in `area.lst`, and an install that treated
   it as a runtime file left it out. Copy it from
-  `/srv/toc/build/area/custom.are`.
+  `/srv/toc/build/area/custom.are`. (`toc-deploy` now keeps the live copy,
+  which holds builders' RSAVEd rooms newer than git's, and copies git's
+  only when the live tree has none.)
 - **Unmet condition `ConditionPathExists=!/etc/toc/maintenance`** --
   a maintenance marker is in place. `sudo mv /etc/toc/maintenance
   /etc/toc/maintenance.off` and start the units.

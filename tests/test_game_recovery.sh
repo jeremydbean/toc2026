@@ -94,6 +94,7 @@ STUB
 
     chmod +x "$WORK/bin/"*
     export WORK
+    export TOC_DEPLOY_LOCK="$WORK/deploy.lock"
 }
 
 teardown() { rm -rf "$WORK"; }
@@ -216,6 +217,18 @@ chmod +x "$WORK/bin/systemctl"
 rc=$(PATH="$WORK/bin:$PATH" WORK="$WORK" TOC_SERVICE=test-game.service      TOC_LIVE_ROOT="$WORK/live" TOC_BUILD_ROOT="$WORK/build"      TOC_STATE_DIR="$WORK/state" TOC_BACKUP_DIR="$WORK/backups"      TOC_RECOVERY_LOCK="$WORK/lock" TOC_START_GRACE_SEC=0      TOC_MAX_PLAIN_ATTEMPTS=1 TOC_REBUILD_COOLDOWN_SEC=0 TOC_MIN_FREE_MB=0      TOC_OWNER=toc-no-such-account TOC_GROUP=toc-no-such-account      bash "$SCRIPT" >"$WORK/out" 2>&1; echo $?)
 check "missing service account still recovers" "$rc" "0"
 check "missing service account still installs" "$(binary_id)" "NEW-BINARY"
+teardown
+
+# 9. A deploy holds its lock: the game it stopped is not a failure, and
+# the build tree it is using is not to be reset under it.
+setup
+exec 7>"$TOC_DEPLOY_LOCK"
+flock 7
+rc=$(run_recovery)
+exec 7>&-
+check "a running deploy is left alone" "$rc" "0"
+check "a running deploy gets no restart" "$(count_calls start)" "0"
+check "a running deploy's tree is not fetched" "$(count_calls fetch)" "0"
 teardown
 
 echo

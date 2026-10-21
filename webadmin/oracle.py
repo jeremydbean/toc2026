@@ -817,6 +817,15 @@ def poll_once(ask_path, answer_path, context_provider=None) -> int:
             except Exception:
                 context, cache_key = "", None
         if abilities:
+            # The answer now rests on this player's own skills, so the key
+            # must too: "what can I gain?" carries no personal phrase, and
+            # two level 20 human mages with different skills or guilds were
+            # served one cached answer -- as was one player after learning
+            # what it told them to (audit, 2026-10-21).
+            if cache_key:
+                cache_key = "%s|abilities:%s" % (
+                    cache_key,
+                    hashlib.sha256(abilities.encode("utf-8")).hexdigest()[:16])
             context = (context + "\n\n" if context else "") + (
                 "From the game itself -- the supplicant's own skills and spells: "
                 "how many they hold, and every one their class and guild can "

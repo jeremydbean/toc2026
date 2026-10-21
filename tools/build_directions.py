@@ -47,7 +47,20 @@ FLAG_NEWBIE = "R"
 
 
 def flag_letters(word):
-    return set() if word.isdigit() else set(word)
+    """A flag word as its letters. fread_flag takes a decimal number too
+    (A is 1, B 2, ... Z 2^25, then aa, bb ...), which this used to read as
+    no flags at all -- a death trap written in decimal was walkable."""
+    if word.startswith("-"):
+        return set()        # fread_flag reads no sign: -1 is no flags
+    if word.isdigit():
+        value = int(word)
+        letters = set()
+        for bit in range(32):
+            if value & (1 << bit):
+                letters.add(chr(ord("A") + bit) if bit < 26
+                            else chr(ord("a") + bit - 26) * 2)
+        return letters
+    return set(word)
 
 
 # Where the game puts you when you recall or die. A room that teleports
@@ -284,10 +297,14 @@ def load_world():
                 continue
             vnum = int(h.group(1))
 
-            fl = re.search(r"\n~\n(\S+) (\S+) ", blk)
+            # Any whitespace between the tokens: "95  9 0" (two spaces)
+            # missed a single-space pattern, which then matched an exit's
+            # "0 -1 9588" line and read -1 as the room's flags.
+            fl = re.search(r"\n~\n\s*(\S+)\s+(\S+)\s", blk)
             flags = flag_letters(fl.group(2)) if fl else set()
 
             exits = {}
+            keys = {}
             # "D 0" is as common as "D0": fread_letter takes the D and
             # fread_number skips space before the digit, so the game
             # reads both and the router has to as well.
@@ -301,10 +318,39 @@ def load_world():
                 if to > 0:
                     exits[int(d.group(1))] = (to, int(d.group(4)),
                                               d.group(3).strip())
+                    keys[int(d.group(1))] = int(d.group(5))
 
             rooms[vnum] = {"name": h.group(2).strip().replace("\n", " "),
-                           "area": aname, "flags": flags, "exits": exits}
+                           "area": aname, "flags": flags, "exits": exits,
+                           "keys": keys, "resets": {}}
+
+        # How each door stands after a reset: the 'D' resets, which are
+        # what a player finds, not the exit's prototype (reset_area in
+        # db.c: 1 closed, 2 locked, 3 locked and wizlocked, 4 secret and
+        # locked when it has a key, 5 locked and trapped).
+        rm = re.search(r"^#RESETS\s*$(.*?)^S\s*$", text, re.S | re.M)
+        if rm:
+            for r in re.finditer(r"^\s*D\s+-?\d+\s+(\d+)\s+(\d+)\s+(\d+)",
+                                 rm.group(1), re.M):
+                room, door, state = (int(x) for x in r.groups())
+                if room in rooms:
+                    rooms[room]["resets"][door] = state
     return rooms
+
+
+def door_lock(rooms, vnum, door):
+    """How a door is held shut after a reset: None, "key" (locked, and its
+    key exists to be had) or "barred" (wizlocked, or locked with no key:
+    nothing opens it, and only PASS DOOR, which move_char lets through any
+    closed door, gets a player past)."""
+    room = rooms[vnum]
+    state = room.get("resets", {}).get(door)
+    key = room.get("keys", {}).get(door, 0)
+    if state == 3:
+        return "barred"
+    if state in (2, 5) or (state == 4 and key > 0):
+        return "key" if key > 0 else "barred"
+    return None
 
 
 def passable(room):
@@ -325,6 +371,13 @@ def passable(room):
 # timer, so it has to be dear enough that the router walks instead when
 # walking is possible at all.
 WAIT_COST = 8
+# A door that resets locked. It opens only for somebody holding its key --
+# or, keyless or wizlocked, for nobody, and PASS DOOR is the way past --
+# so any way round it is better: four routes walked players through the
+# Crystalmir farmhouse door ("open door;e") and stopped at "It's locked"
+# (audit, 2026-10-21). Where it is the only way, the route says what it
+# needs (route_needs).
+LOCKED_COST = 1000
 
 
 def shortest_paths(rooms, start, portals):
@@ -346,8 +399,10 @@ def shortest_paths(rooms, start, portals):
         moves = []
         for door in range(10):
             step = rooms[here]["exits"].get(door)
-            if step is not None:
-                moves.append((1, step[0], (door, here)))
+            if step is None:
+                continue
+            lock = door_lock(rooms, here, door)
+            moves.append((LOCKED_COST if lock else 1, step[0], (door, here)))
 
         for verb, keyword, dest, cost, label in portals.get(here, []):
             price = WAIT_COST if verb == "wait" else 1
@@ -399,7 +454,11 @@ def to_commands(rooms, path):
             # a keyworded door has to be opened by that word, not by
             # direction.
             word = keyword.split()[0] if keyword else DIRNAME[door]
-            out.append(f"open {word}")
+            held = door_lock(rooms, from_vnum, door)
+            if held == "key":
+                out.append(f"unlock {word}")
+            if held != "barred":        # nothing opens that: pass through it
+                out.append(f"open {word}")
 
         if run_door == door:
             run_len += 1
@@ -443,7 +502,14 @@ def describe(rooms, path):
         elif lock != 0:
             flush()
             word = keyword.split()[0] if keyword else DIRNAME[door]
-            steps.append(f"open {word}")
+            held = door_lock(rooms, from_vnum, door)
+            if held == "key":
+                key = rooms[from_vnum]["keys"][door]
+                steps.append(f"unlock {word} (it is locked: key {key})")
+            if held == "barred":
+                steps.append(f"pass through the locked {word} (PASS DOOR)")
+            else:
+                steps.append(f"open {word}")
         if run_door == door:
             run_len += 1
         else:
@@ -936,11 +1002,32 @@ def place_name(rooms, vnum, hall_of):
     return split_area_name(area)[1] or area
 
 
+def route_needs(rooms, path):
+    """What a path's locked doors want, in order: "key <vnum>" for a door
+    its key opens, "pass door" for one nothing opens."""
+    needs = []
+    for door, from_vnum in path:
+        if isinstance(door, tuple):
+            continue
+        held = door_lock(rooms, from_vnum, door)
+        if held is None:
+            continue
+        need = ("key %d" % rooms[from_vnum]["keys"][door] if held == "key"
+                else "pass door")
+        if need not in needs:
+            needs.append(need)
+    return needs
+
+
 def route_fields(rooms, reach, vnum):
     path = reach[vnum]
-    return {"room": rooms[vnum]["name"], "vnum": vnum,
-            "commands": to_commands(rooms, path),
-            "steps": describe(rooms, path), "rooms_away": len(path)}
+    fields = {"room": rooms[vnum]["name"], "vnum": vnum,
+              "commands": to_commands(rooms, path),
+              "steps": describe(rooms, path), "rooms_away": len(path)}
+    needs = route_needs(rooms, path)
+    if needs:
+        fields["needs"] = needs
+    return fields
 
 
 def _words(text):
@@ -1194,6 +1281,9 @@ def main():
             "rooms_away": len(path),
             "status": "computed",
         })
+        needs = route_needs(rooms, path)
+        if needs:
+            routes[-1]["needs"] = needs
 
     # The handed-down list, checked and repaired where it has drifted.
     by_area = {r["area"]: r for r in routes}

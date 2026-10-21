@@ -187,6 +187,31 @@ class OracleTests(unittest.TestCase):
         self.assertEqual(answer.read_text(encoding="utf-8").strip(), "Alaric\tGo north.")
         self.assertEqual(oracle._cache_get("k-level"), "Go north.")
 
+    def test_answers_from_different_abilities_are_not_shared(self):
+        """Audit 2026-10-21: two players with one class, race and level
+        but different skills asked "What can I gain?" and the second got
+        the first's cached answer, though only teleport was gainable for
+        him. The asker's ABILITIES are part of the key now."""
+        self._enable()
+        calls = []
+        sys.modules["anthropic"] = _fake_anthropic("Gain fireball.", calls=calls)
+        ask = Path(self.tmp) / "oracle.ask"
+        answer = Path(self.tmp) / "oracle.answer"
+        ask.write_text(
+            "1700000000\tAlaric\tWhat can I gain?\tABILITIES:fireball from Zed;\n"
+            "1700000001\tMilenko\tWhat can I gain?\tABILITIES:teleport from Zed;\n"
+            "1700000002\tBrannoc\tWhat can I gain?\tABILITIES:fireball from Zed;\n",
+            encoding="utf-8")
+        oracle.forget("Alaric")
+        oracle.forget("Milenko")
+        oracle.forget("Brannoc")
+        key = "what can i gain|mage|human|20|none"
+        oracle.poll_once(ask, answer, lambda p, q: ("Supplicant.", key))
+        # Two skill sets, two model calls; a third player holding the
+        # first set is served the first answer from the cache.
+        self.assertEqual(len(calls), 2)
+        self.assertIn("teleport", str(calls[1]), "grounded in Milenko's own skills")
+
     def test_poll_once_splits_off_the_abilities_field(self):
         ask = Path(self.tmp) / "oracle.ask"
         answer = Path(self.tmp) / "oracle.answer"

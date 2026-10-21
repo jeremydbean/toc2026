@@ -498,9 +498,12 @@ Development rules:
 WebSocket bridges. `webadmin/static/index.html`, `app.css`, and `app.js` own the
 full dashboard. `client.html`, `client.css`, and `client.js` own the play-first
 client at `/client`; `command-sequence.js` supplies their shared bounded,
-quote-aware semicolon parser. Both consoles send parsed commands in order and
-store the original chain as one history entry. Password input must always
-bypass splitting. Both interfaces share the same APIs and bridges.
+quote-aware semicolon parser. Both consoles send a typed line whole -- the game
+splits it (`split_typed_commands` in `comm.c`), so splitting it in the browser
+too would read `\;` and ALIAS, password and BUILD lines twice -- and store it as
+one history entry. The play client's own aliases are expanded in place by
+`TocCommandSequence.encode`, which escapes literal semicolons. Password input
+is never touched. Both interfaces share the same APIs and bridges.
 `scripts/web_server.py` is only a compatibility launcher; do not add a second
 server implementation there.
 

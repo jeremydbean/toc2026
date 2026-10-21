@@ -109,12 +109,14 @@ through the current session's command history. Password input is masked and is
 never added to history, local echo, aliases, or the downloaded transcript.
 Submitting an empty command sends a single terminal newline without adding a
 blank command to local echo, history, or the transcript.
-Separate normal commands with semicolons to send them individually in order,
-for example `look; north; get sword`. Empty segments are ignored, and a chain
-may contain up to 50 commands. Semicolons inside matching single or double
-quotes remain part of that command; use `\;` for a literal unquoted semicolon.
-Password fields are never split. Command history stores the original chain as
-one entry, while local echo shows each command actually sent.
+Separate normal commands with semicolons to run them in order, for example
+`look; north; get sword`. The line goes to the game as typed and the game
+splits it, the same way Mudlet's lines are split. Empty segments are ignored,
+and a line may hold up to 20 commands. Semicolons inside matching single or
+double quotes remain part of that command; use `\;` for a literal unquoted
+semicolon. An ALIAS or a password line is never split, and the BUILD wizard
+gets a semicolon-holding answer whole. Command history stores the line as one
+entry, and local echo shows it as sent.
 Clicking the terminal focuses the command line for immediate typing. Selecting
 terminal text keeps the selection active so it can still be copied.
 

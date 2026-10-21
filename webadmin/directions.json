@@ -207,7 +207,7 @@
   },
   {
    "name": "The Abyss (Anon)",
-   "commands": "r w 7;open gate;r w 4;r s 2;e;s;e;r s 2;w;s;r d 2;r w 2;r n 3;e;s;open door;e;u;e;open door;s;open book;s;w;d;w;d",
+   "commands": "r w 7;open gate;r w 4;r s 2;e;s;e;r s 2;w;s;r d 2;r w 2;r n 3;e;s;unlock door;open door;e;u;e;open door;s;open book;s;w;d;w;d",
    "steps": [
     "west x7",
     "open gate",
@@ -224,6 +224,7 @@
     "north x3",
     "east",
     "south",
+    "unlock door (it is locked: key 13006)",
     "open door",
     "east",
     "up",
@@ -242,7 +243,10 @@
    "area": "Anon The Abyss",
    "area_display": "The Abyss (Anon)",
    "rooms_away": 38,
-   "status": "computed"
+   "status": "computed",
+   "needs": [
+    "key 13006"
+   ]
   },
   {
    "name": "The Chessboard (Aten)",
@@ -773,7 +777,7 @@
   },
   {
    "name": "Valhalla (Elrond)",
-   "commands": "r w 7;open gate;r w 4;r s 2;e;s;e;r s 2;w;s;r d 2;r w 2;r n 3;e;s;open door;e;u;e;open door;s;open book;s;w;d;w;open gates;r w 5;r d 2;e;s;r e 2;n;r e 2;s;r e 2;n;e;r d 2;s;w;n;r w 2;s;r w 4;n;r w 2;r d 2;r e 2;s;open door;e;n;e;open freezer;r e 2;s;e;n;e;open door;e;r s 2;r d 4;open CLOSED;r u 2",
+   "commands": "r w 7;open gate;r w 4;r s 2;e;s;e;r s 2;w;s;r d 2;r w 2;r n 3;e;s;unlock door;open door;e;u;e;open door;s;open book;s;w;d;w;open gates;r w 5;r d 2;e;s;r e 2;n;r e 2;s;r e 2;n;e;r d 2;s;w;n;r w 2;s;r w 4;n;r w 2;r d 2;r e 2;s;open door;e;n;e;open freezer;r e 2;s;e;n;e;open door;e;r s 2;r d 4;open CLOSED;r u 2",
    "steps": [
     "west x7",
     "open gate",
@@ -790,6 +794,7 @@
     "north x3",
     "east",
     "south",
+    "unlock door (it is locked: key 13006)",
     "open door",
     "east",
     "up",
@@ -847,7 +852,10 @@
    "area": "Elrond Valhalla",
    "area_display": "Valhalla (Elrond)",
    "rooms_away": 94,
-   "status": "computed"
+   "status": "computed",
+   "needs": [
+    "key 13006"
+   ]
   },
   {
    "name": "The Emerald Forest (FeaR)",
@@ -1131,7 +1139,7 @@
   },
   {
    "name": "Battleground (Haze)",
-   "commands": "r e 8;open gate;r e 13;open gate;r e 6;r n 6;open gate;r n 9;open north;n",
+   "commands": "r e 8;open gate;r e 13;open gate;r e 6;r n 6;open gate;r n 9;n",
    "steps": [
     "east x8",
     "open gate",
@@ -1141,7 +1149,7 @@
     "north x6",
     "open gate",
     "north x9",
-    "open north",
+    "pass through the locked north (PASS DOOR)",
     "north"
    ],
    "room": "Heroes Hall",
@@ -1149,7 +1157,10 @@
    "area": "Haze Battleground",
    "area_display": "Battleground (Haze)",
    "rooms_away": 43,
-   "status": "computed"
+   "status": "computed",
+   "needs": [
+    "pass door"
+   ]
   },
   {
    "name": "City Of LUD (Haze)",
@@ -1819,7 +1830,7 @@
   },
   {
    "name": "Descent to Hell (Strahd)",
-   "commands": "r w 7;open gate;r w 4;r s 2;e;s;e;r s 2;w;s;r d 2;r w 2;r n 3;e;s;open door;e;u;e;open door;s;open book;s",
+   "commands": "r w 7;open gate;r w 4;r s 2;e;s;e;r s 2;w;s;r d 2;r w 2;r n 3;e;s;unlock door;open door;e;u;e;open door;s;open book;s",
    "steps": [
     "west x7",
     "open gate",
@@ -1836,6 +1847,7 @@
     "north x3",
     "east",
     "south",
+    "unlock door (it is locked: key 13006)",
     "open door",
     "east",
     "up",
@@ -1850,7 +1862,10 @@
    "area": "Strahd Descent to Hell",
    "area_display": "Descent to Hell (Strahd)",
    "rooms_away": 34,
-   "status": "computed"
+   "status": "computed",
+   "needs": [
+    "key 13006"
+   ]
   },
   {
    "name": "Town Of Solace (Strahd)",
@@ -5256,7 +5271,7 @@
    "trains": false,
    "room": "A dark cell.",
    "vnum": 4346,
-   "commands": "r n 2;r w 2;r n 4;d;e;s;open door;s;open door;s;open door;w",
+   "commands": "r n 2;r w 2;r n 4;d;e;s;open door;s;open door;s;w",
    "steps": [
     "north x2",
     "west x2",
@@ -5268,10 +5283,13 @@
     "south",
     "open door",
     "south",
-    "open door",
+    "pass through the locked door (PASS DOOR)",
     "west"
    ],
-   "rooms_away": 14
+   "rooms_away": 14,
+   "needs": [
+    "pass door"
+   ]
   },
   {
    "name": "Grill the missionary of breas (Temple of Breas)",
@@ -7119,18 +7137,22 @@
    "trains": true,
    "room": "The Cleric's Hold",
    "vnum": 20110,
-   "commands": "r e 8;open gate;r e 2;r n 2;open gate;r n 7;open up;u",
+   "commands": "r e 8;open gate;r e 2;r n 2;unlock gate;open gate;r n 7;open up;u",
    "steps": [
     "east x8",
     "open gate",
     "east x2",
     "north x2",
+    "unlock gate (it is locked: key 20100)",
     "open gate",
     "north x7",
     "open up",
     "up"
    ],
-   "rooms_away": 20
+   "rooms_away": 20,
+   "needs": [
+    "key 20100"
+   ]
   }
  ],
  "places": [

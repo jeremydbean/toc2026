@@ -1157,8 +1157,12 @@ def _oracle_cache_key(player: str, question: str):
         except OSError:
             return None
     prof = parse_player_file(player) or {}
+    # The guild too: it decides what a character may learn and from whom.
+    # The asker's ABILITIES, which the game sends with the question, are
+    # folded in by oracle.poll_once, the one place that has them.
     return "|".join((ql, str(prof.get("class_name", "")).lower(),
-                     str(prof.get("race", "")).lower(), str(prof.get("level", ""))))
+                     str(prof.get("race", "")).lower(), str(prof.get("level", "")),
+                     str(prof.get("guild_name", "")).lower()))
 
 
 def _oracle_provider(player: str, question: str, state: Optional[Dict[str, Any]] = None):
@@ -1608,6 +1612,7 @@ def parse_player_file(name: str) -> dict | None:
         "skills": [], "affects": [],
         "equipment": [],  # worn items (Wear >= 0)
         "inventory": [],  # carried items (Wear == -1)
+        "stash": [],      # the objects after #STASH
     }
 
     try:
@@ -1615,32 +1620,54 @@ def parse_player_file(name: str) -> dict | None:
     except Exception:
         return None
 
+    # The file is sections, in save.c's order: #PLAYER ... End, the
+    # carried objects (#O ... End), the pet (#PET ... End), #STASH and the
+    # stash's objects, #END. Each section is tracked on its own: the player
+    # block used to stay open until an #O happened to close it, so a
+    # character carrying nothing read their pet's Name, HMV and Attr as
+    # their own (audit, 2026-10-21).
     in_player = False
     in_object = False
+    in_stash = False
     cur_obj: dict[str, Any] = {}
     collecting_desc = False
     desc_lines: list[str] = []
 
+    def file_object(obj: dict) -> None:
+        if in_stash:
+            data["stash"].append(obj)
+        elif obj.get("wear", -1) >= 0:
+            data["equipment"].append(obj)
+        else:
+            data["inventory"].append(obj)
+
     for line in text.splitlines():
         ls = line.strip()
 
-        if ls == "#PLAYER":
+        if collecting_desc and in_player:
+            pass                     # a description line, whatever it holds
+        elif ls == "#PLAYER":
             in_player = True
             in_object = False
             continue
-
-        if ls == "#END":
+        elif ls == "#END":
             if in_object and cur_obj:
-                target = data["equipment"] if cur_obj.get("wear", -1) >= 0 else data["inventory"]
-                target.append(cur_obj)
+                file_object(cur_obj)
             break
-
-        if ls == "#O":
+        elif ls == "#O":
             if in_object and cur_obj:
-                target = data["equipment"] if cur_obj.get("wear", -1) >= 0 else data["inventory"]
-                target.append(cur_obj)
+                file_object(cur_obj)
             cur_obj = {}
             in_object = True
+            in_player = False
+            continue
+        elif ls.startswith("#") and not in_object:
+            # #PET, #STASH or anything newer: not the player's own fields.
+            in_player = False
+            if ls == "#STASH":
+                in_stash = True
+            continue
+        elif in_player and ls == "End":
             in_player = False
             continue
 
@@ -1654,8 +1681,7 @@ def parse_player_file(name: str) -> dict | None:
             elif k == "Lev"  and len(parts) >= 2: cur_obj["level"] = int(parts[1])
             elif k == "End":
                 if cur_obj:
-                    target = data["equipment"] if cur_obj.get("wear", -1) >= 0 else data["inventory"]
-                    target.append(cur_obj)
+                    file_object(cur_obj)
                 cur_obj = {}
                 in_object = False
             continue
@@ -1784,6 +1810,7 @@ def parse_player_file(name: str) -> dict | None:
 
     # Don't expose inventory — can be 500+ items and is not used by the UI
     del data["inventory"]
+    del data["stash"]
 
     return data
 
@@ -4184,6 +4211,14 @@ def _gear_container_reachable(cont_vnum: int, level: int, depth: int = 0):
     except (IndexError, TypeError, ValueError):
         key_vnum = 0
     if locked and key_vnum > 0 and not _gear_obtainable_key(key_vnum, level, depth):
+        return None
+    # Locked with no key and pickproof: UNLOCK wants a key and PICK refuses
+    # it, so nothing a player does opens it (audit, 2026-10-21).
+    try:
+        pickproof = bool(parse_flag_value(cont.values[1]) & flag_bit("B"))
+    except (IndexError, TypeError, ValueError):
+        pickproof = False
+    if locked and key_vnum <= 0 and pickproof:
         return None
     for room in getattr(parser, "rooms", {}).values():
         if cont_vnum in getattr(room, "objects", []) and _gear_room_open(room, level):
