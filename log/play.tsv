@@ -3398,3 +3398,143 @@
 1792630130	cmd	Trentlin	49	5206	oldthalo.are	standing	100	0	-	exits		Obvious exits:
 1792630131	cmd	Trentlin	49	5212	oldthalo.are	standing	100	0	-	south		A side street
 1792630133	cmd	Trentlin	49	5212	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630136	cmd	Trentlin	49	5213	oldthalo.are	standing	100	0	-	south		A side street
+1792630136	cmd	Trentlin	49	5213	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630138	cmd	Trentlin	49	5214	oldthalo.are	standing	100	0	-	south		A side street
+1792630139	cmd	Trentlin	49	5214	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630140	cmd	Trentlin	49	5229	oldthalo.are	standing	100	0	-	south		An abandoned shop
+1792630142	cmd	Trentlin	49	5214	oldthalo.are	standing	100	0	-	north		A side street
+1792630142	cmd	Trentlin	49	5218	oldthalo.are	standing	100	0	-	west		A back alley
+1792630144	cmd	Trentlin	49	5218	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630144	cmd	Trentlin	49	5215	oldthalo.are	standing	100	0	-	west		Under a ruined watchtower
+1792630144	cmd	Trentlin	49	5215	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630145	cmd	Trentlin	49	5218	oldthalo.are	standing	100	0	-	east		A back alley
+1792630145	cmd	Trentlin	49	5214	oldthalo.are	standing	100	0	-	east		A side street
+1792630146	cmd	Trentlin	49	5251	oldthalo.are	standing	100	0	-	east		A back alley
+1792630147	cmd	Trentlin	49	5252	oldthalo.are	standing	100	0	-	east		Under a ruined watchtower
+1792630148	cmd	Trentlin	49	5253	oldthalo.are	standing	100	0	-	north		A back alley
+1792630148	cmd	Trentlin	49	5255	oldthalo.are	standing	100	0	-	north		A back alley
+1792630149	cmd	Trentlin	49	5201	oldthalo.are	standing	100	0	-	north		Main Street
+1792630150	cmd	Trentlin	49	5255	oldthalo.are	standing	100	0	-	south		A back alley
+1792630150	cmd	Trentlin	49	5255	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630151	cmd	Trentlin	49	5201	oldthalo.are	standing	100	0	-	north		Main Street
+1792630152	cmd	Trentlin	49	5239	oldthalo.are	standing	100	0	-	north		A back alley
+1792630153	cmd	Trentlin	49	5239	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630153	cmd	Trentlin	49	5240	oldthalo.are	standing	100	0	-	north		A back alley
+1792630154	cmd	Trentlin	49	5240	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630155	cmd	Trentlin	49	5241	oldthalo.are	standing	100	0	-	north		Under a watchtower
+1792630155	cmd	Trentlin	49	5243	oldthalo.are	standing	100	0	-	west		A back alley
+1792630157	cmd	Trentlin	49	5242	oldthalo.are	standing	100	0	-	south		A bath house
+1792630159	cmd	Trentlin	49	5243	oldthalo.are	standing	100	0	-	north		A back alley
+1792630159	cmd	Trentlin	49	5209	oldthalo.are	standing	100	0	-	west		A Side Street
+1792630160	cmd	Trentlin	49	5210	oldthalo.are	standing	100	0	-	south		A Side Street
+1792630161	cmd	Trentlin	49	5210	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630164	cmd	Trentlin	49	5211	oldthalo.are	standing	100	0	-	south		A Side Street
+1792630165	cmd	Trentlin	49	5211	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630166	cmd	Trentlin	49	5204	oldthalo.are	standing	100	0	-	south		A Garden Path
+1792630167	cmd	Trentlin	49	5204	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630167	cmd	Trentlin	49	5204	oldthalo.are	standing	100	0	-	recall		The gods are listening to somebody else just now.
+1792630170	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792630171	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1792630171	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota
+1792630173	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792630174	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792630174	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792630174	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792630175	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792630175	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792630175	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792630176	cmd	Trentlin	49	9669	newthalo.are	standing	100	0	-	run	e 21	Eastern Oak Tree Square.
+1792630178	cmd	Trentlin	49	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos
+1792630179	cmd	Trentlin	49	9524	newthalo.are	standing	100	0	-	east		West Main Street
+1792630222	cmd	Trentlin	49	2420	dresden_halloween.are	standing	100	0	-	run	w 21	Inside the West Gate of New Thalos
+1792630223	cmd	Trentlin	49	2403	dresden_halloween.are	standing	100	0	-	west		Eastern Oak Tree Square.
+1792630224	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	west		Oak Tree Square on Hallows Eve
+1792630224	cmd	Trentlin	49	2405	dresden_halloween.are	standing	100	0	-	west		Western Oak Tree Square.
+1792630224	cmd	Trentlin	49	2433	dresden_halloween.are	standing	100	1	-	west		Temple Boulevard.
+1792630225	cmd	Trentlin	49	2405	dresden_halloween.are	standing	100	0	-	east		Western Oak Tree Square.
+1792630225	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	east		Oak Tree Square on Hallows Eve
+1792630228	cmd	Trentlin	49	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square.
+1792630228	cmd	Trentlin	49	2426	dresden_halloween.are	standing	100	0	-	open	east	Ok.
+1792630228	cmd	Trentlin	49	3502	midennir_halloween.are	standing	100	0	-	run	e 3	Outside the Eastern Gates of Dresden.
+1792630229	cmd	Trentlin	49	5258	oldthalo.are	standing	100	0	-	run	s 4	The dwarf forest
+1792630231	cmd	Trentlin	49	5257	oldthalo.are	standing	100	0	-	west		A trail at the end of the dwarf forest
+1792630231	cmd	Trentlin	49	5256	oldthalo.are	standing	100	0	-	west		A trail at the end of the dwarf forest
+1792630232	cmd	Trentlin	49	5200	oldthalo.are	standing	100	0	-	west		The Grand Gate of Thalos
+1792630233	cmd	Trentlin	49	5201	oldthalo.are	standing	100	0	-	west		Main Street
+1792630247	cmd	Trentlin	49	5255	oldthalo.are	standing	100	0	-	south		A back alley
+1792630248	cmd	Trentlin	49	5253	oldthalo.are	standing	100	0	-	south		A back alley
+1792630250	cmd	Trentlin	49	5255	oldthalo.are	standing	100	0	-	north		A back alley
+1792630251	cmd	Trentlin	49	5235	oldthalo.are	standing	100	0	-	west		A small guard house
+1792630254	cmd	Trentlin	49	5255	oldthalo.are	standing	100	0	-	east		A back alley
+1792630254	cmd	Trentlin	49	5253	oldthalo.are	standing	100	0	-	south		A back alley
+1792630255	cmd	Trentlin	49	5253	oldthalo.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792630255	cmd	Trentlin	49	5252	oldthalo.are	standing	100	0	-	south		Under a ruined watchtower
+1792630255	cmd	Trentlin	49	5251	oldthalo.are	standing	100	0	-	west		A back alley
+1792630256	cmd	Trentlin	49	5214	oldthalo.are	standing	100	0	-	west		A side street
+1792630258	cmd	Trentlin	49	5214	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630260	cmd	Trentlin	49	5218	oldthalo.are	standing	100	0	-	west		A back alley
+1792630261	cmd	Trentlin	49	5215	oldthalo.are	standing	100	0	-	west		Under a ruined watchtower
+1792630263	cmd	Trentlin	49	5216	oldthalo.are	standing	100	0	-	north		A back alley
+1792630264	cmd	Trentlin	49	5217	oldthalo.are	standing	100	0	-	north		The meat stand
+1792630266	cmd	Trentlin	49	5217	oldthalo.are	standing	100	0	-	get	all	You get The Crown of Eclipse.
+1792630268	cmd	Trentlin	49	5217	oldthalo.are	standing	100	0	-	drop	ven	You drop a chunk of venison.
+1792630269	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792630270	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792630270	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792630271	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792630271	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792630271	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792630272	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792630272	cmd	Trentlin	49	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792630272	cmd	Trentlin	49	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792630272	cmd	Trentlin	49	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792630273	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792630274	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	1	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792630278	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	aquest	gamble no	Wise choice. You safely collect 31 quest points.
+1792630280	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792630283	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	aquest	points	Quest Points: 1676
+1792630290	cmd	Trentlin	49	42	connect.are	standing	100	0	-	run	e 20	Eastern Oak Tree Square.
+1792630290	cmd	Trentlin	49	9795	newthalo.are	standing	100	0	-	run	e 20	Outside the West Gate of New Thalos
+1792630292	cmd	Trentlin	49	9794	newthalo.are	standing	100	0	-	west		Near the shore
+1792630292	cmd	Trentlin	49	41	connect.are	standing	100	0	-	north		The new pier
+1792630292	cmd	Trentlin	49	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier
+1792630293	cmd	Trentlin	49	16001	pirate.are	standing	100	0	-	north		Along the Pier
+1792630293	cmd	Trentlin	49	16002	pirate.are	standing	100	0	-	north		Along the Pier
+1792630294	cmd	Trentlin	49	16003	pirate.are	standing	100	0	-	north		Along the Pier
+1792630294	cmd	Trentlin	49	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier
+1792630296	cmd	Trentlin	49	16004	pirate.are	standing	100	0	-	kill	dr	The drunk pirate parries your attack.
+1792630300	cmd	Trentlin	49	16004	pirate.are	fighting	100	0	fight	smite		Your smite === OBLITERATES === The drunk pirate!
+1792630308	cmd	Trentlin	49	16004	pirate.are	standing	100	0	-	look		A Turn at the Pier
+1792630309	cmd	Trentlin	49	16004	pirate.are	standing	100	0	-	score		--------------------------------------------------------------
+1792630311	cmd	Trentlin	49	16004	pirate.are	standing	100	0	-	look		A Turn at the Pier
+1792630312	cmd	Trentlin	49	16005	pirate.are	standing	100	0	-	east		Plankway to the Royal Eagle
+1792630314	cmd	Trentlin	49	16021	pirate.are	standing	100	0	-	up		Entrance to the Royal Eagle - Main Deck
+1792630316	cmd	Trentlin	49	16021	pirate.are	standing	100	0	-	kill	swa	Your cleave devastates The swashbuckler!
+1792630319	cmd	Trentlin	49	16021	pirate.are	fighting	100	0	fight	smite		Your smite misses The swashbuckler.
+1792630338	cmd	Trentlin	49	16021	pirate.are	fighting	99	0	fight	smite		Your smite injures The swashbuckler.
+1792630348	cmd	Trentlin	49	16021	pirate.are	fighting	99	0	fight	smite		Your smite ^^^ DESTROYS ^^^ The swashbuckler!
+1792630357	cmd	Trentlin	49	16021	pirate.are	standing	99	0	-	smite		Smite whom?
+1792630357	cmd	Trentlin	49	16021	pirate.are	standing	99	0	-	scan		The sailor                         -to the East.
+1792630360	cmd	Trentlin	49	16021	pirate.are	standing	99	0	-	score		--------------------------------------------------------------
+1792630374	cmd	Trentlin	49	16021	pirate.are	standing	99	0	-	scan		The sailor                         -to the East.
+1792630375	cmd	Trentlin	49	16022	pirate.are	standing	99	0	-	east		Main Deck
+1792630376	cmd	Trentlin	49	16023	pirate.are	standing	99	0	-	east		Main Deck
+1792630378	cmd	Trentlin	49	16028	pirate.are	standing	99	0	-	north		Main Deck
+1792630379	cmd	Trentlin	49	16023	pirate.are	standing	99	0	-	south		Main Deck
+1792630379	cmd	Trentlin	49	16018	pirate.are	standing	99	0	-	south		Main Deck of the Royal Eagle
+1792630381	cmd	Trentlin	49	16018	pirate.are	standing	99	0	-	kill	swas	Your cleave wounds The swashbuckler.
+1792630385	cmd	Trentlin	49	16018	pirate.are	fighting	99	0	fight	smite		Your smite decimates The swashbuckler!
+1792630393	cmd	Trentlin	49	16018	pirate.are	fighting	99	0	fight	smite		Your smite misses The swashbuckler.
+1792630400	cmd	Trentlin	49	16018	pirate.are	fighting	99	0	fight	wear	lan	You stop using A Tin Axe.
+1792630402	cmd	Trentlin	49	16018	pirate.are	fighting	99	0	fight	smite		Your smite ^^^ DESTROYS ^^^ The swashbuckler!
+1792630414	cmd	Trentlin	49	16018	pirate.are	fighting	99	0	fight	smite		Your smite wounds The swashbuckler.
+1792630421	cmd	Trentlin	49	16018	pirate.are	standing	99	0	-	scan		The drunk pirate                   -to the North.
+1792630422	cmd	Trentlin	49	16018	pirate.are	standing	99	0	-	south		Alas, you cannot go that way.
+1792630424	cmd	Trentlin	49	16023	pirate.are	standing	99	0	-	north		Main Deck
+1792630424	cmd	Trentlin	49	16028	pirate.are	standing	99	0	-	north		Main Deck
+1792630425	cmd	Trentlin	49	16033	pirate.are	standing	99	0	-	north		Base of the Mast
+1792630427	cmd	Trentlin	49	16078	pirate.are	standing	99	0	-	up		The Mast
+1792630427	cmd	Trentlin	49	16079	pirate.are	standing	99	0	-	east		Out on the Mast
+1792630429	cmd	Trentlin	49	16079	pirate.are	standing	99	0	-	kill	swa	The swashbuckler parries your attack.
+1792630433	cmd	Trentlin	49	16079	pirate.are	fighting	99	0	fight	smite		Your smite misses The swashbuckler.
