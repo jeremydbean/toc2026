@@ -3427,6 +3427,19 @@ the old code. The rules they leave:
   want of a lock would be worse than the rare lost line;
   and `toc.ps1 update` finishes in the newly pulled launcher, as `toc.sh`
   does. PROJECT already calls `do_return` (lead U10 was wrong).
+- **Nothing the game keeps is rewritten in place** (owner, 2026-10-22:
+  "use your best judgement"). The note board, the ban list, the wizlist
+  and the trims of the channel, login and play journals write
+  `<file>.tmp` and go through `temp_file_commit`, so a crash or a full
+  disk mid-write keeps the old file -- a truncated `ban.txt` lifted every
+  ban. A new writer of a whole file does the same.
+- **`toc-state-sync` copies nothing while a deploy holds
+  `/run/toc-deploy.lock`**: it takes the lock shared and non-blocking for
+  the copy alone (opened read-only, since `toc-deploy` creates it as
+  root), skips the run if a deploy has it, and lets go before the push.
+  A rollback extracting over the live tree could otherwise be copied half
+  written. Snoop showing alias bodies and LOG <name> recording a
+  character in full are staff tools working as meant (owner, 2026-10-22).
 
 ## Completion Standard
 

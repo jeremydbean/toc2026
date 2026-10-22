@@ -4630,7 +4630,8 @@ static void login_journal_trim( void )
     if ( total <= LOGIN_JOURNAL_MAX )
         return;
 
-    fp = fopen( LOGIN_JOURNAL_FILE, "w" );
+    /* Written aside and renamed over, as the channel journal is. */
+    fp = fopen( LOGIN_JOURNAL_FILE ".tmp", "w" );
     if ( fp == NULL )
         return;
 
@@ -4641,7 +4642,7 @@ static void login_journal_trim( void )
 
         fputs( kept[slot], fp );
     }
-    fclose( fp );
+    temp_file_commit( fp, LOGIN_JOURNAL_FILE ".tmp", LOGIN_JOURNAL_FILE );
 }
 
 

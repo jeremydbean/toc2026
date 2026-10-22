@@ -4,6 +4,7 @@ Each test here failed on the code before its fix.
 """
 from __future__ import annotations
 
+import os
 import re
 import unittest
 
@@ -202,6 +203,99 @@ class ResetPwdTrustTests(unittest.TestCase):
         self.assertEqual(before, after, "a refused reset changed the file")
         self.assertNotIn("above your level", none)
         self.assertNotIn("could not be read", none)
+
+
+def full(path) -> None:
+    """Make `path` a file every write to fails, as a full disk does."""
+    if path.exists() or path.is_symlink():
+        path.unlink()
+    path.symlink_to("/dev/full")
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class RewriteInPlaceTests(unittest.TestCase):
+    def test_a_failed_write_keeps_the_note_board_and_the_ban_list(self) -> None:
+        """save_notes and ban_update truncated their file and wrote it
+        again in place, so a crash or a full disk part way through lost
+        the board or lifted every ban. They write aside and rename now;
+        the temp is a symlink to /dev/full, so the write fails where a
+        full disk fails it."""
+        with LiveMud() as mud:
+            make(mud, "Zboardkeep", Levl=70, Room=TEMPLE)
+            area = mud.root / "area"
+            with mud.connect(timeout=120) as staff:
+                login(staff, "Zboardkeep", PW)
+                for line in ("note to all", "note subject zfirstnote", "note + kept", "note send"):
+                    run(staff, line)
+                run(staff, "ban zfirstsite")
+                notes, bans = area / "notes.txt", area / "ban.txt"
+                kept = {notes: notes.read_bytes(), bans: bans.read_bytes()}
+                full(area / "notes.txt.tmp")
+                full(area / "ban.txt.tmp")
+                for line in ("note to all", "note subject zsecondnote", "note + lost", "note send"):
+                    run(staff, line)
+                run(staff, "ban zsecondsite")
+                staff.send("quit")
+                staff.wait_closed()
+            for path, before in kept.items():
+                self.assertFalse(path.is_symlink(), path.name)
+                self.assertEqual(path.read_bytes(), before, path.name)
+            self.assertIn(b"zfirstnote", kept[notes])
+            self.assertIn(b"zfirstsite", kept[bans])
+            written = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
+            self.assertIn("notes.txt is unchanged", written)
+            self.assertIn("ban.txt is unchanged", written)
+
+
+class StateSyncDeployLockTests(unittest.TestCase):
+    def test_the_sync_copies_nothing_while_a_deploy_holds_the_lock(self) -> None:
+        """toc-state-sync could copy the live tree while a deploy's
+        rollback was extracting over it. It now takes the deploy lock,
+        shared and non-blocking, for the copy, and skips the run if a
+        deploy holds it. Runs the real script against a local bare repo."""
+        import fcntl
+        import shutil
+        import subprocess
+        import tempfile
+        from pathlib import Path
+
+        if shutil.which("git") is None or shutil.which("flock") is None:
+            self.skipTest("needs git and flock")
+        script = Path(__file__).resolve().parent.parent / "deploy" / "windows-vm" / "toc-state-sync"
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            git = lambda *a, cwd=None: subprocess.run(  # noqa: E731
+                ["git", *a], cwd=cwd, check=True, capture_output=True)
+            bare, seed = root / "remote.git", root / "seed"
+            git("init", "--bare", "-b", "main", str(bare))
+            git("clone", str(bare), str(seed))
+            (seed / "README").write_text("seed\n")
+            git("-c", "user.name=t", "-c", "user.email=t@t", "add", "README", cwd=seed)
+            git("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "seed", cwd=seed)
+            git("push", "-q", "origin", "HEAD:main", cwd=seed)
+            live = root / "live"
+            (live / "player").mkdir(parents=True)
+            (live / "player" / "Zsynced").write_text("#PLAYER\nName Zsynced~\nEnd\n")
+            key = root / "key"
+            key.write_text("not a key\n")
+            lock = root / "deploy.lock"
+            lock.write_text("")
+            env = dict(os.environ, TOC_ROOT=str(live), STATE_REPO=str(root / "state"),
+                       REMOTE=str(bare), BRANCH="main", GIT_SSH_KEY=str(key),
+                       LOCK_FILE=str(root / "sync.lock"), TOC_DEPLOY_LOCK=str(lock))
+
+            with open(lock, "w") as held:
+                fcntl.flock(held, fcntl.LOCK_EX)
+                busy = subprocess.run(["sh", str(script)], env=env, capture_output=True, text=True)
+            free = subprocess.run(["sh", str(script)], env=env, capture_output=True, text=True)
+            log = subprocess.run(["git", "--git-dir", str(bare), "log", "--format=%s", "main"],
+                                 capture_output=True, text=True, check=True).stdout
+
+        self.assertEqual(busy.returncode, 0, busy.stderr)
+        self.assertIn("a deploy is running", busy.stdout)
+        self.assertEqual(free.returncode, 0, free.stderr)
+        self.assertIn("pushed", free.stdout)
+        self.assertEqual(log.count("State sync:"), 1, log)
 
 
 if __name__ == "__main__":

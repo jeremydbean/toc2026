@@ -2698,15 +2698,18 @@ void ban_update( void )
 
     reserve_release();
 
-    if( !(fp = fopen( BAN_FILE, "w" ) ) ) {
+    /* Written aside and renamed over: a crash mid-write truncated the
+       ban list in place and lifted every ban. */
+    if( !(fp = fopen( BAN_FILE ".tmp", "w" ) ) ) {
 	bug( "Ban_update: fopen of BAN_FILE failed",0);
+	fpReserve = fopen( NULL_FILE, "r" );
 	return;
     }
 
     for( pban = ban_list; pban; pban = pban->next )
 	fprintf( fp,"%s~\n", pban->name );
 
-    fclose( fp );
+    temp_file_commit( fp, BAN_FILE ".tmp", BAN_FILE );
     fpReserve = fopen( NULL_FILE, "r" );
 
     return;

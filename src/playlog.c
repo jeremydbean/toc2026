@@ -178,7 +178,9 @@ static void journal_trim( void )
             seen++;
     }
     fclose( in );
-    if ( fclose( out ) == 0 && rename( PLAY_JOURNAL_FILE ".tmp", PLAY_JOURNAL_FILE ) == 0 )
+    /* temp_file_commit checks the write as well as the close: a full disk
+       renamed a short journal over the whole one. */
+    if ( temp_file_commit( out, PLAY_JOURNAL_FILE ".tmp", PLAY_JOURNAL_FILE ) )
         journal_lines = PLAY_JOURNAL_KEEP;
 }
 

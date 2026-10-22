@@ -48,9 +48,11 @@ void save_wizlist(void)
 
     if (fpReserve != NULL)
         reserve_release();
-    if ( ( fp = fopen( WIZ_FILE, "w" ) ) == NULL )
+    /* Written aside and renamed over, so a crash mid-write keeps the
+       old list rather than an empty or half one. */
+    if ( ( fp = fopen( WIZ_FILE ".tmp", "w" ) ) == NULL )
     {
-        perror( WIZ_FILE );
+        perror( WIZ_FILE ".tmp" );
         fpReserve = fopen( NULL_FILE, "r" );
         return;
     }
@@ -61,10 +63,15 @@ void save_wizlist(void)
 	fprintf(fp,"%s %d\n",pwiz->name,pwiz->level);
      }
 
-     fclose(fp);
+     if (found)
+         temp_file_commit( fp, WIZ_FILE ".tmp", WIZ_FILE );
+     else
+     {
+         fclose(fp);
+         unlink(WIZ_FILE ".tmp");
+         unlink(WIZ_FILE);
+     }
      fpReserve = fopen( NULL_FILE, "r" );
-     if (!found)
-	unlink(WIZ_FILE);
 }
 
 void load_wizlist(void)

@@ -619,7 +619,9 @@ static void channel_journal_trim( void )
     if ( total <= CHANNEL_JOURNAL_MAX )
         return;
 
-    fp = fopen( CHANNEL_JOURNAL_FILE, "w" );
+    /* Written aside and renamed over: truncating in place lost the whole
+       journal to a crash or a full disk mid-write. */
+    fp = fopen( CHANNEL_JOURNAL_FILE ".tmp", "w" );
     if ( fp == NULL )
         return;
 
@@ -630,7 +632,7 @@ static void channel_journal_trim( void )
 
         fputs( kept[slot], fp );
     }
-    fclose( fp );
+    temp_file_commit( fp, CHANNEL_JOURNAL_FILE ".tmp", CHANNEL_JOURNAL_FILE );
 }
 
 
@@ -1824,9 +1826,11 @@ void save_notes( void )
     FILE *fp;
     NOTE_DATA *pnote;
 
-    if ( ( fp = fopen( NOTE_FILE, "w" ) ) == NULL )
+    /* Written aside and renamed over, so a crash or a full disk part way
+       through keeps the board as it was instead of truncating it. */
+    if ( ( fp = fopen( NOTE_FILE ".tmp", "w" ) ) == NULL )
     {
-        bug( "save_notes: cannot open " NOTE_FILE, 0 );
+        bug( "save_notes: cannot open " NOTE_FILE ".tmp", 0 );
         return;
     }
 
@@ -1840,7 +1844,7 @@ void save_notes( void )
         fprintf( fp, "Text\n%s\n~\n\n", pnote->text   ? pnote->text    : "" );
     }
 
-    fclose( fp );
+    temp_file_commit( fp, NOTE_FILE ".tmp", NOTE_FILE );
 }
 
 

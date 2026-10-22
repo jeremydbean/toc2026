@@ -84,6 +84,18 @@ cd "$STATE_REPO"
 git fetch --quiet origin "$BRANCH"
 git reset --quiet --hard "origin/$BRANCH"
 
+# Never copy while a deploy holds its lock: a rollback extracting over
+# the live tree could hand us a half-written custom.are. A shared lock,
+# held only for the copy (a second or two), so it never blocks a deploy
+# for longer than that; a deploy holding it skips this run, and the next
+# one, five minutes on, picks everything up. toc-deploy creates the lock
+# file as root, so it is opened read-only here.
+DEPLOY_LOCK="${TOC_DEPLOY_LOCK:-/run/toc-deploy.lock}"
+if [ -r "$DEPLOY_LOCK" ]; then
+    exec 8<"$DEPLOY_LOCK"
+    flock -n -s 8 || { echo "a deploy is running; skipping this sync"; exit 0; }
+fi
+
 for d in $STATE_DIRS; do
     [ -d "$TOC_ROOT/$d" ] || continue
     mkdir -p "$STATE_REPO/$d"
@@ -122,6 +134,9 @@ for f in $REPORT_FILES; do
         git rm --quiet "$f"
     fi
 done
+
+# Copied: let a deploy have the tree back before the slow part, the push.
+exec 8<&-
 
 for d in $STATE_DIRS; do
     [ -d "$STATE_REPO/$d" ] && git add -f -A "$d"

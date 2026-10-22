@@ -15,7 +15,9 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   free their output buffers, ANEW and quest payouts check their results,
   dashboard messages are ASCII, the shell's queue writes take the game's
   lock, and the PowerShell `update` finishes in the pulled launcher
-  (`tests/test_audit_leads.py`).
+  (`tests/test_audit_leads.py`). The note board, ban list, wizlist and
+  journal trims write aside and rename, so a failed write keeps the old
+  file, and the state sync skips a run while a deploy holds its lock.
 - **The 2026-10-22 audit, fixed** (28 findings; the report is summarised
   under "Contracts From The 2026-10-22 Audit" in AGENTS.md). A client that
   stops reading no longer freezes the game; a login uses the file as it is
