@@ -199,7 +199,10 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertIn('/ws/events', client_script.text)
             self.assertIn('Server activity', game_client.text)
             self.assertIn('/api/auth/local', client_script.text)
-            self.assertIn(r"/\r\n|\n\r/g", client_script.text)
+            # Line breaks are paired across WebSocket frames now (audit,
+            # 2026-10-22), not by a regex within one frame; the pairing's
+            # behaviour is tests/test_client_decode.js.
+            self.assertIn("state.newlineCarry = char;", client_script.text)
             self.assertIn('if (typeof command !== "string") return false;', client_script.text)
             self.assertIn("sendTypedLine(input.value)", client_script.text)
             self.assertIn('state.secretInput || !command.includes(";")', client_script.text)
