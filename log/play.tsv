@@ -3538,3 +3538,41 @@
 1792630427	cmd	Trentlin	49	16079	pirate.are	standing	99	0	-	east		Out on the Mast
 1792630429	cmd	Trentlin	49	16079	pirate.are	standing	99	0	-	kill	swa	The swashbuckler parries your attack.
 1792630433	cmd	Trentlin	49	16079	pirate.are	fighting	99	0	fight	smite		Your smite misses The swashbuckler.
+1792630453	cmd	Trentlin	49	16079	pirate.are	fighting	99	0	fight	smite		Your smite ^^^ DESTROYS ^^^ The swashbuckler!
+1792630462	cmd	Trentlin	49	16079	pirate.are	fighting	99	0	fight	smite		Your smite *** DEVASTATES *** The swashbuckler!
+1792630471	cmd	Trentlin	49	16078	pirate.are	standing	99	0	-	west		The Mast
+1792630471	cmd	Trentlin	49	16081	pirate.are	standing	99	0	-	up		The Mast
+1792630471	cmd	Trentlin	49	16080	pirate.are	standing	99	0	-	west		Out on the Mast
+1792630472	cmd	Trentlin	49	16080	pirate.are	standing	99	0	-	skills		Level  1: axe                100%      dagger              89%      
+1792630476	cmd	Trentlin	49	16080	pirate.are	standing	99	0	-	kill	swas	Your pierce scratches The swashbuckler.
+1792630484	cmd	Trentlin	49	16080	pirate.are	fighting	99	0	fight	smite		Your smite misses The swashbuckler.
+1792630498	cmd	Trentlin	49	16080	pirate.are	fighting	99	0	fight	smite		Your smite misses The swashbuckler.
+1792630510	cmd	Trentlin	49	16080	pirate.are	fighting	99	0	fight	smite		Your smite *** DEMOLISHES *** The swashbuckler!
+1792630519	cmd	Trentlin	49	16080	pirate.are	fighting	99	0	fight	smite		Your smite hits The swashbuckler.
+1792630527	cmd	Trentlin	49	16081	pirate.are	standing	99	0	-	east		The Mast
+1792630529	cmd	Trentlin	49	16083	pirate.are	standing	99	0	-	up		Crow's Nest
+1792630532	cmd	Trentlin	49	16083	pirate.are	standing	99	0	-	consider	l	The Lookout says 'Do you feel lucky, punk?'.
+1792630533	cmd	Trentlin	49	16083	pirate.are	standing	99	0	-	kill	l	The Lookout parries your attack.
+1792630549	cmd	Trentlin	50	16083	pirate.are	fighting	99	0	fight	smite		You need to wield a weapon to smite.
+1792630573	cmd	Trentlin	50	16083	pirate.are	fighting	98	0	fight	get	la	You get the Gohma eye-lance.
+1792630575	cmd	Trentlin	50	16083	pirate.are	fighting	98	0	fight	wear	la	You wield the Gohma eye-lance.
+1792630577	cmd	Trentlin	50	16083	pirate.are	fighting	98	0	fight	smite		Your smite misses The Lookout.
+1792630588	cmd	Trentlin	50	16083	pirate.are	fighting	96	0	fight	smite		Your smite misses The Lookout.
+1792630600	cmd	Trentlin	50	16083	pirate.are	fighting	96	0	fight	smite		Your smite DISEMBOWELS The Lookout!
+1792630610	cmd	Trentlin	50	16083	pirate.are	fighting	96	0	fight	wear	ax	You wield A Tin Axe.
+1792630610	cmd	Trentlin	50	16083	pirate.are	fighting	96	0	fight	smite		Your smite misses The Lookout.
+1792630624	cmd	Trentlin	50	16083	pirate.are	fighting	96	0	fight	smite		Your smite *** DEVASTATES *** The Lookout!
+1792630637	cmd	Trentlin	50	16083	pirate.are	fighting	96	0	fight	smite		Your smite ^^^ DESTROYS ^^^ The Lookout!
+1792630651	cmd	Trentlin	50	16083	pirate.are	fighting	95	0	fight	smite		You need to wield a weapon to smite.
+1792630652	cmd	Trentlin	50	16083	pirate.are	fighting	95	0	fight	get	a	You get A Tin Axe.
+1792630653	cmd	Trentlin	50	16083	pirate.are	fighting	95	0	fight	wear	a	You wield A Tin Axe.
+1792630654	cmd	Trentlin	50	16083	pirate.are	fighting	95	0	fight	look		Crow's Nest
+1792630657	cmd	Trentlin	50	16083	pirate.are	fighting	95	0	fight	smite		Your smite grazes The Lookout.
+1792630670	cmd	Trentlin	50	16083	pirate.are	fighting	94	0	fight	smite		Your smite misses The Lookout.
+1792630684	cmd	Trentlin	50	16083	pirate.are	fighting	94	0	fight	smite		Your smite misses The Lookout.
+1792630694	cmd	Trentlin	50	16083	pirate.are	fighting	94	0	fight	smite		Your smite misses The Lookout.
+1792630705	cmd	Trentlin	50	16083	pirate.are	fighting	94	0	fight	smite		Your smite DISMEMBERS The Lookout!
+1792630713	cmd	Trentlin	50	16083	pirate.are	fighting	93	0	fight	smite		Your smite *** DEVASTATES *** The Lookout!
+1792630721	cmd	Trentlin	50	16083	pirate.are	fighting	93	0	fight	smite		Your smite *** DEVASTATES *** The Lookout!
+1792630731	cmd	Trentlin	50	16083	pirate.are	standing	93	0	-	look	in co	Corpse of The Lookout contains:
+1792630733	cmd	Trentlin	50	16083	pirate.are	standing	93	0	-	get	spy co	You get a spy-glass from corpse of The Lookout.
