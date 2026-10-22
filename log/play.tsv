@@ -3837,3 +3837,37 @@
 1792632248	cmd	Alaric	53	29212	korzath2.are	standing	50	0	-	look		Twist in the Maze
 1792632248	cmd	Alaric	53	29212	korzath2.are	fighting	49	0	fight	scan		an insane lieutenant               -to the North.
 1792632251	cmd	Alaric	53	29212	korzath2.are	fighting	49	0	fight	wear	exc	You stop using (Flaming) the Crystalline Sword of Justice.
+1792632279	cmd	Alaric	53	29212	korzath2.are	standing	47	0	-	wear	just	You stop using Excalibur.
+1792632280	cmd	Alaric	53	29212	korzath2.are	standing	47	0	-	look		Twist in the Maze
+1792632281	cmd	Alaric	53	29212	korzath2.are	fighting	47	0	fight	scan		an insane lieutenant               -to the North.
+1792632283	refused	Alaric	53	29212	korzath2.are	fighting	47	0	fight	bs	mad	No way!  You are still fighting!
+1792632284	cmd	Alaric	53	29212	korzath2.are	fighting	47	0	fight	worth		You have 981 platinum, 340 gold, 510 silver, 702 copper
+1792632331	cmd	Alaric	53	29212	korzath2.are	standing	43	0	-	scan		an insane lieutenant               -to the North.
+1792632337	cmd	Alaric	53	29212	korzath2.are	standing	43	0	-	wear	dip	You stop using the Crystalline Sceptre of Commanding.
+1792632339	cmd	Alaric	53	29211	korzath2.are	standing	43	0	-	south		Twist in the Maze
+1792632340	cmd	Alaric	53	29211	korzath2.are	standing	43	0	-	bs	sk	Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-303]
+1792632354	cmd	Alaric	53	29211	korzath2.are	standing	41	0	-	wear	exc	You stop using (Flaming) the Crystalline Sword of Justice.
+1792632355	cmd	Alaric	53	29211	korzath2.are	standing	41	0	-	bs	sk	Your backstab >>> ANNIHILATES <<< an Animated Skeleton! [-208]
+1792632374	cmd	Alaric	54	29211	korzath2.are	standing	41	0	-	wear	scep	You stop using a mud school diploma.
+1792632375	cmd	Alaric	54	29211	korzath2.are	standing	41	0	-	look		Twist in the Maze
+1792632377	cmd	Alaric	54	29210	korzath2.are	standing	41	0	-	east		Twist in the Maze
+1792632378	cmd	Alaric	54	29210	korzath2.are	standing	41	0	-	kill	sk	They aren't here.
+1792632380	cmd	Alaric	54	29210	korzath2.are	standing	41	0	-	scan		an Animated Skeleton               -to the South.
+1792632381	cmd	Alaric	54	29209	korzath2.are	standing	41	0	-	south		Twist in the Maze
+1792632382	cmd	Alaric	54	29209	korzath2.are	standing	41	0	-	kill	sk	An Animated Skeleton parries your attack.
+1792632389	cmd	Alaric	54	29209	korzath2.are	fighting	41	0	fight	get	just	I see no just here.
+1792632389	cmd	Alaric	54	29209	korzath2.are	fighting	40	0	fight	wear	just	You wield (Flaming) the Crystalline Sword of Justice.
+1792632389	cmd	Alaric	54	29209	korzath2.are	fighting	40	0	fight	wear	just	You do not have that item.
+1792632390	cmd	Alaric	54	29209	korzath2.are	fighting	40	0	fight	get	exc	You get Excalibur.
+1792632415	cmd	Alaric	54	29209	korzath2.are	standing	39	0	-	look		Twist in the Maze
+1792632417	cmd	Alaric	54	29209	korzath2.are	standing	39	0	-	bs	cl	Your backstab misses a killer clown. [-0]
+1792632462	cmd	Alaric	54	29209	korzath2.are	fighting	36	0	fight	worth		You have 994 platinum, 375 gold, 573 silver, 787 copper
+1792632485	cmd	Alaric	54	29209	korzath2.are	standing	35	0	-	score		--------------------------------------------------------------
+1792632486	cmd	Alaric	54	29209	korzath2.are	standing	35	0	-	wake		You are already standing.
+1792632487	cmd	Alaric	54	29209	korzath2.are	standing	35	0	-	look		Twist in the Maze
+1792632489	cmd	Alaric	54	29209	korzath2.are	standing	35	0	-	sacrifice	cor	The Gods give you 118 copper coins for your sacrifice.
+1792632490	cmd	Alaric	54	29209	korzath2.are	standing	35	0	-	sacrifice	cor	The Gods give you 112 copper coins for your sacrifice.
+1792632490	cmd	Alaric	54	29209	korzath2.are	standing	35	0	-	sacrifice	cor	You can't find it.
+1792632491	cmd	Alaric	54	29209	korzath2.are	standing	35	0	-	scan		a deranged madman                  -to the North.
+1792632496	cmd	Alaric	54	29210	korzath2.are	standing	35	0	-	north		Twist in the Maze
+1792632496	cmd	Alaric	54	29210	korzath2.are	standing	35	0	-	bs	mad	Your backstab misses a deranged madman. [-0]
