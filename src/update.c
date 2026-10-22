@@ -1388,6 +1388,7 @@ void char_update( void )
     {
         AFFECT_DATA *paf;
         AFFECT_DATA *paf_next;
+        bool expired = false;
 
         if(ch->in_object == NULL)
             in_room = ch->in_room;
@@ -1825,6 +1826,7 @@ void char_update( void )
 		   affect itself now, through APPLY_IMMUNITY, so it lifts
 		   with the ward and needs no sweeping. */
 		affect_remove( ch, paf );
+		expired = true;
 		/* An iron skin sweep stood here, stripping a bash, pierce or
 		   slash immunity from anyone not under iron skin whenever any
 		   affect expired -- a golem's own, a blind wearing off. Iron
@@ -1832,6 +1834,20 @@ void char_update( void )
 		   affect_remove lifts it and nothing needs sweeping. */
 
 	    }
+	}
+
+	/* A buff that raised a maximum takes what it gave with it. The
+	   regeneration above already ran this tick, so a TITANIC that ran out
+	   here left its holder thousands of hit points over the new maximum
+	   until the next tick -- or for good under AFF2_NO_RECOVER -- and the
+	   play journal's check read it as an anomaly. Only expiry clamps:
+	   affect_join and a recast remove and re-add, and must not cost the
+	   pool in between. */
+	if ( expired )
+	{
+	    if ( ch->hit  > ch->max_hit )  ch->hit  = ch->max_hit;
+	    if ( ch->mana > ch->max_mana ) ch->mana = ch->max_mana;
+	    if ( ch->move > ch->max_move ) ch->move = ch->max_move;
 	}
 
 	/*
