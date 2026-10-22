@@ -10626,6 +10626,7 @@ static void prestore_stash( CHAR_DATA *ch, const char *capname,
     DESCRIPTOR_DATA offline_desc;
     CHAR_DATA *victim;
     char buf[MAX_STRING_LENGTH];
+    char why[MAX_INPUT_LENGTH];
     bool logging_in = false;
     bool offline = false;
     int added;
@@ -10662,11 +10663,20 @@ static void prestore_stash( CHAR_DATA *ch, const char *capname,
     /* A copy of them as they are, in case this was the mistake. */
     player_snapshot_milestone( victim, "stashrestore", true );
 
-    added = stash_restore_from_file( victim, srcpath );
+    /* All or nothing: a snapshot whose stash does not read back whole
+       adds nothing, so a retry cannot duplicate a partial restore. */
+    added = stash_restore_from_file( victim, srcpath, why, sizeof(why) );
     if ( added < 0 )
     {
-        bug( "prestore_stash: cannot read snapshot", 0 );
-        send_to_char( "Error: cannot read snapshot file.\n\r", ch );
+        bug( "prestore_stash: the snapshot's stash could not be restored", 0 );
+        snprintf( buf, sizeof(buf),
+                  "Nothing was restored: %s's stash in %s %s. "
+                  "Their stash is unchanged.\n\r", capname, version, why );
+        send_to_char( buf, ch );
+        snprintf( buf, sizeof(buf),
+                  "%s's stash restore for %s from %s refused: %s",
+                  ch->name, capname, version, why );
+        log_string( buf );
         if ( offline )
             extract_char( victim, true );
         return;
@@ -10931,9 +10941,17 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
            this one. do_prestore unpins it on every way out. */
         player_snapshot_pin( versions[n - 1] );
 
-        /* Only the stash, onto the character as they are now. */
+        /* Only the stash, onto the character as they are now -- and,
+           as for the whole file, never from a snapshot that is not whole:
+           the STASH form skipped this check, and a copy cut inside a
+           number took the game down (audit, 2026-10-22). */
         if ( !str_cmp( arg3, "stash" ) )
         {
+            if ( !prestore_snapshot_complete( srcpath ) )
+            {
+                send_to_char( "That snapshot is incomplete (no #END); nothing was restored.\n\r", ch );
+                return;
+            }
             prestore_stash( ch, capname, srcpath, versions[n - 1] );
             return;
         }
@@ -12556,8 +12574,28 @@ void do_resetpwd( CHAR_DATA *ch, char *argument )
         }
     }
 
-    fclose( fpin );
-    fclose( fpout );
+    /*
+     * Both ends checked before anything replaces the file. On a full disk
+     * fclose is the write that fails, and renaming what it left made a
+     * 0-byte player file: "Password ... has been reset" and a character
+     * nobody could log in as (audit, 2026-10-22). A read that stopped
+     * early would have cut the file short the same way.
+     */
+    {
+        bool read_ok  = !ferror( fpin );
+        bool write_ok;
+
+        fclose( fpin );
+        write_ok = file_write_finished( fpout );
+        if ( !read_ok || !write_ok )
+        {
+            remove( tmpname );
+            bug( "do_resetpwd: the new player file could not be written; the old one is kept.", 0 );
+            send_to_char( "Failed to write the new player file (is the disk full?).  "
+                          "The password was not changed and the old file is untouched.\n\r", ch );
+            return;
+        }
+    }
 
     if ( !found_pass )
     {

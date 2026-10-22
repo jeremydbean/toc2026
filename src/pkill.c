@@ -49,12 +49,14 @@ void save_pkills(void)
             ptr->pkills_given);
   }
   fprintf(fp,"%s\n","$");
-  fclose(fp);
+  /* Only a whole file replaces the standings: on a full disk fclose is
+     the write that fails, and renaming what it left wiped them (audit,
+     2026-10-22). temp_file_commit removes the temp and keeps the old. */
+  if ( !temp_file_commit( fp, PKILLFILE ".tmp", PKILLFILE ) )
+    log_string( "save_pkills: the pkill file could not be written; the old one is kept." );
+  else if ( stat( PKILLFILE, &file_stats ) != 0 )
+    log_string ( "PKILLFILE is not there after the rename." );
   fpReserve = fopen( NULL_FILE, "r");
-  if ( stat( PKILLFILE ".tmp", &file_stats ) != 0 )
-    log_string ( "PKILLFILE is not there... (temp version) to be copied." );
-  else
-    rename( PKILLFILE ".tmp", PKILLFILE );
 }
 
 void update_pkills(CHAR_DATA *ch)

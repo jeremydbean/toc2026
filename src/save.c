@@ -73,6 +73,64 @@ static bool apply_chgrp    args( ( const char *path ) );
 #endif
 
 
+/*
+ * Close a file that was written, and say whether every byte reached it.
+ * fprintf only fills a buffer: on a full disk the write that fails is the
+ * one fclose makes, so a writer that ignores fclose's answer goes on to
+ * rename an empty file over the good one (audit, 2026-10-22).
+ */
+bool file_write_finished( FILE *fp )
+{
+    bool ok = true;
+
+    if ( fp == NULL )
+        return false;
+    if ( ferror( fp ) )
+        ok = false;
+    if ( fflush( fp ) != 0 )
+        ok = false;
+    if ( fclose( fp ) != 0 )
+        ok = false;
+    return ok;
+}
+
+/*
+ * Finish a file written aside and move it over the real one -- only if it
+ * was written whole. Otherwise the temp goes, the old file stays exactly
+ * as it was, a bug line says so, and the answer is false. Every writer
+ * that renames a temp into place goes through this or does the same.
+ */
+bool temp_file_commit( FILE *fp, const char *temp_path, const char *path )
+{
+    char buf[MAX_STRING_LENGTH];
+    int err;
+
+    if ( !file_write_finished( fp ) )
+    {
+        err = errno;
+        remove( temp_path );
+        snprintf( buf, sizeof(buf),
+                  "Write failed: %s could not be written (%s); %s is unchanged.",
+                  temp_path, strerror( err ), path );
+        log_string( buf );
+        bug( "temp_file_commit: a write failed; the old file is kept.", 0 );
+        return false;
+    }
+    if ( rename( temp_path, path ) != 0 )
+    {
+        err = errno;
+        remove( temp_path );
+        snprintf( buf, sizeof(buf),
+                  "Write failed: %s could not replace %s (%s).",
+                  temp_path, path, strerror( err ) );
+        log_string( buf );
+        bug( "temp_file_commit: a rename failed; the old file is kept.", 0 );
+        return false;
+    }
+    return true;
+}
+
+
 #if defined(unix) && defined(CHGRP_TO)
 static bool can_chgrp( void )
 {
@@ -1361,6 +1419,176 @@ CHAR_DATA *offline_player_load( DESCRIPTOR_DATA *d, const char *name,
     return ch;
 }
 
+/* Whether an object may sit in this wear slot: WEAR's own rules, where
+   SECONDARY puts a second weapon in the shield slot. */
+static bool load_slot_takes( OBJ_DATA *obj, int slot )
+{
+    switch ( slot )
+    {
+    case WEAR_LIGHT:    return obj->item_type == ITEM_LIGHT;
+    case WEAR_FINGER_L:
+    case WEAR_FINGER_R: return CAN_WEAR( obj, ITEM_WEAR_FINGER );
+    case WEAR_NECK_1:
+    case WEAR_NECK_2:   return CAN_WEAR( obj, ITEM_WEAR_NECK );
+    case WEAR_BODY:     return CAN_WEAR( obj, ITEM_WEAR_BODY );
+    case WEAR_HEAD:     return CAN_WEAR( obj, ITEM_WEAR_HEAD );
+    case WEAR_LEGS:     return CAN_WEAR( obj, ITEM_WEAR_LEGS );
+    case WEAR_FEET:     return CAN_WEAR( obj, ITEM_WEAR_FEET );
+    case WEAR_HANDS:    return CAN_WEAR( obj, ITEM_WEAR_HANDS );
+    case WEAR_ARMS:     return CAN_WEAR( obj, ITEM_WEAR_ARMS );
+    case WEAR_SHIELD:   return CAN_WEAR( obj, ITEM_WEAR_SHIELD )
+                            || CAN_WEAR( obj, ITEM_WIELD );
+    case WEAR_ABOUT:    return CAN_WEAR( obj, ITEM_WEAR_ABOUT );
+    case WEAR_WAIST:    return CAN_WEAR( obj, ITEM_WEAR_WAIST );
+    case WEAR_WRIST_L:
+    case WEAR_WRIST_R:  return CAN_WEAR( obj, ITEM_WEAR_WRIST );
+    case WEAR_WIELD:    return CAN_WEAR( obj, ITEM_WIELD );
+    case WEAR_HOLD:     return CAN_WEAR( obj, ITEM_HOLD );
+    default:            return false;
+    }
+}
+
+/*
+ * Take off, at load, whatever the character could not put on now.
+ *
+ * fread_obj restores a saved Wear slot as it finds it, and two October
+ * changes alter worn objects underneath it: a retired object comes back as
+ * its replacement (Ganon's Blue Ring as the shop's), and the Blue Ring is
+ * raised to the level its ward demands. A level 30 logged in wearing two
+ * Blue Rings of Hyrule, one of each a level 45 item WEAR would refuse and
+ * the pair a unique ring WEAR allows once (audit, 2026-10-22). So: a slot
+ * that does not take the object, a second object in one slot, a second of
+ * a unique ring, and -- for mortals -- an object above the character's
+ * level come back carried.
+ *
+ * This runs before anything reads the equipment: reset_char rebuilds
+ * armour, hitroll, stats and the maxima from what is worn, so taking the
+ * object off here is enough for those. Two things are saved rather than
+ * rebuilt and are put right by hand, as unequip_char would: the affect
+ * bits worn gear grants (AfBy), and -- when reset_char will do its full
+ * reset, which takes worn gear back out of the saved maxima -- the hit,
+ * mana and move the object added. Nothing is said to anybody: an offline
+ * load has no one to say it to. The object stays in the inventory.
+ */
+static void unwear_illegal_at_load( CHAR_DATA *ch )
+{
+    OBJ_DATA *kept[MAX_WEAR];
+    OBJ_DATA *obj;
+    AFFECT_DATA *paf;
+    int removed_primary = 0;
+    int removed_secondary = 0;
+    int slot;
+    bool full_reset;
+    bool any = false;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+
+    full_reset = ch->pcdata->perm_hit == 0 || ch->pcdata->perm_mana == 0
+              || ch->pcdata->perm_move == 0 || ch->pcdata->last_level == 0;
+
+    for ( slot = 0; slot < MAX_WEAR; slot++ )
+        kept[slot] = NULL;
+
+    /* A stashed object is never worn. */
+    for ( obj = ch->pcdata->stash; obj != NULL; obj = obj->next_content )
+        obj->wear_loc = WEAR_NONE;
+
+    /* Slot by slot, so of two in one place the first is the one kept. */
+    for ( slot = -1; slot < MAX_WEAR; slot++ )
+    {
+        for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+        {
+            const char *why = NULL;
+            int other;
+
+            if ( obj->wear_loc == WEAR_NONE )
+                continue;
+            if ( slot == -1 )
+            {
+                /* Out of range: no slot will ever claim it. */
+                if ( obj->wear_loc < 0 || obj->wear_loc >= MAX_WEAR )
+                    why = "no such slot";
+                else
+                    continue;
+            }
+            else if ( obj->wear_loc != slot )
+                continue;
+            else if ( kept[slot] != NULL )
+                why = "the slot is taken";
+            else if ( obj->pIndexData == NULL || !load_slot_takes( obj, slot ) )
+                why = "it is not worn there";
+            else if ( !IS_IMMORTAL(ch) && obj->level > ch->level )
+                why = "it is above their level";
+            else if ( IS_UNIQUE_RING_VNUM( obj->pIndexData->vnum )
+                 &&   ( other = slot == WEAR_FINGER_L ? WEAR_FINGER_R
+                              : slot == WEAR_FINGER_R ? WEAR_FINGER_L : -1 ) >= 0
+                 &&   kept[other] != NULL && kept[other]->pIndexData != NULL
+                 &&   kept[other]->pIndexData->vnum == obj->pIndexData->vnum )
+                why = "only one may be worn";
+
+            if ( why == NULL )
+            {
+                kept[slot] = obj;
+                continue;
+            }
+
+            snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+                "Load: %s's %s (%d, wear %d) taken off: %s.",
+                ch->name, obj->short_descr != NULL ? obj->short_descr : "object",
+                obj->pIndexData != NULL ? obj->pIndexData->vnum : 0,
+                obj->wear_loc, why );
+            log_string( log_buf );
+
+            if ( obj->pIndexData != NULL )
+                for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
+                {
+                    removed_primary   |= paf->bitvector;
+                    removed_secondary |= paf->bitvector2;
+                    if ( full_reset )
+                        switch ( paf->location )
+                        {
+                        case APPLY_HIT:  ch->max_hit  -= paf->modifier; break;
+                        case APPLY_MANA: ch->max_mana -= paf->modifier; break;
+                        case APPLY_MOVE: ch->max_move -= paf->modifier; break;
+                        }
+                }
+            for ( paf = obj->affected; paf != NULL; paf = paf->next )
+            {
+                removed_primary   |= paf->bitvector;
+                removed_secondary |= paf->bitvector2;
+                if ( full_reset )
+                    switch ( paf->location )
+                    {
+                    case APPLY_HIT:  ch->max_hit  -= paf->modifier; break;
+                    case APPLY_MANA: ch->max_mana -= paf->modifier; break;
+                    case APPLY_MOVE: ch->max_move -= paf->modifier; break;
+                    }
+            }
+            if ( IS_OBJ_STAT(obj, ITEM_ADD_AFFECT) )
+            {
+                if ( IS_OBJ_STAT2(obj, ITEM2_ADD_INVIS) )
+                    removed_primary |= AFF_INVISIBLE;
+                if ( IS_OBJ_STAT2(obj, ITEM2_ADD_DETECT_INVIS) )
+                    removed_primary |= AFF_DETECT_INVIS;
+                if ( IS_OBJ_STAT2(obj, ITEM2_ADD_FLY) )
+                    removed_primary |= AFF_FLYING;
+            }
+            obj->wear_loc = WEAR_NONE;
+            any = true;
+        }
+    }
+
+    if ( !any )
+        return;
+
+    /* The bits it granted go, and whatever the race, the spells or the
+       gear still worn grants comes back, as unequip_char leaves them. */
+    REMOVE_BIT( ch->affected_by,  removed_primary );
+    REMOVE_BIT( ch->affected_by2, removed_secondary );
+    reapply_innate_affects( ch );
+}
+
 bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 {
     static PC_DATA pcdata_zero;
@@ -1646,6 +1874,10 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     if ( ch->pcdata->black_market_bought   == NULL ) ch->pcdata->black_market_bought   = str_dup( "" );
     if ( ch->pcdata->list_remorts          == NULL ) ch->pcdata->list_remorts          = str_dup( "" );
 
+    /* Nothing comes back worn that could not be put on now. */
+    if ( found )
+        unwear_illegal_at_load( ch );
+
     /* Powers learned before the list existed still count towards it.
        Silent, so it may run on any load. Everything that speaks -- the
        powers handed back, the remort top-up, a pending grant -- is
@@ -1751,6 +1983,236 @@ static void fread_skill_name( FILE *fp, char *dest, size_t size )
 
 
 /*
+ * A dry run of the #STASH section, so the real read cannot exit the game.
+ *
+ * fread_number exits on anything that is not a number, and fread_obj
+ * reads a fixed count of them after each key, so a snapshot cut inside a
+ * number -- or holding a stray section -- used to take the whole game
+ * down from a staff command, or restore half a stash and call it done
+ * (audit, 2026-10-22). This walks the section with readers that report
+ * instead of exiting, in exactly the shapes fread_obj will ask for, and
+ * counts the objects. It ends at #END and nowhere else; the caller puts
+ * the file back where it was before reading for real.
+ */
+static int scan_char( FILE *fp )
+{
+    int c;
+
+    do
+        c = getc( fp );
+    while ( c != EOF && isspace( c ) );
+    return c;
+}
+
+/* fread_number's shape: a sign, digits, and '|' joining another. */
+static bool scan_number( FILE *fp )
+{
+    int c = scan_char( fp );
+
+    if ( c == '+' || c == '-' )
+        c = getc( fp );
+    if ( c == EOF || !isdigit( c ) )
+        return false;
+    while ( c != EOF && isdigit( c ) )
+        c = getc( fp );
+    if ( c == '|' )
+        return scan_number( fp );
+    if ( c != EOF )
+        ungetc( c, fp );
+    return true;
+}
+
+/* fread_word's shape: quoted, or up to the next blank. */
+static bool scan_word( FILE *fp, char *word, size_t size )
+{
+    size_t len = 0;
+    int c = scan_char( fp );
+    int end = ' ';
+
+    word[0] = '\0';
+    if ( c == EOF )
+        return false;
+    if ( c == '\'' || c == '"' )
+        end = c;
+    else
+        word[len++] = (char) c;
+    for ( ; ; )
+    {
+        c = getc( fp );
+        if ( c == EOF )
+        {
+            /* An unquoted word may end the file; a quoted one may not. */
+            word[len] = '\0';
+            return end == ' ';
+        }
+        if ( end == ' ' ? isspace( c ) : c == end )
+        {
+            if ( end == ' ' )
+                ungetc( c, fp );
+            break;
+        }
+        if ( len + 1 >= size )
+            return false;
+        word[len++] = (char) c;
+    }
+    word[len] = '\0';
+    return true;
+}
+
+/* fread_string's shape: everything up to a tilde, which must come. */
+static bool scan_string( FILE *fp )
+{
+    int c = scan_char( fp );
+
+    while ( c != EOF && c != '~' )
+        c = getc( fp );
+    return c == '~';
+}
+
+static bool scan_numbers( FILE *fp, int count )
+{
+    while ( count-- > 0 )
+        if ( !scan_number( fp ) )
+            return false;
+    return true;
+}
+
+static void scan_to_eol( FILE *fp )
+{
+    int c;
+
+    do
+        c = getc( fp );
+    while ( c != EOF && c != '\n' && c != '\r' );
+}
+
+/* One object, after its #O, as fread_obj will read it. */
+static bool scan_stash_object( FILE *fp, int version )
+{
+    char word[MAX_INPUT_LENGTH];
+
+    for ( ; ; )
+    {
+        if ( !scan_word( fp, word, sizeof(word) ) )
+            return false;               /* the file ends inside an object */
+
+        if ( word[0] == '*' )
+            scan_to_eol( fp );
+        else if ( !str_cmp( word, "End" ) )
+            return true;
+        else if ( !str_cmp( word, "Name" ) || !str_cmp( word, "ShD" )
+             ||   !str_cmp( word, "ShortDescr" ) || !str_cmp( word, "Desc" )
+             ||   !str_cmp( word, "Description" ) || !str_cmp( word, "Act_room" )
+             ||   !str_cmp( word, "Act_char" ) )
+        {
+            if ( !scan_string( fp ) )
+                return false;
+        }
+        else if ( !str_cmp( word, "ExDe" ) || !str_cmp( word, "ExtraDescr" ) )
+        {
+            if ( !scan_string( fp ) || !scan_string( fp ) )
+                return false;
+        }
+        else if ( !str_cmp( word, "Affect" ) || !str_cmp( word, "Aff" ) )
+        {
+            if ( !scan_numbers( fp, version == 0 ? 6 : 7 ) )
+                return false;
+        }
+        else if ( !str_cmp( word, "AffD" ) )
+        {
+            if ( !scan_word( fp, word, sizeof(word) )
+            ||   !scan_numbers( fp, version == 0 ? 5 : 6 ) )
+                return false;
+        }
+        else if ( !str_cmp( word, "Spell" ) )
+        {
+            if ( !scan_number( fp ) || !scan_word( fp, word, sizeof(word) ) )
+                return false;
+        }
+        else if ( !str_cmp( word, "Values" ) || !str_cmp( word, "Vals" ) )
+        {
+            if ( !scan_numbers( fp, 4 ) )
+                return false;
+        }
+        else if ( !str_cmp( word, "Val" ) )
+        {
+            if ( !scan_numbers( fp, 5 ) )
+                return false;
+        }
+        else if ( !str_cmp( word, "Vnum" ) || !str_cmp( word, "Nest" )
+             ||   !str_cmp( word, "Wear" ) || !str_cmp( word, "WearLoc" )
+             ||   !str_cmp( word, "Lev" ) || !str_cmp( word, "Level" )
+             ||   !str_cmp( word, "Cond" ) || !str_cmp( word, "Cost" )
+             ||   !str_cmp( word, "ExtF" ) || !str_cmp( word, "ExtraFlags" )
+             ||   !str_cmp( word, "Ityp" ) || !str_cmp( word, "ItemType" )
+             ||   !str_cmp( word, "Repd" ) || !str_cmp( word, "Time" )
+             ||   !str_cmp( word, "Timer" ) || !str_cmp( word, "Trap" )
+             ||   !str_cmp( word, "WeaF" ) || !str_cmp( word, "WearFlags" )
+             ||   !str_cmp( word, "Wt" ) || !str_cmp( word, "Weight" ) )
+        {
+            if ( !scan_number( fp ) )
+                return false;
+        }
+        else if ( !str_cmp( word, "Enchanted" ) || !str_cmp( word, "Oldstyle" ) )
+            ;
+        else
+            scan_to_eol( fp );          /* fread_obj's "no match" */
+    }
+}
+
+/* The objects in the section, or -1 for one that is not whole. */
+static int scan_stash_section( FILE *fp, int version )
+{
+    char word[MAX_INPUT_LENGTH];
+    int objects = 0;
+    int c;
+
+    for ( ; ; )
+    {
+        c = scan_char( fp );
+        if ( c == '*' )
+        {
+            scan_to_eol( fp );
+            continue;
+        }
+        if ( c != '#' || !scan_word( fp, word, sizeof(word) ) )
+            return -1;                  /* cut short, or not a section */
+        if ( !str_cmp( word, "END" ) )
+            return objects;
+        if ( str_cmp( word, "O" ) && str_cmp( word, "OBJECT" ) )
+            return -1;                  /* a section a stash never holds */
+        if ( !scan_stash_object( fp, version ) )
+            return -1;
+        objects++;
+    }
+}
+
+/* Every object in a list, at every depth. */
+static int count_obj_tree( OBJ_DATA *list )
+{
+    int count = 0;
+
+    for ( ; list != NULL; list = list->next_content )
+        count += 1 + count_obj_tree( list->contains );
+    return count;
+}
+
+/* Objects read but not kept: as stash_extract frees them, but nothing
+   was ever counted for them, so nothing is counted back. */
+static void discard_stash_list( OBJ_DATA *list )
+{
+    OBJ_DATA *next;
+
+    for ( ; list != NULL; list = next )
+    {
+        next = list->next_content;
+        list->next_content = NULL;
+        maxload_subtree( list, -1, false );
+        extract_obj_player( list );
+    }
+}
+
+/*
  * Put the stash a saved file holds into a character's stash, and change
  * nothing else about them. PRESTORE <player> <n> STASH uses it on a
  * snapshot: a death snapshot is taken before the dead character is
@@ -1760,19 +2222,37 @@ static void fread_skill_name( FILE *fp, char *dest, size_t size )
  *
  * The objects are read by fread_obj exactly as login reads them --
  * enchantments, Hyrule levels and nesting included -- and are added to
- * whatever the stash holds now. Returns how many objects the stash
- * gained, or -1 if the file could not be read.
+ * whatever the stash holds now.
+ *
+ * All or nothing (audit, 2026-10-22): the section is checked whole
+ * before anything is read, the objects are read into a list of their
+ * own, and they join the stash only if every one of them came back.
+ * Anything less -- a section cut short, a stray section, an object whose
+ * vnum is gone -- adds nothing and says why in `why`, so a retry cannot
+ * duplicate what a partial restore already put back. What joins is
+ * counted into the limited-item totals once, as a deposit is.
+ *
+ * Returns how many objects the stash gained, or -1 with the reason.
  */
-int stash_restore_from_file( CHAR_DATA *ch, const char *path )
+int stash_restore_from_file( CHAR_DATA *ch, const char *path,
+                             char *why, size_t why_size )
 {
     FILE *fp;
     char line[MAX_INPUT_LENGTH];
     int iNest;
-    int before;
     int snapshot_version = -1;
+    int expected;
+    int read_back;
+    int added;
+    long section;
     sh_int live_version;
     bool found = false;
+    bool clean = true;
+    OBJ_DATA *live_stash;
+    OBJ_DATA *restored;
+    OBJ_DATA *obj;
 
+    snprintf( why, why_size, "cannot read the snapshot file" );
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || path == NULL )
         return -1;
 
@@ -1804,12 +2284,38 @@ int stash_restore_from_file( CHAR_DATA *ch, const char *path )
         return 0;
     }
 
+    /* The whole section, checked before a single object is made. */
+    if ( ( section = ftell( fp ) ) < 0 )
+    {
+        fclose( fp );
+        return -1;
+    }
+    expected = scan_stash_section( fp,
+                   snapshot_version >= 0 ? snapshot_version : ch->version );
+    if ( expected < 0 )
+    {
+        fclose( fp );
+        bug( "stash_restore_from_file: the #STASH section is not whole.", 0 );
+        snprintf( why, why_size,
+                  "its stash section is cut short or malformed" );
+        return -1;
+    }
+    if ( fseek( fp, section, SEEK_SET ) != 0 )
+    {
+        fclose( fp );
+        return -1;
+    }
+
     for ( iNest = 0; iNest < MAX_NEST; iNest++ )
         rgObjNest[iNest] = NULL;
-    before = stash_count( ch );
     live_version = ch->version;
     if ( snapshot_version >= 0 )
         ch->version = (sh_int) snapshot_version;
+
+    /* Read into a stash of their own: fread_obj puts what it reads at
+       the head of pcdata->stash, so the live one is set aside meanwhile. */
+    live_stash = ch->pcdata->stash;
+    ch->pcdata->stash = NULL;
     fread_to_stash = true;
 
     for ( ; ; )
@@ -1818,7 +2324,10 @@ int stash_restore_from_file( CHAR_DATA *ch, const char *path )
         char *word;
 
         if ( feof( fp ) )
+        {
+            clean = false;
             break;
+        }
         letter = fread_letter( fp );
         if ( letter == '*' )
         {
@@ -1828,6 +2337,7 @@ int stash_restore_from_file( CHAR_DATA *ch, const char *path )
         if ( letter != '#' )
         {
             bug( "stash_restore_from_file: # not found.", 0 );
+            clean = false;
             break;
         }
 
@@ -1838,6 +2348,7 @@ int stash_restore_from_file( CHAR_DATA *ch, const char *path )
         else
         {
             bug( "stash_restore_from_file: bad section.", 0 );
+            clean = false;
             break;
         }
     }
@@ -1845,7 +2356,50 @@ int stash_restore_from_file( CHAR_DATA *ch, const char *path )
     fread_to_stash = false;
     ch->version = live_version;
     fclose( fp );
-    return stash_count( ch ) - before;
+    for ( iNest = 0; iNest < MAX_NEST; iNest++ )
+        rgObjNest[iNest] = NULL;
+
+    restored = ch->pcdata->stash;
+    ch->pcdata->stash = live_stash;
+
+    /* fread_obj drops an object it cannot make -- a vnum gone from the
+       world, a bad nest -- with only a bug line; the count says so. */
+    read_back = count_obj_tree( restored );
+    if ( !clean || read_back != expected )
+    {
+        discard_stash_list( restored );
+        if ( clean )
+            snprintf( why, why_size,
+                      "%d of its %d stashed object%s could not be read back",
+                      expected - read_back, expected, expected == 1 ? "" : "s" );
+        else
+            snprintf( why, why_size, "its stash section did not read cleanly" );
+        return -1;
+    }
+
+    /* Whole: onto the live stash, each counted as owned once, in the
+       order the old reader left them (the file's last object first). */
+    {
+        OBJ_DATA *reversed = NULL;
+
+        while ( ( obj = restored ) != NULL )
+        {
+            restored = obj->next_content;
+            obj->next_content = reversed;
+            reversed = obj;
+        }
+        restored = reversed;
+    }
+    added = 0;
+    while ( ( obj = restored ) != NULL )
+    {
+        restored = obj->next_content;
+        if ( obj->wear_loc != WEAR_NONE )
+            obj->wear_loc = WEAR_NONE;
+        stash_receive( ch, obj );
+        added++;
+    }
+    return added;
 }
 
 

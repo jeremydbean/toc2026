@@ -1417,12 +1417,13 @@ static void dps_board_save( void )
                  dps_board[i].level, dps_board[i].cls, dps_board[i].when,
                  dps_board[i].guild );
 
-    fclose( fp );
-    fpReserve = fopen( NULL_FILE, "r" );
-
     /* Written aside and moved into place, so a crash mid-write leaves
-       the old board rather than half of a new one. */
-    rename( DPSBOARD_FILE ".tmp", DPSBOARD_FILE );
+       the old board rather than half of a new one -- and only when the
+       write finished: on a full disk the failing write is fclose's, and
+       renaming what it left emptied the board (audit, 2026-10-22). */
+    if ( !temp_file_commit( fp, DPSBOARD_FILE ".tmp", DPSBOARD_FILE ) )
+        bug( "dps_board_save: the board was not written; the old one is kept.", 0 );
+    fpReserve = fopen( NULL_FILE, "r" );
 }
 
 

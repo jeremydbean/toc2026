@@ -39,7 +39,9 @@ class PkillPersistenceRegressionTests(unittest.TestCase):
     def test_writer_uses_temp_file_and_terminator(self) -> None:
         self.assertIn('fopen( PKILLFILE ".tmp", "w" )', self.source)
         self.assertIn('fprintf(fp,"%s\\n","$")', self.source)
-        self.assertIn('rename( PKILLFILE ".tmp", PKILLFILE )', self.source)
+        # The rename moved into temp_file_commit (save.c), which makes it
+        # only when the temp file was written whole (audit, 2026-10-22).
+        self.assertIn('temp_file_commit( fp, PKILLFILE ".tmp", PKILLFILE )', self.source)
 
 
 if __name__ == "__main__":

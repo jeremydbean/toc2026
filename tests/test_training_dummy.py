@@ -585,7 +585,9 @@ class TrainingDummyTests(unittest.TestCase):
         save = self.dummy.split("static void dps_board_save(", 1)[1]
         save = save.split("\n}", 1)[0]
         self.assertIn('DPSBOARD_FILE ".tmp"', save)
-        self.assertIn('rename( DPSBOARD_FILE ".tmp", DPSBOARD_FILE )', save)
+        # The rename lives in temp_file_commit (save.c), which makes it
+        # only when the board was written whole (audit, 2026-10-22).
+        self.assertIn('temp_file_commit( fp, DPSBOARD_FILE ".tmp", DPSBOARD_FILE )', save)
         self.assertIn("fpReserve", save)
 
     def test_number_one_earns_the_achievement(self) -> None:

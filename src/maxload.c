@@ -156,16 +156,19 @@ void write_maxload_file(void)
 
     /* Write sentinel marking the end of the file. */
     fprintf(fp1, "%s\n", "$");
-    fclose(fp1);
 
-    /* Validate the temporary file exists before renaming it into place. */
-    if (stat(MAXLOADFILE ".tmp", &file_stats) != 0)
+    /* Only a whole file replaces the old one. On a full disk the write
+       that fails is fclose's, and renaming what it left blanked the
+       file -- and a blank maxload.txt hung the next boot (audit,
+       2026-10-22). temp_file_commit removes the temp and keeps the old. */
+    if (!temp_file_commit(fp1, MAXLOADFILE ".tmp", MAXLOADFILE))
     {
-        log_string("maxload: Maxloadfile is not there... (temp version) to be copied.");
+        log_string("maxload: the maxload file could not be written; the old one is kept.");
         return;
     }
 
-    rename(MAXLOADFILE ".tmp", MAXLOADFILE);
+    if (stat(MAXLOADFILE, &file_stats) != 0)
+        log_string("maxload: Maxloadfile is not there after the rename.");
 }
 
 /* -------------------------------------------------------------------------- */
@@ -634,6 +637,15 @@ void read_maxload_file(void)
         word = fread_word(fp);
         if (word[0] == '\0')
         {
+            /* fread_word's answer at the end of the file, and it gives
+               it for ever: a file without its '$' -- cut short, or left
+               empty by a failed write -- looped here and hung the boot
+               (audit, 2026-10-22). */
+            if (feof(fp))
+            {
+                log_string("read_maxload_file: no '$' before the end of the file.");
+                break;
+            }
             continue;
         }
         if (word[0] == '$')
@@ -657,9 +669,20 @@ void read_maxload_file(void)
             continue;
         }
 
-        vnum = fread_number(fp);
-        curr_load = fread_number(fp);
-        max_load = fread_number(fp);
+        /* The rest of the line, as the writer puts it: three numbers.
+           fread_number exits the game on anything else, so a line cut
+           short is skipped instead of taking the boot down. */
+        {
+            char line[MAX_INPUT_LENGTH];
+            char extra;
+
+            if (fgets(line, (int) sizeof(line), fp) == NULL
+                || sscanf(line, "%d %d %d %c", &vnum, &curr_load, &max_load, &extra) != 3)
+            {
+                log_string("Error in read_max_load_file: an ML line that is not three numbers; skipped.");
+                continue;
+            }
+        }
 
         if ((temp_load = get_maxload_index(vnum)) != NULL)
         {

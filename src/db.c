@@ -10,6 +10,7 @@
 #include <string.h>
 #include <strings.h> /* for bzero() */
 #include <stdlib.h>
+#include <errno.h>
 #include <ctype.h>
 #include <time.h>
 #if defined(macintosh)
@@ -2791,15 +2792,47 @@ static bool is_rooms_terminator( const char *line )
 
 
 /*
+ * Put a whole temp file in place of an area file, keeping what was there
+ * beside it with a timestamp. If the last step fails the old file is put
+ * back, so a failure never leaves the area without its file.
+ */
+static bool replace_area_file( const char *temp_path, const char *path,
+                               bool existed, char *why, size_t why_size )
+{
+    char backup_path[MAX_INPUT_LENGTH + 32];
+    bool backed_up = false;
+
+    /* Keep what was there. Whoever breaks a room wants the old file back,
+       and so does whoever notices a week later. */
+    if ( existed )
+    {
+        snprintf( backup_path, sizeof(backup_path), "%s.%ld.bak",
+                  path, (long) current_time );
+        backed_up = rename( path, backup_path ) == 0;
+    }
+
+    if ( rename( temp_path, path ) != 0 )
+    {
+        if ( backed_up )
+            rename( backup_path, path );
+        remove( temp_path );
+        snprintf( why, why_size, "could not replace %s", path );
+        return false;
+    }
+
+    snprintf( why, why_size, "%s", path );
+    return true;
+}
+
+/*
  * Save one area's rooms to its file. Returns false with a reason in `why',
  * and on success puts the path written there instead.
  */
 bool save_area_rooms( AREA_DATA *pArea, char *why, size_t why_size )
 {
     char path[MAX_INPUT_LENGTH];
-    /* Room for the suffixes below without the compiler fretting. */
+    /* Room for the suffix below without the compiler fretting. */
     char temp_path[MAX_INPUT_LENGTH + 32];
-    char backup_path[MAX_INPUT_LENGTH + 32];
     char line[MAX_STRING_LENGTH];
     FILE *in;
     FILE *out;
@@ -2872,6 +2905,15 @@ bool save_area_rooms( AREA_DATA *pArea, char *why, size_t why_size )
             fputs( line, out );
         }
 
+        /* A read that stopped early would cut the area short. */
+        if ( ferror( in ) )
+        {
+            fclose( in );
+            fclose( out );
+            remove( temp_path );
+            snprintf( why, why_size, "could not read all of %s", path );
+            return false;
+        }
         fclose( in );
 
         if ( !written )
@@ -2882,25 +2924,21 @@ bool save_area_rooms( AREA_DATA *pArea, char *why, size_t why_size )
         }
     }
 
-    fclose( out );
-
-    /* Keep what was there. Whoever breaks a room wants the old file back,
-       and so does whoever notices a week later. */
-    if ( existed )
+    /* Only a whole file goes in. On a full disk fclose is the write that
+       fails; RSAVE said "Wrote N rooms" over an empty area file that the
+       next boot could not load (audit, 2026-10-22). */
+    if ( !file_write_finished( out ) )
     {
-        snprintf( backup_path, sizeof(backup_path), "%s.%ld.bak",
-                  path, (long) current_time );
-        rename( path, backup_path );
-    }
+        int err = errno;
 
-    if ( rename( temp_path, path ) != 0 )
-    {
-        snprintf( why, why_size, "could not replace %s", path );
+        remove( temp_path );
+        bug( "Save_area_rooms: the area could not be written; the old file is kept.", 0 );
+        snprintf( why, why_size, "could not finish writing %s (%s)",
+                  temp_path, strerror( err ) );
         return false;
     }
 
-    snprintf( why, why_size, "%s", path );
-    return true;
+    return replace_area_file( temp_path, path, existed, why, why_size );
 }
 
 
@@ -3363,7 +3401,6 @@ bool save_area_full( AREA_DATA *pArea, char *why, size_t why_size )
 {
     char path[MAX_INPUT_LENGTH];
     char temp_path[MAX_INPUT_LENGTH + 32];
-    char backup_path[MAX_INPUT_LENGTH + 32];
     FILE *fp;
     bool existed;
     int vnum;
@@ -3410,27 +3447,25 @@ bool save_area_full( AREA_DATA *pArea, char *why, size_t why_size )
         return false;
     }
     dropped = write_area_file( fp, pArea );
-    if ( fclose( fp ) != 0 )
+    /* ferror and a flush as well as fclose: an error set by an earlier
+       fprintf is not always fclose's to report (audit, 2026-10-22). */
+    if ( !file_write_finished( fp ) )
     {
+        int err = errno;
+
         remove( temp_path );
-        snprintf( why, why_size, "could not finish writing %s", temp_path );
+        bug( "Save_area_full: the area could not be written; the old file is kept.", 0 );
+        snprintf( why, why_size, "could not finish writing %s (%s)",
+                  temp_path, strerror( err ) );
         return false;
     }
 
     existed = ( ( fp = fopen( path, "r" ) ) != NULL );
     if ( existed )
-    {
         fclose( fp );
-        snprintf( backup_path, sizeof(backup_path), "%s.%ld.bak",
-                  path, (long) current_time );
-        rename( path, backup_path );
-    }
 
-    if ( rename( temp_path, path ) != 0 )
-    {
-        snprintf( why, why_size, "could not replace %s", path );
+    if ( !replace_area_file( temp_path, path, existed, why, why_size ) )
         return false;
-    }
 
     if ( dropped > 0 )
         snprintf( why, why_size,
@@ -3712,7 +3747,14 @@ bool append_area_to_list( const char *list, const char *basename,
             return false;
         }
         fprintf( out, "%s\n$\n", basename );
-        fclose( out );
+        if ( !file_write_finished( out ) )
+        {
+            /* Nothing was there before, so nothing half-written stays. */
+            remove( list );
+            bug( "Append_area_to_list: a new list could not be written.", 0 );
+            snprintf( why, why_size, "could not finish writing %s", list );
+            return false;
+        }
         snprintf( why, why_size, "%s", list );
         return true;
     }
@@ -3758,6 +3800,15 @@ bool append_area_to_list( const char *list, const char *basename,
         fputs( line, out );
     }
 
+    if ( ferror( in ) )
+    {
+        /* Copying half a list would unlist the rest at the next boot. */
+        fclose( in );
+        fclose( out );
+        remove( temp_path );
+        snprintf( why, why_size, "could not read all of %s", list );
+        return false;
+    }
     fclose( in );
 
     if ( !inserted )
@@ -3766,11 +3817,10 @@ bool append_area_to_list( const char *list, const char *basename,
         fprintf( out, "%s\n$\n", basename );
     }
 
-    fclose( out );
-
-    if ( rename( temp_path, list ) != 0 )
+    /* Only a whole list replaces the old one (audit, 2026-10-22). */
+    if ( !temp_file_commit( out, temp_path, list ) )
     {
-        snprintf( why, why_size, "could not replace %s", list );
+        snprintf( why, why_size, "could not finish writing %s", temp_path );
         return false;
     }
 
