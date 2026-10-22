@@ -95,6 +95,9 @@ installing=0
 install_failed() {
     st=$?
     trap - EXIT
+    # A second signal must not cut the rollback short: it is the one
+    # thing between a killed deploy and a game left down.
+    trap '' HUP INT TERM
     if [ "$installing" = 1 ]; then
         installing=0
         echo "   INSTALL FAILED (status $st) after the game was stopped -- rolling back" >&2
@@ -106,6 +109,13 @@ install_failed() {
     restart_unchanged
 }
 trap install_failed EXIT
+# dash runs no EXIT trap for a shell a signal kills, so Ctrl-C, a dropped
+# ssh session or a stop of toc-auto-deploy's unit left the game stopped
+# on a half-copied tree with no rollback (audit, 2026-10-22). Turning
+# each signal into an exit runs the trap above.
+trap 'exit 129' HUP
+trap 'exit 130' INT
+trap 'exit 143' TERM
 
 # One deploy at a time: the timer's and a desktop session's could
 # otherwise meet in the middle of an rsync. toc-auto-deploy takes the

@@ -35,7 +35,10 @@ GROUP=${TOC_GROUP:-toc}
 # exists. Getting the binary back in place matters more than its owner, so
 # drop the flags rather than fail the whole recovery when either is untrue.
 own_flags=()
-if [ "$(id -u)" -eq 0 ] && id -u "$OWNER" >/dev/null 2>&1 \n   && getent group "$GROUP" >/dev/null 2>&1; then
+# (A literal "\n" stood where this line break is, so the test never
+# passed and merc was installed root:root -- audit, 2026-10-22.)
+if [ "$(id -u)" -eq 0 ] && id -u "$OWNER" >/dev/null 2>&1 \
+   && getent group "$GROUP" >/dev/null 2>&1; then
     own_flags=(-o "$OWNER" -g "$GROUP")
 fi
 

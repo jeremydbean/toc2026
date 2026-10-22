@@ -49,9 +49,16 @@ echo "   at $(git -C "$BUILD" rev-parse --short HEAD)"
 # because toc-state-sync commits them. That is the whole point: there
 # is no second archive to find and no key to have kept.
 say "checking the live state came with it"
-players=$(ls "$BUILD/player" 2>/dev/null | grep -cv '^versions$' || echo 0)
-gods=$(ls "$BUILD/gods" 2>/dev/null | wc -l || echo 0)
+# grep -c prints 0 itself when nothing matches -- and exits 1, so the
+# old `|| echo 0` made the count "0<newline>0", the test below errored
+# instead of failing, and a repository with no characters was restored
+# as if it had some (audit, 2026-10-22). wc always prints a number.
+players=$(ls "$BUILD/player" 2>/dev/null | grep -cv '^versions$' || true)
+gods=$(ls "$BUILD/gods" 2>/dev/null | wc -l | tr -d ' ')
 echo "   $players characters, $gods gods files"
+case "$players" in
+    ''|*[!0-9]*) players=0 ;;
+esac
 if [ "$players" -lt 1 ]; then
     echo "   NO CHARACTERS IN THE REPOSITORY -- stopping." >&2
     echo "   Either the sync was never running or the wrong branch is checked out." >&2
