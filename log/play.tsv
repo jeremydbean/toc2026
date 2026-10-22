@@ -4048,3 +4048,12 @@
 1792665665	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
 1792665669	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	aquest	time	Not on a quest. Under 1 minute before you may quest again.
 1792665674	session	Trentlin	50	2401	dresden_halloween.are	quit	308s	+0 levels	+0 exp	+144772342 copper	0 kills	0 deaths	1 quests	170 commands	1 refused
+1792668907	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	list		Madame Hexley the Hallows End merchant says 'I don't trade with folks I can't see.'
+1792668908	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior
+1792668910	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792668910	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792668911	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792668911	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792668911	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792668911	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792668914	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	7	-	aquest	request	You approach Questor Thews and ask for a quest.
