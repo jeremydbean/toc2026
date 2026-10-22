@@ -298,5 +298,64 @@ class StateSyncDeployLockTests(unittest.TestCase):
         self.assertEqual(log.count("State sync:"), 1, log)
 
 
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class HeatMetalTests(unittest.TestCase):
+    def test_a_cursed_piece_that_burns_is_not_called_a_fizzle(self) -> None:
+        """Review 2026-10-22 (G4): heat metal's NOREMOVE branches filed the
+        piece down and burned the wearer without counting it, so the cast
+        ended "Your spell had no effect." The victim carries only cursed
+        level 0 armour and weapons, so every effect is one of those
+        branches; a cast whose blow lands must never also say no effect,
+        and a victim with nothing to heat still gets the true no-op."""
+        guard = 29012                     # a Korzath security guard, level 27
+        with LiveMud() as mud:
+            # The victim is a mobile: one player may not cast at another
+            # outside the PK rules (is_safe_spell). Staff curse its kit
+            # with SET OBJ EXTRA +M (ITEM_NOREMOVE) and hand it over.
+            make(mud, "Zheater", Levl=50, Cla=0, Room=4202,   # a mage: heat metal at 17
+                 HMV="9000 9000 30000 30000 500 500", HMVP="9000 30000 500")
+            caster_file = mud.player_dir / "Zheater"
+            text = caster_file.read_text(encoding="latin-1")
+            end = text.index("\nEnd\n")
+            caster_file.write_text(text[:end] + "\nSk 100 'heat metal'" + text[end:],
+                                   encoding="latin-1")
+            make(mud, "Zheatgod", Levl=70, Room=4202)
+            with mud.connect(timeout=120) as caster, mud.connect(timeout=120) as god:
+                login(caster, "Zheater", PW)
+                login(god, "Zheatgod", PW)
+                run(god, f"load mob {guard}")
+                for vnum, keyword in ((3704, "shield"), (3705, "cloak"), (3706, "helmet"),
+                                      (3703, "vest"), (3702, "sword")) * 3:
+                    run(god, f"load obj {vnum}", 0.3)
+                    run(god, f"set obj {keyword} extra +M", 0.3)
+                    run(god, f"give {keyword} guard", 0.3)
+                landed = both = 0
+                for _ in range(20):
+                    out = run(caster, "cast 'heat metal' guard", 1.5)
+                    hit = "Your heat metal" in out
+                    landed += hit
+                    both += hit and "no effect" in out
+                    run(god, "peace", 0.4)
+                    run(god, "restore guard", 0.4)
+                    caster.drain(2.0)          # the cast's lag
+                run(god, "purge guard", 0.4)
+                run(god, f"load mob {guard}")
+                # Nothing to heat: the true no-op. A save says "resists"
+                # instead, so cast until one is not resisted.
+                for _ in range(6):
+                    nothing = run(caster, "cast 'heat metal' guard", 1.5)
+                    run(god, "peace", 0.4)
+                    caster.drain(2.0)
+                    if "resists" not in nothing:
+                        break
+                for client in (caster, god):
+                    client.send("quit")
+                    client.wait_closed()
+
+        self.assertGreater(landed, 0, "twenty casts never heated a cursed piece")
+        self.assertEqual(both, 0, f"{both} of {landed} casts that burned also said no effect")
+        self.assertIn("no effect", nothing, nothing)
+
+
 if __name__ == "__main__":
     unittest.main()

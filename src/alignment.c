@@ -454,11 +454,201 @@ void do_alignment( CHAR_DATA *ch, char *argument )
     send_to_char( buf, ch );
 }
 
+/*
+ * What a devotion would do, decided once for DEVOTE, DEVOTE PREVIEW and
+ * the staff's ALIGNCHECK, so the preview cannot promise what the deed
+ * will not do. Returns the move (0 with *refusal set when there is
+ * none) and its price in *cost. Where it is made and whether the gods are
+ * ready are the deed's own questions, asked after.
+ */
+static int devote_plan( CHAR_DATA *ch, const char *arg, long *cost, const char **refusal )
+{
+    int delta, moves;
+    long whole;
+
+    *cost = 0;
+    *refusal = NULL;
+    if ( !str_prefix( arg, "light" ) )
+        delta = ALIGN_DEED_SHIFT;
+    else if ( !str_prefix( arg, "dark" ) )
+        delta = -ALIGN_DEED_SHIFT;
+    else if ( !str_prefix( arg, "balance" ) )
+    {
+        if ( ch->alignment == 0 )
+        {
+            *refusal = "You are already perfectly balanced.\n\r";
+            return 0;
+        }
+        delta = ch->alignment > 0 ? -UMIN( ALIGN_DEED_SHIFT, ch->alignment )
+                                  : UMIN( ALIGN_DEED_SHIFT, -ch->alignment );
+    }
+    else
+    {
+        *refusal = "Devote yourself to the light, the dark or the balance.\n\r";
+        return 0;
+    }
+    if ( ( delta > 0 && ch->alignment >= 1000 )
+    ||   ( delta < 0 && ch->alignment <= -1000 ) )
+    {
+        *refusal = "You could go no further that way.\n\r";
+        return 0;
+    }
+
+    /* A devotion that can only go part of the way -- LIGHT at 950, or
+       BALANCE five from the middle -- costs that part of the price. In two
+       parts, so a level 60's price times a hundred cannot overflow a
+       32-bit long. */
+    moves = URANGE( -1000, ch->alignment + delta, 1000 ) - ch->alignment;
+    if ( moves < 0 )
+        moves = -moves;
+    whole = black_market_kill_value( ch->level ) * ALIGN_DEED_KILLS;
+    *cost = whole / ALIGN_DEED_SHIFT * moves
+          + whole % ALIGN_DEED_SHIFT * moves / ALIGN_DEED_SHIFT;
+    *cost = UMAX( 1, *cost );
+    return delta;
+}
+
+/*
+ * The worn pieces that would come off at an alignment, by the same test
+ * alignment_check_gear makes: the alignment is set for the asking and put
+ * back before anything else runs. Writes their names into buf; returns
+ * how many.
+ */
+static int alignment_would_reject( CHAR_DATA *ch, int alignment, char *buf, size_t size )
+{
+    OBJ_DATA *obj;
+    int saved = ch->alignment;
+    int count = 0;
+
+    buf[0] = '\0';
+    ch->alignment = (sh_int) URANGE( -1000, alignment, 1000 );
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    {
+        if ( obj->wear_loc == WEAR_NONE || !alignment_rejects_obj( ch, obj ) )
+            continue;
+        if ( count++ > 0 )
+            toc_strlcat( buf, ", ", size );
+        toc_strlcat( buf, obj->short_descr != NULL ? obj->short_descr : "something", size );
+    }
+    ch->alignment = (sh_int) saved;
+    return count;
+}
+
+/* One devotion's forecast, about who, told to viewer. */
+static void devote_forecast( CHAR_DATA *viewer, CHAR_DATA *who, const char *way )
+{
+    char buf[MAX_STRING_LENGTH];
+    char names[1024];
+    char price[64];
+    const char *refusal;
+    long cost;
+    int delta, after, rejected;
+
+    delta = devote_plan( who, way, &cost, &refusal );
+    if ( delta == 0 )
+    {
+        snprintf( buf, sizeof(buf), "  %-8s %s", way, refusal );
+        send_to_char( buf, viewer );
+        return;
+    }
+    after = URANGE( -1000, who->alignment + delta, 1000 );
+    format_price( cost, price, sizeof(price) );
+    snprintf( buf, sizeof(buf), "  %-8s %d -> %d (%s -> %s), offering %s%s.\n\r",
+              way, who->alignment, after, alignment_tier_name( who->alignment ),
+              alignment_tier_name( after ), price,
+              has_enough_copper( who, cost ) ? "" : " -- more than is carried" );
+    send_to_char( buf, viewer );
+    rejected = alignment_would_reject( who, after, names, sizeof(names) );
+    if ( rejected > 0 )
+    {
+        snprintf( buf, sizeof(buf), "           would come off and fall to the floor: %s.\n\r",
+                  names );
+        send_to_char( buf, viewer );
+    }
+}
+
+/* The forecasts and readiness, for DEVOTE PREVIEW and ALIGNCHECK. way is
+   one of light, dark or balance, or empty for all three. */
+static void devote_preview( CHAR_DATA *viewer, CHAR_DATA *who, const char *way )
+{
+    char buf[MAX_STRING_LENGTH];
+    long wait = who->pcdata->align_deed_at - (long) current_time;
+
+    if ( way[0] != '\0' && str_prefix( way, "light" ) && str_prefix( way, "dark" )
+    &&   str_prefix( way, "balance" ) )
+    {
+        send_to_char( "DEVOTE PREVIEW LIGHT, DARK or BALANCE -- or PREVIEW alone for all three.\n\r",
+                      viewer );
+        return;
+    }
+    send_to_char( "A devotion would make it (nothing is offered by looking):\n\r", viewer );
+    if ( way[0] == '\0' || !str_prefix( way, "light" ) )
+        devote_forecast( viewer, who, "light" );
+    if ( way[0] == '\0' || !str_prefix( way, "dark" ) )
+        devote_forecast( viewer, who, "dark" );
+    if ( way[0] == '\0' || !str_prefix( way, "balance" ) )
+        devote_forecast( viewer, who, "balance" );
+    if ( wait > 0 )
+        snprintf( buf, sizeof(buf), "The gods will hear %s again in %ld minute%s.\n\r",
+                  viewer == who ? "you" : "them", ( wait + 59 ) / 60,
+                  ( wait + 59 ) / 60 == 1 ? "" : "s" );
+    else
+        snprintf( buf, sizeof(buf), "The gods would hear %s now, at the Temple or its altar.\n\r",
+                  viewer == who ? "you" : "them" );
+    send_to_char( buf, viewer );
+}
+
+/*
+ * ALIGNCHECK <player>: staff, read-only. The player's alignment as
+ * ALIGNMENT tells it to them, what is worn that their side already
+ * rejects, and the three devotions forecast.
+ */
+void do_aligncheck( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    char names[1024];
+    CHAR_DATA *victim;
+
+    one_argument( argument, arg );
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "ALIGNCHECK <player>: alignment, perks, gear and devotions, changing nothing.\n\r", ch );
+        return;
+    }
+    if ( ( victim = get_char_world( ch, arg ) ) == NULL || IS_NPC(victim)
+    ||   victim->pcdata == NULL )
+    {
+        send_to_char( "No player by that name is in the game.\n\r", ch );
+        return;
+    }
+    if ( victim != ch && rank_protects( ch, victim ) )
+    {
+        send_to_char( "They outrank you.\n\r", ch );
+        return;
+    }
+    snprintf( buf, sizeof(buf), "%s is %s (alignment %d).\n\r", victim->name,
+              alignment_tier_name( victim->alignment ), victim->alignment );
+    send_to_char( buf, ch );
+    alignment_bar( victim, buf, sizeof(buf) );
+    send_to_char( buf, ch );
+    alignment_perks( victim, buf, sizeof(buf) );
+    send_to_char( buf, ch );
+    if ( alignment_would_reject( victim, victim->alignment, names, sizeof(names) ) > 0 )
+    {
+        snprintf( buf, sizeof(buf), "Worn now and rejected by their own side (comes off at the next check): %s.\n\r",
+                  names );
+        send_to_char( buf, ch );
+    }
+    devote_preview( ch, victim, "" );
+}
+
 void do_devote( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     char price[64];
+    const char *refusal;
     long cost, wait;
     int delta;
 
@@ -467,11 +657,18 @@ void do_devote( CHAR_DATA *ch, char *argument )
         send_to_char( "Only a player's alignment is tended that way.\n\r", ch );
         return;
     }
-    one_argument( argument, arg );
+    argument = one_argument( argument, arg );
     if ( arg[0] == '\0' )
     {
-        send_to_char( "DEVOTE LIGHT, DEVOTE DARK or DEVOTE BALANCE, at the Temple. "
-                      "See ALIGNMENT.\n\r", ch );
+        send_to_char( "DEVOTE LIGHT, DEVOTE DARK or DEVOTE BALANCE, at the Temple; "
+                      "DEVOTE PREVIEW to see first. See ALIGNMENT.\n\r", ch );
+        return;
+    }
+    /* Anywhere, and free: what a devotion would cost and change. */
+    if ( !str_prefix( arg, "preview" ) && strlen( arg ) >= 2 )
+    {
+        one_argument( argument, arg );
+        devote_preview( ch, ch, arg );
         return;
     }
     if ( ch->in_room == NULL
@@ -482,29 +679,9 @@ void do_devote( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( !str_prefix( arg, "light" ) )
-        delta = ALIGN_DEED_SHIFT;
-    else if ( !str_prefix( arg, "dark" ) )
-        delta = -ALIGN_DEED_SHIFT;
-    else if ( !str_prefix( arg, "balance" ) )
+    if ( ( delta = devote_plan( ch, arg, &cost, &refusal ) ) == 0 )
     {
-        if ( ch->alignment == 0 )
-        {
-            send_to_char( "You are already perfectly balanced.\n\r", ch );
-            return;
-        }
-        delta = ch->alignment > 0 ? -UMIN( ALIGN_DEED_SHIFT, ch->alignment )
-                                  : UMIN( ALIGN_DEED_SHIFT, -ch->alignment );
-    }
-    else
-    {
-        send_to_char( "Devote yourself to the light, the dark or the balance.\n\r", ch );
-        return;
-    }
-    if ( ( delta > 0 && ch->alignment >= 1000 )
-    ||   ( delta < 0 && ch->alignment <= -1000 ) )
-    {
-        send_to_char( "You could go no further that way.\n\r", ch );
+        send_to_char( refusal, ch );
         return;
     }
 
@@ -517,21 +694,6 @@ void do_devote( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    /* A devotion that can only go part of the way -- LIGHT at 950, or
-       BALANCE five from the middle -- costs that part of the price. */
-    {
-        int moves = URANGE( -1000, ch->alignment + delta, 1000 ) - ch->alignment;
-
-        if ( moves < 0 )
-            moves = -moves;
-        long whole = black_market_kill_value( ch->level ) * ALIGN_DEED_KILLS;
-
-        /* In two parts, so a level 60's price times a hundred cannot
-           overflow a 32-bit long. */
-        cost = whole / ALIGN_DEED_SHIFT * moves
-             + whole % ALIGN_DEED_SHIFT * moves / ALIGN_DEED_SHIFT;
-        cost = UMAX( 1, cost );
-    }
     format_price( cost, price, sizeof(price) );
     if ( !has_enough_copper( ch, cost ) )
     {

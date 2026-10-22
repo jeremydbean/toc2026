@@ -8,6 +8,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Gameplay review, 2026-10-22**: BOMB spends only a carried bomb and
+  only once, before the blast or the opened wall (stash bombs count
+  against the bag but are never spent from afar); armour damage is kept
+  in a per-piece ledger (`ArmorLost`) and REPAIR restores exactly it, so
+  a randomized piece comes back as it was made; a rider sets off an
+  arrival trap once; heat metal no longer calls a burn a fizzle; the
+  dashboard's config endpoint resolves DNS off the event loop and its log
+  followers notice a replaced file; REPAIR QUOTE, DEVOTE PREVIEW, fuller
+  AQUEST INFO and DAILY STATUS, and the staff views QUESTDIAG, GEARDIAG,
+  HYRULESTATUS and ALIGNCHECK.
 - **The audit's leads, followed up**: notes treated as private like
   tells, a faded ENCHANT ARMOR keeps the piece, RESETPWD refuses a path or
   a login in progress and ranks its target by effective trust, STASH refuses a bag holding something timed, an

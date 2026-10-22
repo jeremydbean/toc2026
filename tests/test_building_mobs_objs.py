@@ -61,6 +61,10 @@ def ostat_body(text: str) -> list[str]:
     keep = []
     for line in text.replace("\r", "").split("\n"):
         line = re.sub(r"\x1b\[[0-9;]*m", "", line).strip()
+        # A reply can land on the prompt's line (the sanitizer build, CI,
+        # 2026-10-22: "Name(s)" went missing from one OSTAT and not the
+        # other); the prompt is the world talking, the rest is the object.
+        line = re.sub(r"^(<[^>\n]*>\s*)+", "", line)
         if OSTAT_LINE.match(line):
             keep.append(line)
     return keep

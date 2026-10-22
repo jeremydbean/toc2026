@@ -599,6 +599,7 @@ See also: SEARCH, SCAN, LOOK
 0 REPAIR~
 Syntax: repair <object>
         repair all
+        repair quote <object> | all
 
 A smith mends a damaged item and restores it to full condition.  The item
 may be worn or in your pack.  REPAIR ALL mends everything you wear and
@@ -615,6 +616,9 @@ carry that needs it, cheapest first, as far as your purse goes.
     shop pays a third of its worth for a broken piece, and the full worth
     once it is mended.
   - REPAIR tells you how many times an item has been mended.
+  - REPAIR QUOTE shows, anywhere and without paying, what a repair would
+    cost and put back; QUOTE ALL lists the pieces cheapest first and how
+    many your purse covers, as REPAIR ALL would mend them.
 
 Smiths are found in some guild halls, market districts, and weapon or
 armour shops.  Not every shopkeeper repairs; look for those who say so.
@@ -1197,6 +1201,27 @@ see him anywhere; mortals only in his room, or one room away with SCAN.
 BLACKMARKET SUMMON does the same for the black market.
 
 See also: 'TREASURE GOBLIN', BLACKMARKET
+~
+
+60 QUESTDIAG GEARDIAG HYRULESTATUS ALIGNCHECK~
+Syntax: questdiag <player>
+        geardiag <player> [item]
+        hyrulestatus <player>
+        aligncheck <player>
+
+Read-only views of a player in the game; none changes anything, and a
+player who outranks you is refused.
+
+QUESTDIAG    quest state, the flags, the gamble, the daily counters, why
+             an ordinary or a daily request would be refused now, and how
+             many of the target are alive and still suitable.
+GEARDIAG     each worn piece (or the one named): level, condition, armour
+             beside its prototype, the damage ledger REPAIR restores, the
+             repair price, and whether WEAR would take it now.
+HYRULESTATUS hearts, caves paid, bombs owned and usable, and dungeon by
+             dungeon whether each gate would open.  Spoilers: staff only.
+ALIGNCHECK   alignment, tier, perks, worn gear the side rejects, and each
+             devotion forecast as DEVOTE PREVIEW shows it.
 ~
 
 60 FIXES~
@@ -2184,8 +2209,10 @@ own prints the list.  Checking on yourself works wherever you are standing;
 the rest is business with the questmaster and needs one in the room.
 
 AQUEST INFO shows the active objective and time remaining, or your cooldown,
-quest points, pending gamble, and win streak.  The cooldown runs while you
-are logged out too. Suitable targets are selected
+quest points, pending gamble, and win streak, and when your next daily may
+be taken and why not yet.  On a quest it says what AQUEST ABORT would cost.
+A pending gamble must be settled before any quest, ordinary or daily.  The
+cooldown runs while you are logged out too. Suitable targets are selected
 from live, level-appropriate mobiles in rooms your character may enter.
 
 Every level may quest, immortals included. A target is never above your
@@ -2529,6 +2556,49 @@ just as typing it would.  Typing ! repeats the alias, not its last
 command.
 
 See also: COMMANDS, HELP
+~
+
+0 'HUNTING GROUNDS' 'WHERE TO HUNT' GROUNDS~
+Where ordinary foes gather in numbers, by level, and where the danger
+starts.  WALKTO <area> walks you there; AREAS has every area's range.
+These are rough bands for a first life alone, not promises: a group, a
+remort or good gear moves them, and a foe ten levels below you pays
+little.  What you slay moves your alignment (see ALIGNMENT): slaying the
+good darkens you, slaying the evil brightens you.
+
+  Levels  Area                 Ordinary foes          Keep clear of
+  8-14    Dwarven Catacombs    templar pages,         templars and their
+                               spelunkers, mist       officers, and the
+                                                      skeletons, zombies
+                                                      and wraiths of the
+                                                      graves, attack on
+                                                      sight
+  13-16   Town of Solace       townguards (good)      one guard post is
+                                                      aggressive
+  15-20   Arachnos             young, drone and wolf  the Bird Spider,
+                               spiders                the guardians, Yevaud
+                                                      and Arachnos attack
+                                                      on sight
+  17-22   Mushroom Grove       drow females (good)
+  24-32   Korzath's Fortress   security guards
+                               (neutral)
+  28-34   Coven                witches (evil)         the warlock, the
+                                                      coven leader and the
+                                                      beast in the fire;
+                                                      the villagers are
+                                                      no quarry
+  30-36   the Upper Argo       Orgeem imps (evil)     the largest imps
+                                                      attack on sight; the
+                                                      dragoneers and the
+                                                      trolls are far harder
+  33-50   Pirate Ship          midshipmen, drunk      the drunks attack on
+                               pirates, swashbucklers sight
+                               (evil)
+
+A named creature in its own lair is a boss, not a hunting loop: it is
+meant to take a group.  CONSIDER tells you how a foe measures up.
+
+See also: WALKTO, AREAS, ALIGNMENT, CONSIDER, 'RESTED'
 ~
 
 0 AREAS~
@@ -6932,6 +7002,7 @@ See also: WANTED, NOTE
 0 ALIGNMENT ALIGN GOOD EVIL NEUTRAL DEVOTE~
 Syntax: alignment
         devote light | dark | balance     (at the Temple)
+        devote preview [light | dark | balance]
 
 Your alignment runs from -1000 to 1000 in seven tiers:
 
@@ -6952,7 +7023,10 @@ What moves it -- you are what you slay:
     says which side its death serves.
   - DEVOTE LIGHT, DARK or BALANCE at the Temple or its altar moves you
     100 that way (BALANCE toward the middle) for an offering worth twenty
-    kills of your level, once every thirty minutes.
+    kills of your level, once every thirty minutes.  DEVOTE PREVIEW, from
+    anywhere and for nothing, shows where each would leave you, the
+    offering, when the gods will next hear you, and any worn piece that
+    would zap off.
 You are told whenever you cross into a new tier; DAMAGENUMBERS shows
 every small change.
 

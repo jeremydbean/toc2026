@@ -1239,6 +1239,10 @@ void fwrite_obj( CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest )
     fprintf( fp, "Cost %ld\n",	obj->cost		     );
     fprintf( fp, "Cond %d\n",	obj->condition		     );
     fprintf( fp, "Repd %d\n",	obj->number_repair	     );
+    if ( obj->armor_lost[0] || obj->armor_lost[1]
+    ||   obj->armor_lost[2] || obj->armor_lost[3] )
+	fprintf( fp, "ArmorLost %d %d %d %d\n", obj->armor_lost[0],
+	    obj->armor_lost[1], obj->armor_lost[2], obj->armor_lost[3] );
     if (obj->value[0] != obj->pIndexData->value[0]
     ||  obj->value[1] != obj->pIndexData->value[1]
     ||  obj->value[2] != obj->pIndexData->value[2]
@@ -2144,6 +2148,11 @@ static bool scan_stash_object( FILE *fp, int version )
         else if ( !str_cmp( word, "Val" ) )
         {
             if ( !scan_numbers( fp, 5 ) )
+                return false;
+        }
+        else if ( !str_cmp( word, "ArmorLost" ) )
+        {
+            if ( !scan_numbers( fp, 4 ) )
                 return false;
         }
         else if ( !str_cmp( word, "Vnum" ) || !str_cmp( word, "Nest" )
@@ -3371,6 +3380,24 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 	case 'A':
             KEY( "Act_room", obj->action_to_room, fread_string(fp));
             KEY( "Act_char", obj->action_to_char, fread_string(fp));
+
+	    /* The damage ledger (gear_file_armor). A file from before it has
+	       none, and its piece repairs as it always did, to the floor. Each
+	       value is read into a local before it is clamped: URANGE reads
+	       its argument more than once. */
+	    if ( !str_cmp( word, "ArmorLost" ) )
+	    {
+		int iValue;
+
+		for ( iValue = 0; iValue < 4; iValue++ )
+		{
+		    int lost = fread_number( fp );
+
+		    obj->armor_lost[iValue] = (sh_int) URANGE( 0, lost, ARMOR_LOST_MAX );
+		}
+		fMatch = true;
+		break;
+	    }
 
 	    if ( !str_cmp( word, "Affect" ) || !str_cmp(word,"Aff")
 	    ||   !str_cmp( word, "AffD"))

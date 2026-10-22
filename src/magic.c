@@ -3172,9 +3172,6 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
     {
 	for ( obj_lose = victim->carrying; obj_lose != NULL; obj_lose = obj_next )
 	{
-	 int iWear;
-	 int i;
-
 	 obj_next = obj_lose->next_content;
 
 	 if ( number_percent( ) > (obj_lose->level + 30) )
@@ -3188,27 +3185,18 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                         {
                             if( IS_OBJ_STAT( obj_lose, ITEM_NOREMOVE) )
                             {
-                                /* Take the worn bonus off at the old values
-                                   (unequip_char adds), file the piece down,
-                                   then put it back at the new ones
-                                   (equip_char subtracts). The signs were the
-                                   other way round, so every heat left the
-                                   wearer better armoured, for good. */
-                                if ( ( iWear = obj_lose->wear_loc ) != WEAR_NONE )
-                                {
-                                    for (i = 0; i < 4; i ++)
-                                        victim->armor[i] += apply_ac( obj_lose, iWear, i );
-                                }
-                                for (i = 0; i < 4; i ++)
-                                    obj_lose->value[i] -= 1;
-                                /* Wear REPAIR sees, not a cut in worth. */
-                                obj_lose->condition = (sh_int) UMAX( 1,
-                                    obj_lose->condition - REPAIR_DENT_WEAR );
-                                if ( iWear != WEAR_NONE )
-                                {
-                                    for (i = 0; i < 4; i++)
-                                        victim->armor[i] -= apply_ac( obj_lose, iWear, i );
-                                }
+                                /* Filed down where it is worn: the bonus
+                                   off at the old values and back at the new
+                                   (the signs were once the other way round,
+                                   and every heat left the wearer better
+                                   armoured), the points into REPAIR's
+                                   ledger, and wear REPAIR sees. */
+                                gear_file_armor( victim, obj_lose );
+                                /* Counted before the blow: an effect that
+                                   landed is an effect, even if the blow
+                                   kills (review, 2026-10-22 -- the cursed
+                                   branches burned and said "no effect"). */
+                                ++hit_it;
                                 dam = GET_DAMROLL(ch) + dice(2, ch->level/2);
                                 damage( ch, victim, dam, sn, DAM_FIRE );
                                 if ( gone_after_blow( victim, room ) || gone_after_blow( ch, room ) )
@@ -3227,8 +3215,7 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                                    used to make kept a bonus for good. */
                                 if ( obj_lose->wear_loc != WEAR_NONE )
                                     unequip_char(victim, obj_lose);
-                                for (i = 0; i < 4; i ++)
-                                    obj_lose->value[i] -= 1;
+                                gear_file_armor( victim, obj_lose );
                                 SET_BIT(obj_lose->extra_flags, ITEM_DAMAGED);
                                 obj_lose->condition = 0;
                                 dam = GET_DAMROLL(ch) + dice(1, ch->level/2);
@@ -3246,6 +3233,7 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                         {
                             if( IS_OBJ_STAT( obj_lose, ITEM_NOREMOVE) )
                             {
+                                ++hit_it;       /* it burns where it is held */
                                 dam = GET_DAMROLL(ch) + dice(2, ch->level/2);
                                 damage( ch, victim, dam, sn, DAM_FIRE );
                                 if ( gone_after_blow( victim, room ) || gone_after_blow( ch, room ) )
@@ -4841,14 +4829,11 @@ void spell_acid_breath( int sn, int level, CHAR_DATA *ch, void *vo )
     OBJ_DATA *t_obj,*n_obj;
     int dam;
     int hpch;
-    int i;
 
     if ( number_percent( ) < 2 * level && !saves_spell( level, victim ) )
     {
 	for ( obj_lose = victim->carrying; obj_lose != NULL; obj_lose = obj_next )
 	{
-	    int iWear;
-
 	    obj_next = obj_lose->next_content;
 
 	    if ( number_bits( 2 ) != 0 )
@@ -4861,18 +4846,10 @@ void spell_acid_breath( int sn, int level, CHAR_DATA *ch, void *vo )
 		{
 		    act( "$p is pitted and etched!",
 			victim, obj_lose, NULL, TO_CHAR );
-		    /* Bonus off at the old values, back on at the new --
-		       the same reversed signs heat metal had. */
-		    if ( ( iWear = obj_lose->wear_loc ) != WEAR_NONE )
-			for (i = 0; i < 4; i ++)
-			    victim->armor[i] += apply_ac( obj_lose, iWear, i );
-		    for (i = 0; i < 4; i ++)
-		    	obj_lose->value[i] -= 1;
-		    obj_lose->condition = (sh_int) UMAX( 1,
-			obj_lose->condition - REPAIR_DENT_WEAR );
-		    if ( iWear != WEAR_NONE )
-			for (i = 0; i < 4; i++)
-			    victim->armor[i] -= apply_ac( obj_lose, iWear, i );
+		    /* Bonus off at the old values, back on at the new (the
+		       reversed signs heat metal once had), and the points
+		       into REPAIR's ledger. */
+		    gear_file_armor( victim, obj_lose );
 		}
 		break;
 

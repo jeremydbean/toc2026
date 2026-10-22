@@ -285,6 +285,83 @@ static void quest_daily_rollover( CHAR_DATA *ch )
     }
 }
 
+/*
+ * Why a quest request would be refused, decided once for AQUEST REQUEST,
+ * AQUEST DAILY REQUEST, AQUEST INFO, AQUEST DAILY STATUS and the staff's
+ * QUESTDIAG, so what the panels say is what the questmaster does. Read
+ * only: today's daily count is worked out, not rolled over. The order is
+ * the handlers' own.
+ */
+#define QREFUSE_NONE        0
+#define QREFUSE_GAMBLE      1       /* a double-or-nothing offer is pending */
+#define QREFUSE_ON_QUEST    2       /* a quest is out */
+#define QREFUSE_COOLDOWN    3       /* ordinary: nextquest minutes to wait */
+#define QREFUSE_DAILY_DONE  4       /* daily: three done this UTC day */
+#define QREFUSE_DAILY_WAIT  5       /* daily: one given up, wait it out */
+
+/* The rest an ordinary quest given up costs: AQUEST ABORT sets it and
+   AQUEST INFO quotes it, so the two cannot differ. */
+static int quest_abort_rest( CHAR_DATA *ch )
+{
+    return ch->level >= 50 ? 7 : 15;
+}
+
+static int quest_dailies_today( CHAR_DATA *ch )
+{
+    if ( ch->questdaily || ch->pcdata->daily_day == (long) ( current_time / 86400 ) )
+        return ch->pcdata->daily_done;
+    return 0;                       /* the day has turned; the count will too */
+}
+
+static int quest_request_refusal( CHAR_DATA *ch, bool daily )
+{
+    if ( ch->questgamble_pts > 0 )
+        return QREFUSE_GAMBLE;
+    if ( IS_SET(ch->act, PLR_QUESTOR) )
+        return QREFUSE_ON_QUEST;
+    if ( !daily )
+        return ch->nextquest > 0 ? QREFUSE_COOLDOWN : QREFUSE_NONE;
+    if ( quest_dailies_today( ch ) >= DAILY_QUESTS_PER_DAY )
+        return QREFUSE_DAILY_DONE;
+    if ( ch->pcdata->daily_wait_until > (long) current_time )
+        return QREFUSE_DAILY_WAIT;
+    return QREFUSE_NONE;
+}
+
+/* The refusal in a phrase, for the panels: "ready now" when there is none. */
+static void quest_refusal_text( CHAR_DATA *ch, bool daily, char *buf, size_t size )
+{
+    long left;
+
+    switch ( quest_request_refusal( ch, daily ) )
+    {
+    case QREFUSE_GAMBLE:
+        snprintf( buf, size, "not until AQUEST GAMBLE YES or NO settles %d points",
+                  ch->questgamble_pts );
+        break;
+    case QREFUSE_ON_QUEST:
+        snprintf( buf, size, "not while a quest is out (finish it, or AQUEST ABORT)" );
+        break;
+    case QREFUSE_COOLDOWN:
+        snprintf( buf, size, "in %d minute%s (it counts down logged out too)",
+                  ch->nextquest, ch->nextquest == 1 ? "" : "s" );
+        break;
+    case QREFUSE_DAILY_DONE:
+        left = ( (long) ( current_time / 86400 ) + 1 ) * 86400 - (long) current_time;
+        snprintf( buf, size, "all %d done today; the next at 00:00 UTC, in %ldh %02ldm",
+                  DAILY_QUESTS_PER_DAY, left / 3600, ( left % 3600 ) / 60 );
+        break;
+    case QREFUSE_DAILY_WAIT:
+        left = ( ch->pcdata->daily_wait_until - (long) current_time + 59 ) / 60;
+        snprintf( buf, size, "in %ld minute%s (a daily was given up)",
+                  left, left == 1 ? "" : "s" );
+        break;
+    default:
+        snprintf( buf, size, "ready now, at a questmaster" );
+        break;
+    }
+}
+
 static void complete_daily_quest( CHAR_DATA *ch, CHAR_DATA *questman,
                                   int kills_min, int kills_max )
 {
@@ -387,19 +464,24 @@ static void quest_daily_status( CHAR_DATA *ch )
     long left = next_day - (long) current_time;
 
     int streak = daily_streak_now( ch );
+    char next[200];
 
+    quest_refusal_text( ch, true, next, sizeof(next) );
     snprintf(buf, sizeof(buf),
         "{09.-[ Daily Quests ]-------------------------------------------.{00\n\r"
-        "{09|{00 Done today:   {0D%d{00 of %d   (a new day in %ldh %02ldm)\n\r"
+        "{09|{00 Done today:   {0D%d{00 of %d   (a new day at 00:00 UTC, in %ldh %02ldm)\n\r"
+        "{09|{00 Next daily:   %s\n\r"
         "{09|{00 Daily points: {0D%d{00\n\r"
         "{09|{00 Daily streak: {0D%d{00 day%s; a full day now pays {0D%d{00 extra\n\r"
         "{09|{00 Each daily pays %d point and coin; all three in a day pay %d more,\n\r"
         "{09|{00 and more again at 7, 14, 30 and 100 days running.\n\r"
+        "{09|{00 A daily taken before midnight counts for the day it was taken.\n\r"
         "{09|{00 AQUEST DAILY REQUEST  take one, at a questmaster\n\r"
         "{09|{00 AQUEST DAILY BUY PRACTICE [n]  %d points each\n\r"
         "{09|{00 AQUEST DAILY BUY TRAIN [n]     %d points each\n\r"
         "{09'-------------------------------------------------------------'{00\n\r",
         ch->pcdata->daily_done, DAILY_QUESTS_PER_DAY, left / 3600, ( left % 3600 ) / 60,
+        next,
         ch->pcdata->daily_points, streak, streak == 1 ? "" : "s",
         DAILY_SET_BONUS + daily_streak_bonus( streak + 1 ),
         DAILY_POINTS_PER_QUEST, DAILY_SET_BONUS,
@@ -469,6 +551,7 @@ static void quest_daily_request( CHAR_DATA *ch )
 {
     CHAR_DATA *questman;
     char buf[MAX_STRING_LENGTH];
+    int refusal;
 
     for ( questman = ch->in_room != NULL ? ch->in_room->people : NULL;
           questman != NULL; questman = questman->next_in_room )
@@ -484,7 +567,8 @@ static void quest_daily_request( CHAR_DATA *ch )
         send_to_char("Wait until the fighting stops.\n\r", ch);
         return;
     }
-    if ( ch->questgamble_pts > 0 )
+    refusal = quest_request_refusal( ch, true );
+    if ( refusal == QREFUSE_GAMBLE )
     {
         send_to_char(
             "Resolve your pending AQUEST GAMBLE offer before requesting another quest.\n\r", ch);
@@ -492,18 +576,18 @@ static void quest_daily_request( CHAR_DATA *ch )
     }
     act( "$n asks $N for the day's work.", ch, NULL, questman, TO_ROOM );
     act( "You ask $N for the day's work.", ch, NULL, questman, TO_CHAR );
-    if ( IS_SET(ch->act, PLR_QUESTOR) )
+    if ( refusal == QREFUSE_ON_QUEST )
     {
         snprintf(buf, sizeof(buf), "Finish the quest you have first, %s.", ch->name);
         do_say(questman, buf);
         return;
     }
-    if ( ch->pcdata->daily_done >= DAILY_QUESTS_PER_DAY )
+    if ( refusal == QREFUSE_DAILY_DONE )
     {
         do_say(questman, "You've done your three for today. Come back tomorrow!");
         return;
     }
-    if ( ch->pcdata->daily_wait_until > (long) current_time )
+    if ( refusal == QREFUSE_DAILY_WAIT )
     {
         long minutes = ( ch->pcdata->daily_wait_until - (long) current_time + 59 ) / 60;
 
@@ -861,6 +945,17 @@ void do_quest(CHAR_DATA *ch, char *argument)
 		    bonus_pct);
 		send_to_char(buf, ch);
 	    }
+	    /* What another request needs, and what giving up costs -- the
+	       same rules AQUEST ABORT applies. */
+	    if (ch->questdaily)
+		snprintf(buf, sizeof(buf),
+		    "{09|{00 {04Abort :{00 AQUEST ABORT gives it up; the next daily waits %d minutes\n\r",
+		    DAILY_GIVE_UP_WAIT / 60);
+	    else
+		snprintf(buf, sizeof(buf),
+		    "{09|{00 {04Abort :{00 AQUEST ABORT gives it up, ends your streak and rests you %d minutes\n\r",
+		    quest_abort_rest( ch ));
+	    send_to_char(buf, ch);
 	    send_to_char(
 		"{09'------------------------------------------------------'{00\n\r", ch);
 	    return;
@@ -890,8 +985,19 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	{
 	    snprintf(buf, sizeof(buf),
 		"{09|{00 {0CGamble Offer:{00 {0D%d{00 pts pending -"
-		" type {0DAQUEST GAMBLE YES{00 or {0DAQUEST GAMBLE NO{00\n\r",
+		" type {0DAQUEST GAMBLE YES{00 or {0DAQUEST GAMBLE NO{00\n\r"
+		"{09|{00 {0CNo quest of either kind until it is settled.{00\n\r",
 		ch->questgamble_pts);
+	    send_to_char(buf, ch);
+	}
+	if (!IS_NPC(ch) && ch->pcdata != NULL)
+	{
+	    char why[200];
+
+	    quest_refusal_text( ch, true, why, sizeof(why) );
+	    snprintf(buf, sizeof(buf),
+		"{09|{00 {04Daily Quest :{00 %d of %d today; next %s\n\r",
+		quest_dailies_today( ch ), DAILY_QUESTS_PER_DAY, why);
 	    send_to_char(buf, ch);
 	}
 	if (ch->queststreak > 0)
@@ -1460,7 +1566,9 @@ void do_quest(CHAR_DATA *ch, char *argument)
     }
     else if (!str_prefix(arg1, "request"))
     {
-        if ( ch->questgamble_pts > 0 )
+        int refusal = quest_request_refusal( ch, false );
+
+        if ( refusal == QREFUSE_GAMBLE )
         {
             send_to_char(
                 "Resolve your pending AQUEST GAMBLE offer before requesting another quest.\n\r",
@@ -1470,14 +1578,14 @@ void do_quest(CHAR_DATA *ch, char *argument)
 
         act( "$n approaches $N seeking a quest.", ch, NULL, questman, TO_ROOM);
 	act ("You approach $N and ask for a quest.",ch, NULL, questman, TO_CHAR);
-	if (IS_SET(ch->act, PLR_QUESTOR))
+	if (refusal == QREFUSE_ON_QUEST)
 	{
 	    snprintf(buf, sizeof(buf),
 		"You're already on a quest, %s! Finish it first.", ch->name);
 	    do_say(questman, buf);
 	    return;
 	}
-	if (ch->nextquest > 0)
+	if (refusal == QREFUSE_COOLDOWN)
 	{
 	    snprintf(buf, sizeof(buf),
 		"You've earned a rest, %s. Return in %d minute%s.",
@@ -1667,10 +1775,8 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	    ch->questdaily = false;
 	    if (daily)
 		ch->pcdata->daily_wait_until = (long) current_time + DAILY_GIVE_UP_WAIT;
-	    else if( ch->level >= 50 )
-		ch->nextquest = 7;
 	    else
-		ch->nextquest = 15;
+		ch->nextquest = (sh_int) quest_abort_rest( ch );
 	    save_char_obj(ch);
 	    return;
 	}
@@ -2188,4 +2294,98 @@ void quest_update(void)
             }
         }
     }
+}
+
+
+/*
+ * QUESTDIAG <player>: staff, read-only. The whole of a character's quest
+ * state, the same refusals AQUEST REQUEST would give, and the target as it
+ * stands now -- how many are alive, and whether the first few would still
+ * be picked (automatic_quest_target_is_suitable, the request's own test).
+ * Nothing is changed; the daily day is shown as it is saved, beside today.
+ */
+void do_questdiag( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    char why[200];
+    CHAR_DATA *victim, *candidate;
+    LIST_ITERATOR iter;
+    ROOM_INDEX_DATA *closed[QUEST_CLOSED_ROOMS_MAX];
+    int closed_count, alive = 0, suitable = 0, checked = 0;
+
+    one_argument( argument, arg );
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "QUESTDIAG <player>: quest state and refusals, changing nothing.\n\r", ch );
+        return;
+    }
+    if ( ( victim = get_char_world( ch, arg ) ) == NULL || IS_NPC(victim)
+    ||   victim->pcdata == NULL )
+    {
+        send_to_char( "No player by that name is in the game.\n\r", ch );
+        return;
+    }
+    if ( victim != ch && rank_protects( ch, victim ) )
+    {
+        send_to_char( "They outrank you.\n\r", ch );
+        return;
+    }
+
+    snprintf( buf, sizeof(buf), "Quest state of %s (level %d):\n\r", victim->name, victim->level );
+    send_to_char( buf, ch );
+    if ( IS_SET(victim->act, PLR_QUESTOR) )
+    {
+        snprintf( buf, sizeof(buf),
+            "  On a %s quest: mob %d, object %d, %d minute%s left.\n\r",
+            victim->questdaily ? "daily" : victim->questemergency ? "emergency"
+                : victim->questrush ? "rush" : "ordinary",
+            victim->questmob, victim->questobj, victim->countdown,
+            victim->countdown == 1 ? "" : "s" );
+        send_to_char( buf, ch );
+    }
+    else
+        send_to_char( "  No quest out.\n\r", ch );
+    snprintf( buf, sizeof(buf),
+        "  Flags: rush %s, emergency %s, daily %s. Points %d, streak %d (+%d%%), gamble %d pending.\n\r",
+        victim->questrush ? "yes" : "no", victim->questemergency ? "yes" : "no",
+        victim->questdaily ? "yes" : "no", victim->questpoints, victim->queststreak,
+        quest_streak_bonus( victim ), victim->questgamble_pts );
+    send_to_char( buf, ch );
+    quest_refusal_text( victim, false, why, sizeof(why) );
+    snprintf( buf, sizeof(buf), "  Ordinary request: %s.\n\r", why );
+    send_to_char( buf, ch );
+    quest_refusal_text( victim, true, why, sizeof(why) );
+    snprintf( buf, sizeof(buf),
+        "  Daily request: %s.\n\r"
+        "  Daily: points %d, saved day %ld (today %ld), done %d (counts as %d today), streak %d.\n\r",
+        why, victim->pcdata->daily_points, victim->pcdata->daily_day,
+        (long) ( current_time / 86400 ), victim->pcdata->daily_done,
+        quest_dailies_today( victim ), victim->pcdata->daily_streak );
+    send_to_char( buf, ch );
+
+    if ( !IS_SET(victim->act, PLR_QUESTOR) || victim->questmob <= 0 )
+        return;
+    closed_count = guild_closed_rooms( victim, closed, QUEST_CLOSED_ROOMS_MAX );
+    FOR_EACH_CHARACTER( iter, candidate )
+    {
+        if ( !IS_NPC(candidate) || candidate->pIndexData == NULL
+        ||   candidate->pIndexData->vnum != victim->questmob )
+            continue;
+        alive++;
+        /* Bounded: the first ten are enough to say whether it is huntable. */
+        if ( checked < 10 )
+        {
+            checked++;
+            if ( automatic_quest_target_is_suitable( victim, NULL, candidate,
+                                                     closed, closed_count ) )
+                suitable++;
+        }
+    }
+    snprintf( buf, sizeof(buf),
+        "  Target mob %d: %d alive; of the first %d, %d would still be chosen as a target.\n\r",
+        victim->questmob, alive, checked, suitable );
+    send_to_char( buf, ch );
+    if ( alive == 0 )
+        send_to_char( "  It is gone: the quest can only time out or be aborted.\n\r", ch );
 }

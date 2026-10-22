@@ -1,0 +1,127 @@
+"""log/progress.tsv: what leveling is made of (2026-10-22).
+
+The watch log and the play journal could not say how long a fight took,
+how much experience was actually accepted, or how often a hunt ended in a
+flee -- only arrivals and adjacent timestamps, which measure nothing.
+Every credited kill now writes a line with the encounter's length, the
+base, rested and accepted experience and the group size, and a flee or a
+player's death writes one too. The character is the file's numeric Id,
+never a name, and the finest place written is the area file.
+"""
+from __future__ import annotations
+
+import unittest
+
+from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
+
+SKIP = skip_reason()
+PW = "Zprogress1"
+HALLS = 4202            # not safe
+SMURF = 104             # a handy smurf, level 3
+WORKER = 13428          # a construction worker, 3,400 hit points: one to flee from
+
+
+def run(client, command: str, settle: float = 1.2) -> str:
+    client.drain(0.3)
+    mark = len(client.transcript)
+    client.send(command)
+    client.drain(settle)
+    return client.transcript[mark:]
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class ProgressLogTests(unittest.TestCase):
+    def test_a_kill_and_a_flee_are_recorded_without_a_name(self) -> None:
+        with LiveMud() as mud:
+            for name, level in (("Zhunter", 20), ("Zsetter", 70)):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PW)
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
+                patch_player_file(mud, name, Levl=level, Room=HALLS,
+                                  HMV="9000 9000 500 500 500 500", HMVP="9000 500 500")
+            with mud.connect(timeout=120) as hunter, mud.connect(timeout=120) as setter:
+                login(hunter, "Zhunter", PW)
+                login(setter, "Zsetter", PW)
+                run(setter, f"load mob {SMURF}")
+                # One hit point: the first blow that lands kills, before a
+                # wimpy smurf can run.
+                run(setter, "set char smurf hp 1")
+                hunter.buffer = ""
+                run(hunter, "kill smurf", 1.0)
+                hunter.expect("is DEAD", timeout=60)
+                hunter.drain(1.0)
+
+                run(setter, f"load mob {WORKER}")
+                run(hunter, "kill worker", 1.0)
+                for _ in range(30):
+                    if "You flee from combat" in run(hunter, "flee", 2.0):
+                        break
+                else:
+                    self.fail("thirty tries never fled:\n" + hunter.transcript[-1500:])
+                run(setter, "peace", 0.5)
+                for client in (hunter, setter):
+                    client.send("quit")
+                    client.wait_closed()
+            text = (mud.root / "log" / "progress.tsv").read_text(encoding="latin-1")
+            hunter_id = next(line.split()[1] for line in
+                             (mud.player_dir / "Zhunter").read_text(encoding="latin-1").splitlines()
+                             if line.startswith("Id "))
+
+        rows = [line.split("\t") for line in text.splitlines()]
+        kills = [r for r in rows if r[1] == "kill"]
+        flees = [r for r in rows if r[1] == "flee"]
+        self.assertEqual(len(kills), 1, text)
+        kill = kills[0]
+        self.assertEqual(len(kill), 16, kill)
+        self.assertEqual(kill[2], hunter_id)                  # the Id, not a name
+        self.assertEqual((kill[3], kill[8], kill[9]), ("20", str(SMURF), "3"))
+        self.assertTrue(kill[10].endswith(".are"), kill)       # an area file, never a room
+        self.assertGreaterEqual(int(kill[11]), 0, "encounter length")
+        self.assertGreater(int(kill[14]), 0, "accepted experience")
+        self.assertEqual(kill[15], "1", "group size")
+        self.assertEqual(len(flees), 1, text)
+        self.assertEqual(flees[0][8], str(WORKER))
+        self.assertNotIn("Zhunter", text)
+        self.assertNotIn(str(HALLS), text)
+
+
+class ProgressReportTests(unittest.TestCase):
+    def test_the_report_aggregates_and_prints_no_ids(self) -> None:
+        import io
+        import sys
+        from contextlib import redirect_stdout
+        from datetime import datetime, timezone
+        from pathlib import Path
+        from types import SimpleNamespace
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
+        import log_report
+
+        text = ("1792700000\tkill\t4242\t30\t3\t0\t80\t100\t24112\t32\tcoven.are\t60000\t900\t0\t900\t1\n"
+                "1792700100\tkill\t5353\t31\t0\t1\t60\t40\t24112\t32\tcoven.are\t60000\t800\t100\t900\t1\n"
+                "1792700200\tflee\t5353\t31\t0\t1\t10\t40\t24112\t32\tcoven.are\n"
+                "1792700300\tdeath\t4242\t30\t3\t0\t0\t0\t24112\t32\tcoven.are\n")
+        summary = log_report.progress_summary(text, datetime(2026, 1, 1, tzinfo=timezone.utc))
+        foe = summary["by_foe"][("coven.are", "24112", "32")]
+        self.assertEqual((summary["characters"], foe["kills"], foe["xp"], foe["ms"]), (2, 2, 1800, 120000))
+        area = summary["by_area"]["coven.are"]
+        self.assertEqual((area["kills"], area["flee"], area["death"]), (2, 1, 1))
+
+        original = log_report.git_show
+        log_report.git_show = lambda ref, path: text
+        try:
+            out = io.StringIO()
+            with redirect_stdout(out):
+                log_report.progress_report(SimpleNamespace(ref="x"),
+                                           datetime(2026, 1, 1, tzinfo=timezone.utc))
+        finally:
+            log_report.git_show = original
+        printed = out.getvalue()
+        self.assertIn("2 distinct characters", printed)
+        self.assertIn("900", printed)               # 1800 xp over two combat minutes
+        self.assertNotIn("4242", printed)
+        self.assertNotIn("5353", printed)
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -725,3 +725,114 @@ void playlog_session( CHAR_DATA *ch, const char *how )
               ch->pcdata->play_refused, coin );
     journal_write( "session", ch, fields );
 }
+
+
+/* --------------------------------------------------------------------
+ * log/progress.tsv: what leveling is made of (2026-10-22, the progression
+ * pass). One line per credited kill and per flee or player death, so XP
+ * per combat minute, recovery and route choice can be measured instead of
+ * guessed from arrivals and adjacent timestamps.
+ *
+ * Columns, tab-separated: epoch, kind (kill, flee, death), character id
+ * (the file's Id, never a name -- reports count independent histories by
+ * it), level, class, remorts, hp%, mana%, foe vnum, foe level, area file,
+ * then for a kill: encounter ms (from the mobile's first blow, set in
+ * set_fighting), base xp, rested xp, accepted xp, group members.
+ *
+ * Never a room: an area file is the finest place written. The black
+ * market dealer and the treasure goblin are left out entirely. Trimmed
+ * past PROGRESS_MAX lines to the newest PROGRESS_KEEP, like the journal.
+ * ------------------------------------------------------------------ */
+
+#define PROGRESS_FILE   "../log/progress.tsv"
+#define PROGRESS_MAX    40000
+#define PROGRESS_KEEP   20000
+
+static long progress_lines = -1;
+
+long playlog_now_ms( void )
+{
+    struct timeval now;
+
+    gettimeofday( &now, NULL );
+    return (long) now.tv_sec * 1000L + (long) ( now.tv_usec / 1000 );
+}
+
+static void progress_trim( void )
+{
+    char line[PLAY_LINE];
+    FILE *in, *out;
+    long total = 0, seen = 0, skip;
+
+    if ( ( in = fopen( PROGRESS_FILE, "r" ) ) == NULL )
+    {
+        progress_lines = 0;
+        return;
+    }
+    while ( fgets( line, sizeof(line), in ) != NULL )
+        if ( strchr( line, '\n' ) != NULL )
+            total++;
+    progress_lines = total;
+    if ( total <= PROGRESS_MAX || ( out = fopen( PROGRESS_FILE ".tmp", "w" ) ) == NULL )
+    {
+        fclose( in );
+        return;
+    }
+    skip = total - PROGRESS_KEEP;
+    rewind( in );
+    while ( fgets( line, sizeof(line), in ) != NULL )
+    {
+        if ( seen >= skip )
+            fputs( line, out );
+        if ( strchr( line, '\n' ) != NULL )
+            seen++;
+    }
+    fclose( in );
+    if ( temp_file_commit( out, PROGRESS_FILE ".tmp", PROGRESS_FILE ) )
+        progress_lines = PROGRESS_KEEP;
+}
+
+static void progress_write( const char *kind, CHAR_DATA *ch, CHAR_DATA *foe, const char *tail )
+{
+    FILE *fp;
+    const char *area = "-";
+    int hp_pct, mana_pct;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || foe == NULL || !IS_NPC(foe)
+    ||   foe->pIndexData == NULL || is_unfindable_mob( foe ) )
+        return;
+    if ( progress_lines < 0 || progress_lines >= PROGRESS_MAX )
+        progress_trim();
+    if ( foe->in_room != NULL && foe->in_room->area != NULL
+    &&   foe->in_room->area->file_name != NULL )
+        area = foe->in_room->area->file_name;
+    hp_pct = ch->max_hit > 0 ? (int) ( 100L * ch->hit / ch->max_hit ) : 0;
+    mana_pct = ch->max_mana > 0 ? (int) ( 100L * ch->mana / ch->max_mana ) : 0;
+    if ( ( fp = fopen( PROGRESS_FILE, "a" ) ) == NULL )
+        return;
+    fprintf( fp, "%ld\t%s\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%s%s%s\n",
+             (long) current_time, kind, ch->pcdata->id, ch->level, ch->class,
+             ch->pcdata->num_remorts, hp_pct, mana_pct,
+             foe->pIndexData->vnum, foe->level, area,
+             tail[0] != '\0' ? "\t" : "", tail );
+    fclose( fp );
+    progress_lines++;
+}
+
+void progress_kill( CHAR_DATA *gch, CHAR_DATA *victim, int base_xp, int rested_xp,
+                    long accepted_xp, int members )
+{
+    char tail[128];
+    long encounter = victim != NULL && victim->fight_began_ms > 0
+                   ? playlog_now_ms() - victim->fight_began_ms : -1;
+
+    snprintf( tail, sizeof(tail), "%ld\t%d\t%d\t%ld\t%d",
+              encounter, base_xp, rested_xp, accepted_xp, members );
+    progress_write( "kill", gch, victim, tail );
+}
+
+/* kind is "flee" or "death"; foe is the mobile it was against. */
+void progress_event( CHAR_DATA *ch, const char *kind, CHAR_DATA *foe )
+{
+    progress_write( kind, ch, foe, "" );
+}

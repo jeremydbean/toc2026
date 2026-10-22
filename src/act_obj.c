@@ -5423,6 +5423,68 @@ static OBJ_DATA *find_carried_puzzle_tool( CHAR_DATA *ch, const char *keyword,
     return NULL;
 }
 
+/* The exit a puzzle opens, or NULL. */
+static EXIT_DATA *puzzle_exit( CHAR_DATA *ch, OBJ_DATA *obj, ROOM_INDEX_DATA **room_out )
+{
+    ROOM_INDEX_DATA *room;
+    EXIT_DATA *pexit;
+
+    room = obj->value[4] == PUZZLE_CURRENT_ROOM
+         ? ch->in_room : get_room_index( obj->value[1] );
+    if ( room == NULL || obj->value[2] < 0 || obj->value[2] > 5
+    ||   ( pexit = room->exit[obj->value[2]] ) == NULL
+    ||   pexit->u1.to_room == NULL )
+        return NULL;
+    *room_out = room;
+    return pexit;
+}
+
+/* Whether a creature in the room is one a sound puzzle (value[4] 1) acts on. */
+static bool puzzle_sound_victim( CHAR_DATA *ch, OBJ_DATA *obj, CHAR_DATA *victim )
+{
+    if ( !IS_NPC(victim) || victim == ch )
+        return false;
+    if ( obj->value[1] == 0 && obj->value[2] > 0
+    &&   (victim->pIndexData == NULL
+       || victim->pIndexData->vnum != obj->value[2]) )
+        return false;
+    return true;
+}
+
+/*
+ * Whether the puzzle would do something, saying why not when it would
+ * not, and changing nothing. BOMB asks this before it spends a bomb, so a
+ * solved or broken puzzle costs nothing, and opens it only once a bomb is
+ * spent (review, 2026-10-22: it opened the wall first and never checked
+ * the bomb was there to spend).
+ */
+static bool puzzle_manipulation_ready( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    ROOM_INDEX_DATA *room;
+    CHAR_DATA *victim;
+
+    if ( obj->value[3] == 2 )
+    {
+        send_to_char( "That puzzle has already been solved.\n\r", ch );
+        return false;
+    }
+    if ( obj->value[1] != 0 || obj->value[4] == PUZZLE_CURRENT_ROOM )
+    {
+        if ( puzzle_exit( ch, obj, &room ) == NULL )
+        {
+            send_to_char( "Nothing seems to happen.\n\r", ch );
+            return false;
+        }
+        return true;
+    }
+    if ( obj->value[4] == 1 )
+        for ( victim = ch->in_room->people; victim != NULL; victim = victim->next_in_room )
+            if ( puzzle_sound_victim( ch, obj, victim ) )
+                return true;
+    send_to_char( "Nothing seems to happen.\n\r", ch );
+    return false;
+}
+
 static bool trigger_puzzle_manipulation( CHAR_DATA *ch, OBJ_DATA *obj )
 {
     ROOM_INDEX_DATA *room;
@@ -5431,23 +5493,12 @@ static bool trigger_puzzle_manipulation( CHAR_DATA *ch, OBJ_DATA *obj )
     CHAR_DATA *victim;
     bool changed = false;
 
-    if ( obj->value[3] == 2 )
-    {
-        send_to_char( "That puzzle has already been solved.\n\r", ch );
+    if ( !puzzle_manipulation_ready( ch, obj ) )
         return false;
-    }
 
     if ( obj->value[1] != 0 || obj->value[4] == PUZZLE_CURRENT_ROOM )
     {
-        room = obj->value[4] == PUZZLE_CURRENT_ROOM
-             ? ch->in_room : get_room_index( obj->value[1] );
-        if ( room == NULL || obj->value[2] < 0 || obj->value[2] > 5
-        ||   ( pexit = room->exit[obj->value[2]] ) == NULL
-        ||   pexit->u1.to_room == NULL )
-        {
-            send_to_char( "Nothing seems to happen.\n\r", ch );
-            return false;
-        }
+        pexit = puzzle_exit( ch, obj, &room );
 
         REMOVE_BIT( pexit->exit_info, EX_CLOSED );
         REMOVE_BIT( pexit->exit_info, EX_LOCKED );
@@ -5468,11 +5519,7 @@ static bool trigger_puzzle_manipulation( CHAR_DATA *ch, OBJ_DATA *obj )
         for ( victim = ch->in_room->people; victim != NULL;
               victim = victim->next_in_room )
         {
-            if ( !IS_NPC(victim) || victim == ch )
-                continue;
-            if ( obj->value[1] == 0 && obj->value[2] > 0
-            &&   (victim->pIndexData == NULL
-               || victim->pIndexData->vnum != obj->value[2]) )
+            if ( !puzzle_sound_victim( ch, obj, victim ) )
                 continue;
 
             victim->hit = UMAX( 1, victim->hit / 3 );
@@ -5592,15 +5639,20 @@ void do_bomb( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( hyrule_bombs_carried( ch ) <= 0 )
+    /* The puzzle first, changing nothing; then a bomb, spent; only then
+       the wall. A refused puzzle costs no bomb, and no bomb opens nothing. */
+    if ( !puzzle_manipulation_ready( ch, target ) )
+        return;
+    if ( hyrule_no_bomb_to_use( ch ) )
+        return;
+    if ( !hyrule_use_bomb( ch ) )
     {
-        send_to_char( "You have no bombs. The arrow shops sell four for 20 gold.\n\r", ch );
+        send_to_char( "You fumble for a bomb and find none.\n\r", ch );
         return;
     }
 
     if ( trigger_puzzle_manipulation( ch, target ) )
     {
-        hyrule_use_bomb( ch );
         act( "You set a bomb beside $p and dive aside. The blast opens a passage!",
              ch, target, NULL, TO_CHAR );
         act( "$n bombs $p, and the blast opens a passage!",
@@ -6430,6 +6482,36 @@ static int repair_armor_floor( OBJ_DATA *obj, int i )
     return obj->pIndexData->value[i];
 }
 
+/*
+ * What REPAIR makes an armour piece's four values: each with the points
+ * damage filed off it put back (obj->armor_lost, recorded by
+ * gear_file_armor), and never below repair_armor_floor -- which is all a
+ * piece damaged before the ledger existed (2026-10-22) has to go on, so
+ * old kit repairs exactly as it did, with no free upgrade (review,
+ * 2026-10-22: a randomized 6/6/6/1 etched to 5/5/5/0 came back 5/5/5/1).
+ * Returns whether anything would change. Non-armour pieces are never
+ * filed and are left alone.
+ */
+static bool repair_armor_target( OBJ_DATA *obj, int target[4] )
+{
+    bool change = false;
+    int i;
+
+    for ( i = 0; i < 4; i++ )
+        target[i] = obj->value[i];
+    if ( obj->item_type != ITEM_ARMOR || obj->pIndexData == NULL )
+        return false;
+    for ( i = 0; i < 4; i++ )
+    {
+        target[i] = obj->value[i] + obj->armor_lost[i];
+        if ( target[i] < repair_armor_floor( obj, i ) )
+            target[i] = repair_armor_floor( obj, i );
+        if ( target[i] != obj->value[i] )
+            change = true;
+    }
+    return change;
+}
+
 /* Mend one item the character has already been charged for (REPAIR). */
 static void repair_mend( CHAR_DATA *ch, CHAR_DATA *rpr, OBJ_DATA *obj, long cost )
 {
@@ -6463,29 +6545,22 @@ static void repair_mend( CHAR_DATA *ch, CHAR_DATA *rpr, OBJ_DATA *obj, long cost
         {
             int  slot    = obj->wear_loc;
             bool worn    = slot != WEAR_NONE;
-            bool restore = false;
+            int  target[4];
             int  i;
 
-            if ( obj->item_type == ITEM_ARMOR )
-            {
-                for ( i = 0; i < 4; i++ )
-                    if ( obj->value[i] < repair_armor_floor( obj, i ) )
-                        restore = true;
-            }
-
-            if ( restore )
+            if ( repair_armor_target( obj, target ) )
             {
                 /* Re-seat it so the wearer's armour is recomputed from
                    the restored values rather than the filed-down ones. */
                 if ( worn )
                     unequip_char( ch, obj );
                 for ( i = 0; i < 4; i++ )
-                    if ( obj->value[i] < repair_armor_floor( obj, i ) )
-                        obj->value[i] = repair_armor_floor( obj, i );
+                    obj->value[i] = target[i];
                 if ( worn )
                     equip_char( ch, obj, slot );
             }
-
+            for ( i = 0; i < 4; i++ )
+                obj->armor_lost[i] = 0;
         }
 
         act( "$N repairs your $p.", ch, obj, rpr, TO_CHAR );
@@ -6506,15 +6581,11 @@ static void repair_mend( CHAR_DATA *ch, CHAR_DATA *rpr, OBJ_DATA *obj, long cost
    REPAIR ALL both ask this. */
 static bool repair_needed( OBJ_DATA *obj )
 {
-    int i;
+    int target[4];
 
     if ( obj->condition < 100 || IS_OBJ_STAT(obj, ITEM_DAMAGED) )
         return true;
-    if ( obj->item_type == ITEM_ARMOR && obj->pIndexData != NULL )
-        for ( i = 0; i < 4; i++ )
-            if ( obj->value[i] < repair_armor_floor( obj, i ) )
-                return true;
-    return false;
+    return repair_armor_target( obj, target );
 }
 
 /*
@@ -6585,6 +6656,188 @@ static void repair_all( CHAR_DATA *ch, CHAR_DATA *rpr )
     }
 }
 
+/* One line of a quote: what REPAIR would cost and put back. */
+static void repair_quote_line( CHAR_DATA *ch, OBJ_DATA *obj, char *buf, size_t size )
+{
+    char price[MAX_INPUT_LENGTH];
+    char armour[MAX_INPUT_LENGTH];
+    int target[4];
+
+    format_price( repair_cost_copper( obj ), price, sizeof(price) );
+    armour[0] = '\0';
+    if ( repair_armor_target( obj, target ) )
+        snprintf( armour, sizeof(armour), "; armour %d %d %d %d -> %d %d %d %d",
+                  obj->value[0], obj->value[1], obj->value[2], obj->value[3],
+                  target[0], target[1], target[2], target[3] );
+    snprintf( buf, size, "  %-28.28s %s: condition %d%% -> 100%%%s%s\n\r",
+              obj->short_descr, price, obj->condition, armour,
+              IS_OBJ_STAT(obj, ITEM_DAMAGED) ? "; mended so it can be worn" : "" );
+    UNUSED_PARAM(ch);
+}
+
+/*
+ * REPAIR QUOTE <item | ALL>: what REPAIR would cost and restore, changing
+ * nothing, anywhere -- the price is the smith's formula, not the smith's.
+ * ALL is quoted the way REPAIR ALL works, cheapest first as far as the
+ * purse goes, so the quote says which pieces the coin carried now covers.
+ */
+static void repair_quote( CHAR_DATA *ch, char *argument )
+{
+    char buf[MAX_STRING_LENGTH];
+    char price[MAX_INPUT_LENGTH];
+    OBJ_DATA *obj;
+    OBJ_DATA *list[100];
+    long purse, total = 0, covered = 0;
+    int count = 0, i, j, afford = 0;
+
+    if ( argument[0] == '\0' )
+    {
+        send_to_char( "REPAIR QUOTE <item> or REPAIR QUOTE ALL: the price, and what comes back.\n\r", ch );
+        return;
+    }
+    if ( str_cmp( argument, "all" ) )
+    {
+        if ( ( obj = get_obj_carry( ch, argument ) ) == NULL
+        &&   ( obj = get_obj_wear( ch, argument ) ) == NULL )
+        {
+            send_to_char( "You aren't carrying or wearing that.\n\r", ch );
+            return;
+        }
+        if ( !repair_needed( obj ) )
+        {
+            snprintf( buf, sizeof(buf), "%s is in perfect condition: nothing to pay.\n\r",
+                      obj->short_descr );
+            send_to_char( buf, ch );
+            return;
+        }
+        repair_quote_line( ch, obj, buf, sizeof(buf) );
+        send_to_char( "A smith would charge:\n\r", ch );
+        send_to_char( buf, ch );
+        send_to_char( has_enough_copper( ch, repair_cost_copper( obj ) )
+                      ? "You carry enough.\n\r" : "That is more than you carry.\n\r", ch );
+        return;
+    }
+
+    for ( obj = ch->carrying; obj != NULL && count < 100; obj = obj->next_content )
+        if ( repair_needed( obj ) )
+            list[count++] = obj;
+    if ( count == 0 )
+    {
+        send_to_char( "Everything you carry and wear is in perfect condition.\n\r", ch );
+        return;
+    }
+    /* Cheapest first, as REPAIR ALL mends. */
+    for ( i = 1; i < count; i++ )
+        for ( j = i; j > 0 && repair_cost_copper( list[j] ) < repair_cost_copper( list[j - 1] ); j-- )
+        {
+            OBJ_DATA *swap = list[j];
+
+            list[j] = list[j - 1];
+            list[j - 1] = swap;
+        }
+    if ( !coins_to_copper_checked( ch, &purse ) )
+        purse = 0;
+    send_to_char( "A smith would mend, cheapest first:\n\r", ch );
+    for ( i = 0; i < count; i++ )
+    {
+        long cost = repair_cost_copper( list[i] );
+
+        repair_quote_line( ch, list[i], buf, sizeof(buf) );
+        send_to_char( buf, ch );
+        total += cost;
+        if ( cost <= purse - covered )
+        {
+            covered += cost;
+            afford++;
+        }
+    }
+    format_price( total, price, sizeof(price) );
+    snprintf( buf, sizeof(buf), "%d item%s, %s in all. ", count, count == 1 ? "" : "s", price );
+    send_to_char( buf, ch );
+    if ( afford == count )
+        send_to_char( "You carry enough for every one.\n\r", ch );
+    else
+    {
+        format_price( covered, price, sizeof(price) );
+        snprintf( buf, sizeof(buf), "What you carry covers %d of them, for %s.\n\r", afford, price );
+        send_to_char( buf, ch );
+    }
+}
+
+/*
+ * GEARDIAG <player> [item]: staff, read-only. Each worn piece (or the one
+ * named, carried or worn): slot, level, condition and damage, its armour
+ * values beside the prototype's, the damage ledger REPAIR will put back,
+ * what REPAIR would cost, whether the enchant spells have worked on it,
+ * and whether WEAR would take it now (wear_requirements_quiet).
+ */
+void do_geardiag( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    char price[MAX_INPUT_LENGTH];
+    CHAR_DATA *victim;
+    OBJ_DATA *obj;
+    int shown = 0;
+
+    argument = one_argument( argument, arg );
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "GEARDIAG <player> [item]: worn gear, damage and repair, changing nothing.\n\r", ch );
+        return;
+    }
+    if ( ( victim = get_char_world( ch, arg ) ) == NULL || IS_NPC(victim) )
+    {
+        send_to_char( "No player by that name is in the game.\n\r", ch );
+        return;
+    }
+    if ( victim != ch && rank_protects( ch, victim ) )
+    {
+        send_to_char( "They outrank you.\n\r", ch );
+        return;
+    }
+    for ( obj = victim->carrying; obj != NULL; obj = obj->next_content )
+    {
+        int target[4];
+
+        if ( argument[0] != '\0' ? !is_name( argument, obj->name ) : obj->wear_loc == WEAR_NONE )
+            continue;
+        format_price( repair_cost_copper( obj ), price, sizeof(price) );
+        snprintf( buf, sizeof(buf),
+            "%s [%d] slot %d, level %d%s: condition %d%%%s%s.\n\r",
+            obj->short_descr, obj->pIndexData != NULL ? obj->pIndexData->vnum : 0,
+            obj->wear_loc, obj->level,
+            obj->pIndexData != NULL && obj->pIndexData->level == -1 ? " (rolled)" : "",
+            obj->condition, IS_OBJ_STAT(obj, ITEM_DAMAGED) ? ", broken" : "",
+            obj->enchanted ? ", enchanted" : "" );
+        send_to_char( buf, ch );
+        if ( obj->item_type == ITEM_ARMOR && obj->pIndexData != NULL )
+        {
+            repair_armor_target( obj, target );
+            snprintf( buf, sizeof(buf),
+                "    armour %d %d %d %d (prototype %d %d %d %d), damage ledger %d %d %d %d,"
+                " repairs to %d %d %d %d\n\r",
+                obj->value[0], obj->value[1], obj->value[2], obj->value[3],
+                obj->pIndexData->value[0], obj->pIndexData->value[1],
+                obj->pIndexData->value[2], obj->pIndexData->value[3],
+                obj->armor_lost[0], obj->armor_lost[1], obj->armor_lost[2], obj->armor_lost[3],
+                target[0], target[1], target[2], target[3] );
+            send_to_char( buf, ch );
+        }
+        snprintf( buf, sizeof(buf), "    repair: %s; repaired %d time%s; WEAR would %s it now.\n\r",
+                  repair_needed( obj ) ? price : "nothing to do",
+                  obj->number_repair, obj->number_repair == 1 ? "" : "s",
+                  wear_requirements_quiet( victim, obj ) ? "accept" : "refuse" );
+        send_to_char( buf, ch );
+        /* Bounded output: a slot per line group, or the pieces named. */
+        if ( ++shown >= 30 )
+            break;
+    }
+    if ( shown == 0 )
+        send_to_char( argument[0] != '\0' ? "They carry nothing by that name.\n\r"
+                                           : "They wear nothing.\n\r", ch );
+}
+
 void do_repair( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
@@ -6597,8 +6850,21 @@ void do_repair( CHAR_DATA *ch, char *argument )
 	return;
 
     if(argument[0] == '\0') {
-	send_to_char("Repair what?  REPAIR <item>, or REPAIR ALL.\n\r",ch);
+	send_to_char("Repair what?  REPAIR <item>, REPAIR ALL, or REPAIR QUOTE <item|ALL> to see first.\n\r",ch);
 	return;
+    }
+
+    {
+        char word[MAX_INPUT_LENGTH];
+        char *rest = one_argument( argument, word );
+
+        /* Only with something after it: an item called "quote" can still
+           be repaired by name alone. */
+        if ( !str_cmp( word, "quote" ) && rest[0] != '\0' )
+        {
+            repair_quote( ch, rest );
+            return;
+        }
     }
 
     if ( !str_cmp( argument, "all" ) )

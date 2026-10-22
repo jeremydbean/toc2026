@@ -1809,6 +1809,22 @@ log says what a player typed; the journal says what happened, in columns
   coin in one tick. One line per kind per player per ten minutes, to the
   journal and to toc.log as `ANOMALY:`.
 
+- **`log/progress.tsv`** (2026-10-22, the progression pass): a line per
+  credited kill (`progress_kill`, from `group_gain` after `gain_exp`) and
+  per player flee or death by a mobile (`progress_event`). Columns:
+  epoch, kind, the character's file **Id, never a name**, level, class,
+  remorts, hp%, mana%, foe vnum and level, **area file, never a room**;
+  a kill adds encounter ms, base, rested and accepted XP (what `gain_exp`
+  took, so the level 50 stop shows) and group size. The encounter starts
+  at `fight_began_ms`, stamped in `set_fighting` when a mobile enters a
+  fight or a player strikes one that is in none, and never cleared --
+  `damage()` stops a dead victim's fight before `group_gain` reads it.
+  The dealer and the goblin are never written. Trimmed past
+  `PROGRESS_MAX` to `PROGRESS_KEEP`. `tools/log_report.py` aggregates it
+  by foe and area -- XP per combat minute, median encounter, flees,
+  deaths, distinct characters -- and prints no ids
+  (`tests/test_progress_log.py`).
+
 `tools/log_report.py` prints the slowest commands, what the game said no
 with (grouped by command and answer -- the cheapest way to find a command
 that confuses players), **help that did not help** (HELP X, then X refused
@@ -3440,6 +3456,64 @@ the old code. The rules they leave:
   A rollback extracting over the live tree could otherwise be copied half
   written. Snoop showing alias bodies and LOG <name> recording a
   character in full are staff tools working as meant (owner, 2026-10-22).
+
+## Contracts From The 2026-10-22 Gameplay Review
+
+A post-fix gameplay review (G1-G6) and the views added beside it. Each fix
+has a live or behaviour test that fails on the old code.
+
+- **BOMB spends a carried bomb, once, before anything goes off**
+  (`tests/test_hyrule_bombs.py`). Usable means carried at any depth
+  (`find_bombs_in`, `hyrule_bombs_usable`); the stash still counts against
+  the bag (`hyrule_bombs_carried`) and is never spent from afar --
+  `hyrule_no_bomb_to_use` says which. Combat refuses unless
+  `hyrule_use_bomb` succeeds. A puzzle is checked with
+  `puzzle_manipulation_ready` (no change, no cost), then a bomb is spent,
+  then `trigger_puzzle_manipulation` opens it; a refused target or puzzle
+  costs nothing.
+- **Armour damage is a ledger, and REPAIR puts back exactly it**
+  (`tests/test_gear_damage_ledger.py`). Heat metal, acid breath and a
+  shield's dent go through `gear_file_armor()` in `handler.c`: worn AC off
+  at the old values and on at the new, a point per value into
+  `obj->armor_lost[4]`, `REPAIR_DENT_WEAR` condition. It saves as
+  `ArmorLost a b c d` under **case 'A'** of `fread_obj`, only when
+  non-zero, and PRESTORE STASH's scanner knows it. `repair_armor_target()`
+  is value plus ledger, never below `repair_armor_floor` -- the floor is
+  the backstop for pieces damaged before the ledger, so **an old file
+  repairs exactly as it did** (no free upgrade, nothing lost). A ledger,
+  not a recorded baseline, so staff tuning and spells that change values
+  are never taken for damage. A new armour-filing effect calls the helper.
+- **A rider sets off the arrival trap once**, after the look, with
+  `rev_dir[door]`, as a walker does (`tests/test_trap_movement.py`); the
+  source test no longer pins a count of `room_affect` calls.
+- **Heat metal counts an effect when it lands**, cursed branches included,
+  before the blow (`tests/test_audit_leads.py`).
+- **The dashboard's `/api/config` resolves off the event loop**
+  (`asyncio.to_thread(public_game_host)`, lookups coalesced under
+  `_PUBLIC_IP_LOCK`), and **the log and event followers track file
+  identity** (`FollowedFile`: device and inode with the offset, a carry for
+  half-written records, an incremental UTF-8 decoder)
+  (`tests/test_webadmin_followers.py`).
+- **Views share the predicates of the thing they describe**
+  (`tests/test_staff_views.py`): `devote_plan` decides DEVOTE, DEVOTE
+  PREVIEW and ALIGNCHECK's forecasts; `quest_request_refusal` decides
+  AQUEST REQUEST, AQUEST DAILY REQUEST, AQUEST INFO, DAILY STATUS and
+  QUESTDIAG; `repair_armor_target`/`repair_cost_copper` decide REPAIR,
+  REPAIR QUOTE and GEARDIAG. A preview that computes its own answer will
+  drift. QUESTDIAG, GEARDIAG, HYRULESTATUS and ALIGNCHECK are L5,
+  read-only, online targets, `rank_protects`, and sit below every command
+  a shorter word already means.
+- **Test gotchas found on the way.** `test-parallel.sh` runs modules as
+  background jobs, which start with SIGINT ignored, and POSIX forbids
+  trapping a signal ignored on entry: a test that signals a child shell
+  must give it SIGINT back (`preexec_fn`). Under the sanitizer build a
+  reply can land on the prompt's line, so a parser of command output
+  strips a leading `<...>` prompt.
+- **Two rules left as they are, for the owner** (2026-10-22): a piece at
+  exactly 0 condition stays worn (`damage_eq` breaks below zero, heat sets
+  0 and the flag together), and a vampiric weapon heals `dam/20` and
+  shifts alignment in `one_hit`, before `damage()` resolves parry, dodge,
+  shield block and immunity, so a blow that does nothing still heals.
 
 ## Completion Standard
 

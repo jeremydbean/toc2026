@@ -865,23 +865,31 @@ static bool is_bombs( const OBJ_DATA *obj )
         && obj->pIndexData->vnum == OBJ_VNUM_HYRULE_BOMBS;
 }
 
-/* The first bundle with a bomb in it, in hand or one bag down. */
-static OBJ_DATA *find_bombs( CHAR_DATA *ch )
+/* The first bundle with a bomb in it in a list, however deep the bags
+   go. Usable means carried: the stash counts against the bag (below) but
+   is never reached into from afar. Only hand and one bag down were
+   searched, while the count reached every depth and the stash, so BOMB
+   went off with nothing to spend (review, 2026-10-22). */
+static OBJ_DATA *find_bombs_in( OBJ_DATA *list, int depth )
 {
     OBJ_DATA *obj;
-    OBJ_DATA *inner;
+    OBJ_DATA *found;
 
-    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
-    {
+    if ( depth > 16 )
+        return NULL;
+    for ( obj = list; obj != NULL; obj = obj->next_content )
         if ( is_bombs( obj ) && obj->value[0] > 0 )
             return obj;
-        if ( obj->item_type != ITEM_CONTAINER )
-            continue;
-        for ( inner = obj->contains; inner != NULL; inner = inner->next_content )
-            if ( is_bombs( inner ) && inner->value[0] > 0 )
-                return inner;
-    }
+    for ( obj = list; obj != NULL; obj = obj->next_content )
+        if ( obj->contains != NULL
+        &&   ( found = find_bombs_in( obj->contains, depth + 1 ) ) != NULL )
+            return found;
     return NULL;
+}
+
+static OBJ_DATA *find_bombs( CHAR_DATA *ch )
+{
+    return find_bombs_in( ch->carrying, 0 );
 }
 
 /* Every bomb in a list, however deep the bags go. */
@@ -912,6 +920,24 @@ int hyrule_bombs_carried( CHAR_DATA *ch )
     if ( !IS_NPC(ch) && ch->pcdata != NULL )
         count += count_bombs_in( ch->pcdata->stash, 0 );
     return count;
+}
+
+/* What BOMB can spend: carried, at any depth. Never the stash. */
+int hyrule_bombs_usable( CHAR_DATA *ch )
+{
+    return count_bombs_in( ch->carrying, 0 );
+}
+
+/* Says why there is no bomb to throw, and true when there is none. */
+bool hyrule_no_bomb_to_use( CHAR_DATA *ch )
+{
+    if ( hyrule_bombs_usable( ch ) > 0 )
+        return false;
+    if ( hyrule_bombs_carried( ch ) > 0 )
+        send_to_char( "Your bombs are in your stash. Take some out at the altar first.\n\r", ch );
+    else
+        send_to_char( "You have no bombs. The arrow shops sell four for 20 gold.\n\r", ch );
+    return true;
 }
 
 int hyrule_bomb_capacity( CHAR_DATA *ch )
@@ -1040,15 +1066,18 @@ bool hyrule_bomb_creature( CHAR_DATA *ch, CHAR_DATA *victim )
 
     if ( victim == NULL || victim == ch )
         return false;
-    if ( hyrule_bombs_carried( ch ) <= 0 )
-    {
-        send_to_char( "You have no bombs. The arrow shops sell four for 20 gold.\n\r", ch );
+    if ( hyrule_no_bomb_to_use( ch ) )
         return true;
-    }
     if ( is_safe( ch, victim ) )
         return true;
 
-    hyrule_use_bomb( ch );
+    /* Spent before the blast, and no blast without one: the count above
+       is of carried bombs, but say so rather than trust it. */
+    if ( !hyrule_use_bomb( ch ) )
+    {
+        send_to_char( "You fumble for a bomb and find none.\n\r", ch );
+        return true;
+    }
     WAIT_STATE( ch, PULSE_VIOLENCE );
     if ( IS_NPC(victim) && victim->pIndexData != NULL
     &&   victim->pIndexData->vnum == HYRULE_DODONGO_VNUM )
@@ -1885,4 +1914,84 @@ bool hyrule_fairy_restores( CHAR_DATA *fairy )
         healed = true;
     }
     return healed;
+}
+
+
+/*
+ * HYRULESTATUS <player>: staff, read-only, and full of spoilers -- which
+ * is why no player has it. Hearts and where they came from, the caves
+ * paid out, the bomb bag, and dungeon by dungeon what each gate asks for
+ * and whether this character carries it now (hyrule_carries, the gates'
+ * own test; staff pass the real gates by trust, which this ignores).
+ */
+void do_hyrulestatus( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *victim;
+    const HYRULE_DUNGEON_GATE *gate;
+    OBJ_INDEX_DATA *need;
+    int i, caves = 0, containers = 0, bags = 0, level;
+    bool next_named = false;
+
+    one_argument( argument, arg );
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "HYRULESTATUS <player>: Hyrule progress and what each gate asks, changing nothing.\n\r", ch );
+        return;
+    }
+    if ( ( victim = get_char_world( ch, arg ) ) == NULL || IS_NPC(victim)
+    ||   victim->pcdata == NULL )
+    {
+        send_to_char( "No player by that name is in the game.\n\r", ch );
+        return;
+    }
+    if ( victim != ch && rank_protects( ch, victim ) )
+    {
+        send_to_char( "They outrank you.\n\r", ch );
+        return;
+    }
+    for ( i = 0; i < (int) ( sizeof(hyrule_money_caves) / sizeof(hyrule_money_caves[0]) ); i++ )
+        if ( secret_has( victim, i ) )
+            caves++;
+    for ( i = SECRET_HEART_FIRST; i < SECRET_HEART_FIRST + 5; i++ )
+        if ( secret_has( victim, i ) )
+            containers++;
+    for ( i = SECRET_BOMB_BAG_FIRST; i < SECRET_BOMB_BAG_FIRST + 2; i++ )
+        if ( secret_has( victim, i ) )
+            bags++;
+    snprintf( buf, sizeof(buf),
+        "Hyrule progress of %s:\n\r"
+        "  Hearts %d (%d Heart Container%s of 5); money caves paid %d of %d; bigger bomb bags %d of 2.\n\r"
+        "  Bombs: %d owned (stash included), %d carried and usable, the bag holds %d.\n\r",
+        victim->name, hyrule_hearts( victim ), containers, containers == 1 ? "" : "s",
+        caves, (int) ( sizeof(hyrule_money_caves) / sizeof(hyrule_money_caves[0]) ), bags,
+        hyrule_bombs_carried( victim ), hyrule_bombs_usable( victim ),
+        hyrule_bomb_capacity( victim ) );
+    send_to_char( buf, ch );
+
+    for ( level = 1; level <= 9; level++ )
+    {
+        bool beaten = level <= 8 && achievement_has_key( victim, hyrule_guardian_keys[level - 1] );
+        bool enter, face;
+
+        if ( ( gate = hyrule_dungeon_gate( level ) ) == NULL )
+            continue;
+        enter = hyrule_carries( victim, gate->entry_need );
+        face = hyrule_carries( victim, gate->boss_need )
+            || ( gate->boss_also > 0 && hyrule_carries( victim, gate->boss_also ) );
+        snprintf( buf, sizeof(buf), "  Level %d: entrance %s, guardian %s%s.\n\r", level,
+                  enter ? "open" : "shut", face ? "open" : "shut",
+                  level <= 8 ? ( beaten ? ", guardian defeated" : "" ) : "" );
+        send_to_char( buf, ch );
+        if ( next_named || ( enter && face ) )
+            continue;
+        need = get_obj_index( !enter ? gate->entry_need : gate->boss_need );
+        snprintf( buf, sizeof(buf), "    next requirement: carry %s [%d] for the %s.\n\r",
+                  need != NULL ? need->short_descr : "an object that no longer exists",
+                  !enter ? gate->entry_need : gate->boss_need,
+                  !enter ? "entrance" : "guardian's chamber" );
+        send_to_char( buf, ch );
+        next_named = true;
+    }
 }

@@ -4537,6 +4537,8 @@ void clone_object(OBJ_DATA *parent, OBJ_DATA *clone)
     clone->action_to_char = parent->action_to_char;
     for (i = 0;  i < 5; i ++)
 	clone->value[i] = parent->value[i];
+    for (i = 0;  i < 4; i ++)
+	clone->armor_lost[i] = parent->armor_lost[i];
 
     /* affects */
     clone->enchanted    = parent->enchanted;

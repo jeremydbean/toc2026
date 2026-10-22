@@ -934,6 +934,10 @@ void  playlog_bug            args( ( const char *message ) );
 void  playlog_report         args( ( CHAR_DATA *ch, const char *kind, const char *text ) );
 void  playlog_tick           args( ( CHAR_DATA *ch ) );
 void  playlog_session        args( ( CHAR_DATA *ch, const char *how ) );
+long  playlog_now_ms         args( ( void ) );
+void  progress_kill          args( ( CHAR_DATA *gch, CHAR_DATA *victim, int base_xp,
+                                     int rested_xp, long accepted_xp, int members ) );
+void  progress_event         args( ( CHAR_DATA *ch, const char *kind, CHAR_DATA *foe ) );
 /* alignment.c -- tiers, what moves alignment and what it gives */
 #define ALIGN_DEED_SHIFT       100          /* one DEVOTE */
 #define ALIGN_DEED_COOLDOWN    ( 30 * 60 )  /* seconds between DEVOTEs */
@@ -1569,6 +1573,7 @@ typedef struct hyrule_dungeon_gate
    the filed-down values it puts back. Never below 1: zero with no
    ITEM_DAMAGED is not a state the rest of the game expects. */
 #define REPAIR_DENT_WEAR        10
+#define ARMOR_LOST_MAX          1000    /* a ledger value's ceiling */
 
 /* Second group of extra flags */
 #define ITEM2_HUMAN_ONLY        (A)
@@ -1983,6 +1988,7 @@ struct  char_data
     CHAR_DATA * master;
     CHAR_DATA * leader;
     CHAR_DATA * fighting;
+    long                fight_began_ms; /* a mobile's encounter start, for log/progress.tsv */
     CHAR_DATA * hunting;
     CHAR_DATA * reply;
     CHAR_DATA * pet;
@@ -2427,6 +2433,13 @@ struct  obj_data
     sh_int              level;
     sh_int              condition;
     sh_int              number_repair;
+    /* Armour points damage has filed off this piece, per value, and
+       nothing else: heat, acid and shield dents record here through
+       gear_file_armor(), and REPAIR puts exactly these back. Saved as
+       ArmorLost. A ledger rather than the rolled baseline, so staff
+       tuning and spells that change values are never mistaken for
+       damage (review, 2026-10-22). */
+    sh_int              armor_lost[4];
     sh_int              material;
     sh_int              timer;
     int                 value   [5];
@@ -3266,6 +3279,7 @@ void    char_to_obj     ( CHAR_DATA *ch, OBJ_DATA *obj);
 void    obj_to_char     ( OBJ_DATA *obj, CHAR_DATA *ch );
 void    obj_from_char   ( OBJ_DATA *obj );
 int     apply_ac        ( OBJ_DATA *obj, int iWear, int type );
+void    gear_file_armor ( CHAR_DATA *wearer, OBJ_DATA *obj );
 OD * get_eq_char     ( CHAR_DATA *ch, int iWear );
 void    equip_char      ( CHAR_DATA *ch, OBJ_DATA *obj, int iWear );
 void    unequip_char    ( CHAR_DATA *ch, OBJ_DATA *obj );
@@ -3327,6 +3341,8 @@ void    hyrule_enter_room      ( CHAR_DATA *ch );
 int     hyrule_hearts          ( CHAR_DATA *ch );
 bool    hyrule_claim           ( CHAR_DATA *ch, OBJ_DATA *obj );
 int     hyrule_bombs_carried   ( CHAR_DATA *ch );
+int     hyrule_bombs_usable    ( CHAR_DATA *ch );
+bool    hyrule_no_bomb_to_use  ( CHAR_DATA *ch );
 int     hyrule_bomb_capacity   ( CHAR_DATA *ch );
 bool    hyrule_use_bomb        ( CHAR_DATA *ch );
 bool    hyrule_buy_refuses     ( CHAR_DATA *ch, OBJ_DATA *obj );

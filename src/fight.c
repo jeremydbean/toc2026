@@ -2588,7 +2588,6 @@ bool check_ducking(CHAR_DATA *ch, CHAR_DATA *victim)
 bool check_shield_block( CHAR_DATA *ch, CHAR_DATA *victim )
 {
   int chance;
-  int iWear;
   int i;
   OBJ_DATA *obj;
   bool damaged = false;
@@ -2598,8 +2597,6 @@ bool check_shield_block( CHAR_DATA *ch, CHAR_DATA *victim )
 
     if ( (obj = get_eq_char( victim, WEAR_SHIELD )) == NULL )
        return false;
-
-    iWear = obj->wear_loc;  /* always WEAR_SHIELD for apply_ac calculations */
 
     if ( IS_NPC(victim) )
     {
@@ -2629,25 +2626,17 @@ bool check_shield_block( CHAR_DATA *ch, CHAR_DATA *victim )
       }
       else if(obj->level > 5)
       {
-	 /* Take the worn bonus off at the old values, file the shield
-	    down, then put the bonus back at the new ones. This used to
-	    subtract a second time -- equip_char already subtracts, and
-	    unequip_char adds -- and never re-applied, so every dent left
-	    the wearer a duplicate armour bonus that outlived taking the
-	    shield off. */
-	 for (i = 0; i < 4; i ++)
-	   victim->armor[i] += apply_ac( obj, iWear, i );
-	 for (i = 0; i < 4; i ++)
-	    obj->value[i] -= 1;
-	 for (i = 0; i < 4; i ++)
-	   victim->armor[i] -= apply_ac( obj, iWear, i );
-	 /* The dent is wear REPAIR can see. It used to cut the shield's
-	    worth to a third and leave condition at 100, so REPAIR called a
-	    dented shield perfect -- and repair raising the worth back undid
-	    the price cap a purchase sets (audit, 2026-10-21). Worth is no
-	    longer how damage is recorded; a shop pays less for a broken
-	    piece in get_cost. */
-	 obj->condition = (sh_int) UMAX( 1, obj->condition - REPAIR_DENT_WEAR );
+	 /* gear_file_armor does the bookkeeping: the bonus off at the old
+	    values and back at the new (this once subtracted twice and never
+	    re-applied, leaving a duplicate bonus that outlived the shield),
+	    the points into the ledger REPAIR restores, and the dent as wear
+	    REPAIR can see. It used to cut the
+	    shield's worth to a third and leave condition at 100, so REPAIR
+	    called a dented shield perfect -- and repair raising the worth
+	    back undid the price cap a purchase sets (audit, 2026-10-21).
+	    Worth is no longer how damage is recorded; a shop pays less for a
+	    broken piece in get_cost. */
+	 gear_file_armor( victim, obj );
 	 damaged = true;
 	 for (i = 0; i < 4; i++)
 	 {
@@ -2744,6 +2733,15 @@ void set_fighting( CHAR_DATA *ch, CHAR_DATA *victim )
 
     ch->fighting = victim;
     ch->position = POS_FIGHTING;
+    /* An encounter's start, for log/progress.tsv: a mobile entering a
+       fight (set_fighting is only ever for one not already in one), or
+       struck by a player while in none, since a blow that kills never puts
+       the mobile into the fight at all. Never cleared: damage() stops a
+       dead victim's fight before group_gain reads this. */
+    if ( IS_NPC(ch) )
+	ch->fight_began_ms = playlog_now_ms();
+    else if ( victim != NULL && IS_NPC(victim) && victim->fighting == NULL )
+	victim->fight_began_ms = playlog_now_ms();
 
     /* A new fight starts the meter from nothing. The last fight's
        numbers are kept right up to this moment, so the client can show
@@ -3215,7 +3213,11 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
        costs experience: keep a copy of them as they were, in case the
        death was a bug. */
     if ( !IS_NPC(victim) && !is_killuminati( victim ) )
+    {
         player_snapshot_milestone( victim, "death", true );
+        if ( ch != NULL && ch != victim && IS_NPC(ch) )
+            progress_event( victim, "death", ch );  /* log/progress.tsv */
+    }
 
     /* Killuminati cannot be killed by any route -- a death trap, a death ray,
        a slay, a fatality, a killing blow all arrive here, and all leave him at
@@ -3493,7 +3495,14 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
 	    send_to_char( buf, gch );
 	    if ( rested > 0 && gch->pcdata != NULL && gch->pcdata->rest_xp <= 0 )
 		send_to_char( "You no longer feel rested.\n\r", gch );
-	    gain_exp( gch, xp + rested );
+	    {
+		long before = gch->exp;
+
+		gain_exp( gch, xp + rested );
+		/* What gain_exp accepted, not what was offered: the level 50
+		   stop and the remort cap take some or all of it. */
+		progress_kill( gch, victim, xp, rested, gch->exp - before, members );
+	    }
 	}
 
 	/* The kill may have carried them across a line (alignment.c). */
@@ -5021,6 +5030,7 @@ void do_flee( CHAR_DATA *ch, char *argument )
 	{
 	    send_to_char( "You flee from combat!  You lose 10 exps.\n\r", ch );
 	    gain_exp( ch, -10 );
+	    progress_event( ch, "flee", victim );   /* log/progress.tsv */
 	}
 
 	stop_fighting( ch, true );

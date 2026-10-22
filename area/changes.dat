@@ -3,6 +3,23 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261022e 2026-10-22
+Fixes and conveniences:
+- BOMB uses a bomb you carry, in any bag, and only once. Bombs in your
+  stash still count against your bomb bag, but you must take them out
+  to use them -- they no longer go off from the stash.
+- REPAIR now puts armour back exactly as it was before heat, acid or a
+  dented shield wore it down, even pieces that were rolled better than
+  usual. Damage from before today repairs as it always did.
+- Riding into a trapped room sets the trap off once, not twice.
+- Heat metal no longer says it had no effect when it burned.
+- REPAIR QUOTE <item> or REPAIR QUOTE ALL: the price and what comes back,
+  from anywhere, without paying.
+- DEVOTE PREVIEW: where each devotion would leave you, what it costs, and
+  what worn gear would fall off, from anywhere and for nothing.
+- AQUEST INFO and AQUEST DAILY say when your next quest or daily may be
+  taken and why not yet, and what giving up the current one would cost.
+
 @ 20261022d 2026-10-22
 More fixes from the same audit:
 - A failed ENCHANT ARMOR that leaves a piece "glowing blue, then fading"

@@ -321,6 +321,7 @@ def main() -> int:
         print(f"  {player:<14} {kinds['platinum']}p {kinds['gold']}g")
 
     journal_report(args, since, buffs)
+    progress_report(args, since)
 
     print("\n== public chat")
     rows = []
@@ -426,6 +427,62 @@ def journal_report(args, since, buffs=None) -> None:
         print(f"  signal{clean(lines[0])[:120]}")
         for line in lines[1:-1][-8:]:
             print(f"    {clean(line)[:140]}")
+
+
+# log/progress.tsv (src/playlog.c): epoch, kind (kill, flee, death), the
+# character's file Id (never a name), level, class, remorts, hp%, mana%,
+# foe vnum, foe level, area file; a kill adds encounter ms, base, rested
+# and accepted xp, and group members. Reported in aggregate only: the
+# ids count independent characters and are never printed.
+def progress_summary(text: str, since: datetime) -> dict:
+    by_foe: dict = {}
+    by_area: dict = {}
+    characters: set = set()
+    for raw in text.splitlines():
+        f = raw.split("\t")
+        if len(f) < 11 or not f[0].isdigit():
+            continue
+        if datetime.fromtimestamp(int(f[0]), timezone.utc) < since:
+            continue
+        kind, who, area = f[1], f[2], f[10]
+        characters.add(who)
+        here = by_area.setdefault(area, {"kills": 0, "flee": 0, "death": 0, "who": set()})
+        here["who"].add(who)
+        if kind in ("flee", "death"):
+            here[kind] += 1
+            continue
+        if kind != "kill" or len(f) < 16:
+            continue
+        here["kills"] += 1
+        foe = by_foe.setdefault((area, f[8], f[9]), {"kills": 0, "xp": 0, "ms": 0, "timed": 0,
+                                                     "times": [], "who": set()})
+        foe["kills"] += 1
+        foe["who"].add(who)
+        foe["xp"] += int(f[14]) if f[14].lstrip("-").isdigit() else 0
+        if f[11].isdigit():
+            foe["ms"] += int(f[11])
+            foe["timed"] += 1
+            foe["times"].append(int(f[11]))
+    return {"by_foe": by_foe, "by_area": by_area, "characters": len(characters)}
+
+
+def progress_report(args, since) -> None:
+    summary = progress_summary(git_show(args.ref, "log/progress.tsv"), since)
+    by_foe = summary["by_foe"]
+    print(f"\n== progression ({summary['characters']} distinct characters; aggregates only)")
+    if not by_foe and not summary["by_area"]:
+        print("  (no log/progress.tsv records in the window)")
+        return
+    print("  area                 foe    lvl  kills chars  med s  xp/combat-min")
+    for (area, vnum, level), foe in sorted(by_foe.items(), key=lambda kv: -kv[1]["kills"])[:25]:
+        times = sorted(foe["times"])
+        median = times[len(times) // 2] / 1000 if times else 0
+        rate = foe["xp"] / (foe["ms"] / 60000) if foe["ms"] else 0
+        print(f"  {area[:20]:<20} {vnum:>6} {level:>4} {foe['kills']:>6} {len(foe['who']):>5}"
+              f" {median:>6.1f} {rate:>14.0f}")
+    print("  area                 kills  flees deaths chars")
+    for area, here in sorted(summary["by_area"].items(), key=lambda kv: -kv[1]["kills"])[:25]:
+        print(f"  {area[:20]:<20} {here['kills']:>5} {here['flee']:>6} {here['death']:>6} {len(here['who']):>5}")
 
 
 if __name__ == "__main__":

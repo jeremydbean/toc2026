@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import codecs
 import hashlib
 import hmac
 import ipaddress
@@ -241,6 +242,9 @@ MUD_PUBLIC_PORT = int(os.getenv("MUD_PUBLIC_PORT", MUD_PORT))
 # polled and the answer changes a few times a year at most.
 _PUBLIC_IP_CACHE: tuple[float, str] = (0.0, "")
 _PUBLIC_IP_TTL = 300.0
+# Held while resolving, so requests arriving on a cold cache wait for the
+# one lookup in flight instead of each starting their own.
+_PUBLIC_IP_LOCK = threading.Lock()
 
 
 def public_game_host() -> str:
@@ -250,6 +254,9 @@ def public_game_host() -> str:
     which a hard-coded address would not. A name that will not resolve is
     returned unchanged -- still more use than loopback, and the same path a
     literal IP in MUD_PUBLIC_HOST takes.
+
+    A cold cache blocks on the resolver, so async callers must run this in
+    a thread (asyncio.to_thread), never on the event loop.
     """
     global _PUBLIC_IP_CACHE
 
@@ -258,18 +265,24 @@ def public_game_host() -> str:
         return MUD_HOST
 
     cached_at, cached = _PUBLIC_IP_CACHE
-    now = time.monotonic()
-    if cached and now - cached_at < _PUBLIC_IP_TTL:
+    if cached and time.monotonic() - cached_at < _PUBLIC_IP_TTL:
         return cached
 
-    resolved = host
-    try:
-        resolved = socket.gethostbyname(host)
-    except OSError:
-        pass
+    with _PUBLIC_IP_LOCK:
+        # Another thread may have resolved it while this one waited.
+        cached_at, cached = _PUBLIC_IP_CACHE
+        now = time.monotonic()
+        if cached and now - cached_at < _PUBLIC_IP_TTL:
+            return cached
 
-    _PUBLIC_IP_CACHE = (now, resolved)
-    return resolved
+        resolved = host
+        try:
+            resolved = socket.gethostbyname(host)
+        except OSError:
+            pass
+
+        _PUBLIC_IP_CACHE = (time.monotonic(), resolved)
+        return resolved
 WEB_ADMIN_PORT = int(os.getenv("WEB_ADMIN_PORT", 9001))
 QUEUE_LINE_MAX_BYTES = 4094
 COMMAND_MAX_LENGTH = 255
@@ -2719,11 +2732,14 @@ async def host_resources(_: None = Depends(verify_token)) -> Dict[str, Any]:
 
 @app.get("/api/config")
 async def get_config(request: Request) -> Dict[str, Any]:
+    # A cold cache resolves MUD_PUBLIC_HOST, which blocks; off the loop, so
+    # a slow resolver does not stall every other socket the dashboard holds.
+    game_host = await asyncio.to_thread(public_game_host)
     return {
         "version": app.version,
         "admin_token_configured": bool(_WEB_ADMIN_TOKEN),
         "local_admin_unlock": local_admin_request_allowed(request),
-        "mud_endpoint": f"{public_game_host()}:{MUD_PUBLIC_PORT}",
+        "mud_endpoint": f"{game_host}:{MUD_PUBLIC_PORT}",
         "mud_endpoint_host": MUD_PUBLIC_HOST,
         "client_path": "/client",
         "game_websocket_auth": "same-origin",
@@ -3015,23 +3031,111 @@ def player_playtime_totals() -> Dict[str, Dict[str, Any]]:
     return totals
 
 
+def read_tail_block(handle: Any, lines: int) -> tuple[bytes, int]:
+    """The end of an open file holding at least `lines` lines, and where it ends.
+
+    Reads backwards in blocks, so a large log is never loaded whole. The
+    first line of what comes back may be partial; callers keep the last
+    lines they need.
+    """
+    block_size = 64 * 1024
+    handle.seek(0, os.SEEK_END)
+    end_position = handle.tell()
+    position = end_position
+    chunks: deque[bytes] = deque()
+    newline_count = 0
+    while position > 0 and newline_count <= lines:
+        size = min(block_size, position)
+        position -= size
+        handle.seek(position)
+        chunk = handle.read(size)
+        chunks.appendleft(chunk)
+        newline_count += chunk.count(b"\n")
+    return b"".join(chunks), end_position
+
+
+def last_lines(text: str, lines: int) -> str:
+    return "".join(text.splitlines(keepends=True)[-lines:])
+
+
 def tail_log_file(path: Path, lines: int) -> str:
     """Read a bounded number of trailing lines without loading a large log."""
-    block_size = 64 * 1024
     with path.open("rb") as log_file:
-        log_file.seek(0, os.SEEK_END)
-        position = log_file.tell()
-        chunks: deque[bytes] = deque()
-        newline_count = 0
-        while position > 0 and newline_count <= lines:
-            size = min(block_size, position)
-            position -= size
-            log_file.seek(position)
-            chunk = log_file.read(size)
-            chunks.appendleft(chunk)
-            newline_count += chunk.count(b"\n")
-    data = b"".join(chunks).decode("utf-8", errors="replace")
-    return "".join(data.splitlines(keepends=True)[-lines:])
+        data, _ = read_tail_block(log_file, lines)
+    return last_lines(data.decode("utf-8", errors="replace"), lines)
+
+
+class FollowedFile:
+    """A live feed's place in a log: which file it is reading, and how far.
+
+    The followers used to keep only an offset and called a file rotated
+    when it got smaller than that. A replacement the same size as what had
+    been read then sent nothing, and a larger one had its first part
+    skipped as though it had been sent. The device and inode say which
+    file it is; the offset only says how far into it.
+
+    poll() returns the text appended since the last call, or None when the
+    file is no longer the one being followed -- replaced, truncated, or
+    gone and back -- and the caller should take a fresh snapshot(). A file
+    that is missing is simply nothing new until it reappears.
+
+    With whole_lines, poll() returns complete lines only and carries a
+    record with no newline yet over to the next call, so a record caught
+    half written is not parsed as two. Either way a UTF-8 character split
+    between two reads is decoded whole.
+    """
+
+    def __init__(self, path: Path, *, whole_lines: bool = False) -> None:
+        self.path = path
+        self.whole_lines = whole_lines
+        self.identity: Optional[tuple[int, int]] = None
+        self.position = 0
+        self.carry = b""
+        self.decoder = codecs.getincrementaldecoder("utf-8")(errors="replace")
+
+    def _forget(self) -> None:
+        self.identity = None
+        self.position = 0
+        self.carry = b""
+        self.decoder.reset()
+
+    def _text(self, data: bytes) -> str:
+        if self.whole_lines:
+            data = self.carry + data
+            cut = data.rfind(b"\n") + 1
+            self.carry = data[cut:]
+            return data[:cut].decode("utf-8", errors="replace")
+        return self.decoder.decode(data)
+
+    def snapshot(self, lines: int) -> str:
+        """Start over on the file as it is now; returns its trailing text."""
+        self._forget()
+        try:
+            with self.path.open("rb") as handle:
+                info = os.fstat(handle.fileno())
+                data, end_position = read_tail_block(handle, lines)
+        except FileNotFoundError:
+            return ""
+        self.identity = (info.st_dev, info.st_ino)
+        self.position = end_position
+        return self._text(data)
+
+    def poll(self) -> Optional[str]:
+        try:
+            handle = self.path.open("rb")
+        except FileNotFoundError:
+            self._forget()
+            return ""
+        with handle:
+            info = os.fstat(handle.fileno())
+            if (info.st_dev, info.st_ino) != self.identity or info.st_size < self.position:
+                return None
+            if info.st_size == self.position:
+                return ""
+            handle.seek(self.position)
+            data = handle.read(info.st_size - self.position)
+        self.position += len(data)
+        return self._text(data)
 
 
 def parse_server_event_line(line: str) -> Optional[Dict[str, Any]]:
@@ -3057,29 +3161,19 @@ def parse_server_event_line(line: str) -> Optional[Dict[str, Any]]:
     }
 
 
+def parse_server_events(text: str, limit: int) -> list[Dict[str, Any]]:
+    events = [parse_server_event_line(line) for line in text.splitlines()]
+    return [event for event in events if event is not None][-limit:]
+
+
 def snapshot_server_events(path: Path, limit: int) -> tuple[list[Dict[str, Any]], int]:
     """Read a bounded snapshot and the exact file position it represents."""
-    block_size = 64 * 1024
     try:
         with path.open("rb") as event_file:
-            event_file.seek(0, os.SEEK_END)
-            end_position = event_file.tell()
-            position = end_position
-            chunks: deque[bytes] = deque()
-            newline_count = 0
-            while position > 0 and newline_count <= limit:
-                size = min(block_size, position)
-                position -= size
-                event_file.seek(position)
-                chunk = event_file.read(size)
-                chunks.appendleft(chunk)
-                newline_count += chunk.count(b"\n")
+            data, end_position = read_tail_block(event_file, limit)
     except FileNotFoundError:
         return [], 0
-
-    text = b"".join(chunks).decode("utf-8", errors="replace")
-    events = [parse_server_event_line(line) for line in text.splitlines()]
-    return [event for event in events if event is not None][-limit:], end_position
+    return parse_server_events(data.decode("utf-8", errors="replace"), limit), end_position
 
 
 def tail_server_events(path: Path, limit: int) -> list[Dict[str, Any]]:
@@ -3200,6 +3294,49 @@ async def accept_admin_websocket(websocket: WebSocket) -> bool:
     return True
 
 
+async def follow_log(websocket: Any, path: Path, interval: float = 1.0) -> None:
+    """Send the log's last lines, then whatever is appended, until cancelled.
+
+    A replaced or truncated log is sent again from its last lines.
+    """
+    cursor = FollowedFile(path)
+    initial = await asyncio.to_thread(cursor.snapshot, 200)
+    await websocket.send_text(last_lines(initial, 200))
+
+    while True:
+        await asyncio.sleep(interval)
+        new_text = await asyncio.to_thread(cursor.poll)
+        if new_text is None:
+            rotated = last_lines(await asyncio.to_thread(cursor.snapshot, 200), 200)
+            if rotated:
+                await websocket.send_text(rotated)
+        elif new_text:
+            await websocket.send_text(new_text)
+
+
+async def follow_events(websocket: Any, path: Path, interval: float = 1.0) -> None:
+    """Send a snapshot of server events, then each new one, until cancelled.
+
+    A replaced or truncated file is sent as a fresh snapshot.
+    """
+    limit = min(300, MAX_EVENT_HISTORY)
+    cursor = FollowedFile(path, whole_lines=True)
+    initial = await asyncio.to_thread(cursor.snapshot, limit)
+    await websocket.send_json({"type": "snapshot", "events": parse_server_events(initial, limit)})
+
+    while True:
+        await asyncio.sleep(interval)
+        new_text = await asyncio.to_thread(cursor.poll)
+        if new_text is None:
+            rotated = await asyncio.to_thread(cursor.snapshot, limit)
+            await websocket.send_json(
+                {"type": "snapshot", "events": parse_server_events(rotated, limit)})
+        elif new_text:
+            parsed = parse_server_events(new_text, MAX_EVENT_HISTORY)
+            if parsed:
+                await websocket.send_json({"type": "events", "events": parsed})
+
+
 @app.websocket("/ws/logs")
 async def websocket_logs(websocket: WebSocket) -> None:
     if not websocket_origin_allowed(websocket):
@@ -3221,35 +3358,9 @@ async def websocket_logs(websocket: WebSocket) -> None:
                 if isinstance(payload, dict) and payload.get("type") == "close":
                     return
 
-    async def follow_log() -> None:
-        initial = ""
-        if DEFAULT_LOG.exists():
-            initial = await asyncio.to_thread(tail_log_file, DEFAULT_LOG, 200)
-        await websocket.send_text(initial)
-        last_pos = DEFAULT_LOG.stat().st_size if DEFAULT_LOG.exists() else 0
-
-        while True:
-            await asyncio.sleep(1)
-            if not DEFAULT_LOG.exists():
-                last_pos = 0
-                continue
-            current_pos = DEFAULT_LOG.stat().st_size
-            if current_pos < last_pos:
-                rotated = await asyncio.to_thread(tail_log_file, DEFAULT_LOG, 200)
-                if rotated:
-                    await websocket.send_text(rotated)
-                last_pos = current_pos
-            elif current_pos > last_pos:
-                with DEFAULT_LOG.open("rb") as log_file:
-                    log_file.seek(last_pos)
-                    new_data = log_file.read(current_pos - last_pos)
-                if new_data:
-                    await websocket.send_text(new_data.decode("utf-8", errors="replace"))
-                last_pos = current_pos
-
     tasks = {
         asyncio.create_task(watch_disconnect()),
-        asyncio.create_task(follow_log()),
+        asyncio.create_task(follow_log(websocket, DEFAULT_LOG)),
     }
     try:
         await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
@@ -3294,39 +3405,9 @@ async def websocket_events(websocket: WebSocket) -> None:
                 if isinstance(payload, dict) and payload.get("type") == "close":
                     return
 
-    async def follow_events() -> None:
-        initial, last_pos = await asyncio.to_thread(
-            snapshot_server_events, EVENT_LOG, min(300, MAX_EVENT_HISTORY)
-        )
-        await websocket.send_json({"type": "snapshot", "events": initial})
-
-        while True:
-            await asyncio.sleep(1)
-            if not EVENT_LOG.exists():
-                last_pos = 0
-                continue
-            current_pos = EVENT_LOG.stat().st_size
-            if current_pos < last_pos:
-                rotated, last_pos = await asyncio.to_thread(
-                    snapshot_server_events, EVENT_LOG, min(300, MAX_EVENT_HISTORY)
-                )
-                await websocket.send_json({"type": "snapshot", "events": rotated})
-            elif current_pos > last_pos:
-                with EVENT_LOG.open("rb") as event_file:
-                    event_file.seek(last_pos)
-                    new_data = event_file.read(current_pos - last_pos)
-                events = [
-                    parse_server_event_line(line)
-                    for line in new_data.decode("utf-8", errors="replace").splitlines()
-                ]
-                parsed = [event for event in events if event is not None][-MAX_EVENT_HISTORY:]
-                if parsed:
-                    await websocket.send_json({"type": "events", "events": parsed})
-                last_pos = current_pos
-
     tasks = {
         asyncio.create_task(watch_disconnect()),
-        asyncio.create_task(follow_events()),
+        asyncio.create_task(follow_events(websocket, EVENT_LOG)),
     }
     try:
         await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)

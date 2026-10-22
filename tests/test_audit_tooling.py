@@ -128,8 +128,15 @@ class DeploySignalTests(unittest.TestCase):
                    BUILD=str(build), CURRENT=str(current), STUB_LOG=str(log),
                    TOC_DEPLOY_LOCKED="1", TOC_ROLLBACK_DIR=str(tmp),
                    TOC_DEPLOY_ROLLBACK="1", STUB_HEALTHY="1")
+        # A background job of a non-interactive shell starts with SIGINT
+        # ignored -- test-parallel.sh runs every module that way -- and
+        # POSIX forbids trapping a signal ignored on entry, so the deploy's
+        # `trap 'exit 130' INT` could not take and the SIGINT case finished
+        # with 0 in CI (2026-10-22). systemd and ssh start toc-deploy with
+        # SIGINT at its default; so does this.
         result = subprocess.run(["sh", str(DEPLOY)], env=env, capture_output=True,
-                                text=True, timeout=60)
+                                text=True, timeout=60,
+                                preexec_fn=lambda: signal.signal(signal.SIGINT, signal.SIG_DFL))
         return result.returncode, result.stdout + result.stderr, log.read_text()
 
     def test_a_deploy_killed_mid_install_rolls_back(self) -> None:

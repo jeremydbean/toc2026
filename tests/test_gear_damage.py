@@ -71,13 +71,21 @@ class GearDamageTests(unittest.TestCase):
         left condition at 100, so REPAIR called it perfect. Damage now
         lowers condition and never touches obj->cost; a shop pays a
         third for a broken piece instead."""
+        # The dent's wear and its ledger live in one helper since
+        # 2026-10-22 (gear_file_armor, handler.c), which every armour-filing
+        # damage calls.
+        helper = body(read("src", "handler.c"), "void gear_file_armor(")
+        self.assertIn("obj->condition - REPAIR_DENT_WEAR", helper)
+        self.assertIn("armor_lost", helper)
+        self.assertNotIn("->cost", helper)
         block = body(read("src", "fight.c"), "bool check_shield_block(")
-        self.assertIn("obj->condition - REPAIR_DENT_WEAR", block)
+        self.assertIn("gear_file_armor( victim, obj );", block)
         self.assertNotIn("obj->cost", block)
         magic = read("src", "magic.c")
         for spell in ("void spell_heat_metal(", "void spell_acid_breath("):
             self.assertNotIn("->cost", body(magic, spell), spell)
-            self.assertIn("REPAIR_DENT_WEAR", body(magic, spell), spell)
+            self.assertIn("gear_file_armor( victim, obj_lose );", body(magic, spell), spell)
+            self.assertNotIn("->value[i] -= 1", body(magic, spell), spell)
         cost = body(read("src", "act_obj.c"), "long get_cost(")
         self.assertIn("IS_OBJ_STAT(obj, ITEM_DAMAGED)", cost)
 

@@ -1880,6 +1880,37 @@ void obj_from_char( OBJ_DATA *obj )
 /*
  * Find the ac value of an obj, including position effect.
  */
+/*
+ * Damage files a piece of armour down a point on every value: heat metal,
+ * acid and a shield's dent. One helper so they agree (review,
+ * 2026-10-22): the worn bonus comes off at the old values (unequip_char
+ * adds) and goes back at the new (equip_char subtracts); the points are
+ * recorded in obj->armor_lost for REPAIR to put back; and the piece takes
+ * REPAIR_DENT_WEAR condition, never below 1 -- breaking is the caller's
+ * decision. wearer may be NULL for a piece nobody wears.
+ */
+void gear_file_armor( CHAR_DATA *wearer, OBJ_DATA *obj )
+{
+    int iWear = obj->wear_loc;
+    bool worn = wearer != NULL && iWear != WEAR_NONE;
+    int i;
+
+    if ( worn )
+        for ( i = 0; i < 4; i++ )
+            wearer->armor[i] += apply_ac( obj, iWear, i );
+    for ( i = 0; i < 4; i++ )
+    {
+        obj->value[i] -= 1;
+        if ( obj->armor_lost[i] < ARMOR_LOST_MAX )
+            obj->armor_lost[i]++;
+    }
+    obj->condition = (sh_int) UMAX( 1, obj->condition - REPAIR_DENT_WEAR );
+    if ( worn )
+        for ( i = 0; i < 4; i++ )
+            wearer->armor[i] -= apply_ac( obj, iWear, i );
+}
+
+
 int apply_ac( OBJ_DATA *obj, int iWear, int type )
 {
     if ( obj->item_type != ITEM_ARMOR )

@@ -5098,13 +5098,6 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
 
     ch = temp_ch;
 
-    if(IS_SET(ch->in_room->room_flags, ROOM_AFFECTED_BY) )
-    {
-      room_affect(ch,ch->in_room, rev_dir[door]);
-      if ( gone_after_blow( ch, to_room ) )  /* killed by an arrival trap */
-          return;
-    }
-
     if( !IS_SET(ch->act, PLR_WIZINVIS) )
     {
       snprintf(buf, sizeof(buf), "$n rides in from $T on %s.",
@@ -5114,10 +5107,16 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
 
     do_look( ch, "auto" );
 
+    /* The arrival trap, once, after the look and with the direction
+       arrived from -- as move_char runs it for a walker. A rider used to
+       set it off twice, before the arrival line with rev_dir[door] and
+       again here with door, so a trap on every exit (10) struck twice and
+       a one-direction trap was asked about a second exit (review,
+       2026-10-22). */
     if(IS_SET(ch->in_room->room_flags, ROOM_AFFECTED_BY) )
     {
-      room_affect(ch,ch->in_room, door);
-      if ( gone_after_blow( ch, to_room ) )  /* killed by a trap after look */
+      room_affect(ch,ch->in_room, rev_dir[door]);
+      if ( gone_after_blow( ch, to_room ) )  /* killed by an arrival trap */
           return;
     }
 
