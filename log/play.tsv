@@ -3115,3 +3115,4 @@
 1792628320	cmd	Trentlin	49	4210	dresden_halloween.are	standing	100	0	-	north		Alas, you cannot go that way.
 1792628321	cmd	Trentlin	49	4210	dresden_halloween.are	standing	100	0	-	sleep		You go to sleep.
 1792628321	session	Trentlin	49	4210	dresden_halloween.are	quit	2553s	+0 levels	+310 exp	+65514643 copper	24 kills	0 deaths	3 quests	1010 commands	3 refused
+1792629820	cmd	Trentlin	49	4210	dresden_halloween.are	sleeping	100	0	-	rested		You are rested: your kills earn double experience until 44 more is spent (1% of a level).
