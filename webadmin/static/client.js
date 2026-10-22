@@ -27,6 +27,9 @@
         reconnectTimer: null,
         secretInput: false,
         telnetCarry: "",
+        // The last line break of the previous frame, when the frame ended
+        // on one: its partner may open the next frame.
+        newlineCarry: "",
         ansiCarry: "",
         ansiStyle: freshAnsiStyle(),
         terminalChars: 0,
@@ -346,7 +349,27 @@
             }
             index += 2;
         }
-        return output.replace(/\r\n|\n\r/g, "\n").replace(/\r/g, "\n");
+        // A CR LF or LF CR pair is one line break and a lone CR or LF is
+        // one too. The game ends its lines "\n\r", and a WebSocket frame
+        // can end between the two: matching pairs within one frame showed
+        // that line break twice (audit, 2026-10-22). The last break of a
+        // frame is remembered, as console-output.js does, so its partner
+        // at the start of the next frame is swallowed.
+        let text = "";
+        for (const char of output) {
+            if (char === "\r" || char === "\n") {
+                if (state.newlineCarry && char !== state.newlineCarry) {
+                    state.newlineCarry = "";
+                    continue;
+                }
+                state.newlineCarry = char;
+                text += "\n";
+            } else {
+                state.newlineCarry = "";
+                text += char;
+            }
+        }
+        return text;
     }
 
     function scheduleReconnect() {
@@ -364,6 +387,7 @@
         state.manualDisconnect = false;
         state.failed = false;
         state.telnetCarry = "";
+        state.newlineCarry = "";
         setSecretInput(false);
         setConnectionState("pending", "Connecting");
 
