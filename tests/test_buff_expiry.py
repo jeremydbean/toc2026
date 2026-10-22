@@ -63,6 +63,14 @@ class BuffExpiryTests(unittest.TestCase):
         clamp = self.body.index("if ( expired )")
         self.assertLess(regen, clamp)
 
+    def test_what_wore_off_is_logged(self) -> None:
+        # The review on 2026-10-22 had to infer the expiry from timing.
+        log = self.body.index('watch_log( ch, "affects off: %s%s", ended, change );')
+        clamp = self.body.index("if ( expired )")
+        self.assertGreater(log, clamp, "logged after the clamp, so the hp change shows")
+        for part in ("max hp", "max mana", "max moves", "; hp "):
+            self.assertIn(part, self.body[clamp:log])
+
     def test_affect_remove_itself_does_not_clamp(self) -> None:
         # affect_join and recasts go through affect_remove: clamping there
         # would cost a refreshed buff its pool.

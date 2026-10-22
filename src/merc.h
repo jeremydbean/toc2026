@@ -236,6 +236,7 @@ typedef struct script_loop_prepoll_payload
 #define MAX_PC_RACE             6
 #define MAX_ALIASES             20
 #define PLAY_RECENT             6     /* commands kept for a BUG report (playlog.c) */
+#define PLAY_COIN_KINDS         7     /* a session's coin by source (playlog.c) */
 #define ALIAS_MAX_COMMANDS      10   /* commands one alias may hold */
 #define ALIAS_MAX_QUEUED        20   /* alias lines waiting in one inbuf */
 #define MAX_HUNTERS             50
@@ -907,7 +908,9 @@ int   rest_xp_bonus    args( ( CHAR_DATA *ch, int xp ) );
 /* playlog.c -- the play journal, crash recorder and anomaly checks */
 extern const char *playlog_phase;
 void  playlog_boot           args( ( void ) );
-void  playlog_begin          args( ( CHAR_DATA *ch, const char *shown ) );
+void  playlog_begin          args( ( CHAR_DATA *ch, const char *cmd_name, const char *shown ) );
+void  playlog_coin           args( ( CHAR_DATA *ch, long amount, long unit, bool pile ) );
+void  playlog_coin_as        args( ( const char *source ) );
 void  playlog_end            args( ( CHAR_DATA *ch, const char *cmd_name, const char *shown,
                                      bool secret, bool refused, const char *out, int out_len,
                                      long ms, int pos_before, int hp_pct_before,
@@ -2209,6 +2212,8 @@ struct  pc_data
     time_t              play_anom_last[8];    /* one line a kind a while */
     int                 play_cmds;
     int                 play_refused;
+    int                 play_last_max_hit;    /* max hit points at the last tick */
+    long                play_coin[PLAY_COIN_KINDS]; /* this session's coin by source, copper */
     char                play_recent[PLAY_RECENT][96];
     int                 play_recent_next;
     char *              fixes_done;           /* login fixes applied (fixes.c) */

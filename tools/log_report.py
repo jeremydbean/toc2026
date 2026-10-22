@@ -12,12 +12,19 @@ minutes. This reads them from a git ref (origin/main by default, after
               watch log) -- a word typed again and again is a command
               players expect (CHAT was found this way). Very frequent
               words from one player are likely aliases, listed apart.
+  help        HELP that did not help: a topic read and then its word
+              refused within ten minutes (HELP HEROQUEST taught commands
+              that did not exist, 2026-10-22), and HELP that found nothing
   repeats     the same command typed five or more times running by one
-              player: the reply did not tell them what they needed
-              (TRACK, HIDE and REFRESH were found this way)
+              player, outside a fight: the reply did not tell them what
+              they needed (TRACK, HIDE and REFRESH were found this way)
   deaths      who died, to what, where
-  events      black market, treasure goblin, login fixes, quests paid
-  coin        the biggest coin gains per player, to spot an exploit
+  events      black market, treasure goblin, login fixes; the same event
+              again and again (the goblin drifting every ten minutes) is
+              one line with a count
+  quests      what the quest master handed out, by area and kind
+  coin        the biggest coin gains per player, to spot an exploit, and
+              each session's coin split by where it came from
   chat        public channel lines (never tells; they are not logged)
 
 Addresses and hostnames are stripped from everything printed. Run from
@@ -54,7 +61,11 @@ ADDRESS_LINES = ("shares an address", "Sock.sinaddr")
 # the stash, socials. Not commands, so not counted as typed.
 EVENT_LINE = re.compile(r"^(?:(?:coin|gold|copper|silver|platinum) [+-]\d"
                         r"|(?:bought|sold|stashed|withdrew|gave|received|on|level|killed"
-                        r"|arrived|moved to) |\(social\))")
+                        r"|arrived|moved to|died to) |\(social\)"
+                        r"|(?:affects off|quest assigned|quest complete|daily quest complete"
+                        r"|daily points):)")
+QUEST_ASSIGNED = re.compile(r"^quest assigned: (kill|recover) .* in (\S+), (\d+) minutes?, (\w+)$")
+HELP_WINDOW = timedelta(minutes=10)
 EVENT_PREFIXES = ("Black market:", "Treasure goblin:", "Login fix", "Stray mage groups:",
                   "Mage weapon floors:")
 NOISY = {"l", "look", "sc", "scan", "n", "s", "e", "w", "u", "d", "ne", "nw", "se", "sw",
@@ -75,6 +86,91 @@ def git_show(ref: str, path: str) -> str:
     out = subprocess.run(["git", "show", f"{ref}:{path}"], cwd=ROOT, capture_output=True)
     return out.stdout.decode("latin-1", "replace") if out.returncode == 0 else ""
 
+
+
+def format_copper(copper: int) -> str:
+    """The game's own way of writing a sum: 148p 72g 11s."""
+    sign = "-" if copper < 0 else ""
+    copper = abs(copper)
+    parts = []
+    for unit, letter in ((1_000_000, "p"), (10_000, "g"), (100, "s"), (1, "c")):
+        if copper >= unit:
+            parts.append(f"{copper // unit}{letter}")
+            copper %= unit
+    return sign + (" ".join(parts) if parts else "0c")
+
+
+def collapse_events(events):
+    """(count, first, last, text) per kind of event, most frequent first.
+
+    The goblin drifts to a new area every ten minutes and said so 275 times
+    in two days, burying the twenty other events. Rooms, numbers and stock
+    ids are what change between two of the same event, so they are left out
+    of the key."""
+    groups = {}
+    for when, text in events:
+        key = re.sub(r"room \d+ \([^)]*\)", "room ...", text)
+        key = re.sub(r"\d+", "#", key)
+        if key in groups:
+            count, first, _, _ = groups[key]
+            groups[key] = (count + 1, first, when, text)
+        else:
+            groups[key] = (1, when, when, text)
+    return sorted(groups.values(), key=lambda g: (-g[0], g[2]))
+
+
+def unhelpful_help(lines):
+    """HELP <topic> then the topic's word refused within HELP_WINDOW.
+
+    `lines` are (when, player, command) watch-log entries in order. A
+    player who reads a topic and is then told "Huh?" by the word it named
+    was taught something the game does not have."""
+    read = {}
+    found = []
+    for when, player, command in lines:
+        lower = command.lower()
+        if lower.startswith("help "):
+            topic = lower[5:].strip().strip("'\"")
+            if topic:
+                read[(player, topic.split()[0])] = when
+            continue
+        if lower.startswith("(refused)"):
+            word = (lower[len("(refused)"):].split() or [""])[0]
+            when_read = read.get((player, word))
+            if word and when_read is not None and when - when_read <= HELP_WINDOW:
+                found.append((when, player, word))
+                del read[(player, word)]
+    return found
+
+
+def journal_repeats(rows, least: int = 5):
+    """Runs of one command typed `least` or more times, outside a fight.
+
+    Typing SMITE thirteen times in a fight is fighting; typing MINDBAR
+    twenty times standing is a player whose reply did not say enough. Rows
+    in a fight neither extend nor break a run."""
+    runs = []
+    state = {}
+    for r in rows:
+        if r[1] not in ("cmd", "refused") or len(r) < 13:
+            continue
+        if r[9] == "fight" or r[6] == "fighting":
+            continue
+        if r[10] == "(unknown)":
+            continue    # the journal never writes the word, so two typos look alike
+        player = r[2]
+        command = f"{r[10]} {r[11]}".strip()
+        current = state.get(player)
+        if current and current[0] == command:
+            state[player] = (command, current[1] + 1, current[2])
+            continue
+        if current and current[1] >= least and current[0].split(" ")[0].lower() not in NOISY:
+            runs.append((player, current[0], current[1], current[2]))
+        state[player] = (command, 1, int(r[0]))
+    for player, current in state.items():
+        if current[1] >= least and current[0].split(" ")[0].lower() not in NOISY:
+            runs.append((player, current[0], current[1], current[2]))
+    return sorted(runs, key=lambda run: -run[2])
 
 
 def parse_time(stamp: str) -> datetime:
@@ -106,10 +202,10 @@ def main() -> int:
     print(f"Log report from {since:%Y-%m-%d %H:%M} UTC ({len(lines)} log lines, ref {args.ref})")
 
     per_player = Counter()
-    recent = defaultdict(list)          # player -> last commands
-    last_cmd = {}
-    runs = []                           # (player, command, count, when)
-    run_state = {}
+    help_lines = []                     # (when, player, command) for unhelpful_help
+    quests = Counter()                  # target area
+    quest_kinds = Counter()
+    buffs = defaultdict(list)           # player -> (when, "affects off: ...")
     unknown = defaultdict(Counter)
     bugs = defaultdict(list)
     deaths = []
@@ -135,6 +231,16 @@ def main() -> int:
             continue
         if command.startswith(("arrived ", "moved to ")):
             continue
+        qm = QUEST_ASSIGNED.match(command)
+        if qm:
+            quests[qm.group(2)] += 1
+            quest_kinds[f"{qm.group(1)}, {qm.group(4)}"] += 1
+            continue
+        if command.startswith("affects off:"):
+            buffs[player].append((when, command))
+            continue
+        if command.lower().startswith(("help ", "(refused)")):
+            help_lines.append((when, player, command))
         cm = re.match(r"coin \+(\d+) (\w+)", command)
         if cm:
             coin[player][cm.group(2)] += int(cm.group(1))
@@ -148,16 +254,6 @@ def main() -> int:
         if EVENT_LINE.match(command):
             continue
         per_player[player] += 1
-        state = run_state.get(player)
-        if state and state[0] == command:
-            run_state[player] = (command, state[1] + 1, state[2])
-        else:
-            if state and state[1] >= 5 and state[0].lower() not in NOISY:
-                runs.append((player, state[0], state[1], state[2]))
-            run_state[player] = (command, 1, when)
-    for player, state in run_state.items():
-        if state[1] >= 5 and state[0].lower() not in NOISY:
-            runs.append((player, state[0], state[1], state[2]))
 
     print("\n== players")
     for player, count in per_player.most_common():
@@ -181,23 +277,36 @@ def main() -> int:
         if aliases:
             print(f"  {'':<14} (likely aliases: {', '.join(aliases)})")
 
-    print("\n== repeats (5+ in a row)")
-    for player, command, count, when in sorted(runs, key=lambda r: -r[2])[:25]:
-        print(f"  {player:<14} x{count:<3} {clean(command)[:60]}  ({when:%m-%d %H:%M})")
+    print("\n== help that did not help")
+    misses = unhelpful_help(help_lines)
+    for when, player, word in misses[-15:]:
+        print(f"  {when:%m-%d %H:%M}  {player:<14} read HELP {word}, then '{word}' was refused")
+    if not misses:
+        print("  (none)")
 
     print(f"\n== deaths ({len(deaths)})")
     for when, text in deaths[-25:]:
         print(f"  {when:%m-%d %H:%M}  {text[:120]}")
 
     print(f"\n== events ({len(events)})")
-    for when, text in events[-40:]:
-        print(f"  {when:%m-%d %H:%M}  {text[:150]}")
+    for count, first, last, text in collapse_events(events)[:30]:
+        if count == 1:
+            print(f"  {last:%m-%d %H:%M}  {text[:150]}")
+        else:
+            print(f"  x{count:<4} {first:%m-%d %H:%M} to {last:%m-%d %H:%M}, last: {text[:110]}")
+
+    print(f"\n== quests assigned ({sum(quests.values())})")
+    if quests:
+        print("  by area: " + ", ".join(f"{a} x{n}" for a, n in quests.most_common(12)))
+        print("  by kind: " + ", ".join(f"{k} x{n}" for k, n in quest_kinds.most_common()))
+    else:
+        print("  (none)")
 
     print("\n== coin picked up (platinum, gold)")
     for player, kinds in sorted(coin.items(), key=lambda kv: -kv[1]["platinum"])[:15]:
         print(f"  {player:<14} {kinds['platinum']}p {kinds['gold']}g")
 
-    journal_report(args, since)
+    journal_report(args, since, buffs)
 
     print("\n== public chat")
     rows = []
@@ -228,7 +337,7 @@ SAID_NO = re.compile(
     re.IGNORECASE)
 
 
-def journal_report(args, since) -> None:
+def journal_report(args, since, buffs=None) -> None:
     rows = []
     for raw in git_show(args.ref, "log/play.tsv").splitlines():
         fields = raw.split("\t")
@@ -250,12 +359,21 @@ def journal_report(args, since) -> None:
     if not slow:
         print("    (none)")
 
-    said_no = Counter((r[10], clean(r[12])[:90]) for r in commands
+    # A reply keeps its first lines joined with " // "; the refusal is the first.
+    said_no = Counter((r[10], clean(r[12].split(" // ")[0])[:90]) for r in commands
                       if r[1] == "cmd" and SAID_NO.match(r[12]))
     print("  what the game said no with (command: answer, times):")
     for (command, reply), n in said_no.most_common(15):
         print(f"    x{n:<4} {command}: {reply}")
     if not said_no:
+        print("    (none)")
+
+    print("  repeats (5+ in a row, outside a fight):")
+    runs = journal_repeats(commands)
+    for player, command, count, start in runs[:20]:
+        when = datetime.fromtimestamp(start, timezone.utc)
+        print(f"    {player:<12} x{count:<3} {clean(command)[:60]}  ({when:%m-%d %H:%M})")
+    if not runs:
         print("    (none)")
 
     for kind, title in (("anomaly", "anomalies"), ("bug", "BUG lines with what was running"),
@@ -265,7 +383,19 @@ def journal_report(args, since) -> None:
         print(f"  {title} ({len(picked)}):")
         for r in picked[-15:]:
             when = datetime.fromtimestamp(int(r[0]), timezone.utc)
-            print(f"    {when:%m-%d %H:%M} {r[2]:<12} {clean(' | '.join(r[6:]))[:160]}")
+            fields = list(r[6:])
+            if kind == "session":
+                # "+740662061 copper" reads better as the game writes it.
+                fields = [re.sub(r"^([+-]?\d+) copper$",
+                                 lambda m: format_copper(int(m.group(1))) + " net", f)
+                          for f in fields]
+            print(f"    {when:%m-%d %H:%M} {r[2]:<12} {clean(' | '.join(fields))[:240]}")
+            if kind == "anomaly" and buffs:
+                # What wore off just before is usually the answer.
+                before = [text for at, text in buffs.get(r[2], [])
+                          if timedelta(0) <= when - at <= timedelta(minutes=3)]
+                if before:
+                    print(f"      just before: {clean(before[-1])[:150]}")
 
     crash = git_show(args.ref, "log/crash.log")
     blocks = [b for b in crash.split("=== crash:")[1:]]

@@ -1389,6 +1389,8 @@ void char_update( void )
         AFFECT_DATA *paf;
         AFFECT_DATA *paf_next;
         bool expired = false;
+        char ended[MAX_INPUT_LENGTH];
+        int was_max_hit, was_max_mana, was_max_move, was_hit;
 
         if(ch->in_object == NULL)
             in_room = ch->in_room;
@@ -1779,6 +1781,11 @@ void char_update( void )
             }
         }
 
+	ended[0] = '\0';
+	was_max_hit = ch->max_hit;
+	was_max_mana = ch->max_mana;
+	was_max_move = ch->max_move;
+	was_hit = ch->hit;
 	for ( paf = ch->affected; paf != NULL; paf = paf_next )
 	{
 	    paf_next	= paf->next;
@@ -1800,6 +1807,12 @@ void char_update( void )
 		    {
 			send_to_char( skill_table[paf->type].msg_off, ch );
 			send_to_char( "\n\r", ch );
+		    }
+		    if ( paf->type > 0 && skill_table[paf->type].name != NULL )
+		    {
+			if ( ended[0] != '\0' )
+			    toc_strlcat( ended, ", ", sizeof(ended) );
+			toc_strlcat( ended, skill_table[paf->type].name, sizeof(ended) );
 		    }
 
 		    if ( IS_NPC(ch) && IS_SET(paf->bitvector, AFF_CHARM) )
@@ -1848,6 +1861,38 @@ void char_update( void )
 	    if ( ch->hit  > ch->max_hit )  ch->hit  = ch->max_hit;
 	    if ( ch->mana > ch->max_mana ) ch->mana = ch->max_mana;
 	    if ( ch->move > ch->max_move ) ch->move = ch->max_move;
+	}
+
+	/* What wore off, and what it did to the maxima: the 5474-of-924
+	   anomaly on 2026-10-22 was a TITANIC running out, and nothing in
+	   any log said so. One line a tick, watched characters only. */
+	if ( expired && !IS_NPC(ch) && ended[0] != '\0' )
+	{
+	    char change[MAX_INPUT_LENGTH];
+	    char part[80];
+
+	    change[0] = '\0';
+	    if ( was_max_hit != ch->max_hit )
+	    {
+		snprintf( part, sizeof(part), "; max hp %d -> %d", was_max_hit, ch->max_hit );
+		toc_strlcat( change, part, sizeof(change) );
+	    }
+	    if ( was_max_mana != ch->max_mana )
+	    {
+		snprintf( part, sizeof(part), "; max mana %d -> %d", was_max_mana, ch->max_mana );
+		toc_strlcat( change, part, sizeof(change) );
+	    }
+	    if ( was_max_move != ch->max_move )
+	    {
+		snprintf( part, sizeof(part), "; max moves %d -> %d", was_max_move, ch->max_move );
+		toc_strlcat( change, part, sizeof(change) );
+	    }
+	    if ( was_hit != ch->hit )
+	    {
+		snprintf( part, sizeof(part), "; hp %d -> %d", was_hit, ch->hit );
+		toc_strlcat( change, part, sizeof(change) );
+	    }
+	    watch_log( ch, "affects off: %s%s", ended, change );
 	}
 
 	/*

@@ -23,6 +23,7 @@ SKIP = skip_reason()
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PASSWORD = "Zplay1pass"
 TEMPLE = 4207
+QUESTMASTER = 2497        # Questor Thews, top of the Oak Tree
 
 
 def source(name: str) -> str:
@@ -137,6 +138,41 @@ class PlaylogLiveTests(unittest.TestCase):
             commands = int(next(f for f in session[-1] if f.endswith(" commands")).split()[0])
             self.assertGreaterEqual(commands, 9, "eight typed, and the QUIT itself")
             self.assertIn("1 refused", "\t".join(session[-1]))
+
+    def test_replies_coin_sources_and_quests(self) -> None:
+        """What the 2026-10-22 review could not see from the logs: SCORE's
+        answer past its first line, where a session's coin came from, and
+        which quest the quest master handed out."""
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zcoiner", PASSWORD)
+                client.drain(1.0)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            patch_player_file(mud, "Zcoiner", Levl=10, Room=QUESTMASTER, NewGold=20)
+
+            with mud.connect(timeout=120) as client:
+                login(client, "Zcoiner", PASSWORD)
+                client.drain(1.0)
+                for line in ("score", "drop 5 gold", "get gold", "aquest request"):
+                    client.send(line)
+                    client.drain(1.5)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+
+            mine = [r for r in rows(mud) if len(r) > 2 and r[2] == "Zcoiner"]
+            score = next(r for r in mine if r[1] == "cmd" and r[10] == "score")
+            self.assertEqual(score[12].count(" // "), 2, "SCORE's first three lines")
+            self.assertNotIn("----", score[12], "a rule says nothing and is skipped")
+
+            session = [r for r in mine if r[1] == "session"][-1]
+            coin = next(f for f in session if f.startswith("coin: "))
+            self.assertIn("loot 5g", coin, "coin picked up is loot")
+            self.assertIn("spent 5g", coin, "coin dropped is spent")
+
+            watch = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
+            self.assertRegex(watch, r"Log Zcoiner \[\d+\]: quest assigned: (kill|recover) .+ "
+                                    r"in \S+\.are, \d+ minutes?, (ordinary|rush|emergency)")
 
     @unittest.skipIf(os.environ.get("TOC_SERVER_BINARY"),
                      "a sanitizer build reports crashes itself")

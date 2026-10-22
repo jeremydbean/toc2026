@@ -1739,11 +1739,15 @@ log says what a player typed; the journal says what happened, in columns
 
 - **`log/play.tsv`**, tab-separated: epoch, kind, name, level, room,
   area, then the kind's fields. `cmd`/`refused`: position, hp%, ms,
-  fight, command, args, the first line the game answered. `bug`: the
-  BUG message and what was running. `anomaly`: what and the numbers.
-  `report`: BUG/TYPO/IDEA, the text, hp, the last `PLAY_RECENT`
-  commands. `session`: at QUIT, link loss and shutdown, what the sitting
-  came to. Trimmed past `PLAY_JOURNAL_MAX` lines to the newest
+  fight, command, args, and the first `PLAY_REPLY_LINES` (3) lines the
+  game answered, joined with ` // ` -- not `|`, which SCORE and every
+  boxed display draw with -- skipping lines of nothing but rules and
+  borders. `bug`: the BUG message and what was running. `anomaly`: what
+  and the numbers (hit points over max also says what the maximum was a
+  tick ago). `report`: BUG/TYPO/IDEA, the text, hp, the last
+  `PLAY_RECENT` commands. `session`: at QUIT, link loss and shutdown,
+  what the sitting came to, ending `coin: loot 3p, quests 162p, ...` --
+  the session's coin by source. Trimmed past `PLAY_JOURNAL_MAX` lines to the newest
   `PLAY_JOURNAL_KEEP`, like the channel journal; the whole of `log/`
   reaches git with the state sync and CI ignores it.
 - **`interpret()` is now a wrapper** round `interpret_body()`: it times
@@ -1766,6 +1770,20 @@ log says what a player typed; the journal says what happened, in columns
   log_string. It is not installed under AddressSanitizer, whose report
   is worth more. `tests/test_playlog.py` crashes a live server with
   SIGSEGV and reads the file.
+- **Coin by source** (`playlog_coin`, owner 2026-10-22). The four
+  purse functions -- `adjust_coin_balance`, `spend_copper`,
+  `gain_copper`, `add_money` -- report every change: a pile picked up,
+  looted or handed over is loot; otherwise the command running for that
+  character decides (AQUEST quests, SELL sales, the casino's commands
+  gambling), `playlog_coin_as("dailies")` around a payment names it, and
+  anything else is other. Every loss is spent. DEPOSIT, WITHDRAW,
+  CONVERT and BALANCE move coin within the character's wealth and are
+  left out. A new purse function must call it too.
+- **Watch-log lines a command log cannot show**: `affects off: titanic;
+  max hp 5474 -> 924; hp 5474 -> 924` from `char_update`'s expiry, one
+  line a tick, after the clamp; and `quest assigned: kill <mob> (mob N,
+  level N) in <area file>, N minutes, ordinary|rush|emergency|daily`
+  from `quest_log_assigned()` -- the area, never the room.
 - **Anomalies** (`playlog_tick`, from `char_update` each tick): hit
   points far over max, negative coin, practices or trains, fighting
   nobody or across rooms, and -- not for staff -- level past the remort
@@ -1775,8 +1793,13 @@ log says what a player typed; the journal says what happened, in columns
 
 `tools/log_report.py` prints the slowest commands, what the game said no
 with (grouped by command and answer -- the cheapest way to find a command
-that confuses players), anomalies, BUG lines with context, reports with
-their commands, sessions and crashes. The morning routine runs it.
+that confuses players), **help that did not help** (HELP X, then X refused
+within ten minutes -- it found HELP HEROQUEST teaching commands that did
+not exist), repeats outside a fight, events collapsed to one line a kind
+with a count (the goblin's drift was 275 lines in two days), quests
+assigned by area and kind, anomalies with the buff that wore off just
+before, BUG lines with context, reports with their commands, sessions
+with their coin by source and crashes. The morning routine runs it.
 
 ## Hermie
 

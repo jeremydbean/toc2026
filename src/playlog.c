@@ -8,12 +8,13 @@
  *
  *   log/play.tsv   one line per command a player runs -- who, level,
  *                  room, area, position, health, whether in a fight, the
- *                  command, the first line the game answered, and how
+ *                  command, the first lines the game answered, and how
  *                  long it took -- plus BUG lines with the command that
  *                  was running, anomalies found by the tick's sanity
  *                  checks, a summary of every session at quit or link
- *                  loss, and every BUG/TYPO/IDEA report with the player's
- *                  last few commands beside it.
+ *                  loss (with its coin split by where it came from), and
+ *                  every BUG/TYPO/IDEA report with the player's last few
+ *                  commands beside it.
  *   log/crash.log  on a crash, the last CRASH_RING commands and what the
  *                  game loop was doing, written from the signal handler.
  *
@@ -36,7 +37,9 @@
 #include <sys/types.h>
 #include <sys/time.h>
 #endif
+#include <ctype.h>
 #include <errno.h>
+#include <limits.h>
 #include <fcntl.h>
 #include <signal.h>
 #include <stdio.h>
@@ -50,7 +53,8 @@
 #define PLAY_JOURNAL_MAX    30000
 #define PLAY_JOURNAL_KEEP   15000
 #define PLAY_LINE           640
-#define PLAY_REPLY          160
+#define PLAY_REPLY          240     /* the answer kept for a command */
+#define PLAY_REPLY_LINES    3       /* ... its first lines, joined with " // " */
 #define CRASH_RING          128
 #define CRASH_LINE          200
 #define ANOMALY_QUIET       ( 10 * 60 )   /* one line per kind per player */
@@ -68,7 +72,15 @@ static bool journal_busy;           /* a bug() while writing must not recurse */
 static char current_name[32];
 static char current_room[16];
 static char current_line[100];
+static char current_cmd[32];        /* the command's own name, for coin */
 static bool current_set;
+
+/* Where a session's coin came from (playlog_coin). SPENT is every loss. */
+enum { COIN_LOOT, COIN_QUEST, COIN_DAILY, COIN_SOLD, COIN_GAMBLING,
+       COIN_OTHER, COIN_SPENT };
+static const char *const coin_source_names[PLAY_COIN_KINDS] =
+    { "loot", "quests", "dailies", "sales", "gambling", "other", "spent" };
+static const char *coin_override;   /* playlog_coin_as() */
 
 /* ------------------------------------------------------------ helpers */
 
@@ -194,19 +206,45 @@ static void journal_write( const char *kind, CHAR_DATA *ch, const char *fields )
     journal_busy = false;
 }
 
+/* One line of the answer onto what is kept, " // " between lines (SCORE
+   and the boxed displays draw with "|"). A line of nothing but rules and
+   borders says nothing and is skipped. */
+static void reply_add( char *dest, size_t size, char *line, size_t *n, int *lines )
+{
+    char clean[PLAY_REPLY];
+    const char *p;
+    bool says = false;
+
+    line[*n] = '\0';
+    for ( p = line; *p != '\0'; p++ )
+        if ( isalnum( (unsigned char) *p ) )
+            says = true;
+    if ( says )
+    {
+        play_clean( clean, sizeof(clean), line );
+        if ( *lines > 0 )
+            toc_strlcat( dest, " // ", size );
+        toc_strlcat( dest, clean, size );
+        ( *lines )++;
+    }
+    *n = 0;
+}
+
 /*
- * The first line the game sent back, from the descriptor's output buffer:
- * colour and Telnet negotiation (GMCP rides the same buffer) stripped,
- * blank lines and the echo of a prompt skipped.
+ * The first PLAY_REPLY_LINES lines the game sent back, from the
+ * descriptor's output buffer: colour and Telnet negotiation (GMCP rides
+ * the same buffer) stripped, blank lines skipped. One line was not
+ * enough: AQUEST COMPLETE, SCORE and EQUIPMENT all open with a line that
+ * says nothing (2026-10-22), and the reward or the change was on the next.
  */
 static void first_reply_line( const char *out, int len, char *dest, size_t size )
 {
     char line[PLAY_REPLY];
     size_t n = 0;
-    int i;
+    int i, lines = 0;
 
     dest[0] = '\0';
-    for ( i = 0; i < len; i++ )
+    for ( i = 0; i < len && lines < PLAY_REPLY_LINES; i++ )
     {
         unsigned char c = (unsigned char) out[i];
 
@@ -233,19 +271,14 @@ static void first_reply_line( const char *out, int len, char *dest, size_t size 
         }
         if ( c == '\n' || c == '\r' )
         {
-            line[n] = '\0';
-            if ( n > 0 )
-            {
-                play_clean( dest, size, line );
-                return;
-            }
+            reply_add( dest, size, line, &n, &lines );
             continue;
         }
         if ( c >= 32 && c < 127 && n + 1 < sizeof(line) )
             line[n++] = (char) c;
     }
-    line[n] = '\0';
-    play_clean( dest, size, line );
+    if ( lines < PLAY_REPLY_LINES )
+        reply_add( dest, size, line, &n, &lines );
 }
 
 /* -------------------------------------------------------------- crash */
@@ -351,13 +384,14 @@ void playlog_boot( void )
  * outermost level only. `shown` is the line as it may be written down
  * (interp.c withholds the arguments of private and password commands).
  */
-void playlog_begin( CHAR_DATA *ch, const char *shown )
+void playlog_begin( CHAR_DATA *ch, const char *cmd_name, const char *shown )
 {
     char line[CRASH_LINE];
 
     if ( ch == NULL || IS_NPC(ch) )
         return;
     play_clean( current_name, sizeof(current_name), ch->name );
+    play_clean( current_cmd, sizeof(current_cmd), cmd_name != NULL ? cmd_name : "" );
     if ( ch->in_room == NULL )
         snprintf( current_room, sizeof(current_room), "0" );
     else if ( room_hides_from_log( ch->in_room ) )
@@ -517,12 +551,20 @@ void playlog_tick( CHAR_DATA *ch )
         ch->pcdata->play_last_exp = ch->exp;
         ch->pcdata->play_last_wealth = wealth;
         ch->pcdata->play_start_wealth = wealth;
+        ch->pcdata->play_last_max_hit = ch->max_hit;
         return;
     }
 
     if ( ch->hit > ch->max_hit + UMAX( 100, ch->max_hit / 2 ) )
     {
-        snprintf( detail, sizeof(detail), "%d of %d hit points", ch->hit, ch->max_hit );
+        /* What the maximum was a tick ago says whether it fell (a buff or
+           a piece of gear gone) or the hit points rose. */
+        if ( ch->pcdata->play_last_max_hit > 0
+        &&   ch->pcdata->play_last_max_hit != ch->max_hit )
+            snprintf( detail, sizeof(detail), "%d of %d hit points; max was %d a tick ago",
+                      ch->hit, ch->max_hit, ch->pcdata->play_last_max_hit );
+        else
+            snprintf( detail, sizeof(detail), "%d of %d hit points", ch->hit, ch->max_hit );
         anomaly( ch, 0, "hit points far over max", detail );
     }
     if ( ch->new_platinum < 0 || ch->new_gold < 0 || ch->new_silver < 0
@@ -570,6 +612,90 @@ void playlog_tick( CHAR_DATA *ch )
     }
     ch->pcdata->play_last_exp = ch->exp;
     ch->pcdata->play_last_wealth = wealth;
+    ch->pcdata->play_last_max_hit = ch->max_hit;
+}
+
+/* ------------------------------------------------------------- coin */
+
+/*
+ * Every change to a purse, from the four functions that make one
+ * (adjust_coin_balance, spend_copper, gain_copper, add_money): `amount`
+ * of `unit` copper each, `pile` for coin picked up, looted or handed
+ * over. The source is the command running for that character -- AQUEST
+ * pays quests, SELL sales, the casino's commands gambling -- or what
+ * playlog_coin_as() names. Money moved between the purse and the bank,
+ * or changed into other coins, is no gain and is left out.
+ */
+void playlog_coin_as( const char *source )
+{
+    coin_override = source;
+}
+
+void playlog_coin( CHAR_DATA *ch, long amount, long unit, bool pile )
+{
+    static const char *const gambling[] =
+        { "gamble", "slots", "bet", "roulette", "poker", NULL };
+    static const char *const neutral[] =
+        { "deposit", "withdraw", "convert", "balance", NULL };
+    bool own = false;
+    long size, copper;
+    int kind, i;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || amount == 0 || unit <= 0 )
+        return;
+    size = amount == LONG_MIN ? LONG_MAX : ( amount < 0 ? -amount : amount );
+    copper = size > LONG_MAX / unit ? LONG_MAX : size * unit;
+    if ( current_set && ch->name != NULL && !str_cmp( current_name, ch->name ) )
+        own = true;
+    if ( own )
+        for ( i = 0; neutral[i] != NULL; i++ )
+            if ( !str_cmp( current_cmd, neutral[i] ) )
+                return;
+
+    if ( amount < 0 )
+        kind = COIN_SPENT;
+    else
+    {
+        kind = pile ? COIN_LOOT : COIN_OTHER;
+        if ( coin_override != NULL )
+        {
+            for ( i = 0; i < COIN_SPENT; i++ )
+                if ( !str_cmp( coin_override, coin_source_names[i] ) )
+                    kind = i;
+        }
+        else if ( own && !str_cmp( current_cmd, "aquest" ) )
+            kind = COIN_QUEST;
+        else if ( own && !str_cmp( current_cmd, "sell" ) )
+            kind = COIN_SOLD;
+        else if ( own )
+            for ( i = 0; gambling[i] != NULL; i++ )
+                if ( !str_cmp( current_cmd, gambling[i] ) )
+                    kind = COIN_GAMBLING;
+    }
+    if ( ch->pcdata->play_coin[kind] > LONG_MAX - copper )
+        ch->pcdata->play_coin[kind] = LONG_MAX;
+    else
+        ch->pcdata->play_coin[kind] += copper;
+}
+
+/* "loot 3p 20g, quests 162p, spent 400g" -- or "none". */
+static void coin_summary( CHAR_DATA *ch, char *buf, size_t size )
+{
+    char price[64], part[96];
+    int i;
+
+    buf[0] = '\0';
+    for ( i = 0; i < PLAY_COIN_KINDS; i++ )
+    {
+        if ( ch->pcdata->play_coin[i] <= 0 )
+            continue;
+        format_price( ch->pcdata->play_coin[i], price, sizeof(price) );
+        snprintf( part, sizeof(part), "%s%s %s", buf[0] != '\0' ? ", " : "",
+                  coin_source_names[i], price );
+        toc_strlcat( buf, part, size );
+    }
+    if ( buf[0] == '\0' )
+        toc_strlcpy( buf, "none", size );
 }
 
 /* ---------------------------------------------------------- a session */
@@ -578,13 +704,15 @@ void playlog_tick( CHAR_DATA *ch )
 void playlog_session( CHAR_DATA *ch, const char *how )
 {
     char fields[PLAY_LINE];
+    char coin[PLAY_LINE / 2];
 
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL
     ||   ch->pcdata->session_logon <= 0 )
         return;
+    coin_summary( ch, coin, sizeof(coin) );
     snprintf( fields, sizeof(fields),
               "%s\t%lds\t%+d levels\t%+ld exp\t%+ld copper\t%d kills\t%d deaths"
-              "\t%d quests\t%d commands\t%d refused",
+              "\t%d quests\t%d commands\t%d refused\tcoin: %s",
               how, (long) ( current_time - ch->pcdata->session_logon ),
               (int) ch->level - ch->pcdata->session_start_level,
               ch->exp - ch->pcdata->session_start_exp,
@@ -592,6 +720,6 @@ void playlog_session( CHAR_DATA *ch, const char *how )
                   ? play_wealth( ch ) - ch->pcdata->play_start_wealth : 0L,
               ch->pcdata->session_kills, ch->pcdata->session_deaths,
               ch->pcdata->session_quests, ch->pcdata->play_cmds,
-              ch->pcdata->play_refused );
+              ch->pcdata->play_refused, coin );
     journal_write( "session", ch, fields );
 }

@@ -920,7 +920,7 @@ static void play_note( CHAR_DATA *ch, const char *name, const char *shown,
     play_secret = secret;
     play_refused = refused;
     play_begun = true;
-    playlog_begin( ch, play_shown );
+    playlog_begin( ch, name, play_shown );
 }
 
 static void interpret_body( CHAR_DATA *ch, char *argument );

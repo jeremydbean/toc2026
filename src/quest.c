@@ -62,6 +62,7 @@ DECLARE_DO_FUN( do_say );
 /* Local functions */
 
 void generate_quest	args(( CHAR_DATA *ch, CHAR_DATA *questman ));
+static void quest_log_assigned args(( CHAR_DATA *ch ));
 void quest_update	args(( void ));
 bool chance		args(( int num ));
 void advance_level	args(( CHAR_DATA *ch, bool is_advance ));
@@ -339,7 +340,9 @@ static void complete_daily_quest( CHAR_DATA *ch, CHAR_DATA *questman,
             achievement_record_event(ch, ACHIEVEMENT_EVENT_DAILY_STREAK_HUNDRED, true);
     }
 
+    playlog_coin_as( "dailies" );
     gain_copper(ch, UMAX(1L, reward));
+    playlog_coin_as( NULL );
     format_price( UMAX(1L, reward), price, sizeof(price) );
     do_say(questman, "Your daily task is done. Well worked!");
     snprintf(buf, sizeof(buf), "Here's your %s - and %d daily point%s.",
@@ -522,6 +525,7 @@ static void quest_daily_request( CHAR_DATA *ch )
         ch->countdown = (sh_int) DAILY_MINUTES;
         ch->questdaily = true;
         SET_BIT(ch->act, PLR_QUESTOR);
+        quest_log_assigned(ch);
         snprintf(buf, sizeof(buf),
             "That's daily task %d of %d. You have %d minutes.",
             ch->pcdata->daily_done + 1, DAILY_QUESTS_PER_DAY, ch->countdown);
@@ -1548,6 +1552,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 		}
 	    }
 	    SET_BIT(ch->act, PLR_QUESTOR);
+	    quest_log_assigned(ch);
 	}
 	save_char_obj(ch);
 	return;
@@ -1835,6 +1840,40 @@ static bool automatic_quest_target_is_suitable( CHAR_DATA *ch,
 static void quest_tell( CHAR_DATA *questman, CHAR_DATA *ch, const char *text )
 {
     act( "$n tells you '$t'", questman, text, ch, TO_VICT );
+}
+
+/*
+ * One watch-log line for every quest handed out: what, where and how
+ * long. Without it the only way to ask whether the pool is skewed --
+ * "it keeps sending me to Gang Land" (2026-10-20) -- was to guess each
+ * target's area from where the player walked afterwards. The area is
+ * named, never the room.
+ */
+static void quest_log_assigned( CHAR_DATA *ch )
+{
+    ROOM_INDEX_DATA *room = get_room_index( ch->questroom );
+    const char *area = room != NULL && room->area != NULL
+                     ? room->area->file_name : "?";
+    const char *kind = ch->questdaily     ? "daily"
+                     : ch->questemergency ? "emergency"
+                     : ch->questrush      ? "rush" : "ordinary";
+
+    if ( ch->questmob > 0 )
+    {
+        MOB_INDEX_DATA *mob = get_mob_index( ch->questmob );
+
+        watch_log( ch, "quest assigned: kill %s (mob %d, level %d) in %s, %d minutes, %s",
+                   mob != NULL ? mob->short_descr : "?", ch->questmob,
+                   mob != NULL ? mob->level : 0, area, ch->countdown, kind );
+    }
+    else if ( ch->questobj > 0 )
+    {
+        OBJ_INDEX_DATA *obj = get_obj_index( ch->questobj );
+
+        watch_log( ch, "quest assigned: recover %s (obj %d) in %s, %d minutes, %s",
+                   obj != NULL ? obj->short_descr : "?", ch->questobj,
+                   area, ch->countdown, kind );
+    }
 }
 
 void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)

@@ -137,6 +137,57 @@ class LogReportTests(unittest.TestCase):
         for command in ("smite", "get all", "goto 4207", "golem"):
             self.assertFalse(self.report.EVENT_LINE.match(command), command)
 
+    def test_new_watch_lines_are_not_commands(self) -> None:
+        for event in ("affects off: titanic; max hp 5474 -> 924",
+                      "quest assigned: kill a harpy (mob 9101, level 48) in olympus.are, 20 minutes, ordinary",
+                      "quest complete: 5p, 37 quest points (streak bonus 121%)",
+                      "daily quest complete: 108p 16g 8s, 1 daily points (2 today)",
+                      "died to a security guard"):
+            self.assertTrue(self.report.EVENT_LINE.match(event), event)
+        found = self.report.QUEST_ASSIGNED.match(
+            "quest assigned: recover a gem (obj 3715) in haon.are, 30 minutes, daily")
+        self.assertEqual(found.group(2, 4), ("haon.are", "daily"))
+
+    def test_coin_reads_as_the_game_writes_it(self) -> None:
+        self.assertEqual(self.report.format_copper(148721100), "148p 72g 11s")
+        self.assertEqual(self.report.format_copper(-420 * 10_000), "-4p 20g")
+        self.assertEqual(self.report.format_copper(0), "0c")
+
+    def test_the_same_event_is_one_line(self) -> None:
+        from datetime import datetime, timedelta, timezone
+        start = datetime(2026, 10, 22, tzinfo=timezone.utc)
+        events = [(start + timedelta(minutes=10 * i),
+                   f"Treasure goblin: vanished from room {1000 + i} (Room {i}, a{i}.are) "
+                   "(too long in one area).") for i in range(30)]
+        events.append((start, "Treasure goblin: slain by Zed in room 5 (Bog, b.are)."))
+        groups = self.report.collapse_events(events)
+        self.assertEqual(groups[0][0], 30)
+        self.assertEqual(groups[0][1], start)
+        self.assertEqual([g[0] for g in groups], [30, 1])
+
+    def test_help_that_did_not_help(self) -> None:
+        from datetime import datetime, timedelta, timezone
+        t = datetime(2026, 10, 22, 11, 41, tzinfo=timezone.utc)
+        lines = [(t, "Trentlin", "help heroquest"),
+                 (t + timedelta(seconds=7), "Trentlin", "(refused) heroquest"),
+                 (t + timedelta(seconds=9), "Trentlin", "(refused) heroquest request"),
+                 (t, "Alaric", "help track"),
+                 (t + timedelta(minutes=30), "Alaric", "(refused) track")]
+        self.assertEqual(self.report.unhelpful_help(lines),
+                         [(t + timedelta(seconds=7), "Trentlin", "heroquest")],
+                         "once per reading, and only soon after it")
+
+    def test_repeats_in_a_fight_are_fighting(self) -> None:
+        def row(epoch, command, fight="-", kind="cmd"):
+            return [str(epoch), kind, "Zed", "50", "1", "a.are",
+                    "fighting" if fight == "fight" else "standing", "100", "0", fight,
+                    command, "", "ok"]
+        rows = [row(i, "smite", "fight") for i in range(13)]
+        rows += [row(100 + i, "mindbar") for i in range(6)]
+        rows += [row(200 + i, "(unknown)", kind="refused") for i in range(6)]
+        runs = self.report.journal_repeats(rows)
+        self.assertEqual([(r[1], r[2]) for r in runs], [("mindbar", 6)])
+
 
 if __name__ == "__main__":
     unittest.main()

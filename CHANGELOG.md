@@ -24,6 +24,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   installs use it for local-only play.
 
 
+- **Sharper play logging** (owner, 2026-10-22, after a review spent its
+  time reconstructing what the logs could have said). The journal keeps
+  the first three lines of every answer, and each session's coin split
+  into loot, quests, dailies, sales, gambling, other and spent. The watch
+  log says which buffs wore off and what that did to the maxima, and
+  which quest was handed out where. `tools/log_report.py` gains "help
+  that did not help", collapses repeated events, ignores repeats made in
+  a fight and lists quests by area. A buff running out now takes its hit
+  points, mana and moves with it on the same tick, and HELP HEROQUEST no
+  longer teaches commands that do not exist.
+
 - **The play journal** (`src/playlog.c`; owner, 2026-10-21). `log/play.tsv`
   records every player command with what the game answered and how long
   it took, BUG lines with the command that was running, tick anomalies,

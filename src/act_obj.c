@@ -2470,6 +2470,7 @@ bool adjust_coin_balance(CHAR_DATA *ch, long amount, int coin_type)
                   coin_type == TYPE_PLATINUM ? "platinum" :
                   coin_type == TYPE_GOLD     ? "gold" :
                   coin_type == TYPE_SILVER   ? "silver" : "copper");
+        playlog_coin(ch, amount, coin_copper_value(coin_type), true);
         achievement_check_economy(ch, true);
     }
     return true;
@@ -2513,6 +2514,7 @@ bool spend_copper( CHAR_DATA *ch, long copper )
 
     normalize_coins( ch, total - copper );
     watch_log( ch, "copper -%ld", copper );
+    playlog_coin( ch, -copper, 1, false );
     achievement_check_economy( ch, true );
     return true;
 }
@@ -2534,6 +2536,7 @@ bool gain_copper( CHAR_DATA *ch, long copper )
         return false;
 
     normalize_coins( ch, total + copper );
+    playlog_coin( ch, copper, 1, false );
     achievement_check_economy( ch, true );
     return true;
 }
@@ -6580,6 +6583,7 @@ void add_money(CHAR_DATA *ch, long amount)
 
   normalize_coins(ch, total_copper);
   watch_log(ch, "gold %+ld", amount);
+  playlog_coin(ch, amount, COPPER_PER_GOLD, false);
   achievement_check_economy(ch, true);
 }
 
