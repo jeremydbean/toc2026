@@ -3729,3 +3729,49 @@
 1792631335	cmd	Alaric	53	29210	korzath2.are	fighting	95	0	fight	wear	just	You wield (Flaming) the Crystalline Sword of Justice.
 1792631338	cmd	Alaric	53	29210	korzath2.are	fighting	95	0	fight	get	exc	I see no exc here.
 1792631339	cmd	Alaric	53	29210	korzath2.are	fighting	95	0	fight	look		Twist in the Maze
+1792631424	cmd	Alaric	53	29211	korzath2.are	standing	96	0	-	west		Twist in the Maze
+1792631425	cmd	Alaric	53	29211	korzath2.are	standing	96	0	-	kill	sk	An Animated Skeleton parries your attack.
+1792631429	cmd	Alaric	53	29211	korzath2.are	standing	96	0	-	kill	sk	An Animated Skeleton dodges your attack.
+1792631440	cmd	Alaric	53	29210	korzath2.are	standing	96	0	-	east		Twist in the Maze
+1792631441	cmd	Alaric	53	29210	korzath2.are	standing	96	0	-	kill	sk	Your slash hits an Animated Skeleton. [-10]
+1792631444	cmd	Alaric	53	29211	korzath2.are	standing	96	0	-	west		Twist in the Maze
+1792631446	cmd	Alaric	53	29211	korzath2.are	standing	96	0	-	bs	sk	Your backstab === OBLITERATES === an Animated Skeleton! [-147]
+1792631464	cmd	Alaric	53	29211	korzath2.are	fighting	95	0	fight	get	just	You get (Flaming) the Crystalline Sword of Justice.
+1792631464	cmd	Alaric	53	29211	korzath2.are	fighting	94	0	fight	wear	just	You wield (Flaming) the Crystalline Sword of Justice.
+1792631469	cmd	Alaric	53	29210	korzath2.are	standing	94	0	-	east		Twist in the Maze
+1792631470	cmd	Alaric	53	29210	korzath2.are	standing	94	0	-	kill	sk	Your slash === OBLITERATES === an Animated Skeleton! [-133]
+1792631474	cmd	Alaric	53	29211	korzath2.are	standing	94	0	-	west		Twist in the Maze
+1792631474	cmd	Alaric	53	29212	korzath2.are	standing	94	0	-	north		Twist in the Maze
+1792631474	cmd	Alaric	53	29212	korzath2.are	standing	94	0	-	kill	sk	An Animated Skeleton dodges your attack.
+1792631481	cmd	Alaric	53	29212	korzath2.are	standing	94	0	-	bs	mad	Your backstab <<< ERADICATES >>> a deranged madman! [-161]
+1792631490	cmd	Alaric	53	29212	korzath2.are	fighting	94	0	fight	worth		You have 898 platinum, 120 gold, 121 silver, 176 copper
+1792631495	cmd	Alaric	53	29212	korzath2.are	fighting	94	0	fight	inventory		You are carrying:
+1792631504	cmd	Alaric	53	29212	korzath2.are	fighting	93	0	fight	wear	exc	You stop using (Flaming) the Crystalline Sword of Justice.
+1792631513	cmd	Alaric	53	29212	korzath2.are	fighting	93	0	fight	dirt		Your kicked dirt misses a deranged madman. [-0]
+1792631538	cmd	Alaric	53	29212	korzath2.are	fighting	90	0	fight	mindbar		You lost your concentration.
+1792631539	cmd	Alaric	53	29212	korzath2.are	fighting	90	0	fight	mindbar		You lost your concentration.
+1792631540	cmd	Alaric	53	29212	korzath2.are	fighting	90	0	fight	mindbar		You lost your concentration.
+1792631541	cmd	Alaric	53	29212	korzath2.are	fighting	90	0	fight	mindbar		You lost your concentration.
+1792631542	cmd	Alaric	53	29212	korzath2.are	fighting	90	0	fight	mindbar		You lost your concentration.
+1792631543	cmd	Alaric	53	29212	korzath2.are	fighting	90	0	fight	mindbar		You lost your concentration.
+1792631543	cmd	Alaric	53	29212	korzath2.are	fighting	90	0	fight	mindbar		You lost your concentration.
+1792631544	cmd	Alaric	53	29212	korzath2.are	fighting	90	0	fight	mindbar		You lost your concentration.
+1792631544	cmd	Alaric	53	29212	korzath2.are	fighting	90	0	fight	mindbar		You lost your concentration.
+1792631545	cmd	Alaric	53	29212	korzath2.are	fighting	90	0	fight	mindbar		You lost your concentration.
+1792631545	cmd	Alaric	53	29212	korzath2.are	fighting	90	0	fight	mindbar		You lost your concentration.
+1792631546	cmd	Alaric	53	29212	korzath2.are	fighting	89	0	fight	mindbar		You lost your concentration.
+1792631547	cmd	Alaric	53	29212	korzath2.are	fighting	89	0	fight	mindbar		You lost your concentration.
+1792631548	cmd	Alaric	53	29212	korzath2.are	fighting	89	0	fight	mindbar		You lost your concentration.
+1792631549	cmd	Alaric	53	29212	korzath2.are	fighting	89	0	fight	mindbar		You lost your concentration.
+1792631550	cmd	Alaric	53	29212	korzath2.are	fighting	89	0	fight	mindbar		A mental fortress protects your mind.
+1792631553	cmd	Alaric	53	29212	korzath2.are	fighting	89	0	fight	mindbar		You are already protected.
+1792631553	cmd	Alaric	53	29212	korzath2.are	fighting	89	0	fight	mindbar		You are already protected.
+1792631560	cmd	Alaric	53	29212	korzath2.are	standing	89	0	-	scan		a deranged madman                  -to the South.
+1792631564	cmd	Alaric	53	29212	korzath2.are	standing	89	0	-	stealth		You blend into the shadows.
+1792631565	cmd	Alaric	53	29214	korzath2.are	standing	89	0	-	west		Twist in the Maze
+1792631566	cmd	Alaric	53	29214	korzath2.are	standing	89	0	-	bs	shadow	Your backstab does UNSPEAKABLE things to a Shadowman! [-413]
+1792631587	cmd	Alaric	53	29214	korzath2.are	standing	88	0	-	worth		You have 915 platinum, 167 gold, 204 silver, 289 copper
+1792631587	cmd	Alaric	53	29214	korzath2.are	standing	88	0	-	look		Twist in the Maze
+1792631588	cmd	Alaric	53	29214	korzath2.are	standing	88	0	-	bs	mad	Your backstab <<< ERADICATES >>> a deranged madman! [-160]
+1792631629	cmd	Alaric	53	29214	korzath2.are	fighting	85	0	fight	wear	just	You stop using Excalibur.
+1792631644	cmd	Alaric	53	29214	korzath2.are	fighting	83	0	fight	worth		You have 920 platinum, 180 gold, 227 silver, 320 copper
