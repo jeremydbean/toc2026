@@ -313,29 +313,15 @@ The following guidelines apply to all quests run by immortals on ToC:
 See also: HEROQUEST, COMMANDMENTS, JOBS
 ~
 0 HEROQUEST~
-When you embark on a hero quest, the following commands can be used
-at the Questmaster:
+Hero quests are no longer run. The clue hunt the questmaster once set
+heroes -- HEROQUEST, LISTCLUE, RETRIEVED and ENDQUEST -- is gone, and
+none of those commands exists any more.
 
-heroquest: This will start the quest.
-listclue: This will relist the clue you are on.
-retrieved <item name>: This will make the Questmaster tell you if the clue
-		       is correct or not. If it is, the next clue will be
-		       listed.
-endquest: This will end your quest, but there are stiff penalties for doing
-	  so. Use this as a last resort, when all else has failed. It is
-	  advised that you quit the game for a little while before doing
-	  this though to give yourself  a chance to cool off your frustration.
-	  By ending a Hero Quest, you may not start one again for 7 days
-	  real time. The Quest Master will inform you on how long you
-	  have left to wait.
+Heroes quest the way everyone does, with Questor Thews at the top of the
+Oak Tree: AQUEST REQUEST for an ordinary quest, and AQUEST DAILY REQUEST
+for the day's three daily quests. HELP AQUEST has the details.
 
-Discussion of any hero quest clues or items before or after the hero quest
-is a SERIOUS offense, and will be enforced. If you have another Player Char
-and are caught discussing the clues/items that your Hero PC encountered, or
-are caught using that PC to communicate in any way for your Hero PC, both
-that PC and your Hero will SUFFER SEVERE PENALTIES, NO EXCEPTIONS!!!
-
-See also: HERO, HEROLEVELS, QUESTS
+See also: AQUEST, HEROLEVELS, QUESTS
 ~
 
 0 HEROLEVELS HEROLEVEL HERO HEROES 'HERO LEVELS'~
@@ -347,10 +333,10 @@ additional practice sessions.  Each exchange costs 5,000 experience points
 and grants between 5 and 7 practices at random.  Exchanges must be made
 with the guru located in Hero Hall.
 
-Heroes may also embark on special quests through the Questmaster to earn
-additional rewards.  See HELP HEROQUEST for full details.
+Heroes keep questing with the questmaster like everyone else, for quest
+points and coin.  See HELP AQUEST.
 
-See also: EXCHANGE, PRACTICE, HEROQUEST, GAIN
+See also: EXCHANGE, PRACTICE, AQUEST, GAIN
 ~
 
 62 MARTYR~
