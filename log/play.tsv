@@ -2941,3 +2941,166 @@
 1792627991	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	open	secret	I see no secret here.
 1792627997	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	bomb	north	You find no cracked surface to bomb there.
 1792628000	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	bomb	east	You find no cracked surface to bomb there.
+1792628064	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	drink		Drink what?
+1792628065	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	look	cistern	You do not see that here.
+1792628066	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	look		Level 7: Hidden Cistern
+1792628072	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	look	moss	You do not see that here.
+1792628074	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	bomb	down	You find no cracked surface to bomb there.
+1792628077	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	(social)		They aren't here.
+1792628078	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	use	candle	You stop using a *twinkling* ball of light.
+1792628084	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	compare	ball	A) a *twinkling* ball of light (level 14)
+1792628086	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	wear	ball	You stop using a Blue Candle.
+1792628086	cmd	Trentlin	49	30542	hyrule.are	standing	99	0	-	west		Level 7: Island Chamber
+1792628087	cmd	Trentlin	49	30541	hyrule.are	standing	99	0	-	west		Level 7: Western Moat
+1792628088	cmd	Trentlin	49	30544	hyrule.are	standing	99	0	-	north		Level 7: Hall of Grumbling
+1792628090	cmd	Trentlin	49	30544	hyrule.are	standing	99	0	-	north		Alas, you cannot go that way.
+1792628099	cmd	Trentlin	49	30544	hyrule.are	standing	99	0	-	bomb	nirth	You find no cracked surface to bomb there.
+1792628101	cmd	Trentlin	49	30544	hyrule.are	standing	99	0	-	bomb	north	You find no cracked surface to bomb there.
+1792628102	refused	Trentlin	49	30544	hyrule.are	standing	99	0	-	(unknown)		Huh?
+1792628102	refused	Trentlin	49	30544	hyrule.are	standing	99	0	-	(unknown)		Huh?
+1792628103	cmd	Trentlin	49	30541	hyrule.are	standing	99	0	-	south		Level 7: Western Moat
+1792628106	cmd	Trentlin	49	30541	hyrule.are	standing	99	0	-	kill	g	Your cleave ^^^ DESTROYS ^^^ a blue goriya!
+1792628111	cmd	Trentlin	49	30541	hyrule.are	fighting	99	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a blue goriya!
+1792628120	cmd	Trentlin	49	30541	hyrule.are	fighting	100	0	fight	smite		Your smite misses a blue goriya.
+1792628129	cmd	Trentlin	49	30541	hyrule.are	fighting	99	2	fight	smite		Your smite <<< ERADICATES >>> a blue goriya!
+1792628137	cmd	Trentlin	49	30541	hyrule.are	standing	99	0	-	look	in cor	Corpse of a blue goriya contains:
+1792628139	cmd	Trentlin	49	30541	hyrule.are	standing	99	0	-	sacrifice	coir	You can't find it.
+1792628140	cmd	Trentlin	49	30541	hyrule.are	standing	99	0	-	look		Level 7: Western Moat
+1792628142	cmd	Trentlin	49	30541	hyrule.are	standing	99	0	-	recall		The Gods have forsaken you.
+1792628144	cmd	Trentlin	49	30542	hyrule.are	standing	99	0	-	east		Level 7: Island Chamber
+1792628145	cmd	Trentlin	49	30540	hyrule.are	standing	99	0	-	south		Level 7: Hall of Lingering Chill
+1792628145	cmd	Trentlin	49	30536	hyrule.are	standing	99	0	-	south		Level 7: Boomerang Hall
+1792628146	cmd	Trentlin	49	30530	hyrule.are	standing	99	0	-	south		Level 7: Moat Crossroads
+1792628146	cmd	Trentlin	49	30527	hyrule.are	standing	99	0	-	south		Level 7: Demon's Gate
+1792628149	cmd	Trentlin	49	30250	hyrule.are	standing	99	0	-	up		The Still Pond
+1792628150	cmd	Trentlin	49	4207	dresden_halloween.are	standing	99	0	-	recall		Before the Shrouded Altar
+1792628151	cmd	Trentlin	49	4205	dresden_halloween.are	standing	99	0	-	south		The Hall of Guttering Candles
+1792628152	cmd	Trentlin	49	4206	dresden_halloween.are	standing	99	0	-	east		The Hall of Hollow Footsteps
+1792628152	cmd	Trentlin	49	4206	dresden_halloween.are	standing	99	0	-	drink		You are no longer thirsty.
+1792628152	cmd	Trentlin	49	4206	dresden_halloween.are	standing	99	0	-	drink		You are no longer thirsty.
+1792628153	cmd	Trentlin	49	4206	dresden_halloween.are	standing	99	0	-	drink		You are no longer thirsty.
+1792628155	cmd	Trentlin	49	4202	dresden_halloween.are	standing	99	0	-	north		The Hall of Whispers
+1792628156	cmd	Trentlin	49	4203	dresden_halloween.are	standing	99	0	-	north		The Hall of Cobwebs
+1792628156	cmd	Trentlin	49	4203	dresden_halloween.are	standing	99	0	-	east		Alas, you cannot go that way.
+1792628156	cmd	Trentlin	49	4203	dresden_halloween.are	standing	99	0	-	east		Alas, you cannot go that way.
+1792628158	cmd	Trentlin	49	4202	dresden_halloween.are	standing	99	0	-	south		The Hall of Whispers
+1792628158	cmd	Trentlin	49	4201	dresden_halloween.are	standing	99	0	-	east		Entrance to the Haunted Temple
+1792628158	cmd	Trentlin	49	2427	dresden_halloween.are	standing	99	0	-	east		Main Processional, Below the Temple Steps
+1792628159	cmd	Trentlin	49	2404	dresden_halloween.are	standing	99	0	-	north		Southern Oak Tree Square.
+1792628159	cmd	Trentlin	49	2401	dresden_halloween.are	standing	99	0	-	north		Oak Tree Square on Hallows Eve
+1792628159	cmd	Trentlin	49	2402	dresden_halloween.are	standing	99	0	-	north		Northern Oak Tree Square.
+1792628159	cmd	Trentlin	49	2415	dresden_halloween.are	standing	99	0	-	north		Main Processional, Strung with Lanterns
+1792628160	cmd	Trentlin	49	2496	dresden_halloween.are	standing	99	0	-	north		Main Processional, Where the Candles Burn
+1792628161	cmd	Trentlin	49	2416	dresden_halloween.are	standing	99	0	-	north		Main Processional, Among the Scarecrows
+1792628161	cmd	Trentlin	49	2479	dresden_halloween.are	standing	99	0	-	east		Market Plaza.
+1792628162	cmd	Trentlin	49	2488	dresden_halloween.are	standing	99	0	-	north		Bakery.
+1792628162	cmd	Trentlin	49	2488	dresden_halloween.are	standing	99	0	-	north		Alas, you cannot go that way.
+1792628162	cmd	Trentlin	49	2488	dresden_halloween.are	standing	99	0	-	north		Alas, you cannot go that way.
+1792628163	cmd	Trentlin	49	2488	dresden_halloween.are	standing	99	0	-	buy	pie	You buy a big pot pie.
+1792628164	cmd	Trentlin	49	2488	dresden_halloween.are	standing	99	0	-	buy	pie	You buy a big pot pie.
+1792628164	cmd	Trentlin	49	2488	dresden_halloween.are	standing	99	0	-	buy	pie	You buy a big pot pie.
+1792628164	cmd	Trentlin	49	2488	dresden_halloween.are	standing	99	0	-	buy	pie	You buy a big pot pie.
+1792628164	cmd	Trentlin	49	2488	dresden_halloween.are	standing	99	0	-	buy	pie	You buy a big pot pie.
+1792628165	cmd	Trentlin	49	2488	dresden_halloween.are	standing	99	0	-	eat	pie	You eat a big pot pie.
+1792628166	cmd	Trentlin	49	2488	dresden_halloween.are	standing	99	0	-	eat	pie	You eat a big pot pie.
+1792628166	cmd	Trentlin	49	2479	dresden_halloween.are	standing	99	0	-	south		Market Plaza.
+1792628166	cmd	Trentlin	49	2416	dresden_halloween.are	standing	99	0	-	west		Main Processional, Among the Scarecrows
+1792628167	cmd	Trentlin	49	2496	dresden_halloween.are	standing	99	0	-	south		Main Processional, Where the Candles Burn
+1792628167	cmd	Trentlin	49	2415	dresden_halloween.are	standing	99	0	-	south		Main Processional, Strung with Lanterns
+1792628167	cmd	Trentlin	49	2402	dresden_halloween.are	standing	99	0	-	south		Northern Oak Tree Square.
+1792628168	cmd	Trentlin	49	2401	dresden_halloween.are	standing	99	0	-	south		Oak Tree Square on Hallows Eve
+1792628169	cmd	Trentlin	49	2410	dresden_halloween.are	standing	99	0	-	up		Climbing the Oak Tree...
+1792628169	cmd	Trentlin	49	2411	dresden_halloween.are	standing	99	0	-	up		Up in the Oak Tree.
+1792628170	cmd	Trentlin	49	2414	dresden_halloween.are	standing	99	0	-	up		Top of the oak tree.
+1792628170	cmd	Trentlin	49	2497	dresden_halloween.are	standing	99	0	-	up		A sudden wind blows you from the tree!
+1792628171	cmd	Trentlin	49	2497	dresden_halloween.are	standing	99	0	-	aquest	request	You approach Questor Thews and ask for a quest.
+1792628175	cmd	Trentlin	49	2497	dresden_halloween.are	standing	99	0	-	who		[49 Dwarf   W/W   ] Trentlin the Master Warrior
+1792628176	cmd	Trentlin	49	2497	dresden_halloween.are	standing	99	0	-	inventory		You are carrying:
+1792628179	cmd	Trentlin	49	2401	dresden_halloween.are	standing	99	0	-	enter	door	You enter The Rescue Portal
+1792628180	cmd	Trentlin	49	2402	dresden_halloween.are	standing	99	0	-	north		Northern Oak Tree Square.
+1792628180	cmd	Trentlin	49	2415	dresden_halloween.are	standing	99	0	-	north		Main Processional, Strung with Lanterns
+1792628181	cmd	Trentlin	49	2485	dresden_halloween.are	standing	99	0	-	east		Market Plaza.
+1792628182	cmd	Trentlin	49	2494	dresden_halloween.are	standing	99	0	-	south		Weapons Shop.
+1792628182	cmd	Trentlin	49	2494	dresden_halloween.are	standing	99	0	-	south		Alas, you cannot go that way.
+1792628184	cmd	Trentlin	49	2494	dresden_halloween.are	standing	99	0	-	repair	lan	The hooded headsman repairs your the Gohma eye-lance.
+1792628185	cmd	Trentlin	49	2485	dresden_halloween.are	standing	99	0	-	north		Market Plaza.
+1792628185	cmd	Trentlin	49	2415	dresden_halloween.are	standing	99	0	-	west		Main Processional, Strung with Lanterns
+1792628185	cmd	Trentlin	49	2402	dresden_halloween.are	standing	99	0	-	south		Northern Oak Tree Square.
+1792628186	cmd	Trentlin	49	2401	dresden_halloween.are	standing	99	0	-	south		Oak Tree Square on Hallows Eve
+1792628186	cmd	Trentlin	49	2410	dresden_halloween.are	standing	99	0	-	up		Climbing the Oak Tree...
+1792628187	cmd	Trentlin	49	2411	dresden_halloween.are	standing	99	0	-	up		Up in the Oak Tree.
+1792628187	cmd	Trentlin	49	2414	dresden_halloween.are	standing	99	0	-	up		Top of the oak tree.
+1792628187	cmd	Trentlin	49	2497	dresden_halloween.are	standing	99	0	-	up		A sudden wind blows you from the tree!
+1792628189	cmd	Trentlin	49	2497	dresden_halloween.are	standing	99	6	-	aquest	request	You approach Questor Thews and ask for a quest.
+1792628192	cmd	Trentlin	49	2401	dresden_halloween.are	standing	99	0	-	enter	door	You enter The Rescue Portal
+1792628213	cmd	Trentlin	49	2438	dresden_halloween.are	standing	99	0	-	run	w 7	Western Oak Tree Square.
+1792628214	cmd	Trentlin	49	2438	dresden_halloween.are	standing	99	0	-	open	gate	Ok.
+1792628214	cmd	Trentlin	49	6103	haon.are	standing	99	0	-	run	w 10	Outside the Western Gates of Dresden.
+1792628214	cmd	Trentlin	49	6151	haon.are	standing	99	0	-	run	n 2	The narrow trail.
+1792628214	cmd	Trentlin	49	5622	tarin.are	standing	99	0	-	run	w 2	Forest Junction
+1792628215	cmd	Trentlin	49	3601	dkforest.are	standing	99	0	-	run	s 3	In the deeper forest
+1792628216	cmd	Trentlin	49	3602	dkforest.are	standing	99	0	-	south		Entering the forest
+1792628217	cmd	Trentlin	49	3602	dkforest.are	standing	99	0	-	south		Alas, you cannot go that way.
+1792628217	cmd	Trentlin	49	3612	dkforest.are	standing	99	0	-	west		Western path through the forest
+1792628217	cmd	Trentlin	49	3612	dkforest.are	standing	99	0	-	west		Alas, you cannot go that way.
+1792628218	cmd	Trentlin	49	3612	dkforest.are	standing	99	0	-	west		Alas, you cannot go that way.
+1792628218	cmd	Trentlin	49	3612	dkforest.are	standing	99	0	-	west		Alas, you cannot go that way.
+1792628219	cmd	Trentlin	49	3613	dkforest.are	standing	99	0	-	south		Turn in the path
+1792628219	cmd	Trentlin	49	3614	dkforest.are	standing	99	0	-	west		An intersection
+1792628222	cmd	Trentlin	49	3613	dkforest.are	standing	99	0	-	east		Turn in the path
+1792628223	cmd	Trentlin	49	3613	dkforest.are	standing	99	1	-	kill	sp	Your cleave *** DEVASTATES *** A tiny forest spirit!
+1792628227	cmd	Trentlin	49	4207	dresden_halloween.are	standing	99	0	-	recall		Before the Shrouded Altar
+1792628228	cmd	Trentlin	49	4208	dresden_halloween.are	standing	99	0	-	west		The Shrouded Altar of Devota
+1792628229	cmd	Trentlin	49	4208	dresden_halloween.are	standing	99	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792628230	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792628230	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792628231	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792628231	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792628231	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792628232	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792628232	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792628233	cmd	Trentlin	49	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792628233	cmd	Trentlin	49	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792628234	cmd	Trentlin	49	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792628234	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792628234	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792628238	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792628241	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	aquest	gamble yes	The dice BETRAY you! Your 37 quest points are lost.
+1792628245	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792628246	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	who		[49 Dwarf   W/W   ] Trentlin the Master Warrior
+1792628250	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	sacrifice	ham	The Gods give you 0 copper coins for your sacrifice.
+1792628251	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	worth		You have 209 platinum, 4 gold, 81 silver, 92 copper
+1792628252	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	score		--------------------------------------------------------------
+1792628264	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	help	shove	SHOVE
+1792628268	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	gainlist		Abilities for a level 49 warrior of the warrior guild: 25 learned, 15 not yet.
+1792628273	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	scan		a warlock of dresden               -to the North.
+1792628276	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	walkto	rakar	You set off for Rakar the weaponsmaster (City of Dresden), about 1 room away.
+1792628278	cmd	Trentlin	49	2405	dresden_halloween.are	standing	100	0	-	gain	shove	You can't do that here.
+1792628281	cmd	Trentlin	49	2405	dresden_halloween.are	standing	100	0	-	gain		You can't do that here.
+1792628286	cmd	Trentlin	49	2405	dresden_halloween.are	standing	100	0	-	gainlist		Abilities for a level 49 warrior of the warrior guild: 25 learned, 15 not yet.
+1792628289	cmd	Trentlin	49	2405	dresden_halloween.are	standing	100	0	-	gain		You can't do that here.
+1792628290	cmd	Trentlin	49	2405	dresden_halloween.are	standing	100	0	-	look		Western Oak Tree Square.
+1792628291	cmd	Trentlin	49	2405	dresden_halloween.are	standing	100	0	-	scan		the trick-or-treater               -to the North.
+1792628292	cmd	Trentlin	49	2433	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard.
+1792628293	cmd	Trentlin	49	2433	dresden_halloween.are	standing	100	0	-	gain		group              cost  group              cost  group              cost 
+1792628295	cmd	Trentlin	49	2433	dresden_halloween.are	standing	100	0	-	gain	shove	Rakar the weaponsmaster trains you in the art of shove.
+1792628296	cmd	Trentlin	49	2433	dresden_halloween.are	standing	100	0	-	practice	shove	You practice shove.
+1792628297	cmd	Trentlin	49	2433	dresden_halloween.are	standing	100	0	-	practice	shove	You are now learned at shove.
+1792628298	cmd	Trentlin	49	2405	dresden_halloween.are	standing	100	0	-	east		Western Oak Tree Square.
+1792628299	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	east		Oak Tree Square on Hallows Eve
+1792628300	cmd	Trentlin	49	2403	dresden_halloween.are	standing	100	0	-	east		Eastern Oak Tree Square.
+1792628304	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792628305	cmd	Trentlin	49	3700	school.are	standing	100	0	-	up		Entrance to Mud School
+1792628306	cmd	Trentlin	49	3757	school.are	standing	100	0	-	north		A Room in Mud School
+1792628306	cmd	Trentlin	49	3759	school.are	standing	100	0	-	east		Soulcrusher's Guild Room
+1792628307	cmd	Trentlin	49	3759	school.are	standing	100	0	-	gain	convert	The adept of Soulcrusher helps you apply your practice to training
+1792628308	cmd	Trentlin	49	3759	school.are	standing	100	0	-	gain	convert	The adept of Soulcrusher tells you 'You are not yet ready.'
+1792628308	cmd	Trentlin	49	3759	school.are	standing	100	0	-	gain	convert	The adept of Soulcrusher tells you 'You are not yet ready.'
+1792628309	cmd	Trentlin	49	3757	school.are	standing	100	0	-	west		A Room in Mud School
+1792628309	cmd	Trentlin	49	3757	school.are	standing	100	0	-	train		You can't do that here.
+1792628311	cmd	Trentlin	49	3757	school.are	standing	100	0	-	train		You can't do that here.
+1792628311	cmd	Trentlin	49	3758	school.are	standing	100	0	-	west		Eclipse's Training Room
+1792628312	cmd	Trentlin	49	3758	school.are	standing	100	0	-	train		You have 3 training sessions.
+1792628313	cmd	Trentlin	49	3758	school.are	standing	100	0	-	train	hp	Your durability increases!
+1792628313	cmd	Trentlin	49	3758	school.are	standing	100	0	-	train	hp	Your durability increases!
+1792628314	cmd	Trentlin	49	3758	school.are	standing	100	0	-	train	hp	Your durability increases!
