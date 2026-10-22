@@ -2588,3 +2588,209 @@
 1792627091	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	drop	bloom	You drop the Manhandla bloom-whip.
 1792627092	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	sacrifice	bloo	The Gods give you 40 copper coins for your sacrifice.
 1792627093	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792627100	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	compare	horns	A) the Titanic Horns of Capricon (level 20) -- can't use: made for another side
+1792627108	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	drop	horns	You drop the Titanic Horns of Capricon.
+1792627109	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	sacrifice	horns	The Gods give you 40 copper coins for your sacrifice.
+1792627110	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792627113	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	compare	robes	A) some Black velvet robes (level 32) -- can't use: made for another side
+1792627119	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	compare	ring	A) An assassin's ring (level 52) -- can't use: needs level 52
+1792627126	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	compare	dagg	A) an assassin's dagger (level 51) -- can't use: needs level 51
+1792627132	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	stash	put scal	You put a Sharp scalpel away for safe keeping.
+1792627133	cmd	Trentlin	49	4206	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792627138	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	2	-	north		The Hall of Whispers
+1792627139	cmd	Trentlin	49	4203	dresden_halloween.are	standing	100	0	-	north		The Hall of Cobwebs
+1792627141	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers
+1792627141	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792627142	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792627142	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792627143	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792627143	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792627144	cmd	Trentlin	49	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792627144	cmd	Trentlin	49	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792627144	cmd	Trentlin	49	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792627144	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792627146	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	6	-	aquest	request	You approach Questor Thews and ask for a quest.
+1792627149	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792627167	cmd	Trentlin	49	2438	dresden_halloween.are	standing	100	0	-	run	w 7	Western Oak Tree Square.
+1792627168	cmd	Trentlin	49	2438	dresden_halloween.are	standing	100	0	-	open	gate	Ok.
+1792627168	cmd	Trentlin	49	6101	haon.are	standing	100	0	-	run	w 8	Outside the Western Gates of Dresden.
+1792627168	cmd	Trentlin	49	6105	haon.are	standing	100	0	-	run	s 2	A small path in the deep, dark forest
+1792627168	cmd	Trentlin	49	6106	haon.are	standing	100	2	-	west		A junction in the deep, dark forest
+1792627169	cmd	Trentlin	49	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest
+1792627169	cmd	Trentlin	49	6116	haon.are	standing	100	0	-	west		A small path in the deep, dark forest
+1792627169	cmd	Trentlin	49	6115	haon.are	standing	100	0	-	south		A small path in the deep, dark forest
+1792627169	cmd	Trentlin	49	6122	haon.are	standing	100	0	-	run	w 2	A junction in the deep, dark forest
+1792627170	cmd	Trentlin	49	9774	newthalo.are	standing	100	0	-	run	s 2	A junction on the river bank in the deep, dark forest
+1792627170	cmd	Trentlin	49	9775	newthalo.are	standing	100	0	-	west		On the Dark River
+1792627170	cmd	Trentlin	49	15	connect.are	standing	100	0	-	sw		Bend in River
+1792627170	cmd	Trentlin	49	16	connect.are	standing	100	0	-	west		Misty River
+1792627171	cmd	Trentlin	49	1300	htower.are	standing	100	0	-	north		Entrance to the Shadow Grove
+1792627176	cmd	Trentlin	49	1308	htower.are	standing	100	0	-	north		The Shadow Grove
+1792627178	cmd	Trentlin	49	1308	htower.are	standing	100	0	-	exits		Obvious exits:
+1792627179	cmd	Trentlin	49	1305	htower.are	standing	100	0	-	north		The Shadow Grove
+1792627180	cmd	Trentlin	49	1305	htower.are	standing	100	0	-	exits		Obvious exits:
+1792627180	cmd	Trentlin	49	1302	htower.are	standing	100	0	-	east		The Shadow Grove
+1792627181	cmd	Trentlin	49	1302	htower.are	standing	100	0	-	exits		Obvious exits:
+1792627182	cmd	Trentlin	49	1311	htower.are	standing	100	0	-	north		A small clearing
+1792627186	cmd	Trentlin	49	1311	htower.are	standing	100	0	-	exits		Obvious exits:
+1792627187	cmd	Trentlin	49	1312	htower.are	standing	100	0	-	north		Entrance to the High Tower
+1792627188	cmd	Trentlin	49	1313	htower.are	standing	100	0	-	north		Inside the High Tower of Sorcerery
+1792627192	cmd	Trentlin	49	1313	htower.are	standing	100	0	-	exits		Obvious exits:
+1792627193	cmd	Trentlin	49	1316	htower.are	standing	100	0	-	west		Dining Room
+1792627194	cmd	Trentlin	49	1320	htower.are	standing	100	0	-	west		the kitchen
+1792627198	cmd	Trentlin	49	1320	htower.are	standing	100	0	-	get	e	I see no e here.
+1792627199	cmd	Trentlin	49	1320	htower.are	standing	100	0	-	look	e	You see nothing special about her.
+1792627200	cmd	Trentlin	49	1320	htower.are	standing	100	0	-	consider	ez	You can kill Ezmerelda naked and weaponless.
+1792627202	cmd	Trentlin	49	1320	htower.are	standing	100	0	-	look	ez	You see nothing special about her.
+1792627203	cmd	Trentlin	49	1316	htower.are	standing	100	0	-	east		Dining Room
+1792627203	cmd	Trentlin	49	1313	htower.are	standing	100	0	-	east		Inside the High Tower of Sorcerery
+1792627204	cmd	Trentlin	49	1315	htower.are	standing	100	0	-	east		The Hallway
+1792627205	cmd	Trentlin	49	1330	htower.are	standing	100	0	-	east		The hallway
+1792627206	cmd	Trentlin	49	1333	htower.are	standing	100	0	-	south		A broom closet
+1792627207	cmd	Trentlin	49	1330	htower.are	standing	100	0	-	north		The hallway
+1792627208	cmd	Trentlin	49	1331	htower.are	standing	100	0	-	east		A bend in the hallway
+1792627209	cmd	Trentlin	49	1330	htower.are	standing	100	0	-	west		The hallway
+1792627209	cmd	Trentlin	49	1332	htower.are	standing	100	0	-	north		A store room
+1792627210	cmd	Trentlin	49	1330	htower.are	standing	100	0	-	south		The hallway
+1792627210	cmd	Trentlin	49	1331	htower.are	standing	100	0	-	east		A bend in the hallway
+1792627211	cmd	Trentlin	49	1334	htower.are	standing	100	0	-	north		A hallway
+1792627212	cmd	Trentlin	49	1331	htower.are	standing	100	0	-	south		A bend in the hallway
+1792627212	cmd	Trentlin	49	1335	htower.are	standing	100	0	-	south		Guardians chamber
+1792627213	cmd	Trentlin	49	1331	htower.are	standing	100	0	-	north		A bend in the hallway
+1792627214	cmd	Trentlin	49	1336	htower.are	standing	100	0	-	east		A guest bedroom
+1792627215	cmd	Trentlin	49	1331	htower.are	standing	100	0	-	west		A bend in the hallway
+1792627215	cmd	Trentlin	49	1334	htower.are	standing	100	0	-	north		A hallway
+1792627216	cmd	Trentlin	49	1337	htower.are	standing	100	0	-	east		A guest bedroom
+1792627217	cmd	Trentlin	49	1334	htower.are	standing	100	0	-	west		A hallway
+1792627218	cmd	Trentlin	49	1338	htower.are	standing	100	0	-	north		A hallway
+1792627219	cmd	Trentlin	49	1339	htower.are	standing	100	0	-	east		The burnt room
+1792627220	cmd	Trentlin	49	1338	htower.are	standing	100	0	-	west		A hallway
+1792627221	cmd	Trentlin	49	1340	htower.are	standing	100	0	-	up		A hallway
+1792627222	cmd	Trentlin	49	1341	htower.are	standing	100	0	-	east		A culdesac
+1792627223	cmd	Trentlin	49	1340	htower.are	standing	100	0	-	west		A hallway
+1792627223	cmd	Trentlin	49	1340	htower.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792627225	cmd	Trentlin	49	1343	htower.are	standing	100	0	-	west		A hallway
+1792627226	cmd	Trentlin	49	1340	htower.are	standing	100	0	-	east		A hallway
+1792627226	cmd	Trentlin	49	1342	htower.are	standing	100	0	-	north		The Apprentice's Barracks
+1792627227	cmd	Trentlin	49	1344	htower.are	standing	100	0	-	west		The Apprentice's barracks
+1792627228	cmd	Trentlin	49	1343	htower.are	standing	100	0	-	south		A hallway
+1792627229	cmd	Trentlin	49	1345	htower.are	standing	100	0	-	west		A hallway
+1792627231	cmd	Trentlin	49	1346	htower.are	standing	100	0	-	north		The apprentice's workshop
+1792627232	cmd	Trentlin	49	1345	htower.are	standing	100	0	-	south		A hallway
+1792627232	cmd	Trentlin	49	1347	htower.are	standing	100	0	-	west		A bend in the hallway
+1792627234	cmd	Trentlin	49	1348	htower.are	standing	100	0	-	south		The hallway
+1792627235	cmd	Trentlin	49	1349	htower.are	standing	100	0	-	west		A classroom
+1792627237	cmd	Trentlin	49	1348	htower.are	standing	100	0	-	east		The hallway
+1792627237	cmd	Trentlin	49	1350	htower.are	standing	100	0	-	south		A hallway
+1792627238	cmd	Trentlin	49	1352	htower.are	standing	100	0	-	west		An empty classroom
+1792627239	cmd	Trentlin	49	1350	htower.are	standing	100	0	-	east		A hallway
+1792627240	cmd	Trentlin	49	1351	htower.are	standing	100	0	-	south		A hallway
+1792627240	cmd	Trentlin	49	1353	htower.are	standing	100	0	-	south		A bend in the hallway
+1792627242	cmd	Trentlin	49	1351	htower.are	standing	100	0	-	north		A hallway
+1792627242	cmd	Trentlin	49	1354	htower.are	standing	100	0	-	west		An empty classroom
+1792627244	cmd	Trentlin	49	1351	htower.are	standing	100	0	-	east		A hallway
+1792627244	cmd	Trentlin	49	1353	htower.are	standing	100	0	-	south		A bend in the hallway
+1792627245	cmd	Trentlin	49	1355	htower.are	standing	100	0	-	east		A hallway
+1792627245	cmd	Trentlin	49	1357	htower.are	standing	100	0	-	south		The Amphitheater
+1792627246	cmd	Trentlin	49	1355	htower.are	standing	100	0	-	north		A hallway
+1792627247	cmd	Trentlin	49	1356	htower.are	standing	100	0	-	east		A hallway
+1792627248	cmd	Trentlin	49	1359	htower.are	standing	100	0	-	south		The training room
+1792627250	cmd	Trentlin	49	1356	htower.are	standing	100	0	-	north		A hallway
+1792627250	cmd	Trentlin	49	1358	htower.are	standing	100	0	-	east		A hallway
+1792627251	cmd	Trentlin	49	1356	htower.are	standing	100	0	-	west		A hallway
+1792627252	cmd	Trentlin	49	1359	htower.are	standing	100	0	-	south		The training room
+1792627253	cmd	Trentlin	49	1359	htower.are	standing	100	0	-	look	mis	She looks quite rugged. In fact, she more resembles a warrior than a magic
+1792627254	cmd	Trentlin	49	1356	htower.are	standing	100	0	-	north		A hallway
+1792627254	cmd	Trentlin	49	1358	htower.are	standing	100	0	-	east		A hallway
+1792627255	cmd	Trentlin	49	1361	htower.are	standing	100	0	-	south		A dueling room
+1792627256	cmd	Trentlin	49	1358	htower.are	standing	100	0	-	north		A hallway
+1792627256	cmd	Trentlin	49	1360	htower.are	standing	100	0	-	east		A bend in the hallway
+1792627258	cmd	Trentlin	49	1362	htower.are	standing	100	0	-	north		A hallway
+1792627258	cmd	Trentlin	49	1364	htower.are	standing	100	0	-	east		The spellmaster's lounge
+1792627259	cmd	Trentlin	49	1362	htower.are	standing	100	0	-	west		A hallway
+1792627260	cmd	Trentlin	49	1363	htower.are	standing	100	0	-	north		A hallway
+1792627261	cmd	Trentlin	49	1365	htower.are	standing	100	0	-	east		A bedroom
+1792627262	cmd	Trentlin	49	1363	htower.are	standing	100	0	-	west		A hallway
+1792627262	cmd	Trentlin	49	1366	htower.are	standing	100	0	-	north		A hallway
+1792627263	cmd	Trentlin	49	1367	htower.are	standing	100	0	-	east		The study
+1792627264	cmd	Trentlin	49	1366	htower.are	standing	100	0	-	west		A hallway
+1792627264	cmd	Trentlin	49	1368	htower.are	standing	100	0	-	north		Below the stairs
+1792627267	cmd	Trentlin	49	1369	htower.are	standing	100	0	-	up		Atop the stairway
+1792627268	cmd	Trentlin	49	1370	htower.are	standing	100	0	-	west		A hallway
+1792627269	cmd	Trentlin	49	1371	htower.are	standing	100	0	-	north		A small office
+1792627271	cmd	Trentlin	49	1373	htower.are	standing	100	0	-	west		The master scribe's workshop
+1792627273	cmd	Trentlin	49	1371	htower.are	standing	100	0	-	east		A small office
+1792627273	cmd	Trentlin	49	1370	htower.are	standing	100	0	-	south		A hallway
+1792627274	cmd	Trentlin	49	1372	htower.are	standing	100	0	-	west		A hallway
+1792627275	cmd	Trentlin	49	1374	htower.are	standing	100	0	-	west		A hallway
+1792627276	cmd	Trentlin	49	1375	htower.are	standing	100	0	-	north		A store room
+1792627277	cmd	Trentlin	49	1374	htower.are	standing	100	0	-	south		A hallway
+1792627278	cmd	Trentlin	49	1376	htower.are	standing	100	0	-	west		A bend in the hallway
+1792627279	cmd	Trentlin	49	1377	htower.are	standing	100	0	-	south		A hallway
+1792627280	cmd	Trentlin	49	1379	htower.are	standing	100	0	-	west		A store room
+1792627283	cmd	Trentlin	49	1381	htower.are	standing	100	0	-	south		A very hot room
+1792627285	cmd	Trentlin	49	1381	htower.are	standing	100	0	-	get	ha	You get a mithril hammer.
+1792627287	cmd	Trentlin	49	1381	htower.are	standing	100	0	-	exits		Obvious exits:
+1792627289	cmd	Trentlin	49	1381	htower.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792627290	cmd	Trentlin	49	1382	htower.are	standing	100	0	-	south		The master Enchanter's chamber
+1792627293	cmd	Trentlin	49	1381	htower.are	standing	100	0	-	north		A very hot room
+1792627293	cmd	Trentlin	49	1378	htower.are	standing	100	0	-	east		A hallway
+1792627294	cmd	Trentlin	49	1380	htower.are	standing	100	0	-	south		A hallway
+1792627295	cmd	Trentlin	49	1383	htower.are	standing	100	0	-	south		A bend in the hallway
+1792627297	cmd	Trentlin	49	1380	htower.are	standing	100	0	-	north		A hallway
+1792627298	cmd	Trentlin	49	1378	htower.are	standing	100	0	-	north		A hallway
+1792627298	cmd	Trentlin	49	1381	htower.are	standing	100	0	-	west		A very hot room
+1792627300	cmd	Trentlin	49	1378	htower.are	standing	100	0	-	east		A hallway
+1792627300	cmd	Trentlin	49	1377	htower.are	standing	100	0	-	north		A hallway
+1792627301	cmd	Trentlin	49	1378	htower.are	standing	100	0	-	south		A hallway
+1792627301	cmd	Trentlin	49	1381	htower.are	standing	100	0	-	west		A very hot room
+1792627302	cmd	Trentlin	49	1412	htower.are	standing	100	0	-	up		It is very dark here...
+1792627303	cmd	Trentlin	49	1409	htower.are	standing	100	0	-	up		The golem master's workshop
+1792627305	cmd	Trentlin	49	1409	htower.are	standing	100	0	-	exits		Obvious exits:
+1792627308	cmd	Trentlin	49	1411	htower.are	standing	100	0	-	south		The golem chamber
+1792627310	cmd	Trentlin	49	1411	htower.are	standing	100	0	-	get	all	You get The Amulet of Soulcrusher.
+1792627311	cmd	Trentlin	49	1411	htower.are	standing	100	0	-	recall		The gods are listening to somebody else just now.
+1792627314	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792627315	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792627315	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792627316	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792627316	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792627316	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792627317	cmd	Trentlin	49	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792627317	cmd	Trentlin	49	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792627317	cmd	Trentlin	49	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792627317	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792627319	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	1	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792627323	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	4	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 78 quest points! **
+1792627325	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792627326	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792627329	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	compare	ham	A) a mithril hammer (level 12)
+1792627335	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	drop	hamm	You drop a mithril hammer.
+1792627339	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	play	recorder 7	You play the Recorder, and an ancient melody fills the room.
+1792627341	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	look		Oak Tree Square on Hallows Eve
+1792627353	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	run	s 2	Southern Oak Tree Square.
+1792627353	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	run	w 3	Entrance to the Haunted Temple
+1792627353	cmd	Trentlin	49	3795	school.are	standing	100	0	-	run	u 3	Entrance to Mud School
+1792627353	cmd	Trentlin	49	15000	campus.are	standing	100	1	-	enter	portal	You enter A Portal
+1792627354	cmd	Trentlin	49	15004	campus.are	standing	100	0	-	run	e 4	Campus Crescent
+1792627354	cmd	Trentlin	49	15013	campus.are	standing	100	0	-	run	n 4	University Avenue
+1792627354	cmd	Trentlin	49	15068	campus.are	standing	100	0	-	run	e 2	The Back Hall
+1792627354	cmd	Trentlin	49	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering Hyrule arcade cabinet
+1792627356	cmd	Trentlin	49	30250	hyrule.are	standing	100	0	-	play	recorder 7	You play the Recorder, and an ancient melody fills the room.
+1792627360	cmd	Trentlin	49	30250	hyrule.are	standing	100	0	-	look		The Still Pond
+1792627361	cmd	Trentlin	49	30234	hyrule.are	standing	100	0	-	south		Lost Woods Crossing
+1792627362	cmd	Trentlin	49	30250	hyrule.are	standing	100	0	-	north		The Still Pond
+1792627369	cmd	Trentlin	49	30250	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792627370	cmd	Trentlin	49	30250	hyrule.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792627372	cmd	Trentlin	49	30250	hyrule.are	standing	100	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room.
+1792627374	cmd	Trentlin	49	30250	hyrule.are	standing	100	0	-	look		The Still Pond
+1792627375	cmd	Trentlin	49	30527	hyrule.are	standing	100	0	-	down		Level 7: Demon's Gate
+1792627376	cmd	Trentlin	49	30527	hyrule.are	standing	100	0	-	scan		a blue goriya                      -to the North.
+1792627377	cmd	Trentlin	49	30528	hyrule.are	standing	100	0	-	east		Level 7: Dripping Antechamber
+1792627379	cmd	Trentlin	49	30531	hyrule.are	standing	100	0	-	north		Level 7: Guano-Streaked Crossing
+1792627381	cmd	Trentlin	49	30532	hyrule.are	standing	100	0	-	east		Level 7: Shuttered Gallery
+1792627382	cmd	Trentlin	49	30533	hyrule.are	standing	100	0	-	east		Level 7: Urchin's Hollow
+1792627384	cmd	Trentlin	49	30532	hyrule.are	standing	100	2	-	west		Level 7: Shuttered Gallery
+1792627384	cmd	Trentlin	49	30532	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792627387	cmd	Trentlin	49	30532	hyrule.are	standing	100	0	-	kill	gor	Your pierce MANGLES a blue goriya!
+1792627391	cmd	Trentlin	49	30532	hyrule.are	fighting	100	0	fight	smite		Your smite maims a blue goriya!
