@@ -1480,9 +1480,15 @@ static void unwear_illegal_at_load( CHAR_DATA *ch )
     int slot;
     bool full_reset;
     bool any = false;
+    bool quiet;
 
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
         return;
+
+    /* The copy read at the name prompt is read again once the password
+       is in (login_reload_character in comm.c), so only that second
+       reading says what it took off: one line per login, not two. */
+    quiet = ch->desc != NULL && ch->desc->connected == CON_GET_NAME;
 
     full_reset = ch->pcdata->perm_hit == 0 || ch->pcdata->perm_mana == 0
               || ch->pcdata->perm_move == 0 || ch->pcdata->last_level == 0;
@@ -1538,7 +1544,8 @@ static void unwear_illegal_at_load( CHAR_DATA *ch )
                 ch->name, obj->short_descr != NULL ? obj->short_descr : "object",
                 obj->pIndexData != NULL ? obj->pIndexData->vnum : 0,
                 obj->wear_loc, why );
-            log_string( log_buf );
+            if ( !quiet )
+                log_string( log_buf );
 
             if ( obj->pIndexData != NULL )
                 for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
