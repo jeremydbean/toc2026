@@ -3104,3 +3104,14 @@
 1792628313	cmd	Trentlin	49	3758	school.are	standing	100	0	-	train	hp	Your durability increases!
 1792628313	cmd	Trentlin	49	3758	school.are	standing	100	0	-	train	hp	Your durability increases!
 1792628314	cmd	Trentlin	49	3758	school.are	standing	100	0	-	train	hp	Your durability increases!
+1792628314	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792628315	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota
+1792628317	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792628319	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792628319	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792628320	cmd	Trentlin	49	4203	dresden_halloween.are	standing	100	0	-	north		The Hall of Cobwebs
+1792628320	cmd	Trentlin	49	4210	dresden_halloween.are	standing	100	0	-	north		The Sickroom of the Restless
+1792628320	cmd	Trentlin	49	4210	dresden_halloween.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792628320	cmd	Trentlin	49	4210	dresden_halloween.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792628321	cmd	Trentlin	49	4210	dresden_halloween.are	standing	100	0	-	sleep		You go to sleep.
+1792628321	session	Trentlin	49	4210	dresden_halloween.are	quit	2553s	+0 levels	+310 exp	+65514643 copper	24 kills	0 deaths	3 quests	1010 commands	3 refused

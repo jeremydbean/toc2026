@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792628241
+LogO 1792628321
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -17,15 +17,15 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 49
-Plyd 50047
+Plyd 50127
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
 StashMax 75
 HyruleSecrets 67108864
 Scro 22
-Room 2497
-HMV  5280 5280 8795 8795 2730 2740
+Room 4210
+HMV  5310 5310 8795 8795 2736 2740
 NewGold 4
 NewPlat 209
 NewCopp 92
@@ -105,21 +105,21 @@ Achv visit-high-tower 1792621034
 Achv visit-ultima 1792621074
 Achv visit-korzath-fortress 1792287816
 Achv visit-ice-keep 1792455929
-LastOut  1792628241
-Rested 0 0
+LastOut  1792628321
+Rested 0 1
 Daily 0 0 0 0 0
-SesLogin 1792620967
-SesDur   2745
-SesExpG  24
+SesLogin 1792625768
+SesDur   2553
+SesExpG  310
 SesLvlG  0
-SesKill  18
+SesKill  24
 SesPK    0
 SesDead  0
 SesQuest 3
 QuestPnts 1645
 QuestStrk 23
 CasinoLost 4
-QuestNext 15
+QuestNext 13
 Exp  111844
 Act  65740
 AfBy 3678910
@@ -148,9 +148,8 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
-Prac 17
-Trai 3
+Pos  4
+Prac 5
 Save  -13
 Alig  -900
 Hit   60
@@ -163,8 +162,8 @@ Titl  the Master Warrior~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 786 1276 388
-Cond 0 47 47
+HMVP 816 1276 388
+Cond 0 46 46
 Sk 100 'axe'
 Sk 89 'dagger'
 Sk 25 'flail'
@@ -188,6 +187,7 @@ Sk 78 'third attack'
 Sk 75 'despair'
 Sk 77 'fast healing'
 Sk 75 'door bash'
+Sk 75 'shove'
 Sk 69 'recall'
 Sk 96 'smite'
 Gr 'rom basics'
@@ -195,17 +195,17 @@ Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
 AffD 'invis'   0  30   0   0          2          0
-AffD 'titanic'   0   2  50  16          0          0
-AffD 'titanic'   0   2 2325  14          0          0
-AffD 'titanic'   0   2 7335  12          0          0
-AffD 'titanic'   0   2 4400  13          0          0
-AffD 'empower'   0   2 -100  17          0          0
-AffD 'empower'   0   2  20  19          0          0
-AffD 'empower'   0   2  20  18          0          0
-AffD 'empower'   0   2  15   5          0          0
-AffD 'empower'   4   2  11   2          0          0
-AffD 'empower'  36   2  15   4          0          0
-AffD 'empower'   0   2  15   3          0          0
+AffD 'titanic'   0   1  50  16          0          0
+AffD 'titanic'   0   1 2325  14          0          0
+AffD 'titanic'   0   1 7335  12          0          0
+AffD 'titanic'   0   1 4400  13          0          0
+AffD 'empower'   0   1 -100  17          0          0
+AffD 'empower'   0   1  20  19          0          0
+AffD 'empower'   0   1  20  18          0          0
+AffD 'empower'   0   1  15   5          0          0
+AffD 'empower'   4   1  11   2          0          0
+AffD 'empower'  36   1  15   4          0          0
+AffD 'empower'   0   1  15   3          0          0
 AffD 'giant strength'   0  30  15   1          0          0
 AffD 'divine protection'  13  30   0   0          0       4096
 AffD 'fire shield'   0  30   0   0          0          8
@@ -214,7 +214,7 @@ AffD 'pass door'  24  30   0   0    1048576          0
 AffD 'fly'   0  30   0   0     524288          0
 AffD 'haste'   0  30   4   2    2097152          0
 AffD 'sanctuary'   0  30   0   0        128          0
-AffD 'empower'   0   2   0   0          0          0
+AffD 'empower'   0   1   0   0          0          0
 AffD 'giant strength'   0  30  15   1          0          0
 AffD 'divine protection'   0  30   0   0          0       4096
 AffD 'fire shield'   0  30   0   0          0          8
@@ -267,7 +267,7 @@ AffD 'haste'  30  30   4   2    2097152          0
 AffD 'fly'  30  30   0   0     524288          0
 AffD 'pass door'  30  30   0   0    1048576          0
 AffD 'protection evil'  27  30   0   0       8192          0
-AffD 'fire shield'   4  30   0   0          0          8
+AffD 'fire shield'   3  30   0   0          0          8
 AffD 'divine protection'  30  30   0   0          0       4096
 AffD 'giant strength'   0  30  15   1          0          0
 End
@@ -287,7 +287,7 @@ End
 Vnum 53
 Nest 0
 Wear -1
-Time 11
+Time 10
 Cost 0
 Cond 100
 Repd 0
@@ -307,7 +307,7 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 308
+Time 307
 Cost 0
 Cond 100
 Repd 0
@@ -317,7 +317,7 @@ End
 Vnum 37
 Nest 1
 Wear -1
-Time 35
+Time 34
 Cost 0
 Cond 100
 Repd 0
@@ -352,7 +352,7 @@ Lev  14
 Cost 100000
 Cond 94
 Repd 0
-Val  0 0 9577 0 0
+Val  0 0 9576 0 0
 End
 
 #O

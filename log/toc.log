@@ -154026,3 +154026,26 @@ Thu Oct 22 00:18:32 2026 :: Log Trentlin [3758]: train
 Thu Oct 22 00:18:33 2026 :: Log Trentlin [3758]: train hp
 Thu Oct 22 00:18:33 2026 :: Log Trentlin [3758]: train hp
 Thu Oct 22 00:18:34 2026 :: Log Trentlin [3758]: train hp
+Thu Oct 22 00:18:34 2026 :: Log Trentlin [3758]: reca
+Thu Oct 22 00:18:34 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 3758
+Thu Oct 22 00:18:35 2026 :: Log Trentlin [4207]: w
+Thu Oct 22 00:18:35 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Thu Oct 22 00:18:37 2026 :: Log Trentlin [4208]: heal all
+Thu Oct 22 00:18:37 2026 :: Spellup: Hermie gave Trentlin the full list (30 ticks) in room 4208.
+Thu Oct 22 00:18:39 2026 :: Log Trentlin [4208]: e
+Thu Oct 22 00:18:39 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4208
+Thu Oct 22 00:18:39 2026 :: Log Trentlin [4207]: e
+Thu Oct 22 00:18:39 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Thu Oct 22 00:18:40 2026 :: Log Trentlin [4202]: n
+Thu Oct 22 00:18:40 2026 :: Log Trentlin [4203]: arrived (The Hall of Cobwebs) from 4202
+Thu Oct 22 00:18:40 2026 :: Log Trentlin [4203]: n
+Thu Oct 22 00:18:40 2026 :: Log Trentlin [4210]: arrived (The Sickroom of the Restless) from 4203
+Thu Oct 22 00:18:40 2026 :: Log Trentlin [4210]: n
+Thu Oct 22 00:18:40 2026 :: Log Trentlin [4210]: n
+Thu Oct 22 00:18:41 2026 :: Log Trentlin [4210]: sleep
+Thu Oct 22 00:18:41 2026 :: Log Trentlin [4210]: quit
+Thu Oct 22 00:18:41 2026 :: Trentlin has quit.
+Thu Oct 22 00:18:41 2026 :: [QUIT] Player rejoined the real world.
+Thu Oct 22 00:21:22 2026 :: Treasure goblin: vanished from room 9166 (Front door, dylan.are) (too long in one area).
+Thu Oct 22 00:22:34 2026 :: Sock.sinaddr:  52.22.236.30
+Thu Oct 22 00:22:34 2026 :: EOF encountered on read.
