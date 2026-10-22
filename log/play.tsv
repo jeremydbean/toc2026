@@ -4754,3 +4754,215 @@
 1792669811	cmd	Trentlin	50	9621	newthalo.are	standing	100	0	-	score		--------------------------------------------------------------
 1792669815	cmd	Trentlin	50	9621	newthalo.are	standing	100	0	-	look		The Bank
 1792669816	cmd	Trentlin	50	9514	newthalo.are	standing	100	0	-	east		The Northwestern Market Square
+1792669817	cmd	Trentlin	50	9614	newthalo.are	standing	100	0	-	north		Ahkeem's Stuff
+1792669818	cmd	Trentlin	50	9614	newthalo.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792669819	cmd	Trentlin	50	9514	newthalo.are	standing	100	0	-	south		The Northwestern Market Square
+1792669819	cmd	Trentlin	50	9515	newthalo.are	standing	100	0	-	east		The Northern Market Square
+1792669820	cmd	Trentlin	50	9518	newthalo.are	standing	100	0	-	north		Sultan's Walk
+1792669820	cmd	Trentlin	50	9519	newthalo.are	standing	100	0	-	north		Sultan's Walk
+1792669821	cmd	Trentlin	50	9520	newthalo.are	standing	100	0	-	north		Sultan's Walk
+1792669822	cmd	Trentlin	50	9658	newthalo.are	standing	100	0	-	west		The Palace Gate
+1792669822	cmd	Trentlin	50	9650	newthalo.are	standing	100	0	-	west		The Grand Entrance
+1792669823	cmd	Trentlin	50	9705	newthalo.are	standing	100	0	-	west		Hall
+1792669824	cmd	Trentlin	50	9705	newthalo.are	standing	100	0	-	scan		You don't see anything near you.
+1792669824	cmd	Trentlin	50	9673	newthalo.are	standing	100	0	-	west		Hall
+1792669824	cmd	Trentlin	50	9673	newthalo.are	standing	100	0	-	scan		A nomad merchant                   -to the South.
+1792669827	cmd	Trentlin	50	9672	newthalo.are	standing	100	0	-	south		Hall
+1792669828	cmd	Trentlin	50	9672	newthalo.are	standing	100	0	-	scan		A nomad merchant                   -to the West.
+1792669829	cmd	Trentlin	50	9673	newthalo.are	standing	100	0	-	north		Hall
+1792669829	cmd	Trentlin	50	9674	newthalo.are	standing	100	0	-	north		Hall
+1792669830	cmd	Trentlin	50	9675	newthalo.are	standing	100	0	-	north		Entrance to the Dungeon
+1792669831	cmd	Trentlin	50	9691	newthalo.are	standing	100	0	-	down		Jailer's Room
+1792669833	cmd	Trentlin	50	9691	newthalo.are	standing	100	0	-	consider	j	You can kill the jailer naked and weaponless.
+1792669834	cmd	Trentlin	50	9691	newthalo.are	standing	100	0	-	look	j	You see a pathetic soul lying here. Some ex-nobleman that has fallen
+1792669834	cmd	Trentlin	50	9675	newthalo.are	standing	100	0	-	up		Entrance to the Dungeon
+1792669835	cmd	Trentlin	50	9674	newthalo.are	standing	100	0	-	south		Hall
+1792669836	cmd	Trentlin	50	9679	newthalo.are	standing	100	0	-	west		Hall
+1792669836	cmd	Trentlin	50	9684	newthalo.are	standing	100	0	-	west		Hall
+1792669837	cmd	Trentlin	50	9689	newthalo.are	standing	100	0	-	west		Throne Room
+1792669839	cmd	Trentlin	50	9689	newthalo.are	standing	100	0	-	look	sul	You see a trained fighter, ready to help those in need.
+1792669842	cmd	Trentlin	50	9689	newthalo.are	standing	100	0	-	consider	sult	You can kill the sultan's guard naked and weaponless.
+1792669845	cmd	Trentlin	50	9689	newthalo.are	standing	100	0	-	look	3.sul	You see a large wealthy man in red robes smiling at you.
+1792669849	cmd	Trentlin	50	9689	newthalo.are	standing	100	0	-	consider	3.sul	You can kill The Sultan naked and weaponless.
+1792669849	cmd	Trentlin	50	9684	newthalo.are	standing	100	0	-	east		Hall
+1792669850	cmd	Trentlin	50	9679	newthalo.are	standing	100	0	-	east		Hall
+1792669850	cmd	Trentlin	50	9674	newthalo.are	standing	100	0	-	east		Hall
+1792669851	cmd	Trentlin	50	9665	newthalo.are	standing	100	0	-	east		Hall
+1792669854	cmd	Trentlin	50	9665	newthalo.are	standing	100	0	-	look	plaq	The Holy Shrine of Allah
+1792669857	cmd	Trentlin	50	9666	newthalo.are	standing	100	0	-	north		Shrine of Allah
+1792669860	cmd	Trentlin	50	9666	newthalo.are	standing	100	0	-	consider	all	You can kill Allah naked and weaponless.
+1792669861	cmd	Trentlin	50	9666	newthalo.are	standing	100	0	-	look	all	You see the all-knowing Allah.
+1792669862	cmd	Trentlin	50	9665	newthalo.are	standing	100	0	-	south		Hall
+1792669863	cmd	Trentlin	50	9674	newthalo.are	standing	100	0	-	west		Hall
+1792669863	cmd	Trentlin	50	9675	newthalo.are	standing	100	0	-	north		Entrance to the Dungeon
+1792669864	cmd	Trentlin	50	9675	newthalo.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792669864	cmd	Trentlin	50	9691	newthalo.are	standing	100	0	-	down		Jailer's Room
+1792669865	cmd	Trentlin	50	9691	newthalo.are	standing	100	0	-	down		Alas, you cannot go that way.
+1792669865	cmd	Trentlin	50	9692	newthalo.are	standing	100	0	-	east		Tunnel in the Dungeon
+1792669867	cmd	Trentlin	50	9697	newthalo.are	standing	100	0	-	north		Cell
+1792669869	cmd	Trentlin	50	9697	newthalo.are	standing	100	0	-	score		--------------------------------------------------------------
+1792669871	cmd	Trentlin	50	9697	newthalo.are	standing	100	0	-	kill	c	Your pierce ^^^ DESTROYS ^^^ the chimera!
+1792669875	cmd	Trentlin	50	9697	newthalo.are	standing	100	0	-	score		--------------------------------------------------------------
+1792669877	cmd	Trentlin	50	9692	newthalo.are	standing	100	0	-	south		Tunnel in the Dungeon
+1792669877	cmd	Trentlin	50	9693	newthalo.are	standing	100	0	-	east		Tunnel in the Dungeon
+1792669878	cmd	Trentlin	50	9694	newthalo.are	standing	100	0	-	east		Tunnel in the Dungeon
+1792669878	cmd	Trentlin	50	9695	newthalo.are	standing	100	0	-	east		Tunnel in the Dungeon
+1792669878	cmd	Trentlin	50	9696	newthalo.are	standing	100	0	-	east		Secret Cell
+1792669880	cmd	Trentlin	50	9695	newthalo.are	standing	100	0	-	west		Tunnel in the Dungeon
+1792669880	cmd	Trentlin	50	9700	newthalo.are	standing	100	0	-	north		Cell
+1792669882	cmd	Trentlin	50	9700	newthalo.are	standing	100	0	-	kill	c	Your pierce ^^^ DESTROYS ^^^ the cryohydra!
+1792669886	cmd	Trentlin	50	9695	newthalo.are	standing	100	0	-	south		Tunnel in the Dungeon
+1792669886	cmd	Trentlin	50	9704	newthalo.are	standing	100	0	-	south		Cell
+1792669888	cmd	Trentlin	50	9704	newthalo.are	standing	100	0	-	kill	m	Your pierce === OBLITERATES === the minotaur lizard!
+1792669891	cmd	Trentlin	50	9704	newthalo.are	standing	100	0	-	score		--------------------------------------------------------------
+1792669894	cmd	Trentlin	50	9704	newthalo.are	standing	100	0	-	recall		The gods are listening to somebody else just now.
+1792669896	cmd	Trentlin	50	9704	newthalo.are	standing	100	0	-	recall		You stumble over the words of your prayer, and nothing happens.
+1792669898	cmd	Trentlin	50	9704	newthalo.are	standing	100	0	-	recall		You stumble over the words of your prayer, and nothing happens.
+1792669900	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792669901	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792669901	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792669901	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792669901	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792669902	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792669902	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792669902	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792669902	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792669903	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792669903	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792669904	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	6	-	aquest	request	You approach Questor Thews and ask for a quest.
+1792669907	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792669919	cmd	Trentlin	50	2431	dresden_halloween.are	standing	100	0	-	run	s 6	Southern Oak Tree Square.
+1792669919	cmd	Trentlin	50	2431	dresden_halloween.are	standing	100	0	-	open	south	Ok.
+1792669920	cmd	Trentlin	50	3521	midennir_halloween.are	standing	100	0	-	run	s	Outside the Southern Gates of Dresden.
+1792669920	cmd	Trentlin	50	3521	midennir_halloween.are	resting	100	0	-	wake		You stand up.
+1792669920	cmd	Trentlin	50	3522	midennir_halloween.are	standing	100	0	-	run	w	Deep in the Forest of Miden'nir
+1792669920	cmd	Trentlin	50	3522	midennir_halloween.are	resting	100	0	-	wake		You stand up.
+1792669921	cmd	Trentlin	50	28161	azeroth.are	standing	100	0	-	south		Watch Your Step!
+1792669921	cmd	Trentlin	50	28101	azeroth.are	standing	100	0	-	enter	portal	You enter The Dark Portal
+1792669922	cmd	Trentlin	50	28102	azeroth.are	standing	100	0	-	south		Outside the Barracks
+1792669923	cmd	Trentlin	50	28103	azeroth.are	standing	100	0	-	south		Inside the Barracks
+1792669923	cmd	Trentlin	50	28107	azeroth.are	standing	100	0	-	south		Before the Main Gate
+1792669924	cmd	Trentlin	50	28120	azeroth.are	standing	100	0	-	south		Outside the gates of Black Rock Spire
+1792669924	refused	Trentlin	50	28120	azeroth.are	fighting	100	0	fight	south		No way!  You are still fighting!
+1792669925	cmd	Trentlin	50	28120	azeroth.are	fighting	100	0	fight	flee		PANIC! You couldn't escape!
+1792669926	cmd	Trentlin	50	28120	azeroth.are	fighting	100	0	fight	flee		An Ogre Mage is overcome with a feeling of despair and flees the battle.
+1792669927	cmd	Trentlin	50	28121	azeroth.are	standing	100	0	-	south		Beginning of the swamp
+1792669928	cmd	Trentlin	50	28122	azeroth.are	standing	100	0	-	south		More Swamp
+1792669929	cmd	Trentlin	50	28122	azeroth.are	standing	100	0	-	scan		An Ogre Mage                       -to the North.
+1792669930	cmd	Trentlin	50	28124	azeroth.are	standing	100	0	-	west		More Swamp
+1792669930	cmd	Trentlin	50	28124	azeroth.are	standing	100	0	-	scan		You don't see anything near you.
+1792669931	cmd	Trentlin	50	28131	azeroth.are	standing	100	0	-	west		The Swamp
+1792669931	cmd	Trentlin	50	28131	azeroth.are	standing	100	0	-	scan		You don't see anything near you.
+1792669932	cmd	Trentlin	50	28132	azeroth.are	standing	100	0	-	west		The Swamp
+1792669932	cmd	Trentlin	50	28133	azeroth.are	standing	100	0	-	west		The End of The Swamp
+1792669933	cmd	Trentlin	50	28133	azeroth.are	standing	100	0	-	scan		You don't see anything near you.
+1792669934	cmd	Trentlin	50	28134	azeroth.are	standing	100	0	-	west		In the Forest
+1792669934	cmd	Trentlin	50	28135	azeroth.are	standing	100	0	-	west		The Middle of the Forest
+1792669935	cmd	Trentlin	50	28136	azeroth.are	standing	100	0	-	west		The End of the Forest
+1792669937	cmd	Trentlin	50	28137	azeroth.are	standing	100	0	-	west		The Battle Field
+1792669940	cmd	Trentlin	50	28137	azeroth.are	standing	100	0	-	kill	foot	Your pierce *** DEMOLISHES *** A footman!
+1792669948	cmd	Trentlin	50	28137	azeroth.are	fighting	100	0	fight	smite		Your smite ^^^ DESTROYS ^^^ An orc grunt!
+1792669954	cmd	Trentlin	50	28137	azeroth.are	fighting	100	0	fight	score		--------------------------------------------------------------
+1792669959	cmd	Trentlin	50	28137	azeroth.are	standing	100	0	-	look		The Battle Field
+1792669959	cmd	Trentlin	50	28140	azeroth.are	standing	100	0	-	west		The Battle Field
+1792669960	cmd	Trentlin	50	28140	azeroth.are	standing	100	0	-	kill	gr	Your pierce ^^^ DESTROYS ^^^ An orc grunt!
+1792669964	cmd	Trentlin	50	28140	azeroth.are	standing	100	0	-	score		--------------------------------------------------------------
+1792669965	cmd	Trentlin	50	28140	azeroth.are	standing	100	0	-	consider	og	You can kill An Ogre naked and weaponless.
+1792669968	cmd	Trentlin	50	28140	azeroth.are	standing	100	0	-	kill	og	Your pierce ^^^ DESTROYS ^^^ An Ogre!
+1792669972	cmd	Trentlin	50	28140	azeroth.are	fighting	98	0	fight	smite		Your smite *** DEVASTATES *** An Ogre!
+1792669983	cmd	Trentlin	50	28140	azeroth.are	standing	100	0	-	score		--------------------------------------------------------------
+1792669985	cmd	Trentlin	50	28137	azeroth.are	standing	100	0	-	east		The Battle Field
+1792669987	cmd	Trentlin	50	28136	azeroth.are	standing	100	0	-	east		The End of the Forest
+1792669987	cmd	Trentlin	50	28135	azeroth.are	standing	100	0	-	east		The Middle of the Forest
+1792669988	cmd	Trentlin	50	28134	azeroth.are	standing	100	0	-	east		In the Forest
+1792669988	cmd	Trentlin	50	28133	azeroth.are	standing	100	0	-	east		The End of The Swamp
+1792669989	cmd	Trentlin	50	28132	azeroth.are	standing	100	0	-	east		The Swamp
+1792669989	cmd	Trentlin	50	28131	azeroth.are	standing	100	0	-	east		The Swamp
+1792669990	cmd	Trentlin	50	28124	azeroth.are	standing	100	0	-	east		More Swamp
+1792669990	cmd	Trentlin	50	28122	azeroth.are	standing	100	0	-	east		More Swamp
+1792669991	cmd	Trentlin	50	28122	azeroth.are	standing	100	0	-	scan		An Ogre Mage                       -to the North.
+1792669992	cmd	Trentlin	50	28123	azeroth.are	standing	100	0	-	east		On the Faint Path
+1792669993	cmd	Trentlin	50	28123	azeroth.are	standing	100	0	-	score		--------------------------------------------------------------
+1792669994	cmd	Trentlin	50	28125	azeroth.are	standing	100	0	-	east		SPLAT!
+1792669995	cmd	Trentlin	50	28125	azeroth.are	standing	100	0	-	scan		You don't see anything near you.
+1792669996	cmd	Trentlin	50	28125	azeroth.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792669997	cmd	Trentlin	50	28126	azeroth.are	standing	100	0	-	south		A Giant Cave
+1792669999	cmd	Trentlin	50	28126	azeroth.are	standing	100	0	-	scan		A Dracolich                        -to the East.
+1792670000	cmd	Trentlin	50	28126	azeroth.are	standing	100	0	-	exits		Obvious exits:
+1792670001	cmd	Trentlin	50	28126	azeroth.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792670002	cmd	Trentlin	50	28127	azeroth.are	standing	100	0	-	east		A Dracolich's Lair
+1792670003	refused	Trentlin	50	28127	azeroth.are	standing	100	0	-	(unknown)		Huh?
+1792670004	cmd	Trentlin	50	28127	azeroth.are	standing	100	0	-	consider	dra	A Dracolich laughs at you mercilessly.
+1792670005	cmd	Trentlin	50	28127	azeroth.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792670006	cmd	Trentlin	50	28127	azeroth.are	fighting	100	0	fight	recall		The Gods have forsaken you.
+1792670006	cmd	Trentlin	50	28127	azeroth.are	fighting	100	0	fight	recall		The Gods have forsaken you.
+1792670007	cmd	Trentlin	50	28127	azeroth.are	fighting	100	0	fight	recall		The Gods have forsaken you.
+1792670008	cmd	Trentlin	50	28127	azeroth.are	fighting	84	0	fight	flee		A Dracolich is overcome with a feeling of despair and flees the battle.
+1792670008	cmd	Trentlin	50	28127	azeroth.are	fighting	84	0	fight	flee		A Dracolich is overcome with a feeling of despair and flees the battle.
+1792670009	cmd	Trentlin	50	28127	azeroth.are	standing	84	0	-	flee		You aren't fighting anyone.
+1792670011	cmd	Trentlin	50	28127	azeroth.are	standing	84	0	-	recall		The Gods have forsaken you.
+1792670012	cmd	Trentlin	50	28127	azeroth.are	standing	84	0	-	look		A Dracolich's Lair
+1792670016	cmd	Trentlin	50	28127	azeroth.are	standing	84	0	-	open	rock	You open a secret door.
+1792670017	cmd	Trentlin	50	28127	azeroth.are	standing	84	0	-	scan		A Dracolich                        -to the West.
+1792670018	cmd	Trentlin	50	28127	azeroth.are	standing	84	0	-	exits		Obvious exits:
+1792670019	cmd	Trentlin	50	28128	azeroth.are	standing	84	0	-	north		The End of the Cave
+1792670021	cmd	Trentlin	50	28128	azeroth.are	standing	84	0	-	recall		The Gods have forsaken you.
+1792670022	cmd	Trentlin	50	28129	azeroth.are	standing	84	0	-	up		Inside the Abandoned House
+1792670023	cmd	Trentlin	50	28129	azeroth.are	standing	84	0	-	scan		You don't see anything near you.
+1792670024	cmd	Trentlin	50	28135	azeroth.are	standing	84	0	-	enter	porta	You enter A Swirling Portal
+1792670026	cmd	Trentlin	50	28135	azeroth.are	standing	84	0	-	recall		The Gods have forsaken you.
+1792670027	cmd	Trentlin	50	28135	azeroth.are	standing	84	0	-	recall		The Gods have forsaken you.
+1792670028	cmd	Trentlin	50	28135	azeroth.are	standing	84	0	-	scan		Berserker Troll                    -to the West.
+1792670028	cmd	Trentlin	50	28135	azeroth.are	standing	84	0	-	exits		Obvious exits:
+1792670030	cmd	Trentlin	50	28136	azeroth.are	standing	84	0	-	west		The End of the Forest
+1792670030	cmd	Trentlin	50	28137	azeroth.are	standing	84	0	-	west		The Battle Field
+1792670032	cmd	Trentlin	50	28136	azeroth.are	standing	84	0	-	east		The End of the Forest
+1792670032	cmd	Trentlin	50	28135	azeroth.are	standing	84	0	-	east		The Middle of the Forest
+1792670033	cmd	Trentlin	50	28134	azeroth.are	standing	84	0	-	east		In the Forest
+1792670033	cmd	Trentlin	50	28133	azeroth.are	standing	84	0	-	east		The End of The Swamp
+1792670034	cmd	Trentlin	50	28132	azeroth.are	standing	84	0	-	east		The Swamp
+1792670035	cmd	Trentlin	50	28131	azeroth.are	standing	84	0	-	east		The Swamp
+1792670035	cmd	Trentlin	50	28124	azeroth.are	standing	84	0	-	east		More Swamp
+1792670036	cmd	Trentlin	50	28122	azeroth.are	standing	84	0	-	east		More Swamp
+1792670037	cmd	Trentlin	50	28121	azeroth.are	standing	84	0	-	north		Beginning of the swamp
+1792670037	cmd	Trentlin	50	28120	azeroth.are	standing	84	0	-	north		Outside the gates of Black Rock Spire
+1792670038	cmd	Trentlin	50	28107	azeroth.are	standing	84	0	-	north		Before the Main Gate
+1792670038	cmd	Trentlin	50	28103	azeroth.are	standing	84	0	-	north		Inside the Barracks
+1792670038	cmd	Trentlin	50	28102	azeroth.are	standing	84	0	-	north		Outside the Barracks
+1792670038	cmd	Trentlin	50	28101	azeroth.are	standing	84	0	-	north		Entrance to Azeroth
+1792670039	cmd	Trentlin	50	28101	azeroth.are	standing	84	0	-	north		Alas, you cannot go that way.
+1792670039	cmd	Trentlin	50	28101	azeroth.are	standing	84	0	-	north		Alas, you cannot go that way.
+1792670040	cmd	Trentlin	50	28161	azeroth.are	standing	84	0	-	enter	porta	You enter The Dark Portal
+1792670041	cmd	Trentlin	50	4207	dresden_halloween.are	standing	84	0	-	recall		Before the Shrouded Altar
+1792670042	cmd	Trentlin	50	4202	dresden_halloween.are	standing	84	0	-	east		The Hall of Whispers
+1792670042	cmd	Trentlin	50	4201	dresden_halloween.are	standing	84	0	-	east		Entrance to the Haunted Temple
+1792670042	cmd	Trentlin	50	2427	dresden_halloween.are	standing	84	0	-	east		Main Processional, Below the Temple Steps
+1792670043	cmd	Trentlin	50	2427	dresden_halloween.are	standing	84	0	-	east		Alas, you cannot go that way.
+1792670043	cmd	Trentlin	50	2404	dresden_halloween.are	standing	84	0	-	north		Southern Oak Tree Square.
+1792670043	cmd	Trentlin	50	2401	dresden_halloween.are	standing	84	0	-	north		Oak Tree Square on Hallows Eve
+1792670043	cmd	Trentlin	50	2410	dresden_halloween.are	standing	84	0	-	up		Climbing the Oak Tree...
+1792670044	cmd	Trentlin	50	2411	dresden_halloween.are	standing	84	0	-	up		Up in the Oak Tree.
+1792670044	cmd	Trentlin	50	2414	dresden_halloween.are	standing	84	0	-	up		Top of the oak tree.
+1792670044	cmd	Trentlin	50	2497	dresden_halloween.are	standing	84	0	-	up		A sudden wind blows you from the tree!
+1792670044	cmd	Trentlin	50	2497	dresden_halloween.are	standing	84	0	-	up		Alas, you cannot go that way.
+1792670046	cmd	Trentlin	50	2497	dresden_halloween.are	standing	84	1	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792670050	cmd	Trentlin	50	2497	dresden_halloween.are	standing	85	0	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 118 quest points! **
+1792670052	cmd	Trentlin	50	2497	dresden_halloween.are	standing	85	0	-	score		--------------------------------------------------------------
+1792670060	cmd	Trentlin	50	2401	dresden_halloween.are	standing	85	0	-	enter	door	You enter The Rescue Portal
+1792670062	cmd	Trentlin	50	2403	dresden_halloween.are	standing	85	0	-	east		Eastern Oak Tree Square.
+1792670063	cmd	Trentlin	50	2420	dresden_halloween.are	standing	85	0	-	east		Battle Road
+1792670063	cmd	Trentlin	50	2421	dresden_halloween.are	standing	85	0	-	east		Battle Road
+1792670065	cmd	Trentlin	50	2420	dresden_halloween.are	standing	85	0	-	west		Battle Road
+1792670065	cmd	Trentlin	50	2403	dresden_halloween.are	standing	85	0	-	west		Eastern Oak Tree Square.
+1792670067	cmd	Trentlin	50	2403	dresden_halloween.are	standing	85	0	-	recall		You learn from your mistakes, and your recall skill improves.
+1792670070	cmd	Trentlin	50	2401	dresden_halloween.are	standing	85	0	-	west		Oak Tree Square on Hallows Eve
+1792670070	cmd	Trentlin	50	2404	dresden_halloween.are	standing	85	0	-	south		Southern Oak Tree Square.
+1792670070	cmd	Trentlin	50	2427	dresden_halloween.are	standing	85	0	-	south		Main Processional, Below the Temple Steps
+1792670071	cmd	Trentlin	50	4201	dresden_halloween.are	standing	85	0	-	west		Entrance to the Haunted Temple
+1792670072	cmd	Trentlin	50	4202	dresden_halloween.are	standing	85	0	-	west		The Hall of Whispers
+1792670072	cmd	Trentlin	50	4203	dresden_halloween.are	standing	85	0	-	north		The Hall of Cobwebs
+1792670073	cmd	Trentlin	50	4210	dresden_halloween.are	standing	85	0	-	north		The Sickroom of the Restless
+1792670073	cmd	Trentlin	50	4210	dresden_halloween.are	standing	85	0	-	north		Alas, you cannot go that way.
+1792670074	cmd	Trentlin	50	4210	dresden_halloween.are	standing	85	0	-	sleep		You go to sleep.
+1792670074	cmd	Trentlin	50	4210	dresden_halloween.are	sleeping	85	0	-	score		--------------------------------------------------------------
+1792670078	session	Trentlin	50	4210	dresden_halloween.are	quit	1179s	+0 levels	+0 exp	+740662061 copper	12 kills	0 deaths	6 quests	917 commands	6 refused
