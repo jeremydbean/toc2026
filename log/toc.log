@@ -155674,3 +155674,18 @@ Thu Oct 22 01:29:14 2026 :: Log Alaric [29210]: coin +5 platinum
 Thu Oct 22 01:29:14 2026 :: Log Alaric [29210]: coin +23 silver
 Thu Oct 22 01:29:14 2026 :: Log Alaric [29210]: coin +31 copper
 Thu Oct 22 01:29:14 2026 :: Log Alaric [29210]: coin +13 gold
+Thu Oct 22 01:30:55 2026 :: Log Alaric [29210]: l
+Thu Oct 22 01:30:55 2026 :: Log Alaric [29210]: who
+Thu Oct 22 01:30:59 2026 :: Log Alaric [29210]: recal
+Thu Oct 22 01:30:59 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 29210
+Thu Oct 22 01:31:00 2026 :: Log Alaric [4207]: w
+Thu Oct 22 01:31:00 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Thu Oct 22 01:31:02 2026 :: Log Alaric [4208]: heal all
+Thu Oct 22 01:31:02 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Thu Oct 22 01:31:04 2026 :: Log Alaric [4208]: changes
+Thu Oct 22 01:31:52 2026 :: Log Alaric [4208]: quit
+Thu Oct 22 01:31:52 2026 :: Alaric has quit.
+Thu Oct 22 01:31:52 2026 :: [QUIT] Player rejoined the real world.
+Thu Oct 22 01:31:54 2026 :: Treasure goblin: vanished from room 17741 (Along the dusty trail, landoz.are) (too long in one area).
+Thu Oct 22 01:33:40 2026 :: Sock.sinaddr:  52.22.236.30
+Thu Oct 22 01:33:40 2026 :: EOF encountered on read.

@@ -3871,3 +3871,10 @@
 1792632491	cmd	Alaric	54	29209	korzath2.are	standing	35	0	-	scan		a deranged madman                  -to the North.
 1792632496	cmd	Alaric	54	29210	korzath2.are	standing	35	0	-	north		Twist in the Maze
 1792632496	cmd	Alaric	54	29210	korzath2.are	standing	35	0	-	bs	mad	Your backstab misses a deranged madman. [-0]
+1792632655	cmd	Alaric	54	29210	korzath2.are	standing	32	0	-	look		Twist in the Maze
+1792632655	cmd	Alaric	54	29210	korzath2.are	standing	32	0	-	who		[54 Dwarf   Kngt  ] Alaric.
+1792632659	cmd	Alaric	54	4207	dresden_halloween.are	standing	32	0	-	recall		Before the Shrouded Altar
+1792632660	cmd	Alaric	54	4208	dresden_halloween.are	standing	32	0	-	west		The Shrouded Altar of Devota
+1792632662	cmd	Alaric	54	4208	dresden_halloween.are	standing	32	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792632664	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	changes		What is new, newest first:
+1792632712	session	Alaric	54	4208	dresden_halloween.are	quit	1900s	+1 levels	+9283 exp	+130441142 copper	26 kills	0 deaths	0 quests	257 commands	7 refused
