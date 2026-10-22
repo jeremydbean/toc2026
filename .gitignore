@@ -65,3 +65,9 @@ area/ideas.txt.*
 # native installs alike); see wiki/install-guide.md.
 /state/
 /toc-backups/
+# What a restore leaves: the data that was there, set aside beside the
+# state folder, and the archive unpacked while it works. (.env.from-backup
+# is covered by .env.* above.) A state folder TOC_STATE puts elsewhere in
+# the checkout is left out by toc_code_changes instead.
+/state.before-restore-*/
+/.restore.*/

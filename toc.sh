@@ -119,7 +119,7 @@ update_game() {
         if [ -n "$(toc_code_changes)" ]; then
             echo "Update stopped: this checkout has local code changes:" >&2
             toc_code_changes >&2
-            echo "Commit, stash or remove them and rerun ./toc.sh update." >&2
+            echo "Commit or stash them (git stash) and rerun ./toc.sh update." >&2
             exit 1
         fi
         toc_release_checkout_state
@@ -298,7 +298,7 @@ restore_backup() {
 }
 
 uninstall() {
-    local purge=0 yes=0 state answer
+    local purge=0 yes=0 state answer refusal
     for arg in "$@"; do
         case "$arg" in
             --purge) purge=1 ;;
@@ -307,6 +307,15 @@ uninstall() {
         esac
     done
     state="$(toc_state_dir)"
+    if [ "$purge" = 1 ]; then
+        refusal="$(toc_purge_refusal)"
+        if [ -n "$refusal" ]; then
+            echo "Not purging: $refusal, and deleting it would delete far more than" >&2
+            echo "the game's data. Nothing was removed. Point TOC_STATE in .env at the" >&2
+            echo "game's own folder, or delete that folder yourself." >&2
+            exit 1
+        fi
+    fi
     if [ "$mode" = "native" ]; then
         toc_native_stop || true
         [ "$(toc_native_service)" = "systemd" ] && toc_native_remove_units

@@ -30,10 +30,22 @@ toc_env_get() {
         return
     fi
 
+    # One level of matching quotes comes off, as Docker Compose and
+    # systemd's EnvironmentFile take it off: TOC_STATE="./data" kept its
+    # quotes here and named another folder than the game's, so backup,
+    # restore and purge worked on one folder while the game ran on
+    # another (audit, 2026-10-22).
     value="$(awk -F= -v wanted="$key" '
         $1 == wanted {
             sub(/^[^=]*=/, "")
             gsub(/\r$/, "")
+            if (length($0) >= 2) {
+                first = substr($0, 1, 1)
+                last = substr($0, length($0), 1)
+                if (first == last && (first == "\"" || first == "\047")) {
+                    $0 = substr($0, 2, length($0) - 2)
+                }
+            }
             print
             exit
         }
@@ -41,14 +53,33 @@ toc_env_get() {
     printf '%s\n' "${value:-$fallback}"
 }
 
+# A value as .env has to hold it to be read back the same by toc_env_get,
+# Docker Compose, systemd and a shell sourcing the file (toc_native_start
+# does): bare when it is only safe characters, otherwise in single
+# quotes, which all four take literally. A single quote or a line break
+# cannot be written that way and is refused.
+toc_env_quote() {
+    local value="$1"
+    case "$value" in
+        *"'"*|*$'\n'*|*$'\r'*)
+            echo "A setting cannot hold a single quote or a line break: $value" >&2
+            return 2
+            ;;
+        *[!A-Za-z0-9_./:@+,=-]*) printf "'%s'\n" "$value" ;;
+        *) printf '%s\n' "$value" ;;
+    esac
+}
+
 toc_set_env() {
     local key="$1"
     local value="$2"
     local temp
 
+    value="$(toc_env_quote "$value")" || return 2
     temp="$(mktemp "${TOC_ENV_FILE}.tmp.XXXXXX")"
-    awk -v wanted="$key" -v replacement="$value" '
-        BEGIN { found = 0 }
+    # Through the environment, not -v: awk -v reads backslash escapes.
+    TOC_ENV_REPLACEMENT="$value" awk -v wanted="$key" '
+        BEGIN { found = 0; replacement = ENVIRON["TOC_ENV_REPLACEMENT"] }
         $0 ~ "^[[:space:]]*" wanted "=" {
             if (!found) {
                 print wanted "=" replacement
@@ -103,6 +134,14 @@ toc_legacy_container() {
         toc2026_game 2>/dev/null | grep -q bind
 }
 
+# Written in the state folder before an old installation's data is
+# copied out of the checkout, and removed only when the copy is whole.
+TOC_MIGRATING=".migrating"
+
+toc_begin_migration() {
+    mkdir -p "$1" && printf 'moving the data out of %s\n' "$TOC_REPO_ROOT" > "$1/$TOC_MIGRATING"
+}
+
 toc_mark_migrated() {
     printf 'migrated %s from the checkout\n' "$(date '+%Y-%m-%d %H:%M:%S')" \
         >> "$1/.migrated-from-checkout"
@@ -120,8 +159,10 @@ toc_migrate_checkout_dirs() {
 
     for d in $TOC_LEGACY_DIRS; do
         if [ -d "$TOC_REPO_ROOT/$d" ] && [ -n "$(ls -A "$TOC_REPO_ROOT/$d" 2>/dev/null)" ]; then
-            mkdir -p "$state/$d"
-            cp -Rp "$TOC_REPO_ROOT/$d/." "$state/$d/"
+            # A copy that fails says so whether or not set -e is on: the
+            # caller keeps the .migrating marker and the next run resumes.
+            mkdir -p "$state/$d" || return 1
+            cp -Rp "$TOC_REPO_ROOT/$d/." "$state/$d/" || return 1
             moved=1
         fi
     done
@@ -179,13 +220,24 @@ toc_prepare_state() {
         # stop it before anything is copied.
         docker stop -t 60 toc2026_game >/dev/null 2>&1 || true
     fi
-    if [ ! -f "$state/.layout" ]; then
-        mkdir -p "$state"
-        if [ "$existed" = 1 ]; then
-            toc_migrate_checkout_dirs "$state"
-        fi
-        printf '1\n' > "$state/.layout"
+    mkdir -p "$state"
+    if [ "$existed" = 1 ] && [ ! -f "$state/.layout" ]; then
+        toc_begin_migration "$state"
     fi
+    # The marker, not .env, says a move is owed: .env gains TOC_MODE
+    # before the copy, so a run that failed part way through it used to
+    # look like a new installation the next time and the partial copy was
+    # kept for good (audit, 2026-10-22). It is removed only once every
+    # directory has been copied, and a rerun copies them all again.
+    if [ -f "$state/$TOC_MIGRATING" ]; then
+        if ! toc_migrate_checkout_dirs "$state"; then
+            echo "Moving this installation's data into $state did not finish." >&2
+            echo "Nothing in the checkout was changed; free some space and run the command again." >&2
+            return 1
+        fi
+        rm -f "$state/$TOC_MIGRATING"
+    fi
+    [ -f "$state/.layout" ] || printf '1\n' > "$state/.layout"
     if [ "$legacy_container" = 1 ]; then
         toc_migrate_legacy_container "$state"
     fi
@@ -211,6 +263,11 @@ toc_configure_instance() {
     # .env.example has it, and is a new install.)
     if [ -f "$TOC_ENV_FILE" ] && [ -z "$(toc_env_get TOC_MODE)" ]; then
         existed=1
+        # Recorded before .env gains TOC_MODE below, which is what made
+        # this an old installation; the marker carries that to a rerun.
+        if [ ! -f "$(toc_state_dir)/.layout" ]; then
+            toc_begin_migration "$(toc_state_dir)"
+        fi
     fi
 
     if [ ! -f "$TOC_ENV_FILE" ]; then
@@ -288,13 +345,82 @@ toc_release_checkout_state() {
     fi
 }
 
+# A path made absolute with every symbolic link and . or .. resolved, as
+# far as it exists; the rest is appended as written.
+toc_real_path() {
+    local path="$1" rest="" resolved
+    case "$path" in
+        /*) ;;
+        *) path="$PWD/$path" ;;
+    esac
+    while [ ! -d "$path" ]; do
+        rest="/$(basename "$path")$rest"
+        path="$(dirname "$path")"
+    done
+    resolved="$(cd "$path" && pwd -P)" || return 1
+    resolved="${resolved%/}$rest"
+    printf '%s\n' "${resolved:-/}"
+}
+
+# The state folder relative to the checkout when it lies inside it (not
+# the checkout itself), else nothing.
+toc_state_in_checkout() {
+    local root state
+    root="$(toc_real_path "$TOC_REPO_ROOT")" || return 0
+    state="$(toc_real_path "$(toc_state_dir)")" || return 0
+    case "$state" in
+        "$root"/?*) printf '%s\n' "${state#"$root"/}" ;;
+    esac
+}
+
 # Local changes to code, ignoring the directories an older install wrote
-# game state into.
+# game state into, and what this one writes in the checkout: the state
+# folder wherever TOC_STATE puts it inside, the copy a restore sets
+# aside beside it, a restore's unpacking folder and the backup's .env.
+# Only ./state was left out, so after any restore -- or with TOC_STATE=
+# ./data -- update refused and told the user to remove the copy of their
+# characters (audit, 2026-10-22).
 toc_code_changes() {
-    git -C "$TOC_REPO_ROOT" status --porcelain -- . \
-        ':(exclude)player' ':(exclude)gods' ':(exclude)heroes' \
-        ':(exclude)log' ':(exclude)corpse' ':(exclude)backups' \
-        ':(exclude)state'
+    local state
+    local excludes=(':(exclude)player' ':(exclude)gods' ':(exclude)heroes'
+        ':(exclude)log' ':(exclude)corpse' ':(exclude)backups'
+        ':(exclude)state' ':(exclude)state.before-restore-*'
+        ':(exclude).restore.*' ':(exclude).env.from-backup'
+        ':(exclude).env.before-restore*')
+    state="$(toc_state_in_checkout)"
+    if [ -n "$state" ]; then
+        excludes+=(":(exclude,literal)$state" ":(exclude)$state.before-restore-*")
+    fi
+    git -C "$TOC_REPO_ROOT" status --porcelain -- . "${excludes[@]}"
+}
+
+# Why `uninstall --purge` must not delete this state folder, or nothing.
+# A TOC_STATE of ./ is the checkout, and .. or $HOME holds it: purge used
+# to rm -rf whatever it named (audit, 2026-10-22).
+toc_purge_refusal() {
+    local raw state root home
+    raw="$(toc_env_get TOC_STATE ./state)"
+    if [ -z "$(printf '%s' "$raw" | tr -d '[:space:]')" ]; then
+        echo "TOC_STATE is empty"
+        return
+    fi
+    state="$(toc_real_path "$(toc_state_dir)")" || { echo "$raw cannot be resolved"; return; }
+    root="$(toc_real_path "$TOC_REPO_ROOT")" || { echo "the checkout cannot be resolved"; return; }
+    if [ "$state" = "/" ]; then
+        echo "TOC_STATE ($raw) is the root of the file system"
+    elif [ "$state" = "$root" ]; then
+        echo "TOC_STATE ($raw) is this checkout"
+    else
+        case "$root/" in
+            "$state"/*) echo "TOC_STATE ($raw) holds this checkout"; return ;;
+        esac
+        if [ -n "${HOME:-}" ]; then
+            home="$(toc_real_path "$HOME")" || home=""
+            if [ -n "$home" ] && [ "$state" = "$home" ]; then
+                echo "TOC_STATE ($raw) is your home folder"
+            fi
+        fi
+    fi
 }
 
 toc_require_docker() {

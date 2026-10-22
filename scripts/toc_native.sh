@@ -196,9 +196,46 @@ toc_native_remove_units() {
     toc_set_env TOC_SERVICE none
 }
 
+# A process's command line, arguments space-separated, or nothing.
+toc_native_pid_command() {
+    if [ -r "/proc/$1/cmdline" ]; then
+        tr '\0' ' ' < "/proc/$1/cmdline" 2>/dev/null
+    else
+        ps -p "$1" -o command= 2>/dev/null
+    fi
+}
+
+toc_native_pid_parent() {
+    ps -p "$1" -o ppid= 2>/dev/null | tr -d ' '
+}
+
+# Whether the PID in a run/<name>.pid file is still this installation's
+# game or dashboard. kill -0 alone said yes to whatever process had been
+# given that number since -- after a reboot or a crash, usually -- so stop
+# sent it SIGTERM and then SIGKILL, and start never launched the game
+# (audit, 2026-10-22). The command line has to be the game's runner or
+# the dashboard; a process this shell has just started counts as well,
+# because between its fork and its exec it still reads as this script.
 toc_native_pid_alive() {
-    local file="$1"
-    [ -f "$file" ] && kill -0 "$(cat "$file")" 2>/dev/null
+    local file="$1" want="${2:-}" pid command
+    [ -f "$file" ] || return 1
+    pid="$(cat "$file" 2>/dev/null)"
+    case "$pid" in
+        ''|*[!0-9]*) return 1 ;;
+    esac
+    kill -0 "$pid" 2>/dev/null || return 1
+    if [ -z "$want" ]; then
+        case "$(basename "$file")" in
+            game.pid) want="toc_run_game.sh" ;;
+            web.pid)  want="webadmin.server" ;;
+            *) return 1 ;;
+        esac
+    fi
+    command="$(toc_native_pid_command "$pid")"
+    case "$command" in
+        *"$want"*) return 0 ;;
+    esac
+    [ "$(toc_native_pid_parent "$pid")" = "$$" ]
 }
 
 toc_native_start() {

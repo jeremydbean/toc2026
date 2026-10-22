@@ -165,7 +165,7 @@ switch ($Action) {
             }
             if ($changes) {
                 $changes | Write-Host
-                throw 'Update stopped because this checkout has local code changes. Commit, stash, or remove them first.'
+                throw 'Update stopped because this checkout has local code changes. Commit or stash them (git stash) first.'
             }
             Restore-TocCheckoutState
             Write-Host 'Fetching the newest version...' -ForegroundColor Cyan
@@ -244,6 +244,16 @@ switch ($Action) {
     }
     'uninstall' {
         $state = Get-TocStateDir
+        if ($Purge) {
+            # A TOC_STATE of .\ is this folder, and .. or the home folder
+            # holds it; purge deleted whatever it named (audit, 2026-10-22).
+            $refusal = Get-TocPurgeRefusal
+            if ($refusal) {
+                throw ("Not purging: $refusal, and deleting it would delete far more than the " +
+                    "game's data. Nothing was removed. Point TOC_STATE in .env at the game's " +
+                    'own folder, or delete that folder yourself.')
+            }
+        }
         if ((Get-TocDockerExecutable) -and (Test-TocDockerReady)) {
             Invoke-Compose -ArgumentList @('down', '--remove-orphans') -AllowFailure | Out-Null
             $image = Get-TocEnvValue -Name 'TOC_IMAGE' -Default $script:TocDefaultImage
