@@ -159147,3 +159147,215 @@ Thu Oct 22 19:34:25 2026 :: Log Trentlin [7029]: arrived (The Triple Junction) f
 Thu Oct 22 19:34:26 2026 :: Log Trentlin [7029]: ex
 Thu Oct 22 19:34:27 2026 :: Log Trentlin [7029]: w
 Thu Oct 22 19:34:27 2026 :: Log Trentlin [7021]: arrived (A quiet pipe junction) from 7029
+Thu Oct 22 19:34:28 2026 :: Log Trentlin [7021]: ex
+Thu Oct 22 19:34:35 2026 :: Log Trentlin [7021]: n
+Thu Oct 22 19:34:35 2026 :: Log Trentlin [7011]: arrived (The muddy sewer pipe) from 7021
+Thu Oct 22 19:34:36 2026 :: Log Trentlin [7011]: ex
+Thu Oct 22 19:34:37 2026 :: Log Trentlin [7011]: w
+Thu Oct 22 19:34:37 2026 :: Log Trentlin [7005]: arrived (The muddy sewer) from 7011
+Thu Oct 22 19:34:38 2026 :: Log Trentlin [7005]: ex
+Thu Oct 22 19:34:39 2026 :: Log Trentlin [7005]: s
+Thu Oct 22 19:34:39 2026 :: Log Trentlin [7006]: arrived (The muddy sewer) from 7005
+Thu Oct 22 19:34:40 2026 :: Log Trentlin [7006]: e
+Thu Oct 22 19:34:40 2026 :: Log Trentlin [7012]: arrived (The bend in the Muddy sewer) from 7006
+Thu Oct 22 19:34:41 2026 :: Log Trentlin [7012]: s
+Thu Oct 22 19:34:41 2026 :: Log Trentlin [7013]: arrived (A MUDDY intersection) from 7012
+Thu Oct 22 19:34:42 2026 :: Log Trentlin [7013]: ex
+Thu Oct 22 19:34:44 2026 :: Log Trentlin [7013]: s
+Thu Oct 22 19:34:44 2026 :: Log Trentlin [7014]: arrived (Muddy sewer) from 7013
+Thu Oct 22 19:34:44 2026 :: Log Trentlin [7014]: ex
+Thu Oct 22 19:34:45 2026 :: Log Trentlin [7014]: w
+Thu Oct 22 19:34:45 2026 :: Log Trentlin [7008]: arrived (A muddy intersection) from 7014
+Thu Oct 22 19:34:45 2026 :: Log Trentlin [7008]: ex
+Thu Oct 22 19:34:47 2026 :: Log Trentlin [7008]: s
+Thu Oct 22 19:34:47 2026 :: Log Trentlin [7009]: arrived (The Sewer Junction) from 7008
+Thu Oct 22 19:34:47 2026 :: Log Trentlin [7009]: ex
+Thu Oct 22 19:34:50 2026 :: Log Trentlin [7009]: s
+Thu Oct 22 19:34:50 2026 :: Log Trentlin [7010]: arrived (A bend in sewer pipe) from 7009
+Thu Oct 22 19:34:51 2026 :: Log Trentlin [7010]: ex
+Thu Oct 22 19:34:51 2026 :: Log Trentlin [7010]: e
+Thu Oct 22 19:34:51 2026 :: Log Trentlin [7018]: arrived (The ordinary junction) from 7010
+Thu Oct 22 19:34:52 2026 :: Log Trentlin [7018]: ex
+Thu Oct 22 19:34:54 2026 :: Log Trentlin [7018]: e
+Thu Oct 22 19:34:54 2026 :: Log Trentlin [7031]: arrived (A triple junction) from 7018
+Thu Oct 22 19:34:54 2026 :: Log Trentlin [7031]: ex
+Thu Oct 22 19:34:56 2026 :: Sock.sinaddr:  3.133.226.214
+Thu Oct 22 19:34:56 2026 :: EOF encountered on read.
+Thu Oct 22 19:34:59 2026 :: Log Trentlin [7031]: e
+Thu Oct 22 19:34:59 2026 :: Log Trentlin [7044]: arrived (The junction going three ways) from 7031
+Thu Oct 22 19:34:59 2026 :: Log Trentlin [7044]: ex
+Thu Oct 22 19:35:02 2026 :: Log Trentlin [7044]: e
+Thu Oct 22 19:35:02 2026 :: Log Trentlin [7049]: arrived (The junction) from 7044
+Thu Oct 22 19:35:02 2026 :: Log Trentlin [7049]: ex
+Thu Oct 22 19:35:04 2026 :: Log Trentlin [7049]: e
+Thu Oct 22 19:35:04 2026 :: Log Trentlin [7060]: arrived (The dark passageway) from 7049
+Thu Oct 22 19:35:04 2026 :: Log Trentlin [7060]: ex
+Thu Oct 22 19:35:05 2026 :: Log Trentlin [7060]: e
+Thu Oct 22 19:35:05 2026 :: Log Trentlin [7068]: arrived (The Watery sewer bend) from 7060
+Thu Oct 22 19:35:06 2026 :: Log Trentlin [7068]: ex
+Thu Oct 22 19:35:07 2026 :: Log Trentlin [7068]: n
+Thu Oct 22 19:35:07 2026 :: Log Trentlin [7067]: arrived (The Watery sewer) from 7068
+Thu Oct 22 19:35:07 2026 :: Log Trentlin [7067]: ex
+Thu Oct 22 19:35:08 2026 :: Log Trentlin [7067]: n
+Thu Oct 22 19:35:08 2026 :: Log Trentlin [7066]: arrived (The Watery sewer junction) from 7067
+Thu Oct 22 19:35:08 2026 :: Log Trentlin [7066]: ex
+Thu Oct 22 19:35:10 2026 :: Log Trentlin [7066]: n
+Thu Oct 22 19:35:10 2026 :: Log Trentlin [7065]: arrived (The Watery sewer) from 7066
+Thu Oct 22 19:35:11 2026 :: Log Trentlin [7065]: ex
+Thu Oct 22 19:35:12 2026 :: Log Trentlin [7065]: n
+Thu Oct 22 19:35:12 2026 :: Log Trentlin [7064]: arrived (The Watery Sewer Junction) from 7065
+Thu Oct 22 19:35:12 2026 :: Log Trentlin [7064]: ex
+Thu Oct 22 19:35:15 2026 :: Log Trentlin [7064]: n
+Thu Oct 22 19:35:15 2026 :: Log Trentlin [7063]: arrived (The Watery sewer) from 7064
+Thu Oct 22 19:35:16 2026 :: Log Trentlin [7063]: ex
+Thu Oct 22 19:35:16 2026 :: Black market: the dealer vanished from room 1128 (A grassy field, shire.are) (wandering).
+Thu Oct 22 19:35:18 2026 :: Log Trentlin [7063]: n
+Thu Oct 22 19:35:18 2026 :: Log Trentlin [7062]: arrived (The Watery sewer) from 7063
+Thu Oct 22 19:35:18 2026 :: Log Trentlin [7062]: n
+Thu Oct 22 19:35:18 2026 :: Log Trentlin [7061]: arrived (The Watery Sewer Bend) from 7062
+Thu Oct 22 19:35:19 2026 :: Log Trentlin [7061]: w
+Thu Oct 22 19:35:19 2026 :: Log Trentlin [7055]: arrived (The Edge of The Water Sewer) from 7061
+Thu Oct 22 19:35:20 2026 :: Log Trentlin [7055]: ex
+Thu Oct 22 19:35:21 2026 :: Log Trentlin [7055]: w
+Thu Oct 22 19:35:21 2026 :: Log Trentlin [7050]: arrived (The small room) from 7055
+Thu Oct 22 19:35:21 2026 :: Log Trentlin [7050]: ex
+Thu Oct 22 19:35:23 2026 :: Log Trentlin [7050]: s
+Thu Oct 22 19:35:23 2026 :: Log Trentlin [7051]: arrived (The Sewer pipe) from 7050
+Thu Oct 22 19:35:24 2026 :: Log Trentlin [7051]: ex
+Thu Oct 22 19:35:24 2026 :: Log Trentlin [7051]: s
+Thu Oct 22 19:35:24 2026 :: Log Trentlin [7052]: arrived (The Grand Sewer) from 7051
+Thu Oct 22 19:35:25 2026 :: Log Trentlin [7052]: ex
+Thu Oct 22 19:35:28 2026 :: Log Trentlin [7052]: e
+Thu Oct 22 19:35:28 2026 :: Log Trentlin [7056]: arrived (The Dark hallway) from 7052
+Thu Oct 22 19:35:29 2026 :: Log Trentlin [7056]: ex
+Thu Oct 22 19:35:30 2026 :: Log Trentlin [7056]: w
+Thu Oct 22 19:35:30 2026 :: Log Trentlin [7052]: arrived (The Grand Sewer) from 7056
+Thu Oct 22 19:35:30 2026 :: Log Trentlin [7052]: s
+Thu Oct 22 19:35:30 2026 :: Log Trentlin [7053]: arrived (The South end of the Grand Pipe) from 7052
+Thu Oct 22 19:35:31 2026 :: Log Trentlin [7053]: ex
+Thu Oct 22 19:35:31 2026 :: Log Trentlin [7053]: w
+Thu Oct 22 19:35:31 2026 :: Log Trentlin [7047]: arrived (The Pool in the Sewer) from 7053
+Thu Oct 22 19:35:32 2026 :: Log Trentlin [7047]: ex
+Thu Oct 22 19:35:33 2026 :: Log Trentlin [7047]: n
+Thu Oct 22 19:35:33 2026 :: Log Trentlin [7046]: arrived (The Sewer room) from 7047
+Thu Oct 22 19:35:34 2026 :: Log Trentlin [7046]: ex
+Thu Oct 22 19:35:34 2026 :: Log Trentlin [7046]: n
+Thu Oct 22 19:35:34 2026 :: Log Trentlin [7045]: arrived (The Sewer Room) from 7046
+Thu Oct 22 19:35:35 2026 :: Log Trentlin [7045]: ex
+Thu Oct 22 19:35:35 2026 :: Log Trentlin [7045]: w
+Thu Oct 22 19:35:35 2026 :: Log Trentlin [7038]: arrived (The three way junction) from 7045
+Thu Oct 22 19:35:36 2026 :: Log Trentlin [7038]: ex
+Thu Oct 22 19:35:38 2026 :: Log Trentlin [7038]: s
+Thu Oct 22 19:35:38 2026 :: Log Trentlin [7039]: arrived (The Sewer Store Room) from 7038
+Thu Oct 22 19:35:40 2026 :: Log Trentlin [7039]: n
+Thu Oct 22 19:35:40 2026 :: Log Trentlin [7038]: arrived (The three way junction) from 7039
+Thu Oct 22 19:35:40 2026 :: Log Trentlin [7038]: w
+Thu Oct 22 19:35:40 2026 :: Log Trentlin [7025]: arrived (Another intersection) from 7038
+Thu Oct 22 19:35:40 2026 :: Log Trentlin [7025]: ex
+Thu Oct 22 19:35:42 2026 :: Log Trentlin [7025]: n
+Thu Oct 22 19:35:42 2026 :: Log Trentlin [7024]: arrived (The sewer) from 7025
+Thu Oct 22 19:35:43 2026 :: Log Trentlin [7024]: ex
+Thu Oct 22 19:35:44 2026 :: Log Trentlin [7024]: s
+Thu Oct 22 19:35:44 2026 :: Log Trentlin [7025]: arrived (Another intersection) from 7024
+Thu Oct 22 19:35:45 2026 :: Log Trentlin [7025]: s
+Thu Oct 22 19:35:45 2026 :: Log Trentlin [7026]: arrived (A junction) from 7025
+Thu Oct 22 19:35:45 2026 :: Log Trentlin [7026]: ex
+Thu Oct 22 19:35:46 2026 :: Log Trentlin [7026]: n
+Thu Oct 22 19:35:46 2026 :: Log Trentlin [7025]: arrived (Another intersection) from 7026
+Thu Oct 22 19:35:47 2026 :: Log Trentlin [7025]: n
+Thu Oct 22 19:35:47 2026 :: Log Trentlin [7024]: arrived (The sewer) from 7025
+Thu Oct 22 19:35:47 2026 :: Log Trentlin [7024]: e
+Thu Oct 22 19:35:47 2026 :: Log Trentlin [7037]: arrived (The round room) from 7024
+Thu Oct 22 19:35:48 2026 :: Log Trentlin [7037]: ex
+Thu Oct 22 19:35:49 2026 :: Log Trentlin [7037]: e
+Thu Oct 22 19:35:49 2026 :: Log Trentlin [7050]: arrived (The small room) from 7037
+Thu Oct 22 19:35:50 2026 :: Log Trentlin [7050]: e
+Thu Oct 22 19:35:50 2026 :: Log Trentlin [7055]: arrived (The Edge of The Water Sewer) from 7050
+Thu Oct 22 19:35:51 2026 :: Log Trentlin [7055]: e
+Thu Oct 22 19:35:51 2026 :: Log Trentlin [7061]: arrived (The Watery Sewer Bend) from 7055
+Thu Oct 22 19:35:52 2026 :: Log Trentlin [7061]: s
+Thu Oct 22 19:35:52 2026 :: Log Trentlin [7062]: arrived (The Watery sewer) from 7061
+Thu Oct 22 19:35:53 2026 :: Log Trentlin [7062]: ex
+Thu Oct 22 19:36:25 2026 :: Log Trentlin [7062]: north
+Thu Oct 22 19:36:25 2026 :: Log Trentlin [7061]: arrived (The Watery Sewer Bend) from 7062
+Thu Oct 22 19:36:26 2026 :: Log Trentlin [7061]: west
+Thu Oct 22 19:36:26 2026 :: Log Trentlin [7055]: arrived (The Edge of The Water Sewer) from 7061
+Thu Oct 22 19:36:26 2026 :: Log Trentlin [7055]: west
+Thu Oct 22 19:36:26 2026 :: Log Trentlin [7050]: arrived (The small room) from 7055
+Thu Oct 22 19:36:26 2026 :: Log Trentlin [7050]: south
+Thu Oct 22 19:36:26 2026 :: Log Trentlin [7051]: arrived (The Sewer pipe) from 7050
+Thu Oct 22 19:36:26 2026 :: Log Trentlin [7051]: south
+Thu Oct 22 19:36:26 2026 :: Log Trentlin [7052]: arrived (The Grand Sewer) from 7051
+Thu Oct 22 19:36:27 2026 :: Log Trentlin [7052]: south
+Thu Oct 22 19:36:27 2026 :: Log Trentlin [7053]: arrived (The South end of the Grand Pipe) from 7052
+Thu Oct 22 19:36:27 2026 :: Log Trentlin [7053]: west
+Thu Oct 22 19:36:27 2026 :: Log Trentlin [7047]: arrived (The Pool in the Sewer) from 7053
+Thu Oct 22 19:36:27 2026 :: Log Trentlin [7047]: north
+Thu Oct 22 19:36:27 2026 :: Log Trentlin [7046]: arrived (The Sewer room) from 7047
+Thu Oct 22 19:36:27 2026 :: Log Trentlin [7046]: north
+Thu Oct 22 19:36:27 2026 :: Log Trentlin [7045]: arrived (The Sewer Room) from 7046
+Thu Oct 22 19:36:28 2026 :: Log Trentlin [7045]: west
+Thu Oct 22 19:36:28 2026 :: Log Trentlin [7038]: arrived (The three way junction) from 7045
+Thu Oct 22 19:36:28 2026 :: Log Trentlin [7038]: west
+Thu Oct 22 19:36:28 2026 :: Log Trentlin [7025]: arrived (Another intersection) from 7038
+Thu Oct 22 19:36:28 2026 :: Log Trentlin [7025]: south
+Thu Oct 22 19:36:28 2026 :: Log Trentlin [7026]: arrived (A junction) from 7025
+Thu Oct 22 19:36:28 2026 :: Log Trentlin [7026]: west
+Thu Oct 22 19:36:28 2026 :: Log Trentlin [7013]: arrived (A MUDDY intersection) from 7026
+Thu Oct 22 19:36:31 2026 :: Log Trentlin [7013]: ex
+Thu Oct 22 19:36:32 2026 :: Log Trentlin [7013]: e
+Thu Oct 22 19:36:32 2026 :: Log Trentlin [7026]: arrived (A junction) from 7013
+Thu Oct 22 19:36:33 2026 :: Log Trentlin [7026]: ex
+Thu Oct 22 19:37:08 2026 :: Black market: the dealer left the world from room 5972 (On the Concourse at Penny Lane, mid_ruin.are).
+Thu Oct 22 19:38:12 2026 :: Log Trentlin [7026]: s
+Thu Oct 22 19:38:12 2026 :: Log Trentlin [7028]: arrived (The sewer junction) from 7026
+Thu Oct 22 19:38:13 2026 :: Log Trentlin [7028]: e
+Thu Oct 22 19:38:13 2026 :: Log Trentlin [7034]: arrived (A bend in the sewer pipe) from 7028
+Thu Oct 22 19:38:13 2026 :: Log Trentlin [7034]: e
+Thu Oct 22 19:38:14 2026 :: Log Trentlin [7034]: e
+Thu Oct 22 19:38:14 2026 :: Log Trentlin [7034]: s
+Thu Oct 22 19:38:14 2026 :: Log Trentlin [7035]: arrived (The sewer pipe bend) from 7034
+Thu Oct 22 19:38:15 2026 :: Log Trentlin [7035]: ex
+Thu Oct 22 19:38:16 2026 :: Log Trentlin [7035]: w
+Thu Oct 22 19:38:16 2026 :: Log Trentlin [7029]: arrived (The Triple Junction) from 7035
+Thu Oct 22 19:38:16 2026 :: Log Trentlin [7029]: s
+Thu Oct 22 19:38:16 2026 :: Log Trentlin [7030]: arrived (The Quadruple Junction Under the Garbage) from 7029
+Thu Oct 22 19:38:16 2026 :: Log Trentlin [7030]: e
+Thu Oct 22 19:38:16 2026 :: Log Trentlin [7036]: arrived (The pit) from 7030
+Thu Oct 22 19:38:18 2026 :: Log Trentlin [7036]: ex
+Thu Oct 22 19:38:19 2026 :: Log Trentlin [7036]: d
+Thu Oct 22 19:38:19 2026 :: Log Trentlin [7122]: arrived (Under the pit) from 7036
+Thu Oct 22 19:38:21 2026 :: Log Trentlin [7122]: w
+Thu Oct 22 19:38:21 2026 :: Log Trentlin [7112]: arrived (An odd intersection) from 7122
+Thu Oct 22 19:38:23 2026 :: Log Trentlin [7112]: ex
+Thu Oct 22 19:38:24 2026 :: Log Trentlin [7112]: w
+Thu Oct 22 19:38:24 2026 :: Log Trentlin [7104]: arrived (A junction in the sewer pipes) from 7112
+Thu Oct 22 19:38:25 2026 :: Log Trentlin [7104]: get all
+Thu Oct 22 19:38:26 2026 :: Log Trentlin [7104]: recall
+Thu Oct 22 19:38:26 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 7104
+Thu Oct 22 19:38:27 2026 :: Log Trentlin [4207]: e
+Thu Oct 22 19:38:27 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Thu Oct 22 19:38:27 2026 :: Log Trentlin [4202]: e
+Thu Oct 22 19:38:27 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Thu Oct 22 19:38:27 2026 :: Log Trentlin [4201]: e
+Thu Oct 22 19:38:27 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Thu Oct 22 19:38:28 2026 :: Log Trentlin [2427]: e
+Thu Oct 22 19:38:28 2026 :: Log Trentlin [2427]: n
+Thu Oct 22 19:38:28 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Thu Oct 22 19:38:28 2026 :: Log Trentlin [2404]: n
+Thu Oct 22 19:38:28 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Thu Oct 22 19:38:28 2026 :: Log Trentlin [2401]: u
+Thu Oct 22 19:38:28 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Thu Oct 22 19:38:29 2026 :: Log Trentlin [2410]: u
+Thu Oct 22 19:38:29 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Thu Oct 22 19:38:29 2026 :: Log Trentlin [2411]: u
+Thu Oct 22 19:38:29 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Thu Oct 22 19:38:29 2026 :: Log Trentlin [2414]: u
+Thu Oct 22 19:38:29 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Thu Oct 22 19:38:31 2026 :: Log Trentlin [2497]: aquest complete
+Thu Oct 22 19:38:31 2026 :: Log Trentlin [2497]: copper +148721100
+Thu Oct 22 19:38:31 2026 :: Log Trentlin [2497]: quest complete: 148p 72g 11s, 87 quest points (streak bonus 142%)
+Thu Oct 22 19:38:34 2026 :: Log Trentlin [2497]: aquest gamble no
+Thu Oct 22 19:38:37 2026 :: Log Trentlin [2497]: enter door
+Thu Oct 22 19:38:37 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Thu Oct 22 19:38:38 2026 :: Log Trentlin [2401]: wo
