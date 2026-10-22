@@ -5540,3 +5540,124 @@
 1792697914	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	gamble no	Wise choice. You safely collect 87 quest points.
 1792697917	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
 1792697918	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	worth		You have 563 platinum, 40 gold, 65 silver, 62 copper // and 112503 experience (2247 exp to level).
+1792697990	cmd	Trentlin	50	42	connect.are	standing	100	0	-	run	e 20	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792697991	cmd	Trentlin	50	9669	newthalo.are	standing	100	0	-	east		Outside the West Gate of New Thalos //   You stand outside the city walls, the iron gate to the east. The city lies // in that direction and the road to Dresden lies west.
+1792697991	cmd	Trentlin	50	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazoned with the crest of New Thalos, swings easily on
+1792697992	cmd	Trentlin	50	9524	newthalo.are	standing	100	0	-	east		West Main Street //   This is the main road traveling though the city. To the south you hear // the hammering of the repair shop and to the north is the grassy field
+1792697992	cmd	Trentlin	50	9525	newthalo.are	standing	100	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into
+1792697992	cmd	Trentlin	50	9526	newthalo.are	standing	100	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of
+1792697993	cmd	Trentlin	50	9509	newthalo.are	standing	100	0	-	east		The Western Market Square //   This area of the square seems a bit more subdued than the rest. You // notice that most of the outland adventurers mill around the southern
+1792697993	cmd	Trentlin	50	9506	newthalo.are	standing	100	0	-	east		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle
+1792697995	cmd	Trentlin	50	9515	newthalo.are	standing	100	0	-	north		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the
+1792697995	cmd	Trentlin	50	9518	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on
+1792697995	cmd	Trentlin	50	9519	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small
+1792697996	cmd	Trentlin	50	9520	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you
+1792697996	cmd	Trentlin	50	9521	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate
+1792697996	cmd	Trentlin	50	9522	newthalo.are	standing	100	0	-	north		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of
+1792697996	cmd	Trentlin	50	9667	newthalo.are	standing	100	0	-	north		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east
+1792697997	cmd	Trentlin	50	9781	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East
+1792697997	cmd	Trentlin	50	9782	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt
+1792697997	cmd	Trentlin	50	9783	newthalo.are	standing	100	0	-	north		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large
+1792697997	cmd	Trentlin	50	64	connect.are	standing	100	0	-	north		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful
+1792697998	cmd	Trentlin	50	29001	korzath1.are	standing	100	0	-	north		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance
+1792697998	cmd	Trentlin	50	29002	korzath1.are	standing	100	0	-	north		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites
+1792697998	cmd	Trentlin	50	29003	korzath1.are	standing	100	0	-	north		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1792698000	cmd	Trentlin	50	29060	korzath1.are	standing	100	0	-	ne		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.
+1792698000	cmd	Trentlin	50	29061	korzath1.are	standing	100	0	-	east		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches
+1792698001	cmd	Trentlin	50	29062	korzath1.are	standing	100	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.
+1792698001	cmd	Trentlin	50	29062	korzath1.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792698002	cmd	Trentlin	50	29063	korzath1.are	standing	100	0	-	south		Corridor //   Security guards and the Heads of Security are keeping an eye out for // anyone looking suspicious.  You notice a hole in the west wall and inside
+1792698003	cmd	Trentlin	50	29065	korzath1.are	standing	100	0	-	south		Service Hallway //   The service hallway leads east towards the main work centers of the // fortress.  You wonder what all the noises are that are coming from that
+1792698004	cmd	Trentlin	50	29066	korzath1.are	standing	100	0	-	east		Service Hallway //   The walls of this hallway are covered in sheer metal.  You marvel at // how much armor could be made with the metal used in lining the hall.
+1792698004	cmd	Trentlin	50	29067	korzath1.are	standing	100	0	-	east		Service Hallway //   The hallway continues to the east and west.  To the north is a storage // room.  The various noises of clanging metals can be heard to the east.
+1792698005	cmd	Trentlin	50	29070	korzath1.are	standing	100	0	-	east		Service Hallway //   You can now hear the distinct sounds of metal against metal as well as // the droning whine and buzz of what sounds like drill bit machinery.  You've
+1792698006	cmd	Trentlin	50	29071	korzath1.are	standing	100	0	-	east		T-Junction //   The service hallway opens up into a T-Junction here.  To the north there // isn't much sound but, to the east you can hear the sound of machinery.
+1792698007	cmd	Trentlin	50	29080	korzath1.are	standing	100	0	-	north		Hallway //   This hallway stretches north into the mountain.  A small plaque // designates the area ahead of you as the Engineering Department.
+1792698007	cmd	Trentlin	50	29082	korzath1.are	standing	100	0	-	north		Engineering Department //   This is the Engineering Department where engineers work hard to solve // the problems of machinery breakdown and to figure out new ways to make the
+1792698008	cmd	Trentlin	50	29083	korzath1.are	standing	100	0	-	east		Engineering Department //   Engineers are hard at work devising new ways to make the equipment // work more efficiently.  To the east is a doorway to the break room.
+1792698009	cmd	Trentlin	50	29076	korzath1.are	standing	100	0	-	east		Coffee Break Room //   This is a break room for Korzath's workers.  They sit back drinking // coffee and eating doughnuts while on break.  The faint smell of smoke
+1792698010	cmd	Trentlin	50	29079	korzath1.are	standing	100	0	-	east		Coffee Break Room //   This part of the break room is the 'Smoking' area.  Yes, even in // Korzath's fortress there are smoking regulations.
+1792698011	cmd	Trentlin	50	29076	korzath1.are	standing	100	0	-	west		Coffee Break Room //   This is a break room for Korzath's workers.  They sit back drinking // coffee and eating doughnuts while on break.  The faint smell of smoke
+1792698011	cmd	Trentlin	50	29083	korzath1.are	standing	100	0	-	west		Engineering Department //   Engineers are hard at work devising new ways to make the equipment // work more efficiently.  To the east is a doorway to the break room.
+1792698012	cmd	Trentlin	50	29082	korzath1.are	standing	100	0	-	west		Engineering Department //   This is the Engineering Department where engineers work hard to solve // the problems of machinery breakdown and to figure out new ways to make the
+1792698013	cmd	Trentlin	50	29085	korzath1.are	standing	100	0	-	north		Engineering Department //   It is surprising that these engineers would know how to develop the // machinery technology in the first place.  They may know how to prepare
+1792698013	cmd	Trentlin	50	29089	korzath1.are	standing	100	0	-	north		Hallway //   This hallway is dimly lit by the overhanging lights.  They flicker // slightly as you continue along the hall.  The smells of sweat and the feel
+1792698014	cmd	Trentlin	50	29090	korzath1.are	standing	100	0	-	north		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and
+1792698015	cmd	Trentlin	50	29093	korzath1.are	standing	100	0	-	east		Metalworks //   This is the Metalworks facility of the fortress.  Blacksmiths stand // everywhere working on different projects they have been assigned.  The
+1792698015	cmd	Trentlin	50	29094	korzath1.are	standing	100	0	-	east		Metalworks //   Anvils are grounded into the floor here.  Blacksmiths stand over the // anvils pounding away at their work.  Each blacksmith is working on making
+1792698016	cmd	Trentlin	50	29094	korzath1.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792698016	cmd	Trentlin	50	29094	korzath1.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792698016	cmd	Trentlin	50	29094	korzath1.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792698016	cmd	Trentlin	50	29092	korzath1.are	standing	100	0	-	north		Metalworks //   Anvils are grounded into the floor here.  Blacksmiths stand over the // anvils pounding away at their work.  Each blacksmith is working on making
+1792698017	cmd	Trentlin	50	29092	korzath1.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792698019	cmd	Trentlin	50	29092	korzath1.are	standing	100	0	-	open	mold	You open a secret door.
+1792698020	cmd	Trentlin	50	29092	korzath1.are	standing	100	0	-	look		Metalworks //   Anvils are grounded into the floor here.  Blacksmiths stand over the // anvils pounding away at their work.  Each blacksmith is working on making
+1792698021	cmd	Trentlin	50	29092	korzath1.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792698022	cmd	Trentlin	50	29088	korzath1.are	standing	100	0	-	ne		Secret Refining Facility //   This is a secret refining facility where metalurgists conduct // experimental procedures on the refining of new metals.  Their results
+1792698024	cmd	Trentlin	50	29088	korzath1.are	standing	100	0	-	consider	me	You can kill a metalurgist naked and weaponless. // As far as you're concerned, a metalurgist is a wimp.
+1792698025	cmd	Trentlin	50	29088	korzath1.are	standing	100	0	-	look	me	This metalurgist is pouring molten liquids into molds to create the basic // forms and shapes of the metal extracts used in making the machinery  // components.
+1792698047	cmd	Trentlin	50	29088	korzath1.are	standing	100	0	-	look	table	You do not see that here.
+1792698048	cmd	Trentlin	50	29088	korzath1.are	standing	100	0	-	look		Secret Refining Facility //   This is a secret refining facility where metalurgists conduct // experimental procedures on the refining of new metals.  Their results
+1792698051	cmd	Trentlin	50	29088	korzath1.are	standing	100	0	-	look	results	You glance at the results: // Metal // Titanium
+1792698069	cmd	Trentlin	50	29088	korzath1.are	standing	100	0	-	look		Secret Refining Facility //   This is a secret refining facility where metalurgists conduct // experimental procedures on the refining of new metals.  Their results
+1792698071	cmd	Trentlin	50	29088	korzath1.are	standing	100	0	-	kill	meta	Your pierce MANGLES a metalurgist! // Your pierce misses a metalurgist. // Your pierce ^^^ DESTROYS ^^^ a metalurgist!
+1792698075	cmd	Trentlin	50	29088	korzath1.are	fighting	100	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a metalurgist! // Your smite MASSACRES a metalurgist! // Your smite ^^^ DESTROYS ^^^ a metalurgist!
+1792698085	cmd	Trentlin	50	29088	korzath1.are	standing	100	0	-	look	in corpse	Corpse of a metalurgist contains: //      a glowing potion //      a green scroll
+1792698087	cmd	Trentlin	50	29088	korzath1.are	standing	100	0	-	se		Alas, you cannot go that way.
+1792698088	cmd	Trentlin	50	29088	korzath1.are	standing	100	0	-	look		Secret Refining Facility //   This is a secret refining facility where metalurgists conduct // experimental procedures on the refining of new metals.  Their results
+1792698089	cmd	Trentlin	50	29092	korzath1.are	standing	100	0	-	sw		Metalworks //   Anvils are grounded into the floor here.  Blacksmiths stand over the // anvils pounding away at their work.  Each blacksmith is working on making
+1792698090	cmd	Trentlin	50	29091	korzath1.are	standing	100	0	-	west		Metalworks //   Anvils are grounded into the floor here.  Blacksmiths stand over the // anvils pounding away at their work.  Each blacksmith is working on making
+1792698091	cmd	Trentlin	50	29091	korzath1.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792698091	cmd	Trentlin	50	29093	korzath1.are	standing	100	0	-	south		Metalworks //   This is the Metalworks facility of the fortress.  Blacksmiths stand // everywhere working on different projects they have been assigned.  The
+1792698092	cmd	Trentlin	50	29090	korzath1.are	standing	100	0	-	west		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and
+1792698120	cmd	Trentlin	50	29099	korzath1.are	standing	100	0	-	west		Metalurgy Plant //   This is the metalurgy plant where all of the metals used in the // manufacturing of armor, weapons, and machine components are devised.
+1792698121	cmd	Trentlin	50	29100	korzath1.are	standing	100	0	-	west		Metalurgy Plant //   Metalurgists are busy pouring large cauldrons of molten liquid into // molds bolted into the ground.  Most of them are to make whole sheets of
+1792698121	cmd	Trentlin	50	29100	korzath1.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792698121	cmd	Trentlin	50	29100	korzath1.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792698122	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	north		Metalurgy Plant //   Metalurgists are busy pouring large cauldrons of molten liquid into // molds bolted into the ground.  Most of them are to make whole sheets of
+1792698123	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	look	papers	You do not see that here.
+1792698125	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	look	trash	You do not see that here.
+1792698131	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	look	mold	It opens!
+1792698133	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	look		Metalurgy Plant //   Metalurgists are busy pouring large cauldrons of molten liquid into // molds bolted into the ground.  Most of them are to make whole sheets of
+1792698135	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	open	mold	I see no mold here.
+1792698143	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	look	in mold	You do not see that here.
+1792698146	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	look	mold	It opens!
+1792698148	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	open	mold	I see no mold here.
+1792698150	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	enter	mold	You do not see that here.
+1792698155	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	help	saint	No help on that word.
+1792698197	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	look	christopher	A huge liquid metal shaping mold is grounded in the floor here.
+1792698204	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	open	christopher	Ok.
+1792698208	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	look	in christopher	A shaping mold contains: //      (Glowing) a Saint Christopher Medallion
+1792698213	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	get	all christopher	You get a Saint Christopher Medallion from a shaping mold.
+1792698214	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	compare	meda	A) a Saint Christopher Medallion (level 37) // B) the Heart Guard of the Snake (level 27), worn // Slot: neck.  Your damage comes from weapons.
+1792698220	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	look	meda	A medallion depicting Saint Christopher, the Saint of travelling.
+1792698221	cmd	Trentlin	50	29098	korzath1.are	standing	100	0	-	look		Metalurgy Plant //   Metalurgists are busy pouring large cauldrons of molten liquid into // molds bolted into the ground.  Most of them are to make whole sheets of
+1792698222	cmd	Trentlin	50	29100	korzath1.are	standing	100	0	-	south		Metalurgy Plant //   Metalurgists are busy pouring large cauldrons of molten liquid into // molds bolted into the ground.  Most of them are to make whole sheets of
+1792698225	cmd	Trentlin	50	29100	korzath1.are	standing	100	0	-	look	paper	You do not see that here.
+1792698225	cmd	Trentlin	50	29102	korzath1.are	standing	100	0	-	south		Metalurgy Plant //   Metalurgists are busy pouring large cauldrons of molten liquid into // molds bolted into the ground.  Most of them are to make whole sheets of
+1792698227	cmd	Trentlin	50	29101	korzath1.are	standing	100	0	-	east		Metalurgy Plant //   Metalurgists are busy pouring large cauldrons of molten liquid into // molds bolted into the ground.  Most of them are to make whole sheets of
+1792698228	cmd	Trentlin	50	29099	korzath1.are	standing	100	0	-	north		Metalurgy Plant //   This is the metalurgy plant where all of the metals used in the // manufacturing of armor, weapons, and machine components are devised.
+1792698229	cmd	Trentlin	50	29090	korzath1.are	standing	100	0	-	east		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and
+1792698230	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	north		Checkpoint //   Korzath's secret guard protect this checkpoint.  Not many secrets have // been kept from you thus far but the buck stops here as far as Korzath is
+1792698230	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792698230	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792698230	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792698232	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	unlock	north	You lack the key.
+1792698240	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	say	titanium	You say 'titanium'
+1792698242	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	inventory		You are carrying: //      (Glowing) a Saint Christopher Medallion // ( 2) (Glowing) a bottled fairy
+1792698245	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	drop	medal	You drop a Saint Christopher Medallion.
+1792698249	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792698250	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792698252	cmd	Trentlin	50	29090	korzath1.are	standing	100	0	-	south		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and
+1792698252	cmd	Trentlin	50	29089	korzath1.are	standing	100	0	-	south		Hallway //   This hallway is dimly lit by the overhanging lights.  They flicker // slightly as you continue along the hall.  The smells of sweat and the feel
+1792698253	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792698254	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792698254	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792698255	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792698255	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792698255	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792698255	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792698256	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792698256	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792698256	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792698258	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	6	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Trentlin!' // Questor Thews tells you 'A bounty has been posted on A tomb thief.'
