@@ -3010,6 +3010,15 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	    return;
 	ch = d->character;
 
+	/* The creator always arrives unseen (owner, 2026-10-22): wizinvis
+	   at his own trust, unless he left wizinvis at a level he chose.
+	   Set before the first notice, so none goes below it. */
+	if ( is_creator( ch ) && !IS_SET( ch->act, PLR_WIZINVIS ) )
+	{
+	    SET_BIT( ch->act, PLR_WIZINVIS );
+	    ch->invis_level = LEVEL_CREATOR;
+	}
+
         snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s has connected.", ch->name, d->host );
         log_string( log_buf );
         record_login( ch->name, d->host, "connect" );

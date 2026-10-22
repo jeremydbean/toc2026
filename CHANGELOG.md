@@ -17,7 +17,8 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   lost-link and trust notices go out at the subject's WIZINVIS level
   (`staff_notice_level`), and `wizinfo` picks listeners by trust; the log
   files keep every line. Three checks for trust exactly 70 now read
-  `< MAX_LEVEL`. `tests/test_creator_rank.py`.
+  `< MAX_LEVEL`. He always logs in wizinvis, at 72 unless he left at a
+  level of his own. `tests/test_creator_rank.py`.
 - **Access, 2026-10-22**: the Coven's underbrush is reset closed, not
   locked, and Upper Argo's imp 1020 is no longer aggressive -- the
   progression benchmark found no hit point change worth making.

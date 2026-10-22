@@ -6,7 +6,8 @@ defaults to 72, hidden from everyone. TRUST may now give 71, and only he
 can, since nobody else's trust reaches it; 71 outranks every implementor
 and sees him at WIZI 71. SHUTDOWN, REBOOT, LOG, SNOOP, BAN, ALLOW,
 WIZLOCK, NEWLOCK, DENY and UNDENY are his alone, and the notices of his
-arrival and departure go out at his WIZINVIS level.
+arrival and departure go out at his WIZINVIS level. He always logs in
+wizinvis, at 72 unless he left at a level of his own.
 
 The fixture is a synthetic Killuminati in a throwaway world -- the
 creator is a name, so the test has to use it.
@@ -76,8 +77,7 @@ class CreatorRankTests(unittest.TestCase):
                 self.assertIn("You failed", run(impl, "nochannels zmisery"))
                 self.assertIn("Zmisery", run(creator, "stat zmisery"))
 
-                # WIZINVIS at the creator's own trust hides him from all.
-                self.assertIn("vanish", run(creator, "wizinvis"))
+                # He logged in wizinvis at his own trust: hidden from all.
                 run(impl, "holylight")
                 run(trusted, "holylight")
                 self.assertNotIn("Killuminati", run(impl, "who"))
@@ -91,11 +91,15 @@ class CreatorRankTests(unittest.TestCase):
                 self.assertIn("Killuminati", run(trusted, "who"))
                 self.assertNotIn("Killuminati", run(impl, "who"))
 
-                # His leaving and arriving reach nobody below his WIZI.
-                run(creator, "wizinvis 72")
-                mark_impl, mark_trusted = len(impl.transcript), len(trusted.transcript)
+                # He always arrives wizinvis at 72 (owner, 2026-10-22), even
+                # having left visible, and his arrival reaches nobody below.
+                run(creator, "wizinvis")
+                self.assertIn("Killuminati", run(impl, "who"))
                 creator.send("quit")
                 self.assertTrue(creator.wait_closed())
+                impl.drain(1.0)
+                trusted.drain(1.0)
+                mark_impl, mark_trusted = len(impl.transcript), len(trusted.transcript)
                 with mud.connect(timeout=120) as again:
                     login(again, "Killuminati", PASSWORD)
                     again.drain(1.5)
@@ -104,6 +108,8 @@ class CreatorRankTests(unittest.TestCase):
                     trusted.drain(1.0)
                     self.assertNotIn("Killuminati", impl.transcript[mark_impl:])
                     self.assertNotIn("Killuminati", trusted.transcript[mark_trusted:])
+                    self.assertNotIn("Killuminati", run(impl, "who"))
+                    self.assertNotIn("Killuminati", run(trusted, "who"))
                     again.send("quit")
                     again.wait_closed()
                 for client in (impl, trusted):

@@ -3181,7 +3181,10 @@ Owner, 2026-10-22. Levels still stop at `MAX_LEVEL`; above it are trusts.
   Killuminati -- the creator is a name, and test worlds start with an
   empty `player/`.
 - **WIZINVIS defaults to the character's trust**, so his is 72 and hidden
-  from everyone; WIZI 71 lets trust 71 see him. Arrival, departure,
+  from everyone; WIZI 71 lets trust 71 see him. **He always logs in
+  wizinvis**: at 72 unless he left wizinvis at a level he chose, set in
+  the nanny right after `login_reload_character`, before the first
+  notice. Arrival, departure,
   lost-link, reconnect, shared-address and TRUST notices go out at
   `staff_notice_level(ch, level)` -- no lower than the subject's WIZINVIS
   level -- and `wizinfo` picks listeners by `get_trust`. Every one is
