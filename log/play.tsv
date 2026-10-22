@@ -3775,3 +3775,43 @@
 1792631588	cmd	Alaric	53	29214	korzath2.are	standing	88	0	-	bs	mad	Your backstab <<< ERADICATES >>> a deranged madman! [-160]
 1792631629	cmd	Alaric	53	29214	korzath2.are	fighting	85	0	fight	wear	just	You stop using Excalibur.
 1792631644	cmd	Alaric	53	29214	korzath2.are	fighting	83	0	fight	worth		You have 920 platinum, 180 gold, 227 silver, 320 copper
+1792631651	cmd	Alaric	53	29214	korzath2.are	fighting	82	0	fight	dirt		Your kicked dirt misses a deranged madman. [-0]
+1792631685	cmd	Alaric	53	29214	korzath2.are	fighting	81	0	fight	worth		You have 920 platinum, 180 gold, 227 silver, 320 copper
+1792631689	cmd	Alaric	53	29214	korzath2.are	fighting	81	0	fight	who		[53 Dwarf   Hero  ] Alaric.
+1792631691	cmd	Alaric	53	29214	korzath2.are	standing	81	0	-	scan		You don't see anything near you.
+1792631694	cmd	Alaric	53	29214	korzath2.are	standing	81	0	-	look		Twist in the Maze
+1792631696	refused	Alaric	53	29214	korzath2.are	standing	81	0	-	(unknown)		Huh?
+1792631699	cmd	Alaric	53	29214	korzath2.are	standing	81	0	-	look		Twist in the Maze
+1792631700	cmd	Alaric	53	29214	korzath2.are	standing	81	0	-	scan		You don't see anything near you.
+1792631701	cmd	Alaric	53	29212	korzath2.are	standing	489	0	-	east		Twist in the Maze
+1792631703	cmd	Alaric	53	4207	dresden_halloween.are	standing	489	0	-	recall		Before the Shrouded Altar
+1792631704	cmd	Alaric	53	4208	dresden_halloween.are	standing	489	0	-	west		The Shrouded Altar of Devota
+1792631705	cmd	Alaric	53	4208	dresden_halloween.are	standing	489	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792631709	cmd	Alaric	53	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar
+1792631710	cmd	Alaric	53	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792631710	cmd	Alaric	53	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792631711	cmd	Alaric	53	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square.
+1792631712	cmd	Alaric	53	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792631713	cmd	Alaric	53	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden.
+1792631714	cmd	Alaric	53	29004	korzath1.are	standing	100	0	-	run	n	The Northern Market Square
+1792631715	cmd	Alaric	53	29004	korzath1.are	resting	100	0	-	wake		You stand up.
+1792631716	cmd	Alaric	53	29004	korzath1.are	standing	100	0	-	open		It's locked.
+1792631717	cmd	Alaric	53	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1792631718	cmd	Alaric	53	29004	korzath1.are	standing	100	0	-	open		Ok.
+1792631718	cmd	Alaric	53	29201	korzath2.are	standing	100	0	-	north		Heroes Hall
+1792631718	cmd	Alaric	53	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes
+1792631718	cmd	Alaric	53	29202	korzath2.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792631719	cmd	Alaric	53	29202	korzath2.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792631719	cmd	Alaric	53	29202	korzath2.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792631719	cmd	Alaric	53	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze
+1792631720	cmd	Alaric	53	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze
+1792631722	cmd	Alaric	53	29204	korzath2.are	standing	100	0	-	bs	cl	Your backstab ^^^ DESTROYS ^^^ a killer clown! [-112]
+1792631779	cmd	Alaric	53	29204	korzath2.are	standing	97	0	-	worth		You have 930 platinum, 206 gold, 273 silver, 382 copper
+1792631779	cmd	Alaric	53	29205	korzath2.are	standing	97	0	-	south		Twist in the Maze
+1792631780	cmd	Alaric	53	29205	korzath2.are	standing	97	0	-	affect		You are affected by:
+1792631783	cmd	Alaric	53	29205	korzath2.are	standing	97	0	-	bs	cl	Your backstab <<< ERADICATES >>> a killer clown! [-160]
+1792631857	cmd	Alaric	53	29205	korzath2.are	fighting	92	0	fight	worth		You have 935 platinum, 219 gold, 296 silver, 413 copper
+1792631878	cmd	Alaric	53	29205	korzath2.are	fighting	91	0	fight	worth		You have 935 platinum, 219 gold, 296 silver, 413 copper
+1792631885	cmd	Alaric	53	29205	korzath2.are	standing	91	0	-	look		Twist in the Maze
+1792631888	cmd	Alaric	53	29206	korzath2.are	standing	91	0	-	east		Twist in the Maze
+1792631890	cmd	Alaric	53	29206	korzath2.are	standing	91	0	-	bs	cl	Your backstab misses a killer clown. [-0]
