@@ -3815,3 +3815,25 @@
 1792631885	cmd	Alaric	53	29205	korzath2.are	standing	91	0	-	look		Twist in the Maze
 1792631888	cmd	Alaric	53	29206	korzath2.are	standing	91	0	-	east		Twist in the Maze
 1792631890	cmd	Alaric	53	29206	korzath2.are	standing	91	0	-	bs	cl	Your backstab misses a killer clown. [-0]
+1792632041	cmd	Alaric	53	29206	korzath2.are	fighting	70	0	fight	look		Twist in the Maze
+1792632045	cmd	Alaric	53	29206	korzath2.are	fighting	69	0	fight	worth		You have 955 platinum, 271 gold, 388 silver, 537 copper
+1792632075	cmd	Alaric	53	29206	korzath2.are	fighting	68	0	fight	scan		a killer clown                     -to the South.
+1792632090	cmd	Alaric	53	29207	korzath2.are	standing	67	0	-	south		Twist in the Maze
+1792632091	cmd	Alaric	53	29208	korzath2.are	standing	67	0	-	west		Twist the Maze
+1792632092	cmd	Alaric	53	29208	korzath2.are	standing	67	0	-	scan		a killer clown                     -to the East.
+1792632094	cmd	Alaric	53	29209	korzath2.are	standing	67	0	-	west		Twist in the Maze
+1792632094	cmd	Alaric	53	29209	korzath2.are	standing	67	0	-	scan		a killer clown                     -to the North.
+1792632099	cmd	Alaric	53	29210	korzath2.are	standing	67	0	-	north		Twist in the Maze
+1792632099	cmd	Alaric	53	29210	korzath2.are	standing	67	0	-	bs	mad	Your backstab <<< ERADICATES >>> a deranged madman! [-194]
+1792632152	cmd	Alaric	53	29210	korzath2.are	fighting	61	0	fight	look		Twist in the Maze
+1792632152	cmd	Alaric	53	29210	korzath2.are	fighting	61	0	fight	worth		You have 965 platinum, 297 gold, 434 silver, 599 copper
+1792632183	cmd	Alaric	53	29210	korzath2.are	fighting	60	0	fight	inventory		You are carrying:
+1792632190	cmd	Alaric	53	29210	korzath2.are	standing	60	0	-	scan		You don't see anything near you.
+1792632194	cmd	Alaric	53	29211	korzath2.are	standing	60	0	-	west		Twist in the Maze
+1792632195	cmd	Alaric	53	29211	korzath2.are	standing	60	0	-	scan		a deranged madman                  -to the North.
+1792632199	cmd	Alaric	53	29212	korzath2.are	standing	60	0	-	north		Twist in the Maze
+1792632199	cmd	Alaric	53	29212	korzath2.are	standing	60	0	-	bs	mad	Your backstab >>> ANNIHILATES <<< a deranged madman! [-202]
+1792632208	cmd	Alaric	53	29212	korzath2.are	fighting	59	0	fight	worth		You have 970 platinum, 310 gold, 457 silver, 630 copper
+1792632248	cmd	Alaric	53	29212	korzath2.are	standing	50	0	-	look		Twist in the Maze
+1792632248	cmd	Alaric	53	29212	korzath2.are	fighting	49	0	fight	scan		an insane lieutenant               -to the North.
+1792632251	cmd	Alaric	53	29212	korzath2.are	fighting	49	0	fight	wear	exc	You stop using (Flaming) the Crystalline Sword of Justice.
