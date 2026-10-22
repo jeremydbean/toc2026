@@ -137,7 +137,9 @@ bool is_oracle_mob( CHAR_DATA *ch )
 }
 
 
-/* Killuminati is warded against every hostile rite, even a god's. */
+/* Who the creator is: Killuminati, by name. is_creator() and
+   is_creator_in_person() in handler.c are what everything else asks --
+   the rank and its protections follow the creator, not this name. */
 bool is_killuminati( CHAR_DATA *ch )
 {
     return ch != NULL && !IS_NPC(ch) && ch->name != NULL
@@ -145,15 +147,15 @@ bool is_killuminati( CHAR_DATA *ch )
 }
 
 
-/* The Oracle, Herbie and Killuminati: warded against the ordinary rites
-   (farslay scroll, fatality). The god-level FARSLAY command answers only to
-   the narrower is_killuminati(). */
+/* The Oracle, Herbie and the creator: warded against the ordinary rites
+   (farslay scroll, fatality). The god-level FARSLAY command and SLAY
+   answer only to the narrower is_creator_in_person(). */
 bool is_divinely_warded( CHAR_DATA *ch )
 {
     return is_oracle_mob( ch )
         || ( ch != NULL && IS_NPC(ch) && ch->pIndexData != NULL
           && ch->pIndexData->vnum == MOB_VNUM_HERBIE )
-        || is_killuminati( ch );
+        || is_creator_in_person( ch );
 }
 
 
@@ -178,7 +180,9 @@ void divine_ward_backfire( CHAR_DATA *ch, CHAR_DATA *victim )
     snprintf( buf, sizeof(buf),
               "%s struck at %s and was struck down by the ward.",
               ch->name, victim->name );
-    wizinfo( buf, LEVEL_IMMORTAL );
+    /* It names both: no lower than either one's WIZINVIS. */
+    wizinfo( buf, UMAX( staff_notice_level( ch, LEVEL_IMMORTAL ),
+                        staff_notice_level( victim, LEVEL_IMMORTAL ) ) );
     log_string( buf );
     raw_kill( ch, ch );
 }

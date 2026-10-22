@@ -39,7 +39,7 @@ class SourceTests(unittest.TestCase):
         self.assertIn('watch_log( victim, "died to %s"', internal)
         self.assertIn('watch_log( ch, "killed %s"', internal)
         # After the deaths that are not deaths.
-        self.assertLess(internal.index("is_killuminati( victim ) )\n    {"),
+        self.assertLess(internal.index("is_creator_in_person( victim ) )\n    {"),
                         internal.index('"died to %s"'))
 
     def test_every_purse_change_is_logged(self) -> None:

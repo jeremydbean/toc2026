@@ -8,6 +8,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The creator's protections follow the creator**, not the name: death
+  immunity, SLAY/FARSLAY backfire, the divine ward and the skipped death
+  snapshot ask `is_creator_in_person`. A mobile's killing blow on the
+  creator at any level now holds him at one hit point in `damage()`, as
+  for immortals -- before, he survived in `raw_kill_internal` but the kill
+  had already been logged, paid to the killer and charged in experience.
+  The ward's notice respects both names' WIZINVIS.
 - **Independent review, 2026-10-22**: only the creator gives trust 71;
   ADVANCE, SET CHAR and SET SKILL refuse a higher rank; SET DENY and
   PARDON DENY are creator-only; WHO and SOCKETS hide a switched hidden

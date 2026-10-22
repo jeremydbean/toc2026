@@ -647,9 +647,11 @@ class OracleWiringTests(unittest.TestCase):
         fight = self.read("src", "fight.c")
         # Unattackable Oracle (melee + spells).
         self.assertIn("is_oracle_mob", fight)
-        # Killuminati survives every instant death (raw_kill guard), and the
-        # warded set is immune to fatality.
-        self.assertIn("is_killuminati", fight)
+        # The creator survives every instant death (raw_kill guard), and the
+        # warded set is immune to fatality. The protections ask the creator
+        # check, never the name (owner, 2026-10-22).
+        self.assertIn("is_creator_in_person", fight)
+        self.assertNotIn("is_killuminati", fight)
         self.assertIn("is_divinely_warded", fight)
         # The god-level farslay command, warded only against Killuminati.
         magic2 = self.read("src", "magic2.c")
@@ -659,7 +661,8 @@ class OracleWiringTests(unittest.TestCase):
         # The shared ward helpers live in oracle.c.
         oracle = self.read("src", "oracle.c")
         self.assertIn("divine_ward_backfire", oracle)
-        self.assertIn("is_killuminati", oracle)
+        self.assertIn("is_creator_in_person", oracle)
+        self.assertNotIn("is_killuminati", magic2)
 
 
 if __name__ == "__main__":

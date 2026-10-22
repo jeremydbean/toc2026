@@ -906,6 +906,19 @@ bool is_creator( CHAR_DATA *ch )
     return is_killuminati( ch );
 }
 
+/*
+ * The creator's own body, for the protections that come with the rank
+ * (owner, 2026-10-22: tied to the creator, not to a name): he cannot
+ * die, SLAY and FARSLAY turn back on whoever throws them, the divine
+ * ward refuses fatalities and death rites, and his deaths leave no
+ * snapshot. Not a mobile he has switched into -- that body can still be
+ * slain, as it always could.
+ */
+bool is_creator_in_person( CHAR_DATA *ch )
+{
+    return ch != NULL && !IS_NPC(ch) && is_creator( ch );
+}
+
 
 /*
  * Retrieve a character's trusted level for permission checking.
@@ -915,7 +928,7 @@ int get_trust( CHAR_DATA *ch )
     if ( ch->desc != NULL && ch->desc->original != NULL )
 	ch = ch->desc->original;
 
-    if ( is_killuminati( ch ) )
+    if ( is_creator( ch ) )
 	return LEVEL_CREATOR;
 
     if ( ch->trust != 0 )

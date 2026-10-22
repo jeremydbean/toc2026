@@ -5658,7 +5658,7 @@ void do_farslay( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( is_killuminati( victim ) )
+    if ( is_creator_in_person( victim ) )
     {
         divine_ward_backfire( ch, victim );
         return;

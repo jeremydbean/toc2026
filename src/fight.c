@@ -1755,8 +1755,12 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     }
     if ( dam > 0 )
         apply_hyrule_contact_effect( ch, victim );
+    /* Immortals, and the creator at any level, are held at one hit
+       point: a blow never reaches the death below, so it records no kill,
+       pays no killer and costs no experience (owner, 2026-10-22).
+       Instant kills take raw_kill's own guard. */
     if ( !IS_NPC(victim)
-    &&   victim->level >= LEVEL_IMMORTAL
+    &&   ( victim->level >= LEVEL_IMMORTAL || is_creator_in_person( victim ) )
     &&   victim->hit < 1 )
 	victim->hit = 1;
     update_pos( victim );
@@ -3259,17 +3263,17 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
     /* A player's death moves everything they carry into a corpse and
        costs experience: keep a copy of them as they were, in case the
        death was a bug. */
-    if ( !IS_NPC(victim) && !is_killuminati( victim ) )
+    if ( !IS_NPC(victim) && !is_creator_in_person( victim ) )
     {
         player_snapshot_milestone( victim, "death", true );
         if ( ch != NULL && ch != victim && IS_NPC(ch) )
             progress_event( victim, "death", ch );  /* log/progress.tsv */
     }
 
-    /* Killuminati cannot be killed by any route -- a death trap, a death ray,
-       a slay, a fatality, a killing blow all arrive here, and all leave him at
-       a single hit point, shielded, rather than dead. */
-    if ( is_killuminati( victim ) )
+    /* The creator cannot be killed by any route -- a death trap, a death
+       ray, a slay, a fatality, a killing blow all arrive here, and all leave
+       him at a single hit point, shielded, rather than dead. */
+    if ( is_creator_in_person( victim ) )
     {
         stop_fighting( victim, true );
         victim->hit = 1;
@@ -5472,7 +5476,7 @@ void do_slay( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( is_killuminati(victim) )
+    if ( is_creator_in_person( victim ) )
     {
 	divine_ward_backfire( ch, victim );
 	return;

@@ -3170,6 +3170,15 @@ Owner, 2026-10-22. Levels still stop at `MAX_LEVEL`; above it are trusts.
   `is_killuminati` in `oracle.c`): `get_trust()` returns `LEVEL_CREATOR`
   (72) for him, through a switch too, while his level stays 70 and WHO
   shows 70. There is no flag and no grant: nobody else can become one.
+  **Nothing else asks the name.** The rank asks `is_creator`; the
+  protections that come with it ask `is_creator_in_person` (his own body,
+  never a mobile he has switched into): he cannot die -- `damage()` holds
+  him at one hit point like an immortal at any level, so a blow records
+  no kill and costs nothing, and `raw_kill_internal` turns every instant
+  death aside -- SLAY and FARSLAY strike down whoever throws them,
+  `is_divinely_warded` covers him against fatalities and death rites, and
+  his deaths take no snapshot. Making the creator something other than a
+  name is then one function's change.
 - **TRUST gives up to `LEVEL_TRUST_MAX` (71)**, limited to the giver's
   own trust, so only the creator gives 71; `get_trust` caps any stored
   trust at 71. TRUST refuses a target who outranks the giver. 71 outranks

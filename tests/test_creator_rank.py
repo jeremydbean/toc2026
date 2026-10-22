@@ -176,6 +176,40 @@ class CreatorRankTests(unittest.TestCase):
         self.assertRegex(saved, r"(?m)^Levl 70$")
         self.assertNotRegex(saved, r"(?m)^HMV\s+123 ")
 
+    def test_the_creator_cannot_die_and_turns_a_slay_back(self) -> None:
+        """The protections follow the creator (owner, 2026-10-22): a SLAY
+        aimed at him strikes down whoever threw it, and a mobile's blows
+        hold him at one hit point -- no death, no kill recorded."""
+        with LiveMud() as mud:
+            for name in ("Killuminati", "Zimpl"):
+                make(mud, name)
+            # Level 20: combat keeps any level 70 at one hit point on its
+            # own, so only a mortal body reaches the death itself. The
+            # creator is a name, not a level -- he is still the creator.
+            patch_player_file(mud, "Killuminati", Levl=20)
+            with mud.connect(timeout=120) as creator, mud.connect(timeout=120) as impl:
+                login(creator, "Killuminati", PASSWORD)
+                login(impl, "Zimpl", PASSWORD)
+                run(creator, "wizinvis")                 # visible, so he can be aimed at
+                self.assertIn("redirecting the strike back", run(impl, "slay killuminati", 2.0))
+                run(creator, "goto 4202")                # the Temple refuses a fight
+                run(creator, "load mob 29012")
+                run(creator, "set char killuminati hp 1")
+                mark = len(creator.transcript)
+                run(creator, "kill guard", 0.5)
+                creator.drain(20.0)                      # several rounds at one hit point
+                fight = creator.transcript[mark:]
+                self.assertIn("security guard", fight)
+                self.assertNotIn("You have been KILLED", fight)
+                run(creator, "purge guard")
+                self.assertIn("Killuminati", run(creator, "score"))
+                for client in (creator, impl):
+                    client.send("quit")
+                    client.wait_closed()
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
+        self.assertIn("Zimpl struck at Killuminati and was struck down by the ward.", log)
+        self.assertNotIn("Killuminati killed by", log)
+
 
 class HuntingAccessTests(unittest.TestCase):
     """The Coven's underbrush is closed, not locked, from both sides, and
