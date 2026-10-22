@@ -143,6 +143,20 @@ def unhelpful_help(lines):
     return found
 
 
+def help_misses(rows):
+    """Counter of HELP topics that found nothing ("No help on that word"),
+    from the journal's cmd rows: a topic players look for and the game
+    does not have."""
+    misses = Counter()
+    for r in rows:
+        if r[1] == "cmd" and len(r) >= 13 and r[10] == "help" \
+                and r[12].startswith("No help on that word"):
+            topic = r[11].strip().strip("'\"").lower()
+            if topic:
+                misses[topic] += 1
+    return misses
+
+
 def journal_repeats(rows, least: int = 5):
     """Runs of one command typed `least` or more times, outside a fight.
 
@@ -366,6 +380,13 @@ def journal_report(args, since, buffs=None) -> None:
     for (command, reply), n in said_no.most_common(15):
         print(f"    x{n:<4} {command}: {reply}")
     if not said_no:
+        print("    (none)")
+
+    misses = help_misses(commands)
+    print("  HELP that found nothing:")
+    for topic, n in misses.most_common(15):
+        print(f"    x{n:<4} help {clean(topic)[:60]}")
+    if not misses:
         print("    (none)")
 
     print("  repeats (5+ in a row, outside a fight):")

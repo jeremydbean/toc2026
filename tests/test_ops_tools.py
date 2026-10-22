@@ -177,6 +177,15 @@ class LogReportTests(unittest.TestCase):
                          [(t + timedelta(seconds=7), "Trentlin", "heroquest")],
                          "once per reading, and only soon after it")
 
+    def test_help_that_found_nothing(self) -> None:
+        def row(topic, reply):
+            return ["1", "cmd", "Zed", "5", "1", "a.are", "standing", "100", "0", "-",
+                    "help", topic, reply]
+        rows = [row("heroquest", "No help on that word."),
+                row("'heroquest'", "No help on that word.  Did you mean: HERO?"),
+                row("quest", "AQUEST QUEST QUESTING")]
+        self.assertEqual(self.report.help_misses(rows), {"heroquest": 2})
+
     def test_repeats_in_a_fight_are_fighting(self) -> None:
         def row(epoch, command, fight="-", kind="cmd"):
             return [str(epoch), kind, "Zed", "50", "1", "a.are",
