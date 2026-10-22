@@ -155787,3 +155787,8 @@ Thu Oct 22 04:16:05 2026 :: EOF encountered on read.
 Thu Oct 22 04:17:13 2026 :: Sock.sinaddr:  18.116.101.220
 Thu Oct 22 04:17:13 2026 :: EOF encountered on read.
 Thu Oct 22 04:17:41 2026 :: Sock.sinaddr:  18.116.101.220
+Thu Oct 22 04:21:05 2026 :: Black market: the dealer appeared with 5 items (stock 1792642865), for 36 minutes.
+Thu Oct 22 04:21:08 2026 :: Sock.sinaddr:  5.161.117.52
+Thu Oct 22 04:21:09 2026 :: EOF encountered on read.
+Thu Oct 22 04:23:10 2026 :: Black market: the dealer vanished from room 6370 (The Donjonkeep, arac.are) (wandering).
+Thu Oct 22 04:23:14 2026 :: Treasure goblin: vanished from room 25208 (The Eastern Gate of Nethril., mushroom.are) (too long in one area).
