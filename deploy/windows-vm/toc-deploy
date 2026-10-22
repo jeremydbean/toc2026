@@ -27,6 +27,20 @@ DRY=0
 
 say() { printf '\n== %s\n' "$*"; }
 
+# Append one line to the webadmin queue under the fcntl lock the game and
+# the dashboard take: an unlocked append that lands while the game is
+# reading the queue and truncating it is lost. Plain append without python3.
+queue_append() {
+    if command -v python3 >/dev/null 2>&1; then
+        python3 -c 'import fcntl, sys
+with open(sys.argv[1], "a", encoding="ascii") as f:
+    fcntl.lockf(f.fileno(), fcntl.LOCK_EX)
+    f.write(sys.argv[2] + "\n")' "$1" "$2" 2>/dev/null
+    else
+        printf '%s\n' "$2" >> "$1" 2>/dev/null
+    fi
+}
+
 # How it ended, for toc-auto-deploy's status line: any status but these
 # means it stopped before the game was touched.
 EXIT_ROLLED_BACK=10        # new code failed; the old is back and healthy
@@ -188,15 +202,13 @@ fi
 # worth sending.
 q="$CURRENT/area/webadmin.queue"
 if [ -f "$q" ]; then
-    printf 'announce|%s\n' \
-        "Update incoming - saving everyone now, back in under a minute." \
-        >> "$q" 2>/dev/null || true
+    queue_append "$q" \
+        "announce|Update incoming - saving everyone now, back in under a minute." || true
     sleep 4
-    printf 'command|%s\n' "fsave" >> "$q" 2>/dev/null || true
+    queue_append "$q" "command|fsave" || true
     sleep 6
-    printf 'announce|%s\n' \
-        "Everyone saved. Restarting - reconnect in a moment." \
-        >> "$q" 2>/dev/null || true
+    queue_append "$q" \
+        "announce|Everyone saved. Restarting - reconnect in a moment." || true
     sleep 3
 else
     sleep 6

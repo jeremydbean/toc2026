@@ -2418,8 +2418,10 @@ void do_note( CHAR_DATA *ch, char *argument )
         save_notes( );
         send_to_char( "Note sent.\n\r", ch );
 
-        snprintf( buf, sizeof(buf), "%s posted a note to %s: %s",
-                  ch->name, pnote->to_list, pnote->subject );
+        /* Who wrote to whom, never what: log/ is published, and a note to
+           one person is mail (audit lead, 2026-10-22). */
+        snprintf( buf, sizeof(buf), "%s posted a note to %s.",
+                  ch->name, pnote->to_list );
         log_string( buf );
         return;
     }

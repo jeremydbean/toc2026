@@ -3402,6 +3402,23 @@ the old code. The rules they leave:
   checkout, holds it, `/` or `$HOME`; `.env` values have one level of
   matching quotes stripped, as Compose does; `update` ignores the state
   folder wherever it is, its pre-restore copy and restore leftovers.
+- **The audit's leads, followed up** (`tests/test_audit_leads.py`): NOTE
+  is a private command (`command_is_private`), so a note's subject and
+  body never reach `log/`, and the "posted a note" line names no subject;
+  a faded ENCHANT ARMOR keeps the piece, damaged, instead of taking it out
+  of the inventory into nowhere; RESETPWD checks the name with
+  `prestore_name_ok` and the target with `player_in_game`, refusing a
+  login in progress; STASH refuses a container holding anything on a
+  timer (`stash_holds_timed`); an overlong input line is cut short without
+  discarding the lines queued behind it; `close_socket` frees the
+  descriptor's `outbuf` and pager text, and `write_to_buffer` ignores a
+  descriptor whose buffer is gone; ANEW checks its write; a quest or daily
+  reward the purse refuses is said and logged, never announced as paid;
+  dashboard queue payloads are ASCII (typographic punctuation is
+  transliterated, anything else refused); every shell writer appends to
+  the queue under the fcntl lock the game takes while it truncates it;
+  and `toc.ps1 update` finishes in the newly pulled launcher, as `toc.sh`
+  does. PROJECT already calls `do_return` (lead U10 was wrong).
 
 ## Completion Standard
 

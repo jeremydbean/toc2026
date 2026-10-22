@@ -2,7 +2,8 @@
 param(
     [Parameter(Position = 0)]
     [ValidateSet('start', 'build', 'stop', 'restart', 'status', 'logs', 'doctor', 'update',
-        'open', 'play', 'admin', 'promote', 'backup', 'restore', 'uninstall', 'help')]
+        'open', 'play', 'admin', 'promote', 'backup', 'restore', 'uninstall', 'help',
+        '_finish-update')]
     [string]$Action = 'start',
     [Parameter(Position = 1)]
     [string]$Target = '',
@@ -173,9 +174,20 @@ switch ($Action) {
             if ($LASTEXITCODE -ne 0) {
                 throw 'Git could not fast-forward this installation.'
             }
-        } else {
-            Write-Host 'This copy is not a Git checkout; only the game image is updated.'
+            # Finish with the launcher just pulled, which may know more --
+            # as toc.sh does with exec, so a fix to the launcher applies to
+            # the update that brings it. & re-reads the file from disk.
+            & (Join-Path $script:TocRepoRoot 'toc.ps1') '_finish-update'
+            return
         }
+        Write-Host 'This copy is not a Git checkout; only the game image is updated.'
+        Install-TocImage
+        Invoke-Compose -ArgumentList @('up', '-d', '--no-build', 'game') | Out-Null
+        Wait-TocGame
+        Write-TocEndpoints
+    }
+    '_finish-update' {
+        Initialize-TocRun
         Install-TocImage
         Invoke-Compose -ArgumentList @('up', '-d', '--no-build', 'game') | Out-Null
         Wait-TocGame

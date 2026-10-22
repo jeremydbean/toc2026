@@ -3,6 +3,15 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261022d 2026-10-22
+More fixes from the same audit:
+- A failed ENCHANT ARMOR that leaves a piece "glowing blue, then fading"
+  now leaves it in your pack, damaged. It used to vanish.
+- STASH refuses a bag holding something that will rot, which went in and
+  quietly crumbled away there.
+- A line too long to send no longer swallows the commands typed after it.
+- Notes are private: what you write in one is never kept in the logs.
+
 @ 20261022c 2026-10-22
 A round of fixes from a code audit:
 - Haggling for a part-used wand or staff takes money off its real price;

@@ -212,6 +212,40 @@ class PlaylogLiveTests(unittest.TestCase):
             for row in read_back:
                 self.assertEqual(row[12], "(withheld)", row)
 
+    def test_a_note_to_one_person_stays_private(self) -> None:
+        """Audit lead 2026-10-22: NOTE was public, so a note's subject and
+        every line of its body reached toc.log and the journal as they
+        were typed, and NOTE LIST put the subject in the reader's row --
+        mail to one person, published every five minutes."""
+        with LiveMud() as mud:
+            for name in ("Zwriter", "Zreader"):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PASSWORD)
+                    client.drain(1.0)
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
+                patch_player_file(mud, name, Levl=10, Room=TEMPLE)
+            with mud.connect(timeout=120) as writer:
+                login(writer, "Zwriter", PASSWORD)
+                for line in ("note to zreader", "note subject zsecretsubject",
+                             "note + zebrabodytext", "note send"):
+                    writer.send(line)
+                    writer.drain(1.2)
+                writer.send("quit")
+                self.assertTrue(writer.wait_closed())
+            with mud.connect(timeout=120) as reader:
+                login(reader, "Zreader", PASSWORD)
+                for line in ("note list", "note read 1"):
+                    reader.send(line)
+                    reader.drain(1.5)
+                self.assertIn("zebrabodytext", reader.transcript, "the note arrived")
+                reader.send("quit")
+                self.assertTrue(reader.wait_closed())
+            for sink in ((mud.root / "log" / "play.tsv").read_text(encoding="latin-1"),
+                         (mud.root / "log" / "toc.log").read_text(encoding="latin-1")):
+                for word in ("zsecretsubject", "zebrabodytext"):
+                    self.assertNotIn(word, sink)
+
     @unittest.skipIf(os.environ.get("TOC_SERVER_BINARY"),
                      "a sanitizer build reports crashes itself")
     def test_a_crash_leaves_the_last_commands(self) -> None:

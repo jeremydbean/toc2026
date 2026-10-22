@@ -804,6 +804,24 @@ class WebAdminApiTests(unittest.TestCase):
                 self.assertEqual(rejected.status_code, 400)
             self.assertEqual(queue_path.read_text(encoding="utf-8"), original_queue)
 
+            # The game sends only ASCII; clients decode Latin-1, so a
+            # pasted em dash reached players as mojibake.
+            dashed = client.post(
+                "/api/announce",
+                json={"message": "Back soon \u2014 \u201cbrb\u201d\u2026"},
+                headers=headers,
+            )
+            self.assertEqual(dashed.status_code, 200)
+            self.assertIn('announce|Back soon -- "brb"...',
+                          queue_path.read_text(encoding="utf-8"))
+            accented = client.post(
+                "/api/wizinfo",
+                json={"message": "caf\u00e9", "level": 62},
+                headers=headers,
+            )
+            self.assertEqual(accented.status_code, 400)
+            self.assertTrue(queue_path.read_text(encoding="utf-8").isascii())
+
             bad_level = client.post(
                 "/api/wizinfo",
                 json={"message": "Test", "level": 71},

@@ -601,6 +601,20 @@ toc_promote_file() {
     return 0
 }
 
+# Append one line to the webadmin queue under the fcntl lock the game and
+# the dashboard take: an unlocked append that lands while the game is
+# reading the queue and truncating it is lost. Plain append without python3.
+toc_queue_append() {
+    if command -v python3 >/dev/null 2>&1; then
+        python3 -c 'import fcntl, sys
+with open(sys.argv[1], "a", encoding="ascii") as f:
+    fcntl.lockf(f.fileno(), fcntl.LOCK_EX)
+    f.write(sys.argv[2] + "\n")' "$1" "$2" 2>/dev/null
+    else
+        printf '%s\n' "$2" >> "$1" 2>/dev/null
+    fi
+}
+
 # A dated archive of .env and the state folder. The game is asked to save
 # everyone first when it is running, so the archive holds this minute.
 toc_backup_archive() {
@@ -613,7 +627,7 @@ toc_backup_archive() {
     archive="$out_dir/toc-backup-$stamp.tar.gz"
     queue="$state/area/webadmin.queue"
     if [ -f "$queue" ]; then
-        printf 'command|fsave\n' >> "$queue" 2>/dev/null && sleep 3
+        toc_queue_append "$queue" "command|fsave" && sleep 3
     fi
     tar -czf "$archive" -C "$TOC_REPO_ROOT" .env \
         -C "$(dirname "$state")" --exclude "$(basename "$state")/venv" \

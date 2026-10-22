@@ -295,6 +295,7 @@ static void complete_daily_quest( CHAR_DATA *ch, CHAR_DATA *questman,
     int points = DAILY_POINTS_PER_QUEST;
 
     int streak_bonus = 0;
+    bool paid;
 
     quest_daily_rollover(ch);
     if ( ch->pcdata->daily_done < 100 )
@@ -341,12 +342,21 @@ static void complete_daily_quest( CHAR_DATA *ch, CHAR_DATA *questman,
     }
 
     playlog_coin_as( "dailies" );
-    gain_copper(ch, UMAX(1L, reward));
+    paid = gain_copper(ch, UMAX(1L, reward));
     playlog_coin_as( NULL );
     format_price( UMAX(1L, reward), price, sizeof(price) );
     do_say(questman, "Your daily task is done. Well worked!");
-    snprintf(buf, sizeof(buf), "Here's your %s - and %d daily point%s.",
-        price, points, points == 1 ? "" : "s");
+    /* A purse at the ceiling refuses the coin; say so rather than
+       announce a payment that never landed. */
+    if ( paid )
+        snprintf(buf, sizeof(buf), "Here's your %s - and %d daily point%s.",
+            price, points, points == 1 ? "" : "s");
+    else
+    {
+        bug( "Daily reward not paid: purse full (%d).", (int)UMIN(reward, INT_MAX) );
+        snprintf(buf, sizeof(buf), "Your purse can hold no more coin - but here are %d daily point%s.",
+            points, points == 1 ? "" : "s");
+    }
     do_say(questman, buf);
     if ( ch->pcdata->daily_done == DAILY_QUESTS_PER_DAY )
     {
@@ -571,6 +581,7 @@ static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
     long reward = number_range(kills_min, kills_max)
                 * black_market_kill_value( ch->level );
     int streak_bonus = quest_streak_bonus(ch);
+    bool paid;
 
     /* A daily is paid in daily points, apart from all of this. */
     if ( ch->questdaily )
@@ -639,13 +650,20 @@ static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
     if ( completed_last_minute )
         achievement_record_event(ch, ACHIEVEMENT_EVENT_QUEST_LAST_MINUTE, true);
 
-    gain_copper(ch, reward);
+    paid = gain_copper(ch, reward);
     ch->questgamble_pts = (sh_int)pointreward;
     format_price( reward, price, sizeof(price) );
-    watch_log( ch, "quest complete: %s, %d quest points%s%s (streak bonus %d%%)",
-        price, pointreward, completed_rush ? ", rush" : "",
+    watch_log( ch, "quest complete: %s%s, %d quest points%s%s (streak bonus %d%%)",
+        price, paid ? "" : " (not paid: purse full)", pointreward,
+        completed_rush ? ", rush" : "",
         completed_emergency ? ", emergency" : "", streak_bonus );
-    snprintf(buf, sizeof(buf), "Here's your %s - well earned!", price);
+    if ( paid )
+        snprintf(buf, sizeof(buf), "Here's your %s - well earned!", price);
+    else
+    {
+        bug( "Quest reward not paid: purse full (%d).", (int)UMIN(reward, INT_MAX) );
+        snprintf(buf, sizeof(buf), "Your purse can hold no more coin - but the points are yours.");
+    }
     do_say(questman, buf);
     send_to_char(
         "{09.-[ Double-or-Nothing Gamble Offer ]-------------------------.{00\n\r", ch);

@@ -6158,7 +6158,15 @@ void do_anew( CHAR_DATA *ch, char *argument )
              "#ROOMS\n#0\n\n"
              "#$\n",
              argument, ch->name != NULL ? ch->name : "All", lo, hi );
-    fclose( fp );
+    /* A full disk shows itself at the close; an area listed with a
+       truncated file would stop the next boot. */
+    if ( !file_write_finished( fp ) )
+    {
+        unlink( slug );
+        snprintf( buf, sizeof(buf), "Could not write %s; nothing was created.\n\r", slug );
+        send_to_char( buf, ch );
+        return;
+    }
 
     if ( !append_area_to_list( BUILT_AREA_LIST, slug, why, sizeof(why) ) )
     {
@@ -12455,11 +12463,28 @@ void do_resetpwd( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    /* Must be offline */
-    if ( get_char_world( ch, arg_name ) != NULL )
+    /* A name a player could have, before it goes into a path: anything
+       else reached the file system ("../..."). */
+    if ( !prestore_name_ok( arg_name ) )
     {
-        send_to_char( "That player is currently online.  Ask them to use 'password' directly.\n\r", ch );
+        send_to_char( "No such character is saved.\n\r", ch );
         return;
+    }
+
+    /* Must be offline -- by player_in_game, never by sight: get_char_world
+       asks can_see, so somebody wizinvis above the caller, or at the
+       password prompt, looked offline, and their next save put the old
+       password back (audit lead, 2026-10-22). */
+    {
+        bool logging_in = false;
+
+        if ( player_in_game( capitalize( arg_name ), &logging_in ) != NULL )
+        {
+            send_to_char( logging_in
+                ? "That player is logging in right now.  Try again in a moment.\n\r"
+                : "That player is currently online.  Ask them to use 'password' directly.\n\r", ch );
+            return;
+        }
     }
 
     /* Validate new password before touching the file */

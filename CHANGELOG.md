@@ -8,6 +8,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The audit's leads, followed up**: notes kept out of the public logs,
+  a faded ENCHANT ARMOR keeps the piece, RESETPWD refuses a path or a
+  login in progress, STASH refuses a bag holding something timed, an
+  overlong line no longer drops the input after it, closed connections
+  free their output buffers, ANEW and quest payouts check their results,
+  dashboard messages are ASCII, the shell's queue writes take the game's
+  lock, and the PowerShell `update` finishes in the pulled launcher
+  (`tests/test_audit_leads.py`).
 - **The 2026-10-22 audit, fixed** (28 findings; the report is summarised
   under "Contracts From The 2026-10-22 Audit" in AGENTS.md). A client that
   stops reading no longer freezes the game; a login uses the file as it is

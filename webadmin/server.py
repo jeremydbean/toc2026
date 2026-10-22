@@ -1326,8 +1326,21 @@ class WizinfoRequest(BaseModel):
     level: Optional[int] = None
 
 
+# Typographic punctuation an operator pastes, in the ASCII the game
+# writes instead. Clients are told ISO-8859-1, so the UTF-8 bytes of an
+# em dash reached players as three Latin-1 characters.
+QUEUE_ASCII_REPLACEMENTS = {
+    "\u2014": "--", "\u2013": "-", "\u2012": "-", "\u2010": "-", "\u2011": "-",
+    "\u2018": "'", "\u2019": "'", "\u201a": "'", "\u201b": "'",
+    "\u201c": '"', "\u201d": '"', "\u201e": '"',
+    "\u2026": "...", "\u00a0": " ", "\u2022": "*",
+}
+
+
 def validated_queue_payload(value: str, label: str, max_length: int) -> str:
     """Validate one payload field for the line-oriented queue protocol."""
+    for fancy, plain in QUEUE_ASCII_REPLACEMENTS.items():
+        value = value.replace(fancy, plain)
     value = value.strip()
     if not value:
         raise HTTPException(status_code=400, detail=f"{label} cannot be empty")
@@ -1340,6 +1353,11 @@ def validated_queue_payload(value: str, label: str, max_length: int) -> str:
         raise HTTPException(
             status_code=400,
             detail=f"{label} contains unsupported control characters",
+        )
+    if not value.isascii():
+        raise HTTPException(
+            status_code=400,
+            detail=f"{label} must be plain ASCII: the game sends only ASCII",
         )
     return value
 

@@ -2470,7 +2470,9 @@ void spell_enchant_armor( int sn, int level, CHAR_DATA *ch, void *vo )
     {
 	act("$p glows blue, then fades...",ch,obj,NULL,TO_CHAR);
 	act("$p glows blue, then fades...",ch,obj,NULL,TO_ROOM);
-        obj_from_char(obj);
+        /* Damaged, and still theirs. It was taken out of the inventory
+           and put nowhere: lost to the player and left in object_list
+           with no owner, room or container (audit lead, 2026-10-22). */
         obj->condition = 1;
         SET_BIT(obj->extra_flags, ITEM_DAMAGED);
 	return;

@@ -600,8 +600,11 @@ static bool command_is_private( const char *name )
        2026-10-22 that was three: "history tell" put the text of somebody
        else's tell into log/play.tsv, which reaches a public repository
        within five minutes (audit, 2026-10-22). */
+    /* NOTE too: a note to one person is mail, and both its writing (the
+       subject and every line typed) and its reading (LIST shows subjects)
+       reached the watch log and the journal (audit lead, 2026-10-22). */
     static const char * const private_cmds[] =
-    { "tell", "reply", "gtell", ";", "history", "replay", NULL };
+    { "tell", "reply", "gtell", ";", "history", "replay", "note", NULL };
     int i;
 
     if ( name == NULL )

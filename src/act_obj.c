@@ -680,6 +680,19 @@ void stash_extract( CHAR_DATA *ch )
 }
 
 /* What the next twenty-five slots cost, in copper. */
+/* Whether anything in obj, at any depth, is on a timer. The stash
+   refused a timed object only at the top, so food or a potion in a bag
+   rotted in storage where nobody saw it go. */
+static bool stash_holds_timed( OBJ_DATA *obj )
+{
+    OBJ_DATA *in;
+
+    for ( in = obj->contains; in != NULL; in = in->next_content )
+        if ( in->timer > 0 || stash_holds_timed( in ) )
+            return true;
+    return false;
+}
+
 static long stash_upgrade_copper( CHAR_DATA *ch )
 {
     long step = ( ch->pcdata->stash_max - STASH_SLOTS_START )
@@ -806,6 +819,7 @@ void do_stash( CHAR_DATA *ch, char *argument )
                 if ( obj->item_type == ITEM_CORPSE_PC
                   || obj->item_type == ITEM_CORPSE_NPC
                   || obj->timer > 0
+                  || stash_holds_timed( obj )
                   || !can_drop_obj( ch, obj ) )
                     continue;
 
@@ -860,6 +874,13 @@ void do_stash( CHAR_DATA *ch, char *argument )
         {
             send_to_char( "That will not last long enough to be worth "
                           "keeping.\n\r", ch );
+            return;
+        }
+
+        if ( stash_holds_timed( obj ) )
+        {
+            act( "Something in $p will not last long enough to be worth "
+                 "keeping.", ch, obj, NULL, TO_CHAR );
             return;
         }
 

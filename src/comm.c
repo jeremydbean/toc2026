@@ -1576,6 +1576,18 @@ void close_socket( DESCRIPTOR_DATA *dclose )
 
     close( dclose->descriptor );
     free_string( dclose->host );
+    /* The pool keeps the descriptor, not its buffers: new_descriptor
+       allocates a fresh outbuf, so these leaked on every connection --
+       the healthcheck alone opens one every two minutes. */
+    if ( dclose->outbuf != NULL )
+        free_mem( dclose->outbuf, dclose->outsize );
+    dclose->outbuf      = NULL;
+    dclose->outtop      = 0;
+    if ( dclose->showstr_head != NULL )
+        free_mem( dclose->showstr_head,
+            clamp_size_to_int( strlen(dclose->showstr_head) + 1u ) );
+    dclose->showstr_head  = NULL;
+    dclose->showstr_point = NULL;
     dclose->next        = descriptor_free;
     descriptor_free     = dclose;
     return;
@@ -1841,14 +1853,15 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
                 MAX_INPUT_LENGTH - 2 );
             write_to_buffer( d, notice, 0 );
 
-	    /* skip the rest of the line */
+	    /* Skip the rest of the line, and only this line: the newline
+	       is known to be there (checked above), and terminating the
+	       buffer after it threw away every line queued behind -- an
+	       alias's remaining commands, or the next thing typed. */
 	    for ( ; d->inbuf[i] != '\0'; i++ )
 	    {
 		if ( d->inbuf[i] == '\n' || d->inbuf[i] == '\r' )
 		    break;
 	    }
-	    d->inbuf[i]   = '\n';
-            d->inbuf[i+1] = '\0';
             break;
         }
 
@@ -2360,8 +2373,9 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
     int prefix_len = 0;
     const char *prefix = "";
 
-    /* A connection being dropped for a failed write takes nothing more. */
-    if ( d->write_failed )
+    /* A connection being dropped for a failed write takes nothing more,
+       nor does one already closed (its buffer went with it). */
+    if ( d->write_failed || d->outbuf == NULL )
         return;
 
     /*
