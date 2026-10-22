@@ -111,6 +111,23 @@ class PlayerViewTests(unittest.TestCase):
         self.assertRegex(daily, r"Next daily:\s+in \d+ minutes? \(a daily was given up\)", daily)
         self.assertIn("00:00 UTC", daily, daily)
 
+    def test_daily_status_on_an_old_day_changes_nothing(self) -> None:
+        """DAILY STATUS rolled yesterday's finished set over before
+        showing it, so a look reset the saved count (review, 2026-10-22).
+        It shows today's count and leaves the file as it was."""
+        yesterday = int(time.time()) // 86400 - 1
+        daily = f"17 {yesterday} 3 5 {yesterday}"
+        with LiveMud() as mud:
+            make(mud, "Zdailyold", Levl=20, Room=TEMPLE, Daily=daily)
+            with mud.connect(timeout=120) as client:
+                login(client, "Zdailyold", PW)
+                status = run(client, "aquest daily status")
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            after = (mud.player_dir / "Zdailyold").read_text(encoding="latin-1")
+        self.assertRegex(status, r"Done today:\s+0 of 3", status)
+        self.assertRegex(after, rf"(?m)^Daily {daily}$")
+
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class StaffViewTests(unittest.TestCase):

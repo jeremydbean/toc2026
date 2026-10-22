@@ -10,6 +10,7 @@ never a name, and the finest place written is the area file.
 """
 from __future__ import annotations
 
+import sys
 import unittest
 
 from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
@@ -54,8 +55,14 @@ class ProgressLogTests(unittest.TestCase):
 
                 run(setter, f"load mob {WORKER}")
                 run(hunter, "kill worker", 1.0)
+                # Watch everything since the first FLEE: a success that
+                # arrives late lands in the next command's leading drain,
+                # and a slice per command missed it and fled on and on.
+                mark = len(hunter.transcript)
                 for _ in range(30):
-                    if "You flee from combat" in run(hunter, "flee", 2.0):
+                    hunter.send("flee")
+                    hunter.drain(2.0)
+                    if "You flee from combat" in hunter.transcript[mark:]:
                         break
                 else:
                     self.fail("thirty tries never fled:\n" + hunter.transcript[-1500:])
@@ -121,6 +128,24 @@ class ProgressReportTests(unittest.TestCase):
         self.assertIn("900", printed)               # 1800 xp over two combat minutes
         self.assertNotIn("4242", printed)
         self.assertNotIn("5353", printed)
+
+    def test_an_untimed_kill_does_not_inflate_the_rate(self) -> None:
+        """A kill with no measured encounter (-1, or 0) adds to the total
+        experience but not to the rate: 100 xp over one timed minute is
+        100 a minute, whatever the untimed 900 beside it (review,
+        2026-10-22)."""
+        from datetime import datetime, timezone
+        from pathlib import Path
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
+        import log_report
+
+        text = ("1792700000\tkill\t4242\t30\t3\t0\t80\t100\t24112\t32\tcoven.are\t60000\t100\t0\t100\t1\n"
+                "1792700100\tkill\t4242\t30\t3\t0\t80\t100\t24112\t32\tcoven.are\t-1\t900\t0\t900\t1\n"
+                "1792700200\tkill\t4242\t30\t3\t0\t80\t100\t24112\t32\tcoven.are\t0\t50\t0\t50\t1\n")
+        foe = log_report.progress_summary(text, datetime(2026, 1, 1, tzinfo=timezone.utc))[
+            "by_foe"][("coven.are", "24112", "32")]
+        self.assertEqual((foe["xp"], foe["timed_xp"], foe["ms"], foe["untimed"]), (1050, 100, 60000, 2))
+        self.assertEqual(foe["timed_xp"] / (foe["ms"] / 60000), 100)
 
 
 if __name__ == "__main__":

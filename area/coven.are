@@ -2452,7 +2452,7 @@ D 0 24130 1 1                ; A Small Room Close East
 D 0 24131 2 1                ; A Small Room Close South
 D 0 24132 3 1                ; A Small Room Close West
 D 0 24137 1 2                ; Inside the Dark Cave Lock East
-D 0 24143 3 2                ; The Outer Circle of Coven Lock West
+D 0 24143 3 1                ; The Outer Circle of Coven Close West (open to all, 2026-10-22)
 D 0 24155 4 3		     ; Into the Fire Pickproof Up
 D 0 24125 0 1                ; Main Street, Dunkeldorf Open North
 D 0 24126 5 3                ; Secret Room to Hideout Pickproof Up

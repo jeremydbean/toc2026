@@ -213,6 +213,8 @@ def full(path) -> None:
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
+@unittest.skipUnless(os.path.exists("/dev/full"),
+                     "needs /dev/full to fail a write as a full disk does (Linux CI has it)")
 class RewriteInPlaceTests(unittest.TestCase):
     def test_a_failed_write_keeps_the_note_board_and_the_ban_list(self) -> None:
         """save_notes and ban_update truncated their file and wrote it
@@ -298,6 +300,39 @@ class StateSyncDeployLockTests(unittest.TestCase):
         self.assertIn("pushed", free.stdout)
         self.assertEqual(log.count("State sync:"), 1, log)
 
+    @unittest.skipIf(hasattr(os, "geteuid") and os.geteuid() == 0,
+                     "root reads any file, so a lock cannot be made unreadable")
+    def test_an_unreadable_deploy_lock_fails_closed(self) -> None:
+        """A lock that exists but cannot be read cannot be asked, so the
+        sync skips rather than copy past a deploy (review, 2026-10-22)."""
+        import subprocess
+        import tempfile
+        from pathlib import Path
+
+        script = Path(__file__).resolve().parent.parent / "deploy" / "windows-vm" / "toc-state-sync"
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            lock = root / "deploy.lock"
+            lock.write_text("")
+            lock.chmod(0)
+            env = dict(os.environ, TOC_ROOT=str(root / "live"), STATE_REPO=str(root / "state"),
+                       REMOTE=str(root / "remote.git"), BRANCH="main",
+                       GIT_SSH_KEY=str(root / "key"), LOCK_FILE=str(root / "sync.lock"),
+                       TOC_DEPLOY_LOCK=str(lock))
+            source = script.read_text()
+            # The script's own lock block, run alone: the clone and fetch
+            # before it need a remote this test does not build.
+            block = source[source.index('DEPLOY_LOCK="${TOC_DEPLOY_LOCK'):
+                           source.index('for d in $STATE_DIRS; do')]
+            probe = root / "probe.sh"
+            probe.write_text("set -eu\n" + block + 'echo "copied"\n')
+            result = subprocess.run(["sh", str(probe)], env=env, capture_output=True, text=True)
+            lock.chmod(0o600)
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("cannot read", result.stderr)
+        self.assertNotIn("copied", result.stdout)
+
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class HeatMetalTests(unittest.TestCase):
@@ -344,7 +379,9 @@ class HeatMetalTests(unittest.TestCase):
                 # Nothing to heat: the true no-op. A save says "resists"
                 # instead, so cast until one is not resisted.
                 for _ in range(6):
-                    nothing = run(caster, "cast 'heat metal' guard", 1.5)
+                    # Four seconds: a round of the last cast's lag can
+                    # still be owed, and the reply waits it out.
+                    nothing = run(caster, "cast 'heat metal' guard", 4.0)
                     run(god, "peace", 0.4)
                     caster.drain(2.0)
                     if "resists" not in nothing:

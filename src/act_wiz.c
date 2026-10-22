@@ -1013,6 +1013,12 @@ void do_pardon( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( arg2, "deny" ) )
     {
+	/* DENY and UNDENY are the creator's (2026-10-22); so is this. */
+	if ( !is_creator( ch ) )
+	{
+	    send_to_char( "Only the creator lifts a denial.\n\r", ch );
+	    return;
+	}
 	if ( rank_protects( ch, victim ) )
 	{
 	    send_to_char( "You failed.\n\r", ch );
@@ -3279,7 +3285,9 @@ void do_oload( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    level = get_trust(ch); /* default */
+    /* Objects stop at MAX_LEVEL; trust above it (71, the creator's 72)
+       is rank, not an object level. */
+    level = UMIN( get_trust(ch), MAX_LEVEL ); /* default */
 
     if ( arg2[0] != '\0')  /* load with a level */
     {
@@ -3289,7 +3297,7 @@ void do_oload( CHAR_DATA *ch, char *argument )
 	  return;
 	}
 	level = atoi(arg2);
-	if (level < 0 || level > get_trust(ch))
+	if (level < 0 || level > UMIN( get_trust(ch), MAX_LEVEL ))
 	{
 	  send_to_char( "Level must be be between 0 and your level.\n\r",ch);
 	  return;
@@ -3305,7 +3313,7 @@ void do_oload( CHAR_DATA *ch, char *argument )
     if((pObjIndex->item_type == ITEM_PORTAL
      || pObjIndex->item_type == ITEM_MANIPULATION
      || pObjIndex->item_type == ITEM_SPELL_COMPONENT)
-     && level != 70)
+     && get_trust(ch) < MAX_LEVEL)
     {
       send_to_char("You can not load this item.\n\r",ch);
       return;
@@ -3499,6 +3507,15 @@ void do_advance( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* The requested level was checked against the caller's trust; the
+       victim's rank was not, so an implementor could demote trust 71 or
+       the creator (review, 2026-10-22). */
+    if ( victim != ch && rank_protects( ch, victim ) )
+    {
+	send_to_char( "They outrank you.\n\r", ch );
+	return;
+    }
+
     /* Before the level changes: a demotion resets everything to level 1. */
     player_snapshot_milestone( victim, "advance", true );
 
@@ -3604,6 +3621,14 @@ void do_trust( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* 71 is the creator's to give, and nobody else's -- a character at
+       71 could otherwise pass it on (review, 2026-10-22). */
+    if ( level >= LEVEL_TRUST_MAX && !is_creator( ch ) )
+    {
+	send_to_char( "Only the creator gives that trust.\n\r", ch );
+	return;
+    }
+
     /* Nothing stopped an implementor resetting the trust of anybody in
        the room, which would undo trust 71 the moment it was given. */
     if ( victim != ch && rank_protects( ch, victim ) )
@@ -3635,7 +3660,9 @@ void do_trust( CHAR_DATA *ch, char *argument )
         snprintf( note, sizeof(note), "%s set %s's trust to %d.",
                   ch->name, victim->name, level );
         log_string( note );
-        wizinfo( note, staff_notice_level( ch, LEVEL_IMMORTAL ) );
+        /* It names both: no lower than either one's WIZINVIS. */
+        wizinfo( note, UMAX( staff_notice_level( ch, LEVEL_IMMORTAL ),
+                             staff_notice_level( victim, LEVEL_IMMORTAL ) ) );
     }
     return;
 }
@@ -4367,6 +4394,12 @@ void do_sset( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    if ( victim != ch && rank_protects( ch, victim ) )
+    {
+	send_to_char( "They outrank you.\n\r", ch );
+	return;
+    }
+
     fAll = !str_cmp( arg2, "all" );
     sn   = 0;
     if ( !fAll && ( sn = skill_lookup( arg2 ) ) < 0 )
@@ -4467,6 +4500,15 @@ void do_mset( CHAR_DATA *ch, char *argument )
     if ( ( victim = get_char_world( ch, arg1 ) ) == NULL )
     {
 	send_to_char( "They aren't here.\n\r", ch );
+	return;
+    }
+
+    /* Only freeze and deny asked rank, so an implementor could SET the
+       hit points of trust 71 or the creator (review, 2026-10-22). Asked
+       before the snapshot, so a refusal leaves nothing behind. */
+    if ( !IS_NPC(victim) && victim != ch && rank_protects( ch, victim ) )
+    {
+	send_to_char( "They outrank you.\n\r", ch );
 	return;
     }
 
@@ -5295,6 +5337,14 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	if ( IS_NPC(victim) )
 	{
 	    send_to_char( "Not on NPC's.\n\r", ch );
+	    return;
+	}
+
+	/* DENY and UNDENY are the creator's (2026-10-22); SET's own
+	   route to the same flag must not reopen them (review). */
+	if ( !is_creator( ch ) )
+	{
+	    send_to_char( "Only the creator sets or lifts a denial.\n\r", ch );
 	    return;
 	}
 
@@ -7583,7 +7633,8 @@ void do_sockets( CHAR_DATA *ch, char *argument )
                      }
                    }
 
-                   if ( d->character != NULL && can_see( ch, d->character ))
+                   if ( d->character != NULL && can_see( ch, d->character )
+                   &&   ( d->original == NULL || can_see( ch, d->original ) ) )
                    {
                      if (!str_infix(arg2,chhost))
                      {
@@ -7620,7 +7671,10 @@ void do_sockets( CHAR_DATA *ch, char *argument )
             }
         }
 
+	/* Listed by the original's name when switched, so the original
+	   must be visible as well as the body (review, 2026-10-22). */
 	if ( d->character != NULL && can_see( ch, d->character )
+	&& ( d->original == NULL || can_see( ch, d->original ) )
 	&& (arg[0] == '\0' || is_name(arg,d->character->name)
 			   || (d->original && is_name(arg,d->original->name))))
 	{

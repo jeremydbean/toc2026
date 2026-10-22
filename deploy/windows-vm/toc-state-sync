@@ -94,6 +94,11 @@ DEPLOY_LOCK="${TOC_DEPLOY_LOCK:-/run/toc-deploy.lock}"
 if [ -r "$DEPLOY_LOCK" ]; then
     exec 8<"$DEPLOY_LOCK"
     flock -n -s 8 || { echo "a deploy is running; skipping this sync"; exit 0; }
+elif [ -e "$DEPLOY_LOCK" ]; then
+    # A lock that exists but cannot be read cannot be asked: fail closed
+    # rather than copy past a deploy that may hold it (review, 2026-10-22).
+    echo "cannot read $DEPLOY_LOCK; skipping this sync" >&2
+    exit 0
 fi
 
 for d in $STATE_DIRS; do

@@ -3190,8 +3190,20 @@ Owner, 2026-10-22. Levels still stop at `MAX_LEVEL`; above it are trusts.
   level -- and `wizinfo` picks listeners by `get_trust`. Every one is
   still written to `log/toc.log`, which is published.
 - **Never test trust for exactly 70.** Write `get_trust(ch) < MAX_LEVEL`
-  or `>= MAX_LEVEL`; `== 70` locks out 71 and 72.
+  or `>= MAX_LEVEL`; `== 70` locks out 71 and 72. Object levels stop at
+  `MAX_LEVEL`: LOAD's default is `UMIN(get_trust, MAX_LEVEL)`.
   `tests/test_creator_rank.py`.
+- **From the independent review (2026-10-22)**: TRUST 71 asks
+  `is_creator`, not only the giver's trust, or a 71 passes it on;
+  ADVANCE, SET CHAR and SET SKILL ask `rank_protects` for a player other
+  than the caller, before the snapshot; SET CHAR ... DENY and PARDON ...
+  DENY are the creator's, like DENY and UNDENY -- a creator-only command
+  with a second route through another command is not creator-only; a
+  notice naming two people goes out at the higher of their
+  `staff_notice_level`s; and WHO and SOCKETS ask `can_see` of the
+  original as well as the body, because a switched character is listed by
+  the original's name. A new listing that prints `d->original` asks the
+  same.
 
 ## The Training Yard
 

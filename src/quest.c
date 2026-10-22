@@ -480,7 +480,7 @@ static void quest_daily_status( CHAR_DATA *ch )
         "{09|{00 AQUEST DAILY BUY PRACTICE [n]  %d points each\n\r"
         "{09|{00 AQUEST DAILY BUY TRAIN [n]     %d points each\n\r"
         "{09'-------------------------------------------------------------'{00\n\r",
-        ch->pcdata->daily_done, DAILY_QUESTS_PER_DAY, left / 3600, ( left % 3600 ) / 60,
+        quest_dailies_today( ch ), DAILY_QUESTS_PER_DAY, left / 3600, ( left % 3600 ) / 60,
         next,
         ch->pcdata->daily_points, streak, streak == 1 ? "" : "s",
         DAILY_SET_BONUS + daily_streak_bonus( streak + 1 ),
@@ -633,13 +633,21 @@ static void quest_daily( CHAR_DATA *ch, char *arg2, char *argument )
 {
     if ( IS_NPC(ch) || ch->pcdata == NULL )
         return;
-    quest_daily_rollover(ch);
+    /* STATUS is a view and changes nothing (review, 2026-10-22): it
+       works today's count out with quest_dailies_today. Only the paths
+       that act roll the day over. */
     if ( arg2[0] == '\0' || !str_prefix( arg2, "status" ) )
         quest_daily_status(ch);
     else if ( !str_prefix( arg2, "request" ) )
+    {
+        quest_daily_rollover(ch);
         quest_daily_request(ch);
+    }
     else if ( !str_prefix( arg2, "buy" ) )
+    {
+        quest_daily_rollover(ch);
         quest_daily_buy(ch, argument);
+    }
     else
         send_to_char("Syntax: AQUEST DAILY [REQUEST | BUY PRACTICE [n] | BUY TRAIN [n]]\n\r", ch);
 }

@@ -8,6 +8,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Independent review, 2026-10-22**: only the creator gives trust 71;
+  ADVANCE, SET CHAR and SET SKILL refuse a higher rank; SET DENY and
+  PARDON DENY are creator-only; WHO and SOCKETS hide a switched hidden
+  creator; the TRUST notice respects the target's WIZINVIS; LOAD gives the
+  creator portals at the default level; the Coven underbrush's reverse
+  side is unlocked too; DAILY STATUS changes nothing; the progression
+  report's XP a combat minute counts timed kills only; the state sync
+  fails closed on an unreadable deploy lock. Test fixes: the flee loop
+  reads cumulative output, the `/dev/full` test skips where the device is
+  missing, and the heat metal no-op waits out the last cast's lag.
 - **The creator and trust 71 (owner, 2026-10-22)**: Killuminati alone is
   the creator, at trust 72 whatever his level (`is_creator`, `get_trust`);
   TRUST may give 71, which only he can, and 71 outranks every implementor.

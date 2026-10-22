@@ -455,14 +455,22 @@ def progress_summary(text: str, since: datetime) -> dict:
             continue
         here["kills"] += 1
         foe = by_foe.setdefault((area, f[8], f[9]), {"kills": 0, "xp": 0, "ms": 0, "timed": 0,
+                                                     "timed_xp": 0, "untimed": 0,
                                                      "times": [], "who": set()})
         foe["kills"] += 1
         foe["who"].add(who)
-        foe["xp"] += int(f[14]) if f[14].lstrip("-").isdigit() else 0
-        if f[11].isdigit():
+        xp = int(f[14]) if f[14].lstrip("-").isdigit() else 0
+        foe["xp"] += xp
+        # A rate counts only kills with a measured encounter: a -1 (a
+        # fatality, a kill with no fight begun) or a 0 has no time to
+        # divide by, and its experience must not ride on the others'.
+        if f[11].isdigit() and int(f[11]) > 0:
             foe["ms"] += int(f[11])
             foe["timed"] += 1
+            foe["timed_xp"] += xp
             foe["times"].append(int(f[11]))
+        else:
+            foe["untimed"] += 1
     return {"by_foe": by_foe, "by_area": by_area, "characters": len(characters)}
 
 
@@ -473,13 +481,13 @@ def progress_report(args, since) -> None:
     if not by_foe and not summary["by_area"]:
         print("  (no log/progress.tsv records in the window)")
         return
-    print("  area                 foe    lvl  kills chars  med s  xp/combat-min")
+    print("  area                 foe    lvl  kills chars  med s  xp/combat-min  untimed")
     for (area, vnum, level), foe in sorted(by_foe.items(), key=lambda kv: -kv[1]["kills"])[:25]:
         times = sorted(foe["times"])
         median = times[len(times) // 2] / 1000 if times else 0
-        rate = foe["xp"] / (foe["ms"] / 60000) if foe["ms"] else 0
+        rate = foe["timed_xp"] / (foe["ms"] / 60000) if foe["ms"] else 0
         print(f"  {area[:20]:<20} {vnum:>6} {level:>4} {foe['kills']:>6} {len(foe['who']):>5}"
-              f" {median:>6.1f} {rate:>14.0f}")
+              f" {median:>6.1f} {rate:>14.0f} {foe['untimed']:>8}")
     print("  area                 kills  flees deaths chars")
     for area, here in sorted(summary["by_area"].items(), key=lambda kv: -kv[1]["kills"])[:25]:
         print(f"  {area[:20]:<20} {here['kills']:>5} {here['flee']:>6} {here['death']:>6} {len(here['who']):>5}")

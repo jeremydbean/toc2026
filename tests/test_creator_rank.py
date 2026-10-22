@@ -121,6 +121,78 @@ class CreatorRankTests(unittest.TestCase):
             self.assertIn("Killuminati@", log)
             self.assertIn("Killuminati set Zmisery's trust to 71.", log)
 
+    def test_the_review_bypasses_are_closed(self) -> None:
+        """The independent review (2026-10-22): a 71 passing on 71, an
+        implementor demoting, SETting or SET SKILLing a higher rank, SET
+        DENY and PARDON DENY beside the creator-only DENY, the TRUST notice
+        naming a hidden target, LOAD refusing the creator a portal, and a
+        switched creator named by WHO and SOCKETS."""
+        with LiveMud() as mud:
+            for name in ("Killuminati", "Zimpl", "Zmisery", "Zother"):
+                make(mud, name)
+            with mud.connect(timeout=120) as creator, \
+                    mud.connect(timeout=120) as impl, \
+                    mud.connect(timeout=120) as trusted:
+                login(creator, "Killuminati", PASSWORD)
+                login(impl, "Zimpl", PASSWORD)
+                login(trusted, "Zmisery", PASSWORD)
+                self.assertIn("trusted at level 71", run(creator, "trust zmisery 71"))
+
+                # R1: only the creator gives 71, not a 71.
+                self.assertIn("Only the creator gives", run(trusted, "trust zimpl 71"))
+                # R2, R3: a higher rank cannot be demoted or SET.
+                self.assertIn("outrank", run(impl, "advance zmisery 1"))
+                self.assertIn("outrank", run(impl, "set char zmisery hp 123"))
+                self.assertIn("outrank", run(impl, "set skill zmisery dagger 1"))
+                # R4: SET DENY and PARDON DENY are the creator's, even on
+                # yourself -- the rank check alone would let these through.
+                self.assertIn("Only the creator", run(impl, "set char zimpl deny on"))
+                self.assertIn("Only the creator", run(impl, "pardon zimpl deny"))
+                # R7: the creator loads a portal at the default level.
+                self.assertNotIn("can not load", run(creator, "load obj 26"))
+
+                # R6: a TRUST notice naming a hidden target stays hidden.
+                run(creator, "wizinvis")                 # visible
+                run(trusted, "wizinvis 71")
+                impl.drain(1.0)
+                mark = len(impl.transcript)
+                self.assertIn("trusted at level 71", run(creator, "trust zmisery 71"))
+                impl.drain(1.0)
+                self.assertNotIn("Zmisery", impl.transcript[mark:])
+                run(trusted, "wizinvis")
+
+                # R5: switched, he is not named by WHO or SOCKETS.
+                run(creator, "wizinvis 72")
+                run(creator, "load mob 29012")
+                self.assertIn("Possessed by you", run(creator, "switch guard"))
+                self.assertNotIn("Killuminati", run(impl, "who"))
+                self.assertNotIn("Killuminati", run(impl, "sockets"))
+                self.assertNotIn("Killuminati", run(impl, "sockets killuminati"))
+                run(creator, "return")
+                for client in (creator, impl, trusted):
+                    client.send("quit")
+                    client.wait_closed()
+            saved = (mud.player_dir / "Zmisery").read_text(encoding="latin-1")
+        self.assertRegex(saved, r"(?m)^Levl 70$")
+        self.assertNotRegex(saved, r"(?m)^HMV\s+123 ")
+
+
+class HuntingAccessTests(unittest.TestCase):
+    """The Coven's underbrush is closed, not locked, from both sides, and
+    Upper Argo's imp 1020 does not attack on sight (review, 2026-10-22: the
+    reverse side was still reset locked)."""
+
+    def test_both_sides_of_the_underbrush_and_the_imp(self) -> None:
+        root = Path(__file__).resolve().parents[1] / "area"
+        coven = (root / "coven.are").read_text(encoding="latin-1")
+        resets = coven[coven.index("#RESETS"):]
+        for room, door in (("24112", "1"), ("24143", "3")):
+            self.assertRegex(resets, rf"(?m)^D 0 {room} {door} 1\b", (room, door))
+        uargo = (root / "uargo.are").read_text(encoding="latin-1")
+        block = uargo[uargo.index("#1020\n"):]
+        act = block.split("~")[5].split()[0]
+        self.assertNotIn("F", act, "imp 1020 is aggressive again")
+
 
 if __name__ == "__main__":
     unittest.main()

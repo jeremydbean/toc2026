@@ -2705,6 +2705,12 @@ void do_who( CHAR_DATA *ch, char *argument )
 	if(d->original != NULL && get_trust(ch) < 67)
 	  continue;
 
+	/* A switched character is listed by the original's name, so the
+	   original has to be visible too: the check above saw the mobile
+	   (review, 2026-10-22 -- a switched creator at WIZI 72). */
+	if ( wch != d->character && !can_see( ch, wch ) )
+	  continue;
+
 	if ( wch->level < iLevelLower
 	||   wch->level > iLevelUpper
 	|| ( fImmortalOnly  && wch->level < LEVEL_IMMORTAL )
