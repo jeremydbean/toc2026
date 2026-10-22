@@ -4520,3 +4520,237 @@
 1792669504	cmd	Trentlin	50	2497	dresden_halloween.are	standing	592	0	-	skills		Level  1: axe                100%      dagger              89%      
 1792669510	cmd	Trentlin	50	2497	dresden_halloween.are	standing	592	0	-	equipment		You are using:
 1792669513	cmd	Trentlin	50	2497	dresden_halloween.are	standing	592	0	-	inventory		You are carrying:
+1792669517	cmd	Trentlin	50	2497	dresden_halloween.are	standing	592	0	-	wear	lan	You stop using A Tin Axe.
+1792669522	anomaly	Trentlin	50	2497	dresden_halloween.are	hit points far over max	5474 of 924 hit points
+1792669523	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	look	lan	The point is the crystal lens of Gohma's single eye, ground to a
+1792669534	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	look	dagg	An extremely sharp dagger is protruding from the ground.
+1792669539	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree!
+1792669543	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	time	Not on a quest. Under 1 minute before you may quest again.
+1792669547	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	6	-	aquest	request	You approach Questor Thews and ask for a quest.
+1792669552	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792669565	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	doorr w 7	You do not see that here.
+1792669566	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	open	west	You can't do that.
+1792669566	cmd	Trentlin	50	2434	dresden_halloween.are	standing	100	0	-	run	w 3	Western Oak Tree Square.
+1792669566	cmd	Trentlin	50	2434	dresden_halloween.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792669566	cmd	Trentlin	50	2434	dresden_halloween.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792669567	cmd	Trentlin	50	2434	dresden_halloween.are	standing	100	0	-	open	south	I see no door south here.
+1792669567	cmd	Trentlin	50	2434	dresden_halloween.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792669569	cmd	Trentlin	50	2433	dresden_halloween.are	standing	100	0	-	east		Temple Boulevard.
+1792669570	cmd	Trentlin	50	2405	dresden_halloween.are	standing	100	0	-	east		Western Oak Tree Square.
+1792669571	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	east		Oak Tree Square on Hallows Eve
+1792669577	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	run	w 7	Western Oak Tree Square.
+1792669577	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	open	west	It's already open.
+1792669578	cmd	Trentlin	50	6001	haon.are	standing	100	0	-	run	w 3	Outside the Western Gates of Dresden.
+1792669578	cmd	Trentlin	50	40	connect.are	standing	100	0	-	south		Path to the Wayhouse
+1792669578	cmd	Trentlin	50	14000	whouse.are	standing	100	0	-	south		Outside the Wayhouse
+1792669578	cmd	Trentlin	50	14000	whouse.are	standing	100	0	-	open	south	Ok.
+1792669579	cmd	Trentlin	50	14015	whouse.are	standing	100	0	-	south		Main Room
+1792669581	cmd	Trentlin	50	14000	whouse.are	standing	100	0	-	north		Outside the Wayhouse
+1792669582	cmd	Trentlin	50	14001	whouse.are	standing	100	0	-	west		Near a Large Building
+1792669583	cmd	Trentlin	50	14002	whouse.are	standing	100	0	-	south		Near a Large Building
+1792669584	cmd	Trentlin	50	14003	whouse.are	standing	100	0	-	south		Near a Large Building
+1792669585	cmd	Trentlin	50	14004	whouse.are	standing	100	0	-	east		Outside the Wayhouse
+1792669586	cmd	Trentlin	50	14005	whouse.are	standing	100	0	-	east		Near a Large Building
+1792669587	cmd	Trentlin	50	14005	whouse.are	standing	100	0	-	scan		You don't see anything near you.
+1792669589	cmd	Trentlin	50	14005	whouse.are	standing	100	0	-	exits		Obvious exits:
+1792669590	cmd	Trentlin	50	14040	whouse.are	standing	100	0	-	south		Outhouse
+1792669590	cmd	Trentlin	50	14040	whouse.are	standing	100	0	-	exits		Obvious exits:
+1792669591	cmd	Trentlin	50	14005	whouse.are	standing	100	0	-	north		You choke and gag on noxious fumes that fill the air.
+1792669592	cmd	Trentlin	50	14006	whouse.are	standing	100	0	-	north		Near a Large Building
+1792669593	cmd	Trentlin	50	14007	whouse.are	standing	100	0	-	north		Near a Large Building
+1792669594	cmd	Trentlin	50	14008	whouse.are	standing	100	0	-	east		Just Outside the Stable
+1792669595	cmd	Trentlin	50	14008	whouse.are	standing	100	0	-	exits		Obvious exits:
+1792669596	cmd	Trentlin	50	14009	whouse.are	standing	100	1	-	south		Inside the Stable
+1792669597	cmd	Trentlin	50	14009	whouse.are	standing	100	1	-	kill	hor	Your pierce === OBLITERATES === a horse!
+1792669601	cmd	Trentlin	50	14008	whouse.are	standing	100	0	-	north		Just Outside the Stable
+1792669602	cmd	Trentlin	50	14007	whouse.are	standing	100	0	-	west		Near a Large Building
+1792669603	cmd	Trentlin	50	14000	whouse.are	standing	100	0	-	west		Outside the Wayhouse
+1792669604	cmd	Trentlin	50	40	connect.are	standing	100	0	-	north		Path to the Wayhouse
+1792669605	cmd	Trentlin	50	6001	haon.are	standing	100	0	-	north		A trail through the light forest
+1792669605	cmd	Trentlin	50	6001	haon.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792669606	cmd	Trentlin	50	6000	haon.are	standing	100	0	-	east		The edge of the forest
+1792669607	cmd	Trentlin	50	2439	dresden_halloween.are	standing	100	0	-	east		Outside the Western Gates of Dresden.
+1792669608	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	east		Inside the Western Gates of Dresden.
+1792669609	cmd	Trentlin	50	2437	dresden_halloween.are	standing	100	0	-	east		Temple Boulevard.
+1792669610	cmd	Trentlin	50	2436	dresden_halloween.are	standing	100	0	-	east		Temple Boulevard.
+1792669610	cmd	Trentlin	50	2435	dresden_halloween.are	standing	100	0	-	east		Temple Boulevard.
+1792669610	cmd	Trentlin	50	2434	dresden_halloween.are	standing	100	0	-	east		Temple Boulevard.
+1792669611	cmd	Trentlin	50	2433	dresden_halloween.are	standing	100	0	-	east		Temple Boulevard.
+1792669611	cmd	Trentlin	50	2405	dresden_halloween.are	standing	100	0	-	east		Western Oak Tree Square.
+1792669612	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	east		Oak Tree Square on Hallows Eve
+1792669613	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	where	hermie	You didn't find any hermie.
+1792669614	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792669614	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792669615	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792669615	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792669615	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792669615	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792669617	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	1	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792669622	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 120 quest points! **
+1792669626	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	points	Quest Points: 1964
+1792669632	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	6	-	aquest	daily request	You ask Questor Thews for the day's work.
+1792669635	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792669646	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	run	w 7	Western Oak Tree Square.
+1792669647	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	open	west	Ok.
+1792669647	cmd	Trentlin	50	2439	dresden_halloween.are	standing	100	0	-	west		Outside the Western Gates of Dresden.
+1792669647	cmd	Trentlin	50	3900	dresden_halloween.are	standing	100	0	-	north		West trail around Dresden
+1792669647	cmd	Trentlin	50	3901	dresden_halloween.are	standing	100	0	-	north		West trail around Dresden
+1792669648	cmd	Trentlin	50	3902	dresden_halloween.are	standing	100	0	-	north		Northwest corner of dusty trail.
+1792669648	cmd	Trentlin	50	3903	dresden_halloween.are	standing	100	0	-	east		Dusty trail along north wall.
+1792669648	cmd	Trentlin	50	3904	dresden_halloween.are	standing	100	0	-	east		The long dusty trail following the north wall.
+1792669648	cmd	Trentlin	50	324	plains.are	standing	100	0	-	run	n 5	Path in the plains
+1792669649	cmd	Trentlin	50	323	plains.are	standing	100	0	-	west		The steep foothills
+1792669649	cmd	Trentlin	50	24	connect.are	standing	100	0	-	west		Crossing the Foothills
+1792669649	cmd	Trentlin	50	25	connect.are	standing	100	0	-	nw		The Switchbacks
+1792669649	cmd	Trentlin	50	9201	canyon.are	standing	100	0	-	north		A Mountain Path
+1792669650	cmd	Trentlin	50	9202	canyon.are	standing	100	0	-	up		A Mountain Path
+1792669650	cmd	Trentlin	50	9203	canyon.are	standing	100	0	-	up		Mountainside Tombs
+1792669650	cmd	Trentlin	50	9204	canyon.are	standing	100	0	-	up		A Blind Curve on the Mountain Path.
+1792669650	cmd	Trentlin	50	9205	canyon.are	standing	100	0	-	up		Vista
+1792669651	cmd	Trentlin	50	9206	canyon.are	standing	100	0	-	north		The Overlook
+1792669651	cmd	Trentlin	50	9207	canyon.are	standing	100	0	-	down		Entrance to Elemental Canyon
+1792669653	cmd	Trentlin	50	9261	canyon.are	standing	100	0	-	south		Lair of the Cyclops
+1792669655	cmd	Trentlin	50	9207	canyon.are	standing	100	0	-	north		Entrance to Elemental Canyon
+1792669655	cmd	Trentlin	50	9209	canyon.are	standing	100	0	-	north		Elemental Gateway
+1792669656	cmd	Trentlin	50	9208	canyon.are	standing	100	0	-	west		The Floor of the Canyon
+1792669657	cmd	Trentlin	50	9208	canyon.are	standing	100	1	-	west		Alas, you cannot go that way.
+1792669657	cmd	Trentlin	50	9211	canyon.are	standing	100	0	-	north		The Floor of the Canyon
+1792669659	cmd	Trentlin	50	9214	canyon.are	standing	100	0	-	north		The Floor of the Canyon
+1792669660	cmd	Trentlin	50	9237	canyon.are	standing	100	0	-	west		A Fiery Pathway
+1792669661	cmd	Trentlin	50	9238	canyon.are	standing	100	0	-	south		A Fiery Pathway
+1792669663	refused	Trentlin	50	9238	canyon.are	standing	100	0	-	(unknown)		Huh?
+1792669663	cmd	Trentlin	50	9237	canyon.are	standing	100	0	-	north		A Fiery Pathway
+1792669664	cmd	Trentlin	50	9237	canyon.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792669664	cmd	Trentlin	50	9214	canyon.are	standing	100	0	-	east		The Floor of the Canyon
+1792669664	cmd	Trentlin	50	9215	canyon.are	standing	100	0	-	east		The Floor of the Canyon
+1792669664	cmd	Trentlin	50	9216	canyon.are	standing	100	0	-	east		The Floor of the Canyon
+1792669665	cmd	Trentlin	50	9216	canyon.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792669665	cmd	Trentlin	50	9216	canyon.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792669666	cmd	Trentlin	50	9213	canyon.are	standing	100	0	-	south		The Floor of the Canyon
+1792669667	cmd	Trentlin	50	9228	canyon.are	standing	100	0	-	east		By the River
+1792669669	cmd	Trentlin	50	9213	canyon.are	standing	100	0	-	west		The Floor of the Canyon
+1792669669	cmd	Trentlin	50	9216	canyon.are	standing	100	0	-	north		The Floor of the Canyon
+1792669670	cmd	Trentlin	50	9219	canyon.are	standing	100	0	-	north		The Floor of the Canyon
+1792669671	cmd	Trentlin	50	9254	canyon.are	standing	100	0	-	north		Mesa East
+1792669672	cmd	Trentlin	50	9253	canyon.are	standing	100	0	-	west		Mesa West
+1792669673	cmd	Trentlin	50	9246	canyon.are	standing	100	0	-	west		Electric Pathway
+1792669675	cmd	Trentlin	50	9253	canyon.are	standing	100	0	-	east		Mesa West
+1792669675	cmd	Trentlin	50	9254	canyon.are	standing	100	0	-	east		Mesa East
+1792669675	cmd	Trentlin	50	9254	canyon.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792669675	cmd	Trentlin	50	9255	canyon.are	standing	100	0	-	north		Floating in Air
+1792669677	cmd	Trentlin	50	9256	canyon.are	standing	100	0	-	east		Floating in Air
+1792669679	cmd	Trentlin	50	9258	canyon.are	standing	100	0	-	north		Floating in Air
+1792669680	cmd	Trentlin	50	9259	canyon.are	standing	100	0	-	east		Windy Tunnel
+1792669681	cmd	Trentlin	50	9260	canyon.are	standing	100	0	-	east		Air Chamber
+1792669681	cmd	Trentlin	50	9260	canyon.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792669682	cmd	Trentlin	50	9259	canyon.are	standing	100	0	-	west		Windy Tunnel
+1792669682	cmd	Trentlin	50	9258	canyon.are	standing	100	0	-	west		Floating in Air
+1792669683	cmd	Trentlin	50	9257	canyon.are	standing	100	0	-	west		Floating in Air
+1792669684	cmd	Trentlin	50	9255	canyon.are	standing	100	0	-	south		Floating in Air
+1792669684	cmd	Trentlin	50	9255	canyon.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792669685	cmd	Trentlin	50	9254	canyon.are	standing	100	0	-	south		Mesa East
+1792669686	cmd	Trentlin	50	9253	canyon.are	standing	100	0	-	west		Mesa West
+1792669687	cmd	Trentlin	50	9246	canyon.are	standing	100	0	-	west		Electric Pathway
+1792669688	cmd	Trentlin	50	9248	canyon.are	standing	100	0	-	north		The Electric Playground
+1792669689	cmd	Trentlin	50	9250	canyon.are	standing	100	0	-	north		The Electric Playground
+1792669690	cmd	Trentlin	50	9250	canyon.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792669691	cmd	Trentlin	50	9251	canyon.are	standing	100	0	-	east		Lightning Causeway
+1792669693	cmd	Trentlin	50	9251	canyon.are	standing	100	0	-	exits		Obvious exits:
+1792669694	cmd	Trentlin	50	9250	canyon.are	standing	100	0	-	west		The Electric Playground
+1792669694	cmd	Trentlin	50	9249	canyon.are	standing	100	0	-	west		The Electric Playground
+1792669695	cmd	Trentlin	50	9249	canyon.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792669695	cmd	Trentlin	50	9247	canyon.are	standing	100	0	-	south		The Electric Playground
+1792669696	cmd	Trentlin	50	9248	canyon.are	standing	100	0	-	east		The Electric Playground
+1792669697	cmd	Trentlin	50	9246	canyon.are	standing	100	0	-	south		Electric Pathway
+1792669698	cmd	Trentlin	50	9246	canyon.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792669698	cmd	Trentlin	50	9253	canyon.are	standing	100	0	-	east		Mesa West
+1792669698	cmd	Trentlin	50	9217	canyon.are	standing	100	0	-	south		The Floor of the Canyon
+1792669699	cmd	Trentlin	50	9217	canyon.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792669700	cmd	Trentlin	50	9214	canyon.are	standing	100	0	-	south		The Floor of the Canyon
+1792669700	cmd	Trentlin	50	9237	canyon.are	standing	100	0	-	west		A Fiery Pathway
+1792669701	cmd	Trentlin	50	9238	canyon.are	standing	100	0	-	south		A Fiery Pathway
+1792669702	cmd	Trentlin	50	9242	canyon.are	standing	100	0	-	west		The Burning Gardens
+1792669702	cmd	Trentlin	50	9245	canyon.are	standing	100	0	-	west		The Fire Chamber
+1792669705	cmd	Trentlin	50	9242	canyon.are	standing	99	0	-	east		You sweat profusely, and your skin burns.
+1792669705	cmd	Trentlin	50	9242	canyon.are	standing	99	0	-	north		Alas, you cannot go that way.
+1792669706	cmd	Trentlin	50	9238	canyon.are	standing	99	0	-	east		A Fiery Pathway
+1792669707	cmd	Trentlin	50	9238	canyon.are	standing	99	0	-	south		Alas, you cannot go that way.
+1792669708	cmd	Trentlin	50	9237	canyon.are	standing	99	0	-	north		A Fiery Pathway
+1792669709	cmd	Trentlin	50	9214	canyon.are	standing	99	0	-	east		The Floor of the Canyon
+1792669709	cmd	Trentlin	50	9211	canyon.are	standing	99	0	-	south		The Floor of the Canyon
+1792669710	cmd	Trentlin	50	9208	canyon.are	standing	99	0	-	south		The Floor of the Canyon
+1792669712	cmd	Trentlin	50	9209	canyon.are	standing	99	0	-	east		Elemental Gateway
+1792669714	cmd	Trentlin	50	9207	canyon.are	standing	99	0	-	south		Entrance to Elemental Canyon
+1792669716	cmd	Trentlin	50	9209	canyon.are	standing	99	0	-	north		Elemental Gateway
+1792669716	cmd	Trentlin	50	9210	canyon.are	standing	99	0	-	east		The Floor of the Canyon
+1792669717	cmd	Trentlin	50	9220	canyon.are	standing	99	0	-	east		Dark Cave
+1792669718	cmd	Trentlin	50	9221	canyon.are	standing	99	0	-	east		Darker Caves
+1792669720	cmd	Trentlin	50	9221	canyon.are	standing	99	1	-	kill	rock	Your pierce ^^^ DESTROYS ^^^ a small rock!
+1792669724	cmd	Trentlin	50	9220	canyon.are	standing	99	0	-	west		Dark Cave
+1792669725	cmd	Trentlin	50	9210	canyon.are	standing	99	0	-	west		The Floor of the Canyon
+1792669726	cmd	Trentlin	50	9209	canyon.are	standing	100	0	-	west		Elemental Gateway
+1792669727	cmd	Trentlin	50	9207	canyon.are	standing	100	0	-	south		Entrance to Elemental Canyon
+1792669729	cmd	Trentlin	50	9206	canyon.are	standing	100	0	-	up		The Overlook
+1792669729	cmd	Trentlin	50	9206	canyon.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792669730	cmd	Trentlin	50	9205	canyon.are	standing	100	0	-	south		Vista
+1792669731	cmd	Trentlin	50	9204	canyon.are	standing	100	0	-	down		A Blind Curve on the Mountain Path.
+1792669732	cmd	Trentlin	50	9204	canyon.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792669733	cmd	Trentlin	50	9203	canyon.are	standing	100	0	-	down		Mountainside Tombs
+1792669734	cmd	Trentlin	50	9202	canyon.are	standing	100	0	-	down		A Mountain Path
+1792669735	cmd	Trentlin	50	9201	canyon.are	standing	100	0	-	down		A Mountain Path
+1792669736	cmd	Trentlin	50	25	connect.are	standing	100	0	-	south		The Switchbacks
+1792669738	cmd	Trentlin	50	24	connect.are	standing	100	0	-	se		Crossing the Foothills
+1792669739	cmd	Trentlin	50	323	plains.are	standing	100	0	-	east		The steep foothills
+1792669741	cmd	Trentlin	50	330	plains.are	standing	100	0	-	south		In front of hut in foothills
+1792669742	cmd	Trentlin	50	319	plains.are	standing	100	0	-	south		Grassy plains
+1792669743	cmd	Trentlin	50	318	plains.are	standing	100	0	-	south		Grassy plains
+1792669744	cmd	Trentlin	50	316	plains.are	standing	100	0	-	south		Grassy plains
+1792669746	cmd	Trentlin	50	300	plains.are	standing	100	0	-	east		Path in the plains
+1792669747	cmd	Trentlin	50	3904	dresden_halloween.are	standing	100	0	-	south		The long dusty trail following the north wall.
+1792669750	cmd	Trentlin	50	3904	dresden_halloween.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792669750	cmd	Trentlin	50	3905	dresden_halloween.are	standing	100	0	-	east		Dusty trail along north wall.
+1792669752	cmd	Trentlin	50	3904	dresden_halloween.are	standing	100	0	-	west		The long dusty trail following the north wall.
+1792669752	cmd	Trentlin	50	3903	dresden_halloween.are	standing	100	0	-	west		Dusty trail along north wall.
+1792669753	cmd	Trentlin	50	3902	dresden_halloween.are	standing	100	0	-	west		Northwest corner of dusty trail.
+1792669753	cmd	Trentlin	50	3902	dresden_halloween.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792669754	cmd	Trentlin	50	3901	dresden_halloween.are	standing	100	0	-	south		West trail around Dresden
+1792669754	cmd	Trentlin	50	3900	dresden_halloween.are	standing	100	0	-	south		West trail around Dresden
+1792669755	cmd	Trentlin	50	2439	dresden_halloween.are	standing	100	0	-	south		Outside the Western Gates of Dresden.
+1792669756	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	east		Inside the Western Gates of Dresden.
+1792669756	cmd	Trentlin	50	2437	dresden_halloween.are	standing	100	0	-	east		Temple Boulevard.
+1792669757	cmd	Trentlin	50	2436	dresden_halloween.are	standing	100	0	-	east		Temple Boulevard.
+1792669757	cmd	Trentlin	50	2435	dresden_halloween.are	standing	100	0	-	east		Temple Boulevard.
+1792669758	cmd	Trentlin	50	2434	dresden_halloween.are	standing	100	0	-	east		Temple Boulevard.
+1792669759	cmd	Trentlin	50	2433	dresden_halloween.are	standing	100	0	-	east		Temple Boulevard.
+1792669760	cmd	Trentlin	50	2405	dresden_halloween.are	standing	100	0	-	east		Western Oak Tree Square.
+1792669761	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	east		Oak Tree Square on Hallows Eve
+1792669761	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792669762	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792669762	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792669762	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792669764	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	1	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792669779	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	worth		You have 798 platinum, 76 gold, 55 silver, 2 copper
+1792669785	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792669788	cmd	Trentlin	50	3532	midennir_halloween.are	standing	100	0	-	run	e 19	Eastern Oak Tree Square.
+1792669789	cmd	Trentlin	50	42	connect.are	standing	100	0	-	east		On the Outskirts of New Thalos
+1792669790	cmd	Trentlin	50	9669	newthalo.are	standing	100	0	-	east		Outside the West Gate of New Thalos
+1792669790	cmd	Trentlin	50	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos
+1792669790	cmd	Trentlin	50	9524	newthalo.are	standing	100	0	-	east		West Main Street
+1792669791	cmd	Trentlin	50	9525	newthalo.are	standing	100	0	-	east		West Main Street
+1792669791	cmd	Trentlin	50	9526	newthalo.are	standing	100	0	-	east		West Main Street
+1792669791	cmd	Trentlin	50	9509	newthalo.are	standing	100	0	-	east		The Western Market Square
+1792669792	cmd	Trentlin	50	9506	newthalo.are	standing	100	0	-	east		The Center of Market Square
+1792669794	cmd	Trentlin	50	9506	newthalo.are	standing	100	0	-	drink		You are no longer thirsty.
+1792669794	cmd	Trentlin	50	9506	newthalo.are	standing	100	0	-	drink		You are no longer thirsty.
+1792669795	cmd	Trentlin	50	9506	newthalo.are	standing	100	0	-	drink		You are no longer thirsty.
+1792669795	cmd	Trentlin	50	9506	newthalo.are	standing	100	0	-	drink		You are no longer thirsty.
+1792669795	cmd	Trentlin	50	9515	newthalo.are	standing	100	0	-	north		The Northern Market Square
+1792669795	cmd	Trentlin	50	9514	newthalo.are	standing	100	0	-	west		The Northwestern Market Square
+1792669796	cmd	Trentlin	50	9621	newthalo.are	standing	100	0	-	west		The Bank
+1792669796	cmd	Trentlin	50	9621	newthalo.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792669797	cmd	Trentlin	50	9621	newthalo.are	standing	100	0	-	worth		You have 798 platinum, 76 gold, 55 silver, 2 copper
+1792669804	cmd	Trentlin	50	9621	newthalo.are	standing	100	0	-	deposit	750 platinum	You deposit your coins into the bank.
+1792669807	cmd	Trentlin	50	9621	newthalo.are	standing	100	0	-	worth		You have 48 platinum, 76 gold, 55 silver, 2 copper
+1792669811	cmd	Trentlin	50	9621	newthalo.are	standing	100	0	-	score		--------------------------------------------------------------
+1792669815	cmd	Trentlin	50	9621	newthalo.are	standing	100	0	-	look		The Bank
+1792669816	cmd	Trentlin	50	9514	newthalo.are	standing	100	0	-	east		The Northwestern Market Square
