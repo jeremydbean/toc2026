@@ -97,6 +97,10 @@ bool    check_dodge     args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 void    check_killer    args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 bool    check_parry     args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 bool    check_shield_block      args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
+/* Set by one_hit for a vampiric weapon's swing and taken by the next
+   damage() call, which drinks from what that blow really takes. */
+static bool vampiric_blow;
+
 static void raw_kill_internal   args( ( CHAR_DATA *ch, CHAR_DATA *victim,
                                         bool bypass_hyrule_ganon ) );
 void    dam_message     args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dam,
@@ -1332,15 +1336,15 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
 
 	/*
 	 * Vampiric drains rather than changing the damage school, so a
-	 * vampiric weapon is not defeated by negative-energy immunity.
+	 * vampiric weapon is not defeated by negative-energy immunity. The
+	 * drink itself happens in damage(), from what the blow really takes
+	 * (owner, 2026-10-22): it healed here, before parry, dodge, shield
+	 * block or immunity, so a blow that did nothing still fed.
 	 */
 	if ( IS_WEAPON_STAT(wield,WEAPON_VAMPIRIC) )
 	{
 	    dam += dam/10;
-	    if ( dam > 0 )
-		ch->hit = UMIN( ch->max_hit, ch->hit + dam/20 );
-	    if ( !IS_NPC(ch) )
-		alignment_shift( ch, -1, false );   /* quietly: every hit */
+	    vampiric_blow = true;
 	}
 
 	/* Sharp: frequent, modest.  Vorpal: rare, spiky. */
@@ -1412,6 +1416,10 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     bool hyrule_silver_arrow_hit;
     int shield = 0;
     LIST_ITERATOR iter;
+    /* This blow's, taken at once so it can never carry to another. */
+    bool vampiric = vampiric_blow;
+
+    vampiric_blow = false;
 
     if ( victim->position == POS_DEAD )
 	return false;
@@ -1713,6 +1721,17 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	    hyrule_note_wound( victim );
 	/* The dark's weapon blows drink a share of what they take. */
 	alignment_drain( ch, victim, dam, dt );
+	/* So does a vampiric weapon: a twentieth of what was taken, never
+	   the overkill, and a point toward the dark for the wielder. */
+	if ( vampiric && dam > 0 && ch != victim )
+	{
+	    int taken = victim->hit < 0 ? dam + victim->hit : dam;
+
+	    if ( taken > 0 && !is_treasure_goblin( victim ) )
+		ch->hit = UMIN( ch->max_hit, ch->hit + taken / 20 );
+	    if ( !IS_NPC(ch) )
+		alignment_shift( ch, -1, false );   /* quietly: every landed hit */
+	}
     }
     if ( IS_NPC(victim) && victim->pIndexData != NULL )
     {
@@ -2720,6 +2739,34 @@ void update_pos( CHAR_DATA *victim )
 /*
  * Start fights.
  */
+/*
+ * Lag counts down every pulse for a player in a fight who has nothing
+ * typed (owner, 2026-10-22). The input loop counts it only while a command
+ * waits, so a player who typed KILL and then watched kept a whole round of
+ * lag for the rest of the fight, damage()'s wimpy test (wait under half a
+ * round) never passed, and WIMPY never fired. Stock ROM counted lag down
+ * every pulse. A typed command is left to the input loop, and a walker to
+ * walkto_update, so nothing is counted twice; bash and trip lag still hold
+ * wimpy off until they wear away, as they hold off a typed FLEE.
+ */
+void fight_lag_update( void )
+{
+    DESCRIPTOR_DATA *d;
+    CHAR_DATA *ch;
+
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+        if ( d->connected != CON_PLAYING || ( ch = d->character ) == NULL
+        ||   ch->fighting == NULL || ch->wait <= 0 || IS_IMMORTAL(ch)
+        ||   d->incomm[0] != '\0' )
+            continue;
+        if ( !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->walkto_vnum != 0 )
+            continue;
+        --ch->wait;
+    }
+}
+
+
 void set_fighting( CHAR_DATA *ch, CHAR_DATA *victim )
 {
     if ( ch->fighting != NULL )
@@ -6926,7 +6973,10 @@ void damage_eq(CHAR_DATA *victim, int dam)
                 obj->condition -= (sh_int) loss;
             }
 
-            if(obj->condition < 0)
+            /* Worn to nothing is broken (owner, 2026-10-22): a piece
+               left at exactly 0 stayed on and unflagged, where heat
+               metal sets 0 and the flag together. */
+            if(obj->condition <= 0)
             {
                 snprintf(buf, sizeof(buf),"The blow shatters your %s!\n\r",
                     obj->short_descr);
@@ -6953,8 +7003,8 @@ void damage_eq(CHAR_DATA *victim, int dam)
                    a "(Damaged)" tag on the item and makes do_use refuse it,
                    and setting it on every scratch left perfectly good gear
                    (a pirate ring, Excalibur) reading as damaged at 99/100.
-                   Only the shatter branch above, where condition hits zero
-                   and the piece falls into the pack, flags it now. */
+                   Only the shatter branch above, where condition reaches
+                   zero and the piece falls into the pack, flags it now. */
                 snprintf(buf, sizeof(buf),"The blow damages your %s!\n\r",
                     obj->short_descr);
                 send_to_char(buf,victim);

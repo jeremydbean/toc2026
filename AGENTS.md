@@ -358,8 +358,9 @@ Live-test gotchas that look like product bugs and are not:
   `Vnum:`. Only `Vnum:` is what `goto` and `set room` want.
 - `parse_login_journal()` returns **file order, oldest first**.
 - **Lag counts down only while a command is waiting** (`comm.c`, the
-  `ch->wait` check in the input loop), so `drain()` after a lagging
-  command burns none of it: the next command sits out the whole lag
+  `ch->wait` check in the input loop) -- except in a fight, where
+  `fight_lag_update` counts it every pulse -- so `drain()` after a
+  lagging command outside a fight burns none of it: the next command sits out the whole lag
   before it runs, and its reply window has to hold both. A 3-second
   window after the recorder's whirlwind (`PULSE_VIOLENCE`, 3 s) failed
   `test_hyrule_walkthrough` in CI twice running on 2026-10-06 with an
@@ -3509,11 +3510,25 @@ has a live or behaviour test that fails on the old code.
   must give it SIGINT back (`preexec_fn`). Under the sanitizer build a
   reply can land on the prompt's line, so a parser of command output
   strips a leading `<...>` prompt.
-- **Two rules left as they are, for the owner** (2026-10-22): a piece at
-  exactly 0 condition stays worn (`damage_eq` breaks below zero, heat sets
-  0 and the flag together), and a vampiric weapon heals `dam/20` and
-  shifts alignment in `one_hit`, before `damage()` resolves parry, dodge,
-  shield block and immunity, so a blow that does nothing still heals.
+- **Worn to 0 is broken** (owner, 2026-10-22): `damage_eq` shatters a
+  piece at `condition <= 0`, as heat metal sets 0 and the flag together.
+  The five prototypes authored at 0 (condition letter R -- a pentagram,
+  a rotted jacket, bagpipes and two others) stay as made; the rule is
+  about wear (`tests/test_gear_damage.py`, a source assertion: damage_eq
+  is a 10% roll on a random slot, too rare to play).
+- **A vampiric weapon drinks only from what a blow takes** (owner,
+  2026-10-22): `one_hit` sets `vampiric_blow`, `damage()` takes it at
+  entry, and the twentieth and the point toward the dark come where hit
+  points really come off, beside `alignment_drain` -- never the overkill,
+  never the goblin, never the dummy (`tests/test_vampiric_landing.py`).
+- **Lag counts down every pulse in a fight** (owner, 2026-10-22):
+  `fight_lag_update()`, beside `walkto_update` in `update_handler`, takes
+  a pulse off a fighting player's `wait` when nothing is typed. Without
+  it a player who typed KILL and watched kept a round of lag all fight,
+  and `damage()`'s wimpy test (under half a round) never passed: WIMPY
+  never fired. A typed command is still the input loop's, a walker
+  WALKTO's; bash and trip lag still hold wimpy off until they wear away
+  (`tests/test_wimpy_idle.py`).
 
 ## Completion Standard
 

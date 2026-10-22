@@ -3088,6 +3088,8 @@ void update_handler( void )
     /* Every pulse: walkto.c paces each walker by their own lag. */
     playlog_phase = "walkto_update";
     walkto_update( );
+    playlog_phase = "fight_lag_update";
+    fight_lag_update( );
 
     if ( --pulse_aggr <= 0 )
     {

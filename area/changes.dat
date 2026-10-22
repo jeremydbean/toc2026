@@ -3,6 +3,16 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261022f 2026-10-22
+- WIMPY now works when you attack and then just watch the fight: your
+  attack's moment of lag wears off during the fight, so you flee at your
+  wimpy as you should.  It used to wait for you to type something.
+- A vampiric weapon heals you only from blows that actually hurt: a
+  parried, dodged or blocked blow, or one the foe is immune to, feeds you
+  nothing.
+- Gear worn all the way down to nothing breaks and falls into your pack,
+  as it does a point later; take it to a smith.
+
 @ 20261022e 2026-10-22
 Fixes and conveniences:
 - BOMB uses a bomb you carry, in any bag, and only once. Bombs in your

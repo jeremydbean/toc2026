@@ -51,6 +51,17 @@ class GearDamageTests(unittest.TestCase):
         self.assertLess(shatter, flag)
         self.assertLess(flag, dent)
 
+    def test_worn_to_zero_is_broken(self):
+        """Owner, 2026-10-22: a piece worn to exactly 0 condition is broken.
+        damage_eq broke it only below zero, so one left at 0 stayed on and
+        unflagged, while heat metal sets 0 and the flag together. Five
+        prototypes are authored at 0 ("ruined" flavour items, condition
+        letter R) and stay as made: the rule is about wear, not about
+        what an object is created as."""
+        de = body(read("src", "fight.c"), "void damage_eq(")
+        self.assertIn("if(obj->condition <= 0)", de)
+        self.assertNotIn("if(obj->condition < 0)", de)
+
     def test_repair_never_destroys_and_always_restores(self):
         dr = body(read("src", "act_obj.c"), "void do_repair(")
         self.assertNotIn("extract_obj", dr,

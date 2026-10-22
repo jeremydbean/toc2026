@@ -8,6 +8,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Owner decisions, 2026-10-22**: lag counts down every pulse in a fight
+  (`fight_lag_update`), so WIMPY fires for a player who attacked and
+  watched; a vampiric weapon drinks only from damage taken; gear worn to 0
+  condition breaks.
 - **Gameplay review, 2026-10-22**: BOMB spends only a carried bomb and
   only once, before the blast or the opened wall (stash bombs count
   against the bag but are never spent from afar); armour damage is kept

@@ -3569,6 +3569,7 @@ void    do_start_hunting ( CHAR_DATA *hunter, CHAR_DATA *target, int ANNOY);
 void    walkto_load      ( void );
 void    changes_load     ( void );
 void    walkto_update    ( void );
+void    fight_lag_update ( void );
 void    walkto_clear     ( CHAR_DATA *ch );
 void    walkto_mark_reachable ( CHAR_DATA *ch );
 bool    walkto_reached   ( ROOM_INDEX_DATA *room );
