@@ -4013,3 +4013,38 @@
 1792665566	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	The cackling witch-healer utters the words 'candussido judifgz'.
 1792665570	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	The cackling witch-healer utters the words 'candussido judifgz'.
 1792665574	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	The cackling witch-healer utters the words 'candussido judifgz'.
+1792665583	refused	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	(unknown)		Huh?
+1792665586	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	The cackling witch-healer utters the words 'candussido judifgz'.
+1792665589	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	The cackling witch-healer utters the words 'candussido judifgz'.
+1792665592	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792665592	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792665594	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	drop	par	You drop a talkative parrot.
+1792665596	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	drop	troll	You drop (Dark) a Troll Sword.
+1792665599	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	drop	dragon	You drop a bottled fairy.
+1792665605	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	get	fairy	You get a bottled fairy.
+1792665611	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792665622	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	drop	dragonlan	You drop (Dark) a Dragonlance.
+1792665625	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	remove	brac	You stop using titanium bracers.
+1792665625	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	remove	brac	You stop using titanium bracers.
+1792665627	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	wear	pearl	You wear a pearl bracelet around your left wrist.
+1792665627	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	wear	pearl	You wear a pearl bracelet around your right wrist.
+1792665631	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	drop	brac	You drop titanium bracers.
+1792665631	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	drop	brac	You drop titanium bracers.
+1792665633	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	sacrifice	bra	The Gods give you 72 copper coins for your sacrifice.
+1792665633	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	sacrifice	bra	The Gods give you 72 copper coins for your sacrifice.
+1792665635	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	sacrifice	troll	The Gods give you 82 copper coins for your sacrifice.
+1792665638	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	sacrifice	drago	The Gods give you 78 copper coins for your sacrifice.
+1792665639	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792665650	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	west		Before the Shrouded Altar
+1792665651	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota
+1792665651	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792665654	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	The cackling witch-healer says 'I see no curse on you or on anything you carry.'
+1792665659	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	(social)		You thank the cackling witch-healer heartily.
+1792665663	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792665663	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792665663	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792665664	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792665665	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792665665	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792665669	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	aquest	time	Not on a quest. Under 1 minute before you may quest again.
+1792665674	session	Trentlin	50	2401	dresden_halloween.are	quit	308s	+0 levels	+0 exp	+144772342 copper	0 kills	0 deaths	1 quests	170 commands	1 refused
