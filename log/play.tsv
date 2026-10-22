@@ -4057,3 +4057,321 @@
 1792668911	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
 1792668911	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
 1792668914	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	7	-	aquest	request	You approach Questor Thews and ask for a quest.
+1792668918	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792668934	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	run	w 7	Western Oak Tree Square.
+1792668934	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	open	gate	Ok.
+1792668934	cmd	Trentlin	50	6101	haon.are	standing	100	0	-	run	w 8	Outside the Western Gates of Dresden.
+1792668934	cmd	Trentlin	50	6105	haon.are	standing	100	0	-	run	s 2	A small path in the deep, dark forest
+1792668935	cmd	Trentlin	50	6106	haon.are	standing	100	0	-	west		A junction in the deep, dark forest
+1792668935	cmd	Trentlin	50	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest
+1792668935	cmd	Trentlin	50	6116	haon.are	standing	100	0	-	west		A small path in the deep, dark forest
+1792668935	cmd	Trentlin	50	6115	haon.are	standing	100	0	-	south		A small path in the deep, dark forest
+1792668936	cmd	Trentlin	50	6122	haon.are	standing	100	0	-	run	w 2	A junction in the deep, dark forest
+1792668936	cmd	Trentlin	50	9774	newthalo.are	standing	100	0	-	run	s 2	A junction on the river bank in the deep, dark forest
+1792668936	cmd	Trentlin	50	9775	newthalo.are	standing	100	0	-	west		On the Dark River
+1792668936	cmd	Trentlin	50	15	connect.are	standing	100	0	-	sw		Bend in River
+1792668937	cmd	Trentlin	50	16	connect.are	standing	100	0	-	west		Misty River
+1792668937	cmd	Trentlin	50	1300	htower.are	standing	100	0	-	north		Entrance to the Shadow Grove
+1792668940	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	north		The Shadow Grove
+1792668941	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668942	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	east		The Shadow Grove
+1792668943	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668944	cmd	Trentlin	50	1301	htower.are	standing	100	0	-	east		The Shadow Grove
+1792668944	cmd	Trentlin	50	1301	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668945	cmd	Trentlin	50	1304	htower.are	standing	100	0	-	south		The Shadow Grove
+1792668946	cmd	Trentlin	50	1304	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668947	cmd	Trentlin	50	2201	draconia.are	standing	100	0	-	west		The Tower Gates
+1792668949	cmd	Trentlin	50	2202	draconia.are	standing	100	0	-	north		The Foyer
+1792668951	cmd	Trentlin	50	2201	draconia.are	standing	100	0	-	south		The Tower Gates
+1792668951	cmd	Trentlin	50	1304	htower.are	standing	100	0	-	east		The Shadow Grove
+1792668952	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	east		The Shadow Grove
+1792668953	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668953	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	south		The Shadow Grove
+1792668954	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668956	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	south		The Shadow Grove
+1792668956	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668957	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	south		The Shadow Grove
+1792668958	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668959	cmd	Trentlin	50	1305	htower.are	standing	100	0	-	west		The Shadow Grove
+1792668959	cmd	Trentlin	50	1305	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668960	cmd	Trentlin	50	1306	htower.are	standing	100	0	-	east		The Shadow Grove
+1792668960	cmd	Trentlin	50	1306	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668962	cmd	Trentlin	50	1305	htower.are	standing	100	0	-	east		The Shadow Grove
+1792668963	cmd	Trentlin	50	1305	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668964	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	west		The Shadow Grove
+1792668964	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668966	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	east		The Shadow Grove
+1792668966	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668968	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	south		The Shadow Grove
+1792668968	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	scan		Edgar                              -to the East.
+1792668970	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668971	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	south		The Shadow Grove
+1792668972	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	scan		Edgar                              -to the East.
+1792668974	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668974	cmd	Trentlin	50	1306	htower.are	standing	100	0	-	west		The Shadow Grove
+1792668975	cmd	Trentlin	50	1306	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668976	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	west		The Shadow Grove
+1792668977	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668978	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	east		The Shadow Grove
+1792668978	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668979	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	west		The Shadow Grove
+1792668979	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668980	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	south		The Shadow Grove
+1792668981	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668983	cmd	Trentlin	50	1300	htower.are	standing	100	0	-	north		Entrance to the Shadow Grove
+1792668984	cmd	Trentlin	50	1300	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668986	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	north		The Shadow Grove
+1792668986	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668988	cmd	Trentlin	50	1305	htower.are	standing	100	0	-	west		The Shadow Grove
+1792668988	cmd	Trentlin	50	1305	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668989	cmd	Trentlin	50	1306	htower.are	standing	100	0	-	east		The Shadow Grove
+1792668989	cmd	Trentlin	50	1306	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668990	cmd	Trentlin	50	1305	htower.are	standing	100	0	-	east		The Shadow Grove
+1792668991	cmd	Trentlin	50	1305	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668991	cmd	Trentlin	50	1306	htower.are	standing	100	0	-	east		The Shadow Grove
+1792668992	cmd	Trentlin	50	1306	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668993	cmd	Trentlin	50	1305	htower.are	standing	100	0	-	east		The Shadow Grove
+1792668993	cmd	Trentlin	50	1305	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668995	cmd	Trentlin	50	1304	htower.are	standing	100	0	-	north		The Shadow Grove
+1792668995	cmd	Trentlin	50	1304	htower.are	standing	100	0	-	exits		Obvious exits:
+1792668997	cmd	Trentlin	50	2201	draconia.are	standing	100	0	-	west		The Tower Gates
+1792669000	cmd	Trentlin	50	2201	draconia.are	standing	100	0	-	where		Players near you:
+1792669006	cmd	Trentlin	50	2202	draconia.are	standing	100	0	-	north		The Foyer
+1792669009	cmd	Trentlin	50	2201	draconia.are	standing	100	0	-	south		The Tower Gates
+1792669009	cmd	Trentlin	50	1304	htower.are	standing	100	0	-	east		The Shadow Grove
+1792669010	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	east		The Shadow Grove
+1792669010	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669011	cmd	Trentlin	50	1301	htower.are	standing	100	0	-	east		The Shadow Grove
+1792669011	cmd	Trentlin	50	1301	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669012	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	west		The Shadow Grove
+1792669013	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669013	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	west		The Shadow Grove
+1792669014	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669015	cmd	Trentlin	50	1306	htower.are	standing	100	0	-	west		The Shadow Grove
+1792669015	cmd	Trentlin	50	1306	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669017	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	west		The Shadow Grove
+1792669017	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669018	cmd	Trentlin	50	1306	htower.are	standing	100	0	-	west		The Shadow Grove
+1792669018	cmd	Trentlin	50	1306	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669020	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	west		The Shadow Grove
+1792669020	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669021	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	south		The Shadow Grove
+1792669021	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669023	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	south		The Shadow Grove
+1792669024	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669025	cmd	Trentlin	50	1303	htower.are	standing	100	0	-	north		The Shadow Grove
+1792669025	cmd	Trentlin	50	1303	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669026	cmd	Trentlin	50	1301	htower.are	standing	100	0	-	south		The Shadow Grove
+1792669026	cmd	Trentlin	50	1301	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669027	cmd	Trentlin	50	1303	htower.are	standing	100	0	-	north		The Shadow Grove
+1792669028	cmd	Trentlin	50	1303	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669028	cmd	Trentlin	50	1301	htower.are	standing	100	0	-	south		The Shadow Grove
+1792669029	cmd	Trentlin	50	1301	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669030	cmd	Trentlin	50	1303	htower.are	standing	100	0	-	north		The Shadow Grove
+1792669031	cmd	Trentlin	50	1303	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669032	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	east		The Shadow Grove
+1792669032	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669033	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	east		The Shadow Grove
+1792669034	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669035	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	south		The Shadow Grove
+1792669035	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669037	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	south		The Shadow Grove
+1792669037	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669038	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	south		The Shadow Grove
+1792669039	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669039	cmd	Trentlin	50	1308	htower.are	standing	100	0	-	scan		Edgar                              -to the East.
+1792669041	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	east		The Shadow Grove
+1792669041	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	west		The Shadow Grove
+1792669042	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669043	cmd	Trentlin	50	1306	htower.are	standing	100	0	-	west		The Shadow Grove
+1792669043	cmd	Trentlin	50	1306	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669044	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	west		The Shadow Grove
+1792669045	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669046	cmd	Trentlin	50	1309	htower.are	standing	100	0	-	scan		Edgar                              -to the East.
+1792669047	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	east		The Shadow Grove
+1792669048	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669051	cmd	Trentlin	50	1304	htower.are	standing	100	0	-	north		The Shadow Grove
+1792669051	cmd	Trentlin	50	1304	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669053	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	east		The Shadow Grove
+1792669054	cmd	Trentlin	50	1307	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669055	cmd	Trentlin	50	1304	htower.are	standing	100	0	-	north		The Shadow Grove
+1792669056	cmd	Trentlin	50	1304	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669057	cmd	Trentlin	50	1301	htower.are	standing	100	0	-	north		The Shadow Grove
+1792669057	cmd	Trentlin	50	1301	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669059	cmd	Trentlin	50	1303	htower.are	standing	100	0	-	north		The Shadow Grove
+1792669059	cmd	Trentlin	50	1303	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669062	cmd	Trentlin	50	1302	htower.are	standing	100	0	-	west		The Shadow Grove
+1792669063	cmd	Trentlin	50	1302	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669064	cmd	Trentlin	50	1311	htower.are	standing	100	0	-	east		A small clearing
+1792669066	cmd	Trentlin	50	1311	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669068	cmd	Trentlin	50	1312	htower.are	standing	100	0	-	north		Entrance to the High Tower
+1792669069	cmd	Trentlin	50	1313	htower.are	standing	100	0	-	north		Inside the High Tower of Sorcerery
+1792669069	cmd	Trentlin	50	1314	htower.are	standing	100	0	-	north		Common Room
+1792669070	cmd	Trentlin	50	1317	htower.are	standing	100	0	-	north		Dark Hallway
+1792669072	cmd	Trentlin	50	1314	htower.are	standing	100	0	-	south		Common Room
+1792669073	cmd	Trentlin	50	1318	htower.are	standing	100	0	-	east		Mages Tavern
+1792669073	cmd	Trentlin	50	1318	htower.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792669074	cmd	Trentlin	50	1314	htower.are	standing	100	0	-	west		Common Room
+1792669074	cmd	Trentlin	50	1319	htower.are	standing	100	0	-	west		The Magic Shop
+1792669076	cmd	Trentlin	50	1314	htower.are	standing	100	0	-	east		Common Room
+1792669076	cmd	Trentlin	50	1317	htower.are	standing	100	0	-	north		Dark Hallway
+1792669078	cmd	Trentlin	50	1321	htower.are	standing	100	0	-	down		Below the trapdoor
+1792669079	cmd	Trentlin	50	1322	htower.are	standing	100	0	-	down		A damp intersection
+1792669080	cmd	Trentlin	50	1324	htower.are	standing	100	0	-	east		A dark passage
+1792669081	cmd	Trentlin	50	1328	htower.are	standing	100	0	-	east		The Jailor's office
+1792669082	cmd	Trentlin	50	1324	htower.are	standing	100	0	-	west		A dark passage
+1792669082	cmd	Trentlin	50	1322	htower.are	standing	100	0	-	west		A damp intersection
+1792669083	cmd	Trentlin	50	1326	htower.are	standing	100	0	-	west		A dark passage
+1792669084	cmd	Trentlin	50	1322	htower.are	standing	100	0	-	east		A damp intersection
+1792669084	cmd	Trentlin	50	1323	htower.are	standing	100	0	-	north		A dark passage
+1792669084	cmd	Trentlin	50	1327	htower.are	standing	100	0	-	north		A dark cell
+1792669086	cmd	Trentlin	50	1323	htower.are	standing	100	0	-	south		A dark passage
+1792669088	cmd	Trentlin	50	1322	htower.are	standing	100	0	-	south		A damp intersection
+1792669089	cmd	Trentlin	50	1325	htower.are	standing	100	0	-	south		The stagnant pool
+1792669089	cmd	Trentlin	50	1325	htower.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792669091	cmd	Trentlin	50	1322	htower.are	standing	100	0	-	north		A damp intersection
+1792669092	cmd	Trentlin	50	1321	htower.are	standing	100	0	-	up		Below the trapdoor
+1792669093	cmd	Trentlin	50	1317	htower.are	standing	100	0	-	up		Dark Hallway
+1792669094	cmd	Trentlin	50	1314	htower.are	standing	100	0	-	south		Common Room
+1792669094	cmd	Trentlin	50	1319	htower.are	standing	100	0	-	west		The Magic Shop
+1792669095	cmd	Trentlin	50	1314	htower.are	standing	100	0	-	east		Common Room
+1792669096	cmd	Trentlin	50	1313	htower.are	standing	100	0	-	south		Inside the High Tower of Sorcerery
+1792669097	cmd	Trentlin	50	1315	htower.are	standing	100	0	-	east		The Hallway
+1792669097	cmd	Trentlin	50	1330	htower.are	standing	100	0	-	east		The hallway
+1792669098	cmd	Trentlin	50	1331	htower.are	standing	100	0	-	east		A bend in the hallway
+1792669099	cmd	Trentlin	50	1336	htower.are	standing	100	1	-	east		A guest bedroom
+1792669100	cmd	Trentlin	50	1331	htower.are	standing	100	0	-	west		A bend in the hallway
+1792669100	cmd	Trentlin	50	1335	htower.are	standing	100	0	-	south		Guardians chamber
+1792669101	cmd	Trentlin	50	1331	htower.are	standing	100	0	-	north		A bend in the hallway
+1792669101	cmd	Trentlin	50	1330	htower.are	standing	100	0	-	west		The hallway
+1792669102	cmd	Trentlin	50	1315	htower.are	standing	100	0	-	west		The Hallway
+1792669102	cmd	Trentlin	50	1313	htower.are	standing	100	0	-	west		Inside the High Tower of Sorcerery
+1792669102	cmd	Trentlin	50	1316	htower.are	standing	100	0	-	west		Dining Room
+1792669102	cmd	Trentlin	50	1320	htower.are	standing	100	0	-	west		the kitchen
+1792669103	cmd	Trentlin	50	1320	htower.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792669104	cmd	Trentlin	50	1316	htower.are	standing	100	0	-	east		Dining Room
+1792669105	cmd	Trentlin	50	1313	htower.are	standing	100	0	-	east		Inside the High Tower of Sorcerery
+1792669106	cmd	Trentlin	50	1315	htower.are	standing	100	0	-	east		The Hallway
+1792669107	cmd	Trentlin	50	1330	htower.are	standing	100	0	-	east		The hallway
+1792669107	cmd	Trentlin	50	1332	htower.are	standing	100	0	-	north		A store room
+1792669108	cmd	Trentlin	50	1330	htower.are	standing	100	0	-	south		The hallway
+1792669108	cmd	Trentlin	50	1333	htower.are	standing	100	0	-	south		A broom closet
+1792669109	cmd	Trentlin	50	1330	htower.are	standing	100	0	-	north		The hallway
+1792669109	cmd	Trentlin	50	1331	htower.are	standing	100	0	-	east		A bend in the hallway
+1792669110	cmd	Trentlin	50	1334	htower.are	standing	100	0	-	north		A hallway
+1792669111	cmd	Trentlin	50	1338	htower.are	standing	100	0	-	north		A hallway
+1792669112	cmd	Trentlin	50	1338	htower.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792669113	cmd	Trentlin	50	1340	htower.are	standing	100	0	-	up		A hallway
+1792669114	cmd	Trentlin	50	1343	htower.are	standing	100	0	-	west		A hallway
+1792669114	cmd	Trentlin	50	1345	htower.are	standing	100	0	-	west		A hallway
+1792669115	cmd	Trentlin	50	1347	htower.are	standing	100	0	-	west		A bend in the hallway
+1792669117	cmd	Trentlin	50	1348	htower.are	standing	100	0	-	south		The hallway
+1792669117	cmd	Trentlin	50	1350	htower.are	standing	100	0	-	south		A hallway
+1792669118	cmd	Trentlin	50	1351	htower.are	standing	100	0	-	south		A hallway
+1792669119	cmd	Trentlin	50	1353	htower.are	standing	100	0	-	south		A bend in the hallway
+1792669120	cmd	Trentlin	50	1353	htower.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792669120	cmd	Trentlin	50	1355	htower.are	standing	100	0	-	east		A hallway
+1792669120	cmd	Trentlin	50	1356	htower.are	standing	100	0	-	east		A hallway
+1792669121	cmd	Trentlin	50	1358	htower.are	standing	100	0	-	east		A hallway
+1792669122	cmd	Trentlin	50	1360	htower.are	standing	100	0	-	east		A bend in the hallway
+1792669123	cmd	Trentlin	50	1362	htower.are	standing	100	0	-	north		A hallway
+1792669123	cmd	Trentlin	50	1363	htower.are	standing	100	0	-	north		A hallway
+1792669123	cmd	Trentlin	50	1366	htower.are	standing	100	0	-	north		A hallway
+1792669124	cmd	Trentlin	50	1368	htower.are	standing	100	0	-	north		Below the stairs
+1792669126	cmd	Trentlin	50	1369	htower.are	standing	100	0	-	up		Atop the stairway
+1792669127	cmd	Trentlin	50	1370	htower.are	standing	100	0	-	west		A hallway
+1792669127	cmd	Trentlin	50	1372	htower.are	standing	100	0	-	west		A hallway
+1792669128	cmd	Trentlin	50	1374	htower.are	standing	100	0	-	west		A hallway
+1792669129	cmd	Trentlin	50	1376	htower.are	standing	100	0	-	west		A bend in the hallway
+1792669130	cmd	Trentlin	50	1377	htower.are	standing	100	0	-	south		A hallway
+1792669130	cmd	Trentlin	50	1378	htower.are	standing	100	0	-	south		A hallway
+1792669131	cmd	Trentlin	50	1380	htower.are	standing	100	0	-	south		A hallway
+1792669131	cmd	Trentlin	50	1383	htower.are	standing	100	0	-	south		A bend in the hallway
+1792669132	cmd	Trentlin	50	1383	htower.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792669132	cmd	Trentlin	50	1384	htower.are	standing	100	0	-	east		A hallway
+1792669133	cmd	Trentlin	50	1385	htower.are	standing	100	0	-	east		A hallway
+1792669134	cmd	Trentlin	50	1387	htower.are	standing	100	0	-	east		A hallway
+1792669135	cmd	Trentlin	50	1389	htower.are	standing	100	0	-	east		A bend in the hallway
+1792669136	cmd	Trentlin	50	1391	htower.are	standing	100	0	-	north		A hallway
+1792669137	cmd	Trentlin	50	1393	htower.are	standing	100	0	-	north		A hallway
+1792669138	cmd	Trentlin	50	1396	htower.are	standing	100	0	-	north		A hallway
+1792669138	cmd	Trentlin	50	1398	htower.are	standing	100	0	-	north		The end of the hallway
+1792669140	cmd	Trentlin	50	1399	htower.are	standing	100	0	-	up		Atop the stairway
+1792669141	cmd	Trentlin	50	1400	htower.are	standing	100	0	-	west		A hallway
+1792669143	cmd	Trentlin	50	1404	htower.are	standing	100	0	-	west		A hallway
+1792669144	cmd	Trentlin	50	1405	htower.are	standing	100	0	-	west		A hallway
+1792669145	cmd	Trentlin	50	1406	htower.are	standing	100	0	-	west		A bend in the hallway
+1792669146	cmd	Trentlin	50	1407	htower.are	standing	100	0	-	south		A hallway
+1792669146	cmd	Trentlin	50	1408	htower.are	standing	100	0	-	south		A hallway
+1792669147	cmd	Trentlin	50	1413	htower.are	standing	100	0	-	south		A hallway
+1792669149	cmd	Trentlin	50	1414	htower.are	standing	100	0	-	south		A bend in the hallway
+1792669150	cmd	Trentlin	50	1415	htower.are	standing	100	0	-	east		A hallway
+1792669151	cmd	Trentlin	50	1416	htower.are	standing	100	0	-	east		A hallway
+1792669152	cmd	Trentlin	50	1419	htower.are	standing	100	0	-	east		A hallway
+1792669153	cmd	Trentlin	50	1421	htower.are	standing	100	0	-	east		A bend in the hallway
+1792669154	cmd	Trentlin	50	1422	htower.are	standing	100	0	-	north		A hallway
+1792669154	cmd	Trentlin	50	1426	htower.are	standing	100	0	-	north		A hallway
+1792669155	cmd	Trentlin	50	1427	htower.are	standing	100	0	-	north		A hallway
+1792669156	cmd	Trentlin	50	1428	htower.are	standing	100	0	-	north		The end of the hallway
+1792669157	cmd	Trentlin	50	1429	htower.are	standing	100	0	-	up		A corridor
+1792669158	cmd	Trentlin	50	1430	htower.are	standing	100	0	-	west		A corridor
+1792669159	cmd	Trentlin	50	1431	htower.are	standing	100	0	-	west		A bend in the corridor
+1792669160	cmd	Trentlin	50	1432	htower.are	standing	100	0	-	south		A corridor
+1792669161	cmd	Trentlin	50	1433	htower.are	standing	100	0	-	south		An intersection
+1792669162	cmd	Trentlin	50	1446	htower.are	standing	100	0	-	south		A corridor
+1792669164	cmd	Trentlin	50	1446	htower.are	standing	100	0	-	ne		Alas, you cannot go that way.
+1792669165	cmd	Trentlin	50	1433	htower.are	standing	100	0	-	north		An intersection
+1792669166	cmd	Trentlin	50	1433	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669167	cmd	Trentlin	50	1433	htower.are	standing	100	0	-	scan		a pair of disembodied eyes          -to the North.
+1792669168	cmd	Trentlin	50	1436	htower.are	standing	100	0	-	west		A corridor
+1792669168	cmd	Trentlin	50	1437	htower.are	standing	100	0	-	west		The entrance to the library
+1792669170	cmd	Trentlin	50	1436	htower.are	standing	100	0	-	east		A corridor
+1792669171	cmd	Trentlin	50	1433	htower.are	standing	100	0	-	east		An intersection
+1792669172	cmd	Trentlin	50	1446	htower.are	standing	100	0	-	south		A corridor
+1792669172	cmd	Trentlin	50	1447	htower.are	standing	100	0	-	south		The end of the corridor
+1792669173	cmd	Trentlin	50	1448	htower.are	standing	100	0	-	south		The arched entrance
+1792669175	cmd	Trentlin	50	1449	htower.are	standing	100	0	-	up		The landing
+1792669175	cmd	Trentlin	50	1450	htower.are	standing	100	0	-	up		An intersection
+1792669177	cmd	Trentlin	50	1450	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669178	cmd	Trentlin	50	1450	htower.are	standing	100	0	-	scan		You don't see anything near you.
+1792669181	cmd	Trentlin	50	1465	htower.are	standing	100	0	-	west		A bright hallway
+1792669182	cmd	Trentlin	50	1466	htower.are	standing	100	0	-	west		A bright hallway
+1792669183	cmd	Trentlin	50	1467	htower.are	standing	100	0	-	west		An antechamber
+1792669185	cmd	Trentlin	50	1466	htower.are	standing	100	0	-	east		A bright hallway
+1792669185	cmd	Trentlin	50	1465	htower.are	standing	100	0	-	east		A bright hallway
+1792669186	cmd	Trentlin	50	1450	htower.are	standing	100	0	-	east		An intersection
+1792669187	cmd	Trentlin	50	1473	htower.are	standing	100	0	-	north		A wide hallway
+1792669188	cmd	Trentlin	50	1474	htower.are	standing	100	0	-	north		A wide hallway
+1792669188	cmd	Trentlin	50	1475	htower.are	standing	100	0	-	north		A wide hallway
+1792669189	cmd	Trentlin	50	1476	htower.are	standing	100	2	-	north		The entranceway
+1792669190	cmd	Trentlin	50	1477	htower.are	standing	100	0	-	north		The audience chamber
+1792669191	cmd	Trentlin	50	1476	htower.are	standing	100	0	-	south		The entranceway
+1792669192	cmd	Trentlin	50	1475	htower.are	standing	100	0	-	south		A wide hallway
+1792669192	cmd	Trentlin	50	1474	htower.are	standing	100	0	-	south		A wide hallway
+1792669193	cmd	Trentlin	50	1473	htower.are	standing	100	0	-	south		A wide hallway
+1792669193	cmd	Trentlin	50	1450	htower.are	standing	100	0	-	south		An intersection
+1792669194	cmd	Trentlin	50	1451	htower.are	standing	100	0	-	south		A grey tiled hallway
+1792669195	cmd	Trentlin	50	1452	htower.are	standing	100	0	-	south		A grey tiled hallway
+1792669196	cmd	Trentlin	50	1453	htower.are	standing	100	0	-	south		The antechamber
+1792669197	cmd	Trentlin	50	1454	htower.are	standing	100	0	-	south		The main chamber
+1792669198	cmd	Trentlin	50	1453	htower.are	standing	100	0	-	north		The antechamber
+1792669198	cmd	Trentlin	50	1452	htower.are	standing	100	0	-	north		A grey tiled hallway
+1792669199	cmd	Trentlin	50	1451	htower.are	standing	100	0	-	north		A grey tiled hallway
+1792669200	cmd	Trentlin	50	1450	htower.are	standing	100	0	-	north		An intersection
+1792669201	cmd	Trentlin	50	1458	htower.are	standing	100	0	-	east		A dark hallway
+1792669201	cmd	Trentlin	50	1459	htower.are	standing	100	0	-	east		A dark hallway
+1792669201	cmd	Trentlin	50	1460	htower.are	standing	100	0	-	east		The end of the hallway
+1792669202	cmd	Trentlin	50	1461	htower.are	standing	100	0	-	east		The chamber of darkness
+1792669204	cmd	Trentlin	50	1461	htower.are	standing	100	0	-	exits		Obvious exits:
+1792669205	cmd	Trentlin	50	1461	htower.are	standing	100	0	-	scan		the master of the black robes          -to the East.
+1792669205	cmd	Trentlin	50	1460	htower.are	standing	100	0	-	west		The end of the hallway
+1792669206	cmd	Trentlin	50	1459	htower.are	standing	100	0	-	west		A dark hallway
+1792669206	cmd	Trentlin	50	1458	htower.are	standing	100	0	-	west		A dark hallway
+1792669207	cmd	Trentlin	50	1450	htower.are	standing	100	0	-	west		An intersection
+1792669208	cmd	Trentlin	50	1449	htower.are	standing	100	0	-	down		The landing
+1792669208	cmd	Trentlin	50	1448	htower.are	standing	100	0	-	down		The arched entrance
+1792669210	cmd	Trentlin	50	1447	htower.are	standing	100	0	-	north		The end of the corridor
+1792669211	cmd	Trentlin	50	1446	htower.are	standing	100	0	-	north		A corridor
+1792669211	cmd	Trentlin	50	1433	htower.are	standing	100	0	-	north		An intersection
+1792669212	cmd	Trentlin	50	1434	htower.are	standing	100	0	-	east		A corridor
+1792669213	cmd	Trentlin	50	1435	htower.are	standing	100	0	-	east		The scrying chamber

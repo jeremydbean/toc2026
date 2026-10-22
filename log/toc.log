@@ -156340,3 +156340,580 @@ Thu Oct 22 11:35:11 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows yo
 Thu Oct 22 11:35:11 2026 :: Log Trentlin [2497]: u
 Thu Oct 22 11:35:11 2026 :: Log Trentlin [2497]: u
 Thu Oct 22 11:35:14 2026 :: Log Trentlin [2497]: aquest request
+Thu Oct 22 11:35:18 2026 :: Log Trentlin [2497]: enter door
+Thu Oct 22 11:35:18 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [2401]: r w 7
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [2438]: open gate
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [2438]: r w 8
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [6000]: arrived (The edge of the forest) from 2439
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [6001]: arrived (A trail through the light forest) from 6000
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [6002]: arrived (A trail through the light forest) from 6001
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [6003]: arrived (A trail through the dense forest) from 6002
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [6004]: arrived (A trail through the dense forest) from 6003
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [6101]: r s 2
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [6104]: arrived (A small path in the deep, dark forest) from 6101
+Thu Oct 22 11:35:34 2026 :: Log Trentlin [6105]: arrived (A small path in the deep, dark forest) from 6104
+Thu Oct 22 11:35:35 2026 :: Log Trentlin [6105]: w
+Thu Oct 22 11:35:35 2026 :: Log Trentlin [6106]: arrived (A junction in the deep, dark forest) from 6105
+Thu Oct 22 11:35:35 2026 :: Log Trentlin [6106]: s
+Thu Oct 22 11:35:35 2026 :: Log Trentlin [6117]: arrived (A junction in the deep, dark forest) from 6106
+Thu Oct 22 11:35:35 2026 :: Log Trentlin [6117]: w
+Thu Oct 22 11:35:35 2026 :: Log Trentlin [6116]: arrived (A small path in the deep, dark forest) from 6117
+Thu Oct 22 11:35:35 2026 :: Log Trentlin [6116]: s
+Thu Oct 22 11:35:35 2026 :: Log Trentlin [6115]: arrived (A small path in the deep, dark forest) from 6116
+Thu Oct 22 11:35:36 2026 :: Log Trentlin [6115]: r w 2
+Thu Oct 22 11:35:36 2026 :: Log Trentlin [6114]: arrived (A junction in the deep, dark forest) from 6115
+Thu Oct 22 11:35:36 2026 :: Log Trentlin [6122]: arrived (A small path in the deep, dark forest) from 6114
+Thu Oct 22 11:35:36 2026 :: Log Trentlin [6122]: r s 2
+Thu Oct 22 11:35:36 2026 :: Log Trentlin [6123]: arrived (A junction on the river bank in the deep, dark forest) from 6122
+Thu Oct 22 11:35:36 2026 :: Log Trentlin [9774]: arrived (On the Dark River) from 6123
+Thu Oct 22 11:35:36 2026 :: Log Trentlin [9774]: w
+Thu Oct 22 11:35:36 2026 :: Log Trentlin [9775]: arrived (On the Dark River) from 9774
+Thu Oct 22 11:35:36 2026 :: Log Trentlin [9775]: sw
+Thu Oct 22 11:35:36 2026 :: Log Trentlin [15]: arrived (Bend in River) from 9775
+Thu Oct 22 11:35:37 2026 :: Log Trentlin [15]: w
+Thu Oct 22 11:35:37 2026 :: Log Trentlin [16]: arrived (Misty River) from 15
+Thu Oct 22 11:35:37 2026 :: Log Trentlin [16]: n
+Thu Oct 22 11:35:37 2026 :: Log Trentlin [1300]: arrived (Entrance to the Shadow Grove) from 16
+Thu Oct 22 11:35:40 2026 :: Log Trentlin [1300]: n
+Thu Oct 22 11:35:40 2026 :: Log Trentlin [1308]: arrived (The Shadow Grove) from 1300
+Thu Oct 22 11:35:41 2026 :: Log Trentlin [1308]: ex
+Thu Oct 22 11:35:42 2026 :: Log Trentlin [1308]: e
+Thu Oct 22 11:35:42 2026 :: Log Trentlin [1307]: arrived (The Shadow Grove) from 1308
+Thu Oct 22 11:35:43 2026 :: Log Trentlin [1307]: ex
+Thu Oct 22 11:35:44 2026 :: Log Trentlin [1307]: e
+Thu Oct 22 11:35:44 2026 :: Log Trentlin [1301]: arrived (The Shadow Grove) from 1307
+Thu Oct 22 11:35:44 2026 :: Log Trentlin [1301]: ex
+Thu Oct 22 11:35:45 2026 :: Log Trentlin [1301]: s
+Thu Oct 22 11:35:45 2026 :: Log Trentlin [1304]: arrived (The Shadow Grove) from 1301
+Thu Oct 22 11:35:46 2026 :: Log Trentlin [1304]: ex
+Thu Oct 22 11:35:47 2026 :: Log Trentlin [1304]: w
+Thu Oct 22 11:35:47 2026 :: Log Trentlin [2201]: arrived (The Tower Gates) from 1304
+Thu Oct 22 11:35:49 2026 :: Log Trentlin [2201]: n
+Thu Oct 22 11:35:49 2026 :: Log Trentlin [2202]: arrived (The Foyer) from 2201
+Thu Oct 22 11:35:51 2026 :: Log Trentlin [2202]: s
+Thu Oct 22 11:35:51 2026 :: Log Trentlin [2201]: arrived (The Tower Gates) from 2202
+Thu Oct 22 11:35:51 2026 :: Log Trentlin [2201]: e
+Thu Oct 22 11:35:51 2026 :: Log Trentlin [1304]: arrived (The Shadow Grove) from 2201
+Thu Oct 22 11:35:52 2026 :: Log Trentlin [1304]: e
+Thu Oct 22 11:35:52 2026 :: Log Trentlin [1307]: arrived (The Shadow Grove) from 1304
+Thu Oct 22 11:35:53 2026 :: Log Trentlin [1307]: ex
+Thu Oct 22 11:35:53 2026 :: Log Trentlin [1307]: s
+Thu Oct 22 11:35:53 2026 :: Log Trentlin [1308]: arrived (The Shadow Grove) from 1307
+Thu Oct 22 11:35:54 2026 :: Log Trentlin [1308]: ex
+Thu Oct 22 11:35:56 2026 :: Log Trentlin [1308]: s
+Thu Oct 22 11:35:56 2026 :: Log Trentlin [1309]: arrived (The Shadow Grove) from 1308
+Thu Oct 22 11:35:56 2026 :: Log Trentlin [1309]: ex
+Thu Oct 22 11:35:57 2026 :: Log Trentlin [1309]: s
+Thu Oct 22 11:35:57 2026 :: Log Trentlin [1308]: arrived (The Shadow Grove) from 1309
+Thu Oct 22 11:35:58 2026 :: Log Trentlin [1308]: ex
+Thu Oct 22 11:35:59 2026 :: Log Trentlin [1308]: w
+Thu Oct 22 11:35:59 2026 :: Log Trentlin [1305]: arrived (The Shadow Grove) from 1308
+Thu Oct 22 11:35:59 2026 :: Log Trentlin [1305]: ex
+Thu Oct 22 11:36:00 2026 :: Log Trentlin [1305]: e
+Thu Oct 22 11:36:00 2026 :: Log Trentlin [1306]: arrived (The Shadow Grove) from 1305
+Thu Oct 22 11:36:00 2026 :: Log Trentlin [1306]: ex
+Thu Oct 22 11:36:02 2026 :: Log Trentlin [1306]: e
+Thu Oct 22 11:36:02 2026 :: Log Trentlin [1305]: arrived (The Shadow Grove) from 1306
+Thu Oct 22 11:36:03 2026 :: Log Trentlin [1305]: ex
+Thu Oct 22 11:36:04 2026 :: Log Trentlin [1305]: w
+Thu Oct 22 11:36:04 2026 :: Log Trentlin [1308]: arrived (The Shadow Grove) from 1305
+Thu Oct 22 11:36:04 2026 :: Log Trentlin [1308]: ex
+Thu Oct 22 11:36:06 2026 :: Log Trentlin [1308]: e
+Thu Oct 22 11:36:06 2026 :: Log Trentlin [1307]: arrived (The Shadow Grove) from 1308
+Thu Oct 22 11:36:06 2026 :: Log Trentlin [1307]: ex
+Thu Oct 22 11:36:07 2026 :: Treasure goblin: vanished from room 7695 (The Dungeon, ultima.are) (too long in one area).
+Thu Oct 22 11:36:08 2026 :: Log Trentlin [1307]: s
+Thu Oct 22 11:36:08 2026 :: Log Trentlin [1308]: arrived (The Shadow Grove) from 1307
+Thu Oct 22 11:36:08 2026 :: Log Trentlin [1308]: sca
+Thu Oct 22 11:36:10 2026 :: Log Trentlin [1308]: ex
+Thu Oct 22 11:36:11 2026 :: Log Trentlin [1308]: s
+Thu Oct 22 11:36:11 2026 :: Log Trentlin [1309]: arrived (The Shadow Grove) from 1308
+Thu Oct 22 11:36:12 2026 :: Log Trentlin [1309]: sca
+Thu Oct 22 11:36:14 2026 :: Log Trentlin [1309]: ex
+Thu Oct 22 11:36:14 2026 :: Log Trentlin [1309]: w
+Thu Oct 22 11:36:14 2026 :: Log Trentlin [1306]: arrived (The Shadow Grove) from 1309
+Thu Oct 22 11:36:15 2026 :: Log Trentlin [1306]: ex
+Thu Oct 22 11:36:16 2026 :: Log Trentlin [1306]: w
+Thu Oct 22 11:36:16 2026 :: Log Trentlin [1309]: arrived (The Shadow Grove) from 1306
+Thu Oct 22 11:36:17 2026 :: Log Trentlin [1309]: ex
+Thu Oct 22 11:36:18 2026 :: Log Trentlin [1309]: e
+Thu Oct 22 11:36:18 2026 :: Log Trentlin [1307]: arrived (The Shadow Grove) from 1309
+Thu Oct 22 11:36:18 2026 :: Log Trentlin [1307]: ex
+Thu Oct 22 11:36:19 2026 :: Log Trentlin [1307]: w
+Thu Oct 22 11:36:19 2026 :: Log Trentlin [1309]: arrived (The Shadow Grove) from 1307
+Thu Oct 22 11:36:19 2026 :: Log Trentlin [1309]: ex
+Thu Oct 22 11:36:20 2026 :: Log Trentlin [1309]: s
+Thu Oct 22 11:36:20 2026 :: Log Trentlin [1308]: arrived (The Shadow Grove) from 1309
+Thu Oct 22 11:36:21 2026 :: Log Trentlin [1308]: ex
+Thu Oct 22 11:36:23 2026 :: Log Trentlin [1308]: n
+Thu Oct 22 11:36:23 2026 :: Log Trentlin [1300]: arrived (Entrance to the Shadow Grove) from 1308
+Thu Oct 22 11:36:24 2026 :: Log Trentlin [1300]: ex
+Thu Oct 22 11:36:26 2026 :: Log Trentlin [1300]: n
+Thu Oct 22 11:36:26 2026 :: Log Trentlin [1308]: arrived (The Shadow Grove) from 1300
+Thu Oct 22 11:36:26 2026 :: Log Trentlin [1308]: ex
+Thu Oct 22 11:36:28 2026 :: Log Trentlin [1308]: w
+Thu Oct 22 11:36:28 2026 :: Log Trentlin [1305]: arrived (The Shadow Grove) from 1308
+Thu Oct 22 11:36:28 2026 :: Log Trentlin [1305]: ex
+Thu Oct 22 11:36:29 2026 :: Log Trentlin [1305]: e
+Thu Oct 22 11:36:29 2026 :: Log Trentlin [1306]: arrived (The Shadow Grove) from 1305
+Thu Oct 22 11:36:29 2026 :: Log Trentlin [1306]: ex
+Thu Oct 22 11:36:30 2026 :: Log Trentlin [1306]: e
+Thu Oct 22 11:36:30 2026 :: Log Trentlin [1305]: arrived (The Shadow Grove) from 1306
+Thu Oct 22 11:36:31 2026 :: Log Trentlin [1305]: ex
+Thu Oct 22 11:36:31 2026 :: Log Trentlin [1305]: e
+Thu Oct 22 11:36:31 2026 :: Log Trentlin [1306]: arrived (The Shadow Grove) from 1305
+Thu Oct 22 11:36:32 2026 :: Log Trentlin [1306]: ex
+Thu Oct 22 11:36:33 2026 :: Log Trentlin [1306]: e
+Thu Oct 22 11:36:33 2026 :: Log Trentlin [1305]: arrived (The Shadow Grove) from 1306
+Thu Oct 22 11:36:33 2026 :: Log Trentlin [1305]: ex
+Thu Oct 22 11:36:35 2026 :: Log Trentlin [1305]: n
+Thu Oct 22 11:36:35 2026 :: Log Trentlin [1304]: arrived (The Shadow Grove) from 1305
+Thu Oct 22 11:36:35 2026 :: Log Trentlin [1304]: ex
+Thu Oct 22 11:36:37 2026 :: Log Trentlin [1304]: w
+Thu Oct 22 11:36:37 2026 :: Log Trentlin [2201]: arrived (The Tower Gates) from 1304
+Thu Oct 22 11:36:40 2026 :: Log Trentlin [2201]: where
+Thu Oct 22 11:36:46 2026 :: Log Trentlin [2201]: n
+Thu Oct 22 11:36:46 2026 :: Log Trentlin [2202]: arrived (The Foyer) from 2201
+Thu Oct 22 11:36:49 2026 :: Log Trentlin [2202]: s
+Thu Oct 22 11:36:49 2026 :: Log Trentlin [2201]: arrived (The Tower Gates) from 2202
+Thu Oct 22 11:36:49 2026 :: Log Trentlin [2201]: e
+Thu Oct 22 11:36:49 2026 :: Log Trentlin [1304]: arrived (The Shadow Grove) from 2201
+Thu Oct 22 11:36:50 2026 :: Log Trentlin [1304]: e
+Thu Oct 22 11:36:50 2026 :: Log Trentlin [1307]: arrived (The Shadow Grove) from 1304
+Thu Oct 22 11:36:50 2026 :: Log Trentlin [1307]: ex
+Thu Oct 22 11:36:51 2026 :: Log Trentlin [1307]: e
+Thu Oct 22 11:36:51 2026 :: Log Trentlin [1301]: arrived (The Shadow Grove) from 1307
+Thu Oct 22 11:36:51 2026 :: Log Trentlin [1301]: ex
+Thu Oct 22 11:36:52 2026 :: Log Trentlin [1301]: w
+Thu Oct 22 11:36:52 2026 :: Log Trentlin [1307]: arrived (The Shadow Grove) from 1301
+Thu Oct 22 11:36:53 2026 :: Log Trentlin [1307]: ex
+Thu Oct 22 11:36:53 2026 :: Log Trentlin [1307]: w
+Thu Oct 22 11:36:53 2026 :: Log Trentlin [1309]: arrived (The Shadow Grove) from 1307
+Thu Oct 22 11:36:54 2026 :: Log Trentlin [1309]: ex
+Thu Oct 22 11:36:55 2026 :: Log Trentlin [1309]: w
+Thu Oct 22 11:36:55 2026 :: Log Trentlin [1306]: arrived (The Shadow Grove) from 1309
+Thu Oct 22 11:36:55 2026 :: Log Trentlin [1306]: ex
+Thu Oct 22 11:36:57 2026 :: Log Trentlin [1306]: w
+Thu Oct 22 11:36:57 2026 :: Log Trentlin [1309]: arrived (The Shadow Grove) from 1306
+Thu Oct 22 11:36:57 2026 :: Log Trentlin [1309]: ex
+Thu Oct 22 11:36:58 2026 :: Log Trentlin [1309]: w
+Thu Oct 22 11:36:58 2026 :: Log Trentlin [1306]: arrived (The Shadow Grove) from 1309
+Thu Oct 22 11:36:58 2026 :: Log Trentlin [1306]: ex
+Thu Oct 22 11:37:00 2026 :: Log Trentlin [1306]: w
+Thu Oct 22 11:37:00 2026 :: Log Trentlin [1309]: arrived (The Shadow Grove) from 1306
+Thu Oct 22 11:37:00 2026 :: Log Trentlin [1309]: ex
+Thu Oct 22 11:37:01 2026 :: Log Trentlin [1309]: s
+Thu Oct 22 11:37:01 2026 :: Log Trentlin [1308]: arrived (The Shadow Grove) from 1309
+Thu Oct 22 11:37:01 2026 :: Log Trentlin [1308]: ex
+Thu Oct 22 11:37:03 2026 :: Log Trentlin [1308]: s
+Thu Oct 22 11:37:03 2026 :: Log Trentlin [1309]: arrived (The Shadow Grove) from 1308
+Thu Oct 22 11:37:04 2026 :: Log Trentlin [1309]: ex
+Thu Oct 22 11:37:05 2026 :: Log Trentlin [1309]: n
+Thu Oct 22 11:37:05 2026 :: Log Trentlin [1303]: arrived (The Shadow Grove) from 1309
+Thu Oct 22 11:37:05 2026 :: Log Trentlin [1303]: ex
+Thu Oct 22 11:37:06 2026 :: Log Trentlin [1303]: s
+Thu Oct 22 11:37:06 2026 :: Log Trentlin [1301]: arrived (The Shadow Grove) from 1303
+Thu Oct 22 11:37:06 2026 :: Log Trentlin [1301]: ex
+Thu Oct 22 11:37:07 2026 :: Log Trentlin [1301]: n
+Thu Oct 22 11:37:07 2026 :: Log Trentlin [1303]: arrived (The Shadow Grove) from 1301
+Thu Oct 22 11:37:08 2026 :: Log Trentlin [1303]: ex
+Thu Oct 22 11:37:08 2026 :: Log Trentlin [1303]: s
+Thu Oct 22 11:37:08 2026 :: Log Trentlin [1301]: arrived (The Shadow Grove) from 1303
+Thu Oct 22 11:37:09 2026 :: Log Trentlin [1301]: ex
+Thu Oct 22 11:37:10 2026 :: Log Trentlin [1301]: n
+Thu Oct 22 11:37:10 2026 :: Log Trentlin [1303]: arrived (The Shadow Grove) from 1301
+Thu Oct 22 11:37:11 2026 :: Log Trentlin [1303]: ex
+Thu Oct 22 11:37:12 2026 :: Log Trentlin [1303]: e
+Thu Oct 22 11:37:12 2026 :: Log Trentlin [1309]: arrived (The Shadow Grove) from 1303
+Thu Oct 22 11:37:12 2026 :: Log Trentlin [1309]: ex
+Thu Oct 22 11:37:13 2026 :: Log Trentlin [1309]: e
+Thu Oct 22 11:37:13 2026 :: Log Trentlin [1307]: arrived (The Shadow Grove) from 1309
+Thu Oct 22 11:37:14 2026 :: Log Trentlin [1307]: ex
+Thu Oct 22 11:37:15 2026 :: Log Trentlin [1307]: s
+Thu Oct 22 11:37:15 2026 :: Log Trentlin [1308]: arrived (The Shadow Grove) from 1307
+Thu Oct 22 11:37:15 2026 :: Log Trentlin [1308]: ex
+Thu Oct 22 11:37:17 2026 :: Log Trentlin [1308]: s
+Thu Oct 22 11:37:17 2026 :: Log Trentlin [1309]: arrived (The Shadow Grove) from 1308
+Thu Oct 22 11:37:17 2026 :: Log Trentlin [1309]: ex
+Thu Oct 22 11:37:18 2026 :: Log Trentlin [1309]: s
+Thu Oct 22 11:37:18 2026 :: Log Trentlin [1308]: arrived (The Shadow Grove) from 1309
+Thu Oct 22 11:37:19 2026 :: Log Trentlin [1308]: ex
+Thu Oct 22 11:37:19 2026 :: Log Trentlin [1308]: sca
+Thu Oct 22 11:37:21 2026 :: Log Trentlin [1308]: e
+Thu Oct 22 11:37:21 2026 :: Log Trentlin [1307]: arrived (The Shadow Grove) from 1308
+Thu Oct 22 11:37:21 2026 :: Log Trentlin [1307]: w
+Thu Oct 22 11:37:21 2026 :: Log Trentlin [1309]: arrived (The Shadow Grove) from 1307
+Thu Oct 22 11:37:22 2026 :: Log Trentlin [1309]: ex
+Thu Oct 22 11:37:23 2026 :: Log Trentlin [1309]: w
+Thu Oct 22 11:37:23 2026 :: Log Trentlin [1306]: arrived (The Shadow Grove) from 1309
+Thu Oct 22 11:37:23 2026 :: Log Trentlin [1306]: ex
+Thu Oct 22 11:37:24 2026 :: Log Trentlin [1306]: w
+Thu Oct 22 11:37:24 2026 :: Log Trentlin [1309]: arrived (The Shadow Grove) from 1306
+Thu Oct 22 11:37:25 2026 :: Log Trentlin [1309]: ex
+Thu Oct 22 11:37:26 2026 :: Log Trentlin [1309]: sca
+Thu Oct 22 11:37:27 2026 :: Log Trentlin [1309]: e
+Thu Oct 22 11:37:27 2026 :: Log Trentlin [1307]: arrived (The Shadow Grove) from 1309
+Thu Oct 22 11:37:28 2026 :: Log Trentlin [1307]: ex
+Thu Oct 22 11:37:31 2026 :: Log Trentlin [1307]: n
+Thu Oct 22 11:37:31 2026 :: Log Trentlin [1304]: arrived (The Shadow Grove) from 1307
+Thu Oct 22 11:37:31 2026 :: Log Trentlin [1304]: ex
+Thu Oct 22 11:37:33 2026 :: Log Trentlin [1304]: e
+Thu Oct 22 11:37:33 2026 :: Log Trentlin [1307]: arrived (The Shadow Grove) from 1304
+Thu Oct 22 11:37:34 2026 :: Log Trentlin [1307]: ex
+Thu Oct 22 11:37:35 2026 :: Log Trentlin [1307]: n
+Thu Oct 22 11:37:35 2026 :: Log Trentlin [1304]: arrived (The Shadow Grove) from 1307
+Thu Oct 22 11:37:36 2026 :: Log Trentlin [1304]: ex
+Thu Oct 22 11:37:37 2026 :: Log Trentlin [1304]: n
+Thu Oct 22 11:37:37 2026 :: Log Trentlin [1301]: arrived (The Shadow Grove) from 1304
+Thu Oct 22 11:37:37 2026 :: Log Trentlin [1301]: ex
+Thu Oct 22 11:37:39 2026 :: Log Trentlin [1301]: n
+Thu Oct 22 11:37:39 2026 :: Log Trentlin [1303]: arrived (The Shadow Grove) from 1301
+Thu Oct 22 11:37:39 2026 :: Log Trentlin [1303]: ex
+Thu Oct 22 11:37:42 2026 :: Log Trentlin [1303]: w
+Thu Oct 22 11:37:42 2026 :: Log Trentlin [1302]: arrived (The Shadow Grove) from 1303
+Thu Oct 22 11:37:43 2026 :: Log Trentlin [1302]: ex
+Thu Oct 22 11:37:44 2026 :: Log Trentlin [1302]: e
+Thu Oct 22 11:37:44 2026 :: Log Trentlin [1311]: arrived (A small clearing) from 1302
+Thu Oct 22 11:37:46 2026 :: Log Trentlin [1311]: ex
+Thu Oct 22 11:37:48 2026 :: Sock.sinaddr:  5.161.113.195
+Thu Oct 22 11:37:48 2026 :: Log Trentlin [1311]: n
+Thu Oct 22 11:37:48 2026 :: Log Trentlin [1312]: arrived (Entrance to the High Tower) from 1311
+Thu Oct 22 11:37:48 2026 :: EOF encountered on read.
+Thu Oct 22 11:37:49 2026 :: Log Trentlin [1312]: n
+Thu Oct 22 11:37:49 2026 :: Log Trentlin [1313]: arrived (Inside the High Tower of Sorcerery) from 1312
+Thu Oct 22 11:37:49 2026 :: Log Trentlin [1313]: n
+Thu Oct 22 11:37:49 2026 :: Log Trentlin [1314]: arrived (Common Room) from 1313
+Thu Oct 22 11:37:50 2026 :: Log Trentlin [1314]: n
+Thu Oct 22 11:37:50 2026 :: Log Trentlin [1317]: arrived (Dark Hallway) from 1314
+Thu Oct 22 11:37:52 2026 :: Log Trentlin [1317]: s
+Thu Oct 22 11:37:52 2026 :: Log Trentlin [1314]: arrived (Common Room) from 1317
+Thu Oct 22 11:37:53 2026 :: Log Trentlin [1314]: e
+Thu Oct 22 11:37:53 2026 :: Log Trentlin [1318]: arrived (Mages Tavern) from 1314
+Thu Oct 22 11:37:53 2026 :: Log Trentlin [1318]: e
+Thu Oct 22 11:37:54 2026 :: Log Trentlin [1318]: w
+Thu Oct 22 11:37:54 2026 :: Log Trentlin [1314]: arrived (Common Room) from 1318
+Thu Oct 22 11:37:54 2026 :: Log Trentlin [1314]: w
+Thu Oct 22 11:37:54 2026 :: Log Trentlin [1319]: arrived (The Magic Shop) from 1314
+Thu Oct 22 11:37:56 2026 :: Log Trentlin [1319]: e
+Thu Oct 22 11:37:56 2026 :: Log Trentlin [1314]: arrived (Common Room) from 1319
+Thu Oct 22 11:37:56 2026 :: Log Trentlin [1314]: n
+Thu Oct 22 11:37:56 2026 :: Log Trentlin [1317]: arrived (Dark Hallway) from 1314
+Thu Oct 22 11:37:58 2026 :: Log Trentlin [1317]: d
+Thu Oct 22 11:37:58 2026 :: Log Trentlin [1321]: arrived (Below the trapdoor) from 1317
+Thu Oct 22 11:37:59 2026 :: Log Trentlin [1321]: d
+Thu Oct 22 11:37:59 2026 :: Log Trentlin [1322]: arrived (A damp intersection) from 1321
+Thu Oct 22 11:38:00 2026 :: Log Trentlin [1322]: e
+Thu Oct 22 11:38:00 2026 :: Log Trentlin [1324]: arrived (A dark passage) from 1322
+Thu Oct 22 11:38:01 2026 :: Log Trentlin [1324]: e
+Thu Oct 22 11:38:01 2026 :: Log Trentlin [1328]: arrived (The Jailor's office) from 1324
+Thu Oct 22 11:38:02 2026 :: Log Trentlin [1328]: w
+Thu Oct 22 11:38:02 2026 :: Log Trentlin [1324]: arrived (A dark passage) from 1328
+Thu Oct 22 11:38:02 2026 :: Log Trentlin [1324]: w
+Thu Oct 22 11:38:02 2026 :: Log Trentlin [1322]: arrived (A damp intersection) from 1324
+Thu Oct 22 11:38:03 2026 :: Log Trentlin [1322]: w
+Thu Oct 22 11:38:03 2026 :: Log Trentlin [1326]: arrived (A dark passage) from 1322
+Thu Oct 22 11:38:04 2026 :: Log Trentlin [1326]: e
+Thu Oct 22 11:38:04 2026 :: Log Trentlin [1322]: arrived (A damp intersection) from 1326
+Thu Oct 22 11:38:04 2026 :: Log Trentlin [1322]: n
+Thu Oct 22 11:38:04 2026 :: Log Trentlin [1323]: arrived (A dark passage) from 1322
+Thu Oct 22 11:38:04 2026 :: Log Trentlin [1323]: n
+Thu Oct 22 11:38:04 2026 :: Log Trentlin [1327]: arrived (A dark cell) from 1323
+Thu Oct 22 11:38:06 2026 :: Log Trentlin [1327]: s
+Thu Oct 22 11:38:06 2026 :: Log Trentlin [1323]: arrived (A dark passage) from 1327
+Thu Oct 22 11:38:08 2026 :: Log Trentlin [1323]: s
+Thu Oct 22 11:38:08 2026 :: Log Trentlin [1322]: arrived (A damp intersection) from 1323
+Thu Oct 22 11:38:09 2026 :: Log Trentlin [1322]: s
+Thu Oct 22 11:38:09 2026 :: Log Trentlin [1325]: arrived (The stagnant pool) from 1322
+Thu Oct 22 11:38:09 2026 :: Log Trentlin [1325]: s
+Thu Oct 22 11:38:11 2026 :: Log Trentlin [1325]: n
+Thu Oct 22 11:38:11 2026 :: Log Trentlin [1322]: arrived (A damp intersection) from 1325
+Thu Oct 22 11:38:12 2026 :: Log Trentlin [1322]: u
+Thu Oct 22 11:38:12 2026 :: Log Trentlin [1321]: arrived (Below the trapdoor) from 1322
+Thu Oct 22 11:38:13 2026 :: Log Trentlin [1321]: u
+Thu Oct 22 11:38:13 2026 :: Log Trentlin [1317]: arrived (Dark Hallway) from 1321
+Thu Oct 22 11:38:14 2026 :: Log Trentlin [1317]: s
+Thu Oct 22 11:38:14 2026 :: Log Trentlin [1314]: arrived (Common Room) from 1317
+Thu Oct 22 11:38:14 2026 :: Log Trentlin [1314]: w
+Thu Oct 22 11:38:14 2026 :: Log Trentlin [1319]: arrived (The Magic Shop) from 1314
+Thu Oct 22 11:38:15 2026 :: Log Trentlin [1319]: e
+Thu Oct 22 11:38:15 2026 :: Log Trentlin [1314]: arrived (Common Room) from 1319
+Thu Oct 22 11:38:16 2026 :: Log Trentlin [1314]: s
+Thu Oct 22 11:38:16 2026 :: Log Trentlin [1313]: arrived (Inside the High Tower of Sorcerery) from 1314
+Thu Oct 22 11:38:17 2026 :: Log Trentlin [1313]: e
+Thu Oct 22 11:38:17 2026 :: Log Trentlin [1315]: arrived (The Hallway) from 1313
+Thu Oct 22 11:38:17 2026 :: Log Trentlin [1315]: e
+Thu Oct 22 11:38:17 2026 :: Log Trentlin [1330]: arrived (The hallway) from 1315
+Thu Oct 22 11:38:18 2026 :: Log Trentlin [1330]: e
+Thu Oct 22 11:38:18 2026 :: Log Trentlin [1331]: arrived (A bend in the hallway) from 1330
+Thu Oct 22 11:38:19 2026 :: Log Trentlin [1331]: e
+Thu Oct 22 11:38:19 2026 :: Log Trentlin [1336]: arrived (A guest bedroom) from 1331
+Thu Oct 22 11:38:20 2026 :: Log Trentlin [1336]: w
+Thu Oct 22 11:38:20 2026 :: Log Trentlin [1331]: arrived (A bend in the hallway) from 1336
+Thu Oct 22 11:38:20 2026 :: Log Trentlin [1331]: s
+Thu Oct 22 11:38:20 2026 :: Log Trentlin [1335]: arrived (Guardians chamber) from 1331
+Thu Oct 22 11:38:21 2026 :: Log Trentlin [1335]: n
+Thu Oct 22 11:38:21 2026 :: Log Trentlin [1331]: arrived (A bend in the hallway) from 1335
+Thu Oct 22 11:38:21 2026 :: Log Trentlin [1331]: w
+Thu Oct 22 11:38:21 2026 :: Log Trentlin [1330]: arrived (The hallway) from 1331
+Thu Oct 22 11:38:22 2026 :: Log Trentlin [1330]: w
+Thu Oct 22 11:38:22 2026 :: Log Trentlin [1315]: arrived (The Hallway) from 1330
+Thu Oct 22 11:38:22 2026 :: Log Trentlin [1315]: w
+Thu Oct 22 11:38:22 2026 :: Log Trentlin [1313]: arrived (Inside the High Tower of Sorcerery) from 1315
+Thu Oct 22 11:38:22 2026 :: Log Trentlin [1313]: w
+Thu Oct 22 11:38:22 2026 :: Log Trentlin [1316]: arrived (Dining Room) from 1313
+Thu Oct 22 11:38:22 2026 :: Log Trentlin [1316]: w
+Thu Oct 22 11:38:22 2026 :: Log Trentlin [1320]: arrived (the kitchen) from 1316
+Thu Oct 22 11:38:23 2026 :: Log Trentlin [1320]: w
+Thu Oct 22 11:38:24 2026 :: Log Trentlin [1320]: e
+Thu Oct 22 11:38:24 2026 :: Log Trentlin [1316]: arrived (Dining Room) from 1320
+Thu Oct 22 11:38:25 2026 :: Log Trentlin [1316]: e
+Thu Oct 22 11:38:25 2026 :: Log Trentlin [1313]: arrived (Inside the High Tower of Sorcerery) from 1316
+Thu Oct 22 11:38:26 2026 :: Log Trentlin [1313]: e
+Thu Oct 22 11:38:26 2026 :: Log Trentlin [1315]: arrived (The Hallway) from 1313
+Thu Oct 22 11:38:27 2026 :: Log Trentlin [1315]: e
+Thu Oct 22 11:38:27 2026 :: Log Trentlin [1330]: arrived (The hallway) from 1315
+Thu Oct 22 11:38:27 2026 :: Log Trentlin [1330]: n
+Thu Oct 22 11:38:27 2026 :: Log Trentlin [1332]: arrived (A store room) from 1330
+Thu Oct 22 11:38:28 2026 :: Log Trentlin [1332]: s
+Thu Oct 22 11:38:28 2026 :: Log Trentlin [1330]: arrived (The hallway) from 1332
+Thu Oct 22 11:38:28 2026 :: Log Trentlin [1330]: s
+Thu Oct 22 11:38:28 2026 :: Log Trentlin [1333]: arrived (A broom closet) from 1330
+Thu Oct 22 11:38:29 2026 :: Log Trentlin [1333]: n
+Thu Oct 22 11:38:29 2026 :: Log Trentlin [1330]: arrived (The hallway) from 1333
+Thu Oct 22 11:38:29 2026 :: Log Trentlin [1330]: e
+Thu Oct 22 11:38:29 2026 :: Log Trentlin [1331]: arrived (A bend in the hallway) from 1330
+Thu Oct 22 11:38:30 2026 :: Log Trentlin [1331]: n
+Thu Oct 22 11:38:30 2026 :: Log Trentlin [1334]: arrived (A hallway) from 1331
+Thu Oct 22 11:38:31 2026 :: Log Trentlin [1334]: n
+Thu Oct 22 11:38:31 2026 :: Log Trentlin [1338]: arrived (A hallway) from 1334
+Thu Oct 22 11:38:32 2026 :: Log Trentlin [1338]: n
+Thu Oct 22 11:38:33 2026 :: Log Trentlin [1338]: u
+Thu Oct 22 11:38:33 2026 :: Log Trentlin [1340]: arrived (A hallway) from 1338
+Thu Oct 22 11:38:34 2026 :: Log Trentlin [1340]: w
+Thu Oct 22 11:38:34 2026 :: Log Trentlin [1343]: arrived (A hallway) from 1340
+Thu Oct 22 11:38:34 2026 :: Log Trentlin [1343]: w
+Thu Oct 22 11:38:34 2026 :: Log Trentlin [1345]: arrived (A hallway) from 1343
+Thu Oct 22 11:38:35 2026 :: Log Trentlin [1345]: w
+Thu Oct 22 11:38:35 2026 :: Log Trentlin [1347]: arrived (A bend in the hallway) from 1345
+Thu Oct 22 11:38:37 2026 :: Log Trentlin [1347]: s
+Thu Oct 22 11:38:37 2026 :: Log Trentlin [1348]: arrived (The hallway) from 1347
+Thu Oct 22 11:38:37 2026 :: Log Trentlin [1348]: s
+Thu Oct 22 11:38:37 2026 :: Log Trentlin [1350]: arrived (A hallway) from 1348
+Thu Oct 22 11:38:38 2026 :: Log Trentlin [1350]: s
+Thu Oct 22 11:38:38 2026 :: Log Trentlin [1351]: arrived (A hallway) from 1350
+Thu Oct 22 11:38:39 2026 :: Log Trentlin [1351]: s
+Thu Oct 22 11:38:39 2026 :: Log Trentlin [1353]: arrived (A bend in the hallway) from 1351
+Thu Oct 22 11:38:40 2026 :: Log Trentlin [1353]: s
+Thu Oct 22 11:38:40 2026 :: Log Trentlin [1353]: e
+Thu Oct 22 11:38:40 2026 :: Log Trentlin [1355]: arrived (A hallway) from 1353
+Thu Oct 22 11:38:40 2026 :: Log Trentlin [1355]: e
+Thu Oct 22 11:38:40 2026 :: Log Trentlin [1356]: arrived (A hallway) from 1355
+Thu Oct 22 11:38:41 2026 :: Log Trentlin [1356]: e
+Thu Oct 22 11:38:41 2026 :: Log Trentlin [1358]: arrived (A hallway) from 1356
+Thu Oct 22 11:38:42 2026 :: Log Trentlin [1358]: e
+Thu Oct 22 11:38:42 2026 :: Log Trentlin [1360]: arrived (A bend in the hallway) from 1358
+Thu Oct 22 11:38:43 2026 :: Log Trentlin [1360]: n
+Thu Oct 22 11:38:43 2026 :: Log Trentlin [1362]: arrived (A hallway) from 1360
+Thu Oct 22 11:38:43 2026 :: Log Trentlin [1362]: n
+Thu Oct 22 11:38:43 2026 :: Log Trentlin [1363]: arrived (A hallway) from 1362
+Thu Oct 22 11:38:43 2026 :: Log Trentlin [1363]: n
+Thu Oct 22 11:38:43 2026 :: Log Trentlin [1366]: arrived (A hallway) from 1363
+Thu Oct 22 11:38:44 2026 :: Log Trentlin [1366]: n
+Thu Oct 22 11:38:44 2026 :: Log Trentlin [1368]: arrived (Below the stairs) from 1366
+Thu Oct 22 11:38:46 2026 :: Log Trentlin [1368]: u
+Thu Oct 22 11:38:46 2026 :: Log Trentlin [1369]: arrived (Atop the stairway) from 1368
+Thu Oct 22 11:38:47 2026 :: Log Trentlin [1369]: w
+Thu Oct 22 11:38:47 2026 :: Log Trentlin [1370]: arrived (A hallway) from 1369
+Thu Oct 22 11:38:47 2026 :: Log Trentlin [1370]: w
+Thu Oct 22 11:38:47 2026 :: Log Trentlin [1372]: arrived (A hallway) from 1370
+Thu Oct 22 11:38:48 2026 :: Log Trentlin [1372]: w
+Thu Oct 22 11:38:48 2026 :: Log Trentlin [1374]: arrived (A hallway) from 1372
+Thu Oct 22 11:38:49 2026 :: Log Trentlin [1374]: w
+Thu Oct 22 11:38:49 2026 :: Log Trentlin [1376]: arrived (A bend in the hallway) from 1374
+Thu Oct 22 11:38:50 2026 :: Log Trentlin [1376]: s
+Thu Oct 22 11:38:50 2026 :: Log Trentlin [1377]: arrived (A hallway) from 1376
+Thu Oct 22 11:38:50 2026 :: Log Trentlin [1377]: s
+Thu Oct 22 11:38:50 2026 :: Log Trentlin [1378]: arrived (A hallway) from 1377
+Thu Oct 22 11:38:51 2026 :: Log Trentlin [1378]: s
+Thu Oct 22 11:38:51 2026 :: Log Trentlin [1380]: arrived (A hallway) from 1378
+Thu Oct 22 11:38:51 2026 :: Log Trentlin [1380]: s
+Thu Oct 22 11:38:51 2026 :: Log Trentlin [1383]: arrived (A bend in the hallway) from 1380
+Thu Oct 22 11:38:52 2026 :: Log Trentlin [1383]: s
+Thu Oct 22 11:38:52 2026 :: Log Trentlin [1383]: e
+Thu Oct 22 11:38:52 2026 :: Log Trentlin [1384]: arrived (A hallway) from 1383
+Thu Oct 22 11:38:53 2026 :: Log Trentlin [1384]: e
+Thu Oct 22 11:38:53 2026 :: Log Trentlin [1385]: arrived (A hallway) from 1384
+Thu Oct 22 11:38:54 2026 :: Log Trentlin [1385]: e
+Thu Oct 22 11:38:54 2026 :: Log Trentlin [1387]: arrived (A hallway) from 1385
+Thu Oct 22 11:38:55 2026 :: Log Trentlin [1387]: e
+Thu Oct 22 11:38:55 2026 :: Log Trentlin [1389]: arrived (A bend in the hallway) from 1387
+Thu Oct 22 11:38:56 2026 :: Log Trentlin [1389]: n
+Thu Oct 22 11:38:56 2026 :: Log Trentlin [1391]: arrived (A hallway) from 1389
+Thu Oct 22 11:38:57 2026 :: Log Trentlin [1391]: n
+Thu Oct 22 11:38:57 2026 :: Log Trentlin [1393]: arrived (A hallway) from 1391
+Thu Oct 22 11:38:58 2026 :: Log Trentlin [1393]: n
+Thu Oct 22 11:38:58 2026 :: Log Trentlin [1396]: arrived (A hallway) from 1393
+Thu Oct 22 11:38:58 2026 :: Log Trentlin [1396]: n
+Thu Oct 22 11:38:58 2026 :: Log Trentlin [1398]: arrived (The end of the hallway) from 1396
+Thu Oct 22 11:39:00 2026 :: Log Trentlin [1398]: u
+Thu Oct 22 11:39:00 2026 :: Log Trentlin [1399]: arrived (Atop the stairway) from 1398
+Thu Oct 22 11:39:01 2026 :: Log Trentlin [1399]: w
+Thu Oct 22 11:39:01 2026 :: Log Trentlin [1400]: arrived (A hallway) from 1399
+Thu Oct 22 11:39:03 2026 :: Log Trentlin [1400]: w
+Thu Oct 22 11:39:03 2026 :: Log Trentlin [1404]: arrived (A hallway) from 1400
+Thu Oct 22 11:39:04 2026 :: Log Trentlin [1404]: w
+Thu Oct 22 11:39:04 2026 :: Log Trentlin [1405]: arrived (A hallway) from 1404
+Thu Oct 22 11:39:05 2026 :: Log Trentlin [1405]: w
+Thu Oct 22 11:39:05 2026 :: Log Trentlin [1406]: arrived (A bend in the hallway) from 1405
+Thu Oct 22 11:39:06 2026 :: Log Trentlin [1406]: s
+Thu Oct 22 11:39:06 2026 :: Log Trentlin [1407]: arrived (A hallway) from 1406
+Thu Oct 22 11:39:06 2026 :: Log Trentlin [1407]: s
+Thu Oct 22 11:39:06 2026 :: Log Trentlin [1408]: arrived (A hallway) from 1407
+Thu Oct 22 11:39:07 2026 :: Log Trentlin [1408]: s
+Thu Oct 22 11:39:07 2026 :: Log Trentlin [1413]: arrived (A hallway) from 1408
+Thu Oct 22 11:39:09 2026 :: Log Trentlin [1413]: s
+Thu Oct 22 11:39:09 2026 :: Log Trentlin [1414]: arrived (A bend in the hallway) from 1413
+Thu Oct 22 11:39:10 2026 :: Log Trentlin [1414]: e
+Thu Oct 22 11:39:10 2026 :: Log Trentlin [1415]: arrived (A hallway) from 1414
+Thu Oct 22 11:39:11 2026 :: Log Trentlin [1415]: e
+Thu Oct 22 11:39:11 2026 :: Log Trentlin [1416]: arrived (A hallway) from 1415
+Thu Oct 22 11:39:12 2026 :: Log Trentlin [1416]: e
+Thu Oct 22 11:39:12 2026 :: Log Trentlin [1419]: arrived (A hallway) from 1416
+Thu Oct 22 11:39:13 2026 :: Log Trentlin [1419]: e
+Thu Oct 22 11:39:13 2026 :: Log Trentlin [1421]: arrived (A bend in the hallway) from 1419
+Thu Oct 22 11:39:14 2026 :: Log Trentlin [1421]: n
+Thu Oct 22 11:39:14 2026 :: Log Trentlin [1422]: arrived (A hallway) from 1421
+Thu Oct 22 11:39:14 2026 :: Log Trentlin [1422]: n
+Thu Oct 22 11:39:14 2026 :: Log Trentlin [1426]: arrived (A hallway) from 1422
+Thu Oct 22 11:39:15 2026 :: Log Trentlin [1426]: n
+Thu Oct 22 11:39:15 2026 :: Log Trentlin [1427]: arrived (A hallway) from 1426
+Thu Oct 22 11:39:16 2026 :: Log Trentlin [1427]: n
+Thu Oct 22 11:39:16 2026 :: Log Trentlin [1428]: arrived (The end of the hallway) from 1427
+Thu Oct 22 11:39:17 2026 :: Log Trentlin [1428]: u
+Thu Oct 22 11:39:17 2026 :: Log Trentlin [1429]: arrived (A corridor) from 1428
+Thu Oct 22 11:39:18 2026 :: Log Trentlin [1429]: w
+Thu Oct 22 11:39:18 2026 :: Log Trentlin [1430]: arrived (A corridor) from 1429
+Thu Oct 22 11:39:19 2026 :: Log Trentlin [1430]: w
+Thu Oct 22 11:39:19 2026 :: Log Trentlin [1431]: arrived (A bend in the corridor) from 1430
+Thu Oct 22 11:39:20 2026 :: Log Trentlin [1431]: s
+Thu Oct 22 11:39:20 2026 :: Log Trentlin [1432]: arrived (A corridor) from 1431
+Thu Oct 22 11:39:21 2026 :: Log Trentlin [1432]: s
+Thu Oct 22 11:39:21 2026 :: Log Trentlin [1433]: arrived (An intersection) from 1432
+Thu Oct 22 11:39:22 2026 :: Log Trentlin [1433]: s
+Thu Oct 22 11:39:22 2026 :: Log Trentlin [1446]: arrived (A corridor) from 1433
+Thu Oct 22 11:39:24 2026 :: Log Trentlin [1446]: ne
+Thu Oct 22 11:39:25 2026 :: Log Trentlin [1446]: n
+Thu Oct 22 11:39:25 2026 :: Log Trentlin [1433]: arrived (An intersection) from 1446
+Thu Oct 22 11:39:26 2026 :: Log Trentlin [1433]: ex
+Thu Oct 22 11:39:27 2026 :: Log Trentlin [1433]: sca
+Thu Oct 22 11:39:28 2026 :: Log Trentlin [1433]: w
+Thu Oct 22 11:39:28 2026 :: Log Trentlin [1436]: arrived (A corridor) from 1433
+Thu Oct 22 11:39:28 2026 :: Log Trentlin [1436]: w
+Thu Oct 22 11:39:28 2026 :: Log Trentlin [1437]: arrived (The entrance to the library) from 1436
+Thu Oct 22 11:39:30 2026 :: Log Trentlin [1437]: e
+Thu Oct 22 11:39:30 2026 :: Log Trentlin [1436]: arrived (A corridor) from 1437
+Thu Oct 22 11:39:31 2026 :: Log Trentlin [1436]: e
+Thu Oct 22 11:39:31 2026 :: Log Trentlin [1433]: arrived (An intersection) from 1436
+Thu Oct 22 11:39:32 2026 :: Log Trentlin [1433]: s
+Thu Oct 22 11:39:32 2026 :: Log Trentlin [1446]: arrived (A corridor) from 1433
+Thu Oct 22 11:39:32 2026 :: Log Trentlin [1446]: s
+Thu Oct 22 11:39:32 2026 :: Log Trentlin [1447]: arrived (The end of the corridor) from 1446
+Thu Oct 22 11:39:33 2026 :: Log Trentlin [1447]: s
+Thu Oct 22 11:39:33 2026 :: Log Trentlin [1448]: arrived (The arched entrance) from 1447
+Thu Oct 22 11:39:35 2026 :: Log Trentlin [1448]: u
+Thu Oct 22 11:39:35 2026 :: Log Trentlin [1449]: arrived (The landing) from 1448
+Thu Oct 22 11:39:35 2026 :: Log Trentlin [1449]: u
+Thu Oct 22 11:39:35 2026 :: Log Trentlin [1450]: arrived (An intersection) from 1449
+Thu Oct 22 11:39:37 2026 :: Log Trentlin [1450]: ex
+Thu Oct 22 11:39:38 2026 :: Log Trentlin [1450]: sca
+Thu Oct 22 11:39:41 2026 :: Log Trentlin [1450]: w
+Thu Oct 22 11:39:41 2026 :: Log Trentlin [1465]: arrived (A bright hallway) from 1450
+Thu Oct 22 11:39:42 2026 :: Log Trentlin [1465]: w
+Thu Oct 22 11:39:42 2026 :: Log Trentlin [1466]: arrived (A bright hallway) from 1465
+Thu Oct 22 11:39:43 2026 :: Log Trentlin [1466]: w
+Thu Oct 22 11:39:43 2026 :: Log Trentlin [1467]: arrived (An antechamber) from 1466
+Thu Oct 22 11:39:45 2026 :: Log Trentlin [1467]: e
+Thu Oct 22 11:39:45 2026 :: Log Trentlin [1466]: arrived (A bright hallway) from 1467
+Thu Oct 22 11:39:45 2026 :: Log Trentlin [1466]: e
+Thu Oct 22 11:39:45 2026 :: Log Trentlin [1465]: arrived (A bright hallway) from 1466
+Thu Oct 22 11:39:46 2026 :: Log Trentlin [1465]: e
+Thu Oct 22 11:39:46 2026 :: Log Trentlin [1450]: arrived (An intersection) from 1465
+Thu Oct 22 11:39:47 2026 :: Log Trentlin [1450]: n
+Thu Oct 22 11:39:47 2026 :: Log Trentlin [1473]: arrived (A wide hallway) from 1450
+Thu Oct 22 11:39:48 2026 :: Log Trentlin [1473]: n
+Thu Oct 22 11:39:48 2026 :: Log Trentlin [1474]: arrived (A wide hallway) from 1473
+Thu Oct 22 11:39:48 2026 :: Log Trentlin [1474]: n
+Thu Oct 22 11:39:48 2026 :: Log Trentlin [1475]: arrived (A wide hallway) from 1474
+Thu Oct 22 11:39:49 2026 :: Log Trentlin [1475]: n
+Thu Oct 22 11:39:49 2026 :: Log Trentlin [1476]: arrived (The entranceway) from 1475
+Thu Oct 22 11:39:50 2026 :: Log Trentlin [1476]: n
+Thu Oct 22 11:39:50 2026 :: Log Trentlin [1477]: arrived (The audience chamber) from 1476
+Thu Oct 22 11:39:51 2026 :: Log Trentlin [1477]: s
+Thu Oct 22 11:39:51 2026 :: Log Trentlin [1476]: arrived (The entranceway) from 1477
+Thu Oct 22 11:39:52 2026 :: Log Trentlin [1476]: s
+Thu Oct 22 11:39:52 2026 :: Log Trentlin [1475]: arrived (A wide hallway) from 1476
+Thu Oct 22 11:39:52 2026 :: Log Trentlin [1475]: s
+Thu Oct 22 11:39:52 2026 :: Log Trentlin [1474]: arrived (A wide hallway) from 1475
+Thu Oct 22 11:39:53 2026 :: Log Trentlin [1474]: s
+Thu Oct 22 11:39:53 2026 :: Log Trentlin [1473]: arrived (A wide hallway) from 1474
+Thu Oct 22 11:39:53 2026 :: Log Trentlin [1473]: s
+Thu Oct 22 11:39:53 2026 :: Log Trentlin [1450]: arrived (An intersection) from 1473
+Thu Oct 22 11:39:54 2026 :: Log Trentlin [1450]: s
+Thu Oct 22 11:39:54 2026 :: Log Trentlin [1451]: arrived (A grey tiled hallway) from 1450
+Thu Oct 22 11:39:55 2026 :: Log Trentlin [1451]: s
+Thu Oct 22 11:39:55 2026 :: Log Trentlin [1452]: arrived (A grey tiled hallway) from 1451
+Thu Oct 22 11:39:56 2026 :: Log Trentlin [1452]: s
+Thu Oct 22 11:39:56 2026 :: Log Trentlin [1453]: arrived (The antechamber) from 1452
+Thu Oct 22 11:39:57 2026 :: Log Trentlin [1453]: s
+Thu Oct 22 11:39:57 2026 :: Log Trentlin [1454]: arrived (The main chamber) from 1453
+Thu Oct 22 11:39:58 2026 :: Log Trentlin [1454]: n
+Thu Oct 22 11:39:58 2026 :: Log Trentlin [1453]: arrived (The antechamber) from 1454
+Thu Oct 22 11:39:58 2026 :: Log Trentlin [1453]: n
+Thu Oct 22 11:39:58 2026 :: Log Trentlin [1452]: arrived (A grey tiled hallway) from 1453
+Thu Oct 22 11:39:59 2026 :: Log Trentlin [1452]: n
+Thu Oct 22 11:39:59 2026 :: Log Trentlin [1451]: arrived (A grey tiled hallway) from 1452
+Thu Oct 22 11:40:00 2026 :: Log Trentlin [1451]: n
+Thu Oct 22 11:40:00 2026 :: Log Trentlin [1450]: arrived (An intersection) from 1451
+Thu Oct 22 11:40:01 2026 :: Log Trentlin [1450]: e
+Thu Oct 22 11:40:01 2026 :: Log Trentlin [1458]: arrived (A dark hallway) from 1450
+Thu Oct 22 11:40:01 2026 :: Log Trentlin [1458]: e
+Thu Oct 22 11:40:01 2026 :: Log Trentlin [1459]: arrived (A dark hallway) from 1458
+Thu Oct 22 11:40:01 2026 :: Log Trentlin [1459]: e
+Thu Oct 22 11:40:01 2026 :: Log Trentlin [1460]: arrived (The end of the hallway) from 1459
+Thu Oct 22 11:40:02 2026 :: Log Trentlin [1460]: e
+Thu Oct 22 11:40:02 2026 :: Log Trentlin [1461]: arrived (The chamber of darkness) from 1460
+Thu Oct 22 11:40:04 2026 :: Log Trentlin [1461]: ex
+Thu Oct 22 11:40:05 2026 :: Log Trentlin [1461]: sca
+Thu Oct 22 11:40:05 2026 :: Log Trentlin [1461]: w
+Thu Oct 22 11:40:05 2026 :: Log Trentlin [1460]: arrived (The end of the hallway) from 1461
+Thu Oct 22 11:40:06 2026 :: Log Trentlin [1460]: w
+Thu Oct 22 11:40:06 2026 :: Log Trentlin [1459]: arrived (A dark hallway) from 1460
+Thu Oct 22 11:40:06 2026 :: Log Trentlin [1459]: w
+Thu Oct 22 11:40:06 2026 :: Log Trentlin [1458]: arrived (A dark hallway) from 1459
+Thu Oct 22 11:40:07 2026 :: Log Trentlin [1458]: w
+Thu Oct 22 11:40:07 2026 :: Log Trentlin [1450]: arrived (An intersection) from 1458
+Thu Oct 22 11:40:08 2026 :: Log Trentlin [1450]: d
+Thu Oct 22 11:40:08 2026 :: Log Trentlin [1449]: arrived (The landing) from 1450
+Thu Oct 22 11:40:08 2026 :: Log Trentlin [1449]: d
+Thu Oct 22 11:40:08 2026 :: Log Trentlin [1448]: arrived (The arched entrance) from 1449
+Thu Oct 22 11:40:10 2026 :: Log Trentlin [1448]: n
+Thu Oct 22 11:40:10 2026 :: Log Trentlin [1447]: arrived (The end of the corridor) from 1448
+Thu Oct 22 11:40:11 2026 :: Log Trentlin [1447]: n
+Thu Oct 22 11:40:11 2026 :: Log Trentlin [1446]: arrived (A corridor) from 1447
+Thu Oct 22 11:40:11 2026 :: Log Trentlin [1446]: n
+Thu Oct 22 11:40:11 2026 :: Log Trentlin [1433]: arrived (An intersection) from 1446
+Thu Oct 22 11:40:12 2026 :: Log Trentlin [1433]: e
+Thu Oct 22 11:40:12 2026 :: Log Trentlin [1434]: arrived (A corridor) from 1433
+Thu Oct 22 11:40:13 2026 :: Log Trentlin [1434]: e
+Thu Oct 22 11:40:13 2026 :: Log Trentlin [1435]: arrived (The scrying chamber) from 1434
