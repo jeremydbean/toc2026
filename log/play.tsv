@@ -3576,3 +3576,111 @@
 1792630721	cmd	Trentlin	50	16083	pirate.are	fighting	93	0	fight	smite		Your smite *** DEVASTATES *** The Lookout!
 1792630731	cmd	Trentlin	50	16083	pirate.are	standing	93	0	-	look	in co	Corpse of The Lookout contains:
 1792630733	cmd	Trentlin	50	16083	pirate.are	standing	93	0	-	get	spy co	You get a spy-glass from corpse of The Lookout.
+1792630735	cmd	Trentlin	50	16083	pirate.are	standing	93	0	-	score		--------------------------------------------------------------
+1792630737	cmd	Trentlin	50	16083	pirate.are	standing	93	0	-	compare	spy	A) a spy-glass (level 47)
+1792630741	cmd	Trentlin	50	16083	pirate.are	standing	93	0	-	drop	spu	You do not have that item.
+1792630742	cmd	Trentlin	50	16083	pirate.are	standing	93	0	-	drop	spy	You drop a spy-glass.
+1792630743	cmd	Trentlin	50	16083	pirate.are	standing	93	0	-	recall		The gods are listening to somebody else just now.
+1792630745	cmd	Trentlin	50	4207	dresden_halloween.are	standing	93	0	-	recall		Before the Shrouded Altar
+1792630748	cmd	Trentlin	50	4207	dresden_halloween.are	standing	93	0	-	help	heroquest	HEROQUEST
+1792630765	cmd	Trentlin	50	4208	dresden_halloween.are	standing	93	0	-	west		The Shrouded Altar of Devota
+1792630766	cmd	Trentlin	50	4208	dresden_halloween.are	standing	93	0	-	help	heroquest	HEROQUEST
+1792630771	cmd	Trentlin	50	4208	dresden_halloween.are	standing	93	0	-	help	herolevels	HEROLEVELS HEROLEVEL HERO HEROES 'HERO LEVELS'
+1792630789	cmd	Trentlin	50	4207	dresden_halloween.are	standing	94	0	-	east		Before the Shrouded Altar
+1792630789	cmd	Trentlin	50	4202	dresden_halloween.are	standing	94	0	-	east		The Hall of Whispers
+1792630789	cmd	Trentlin	50	4201	dresden_halloween.are	standing	94	0	-	east		Entrance to the Haunted Temple
+1792630790	cmd	Trentlin	50	2427	dresden_halloween.are	standing	94	0	-	east		Main Processional, Below the Temple Steps
+1792630791	cmd	Trentlin	50	2404	dresden_halloween.are	standing	94	0	-	north		Southern Oak Tree Square.
+1792630791	cmd	Trentlin	50	2401	dresden_halloween.are	standing	94	0	-	north		Oak Tree Square on Hallows Eve
+1792630792	refused	Trentlin	50	2401	dresden_halloween.are	standing	94	0	-	(unknown)		Huh?
+1792630792	refused	Trentlin	50	2401	dresden_halloween.are	standing	94	0	-	(unknown)		Huh?
+1792630792	refused	Trentlin	50	2401	dresden_halloween.are	standing	94	0	-	(unknown)		Huh?
+1792630793	refused	Trentlin	50	2401	dresden_halloween.are	standing	94	0	-	(unknown)		Huh?
+1792630793	refused	Trentlin	50	2401	dresden_halloween.are	standing	94	0	-	(unknown)		Huh?
+1792630793	cmd	Trentlin	50	2410	dresden_halloween.are	standing	94	0	-	up		Climbing the Oak Tree...
+1792630793	cmd	Trentlin	50	2411	dresden_halloween.are	standing	94	0	-	up		Up in the Oak Tree.
+1792630794	cmd	Trentlin	50	2414	dresden_halloween.are	standing	94	0	-	up		Top of the oak tree.
+1792630794	cmd	Trentlin	50	2497	dresden_halloween.are	standing	94	0	-	up		A sudden wind blows you from the tree!
+1792630797	cmd	Trentlin	50	2497	dresden_halloween.are	standing	94	0	-	aquest	list	You ask Questor Thews for a list of quest items.
+1792630808	cmd	Trentlin	50	2497	dresden_halloween.are	standing	94	0	-	score		--------------------------------------------------------------
+1792630814	cmd	Trentlin	50	2497	dresden_halloween.are	standing	94	0	-	score		--------------------------------------------------------------
+1792630815	cmd	Alaric	53	2401	dresden_halloween.are	standing	100	0	-	who		[53 Dwarf   Hero  ] Alaric.
+1792630816	cmd	Trentlin	50	2497	dresden_halloween.are	standing	94	0	-	who		[53 Dwarf   Hero  ] Alaric.
+1792630820	cmd	Alaric	53	2401	dresden_halloween.are	standing	100	0	-	gossip	Whoa :)	You gossip 'Whoa :)'
+1792630822	cmd	Alaric	53	2401	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792630822	cmd	Alaric	53	2401	dresden_halloween.are	standing	100	0	-	look		Oak Tree Square on Hallows Eve
+1792630823	cmd	Alaric	53	2401	dresden_halloween.are	standing	100	0	-	affect		You are affected by:
+1792630832	cmd	Alaric	53	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square.
+1792630833	cmd	Alaric	53	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792630835	cmd	Alaric	53	9509	newthalo.are	standing	100	0	-	run	e 18	Outside the Eastern Gates of Dresden.
+1792630838	cmd	Trentlin	50	2497	dresden_halloween.are	standing	94	0	-	gossip	yeah just leveled to 50 mid fight when a skill improved haha	You gossip 'yeah just leveled to 50 mid fight when a skill improved haha'
+1792630840	cmd	Alaric	53	9509	newthalo.are	standing	100	0	-	wake		You are already standing.
+1792630840	cmd	Alaric	53	9509	newthalo.are	standing	100	0	-	look		The Western Market Square
+1792630843	cmd	Alaric	53	9506	newthalo.are	standing	100	0	-	east		The Center of Market Square
+1792630843	cmd	Alaric	53	9517	newthalo.are	standing	100	0	-	east		The Eastern Market Square
+1792630843	cmd	Alaric	53	9527	newthalo.are	standing	100	0	-	east		East Main Street
+1792630843	cmd	Alaric	53	9528	newthalo.are	standing	100	0	-	east		East Main Street
+1792630844	cmd	Alaric	53	9529	newthalo.are	standing	100	0	-	east		East Main Street
+1792630844	cmd	Alaric	53	9530	newthalo.are	standing	100	0	-	east		East Main Street
+1792630844	cmd	Alaric	53	9531	newthalo.are	standing	100	0	-	east		Inside the Eastern Gate of New Thalos
+1792630845	cmd	Alaric	53	9530	newthalo.are	standing	100	0	-	west		East Main Street
+1792630845	cmd	Alaric	53	9529	newthalo.are	standing	100	0	-	west		East Main Street
+1792630846	cmd	Alaric	53	9528	newthalo.are	standing	100	0	-	west		East Main Street
+1792630846	cmd	Alaric	53	9527	newthalo.are	standing	100	0	-	west		East Main Street
+1792630847	cmd	Alaric	53	9517	newthalo.are	standing	100	0	-	west		The Eastern Market Square
+1792630848	cmd	Alaric	53	9506	newthalo.are	standing	100	0	-	west		The Center of Market Square
+1792630849	cmd	Alaric	53	9515	newthalo.are	standing	100	0	-	north		The Northern Market Square
+1792630849	cmd	Alaric	53	9518	newthalo.are	standing	100	0	-	north		Sultan's Walk
+1792630849	cmd	Alaric	53	9519	newthalo.are	standing	100	0	-	north		Sultan's Walk
+1792630850	cmd	Alaric	53	9520	newthalo.are	standing	100	0	-	north		Sultan's Walk
+1792630850	cmd	Alaric	53	9521	newthalo.are	standing	100	0	-	north		Sultan's Walk
+1792630850	cmd	Alaric	53	9522	newthalo.are	standing	100	0	-	north		Inside the Northern Gate of New Thalos
+1792630850	cmd	Alaric	53	9522	newthalo.are	standing	100	0	-	open		Ok.
+1792630851	cmd	Alaric	53	9522	newthalo.are	standing	100	0	-	open		It's already open.
+1792630852	cmd	Alaric	53	9667	newthalo.are	standing	100	0	-	north		Outside the Northern Gate of New Thalos
+1792630852	cmd	Alaric	53	9781	newthalo.are	standing	100	0	-	north		On the Plains
+1792630852	cmd	Alaric	53	9782	newthalo.are	standing	100	0	-	north		On the Plains
+1792630853	cmd	Alaric	53	9783	newthalo.are	standing	100	0	-	north		Edge of the forest
+1792630853	cmd	Alaric	53	64	connect.are	standing	100	0	-	north		Misty Clearing
+1792630853	cmd	Alaric	53	29001	korzath1.are	standing	100	0	-	north		Entrance to the Fortress
+1792630853	cmd	Alaric	53	29002	korzath1.are	standing	100	0	-	north		Inside Korzath's Private Fortress
+1792630854	cmd	Alaric	53	29003	korzath1.are	standing	100	0	-	north		Grand Foyer
+1792630854	cmd	Trentlin	50	2401	dresden_halloween.are	standing	94	0	-	enter	door	You enter The Rescue Portal
+1792630854	cmd	Alaric	53	29004	korzath1.are	standing	100	0	-	north		Center Tunnelway
+1792630855	cmd	Alaric	53	29004	korzath1.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792630855	cmd	Alaric	53	29004	korzath1.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792630855	cmd	Alaric	53	29004	korzath1.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792630857	cmd	Trentlin	50	2404	dresden_halloween.are	standing	94	0	-	south		Southern Oak Tree Square.
+1792630857	cmd	Trentlin	50	2427	dresden_halloween.are	standing	94	0	-	south		Main Processional, Below the Temple Steps
+1792630858	cmd	Trentlin	50	4201	dresden_halloween.are	standing	94	0	-	west		Entrance to the Haunted Temple
+1792630858	cmd	Alaric	53	29004	korzath1.are	standing	100	0	-	bs	guard	Your backstab misses Guardian Knight. [-0]
+1792630858	cmd	Trentlin	50	4202	dresden_halloween.are	standing	94	0	-	west		The Hall of Whispers
+1792630858	cmd	Trentlin	50	4207	dresden_halloween.are	standing	94	0	-	west		Before the Shrouded Altar
+1792630859	cmd	Trentlin	50	4208	dresden_halloween.are	standing	94	0	-	west		The Shrouded Altar of Devota
+1792630862	cmd	Trentlin	50	4208	dresden_halloween.are	standing	94	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792630872	cmd	Alaric	53	29004	korzath1.are	fighting	99	0	fight	gossip	Can't beast that, that's a slick level up	You gossip 'Can't beast that, that's a slick level up'
+1792630875	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792630894	cmd	Alaric	53	29004	korzath1.are	standing	99	0	-	affect		You are affected by:
+1792630895	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792630896	cmd	Alaric	53	29004	korzath1.are	standing	99	0	-	wake		You are already standing.
+1792630896	refused	Alaric	53	29004	korzath1.are	standing	99	0	-	(unknown)		Huh?
+1792630896	cmd	Trentlin	50	4203	dresden_halloween.are	standing	100	0	-	north		The Hall of Cobwebs
+1792630896	cmd	Trentlin	50	4210	dresden_halloween.are	standing	100	0	-	north		The Sickroom of the Restless
+1792630896	cmd	Trentlin	50	4210	dresden_halloween.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792630897	cmd	Trentlin	50	4210	dresden_halloween.are	standing	100	0	-	sleep		You go to sleep.
+1792630898	cmd	Alaric	53	29004	korzath1.are	standing	99	0	-	get	key cor	You get a diamond key from corpse of Guardian Knight.
+1792630898	session	Trentlin	50	4210	dresden_halloween.are	quit	1082s	+1 levels	+659 exp	+12454011 copper	6 kills	0 deaths	1 quests	506 commands	7 refused
+1792630899	cmd	Alaric	53	29004	korzath1.are	standing	99	0	-	unlock	north	There is a flash of light as you unlock the door.
+1792630900	cmd	Alaric	53	29004	korzath1.are	standing	99	0	-	open		Ok.
+1792630901	cmd	Alaric	53	29201	korzath2.are	standing	99	0	-	north		Heroes Hall
+1792630901	cmd	Alaric	53	29202	korzath2.are	standing	99	0	-	north		Hall of Past Heroes
+1792630901	cmd	Alaric	53	29202	korzath2.are	standing	99	0	-	north		The door has been Wizard Locked. You can not pass
+1792630901	cmd	Alaric	53	29202	korzath2.are	standing	99	0	-	north		The door has been Wizard Locked. You can not pass
+1792630902	cmd	Alaric	53	29203	korzath2.are	standing	99	0	-	west		Passage to the Maze
+1792630902	cmd	Alaric	53	29204	korzath2.are	standing	99	0	-	west		Twist in the Maze
+1792630904	cmd	Alaric	53	29205	korzath2.are	standing	99	0	-	south		Twist in the Maze
+1792630904	cmd	Alaric	53	29206	korzath2.are	standing	99	0	-	east		Twist in the Maze
+1792630905	cmd	Alaric	53	29207	korzath2.are	standing	99	0	-	south		Twist in the Maze
+1792630905	cmd	Alaric	53	29207	korzath2.are	standing	99	0	-	south		Alas, you cannot go that way.
+1792630906	cmd	Alaric	53	29208	korzath2.are	standing	99	0	-	west		Twist the Maze
+1792630907	cmd	Alaric	53	29208	korzath2.are	standing	99	0	-	bs	mad	Your backstab misses a deranged madman. [-0]
