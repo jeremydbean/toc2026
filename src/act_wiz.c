@@ -306,6 +306,10 @@ static bool outfit_slot( CHAR_DATA *ch, int wear, int vnum, bool free_item )
 
     if ( get_eq_char( ch, wear ) != NULL )
 	return false;
+    /* No hand for a shield beside a two-handed weapon: the weapon is
+       kept, and no shield is put on or made. */
+    if ( wear == WEAR_SHIELD && !shield_hand_free( ch ) )
+	return false;
     /* Only a copy WEAR would let them put on: a broken, hot, over-level
        or wrong-race one stays in the pack as it is, and the next match
        or a new one is used instead. */

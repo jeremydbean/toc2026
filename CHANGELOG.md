@@ -24,6 +24,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   installs use it for local-only play.
 
 
+- **Restore and OUTFIT fixes** (review, 2026-10-22). `./toc.sh restore`
+  and `.\toc.ps1 restore` no longer go on when the game cannot be
+  stopped, and put the data where this installation keeps it instead of
+  installing the backup's `.env` (kept as `.env.from-backup`); a native
+  restore rebuilds the game for this computer. OUTFIT and REMORT no longer
+  put a shield on beside a two-handed weapon.
+
 - **Sharper play logging** (owner, 2026-10-22, after a review spent its
   time reconstructing what the logs could have said). The journal keeps
   the first three lines of every answer, and each session's coin split

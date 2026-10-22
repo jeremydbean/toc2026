@@ -166,6 +166,14 @@ installation by installing on the new computer, then
 `./toc.sh restore <archive>` there. Restoring sets the data it replaces
 aside as `state.before-restore-<date>` rather than deleting it.
 
+A restore puts the backup's data where **this** installation keeps its
+data and leaves this `.env` as it is: its mode, data folder, ports and
+token describe this computer. The backup's own settings are saved beside it
+as `.env.from-backup` (private, like `.env`) for you to copy anything you
+want from. It stops the game first and changes nothing at all if the game
+cannot be stopped; a native installation then rebuilds the game for this
+computer before starting it.
+
 The game also archives player files itself every four hours into
 `state/backups/` and keeps up to 30 snapshots per character. Those copies
 live on the same disk: for safety, copy `./toc.sh backup` archives

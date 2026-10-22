@@ -933,6 +933,18 @@ safe:
   container removed. `update` then puts git's copies of the checkout's
   `player/`, `gods/`, `heroes/` and `log/` back so it can fast-forward, one
   tracked directory at a time. Nothing is deleted.
+- **A restore stops the game and confirms it is gone before it moves
+  anything, and keeps this installation's `.env`** (review, 2026-10-22).
+  `stop_game` returns the stop's own status -- `set -e` does not reach
+  inside a function called as a condition, so it returned its closing
+  echo's 0 -- and `game_running` checks nothing is left (a partial stop);
+  either aborts with the data and `.env` untouched and no game started.
+  The data goes to this `.env`'s `TOC_STATE`; the archived `.env` named
+  another machine's paths, so it is kept as `.env.from-backup` and never
+  installed. A native restore rebuilds (`start_game 1`): the archive
+  carries a `merc` built where the backup was taken.
+  `tests/test_restore_backup.py` runs the real Bash function and the real
+  `toc.ps1` against a stand-in `docker`.
 - **A new world starts empty**; `--import-players` (`-ImportPlayers`) copies
   the repository's characters in. `toc.sh promote <name>` makes the owner's
   character the implementor from its file (logged out, a copy kept in
@@ -3297,6 +3309,10 @@ test that fails on the old code. Keep them.
   or heated piece is left in the pack and a new one made; and a monk's
   hand to hand gets the same `STARTING_WEAPON_SKILL` floor as the weapon
   a class starts with, since a monk who kept a sword has no dagger.
+  OUTFIT also asks `shield_hand_free()`, WEAR's own test, before a
+  shield: `equip_char` takes a shield off for a two-hander but never
+  refuses one beside it, so a remort keeping a two-handed sword was given
+  the school shield too (review, 2026-10-22).
 - **No output may reach `alloc_mem` or the buffer ceiling whole.**
   `alloc_mem`'s largest block is 32,704 bytes and a larger request
   aborts the game; a descriptor's buffer stops at 32,000. CHANGES ALL

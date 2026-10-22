@@ -3329,6 +3329,22 @@ bool wear_requirements_quiet( CHAR_DATA *ch, OBJ_DATA *obj )
     return wear_requirements_check( ch, obj, false );
 }
 
+/*
+ * Whether ch has a hand for a shield: not while wielding a two-handed
+ * weapon, unless large enough to hold it in one. WEAR asks it, and so
+ * does OUTFIT, which calls equip_char itself -- it put a school shield
+ * beside a remort's two-handed sword that WEAR refused (review,
+ * 2026-10-22). equip_char takes a shield off for a two-hander, never the
+ * other way round, so every path that adds a shield must ask.
+ */
+bool shield_hand_free( CHAR_DATA *ch )
+{
+    OBJ_DATA *weapon = get_eq_char( ch, WEAR_WIELD );
+
+    return weapon == NULL || ch->size >= SIZE_LARGE
+        || !IS_WEAPON_STAT( weapon, WEAPON_TWO_HANDS );
+}
+
 /* function for use with dual wield skill */
 void do_secondary( CHAR_DATA *ch, char *argument )
 {
@@ -3661,11 +3677,7 @@ void wear_obj( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace )
 
     if ( CAN_WEAR( obj, ITEM_WEAR_SHIELD ) )
     {
-	OBJ_DATA *weapon;
-
-	weapon = get_eq_char(ch,WEAR_WIELD);
-	if (weapon != NULL && ch->size < SIZE_LARGE
-	&&  IS_WEAPON_STAT(weapon,WEAPON_TWO_HANDS))
+	if ( !shield_hand_free( ch ) )
 	{
 	    send_to_char("Not gonna happen. Find a smaller weapon.\n\r",ch);
 	    return;

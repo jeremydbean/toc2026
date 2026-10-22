@@ -94,13 +94,21 @@ start_game() {
     toc_print_endpoints
 }
 
+# Returns the stop's own status. Called as a condition (restore), set -e
+# does not apply inside it, so without the explicit status a failed stop
+# returned the echo's 0 and the restore went on.
 stop_game() {
+    local rc=0
     if [ "$mode" = "native" ]; then
-        toc_native_stop
+        toc_native_stop || rc=$?
     else
         toc_require_docker
         toc_start_docker
-        toc_compose stop game
+        toc_compose stop game || rc=$?
+    fi
+    if [ "$rc" -ne 0 ]; then
+        echo "Times of Chaos could not be stopped (status $rc)." >&2
+        return "$rc"
     fi
     echo "Times of Chaos is stopped. Every player was saved and all data kept."
 }
@@ -214,9 +222,39 @@ doctor() {
     echo "Everything needed to run Times of Chaos is ready."
 }
 
+# Whether any part of the game is still running: the game or its
+# dashboard, as this installation runs them.
+game_running() {
+    local run
+    if [ "$mode" = "native" ]; then
+        if [ "$(toc_native_service)" = "systemd" ]; then
+            systemctl is-active --quiet "$TOC_UNIT_GAME" && return 0
+            systemctl is-active --quiet "$TOC_UNIT_WEB" && return 0
+            return 1
+        fi
+        run="$(toc_state_dir)/run"
+        toc_native_pid_alive "$run/game.pid" || toc_native_pid_alive "$run/web.pid"
+        return
+    fi
+    command -v docker >/dev/null 2>&1 && toc_docker_ready || return 1
+    [ -n "$(toc_compose ps --status running -q game 2>/dev/null)" ]
+}
+
+# Put a backup's characters and world back.
+#
+# The data goes where this installation looks for it -- this .env's
+# TOC_STATE -- and this .env stays. Everything in it describes this
+# machine (mode, data path, image, addresses, ports, user), and the
+# archived copy describes the one the backup was taken on: restoring it
+# put the data at one path and pointed the game at another (review,
+# 2026-10-22). The archived settings are kept beside it to read.
+#
+# Nothing is moved until the game is stopped and seen to be stopped. A
+# game still running would go on writing its old directory while the
+# restored one was laid down under it (review, 2026-10-22).
 restore_backup() {
     local archive="${1:-}"
-    local state aside work
+    local state aside work restored
 
     if [ -z "$archive" ] || [ ! -f "$archive" ]; then
         echo "Usage: ./toc.sh restore <toc-backup-....tar.gz>" >&2
@@ -225,22 +263,38 @@ restore_backup() {
     archive="$(cd "$(dirname "$archive")" && pwd)/$(basename "$archive")"
     state="$(toc_state_dir)"
     work="$(mktemp -d "$REPO_ROOT/.restore.XXXXXX")"
-    tar -xzf "$archive" -C "$work"
-    if [ ! -f "$work/.env" ] || [ -z "$(ls -d "$work"/*/player 2>/dev/null)" ]; then
+    if ! tar -xzf "$archive" -C "$work" \
+        || [ ! -f "$work/.env" ] || [ -z "$(ls -d "$work"/*/player 2>/dev/null)" ]; then
         rm -rf "$work"
         echo "$archive is not a Times of Chaos backup (.env and a state folder)." >&2
         exit 1
     fi
-    stop_game || true
+    restored="$(dirname "$(ls -d "$work"/*/player | head -1)")"
+
+    if ! stop_game || game_running; then
+        rm -rf "$work"
+        echo "The game could not be stopped, so nothing was restored: $state" >&2
+        echo "and .env are as they were. Check ./toc.sh status; if part of it" >&2
+        echo "stopped, ./toc.sh start brings it back. Then try the restore again." >&2
+        exit 1
+    fi
+
     aside="$state.before-restore-$(date +%Y%m%d-%H%M%S)"
     [ -d "$state" ] && mv "$state" "$aside"
-    mv "$(dirname "$(ls -d "$work"/*/player | head -1)")" "$state"
-    cp -p "$TOC_ENV_FILE" "$TOC_ENV_FILE.before-restore" 2>/dev/null || true
-    cp -p "$work/.env" "$TOC_ENV_FILE"
+    mkdir -p "$(dirname "$state")"
+    mv "$restored" "$state"
+    cp -p "$work/.env" "$TOC_ENV_FILE.from-backup"
+    chmod 600 "$TOC_ENV_FILE.from-backup" 2>/dev/null || true
     rm -rf "$work"
     [ -d "${aside:-}" ] && echo "The data that was here is kept in $aside."
-    mode="$(toc_mode)"
-    start_game 0
+    echo "This installation's settings are unchanged; the backup's are in .env.from-backup."
+    # A native backup carries the game built where it was taken -- maybe
+    # another machine. Build this checkout's for this one.
+    if [ "$mode" = "native" ]; then
+        start_game 1
+    else
+        start_game 0
+    fi
 }
 
 uninstall() {

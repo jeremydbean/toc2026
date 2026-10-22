@@ -3,6 +3,11 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
+@ 20261022b 2026-10-22
+A remort that keeps a two-handed weapon no longer gets a school shield
+strapped on beside it, and neither does OUTFIT: you have no hand for one,
+as WEAR has always said. The shield stays in your pack.
+
 @ 20261022a 2026-10-22
 HELP HEROQUEST no longer describes a hero quest that does not exist: those
 commands are long gone, and heroes quest with AQUEST like everyone else.

@@ -65,6 +65,16 @@ function Start-TocGame {
     Write-TocEndpoints
 }
 
+# Whether the game container is still running after a stop.
+function Test-TocGameRunning {
+    if (-not (Get-TocDockerExecutable) -or -not (Test-TocDockerReady)) {
+        return $false
+    }
+    $ids = & (Get-TocDockerExecutable) compose --project-directory $script:TocRepoRoot `
+        ps --status running -q game 2>$null
+    return [bool]$ids
+}
+
 function Stop-TocGame {
     Assert-TocInstalled
     Start-TocDocker
@@ -201,17 +211,35 @@ switch ($Action) {
             Remove-Item -LiteralPath $work -Recurse -Force
             throw "$archive is not a Times of Chaos backup (.env and a state folder)."
         }
-        Stop-TocGame
+        # Nothing moves until the game is stopped and seen to be stopped,
+        # and the data goes where this installation's .env looks for it:
+        # that .env stays, and the backup's is kept beside it to read
+        # (review, 2026-10-22; toc.sh's restore_backup says why).
+        $stopped = $true
+        try {
+            Stop-TocGame
+        } catch {
+            $stopped = $false
+        }
+        if (-not $stopped -or (Test-TocGameRunning)) {
+            Remove-Item -LiteralPath $work -Recurse -Force
+            throw ('The game could not be stopped, so nothing was restored: the data ' +
+                'folder and .env are as they were. Check .\toc.ps1 status, then try again.')
+        }
         $state = Get-TocStateDir
         $aside = "$state.before-restore-$(Get-Date -Format yyyyMMdd-HHmmss)"
         if (Test-Path -LiteralPath $state) {
             Move-Item -LiteralPath $state -Destination $aside
             Write-Host "The data that was here is kept in $aside."
         }
+        $parent = Split-Path -Parent $state
+        if ($parent -and -not (Test-Path -LiteralPath $parent)) {
+            New-Item -ItemType Directory -Path $parent | Out-Null
+        }
         Move-Item -LiteralPath $restoredState.FullName -Destination $state
-        Copy-Item -LiteralPath $script:TocEnvFile -Destination "$script:TocEnvFile.before-restore" -Force
-        Copy-Item -LiteralPath (Join-Path $work '.env') -Destination $script:TocEnvFile -Force
+        Copy-Item -LiteralPath (Join-Path $work '.env') -Destination "$script:TocEnvFile.from-backup" -Force
         Remove-Item -LiteralPath $work -Recurse -Force
+        Write-Host "This installation's settings are unchanged; the backup's are in .env.from-backup."
         Start-TocGame
     }
     'uninstall' {

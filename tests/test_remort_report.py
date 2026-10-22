@@ -1,4 +1,4 @@
-"""Three remort faults from the report of 2026-10-21.
+"""Remort faults from the reports of 2026-10-21 and 2026-10-22.
 
 1. A remort outside the Temple moved its owner and not the pet the
    cleanup had kept, and save_char_obj writes a pet only from its owner's
@@ -169,6 +169,44 @@ class RemortReportTests(unittest.TestCase):
             hand = re.search(r"(?m)^Sk (\d+) 'hand to hand'$", text)
             self.assertIsNotNone(hand, text[:400])
             self.assertGreaterEqual(int(hand.group(1)), STARTING_WEAPON_SKILL)
+
+    def test_no_shield_beside_a_two_handed_weapon(self) -> None:
+        """Review 2026-10-22: OUTFIT called equip_char straight after the
+        item's own checks, so a remort keeping a two-handed sword had the
+        school shield put on beside it, which WEAR refuses a human -- at
+        the remort and at every OUTFIT after. The sword stays wielded,
+        the shield stays in the pack, and no new one is made."""
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Ztwohand", PW)
+                client.drain(1.0)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            patch_player_file(mud, "Ztwohand", Levl=54, Room=TEMPLE, Attr="25 25 25 25 25")
+            path = mud.player_dir / "Ztwohand"
+            text = path.read_text(encoding="latin-1")
+            # A two-handed sword (oldthalo 5221) made level 1, carried.
+            path.write_text(text.replace("#END", "#O\nVnum 5221\nNest 0\nWear -1\nLev 1\n"
+                                                 "Cond 100\nEnd\n\n#END"), encoding="latin-1")
+
+            with mud.connect(timeout=120) as client:
+                login(client, "Ztwohand", PW)
+                run(client, "scroll 0")
+                run(client, "remove shield")
+                self.assertIn("You wield a two-handed sword", run(client, "wield two-handed"))
+                self.assertIn("Find a smaller weapon", run(client, "wear shield"))
+                run(client, "remort %s mage none human" % PW, 3.5)
+                worn = run(client, "equipment")
+                self.assertIn("two-handed sword", worn, "the kept weapon stays wielded")
+                self.assertNotIn("as shield", worn, worn)
+                for _ in range(2):      # and OUTFIT, asked again, still says no
+                    run(client, "outfit")
+                    self.assertNotIn("as shield", run(client, "equipment"))
+                carried = run(client, "inventory")
+                self.assertEqual(carried.lower().count("shield"), 1,
+                                 "the old shield is kept and no new one made: " + carried)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
 
 
 if __name__ == "__main__":

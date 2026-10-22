@@ -250,8 +250,10 @@ toc_native_stop() {
     [ "$(id -u)" -eq 0 ] || sudo="sudo"
 
     if [ "$(toc_native_service)" = "systemd" ]; then
+        # Its status is the answer: a restore must not go on after a stop
+        # that failed.
         $sudo systemctl stop "$TOC_UNIT_WEB" "$TOC_UNIT_GAME"
-        return 0
+        return
     fi
     for name in web game; do
         if toc_native_pid_alive "$run/$name.pid"; then

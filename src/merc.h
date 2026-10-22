@@ -3257,6 +3257,7 @@ void    obj_to_room     ( OBJ_DATA *obj, ROOM_INDEX_DATA *pRoomIndex );
 void    obj_to_obj      ( OBJ_DATA *obj, OBJ_DATA *obj_to );
 void    maxload_subtree ( OBJ_DATA *obj, int signval, bool self );
 bool    wear_requirements_quiet ( CHAR_DATA *ch, OBJ_DATA *obj );
+bool    shield_hand_free ( CHAR_DATA *ch );
 void    obj_from_obj    ( OBJ_DATA *obj );
 void    extract_obj     ( OBJ_DATA *obj );
 void    extract_obj_player  ( OBJ_DATA *obj );
