@@ -252,7 +252,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "close",		do_close,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "climb",          do_climb,       POS_STANDING,    0,  LOG_NORMAL, 1 },
     { "drink",		do_drink,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
-    { "crawl",		do_crawl,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
+    { "crawl",		do_crawl,	POS_STANDING,	 0,  LOG_NORMAL, 1 },
     { "dummy",         do_dummy,       POS_RESTING,     0,  LOG_NORMAL, 1 },
     { "drop",		do_drop,	POS_RESTING,	 0,  LOG_ALWAYS, 1 },
     { "eat",		do_eat,		POS_RESTING,	 0,  LOG_NORMAL, 1 },
@@ -260,7 +260,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "feed",            do_feed,        POS_RESTING,     0,  LOG_NORMAL, 1 },
     { "flip",		do_flip,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "give",		do_give,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
-    { "jump",		do_jump,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
+    { "jump",		do_jump,	POS_STANDING,	 0,  LOG_NORMAL, 1 },
     { "convert",	do_convert,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "deposit",	do_deposit,	POS_RESTING,	 0,  LOG_ALWAYS, 1 },
     /* After ALIAS and every DE- command: prefixes keep finding those. */

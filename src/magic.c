@@ -4958,6 +4958,12 @@ void try_heat_gear( CHAR_DATA *ch, CHAR_DATA *victim )
             continue;
         if ( IS_OBJ_STAT(obj, ITEM_HEATED) )
             continue;
+        /* The heat is kept on the object's timer, and obj_update zeroes
+           it on cooling -- so heating something already counting down
+           (a decaying item, an ADD_AFFECT item's own timer) threw that
+           countdown away (audit, 2026-10-22). Such pieces are left be. */
+        if ( obj->timer > 0 )
+            continue;
         candidates[count++] = obj;
     }
 

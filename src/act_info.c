@@ -5556,15 +5556,35 @@ void do_remort( CHAR_DATA *ch, char *arg)
       skipped as ever -- equip_char fires those, and one recalls you while
       another kills you. Gear now too high to wear is not re-equipped; the
       sweep below folds it, and anything else too high in the pack, into a
-      bag in the stash so none of it is lost or left uselessly worn. */
-   for (iWear = 0; iWear < MAX_WEAR; iWear++)
+      bag in the stash so none of it is lost or left uselessly worn.
+
+      What goes back on is what WEAR, WIELD or SECONDARY would let this
+      new body put on (wear_slot_allowed_quiet): the strength to wield
+      it, dual wield for a weapon in the off hand, a free hand for a
+      shield. Asking only level and race left a small axe wielded in
+      hands too weak to lift it and a thief's off-hand dagger in a
+      warrior's second hand (audit, 2026-10-22). Anything refused stays
+      carried for the sweep below and OUTFIT. The hands go last -- the
+      weapon after the armour whose strength may help lift it, and the off
+      hand after the weapon its checks ask about. */
+   for (i = 0; i < MAX_WEAR + 2; i++)
    {
+      if (i < MAX_WEAR)
+      {
+         iWear = i;
+         if (iWear == WEAR_WIELD || iWear == WEAR_SHIELD)
+            continue;   /* the hands, below */
+      }
+      else
+         iWear = (i == MAX_WEAR) ? WEAR_WIELD : WEAR_SHIELD;
       if (worn[iWear] == NULL || worn[iWear]->item_type == ITEM_ACTION)
          continue;
       if (worn[iWear]->level > ch->level)
          continue;   /* too high now -- left in the pack, swept below */
       if (!gear_race_allowed(ch, worn[iWear]))
          continue;   /* made for another race now -- swept below too */
+      if (!wear_slot_allowed_quiet(ch, worn[iWear], iWear))
+         continue;   /* WEAR would refuse it -- left carried */
       if (get_eq_char(ch, iWear) != NULL)
          continue;
       equip_char(ch, worn[iWear], iWear);

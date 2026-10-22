@@ -170,24 +170,36 @@ class RemortReportTests(unittest.TestCase):
             self.assertIsNotNone(hand, text[:400])
             self.assertGreaterEqual(int(hand.group(1)), STARTING_WEAPON_SKILL)
 
+    def _two_hander(self, mud, name: str, weight: int | None) -> None:
+        """A level 54 with strength 25, carrying a two-handed sword
+        (oldthalo 5221) made level 1 -- of the given weight, or the
+        prototype's 24, which a new life's strength cannot wield."""
+        with mud.connect(timeout=120) as client:
+            create_character(client, name, PW)
+            client.drain(1.0)
+            client.send("quit")
+            self.assertTrue(client.wait_closed())
+        patch_player_file(mud, name, Levl=54, Room=TEMPLE, Attr="25 25 25 25 25")
+        path = mud.player_dir / name
+        text = path.read_text(encoding="latin-1")
+        sword = "#O\nVnum 5221\nNest 0\nWear -1\nLev 1\nCond 100\n"
+        if weight is not None:
+            sword += "Wt %d\n" % weight
+        path.write_text(text.replace("#END", sword + "End\n\n#END"), encoding="latin-1")
+
     def test_no_shield_beside_a_two_handed_weapon(self) -> None:
         """Review 2026-10-22: OUTFIT called equip_char straight after the
         item's own checks, so a remort keeping a two-handed sword had the
         school shield put on beside it, which WEAR refuses a human -- at
         the remort and at every OUTFIT after. The sword stays wielded,
-        the shield stays in the pack, and no new one is made."""
+        the shield stays in the pack, and no new one is made.
+
+        The sword is made light enough for the new life to wield: the
+        remort puts back only what WIELD would accept (audit, 2026-10-22),
+        and the prototype's weight is past a strength-13 mage -- the case
+        the next test plays."""
         with LiveMud() as mud:
-            with mud.connect(timeout=120) as client:
-                create_character(client, "Ztwohand", PW)
-                client.drain(1.0)
-                client.send("quit")
-                self.assertTrue(client.wait_closed())
-            patch_player_file(mud, "Ztwohand", Levl=54, Room=TEMPLE, Attr="25 25 25 25 25")
-            path = mud.player_dir / "Ztwohand"
-            text = path.read_text(encoding="latin-1")
-            # A two-handed sword (oldthalo 5221) made level 1, carried.
-            path.write_text(text.replace("#END", "#O\nVnum 5221\nNest 0\nWear -1\nLev 1\n"
-                                                 "Cond 100\nEnd\n\n#END"), encoding="latin-1")
+            self._two_hander(mud, "Ztwohand", weight=5)
 
             with mud.connect(timeout=120) as client:
                 login(client, "Ztwohand", PW)
@@ -207,6 +219,37 @@ class RemortReportTests(unittest.TestCase):
                                  "the old shield is kept and no new one made: " + carried)
                 client.send("quit")
                 self.assertTrue(client.wait_closed())
+
+    def test_a_two_hander_too_heavy_for_the_new_life_is_put_down(self) -> None:
+        """Audit 2026-10-22: the remort put back gear checking only level
+        and race, so the old life's two-handed sword stayed wielded in a
+        strength-13 mage's hands, which WIELD refuses ("too heavy"). This
+        test used to assert exactly that. The sword is carried now, the
+        shield hand is free, and OUTFIT does what it does for any empty
+        hand: the old shield from the pack goes on (no new one is made)
+        and the new class's weapon is wielded."""
+        with LiveMud() as mud:
+            self._two_hander(mud, "Zheavyhand", weight=None)
+
+            with mud.connect(timeout=120) as client:
+                login(client, "Zheavyhand", PW)
+                run(client, "scroll 0")
+                run(client, "remove shield")
+                self.assertIn("You wield a two-handed sword", run(client, "wield two-handed"))
+                run(client, "remort %s mage none human" % PW, 3.5)
+                worn = run(client, "equipment")
+                carried = run(client, "inventory")
+                again = run(client, "wield two-handed")
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+
+        self.assertNotIn("two-handed sword", worn, worn)
+        self.assertIn("two-handed sword", carried, "kept, carried: " + carried)
+        self.assertIn("too heavy", again, again)
+        self.assertIn("as shield", worn, worn)
+        self.assertRegex(worn, r"<wielded>\s+a sub issue dagger")
+        self.assertEqual((worn + carried).count("sub issue shield"), 1,
+                         "the old shield went on and no new one was made: " + worn + carried)
 
 
 if __name__ == "__main__":

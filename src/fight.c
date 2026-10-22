@@ -754,10 +754,18 @@ void multi_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
 	      return;
     }
 
-	 if( IS_AFFECTED2( victim, AFF2_DIVINE_PROT ) && number_percent () > 5)
+	 /* F3: divine protection counter-attacks the attacker -- with the
+	    victim's own blow, and only from a victim awake and in reach.
+	    It passed on the attacker's dt, so the counter to a backstab or
+	    a smite was itself a backstab or a smite, multiplier and all,
+	    and it came from a stunned or sleeping victim alike (audit,
+	    2026-10-22). */
+	 if( IS_AFFECTED2( victim, AFF2_DIVINE_PROT )
+	 &&  victim->position > POS_SLEEPING
+	 &&  victim->in_room == ch->in_room
+	 &&  number_percent () > 5)
 	 {
-	 	/* F3: divine protection counter-attacks the attacker */
-	 	one_hit(victim,ch,dt);
+		one_hit(victim,ch,TYPE_UNDEFINED);
 	 	if (ch->fighting != victim)
 	 	    return;
 	 }

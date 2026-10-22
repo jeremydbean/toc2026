@@ -733,14 +733,19 @@ void do_look( CHAR_DATA *ch, char *argument )
             to_room = get_room_index( obj->value[1] );
             if ( to_room == NULL )
                 break;
-            original = ch->in_room;
-            char_from_room( ch );
-            char_to_room( ch, to_room );
             act("\n\rLooking into $p reveals:\n\r", ch,
                  obj, NULL, TO_CHAR);
+            /* A peek, the way CLAIRVOYANCE peeks: only the room pointer
+               is borrowed. It moved the character there and back with
+               char_from_room/char_to_room, so every arrival fired --
+               room achievements, plague, a broken shadowmeld, an ended
+               dummy run, the watch log (audit, 2026-10-22). The
+               character is never in the far room's list, so nothing
+               there sees them, and do_look cannot move or free them. */
+            original = ch->in_room;
+            ch->in_room = to_room;
             do_look(ch,"auto");
-            char_from_room( ch );
-            char_to_room( ch, original );
+            ch->in_room = original;
 
              break;
 

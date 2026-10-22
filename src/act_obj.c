@@ -3345,13 +3345,102 @@ bool shield_hand_free( CHAR_DATA *ch )
         || !IS_WEAPON_STAT( weapon, WEAPON_TWO_HANDS );
 }
 
+/*
+ * Why ch may not take obj as a second weapon, or NULL if they may. The
+ * second weapon goes in the shield slot. SECONDARY says the reason, and
+ * the remort's re-equip asks it in silence (wear_slot_allowed_quiet), so
+ * the two agree.
+ *
+ * "Too powerful" reads the instance's own affects as well as the
+ * prototype's, and "enchanted" means the instance carries a hit or damage
+ * bonus of its own -- what ENCHANT WEAPON adds. obj->enchanted was the
+ * only test before, and no enchanting spell sets it, so a dagger carrying
+ * +8/+8 of its own was taken as the second weapon (audit, 2026-10-22).
+ */
+const char *secondary_weapon_refusal( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    OBJ_DATA *wield;
+    AFFECT_DATA *paf;
+    int pass;
+
+    if ( get_skill( ch, gsn_dual_wield ) < 1 )
+	return "You can only wield one weapon.\n\r";
+
+    if ( ( wield = get_eq_char( ch, WEAR_WIELD ) ) == NULL )
+	return "Try wielding a weapon first.\n\r";
+
+    if ( !CAN_WEAR( obj, ITEM_WIELD ) )
+	return "That item is not wieldable.\n\r";
+
+    if ( get_obj_weight( obj ) > str_app[get_curr_stat(ch,STAT_STR)].wield )
+	return "It is too heavy for you to wield.\n\r";
+
+    if ( IS_WEAPON_STAT( obj, WEAPON_TWO_HANDS ) )
+	return "You don't have enough free hands for that weapon.\n\r";
+
+    if ( IS_WEAPON_STAT( wield, WEAPON_TWO_HANDS ) )
+	return "Your hands are already occupied.\n\r";
+
+    /* reduce the power of dual wield by restricting weapons usable */
+    if ( IS_IMMORTAL(ch) )
+	return NULL;
+
+    for ( pass = 0; pass < 2; pass++ )
+    {
+	paf = pass == 0
+	    ? ( obj->pIndexData != NULL ? obj->pIndexData->affected : NULL )
+	    : obj->affected;
+	for ( ; paf != NULL; paf = paf->next )
+	    if ( ( paf->location == APPLY_DAMROLL
+		|| paf->location == APPLY_HITROLL )
+	    &&   paf->modifier > 5 )
+		return "That item is too powerful to dual wield.\n\r";
+    }
+
+    if ( obj->enchanted )
+	return "You can't dual wield an enchanted weapon.\n\r";
+    for ( paf = obj->affected; paf != NULL; paf = paf->next )
+	if ( paf->location == APPLY_DAMROLL || paf->location == APPLY_HITROLL )
+	    return "You can't dual wield an enchanted weapon.\n\r";
+
+    return NULL;
+}
+
+/*
+ * Whether ch could put obj into slot iWear through WEAR, WIELD or
+ * SECONDARY: the item's own requirements, the strength to wield it, a
+ * free hand for a shield, and everything SECONDARY asks of a weapon in
+ * the shield slot. Silent. The remort puts the old kit back on through
+ * this, and used to ask only level and race, so a small axe stayed
+ * wielded in hands too weak to lift it and a thief's off-hand dagger
+ * stayed in a warrior's second hand with no dual wield (audit,
+ * 2026-10-22).
+ */
+bool wear_slot_allowed_quiet( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
+{
+    if ( !wear_requirements_quiet( ch, obj ) )
+	return false;
+
+    switch ( iWear )
+    {
+    case WEAR_WIELD:
+	return IS_NPC(ch)
+	    || get_obj_weight( obj ) <= str_app[get_curr_stat(ch,STAT_STR)].wield;
+    case WEAR_SHIELD:
+	if ( CAN_WEAR( obj, ITEM_WIELD ) )
+	    return !IS_NPC(ch) && secondary_weapon_refusal( ch, obj ) == NULL;
+	return shield_hand_free( ch );
+    default:
+	return true;
+    }
+}
+
 /* function for use with dual wield skill */
 void do_secondary( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
     OBJ_DATA *obj;
     bool fReplace = true;
-    AFFECT_DATA *paf;
 
     one_argument( argument, arg );
 
@@ -3387,70 +3476,12 @@ void do_secondary( CHAR_DATA *ch, char *argument )
 
     if ( CAN_WEAR( obj, ITEM_WIELD ) )
     {
-	if ( get_obj_weight( obj ) > str_app[get_curr_stat(ch,STAT_STR)].wield )
+	const char *refusal = secondary_weapon_refusal( ch, obj );
+
+	if ( refusal != NULL )
 	{
-	    send_to_char( "It is too heavy for you to wield.\n\r", ch );
+	    send_to_char( refusal, ch );
 	    return;
-	}
-
-        if (IS_WEAPON_STAT(obj,WEAPON_TWO_HANDS))
-        {
-            send_to_char("You don't have enough free hands for that weapon.\n\r",ch);
-            return;
-        }
-
-        if (IS_WEAPON_STAT(get_eq_char(ch,WEAR_WIELD),WEAPON_TWO_HANDS))
-        {
-            send_to_char("Your hands are already occupied.\n\r",ch);
-            return;
-        }
-
-
-	if ( ch->size < SIZE_LARGE
-	&&  get_eq_char(ch,WEAR_SHIELD) != NULL
-	&&  IS_WEAPON_STAT(obj,WEAPON_TWO_HANDS) )
-	{
-	    send_to_char("You need two hands free for that weapon.\n\r",ch);
-	    return;
-	}
-
-	/* reduce the power of dual wield by restricting weapons usable */
-	if ( IS_IMMORTAL(ch) )
-	{
-	    if ( !remove_obj( ch, WEAR_SHIELD, fReplace ) )
-	        return;
-	    act( "$n wields $p as a second weapon.", ch, obj, NULL, TO_ROOM );
-	    act( "You wield $p as your second weapon.", ch, obj, NULL, TO_CHAR );
-	    equip_char( ch, obj, WEAR_SHIELD );
-	    return;
-	}
-
-	if ( obj->pIndexData != NULL )
-	for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
-	{
-	  if ( paf->location == APPLY_DAMROLL )
-	  {
-	    if(paf->modifier > 5)
-	    {
-	      send_to_char("That item is too powerful to dual wield.\n\r",ch);
-	      return;
-	    }
-	  }
-
-	  if ( paf->location == APPLY_HITROLL )
-	  {
-	    if(paf->modifier > 5)
-	    {
-	      send_to_char("That item is too powerful to dual wield.\n\r",ch);
-	      return;
-	    }
-	  }
-	}
-
-	if(obj->enchanted)
-	{
-	  send_to_char("You can't dual wield an enchanted weapon.\n\r",ch);
-	  return;
 	}
 
 	if ( !remove_obj( ch, WEAR_SHIELD, fReplace ) )
@@ -4867,7 +4898,14 @@ static bool buy_one( CHAR_DATA *ch, CHAR_DATA *keeper, char *argument )
     /* The black market's price is the price. */
     if ( !IS_NPC(ch) && !is_black_market_dealer( keeper )
     &&   roll < ch->pcdata->learned[gsn_haggle]) {
-	cost -= obj->cost / 2 * roll / 100;
+	/* Off the price being asked, never off the item's full worth:
+	   get_cost has already scaled a part-used wand or staff by its
+	   charges, and half the full worth taken off a fraction of it
+	   left a negative price -- the purse refused to pay it, the
+	   item was handed over anyway, and obj->cost went negative
+	   (audit, 2026-10-22). Nothing is ever free. */
+	cost -= cost / 2 * roll / 100;
+	cost = UMAX( cost, 1L );
     {
         char price_buf[MAX_INPUT_LENGTH];
 
@@ -4879,10 +4917,21 @@ static bool buy_one( CHAR_DATA *ch, CHAR_DATA *keeper, char *argument )
 	check_improve(ch,gsn_haggle,true,4);
     }
 
+    /* Paid before anything moves: a payment the purse refuses is no sale.
+       has_enough_copper above asked the same question of the full price,
+       so this refuses only what could not be paid at all. */
+    if ( !spend_copper( ch, cost ) )
+    {
+	act( "$n tells you 'You can't afford to buy $p'.",
+	    keeper, obj, ch, TO_VICT );
+	return false;
+    }
+    /* A keeper's purse already at the ceiling cannot hold more; the
+       coin is spent either way, so the buyer still gets the item. */
+    gain_copper( keeper, cost );
+
     act( "$n buys $p.", ch, obj, NULL, TO_ROOM );
     act( "You buy $p.", ch, obj, NULL, TO_CHAR );
-    spend_copper(ch, cost);
-    gain_copper(keeper, cost);
 
     if(IS_SET( obj->extra_flags, ITEM_INVENTORY ) )
     {
@@ -5038,21 +5087,24 @@ void do_sell( CHAR_DATA *ch, char *argument )
     roll = number_percent();
     if (!IS_NPC(ch) && roll < ch->pcdata->learned[gsn_haggle])
     {
+        /* What it is worth now: a part-used wand or staff by the charges
+           left, as get_cost prices it. The haggle's gain is a share of
+           that, not of the full worth, the same rule BUY keeps (audit,
+           2026-10-22). */
+        long worth = obj->cost;
+
+        if ( ( obj->item_type == ITEM_STAFF || obj->item_type == ITEM_WAND )
+        &&   obj->value[1] > 0 )
+            worth = worth * obj->value[2] / obj->value[1];
+
         send_to_char("You haggle with the shopkeeper.\n\r",ch);
-        cost += obj->cost / 2 * roll / 100;
+        cost += worth / 2 * roll / 100;
         cost = UMIN(cost,95 * get_cost(keeper,obj,true) / 100);
         /* Never above what the thing is worth. Every shop sells at its
            worth or more, so a sale above it was a loop: buy at one shop,
            haggle at a dearer one, repeat (found in review, 2026-10-21 --
            the alignment discount added shops selling at worth). */
-        {
-            long worth = obj->cost;
-
-            if ( ( obj->item_type == ITEM_STAFF || obj->item_type == ITEM_WAND )
-            &&   obj->value[1] > 0 )
-                worth = worth * obj->value[2] / obj->value[1];
-            cost = UMIN( cost, worth );
-        }
+        cost = UMIN( cost, worth );
         {
             /* What the keeper can actually pay, across every
                denomination -- this compared against his gold coins
@@ -5072,6 +5124,22 @@ void do_sell( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* The coin changes hands before the item does, and either refusal
+       ends the sale with nothing moved. */
+    if ( !spend_copper( keeper, cost ) )
+    {
+	act("$n tells you 'I'm afraid I don't have enough gold to buy $p.",
+	    keeper,obj,ch,TO_VICT);
+	return;
+    }
+    if ( !gain_copper( ch, cost ) )
+    {
+	gain_copper( keeper, cost );
+	act("$n tells you 'You cannot safely carry that many coins.'",
+	    keeper, NULL, ch, TO_VICT);
+	return;
+    }
+
     act( "$n sells $p.", ch, obj, NULL, TO_ROOM );
     {
         char price_buf[MAX_INPUT_LENGTH];
@@ -5082,8 +5150,6 @@ void do_sell( CHAR_DATA *ch, char *argument )
     act( buf, ch, obj, NULL, TO_CHAR );
     watch_log( ch, "sold %s (vnum %d) for %ld copper to %s",
         obj->short_descr, obj->pIndexData->vnum, (long)cost, keeper->short_descr );
-    gain_copper(ch, cost);
-    spend_copper(keeper, cost);
 
     if ( obj->item_type == ITEM_TRASH )
     {
@@ -5778,6 +5844,48 @@ void do_feed( CHAR_DATA *ch, char *argument )
     }
 }
 
+/*
+ * Whether a CLIMB, CRAWL or JUMP that carries ch into dest is refused,
+ * saying why. They are ways into a room like any other, and they asked
+ * nothing: a ladder made a third person in a private room, and a crawl
+ * escaped a fight that NORTH had just refused (audit, 2026-10-22). These
+ * are the questions ENTER asks of a portal, plus the fight, asked before
+ * anything is said or moved.
+ */
+static bool manipulate_move_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *dest )
+{
+    if ( dest == NULL )
+    {
+	send_to_char( "The way seems to lead nowhere.\n\r", ch );
+	return true;
+    }
+
+    if ( ch->fighting != NULL )
+    {
+	send_to_char( "No way!  You are still fighting!\n\r", ch );
+	return true;
+    }
+
+    if ( !can_enter_private_room( ch, dest ) )
+    {
+	send_to_char( "That room is private right now.\n\r", ch );
+	return true;
+    }
+
+    if ( hyrule_gate_refuses( ch, ch->in_room, dest ) )
+	return true;
+
+    if ( !IS_NPC(ch) && !IS_TRUSTED(ch, LEVEL_IMMORTAL)
+    &&   ( !can_see_room( ch, dest ) || travel_spell_refuses( ch, dest )
+	 || ( ch->level > 10 && IS_SET(dest->room_flags, ROOM_NEWBIES_ONLY) ) ) )
+    {
+	send_to_char( "Something on the far side turns you back.\n\r", ch );
+	return true;
+    }
+
+    return false;
+}
+
 void do_manipulate( CHAR_DATA *ch, char *argument )
 {
 
@@ -5817,6 +5925,15 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
    {
       send_to_char( "The stone will not move without the Power Bracelet.\n\r", ch );
       return;
+   }
+
+   /* Climbing, crawling and jumping carry the character to value[1]:
+      the room rules come first, before any "You climb up..." is said. */
+   if ( ( obj->value[0] >= 6 && obj->value[0] <= 8 )
+   ||   ( obj->value[0] == 9 && obj->value[2] >= 1 && obj->value[2] <= 5 ) )
+   {
+      if ( manipulate_move_refuses( ch, get_room_index( obj->value[1] ) ) )
+         return;
    }
 
    switch( obj->value[0] )
@@ -6269,6 +6386,28 @@ static long repair_cost_copper( OBJ_DATA *obj )
     return (long)cost;
 }
 
+/*
+ * The armour value REPAIR puts a piece back up to, and below which it
+ * counts as filed down. A fixed-level prototype's piece is made with the
+ * prototype's values, so that is its ceiling. A level -1 prototype's is
+ * not: create_object rolls its first three values as
+ * number_fuzzy(level / 5 + 3), whatever the prototype says, so measuring
+ * one against the prototype read nearly every new piece as dented --
+ * REPAIR charged for brand-new kit and raised it past what the game
+ * rolled, 5 5 4 to 10 20 15 on a new kraken shell (audit, 2026-10-22).
+ * For those values the floor is the least the roll can make, so a repair
+ * never lifts a piece above the values it was created with; the fourth
+ * value is copied from the prototype, as it is for every piece.
+ */
+static int repair_armor_floor( OBJ_DATA *obj, int i )
+{
+    if ( obj->pIndexData == NULL )
+        return obj->value[i];
+    if ( obj->pIndexData->level == -1 && i < 3 )
+        return UMAX( 1, obj->level / 5 + 3 - 1 );
+    return obj->pIndexData->value[i];
+}
+
 /* Mend one item the character has already been charged for (REPAIR). */
 static void repair_mend( CHAR_DATA *ch, CHAR_DATA *rpr, OBJ_DATA *obj, long cost )
 {
@@ -6308,7 +6447,7 @@ static void repair_mend( CHAR_DATA *ch, CHAR_DATA *rpr, OBJ_DATA *obj, long cost
             if ( obj->item_type == ITEM_ARMOR )
             {
                 for ( i = 0; i < 4; i++ )
-                    if ( obj->value[i] < obj->pIndexData->value[i] )
+                    if ( obj->value[i] < repair_armor_floor( obj, i ) )
                         restore = true;
             }
 
@@ -6319,8 +6458,8 @@ static void repair_mend( CHAR_DATA *ch, CHAR_DATA *rpr, OBJ_DATA *obj, long cost
                 if ( worn )
                     unequip_char( ch, obj );
                 for ( i = 0; i < 4; i++ )
-                    if ( obj->value[i] < obj->pIndexData->value[i] )
-                        obj->value[i] = obj->pIndexData->value[i];
+                    if ( obj->value[i] < repair_armor_floor( obj, i ) )
+                        obj->value[i] = repair_armor_floor( obj, i );
                 if ( worn )
                     equip_char( ch, obj, slot );
             }
@@ -6351,7 +6490,7 @@ static bool repair_needed( OBJ_DATA *obj )
         return true;
     if ( obj->item_type == ITEM_ARMOR && obj->pIndexData != NULL )
         for ( i = 0; i < 4; i++ )
-            if ( obj->value[i] < obj->pIndexData->value[i] )
+            if ( obj->value[i] < repair_armor_floor( obj, i ) )
                 return true;
     return false;
 }

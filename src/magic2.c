@@ -4609,22 +4609,26 @@ void spell_meteor_swarm( int sn, int level, CHAR_DATA *ch, void *vo )
                             /*fix?*/
         if ( gch != ch && !is_safe_spell(ch,gch,true) && gch->in_room == ch->in_room)
         {
-           bool gch_killed = false;
+           ROOM_INDEX_DATA *struck_in = ch->in_room;
+
            /* For some randomness, lets subtract 1 meteor 15% of the time */
            if (number_percent() > 85)
              count3--;
 
-           /* Do 4 attacks at most per mob, then go to the next mob */
+           /* Do 4 attacks at most per mob, then go to the next mob. This
+              stopped at damage()'s result, which is true of every blow
+              that lands, so each target took one meteor of its four
+              (audit, 2026-10-22). Gone means dead or moved. */
            while( count2 < 4 && count3 > 0 && gch->in_room == ch->in_room)
            {
              if(saves_spell(level,gch) )
-               gch_killed = damage(ch,gch,dice(level,5),sn,DAM_FIRE);
+               damage(ch,gch,dice(level,5),sn,DAM_FIRE);
              else
-               gch_killed = damage(ch,gch,dice(level,7),sn,DAM_FIRE);
+               damage(ch,gch,dice(level,7),sn,DAM_FIRE);
              count2++;
              count3--;
-             if (gch_killed)
-               break;  /* gch was killed; stop attacking it */
+             if ( gone_after_blow( gch, struck_in ) )
+               break;
            }
 
            if (count3 < 1)

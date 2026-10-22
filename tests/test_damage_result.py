@@ -23,9 +23,43 @@ SRC = ROOT / "src"
 
 BRANCH_ON_DAMAGE = re.compile(r"(?:\bif|\bwhile|&&|\|\||\?)\s*\(?\s*!?\s*damage\s*\(")
 
+# The same mistake one step removed: `killed = damage(...)` and then
+# `if (killed) break;`. Meteor swarm did exactly that and stopped every
+# target at its first landed meteor (audit, 2026-10-22); the line test
+# above could not see it.
+ASSIGN_FROM_DAMAGE = re.compile(r"\b([A-Za-z_]\w*)\s*=\s*damage\s*\(")
+
+
+def branch_on(name: str) -> re.Pattern[str]:
+    return re.compile(r"(?:\bif|\bwhile|&&|\|\||\?)\s*\(?\s*!?\s*" + re.escape(name) + r"\b")
+
 
 def strip_comments(text: str) -> str:
-    return re.sub(r"/\*.*?\*/", "", text, flags=re.S)
+    # Keep the newlines a comment spanned, so reported line numbers are
+    # the file's own.
+    return re.sub(r"/\*.*?\*/", lambda m: "\n" * m.group(0).count("\n"), text, flags=re.S)
+
+
+def damage_result_branches(path_name: str, text: str) -> list[str]:
+    """Branches on a variable that holds damage()'s result.
+
+    Read from the assignment to the end of the enclosing function (a `}`
+    in column 0). A condition that also asks gone_after_blow() is asking
+    whether the blow landed *and* whether the victim is still there,
+    which is the right pair of questions (one_hit's lycanthropy bite).
+    """
+    lines = text.splitlines()
+    found = []
+    for number, line in enumerate(lines):
+        for match in ASSIGN_FROM_DAMAGE.finditer(line):
+            pattern = branch_on(match.group(1))
+            for later in range(number + 1, len(lines)):
+                if lines[later].startswith("}"):
+                    break
+                if pattern.search(lines[later]) and "gone_after_blow" not in lines[later]:
+                    found.append(f"{path_name}:{later + 1}: {lines[later].strip()}"
+                                 f" (holds damage() from line {number + 1})")
+    return found
 
 
 class DamageResultTests(unittest.TestCase):
@@ -37,6 +71,34 @@ class DamageResultTests(unittest.TestCase):
                 if BRANCH_ON_DAMAGE.search(line):
                     offenders.append(f"{path.name}:{number}: {line.strip()}")
         self.assertEqual(offenders, [], "use gone_after_blow() after damage()")
+
+    def test_nothing_branches_on_a_saved_damage_result(self) -> None:
+        offenders = []
+        for path in sorted(SRC.glob("*.c")):
+            text = strip_comments(path.read_text(encoding="latin-1"))
+            offenders.extend(damage_result_branches(path.name, text))
+        self.assertEqual(offenders, [], "use gone_after_blow() after damage()")
+
+    def test_the_saved_result_check_finds_the_old_meteor_swarm(self) -> None:
+        old = (
+            "void spell_meteor_swarm( int sn )\n"
+            "{\n"
+            "    while ( count > 0 )\n"
+            "    {\n"
+            "        gch_killed = damage(ch,gch,dice(level,7),sn,DAM_FIRE);\n"
+            "        if (gch_killed)\n"
+            "            break;\n"
+            "    }\n"
+            "}\n"
+            "void one_hit( void )\n"
+            "{\n"
+            "    landed = damage( ch, victim, dam, dt, dam_type );\n"
+            "    if ( landed && !gone_after_blow( victim, struck_in )\n"
+            "}\n"
+        )
+        found = damage_result_branches("magic2.c", old)
+        self.assertEqual(len(found), 1, found)
+        self.assertIn("gch_killed", found[0])
 
     def test_an_aura_never_burns_its_own_wearer(self) -> None:
         """Poison ticks are damage(ch, ch); the aura reflected them back."""
