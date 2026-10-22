@@ -3116,3 +3116,285 @@
 1792628321	cmd	Trentlin	49	4210	dresden_halloween.are	standing	100	0	-	sleep		You go to sleep.
 1792628321	session	Trentlin	49	4210	dresden_halloween.are	quit	2553s	+0 levels	+310 exp	+65514643 copper	24 kills	0 deaths	3 quests	1010 commands	3 refused
 1792629820	cmd	Trentlin	49	4210	dresden_halloween.are	sleeping	100	0	-	rested		You are rested: your kills earn double experience until 44 more is spent (1% of a level).
+1792629828	refused	Trentlin	49	4210	dresden_halloween.are	sleeping	100	0	-	look		In your dreams, or what?
+1792629829	cmd	Trentlin	49	4210	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1792629829	cmd	Trentlin	49	4210	dresden_halloween.are	standing	100	0	-	look		The Sickroom of the Restless
+1792629831	cmd	Trentlin	49	4203	dresden_halloween.are	standing	100	0	-	south		The Hall of Cobwebs
+1792629833	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers
+1792629834	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792629834	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792629834	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792629835	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792629835	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792629835	cmd	Trentlin	49	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792629835	cmd	Trentlin	49	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792629836	cmd	Trentlin	49	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792629836	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792629838	cmd	Trentlin	49	2497	dresden_halloween.are	standing	100	6	-	aquest	request	You approach Questor Thews and ask for a quest.
+1792629843	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792629866	cmd	Trentlin	49	9669	newthalo.are	standing	100	0	-	run	e 21	Eastern Oak Tree Square.
+1792629867	cmd	Trentlin	49	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos
+1792629868	cmd	Trentlin	49	9524	newthalo.are	standing	100	0	-	east		West Main Street
+1792629869	cmd	Trentlin	49	9524	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629872	cmd	Trentlin	49	9620	newthalo.are	standing	100	0	-	north		The Temple Square
+1792629873	cmd	Trentlin	49	9620	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629874	cmd	Trentlin	49	9524	newthalo.are	standing	100	0	-	south		West Main Street
+1792629874	cmd	Trentlin	49	9525	newthalo.are	standing	100	0	-	east		West Main Street
+1792629875	cmd	Trentlin	49	9525	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629876	cmd	Trentlin	49	9526	newthalo.are	standing	100	0	-	east		West Main Street
+1792629876	cmd	Trentlin	49	9526	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629877	cmd	Trentlin	49	9509	newthalo.are	standing	100	0	-	east		The Western Market Square
+1792629878	cmd	Trentlin	49	9509	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629879	cmd	Trentlin	49	9508	newthalo.are	standing	100	0	-	south		The Southwestern Market Square
+1792629879	cmd	Trentlin	49	9508	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629881	cmd	Trentlin	49	9505	newthalo.are	standing	100	0	-	east		The Southern Market Square
+1792629881	cmd	Trentlin	49	9507	newthalo.are	standing	100	0	-	east		The Southeastern Market Square
+1792629882	cmd	Trentlin	49	9507	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629883	cmd	Trentlin	49	9517	newthalo.are	standing	100	0	-	north		The Eastern Market Square
+1792629883	cmd	Trentlin	49	9516	newthalo.are	standing	100	0	-	north		The Northeastern Market Square
+1792629884	cmd	Trentlin	49	9516	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629885	cmd	Trentlin	49	9515	newthalo.are	standing	100	0	-	west		The Northern Market Square
+1792629886	cmd	Trentlin	49	9514	newthalo.are	standing	100	0	-	west		The Northwestern Market Square
+1792629886	cmd	Trentlin	49	9514	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629888	cmd	Trentlin	49	9621	newthalo.are	standing	100	0	-	west		The Bank
+1792629889	cmd	Trentlin	49	9621	newthalo.are	standing	100	0	-	worth		You have 209 platinum, 4 gold, 81 silver, 92 copper
+1792629894	cmd	Trentlin	49	9621	newthalo.are	standing	100	0	-	deposit	200 platinum	You deposit your coins into the bank.
+1792629895	cmd	Trentlin	49	9514	newthalo.are	standing	100	0	-	east		The Northwestern Market Square
+1792629896	cmd	Trentlin	49	9614	newthalo.are	standing	100	0	-	north		Ahkeem's Stuff
+1792629897	cmd	Trentlin	49	9614	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629897	cmd	Trentlin	49	9514	newthalo.are	standing	100	0	-	south		The Northwestern Market Square
+1792629898	cmd	Trentlin	49	9515	newthalo.are	standing	100	0	-	east		The Northern Market Square
+1792629898	cmd	Trentlin	49	9518	newthalo.are	standing	100	0	-	north		Sultan's Walk
+1792629899	cmd	Trentlin	49	9518	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629899	cmd	Trentlin	49	9519	newthalo.are	standing	100	0	-	north		Sultan's Walk
+1792629900	cmd	Trentlin	49	9519	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629901	cmd	Trentlin	49	9520	newthalo.are	standing	100	0	-	north		Sultan's Walk
+1792629901	cmd	Trentlin	49	9520	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629903	cmd	Trentlin	49	9658	newthalo.are	standing	100	0	-	west		The Palace Gate
+1792629903	cmd	Trentlin	49	9658	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629904	cmd	Trentlin	49	9650	newthalo.are	standing	100	0	-	west		The Grand Entrance
+1792629904	cmd	Trentlin	49	9650	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629905	cmd	Trentlin	49	9658	newthalo.are	standing	100	0	-	east		The Palace Gate
+1792629906	cmd	Trentlin	49	9520	newthalo.are	standing	100	0	-	east		Sultan's Walk
+1792629906	cmd	Trentlin	49	9500	newthalo.are	standing	100	0	-	east		The Entrance to the Dancing Daemon Inn
+1792629906	cmd	Trentlin	49	9500	newthalo.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792629908	cmd	Trentlin	49	9520	newthalo.are	standing	100	0	-	west		Sultan's Walk
+1792629909	cmd	Trentlin	49	9519	newthalo.are	standing	100	0	-	south		Sultan's Walk
+1792629909	cmd	Trentlin	49	9518	newthalo.are	standing	100	0	-	south		Sultan's Walk
+1792629910	cmd	Trentlin	49	9515	newthalo.are	standing	100	0	-	south		The Northern Market Square
+1792629910	cmd	Trentlin	49	9516	newthalo.are	standing	100	0	-	east		The Northeastern Market Square
+1792629911	cmd	Trentlin	49	9517	newthalo.are	standing	100	0	-	south		The Eastern Market Square
+1792629912	cmd	Trentlin	49	9527	newthalo.are	standing	100	0	-	east		East Main Street
+1792629912	cmd	Trentlin	49	9527	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629913	cmd	Trentlin	49	9528	newthalo.are	standing	100	0	-	east		East Main Street
+1792629913	cmd	Trentlin	49	9528	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629915	cmd	Trentlin	49	9529	newthalo.are	standing	100	1	-	east		East Main Street
+1792629916	cmd	Trentlin	49	9529	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629917	cmd	Trentlin	49	9530	newthalo.are	standing	100	0	-	east		East Main Street
+1792629918	cmd	Trentlin	49	9530	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629919	cmd	Trentlin	49	9531	newthalo.are	standing	100	0	-	east		Inside the Eastern Gate of New Thalos
+1792629919	cmd	Trentlin	49	9531	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629920	cmd	Trentlin	49	9530	newthalo.are	standing	100	0	-	west		East Main Street
+1792629920	cmd	Trentlin	49	9529	newthalo.are	standing	100	0	-	west		East Main Street
+1792629921	cmd	Trentlin	49	9528	newthalo.are	standing	100	0	-	west		East Main Street
+1792629921	cmd	Trentlin	49	9527	newthalo.are	standing	100	0	-	west		East Main Street
+1792629921	cmd	Trentlin	49	9517	newthalo.are	standing	100	0	-	west		The Eastern Market Square
+1792629922	cmd	Trentlin	49	9517	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629922	cmd	Trentlin	49	9506	newthalo.are	standing	100	0	-	west		The Center of Market Square
+1792629923	cmd	Trentlin	49	9509	newthalo.are	standing	100	0	-	west		The Western Market Square
+1792629924	cmd	Trentlin	49	9509	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629924	cmd	Trentlin	49	9526	newthalo.are	standing	100	0	-	west		West Main Street
+1792629925	cmd	Trentlin	49	9526	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629925	cmd	Trentlin	49	9525	newthalo.are	standing	100	0	-	west		West Main Street
+1792629926	cmd	Trentlin	49	9525	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629927	cmd	Trentlin	49	9524	newthalo.are	standing	100	0	-	west		West Main Street
+1792629928	cmd	Trentlin	49	9524	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629928	cmd	Trentlin	49	9523	newthalo.are	standing	100	0	-	west		Inside the West Gate of New Thalos
+1792629929	cmd	Trentlin	49	9523	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629930	cmd	Trentlin	49	9524	newthalo.are	standing	100	0	-	east		West Main Street
+1792629930	cmd	Trentlin	49	9525	newthalo.are	standing	100	0	-	east		West Main Street
+1792629931	cmd	Trentlin	49	9526	newthalo.are	standing	100	0	-	east		West Main Street
+1792629931	cmd	Trentlin	49	9509	newthalo.are	standing	100	0	-	east		The Western Market Square
+1792629934	cmd	Trentlin	49	9506	newthalo.are	standing	100	0	-	east		The Center of Market Square
+1792629934	cmd	Trentlin	49	9505	newthalo.are	standing	100	0	-	south		The Southern Market Square
+1792629935	cmd	Trentlin	49	9505	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629936	cmd	Trentlin	49	9504	newthalo.are	standing	100	0	-	south		The Medina
+1792629937	cmd	Trentlin	49	9504	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629937	cmd	Trentlin	49	9503	newthalo.are	standing	100	0	-	south		The Medina
+1792629938	cmd	Trentlin	49	9503	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629938	cmd	Trentlin	49	9510	newthalo.are	standing	100	0	-	south		The Common Square
+1792629939	cmd	Trentlin	49	9510	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629941	cmd	Trentlin	49	9512	newthalo.are	standing	100	0	-	south		The Southern Bridge
+1792629941	cmd	Trentlin	49	9512	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629943	cmd	Trentlin	49	9510	newthalo.are	standing	100	0	-	north		The Common Square
+1792629943	cmd	Trentlin	49	9536	newthalo.are	standing	100	0	-	west		West Ishtar Drive
+1792629944	cmd	Trentlin	49	9536	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629944	cmd	Trentlin	49	9535	newthalo.are	standing	100	0	-	west		West Ishtar Drive
+1792629945	cmd	Trentlin	49	9535	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629946	cmd	Trentlin	49	9534	newthalo.are	standing	100	1	-	west		West Ishtar Drive
+1792629947	cmd	Trentlin	49	9534	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629947	cmd	Trentlin	49	9533	newthalo.are	standing	100	0	-	west		West Ishtar Drive
+1792629948	cmd	Trentlin	49	9533	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792629949	cmd	Trentlin	49	9534	newthalo.are	standing	100	0	-	east		West Ishtar Drive
+1792629949	cmd	Trentlin	49	9535	newthalo.are	standing	100	0	-	east		West Ishtar Drive
+1792629949	cmd	Trentlin	49	9536	newthalo.are	standing	100	0	-	east		West Ishtar Drive
+1792629949	cmd	Trentlin	49	9510	newthalo.are	standing	100	0	-	east		The Common Square
+1792629950	cmd	Trentlin	49	9510	newthalo.are	standing	583	0	-	exits		Obvious exits:
+1792629952	cmd	Trentlin	49	9537	newthalo.are	standing	583	0	-	east		East Ishtar Drive
+1792629952	cmd	Trentlin	49	9537	newthalo.are	standing	583	0	-	exits		Obvious exits:
+1792629953	cmd	Trentlin	49	9539	newthalo.are	standing	583	0	-	east		East Ishtar Drive
+1792629953	cmd	Trentlin	49	9539	newthalo.are	standing	583	0	-	exits		Obvious exits:
+1792629954	cmd	Trentlin	49	9538	newthalo.are	standing	583	0	-	east		East Ishtar Drive
+1792629955	cmd	Trentlin	49	9540	newthalo.are	standing	583	0	-	east		East Ishtar Drive
+1792629955	refused	Trentlin	49	9540	newthalo.are	standing	583	0	-	(unknown)		Huh?
+1792629956	cmd	Trentlin	49	9540	newthalo.are	standing	583	0	-	exits		Obvious exits:
+1792629957	cmd	Trentlin	49	9541	newthalo.are	standing	583	0	-	east		East Ishtar Drive
+1792629957	cmd	Trentlin	49	9541	newthalo.are	standing	583	0	-	exits		Obvious exits:
+1792629959	cmd	Trentlin	49	9542	newthalo.are	standing	583	0	-	east		East Ishtar Drive
+1792629959	cmd	Trentlin	49	9542	newthalo.are	standing	583	0	-	exits		Obvious exits:
+1792629961	cmd	Trentlin	49	9541	newthalo.are	standing	583	0	-	west		East Ishtar Drive
+1792629961	cmd	Trentlin	49	9540	newthalo.are	standing	583	0	-	west		East Ishtar Drive
+1792629961	cmd	Trentlin	49	9568	newthalo.are	standing	583	0	-	north		Alley
+1792629962	cmd	Trentlin	49	9567	newthalo.are	standing	583	0	-	north		Alley
+1792629963	cmd	Trentlin	49	9567	newthalo.are	standing	583	0	-	exits		Obvious exits:
+1792629964	cmd	Trentlin	49	9638	newthalo.are	standing	583	0	-	east		Smuggler's Inn
+1792629965	cmd	Trentlin	49	9638	newthalo.are	standing	583	0	-	exits		Obvious exits:
+1792629968	cmd	Trentlin	49	9638	newthalo.are	standing	583	0	-	list		[Lv Price] Item
+1792629979	cmd	Trentlin	49	9567	newthalo.are	standing	583	0	-	west		Alley
+1792629979	cmd	Trentlin	49	9566	newthalo.are	standing	583	0	-	west		Alley
+1792629979	cmd	Trentlin	49	9565	newthalo.are	standing	583	0	-	north		Alley
+1792629980	cmd	Trentlin	49	9528	newthalo.are	standing	583	0	-	north		East Main Street
+1792629980	cmd	Trentlin	49	9529	newthalo.are	standing	583	0	-	east		East Main Street
+1792629980	cmd	Trentlin	49	9530	newthalo.are	standing	583	0	-	east		East Main Street
+1792629980	cmd	Trentlin	49	9531	newthalo.are	standing	583	0	-	east		Inside the Eastern Gate of New Thalos
+1792629981	cmd	Trentlin	49	9531	newthalo.are	standing	583	0	-	open	east	Ok.
+1792629981	cmd	Trentlin	49	9668	newthalo.are	standing	583	0	-	east		Outside the Eastern Gate of New Thalos
+1792629991	cmd	Trentlin	49	4207	dresden_halloween.are	standing	583	0	-	recall		Before the Shrouded Altar
+1792629992	cmd	Trentlin	49	4207	dresden_halloween.are	standing	583	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1792629993	cmd	Trentlin	49	4208	dresden_halloween.are	standing	583	0	-	west		The Shrouded Altar of Devota
+1792629994	cmd	Trentlin	49	4208	dresden_halloween.are	standing	583	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792629995	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792629995	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792629995	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792629996	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792629996	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792629996	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792629998	cmd	Trentlin	49	9669	newthalo.are	standing	100	0	-	run	e 21	Eastern Oak Tree Square.
+1792630002	cmd	Trentlin	49	9669	newthalo.are	standing	100	0	-	aquest	info	.-[ Quest Status ]--------------------------------------------.
+1792630009	cmd	Trentlin	49	9669	newthalo.are	standing	100	0	-	where		Players near you:
+1792630010	cmd	Trentlin	49	9523	newthalo.are	standing	100	0	-	east		Inside the West Gate of New Thalos
+1792630012	cmd	Trentlin	49	9626	newthalo.are	standing	100	0	-	south		Entrance to the Guild of Warriors'
+1792630012	cmd	Trentlin	49	9626	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630013	cmd	Trentlin	49	9633	newthalo.are	standing	100	0	-	south		The Whet Stone
+1792630013	cmd	Trentlin	49	9633	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630018	cmd	Trentlin	49	9626	newthalo.are	standing	100	0	-	north		Entrance to the Guild of Warriors'
+1792630019	cmd	Trentlin	49	9626	newthalo.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792630020	cmd	Trentlin	49	9626	newthalo.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792630020	cmd	Trentlin	49	9523	newthalo.are	standing	100	0	-	north		Inside the West Gate of New Thalos
+1792630022	cmd	Trentlin	49	9626	newthalo.are	standing	100	0	-	south		Entrance to the Guild of Warriors'
+1792630022	cmd	Trentlin	49	9633	newthalo.are	standing	100	0	-	south		The Whet Stone
+1792630024	cmd	Trentlin	49	9634	newthalo.are	standing	100	0	-	east		Tournament and Practice Yard
+1792630024	cmd	Trentlin	49	9634	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630027	cmd	Trentlin	49	9634	newthalo.are	standing	100	0	-	practice		axe                100%  dagger              89%  flail               25%  
+1792630030	cmd	Trentlin	49	9634	newthalo.are	standing	100	0	-	gain		You can't do that here.
+1792630031	cmd	Trentlin	49	9633	newthalo.are	standing	100	0	-	west		The Whet Stone
+1792630032	cmd	Trentlin	49	9626	newthalo.are	standing	100	0	-	north		Entrance to the Guild of Warriors'
+1792630033	cmd	Trentlin	49	9523	newthalo.are	standing	100	0	-	north		Inside the West Gate of New Thalos
+1792630033	cmd	Trentlin	49	9523	newthalo.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792630034	cmd	Trentlin	49	9524	newthalo.are	standing	100	0	-	east		West Main Street
+1792630035	cmd	Trentlin	49	9525	newthalo.are	standing	100	0	-	east		West Main Street
+1792630036	cmd	Trentlin	49	9571	newthalo.are	standing	100	0	-	north		Alley
+1792630037	cmd	Trentlin	49	9569	newthalo.are	standing	100	0	-	north		Alley
+1792630038	cmd	Trentlin	49	9569	newthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630038	cmd	Trentlin	49	9570	newthalo.are	standing	100	0	-	east		Alley
+1792630039	cmd	Trentlin	49	9578	newthalo.are	standing	100	0	-	down		Underground
+1792630041	cmd	Trentlin	49	9570	newthalo.are	standing	100	0	-	up		Alley
+1792630042	cmd	Trentlin	49	9569	newthalo.are	standing	100	0	-	west		Alley
+1792630042	cmd	Trentlin	49	9571	newthalo.are	standing	100	0	-	south		Alley
+1792630043	cmd	Trentlin	49	9525	newthalo.are	standing	100	0	-	south		West Main Street
+1792630043	cmd	Trentlin	49	9572	newthalo.are	standing	100	0	-	south		Alley
+1792630044	cmd	Trentlin	49	9572	newthalo.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792630045	cmd	Trentlin	49	9573	newthalo.are	standing	100	0	-	south		Alley
+1792630045	cmd	Trentlin	49	9574	newthalo.are	standing	100	0	-	east		Alley
+1792630046	cmd	Trentlin	49	9574	newthalo.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792630048	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792630048	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota
+1792630050	cmd	Trentlin	49	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792630051	cmd	Trentlin	49	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792630051	cmd	Trentlin	49	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792630051	cmd	Trentlin	49	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792630051	cmd	Trentlin	49	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792630052	cmd	Trentlin	49	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792630052	cmd	Trentlin	49	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792630064	cmd	Trentlin	49	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square.
+1792630064	cmd	Trentlin	49	2426	dresden_halloween.are	standing	100	0	-	open	east	Ok.
+1792630065	cmd	Trentlin	49	3502	midennir_halloween.are	standing	100	0	-	run	e 3	Outside the Eastern Gates of Dresden.
+1792630065	cmd	Trentlin	49	5258	oldthalo.are	standing	100	0	-	run	s 4	The dwarf forest
+1792630067	cmd	Trentlin	49	5258	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630068	cmd	Trentlin	49	5257	oldthalo.are	standing	100	0	-	west		A trail at the end of the dwarf forest
+1792630069	cmd	Trentlin	49	5257	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630070	cmd	Trentlin	49	5256	oldthalo.are	standing	100	0	-	west		A trail at the end of the dwarf forest
+1792630070	cmd	Trentlin	49	5256	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630071	cmd	Trentlin	49	5200	oldthalo.are	standing	100	0	-	west		The Grand Gate of Thalos
+1792630072	cmd	Trentlin	49	5201	oldthalo.are	standing	100	0	-	west		Main Street
+1792630072	cmd	Trentlin	49	5201	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630075	cmd	Trentlin	49	5202	oldthalo.are	standing	100	0	-	west		Main Street
+1792630076	cmd	Trentlin	49	5202	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630078	cmd	Trentlin	49	5203	oldthalo.are	standing	100	0	-	west		A Garden Path
+1792630079	cmd	Trentlin	49	5203	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630081	cmd	Trentlin	49	5250	oldthalo.are	standing	100	0	-	west		The Temple of Thalos
+1792630082	cmd	Trentlin	49	5250	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630084	cmd	Trentlin	49	5250	oldthalo.are	standing	100	0	-	consider	be	You can kill The mighty beholder naked and weaponless.
+1792630085	cmd	Trentlin	49	5250	oldthalo.are	standing	100	0	-	look	be	It has a large central eye that projects an anti-magic ray and ten
+1792630087	cmd	Trentlin	49	5205	oldthalo.are	standing	100	0	-	north		A Garden Path
+1792630088	cmd	Trentlin	49	5204	oldthalo.are	standing	100	0	-	east		A Garden Path
+1792630090	cmd	Trentlin	49	5204	oldthalo.are	standing	100	0	-	look	la	This is a creature with the upper torso of a beautiful woman, but the lower
+1792630091	cmd	Trentlin	49	5203	oldthalo.are	standing	100	0	-	south		A Garden Path
+1792630092	cmd	Trentlin	49	5202	oldthalo.are	standing	100	0	-	east		Main Street
+1792630094	cmd	Trentlin	49	5232	oldthalo.are	standing	100	0	-	south		The city hall
+1792630095	cmd	Trentlin	49	5232	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630096	cmd	Trentlin	49	5231	oldthalo.are	standing	100	0	-	south		South wing of the city hall
+1792630097	cmd	Trentlin	49	5231	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630098	cmd	Trentlin	49	5234	oldthalo.are	standing	100	0	-	east		The private gardens and courtyard of Thalos
+1792630099	cmd	Trentlin	49	5234	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630100	cmd	Trentlin	49	5234	oldthalo.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792630100	cmd	Trentlin	49	5234	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630101	cmd	Trentlin	49	5231	oldthalo.are	standing	100	0	-	west		South wing of the city hall
+1792630102	cmd	Trentlin	49	5232	oldthalo.are	standing	100	0	-	north		The city hall
+1792630103	cmd	Trentlin	49	5233	oldthalo.are	standing	100	0	-	east		East wing of the city hall
+1792630103	cmd	Trentlin	49	5233	oldthalo.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792630104	cmd	Trentlin	49	5234	oldthalo.are	standing	100	0	-	south		The private gardens and courtyard of Thalos
+1792630104	cmd	Trentlin	49	5234	oldthalo.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792630106	cmd	Trentlin	49	5231	oldthalo.are	standing	100	0	-	west		South wing of the city hall
+1792630106	cmd	Trentlin	49	5232	oldthalo.are	standing	100	0	-	north		The city hall
+1792630107	cmd	Trentlin	49	5202	oldthalo.are	standing	100	0	-	north		Main Street
+1792630107	cmd	Trentlin	49	5201	oldthalo.are	standing	100	0	-	east		Main Street
+1792630109	cmd	Trentlin	49	5201	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630109	cmd	Trentlin	49	5239	oldthalo.are	standing	100	0	-	north		A back alley
+1792630110	cmd	Trentlin	49	5240	oldthalo.are	standing	100	0	-	north		A back alley
+1792630111	cmd	Trentlin	49	5240	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630112	cmd	Trentlin	49	5241	oldthalo.are	standing	100	0	-	north		Under a watchtower
+1792630113	cmd	Trentlin	49	5241	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630113	cmd	Trentlin	49	5243	oldthalo.are	standing	100	0	-	west		A back alley
+1792630115	cmd	Trentlin	49	5242	oldthalo.are	standing	100	0	-	south		A bath house
+1792630116	cmd	Trentlin	49	5244	oldthalo.are	standing	100	0	-	west		An upright house
+1792630117	cmd	Trentlin	49	5210	oldthalo.are	standing	100	0	-	west		A Side Street
+1792630119	cmd	Trentlin	49	5209	oldthalo.are	standing	100	0	-	north		A Side Street
+1792630119	cmd	Trentlin	49	5209	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630120	cmd	Trentlin	49	5228	oldthalo.are	standing	100	0	-	west		A back alley
+1792630121	cmd	Trentlin	49	5228	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630122	cmd	Trentlin	49	5224	oldthalo.are	standing	100	0	-	west		Under the watchtower
+1792630123	cmd	Trentlin	49	5228	oldthalo.are	standing	100	0	-	east		A back alley
+1792630123	cmd	Trentlin	49	5209	oldthalo.are	standing	100	0	-	east		A Side Street
+1792630123	cmd	Trentlin	49	5210	oldthalo.are	standing	100	0	-	south		A Side Street
+1792630124	cmd	Trentlin	49	5210	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630125	cmd	Trentlin	49	5211	oldthalo.are	standing	100	0	-	south		A Side Street
+1792630126	cmd	Trentlin	49	5211	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630126	cmd	Trentlin	49	5204	oldthalo.are	standing	100	0	-	south		A Garden Path
+1792630127	cmd	Trentlin	49	5204	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630128	cmd	Trentlin	49	5203	oldthalo.are	standing	100	0	-	south		A Garden Path
+1792630128	cmd	Trentlin	49	5203	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630130	cmd	Trentlin	49	5206	oldthalo.are	standing	100	0	-	south		A Garden Path
+1792630130	cmd	Trentlin	49	5206	oldthalo.are	standing	100	0	-	exits		Obvious exits:
+1792630131	cmd	Trentlin	49	5212	oldthalo.are	standing	100	0	-	south		A side street
+1792630133	cmd	Trentlin	49	5212	oldthalo.are	standing	100	0	-	exits		Obvious exits:
