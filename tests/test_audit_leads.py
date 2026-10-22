@@ -221,10 +221,11 @@ class RewriteInPlaceTests(unittest.TestCase):
         the temp is a symlink to /dev/full, so the write fails where a
         full disk fails it."""
         with LiveMud() as mud:
-            make(mud, "Zboardkeep", Levl=70, Room=TEMPLE)
+            # BAN is the creator's alone (2026-10-22): Killuminati by name.
+            make(mud, "Killuminati", Levl=70, Room=TEMPLE)
             area = mud.root / "area"
             with mud.connect(timeout=120) as staff:
-                login(staff, "Zboardkeep", PW)
+                login(staff, "Killuminati", PW)
                 for line in ("note to all", "note subject zfirstnote", "note + kept", "note send"):
                     run(staff, line)
                 run(staff, "ban zfirstsite")

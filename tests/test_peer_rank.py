@@ -92,8 +92,12 @@ class PeerRankTests(unittest.TestCase):
                         any(refusal in reply for refusal in REFUSALS),
                         f"a level 65 should not reach a level 68: {reply!r}")
 
-    def test_an_implementor_can_snoop_another_implementor(self) -> None:
+    def test_snoop_is_the_creators_and_reaches_an_implementor(self) -> None:
+        """SNOOP is the creator's alone (2026-10-22): an implementor is
+        told Huh?, and the creator -- Killuminati by name, a synthetic one
+        here -- snoops an implementor without a refusal."""
         with LiveMud() as mud:
+            staff(mud, "Killuminati", MAX_LEVEL)
             staff(mud, "Zpeersnoop", MAX_LEVEL)
             staff(mud, "Zpeerseen", MAX_LEVEL)
 
@@ -101,12 +105,16 @@ class PeerRankTests(unittest.TestCase):
                 login(target, "Zpeerseen", PASSWORD)
                 target.drain(2.0)
 
-                with mud.connect(timeout=120) as god:
+                with mud.connect(timeout=120) as god, \
+                        mud.connect(timeout=120) as creator:
                     login(god, "Zpeersnoop", PASSWORD)
-                    reply = run(god, "snoop Zpeerseen", settle=3.0)
+                    login(creator, "Killuminati", PASSWORD)
+                    self.assertIn("Huh?", run(god, "snoop Zpeerseen"))
+                    reply = run(creator, "snoop Zpeerseen", settle=3.0)
+                    self.assertIn("now being snooped", reply, reply)
                     for refusal in REFUSALS:
                         self.assertNotIn(refusal, reply,
-                                         f"snoop refuses a peer: {reply!r}")
+                                         f"snoop refuses an implementor: {reply!r}")
 
     def test_self_targeting_guards_are_untouched(self) -> None:
         """Rank is not what those guards are about, so they stay."""

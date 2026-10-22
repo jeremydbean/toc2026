@@ -142,15 +142,17 @@ class WatchedPlayerLogTests(unittest.TestCase):
         self.addCleanup(mud.__exit__, None, None, None)
 
         with mud.connect(timeout=120) as client:
-            create_character(client, "Zwatched", PASSWORD)
+            create_character(client, "Killuminati", PASSWORD)
             client.drain(1.0)
             client.send("quit")
             self.assertTrue(client.wait_closed())
-        patch_player_file(mud, "Zwatched", Levl=45, Tru=70, Room=TEMPLE)
+        # LOG is the creator's alone (2026-10-22); the creator is
+        # Killuminati by name, here a synthetic one in a throwaway world.
+        patch_player_file(mud, "Killuminati", Levl=45, Room=TEMPLE)
 
         with mud.connect(timeout=120) as client:
-            login(client, "Zwatched", PASSWORD)
-            run(client, "log Zwatched", 1.8)
+            login(client, "Killuminati", PASSWORD)
+            run(client, "log Killuminati", 1.8)
             run(client, "north", 1.2)
             run(client, "zzzznosuchcommand", 1.2)
             run(client, "look", 1.2)
@@ -164,7 +166,7 @@ class WatchedPlayerLogTests(unittest.TestCase):
         if not text:
             self.skipTest("this harness does not capture the game log")
 
-        self.assertIn("Log Zwatched", text)
+        self.assertIn("Log Killuminati", text)
         # Movement is recorded rather than blanked.
         self.assertIn("north", text)
         # A refused command is recorded too.
@@ -184,7 +186,7 @@ class WatchedPlayerLogTests(unittest.TestCase):
         self.addCleanup(mud.__exit__, None, None, None)
 
         for name, fields in (("Zplain", {"Levl": 10}), ("Zheeds", {"Levl": 10}),
-                             ("Zwarden", {"Levl": 70})):
+                             ("Killuminati", {"Levl": 70})):
             with mud.connect(timeout=120) as client:
                 create_character(client, name, PASSWORD)
                 client.drain(1.0)
@@ -196,7 +198,7 @@ class WatchedPlayerLogTests(unittest.TestCase):
                 mud.connect(timeout=120) as warden:
             login(plain, "Zplain", PASSWORD)
             login(heeds, "Zheeds", PASSWORD)
-            login(warden, "Zwarden", PASSWORD)
+            login(warden, "Killuminati", PASSWORD)
             run(plain, "tell zheeds bluebirdphrase", 1.5)
             run(plain, "north", 1.2)
             run(warden, "log zplain", 1.5)            # flagged by name now
@@ -211,7 +213,7 @@ class WatchedPlayerLogTests(unittest.TestCase):
         self.assertIn("Log Zplain [4207]: tell (arguments withheld)", text)
         self.assertNotIn("bluebirdphrase", text, "a tell's words reached the log")
         self.assertIn("namedphrase", text, "a flagged character is recorded in full")
-        self.assertIn("Zwarden turned LOG ALL off.", text)
+        self.assertIn("Killuminati turned LOG ALL off.", text)
         self.assertNotIn("zzunwatchedcommand", text)
 
 

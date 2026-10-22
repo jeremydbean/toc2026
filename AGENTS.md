@@ -3155,11 +3155,40 @@ comparison:
 - `rank_protects(ch, victim)` -- whether rank stops `ch` acting on `victim`.
   Implementors are exempt, because `get_trust(victim) >= get_trust(ch)` reads
   `70 >= 70` at MAX_LEVEL and locked implementors out of twenty-two commands
-  aimed at exactly their peers. Commands that should not target the user
+  aimed at exactly their peers. The exemption covers peers and those below: trust
+  71 and the creator outrank every implementor (next section). Commands that should not target the user
   keep their own `victim == ch` guard; rank is a separate question.
 - `is_loopback_ip(ip)` -- one place that knows what 127/8 means, used to
   keep the healthcheck's two-minute probe out of the log and to decide
   whether a PROXY header may be trusted.
+
+## The Creator And Trust 71
+
+Owner, 2026-10-22. Levels still stop at `MAX_LEVEL`; above it are trusts.
+
+- **Killuminati alone is the creator**, by name (`is_creator`, built on
+  `is_killuminati` in `oracle.c`): `get_trust()` returns `LEVEL_CREATOR`
+  (72) for him, through a switch too, while his level stays 70 and WHO
+  shows 70. There is no flag and no grant: nobody else can become one.
+- **TRUST gives up to `LEVEL_TRUST_MAX` (71)**, limited to the giver's
+  own trust, so only the creator gives 71; `get_trust` caps any stored
+  trust at 71. TRUST refuses a target who outranks the giver. 71 outranks
+  every implementor and is outranked by the creator.
+- **Creator-only commands** sit at `CR` in `interp.h`: SHUTDOWN, REBOOT,
+  LOG, SNOOP, BAN, ALLOW, WIZLOCK, NEWLOCK, DENY, UNDENY. Leave FSAVE and
+  ANNOUNCE alone: `toc-deploy` sends them through the webadmin queue at
+  trust 70. A live test that needs one of these uses a synthetic
+  Killuminati -- the creator is a name, and test worlds start with an
+  empty `player/`.
+- **WIZINVIS defaults to the character's trust**, so his is 72 and hidden
+  from everyone; WIZI 71 lets trust 71 see him. Arrival, departure,
+  lost-link, reconnect, shared-address and TRUST notices go out at
+  `staff_notice_level(ch, level)` -- no lower than the subject's WIZINVIS
+  level -- and `wizinfo` picks listeners by `get_trust`. Every one is
+  still written to `log/toc.log`, which is published.
+- **Never test trust for exactly 70.** Write `get_trust(ch) < MAX_LEVEL`
+  or `>= MAX_LEVEL`; `== 70` locks out 71 and 72.
+  `tests/test_creator_rank.py`.
 
 ## The Training Yard
 

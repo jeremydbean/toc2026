@@ -1,6 +1,7 @@
 /* this is a listing of all the commands and command related data */
 
 /* for command types */
+#define CR	LEVEL_CREATOR	/* the creator alone (owner, 2026-10-22) */
 #define ML 	MAX_LEVEL	/* implementor */
 #define L1	MAX_LEVEL - 1  	/* god */
 #define L2	MAX_LEVEL - 2	/* deity */

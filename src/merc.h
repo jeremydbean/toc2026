@@ -255,6 +255,13 @@ typedef struct script_loop_prepoll_payload
 
 #define MAX_ACHIEVEMENTS        256
 #define MAX_LEVEL               70
+/* Ranks above the top level (owner, 2026-10-22). Nobody's level passes
+   MAX_LEVEL; these are trusts. TRUST 71 may be given, by the creator
+   only, and outranks every implementor. The creator is Killuminati
+   alone (is_creator), at 72: above everyone, his WIZINVIS hidden from
+   all, and WIZI 71 lets those trusted to 71 see him. */
+#define LEVEL_TRUST_MAX         (MAX_LEVEL + 1)
+#define LEVEL_CREATOR           (MAX_LEVEL + 2)
 #define LEVEL_IMMORTAL          (MAX_LEVEL - 10)
 #define LEVEL_KING              (MAX_LEVEL - 11)
 #define LEVEL_HERO4             (MAX_LEVEL - 15)
@@ -3382,6 +3389,8 @@ int     equipment_affects       ( const CHAR_DATA *ch, const char **names,
                                   OBJ_DATA **sources, int max );
 bool    can_see         ( CHAR_DATA *ch, const CHAR_DATA *victim );
 bool    wizinvis_hides  ( const CHAR_DATA *wch, const CHAR_DATA *looker );
+bool    is_creator      ( CHAR_DATA *ch );
+int     staff_notice_level ( const CHAR_DATA *ch, int level );
 bool    online_can_list ( CHAR_DATA *ch, const CHAR_DATA *wch );
 bool    can_see_obj     ( CHAR_DATA *ch, const OBJ_DATA *obj );
 bool    can_see_room    ( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex);

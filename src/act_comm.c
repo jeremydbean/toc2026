@@ -3965,7 +3965,7 @@ void do_quit( CHAR_DATA *ch, char *argument )
 
             snprintf( note, sizeof(note), "%s has left the game (%s).",
                       ch->name, spent );
-            wizinfo( note, ch->level );
+            wizinfo( note, staff_notice_level( ch, ch->level ) );
         }
     }
 

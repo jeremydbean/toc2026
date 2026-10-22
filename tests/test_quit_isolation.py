@@ -61,13 +61,13 @@ class QuitIsolationTests(unittest.TestCase):
         """The symptom as reported: only the snoop should end."""
         with LiveMud() as mud:
             with mud.connect(timeout=120) as setup:
-                create_character(setup, "Zquitimm", PASSWORD)
+                create_character(setup, "Killuminati", PASSWORD)
                 setup.send("quit")
                 setup.wait_closed()
-            patch_player_file(mud, "Zquitimm", Levl=70)
+            patch_player_file(mud, "Killuminati", Levl=70)
 
             with mud.connect(timeout=120) as god:
-                login(god, "Zquitimm", PASSWORD)
+                login(god, "Killuminati", PASSWORD)
 
                 with mud.connect(timeout=120) as victim:
                     create_character(victim, "Zquitvict", PASSWORD)
@@ -80,7 +80,7 @@ class QuitIsolationTests(unittest.TestCase):
                 god.drain(3.0)
                 self.assertIn("left the game", god.transcript,
                               "the snooper should be told the snoop ended")
-                self.assertIn("Zquitimm", run(god, "score"),
+                self.assertIn("Killuminati", run(god, "score"),
                               "the snooping immortal was disconnected")
 
     def test_the_quitter_is_actually_gone(self) -> None:

@@ -1115,7 +1115,7 @@ void do_pecho( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if (get_trust(victim) >= get_trust(ch) && get_trust(ch) != MAX_LEVEL)
+    if (get_trust(victim) >= get_trust(ch) && get_trust(ch) < MAX_LEVEL)
 	send_to_char( "personal> ",victim);
 
     send_to_char(argument,victim);
@@ -2120,7 +2120,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
             victim->pcdata->condition[COND_DRUNK],
             victim->pcdata->psionic );
         send_to_char( buf, ch );
-	if(ch->trust == 70)
+	if( get_trust( ch ) >= MAX_LEVEL )
 	{
 	  if(victim->trust > 0 )
 	  {
@@ -3590,15 +3590,25 @@ void do_trust( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( level = atoi( arg2 ) ) < 0 || level > 70 )
+    if ( ( level = atoi( arg2 ) ) < 0 || level > LEVEL_TRUST_MAX )
     {
-	send_to_char( "Level must be 0 (reset) or 1 to 70.\n\r", ch );
+	snprintf( buf, sizeof(buf),
+	    "Level must be 0 (reset) or 1 to %d.\n\r", LEVEL_TRUST_MAX );
+	send_to_char( buf, ch );
 	return;
     }
 
     if ( level > get_trust( ch ) )
     {
 	send_to_char( "Limited to your trust.\n\r", ch );
+	return;
+    }
+
+    /* Nothing stopped an implementor resetting the trust of anybody in
+       the room, which would undo trust 71 the moment it was given. */
+    if ( victim != ch && rank_protects( ch, victim ) )
+    {
+	send_to_char( "They outrank you.\n\r", ch );
 	return;
     }
 
@@ -3624,7 +3634,8 @@ void do_trust( CHAR_DATA *ch, char *argument )
 
         snprintf( note, sizeof(note), "%s set %s's trust to %d.",
                   ch->name, victim->name, level );
-        wizinfo( note, LEVEL_IMMORTAL );
+        log_string( note );
+        wizinfo( note, staff_notice_level( ch, LEVEL_IMMORTAL ) );
     }
     return;
 }
@@ -5734,7 +5745,7 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
     if( (obj->item_type == ITEM_PORTAL
       || obj->item_type == ITEM_MANIPULATION )
-    && get_trust(ch) != 70)
+    && get_trust(ch) < MAX_LEVEL)
     {
       send_to_char("You can not set this item.\n\r",ch);
       return;
@@ -5873,7 +5884,7 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
     if ( !str_prefix( arg2, "type" ) )
     {
-      if(get_trust(ch) != 70)
+      if(get_trust(ch) < MAX_LEVEL)
       {
 	send_to_char("Your level isn't high enough to set object types.\n\r",ch);
 	return;

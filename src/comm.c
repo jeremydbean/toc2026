@@ -1521,7 +1521,7 @@ void close_socket( DESCRIPTOR_DATA *dclose )
             act( "$n has lost $s link.", ch, NULL, NULL, TO_ROOM );
             snprintf(buf, sizeof(buf), "%s has lost %s link.",
                 ch->name, wizinfo_possessive(ch));
-            wizinfo( buf, ch->level );
+            wizinfo( buf, staff_notice_level( ch, ch->level ) );
             if ( !IS_NPC(ch) && ch->pcdata != NULL
               && ch->pcdata->session_logon > 0 )
             {
@@ -3013,7 +3013,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
         snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s has connected.", ch->name, d->host );
         log_string( log_buf );
         record_login( ch->name, d->host, "connect" );
-        wizinfo(log_buf,LEVEL_IMMORTAL);
+        wizinfo( log_buf, staff_notice_level( ch, LEVEL_IMMORTAL ) );
         wizinfo_same_host( d, ch );
 
 	/* Staff only, by trust. This was IS_HERO -- level 51 -- while every
@@ -3520,7 +3520,7 @@ case CON_DEFAULT_CHOICE:
 	    player_fixes_login( ch, is_new_character );
 
             snprintf( buf, sizeof(buf), "%s has entered the game.", ch->name );
-            wizinfo( buf, ch->level );
+            wizinfo( buf, staff_notice_level( ch, ch->level ) );
 
 	    {
 	        script_char_login_payload login_payload;
@@ -3714,7 +3714,7 @@ bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
                 record_login( ch->name, d->host, "reconnect" );
                 snprintf( buf, sizeof(buf), "%s@%s has reconnected.",
                           ch->name, d->host );
-                wizinfo( buf, ch->level );
+                wizinfo( buf, staff_notice_level( ch, ch->level ) );
                 wizinfo_same_host( d, ch );
                 d->connected = CON_PLAYING;
 	    }
@@ -4917,12 +4917,14 @@ static void wizinfo_same_host( DESCRIPTOR_DATA *d, CHAR_DATA *ch )
     char names[MAX_STRING_LENGTH];
     char buf[MAX_STRING_LENGTH];
     int others = 0;
+    int level;
 
     if ( d == NULL || ch == NULL || d->host == NULL || d->host[0] == '\0'
     ||   !str_cmp( d->host, "localhost" ) || !str_prefix( "127.", d->host ) )
         return;
 
     names[0] = '\0';
+    level = staff_notice_level( ch, LEVEL_IMMORTAL );
     for ( od = descriptor_list; od != NULL; od = od->next )
     {
         CHAR_DATA *och;
@@ -4933,6 +4935,7 @@ static void wizinfo_same_host( DESCRIPTOR_DATA *d, CHAR_DATA *ch )
         och = od->original != NULL ? od->original : od->character;
         if ( och == NULL || och == ch )
             continue;
+        level = UMAX( level, staff_notice_level( och, LEVEL_IMMORTAL ) );
         if ( others++ > 0 )
             toc_strlcat( names, ", ", sizeof(names) );
         toc_strlcat( names, och->name, sizeof(names) );
@@ -4945,7 +4948,7 @@ static void wizinfo_same_host( DESCRIPTOR_DATA *d, CHAR_DATA *ch )
               "%s shares an address with %s: %d players on from %s.",
               ch->name, names, others + 1, d->host );
     log_string( buf );
-    wizinfo( buf, LEVEL_IMMORTAL );
+    wizinfo( buf, level );
 }
 
 
@@ -4963,7 +4966,7 @@ void wizinfo(const char *info, int level)
     {
         if ( d->connected == CON_PLAYING
         &&   d->character != NULL
-        &&   d->character->level >= level 
+        &&   get_trust( d->character ) >= level
         &&   !IS_SET(d->character->comm, COMM_NOWIZINFO) )
         {
             send_to_char( buf, d->character );

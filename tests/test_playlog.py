@@ -252,7 +252,7 @@ class PlaylogLiveTests(unittest.TestCase):
         watch's purpose. The journal and the plain log line still never
         hold it, flagged or not."""
         with LiveMud() as mud:
-            for name, level in (("Zwatcher", 70), ("Zflagged", 10)):
+            for name, level in (("Killuminati", 70), ("Zflagged", 10)):
                 with mud.connect(timeout=120) as client:
                     create_character(client, name, PASSWORD)
                     client.drain(1.0)
@@ -261,10 +261,10 @@ class PlaylogLiveTests(unittest.TestCase):
                 patch_player_file(mud, name, Levl=level, Room=TEMPLE)
             with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as writer:
                 login(writer, "Zflagged", PASSWORD)
-                login(staff, "Zwatcher", PASSWORD)
+                login(staff, "Killuminati", PASSWORD)
                 staff.send("log zflagged")
                 staff.drain(1.2)
-                for line in ("note to zwatcher", "note subject zflaggedsubject",
+                for line in ("note to killuminati", "note subject zflaggedsubject",
                              "note + zflaggedbody", "note send"):
                     writer.send(line)
                     writer.drain(1.2)
@@ -277,7 +277,7 @@ class PlaylogLiveTests(unittest.TestCase):
         self.assertTrue(any("zflaggedbody" in line for line in watched), watched)
         self.assertNotIn("zflaggedsubject", journal)
         self.assertNotIn("zflaggedbody", journal)
-        self.assertNotIn("posted a note to zwatcher: zflaggedsubject", toc)
+        self.assertNotIn("posted a note to killuminati: zflaggedsubject", toc)
 
     @unittest.skipIf(os.environ.get("TOC_SERVER_BINARY"),
                      "a sanitizer build reports crashes itself")

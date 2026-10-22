@@ -201,20 +201,22 @@ class MultiAliasLiveTests(unittest.TestCase):
                 self.assertIn("afterwards", late, late)
 
     def test_a_watched_alias_never_writes_a_password(self) -> None:
+        # LOG is the creator's alone (2026-10-22), and the creator is
+        # Killuminati by name: a synthetic one in a throwaway world.
         with LiveMud() as mud:
             with mud.connect(timeout=120) as client:
-                create_character(client, "Zaliaslog", PASSWORD)
+                create_character(client, "Killuminati", PASSWORD)
                 client.send("quit")
                 self.assertTrue(client.wait_closed())
-            patch_player_file(mud, "Zaliaslog", Levl=45, Tru=70, Room=TEMPLE)
+            patch_player_file(mud, "Killuminati", Levl=45, Room=TEMPLE)
 
             with mud.connect(timeout=120) as client:
-                login(client, "Zaliaslog", PASSWORD)
+                login(client, "Killuminati", PASSWORD)
                 # Defined before the log goes on: the definition is the
                 # player's own text, the expansion is what is under test.
                 run(client, "alias zp password Zsecretone Zsecrettwo;"
                             "password Zsecretthr Zsecretfou")
-                run(client, "log Zaliaslog", 1.8)
+                run(client, "log Killuminati", 1.8)
                 run(client, "zp", 4.0)
                 client.drain(12.0)
 
@@ -227,7 +229,7 @@ class MultiAliasLiveTests(unittest.TestCase):
 
             self.assertIn("arguments withheld", text)
             for secret in ("Zsecretone", "Zsecrettwo", "Zsecretthr", "Zsecretfou"):
-                self.assertNotIn(secret, text.split("log Zaliaslog", 1)[-1])
+                self.assertNotIn(secret, text.split("log Killuminati", 1)[-1])
 
 
 if __name__ == "__main__":

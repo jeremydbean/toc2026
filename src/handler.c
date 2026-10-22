@@ -875,13 +875,35 @@ bool flags_from_argument( const char *argument, int current, int *result )
  */
 bool rank_protects( CHAR_DATA *ch, CHAR_DATA *victim )
 {
+    int mine, theirs;
+
     if ( ch == NULL || victim == NULL )
         return false;
 
-    if ( get_trust( ch ) >= MAX_LEVEL )
-        return false;
+    mine = get_trust( ch );
+    theirs = get_trust( victim );
 
-    return get_trust( victim ) >= get_trust( ch );
+    /* The exemption is for peers and below: trust 71 and the creator
+       stand above every implementor, and an implementor may not act on
+       them. */
+    if ( mine >= MAX_LEVEL )
+        return theirs > mine;
+
+    return theirs >= mine;
+}
+
+
+/*
+ * Killuminati, and only Killuminati, is the creator (owner, 2026-10-22):
+ * trust LEVEL_CREATOR whatever his level, through a switch too.
+ */
+bool is_creator( CHAR_DATA *ch )
+{
+    if ( ch == NULL )
+        return false;
+    if ( ch->desc != NULL && ch->desc->original != NULL )
+        ch = ch->desc->original;
+    return is_killuminati( ch );
 }
 
 
@@ -893,8 +915,11 @@ int get_trust( CHAR_DATA *ch )
     if ( ch->desc != NULL && ch->desc->original != NULL )
 	ch = ch->desc->original;
 
+    if ( is_killuminati( ch ) )
+	return LEVEL_CREATOR;
+
     if ( ch->trust != 0 )
-	return ch->trust;
+	return UMIN( ch->trust, LEVEL_TRUST_MAX );
 
     if ( IS_NPC(ch) && ch->level >= LEVEL_HERO )
 	return LEVEL_HERO - 1;
@@ -3371,6 +3396,19 @@ bool wizinvis_hides( const CHAR_DATA *wch, const CHAR_DATA *looker )
         && sight_trust( looker ) < wch->invis_level;
 }
 
+/*
+ * The trust a staff notice about ch -- connecting, entering, leaving,
+ * losing link -- goes out at: at least `level', and no lower than ch's
+ * WIZINVIS level, so a notice reaches only those who could see them
+ * (owner, 2026-10-22). wizinfo compares it with each listener's
+ * get_trust(). The log files still record every one.
+ */
+int staff_notice_level( const CHAR_DATA *ch, int level )
+{
+    if ( ch != NULL && !IS_NPC(ch) && IS_SET(ch->act, PLR_WIZINVIS) )
+        return UMAX( level, ch->invis_level );
+    return level;
+}
 bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
 {
 /* RT changed so that WIZ_INVIS has levels */

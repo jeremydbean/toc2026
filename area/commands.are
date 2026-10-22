@@ -5208,6 +5208,10 @@ immortal) characters to give them access to more power without messing up
 the character.  You can also restrict a player's trust to less than their
 natural level.
 
+Trust may be set from 1 to 71, never above your own, and never on
+someone who outranks you; 0 resets it.  Trust 71 outranks every
+implementor, and only the creator can give it.
+
 A trust of 0 means to use the character's natural level again.
 
 See also: ADVANCE, WIZLIST
