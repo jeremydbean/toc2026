@@ -5661,3 +5661,232 @@
 1792698256	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
 1792698256	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1792698258	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	6	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Trentlin!' // Questor Thews tells you 'A bounty has been posted on A tomb thief.'
+1792698278	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792698281	cmd	Trentlin	50	2421	dresden_halloween.are	standing	100	0	-	run	e 3	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792698282	cmd	Trentlin	50	2441	dresden_halloween.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792698282	cmd	Trentlin	50	2442	dresden_halloween.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792698282	cmd	Trentlin	50	2443	dresden_halloween.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792698282	cmd	Trentlin	50	2445	dresden_halloween.are	standing	100	0	-	run	e 2	River Road. // [Exits: north east west] // End of River Road.
+1792698283	cmd	Trentlin	50	2446	dresden_halloween.are	standing	100	0	-	south		Docks of Dresden. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not
+1792698283	cmd	Trentlin	50	2447	dresden_halloween.are	standing	100	0	-	east		Docks of Dresden. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not
+1792698283	cmd	Trentlin	50	2517	dresden_halloween.are	standing	100	0	-	run	s 2	Second Pier. // [Exits: north south] // River of Wonders.
+1792698283	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	run	e 14	Tunnel on the River of Wonders. // [Exits: east west] // Tunnel on the River of Wonders.
+1792698284	cmd	Trentlin	50	5007	eastern.are	standing	100	0	-	run	s 2	The Sands of Sorrow // [Exits: north east south west] // A wide tunnel
+1792698288	cmd	Trentlin	50	5007	eastern.are	standing	100	0	-	exits		Obvious exits: // East  - The Sands of Sorrow // West  - A long narrow tunnel
+1792698290	cmd	Trentlin	50	5006	eastern.are	standing	100	0	-	west		A long narrow tunnel //   The tunnel rises sharply to the east. // [Exits: east west]
+1792698291	cmd	Trentlin	50	5005	eastern.are	standing	100	0	-	west		An underground lake //   You are floating on a jet-black underground lake fed by dripping // water and lime from above. The tunnel continues to the east and the river
+1792698293	cmd	Trentlin	50	5005	eastern.are	standing	100	0	-	exits		Obvious exits: // North - Damp hallway // East  - A long narrow tunnel
+1792698328	cmd	Trentlin	50	5004	eastern.are	standing	100	0	-	west		A long tunnel //   The tunnel branches off to the south. // [Exits: east south west]
+1792698329	cmd	Trentlin	50	5004	eastern.are	standing	100	0	-	exits		Obvious exits: // East  - An underground lake // South - Large cavern
+1792698331	cmd	Trentlin	50	5003	eastern.are	standing	100	0	-	west		A long tunnel //   The tunnel branches off south. // [Exits: east south west]
+1792698332	cmd	Trentlin	50	5003	eastern.are	standing	100	0	-	exits		Obvious exits: // East  - A long tunnel // South - Narrow crawlway
+1792698333	cmd	Trentlin	50	5002	eastern.are	standing	100	0	-	west		A long tunnel //   The tunnel branches off north. // [Exits: north east west]
+1792698333	cmd	Trentlin	50	5002	eastern.are	standing	100	0	-	exits		Obvious exits: // North - Cave-in // East  - A long tunnel
+1792698335	cmd	Trentlin	50	5002	eastern.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792698338	cmd	Trentlin	50	5003	eastern.are	standing	100	0	-	east		A long tunnel //   The tunnel branches off south. // [Exits: east south west]
+1792698338	cmd	Trentlin	50	5004	eastern.are	standing	100	0	-	east		A long tunnel //   The tunnel branches off to the south. // [Exits: east south west]
+1792698338	cmd	Trentlin	50	5005	eastern.are	standing	100	0	-	east		An underground lake //   You are floating on a jet-black underground lake fed by dripping // water and lime from above. The tunnel continues to the east and the river
+1792698338	cmd	Trentlin	50	5006	eastern.are	standing	100	0	-	east		A long narrow tunnel //   The tunnel rises sharply to the east. // [Exits: east west]
+1792698339	cmd	Trentlin	50	5007	eastern.are	standing	100	0	-	east		A wide tunnel //   The tunnel continues east and west. To the east the tunnel dives // down into a bright light.
+1792698339	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698341	cmd	Trentlin	50	5007	eastern.are	standing	100	0	-	south		A wide tunnel //   The tunnel continues east and west. To the east the tunnel dives // down into a bright light.
+1792698341	cmd	Trentlin	50	5007	eastern.are	standing	100	0	-	exits		Obvious exits: // East  - The Sands of Sorrow // West  - A long narrow tunnel
+1792698344	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698345	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698346	cmd	Trentlin	50	5030	eastern.are	standing	100	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698346	cmd	Trentlin	50	5030	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698347	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698348	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698350	cmd	Trentlin	50	5028	eastern.are	standing	100	0	-	west		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698350	cmd	Trentlin	50	5028	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698352	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	west		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698352	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698353	cmd	Trentlin	50	5007	eastern.are	standing	100	0	-	south		A wide tunnel //   The tunnel continues east and west. To the east the tunnel dives // down into a bright light.
+1792698354	cmd	Trentlin	50	5007	eastern.are	standing	100	0	-	exits		Obvious exits: // East  - The Sands of Sorrow // West  - A long narrow tunnel
+1792698371	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698372	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698372	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698373	cmd	Trentlin	50	5025	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698374	cmd	Trentlin	50	5025	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698375	cmd	Trentlin	50	5056	eastern.are	standing	100	0	-	west		A nomad camp //   This small group of desert nomads has stopped for the day to rest // and refresh themselves beside this beautiful oasis. Three tents and some
+1792698376	cmd	Trentlin	50	5056	eastern.are	standing	100	0	-	exits		Obvious exits: // North - Beside the camels // East  - Inside a small tent
+1792698379	cmd	Trentlin	50	5058	eastern.are	standing	100	0	-	north		Beside the camels //   Here stand about ten camels, all hitched to some stakes plugged into // the ground. To the east you see a small tent while to the north you see a
+1792698380	cmd	Trentlin	50	5058	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The main tent // East  - The warrior's tent.
+1792698383	cmd	Trentlin	50	5060	eastern.are	standing	100	0	-	north		The main tent //   This tent is as lavishly decorated on the inside as it is on the // outside. A fancy carpet lies on the sand and numerous baskets line the
+1792698385	cmd	Trentlin	50	5061	eastern.are	standing	100	0	-	east		The main tent //   This is where the leader of this band of nomads resides. He is // definitely rich as you inspect the tapestries, baskets, and a few
+1792698386	cmd	Trentlin	50	5061	eastern.are	standing	100	0	-	exits		Obvious exits: // West  - The main tent
+1792698387	cmd	Trentlin	50	5060	eastern.are	standing	100	0	-	west		The main tent //   This tent is as lavishly decorated on the inside as it is on the // outside. A fancy carpet lies on the sand and numerous baskets line the
+1792698387	cmd	Trentlin	50	5058	eastern.are	standing	100	0	-	south		Beside the camels //   Here stand about ten camels, all hitched to some stakes plugged into // the ground. To the east you see a small tent while to the north you see a
+1792698388	cmd	Trentlin	50	5059	eastern.are	standing	100	0	-	east		The warrior's tent. //   This tent has a few furnishings, but mainly it holds the band's // protectors. They all stare at you coldly as you enter.
+1792698389	cmd	Trentlin	50	5058	eastern.are	standing	100	0	-	west		Beside the camels //   Here stand about ten camels, all hitched to some stakes plugged into // the ground. To the east you see a small tent while to the north you see a
+1792698389	cmd	Trentlin	50	5056	eastern.are	standing	100	0	-	south		A nomad camp //   This small group of desert nomads has stopped for the day to rest // and refresh themselves beside this beautiful oasis. Three tents and some
+1792698390	cmd	Trentlin	50	5025	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698391	cmd	Trentlin	50	5025	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698392	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698393	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698394	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698394	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698395	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698396	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698397	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698398	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698399	cmd	Trentlin	50	5025	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698399	cmd	Trentlin	50	5025	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698400	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698401	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698402	cmd	Trentlin	50	5025	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698402	cmd	Trentlin	50	5025	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698403	cmd	Trentlin	50	5028	eastern.are	standing	100	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698404	cmd	Trentlin	50	5028	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698405	cmd	Trentlin	50	5031	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698405	cmd	Trentlin	50	5031	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The wind-swept ledge
+1792698407	cmd	Trentlin	50	5063	eastern.are	standing	100	0	-	east		The wind-swept ledge //   Being very careful not to lose your balance, you look around and // find that this canyon is about a half a kilometer deep. To the west is
+1792698408	cmd	Trentlin	50	5063	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // West  - The cave mouth
+1792698411	cmd	Trentlin	50	5064	eastern.are	standing	100	0	-	west		The cave mouth //   The air in here is MUCH cooler than outside. From the west you hear // strange sounds, but can see nothing. The cave slopes down into the
+1792698412	cmd	Trentlin	50	5064	eastern.are	standing	100	0	-	exits		Obvious exits: // East  - The wind-swept ledge // West  - The mysterious lair.
+1792698413	cmd	Trentlin	50	5065	eastern.are	standing	100	0	-	west		The mysterious lair. //   You have stumbled upon the home of something. From the treasure // haphazardly strewn about and the rotting carcasses, you would guess that
+1792698416	cmd	Trentlin	50	5065	eastern.are	standing	100	0	-	consider	dra	You can kill the brass dragon naked and weaponless. // As far as you're concerned, the brass dragon is a wimp.
+1792698418	cmd	Trentlin	50	5065	eastern.are	standing	100	0	-	look	dra	The brass dragon is one of those dragons that follows the light, though at  // this moment in time she is quite upset at you intruding upon her home. // The brass dragon is in excellent condition.
+1792698419	cmd	Trentlin	50	5066	eastern.are	standing	100	0	-	west		A wide tunnel //   This tunnel seems to go on forever into the darkness. You carefully // feel your way along the walls.
+1792698420	cmd	Trentlin	50	5067	eastern.are	standing	100	0	-	west		A narrower tunnel //   The tunnel becomes very narrow and you fight to squeeze your way through. // The floor seems to level off a little.
+1792698421	cmd	Trentlin	50	5068	eastern.are	standing	100	0	-	south		A narrow crack //   This part of the tunnel is the hardest to move through as the walls // move in to meet you.
+1792698422	cmd	Trentlin	50	5069	eastern.are	standing	100	0	-	west		A small cavern. //   It is dark and damp and bats hang from the ceiling. A narrow crack is // in the east wall. The floor now slopes upwards.
+1792698423	cmd	Trentlin	50	5070	eastern.are	standing	100	0	-	north		A small shaft //   From within this shaft you can see a narrow hole in the roof just // large enough for one person. Back east is the cavern.
+1792698426	cmd	Trentlin	50	5070	eastern.are	standing	100	0	-	exits		Obvious exits: // South - A small cavern. // Up    - At the foot of the rubble
+1792698427	cmd	Trentlin	50	5009	eastern.are	standing	100	0	-	up		At the foot of the rubble //   You are at the bottom of a large pile of rubble. A tunnel branches // off to the north and east.
+1792698429	cmd	Trentlin	50	5009	eastern.are	standing	100	0	-	exits		Obvious exits: // North - Cave entrance // East  - Narrow bend
+1792698432	cmd	Trentlin	50	5010	eastern.are	standing	100	0	-	north		Cave entrance //   You stand in the middle of a large and beautiful cave. A path leads // deeper into the darkness.
+1792698433	cmd	Trentlin	50	5010	eastern.are	standing	100	0	-	exits		Obvious exits: // South - At the foot of the rubble // Down  - Giant cave
+1792698435	cmd	Trentlin	50	5011	eastern.are	standing	100	0	-	down		Giant cave //   This cavern overwhelms you. The walls and ceiling seem miles away. // Bones of previous adventurers lie strewn on the cavern floor.
+1792698437	cmd	Trentlin	50	5011	eastern.are	standing	100	0	-	exits		Obvious exits: // Up    - Cave entrance // Down  - The refuse pit.
+1792698438	cmd	Trentlin	50	5011	eastern.are	standing	100	0	-	consider	dra	You can kill The dracolich naked and weaponless. // As far as you're concerned, The dracolich is a wimp.
+1792698439	cmd	Trentlin	50	5011	eastern.are	standing	100	0	-	look		Giant cave //   This cavern overwhelms you. The walls and ceiling seem miles away. // Bones of previous adventurers lie strewn on the cavern floor.
+1792698439	refused	Trentlin	50	5011	eastern.are	standing	100	0	-	(unknown)		Huh?
+1792698440	cmd	Trentlin	50	25139	underdrk.are	standing	100	0	-	down		The refuse pit. //   Half-eaten bodies and bones of things long dead are scattered around the // room.  You can't see any creature, but then a leg bone falls from a hole
+1792698441	cmd	Trentlin	50	25138	underdrk.are	standing	100	0	-	east		The bend in the corridor. //   The corridor makes another turn here.  The dust is still undisturbed and // the air is as still as death.  The smell of the sulfur is gone, but you
+1792698443	cmd	Trentlin	50	25137	underdrk.are	standing	100	0	-	north		The straight run. //   The corridor tightens here and runs straight for as far as you can see. // Little comfort considering you can only see as far as your light will allow.
+1792698443	cmd	Trentlin	50	25136	underdrk.are	standing	100	0	-	north		The bend in the corridor. //   The mud starts to turn to dust again.  The only time you smell sulfur now is // when the geyser erupts.  The walls look like they were carved by some halfling
+1792698444	cmd	Trentlin	50	25136	underdrk.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792698445	cmd	Trentlin	50	25135	underdrk.are	standing	100	0	-	west		The corridor past the pool. //   You start to feel cold as the sweat that rose on your body from the previous // room starts to cool.  There is some moisture in this room, and the floor is
+1792698446	cmd	Trentlin	50	25133	underdrk.are	standing	100	0	-	west		The edge of the pool. //   You walk into this chamber on a stone ledge.  Before you lies a deep dark // pool.  It's been a few minutes since you've heard any roaring.  Suddenly,
+1792698451	cmd	Trentlin	50	25133	underdrk.are	standing	100	1	-	exits		Obvious exits: // North - The corridor. // East  - The corridor past the pool.
+1792698452	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792698453	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792698453	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792698454	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792698455	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792698455	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792698458	cmd	Trentlin	50	2421	dresden_halloween.are	standing	100	0	-	run	e 3	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792698458	cmd	Trentlin	50	2441	dresden_halloween.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792698459	cmd	Trentlin	50	2442	dresden_halloween.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792698459	cmd	Trentlin	50	2443	dresden_halloween.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792698459	cmd	Trentlin	50	2445	dresden_halloween.are	standing	100	0	-	run	e 2	River Road. // [Exits: north east west] // End of River Road.
+1792698459	cmd	Trentlin	50	2446	dresden_halloween.are	standing	100	0	-	south		Docks of Dresden. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not
+1792698460	cmd	Trentlin	50	2447	dresden_halloween.are	standing	100	0	-	east		Docks of Dresden. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not
+1792698460	cmd	Trentlin	50	2517	dresden_halloween.are	standing	100	0	-	run	s 2	Second Pier. // [Exits: north south] // River of Wonders.
+1792698460	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	run	e 14	Tunnel on the River of Wonders. // [Exits: east west] // Tunnel on the River of Wonders.
+1792698460	cmd	Trentlin	50	5007	eastern.are	standing	100	0	-	run	s 2	The Sands of Sorrow // [Exits: north east south west] // A wide tunnel
+1792698462	cmd	Trentlin	50	5007	eastern.are	standing	100	0	-	exits		Obvious exits: // East  - The Sands of Sorrow // West  - A long narrow tunnel
+1792698464	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698464	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698466	cmd	Trentlin	50	5007	eastern.are	standing	100	0	-	south		A wide tunnel //   The tunnel continues east and west. To the east the tunnel dives // down into a bright light.
+1792698467	cmd	Trentlin	50	5007	eastern.are	standing	100	0	-	exits		Obvious exits: // East  - The Sands of Sorrow // West  - A long narrow tunnel
+1792698469	cmd	Trentlin	50	5006	eastern.are	standing	100	0	-	west		A long narrow tunnel //   The tunnel rises sharply to the east. // [Exits: east west]
+1792698470	cmd	Trentlin	50	5005	eastern.are	standing	100	0	-	west		An underground lake //   You are floating on a jet-black underground lake fed by dripping // water and lime from above. The tunnel continues to the east and the river
+1792698471	cmd	Trentlin	50	5006	eastern.are	standing	100	0	-	east		A long narrow tunnel //   The tunnel rises sharply to the east. // [Exits: east west]
+1792698471	cmd	Trentlin	50	5007	eastern.are	standing	100	0	-	east		A wide tunnel //   The tunnel continues east and west. To the east the tunnel dives // down into a bright light.
+1792698471	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698473	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698473	cmd	Trentlin	50	5025	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698474	cmd	Trentlin	50	5025	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698475	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698476	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698477	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698477	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698478	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698478	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698479	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698480	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698480	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698481	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698482	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698482	cmd	Trentlin	50	5025	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698483	cmd	Trentlin	50	5025	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698484	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698485	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	scan		The dervish                        -to the East. // The dustdigger                     -to the South. // The coral snake                    -to the West.
+1792698485	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698487	cmd	Trentlin	50	5032	eastern.are	standing	100	0	-	west		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698488	cmd	Trentlin	50	5032	eastern.are	standing	100	0	-	scan		The dervish                        -to the North. // The dervish                        -to the East. // The dervish                        -to the South.
+1792698488	cmd	Trentlin	50	5032	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698489	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698490	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	scan		The dervish                        -to the East. // The dustdigger                     -to the South. // The coral snake                    -to the West.
+1792698490	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698491	cmd	Trentlin	50	5032	eastern.are	standing	100	0	-	west		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698491	cmd	Trentlin	50	5032	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698492	cmd	Trentlin	50	5029	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698493	cmd	Trentlin	50	5029	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - Strange Glowing Sand
+1792698494	cmd	Trentlin	50	5062	eastern.are	standing	100	0	-	east		Strange Glowing Sand //   A vast desert stretches for miles, the sand constantly shifting around // you.  But this patch of desert looks different...the sand glows.  LOOK! To
+1792698495	cmd	Trentlin	50	5062	eastern.are	standing	100	0	-	exits		Obvious exits: // South - Sand // West  - The Sands of Sorrow
+1792698497	cmd	Trentlin	50	54	connect.are	standing	100	0	-	south		Sand //   As you wander around aimlessly in the desert, you begin to appreciate the // beauty of sand... But then you come to your senses.
+1792698498	cmd	Trentlin	50	28000	pyramid.are	standing	100	0	-	south		                    ACHIEVEMENT EARNED // The Great Eastern Desert  +20 points // Cross into the Great Eastern Desert.
+1792698502	cmd	Trentlin	50	28000	pyramid.are	standing	100	0	-	exits		Obvious exits: // North - Sand // East  - At the Base of the Pyramid
+1792698504	cmd	Trentlin	50	28001	pyramid.are	standing	100	0	-	east		At the Base of the Pyramid //   The mighty pyramid towers above you out of the hot desert sands, made from // huge blocks of stone that have been coated over with a rough sandy plaster-like
+1792698509	cmd	Trentlin	50	28002	pyramid.are	standing	100	0	-	up		Climbing the Great Pyramid //   Hot air rises off the sides of the pyramid, and the wind chokes you with a // flurry of sand and dust.  So far you have made it halfway up the side.  The
+1792698510	cmd	Trentlin	50	28002	pyramid.are	standing	100	0	-	exits		Obvious exits: // North - Climbing the Great Pyramid // South - Climbing the Great Pyramid
+1792698514	cmd	Trentlin	50	28007	pyramid.are	standing	100	0	-	up		Climbing the Great Pyramid //   Here the elements have carved away at the sides of the pyramid quite a // bit.  You aren't so sure of your footing anymore...
+1792698516	cmd	Trentlin	50	28007	pyramid.are	standing	100	0	-	scan		You don't see anything near you.
+1792698517	cmd	Trentlin	50	28007	pyramid.are	standing	100	0	-	exits		Obvious exits: // None.
+1792698518	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792698520	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792698520	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792698520	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792698521	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792698521	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792698522	cmd	Trentlin	50	2403	dresden_halloween.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.
+1792698522	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	west		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792698526	cmd	Trentlin	50	2421	dresden_halloween.are	standing	100	0	-	run	e 3	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792698526	cmd	Trentlin	50	2441	dresden_halloween.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792698526	cmd	Trentlin	50	2442	dresden_halloween.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792698526	cmd	Trentlin	50	2443	dresden_halloween.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792698527	cmd	Trentlin	50	2445	dresden_halloween.are	standing	100	0	-	run	e 2	River Road. // [Exits: north east west] // End of River Road.
+1792698527	cmd	Trentlin	50	2446	dresden_halloween.are	standing	100	0	-	south		Docks of Dresden. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not
+1792698527	cmd	Trentlin	50	2447	dresden_halloween.are	standing	100	0	-	east		Docks of Dresden. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not
+1792698527	cmd	Trentlin	50	2517	dresden_halloween.are	standing	100	0	-	run	s 2	Second Pier. // [Exits: north south] // River of Wonders.
+1792698528	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	run	e 14	Tunnel on the River of Wonders. // [Exits: east west] // Tunnel on the River of Wonders.
+1792698528	cmd	Trentlin	50	5007	eastern.are	standing	100	0	-	run	s 2	The Sands of Sorrow // [Exits: north east south west] // A wide tunnel
+1792698529	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698530	cmd	Trentlin	50	5007	eastern.are	standing	100	0	-	south		A wide tunnel //   The tunnel continues east and west. To the east the tunnel dives // down into a bright light.
+1792698531	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698532	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698532	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698533	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698533	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698535	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698535	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698536	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698537	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698538	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698538	cmd	Trentlin	50	5025	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698538	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698539	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698540	cmd	Trentlin	50	5029	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698541	cmd	Trentlin	50	5029	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - Strange Glowing Sand
+1792698542	cmd	Trentlin	50	5062	eastern.are	standing	100	0	-	east		Strange Glowing Sand //   A vast desert stretches for miles, the sand constantly shifting around // you.  But this patch of desert looks different...the sand glows.  LOOK! To
+1792698544	cmd	Trentlin	50	5062	eastern.are	standing	100	0	-	exits		Obvious exits: // South - Sand // West  - The Sands of Sorrow
+1792698546	cmd	Trentlin	50	54	connect.are	standing	100	0	-	south		Sand //   As you wander around aimlessly in the desert, you begin to appreciate the // beauty of sand... But then you come to your senses.
+1792698547	cmd	Trentlin	50	28000	pyramid.are	standing	100	0	-	south		The Great Eastern Desert //   A vast desert stretches for miles, the sands constantly shifting around you. // Rising out of the sand to the east you see a mighty pyramid.
+1792698547	cmd	Trentlin	50	5029	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698549	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698550	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792698551	cmd	Trentlin	50	5029	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792698552	cmd	Trentlin	50	5029	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - Strange Glowing Sand
+1792698553	cmd	Trentlin	50	5062	eastern.are	standing	100	0	-	east		Strange Glowing Sand //   A vast desert stretches for miles, the sand constantly shifting around // you.  But this patch of desert looks different...the sand glows.  LOOK! To
+1792698554	cmd	Trentlin	50	54	connect.are	standing	100	0	-	south		Sand //   As you wander around aimlessly in the desert, you begin to appreciate the // beauty of sand... But then you come to your senses.
+1792698555	cmd	Trentlin	50	28000	pyramid.are	standing	100	0	-	south		The Great Eastern Desert //   A vast desert stretches for miles, the sands constantly shifting around you. // Rising out of the sand to the east you see a mighty pyramid.
+1792698556	cmd	Trentlin	50	28001	pyramid.are	standing	100	0	-	east		At the Base of the Pyramid //   The mighty pyramid towers above you out of the hot desert sands, made from // huge blocks of stone that have been coated over with a rough sandy plaster-like
+1792698557	cmd	Trentlin	50	28001	pyramid.are	standing	100	0	-	exits		Obvious exits: // West  - The Great Eastern Desert // Up    - Climbing the Great Pyramid
+1792698558	cmd	Trentlin	50	28002	pyramid.are	standing	100	0	-	up		Climbing the Great Pyramid //   Hot air rises off the sides of the pyramid, and the wind chokes you with a // flurry of sand and dust.  So far you have made it halfway up the side.  The
+1792698559	cmd	Trentlin	50	28004	pyramid.are	standing	100	0	-	south		Climbing the Great Pyramid //   Hot air rises off the sides of the pyramid, and the wind chokes you with a // flurry of sand and dust.  The walls of the pyramid are quite steep, and you
+1792698559	cmd	Trentlin	50	28004	pyramid.are	standing	100	0	-	exits		Obvious exits: // East  - Climbing the Great Pyramid // West  - Climbing the Great Pyramid
+1792698561	cmd	Trentlin	50	28005	pyramid.are	standing	100	0	-	east		Climbing the Great Pyramid //   Here on the eastern side of the pyramid there is a little more shelter // from the heat and wind.  The stone side is not nearly so slippery smooth
+1792698561	cmd	Trentlin	50	28005	pyramid.are	standing	100	0	-	exits		Obvious exits: // North - Climbing the Great Pyramid // South - Climbing the Great Pyramid

@@ -159579,3 +159579,441 @@ Thu Oct 22 19:44:16 2026 :: Log Trentlin [2414]: u
 Thu Oct 22 19:44:16 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
 Thu Oct 22 19:44:18 2026 :: Log Trentlin [2497]: aquest request
 Thu Oct 22 19:44:18 2026 :: Log Trentlin [2497]: quest assigned: kill A tomb thief (mob 28004, level 10) in pyramid.are, 27 minutes, ordinary
+Thu Oct 22 19:44:38 2026 :: Log Trentlin [2497]: enter door
+Thu Oct 22 19:44:38 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Thu Oct 22 19:44:41 2026 :: Log Trentlin [2401]: r e 3
+Thu Oct 22 19:44:41 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Thu Oct 22 19:44:41 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Thu Oct 22 19:44:41 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Thu Oct 22 19:44:42 2026 :: Log Trentlin [2421]: s
+Thu Oct 22 19:44:42 2026 :: Log Trentlin [2441]: arrived (River Road.) from 2421
+Thu Oct 22 19:44:42 2026 :: Log Trentlin [2441]: e
+Thu Oct 22 19:44:42 2026 :: Log Trentlin [2442]: arrived (River Road.) from 2441
+Thu Oct 22 19:44:42 2026 :: Log Trentlin [2442]: s
+Thu Oct 22 19:44:42 2026 :: Log Trentlin [2443]: arrived (River Road.) from 2442
+Thu Oct 22 19:44:42 2026 :: Log Trentlin [2443]: r e 2
+Thu Oct 22 19:44:42 2026 :: Log Trentlin [2444]: arrived (River Road.) from 2443
+Thu Oct 22 19:44:42 2026 :: Log Trentlin [2445]: arrived (End of River Road.) from 2444
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [2445]: s
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [2446]: arrived (Docks of Dresden.) from 2445
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [2446]: e
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [2447]: arrived (Docks of Dresden.) from 2446
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [2447]: r s 2
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [2449]: arrived (Second Pier.) from 2447
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [2517]: arrived (River of Wonders.) from 2449
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [2517]: r e 14
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [2516]: arrived (Tunnel on the River of Wonders.) from 2517
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [2515]: arrived (Tunnel on the River of Wonders.) from 2516
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [5000]: arrived (A long tunnel) from 2515
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [5001]: arrived (A long, branched tunnel) from 5000
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [5002]: arrived (A long tunnel) from 5001
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [5003]: arrived (A long tunnel) from 5002
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [5004]: arrived (A long tunnel) from 5003
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [5005]: arrived (An underground lake) from 5004
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [5006]: arrived (A long narrow tunnel) from 5005
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [5007]: arrived (A wide tunnel) from 5006
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5007
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5027
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [5025]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:44:43 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5025
+Thu Oct 22 19:44:44 2026 :: Log Trentlin [5024]: r s 2
+Thu Oct 22 19:44:44 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:44:44 2026 :: Log Trentlin [5007]: arrived (A wide tunnel) from 5027
+Thu Oct 22 19:44:48 2026 :: Log Trentlin [5007]: ex
+Thu Oct 22 19:44:50 2026 :: Log Trentlin [5007]: w
+Thu Oct 22 19:44:50 2026 :: Log Trentlin [5006]: arrived (A long narrow tunnel) from 5007
+Thu Oct 22 19:44:51 2026 :: Log Trentlin [5006]: w
+Thu Oct 22 19:44:51 2026 :: Log Trentlin [5005]: arrived (An underground lake) from 5006
+Thu Oct 22 19:44:53 2026 :: Log Trentlin [5005]: ex
+Thu Oct 22 19:45:05 2026 :: Sock.sinaddr:  178.156.185.127
+Thu Oct 22 19:45:05 2026 :: EOF encountered on read.
+Thu Oct 22 19:45:28 2026 :: Log Trentlin [5005]: w
+Thu Oct 22 19:45:28 2026 :: Log Trentlin [5004]: arrived (A long tunnel) from 5005
+Thu Oct 22 19:45:29 2026 :: Log Trentlin [5004]: ex
+Thu Oct 22 19:45:31 2026 :: Log Trentlin [5004]: w
+Thu Oct 22 19:45:31 2026 :: Log Trentlin [5003]: arrived (A long tunnel) from 5004
+Thu Oct 22 19:45:32 2026 :: Log Trentlin [5003]: ex
+Thu Oct 22 19:45:33 2026 :: Log Trentlin [5003]: w
+Thu Oct 22 19:45:33 2026 :: Log Trentlin [5002]: arrived (A long tunnel) from 5003
+Thu Oct 22 19:45:33 2026 :: Log Trentlin [5002]: ex
+Thu Oct 22 19:45:35 2026 :: Log Trentlin [5002]: s
+Thu Oct 22 19:45:38 2026 :: Log Trentlin [5002]: e
+Thu Oct 22 19:45:38 2026 :: Log Trentlin [5003]: arrived (A long tunnel) from 5002
+Thu Oct 22 19:45:38 2026 :: Log Trentlin [5003]: e
+Thu Oct 22 19:45:38 2026 :: Log Trentlin [5004]: arrived (A long tunnel) from 5003
+Thu Oct 22 19:45:38 2026 :: Log Trentlin [5004]: e
+Thu Oct 22 19:45:38 2026 :: Log Trentlin [5005]: arrived (An underground lake) from 5004
+Thu Oct 22 19:45:38 2026 :: Log Trentlin [5005]: e
+Thu Oct 22 19:45:38 2026 :: Log Trentlin [5006]: arrived (A long narrow tunnel) from 5005
+Thu Oct 22 19:45:39 2026 :: Log Trentlin [5006]: e
+Thu Oct 22 19:45:39 2026 :: Log Trentlin [5007]: arrived (A wide tunnel) from 5006
+Thu Oct 22 19:45:39 2026 :: Log Trentlin [5007]: e
+Thu Oct 22 19:45:39 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5007
+Thu Oct 22 19:45:41 2026 :: Log Trentlin [5027]: s
+Thu Oct 22 19:45:41 2026 :: Log Trentlin [5007]: arrived (A wide tunnel) from 5027
+Thu Oct 22 19:45:41 2026 :: Log Trentlin [5007]: ex
+Thu Oct 22 19:45:44 2026 :: Log Trentlin [5007]: e
+Thu Oct 22 19:45:44 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5007
+Thu Oct 22 19:45:45 2026 :: Log Trentlin [5027]: ex
+Thu Oct 22 19:45:46 2026 :: Log Trentlin [5027]: n
+Thu Oct 22 19:45:46 2026 :: Log Trentlin [5030]: arrived (The Sands of Sorrow) from 5027
+Thu Oct 22 19:45:46 2026 :: Log Trentlin [5030]: ex
+Thu Oct 22 19:45:47 2026 :: Log Trentlin [5030]: s
+Thu Oct 22 19:45:47 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5030
+Thu Oct 22 19:45:48 2026 :: Log Trentlin [5027]: ex
+Thu Oct 22 19:45:50 2026 :: Log Trentlin [5027]: w
+Thu Oct 22 19:45:50 2026 :: Log Trentlin [5028]: arrived (The Sands of Sorrow) from 5027
+Thu Oct 22 19:45:50 2026 :: Log Trentlin [5028]: ex
+Thu Oct 22 19:45:52 2026 :: Log Trentlin [5028]: w
+Thu Oct 22 19:45:52 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5028
+Thu Oct 22 19:45:52 2026 :: Log Trentlin [5027]: ex
+Thu Oct 22 19:45:53 2026 :: Log Trentlin [5027]: s
+Thu Oct 22 19:45:53 2026 :: Log Trentlin [5007]: arrived (A wide tunnel) from 5027
+Thu Oct 22 19:45:54 2026 :: Log Trentlin [5007]: ex
+Thu Oct 22 19:46:11 2026 :: Log Trentlin [5007]: e
+Thu Oct 22 19:46:11 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5007
+Thu Oct 22 19:46:12 2026 :: Log Trentlin [5027]: e
+Thu Oct 22 19:46:12 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5027
+Thu Oct 22 19:46:12 2026 :: Log Trentlin [5024]: ex
+Thu Oct 22 19:46:13 2026 :: Log Trentlin [5024]: e
+Thu Oct 22 19:46:13 2026 :: Log Trentlin [5025]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:46:14 2026 :: Log Trentlin [5025]: ex
+Thu Oct 22 19:46:15 2026 :: Log Trentlin [5025]: w
+Thu Oct 22 19:46:15 2026 :: Log Trentlin [5056]: arrived (A nomad camp) from 5025
+Thu Oct 22 19:46:16 2026 :: Log Trentlin [5056]: ex
+Thu Oct 22 19:46:19 2026 :: Log Trentlin [5056]: n
+Thu Oct 22 19:46:19 2026 :: Log Trentlin [5058]: arrived (Beside the camels) from 5056
+Thu Oct 22 19:46:20 2026 :: Log Trentlin [5058]: ex
+Thu Oct 22 19:46:23 2026 :: Log Trentlin [5058]: n
+Thu Oct 22 19:46:23 2026 :: Log Trentlin [5060]: arrived (The main tent) from 5058
+Thu Oct 22 19:46:25 2026 :: Log Trentlin [5060]: e
+Thu Oct 22 19:46:25 2026 :: Log Trentlin [5061]: arrived (The main tent) from 5060
+Thu Oct 22 19:46:26 2026 :: Log Trentlin [5061]: ex
+Thu Oct 22 19:46:27 2026 :: Log Trentlin [5061]: w
+Thu Oct 22 19:46:27 2026 :: Log Trentlin [5060]: arrived (The main tent) from 5061
+Thu Oct 22 19:46:27 2026 :: Log Trentlin [5060]: s
+Thu Oct 22 19:46:27 2026 :: Log Trentlin [5058]: arrived (Beside the camels) from 5060
+Thu Oct 22 19:46:28 2026 :: Log Trentlin [5058]: e
+Thu Oct 22 19:46:28 2026 :: Log Trentlin [5059]: arrived (The warrior's tent.) from 5058
+Thu Oct 22 19:46:29 2026 :: Log Trentlin [5059]: w
+Thu Oct 22 19:46:29 2026 :: Log Trentlin [5058]: arrived (Beside the camels) from 5059
+Thu Oct 22 19:46:29 2026 :: Log Trentlin [5058]: s
+Thu Oct 22 19:46:29 2026 :: Log Trentlin [5056]: arrived (A nomad camp) from 5058
+Thu Oct 22 19:46:30 2026 :: Log Trentlin [5056]: s
+Thu Oct 22 19:46:30 2026 :: Log Trentlin [5025]: arrived (The Sands of Sorrow) from 5056
+Thu Oct 22 19:46:31 2026 :: Log Trentlin [5025]: ex
+Thu Oct 22 19:46:32 2026 :: Log Trentlin [5025]: s
+Thu Oct 22 19:46:32 2026 :: Log Trentlin [5026]: arrived (The Sands of Sorrow) from 5025
+Thu Oct 22 19:46:33 2026 :: Log Trentlin [5026]: ex
+Thu Oct 22 19:46:34 2026 :: Log Trentlin [5026]: s
+Thu Oct 22 19:46:34 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5026
+Thu Oct 22 19:46:34 2026 :: Log Trentlin [5024]: ex
+Thu Oct 22 19:46:35 2026 :: Log Trentlin [5024]: s
+Thu Oct 22 19:46:35 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:46:36 2026 :: Log Trentlin [5027]: ex
+Thu Oct 22 19:46:37 2026 :: Log Trentlin [5027]: e
+Thu Oct 22 19:46:37 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5027
+Thu Oct 22 19:46:38 2026 :: Log Trentlin [5024]: ex
+Thu Oct 22 19:46:39 2026 :: Log Trentlin [5024]: e
+Thu Oct 22 19:46:39 2026 :: Log Trentlin [5025]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:46:39 2026 :: Log Trentlin [5025]: ex
+Thu Oct 22 19:46:40 2026 :: Log Trentlin [5025]: e
+Thu Oct 22 19:46:40 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5025
+Thu Oct 22 19:46:41 2026 :: Log Trentlin [5024]: ex
+Thu Oct 22 19:46:42 2026 :: Log Trentlin [5024]: e
+Thu Oct 22 19:46:42 2026 :: Log Trentlin [5025]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:46:42 2026 :: Log Trentlin [5025]: ex
+Thu Oct 22 19:46:43 2026 :: Log Trentlin [5025]: n
+Thu Oct 22 19:46:43 2026 :: Log Trentlin [5028]: arrived (The Sands of Sorrow) from 5025
+Thu Oct 22 19:46:44 2026 :: Log Trentlin [5028]: ex
+Thu Oct 22 19:46:45 2026 :: Log Trentlin [5028]: e
+Thu Oct 22 19:46:45 2026 :: Log Trentlin [5031]: arrived (The Sands of Sorrow) from 5028
+Thu Oct 22 19:46:45 2026 :: Log Trentlin [5031]: ex
+Thu Oct 22 19:46:47 2026 :: Log Trentlin [5031]: e
+Thu Oct 22 19:46:47 2026 :: Log Trentlin [5063]: arrived (The wind-swept ledge) from 5031
+Thu Oct 22 19:46:48 2026 :: Log Trentlin [5063]: ex
+Thu Oct 22 19:46:51 2026 :: Log Trentlin [5063]: w
+Thu Oct 22 19:46:51 2026 :: Log Trentlin [5064]: arrived (The cave mouth) from 5063
+Thu Oct 22 19:46:52 2026 :: Log Trentlin [5064]: ex
+Thu Oct 22 19:46:53 2026 :: Log Trentlin [5064]: w
+Thu Oct 22 19:46:53 2026 :: Log Trentlin [5065]: arrived (The mysterious lair.) from 5064
+Thu Oct 22 19:46:56 2026 :: Log Trentlin [5065]: con dra
+Thu Oct 22 19:46:58 2026 :: Log Trentlin [5065]: l dra
+Thu Oct 22 19:46:59 2026 :: Log Trentlin [5065]: w
+Thu Oct 22 19:46:59 2026 :: Log Trentlin [5066]: arrived (A wide tunnel) from 5065
+Thu Oct 22 19:47:00 2026 :: Log Trentlin [5066]: w
+Thu Oct 22 19:47:00 2026 :: Log Trentlin [5067]: arrived (A narrower tunnel) from 5066
+Thu Oct 22 19:47:01 2026 :: Log Trentlin [5067]: s
+Thu Oct 22 19:47:01 2026 :: Log Trentlin [5068]: arrived (A narrow crack) from 5067
+Thu Oct 22 19:47:02 2026 :: Log Trentlin [5068]: w
+Thu Oct 22 19:47:02 2026 :: Log Trentlin [5069]: arrived (A small cavern.) from 5068
+Thu Oct 22 19:47:03 2026 :: Log Trentlin [5069]: n
+Thu Oct 22 19:47:03 2026 :: Log Trentlin [5070]: arrived (A small shaft) from 5069
+Thu Oct 22 19:47:06 2026 :: Log Trentlin [5070]: ex
+Thu Oct 22 19:47:07 2026 :: Log Trentlin [5070]: u
+Thu Oct 22 19:47:07 2026 :: Log Trentlin [5009]: arrived (At the foot of the rubble) from 5070
+Thu Oct 22 19:47:09 2026 :: Log Trentlin [5009]: ex
+Thu Oct 22 19:47:12 2026 :: Log Trentlin [5009]: n
+Thu Oct 22 19:47:12 2026 :: Log Trentlin [5010]: arrived (Cave entrance) from 5009
+Thu Oct 22 19:47:13 2026 :: Log Trentlin [5010]: ex
+Thu Oct 22 19:47:15 2026 :: Log Trentlin [5010]: d
+Thu Oct 22 19:47:15 2026 :: Log Trentlin [5011]: arrived (Giant cave) from 5010
+Thu Oct 22 19:47:17 2026 :: Log Trentlin [5011]: ex
+Thu Oct 22 19:47:18 2026 :: Log Trentlin [5011]: con dra
+Thu Oct 22 19:47:19 2026 :: Log Trentlin [5011]: l
+Thu Oct 22 19:47:19 2026 :: Log Trentlin [5011]: (refused) dra
+Thu Oct 22 19:47:20 2026 :: Log Trentlin [5011]: d
+Thu Oct 22 19:47:20 2026 :: Log Trentlin [25139]: arrived (The refuse pit.) from 5011
+Thu Oct 22 19:47:21 2026 :: Log Trentlin [25139]: e
+Thu Oct 22 19:47:21 2026 :: Log Trentlin [25138]: arrived (The bend in the corridor.) from 25139
+Thu Oct 22 19:47:23 2026 :: Log Trentlin [25138]: n
+Thu Oct 22 19:47:23 2026 :: Log Trentlin [25137]: arrived (The straight run.) from 25138
+Thu Oct 22 19:47:23 2026 :: Log Trentlin [25137]: n
+Thu Oct 22 19:47:23 2026 :: Log Trentlin [25136]: arrived (The bend in the corridor.) from 25137
+Thu Oct 22 19:47:24 2026 :: Log Trentlin [25136]: n
+Thu Oct 22 19:47:25 2026 :: Log Trentlin [25136]: w
+Thu Oct 22 19:47:25 2026 :: Log Trentlin [25135]: arrived (The corridor past the pool.) from 25136
+Thu Oct 22 19:47:26 2026 :: Log Trentlin [25135]: w
+Thu Oct 22 19:47:26 2026 :: Log Trentlin [25133]: arrived (The edge of the pool.) from 25135
+Thu Oct 22 19:47:31 2026 :: Log Trentlin [25133]: ex
+Thu Oct 22 19:47:32 2026 :: Log Trentlin [25133]: reca
+Thu Oct 22 19:47:32 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 25133
+Thu Oct 22 19:47:33 2026 :: Log Trentlin [4207]: e
+Thu Oct 22 19:47:33 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Thu Oct 22 19:47:33 2026 :: Log Trentlin [4202]: e
+Thu Oct 22 19:47:33 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Thu Oct 22 19:47:34 2026 :: Log Trentlin [4201]: e
+Thu Oct 22 19:47:34 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Thu Oct 22 19:47:35 2026 :: Log Trentlin [2427]: n
+Thu Oct 22 19:47:35 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Thu Oct 22 19:47:35 2026 :: Log Trentlin [2404]: n
+Thu Oct 22 19:47:35 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Thu Oct 22 19:47:38 2026 :: Log Trentlin [2401]: r e 3
+Thu Oct 22 19:47:38 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Thu Oct 22 19:47:38 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Thu Oct 22 19:47:38 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Thu Oct 22 19:47:38 2026 :: Log Trentlin [2421]: s
+Thu Oct 22 19:47:38 2026 :: Log Trentlin [2441]: arrived (River Road.) from 2421
+Thu Oct 22 19:47:39 2026 :: Log Trentlin [2441]: e
+Thu Oct 22 19:47:39 2026 :: Log Trentlin [2442]: arrived (River Road.) from 2441
+Thu Oct 22 19:47:39 2026 :: Log Trentlin [2442]: s
+Thu Oct 22 19:47:39 2026 :: Log Trentlin [2443]: arrived (River Road.) from 2442
+Thu Oct 22 19:47:39 2026 :: Log Trentlin [2443]: r e 2
+Thu Oct 22 19:47:39 2026 :: Log Trentlin [2444]: arrived (River Road.) from 2443
+Thu Oct 22 19:47:39 2026 :: Log Trentlin [2445]: arrived (End of River Road.) from 2444
+Thu Oct 22 19:47:39 2026 :: Log Trentlin [2445]: s
+Thu Oct 22 19:47:39 2026 :: Log Trentlin [2446]: arrived (Docks of Dresden.) from 2445
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [2446]: e
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [2447]: arrived (Docks of Dresden.) from 2446
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [2447]: r s 2
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [2449]: arrived (Second Pier.) from 2447
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [2517]: arrived (River of Wonders.) from 2449
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [2517]: r e 14
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [2516]: arrived (Tunnel on the River of Wonders.) from 2517
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [2515]: arrived (Tunnel on the River of Wonders.) from 2516
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [5000]: arrived (A long tunnel) from 2515
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [5001]: arrived (A long, branched tunnel) from 5000
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [5002]: arrived (A long tunnel) from 5001
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [5003]: arrived (A long tunnel) from 5002
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [5004]: arrived (A long tunnel) from 5003
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [5005]: arrived (An underground lake) from 5004
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [5006]: arrived (A long narrow tunnel) from 5005
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [5007]: arrived (A wide tunnel) from 5006
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5007
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5027
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [5025]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5025
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [5024]: r s 2
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:47:40 2026 :: Log Trentlin [5007]: arrived (A wide tunnel) from 5027
+Thu Oct 22 19:47:42 2026 :: Log Trentlin [5007]: ex
+Thu Oct 22 19:47:44 2026 :: Log Trentlin [5007]: e
+Thu Oct 22 19:47:44 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5007
+Thu Oct 22 19:47:44 2026 :: Log Trentlin [5027]: ex
+Thu Oct 22 19:47:46 2026 :: Log Trentlin [5027]: s
+Thu Oct 22 19:47:46 2026 :: Log Trentlin [5007]: arrived (A wide tunnel) from 5027
+Thu Oct 22 19:47:47 2026 :: Log Trentlin [5007]: ex
+Thu Oct 22 19:47:49 2026 :: Log Trentlin [5007]: w
+Thu Oct 22 19:47:49 2026 :: Log Trentlin [5006]: arrived (A long narrow tunnel) from 5007
+Thu Oct 22 19:47:50 2026 :: Log Trentlin [5006]: w
+Thu Oct 22 19:47:50 2026 :: Log Trentlin [5005]: arrived (An underground lake) from 5006
+Thu Oct 22 19:47:51 2026 :: Log Trentlin [5005]: e
+Thu Oct 22 19:47:51 2026 :: Log Trentlin [5006]: arrived (A long narrow tunnel) from 5005
+Thu Oct 22 19:47:51 2026 :: Log Trentlin [5006]: e
+Thu Oct 22 19:47:51 2026 :: Log Trentlin [5007]: arrived (A wide tunnel) from 5006
+Thu Oct 22 19:47:51 2026 :: Log Trentlin [5007]: e
+Thu Oct 22 19:47:51 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5007
+Thu Oct 22 19:47:53 2026 :: Log Trentlin [5027]: e
+Thu Oct 22 19:47:53 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5027
+Thu Oct 22 19:47:53 2026 :: Log Trentlin [5024]: e
+Thu Oct 22 19:47:53 2026 :: Log Trentlin [5025]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:47:54 2026 :: Log Trentlin [5025]: ex
+Thu Oct 22 19:47:55 2026 :: Log Trentlin [5025]: s
+Thu Oct 22 19:47:55 2026 :: Log Trentlin [5026]: arrived (The Sands of Sorrow) from 5025
+Thu Oct 22 19:47:56 2026 :: Log Trentlin [5026]: ex
+Thu Oct 22 19:47:57 2026 :: Log Trentlin [5026]: s
+Thu Oct 22 19:47:57 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5026
+Thu Oct 22 19:47:57 2026 :: Log Trentlin [5024]: ex
+Thu Oct 22 19:47:58 2026 :: Log Trentlin [5024]: n
+Thu Oct 22 19:47:58 2026 :: Log Trentlin [5026]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:47:58 2026 :: Log Trentlin [5026]: ex
+Thu Oct 22 19:47:59 2026 :: Log Trentlin [5026]: s
+Thu Oct 22 19:47:59 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5026
+Thu Oct 22 19:48:00 2026 :: Log Trentlin [5024]: ex
+Thu Oct 22 19:48:00 2026 :: Log Trentlin [5024]: n
+Thu Oct 22 19:48:00 2026 :: Log Trentlin [5026]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:48:01 2026 :: Log Trentlin [5026]: ex
+Thu Oct 22 19:48:02 2026 :: Log Trentlin [5026]: s
+Thu Oct 22 19:48:02 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5026
+Thu Oct 22 19:48:02 2026 :: Log Trentlin [5024]: e
+Thu Oct 22 19:48:02 2026 :: Log Trentlin [5025]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:48:03 2026 :: Log Trentlin [5025]: ex
+Thu Oct 22 19:48:04 2026 :: Log Trentlin [5025]: s
+Thu Oct 22 19:48:04 2026 :: Log Trentlin [5026]: arrived (The Sands of Sorrow) from 5025
+Thu Oct 22 19:48:05 2026 :: Log Trentlin [5026]: sca
+Thu Oct 22 19:48:05 2026 :: Log Trentlin [5026]: ex
+Thu Oct 22 19:48:07 2026 :: Log Trentlin [5026]: w
+Thu Oct 22 19:48:07 2026 :: Log Trentlin [5032]: arrived (The Sands of Sorrow) from 5026
+Thu Oct 22 19:48:08 2026 :: Log Trentlin [5032]: sca
+Thu Oct 22 19:48:08 2026 :: Log Trentlin [5032]: ex
+Thu Oct 22 19:48:09 2026 :: Log Trentlin [5032]: s
+Thu Oct 22 19:48:09 2026 :: Log Trentlin [5026]: arrived (The Sands of Sorrow) from 5032
+Thu Oct 22 19:48:10 2026 :: Log Trentlin [5026]: sca
+Thu Oct 22 19:48:10 2026 :: Log Trentlin [5026]: ex
+Thu Oct 22 19:48:11 2026 :: Log Trentlin [5026]: w
+Thu Oct 22 19:48:11 2026 :: Log Trentlin [5032]: arrived (The Sands of Sorrow) from 5026
+Thu Oct 22 19:48:11 2026 :: Log Trentlin [5032]: ex
+Thu Oct 22 19:48:12 2026 :: Log Trentlin [5032]: e
+Thu Oct 22 19:48:12 2026 :: Log Trentlin [5029]: arrived (The Sands of Sorrow) from 5032
+Thu Oct 22 19:48:13 2026 :: Log Trentlin [5029]: ex
+Thu Oct 22 19:48:14 2026 :: Log Trentlin [5029]: e
+Thu Oct 22 19:48:14 2026 :: Log Trentlin [5062]: arrived (Strange Glowing Sand) from 5029
+Thu Oct 22 19:48:15 2026 :: Log Trentlin [5062]: ex
+Thu Oct 22 19:48:17 2026 :: Log Trentlin [5062]: s
+Thu Oct 22 19:48:17 2026 :: Log Trentlin [54]: arrived (Sand) from 5062
+Thu Oct 22 19:48:18 2026 :: Log Trentlin [54]: s
+Thu Oct 22 19:48:18 2026 :: Log Trentlin [28000]: arrived (The Great Eastern Desert) from 54
+Thu Oct 22 19:48:22 2026 :: Log Trentlin [28000]: ex
+Thu Oct 22 19:48:24 2026 :: Log Trentlin [28000]: e
+Thu Oct 22 19:48:24 2026 :: Log Trentlin [28001]: arrived (At the Base of the Pyramid) from 28000
+Thu Oct 22 19:48:29 2026 :: Log Trentlin [28001]: u
+Thu Oct 22 19:48:29 2026 :: Log Trentlin [28002]: arrived (Climbing the Great Pyramid) from 28001
+Thu Oct 22 19:48:30 2026 :: Log Trentlin [28002]: ex
+Thu Oct 22 19:48:34 2026 :: Log Trentlin [28002]: u
+Thu Oct 22 19:48:34 2026 :: Log Trentlin [28007]: arrived (Climbing the Great Pyramid) from 28002
+Thu Oct 22 19:48:36 2026 :: Log Trentlin [28007]: sca
+Thu Oct 22 19:48:37 2026 :: Log Trentlin [28007]: ex
+Thu Oct 22 19:48:38 2026 :: Log Trentlin [28007]: reca
+Thu Oct 22 19:48:38 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 28007
+Thu Oct 22 19:48:40 2026 :: Log Trentlin [4207]: e
+Thu Oct 22 19:48:40 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Thu Oct 22 19:48:40 2026 :: Log Trentlin [4202]: e
+Thu Oct 22 19:48:40 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Thu Oct 22 19:48:40 2026 :: Log Trentlin [4201]: e
+Thu Oct 22 19:48:40 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Thu Oct 22 19:48:41 2026 :: Log Trentlin [2427]: n
+Thu Oct 22 19:48:41 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Thu Oct 22 19:48:41 2026 :: Log Trentlin [2404]: n
+Thu Oct 22 19:48:41 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Thu Oct 22 19:48:42 2026 :: Log Trentlin [2401]: e
+Thu Oct 22 19:48:42 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Thu Oct 22 19:48:42 2026 :: Log Trentlin [2403]: w
+Thu Oct 22 19:48:42 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2403
+Thu Oct 22 19:48:46 2026 :: Log Trentlin [2401]: r e 3
+Thu Oct 22 19:48:46 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Thu Oct 22 19:48:46 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Thu Oct 22 19:48:46 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Thu Oct 22 19:48:46 2026 :: Log Trentlin [2421]: s
+Thu Oct 22 19:48:46 2026 :: Log Trentlin [2441]: arrived (River Road.) from 2421
+Thu Oct 22 19:48:46 2026 :: Log Trentlin [2441]: e
+Thu Oct 22 19:48:46 2026 :: Log Trentlin [2442]: arrived (River Road.) from 2441
+Thu Oct 22 19:48:46 2026 :: Log Trentlin [2442]: s
+Thu Oct 22 19:48:46 2026 :: Log Trentlin [2443]: arrived (River Road.) from 2442
+Thu Oct 22 19:48:47 2026 :: Log Trentlin [2443]: r e 2
+Thu Oct 22 19:48:47 2026 :: Log Trentlin [2444]: arrived (River Road.) from 2443
+Thu Oct 22 19:48:47 2026 :: Log Trentlin [2445]: arrived (End of River Road.) from 2444
+Thu Oct 22 19:48:47 2026 :: Log Trentlin [2445]: s
+Thu Oct 22 19:48:47 2026 :: Log Trentlin [2446]: arrived (Docks of Dresden.) from 2445
+Thu Oct 22 19:48:47 2026 :: Log Trentlin [2446]: e
+Thu Oct 22 19:48:47 2026 :: Log Trentlin [2447]: arrived (Docks of Dresden.) from 2446
+Thu Oct 22 19:48:47 2026 :: Log Trentlin [2447]: r s 2
+Thu Oct 22 19:48:47 2026 :: Log Trentlin [2449]: arrived (Second Pier.) from 2447
+Thu Oct 22 19:48:47 2026 :: Log Trentlin [2517]: arrived (River of Wonders.) from 2449
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [2517]: r e 14
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [2516]: arrived (Tunnel on the River of Wonders.) from 2517
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [2515]: arrived (Tunnel on the River of Wonders.) from 2516
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [5000]: arrived (A long tunnel) from 2515
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [5001]: arrived (A long, branched tunnel) from 5000
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [5002]: arrived (A long tunnel) from 5001
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [5003]: arrived (A long tunnel) from 5002
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [5004]: arrived (A long tunnel) from 5003
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [5005]: arrived (An underground lake) from 5004
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [5006]: arrived (A long narrow tunnel) from 5005
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [5007]: arrived (A wide tunnel) from 5006
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5007
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5027
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [5025]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5025
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [5024]: r s 2
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:48:48 2026 :: Log Trentlin [5007]: arrived (A wide tunnel) from 5027
+Thu Oct 22 19:48:49 2026 :: Log Trentlin [5007]: e
+Thu Oct 22 19:48:49 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5007
+Thu Oct 22 19:48:50 2026 :: Log Trentlin [5027]: s
+Thu Oct 22 19:48:50 2026 :: Log Trentlin [5007]: arrived (A wide tunnel) from 5027
+Thu Oct 22 19:48:51 2026 :: Log Trentlin [5007]: e
+Thu Oct 22 19:48:51 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5007
+Thu Oct 22 19:48:52 2026 :: Log Trentlin [5027]: e
+Thu Oct 22 19:48:52 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5027
+Thu Oct 22 19:48:52 2026 :: Log Trentlin [5024]: ex
+Thu Oct 22 19:48:53 2026 :: Log Trentlin [5024]: s
+Thu Oct 22 19:48:53 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:48:53 2026 :: Log Trentlin [5027]: ex
+Thu Oct 22 19:48:55 2026 :: Log Trentlin [5027]: e
+Thu Oct 22 19:48:55 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5027
+Thu Oct 22 19:48:55 2026 :: Log Trentlin [5024]: ex
+Thu Oct 22 19:48:56 2026 :: Log Trentlin [5024]: s
+Thu Oct 22 19:48:56 2026 :: Log Trentlin [5027]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:48:57 2026 :: Log Trentlin [5027]: ex
+Thu Oct 22 19:48:58 2026 :: Log Trentlin [5027]: e
+Thu Oct 22 19:48:58 2026 :: Log Trentlin [5024]: arrived (The Sands of Sorrow) from 5027
+Thu Oct 22 19:48:58 2026 :: Log Trentlin [5024]: e
+Thu Oct 22 19:48:58 2026 :: Log Trentlin [5025]: arrived (The Sands of Sorrow) from 5024
+Thu Oct 22 19:48:58 2026 :: Log Trentlin [5025]: s
+Thu Oct 22 19:48:58 2026 :: Log Trentlin [5026]: arrived (The Sands of Sorrow) from 5025
+Thu Oct 22 19:48:59 2026 :: Log Trentlin [5026]: ex
+Thu Oct 22 19:49:00 2026 :: Log Trentlin [5026]: e
+Thu Oct 22 19:49:00 2026 :: Log Trentlin [5029]: arrived (The Sands of Sorrow) from 5026
+Thu Oct 22 19:49:01 2026 :: Log Trentlin [5029]: ex
+Thu Oct 22 19:49:02 2026 :: Log Trentlin [5029]: e
+Thu Oct 22 19:49:02 2026 :: Log Trentlin [5062]: arrived (Strange Glowing Sand) from 5029
+Thu Oct 22 19:49:04 2026 :: Log Trentlin [5062]: ex
+Thu Oct 22 19:49:06 2026 :: Log Trentlin [5062]: s
+Thu Oct 22 19:49:06 2026 :: Log Trentlin [54]: arrived (Sand) from 5062
+Thu Oct 22 19:49:07 2026 :: Log Trentlin [54]: s
+Thu Oct 22 19:49:07 2026 :: Log Trentlin [28000]: arrived (The Great Eastern Desert) from 54
+Thu Oct 22 19:49:07 2026 :: Log Trentlin [28000]: s
+Thu Oct 22 19:49:07 2026 :: Log Trentlin [5029]: arrived (The Sands of Sorrow) from 28000
+Thu Oct 22 19:49:09 2026 :: Log Trentlin [5029]: n
+Thu Oct 22 19:49:09 2026 :: Log Trentlin [5026]: arrived (The Sands of Sorrow) from 5029
+Thu Oct 22 19:49:10 2026 :: Log Trentlin [5026]: ex
+Thu Oct 22 19:49:11 2026 :: Log Trentlin [5026]: e
+Thu Oct 22 19:49:11 2026 :: Log Trentlin [5029]: arrived (The Sands of Sorrow) from 5026
+Thu Oct 22 19:49:12 2026 :: Log Trentlin [5029]: ex
+Thu Oct 22 19:49:13 2026 :: Log Trentlin [5029]: e
+Thu Oct 22 19:49:13 2026 :: Log Trentlin [5062]: arrived (Strange Glowing Sand) from 5029
+Thu Oct 22 19:49:14 2026 :: Log Trentlin [5062]: s
+Thu Oct 22 19:49:14 2026 :: Log Trentlin [54]: arrived (Sand) from 5062
+Thu Oct 22 19:49:15 2026 :: Log Trentlin [54]: s
+Thu Oct 22 19:49:15 2026 :: Log Trentlin [28000]: arrived (The Great Eastern Desert) from 54
+Thu Oct 22 19:49:16 2026 :: Log Trentlin [28000]: e
+Thu Oct 22 19:49:16 2026 :: Log Trentlin [28001]: arrived (At the Base of the Pyramid) from 28000
+Thu Oct 22 19:49:17 2026 :: Log Trentlin [28001]: ex
+Thu Oct 22 19:49:18 2026 :: Log Trentlin [28001]: u
+Thu Oct 22 19:49:18 2026 :: Log Trentlin [28002]: arrived (Climbing the Great Pyramid) from 28001
+Thu Oct 22 19:49:19 2026 :: Log Trentlin [28002]: s
+Thu Oct 22 19:49:19 2026 :: Log Trentlin [28004]: arrived (Climbing the Great Pyramid) from 28002
+Thu Oct 22 19:49:19 2026 :: Log Trentlin [28004]: ex
+Thu Oct 22 19:49:21 2026 :: Log Trentlin [28004]: e
+Thu Oct 22 19:49:21 2026 :: Log Trentlin [28005]: arrived (Climbing the Great Pyramid) from 28004
+Thu Oct 22 19:49:21 2026 :: Log Trentlin [28005]: ex
