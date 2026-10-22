@@ -344,7 +344,7 @@ vile creatures. This one has devoted its life to the dagger, and now has
 become very proficient with it indeed.
 ~
 orc~
-ACFG Z -550 M
+ACG Z -550 M
 35 15 30d2+1250 0d0+100 6d4+23 17
 -10 -9 -10 -4
 BEFILNRZ AB AB Q JN

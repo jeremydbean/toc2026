@@ -2433,7 +2433,7 @@ E 1 24116 4 1                        Ring of fire
 E 1 24115 3 17                       Black rune rod
 E 1 24108 100 3                      Flaming amulet
 *Doors
-D 0 24112 1 2                ; On a Logging Trail in the Forest Lock East
+D 0 24112 1 1                ; On a Logging Trail in the Forest Close East (open to all, 2026-10-22)
 D 0 24117 3 2                ; On a Logging Trail in the Forest Lock West
 D 0 24119 0 1                ; Main Street, Dunkeldorf Close North
 D 0 24119 2 1                ; Main Street, Dunkeldorf Close South
