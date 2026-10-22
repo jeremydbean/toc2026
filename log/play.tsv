@@ -2862,3 +2862,82 @@
 1792627686	cmd	Trentlin	49	30544	hyrule.are	standing	100	0	-	look	g	Damp from the Demon's moats, this veteran goriya has grey fur creeping
 1792627694	cmd	Trentlin	49	30544	hyrule.are	standing	100	0	-	look	co	The needle points north -- at the bare wall, as though the way lay through the stone.
 1792627701	cmd	Trentlin	49	30544	hyrule.are	standing	100	0	-	bomb	north	You find no cracked surface to bomb there.
+1792627705	cmd	Trentlin	49	30544	hyrule.are	standing	100	0	-	kill	g	A red goriya dodges your attack.
+1792627709	cmd	Trentlin	49	30544	hyrule.are	fighting	100	0	fight	smite		Your smite misses a red goriya.
+1792627729	cmd	Trentlin	49	30544	hyrule.are	fighting	98	0	fight	smite		A Tin Axe bites deep into a red goriya!
+1792627738	cmd	Trentlin	49	30544	hyrule.are	standing	98	0	-	look		Level 7: Hall of Grumbling
+1792627746	cmd	Trentlin	49	30544	hyrule.are	standing	98	0	-	(social)		You grumble distractedly to yourself
+1792627747	cmd	Trentlin	49	30544	hyrule.are	standing	98	0	-	look		Level 7: Hall of Grumbling
+1792627750	cmd	Trentlin	49	30544	hyrule.are	standing	98	0	-	(social)		They aren't here.
+1792627760	cmd	Trentlin	49	30544	hyrule.are	standing	98	0	-	drop	pie	You can't let go of it.
+1792627828	cmd	Trentlin	49	30544	hyrule.are	standing	98	0	-	inventory		You are carrying:
+1792627830	cmd	Trentlin	49	30544	hyrule.are	standing	98	0	-	feed	foriya	Nobody here seems interested in your provisions.
+1792627834	cmd	Trentlin	49	30544	hyrule.are	standing	98	0	-	look		Level 7: Hall of Grumbling
+1792627837	cmd	Trentlin	49	30544	hyrule.are	standing	98	0	-	compare	scep	A) the Sceptre of Might (level 25) -- can't use: made for another side
+1792627840	cmd	Trentlin	49	30541	hyrule.are	standing	98	0	-	south		Level 7: Western Moat
+1792627846	cmd	Trentlin	49	30542	hyrule.are	standing	98	0	-	east		Level 7: Island Chamber
+1792627847	cmd	Trentlin	49	30540	hyrule.are	standing	98	0	-	south		Level 7: Hall of Lingering Chill
+1792627849	cmd	Trentlin	49	30536	hyrule.are	standing	98	0	-	south		Level 7: Boomerang Hall
+1792627850	cmd	Trentlin	49	30535	hyrule.are	standing	98	0	-	west		Level 7: Dodongo Den
+1792627851	cmd	Trentlin	49	30539	hyrule.are	standing	98	0	-	north		Level 7: Demon's Powder Store
+1792627854	cmd	Trentlin	49	30539	hyrule.are	standing	98	0	-	list		[Lv Price] Item
+1792627856	cmd	Trentlin	49	30539	hyrule.are	standing	98	0	-	buy	bomb	You buy a bigger bomb bag.
+1792627858	cmd	Trentlin	49	30535	hyrule.are	standing	98	0	-	south		Level 7: Dodongo Den
+1792627859	cmd	Trentlin	49	30535	hyrule.are	standing	98	0	-	west		Alas, you cannot go that way.
+1792627860	cmd	Trentlin	49	30529	hyrule.are	standing	98	1	-	south		Level 7: Blade Trap Corridor
+1792627863	cmd	Trentlin	49	30526	hyrule.are	standing	98	0	-	south		Level 7: Hall of Shed Skins
+1792627871	cmd	Trentlin	49	30526	hyrule.are	standing	98	0	-	bomb	esat	You find no cracked surface to bomb there.
+1792627873	cmd	Trentlin	49	30526	hyrule.are	standing	98	0	-	bomb	east	You find no cracked surface to bomb there.
+1792627875	cmd	Trentlin	49	30526	hyrule.are	standing	98	0	-	bomb	west	You find no cracked surface to bomb there.
+1792627876	cmd	Trentlin	49	30526	hyrule.are	standing	98	0	-	bomb	sout	You find no cracked surface to bomb there.
+1792627877	cmd	Trentlin	49	30529	hyrule.are	standing	98	0	-	north		Level 7: Blade Trap Corridor
+1792627881	cmd	Trentlin	49	30529	hyrule.are	standing	98	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!
+1792627882	cmd	Trentlin	49	30530	hyrule.are	standing	98	0	-	east		Level 7: Moat Crossroads
+1792627888	cmd	Trentlin	49	30530	hyrule.are	standing	98	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!
+1792627889	cmd	Trentlin	49	30536	hyrule.are	standing	98	0	-	north		Level 7: Boomerang Hall
+1792627890	cmd	Trentlin	49	30536	hyrule.are	standing	98	0	-	scan		a blue goriya                      -to the South.
+1792627892	cmd	Trentlin	49	30535	hyrule.are	standing	98	0	-	west		Level 7: Dodongo Den
+1792627893	cmd	Trentlin	49	30535	hyrule.are	standing	98	0	-	consider	do	A dodongo looks like an easy kill.
+1792627894	cmd	Trentlin	49	30535	hyrule.are	standing	98	0	-	look	do	Older and twice the bulk of the Lizard's dodongos, this one wears scales
+1792627894	cmd	Trentlin	49	30539	hyrule.are	standing	98	0	-	north		Level 7: Demon's Powder Store
+1792627897	cmd	Trentlin	49	30539	hyrule.are	standing	98	0	-	list		[Lv Price] Item
+1792627898	cmd	Trentlin	49	30535	hyrule.are	standing	98	0	-	south		Level 7: Dodongo Den
+1792627898	cmd	Trentlin	49	30536	hyrule.are	standing	98	0	-	east		Level 7: Boomerang Hall
+1792627899	cmd	Trentlin	49	30540	hyrule.are	standing	98	0	-	north		Level 7: Hall of Lingering Chill
+1792627900	cmd	Trentlin	49	30536	hyrule.are	standing	98	0	-	south		Level 7: Boomerang Hall
+1792627901	cmd	Trentlin	49	30537	hyrule.are	standing	98	0	-	east		Level 7: Hall of Bones
+1792627908	cmd	Trentlin	49	30531	hyrule.are	standing	98	0	-	south		Level 7: Guano-Streaked Crossing
+1792627909	cmd	Trentlin	49	30532	hyrule.are	standing	98	0	-	east		Level 7: Shuttered Gallery
+1792627911	cmd	Trentlin	49	30533	hyrule.are	standing	98	0	-	east		Level 7: Urchin's Hollow
+1792627912	cmd	Trentlin	49	30534	hyrule.are	standing	98	0	-	east		Level 7: Bone-Strewn Alcove
+1792627918	cmd	Trentlin	49	30534	hyrule.are	standing	98	0	-	bomb	esat	You find no cracked surface to bomb there.
+1792627920	cmd	Trentlin	49	30534	hyrule.are	standing	98	0	-	bomb	east	You find no cracked surface to bomb there.
+1792627921	cmd	Trentlin	49	30533	hyrule.are	standing	98	0	-	west		Level 7: Urchin's Hollow
+1792627921	cmd	Trentlin	49	30533	hyrule.are	standing	98	0	-	north		Alas, you cannot go that way.
+1792627922	cmd	Trentlin	49	30532	hyrule.are	standing	98	0	-	west		Level 7: Shuttered Gallery
+1792627925	cmd	Trentlin	49	30531	hyrule.are	standing	98	0	-	west		Level 7: Guano-Streaked Crossing
+1792627926	cmd	Trentlin	49	30532	hyrule.are	standing	98	0	-	east		Level 7: Shuttered Gallery
+1792627927	cmd	Trentlin	49	30533	hyrule.are	standing	98	0	-	east		Level 7: Urchin's Hollow
+1792627928	cmd	Trentlin	49	30534	hyrule.are	standing	98	0	-	east		Level 7: Bone-Strewn Alcove
+1792627929	cmd	Trentlin	49	30533	hyrule.are	standing	98	0	-	west		Level 7: Urchin's Hollow
+1792627929	cmd	Trentlin	49	30532	hyrule.are	standing	98	0	-	west		Level 7: Shuttered Gallery
+1792627930	cmd	Trentlin	49	30538	hyrule.are	standing	98	0	-	north		Level 7: Hall of the Horned Mask
+1792627944	cmd	Trentlin	49	30538	hyrule.are	standing	98	0	-	(social)		They aren't here.
+1792627946	cmd	Trentlin	49	30538	hyrule.are	standing	98	0	-	look		Level 7: Hall of the Horned Mask
+1792627947	cmd	Trentlin	49	30538	hyrule.are	standing	98	0	-	north		Alas, you cannot go that way.
+1792627948	cmd	Trentlin	49	30538	hyrule.are	standing	98	0	-	east		Alas, you cannot go that way.
+1792627948	cmd	Trentlin	49	30538	hyrule.are	standing	98	0	-	west		Alas, you cannot go that way.
+1792627949	cmd	Trentlin	49	30538	hyrule.are	standing	98	0	-	north		Alas, you cannot go that way.
+1792627964	cmd	Trentlin	49	30532	hyrule.are	standing	98	0	-	south		Level 7: Shuttered Gallery
+1792627965	cmd	Trentlin	49	30531	hyrule.are	standing	98	0	-	west		Level 7: Guano-Streaked Crossing
+1792627966	cmd	Trentlin	49	30537	hyrule.are	standing	98	0	-	north		Level 7: Hall of Bones
+1792627967	cmd	Trentlin	49	30536	hyrule.are	standing	98	0	-	west		Level 7: Boomerang Hall
+1792627968	cmd	Trentlin	49	30540	hyrule.are	standing	98	0	-	north		Level 7: Hall of Lingering Chill
+1792627970	cmd	Trentlin	49	30542	hyrule.are	standing	99	0	-	north		Level 7: Island Chamber
+1792627972	cmd	Trentlin	49	30542	hyrule.are	standing	99	0	-	east		Alas, you cannot go that way.
+1792627976	cmd	Trentlin	49	30542	hyrule.are	standing	99	0	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!
+1792627977	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	east		Level 7: Hidden Cistern
+1792627985	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	get	all	You get a small key.
+1792627991	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	open	secret	I see no secret here.
+1792627997	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	bomb	north	You find no cracked surface to bomb there.
+1792628000	cmd	Trentlin	49	30543	hyrule.are	standing	99	0	-	bomb	east	You find no cracked surface to bomb there.
