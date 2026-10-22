@@ -4966,3 +4966,93 @@
 1792670074	cmd	Trentlin	50	4210	dresden_halloween.are	standing	85	0	-	sleep		You go to sleep.
 1792670074	cmd	Trentlin	50	4210	dresden_halloween.are	sleeping	85	0	-	score		--------------------------------------------------------------
 1792670078	session	Trentlin	50	4210	dresden_halloween.are	quit	1179s	+0 levels	+0 exp	+740662061 copper	12 kills	0 deaths	6 quests	917 commands	6 refused
+1792696960	cmd	Trentlin	50	4210	dresden_halloween.are	sleeping	85	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // Players found: 1
+1792696961	refused	Trentlin	50	4210	dresden_halloween.are	sleeping	85	0	-	look		In your dreams, or what?
+1792696962	cmd	Trentlin	50	4210	dresden_halloween.are	sleeping	85	0	-	wake		You wake and stand up.
+1792696962	cmd	Trentlin	50	4210	dresden_halloween.are	standing	85	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1792696963	cmd	Trentlin	50	4203	dresden_halloween.are	standing	85	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1792696963	cmd	Trentlin	50	4204	dresden_halloween.are	standing	85	0	-	west		The Gallery of Grinning Skulls //   Rows of skulls line the walls of this domed hall on shelves of black crepe, // each with a candle guttering inside so its eyes and teeth glow. They are
+1792696964	cmd	Trentlin	50	4207	dresden_halloween.are	standing	85	1	-	south		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792696966	cmd	Trentlin	50	4202	dresden_halloween.are	standing	85	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792696966	cmd	Trentlin	50	4201	dresden_halloween.are	standing	85	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792696966	cmd	Trentlin	50	2427	dresden_halloween.are	standing	85	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792696966	cmd	Trentlin	50	2427	dresden_halloween.are	standing	85	0	-	east		Alas, you cannot go that way.
+1792696967	cmd	Trentlin	50	2404	dresden_halloween.are	standing	85	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792696967	cmd	Trentlin	50	2401	dresden_halloween.are	standing	85	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792696968	cmd	Trentlin	50	2410	dresden_halloween.are	standing	85	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792696968	cmd	Trentlin	50	2411	dresden_halloween.are	standing	85	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792696969	cmd	Trentlin	50	2414	dresden_halloween.are	standing	85	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792696969	cmd	Trentlin	50	2497	dresden_halloween.are	standing	85	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792696969	cmd	Trentlin	50	2497	dresden_halloween.are	standing	85	0	-	up		Alas, you cannot go that way.
+1792696970	cmd	Trentlin	50	2497	dresden_halloween.are	standing	85	0	-	note		Notes addressed to you: //   1)   Ungrim       Pkilling                     Fri Mar 17 15:15:27 2000 //   2)   Ungrim       previous                     Fri Mar 17 15:16:52 2000
+1792696975	cmd	Trentlin	50	2497	dresden_halloween.are	standing	85	6	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Trentlin. The realm needs someone of your skill.' // Questor Thews tells you 'The criminal known as the captain has escaped from prison!'
+1792696983	cmd	Trentlin	50	2401	dresden_halloween.are	standing	85	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792697001	cmd	Trentlin	50	2426	dresden_halloween.are	standing	85	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792697001	cmd	Trentlin	50	2426	dresden_halloween.are	standing	85	0	-	open	east	Ok.
+1792697002	cmd	Trentlin	50	2440	dresden_halloween.are	standing	85	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792697002	cmd	Trentlin	50	3525	midennir_halloween.are	standing	85	0	-	run	e 3	City Entrance // [Exits: north east west] // The Cross Roads
+1792697002	cmd	Trentlin	50	3525	midennir_halloween.are	standing	85	0	-	run	s 4	You slam into a wall!.
+1792697002	refused	Trentlin	50	3525	midennir_halloween.are	resting	85	0	-	east		Nah... You feel too relaxed...
+1792697003	refused	Trentlin	50	3525	midennir_halloween.are	resting	85	0	-	east		Nah... You feel too relaxed...
+1792697003	refused	Trentlin	50	3525	midennir_halloween.are	resting	85	0	-	south		Nah... You feel too relaxed...
+1792697003	refused	Trentlin	50	3525	midennir_halloween.are	resting	85	0	-	east		Nah... You feel too relaxed...
+1792697003	refused	Trentlin	50	3525	midennir_halloween.are	resting	85	0	-	east		Nah... You feel too relaxed...
+1792697004	refused	Trentlin	50	3525	midennir_halloween.are	resting	85	0	-	down		Nah... You feel too relaxed...
+1792697004	refused	Trentlin	50	3525	midennir_halloween.are	resting	85	0	-	south		Nah... You feel too relaxed...
+1792697004	refused	Trentlin	50	3525	midennir_halloween.are	resting	85	0	-	run	e 8	Nah... You feel too relaxed...
+1792697004	cmd	Trentlin	50	3525	midennir_halloween.are	resting	85	0	-	open	east	You can't do that.
+1792697005	refused	Trentlin	50	3525	midennir_halloween.are	resting	85	0	-	east		Nah... You feel too relaxed...
+1792697006	cmd	Trentlin	50	3525	midennir_halloween.are	resting	85	0	-	wake		You stand up.
+1792697006	cmd	Trentlin	50	3502	midennir_halloween.are	standing	85	0	-	west		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  A crow sits at the center of the
+1792697006	cmd	Trentlin	50	3503	midennir_halloween.are	standing	85	0	-	west		City Entrance //   You stand on the outskirts of Dresden.  A line of carved pumpkins marks // the city boundary, their flames burning in no wind.  To the east lies the
+1792697007	cmd	Trentlin	50	2440	dresden_halloween.are	standing	85	0	-	west		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792697007	cmd	Trentlin	50	2426	dresden_halloween.are	standing	85	0	-	west		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1792697008	cmd	Trentlin	50	2425	dresden_halloween.are	standing	85	0	-	west		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.
+1792697010	cmd	Trentlin	50	2424	dresden_halloween.are	standing	85	0	-	west		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.
+1792697010	cmd	Trentlin	50	2423	dresden_halloween.are	standing	85	0	-	west		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a
+1792697010	cmd	Trentlin	50	2422	dresden_halloween.are	standing	85	0	-	west		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.
+1792697012	cmd	Trentlin	50	2421	dresden_halloween.are	standing	86	0	-	west		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a
+1792697014	cmd	Trentlin	50	2420	dresden_halloween.are	standing	86	0	-	west		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.
+1792697015	cmd	Trentlin	50	2403	dresden_halloween.are	standing	86	0	-	west		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.
+1792697016	cmd	Trentlin	50	2401	dresden_halloween.are	standing	86	0	-	west		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792697020	cmd	Trentlin	50	2426	dresden_halloween.are	standing	86	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792697020	cmd	Trentlin	50	2426	dresden_halloween.are	standing	86	0	-	open	east	It's already open.
+1792697020	cmd	Trentlin	50	2440	dresden_halloween.are	standing	86	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792697021	cmd	Trentlin	50	3525	midennir_halloween.are	standing	86	0	-	run	e 3	City Entrance // [Exits: north east west] // The Cross Roads
+1792697021	cmd	Trentlin	50	3525	midennir_halloween.are	standing	86	0	-	run	s 4	You slam into a wall!.
+1792697021	refused	Trentlin	50	3525	midennir_halloween.are	resting	86	0	-	east		Nah... You feel too relaxed...
+1792697021	refused	Trentlin	50	3525	midennir_halloween.are	resting	86	0	-	east		Nah... You feel too relaxed...
+1792697022	refused	Trentlin	50	3525	midennir_halloween.are	resting	86	0	-	south		Nah... You feel too relaxed...
+1792697022	refused	Trentlin	50	3525	midennir_halloween.are	resting	86	0	-	east		Nah... You feel too relaxed...
+1792697022	refused	Trentlin	50	3525	midennir_halloween.are	resting	86	0	-	east		Nah... You feel too relaxed...
+1792697022	refused	Trentlin	50	3525	midennir_halloween.are	resting	86	0	-	down		Nah... You feel too relaxed...
+1792697023	refused	Trentlin	50	3525	midennir_halloween.are	resting	86	0	-	south		Nah... You feel too relaxed...
+1792697023	refused	Trentlin	50	3525	midennir_halloween.are	resting	86	0	-	run	e 8	Nah... You feel too relaxed...
+1792697023	cmd	Trentlin	50	3525	midennir_halloween.are	resting	86	0	-	open	east	You can't do that.
+1792697023	refused	Trentlin	50	3525	midennir_halloween.are	resting	86	0	-	east		Nah... You feel too relaxed...
+1792697024	cmd	Trentlin	50	3525	midennir_halloween.are	resting	86	0	-	wake		You stand up.
+1792697024	cmd	Trentlin	50	3525	midennir_halloween.are	standing	86	0	-	look		Along the Eastern Road //   You are walking along a well-travelled road between Dresden and lands // east.  A northern road crosses this one to the west, towards Dresden.  
+1792697025	cmd	Trentlin	50	3526	midennir_halloween.are	standing	86	0	-	east		Along the Eastern Road //   You are travelling down the eastern road between Dresden and the eastern // lands.  The road back to Dresden is west of you, and a heavily guarded
+1792697032	cmd	Trentlin	50	55	connect.are	standing	86	0	-	run	s 4	Dusty Path // [Exits: north east] // You slam into a wall!.
+1792697032	refused	Trentlin	50	55	connect.are	resting	86	0	-	east		Nah... You feel too relaxed...
+1792697032	refused	Trentlin	50	55	connect.are	resting	86	0	-	east		Nah... You feel too relaxed...
+1792697033	refused	Trentlin	50	55	connect.are	resting	86	0	-	south		Nah... You feel too relaxed...
+1792697033	refused	Trentlin	50	55	connect.are	resting	86	0	-	east		Nah... You feel too relaxed...
+1792697033	refused	Trentlin	50	55	connect.are	resting	86	0	-	east		Nah... You feel too relaxed...
+1792697033	refused	Trentlin	50	55	connect.are	resting	86	0	-	down		Nah... You feel too relaxed...
+1792697034	refused	Trentlin	50	55	connect.are	resting	86	0	-	south		Nah... You feel too relaxed...
+1792697034	refused	Trentlin	50	55	connect.are	resting	86	0	-	run	e 8	Nah... You feel too relaxed...
+1792697034	cmd	Trentlin	50	55	connect.are	resting	86	0	-	open	east	You can't do that.
+1792697034	refused	Trentlin	50	55	connect.are	resting	86	0	-	east		Nah... You feel too relaxed...
+1792697035	cmd	Trentlin	50	55	connect.are	resting	86	0	-	wake		You stand up.
+1792697035	cmd	Trentlin	50	1501	gnome.are	standing	86	0	-	east		Entrance to Gnome Village //   You stand on a dusty path that leads north and east.  To the east you hear // the sounds of a small village.
+1792697036	cmd	Trentlin	50	4207	dresden_halloween.are	standing	86	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792697037	cmd	Trentlin	50	4208	dresden_halloween.are	standing	86	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792697038	cmd	Trentlin	50	4208	dresden_halloween.are	standing	86	0	-	west		Alas, you cannot go that way.
+1792697039	cmd	Trentlin	50	4208	dresden_halloween.are	standing	86	0	-	heal	refresh	Hermie turns to you with a wink. // Hermie rests a hand on your shoulder, and the ache goes out of you.
+1792697040	cmd	Trentlin	50	4207	dresden_halloween.are	standing	86	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792697040	cmd	Trentlin	50	4202	dresden_halloween.are	standing	86	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792697040	cmd	Trentlin	50	4201	dresden_halloween.are	standing	86	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792697040	cmd	Trentlin	50	2427	dresden_halloween.are	standing	86	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792697041	cmd	Trentlin	50	2404	dresden_halloween.are	standing	86	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792697041	cmd	Trentlin	50	2401	dresden_halloween.are	standing	86	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
