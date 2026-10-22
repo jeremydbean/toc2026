@@ -3878,3 +3878,138 @@
 1792632662	cmd	Alaric	54	4208	dresden_halloween.are	standing	32	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
 1792632664	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	changes		What is new, newest first:
 1792632712	session	Alaric	54	4208	dresden_halloween.are	quit	1900s	+1 levels	+9283 exp	+130441142 copper	26 kills	0 deaths	0 quests	257 commands	7 refused
+1792665368	cmd	Trentlin	50	4210	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1792665369	cmd	Trentlin	50	4210	dresden_halloween.are	standing	100	0	-	look		The Sickroom of the Restless
+1792665371	cmd	Trentlin	50	4203	dresden_halloween.are	standing	100	0	-	south		The Hall of Cobwebs
+1792665371	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers
+1792665372	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792665372	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792665373	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792665374	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792665377	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792665377	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792665377	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792665378	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792665378	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792665380	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	6	-	aquest	request	You approach Questor Thews and ask for a quest.
+1792665383	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792665401	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	run	w 7	Western Oak Tree Square.
+1792665401	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	open	west	Ok.
+1792665402	cmd	Trentlin	50	2439	dresden_halloween.are	standing	100	0	-	west		Outside the Western Gates of Dresden.
+1792665402	cmd	Trentlin	50	3900	dresden_halloween.are	standing	100	0	-	north		West trail around Dresden
+1792665402	cmd	Trentlin	50	3901	dresden_halloween.are	standing	100	0	-	north		West trail around Dresden
+1792665402	cmd	Trentlin	50	3902	dresden_halloween.are	standing	100	0	-	north		Northwest corner of dusty trail.
+1792665403	cmd	Trentlin	50	3903	dresden_halloween.are	standing	100	0	-	east		Dusty trail along north wall.
+1792665403	cmd	Trentlin	50	3904	dresden_halloween.are	standing	100	0	-	east		The long dusty trail following the north wall.
+1792665403	cmd	Trentlin	50	324	plains.are	standing	100	0	-	run	n 5	Path in the plains
+1792665403	cmd	Trentlin	50	323	plains.are	standing	100	0	-	west		The steep foothills
+1792665404	cmd	Trentlin	50	24	connect.are	standing	100	0	-	west		Crossing the Foothills
+1792665404	cmd	Trentlin	50	25	connect.are	standing	100	0	-	nw		The Switchbacks
+1792665404	cmd	Trentlin	50	9201	canyon.are	standing	100	0	-	north		A Mountain Path
+1792665404	cmd	Trentlin	50	9202	canyon.are	standing	100	0	-	up		A Mountain Path
+1792665405	cmd	Trentlin	50	9203	canyon.are	standing	100	0	-	up		Mountainside Tombs
+1792665405	cmd	Trentlin	50	9204	canyon.are	standing	100	0	-	up		A Blind Curve on the Mountain Path.
+1792665405	cmd	Trentlin	50	9205	canyon.are	standing	100	0	-	up		Vista
+1792665405	cmd	Trentlin	50	9206	canyon.are	standing	100	0	-	north		The Overlook
+1792665406	cmd	Trentlin	50	9207	canyon.are	standing	100	0	-	down		Entrance to Elemental Canyon
+1792665408	cmd	Trentlin	50	9209	canyon.are	standing	100	0	-	north		Elemental Gateway
+1792665410	cmd	Trentlin	50	9209	canyon.are	standing	100	0	-	exits		Obvious exits:
+1792665411	cmd	Trentlin	50	9212	canyon.are	standing	100	0	-	north		The Floor of the Canyon
+1792665411	cmd	Trentlin	50	9212	canyon.are	standing	100	0	-	exits		Obvious exits:
+1792665412	cmd	Trentlin	50	9215	canyon.are	standing	100	0	-	north		The Floor of the Canyon
+1792665413	cmd	Trentlin	50	9218	canyon.are	standing	100	0	-	north		The Floor of the Canyon
+1792665415	cmd	Trentlin	50	9218	canyon.are	standing	100	0	-	exits		Obvious exits:
+1792665416	cmd	Trentlin	50	9219	canyon.are	standing	100	0	-	east		The Floor of the Canyon
+1792665416	cmd	Trentlin	50	9219	canyon.are	standing	100	0	-	exits		Obvious exits:
+1792665418	cmd	Trentlin	50	9254	canyon.are	standing	100	0	-	north		Mesa East
+1792665419	cmd	Trentlin	50	9254	canyon.are	standing	100	0	-	exits		Obvious exits:
+1792665420	cmd	Trentlin	50	9255	canyon.are	standing	100	0	-	north		Floating in Air
+1792665421	cmd	Trentlin	50	9257	canyon.are	standing	100	0	-	north		Floating in Air
+1792665423	cmd	Trentlin	50	9255	canyon.are	standing	100	0	-	south		Floating in Air
+1792665423	cmd	Trentlin	50	9255	canyon.are	standing	100	0	-	exits		Obvious exits:
+1792665424	cmd	Trentlin	50	9257	canyon.are	standing	100	0	-	north		Floating in Air
+1792665425	cmd	Trentlin	50	9258	canyon.are	standing	100	0	-	east		Floating in Air
+1792665426	cmd	Trentlin	50	9258	canyon.are	standing	100	0	-	exits		Obvious exits:
+1792665428	cmd	Trentlin	50	9259	canyon.are	standing	100	0	-	east		Windy Tunnel
+1792665428	cmd	Trentlin	50	9259	canyon.are	standing	100	0	-	exits		Obvious exits:
+1792665429	cmd	Trentlin	50	9260	canyon.are	standing	100	0	-	east		Air Chamber
+1792665429	cmd	Trentlin	50	9260	canyon.are	standing	100	0	-	exits		Obvious exits:
+1792665431	cmd	Trentlin	50	9259	canyon.are	standing	100	0	-	west		Windy Tunnel
+1792665432	cmd	Trentlin	50	9258	canyon.are	standing	100	0	-	west		Floating in Air
+1792665433	cmd	Trentlin	50	9256	canyon.are	standing	100	0	-	south		Floating in Air
+1792665434	cmd	Trentlin	50	9255	canyon.are	standing	100	0	-	west		Floating in Air
+1792665435	cmd	Trentlin	50	9255	canyon.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792665436	cmd	Trentlin	50	9257	canyon.are	standing	100	0	-	north		Floating in Air
+1792665437	cmd	Trentlin	50	9255	canyon.are	standing	100	0	-	south		Floating in Air
+1792665437	cmd	Trentlin	50	9254	canyon.are	standing	100	0	-	south		Mesa East
+1792665438	cmd	Trentlin	50	9253	canyon.are	standing	100	0	-	west		Mesa West
+1792665438	cmd	Trentlin	50	9246	canyon.are	standing	100	0	-	west		Electric Pathway
+1792665439	cmd	Trentlin	50	9246	canyon.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792665440	cmd	Trentlin	50	9248	canyon.are	standing	100	0	-	north		The Electric Playground
+1792665441	cmd	Trentlin	50	9247	canyon.are	standing	100	0	-	west		The Electric Playground
+1792665443	cmd	Trentlin	50	9249	canyon.are	standing	100	0	-	north		The Electric Playground
+1792665444	cmd	Trentlin	50	9250	canyon.are	standing	100	0	-	east		The Electric Playground
+1792665445	cmd	Trentlin	50	9251	canyon.are	standing	100	0	-	east		Lightning Causeway
+1792665447	cmd	Trentlin	50	9252	canyon.are	standing	100	0	-	up		Lightning Chamber
+1792665449	cmd	Trentlin	50	9252	canyon.are	standing	100	0	-	get	akk	I see no akk here.
+1792665452	cmd	Trentlin	50	9252	canyon.are	standing	100	0	-	get	sc	You get The Sceptre of Gravestone.
+1792665453	cmd	Trentlin	50	9252	canyon.are	standing	100	0	-	recall		Your prayer goes up and comes back unanswered.
+1792665455	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792665457	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792665457	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792665457	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792665458	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792665459	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792665459	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792665460	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792665460	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792665460	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792665462	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	2	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792665466	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 86 quest points! **
+1792665471	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	points	Quest Points: 1762
+1792665474	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	score		--------------------------------------------------------------
+1792665483	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	equipment		You are using:
+1792665487	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792665491	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792665493	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	drop	comp	You drop the Demon dungeon compass.
+1792665493	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	drop	comp	You do not have that item.
+1792665493	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	drop	comp	You do not have that item.
+1792665496	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	drop	key	You drop a small key.
+1792665496	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	drop	key	You drop a small key.
+1792665496	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	drop	key	You drop a small key.
+1792665496	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	drop	key	You drop a small key.
+1792665498	cmd	Trentlin	50	2402	dresden_halloween.are	standing	100	0	-	north		Northern Oak Tree Square.
+1792665499	cmd	Trentlin	50	2415	dresden_halloween.are	standing	100	0	-	north		Main Processional, Strung with Lanterns
+1792665501	cmd	Trentlin	50	2496	dresden_halloween.are	standing	100	0	-	north		Main Processional, Where the Candles Burn
+1792665502	cmd	Trentlin	50	2415	dresden_halloween.are	standing	100	0	-	south		Main Processional, Strung with Lanterns
+1792665502	cmd	Trentlin	50	2485	dresden_halloween.are	standing	100	0	-	east		Market Plaza.
+1792665502	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	south		Weapons Shop.
+1792665504	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	lan	The hooded headsman repairs your the Gohma eye-lance.
+1792665505	cmd	Trentlin	50	2485	dresden_halloween.are	standing	100	0	-	north		Market Plaza.
+1792665506	cmd	Trentlin	50	2415	dresden_halloween.are	standing	100	0	-	west		Main Processional, Strung with Lanterns
+1792665506	cmd	Trentlin	50	2402	dresden_halloween.are	standing	100	0	-	south		Northern Oak Tree Square.
+1792665507	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	south		Oak Tree Square on Hallows Eve
+1792665509	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	get	small	You get a small key.
+1792665509	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	get	small	You get a small key.
+1792665509	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	get	small	You get a small key.
+1792665509	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	get	small	You get a small key.
+1792665510	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	sacrifice	com	The Gods give you 0 copper coins for your sacrifice.
+1792665512	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying:
+1792665527	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	compare	cloa	A) an assassin's cloak (level 52) -- can't use: needs level 52
+1792665529	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	compare	pearl	A) a pearl bracelet (level 46) -- can't use: what you wear there won't come off
+1792665534	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	remove	tiat	You do not have that item.
+1792665538	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	remove	brac	You can't remove titanium bracers.
+1792665539	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	remove	brac	You can't remove titanium bracers.
+1792665544	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	south		Southern Oak Tree Square.
+1792665545	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	south		Main Processional, Below the Temple Steps
+1792665546	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	west		Entrance to the Haunted Temple
+1792665546	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	west		The Hall of Whispers
+1792665546	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	west		Before the Shrouded Altar
+1792665547	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota
+1792665547	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792665549	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	The cackling witch-healer says 'Your gear is closed to my magic while you shun summoning. Type NOSUMMON to open it, then ask again.'
+1792665559	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	nosummon		You are no longer immune to summon.
+1792665562	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	The cackling witch-healer utters the words 'candussido judifgz'.
+1792665566	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	The cackling witch-healer utters the words 'candussido judifgz'.
+1792665570	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	The cackling witch-healer utters the words 'candussido judifgz'.
+1792665574	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	The cackling witch-healer utters the words 'candussido judifgz'.
