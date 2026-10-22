@@ -4613,6 +4613,26 @@ async def get_leveling(
     }
 
 
+def proxy_header_line(client: Optional[Address]) -> str:
+    """The PROXY v1 line the bridge sends first, naming the real player.
+
+    TCP4 for an IPv4 peer, TCP6 for an IPv6 one (the game folds an IPv6
+    peer into a throttle key of its own; see proxy_header_accept in
+    src/comm.c), and UNKNOWN when the peer is not an address at all, which
+    the game consumes and ignores -- so the first line is always a header
+    and never something a player typed.
+    """
+    host = client.host if client else ""
+    port = (client.port or 0) if client else 0
+    try:
+        address = ipaddress.ip_address(host)
+    except ValueError:
+        return "PROXY UNKNOWN\r\n"
+    if address.version == 4:
+        return "PROXY TCP4 {} {} {} {}\r\n".format(address, MUD_HOST, port, MUD_PORT)
+    return "PROXY TCP6 {} ::1 {} {}\r\n".format(address.compressed, port, MUD_PORT)
+
+
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket) -> None:
     if not websocket_origin_allowed(websocket):
@@ -4631,13 +4651,13 @@ async def websocket_endpoint(websocket: WebSocket) -> None:
         # login throttle, which skips loopback for exactly that reason.
         # A PROXY v1 header names the real client; the game accepts it only
         # over loopback, so a direct player cannot forge their address.
-        peer = websocket.client.host if websocket.client else ""
-        if peer and ":" not in peer:  # IPv4 only; PROXY TCP4 has no v6 form
-            header = "PROXY TCP4 {} {} {} {}\r\n".format(
-                peer, MUD_HOST, websocket.client.port or 0, MUD_PORT
-            )
-            writer.write(header.encode("latin-1"))
-            await writer.drain()
+        #
+        # Always send one, and first: the game reads a header only as the
+        # very first line on a connection, so a bridged connection without
+        # one would stay "loopback" -- unthrottled, and every such player
+        # recorded as one address. IPv6 peers used to get none at all.
+        writer.write(proxy_header_line(websocket.client).encode("latin-1"))
+        await writer.drain()
 
         await websocket.send_text("\0TOC_CONNECTED")
         

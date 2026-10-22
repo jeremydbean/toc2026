@@ -48,6 +48,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <limits.h>
+#include <poll.h>
 #include <sys/resource.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
@@ -779,6 +780,26 @@ void game_loop_mac_msdos( void )
 
 
 #if defined(unix)
+/*
+ * Save whoever a connection being dropped was playing. Only a connection
+ * in the game holds the character: one at the login prompts holds the copy
+ * read from disk at the name prompt, and writing that back put the file as
+ * it stood then over everything saved since -- type a name, wait for the
+ * character to give something away and quit, hang up, and the file had it
+ * back (audit, 2026-10-22). A switched player is saved as themselves.
+ */
+static void save_dropped_player( DESCRIPTOR_DATA *d )
+{
+    CHAR_DATA *who;
+
+    if ( d == NULL || d->connected != CON_PLAYING )
+        return;
+
+    who = d->original != NULL ? d->original : d->character;
+    if ( who != NULL && who->level >= 1 )
+        save_char_obj( who );
+}
+
 void game_loop_unix( int control )
 {
     static struct timeval null_time;
@@ -879,8 +900,7 @@ void game_loop_unix( int control )
 	    {
 		FD_CLR( d->descriptor, &in_set  );
 		FD_CLR( d->descriptor, &out_set );
-		if ( d->character && d->character->level >= 1)
-		    save_char_obj( d->character );
+		save_dropped_player( d );
 		d->outtop       = 0;
 		close_socket( d );
 	    }
@@ -901,8 +921,7 @@ void game_loop_unix( int control )
                 if ( !read_from_descriptor( d ) )
 		{
 		    FD_CLR( d->descriptor, &out_set );
-		    if ( d->character != NULL && d->character->level >= 1)
-			save_char_obj( d->character );
+		    save_dropped_player( d );
 		    d->outtop   = 0;
                     close_socket( d );
                     continue;
@@ -921,7 +940,7 @@ void game_loop_unix( int control )
             if (d->character != NULL && d->character->pcdata != NULL
             &&  d->character->pcdata->dcount > 10)
             {
-                save_char_obj(d->character);
+                save_dropped_player(d);
                 close_socket(d);
             }
         }
@@ -1042,13 +1061,23 @@ void game_loop_unix( int control )
 	{
 	    d_next = d->next;
 
+	    /* A write failed somewhere this pulse (write_to_buffer's
+	       overflow flush, a telnet reply): close it here, where
+	       nothing is holding it. */
+	    if ( d->write_failed )
+	    {
+		save_dropped_player( d );
+		d->outtop   = 0;
+		close_socket( d );
+		continue;
+	    }
+
 	    if ( ( d->fcommand || d->outtop > 0 )
 	    &&   FD_ISSET( d->descriptor, &out_set ) )
 	    {
 		if ( !process_output( d, TRUE ) )
 		{
-		    if ( d->character != NULL && d->character->level >= 1)
-			save_char_obj( d->character );
+		    save_dropped_player( d );
 		    d->outtop   = 0;
 		    close_socket( d );
 		}
@@ -1400,6 +1429,8 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
     dnew->outsize = 2000;
     dnew->outbuf = alloc_mem(dnew->outsize);
     dnew->color = true;
+    dnew->write_failed = FALSE;
+    dnew->first_line_read = FALSE;
 
     size = sizeof(sock);
     if (getpeername(desc, (struct sockaddr *)&sock, &size) < 0) {
@@ -2329,6 +2360,10 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
     int prefix_len = 0;
     const char *prefix = "";
 
+    /* A connection being dropped for a failed write takes nothing more. */
+    if ( d->write_failed )
+        return;
+
     /*
      * Find length in case caller didn't.
      */
@@ -2373,19 +2408,27 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
 	     * paging off. A single piece bigger than the whole buffer goes
 	     * straight out.
 	     */
+	    /*
+	     * A write that fails here does not close the socket: every
+	     * caller of write_to_buffer goes on using d and its character
+	     * afterwards, and a loop over descriptor_list would follow a
+	     * closed one's next into the free list. write_failed marks it,
+	     * output to it is dropped from now on, and the game loop closes
+	     * it (audit, 2026-10-22).
+	     */
 	    if ( d->outtop > 0 )
 	    {
 		if ( !write_to_descriptor( d, d->outbuf, d->outtop ) )
 		{
-		    close_socket( d );
+		    d->outtop = 0;
 		    return;
 		}
 		d->outtop = 0;
 		continue;
 	    }
-	    if ( ( prefix_len > 0 && !write_to_descriptor( d, prefix, prefix_len ) )
-	    ||   !write_to_descriptor( d, txt, length ) )
-		close_socket( d );
+	    if ( prefix_len > 0 && !write_to_descriptor( d, prefix, prefix_len ) )
+		return;
+	    write_to_descriptor( d, txt, length );
 	    return;
  	}
 	outbuf      = alloc_mem( 2 * d->outsize );
@@ -2416,16 +2459,88 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
  * deflated first; everything else goes straight out. Keeping the split here
  * means every existing caller gets compression for free and none of them need
  * to know about it.
+ *
+ * A failure marks the descriptor (write_failed) so nothing more is written
+ * to it and the game loop closes it; see write_raw_to_descriptor.
  */
 bool write_to_descriptor( DESCRIPTOR_DATA *d, const char *txt, int length )
 {
+    bool ok;
+
     if ( d == NULL || txt == NULL )
         return TRUE;
 
-    if ( d->out_compress != NULL )
-        return telnet_write_compressed( d, txt, length );
+    if ( d->write_failed )
+        return FALSE;
 
-    return write_raw_to_descriptor( d, txt, length );
+    if ( d->out_compress != NULL )
+        ok = telnet_write_compressed( d, txt, length );
+    else
+        ok = write_raw_to_descriptor( d, txt, length );
+
+    if ( !ok )
+        d->write_failed = TRUE;
+    return ok;
+}
+
+/*
+ * How long one write may wait on a socket whose buffer is full.
+ *
+ * The sockets are non-blocking, so EAGAIN means the kernel's send buffer
+ * is full: the client has not read what it was already sent. This loop
+ * used to retry at once on EAGAIN, for ever, and the game is one thread --
+ * a single client that stopped reading (a sleeping phone, a stalled link,
+ * a web bridge behind a stalled browser) froze every player until it read
+ * again (audit, 2026-10-22).
+ *
+ * Giving up at the first EAGAIN would be too harsh. The game loop only
+ * flushes a descriptor that select() says is writable, so EAGAIN here
+ * means one burst was bigger than the free buffer -- CHANGES ALL, a long
+ * WHO, an MCCP stream's flush -- and a client that is reading, but over a
+ * slow or distant link, frees room again within a round trip. So the
+ * write waits for room with poll(): it gives up once WRITE_STALL_MS pass
+ * with not one byte taken, or WRITE_STALL_MAX_MS in all, whichever is
+ * first. A quarter of a second is one game pulse; a client that cannot
+ * take a byte for that long, with its buffers already full, is not
+ * reading, and the most the rest of the game ever waits on it is once,
+ * for that long, before it is dropped.
+ */
+#define WRITE_STALL_MS          250
+#define WRITE_STALL_MAX_MS      1000
+
+static long write_ms_since( const struct timespec *since )
+{
+    struct timespec now;
+
+    clock_gettime( CLOCK_MONOTONIC, &now );
+    return (long)( now.tv_sec - since->tv_sec ) * 1000L
+         + (long)( now.tv_nsec - since->tv_nsec ) / 1000000L;
+}
+
+/* Wait for room in the socket's send buffer. FALSE: give the client up. */
+static bool write_wait_for_room( int fd, const struct timespec *started,
+                                 const struct timespec *progress )
+{
+    struct pollfd pfd;
+    long stalled = write_ms_since( progress );
+    long total   = write_ms_since( started );
+    long wait;
+
+    if ( stalled >= WRITE_STALL_MS || total >= WRITE_STALL_MAX_MS )
+        return FALSE;
+
+    wait = WRITE_STALL_MS - stalled;
+    if ( WRITE_STALL_MAX_MS - total < wait )
+        wait = WRITE_STALL_MAX_MS - total;
+
+    pfd.fd      = fd;
+    pfd.events  = POLLOUT;
+    pfd.revents = 0;
+    if ( poll( &pfd, 1, (int)wait ) < 0 && errno != EINTR )
+        return FALSE;
+    /* Room or not, the write is tried again; a write that still finds
+       the buffer full comes back here and is judged by the clock. */
+    return TRUE;
 }
 
 bool write_raw_to_descriptor( DESCRIPTOR_DATA *d, const char *txt, int length )
@@ -2433,9 +2548,15 @@ bool write_raw_to_descriptor( DESCRIPTOR_DATA *d, const char *txt, int length )
     ssize_t nWrite;
     const char *p;
     size_t remaining;
+    struct timespec started;
+    struct timespec progress;
+    bool waited = FALSE;
 
     if ( txt == NULL )
         return TRUE;
+
+    if ( d->write_failed )
+        return FALSE;
 
     if ( length <= 0 )
         remaining = strlen( txt );
@@ -2449,23 +2570,207 @@ bool write_raw_to_descriptor( DESCRIPTOR_DATA *d, const char *txt, int length )
         nWrite = write( d->descriptor, p, nBlock );
         if ( nWrite < 0 )
         {
-            if ( errno == EAGAIN || errno == EINTR )
+            if ( errno == EINTR )
                 continue;
 
+            if ( errno == EAGAIN || errno == EWOULDBLOCK )
+            {
+                if ( !waited )
+                {
+                    clock_gettime( CLOCK_MONOTONIC, &started );
+                    progress = started;
+                    waited   = TRUE;
+                }
+                if ( write_wait_for_room( d->descriptor, &started, &progress ) )
+                    continue;
+
+                d->write_failed = TRUE;
+                {
+                    /* A local buffer: callers write log_buf and then send
+                       it (wizinfo), and this can run in the middle. */
+                    char stall_buf[MAX_STRING_LENGTH];
+
+                    snprintf( stall_buf, sizeof(stall_buf),
+                        "Dropping %s@%s: it stopped reading (%lu bytes unsent).",
+                        d->character != NULL && d->character->name != NULL
+                            ? d->character->name : "(connecting)",
+                        d->host != NULL ? d->host : "?",
+                        (unsigned long) remaining );
+                    log_string( stall_buf );
+                }
+                return FALSE;
+            }
+
             perror( "Write_to_descriptor" );
+            d->write_failed = TRUE;
             return FALSE;
         }
 
         if ( nWrite == 0 )
+        {
+            d->write_failed = TRUE;
             return FALSE;
+        }
 
         remaining -= (size_t)nWrite;
         p         += nWrite;
+        if ( waited )
+            clock_gettime( CLOCK_MONOTONIC, &progress );
     }
 
     return TRUE;
 }
 
+
+/*
+ * Is a character of this name held by any connection but d -- in the game,
+ * being created, or at the login prompts? A new name is refused while
+ * somebody else holds it: two connections could both create the same name,
+ * both enter, and the second save took the file, locking the first creator
+ * out of the character they made (audit, 2026-10-22).
+ */
+static bool name_held_elsewhere( DESCRIPTOR_DATA *d, const char *name )
+{
+    DESCRIPTOR_DATA *other;
+
+    if ( name == NULL || name[0] == '\0' )
+        return FALSE;
+
+    for ( other = descriptor_list; other != NULL; other = other->next )
+    {
+        CHAR_DATA *held;
+
+        if ( other == d )
+            continue;
+        held = other->original != NULL ? other->original : other->character;
+        if ( held != NULL && held->name != NULL && !str_cmp( held->name, name ) )
+            return TRUE;
+    }
+
+    /* A link-dead player has no connection, and still owns the name. */
+    {
+        LIST_ITERATOR iter;
+        CHAR_DATA *wch;
+
+        FOR_EACH_CHARACTER( iter, wch )
+            if ( !IS_NPC(wch) && wch != d->character && wch->name != NULL
+            &&   !str_cmp( wch->name, name ) )
+                return TRUE;
+    }
+
+    return FALSE;
+}
+
+/*
+ * A new character is about to enter the game: is the name still theirs to
+ * take? Somebody else may have created it, or be creating it, since the
+ * name prompt let it through. FALSE sends them back to choose another.
+ */
+static bool new_name_still_free( DESCRIPTOR_DATA *d )
+{
+    char path[MAX_INPUT_LENGTH];
+    CHAR_DATA *ch = d->character;
+    FILE *fp;
+    bool taken;
+
+    taken = name_held_elsewhere( d, ch->name );
+    if ( !taken )
+    {
+        snprintf( path, sizeof(path), "%s%s", PLAYER_DIR, capitalize( ch->name ) );
+        if ( ( fp = fopen( path, "r" ) ) != NULL )
+        {
+            fclose( fp );
+            taken = TRUE;
+        }
+    }
+    if ( !taken )
+        return TRUE;
+
+    snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+              "New character %s@%s refused: the name was taken meanwhile.",
+              ch->name, d->host );
+    log_string( log_buf );
+    write_to_buffer( d,
+        "\n\rThat name was taken by someone else while you were creating your\n\r"
+        "character; choose another.\n\rName: ", 0 );
+    free_char( ch );
+    d->character = NULL;
+    d->connected = CON_GET_NAME;
+    return FALSE;
+}
+
+/*
+ * The password is right and nobody has this character in the game: read
+ * the file again before going in. The copy in hand was read at the name
+ * prompt, and the file can change while somebody sits at the password
+ * prompt -- the character quits after giving something away, is purged
+ * link-dead, or is PRESTOREd -- and entering with that copy brought the
+ * old file back: the item twice, the restore undone (audit, 2026-10-22).
+ *
+ * The fresh copy is checked as the name prompt checked the old one, and
+ * against its own password, which may have changed meanwhile. FALSE: the
+ * connection was closed or sent back to the name prompt.
+ */
+static bool login_reload_character( DESCRIPTOR_DATA *d, const char *password )
+{
+    char name[MAX_INPUT_LENGTH];
+    CHAR_DATA *ch;
+    bool found;
+
+    toc_strlcpy( name, d->character->name, sizeof(name) );
+    free_char( d->character );
+    d->character = NULL;
+
+    found = load_char_obj( d, name );
+    ch    = d->character;
+
+    if ( !found )
+    {
+        write_to_buffer( d,
+            "That character no longer exists.\n\rName: ", 0 );
+        free_char( ch );
+        d->character = NULL;
+        d->connected = CON_GET_NAME;
+        return FALSE;
+    }
+
+    if ( strcmp( crypt( password, ch->pcdata->pwd ), ch->pcdata->pwd ) )
+    {
+        login_note_failure( d );
+        write_to_buffer( d, "Wrong password.\n\r", 0 );
+        close_socket( d );
+        return FALSE;
+    }
+
+    if ( IS_SET(ch->act, PLR_DENY) )
+    {
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Denying access to %s@%s.",
+                  ch->name, d->host );
+        log_string( log_buf );
+        write_to_buffer( d, "You are denied access.\n\r", 0 );
+        close_socket( d );
+        return FALSE;
+    }
+
+    if ( check_ban( d->host, BAN_ALL ) )
+    {
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Banning access to %s@%s.",
+                  ch->name, d->host );
+        log_string( log_buf );
+        write_to_buffer( d, "Access denied.\n\r", 0 );
+        close_socket( d );
+        return FALSE;
+    }
+
+    if ( wizlock && !IS_HERO(ch) )
+    {
+        write_to_buffer( d, "The game is wizlocked.\n\r", 0 );
+        close_socket( d );
+        return FALSE;
+    }
+
+    return TRUE;
+}
 
 /*
  * Deal with sockets that haven't logged in yet.
@@ -2499,11 +2804,36 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
          * The browser client names the real player behind it before
          * anything else. Consume that and re-prompt: it is not a name,
          * and it must not count against the blank-line limit.
+         *
+         * Only the very first line may be one. Every name prompt used
+         * to accept it, so a player on a connection that still looked
+         * like loopback -- a bridged one that sent no header -- could
+         * type a PROXY line and choose the address their logins, bans
+         * and throttle were judged by (audit, 2026-10-22).
          */
-        if ( proxy_header_accept( d, argument ) )
+        if ( !d->first_line_read )
         {
-            write_to_buffer( d, "Name: ", 0 );
-            return;
+            d->first_line_read = TRUE;
+            if ( proxy_header_accept( d, argument ) )
+            {
+                long block;
+
+                /* The throttle was asked at connect, when this still
+                   looked like loopback, which it never blocks: ask again
+                   for the address the header named, or no web player
+                   was ever held back however often they guessed. */
+                if ( (block = login_block_remaining( d )) > 0 )
+                {
+                    snprintf( buf, sizeof(buf),
+                        "Too many failed login attempts. Try again in %ld second%s.\n\r",
+                        block, block == 1 ? "" : "s" );
+                    write_to_buffer( d, buf, 0 );
+                    close_socket( d );
+                    return;
+                }
+                write_to_buffer( d, "Name: ", 0 );
+                return;
+            }
         }
 
 	if ( argument[0] == '\0' )
@@ -2606,6 +2936,15 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 		    }
 		}
 	    }
+	    if ( name_held_elsewhere( d, ch->name ) )
+	    {
+		write_to_buffer( d,
+		    "That name is being taken by someone else right now; "
+		    "choose another.\n\rName: ", 0 );
+		free_char( d->character );
+		d->character = NULL;
+		return;
+	    }
 	    if (newlock)
 	    {
                 write_to_buffer( d, "The game is newlocked.\n\r", 0 );
@@ -2650,6 +2989,12 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 
 	if ( check_reconnect( d, ch->name, TRUE ) )
 	    return;
+
+	/* Nobody has them in the game: go in with the file as it is now,
+	   not as it was at the name prompt. */
+	if ( !login_reload_character( d, argument ) )
+	    return;
+	ch = d->character;
 
         snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s has connected.", ch->name, d->host );
         log_string( log_buf );
@@ -3068,6 +3413,12 @@ case CON_DEFAULT_CHOICE:
             free_mem(ch->gen_data, sizeof(*ch->gen_data));
             ch->gen_data = NULL;
         }
+
+        /* A new character's name may have been taken while they chose
+           their race and class: by a creation that finished first, or
+           one still running. Never let two enter as one name. */
+        if ( ch->level == 0 && !new_name_still_free( d ) )
+            return;
 
         write_to_buffer( d, "\n\rWelcome to ROM 2.4.  Please do not feed the mobiles.\n\r", 0 );
 	register_character( ch );
@@ -3917,6 +4268,17 @@ void act( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
  */
 #define QUEUE_FILE "webadmin.queue"
 
+/* Is this pointer still a character in the world? */
+static bool character_is_listed(CHAR_DATA *target) {
+    LIST_ITERATOR iter;
+    CHAR_DATA *wch;
+
+    FOR_EACH_CHARACTER(iter, wch)
+        if (wch == target)
+            return TRUE;
+    return FALSE;
+}
+
 void run_web_command(char *argument) {
     CHAR_DATA *ch;
     ROOM_INDEX_DATA *room;
@@ -3967,8 +4329,13 @@ void run_web_command(char *argument) {
             char_to_room( ch, room );
     }
     
-    /* Clean up -- extract_char calls char_from_room internally */
-    extract_char(ch, TRUE);
+    /* Clean up -- extract_char calls char_from_room internally. Only if
+       the command left the stand-in alive: one that extracted it (PURGE
+       SELF did) has already put it back in the pool, and extracting it
+       twice logged two "Extract_char: NULL" bugs and would free whatever
+       the pool had handed that memory to since. */
+    if (character_is_listed(ch))
+        extract_char(ch, TRUE);
 }
 
 static void process_web_admin_action(char *line)
@@ -4273,23 +4640,61 @@ static void login_journal_trim( void )
  * the login history, and exempt from the login throttle, which skips loopback
  * precisely because it could not tell them apart.
  *
- * Only loopback may send this. A header from anywhere else would let a player
- * choose the address recorded against them, and choose their way out of a
- * throttle block.
+ * Only loopback may send this, and only as the first line on the connection
+ * (nanny, CON_GET_NAME). A header from anywhere else, or later, would let a
+ * player choose the address recorded against them, and choose their way out
+ * of a throttle block.
  *
- * Format: PROXY TCP4 <src ip> <dst ip> <src port> <dst port>
+ * Formats:
+ *   PROXY TCP4 <src ip> <dst ip> <src port> <dst port>
+ *   PROXY TCP6 <src ip6> <dst ip6> <src port> <dst port>
+ *   PROXY UNKNOWN ...      (the bridge knew no peer: consumed, changes nothing)
+ *
+ * The descriptor keeps an IPv4 number (d->ip) for the throttle. An IPv6
+ * peer that is a mapped IPv4 address is that address; any other IPv6 peer
+ * keeps its own text as the host, and its number is a key folded from its
+ * /64 -- what one subscriber is normally given, so stepping through
+ * addresses inside it does not escape a block -- into 240.0.0.0/4, which
+ * no real IPv4 peer can come from. Until 2026-10-22 the bridge sent no
+ * header for an IPv6 peer at all, so those players stayed "loopback":
+ * unthrottled and all recorded as one.
  */
+static uint32_t proxy_ipv6_key( const struct in6_addr *addr )
+{
+    uint32_t hash = 2166136261u;        /* FNV-1a over the /64 */
+    int i;
+
+    for ( i = 0; i < 8; i++ )
+    {
+        hash ^= addr->s6_addr[i];
+        hash *= 16777619u;
+    }
+    return htonl( 0xF0000000u | ( hash & 0x0FFFFFFFu ) );
+}
+
 bool proxy_header_accept( DESCRIPTOR_DATA *d, const char *line )
 {
     char src[64];
     struct in_addr parsed;
+    struct in6_addr parsed6;
     const char *p;
     size_t length;
+    bool six;
 
     if ( d == NULL || line == NULL )
         return FALSE;
 
-    if ( str_prefix( "PROXY TCP4 ", line ) )
+    if ( !str_prefix( "PROXY TCP4 ", line ) )
+        six = FALSE;
+    else if ( !str_prefix( "PROXY TCP6 ", line ) )
+        six = TRUE;
+    else if ( !str_prefix( "PROXY UNKNOWN", line ) )
+    {
+        /* A header with no address in it: swallow it from loopback so
+           it is not taken for a name, and keep what we had. */
+        return d->ip != 0 && is_loopback_ip( d->ip );
+    }
+    else
         return FALSE;
 
     /* Trust the header only from the loopback interface. */
@@ -4301,11 +4706,40 @@ bool proxy_header_accept( DESCRIPTOR_DATA *d, const char *line )
     while ( *p != '\0' && *p != ' ' && length + 1 < sizeof(src) )
         src[length++] = *p++;
     src[length] = '\0';
+    if ( length == 0 )
+        return FALSE;
 
+    if ( six )
+    {
+        static const unsigned char mapped[12] =
+            { 0,0,0,0, 0,0,0,0, 0,0,0xff,0xff };
+        char text[INET_ADDRSTRLEN];
+
+        if ( inet_pton( AF_INET6, src, &parsed6 ) != 1 )
+            return FALSE;
+
+        /* ::1 tells us nothing more than loopback did. */
+        if ( IN6_IS_ADDR_LOOPBACK( &parsed6 ) )
+            return TRUE;
+
+        if ( memcmp( parsed6.s6_addr, mapped, sizeof(mapped) ) != 0 )
+        {
+            free_string( d->host );
+            d->host = str_dup( src );
+            d->ip   = proxy_ipv6_key( &parsed6 );
+            return TRUE;
+        }
+
+        /* ::ffff:a.b.c.d is an IPv4 peer: record it as one. */
+        memcpy( &parsed.s_addr, parsed6.s6_addr + 12, 4 );
+        if ( inet_ntop( AF_INET, &parsed, text, sizeof(text) ) == NULL )
+            return FALSE;
+        toc_strlcpy( src, text, sizeof(src) );
+    }
     /* inet_pton, not inet_aton: macOS hides inet_aton under the feature
        macros this file sets, and the build failed there (remort report,
        2026-10-21). A PROXY header carries a dotted quad either way. */
-    if ( length == 0 || inet_pton( AF_INET, src, &parsed ) != 1 )
+    else if ( inet_pton( AF_INET, src, &parsed ) != 1 )
         return FALSE;
 
     /* A header naming loopback tells us nothing; keep what we had. */

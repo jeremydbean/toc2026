@@ -598,6 +598,20 @@ struct  descriptor_data
      */
     void *              out_compress;       /* z_stream *, NULL when off */
     unsigned char *     out_compress_buf;
+    /*
+     * A write to this connection failed or the client stopped reading
+     * (comm.c, write_raw_to_descriptor). Output to it is discarded from
+     * then on, and the game loop closes it at a safe point -- never from
+     * inside write_to_buffer, whose callers go on using the descriptor
+     * and its character after the call.
+     */
+    bool                write_failed;
+    /*
+     * The first line has arrived. Only that line may be a PROXY header
+     * (proxy_header_accept); every later line is ordinary input, or a
+     * player on loopback could rename their address at any name prompt.
+     */
+    bool                first_line_read;
 };
 
 struct were_form

@@ -3433,6 +3433,15 @@ void do_purge( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* A mobile purging itself -- a switched immortal's body, or the
+       dashboard's stand-in, which run_web_command extracts again after
+       the command -- would be extracted under its own feet. */
+    if ( victim == ch )
+    {
+	send_to_char( "Yeah right.\n\r", ch );
+	return;
+    }
+
     act( "$n purged $N.", ch, NULL, victim, TO_NOTVICT );
         victim->position = POS_STANDING;
       extract_char( victim, true );

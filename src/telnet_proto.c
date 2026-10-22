@@ -164,6 +164,10 @@ static bool telnet_finish_compression( DESCRIPTOR_DATA *d )
     while ( status != Z_STREAM_END );
 
     telnet_end_compression( d );
+    /* Nothing after an unfinished stream is readable: write no more to
+       it, and let the game loop close it (write_to_descriptor). */
+    if ( !ok )
+        d->write_failed = TRUE;
     return ok;
 }
 
