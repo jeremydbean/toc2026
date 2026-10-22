@@ -3,7 +3,25 @@
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
-@ 20261022b 2026-10-22
+@ 20261022c 2026-10-22
+A round of fixes from a code audit:
+- Haggling for a part-used wand or staff takes money off its real price;
+  it can no longer come out free.
+- REPAIR no longer charges to "repair" armour that was never damaged.
+- REMORT puts back on only what your new body can wear: a weapon now too
+  heavy, or an off-hand weapon without dual wield, goes in your pack.
+- SECONDARY refuses a weapon whose own bonuses are over +5, or one the
+  enchant spells have worked on, as it always meant to.
+- Heat no longer erases an item's own countdown.
+- LOOK IN a portal no longer counts as visiting the room beyond.
+- CLIMB, CRAWL and JUMP respect private, newbie and hero rooms and cannot
+  carry you out of a fight; CRAWL and JUMP need you standing.
+- Meteor swarm strikes each target up to four times again.
+- Divine protection strikes back with an ordinary blow.
+- At login, gear you could not wear now (a second Blue Ring, something
+  above your level) is put in your pack.
+- Two people can no longer create the same new name at the same moment.
+
 A remort that keeps a two-handed weapon no longer gets a school shield
 strapped on beside it, and neither does OUTFIT: you have no hand for one,
 as WEAR has always said. The shield stays in your pack.

@@ -349,17 +349,23 @@ bool gear_race_allowed( CHAR_DATA *ch, OBJ_DATA *obj )
     return mine != 0 && IS_SET( allowed, mine );
 }
 
+/* SECONDARY's own limits (secondary_weapon_refusal in act_obj.c): no
+   single hit or damage bonus over 5, the prototype's or the weapon's own,
+   and nothing the enchant spells have worked on. */
 static bool gear_offhand_power_allowed( OBJ_DATA *obj )
 {
     AFFECT_DATA *paf;
+    int pass;
 
     if ( obj->enchanted )
         return false;
-    for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
-        if ( (paf->location == APPLY_HITROLL
-              || paf->location == APPLY_DAMROLL)
-            && paf->modifier > 5 )
-            return false;
+    for ( pass = 0; pass < 2; pass++ )
+        for ( paf = pass == 0 ? obj->pIndexData->affected : obj->affected;
+              paf != NULL; paf = paf->next )
+            if ( (paf->location == APPLY_HITROLL
+                  || paf->location == APPLY_DAMROLL)
+                && paf->modifier > 5 )
+                return false;
     return true;
 }
 
@@ -609,7 +615,10 @@ static void gear_apply_item( CHAR_DATA *ch, GEAR_LOADOUT *loadout,
     gear_apply_hyrule_relic( loadout, obj, sign );
     for ( i = 0; i < 4; i++ )
         loadout->armor[i] -= sign * apply_ac( obj, slot, i );
-    if ( !obj->enchanted && obj->pIndexData != NULL )
+    /* equip_char applies the prototype's affects whether or not the
+       object is enchanted (its stock ROM test is commented out), so the
+       comparison does too. */
+    if ( obj->pIndexData != NULL )
         for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
             gear_apply_affect( loadout, paf, sign );
     for ( paf = obj->affected; paf != NULL; paf = paf->next )
@@ -655,8 +664,7 @@ static void gear_item_flags( OBJ_DATA *obj, long *aff, long *aff2, long *imm )
     for ( pass = 0; pass < 2; pass++ )
     {
         if ( pass == 0 )
-            paf = (obj->enchanted || obj->pIndexData == NULL)
-                ? NULL : obj->pIndexData->affected;
+            paf = obj->pIndexData == NULL ? NULL : obj->pIndexData->affected;
         else
             paf = obj->affected;
         for ( ; paf != NULL; paf = paf->next )

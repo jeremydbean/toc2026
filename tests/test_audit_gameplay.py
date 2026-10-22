@@ -210,15 +210,22 @@ class EquipmentTests(unittest.TestCase):
     def test_secondary_refuses_a_weapon_with_its_own_bonuses(self) -> None:
         """Finding 12: the limit read only the prototype's affects, and the
         `enchanted` refusal tested a flag no spell sets. A dagger carrying
-        +8/+8 of its own was taken; one with a +2 of its own (ENCHANT
-        WEAPON's work) is an enchanted weapon. A plain one still goes."""
+        +8/+8 of its own was taken; one ENCHANT WEAPON
+        worked on (the flag it now sets) is an enchanted weapon; a +2 the
+        weapon rolled when it was made is not. A plain one still goes."""
         with LiveMud() as mud:
             make(mud, "Zdualer", Levl=30, Room=TEMPLE, Cla=2, Attr="25 25 25 25 25")
             add_lines(mud, "Zdualer", [
                 "#O\nVnum 3701\nNest 0\nName dagger zplain~\nWear -1\nLev 1\nCond 100\nEnd\n\n",
                 "#O\nVnum 3701\nNest 0\nName dagger zblade~\nWear -1\nLev 1\nCond 100\n"
                 "Affect -1 30 -1 8 19 0 0\nAffect -1 30 -1 8 18 0 0\nEnd\n\n",
-                "#O\nVnum 3701\nNest 0\nName dagger zmild~\nWear -1\nLev 1\nCond 100\n"
+                # What ENCHANT WEAPON leaves: the flag (saved as Enchanted)
+                # and a bonus.
+                "#O\nVnum 3701\nNest 0\nName dagger zmild~\nEnchanted\nWear -1\nLev 1\n"
+                "Cond 100\nAffect -1 30 -1 2 18 0 0\nEnd\n\n",
+                # A small bonus the weapon rolled when it was made: not an
+                # enchantment, and it may be dual wielded.
+                "#O\nVnum 3701\nNest 0\nName dagger zlucky~\nWear -1\nLev 1\nCond 100\n"
                 "Affect -1 30 -1 2 18 0 0\nEnd\n\n",
                 "#O\nVnum 3701\nNest 0\nName dagger zoff~\nWear -1\nLev 1\nCond 100\nEnd\n\n",
             ], ["Sk 75 'dual wield'"])
@@ -228,11 +235,14 @@ class EquipmentTests(unittest.TestCase):
                 run(client, "wield zplain")
                 strong = run(client, "secondary zblade")
                 mild = run(client, "secondary zmild")
+                lucky = run(client, "secondary zlucky")
+                run(client, "remove zlucky")
                 plain = run(client, "secondary zoff")
                 quit_(self, client)
 
         self.assertIn("too powerful to dual wield", strong, strong)
         self.assertIn("enchanted weapon", mild, mild)
+        self.assertIn("as your second weapon", lucky, lucky)
         self.assertIn("as your second weapon", plain, plain)
 
     def test_heat_leaves_a_piece_with_its_own_timer_alone(self) -> None:

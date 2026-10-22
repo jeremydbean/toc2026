@@ -2341,7 +2341,9 @@ void spell_enchant_item( int sn, int level, CHAR_DATA *ch, void *vo )
         positive_result = 0;
     }
 
-    /* now add the enchantments */
+    /* now add the enchantments -- and say so: SECONDARY refuses an
+       enchanted weapon, and nothing set this flag (audit, 2026-10-22) */
+    obj->enchanted = true;
 
     if (obj->level < LEVEL_HERO1)
         obj->level = UMIN(LEVEL_HERO1 - 1,obj->level + 1);
@@ -2505,7 +2507,9 @@ void spell_enchant_armor( int sn, int level, CHAR_DATA *ch, void *vo )
 	added = -2;
     }
 
-    /* now add the enchantments */
+    /* now add the enchantments -- and say so: SECONDARY refuses an
+       enchanted weapon, and nothing set this flag (audit, 2026-10-22) */
+    obj->enchanted = true;
 
     if (obj->level < LEVEL_HERO1)
 	obj->level = UMIN(LEVEL_HERO1 - 1,obj->level + 1);
@@ -2640,7 +2644,9 @@ void spell_enchant_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
 	added = 2;
     }
 
-    /* now add the enchantments */
+    /* now add the enchantments -- and say so: SECONDARY refuses an
+       enchanted weapon, and nothing set this flag (audit, 2026-10-22) */
+    obj->enchanted = true;
 
     if (obj->level < LEVEL_HERO1 - 1)
 	obj->level = UMIN(LEVEL_HERO1 - 1,obj->level + 1);

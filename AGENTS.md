@@ -3332,6 +3332,77 @@ test that fails on the old code. Keep them.
   character carrying nothing no longer reads their pet's stats as their own
   (`tests/test_player_file_parser.py`).
 
+## Contracts From The 2026-10-22 Audit
+
+A second audit (2026-10-22) found 29 bugs; the 28 fixed after it are in
+`tests/test_audit_{connections,saves,gameplay,tooling}.py`, each failing on
+the old code. The rules they leave:
+
+- **No write blocks the game loop.** `write_raw_to_descriptor` waits on
+  a full socket at most `WRITE_STALL_MS` without progress and
+  `WRITE_STALL_MAX_MS` in all, then sets `d->write_failed`; the output
+  pass closes that descriptor. Never close a descriptor from inside
+  `write_to_buffer` -- its callers are still using it.
+- **A login enters with the file as it is now.** CON_GET_NAME's copy is
+  only for the password check: `login_reload_character` frees it and
+  reads the file again once the password is accepted, then re-checks
+  password, deny, ban and wizlock. A quit, an idle purge or a PRESTORE
+  while somebody waits at the prompt otherwise duplicated items or undid
+  the restore. **A connection not in the game is never saved**
+  (`save_dropped_player`): hanging up at the password prompt saved the
+  stale copy over the file. A new name another connection holds is
+  refused, at the name and again at entry.
+- **A PROXY header counts only as a connection's first line**
+  (`first_line_read`), and the web bridge always sends one (TCP4, TCP6 or
+  UNKNOWN); a bridged player's address is then put through the login
+  throttle, which saw only loopback before.
+- **A file written to a temp name is renamed over the real one only if
+  the write finished** (`file_write_finished`, `temp_file_commit` in
+  `save.c`; `replace_area_file` for areas): a full disk once left a 0-byte
+  `maxload.txt` that hung boot, a 0-byte area and a 0-byte player file
+  from RESETPWD. `read_maxload_file` stops at end of file. Tests inject the
+  failure with a `/dev/full` symlink, which needs no root.
+- **PRESTORE STASH is all-or-nothing**: the snapshot's `#END` is checked
+  first, the `#STASH` section is validated without reading anything into
+  the game (no `fread_number` exit), objects are read aside and spliced in
+  only if all came back, and each is counted with `maxload_subtree`.
+- **Worn gear is checked at load** (`unwear_illegal_at_load`, end of
+  `load_char_obj`, before `reset_char`): a slot the object cannot take, a
+  second object in a slot, a second unique ring, or (mortals) an object
+  above the character's level comes back carried. Checked against the
+  961 character files on 2026-10-22: 2 of 10,910 worn objects affected.
+  The name-prompt copy logs nothing; the copy that enters does.
+- **REMORT re-equips through `wear_slot_allowed_quiet`**: WEAR's own
+  requirements, the wield weight, a hand for a shield, and SECONDARY's
+  rules (`secondary_weapon_refusal`) for the off hand.
+- **`obj->enchanted` means the enchant spells worked on it**, and they set
+  it now. It no longer changes which affects count anywhere -- equip
+  always applied the prototype's too (its stock ROM test is commented
+  out) and COMPARE now does the same. SECONDARY refuses an enchanted
+  weapon and any single hit or damage bonus over 5, the prototype's or the
+  weapon's own; a bonus `create_object` rolled is not an enchantment.
+- **A shop never sells for less than a copper or hands over an item it
+  was not paid for**: haggling discounts the price already computed (a
+  part-used wand is priced by charges), and the sale stops if
+  `spend_copper` fails. SELL pays before the item moves.
+- **REPAIR restores only what was lost**: a level -1 armour piece is
+  compared against the least `create_object` can roll at its level
+  (`repair_armor_floor`), not its prototype.
+- **Moving someone through an object asks what ENTER asks**
+  (`manipulate_move_refuses`: fighting, private rooms, `can_see_room`,
+  travel rules, newbie rooms, Hyrule gates); CRAWL and JUMP are
+  POS_STANDING. **LOOK IN a portal only points `in_room` at the far room
+  and back**, as CLAIRVOYANCE does, so no arrival hooks fire.
+- `tests/test_damage_result.py` also catches a variable assigned from
+  `damage(` and then branched on (meteor swarm did that).
+- Tooling: `toc-deploy` turns HUP, INT and TERM into exits so its EXIT
+  trap rolls back; migration is resumable through `state/.migrating`; a
+  native PID is trusted only if its command line is the game's or the
+  dashboard's; `uninstall --purge` refuses a state path that is the
+  checkout, holds it, `/` or `$HOME`; `.env` values have one level of
+  matching quotes stripped, as Compose does; `update` ignores the state
+  folder wherever it is, its pre-restore copy and restore leftovers.
+
 ## Completion Standard
 
 A task is complete only when the requested behavior or documentation is

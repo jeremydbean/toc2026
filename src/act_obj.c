@@ -3397,11 +3397,12 @@ const char *secondary_weapon_refusal( CHAR_DATA *ch, OBJ_DATA *obj )
 		return "That item is too powerful to dual wield.\n\r";
     }
 
+    /* Enchanted is what the enchant spells say it is. A bonus of the
+       weapon's own is not proof: create_object rolls random applies onto
+       some weapons, and those were never enchanted. Any bonus counts
+       toward "too powerful" above, whatever put it there. */
     if ( obj->enchanted )
 	return "You can't dual wield an enchanted weapon.\n\r";
-    for ( paf = obj->affected; paf != NULL; paf = paf->next )
-	if ( paf->location == APPLY_DAMROLL || paf->location == APPLY_HITROLL )
-	    return "You can't dual wield an enchanted weapon.\n\r";
 
     return NULL;
 }

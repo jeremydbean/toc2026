@@ -8,6 +8,24 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The 2026-10-22 audit, fixed** (28 findings; the report is summarised
+  under "Contracts From The 2026-10-22 Audit" in AGENTS.md). A client that
+  stops reading no longer freezes the game; a login uses the file as it is
+  when the password is accepted, so a quit or PRESTORE during the prompt
+  can no longer duplicate items or be undone, and a connection that never
+  entered is never saved; PRESTORE STASH is all-or-nothing and cannot
+  crash the game; failed writes keep the old file (maxload, pkill, the
+  benchmark board, RSAVE/ASAVE, RESETPWD); illegal gear comes off at
+  login; shop haggling, REPAIR, REMORT re-equip, SECONDARY, heat, LOOK IN,
+  CLIMB/CRAWL/JUMP, meteor swarm and the divine-protection counter; the
+  dashboard actor cannot purge itself; a PROXY header is honoured only as
+  a connection's first line; deploy rollback on signals, resumable
+  migration, real PIDs, a guarded purge, quoted .env values, the restore
+  guard, recovery ownership and update after a restore; and the play
+  client's split line breaks. Every fix has a test that fails on the old
+  code: `tests/test_audit_{connections,saves,gameplay,tooling}.py` and
+  `tests/test_client_decode.js`.
+
 ### Added
 
 - **One-command installs on every platform** (2026-10-21; see
