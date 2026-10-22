@@ -362,51 +362,51 @@ class NativePidTests(unittest.TestCase):
                           'trap "exit 0" TERM\nwhile :; do sleep 1; done\n')
         runner.chmod(0o755)
 
-    def spawn(self, argv: list[str]) -> subprocess.Popen:
-        proc = subprocess.Popen(argv, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                                start_new_session=True)
-
-        def reap() -> None:
-            if proc.poll() is None:
-                proc.kill()
-            proc.wait()
-        self.addCleanup(reap)
-        return proc
-
-    def stranger(self) -> subprocess.Popen:
+    def stranger(self) -> int:
         """A process that has nothing to do with the game, holding the
-        number the game's PID file names -- as after a reboot."""
-        proc = self.spawn(["sleep", "300"])
-        (self.state / "run" / "game.pid").write_text(f"{proc.pid}\n")
-        (self.state / "run" / "web.pid").write_text(f"{proc.pid}\n")
-        return proc
+        number the game's PID file names -- as after a reboot. Started
+        through a shell that exits, so it is nobody's child here and is
+        reaped the moment it dies (a zombie would answer kill -0)."""
+        out = subprocess.run(["sh", "-c", "sleep 300 >/dev/null 2>&1 </dev/null & echo $!"],
+                             capture_output=True, text=True, check=True, timeout=30)
+        pid = int(out.stdout.strip())
+        self.addCleanup(lambda: os.kill(pid, signal.SIGKILL) if _alive(pid) else None)
+        (self.state / "run" / "game.pid").write_text(f"{pid}\n")
+        (self.state / "run" / "web.pid").write_text(f"{pid}\n")
+        return pid
 
     def test_stop_never_signals_a_stranger(self) -> None:
-        proc = self.stranger()
+        stranger = self.stranger()
         r = bash(self.repo, "toc_native_stop")
         self.assertEqual(r.returncode, 0, r.stderr)
         time.sleep(0.3)
-        self.assertIsNone(proc.poll(), "the unrelated process is still running")
+        self.assertTrue(_alive(stranger), "the unrelated process is still running")
         self.assertFalse((self.state / "run" / "game.pid").exists(), "the stale record goes")
 
     def test_stop_still_stops_the_game(self) -> None:
+        # Detached, as a runner started by an earlier ./toc.sh start is.
         runner = self.repo / "scripts" / "toc_run_game.sh"
-        proc = self.spawn(["sh", str(runner), str(self.state), "9"])
+        out = subprocess.run(["sh", "-c", 'sh "$0" "$1" 9 >/dev/null 2>&1 </dev/null & echo $!',
+                              str(runner), str(self.state)],
+                             capture_output=True, text=True, check=True, timeout=30)
+        pid = int(out.stdout.strip())
+        self.addCleanup(lambda: os.kill(pid, signal.SIGKILL) if _alive(pid) else None)
         deadline = time.time() + 10
         while not (self.state / "run" / "runner-started").exists() and time.time() < deadline:
             time.sleep(0.05)
-        (self.state / "run" / "game.pid").write_text(f"{proc.pid}\n")
+        (self.state / "run" / "game.pid").write_text(f"{pid}\n")
         r = bash(self.repo, "toc_native_stop")
         self.assertEqual(r.returncode, 0, r.stderr)
-        self.assertEqual(proc.wait(timeout=20), 0, "the runner was asked to stop")
+        self.assertFalse(_alive(pid), "the runner was asked to stop")
+        self.assertFalse((self.state / "run" / "game.pid").exists())
 
     def test_start_is_not_fooled_by_a_stale_pid(self) -> None:
-        proc = self.stranger()
+        stranger = self.stranger()
         r = bash(self.repo, "toc_native_start; sleep 1; cat \"$(toc_state_dir)/run/game.pid\"")
         self.assertEqual(r.returncode, 0, r.stderr)
         new_pid = int(r.stdout.split()[-1])
         self.addCleanup(lambda: os.kill(new_pid, signal.SIGKILL) if _alive(new_pid) else None)
-        self.assertNotEqual(new_pid, proc.pid, "a new game was launched")
+        self.assertNotEqual(new_pid, stranger, "a new game was launched")
         started = self.state / "run" / "runner-started"
         deadline = time.time() + 10
         while not started.exists() and time.time() < deadline:
@@ -416,7 +416,7 @@ class NativePidTests(unittest.TestCase):
         self.assertIn("ALIVE", r.stdout, "the game it launched counts as the game")
         r = bash(self.repo, "toc_native_stop")
         self.assertEqual(r.returncode, 0, r.stderr)
-        self.assertIsNone(proc.poll())
+        self.assertTrue(_alive(stranger), "the unrelated process is still running")
 
 
 def _alive(pid: int) -> bool:
