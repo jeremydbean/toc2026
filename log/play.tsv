@@ -3684,3 +3684,48 @@
 1792630905	cmd	Alaric	53	29207	korzath2.are	standing	99	0	-	south		Alas, you cannot go that way.
 1792630906	cmd	Alaric	53	29208	korzath2.are	standing	99	0	-	west		Twist the Maze
 1792630907	cmd	Alaric	53	29208	korzath2.are	standing	99	0	-	bs	mad	Your backstab misses a deranged madman. [-0]
+1792631112	cmd	Alaric	53	4207	dresden_halloween.are	standing	95	0	-	/		Before the Shrouded Altar
+1792631112	cmd	Alaric	53	4207	dresden_halloween.are	standing	95	0	-	look		Before the Shrouded Altar
+1792631115	cmd	Alaric	53	4208	dresden_halloween.are	standing	95	0	-	west		The Shrouded Altar of Devota
+1792631138	cmd	Alaric	53	4208	dresden_halloween.are	standing	95	0	-	affect		You are affected by:
+1792631139	cmd	Alaric	53	4208	dresden_halloween.are	standing	95	0	-	inventory		You are carrying:
+1792631140	cmd	Alaric	53	4208	dresden_halloween.are	standing	95	0	-	who		[53 Dwarf   Hero  ] Alaric.
+1792631142	cmd	Alaric	53	4208	dresden_halloween.are	standing	95	0	-	wake		You are already standing.
+1792631142	cmd	Alaric	53	4208	dresden_halloween.are	standing	95	0	-	look		The Shrouded Altar of Devota
+1792631144	cmd	Alaric	53	4208	dresden_halloween.are	standing	95	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.'
+1792631146	cmd	Alaric	53	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar
+1792631146	cmd	Alaric	53	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792631146	cmd	Alaric	53	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792631147	cmd	Alaric	53	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square.
+1792631147	cmd	Alaric	53	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792631148	cmd	Alaric	53	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden.
+1792631149	cmd	Alaric	53	29004	korzath1.are	standing	100	0	-	run	n	The Northern Market Square
+1792631152	cmd	Alaric	53	29004	korzath1.are	resting	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1792631152	cmd	Alaric	53	29004	korzath1.are	resting	100	0	-	open		Ok.
+1792631152	refused	Alaric	53	29004	korzath1.are	resting	100	0	-	north		Nah... You feel too relaxed...
+1792631152	refused	Alaric	53	29004	korzath1.are	resting	100	0	-	north		Nah... You feel too relaxed...
+1792631153	refused	Alaric	53	29004	korzath1.are	resting	100	0	-	north		Nah... You feel too relaxed...
+1792631153	refused	Alaric	53	29004	korzath1.are	resting	100	0	-	north		Nah... You feel too relaxed...
+1792631153	cmd	Alaric	53	29004	korzath1.are	resting	100	0	-	wake		You stand up.
+1792631154	cmd	Alaric	53	29201	korzath2.are	standing	100	0	-	north		Heroes Hall
+1792631154	cmd	Alaric	53	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes
+1792631155	cmd	Alaric	53	29202	korzath2.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792631155	cmd	Alaric	53	29202	korzath2.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792631155	cmd	Alaric	53	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze
+1792631156	cmd	Alaric	53	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze
+1792631157	cmd	Alaric	53	29205	korzath2.are	standing	100	0	-	south		Twist in the Maze
+1792631157	cmd	Alaric	53	29206	korzath2.are	standing	100	0	-	east		Twist in the Maze
+1792631157	cmd	Alaric	53	29207	korzath2.are	standing	100	0	-	south		Twist in the Maze
+1792631158	cmd	Alaric	53	29208	korzath2.are	standing	100	0	-	west		Twist the Maze
+1792631160	cmd	Alaric	53	29208	korzath2.are	standing	100	0	-	scan		a killer clown                     -to the East.
+1792631161	cmd	Alaric	53	29209	korzath2.are	standing	100	0	-	west		Twist in the Maze
+1792631163	cmd	Alaric	53	29209	korzath2.are	standing	100	0	-	bs	sk	Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-261]
+1792631179	cmd	Alaric	53	29209	korzath2.are	fighting	98	0	fight	get	just	You get (Flaming) the Crystalline Sword of Justice.
+1792631179	cmd	Alaric	53	29209	korzath2.are	fighting	98	0	fight	wear	just	You wield (Flaming) the Crystalline Sword of Justice.
+1792631297	cmd	Alaric	53	29210	korzath2.are	standing	98	0	-	north		Twist in the Maze
+1792631298	cmd	Alaric	53	29210	korzath2.are	standing	98	0	-	kill	sk	An Animated Skeleton dodges your attack.
+1792631303	cmd	Alaric	53	29210	korzath2.are	standing	98	0	-	bs	sk	Your backstab misses an Animated Skeleton. [-0]
+1792631335	cmd	Alaric	53	29210	korzath2.are	fighting	96	0	fight	get	just	You get (Flaming) the Crystalline Sword of Justice.
+1792631335	cmd	Alaric	53	29210	korzath2.are	fighting	95	0	fight	wear	just	You wield (Flaming) the Crystalline Sword of Justice.
+1792631338	cmd	Alaric	53	29210	korzath2.are	fighting	95	0	fight	get	exc	I see no exc here.
+1792631339	cmd	Alaric	53	29210	korzath2.are	fighting	95	0	fight	look		Twist in the Maze
