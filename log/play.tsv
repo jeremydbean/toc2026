@@ -4375,3 +4375,148 @@
 1792669211	cmd	Trentlin	50	1433	htower.are	standing	100	0	-	north		An intersection
 1792669212	cmd	Trentlin	50	1434	htower.are	standing	100	0	-	east		A corridor
 1792669213	cmd	Trentlin	50	1435	htower.are	standing	100	0	-	east		The scrying chamber
+1792669214	cmd	Trentlin	50	1434	htower.are	standing	100	0	-	west		A corridor
+1792669215	cmd	Trentlin	50	1433	htower.are	standing	100	0	-	west		An intersection
+1792669215	cmd	Trentlin	50	1436	htower.are	standing	100	0	-	west		A corridor
+1792669215	cmd	Trentlin	50	1437	htower.are	standing	100	0	-	west		The entrance to the library
+1792669215	cmd	Trentlin	50	1438	htower.are	standing	100	0	-	west		In the library
+1792669216	cmd	Trentlin	50	1437	htower.are	standing	100	0	-	east		The entrance to the library
+1792669217	cmd	Trentlin	50	1436	htower.are	standing	100	0	-	east		A corridor
+1792669219	cmd	Trentlin	50	1433	htower.are	standing	100	0	-	east		An intersection
+1792669219	cmd	Trentlin	50	1432	htower.are	standing	100	0	-	north		A corridor
+1792669220	cmd	Trentlin	50	1431	htower.are	standing	100	0	-	north		A bend in the corridor
+1792669221	cmd	Trentlin	50	1431	htower.are	standing	100	0	-	depart		You don't currently have a depart message.
+1792669222	cmd	Trentlin	50	1430	htower.are	standing	100	0	-	east		A corridor
+1792669223	cmd	Trentlin	50	1429	htower.are	standing	100	0	-	east		A corridor
+1792669224	cmd	Trentlin	50	1428	htower.are	standing	100	0	-	down		The end of the hallway
+1792669225	cmd	Trentlin	50	1427	htower.are	standing	100	0	-	south		A hallway
+1792669225	cmd	Trentlin	50	1426	htower.are	standing	100	0	-	south		A hallway
+1792669226	cmd	Trentlin	50	1422	htower.are	standing	100	0	-	south		A hallway
+1792669227	cmd	Trentlin	50	1423	htower.are	standing	100	0	-	east		A dark room
+1792669228	cmd	Trentlin	50	1424	htower.are	standing	100	0	-	north		A dark room
+1792669229	cmd	Trentlin	50	1425	htower.are	standing	100	0	-	north		The Necromancer's Lair
+1792669230	cmd	Trentlin	50	1424	htower.are	standing	100	0	-	south		A dark room
+1792669231	cmd	Trentlin	50	1423	htower.are	standing	100	0	-	south		A dark room
+1792669231	cmd	Trentlin	50	1423	htower.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792669231	cmd	Trentlin	50	1422	htower.are	standing	100	0	-	west		A hallway
+1792669232	cmd	Trentlin	50	1421	htower.are	standing	100	0	-	south		A bend in the hallway
+1792669233	cmd	Trentlin	50	1421	htower.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792669233	cmd	Trentlin	50	1419	htower.are	standing	100	0	-	west		A hallway
+1792669234	cmd	Trentlin	50	1420	htower.are	standing	100	0	-	south		The meditation chamber
+1792669234	cmd	Trentlin	50	1420	htower.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792669235	cmd	Trentlin	50	1419	htower.are	standing	100	0	-	north		A hallway
+1792669235	cmd	Trentlin	50	1416	htower.are	standing	100	0	-	west		A hallway
+1792669236	cmd	Trentlin	50	1415	htower.are	standing	100	0	-	west		A hallway
+1792669236	cmd	Trentlin	50	1414	htower.are	standing	100	0	-	west		A bend in the hallway
+1792669237	cmd	Trentlin	50	1414	htower.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792669238	cmd	Trentlin	50	1413	htower.are	standing	100	0	-	north		A hallway
+1792669238	cmd	Trentlin	50	1408	htower.are	standing	100	0	-	north		A hallway
+1792669239	cmd	Trentlin	50	1409	htower.are	standing	100	0	-	west		The golem master's workshop
+1792669241	cmd	Trentlin	50	1411	htower.are	standing	100	0	-	south		The golem chamber
+1792669244	cmd	Trentlin	50	1411	htower.are	standing	100	1	-	kill	bro	Your cleave === OBLITERATES === a bronze golem!
+1792669249	cmd	Trentlin	50	1411	htower.are	standing	100	0	-	recall		Your prayer goes up and comes back unanswered.
+1792669252	cmd	Trentlin	50	1411	htower.are	standing	100	0	-	recall		The gods are listening to somebody else just now.
+1792669254	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792669255	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792669255	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792669256	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792669256	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792669256	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792669257	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792669257	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792669257	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792669258	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792669258	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792669260	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792669267	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	gamble no	Wise choice. You safely collect 82 quest points.
+1792669270	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	group		Trentlin's group:
+1792669272	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	equipment		You are using:
+1792669274	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	exchange		Only heroes may trade experience for practice.
+1792669282	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	help	heroquest	HEROQUEST
+1792669289	refused	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	(unknown)		Huh?
+1792669294	refused	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	(unknown)		Huh?
+1792669304	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	heroquest	.-[ AQUEST Commands ]-----------------------------------------.
+1792669318	refused	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	(unknown)		Huh?
+1792669323	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	daily	.-[ Daily Quests ]-------------------------------------------.
+1792669335	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	6	-	aquest	daily request	You ask Questor Thews for the day's work.
+1792669346	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	enter		Enter what?
+1792669349	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792669359	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	run	w 7	Western Oak Tree Square.
+1792669359	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	open	west	Ok.
+1792669359	cmd	Trentlin	50	2439	dresden_halloween.are	standing	100	0	-	west		Outside the Western Gates of Dresden.
+1792669359	cmd	Trentlin	50	3902	dresden_halloween.are	standing	100	0	-	run	n 3	West trail around Dresden
+1792669360	cmd	Trentlin	50	3904	dresden_halloween.are	standing	100	0	-	run	e 2	Dusty trail along north wall.
+1792669360	cmd	Trentlin	50	324	plains.are	standing	100	0	-	run	n 5	Path in the plains
+1792669360	cmd	Trentlin	50	312	plains.are	standing	100	0	-	run	e 6	The steep foothills
+1792669360	cmd	Trentlin	50	5551	ofcol.are	standing	100	0	-	run	n 5	Road to Ofcol
+1792669361	cmd	Trentlin	50	680	ofcol.are	standing	100	0	-	run	e 11	The small alley
+1792669361	cmd	Trentlin	50	682	ofcol.are	standing	100	0	-	south		A Hallway of the Golden Citadel
+1792669361	cmd	Trentlin	50	685	ofcol.are	standing	100	0	-	south		A Hallway of the Golden Citadel
+1792669361	cmd	Trentlin	50	684	ofcol.are	standing	100	0	-	west		A Hallway of the Golden Citadel
+1792669362	cmd	Trentlin	50	673	ofcol.are	standing	100	0	-	north		The Anteroom to the Temple of Ofcol
+1792669362	cmd	Trentlin	50	7900	redfern.are	standing	100	0	-	run	u 6	An Upper Chamber of the Golden Citadel
+1792669362	cmd	Trentlin	50	9101	dylan.are	standing	100	0	-	south		A fluffy white cloud.
+1792669362	cmd	Trentlin	50	9102	dylan.are	standing	100	0	-	up		A fluffy white cloud.
+1792669364	cmd	Trentlin	50	9102	dylan.are	standing	100	1	-	kill	har	Your cleave === OBLITERATES === the screaming, filthy harpy!
+1792669370	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792669371	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792669371	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792669372	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792669372	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792669372	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792669373	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792669373	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792669375	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792669375	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792669376	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792669376	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792669376	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792669376	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792669386	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	daily complete	Syntax: AQUEST DAILY [REQUEST | BUY PRACTICE [n] | BUY TRAIN [n]]
+1792669391	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	daily request	You ask Questor Thews for the day's work.
+1792669395	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792669408	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	6	-	aquest	daily request	You ask Questor Thews for the day's work.
+1792669412	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal
+1792669424	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	run	w 7	Western Oak Tree Square.
+1792669424	cmd	Trentlin	50	2438	dresden_halloween.are	standing	100	0	-	open	west	It's already open.
+1792669424	cmd	Trentlin	50	6002	haon.are	standing	100	0	-	run	w 4	Outside the Western Gates of Dresden.
+1792669424	cmd	Trentlin	50	6011	haon.are	standing	100	0	-	south		A small path through the light forest
+1792669425	cmd	Trentlin	50	6008	haon.are	standing	100	0	-	south		The forest clearing
+1792669425	cmd	Trentlin	50	6009	haon.are	standing	100	0	-	east		Outside a small cabin in the forest
+1792669425	cmd	Trentlin	50	6014	haon.are	standing	100	0	-	south		An intersection in the dense forest
+1792669425	cmd	Trentlin	50	6015	haon.are	standing	100	0	-	east		A small path in the dense forest
+1792669426	cmd	Trentlin	50	6016	haon.are	standing	100	0	-	south		A small path in the dense forest
+1792669426	cmd	Trentlin	50	6017	haon.are	standing	100	0	-	south		A small path in the dense forest
+1792669426	cmd	Trentlin	50	6018	haon.are	standing	100	0	-	west		An intersection in the light forest
+1792669426	cmd	Trentlin	50	51	connect.are	standing	100	0	-	south		The top of the cliff.
+1792669427	cmd	Trentlin	50	13001	lakes.are	standing	100	0	-	down		Rock Outcropping
+1792669427	cmd	Trentlin	50	13002	lakes.are	standing	100	0	-	down		Small Grove
+1792669427	cmd	Trentlin	50	13003	lakes.are	standing	100	0	-	west		Entrance to the Town of Solace
+1792669427	cmd	Trentlin	50	13004	lakes.are	standing	100	0	-	west		East shore of Crystalmir Lake
+1792669428	cmd	Trentlin	50	13005	lakes.are	standing	100	0	-	west		Middle of Crystalmir Lake
+1792669430	cmd	Trentlin	50	13005	lakes.are	standing	100	1	-	kill	bar	Your cleave <<< ERADICATES >>> Barracuda!
+1792669434	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar
+1792669436	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota
+1792669436	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792669437	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	refresh	The cackling witch-healer utters the words 'candusima'.
+1792669441	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar
+1792669441	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers
+1792669442	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple
+1792669442	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps
+1792669443	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square.
+1792669443	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve
+1792669444	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree...
+1792669444	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree.
+1792669444	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree.
+1792669444	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree!
+1792669448	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	daily complete	Syntax: AQUEST DAILY [REQUEST | BUY PRACTICE [n] | BUY TRAIN [n]]
+1792669452	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	complete	You inform Questor Thews you have completed his quest.
+1792669457	cmd	Trentlin	50	2497	dresden_halloween.are	standing	592	0	-	where	hermie	You didn't find any hermie.
+1792669463	cmd	Trentlin	50	2497	dresden_halloween.are	standing	592	0	-	score		--------------------------------------------------------------
+1792669469	cmd	Trentlin	50	2497	dresden_halloween.are	standing	592	0	-	equipment		You are using:
+1792669484	cmd	Trentlin	50	2497	dresden_halloween.are	standing	592	0	-	look		A sudden wind blows you from the tree!
+1792669488	cmd	Trentlin	50	2497	dresden_halloween.are	standing	592	0	-	score		--------------------------------------------------------------
+1792669502	cmd	Trentlin	50	2497	dresden_halloween.are	standing	592	0	-	spells		You know no spells.
+1792669504	cmd	Trentlin	50	2497	dresden_halloween.are	standing	592	0	-	skills		Level  1: axe                100%      dagger              89%      
+1792669510	cmd	Trentlin	50	2497	dresden_halloween.are	standing	592	0	-	equipment		You are using:
+1792669513	cmd	Trentlin	50	2497	dresden_halloween.are	standing	592	0	-	inventory		You are carrying:
