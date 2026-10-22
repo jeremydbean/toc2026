@@ -12512,18 +12512,23 @@ void do_resetpwd( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    /* Read the target's trust from the save file to enforce level check */
-    target_trust = 0;
-    while ( fgets( linebuf, (int)sizeof(linebuf), fpin ) != NULL )
+    /* The target's rank is get_trust on a loaded copy, as PRESTORE asks
+       it: reading "Levl" alone missed a "Tru" (or "Trust") that outranks
+       the level, so staff trusted above a low level were open to a reset
+       by anyone below that trust (review, 2026-10-22). */
     {
-        int val;
-        if ( sscanf( linebuf, "Levl %d", &val ) == 1 )
+        DESCRIPTOR_DATA offline_desc;
+        CHAR_DATA *loaded = offline_player_load( &offline_desc, arg_name, NULL );
+
+        if ( loaded == NULL )
         {
-            target_trust = val;
-            break;
+            fclose( fpin );
+            send_to_char( "That character could not be read; nothing was changed.\n\r", ch );
+            return;
         }
+        target_trust = get_trust( loaded );
+        extract_char( loaded, true );
     }
-    rewind( fpin );
 
     /*
      * Rank rule: you may never reset someone above you, and below

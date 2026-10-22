@@ -603,7 +603,8 @@ toc_promote_file() {
 
 # Append one line to the webadmin queue under the fcntl lock the game and
 # the dashboard take: an unlocked append that lands while the game is
-# reading the queue and truncating it is lost. Plain append without python3.
+# reading the queue and truncating it is lost. Without python3 the append
+# is plain and best-effort: the save matters less than the backup itself.
 toc_queue_append() {
     if command -v python3 >/dev/null 2>&1; then
         python3 -c 'import fcntl, sys

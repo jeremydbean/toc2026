@@ -171,5 +171,38 @@ class LauncherParityTests(unittest.TestCase):
         self.assertNotIn("Install-TocImage", update[pull:handoff])
 
 
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class ResetPwdTrustTests(unittest.TestCase):
+    def test_trust_in_the_file_outranks_the_level(self) -> None:
+        """RESETPWD read the target's rank from "Levl" and stopped, so a
+        level 10 character trusted to 69 ("Tru", or the older "Trust")
+        could be reset by a level 66. get_trust on a loaded copy is the
+        rule; with no trust it falls back to the level."""
+        with LiveMud() as mud:
+            make(mud, "Zresetboss", Levl=66, Room=TEMPLE)
+            for name, key in (("Ztrusttru", "Tru"), ("Ztrusttrust", "Trust"), ("Ztrustnone", None)):
+                make(mud, name, Levl=10, Room=TEMPLE)
+                if key:
+                    path = mud.player_dir / name
+                    text = path.read_text(encoding="latin-1")
+                    text = text.replace("\nLevl 10\n", "\nLevl 10\n%s  69\n" % key, 1)
+                    path.write_text(text, encoding="latin-1")
+            before = {n: (mud.player_dir / n).read_bytes() for n in ("Ztrusttru", "Ztrusttrust")}
+            with mud.connect(timeout=120) as staff:
+                login(staff, "Zresetboss", PW)
+                tru = run(staff, "resetpwd ztrusttru Zfreshpw1", 2.0)
+                trust = run(staff, "resetpwd ztrusttrust Zfreshpw1", 2.0)
+                none = run(staff, "resetpwd ztrustnone Zfreshpw1", 2.0)
+                staff.send("quit")
+                staff.wait_closed()
+            after = {n: (mud.player_dir / n).read_bytes() for n in before}
+
+        self.assertIn("above your level", tru)
+        self.assertIn("above your level", trust)
+        self.assertEqual(before, after, "a refused reset changed the file")
+        self.assertNotIn("above your level", none)
+        self.assertNotIn("could not be read", none)
+
+
 if __name__ == "__main__":
     unittest.main()

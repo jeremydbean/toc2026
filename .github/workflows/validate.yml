@@ -170,4 +170,5 @@ jobs:
             test_building_mobs_objs test_building_wizard test_building_rooms_shops \
             test_black_market \
             test_treasure_goblin \
-            test_rested_and_dailies
+            test_rested_and_dailies \
+            test_audit_leads

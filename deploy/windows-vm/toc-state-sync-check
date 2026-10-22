@@ -74,7 +74,8 @@ logger -t toc-state-sync -p daemon.err "state sync is not working: $problem" 2>/
 # WIZINFO at immortal level, not ANNOUNCE: players can do nothing about a
 # backup and should not be told theirs is failing (owner, 2026-10-04).
 # Appended under the fcntl lock the game takes while it reads and
-# truncates the queue, or a line landing then is lost (as in toc-deploy).
+# truncates the queue, or a line landing then is lost (as in toc-deploy);
+# without python3 the append is plain and best-effort.
 if [ -f "$QUEUE" ] && [ -w "$QUEUE" ]; then
     line="wizinfo|$WIZINFO_LEVEL|Player-state backup to GitHub is not working ($problem). Saves are still on disk but are not leaving this machine."
     if command -v python3 >/dev/null 2>&1; then

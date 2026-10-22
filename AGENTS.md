@@ -1700,7 +1700,7 @@ changes settle): `fLogAll` starts true, and `player_is_watched()` --
 flagged by name *or* covered by LOG ALL -- is the one test, used by
 `interpret()`, `watch_log` and `char_to_room`. For a character watched
 only by the default, `command_is_private()` withholds the words of
-TELL, REPLY and GTELL: `log/` is published, and AGENTS' rule on private
+TELL, REPLY, GTELL, NOTE and the commands that read them back: `log/` is published, and AGENTS' rule on private
 messages holds. One flagged with LOG <name> is recorded in full.
 
 **A watched line names no room the black market dealer or the treasure
@@ -3403,8 +3403,13 @@ the old code. The rules they leave:
   matching quotes stripped, as Compose does; `update` ignores the state
   folder wherever it is, its pre-restore copy and restore leftovers.
 - **The audit's leads, followed up** (`tests/test_audit_leads.py`): NOTE
-  is a private command (`command_is_private`), so a note's subject and
-  body never reach `log/`, and the "posted a note" line names no subject;
+  is a private command (`command_is_private`), exactly as TELL is: its
+  words and answers never reach the journal or the plain log line, the
+  "posted a note" line names no subject, and a character staff flag with
+  LOG <name> is recorded in full, as their tells are
+  (`tests/test_playlog.py` pins both); RESETPWD ranks its target by
+  `get_trust` on a loaded copy (`offline_player_load`, as PRESTORE does),
+  so a `Tru`/`Trust` above the level counts;
   a faded ENCHANT ARMOR keeps the piece, damaged, instead of taking it out
   of the inventory into nowhere; RESETPWD checks the name with
   `prestore_name_ok` and the target with `player_in_game`, refusing a
@@ -3416,7 +3421,10 @@ the old code. The rules they leave:
   reward the purse refuses is said and logged, never announced as paid;
   dashboard queue payloads are ASCII (typographic punctuation is
   transliterated, anything else refused); every shell writer appends to
-  the queue under the fcntl lock the game takes while it truncates it;
+  the queue under the fcntl lock the game takes while it truncates it,
+  through `python3` -- where there is none (a Docker host without it) the
+  append is plain and best-effort, since failing a backup or a deploy for
+  want of a lock would be worse than the rare lost line;
   and `toc.ps1 update` finishes in the newly pulled launcher, as `toc.sh`
   does. PROJECT already calls `do_return` (lead U10 was wrong).
 

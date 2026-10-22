@@ -10,7 +10,8 @@ More fixes from the same audit:
 - STASH refuses a bag holding something that will rot, which went in and
   quietly crumbled away there.
 - A line too long to send no longer swallows the commands typed after it.
-- Notes are private: what you write in one is never kept in the logs.
+- Notes are private, like tells: their subject and text are no longer
+  written to the game's activity logs.
 
 @ 20261022c 2026-10-22
 A round of fixes from a code audit:
