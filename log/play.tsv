@@ -2794,3 +2794,71 @@
 1792627384	cmd	Trentlin	49	30532	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
 1792627387	cmd	Trentlin	49	30532	hyrule.are	standing	100	0	-	kill	gor	Your pierce MANGLES a blue goriya!
 1792627391	cmd	Trentlin	49	30532	hyrule.are	fighting	100	0	fight	smite		Your smite maims a blue goriya!
+1792627407	cmd	Trentlin	49	30532	hyrule.are	fighting	99	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a blue goriya!
+1792627416	cmd	Trentlin	49	30532	hyrule.are	standing	99	0	-	smite		Smite whom?
+1792627417	cmd	Trentlin	49	30532	hyrule.are	standing	99	0	-	skills		Level  1: axe                100%      dagger              89%      
+1792627421	cmd	Trentlin	49	30538	hyrule.are	standing	99	0	-	north		The shutter opens now that the chamber is clear.
+1792627426	cmd	Trentlin	49	30538	hyrule.are	standing	99	0	-	list		You can't do that here.
+1792627428	cmd	Trentlin	49	30532	hyrule.are	standing	99	0	-	south		Level 7: Shuttered Gallery
+1792627429	cmd	Trentlin	49	30533	hyrule.are	standing	99	0	-	east		Level 7: Urchin's Hollow
+1792627429	cmd	Trentlin	49	30534	hyrule.are	standing	99	0	-	east		Level 7: Bone-Strewn Alcove
+1792627433	cmd	Trentlin	49	30534	hyrule.are	standing	99	0	-	north		Alas, you cannot go that way.
+1792627434	cmd	Trentlin	49	30534	hyrule.are	standing	99	0	-	east		Alas, you cannot go that way.
+1792627434	cmd	Trentlin	49	30534	hyrule.are	standing	99	0	-	south		Alas, you cannot go that way.
+1792627435	cmd	Trentlin	49	30534	hyrule.are	standing	99	0	-	look	st	Old beyond counting, this stalfos has bones stained the brown of strong tea
+1792627436	cmd	Trentlin	49	30534	hyrule.are	standing	99	0	-	consider	st	A stalfos is no match for you.
+1792627437	cmd	Trentlin	49	30534	hyrule.are	standing	99	0	-	kill	st	Your pierce *** DEMOLISHES *** a stalfos!
+1792627443	cmd	Trentlin	49	30534	hyrule.are	fighting	99	0	fight	smite		Your smite MANGLES a stalfos!
+1792627452	cmd	Trentlin	49	30534	hyrule.are	fighting	98	0	fight	wear	ax	You wield A Tin Axe.
+1792627453	cmd	Trentlin	49	30534	hyrule.are	fighting	98	0	fight	smite		Your smite *** DEVASTATES *** a stalfos!
+1792627465	cmd	Trentlin	49	30534	hyrule.are	fighting	98	0	fight	smite		A Tin Axe bites deep into a stalfos!
+1792627477	cmd	Trentlin	49	30534	hyrule.are	standing	99	0	-	kick		You aren't fighting anyone.
+1792627477	cmd	Trentlin	49	30534	hyrule.are	standing	99	0	-	look	in cor	Corpse of a stalfos contains:
+1792627478	cmd	Trentlin	49	30533	hyrule.are	standing	99	0	-	west		Level 7: Urchin's Hollow
+1792627479	cmd	Trentlin	49	30532	hyrule.are	standing	99	0	-	west		Level 7: Shuttered Gallery
+1792627480	cmd	Trentlin	49	30538	hyrule.are	standing	99	0	-	north		Level 7: Hall of the Horned Mask
+1792627481	cmd	Trentlin	49	30532	hyrule.are	standing	99	0	-	south		Level 7: Shuttered Gallery
+1792627482	cmd	Trentlin	49	30531	hyrule.are	standing	99	0	-	west		Level 7: Guano-Streaked Crossing
+1792627483	cmd	Trentlin	49	30530	hyrule.are	standing	99	0	-	west		Level 7: Moat Crossroads
+1792627484	cmd	Trentlin	49	30527	hyrule.are	standing	99	0	-	south		Level 7: Demon's Gate
+1792627485	cmd	Trentlin	49	30528	hyrule.are	standing	99	0	-	east		Level 7: Dripping Antechamber
+1792627487	cmd	Trentlin	49	30531	hyrule.are	standing	99	0	-	north		Level 7: Guano-Streaked Crossing
+1792627494	cmd	Trentlin	49	30531	hyrule.are	standing	99	0	-	bomb	north	You set a bomb beside a cracked north wall and dive aside. The blast opens a passage!
+1792627495	cmd	Trentlin	49	30537	hyrule.are	standing	99	0	-	north		Level 7: Hall of Bones
+1792627497	cmd	Trentlin	49	30537	hyrule.are	standing	99	0	-	consider	get	They're not here.
+1792627498	cmd	Trentlin	49	30537	hyrule.are	standing	99	0	-	get	co	You get the Demon dungeon compass.
+1792627499	cmd	Trentlin	49	30537	hyrule.are	standing	99	0	-	look	co	The needle swings west.
+1792627500	cmd	Trentlin	49	30537	hyrule.are	standing	99	0	-	west		The shutter is sealed fast, and will not open while enemies remain here.
+1792627503	cmd	Trentlin	49	30537	hyrule.are	standing	99	0	-	kill	st	Your cleave *** DEVASTATES *** a stalfos!
+1792627507	cmd	Trentlin	49	30537	hyrule.are	fighting	99	0	fight	smite		Your smite misses a stalfos.
+1792627533	cmd	Trentlin	49	30537	hyrule.are	fighting	99	0	fight	smite		Your smite MASSACRES a stalfos!
+1792627542	cmd	Trentlin	49	30537	hyrule.are	standing	99	0	-	kill	st	A stalfos parries your attack.
+1792627547	cmd	Trentlin	49	30537	hyrule.are	fighting	100	0	fight	smite		Your smite misses a stalfos.
+1792627567	cmd	Trentlin	49	30537	hyrule.are	fighting	99	0	fight	smite		Your smite injures a stalfos.
+1792627575	cmd	Trentlin	49	30537	hyrule.are	standing	99	0	-	sacrifice	cor	The Gods give you 84 copper coins for your sacrifice.
+1792627575	cmd	Trentlin	49	30537	hyrule.are	standing	99	0	-	sacrifice	cor	The Gods give you 84 copper coins for your sacrifice.
+1792627576	cmd	Trentlin	49	30537	hyrule.are	standing	99	0	-	kill	sta	Your cleave decimates a stalfos!
+1792627579	cmd	Trentlin	49	30537	hyrule.are	fighting	99	0	fight	smite		Your smite *** DEVASTATES *** a stalfos!
+1792627590	cmd	Trentlin	49	30537	hyrule.are	fighting	100	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a stalfos!
+1792627603	cmd	Trentlin	49	30537	hyrule.are	standing	99	0	-	look		Level 7: Hall of Bones
+1792627603	cmd	Trentlin	49	30537	hyrule.are	standing	99	0	-	score		--------------------------------------------------------------
+1792627605	cmd	Trentlin	49	30537	hyrule.are	standing	99	0	-	look		Level 7: Hall of Bones
+1792627606	cmd	Trentlin	49	30536	hyrule.are	standing	99	0	-	west		The shutter opens now that the chamber is clear.
+1792627608	cmd	Trentlin	49	30536	hyrule.are	standing	99	0	-	look	com	The needle swings north.
+1792627609	cmd	Trentlin	49	30540	hyrule.are	standing	99	0	-	north		Level 7: Hall of Lingering Chill
+1792627610	cmd	Trentlin	49	30540	hyrule.are	standing	99	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792627613	cmd	Trentlin	49	30540	hyrule.are	standing	99	0	-	kill	go	A blue goriya dodges your attack.
+1792627618	cmd	Trentlin	49	30540	hyrule.are	fighting	100	0	fight	smite		Your smite misses a blue goriya.
+1792627636	cmd	Trentlin	49	30540	hyrule.are	fighting	100	0	fight	smite		Your smite *** DEVASTATES *** a blue goriya!
+1792627650	cmd	Trentlin	49	30540	hyrule.are	standing	100	0	-	look	in co	Corpse of a blue goriya contains:
+1792627650	cmd	Trentlin	49	30540	hyrule.are	standing	100	0	-	kill	bub	A bubble parries your attack.
+1792627654	cmd	Trentlin	49	30540	hyrule.are	fighting	100	0	fight	smite		Your smite hits a bubble.
+1792627663	cmd	Trentlin	49	30540	hyrule.are	fighting	100	0	fight	smite		Your smite misses a bubble.
+1792627670	cmd	Trentlin	49	30540	hyrule.are	fighting	100	0	fight	smite		Your smite MANGLES a bubble!
+1792627677	cmd	Trentlin	49	30540	hyrule.are	standing	100	0	-	look		Level 7: Hall of Lingering Chill
+1792627679	cmd	Trentlin	49	30542	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear.
+1792627680	cmd	Trentlin	49	30541	hyrule.are	standing	100	0	-	west		The shutter opens now that the chamber is clear.
+1792627682	cmd	Trentlin	49	30544	hyrule.are	standing	100	0	-	north		Level 7: Hall of Grumbling
+1792627686	cmd	Trentlin	49	30544	hyrule.are	standing	100	0	-	look	g	Damp from the Demon's moats, this veteran goriya has grey fur creeping
+1792627694	cmd	Trentlin	49	30544	hyrule.are	standing	100	0	-	look	co	The needle points north -- at the bare wall, as though the way lay through the stone.
+1792627701	cmd	Trentlin	49	30544	hyrule.are	standing	100	0	-	bomb	north	You find no cracked surface to bomb there.
