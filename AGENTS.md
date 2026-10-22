@@ -1771,7 +1771,13 @@ log says what a player typed; the journal says what happened, in columns
   or password command's words and answer are never written, watched in
   full or not, and an unknown word is written alone** -- `log/` is
   public, and a password typed at the wrong moment is an unknown word.
-  A room holding the dealer or the goblin is `-`.
+  A room holding the dealer or the goblin is `-`. **A command whose
+  answer can hold somebody else's private words is private too**:
+  HISTORY and REPLAY read tells back, and once the journal kept three
+  lines of an answer, `history tell` published a tell (audit,
+  2026-10-22; `command_is_private`, `tests/test_playlog.py`). A new
+  command that shows tells, notes or anything else said in private goes
+  on that list.
 - **Every `BUG:` line says what was running** -- whose command, which
   room, or the update phase (`playlog_phase`, set in `update_handler`)
   -- and lands in the journal too. Not at boot, where FILE/LINE says it.

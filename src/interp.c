@@ -595,8 +595,13 @@ bool player_is_watched( CHAR_DATA *ch )
  */
 static bool command_is_private( const char *name )
 {
+    /* HISTORY and REPLAY read tells back. Their words are harmless, but
+       the play journal keeps the first lines a command answers, and from
+       2026-10-22 that was three: "history tell" put the text of somebody
+       else's tell into log/play.tsv, which reaches a public repository
+       within five minutes (audit, 2026-10-22). */
     static const char * const private_cmds[] =
-    { "tell", "reply", "gtell", ";", NULL };
+    { "tell", "reply", "gtell", ";", "history", "replay", NULL };
     int i;
 
     if ( name == NULL )

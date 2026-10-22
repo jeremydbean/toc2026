@@ -174,6 +174,44 @@ class PlaylogLiveTests(unittest.TestCase):
             self.assertRegex(watch, r"Log Zcoiner \[\d+\]: quest assigned: (kill|recover) .+ "
                                     r"in \S+\.are, \d+ minutes?, (ordinary|rush|emergency)")
 
+    def test_reading_tells_back_publishes_nothing(self) -> None:
+        """Audit 2026-10-22: HISTORY and REPLAY were public commands, and
+        the journal keeps three lines of an answer, so the text of a tell
+        another player sent reached log/play.tsv -- published every five
+        minutes -- the moment its receiver read it back."""
+        with LiveMud() as mud:
+            for name in ("Zteller", "Zhearer"):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PASSWORD)
+                    client.drain(1.0)
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
+                patch_player_file(mud, name, Levl=10, Room=TEMPLE)
+
+            with mud.connect(timeout=120) as hearer, mud.connect(timeout=120) as teller:
+                login(hearer, "Zhearer", PASSWORD)
+                login(teller, "Zteller", PASSWORD)
+                hearer.drain(1.0)
+                teller.send("tell zhearer zebrasecretword")
+                teller.drain(1.5)
+                for line in ("history tell", "history", "replay"):
+                    hearer.send(line)
+                    hearer.drain(1.5)
+                self.assertIn("zebrasecretword", hearer.transcript, "the tell did arrive")
+                for client in (hearer, teller):
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
+
+            journal = (mud.root / "log" / "play.tsv").read_text(encoding="latin-1")
+            self.assertNotIn("zebrasecretword", journal)
+            self.assertNotIn("zebrasecretword",
+                             (mud.root / "log" / "toc.log").read_text(encoding="latin-1"))
+            read_back = [r for r in rows(mud) if len(r) > 12 and r[2] == "Zhearer"
+                         and r[10] in ("history", "replay")]
+            self.assertEqual(len(read_back), 3, read_back)
+            for row in read_back:
+                self.assertEqual(row[12], "(withheld)", row)
+
     @unittest.skipIf(os.environ.get("TOC_SERVER_BINARY"),
                      "a sanitizer build reports crashes itself")
     def test_a_crash_leaves_the_last_commands(self) -> None:
