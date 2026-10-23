@@ -7,7 +7,11 @@ require("../webadmin/static/console-output.js");
 function capture(chunks) {
     const runs = [];
     const secrets = [];
-    const decoder = TocConsoleOutput.create((text, className) => runs.push({ text, className }), (value) => secrets.push(value));
+    const decoder = TocConsoleOutput.create((text, className, inlineStyle) => {
+        const run = { text, className };
+        if (inlineStyle) run.inlineStyle = inlineStyle;
+        runs.push(run);
+    }, (value) => secrets.push(value));
     for (const chunk of chunks) decoder.write(chunk);
     return { decoder, runs, secrets };
 }
@@ -58,7 +62,24 @@ test("plain text and mixed line endings remain readable across frames", () => {
 test("unsupported controls do not become markup, text, or accidental attributes", () => {
     const { runs } = capture(["\x1b[38;2;1;31;4m<img src=x onerror=alert(1)>\x1b[2J", "\x1b]0;hidden title\x07ok", "\x1b]8;;https://example.com\x1b\\link\x1b]8;;\x1b\\"]);
     assert.equal(runs.map((run) => run.text).join(""), "<img src=x onerror=alert(1)>oklink");
-    assert.ok(runs.every((run) => run.className === ""));
+    // The true colour is drawn exactly, and stays until a reset; its 31
+    // and 4 are not red and underline.
+    assert.ok(runs.every((run) => run.className === "ansi-fg-rgb" && run.inlineStyle === "--ansi-fg: #011f04;"));
+});
+
+test("256-colour and true colour are drawn, the first sixteen from the theme", () => {
+    const { runs } = capture(["[38;5;9ma[38;5;196mb[48;5;232mc[0;38;2;255;128;0md[38;5;300me[0;48;2;1;2mf[0;7;38;5;21mg"]);
+    assert.deepEqual(runs, [
+        { text: "a", className: "ansi-fg-bright-red" },
+        { text: "b", className: "ansi-fg-rgb", inlineStyle: "--ansi-fg: #ff0000;" },
+        { text: "c", className: "ansi-fg-rgb ansi-bg-rgb", inlineStyle: "--ansi-fg: #ff0000;--ansi-bg: #080808;" },
+        { text: "d", className: "ansi-fg-rgb", inlineStyle: "--ansi-fg: #ff8000;" },
+        // An index past 255 changes nothing.
+        { text: "e", className: "ansi-fg-rgb", inlineStyle: "--ansi-fg: #ff8000;" },
+        // A short true colour changes nothing either.
+        { text: "f", className: "" },
+        { text: "g", className: "ansi-inverse ansi-fg-rgb", inlineStyle: "--ansi-fg: #0000ff;" },
+    ]);
 });
 
 test("oversized and malformed SGR sequences are discarded without changing colors", () => {

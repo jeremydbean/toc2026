@@ -20,7 +20,7 @@ enum color_option_index
     COLOR_BRIGHT_RED,
     COLOR_BRIGHT_MAGENTA,
     COLOR_WHITE,
-    COLOR_PLAIN
+    COLOR_PLAIN                         /* the 256-colour names follow */
 };
 
 const struct col_disp_table_type col_disp_table[] =
@@ -40,7 +40,35 @@ const struct col_disp_table_type col_disp_table[] =
     { "bright_red",      "\x1b[91m"   },   /* high-intensity red */
     { "bright_magenta",  "\x1b[95m"   },   /* high-intensity magenta */
     { "white",           "\x1b[97m"   },   /* high-intensity white */
-    { "plain",           "" }
+    { "plain",           "" },
+    /* The xterm 256-colour palette, added 2026-10-23. Appended after
+       "plain" and never reordered: a player's choice is saved as its
+       index here (ColTable), so inserting above would change everyone's
+       colours. A client without 256 colours shows them in its default. */
+    { "orange",         "\x1b[38;5;208m" },
+    { "amber",          "\x1b[38;5;214m" },
+    { "gold",           "\x1b[38;5;220m" },
+    { "lime",           "\x1b[38;5;118m" },
+    { "mint",           "\x1b[38;5;121m" },
+    { "teal",           "\x1b[38;5;30m" },
+    { "turquoise",      "\x1b[38;5;44m" },
+    { "sky",            "\x1b[38;5;117m" },
+    { "navy",           "\x1b[38;5;18m" },
+    { "indigo",         "\x1b[38;5;54m" },
+    { "purple",         "\x1b[38;5;93m" },
+    { "violet",         "\x1b[38;5;135m" },
+    { "lavender",       "\x1b[38;5;183m" },
+    { "pink",           "\x1b[38;5;218m" },
+    { "rose",           "\x1b[38;5;204m" },
+    { "crimson",        "\x1b[38;5;160m" },
+    { "maroon",         "\x1b[38;5;88m" },
+    { "coral",          "\x1b[38;5;209m" },
+    { "salmon",         "\x1b[38;5;210m" },
+    { "peach",          "\x1b[38;5;223m" },
+    { "tan",            "\x1b[38;5;180m" },
+    { "olive",          "\x1b[38;5;100m" },
+    { "silver",         "\x1b[38;5;250m" },
+    { "charcoal",       "\x1b[38;5;240m" }
 };
 
 const struct col_table_type col_table[] =

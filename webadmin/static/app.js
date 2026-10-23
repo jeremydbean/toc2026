@@ -1800,13 +1800,18 @@
         if (connected) byId("console-input").focus();
     }
 
-    function appendTerminal(element, text, className = "") {
+    function appendTerminal(element, text, className = "", inlineStyle = "") {
         const nearBottom = element.scrollHeight - element.scrollTop - element.clientHeight < 80;
         if (element.id === "game-terminal") {
             if (!text) return;
             const last = element.lastChild;
-            if (last && last.className === className) last.textContent += text;
-            else element.append(node("span", { className, text }));
+            if (last && last.className === className && (last.getAttribute("style") || "") === inlineStyle) {
+                last.textContent += text;
+            } else {
+                const span = node("span", { className, text });
+                if (inlineStyle) span.setAttribute("style", inlineStyle);
+                element.append(span);
+            }
             let overflow = element.textContent.length - MAX_TERMINAL_CHARS;
             while (element.firstChild && (overflow > 0 || element.childNodes.length > 4000)) {
                 const first = element.firstChild;
@@ -1837,7 +1842,7 @@
     }
 
     const consoleOutput = TocConsoleOutput.create(
-        (text, className) => appendTerminal(byId("game-terminal"), text, className),
+        (text, className, inlineStyle) => appendTerminal(byId("game-terminal"), text, className, inlineStyle),
         setConsoleSecret,
     );
 

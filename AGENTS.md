@@ -499,6 +499,16 @@ Commands added or revived in September 2026, and where they live:
   cut player text with `color_truncate()` and close a coloured title with
   `color_close()`. A login never overrides a saved COLOR OFF.
   `tests/test_ansi_color.py`.
+- **The COLOR palette is saved by index** (`Color <slot> <index>`), so
+  `col_disp_table` in `color.c` only ever grows at the end: the 256-colour
+  names (2026-10-23) follow `plain`. A new name needs its xterm value in
+  the Mudlet package's `GAME_COLOUR` too (rebuild the package). A raw
+  escape sent to a player asks `color_is_enabled()` first --
+  `send_to_char` strips tokens, not escapes. The web consoles draw 0-15
+  from their themes and 256-colour and true colour exactly
+  (`ansi-fg-rgb` with an inline `--ansi-fg`); reverse video swaps the
+  `--ansi-fg`/`--ansi-bg` properties every colour rule sets
+  (`tests/test_ansi_web.js`).
 - Test formatted output with color enabled and disabled, and with paging both
   enabled and disabled. Keep normal summary views within the default page size
   when practical.

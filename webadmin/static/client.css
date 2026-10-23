@@ -380,31 +380,44 @@ summary:focus-visible,
 .ansi-dim { opacity: 0.7; }
 .ansi-underline { text-decoration: underline; }
 .ansi-italic { font-style: italic; }
-.ansi-fg-black { color: #7b858a; }
-.ansi-fg-red { color: #ef7d7d; }
-.ansi-fg-green { color: #79d89d; }
-.ansi-fg-yellow { color: #e8c66d; }
-.ansi-fg-blue { color: #80adea; }
-.ansi-fg-magenta { color: #cd94dc; }
-.ansi-fg-cyan { color: #6fd0ce; }
-.ansi-fg-white { color: #e7ebed; }
-.ansi-fg-bright-black { color: #9ca5a9; }
-.ansi-fg-bright-red { color: #ff9b9b; }
-.ansi-fg-bright-green { color: #9aebb6; }
-.ansi-fg-bright-yellow { color: #f4db8b; }
-.ansi-fg-bright-blue { color: #a6c8f4; }
-.ansi-fg-bright-magenta { color: #e5b0f0; }
-.ansi-fg-bright-cyan { color: #9be5e2; }
-.ansi-fg-bright-white { color: #ffffff; }
-.ansi-bg-black { background: #141719; }
-.ansi-bg-red { background: #6a3030; }
-.ansi-bg-green { background: #28583b; }
-.ansi-bg-yellow { background: #665329; }
-.ansi-bg-blue { background: #304b70; }
-.ansi-bg-magenta { background: #583663; }
-.ansi-bg-cyan { background: #285a5a; }
-.ansi-bg-white { background: #b8bec1; color: #111416; }
-.ansi-inverse { filter: invert(1); }
+.ansi-fg-black { --ansi-fg: #7b858a; color: #7b858a; }
+.ansi-fg-red { --ansi-fg: #ef7d7d; color: #ef7d7d; }
+.ansi-fg-green { --ansi-fg: #79d89d; color: #79d89d; }
+.ansi-fg-yellow { --ansi-fg: #e8c66d; color: #e8c66d; }
+.ansi-fg-blue { --ansi-fg: #80adea; color: #80adea; }
+.ansi-fg-magenta { --ansi-fg: #cd94dc; color: #cd94dc; }
+.ansi-fg-cyan { --ansi-fg: #6fd0ce; color: #6fd0ce; }
+.ansi-fg-white { --ansi-fg: #e7ebed; color: #e7ebed; }
+.ansi-fg-bright-black { --ansi-fg: #9ca5a9; color: #9ca5a9; }
+.ansi-fg-bright-red { --ansi-fg: #ff9b9b; color: #ff9b9b; }
+.ansi-fg-bright-green { --ansi-fg: #9aebb6; color: #9aebb6; }
+.ansi-fg-bright-yellow { --ansi-fg: #f4db8b; color: #f4db8b; }
+.ansi-fg-bright-blue { --ansi-fg: #a6c8f4; color: #a6c8f4; }
+.ansi-fg-bright-magenta { --ansi-fg: #e5b0f0; color: #e5b0f0; }
+.ansi-fg-bright-cyan { --ansi-fg: #9be5e2; color: #9be5e2; }
+.ansi-fg-bright-white { --ansi-fg: #ffffff; color: #ffffff; }
+.ansi-bg-black { --ansi-bg: #141719; background: #141719; }
+.ansi-bg-red { --ansi-bg: #6a3030; background: #6a3030; }
+.ansi-bg-green { --ansi-bg: #28583b; background: #28583b; }
+.ansi-bg-yellow { --ansi-bg: #665329; background: #665329; }
+.ansi-bg-blue { --ansi-bg: #304b70; background: #304b70; }
+.ansi-bg-magenta { --ansi-bg: #583663; background: #583663; }
+.ansi-bg-cyan { --ansi-bg: #285a5a; background: #285a5a; }
+.ansi-bg-white { --ansi-bg: #b8bec1; background: #b8bec1; }
+.ansi-bg-bright-black { --ansi-bg: #9ca5a9; background: #9ca5a9; }
+.ansi-bg-bright-red { --ansi-bg: #ff9b9b; background: #ff9b9b; }
+.ansi-bg-bright-green { --ansi-bg: #9aebb6; background: #9aebb6; }
+.ansi-bg-bright-yellow { --ansi-bg: #f4db8b; background: #f4db8b; }
+.ansi-bg-bright-blue { --ansi-bg: #a6c8f4; background: #a6c8f4; }
+.ansi-bg-bright-magenta { --ansi-bg: #e5b0f0; background: #e5b0f0; }
+.ansi-bg-bright-cyan { --ansi-bg: #9be5e2; background: #9be5e2; }
+.ansi-bg-bright-white { --ansi-bg: #ffffff; background: #ffffff; }
+/* An exact 256-colour or true colour, from the span's inline property. */
+.ansi-fg-rgb { color: var(--ansi-fg); }
+.ansi-bg-rgb { background: var(--ansi-bg); }
+/* Reverse video swaps the two colours; an invert filter gave each
+   colour's complement instead. Unset, they are the terminal's own. */
+.ansi-inverse { color: var(--ansi-bg, #080a0b); background: var(--ansi-fg, #d8dedb); }
 
 .macro-strip {
     display: none;

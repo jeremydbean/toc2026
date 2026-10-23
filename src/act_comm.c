@@ -269,7 +269,9 @@ void do_color( CHAR_DATA *ch, char *argument )
             if ( slot < 0 || slot >= color_display_count() )
                 slot = col_table[idx].def;
 
-            sample = col_disp_table[slot].ansi_str;
+            /* Raw escapes: send_to_char strips tokens, not these, so a
+               player with colour off was sent them anyway. */
+            sample = color_is_enabled( ch ) ? col_disp_table[slot].ansi_str : "";
             reset = ( sample != NULL && *sample != '\0' ) ? color_reset_code() : "";
 
             snprintf( buf, sizeof(buf), "  %-12s : %s%s%s\n\r",
@@ -312,18 +314,33 @@ void do_color( CHAR_DATA *ch, char *argument )
 
     if ( !str_prefix( arg1, "list" ) )
     {
-        send_to_char( "Available colors:\n\r", ch );
+        /* Three to a line, each name in its own colour, so forty fit one
+           screen. The padding counts the name, not the escapes. */
+        char line[MAX_STRING_LENGTH];
+        int col = 0;
+
+        send_to_char( "Available colors (COLOR <group> <color>):\n\r", ch );
+        line[0] = '\0';
         for ( idx = 0; idx < color_display_count(); ++idx )
         {
             const char *sample = col_disp_table[idx].ansi_str;
-            const char *reset = ( sample != NULL && *sample != '\0' ) ? color_reset_code() : "";
-            snprintf( buf, sizeof(buf), "  %-13s %s%s%s\n\r",
-                col_disp_table[idx].type,
-                sample != NULL ? sample : "",
-                col_disp_table[idx].type,
-                reset );
-            send_to_char( buf, ch );
+            const char *name = col_disp_table[idx].type;
+            bool coloured = color_is_enabled( ch ) && sample != NULL && *sample != '\0';
+            int pad = 17 - (int)strlen( name );
+
+            snprintf( buf, sizeof(buf), "  %s%s%s%*s",
+                coloured ? sample : "", name,
+                coloured ? color_reset_code() : "", pad > 0 ? pad : 1, "" );
+            toc_strlcat( line, buf, sizeof(line) );
+            if ( ++col == 3 || idx == color_display_count() - 1 )
+            {
+                toc_strlcat( line, "\n\r", sizeof(line) );
+                send_to_char( line, ch );
+                line[0] = '\0';
+                col = 0;
+            }
         }
+        send_to_char( "The names after plain need a client with 256 colours.\n\r", ch );
         return;
     }
 
@@ -355,11 +372,15 @@ void do_color( CHAR_DATA *ch, char *argument )
 
     ch->pcdata->col_table[category->num] = (sh_int)(idx);
 
-    snprintf( buf, sizeof(buf), "%s color set to %s%s%s.\n\r",
-        capitalize( category->name ),
-        col_disp_table[idx].ansi_str,
-        col_disp_table[idx].type,
-        col_disp_table[idx].ansi_str[0] != '\0' ? color_reset_code() : "" );
+    {
+        bool coloured = color_is_enabled( ch ) && col_disp_table[idx].ansi_str[0] != '\0';
+
+        snprintf( buf, sizeof(buf), "%s color set to %s%s%s.\n\r",
+            capitalize( category->name ),
+            coloured ? col_disp_table[idx].ansi_str : "",
+            col_disp_table[idx].type,
+            coloured ? color_reset_code() : "" );
+    }
     send_to_char( buf, ch );
 }
 

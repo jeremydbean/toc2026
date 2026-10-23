@@ -3544,25 +3544,31 @@ See also: OPEN, CLOSE, PICK, DOORBASH
 ~
 
 0 COLOR~
-Syntax:  color on/off/list/default
-         color <color type> <color>
+Syntax:  color
+         color on
+         color off
+         color list
+         color default
+         color <group> <color>
 
-The COLOR command is used to toggle color on or off and to set colors for
-the various channels.
+COLOR alone shows whether color is on and the color of each group of
+messages: regular text, gossips, shouts, tells, says, socials, room
+names, damage and the rest.
 
-Typing the word COLOR alone will toggle color on or off.
+COLOR ON and COLOR OFF turn color on and off; your choice is kept when
+you log out. COLOR DEFAULT puts every group back to its usual color.
 
-COLOR DEFAULT is used to load the default colors for the various
-channels.  If you turn color on without having set defaults, you will not
-see any colors as they will all be set to grey.
+COLOR LIST shows every color you can choose, each in its own color.
+There are forty: the sixteen every client shows, and twenty-four more
+-- orange, gold, purple, pink, teal, crimson and others -- for clients
+with 256 colors, which nearly all are today, Mudlet and the web client
+included. Pick one by name, or the start of its name:
 
-COLOR LIST shows a list of the available colors.
+  color gossips orange
+  color tell sky
+  color room lav
 
-To set the color for an indivdual type of message, use
-COLOR <TYPE OF MESSAGE> <# of color>
-The color number can be obtained using COLOR LIST.
-For example, to make all gossips appear in yellow, type:
-COLOR gossips 7
+PLAIN shows a group in your client's ordinary text color.
 
 See also: PROMPT, COMPACT, BRIEF
 ~

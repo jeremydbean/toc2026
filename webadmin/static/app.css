@@ -1280,39 +1280,44 @@ label textarea {
 #game-terminal .ansi-dim { opacity: 0.7; }
 #game-terminal .ansi-italic { font-style: italic; }
 #game-terminal .ansi-underline { text-decoration: underline; }
-#game-terminal .ansi-inverse { filter: invert(1); }
-#game-terminal .ansi-fg-black { color: #7b858a; }
-#game-terminal .ansi-fg-red { color: #ef7d7d; }
-#game-terminal .ansi-fg-green { color: #79d89d; }
-#game-terminal .ansi-fg-yellow { color: #e8c66d; }
-#game-terminal .ansi-fg-blue { color: #80adea; }
-#game-terminal .ansi-fg-magenta { color: #cd94dc; }
-#game-terminal .ansi-fg-cyan { color: #6fd0ce; }
-#game-terminal .ansi-fg-white { color: #e7ebed; }
-#game-terminal .ansi-fg-bright-black { color: #9ca5a9; }
-#game-terminal .ansi-fg-bright-red { color: #ff9b9b; }
-#game-terminal .ansi-fg-bright-green { color: #9aebb6; }
-#game-terminal .ansi-fg-bright-yellow { color: #f4db8b; }
-#game-terminal .ansi-fg-bright-blue { color: #a6c8f4; }
-#game-terminal .ansi-fg-bright-magenta { color: #e5b0f0; }
-#game-terminal .ansi-fg-bright-cyan { color: #9be5e2; }
-#game-terminal .ansi-fg-bright-white { color: #ffffff; }
-#game-terminal .ansi-bg-black { background: #141719; }
-#game-terminal .ansi-bg-red { background: #6a3030; }
-#game-terminal .ansi-bg-green { background: #28583b; }
-#game-terminal .ansi-bg-yellow { background: #665329; }
-#game-terminal .ansi-bg-blue { background: #304b70; }
-#game-terminal .ansi-bg-magenta { background: #583663; }
-#game-terminal .ansi-bg-cyan { background: #285a5a; }
-#game-terminal .ansi-bg-white { background: #b8bec1; }
-#game-terminal .ansi-bg-bright-black { background: #9ca5a9; }
-#game-terminal .ansi-bg-bright-red { background: #ff9b9b; }
-#game-terminal .ansi-bg-bright-green { background: #9aebb6; }
-#game-terminal .ansi-bg-bright-yellow { background: #f4db8b; }
-#game-terminal .ansi-bg-bright-blue { background: #a6c8f4; }
-#game-terminal .ansi-bg-bright-magenta { background: #e5b0f0; }
-#game-terminal .ansi-bg-bright-cyan { background: #9be5e2; }
-#game-terminal .ansi-bg-bright-white { background: #ffffff; }
+#game-terminal .ansi-fg-black { --ansi-fg: #7b858a; color: #7b858a; }
+#game-terminal .ansi-fg-red { --ansi-fg: #ef7d7d; color: #ef7d7d; }
+#game-terminal .ansi-fg-green { --ansi-fg: #79d89d; color: #79d89d; }
+#game-terminal .ansi-fg-yellow { --ansi-fg: #e8c66d; color: #e8c66d; }
+#game-terminal .ansi-fg-blue { --ansi-fg: #80adea; color: #80adea; }
+#game-terminal .ansi-fg-magenta { --ansi-fg: #cd94dc; color: #cd94dc; }
+#game-terminal .ansi-fg-cyan { --ansi-fg: #6fd0ce; color: #6fd0ce; }
+#game-terminal .ansi-fg-white { --ansi-fg: #e7ebed; color: #e7ebed; }
+#game-terminal .ansi-fg-bright-black { --ansi-fg: #9ca5a9; color: #9ca5a9; }
+#game-terminal .ansi-fg-bright-red { --ansi-fg: #ff9b9b; color: #ff9b9b; }
+#game-terminal .ansi-fg-bright-green { --ansi-fg: #9aebb6; color: #9aebb6; }
+#game-terminal .ansi-fg-bright-yellow { --ansi-fg: #f4db8b; color: #f4db8b; }
+#game-terminal .ansi-fg-bright-blue { --ansi-fg: #a6c8f4; color: #a6c8f4; }
+#game-terminal .ansi-fg-bright-magenta { --ansi-fg: #e5b0f0; color: #e5b0f0; }
+#game-terminal .ansi-fg-bright-cyan { --ansi-fg: #9be5e2; color: #9be5e2; }
+#game-terminal .ansi-fg-bright-white { --ansi-fg: #ffffff; color: #ffffff; }
+#game-terminal .ansi-bg-black { --ansi-bg: #141719; background: #141719; }
+#game-terminal .ansi-bg-red { --ansi-bg: #6a3030; background: #6a3030; }
+#game-terminal .ansi-bg-green { --ansi-bg: #28583b; background: #28583b; }
+#game-terminal .ansi-bg-yellow { --ansi-bg: #665329; background: #665329; }
+#game-terminal .ansi-bg-blue { --ansi-bg: #304b70; background: #304b70; }
+#game-terminal .ansi-bg-magenta { --ansi-bg: #583663; background: #583663; }
+#game-terminal .ansi-bg-cyan { --ansi-bg: #285a5a; background: #285a5a; }
+#game-terminal .ansi-bg-white { --ansi-bg: #b8bec1; background: #b8bec1; }
+#game-terminal .ansi-bg-bright-black { --ansi-bg: #9ca5a9; background: #9ca5a9; }
+#game-terminal .ansi-bg-bright-red { --ansi-bg: #ff9b9b; background: #ff9b9b; }
+#game-terminal .ansi-bg-bright-green { --ansi-bg: #9aebb6; background: #9aebb6; }
+#game-terminal .ansi-bg-bright-yellow { --ansi-bg: #f4db8b; background: #f4db8b; }
+#game-terminal .ansi-bg-bright-blue { --ansi-bg: #a6c8f4; background: #a6c8f4; }
+#game-terminal .ansi-bg-bright-magenta { --ansi-bg: #e5b0f0; background: #e5b0f0; }
+#game-terminal .ansi-bg-bright-cyan { --ansi-bg: #9be5e2; background: #9be5e2; }
+#game-terminal .ansi-bg-bright-white { --ansi-bg: #ffffff; background: #ffffff; }
+/* An exact 256-colour or true colour, from the span's inline property. */
+#game-terminal .ansi-fg-rgb { color: var(--ansi-fg); }
+#game-terminal .ansi-bg-rgb { background: var(--ansi-bg); }
+/* Reverse video swaps the two colours; an invert filter gave each
+   colour's complement instead. Unset, they are the terminal's own. */
+#game-terminal .ansi-inverse { color: var(--ansi-bg, #080a0b); background: var(--ansi-fg, #d7e0db); }
 
 .terminal-input-row {
     display: grid;

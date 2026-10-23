@@ -5,6 +5,15 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261023d 2026-10-23
+Twenty-four new colours for COLOR: orange, amber, gold, lime, mint,
+teal, turquoise, sky, navy, indigo, purple, violet, lavender, pink, rose,
+crimson, maroon, coral, salmon, peach, tan, olive, silver and charcoal.
+COLOR LIST shows all forty in their own colours; pick one by name, as in
+COLOR GOSSIPS ORANGE. They need a client with 256 colours -- Mudlet and
+the web client both have them. The web client also draws background
+colours and reverse text properly now.
+
 @ 20261023c 2026-10-23
 Colour fixes:
 - COLOR OFF now stays off when you log back in.

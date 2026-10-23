@@ -8,6 +8,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **More colours** (owner, 2026-10-23): twenty-four 256-colour names
+  appended to the COLOR palette after `plain` (saved choices keep their
+  index); COLOR LIST in three columns; HELP COLOR rewritten (it described
+  picking by number); COLOR and its confirmation no longer send raw
+  escapes with colour off; the Mudlet chat window knows the new names.
+  The web consoles, from a Codex review: ANSI 100-107 are bright
+  backgrounds in the player client and drawn by its stylesheet; a white
+  background keeps the text colour; reverse video swaps the colours
+  instead of `filter: invert()`; 256-colour and true colour are drawn
+  exactly instead of dropped. `tests/test_ansi_web.js`,
+  `tests/test_ansi_color.py`.
 - **Colour sweep** (2026-10-23): area names show their level range as
   `[30 50]` (`area_shown_name`; `{30` was read as a colour token);
   `act()` converts tokens in `$t`/`$p` text; a login keeps a saved COLOR

@@ -112,6 +112,36 @@ class ColourLiveTests(unittest.TestCase):
         self.assertNotIn("{0~", listener_title)
         self.assertTrue(listener_title.rstrip("~").rstrip().endswith("x"), listener_title)
 
+    def test_the_256_colour_names_can_be_chosen(self) -> None:
+        """Twenty-four 256-colour names after plain (2026-10-23): listed in
+        three columns, chosen by name, sent as 38;5 escapes, saved by
+        index, and never sent as raw escapes to a player with colour off."""
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zpainter", PW)
+                run(client, "scroll 0", 1.0)
+                listing = run(client, "color list", 1.5)
+                for name in ("orange", "charcoal", "bright_magenta", "plain"):
+                    self.assertIn(name, listing)
+                self.assertLessEqual(listing.count("\n"), 20, listing)
+                mark = len(client.raw)
+                said = run(client, "color gossips orange", 1.0)
+                self.assertIn("Gossips color set to orange", said)
+                self.assertIn(b"\x1b[38;5;208morange", client.raw[mark:])
+                run(client, "color off", 1.0)
+                mark = len(client.raw)
+                run(client, "color", 1.0)
+                run(client, "color list", 1.0)
+                run(client, "color tell gold", 1.0)
+                self.assertNotIn(b"\x1b[38;5", client.raw[mark:])
+                run(client, "color on", 1.0)
+                run(client, "save", 1.0)
+                client.send("quit")
+                client.wait_closed()
+            saved = (mud.player_dir / "Zpainter").read_text(encoding="latin-1")
+        self.assertIn("Color 2 16\n", saved)     # COL_GOSSIP, orange
+        self.assertIn("Color 6 18\n", saved)     # COL_TELL, gold
+
 
 if __name__ == "__main__":
     unittest.main()

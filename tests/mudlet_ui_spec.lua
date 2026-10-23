@@ -182,6 +182,13 @@ check("a chosen colour is drawn as Mudlet draws it",
   coloured:find("<255,0,255>Alaric: hi") ~= nil, coloured)
 
 gmcp.Comm.Channel = { channel = "gossip", speaker = "Alaric", text = "hi",
+                      time = 0, color = "orange" }
+tocMudlet.onChannel()
+local orange = tocMudlet.chatLog[#tocMudlet.chatLog].line
+check("a 256-colour choice is drawn at xterm's value",
+  orange:find("<255,135,0>Alaric: hi") ~= nil, orange)
+
+gmcp.Comm.Channel = { channel = "gossip", speaker = "Alaric", text = "hi",
                       time = 0 }
 tocMudlet.onChannel()
 local plain = tocMudlet.chatLog[#tocMudlet.chatLog].line

@@ -807,6 +807,13 @@ local GAME_COLOUR = {
   yellow = "#ffff00", bright_grey = "#c0c0c0", bright_blue = "#0000ff",
   bright_green = "#00ff00", bright_cyan = "#00ffff", bright_red = "#ff0000",
   bright_magenta = "#ff00ff", white = "#ffffff",
+  -- The 256-colour names, at xterm's values, which Mudlet uses too.
+  orange = "#ff8700", amber = "#ffaf00", gold = "#ffd700", lime = "#87ff00",
+  mint = "#87ffaf", teal = "#008787", turquoise = "#00d7d7", sky = "#87d7ff",
+  navy = "#000087", indigo = "#5f0087", purple = "#8700ff", violet = "#af5fff",
+  lavender = "#d7afff", pink = "#ffafd7", rose = "#ff5f87", crimson = "#d70000",
+  maroon = "#870000", coral = "#ff875f", salmon = "#ff8787", peach = "#ffd7af",
+  tan = "#d7af87", olive = "#878700", silver = "#bcbcbc", charcoal = "#585858",
 }
 
 function tocMudlet.onChannel()

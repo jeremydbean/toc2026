@@ -160,7 +160,7 @@
         if (nearBottom) byId("game-terminal").scrollTop = byId("game-terminal").scrollHeight;
     }
 
-    function appendTerminalSegment(text, className = "") {
+    function appendTerminalSegment(text, className = "", inlineStyle = "") {
         if (!text) return;
         const terminal = byId("game-terminal");
         const nearBottom = terminal.scrollHeight - terminal.scrollTop - terminal.clientHeight < 100;
@@ -181,6 +181,7 @@
             const newline = remaining.indexOf("\n");
             const part = newline === -1 ? remaining : remaining.slice(0, newline + 1);
             const span = node("span", { className, text: part });
+            if (inlineStyle) span.setAttribute("style", inlineStyle);
             span.dataset.length = String(part.length);
             fragment.append(span);
             state.terminalChars += part.length;
@@ -216,12 +217,55 @@
             style.italic && "ansi-italic",
             style.underline && "ansi-underline",
             style.inverse && "ansi-inverse",
-            style.fg && `ansi-fg-${style.fg}`,
-            style.bg && `ansi-bg-${style.bg}`,
+            colourParts("fg", style.fg)[0],
+            colourParts("bg", style.bg)[0],
         ].filter(Boolean).join(" ");
     }
 
+    function ansiInlineStyle() {
+        const style = state.ansiStyle;
+        return colourParts("fg", style.fg)[1] + colourParts("bg", style.bg)[1];
+    }
+
     const ANSI_COLORS = ["black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"];
+
+    // Extended colours: 0-15 of the 256 are the sixteen the stylesheet
+    // themes; the rest, and true colour, are drawn exactly, as "#rrggbb"
+    // carried in an inline custom property. They used to be dropped,
+    // leaving the colour before them in force.
+    function hex(r, g, b) {
+        return `#${[r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("")}`;
+    }
+
+    function xterm256(n) {
+        if (n >= 232) { const v = 8 + (n - 232) * 10; return hex(v, v, v); }
+        const cube = n - 16;
+        const level = (step) => (step === 0 ? 0 : 55 + step * 40);
+        return hex(level(Math.floor(cube / 36)), level(Math.floor(cube / 6) % 6), level(cube % 6));
+    }
+
+    function extendedAnsi(codes, index, names) {
+        // codes[index] is 38 or 48; returns [colour or null, codes consumed].
+        const byte = (v) => Number.isInteger(v) && v >= 0 && v <= 255;
+        if (codes[index + 1] === 5) {
+            const n = codes[index + 2];
+            if (!byte(n)) return [null, 2];
+            if (n < 16) return [n < 8 ? names[n] : `bright-${names[n - 8]}`, 2];
+            return [xterm256(n), 2];
+        }
+        if (codes[index + 1] === 2) {
+            const rgb = [codes[index + 2], codes[index + 3], codes[index + 4]];
+            return [rgb.every(byte) ? hex(...rgb) : null, 4];
+        }
+        return [null, 0];
+    }
+
+    // The class for a colour, and for an exact one its inline property.
+    function colourParts(kind, colour) {
+        if (!colour) return ["", ""];
+        if (colour.startsWith("#")) return [`ansi-${kind}-rgb`, `--ansi-${kind}: ${colour};`];
+        return [`ansi-${kind}-${colour}`, ""];
+    }
 
     function applyAnsiCodes(rawParameters) {
         const codes = rawParameters === "" ? [0] : rawParameters.split(";").map((part) => Number(part || 0));
@@ -242,9 +286,12 @@
             else if (code >= 40 && code <= 47) state.ansiStyle.bg = ANSI_COLORS[code - 40];
             else if (code === 49) state.ansiStyle.bg = null;
             else if (code >= 90 && code <= 97) state.ansiStyle.fg = `bright-${ANSI_COLORS[code - 90]}`;
-            else if (code >= 100 && code <= 107) state.ansiStyle.bg = ANSI_COLORS[code - 100];
-            else if ((code === 38 || code === 48) && codes[index + 1] === 5) index += 2;
-            else if ((code === 38 || code === 48) && codes[index + 1] === 2) index += 4;
+            else if (code >= 100 && code <= 107) state.ansiStyle.bg = `bright-${ANSI_COLORS[code - 100]}`;
+            else if (code === 38 || code === 48) {
+                const [colour, used] = extendedAnsi(codes, index, ANSI_COLORS);
+                if (colour) state.ansiStyle[code === 38 ? "fg" : "bg"] = colour;
+                index += used;
+            }
         }
     }
 
@@ -258,13 +305,13 @@
             const escape = data.indexOf("\x1b", cursor);
             if (escape === -1) {
                 const plain = data.slice(cursor);
-                appendTerminalSegment(plain, ansiClassName());
+                appendTerminalSegment(plain, ansiClassName(), ansiInlineStyle());
                 visible += plain;
                 break;
             }
             if (escape > cursor) {
                 const plain = data.slice(cursor, escape);
-                appendTerminalSegment(plain, ansiClassName());
+                appendTerminalSegment(plain, ansiClassName(), ansiInlineStyle());
                 visible += plain;
             }
             if (escape + 1 >= data.length) {
