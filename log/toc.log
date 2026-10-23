@@ -162814,3 +162814,44 @@ Fri Oct 23 12:34:35 2026 :: Log Alaric [4208]: who
 Fri Oct 23 12:34:38 2026 :: Log Alaric [4208]: tk cloak
 Fri Oct 23 12:34:40 2026 :: Log Alaric [4208]: tk cloak
 Fri Oct 23 12:34:40 2026 :: Log Alaric [4208]: tk cloak
+Fri Oct 23 12:35:05 2026 :: Log Alaric [4208]: l
+Fri Oct 23 12:35:08 2026 :: Log Alaric [4208]: l I pit
+Fri Oct 23 12:35:10 2026 :: Log Alaric [4208]: I
+Fri Oct 23 12:35:12 2026 :: Log Alaric [4208]: ex
+Fri Oct 23 12:35:15 2026 :: Log Alaric [4208]: eq 
+Fri Oct 23 12:35:17 2026 :: Log Alaric [4208]: I
+Fri Oct 23 12:35:22 2026 :: Log Alaric [4208]: e
+Fri Oct 23 12:35:22 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Fri Oct 23 12:35:23 2026 :: Log Alaric [4207]: e
+Fri Oct 23 12:35:23 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Fri Oct 23 12:35:24 2026 :: Log Alaric [4202]: e
+Fri Oct 23 12:35:24 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Fri Oct 23 12:35:24 2026 :: Log Alaric [4201]: e
+Fri Oct 23 12:35:24 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Fri Oct 23 12:35:25 2026 :: Log Alaric [2427]: e
+Fri Oct 23 12:35:25 2026 :: Log Alaric [2427]: e
+Fri Oct 23 12:35:26 2026 :: Log Alaric [2427]: e
+Fri Oct 23 12:35:27 2026 :: Log Alaric [2427]: n
+Fri Oct 23 12:35:27 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Fri Oct 23 12:35:28 2026 :: Log Alaric [2404]: n
+Fri Oct 23 12:35:28 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Fri Oct 23 12:35:29 2026 :: Log Alaric [2401]: d
+Fri Oct 23 12:35:29 2026 :: Log Alaric [4649]: arrived (Entrance to the Hall of Hero's.) from 2401
+Fri Oct 23 12:35:31 2026 :: Sock.sinaddr:  3.212.128.62
+Fri Oct 23 12:35:31 2026 :: EOF encountered on read.
+Fri Oct 23 12:35:31 2026 :: Log Alaric [4649]: pray
+Fri Oct 23 12:35:31 2026 :: Log Alaric [8]: arrived (The Oracle's Sanctum) from 4649
+Fri Oct 23 12:35:31 2026 :: Oracle: Alaric prayed from room 4649 (Entrance to the Hall of Hero's.) and entered her sanctum.
+Fri Oct 23 12:35:50 2026 :: Log Alaric [8]: say I died while afk. Where did I last die at, and is my equipment still there?
+Fri Oct 23 12:35:50 2026 :: Log Alaric [8]: asked the Oracle: I died while afk. Where did I last die at, and is my equipment still there?
+Fri Oct 23 12:35:55 2026 :: Oracle answered Alaric in room 8: I cannot see where you died or what is there now -- that information is not shown to me, only to you when you look around or check your inventory.
+Fri Oct 23 12:36:04 2026 :: Log Alaric [8]: l
+Fri Oct 23 12:36:05 2026 :: Log Alaric [8]: d
+Fri Oct 23 12:36:05 2026 :: Log Alaric [4649]: arrived (Entrance to the Hall of Hero's.) from 8
+Fri Oct 23 12:36:55 2026 :: Treasure goblin: vanished from room 783 (The Rolling Hills, camelot.are) (too long in one area).
+Fri Oct 23 12:37:09 2026 :: Log Alaric [4649]: u
+Fri Oct 23 12:37:09 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 4649
+Fri Oct 23 12:37:10 2026 :: Log Alaric [2401]: who
+Fri Oct 23 12:37:14 2026 :: Log Alaric [2401]: quit
+Fri Oct 23 12:37:14 2026 :: Alaric has quit.
+Fri Oct 23 12:37:14 2026 :: [QUIT] Player rejoined the real world.
