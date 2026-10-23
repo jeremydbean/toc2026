@@ -381,12 +381,12 @@ Live-test gotchas that look like product bugs and are not:
   test the hero's death message is not in `hero.transcript` after
   `run(keeper, "slay zhoarder")`: nothing pumped the hero's socket. Drain
   the client whose output you assert on.
-- **Test worlds have no area disasters** (`TOC_NO_DISASTERS`, set by
-  `tests/live_mud.py` beside `TOC_NO_GOBLIN`). An earthquake damages and
-  stuns everyone in an occupied area at random; one stunned a level 20
-  fixture in the Temple mid-test in CI on 2026-10-23, and the reply was
-  "You are too stunned to do that." A low-level fixture at a few hit
-  points with no fight is the sign.
+- **Test worlds have no random disasters** (`TOC_NO_DISASTERS`, set by
+  `tests/live_mud.py` beside `TOC_NO_GOBLIN`; DISASTER still works). An
+  earthquake stunned a level 20 fixture in the Temple mid-test in CI on
+  2026-10-23 -- "You are too stunned to do that." -- which is what
+  started the rework below. A low-level fixture at a few hit points with
+  no fight is the sign.
 - **The test servers append to tracked runtime logs.** A module run from
   the repository root leaves `log/webadmin-events.tsv` and `log/toc.log`
   modified, and `git rebase` then refuses with "unstaged changes". Check
@@ -2960,6 +2960,51 @@ SLEEP in room 8 (`ROOM_VNUM_ORACLE`) is refused by
 kick them out immediately). Her supplicant's audience ends through
 `oracle_dismiss(TRUE)`; anyone else goes to `oracle_saved_room()`'s
 answer. Staff are exempt. `tests/test_oracle_sanctum_live.py`.
+
+## Disasters And The Black Dragon
+
+`src/disaster.c` (owner, 2026-10-23: fix them, rework them, and let the
+black dragon carry you off to a fight you choose). `disaster_update()`
+runs every six or seven seconds from `update_handler`; an occupied area
+other than Mud School and Limbo is struck two times in ten thousand per
+cycle (`DISASTER_CHANCE`). The rules:
+
+- **A disaster warns before it hurts.** The cycle that starts one only
+  tells the area (`disaster_warning`); `disaster_warned` is set on the
+  next cycle, which strikes, and every cycle after that ends it half the
+  time or strikes again. Fire, tidal wave and the dragon strike once.
+- **It never kills.** `disaster_harm()` leaves one hit point and takes
+  them off directly -- not through `damage()`, which would make the
+  victim their own attacker and feed the dark's drain and a vampiric
+  weapon from their own wounds. An earthquake knocks the character down
+  (`POS_SITTING` and a round of lag); nothing sets `POS_STUNNED`, which
+  lasted to the next tick.
+- **Shelter** is `disaster_spares()`: NPCs, staff (by level),
+  characters below `DISASTER_MIN_LEVEL` (10), and the Temple, the altar,
+  safe rooms and arenas (the training yard). A flood sweeps through real
+  moves (`move_char`), so guards, private rooms and Hyrule's gates still
+  refuse it.
+- **The weather decides two of them**: a flood needs rain, a lightning
+  storm `SKY_LIGHTNING` (it needed clouds). Staff DISASTER ignores the
+  weather.
+- **The dragon** (mob 4474) is created per encounter: `dragon_snatch()`
+  takes one character in the area who is a mortal of level 10 or more,
+  outdoors, linked, out of a fight and not in a no-recall room or jail,
+  to another outdoor room of the same area (`dragon_landing`: no NO_MOB,
+  safe, private, teleport, river or death-trap room, nothing
+  `travel_spell_refuses`, no other player) and lands beside them,
+  `dragon_scale`d to two levels above them with three times
+  `dummy_typical_hp` at that level. It is not aggressive and has no spec
+  fun; `spec_kidnapper` is inert, kept so the area file loads. It leaves
+  `DRAGON_WAIT` (180) seconds after landing, or `DRAGON_PREY_GONE` (15)
+  after its prey leaves, never during a fight. Killed, its hoard --
+  `DRAGON_HOARD_KILLS` kills of the prey's level, often black market gear
+  -- goes into its purse before `make_corpse` (`disaster_dragon_slain`,
+  from `raw_kill_internal`), as the goblin's does. `extract_char` calls
+  `disaster_dragon_forget`; the quest master never picks it.
+- **Logged without the room it waits in**: who was taken and from which
+  area file; WIZINFO carries the rooms. `TOC_DRAGON_WAIT` shortens the
+  wait for the live test (`tests/test_disasters.py`).
 
 ## The Holiday Bosses
 

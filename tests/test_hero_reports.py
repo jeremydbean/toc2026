@@ -50,8 +50,8 @@ class QuietWorldTests(unittest.TestCase):
         turn disasters off, as they do the goblin and Hermie."""
         from pathlib import Path
         root = Path(__file__).resolve().parents[1]
-        update = (root / "src" / "update.c").read_text(encoding="latin-1")
-        body = update[update.index("void disaster_update( void )"):]
+        source = (root / "src" / "disaster.c").read_text(encoding="latin-1")
+        body = source[source.index("void disaster_update( void )"):]
         self.assertIn('getenv( "TOC_NO_DISASTERS" )', body[:body.index("for ( pArea")])
         live = (root / "tests" / "live_mud.py").read_text(encoding="utf-8")
         self.assertIn('env.setdefault("TOC_NO_DISASTERS", "1")', live)

@@ -506,6 +506,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "blackmarket",    do_blackmarket, POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "fixes",          do_fixes,       POS_DEAD,       L5,  LOG_NORMAL, 1 },
     { "goblin",         do_goblin,      POS_DEAD,       L5,  LOG_ALWAYS, 1 },
+    { "disaster",       do_disaster,    POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     /* Read-only staff views (review, 2026-10-22). Below every command a
        shorter word already means (al, align, quest, gear), so typing one
        of those still reaches what it always did. */

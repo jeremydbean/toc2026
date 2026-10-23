@@ -329,6 +329,7 @@ DECLARE_DO_FUN( do_grantpsi);
 DECLARE_DO_FUN( do_blackmarket );
 DECLARE_DO_FUN( do_fixes );
 DECLARE_DO_FUN( do_goblin );
+DECLARE_DO_FUN( do_disaster );
 DECLARE_DO_FUN( do_use );
 DECLARE_DO_FUN( do_rested );
 DECLARE_DO_FUN( do_alignment );

@@ -2512,6 +2512,7 @@ struct  area_data
     sh_int              nplayer;
     bool                empty;
     sh_int              disaster_type;
+    bool                disaster_warned;    /* struck once; see disaster.c */
 };
 
 /* Room type. */
@@ -3394,6 +3395,22 @@ bool    can_see         ( CHAR_DATA *ch, const CHAR_DATA *victim );
 bool    wizinvis_hides  ( const CHAR_DATA *wch, const CHAR_DATA *looker );
 const char *pers_acting_on( CHAR_DATA *ch, CHAR_DATA *looker );
 const char *area_shown_name( const char *name );
+
+/* disaster.c */
+#define DISASTER_FLOOD        1
+#define DISASTER_LIGHTNING    2
+#define DISASTER_EARTHQUAKE   3
+#define DISASTER_TORNADO      4
+#define DISASTER_SANDSTORM    5
+#define DISASTER_FIRE         6
+#define DISASTER_TIDAL        7
+#define DISASTER_DRAGON       8
+#define DISASTER_COUNT        9
+extern const char *const disaster_name[DISASTER_COUNT];
+void    disaster_update         ( void );
+bool    is_disaster_dragon      ( const CHAR_DATA *ch );
+void    disaster_dragon_forget  ( CHAR_DATA *ch );
+void    disaster_dragon_slain   ( CHAR_DATA *ch, CHAR_DATA *drake );
 bool    is_creator      ( CHAR_DATA *ch );
 bool    is_creator_founder ( CHAR_DATA *ch );
 bool    is_creator_in_person ( CHAR_DATA *ch );

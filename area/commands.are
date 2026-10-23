@@ -1259,6 +1259,66 @@ room, or one room away with SCAN.
 See also: 'BLACK MARKET'
 ~
 
+0 DISASTERS 'BLACK DRAGON'~
+Now and then a disaster strikes an area somebody is in: a flood, a
+lightning storm, an earthquake, a tornado, a sand storm, a brush fire or
+a tidal wave.  You always get a warning first -- the ground trembles,
+the wind rises, smoke is on the air -- and the first blow lands a few
+seconds later, so there is time to get under cover.  After that it
+strikes again every few seconds until it passes.
+
+What each one does:
+  Flood         sweeps you a few rooms along, hurting you as it goes,
+                unless you fly or are quick (dexterity); not indoors
+  Lightning     a bolt from a thunderstorm, outdoors only
+  Earthquake    falling rocks and timber, and it throws you down for a
+                moment; not on water or in the air
+  Tornado       picks you up and drops you somewhere else, hard
+  Sand storm    chokes and blinds you, in the desert
+  Brush fire    in fields, forests and hills
+  Tidal wave    crashes over you on the water
+
+Most can be shrugged off with a good saving throw.  A disaster never
+kills: it always leaves you at least one hit point.  It passes you by in
+the Temple, at the altar, in a safe room or an arena, and it does not
+touch anybody below level 10.
+
+THE BLACK DRAGON
+Sometimes the shadow overhead is the Great Black Dragon.  It snatches one
+person standing outdoors (level 10 or more), carries them off to another
+part of the same area and lands beside them.  It does not attack.  KILL
+DRAGON to fight it -- two levels above you, with three times the hit
+points of anything else your level, and it bashes, trips, disarms and
+sweeps with its tail; bring your best -- and it carries a hoard of coin
+and, often, a fine piece of gear.  Or simply walk away: it waits about
+three minutes, and leaves soon after you do.
+
+See also: WEATHER
+~
+
+60 DISASTER~
+Syntax: disaster                    (areas suffering one; where the dragon is)
+        disaster <kind>             (strike the area you stand in)
+        disaster stop               (end the one in your area)
+        disaster dragon <player>    (the dragon takes that player now)
+
+Kinds: flood, lightning, earthquake, tornado, sandstorm, fire, tidal,
+dragon.  A disaster you start, like a random one, warns the area and
+strikes on the next cycle (every six or seven seconds), then ends half
+the time each cycle; fire, tidal and dragon strike once.  Random ones
+strike an occupied area two times in ten thousand per cycle, never Mud
+School or Limbo; floods need rain and lightning a thunderstorm.  They
+never kill and spare staff, characters below level 10, and the Temple,
+altar, safe rooms and arenas.  DISASTER DRAGON <player> needs a mortal
+of level 10 or more outdoors, out of a fight and not in a no-recall room;
+the dragon lands in another outdoor room of their area, scaled to their
+level, and leaves three minutes later if nobody fights it.  The log
+names who was taken and from which area, never where the dragon waits;
+WIZINFO gives the rooms.
+
+See also: DISASTERS
+~
+
 0 RESTED 'REST XP' 'RESTED XP'~
 Syntax: rested
 

@@ -3319,90 +3319,21 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
    return false;
 }
  
+/*
+ * The black dragon (mob 4474) used to snatch a player of a random level
+ * anywhere in the world, every few pulses, and leave them cursed with half
+ * their hit points and one move, the dragon itself nowhere to be fought.
+ * The dragon is a disaster now (disaster.c): it carries one character off
+ * and lands beside them, to be fought or left. This stays in the table so
+ * the area file still loads, and does nothing.
+ */
 bool spec_kidnapper( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argument )
 {
+    UNUSED_PARAM(mob);
     UNUSED_PARAM(ch);
+    UNUSED_PARAM(cmd);
     UNUSED_PARAM(argument);
-    CHAR_DATA *wch;
-   ROOM_INDEX_DATA *pRoomTport = NULL;
-   int seeker;
-   bool found = false;
-   AFFECT_DATA af;
-   char buf[MAX_STRING_LENGTH];
-   LIST_ITERATOR iter;
-
-   if( cmd != NULL)
-	return false;
-
-   seeker = dice(1,52);
-
-   FOR_EACH_CHARACTER( iter, wch )
-   {
-      if( !IS_NPC(wch) && wch->level == seeker &&
-          wch->in_room != NULL &&
-          !IS_SET(wch->in_room->room_flags, ROOM_INDOORS) )
-      {
-	found = true;
-        break;
-      } 
-   }
- 
-   if( wch == NULL )
-     return false;
- 
-   send_to_char("A black dragon swoops down and snatches you into it's claws!\n\r",wch);
-   act("A black dragon swoops down, flying off with $n.",wch,NULL,NULL,TO_ROOM);
- 
-   {
-     int attempts;
-     for ( attempts = 0; attempts < 200; attempts++ )
-     {
-         pRoomTport = get_room_index( number_range( 0, 65535 ) );
-         if ( pRoomTport != NULL
-         &&   !IS_SET(pRoomTport->room_flags, ROOM_INDOORS)
-         &&   !IS_SET(pRoomTport->room_flags, ROOM_SAFE)
-         &&   !IS_SET(pRoomTport->room_flags, ROOM_JAIL)
-         &&   !IS_SET(pRoomTport->room_flags, ROOM_IMP_ONLY)
-         &&   !IS_SET(pRoomTport->room_flags, ROOM_GODS_ONLY)
-         &&   !IS_SET(pRoomTport->room_flags, ROOM_HEROES_ONLY)
-         &&   !IS_SET(pRoomTport->room_flags, ROOM_DT)
-         &&   pRoomTport->people == NULL )
-             break;
-         pRoomTport = NULL;   /* ensure NULL if flags failed */
-     }
-     if ( pRoomTport == NULL )
-     {
-         ROOM_INDEX_DATA *fallback = get_room_index(ROOM_VNUM_TEMPLE);
-         if ( fallback == NULL )
-             fallback = get_room_index(ROOM_VNUM_LIMBO);
-         if ( fallback == NULL )
-             return false;
-         char_from_room(wch);
-         char_to_room( wch, fallback );
-         send_to_char("The dragon loses its grip and drops you!\n\r", wch);
-         return false;
-     }
-   }
-   char_from_room(wch);
-   char_to_room(wch, pRoomTport);
-   send_to_char("You are deposited in a remote site for later consumption.\n\r",wch);
-   snprintf(buf, sizeof(buf),"%s has been snatched by the dragon",wch->name);
-   wizinfo(buf,62);
-   af.type = (sh_int)(skill_lookup("curse"));
-   af.level = wch->level;
-   af.duration = (sh_int)(dice(1,3));
-   af.location = 0;
-   af.modifier = 0;
-   af.bitvector = AFF_CURSE;
-   af.bitvector2 = 0;
-   affect_to_char(wch,&af);
-   wch->hit = wch->hit / 2;
-   wch->mana = wch->mana / 2;
-   wch->move = 1;
-   if(found && mob->timer == 0)
-      mob->timer = 15;
- 
-   return false;
+    return false;
 }
  
 bool spec_monk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )

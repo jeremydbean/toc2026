@@ -1927,6 +1927,7 @@ static bool automatic_quest_target_is_suitable( CHAR_DATA *ch,
     ||   room->vnum == ROOM_VNUM_TEMPLE || room->vnum == ROOM_VNUM_ALTAR
     ||   index->vnum == MOB_VNUM_SPELLUP
     ||   is_unfindable_mob(victim)
+    ||   is_disaster_dragon(victim)       /* gone in three minutes */
     ||   index->vnum == MOB_VNUM_EVENT_HORSEMAN
     ||   index->vnum == MOB_VNUM_EVENT_FATHER
     ||   index->pShop != NULL

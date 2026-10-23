@@ -3349,6 +3349,8 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
       death_cry( victim );
       if ( is_treasure_goblin( victim ) )
         treasure_goblin_slain( ch, victim );
+      if ( is_disaster_dragon( victim ) )
+        disaster_dragon_slain( ch, victim );
       make_corpse( victim );
       if ( IS_NPC(victim) )
       {

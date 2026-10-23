@@ -5,6 +5,26 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261023g 2026-10-23
+Disasters are fairer. Floods, lightning, earthquakes, tornadoes, sand
+storms, brush fires and tidal waves now warn the area a few seconds
+before they strike, never kill you, and spare the Temple, the altar,
+safe rooms and anybody below level 10. An earthquake throws you down
+for a moment instead of stunning you, a sand storm really does blind
+you, and a lightning storm comes with lightning. HELP DISASTERS.
+
+@ 20261023f 2026-10-23
+The Great Black Dragon hunts again. Now and then it swoops down on
+somebody standing outdoors, carries them off to another part of the
+area and lands beside them. It will not attack: KILL DRAGON for its
+hoard of coin and gear, or walk away and it leaves. HELP 'BLACK DRAGON'.
+
+@ 20261023h 2026-10-23 staff
+DISASTER lists areas suffering a disaster and where the dragon waits;
+DISASTER <kind> strikes your area (after the usual warning), DISASTER
+STOP ends it, and DISASTER DRAGON <player> sends the dragon for them.
+HELP DISASTER.
+
 @ 20261023e 2026-10-23
 Coloured custom prompts now show their colours instead of the colour tags,
 and stay plain with COLOR OFF. The browser client keeps terminal control

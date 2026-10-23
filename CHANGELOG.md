@@ -8,6 +8,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Disasters reworked; the black dragon is an encounter** (owner,
+  2026-10-23), in a new `src/disaster.c` replacing `update.c`'s
+  `disaster_update`. Disasters warn a cycle before striking, never kill,
+  knock down instead of stunning, and spare the Temple, altar, safe rooms,
+  arenas, staff and characters below level 10. Fixed: the sand storm
+  blinded only the blind; an earthquake stunned for no damage on water and
+  in the air; a lightning storm needed clouds, not lightning; misspelt
+  messages. The dragon carries one character to another outdoor room of
+  their area and lands beside them, scaled to their level and not
+  aggressive, with a hoard if killed; `spec_kidnapper` is retired. Staff
+  command DISASTER. HELP DISASTERS, HELP DISASTER.
+  `tests/test_disasters.py`.
 - **ANSI follow-up audit** (2026-10-23): both web consoles use the same bounded
   streaming decoder. The player client no longer prints OSC control payloads,
   keeps an incomplete escape or color across reconnects, or buffers unlimited
