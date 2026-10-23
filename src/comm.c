@@ -4111,9 +4111,9 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
         /*
          * A wizinvis actor leaves no trace with those below the level:
          * not "someone has arrived", not "someone appears in the room".
-         * Messages aimed at a victim still land, as "someone" -- being
-         * slain or handed something with no message at all would be
-         * worse than knowing somebody did it.
+         * Messages aimed at a victim still land, naming the actor "an
+         * immortal" (pers_acting_on) -- being slain or poked with no
+         * message at all would be worse than knowing who did it.
          */
         if ( ( type == TO_ROOM || type == TO_NOTVICT )
           && wizinvis_hides( ch, to ) )
@@ -4191,7 +4191,10 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
                 break;
 
             case 'n':
-                i = PERS( ch,  to  );
+                /* Aimed at this reader: an unseen immortal is "an
+                   immortal". To a room, "someone" as ever. */
+                i = type == TO_VICT ? pers_acting_on( ch, to )
+                                    : PERS( ch, to );
                 break;
 
             case 'N':
@@ -4306,8 +4309,25 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
 
         dstring_append_char( &buf, '\n' );
         dstring_append_char( &buf, '\r' );
-        if ( dstring_length( &buf ) > 0 )
-            buf.data[0] = UPPER(buf.data[0]);
+        {
+            /* Capitalise the first letter, past any colour codes a
+               social or channel opens with: "an immortal pokes you"
+               began with an escape sequence, and UPPER of that is
+               itself. */
+            size_t at = 0, len = dstring_length( &buf );
+
+            while ( at + 1 < len && buf.data[at] == '\x1b'
+                 && buf.data[at + 1] == '[' )
+            {
+                at += 2;
+                while ( at < len && !isalpha( (unsigned char)buf.data[at] ) )
+                    ++at;
+                if ( at < len )
+                    ++at;
+            }
+            if ( at < len )
+                buf.data[at] = UPPER(buf.data[at]);
+        }
         write_to_buffer( to->desc, dstring_cstr( &buf ), (int)dstring_length( &buf ) );
     }
 

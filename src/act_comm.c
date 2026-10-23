@@ -2743,12 +2743,12 @@ void do_tell( CHAR_DATA *ch, char *argument )
     tell_history_add( ch, stamp );
     
     {
-        /* "Someone tells you", capitalised: PERS says "someone" for a
-           wizinvis teller, and a mobile's short description is lower
-           case. Only the first letter, unlike capitalize(). */
+        /* "An immortal tells you", capitalised: an unseen teller is
+           "an immortal" or "someone", and a mobile's short description
+           is lower case. Only the first letter, unlike capitalize(). */
         char teller[MAX_INPUT_LENGTH];
 
-        toc_strlcpy( teller, PERS(ch, victim), sizeof(teller) );
+        toc_strlcpy( teller, pers_acting_on(ch, victim), sizeof(teller) );
         teller[0] = UPPER( teller[0] );
         snprintf( buf, sizeof(buf), "{%02X%s tells you '%s'{00\n\r",
             COL_TELL, teller, argument );
@@ -2846,12 +2846,18 @@ void do_reply( CHAR_DATA *ch, char *argument )
         victim->name, argument );
     tell_history_add( ch, stamp );
 
-    snprintf( buf, sizeof(buf), "{%02X%s replies '%s'{00\n\r",
-        COL_TELL, PERS(ch, victim), argument );
-    send_to_char( buf, victim );
+    {
+        char teller[MAX_INPUT_LENGTH];
 
-    snprintf( stamp, sizeof(stamp), "%s replies '%s'",
-        PERS(ch, victim), argument );
+        toc_strlcpy( teller, pers_acting_on(ch, victim), sizeof(teller) );
+        teller[0] = UPPER( teller[0] );
+        snprintf( buf, sizeof(buf), "{%02X%s replies '%s'{00\n\r",
+            COL_TELL, teller, argument );
+        send_to_char( buf, victim );
+
+        snprintf( stamp, sizeof(stamp), "%s replies '%s'",
+            teller, argument );
+    }
     tell_history_add( victim, stamp );
     victim->reply	= ch;
 
@@ -4543,7 +4549,7 @@ void do_gtell( CHAR_DATA *ch, char *argument )
         if ( is_same_group( gch, ch ) && ch != gch )
         {
             /* Code Safety: snprintf */
-	    snprintf( buf, sizeof(buf), "%s tells the group '%s'\n\r", PERS(ch, gch), argument );
+	    snprintf( buf, sizeof(buf), "%s tells the group '%s'\n\r", pers_acting_on(ch, gch), argument );
 	    buf[0] = UPPER(buf[0]);
 	    send_to_char( buf, gch );
 	}

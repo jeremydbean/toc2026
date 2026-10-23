@@ -8,6 +8,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **An unseen immortal acting on you is "an immortal"** (owner,
+  2026-10-23): `pers_acting_on()` names them so in `act()`'s `TO_VICT`
+  `$n` and in TELL, REPLY and GTELL; room messages stay "someone" or are
+  dropped for wizinvis. `act()` capitalises past leading colour escapes.
+  `tests/test_wizinvis.py`.
+- **Staff-only CHANGES entries**: `@ <id> <date> staff` is shown to staff
+  alone, marked "(staff only)"; four staff entries are tagged. The file's
+  header had an entry spliced into it, which hid 20261023a and parsed the
+  header's `@ <id>` as a bogus entry; the test now counts every `@` line.
+  `tests/test_changes.py`.
 - **Review of 2026-10-23**: RESETPWD refuses a granted creator aimed at
   the founder; PRESTORE keeps the character's current creator flag
   whatever the snapshot held; a snoop ends when its owner loses the rank

@@ -2747,7 +2747,8 @@ extern sh_int  gsn_petrify;
 /* Description macros. */
 /* Whoever cannot be seen is "someone" -- an unseen immortal included. It
    used to read "An Immortal", which told every mortal in the room that a
-   wizinvis immortal had just arrived (owner, 2026-10-20). */
+   wizinvis immortal had just arrived (owner, 2026-10-20). What an unseen
+   immortal does to you names them "an immortal": pers_acting_on(). */
 #define PERS(ch, looker)        ( can_see( looker, (ch) ) ? ( IS_NPC(ch) ? (ch)->short_descr : (ch)->name ) : "someone" )
 
 struct  social_type
@@ -3391,6 +3392,7 @@ int     equipment_affects       ( const CHAR_DATA *ch, const char **names,
                                   OBJ_DATA **sources, int max );
 bool    can_see         ( CHAR_DATA *ch, const CHAR_DATA *victim );
 bool    wizinvis_hides  ( const CHAR_DATA *wch, const CHAR_DATA *looker );
+const char *pers_acting_on( CHAR_DATA *ch, CHAR_DATA *looker );
 bool    is_creator      ( CHAR_DATA *ch );
 bool    is_creator_founder ( CHAR_DATA *ch );
 bool    is_creator_in_person ( CHAR_DATA *ch );

@@ -1,13 +1,23 @@
 # CHANGES -- what the game tells players has changed (src/changes.c).
-# Each entry: a line '@ 20261023a 2026-10-23
+# Each entry: a line '@ <id> <yyyy-mm-dd>', its text, then a blank line.
+# Newest first. Ids never change and are never reused: a character's
+# view counts are kept by id. Write entries for players. A change only
+# staff can use gets ' staff' after the date ('@ <id> <date> staff'):
+# only staff are shown it.
+
+@ 20261023b 2026-10-23 staff
+What a wizinvis or unseen immortal does TO a player names them "an
+immortal": "An immortal pokes you", "An immortal tells you ...", a
+channel line, a spell aimed at them. Anything the room would see --
+arriving, leaving, a poof, a SAY -- still shows nothing at all.
+CHANGES shows entries like this one, marked (staff only), to staff
+alone.
+
+@ 20261023a 2026-10-23
 - Hermie always answers when you ask her by HEAL or BUFF: a word she does
   not know gets her list instead of silence.
 - OPEN, CLOSE, LOCK and UNLOCK on an exit with no door now say there is
   no door that way, instead of "You can't do that."
-
-@ <id> <yyyy-mm-dd>', its text, then a blank line.
-# Newest first. Ids never change and are never reused: a character's
-# view counts are kept by id. Write entries for players, not for staff.
 
 @ 20261022g 2026-10-22
 - The underbrush east of the Coven's logging trail is no longer locked:
@@ -229,11 +239,12 @@ around Dresden, and he attacks nobody who does not attack him; Father
 Winter will do the same at Winter Veil. LOOK at either and you are told
 what he drops and how often.
 
-@ 20261020a 2026-10-20
+@ 20261020a 2026-10-20 staff
 A wizinvis immortal leaves no trace with players below the level: no
 "An Immortal appears in the room" when they recall, no arrivals or
-departures, and their SAY and socials are not shown. Anybody you cannot
-see is "someone" now, immortal or not.
+departures, and their SAY and socials are not shown. Somebody unseen is
+"someone"; an unseen immortal who does something to a player -- a poke,
+a tell, a spell -- is "an immortal" to them.
 
 @ 20261019b 2026-10-19
 Hallows End is on until the first of November: Dresden, Limbo and Mud
@@ -510,7 +521,7 @@ never counted, lights because they carry no wear flag, and an item
 that made your saves worse was being ranked as if it made them
 better.
 
-@ 20261001g 2026-10-01
+@ 20261001g 2026-10-01 staff
 Staff can eat anything again, to destroy an item they carry.  It
 checked the character's level rather than their trust, so a builder
 trusted to immortal rank was told the item was not edible.
@@ -673,7 +684,7 @@ a recall point now.
 A mobile that lives in a room no longer fills it either.  The quest
 giver's room holds two, and the questmaster was one of them.
 
-@ 20260925g 2026-09-25
+@ 20260925g 2026-09-25 staff
 An idle immortal no longer fills a one-person room.  Standing in the
 quest room was enough to shut questing down for everybody else, which
 is not what that flag is for - it exists to stop players walking in on
@@ -764,7 +775,7 @@ announced at login instead of sitting unmentioned, and staff are told
 how many bug, typo and idea reports have come in since they last
 looked.  See HELP REPORTS.
 
-@ 20260925u 2026-09-25
+@ 20260925u 2026-09-25 staff
 Staff can now MIRROR a player's gear onto themselves to look at a
 build from the inside, online or not, and INVULN stops anything hurting
 them while they do it.  MIRROR RESTORE hands the borrowed kit back in a

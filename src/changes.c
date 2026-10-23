@@ -9,6 +9,10 @@
  * headed "@ <id> <yyyy-mm-dd>" and ended by a blank line. Ids never change
  * and are never reused: a character's counts are kept by id, saved as
  * ChangesSeen under case 'C' in fread_char.
+ *
+ * A change only staff can use is headed "@ <id> <yyyy-mm-dd> staff" and
+ * is shown to staff alone (owner, 2026-10-23): a player is never shown
+ * it, by CHANGES or CHANGES ALL, and it is not in their count.
  ***************************************************************************/
 
 #include <stdio.h>
@@ -30,6 +34,7 @@ typedef struct change_entry
     char   date[16];               /* yyyy-mm-dd */
     time_t when;
     char   text[CHANGES_TEXT];
+    bool   staff;                  /* "staff" after the date */
 } CHANGE_ENTRY;
 
 static CHANGE_ENTRY *changes = NULL;
@@ -80,11 +85,18 @@ void changes_load( void )
                 break;
             cur = &changes[changes_count++];
             memset( cur, 0, sizeof(*cur) );
-            if ( sscanf( line + 1, "%23s %15s", cur->id, cur->date ) != 2 )
             {
-                changes_count--;
-                cur = NULL;
-                continue;
+                char tag[16];
+                int fields = sscanf( line + 1, "%23s %15s %15s",
+                                     cur->id, cur->date, tag );
+
+                if ( fields < 2 )
+                {
+                    changes_count--;
+                    cur = NULL;
+                    continue;
+                }
+                cur->staff = fields == 3 && !str_cmp( tag, "staff" );
             }
             cur->when = change_date( cur->date );
             continue;
@@ -161,6 +173,8 @@ static void changes_append( char *buf, size_t size, int i, const char **last_dat
         toc_strlcat( buf, "{00\n\r", size );
         *last_date = changes[i].date;
     }
+    if ( changes[i].staff )
+        toc_strlcat( buf, "  (staff only)\n\r", size );
     toc_strlcat( buf, changes[i].text, size );
     toc_strlcat( buf, "\n\r\n\r", size );
 }
@@ -172,11 +186,12 @@ void do_changes( CHAR_DATA *ch, char *argument )
     static bool shown[CHANGES_MAX];
     char arg[MAX_INPUT_LENGTH];
     const char *last_date = NULL;
-    bool all;
+    bool all, staff;
     int i, count = 0, hidden = 0;
 
     one_argument( argument, arg );
     all = arg[0] != '\0' && !str_prefix( arg, "all" );
+    staff = IS_TRUSTED( ch, LEVEL_IMMORTAL );
     if ( changes_count == 0 )
     {
         send_to_char( "There is no list of changes right now.\n\r", ch );
@@ -189,6 +204,8 @@ void do_changes( CHAR_DATA *ch, char *argument )
     for ( i = 0; i < changes_count; i++ )
     {
         shown[i] = false;
+        if ( changes[i].staff && !staff )
+            continue;
         if ( !all )
         {
             if ( current_time - changes[i].when > CHANGES_FRESH_DAYS * 24L * 60L * 60L
@@ -214,7 +231,7 @@ void do_changes( CHAR_DATA *ch, char *argument )
 
         snprintf( tail, sizeof(tail),
                   "An entry stops showing here once you have seen it three times, or\n\r"
-                  "after a month.  CHANGES ALL shows all %d.\n\r", count + hidden );
+                  "after two weeks.  CHANGES ALL shows all %d.\n\r", count + hidden );
         toc_strlcat( buf, tail, sizeof(buf) );
         count_shown( ch, shown );
     }

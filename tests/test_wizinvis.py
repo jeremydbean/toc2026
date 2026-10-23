@@ -10,7 +10,10 @@ always promised "your actions produce no messages to them".
 wizinvis_hides() in handler.c is the one test; can_see asks it, and
 act() drops a wizinvis actor's TO_ROOM and TO_NOTVICT messages for
 anybody it hides them from. A message aimed at a victim still lands,
-as "someone".
+and names an unseen immortal "an immortal" (owner, 2026-10-23: a poke
+or a tell from an immortal should say so; a poof should stay unseen).
+pers_acting_on() in handler.c decides it, for act()'s TO_VICT and for
+tells, replies and group tells.
 """
 from __future__ import annotations
 
@@ -45,6 +48,15 @@ class WizinvisSourceTests(unittest.TestCase):
         pers = [l for l in merc.splitlines() if l.startswith("#define PERS(")][0]
         self.assertNotIn("An Immortal", pers)
         self.assertIn('"someone"', pers)
+
+    def test_only_what_is_aimed_at_you_says_an_immortal(self) -> None:
+        helper = body("src/handler.c", "const char *pers_acting_on(")
+        self.assertIn('"an immortal"', helper)
+        self.assertIn("LEVEL_IMMORTAL", helper)
+        act = body("src/comm.c", "void act_new(")
+        self.assertIn("type == TO_VICT ? pers_acting_on( ch, to )", act)
+        comm = (ROOT / "src" / "act_comm.c").read_text(encoding="latin-1")
+        self.assertEqual(comm.count("pers_acting_on("), 3)   # tell, reply, gtell
 
     def test_act_drops_a_wizinvis_actors_room_messages(self) -> None:
         act = body("src/comm.c", "void act_new(")
@@ -98,6 +110,18 @@ class WizinvisLiveTests(unittest.TestCase):
                     self.assertNotIn(word, seen, seen)
                 run(imm, "goto %d" % TEMPLE, 1.6)
                 self.assertNotIn("Zhidden", run(watcher, "look", 1.6))
+
+                # What the immortal does to the mortal says who did it --
+                # by rank, never by name.
+                mark = len(watcher.transcript)
+                run(imm, "poke zwatcher", 1.6)
+                run(imm, "tell zwatcher are you lost", 1.6)
+                watcher.drain(1.0)
+                seen = watcher.transcript[mark:]
+                self.assertIn("An immortal pokes you", seen)
+                self.assertIn("An immortal tells you 'are you lost'", seen)
+                self.assertNotIn("Zhidden", seen)
+                self.assertNotIn("omeone", seen)
 
                 # Visible: the same steps are all seen, by name.
                 self.assertIn("fade back into existence", run(imm, "invis 0", 1.6))

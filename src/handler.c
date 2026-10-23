@@ -3431,6 +3431,24 @@ bool wizinvis_hides( const CHAR_DATA *wch, const CHAR_DATA *looker )
 }
 
 /*
+ * How someone is named to the person they are acting on: by name if the
+ * looker can see them, as "an immortal" if they cannot and are staff,
+ * and "someone" otherwise (owner, 2026-10-23). For what an actor does
+ * TO the looker only -- a poke, a tell, a spell aimed at them, a channel
+ * line, things the immortal chose to do to that person. What a room sees
+ * goes through PERS and stays "someone", or nothing at all for a
+ * wizinvis actor (act() drops it), so an arrival or a poof never says
+ * that an immortal is about.
+ */
+const char *pers_acting_on( CHAR_DATA *ch, CHAR_DATA *looker )
+{
+    if ( !can_see( looker, ch )
+      && !IS_NPC(ch) && get_trust( ch ) >= LEVEL_IMMORTAL )
+        return "an immortal";
+    return PERS( ch, looker );
+}
+
+/*
  * The trust a staff notice about ch -- connecting, entering, leaving,
  * losing link -- goes out at: at least `level', and no lower than ch's
  * WIZINVIS level, so a notice reaches only those who could see them

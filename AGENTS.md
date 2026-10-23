@@ -444,7 +444,10 @@ Commands added or revived in September 2026, and where they live:
   entries a character has been shown fewer than three times and counts
   each showing (`ChangesSeen`, case 'C'); `changes all` shows everything.
   Add an entry for every player-visible change, and never reuse or alter
-  an id -- the counts are kept by id.
+  an id -- the counts are kept by id. A change only staff can use is
+  headed `@ <id> <date> staff` and shown to staff alone, marked "(staff
+  only)" (owner, 2026-10-23: immortal changes stay out of the players'
+  list); never put the creator rank in either.
 - `alias` / `unalias` live in `src/act_comm.c`; expansion is in
   `src/interp.c` and must not leave a trailing space, or commands that read
   their whole argument (`goto`) fail on it. An alias may hold up to
@@ -2953,8 +2956,13 @@ deliver them with "someone" in the name's place (owner, 2026-10-20:
 nobody below the level sees anything). `PERS()` says "someone" for
 anyone unseen; it used to say "An Immortal" for an unseen immortal,
 which announced every wizinvis recall to the room. Messages aimed at a
-victim (`TO_VICT`) still land, as "someone": being slain or handed
-something with no message at all would be worse. The per-recipient
+victim (`TO_VICT`) still land, and name an unseen immortal "an
+immortal" (owner, 2026-10-23: a poke or a tell from staff says so; a
+poof stays unseen): `pers_acting_on()` in `handler.c` decides it, for
+`act()`'s `$n` in `TO_VICT` and for TELL, REPLY and GTELL. What a room
+sees stays `PERS()`, "someone". `act()` capitalises the first letter
+past any leading colour escapes, so "An immortal pokes you" is not
+"an immortal" behind a social's colour code. The per-recipient
 loops that bypass `act()` were audited on 2026-10-20 and each already
 asks: `do_goto`'s bamf loop (trust against `invis_level`), WHO and the
 GMCP online feed (`online_can_list`), `show_char_to_char`, `do_count`,
