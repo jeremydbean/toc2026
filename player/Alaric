@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792721849
+LogO 1792722148
 Vers 4
 Prom ~
 Ignoring ~
@@ -17,7 +17,7 @@ ChangesSeen 20261022g:1 20261022f:1 20261022e:1 20261022d:1 20261022c:1 20261022
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 54
-Plyd 806148
+Plyd 806447
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
@@ -118,7 +118,7 @@ Achv visit-oz 1791127353
 Achv visit-high-tower 1791329329
 Achv visit-ultima 1791329350
 Achv visit-korzath-fortress 1790899622
-LastOut  1792721849
+LastOut  1792722148
 Rested 30023 0
 Daily 0 0 0 0 0
 SesLogin 1792630812
@@ -137,8 +137,7 @@ CasinoWon  51
 CasinoLost 304
 Exp  163574
 Act  4261068
-AfBy 3678908
-AfBy2 4106
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -166,13 +165,13 @@ Color 16 6
 Pos  8
 Prac 77
 Trai 36
-Save  -5
+Save  3
 Alig  1000
-Hit   79
-Dam   99
-ACs -269 -244 -292 -33
+Hit   60
+Dam   74
+ACs -264 -239 -287 -28
 Attr 20 13 13 18 19
-AMod 75 -2 1 25 0
+AMod 11 -2 1 5 0
 Pass Al3w9zuAlwpyY~
 Titl .~
 TitleSet 1
@@ -225,61 +224,6 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
-AffD 'giant strength'   0   0  15   1          0          0
-AffD 'divine protection'   0   0   0   0          0       4096
-AffD 'fire shield'   0   0   0   0          0          8
-AffD 'protection evil'   0   0   0   0       8192          0
-AffD 'pass door'   0   0   0   0    1048576          0
-AffD 'fly'   0   0   0   0     524288          0
-AffD 'haste'   0   0   4   2    2097152          0
-AffD 'sanctuary'   0   0   0   0        128          0
-AffD 'giant strength'   0   0  15   1          0          0
-AffD 'divine protection'   0   0   0   0          0       4096
-AffD 'fire shield'   0   0   0   0          0          8
-AffD 'protection evil'   0   0   0   0       8192          0
-AffD 'pass door'   0   0   0   0    1048576          0
-AffD 'fly'   0   0   0   0     524288          0
-AffD 'haste'   0   0   4   2    2097152          0
-AffD 'sanctuary'   0   0   0   0        128          0
-AffD 'armor'   0   0 -20  17          0          0
-AffD 'bless'   0   0   8  18          0          0
-AffD 'bless'   0   0  -8  24          0          0
-AffD 'shield'   0   0 -20  17          0          0
-AffD 'stone skin'   0   0 -40  17          0          0
-AffD 'sanctuary'   0   0   0   0        128          0
-AffD 'haste'   0   0   4   2    2097152          0
-AffD 'fly'   0   0   0   0     524288          0
-AffD 'pass door'   0   0   0   0    1048576          0
-AffD 'protection evil'   0   0   0   0       8192          0
-AffD 'fire shield'   0   0   0   0          0          8
-AffD 'divine protection'   0   0   0   0          0       4096
-AffD 'giant strength'   0   0   4   1          0          0
-AffD 'frenzy'   0   0  11  18          0          0
-AffD 'frenzy'   0   0  11  19          0          0
-AffD 'frenzy'   0   0 110  17          0          0
-AffD 'detect invis'   0   0   0   0          8          0
-AffD 'detect hidden'   0   0   0   0         32          0
-AffD 'detect magic'   0   0   0   0         16          0
-AffD 'detect good'   0   0   0   0          0          2
-AffD 'detect evil'   0   0   0   0          4          0
-AffD 'power gloves'   0   0  14  19          0          0
-AffD 'shroud'   0   0 -35  17          0          0
-AffD 'sanctuary'   0   0   0   0        128          0
-AffD 'haste'   0   0   4   2    2097152          0
-AffD 'fly'   0   0   0   0     524288          0
-AffD 'pass door'   0   0   0   0    1048576          0
-AffD 'protection evil'   0   0   0   0       8192          0
-AffD 'fire shield'   0   0   0   0          0          8
-AffD 'divine protection'   0   0   0   0          0       4096
-AffD 'giant strength'   0   0  15   1          0          0
-AffD 'sanctuary'   0   0   0   0        128          0
-AffD 'haste'   0   0   4   2    2097152          0
-AffD 'fly'   0   0   0   0     524288          0
-AffD 'pass door'  32   0   0   0    1048576          0
-AffD 'protection evil'  43   0   0   0       8192          0
-AffD 'fire shield'  37   0   0   0          0          8
-AffD 'divine protection'  35   0   0   0          0       4096
-AffD 'giant strength'   0   0  15   1          0          0
 End
 
 #O
