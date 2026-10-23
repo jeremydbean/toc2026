@@ -161745,3 +161745,10 @@ Fri Oct 23 02:35:15 2026 :: Sock.sinaddr:  23.31.96.97
 Fri Oct 23 02:35:45 2026 :: EOF encountered on read.
 Fri Oct 23 02:36:18 2026 :: Sock.sinaddr:  3.149.57.90
 Fri Oct 23 02:36:19 2026 :: EOF encountered on read.
+Fri Oct 23 02:41:22 2026 :: Sock.sinaddr:  52.15.147.27
+Fri Oct 23 02:41:22 2026 :: EOF encountered on read.
+Fri Oct 23 02:42:14 2026 :: Log Alaric [2]: arrived (Limbo) from 4216
+Fri Oct 23 02:42:15 2026 :: Log Alaric [4216]: arrived (Death room.) from 2
+Fri Oct 23 02:42:15 2026 :: Log Alaric [4216]: who
+Fri Oct 23 02:42:15 2026 :: Log Alaric [4216]: worth
+Fri Oct 23 02:42:20 2026 :: Treasure goblin: vanished from room 919 (Dungeon, olympus.are) (too long in one area).
