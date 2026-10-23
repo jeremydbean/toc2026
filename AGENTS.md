@@ -2997,10 +2997,13 @@ cycle (`DISASTER_CHANCE`). The rules:
   `dummy_typical_hp` at that level. It is not aggressive and has no spec
   fun; `spec_kidnapper` is inert, kept so the area file loads. It leaves
   `DRAGON_WAIT` (180) seconds after landing, or `DRAGON_PREY_GONE` (15)
-  after its prey leaves, never during a fight. Killed, its hoard --
-  `DRAGON_HOARD_KILLS` kills of the prey's level, often black market gear
-  -- goes into its purse before `make_corpse` (`disaster_dragon_slain`,
-  from `raw_kill_internal`), as the goblin's does. `extract_char` calls
+  after its prey leaves, never during a fight. Killed, its hoard goes
+  into its purse before `make_corpse` (`disaster_dragon_slain`, from
+  `raw_kill_internal`), as the goblin's does: `DRAGON_HOARD_KILLS` kills'
+  coin and **always a piece of gear** from `black_market_gear_for_level`
+  at the level of the one it took (`dragon_prey_level`, kept even if they
+  quit; owner, 2026-10-23), with a rarity on top `DRAGON_RARE_CHANCE` in
+  a hundred or when the level finds no gear. `extract_char` calls
   `disaster_dragon_forget`; the quest master never picks it.
 - **Logged without the room it waits in**: who was taken and from which
   area file; WIZINFO carries the rooms. `TOC_DRAGON_WAIT` shortens the

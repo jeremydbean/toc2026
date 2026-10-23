@@ -182,6 +182,11 @@ class DisasterLiveTests(unittest.TestCase):
                 self.assertRegex(corpse.lower(), r"coin|gold|silver|platinum|copper")
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
         self.assertIn("Black dragon: snatched Zprey (level 20) from dresden.are", log)
+        # Its hoard always holds a piece of gear for the level of the one it
+        # took (owner, 2026-10-23), named in the log.
+        slain = re.search(r"Black dragon: slain by Zkeeper, dropping ([^\n]*)", log)
+        self.assertIsNotNone(slain, log[-2000:])
+        self.assertNotIn("no gear", slain.group(1))
         self.assertNotIn(f"to room {room}", log.split("Black dragon: snatched", 1)[1][:200])
 
 

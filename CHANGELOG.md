@@ -17,7 +17,9 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   in the air; a lightning storm needed clouds, not lightning; misspelt
   messages. The dragon carries one character to another outdoor room of
   their area and lands beside them, scaled to their level and not
-  aggressive, with a hoard if killed; `spec_kidnapper` is retired. Staff
+  aggressive; killed, it drops coin and always a piece of gear for the
+  taken character's level, sometimes a rarity too; `spec_kidnapper` is
+  retired. Staff
   command DISASTER. HELP DISASTERS, HELP DISASTER.
   `tests/test_disasters.py`.
 - **ANSI follow-up audit** (2026-10-23): both web consoles use the same bounded

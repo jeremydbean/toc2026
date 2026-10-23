@@ -43,9 +43,8 @@ extern AREA_DATA *area_first;
 #define MOB_VNUM_BLACK_DRAGON 4474
 #define DRAGON_WAIT          180     /* seconds it waits to be fought */
 #define DRAGON_PREY_GONE     15      /* seconds after its prey leaves */
-#define DRAGON_HOARD_KILLS   40      /* its hoard, in kills of the prey's level */
-#define DRAGON_GEAR_CHANCE   50
-#define DRAGON_RARE_CHANCE   10
+#define DRAGON_HOARD_KILLS   40      /* its coin, in kills of the prey's level */
+#define DRAGON_RARE_CHANCE   10      /* a black market rarity besides */
 
 const char *const disaster_name[DISASTER_COUNT] =
 {
@@ -93,6 +92,7 @@ static const char *const disaster_ending[DISASTER_COUNT] =
 static CHAR_DATA *dragon = NULL;        /* the one dragon in the world */
 static CHAR_DATA *dragon_prey = NULL;   /* who it carried off */
 static time_t dragon_leaves = 0;        /* when it takes off unfought */
+static int dragon_prey_level = 0;       /* sizes the hoard, even if they quit */
 
 
 /* The disaster type a word names, or 0. */
@@ -558,6 +558,7 @@ static bool dragon_snatch( AREA_DATA *area, CHAR_DATA *named, CHAR_DATA *staff )
     dragon_scale( dragon, prey->level );
     char_to_room( dragon, landing );
     dragon_prey = prey;
+    dragon_prey_level = prey->level;
     dragon_leaves = current_time + dragon_wait();
     act( "$n folds its wings and regards you, smoke curling from its nostrils.",
          dragon, NULL, prey, TO_VICT );
@@ -608,19 +609,37 @@ static void dragon_update( void )
 }
 
 /* Its hoard, into its purse before make_corpse, as the goblin's goes. */
+/* A piece of the hoard, carried in its purse until make_corpse empties it.
+   Returns the short description for the log, or NULL. */
+static const char *dragon_hoard_item( CHAR_DATA *drake, int vnum )
+{
+    OBJ_INDEX_DATA *pObj;
+    OBJ_DATA *obj;
+
+    if ( vnum <= 0 || ( pObj = get_obj_index( vnum ) ) == NULL )
+        return NULL;
+    obj = create_object( pObj, -UMAX( 1, pObj->level ) );
+    obj_to_char( obj, drake );
+    return obj->short_descr;
+}
+
+/* Its hoard goes into its purse before make_corpse, as the goblin's goes:
+   coin worth DRAGON_HOARD_KILLS kills of the level of the one it carried
+   off, a good piece of gear for that level -- the black market's pick of
+   the best placed piece for a random slot, within five levels below it
+   (owner, 2026-10-23) -- and now and then a rarity besides. */
 void disaster_dragon_slain( CHAR_DATA *ch, CHAR_DATA *drake )
 {
     CHAR_DATA *who = ch;
     char buf[MAX_STRING_LENGTH];
     char price[MAX_INPUT_LENGTH];
+    const char *gear, *rare = NULL;
     long per_kill, hoard;
-    int vnum = 0;
-    OBJ_INDEX_DATA *pObj;
+    int level = dragon_prey_level > 0 ? dragon_prey_level : drake->level - 2;
 
     if ( who != NULL && IS_NPC(who) && who->master != NULL )
         who = who->master;
-    per_kill = black_market_kill_value( dragon_prey != NULL ? dragon_prey->level
-                                        : drake->level );
+    per_kill = black_market_kill_value( level );
     hoard = per_kill > LONG_MAX / ( 2 * DRAGON_HOARD_KILLS )
           ? LONG_MAX / 2 : DRAGON_HOARD_KILLS * per_kill;
     hoard = hoard / 4 * 3 + number_range( 0, 100 ) * ( hoard / 200 );
@@ -628,18 +647,16 @@ void disaster_dragon_slain( CHAR_DATA *ch, CHAR_DATA *drake )
     gain_copper( drake, hoard );
     format_price( hoard, price, sizeof(price) );
 
-    if ( number_percent() <= DRAGON_RARE_CHANCE )
-        vnum = black_market_rarity();
-    else if ( number_percent() <= DRAGON_GEAR_CHANCE && who != NULL && !IS_NPC(who) )
-        vnum = black_market_gear_for_level( who->level );
-    if ( vnum > 0 && ( pObj = get_obj_index( vnum ) ) != NULL )
-        obj_to_char( create_object( pObj, -UMAX( 1, pObj->level ) ), drake );
+    gear = dragon_hoard_item( drake, black_market_gear_for_level( level ) );
+    if ( gear == NULL || number_percent() <= DRAGON_RARE_CHANCE )
+        rare = dragon_hoard_item( drake, black_market_rarity() );
 
     act( "$n crashes to the ground, and the hoard it carried spills across the earth!",
          drake, NULL, NULL, TO_ROOM );
-    snprintf( buf, sizeof(buf), "Black dragon: slain by %s, dropping %s%s.",
+    snprintf( buf, sizeof(buf), "Black dragon: slain by %s, dropping %s, %s%s%s.",
               who == NULL ? "nothing" : IS_NPC(who) ? who->short_descr : who->name,
-              price, vnum > 0 ? " and an item" : "" );
+              price, gear != NULL ? gear : "no gear",
+              rare != NULL ? " and " : "", rare != NULL ? rare : "" );
     log_string( buf );
     wizinfo( buf, LEVEL_IMMORTAL );
 }
