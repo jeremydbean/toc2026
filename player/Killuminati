@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1792788086
+LogO 1792788494
 Vers 4
 Desc You see something very special about him.
 ~
@@ -20,18 +20,18 @@ Fixes ~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6500823
+Plyd 6501231
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 StashMax 500
 Scro 0
-Room 2401
+Room 2405
 HMV  30130 30130 30000 30000 30000 30000
-NewGold 212
-NewPlat 2503030
-NewCopp 361
-NewSilv 297
+NewGold 97
+NewPlat 2503031
+NewCopp 61
+NewSilv 45
 BankCP 16347415256999
 IntTime 1792781458
 IntTotal 1288792655147
@@ -103,11 +103,11 @@ Achv visit-mob-factory 1790913596
 Achv visit-glitter-palace 1790800614
 Achv visit-underdark 1790842210
 Achv visit-high-tower 1790800570
-LastOut  1792788086
+LastOut  1792788494
 Rested 0 0
 Daily 0 0 0 0 0
-SesLogin 1791121830
-SesDur   507
+SesLogin 1792763260
+SesDur   25234
 SesExpG  0
 SesLvlG  0
 SesKill  0
@@ -167,7 +167,7 @@ Pnts 40
 TSex 1
 LLev 3
 HMVP 30000 30000 30000
-Cond 0 100 100
+Cond 0 24 100
 Alias / who~
 Alias f flee~
 Alias ] recall~

@@ -7187,3 +7187,15 @@
 1792782077	session	Trentlin	50	2401	dresden_halloween.are	quit	224s	+0 levels	+0 exp	+167864084 copper	1 kills	0 deaths	1 quests	191 commands	1 refused	coin: loot 1s 20c, quests 162p 24g 12s
 1792787683	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
 1792787688	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	4	-	prestore	alaric 20261023_023244.death	Alaric restored to: Fri Oct 23 2026 02:32:44
+1792788408	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	scan		an elite elven vampire             -to the far North. // the shambling janitor              -way out North. // a warlock of dresden               -to the East.
+1792788411	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	west		Western Oak Tree Square. // [Room: 2405]     [Sector: City]     [Flags: none] //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd
+1792788412	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	list		Madame Hexley the Hallows End merchant says 'I don't trade with folks I can't see.'
+1792788414	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	wizinvis		You slowly fade back into existence.
+1792788414	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	list		[Lv Price] Item // [ 0        30g] a bag of candy corn. // [ 0        30g] a bag of candy corn.
+1792788421	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	buy	corn	You haggle the price down to 17g 55s. // You buy a bag of candy corn.
+1792788422	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	eat	corn	You eat a bag of candy corn.
+1792788470	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] Killuminati, the Don. // Players found: 1
+1792788476	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	wizinvis	72	You slowly vanish into thin air.
+1792788477	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1792788480	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	score		| Name:    Killuminati | Level:      70 | Class:        Monk | // | Played:   1805 hours | Sex:      Male | Guild:     Warrior | // | Age:       107 years | Race:      Elf | Castle:       Valh |
+1792788494	session	Killuminati	70	2405	dresden_halloween.are	quit	25234s	+0 levels	+0 exp	+40766446088 copper	0 kills	0 deaths	0 quests	22 commands	0 refused	coin: spent 17g 55s

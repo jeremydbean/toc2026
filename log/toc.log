@@ -163645,3 +163645,42 @@ Fri Oct 23 20:37:55 2026 :: EOF encountered on read.
 Fri Oct 23 20:38:21 2026 :: Sock.sinaddr:  45.79.207.181
 Fri Oct 23 20:42:59 2026 :: Sock.sinaddr:  178.156.189.113
 Fri Oct 23 20:43:00 2026 :: EOF encountered on read.
+Fri Oct 23 20:46:48 2026 :: Log Killuminati [2401]: sca
+Fri Oct 23 20:46:51 2026 :: Log Killuminati [2401]: w
+Fri Oct 23 20:46:51 2026 :: Log Killuminati [2405]: arrived (Western Oak Tree Square.) from 2401
+Fri Oct 23 20:46:52 2026 :: Log Killuminati [2405]: list
+Fri Oct 23 20:46:54 2026 :: Log Killuminati [2405]: wizi
+Fri Oct 23 20:46:54 2026 :: Log Killuminati [2405]: list
+Fri Oct 23 20:47:01 2026 :: Log Killuminati [2405]: buy corn
+Fri Oct 23 20:47:01 2026 :: Log Killuminati [2405]: copper -175500
+Fri Oct 23 20:47:01 2026 :: Log Killuminati [2405]: bought a bag of candy corn (vnum 29932) for 175500 copper from Madame Hexley the Hallows End merchant
+Fri Oct 23 20:47:02 2026 :: Log Killuminati [2405]: eat corn
+Fri Oct 23 20:47:18 2026 :: Treasure goblin: vanished from room 7841 (A Trail in the Valley, valley.are) (too long in one area).
+Fri Oct 23 20:47:21 2026 :: Sock.sinaddr:  71.6.146.186
+Fri Oct 23 20:47:30 2026 :: EOF encountered on read.
+Fri Oct 23 20:47:50 2026 :: Log Killuminati [2405]: /
+Fri Oct 23 20:47:56 2026 :: Log Killuminati [2405]: wizi 72
+Fri Oct 23 20:47:57 2026 :: Log Killuminati [2405]: /
+Fri Oct 23 20:48:00 2026 :: Log Killuminati [2405]: sc
+Fri Oct 23 20:48:03 2026 :: Sock.sinaddr:  178.156.181.172
+Fri Oct 23 20:48:03 2026 :: EOF encountered on read.
+Fri Oct 23 20:48:14 2026 :: Log Killuminati [2405]: quit
+Fri Oct 23 20:48:14 2026 :: Killuminati has quit.
+Fri Oct 23 20:48:14 2026 :: [QUIT] Player rejoined the real world.
+Fri Oct 23 20:48:14 2026 :: Sock.sinaddr:  99.62.115.159
+Fri Oct 23 20:48:17 2026 :: EOF encountered on read.
+Fri Oct 23 20:50:05 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Fri Oct 23 20:50:09 2026 :: Log WebAdmin: fsave
+Fri Oct 23 20:50:15 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Fri Oct 23 20:50:18 2026 :: Received signal 15; saving players and shutting down.
+Fri Oct 23 20:50:18 2026 :: Normal termination of game.
+Fri Oct 23 20:50:20 2026 ::  INIT OK 
+Fri Oct 23 20:50:20 2026 :: walkto_load: 157 destinations.
+Fri Oct 23 20:50:20 2026 :: changes_load: 145 entries.
+Fri Oct 23 20:50:20 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Fri Oct 23 20:50:20 2026 :: ROM is ready to rock on port 9000.
+Fri Oct 23 20:50:20 2026 :: Treasure goblin: appeared.
+Fri Oct 23 20:50:20 2026 :: Automated backup complete.
+Fri Oct 23 20:50:20 2026 :: Daily backup complete.
+Fri Oct 23 20:53:08 2026 :: Sock.sinaddr:  54.167.223.174
+Fri Oct 23 20:53:08 2026 :: EOF encountered on read.
