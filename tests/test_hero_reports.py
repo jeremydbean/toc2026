@@ -43,6 +43,20 @@ def make(mud: LiveMud, name: str, **fields: object) -> None:
     patch_player_file(mud, name, Room=TEMPLE, **fields)
 
 
+class QuietWorldTests(unittest.TestCase):
+    def test_test_worlds_have_no_disasters(self) -> None:
+        """An earthquake in Dresden stunned Zmortfull at 3 hit points in
+        CI (2026-10-23) and the eat answered "too stunned". Test worlds
+        turn disasters off, as they do the goblin and Hermie."""
+        from pathlib import Path
+        root = Path(__file__).resolve().parents[1]
+        update = (root / "src" / "update.c").read_text(encoding="latin-1")
+        body = update[update.index("void disaster_update( void )"):]
+        self.assertIn('getenv( "TOC_NO_DISASTERS" )', body[:body.index("for ( pArea")])
+        live = (root / "tests" / "live_mud.py").read_text(encoding="utf-8")
+        self.assertIn('env.setdefault("TOC_NO_DISASTERS", "1")', live)
+
+
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class HeroReportTests(unittest.TestCase):
     def test_heroes_are_never_too_full_and_see_no_missing_help(self) -> None:

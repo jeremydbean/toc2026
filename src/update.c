@@ -3252,6 +3252,12 @@ void disaster_update( void )
    bool hit = true;
    LIST_ITERATOR iter;
 
+   /* Test worlds turn disasters off (tests/live_mud.py): an earthquake
+      stuns everyone in the area, and one in Dresden failed CI on
+      2026-10-23 by stunning a fixture between two commands. */
+   if ( getenv( "TOC_NO_DISASTERS" ) != NULL )
+       return;
+
    for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
    {
 						   /*1  floods */

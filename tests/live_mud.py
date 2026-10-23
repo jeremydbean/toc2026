@@ -385,6 +385,11 @@ class LiveMud:
         # world starts without one so it cannot walk into somebody's
         # assertions. Pass extra_env={"TOC_NO_GOBLIN": None} to see him.
         env.setdefault("TOC_NO_GOBLIN", "1")
+        # Area disasters (disaster_update) strike an occupied area at
+        # random: an earthquake damages and stuns everyone in it, which
+        # once landed between a fixture's two commands in CI. Pass
+        # extra_env={"TOC_NO_DISASTERS": None} to allow them.
+        env.setdefault("TOC_NO_DISASTERS", "1")
         env.update(self.extra_env)
         for key, value in self.extra_env.items():
             if value is None:

@@ -381,6 +381,12 @@ Live-test gotchas that look like product bugs and are not:
   test the hero's death message is not in `hero.transcript` after
   `run(keeper, "slay zhoarder")`: nothing pumped the hero's socket. Drain
   the client whose output you assert on.
+- **Test worlds have no area disasters** (`TOC_NO_DISASTERS`, set by
+  `tests/live_mud.py` beside `TOC_NO_GOBLIN`). An earthquake damages and
+  stuns everyone in an occupied area at random; one stunned a level 20
+  fixture in the Temple mid-test in CI on 2026-10-23, and the reply was
+  "You are too stunned to do that." A low-level fixture at a few hit
+  points with no fight is the sign.
 - **The test servers append to tracked runtime logs.** A module run from
   the repository root leaves `log/webadmin-events.tsv` and `log/toc.log`
   modified, and `git rebase` then refuses with "unstaged changes". Check
