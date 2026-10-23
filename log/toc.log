@@ -162068,3 +162068,10 @@ Fri Oct 23 08:26:42 2026 :: Sock.sinaddr:  18.116.205.62
 Fri Oct 23 08:26:43 2026 :: EOF encountered on read.
 Fri Oct 23 08:31:47 2026 :: Sock.sinaddr:  18.116.205.62
 Fri Oct 23 08:31:47 2026 :: EOF encountered on read.
+Fri Oct 23 08:34:52 2026 :: Log Alaric [2]: arrived (Limbo) from 4216
+Fri Oct 23 08:34:53 2026 :: Log Alaric [4216]: arrived (Death room.) from 2
+Fri Oct 23 08:34:53 2026 :: Log Alaric [4216]: who
+Fri Oct 23 08:34:53 2026 :: Log Alaric [4216]: worth
+Fri Oct 23 08:35:03 2026 :: Treasure goblin: vanished from room 29048 (Hallway to Guest Quarters, korzath1.are) (too long in one area).
+Fri Oct 23 08:36:52 2026 :: Sock.sinaddr:  3.12.251.153
+Fri Oct 23 08:36:52 2026 :: EOF encountered on read.
