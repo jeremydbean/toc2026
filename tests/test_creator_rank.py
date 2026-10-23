@@ -263,6 +263,97 @@ class CreatorRankTests(unittest.TestCase):
         self.assertIn("Killuminati granted the creator's rank to Zgranted.", log)
         self.assertIn("Killuminati took the creator's rank from Zgranted.", log)
 
+    def test_the_second_review_bypasses_are_closed(self) -> None:
+        """The review of 2026-10-23: a granted creator reset the founder's
+        password (N1); PRESTORE of a snapshot taken before CREATOR OFF
+        handed the rank back (N2); a snoop outlived the rank that started
+        it (N3); FARSLAY and SLAY reached trust 71 on a lower level (N4);
+        a reconnect skipped the creator's arrival unseen (N5)."""
+        with LiveMud() as mud:
+            for name in ("Killuminati", "Zdelegate", "Zviewer", "Zranked"):
+                make(mud, name)
+            patch_player_file(mud, "Zranked", Levl=20, Tru=71)
+            founder_file = mud.player_dir / "Killuminati"
+
+            # N1: the founder, offline, keeps his password.
+            with mud.connect(timeout=120) as founder:
+                login(founder, "Killuminati", PASSWORD)
+                self.assertIn("now holds", run(founder, "creator zdelegate on"))
+                founder.send("quit")
+                self.assertTrue(founder.wait_closed())
+            before = [l for l in founder_file.read_text(encoding="latin-1").splitlines()
+                      if l.startswith("Pass")]
+            with mud.connect(timeout=120) as delegate:
+                login(delegate, "Zdelegate", PASSWORD)
+                refused = run(delegate, "resetpwd killuminati Zanother1", 2.0)
+                delegate.send("quit")
+                delegate.wait_closed()
+            after = [l for l in founder_file.read_text(encoding="latin-1").splitlines()
+                     if l.startswith("Pass")]
+            self.assertIn("above your level", refused, refused)
+            self.assertEqual(before, after, "the founder's password changed")
+
+            with mud.connect(timeout=120) as founder, \
+                    mud.connect(timeout=120) as delegate, \
+                    mud.connect(timeout=120) as viewer, \
+                    mud.connect(timeout=120) as ranked:
+                login(founder, "Killuminati", PASSWORD)
+                login(delegate, "Zdelegate", PASSWORD)
+                login(viewer, "Zviewer", PASSWORD)
+                login(ranked, "Zranked", PASSWORD)
+
+                # N3: the rank goes, and the snoop with it.
+                self.assertIn("now being snooped", run(delegate, "snoop zviewer"))
+                self.assertIn("no longer holds", run(founder, "creator zdelegate off"))
+                mark = len(delegate.transcript)
+                run(viewer, "score", 1.5)
+                delegate.drain(1.5)
+                self.assertNotIn("Zviewer> ", delegate.transcript[mark:])
+                self.assertIn("Your snoop has ended", delegate.transcript[mark:])
+
+                # N4: trust 71 on a level 20 is out of an implementor's reach.
+                self.assertIn("outrank", run(viewer, "farslay zranked", 2.0))
+                self.assertIn("You failed", run(viewer, "slay zranked", 2.0))
+                self.assertIn("Zranked", run(ranked, "score"))
+
+                # N5: visible when the link drops, unseen when it comes back.
+                run(founder, "wizinvis")                 # visible
+                self.assertIn("Killuminati", run(viewer, "who"))
+            # (leaving the block dropped every link without QUIT)
+            with mud.connect(timeout=120) as viewer:
+                login(viewer, "Zviewer", PASSWORD)
+                with mud.connect(timeout=120) as again:
+                    again.expect("by what name", "name:")
+                    again.send("Killuminati")
+                    again.expect("password")
+                    again.send(PASSWORD)
+                    again.drain(3.0)
+                    self.assertIn("Reconnecting", again.transcript)
+                    viewer.drain(1.0)
+                    self.assertNotIn("Killuminati", run(viewer, "who"))
+                    self.assertNotIn("Killuminati@", viewer.transcript)
+                    again.send("quit")
+                    again.wait_closed()
+                viewer.send("quit")
+                viewer.wait_closed()
+
+            # N2: the delegate's pre-revocation snapshot holds Creator 1;
+            # restoring it must not hand the rank back.
+            versions = mud.player_dir / "versions" / "Zdelegate"
+            ranked_copies = [p for p in sorted(versions.iterdir())
+                             if p.name.endswith(".creator")
+                             and "Creator 1" in p.read_text(encoding="latin-1")]
+            self.assertTrue(ranked_copies, list(versions.iterdir()))
+            with mud.connect(timeout=120) as viewer:
+                login(viewer, "Zviewer", PASSWORD)
+                stamp = ranked_copies[-1].name.split(".", 1)[1]     # "<stamp>.creator"
+                restored = run(viewer, f"prestore zdelegate {stamp}", 3.0)
+                viewer.send("quit")
+                viewer.wait_closed()
+            delegate_file = (mud.player_dir / "Zdelegate").read_text(encoding="latin-1")
+        self.assertIn("restored", restored.lower(), restored)
+        self.assertNotRegex(delegate_file, r"(?m)^Creator ")
+
 
 class HuntingAccessTests(unittest.TestCase):
     """The Coven's underbrush is closed, not locked, from both sides, and

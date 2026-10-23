@@ -34,7 +34,10 @@ def run(client, command: str, settle: float = 1.2) -> str:
 class ProgressLogTests(unittest.TestCase):
     def test_a_kill_and_a_flee_are_recorded_without_a_name(self) -> None:
         with LiveMud() as mud:
-            for name, level in (("Zhunter", 20), ("Zsetter", 70)):
+            # Level 5 against a level 3 smurf earns experience; a level 20
+            # earns none (xp_compute's range is 3 - 20 + 3), which is the
+            # second kill: a kill that pays nothing is logged too.
+            for name, level in (("Zhunter", 5), ("Zsetter", 70)):
                 with mud.connect(timeout=120) as client:
                     create_character(client, name, PW)
                     client.send("quit")
@@ -47,6 +50,14 @@ class ProgressLogTests(unittest.TestCase):
                 run(setter, f"load mob {SMURF}")
                 # One hit point: the first blow that lands kills, before a
                 # wimpy smurf can run.
+                run(setter, "set char smurf hp 1")
+                hunter.buffer = ""
+                run(hunter, "kill smurf", 1.0)
+                hunter.expect("is DEAD", timeout=60)
+                hunter.drain(1.0)
+
+                run(setter, "advance zhunter 20", 1.5)
+                run(setter, f"load mob {SMURF}")
                 run(setter, "set char smurf hp 1")
                 hunter.buffer = ""
                 run(hunter, "kill smurf", 1.0)
@@ -78,15 +89,18 @@ class ProgressLogTests(unittest.TestCase):
         rows = [line.split("\t") for line in text.splitlines()]
         kills = [r for r in rows if r[1] == "kill"]
         flees = [r for r in rows if r[1] == "flee"]
-        self.assertEqual(len(kills), 1, text)
-        kill = kills[0]
+        self.assertEqual(len(kills), 2, text)
+        kill, unpaid = kills
         self.assertEqual(len(kill), 16, kill)
         self.assertEqual(kill[2], hunter_id)                  # the Id, not a name
-        self.assertEqual((kill[3], kill[8], kill[9]), ("20", str(SMURF), "3"))
+        self.assertEqual((kill[3], kill[8], kill[9]), ("5", str(SMURF), "3"))
         self.assertTrue(kill[10].endswith(".are"), kill)       # an area file, never a room
         self.assertGreaterEqual(int(kill[11]), 0, "encounter length")
         self.assertGreater(int(kill[14]), 0, "accepted experience")
         self.assertEqual(kill[15], "1", "group size")
+        # Fifteen levels over the smurf: nothing earned, still recorded.
+        self.assertEqual((unpaid[3], unpaid[8]), ("20", str(SMURF)), unpaid)
+        self.assertEqual(int(unpaid[14]), 0, unpaid)
         self.assertEqual(len(flees), 1, text)
         self.assertEqual(flees[0][8], str(WORKER))
         self.assertNotIn("Zhunter", text)

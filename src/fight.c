@@ -5488,7 +5488,11 @@ void do_slay( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( !IS_NPC(victim) && victim->level >= get_trust(ch) )
+    /* The level test is stock and stays; rank_protects adds a trust
+       above the caller's, which the level never shows (trust 71 on a
+       lower level, review 2026-10-23). */
+    if ( !IS_NPC(victim)
+    &&   ( victim->level >= get_trust(ch) || rank_protects( ch, victim ) ) )
     {
 	send_to_char( "You failed.\n\r", ch );
 	return;

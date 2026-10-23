@@ -5664,6 +5664,14 @@ void do_farslay( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* The creator's ward turns it back; anyone else who outranks the
+       caller -- trust 71 -- is simply out of reach (review, 2026-10-23). */
+    if ( !IS_NPC(victim) && rank_protects( ch, victim ) )
+    {
+        send_to_char( "They outrank you.\n\r", ch );
+        return;
+    }
+
     act( "Farslayer howls across the world and finds $N!", ch, NULL, victim, TO_CHAR );
     act( "Farslayer howls across the world and finds $N!", ch, NULL, victim, TO_ROOM );
     if ( victim->in_room != NULL )

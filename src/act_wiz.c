@@ -10935,8 +10935,8 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
     int count;
     int i, j, n;
     int yr, mo, dy, hr, mn, sc;
-    int c;
     int found_online;
+    bool keep_creator = false;
     int namelen;
     bool copy_failed;
     DIR *dp;
@@ -11199,6 +11199,7 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
                 {
                     bool refused = rank_protects( ch, loaded );
 
+                    keep_creator = loaded->pcdata != NULL && loaded->pcdata->creator;
                     extract_char( loaded, true );
                     if ( refused )
                     {
@@ -11225,6 +11226,7 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
             }
 
             found_online = 1;
+            keep_creator = victim->pcdata != NULL && victim->pcdata->creator;
             save_char_obj( victim );
             send_to_char(
                 "An immortal is restoring your character to an earlier state.\n\r"
@@ -11265,13 +11267,45 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
             return;
         }
 
+        /*
+         * Copied line by line so the creator's rank is the character's
+         * as it stands now, never the snapshot's: a copy taken before a
+         * CREATOR OFF held Creator 1, and restoring it handed the rank
+         * back without the founder (review, 2026-10-23). The snapshot's
+         * line is dropped and the current flag written before the player
+         * section's End. CREATOR is the only way to change it.
+         */
         copy_failed = false;
-        while ( (c = fgetc(fsrc)) != EOF )
         {
-            if ( fputc( (unsigned char) c, fdst ) == EOF )
+            char line[MAX_STRING_LENGTH];
+            bool line_start = true;
+            bool in_player = true;
+
+            while ( fgets( line, sizeof(line), fsrc ) != NULL )
             {
-                copy_failed = true;
-                break;
+                size_t len = strlen( line );
+                bool whole = line_start;
+
+                line_start = len > 0 && line[len - 1] == '\n';
+                if ( whole && in_player )
+                {
+                    if ( !strncmp( line, "Creator ", 8 ) )
+                        continue;
+                    if ( !strcmp( line, "End\n" ) || !strcmp( line, "End\r\n" ) )
+                    {
+                        in_player = false;
+                        if ( keep_creator && fputs( "Creator 1\n", fdst ) == EOF )
+                        {
+                            copy_failed = true;
+                            break;
+                        }
+                    }
+                }
+                if ( fputs( line, fdst ) == EOF )
+                {
+                    copy_failed = true;
+                    break;
+                }
             }
         }
         if ( ferror(fsrc) )
@@ -12636,6 +12670,7 @@ void do_resetpwd( CHAR_DATA *ch, char *argument )
     const char *pwdhash;
     const char *p;
     int  target_trust;
+    bool protected_rank = false;
     bool found_pass;
     bool pass_written;
 
@@ -12737,6 +12772,10 @@ void do_resetpwd( CHAR_DATA *ch, char *argument )
             return;
         }
         target_trust = get_trust( loaded );
+        /* rank_protects, asked of the loaded copy before it goes: it
+           knows the founder outranks the creators he makes, which two
+           trusts of 72 compared by hand do not (review, 2026-10-23). */
+        protected_rank = rank_protects( ch, loaded );
         extract_char( loaded, true );
     }
 
@@ -12750,11 +12789,10 @@ void do_resetpwd( CHAR_DATA *ch, char *argument )
      * other implementor's account, which is why the reset is announced
      * to every immortal online and written to the log.
      */
-    if ( target_trust > get_trust( ch )
-      || ( target_trust == get_trust( ch ) && get_trust( ch ) < MAX_LEVEL ) )
+    if ( protected_rank )
     {
         fclose( fpin );
-        if ( target_trust == get_trust( ch ) )
+        if ( target_trust == get_trust( ch ) && get_trust( ch ) < MAX_LEVEL )
             send_to_char( "Only an implementor may reset the password of someone at their own level.\n\r", ch );
         else
             send_to_char( "You cannot reset the password of someone above your level.\n\r", ch );

@@ -8,6 +8,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Review of 2026-10-23**: RESETPWD refuses a granted creator aimed at
+  the founder; PRESTORE keeps the character's current creator flag
+  whatever the snapshot held; a snoop ends when its owner loses the rank
+  or is outranked; SLAY and FARSLAY refuse a trust above the caller's on
+  a lower level; a reconnecting creator arrives wizinvis as a fresh login
+  does. The progression test's kill now earns experience, and a second
+  kill keeps zero-experience logging covered.
 - **From the play journal, 2026-10-22**: HEAL/BUFF at Hermie answers an
   unknown word with her list (`do_buff`; `spellup_listen` stays quiet for
   SAY); `find_door` says an exit has no door instead of "You can't do

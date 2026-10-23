@@ -3220,6 +3220,19 @@ Owner, 2026-10-22. Levels still stop at `MAX_LEVEL`; above it are trusts.
   original as well as the body, because a switched character is listed by
   the original's name. A new listing that prints `d->original` asks the
   same.
+- **From the review of 2026-10-23**: RESETPWD asks `rank_protects` of
+  the loaded target before freeing it -- two trusts of 72 compared by
+  hand let a granted creator reset the founder's password. **PRESTORE
+  never restores a creator flag**: the copy is line by line, drops the
+  snapshot's `Creator` line and writes the character's current flag
+  before the player section's `End` -- a snapshot from before CREATOR
+  OFF handed the rank back. CREATOR alone changes it. **A snoop is
+  rechecked at every forwarding** (`snoop_still_allowed` in `comm.c`:
+  SNOOP's level from the command table, and `rank_protects`), so losing
+  the rank ends one in progress. SLAY and FARSLAY ask `rank_protects`
+  beside their own tests, after the creator's backfire. The creator's
+  arrival unseen is `creator_arrives_unseen()`, called after the password
+  on a fresh login and in `check_reconnect`, before either's notices.
 
 ## The Training Yard
 

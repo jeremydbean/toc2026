@@ -347,6 +347,7 @@ void    access_lookup           ( DESCRIPTOR_DATA *d );
 bool    check_parse_name        ( char *name );
 bool    check_reconnect         ( DESCRIPTOR_DATA *d, char *name, bool fConn );
 static void wizinfo_same_host   ( DESCRIPTOR_DATA *d, CHAR_DATA *ch );
+static void creator_arrives_unseen ( CHAR_DATA *ch );
 bool    check_playing           ( DESCRIPTOR_DATA *d, char *name );
 bool    write_to_descriptor     ( DESCRIPTOR_DATA *d, const char *txt, int length );
 static bool check_ban           ( const char *site, int type );
@@ -2002,6 +2003,36 @@ bool queue_alias_input( DESCRIPTOR_DATA *d,
 /*
  * Low level output function.
  */
+/* Whether d->snoop_by may still watch d: the snooper's trust reaches
+   SNOOP's level in the command table, and the one watched does not
+   outrank them. */
+static bool snoop_still_allowed( DESCRIPTOR_DATA *d )
+{
+    static int snoop_level = -1;
+    CHAR_DATA *snooper;
+    CHAR_DATA *watched;
+    int cmd;
+
+    if ( snoop_level < 0 )
+    {
+        snoop_level = MAX_LEVEL;
+        for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
+            if ( !str_cmp( cmd_table[cmd].name, "snoop" ) )
+            {
+                snoop_level = cmd_table[cmd].level;
+                break;
+            }
+    }
+    snooper = d->snoop_by->original != NULL ? d->snoop_by->original
+                                            : d->snoop_by->character;
+    watched = d->original != NULL ? d->original : d->character;
+    if ( snooper == NULL )
+        return false;
+    if ( get_trust( snooper ) < snoop_level )
+        return false;
+    return watched == NULL || !rank_protects( snooper, watched );
+}
+
 bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
 {
     extern bool merc_down;
@@ -2122,8 +2153,16 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
 	return TRUE;
 
     /*
-     * Snoop-o-rama.
+     * Snoop-o-rama. A snoop is checked again at every forwarding: the
+     * snooper must still hold SNOOP's rank and must not be outranked by
+     * the one watched. A creator whose rank was taken mid-snoop kept
+     * watching until somebody quit (review, 2026-10-23).
      */
+    if ( d->snoop_by != NULL && !snoop_still_allowed( d ) )
+    {
+	write_to_buffer( d->snoop_by, "Your snoop has ended.\n\r", 0 );
+	d->snoop_by = NULL;
+    }
     if ( d->snoop_by != NULL )
     {
 	if ( d->character != NULL )
@@ -3010,14 +3049,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	    return;
 	ch = d->character;
 
-	/* The creator always arrives unseen (owner, 2026-10-22): wizinvis
-	   at his own trust, unless he left wizinvis at a level he chose.
-	   Set before the first notice, so none goes below it. */
-	if ( is_creator( ch ) && !IS_SET( ch->act, PLR_WIZINVIS ) )
-	{
-	    SET_BIT( ch->act, PLR_WIZINVIS );
-	    ch->invis_level = LEVEL_CREATOR;
-	}
+	creator_arrives_unseen( ch );
 
         snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s has connected.", ch->name, d->host );
         log_string( log_buf );
@@ -3690,6 +3722,21 @@ static int weapon_lookup( const char *name )
 /*
  * Look for link-dead player to reconnect.
  */
+/*
+ * A creator always arrives unseen (owner, 2026-10-22): wizinvis at their
+ * own trust, unless they left wizinvis at a level they chose. Called once
+ * the password is accepted -- a fresh login and a reconnect alike --
+ * before the first notice, so none goes below it.
+ */
+static void creator_arrives_unseen( CHAR_DATA *ch )
+{
+    if ( ch != NULL && is_creator( ch ) && !IS_SET( ch->act, PLR_WIZINVIS ) )
+    {
+        SET_BIT( ch->act, PLR_WIZINVIS );
+        ch->invis_level = LEVEL_CREATOR;
+    }
+}
+
 bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
 {
     CHAR_DATA *ch;
@@ -3715,6 +3762,8 @@ bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
 		d->character = ch;
 		ch->desc	 = d;
 		ch->timer	 = 0;
+		/* A reconnect is an arrival too (review, 2026-10-23). */
+		creator_arrives_unseen( ch );
 		send_to_char(
 		    "Reconnecting. Type replay to see missed tells.\n\r", ch );
                 act( "$n has reconnected.", ch, NULL, NULL, TO_ROOM );
