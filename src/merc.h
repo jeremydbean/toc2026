@@ -2927,7 +2927,8 @@ const char *player_snapshot_last_milestone( void );
 /* What a snapshot came to: published or not, its file and a checksum. */
 typedef struct snapshot_result
 {
-    bool          ok;               /* published, whole, on the disk */
+    bool          ok;               /* published whole, and read back */
+    bool          durable;          /* ...and its directory confirmed it */
     bool          saved;            /* the save before it landed */
     char          name[MAX_INPUT_LENGTH];  /* "<Name>.<stamp>[.<kind>]" */
     unsigned long hash;             /* FNV-1a of its bytes */
@@ -2947,9 +2948,15 @@ void    snapshot_list_free   ( char **names, int count );
 #define RECOVERY_PENDING    1
 #define RECOVERY_COMMITTED  2
 #define RECOVERY_REJECTED   3
+#define RECOVERY_ABANDONED  4               /* pending, never reached the file */
+#define DURABLE_FAILED      0               /* the old file is still in place */
+#define DURABLE_OK          1
+#define DURABLE_UNCERTAIN   2               /* in place, not confirmed on disk */
+bool    recovery_fault        ( const char *point );
 bool    durable_close         ( FILE *fp );
 bool    durable_dir_sync      ( const char *path );
-bool    durable_commit        ( FILE *fp, const char *temp_path, const char *path );
+int     durable_commit        ( FILE *fp, const char *temp_path, const char *path );
+void    recovery_reconcile_login ( CHAR_DATA *ch );
 bool    recovery_ensure_dir   ( const char *path );
 void    recovery_boot         ( void );
 bool    recovery_record       ( const char *event, const char *state,
@@ -2996,7 +3003,7 @@ void    corpse_registry_list          ( CHAR_DATA *ch, const char *name );
 bool    corpse_record_path            ( const char *owner, const char *id,
                                         char *path, size_t size, bool *live,
                                         CORPSE_RECORD *rec );
-bool    corpse_file_write  ( const char *path, const CORPSE_RECORD *rec,
+int     corpse_file_write  ( const char *path, const CORPSE_RECORD *rec,
                              OBJ_DATA *contents );
 int     corpse_file_read   ( const char *path, CORPSE_RECORD *rec,
                              OBJ_DATA **contents, char *why, size_t why_size );
@@ -3588,6 +3595,7 @@ void save_wizlist      ( void );
 
 /* save.c */
 bool    save_char_obj   ( CHAR_DATA *ch );
+int     save_char_obj_status ( void );
 bool    load_char_obj   ( DESCRIPTOR_DATA *d, char *name );
 void    corpse_back     ( CHAR_DATA *ch, OBJ_DATA *corpse );
 /* A corpse history (corpse/<name>.cps) holds the last CORPSE_HISTORY_ROWS

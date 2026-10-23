@@ -10820,101 +10820,6 @@ static bool prestore_name_ok( const char *name )
     return true;
 }
 
-static void prestore_stash( CHAR_DATA *ch, const char *capname,
-                            const char *srcpath, const char *version )
-{
-    DESCRIPTOR_DATA offline_desc;
-    CHAR_DATA *victim;
-    char buf[MAX_STRING_LENGTH];
-    char why[MAX_INPUT_LENGTH];
-    bool logging_in = false;
-    bool offline = false;
-    int added;
-
-    victim = player_in_game( capname, &logging_in );
-    if ( victim != NULL && logging_in )
-    {
-        send_to_char( "They are logging in; try again in a moment.\n\r", ch );
-        return;
-    }
-    if ( victim == NULL )
-    {
-        if ( ( victim = offline_player_load( &offline_desc, capname, NULL ) ) == NULL )
-        {
-            send_to_char( "No player by that name is online or saved.\n\r", ch );
-            return;
-        }
-        offline = true;
-    }
-
-    if ( victim == ch )
-    {
-        send_to_char( "You cannot prestore yourself.\n\r", ch );
-        return;
-    }
-    if ( IS_NPC( victim ) || victim->pcdata == NULL || rank_protects( ch, victim ) )
-    {
-        send_to_char( "You failed.\n\r", ch );
-        if ( offline )
-            extract_char( victim, true );
-        return;
-    }
-
-    /* A copy of them as they are, in case this was the mistake. */
-    player_snapshot_milestone( victim, "stashrestore", true );
-
-    /* All or nothing: a snapshot whose stash does not read back whole
-       adds nothing, so a retry cannot duplicate a partial restore. */
-    added = stash_restore_from_file( victim, srcpath, why, sizeof(why) );
-    if ( added < 0 )
-    {
-        bug( "prestore_stash: the snapshot's stash could not be restored", 0 );
-        snprintf( buf, sizeof(buf),
-                  "Nothing was restored: %s's stash in %s %s. "
-                  "Their stash is unchanged.\n\r", capname, version, why );
-        send_to_char( buf, ch );
-        snprintf( buf, sizeof(buf),
-                  "%s's stash restore for %s from %s refused: %s",
-                  ch->name, capname, version, why );
-        log_string( buf );
-        if ( offline )
-            extract_char( victim, true );
-        return;
-    }
-
-    save_char_obj( victim );
-    snprintf( buf, sizeof(buf), "%d stash object%s from %s; undo with %s", added,
-              added == 1 ? "" : "s", version, player_snapshot_last_milestone() );
-    recovery_record( "prestore", "committed", capname, "-", "stash", ch->name, buf );
-
-    snprintf( buf, sizeof(buf),
-              "%s restored %d stash object%s to %s from %s%s",
-              ch->name, added, added == 1 ? "" : "s", capname, version,
-              offline ? " while offline" : "" );
-    log_string( buf );
-
-    snprintf( buf, sizeof(buf),
-              "Restored %d object%s from %s into %s's stash, which now holds %d of %d.\n\r",
-              added, added == 1 ? "" : "s", version, capname,
-              stash_count( victim ), victim->pcdata->stash_max );
-    send_to_char( buf, ch );
-    if ( added == 0 )
-        send_to_char( "That snapshot's stash was empty.\n\r", ch );
-
-    if ( offline )
-    {
-        /* The loaded copy is saved; it never entered the game. */
-        extract_char( victim, true );
-    }
-    else if ( added > 0 )
-    {
-        snprintf( buf, sizeof(buf),
-                  "An immortal has put %d object%s back into your stash.\n\r",
-                  added, added == 1 ? "" : "s" );
-        send_to_char( buf, victim );
-    }
-}
-
 /* Every snapshot of one player, newest first: thousands, now that saves
    are kept for a year (save.c, snapshot_prune) -- as many as there are,
    a page at a time. It stopped at 6,000 (handoff review, 2026-10-23).
@@ -11108,20 +11013,214 @@ static bool prestore_corpse_exists( const char *capname )
     return false;
 }
 
-/* PRESTORE <player> <stamp> GEAR [FORCE]: what the snapshot's character
-   wore and carried, back into their inventory, nothing else changed
-   (owner, 2026-10-23). For a death: the "before death" snapshot holds the
-   gear as it was the moment they died. */
-static void prestore_gear( CHAR_DATA *ch, const char *capname,
-                           const char *srcpath, const char *version, bool force )
+/*
+ * Give objects read aside to a player -- PRESTORE GEAR, STASH and CORPSE
+ * all come here -- as one operation that is either done or not, and says
+ * which (independent review, 2026-10-23: a corpse restore whose save failed
+ * reported success, committed its receipt, refused a retry, and dropped
+ * the offline copy holding the only restored objects):
+ *
+ *   1. the copy that undoes it, published, read back and on the disk;
+ *   2. a pending receipt in the ledger;
+ *   3. the objects, and the mark "restore:<op>" in their file;
+ *   4. the save -- on the disk;
+ *   5. the committed receipt.
+ *
+ * Any of 1 or 2 failing gives nothing. A save that fails gives nothing to
+ * an offline copy (the source is untouched, so it can be done again) and
+ * leaves an online player's objects in memory with the receipt pending.
+ * A pending receipt is settled at their next login by the file's mark
+ * (recovery_reconcile_login): there, committed; not there, abandoned.
+ */
+static void prestore_give( CHAR_DATA *ch, const char *capname, OBJ_DATA *list,
+                           int count, bool to_stash, const char *op, const char *kind,
+                           const char *undo_tag, const char *source )
 {
     DESCRIPTOR_DATA offline_desc;
     CHAR_DATA *victim;
+    OBJ_DATA *obj;
+    char mark[96];
+    char detail[MAX_STRING_LENGTH];
     char buf[MAX_STRING_LENGTH];
+    bool offline;
+    int status;
+
+    if ( ( victim = prestore_target( ch, capname, &offline_desc, &offline ) ) == NULL )
+    {
+        snapshot_discard_gear( list );
+        return;
+    }
+    snprintf( mark, sizeof(mark), "restore:%s", op );
+
+    /* A crash between giving and committing, last time: their file says
+       whether it got there. */
+    if ( recovery_request_state( op ) == RECOVERY_PENDING && player_fix_has( victim, mark ) )
+    {
+        recovery_record( "request", "committed", capname, op, kind, ch->name,
+                         "already in their file; committed now" );
+        snapshot_discard_gear( list );
+        send_to_char( "That was already given: it reached their file before the receipt "
+                      "was finished, which is done now.\n\r", ch );
+        if ( offline )
+            extract_char( victim, true );
+        return;
+    }
+
+    if ( !player_snapshot_milestone( victim, undo_tag, true ) )
+    {
+        snapshot_discard_gear( list );
+        send_to_char( "Nothing was given: the copy of them that would undo it could not "
+                      "be taken, or not confirmed on the disk.  See the log.\n\r", ch );
+        if ( offline )
+            extract_char( victim, true );
+        return;
+    }
+    snprintf( detail, sizeof(detail), "%d object%s from %s%s; undo with %s", count,
+              count == 1 ? "" : "s", source, to_stash ? " into the stash" : "",
+              player_snapshot_last_milestone() );
+    if ( !recovery_record( "request", "pending", capname, op, kind, ch->name, detail ) )
+    {
+        snapshot_discard_gear( list );
+        send_to_char( "Nothing was given: the recovery ledger could not be written.\n\r", ch );
+        if ( offline )
+            extract_char( victim, true );
+        return;
+    }
+
+    while ( ( obj = list ) != NULL )
+    {
+        list = obj->next_content;
+        obj->next_content = NULL;
+        if ( to_stash )
+            stash_receive( victim, obj );
+        else
+            obj_to_char( obj, victim );
+    }
+    player_fix_record( victim, mark );
+    save_char_obj( victim );
+    status = save_char_obj_status();
+
+    if ( status != DURABLE_FAILED && recovery_fault( "crash-before-commit" ) )
+        _exit( 3 );             /* the test of a crash between the two */
+
+    if ( status == DURABLE_FAILED )
+    {
+        if ( offline )
+        {
+            /* Not saved, and this copy is about to go: nothing was given.
+               The source is untouched, so it can be done again. */
+            recovery_record( "request", "abandoned", capname, op, kind, ch->name,
+                             "their file could not be saved; nothing was given" );
+            extract_char( victim, true );
+            snprintf( buf, sizeof(buf), "Nothing was given: %s's file could not be saved. "
+                      "The source is untouched; try again once the disk is mended.\n\r",
+                      capname );
+            send_to_char( buf, ch );
+            snprintf( buf, sizeof(buf), "%s's %s restore for %s from %s: the save failed; "
+                      "abandoned, nothing given", ch->name, kind, capname, source );
+            log_string( buf );
+            return;
+        }
+        snprintf( buf, sizeof(buf), "%s has the %d object%s in hand, but their file could "
+                  "not be saved.  The receipt stays pending: it is committed when a save "
+                  "lands, and dropped if they log in without it.\n\r",
+                  capname, count, count == 1 ? "" : "s" );
+        send_to_char( buf, ch );
+        snprintf( buf, sizeof(buf), "%s's %s restore for %s from %s: given in memory, the "
+                  "save failed; pending", ch->name, kind, capname, source );
+        log_string( buf );
+        wizinfo( buf, LEVEL_IMMORTAL );
+        return;
+    }
+
+    corpse_registry_forget_player( capname );
+    if ( status == DURABLE_UNCERTAIN
+    ||   !recovery_record( "request", "committed", capname, op, kind, ch->name, detail ) )
+    {
+        snprintf( buf, sizeof(buf), "Given: %d object%s to %s, saved -- but %s.  The "
+                  "receipt is settled at their next login from the mark in their file.\n\r",
+                  count, count == 1 ? "" : "s", capname,
+                  status == DURABLE_UNCERTAIN ? "the save is not confirmed on the disk"
+                                              : "the ledger could not record it" );
+        send_to_char( buf, ch );
+    }
+    else if ( to_stash )
+    {
+        snprintf( buf, sizeof(buf),
+                  "Restored %d object%s from %s into %s's stash, which now holds %d of %d.\n\r",
+                  count, count == 1 ? "" : "s", source, capname,
+                  stash_count( victim ), victim->pcdata->stash_max );
+        send_to_char( buf, ch );
+    }
+    else
+    {
+        snprintf( buf, sizeof(buf), "Restored %d object%s from %s into %s's inventory.\n\r",
+                  count, count == 1 ? "" : "s", source, capname );
+        send_to_char( buf, ch );
+    }
+    snprintf( buf, sizeof(buf), "%s restored %d %s object%s to %s from %s%s", ch->name,
+              count, kind, count == 1 ? "" : "s", capname, source,
+              offline ? " while offline" : "" );
+    log_string( buf );
+
+    if ( offline )
+        extract_char( victim, true );
+    else if ( count > 0 )
+    {
+        if ( to_stash )
+            snprintf( buf, sizeof(buf), "An immortal has put %d object%s back into your "
+                      "stash.\n\r", count, count == 1 ? "" : "s" );
+        else
+            snprintf( buf, sizeof(buf), "An immortal has given back %d object%s you lost; "
+                      "they are in your inventory.\n\r", count, count == 1 ? "" : "s" );
+        send_to_char( buf, victim );
+    }
+}
+
+/* A unique operation id for an additive restore: "gear:<seq>". */
+static void prestore_op( char *op, size_t size, const char *kind )
+{
+    snprintf( op, size, "%s:%ld", kind, recovery_sequence() + 1 );
+}
+
+/* PRESTORE <player> <stamp> STASH: the snapshot's stash, added to theirs.
+   Read aside first and whole, or nothing is given. */
+static void prestore_stash( CHAR_DATA *ch, const char *capname,
+                            const char *srcpath, const char *version )
+{
+    OBJ_DATA *list = NULL;
     char why[MAX_INPUT_LENGTH];
-    bool logging_in = false;
-    bool offline = false;
-    int added;
+    char buf[MAX_STRING_LENGTH];
+    char op[48];
+    int count;
+
+    if ( ( count = snapshot_read_stash( ch, srcpath, why, sizeof(why), &list ) ) < 0 )
+    {
+        snprintf( buf, sizeof(buf), "Nothing was restored: %s's stash in %s %s.\n\r",
+                  capname, version, why );
+        send_to_char( buf, ch );
+        return;
+    }
+    if ( count == 0 )
+    {
+        send_to_char( "That snapshot's stash was empty.\n\r", ch );
+        return;
+    }
+    prestore_op( op, sizeof(op), "stash" );
+    prestore_give( ch, capname, list, count, true, op, "stash", "stashrestore", version );
+}
+
+/* PRESTORE <player> <stamp> GEAR [FORCE]: what the snapshot's character
+   wore and carried, into their inventory, nothing else changed (owner,
+   2026-10-23). Waits while their corpse still holds things, unless FORCE. */
+static void prestore_gear( CHAR_DATA *ch, const char *capname,
+                           const char *srcpath, const char *version, bool force )
+{
+    OBJ_DATA *list = NULL;
+    char why[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    char op[48];
+    int count;
 
     if ( !force && prestore_corpse_exists( capname ) )
     {
@@ -11132,101 +11231,43 @@ static void prestore_gear( CHAR_DATA *ch, const char *capname,
         send_to_char( buf, ch );
         return;
     }
-
-    victim = player_in_game( capname, &logging_in );
-    if ( victim != NULL && logging_in )
+    if ( ( count = snapshot_read_gear( ch, srcpath, why, sizeof(why), &list ) ) < 0 )
     {
-        send_to_char( "They are logging in; try again in a moment.\n\r", ch );
-        return;
-    }
-    if ( victim == NULL )
-    {
-        if ( ( victim = offline_player_load( &offline_desc, capname, NULL ) ) == NULL )
-        {
-            send_to_char( "No player by that name is online or saved.\n\r", ch );
-            return;
-        }
-        offline = true;
-    }
-    if ( victim == ch )
-    {
-        send_to_char( "You cannot prestore yourself.\n\r", ch );
-        return;
-    }
-    if ( IS_NPC( victim ) || victim->pcdata == NULL || rank_protects( ch, victim ) )
-    {
-        send_to_char( "You failed.\n\r", ch );
-        if ( offline )
-            extract_char( victim, true );
-        return;
-    }
-
-    player_snapshot_milestone( victim, "gearrestore", true );
-
-    added = gear_restore_from_file( victim, srcpath, why, sizeof(why) );
-    if ( added < 0 )
-    {
-        bug( "prestore_gear: the snapshot's gear could not be restored", 0 );
-        snprintf( buf, sizeof(buf),
-                  "Nothing was restored: %s's gear in %s %s.  Their inventory is "
-                  "unchanged.\n\r", capname, version, why );
+        snprintf( buf, sizeof(buf), "Nothing was restored: %s's gear in %s %s.\n\r",
+                  capname, version, why );
         send_to_char( buf, ch );
-        snprintf( buf, sizeof(buf), "%s's gear restore for %s from %s refused: %s",
-                  ch->name, capname, version, why );
-        log_string( buf );
-        if ( offline )
-            extract_char( victim, true );
         return;
     }
-
-    save_char_obj( victim );
-    snprintf( buf, sizeof(buf), "%d gear object%s from %s%s", added,
-              added == 1 ? "" : "s", version, force ? ", forced" : "" );
-    recovery_record( "prestore", "committed", capname, "-", "gear", ch->name, buf );
-    /* What this gave back must not come back again in a rebuilt corpse. */
-    corpse_registry_forget_player( capname );
-    snprintf( buf, sizeof(buf), "%s restored %d gear object%s to %s from %s%s%s",
-              ch->name, added, added == 1 ? "" : "s", capname, version,
-              offline ? " while offline" : "", force ? " (forced)" : "" );
-    log_string( buf );
-    snprintf( buf, sizeof(buf),
-              "Restored %d object%s from %s into %s's inventory.%s\n\r",
-              added, added == 1 ? "" : "s", version, capname,
-              added == 0 ? "  That snapshot held no gear." : "" );
-    send_to_char( buf, ch );
-
-    if ( offline )
-        extract_char( victim, true );
-    else if ( added > 0 )
+    if ( count == 0 )
     {
-        snprintf( buf, sizeof(buf),
-                  "An immortal has given back %d object%s you lost; they are in "
-                  "your inventory.\n\r", added, added == 1 ? "" : "s" );
-        send_to_char( buf, victim );
+        send_to_char( "That snapshot held no gear.\n\r", ch );
+        return;
     }
+    prestore_op( op, sizeof(op), "gear" );
+    prestore_give( ch, capname, list, count, false, op, "gear", "gearrestore", version );
 }
 
 /*
  * PRESTORE <player> CORPSE <id> SHOW | GEAR [FORCE]: what one of their
  * corpses held when it ended -- rotted, purged, picked up -- from its
- * file in the corpse history (corpses.c), exactly as it was, given back
- * into their inventory. Refused while the corpse is still in the world
- * (it is theirs to fetch) and a second time for the same corpse, unless
- * FORCE: the ledger remembers it was given (recovery.c).
+ * record in the corpse history (corpses.c), exactly as it was, into their
+ * inventory. Refused while the corpse is still in the world (it is theirs
+ * to fetch), a second time for the same corpse, and for a corpse of a
+ * different character who had the name before, unless FORCE.
  */
 static void prestore_corpse( CHAR_DATA *ch, const char *capname, const char *id,
                              const char *how, bool force )
 {
-    DESCRIPTOR_DATA offline_desc;
     CORPSE_RECORD rec;
-    CHAR_DATA *victim;
-    OBJ_DATA *list = NULL, *obj;
+    OBJ_DATA *list = NULL;
     char path[MAX_STRING_LENGTH];
     char why[MAX_INPUT_LENGTH];
-    char key[64];
+    char op[64];
+    char source[96];
     char buf[MAX_STRING_LENGTH];
-    bool live, offline;
-    int added;
+    const char *uid;
+    bool live;
+    int count, state;
 
     if ( !corpse_record_path( capname, id, path, sizeof(path), &live, &rec ) )
     {
@@ -11235,7 +11276,7 @@ static void prestore_corpse( CHAR_DATA *ch, const char *capname, const char *id,
         send_to_char( buf, ch );
         return;
     }
-    if ( ( added = corpse_file_read( path, &rec, &list, why, sizeof(why) ) ) < 0 )
+    if ( ( count = corpse_file_read( path, &rec, &list, why, sizeof(why) ) ) < 0 )
     {
         snprintf( buf, sizeof(buf), "That corpse's record cannot be read: %s.\n\r", why );
         send_to_char( buf, ch );
@@ -11263,7 +11304,6 @@ static void prestore_corpse( CHAR_DATA *ch, const char *capname, const char *id,
         send_to_char( "Syntax: prestore <player> corpse <id> [show|gear] [force]\n\r", ch );
         return;
     }
-    snprintf( key, sizeof(key), "corpse:%s", rec.id );
     if ( !force && live )
     {
         snapshot_discard_gear( list );
@@ -11272,44 +11312,36 @@ static void prestore_corpse( CHAR_DATA *ch, const char *capname, const char *id,
         send_to_char( buf, ch );
         return;
     }
-    if ( !force && recovery_request_state( key ) == RECOVERY_COMMITTED )
+    /* Whose it was: a corpse of somebody who had the name before is not
+       this character's to have. */
+    uid = recovery_uid( capname );
+    if ( !force && rec.uid[0] != '\0' && uid[0] != '\0' && strcmp( rec.uid, uid ) )
     {
         snapshot_discard_gear( list );
-        send_to_char( "That corpse's things were already given back once.  FORCE gives "
-                      "them again.\n\r", ch );
+        send_to_char( "That corpse belonged to an earlier character of that name.  FORCE "
+                      "gives its things to this one anyway.\n\r", ch );
         return;
     }
-    if ( ( victim = prestore_target( ch, capname, &offline_desc, &offline ) ) == NULL )
+    snprintf( op, sizeof(op), "corpse:%s", rec.id );
+    state = recovery_request_state( op );
+    if ( state == RECOVERY_COMMITTED )
     {
-        snapshot_discard_gear( list );
+        if ( !force )
+        {
+            snapshot_discard_gear( list );
+            send_to_char( "That corpse's things were already given back once.  FORCE gives "
+                          "them again.\n\r", ch );
+            return;
+        }
+        snprintf( op, sizeof(op), "corpse:%s:%ld", rec.id, recovery_sequence() + 1 );
+    }
+    if ( count == 0 )
+    {
+        send_to_char( "That corpse held nothing when it ended.\n\r", ch );
         return;
     }
-    player_snapshot_milestone( victim, "corpserestore", true );
-    while ( ( obj = list ) != NULL )
-    {
-        list = obj->next_content;
-        obj->next_content = NULL;
-        obj_to_char( obj, victim );
-    }
-    save_char_obj( victim );
-    snprintf( buf, sizeof(buf), "%d object%s from %s's corpse %s (%s)%s", added,
-              added == 1 ? "" : "s", capname, rec.id, rec.state, force ? ", forced" : "" );
-    recovery_record( "request", "committed", capname, key, "corpse", ch->name, buf );
-    snprintf( buf, sizeof(buf), "%s restored %d object%s to %s from corpse %s%s%s",
-              ch->name, added, added == 1 ? "" : "s", capname, rec.id,
-              offline ? " while offline" : "", force ? " (forced)" : "" );
-    log_string( buf );
-    snprintf( buf, sizeof(buf), "Restored %d object%s from corpse %s into %s's inventory.\n\r",
-              added, added == 1 ? "" : "s", rec.id, capname );
-    send_to_char( buf, ch );
-    if ( offline )
-        extract_char( victim, true );
-    else if ( added > 0 )
-    {
-        snprintf( buf, sizeof(buf), "An immortal has given back %d object%s from your "
-                  "corpse; they are in your inventory.\n\r", added, added == 1 ? "" : "s" );
-        send_to_char( buf, victim );
-    }
+    snprintf( source, sizeof(source), "corpse %s (%s)", rec.id, rec.state );
+    prestore_give( ch, capname, list, count, false, op, "corpse", "corpserestore", source );
 }
 
 static void prestore_command( CHAR_DATA *ch, char *argument )
@@ -11339,8 +11371,9 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
     int i, n;
     int yr, mo, dy, hr, mn, sc;
     int found_online;
-    bool keep_creator = false;
     char undo_name[MAX_INPUT_LENGTH] = "";
+    char op[48];
+    int replace_status;
     int namelen;
     int page = 1;
     bool copy_failed;
@@ -11682,7 +11715,6 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
                 {
                     bool refused = rank_protects( ch, loaded );
 
-                    keep_creator = loaded->pcdata != NULL && loaded->pcdata->creator;
                     extract_char( loaded, true );
                     if ( refused )
                     {
@@ -11694,8 +11726,6 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
         }
         if ( victim != NULL )
         {
-            DESCRIPTOR_DATA *d_next;
-
             if ( victim == ch )
             {
                 send_to_char( "You cannot prestore yourself.\n\r", ch );
@@ -11707,10 +11737,172 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
                 send_to_char( "You failed.\n\r", ch );
                 return;
             }
-
             found_online = 1;
-            keep_creator = victim->pcdata != NULL && victim->pcdata->creator;
-            save_char_obj( victim );
+            /* Their state now, on the disk, before anything else -- or
+               nothing is done: the copy below would be of an older file
+               (independent review, 2026-10-23). */
+            if ( !save_char_obj( victim ) )
+            {
+                send_to_char( "Nothing was changed: their current state could not be saved "
+                              "(or not confirmed on the disk), so it could not be kept to "
+                              "undo this.  See the log.\n\r", ch );
+                return;
+            }
+        }
+
+        /* The copy that undoes this, published, read back and on the disk
+           -- or nothing is done. The restore used to go on with "(the copy
+           failed)" in its receipt (independent review, 2026-10-23). */
+        {
+            SNAPSHOT_RESULT pre;
+
+            if ( !player_snapshot_tagged( capname, "prestore", &pre ) )
+            {
+                send_to_char( "Nothing was changed: the copy of them as they are, which "
+                              "would undo this, could not be taken or confirmed on the "
+                              "disk.  See the log.\n\r", ch );
+                return;
+            }
+            toc_strlcpy( undo_name, pre.name, sizeof(undo_name) );
+        }
+
+        /*
+         * What a rollback of their play must not roll back, taken from
+         * their file as it is now: the password, the trust and creator
+         * rank (review, 2026-10-23: a copy from before CREATOR OFF handed
+         * the rank back), the login fixes and restore marks already done,
+         * and the one-time claims -- Hyrule's secrets and the black
+         * market's purchases -- so nothing is paid twice.
+         */
+        {
+            static const char *const keep_keys[] =
+                { "Pass ", "Tru ", "Creator ", "Fixes ", "HyruleSecrets ", "BlackMarket ", NULL };
+            char kept[8][MAX_STRING_LENGTH];
+            int nkept = 0, k;
+            bool have_current = false, have_fixes = false;
+            FILE *fcur = fopen( dstpath, "rb" );
+            char line[MAX_STRING_LENGTH];
+
+            snprintf( op, sizeof(op), "full:%ld", recovery_sequence() + 1 );
+            if ( fcur != NULL )
+            {
+                have_current = true;
+                while ( fgets( line, sizeof(line), fcur ) != NULL && nkept < 8 )
+                {
+                    if ( !strcmp( line, "End\n" ) || !strcmp( line, "End\r\n" ) )
+                        break;
+                    for ( k = 0; keep_keys[k] != NULL; k++ )
+                        if ( !strncmp( line, keep_keys[k], strlen( keep_keys[k] ) ) )
+                        {
+                            /* The restore's own mark rides on the fixes. */
+                            if ( !strncmp( line, "Fixes ", 6 ) )
+                            {
+                                char *tilde = strrchr( line, '~' );
+
+                                if ( tilde != NULL )
+                                    *tilde = '\0';
+                                snprintf( kept[nkept], sizeof(kept[0]), "%s%srestore:%s~\n",
+                                          line, line[6] != '\0' ? " " : "", op );
+                                have_fixes = true;
+                            }
+                            else
+                                toc_strlcpy( kept[nkept], line, sizeof(kept[0]) );
+                            nkept++;
+                            break;
+                        }
+                }
+                fclose( fcur );
+            }
+            if ( !have_fixes && nkept < 8 )
+                snprintf( kept[nkept++], sizeof(kept[0]), "Fixes restore:%s~\n", op );
+
+            fsrc = fopen( srcpath, "rb" );
+            if ( fsrc == NULL )
+            {
+                bug( "do_prestore: cannot open source snapshot", 0 );
+                send_to_char( "Error: cannot read snapshot file; nothing was changed.\n\r", ch );
+                return;
+            }
+            fdst = fopen( tmppath, "wb" );
+            if ( fdst == NULL )
+            {
+                bug( "do_prestore: cannot open dest player file", 0 );
+                send_to_char( "Error: cannot create temporary restore file; nothing was "
+                              "changed.\n\r", ch );
+                fclose( fsrc );
+                return;
+            }
+
+            copy_failed = false;
+            {
+                bool line_start = true;
+                bool in_player = true;
+
+                while ( fgets( line, sizeof(line), fsrc ) != NULL )
+                {
+                    size_t len = strlen( line );
+                    bool whole = line_start, skip = false;
+
+                    line_start = len > 0 && line[len - 1] == '\n';
+                    if ( whole && in_player )
+                    {
+                        /* The snapshot's own copies of what is kept go;
+                           with no current file, only its creator rank
+                           does, and its fixes gain the mark. */
+                        for ( k = 0; keep_keys[k] != NULL; k++ )
+                            if ( !strncmp( line, keep_keys[k], strlen( keep_keys[k] ) )
+                            &&   ( have_current || !strcmp( keep_keys[k], "Creator " )
+                                || !strcmp( keep_keys[k], "Fixes " ) ) )
+                                skip = true;
+                        if ( !strcmp( line, "End\n" ) || !strcmp( line, "End\r\n" ) )
+                        {
+                            in_player = false;
+                            for ( k = 0; k < nkept; k++ )
+                            {
+                                if ( !have_current && strncmp( kept[k], "Fixes ", 6 ) )
+                                    continue;
+                                if ( fputs( kept[k], fdst ) == EOF )
+                                    copy_failed = true;
+                            }
+                        }
+                    }
+                    if ( skip )
+                        continue;
+                    if ( fputs( line, fdst ) == EOF )
+                    {
+                        copy_failed = true;
+                        break;
+                    }
+                }
+            }
+            if ( ferror(fsrc) )
+                copy_failed = true;
+            fclose( fsrc );
+            /* On the disk before it is renamed over anything. */
+            if ( !durable_close( fdst ) )
+                copy_failed = true;
+            if ( copy_failed )
+            {
+                remove( tmppath );
+                bug( "do_prestore: snapshot copy failed", 0 );
+                send_to_char( "Error: restore copy failed; nothing was changed.\n\r", ch );
+                return;
+            }
+        }
+
+        /* A pending receipt before the one irreversible step. */
+        snprintf( cpbuf, sizeof(cpbuf), "from %s; undo with %s", versions[n - 1], undo_name );
+        if ( !recovery_record( "prestore", "pending", capname, op, "full", ch->name, cpbuf ) )
+        {
+            remove( tmppath );
+            send_to_char( "Nothing was changed: the recovery ledger could not be written.\n\r", ch );
+            return;
+        }
+
+        if ( victim != NULL )
+        {
+            DESCRIPTOR_DATA *d_next;
+
             send_to_char(
                 "An immortal is restoring your character to an earlier state.\n\r"
                 "Please reconnect.\n\r", victim );
@@ -11727,97 +11919,22 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
             extract_char( victim, TRUE );
         }
 
-        /* Copy the snapshot over the live player file */
-
-        /* Capture the exact pre-restore state even when normal save snapshots
-           are currently throttled -- tagged, so it is listed as the copy
-           that undoes this, and reaches git with the other milestones. */
-        {
-            SNAPSHOT_RESULT pre;
-
-            memset( &pre, 0, sizeof(pre) );
-            player_snapshot_tagged( capname, "prestore", &pre );
-            toc_strlcpy( undo_name, pre.ok ? pre.name : "(the copy failed)",
-                         sizeof(undo_name) );
-        }
-
-        fsrc = fopen( srcpath, "rb" );
-        if ( fsrc == NULL )
-        {
-            bug( "do_prestore: cannot open source snapshot", 0 );
-            send_to_char( "Error: cannot read snapshot file.\n\r", ch );
-            return;
-        }
-
-        fdst = fopen( tmppath, "wb" );
-        if ( fdst == NULL )
-        {
-            bug( "do_prestore: cannot open dest player file", 0 );
-            send_to_char( "Error: cannot create temporary restore file.\n\r", ch );
-            fclose( fsrc );
-            return;
-        }
-
-        /*
-         * Copied line by line so the creator's rank is the character's
-         * as it stands now, never the snapshot's: a copy taken before a
-         * CREATOR OFF held Creator 1, and restoring it handed the rank
-         * back without the founder (review, 2026-10-23). The snapshot's
-         * line is dropped and the current flag written before the player
-         * section's End. CREATOR is the only way to change it.
-         */
-        copy_failed = false;
-        {
-            char line[MAX_STRING_LENGTH];
-            bool line_start = true;
-            bool in_player = true;
-
-            while ( fgets( line, sizeof(line), fsrc ) != NULL )
-            {
-                size_t len = strlen( line );
-                bool whole = line_start;
-
-                line_start = len > 0 && line[len - 1] == '\n';
-                if ( whole && in_player )
-                {
-                    if ( !strncmp( line, "Creator ", 8 ) )
-                        continue;
-                    if ( !strcmp( line, "End\n" ) || !strcmp( line, "End\r\n" ) )
-                    {
-                        in_player = false;
-                        if ( keep_creator && fputs( "Creator 1\n", fdst ) == EOF )
-                        {
-                            copy_failed = true;
-                            break;
-                        }
-                    }
-                }
-                if ( fputs( line, fdst ) == EOF )
-                {
-                    copy_failed = true;
-                    break;
-                }
-            }
-        }
-        if ( ferror(fsrc) )
-            copy_failed = true;
-        fclose( fsrc );
-        if ( fclose( fdst ) != 0 )
-            copy_failed = true;
-        if ( copy_failed )
-        {
-            remove( tmppath );
-            bug( "do_prestore: snapshot copy failed", 0 );
-            send_to_char( "Error: restore copy failed; the live file is unchanged.\n\r", ch );
-            return;
-        }
         if ( rename( tmppath, dstpath ) != 0 )
         {
             remove( tmppath );
             bug( "do_prestore: atomic replace failed", 0 );
+            recovery_record( "prestore", "abandoned", capname, op, "full", ch->name,
+                             "the file could not be replaced; nothing was changed" );
             send_to_char( "Error: restore replace failed; the live file is unchanged.\n\r", ch );
             return;
         }
+        replace_status = durable_dir_sync( dstpath ) ? DURABLE_OK : DURABLE_UNCERTAIN;
+        if ( replace_status == DURABLE_OK && recovery_fault( "crash-before-commit" ) )
+            _exit( 3 );
+        if ( replace_status != DURABLE_OK
+        ||   !recovery_record( "prestore", "committed", capname, op, "full", ch->name, cpbuf ) )
+            send_to_char( "The restore is in place, but not confirmed on the disk or not "
+                          "recorded; the receipt is settled at their next login.\n\r", ch );
 
         /* Format the restored date for display and logging */
         ts = versions[n - 1] + namelen + 1;
@@ -11863,11 +11980,6 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
                   ch->name, capname, datebuf,
                   found_online ? " (was online, disconnected)" : "" );
         log_string( cpbuf );
-        /* A receipt nothing rolls back: what was restored and the copy
-           that undoes it. The git restore requests it may have undone
-           stay done (recovery.c, restores.c). */
-        snprintf( cpbuf, sizeof(cpbuf), "from %s; undo with %s", versions[n - 1], undo_name );
-        recovery_record( "prestore", "committed", capname, "-", "full", ch->name, cpbuf );
 
         snprintf( buf, sizeof(buf),
                   "%s restored to: %s\n\r", capname, datebuf );

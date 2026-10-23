@@ -418,10 +418,13 @@ void restores_login( CHAR_DATA *ch )
         corpse_registry_forget_player( ch->name );
         if ( !save_char_obj( ch ) )
         {
-            /* In memory, not yet on the disk: the next save will carry it
-               and the mark, and the pending line resolves at next login. */
+            /* Not on the disk (or not confirmed there): the next save will
+               carry it and the mark, and the pending line is settled at
+               the next login by the mark. */
             snprintf( buf, sizeof(buf), "Restores: %s for %s applied in memory, but the "
-                      "save failed; it stays pending until a save lands.", e->id, ch->name );
+                      "save %s; it stays pending until the next login settles it.", e->id,
+                      ch->name, save_char_obj_status() == DURABLE_UNCERTAIN
+                      ? "is not confirmed on the disk" : "failed" );
             log_string( buf );
             wizinfo( buf, LEVEL_IMMORTAL );
         }

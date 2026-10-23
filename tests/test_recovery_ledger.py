@@ -139,8 +139,11 @@ class LedgerLiveTests(unittest.TestCase):
         self.assertTrue(first_apply)
         self.assertTrue(receipt_in_file)
         self.assertIn("restored to:", rolled)
-        self.assertFalse(mark_after_rollback)        # the file rolled back...
-        self.assertFalse(second_apply)               # ...the receipt did not
+        # The file rolled back; the receipt in the ledger did not -- and
+        # since the second review the file's mark is kept across a full
+        # PRESTORE too, with the other things a rollback must not undo.
+        self.assertTrue(mark_after_rollback)
+        self.assertFalse(second_apply)
         self.assertEqual(request_states(rows, "zreceipt"), ["pending", "committed"])
         # A stamp that names nothing can never apply; a file not installed
         # yet may, and is only noted.
@@ -148,8 +151,8 @@ class LedgerLiveTests(unittest.TestCase):
         self.assertEqual(set(request_states(rows, "zwaits")), {"retry"})
         # The full PRESTORE left a receipt naming the copy that undoes it.
         prestores = [r for r in rows if r[2] == "prestore" and r[5] == "Zrhistory"]
-        self.assertEqual(len(prestores), 1)
-        self.assertIn("undo with Zrhistory.", prestores[0][9])
+        self.assertEqual([r[3] for r in prestores], ["pending", "committed"])
+        self.assertIn("undo with Zrhistory.", prestores[-1][9])
         # Every character has a uid, and the receipts carry it.
         uids = {r[5]: r[4] for r in rows if r[2] == "uid" and r[3] == "assign"}
         self.assertRegex(uids.get("Zrhistory", ""), r"^P[0-9a-f]{16}$")

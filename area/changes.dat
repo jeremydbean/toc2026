@@ -25,7 +25,9 @@ and has new forms: <stamp> SHOW lists worn, carried and stashed items;
 changes nothing else; CORPSES and CORPSE <id> SHOW|GEAR give back what a
 lost corpse held. A death by a mobile also keeps a copy from before its
 experience penalty. A restore can be asked for through git
-(area/restores.dat) and never runs twice. HELP PRESTORE,
+(area/restores.dat) and never runs twice. Every restore takes its undo
+copy first and changes nothing if it cannot, and a full restore keeps
+the player's current password, rank and one-time claims. HELP PRESTORE,
 wiki/player-backups.md.
 
 @ 20261023g 2026-10-23

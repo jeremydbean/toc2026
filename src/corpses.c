@@ -163,39 +163,75 @@ static bool track_write( CORPSE_TRACK *t )
     char path[MAX_STRING_LENGTH];
     CHAR_DATA *carrier;
     ROOM_INDEX_DATA *room = corpse_where( t->corpse, &carrier );
+    int status;
 
     if ( room != NULL )
         t->rec.room = room->vnum;
     t->rec.timer = t->corpse->timer;
     if ( !corpse_dirs( t->rec.owner, NULL, 0 ) )
-        return false;
-    live_path( &t->rec, path, sizeof(path) );
-    if ( !corpse_file_write( path, &t->rec, t->corpse->contains ) )
     {
-        bug( "corpses: a corpse could not be written; it is tried again", 0 );
+        t->dirty = true;
+        return false;
+    }
+    live_path( &t->rec, path, sizeof(path) );
+    status = corpse_file_write( path, &t->rec, t->corpse->contains );
+    if ( status != DURABLE_OK )
+    {
+        /* In place but unconfirmed, or not written: written again next
+           second, either way. */
+        t->dirty = true;
+        if ( status == DURABLE_FAILED )
+            bug( "corpses: a corpse could not be written; it is tried again", 0 );
         return false;
     }
     t->dirty = false;
     return true;
 }
 
-/* A copy into the owner's history: as made ("death"), or as it ended. */
-static void track_history( CORPSE_TRACK *t, const char *label )
+/* A free name in a directory: "<id>.<label>.corpse", then _02... */
+static void history_name( const char *dir, const char *id, const char *label,
+                          char *path, size_t size )
 {
-    char hdir[MAX_INPUT_LENGTH], path[MAX_STRING_LENGTH];
     struct stat st;
     int n;
 
-    if ( !corpse_dirs( t->rec.owner, hdir, sizeof(hdir) ) )
-        return;
-    snprintf( path, sizeof(path), "%s/%s.%s.corpse", hdir, t->rec.id, label );
+    snprintf( path, size, "%s/%s.%s.corpse", dir, id, label );
     for ( n = 2; stat( path, &st ) == 0 && n < 100; n++ )
-        snprintf( path, sizeof(path), "%s/%s.%s_%02d.corpse", hdir, t->rec.id, label, n );
-    if ( !corpse_file_write( path, &t->rec, t->corpse != NULL ? t->corpse->contains : NULL ) )
-        bug( "corpses: a corpse's history copy could not be written", 0 );
+        snprintf( path, size, "%s/%s.%s_%02d.corpse", dir, id, label, n );
 }
 
-/* It ended: its last state into history with why, out of the live list. */
+/* A copy into the owner's history: as made ("death"), or as it ended.
+   DURABLE_OK only when it is there and on the disk. */
+static int track_history( CORPSE_TRACK *t, const char *label )
+{
+    char hdir[MAX_INPUT_LENGTH], path[MAX_STRING_LENGTH];
+    int status;
+
+    if ( !corpse_dirs( t->rec.owner, hdir, sizeof(hdir) ) )
+    {
+        bug( "corpses: a corpse's history directory could not be made", 0 );
+        return DURABLE_FAILED;
+    }
+    history_name( hdir, t->rec.id, label, path, sizeof(path) );
+    status = corpse_file_write( path, &t->rec, t->corpse != NULL ? t->corpse->contains : NULL );
+    if ( status != DURABLE_OK )
+        bug( "corpses: a corpse's history copy could not be written", 0 );
+    return status;
+}
+
+/* End states waiting to reach history: <id>.ending.corpse in live/. */
+static int corpse_pending_endings = 0;
+
+/*
+ * It ended: its last state into history with why, then out of the live
+ * list. The live copy goes only once the end state is safely written --
+ * into history, or, when history cannot be written, beside the live copy
+ * as <id>.ending.corpse, which is moved into history later. A failed
+ * history write used to delete the live copy all the same, and the exact
+ * remainder of a looted corpse was gone (independent review, 2026-10-23).
+ * Nothing keeps the object pointer after this: the corpse is about to be
+ * carried, spilled or freed.
+ */
 static void track_archive( int i, const char *state, const char *why )
 {
     CORPSE_TRACK *t = &tracks[i];
@@ -203,31 +239,107 @@ static void track_archive( int i, const char *state, const char *why )
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *carrier;
     ROOM_INDEX_DATA *room = corpse_where( t->corpse, &carrier );
+    const char *outcome = "archived";
+    int left = 0;
+    OBJ_DATA *o;
 
     if ( room != NULL )
         t->rec.room = room->vnum;
     t->rec.timer = t->corpse->timer;
     toc_strlcpy( t->rec.state, state, sizeof(t->rec.state) );
     toc_strlcpy( t->rec.why, why, sizeof(t->rec.why) );
-    track_history( t, state );
+    for ( o = t->corpse->contains; o != NULL; o = o->next_content )
+        left++;
     live_path( &t->rec, path, sizeof(path) );
-    remove( path );
-    {
-        int left = 0;
-        OBJ_DATA *o;
 
-        for ( o = t->corpse->contains; o != NULL; o = o->next_content )
-            left++;
-        snprintf( buf, sizeof(buf), "ended (%s): %s; %d object%s left in it",
-                  state, why, left, left == 1 ? "" : "s" );
+    if ( track_history( t, state ) == DURABLE_OK )
+    {
+        if ( remove( path ) != 0 && errno != ENOENT )
+            bug( "corpses: an ended corpse's live copy could not be removed", 0 );
+        durable_dir_sync( path );
     }
+    else
+    {
+        char ending[MAX_STRING_LENGTH];
+
+        snprintf( ending, sizeof(ending), "%s%s.ending.corpse", CORPSE_LIVE_DIR, t->rec.id );
+        if ( corpse_file_write( ending, &t->rec, t->corpse->contains ) != DURABLE_FAILED )
+        {
+            if ( remove( path ) != 0 && errno != ENOENT )
+                bug( "corpses: an ended corpse's live copy could not be removed", 0 );
+            durable_dir_sync( path );
+            corpse_pending_endings++;
+            outcome = "pending-archive";
+        }
+        else
+        {
+            /* Nothing could be written: the last good copy stays, renamed
+               so the next boot does not lay it in the world again. */
+            char stale[MAX_STRING_LENGTH];
+
+            snprintf( stale, sizeof(stale), "%s%s.stale.corpse", CORPSE_LIVE_DIR, t->rec.id );
+            if ( rename( path, stale ) != 0 )
+                bug( "corpses: an ended corpse could not be recorded at all", 0 );
+            outcome = "archive-failed";
+        }
+    }
+    snprintf( buf, sizeof(buf), "ended (%s): %s; %d object%s left in it%s", state, why,
+              left, left == 1 ? "" : "s",
+              !strcmp( outcome, "archived" ) ? ""
+              : !strcmp( outcome, "pending-archive" ) ? " (its history could not be written "
+                "yet; the end state waits in live/ and is moved there later)"
+              : " (NOTHING could be written; the last copy was kept as .stale)" );
     corpse_log( &t->rec, buf );
-    recovery_record( "corpse", "archived", t->rec.owner, t->rec.id, state,
-                     playlog_cause(), buf );
-    snprintf( buf, sizeof(buf), "Corpse keeper: %s's corpse %s %s.",
-              t->rec.owner, t->rec.id, why );
+    recovery_record( "corpse", outcome, t->rec.owner, t->rec.id, state, playlog_cause(), buf );
+    snprintf( buf, sizeof(buf), "Corpse keeper: %s's corpse %s %s%s.", t->rec.owner,
+              t->rec.id, why, !strcmp( outcome, "archived" ) ? ""
+              : " -- its end state is NOT yet in history" );
     log_string( buf );
+    if ( strcmp( outcome, "archived" ) )
+        wizinfo( buf, LEVEL_IMMORTAL );
     track_drop( i );
+}
+
+/* End states waiting in live/: into history, when it will take them. */
+static void corpse_retry_endings( void )
+{
+    DIR *dp;
+    struct dirent *de;
+    int left = 0;
+
+    if ( ( dp = opendir( CORPSE_LIVE_DIR ) ) == NULL )
+        return;
+    while ( ( de = readdir( dp ) ) != NULL )
+    {
+        CORPSE_RECORD rec;
+        char from[MAX_INPUT_LENGTH * 2], to[MAX_STRING_LENGTH], hdir[MAX_INPUT_LENGTH];
+        size_t len = strlen( de->d_name );
+
+        if ( len < 15 || strcmp( de->d_name + len - 14, ".ending.corpse" ) != 0 )
+            continue;
+        snprintf( from, sizeof(from), "%s%s", CORPSE_LIVE_DIR, de->d_name );
+        if ( corpse_file_header( from, &rec ) < 0 )
+            continue;
+        if ( !corpse_dirs( rec.owner, hdir, sizeof(hdir) ) )
+        {
+            left++;
+            continue;
+        }
+        history_name( hdir, rec.id, rec.state[0] != '\0' ? rec.state : "ended", to, sizeof(to) );
+        if ( rename( from, to ) != 0 || !durable_dir_sync( to ) )
+        {
+            left++;
+            continue;
+        }
+        durable_dir_sync( from );
+        recovery_record( "corpse", "archived", rec.owner, rec.id, rec.state, "corpse keeper",
+                         "its end state, kept aside, reached history" );
+        snprintf( to, sizeof(to), "Corpse keeper: %s's corpse %s's end state reached history.",
+                  rec.owner, rec.id );
+        log_string( to );
+    }
+    closedir( dp );
+    corpse_pending_endings = left;
 }
 
 
@@ -397,6 +509,12 @@ void corpse_registry_update( void )
 {
     int i;
 
+    if ( corpse_pending_endings > 0 && track_count == 0 && current_time % 60 == 0
+    &&   current_time != corpse_last_flush )
+    {
+        corpse_last_flush = current_time;
+        corpse_retry_endings();
+    }
     if ( track_count == 0 || corpse_registry_rebuilding || merc_down )
         return;
     if ( current_time - corpse_last_refresh >= CORPSE_REFRESH_SECS )
@@ -408,6 +526,8 @@ void corpse_registry_update( void )
     if ( current_time == corpse_last_flush )
         return;
     corpse_last_flush = current_time;
+    if ( corpse_pending_endings > 0 && current_time % 60 == 0 )
+        corpse_retry_endings();
     for ( i = track_count - 1; i >= 0; i-- )
     {
         CHAR_DATA *carrier;
@@ -603,6 +723,15 @@ void corpse_registry_boot( void )
 
             if ( len < 8 || strcmp( de->d_name + len - 7, ".corpse" ) != 0 )
                 continue;
+            /* Ended corpses waiting for history, and ones kept stale when
+               nothing could be written: records, not corpses in the world. */
+            if ( strstr( de->d_name, ".ending.corpse" ) != NULL
+            ||   strstr( de->d_name, ".stale.corpse" ) != NULL )
+            {
+                if ( strstr( de->d_name, ".ending.corpse" ) != NULL )
+                    corpse_pending_endings++;
+                continue;
+            }
             snprintf( path, sizeof(path), "%s%s", CORPSE_LIVE_DIR, de->d_name );
             if ( corpse_file_read( path, &rec, &list, why, sizeof(why) ) < 0
             ||   ( corpse = corpse_make_object( &rec ) ) == NULL
@@ -640,6 +769,8 @@ void corpse_registry_boot( void )
         closedir( dp );
     }
     corpse_migrate_legacy();
+    if ( corpse_pending_endings > 0 )
+        corpse_retry_endings();
     corpse_registry_rebuilding = false;
     if ( made > 0 || failed > 0 )
     {
@@ -681,6 +812,29 @@ void corpse_registry_list( CHAR_DATA *ch, const char *name )
                   n, n == 1 ? "" : "s", tracks[i].corpse->timer );
         toc_strlcat( out, buf, size );
         shown++;
+    }
+    /* End states waiting to reach history, or kept stale. */
+    if ( ( dp = opendir( CORPSE_LIVE_DIR ) ) != NULL )
+    {
+        while ( ( de = readdir( dp ) ) != NULL )
+        {
+            CORPSE_RECORD rec;
+            char path[MAX_INPUT_LENGTH * 2];
+
+            if ( strstr( de->d_name, ".ending.corpse" ) == NULL
+            &&   strstr( de->d_name, ".stale.corpse" ) == NULL )
+                continue;
+            snprintf( path, sizeof(path), "%s%s", CORPSE_LIVE_DIR, de->d_name );
+            if ( corpse_file_header( path, &rec ) < 0 || str_cmp( rec.owner, name ) )
+                continue;
+            snprintf( buf, sizeof(buf), "  %s  ended %s: %s; %d object%s in it then "
+                      "(NOT yet in history)\n\r", rec.id, rec.state,
+                      rec.why[0] != '\0' ? rec.why : "-", rec.objects,
+                      rec.objects == 1 ? "" : "s" );
+            toc_strlcat( out, buf, size );
+            shown++;
+        }
+        closedir( dp );
     }
     snprintf( hdir, sizeof(hdir), "%s%s", CORPSE_HISTORY_DIR, capitalize( name ) );
     if ( ( dp = opendir( hdir ) ) != NULL )
@@ -738,9 +892,8 @@ bool corpse_record_path( const char *owner, const char *id, char *path, size_t s
         if ( !str_cmp( tracks[i].rec.id, id ) && !str_cmp( tracks[i].rec.owner, owner ) )
             *live = true;
     snprintf( hdir, sizeof(hdir), "%s%s", CORPSE_HISTORY_DIR, capitalize( owner ) );
-    if ( ( dp = opendir( hdir ) ) == NULL )
-        return false;
-    while ( ( de = readdir( dp ) ) != NULL )
+    dp = opendir( hdir );
+    while ( dp != NULL && ( de = readdir( dp ) ) != NULL )
     {
         size_t len = strlen( de->d_name );
 
@@ -752,7 +905,22 @@ bool corpse_record_path( const char *owner, const char *id, char *path, size_t s
         else if ( strcmp( de->d_name, best ) > 0 )
             toc_strlcpy( best, de->d_name, sizeof(best) );
     }
-    closedir( dp );
+    if ( dp != NULL )
+        closedir( dp );
+    if ( best[0] == '\0' )
+    {
+        /* An end state still waiting to reach history, or one kept stale
+           when nothing could be written, beats the copy made at death. */
+        static const char *const aside[] = { "ending", "stale", NULL };
+        int k;
+
+        for ( k = 0; aside[k] != NULL; k++ )
+        {
+            snprintf( path, size, "%s%s.%s.corpse", CORPSE_LIVE_DIR, id, aside[k] );
+            if ( corpse_file_header( path, rec ) > 0 && !str_cmp( rec->owner, owner ) )
+                return true;
+        }
+    }
     if ( best[0] == '\0' && death[0] == '\0' )
         return false;
     snprintf( path, size, "%s/%s", hdir, best[0] != '\0' ? best : death );

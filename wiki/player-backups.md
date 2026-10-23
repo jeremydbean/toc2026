@@ -107,6 +107,30 @@ Check the result the same way: `log` shows the file's worn, carried and
 stash counts after the next state sync, and `player/recovery/ledger.tsv` in
 git says what each request came to.
 
+## When something fails
+
+Every restore is one operation that is either done or not, and says
+which (independent review, 2026-10-23):
+
+- GEAR, STASH and CORPSE take a copy that would undo them, write a pending
+  receipt, give the objects with a mark in the player's file, save, and
+  commit the receipt. If the undo copy or the receipt cannot be written,
+  nothing is given. If the save fails, an offline player is given nothing
+  (the receipt says abandoned; try again); an online player has the
+  objects in hand and the receipt stays pending. A pending receipt is
+  settled at the player's next login by the mark in their file.
+- A full PRESTORE saves an online target and takes its undo copy first;
+  if either fails, nothing changes and nobody is disconnected. It keeps
+  the player's current password, trust, creator rank, login fixes,
+  Hyrule claims and black market purchases, whatever the snapshot held.
+- "Not confirmed on the disk" (a directory that would not flush) is never
+  reported as done.
+- A corpse whose history cannot be written keeps its end state in
+  `corpse/live/<id>.ending.corpse` -- listed by PRESTORE CORPSES as "NOT
+  yet in history", restorable as usual -- until it can be moved.
+- A torn ledger record is set aside in `player/recovery/ledger.torn.*`
+  and cut off; the records before it stand.
+
 ## How long a loss can be
 
 Measured from the code, not promised:
@@ -123,6 +147,18 @@ Measured from the code, not promised:
   encrypted archive, if it is installed, up to six hours.
 
 ## Not yet
+
+Known boundaries of what is built:
+
+- A corpse picked up and put down again is a new record with a new id;
+  restoring both records, or restoring a record whose corpse someone is
+  still carrying, can give the same things twice. Stable item identities
+  are what will catch that.
+- Corpse history is filed by name; CORPSE GEAR checks the recorded uid
+  against the name's uid now and needs FORCE for an earlier character.
+- The state sync copies files that change independently, every five
+  minutes; it is not a consistent snapshot across players, and its
+  interval is not a measured maximum under failures.
 
 These are proposals, not built (handoff review, 2026-10-23):
 

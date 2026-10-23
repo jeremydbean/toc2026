@@ -1262,12 +1262,20 @@ rules the code depends on:
   day for a year; a tagged one for 90 days and the newest
   `PLAYER_MILESTONE_MAX` of its kind for ever; the pinned one always.
   No list has a fixed cap (`snapshot_list_sorted` grows; PRESTORE pages).
-- **A save or snapshot says whether it landed.** `save_char_obj` returns
-  it; the file is fsynced before the rename and the directory after
-  (`durable_close`, `durable_dir_sync` in `recovery.c`). A snapshot is
-  published only whole (it ends `#END`), and a milestone goes in the
-  ledger with its checksum. Record nothing on the strength of a save or
-  snapshot that did not land.
+- **A save or snapshot says whether it landed, and whether it is on the
+  disk.** `save_char_obj` returns true only for a save fsynced and with
+  its directory flushed; `save_char_obj_status()` tells `DURABLE_FAILED`
+  (the old file stands) from `DURABLE_UNCERTAIN` (renamed into place, not
+  confirmed -- the old file is gone, so it is not a failure to undo).
+  `durable_commit` returns the same three. A snapshot is published only
+  whole (it ends `#END`), read back against its checksum, and `ok` and
+  `durable` are separate; a milestone goes in the ledger with its
+  checksum. Record nothing, and report nothing done, on the strength of a
+  save or snapshot that is not `DURABLE_OK` (independent review,
+  2026-10-23: unconfirmed writes were reported as done). Test faults:
+  `TOC_FAULT` (`fsync`, `dirsync`) and `TOC_FAULT_FILE` (one named point,
+  `save 2` for the second save; `ledger`, `crash-before-commit`), read
+  by `recovery_fault()` and set nowhere but `tests/`.
 - **Reading a snapshot never touches the game until all of it read.**
   `snapshot_read_gear`/`snapshot_read_stash`/`corpse_file_read` read aside
   through `read_objects_aside` and return the list or nothing.
@@ -1280,9 +1288,28 @@ rules the code depends on:
   uid (`recovery_uid`: made with the character, retired at deletion,
   never in the player file). An undo is a new event. Retry is for what
   may work later (a file not installed, a read or save that failed, a
-  corpse still holding things); rejected for what never will. A request
-  writes pending before it gives anything and committed after the save;
-  the file's mark only resolves a pending one after a crash.
+  corpse still holding things); rejected for what never will. A record is
+  whole only with its FNV check and its newline: a torn tail is copied to
+  `ledger.torn.<epoch>` and cut off at boot, and a failed append is cut
+  back at once (`ledger_append`), because a torn line once swallowed the
+  next record and gave a player a second uid.
+- **Every restore that gives objects goes through `prestore_give`**
+  (GEAR, STASH, CORPSE): an undo copy that is `DURABLE_OK`, a pending
+  receipt, the objects and the mark `restore:<op>` in the file, the save,
+  the committed receipt -- in that order, each checked. A failed save
+  gives an offline copy nothing (abandoned; the source is untouched) and
+  leaves an online player's objects in memory, pending. Pending staff
+  restores (ids with a colon: `gear:N`, `stash:N`, `corpse:<id>`,
+  `full:N`) are settled at login by `recovery_reconcile_login` from the
+  file's mark: committed, or abandoned and free to be done again. Git
+  requests (no colon) are restores.c's. A full PRESTORE saves an online
+  target, takes a `DURABLE_OK` undo copy, writes the new file aside and
+  flushes it, writes pending -- and only then disconnects, renames and
+  commits; any failure before the rename changes nothing. It keeps from
+  the current file, never the snapshot, `Pass`, `Tru`, `Creator`,
+  `Fixes` (with its own mark added), `HyruleSecrets` and `BlackMarket`,
+  so a rollback restores play, never an old password, rank, a login
+  fix to run twice or a one-time claim to pay twice.
 - **A player's corpse is written down as it is** (`src/corpses.c`):
   `corpse/live/<id>.corpse` with every object at any depth -- keys and
   blank maps too (`fwrite_obj_everything`) -- at the death and within a
@@ -1291,8 +1318,16 @@ rules the code depends on:
   minutes for its timer, and at shutdown (`corpse_registry_flush_all`).
   Boot makes each again exactly; one that cannot be read is renamed
   `.unreadable`, never deleted. When one ends (picked up, rotted, purged,
-  restored) its last state goes to `corpse/history/<Owner>/` with why;
-  one put down again is kept again as a new record. `make_corpse` wraps
+  restored) its last state goes to `corpse/history/<Owner>/` with why --
+  and the live copy goes only once that is `DURABLE_OK`. If history
+  cannot be written the end state waits in `live/` as
+  `<id>.ending.corpse` (never laid in the world, listed and restorable,
+  moved to history each minute and at boot once it can be); if nothing
+  can be written the live copy is renamed `.stale.corpse`. A track never
+  outlives its object. One put down again is kept again as a new record
+  (a new id: lineage between the two is not recorded yet). CORPSE GEAR
+  refuses a corpse whose recorded uid is not the name's uid now, unless
+  FORCE. `make_corpse` wraps
   its `obj_to_room` in `corpse_registry_making` so a death is not taken
   for a corpse put down. PRESTORE GEAR and the git requests wait while
   the corpse holds things; any restore ends the owner's corpses.

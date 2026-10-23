@@ -3613,9 +3613,14 @@ case CON_DEFAULT_CHOICE:
 	       restore of their file (recovery.c). */
 	    recovery_player_login( ch, is_new_character );
 	    player_fixes_login( ch, is_new_character );
-	    /* Restores asked for through git, once each (restores.c). */
+	    /* Staff restores a crash or a failed save left pending, settled
+	       by the mark in their file; then restores asked for through git,
+	       once each (recovery.c, restores.c). */
 	    if ( !is_new_character )
+	    {
+	        recovery_reconcile_login( ch );
 	        restores_login( ch );
+	    }
 
             snprintf( buf, sizeof(buf), "%s has entered the game.", ch->name );
             wizinfo( buf, staff_notice_level( ch, ch->level ) );

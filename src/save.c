@@ -651,15 +651,41 @@ static int player_snapshot_internal( const char *name, bool force,
         bug( "player_snapshot: could not publish the snapshot", 0 );
         return SNAP_FAILED;
     }
-    durable_dir_sync( dest );
+    /* What was published is read back and must be what was copied: the
+       undo copy a restore depends on is verified, not assumed. */
+    {
+        FILE *check = fopen( dest, "rb" );
+        unsigned long again = 2166136261UL;
+        long n_again = 0;
+
+        if ( check != NULL )
+        {
+            while ( ( c = fgetc( check ) ) != EOF )
+            {
+                again = ( ( again ^ (unsigned char) c ) * 16777619UL ) & 0xffffffffUL;
+                n_again++;
+            }
+            if ( ferror( check ) )
+                n_again = -1;
+            fclose( check );
+        }
+        if ( check == NULL || again != hash || n_again != bytes )
+        {
+            bug( "player_snapshot: the published copy does not read back as written", 0 );
+            return SNAP_FAILED;
+        }
+    }
 
     if ( out != NULL )
     {
         out->ok = true;
+        out->durable = durable_dir_sync( dest );
         toc_strlcpy( out->name, file, sizeof(out->name) );
         out->hash = hash;
         out->bytes = bytes;
     }
+    else
+        durable_dir_sync( dest );
     snapshot_prune( vdir, cap_name, tag, now );
     /* A milestone weighs only its own kind; the ordinary saves are weighed
        too, as the untagged copy PRESTORE used to take first did, or the
@@ -740,6 +766,12 @@ bool player_snapshot_milestone_result( CHAR_DATA *ch, const char *tag,
         return false;
     }
     toc_strlcpy( snapshot_last_milestone, res->name, sizeof(snapshot_last_milestone) );
+    if ( !res->durable )
+    {
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Snapshot of %s before %s: %s is in place "
+                  "but not confirmed on the disk.", ch->name, tag, res->name );
+        log_string( log_buf );
+    }
     snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
         "Snapshot of %s taken before %s: %s%s (PRESTORE %s to see it).",
         ch->name, tag, res->name,
@@ -748,8 +780,9 @@ bool player_snapshot_milestone_result( CHAR_DATA *ch, const char *tag,
     log_string( log_buf );
     snprintf( detail, sizeof(detail), "%s fnv %08lx %ld bytes%s", res->name,
               res->hash, res->bytes, res->saved ? "" : " (save failed first)" );
-    recovery_record( "snapshot", "committed", ch->name, "-", tag, "-", detail );
-    return res->saved;
+    if ( !recovery_record( "snapshot", "committed", ch->name, "-", tag, "-", detail ) )
+        res->durable = false;
+    return res->saved && res->durable;
 }
 
 /* A tagged copy of a player's file as it lies, nobody loaded: PRESTORE
@@ -765,8 +798,9 @@ bool player_snapshot_tagged( const char *name, const char *tag, SNAPSHOT_RESULT 
         return false;
     snprintf( detail, sizeof(detail), "%s fnv %08lx %ld bytes", out->name,
               out->hash, out->bytes );
-    recovery_record( "snapshot", "committed", name, "-", tag, "-", detail );
-    return true;
+    if ( !recovery_record( "snapshot", "committed", name, "-", tag, "-", detail ) )
+        out->durable = false;
+    return out->ok && out->durable;
 }
 
 bool player_snapshot_milestone( CHAR_DATA *ch, const char *tag, bool save_first )
@@ -787,6 +821,15 @@ bool player_snapshot_milestone( CHAR_DATA *ch, const char *tag, bool save_first 
  * renamed into place. Callers that record something on the strength of
  * a save (a restore's receipt, a snapshot) ask.
  */
+/* What the last save_char_obj came to (DURABLE_*), for callers that must
+   tell "not saved" from "saved, not confirmed on the disk". */
+static int save_last_status = DURABLE_FAILED;
+
+int save_char_obj_status( void )
+{
+    return save_last_status;
+}
+
 bool save_char_obj( CHAR_DATA *ch )
 {
     char strsave[MAX_INPUT_LENGTH];
@@ -795,8 +838,14 @@ bool save_char_obj( CHAR_DATA *ch )
     bool previous_confirm_unsaved_quit;
     bool save_succeeded = false;
 
+    save_last_status = DURABLE_FAILED;
     if ( IS_NPC(ch) )
 	return false;
+    if ( recovery_fault( "save" ) )
+    {
+        bug( "save_char_obj: a save failed (injected by a test)", 0 );
+        return false;
+    }
 
     if (ch->pcdata->ignore == NULL)
     ch->pcdata->ignore = str_dup(" ");
@@ -923,7 +972,8 @@ bool save_char_obj( CHAR_DATA *ch )
         else
         {
             save_succeeded = true;
-            durable_dir_sync( strsave );
+            save_last_status = durable_dir_sync( strsave ) ? DURABLE_OK
+                                                           : DURABLE_UNCERTAIN;
 #if defined(unix) && defined(CHGRP_TO)
             if (!apply_chgrp(strsave))
                 bug("save_char_obj: player file chgrp failed.", 0);
@@ -943,7 +993,9 @@ bool save_char_obj( CHAR_DATA *ch )
         bug("save_char_obj: could not reopen fpReserve at end", 0);
         perror(NULL_FILE);
     }
-    return save_succeeded;
+    /* True only for a save on the disk; save_char_obj_status() says when
+       the file is in place but the directory did not confirm it. */
+    return save_succeeded && save_last_status == DURABLE_OK;
 }
 
 
@@ -2922,18 +2974,18 @@ int gear_restore_from_file( CHAR_DATA *ch, const char *path,
  *   #O ...
  *   #END
  */
-bool corpse_file_write( const char *path, const CORPSE_RECORD *rec,
-                        OBJ_DATA *contents )
+int corpse_file_write( const char *path, const CORPSE_RECORD *rec,
+                       OBJ_DATA *contents )
 {
     char temp[MAX_STRING_LENGTH];
     FILE *fp;
 
     if ( (size_t) snprintf( temp, sizeof(temp), "%s.tmp", path ) >= sizeof(temp) )
-        return false;
+        return DURABLE_FAILED;
     if ( ( fp = fopen( temp, "w" ) ) == NULL )
     {
         bug( "corpse_file_write: cannot open a temp file", 0 );
-        return false;
+        return DURABLE_FAILED;
     }
     fprintf( fp, "#CORPSE\n" );
     fprintf( fp, "Id %s\n", rec->id );

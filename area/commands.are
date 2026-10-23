@@ -6748,8 +6748,10 @@ picked up, purged -- what it held is kept.  CORPSE <id> GEAR gives that
 back once; a second time, or while it is still in the world, needs FORCE.
 
 Every restore takes a copy of the character first, so it can be undone,
-and is written in a ledger no restore rolls back: a restore asked for
-through git never runs twice.  See wiki/player-backups.md.
+and changes nothing if that copy cannot be taken; it is written in a
+ledger no restore rolls back, so a restore asked for through git never
+runs twice.  A full restore keeps their current password, trust, rank,
+login fixes and one-time claims.  See wiki/player-backups.md.
 ~
 
 65 TRAIL~

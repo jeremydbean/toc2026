@@ -23,6 +23,22 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   `tools/player_history.py` reads a character's states from git and exports
   one. `tests/test_prestore_gear.py`, `tests/test_corpse_keep.py`,
   `tests/test_player_backups.py`.
+- **Recovery hardening under failure** (independent review of 3876e95,
+  2026-10-23). PRESTORE GEAR, STASH and CORPSE share one checked path
+  (undo copy, pending receipt, objects and file mark, save, commit) and
+  never report or commit a failed save; pending staff restores are
+  settled at login from the file's mark. A full PRESTORE aborts before
+  disconnecting or replacing anything when the target's save or its undo
+  copy fails, publishes through a flushed temp file, and keeps the
+  current password, trust, creator rank, login fixes and one-time claims.
+  An ended corpse's live copy is removed only once its history is on the
+  disk; otherwise its end state waits as `<id>.ending.corpse`. Ledger
+  records carry a check and a newline; a torn tail is set aside and cut
+  off at boot and after a failed append. Saves, snapshots and the ledger
+  report "in place but not confirmed on the disk" separately and never as
+  done; new directories are flushed into their parents. The hourly and
+  daily retention fixture is anchored to calendar buckets.
+  `tests/test_recovery_failures.py` (real and injected failures).
 - **Recovery hardening, phase 1** (handoff review, 2026-10-23). A git
   restore request re-applied after a full PRESTORE to its own undo copy,
   because its receipt lived in the player file: receipts now live in an

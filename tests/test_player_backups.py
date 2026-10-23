@@ -22,6 +22,7 @@ import subprocess
 import tempfile
 import time
 import unittest
+from datetime import datetime, timedelta
 
 from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
 
@@ -41,6 +42,22 @@ def run(client, command: str, settle: float = 1.5) -> str:
 def stamp(seconds_ago: float) -> str:
     """A snapshot stamp, in the server's local time as save.c writes it."""
     return time.strftime("%Y%m%d_%H%M%S", time.localtime(time.time() - seconds_ago))
+
+
+def in_hour(hours_back: int, minute: int) -> str:
+    """A stamp `minute` minutes into the calendar hour that began
+    `hours_back` hours before this one -- so copies meant for one hourly
+    bucket are in it whatever the minute now is (independent review,
+    2026-10-23: 10/20/30 minutes past "three days ago" straddled an hour
+    whenever the test ran early in one)."""
+    start = datetime.now().replace(minute=0, second=0, microsecond=0) - timedelta(hours=hours_back)
+    return (start + timedelta(minutes=minute)).strftime("%Y%m%d_%H%M%S")
+
+
+def in_day(days_back: int, hour: int) -> str:
+    """A stamp `hour` hours into the calendar day `days_back` days ago."""
+    start = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(days=days_back)
+    return (start + timedelta(hours=hour)).strftime("%Y%m%d_%H%M%S")
 
 
 class BackupSourceTests(unittest.TestCase):
@@ -190,10 +207,14 @@ class BackupLiveTests(unittest.TestCase):
             plant = {
                 # The last day: all kept.
                 "recent": [stamp(600 + 60 * i) for i in range(35)],
-                # One hour three days ago: only its newest.
-                "hour": [stamp(3 * day + 10 * 60), stamp(3 * day + 20 * 60), stamp(3 * day + 30 * 60)],
-                # One day thirty days ago: only its newest.
-                "daily": [stamp(30 * day + 3600), stamp(30 * day + 7200)],
+                # One calendar hour three days back, and another three hours
+                # before it: only the newest of each (newest first here).
+                "hour": [in_hour(72, 40), in_hour(72, 25), in_hour(72, 10)],
+                "hour2": [in_hour(75, 50), in_hour(75, 5)],
+                # One calendar day thirty days back, and one forty: only the
+                # newest of each.
+                "daily": [in_day(30, 20), in_day(30, 9), in_day(30, 2)],
+                "daily2": [in_day(40, 15), in_day(40, 3)],
                 # Two years ago: gone.
                 "ancient": [stamp(730 * day)],
             }
@@ -221,8 +242,9 @@ class BackupLiveTests(unittest.TestCase):
 
         for s in plant["recent"]:
             self.assertIn(f"Zbacked.{s}", names)
-        self.assertEqual([s for s in plant["hour"] if f"Zbacked.{s}" in names], [plant["hour"][0]])
-        self.assertEqual([s for s in plant["daily"] if f"Zbacked.{s}" in names], [plant["daily"][0]])
+        for bucket in ("hour", "hour2", "daily", "daily2"):
+            self.assertEqual([s for s in plant[bucket] if f"Zbacked.{s}" in names],
+                             [plant[bucket][0]], bucket)
         self.assertNotIn(f"Zbacked.{plant['ancient'][0]}", names)
         self.assertIn(f"Zbacked.{old_death}.death", names)
 
