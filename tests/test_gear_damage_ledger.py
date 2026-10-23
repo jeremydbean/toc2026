@@ -80,7 +80,11 @@ class DamageLedgerTests(unittest.TestCase):
     def test_repair_restores_exactly_what_damage_took(self) -> None:
         prototypes = {VEST: [0, 0, 0, 0], HELMET: HELMET_VALUES}
         with LiveMud() as mud:
-            make(mud, "Zledgersmith", 70, Sk="100 'acid breath'")
+            # Mana for every cast: a new character has about a hundred, so
+            # only five landed, and five one-in-four chances at the helmet
+            # missed it about a time in four (CI, 2026-10-23).
+            make(mud, "Zledgersmith", 70, Sk="100 'acid breath'",
+                 HMV="9000 9000 30000 30000 500 500", HMVP="9000 30000 500")
             make(mud, "Zledgerworn", 50, NewGold=500000,
                  HMV="9000 9000 500 500 500 500", HMVP="9000 500 500")
 
@@ -108,7 +112,7 @@ class DamageLedgerTests(unittest.TestCase):
             with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as hero:
                 login(staff, "Zledgersmith", PASSWORD)
                 login(hero, "Zledgerworn", PASSWORD)
-                for _ in range(15):
+                for _ in range(40):
                     run(staff, "cast 'acid breath' zledgerworn", 1.0)
                     run(staff, "peace", 0.5)
                     run(staff, "restore zledgerworn", 0.5)
@@ -117,9 +121,9 @@ class DamageLedgerTests(unittest.TestCase):
                             and "leather vest is pitted" in hero.transcript:
                         break
                 self.assertIn("great war helmet is pitted", hero.transcript,
-                              "fifteen casts never etched the helmet")
+                              "forty casts never etched the helmet")
                 self.assertIn("leather vest is pitted", hero.transcript,
-                              "fifteen casts never etched a vest")
+                              "forty casts never etched a vest")
                 damaged_ac = armour_class(run(staff, "stat zledgerworn", 1.5))
                 run(staff, "peace", 0.5)
                 hero.send("quit")
