@@ -12232,6 +12232,24 @@ void do_buff( CHAR_DATA *ch, char *argument )
         act( "$n says 'I lift what I can reach, not what you name.'",
             mob, NULL, ch, TO_VICT );
 
+    /* Asked by command, she always answers. spellup_listen keeps quiet
+       on a word she does not know, so as not to answer every SAY in the
+       room, and HEAL FRES got nothing at all (play journal, 2026-10-22). */
+    {
+        char said[MAX_INPUT_LENGTH];
+
+        spellup_normalise( arg, said, sizeof(said) );
+        if ( str_cmp( said, "all" ) && str_cmp( said, "everything" )
+        &&   spellup_group_match( said ) == NULL
+        &&   spellup_match( said ) == NULL )
+        {
+            act( "$n tilts her head.  'I don't know that one.  Here is what I do.'",
+                mob, NULL, ch, TO_VICT );
+            spellup_show_menu( mob, ch );
+            return;
+        }
+    }
+
     /* One path for both ways of asking, so they can never drift. */
     spellup_listen( ch, arg );
 }

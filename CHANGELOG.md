@@ -8,6 +8,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **From the play journal, 2026-10-22**: HEAL/BUFF at Hermie answers an
+  unknown word with her list (`do_buff`; `spellup_listen` stays quiet for
+  SAY); `find_door` says an exit has no door instead of "You can't do
+  that." `tests/test_journal_frictions_oct22.py`.
 - **The creator's rank is a flag the founder grants** (owner, 2026-10-22):
   `Creator 1` in the player file; CREATOR lists creators online and lets
   Killuminati, the founder, grant or take it, online or offline. A creator

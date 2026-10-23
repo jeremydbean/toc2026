@@ -1943,9 +1943,18 @@ int find_door( CHAR_DATA *ch, char *argument )
 	return -1;
     }
 
+    /* Say why: "You can't do that." read like a refusal, and players
+       tried the same exit three times running (play journal, 2026-10-22). */
     if ( !IS_SET(pexit->exit_info, EX_ISDOOR) )
     {
-	send_to_char( "You can't do that.\n\r", ch );
+	char where[MAX_INPUT_LENGTH];
+
+	if ( door == DIR_UP || door == DIR_DOWN )
+	    toc_strlcpy( where, door == DIR_UP ? "above you" : "below you",
+	                 sizeof(where) );
+	else
+	    snprintf( where, sizeof(where), "to the %s", dir_name[door] );
+	act( "There is no door $T, just open passage.", ch, NULL, where, TO_CHAR );
 	return -1;
     }
 

@@ -1,5 +1,11 @@
 # CHANGES -- what the game tells players has changed (src/changes.c).
-# Each entry: a line '@ <id> <yyyy-mm-dd>', its text, then a blank line.
+# Each entry: a line '@ 20261023a 2026-10-23
+- Hermie always answers when you ask her by HEAL or BUFF: a word she does
+  not know gets her list instead of silence.
+- OPEN, CLOSE, LOCK and UNLOCK on an exit with no door now say there is
+  no door that way, instead of "You can't do that."
+
+@ <id> <yyyy-mm-dd>', its text, then a blank line.
 # Newest first. Ids never change and are never reused: a character's
 # view counts are kept by id. Write entries for players, not for staff.
 
