@@ -5231,7 +5231,7 @@ natural level.
 
 Trust may be set from 1 to 71, never above your own, and never on
 someone who outranks you; 0 resets it.  Trust 71 outranks every
-implementor, and only the creator can give it.
+implementor.
 
 A trust of 0 means to use the character's natural level again.
 
