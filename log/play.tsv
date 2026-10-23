@@ -6570,3 +6570,46 @@
 1792699683	cmd	Trentlin	50	2497	dresden_halloween.are	standing	98	0	-	aquest	gamble yes	The dice BETRAY you! Your 94 quest points are lost.
 1792699686	cmd	Trentlin	50	2401	dresden_halloween.are	standing	98	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
 1792699687	session	Trentlin	50	2401	dresden_halloween.are	quit	2729s	+0 levels	+0 exp	+760940923 copper	12 kills	0 deaths	5 quests	1604 commands	33 refused	coin: loot 30p 85g 55s 32c, quests 730p 8g 54s, spent 9c
+1792720147	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792720148	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792720150	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	changes		What is new, newest first: // 2026-10-22 //   - The underbrush east of the Coven's logging trail is no longer locked:
+1792720213	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792720217	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792720218	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792720218	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792720219	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792720220	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792720221	cmd	Alaric	54	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792720221	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	run	n	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1792720223	refused	Alaric	54	29004	korzath1.are	resting	100	0	-	(unknown)		Huh? Did you mean WAKE?
+1792720223	cmd	Alaric	54	29004	korzath1.are	resting	100	0	-	wake		You stand up.
+1792720225	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	bs	gu	Your backstab misses Guardian Knight. [-0]
+1792720328	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	get	key cor	You get a diamond key from a stinking corpse.
+1792720330	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	unlock	north	There is a flash of light as you unlock the door.
+1792720330	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	open		Ok.
+1792720331	cmd	Alaric	54	29201	korzath2.are	standing	99	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1792720331	cmd	Alaric	54	29202	korzath2.are	standing	99	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1792720332	cmd	Alaric	54	29203	korzath2.are	standing	99	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1792720333	cmd	Alaric	54	29204	korzath2.are	standing	99	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1792720334	cmd	Alaric	54	29205	korzath2.are	standing	99	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1792720334	cmd	Alaric	54	29206	korzath2.are	standing	99	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1792720334	cmd	Alaric	54	29207	korzath2.are	standing	99	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1792720336	cmd	Alaric	54	29207	korzath2.are	standing	99	0	-	scan		a killer clown                     -to the North. // a killer clown                     -to the North. // a killer clown                     -to the North.
+1792720338	cmd	Alaric	54	29208	korzath2.are	standing	99	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1792720340	cmd	Alaric	54	29208	korzath2.are	standing	99	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792720342	cmd	Alaric	54	29208	korzath2.are	standing	99	0	-	wear	exc	You stop using (Flaming) the Crystalline Sword of Justice. // You wield Excalibur. // Excalibur feels like a part of you!
+1792720344	cmd	Alaric	54	29209	korzath2.are	standing	99	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1792720344	cmd	Alaric	54	29209	korzath2.are	standing	99	0	-	bs	sk	Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-376] // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-388] // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-350]
+1792720350	cmd	Alaric	54	29209	korzath2.are	fighting	99	0	fight	get	just	I see no just here.
+1792720350	cmd	Alaric	54	29209	korzath2.are	fighting	99	0	fight	wear	just	You wield (Flaming) the Crystalline Sword of Justice. // (Flaming) the Crystalline Sword of Justice feels like a part of you!
+1792720351	cmd	Alaric	54	29209	korzath2.are	fighting	99	0	fight	get	exc	You get Excalibur.
+1792720351	cmd	Alaric	54	29209	korzath2.are	fighting	99	0	fight	wear	exc	You stop using (Flaming) the Crystalline Sword of Justice. // You wield Excalibur. // Excalibur feels like a part of you!
+1792720356	cmd	Alaric	54	29209	korzath2.are	standing	99	0	-	look		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1792720358	cmd	Alaric	54	29209	korzath2.are	standing	99	0	-	scan		a deranged madman                  -to the North. // an Animated Skeleton               -to the North. // a killer clown                     -to the East.
+1792720361	cmd	Alaric	54	29210	korzath2.are	standing	99	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1792720362	cmd	Alaric	54	29210	korzath2.are	standing	99	0	-	bs	sk	Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-307] // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-416] // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-436]
+1792720370	cmd	Alaric	54	29209	korzath2.are	standing	99	0	-	south		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1792720370	cmd	Alaric	54	29209	korzath2.are	standing	99	0	-	kill	sk	An Animated Skeleton dodges your attack. // An Animated Skeleton dodges your attack. // An Animated Skeleton dodges your attack.
+1792720376	cmd	Alaric	54	29210	korzath2.are	standing	99	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1792720378	cmd	Alaric	54	29210	korzath2.are	standing	99	0	-	wear	just	You stop using Excalibur. // You wield (Flaming) the Crystalline Sword of Justice. // (Flaming) the Crystalline Sword of Justice feels like a part of you!
+1792720379	cmd	Alaric	54	29210	korzath2.are	standing	99	0	-	bs	mad	Your backstab ^^^ DESTROYS ^^^ a deranged madman! [-116] // Your backstab <<< ERADICATES >>> a deranged madman! [-172] // Your backstab *** DEVASTATES *** a deranged madman! [-73]
