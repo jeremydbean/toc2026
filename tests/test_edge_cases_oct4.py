@@ -101,9 +101,13 @@ class CombatAndMovementSourceTests(unittest.TestCase):
         picker = body("act_move.c", "ROOM_INDEX_DATA *random_travel_room(")
         self.assertIn("random_scatter_room( NULL )", picker)
         self.assertIn("travel_spell_refuses( ch, room )", picker)
-        update = (SRC / "update.c").read_text(encoding="latin-1")
-        self.assertIn("random_travel_room( vch, true )", update)
-        self.assertNotIn("pRoomTport = get_room_index( number_range", update)
+        # The tornado lives in disaster.c now (2026-10-23), and picks a
+        # room the same way; a safe room is shelter, so it is never one.
+        disaster = (SRC / "disaster.c").read_text(encoding="latin-1")
+        self.assertIn("random_travel_room( vch, false )", disaster)
+        for source in ("update.c", "disaster.c", "special.c"):
+            text = (SRC / source).read_text(encoding="latin-1")
+            self.assertNotIn("pRoomTport = get_room_index( number_range", text, source)
 
     def test_followers_are_gathered_before_anyone_moves(self) -> None:
         move = body("act_move.c", "void move_char(")
