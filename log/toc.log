@@ -163203,3 +163203,69 @@ Fri Oct 23 18:46:13 2026 :: EOF encountered on read.
 Fri Oct 23 18:48:38 2026 :: Treasure goblin: vanished from room 5014 (Damp hallway, eastern.are) (too long in one area).
 Fri Oct 23 18:51:18 2026 :: Sock.sinaddr:  178.156.181.172
 Fri Oct 23 18:51:18 2026 :: EOF encountered on read.
+Fri Oct 23 18:56:23 2026 :: Sock.sinaddr:  52.22.236.30
+Fri Oct 23 18:56:24 2026 :: EOF encountered on read.
+Fri Oct 23 18:57:30 2026 :: Sock.sinaddr:  24.2.118.125
+Fri Oct 23 18:57:32 2026 :: Loading Trentlin's playerfile
+Fri Oct 23 18:57:33 2026 :: Loading Trentlin's playerfile
+Fri Oct 23 18:57:33 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Fri Oct 23 18:57:33 2026 :: Log Trentlin [4210]: arrived (The Sickroom of the Restless) from 0
+Fri Oct 23 18:57:35 2026 :: Log Trentlin [4210]: wake
+Fri Oct 23 18:57:35 2026 :: Log Trentlin [4210]: l
+Fri Oct 23 18:57:36 2026 :: Log Trentlin [4210]: s
+Fri Oct 23 18:57:36 2026 :: Log Trentlin [4203]: arrived (The Hall of Cobwebs) from 4210
+Fri Oct 23 18:57:36 2026 :: Log Trentlin [4203]: s
+Fri Oct 23 18:57:36 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4203
+Fri Oct 23 18:57:37 2026 :: Log Trentlin [4202]: e
+Fri Oct 23 18:57:37 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Fri Oct 23 18:57:37 2026 :: Log Trentlin [4201]: e
+Fri Oct 23 18:57:37 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Fri Oct 23 18:57:37 2026 :: Log Trentlin [2427]: e
+Fri Oct 23 18:57:37 2026 :: Log Trentlin [2427]: n
+Fri Oct 23 18:57:37 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Fri Oct 23 18:57:38 2026 :: Log Trentlin [2404]: n
+Fri Oct 23 18:57:38 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Fri Oct 23 18:57:39 2026 :: Log Trentlin [2401]: u
+Fri Oct 23 18:57:39 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Fri Oct 23 18:57:39 2026 :: Log Trentlin [2410]: u
+Fri Oct 23 18:57:39 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Fri Oct 23 18:57:39 2026 :: Log Trentlin [2411]: u
+Fri Oct 23 18:57:39 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Fri Oct 23 18:57:40 2026 :: Log Trentlin [2414]: u
+Fri Oct 23 18:57:40 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Fri Oct 23 18:57:40 2026 :: Log Trentlin [2497]: u
+Fri Oct 23 18:57:42 2026 :: Log Trentlin [2497]: (refused) aquewst request
+Fri Oct 23 18:57:45 2026 :: Log Trentlin [2497]: aquest request
+Fri Oct 23 18:57:45 2026 :: Log Trentlin [2497]: quest assigned: recover The Journal of Trinidad (obj 25038) in newthalo.are, 14 minutes, ordinary
+Fri Oct 23 18:57:48 2026 :: Log Trentlin [2497]: enter door
+Fri Oct 23 18:57:48 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Fri Oct 23 18:57:51 2026 :: Log Trentlin [2401]: r e 20
+Fri Oct 23 18:57:51 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Fri Oct 23 18:57:51 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Fri Oct 23 18:57:54 2026 :: Log Trentlin [2420]: reca
+Fri Oct 23 18:57:54 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 2420
+Fri Oct 23 18:57:55 2026 :: Log Trentlin [4207]: slee
+Fri Oct 23 18:57:56 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:57:57 2026 :: Log Trentlin [4207]: who
+Fri Oct 23 18:58:00 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:58:02 2026 :: Log Trentlin [4207]: i
+Fri Oct 23 18:58:10 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:58:15 2026 :: Log Trentlin [4207]: sco
+Fri Oct 23 18:58:19 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:58:20 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:58:21 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:58:22 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:58:23 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:58:25 2026 :: Log Trentlin [4207]: who
+Fri Oct 23 18:58:27 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:58:31 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:58:32 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:58:33 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:58:34 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:58:34 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:58:35 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:58:35 2026 :: Log Trentlin [4207]: gr
+Fri Oct 23 18:58:36 2026 :: Log Trentlin [4207]: gro
+Fri Oct 23 18:58:37 2026 :: Log Trentlin [4207]: wake
+Fri Oct 23 18:58:38 2026 :: Log Trentlin [4207]: w
+Fri Oct 23 18:58:38 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207

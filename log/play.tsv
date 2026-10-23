@@ -6994,3 +6994,46 @@
 1792763323	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	changes		What is new, newest first: // 2026-10-22 //   - The underbrush east of the Coven's logging trail is no longer locked:
 1792769336	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
 1792780244	session	Killuminati	70	2401	dresden_halloween.are	linkdead	16984s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	8 commands	0 refused	coin: none
+1792781855	cmd	Trentlin	50	4210	dresden_halloween.are	sleeping	99	0	-	wake		You wake and stand up.
+1792781855	cmd	Trentlin	50	4210	dresden_halloween.are	standing	99	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1792781856	cmd	Trentlin	50	4203	dresden_halloween.are	standing	99	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1792781856	cmd	Trentlin	50	4202	dresden_halloween.are	standing	99	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792781857	cmd	Trentlin	50	4201	dresden_halloween.are	standing	99	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792781857	cmd	Trentlin	50	2427	dresden_halloween.are	standing	99	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792781857	cmd	Trentlin	50	2427	dresden_halloween.are	standing	99	0	-	east		Alas, you cannot go that way.
+1792781857	cmd	Trentlin	50	2404	dresden_halloween.are	standing	99	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792781858	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792781859	cmd	Trentlin	50	2410	dresden_halloween.are	standing	99	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792781859	cmd	Trentlin	50	2411	dresden_halloween.are	standing	99	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792781859	cmd	Trentlin	50	2414	dresden_halloween.are	standing	99	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792781860	cmd	Trentlin	50	2497	dresden_halloween.are	standing	99	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792781860	cmd	Trentlin	50	2497	dresden_halloween.are	standing	99	0	-	up		Alas, you cannot go that way.
+1792781862	refused	Trentlin	50	2497	dresden_halloween.are	standing	99	0	-	(unknown)		Huh? Did you mean AQUEST?
+1792781865	cmd	Trentlin	50	2497	dresden_halloween.are	standing	99	7	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Trentlin. I have just the task for you.' // Questor Thews tells you 'Bandits have made off with The Journal of Trinidad!'
+1792781868	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792781871	cmd	Trentlin	50	2420	dresden_halloween.are	standing	99	0	-	run	e 20	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792781874	cmd	Trentlin	50	4207	dresden_halloween.are	standing	99	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792781875	cmd	Trentlin	50	4207	dresden_halloween.are	standing	99	0	-	sleep		You go to sleep.
+1792781876	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781877	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // Players found: 1
+1792781880	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781882	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	inventory		You are carrying: //      a long blue wand // ( 2) (Glowing) a bottled fairy
+1792781890	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781895	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     15 hours | Sex:    Female | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1792781899	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781900	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781901	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781902	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781903	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781905	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // Players found: 1
+1792781907	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781911	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781912	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781913	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781914	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781914	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781915	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781915	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin         5532/5544 hp 9114/9114 mana    0/2754 mv 112503 xp
+1792781916	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	100	0	-	group		Trentlin's group: // [50 W] Trentlin         5544/5544 hp 9114/9114 mana   35/2754 mv 112503 xp
+1792781917	cmd	Trentlin	50	4207	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1792781918	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
