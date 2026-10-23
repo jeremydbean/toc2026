@@ -161706,3 +161706,7 @@ Fri Oct 23 01:53:43 2026 :: Log Alaric [29210]: coin +13 gold
 Fri Oct 23 01:55:41 2026 :: Sock.sinaddr:  5.161.113.195
 Fri Oct 23 01:55:41 2026 :: EOF encountered on read.
 Fri Oct 23 01:56:57 2026 :: Sock.sinaddr:  51.91.152.14
+Fri Oct 23 02:00:47 2026 :: Sock.sinaddr:  54.87.112.51
+Fri Oct 23 02:00:47 2026 :: EOF encountered on read.
+Fri Oct 23 02:01:44 2026 :: Log Alaric [29210]: affects off: empower, empower, titanic; max hp 6850 -> 1155; max mana 10863 -> 1833; max moves 4820 -> 810; hp 6708 -> 1155
+Fri Oct 23 02:02:00 2026 :: Treasure goblin: vanished from room 2557 (Commander's Office., limbo_halloween.are) (too long in one area).
