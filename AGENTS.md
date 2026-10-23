@@ -2217,6 +2217,14 @@ victims with `can_see`, so that placement is the whole of the
 protection. Against players it behaves like hide, so detect hidden and
 holylight still find them.
 
+**Limbo is not AFK protection** (owner, 2026-10-23). An idle player is
+moved to Limbo and any command brings them back (`stop_idling`), an
+anti-idle client trigger included -- Alaric's client answered the void
+with WHO and WORTH and walked him back into the Korzath maze, where a
+Shadowman killed him. That is working as intended: staying safe while
+away is shadowmeld's, rope trick's and haven's job. Do not make
+commands answer from the void without returning the player.
+
 `shadowmeld_break()` is called from `char_from_room`, which is every
 way a character leaves a room. It must run **after** that function's
 `in_room == NULL` check, and it guards its own `act()` as well: it is
