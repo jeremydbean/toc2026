@@ -5198,6 +5198,27 @@ may also be used to demote characters.
 See also: TRUST, WIZLIST
 ~
 
+72 CREATOR~
+Syntax: creator
+        creator <player> on|off
+
+The creator's rank stands above every level: trust 72, whatever the
+character's own level.  A creator outranks every implementor and anyone
+trusted to 71, holds the commands nobody else does (SHUTDOWN, REBOOT,
+LOG, SNOOP, BAN, ALLOW, WIZLOCK, NEWLOCK, DENY, UNDENY), always logs in
+wizinvis at 72 unless they left at a level of their choosing, and cannot
+die: blows stop at one hit point, and SLAY and FARSLAY strike down
+whoever throws them.
+
+CREATOR alone lists the creators online.  With a name, the founding
+creator grants or takes the rank -- online, or in the save file of a
+player who is offline.  Nobody else may, and nobody may take it from the
+founder, who outranks the creators he makes.  Taking it away brings the
+player's WIZINVIS level down to the trust they keep.
+
+See also: TRUST, WIZINVIS
+~
+
 70 TRUST~
 Syntax: trust <character> <level>
 

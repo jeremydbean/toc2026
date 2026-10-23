@@ -334,6 +334,7 @@ DECLARE_DO_FUN( do_rested );
 DECLARE_DO_FUN( do_alignment );
 DECLARE_DO_FUN( do_devote );
 DECLARE_DO_FUN( do_aligncheck );
+DECLARE_DO_FUN( do_creator );
 DECLARE_DO_FUN( do_questdiag );
 DECLARE_DO_FUN( do_geardiag );
 DECLARE_DO_FUN( do_hyrulestatus );

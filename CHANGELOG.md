@@ -8,6 +8,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The creator's rank is a flag the founder grants** (owner, 2026-10-22):
+  `Creator 1` in the player file; CREATOR lists creators online and lets
+  Killuminati, the founder, grant or take it, online or offline. A creator
+  gets everything the rank carries -- trust 72, the creator-only commands,
+  wizinvis at login, the protections. The founder cannot be unmade and
+  outranks the creators he makes. HELP CREATOR. `tests/test_creator_rank.py`.
 - **The creator's protections follow the creator**, not the name: death
   immunity, SLAY/FARSLAY backfire, the divine ward and the skipped death
   snapshot ask `is_creator_in_person`. A mobile's killing blow on the

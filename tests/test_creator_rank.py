@@ -201,14 +201,67 @@ class CreatorRankTests(unittest.TestCase):
                 fight = creator.transcript[mark:]
                 self.assertIn("security guard", fight)
                 self.assertNotIn("You have been KILLED", fight)
-                run(creator, "purge guard")
-                self.assertIn("Killuminati", run(creator, "score"))
+                run(creator, "peace", 1.0)
+                run(creator, "purge guard", 1.0)
+                self.assertIn("Killuminati", run(creator, "score", 3.0))
                 for client in (creator, impl):
                     client.send("quit")
                     client.wait_closed()
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
         self.assertIn("Zimpl struck at Killuminati and was struck down by the ward.", log)
         self.assertNotIn("Killuminati killed by", log)
+
+    def test_the_creator_flag_is_granted_kept_and_taken(self) -> None:
+        """The creator's rank is a saved flag (owner, 2026-10-22): the
+        founder grants it, online or off; it survives a login, which then
+        comes in wizinvis; nobody else grants it, nobody takes it from the
+        founder, the founder outranks the creators he makes, and taking it
+        away brings the WIZINVIS level down with it."""
+        with LiveMud() as mud:
+            for name in ("Killuminati", "Zgranted", "Zimpl", "Zoffline"):
+                make(mud, name)
+            with mud.connect(timeout=120) as founder, \
+                    mud.connect(timeout=120) as granted, \
+                    mud.connect(timeout=120) as impl:
+                login(founder, "Killuminati", PASSWORD)
+                login(granted, "Zgranted", PASSWORD)
+                login(impl, "Zimpl", PASSWORD)
+
+                self.assertIn("Huh?", run(granted, "snoop zimpl"))
+                self.assertIn("now holds the creator's rank", run(founder, "creator zgranted on"))
+                self.assertIn("now being snooped", run(granted, "snoop zimpl"))
+                run(granted, "snoop zgranted")                # cancel
+                self.assertIn("(founder)", run(granted, "creator"))
+                self.assertIn("Only the founding creator", run(granted, "creator zimpl on"))
+                self.assertIn("outrank", run(granted, "set char killuminati hp 5"))
+                self.assertIn("not yours to change", run(founder, "creator killuminati off"))
+                self.assertIn("they are offline", run(founder, "creator zoffline on"))
+
+                # Kept across a login, which comes in wizinvis at 72.
+                granted.send("quit")
+                self.assertTrue(granted.wait_closed())
+                with mud.connect(timeout=120) as again:
+                    login(again, "Zgranted", PASSWORD)
+                    self.assertNotIn("Zgranted", run(impl, "who"))
+                    self.assertIn("now being snooped", run(again, "snoop zimpl"))
+                    run(again, "snoop zgranted")
+
+                    # Taken away: the commands go, and so does the hiding.
+                    self.assertIn("no longer holds", run(founder, "creator zgranted off"))
+                    self.assertIn("Huh?", run(again, "snoop zimpl"))
+                    self.assertIn("Zgranted", run(impl, "who"))
+                    again.send("quit")
+                    again.wait_closed()
+                for client in (founder, impl):
+                    client.send("quit")
+                    client.wait_closed()
+            offline = (mud.player_dir / "Zoffline").read_text(encoding="latin-1")
+            revoked = (mud.player_dir / "Zgranted").read_text(encoding="latin-1")
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
+        self.assertRegex(offline, r"(?m)^Creator 1$")
+        self.assertNotRegex(revoked, r"(?m)^Creator ")
+        self.assertIn("Killuminati granted the creator's rank to Zgranted.", log)
+        self.assertIn("Killuminati took the creator's rank from Zgranted.", log)
 
 
 class HuntingAccessTests(unittest.TestCase):

@@ -880,6 +880,11 @@ bool rank_protects( CHAR_DATA *ch, CHAR_DATA *victim )
     if ( ch == NULL || victim == NULL )
         return false;
 
+    /* The founder outranks the creators he makes: they share trust 72,
+       and a peer's exemption would let one demote or SET him. */
+    if ( is_creator_founder( victim ) && !is_creator_founder( ch ) )
+        return true;
+
     mine = get_trust( ch );
     theirs = get_trust( victim );
 
@@ -894,10 +899,26 @@ bool rank_protects( CHAR_DATA *ch, CHAR_DATA *victim )
 
 
 /*
- * Killuminati, and only Killuminati, is the creator (owner, 2026-10-22):
- * trust LEVEL_CREATOR whatever his level, through a switch too.
+ * The creator's rank (owner, 2026-10-22): trust LEVEL_CREATOR whatever
+ * the level, through a switch too. Killuminati founded it and always
+ * holds it; anyone else holds it while their saved Creator flag is set,
+ * which only he grants or takes away (do_creator).
  */
 bool is_creator( CHAR_DATA *ch )
+{
+    if ( ch == NULL )
+        return false;
+    if ( ch->desc != NULL && ch->desc->original != NULL )
+        ch = ch->desc->original;
+    if ( IS_NPC(ch) )
+        return false;
+    return is_killuminati( ch )
+        || ( ch->pcdata != NULL && ch->pcdata->creator );
+}
+
+/* The founder: the one creator nobody can unmake, and the only one who
+   grants the rank. */
+bool is_creator_founder( CHAR_DATA *ch )
 {
     if ( ch == NULL )
         return false;

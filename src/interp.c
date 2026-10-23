@@ -513,6 +513,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "geardiag",       do_geardiag,    POS_DEAD,       L5,  LOG_NORMAL, 1 },
     { "hyrulestatus",   do_hyrulestatus,POS_DEAD,       L5,  LOG_NORMAL, 1 },
     { "aligncheck",     do_aligncheck,  POS_DEAD,       L5,  LOG_NORMAL, 1 },
+    { "creator",        do_creator,     POS_DEAD,       CR,  LOG_ALWAYS, 1 },
     { "resetpwd",       do_resetpwd,    POS_DEAD,       L5,  LOG_NEVER,  1 },
     { "newbie",         do_newbie,      POS_DEAD,       L10, LOG_ALWAYS, 1 },
     { "snoop",          do_snoop,       POS_DEAD,       CR,  LOG_ALWAYS, 1 },

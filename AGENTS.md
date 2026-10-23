@@ -3166,10 +3166,18 @@ comparison:
 
 Owner, 2026-10-22. Levels still stop at `MAX_LEVEL`; above it are trusts.
 
-- **Killuminati alone is the creator**, by name (`is_creator`, built on
-  `is_killuminati` in `oracle.c`): `get_trust()` returns `LEVEL_CREATOR`
-  (72) for him, through a switch too, while his level stays 70 and WHO
-  shows 70. There is no flag and no grant: nobody else can become one.
+- **The creator is a saved flag** (owner, 2026-10-22): `pcdata->creator`,
+  written `Creator 1` under **case 'C'** only when set. `is_creator` is
+  true for it and, always, for the founder, Killuminati
+  (`is_creator_founder`, by name, `is_killuminati` in `oracle.c`).
+  `get_trust()` returns `LEVEL_CREATOR` (72) for a creator, through a
+  switch too, whatever their level; WHO shows the level. CREATOR
+  (`do_creator`, at CR) lists the creators online, and the founder alone
+  grants or takes the rank, online or in an offline file
+  (`offline_player_load`), with a `creator` snapshot first, a log line
+  and a creator-only WIZINFO. Nobody takes it from the founder, and
+  `rank_protects` lets no other creator act on him, though they share 72.
+  Taking it brings the WIZINVIS level down to the trust that remains.
   **Nothing else asks the name.** The rank asks `is_creator`; the
   protections that come with it ask `is_creator_in_person` (his own body,
   never a mobile he has switched into): he cannot die -- `damage()` holds
@@ -3177,8 +3185,7 @@ Owner, 2026-10-22. Levels still stop at `MAX_LEVEL`; above it are trusts.
   no kill and costs nothing, and `raw_kill_internal` turns every instant
   death aside -- SLAY and FARSLAY strike down whoever throws them,
   `is_divinely_warded` covers him against fatalities and death rites, and
-  his deaths take no snapshot. Making the creator something other than a
-  name is then one function's change.
+  his deaths take no snapshot. A creator granted the flag has all of it.
 - **TRUST gives up to `LEVEL_TRUST_MAX` (71)**, limited to the giver's
   own trust, so only the creator gives 71; `get_trust` caps any stored
   trust at 71. TRUST refuses a target who outranks the giver. 71 outranks

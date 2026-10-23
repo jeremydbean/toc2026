@@ -776,6 +776,8 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
                  ch->pcdata->black_market_bought ? ch->pcdata->black_market_bought : "" );
     fprintf( fp, "ChangesSeen %s~\n", ch->pcdata->changes_seen ? ch->pcdata->changes_seen : "" );
     fprintf( fp, "Fixes %s~\n", ch->pcdata->fixes_done ? ch->pcdata->fixes_done : "" );
+    if ( ch->pcdata->creator )
+        fprintf( fp, "Creator 1\n" );
     fprintf( fp, "Cast %s\n",	get_castlename( ch->pcdata->castle) );
     fprintf( fp, "Levl %d\n",	ch->level		);
     if (ch->trust != 0)
@@ -2616,6 +2618,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 					(sh_int)(castle_lookup(fread_word( fp ) )) );
 	    KEY( "CasinoWon",	ch->pcdata->casino_winnings,	fread_long( fp ) );
 	    KEY( "ChangesSeen",	ch->pcdata->changes_seen,	fread_string( fp ) );
+	    KEY( "Creator",	ch->pcdata->creator,	fread_number( fp ) != 0 );
 	    KEY( "CasinoLost",	ch->pcdata->casino_losses,	fread_long( fp ) );
 	    KEY( "Class",	ch->class,		(sh_int)(fread_number( fp )) );
 	    KEY( "Cla",		ch->class,		(sh_int)(fread_number( fp )) );

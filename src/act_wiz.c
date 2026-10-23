@@ -3669,6 +3669,133 @@ void do_trust( CHAR_DATA *ch, char *argument )
 
 
 
+/*
+ * CREATOR [<player> on|off] (owner, 2026-10-22): the creator's rank as a
+ * saved flag. Alone it lists the creators online; with a name, the
+ * founder grants or takes it -- nobody else may, and nobody may take it
+ * from the founder. A player offline is changed in their file. Taking it
+ * away also brings a WIZINVIS level down to the trust that remains, so
+ * nobody stays hidden at a rank they no longer hold.
+ */
+void do_creator( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char how[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    DESCRIPTOR_DATA offline_desc;
+    CHAR_DATA *victim;
+    bool offline = false;
+    bool logging_in = false;
+    bool on;
+
+    argument = one_argument( argument, arg );
+    one_argument( argument, how );
+
+    if ( arg[0] == '\0' )
+    {
+        DESCRIPTOR_DATA *d;
+        int count = 0;
+
+        send_to_char( "Creators online:\n\r", ch );
+        for ( d = descriptor_list; d != NULL; d = d->next )
+        {
+            CHAR_DATA *wch = d->original != NULL ? d->original : d->character;
+
+            if ( d->connected != CON_PLAYING || wch == NULL
+            ||   !is_creator_in_person( wch ) )
+                continue;
+            snprintf( buf, sizeof(buf), "  %s%s\n\r", wch->name,
+                      is_creator_founder( wch ) ? " (founder)" : "" );
+            send_to_char( buf, ch );
+            count++;
+        }
+        if ( count == 0 )
+            send_to_char( "  none\n\r", ch );
+        send_to_char( "Syntax: creator <player> on|off\n\r", ch );
+        return;
+    }
+
+    if ( !is_creator_founder( ch ) )
+    {
+        send_to_char( "Only the founding creator grants or takes that rank.\n\r", ch );
+        return;
+    }
+
+    if ( str_cmp( how, "on" ) && str_cmp( how, "off" ) )
+    {
+        send_to_char( "Syntax: creator <player> on|off\n\r", ch );
+        return;
+    }
+    on = !str_cmp( how, "on" );
+
+    /* By name, seen or not; never a second copy of somebody online. */
+    victim = player_in_game( arg, &logging_in );
+    if ( victim != NULL && logging_in )
+    {
+        send_to_char( "They are logging in; try again in a moment.\n\r", ch );
+        return;
+    }
+    if ( victim == NULL )
+    {
+        if ( ( victim = offline_player_load( &offline_desc, arg, NULL ) ) == NULL )
+        {
+            send_to_char( "No player by that name is online or saved.\n\r", ch );
+            return;
+        }
+        offline = true;
+    }
+
+    if ( IS_NPC(victim) || victim->pcdata == NULL )
+    {
+        send_to_char( "Not on NPC's.\n\r", ch );
+        if ( offline )
+            extract_char( victim, true );
+        return;
+    }
+
+    if ( is_creator_founder( victim ) )
+    {
+        send_to_char( "The founder's rank is not yours to change.\n\r", ch );
+        if ( offline )
+            extract_char( victim, true );
+        return;
+    }
+
+    if ( victim->pcdata->creator == on )
+    {
+        snprintf( buf, sizeof(buf), "%s %s a creator already.\n\r",
+                  victim->name, on ? "is" : "is not" );
+        send_to_char( buf, ch );
+        if ( offline )
+            extract_char( victim, true );
+        return;
+    }
+
+    player_snapshot_milestone( victim, "creator", true );
+    victim->pcdata->creator = on;
+    if ( !on && victim->invis_level > get_trust( victim ) )
+        victim->invis_level = clamp_sh_int( get_trust( victim ) );
+    save_char_obj( victim );
+
+    snprintf( buf, sizeof(buf), "%s %s the creator's rank%s.\n\r",
+              victim->name, on ? "now holds" : "no longer holds",
+              offline ? " (saved; they are offline)" : "" );
+    send_to_char( buf, ch );
+    if ( !offline )
+        send_to_char( on ? "You have been given the creator's rank.\n\r"
+                         : "The creator's rank has been taken from you.\n\r",
+                      victim );
+
+    snprintf( buf, sizeof(buf), "%s %s the creator's rank %s %s.", ch->name,
+              on ? "granted" : "took", on ? "to" : "from", victim->name );
+    log_string( buf );
+    wizinfo( buf, LEVEL_CREATOR );
+
+    if ( offline )
+        extract_char( victim, true );
+}
+
+
 void do_restore( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];

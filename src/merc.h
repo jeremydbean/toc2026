@@ -257,9 +257,10 @@ typedef struct script_loop_prepoll_payload
 #define MAX_LEVEL               70
 /* Ranks above the top level (owner, 2026-10-22). Nobody's level passes
    MAX_LEVEL; these are trusts. TRUST 71 may be given, by the creator
-   only, and outranks every implementor. The creator is Killuminati
-   alone (is_creator), at 72: above everyone, his WIZINVIS hidden from
-   all, and WIZI 71 lets those trusted to 71 see him. */
+   only, and outranks every implementor. A creator (is_creator: the
+   founder, Killuminati, and whoever he grants it with CREATOR) is at 72:
+   above everyone, WIZINVIS hidden from all, and WIZI 71 lets those
+   trusted to 71 see them. */
 #define LEVEL_TRUST_MAX         (MAX_LEVEL + 1)
 #define LEVEL_CREATOR           (MAX_LEVEL + 2)
 #define LEVEL_IMMORTAL          (MAX_LEVEL - 10)
@@ -2244,6 +2245,7 @@ struct  pc_data
     char                play_recent[PLAY_RECENT][96];
     int                 play_recent_next;
     char *              fixes_done;           /* login fixes applied (fixes.c) */
+    bool                creator;              /* granted the creator's rank (CREATOR) */
     /* Training-yard run; deliberately not persisted. */
     long                dummy_dealt;
     long                dummy_taken;
@@ -3390,6 +3392,7 @@ int     equipment_affects       ( const CHAR_DATA *ch, const char **names,
 bool    can_see         ( CHAR_DATA *ch, const CHAR_DATA *victim );
 bool    wizinvis_hides  ( const CHAR_DATA *wch, const CHAR_DATA *looker );
 bool    is_creator      ( CHAR_DATA *ch );
+bool    is_creator_founder ( CHAR_DATA *ch );
 bool    is_creator_in_person ( CHAR_DATA *ch );
 int     staff_notice_level ( const CHAR_DATA *ch, int level );
 bool    online_can_list ( CHAR_DATA *ch, const CHAR_DATA *wch );
