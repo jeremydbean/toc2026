@@ -7185,3 +7185,5 @@
 1792782071	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	open	pump	A possessed flame has been let out of a jack o'lantern! // A possessed flame says, 'Thanks for letting me out,' // 'but I was in there for a reason.' a possessed flame grins evilly at you.
 1792782075	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	sacrifice	cor	The Gods give you 10 copper coins for your sacrifice.
 1792782077	session	Trentlin	50	2401	dresden_halloween.are	quit	224s	+0 levels	+0 exp	+167864084 copper	1 kills	0 deaths	1 quests	191 commands	1 refused	coin: loot 1s 20c, quests 162p 24g 12s
+1792787683	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1792787688	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	4	-	prestore	alaric 20261023_023244.death	Alaric restored to: Fri Oct 23 2026 02:32:44
