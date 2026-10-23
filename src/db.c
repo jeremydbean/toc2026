@@ -5513,7 +5513,7 @@ void do_areas( CHAR_DATA *ch, char *argument )
     for ( iArea = 0; iArea < iAreaHalf; iArea++ )
     {
         snprintf(buf, sizeof(buf), "%-39s%-39s\n\r",
-            pArea1->name, (pArea2 != NULL) ? pArea2->name : "" );
+            area_shown_name( pArea1->name ), (pArea2 != NULL) ? area_shown_name( pArea2->name ) : "" );
         send_to_char( buf, ch );
         pArea1 = pArea1->next;
         if ( pArea2 != NULL )

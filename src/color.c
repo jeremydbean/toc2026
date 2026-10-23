@@ -283,6 +283,50 @@ bool color_parse_slot( const char *str, unsigned char *slot_out )
     return true;
 }
 
+/*
+ * Cut str to at most max bytes without leaving half a colour token: a
+ * TITLE cut at 45 through "{0B" left "{0", which prints as itself.
+ */
+void color_truncate( char *str, size_t max )
+{
+    size_t len;
+
+    if ( str == NULL || strlen( str ) <= max )
+        return;
+    str[max] = '\0';
+    len = max;
+    if ( len >= 1 && color_token_prefix( str[len - 1] ) )
+        str[len - 1] = '\0';
+    else if ( len >= 2 && color_token_prefix( str[len - 2] )
+           && color_hex_value( str[len - 1] ) >= 0 )
+        str[len - 2] = '\0';
+}
+
+/*
+ * End str with a colour reset when it carries any colour token and does
+ * not already end with one, so a coloured title does not tint " is here."
+ * and every WHO line after it. Does nothing without room for the reset.
+ */
+void color_close( char *str, size_t size )
+{
+    const char *p;
+    size_t len;
+    unsigned char slot;
+    bool coloured = false;
+
+    if ( str == NULL )
+        return;
+    for ( p = str; *p != '\0'; p++ )
+        if ( color_token_prefix( *p ) && color_parse_slot( p + 1, &slot ) )
+            coloured = true;
+    len = strlen( str );
+    if ( !coloured
+      || ( len >= 3 && !strcmp( str + len - 3, "{00" ) )
+      || len + 4 > size )
+        return;
+    toc_strlcat( str, "{00", size );
+}
+
 void color_append_marker( DString *buf, const CHAR_DATA *recipient, bool allow_color, unsigned char slot )
 {
     const char *sequence;
@@ -301,6 +345,12 @@ void color_append_marker( DString *buf, const CHAR_DATA *recipient, bool allow_c
         sequence = color_code( recipient, slot );
     }
 
+    /* A slot set to "plain" has no sequence of its own, but it still has
+       to end the colour before it: fight and room-name lines close with
+       the regular slot, and with regular set to plain their colour ran
+       on into everything after. */
+    if ( sequence == NULL || *sequence == '\0' )
+        sequence = color_reset_code();
     if ( sequence != NULL && *sequence != '\0' )
     {
         dstring_append_cstr( buf, sequence );

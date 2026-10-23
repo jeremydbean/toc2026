@@ -5,6 +5,17 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261023c 2026-10-23
+Colour fixes:
+- COLOR OFF now stays off when you log back in.
+- AREAS shows each area's level range whole, as [30 50], instead of
+  half of it.
+- Colour typed into a channel or SAY shows as colour to everyone who
+  hears it, not as letters and numbers.
+- A coloured title no longer tints the rest of the line, and a long one
+  is never cut in the middle of a colour.
+- Setting a colour to plain no longer leaves the colour before it running.
+
 @ 20261023b 2026-10-23 staff
 What a wizinvis or unseen immortal does TO a player names them "an
 immortal": "An immortal pokes you", "An immortal tells you ...", a

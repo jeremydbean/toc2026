@@ -3401,15 +3401,23 @@ void report_login_notice( CHAR_DATA *ch )
 
     if ( notes > 0 )
     {
+	/* The box is 52 wide inside. Pad by what is shown -- the colour
+	   codes take no room -- counting the digits of the number. */
+	char digits[16];
+	int shown1, shown2;
+
+	snprintf( digits, sizeof(digits), "%d", notes );
+	shown1 = 32 + (int)strlen( digits ) + ( notes == 1 ? 0 : 1 );
+	shown2 = 26 + ( notes == 1 ? 2 : 4 );
 	snprintf( buf, sizeof(buf),
 	    "\n\r{0E+----------------------------------------------------+{00\n\r"
 	    "{0E|{00  You have {0F%d{00 unread note%s waiting.%*s{0E|{00\n\r"
 	    "{0E|{00  Type {0FNOTE READ{00 to read %s.%*s{0E|{00\n\r"
 	    "{0E+----------------------------------------------------+{00\n\r",
 	    notes, notes == 1 ? "" : "s",
-	    notes == 1 ? 22 : 21, "",
+	    UMAX( 0, 52 - shown1 ), "",
 	    notes == 1 ? "it" : "them",
-	    notes == 1 ? 21 : 19, "" );
+	    UMAX( 0, 52 - shown2 ), "" );
 	send_to_char( buf, ch );
     }
 

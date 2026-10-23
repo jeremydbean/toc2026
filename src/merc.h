@@ -3393,6 +3393,7 @@ int     equipment_affects       ( const CHAR_DATA *ch, const char **names,
 bool    can_see         ( CHAR_DATA *ch, const CHAR_DATA *victim );
 bool    wizinvis_hides  ( const CHAR_DATA *wch, const CHAR_DATA *looker );
 const char *pers_acting_on( CHAR_DATA *ch, CHAR_DATA *looker );
+const char *area_shown_name( const char *name );
 bool    is_creator      ( CHAR_DATA *ch );
 bool    is_creator_founder ( CHAR_DATA *ch );
 bool    is_creator_in_person ( CHAR_DATA *ch );
@@ -3513,6 +3514,8 @@ bool    show_hero_plaque ( CHAR_DATA *ch );
 bool    color_is_enabled    ( const CHAR_DATA *ch );
 bool    color_parse_slot    ( const char *str, unsigned char *slot_out );
 bool    color_token_prefix  ( char ch );
+void    color_truncate      ( char *str, size_t max );
+void    color_close         ( char *str, size_t size );
 void    color_append_marker ( DString *buf, const CHAR_DATA *recipient, bool allow_color, unsigned char slot );
 void    color_convert       ( const char *text, const CHAR_DATA *recipient, bool allow_color, DString *out );
 void    check_improve   ( CHAR_DATA *ch, int sn, bool success, int multiplier );

@@ -8,6 +8,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Colour sweep** (2026-10-23): area names show their level range as
+  `[30 50]` (`area_shown_name`; `{30` was read as a colour token);
+  `act()` converts tokens in `$t`/`$p` text; a login keeps a saved COLOR
+  OFF; titles close their colour and are cut without splitting a token
+  (`color_close`, `color_truncate`, also ARRIVE/DEPART); a plain colour
+  slot emits a reset; a snoop strips colour for a snooper with it off;
+  the battle line capitalises the name, not the bracket; the unread-notes
+  box pads by what is shown. `tests/test_ansi_color.py`.
 - **An unseen immortal acting on you is "an immortal"** (owner,
   2026-10-23): `pers_acting_on()` names them so in `act()`'s `TO_VICT`
   `$n` and in TELL, REPLY and GTELL; room messages stay "someone" or are

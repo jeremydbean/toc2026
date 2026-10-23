@@ -654,7 +654,7 @@ static MOB_INDEX_DATA *editable_mob( CHAR_DATA *ch, const char *arg )
     if ( !may_build_area( ch, pArea ) )
     {
         snprintf( buf, sizeof(buf), "Mobile %d belongs to %s, and you are not one "
-                  "of its builders.\n\r", vnum, pArea->name );
+                  "of its builders.\n\r", vnum, area_shown_name( pArea->name ) );
         send_to_char( buf, ch );
         return NULL;
     }
@@ -681,7 +681,7 @@ static void show_mob( CHAR_DATA *ch, MOB_INDEX_DATA *m )
         actions++;
 
     snprintf( buf, sizeof(buf), "Mobile %d, in %s.\n\r", m->vnum,
-              pArea != NULL ? pArea->name : "an area that shipped with the game" );
+              pArea != NULL ? area_shown_name( pArea->name ) : "an area that shipped with the game" );
     toc_strlcat( out, buf, size );
     snprintf( buf, sizeof(buf), "keywords: %s\n\rshort:    %s\n\rlong:     %s",
               m->player_name, m->short_descr, m->long_descr );
@@ -1485,7 +1485,7 @@ static OBJ_INDEX_DATA *editable_obj( CHAR_DATA *ch, const char *arg )
     if ( !may_build_area( ch, pArea ) )
     {
         snprintf( buf, sizeof(buf), "Object %d belongs to %s, and you are not one "
-                  "of its builders.\n\r", vnum, pArea->name );
+                  "of its builders.\n\r", vnum, area_shown_name( pArea->name ) );
         send_to_char( buf, ch );
         return NULL;
     }
@@ -1583,7 +1583,7 @@ static void show_obj( CHAR_DATA *ch, OBJ_INDEX_DATA *o )
 
     out[0] = '\0';
     snprintf( buf, sizeof(buf), "Object %d, in %s.\n\r", o->vnum,
-              pArea != NULL ? pArea->name : "an area that shipped with the game" );
+              pArea != NULL ? area_shown_name( pArea->name ) : "an area that shipped with the game" );
     toc_strlcat( out, buf, size );
     snprintf( buf, sizeof(buf), "keywords: %s\n\rshort:    %s\n\rlong:     %s\n\r",
               o->name, o->short_descr, o->description );
@@ -4438,7 +4438,7 @@ void do_rshow( CHAR_DATA *ch, char *argument )
 
     out[0] = '\0';
     snprintf( buf, sizeof(buf), "Room %d, in %s%s.\n\r", room->vnum,
-              room->area != NULL && room->area->name != NULL ? room->area->name : "no area",
+              room->area != NULL && room->area->name != NULL ? area_shown_name( room->area->name ) : "no area",
               area_is_buildable( room->area ) ? "" : " (shipped: implementor only)" );
     toc_strlcat( out, buf, size );
     snprintf( buf, sizeof(buf), "name:   %s\n\rground: %s\n\r", room->name,

@@ -3164,6 +3164,7 @@ void set_title( CHAR_DATA *ch, char *title )
     {
         toc_strlcpy( buf, title, sizeof(buf) );
     }
+    color_close( buf, sizeof(buf) );
 
     free_string( ch->pcdata->title );
     ch->pcdata->title = str_dup( buf );
@@ -3241,8 +3242,7 @@ void do_title( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( strlen(argument) > 45 )
-	argument[45] = '\0';
+    color_truncate( argument, 45 );
 
     smash_tilde( argument );
     set_title( ch, argument );
@@ -3322,8 +3322,7 @@ void do_arrive( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( strlen(argument) > 55 )
-	argument[55] = '\0';
+    color_truncate( argument, 55 );
 
     if ( (strstr(argument,"$n") == NULL)
     || ( (strstr(argument,"$t") == NULL)
@@ -3389,8 +3388,7 @@ void do_depart( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( strlen(argument) > 55 )
-	argument[55] = '\0';
+    color_truncate( argument, 55 );
 
     if ( (strstr(argument,"$n") == NULL)
     || ( (strstr(argument,"$t") == NULL)

@@ -3270,14 +3270,14 @@ void disaster_update( void )
 	if(number_percent() < 50)
 	{
 	  pArea->disaster_type = 0;
-	  snprintf( buf, sizeof(buf),"%s is no longer a disaster area.", pArea->name);
+	  snprintf( buf, sizeof(buf),"%s is no longer a disaster area.", area_shown_name( pArea->name ));
 	  wizinfo(buf,LEVEL_IMMORTAL);
 	  continue;
 	}
 	else
 	{
 	  snprintf( buf, sizeof(buf),"%s is still suffering from %s.",
-		  pArea->name,
+		  area_shown_name( pArea->name ),
 		  disaster_name[pArea->disaster_type]);
 	  wizinfo(buf,LEVEL_IMMORTAL);
 	}
@@ -3335,7 +3335,7 @@ void disaster_update( void )
 
        if(pArea->disaster_type > 0)
        {
-	 snprintf( buf, sizeof(buf),"%s has been struck by %s.", pArea->name,
+	 snprintf( buf, sizeof(buf),"%s has been struck by %s.", area_shown_name( pArea->name ),
 	     disaster_name[pArea->disaster_type]);
 	 wizinfo(buf,LEVEL_IMMORTAL);
        }

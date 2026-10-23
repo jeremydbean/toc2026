@@ -3431,6 +3431,29 @@ bool wizinvis_hides( const CHAR_DATA *wch, const CHAR_DATA *looker )
 }
 
 /*
+ * An area's name as it is shown. Names open with a level range in
+ * braces -- "{30 50} Anon The Abyss" -- and "{30" is a colour token, so
+ * sent as it stands the range was eaten and the player read " 50} Anon
+ * The Abyss" (2026-10-23). Shown with square brackets instead, from one
+ * of a few rotating buffers so two may sit in one printf.
+ */
+const char *area_shown_name( const char *name )
+{
+    static char shown[4][MAX_INPUT_LENGTH];
+    static int next = 0;
+    char *out = shown[next];
+    size_t i;
+
+    next = ( next + 1 ) % 4;
+    if ( name == NULL )
+        name = "";
+    for ( i = 0; name[i] != '\0' && i + 1 < sizeof(shown[0]); i++ )
+        out[i] = name[i] == '{' ? '[' : name[i] == '}' ? ']' : name[i];
+    out[i] = '\0';
+    return out;
+}
+
+/*
  * How someone is named to the person they are acting on: by name if the
  * looker can see them, as "an immortal" if they cannot and are staff,
  * and "someone" otherwise (owner, 2026-10-23). For what an actor does

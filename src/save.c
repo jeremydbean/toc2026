@@ -2981,6 +2981,14 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 		    free_string( ch->pcdata->title );
 		    ch->pcdata->title = str_dup( buf );
 		}
+		/* A coloured title from before set_title closed its colour. */
+		toc_strlcpy( buf, ch->pcdata->title, sizeof(buf) );
+		color_close( buf, sizeof(buf) );
+		if ( strcmp( buf, ch->pcdata->title ) )
+		{
+		    free_string( ch->pcdata->title );
+		    ch->pcdata->title = str_dup( buf );
+		}
 		fMatch = true;
 		break;
 	    }

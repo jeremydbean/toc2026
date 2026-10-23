@@ -491,6 +491,14 @@ Commands added or revived in September 2026, and where they live:
 - Use `send_to_char()` for immediate player text and `page_to_char()` for
   scrollable output. Both paths convert canonical `{HH}` color tokens; do not
   send raw player-facing color markup through `write_to_buffer()`.
+- **Colour tokens are `{` and two hex digits, anywhere they appear.**
+  Area names open with a level range in braces (`{30 50}`), so show one
+  through `area_shown_name()` or the range is eaten. `act()` converts
+  tokens in substituted text (`$t`, `$p`) as well as its format and
+  capitalises past leading escapes; a slot set to plain emits a reset;
+  cut player text with `color_truncate()` and close a coloured title with
+  `color_close()`. A login never overrides a saved COLOR OFF.
+  `tests/test_ansi_color.py`.
 - Test formatted output with color enabled and disabled, and with paging both
   enabled and disabled. Keep normal summary views within the default page size
   when practical.

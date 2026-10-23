@@ -2003,6 +2003,44 @@ bool queue_alias_input( DESCRIPTOR_DATA *d,
 /*
  * Low level output function.
  */
+/* The watched player's output is already in their colours. A snooper
+   with colour off gets it without the escapes; one with colour on gets a
+   reset after it, so the watched player's last colour does not run into
+   the snooper's own lines. */
+static void snoop_forward( DESCRIPTOR_DATA *snooper, const char *txt, int len )
+{
+    CHAR_DATA *who = snooper->original != NULL ? snooper->original
+                                               : snooper->character;
+    char plain[MAX_STRING_LENGTH];
+    int i = 0, n = 0;
+
+    if ( who != NULL && color_is_enabled( who ) )
+    {
+        write_to_buffer( snooper, txt, len );
+        write_to_buffer( snooper, color_reset_code(), 0 );
+        return;
+    }
+    while ( i < len )
+    {
+        if ( txt[i] == '\x1b' && i + 1 < len && txt[i + 1] == '[' )
+        {
+            i += 2;
+            while ( i < len && !isalpha( (unsigned char)txt[i] ) )
+                i++;
+            i++;
+            continue;
+        }
+        plain[n++] = txt[i++];
+        if ( n == (int)sizeof(plain) )
+        {
+            write_to_buffer( snooper, plain, n );
+            n = 0;
+        }
+    }
+    if ( n > 0 )
+        write_to_buffer( snooper, plain, n );
+}
+
 /* Whether d->snoop_by may still watch d: the snooper's trust reaches
    SNOOP's level in the command table, and the one watched does not
    outrank them. */
@@ -2102,7 +2140,8 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
             else
                 snprintf(buf, sizeof(buf), "[ %s: %s <*> You: %s ]\n\r",
                     PERS(victim, ch), wound, wound2);
-            buf[0] = UPPER(buf[0]);
+            /* "[ a goblin: ..." -- the name starts after "[ ". */
+            buf[2] = UPPER(buf[2]);
             blen = (int)strlen(buf);
 
             /* Expand buffer if needed before shifting */
@@ -2168,7 +2207,7 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
 	if ( d->character != NULL )
 	    write_to_buffer( d->snoop_by, d->character->name, 0 );
 	write_to_buffer( d->snoop_by, "> ", 2 );
-	write_to_buffer( d->snoop_by, d->outbuf, d->outtop );
+	snoop_forward( d->snoop_by, d->outbuf, d->outtop );
 	write_to_buffer( d->snoop_by, "\n\r", 2 );
     }
 
@@ -3455,12 +3494,12 @@ case CON_DEFAULT_CHOICE:
         }
         d->showstr_point = NULL;
 
+        /* The connection can take colour; whether this character wants
+           it is their saved choice (COLOR OFF), which a login used to
+           overwrite. A new character starts with it on (save.c). */
         d->color = true;
         if ( !IS_NPC(ch) && ch->pcdata != NULL )
-        {
-            ch->pcdata->color = true;
             color_update_defaults( ch, false );
-        }
 
         /* Free gen_data now that character creation customization is done */
         if (!IS_NPC(ch) && ch->gen_data != NULL)
@@ -4300,8 +4339,19 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
             }
 
             ++str;
+            /* Substituted text carries colour the way the format does:
+               a coloured gossip, a builder's coloured short description.
+               It used to go out raw, so the speaker saw colour and every
+               listener a literal "{0B". */
             while ( *i != '\0' )
             {
+                if ( color_token_prefix( *i )
+                  && color_parse_slot( i + 1, &color_slot ) )
+                {
+                    color_append_marker( &buf, to, allow_color, color_slot );
+                    i += 3;
+                    continue;
+                }
                 dstring_append_char( &buf, *i );
                 ++i;
             }

@@ -2583,7 +2583,7 @@ void do_pwhere( CHAR_DATA *ch, char *argument )
               : victim->fighting != NULL ? " (fighting)"
               : victim->timer >= 5 ? " (idle)" : "";
         toc_strlcpy( area, victim->in_room->area != NULL && victim->in_room->area->name != NULL
-                     ? victim->in_room->area->name : "?", sizeof(area) );
+                     ? area_shown_name( victim->in_room->area->name ) : "?", sizeof(area) );
         snprintf( buf, sizeof(buf), "%-12s %3d  %-6d %-30.30s %s%s\n\r",
                   victim->name, victim->level, victim->in_room->vnum,
                   victim->in_room->name, area, state );
@@ -6283,7 +6283,7 @@ void do_anew( CHAR_DATA *ch, char *argument )
         {
             snprintf( buf, sizeof(buf),
                       "That overlaps %s (%d-%d).\n\r",
-                      pArea->name != NULL ? pArea->name : "another area",
+                      pArea->name != NULL ? area_shown_name( pArea->name ) : "another area",
                       pArea->min_vnum, pArea->max_vnum );
             send_to_char( buf, ch );
             return;
@@ -6389,11 +6389,11 @@ void do_anew( CHAR_DATA *ch, char *argument )
     snprintf( buf, sizeof(buf),
               "Created area '%s' (%d-%d) in %s.\n\r"
               "GOTO a vnum in the range to start a room, then RSAVE.\n\r",
-              pArea->name, lo, hi, slug );
+              area_shown_name( pArea->name ), lo, hi, slug );
     send_to_char( buf, ch );
 
     snprintf( buf, sizeof(buf), "%s created area %s (%d-%d), file %s.",
-              ch->name, pArea->name, lo, hi, slug );
+              ch->name, area_shown_name( pArea->name ), lo, hi, slug );
     wizinfo( buf, LEVEL_IMMORTAL );
     log_string( buf );
 }
@@ -6511,7 +6511,7 @@ void do_astat( CHAR_DATA *ch, char *argument )
               "Builders: %s\n\r"
               "Contents: %d rooms, %d mobiles, %d objects\n\r"
               "Buildable: %s\n\r",
-              pArea->name != NULL ? pArea->name : "(unnamed)",
+              pArea->name != NULL ? area_shown_name( pArea->name ) : "(unnamed)",
               pArea->file_name != NULL ? pArea->file_name : "-",
               range,
               pArea->builders != NULL && pArea->builders[0] != '\0'
@@ -6559,7 +6559,7 @@ static void report_full_save( CHAR_DATA *ch, AREA_DATA *pArea )
     snprintf( buf, sizeof(buf),
               "Saved %s: %d room%s, %d mobile%s, %d object%s, %d reset%s.\n\r"
               "Written to %s.\n\r",
-              pArea->name != NULL ? pArea->name : "(unnamed)",
+              pArea->name != NULL ? area_shown_name( pArea->name ) : "(unnamed)",
               rooms, rooms == 1 ? "" : "s", mobs, mobs == 1 ? "" : "s",
               objs, objs == 1 ? "" : "s",
               area_reset_count( pArea ), area_reset_count( pArea ) == 1 ? "" : "s",
@@ -6567,7 +6567,7 @@ static void report_full_save( CHAR_DATA *ch, AREA_DATA *pArea )
     send_to_char( buf, ch );
 
     snprintf( buf, sizeof(buf), "%s saved area %s (%d rooms, %d mobiles, "
-              "%d objects) to %s.", ch->name, pArea->name, rooms, mobs, objs, why );
+              "%d objects) to %s.", ch->name, area_shown_name( pArea->name ), rooms, mobs, objs, why );
     wizinfo( buf, LEVEL_IMMORTAL );
     log_string( buf );
 }
@@ -6643,7 +6643,7 @@ static AREA_DATA *build_area_for_new( CHAR_DATA *ch, int vnum, const char *what 
     {
         snprintf( buf, sizeof(buf), "%s belongs to %s, and you are not one of "
                   "its builders.\n\r",
-                  pArea->name != NULL ? pArea->name : "That area",
+                  pArea->name != NULL ? area_shown_name( pArea->name ) : "That area",
                   pArea->builders != NULL ? pArea->builders : "nobody" );
         send_to_char( buf, ch );
         return NULL;
@@ -6710,15 +6710,15 @@ void do_mcreate( CHAR_DATA *ch, char *argument )
 
     if ( source != NULL )
         snprintf( buf, sizeof(buf), "Mobile %d made in %s, a copy of %d (%s).\n\r",
-                  vnum, pArea->name, source->vnum, made->short_descr );
+                  vnum, area_shown_name( pArea->name ), source->vnum, made->short_descr );
     else
         snprintf( buf, sizeof(buf), "Mobile %d made in %s: a blank level 1 "
-                  "human.\n\r", vnum, pArea->name );
+                  "human.\n\r", vnum, area_shown_name( pArea->name ) );
     send_to_char( buf, ch );
     send_to_char( "LOAD MOB <vnum> to see it.  ASAVE to keep it.\n\r", ch );
 
     snprintf( buf, sizeof(buf), "%s made mobile %d in %s%s.", ch->name, vnum,
-              pArea->name, source != NULL ? " (a copy)" : "" );
+              area_shown_name( pArea->name ), source != NULL ? " (a copy)" : "" );
     log_string( buf );
 }
 
@@ -6771,15 +6771,15 @@ void do_ocreate( CHAR_DATA *ch, char *argument )
 
     if ( source != NULL )
         snprintf( buf, sizeof(buf), "Object %d made in %s, a copy of %d (%s).\n\r",
-                  vnum, pArea->name, source->vnum, made->short_descr );
+                  vnum, area_shown_name( pArea->name ), source->vnum, made->short_descr );
     else
         snprintf( buf, sizeof(buf), "Object %d made in %s: a blank piece of "
-                  "trash you can pick up.\n\r", vnum, pArea->name );
+                  "trash you can pick up.\n\r", vnum, area_shown_name( pArea->name ) );
     send_to_char( buf, ch );
     send_to_char( "LOAD OBJ <vnum> to see it.  ASAVE to keep it.\n\r", ch );
 
     snprintf( buf, sizeof(buf), "%s made object %d in %s%s.", ch->name, vnum,
-              pArea->name, source != NULL ? " (a copy)" : "" );
+              area_shown_name( pArea->name ), source != NULL ? " (a copy)" : "" );
     log_string( buf );
 }
 
@@ -7191,7 +7191,7 @@ void do_rsave( CHAR_DATA *ch, char *argument )
             "Mobiles, objects, resets and shops are left as they are, and the\n\r"
             "old file is kept alongside it.\n\r"
             "\n\r",
-            pArea->name != NULL ? pArea->name : "(unnamed)",
+            pArea->name != NULL ? area_shown_name( pArea->name ) : "(unnamed)",
             pArea->file_name, count );
         send_to_char( buf, ch );
 
@@ -9500,10 +9500,10 @@ void do_repop( CHAR_DATA *ch, char *argument )
     reset_area( pArea );
     pArea->age = (sh_int)(number_range( 0, 3 ));
 
-    snprintf( buf, sizeof(buf), "Area '%s' has been repopulated.\n\r", pArea->name );
+    snprintf( buf, sizeof(buf), "Area '%s' has been repopulated.\n\r", area_shown_name( pArea->name ) );
     send_to_char( buf, ch );
 
-    snprintf( buf, sizeof(buf), "REPOP: %s force-reset area '%s'.", ch->name, pArea->name );
+    snprintf( buf, sizeof(buf), "REPOP: %s force-reset area '%s'.", ch->name, area_shown_name( pArea->name ) );
     log_string( buf );
 
     return;
