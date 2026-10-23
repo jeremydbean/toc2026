@@ -124,6 +124,33 @@ class HermieTests(unittest.TestCase):
             self.assertIn("armor", run(client, "affect", 2.0).lower())
             self.assertEqual(before, run(client, "worth", 1.8))
 
+    def test_uncurse_says_why_nosummon_shuts_it(self) -> None:
+        """Trentlin's note, 2026-10-21: "I appear to be immune to
+        uncurse." New characters start NOSUMMON, which closes their gear
+        to the spell, and she cast anyway -- the spell answered "Your
+        victim is immune to remove curse." She says what the healer at
+        the pit says now, and casts once NOSUMMON is off."""
+        mud = self.staffed("Zcursed")
+        with mud.connect(timeout=120) as client:
+            login(client, "Zcursed", PASSWORD)
+            self.summon_hermie(client)
+
+            self.assertIn("I see no curse on you", run(client, "heal uncurse", 2.0))
+
+            run(client, "load obj 3701", 1.2)
+            set_flag = run(client, "set obj dagger extra +H", 1.2)
+            self.assertNotIn("Extra flags are letters", set_flag, set_flag)
+
+            closed = run(client, "heal uncurse", 2.0)
+            self.assertIn("Type NOSUMMON to open it", closed, closed)
+            self.assertNotIn("Your victim is immune", closed, closed)
+
+            run(client, "nosummon", 1.2)
+            opened = run(client, "heal uncurse", 2.0)
+            self.assertNotIn("Type NOSUMMON", opened, opened)
+            self.assertNotIn("I see no curse", opened, opened)
+            self.assertTrue("glows blue" in opened or "holds fast" in opened, opened)
+
     def test_she_no_longer_listens_to_the_room(self) -> None:
         """Speech was how she worked and is not how she works now."""
         mud = self.staffed()

@@ -1150,6 +1150,9 @@ Syntax: cast 'remove curse' <character>
 This spell removes a curse from a character.  If the character is holding a
 cursed object, the curse may be removed from it.
 
+While a player has NOSUMMON on (the default), their gear is closed to this
+spell, from anyone, the healers included: type NOSUMMON to open it first.
+
 Minimum level depends on your primary class and is:
 Mage:20   Cleric:18   Thief:24   Warrior:22   Monk: N/A   Necromancer:20
 

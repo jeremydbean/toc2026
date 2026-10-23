@@ -12598,6 +12598,24 @@ static bool spellup_grant( CHAR_DATA *mob, CHAR_DATA *victim,
         return FALSE;
     }
 
+    /* Uncurse answers as the pit healer does. With NOSUMMON on, the
+     * spell refuses cursed gear and told the player "Your victim is
+     * immune to remove curse." -- Trentlin's note of 2026-10-21 said he
+     * seemed immune to uncurse, and nothing said why. */
+    if ( !str_cmp( skill_table[sn].name, "remove curse" )
+    &&   !remove_curse_has_work( victim ) )
+    {
+        if ( !IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON)
+        &&   remove_curse_gear_cursed( victim ) )
+            act( "$n says 'Your gear is closed to my magic while you shun "
+                 "summoning.  Type NOSUMMON to open it, then ask again.'",
+                mob, NULL, victim, TO_VICT );
+        else
+            act( "$n says 'I see no curse on you or on anything you carry.'",
+                mob, NULL, victim, TO_VICT );
+        return FALSE;
+    }
+
     /* Cast at her level for the magnitude, but with the player as the
      * caster so the spell's own messages and refusals reach them rather
      * than vanishing into a mob with no descriptor. */

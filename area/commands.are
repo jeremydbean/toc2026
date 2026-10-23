@@ -4293,6 +4293,8 @@ permit trusted wizard friends to assist you in transportation and in removing
 harmful spells.
 
 The default for NOSUMMON is on (you cannot be summoned, gated to or cancelled).
+While it is on, REMOVE CURSE cannot lift a curse from your gear either --
+not from you, a friend or a healer.
 The status of this flag can be checked with the AUTO command.
 
 See also: AUTO, NOLOOT, NOFOLLOW

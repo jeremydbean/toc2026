@@ -4177,7 +4177,11 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if ( !IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON) )
     {
-	send_to_char("Your victim is immune to remove curse.\n\r",ch);
+	if ( ch == victim )
+	    send_to_char( "Your gear is closed to remove curse while you shun "
+			  "summoning.  Type NOSUMMON to open it.\n\r", ch );
+	else
+	    send_to_char("Your victim is immune to remove curse.\n\r",ch);
 	return;
     }
 

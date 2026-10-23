@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261023l 2026-10-23
+HEAL UNCURSE at Hermie now says why it cannot reach your gear: while
+NOSUMMON is on, cursed gear is closed to remove curse. Type NOSUMMON to
+open it. With nothing cursed she says so, instead of calling you immune.
+
 @ 20261023k 2026-10-23
 Madame Hexley and Tinsel no longer list the same item ten times: each
 holiday item shows once, and they never run out.
