@@ -41,20 +41,17 @@ end
 -- Times of Chaos official Mudlet package
 -- https://github.com/jeremydbean/toc2026/tree/main/mudlet
 
--- Tell Mudlet a mapping script is installed. Without this its own
--- mapper assumes nothing is handling the map, tries to auto-detect a
--- prompt so it can track movement itself, and prints
--- "Prompt not auto-detected, use 'map prompt' to set a prompt pattern"
--- at anyone who opens the mapper. This package maps from GMCP
--- Room.Info and never needs the prompt, so the warning was pure noise
--- and it worried at least one player into reporting it.
+-- Tell Mudlet a mapping script is installed, so opening the map does
+-- not offer to install its generic mapper. That is all this flag does:
+-- a generic_mapper already in the profile sets it too and runs anyway
+-- (see tocMudlet.retireGenericMapper below).
 mudlet = mudlet or {}
 mudlet.mapper_script = true
 
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.5.8"
+tocMudlet.version = "1.5.9"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -1725,6 +1722,31 @@ local function register(event, callback)
   end
 end
 
+-- Mudlet's generic mapper, in a profile that has it, tracks movement by
+-- reading the prompt and draws on the same map this package draws from
+-- GMCP Room.Info. Older copies search for the prompt by themselves at
+-- every install and print "(mapper): (error): Prompt not auto-detected,
+-- use 'map prompt' to set a prompt pattern." -- which mapper_script
+-- never stopped, and which players report (2026-10-23, at the 1.5.8
+-- upgrade). The two cannot usefully run together, so it is removed,
+-- once, with a line saying so. Uninstalling a package leaves the map.
+function tocMudlet.retireGenericMapper()
+  if not (getPackages and uninstallPackage) then return end
+  local ok, packages = pcall(getPackages)
+  if not ok or type(packages) ~= "table" then return end
+  local found = false
+  for _, name in ipairs(packages) do
+    if name == "generic_mapper" then found = true end
+  end
+  if not found then return end
+  -- A search it already started reports through this on a timer.
+  if type(map) == "table" then map.search_timer_check = function() end end
+  pcall(uninstallPackage, "generic_mapper")
+  cecho("\n<cyan>[TOC]<reset> Removed Mudlet's generic mapper: this package draws " ..
+    "your map from the game itself, and the generic one only got in its way " ..
+    "(the \"Prompt not auto-detected\" message). Your map is kept.\n")
+end
+
 function tocMudlet.install()
   pcall(setupEnvironmentColours)
   pcall(tocMudlet.buildUI)
@@ -1755,6 +1777,9 @@ function tocMudlet.install()
   end)
   if isConnected and isConnected() then tocMudlet.subscribe() end
   tempTimer(0.1, tocMudlet.refresh)
+  -- After the load, never inside it: uninstalling a package while
+  -- packages are being installed is asking for trouble.
+  tempTimer(0.5, function() pcall(tocMudlet.retireGenericMapper) end)
   -- Once more after the window has certainly settled. Cheap, and it is
   -- the difference between the map being there on arrival and the
   -- player having to click for it.

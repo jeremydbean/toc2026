@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261023m 2026-10-23
+The Mudlet package (1.5.9) removes Mudlet's generic mapper if your profile
+has it, once, and tells you. It was what printed "Prompt not
+auto-detected" at login; this package draws your map from the game, and
+your map is kept.
+
 @ 20261023l 2026-10-23
 HEAL UNCURSE at Hermie now says why it cannot reach your gear: while
 NOSUMMON is on, cursed gear is closed to remove curse. Type NOSUMMON to

@@ -57,6 +57,14 @@ labels on the map, and walking to a named place.
   map, or prints the published route from the Oak Tree Square if it
   is not.
 
+Package 1.5.9 removes Mudlet's generic mapper from a profile that has it,
+once, and says so. Setting `mudlet.mapper_script` (1.0.8) never silenced
+it: the generic mapper sets that flag itself, and older copies search for
+a prompt at every install and print "Prompt not auto-detected, use 'map
+prompt' to set a prompt pattern". It reads the prompt to track movement on
+the same map this package draws from GMCP, so the two cannot run together.
+Removing the package keeps the map.
+
 Package 1.0.9 adds click-to-walk. Click a room on the map, or type
 `walk <vnum>`, and the character walks there one room at a time. Each
 step is sent when GMCP confirms you arrived in the room the route
@@ -65,10 +73,9 @@ something goes wrong -- a mob in the way, a recall, being dragged off.
 A shut door is opened and retried once. `walk stop` breaks off, and
 `walk` on its own reports progress.
 
-Package 1.0.8 sets `mudlet.mapper_script`, which stops Mudlet's own
-mapper printing "Prompt not auto-detected, use 'map prompt' to set a
-prompt pattern" when the map opens. This package maps from GMCP
-`Room.Info` and never reads the prompt, so that warning never applied.
+Package 1.0.8 sets `mudlet.mapper_script`, meant to stop Mudlet's own
+mapper printing "Prompt not auto-detected"; it did not, and 1.5.9 removes
+the generic mapper instead (above).
 
 Package 1.0.7 capitalises the race and class shown in the identity panel.
 `Char.Status` carries them the way the game stores them -- "half-elf",
