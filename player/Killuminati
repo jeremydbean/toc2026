@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1792780244
+LogO 1792781481
 Vers 4
 Desc You see something very special about him.
 ~
@@ -20,7 +20,7 @@ Fixes ~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6492981
+Plyd 6494218
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
@@ -32,9 +32,9 @@ NewGold 212
 NewPlat 2503030
 NewCopp 361
 NewSilv 297
-BankCP 16306648635411
-IntTime 1792695058
-IntTotal 1248026033559
+BankCP 16347415256999
+IntTime 1792781458
+IntTotal 1288792655147
 Dcount 0
 SavedOnce 1
 Corpses	0
