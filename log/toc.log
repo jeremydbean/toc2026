@@ -162296,3 +162296,418 @@ Fri Oct 23 11:28:24 2026 :: Log Trentlin [17120]: n
 Fri Oct 23 11:28:24 2026 :: Log Trentlin [17121]: arrived (A path) from 17120
 Fri Oct 23 11:28:24 2026 :: Log Trentlin [17121]: n
 Fri Oct 23 11:28:24 2026 :: Log Trentlin [17122]: arrived (The Crossroads) from 17121
+Fri Oct 23 11:29:10 2026 :: Log Trentlin [17122]: n
+Fri Oct 23 11:29:10 2026 :: Log Trentlin [17137]: arrived (A muddy path) from 17122
+Fri Oct 23 11:29:11 2026 :: Log Trentlin [17137]: n
+Fri Oct 23 11:29:11 2026 :: Log Trentlin [17138]: arrived (A muddy path) from 17137
+Fri Oct 23 11:29:11 2026 :: Log Trentlin [17138]: n
+Fri Oct 23 11:29:11 2026 :: Log Trentlin [17139]: arrived (Crossroads at the Lake) from 17138
+Fri Oct 23 11:29:12 2026 :: Log Trentlin [17139]: w
+Fri Oct 23 11:29:12 2026 :: Log Trentlin [17172]: arrived (Path along lake) from 17139
+Fri Oct 23 11:29:13 2026 :: Log Trentlin [17172]: w
+Fri Oct 23 11:29:13 2026 :: Log Trentlin [17171]: arrived (Path along lake) from 17172
+Fri Oct 23 11:29:14 2026 :: Log Trentlin [17171]: n
+Fri Oct 23 11:29:14 2026 :: Log Trentlin [17170]: arrived (Path along lake) from 17171
+Fri Oct 23 11:29:15 2026 :: Log Trentlin [17170]: w
+Fri Oct 23 11:29:15 2026 :: Log Trentlin [17169]: arrived (Path along lake) from 17170
+Fri Oct 23 11:29:16 2026 :: Log Trentlin [17169]: n
+Fri Oct 23 11:29:16 2026 :: Log Trentlin [17168]: arrived (Path along lake) from 17169
+Fri Oct 23 11:29:17 2026 :: Log Trentlin [17168]: w
+Fri Oct 23 11:29:17 2026 :: Log Trentlin [17167]: arrived (Path along lake) from 17168
+Fri Oct 23 11:29:18 2026 :: Log Trentlin [17167]: n
+Fri Oct 23 11:29:18 2026 :: Log Trentlin [17166]: arrived (Path along lake) from 17167
+Fri Oct 23 11:29:19 2026 :: Log Trentlin [17166]: n
+Fri Oct 23 11:29:19 2026 :: Log Trentlin [17165]: arrived (Path along lake) from 17166
+Fri Oct 23 11:29:20 2026 :: Log Trentlin [17165]: n
+Fri Oct 23 11:29:20 2026 :: Log Trentlin [17164]: arrived (Path along lake) from 17165
+Fri Oct 23 11:29:22 2026 :: Log Trentlin [17164]: e
+Fri Oct 23 11:29:22 2026 :: Log Trentlin [17163]: arrived (Path along lake) from 17164
+Fri Oct 23 11:29:23 2026 :: Log Trentlin [17163]: n
+Fri Oct 23 11:29:23 2026 :: Log Trentlin [17162]: arrived (Path along lake) from 17163
+Fri Oct 23 11:29:24 2026 :: Log Trentlin [17162]: n
+Fri Oct 23 11:29:24 2026 :: Log Trentlin [17161]: arrived (Path along lake) from 17162
+Fri Oct 23 11:29:26 2026 :: Log Trentlin [17161]: ex
+Fri Oct 23 11:29:27 2026 :: Log Trentlin [17161]: w
+Fri Oct 23 11:29:27 2026 :: Log Trentlin [17178]: arrived (A path into the hills) from 17161
+Fri Oct 23 11:29:27 2026 :: Log Trentlin [17178]: w
+Fri Oct 23 11:29:27 2026 :: Log Trentlin [17179]: arrived (A path) from 17178
+Fri Oct 23 11:29:28 2026 :: Sock.sinaddr:  5.161.194.92
+Fri Oct 23 11:29:28 2026 :: EOF encountered on read.
+Fri Oct 23 11:29:28 2026 :: Log Trentlin [17179]: w
+Fri Oct 23 11:29:28 2026 :: Log Trentlin [17180]: arrived (At a cliff) from 17179
+Fri Oct 23 11:29:29 2026 :: Log Trentlin [17180]: w
+Fri Oct 23 11:29:29 2026 :: Log Trentlin [17181]: arrived (On top of the cliff) from 17180
+Fri Oct 23 11:29:29 2026 :: Log Trentlin [17181]: w
+Fri Oct 23 11:29:29 2026 :: Log Trentlin [17182]: arrived (On a hilltop) from 17181
+Fri Oct 23 11:29:30 2026 :: Log Trentlin [17182]: e
+Fri Oct 23 11:29:30 2026 :: Log Trentlin [17181]: arrived (On top of the cliff) from 17182
+Fri Oct 23 11:29:31 2026 :: Log Trentlin [17181]: e
+Fri Oct 23 11:29:31 2026 :: Log Trentlin [17180]: arrived (At a cliff) from 17181
+Fri Oct 23 11:29:31 2026 :: Log Trentlin [17180]: e
+Fri Oct 23 11:29:31 2026 :: Log Trentlin [17179]: arrived (A path) from 17180
+Fri Oct 23 11:29:31 2026 :: Log Trentlin [17179]: e
+Fri Oct 23 11:29:31 2026 :: Log Trentlin [17178]: arrived (A path into the hills) from 17179
+Fri Oct 23 11:29:52 2026 :: Log Trentlin [17178]: e
+Fri Oct 23 11:29:52 2026 :: Log Trentlin [17161]: arrived (Path along lake) from 17178
+Fri Oct 23 11:29:53 2026 :: Log Trentlin [17161]: s
+Fri Oct 23 11:29:53 2026 :: Log Trentlin [17162]: arrived (Path along lake) from 17161
+Fri Oct 23 11:29:53 2026 :: Log Trentlin [17162]: s
+Fri Oct 23 11:29:53 2026 :: Log Trentlin [17163]: arrived (Path along lake) from 17162
+Fri Oct 23 11:29:54 2026 :: Log Trentlin [17163]: s
+Fri Oct 23 11:29:55 2026 :: Log Trentlin [17163]: w
+Fri Oct 23 11:29:55 2026 :: Log Trentlin [17164]: arrived (Path along lake) from 17163
+Fri Oct 23 11:29:55 2026 :: Log Trentlin [17164]: s
+Fri Oct 23 11:29:55 2026 :: Log Trentlin [17165]: arrived (Path along lake) from 17164
+Fri Oct 23 11:29:56 2026 :: Log Trentlin [17165]: s
+Fri Oct 23 11:29:56 2026 :: Log Trentlin [17166]: arrived (Path along lake) from 17165
+Fri Oct 23 11:29:57 2026 :: Log Trentlin [17166]: s
+Fri Oct 23 11:29:57 2026 :: Log Trentlin [17167]: arrived (Path along lake) from 17166
+Fri Oct 23 11:29:58 2026 :: Log Trentlin [17167]: s
+Fri Oct 23 11:29:58 2026 :: Log Trentlin [17167]: e
+Fri Oct 23 11:29:58 2026 :: Log Trentlin [17168]: arrived (Path along lake) from 17167
+Fri Oct 23 11:29:58 2026 :: Log Trentlin [17168]: e
+Fri Oct 23 11:29:59 2026 :: Log Trentlin [17168]: s
+Fri Oct 23 11:29:59 2026 :: Log Trentlin [17169]: arrived (Path along lake) from 17168
+Fri Oct 23 11:30:00 2026 :: Log Trentlin [17169]: e
+Fri Oct 23 11:30:00 2026 :: Log Trentlin [17170]: arrived (Path along lake) from 17169
+Fri Oct 23 11:30:00 2026 :: Log Trentlin [17170]: e
+Fri Oct 23 11:30:01 2026 :: Log Trentlin [17170]: s
+Fri Oct 23 11:30:01 2026 :: Log Trentlin [17171]: arrived (Path along lake) from 17170
+Fri Oct 23 11:30:02 2026 :: Log Trentlin [17171]: e
+Fri Oct 23 11:30:02 2026 :: Log Trentlin [17172]: arrived (Path along lake) from 17171
+Fri Oct 23 11:30:02 2026 :: Log Trentlin [17172]: e
+Fri Oct 23 11:30:02 2026 :: Log Trentlin [17139]: arrived (Crossroads at the Lake) from 17172
+Fri Oct 23 11:30:03 2026 :: Log Trentlin [17139]: s
+Fri Oct 23 11:30:03 2026 :: Log Trentlin [17138]: arrived (A muddy path) from 17139
+Fri Oct 23 11:30:04 2026 :: Log Trentlin [17138]: s
+Fri Oct 23 11:30:04 2026 :: Log Trentlin [17137]: arrived (A muddy path) from 17138
+Fri Oct 23 11:30:04 2026 :: Log Trentlin [17137]: s
+Fri Oct 23 11:30:04 2026 :: Log Trentlin [17122]: arrived (The Crossroads) from 17137
+Fri Oct 23 11:30:05 2026 :: Log Trentlin [17122]: w
+Fri Oct 23 11:30:05 2026 :: Log Trentlin [17131]: arrived (The path to the southwestern Beacon Tower) from 17122
+Fri Oct 23 11:30:06 2026 :: Log Trentlin [17131]: w
+Fri Oct 23 11:30:06 2026 :: Log Trentlin [17132]: arrived (A path uphill) from 17131
+Fri Oct 23 11:30:06 2026 :: Log Trentlin [17132]: w
+Fri Oct 23 11:30:06 2026 :: Log Trentlin [17133]: arrived (A path uphill) from 17132
+Fri Oct 23 11:30:06 2026 :: Log Trentlin [17133]: w
+Fri Oct 23 11:30:06 2026 :: Log Trentlin [17134]: arrived (A path uphill.) from 17133
+Fri Oct 23 11:30:07 2026 :: Log Trentlin [17134]: w
+Fri Oct 23 11:30:07 2026 :: Log Trentlin [17135]: arrived (A path uphill) from 17134
+Fri Oct 23 11:30:08 2026 :: Log Trentlin [17135]: w
+Fri Oct 23 11:30:08 2026 :: Log Trentlin [17136]: arrived (A path uphill) from 17135
+Fri Oct 23 11:30:08 2026 :: Log Trentlin [17136]: w
+Fri Oct 23 11:30:09 2026 :: Log Trentlin [17136]: n
+Fri Oct 23 11:30:09 2026 :: Log Trentlin [17193]: arrived (In the southwestern tower) from 17136
+Fri Oct 23 11:30:13 2026 :: Log Trentlin [17193]: u
+Fri Oct 23 11:30:13 2026 :: Log Trentlin [17210]: arrived (On the first floor) from 17193
+Fri Oct 23 11:30:14 2026 :: Log Trentlin [17210]: u
+Fri Oct 23 11:30:14 2026 :: Log Trentlin [17211]: arrived (On the second floor) from 17210
+Fri Oct 23 11:30:14 2026 :: Log Trentlin [17211]: u
+Fri Oct 23 11:30:14 2026 :: Log Trentlin [17212]: arrived (On the top of the tower) from 17211
+Fri Oct 23 11:30:16 2026 :: Log Trentlin [17212]: d
+Fri Oct 23 11:30:16 2026 :: Log Trentlin [17211]: arrived (On the second floor) from 17212
+Fri Oct 23 11:30:16 2026 :: Log Trentlin [17211]: d
+Fri Oct 23 11:30:16 2026 :: Log Trentlin [17210]: arrived (On the first floor) from 17211
+Fri Oct 23 11:30:17 2026 :: Log Trentlin [17210]: d
+Fri Oct 23 11:30:17 2026 :: Log Trentlin [17193]: arrived (In the southwestern tower) from 17210
+Fri Oct 23 11:30:18 2026 :: Log Trentlin [17193]: d
+Fri Oct 23 11:30:18 2026 :: Log Trentlin [17209]: arrived (In the cellar) from 17193
+Fri Oct 23 11:30:19 2026 :: Log Trentlin [17209]: n
+Fri Oct 23 11:30:19 2026 :: Log Trentlin [17213]: arrived (In a secret walkway) from 17209
+Fri Oct 23 11:30:19 2026 :: Log Trentlin [17213]: n
+Fri Oct 23 11:30:19 2026 :: Log Trentlin [17226]: arrived (In a secret gangway) from 17213
+Fri Oct 23 11:30:20 2026 :: Log Trentlin [17226]: w
+Fri Oct 23 11:30:20 2026 :: Log Trentlin [17227]: arrived (In a secret gangway) from 17226
+Fri Oct 23 11:30:22 2026 :: Log Trentlin [17227]: (refused) nb
+Fri Oct 23 11:30:23 2026 :: Log Trentlin [17227]: n
+Fri Oct 23 11:30:23 2026 :: Log Trentlin [17228]: arrived (In a secret gangway) from 17227
+Fri Oct 23 11:30:24 2026 :: Log Trentlin [17228]: n
+Fri Oct 23 11:30:24 2026 :: Log Trentlin [17229]: arrived (In a secret gangway) from 17228
+Fri Oct 23 11:30:25 2026 :: Log Trentlin [17229]: n
+Fri Oct 23 11:30:25 2026 :: Log Trentlin [17230]: arrived (In a secret gangway) from 17229
+Fri Oct 23 11:30:26 2026 :: Log Trentlin [17230]: w
+Fri Oct 23 11:30:26 2026 :: Log Trentlin [17231]: arrived (In a secret gangway) from 17230
+Fri Oct 23 11:30:27 2026 :: Log Trentlin [17231]: w
+Fri Oct 23 11:30:27 2026 :: Log Trentlin [17232]: arrived (In a secret gangway) from 17231
+Fri Oct 23 11:30:28 2026 :: Log Trentlin [17232]: s
+Fri Oct 23 11:30:28 2026 :: Log Trentlin [17233]: arrived (In a secret gangway) from 17232
+Fri Oct 23 11:30:29 2026 :: Log Trentlin [17233]: w
+Fri Oct 23 11:30:29 2026 :: Log Trentlin [17234]: arrived (In a secret gangway) from 17233
+Fri Oct 23 11:30:30 2026 :: Log Trentlin [17234]: n
+Fri Oct 23 11:30:30 2026 :: Log Trentlin [17235]: arrived (In a secret gangway) from 17234
+Fri Oct 23 11:30:30 2026 :: Log Trentlin [17235]: n
+Fri Oct 23 11:30:30 2026 :: Log Trentlin [17236]: arrived (In a secret gangway) from 17235
+Fri Oct 23 11:30:31 2026 :: Log Trentlin [17236]: n
+Fri Oct 23 11:30:31 2026 :: Log Trentlin [17237]: arrived (In a secret gangway) from 17236
+Fri Oct 23 11:30:33 2026 :: Log Trentlin [17237]: e
+Fri Oct 23 11:30:33 2026 :: Log Trentlin [17238]: arrived (In a secret gangway) from 17237
+Fri Oct 23 11:30:33 2026 :: Log Trentlin [17238]: n
+Fri Oct 23 11:30:33 2026 :: Log Trentlin [17239]: arrived (In a secret gangway) from 17238
+Fri Oct 23 11:30:34 2026 :: Log Trentlin [17239]: n
+Fri Oct 23 11:30:34 2026 :: Log Trentlin [17240]: arrived (In a secret gangway) from 17239
+Fri Oct 23 11:30:35 2026 :: Log Trentlin [17240]: n
+Fri Oct 23 11:30:35 2026 :: Log Trentlin [17214]: arrived (A dead end) from 17240
+Fri Oct 23 11:30:36 2026 :: Log Trentlin [17214]: n
+Fri Oct 23 11:30:36 2026 :: Log Trentlin [17215]: arrived (In the cellar) from 17214
+Fri Oct 23 11:30:37 2026 :: Log Trentlin [17215]: s
+Fri Oct 23 11:30:37 2026 :: Log Trentlin [17214]: arrived (A dead end) from 17215
+Fri Oct 23 11:30:41 2026 :: Log Trentlin [17214]: s
+Fri Oct 23 11:30:41 2026 :: Log Trentlin [17240]: arrived (In a secret gangway) from 17214
+Fri Oct 23 11:30:42 2026 :: Log Trentlin [17240]: s
+Fri Oct 23 11:30:42 2026 :: Log Trentlin [17239]: arrived (In a secret gangway) from 17240
+Fri Oct 23 11:30:43 2026 :: Log Trentlin [17239]: s
+Fri Oct 23 11:30:43 2026 :: Log Trentlin [17238]: arrived (In a secret gangway) from 17239
+Fri Oct 23 11:30:43 2026 :: Log Trentlin [17238]: s
+Fri Oct 23 11:30:43 2026 :: Log Trentlin [17237]: arrived (In a secret gangway) from 17238
+Fri Oct 23 11:30:45 2026 :: Log Trentlin [17237]: s
+Fri Oct 23 11:30:45 2026 :: Log Trentlin [17236]: arrived (In a secret gangway) from 17237
+Fri Oct 23 11:30:47 2026 :: Log Trentlin [17236]: n
+Fri Oct 23 11:30:47 2026 :: Log Trentlin [17237]: arrived (In a secret gangway) from 17236
+Fri Oct 23 11:30:48 2026 :: Log Trentlin [17237]: e
+Fri Oct 23 11:30:48 2026 :: Log Trentlin [17238]: arrived (In a secret gangway) from 17237
+Fri Oct 23 11:30:49 2026 :: Log Trentlin [17238]: n
+Fri Oct 23 11:30:49 2026 :: Log Trentlin [17239]: arrived (In a secret gangway) from 17238
+Fri Oct 23 11:30:50 2026 :: Log Trentlin [17239]: n
+Fri Oct 23 11:30:50 2026 :: Log Trentlin [17240]: arrived (In a secret gangway) from 17239
+Fri Oct 23 11:30:51 2026 :: Log Trentlin [17240]: s
+Fri Oct 23 11:30:51 2026 :: Log Trentlin [17239]: arrived (In a secret gangway) from 17240
+Fri Oct 23 11:30:51 2026 :: Log Trentlin [17239]: s
+Fri Oct 23 11:30:51 2026 :: Log Trentlin [17238]: arrived (In a secret gangway) from 17239
+Fri Oct 23 11:30:52 2026 :: Log Trentlin [17238]: s
+Fri Oct 23 11:30:52 2026 :: Log Trentlin [17237]: arrived (In a secret gangway) from 17238
+Fri Oct 23 11:30:53 2026 :: Log Trentlin [17237]: s
+Fri Oct 23 11:30:53 2026 :: Log Trentlin [17236]: arrived (In a secret gangway) from 17237
+Fri Oct 23 11:30:53 2026 :: Log Trentlin [17236]: s
+Fri Oct 23 11:30:53 2026 :: Log Trentlin [17235]: arrived (In a secret gangway) from 17236
+Fri Oct 23 11:30:54 2026 :: Log Trentlin [17235]: s
+Fri Oct 23 11:30:54 2026 :: Log Trentlin [17234]: arrived (In a secret gangway) from 17235
+Fri Oct 23 11:30:54 2026 :: Log Trentlin [17234]: s
+Fri Oct 23 11:30:55 2026 :: Log Trentlin [17234]: e
+Fri Oct 23 11:30:55 2026 :: Log Trentlin [17233]: arrived (In a secret gangway) from 17234
+Fri Oct 23 11:30:56 2026 :: Log Trentlin [17233]: n
+Fri Oct 23 11:30:56 2026 :: Log Trentlin [17232]: arrived (In a secret gangway) from 17233
+Fri Oct 23 11:30:57 2026 :: Log Trentlin [17232]: e
+Fri Oct 23 11:30:57 2026 :: Log Trentlin [17231]: arrived (In a secret gangway) from 17232
+Fri Oct 23 11:30:58 2026 :: Log Trentlin [17231]: e
+Fri Oct 23 11:30:58 2026 :: Log Trentlin [17230]: arrived (In a secret gangway) from 17231
+Fri Oct 23 11:30:59 2026 :: Log Trentlin [17230]: s
+Fri Oct 23 11:30:59 2026 :: Log Trentlin [17229]: arrived (In a secret gangway) from 17230
+Fri Oct 23 11:31:00 2026 :: Log Trentlin [17229]: n
+Fri Oct 23 11:31:00 2026 :: Log Trentlin [17230]: arrived (In a secret gangway) from 17229
+Fri Oct 23 11:31:01 2026 :: Log Trentlin [17230]: w
+Fri Oct 23 11:31:01 2026 :: Log Trentlin [17231]: arrived (In a secret gangway) from 17230
+Fri Oct 23 11:31:02 2026 :: Log Trentlin [17231]: e
+Fri Oct 23 11:31:02 2026 :: Log Trentlin [17230]: arrived (In a secret gangway) from 17231
+Fri Oct 23 11:31:02 2026 :: Log Trentlin [17230]: w
+Fri Oct 23 11:31:02 2026 :: Log Trentlin [17231]: arrived (In a secret gangway) from 17230
+Fri Oct 23 11:31:03 2026 :: Log Trentlin [17231]: e
+Fri Oct 23 11:31:03 2026 :: Log Trentlin [17230]: arrived (In a secret gangway) from 17231
+Fri Oct 23 11:31:04 2026 :: Log Trentlin [17230]: s
+Fri Oct 23 11:31:04 2026 :: Log Trentlin [17229]: arrived (In a secret gangway) from 17230
+Fri Oct 23 11:31:04 2026 :: Log Trentlin [17229]: s
+Fri Oct 23 11:31:04 2026 :: Log Trentlin [17228]: arrived (In a secret gangway) from 17229
+Fri Oct 23 11:31:05 2026 :: Log Trentlin [17228]: s
+Fri Oct 23 11:31:05 2026 :: Log Trentlin [17227]: arrived (In a secret gangway) from 17228
+Fri Oct 23 11:31:06 2026 :: Log Trentlin [17227]: e
+Fri Oct 23 11:31:06 2026 :: Log Trentlin [17226]: arrived (In a secret gangway) from 17227
+Fri Oct 23 11:31:08 2026 :: Log Trentlin [17226]: w
+Fri Oct 23 11:31:08 2026 :: Log Trentlin [17227]: arrived (In a secret gangway) from 17226
+Fri Oct 23 11:31:09 2026 :: Log Trentlin [17227]: n
+Fri Oct 23 11:31:09 2026 :: Log Trentlin [17228]: arrived (In a secret gangway) from 17227
+Fri Oct 23 11:31:11 2026 :: Log Trentlin [17228]: k gr
+Fri Oct 23 11:31:13 2026 :: Log Trentlin [17228]: (refused) lk fro
+Fri Oct 23 11:31:15 2026 :: Log Trentlin [17228]: k fr
+Fri Oct 23 11:31:15 2026 :: Log Trentlin [17228]: killed A gigantic frog
+Fri Oct 23 11:31:15 2026 :: Log Trentlin [17228]: coin +12 silver
+Fri Oct 23 11:31:15 2026 :: Log Trentlin [17228]: coin +99 copper
+Fri Oct 23 11:31:15 2026 :: Log Trentlin [17228]: coin +2 gold
+Fri Oct 23 11:31:19 2026 :: Log Trentlin [17228]: l in co
+Fri Oct 23 11:31:20 2026 :: Log Trentlin [17228]: e
+Fri Oct 23 11:31:21 2026 :: Log Trentlin [17228]: s
+Fri Oct 23 11:31:21 2026 :: Log Trentlin [17227]: arrived (In a secret gangway) from 17228
+Fri Oct 23 11:31:22 2026 :: Log Trentlin [17227]: e
+Fri Oct 23 11:31:22 2026 :: Log Trentlin [17226]: arrived (In a secret gangway) from 17227
+Fri Oct 23 11:31:23 2026 :: Log Trentlin [17226]: s
+Fri Oct 23 11:31:23 2026 :: Log Trentlin [17213]: arrived (In a secret walkway) from 17226
+Fri Oct 23 11:31:24 2026 :: Log Trentlin [17213]: s
+Fri Oct 23 11:31:24 2026 :: Log Trentlin [17209]: arrived (In the cellar) from 17213
+Fri Oct 23 11:31:25 2026 :: Log Trentlin [17209]: n
+Fri Oct 23 11:31:25 2026 :: Log Trentlin [17213]: arrived (In a secret walkway) from 17209
+Fri Oct 23 11:31:25 2026 :: Log Trentlin [17213]: n
+Fri Oct 23 11:31:25 2026 :: Log Trentlin [17226]: arrived (In a secret gangway) from 17213
+Fri Oct 23 11:31:25 2026 :: Log Trentlin [17226]: n
+Fri Oct 23 11:31:26 2026 :: Log Trentlin [17226]: w
+Fri Oct 23 11:31:26 2026 :: Log Trentlin [17227]: arrived (In a secret gangway) from 17226
+Fri Oct 23 11:31:27 2026 :: Log Trentlin [17227]: n
+Fri Oct 23 11:31:27 2026 :: Log Trentlin [17228]: arrived (In a secret gangway) from 17227
+Fri Oct 23 11:31:28 2026 :: Log Trentlin [17228]: n
+Fri Oct 23 11:31:28 2026 :: Log Trentlin [17229]: arrived (In a secret gangway) from 17228
+Fri Oct 23 11:31:29 2026 :: Log Trentlin [17229]: n
+Fri Oct 23 11:31:29 2026 :: Log Trentlin [17230]: arrived (In a secret gangway) from 17229
+Fri Oct 23 11:31:29 2026 :: Log Trentlin [17230]: n
+Fri Oct 23 11:31:30 2026 :: Log Trentlin [17230]: w
+Fri Oct 23 11:31:30 2026 :: Log Trentlin [17231]: arrived (In a secret gangway) from 17230
+Fri Oct 23 11:31:30 2026 :: Log Trentlin [17231]: w
+Fri Oct 23 11:31:30 2026 :: Log Trentlin [17232]: arrived (In a secret gangway) from 17231
+Fri Oct 23 11:31:32 2026 :: Log Trentlin [17232]: n
+Fri Oct 23 11:31:32 2026 :: Log Trentlin [17232]: e
+Fri Oct 23 11:31:32 2026 :: Log Trentlin [17231]: arrived (In a secret gangway) from 17232
+Fri Oct 23 11:31:33 2026 :: Log Trentlin [17231]: e
+Fri Oct 23 11:31:33 2026 :: Log Trentlin [17230]: arrived (In a secret gangway) from 17231
+Fri Oct 23 11:31:35 2026 :: Log Trentlin [17230]: w
+Fri Oct 23 11:31:35 2026 :: Log Trentlin [17231]: arrived (In a secret gangway) from 17230
+Fri Oct 23 11:31:35 2026 :: Log Trentlin [17231]: w
+Fri Oct 23 11:31:35 2026 :: Log Trentlin [17232]: arrived (In a secret gangway) from 17231
+Fri Oct 23 11:31:35 2026 :: Log Trentlin [17232]: s
+Fri Oct 23 11:31:35 2026 :: Log Trentlin [17233]: arrived (In a secret gangway) from 17232
+Fri Oct 23 11:31:36 2026 :: Log Trentlin [17233]: w
+Fri Oct 23 11:31:36 2026 :: Log Trentlin [17234]: arrived (In a secret gangway) from 17233
+Fri Oct 23 11:31:37 2026 :: Log Trentlin [17234]: n
+Fri Oct 23 11:31:37 2026 :: Log Trentlin [17235]: arrived (In a secret gangway) from 17234
+Fri Oct 23 11:31:37 2026 :: Log Trentlin [17235]: n
+Fri Oct 23 11:31:37 2026 :: Log Trentlin [17236]: arrived (In a secret gangway) from 17235
+Fri Oct 23 11:31:38 2026 :: Log Trentlin [17236]: n
+Fri Oct 23 11:31:38 2026 :: Log Trentlin [17237]: arrived (In a secret gangway) from 17236
+Fri Oct 23 11:31:39 2026 :: Log Trentlin [17237]: e
+Fri Oct 23 11:31:39 2026 :: Log Trentlin [17238]: arrived (In a secret gangway) from 17237
+Fri Oct 23 11:31:40 2026 :: Log Trentlin [17238]: n
+Fri Oct 23 11:31:40 2026 :: Log Trentlin [17239]: arrived (In a secret gangway) from 17238
+Fri Oct 23 11:31:41 2026 :: Log Trentlin [17239]: s
+Fri Oct 23 11:31:41 2026 :: Log Trentlin [17238]: arrived (In a secret gangway) from 17239
+Fri Oct 23 11:31:41 2026 :: Log Trentlin [17238]: s
+Fri Oct 23 11:31:41 2026 :: Log Trentlin [17237]: arrived (In a secret gangway) from 17238
+Fri Oct 23 11:31:42 2026 :: Log Trentlin [17237]: s
+Fri Oct 23 11:31:42 2026 :: Log Trentlin [17236]: arrived (In a secret gangway) from 17237
+Fri Oct 23 11:31:43 2026 :: Log Trentlin [17236]: n
+Fri Oct 23 11:31:43 2026 :: Log Trentlin [17237]: arrived (In a secret gangway) from 17236
+Fri Oct 23 11:31:43 2026 :: Log Trentlin [17237]: n
+Fri Oct 23 11:31:44 2026 :: Log Trentlin [17237]: e
+Fri Oct 23 11:31:44 2026 :: Log Trentlin [17238]: arrived (In a secret gangway) from 17237
+Fri Oct 23 11:31:45 2026 :: Log Trentlin [17238]: n
+Fri Oct 23 11:31:45 2026 :: Log Trentlin [17239]: arrived (In a secret gangway) from 17238
+Fri Oct 23 11:31:46 2026 :: Log Trentlin [17239]: n
+Fri Oct 23 11:31:46 2026 :: Log Trentlin [17240]: arrived (In a secret gangway) from 17239
+Fri Oct 23 11:31:46 2026 :: Log Trentlin [17240]: n
+Fri Oct 23 11:31:46 2026 :: Log Trentlin [17214]: arrived (A dead end) from 17240
+Fri Oct 23 11:31:48 2026 :: Log Trentlin [17214]: n
+Fri Oct 23 11:31:48 2026 :: Log Trentlin [17215]: arrived (In the cellar) from 17214
+Fri Oct 23 11:31:49 2026 :: Log Trentlin [17215]: e
+Fri Oct 23 11:31:49 2026 :: Log Trentlin [17225]: arrived (In a secret gangway) from 17215
+Fri Oct 23 11:31:50 2026 :: Log Trentlin [17225]: e
+Fri Oct 23 11:31:50 2026 :: Log Trentlin [17241]: arrived (In a secret gangway) from 17225
+Fri Oct 23 11:31:51 2026 :: Log Trentlin [17241]: e
+Fri Oct 23 11:31:51 2026 :: Log Trentlin [17242]: arrived (In a secret gangway) from 17241
+Fri Oct 23 11:31:52 2026 :: Log Trentlin [17242]: e
+Fri Oct 23 11:31:52 2026 :: Log Trentlin [17243]: arrived (In a secret gangway) from 17242
+Fri Oct 23 11:31:52 2026 :: Log Trentlin [17243]: e
+Fri Oct 23 11:31:52 2026 :: Log Trentlin [17244]: arrived (In a secret gangway) from 17243
+Fri Oct 23 11:31:53 2026 :: Log Trentlin [17244]: e
+Fri Oct 23 11:31:53 2026 :: Log Trentlin [17245]: arrived (In a secret gangway) from 17244
+Fri Oct 23 11:31:54 2026 :: Log Trentlin [17245]: n
+Fri Oct 23 11:31:54 2026 :: Log Trentlin [17246]: arrived (In a secret gangway) from 17245
+Fri Oct 23 11:31:55 2026 :: Log Trentlin [17246]: n
+Fri Oct 23 11:31:55 2026 :: Log Trentlin [17246]: e
+Fri Oct 23 11:31:55 2026 :: Log Trentlin [17247]: arrived (In a secret gangway) from 17246
+Fri Oct 23 11:31:56 2026 :: Log Trentlin [17247]: e
+Fri Oct 23 11:31:56 2026 :: Log Trentlin [17248]: arrived (In a secret gangway) from 17247
+Fri Oct 23 11:31:59 2026 :: Log Trentlin [17248]: get all
+Fri Oct 23 11:32:00 2026 :: Log Trentlin [17248]: e
+Fri Oct 23 11:32:00 2026 :: Log Trentlin [17249]: arrived (In a secret gangway) from 17248
+Fri Oct 23 11:32:01 2026 :: Log Trentlin [17249]: reca
+Fri Oct 23 11:32:01 2026 :: Log Trentlin [7878]: arrived (Inside the Small Shack) from 17249
+Fri Oct 23 11:32:03 2026 :: Log Trentlin [7878]: (refused) rca
+Fri Oct 23 11:32:04 2026 :: Log Trentlin [7878]: reca
+Fri Oct 23 11:32:04 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 7878
+Fri Oct 23 11:32:04 2026 :: Log Trentlin [4207]: e
+Fri Oct 23 11:32:04 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Fri Oct 23 11:32:05 2026 :: Log Trentlin [4202]: e
+Fri Oct 23 11:32:05 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Fri Oct 23 11:32:05 2026 :: Log Trentlin [4201]: e
+Fri Oct 23 11:32:05 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Fri Oct 23 11:32:05 2026 :: Log Trentlin [2427]: e
+Fri Oct 23 11:32:06 2026 :: Log Trentlin [2427]: n
+Fri Oct 23 11:32:06 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Fri Oct 23 11:32:07 2026 :: Log Trentlin [2404]: n
+Fri Oct 23 11:32:07 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Fri Oct 23 11:32:08 2026 :: Log Trentlin [2401]: u
+Fri Oct 23 11:32:08 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Fri Oct 23 11:32:08 2026 :: Log Trentlin [2410]: u
+Fri Oct 23 11:32:08 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Fri Oct 23 11:32:08 2026 :: Log Trentlin [2411]: u
+Fri Oct 23 11:32:08 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Fri Oct 23 11:32:09 2026 :: Log Trentlin [2414]: u
+Fri Oct 23 11:32:09 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Fri Oct 23 11:32:10 2026 :: Log Trentlin [2497]: aquest complete
+Fri Oct 23 11:32:10 2026 :: Log Trentlin [2497]: copper +189281400
+Fri Oct 23 11:32:10 2026 :: Log Trentlin [2497]: quest complete: 189p 28g 14s, 135 quest points, rush (streak bonus 151%)
+Fri Oct 23 11:32:16 2026 :: Log Trentlin [2497]: aquest gamble no
+Fri Oct 23 11:32:31 2026 :: Log Trentlin [2497]: wo
+Fri Oct 23 11:32:33 2026 :: Log Trentlin [2497]: enter door
+Fri Oct 23 11:32:33 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [2401]: r e 10
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [3503]: r e 10
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [3525]: arrived (Along the Eastern Road) from 3502
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [3526]: arrived (Along the Eastern Road) from 3525
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [3527]: arrived (The Checkpoint) from 3526
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [3528]: arrived (Along the Eastern Road) from 3527
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [3529]: arrived (Along the Eastern Road) from 3528
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [3530]: arrived (Near the Sands of Sorrow) from 3529
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [3531]: arrived (Near the Sands of Sorrow) from 3530
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Fri Oct 23 11:32:35 2026 :: Log Trentlin [42]: arrived (On the Outskirts of New Thalos) from 3532
+Fri Oct 23 11:32:37 2026 :: Log Trentlin [42]: e
+Fri Oct 23 11:32:37 2026 :: Log Trentlin [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Fri Oct 23 11:32:37 2026 :: Log Trentlin [9669]: e
+Fri Oct 23 11:32:37 2026 :: Log Trentlin [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Fri Oct 23 11:32:38 2026 :: Log Trentlin [9523]: e
+Fri Oct 23 11:32:38 2026 :: Log Trentlin [9524]: arrived (West Main Street) from 9523
+Fri Oct 23 11:32:38 2026 :: Log Trentlin [9524]: e
+Fri Oct 23 11:32:38 2026 :: Log Trentlin [9525]: arrived (West Main Street) from 9524
+Fri Oct 23 11:32:38 2026 :: Log Trentlin [9525]: e
+Fri Oct 23 11:32:38 2026 :: Log Trentlin [9526]: arrived (West Main Street) from 9525
+Fri Oct 23 11:32:39 2026 :: Log Trentlin [9526]: e
+Fri Oct 23 11:32:39 2026 :: Log Trentlin [9509]: arrived (The Western Market Square) from 9526
+Fri Oct 23 11:32:39 2026 :: Log Trentlin [9509]: e
+Fri Oct 23 11:32:39 2026 :: Log Trentlin [9506]: arrived (The Center of Market Square) from 9509
+Fri Oct 23 11:32:41 2026 :: Log Trentlin [9506]: dri
+Fri Oct 23 11:32:41 2026 :: Log Trentlin [9506]: dri
+Fri Oct 23 11:32:42 2026 :: Log Trentlin [9506]: dri
+Fri Oct 23 11:32:42 2026 :: Log Trentlin [9506]: dri
+Fri Oct 23 11:32:42 2026 :: Log Trentlin [9506]: n
+Fri Oct 23 11:32:42 2026 :: Log Trentlin [9515]: arrived (The Northern Market Square) from 9506
+Fri Oct 23 11:32:43 2026 :: Log Trentlin [9515]: w
+Fri Oct 23 11:32:43 2026 :: Log Trentlin [9514]: arrived (The Northwestern Market Square) from 9515
+Fri Oct 23 11:32:44 2026 :: Log Trentlin [9514]: w
+Fri Oct 23 11:32:44 2026 :: Log Trentlin [9621]: arrived (The Bank) from 9514
+Fri Oct 23 11:32:45 2026 :: Log Trentlin [9621]: wo
+Fri Oct 23 11:32:49 2026 :: Log Trentlin [9621]: deposit 1100 plat
+Fri Oct 23 11:32:53 2026 :: Log Trentlin [9621]: reca
+Fri Oct 23 11:32:53 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 9621
+Fri Oct 23 11:32:54 2026 :: Log Trentlin [4207]: w
+Fri Oct 23 11:32:54 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Fri Oct 23 11:32:56 2026 :: Log Trentlin [4208]: where hermie
+Fri Oct 23 11:32:57 2026 :: Log Trentlin [4208]: e
+Fri Oct 23 11:32:57 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4208
+Fri Oct 23 11:32:58 2026 :: Log Trentlin [4207]: e
+Fri Oct 23 11:32:58 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Fri Oct 23 11:32:58 2026 :: Log Trentlin [4202]: n
+Fri Oct 23 11:32:58 2026 :: Log Trentlin [4203]: arrived (The Hall of Cobwebs) from 4202
+Fri Oct 23 11:32:58 2026 :: Log Trentlin [4203]: n
+Fri Oct 23 11:32:58 2026 :: Log Trentlin [4210]: arrived (The Sickroom of the Restless) from 4203
+Fri Oct 23 11:32:59 2026 :: Log Trentlin [4210]: n
+Fri Oct 23 11:32:59 2026 :: Log Trentlin [4210]: sleep
+Fri Oct 23 11:33:03 2026 :: Log Trentlin [4210]: aquest points
+Fri Oct 23 11:33:04 2026 :: Log Trentlin [4210]: quit
+Fri Oct 23 11:33:04 2026 :: Trentlin has quit.
+Fri Oct 23 11:33:04 2026 :: [QUIT] Player rejoined the real world.
