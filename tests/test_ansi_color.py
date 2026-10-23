@@ -14,13 +14,16 @@ A sweep for colour bugs found these, each checked against a live server:
   could split a token in half.
 - A colour slot set to "plain" emitted nothing, so the regular slot that
   closes fight and room-name lines ended no colour.
+- GMCP strings carried the tokens, so Mudlet's chat window showed them
+  as text; gmcp_json_append_quoted drops them.
 """
 from __future__ import annotations
 
 import pathlib
 import unittest
 
-from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
+from live_mud import (DO, IAC, TELOPT_GMCP, LiveMud, create_character, login,
+                      patch_player_file, skip_reason)
 
 SKIP = skip_reason()
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -65,6 +68,7 @@ class ColourLiveTests(unittest.TestCase):
                 patch_player_file(mud, name, Levl=20, Room=4207)
 
             with mud.connect(timeout=120) as speaker, mud.connect(timeout=120) as listener:
+                listener.send_raw(bytes([IAC, DO, TELOPT_GMCP]))
                 login(speaker, "Zspeaker", PW)
                 login(listener, "Zlistener", PW)
                 for client in (speaker, listener):
@@ -80,6 +84,11 @@ class ColourLiveTests(unittest.TestCase):
                 heard = run(listener, "", 1.0) + listener.transcript[-400:]
                 self.assertIn("shiny words", heard)
                 self.assertNotIn("{0B", heard)
+                # ...and the chat window's copy over GMCP carries no codes.
+                chat = [block.decode("latin-1") for block in listener.subnegotiations(TELOPT_GMCP)
+                        if block.startswith(b"Comm.Channel ")]
+                self.assertTrue(chat, "no Comm.Channel")
+                self.assertIn('"text":"shiny words"', chat[-1])
 
                 # A coloured title closes its colour; a cut never splits a
                 # token ("x" * 43 leaves the token's "{0" at the cut).

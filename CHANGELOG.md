@@ -8,6 +8,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **GMCP strings carry no colour codes** (2026-10-23):
+  `gmcp_json_append_quoted` drops `{HH` tokens, so Mudlet's chat window
+  shows a coloured gossip as text, not codes. Mudlet package 1.5.8, so
+  installed packages fetch the 256-colour names (review of 5f9ded95).
 - **More colours** (owner, 2026-10-23): twenty-four 256-colour names
   appended to the COLOR palette after `plain` (saved choices keep their
   index); COLOR LIST in three columns; HELP COLOR rewritten (it described

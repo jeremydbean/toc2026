@@ -12,7 +12,8 @@ crimson, maroon, coral, salmon, peach, tan, olive, silver and charcoal.
 COLOR LIST shows all forty in their own colours; pick one by name, as in
 COLOR GOSSIPS ORANGE. They need a client with 256 colours -- Mudlet and
 the web client both have them. The web client also draws background
-colours and reverse text properly now.
+colours and reverse text properly now, and Mudlet's chat window no
+longer shows colour codes as letters (the package updates itself).
 
 @ 20261023c 2026-10-23
 Colour fixes:

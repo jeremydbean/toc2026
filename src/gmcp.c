@@ -12,7 +12,7 @@
 #include "merc.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.5.7"
+#define TOC_MUDLET_PACKAGE_VERSION "1.5.8"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \
@@ -94,17 +94,31 @@ static const char *gmcp_payload( const char *message )
     return message != NULL ? message : "";
 }
 
+/*
+ * Every GMCP string goes through here, and none carries colour: a client
+ * draws GMCP text in its own windows, so a "{0B" in a coloured gossip, a
+ * builder's coloured short description or anything else is dropped
+ * rather than shown as the letters (2026-10-23). The main window still
+ * gets the colour.
+ */
 static void gmcp_json_append_quoted( char *buffer, size_t buffer_size,
                                      const char *value )
 {
     const unsigned char *cursor;
     char escaped[8];
+    unsigned char slot;
 
     toc_strlcat( buffer, "\"", buffer_size );
     if ( value != NULL )
     {
         for ( cursor = (const unsigned char *)value; *cursor != '\0'; ++cursor )
         {
+            if ( color_token_prefix( (char)*cursor )
+              && color_parse_slot( (const char *)cursor + 1, &slot ) )
+            {
+                cursor += 2;            /* and the loop's step: three */
+                continue;
+            }
             switch ( *cursor )
             {
             case '\"': toc_strlcat( buffer, "\\\"", buffer_size ); break;

@@ -3015,6 +3015,13 @@ deliberate difference from WIZINVIS and CLOAK.
 feeds carry game state to the Mudlet package, and each has a rule that
 is invisible when it is broken.
 
+**No GMCP string carries colour.** `gmcp_json_append_quoted()`, which
+writes every one, drops `{HH` tokens: the client draws GMCP text in its
+own windows, and a coloured gossip reached Mudlet's chat pane as
+"{0Bshiny" (2026-10-23). A change to the package's Lua bumps
+`TOC_MUDLET_PACKAGE_VERSION`, `config.lua` and `tocMudlet.version`
+together, or installed packages never fetch it.
+
 **`Room.Info`** carries `exits`, and since 2026-09-30 also `doors`
 (per direction: open, closed or locked), `flags`, and `services` --
 what the room is *for*, being a shop, questmaster, guildmaster,
