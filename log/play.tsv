@@ -6903,3 +6903,20 @@
 1792755179	cmd	Trentlin	50	4210	dresden_halloween.are	standing	99	0	-	sleep		You go to sleep.
 1792755183	cmd	Trentlin	50	4210	dresden_halloween.are	sleeping	99	0	-	aquest	points	Quest Points: 2588
 1792755184	session	Trentlin	50	4210	dresden_halloween.are	quit	353s	+0 levels	+0 exp	+189302699 copper	1 kills	0 deaths	1 quests	244 commands	3 refused	coin: loot 2g 12s 99c, quests 189p 28g 14s
+1792758493	cmd	Alaric	54	4216	dresden_halloween.are	resting	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792758501	cmd	Alaric	54	4216	dresden_halloween.are	resting	100	0	-	look		Death room. //   Hrm, since you're reading this, guess you died! // Please insert coin(s) to continue.
+1792758504	refused	Alaric	54	4216	dresden_halloween.are	resting	100	0	-	(unknown)		Huh?
+1792758506	cmd	Alaric	54	4216	dresden_halloween.are	resting	100	0	-	exits		Obvious exits: // Down  - The Shrouded Altar of Devota
+1792758508	cmd	Alaric	54	4216	dresden_halloween.are	resting	100	0	-	exits		Obvious exits: // Down  - The Shrouded Altar of Devota
+1792758510	cmd	Alaric	54	4216	dresden_halloween.are	resting	100	0	-	time		It is 8 o'clock am, Day of Freedom, 4th the Month of Nature. // TOC started up at Fri Oct 23 01:41:51 2026 // The system time is Fri Oct 23 12:28:30 2026
+1792758515	cmd	Alaric	54	4216	dresden_halloween.are	resting	100	0	-	wake		You stand up.
+1792758516	cmd	Alaric	54	4216	dresden_halloween.are	standing	100	0	-	torment	co	They aren't here.
+1792758518	cmd	Alaric	54	4216	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: //      Nothing.
+1792758522	cmd	Alaric	54	4216	dresden_halloween.are	standing	100	0	-	exits		Obvious exits: // Down  - The Shrouded Altar of Devota
+1792758523	cmd	Alaric	54	4216	dresden_halloween.are	standing	100	0	-	look		Death room. //   Hrm, since you're reading this, guess you died! // Please insert coin(s) to continue.
+1792758525	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	down		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792758529	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	torment	corpse	They aren't here.
+1792758534	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	tk	corpse	You lost your concentration.
+1792758538	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	tk	corpse	You lost your concentration.
+1792758538	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	tk	corpse	You lost your concentration.
+1792758546	session	Alaric	54	4208	dresden_halloween.are	quit	59s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	17 commands	1 refused	coin: none
