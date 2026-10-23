@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261023e 2026-10-23
+Coloured custom prompts now show their colours instead of the colour tags,
+and stay plain with COLOR OFF. The browser client keeps terminal control
+codes out of your transcript and starts with clean colours when reconnecting.
+Mudlet 1.5.8 automatically updates the chat pane for the new COLOR choices.
+
 @ 20261023d 2026-10-23
 Twenty-four new colours for COLOR: orange, amber, gold, lime, mint,
 teal, turquoise, sky, navy, indigo, purple, violet, lavender, pink, rose,

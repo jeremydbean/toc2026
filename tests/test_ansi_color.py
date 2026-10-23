@@ -58,6 +58,24 @@ class ColourSourceTests(unittest.TestCase):
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class ColourLiveTests(unittest.TestCase):
+    def test_custom_prompt_converts_colour_tokens_and_honours_colour_off(self) -> None:
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zpromptansi", PW)
+                run(client, "color gossips orange", 1.0)
+                run(client, "prompt {02<%hhp>{00", 1.0)
+                mark = len(client.raw)
+                shown = run(client, "look", 1.0)
+                self.assertNotIn("{02", shown)
+                self.assertNotIn("{00", shown)
+                self.assertIn(b"\x1b[38;5;208m<", client.raw[mark:])
+                run(client, "color off", 1.0)
+                mark = len(client.raw)
+                shown = run(client, "look", 1.0)
+                self.assertNotIn("{02", shown)
+                self.assertNotIn("{00", shown)
+                self.assertNotIn(b"\x1b", client.raw[mark:])
+
     def test_colour_codes_never_reach_a_player_as_text(self) -> None:
         with LiveMud() as mud:
             for name in ("Zspeaker", "Zlistener"):

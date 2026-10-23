@@ -4,8 +4,7 @@
 // stream is cut into WebSocket frames. Audit 2026-10-22: the game ends
 // its lines "\n\r", and a frame that ended between the two showed the
 // line break twice -- 73 split points of one short exchange did it.
-// decodeTelnet is cut from client.js and run against every split of a
-// stream into two and three frames.
+// Both consoles use the same streaming decoder, exercised at every split.
 
 const assert = require("node:assert/strict");
 const test = require("node:test");
@@ -24,15 +23,21 @@ function cut(file, signature) {
     throw new Error("unbalanced " + signature);
 }
 
-const BODY = cut("client.js", "function decodeTelnet(value)");
+require("../webadmin/static/console-output.js");
 
-// A fresh decoder: what connectGame leaves behind.
 function decoder() {
-    const state = { telnetCarry: "", newlineCarry: "" };
     const secret = [];
-    const decode = new Function("state", "setSecretInput", BODY + "\nreturn decodeTelnet;")(
-        state, (on) => secret.push(on));
-    return { decode, secret };
+    let output = "";
+    const stream = TocConsoleOutput.create((text) => { output += text; }, (on) => secret.push(on));
+    return {
+        secret,
+        stream,
+        decode(frame) {
+            output = "";
+            stream.write(frame);
+            return output;
+        },
+    };
 }
 
 function run(frames) {
@@ -75,10 +80,26 @@ test("a pair is one break and a doubled break is two", () => {
 });
 
 test("a reconnect forgets the last frame's line break", () => {
-    const text = fs.readFileSync(path.join(__dirname, "..", "webadmin", "static", "client.js"), "utf8");
     const connect = cut("client.js", "function connectGame()");
-    assert.match(connect, /state\.newlineCarry = "";/);
-    assert.match(text, /newlineCarry: "",/);
-    const html = fs.readFileSync(path.join(__dirname, "..", "webadmin", "static", "client.html"), "utf8");
-    assert.doesNotMatch(html, /client\.js\?v=9"/, "the cache-buster moved with the change");
+    const { decode, stream } = decoder();
+    decode("\x1b[31mold\n\x1b[");
+    const state = {};
+    class Socket { static CLOSING = 2; addEventListener() {} }
+    const reconnect = new Function("state", "gameOutput", "window", "setSecretInput", "setConnectionState", "location", "WebSocket",
+        connect + "\nreturn connectGame;")(state, stream, { clearTimeout() {} }, () => {}, () => {},
+            { protocol: "http:", host: "test.invalid" }, Socket);
+    reconnect();
+    assert.equal(decode("\rnew session"), "\nnew session");
+});
+
+test("clearing scrollback keeps password masking and Telnet negotiation", () => {
+    const { decode, stream, secret } = decoder();
+    decode("\xff\xfb\x01Password: \xff\xfc");
+    assert.deepEqual(secret, [false, true]);
+    const clear = new Function("state", "gameOutput", "byId", cut("client.js", "function clearTerminal()") + "\nreturn clearTerminal;")(
+        {}, stream, () => ({ replaceChildren() {} }));
+    clear();
+    assert.deepEqual(secret, [false, true]);
+    decode("\x01");
+    assert.deepEqual(secret, [false, true, false]);
 });

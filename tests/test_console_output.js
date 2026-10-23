@@ -17,7 +17,7 @@ function capture(chunks) {
 }
 
 function characters(runs) {
-    return runs.flatMap(({ text, className }) => Array.from(text, (char) => [char, className]));
+    return runs.flatMap(({ text, className, inlineStyle = "" }) => Array.from(text, (char) => [char, className, inlineStyle]));
 }
 
 test("colors, attributes, resets, and bright backgrounds survive parsing", () => {
@@ -94,4 +94,55 @@ test("all supported foreground and background classes use only the fixed palette
             assert.match(runs[0].className, /^ansi-(fg|bg)-(bright-)?(black|red|green|yellow|blue|magenta|cyan|white)$/);
         }
     }
+});
+
+test("extended colours survive every frame split, including colon RGB", () => {
+    const stream = "\x1b[38:2::1:31:4mA\x1b[48:5:208mB\x1b[0;38:2:0:8:9:10mC\x1b[38:2:11:12:13mD\x1b[0mE";
+    const whole = capture([stream]);
+    assert.equal(whole.runs[0].inlineStyle, "--ansi-fg: #011f04;");
+    assert.equal(whole.runs[1].inlineStyle, "--ansi-fg: #011f04;--ansi-bg: #ff8700;");
+    assert.equal(whole.runs[2].inlineStyle, "--ansi-fg: #08090a;");
+    assert.equal(whole.runs[3].inlineStyle, "--ansi-fg: #0b0c0d;");
+    for (let i = 0; i <= stream.length; i += 1) {
+        assert.deepEqual(characters(capture([stream.slice(0, i), stream.slice(i)]).runs), characters(whole.runs));
+    }
+    assert.deepEqual(characters(capture([...stream]).runs), characters(whole.runs));
+});
+
+test("every xterm cube and grayscale entry is drawn exactly", () => {
+    const levels = [0, 95, 135, 175, 215, 255];
+    const rgbHex = (values) => "#" + values.map((n) => n.toString(16).padStart(2, "0")).join("");
+    for (let n = 16; n < 256; n += 1) {
+        const cube = n - 16;
+        const rgb = n < 232
+            ? [levels[Math.floor(cube / 36)], levels[Math.floor(cube / 6) % 6], levels[cube % 6]]
+            : Array(3).fill(8 + (n - 232) * 10);
+        const { runs } = capture([`\x1b[38;5;${n}mX`]);
+        assert.equal(runs[0].inlineStyle, `--ansi-fg: ${rgbHex(rgb)};`, `index ${n}`);
+    }
+});
+
+test("invalid RGB parameters never become SGR attributes or CSS", () => {
+    for (const bad of ["38;2;1;31", "38;2;1;31;", "38:2::1:31", "38:2:1:0:31:4", "48;5;999", "38:5:999", "38:2::256:0:4"]) {
+        const { runs } = capture([`\x1b[32mX\x1b[${bad}mY`]);
+        assert.ok(runs.every((run) => run.className === "ansi-fg-green" && !run.inlineStyle), bad);
+    }
+});
+
+test("control strings and character-set selectors never leak into text", () => {
+    const stream = "a\x1b]8;;https://example.com\x1b\\b\x1b]8;;\x1b\\c\x1bPprivate payload\x1b\\d\x1b(Bend";
+    for (let i = 0; i <= stream.length; i += 1) {
+        const { runs } = capture([stream.slice(0, i), stream.slice(i)]);
+        assert.equal(runs.map((run) => run.text).join(""), "abcdend");
+    }
+});
+
+test("a fresh escape or cancel recovers from an unfinished control sequence", () => {
+    for (const prefix of ["\x1b[31;", "\x1b]unterminated", "\x1bPunterminated"]) {
+        const { runs } = capture([prefix, "\x1b[32mvisible\x1b[0mplain"]);
+        assert.deepEqual(runs.map((r) => [r.text, r.className]), [["visible", "ansi-fg-green"], ["plain", ""]]);
+    }
+    assert.equal(capture(["\x1b[31;\x18visible"]).runs[0].text, "visible");
+    const { runs } = capture(["\x1b[31mbefore\x1bcafter"]);
+    assert.deepEqual(runs.map((r) => [r.text, r.className]), [["before", "ansi-fg-red"], ["after", ""]]);
 });

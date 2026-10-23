@@ -16,39 +16,17 @@ const path = require("node:path");
 const STATIC = path.join(__dirname, "..", "webadmin", "static");
 const read = (file) => fs.readFileSync(path.join(STATIC, file), "utf8");
 
-function cut(text, signature) {
-    const start = text.indexOf(signature);
-    assert.notEqual(start, -1, signature);
-    let depth = 0;
-    for (let i = text.indexOf("{", start); i < text.length; i += 1) {
-        if (text[i] === "{") depth += 1;
-        if (text[i] === "}" && --depth === 0) return text.slice(start, i + 1);
+test("both web clients use the streaming decoder and load it before their script", () => {
+    for (const [script, html, writer] of [
+        ["client.js", "client.html", "gameOutput.write(message)"],
+        ["app.js", "index.html", "consoleOutput.write"],
+    ]) {
+        const source = read(script);
+        const document = read(html);
+        assert.match(source, /TocConsoleOutput.create\(/);
+        assert.ok(source.includes(writer));
+        assert.ok(document.indexOf("/static/console-output.js") < document.indexOf("/static/" + script));
     }
-    throw new Error("unbalanced " + signature);
-}
-
-// The player client's SGR handling, cut from client.js and run alone.
-function clientDecoder() {
-    const js = read("client.js");
-    const body = [
-        cut(js, "function freshAnsiStyle()"),
-        js.slice(js.indexOf("const ANSI_COLORS"), js.indexOf("\n", js.indexOf("const ANSI_COLORS"))),
-        cut(js, "function hex("), cut(js, "function xterm256("), cut(js, "function extendedAnsi("),
-        cut(js, "function colourParts("), cut(js, "function ansiClassName()"),
-        cut(js, "function ansiInlineStyle()"), cut(js, "function applyAnsiCodes("),
-    ].join("\n");
-    return new Function("state", body +
-        "\nstate.ansiStyle = freshAnsiStyle();" +
-        "\nreturn (codes) => { applyAnsiCodes(codes); return [ansiClassName(), ansiInlineStyle()]; };")({});
-}
-
-test("the player client: bright backgrounds, extended colours", () => {
-    const sgr = clientDecoder();
-    assert.deepEqual(sgr("101"), ["ansi-bg-bright-red", ""]);
-    assert.deepEqual(sgr("0;31;47"), ["ansi-fg-red ansi-bg-white", ""]);
-    assert.deepEqual(sgr("0;38;5;208"), ["ansi-fg-rgb", "--ansi-fg: #ff8700;"]);
-    assert.deepEqual(sgr("0;38;5;12"), ["ansi-fg-bright-blue", ""]);
-    assert.deepEqual(sgr("0;7;48;2;10;20;30"), ["ansi-inverse ansi-bg-rgb", "--ansi-bg: #0a141e;"]);
 });
 
 for (const [file, prefix] of [["client.css", ""], ["app.css", "#game-terminal "]]) {
@@ -69,6 +47,7 @@ for (const [file, prefix] of [["client.css", ""], ["app.css", "#game-terminal "]
         // Reverse video comes after every colour rule, so it wins.
         const inverse = css.indexOf(`${prefix}.ansi-inverse {`);
         assert.ok(inverse > css.lastIndexOf(".ansi-bg-"), "inverse after the colours");
-        assert.match(css.slice(inverse), /color: var\(--ansi-bg, #[0-9a-f]{6}\); background: var\(--ansi-fg, #[0-9a-f]{6}\);/);
+        assert.match(css.slice(inverse), /color: var\(--ansi-bg, var\(--terminal-bg/);
+        assert.match(css.slice(inverse), /background: var\(--ansi-fg, #[0-9a-f]{6}\);/);
     });
 }

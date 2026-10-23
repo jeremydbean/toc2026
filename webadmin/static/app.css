@@ -1317,7 +1317,7 @@ label textarea {
 #game-terminal .ansi-bg-rgb { background: var(--ansi-bg); }
 /* Reverse video swaps the two colours; an invert filter gave each
    colour's complement instead. Unset, they are the terminal's own. */
-#game-terminal .ansi-inverse { color: var(--ansi-bg, #080a0b); background: var(--ansi-fg, #d7e0db); }
+#game-terminal .ansi-inverse { color: var(--ansi-bg, var(--terminal-bg, #080a0b)); background: var(--ansi-fg, #d7e0db); }
 
 .terminal-input-row {
     display: grid;

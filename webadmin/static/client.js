@@ -26,12 +26,6 @@
         reconnectAttempts: 0,
         reconnectTimer: null,
         secretInput: false,
-        telnetCarry: "",
-        // The last line break of the previous frame, when the frame ended
-        // on one: its partner may open the next frame.
-        newlineCarry: "",
-        ansiCarry: "",
-        ansiStyle: freshAnsiStyle(),
         terminalChars: 0,
         terminalLineStart: true,
         transcript: "",
@@ -64,9 +58,6 @@
         return element;
     }
 
-    function freshAnsiStyle() {
-        return { bold: false, dim: false, italic: false, underline: false, inverse: false, fg: null, bg: null };
-    }
 
     function readJsonStorage(key, fallback) {
         try {
@@ -209,141 +200,11 @@
         recordTranscript(text);
     }
 
-    function ansiClassName() {
-        const style = state.ansiStyle;
-        return [
-            style.bold && "ansi-bold",
-            style.dim && "ansi-dim",
-            style.italic && "ansi-italic",
-            style.underline && "ansi-underline",
-            style.inverse && "ansi-inverse",
-            colourParts("fg", style.fg)[0],
-            colourParts("bg", style.bg)[0],
-        ].filter(Boolean).join(" ");
-    }
-
-    function ansiInlineStyle() {
-        const style = state.ansiStyle;
-        return colourParts("fg", style.fg)[1] + colourParts("bg", style.bg)[1];
-    }
-
-    const ANSI_COLORS = ["black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"];
-
-    // Extended colours: 0-15 of the 256 are the sixteen the stylesheet
-    // themes; the rest, and true colour, are drawn exactly, as "#rrggbb"
-    // carried in an inline custom property. They used to be dropped,
-    // leaving the colour before them in force.
-    function hex(r, g, b) {
-        return `#${[r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("")}`;
-    }
-
-    function xterm256(n) {
-        if (n >= 232) { const v = 8 + (n - 232) * 10; return hex(v, v, v); }
-        const cube = n - 16;
-        const level = (step) => (step === 0 ? 0 : 55 + step * 40);
-        return hex(level(Math.floor(cube / 36)), level(Math.floor(cube / 6) % 6), level(cube % 6));
-    }
-
-    function extendedAnsi(codes, index, names) {
-        // codes[index] is 38 or 48; returns [colour or null, codes consumed].
-        const byte = (v) => Number.isInteger(v) && v >= 0 && v <= 255;
-        if (codes[index + 1] === 5) {
-            const n = codes[index + 2];
-            if (!byte(n)) return [null, 2];
-            if (n < 16) return [n < 8 ? names[n] : `bright-${names[n - 8]}`, 2];
-            return [xterm256(n), 2];
-        }
-        if (codes[index + 1] === 2) {
-            const rgb = [codes[index + 2], codes[index + 3], codes[index + 4]];
-            return [rgb.every(byte) ? hex(...rgb) : null, 4];
-        }
-        return [null, 0];
-    }
-
-    // The class for a colour, and for an exact one its inline property.
-    function colourParts(kind, colour) {
-        if (!colour) return ["", ""];
-        if (colour.startsWith("#")) return [`ansi-${kind}-rgb`, `--ansi-${kind}: ${colour};`];
-        return [`ansi-${kind}-${colour}`, ""];
-    }
-
-    function applyAnsiCodes(rawParameters) {
-        const codes = rawParameters === "" ? [0] : rawParameters.split(";").map((part) => Number(part || 0));
-        for (let index = 0; index < codes.length; index += 1) {
-            const code = codes[index];
-            if (code === 0) state.ansiStyle = freshAnsiStyle();
-            else if (code === 1) state.ansiStyle.bold = true;
-            else if (code === 2) state.ansiStyle.dim = true;
-            else if (code === 3) state.ansiStyle.italic = true;
-            else if (code === 4) state.ansiStyle.underline = true;
-            else if (code === 7) state.ansiStyle.inverse = true;
-            else if (code === 22) { state.ansiStyle.bold = false; state.ansiStyle.dim = false; }
-            else if (code === 23) state.ansiStyle.italic = false;
-            else if (code === 24) state.ansiStyle.underline = false;
-            else if (code === 27) state.ansiStyle.inverse = false;
-            else if (code >= 30 && code <= 37) state.ansiStyle.fg = ANSI_COLORS[code - 30];
-            else if (code === 39) state.ansiStyle.fg = null;
-            else if (code >= 40 && code <= 47) state.ansiStyle.bg = ANSI_COLORS[code - 40];
-            else if (code === 49) state.ansiStyle.bg = null;
-            else if (code >= 90 && code <= 97) state.ansiStyle.fg = `bright-${ANSI_COLORS[code - 90]}`;
-            else if (code >= 100 && code <= 107) state.ansiStyle.bg = `bright-${ANSI_COLORS[code - 100]}`;
-            else if (code === 38 || code === 48) {
-                const [colour, used] = extendedAnsi(codes, index, ANSI_COLORS);
-                if (colour) state.ansiStyle[code === 38 ? "fg" : "bg"] = colour;
-                index += used;
-            }
-        }
-    }
-
-    function appendAnsi(text) {
-        const data = state.ansiCarry + text;
-        state.ansiCarry = "";
-        let visible = "";
-        let cursor = 0;
-
-        while (cursor < data.length) {
-            const escape = data.indexOf("\x1b", cursor);
-            if (escape === -1) {
-                const plain = data.slice(cursor);
-                appendTerminalSegment(plain, ansiClassName(), ansiInlineStyle());
-                visible += plain;
-                break;
-            }
-            if (escape > cursor) {
-                const plain = data.slice(cursor, escape);
-                appendTerminalSegment(plain, ansiClassName(), ansiInlineStyle());
-                visible += plain;
-            }
-            if (escape + 1 >= data.length) {
-                state.ansiCarry = data.slice(escape);
-                break;
-            }
-            if (data[escape + 1] !== "[") {
-                cursor = escape + 2;
-                continue;
-            }
-            let finalIndex = escape + 2;
-            while (finalIndex < data.length) {
-                const code = data.charCodeAt(finalIndex);
-                if (code >= 64 && code <= 126) break;
-                finalIndex += 1;
-            }
-            if (finalIndex >= data.length) {
-                state.ansiCarry = data.slice(escape);
-                break;
-            }
-            const finalCharacter = data[finalIndex];
-            if (finalCharacter === "m") applyAnsiCodes(data.slice(escape + 2, finalIndex));
-            cursor = finalIndex + 1;
-        }
-        recordTranscript(visible);
-    }
-
-    // Leaving password mode -- the server stopped hiding input, or the
-    // connection closed or restarted -- discards whatever was typed in it
-    // before the field is unmasked. A disconnect used to show an unsent
-    // password in plain text, and submitting it after a reconnect sent it
-    // as a command into history and the transcript (audit, 2026-10-21).
+    const gameOutput = TocConsoleOutput.create((text, className, inlineStyle) => {
+        appendTerminalSegment(text, className, inlineStyle);
+        recordTranscript(text);
+    }, setSecretInput);
+    // Discard an unsent password before unmasking the input field.
     function setSecretInput(secret) {
         const input = byId("command-input");
         if (state.secretInput && !secret) input.value = "";
@@ -352,72 +213,6 @@
         input.placeholder = secret ? "Password" : "Command";
     }
 
-    function decodeTelnet(value) {
-        const data = state.telnetCarry + value;
-        state.telnetCarry = "";
-        let output = "";
-        let index = 0;
-
-        while (index < data.length) {
-            if (data.charCodeAt(index) !== 255) {
-                output += data[index];
-                index += 1;
-                continue;
-            }
-            if (index + 1 >= data.length) {
-                state.telnetCarry = data.slice(index);
-                break;
-            }
-            const command = data.charCodeAt(index + 1);
-            if (command === 255) {
-                output += String.fromCharCode(255);
-                index += 2;
-                continue;
-            }
-            if ([251, 252, 253, 254].includes(command)) {
-                if (index + 2 >= data.length) {
-                    state.telnetCarry = data.slice(index);
-                    break;
-                }
-                const option = data.charCodeAt(index + 2);
-                if (option === 1 && command === 251) setSecretInput(true);
-                if (option === 1 && command === 252) setSecretInput(false);
-                index += 3;
-                continue;
-            }
-            if (command === 250) {
-                const end = data.indexOf(String.fromCharCode(255, 240), index + 2);
-                if (end === -1) {
-                    state.telnetCarry = data.slice(index);
-                    break;
-                }
-                index = end + 2;
-                continue;
-            }
-            index += 2;
-        }
-        // A CR LF or LF CR pair is one line break and a lone CR or LF is
-        // one too. The game ends its lines "\n\r", and a WebSocket frame
-        // can end between the two: matching pairs within one frame showed
-        // that line break twice (audit, 2026-10-22). The last break of a
-        // frame is remembered, as console-output.js does, so its partner
-        // at the start of the next frame is swallowed.
-        let text = "";
-        for (const char of output) {
-            if (char === "\r" || char === "\n") {
-                if (state.newlineCarry && char !== state.newlineCarry) {
-                    state.newlineCarry = "";
-                    continue;
-                }
-                state.newlineCarry = char;
-                text += "\n";
-            } else {
-                state.newlineCarry = "";
-                text += char;
-            }
-        }
-        return text;
-    }
 
     function scheduleReconnect() {
         if (!state.settings.autoReconnect || state.manualDisconnect || !state.everConnected) return;
@@ -433,8 +228,7 @@
         window.clearTimeout(state.reconnectTimer);
         state.manualDisconnect = false;
         state.failed = false;
-        state.telnetCarry = "";
-        state.newlineCarry = "";
+        gameOutput.reset();
         setSecretInput(false);
         setConnectionState("pending", "Connecting");
 
@@ -461,7 +255,7 @@
                 appendSystem(`[${message.slice(11)}]\n`, "terminal-error");
                 return;
             }
-            appendAnsi(decodeTelnet(message));
+            gameOutput.write(message);
         });
 
         socket.addEventListener("close", () => {
@@ -630,8 +424,7 @@
         state.terminalChars = 0;
         state.terminalLineStart = true;
         state.transcript = "";
-        state.ansiCarry = "";
-        state.ansiStyle = freshAnsiStyle();
+        gameOutput.resetStyle();
     }
 
     function downloadTranscript() {

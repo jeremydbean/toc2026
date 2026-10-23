@@ -41,18 +41,37 @@
         return [`ansi-${kind}-${colour}`, ""];
     }
 
+    function colonColour(parameter) {
+        const parts = parameter.split(":");
+        const target = Number(parts.shift());
+        if (target !== 38 && target !== 48) return [null, null];
+        // ISO colon RGB permits an empty/default colour-space field.
+        if (parts[0] === "2" && parts.length === 5) {
+            if (parts[1] !== "" && parts[1] !== "0") return [null, null];
+            parts.splice(1, 1);
+        }
+        if ((parts[0] === "5" && parts.length !== 2)
+            || (parts[0] === "2" && parts.length !== 4)
+            || parts.some((part) => part === "")) return [null, null];
+        return [target === 38 ? "fg" : "bg", extendedAnsi([target, ...parts.map(Number)], 0, COLORS)[0]];
+    }
+
     // Network frames may end inside either a Telnet command or an ANSI sequence.
     function create(writeText, setSecretInput) {
         let style, telnet, negotiation, ansi, parameters, newline, pending;
 
-        function reset() {
+        function resetStyle() {
             style = {};
-            telnet = "data";
-            negotiation = 0;
             ansi = "text";
             parameters = "";
-            newline = "";
             pending = "";
+        }
+
+        function reset() {
+            resetStyle();
+            telnet = "data";
+            negotiation = 0;
+            newline = "";
             setSecretInput(false);
         }
 
@@ -69,10 +88,15 @@
         }
 
         function applyCodes(raw) {
-            if (!/^[\d;]*$/.test(raw)) return;
-            const codes = raw.split(";").map((part) => Number(part || 0));
+            if (!/^[\d;:]*$/.test(raw)) return;
+            const codes = raw.split(";").map((part) => part.includes(":") ? part : part === "" ? null : Number(part));
             for (let i = 0; i < codes.length; i += 1) {
-                const code = codes[i];
+                if (typeof codes[i] === "string") {
+                    const [kind, colour] = colonColour(codes[i]);
+                    if (kind && colour) style[kind] = colour;
+                    continue;
+                }
+                const code = codes[i] ?? 0;
                 if (code === 0) style = {};
                 else if (code === 1) style.bold = true;
                 else if (code === 2) style.dim = true;
@@ -98,14 +122,28 @@
         }
 
         function textByte(char) {
-            if (ansi === "osc" || ansi === "oscEscape") {
-                if (char === "\x07" || (ansi === "oscEscape" && char === "\\")) ansi = "text";
-                else ansi = char === "\x1b" ? "oscEscape" : "osc";
+            if (char === "\x18" || char === "\x1a") { ansi = "text"; parameters = ""; return; }
+            if (ansi === "osc" || ansi === "string" || ansi === "stringEscape") {
+                if (char === "\x07" && ansi === "osc") ansi = "text";
+                else if (ansi === "stringEscape" && char === "\\") ansi = "text";
+                else if (ansi === "stringEscape" && char !== "\x1b") {
+                    // A new ESC command cancels an unterminated control string.
+                    ansi = "escape";
+                    textByte(char);
+                } else if (char === "\x1b") ansi = "stringEscape";
                 return;
             }
+            if (char === "\x1b") { ansi = "escape"; parameters = ""; return; }
             if (ansi === "escape") {
-                ansi = char === "[" ? "csi" : char === "]" ? "osc" : "text";
+                if (char === "c") { flush(); resetStyle(); }
+                else ansi = char === "[" ? "csi" : char === "]" ? "osc"
+                    : ["P", "X", "^", "_"].includes(char) ? "string"
+                    : char.charCodeAt(0) >= 32 && char.charCodeAt(0) <= 47 ? "escapeIntermediate" : "text";
                 parameters = "";
+                return;
+            }
+            if (ansi === "escapeIntermediate") {
+                if (char.charCodeAt(0) >= 48 && char.charCodeAt(0) <= 126) ansi = "text";
                 return;
             }
             if (ansi === "csi" || ansi === "discardCsi") {
@@ -118,12 +156,11 @@
                 else { ansi = "discardCsi"; parameters = ""; }
                 return;
             }
-            if (char === "\x1b") { ansi = "escape"; return; }
             if (char === "\r" || char === "\n") {
                 if (newline && char !== newline) { newline = ""; return; }
                 newline = char;
                 pending += "\n";
-            } else if (char === "\t" || char.charCodeAt(0) >= 32) {
+            } else if (char === "\t" || (char.charCodeAt(0) >= 32 && char !== "\x7f")) {
                 newline = "";
                 pending += char;
             }
@@ -151,7 +188,7 @@
         }
 
         reset();
-        return { write, reset };
+        return { write, reset, resetStyle };
     }
 
     globalThis.TocConsoleOutput = Object.freeze({ create });

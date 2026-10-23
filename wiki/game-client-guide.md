@@ -95,7 +95,8 @@ reconnect when the Reconnect preference is enabled.
 The terminal supports:
 
 - standard and bright ANSI foreground colors
-- classic ANSI background colors and text attributes
+- standard and bright ANSI backgrounds, reverse video, and text attributes
+- all 256 indexed colors and exact RGB colors (semicolon or colon SGR syntax)
 - Telnet ECHO negotiation for password fields
 - output split across network frames
 - server-driven paging for long command output
@@ -212,8 +213,9 @@ including **Update ToC** on configured appliances.
 - Additional trusted browser origins require `WEB_ALLOWED_ORIGINS`, as a
   comma-separated list of complete origins such as `https://mud.example.com`.
 - Oversized and binary browser-to-game frames are rejected by the bridge.
-- Server output is rendered through text nodes. ANSI data is parsed into fixed
-  CSS classes and is never treated as HTML.
+- Server output is rendered through text nodes. ANSI data becomes fixed CSS
+  classes and validated hexadecimal color properties, never HTML. Unsupported
+  control strings, such as terminal titles and hyperlink metadata, are discarded.
 - Administrative routes remain disabled when `WEB_ADMIN_TOKEN` is unset.
 
 Do not publish the administration listener directly to the Internet. Use TLS,
@@ -272,14 +274,18 @@ shows `127.0.0.1:9001` and requires a local browser or SSH tunnel.
 
 ### Colors Look Wrong
 
-Use the game's color settings to enable ANSI output. The client accepts the
-classic 16-color palette; unsupported terminal cursor-control sequences are
-ignored.
+Use `COLOR ON` to enable ANSI output and `COLOR LIST` to see the named choices.
+For example, `COLOR GOSSIPS ORANGE` selects one of the 24 extended colors.
+Both web consoles support the classic 16-color palette, all 256 indexed colors,
+and exact RGB colors. Unsupported terminal cursor-control sequences are ignored.
 
 The admin dashboard's **Game console** also renders ANSI colors and text
 attributes, including sequences split across incoming network messages. Refresh
 the admin page after a web asset update. Clear removes visible scrollback without
 changing the current game color; reconnecting resets terminal decoding state.
+The player client's Clear also resets its display color without changing server
+settings or password masking. An unfinished sequence from a disconnected
+session cannot consume text from the new connection.
 
 The C server converts its internal `{HH}` color markers before sending output;
 the browser client intentionally parses ANSI only. Seeing literal markers such

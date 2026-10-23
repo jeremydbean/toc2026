@@ -8,6 +8,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **ANSI follow-up audit** (2026-10-23): both web consoles use the same bounded
+  streaming decoder. The player client no longer prints OSC control payloads,
+  keeps an incomplete escape or color across reconnects, or buffers unlimited
+  incomplete CSI data. The decoder accepts colon-form RGB/indexed colors,
+  ignores unsupported control strings and character-set selectors, and recovers
+  at a fresh escape or cancellation. Reverse video uses the terminal theme's
+  background. Custom prompts convert game color tokens and respect COLOR OFF.
+  Mudlet 1.5.8 delivers the extended chat palette to existing installations.
+  Regression coverage includes every extended palette entry, frame splits,
+  malformed RGB, password masking during Clear, reconnects, and live prompts.
+
 - **GMCP strings carry no colour codes** (2026-10-23):
   `gmcp_json_append_quoted` drops `{HH` tokens, so Mudlet's chat window
   shows a coloured gossip as text, not codes. Mudlet package 1.5.8, so

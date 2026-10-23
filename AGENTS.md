@@ -509,6 +509,12 @@ Commands added or revived in September 2026, and where they live:
   (`ansi-fg-rgb` with an inline `--ansi-fg`); reverse video swaps the
   `--ansi-fg`/`--ansi-bg` properties every colour rule sets
   (`tests/test_ansi_web.js`).
+- Both web terminals use `TocConsoleOutput` in `console-output.js`; keep the
+  ANSI/Telnet state machine shared. `reset()` starts a new connection and exits
+  password mode; `resetStyle()` clears display state without touching Telnet or
+  password masking. The player client's Clear uses only `resetStyle()`. Control
+  strings are never transcript text. Update all three Mudlet version strings
+  and rebuild the package when its script changes, so existing clients upgrade.
 - Test formatted output with color enabled and disabled, and with paging both
   enabled and disabled. Keep normal summary views within the default page size
   when practical.

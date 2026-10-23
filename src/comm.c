@@ -2336,6 +2336,7 @@ void write_prompt( DESCRIPTOR_DATA *d )
     const char *pattern;
     char prompt_buf[MAX_STRING_LENGTH];
     const char *src;
+    DString colorized;
 
     if ( d == NULL )
         return;
@@ -2433,13 +2434,16 @@ void write_prompt( DESCRIPTOR_DATA *d )
         }
     }
 
-    if ( owner != NULL && !IS_NPC(owner)
-      && owner->pcdata != NULL && owner->pcdata->color )
+    if ( color_is_enabled( owner ) )
     {
         prompt_append_text( prompt_buf, sizeof(prompt_buf), color_reset_code() );
     }
 
-    write_to_buffer( d, prompt_buf, 0 );
+    /* Prompt patterns and room names carry the same tokens as other output. */
+    dstring_init( &colorized );
+    color_convert( prompt_buf, owner, color_is_enabled( owner ), &colorized );
+    write_to_buffer( d, dstring_cstr( &colorized ), 0 );
+    dstring_free( &colorized );
 }
 
 

@@ -417,7 +417,7 @@ summary:focus-visible,
 .ansi-bg-rgb { background: var(--ansi-bg); }
 /* Reverse video swaps the two colours; an invert filter gave each
    colour's complement instead. Unset, they are the terminal's own. */
-.ansi-inverse { color: var(--ansi-bg, #080a0b); background: var(--ansi-fg, #d8dedb); }
+.ansi-inverse { color: var(--ansi-bg, var(--terminal-bg)); background: var(--ansi-fg, #d8dedb); }
 
 .macro-strip {
     display: none;

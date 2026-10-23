@@ -18,6 +18,10 @@ alias `tocgui off` hides the interface and `tocgui on` restores it.
 `tocgui status` reports the installed package version and whether GMCP data is
 active. Mapping continues while the interface is hidden.
 
+Package 1.5.8 delivers the 24 extended channel colors added to COLOR. The
+version increase makes existing 1.5.7 installations receive the updated chat
+palette automatically on reconnect, after the server is updated.
+
 Package 1.2.0 adds the panels the new GMCP feeds were for.
 
 - **Target strip.** Who you are fighting, with a bar for how badly
