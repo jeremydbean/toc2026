@@ -6985,3 +6985,10 @@
 1792759029	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	up		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
 1792759030	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
 1792759034	session	Alaric	54	2401	dresden_halloween.are	quit	193s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	65 commands	0 refused	coin: none
+1792763262	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1792763270	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	score		| Name:    Killuminati | Level:      70 | Class:        Monk | // | Played:   1798 hours | Sex:      Male | Guild:     Warrior | // | Age:       106 years | Race:      Elf | Castle:       Valh |
+1792763292	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	wizinvis	72	You slowly vanish into thin air.
+1792763294	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	score		| Name:    Killuminati | Level:      70 | Class:        Monk | // | Played:   1798 hours | Sex:      Male | Guild:     Warrior | // | Age:       106 years | Race:      Elf | Castle:       Valh |
+1792763303	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1792763318	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	help	changes	CHANGES // Syntax: changes //         changes all
+1792763323	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	changes		What is new, newest first: // 2026-10-22 //   - The underbrush east of the Coven's logging trail is no longer locked:
