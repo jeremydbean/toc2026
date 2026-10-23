@@ -8,6 +8,21 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Player backups and restores** (owner, 2026-10-23: nearly impossible to
+  lose a player; `wiki/player-backups.md`). Milestone snapshots before every
+  death, remort, deletion and staff change and after every level and quest;
+  a tiered retention (every save for a day, hourly for a week, daily for a
+  year, milestones 90 days and the newest 100 of each kind for ever); the
+  state sync carries the death, remort, delete and staff milestones to git.
+  A player's corpse lasts a week (`PC_CORPSE_TICKS`) and one untouched at a
+  restart is rebuilt from its death snapshot (`src/corpses.c`,
+  `corpse/registry.tsv`). PRESTORE gains SHOW, GEAR (worn and carried into
+  inventory, refused while the corpse holds things unless FORCE), kind
+  filters, ages, paging. `area/restores.dat` (`src/restores.c`) lets a
+  pushed commit restore gear or stash at the player's next login, once, and
+  `tools/player_history.py` reads a character's states from git and exports
+  one. `tests/test_prestore_gear.py`, `tests/test_corpse_keep.py`,
+  `tests/test_player_backups.py`.
 - **Disasters reworked; the black dragon is an encounter** (owner,
   2026-10-23), in a new `src/disaster.c` replacing `update.c`'s
   `disaster_update`. Disasters warn a cycle before striking, never kill,

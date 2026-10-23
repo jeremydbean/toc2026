@@ -306,7 +306,7 @@ void show_backup( CHAR_DATA *ch, char *argument )
 /*
  * Advancement stuff.
  */
-void advance_level( CHAR_DATA *ch, bool is_advance )
+static void advance_level_body( CHAR_DATA *ch, bool is_advance )
 {
     watch_log( ch, "level %d -> %d (%s)", ch->level - 1, ch->level,
         is_advance ? "staff advance" : "earned" );
@@ -514,6 +514,16 @@ EC				  + get_curr_stat(ch,STAT_WIS))/5);
     }
     achievement_check_state(ch, true);
     return;
+}
+
+/* A level earned is a restore point too (owner, 2026-10-23): a copy of the
+   character as the level left them. Staff ADVANCE keeps its own "advance"
+   milestone, taken before. */
+void advance_level( CHAR_DATA *ch, bool is_advance )
+{
+    advance_level_body( ch, is_advance );
+    if ( !is_advance && !IS_NPC(ch) )
+        player_snapshot_milestone( ch, "level", true );
 }
 
 long next_xp_level( CHAR_DATA *ch )

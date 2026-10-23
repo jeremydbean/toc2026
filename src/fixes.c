@@ -173,6 +173,19 @@ static void fix_mark( CHAR_DATA *ch, const char *id )
     ch->pcdata->fixes_done = str_dup( buf );
 }
 
+/* The same record, for other once-per-character work (restores.c). */
+bool player_fix_has( CHAR_DATA *ch, const char *id )
+{
+    return ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL
+        && fix_done( ch->pcdata->fixes_done, id );
+}
+
+void player_fix_record( CHAR_DATA *ch, const char *id )
+{
+    if ( ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL )
+        fix_mark( ch, id );
+}
+
 /*
  * From the nanny, once the character is in their room: every fix not yet
  * applied to them runs (or, for a character just made, is only marked).

@@ -6707,47 +6707,36 @@ See also: FINGER, TRAIL, PSTAT
 ~
 
 63 PRESTORE~
-Syntax: prestore <player>
-        prestore <player> <number|stamp>
-        prestore <player> <number|stamp> stash
+Syntax: prestore <player>                    the newest 30 snapshots
+        prestore <player> all                every snapshot
+        prestore <player> deaths             one kind: deaths, remorts,
+                                             levels, quests, milestones
+        prestore <player> <stamp> show       what it holds, nothing changed
+        prestore <player> <stamp>            the whole character
+        prestore <player> <stamp> gear [force]   only their gear, back
+        prestore <player> <stamp> stash      only their stash, added back
 
-PRESTORE manages versioned snapshots of a player's save file.
+Every save of a player is a snapshot (at most one a minute): kept every
+one for a day, the newest of each hour for a week and of each day for a
+year.  A copy is also taken before every death, remort, deletion, staff
+change and restore, and after every level gain and quest; those are kept
+ninety days, and the newest hundred of each kind for good.
 
-With just a player name, PRESTORE lists all available restore points in
-order from newest to oldest, showing the date and time of each snapshot:
+The list shows how long ago each was taken, then the time, the level, the
+kind, and the stamp.  Restore by the stamp, not the number: every save adds
+a snapshot at the top and moves the numbers down.  A unique prefix of the
+stamp is enough; add its kind (20261023_023244.death) when an ordinary save
+was taken the same second.
 
-  prestore Conan
-    [1] Fri Apr 04 2026 15:30:22   <- most recent
-    [2] Fri Apr 04 2026 12:10:05
-    [3] Thu Apr 03 2026 22:45:11
+SHOW lists what the snapshot wore, carried and stashed.  The whole form puts
+the character back as they were (an online player is saved and
+disconnected first).  GEAR puts back only what they wore and carried, into
+their inventory; STASH only the stash.  Both work online or offline and
+change nothing else.  GEAR waits while the player's own corpse still holds
+things -- they can fetch it -- unless you add FORCE.
 
-To restore a player to one of the listed points, specify the number, or
-the stamp the list shows beside it.  Every save adds a snapshot at the
-top of the list and moves the numbers down, so when the player is online
-use the stamp -- it names the same file however the list moves, and a
-unique prefix of it is enough:
-
-  prestore Conan 2
-  prestore Conan 20261010_162657
-
-Snapshots are taken automatically every time a player's file is saved.
-Up to 30 versions are kept per player; older ones are pruned automatically.
-
-If the target player is currently online, they are saved and disconnected
-before the restore takes effect.  They must reconnect to use the restored
-character.
-
-PRESTORE <player> <number> STASH puts back only the stash that snapshot
-holds, added to whatever the stash holds now, and changes nothing else
-about the character: levels, gear and gold stay as they are.  It works
-on a player who is online (they keep playing and are told) or offline.
-A snapshot marked "before death" was taken before the character was
-extracted, so it holds the stash as it was at the moment of death.
-Nothing is removed, so a restore that was not needed leaves duplicates
-to take out rather than a loss.  A copy of the character is taken first
-(shown as "before stashrestore").
-
-See also: ACTIVITY, FINGER, PSTAT
+Every restore takes a copy of the character first, so it can be undone.
+See also wiki/player-backups.md for restores asked for through git.
 ~
 
 65 TRAIL~

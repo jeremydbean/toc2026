@@ -109,6 +109,23 @@ for d in $STATE_DIRS; do
     rsync -a --delete --exclude 'versions/' "$TOC_ROOT/$d/" "$STATE_REPO/$d/"
 done
 
+# Except the milestones (owner, 2026-10-23: nearly impossible to lose a
+# player). A copy of a character taken just before a death, a remort, a
+# deletion or a staff change is the exact state worth going back to, and
+# the five-minute history above can miss it by up to five minutes: a
+# death's own save, a moment later, already shows the gear gone. So those
+# reach git too, and are never deleted from it here (no --delete), even
+# after the host prunes its copy. Level and quest copies stay on the host;
+# player/'s history here holds those moments well enough.
+if [ -d "$TOC_ROOT/player/versions" ]; then
+    mkdir -p "$STATE_REPO/player/versions"
+    rsync -a --include='*/' \
+          --include='*.death' --include='*.remort' --include='*.delete' \
+          --include='*.advance' --include='*.staffset' --include='*.grantpsi' \
+          --include='*.creator' --exclude='*' \
+          "$TOC_ROOT/player/versions/" "$STATE_REPO/player/versions/"
+fi
+
 for f in $STATE_FILES; do
     [ -f "$TOC_ROOT/$f" ] || continue
     mkdir -p "$STATE_REPO/$(dirname "$f")"

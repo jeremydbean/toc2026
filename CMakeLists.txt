@@ -35,6 +35,7 @@ set(SRC_FILES
     src/comm.c
     src/const.c
     src/container.c
+    src/corpses.c
     src/db.c
     src/disaster.c
     src/dummy.c
@@ -73,6 +74,7 @@ set(SRC_FILES
     src/fixes.c
     src/goblin.c
     src/rested.c
+    src/restores.c
     src/alignment.c
     src/playlog.c
     src/wizlist.c

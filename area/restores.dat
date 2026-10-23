@@ -1,0 +1,16 @@
+# RESTORES -- player restores asked for through git (src/restores.c).
+#
+# One request per line:  <id> <player> <kind> <stamp> [<file>]
+#
+#   kind   gear    the snapshot's worn and carried objects, into inventory
+#          stash   the snapshot's stash, added to what the stash holds
+#          import  only install <file> as a snapshot, for staff to PRESTORE
+#   stamp  the snapshot, by what follows "<Player>." in its name under
+#          player/versions/<Player>/ -- 20261023_023244.death, or a unique
+#          prefix of it.  With a <file>, a plain YYYYMMDD_HHMMSS naming it.
+#   file   a player file from git history, put in area/restores/; boot
+#          installs it as the snapshot <Player>.<stamp>.import.
+#
+# gear and stash apply at the player's next login, once (the id is kept
+# in their file), and wait while their corpse still holds things.  Never
+# reuse an id.  See wiki/player-backups.md.

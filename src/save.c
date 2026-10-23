@@ -240,7 +240,8 @@ static bool snapshot_ensure_dir( const char *path )
  *
  * Layout: PLAYER_VER_DIR/<Name>/<Name>.YYYYMMDD_HHMMSS
  *
- * The PLAYER_VER_MAX most recent versions are kept; older ones are pruned.
+ * Kept as snapshot_prune says: every save for a day, hourly for a week,
+ * daily for a year.
  * Safe to call even if the player file does not yet exist (first save).
  */
 /*
@@ -252,6 +253,125 @@ static bool snapshot_ensure_dir( const char *path )
  * it is pinned; the next rotation after takes it as usual.
  */
 static char snapshot_pinned[MAX_INPUT_LENGTH];
+static char snapshot_last_milestone[MAX_INPUT_LENGTH];
+
+/*
+ * What a player's snapshots are kept for (owner, 2026-10-23: "basically
+ * no way we can't restore a player and all their gear to any state").
+ * Ordinary saves: every one from the last day, the newest of each hour
+ * for a week, the newest of each day for a year. A milestone (death,
+ * remort, level, quest, a staff change): every one for ninety days, and
+ * the newest PLAYER_MILESTONE_MAX of its kind whatever their age. The
+ * snapshot PRESTORE is reading (snapshot_pinned) is never taken.
+ */
+#define SNAP_SCAN_MAX         6000
+#define SNAP_KEEP_ALL_SECS    ( 24L * 3600 )
+#define SNAP_KEEP_HOURLY_SECS ( 7L * 24 * 3600 )
+#define SNAP_KEEP_DAILY_SECS  ( 365L * 24 * 3600 )
+#define SNAP_KEEP_ALL_MAX     2000
+#define MILESTONE_KEEP_SECS   ( 90L * 24 * 3600 )
+
+static char snap_scan[SNAP_SCAN_MAX][MAX_INPUT_LENGTH];
+
+static int snap_newest_first( const void *a, const void *b )
+{
+    return -strcmp( (const char *) a, (const char *) b );
+}
+
+/* The time a snapshot's name records: "<Name>.YYYYMMDD_HHMMSS[.tag]". */
+static time_t snap_time( const char *file, size_t nlen )
+{
+    struct tm t;
+    int yr, mo, dy, hr, mn, sc;
+
+    if ( sscanf( file + nlen + 1, "%4d%2d%2d_%2d%2d%2d",
+                 &yr, &mo, &dy, &hr, &mn, &sc ) != 6 )
+        return 0;
+    memset( &t, 0, sizeof(t) );
+    t.tm_year = yr - 1900;
+    t.tm_mon  = mo - 1;
+    t.tm_mday = dy;
+    t.tm_hour = hr;
+    t.tm_min  = mn;
+    t.tm_sec  = sc;
+    t.tm_isdst = -1;
+    return mktime( &t );
+}
+
+static void snapshot_prune( const char *vdir, const char *cap_name,
+                            const char *tag, time_t now )
+{
+    DIR *dp = opendir( vdir );
+    struct dirent *ent;
+    size_t nlen = strlen( cap_name );
+    bool tagged = tag != NULL && tag[0] != '\0';
+    char last_bucket[16] = "";
+    int count = 0, kept = 0, i;
+
+    if ( dp == NULL )
+        return;
+    while ( ( ent = readdir( dp ) ) != NULL && count < SNAP_SCAN_MAX )
+    {
+        /* Ordinary saves are "<Name>.<timestamp>" and are weighed only
+           against each other; a milestone, "<Name>.<timestamp>.<tag>",
+           only against others of its tag. */
+        size_t dlen = strlen( ent->d_name );
+        bool tagged_entry = dlen > nlen + 16 && ent->d_name[nlen + 16] == '.';
+
+        if ( strncmp( ent->d_name, cap_name, nlen ) != 0 || ent->d_name[nlen] != '.' )
+            continue;
+        if ( !tagged )
+        {
+            if ( tagged_entry || dlen != nlen + 16 )
+                continue;
+        }
+        else if ( !tagged_entry || strcmp( ent->d_name + nlen + 17, tag ) != 0 )
+            continue;
+        if ( toc_strlcpy( snap_scan[count], ent->d_name, sizeof(snap_scan[count]) )
+             < sizeof(snap_scan[count]) )
+            count++;
+    }
+    closedir( dp );
+    qsort( snap_scan, (size_t) count, sizeof(snap_scan[0]), snap_newest_first );
+
+    for ( i = 0; i < count; i++ )
+    {
+        const char *file = snap_scan[i];
+        time_t when = snap_time( file, nlen );
+        long age = when > 0 ? (long) difftime( now, when ) : 0;
+        bool keep;
+
+        if ( tagged )
+            keep = kept < PLAYER_MILESTONE_MAX || age <= MILESTONE_KEEP_SECS;
+        else if ( age <= SNAP_KEEP_ALL_SECS )
+            keep = kept < SNAP_KEEP_ALL_MAX;
+        else
+        {
+            /* One per hour, then one per day: the newest in each, since
+               the list runs newest first. */
+            char bucket[16];
+            size_t width = age <= SNAP_KEEP_HOURLY_SECS ? 11 : 8;
+
+            snprintf( bucket, sizeof(bucket), "%.*s", (int) width, file + nlen + 1 );
+            keep = age <= SNAP_KEEP_DAILY_SECS && strcmp( bucket, last_bucket ) != 0;
+            if ( keep )
+                toc_strlcpy( last_bucket, bucket, sizeof(last_bucket) );
+        }
+        if ( keep )
+        {
+            kept++;
+            continue;
+        }
+        if ( snapshot_pinned[0] != '\0' && strcmp( file, snapshot_pinned ) == 0 )
+            continue;
+        {
+            char to_del[MAX_STRING_LENGTH];
+
+            if ( snapshot_join_path( to_del, sizeof(to_del), vdir, file ) )
+                remove( to_del );
+        }
+    }
+}
 
 static void player_snapshot_internal( const char *name, bool force,
                                       const char *tag )
@@ -368,6 +488,11 @@ static void player_snapshot_internal( const char *name, bool force,
         bug( "player_snapshot: destination path too long", 0 );
         return;
     }
+    /* The file a milestone is about to be, so the death's corpse can name
+       the snapshot it will be rebuilt from (corpses.c). */
+    if ( tag != NULL && tag[0] != '\0' )
+        snprintf( snapshot_last_milestone, sizeof(snapshot_last_milestone),
+                  "%s.%s", cap_name, ts );
 
     /* Don't create a duplicate if snapshot already exists for this second */
     {
@@ -426,87 +551,16 @@ static void player_snapshot_internal( const char *name, bool force,
         return;
     }
 
-    /* Prune: keep only the PLAYER_VER_MAX most recent versions */
-    {
-        DIR *dp = opendir( vdir );
-        if ( dp != NULL )
-        {
-            /* Collect matching filenames into a simple sorted array */
-            /* Use a fixed-max buffer: PLAYER_VER_MAX + 10 entries */
-#define VER_SCAN_MAX (PLAYER_VER_MAX + 64)
-            char  entries[VER_SCAN_MAX][MAX_INPUT_LENGTH];
-            int   count = 0;
-            struct dirent *ent;
-            size_t nlen = strlen( cap_name );
+    snapshot_prune( vdir, cap_name, tag, now );
 
-            while ( ( ent = readdir( dp ) ) != NULL && count < VER_SCAN_MAX )
-            {
-                /* The ordinary rotation counts "<Name>.<timestamp>" and
-                   nothing else; a milestone, "<Name>.<timestamp>.<tag>",
-                   is pruned only against others with the same tag. */
-                size_t dlen = strlen( ent->d_name );
-                bool tagged_entry = ( dlen > nlen + 16
-                                   && ent->d_name[nlen + 16] == '.' );
+}
 
-                if ( strncmp( ent->d_name, cap_name, nlen ) != 0
-                  || ent->d_name[nlen] != '.' )
-                    continue;
-                if ( tag == NULL || tag[0] == '\0' )
-                {
-                    if ( tagged_entry || dlen != nlen + 16 )
-                        continue;
-                }
-                else if ( !tagged_entry
-                       || strcmp( ent->d_name + nlen + 17, tag ) != 0 )
-                    continue;
-                {
-                    if ( toc_strlcpy( entries[count], ent->d_name,
-                                      sizeof(entries[count]) )
-                       < sizeof(entries[count]) )
-                        count++;
-                }
-            }
-            closedir( dp );
 
-            /* Sort ascending (oldest first) - simple insertion sort on name,
-               which is lexicographic == chronological for YYYYMMDD_HHMMSS */
-            {
-                int i, j;
-                char tmp[MAX_INPUT_LENGTH];
-                for ( i = 1; i < count; i++ )
-                {
-                    toc_strlcpy( tmp, entries[i], sizeof(tmp) );
-                    j = i - 1;
-                    while ( j >= 0 && strcmp( entries[j], tmp ) > 0 )
-                    {
-                        toc_strlcpy( entries[j+1], entries[j],
-                                     sizeof(entries[j+1]) );
-                        j--;
-                    }
-                    toc_strlcpy( entries[j+1], tmp, sizeof(entries[j+1]) );
-                }
-            }
-
-            /* Delete oldest until we are within the limit */
-            {
-                int i;
-                int keep = ( tag != NULL && tag[0] != '\0' )
-                         ? PLAYER_MILESTONE_MAX : PLAYER_VER_MAX;
-
-                for ( i = 0; i < count - keep; i++ )
-                {
-                    char to_del[MAX_STRING_LENGTH];
-                    if ( snapshot_pinned[0] != '\0'
-                      && strcmp( entries[i], snapshot_pinned ) == 0 )
-                        continue;
-                    if ( snapshot_join_path( to_del, sizeof(to_del), vdir,
-                                             entries[i] ) )
-                        remove( to_del );
-                }
-            }
-#undef VER_SCAN_MAX
-        }
-    }
+/* The file name of the last milestone written ("Alaric.20261023_023244.death"),
+   or "" -- read straight after player_snapshot_milestone. */
+const char *player_snapshot_last_milestone( void )
+{
+    return snapshot_last_milestone;
 }
 
 
@@ -2252,8 +2306,8 @@ static void discard_stash_list( OBJ_DATA *list )
  *
  * Returns how many objects the stash gained, or -1 with the reason.
  */
-int stash_restore_from_file( CHAR_DATA *ch, const char *path,
-                             char *why, size_t why_size )
+int snapshot_read_stash( CHAR_DATA *ch, const char *path,
+                         char *why, size_t why_size, OBJ_DATA **list )
 {
     FILE *fp;
     char line[MAX_INPUT_LENGTH];
@@ -2270,6 +2324,7 @@ int stash_restore_from_file( CHAR_DATA *ch, const char *path,
     OBJ_DATA *restored;
     OBJ_DATA *obj;
 
+    *list = NULL;
     snprintf( why, why_size, "cannot read the snapshot file" );
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || path == NULL )
         return -1;
@@ -2395,27 +2450,264 @@ int stash_restore_from_file( CHAR_DATA *ch, const char *path,
         return -1;
     }
 
-    /* Whole: onto the live stash, each counted as owned once, in the
-       order the old reader left them (the file's last object first). */
+    /* Whole: handed back in the order the old reader left them (the
+       file's last object first), nothing worn. */
     {
         OBJ_DATA *reversed = NULL;
 
         while ( ( obj = restored ) != NULL )
         {
             restored = obj->next_content;
+            obj->wear_loc = WEAR_NONE;
             obj->next_content = reversed;
             reversed = obj;
         }
-        restored = reversed;
+        *list = reversed;
     }
     added = 0;
-    while ( ( obj = restored ) != NULL )
-    {
-        restored = obj->next_content;
-        if ( obj->wear_loc != WEAR_NONE )
-            obj->wear_loc = WEAR_NONE;
-        stash_receive( ch, obj );
+    for ( obj = *list; obj != NULL; obj = obj->next_content )
         added++;
+    return added;
+}
+
+int stash_restore_from_file( CHAR_DATA *ch, const char *path,
+                             char *why, size_t why_size )
+{
+    OBJ_DATA *list = NULL;
+    OBJ_DATA *obj;
+    int added = snapshot_read_stash( ch, path, why, why_size, &list );
+
+    if ( added <= 0 )
+        return added;
+    /* Onto the live stash, each counted as owned once. */
+    while ( ( obj = list ) != NULL )
+    {
+        list = obj->next_content;
+        stash_receive( ch, obj );
+    }
+    return added;
+}
+
+
+/* The objects of a snapshot's own -- worn and carried, up to the pet,
+   the stash or the end -- counted as scan_stash_section counts a stash:
+   every record checked before a single object is made. */
+static int scan_gear_section( FILE *fp, int version )
+{
+    char word[MAX_INPUT_LENGTH];
+    int objects = 0;
+    int c;
+
+    for ( ; ; )
+    {
+        c = scan_char( fp );
+        if ( c == '*' )
+        {
+            scan_to_eol( fp );
+            continue;
+        }
+        if ( c != '#' || !scan_word( fp, word, sizeof(word) ) )
+            return -1;
+        if ( !str_cmp( word, "END" ) || !str_cmp( word, "PET" )
+        ||   !str_cmp( word, "STASH" ) )
+            return objects;
+        if ( str_cmp( word, "O" ) && str_cmp( word, "OBJECT" ) )
+            return -1;
+        if ( !scan_stash_object( fp, version ) )
+            return -1;
+        objects++;
+    }
+}
+
+/*
+ * PRESTORE <player> <stamp> GEAR (owner, 2026-10-23: the moment a player
+ * dies their gear is backed up and restorable): the objects the snapshot's
+ * character wore and carried, put into the live character's inventory --
+ * everything else about them, levels, experience, coin and stash, stays
+ * as it is. Read as the stash form reads, aside and all or nothing, so a
+ * snapshot that does not read back whole adds nothing; each object joins
+ * through obj_to_char, which counts its limited items once.
+ *
+ * Returns how many objects (top level) were added, or -1 with the reason.
+ */
+int snapshot_read_gear( CHAR_DATA *ch, const char *path,
+                        char *why, size_t why_size, OBJ_DATA **list )
+{
+    FILE *fp;
+    char line[MAX_INPUT_LENGTH];
+    int iNest;
+    int snapshot_version = -1;
+    int expected;
+    int read_back;
+    int added;
+    long section = -1;
+    sh_int live_version;
+    bool clean = true;
+    OBJ_DATA *live_stash;
+    OBJ_DATA *restored;
+    OBJ_DATA *obj;
+
+    *list = NULL;
+    snprintf( why, why_size, "cannot read the snapshot file" );
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || path == NULL )
+        return -1;
+    if ( ( fp = fopen( path, "r" ) ) == NULL )
+        return -1;
+
+    /* The character's own fields come first; their objects begin at the
+       first "#O" line, and a pet, the stash or the end before any means
+       they had nothing. */
+    for ( ; ; )
+    {
+        long at = ftell( fp );
+
+        if ( fgets( line, (int) sizeof(line), fp ) == NULL )
+            break;
+        if ( snapshot_version < 0 && !strncmp( line, "Vers", 4 )
+        &&   ( line[4] == ' ' || !strncmp( line + 4, "ion ", 4 ) ) )
+            snapshot_version = atoi( strchr( line, ' ' ) );
+        if ( !strncmp( line, "#O", 2 )
+        &&   ( line[2] == '\n' || line[2] == '\r' || line[2] == '\0'
+            || !strncmp( line + 2, "BJECT", 5 ) ) )
+        {
+            section = at;
+            break;
+        }
+        if ( !strncmp( line, "#PET", 4 ) || !strncmp( line, "#STASH", 6 )
+        ||   !strncmp( line, "#END", 4 ) )
+            break;
+    }
+    if ( section < 0 )
+    {
+        fclose( fp );
+        return 0;
+    }
+
+    if ( fseek( fp, section, SEEK_SET ) != 0 )
+    {
+        fclose( fp );
+        return -1;
+    }
+    expected = scan_gear_section( fp,
+                   snapshot_version >= 0 ? snapshot_version : ch->version );
+    if ( expected < 0 || fseek( fp, section, SEEK_SET ) != 0 )
+    {
+        fclose( fp );
+        bug( "gear_restore_from_file: the objects are not whole.", 0 );
+        snprintf( why, why_size, "its objects are cut short or malformed" );
+        return -1;
+    }
+
+    for ( iNest = 0; iNest < MAX_NEST; iNest++ )
+        rgObjNest[iNest] = NULL;
+    live_version = ch->version;
+    if ( snapshot_version >= 0 )
+        ch->version = (sh_int) snapshot_version;
+
+    /* Read as a stash is: into a list of their own, set aside, so nothing
+       joins the character -- or counts -- until all of it has read. */
+    live_stash = ch->pcdata->stash;
+    ch->pcdata->stash = NULL;
+    fread_to_stash = true;
+
+    for ( ; ; )
+    {
+        char letter;
+        char *word;
+
+        if ( feof( fp ) )
+        {
+            clean = false;
+            break;
+        }
+        letter = fread_letter( fp );
+        if ( letter == '*' )
+        {
+            fread_to_eol( fp );
+            continue;
+        }
+        if ( letter != '#' )
+        {
+            bug( "gear_restore_from_file: # not found.", 0 );
+            clean = false;
+            break;
+        }
+        word = fread_word( fp );
+        if      ( !str_cmp( word, "O"      ) ) fread_obj( ch, fp );
+        else if ( !str_cmp( word, "OBJECT" ) ) fread_obj( ch, fp );
+        else if ( !str_cmp( word, "END" ) || !str_cmp( word, "PET" )
+             ||   !str_cmp( word, "STASH" ) )
+            break;
+        else
+        {
+            bug( "gear_restore_from_file: bad section.", 0 );
+            clean = false;
+            break;
+        }
+    }
+
+    fread_to_stash = false;
+    ch->version = live_version;
+    fclose( fp );
+    for ( iNest = 0; iNest < MAX_NEST; iNest++ )
+        rgObjNest[iNest] = NULL;
+
+    restored = ch->pcdata->stash;
+    ch->pcdata->stash = live_stash;
+
+    read_back = count_obj_tree( restored );
+    if ( !clean || read_back != expected )
+    {
+        discard_stash_list( restored );
+        if ( clean )
+            snprintf( why, why_size,
+                      "%d of its %d object%s could not be read back",
+                      expected - read_back, expected, expected == 1 ? "" : "s" );
+        else
+            snprintf( why, why_size, "its objects did not read cleanly" );
+        return -1;
+    }
+
+    /* Whole: handed back as a list, nothing worn, in the file's order. */
+    {
+        OBJ_DATA *reversed = NULL;
+
+        while ( ( obj = restored ) != NULL )
+        {
+            restored = obj->next_content;
+            obj->wear_loc = WEAR_NONE;
+            obj->next_content = reversed;
+            reversed = obj;
+        }
+        *list = reversed;
+    }
+    added = 0;
+    for ( obj = *list; obj != NULL; obj = obj->next_content )
+        added++;
+    return added;
+}
+
+/* Objects snapshot_read_gear handed back and nobody kept. */
+void snapshot_discard_gear( OBJ_DATA *list )
+{
+    discard_stash_list( list );
+}
+
+int gear_restore_from_file( CHAR_DATA *ch, const char *path,
+                            char *why, size_t why_size )
+{
+    OBJ_DATA *list = NULL;
+    OBJ_DATA *obj;
+    int added = snapshot_read_gear( ch, path, why, why_size, &list );
+
+    if ( added <= 0 )
+        return added;
+    /* Into their inventory, nothing worn -- they put it on. */
+    while ( ( obj = list ) != NULL )
+    {
+        list = obj->next_content;
+        obj->next_content = NULL;
+        obj_to_char( obj, ch );
     }
     return added;
 }

@@ -69,6 +69,18 @@ class EventBossSourceTests(unittest.TestCase):
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
+class SeasonalVendorSourceTests(unittest.TestCase):
+    def test_the_vendor_stocks_one_endless_copy_of_each(self) -> None:
+        # Madame Hexley carried ten plain copies of each item and LIST
+        # printed all twenty (2026-10-23); one ITEM_INVENTORY copy is a
+        # shop's endless stock and lists once.
+        text = (ROOT / "src" / "season.c").read_text(encoding="latin-1")
+        body = text[text.index("static void give_vendor_items"):]
+        body = body[:body.index("\n}\n")]
+        self.assertIn("SET_BIT( obj->extra_flags, ITEM_INVENTORY )", body)
+        self.assertNotIn("i < 10", body)
+
+
 class EventBossLiveTests(unittest.TestCase):
     def test_the_horseman_leaves_a_mortal_alone_and_look_lists_his_drops(self) -> None:
         with LiveMud() as mud:

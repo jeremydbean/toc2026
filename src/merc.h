@@ -2873,8 +2873,8 @@ size_t toc_strlcat(char *dst, const char *src, size_t siz);
 #define PLAYER_TEMP     "../player/temp"
 #define PLAYER_VER_DIR  "../player/versions/"  /* per-player versioned snapshots */
 #define PLAYER_VER_MAX  30                      /* keep this many versions per player */
-#define PLAYER_SNAPSHOT_MIN_INTERVAL 1800       /* minimum seconds between snapshots (30 min) */
-#define PLAYER_MILESTONE_MAX 20                 /* milestone copies kept per player per reason */
+#define PLAYER_SNAPSHOT_MIN_INTERVAL 60         /* seconds between ordinary save snapshots */
+#define PLAYER_MILESTONE_MAX 100                /* milestones kept per kind, past 90 days */
 #define GOD_DIR         "../gods/"
 #define HERO_DIR        "../heroes/"
 /* The Entrance to the Hall of Heroes, where the plaque is. */
@@ -2923,6 +2923,27 @@ void    stash_receive   ( CHAR_DATA *ch, OBJ_DATA *obj );
 void    stash_extract   ( CHAR_DATA *ch );
 int     stash_restore_from_file ( CHAR_DATA *ch, const char *path,
                                   char *why, size_t why_size );
+const char *player_snapshot_last_milestone( void );
+/* corpses.c: a player's corpse outlasts a restart */
+#define PC_CORPSE_TICKS  10080          /* a week of minute ticks */
+void    corpse_registry_died          ( CHAR_DATA *ch, OBJ_DATA *corpse );
+void    corpse_registry_touched       ( OBJ_DATA *corpse, const char *why );
+void    corpse_registry_moved         ( OBJ_DATA *corpse );
+void    corpse_registry_forget_player ( const char *name );
+bool    corpse_registry_has           ( const char *name );
+void    corpse_registry_boot          ( void );
+/* restores.c: player restores asked for through git */
+void    restores_boot                 ( void );
+void    restores_login                ( CHAR_DATA *ch );
+bool    player_fix_has                ( CHAR_DATA *ch, const char *id );
+void    player_fix_record             ( CHAR_DATA *ch, const char *id );
+int     snapshot_read_gear     ( CHAR_DATA *ch, const char *path,
+                                 char *why, size_t why_size, OBJ_DATA **list );
+void    snapshot_discard_gear  ( OBJ_DATA *list );
+int     snapshot_read_stash    ( CHAR_DATA *ch, const char *path,
+                                 char *why, size_t why_size, OBJ_DATA **list );
+int     gear_restore_from_file ( CHAR_DATA *ch, const char *path,
+                                 char *why, size_t why_size );
 bool    file_write_finished ( FILE *fp );
 bool    temp_file_commit ( FILE *fp, const char *temp_path,
                            const char *path );

@@ -5,6 +5,25 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261023k 2026-10-23
+Madame Hexley and Tinsel no longer list the same item ten times: each
+holiday item shows once, and they never run out.
+
+@ 20261023i 2026-10-23
+Your corpse now lasts a week instead of minutes, and a reboot no longer
+takes it: one you have not touched comes back where you fell, with
+everything you carried. The game also keeps a copy of you before every
+death and remort and after every level and quest, so the staff can give
+back what a death or a bug cost you.
+
+@ 20261023j 2026-10-23 staff
+PRESTORE lists how long ago each copy was taken, filters by kind (DEATHS,
+REMORTS, LEVELS, QUESTS, MILESTONES, ALL), and has new forms: <stamp>
+SHOW lists worn, carried and stashed items; <stamp> GEAR puts what they
+wore and carried into their inventory and changes nothing else. A
+restore can also be asked for through git (area/restores.dat). HELP
+PRESTORE, wiki/player-backups.md.
+
 @ 20261023g 2026-10-23
 Disasters are fairer. Floods, lightning, earthquakes, tornadoes, sand
 storms, brush fires and tidal waves now warn the area a few seconds

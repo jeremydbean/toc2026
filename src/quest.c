@@ -661,8 +661,8 @@ static void quest_daily( CHAR_DATA *ch, char *arg2, char *argument )
  * emergency multiplies it as it does the points: the quest master
  * promises "double your reward", not double the points.
  */
-static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
-                                      int kills_min, int kills_max )
+static void complete_automatic_quest_body( CHAR_DATA *ch, CHAR_DATA *questman,
+                                           int kills_min, int kills_max )
 {
     char buf[MAX_STRING_LENGTH];
     char price[MAX_INPUT_LENGTH];
@@ -770,6 +770,16 @@ static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
 
     ch->nextquest = ch->level >= 50 ? 5 : 15;
     save_char_obj(ch);
+}
+
+/* A quest (ordinary or daily) paid out is a restore point (owner,
+   2026-10-23): the character as the reward left them. */
+static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
+                                      int kills_min, int kills_max )
+{
+    complete_automatic_quest_body( ch, questman, kills_min, kills_max );
+    if ( !IS_NPC(ch) )
+        player_snapshot_milestone( ch, "quest", true );
 }
 
 static void credit_automatic_quest_kill( CHAR_DATA *ch, int target_vnum )

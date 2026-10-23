@@ -1857,6 +1857,7 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
  */
 void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
 {
+    corpse_registry_touched( obj, "it was picked up" );
     /* ITEM_INVENTORY is a shopkeeper's endless stock, and make_corpse
        destroys it -- right for a shopkeeper, who must not drop his
        shelves, and wrong for a player. Hyrule's shop items, the Azeroth
@@ -2354,6 +2355,7 @@ void obj_to_room( OBJ_DATA *obj, ROOM_INDEX_DATA *pRoomIndex )
     obj->in_room                = pRoomIndex;
     obj->carried_by             = NULL;
     obj->in_obj                 = NULL;
+    corpse_registry_moved( obj );
     return;
 }
 
@@ -2421,6 +2423,8 @@ void obj_from_obj( OBJ_DATA *obj )
 	bug( "Obj_from_obj: null obj_from.", 0 );
 	return;
     }
+    if ( obj_from->item_type == ITEM_CORPSE_PC )
+        corpse_registry_touched( obj_from, "something was taken out" );
 
     if ( obj == obj_from->contains )
     {
@@ -2564,6 +2568,7 @@ void extract_obj( OBJ_DATA *obj )
     OBJ_DATA *obj_next;
     int vnum,i=0;
 
+    corpse_registry_touched( obj, "it is gone" );
     vnum = obj ->pIndexData -> vnum;
 
     if(vnum == 4)	i=1;

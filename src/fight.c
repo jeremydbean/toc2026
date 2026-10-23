@@ -2960,7 +2960,9 @@ void make_corpse( CHAR_DATA *ch )
     {
 	name            = ch->name;
 	corpse          = create_object(get_obj_index(OBJ_VNUM_CORPSE_PC), 0);
-	corpse->timer   = (sh_int)(number_range( 25, 35 ));
+	/* A week, not half an hour (owner, 2026-10-23): Alaric's rotted while
+	   he was away and a restart took the gear off the floor. */
+	corpse->timer   = (sh_int) PC_CORPSE_TICKS;
 	REMOVE_BIT(ch->act,PLR_CANLOOT);
 	if (!IS_SET(ch->act,PLR_WANTED))
 	    corpse->owner = str_dup(ch->name);
@@ -3023,6 +3025,10 @@ void make_corpse( CHAR_DATA *ch )
     }
 
     obj_to_room( corpse, ch->in_room );
+    /* Written down, to be made again from the death snapshot if a restart
+       comes before it is fetched (corpses.c). */
+    if ( !IS_NPC(ch) )
+        corpse_registry_died( ch, corpse );
 
     if ( is_hyrule_ganon(ch) )
     {

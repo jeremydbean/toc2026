@@ -541,27 +541,25 @@ void tick_event_boss( void )
  * They despawn after VENDOR_DURATION seconds (4 hours).
  * =========================================================== */
 
+/* One of each, as a shop's endless stock (ITEM_INVENTORY): BUY hands over
+   a fresh copy and LIST shows the item once. She used to carry ten plain
+   copies of each, and LIST printed all twenty (2026-10-23). */
 static void give_vendor_items( CHAR_DATA *vendor, int item_vnum1, int item_vnum2 )
 {
+    int vnums[2];
     OBJ_INDEX_DATA *pObj;
     OBJ_DATA       *obj;
     int             i;
 
-    for ( i = 0; i < 10; i++ )
+    vnums[0] = item_vnum1;
+    vnums[1] = item_vnum2;
+    for ( i = 0; i < 2; i++ )
     {
-        if ( ( pObj = get_obj_index( item_vnum1 ) ) != NULL )
-        {
-            obj = create_object( pObj, 0 );
-            obj_to_char( obj, vendor );
-        }
-    }
-    for ( i = 0; i < 10; i++ )
-    {
-        if ( ( pObj = get_obj_index( item_vnum2 ) ) != NULL )
-        {
-            obj = create_object( pObj, 0 );
-            obj_to_char( obj, vendor );
-        }
+        if ( ( pObj = get_obj_index( vnums[i] ) ) == NULL )
+            continue;
+        obj = create_object( pObj, 0 );
+        SET_BIT( obj->extra_flags, ITEM_INVENTORY );
+        obj_to_char( obj, vendor );
     }
 }
 

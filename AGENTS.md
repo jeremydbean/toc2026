@@ -21,6 +21,7 @@ Maintained documentation:
 - `wiki/player-guide.md`: player progression and systems
 - `wiki/player-command-reference.md`: player command map
 - `wiki/achievements.md`: achievement catalog, command views, persistence, and hooks
+- `wiki/player-backups.md`: snapshots, corpses, PRESTORE, and restores through git
 - `wiki/game-client-guide.md`: browser terminal, ANSI, paging, and client controls
 - `wiki/install-guide.md`: one-command installs (Docker or native), updates,
   backups, promote, uninstall -- for anyone running their own copy
@@ -1238,6 +1239,44 @@ builder whose trust is later taken away still gets it. The second fix,
 the mage's weapon floors (dagger 80, whip 20) applied to every new
 character -- for a weapon still at exactly the mage's value, which was
 never trained since.
+
+## Player Backups And Restores
+
+Owner, 2026-10-23: player data is the most important thing the game
+keeps, and there must be basically no way a player and all their gear,
+stash included, cannot be put back. `wiki/player-backups.md` is the
+guide. The rules the code depends on:
+
+- **Snapshots are `player/versions/<Name>/<Name>.<stamp>[.<kind>]`**,
+  taken at every save (at most one a minute) and as milestones: before
+  death, remort, delete, ADVANCE, staff SET, GRANTPSI, COMBINE, CREATOR
+  and every restore; after a level (`advance_level`'s wrapper, not an
+  ADVANCE) and a quest (`complete_automatic_quest`'s wrapper).
+  `snapshot_prune()` in `save.c` keeps every untagged copy for a day, the
+  newest of each hour for a week and of each day for a year; a tagged one
+  for 90 days and the newest `PLAYER_MILESTONE_MAX` of its kind for ever;
+  the pinned one always. A new milestone kind needs a PRESTORE label and,
+  if it should reach git, an include in `toc-state-sync`'s milestone rsync
+  (which never deletes).
+- **Reading a snapshot never touches the game until all of it read.**
+  `snapshot_read_gear` and `snapshot_read_stash` read objects aside in
+  stash mode and return the list or nothing; GEAR, STASH and the git
+  restores share them. Use them for any new partial restore.
+- **A player's corpse lasts `PC_CORPSE_TICKS` (a week)** and is recorded
+  in `corpse/registry.tsv` (`src/corpses.c`) against its death snapshot.
+  Taking anything out, picking it up or extracting it closes the record
+  -- except at shutdown (`merc_down`), which is exactly when it must
+  survive -- and boot rebuilds each still-open corpse where it lay from
+  that snapshot. Any restore forgets the player's records, or the corpse
+  and the restore would make two of everything; PRESTORE GEAR refuses
+  while a corpse holds things, unless FORCE.
+- **A cloud session restores through `area/restores.dat`**
+  (`src/restores.c`): `<id> <player> gear|stash|import <stamp> [<file>]`.
+  Boot installs a file from `area/restores/` as a `.import` snapshot; a
+  gear or stash request applies at the player's next login once, recorded
+  as `restore:<id>` in `fixes_done`, and waits while their corpse holds
+  things. Ids are never reused. `tools/player_history.py` finds a state in
+  git history and `export`s it. `tests/test_player_backups.py`.
 
 ## Travel Spells Keep Room Rules
 

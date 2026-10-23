@@ -564,6 +564,10 @@ int main( int argc, char **argv )
     boot_db( );
     playlog_boot( );        /* the crash recorder, once the world is up */
     spellup_boot_place( );
+    /* Player corpses a restart would have lost, made again (corpses.c). */
+    corpse_registry_boot( );
+    /* Restores asked for through git (restores.c). */
+    restores_boot( );
     snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "ROM is ready to rock on port %d.", port );
     log_string( log_buf );
     if ( notify_systemd( "READY=1\nSTATUS=Accepting MUD connections" ) < 0 )
@@ -3602,6 +3606,9 @@ case CON_DEFAULT_CHOICE:
 	    /* Corrections for bugs since fixed, each once per character
 	       (fixes.c); a character just made is born correct. */
 	    player_fixes_login( ch, is_new_character );
+	    /* Restores asked for through git, once each (restores.c). */
+	    if ( !is_new_character )
+	        restores_login( ch );
 
             snprintf( buf, sizeof(buf), "%s has entered the game.", ch->name );
             wizinfo( buf, staff_notice_level( ch, ch->level ) );
