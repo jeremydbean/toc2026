@@ -162193,3 +162193,106 @@ Fri Oct 23 11:14:15 2026 :: EOF encountered on read.
 Fri Oct 23 11:16:17 2026 :: Treasure goblin: vanished from room 17298 (In the Ante-Room, highland.are) (too long in one area).
 Fri Oct 23 11:19:19 2026 :: Sock.sinaddr:  52.22.236.30
 Fri Oct 23 11:19:19 2026 :: EOF encountered on read.
+Fri Oct 23 11:24:23 2026 :: Sock.sinaddr:  5.161.75.7
+Fri Oct 23 11:24:24 2026 :: EOF encountered on read.
+Fri Oct 23 11:26:22 2026 :: Treasure goblin: vanished from room 10099 (A brightly lit corridor., glitter.are) (too long in one area).
+Fri Oct 23 11:27:09 2026 :: Sock.sinaddr:  24.2.118.125
+Fri Oct 23 11:27:09 2026 :: Loading Trentlin's playerfile
+Fri Oct 23 11:27:11 2026 :: Loading Trentlin's playerfile
+Fri Oct 23 11:27:11 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Fri Oct 23 11:27:11 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 0
+Fri Oct 23 11:27:18 2026 :: Log Trentlin [2401]: u
+Fri Oct 23 11:27:18 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Fri Oct 23 11:27:18 2026 :: Log Trentlin [2410]: u
+Fri Oct 23 11:27:18 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Fri Oct 23 11:27:18 2026 :: Log Trentlin [2411]: u
+Fri Oct 23 11:27:18 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Fri Oct 23 11:27:18 2026 :: Log Trentlin [2414]: u
+Fri Oct 23 11:27:18 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Fri Oct 23 11:27:19 2026 :: Log Trentlin [2497]: u
+Fri Oct 23 11:27:21 2026 :: Log Trentlin [2497]: aquest request
+Fri Oct 23 11:27:21 2026 :: Log Trentlin [2497]: quest assigned: recover The Heart of Tifarah (obj 25042) in highland.are, 5 minutes, rush
+Fri Oct 23 11:27:27 2026 :: Log Trentlin [2497]: enter door
+Fri Oct 23 11:27:27 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Fri Oct 23 11:27:55 2026 :: EOF encountered on read.
+Fri Oct 23 11:27:55 2026 :: Closing link to Trentlin.
+Fri Oct 23 11:28:01 2026 :: Log Alaric [4216]: quit
+Fri Oct 23 11:28:01 2026 :: Alaric has quit.
+Fri Oct 23 11:28:01 2026 :: [QUIT] Player rejoined the real world.
+Fri Oct 23 11:28:01 2026 :: Sock.sinaddr:  24.2.118.125
+Fri Oct 23 11:28:02 2026 :: Loading Trentlin's playerfile
+Fri Oct 23 11:28:03 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net reconnected.
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [2401]: r w 7
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [2438]: open west
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [2438]: r w 10
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [6000]: arrived (The edge of the forest) from 2439
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [6001]: arrived (A trail through the light forest) from 6000
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [6002]: arrived (A trail through the light forest) from 6001
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [6003]: arrived (A trail through the dense forest) from 6002
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [6004]: arrived (A trail through the dense forest) from 6003
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [6102]: arrived (A narrow trail through the deep, dark forest) from 6101
+Fri Oct 23 11:28:17 2026 :: Log Trentlin [6103]: arrived (A narrow trail through the deep, dark forest) from 6102
+Fri Oct 23 11:28:18 2026 :: Log Trentlin [6103]: s
+Fri Oct 23 11:28:18 2026 :: Log Trentlin [6108]: arrived (A narrow trail through the deep, dark forest) from 6103
+Fri Oct 23 11:28:18 2026 :: Log Trentlin [6108]: s
+Fri Oct 23 11:28:18 2026 :: Log Trentlin [6107]: arrived (A small path in the deep, dark forest) from 6108
+Fri Oct 23 11:28:18 2026 :: Log Trentlin [6107]: e
+Fri Oct 23 11:28:18 2026 :: Log Trentlin [6106]: arrived (A junction in the deep, dark forest) from 6107
+Fri Oct 23 11:28:18 2026 :: Log Trentlin [6106]: s
+Fri Oct 23 11:28:18 2026 :: Log Trentlin [6117]: arrived (A junction in the deep, dark forest) from 6106
+Fri Oct 23 11:28:19 2026 :: Log Trentlin [6117]: w
+Fri Oct 23 11:28:19 2026 :: Log Trentlin [6116]: arrived (A small path in the deep, dark forest) from 6117
+Fri Oct 23 11:28:19 2026 :: Log Trentlin [6116]: s
+Fri Oct 23 11:28:19 2026 :: Log Trentlin [6115]: arrived (A small path in the deep, dark forest) from 6116
+Fri Oct 23 11:28:19 2026 :: Log Trentlin [6115]: w
+Fri Oct 23 11:28:19 2026 :: Log Trentlin [6114]: arrived (A junction in the deep, dark forest) from 6115
+Fri Oct 23 11:28:19 2026 :: Log Trentlin [6114]: w
+Fri Oct 23 11:28:19 2026 :: Log Trentlin [6122]: arrived (A small path in the deep, dark forest) from 6114
+Fri Oct 23 11:28:20 2026 :: Log Trentlin [6122]: s
+Fri Oct 23 11:28:20 2026 :: Log Trentlin [6123]: arrived (A junction on the river bank in the deep, dark forest) from 6122
+Fri Oct 23 11:28:20 2026 :: Log Trentlin [6123]: s
+Fri Oct 23 11:28:20 2026 :: Log Trentlin [9774]: arrived (On the Dark River) from 6123
+Fri Oct 23 11:28:21 2026 :: Log Trentlin [9774]: r w 9
+Fri Oct 23 11:28:21 2026 :: Log Trentlin [9775]: arrived (On the Dark River) from 9774
+Fri Oct 23 11:28:21 2026 :: Log Trentlin [5979]: arrived (On the River) from 9775
+Fri Oct 23 11:28:21 2026 :: Log Trentlin [5978]: arrived (On the River) from 5979
+Fri Oct 23 11:28:21 2026 :: Log Trentlin [5977]: arrived (On the River) from 5978
+Fri Oct 23 11:28:21 2026 :: Log Trentlin [5976]: arrived (On the River) from 5977
+Fri Oct 23 11:28:21 2026 :: Log Trentlin [5975]: arrived (On the River) from 5976
+Fri Oct 23 11:28:21 2026 :: Log Trentlin [5974]: arrived (Under the Bridge) from 5975
+Fri Oct 23 11:28:21 2026 :: Log Trentlin [9772]: arrived (On the Dark River) from 5974
+Fri Oct 23 11:28:21 2026 :: Log Trentlin [9773]: arrived (On the Dark River) from 9772
+Fri Oct 23 11:28:21 2026 :: Log Trentlin [9773]: s
+Fri Oct 23 11:28:21 2026 :: Log Trentlin [57]: arrived (On the river bank) from 9773
+Fri Oct 23 11:28:22 2026 :: Log Trentlin [57]: d
+Fri Oct 23 11:28:22 2026 :: Log Trentlin [17100]: arrived (Entrance to a Valley in the Highlands) from 57
+Fri Oct 23 11:28:22 2026 :: Log Trentlin [17100]: n
+Fri Oct 23 11:28:22 2026 :: Log Trentlin [17101]: arrived (The Bog) from 17100
+Fri Oct 23 11:28:22 2026 :: Log Trentlin [17101]: n
+Fri Oct 23 11:28:22 2026 :: Log Trentlin [17109]: arrived (The Bog) from 17101
+Fri Oct 23 11:28:22 2026 :: Log Trentlin [17109]: n
+Fri Oct 23 11:28:22 2026 :: Log Trentlin [17115]: arrived (The Bog) from 17109
+Fri Oct 23 11:28:23 2026 :: Log Trentlin [17115]: n
+Fri Oct 23 11:28:23 2026 :: Log Trentlin [17103]: arrived (The Bog) from 17115
+Fri Oct 23 11:28:23 2026 :: Log Trentlin [17103]: n
+Fri Oct 23 11:28:23 2026 :: Log Trentlin [17111]: arrived (The Bog) from 17103
+Fri Oct 23 11:28:23 2026 :: Log Trentlin [17111]: n
+Fri Oct 23 11:28:23 2026 :: Log Trentlin [17117]: arrived (The Bog) from 17111
+Fri Oct 23 11:28:23 2026 :: Log Trentlin [17117]: n
+Fri Oct 23 11:28:23 2026 :: Log Trentlin [17119]: arrived (A path) from 17117
+Fri Oct 23 11:28:24 2026 :: Log Trentlin [17119]: n
+Fri Oct 23 11:28:24 2026 :: Log Trentlin [17120]: arrived (A path into the valley) from 17119
+Fri Oct 23 11:28:24 2026 :: Log Trentlin [17120]: n
+Fri Oct 23 11:28:24 2026 :: Log Trentlin [17121]: arrived (A path) from 17120
+Fri Oct 23 11:28:24 2026 :: Log Trentlin [17121]: n
+Fri Oct 23 11:28:24 2026 :: Log Trentlin [17122]: arrived (The Crossroads) from 17121
