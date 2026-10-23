@@ -117,6 +117,7 @@ void do_delete( CHAR_DATA *ch, char *argument)
 	/* The versions directory outlives the file, so a deletion regretted
 	   -- or done by somebody else at the keyboard -- can be undone. */
 	player_snapshot_milestone( ch, "delete", true );
+	recovery_player_retire( ch->name, "deleted" );
 	do_quit(ch,"");
 	unlink(strsave);
 	return;

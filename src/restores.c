@@ -20,10 +20,27 @@
  * a plain YYYYMMDD_HHMMSS), so PRESTORE lists it like any other and a
  * gear or stash request can name "<stamp>.import".
  *
- * A gear or stash request is applied at the player's next login, once:
- * its id joins the login fixes' record in their file ("restore:<id>"). It
- * waits while their corpse still holds things, as PRESTORE GEAR refuses
- * to make two of everything. Ids are never reused.
+ * A gear or stash request is applied at the player's next login, once.
+ * Once is kept by the recovery ledger (recovery.c), which no restore of
+ * the player's file can roll back. It used to be kept only in the file
+ * ("restore:<id>" among the login fixes), and a full PRESTORE to the copy
+ * taken just before the request -- the obvious undo -- took that mark
+ * away, so the next login applied the same request again (handoff
+ * review, 2026-10-23). The mark is still written to the file, as the one
+ * way to tell, after a crash, whether a request that was pending reached
+ * the file: pending in the ledger and marked in the file means it did.
+ *
+ *   pending     written before anything is applied
+ *   committed   the player file holding the objects has been saved
+ *   rejected    it can never apply (no such snapshot, one that is not
+ *               whole, two that match); a new id is needed
+ *   retry       noted, nothing more: a file that would not open, a save
+ *               that failed, a corpse still holding things -- tried again
+ *               at the next login
+ *
+ * Undoing a request is a new action -- a PRESTORE of the copy taken
+ * before it, itself recorded -- and never makes the request apply again.
+ * Ids are never reused.
  ***************************************************************************/
 
 #include <ctype.h>
@@ -37,7 +54,6 @@
 
 #define RESTORES_FILE  "restores.dat"
 #define RESTORES_DIR   "restores/"
-#define RESTORES_MAX   200
 
 typedef struct restore_entry
 {
@@ -48,8 +64,8 @@ typedef struct restore_entry
     char file[64];
 } RESTORE_ENTRY;
 
-static RESTORE_ENTRY restores[RESTORES_MAX];
-static int restores_count = 0;
+static RESTORE_ENTRY *restores = NULL;
+static int restores_count = 0, restores_cap = 0;
 
 
 static bool restore_word_ok( const char *s, bool dots )
@@ -121,10 +137,27 @@ void restores_boot( void )
     restores_count = 0;
     if ( ( fp = fopen( RESTORES_FILE, "r" ) ) == NULL )
         return;
-    while ( fgets( line, sizeof(line), fp ) != NULL && restores_count < RESTORES_MAX )
+    while ( fgets( line, sizeof(line), fp ) != NULL )
     {
-        RESTORE_ENTRY *e = &restores[restores_count];
+        RESTORE_ENTRY *e;
         int fields;
+
+        /* As many as the file holds: a fixed table stopped at 200 and
+           left every later request unread (handoff review, 2026-10-23). */
+        if ( restores_count >= restores_cap )
+        {
+            int cap = restores_cap ? restores_cap * 2 : 64;
+            RESTORE_ENTRY *grown = realloc( restores, (size_t) cap * sizeof(*grown) );
+
+            if ( grown == NULL )
+            {
+                bug( "restores_boot: out of memory", 0 );
+                break;
+            }
+            restores = grown;
+            restores_cap = cap;
+        }
+        e = &restores[restores_count];
 
         if ( line[0] == '#' || line[0] == '\n' || line[0] == '\r' )
             continue;
@@ -185,8 +218,8 @@ void restores_boot( void )
 }
 
 /* The snapshot a stamp names: "<Player>.<stamp>" exactly, or the one
-   name it is a prefix of. */
-static bool restore_find_snapshot( const RESTORE_ENTRY *e, char *path, size_t size )
+   name it is a prefix of. 1 found, 0 none, -1 more than one. */
+static int restore_find_snapshot( const RESTORE_ENTRY *e, char *path, size_t size )
 {
     char dir[MAX_INPUT_LENGTH];
     char want[MAX_INPUT_LENGTH];
@@ -194,6 +227,7 @@ static bool restore_find_snapshot( const RESTORE_ENTRY *e, char *path, size_t si
     DIR *dp;
     struct dirent *de;
     int matches = 0;
+    bool exact = false;
 
     snprintf( dir, sizeof(dir), "%s%s", PLAYER_VER_DIR, e->player );
     /* A request that brought its own file means the copy boot installed. */
@@ -202,13 +236,13 @@ static bool restore_find_snapshot( const RESTORE_ENTRY *e, char *path, size_t si
     else
         snprintf( want, sizeof(want), "%s.%s", e->player, e->stamp );
     if ( ( dp = opendir( dir ) ) == NULL )
-        return false;
+        return 0;
     while ( ( de = readdir( dp ) ) != NULL )
     {
         if ( !strcmp( de->d_name, want ) )
         {
             toc_strlcpy( found, de->d_name, sizeof(found) );
-            matches = 1;
+            exact = true;
             break;
         }
         if ( !strncmp( de->d_name, want, strlen( want ) ) )
@@ -218,11 +252,13 @@ static bool restore_find_snapshot( const RESTORE_ENTRY *e, char *path, size_t si
         }
     }
     closedir( dp );
-    if ( matches != 1 )
-        return false;
+    if ( !exact && matches > 1 )
+        return -1;
+    if ( !exact && matches == 0 )
+        return 0;
     if ( (size_t) snprintf( path, size, "%s/%.255s", dir, found ) >= size )
-        return false;
-    return true;
+        return 0;
+    return 1;
 }
 
 static bool restore_corpse_waiting( const char *player )
@@ -237,6 +273,43 @@ static bool restore_corpse_waiting( const char *player )
     return false;
 }
 
+/* Whether a snapshot can be read at all now (false: try again later) and,
+   if so, whether it is a whole player file (false in *whole: never). */
+static bool restore_readable( const char *path, bool *whole )
+{
+    FILE *fp = fopen( path, "r" );
+    char line[MAX_INPUT_LENGTH];
+
+    *whole = false;
+    if ( fp == NULL )
+        return false;
+    while ( fgets( line, sizeof(line), fp ) != NULL )
+        if ( !strncmp( line, "#END", 4 ) )
+            *whole = true;
+    if ( ferror( fp ) )
+    {
+        fclose( fp );
+        return false;
+    }
+    fclose( fp );
+    return true;
+}
+
+static void restore_note( const RESTORE_ENTRY *e, const char *state, const char *detail,
+                          bool tell_staff )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    recovery_record( "request", state, e->player, e->id, e->kind, "restores.dat", detail );
+    snprintf( buf, sizeof(buf), "Restores: %s for %s %s: %s.", e->id, e->player,
+              !strcmp( state, "committed" ) ? "applied"
+              : !strcmp( state, "rejected" ) ? "rejected for good"
+              : "waits", detail );
+    log_string( buf );
+    if ( tell_staff )
+        wizinfo( buf, LEVEL_IMMORTAL );
+}
+
 /* From the nanny, once they are in their room: their requests, once. */
 void restores_login( CHAR_DATA *ch )
 {
@@ -244,8 +317,9 @@ void restores_login( CHAR_DATA *ch )
     char why[MAX_INPUT_LENGTH];
     char path[MAX_STRING_LENGTH];
     char mark[64];
-    int i, added;
-    bool changed = false;
+    int i, added, found, state;
+    bool whole;
+    OBJ_DATA *list, *obj;
 
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
         return;
@@ -256,8 +330,19 @@ void restores_login( CHAR_DATA *ch )
         if ( str_cmp( e->player, ch->name ) || !strcmp( e->kind, "import" ) )
             continue;
         snprintf( mark, sizeof(mark), "restore:%s", e->id );
-        if ( player_fix_has( ch, mark ) )
+        state = recovery_request_state( e->id );
+        if ( state == RECOVERY_COMMITTED || state == RECOVERY_REJECTED )
             continue;
+        /* The file says it landed: from before the ledger, or a crash
+           between the save and the ledger's line. Either way, done. */
+        if ( player_fix_has( ch, mark ) )
+        {
+            restore_note( e, "committed", state == RECOVERY_PENDING
+                          ? "the player file already held it (finished after a crash)"
+                          : "the player file already held it (applied before the ledger)",
+                          false );
+            continue;
+        }
         if ( restore_corpse_waiting( ch->name ) )
         {
             snprintf( buf, sizeof(buf), "Restores: %s waits -- %s's corpse still holds "
@@ -265,34 +350,87 @@ void restores_login( CHAR_DATA *ch )
             log_string( buf );
             continue;
         }
-        if ( !restore_find_snapshot( e, path, sizeof(path) ) )
+        found = restore_find_snapshot( e, path, sizeof(path) );
+        if ( found < 0 )
         {
-            snprintf( buf, sizeof(buf), "Restores: %s -- no single snapshot of %s matches %s.",
-                      e->id, ch->name, e->stamp );
-            log_string( buf );
+            restore_note( e, "rejected", "more than one snapshot matches its stamp", true );
+            continue;
+        }
+        if ( found == 0 )
+        {
+            /* A file the request brought may not be installed yet; a stamp
+               with no file names a snapshot that does not exist. */
+            if ( e->file[0] != '\0' )
+                restore_note( e, "retry", "its imported file is not installed yet", false );
+            else
+                restore_note( e, "rejected", "no snapshot matches its stamp", true );
+            continue;
+        }
+        if ( !restore_readable( path, &whole ) )
+        {
+            restore_note( e, "retry", "its snapshot could not be read just now", true );
+            continue;
+        }
+        if ( !whole )
+        {
+            restore_note( e, "rejected", "its snapshot is not a whole player file", true );
             continue;
         }
 
-        player_snapshot_milestone( ch, "gitrestore", true );
+        /* Read aside first: nothing is promised until all of it read. */
+        list = NULL;
         added = !strcmp( e->kind, "gear" )
-              ? gear_restore_from_file( ch, path, why, sizeof(why) )
-              : stash_restore_from_file( ch, path, why, sizeof(why) );
-        /* Once either way: a snapshot that does not read now never will. */
-        player_fix_record( ch, mark );
-        changed = true;
+              ? snapshot_read_gear( ch, path, why, sizeof(why), &list )
+              : snapshot_read_stash( ch, path, why, sizeof(why), &list );
         if ( added < 0 )
         {
-            snprintf( buf, sizeof(buf), "Restores: %s for %s refused: %s.",
-                      e->id, ch->name, why );
-            log_string( buf );
-            wizinfo( buf, LEVEL_IMMORTAL );
+            restore_note( e, "rejected", why, true );
             continue;
         }
+        /* The copy to undo it by, then the pending line: if either fails,
+           nothing has been given and it is tried again next login. */
+        if ( !player_snapshot_milestone( ch, "gitrestore", true ) )
+        {
+            snapshot_discard_gear( list );
+            restore_note( e, "retry", "the copy before it could not be taken", true );
+            continue;
+        }
+        snprintf( buf, sizeof(buf), "%d object%s from %.200s; undo with %s", added,
+                  added == 1 ? "" : "s", path, player_snapshot_last_milestone() );
+        if ( !recovery_record( "request", "pending", ch->name, e->id, e->kind,
+                               "restores.dat", buf ) )
+        {
+            snapshot_discard_gear( list );
+            restore_note( e, "retry", "the ledger could not be written", true );
+            continue;
+        }
+
+        while ( ( obj = list ) != NULL )
+        {
+            list = obj->next_content;
+            obj->next_content = NULL;
+            if ( !strcmp( e->kind, "gear" ) )
+                obj_to_char( obj, ch );
+            else
+                stash_receive( ch, obj );
+        }
+        player_fix_record( ch, mark );
         corpse_registry_forget_player( ch->name );
-        snprintf( buf, sizeof(buf), "Restores: %s gave %s back %d %s object%s from %.300s.",
-                  e->id, ch->name, added, e->kind, added == 1 ? "" : "s", path );
-        log_string( buf );
-        wizinfo( buf, LEVEL_IMMORTAL );
+        if ( !save_char_obj( ch ) )
+        {
+            /* In memory, not yet on the disk: the next save will carry it
+               and the mark, and the pending line resolves at next login. */
+            snprintf( buf, sizeof(buf), "Restores: %s for %s applied in memory, but the "
+                      "save failed; it stays pending until a save lands.", e->id, ch->name );
+            log_string( buf );
+            wizinfo( buf, LEVEL_IMMORTAL );
+        }
+        else
+        {
+            snprintf( buf, sizeof(buf), "gave back %d %s object%s", added, e->kind,
+                      added == 1 ? "" : "s" );
+            restore_note( e, "committed", buf, true );
+        }
         if ( added > 0 )
         {
             snprintf( buf, sizeof(buf),
@@ -303,6 +441,4 @@ void restores_login( CHAR_DATA *ch )
             send_to_char( buf, ch );
         }
     }
-    if ( changed )
-        save_char_obj( ch );
 }

@@ -37,8 +37,36 @@ cleanup()
 }
 trap cleanup EXIT HUP INT TERM
 
-tar -C "$TOC_ROOT" -czf - player \
-    | age -R "$AGE_RECIPIENT_FILE" -o "$archive_path"
+# Each stage checked on its own: /bin/sh has no pipefail, so "tar | age"
+# reported success when tar failed half way and age encrypted what it got
+# (handoff review, 2026-10-23). The plaintext lives only in this private
+# temp dir. corpse/ goes too: a player's corpse is part of what they own
+# (corpses.c), and player/ carries the recovery ledger and the snapshots.
+plain_path="$work_dir/player.tar.gz"
+dirs="player"
+[ -d "$TOC_ROOT/corpse" ] && dirs="$dirs corpse"
+# shellcheck disable=SC2086
+if ! tar -C "$TOC_ROOT" -czf "$plain_path" $dirs; then
+    echo "tar failed; nothing was pushed." >&2
+    exit 1
+fi
+if ! tar -tzf "$plain_path" >"$work_dir/listing" || [ ! -s "$work_dir/listing" ]; then
+    echo "the archive does not read back; nothing was pushed." >&2
+    exit 1
+fi
+archived_files="$(grep -cv '/$' "$work_dir/listing" || true)"
+live_files="$(cd "$TOC_ROOT" && find $dirs -type f | wc -l | tr -d ' ')"
+if [ "$archived_files" -lt "$live_files" ]; then
+    echo "the archive holds $archived_files files of $live_files; nothing was pushed." >&2
+    exit 1
+fi
+if ! age -R "$AGE_RECIPIENT_FILE" -o "$archive_path" "$plain_path" || [ ! -s "$archive_path" ]; then
+    echo "age failed; nothing was pushed." >&2
+    exit 1
+fi
+plain_sha="$(sha256sum "$plain_path" | cut -d' ' -f1)"
+archive_sha="$(sha256sum "$archive_path" | cut -d' ' -f1)"
+rm -f "$plain_path"
 
 mkdir -p "$repo_dir"
 git -C "$repo_dir" init --quiet
@@ -48,15 +76,31 @@ cp "$archive_path" "$repo_dir/player-latest.tar.gz.age"
 cat >"$repo_dir/README.md" <<'EOF'
 # Times of Chaos encrypted player snapshot
 
-`player-latest.tar.gz.age` is an age-encrypted archive created by the ToC
-appliance. The matching private recovery key is deliberately not stored in
-this repository or on the appliance.
+`player-latest.tar.gz.age` is an age-encrypted archive of the game's
+`player/` (characters, snapshots and the recovery ledger) and `corpse/`
+directories. `snapshot.txt` names its checksums. The matching private
+recovery key is deliberately not stored in this repository or on the host.
+
+This branch holds only the latest archive: every push replaces it. It is
+not a version history; the public state sync and the snapshots inside
+the archive are where older states live.
 EOF
+# What a restore checks the archive against. The deployed tree is not a
+# git checkout (installs rsync over it), so the commit comes from the
+# deploy's own marker when there is one.
 (
     cd "$TOC_ROOT"
     printf 'created_utc=%s\n' "$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-    printf 'source_commit=%s\n' "$(git rev-parse HEAD)"
+    if [ -r log/deployed-commit ]; then
+        printf 'source_commit=%s\n' "$(cut -d' ' -f1 log/deployed-commit)"
+    else
+        printf 'source_commit=%s\n' "$(git rev-parse HEAD 2>/dev/null || echo unknown)"
+    fi
+    printf 'directories=%s\n' "$dirs"
+    printf 'file_count=%s\n' "$archived_files"
     printf 'player_file_count=%s\n' "$(find player -type f | wc -l | tr -d ' ')"
+    printf 'plaintext_sha256=%s\n' "$plain_sha"
+    printf 'archive_sha256=%s\n' "$archive_sha"
 ) >"$repo_dir/snapshot.txt"
 
 git -C "$repo_dir" config user.name "ToC Player Backup"

@@ -564,6 +564,8 @@ int main( int argc, char **argv )
     boot_db( );
     playlog_boot( );        /* the crash recorder, once the world is up */
     spellup_boot_place( );
+    /* The recovery ledger: restore receipts and player identities. */
+    recovery_boot( );
     /* Player corpses a restart would have lost, made again (corpses.c). */
     corpse_registry_boot( );
     /* Restores asked for through git (restores.c). */
@@ -575,6 +577,8 @@ int main( int argc, char **argv )
     /* init_web( port + 1 );  REMOVED: Legacy C webserver conflicts with Python server */
     game_loop_unix( control );
     notify_systemd( "STOPPING=1\nSTATUS=Saving players and shutting down" );
+    /* Every player's corpse as it lies, for the next boot. */
+    corpse_registry_flush_all( );
     close ( control );
 #endif
 
@@ -3605,6 +3609,9 @@ case CON_DEFAULT_CHOICE:
 	    quest_login_cooldown( ch );
 	    /* Corrections for bugs since fixed, each once per character
 	       (fixes.c); a character just made is born correct. */
+	    /* Their identity in the recovery ledger, which outlives any
+	       restore of their file (recovery.c). */
+	    recovery_player_login( ch, is_new_character );
 	    player_fixes_login( ch, is_new_character );
 	    /* Restores asked for through git, once each (restores.c). */
 	    if ( !is_new_character )

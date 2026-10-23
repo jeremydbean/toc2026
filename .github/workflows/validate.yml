@@ -12,6 +12,7 @@ on:
       - 'gods/**'
       - 'log/**'
       - 'heroes/**'
+      - 'corpse/**'
       - 'area/notes.txt'
       - 'area/bugs.txt'
       - 'area/ideas.txt'

@@ -2,54 +2,68 @@
 
 The owner's rule (2026-10-23): player data is the most important thing the
 game keeps, and there should be basically no way a player and all their
-gear -- stash included -- cannot be put back to any state. This page is how.
+gear -- stash included -- cannot be put back to any state. This page is how,
+what it does not yet cover, and how long a loss can be.
 
 ## What is kept
 
 | Layer | What | Where | How long |
 | --- | --- | --- | --- |
 | Save snapshots | a copy of the player file at every save, at most one a minute | host, `player/versions/<Name>/<Name>.<stamp>` | every one for a day, the newest of each hour for a week, the newest of each day for a year |
-| Milestones | a copy taken **before** a death, remort, deletion, ADVANCE, staff SET, GRANTPSI, COMBINE, CREATOR or any restore; **after** a level gain or a quest | host, `<Name>.<stamp>.<kind>` | every one for 90 days, and the newest 100 of each kind for ever |
-| Git history | every character file, every five minutes (`toc-state-sync`) | GitHub, `player/<Name>` | for ever |
-| Milestones in git | death, remort, delete, advance, staffset, grantpsi and creator copies | GitHub, `player/versions/<Name>/` | for ever (the sync never deletes them) |
-| Encrypted snapshot | `toc-player-backup`, every six hours | a private repository | see that script |
-| Corpses | a player's corpse lasts a week, and one not yet touched is made again from its death snapshot after a restart | host, `corpse/registry.tsv` | until it is touched, picked up or gone |
+| Milestones | a copy taken **before** a death, remort, deletion, ADVANCE, staff SET, GRANTPSI, COMBINE, CREATOR or any restore, and **before the death penalty** of a mobile's kill; **after** a level gain or a quest | host, `<Name>.<stamp>[_NN].<kind>` | every one for 90 days, and the newest 100 of each kind for ever |
+| Corpses | every player corpse as it actually is -- room, timer, every object at any depth -- written at the death and within a second of any change | host, `corpse/live/<id>.corpse` | a week in the world; made again exactly after a restart |
+| Corpse history | each corpse as it was made, as it ended (rotted, picked up, purged, restored) and a log of what went in and out, by whose command | host, `corpse/history/<Owner>/` | for ever |
+| Recovery ledger | every restore and its undo copy, every milestone with its checksum, every corpse made and ended, each player's permanent uid | host, `player/recovery/ledger.tsv` | for ever; append-only, never rolled back |
+| Git history | every character file, the ledger and the corpses, every five minutes (`toc-state-sync`) | GitHub, `player/`, `corpse/` | for ever |
+| Milestones in git | every tagged copy except level and quest ones | GitHub, `player/versions/<Name>/` | for ever (the sync never deletes them) |
+| Encrypted snapshot | `player/` and `corpse/` in one archive, checked at every stage | a private repository, `toc-player-backup` | the latest only -- see "Not yet" |
 
 The stamp is the server's clock (UTC). PRESTORE shows how long ago each copy
-was taken first, then the time with its zone.
+was taken first, then the time with its zone. A second copy of one kind in
+the same second gets `_02` after its stamp instead of being skipped.
 
 Storage is small: character files average 4 KB and the largest is about
 90 KB, so a heavily played character's year of snapshots is a few tens of
-megabytes.
+megabytes. A corpse file is the size of what it holds.
 
 ## Restoring in the game (staff)
 
 ```
 prestore <player>                     the newest 30, how long ago, level, kind
-prestore <player> all                 every one
-prestore <player> deaths              one kind: deaths, remorts, levels, quests,
-                                      or milestones for all of them
+prestore <player> all [page]          every one, 50 a page
+prestore <player> deaths [page]       one kind: deaths, remorts, levels,
+                                      quests, restores, or milestones
 prestore <player> <stamp> show        what it holds: worn, carried, stash
 prestore <player> <stamp>             the whole character, as they were then
 prestore <player> <stamp> gear        only what they wore and carried, into
                                       their inventory; nothing else changes
 prestore <player> <stamp> stash       only the stash, added to what it holds
+prestore <player> corpses             their corpses: in the world, or ended
+prestore <player> corpse <id> show    what that corpse held
+prestore <player> corpse <id> gear    that, into their inventory, once
 ```
 
 - Use the stamp, not the list number: every save adds a snapshot at the top.
   A unique prefix is enough; add the kind (`20261023_023244.death`) when an
   ordinary save shares the second.
-- Every restore takes a copy first, so a restore can itself be undone.
+- Every restore takes a copy first, so a restore can itself be undone, and
+  writes a receipt to the ledger naming that copy.
 - GEAR (and a request through git) waits while the player's own corpse still
   holds things -- they can fetch it, and restoring too would make two of
   everything. `gear force` overrides that when the corpse is out of reach.
-- A full restore of an online player saves and disconnects them first. GEAR
-  and STASH work online or offline.
-- Any restore takes the player's corpses off the rebuild list.
+- CORPSE GEAR is refused while that corpse is still in the world, and a
+  second time for the same corpse; FORCE overrides either, deliberately.
+- A full restore of an online player saves and disconnects them first. GEAR,
+  STASH and CORPSE work online or offline.
+- Any restore of a player ends their corpses' keeping (they go to history).
 
-**After a death:** `prestore <player> deaths`, then `prestore <player>
-<stamp> show` to check, then either `gear` (keeps their levels and
-experience since) or the whole thing (also undoes what the death cost).
+**After a death:** `prestore <player> corpses` first -- if the corpse ended
+with things in it, `corpse <id> gear` gives back exactly what was left, with
+its enchantments, charges and condition. Otherwise `prestore <player>
+deaths`, then `<stamp> show`, then `gear` (keeps their levels and experience
+since) or the whole thing. A mobile's kill has two copies: "dying, before
+the death's experience penalty" (`.prepenalty`) undoes the penalty too;
+"before death" already carries it.
 
 ## Restoring from a cloud session
 
@@ -60,9 +74,17 @@ can be asked for in `area/restores.dat`:
 <id> <player> <kind> <stamp> [<file>]
 ```
 
-`gear` and `stash` apply at the player's next login, once (the id is kept in
-their file as `restore:<id>`). `import` only installs a file as a snapshot
-staff can PRESTORE. Ids are never reused.
+`gear` and `stash` apply at the player's next login, once. Once is kept in
+the recovery ledger, which no restore of the player's file rolls back: a full
+PRESTORE to the copy taken before the request undoes it and the request
+never runs again (until 2026-10-23 it did -- the mark lived in the player
+file). A request moves through `pending` (written before anything is given)
+to `committed` (the player file holding it is saved). One that can never
+apply -- no snapshot matches, two match, the snapshot is not whole -- is
+`rejected` for good and needs a new id; one that cannot apply yet -- its
+imported file is not installed, a file would not open, the corpse still
+holds things -- is noted as `retry` and tried at the next login. `import`
+only installs a file as a snapshot staff can PRESTORE. Ids are never reused.
 
 `tools/player_history.py` finds the state to restore, from the repository
 root after `git fetch`:
@@ -82,12 +104,40 @@ next login. For a whole-character restore from git, export it as `import`
 and have staff run the full PRESTORE on `<stamp>.import`.
 
 Check the result the same way: `log` shows the file's worn, carried and
-stash counts after the next state sync.
+stash counts after the next state sync, and `player/recovery/ledger.tsv` in
+git says what each request came to.
 
-## What can still be lost
+## How long a loss can be
 
-- Anything between a player's last save and a crash of the game process
-  (saves happen every few minutes and at every level, quest and death).
-- A corpse a player had started looting when a restart came: what was left
-  in it. Their death snapshot still has all of it, for GEAR.
-- Everything, if the host and GitHub were lost together.
+Measured from the code, not promised:
+
+- **A crash of the game process:** what changed since the player's last
+  save. Saves happen at least every autosave cycle and at every level,
+  quest, death, restore and stash change; the file and its rename are
+  flushed to the disk before the save counts.
+- **A corpse:** up to a second of looting before a crash (changes are
+  written within a second); its timer, up to ten minutes stale.
+- **The host lost:** up to five minutes (the state sync), plus anything
+  since the last sync that only the host had.
+- **The host and GitHub lost together:** everything since the last
+  encrypted archive, if it is installed, up to six hours.
+
+## Not yet
+
+These are proposals, not built (handoff review, 2026-10-23):
+
+- Stable identities for objects, so a restore can say which sword came back
+  and refuse one already returned through another route; today a restore
+  matches by what is in a snapshot, and repeating GEAR on the same snapshot
+  adds copies.
+- Selective restores of single items, item properties, worn layout or
+  chosen stats, with preview, conflicts, escrow for displaced items and a
+  compensating undo; and transactional, exactly-once recording of trades
+  and other multi-character changes.
+- A private recovery vault apart from the public sync, with immutable
+  versioned copies (the encrypted archive keeps only the latest), and a
+  measured restore drill on a fresh host.
+- Causal gameplay audit events (reason codes, before/after state, output
+  capture) beyond the play journal and watch log.
+- Archive receipts held off the host before an action is acknowledged; the
+  state sync is asynchronous.

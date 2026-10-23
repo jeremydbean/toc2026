@@ -1857,7 +1857,15 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
  */
 void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
 {
-    corpse_registry_touched( obj, "it was picked up" );
+    /* A player's corpse picked up ends its keeping (corpses.c). */
+    if ( obj->item_type == ITEM_CORPSE_PC )
+    {
+        char why[MAX_INPUT_LENGTH];
+
+        snprintf( why, sizeof(why), "picked up by %s",
+                  ch->name != NULL ? ch->name : "somebody" );
+        corpse_registry_touched( obj, why );
+    }
     /* ITEM_INVENTORY is a shopkeeper's endless stock, and make_corpse
        destroys it -- right for a shopkeeper, who must not drop his
        shelves, and wrong for a player. Hyrule's shop items, the Azeroth
@@ -2386,6 +2394,8 @@ void maxload_subtree( OBJ_DATA *obj, int signval, bool self )
  */
 void obj_to_obj( OBJ_DATA *obj, OBJ_DATA *obj_to )
 {
+    corpse_note_change( obj_to, obj, true );
+    corpse_registry_moved( obj );
     obj->next_content           = obj_to->contains;
     obj_to->contains            = obj;
     obj->in_obj                 = obj_to;
@@ -2423,8 +2433,8 @@ void obj_from_obj( OBJ_DATA *obj )
 	bug( "Obj_from_obj: null obj_from.", 0 );
 	return;
     }
-    if ( obj_from->item_type == ITEM_CORPSE_PC )
-        corpse_registry_touched( obj_from, "something was taken out" );
+    /* Out of a player's corpse, at any depth: written again (corpses.c). */
+    corpse_note_change( obj_from, obj, false );
 
     if ( obj == obj_from->contains )
     {

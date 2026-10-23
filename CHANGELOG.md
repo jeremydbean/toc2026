@@ -23,6 +23,28 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   `tools/player_history.py` reads a character's states from git and exports
   one. `tests/test_prestore_gear.py`, `tests/test_corpse_keep.py`,
   `tests/test_player_backups.py`.
+- **Recovery hardening, phase 1** (handoff review, 2026-10-23). A git
+  restore request re-applied after a full PRESTORE to its own undo copy,
+  because its receipt lived in the player file: receipts now live in an
+  append-only, fsynced ledger (`player/recovery/ledger.tsv`,
+  `src/recovery.c`) with pending/committed/rejected/retry states, which no
+  restore rolls back; players get a permanent uid there. Corpses are written
+  as they actually are (`corpse/live/<id>.corpse`, every object at any depth,
+  nothing left out) at the death and within a second of any change, so a
+  partly looted corpse keeps the rest across restarts; each corpse's first
+  and last states and a log of what went in and out are kept in
+  `corpse/history/`, and PRESTORE CORPSES / CORPSE <id> SHOW|GEAR give an
+  ended corpse's contents back once. A mobile's kill takes a `prepenalty`
+  copy before the experience penalty. Saves and snapshots are fsynced
+  before they are renamed into place and say whether they landed; a
+  snapshot is published only whole, with a checksum in the ledger; two of
+  one kind in one second are `_02`, never skipped; snapshot, request and
+  corpse lists have no fixed caps, and PRESTORE pages. The state sync
+  carries every tagged copy but level and quest ones, `corpse/` and the
+  ledger; `toc-restore` lays `corpse/` down; the encrypted backup checks
+  each stage and carries `corpse/`. `tests/test_recovery_ledger.py` (the
+  review's rollback probe), `tests/test_corpse_keep.py`,
+  `tests/test_player_backups.py`.
 - **Disasters reworked; the black dragon is an encounter** (owner,
   2026-10-23), in a new `src/disaster.c` replacing `update.c`'s
   `disaster_update`. Disasters warn a cycle before striking, never kill,

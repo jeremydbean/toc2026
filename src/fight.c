@@ -1991,6 +1991,11 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
               base_exp = exp_per_level(victim,victim->pcdata->points) * victim->level;
               curr_exp = victim->exp;
               if (curr_exp > base_exp) {
+                /* The death snapshot (raw_kill) is taken after this, so it
+                   already carries the penalty: a copy from before it, for
+                   a death that was a bug (handoff review, 2026-10-23). */
+                if ( !is_creator_in_person( victim ) )
+                    player_snapshot_milestone( victim, "prepenalty", true );
                 gain_exp(victim, (int)UMIN(-1L * ((curr_exp - base_exp)/16),-1L));
               } else if (curr_exp < base_exp) {
                 { snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "[GAMEDRIVER] %s has %ld exp at level %d. Minimum for level is %ld.",
@@ -3024,11 +3029,13 @@ void make_corpse( CHAR_DATA *ch )
 	    obj_to_obj( obj, corpse );
     }
 
+    corpse_registry_making( true );
     obj_to_room( corpse, ch->in_room );
+    corpse_registry_making( false );
     /* Written down, to be made again from the death snapshot if a restart
        comes before it is fetched (corpses.c). */
     if ( !IS_NPC(ch) )
-        corpse_registry_died( ch, corpse );
+        corpse_registry_died( ch, corpse, player_snapshot_last_milestone() );
 
     if ( is_hyrule_ganon(ch) )
     {

@@ -95,11 +95,15 @@ mkdir -p "$CURRENT"
 rsync -a --exclude '.git/' "$BUILD/" "$CURRENT/"
 # These are written by the running game and are not code; they come
 # from the repository on a restore because that is the only copy.
-for d in player gods heroes log; do
+for d in player gods heroes log corpse; do
     [ -d "$BUILD/$d" ] && { mkdir -p "$CURRENT/$d"; rsync -a "$BUILD/$d/" "$CURRENT/$d/"; }
 done
-# corpse/ and backups/ are genuinely empty on a new box; heroes/ is not,
-# and creating it empty here is how a restored game got a blank plaque.
+# corpse/ comes from git too since corpses are written down (corpses.c):
+# the players' corpses lying in the world when the host was lost are made
+# again at boot, and player/recovery/ -- the restore receipts and player
+# identities -- came with player/. backups/ is genuinely empty on a new
+# box; heroes/ is not, and creating it empty here is how a restored game
+# got a blank plaque.
 mkdir -p "$CURRENT/corpse" "$CURRENT/heroes" "$CURRENT/backups"
 echo "   $(ls "$CURRENT/player" | wc -l) characters, $(ls "$CURRENT/heroes" | wc -l) heroes in place"
 

@@ -111,19 +111,34 @@ done
 
 # Except the milestones (owner, 2026-10-23: nearly impossible to lose a
 # player). A copy of a character taken just before a death, a remort, a
-# deletion or a staff change is the exact state worth going back to, and
-# the five-minute history above can miss it by up to five minutes: a
-# death's own save, a moment later, already shows the gear gone. So those
-# reach git too, and are never deleted from it here (no --delete), even
-# after the host prunes its copy. Level and quest copies stay on the host;
-# player/'s history here holds those moments well enough.
+# deletion, a staff change or a restore is the exact state worth going
+# back to, and the five-minute history above can miss it by up to five
+# minutes: a death's own save, a moment later, already shows the gear
+# gone. So every tagged copy -- "<Name>.<stamp>[_NN].<kind>", two dots --
+# reaches git too, the restores' undo copies and the death penalty's
+# included (handoff review, 2026-10-23: a restore needed to be undoable
+# from git as well), and is never deleted from it here (no --delete),
+# even after the host prunes its copy. Level and quest copies stay on the
+# host; player/'s history here holds those moments well enough. An
+# ordinary save ("<Name>.<stamp>", one dot) and a partial never match.
 if [ -d "$TOC_ROOT/player/versions" ]; then
     mkdir -p "$STATE_REPO/player/versions"
-    rsync -a --include='*/' \
-          --include='*.death' --include='*.remort' --include='*.delete' \
-          --include='*.advance' --include='*.staffset' --include='*.grantpsi' \
-          --include='*.creator' --exclude='*' \
+    rsync -a --include='*/' --exclude='.*' \
+          --exclude='*.level' --exclude='*.quest' \
+          --include='*.*.*' --exclude='*' \
           "$TOC_ROOT/player/versions/" "$STATE_REPO/player/versions/"
+fi
+
+# Player corpses (corpses.c): live/ is what lies in the world now, and
+# mirrors the host exactly -- a corpse that ended must not come back from
+# git on a rebuilt host; history/ is every corpse's first and last state
+# and what went in and out, and is never deleted from here.
+if [ -d "$TOC_ROOT/corpse" ]; then
+    mkdir -p "$STATE_REPO/corpse/live" "$STATE_REPO/corpse/history"
+    [ -d "$TOC_ROOT/corpse/live" ] && rsync -a --delete --exclude '*.tmp' \
+        "$TOC_ROOT/corpse/live/" "$STATE_REPO/corpse/live/"
+    [ -d "$TOC_ROOT/corpse/history" ] && rsync -a --exclude '*.tmp' \
+        "$TOC_ROOT/corpse/history/" "$STATE_REPO/corpse/history/"
 fi
 
 for f in $STATE_FILES; do
@@ -167,6 +182,7 @@ for f in $STATE_FILES; do
     [ -f "$STATE_REPO/$f" ] && git add -f "$f"
 done
 [ -d "$STATE_REPO/$BUILT_DIR" ] && git add -f -A "$BUILT_DIR"
+[ -d "$STATE_REPO/corpse" ] && git add -f -A corpse
 
 if git diff --cached --quiet; then
     exit 0

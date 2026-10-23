@@ -11,18 +11,22 @@ holiday item shows once, and they never run out.
 
 @ 20261023i 2026-10-23
 Your corpse now lasts a week instead of minutes, and a reboot no longer
-takes it: one you have not touched comes back where you fell, with
-everything you carried. The game also keeps a copy of you before every
-death and remort and after every level and quest, so the staff can give
-back what a death or a bug cost you.
+takes it: it comes back where you fell with exactly what was still in it.
+If it rots or is lost with things inside, the staff can give those back.
+The game also keeps a copy of you before every death and remort and after
+every level and quest, so the staff can give back what a death or a bug
+cost you.
 
 @ 20261023j 2026-10-23 staff
 PRESTORE lists how long ago each copy was taken, filters by kind (DEATHS,
-REMORTS, LEVELS, QUESTS, MILESTONES, ALL), and has new forms: <stamp>
-SHOW lists worn, carried and stashed items; <stamp> GEAR puts what they
-wore and carried into their inventory and changes nothing else. A
-restore can also be asked for through git (area/restores.dat). HELP
-PRESTORE, wiki/player-backups.md.
+REMORTS, LEVELS, QUESTS, RESTORES, MILESTONES, ALL -- a page at a time),
+and has new forms: <stamp> SHOW lists worn, carried and stashed items;
+<stamp> GEAR puts what they wore and carried into their inventory and
+changes nothing else; CORPSES and CORPSE <id> SHOW|GEAR give back what a
+lost corpse held. A death by a mobile also keeps a copy from before its
+experience penalty. A restore can be asked for through git
+(area/restores.dat) and never runs twice. HELP PRESTORE,
+wiki/player-backups.md.
 
 @ 20261023g 2026-10-23
 Disasters are fairer. Floods, lightning, earthquakes, tornadoes, sand

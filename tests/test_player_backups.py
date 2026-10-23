@@ -74,9 +74,20 @@ class BackupSourceTests(unittest.TestCase):
             versions.mkdir(parents=True)
             (live / "player" / "Zsynced").write_text("#PLAYER\nName Zsynced~\nEnd\n")
             for name in ("Zsynced.20261023_023244", "Zsynced.20261023_023244.death",
+                         "Zsynced.20261023_023244_02.death", "Zsynced.20261023_023200.prepenalty",
                          "Zsynced.20261023_030000.remort", "Zsynced.20261023_031000.quest",
-                         "Zsynced.20261023_032000.level", ".partial"):
+                         "Zsynced.20261023_032000.level", "Zsynced.20261023_033000.prestore",
+                         "Zsynced.20261023_034000.gitrestore", "Zsynced.20261023_035000_02",
+                         ".partial"):
                 (versions / name).write_text("#PLAYER\nName Zsynced~\nEnd\n#END\n")
+            # The recovery ledger rides with player/; corpses have their own.
+            (live / "player" / "recovery").mkdir()
+            (live / "player" / "recovery" / "ledger.tsv").write_text("1\t0\tuid\tassign\n")
+            (live / "corpse" / "live").mkdir(parents=True)
+            (live / "corpse" / "live" / "c1.corpse").write_text("#CORPSE\n")
+            (live / "corpse" / "live" / "c1.corpse.tmp").write_text("half")
+            (live / "corpse" / "history" / "Zsynced").mkdir(parents=True)
+            (live / "corpse" / "history" / "Zsynced" / "c0.carried.corpse").write_text("#CORPSE\n")
             key = root / "key"
             key.write_text("not a key\n")
             env = dict(os.environ, TOC_ROOT=str(live), STATE_REPO=str(root / "state"),
@@ -92,9 +103,73 @@ class BackupSourceTests(unittest.TestCase):
         self.assertIn("player/Zsynced", tree)
         self.assertIn("player/versions/Zsynced/Zsynced.20261023_023244.death", tree)
         self.assertIn("player/versions/Zsynced/Zsynced.20261023_030000.remort", tree)
+        for tagged in ("Zsynced.20261023_023244_02.death", "Zsynced.20261023_023200.prepenalty",
+                       "Zsynced.20261023_033000.prestore", "Zsynced.20261023_034000.gitrestore"):
+            self.assertIn("player/versions/Zsynced/" + tagged, tree)
         for kept_on_host in ("Zsynced.20261023_023244", "Zsynced.20261023_031000.quest",
-                             "Zsynced.20261023_032000.level", ".partial"):
+                             "Zsynced.20261023_032000.level", "Zsynced.20261023_035000_02",
+                             ".partial"):
             self.assertNotIn("player/versions/Zsynced/" + kept_on_host, tree)
+        self.assertIn("player/recovery/ledger.tsv", tree)
+        self.assertIn("corpse/live/c1.corpse", tree)
+        self.assertNotIn("corpse/live/c1.corpse.tmp", tree)
+        self.assertIn("corpse/history/Zsynced/c0.carried.corpse", tree)
+
+    def test_the_encrypted_backup_checks_every_stage_and_carries_corpses(self) -> None:
+        """deploy/sync-player-backup.sh: tar, its listing and age are each
+        checked (sh has no pipefail), corpse/ rides along, and a stage that
+        fails pushes nothing. `age` is a stand-in that copies or fails."""
+        for tool in ("git", "flock", "tar", "sha256sum"):
+            if shutil.which(tool) is None:
+                self.skipTest(f"needs {tool}")
+        script = ROOT / "deploy" / "sync-player-backup.sh"
+        with tempfile.TemporaryDirectory() as tmp:
+            root = pathlib.Path(tmp)
+            bare = root / "backup.git"
+            subprocess.run(["git", "init", "--bare", "-q", "-b", "main", str(bare)], check=True)
+            live = root / "live"
+            (live / "player" / "recovery").mkdir(parents=True)
+            (live / "player" / "Zbacked").write_text("#PLAYER\nEnd\n#END\n")
+            (live / "player" / "recovery" / "ledger.tsv").write_text("1\n")
+            (live / "corpse" / "live").mkdir(parents=True)
+            (live / "corpse" / "live" / "c1.corpse").write_text("#CORPSE\n")
+            (root / "recipient").write_text("age1stand-in\n")
+            (root / "key").write_text("not a key\n")
+            bin_dir = root / "bin"
+            bin_dir.mkdir()
+            stub = bin_dir / "age"
+
+            def push(age_body: str):
+                stub.write_text("#!/bin/sh\n" + age_body)
+                stub.chmod(0o755)
+                env = dict(os.environ, TOC_ROOT=str(live), BACKUP_REMOTE=str(bare),
+                           AGE_RECIPIENT_FILE=str(root / "recipient"),
+                           GIT_SSH_KEY=str(root / "key"), XDG_RUNTIME_DIR=str(root),
+                           PATH=f"{bin_dir}:{os.environ['PATH']}")
+                return subprocess.run(["sh", str(script)], env=env, capture_output=True, text=True)
+
+            failed = push("exit 1\n")
+            failed_refs = subprocess.run(["git", "--git-dir", str(bare), "branch", "--list"],
+                                         capture_output=True, text=True).stdout
+            # The stand-in "encrypts" by copying its last argument to -o.
+            done = push('while [ $# -gt 1 ]; do [ "$1" = -o ] && out="$2"; shift; done\n'
+                        'cp "$1" "$out"\n')
+            snap = subprocess.run(["git", "--git-dir", str(bare), "show", "snapshots:snapshot.txt"],
+                                  capture_output=True, text=True).stdout
+            blob = subprocess.run(["git", "--git-dir", str(bare), "show",
+                                   "snapshots:player-latest.tar.gz.age"], capture_output=True).stdout
+            (root / "out.tgz").write_bytes(blob)
+            listing = subprocess.run(["tar", "-tzf", str(root / "out.tgz")],
+                                     capture_output=True, text=True).stdout
+
+        self.assertNotEqual(failed.returncode, 0)
+        self.assertIn("age failed; nothing was pushed", failed.stderr)
+        self.assertEqual(failed_refs.strip(), "")
+        self.assertEqual(done.returncode, 0, done.stderr)
+        self.assertIn("directories=player corpse", snap)
+        self.assertRegex(snap, r"archive_sha256=[0-9a-f]{64}")
+        self.assertIn("player/recovery/ledger.tsv", listing)
+        self.assertIn("corpse/live/c1.corpse", listing)
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")

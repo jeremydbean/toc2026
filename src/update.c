@@ -2500,6 +2500,11 @@ free_string(obj->description);
 	  } /* end if (ch != NULL) */
 	}
 
+	/* A player's corpse at the end of its week: what it held is kept in
+	   its history before it spills (corpses.c). */
+	if (obj->item_type == ITEM_CORPSE_PC)
+	    corpse_registry_touched( obj, "it rotted away" );
+
 	if (obj->item_type == ITEM_CORPSE_PC && obj->contains)
 	{   /* save the contents */
 	    OBJ_DATA *t_obj, *next_obj;
@@ -3094,6 +3099,9 @@ void update_handler( void )
     walkto_update( );
     playlog_phase = "fight_lag_update";
     fight_lag_update( );
+    /* Player corpses written down within a second of a change. */
+    playlog_phase = "corpse_registry_update";
+    corpse_registry_update( );
 
     if ( --pulse_aggr <= 0 )
     {

@@ -2924,14 +2924,83 @@ void    stash_extract   ( CHAR_DATA *ch );
 int     stash_restore_from_file ( CHAR_DATA *ch, const char *path,
                                   char *why, size_t why_size );
 const char *player_snapshot_last_milestone( void );
-/* corpses.c: a player's corpse outlasts a restart */
+/* What a snapshot came to: published or not, its file and a checksum. */
+typedef struct snapshot_result
+{
+    bool          ok;               /* published, whole, on the disk */
+    bool          saved;            /* the save before it landed */
+    char          name[MAX_INPUT_LENGTH];  /* "<Name>.<stamp>[.<kind>]" */
+    unsigned long hash;             /* FNV-1a of its bytes */
+    long          bytes;
+} SNAPSHOT_RESULT;
+bool    player_snapshot_milestone_result ( CHAR_DATA *ch, const char *tag,
+                                           bool save_first, SNAPSHOT_RESULT *out );
+bool    snapshot_name_parse ( const char *file, const char *cap_name,
+                              size_t *stamp_len, const char **tag );
+int     snapshot_list_sorted ( const char *cap_name, char ***out );
+bool    player_snapshot_tagged ( const char *name, const char *tag,
+                                 SNAPSHOT_RESULT *out );
+void    snapshot_list_free   ( char **names, int count );
+/* recovery.c: the ledger nothing rolls back (player/recovery/) */
+#define RECOVERY_DIR     "../player/recovery/"
+#define RECOVERY_NONE       0
+#define RECOVERY_PENDING    1
+#define RECOVERY_COMMITTED  2
+#define RECOVERY_REJECTED   3
+bool    durable_close         ( FILE *fp );
+bool    durable_dir_sync      ( const char *path );
+bool    durable_commit        ( FILE *fp, const char *temp_path, const char *path );
+bool    recovery_ensure_dir   ( const char *path );
+void    recovery_boot         ( void );
+bool    recovery_record       ( const char *event, const char *state,
+                                const char *player, const char *request,
+                                const char *kind, const char *actor,
+                                const char *detail );
+int     recovery_request_state ( const char *request );
+long    recovery_sequence     ( void );
+const char *recovery_uid      ( const char *name );
+void    recovery_player_login ( CHAR_DATA *ch, bool new_character );
+void    recovery_player_retire ( const char *name, const char *why );
+/* corpses.c: a player's corpse outlasts a restart, as it actually is */
 #define PC_CORPSE_TICKS  10080          /* a week of minute ticks */
-void    corpse_registry_died          ( CHAR_DATA *ch, OBJ_DATA *corpse );
+typedef struct corpse_record
+{
+    char  id[32];
+    char  owner[16];
+    char  uid[24];
+    char  snapshot[MAX_INPUT_LENGTH];   /* the death snapshot, or "-" */
+    char  state[16];                    /* live, or why it was archived */
+    char  why[128];
+    int   room;
+    int   level;
+    int   timer;
+    int   objects;                      /* every object inside, at any depth */
+    long  died;
+    long  saved;
+    bool  owned;
+} CORPSE_RECORD;
+void    corpse_registry_died          ( CHAR_DATA *ch, OBJ_DATA *corpse,
+                                        const char *snapshot );
+void    corpse_note_change            ( OBJ_DATA *container, OBJ_DATA *obj,
+                                        bool in );
 void    corpse_registry_touched       ( OBJ_DATA *corpse, const char *why );
 void    corpse_registry_moved         ( OBJ_DATA *corpse );
+void    corpse_registry_making        ( bool making );
 void    corpse_registry_forget_player ( const char *name );
 bool    corpse_registry_has           ( const char *name );
 void    corpse_registry_boot          ( void );
+void    corpse_registry_update        ( void );
+const char *playlog_cause            ( void );
+void    corpse_registry_flush_all     ( void );
+void    corpse_registry_list          ( CHAR_DATA *ch, const char *name );
+bool    corpse_record_path            ( const char *owner, const char *id,
+                                        char *path, size_t size, bool *live,
+                                        CORPSE_RECORD *rec );
+bool    corpse_file_write  ( const char *path, const CORPSE_RECORD *rec,
+                             OBJ_DATA *contents );
+int     corpse_file_read   ( const char *path, CORPSE_RECORD *rec,
+                             OBJ_DATA **contents, char *why, size_t why_size );
+int     corpse_file_header ( const char *path, CORPSE_RECORD *rec );
 /* restores.c: player restores asked for through git */
 void    restores_boot                 ( void );
 void    restores_login                ( CHAR_DATA *ch );
@@ -3518,7 +3587,7 @@ void load_wizlist      ( void );
 void save_wizlist      ( void );
 
 /* save.c */
-void    save_char_obj   ( CHAR_DATA *ch );
+bool    save_char_obj   ( CHAR_DATA *ch );
 bool    load_char_obj   ( DESCRIPTOR_DATA *d, char *name );
 void    corpse_back     ( CHAR_DATA *ch, OBJ_DATA *corpse );
 /* A corpse history (corpse/<name>.cps) holds the last CORPSE_HISTORY_ROWS
@@ -3532,7 +3601,7 @@ int     corpse_history_read( FILE *fp, int (*cont)[CORPSE_VALUES],
 void    player_snapshot ( const char *name );  /* versioned snapshot of player file */
 void    player_snapshot_force ( const char *name ); /* unthrottled pre-restore snapshot */
 void    player_snapshot_pin ( const char *file ); /* rotation skips it; NULL unpins */
-void    player_snapshot_milestone ( CHAR_DATA *ch, const char *tag, bool save_first );
+bool    player_snapshot_milestone ( CHAR_DATA *ch, const char *tag, bool save_first );
 
 /* skills.c */
 bool    parse_gen_groups ( CHAR_DATA *ch,char *argument );

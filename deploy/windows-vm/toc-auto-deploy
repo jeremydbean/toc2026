@@ -136,6 +136,7 @@ fi
 deployable() {
     git -C "$BUILD" "$@" -- . \
         ':(exclude)player' ':(exclude)gods' ':(exclude)heroes' ':(exclude)log' \
+        ':(exclude)corpse' \
         ':(exclude)notes' ':(exclude)wiki' ':(exclude)tests' ':(exclude).github' \
         ':(exclude,glob)**/*.md' \
         ':(exclude,glob)area/notes.txt' ':(exclude,glob)area/bugs.txt*' \

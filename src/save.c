@@ -42,6 +42,8 @@ extern const WERE_FORM were_types[];
    objects after it land in the stash rather than in inventory. A
    file-static beside rgObjNest, which works the same way. */
 static bool fread_to_stash = false;
+/* Set while a corpse is written, so fwrite_obj leaves nothing out. */
+static bool fwrite_obj_everything = false;
 static	OBJ_DATA *	rgObjNest	[MAX_NEST];
 
 
@@ -60,12 +62,10 @@ static bool snapshot_capitalize_name args( ( char *dst, size_t dst_size,
                                              const char *name ) );
 static bool snapshot_join_path args( ( char *dst, size_t dst_size,
                                        const char *dir, const char *file ) );
-static bool snapshot_build_file args( ( char *dst, size_t dst_size,
-                                        const char *dir, const char *name,
-                                        const char *suffix ) );
+
 static bool snapshot_ensure_dir args( ( const char *path ) );
-static void player_snapshot_internal args( ( const char *name, bool force,
-                                             const char *tag ) );
+static int player_snapshot_internal args( ( const char *name, bool force,
+                                             const char *tag, SNAPSHOT_RESULT *out ) );
 
 #if defined(unix) && defined(CHGRP_TO)
 static bool can_chgrp      args( ( void ) );
@@ -203,19 +203,6 @@ static bool snapshot_join_path( char *dst, size_t dst_size,
 }
 
 
-static bool snapshot_build_file( char *dst, size_t dst_size,
-                                 const char *dir, const char *name,
-                                 const char *suffix )
-{
-    if ( !snapshot_join_path( dst, dst_size, dir, name ) )
-        return false;
-    if ( toc_strlcat( dst, ".", dst_size ) >= dst_size )
-        return false;
-    if ( toc_strlcat( dst, suffix, dst_size ) >= dst_size )
-        return false;
-
-    return true;
-}
 
 
 static bool snapshot_ensure_dir( const char *path )
@@ -263,22 +250,118 @@ static char snapshot_last_milestone[MAX_INPUT_LENGTH];
  * remort, level, quest, a staff change): every one for ninety days, and
  * the newest PLAYER_MILESTONE_MAX of its kind whatever their age. The
  * snapshot PRESTORE is reading (snapshot_pinned) is never taken.
+ *
+ * However many there are: the scan grows as it needs to. It stopped at
+ * 6,000 names, and a year of time-based retention can hold more, so the
+ * oldest past that point were never weighed at all (handoff review,
+ * 2026-10-23).
  */
-#define SNAP_SCAN_MAX         6000
 #define SNAP_KEEP_ALL_SECS    ( 24L * 3600 )
 #define SNAP_KEEP_HOURLY_SECS ( 7L * 24 * 3600 )
 #define SNAP_KEEP_DAILY_SECS  ( 365L * 24 * 3600 )
 #define SNAP_KEEP_ALL_MAX     2000
 #define MILESTONE_KEEP_SECS   ( 90L * 24 * 3600 )
 
-static char snap_scan[SNAP_SCAN_MAX][MAX_INPUT_LENGTH];
+/*
+ * A snapshot's name: "<Name>.YYYYMMDD_HHMMSS", then "_NN" when another of
+ * the same kind was taken the same second, then ".<kind>" for a
+ * milestone. Two deaths in one second used to share a name, and the
+ * second was skipped -- its corpse then pointed at the first (handoff
+ * review, 2026-10-23). stamp_len is how much after "<Name>." is the stamp
+ * with its counter; tag is the kind, or NULL for an ordinary save.
+ */
+bool snapshot_name_parse( const char *file, const char *cap_name,
+                          size_t *stamp_len, const char **tag )
+{
+    size_t nlen = strlen( cap_name );
+    const char *s, *p;
+    int i;
+
+    if ( strncmp( file, cap_name, nlen ) != 0 || file[nlen] != '.' )
+        return false;
+    s = file + nlen + 1;
+    for ( i = 0; i < 15; i++ )
+        if ( i == 8 ? s[i] != '_' : !isdigit( (unsigned char) s[i] ) )
+            return false;
+    p = s + 15;
+    if ( *p == '_' )
+    {
+        if ( !isdigit( (unsigned char) p[1] ) )
+            return false;
+        for ( p++; isdigit( (unsigned char) *p ); p++ )
+            ;
+    }
+    if ( *p != '\0' && ( *p != '.' || p[1] == '\0' ) )
+        return false;
+    if ( stamp_len != NULL )
+        *stamp_len = (size_t) ( p - s );
+    if ( tag != NULL )
+        *tag = *p == '.' ? p + 1 : NULL;
+    return true;
+}
+
+static char *snap_strdup( const char *s )
+{
+    size_t n = strlen( s ) + 1;
+    char *d = malloc( n );
+
+    if ( d != NULL )
+        memcpy( d, s, n );
+    return d;
+}
+
+/* Every snapshot of one player, in a list that grows as it must;
+   snapshot_list_free gives it back. */
+static int snapshot_list( const char *vdir, const char *cap_name, char ***out )
+{
+    DIR *dp = opendir( vdir );
+    struct dirent *ent;
+    char **names = NULL;
+    int count = 0, cap = 0;
+
+    *out = NULL;
+    if ( dp == NULL )
+        return 0;
+    while ( ( ent = readdir( dp ) ) != NULL )
+    {
+        if ( !snapshot_name_parse( ent->d_name, cap_name, NULL, NULL ) )
+            continue;
+        if ( count >= cap )
+        {
+            char **grown;
+
+            cap = cap ? cap * 2 : 256;
+            if ( ( grown = realloc( names, (size_t) cap * sizeof(*names) ) ) == NULL )
+            {
+                bug( "snapshot_list: out of memory", 0 );
+                break;
+            }
+            names = grown;
+        }
+        if ( ( names[count] = snap_strdup( ent->d_name ) ) == NULL )
+            break;
+        count++;
+    }
+    closedir( dp );
+    *out = names;
+    return count;
+}
+
+void snapshot_list_free( char **names, int count )
+{
+    int i;
+
+    for ( i = 0; i < count; i++ )
+        free( names[i] );
+    free( names );
+}
 
 static int snap_newest_first( const void *a, const void *b )
 {
-    return -strcmp( (const char *) a, (const char *) b );
+    return -strcmp( *(const char * const *) a, *(const char * const *) b );
 }
 
-/* The time a snapshot's name records: "<Name>.YYYYMMDD_HHMMSS[.tag]". */
+/* The time a snapshot's name records. */
 static time_t snap_time( const char *file, size_t nlen )
 {
     struct tm t;
@@ -298,48 +381,46 @@ static time_t snap_time( const char *file, size_t nlen )
     return mktime( &t );
 }
 
+int snapshot_list_sorted( const char *cap_name, char ***out )
+{
+    char vdir[MAX_STRING_LENGTH];
+    int count;
+
+    snprintf( vdir, sizeof(vdir), "%s%s", PLAYER_VER_DIR, cap_name );
+    count = snapshot_list( vdir, cap_name, out );
+    if ( count > 1 )
+        qsort( *out, (size_t) count, sizeof(char *), snap_newest_first );
+    return count;
+}
+
 static void snapshot_prune( const char *vdir, const char *cap_name,
                             const char *tag, time_t now )
 {
-    DIR *dp = opendir( vdir );
-    struct dirent *ent;
     size_t nlen = strlen( cap_name );
     bool tagged = tag != NULL && tag[0] != '\0';
     char last_bucket[16] = "";
-    int count = 0, kept = 0, i;
+    char **names;
+    int count, kept = 0, i;
 
-    if ( dp == NULL )
-        return;
-    while ( ( ent = readdir( dp ) ) != NULL && count < SNAP_SCAN_MAX )
-    {
-        /* Ordinary saves are "<Name>.<timestamp>" and are weighed only
-           against each other; a milestone, "<Name>.<timestamp>.<tag>",
-           only against others of its tag. */
-        size_t dlen = strlen( ent->d_name );
-        bool tagged_entry = dlen > nlen + 16 && ent->d_name[nlen + 16] == '.';
-
-        if ( strncmp( ent->d_name, cap_name, nlen ) != 0 || ent->d_name[nlen] != '.' )
-            continue;
-        if ( !tagged )
-        {
-            if ( tagged_entry || dlen != nlen + 16 )
-                continue;
-        }
-        else if ( !tagged_entry || strcmp( ent->d_name + nlen + 17, tag ) != 0 )
-            continue;
-        if ( toc_strlcpy( snap_scan[count], ent->d_name, sizeof(snap_scan[count]) )
-             < sizeof(snap_scan[count]) )
-            count++;
-    }
-    closedir( dp );
-    qsort( snap_scan, (size_t) count, sizeof(snap_scan[0]), snap_newest_first );
+    count = snapshot_list( vdir, cap_name, &names );
+    if ( count > 1 )
+        qsort( names, (size_t) count, sizeof(char *), snap_newest_first );
 
     for ( i = 0; i < count; i++ )
     {
-        const char *file = snap_scan[i];
-        time_t when = snap_time( file, nlen );
-        long age = when > 0 ? (long) difftime( now, when ) : 0;
+        const char *file = names[i];
+        const char *ftag;
+        time_t when;
+        long age;
         bool keep;
+
+        /* Ordinary saves are weighed only against each other; a
+           milestone only against others of its kind. */
+        snapshot_name_parse( file, cap_name, NULL, &ftag );
+        if ( tagged ? ( ftag == NULL || strcmp( ftag, tag ) != 0 ) : ftag != NULL )
+            continue;
+        when = snap_time( file, nlen );
+        age = when > 0 ? (long) difftime( now, when ) : 0;
 
         if ( tagged )
             keep = kept < PLAYER_MILESTONE_MAX || age <= MILESTONE_KEEP_SECS;
@@ -371,27 +452,38 @@ static void snapshot_prune( const char *vdir, const char *cap_name,
                 remove( to_del );
         }
     }
+    snapshot_list_free( names, count );
 }
 
-static void player_snapshot_internal( const char *name, bool force,
-                                      const char *tag )
+#define SNAP_OK         0
+#define SNAP_THROTTLED  1
+#define SNAP_NO_SOURCE  2
+#define SNAP_FAILED     3
+
+static int player_snapshot_internal( const char *name, bool force,
+                                     const char *tag, SNAPSHOT_RESULT *out )
 {
     char cap_name[MAX_INPUT_LENGTH];
     char src[MAX_STRING_LENGTH];
     char vdir[MAX_STRING_LENGTH];
     char dest[MAX_STRING_LENGTH];
     char partial[MAX_STRING_LENGTH];
-    FILE *in, *out;
+    char file[MAX_INPUT_LENGTH];
+    char tail[8] = "";
+    FILE *in, *out_fp;
     time_t now = current_time;
     struct tm *tm_now;
     char ts[32];
-    int  c;
+    int  c, n;
     bool copy_failed = false;
+    unsigned long hash = 2166136261UL;
+    long bytes = 0;
+    struct stat st;
 
     if ( !snapshot_capitalize_name( cap_name, sizeof(cap_name), name ) )
     {
         bug( "player_snapshot: player name too long", 0 );
-        return;
+        return SNAP_FAILED;
     }
 
     /* Source: live player file */
@@ -399,12 +491,12 @@ static void player_snapshot_internal( const char *name, bool force,
       || toc_strlcat( src, cap_name, sizeof(src) ) >= sizeof(src) )
     {
         bug( "player_snapshot: source path too long", 0 );
-        return;
+        return SNAP_FAILED;
     }
 
     /* Does the file exist yet? If not, nothing to snapshot */
     if ( ( in = fopen( src, "rb" ) ) == NULL )
-        return;
+        return SNAP_NO_SOURCE;
 
     /* Ensure per-player version directory exists */
     if ( toc_strlcpy( vdir, PLAYER_VER_DIR, sizeof(vdir) ) >= sizeof(vdir)
@@ -412,13 +504,11 @@ static void player_snapshot_internal( const char *name, bool force,
     {
         fclose( in );
         bug( "player_snapshot: version path too long", 0 );
-        return;
+        return SNAP_FAILED;
     }
 
-    /* Throttle: skip if a snapshot was written within PLAYER_SNAPSHOT_MIN_INTERVAL.
-     * This prevents routine autosaves from creating a snapshot every 30 minutes;
-     * snapshots are still captured on level-up, quit, and other high-value saves
-     * once the interval has elapsed. */
+    /* Throttle: an ordinary save is copied at most once a
+       PLAYER_SNAPSHOT_MIN_INTERVAL; a milestone or a forced copy always. */
     if (!force)
     {
         DIR *dp = opendir( vdir );
@@ -426,15 +516,12 @@ static void player_snapshot_internal( const char *name, bool force,
         {
             char newest[MAX_INPUT_LENGTH] = "";
             struct dirent *ent;
-            size_t nlen = strlen( cap_name );
+
             while ( (ent = readdir( dp )) != NULL )
             {
-                if ( strncmp( ent->d_name, cap_name, nlen ) == 0
-                  && ent->d_name[nlen] == '.' )
-                {
-                    if ( strcmp( ent->d_name, newest ) > 0 )
-                        toc_strlcpy( newest, ent->d_name, sizeof(newest) );
-                }
+                if ( snapshot_name_parse( ent->d_name, cap_name, NULL, NULL )
+                  && strcmp( ent->d_name, newest ) > 0 )
+                    toc_strlcpy( newest, ent->d_name, sizeof(newest) );
             }
             closedir( dp );
             if ( newest[0] != '\0' )
@@ -445,13 +532,13 @@ static void player_snapshot_internal( const char *name, bool force,
                 {
                     fclose( in );
                     bug( "player_snapshot: newest path too long", 0 );
-                    return;
+                    return SNAP_FAILED;
                 }
                 if ( stat( fpath, &fst ) == 0
                   && difftime( now, fst.st_mtime ) < PLAYER_SNAPSHOT_MIN_INTERVAL )
                 {
                     fclose( in );
-                    return;  /* too soon since last snapshot, skip */
+                    return SNAP_THROTTLED;
                 }
             }
         }
@@ -462,102 +549,130 @@ static void player_snapshot_internal( const char *name, bool force,
     {
         fclose( in );
         bug( "player_snapshot: mkdir failed", 0 );
-        return;
+        return SNAP_FAILED;
     }
 
-    /* Build timestamped destination filename */
     tm_now = localtime( &now );
     if ( tm_now == NULL
       || strftime( ts, sizeof(ts), "%Y%m%d_%H%M%S", tm_now ) == 0 )
     {
         fclose( in );
         bug( "player_snapshot: could not format timestamp", 0 );
-        return;
+        return SNAP_FAILED;
     }
-    /* A milestone carries its reason after the timestamp:
-       <Name>.YYYYMMDD_HHMMSS.remort. PRESTORE lists it with that label,
-       and the ordinary rotation below leaves it alone. */
-    if ( tag != NULL && tag[0] != '\0' )
+
+    /* A name nobody has: the stamp, a counter if this second already
+       has one of this kind, and the kind of a milestone --
+       <Name>.YYYYMMDD_HHMMSS[_NN][.remort]. */
+    for ( n = 1; n < 100; n++ )
     {
-        toc_strlcat( ts, ".", sizeof(ts) );
-        toc_strlcat( ts, tag, sizeof(ts) );
+        char stamp[48];
+
+        if ( n == 1 )
+            toc_strlcpy( stamp, ts, sizeof(stamp) );
+        else
+            snprintf( stamp, sizeof(stamp), "%s_%02d", ts, n );
+        if ( tag != NULL && tag[0] != '\0' )
+        {
+            toc_strlcat( stamp, ".", sizeof(stamp) );
+            toc_strlcat( stamp, tag, sizeof(stamp) );
+        }
+        snprintf( file, sizeof(file), "%.60s.%s", cap_name, stamp );
+        if ( !snapshot_join_path( dest, sizeof(dest), vdir, file ) )
+        {
+            fclose( in );
+            bug( "player_snapshot: destination path too long", 0 );
+            return SNAP_FAILED;
+        }
+        if ( stat( dest, &st ) != 0 )
+            break;
     }
-    if ( !snapshot_build_file( dest, sizeof(dest), vdir, cap_name, ts ) )
+    if ( n >= 100 )
     {
         fclose( in );
-        bug( "player_snapshot: destination path too long", 0 );
-        return;
-    }
-    /* The file a milestone is about to be, so the death's corpse can name
-       the snapshot it will be rebuilt from (corpses.c). */
-    if ( tag != NULL && tag[0] != '\0' )
-        snprintf( snapshot_last_milestone, sizeof(snapshot_last_milestone),
-                  "%s.%s", cap_name, ts );
-
-    /* Don't create a duplicate if snapshot already exists for this second */
-    {
-        FILE *test = fopen( dest, "rb" );
-        if ( test != NULL )
-        {
-            fclose( test );
-            fclose( in );
-            return;
-        }
+        bug( "player_snapshot: a hundred copies in one second", 0 );
+        return SNAP_FAILED;
     }
 
     /*
      * Copy src -> a partial file, then rename it into place. Written
      * straight to its final name, a copy the process died in the middle
      * of stayed behind, named like any snapshot, and PRESTORE would put
-     * it over a good live file; a retry the same second then took it as
-     * done (audit, 2026-10-21). The partial name starts with a dot, so
-     * neither PRESTORE's list nor the rotation below ever matches it.
+     * it over a good live file (audit, 2026-10-21). The partial name
+     * starts with a dot, so nothing that lists snapshots matches it. The
+     * copy is flushed to the disk, and only a whole player file -- one
+     * ending in #END -- is published.
      */
     if ( !snapshot_join_path( partial, sizeof(partial), vdir, ".partial" ) )
     {
         fclose( in );
         bug( "player_snapshot: partial path too long", 0 );
-        return;
+        return SNAP_FAILED;
     }
-    if ( ( out = fopen( partial, "wb" ) ) == NULL )
+    if ( ( out_fp = fopen( partial, "wb" ) ) == NULL )
     {
         fclose( in );
         bug( "player_snapshot: fopen dest failed", 0 );
-        return;
+        return SNAP_FAILED;
     }
     while ( ( c = fgetc( in ) ) != EOF )
     {
-        if ( fputc( c, out ) == EOF )
+        if ( fputc( c, out_fp ) == EOF )
         {
             copy_failed = true;
             break;
         }
+        hash = ( hash ^ (unsigned char) c ) * 16777619UL;
+        hash &= 0xffffffffUL;
+        bytes++;
+        memmove( tail, tail + 1, sizeof(tail) - 2 );
+        tail[sizeof(tail) - 2] = (char) c;
     }
     if ( ferror( in ) )
         copy_failed = true;
     fclose( in );
-    if ( fclose( out ) != 0 )
+    if ( !durable_close( out_fp ) )
         copy_failed = true;
+    if ( !copy_failed && strstr( tail, "#END" ) == NULL )
+    {
+        remove( partial );
+        bug( "player_snapshot: the player file is not whole; not published", 0 );
+        return SNAP_FAILED;
+    }
     if ( copy_failed )
     {
         remove( partial );
         bug( "player_snapshot: snapshot copy failed", 0 );
-        return;
+        return SNAP_FAILED;
     }
     if ( rename( partial, dest ) != 0 )
     {
         remove( partial );
         bug( "player_snapshot: could not publish the snapshot", 0 );
-        return;
+        return SNAP_FAILED;
     }
+    durable_dir_sync( dest );
 
+    if ( out != NULL )
+    {
+        out->ok = true;
+        toc_strlcpy( out->name, file, sizeof(out->name) );
+        out->hash = hash;
+        out->bytes = bytes;
+    }
     snapshot_prune( vdir, cap_name, tag, now );
-
+    /* A milestone weighs only its own kind; the ordinary saves are weighed
+       too, as the untagged copy PRESTORE used to take first did, or the
+       ones past their year waited for a save the throttle let through. */
+    if ( tag != NULL && tag[0] != '\0' )
+        snapshot_prune( vdir, cap_name, NULL, now );
+    return SNAP_OK;
 }
 
 
-/* The file name of the last milestone written ("Alaric.20261023_023244.death"),
-   or "" -- read straight after player_snapshot_milestone. */
+/* The file name of the last milestone published ("Alaric.20261023_023244
+   .death"), or "" -- read straight after player_snapshot_milestone. Set
+   only once the copy is on the disk, never for one that failed. */
 const char *player_snapshot_last_milestone( void )
 {
     return snapshot_last_milestone;
@@ -575,13 +690,13 @@ void player_snapshot_pin( const char *file )
 
 void player_snapshot( const char *name )
 {
-    player_snapshot_internal(name, false, NULL);
+    player_snapshot_internal(name, false, NULL, NULL);
 }
 
 
 void player_snapshot_force( const char *name )
 {
-    player_snapshot_internal(name, true, NULL);
+    player_snapshot_internal(name, true, NULL, NULL);
 }
 
 
@@ -592,20 +707,73 @@ void player_snapshot_force( const char *name )
  * Alaric at -5515 hit points with nothing but a hand-built restore to fix
  * it. save_first writes the in-memory character out first; pass false
  * only where the file on disk is the thing worth keeping (a login whose
- * repair is about to change it). Written to the log, so whoever is
- * restoring finds it.
+ * repair is about to change it).
+ *
+ * Says what it came to: out->ok only for a copy published whole, and
+ * out->saved false when the save before it failed -- the copy is then of
+ * the last good save, and the log says so. It used to log "taken"
+ * whatever happened (handoff review, 2026-10-23). Each published
+ * milestone is entered in the recovery ledger with its checksum.
  */
-void player_snapshot_milestone( CHAR_DATA *ch, const char *tag, bool save_first )
+bool player_snapshot_milestone_result( CHAR_DATA *ch, const char *tag,
+                                       bool save_first, SNAPSHOT_RESULT *out )
 {
+    SNAPSHOT_RESULT local;
+    SNAPSHOT_RESULT *res = out != NULL ? out : &local;
+    char detail[MAX_INPUT_LENGTH + 64];
+    int status;
+
+    memset( res, 0, sizeof(*res) );
+    res->saved = true;
+    snapshot_last_milestone[0] = '\0';
     if ( ch == NULL || IS_NPC(ch) || ch->name == NULL )
-        return;
+        return false;
     if ( save_first )
-        save_char_obj( ch );
-    player_snapshot_internal( ch->name, true, tag );
+        res->saved = save_char_obj( ch );
+    status = player_snapshot_internal( ch->name, true, tag, res );
+    if ( status != SNAP_OK )
+    {
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+            "Snapshot of %s before %s FAILED%s; see the BUG line above.",
+            ch->name, tag, status == SNAP_NO_SOURCE ? " (no player file yet)" : "" );
+        log_string( log_buf );
+        return false;
+    }
+    toc_strlcpy( snapshot_last_milestone, res->name, sizeof(snapshot_last_milestone) );
     snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
-        "Snapshot of %s taken before %s (PRESTORE %s to see it).",
-        ch->name, tag, ch->name );
+        "Snapshot of %s taken before %s: %s%s (PRESTORE %s to see it).",
+        ch->name, tag, res->name,
+        res->saved ? "" : " -- the save before it FAILED, so it holds the last good save",
+        ch->name );
     log_string( log_buf );
+    snprintf( detail, sizeof(detail), "%s fnv %08lx %ld bytes%s", res->name,
+              res->hash, res->bytes, res->saved ? "" : " (save failed first)" );
+    recovery_record( "snapshot", "committed", ch->name, "-", tag, "-", detail );
+    return res->saved;
+}
+
+/* A tagged copy of a player's file as it lies, nobody loaded: PRESTORE
+   takes one before it puts an older file over it, so the restore can be
+   undone and the copy is listed and kept as a milestone. */
+bool player_snapshot_tagged( const char *name, const char *tag, SNAPSHOT_RESULT *out )
+{
+    char detail[MAX_INPUT_LENGTH + 64];
+
+    memset( out, 0, sizeof(*out) );
+    out->saved = true;
+    if ( player_snapshot_internal( name, true, tag, out ) != SNAP_OK )
+        return false;
+    snprintf( detail, sizeof(detail), "%s fnv %08lx %ld bytes", out->name,
+              out->hash, out->bytes );
+    recovery_record( "snapshot", "committed", name, "-", tag, "-", detail );
+    return true;
+}
+
+bool player_snapshot_milestone( CHAR_DATA *ch, const char *tag, bool save_first )
+{
+    SNAPSHOT_RESULT res;
+
+    return player_snapshot_milestone_result( ch, tag, save_first, &res ) && res.ok;
 }
 
 
@@ -614,7 +782,12 @@ void player_snapshot_milestone( CHAR_DATA *ch, const char *tag, bool save_first 
  * Would be cool to save NPC's too for quest purposes,
  *   some of the infrastructure is provided.
  */
-void save_char_obj( CHAR_DATA *ch )
+/*
+ * Says whether the file landed: written whole, flushed to the disk and
+ * renamed into place. Callers that record something on the strength of
+ * a save (a restore's receipt, a snapshot) ask.
+ */
+bool save_char_obj( CHAR_DATA *ch )
 {
     char strsave[MAX_INPUT_LENGTH];
     FILE *fp;
@@ -623,7 +796,7 @@ void save_char_obj( CHAR_DATA *ch )
     bool save_succeeded = false;
 
     if ( IS_NPC(ch) )
-	return;
+	return false;
 
     if (ch->pcdata->ignore == NULL)
     ch->pcdata->ignore = str_dup(" ");
@@ -732,7 +905,10 @@ void save_char_obj( CHAR_DATA *ch )
 	    fwrite_obj( ch, ch->pcdata->stash, fp, 0 );
 	}
         fprintf( fp, "#END\n" );
-        if (fclose( fp ) != 0)
+        /* On the disk, not only in the kernel, before it replaces the
+           good copy: a power cut after a rename of unwritten data left
+           an empty file where the character was. */
+        if (!durable_close( fp ))
         {
             bug("save_char_obj: player file write failed.", 0);
             perror(PLAYER_TEMP);
@@ -747,6 +923,7 @@ void save_char_obj( CHAR_DATA *ch )
         else
         {
             save_succeeded = true;
+            durable_dir_sync( strsave );
 #if defined(unix) && defined(CHGRP_TO)
             if (!apply_chgrp(strsave))
                 bug("save_char_obj: player file chgrp failed.", 0);
@@ -766,7 +943,7 @@ void save_char_obj( CHAR_DATA *ch )
         bug("save_char_obj: could not reopen fpReserve at end", 0);
         perror(NULL_FILE);
     }
-    return;
+    return save_succeeded;
 }
 
 
@@ -1219,8 +1396,11 @@ void fwrite_obj( CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest )
 	fwrite_obj( ch, obj->next_content, fp, iNest );
 
     /* Active recovery tokens belong to a timed world quest. Saving one while
-       the QUESTOR flag is intentionally stripped would strand it after login. */
-    if ( obj->pIndexData != NULL
+       the QUESTOR flag is intentionally stripped would strand it after login.
+       A corpse file keeps everything: it is a record of what lay there,
+       not a character about to log in (corpse_file_write). */
+    if ( !fwrite_obj_everything
+    &&   obj->pIndexData != NULL
     &&   obj->pIndexData->vnum >= OBJ_VNUM_QUEST_TOKEN_FIRST
     &&   obj->pIndexData->vnum <= OBJ_VNUM_QUEST_TOKEN_LAST
     &&   obj->value[4] != 0 )
@@ -1243,12 +1423,13 @@ void fwrite_obj( CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest )
      * in its shops for 80 and 100 rupees, and a purchase that vanished at
      * the next quit would be money thrown away.
      */
-    if ( ( obj->item_type == ITEM_KEY
+    if ( !fwrite_obj_everything
+    &&   ( ( obj->item_type == ITEM_KEY
         && !( obj->pIndexData != NULL
            && ( obj->pIndexData->vnum == 30227
              || obj->pIndexData->vnum == OBJ_VNUM_HYRULE_SHOP_KEY
              || obj->pIndexData->vnum == OBJ_VNUM_HYRULE_SHOP_KEY_CHEAP ) ) )
-    ||   (obj->item_type == ITEM_MAP && !obj->value[0]))
+    ||   (obj->item_type == ITEM_MAP && !obj->value[0])) )
 	return;
 
     fprintf( fp, "#O\n" );
@@ -2520,6 +2701,111 @@ static int scan_gear_section( FILE *fp, int version )
 }
 
 /*
+ * The objects from fp's position to the next #END, #PET or #STASH, read
+ * as a stash is: into a list of their own, set aside through ch, so
+ * nothing joins anybody -- or counts -- until all of it has read. The
+ * file is closed. Returns how many top-level objects came back, or -1
+ * (and nothing) when the count is not `expected`, every object at any
+ * depth, or the records did not read cleanly.
+ */
+static int read_objects_aside( CHAR_DATA *ch, FILE *fp, int version, int expected,
+                               OBJ_DATA **list, char *why, size_t why_size )
+{
+    int iNest;
+    int read_back;
+    int added;
+    sh_int live_version;
+    bool clean = true;
+    OBJ_DATA *live_stash;
+    OBJ_DATA *restored;
+    OBJ_DATA *obj;
+
+    for ( iNest = 0; iNest < MAX_NEST; iNest++ )
+        rgObjNest[iNest] = NULL;
+    live_version = ch->version;
+    ch->version = (sh_int) version;
+    live_stash = ch->pcdata->stash;
+    ch->pcdata->stash = NULL;
+    fread_to_stash = true;
+
+    for ( ; ; )
+    {
+        char letter;
+        char *word;
+
+        if ( feof( fp ) )
+        {
+            clean = false;
+            break;
+        }
+        letter = fread_letter( fp );
+        if ( letter == '*' )
+        {
+            fread_to_eol( fp );
+            continue;
+        }
+        if ( letter != '#' )
+        {
+            bug( "read_objects_aside: # not found.", 0 );
+            clean = false;
+            break;
+        }
+        word = fread_word( fp );
+        if      ( !str_cmp( word, "O"      ) ) fread_obj( ch, fp );
+        else if ( !str_cmp( word, "OBJECT" ) ) fread_obj( ch, fp );
+        else if ( !str_cmp( word, "END" ) || !str_cmp( word, "PET" )
+             ||   !str_cmp( word, "STASH" ) )
+            break;
+        else
+        {
+            bug( "read_objects_aside: bad section.", 0 );
+            clean = false;
+            break;
+        }
+    }
+
+    fread_to_stash = false;
+    ch->version = live_version;
+    fclose( fp );
+    for ( iNest = 0; iNest < MAX_NEST; iNest++ )
+        rgObjNest[iNest] = NULL;
+
+    restored = ch->pcdata->stash;
+    ch->pcdata->stash = live_stash;
+
+    read_back = count_obj_tree( restored );
+    if ( !clean || read_back != expected )
+    {
+        discard_stash_list( restored );
+        if ( clean )
+            snprintf( why, why_size,
+                      "%d of its %d object%s could not be read back",
+                      expected - read_back, expected, expected == 1 ? "" : "s" );
+        else
+            snprintf( why, why_size, "its objects did not read cleanly" );
+        return -1;
+    }
+
+    /* Whole: handed back as a list, nothing worn, in the file's order. */
+    {
+        OBJ_DATA *reversed = NULL;
+
+        while ( ( obj = restored ) != NULL )
+        {
+            restored = obj->next_content;
+            obj->wear_loc = WEAR_NONE;
+            obj->next_content = reversed;
+            reversed = obj;
+        }
+        *list = reversed;
+    }
+    added = 0;
+    for ( obj = *list; obj != NULL; obj = obj->next_content )
+        added++;
+    return added;
+}
+
+/*
  * PRESTORE <player> <stamp> GEAR (owner, 2026-10-23: the moment a player
  * dies their gear is backed up and restorable): the objects the snapshot's
  * character wore and carried, put into the live character's inventory --
@@ -2535,17 +2821,9 @@ int snapshot_read_gear( CHAR_DATA *ch, const char *path,
 {
     FILE *fp;
     char line[MAX_INPUT_LENGTH];
-    int iNest;
     int snapshot_version = -1;
     int expected;
-    int read_back;
-    int added;
     long section = -1;
-    sh_int live_version;
-    bool clean = true;
-    OBJ_DATA *live_stash;
-    OBJ_DATA *restored;
-    OBJ_DATA *obj;
 
     *list = NULL;
     snprintf( why, why_size, "cannot read the snapshot file" );
@@ -2598,93 +2876,9 @@ int snapshot_read_gear( CHAR_DATA *ch, const char *path,
         return -1;
     }
 
-    for ( iNest = 0; iNest < MAX_NEST; iNest++ )
-        rgObjNest[iNest] = NULL;
-    live_version = ch->version;
-    if ( snapshot_version >= 0 )
-        ch->version = (sh_int) snapshot_version;
-
-    /* Read as a stash is: into a list of their own, set aside, so nothing
-       joins the character -- or counts -- until all of it has read. */
-    live_stash = ch->pcdata->stash;
-    ch->pcdata->stash = NULL;
-    fread_to_stash = true;
-
-    for ( ; ; )
-    {
-        char letter;
-        char *word;
-
-        if ( feof( fp ) )
-        {
-            clean = false;
-            break;
-        }
-        letter = fread_letter( fp );
-        if ( letter == '*' )
-        {
-            fread_to_eol( fp );
-            continue;
-        }
-        if ( letter != '#' )
-        {
-            bug( "gear_restore_from_file: # not found.", 0 );
-            clean = false;
-            break;
-        }
-        word = fread_word( fp );
-        if      ( !str_cmp( word, "O"      ) ) fread_obj( ch, fp );
-        else if ( !str_cmp( word, "OBJECT" ) ) fread_obj( ch, fp );
-        else if ( !str_cmp( word, "END" ) || !str_cmp( word, "PET" )
-             ||   !str_cmp( word, "STASH" ) )
-            break;
-        else
-        {
-            bug( "gear_restore_from_file: bad section.", 0 );
-            clean = false;
-            break;
-        }
-    }
-
-    fread_to_stash = false;
-    ch->version = live_version;
-    fclose( fp );
-    for ( iNest = 0; iNest < MAX_NEST; iNest++ )
-        rgObjNest[iNest] = NULL;
-
-    restored = ch->pcdata->stash;
-    ch->pcdata->stash = live_stash;
-
-    read_back = count_obj_tree( restored );
-    if ( !clean || read_back != expected )
-    {
-        discard_stash_list( restored );
-        if ( clean )
-            snprintf( why, why_size,
-                      "%d of its %d object%s could not be read back",
-                      expected - read_back, expected, expected == 1 ? "" : "s" );
-        else
-            snprintf( why, why_size, "its objects did not read cleanly" );
-        return -1;
-    }
-
-    /* Whole: handed back as a list, nothing worn, in the file's order. */
-    {
-        OBJ_DATA *reversed = NULL;
-
-        while ( ( obj = restored ) != NULL )
-        {
-            restored = obj->next_content;
-            obj->wear_loc = WEAR_NONE;
-            obj->next_content = reversed;
-            reversed = obj;
-        }
-        *list = reversed;
-    }
-    added = 0;
-    for ( obj = *list; obj != NULL; obj = obj->next_content )
-        added++;
-    return added;
+    return read_objects_aside( ch, fp,
+               snapshot_version >= 0 ? snapshot_version : ch->version,
+               expected, list, why, why_size );
 }
 
 /* Objects snapshot_read_gear handed back and nobody kept. */
@@ -2710,6 +2904,166 @@ int gear_restore_from_file( CHAR_DATA *ch, const char *path,
         obj_to_char( obj, ch );
     }
     return added;
+}
+
+
+/*
+ * A player's corpse, written down as it actually is (corpses.c): a header
+ * of what it is and where, then every object in it, at any depth, with
+ * nothing left out -- keys and blank maps included, which a player file
+ * drops -- and #END. Written aside and flushed to the disk before it is
+ * renamed into place.
+ *
+ *   #CORPSE
+ *   Id C6539a1b2003f
+ *   Owner Alaric
+ *   ...
+ *   End
+ *   #O ...
+ *   #END
+ */
+bool corpse_file_write( const char *path, const CORPSE_RECORD *rec,
+                        OBJ_DATA *contents )
+{
+    char temp[MAX_STRING_LENGTH];
+    FILE *fp;
+
+    if ( (size_t) snprintf( temp, sizeof(temp), "%s.tmp", path ) >= sizeof(temp) )
+        return false;
+    if ( ( fp = fopen( temp, "w" ) ) == NULL )
+    {
+        bug( "corpse_file_write: cannot open a temp file", 0 );
+        return false;
+    }
+    fprintf( fp, "#CORPSE\n" );
+    fprintf( fp, "Id %s\n", rec->id );
+    fprintf( fp, "Owner %s\n", rec->owner );
+    fprintf( fp, "Uid %s\n", rec->uid[0] != '\0' ? rec->uid : "-" );
+    fprintf( fp, "Owned %d\n", rec->owned ? 1 : 0 );
+    fprintf( fp, "Room %d\n", rec->room );
+    fprintf( fp, "Level %d\n", rec->level );
+    fprintf( fp, "Timer %d\n", rec->timer );
+    fprintf( fp, "Died %ld\n", rec->died );
+    fprintf( fp, "Saved %ld\n", (long) current_time );
+    fprintf( fp, "Snapshot %s\n", rec->snapshot[0] != '\0' ? rec->snapshot : "-" );
+    fprintf( fp, "State %s\n", rec->state[0] != '\0' ? rec->state : "live" );
+    fprintf( fp, "Why %s\n", rec->why[0] != '\0' ? rec->why : "-" );
+    fprintf( fp, "Objects %d\n", count_obj_tree( contents ) );
+    fprintf( fp, "Vers %d\n", 4 );
+    fprintf( fp, "End\n\n" );
+    if ( contents != NULL )
+    {
+        fwrite_obj_everything = true;
+        fwrite_obj( NULL, contents, fp, 0 );
+        fwrite_obj_everything = false;
+    }
+    fprintf( fp, "#END\n" );
+    return durable_commit( fp, temp, path );
+}
+
+/* The header, and the file left just past it; NULL if it is not one. */
+static FILE *corpse_file_open( const char *path, CORPSE_RECORD *rec, int *version )
+{
+    FILE *fp;
+    char line[MAX_STRING_LENGTH];
+    bool header = false, ended = false;
+
+    memset( rec, 0, sizeof(*rec) );
+    *version = 4;
+    if ( ( fp = fopen( path, "r" ) ) == NULL )
+        return NULL;
+    while ( fgets( line, sizeof(line), fp ) != NULL )
+    {
+        char *value;
+
+        line[strcspn( line, "\r\n" )] = '\0';
+        if ( !header )
+        {
+            if ( strcmp( line, "#CORPSE" ) != 0 )
+                break;
+            header = true;
+            continue;
+        }
+        if ( !strcmp( line, "End" ) )
+        {
+            ended = true;
+            break;
+        }
+        if ( ( value = strchr( line, ' ' ) ) == NULL )
+            continue;
+        *value++ = '\0';
+        if      ( !strcmp( line, "Id" ) )       toc_strlcpy( rec->id, value, sizeof(rec->id) );
+        else if ( !strcmp( line, "Owner" ) )    toc_strlcpy( rec->owner, value, sizeof(rec->owner) );
+        else if ( !strcmp( line, "Uid" ) )      toc_strlcpy( rec->uid, strcmp( value, "-" ) ? value : "", sizeof(rec->uid) );
+        else if ( !strcmp( line, "Owned" ) )    rec->owned = atoi( value ) != 0;
+        else if ( !strcmp( line, "Room" ) )     rec->room = atoi( value );
+        else if ( !strcmp( line, "Level" ) )    rec->level = atoi( value );
+        else if ( !strcmp( line, "Timer" ) )    rec->timer = atoi( value );
+        else if ( !strcmp( line, "Died" ) )     rec->died = atol( value );
+        else if ( !strcmp( line, "Saved" ) )    rec->saved = atol( value );
+        else if ( !strcmp( line, "Snapshot" ) ) toc_strlcpy( rec->snapshot, strcmp( value, "-" ) ? value : "", sizeof(rec->snapshot) );
+        else if ( !strcmp( line, "State" ) )    toc_strlcpy( rec->state, value, sizeof(rec->state) );
+        else if ( !strcmp( line, "Why" ) )      toc_strlcpy( rec->why, strcmp( value, "-" ) ? value : "", sizeof(rec->why) );
+        else if ( !strcmp( line, "Objects" ) )  rec->objects = atoi( value );
+        else if ( !strcmp( line, "Vers" ) )     *version = atoi( value );
+    }
+    if ( !ended || rec->id[0] == '\0' || rec->owner[0] == '\0' )
+    {
+        fclose( fp );
+        return NULL;
+    }
+    return fp;
+}
+
+/* Only the header: 1, or -1 when the file is not a whole corpse record. */
+int corpse_file_header( const char *path, CORPSE_RECORD *rec )
+{
+    int version;
+    FILE *fp = corpse_file_open( path, rec, &version );
+
+    if ( fp == NULL )
+        return -1;
+    fclose( fp );
+    return 1;
+}
+
+/*
+ * The header and every object, read aside as a snapshot's are and handed
+ * back as a list -- or nothing, and -1 with the reason, unless the file
+ * is whole: the header's count, the records and #END all agree.
+ */
+int corpse_file_read( const char *path, CORPSE_RECORD *rec, OBJ_DATA **contents,
+                      char *why, size_t why_size )
+{
+    static CHAR_DATA vessel;
+    static PC_DATA vessel_pc;
+    FILE *fp;
+    long section;
+    int version, expected;
+
+    *contents = NULL;
+    snprintf( why, why_size, "it is not a whole corpse record" );
+    if ( ( fp = corpse_file_open( path, rec, &version ) ) == NULL )
+        return -1;
+    if ( ( section = ftell( fp ) ) < 0 )
+    {
+        fclose( fp );
+        return -1;
+    }
+    expected = scan_gear_section( fp, version );
+    if ( expected < 0 || expected != rec->objects || fseek( fp, section, SEEK_SET ) != 0 )
+    {
+        fclose( fp );
+        snprintf( why, why_size, "its objects are cut short or do not match its count" );
+        return -1;
+    }
+    /* fread_obj reads through a character: a bare one of our own does,
+       since what it reads is set aside and joins nobody. */
+    memset( &vessel, 0, sizeof(vessel) );
+    memset( &vessel_pc, 0, sizeof(vessel_pc) );
+    vessel.pcdata = &vessel_pc;
+    vessel.name = "the corpse keeper";
+    return read_objects_aside( &vessel, fp, version, expected, contents, why, why_size );
 }
 
 

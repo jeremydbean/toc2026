@@ -697,6 +697,11 @@ class TrainingDummyTests(unittest.TestCase):
         sync = read("deploy", "windows-vm", "toc-state-sync")
         dirs = _re.search(r'STATE_DIRS="([^"]*)"', sync).group(1).split()
         self.assertEqual(set(dirs), {"player", "gods", "heroes", "log"})
+        # corpse/ has a block of its own (live/ mirrored, history/ kept),
+        # and is restored like the rest (corpses.c, 2026-10-23).
+        self.assertIn('"$TOC_ROOT/corpse/live/" "$STATE_REPO/corpse/live/"', sync)
+        self.assertIn("git add -f -A corpse", sync)
+        dirs = dirs + ["corpse"]
 
         restore = read("deploy", "toc-restore")
         restored = _re.search(r"for d in ([a-z ]+); do", restore).group(1).split()

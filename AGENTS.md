@@ -1245,38 +1245,69 @@ never trained since.
 Owner, 2026-10-23: player data is the most important thing the game
 keeps, and there must be basically no way a player and all their gear,
 stash included, cannot be put back. `wiki/player-backups.md` is the
-guide. The rules the code depends on:
+guide, with the loss windows and what is still only a proposal. The
+rules the code depends on:
 
-- **Snapshots are `player/versions/<Name>/<Name>.<stamp>[.<kind>]`**,
+- **Snapshots are `player/versions/<Name>/<Name>.<stamp>[_NN][.<kind>]`**,
   taken at every save (at most one a minute) and as milestones: before
   death, remort, delete, ADVANCE, staff SET, GRANTPSI, COMBINE, CREATOR
-  and every restore; after a level (`advance_level`'s wrapper, not an
-  ADVANCE) and a quest (`complete_automatic_quest`'s wrapper).
-  `snapshot_prune()` in `save.c` keeps every untagged copy for a day, the
-  newest of each hour for a week and of each day for a year; a tagged one
-  for 90 days and the newest `PLAYER_MILESTONE_MAX` of its kind for ever;
-  the pinned one always. A new milestone kind needs a PRESTORE label and,
-  if it should reach git, an include in `toc-state-sync`'s milestone rsync
-  (which never deletes).
+  and every restore (`prestore`, `gitrestore`, `gearrestore`,
+  `stashrestore`, `corpserestore`); before a mobile's kill takes its
+  experience (`prepenalty`: the `death` copy already carries the
+  penalty); after a level (`advance_level`'s wrapper) and a quest.
+  `_NN` is a second copy of one kind in one second -- never skip one.
+  `snapshot_name_parse()` is the one reader of the name; a new tool that
+  lists snapshots goes through it. `snapshot_prune()` keeps every
+  untagged copy for a day, the newest of each hour for a week and of each
+  day for a year; a tagged one for 90 days and the newest
+  `PLAYER_MILESTONE_MAX` of its kind for ever; the pinned one always.
+  No list has a fixed cap (`snapshot_list_sorted` grows; PRESTORE pages).
+- **A save or snapshot says whether it landed.** `save_char_obj` returns
+  it; the file is fsynced before the rename and the directory after
+  (`durable_close`, `durable_dir_sync` in `recovery.c`). A snapshot is
+  published only whole (it ends `#END`), and a milestone goes in the
+  ledger with its checksum. Record nothing on the strength of a save or
+  snapshot that did not land.
 - **Reading a snapshot never touches the game until all of it read.**
-  `snapshot_read_gear` and `snapshot_read_stash` read objects aside in
-  stash mode and return the list or nothing; GEAR, STASH and the git
-  restores share them. Use them for any new partial restore.
-- **A player's corpse lasts `PC_CORPSE_TICKS` (a week)** and is recorded
-  in `corpse/registry.tsv` (`src/corpses.c`) against its death snapshot.
-  Taking anything out, picking it up or extracting it closes the record
-  -- except at shutdown (`merc_down`), which is exactly when it must
-  survive -- and boot rebuilds each still-open corpse where it lay from
-  that snapshot. Any restore forgets the player's records, or the corpse
-  and the restore would make two of everything; PRESTORE GEAR refuses
-  while a corpse holds things, unless FORCE.
+  `snapshot_read_gear`/`snapshot_read_stash`/`corpse_file_read` read aside
+  through `read_objects_aside` and return the list or nothing.
+- **Receipts live in the recovery ledger, never only in the player
+  file** (handoff review, 2026-10-23: a git request's `restore:<id>` mark
+  in the file was rolled back by a PRESTORE to its own undo copy, and the
+  request ran again). `player/recovery/ledger.tsv` is append-only and
+  fsynced: requests (pending, committed, rejected, retry), every PRESTORE
+  with the copy that undoes it, milestones, corpses, and each player's
+  uid (`recovery_uid`: made with the character, retired at deletion,
+  never in the player file). An undo is a new event. Retry is for what
+  may work later (a file not installed, a read or save that failed, a
+  corpse still holding things); rejected for what never will. A request
+  writes pending before it gives anything and committed after the save;
+  the file's mark only resolves a pending one after a crash.
+- **A player's corpse is written down as it is** (`src/corpses.c`):
+  `corpse/live/<id>.corpse` with every object at any depth -- keys and
+  blank maps too (`fwrite_obj_everything`) -- at the death and within a
+  second of any change (`corpse_note_change` from `obj_from_obj` and
+  `obj_to_obj`, `corpse_registry_moved` from `obj_to_room`), every ten
+  minutes for its timer, and at shutdown (`corpse_registry_flush_all`).
+  Boot makes each again exactly; one that cannot be read is renamed
+  `.unreadable`, never deleted. When one ends (picked up, rotted, purged,
+  restored) its last state goes to `corpse/history/<Owner>/` with why;
+  one put down again is kept again as a new record. `make_corpse` wraps
+  its `obj_to_room` in `corpse_registry_making` so a death is not taken
+  for a corpse put down. PRESTORE GEAR and the git requests wait while
+  the corpse holds things; any restore ends the owner's corpses.
 - **A cloud session restores through `area/restores.dat`**
   (`src/restores.c`): `<id> <player> gear|stash|import <stamp> [<file>]`.
-  Boot installs a file from `area/restores/` as a `.import` snapshot; a
-  gear or stash request applies at the player's next login once, recorded
-  as `restore:<id>` in `fixes_done`, and waits while their corpse holds
-  things. Ids are never reused. `tools/player_history.py` finds a state in
-  git history and `export`s it. `tests/test_player_backups.py`.
+  `tools/player_history.py` finds a state in git and `export`s it.
+- **Off the host**: the state sync carries `player/` (ledger included),
+  every tagged copy but `level` and `quest`, and `corpse/` (`live/`
+  mirrored with `--delete`, so an ended corpse never comes back from git;
+  `history/` never deleted); `toc-restore` lays all of it down. The
+  encrypted `sync-player-backup.sh` checks tar, its listing and age apart
+  (sh has no pipefail) and carries `corpse/`; it keeps the latest archive
+  only, and is not installed by `toc-deploy`.
+  `tests/test_recovery_ledger.py`, `tests/test_corpse_keep.py`,
+  `tests/test_player_backups.py`.
 
 ## Travel Spells Keep Room Rules
 

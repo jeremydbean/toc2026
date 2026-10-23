@@ -381,6 +381,20 @@ void playlog_boot( void )
 
 /* --------------------------------------------------------- a command */
 
+/* Who caused what is happening now: the player whose command is running
+   ("Alaric: get all corpse"), or the update phase. For records that want
+   to say who did it, such as a corpse's history (corpses.c). */
+const char *playlog_cause( void )
+{
+    static char cause[160];
+
+    if ( current_set )
+        snprintf( cause, sizeof(cause), "%s: %s", current_name, current_cmd );
+    else
+        snprintf( cause, sizeof(cause), "(%s)", playlog_phase );
+    return cause;
+}
+
 /*
  * interpret() calls begin before the command and end after it, at its
  * outermost level only. `shown` is the line as it may be written down

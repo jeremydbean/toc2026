@@ -6708,25 +6708,32 @@ See also: FINGER, TRAIL, PSTAT
 
 63 PRESTORE~
 Syntax: prestore <player>                    the newest 30 snapshots
-        prestore <player> all                every snapshot
-        prestore <player> deaths             one kind: deaths, remorts,
-                                             levels, quests, milestones
+        prestore <player> all [page]         every snapshot, 50 a page
+        prestore <player> deaths [page]      one kind: deaths, remorts,
+                                             levels, quests, restores,
+                                             milestones
         prestore <player> <stamp> show       what it holds, nothing changed
         prestore <player> <stamp>            the whole character
         prestore <player> <stamp> gear [force]   only their gear, back
         prestore <player> <stamp> stash      only their stash, added back
+        prestore <player> corpses            their corpses, kept or ended
+        prestore <player> corpse <id> show   what one held
+        prestore <player> corpse <id> gear [force]   that, back to them
 
 Every save of a player is a snapshot (at most one a minute): kept every
 one for a day, the newest of each hour for a week and of each day for a
 year.  A copy is also taken before every death, remort, deletion, staff
 change and restore, and after every level gain and quest; those are kept
-ninety days, and the newest hundred of each kind for good.
+ninety days, and the newest hundred of each kind for good.  A death killed
+by a mobile has two: "dying, before the death's experience penalty" and
+"before death", which already carries the penalty.
 
 The list shows how long ago each was taken, then the time, the level, the
 kind, and the stamp.  Restore by the stamp, not the number: every save adds
 a snapshot at the top and moves the numbers down.  A unique prefix of the
 stamp is enough; add its kind (20261023_023244.death) when an ordinary save
-was taken the same second.
+was taken the same second.  A second copy of one kind in the same second
+has _02 after its stamp.
 
 SHOW lists what the snapshot wore, carried and stashed.  The whole form puts
 the character back as they were (an online player is saved and
@@ -6735,8 +6742,14 @@ their inventory; STASH only the stash.  Both work online or offline and
 change nothing else.  GEAR waits while the player's own corpse still holds
 things -- they can fetch it -- unless you add FORCE.
 
-Every restore takes a copy of the character first, so it can be undone.
-See also wiki/player-backups.md for restores asked for through git.
+A player's corpse lasts a week, is written down as it is after every
+change, and comes back exactly after a restart.  When it ends -- rotted,
+picked up, purged -- what it held is kept.  CORPSE <id> GEAR gives that
+back once; a second time, or while it is still in the world, needs FORCE.
+
+Every restore takes a copy of the character first, so it can be undone,
+and is written in a ledger no restore rolls back: a restore asked for
+through git never runs twice.  See wiki/player-backups.md.
 ~
 
 65 TRAIL~

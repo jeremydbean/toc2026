@@ -10883,6 +10883,9 @@ static void prestore_stash( CHAR_DATA *ch, const char *capname,
     }
 
     save_char_obj( victim );
+    snprintf( buf, sizeof(buf), "%d stash object%s from %s; undo with %s", added,
+              added == 1 ? "" : "s", version, player_snapshot_last_milestone() );
+    recovery_record( "prestore", "committed", capname, "-", "stash", ch->name, buf );
 
     snprintf( buf, sizeof(buf),
               "%s restored %d stash object%s to %s from %s%s",
@@ -10913,14 +10916,96 @@ static void prestore_stash( CHAR_DATA *ch, const char *capname,
 }
 
 /* Every snapshot of one player, newest first: thousands, now that saves
-   are kept for a year (save.c, snapshot_prune). */
-#define PRESTORE_SCAN_MAX      6000
+   are kept for a year (save.c, snapshot_prune) -- as many as there are,
+   a page at a time. It stopped at 6,000 (handoff review, 2026-10-23).
+   The list lives until do_prestore returns. */
 #define PRESTORE_LIST_DEFAULT  30
-static char prestore_versions[PRESTORE_SCAN_MAX][MAX_INPUT_LENGTH];
+#define PRESTORE_PAGE          50
+static char **prestore_versions = NULL;
+static int prestore_version_count = 0;
 
-static int prestore_newest_first( const void *a, const void *b )
+/* What a kind of snapshot was taken for, in words. */
+static const char *prestore_kind_label( const char *tag )
 {
-    return -strcmp( (const char *) a, (const char *) b );
+    static char label[MAX_INPUT_LENGTH];
+
+    if ( tag == NULL )
+        return "";
+    if ( !strcmp( tag, "level" ) )        return "  -- after a level gain";
+    if ( !strcmp( tag, "quest" ) )        return "  -- after a quest";
+    if ( !strcmp( tag, "import" ) )       return "  -- imported from git";
+    if ( !strcmp( tag, "prepenalty" ) )   return "  -- dying, before the death's experience penalty";
+    /* Taken as the corpse is made, after a mobile's kill has taken its
+       experience: "prepenalty", a moment earlier, is from before that. */
+    if ( !strcmp( tag, "death" ) )        return "  -- before death";
+    if ( !strcmp( tag, "prestore" ) )     return "  -- before a PRESTORE (undoes it)";
+    if ( !strcmp( tag, "gitrestore" ) )   return "  -- before a restore from git (undoes it)";
+    if ( !strcmp( tag, "gearrestore" ) )  return "  -- before a GEAR restore";
+    if ( !strcmp( tag, "stashrestore" ) ) return "  -- before a STASH restore";
+    if ( !strcmp( tag, "corpserestore" ) ) return "  -- before a CORPSE restore";
+    snprintf( label, sizeof(label), "  -- before %s", tag );
+    return label;
+}
+
+/* Whether a kind belongs in a filtered list. */
+static bool prestore_kind_matches( const char *filter, const char *tag )
+{
+    size_t len;
+
+    if ( filter == NULL )
+        return true;
+    if ( tag == NULL )
+        return false;
+    if ( !strcmp( filter, "*" ) || !strcmp( filter, tag ) )
+        return true;
+    if ( !strcmp( filter, "death" ) )
+        return !strcmp( tag, "prepenalty" );
+    if ( !strcmp( filter, "restore" ) )
+    {
+        len = strlen( tag );
+        return !strcmp( tag, "import" ) || !strcmp( tag, "prestore" )
+            || ( len > 7 && !strcmp( tag + len - 7, "restore" ) );
+    }
+    return false;
+}
+
+/* Who a restore is for: online, or a copy loaded from their file. NULL,
+   with the reason told to ch, when it may not be done. */
+static CHAR_DATA *prestore_target( CHAR_DATA *ch, const char *capname,
+                                   DESCRIPTOR_DATA *offline_desc, bool *offline )
+{
+    CHAR_DATA *victim;
+    bool logging_in = false;
+
+    *offline = false;
+    victim = player_in_game( capname, &logging_in );
+    if ( victim != NULL && logging_in )
+    {
+        send_to_char( "They are logging in; try again in a moment.\n\r", ch );
+        return NULL;
+    }
+    if ( victim == NULL )
+    {
+        if ( ( victim = offline_player_load( offline_desc, capname, NULL ) ) == NULL )
+        {
+            send_to_char( "No player by that name is online or saved.\n\r", ch );
+            return NULL;
+        }
+        *offline = true;
+    }
+    if ( victim == ch )
+    {
+        send_to_char( "You cannot prestore yourself.\n\r", ch );
+        return NULL;
+    }
+    if ( IS_NPC( victim ) || victim->pcdata == NULL || rank_protects( ch, victim ) )
+    {
+        send_to_char( "You failed.\n\r", ch );
+        if ( *offline )
+            extract_char( victim, true );
+        return NULL;
+    }
+    return victim;
 }
 
 /* "12 minutes ago", "10 hours ago", "3 days ago", padded to a column. */
@@ -11095,6 +11180,9 @@ static void prestore_gear( CHAR_DATA *ch, const char *capname,
     }
 
     save_char_obj( victim );
+    snprintf( buf, sizeof(buf), "%d gear object%s from %s%s", added,
+              added == 1 ? "" : "s", version, force ? ", forced" : "" );
+    recovery_record( "prestore", "committed", capname, "-", "gear", ch->name, buf );
     /* What this gave back must not come back again in a rebuilt corpse. */
     corpse_registry_forget_player( capname );
     snprintf( buf, sizeof(buf), "%s restored %d gear object%s to %s from %s%s%s",
@@ -11118,6 +11206,112 @@ static void prestore_gear( CHAR_DATA *ch, const char *capname,
     }
 }
 
+/*
+ * PRESTORE <player> CORPSE <id> SHOW | GEAR [FORCE]: what one of their
+ * corpses held when it ended -- rotted, purged, picked up -- from its
+ * file in the corpse history (corpses.c), exactly as it was, given back
+ * into their inventory. Refused while the corpse is still in the world
+ * (it is theirs to fetch) and a second time for the same corpse, unless
+ * FORCE: the ledger remembers it was given (recovery.c).
+ */
+static void prestore_corpse( CHAR_DATA *ch, const char *capname, const char *id,
+                             const char *how, bool force )
+{
+    DESCRIPTOR_DATA offline_desc;
+    CORPSE_RECORD rec;
+    CHAR_DATA *victim;
+    OBJ_DATA *list = NULL, *obj;
+    char path[MAX_STRING_LENGTH];
+    char why[MAX_INPUT_LENGTH];
+    char key[64];
+    char buf[MAX_STRING_LENGTH];
+    bool live, offline;
+    int added;
+
+    if ( !corpse_record_path( capname, id, path, sizeof(path), &live, &rec ) )
+    {
+        snprintf( buf, sizeof(buf), "%s has no corpse %s on record.  PRESTORE %s "
+                  "CORPSES lists them.\n\r", capname, id, capname );
+        send_to_char( buf, ch );
+        return;
+    }
+    if ( ( added = corpse_file_read( path, &rec, &list, why, sizeof(why) ) ) < 0 )
+    {
+        snprintf( buf, sizeof(buf), "That corpse's record cannot be read: %s.\n\r", why );
+        send_to_char( buf, ch );
+        return;
+    }
+    if ( how[0] == '\0' || !str_prefix( how, "show" ) )
+    {
+        static char out[64 * 1024];
+        int lines = 0;
+
+        snprintf( out, sizeof(out), "%s's corpse %s, %s%s%s, room %d, %d object%s:\n\r",
+                  capname, rec.id, live ? "still in the world" : rec.state,
+                  rec.why[0] != '\0' ? ": " : "", rec.why, rec.room,
+                  rec.objects, rec.objects == 1 ? "" : "s" );
+        prestore_show_tree( list, 0, out, sizeof(out), &lines );
+        toc_strlcat( out, "Nothing was changed.  GEAR in place of SHOW gives these back.\n\r",
+                     sizeof(out) );
+        snapshot_discard_gear( list );
+        page_to_char( out, ch );
+        return;
+    }
+    if ( str_prefix( how, "gear" ) )
+    {
+        snapshot_discard_gear( list );
+        send_to_char( "Syntax: prestore <player> corpse <id> [show|gear] [force]\n\r", ch );
+        return;
+    }
+    snprintf( key, sizeof(key), "corpse:%s", rec.id );
+    if ( !force && live )
+    {
+        snapshot_discard_gear( list );
+        snprintf( buf, sizeof(buf), "That corpse still lies in room %d; it is theirs to "
+                  "fetch.  FORCE gives its things back anyway.\n\r", rec.room );
+        send_to_char( buf, ch );
+        return;
+    }
+    if ( !force && recovery_request_state( key ) == RECOVERY_COMMITTED )
+    {
+        snapshot_discard_gear( list );
+        send_to_char( "That corpse's things were already given back once.  FORCE gives "
+                      "them again.\n\r", ch );
+        return;
+    }
+    if ( ( victim = prestore_target( ch, capname, &offline_desc, &offline ) ) == NULL )
+    {
+        snapshot_discard_gear( list );
+        return;
+    }
+    player_snapshot_milestone( victim, "corpserestore", true );
+    while ( ( obj = list ) != NULL )
+    {
+        list = obj->next_content;
+        obj->next_content = NULL;
+        obj_to_char( obj, victim );
+    }
+    save_char_obj( victim );
+    snprintf( buf, sizeof(buf), "%d object%s from %s's corpse %s (%s)%s", added,
+              added == 1 ? "" : "s", capname, rec.id, rec.state, force ? ", forced" : "" );
+    recovery_record( "request", "committed", capname, key, "corpse", ch->name, buf );
+    snprintf( buf, sizeof(buf), "%s restored %d object%s to %s from corpse %s%s%s",
+              ch->name, added, added == 1 ? "" : "s", capname, rec.id,
+              offline ? " while offline" : "", force ? " (forced)" : "" );
+    log_string( buf );
+    snprintf( buf, sizeof(buf), "Restored %d object%s from corpse %s into %s's inventory.\n\r",
+              added, added == 1 ? "" : "s", rec.id, capname );
+    send_to_char( buf, ch );
+    if ( offline )
+        extract_char( victim, true );
+    else if ( added > 0 )
+    {
+        snprintf( buf, sizeof(buf), "An immortal has given back %d object%s from your "
+                  "corpse; they are in your inventory.\n\r", added, added == 1 ? "" : "s" );
+        send_to_char( buf, victim );
+    }
+}
+
 static void prestore_command( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
@@ -11132,7 +11326,7 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
     char tmppath[MAX_STRING_LENGTH];
     char cpbuf[MAX_STRING_LENGTH];
     char datebuf[64];
-    char (*versions)[MAX_INPUT_LENGTH] = prestore_versions;
+    char **versions;
     const char *filter = NULL;          /* a kind of milestone, "*" any, NULL all */
     bool show_all = false;
     const char *ts;
@@ -11146,15 +11340,17 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
     int yr, mo, dy, hr, mn, sc;
     int found_online;
     bool keep_creator = false;
+    char undo_name[MAX_INPUT_LENGTH] = "";
     int namelen;
+    int page = 1;
     bool copy_failed;
-    DIR *dp;
-    struct dirent *de;
+    char arg5[MAX_INPUT_LENGTH];
 
     argument = one_argument( argument, arg1 );
     argument = one_argument( argument, arg2 );
     argument = one_argument( argument, arg3 );
-    one_argument( argument, arg4 );
+    argument = one_argument( argument, arg4 );
+    one_argument( argument, arg5 );
 
     if ( arg1[0] == '\0' )
     {
@@ -11172,42 +11368,35 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
     toc_strlcpy( capname, capitalize( arg1 ), sizeof(capname) );
     snprintf( vdir, sizeof(vdir), "%s%s", PLAYER_VER_DIR, capname );
 
-    dp = opendir( vdir );
-    if ( dp == NULL )
+    /* Corpses are kept apart from the snapshots (corpses.c). */
+    if ( !str_cmp( arg2, "corpses" ) )
     {
-        snprintf( buf, sizeof(buf), "No version history found for %s.\n\r", capname );
-        send_to_char( buf, ch );
+        corpse_registry_list( ch, capname );
+        return;
+    }
+    if ( !str_cmp( arg2, "corpse" ) )
+    {
+        if ( arg3[0] == '\0' )
+        {
+            send_to_char( "Syntax: prestore <player> corpse <id> [show|gear] [force]\n\r", ch );
+            return;
+        }
+        prestore_corpse( ch, capname, arg3, arg4,
+                         !str_cmp( arg4, "force" ) || !str_cmp( arg5, "force" ) );
         return;
     }
 
-    /* Collect matching version filenames: <Name>.YYYYMMDD_HHMMSS */
-    count   = 0;
+    /* Every snapshot, newest first: the names sort by their stamps. */
     namelen = (int) strlen( capname );
-    while ( (de = readdir(dp)) != NULL && count < PRESTORE_SCAN_MAX )
-    {
-        /* "<Name>.<timestamp>" and milestones, "<Name>.<timestamp>.<tag>". */
-        if ( (int) strlen( de->d_name ) != namelen + 16
-          && ( (int) strlen( de->d_name ) <= namelen + 17
-            || de->d_name[namelen + 16] != '.' ) )
-            continue;
-        if ( strncmp( de->d_name, capname, (size_t) namelen ) != 0 )
-            continue;
-        if ( de->d_name[namelen] != '.' )
-            continue;
-        toc_strlcpy( versions[count], de->d_name, sizeof(versions[count]) );
-        count++;
-    }
-    closedir( dp );
-
+    count = snapshot_list_sorted( capname, &prestore_versions );
+    prestore_version_count = count;
+    versions = prestore_versions;
     if ( count == 0 )
     {
         snprintf( buf, sizeof(buf), "No versions on record for %s.\n\r", capname );
         send_to_char( buf, ch );
         return;
     }
-
-    /* Newest first: the names sort by their timestamps. */
-    qsort( versions, (size_t) count, sizeof(versions[0]), prestore_newest_first );
 
     /* A word in place of a number or stamp chooses what the list shows. */
     if ( !str_cmp( arg2, "all" ) )
@@ -11222,8 +11411,14 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
         filter = "quest";
     else if ( !str_prefix( "milestone", arg2 ) && arg2[0] != '\0' )
         filter = "*";
+    else if ( !str_prefix( "restores", arg2 ) && arg2[0] != '\0' )
+        filter = "restore";
     if ( filter != NULL || show_all )
+    {
         arg2[0] = '\0';
+        if ( is_number( arg3 ) )
+            page = UMAX( 1, atoi( arg3 ) );
+    }
 
     if ( arg2[0] == '\0' || !str_cmp( arg2, "list" ) )
     {
@@ -11233,24 +11428,27 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
         FILE *fv;
         int  snap_level;
 
-        static char page[PRESTORE_SCAN_MAX * 128];
-        int shown = 0;
-        int limit = ( show_all || filter != NULL ) ? count : PRESTORE_LIST_DEFAULT;
+        static char out[( PRESTORE_PAGE + 8 ) * 192];
+        int shown = 0, matched = 0, skip;
+        int limit = ( show_all || filter != NULL ) ? PRESTORE_PAGE : PRESTORE_LIST_DEFAULT;
 
-        snprintf( page, sizeof(page),
+        skip = ( page - 1 ) * limit;
+        snprintf( out, sizeof(out),
                   "Version history for %s (%d snapshot%s)%s%s%s:\n\r",
                   capname, count, count == 1 ? "" : "s",
                   filter != NULL ? ", showing " : "",
                   filter == NULL ? "" : !strcmp( filter, "*" ) ? "milestones" : filter,
                   filter != NULL && strcmp( filter, "*" ) ? "s" : "" );
 
-        for ( i = 0; i < count && shown < limit; i++ )
+        for ( i = 0; i < count; i++ )
         {
-            const char *kind = ( (int) strlen( versions[i] ) > namelen + 17 )
-                             ? versions[i] + namelen + 17 : NULL;
+            const char *kind = NULL;
+            size_t stamp_len = 15;
 
-            if ( filter != NULL
-            &&   ( kind == NULL || ( strcmp( filter, "*" ) && strcmp( kind, filter ) ) ) )
+            snapshot_name_parse( versions[i], capname, &stamp_len, &kind );
+            if ( !prestore_kind_matches( filter, kind ) )
+                continue;
+            if ( matched++ < skip || shown >= limit )
                 continue;
             shown++;
             ts = versions[i] + namelen + 1;  /* skip "<Name>." */
@@ -11303,44 +11501,42 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
             }
 
             {
-                const char *tag = ( (int) strlen( versions[i] ) > namelen + 17 )
-                                ? versions[i] + namelen + 17 : NULL;
-                char label[MAX_INPUT_LENGTH];
+                const char *label = prestore_kind_label( kind );
 
-                /* Most are taken before something happens; a level and
-                   a quest are kept as they left the character. */
-                if ( tag != NULL && !strcmp( tag, "level" ) )
-                    snprintf( label, sizeof(label), "  -- after a level gain" );
-                else if ( tag != NULL && !strcmp( tag, "quest" ) )
-                    snprintf( label, sizeof(label), "  -- after a quest" );
-                else if ( tag != NULL && !strcmp( tag, "import" ) )
-                    snprintf( label, sizeof(label), "  -- imported from git" );
-                else if ( tag != NULL )
-                    snprintf( label, sizeof(label), "  -- before %s", tag );
-                else
-                    label[0] = '\0';
                 /* The stamp is the stable name: every save adds a
                    snapshot at the top and moves the numbers down. */
                 if ( snap_level > 0 )
-                    snprintf( buf, sizeof(buf), "  [%2d] %s  (level %d)%s  stamp %.15s\n\r",
-                              i + 1, datebuf, snap_level, label, ts );
+                    snprintf( buf, sizeof(buf), "  [%2d] %s  (level %d)%s  stamp %.*s\n\r",
+                              i + 1, datebuf, snap_level, label, (int) stamp_len, ts );
                 else
-                    snprintf( buf, sizeof(buf), "  [%2d] %s%s  stamp %.15s\n\r",
-                              i + 1, datebuf, label, ts );
+                    snprintf( buf, sizeof(buf), "  [%2d] %s%s  stamp %.*s\n\r",
+                              i + 1, datebuf, label, (int) stamp_len, ts );
             }
-            toc_strlcat( page, buf, sizeof(page) );
+            toc_strlcat( out, buf, sizeof(out) );
         }
-        if ( shown < count && filter == NULL && !show_all )
+        if ( filter == NULL && !show_all )
         {
-            snprintf( buf, sizeof(buf), "...and %d older.  PRESTORE %s ALL lists every one; "
-                      "DEATHS, REMORTS, LEVELS, QUESTS or MILESTONES list one kind.\n\r",
-                      count - shown, capname );
-            toc_strlcat( page, buf, sizeof(page) );
+            if ( shown < count )
+            {
+                snprintf( buf, sizeof(buf), "...and %d older.  PRESTORE %s ALL lists every "
+                          "one; DEATHS, REMORTS, LEVELS, QUESTS, RESTORES or MILESTONES list "
+                          "one kind; CORPSES lists their corpses.\n\r", count - shown, capname );
+                toc_strlcat( out, buf, sizeof(out) );
+            }
         }
-        toc_strlcat( page, "Restore with 'prestore <player> <stamp>' (the whole character), "
+        else
+        {
+            int pages = UMAX( 1, ( matched + limit - 1 ) / limit );
+
+            snprintf( buf, sizeof(buf), "Page %d of %d (%d in all)%s\n\r", UMIN( page, pages ),
+                      pages, matched, page < pages ? "; add the next page's number for more."
+                                                   : "." );
+            toc_strlcat( out, buf, sizeof(out) );
+        }
+        toc_strlcat( out, "Restore with 'prestore <player> <stamp>' (the whole character), "
                      "adding STASH or GEAR for only that, or SHOW to see what it holds.\n\r",
-                     sizeof(page) );
-        page_to_char( page, ch );
+                     sizeof(out) );
+        page_to_char( out, ch );
     }
     else
     {
@@ -11443,7 +11639,8 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
         }
         if ( arg3[0] != '\0' )
         {
-            send_to_char( "After the stamp: STASH or GEAR restores only that, SHOW lists what it holds.\n\r", ch );
+            send_to_char( "After the stamp, the only thing to restore on its own is STASH or "
+                          "GEAR; SHOW lists what it holds.\n\r", ch );
             return;
         }
 
@@ -11533,8 +11730,16 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
         /* Copy the snapshot over the live player file */
 
         /* Capture the exact pre-restore state even when normal save snapshots
-           are currently throttled. */
-        player_snapshot_force( capname );
+           are currently throttled -- tagged, so it is listed as the copy
+           that undoes this, and reaches git with the other milestones. */
+        {
+            SNAPSHOT_RESULT pre;
+
+            memset( &pre, 0, sizeof(pre) );
+            player_snapshot_tagged( capname, "prestore", &pre );
+            toc_strlcpy( undo_name, pre.ok ? pre.name : "(the copy failed)",
+                         sizeof(undo_name) );
+        }
 
         fsrc = fopen( srcpath, "rb" );
         if ( fsrc == NULL )
@@ -11658,6 +11863,11 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
                   ch->name, capname, datebuf,
                   found_online ? " (was online, disconnected)" : "" );
         log_string( cpbuf );
+        /* A receipt nothing rolls back: what was restored and the copy
+           that undoes it. The git restore requests it may have undone
+           stay done (recovery.c, restores.c). */
+        snprintf( cpbuf, sizeof(cpbuf), "from %s; undo with %s", versions[n - 1], undo_name );
+        recovery_record( "prestore", "committed", capname, "-", "full", ch->name, cpbuf );
 
         snprintf( buf, sizeof(buf),
                   "%s restored to: %s\n\r", capname, datebuf );
@@ -11673,6 +11883,9 @@ void do_prestore( CHAR_DATA *ch, char *argument )
 {
     prestore_command( ch, argument );
     player_snapshot_pin( NULL );
+    snapshot_list_free( prestore_versions, prestore_version_count );
+    prestore_versions = NULL;
+    prestore_version_count = 0;
 }
 
 

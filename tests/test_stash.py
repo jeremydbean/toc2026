@@ -175,10 +175,10 @@ class StashSourceTests(unittest.TestCase):
     def test_the_stash_section_is_written_last(self) -> None:
         """The marker puts fread_obj into stash mode for every #O after
         it, so nothing of the character's own may follow."""
-        self.assertLess(self.save.index("fwrite_pet(ch->pet,fp)"),
-                        self.save.index('"#STASH'))
-        self.assertLess(self.save.index('"#STASH'),
-                        self.save.index('"#END'))
+        body = self.save.split("bool save_char_obj( CHAR_DATA *ch )", 1)[1]
+        body = body.split("\n}\n", 1)[0]
+        self.assertLess(body.index("fwrite_pet(ch->pet,fp)"), body.index('"#STASH'))
+        self.assertLess(body.index('"#STASH'), body.index('"#END'))
 
     def test_every_branch_that_moves_something_saves_at_once(self) -> None:
         """A stash written only at quit is a duplication bug waiting for
