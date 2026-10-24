@@ -2830,6 +2830,8 @@ bool    travel_spell_refuses    ( CHAR_DATA *ch, ROOM_INDEX_DATA *to );
 bool    hyrule_gate_would_refuse( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
                                   ROOM_INDEX_DATA *to );
 bool    gear_race_allowed       ( CHAR_DATA *ch, OBJ_DATA *obj );
+void    gear_consider_fight     ( CHAR_DATA *ch, CHAR_DATA *victim,
+                                  double *yours, double *theirs, bool *caster );
 void    dismiss_undead_servants ( CHAR_DATA *master );
 extern          bool                    merc_down;
 extern          char                   *target_name;

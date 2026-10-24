@@ -38,6 +38,14 @@ class TargetSourceTests(unittest.TestCase):
         self_match = fn.index("is_name( arg, ch->name )")
         self.assertLess(loop, self_match)
 
+    def test_consider_hit_points_have_no_gap(self) -> None:
+        """A 2,000-3,000 point difference fell through the old scale."""
+        info = (ROOT / "src" / "act_info.c").read_text(encoding="latin-1")
+        fn = info[info.index("static void consider_fight("):]
+        fn = fn[:fn.index("\n}\n")]
+        self.assertIn("ratio < 5.0", fn)
+        self.assertIn("else                     msg = \"$N has many times", fn)
+
     def test_consider_does_not_ask_is_safe_of_a_mobile(self) -> None:
         info = (ROOT / "src" / "act_info.c").read_text(encoding="latin-1")
         fn = info[info.index("void do_consider("):]
@@ -68,9 +76,18 @@ class TargetLiveTests(unittest.TestCase):
                 self.assertIn("zombie", run(client, "look", 1.4).lower())
                 said = run(client, "consider zo", 1.6)
                 self.assertIn("zombie", said.lower(), said)
-                self.assertNotIn("perfect match", said.lower(), said)
+                # One verdict from one model (CONSIDER rework, 2026-10-24).
+                self.assertIn("blow for blow", said.lower(), said)
+                verdicts = ("You should win easily.", "You should win.",
+                            "You should win, but not by much.",
+                            "It could go either way.", "You would probably lose.",
+                            "You would almost certainly die.")
+                lines = [line.strip() for line in said.splitlines()]
+                self.assertEqual(1, sum(v in lines for v in verdicts), said)
+                self.assertNotIn("naked and weaponless", said)
+                self.assertNotIn("your own level", said.lower(), said)
                 # "self" is still you.
-                self.assertIn("perfect match", run(client, "consider self", 1.6).lower())
+                self.assertIn("your own level", run(client, "consider self", 1.6).lower())
 
 
 if __name__ == "__main__":

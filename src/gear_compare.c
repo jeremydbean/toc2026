@@ -2107,6 +2107,98 @@ static void gear_send_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
 /* The command                                                         */
 /* ------------------------------------------------------------------ */
 
+/* ------------------------------------------------------------------ */
+/* CONSIDER: a rough fight                                             */
+/* ------------------------------------------------------------------ */
+
+/*
+ * A mobile's weapon damage a round against def, by one_hit's steps for a
+ * mobile and mob_hit's swings: its hit roll against def's armour, its
+ * dice (its level, for an old-format one), enhanced damage, damroll,
+ * haste, and its second and third attacks.
+ */
+static double gear_npc_round( CHAR_DATA *mob, CHAR_DATA *def )
+{
+    OBJ_DATA *wield = get_eq_char( mob, WEAR_WIELD );
+    double per_hit;
+    double attacks;
+    int skill = get_weapon_skill( mob, get_weapon_sn( mob ) );
+    int thac0_32 = -4;
+    int thac0;
+    int ac = 0;
+    int i;
+
+    if ( wield != NULL && wield->item_type != ITEM_WEAPON )
+        wield = NULL;
+
+    if ( IS_SET( mob->act, ACT_WARRIOR ) )
+        thac0_32 = -10;
+    else if ( IS_SET( mob->act, ACT_CLERIC ) )
+        thac0_32 = 2;
+    else if ( IS_SET( mob->act, ACT_MAGE ) )
+        thac0_32 = 6;
+    thac0 = interpolate( mob->level, 20, thac0_32 )
+        - GET_HITROLL( mob ) * skill / 100 + 5 * (100 - skill) / 100;
+    for ( i = 0; i < 4; i++ )
+        ac += GET_AC( def, i );
+    ac = ac / 4 / 10;
+    if ( ac < -17 )
+        ac = (ac + 17) / 5 - 17;
+
+    if ( mob->pIndexData == NULL || !mob->pIndexData->new_format )
+        per_hit = mob->level * (wield != NULL ? 1.5 : 1.0);
+    else if ( wield == NULL )
+        per_hit = mob->damage[DICE_NUMBER]
+            * (mob->damage[DICE_TYPE] + 1) / 2.0;
+    else
+        per_hit = wield->value[1] * (wield->value[2] + 1) / 2.0
+            * skill / 100.0;
+    per_hit *= gear_enhanced_multiplier( mob );
+    per_hit += GET_DAMROLL( mob ) * UMIN( 100, skill ) / 100.0;
+
+    attacks = 1.0 + get_skill( mob, gsn_second_attack ) / 200.0
+        + get_skill( mob, gsn_third_attack ) / 400.0;
+    if ( IS_AFFECTED( mob, AFF_HASTE ) || IS_SET( mob->off_flags, OFF_FAST ) )
+        attacks += 1.0;
+    return UMAX( 0.0, per_hit ) * attacks * gear_hit_chance( thac0 - ac );
+}
+
+/* A player's weapon damage a round, as COMPARE measures it. */
+static double gear_pc_round( CHAR_DATA *ch, bool *caster )
+{
+    GEAR_PROFILE profile;
+    GEAR_LOADOUT loadout;
+    GEAR_RESULT result;
+
+    gear_build_profile( ch, &profile );
+    gear_loadout_from_char( ch, &loadout );
+    gear_measure( ch, &profile, &loadout, &result );
+    if ( caster != NULL )
+        *caster = profile.spell_share >= 0.5;
+    return result.melee;
+}
+
+/*
+ * CONSIDER's fight: each side's weapon damage a round against the other,
+ * halved by the other's sanctuary. Rough on purpose -- no spells, no
+ * dodge or parry, nobody fleeing -- but one model for both sides, so the
+ * two answers can be set against each other. *caster says the looker's
+ * damage is mostly spells, which this leaves out.
+ */
+void gear_consider_fight( CHAR_DATA *ch, CHAR_DATA *victim,
+                          double *yours, double *theirs, bool *caster )
+{
+    *caster = false;
+    *yours = IS_NPC( ch ) ? gear_npc_round( ch, victim )
+                          : gear_pc_round( ch, caster );
+    *theirs = IS_NPC( victim ) ? gear_npc_round( victim, ch )
+                               : gear_pc_round( victim, NULL );
+    if ( IS_AFFECTED( victim, AFF_SANCTUARY ) )
+        *yours *= 0.5;
+    if ( IS_AFFECTED( ch, AFF_SANCTUARY ) )
+        *theirs *= 0.5;
+}
+
 static void gear_send_usage( CHAR_DATA *ch )
 {
     send_to_char( "COMPARE <item> [item]     A against B, or against what you wear\n\r", ch );

@@ -3757,14 +3757,25 @@ See also: DUMMY, LORE, IDENTIFY, EQUIPMENT, SCORE
 0 CONSIDER~
 Syntax: consider <character>
 
-CONSIDER tells you what your chances are of killing a character.
-When you consider a character, you will see two lines of information.
-The first line refers to the relative level of you and the character you
-are considering; the second refers to the relative number of hit points
-(based on max hp, not current hp).  Between these two you should have a
-rough idea of whether or not it is worth attempting the fight.
+CONSIDER sizes up a fight before you start one:
 
-See also: SCORE, WIMPY, FLEE
+  - how far above or below your level they are;
+  - how their hit points compare with yours;
+  - blow for blow, about how many rounds you would need to bring them
+    down at their current health, and they you at yours;
+  - a verdict, from "You should win easily" to "You would almost
+    certainly die";
+  - whatever about them changes a fight: sanctuary halving your blows,
+    unnatural speed, a monster that attacks anyone near it, or one
+    already busy fighting someone else.
+
+The rounds count weapons and armour as they stand, and leave out spells,
+dodging, parrying and fleeing, so treat them as a rough guide. A caster
+is reminded that their spells are not in it. A shopkeeper, trainer or
+anyone else nobody may fight is not rated. CONSIDER is never an attack,
+so it works anywhere, the Temple included.
+
+See also: SCORE, WIMPY, FLEE, COMPARE
 ~
 
 0 COUNT~

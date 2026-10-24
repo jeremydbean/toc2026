@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261024e 2026-10-24
+CONSIDER sizes up the fight itself now: how your level and hit points
+compare, about how many rounds each of you would need to bring the
+other down, one verdict, and anything that changes the odds (sanctuary,
+speed, a monster that attacks on sight). It no longer tells you a foe is
+easy and deadly in the same breath. See HELP CONSIDER.
+
 @ 20261024d 2026-10-24
 A word that starts your own name now finds the monster first: KILL TR
 among trolls attacks a troll instead of telling you to MURDER a player.

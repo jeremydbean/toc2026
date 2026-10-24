@@ -3076,6 +3076,106 @@ void do_wizcheck( CHAR_DATA *ch, char *argument )
     return;
 }
 
+/* "one round", "12 rounds", "over a hundred rounds" */
+static void consider_rounds( double rounds, char *out, size_t size )
+{
+    long whole = (long) ( rounds + 0.999 );
+
+    if ( whole <= 1 )
+        toc_strlcpy( out, "a single round", size );
+    else if ( whole > 100 )
+        toc_strlcpy( out, "over a hundred rounds", size );
+    else
+        snprintf( out, size, "about %ld rounds", whole );
+}
+
+/*
+ * What CONSIDER says beyond the level: how the hit points compare, the
+ * fight as gear_consider_fight estimates it, one verdict, and what about
+ * the foe changes a fight. It replaced a hit point scale in absolute
+ * points -- 200 more decided "a match" or "a wimp" at every level, a
+ * difference of 2,000 to 3,000 fell through it and repeated the level's
+ * line, and a level 50 was told one foe could be killed "naked and
+ * weaponless" and would "roll over you like a steam shovel" in the same
+ * breath (Trentlin's log, 2026-10-24). The two now answer one question.
+ */
+static void consider_fight( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    char buf[MAX_STRING_LENGTH];
+    char yours_text[64];
+    char theirs_text[64];
+    const char *msg;
+    double ratio;
+    double yours;
+    double theirs;
+    double your_rounds;
+    double their_rounds;
+    double edge;
+    bool caster;
+
+    ratio = (double) UMAX( 1, victim->max_hit ) / UMAX( 1, ch->max_hit );
+         if ( ratio < 0.2  ) msg = "$N has a fraction of your hit points.";
+    else if ( ratio < 0.4  ) msg = "$N has about a third of your hit points.";
+    else if ( ratio < 0.75 ) msg = "$N has about half your hit points.";
+    else if ( ratio < 1.34 ) msg = "$N has about as many hit points as you.";
+    else if ( ratio < 2.5  ) msg = "$N has about twice your hit points.";
+    else if ( ratio < 5.0  ) msg = "$N has several times your hit points.";
+    else                     msg = "$N has many times your hit points.";
+    act( msg, ch, NULL, victim, TO_CHAR );
+
+    /* The goblin is no fight: he never strikes back, and every blow takes
+       a share of his health and sends him running (goblin.c). */
+    if ( is_treasure_goblin( victim ) )
+    {
+        act( "$N never fights back: every blow takes a share of $S health and sends $M running.",
+            ch, NULL, victim, TO_CHAR );
+        return;
+    }
+
+    gear_consider_fight( ch, victim, &yours, &theirs, &caster );
+    your_rounds = UMAX( 1, victim->hit ) / UMAX( 0.1, yours );
+    if ( theirs < 0.5 )
+    {
+        consider_rounds( your_rounds, yours_text, sizeof(yours_text) );
+        snprintf( buf, sizeof(buf),
+            "$N could barely scratch you; you would need %s to bring $M down.",
+            yours_text );
+        act( buf, ch, NULL, victim, TO_CHAR );
+        msg = "You should win easily.";
+    }
+    else
+    {
+        their_rounds = UMAX( 1, ch->hit ) / theirs;
+        consider_rounds( your_rounds, yours_text, sizeof(yours_text) );
+        consider_rounds( their_rounds, theirs_text, sizeof(theirs_text) );
+        snprintf( buf, sizeof(buf),
+            "Blow for blow, you would need %s to bring $N down; $E would need %s for you.",
+            yours_text, theirs_text );
+        act( buf, ch, NULL, victim, TO_CHAR );
+
+        edge = their_rounds / your_rounds;
+             if ( edge >= 4.0  ) msg = "You should win easily.";
+        else if ( edge >= 1.5  ) msg = "You should win.";
+        else if ( edge >= 1.0  ) msg = "You should win, but not by much.";
+        else if ( edge >= 0.67 ) msg = "It could go either way.";
+        else if ( edge >= 0.25 ) msg = "You would probably lose.";
+        else                     msg = "You would almost certainly die.";
+    }
+    act( msg, ch, NULL, victim, TO_CHAR );
+    if ( caster )
+        send_to_char( "(That counts your weapons only; your spells are not in it.)\n\r", ch );
+
+    if ( IS_AFFECTED( victim, AFF_SANCTUARY ) )
+        act( "$N is wrapped in sanctuary: your blows do half.", ch, NULL, victim, TO_CHAR );
+    if ( IS_AFFECTED( victim, AFF_HASTE )
+    ||   ( IS_NPC(victim) && IS_SET( victim->off_flags, OFF_FAST ) ) )
+        act( "$N moves with unnatural speed.", ch, NULL, victim, TO_CHAR );
+    if ( IS_NPC(victim) && IS_SET( victim->act, ACT_AGGRESSIVE ) )
+        act( "$N looks ready to attack anyone who comes near.", ch, NULL, victim, TO_CHAR );
+    if ( victim->fighting != NULL && victim->fighting != ch )
+        act( "$N is already fighting someone else.", ch, NULL, victim, TO_CHAR );
+}
+
 void do_consider( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
@@ -3112,31 +3212,23 @@ void do_consider( CHAR_DATA *ch, char *argument )
 
     diff = victim->level - ch->level;
 
-	 if ( diff <= -10 ) msg = "You can kill $N naked and weaponless.";
-    else if ( diff <=  -5 ) msg = "$N is no match for you.";
-    else if ( diff <=  -2 ) msg = "$N looks like an easy kill.";
-    else if ( diff <=   1 ) msg = "The perfect match!";
-    else if ( diff <=   4 ) msg = "$N says 'Do you feel lucky, punk?'.";
-    else if ( diff <=   9 ) msg = "$N laughs at you mercilessly.";
-    else                    msg = "Death will thank you for your gift.";
+    /* The level, and only the level: who would win is the verdict's to
+       say, and a level line that promised a kill "naked and weaponless"
+       sat above a fight the foe's hit points made hopeless. */
+    if ( victim == ch )
+        msg = "You are exactly your own level.";
+    else if ( diff <= -10 ) msg = "$N is far below your level.";
+    else if ( diff <=  -5 ) msg = "$N is well below your level.";
+    else if ( diff <=  -2 ) msg = "$N is a little below your level.";
+    else if ( diff <=   1 ) msg = "$N is about your level.";
+    else if ( diff <=   4 ) msg = "$N is a little above your level.";
+    else if ( diff <=   9 ) msg = "$N is well above your level.";
+    else                    msg = "$N is far above your level.";
 
     act(msg, ch, NULL, victim, TO_CHAR);
-    diff = victim->max_hit - ch->max_hit;
 
-	 if( diff <= -200) msg = "As far as you're concerned, $N is a wimp.";
-    else if( diff <= -100) msg = "$N would be a push over.";
-    else if( diff <= -50 ) msg = "$N's physical prowess doesn't impress you much.";
-    else if( diff <= 0   ) msg = "$N is a match for you.";
-    else if( diff <= 50  ) msg = "$N is slightly tougher than you.";
-    else if( diff <= 100 ) msg = "$N is tougher than you.";
-    else if( diff <= 250 ) msg = "$N is quite a bit tougher than you.";
-    else if( diff <= 400 ) msg = "$N is alot tougher than you.";
-    else if( diff <= 800 ) msg = "$N would definately put up a good fight.";
-    else if( diff <= 1200) msg = "$N would roll over you like a steam shovel.";
-    else if( diff <= 2000) msg = "$N would flatten you like a pancake.";
-    else if( diff >= 3000) msg = "$N would beat you like a red headed step child!";
-
-    act(msg, ch, NULL, victim, TO_CHAR);
+    if ( victim != ch )
+        consider_fight( ch, victim );
 
     if( !IS_NPC(victim) && victim->pcdata->pk_state == 1)
     {
