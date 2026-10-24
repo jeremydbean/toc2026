@@ -1,7 +1,7 @@
 #PLAYER
 Name Velan~
 Id   49497
-LogO 1792861692
+LogO 1792862537
 Vers 4
 Prom ''%c~
 Ignoring  ~
@@ -17,13 +17,13 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 1
-Plyd 82
+Plyd 927
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
 Room 2426
-HMV  20 20 100 100 92 100
+HMV  20 20 100 100 100 100
 NewGold 0
 NewPlat 0
 NewCopp 0
@@ -44,13 +44,13 @@ AchMaps 0
 AchCompass 0
 AchTriforce 0
 Achv visit-mud-school 1792861622
-LastOut  1792861692
+LastOut  1792862537
 Rested 0 0
 Daily 0 0 0 0 0
-SesLogin 0
-SesDur   0
+SesLogin 1792861622
+SesDur   915
 SesExpG  0
-SesLvlG  0
+SesLvlG  1
 SesKill  0
 SesPK    0
 SesDead  0
@@ -97,7 +97,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 20 100 100
-Cond 0 47 47
+Cond 0 32 32
 Sk 30 'axe'
 Sk 30 'dagger'
 Sk 25 'flail'
@@ -124,7 +124,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 199 0 0
+Val  0 0 184 0 0
 End
 
 #O

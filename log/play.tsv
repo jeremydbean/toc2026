@@ -10817,3 +10817,14 @@
 1792861753	cmd	Alaric	54	4203	dresden_halloween.are	standing	47	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
 1792861753	cmd	Alaric	54	4210	dresden_halloween.are	standing	47	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
 1792861754	cmd	Alaric	54	4210	dresden_halloween.are	standing	47	0	-	sleep		You go to sleep.
+1792862537	session	Velan	1	2426	dresden_halloween.are	quit	915s	+1 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	38 commands	0 refused	coin: none
+1792862750	refused	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	look		In your dreams, or what?
+1792862752	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1792862752	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1792862753	cmd	Alaric	54	4203	dresden_halloween.are	standing	100	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1792862753	cmd	Alaric	54	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792862753	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	west		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792862754	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792862755	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792862756	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    231 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792862757	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	worth		You have 1591 platinum, 149 gold, 116 silver, 273 copper // and 166060 experience (21240 exp to level).
