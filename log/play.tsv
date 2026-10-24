@@ -11425,3 +11425,161 @@
 1792874897	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    234 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
 1792874900	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	affect		You are not affected by any spells.
 1792874901	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (16) (Glowing) a bag of candy corn //      (Glowing) (Humming) a bone mace
+1792874903	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	list		[Lv Price] Item // [ 0        30g] a bag of candy corn. // [ 0     1p 20g] a grinning jack-o-lantern mask.
+1792874906	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792874911	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	eat	guano	You eat guano. // Your skin turns to stone. // Your feet rise off the ground.
+1792874913	cmd	Alaric	54	2438	dresden_halloween.are	standing	100	0	-	run	w 7	Western Oak Tree Square. // [Exits: north east south west] // Temple Boulevard.
+1792874914	cmd	Alaric	54	2438	dresden_halloween.are	standing	100	0	-	open	west	It's already open.
+1792874914	cmd	Alaric	54	6103	haon.are	standing	100	0	-	run	w 10	Outside the Western Gates of Dresden. // [Exits: north east west] // The edge of the forest
+1792874914	cmd	Alaric	54	6108	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees standing // close on all sides.  The trail leads north and west and to the south, a frail
+1792874914	cmd	Alaric	54	6107	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and east.
+1792874915	cmd	Alaric	54	6106	haon.are	standing	100	0	-	east		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.
+1792874915	cmd	Alaric	54	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.
+1792874915	cmd	Alaric	54	6116	haon.are	standing	100	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.
+1792874915	cmd	Alaric	54	6115	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues
+1792874916	cmd	Alaric	54	6114	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead north, east and west.
+1792874916	cmd	Alaric	54	6115	haon.are	standing	100	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues
+1792874916	cmd	Alaric	54	6116	haon.are	standing	100	0	-	north		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.
+1792874916	cmd	Alaric	54	6117	haon.are	standing	100	0	-	east		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.
+1792874917	cmd	Alaric	54	6118	haon.are	standing	100	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. Ancient, grey // trees loom everywhere.  The path continues south and west.
+1792874917	cmd	Alaric	54	6119	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Huge, // ancient trees are on all sides.  The path continues north and south.
+1792874917	cmd	Alaric	54	6120	haon.are	standing	100	0	-	south		On the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  To the south // a fast river is flowing westwards through the forest. Ancient grey trees loom
+1792874917	cmd	Alaric	54	11000	ancala.are	standing	100	0	-	run	w 4	A dead end path on the river bank in the deep, dark forest // [Exits: east west] // Eerie Clearing
+1792874923	cmd	Alaric	54	11000	ancala.are	standing	100	0	-	exits		Obvious exits: // East  - Muddy Riverbank // West  - Before The Dragon
+1792874926	cmd	Alaric	54	11001	ancala.are	standing	100	0	-	west		Before The Dragon //   You stand before the Dragon Ancalador.  You can still make out // its petrified form despite the earth that has filled in the crevices
+1792874928	cmd	Alaric	54	11001	ancala.are	standing	100	0	-	aquest	info	.-[ Quest Status ]--------------------------------------------. // | Type  : Kill Quest // | Target: Slay the green crystal spider
+1792874931	cmd	Alaric	54	11002	ancala.are	standing	100	4	-	west		In The Dragon's Mouth //   Rows of stone teeth as large as trolls line the walls here.  A // tongue of pitted stone leads west, behind stone molars as large as
+1792874931	cmd	Alaric	54	11003	ancala.are	standing	100	0	-	west		By Some Stone Tonsils //   You are in the back of the dragon's mouth.  The throat continues // down and something oozes from petrified sinuses above.
+1792874932	cmd	Alaric	54	11004	ancala.are	standing	100	0	-	west		A Throat Of Stone //   The floor is uneven -- the middle of the passage being lower than // the sides, which rise up to the walls.  The whole passage is slightly
+1792874933	cmd	Alaric	54	11005	ancala.are	standing	100	0	-	west		Further Down The Dragon's Throat //   The tunnel begins to lose its steepness and merely runs westward // now.  The shapes of what might be petrified muscles line the walls.
+1792874935	cmd	Alaric	54	11006	ancala.are	standing	100	0	-	west		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out
+1792874936	cmd	Alaric	54	11006	ancala.are	standing	100	0	-	scan		You don't see anything near you.
+1792874938	cmd	Alaric	54	11006	ancala.are	standing	100	0	-	exits		Obvious exits: // North - A Stone Tunnel // East  - Further Down The Dragon's Throat
+1792874939	cmd	Alaric	54	11007	ancala.are	standing	100	0	-	north		A Stone Tunnel //   This circular passage of stone gradually curves up to a place of // great light and heat.
+1792874940	cmd	Alaric	54	11007	ancala.are	standing	100	0	-	scan		the flame dweller                  -right above you.
+1792874943	cmd	Alaric	54	11008	ancala.are	standing	100	0	-	up		A Dragon Lung //   Ancient fires burns here, awaiting the rebirth of their master. // [Exits: down]
+1792874943	cmd	Alaric	54	11008	ancala.are	standing	100	0	-	scan		You don't see anything near you.
+1792874944	cmd	Alaric	54	11007	ancala.are	standing	100	0	-	down		A Stone Tunnel //   This circular passage of stone gradually curves up to a place of // great light and heat.
+1792874945	cmd	Alaric	54	11006	ancala.are	standing	100	0	-	south		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out
+1792874945	cmd	Alaric	54	11010	ancala.are	standing	100	0	-	south		A Stone Tunnel //   This stone passage is lit by a great light and fierce heat from its // far end, which lies above.
+1792874947	cmd	Alaric	54	11010	ancala.are	standing	100	0	-	scan		the flame dweller                  -right above you.
+1792874948	cmd	Alaric	54	11011	ancala.are	standing	100	0	-	up		A Dragon Lung //   The nuclear fires that empowered the dragon with its frightful // breath are here, and though they have been smoldered for so very
+1792874949	cmd	Alaric	54	11011	ancala.are	standing	100	0	-	scan		You don't see anything near you.
+1792874949	cmd	Alaric	54	11010	ancala.are	standing	100	0	-	down		A Stone Tunnel //   This stone passage is lit by a great light and fierce heat from its // far end, which lies above.
+1792874949	cmd	Alaric	54	11006	ancala.are	standing	100	0	-	north		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out
+1792874950	cmd	Alaric	54	11055	ancala.are	standing	100	0	-	west		A Stone Tunnel //   The dragon's throat continues east and west on a path which neither // rises nor falls.  On the south wall, to the dragon's left, a warmth
+1792874950	cmd	Alaric	54	11055	ancala.are	standing	100	0	-	scan		You don't see anything near you.
+1792874951	cmd	Alaric	54	11012	ancala.are	standing	100	0	-	west		Ancalador's Stomach //   The dragon's throat ends, revealing a huge cavern lit from below by // eerie and diffuse lights of yellow and green.  Even more amazingly, a
+1792874952	cmd	Alaric	54	11012	ancala.are	standing	100	0	-	scan		the yellow crystal spider          -right below you.
+1792874954	cmd	Alaric	54	11013	ancala.are	standing	100	0	-	west		A Wooden Bridge //   You cannot imagine who would want to build a bridge in this // fantastic cavern.  Large stalagmites sit and rise up while the eerie
+1792874955	cmd	Alaric	54	11013	ancala.are	standing	100	0	-	scan		You don't see anything near you.
+1792874957	cmd	Alaric	54	11013	ancala.are	standing	100	0	-	exits		Obvious exits: // East  - Ancalador's Stomach // West  - A Wooden Bridge
+1792874959	cmd	Alaric	54	11016	ancala.are	standing	100	0	-	down		A Stalagmite Forest //   You take the plunge off of the wooden bridge and find yourself stuck // between several stalagmites.  It hurts to move much, and you cannot see
+1792874963	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792874965	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792874966	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	heal	ref	The cackling witch-healer utters the words 'candusima'. // You feel fully refreshed! (7 castings, 70 gold.)
+1792874969	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	heal	ref	The cackling witch-healer says 'Your legs are as fresh as I can make them.'
+1792874969	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	heal	ref	The cackling witch-healer says 'Your legs are as fresh as I can make them.'
+1792874969	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792874969	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792874970	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792874970	cmd	Alaric	54	2438	dresden_halloween.are	standing	100	0	-	run	w 7	Western Oak Tree Square. // [Exits: north east south west] // Temple Boulevard.
+1792874970	cmd	Alaric	54	2438	dresden_halloween.are	standing	100	0	-	open	west	Ok.
+1792874970	cmd	Alaric	54	6103	haon.are	standing	100	0	-	run	w 10	Outside the Western Gates of Dresden. // [Exits: north east west] // The edge of the forest
+1792874971	cmd	Alaric	54	6108	haon.are	standing	100	0	-	south		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way between huge, ancient trees standing // close on all sides.  The trail leads north and west and to the south, a frail
+1792874971	cmd	Alaric	54	6107	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and east.
+1792874971	cmd	Alaric	54	6106	haon.are	standing	100	0	-	east		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.
+1792874971	cmd	Alaric	54	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.
+1792874972	cmd	Alaric	54	6116	haon.are	standing	100	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.
+1792874972	cmd	Alaric	54	6115	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues
+1792874972	cmd	Alaric	54	6114	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead north, east and west.
+1792874972	cmd	Alaric	54	6115	haon.are	standing	100	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues
+1792874973	cmd	Alaric	54	6116	haon.are	standing	100	0	-	north		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.
+1792874973	cmd	Alaric	54	6117	haon.are	standing	100	0	-	east		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.
+1792874973	cmd	Alaric	54	6118	haon.are	standing	100	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. Ancient, grey // trees loom everywhere.  The path continues south and west.
+1792874973	cmd	Alaric	54	6119	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Huge, // ancient trees are on all sides.  The path continues north and south.
+1792874974	cmd	Alaric	54	6120	haon.are	standing	100	0	-	south		On the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  To the south // a fast river is flowing westwards through the forest. Ancient grey trees loom
+1792874974	cmd	Alaric	54	11000	ancala.are	standing	100	0	-	run	w 4	A dead end path on the river bank in the deep, dark forest // [Exits: east west] // Eerie Clearing
+1792874975	cmd	Alaric	54	11001	ancala.are	standing	100	0	-	west		Before The Dragon //   You stand before the Dragon Ancalador.  You can still make out // its petrified form despite the earth that has filled in the crevices
+1792874975	cmd	Alaric	54	11002	ancala.are	standing	100	0	-	west		In The Dragon's Mouth //   Rows of stone teeth as large as trolls line the walls here.  A // tongue of pitted stone leads west, behind stone molars as large as
+1792874975	cmd	Alaric	54	11003	ancala.are	standing	100	0	-	west		By Some Stone Tonsils //   You are in the back of the dragon's mouth.  The throat continues // down and something oozes from petrified sinuses above.
+1792874976	cmd	Alaric	54	11004	ancala.are	standing	100	0	-	west		A Throat Of Stone //   The floor is uneven -- the middle of the passage being lower than // the sides, which rise up to the walls.  The whole passage is slightly
+1792874976	cmd	Alaric	54	11005	ancala.are	standing	100	0	-	west		Further Down The Dragon's Throat //   The tunnel begins to lose its steepness and merely runs westward // now.  The shapes of what might be petrified muscles line the walls.
+1792874976	cmd	Alaric	54	11006	ancala.are	standing	100	0	-	west		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out
+1792874976	cmd	Alaric	54	11055	ancala.are	standing	100	0	-	west		A Stone Tunnel //   The dragon's throat continues east and west on a path which neither // rises nor falls.  On the south wall, to the dragon's left, a warmth
+1792874977	cmd	Alaric	54	11012	ancala.are	standing	100	0	-	west		Ancalador's Stomach //   The dragon's throat ends, revealing a huge cavern lit from below by // eerie and diffuse lights of yellow and green.  Even more amazingly, a
+1792874978	cmd	Alaric	54	11012	ancala.are	standing	100	0	-	scan		the yellow crystal spider          -right below you.
+1792874979	cmd	Alaric	54	11013	ancala.are	standing	100	0	-	west		A Wooden Bridge //   You cannot imagine who would want to build a bridge in this // fantastic cavern.  Large stalagmites sit and rise up while the eerie
+1792874979	cmd	Alaric	54	11014	ancala.are	standing	100	0	-	west		A Wooden Bridge //   You are in the middle of the wooden bridge.  Large stalagmites rise // around you and the eerie lights continue to dance in the mists below.
+1792874980	cmd	Alaric	54	11014	ancala.are	standing	100	0	-	scan		the Petrified Warden               -to the far West.
+1792874982	cmd	Alaric	54	11015	ancala.are	standing	100	0	-	west		A Wooden Bridge //   The wood here is old and acid eaten, similar to the rest of the // bridge. The deadly stalagmites jut up from below and more of the green
+1792874983	cmd	Alaric	54	11015	ancala.are	standing	100	0	-	scan		the Petrified Warden               -to the West.
+1792874985	cmd	Alaric	54	11026	ancala.are	standing	100	0	-	west		The End Of The Stomach //   The wooden bridge ends here, on a large plateau above the cavern // floor. The plateau overlooks the entire forest of acid and stone
+1792874986	cmd	Alaric	54	11026	ancala.are	standing	100	0	-	scan		the yellow crystal spider          -right below you.
+1792874989	cmd	Alaric	54	11026	ancala.are	standing	100	0	-	open		It's locked.
+1792874991	cmd	Alaric	54	11026	ancala.are	standing	100	0	-	pick	west	*Click*
+1792874996	cmd	Alaric	54	11026	ancala.are	standing	100	0	-	open	west	Ok.
+1792874996	cmd	Alaric	54	11026	ancala.are	standing	100	0	-	scan		the yellow crystal spider          -right below you.
+1792874997	cmd	Alaric	54	11026	ancala.are	standing	100	0	-	exits		Obvious exits: // East  - A Wooden Bridge // West  - A Stone Corridor
+1792874998	cmd	Alaric	54	11056	ancala.are	standing	100	0	-	west		A Stone Corridor //   You are in a circular tunnel of stone.  The walls are irregular and // pockmarked.  The tunnel continues east and west.
+1792874999	cmd	Alaric	54	11056	ancala.are	standing	100	0	-	scan		the Petrified Warden               -to the East.
+1792875000	cmd	Alaric	54	11056	ancala.are	standing	100	0	-	open		Ok.
+1792875001	cmd	Alaric	54	11056	ancala.are	standing	100	0	-	scan		the Petrified Warden               -to the East. // the putrid zombie                  -to the South.
+1792875005	cmd	Alaric	54	11028	ancala.are	standing	100	0	-	west		The Small Intestine //   You enter a featureless tunnel of what must be the beginning of the // dragon's small intestine.  Small piles of human bones and armor bits
+1792875006	cmd	Alaric	54	11028	ancala.are	standing	100	0	-	scan		the umber hulk                     -to the North. // the Petrified Warden               -to the far East.
+1792875007	cmd	Alaric	54	11029	ancala.are	standing	100	0	-	north		The Small Intestine //   The tunnel twists to the south and to the east. // [Exits: east south]
+1792875008	cmd	Alaric	54	11029	ancala.are	standing	100	0	-	scan		the ochre jello                    -to the East.
+1792875008	cmd	Alaric	54	11030	ancala.are	standing	100	0	-	east		The Small Intestine //   The smooth tunnel curves to the west and to the south. // [Exits: south west]
+1792875009	cmd	Alaric	54	11030	ancala.are	standing	100	0	-	scan		the umber hulk                     -to the West.
+1792875011	cmd	Alaric	54	11031	ancala.are	standing	100	0	-	south		The Small Intestine //   The blank walls of the tunnel run north and south. // [Exits: north south]
+1792875013	cmd	Alaric	54	11032	ancala.are	standing	100	0	-	south		The Small Intestine //   The tunnel comes from the north and dips sharply downward here. // [Exits: north down]
+1792875013	cmd	Alaric	54	11032	ancala.are	standing	100	0	-	scan		the ochre jello                    -to the far North. // the umber hulk                     -right below you.
+1792875015	cmd	Alaric	54	11033	ancala.are	standing	100	0	-	down		The Small Intestine //   The featureless tunnel leads up and north.  Echo bounce off the // blank walls, whether from near or far, you cannot tell.
+1792875015	cmd	Alaric	54	11033	ancala.are	standing	100	0	-	scan		the ochre jello                    -to the North. // the umber hulk                     -to the far North.
+1792875016	cmd	Alaric	54	11034	ancala.are	standing	100	0	-	north		The Small Intestine //   Bits of broken equipment from long dead adventurers have been // collected here.  The tunnel runs north and south.
+1792875017	cmd	Alaric	54	11034	ancala.are	standing	100	0	-	scan		the umber hulk                     -to the North. // the umber hulk                     -to the South.
+1792875018	cmd	Alaric	54	11035	ancala.are	standing	100	0	-	north		The Small Intestine //   The tunnel bends from the south to the east.  You imagine the // remains of many a brave warrior who dared the dragon passed here,
+1792875018	cmd	Alaric	54	11035	ancala.are	standing	100	0	-	scan		the ochre jello                    -to the South. // the umber hulk                     -to the far South.
+1792875019	cmd	Alaric	54	11036	ancala.are	standing	100	0	-	east		The Small Intestine //   The blank walls of the tunnel lead west and south. // [Exits: south west]
+1792875020	cmd	Alaric	54	11036	ancala.are	standing	100	0	-	scan		the ochre jello                    -to the South. // the ochre jello                    -to the far South. // the umber hulk                     -to the far South.
+1792875021	cmd	Alaric	54	11037	ancala.are	standing	100	0	-	south		The Small Intestine //   The smooth tunnel contracts to the south of here into a new tunnel. // [Exits: north south]
+1792875024	cmd	Alaric	54	11037	ancala.are	standing	100	0	-	exits		Obvious exits: // North - The Small Intestine // South - The Large Intestine
+1792875025	cmd	Alaric	54	11038	ancala.are	standing	100	0	-	south		The Large Intestine //   Unlike the small intestine, the walls here have a nook and // cranny quality about them.  They are quite rough and dust fills many
+1792875027	cmd	Alaric	54	11038	ancala.are	standing	100	0	-	exits		Obvious exits: // North - The Small Intestine // East  - The Large Intestine
+1792875029	cmd	Alaric	54	11039	ancala.are	standing	100	0	-	east		The Large Intestine //   The smell of dust is thick in this section of the tunnel that runs // to the west and to the north.
+1792875030	cmd	Alaric	54	11039	ancala.are	standing	100	0	-	exits		Obvious exits: // North - The Large Intestine // West  - The Large Intestine
+1792875032	cmd	Alaric	54	11040	ancala.are	standing	100	0	-	north		The Large Intestine //   The rough walls of the tunnel scrape your armor and cuts your // exposed skin as you travel north or south.
+1792875034	cmd	Alaric	54	11040	ancala.are	standing	100	0	-	scan		the ochre jello                    -to the North. // the ochre jello                    -to the North. // the umber hulk                     -to the South.
+1792875035	cmd	Alaric	54	11041	ancala.are	standing	100	0	-	north		The Large Intestine //   The tunnel drops to the east but you find many handholds among the // nooks and crannies.
+1792875036	cmd	Alaric	54	11041	ancala.are	standing	100	0	-	scan		the umber hulk                     -to the South. // the umber hulk                     -to the far South.
+1792875037	cmd	Alaric	54	11042	ancala.are	standing	100	0	-	east		The Large Intestine //   The roughly hewn tunnel constricts to the south. // [Exits: south west]
+1792875038	cmd	Alaric	54	11043	ancala.are	standing	100	0	-	south		A Stony Sphincter //   You are in a narrow tunnel, barely able to walk upright without // knocking your head.  A breeze from the south swirls the dust here and
+1792875040	cmd	Alaric	54	11044	ancala.are	standing	100	0	-	east		At The Dragon's Tail //   You have never been so happy to see the light of day!  You are by // the dragon's stone tail, which is covered with green, growing vines
+1792875042	cmd	Alaric	54	11044	ancala.are	standing	100	0	-	scan		You don't see anything near you.
+1792875043	cmd	Alaric	54	11001	ancala.are	standing	100	0	-	south		Before The Dragon //   You stand before the Dragon Ancalador.  You can still make out // its petrified form despite the earth that has filled in the crevices
+1792875043	cmd	Alaric	54	11001	ancala.are	standing	100	0	-	scan		the hermit                         -to the East. // the green slime                    -to the far West. // the green slime                    -to the far West.
+1792875047	cmd	Alaric	54	11001	ancala.are	standing	100	0	-	aquest	info	.-[ Quest Status ]--------------------------------------------. // | Type  : Kill Quest // | Target: Slay the green crystal spider
+1792875051	cmd	Alaric	54	11002	ancala.are	standing	100	0	-	west		In The Dragon's Mouth //   Rows of stone teeth as large as trolls line the walls here.  A // tongue of pitted stone leads west, behind stone molars as large as
+1792875052	cmd	Alaric	54	11003	ancala.are	standing	100	0	-	west		By Some Stone Tonsils //   You are in the back of the dragon's mouth.  The throat continues // down and something oozes from petrified sinuses above.
+1792875052	cmd	Alaric	54	11004	ancala.are	standing	100	0	-	west		A Throat Of Stone //   The floor is uneven -- the middle of the passage being lower than // the sides, which rise up to the walls.  The whole passage is slightly
+1792875053	cmd	Alaric	54	11005	ancala.are	standing	100	0	-	west		Further Down The Dragon's Throat //   The tunnel begins to lose its steepness and merely runs westward // now.  The shapes of what might be petrified muscles line the walls.
+1792875053	cmd	Alaric	54	11006	ancala.are	standing	100	0	-	west		A Junction //   You are in a four way junction.  The dragon's throat continues east // and west, but by squeezing under some stone flaps you can make out
+1792875054	cmd	Alaric	54	11055	ancala.are	standing	100	0	-	west		A Stone Tunnel //   The dragon's throat continues east and west on a path which neither // rises nor falls.  On the south wall, to the dragon's left, a warmth
+1792875055	cmd	Alaric	54	11012	ancala.are	standing	100	0	-	west		Ancalador's Stomach //   The dragon's throat ends, revealing a huge cavern lit from below by // eerie and diffuse lights of yellow and green.  Even more amazingly, a
+1792875056	cmd	Alaric	54	11012	ancala.are	standing	100	0	-	scan		the yellow crystal spider          -right below you.
+1792875057	cmd	Alaric	54	11020	ancala.are	standing	100	1	-	down		The Acid Forest //   You stand before an amazing sight.  Wrapped within the mists here // on the cavern floor is a forest of oddly shaped stalagmites surrounded
+1792875060	cmd	Alaric	54	11020	ancala.are	standing	100	0	-	scan		the green crystal spider           -to the North. // the yellow crystal spider          -to the far East. // the yellow crystal spider          -to the South.
+1792875061	cmd	Alaric	54	11017	ancala.are	standing	100	0	-	north		The Acid Forest //   Sharp stalagmites reach up wards, created by the mineral ichors // dripping off stalactites far above.  Pools of acid fill every crevice
+1792875063	cmd	Alaric	54	11017	ancala.are	standing	100	11	-	kill	sp	Your slash ^^^ DESTROYS ^^^ the green crystal spider! [-113] // The green crystal spider is DEAD!! // You have almost finished your QUEST!
+1792875067	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792875068	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1792875068	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1792875068	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 3	The Hall of Whispers // [Exits: north east south west] // Entrance to the Haunted Temple
+1792875068	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792875069	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792875069	cmd	Alaric	54	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792875069	cmd	Alaric	54	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792875069	cmd	Alaric	54	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792875070	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792875070	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	17	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Streak of 10 in a row! A +70% bonus has been added!'
+1792875070	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 23 quest points.
