@@ -7756,3 +7756,98 @@
 1792806551	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1792806560	session	Trentlin	50	2497	dresden_halloween.are	quit	867s	+0 levels	+0 exp	+226911393 copper	7 kills	0 deaths	1 quests	517 commands	6 refused	coin: loot 64p 67g 1s 93c, quests 162p 24g 12s
 1792806957	session	Alaric	54	29210	korzath2.are	quit	6181s	+0 levels	+0 exp	+8445348 copper	0 kills	0 deaths	0 quests	33 commands	8 refused	coin: none
+1792843145	cmd	Alaric	54	4216	dresden_halloween.are	resting	0	0	-	wake		You stand up.
+1792843145	cmd	Alaric	54	4216	dresden_halloween.are	standing	0	0	-	look		Death room. //   Hrm, since you're reading this, guess you died! // Please insert coin(s) to continue.
+1792843147	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	down		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792843147	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	down		Alas, you cannot go that way.
+1792843150	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843151	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843151	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843151	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843152	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843152	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843153	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843153	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843154	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843154	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843155	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843156	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843156	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843157	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792843159	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843159	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843160	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843160	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843160	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	0	-	tk	corpse	You lost your concentration.
+1792843161	cmd	Alaric	54	4208	dresden_halloween.are	standing	0	10	-	tk	corpse	You concentrate and corpse of Alaric flies to your hand.
+1792843162	cmd	Alaric	54	4208	dresden_halloween.are	standing	1	0	-	tk	corpse	You lost your concentration.
+1792843164	cmd	Alaric	54	4208	dresden_halloween.are	standing	1	4	-	drop	cor	You drop corpse of Alaric.
+1792843166	cmd	Alaric	54	4208	dresden_halloween.are	standing	1	3	-	get	all cor	You get a mud school diploma from corpse of Alaric. // You get glowing moss from corpse of Alaric. // You get a commoner's piwafwi from corpse of Alaric.
+1792843176	cmd	Alaric	54	4208	dresden_halloween.are	standing	1	0	-	heal		Hermie says 'All of it free.  Anything on this list:' //   armor             bless             shield           //   stoneskin         sanctuary         haste           
+1792843192	cmd	Alaric	54	4208	dresden_halloween.are	standing	1	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are clothed in mystical armor. // You feel righteous.
+1792843195	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	get	all cor	I see nothing in the cor.
+1792843197	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	look	i cor	Corpse of Alaric contains: //      Nothing.
+1792843200	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	wear	all	You wield Excalibur. // Excalibur feels like a part of you! // You wear battle boots on your feet.
+1792843201	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: //      (Magical) (Flaming) the Crystalline Sword of Justice // ( 3) (Glowing) a piece of trick-or-treat candy
+1792843203	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792843209	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: //      (Magical) (Flaming) the Crystalline Sword of Justice // ( 3) (Glowing) a piece of trick-or-treat candy
+1792843215	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	secondary	just	That item is too powerful to dual wield.
+1792843218	refused	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	(unknown)		Huh?
+1792843222	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	compare	helm	A) battle helmet (level 51) // B) battle helmet (level 51), worn // Slot: head.  Your damage comes from weapons.
+1792843230	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	9	-	stash	put helm	You put battle helmet away for safe keeping.
+1792843231	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792843232	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792843233	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	scan		the Headless Horseman              -to the North.
+1792843235	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	steal		Steal what from whom?
+1792843237	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	stealth		You blend into the shadows.
+1792843242	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	alias		(withheld)
+1792843243	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792843245	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	bs	ho	Your backstab does UNSPEAKABLE things to the Headless Horseman! [-433] // You are no longer stealthful. // Your backstab does UNSPEAKABLE things to the Headless Horseman! [-396]
+1792843268	cmd	Alaric	54	2401	dresden_halloween.are	fighting	99	0	fight	look	ho	The Headless Horseman looms before you: an undead warrior of terrifying power // astride a massive black horse wreathed in ghostly flame. Where a head should // rest sits only empty air above the blood-soaked collar of blackened plate. He
+1792843270	cmd	Alaric	54	2401	dresden_halloween.are	fighting	99	0	fight	affect		You are affected by: // Skill: 'titanic' modifies experience by 50 for 29 hours. // Skill: 'titanic' modifies moves by 4040 for 29 hours.
+1792843295	cmd	Alaric	54	2401	dresden_halloween.are	fighting	99	0	fight	torment		The Headless Horseman convulses in pain. // Your pain mauls the Headless Horseman. [-21]
+1792843301	cmd	Alaric	54	2401	dresden_halloween.are	fighting	98	0	fight	torment		The Headless Horseman convulses in pain. // Your pain mauls the Headless Horseman. [-22]
+1792843312	cmd	Alaric	54	2401	dresden_halloween.are	standing	98	0	-	look	i cor	Corpse of the Headless Horseman contains: //      (Magical) (Glowing) a pumpkin-lantern charm
+1792843316	cmd	Alaric	54	2401	dresden_halloween.are	standing	98	0	-	get	all cor	You get a pumpkin-lantern charm from corpse of the Headless Horseman.
+1792843322	cmd	Alaric	54	2426	dresden_halloween.are	standing	98	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792843323	cmd	Alaric	54	2426	dresden_halloween.are	standing	98	0	-	open		Ok.
+1792843324	cmd	Alaric	54	9506	newthalo.are	standing	98	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792843325	cmd	Alaric	54	29004	korzath1.are	standing	98	0	-	run	n	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1792843326	cmd	Alaric	54	29004	korzath1.are	resting	98	0	-	wake		You stand up.
+1792843327	cmd	Alaric	54	29004	korzath1.are	standing	98	0	-	bs	gu	Your vicious attack has pieced a vital organ, killing Guardian Knight instantly!  *FATALITY* // You receive 0 experience points. // You hear Guardian Knight's death cry.
+1792843337	cmd	Alaric	54	29004	korzath1.are	standing	98	0	-	get	key cor	You get a diamond key from corpse of Guardian Knight.
+1792843337	cmd	Alaric	54	29004	korzath1.are	standing	98	0	-	unlock	north	There is a flash of light as you unlock the door.
+1792843337	cmd	Alaric	54	29004	korzath1.are	standing	98	0	-	open		Ok.
+1792843337	cmd	Alaric	54	29201	korzath2.are	standing	98	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1792843338	cmd	Alaric	54	29202	korzath2.are	standing	98	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1792843338	cmd	Alaric	54	29202	korzath2.are	standing	98	0	-	north		The door has been Wizard Locked. You can not pass
+1792843338	cmd	Alaric	54	29202	korzath2.are	standing	98	0	-	north		The door has been Wizard Locked. You can not pass
+1792843338	cmd	Alaric	54	29202	korzath2.are	standing	98	0	-	north		The door has been Wizard Locked. You can not pass
+1792843339	cmd	Alaric	54	29202	korzath2.are	standing	98	0	-	north		The door has been Wizard Locked. You can not pass
+1792843339	cmd	Alaric	54	29203	korzath2.are	standing	98	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1792843339	cmd	Alaric	54	29204	korzath2.are	standing	98	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1792843341	cmd	Alaric	54	29205	korzath2.are	standing	98	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1792843341	cmd	Alaric	54	29206	korzath2.are	standing	98	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1792843342	cmd	Alaric	54	29207	korzath2.are	standing	98	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1792843343	cmd	Alaric	54	29207	korzath2.are	standing	98	0	-	scan		a killer clown                     -to the North. // a killer clown                     -to the North. // a killer clown                     -to the North.
+1792843343	cmd	Alaric	54	29208	korzath2.are	standing	98	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1792843344	cmd	Alaric	54	29208	korzath2.are	standing	98	0	-	scan		a killer clown                     -to the East. // a killer clown                     -to the East. // a killer clown                     -to the West.
+1792843347	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1792843347	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	bs	sk	Excalibur shears through an Animated Skeleton with terrible force! // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-447] // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-359]
+1792843368	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792843369	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	inventory		You are carrying: //      a diamond key //      (Magical) (Glowing) a pumpkin-lantern charm
+1792843376	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	tk	soul	You lost your concentration.
+1792843376	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	tk	soul	You lost your concentration.
+1792843377	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	tk	soul	You lost your concentration.
+1792843377	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	tk	soul	You lost your concentration.
+1792843377	cmd	Alaric	54	29209	korzath2.are	standing	98	1	-	tk	soul	Either you couldn't find the soul, or you aren't able to TK it.
+1792843378	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	tk	soul	You lost your concentration.
+1792843378	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	tk	soul	You lost your concentration.
+1792843381	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	look		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1792843383	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	stash		Your stash holds 90 of 150 things. //     1) battle helmet //     2) a pair of thieves boots
+1792843391	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	look		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1792843393	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	scan		a deranged madman                  -to the North. // a killer clown                     -to the East. // a killer clown                     -to the East.
+1792843397	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	bs	mad	They aren't here.
+1792843398	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	look		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1792843399	cmd	Alaric	54	29210	korzath2.are	standing	98	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1792843401	cmd	Alaric	54	29210	korzath2.are	standing	98	0	-	bs	mad	Your backstab misses a deranged madman. [-0] // Your backstab >>> ANNIHILATES <<< a deranged madman! [-235] // Your backstab MANGLES a deranged madman! [-53]

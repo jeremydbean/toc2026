@@ -1,0 +1,6 @@
+1	1792843141	uid	assign	P6adc9d850001b1ba	Alaric	-	player	-	first seen since the ledger began	0da8ef4a
+2	1792843141	snapshot	committed	P6adc9d850001b1ba	Alaric	-	prepenalty	-	Alaric.20261024_115901.prepenalty fnv 2e44837c 21438 bytes	0a80df7b
+3	1792843141	snapshot	committed	P6adc9d850001b1ba	Alaric	-	death	-	Alaric.20261024_115901.death fnv ae580d75 21438 bytes	7095be1f
+4	1792843141	corpse	created	P6adc9d850001b1ba	Alaric	c6adc9d8501bdd3	death	-	made in room 29210 holding 47 objects; death snapshot Alaric.20261024_115901.death	eb994d98
+5	1792843161	corpse	archived	P6adc9d850001b1ba	Alaric	c6adc9d8501bdd3	carried	Alaric: tk	ended (carried): picked up by Alaric; 47 objects left in it	f859d006
+6	1792843164	corpse	created	P6adc9d850001b1ba	Alaric	c6adc9d9c02da32	dropped	Alaric: drop	put down in room 4208 and kept again	0cf60ff1

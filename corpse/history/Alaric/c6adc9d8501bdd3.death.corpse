@@ -1,0 +1,539 @@
+#CORPSE
+Id c6adc9d8501bdd3
+Owner Alaric
+Uid P6adc9d850001b1ba
+Owned 1
+Room 29210
+Level 54
+Timer 10080
+Died 1792843141
+Saved 1792843141
+Snapshot Alaric.20261024_115901.death
+State live
+Why -
+Objects 47
+Vers 4
+End
+
+#O
+Vnum 700
+Nest 0
+ExtF 3146818
+Wear -1
+Lev  48
+Cost 25000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 10001
+Nest 0
+ExtF 2100544
+Wear -1
+Lev  50
+Cost 40000000
+Cond 96
+Repd 0
+End
+
+#O
+Vnum 29900
+Nest 0
+Wear -1
+Cost 10000
+Cond 75
+Repd 0
+End
+
+#O
+Vnum 29900
+Nest 0
+Wear -1
+Cost 10000
+Cond 75
+Repd 0
+End
+
+#O
+Vnum 29900
+Nest 0
+Wear -1
+Cost 10000
+Cond 75
+Repd 0
+End
+
+#O
+Vnum 29236
+Nest 0
+Wear -1
+Lev  53
+Cost 50000000
+Cond 100
+Repd 0
+Affect -1 53 -1 5 17 0 0
+End
+
+#O
+Vnum 29207
+Nest 0
+ExtF 3
+Wear -1
+Lev  51
+Cost 20000000
+Cond 99
+Repd 0
+Affect -1 51 -1 -8 14 0 0
+End
+
+#O
+Vnum 29215
+Nest 0
+Wear -1
+Lev  51
+Cost 50000000
+Cond 100
+Repd 0
+Affect -1 51 -1 3 20 0 0
+End
+
+#O
+Vnum 29227
+Nest 0
+Wear -1
+Lev  53
+Cost 50000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 10000
+Nest 0
+ExtF 2100289
+Wear -1
+Lev  50
+Cost 60000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5609
+Nest 0
+Wear -1
+Lev  52
+Cost 10000000
+Cond 88
+Repd 0
+Affect -1 52 -1 -6 13 0 0
+End
+
+#O
+Vnum 5609
+Nest 0
+Wear -1
+Lev  52
+Cost 10000000
+Cond 100
+Repd 0
+Affect -1 52 -1 -3 3 0 0
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 31000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 28114
+Nest 0
+ExtF 19713
+Wear -1
+Lev  51
+Cost 5000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 16046
+Nest 0
+Wear -1
+Lev  9
+Cost 5400
+Cond 100
+Repd 0
+Spell 3 'refresh'
+End
+
+#O
+Vnum 16033
+Nest 0
+Wear -1
+Lev  52
+Cost 24090000
+Cond 99
+Repd 0
+Affect -1 52 -1 -2 3 0 0
+End
+
+#O
+Vnum 16033
+Nest 0
+Wear -1
+Lev  52
+Cost 24090000
+Cond 98
+Repd 0
+End
+
+#O
+Vnum 29235
+Nest 0
+Wear -1
+Lev  53
+Cost 50000000
+Cond 100
+Repd 0
+Affect -1 53 -1 2 20 0 0
+End
+
+#O
+Vnum 29215
+Nest 0
+Wear -1
+Lev  51
+Cost 50000000
+Cond 98
+Repd 0
+Affect -1 51 -1 3 22 0 0
+End
+
+#O
+Vnum 10004
+Nest 0
+ExtF 2100545
+Wear -1
+Lev  50
+Cost 30000000
+Cond 100
+Repd 0
+Affect -1 50 -1 -2 18 0 0
+End
+
+#O
+Vnum 10004
+Nest 0
+ExtF 2100545
+Wear -1
+Lev  50
+Cost 30000000
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 29206
+Nest 0
+Wear -1
+Lev  50
+Cost 20000000
+Cond 98
+Repd 0
+End
+
+#O
+Vnum 29049
+Nest 0
+Wear -1
+Lev  45
+Cost 15000000
+Cond 91
+Repd 1
+Val  0 0 -1 0 0
+Affect -1 45 -1 -1 24 0 0
+End
+
+#O
+Vnum 9213
+Nest 0
+Wear -1
+Lev  22
+Cost 55660000
+Cond 61
+Repd 0
+Affect -1 22 -1 3 24 0 0
+Affect -1 22 -1 1 1 0 0
+Affect -1 22 -1 -1 4 0 0
+End
+
+#O
+Vnum 3091
+Nest 0
+Wear -1
+Cost 20000
+Cond 100
+Repd 0
+Spell 1 'fly'
+End
+
+#O
+Vnum 25106
+Nest 0
+Wear -1
+Lev  17
+Cost 10000000
+Cond 35
+Repd 0
+Val  6 7 5 0 0
+End
+
+#O
+Vnum 25102
+Nest 0
+Wear -1
+Lev  2
+Cost 0
+Cond 94
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 3715
+Nest 0
+Wear -1
+Cost 0
+Cond 84
+Repd 4
+End
+
+#END
