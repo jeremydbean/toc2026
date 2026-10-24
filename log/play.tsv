@@ -8533,3 +8533,99 @@
 1792844905	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	smite		Your smite wounds the Blood Royal. // Your smite mauls the Blood Royal. // Your smite *** DEVASTATES *** the Blood Royal!
 1792844911	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	smite		Your smite *** DEVASTATES *** the Blood Royal! // Your smite MANGLES the Blood Royal! // Your smite hits the Blood Royal.
 1792844919	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	smite		Your smite MUTILATES the Blood Royal! // Your smite mauls the Blood Royal. // Your smite injures the Blood Royal.
+1792844926	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	smite		Your smite grazes the Blood Royal. // Your smite mauls the Blood Royal. // Your smite MUTILATES the Blood Royal!
+1792844936	cmd	Trentlin	50	10173	glitter.are	standing	92	0	-	look	in cor	Corpse of the Blood Royal contains: //      (Magical) (Glowing) some Indigo blue velvet robes //      (Magical) (Shining) A Precious Starjewel
+1792844940	cmd	Trentlin	50	10173	glitter.are	standing	92	0	-	get	str cor	I see nothing like that in the cor.
+1792844943	cmd	Trentlin	50	10173	glitter.are	standing	92	0	-	get	star cor	You get (Shining) A Precious Starjewel from corpse of the Blood Royal.
+1792844946	cmd	Trentlin	50	10173	glitter.are	standing	92	0	-	get	light cor	I see nothing like that in the cor.
+1792844948	cmd	Alaric	54	10173	glitter.are	standing	54	0	-	(social)		You nod.
+1792844949	cmd	Alaric	54	10173	glitter.are	standing	54	0	-	stealth		You blend into the shadows.
+1792844952	cmd	Trentlin	50	10173	glitter.are	standing	92	0	-	get	saber cor	You get (Flaming) A Light Saber from corpse of the Blood Royal.
+1792844952	cmd	Alaric	54	10172	glitter.are	standing	54	0	-	west		You can't see a thing! // Someone has arrived from the east.
+1792844954	cmd	Trentlin	50	10172	glitter.are	standing	92	0	-	compare	saber	A) (Flaming) A Light Saber (level 50) -- can't use: made for another side // B) the Gohma eye-lance (level 40), worn // Slot: wield.  Your damage comes from weapons.
+1792844954	cmd	Alaric	54	10174	glitter.are	standing	54	0	-	west		You can't see a thing! // Someone has arrived from the east.
+1792844955	cmd	Alaric	54	10174	glitter.are	standing	54	0	-	open		Ok.
+1792844962	cmd	Alaric	54	10174	glitter.are	standing	54	0	-	say	Aug and guard north of here?	You say 'Aug and guard north of here?'
+1792844966	cmd	Trentlin	50	10174	glitter.are	standing	93	0	-	scan		the Blood Royal                    -to the North. // Crown Prince Augustus Starfire          -to the North.
+1792844968	refused	Trentlin	50	10174	glitter.are	standing	93	0	-	(unknown)		Huh?
+1792844971	cmd	Trentlin	50	10174	glitter.are	standing	93	0	-	say	ok	You say 'ok'
+1792844975	cmd	Alaric	54	10174	glitter.are	standing	54	0	-	rest		You rest.
+1792844977	cmd	Trentlin	50	10174	glitter.are	standing	93	0	-	inventory		You are carrying: //      (Magical) (Flaming) A Light Saber //      (Magical) (Shining) A Precious Starjewel
+1792844980	cmd	Trentlin	50	10174	glitter.are	standing	93	0	-	compare	star	A) (Shining) A Precious Starjewel (level 50) -- can't use: made for another side // B) the Heart Guard of the Snake (level 27), worn // Slot: neck.  Your damage comes from weapons.
+1792844984	cmd	Alaric	54	10174	glitter.are	resting	54	0	-	say	Can you jump in first since I'm blind and without sanct?	You say 'Can you jump in first since I'm blind and without sanct?'
+1792844985	cmd	Trentlin	50	10174	glitter.are	standing	93	0	-	inventory		You are carrying: //      (Magical) (Flaming) A Light Saber //      (Magical) (Shining) A Precious Starjewel
+1792844988	cmd	Alaric	54	10174	glitter.are	resting	54	0	-	group		someone's group: // [50 W] Someone          5167/5544 hp 9094/9094 mana 2714/2714 mv 112503 xp // [54 T] Alaric           3901/7095 hp 10823/10823 mana 1398/4858 mv 165074 xp
+1792844991	cmd	Trentlin	50	10174	glitter.are	standing	93	0	-	say	sure lol	You say 'sure lol'
+1792844993	cmd	Trentlin	50	10174	glitter.are	standing	93	0	-	group		Trentlin's group: // [50 W] Trentlin         5167/5544 hp 9094/9094 mana 2714/2714 mv 112503 xp // [54 T] Someone          3901/7095 hp 10823/10823 mana 1398/4858 mv 165074 xp
+1792844994	cmd	Alaric	54	10174	glitter.are	resting	54	0	-	(social)		You grin evilly.
+1792844997	cmd	Trentlin	50	10174	glitter.are	standing	93	0	-	inventory		You are carrying: //      (Magical) (Flaming) A Light Saber //      (Magical) (Shining) A Precious Starjewel
+1792844998	cmd	Alaric	54	10174	glitter.are	resting	54	0	-	group		someone's group: // [50 W] Someone          5167/5544 hp 9094/9094 mana 2714/2714 mv 112503 xp // [54 T] Alaric           3901/7095 hp 10823/10823 mana 1398/4858 mv 165074 xp
+1792844999	cmd	Alaric	54	10174	glitter.are	resting	54	0	-	group		someone's group: // [50 W] Someone          5167/5544 hp 9094/9094 mana 2714/2714 mv 112503 xp // [54 T] Alaric           3901/7095 hp 10823/10823 mana 1398/4858 mv 165074 xp
+1792845000	cmd	Trentlin	50	10174	glitter.are	standing	93	0	-	compare	da	A) (Flaming) the Crystalline Dagger of Wonders (level 49) -- can't use: made for another side // B) the Gohma eye-lance (level 40), worn // Slot: wield.  Your damage comes from weapons.
+1792845001	cmd	Alaric	54	10174	glitter.are	resting	54	0	-	(social)		You nod.
+1792845003	cmd	Alaric	54	10174	glitter.are	resting	54	0	-	group		someone's group: // [50 W] Someone          5167/5544 hp 9094/9094 mana 2714/2714 mv 112503 xp // [54 T] Alaric           3901/7095 hp 10823/10823 mana 1398/4858 mv 165074 xp
+1792845010	cmd	Trentlin	50	10174	glitter.are	standing	93	0	-	say	you ready or heal up first?\	You say 'you ready or heal up first?\'
+1792845011	cmd	Trentlin	50	10174	glitter.are	standing	93	0	-	inventory		You are carrying: //      (Magical) (Flaming) A Light Saber //      (Magical) (Shining) A Precious Starjewel
+1792845013	cmd	Trentlin	50	10174	glitter.are	standing	93	0	-	compare	cloa	A) the Crystalline Royal Cloak (level 50) -- can't use: made for another side // B) the Heart Guard of the Snake (level 27), worn // Slot: neck.  Your damage comes from weapons.
+1792845013	cmd	Alaric	54	10174	glitter.are	resting	54	0	-	say	ready	You say 'ready'
+1792845016	cmd	Trentlin	50	10174	glitter.are	standing	93	0	-	scan		the Blood Royal                    -to the North. // Crown Prince Augustus Starfire          -to the North.
+1792845017	cmd	Alaric	54	10174	glitter.are	resting	54	0	-	say	I'll walk in after you	You say 'I'll walk in after you'
+1792845027	cmd	Trentlin	50	10174	glitter.are	standing	93	0	-	say	kill the royal first?	You say 'kill the royal first?'
+1792845032	cmd	Alaric	54	10174	glitter.are	resting	54	0	-	say	Either way	You say 'Either way'
+1792845035	cmd	Trentlin	50	10176	glitter.are	standing	93	0	-	north		Prince Augustus' bedroom. //   The ancient words can't be stopped and resound in your mind: // ... nimis exalatus rex sedet in veritce - caveat ruinam ! ...
+1792845035	cmd	Trentlin	50	10176	glitter.are	standing	93	0	-	kill	roy	The Blood Royal parries your attack. // Your pierce devastates the Blood Royal! // Your pierce *** DEVASTATES *** the Blood Royal!
+1792845036	cmd	Alaric	54	10174	glitter.are	resting	54	0	-	say	Sometimes they jump	You say 'Sometimes they jump'
+1792845038	cmd	Alaric	54	10174	glitter.are	resting	54	0	-	wake		You stand up.
+1792845038	cmd	Trentlin	50	10176	glitter.are	fighting	92	0	fight	smite		Your smite misses the Blood Royal.
+1792845038	cmd	Alaric	54	10174	glitter.are	standing	54	0	-	group		someone's group: // [50 W] Someone          5139/5544 hp 9094/9094 mana 2713/2714 mv 112503 xp // [54 T] Alaric           3901/7095 hp 10823/10823 mana 1398/4858 mv 165074 xp
+1792845040	cmd	Alaric	54	10174	glitter.are	standing	54	0	-	group		someone's group: // [50 W] Someone          5107/5544 hp 9094/9094 mana 2713/2714 mv 112503 xp // [54 T] Alaric           3901/7095 hp 10823/10823 mana 1398/4858 mv 165074 xp
+1792845041	cmd	Alaric	54	10174	glitter.are	standing	100	0	-	wake		You are already standing.
+1792845043	cmd	Alaric	54	10176	glitter.are	standing	100	0	-	north		You can't see a thing!
+1792845049	cmd	Alaric	54	10176	glitter.are	fighting	100	0	fight	say	Sometimes they jump anyways	You say 'Sometimes they jump anyways'
+1792845052	cmd	Trentlin	50	10176	glitter.are	fighting	89	0	fight	smite		Your smite *** DEMOLISHES *** the Blood Royal! // Your smite misses the Blood Royal. // Your smite MUTILATES the Blood Royal!
+1792845057	cmd	Alaric	54	10176	glitter.are	fighting	98	0	fight	group		someone's group: // [50 W] Someone          4812/5544 hp 9094/9094 mana 2714/2714 mv 112503 xp // [54 T] Alaric           1151/1165 hp 1833/1833 mana  817/ 818 mv 165074 xp
+1792845062	cmd	Trentlin	50	10176	glitter.are	fighting	86	0	fight	quaff	glow	You quaff a glowing potion. // You are already protected. // You are already blessed.
+1792845067	cmd	Trentlin	50	10176	glitter.are	fighting	86	0	fight	inventory		You are carrying: //      (Magical) (Flaming) A Light Saber //      (Magical) (Shining) A Precious Starjewel
+1792845068	cmd	Alaric	54	10176	glitter.are	fighting	98	0	fight	inventory		You are carrying: // (11) a potion of true sight //      a potion of flying
+1792845071	cmd	Alaric	54	10176	glitter.are	fighting	93	0	fight	quaff	true	You quaff a potion of true sight. // Your eyes tingle. // Your eyes tingle.
+1792845072	cmd	Trentlin	50	10176	glitter.are	fighting	85	0	fight	quaff	glow	You do not have that potion.
+1792845072	cmd	Alaric	54	10176	glitter.are	fighting	93	0	fight	look		You can't see a thing!
+1792845076	cmd	Trentlin	50	10176	glitter.are	fighting	84	0	fight	smite		Your smite misses the Blood Royal. // Your smite decimates the Blood Royal! // Your smite maims the Blood Royal!
+1792845079	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	dirt		Your kicked dirt misses someone. [-0]
+1792845085	cmd	Trentlin	50	10176	glitter.are	fighting	84	0	fight	smite		Your smite MANGLES the Blood Royal! // Your smite *** DEVASTATES *** the Blood Royal! // Your smite *** DEMOLISHES *** the Blood Royal!
+1792845093	cmd	Trentlin	50	10176	glitter.are	fighting	82	0	fight	smite		Your smite *** DEVASTATES *** the Blood Royal! // Your smite MANGLES the Blood Royal! // Your smite DISMEMBERS the Blood Royal!
+1792845102	cmd	Trentlin	50	10176	glitter.are	fighting	79	0	fight	smite		Your smite *** DEVASTATES *** the Blood Royal! // You have become better at spear! // Your smite *** DEVASTATES *** the Blood Royal!
+1792845107	cmd	Alaric	54	10176	glitter.are	fighting	87	0	fight	bash		Your bash misses someone. [-0] // You fall flat on your face!
+1792845111	cmd	Trentlin	50	10176	glitter.are	fighting	79	0	fight	smite		Your smite misses the Blood Royal.
+1792845118	cmd	Trentlin	50	10176	glitter.are	fighting	79	0	fight	smite		Your smite MUTILATES the Blood Royal! // Your smite misses the Blood Royal. // Your smite MANGLES the Blood Royal!
+1792845124	cmd	Trentlin	50	10176	glitter.are	fighting	78	0	fight	smite		Your smite misses the Blood Royal.
+1792845127	cmd	Alaric	54	10176	glitter.are	resting	87	0	fight	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792845128	refused	Alaric	54	10176	glitter.are	resting	87	0	fight	bash		Nah... You feel too relaxed...
+1792845130	cmd	Trentlin	50	10176	glitter.are	fighting	78	0	fight	look	roy	He is clad in indigo blue velvet robes and on his breast glitters a precious // starjewel, carved into an eight-pointed star ... he's armed and don't under- // estimate his mental powers ... remember he has pledged his life to the royal
+1792845130	cmd	Alaric	54	10176	glitter.are	resting	87	0	fight	wake		You stand up.
+1792845131	cmd	Alaric	54	10176	glitter.are	standing	87	0	fight	bash		Your bash misses someone. [-0] // You fall flat on your face!
+1792845132	cmd	Trentlin	50	10176	glitter.are	fighting	77	0	fight	get	lan	You get the Gohma eye-lance.
+1792845133	cmd	Trentlin	50	10176	glitter.are	fighting	77	0	fight	wear	lan	You wield the Gohma eye-lance. // You feel quite confident with the Gohma eye-lance.
+1792845134	cmd	Trentlin	50	10176	glitter.are	fighting	77	0	fight	smite		Your smite MANGLES the Blood Royal! // Your smite DISEMBOWELS the Blood Royal! // Your smite grazes the Blood Royal.
+1792845140	cmd	Trentlin	50	10176	glitter.are	fighting	77	0	fight	smite		Your smite misses the Blood Royal.
+1792845142	refused	Alaric	54	10176	glitter.are	resting	87	0	fight	bash		Nah... You feel too relaxed...
+1792845144	cmd	Alaric	54	10176	glitter.are	resting	87	0	fight	wake		You stand up.
+1792845145	cmd	Alaric	54	10176	glitter.are	standing	87	0	fight	look		You can't see a thing!
+1792845150	cmd	Trentlin	50	10176	glitter.are	fighting	76	0	fight	get	star cor	You get (Shining) A Precious Starjewel from corpse of the Blood Royal.
+1792845151	cmd	Trentlin	50	10176	glitter.are	fighting	76	0	fight	smite		Your smite *** DEMOLISHES *** Crown Prince Augustus Starfire! // Your smite maims Crown Prince Augustus Starfire! // Your smite MASSACRES Crown Prince Augustus Starfire!
+1792845157	cmd	Trentlin	50	10176	glitter.are	fighting	75	0	fight	look	star	It's a VERY rare and expensive jewel, carved in the form of an eight-pointed // star and given to the Blood Royal by the king. It is said that, as long as the // rightful owner lives, the starjewel will shine brightly ... but that it will
+1792845159	cmd	Trentlin	50	10176	glitter.are	fighting	74	0	fight	smite		Your smite maims Crown Prince Augustus Starfire! // Your smite misses Crown Prince Augustus Starfire. // Your smite MUTILATES Crown Prince Augustus Starfire!
+1792845165	cmd	Trentlin	50	10176	glitter.are	fighting	74	0	fight	look	au	When you take a closer look you see that the Crown Prince has the shakes. // Not at all the regal figure you expected to find .... // Crown Prince Augustus Starfire has been battered quite a bit.
+1792845166	cmd	Trentlin	50	10176	glitter.are	fighting	73	0	fight	smite		Your smite misses Crown Prince Augustus Starfire.
+1792845166	cmd	Alaric	54	10176	glitter.are	fighting	88	0	fight	group		someone's group: // [50 W] Someone          4078/5544 hp 9094/9094 mana 2714/2714 mv 112503 xp // [54 T] Alaric           1026/1165 hp 1833/1833 mana  818/ 818 mv 165260 xp
+1792845175	cmd	Trentlin	50	10176	glitter.are	fighting	72	0	fight	smite		Your smite misses Crown Prince Augustus Starfire.
+1792845181	cmd	Trentlin	50	10176	glitter.are	fighting	71	0	fight	smite		Your smite misses Crown Prince Augustus Starfire.
+1792845187	cmd	Trentlin	50	10176	glitter.are	fighting	71	0	fight	smite		Your smite misses Crown Prince Augustus Starfire.
+1792845199	cmd	Trentlin	50	10176	glitter.are	fighting	69	0	fight	smite		Your smite misses Crown Prince Augustus Starfire.
+1792845201	cmd	Alaric	54	10176	glitter.are	fighting	88	0	fight	affect		You are affected by: // Spell: 'change sex' modifies sex by 1 for 119 hours. // Spell: 'detect hidden' for 8 hours.
+1792845208	cmd	Trentlin	50	10176	glitter.are	fighting	67	0	fight	smite		Your smite DISEMBOWELS Crown Prince Augustus Starfire! // Your smite hits Crown Prince Augustus Starfire. // Your smite DISMEMBERS Crown Prince Augustus Starfire!
+1792845208	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	dirt		Your kicked dirt misses someone. [-0]
+1792845214	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	wake		You are already fighting!
+1792845218	cmd	Trentlin	50	10176	glitter.are	fighting	67	0	fight	smite		Your smite DISMEMBERS Crown Prince Augustus Starfire! // Your smite DISMEMBERS Crown Prince Augustus Starfire! // Your smite *** DEVASTATES *** Crown Prince Augustus Starfire!
+1792845218	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	torment		You lost your concentration.
+1792845219	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	torment		Someone convulses in pain. // Your pain devastates someone! [-29]

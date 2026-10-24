@@ -1,12 +1,12 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792844845
+LogO 1792845157
 Vers 4
 Prom ~
 Ignoring ~
 Race dwarf~
-Sex  1
+Sex  2
 Cla  2
 Gui  2
 Psionic  1
@@ -17,18 +17,18 @@ ChangesSeen 20261023g:1 20261023f:1 20261023e:1 20261023d:1 20261023c:1 20261023
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 54
-Plyd 814950
+Plyd 815262
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
 StashMax 150
 Scro 22
-Room 10173
-HMV  4567 7095 10823 10823 2639 4858
-NewGold 60
-NewPlat 1170
-NewCopp 70
-NewSilv 12
+Room 10176
+HMV  1026 1165 1833 1833 818 818
+NewGold 6
+NewPlat 1236
+NewCopp 80
+NewSilv 92
 BankCP 3386584573
 IntTime 1792803484
 IntTotal 144584573
@@ -118,8 +118,8 @@ Achv visit-oz 1791127353
 Achv visit-high-tower 1791329329
 Achv visit-ultima 1791329350
 Achv visit-korzath-fortress 1790899622
-LastOut  1792844845
-Rested 28146 0
+LastOut  1792845157
+Rested 27843 0
 Daily 0 0 0 0 0
 SesLogin 1792800776
 SesDur   6181
@@ -135,9 +135,9 @@ QuestPnts 1017
 QuestStrk 6
 CasinoWon  51
 CasinoLost 304
-Exp  164444
+Exp  165260
 Act  4261068
-AfBy 524801
+AfBy 524857
 AfBy2 4106
 Comm 24576
 Mounted 0
@@ -167,12 +167,12 @@ Pos  8
 Prac 77
 Trai 36
 Save  3
-Alig  984
-Hit   76
-Dam   108
-ACs -434 -409 -457 -198
+Alig  960
+Hit   56
+Dam   88
+ACs -334 -309 -357 -98
 Attr 20 13 13 18 19
-AMod 12 13 17 14 15
+AMod 12 -2 2 3 0
 Pass Al3w9zuAlwpyY~
 Titl .~
 TitleSet 1
@@ -226,28 +226,20 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
-AffD 'blindness'  44  61  -4  18          1          0
-AffD 'fly'   0  17   0   0     524288          0
-AffD 'stone skin'   0  14 -40  17          0          0
-AffD 'titanic'   0   2  50  16          0          0
-AffD 'titanic'   0   2 4040  14          0          0
-AffD 'titanic'   0   2 8990  12          0          0
-AffD 'titanic'   0   2 5930  13          0          0
-AffD 'empower'   0   2 -100  17          0          0
-AffD 'empower'   0   2  20  19          0          0
-AffD 'empower'   0   2  20  18          0          0
-AffD 'empower'   0   2  15   5          0          0
-AffD 'empower'   0   2  11   2          0          0
-AffD 'empower'   0   2  15   4          0          0
-AffD 'empower'   0   2  15   3          0          0
-AffD 'divine protection'   0  23   0   0          0       4096
-AffD 'fire shield'   0  23   0   0          0          8
-AffD 'empower'   0   2   0   0          0          0
-AffD 'shroud'   0  23 -35  17          0          0
-AffD 'power gloves'   0  23  14  19          0          0
-AffD 'detect good'   0  23   0   0          0          2
-AffD 'divine protection'   0  23   0   0          0       4096
-AffD 'fire shield'   0  23   0   0          0          8
+AffD 'change sex'   0 119   1   6          0          0
+AffD 'detect hidden'   0   8   0   0         32          0
+AffD 'detect magic'   0   8   0   0         16          0
+AffD 'detect invis'  47   8   0   0          8          0
+AffD 'blindness'  43  56  -4  18          1          0
+AffD 'fly'   0  12   0   0     524288          0
+AffD 'stone skin'   0   9 -40  17          0          0
+AffD 'divine protection'   0  18   0   0          0       4096
+AffD 'fire shield'   0  18   0   0          0          8
+AffD 'shroud'   0  18 -35  17          0          0
+AffD 'power gloves'   0  18  14  19          0          0
+AffD 'detect good'   0  18   0   0          0          2
+AffD 'divine protection'   0  18   0   0          0       4096
+AffD 'fire shield'   0  18   0   0          0          8
 End
 
 #O
@@ -478,18 +470,6 @@ Lev  51
 Cost 5000000
 Cond 100
 Repd 0
-End
-
-#O
-Vnum 3092
-Nest 0
-Wear -1
-Cost 31000
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
 End
 
 #O
