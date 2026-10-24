@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792876722
+LogO 1792877018
 Vers 4
 Prom ~
 Ignoring ~
@@ -17,18 +17,18 @@ ChangesSeen 20261023m:1 20261023l:1 20261023k:1 20261023i:1 20261023g:2 20261023
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 54
-Plyd 846827
+Plyd 847123
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
 StashMax 150
 Scro 22
-Room 2497
-HMV  1165 1165 1833 1833 608 818
-NewGold 92
-NewPlat 737
-NewCopp 12
-NewSilv 32
+Room 4208
+HMV  1165 1165 1833 1833 495 818
+NewGold 23
+NewPlat 839
+NewCopp 68
+NewSilv 51
 BankCP 4886584573
 IntTime 1792803484
 IntTotal 144584573
@@ -38,7 +38,7 @@ Corpses	0
 PkRec 0
 PkGiv 0
 AchKills 2870
-AchQuests 285
+AchQuests 286
 AchDeaths 9
 AchExplore 5
 AchMaps 5
@@ -118,7 +118,7 @@ Achv visit-oz 1791127353
 Achv visit-high-tower 1791329329
 Achv visit-ultima 1791329350
 Achv visit-korzath-fortress 1790899622
-LastOut  1792876722
+LastOut  1792877018
 Rested 27375 0
 Daily 0 0 0 0 0
 SesLogin 1792800776
@@ -131,13 +131,14 @@ SesDead  0
 SesQuest 0
 RecallRoom 4207
 RecallSet  1791596015
-QuestPnts 1310
-QuestStrk 12
+QuestPnts 1343
+QuestStrk 13
 CasinoWon  51
 CasinoLost 304
+QuestNext 4
 Exp  166214
 Act  4261068
-AfBy 512
+AfBy 524800
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -169,7 +170,7 @@ Save  3
 Alig  1000
 Hit   60
 Dam   74
-ACs -259 -234 -282 -23
+ACs -299 -274 -322 -63
 Attr 20 13 13 18 19
 AMod 12 -2 2 3 0
 Pass Al3w9zuAlwpyY~
@@ -225,6 +226,8 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
+AffD 'fly'  41  14   0   0     524288          0
+AffD 'stone skin'   0  11 -40  17          0          0
 End
 
 #O
@@ -661,17 +664,6 @@ Cost 50000000
 Cond 100
 Repd 0
 Affect -1 0 -1 -11 14 0 0
-End
-
-#O
-Vnum 16046
-Nest 0
-Wear -1
-Lev  9
-Cost 5400
-Cond 100
-Repd 0
-Spell 3 'refresh'
 End
 
 #O

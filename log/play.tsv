@@ -11844,3 +11844,255 @@
 1792876692	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
 1792876692	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1792876695	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	aquest	time	Not on a quest. Under 1 minute before you may quest again.
+1792876723	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	14	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Alaric. I have just the task for you.' // Questor Thews tells you 'Bandits have made off with The Journal of Trinidad!'
+1792876730	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792876730	cmd	Alaric	54	2405	dresden_halloween.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1792876730	cmd	Alaric	54	2433	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1792876730	cmd	Alaric	54	2434	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792876731	cmd	Alaric	54	2435	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792876731	cmd	Alaric	54	2436	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792876731	cmd	Alaric	54	2437	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792876731	cmd	Alaric	54	2438	dresden_halloween.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1792876732	cmd	Alaric	54	2438	dresden_halloween.are	standing	100	0	-	open	west	Ok.
+1792876732	cmd	Alaric	54	2439	dresden_halloween.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792876735	cmd	Alaric	54	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through
+1792876735	cmd	Alaric	54	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.
+1792876735	cmd	Alaric	54	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads
+1792876735	cmd	Alaric	54	6003	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.
+1792876736	cmd	Alaric	54	6004	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains
+1792876736	cmd	Alaric	54	6100	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in
+1792876736	cmd	Alaric	54	6101	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,
+1792876736	cmd	Alaric	54	6104	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues
+1792876737	cmd	Alaric	54	6105	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.
+1792876737	cmd	Alaric	54	6106	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.
+1792876737	cmd	Alaric	54	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.
+1792876737	cmd	Alaric	54	6116	haon.are	standing	100	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.
+1792876738	cmd	Alaric	54	6115	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues
+1792876738	cmd	Alaric	54	6114	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead north, east and west.
+1792876738	cmd	Alaric	54	6122	haon.are	standing	100	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously all around.  The path continues east and south.
+1792876738	cmd	Alaric	54	6123	haon.are	standing	100	0	-	south		A junction on the river bank in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all around.  To the south a dark river flows
+1792876739	cmd	Alaric	54	6123	haon.are	standing	100	0	-	south		You need a boat to go there.
+1792876743	cmd	Alaric	54	6123	haon.are	standing	100	0	-	open	south	There is no door to the south, just open passage.
+1792876743	cmd	Alaric	54	6123	haon.are	standing	100	0	-	south		You need a boat to go there.
+1792876745	cmd	Alaric	54	6123	haon.are	standing	100	0	-	eat	gu	You eat guano. // Your skin turns to stone. // Your feet rise off the ground.
+1792876748	cmd	Alaric	54	9774	newthalo.are	standing	100	0	-	south		On the Dark River //   The river continues east and west meandering through the woods. You // hear the sounds of wood being chopped far off in the distance.
+1792876748	cmd	Alaric	54	9775	newthalo.are	standing	100	0	-	west		On the Dark River //   The river continues east meandering through the woods. // [Exits: east west southwest]
+1792876748	cmd	Alaric	54	15	connect.are	standing	100	0	-	southwest		Bend in River //   After making a gentle bend, the river becomes dark and sinister. Overhanging // branches block out the sun and an eerie mist floats above the surface of the
+1792876749	cmd	Alaric	54	16	connect.are	standing	100	0	-	west		Misty River //   The mist becomes thicker making it almost impossible to view the surrounding // area. You think you catch a glimpse of a shadowy grove on the northern bank
+1792876749	cmd	Alaric	54	1300	htower.are	standing	100	0	-	north		Entrance to the Shadow Grove //   Before you, the grove of shadows lies. Giant grey trees are all that // can be seen through the thick shadows. A great sense of both power and
+1792876751	cmd	Alaric	54	1300	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // South - Misty River
+1792876752	cmd	Alaric	54	1308	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792876753	cmd	Alaric	54	1308	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792876753	cmd	Alaric	54	1300	htower.are	standing	100	0	-	west		Entrance to the Shadow Grove //   Before you, the grove of shadows lies. Giant grey trees are all that // can be seen through the thick shadows. A great sense of both power and
+1792876754	cmd	Alaric	54	1300	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // South - Misty River
+1792876756	cmd	Alaric	54	1308	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792876756	cmd	Alaric	54	1308	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792876758	cmd	Alaric	54	1305	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792876759	cmd	Alaric	54	1305	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792876759	cmd	Alaric	54	1302	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792876760	cmd	Alaric	54	1302	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792876762	cmd	Alaric	54	1311	htower.are	standing	100	0	-	south		A small clearing //   You are in a small clearing in the shadow grove. There is charred grass // underfoot, and the signs of fire here and there. It is almost as if the
+1792876764	cmd	Alaric	54	1312	htower.are	standing	100	0	-	north		Entrance to the High Tower //   You have reached the entrance to the high tower of sorcerery. The // tower looms above you at an incredible height. It seems to disappear
+1792876766	cmd	Alaric	54	1313	htower.are	standing	100	0	-	north		Inside the High Tower of Sorcerery //   You are inside the high tower of sorcery. The sight is truly amazing. // >From here, it is obvious that somehow, the tower is much larger on the
+1792876768	cmd	Alaric	54	1314	htower.are	standing	100	0	-	north		Common Room //   You are in the common room. There are many apprentice warlocks here // talking and resting, playing games, comparing notes. Obviously they
+1792876769	cmd	Alaric	54	1314	htower.are	standing	100	0	-	aquest	info	.-[ Quest Status ]--------------------------------------------. // | Type  : Recovery Quest // | Target: Recover The Journal of Trinidad
+1792876784	cmd	Alaric	54	1313	htower.are	standing	100	3	-	south		Inside the High Tower of Sorcerery //   You are inside the high tower of sorcery. The sight is truly amazing. // >From here, it is obvious that somehow, the tower is much larger on the
+1792876784	cmd	Alaric	54	1315	htower.are	standing	100	0	-	east		The Hallway //   You are in a long hallway, it seems rather unremarkable. //   The hallway continues east and back west.
+1792876784	cmd	Alaric	54	1330	htower.are	standing	100	0	-	east		The hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.
+1792876784	cmd	Alaric	54	1331	htower.are	standing	100	0	-	east		A bend in the hallway //   You are at a bend in the hallway. The walls emit a faint magical glow // which provides enough light to see by.
+1792876785	cmd	Alaric	54	1331	htower.are	standing	100	0	-	open	north	Ok.
+1792876785	cmd	Alaric	54	1334	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading north and south. The walls emit a // faint magical glow which provides enough light to see by.
+1792876789	cmd	Alaric	54	1334	htower.are	standing	100	0	-	open		Ok.
+1792876789	cmd	Alaric	54	1334	htower.are	standing	100	0	-	exits		Obvious exits: // North - A hallway // East  - A guest bedroom
+1792876790	cmd	Alaric	54	1337	htower.are	standing	100	0	-	east		A guest bedroom //   You are in a comfortable looking bedroom. A small globe of magical energy // floats overhead, providing light. A small cot is in one corner looking
+1792876791	cmd	Alaric	54	1337	htower.are	standing	100	0	-	exits		Obvious exits: // West  - A hallway
+1792876792	cmd	Alaric	54	1334	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading north and south. The walls emit a // faint magical glow which provides enough light to see by.
+1792876792	cmd	Alaric	54	1334	htower.are	standing	100	0	-	exits		Obvious exits: // North - A hallway // East  - A guest bedroom
+1792876793	cmd	Alaric	54	1331	htower.are	standing	100	0	-	south		A bend in the hallway //   You are at a bend in the hallway. The walls emit a faint magical glow // which provides enough light to see by.
+1792876794	cmd	Alaric	54	1331	htower.are	standing	100	0	-	exits		Obvious exits: // North - A hallway // East  - Closed door
+1792876795	cmd	Alaric	54	1331	htower.are	standing	100	0	-	open		Ok.
+1792876795	cmd	Alaric	54	1331	htower.are	standing	100	0	-	open		Ok.
+1792876796	cmd	Alaric	54	1331	htower.are	standing	100	0	-	exits		Obvious exits: // North - A hallway // East  - A guest bedroom
+1792876799	cmd	Alaric	54	1334	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading north and south. The walls emit a // faint magical glow which provides enough light to see by.
+1792876799	cmd	Alaric	54	1338	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading from the south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876800	cmd	Alaric	54	1340	htower.are	standing	100	0	-	up		A hallway //   You are in a long hallway leading west from here. The walls emit a faint // magical glow which provides enough light to see by. Some faint moonlight
+1792876800	cmd	Alaric	54	1343	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.
+1792876800	cmd	Alaric	54	1345	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by. Flashes of light can
+1792876800	cmd	Alaric	54	1347	htower.are	standing	100	0	-	west		A bend in the hallway //   You are at a bend in the hallway. The walls emit a faint magical glow // which provides enough light to see by.
+1792876801	cmd	Alaric	54	1348	htower.are	standing	100	0	-	south		The hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876801	cmd	Alaric	54	1350	htower.are	standing	100	0	-	south		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876801	cmd	Alaric	54	1351	htower.are	standing	100	0	-	south		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876801	cmd	Alaric	54	1353	htower.are	standing	100	0	-	south		A bend in the hallway //   You are at a bend in the hallway. The walls emit a faint magical glow // which provides enough light to see by.
+1792876802	cmd	Alaric	54	1355	htower.are	standing	100	0	-	east		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.
+1792876802	cmd	Alaric	54	1356	htower.are	standing	100	0	-	east		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.
+1792876802	cmd	Alaric	54	1358	htower.are	standing	100	0	-	east		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow providing enough light to see by.
+1792876802	cmd	Alaric	54	1360	htower.are	standing	100	0	-	east		A bend in the hallway //   You are at a bend in the hallway. The walls emit a faint magical glow // which provides enough light to see by.
+1792876803	cmd	Alaric	54	1362	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876803	cmd	Alaric	54	1363	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876803	cmd	Alaric	54	1366	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow providing enough light to see by.
+1792876803	cmd	Alaric	54	1368	htower.are	standing	100	0	-	north		Below the stairs //   You are at the end of a long hallway. The walls emit a faint magical glow // which provides enough light to see by. A lesser guardian is here keeping
+1792876804	cmd	Alaric	54	1369	htower.are	standing	100	0	-	up		Atop the stairway //   You are atop a stairway. The halls here look quite a bit less used than // those below. Obviously access to these magic filled corridors is limited
+1792876804	cmd	Alaric	54	1370	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway stretching east and west. The walls here emit // a faint magical energy providing enough light to see by.
+1792876804	cmd	Alaric	54	1372	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.
+1792876804	cmd	Alaric	54	1374	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.
+1792876805	cmd	Alaric	54	1376	htower.are	standing	100	0	-	west		A bend in the hallway //   You are at a bend in the long hallway. The walls emit a faint magical // glow which provides enough light to see by.
+1792876805	cmd	Alaric	54	1377	htower.are	standing	100	0	-	south		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876805	cmd	Alaric	54	1378	htower.are	standing	100	0	-	south		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876805	cmd	Alaric	54	1380	htower.are	standing	100	0	-	south		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876806	cmd	Alaric	54	1383	htower.are	standing	100	0	-	south		A bend in the hallway //   You are at a bend in a long hallway. The walls emit a faint magical glow // which provides enough light to see by.
+1792876806	cmd	Alaric	54	1384	htower.are	standing	100	0	-	east		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.
+1792876806	cmd	Alaric	54	1385	htower.are	standing	100	0	-	east		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.
+1792876806	cmd	Alaric	54	1387	htower.are	standing	100	0	-	east		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.
+1792876807	cmd	Alaric	54	1387	htower.are	standing	100	0	-	open	south	Ok.
+1792876807	cmd	Alaric	54	1390	htower.are	standing	100	0	-	south		The pentagram chamber //   You are in a large room with a five pointed star etched into the floor. // A crackling energy field can be seen to the south, it looks quite dangerous.
+1792876811	cmd	Alaric	54	1390	htower.are	standing	100	0	-	exits		Obvious exits: // North - A hallway // South - Inside the Energy Field
+1792876816	cmd	Alaric	54	1390	htower.are	standing	100	0	-	look		The pentagram chamber //   You are in a large room with a five pointed star etched into the floor. // A crackling energy field can be seen to the south, it looks quite dangerous.
+1792876819	cmd	Alaric	54	1387	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.
+1792876820	cmd	Alaric	54	1387	htower.are	standing	100	0	-	exits		Obvious exits: // East  - A bend in the hallway // South - The pentagram chamber
+1792876822	cmd	Alaric	54	1389	htower.are	standing	100	0	-	east		A bend in the hallway //   You are at a bend in a long hallway. The walls emit a faint magical glow // which provides enough light to see by.
+1792876822	cmd	Alaric	54	1389	htower.are	standing	100	0	-	exits		Obvious exits: // North - A hallway // West  - A hallway
+1792876825	cmd	Alaric	54	1387	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.
+1792876825	cmd	Alaric	54	1390	htower.are	standing	100	0	-	south		The pentagram chamber //   You are in a large room with a five pointed star etched into the floor. // A crackling energy field can be seen to the south, it looks quite dangerous.
+1792876825	cmd	Alaric	54	1392	htower.are	standing	100	0	-	south		Inside the Energy Field //   You feel a stomach twisting sensation as you enter the energy field. // Nice going!  You might as well wait here until the wizard who built this
+1792876825	cmd	Alaric	54	5113	drow1.are	standing	100	0	-	north		Main Chamber //   This is the council chamber for the Matron Mother herself. A huge table // and chairs surrounding it sits in the center of the room.
+1792876828	cmd	Alaric	54	5113	drow1.are	standing	100	0	-	scan		You don't see anything near you.
+1792876829	cmd	Alaric	54	5112	drow1.are	standing	100	0	-	south		Throne Room //   The throne room of the 1st house is in one word...awesome. It is so // horrifying it is almost beautiful.
+1792876829	cmd	Alaric	54	5112	drow1.are	standing	100	0	-	scan		the matron mother                  -to the North. // the drow priestess                 -to the East. // the drow mage noble                -to the East.
+1792876831	cmd	Alaric	54	5111	drow1.are	standing	100	0	-	east		1st House //   You stand in the inner courtyard of the 1st and largest house in the city. // The room is extremely large and decorative. Mural and paintings hang on the
+1792876835	cmd	Alaric	54	5112	drow1.are	standing	100	0	-	west		Throne Room //   The throne room of the 1st house is in one word...awesome. It is so // horrifying it is almost beautiful.
+1792876836	cmd	Alaric	54	5113	drow1.are	standing	100	0	-	north		Main Chamber //   This is the council chamber for the Matron Mother herself. A huge table // and chairs surrounding it sits in the center of the room.
+1792876836	cmd	Alaric	54	5113	drow1.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792876836	cmd	Alaric	54	5113	drow1.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792876837	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792876837	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792876838	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	heal	ref	The cackling witch-healer utters the words 'candusima'. // You feel fully refreshed! (9 castings, 90 gold.)
+1792876841	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	heal	ref	The cackling witch-healer says 'Your legs are as fresh as I can make them.'
+1792876842	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	heal	ref	The cackling witch-healer says 'Your legs are as fresh as I can make them.'
+1792876842	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792876842	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792876842	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792876847	cmd	Alaric	54	2405	dresden_halloween.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1792876848	cmd	Alaric	54	2433	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1792876848	cmd	Alaric	54	2434	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792876848	cmd	Alaric	54	2435	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792876848	cmd	Alaric	54	2436	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792876849	cmd	Alaric	54	2437	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792876849	cmd	Alaric	54	2438	dresden_halloween.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1792876849	cmd	Alaric	54	2438	dresden_halloween.are	standing	100	0	-	open	west	Ok.
+1792876850	cmd	Alaric	54	2439	dresden_halloween.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792876853	cmd	Alaric	54	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through
+1792876853	cmd	Alaric	54	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.
+1792876853	cmd	Alaric	54	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads
+1792876853	cmd	Alaric	54	6003	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.
+1792876854	cmd	Alaric	54	6004	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains
+1792876854	cmd	Alaric	54	6100	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in
+1792876854	cmd	Alaric	54	6101	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,
+1792876854	cmd	Alaric	54	6104	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues
+1792876855	cmd	Alaric	54	6105	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.
+1792876855	cmd	Alaric	54	6106	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.
+1792876855	cmd	Alaric	54	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.
+1792876855	cmd	Alaric	54	6116	haon.are	standing	100	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.
+1792876856	cmd	Alaric	54	6115	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues
+1792876856	cmd	Alaric	54	6114	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead north, east and west.
+1792876856	cmd	Alaric	54	6122	haon.are	standing	100	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously all around.  The path continues east and south.
+1792876856	cmd	Alaric	54	6123	haon.are	standing	100	0	-	south		A junction on the river bank in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all around.  To the south a dark river flows
+1792876857	cmd	Alaric	54	9774	newthalo.are	standing	100	0	-	south		On the Dark River //   The river continues east and west meandering through the woods. You // hear the sounds of wood being chopped far off in the distance.
+1792876857	cmd	Alaric	54	9775	newthalo.are	standing	100	0	-	west		On the Dark River //   The river continues east meandering through the woods. // [Exits: east west southwest]
+1792876857	cmd	Alaric	54	15	connect.are	standing	100	0	-	southwest		Bend in River //   After making a gentle bend, the river becomes dark and sinister. Overhanging // branches block out the sun and an eerie mist floats above the surface of the
+1792876857	cmd	Alaric	54	16	connect.are	standing	100	0	-	west		Misty River //   The mist becomes thicker making it almost impossible to view the surrounding // area. You think you catch a glimpse of a shadowy grove on the northern bank
+1792876858	cmd	Alaric	54	1300	htower.are	standing	100	0	-	north		Entrance to the Shadow Grove //   Before you, the grove of shadows lies. Giant grey trees are all that // can be seen through the thick shadows. A great sense of both power and
+1792876866	cmd	Alaric	54	1300	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // South - Misty River
+1792876867	cmd	Alaric	54	1308	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792876867	cmd	Alaric	54	1308	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792876868	cmd	Alaric	54	1305	htower.are	standing	100	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792876869	cmd	Alaric	54	1305	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792876870	cmd	Alaric	54	1302	htower.are	standing	100	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792876870	cmd	Alaric	54	1302	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792876871	cmd	Alaric	54	1311	htower.are	standing	100	0	-	south		A small clearing //   You are in a small clearing in the shadow grove. There is charred grass // underfoot, and the signs of fire here and there. It is almost as if the
+1792876872	cmd	Alaric	54	1312	htower.are	standing	100	0	-	north		Entrance to the High Tower //   You have reached the entrance to the high tower of sorcerery. The // tower looms above you at an incredible height. It seems to disappear
+1792876873	cmd	Alaric	54	1313	htower.are	standing	100	0	-	north		Inside the High Tower of Sorcerery //   You are inside the high tower of sorcery. The sight is truly amazing. // >From here, it is obvious that somehow, the tower is much larger on the
+1792876877	cmd	Alaric	54	1313	htower.are	standing	100	0	-	exits		Obvious exits: // North - Common Room // East  - The Hallway
+1792876880	cmd	Alaric	54	1315	htower.are	standing	100	0	-	east		The Hallway //   You are in a long hallway, it seems rather unremarkable. //   The hallway continues east and back west.
+1792876881	cmd	Alaric	54	1315	htower.are	standing	100	0	-	exits		Obvious exits: // East  - The hallway // West  - Inside the High Tower of Sorcerery
+1792876881	cmd	Alaric	54	1330	htower.are	standing	100	0	-	east		The hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.
+1792876882	refused	Alaric	54	1330	htower.are	standing	100	0	-	(unknown)		Huh?
+1792876883	cmd	Alaric	54	1330	htower.are	standing	100	0	-	open		Ok.
+1792876884	cmd	Alaric	54	1330	htower.are	standing	100	0	-	open		Ok.
+1792876884	cmd	Alaric	54	1330	htower.are	standing	100	0	-	exits		Obvious exits: // North - A store room // East  - A bend in the hallway
+1792876886	cmd	Alaric	54	1331	htower.are	standing	100	0	-	east		A bend in the hallway //   You are at a bend in the hallway. The walls emit a faint magical glow // which provides enough light to see by.
+1792876887	cmd	Alaric	54	1331	htower.are	standing	100	0	-	exits		Obvious exits: // North - A hallway // East  - A guest bedroom
+1792876888	cmd	Alaric	54	1336	htower.are	standing	100	0	-	east		A guest bedroom //   You are in a small guest bedroom. A small cot is in one corner, and a // dusty mirror on one wall, other than that the room looks quite bare, and
+1792876889	cmd	Alaric	54	1336	htower.are	standing	100	0	-	exits		Obvious exits: // West  - A bend in the hallway
+1792876889	cmd	Alaric	54	1331	htower.are	standing	100	0	-	west		A bend in the hallway //   You are at a bend in the hallway. The walls emit a faint magical glow // which provides enough light to see by.
+1792876891	cmd	Alaric	54	1331	htower.are	standing	100	0	-	exits		Obvious exits: // North - A hallway // East  - A guest bedroom
+1792876892	cmd	Alaric	54	1334	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading north and south. The walls emit a // faint magical glow which provides enough light to see by.
+1792876892	cmd	Alaric	54	1334	htower.are	standing	100	0	-	exits		Obvious exits: // North - A hallway // East  - A guest bedroom
+1792876894	cmd	Alaric	54	1338	htower.are	standing	100	0	-	north		A hallway //   You are in a long hallway leading from the south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876895	cmd	Alaric	54	1338	htower.are	standing	100	0	-	exits		Obvious exits: // East  - Closed door // South - A hallway
+1792876902	cmd	Alaric	54	1338	htower.are	standing	100	0	-	open		Ok.
+1792876904	cmd	Alaric	54	1338	htower.are	standing	100	0	-	exits		Obvious exits: // East  - The burnt room // South - A hallway
+1792876905	cmd	Alaric	54	1338	htower.are	standing	100	0	-	look		A hallway //   You are in a long hallway leading from the south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876906	cmd	Alaric	54	1338	htower.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792876908	cmd	Alaric	54	1338	htower.are	standing	100	0	-	exits		Obvious exits: // East  - The burnt room // South - A hallway
+1792876909	cmd	Alaric	54	1340	htower.are	standing	100	0	-	up		A hallway //   You are in a long hallway leading west from here. The walls emit a faint // magical glow which provides enough light to see by. Some faint moonlight
+1792876910	cmd	Alaric	54	1340	htower.are	standing	100	0	-	exits		Obvious exits: // North - Closed door // East  - A culdesac
+1792876911	cmd	Alaric	54	1340	htower.are	standing	100	0	-	open		Ok.
+1792876912	cmd	Alaric	54	1340	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Apprentice's Barracks // East  - A culdesac
+1792876914	cmd	Alaric	54	1343	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.
+1792876915	cmd	Alaric	54	1343	htower.are	standing	100	0	-	exits		Obvious exits: // North - Closed door // East  - A hallway
+1792876916	cmd	Alaric	54	1343	htower.are	standing	100	0	-	open		Ok.
+1792876917	cmd	Alaric	54	1343	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Apprentice's barracks // East  - A hallway
+1792876918	cmd	Alaric	54	1344	htower.are	standing	100	0	-	north		The Apprentice's barracks //   You are in the barracks of the apprentice magic users. Here and there, a // young apprentice sits engrossed in magical study, or practicing a feeble
+1792876919	cmd	Alaric	54	1344	htower.are	standing	100	0	-	exits		Obvious exits: // East  - The Apprentice's Barracks // South - A hallway
+1792876920	cmd	Alaric	54	1342	htower.are	standing	100	0	-	east		The Apprentice's Barracks //   You are in the barracks of the apprentice magic users. Here and there, a // young apprentice sits engrossed in magical study, or practicing a feeble
+1792876920	cmd	Alaric	54	1342	htower.are	standing	100	0	-	exits		Obvious exits: // South - A hallway // West  - The Apprentice's barracks
+1792876921	cmd	Alaric	54	1340	htower.are	standing	100	0	-	south		A hallway //   You are in a long hallway leading west from here. The walls emit a faint // magical glow which provides enough light to see by. Some faint moonlight
+1792876922	cmd	Alaric	54	1340	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Apprentice's Barracks // East  - A culdesac
+1792876923	cmd	Alaric	54	1341	htower.are	standing	100	0	-	east		A culdesac //   You are in a small culdesac. A window to the east is letting in moonlight // and a pleasant breeze. Through it, the surrounding country side can be seen.
+1792876923	cmd	Alaric	54	1341	htower.are	standing	100	0	-	exits		Obvious exits: // West  - A hallway
+1792876924	cmd	Alaric	54	1340	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading west from here. The walls emit a faint // magical glow which provides enough light to see by. Some faint moonlight
+1792876925	cmd	Alaric	54	1340	htower.are	standing	100	0	-	exits		Obvious exits: // North - The Apprentice's Barracks // East  - A culdesac
+1792876926	cmd	Alaric	54	1343	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.
+1792876926	cmd	Alaric	54	1345	htower.are	standing	100	0	-	west		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by. Flashes of light can
+1792876927	cmd	Alaric	54	1345	htower.are	standing	100	0	-	exits		Obvious exits: // North - Closed door // East  - A hallway
+1792876928	cmd	Alaric	54	1345	htower.are	standing	100	0	-	open		Ok.
+1792876928	cmd	Alaric	54	1345	htower.are	standing	100	0	-	exits		Obvious exits: // North - The apprentice's workshop // East  - A hallway
+1792876929	cmd	Alaric	54	1346	htower.are	standing	100	0	-	north		The apprentice's workshop //   You are in a small workshop. Writing implements and parchment are strewn // about on a few worktables. In the far corner several young mages have a
+1792876931	cmd	Alaric	54	1345	htower.are	standing	100	0	-	south		A hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by. Flashes of light can
+1792876932	cmd	Alaric	54	1347	htower.are	standing	100	0	-	west		A bend in the hallway //   You are at a bend in the hallway. The walls emit a faint magical glow // which provides enough light to see by.
+1792876932	cmd	Alaric	54	1347	htower.are	standing	100	0	-	exits		Obvious exits: // East  - A hallway // South - The hallway
+1792876933	cmd	Alaric	54	1348	htower.are	standing	100	0	-	south		The hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876934	cmd	Alaric	54	1348	htower.are	standing	100	0	-	exits		Obvious exits: // North - A bend in the hallway // South - A hallway
+1792876935	cmd	Alaric	54	1348	htower.are	standing	100	0	-	open		Ok.
+1792876936	cmd	Alaric	54	1348	htower.are	standing	100	0	-	exits		Obvious exits: // North - A bend in the hallway // South - A hallway
+1792876937	cmd	Alaric	54	1349	htower.are	standing	100	0	-	west		A classroom //   You are in a large classroom filled with bored looking students of the // art. The instructor stops in his lecture on the fine uses of magic missile
+1792876941	cmd	Alaric	54	1348	htower.are	standing	100	0	-	east		The hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876942	cmd	Alaric	54	1350	htower.are	standing	100	0	-	south		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876943	cmd	Alaric	54	1350	htower.are	standing	100	0	-	open		Ok.
+1792876943	cmd	Alaric	54	1352	htower.are	standing	100	0	-	west		An empty classroom //   You are in an empty classroom. Some strange sigils are written on a // blackboard which is floating in the air here. Other than a few desks,
+1792876945	cmd	Alaric	54	1350	htower.are	standing	100	0	-	east		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876946	cmd	Alaric	54	1351	htower.are	standing	100	0	-	south		A hallway //   You are in a long hallway leading north and south. The walls emit a faint // magical glow which provides enough light to see by.
+1792876948	cmd	Alaric	54	1351	htower.are	standing	100	0	-	open		Ok.
+1792876948	cmd	Alaric	54	1351	htower.are	standing	100	0	-	exits		Obvious exits: // North - A hallway // South - A bend in the hallway
+1792876949	cmd	Alaric	54	1354	htower.are	standing	100	0	-	west		An empty classroom //   You are in an apparently empty classroom. A strange feeling of being // watched comes over you, and you hear the faint rustle of robes.
+1792876950	cmd	Alaric	54	1354	htower.are	standing	100	0	-	get	all	You get The Journal of Trinidad.
+1792876951	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792876953	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 3	The Hall of Whispers // [Exits: north east south west] // Entrance to the Haunted Temple
+1792876953	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792876954	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792876954	cmd	Alaric	54	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792876954	cmd	Alaric	54	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792876954	cmd	Alaric	54	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792876955	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792876955	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792876955	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792876956	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	21	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Journal of Trinidad to Questor Thews. // Questor Thews says 'Splendid - you've returned victorious!'
+1792876958	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 33 quest points.
+1792876965	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    235 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792876967	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (16) (Glowing) a bag of candy corn //      (Glowing) (Humming) a bone mace
+1792876971	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792876975	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792876982	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	jump	prock	I see no prock here.
+1792876986	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	look		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792876990	cmd	Alaric	54	1607	wyvern.are	standing	100	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you
+1792876993	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
