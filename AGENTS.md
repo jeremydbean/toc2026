@@ -1717,8 +1717,15 @@ against a live server. The host's copy of the script only updates at
 the end of a healthy deploy, so the first deploy after this rule landed
 had to be timed by hand against the synced login journal.
 `toc-deploy` run by hand is the override, and it still warns and saves
-everyone first. A cloud session that must ship while people are on has
-no override: it pushes and waits.
+everyone first. **A cloud session's override is `[deploy with players]`**
+in any commit waiting to ship -- only when the owner asks to ship with
+people on (owner, 2026-10-24: "ship now, just send the announcement
+before reboot"). It lifts the hold and nothing else: CI still has to
+pass (that is `[deploy now]`'s, for its own commit), players get a
+minute's warning through the queue, then `toc-deploy`'s announce, save
+and announce. A commit pushed only to carry the marker works. Like any
+change to the script, it works from the deploy after the one that
+installs it.
 
 *Superseded for automatic deploys by the rule above; still how a deploy
 by hand behaves.* **Deploy whenever the change is ready, connected

@@ -105,7 +105,8 @@ class AutoDeployDecisionTests(unittest.TestCase):
                    STATE_DIR=str(self.state), TOC_DEPLOY_LOCK=str(self.tmp / "lock"),
                    TOC_DEPLOY_BIN=str(self.bin / "toc-deploy"),
                    FAKE_CI=fake_ci, FAKE_DEPLOY_FAILS="1" if deploy_fails else "",
-                   TOC_PLAYERS_PROBE=str(self.bin / "players"), FAKE_PLAYERS=players)
+                   TOC_PLAYERS_PROBE=str(self.bin / "players"), FAKE_PLAYERS=players,
+                   TOC_PLAYERS_WARN_SECONDS="0")
         subprocess.run(["sh", str(SCRIPT)], env=env, capture_output=True, text=True)
         return (self.current / "log" / "auto-deploy.status").read_text() \
             if (self.current / "log" / "auto-deploy.status").exists() else ""
@@ -180,6 +181,35 @@ class AutoDeployDecisionTests(unittest.TestCase):
         newer = self.commit("again [deploy now]", {"src/game.c": "int i;\n"})
         self.assertIn("deployed", self.run_script(players="unknown"))
         self.assertEqual([f"{code} 1", f"{newer} 1"], self.deploys())
+
+    def test_deploy_with_players_ships_past_them_with_a_warning(self) -> None:
+        """Owner, 2026-10-24: "ship now, just send the announcement before
+        reboot", from a session that can only push. The marker may ride
+        any waiting commit, warns through the queue, and never skips CI."""
+        (self.current / "area").mkdir(parents=True, exist_ok=True)
+        queue = self.current / "area" / "webadmin.queue"
+        queue.write_text("")
+        code = self.commit("fix", {"src/game.c": "int p;\n"})
+        green = self.ci(code, "completed", "success")
+        self.assertIn("holding", self.run_script(green, players="2"))
+        self.assertEqual([], self.deploys())
+        self.assertEqual("", queue.read_text())
+
+        # Docs-only, so the code commit is still the one shipped and the
+        # one CI must cover.
+        tip = self.commit("ship it [deploy with players]", {"README.md": "now\n"})
+        status = self.run_script(green, players="2")
+        self.assertIn("deployed", status)
+        self.assertIn("[deploy with players], 2 online", status)
+        self.assertEqual([f"{tip} 1"], self.deploys())
+        self.assertIn("announce|The game restarts for an update in one minute",
+                      queue.read_text())
+
+    def test_deploy_with_players_does_not_skip_ci(self) -> None:
+        self.commit("fix [deploy with players]", {"src/game.c": "int q;\n"})
+        status = self.run_script(fake_ci="", players="1")
+        self.assertIn("waiting for CI", status)
+        self.assertEqual([], self.deploys())
 
     def test_a_failed_deploy_is_not_retried_every_tick(self) -> None:
         code = self.commit("fix", {"src/game.c": "int f;\n"})

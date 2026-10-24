@@ -99,7 +99,10 @@ carrying the code skips the CI wait for that code (not for code pushed
 after it). It never restarts the game while anybody is playing: the
 status reads `holding <sha>: N player(s) online` and it looks again
 every ten minutes until the game is empty (owner, 2026-10-20). A deploy
-by hand is the override. Docs, tests and state-sync commits never
+by hand is the override; from a session that can only push, so is
+`[deploy with players]` in any waiting commit (owner, 2026-10-24), which
+still waits for CI, gives players a minute's warning and then the usual
+announce and save. Docs, tests and state-sync commits never
 trigger it. What it
 decided last is in `/srv/toc/current/log/auto-deploy.status` (also in
 git, via the state sync), the live commit in `log/deployed-commit`, and

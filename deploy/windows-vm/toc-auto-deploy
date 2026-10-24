@@ -24,7 +24,9 @@
 #     MSSP; while it is above zero the commit is held, not tried, and the
 #     next tick looks again. A game that does not answer has nobody to
 #     protect and is deployed. A deploy by hand (toc-deploy) is the
-#     override, and still warns and saves everyone first.
+#     override, and still warns and saves everyone first; so is
+#     [deploy with players] in a waiting commit, for a session that can
+#     only push (a minute's warning, then the same announce and save).
 #
 # Then it runs toc-deploy pinned to that commit, so code pushed while it
 # was waiting for CI cannot ride along unchecked, with rollback on: an
@@ -208,12 +210,36 @@ fi
 # Nobody loses a session to an automatic restart: hold the commit while
 # anybody is playing, and look again next tick. Not recorded as attempted,
 # so it is tried the moment the game is empty.
+#
+# [deploy with players] in any commit waiting to ship lifts the hold
+# (owner, 2026-10-24: "ship now, just send the announcement before
+# reboot"). It is the cloud session's version of running toc-deploy by
+# hand: a cloud session can only push. It never skips CI -- that is
+# [deploy now]'s, and only for its own commit -- so it may sit anywhere
+# in the range: a commit pushed only to carry it works. Players get a
+# minute's warning here, then toc-deploy's own announce, save and
+# announce before the stop.
 players=$(players_online)
 case "$players" in
     0|unknown) ;;
     *)
-        status "holding $short ($why): $players player(s) online; deploying when the game is empty"
-        exit 0 ;;
+        if ! git -C "$BUILD" log --format=%B "$live..$target" |
+                grep -qF '[deploy with players]'; then
+            status "holding $short ($why): $players player(s) online; deploying when the game is empty"
+            exit 0
+        fi
+        why="$why; [deploy with players], $players online"
+        queue="$CURRENT/area/webadmin.queue"
+        if [ -f "$queue" ]; then
+            python3 -c 'import fcntl, sys
+with open(sys.argv[1], "a", encoding="ascii") as f:
+    fcntl.lockf(f.fileno(), fcntl.LOCK_EX)
+    f.write(sys.argv[2] + "\n")' "$queue" \
+                "announce|The game restarts for an update in one minute. Finish your fight; everyone is saved first." \
+                2>/dev/null || true
+        fi
+        status "warning $players player(s): deploying $short in ${TOC_PLAYERS_WARN_SECONDS:-60}s ($why)"
+        sleep "${TOC_PLAYERS_WARN_SECONDS:-60}" ;;
 esac
 
 echo "$effective" > "$STATE_DIR/attempted"
