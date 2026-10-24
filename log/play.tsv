@@ -9992,3 +9992,50 @@
 1792857155	cmd	Alaric	54	4203	dresden_halloween.are	standing	51	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
 1792857155	cmd	Alaric	54	4210	dresden_halloween.are	standing	51	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
 1792857156	cmd	Alaric	54	4210	dresden_halloween.are	standing	51	0	-	sleep		You go to sleep.
+1792857497	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792857498	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1792857500	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1792857500	cmd	Alaric	54	4203	dresden_halloween.are	standing	100	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1792857501	cmd	Alaric	54	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792857501	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	west		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792857501	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792857504	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792857506	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792857506	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792857507	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792857507	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792857509	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792857510	cmd	Alaric	54	3529	midennir_halloween.are	standing	100	0	-	run	e 8	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792857514	cmd	Alaric	54	9531	newthalo.are	standing	100	0	-	run	e 19	Near the Sands of Sorrow // [Exits: east west] // Near the Sands of Sorrow
+1792857516	cmd	Alaric	54	9531	newthalo.are	resting	100	0	-	wake		You stand up.
+1792857516	cmd	Alaric	54	9531	newthalo.are	standing	100	0	-	look		Inside the Eastern Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazened with the crest of New Thalos, swings easily on
+1792857519	cmd	Alaric	54	9531	newthalo.are	standing	100	0	-	open		Ok.
+1792857521	cmd	Alaric	54	9795	newthalo.are	standing	100	0	-	run	e 27	Outside the Eastern Gate of New Thalos // [Exits: east south west] // On a road
+1792857525	cmd	Alaric	54	9794	newthalo.are	standing	100	0	-	west		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline
+1792857528	cmd	Alaric	54	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792857528	cmd	Alaric	54	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a
+1792857529	cmd	Alaric	54	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792857529	cmd	Alaric	54	16002	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792857530	cmd	Alaric	54	16003	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792857530	cmd	Alaric	54	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1792857531	cmd	Alaric	54	16005	pirate.are	standing	100	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like
+1792857532	cmd	Alaric	54	16021	pirate.are	standing	100	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792857533	cmd	Alaric	54	16021	pirate.are	standing	100	0	-	scan		The pirate                         -to the far North. // The drunk pirate                   -to the far East. // The sailor                         -to the South.
+1792857534	cmd	Alaric	54	16022	pirate.are	standing	100	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792857535	cmd	Alaric	54	16022	pirate.are	standing	100	0	-	scan		The drunk pirate                   -to the East. // The pirate                         -to the South.
+1792857536	cmd	Alaric	54	16023	pirate.are	standing	100	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792857536	cmd	Alaric	54	16023	pirate.are	standing	100	0	-	scan		The sailor                         -to the South. // The midshipman                     -to the South.
+1792857538	cmd	Alaric	54	16028	pirate.are	standing	100	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792857539	cmd	Alaric	54	16028	pirate.are	standing	100	0	-	scan		The midshipman                     -to the far North. // The pirate                         -to the far North. // The pirate                         -to the East.
+1792857541	cmd	Alaric	54	16029	pirate.are	standing	100	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792857542	cmd	Alaric	54	16029	pirate.are	standing	100	0	-	bs	sw	Your backstab <<< ERADICATES >>> The swashbuckler! [-165] // Your backstab <<< ERADICATES >>> The swashbuckler! [-183]
+1792857632	cmd	Alaric	54	16029	pirate.are	standing	66	0	-	look		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792857634	cmd	Alaric	54	16029	pirate.are	standing	66	0	-	scan		The drunk pirate                   -to the far North. // The midshipman                     -to the far North. // The pirate                         -to the West.
+1792857636	cmd	Alaric	54	16028	pirate.are	standing	66	0	-	west		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792857637	cmd	Alaric	54	16033	pirate.are	standing	66	0	-	north		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792857639	cmd	Alaric	54	16078	pirate.are	standing	66	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792857640	cmd	Alaric	54	16078	pirate.are	standing	66	0	-	scan		The Lookout                        -far above you.
+1792857641	cmd	Alaric	54	16081	pirate.are	standing	66	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792857642	cmd	Alaric	54	16081	pirate.are	standing	66	0	-	scan		The bucaneer                       -to the East. // The swashbuckler                   -to the West. // The swashbuckler                   -to the West.
+1792857643	cmd	Alaric	54	16080	pirate.are	standing	66	0	-	west		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling
+1792857645	cmd	Alaric	54	16080	pirate.are	fighting	66	0	fight	worth		You have 1579 platinum, 112 gold, 44 silver, 176 copper // and 165734 experience (21566 exp to level).
