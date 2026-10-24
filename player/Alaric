@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792866705
+LogO 1792866744
 Vers 4
 Prom ~
 Ignoring ~
@@ -17,19 +17,19 @@ ChangesSeen 20261023g:1 20261023f:1 20261023e:1 20261023d:1 20261023c:1 20261023
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 54
-Plyd 836810
+Plyd 836849
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
 StashMax 150
 Scro 22
-Room 16080
-HMV  433 1165 1833 1833 810 810
-NewGold 155
-NewPlat 1593
-NewCopp 289
-NewSilv 128
-BankCP 3386584573
+Room 4
+HMV  191 1165 1833 1833 380 818
+NewGold 55
+NewPlat 95
+NewCopp 97
+NewSilv 36
+BankCP 4886584573
 IntTime 1792803484
 IntTotal 144584573
 Dcount 0
@@ -37,7 +37,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 2862
+AchKills 2863
 AchQuests 281
 AchDeaths 9
 AchExplore 5
@@ -118,8 +118,8 @@ Achv visit-oz 1791127353
 Achv visit-high-tower 1791329329
 Achv visit-ultima 1791329350
 Achv visit-korzath-fortress 1790899622
-LastOut  1792866705
-Rested 27417 0
+LastOut  1792866744
+Rested 27403 0
 Daily 0 0 0 0 0
 SesLogin 1792800776
 SesDur   6181
@@ -135,7 +135,7 @@ QuestPnts 1096
 QuestStrk 8
 CasinoWon  51
 CasinoLost 304
-Exp  166130
+Exp  166158
 Act  4261068
 AfBy 512
 Comm 24576
@@ -167,11 +167,11 @@ Prac 77
 Trai 36
 Save  3
 Alig  1000
-Hit   57
-Dam   71
-ACs -256 -231 -279 -20
+Hit   60
+Dam   74
+ACs -259 -234 -282 -23
 Attr 20 13 13 18 19
-AMod 11 -2 2 4 0
+AMod 12 -2 2 3 0
 Pass Al3w9zuAlwpyY~
 Titl .~
 TitleSet 1
@@ -635,7 +635,7 @@ End
 Vnum 10001
 Nest 0
 ExtF 2100544
-Wear -1
+Wear 16
 Lev  50
 Cost 40000000
 Cond 96
@@ -744,7 +744,7 @@ End
 Vnum 29207
 Nest 0
 ExtF 3
-Wear 16
+Wear -1
 Lev  51
 Cost 20000000
 Cond 99

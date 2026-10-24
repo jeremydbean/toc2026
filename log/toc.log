@@ -171716,3 +171716,69 @@ Sat Oct 24 18:32:10 2026 :: Log Alaric [4203]: n
 Sat Oct 24 18:32:10 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
 Sat Oct 24 18:32:11 2026 :: Log Alaric [4210]: sleep
 Sat Oct 24 18:32:12 2026 :: Log Alaric [4210]: eq
+Sat Oct 24 18:32:13 2026 :: Log Alaric [4210]: score
+Sat Oct 24 18:32:16 2026 :: Log Alaric [4210]: wake
+Sat Oct 24 18:32:17 2026 :: Log Alaric [4210]: s
+Sat Oct 24 18:32:17 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4210
+Sat Oct 24 18:32:17 2026 :: Log Alaric [4203]: s
+Sat Oct 24 18:32:17 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4203
+Sat Oct 24 18:32:17 2026 :: Log Alaric [4202]: e
+Sat Oct 24 18:32:17 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sat Oct 24 18:32:17 2026 :: Log Alaric [4201]: e
+Sat Oct 24 18:32:17 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sat Oct 24 18:32:17 2026 :: Log Alaric [2427]: coin -4 gold
+Sat Oct 24 18:32:18 2026 :: Log Alaric [2427]: n
+Sat Oct 24 18:32:18 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 24 18:32:18 2026 :: Log Alaric [2404]: n
+Sat Oct 24 18:32:18 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sat Oct 24 18:32:19 2026 :: Log Alaric [2401]: n
+Sat Oct 24 18:32:19 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sat Oct 24 18:32:19 2026 :: Log Alaric [2402]: n
+Sat Oct 24 18:32:19 2026 :: Log Alaric [2415]: arrived (Main Processional, Strung with Lanterns) from 2402
+Sat Oct 24 18:32:19 2026 :: Log Alaric [2415]: e
+Sat Oct 24 18:32:19 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Sat Oct 24 18:32:20 2026 :: Log Alaric [2485]: n
+Sat Oct 24 18:32:20 2026 :: Log Alaric [2482]: arrived (Nomads Tent.) from 2485
+Sat Oct 24 18:32:20 2026 :: Log Alaric [2482]: e
+Sat Oct 24 18:32:20 2026 :: Log Alaric [2483]: arrived (Fountain of Market Plaza.) from 2482
+Sat Oct 24 18:32:20 2026 :: Log Alaric [2483]: e
+Sat Oct 24 18:32:20 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 2483
+Sat Oct 24 18:32:21 2026 :: Log Alaric [2484]: e
+Sat Oct 24 18:32:21 2026 :: Log Alaric [4]: arrived (The First National Bank of Dresden.) from 2484
+Sat Oct 24 18:32:21 2026 :: Log Alaric [4]: e
+Sat Oct 24 18:32:24 2026 :: Log Alaric [4]: depos 1500 platinum
+Sat Oct 24 18:32:25 2026 :: Log Alaric [4]: w
+Sat Oct 24 18:32:25 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 4
+Sat Oct 24 18:32:25 2026 :: Log Alaric [2484]: s
+Sat Oct 24 18:32:25 2026 :: Log Alaric [2487]: arrived (Market Plaza, the Hallows Fair) from 2484
+Sat Oct 24 18:32:26 2026 :: Log Alaric [2487]: w
+Sat Oct 24 18:32:26 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2487
+Sat Oct 24 18:32:26 2026 :: Log Alaric [2486]: w
+Sat Oct 24 18:32:26 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2486
+Sat Oct 24 18:32:26 2026 :: Log Alaric [2485]: w
+Sat Oct 24 18:32:26 2026 :: Log Alaric [2415]: arrived (Main Processional, Strung with Lanterns) from 2485
+Sat Oct 24 18:32:27 2026 :: Log Alaric [2415]: s
+Sat Oct 24 18:32:27 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2415
+Sat Oct 24 18:32:27 2026 :: Log Alaric [2402]: s
+Sat Oct 24 18:32:27 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2402
+Sat Oct 24 18:32:31 2026 :: Log Alaric [2401]: gain
+Sat Oct 24 18:32:33 2026 :: Log Alaric [2401]: l
+Sat Oct 24 18:32:34 2026 :: Log Alaric [2401]: list
+Sat Oct 24 18:32:36 2026 :: Log Alaric [2401]: s
+Sat Oct 24 18:32:36 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Sat Oct 24 18:32:37 2026 :: Log Alaric [2404]: s
+Sat Oct 24 18:32:37 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Sat Oct 24 18:32:37 2026 :: Log Alaric [2427]: w
+Sat Oct 24 18:32:37 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 2427
+Sat Oct 24 18:32:37 2026 :: Log Alaric [4201]: w
+Sat Oct 24 18:32:37 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4201
+Sat Oct 24 18:32:38 2026 :: Log Alaric [4202]: n
+Sat Oct 24 18:32:38 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4202
+Sat Oct 24 18:32:38 2026 :: Log Alaric [4203]: n
+Sat Oct 24 18:32:38 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
+Sat Oct 24 18:32:39 2026 :: Log Alaric [4210]: sleep
+Sat Oct 24 18:32:40 2026 :: Log Alaric [4210]: score
+Sat Oct 24 18:32:41 2026 :: Log Alaric [4210]: who
+Sat Oct 24 18:33:18 2026 :: Sock.sinaddr:  5.161.194.92
+Sat Oct 24 18:33:18 2026 :: EOF encountered on read.
+Sat Oct 24 18:35:54 2026 :: Black market: the dealer vanished from room 4018 (The cave, moria.are) (wandering).
