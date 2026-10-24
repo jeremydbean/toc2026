@@ -11305,3 +11305,40 @@
 1792870035	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	open	pump	A possessed flame has been let out of a jack o'lantern! // A possessed flame says, 'Thanks for letting me out,' // 'but I was in there for a reason.' a possessed flame grins evilly at you.
 1792870038	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	look	i cor	Corpse of a possessed flame contains: //      Nothing.
 1792870039	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	bs	sk	Your backstab >>> ANNIHILATES <<< a skeleton! [-236] // Your backstab >>> ANNIHILATES <<< a skeleton! [-247] // A skeleton is DEAD!!
+1792870080	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	look		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792870083	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792870084	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792870085	cmd	Alaric	54	9531	newthalo.are	standing	100	0	-	run	e 25	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792870086	cmd	Alaric	54	9531	newthalo.are	standing	100	0	-	open		Ok.
+1792870087	cmd	Alaric	54	9794	newthalo.are	standing	100	0	-	run	e 6	Outside the Eastern Gate of New Thalos // [Exits: east south west] // On a road
+1792870087	cmd	Alaric	54	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792870088	cmd	Alaric	54	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a
+1792870088	cmd	Alaric	54	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792870088	cmd	Alaric	54	16002	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792870088	cmd	Alaric	54	16003	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792870089	cmd	Alaric	54	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1792870090	cmd	Alaric	54	16005	pirate.are	standing	100	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like
+1792870090	cmd	Alaric	54	16021	pirate.are	standing	100	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792870091	cmd	Alaric	54	16021	pirate.are	standing	100	0	-	scan		The pirate                         -to the far North. // The midshipman                     -right below you. // The bucaneer                       -right below you.
+1792870092	cmd	Alaric	54	16022	pirate.are	standing	100	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792870093	cmd	Alaric	54	16023	pirate.are	standing	100	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792870093	cmd	Alaric	54	16023	pirate.are	standing	100	0	-	scan		The pirate                         -to the North. // The drunk pirate                   -to the North. // The midshipman                     -to the South.
+1792870095	cmd	Alaric	54	16028	pirate.are	standing	100	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792870095	cmd	Alaric	54	16028	pirate.are	standing	100	0	-	scan		The pirate                         -to the far North. // The midshipman                     -to the far South. // The pirate                         -to the far South.
+1792870096	cmd	Alaric	54	16033	pirate.are	standing	100	0	-	north		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792870097	cmd	Alaric	54	16078	pirate.are	standing	100	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792870098	cmd	Alaric	54	16078	pirate.are	standing	100	0	-	scan		The swashbuckler                   -to the East. // The bucaneer                       -right above you. // The Lookout                        -far above you.
+1792870099	cmd	Alaric	54	16079	pirate.are	standing	100	0	-	east		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling
+1792870100	cmd	Alaric	54	16079	pirate.are	standing	100	0	-	bs	sw	Your backstab misses The swashbuckler. [-0]
+1792870174	cmd	Alaric	54	16078	pirate.are	standing	67	0	-	west		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792870174	cmd	Alaric	54	16081	pirate.are	standing	67	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792870175	cmd	Alaric	54	16081	pirate.are	standing	67	0	-	scan		The swashbuckler                   -to the West. // The Lookout                        -right above you. // The bucaneer                       -right below you.
+1792870177	cmd	Alaric	54	16080	pirate.are	standing	67	0	-	west		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling
+1792870178	cmd	Alaric	54	16080	pirate.are	standing	67	0	-	bs	sw	Your backstab <<< ERADICATES >>> The swashbuckler! [-159] // Your backstab >>> ANNIHILATES <<< The swashbuckler! [-216]
+1792870202	cmd	Alaric	54	16080	pirate.are	fighting	68	0	fight	eat	gu	You eat guano. // Your skin turns to stone. // Your feet rise off the ground.
+1792870203	cmd	Alaric	54	16080	pirate.are	fighting	68	0	fight	dirt		The swashbuckler is blinded by the dirt in his eyes! // Your kicked dirt scratches The swashbuckler. [-1]
+1792870358	cmd	Alaric	54	16080	pirate.are	standing	71	0	-	wake		You are already standing.
+1792870360	cmd	Alaric	54	16080	pirate.are	standing	71	0	-	group		Alaric's group: // [54 T] Alaric            837/1165 hp 1833/1833 mana  636/ 818 mv 166214 xp
+1792870361	cmd	Alaric	54	16080	pirate.are	standing	71	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792870361	cmd	Alaric	54	4207	dresden_halloween.are	standing	71	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792870362	cmd	Alaric	54	4202	dresden_halloween.are	standing	71	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
