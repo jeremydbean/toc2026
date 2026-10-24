@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792868232
+LogO 1792868350
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -17,19 +17,19 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 50
-Plyd 61303
+Plyd 61421
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
 StashMax 75
 HyruleSecrets 67108864
 Scro 22
-Room 2411
-HMV  917 919 1406 1460 4 419
-NewGold 20
-NewPlat 2094
+Room 2497
+HMV  918 919 1400 1460 400 419
+NewGold 47
+NewPlat 2241
 NewCopp 82
-NewSilv 49
+NewSilv 60
 BankCP 2254728583
 IntTime 1792782012
 IntTotal 9728583
@@ -39,7 +39,7 @@ Corpses	0
 PkRec 0
 PkGiv 0
 AchKills 563
-AchQuests 59
+AchQuests 60
 AchDeaths 6
 AchExplore 127
 AchMaps 1
@@ -118,21 +118,21 @@ Achv visit-high-tower 1792621034
 Achv visit-ultima 1792621074
 Achv visit-korzath-fortress 1792287816
 Achv visit-ice-keep 1792455929
-LastOut  1792868232
+LastOut  1792868350
 Rested 0 0
 Daily 4 20748 3 1 20748
-SesLogin 1792860289
-SesDur   887
+SesLogin 1792867697
+SesDur   653
 SesExpG  0
 SesLvlG  0
 SesKill  5
 SesPK    0
 SesDead  0
 SesQuest 2
-QuestPnts 3216
-QuestStrk 9
+QuestPnts 3262
+QuestStrk 10
 CasinoLost 4
-QuestNext 30
+QuestNext 4
 Exp  112503
 Act  204
 AfBy 8389120
@@ -175,7 +175,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 840 1301 394
-Cond 0 15 27
+Cond 0 13 25
 Sk 100 'axe'
 Sk 89 'dagger'
 Sk 25 'flail'
@@ -206,8 +206,8 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'change sex'  51 103   1   6          0          0
-AffD 'plague'   0  47  -5   1    8388608          0
+AffD 'change sex'  51 101   1   6          0          0
+AffD 'plague'   0  45  -5   1    8388608          0
 End
 
 #O
@@ -235,7 +235,7 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 123
+Time 120
 Cost 0
 Cond 100
 Repd 0
@@ -245,7 +245,7 @@ End
 Vnum 45
 Nest 1
 Wear -1
-Time 477
+Time 474
 Cost 0
 Cond 100
 Repd 0
