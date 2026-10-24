@@ -172408,3 +172408,143 @@ Sat Oct 24 19:22:35 2026 :: Log Alaric [25259]: s
 Sat Oct 24 19:22:35 2026 :: Log Alaric [25260]: arrived (Before the bridge.) from 25259
 Sat Oct 24 19:22:36 2026 :: Log Alaric [25260]: s
 Sat Oct 24 19:22:36 2026 :: Log Alaric [25261]: arrived (On the bridge.) from 25260
+Sat Oct 24 19:22:39 2026 :: Log Alaric [25261]: s
+Sat Oct 24 19:22:39 2026 :: Log Alaric [25262]: arrived (The southern end of the bridge.) from 25261
+Sat Oct 24 19:22:40 2026 :: Log Alaric [25262]: sw
+Sat Oct 24 19:22:40 2026 :: Log Alaric [25263]: arrived (The strangled path.) from 25262
+Sat Oct 24 19:22:40 2026 :: Log Alaric [25263]: sw
+Sat Oct 24 19:22:40 2026 :: Log Alaric [25264]: arrived (The strangled path.) from 25263
+Sat Oct 24 19:22:40 2026 :: Log Alaric [25264]: w
+Sat Oct 24 19:22:40 2026 :: Log Alaric [25265]: arrived (The bonfire.) from 25264
+Sat Oct 24 19:22:41 2026 :: Log Alaric [25265]: e
+Sat Oct 24 19:22:41 2026 :: Log Alaric [25264]: arrived (The strangled path.) from 25265
+Sat Oct 24 19:22:43 2026 :: Log Alaric [25264]: ne
+Sat Oct 24 19:22:43 2026 :: Log Alaric [25263]: arrived (The strangled path.) from 25264
+Sat Oct 24 19:22:43 2026 :: Log Alaric [25263]: ne
+Sat Oct 24 19:22:43 2026 :: Log Alaric [25262]: arrived (The southern end of the bridge.) from 25263
+Sat Oct 24 19:22:44 2026 :: Log Alaric [25262]: n
+Sat Oct 24 19:22:44 2026 :: Log Alaric [25261]: arrived (On the bridge.) from 25262
+Sat Oct 24 19:22:44 2026 :: Log Alaric [25261]: n
+Sat Oct 24 19:22:44 2026 :: Log Alaric [25260]: arrived (Before the bridge.) from 25261
+Sat Oct 24 19:22:44 2026 :: Log Alaric [25260]: n
+Sat Oct 24 19:22:44 2026 :: Log Alaric [25259]: arrived (The pathway south.) from 25260
+Sat Oct 24 19:22:45 2026 :: Log Alaric [25259]: n
+Sat Oct 24 19:22:45 2026 :: Log Alaric [25203]: arrived (The road through the grove.) from 25259
+Sat Oct 24 19:22:45 2026 :: Log Alaric [25203]: w
+Sat Oct 24 19:22:45 2026 :: Log Alaric [25204]: arrived (The road continues.) from 25203
+Sat Oct 24 19:22:46 2026 :: Log Alaric [25204]: w
+Sat Oct 24 19:22:46 2026 :: Log Alaric [25205]: arrived (The road north of a mushroom.) from 25204
+Sat Oct 24 19:22:47 2026 :: Log Alaric [25205]: ex
+Sat Oct 24 19:22:48 2026 :: Log Alaric [25205]: ex
+Sat Oct 24 19:22:51 2026 :: Log Alaric [25205]: w
+Sat Oct 24 19:22:51 2026 :: Log Alaric [25206]: arrived (The road starts up the slope.) from 25205
+Sat Oct 24 19:22:52 2026 :: Log Alaric [25206]: w
+Sat Oct 24 19:22:52 2026 :: Log Alaric [25207]: arrived (The intersection.) from 25206
+Sat Oct 24 19:22:53 2026 :: Log Alaric [25207]: w
+Sat Oct 24 19:22:53 2026 :: Log Alaric [25208]: arrived (The Eastern Gate of Nethril.) from 25207
+Sat Oct 24 19:22:54 2026 :: Log Alaric [25208]: e
+Sat Oct 24 19:22:54 2026 :: Log Alaric [25207]: arrived (The intersection.) from 25208
+Sat Oct 24 19:22:55 2026 :: Log Alaric [25207]: ex
+Sat Oct 24 19:22:56 2026 :: Log Alaric [25207]: n
+Sat Oct 24 19:22:56 2026 :: Log Alaric [25247]: arrived (The farm.) from 25207
+Sat Oct 24 19:22:58 2026 :: Log Alaric [25247]: s
+Sat Oct 24 19:22:58 2026 :: Log Alaric [25207]: arrived (The intersection.) from 25247
+Sat Oct 24 19:22:58 2026 :: Log Alaric [25207]: w
+Sat Oct 24 19:22:58 2026 :: Log Alaric [25208]: arrived (The Eastern Gate of Nethril.) from 25207
+Sat Oct 24 19:22:59 2026 :: Log Alaric [25208]: ex
+Sat Oct 24 19:23:04 2026 :: Log Alaric [25208]: nw
+Sat Oct 24 19:23:04 2026 :: Log Alaric [25209]: arrived (The road along the wall.) from 25208
+Sat Oct 24 19:23:05 2026 :: Log Alaric [25209]: nw
+Sat Oct 24 19:23:05 2026 :: Log Alaric [25210]: arrived (The road along the wall.) from 25209
+Sat Oct 24 19:23:06 2026 :: Log Alaric [25210]: nw
+Sat Oct 24 19:23:06 2026 :: Log Alaric [25211]: arrived (Outside the Northern Gate of Nethril.) from 25210
+Sat Oct 24 19:23:08 2026 :: Log Alaric [25211]: n
+Sat Oct 24 19:23:08 2026 :: Log Alaric [25220]: arrived (The road north.) from 25211
+Sat Oct 24 19:23:10 2026 :: Log Alaric [25220]: n
+Sat Oct 24 19:23:10 2026 :: Log Alaric [25221]: arrived (East of the giant mushroom.) from 25220
+Sat Oct 24 19:23:11 2026 :: Log Alaric [25221]: ex
+Sat Oct 24 19:23:12 2026 :: Log Alaric [25221]: w
+Sat Oct 24 19:23:12 2026 :: Log Alaric [25283]: arrived (At the base of the northern tower.) from 25221
+Sat Oct 24 19:23:13 2026 :: Log Alaric [25283]: e
+Sat Oct 24 19:23:13 2026 :: Log Alaric [25221]: arrived (East of the giant mushroom.) from 25283
+Sat Oct 24 19:23:13 2026 :: Log Alaric [25221]: n
+Sat Oct 24 19:23:13 2026 :: Log Alaric [25222]: arrived (On the northern road.) from 25221
+Sat Oct 24 19:23:15 2026 :: Log Alaric [25222]: aq info
+Sat Oct 24 19:23:43 2026 :: Log Alaric [25222]: s
+Sat Oct 24 19:23:43 2026 :: Log Alaric [25221]: arrived (East of the giant mushroom.) from 25222
+Sat Oct 24 19:23:43 2026 :: Log Alaric [25221]: s
+Sat Oct 24 19:23:43 2026 :: Log Alaric [25220]: arrived (The road north.) from 25221
+Sat Oct 24 19:23:43 2026 :: Log Alaric [25220]: s
+Sat Oct 24 19:23:43 2026 :: Log Alaric [25211]: arrived (Outside the Northern Gate of Nethril.) from 25220
+Sat Oct 24 19:23:44 2026 :: Log Alaric [25211]: nw
+Sat Oct 24 19:23:45 2026 :: Log Alaric [25211]: nw
+Sat Oct 24 19:23:47 2026 :: Log Alaric [25211]: sw
+Sat Oct 24 19:23:47 2026 :: Log Alaric [25212]: arrived (The road around the base of the wall.) from 25211
+Sat Oct 24 19:23:48 2026 :: Log Alaric [25212]: ex
+Sat Oct 24 19:23:52 2026 :: Log Alaric [25212]: sw
+Sat Oct 24 19:23:52 2026 :: Log Alaric [25213]: arrived (The road around the city walls.) from 25212
+Sat Oct 24 19:23:54 2026 :: Log Alaric [25213]: sw
+Sat Oct 24 19:23:54 2026 :: Log Alaric [25214]: arrived (The Western Gate of Nethril.) from 25213
+Sat Oct 24 19:23:56 2026 :: Log Alaric [25214]: get all
+Sat Oct 24 19:23:57 2026 :: Log Alaric [25214]: recal
+Sat Oct 24 19:23:57 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 25214
+Sat Oct 24 19:23:59 2026 :: Log Alaric [4207]: r e 3
+Sat Oct 24 19:23:59 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 24 19:23:59 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sat Oct 24 19:23:59 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sat Oct 24 19:23:59 2026 :: Log Alaric [2427]: n
+Sat Oct 24 19:23:59 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 24 19:23:59 2026 :: Log Alaric [2404]: n
+Sat Oct 24 19:23:59 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sat Oct 24 19:24:00 2026 :: Log Alaric [2401]: u
+Sat Oct 24 19:24:00 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sat Oct 24 19:24:00 2026 :: Log Alaric [2410]: u
+Sat Oct 24 19:24:00 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Sat Oct 24 19:24:00 2026 :: Log Alaric [2411]: u
+Sat Oct 24 19:24:00 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Sat Oct 24 19:24:00 2026 :: Log Alaric [2414]: u
+Sat Oct 24 19:24:00 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sat Oct 24 19:24:01 2026 :: Log Alaric [2497]: aq co
+Sat Oct 24 19:24:01 2026 :: Log Alaric [2497]: copper +175220496
+Sat Oct 24 19:24:01 2026 :: Log Alaric [2497]: quest complete: 175p 22g 4s 96c, 56 quest points (streak bonus 65%)
+Sat Oct 24 19:24:01 2026 :: Snapshot of Alaric taken before quest: Alaric.20261024_192401.quest (PRESTORE Alaric to see it).
+Sat Oct 24 19:24:02 2026 :: Log Alaric [2497]: aq ga no
+Sat Oct 24 19:24:04 2026 :: Sock.sinaddr:  18.116.205.62
+Sat Oct 24 19:24:04 2026 :: EOF encountered on read.
+Sat Oct 24 19:24:05 2026 :: Log Alaric [2497]: score
+Sat Oct 24 19:26:24 2026 :: Log Alaric [2497]: wake
+Sat Oct 24 19:26:24 2026 :: Log Alaric [2497]: l
+Sat Oct 24 19:26:26 2026 :: Log Alaric [2497]: en do
+Sat Oct 24 19:26:26 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sat Oct 24 19:26:27 2026 :: Log Alaric [2401]: jump rock
+Sat Oct 24 19:26:27 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Sat Oct 24 19:26:27 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 1607
+Sat Oct 24 19:26:29 2026 :: Log Alaric [4208]: l
+Sat Oct 24 19:26:30 2026 :: Log Alaric [4208]: who
+Sat Oct 24 19:26:32 2026 :: Log Alaric [4208]: changes
+Sat Oct 24 19:27:05 2026 :: Log Alaric [4208]: wake
+Sat Oct 24 19:27:05 2026 :: Log Alaric [4208]: l
+Sat Oct 24 19:27:08 2026 :: Log Alaric [4208]: e
+Sat Oct 24 19:27:08 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sat Oct 24 19:27:08 2026 :: Log Alaric [4207]: e
+Sat Oct 24 19:27:08 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 24 19:27:09 2026 :: Log Alaric [4202]: e
+Sat Oct 24 19:27:09 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sat Oct 24 19:27:09 2026 :: Log Alaric [4201]: e
+Sat Oct 24 19:27:09 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sat Oct 24 19:27:10 2026 :: Log Alaric [2427]: n
+Sat Oct 24 19:27:10 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 24 19:27:10 2026 :: Log Alaric [2404]: n
+Sat Oct 24 19:27:10 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sat Oct 24 19:27:11 2026 :: Log Alaric [2401]: list
+Sat Oct 24 19:27:15 2026 :: Log Alaric [2401]: open pump
+Sat Oct 24 19:27:15 2026 :: Log Alaric [2401]: killed a possessed flame
+Sat Oct 24 19:27:15 2026 :: Log Alaric [2401]: coin +7 silver
+Sat Oct 24 19:27:15 2026 :: Log Alaric [2401]: coin +9 copper
+Sat Oct 24 19:27:18 2026 :: Log Alaric [2401]: l i cor
+Sat Oct 24 19:27:19 2026 :: Log Alaric [2401]: bs sk
+Sat Oct 24 19:27:19 2026 :: Log Alaric [2401]: killed a skeleton
+Sat Oct 24 19:27:19 2026 :: Log Alaric [2401]: coin +1 platinum
+Sat Oct 24 19:27:19 2026 :: Log Alaric [2401]: coin +6 silver
+Sat Oct 24 19:27:19 2026 :: Log Alaric [2401]: coin +8 copper
+Sat Oct 24 19:27:19 2026 :: Log Alaric [2401]: coin +3 gold
