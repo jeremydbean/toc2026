@@ -13117,3 +13117,53 @@
 1792885455	cmd	Alaric	54	29212	korzath2.are	standing	74	0	-	kill	sk	An Animated Skeleton parries your attack. // An Animated Skeleton parries your attack. // An Animated Skeleton parries your attack.
 1792885462	cmd	Alaric	54	29212	korzath2.are	standing	74	0	-	bs	mad	Your backstab ^^^ DESTROYS ^^^ a deranged madman! [-110] // Your backstab *** DEVASTATES *** a deranged madman! [-75] // Your backstab === OBLITERATES === a deranged madman! [-127]
 1792885505	cmd	Alaric	54	29212	korzath2.are	fighting	70	0	fight	look		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1792885559	cmd	Alaric	54	29212	korzath2.are	standing	67	0	-	scan		a Shadowman                        -to the North. // an insane lieutenant               -to the North. // a deranged madman                  -to the West.
+1792885562	cmd	Alaric	54	29212	korzath2.are	standing	67	0	-	stealth		You blend into the shadows.
+1792885565	cmd	Alaric	54	29218	korzath2.are	standing	67	0	-	north		Twist in the Maze //   The path to the north ends here.  The hallway breaks to the east and // to the west.
+1792885566	cmd	Alaric	54	29218	korzath2.are	standing	67	0	-	bs	shad	Your backstab does UNSPEAKABLE things to a Shadowman! [-446] // You are no longer stealthful. // Your backstab does UNSPEAKABLE things to a Shadowman! [-361]
+1792885579	cmd	Alaric	54	29218	korzath2.are	standing	67	0	-	bs	li	Your backstab <<< ERADICATES >>> an insane lieutenant! [-180] // Your backstab *** DEVASTATES *** an insane lieutenant! [-66] // Excalibur shears through an insane lieutenant with terrible force!
+1792885614	cmd	Alaric	54	29218	korzath2.are	standing	65	0	-	look		Twist in the Maze //   The path to the north ends here.  The hallway breaks to the east and // to the west.
+1792885616	cmd	Alaric	54	29218	korzath2.are	standing	65	0	-	scan		a Shadowman                        -to the far East. // an insane lieutenant               -to the far East. // an animated vampire                -to the West.
+1792885619	cmd	Alaric	54	29218	korzath2.are	standing	65	0	-	stealth		You blend into the shadows.
+1792885623	cmd	Alaric	54	29216	korzath2.are	standing	65	0	-	west		Twist in the Maze //   To the west is another closed door.  A strange humming sound comes // from behind the door.
+1792885624	cmd	Alaric	54	29216	korzath2.are	standing	65	0	-	bs	vamp	Your backstab does UNSPEAKABLE things to an animated vampire! [-580] // You are no longer stealthful. // Your backstab does UNSPEAKABLE things to an animated vampire! [-481]
+1792885634	cmd	Alaric	54	29216	korzath2.are	fighting	64	0	fight	look	i cor	Corpse of an animated vampire contains: //      (Magical) a necklace of teeth //      (Humming) a wooden stake
+1792885662	cmd	Alaric	54	29216	korzath2.are	fighting	62	2	fight	get	just	I see no just here.
+1792885662	cmd	Alaric	54	29216	korzath2.are	fighting	62	0	fight	wear	just	You wield (Flaming) the Crystalline Sword of Justice. // (Flaming) the Crystalline Sword of Justice feels like a part of you!
+1792885669	cmd	Alaric	54	29216	korzath2.are	fighting	61	0	fight	wear	exc	You do not have that item.
+1792885670	cmd	Alaric	54	29216	korzath2.are	fighting	61	0	fight	get	exc	You get Excalibur.
+1792885673	cmd	Alaric	54	29216	korzath2.are	standing	61	0	-	scan		You don't see anything near you.
+1792885674	cmd	Alaric	54	29216	korzath2.are	standing	61	0	-	look		Twist in the Maze //   To the west is another closed door.  A strange humming sound comes // from behind the door.
+1792885676	cmd	Alaric	54	29216	korzath2.are	standing	61	0	-	open		Ok.
+1792885676	cmd	Alaric	54	29216	korzath2.are	standing	61	0	-	scan		You don't see anything near you.
+1792885680	cmd	Alaric	54	29218	korzath2.are	standing	61	0	-	east		Twist in the Maze //   The path to the north ends here.  The hallway breaks to the east and // to the west.
+1792885682	cmd	Alaric	54	29218	korzath2.are	standing	61	0	-	scan		a Shadowman                        -to the far East. // an insane lieutenant               -to the far East.
+1792885683	cmd	Alaric	54	29219	korzath2.are	standing	61	0	-	east		Twist in the Maze //   The maze continues east or west.  The stone walls carry the echoes // of groaning sounds made by the trapped souls of this maze.  You'll
+1792885684	cmd	Alaric	54	29219	korzath2.are	standing	61	0	-	scan		a Shadowman                        -to the East. // an insane lieutenant               -to the East.
+1792885685	cmd	Alaric	54	29219	korzath2.are	standing	61	0	-	stealth		You blend into the shadows.
+1792885688	cmd	Alaric	54	29220	korzath2.are	standing	61	0	-	east		Twist in the Maze //   The maze turns north again.  You wonder where this part of the maze // is leading you to.
+1792885688	cmd	Alaric	54	29220	korzath2.are	standing	61	0	-	bs	shad	Your backstab *** DEVASTATES *** a Shadowman! [-78] // You are no longer stealthful. // Your backstab <<< ERADICATES >>> a Shadowman! [-168]
+1792885728	cmd	Alaric	54	29220	korzath2.are	fighting	56	0	fight	get	just	You get (Flaming) the Crystalline Sword of Justice.
+1792885728	cmd	Alaric	54	29220	korzath2.are	fighting	56	0	fight	wear	just	You wield (Flaming) the Crystalline Sword of Justice. // (Flaming) the Crystalline Sword of Justice feels like a part of you!
+1792885733	cmd	Alaric	54	29220	korzath2.are	fighting	56	0	fight	wear	exc	You stop using (Flaming) the Crystalline Sword of Justice. // You wield Excalibur. // Excalibur feels like a part of you!
+1792885734	cmd	Alaric	54	29220	korzath2.are	fighting	56	0	fight	get	just	I see no just here.
+1792885734	cmd	Alaric	54	29220	korzath2.are	fighting	56	0	fight	wear	just	You wield (Flaming) the Crystalline Sword of Justice. // (Flaming) the Crystalline Sword of Justice feels like a part of you!
+1792885744	cmd	Alaric	54	29220	korzath2.are	fighting	56	0	fight	get	exc	You get Excalibur.
+1792885753	cmd	Alaric	54	29220	korzath2.are	standing	55	0	-	look		Twist in the Maze //   The maze turns north again.  You wonder where this part of the maze // is leading you to.
+1792885754	cmd	Alaric	54	29220	korzath2.are	standing	55	0	-	scan		a Shadowman                        -to the North.
+1792885757	cmd	Alaric	54	29220	korzath2.are	standing	55	0	-	stealth		You fail to enter stealth.
+1792885758	cmd	Alaric	54	29220	korzath2.are	standing	55	0	-	stealth		You fail to enter stealth.
+1792885759	cmd	Alaric	54	29220	korzath2.are	standing	55	0	-	stealth		You fail to enter stealth.
+1792885760	cmd	Alaric	54	29220	korzath2.are	standing	55	0	-	stealth		You fail to enter stealth.
+1792885760	cmd	Alaric	54	29220	korzath2.are	standing	55	0	-	stealth		You blend into the shadows.
+1792885762	cmd	Alaric	54	29221	korzath2.are	standing	55	0	-	north		Twist in the Maze //   The stone hall of this maze takes a sharp turn to the west. // [Exits: south west]
+1792885764	cmd	Alaric	54	29221	korzath2.are	standing	55	0	-	bs	shad	Your backstab *** DEVASTATES *** a Shadowman! [-62] // You are no longer stealthful. // Your backstab ^^^ DESTROYS ^^^ a Shadowman! [-89]
+1792885794	cmd	Alaric	54	29221	korzath2.are	standing	54	0	-	scan		You don't see anything near you.
+1792885796	cmd	Alaric	54	29221	korzath2.are	standing	54	0	-	look		Twist in the Maze //   The stone hall of this maze takes a sharp turn to the west. // [Exits: south west]
+1792885797	cmd	Alaric	54	29223	korzath2.are	standing	54	0	-	west		Twist in the Maze //   The hall continues west and east.  The floor beneath you is well // worn at this section of the hall.
+1792885799	cmd	Alaric	54	29223	korzath2.are	standing	54	0	-	scan		You don't see anything near you.
+1792885801	cmd	Alaric	54	29224	korzath2.are	standing	54	0	-	west		Twist in the Maze //   The maze makes another sharp turn, this time to the north.  You're // glad that their aren't too many places where you can choose to turn at.
+1792885801	cmd	Alaric	54	29224	korzath2.are	standing	54	0	-	scan		an animated vampire                -to the North.
+1792885804	cmd	Alaric	54	29224	korzath2.are	standing	54	0	-	stealth		You fail to enter stealth.
+1792885805	cmd	Alaric	54	29224	korzath2.are	standing	54	0	-	stealth		You fail to enter stealth.
+1792885806	cmd	Alaric	54	29224	korzath2.are	standing	54	0	-	stealth		You fail to enter stealth.
