@@ -7229,3 +7229,5 @@
 1792803024	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	help	black dragon	DISASTERS 'BLACK DRAGON' // Now and then a disaster strikes an area somebody is in: a flood, a // lightning storm, an earthquake, a tornado, a sand storm, a brush fire or
 1792803061	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
 1792803064	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	quit		You're not DEAD yet.
+1792803970	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792803971	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    225 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
