@@ -7873,3 +7873,176 @@
 1792843660	cmd	Alaric	54	29218	korzath2.are	fighting	80	0	fight	worth		You have 1091 platinum, 636 gold, 1039 silver, 1646 copper // and 162494 experience (24806 exp to level).
 1792843664	cmd	Alaric	54	29218	korzath2.are	fighting	79	0	fight	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    226 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
 1792843682	cmd	Alaric	54	29218	korzath2.are	fighting	78	0	fight	dirt		Your kicked dirt misses an insane lieutenant. [-0]
+1792843726	cmd	Alaric	54	29218	korzath2.are	standing	76	0	-	look		Twist in the Maze //   The path to the north ends here.  The hallway breaks to the east and // to the west.
+1792843727	cmd	Alaric	54	29218	korzath2.are	standing	76	0	-	scan		an insane lieutenant               -to the East. // a Shadowman                        -to the East. // a deranged madman                  -to the South.
+1792843730	cmd	Alaric	54	29218	korzath2.are	standing	76	0	-	stealth		You blend into the shadows.
+1792843733	cmd	Alaric	54	29216	korzath2.are	standing	76	0	-	west		Twist in the Maze //   To the west is another closed door.  A strange humming sound comes // from behind the door.
+1792843735	cmd	Alaric	54	29216	korzath2.are	standing	76	0	-	bs	vamp	Your backstab does UNSPEAKABLE things to an animated vampire! [-304] // You are no longer stealthful. // Your backstab does UNSPEAKABLE things to an animated vampire! [-397]
+1792843754	cmd	Alaric	54	29216	korzath2.are	fighting	75	0	fight	bash		Your bash misses someone. [-0] // You fall flat on your face!
+1792843792	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	14	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Trentlin.' // Questor Thews tells you 'The criminal known as The slave has escaped from prison!'
+1792843798	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792843800	cmd	Alaric	54	29216	korzath2.are	fighting	71	0	fight	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792843807	cmd	Alaric	54	29216	korzath2.are	fighting	71	0	fight	gossip	Morning	You gossip 'Morning'
+1792843821	cmd	Alaric	54	4207	dresden_halloween.are	standing	69	0	-	recall		You can't see a thing!
+1792843822	cmd	Trentlin	50	2421	dresden_halloween.are	standing	100	0	-	run	e 3	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792843822	cmd	Trentlin	50	2441	dresden_halloween.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792843823	cmd	Trentlin	50	2442	dresden_halloween.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792843823	cmd	Trentlin	50	2443	dresden_halloween.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792843823	cmd	Alaric	54	4208	dresden_halloween.are	standing	69	0	-	west		You can't see a thing!
+1792843823	cmd	Trentlin	50	2445	dresden_halloween.are	standing	100	0	-	run	e 2	River Road. // [Exits: north east west] // End of River Road.
+1792843823	cmd	Trentlin	50	2446	dresden_halloween.are	standing	100	0	-	south		Docks of Dresden. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not
+1792843824	cmd	Trentlin	50	2447	dresden_halloween.are	standing	100	0	-	east		Docks of Dresden. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not
+1792843824	cmd	Trentlin	50	2517	dresden_halloween.are	standing	100	0	-	run	s 2	Second Pier. // [Exits: north south] // River of Wonders.
+1792843824	cmd	Trentlin	50	5000	eastern.are	standing	100	0	-	run	e 3	Tunnel on the River of Wonders. // [Exits: east west] // Tunnel on the River of Wonders.
+1792843824	cmd	Trentlin	50	5000	eastern.are	standing	100	0	-	gossip	hello	You gossip 'hello'
+1792843825	cmd	Alaric	54	4208	dresden_halloween.are	standing	69	0	-	heal	all	Someone rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792843826	cmd	Trentlin	50	5001	eastern.are	standing	100	0	-	east		A long, branched tunnel //   The tunnel continues east and it also branches to the southeast. // [Exits: east west southeast]
+1792843826	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // [54 Dwarf   Kngt  ] Alaric. // Players found: 2
+1792843828	cmd	Trentlin	50	5001	eastern.are	standing	100	0	-	exits		Obvious exits: // East  - A long tunnel // West  - A long tunnel
+1792843828	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792843829	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792843831	cmd	Trentlin	50	5002	eastern.are	standing	100	0	-	east		A long tunnel //   The tunnel branches off north. // [Exits: north east west]
+1792843832	cmd	Trentlin	50	5003	eastern.are	standing	100	0	-	east		A long tunnel //   The tunnel branches off south. // [Exits: east south west]
+1792843832	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	look	i cor	Corpse of Alaric contains: //      Nothing.
+1792843833	cmd	Trentlin	50	5017	eastern.are	standing	100	0	-	south		Narrow crawlway //   This crawlway is just big enough for a human to crawl through or a // halfling to walk through.
+1792843834	cmd	Trentlin	50	5019	eastern.are	standing	100	0	-	south		Fungus patch //   As you walk through the fungus patch, you are shot at by many millions of // spores. You can hardly breathe.
+1792843835	cmd	Trentlin	50	5020	eastern.are	standing	100	0	-	east		Fungus path //   As you walk along the path, millions of spores are shot at you. You can // hardly breathe.
+1792843837	cmd	Trentlin	50	5020	eastern.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792843837	cmd	Trentlin	50	5021	eastern.are	standing	100	0	-	south		Fungus temple //   You find yourself standing inside of a giant mushroom. The inside // is decorated in the fashion of a temple.
+1792843838	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	quaff	tr	You can quaff only potions.
+1792843839	cmd	Trentlin	50	5022	eastern.are	standing	100	0	-	east		Sloping passage //   You follow a path sloping down from the fungus temple. // [Exits: west down]
+1792843841	cmd	Trentlin	50	5023	eastern.are	standing	100	0	-	down		Sloping passage //   You are on a path that gently slopes up from the underground pool. // [Exits: north up]
+1792843841	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	8	-	sacrifice	cor	The Gods give you 108 copper coins for your sacrifice.
+1792843842	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // [54 Dwarf   Kngt  ] Alaric. // Players found: 2
+1792843842	cmd	Trentlin	50	5005	eastern.are	standing	100	0	-	north		An underground lake //   You are floating on a jet-black underground lake fed by dripping // water and lime from above. The tunnel continues to the east and the river
+1792843843	cmd	Trentlin	50	5006	eastern.are	standing	100	0	-	east		A long narrow tunnel //   The tunnel rises sharply to the east. // [Exits: east west]
+1792843843	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	where		Players near you: // There's no one around you.
+1792843844	cmd	Trentlin	50	5007	eastern.are	standing	100	0	-	east		A wide tunnel //   The tunnel continues east and west. To the east the tunnel dives // down into a bright light.
+1792843844	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792843844	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792843844	cmd	Trentlin	50	5028	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792843845	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792843846	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	where		Players near you: // There's no one around you.
+1792843847	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	exits		Obvious exits: // North - A wide tunnel // East  - The Sands of Sorrow
+1792843848	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	west		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792843849	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792843849	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 3	The Hall of Whispers // [Exits: north east south west] // Entrance to the Haunted Temple
+1792843849	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792843849	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792843850	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792843850	cmd	Trentlin	50	5026	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792843851	cmd	Trentlin	50	5032	eastern.are	standing	100	0	-	west		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792843851	cmd	Trentlin	50	5032	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792843851	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	where		Players near you: // There's no one around you.
+1792843852	cmd	Trentlin	50	5029	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792843852	cmd	Trentlin	50	5029	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792843854	cmd	Trentlin	50	5028	eastern.are	standing	100	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792843855	cmd	Trentlin	50	5028	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792843855	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // [54 Dwarf   Kngt  ] Alaric. // Players found: 2
+1792843855	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792843856	cmd	Trentlin	50	5027	eastern.are	standing	100	0	-	exits		Obvious exits: // North - A wide tunnel // East  - The Sands of Sorrow
+1792843858	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	west		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792843858	cmd	Trentlin	50	5024	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792843859	cmd	Trentlin	50	5025	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792843859	cmd	Trentlin	50	5025	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792843861	cmd	Trentlin	50	5056	eastern.are	standing	100	0	-	south		A nomad camp //   This small group of desert nomads has stopped for the day to rest // and refresh themselves beside this beautiful oasis. Three tents and some
+1792843861	cmd	Trentlin	50	5056	eastern.are	standing	100	0	-	exits		Obvious exits: // North - Beside the camels // East  - Inside a small tent
+1792843863	cmd	Trentlin	50	5058	eastern.are	standing	100	0	-	north		Beside the camels //   Here stand about ten camels, all hitched to some stakes plugged into // the ground. To the east you see a small tent while to the north you see a
+1792843864	cmd	Trentlin	50	5058	eastern.are	standing	100	0	-	scan		The nomad commander                -to the North. // The nomad warrior                  -to the East.
+1792843865	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792843865	cmd	Trentlin	50	5058	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The main tent // East  - The warrior's tent.
+1792843869	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // [54 Dwarf   Kngt  ] Alaric. // Players found: 2
+1792843872	cmd	Trentlin	50	5059	eastern.are	standing	100	0	-	east		The warrior's tent. //   This tent has a few furnishings, but mainly it holds the band's // protectors. They all stare at you coldly as you enter.
+1792843874	cmd	Trentlin	50	5058	eastern.are	standing	100	0	-	west		Beside the camels //   Here stand about ten camels, all hitched to some stakes plugged into // the ground. To the east you see a small tent while to the north you see a
+1792843874	cmd	Trentlin	50	5060	eastern.are	standing	100	0	-	north		The main tent //   This tent is as lavishly decorated on the inside as it is on the // outside. A fancy carpet lies on the sand and numerous baskets line the
+1792843875	cmd	Trentlin	50	5060	eastern.are	standing	100	0	-	exits		Obvious exits: // East  - The main tent // South - Beside the camels
+1792843876	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	gossip	How's the questing coming along?	You gossip 'How's the questing coming along?'
+1792843878	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792843878	cmd	Trentlin	50	5061	eastern.are	standing	100	0	-	east		The main tent //   This is where the leader of this band of nomads resides. He is // definitely rich as you inspect the tapestries, baskets, and a few
+1792843879	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792843879	cmd	Trentlin	50	5061	eastern.are	standing	100	0	-	scan		The nomad commander                -to the West.
+1792843880	cmd	Alaric	54	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792843880	cmd	Trentlin	50	5060	eastern.are	standing	100	0	-	west		The main tent //   This tent is as lavishly decorated on the inside as it is on the // outside. A fancy carpet lies on the sand and numerous baskets line the
+1792843881	cmd	Trentlin	50	5058	eastern.are	standing	100	0	-	south		Beside the camels //   Here stand about ten camels, all hitched to some stakes plugged into // the ground. To the east you see a small tent while to the north you see a
+1792843881	cmd	Trentlin	50	5056	eastern.are	standing	100	0	-	south		A nomad camp //   This small group of desert nomads has stopped for the day to rest // and refresh themselves beside this beautiful oasis. Three tents and some
+1792843881	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	run	n	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1792843882	cmd	Trentlin	50	5056	eastern.are	standing	100	0	-	exits		Obvious exits: // North - Beside the camels // East  - Inside a small tent
+1792843882	cmd	Alaric	54	29004	korzath1.are	resting	100	0	-	wake		You stand up.
+1792843884	cmd	Trentlin	50	5057	eastern.are	standing	100	0	-	east		Inside a small tent //   This is a small and simple tent with few possessions in sight. Lying // here and there are young-looking men and women, possibly slaves to the
+1792843884	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1792843885	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	open		Ok.
+1792843885	cmd	Alaric	54	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1792843885	cmd	Alaric	54	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1792843885	cmd	Trentlin	50	5057	eastern.are	standing	100	10	-	kill	sla	Your pierce ^^^ DESTROYS ^^^ The slave! // Your pierce ^^^ DESTROYS ^^^ The slave! // Your pierce ^^^ DESTROYS ^^^ The slave!
+1792843890	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792843891	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792843891	cmd	Alaric	54	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1792843891	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792843891	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792843892	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792843892	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792843892	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792843893	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792843893	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792843893	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792843893	cmd	Alaric	54	29202	korzath2.are	standing	100	0	-	east		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1792843893	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792843895	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	13	-	aquest	complete	You inform Questor Thews you have completed her quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'
+1792843896	cmd	Alaric	54	29202	korzath2.are	standing	100	0	-	wear	just	You stop using Excalibur. // You wield (Flaming) the Crystalline Sword of Justice. // (Flaming) the Crystalline Sword of Justice feels like a part of you!
+1792843898	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	5	-	aquest	gamble yes	The dice BETRAY you! Your 56 quest points are lost.
+1792843899	cmd	Alaric	54	29202	korzath2.are	standing	100	0	-	secondary	exc	You wield Excalibur as your second weapon.
+1792843899	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792843901	cmd	Alaric	54	29202	korzath2.are	standing	100	0	-	bs	cl	Your backstab >>> ANNIHILATES <<< a killer clown! [-205] // Your backstab <<< ERADICATES >>> a killer clown! [-158] // Your backstab ^^^ DESTROYS ^^^ a killer clown! [-95]
+1792843907	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	gossip	ahh well the dice are betraying me again lol	You gossip 'ahh well the dice are betraying me again lol'
+1792843929	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	2	-	gossip	and i lost my 36 streak last night when i had to find an item in the sewers 	You gossip 'and i lost my 36 streak last night when i had to find an item in the sewers '
+1792843934	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792843935	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	south		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792843936	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	west		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792843936	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	west		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792843936	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	west		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792843936	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792843937	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792843937	cmd	Alaric	54	29202	korzath2.are	fighting	97	0	fight	gossip	lol. Been going for gears at all?	You gossip 'lol. Been going for gears at all?'
+1792843941	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792843950	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	gossip	gears?	You gossip 'gears?'
+1792843951	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792843951	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792843951	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792843953	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792843953	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792843953	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792843955	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	help	gears	No help on that word.
+1792843956	cmd	Alaric	54	29202	korzath2.are	standing	97	0	-	gossip	"walk quest" works wonders	You gossip '"walk quest" works wonders'
+1792843965	cmd	Alaric	54	29202	korzath2.are	standing	97	0	-	gossip	Level 50 equipment	You gossip 'Level 50 equipment'
+1792843966	cmd	Alaric	54	29202	korzath2.are	standing	97	0	-	wake		You are already standing.
+1792843967	cmd	Alaric	54	29202	korzath2.are	standing	97	0	-	look		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1792843968	cmd	Alaric	54	29202	korzath2.are	standing	97	0	-	east		The door has been Wizard Locked. You can not pass
+1792843968	cmd	Alaric	54	29201	korzath2.are	standing	97	0	-	south		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1792843969	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	gossip	oh thats a command?	You gossip 'oh thats a command?'
+1792843969	cmd	Alaric	54	29004	korzath1.are	standing	97	0	-	south		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1792843970	cmd	Alaric	54	29003	korzath1.are	standing	97	0	-	south		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1792843973	cmd	Alaric	54	29060	korzath1.are	standing	97	0	-	ne		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.
+1792843977	cmd	Alaric	54	29060	korzath1.are	standing	97	0	-	bs	ch	Your backstab does UNSPEAKABLE things to Security Chief! [-257] // Your backstab misses Security Chief. [-0] // Your backstab does UNSPEAKABLE things to Security Chief! [-260]
+1792843983	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	gossip	the walk button is gone from the right side of the mudlet setup now	You gossip 'the walk button is gone from the right side of the mudlet setup now'
+1792843987	cmd	Alaric	54	29060	korzath1.are	standing	97	0	-	gossip	Impressively, yes	You gossip 'Impressively, yes'
+1792843993	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	gossip	good to know	You gossip 'good to know'
+1792844001	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	gossip	ehh ive been goofing around checking areas out	You gossip 'ehh ive been goofing around checking areas out'
+1792844003	cmd	Alaric	54	29060	korzath1.are	standing	97	0	-	gossip	It's a little odd, sometimes wigs out but you just spam it again and usually does the trick	You gossip 'It's a little odd, sometimes wigs out but you just spam it again and usually does the trick'
+1792844004	cmd	Alaric	54	29060	korzath1.are	standing	97	0	-	wake		You are already standing.
+1792844005	cmd	Alaric	54	29060	korzath1.are	standing	97	0	-	look		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.
+1792844006	cmd	Alaric	54	29061	korzath1.are	standing	97	0	-	east		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches
+1792844007	cmd	Alaric	54	29062	korzath1.are	standing	97	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.
+1792844008	cmd	Alaric	54	29063	korzath1.are	standing	97	0	-	south		Corridor //   Security guards and the Heads of Security are keeping an eye out for // anyone looking suspicious.  You notice a hole in the west wall and inside
+1792844008	cmd	Alaric	54	29065	korzath1.are	standing	97	0	-	south		Service Hallway //   The service hallway leads east towards the main work centers of the // fortress.  You wonder what all the noises are that are coming from that
+1792844009	cmd	Alaric	54	29066	korzath1.are	standing	97	0	-	east		Service Hallway //   The walls of this hallway are covered in sheer metal.  You marvel at // how much armor could be made with the metal used in lining the hall.
+1792844009	cmd	Alaric	54	29067	korzath1.are	standing	97	0	-	east		Service Hallway //   The hallway continues to the east and west.  To the north is a storage // room.  The various noises of clanging metals can be heard to the east.
+1792844009	cmd	Alaric	54	29070	korzath1.are	standing	97	0	-	east		Service Hallway //   You can now hear the distinct sounds of metal against metal as well as // the droning whine and buzz of what sounds like drill bit machinery.  You've
+1792844009	cmd	Alaric	54	29071	korzath1.are	standing	97	0	-	east		T-Junction //   The service hallway opens up into a T-Junction here.  To the north there // isn't much sound but, to the east you can hear the sound of machinery.
+1792844010	cmd	Alaric	54	29072	korzath1.are	standing	97	0	-	east		Machine Room //   You look around and all you see are machines and men operating them. // You recognize some of the machines as drill bits but, you haven't seen much
+1792844010	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	east		Machine Room //   In this part of the machine area workers take and cut the shaped // sheets of metal materials into what looks like the outline of vests,
+1792844011	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	east		Alas, you cannot go that way.
+1792844011	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	east		Alas, you cannot go that way.
+1792844012	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	east		Alas, you cannot go that way.
+1792844018	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	gossip	Grab a Starlight, yet?	You gossip 'Grab a Starlight, yet?'
+1792844019	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	look		Machine Room //   In this part of the machine area workers take and cut the shaped // sheets of metal materials into what looks like the outline of vests,
+1792844021	cmd	Alaric	54	29075	korzath1.are	standing	97	0	-	north		Machine Room //   Workers are assorting the refined metals here into different carts // that are taken away to another part of the fortress.  You realize that

@@ -4,3 +4,6 @@
 4	1792843141	corpse	created	P6adc9d850001b1ba	Alaric	c6adc9d8501bdd3	death	-	made in room 29210 holding 47 objects; death snapshot Alaric.20261024_115901.death	eb994d98
 5	1792843161	corpse	archived	P6adc9d850001b1ba	Alaric	c6adc9d8501bdd3	carried	Alaric: tk	ended (carried): picked up by Alaric; 47 objects left in it	f859d006
 6	1792843164	corpse	created	P6adc9d850001b1ba	Alaric	c6adc9d9c02da32	dropped	Alaric: drop	put down in room 4208 and kept again	0cf60ff1
+7	1792843787	uid	assign	P6adca00b00079e30	Trentlin	-	player	-	first seen since the ledger began	901928d2
+8	1792843841	corpse	archived	P6adc9d850001b1ba	Alaric	c6adc9d9c02da32	gone	Alaric: sacrifice	ended (gone): it is gone; 0 objects left in it	a4370e08
+9	1792843895	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261024_121135.quest fnv baf03a38 16179 bytes	45528aee
