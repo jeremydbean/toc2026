@@ -7655,3 +7655,103 @@
 1792806421	cmd	Trentlin	50	2506	dresden_halloween.are	standing	100	0	-	north		Dead End. //   As you proceed this way down the alley you suddenly come to a dead end! // Scanning your surroundings you see the buildings on all the sides rise at
 1792806421	cmd	Trentlin	50	2506	dresden_halloween.are	standing	100	0	-	open	down	Ok.
 1792806422	cmd	Trentlin	50	7030	sewer.are	standing	100	0	-	down		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 
+1792806448	cmd	Trentlin	50	7030	sewer.are	standing	100	0	-	exits		Obvious exits: // North - The Triple Junction // East  - The pit
+1792806449	cmd	Trentlin	50	7029	sewer.are	standing	100	0	-	north		The Triple Junction //   You stand in the middle of a huge junction of concrete sewer pipes. The  // pipes lead into three different directions : east, south and west.
+1792806450	cmd	Trentlin	50	7029	sewer.are	standing	100	0	-	exits		Obvious exits: // East  - The sewer pipe bend // South - The Quadruple Junction Under the Garbage
+1792806452	cmd	Trentlin	50	7035	sewer.are	standing	100	0	-	east		The sewer pipe bend //   You can look in two different directions where the pipe goes : west and  // north.
+1792806453	cmd	Trentlin	50	7035	sewer.are	standing	100	0	-	exits		Obvious exits: // North - A bend in the sewer pipe // West  - The Triple Junction
+1792806454	cmd	Trentlin	50	7029	sewer.are	standing	100	0	-	west		The Triple Junction //   You stand in the middle of a huge junction of concrete sewer pipes. The  // pipes lead into three different directions : east, south and west.
+1792806455	cmd	Trentlin	50	7029	sewer.are	standing	100	0	-	exits		Obvious exits: // East  - The sewer pipe bend // South - The Quadruple Junction Under the Garbage
+1792806456	cmd	Trentlin	50	7021	sewer.are	standing	100	0	-	west		A quiet pipe junction //   This is the kind of place to rest, though the smell could be a LOT better // than this. The sewer goes east, north and west from here.
+1792806456	cmd	Trentlin	50	7021	sewer.are	standing	100	0	-	exits		Obvious exits: // North - The muddy sewer pipe // East  - The Triple Junction
+1792806458	cmd	Trentlin	50	7011	sewer.are	standing	100	0	-	north		The muddy sewer pipe //   You have entered a kind of tube intersection that leads south, west and east. // Your legs are covered in mud up to the knees. REAL yucky! 
+1792806458	cmd	Trentlin	50	7011	sewer.are	standing	100	0	-	exits		Obvious exits: // East  - The sewer // South - A quiet pipe junction
+1792806459	cmd	Trentlin	50	7024	sewer.are	standing	100	0	-	east		The sewer //   You are standing in mud up to your ankles. This is an intersection with  // sewer pipes leading east, south and west.
+1792806460	cmd	Trentlin	50	7024	sewer.are	standing	100	0	-	exits		Obvious exits: // East  - The round room // South - Another intersection
+1792806461	cmd	Trentlin	50	7037	sewer.are	standing	100	0	-	east		The round room //   As you enter the room it starts rotating - at first slowly, later faster // and faster - You get totally confused as to where up and down is, but you are
+1792806462	cmd	Trentlin	50	7037	sewer.are	standing	100	0	-	exits		Obvious exits: // East  - The small room
+1792806463	cmd	Trentlin	50	7050	sewer.are	standing	100	0	-	east		The small room //   The only thing in this room of interest is a chair, and that's tight to the  // rock floor. A doorway leads south and another leads east into darkness.
+1792806463	cmd	Trentlin	50	7050	sewer.are	standing	100	0	-	exits		Obvious exits: // East  - The Edge of The Water Sewer // South - The Sewer pipe
+1792806464	cmd	Trentlin	50	7051	sewer.are	standing	100	0	-	south		The Sewer pipe //   You are in what reminds you of a foul sewer, as if you liked being here!  // You can see two exits leading either north or south.
+1792806465	cmd	Trentlin	50	7051	sewer.are	standing	100	0	-	exits		Obvious exits: // North - The small room // South - The Grand Sewer
+1792806465	cmd	Trentlin	50	7052	sewer.are	standing	100	0	-	south		The Grand Sewer //   You are in a Grand Sewer Pipe. This stretches toward the south. It's large  // indeed! A doorway leads to the east from here.
+1792806466	cmd	Trentlin	50	7052	sewer.are	standing	100	0	-	exits		Obvious exits: // North - The Sewer pipe // East  - The Dark hallway
+1792806469	cmd	Trentlin	50	7056	sewer.are	standing	100	0	-	east		The Dark hallway //   You can't see much of this, even with a light. The hallway goes into a // passageway to the south. A doorway leads west.
+1792806469	cmd	Trentlin	50	7056	sewer.are	standing	100	0	-	exits		Obvious exits: // South - The dark passageway // West  - The Grand Sewer
+1792806470	cmd	Trentlin	50	7057	sewer.are	standing	100	0	-	south		The dark passageway //   You can't see anything but the ground where you put your feet. The  // passageway seems to continue south and north.
+1792806471	cmd	Trentlin	50	7057	sewer.are	standing	100	0	-	exits		Obvious exits: // North - The Dark hallway // South - The dark passageway
+1792806471	cmd	Trentlin	50	7058	sewer.are	standing	100	0	-	south		The dark passageway //   You can't see anything but the ground where you put your feet. The // passageway seems to continue south and north.
+1792806472	cmd	Trentlin	50	7059	sewer.are	standing	100	0	-	south		The dark passageway //   You can't see anything but the ground where you put your feet. The // passageway seems to continue south and north.
+1792806472	cmd	Trentlin	50	7060	sewer.are	standing	100	0	-	south		The dark passageway //   You can't see anything but the ground where you put your feet. The // passageway seems to continue west and north. To the east there's water
+1792806473	cmd	Trentlin	50	7068	sewer.are	standing	100	0	-	east		The Watery sewer bend //   You can't see anything but the water you're in up to your hips. The sewer // seems to bend and lead west and north.
+1792806475	cmd	Trentlin	50	7067	sewer.are	standing	100	0	-	north		The Watery sewer //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead south and north.
+1792806476	cmd	Trentlin	50	7066	sewer.are	standing	100	0	-	north		The Watery sewer junction //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead into a junction that goes north, south and east.
+1792806476	cmd	Trentlin	50	7065	sewer.are	standing	100	0	-	north		The Watery sewer //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead south and north.
+1792806477	cmd	Trentlin	50	7066	sewer.are	standing	100	0	-	south		The Watery sewer junction //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead into a junction that goes north, south and east.
+1792806477	cmd	Trentlin	50	7066	sewer.are	standing	100	0	-	exits		Obvious exits: // North - The Watery sewer // East  - A ledge by the dark pool
+1792806479	cmd	Trentlin	50	7070	sewer.are	standing	100	0	-	east		A ledge by the dark pool //   You can't see much here but the echo tells you that there's quite a drop // down. You can just make out a huge dark pool out there in the darkness,
+1792806480	cmd	Trentlin	50	7070	sewer.are	standing	100	0	-	exits		Obvious exits: // North - A ledge by the dark pool // West  - The Watery sewer junction
+1792806483	cmd	Trentlin	50	7069	sewer.are	standing	100	0	-	north		A ledge by the dark pool //   You can't see much here but the echo tells you that there's quite a drop // down. You can just make out a huge dark pool out there in the darkness, 
+1792806484	cmd	Trentlin	50	7064	sewer.are	standing	100	0	-	west		The Watery Sewer Junction //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead into a junction going south, north and east.
+1792806485	cmd	Trentlin	50	7063	sewer.are	standing	100	0	-	north		The Watery sewer //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead south and north.
+1792806485	cmd	Trentlin	50	7063	sewer.are	standing	100	0	-	exits		Obvious exits: // North - The Watery sewer // South - The Watery Sewer Junction
+1792806486	cmd	Trentlin	50	7062	sewer.are	standing	100	0	-	north		The Watery sewer //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead south and north.
+1792806487	cmd	Trentlin	50	7062	sewer.are	standing	100	0	-	exits		Obvious exits: // North - The Watery Sewer Bend // South - The Watery sewer
+1792806488	cmd	Trentlin	50	7061	sewer.are	standing	100	0	-	north		The Watery Sewer Bend //   You can't see anything but the water you're in up to your hips. The sewer // seems to bend and lead south and west.
+1792806488	cmd	Trentlin	50	7061	sewer.are	standing	100	0	-	exits		Obvious exits: // South - The Watery sewer // West  - The Edge of The Water Sewer
+1792806489	cmd	Trentlin	50	7055	sewer.are	standing	100	0	-	west		The Edge of The Water Sewer //   You stand in a room where half of the floor is covered in water. The water // leads east and a doorway leads west.
+1792806490	cmd	Trentlin	50	7050	sewer.are	standing	100	0	-	west		The small room //   The only thing in this room of interest is a chair, and that's tight to the  // rock floor. A doorway leads south and another leads east into darkness.
+1792806491	cmd	Trentlin	50	7051	sewer.are	standing	100	0	-	south		The Sewer pipe //   You are in what reminds you of a foul sewer, as if you liked being here!  // You can see two exits leading either north or south.
+1792806492	cmd	Trentlin	50	7052	sewer.are	standing	100	0	-	south		The Grand Sewer //   You are in a Grand Sewer Pipe. This stretches toward the south. It's large  // indeed! A doorway leads to the east from here.
+1792806494	cmd	Trentlin	50	7056	sewer.are	standing	100	0	-	east		The Dark hallway //   You can't see much of this, even with a light. The hallway goes into a // passageway to the south. A doorway leads west.
+1792806494	cmd	Trentlin	50	7056	sewer.are	standing	100	0	-	exits		Obvious exits: // South - The dark passageway // West  - The Grand Sewer
+1792806495	cmd	Trentlin	50	7057	sewer.are	standing	100	0	-	south		The dark passageway //   You can't see anything but the ground where you put your feet. The  // passageway seems to continue south and north.
+1792806497	cmd	Trentlin	50	7056	sewer.are	standing	100	0	-	north		The Dark hallway //   You can't see much of this, even with a light. The hallway goes into a // passageway to the south. A doorway leads west.
+1792806497	cmd	Trentlin	50	7052	sewer.are	standing	100	0	-	west		The Grand Sewer //   You are in a Grand Sewer Pipe. This stretches toward the south. It's large  // indeed! A doorway leads to the east from here.
+1792806498	cmd	Trentlin	50	7052	sewer.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792806498	refused	Trentlin	50	7052	sewer.are	standing	100	0	-	(unknown)		Huh?
+1792806499	cmd	Trentlin	50	7052	sewer.are	standing	100	0	-	exits		Obvious exits: // North - The Sewer pipe // East  - The Dark hallway
+1792806500	cmd	Trentlin	50	7053	sewer.are	standing	100	0	-	south		The South end of the Grand Pipe //   You stand in water to your knees. A doorway leads west from here. The Pipe // stretches north.
+1792806500	cmd	Trentlin	50	7053	sewer.are	standing	100	0	-	exits		Obvious exits: // North - The Grand Sewer // West  - The Pool in the Sewer
+1792806501	cmd	Trentlin	50	7047	sewer.are	standing	100	1	-	west		The Pool in the Sewer //   You stand in water to your waist.  To the north is the entrance to this room. // A single door leads east.
+1792806501	cmd	Trentlin	50	7047	sewer.are	standing	100	0	-	exits		Obvious exits: // North - The Sewer room // East  - The South end of the Grand Pipe
+1792806504	cmd	Trentlin	50	7046	sewer.are	standing	100	0	-	north		The Sewer room //   This is a Room with walls that glitters like gold though not quite like it. // This is strange as it looks as if the glitter lights the whole room. It
+1792806504	cmd	Trentlin	50	7045	sewer.are	standing	100	0	-	north		The Sewer Room //   You are standing in a large room with chairs set in the walls. You have the // feeling of being watched. To the south there's an entry to a larger room.
+1792806505	cmd	Trentlin	50	7045	sewer.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792806505	cmd	Trentlin	50	7038	sewer.are	standing	100	0	-	west		The three way junction //   You are standing in a junction of pipes that lead west, east and south. // [Exits: east south west]
+1792806506	cmd	Trentlin	50	7025	sewer.are	standing	100	0	-	west		Another intersection //   You have never seen anything so BORING...This is an intersection with pipes // leading north, south and east.
+1792806507	cmd	Trentlin	50	7038	sewer.are	standing	100	0	-	east		The three way junction //   You are standing in a junction of pipes that lead west, east and south. // [Exits: east south west]
+1792806508	cmd	Trentlin	50	7038	sewer.are	standing	100	0	-	exits		Obvious exits: // East  - The Sewer Room // South - The Sewer Store Room
+1792806510	cmd	Trentlin	50	7045	sewer.are	standing	100	0	-	east		The Sewer Room //   You are standing in a large room with chairs set in the walls. You have the // feeling of being watched. To the south there's an entry to a larger room.
+1792806511	cmd	Trentlin	50	7046	sewer.are	standing	100	0	-	south		The Sewer room //   This is a Room with walls that glitters like gold though not quite like it. // This is strange as it looks as if the glitter lights the whole room. It
+1792806511	cmd	Trentlin	50	7047	sewer.are	standing	100	0	-	south		The Pool in the Sewer //   You stand in water to your waist.  To the north is the entrance to this room. // A single door leads east.
+1792806512	cmd	Trentlin	50	7053	sewer.are	standing	100	0	-	east		The South end of the Grand Pipe //   You stand in water to your knees. A doorway leads west from here. The Pipe // stretches north.
+1792806514	cmd	Trentlin	50	7052	sewer.are	standing	100	0	-	north		The Grand Sewer //   You are in a Grand Sewer Pipe. This stretches toward the south. It's large  // indeed! A doorway leads to the east from here.
+1792806515	cmd	Trentlin	50	7056	sewer.are	standing	100	0	-	east		The Dark hallway //   You can't see much of this, even with a light. The hallway goes into a // passageway to the south. A doorway leads west.
+1792806516	cmd	Trentlin	50	7057	sewer.are	standing	100	0	-	south		The dark passageway //   You can't see anything but the ground where you put your feet. The  // passageway seems to continue south and north.
+1792806516	cmd	Trentlin	50	7058	sewer.are	standing	100	0	-	south		The dark passageway //   You can't see anything but the ground where you put your feet. The // passageway seems to continue south and north.
+1792806517	cmd	Trentlin	50	7059	sewer.are	standing	100	0	-	south		The dark passageway //   You can't see anything but the ground where you put your feet. The // passageway seems to continue south and north.
+1792806518	cmd	Trentlin	50	7060	sewer.are	standing	100	0	-	south		The dark passageway //   You can't see anything but the ground where you put your feet. The // passageway seems to continue west and north. To the east there's water
+1792806519	cmd	Trentlin	50	7068	sewer.are	standing	100	0	-	east		The Watery sewer bend //   You can't see anything but the water you're in up to your hips. The sewer // seems to bend and lead west and north.
+1792806521	cmd	Trentlin	50	7067	sewer.are	standing	100	0	-	north		The Watery sewer //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead south and north.
+1792806522	cmd	Trentlin	50	7066	sewer.are	standing	100	0	-	north		The Watery sewer junction //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead into a junction that goes north, south and east.
+1792806523	cmd	Trentlin	50	7070	sewer.are	standing	100	0	-	east		A ledge by the dark pool //   You can't see much here but the echo tells you that there's quite a drop // down. You can just make out a huge dark pool out there in the darkness,
+1792806524	cmd	Trentlin	50	7099	sewer.are	standing	100	0	-	down		The fissure under the ledge //   This is a small fissure in the solid rock. Under you lies the deep dark pool. // The water trickles quietly down from the ledge above you. The water smells 
+1792806525	cmd	Trentlin	50	7199	sewer.are	standing	100	0	-	down		The Edge of the Water //   The pool side is dimly lit up by your light. You can see absolutely nothing // else nearby. The darkness her seems enormously oppressive here. The air is
+1792806529	cmd	Trentlin	50	7199	sewer.are	standing	100	0	-	open	rock	I see no rock here.
+1792806533	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792806535	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792806535	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792806536	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792806537	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792806537	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792806537	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792806538	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792806538	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792806538	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792806547	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	look	sign	This ancient oak tree is a symbol of strength for our city.  The sages say it // was planted at the beginning of time.  Legends say if you bury coins at the // base of the tree you can be granted the favor of the Gods.  Good luck
+1792806550	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792806550	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792806550	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792806551	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792806560	session	Trentlin	50	2497	dresden_halloween.are	quit	867s	+0 levels	+0 exp	+226911393 copper	7 kills	0 deaths	1 quests	517 commands	6 refused	coin: loot 64p 67g 1s 93c, quests 162p 24g 12s
