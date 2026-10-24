@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792877858
+LogO 1792884872
 Vers 4
 Prom ~
 Ignoring ~
@@ -17,18 +17,18 @@ ChangesSeen 20261023m:1 20261023l:1 20261023k:1 20261023i:1 20261023g:2 20261023
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 54
-Plyd 847963
+Plyd 848025
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
 StashMax 150
 Scro 22
 Room 2497
-HMV  1165 1165 1833 1833 389 818
-NewGold 25
-NewPlat 985
-NewCopp 48
-NewSilv 22
+HMV  1165 1165 1833 1833 194 818
+NewGold 47
+NewPlat 1160
+NewCopp 44
+NewSilv 27
 BankCP 4886584573
 IntTime 1792803484
 IntTotal 144584573
@@ -38,7 +38,7 @@ Corpses	0
 PkRec 0
 PkGiv 0
 AchKills 2871
-AchQuests 287
+AchQuests 288
 AchDeaths 9
 AchExplore 5
 AchMaps 5
@@ -118,7 +118,7 @@ Achv visit-oz 1791127353
 Achv visit-high-tower 1791329329
 Achv visit-ultima 1791329350
 Achv visit-korzath-fortress 1790899622
-LastOut  1792877858
+LastOut  1792884872
 Rested 27375 0
 Daily 0 0 0 0 0
 SesLogin 1792843141
@@ -131,8 +131,8 @@ SesDead  1
 SesQuest 8
 RecallRoom 4207
 RecallSet  1791596015
-QuestPnts 1401
-QuestStrk 14
+QuestPnts 1459
+QuestStrk 15
 CasinoWon  51
 CasinoLost 304
 QuestNext 5
@@ -226,7 +226,7 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
-AffD 'fly'  40   1   0   0     524288          0
+AffD 'fly'  40   0   0   0     524288          0
 End
 
 #O
@@ -278,9 +278,9 @@ Lev  22
 Cost 55660000
 Cond 61
 Repd 0
-Affect -1 22 -1 3 24 0 0
-Affect -1 22 -1 1 1 0 0
 Affect -1 22 -1 -1 4 0 0
+Affect -1 22 -1 1 1 0 0
+Affect -1 22 -1 3 24 0 0
 End
 
 #O
@@ -948,8 +948,8 @@ Lev  51
 Cost 50000000
 Cond 99
 Repd 0
-Affect -1 51 -1 20 14 0 0
 Affect -1 51 -1 4 23 0 0
+Affect -1 51 -1 20 14 0 0
 End
 
 #O
@@ -1003,9 +1003,9 @@ Lev  29
 Cost 30000000
 Cond 100
 Repd 0
-Affect -1 29 -1 -4 1 0 0
-Affect -1 29 -1 -1 1 0 0
 Affect -1 29 -1 -4 2 0 0
+Affect -1 29 -1 -1 1 0 0
+Affect -1 29 -1 -4 1 0 0
 End
 
 #O
@@ -1017,8 +1017,8 @@ Lev  52
 Cost 50000000
 Cond 100
 Repd 0
-Affect -1 52 -1 2 24 0 0
 Affect -1 52 -1 5 17 0 0
+Affect -1 52 -1 2 24 0 0
 End
 
 #O
@@ -1090,8 +1090,8 @@ Lev  52
 Cost 23680000
 Cond 100
 Repd 0
-Affect -1 52 -1 2 24 0 0
 Affect -1 52 -1 3 22 0 0
+Affect -1 52 -1 2 24 0 0
 End
 
 #O
@@ -1102,9 +1102,9 @@ Lev  23
 Cost 13000000
 Cond 100
 Repd 0
-Affect -1 23 -1 31 14 0 0
-Affect -1 23 -1 -4 1 0 0
 Affect -1 23 -1 -9 12 0 0
+Affect -1 23 -1 -4 1 0 0
+Affect -1 23 -1 31 14 0 0
 End
 
 #O
@@ -1325,8 +1325,8 @@ Lev  53
 Cost 15000000
 Cond 99
 Repd 0
-Affect -1 53 -1 -1 2 0 0
 Affect -1 53 -1 1 4 0 0
+Affect -1 53 -1 -1 2 0 0
 End
 
 #O
@@ -1411,8 +1411,8 @@ Lev  41
 Cost 14980000
 Cond 100
 Repd 0
-Affect -1 41 -1 -2 4 0 0
 Affect -1 41 -1 -2 1 0 0
+Affect -1 41 -1 -2 4 0 0
 End
 
 #O
@@ -1434,8 +1434,8 @@ Lev  23
 Cost 13000000
 Cond 88
 Repd 0
-Affect -1 23 -1 1 17 0 0
 Affect -1 23 -1 -5 12 0 0
+Affect -1 23 -1 1 17 0 0
 End
 
 #O
@@ -1555,8 +1555,8 @@ Cost 23000000
 Cond 98
 Repd 0
 Affect -1 32 -1 -4 4 0 0
-Affect -1 32 -1 3 22 0 0
 Affect -1 32 -1 2 24 0 0
+Affect -1 32 -1 3 22 0 0
 Affect -1 32 -1 -4 4 0 0
 End
 
@@ -1636,9 +1636,9 @@ Lev  49
 Cost 40000000
 Cond 100
 Repd 0
-Affect -1 49 -1 -1 13 0 0
-Affect -1 49 -1 -1 12 0 0
 Affect -1 49 -1 3 24 0 0
+Affect -1 49 -1 -1 12 0 0
+Affect -1 49 -1 -1 13 0 0
 End
 
 #O
@@ -1689,8 +1689,8 @@ Lev  31
 Cost 20000000
 Cond 98
 Repd 0
-Affect -1 31 -1 -2 22 0 0
 Affect -1 31 -1 1 17 0 0
+Affect -1 31 -1 -2 22 0 0
 End
 
 #O
