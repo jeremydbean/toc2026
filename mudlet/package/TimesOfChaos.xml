@@ -51,7 +51,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.5.9"
+tocMudlet.version = "1.5.10"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -996,11 +996,17 @@ function tocMudlet.onQuest()
   -- wandered since, so it says "last seen" rather than "is".
   local where = ""
   if quest.room and quest.room ~= "" then
-    -- When the room vnum came through, the strip is clickable and says
-    -- so; without it there is nothing to walk to.
-    local hint = tonumber(quest.num) and
-      string.format([[ &middot; <span style="color:%s">click to walk</span>]], P.accent or "#8fd3ff")
-      or ""
+    -- Clickable whenever there is somewhere to walk: the room itself for
+    -- staff, whose feed carries its vnum, and the area for everyone else
+    -- (WALK QUEST's fallback). It asked for the vnum alone, so when the
+    -- feed stopped sending it to mortals the click quietly went away
+    -- (Trentlin, 2026-10-24: "the walk button is gone").
+    local hint = ""
+    if tonumber(quest.num) then
+      hint = string.format([[ &middot; <span style="color:%s">click to walk</span>]], P.accent or "#8fd3ff")
+    elseif quest.area and quest.area ~= "" then
+      hint = string.format([[ &middot; <span style="color:%s">click to walk to the area</span>]], P.accent or "#8fd3ff")
+    end
     where = string.format(
       [[<br><span style="color:%s">last seen near %s%s</span>%s]],
       P.muted, html(quest.room),
@@ -1016,7 +1022,7 @@ function tocMudlet.onQuest()
   -- Clicking the quest strip walks you to the target, when there is one
   -- on the map. Cleared otherwise so a stale target cannot be clicked.
   if tocMudlet.ui.quest.setClickCallback then
-    if tonumber(quest.num) then
+    if tonumber(quest.num) or (quest.area and quest.area ~= "") then
       pcall(function()
         tocMudlet.ui.quest:setClickCallback(function()
           tocMudlet.walkCommand("quest")

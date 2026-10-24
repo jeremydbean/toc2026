@@ -5,6 +5,18 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261024a 2026-10-24
+GROUP names everyone in your group, even one you cannot see: a member
+hidden by stealth or invisibility no longer shows as "Someone".
+
+@ 20261024b 2026-10-24
+The Mudlet quest strip is clickable again (package 1.5.10): it walks you
+to the area your quest target was last seen in, as WALK QUEST does.
+
+@ 20261024c 2026-10-24 staff
+A character restored to a "before death" snapshot no longer logs in dead.
+Anyone read from a file dying stands up at one hit point in the Temple.
+
 @ 20261023m 2026-10-23
 The Mudlet package (1.5.9) removes Mudlet's generic mapper if your profile
 has it, once, and tells you. It was what printed "Prompt not

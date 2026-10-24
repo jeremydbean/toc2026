@@ -57,6 +57,12 @@ prestore <player> corpse <id> gear    that, into their inventory, once
   STASH and CORPSE work online or offline.
 - Any restore of a player ends their corpses' keeping (they go to history).
 
+A "before death" copy is written inside the death, below zero hit points
+in the room of the death. Anybody read from a file that way -- a full
+restore to it included -- stands up at one hit point in the Temple
+(`revive_at_load` in `save.c`; until 2026-10-24 Alaric logged in dead and
+could not even quit).
+
 **After a death:** `prestore <player> corpses` first -- if the corpse ended
 with things in it, `corpse <id> gear` gives back exactly what was left, with
 its enchantments, charges and condition. Otherwise `prestore <player>

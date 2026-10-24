@@ -57,6 +57,10 @@ labels on the map, and walking to a named place.
   map, or prints the published route from the Oak Tree Square if it
   is not.
 
+Package 1.5.10 makes the quest strip clickable again for players: it
+walks to the quest's area, as `walk quest` does. It had asked for the
+target room's number, which the game sends to staff alone.
+
 Package 1.5.9 removes Mudlet's generic mapper from a profile that has it,
 once, and says so. Setting `mudlet.mapper_script` (1.0.8) never silenced
 it: the generic mapper sets that flag itself, and older copies search for

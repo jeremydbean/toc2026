@@ -1763,6 +1763,46 @@ static bool load_slot_takes( OBJ_DATA *obj, int slot )
  * mana and move the object added. Nothing is said to anybody: an offline
  * load has no one to say it to. The object stays in the inventory.
  */
+/*
+ * Nobody comes out of a file dead. A milestone taken "before death" is
+ * written inside raw_kill, with the blow already landed: hit points below
+ * zero, position DEAD, and the room of the death. A full PRESTORE to one
+ * logged Alaric in as a corpse (2026-10-23): ticks heal nobody below
+ * STUNNED, and every command, QUIT included, answered "Lie still; you are
+ * DEAD." -- for eleven hours, until a skeleton in the room he had died in
+ * finished him again. A character read below STUNNED, or with no hit
+ * points, stands up at one hit point in the Temple, as a death leaves
+ * them.
+ */
+static void revive_at_load( CHAR_DATA *ch )
+{
+    ROOM_INDEX_DATA *temple;
+    int was_hit;
+    int was_room;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+    if ( ch->position > POS_STUNNED && ch->hit > 0 )
+        return;
+
+    was_hit = ch->hit;
+    was_room = ch->in_room != NULL ? ch->in_room->vnum : 0;
+    ch->position = POS_STANDING;
+    ch->hit = UMAX( 1, ch->hit );
+    if ( ( temple = get_room_index( ROOM_VNUM_TEMPLE ) ) != NULL )
+        ch->in_room = temple;
+
+    /* Once a login, as unwear_illegal_at_load: the name-prompt copy is
+       read again once the password is in. */
+    if ( ch->desc == NULL || ch->desc->connected != CON_GET_NAME )
+    {
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+            "%s was saved dying (%d hp in room %d); stood up in the Temple.",
+            ch->name, was_hit, was_room );
+        log_string( log_buf );
+    }
+}
+
 static void unwear_illegal_at_load( CHAR_DATA *ch )
 {
     OBJ_DATA *kept[MAX_WEAR];
@@ -2177,6 +2217,10 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     /* Nothing comes back worn that could not be put on now. */
     if ( found )
         unwear_illegal_at_load( ch );
+
+    /* Nor does anybody come back dead. */
+    if ( found )
+        revive_at_load( ch );
 
     /* Powers learned before the list existed still count towards it.
        Silent, so it may run on any load. Everything that speaks -- the

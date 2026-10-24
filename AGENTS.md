@@ -1276,6 +1276,12 @@ rules the code depends on:
   `TOC_FAULT` (`fsync`, `dirsync`) and `TOC_FAULT_FILE` (one named point,
   `save 2` for the second save; `ledger`, `crash-before-commit`), read
   by `recovery_fault()` and set nowhere but `tests/`.
+- **Nobody comes out of a file dead** (`revive_at_load`, end of
+  `load_char_obj`): a `death` copy is written below zero hit points,
+  position DEAD, in the room of the death, and a full PRESTORE to one
+  logged Alaric in as a corpse no tick heals and QUIT refuses
+  (2026-10-24). Read below STUNNED or at no hit points, a character
+  stands at one hit point in the Temple. `tests/test_revive_at_load.py`.
 - **Reading a snapshot never touches the game until all of it read.**
   `snapshot_read_gear`/`snapshot_read_stash`/`corpse_file_read` read aside
   through `read_objects_aside` and return the list or nothing.

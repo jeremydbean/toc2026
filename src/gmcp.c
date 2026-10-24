@@ -12,7 +12,7 @@
 #include "merc.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.5.9"
+#define TOC_MUDLET_PACKAGE_VERSION "1.5.10"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \
@@ -919,8 +919,10 @@ void gmcp_send_group( DESCRIPTOR_DATA *d )
         if ( count > 0 )
             toc_strlcat( json, ",", sizeof(json) );
         toc_strlcat( json, "{\"name\":", sizeof(json) );
+        /* By name, as GROUP lists them; a wizinvis member stays hidden. */
         gmcp_json_append_quoted( json, sizeof(json),
-            IS_NPC(gch) ? gch->short_descr : gch->name );
+            IS_NPC(gch) ? gch->short_descr
+            : wizinvis_hides( gch, ch ) ? "someone" : gch->name );
         snprintf( number, sizeof(number),
             ",\"level\":%d,\"hp\":%d,\"mana\":%d,\"move\":%d,"
             "\"leader\":%s,\"here\":%s,\"you\":%s}",

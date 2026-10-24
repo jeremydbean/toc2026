@@ -4288,6 +4288,22 @@ void do_order( CHAR_DATA *ch, char *argument )
 
 
 
+/*
+ * Who a group member is, to the rest of the group. You chose them and
+ * share their kills, so stealth, shadowmeld, invisibility or a dark room
+ * do not make them "Someone" in your own GROUP list -- Trentlin's showed
+ * a stealthed Alaric that way (2026-10-24), while the Mudlet group panel,
+ * fed by name, showed him. Only wizinvis still hides, as everywhere.
+ */
+static const char *group_member_name( CHAR_DATA *gch, CHAR_DATA *ch )
+{
+    if ( gch == ch )
+        return gch->name;
+    if ( !IS_NPC(gch) && wizinvis_hides( gch, ch ) )
+        return PERS( gch, ch );
+    return IS_NPC(gch) ? gch->short_descr : gch->name;
+}
+
 void do_group( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
@@ -4304,7 +4320,7 @@ void do_group( CHAR_DATA *ch, char *argument )
 
 	leader = (ch->leader != NULL) ? ch->leader : ch;
 	/* Code Safety: snprintf */
-	snprintf( buf, sizeof(buf), "%s's group:\n\r", PERS(leader, ch) );
+	snprintf( buf, sizeof(buf), "%s's group:\n\r", group_member_name(leader, ch) );
 	send_to_char( buf, ch );
 
         FOR_EACH_CHARACTER( iter, gch )
@@ -4316,7 +4332,7 @@ void do_group( CHAR_DATA *ch, char *argument )
                 "[%2d %s] %-16s %4d/%4d hp %4d/%4d mana %4d/%4d mv %5ld xp\n\r",
                     gch->level,
                     IS_NPC(gch) ? "Mob" : class_table[gch->class].who_name,
-                    capitalize( PERS(gch, ch) ),
+                    capitalize( group_member_name(gch, ch) ),
                     gch->hit,   gch->max_hit,
                     gch->mana,  gch->max_mana,
                     gch->move,  gch->max_move,

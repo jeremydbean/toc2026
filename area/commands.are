@@ -6728,7 +6728,9 @@ year.  A copy is also taken before every death, remort, deletion, staff
 change and restore, and after every level gain and quest; those are kept
 ninety days, and the newest hundred of each kind for good.  A death killed
 by a mobile has two: "dying, before the death's experience penalty" and
-"before death", which already carries the penalty.
+"before death", which already carries the penalty.  Both are taken as the
+blow lands, so a character restored to one stands up at one hit point in
+the Temple rather than where they fell.
 
 The list shows how long ago each was taken, then the time, the level, the
 kind, and the stamp.  Restore by the stamp, not the number: every save adds
