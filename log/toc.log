@@ -163893,3 +163893,9 @@ Sat Oct 24 01:16:19 2026 :: Log Alaric [29210]: time
 Sat Oct 24 01:16:21 2026 :: Log Alaric [29210]: who
 Sat Oct 24 01:17:10 2026 :: Sock.sinaddr:  178.156.185.127
 Sat Oct 24 01:17:10 2026 :: EOF encountered on read.
+Sat Oct 24 01:22:14 2026 :: Sock.sinaddr:  178.156.187.238
+Sat Oct 24 01:22:14 2026 :: EOF encountered on read.
+Sat Oct 24 01:24:25 2026 :: Sock.sinaddr:  99.62.115.159
+Sat Oct 24 01:24:35 2026 :: EOF encountered on read.
+Sat Oct 24 01:24:35 2026 :: Closing link to Alaric.
+Sat Oct 24 01:25:30 2026 :: Treasure goblin: vanished from room 13498 (Blackened Hall, hell.are) (too long in one area).
