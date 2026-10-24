@@ -172656,3 +172656,11 @@ Sat Oct 24 19:32:41 2026 :: Log Alaric [16080]: recal
 Sat Oct 24 19:32:41 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 16080
 Sat Oct 24 19:32:42 2026 :: Log Alaric [4207]: e
 Sat Oct 24 19:32:42 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 24 19:32:42 2026 :: Log Alaric [4202]: n
+Sat Oct 24 19:32:42 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4202
+Sat Oct 24 19:32:43 2026 :: Log Alaric [4203]: n
+Sat Oct 24 19:32:43 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
+Sat Oct 24 19:32:43 2026 :: Log Alaric [4210]: sleep
+Sat Oct 24 19:34:14 2026 :: Sock.sinaddr:  3.149.57.90
+Sat Oct 24 19:34:14 2026 :: EOF encountered on read.
+Sat Oct 24 19:37:37 2026 :: Sock.sinaddr:  99.62.115.159

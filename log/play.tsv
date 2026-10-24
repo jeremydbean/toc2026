@@ -11342,3 +11342,6 @@
 1792870361	cmd	Alaric	54	16080	pirate.are	standing	71	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
 1792870361	cmd	Alaric	54	4207	dresden_halloween.are	standing	71	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
 1792870362	cmd	Alaric	54	4202	dresden_halloween.are	standing	71	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792870362	cmd	Alaric	54	4203	dresden_halloween.are	standing	71	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1792870363	cmd	Alaric	54	4210	dresden_halloween.are	standing	71	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1792870363	cmd	Alaric	54	4210	dresden_halloween.are	standing	71	0	-	sleep		You go to sleep.
