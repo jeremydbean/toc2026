@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792855898
+LogO 1792856191
 Vers 4
 Prom ~
 Ignoring ~
@@ -17,18 +17,18 @@ ChangesSeen 20261023g:1 20261023f:1 20261023e:1 20261023d:1 20261023c:1 20261023
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 54
-Plyd 826003
+Plyd 826296
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
 StashMax 150
 Scro 22
 Room 16079
-HMV  463 1155 1833 1833 548 810
-NewGold 101
-NewPlat 1575
-NewCopp 70
-NewSilv 21
+HMV  443 1155 1833 1833 810 810
+NewGold 104
+NewPlat 1576
+NewCopp 78
+NewSilv 27
 BankCP 3386584573
 IntTime 1792803484
 IntTotal 144584573
@@ -37,7 +37,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 2845
+AchKills 2846
 AchQuests 281
 AchDeaths 9
 AchExplore 5
@@ -118,8 +118,8 @@ Achv visit-oz 1791127353
 Achv visit-high-tower 1791329329
 Achv visit-ultima 1791329350
 Achv visit-korzath-fortress 1790899622
-LastOut  1792855898
-Rested 27640 0
+LastOut  1792856191
+Rested 27626 0
 Daily 0 0 0 0 0
 SesLogin 1792800776
 SesDur   6181
@@ -135,7 +135,7 @@ QuestPnts 1096
 QuestStrk 8
 CasinoWon  51
 CasinoLost 304
-Exp  165656
+Exp  165684
 Act  4261068
 AfBy 524800
 Comm 24576
@@ -225,8 +225,8 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
-AffD 'fly'   0  16   0   0     524288          0
-AffD 'stone skin'   0  13 -40  17          0          0
+AffD 'fly'   0  11   0   0     524288          0
+AffD 'stone skin'   0   8 -40  17          0          0
 End
 
 #O
