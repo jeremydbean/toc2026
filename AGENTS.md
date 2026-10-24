@@ -1341,7 +1341,10 @@ rules the code depends on:
   (`src/restores.c`): `<id> <player> gear|stash|import <stamp> [<file>]`.
   `tools/player_history.py` finds a state in git and `export`s it.
 - **Off the host**: the state sync carries `player/` (ledger included),
-  every tagged copy but `level` and `quest`, and `corpse/` (`live/`
+  every tagged copy but `level` and `quest`, the newest ordinary copy of
+  each finished hour (mirrored to the host's keeping, so a pruned one
+  leaves the tree but not git's history; owner, 2026-10-24), and
+  `corpse/` (`live/`
   mirrored with `--delete`, so an ended corpse never comes back from git;
   `history/` never deleted); `toc-restore` lays all of it down. The
   encrypted `sync-player-backup.sh` checks tar, its listing and age apart

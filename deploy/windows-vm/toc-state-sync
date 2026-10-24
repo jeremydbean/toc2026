@@ -129,6 +129,55 @@ if [ -d "$TOC_ROOT/player/versions" ]; then
           "$TOC_ROOT/player/versions/" "$STATE_REPO/player/versions/"
 fi
 
+# And the hourly copies (owner, 2026-10-24: "make the hourly snapshots
+# back up off the server too"). The game snapshots a character at every
+# save, at most once a minute, and keeps every copy for a day, the newest
+# of each hour for a week and of each day for a year (snapshot_prune in
+# save.c). Git gets the newest ordinary copy of each finished hour --
+# not every minute's, which would be noise -- and mirrors the host's
+# keeping of them: a copy the host has pruned is removed here too (git's
+# history still holds it), so a rebuilt host's PRESTORE lists the same
+# hourly and daily copies the lost one did. The hour still running is
+# left until it ends, so its copy is not replaced every five minutes.
+# Tagged copies are the rsync's above and are never touched here.
+if [ -d "$TOC_ROOT/player/versions" ] && command -v python3 >/dev/null 2>&1; then
+    python3 - "$TOC_ROOT/player/versions" "$STATE_REPO/player/versions" <<'PY' ||
+import os, re, shutil, sys, time
+src, dst = sys.argv[1], sys.argv[2]
+# "<Name>.<YYYYMMDD>_<HHMMSS>[_NN]": an ordinary save, as snapshot_name_parse
+# reads it; a tagged copy has a second dot and never matches.
+plain = re.compile(r"^([A-Za-z]{2,12})\.(\d{8})_(\d{2})\d{4}(?:_\d{2,})?$")
+running = time.strftime("%Y%m%d%H", time.localtime())   # the stamps' clock
+for name in os.listdir(src):
+    here = os.path.join(src, name)
+    if not os.path.isdir(here):
+        continue
+    newest = {}
+    for f in os.listdir(here):
+        m = plain.match(f)
+        if not m or m.group(1) != name:
+            continue
+        hour = m.group(2) + m.group(3)
+        if hour >= running:
+            continue
+        if f > newest.get(hour, ""):
+            newest[hour] = f
+    keep = set(newest.values())
+    there = os.path.join(dst, name)
+    if keep:
+        os.makedirs(there, exist_ok=True)
+    for f in keep:
+        a, b = os.path.join(here, f), os.path.join(there, f)
+        if not os.path.exists(b) or os.path.getsize(a) != os.path.getsize(b):
+            shutil.copy2(a, b)
+    if os.path.isdir(there):
+        for f in os.listdir(there):
+            if plain.match(f) and f not in keep:
+                os.remove(os.path.join(there, f))
+PY
+    echo "hourly snapshots: copy failed; the rest of the sync carries on" >&2
+fi
+
 # Player corpses (corpses.c): live/ is what lies in the world now, and
 # mirrors the host exactly -- a corpse that ended must not come back from
 # git on a rebuilt host; history/ is every corpse's first and last state
@@ -189,7 +238,7 @@ if git diff --cached --quiet; then
 fi
 
 changed=$(git diff --cached --name-only | wc -l)
-players=$(git diff --cached --name-only -- player | wc -l)
+players=$(git diff --cached --name-only -- player ':(exclude)player/versions' | wc -l)
 git commit --quiet -m "State sync: $changed files, $players characters [skip ci]
 
 Automatic. Written by toc-state-sync on the host that is running the

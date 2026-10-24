@@ -83,10 +83,18 @@ class BackupSourceTests(unittest.TestCase):
             git("init", "--bare", "-b", "main", str(bare))
             git("clone", str(bare), str(seed))
             (seed / "README").write_text("seed\n")
-            git("-c", "user.name=t", "-c", "user.email=t@t", "add", "README", cwd=seed)
+            # Already in git from earlier syncs: an hourly copy the host
+            # has since pruned, and a milestone it pruned too.
+            gone = seed / "player" / "versions" / "Zsynced"
+            gone.mkdir(parents=True)
+            (gone / "Zsynced.20261001_100000").write_text("#PLAYER\n#END\n")
+            (gone / "Zsynced.20261001_100000.death").write_text("#PLAYER\n#END\n")
+            git("-c", "user.name=t", "-c", "user.email=t@t", "add", "-f", "README", "player",
+                cwd=seed)
             git("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "seed", cwd=seed)
             git("push", "-q", "origin", "HEAD:main", cwd=seed)
             live = root / "live"
+            now_stamp = "Zsynced." + time.strftime("%Y%m%d_%H%M%S", time.localtime())
             versions = live / "player" / "versions" / "Zsynced"
             versions.mkdir(parents=True)
             (live / "player" / "Zsynced").write_text("#PLAYER\nName Zsynced~\nEnd\n")
@@ -95,7 +103,7 @@ class BackupSourceTests(unittest.TestCase):
                          "Zsynced.20261023_030000.remort", "Zsynced.20261023_031000.quest",
                          "Zsynced.20261023_032000.level", "Zsynced.20261023_033000.prestore",
                          "Zsynced.20261023_034000.gitrestore", "Zsynced.20261023_035000_02",
-                         ".partial"):
+                         "Zsynced.20261023_023000", now_stamp, ".partial"):
                 (versions / name).write_text("#PLAYER\nName Zsynced~\nEnd\n#END\n")
             # The recovery ledger rides with player/; corpses have their own.
             (live / "player" / "recovery").mkdir()
@@ -123,10 +131,18 @@ class BackupSourceTests(unittest.TestCase):
         for tagged in ("Zsynced.20261023_023244_02.death", "Zsynced.20261023_023200.prepenalty",
                        "Zsynced.20261023_033000.prestore", "Zsynced.20261023_034000.gitrestore"):
             self.assertIn("player/versions/Zsynced/" + tagged, tree)
-        for kept_on_host in ("Zsynced.20261023_023244", "Zsynced.20261023_031000.quest",
-                             "Zsynced.20261023_032000.level", "Zsynced.20261023_035000_02",
+        for kept_on_host in ("Zsynced.20261023_031000.quest", "Zsynced.20261023_032000.level",
                              ".partial"):
             self.assertNotIn("player/versions/Zsynced/" + kept_on_host, tree)
+        # Hourly copies (owner, 2026-10-24): the newest ordinary copy of
+        # each finished hour goes up, an older one in that hour and the
+        # hour still running stay behind, and a copy the host pruned
+        # leaves git -- but a milestone never does.
+        for hourly in ("Zsynced.20261023_023244", "Zsynced.20261023_035000_02"):
+            self.assertIn("player/versions/Zsynced/" + hourly, tree)
+        for not_hourly in ("Zsynced.20261023_023000", now_stamp, "Zsynced.20261001_100000"):
+            self.assertNotIn("player/versions/Zsynced/" + not_hourly, tree)
+        self.assertIn("player/versions/Zsynced/Zsynced.20261001_100000.death", tree)
         self.assertIn("player/recovery/ledger.tsv", tree)
         self.assertIn("corpse/live/c1.corpse", tree)
         self.assertNotIn("corpse/live/c1.corpse.tmp", tree)

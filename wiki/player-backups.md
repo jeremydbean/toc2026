@@ -16,6 +16,7 @@ what it does not yet cover, and how long a loss can be.
 | Recovery ledger | every restore and its undo copy, every milestone with its checksum, every corpse made and ended, each player's permanent uid | host, `player/recovery/ledger.tsv` | for ever; append-only, never rolled back |
 | Git history | every character file, the ledger and the corpses, every five minutes (`toc-state-sync`) | GitHub, `player/`, `corpse/` | for ever |
 | Milestones in git | every tagged copy except level and quest ones | GitHub, `player/versions/<Name>/` | for ever (the sync never deletes them) |
+| Hourly copies in git | the newest save snapshot of each finished hour | GitHub, `player/versions/<Name>/` | as the host keeps them -- hourly for a week, then daily for a year; pruned ones stay in git's history |
 | Encrypted snapshot | `player/` and `corpse/` in one archive, checked at every stage | a private repository, `toc-player-backup` | the latest only -- see "Not yet" |
 
 The stamp is the server's clock (UTC). PRESTORE shows how long ago each copy
@@ -148,7 +149,10 @@ Measured from the code, not promised:
 - **A corpse:** up to a second of looting before a crash (changes are
   written within a second); its timer, up to ten minutes stale.
 - **The host lost:** up to five minutes (the state sync), plus anything
-  since the last sync that only the host had.
+  since the last sync that only the host had. A rebuilt host's PRESTORE
+  lists the same hourly, daily and milestone copies the lost one did,
+  except the current hour's (2026-10-24); a restore drill from GitHub
+  alone took under two minutes the same day.
 - **The host and GitHub lost together:** everything since the last
   encrypted archive, if it is installed, up to six hours.
 
