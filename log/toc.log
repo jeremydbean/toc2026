@@ -169768,3 +169768,7 @@ Sat Oct 24 15:31:59 2026 :: Log Alaric [16079]: coin +3 gold
 Sat Oct 24 15:35:02 2026 :: Treasure goblin: vanished from room 1576 (A Dungeon, gnome.are) (too long in one area).
 Sat Oct 24 15:35:34 2026 :: Sock.sinaddr:  52.22.236.30
 Sat Oct 24 15:35:35 2026 :: EOF encountered on read.
+Sat Oct 24 15:40:39 2026 :: Sock.sinaddr:  178.156.184.20
+Sat Oct 24 15:40:39 2026 :: EOF encountered on read.
+Sat Oct 24 15:44:59 2026 :: Log Alaric [16079]: affects off: stone skin
+Sat Oct 24 15:45:06 2026 :: Treasure goblin: vanished from room 671 (The Anteroom to the Temple of Ofcol, ofcol.are) (too long in one area).
