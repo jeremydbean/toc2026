@@ -11008,3 +11008,78 @@
 1792867948	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	wear	shield	Not gonna happen. Find a smaller weapon.
 1792867950	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	remove	re	You stop using the Headless Horseman's Reaper.
 1792867952	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	wear	shie	You wear a coiled-snake shield as a shield.
+1792867955	cmd	Trentlin	50	2401	dresden_halloween.are	standing	97	0	-	wear	lan	You wield the Gohma eye-lance. // You feel quite confident with the Gohma eye-lance.
+1792867956	cmd	Trentlin	50	2401	dresden_halloween.are	standing	97	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     16 hours | Sex:    Female | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1792867961	cmd	Trentlin	50	2401	dresden_halloween.are	standing	97	0	-	wear	rea	You stop using the Gohma eye-lance. // You wield the Headless Horseman's Reaper. // You remove your shield to handle the massive weapon.
+1792867964	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	look		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792867965	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	inventory		You are carrying: // ( 5) a big pot pie //      (Glowing) the Gohma eye-lance
+1792867970	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	compare	saber	A) (Flaming) A Light Saber (level 50) -- can't use: made for another side // B) the Headless Horseman's Reaper (level 50), worn // Slot: wield.  Your damage comes from weapons.
+1792868007	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	look		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792868008	cmd	Trentlin	50	2410	dresden_halloween.are	standing	99	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792868009	cmd	Trentlin	50	2411	dresden_halloween.are	standing	99	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792868011	cmd	Trentlin	50	2411	dresden_halloween.are	standing	99	0	-	exits		Obvious exits: // North - Outside a treehouse. // East  - Out on a limb...
+1792868014	cmd	Trentlin	50	2413	dresden_halloween.are	standing	99	0	-	north		Outside a treehouse. //   As you push past the small branches you come upon a small treehouse nestled in // among two very big branches.  It looks as if the surrounding limbs have grown
+1792868014	cmd	Trentlin	50	2413	dresden_halloween.are	standing	99	0	-	north		The leaves is closed.
+1792868017	cmd	Trentlin	50	2413	dresden_halloween.are	standing	99	0	-	open	north	Ok.
+1792868017	cmd	Trentlin	50	2498	dresden_halloween.are	standing	99	0	-	north		Inside the treehouse. //   As you enter through the curtain of leaves you see the cozy interior of the // treehouse.  Although it looked small from the outside it seems to have a roomy
+1792868019	cmd	Trentlin	50	2498	dresden_halloween.are	standing	99	0	-	look	mel	Ragged brown hair frames a pale face behind a black lace veil, and two sky // blue eyes look out of it, haunting as ever. She has dressed as a widow for // the festival, which on Melancholy is barely a change. Her sack of permits,
+1792868022	cmd	Trentlin	50	2498	dresden_halloween.are	standing	99	0	-	consider	mel	The shopkeeper wouldn't like that. // Don't even think about it.
+1792868023	cmd	Trentlin	50	2413	dresden_halloween.are	standing	99	0	-	south		Outside a treehouse. //   As you push past the small branches you come upon a small treehouse nestled in // among two very big branches.  It looks as if the surrounding limbs have grown
+1792868023	cmd	Trentlin	50	2411	dresden_halloween.are	standing	99	0	-	south		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792868024	cmd	Trentlin	50	2413	dresden_halloween.are	standing	99	0	-	north		Outside a treehouse. //   As you push past the small branches you come upon a small treehouse nestled in // among two very big branches.  It looks as if the surrounding limbs have grown
+1792868024	cmd	Trentlin	50	2498	dresden_halloween.are	standing	99	0	-	north		Inside the treehouse. //   As you enter through the curtain of leaves you see the cozy interior of the // treehouse.  Although it looked small from the outside it seems to have a roomy
+1792868025	cmd	Trentlin	50	2498	dresden_halloween.are	standing	99	0	-	list		[Lv Price] Item // [ 0        10g] a map of the city of Dresden. // [ 0        31g] a map of Sembia.
+1792868030	cmd	Trentlin	50	2413	dresden_halloween.are	standing	99	0	-	south		Outside a treehouse. //   As you push past the small branches you come upon a small treehouse nestled in // among two very big branches.  It looks as if the surrounding limbs have grown
+1792868030	cmd	Trentlin	50	2411	dresden_halloween.are	standing	99	0	-	south		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792868031	cmd	Trentlin	50	2414	dresden_halloween.are	standing	99	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792868031	cmd	Trentlin	50	2497	dresden_halloween.are	standing	99	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792868031	cmd	Trentlin	50	2497	dresden_halloween.are	standing	99	0	-	up		Alas, you cannot go that way.
+1792868031	cmd	Trentlin	50	2497	dresden_halloween.are	standing	99	0	-	up		Alas, you cannot go that way.
+1792868034	cmd	Trentlin	50	2497	dresden_halloween.are	standing	99	11	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Trentlin. The realm needs someone of your skill.' // Questor Thews tells you 'A bounty has been posted on Townguard.'
+1792868038	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792868053	cmd	Trentlin	50	2438	dresden_halloween.are	standing	99	0	-	run	w 7	Western Oak Tree Square. // [Exits: north east south west] // Temple Boulevard.
+1792868054	cmd	Trentlin	50	2438	dresden_halloween.are	standing	99	0	-	open	west	It's already open.
+1792868054	cmd	Trentlin	50	6002	haon.are	standing	99	0	-	run	w 4	Outside the Western Gates of Dresden. // [Exits: north east west] // The edge of the forest
+1792868054	cmd	Trentlin	50	6011	haon.are	standing	99	0	-	south		A small path through the light forest //   You are on a small path leading through the forest.  The trees are tall and // slender.  Paths lead north and south.
+1792868054	cmd	Trentlin	50	6008	haon.are	standing	99	0	-	south		The forest clearing //   You are in a clearing in the forest.  Lots of fresh stumps of varying sizes // protrude from the ground and heavy logs are stacked neatly in a big pile
+1792868055	cmd	Trentlin	50	6009	haon.are	standing	99	0	-	east		Outside a small cabin in the forest //   You are outside a small cabin built entirely from heavy logs.  There is a // wooden door to the north and small paths lead west and south through the
+1792868055	cmd	Trentlin	50	6014	haon.are	standing	99	0	-	south		An intersection in the dense forest //   You are on a small path leading through the dense forest. The forest // gradually lightens to the north.  Paths lead north, east and west.
+1792868055	cmd	Trentlin	50	6015	haon.are	standing	99	0	-	east		A small path in the dense forest //   You are on a small path leading through the dense forest.  The crowns of // the old trees leave the forest in a surreal twilight illumination.
+1792868055	cmd	Trentlin	50	6016	haon.are	standing	99	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  The crowns of the // old trees leave the forest in an unreal twilight illumination.  To the west
+1792868056	cmd	Trentlin	50	6017	haon.are	standing	99	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  The forest // seems to become lighter to the west. The path continues north and west.
+1792868056	cmd	Trentlin	50	6018	haon.are	standing	99	0	-	west		An intersection in the light forest //   You are on a small path leading through the forest.  A path leads north // to a small field and other paths lead east and west into the dense forest.
+1792868056	cmd	Trentlin	50	51	connect.are	standing	99	0	-	south		The top of the cliff. //   You are standing on the ledge of a huge cliff on the side of a valley // with a beautiful lake and tiny village nestled in it.  It looks so
+1792868056	cmd	Trentlin	50	13001	lakes.are	standing	99	0	-	down		Rock Outcropping //   >From this rock outcropping the valley below seems peaceful, untouched. // Dense forests of pine carpet the mountainsides, broken only by thick aspen
+1792868057	cmd	Trentlin	50	13002	lakes.are	standing	99	0	-	down		Small Grove //   Suddenly, soft music begins. Its source is slim, beautiful girl. Lyre in // hand, she sits gracefully as she plays; nearby, a large plainsman raises
+1792868057	cmd	Trentlin	50	13003	lakes.are	standing	99	0	-	west		Entrance to the Town of Solace //   A warm autumn breeze rustles the great vallenwood trees of Solace. The // road that wanders through the trees blazes in the bright colors of autumn.
+1792868057	cmd	Trentlin	50	13201	solace.are	standing	99	0	-	north		Gateway to Solace //   This is the gateway to the town of Solace. It keeps the monsters out and // the people in. This is a quiet farming town on the shores of Crystalmir
+1792868059	cmd	Trentlin	50	13201	solace.are	standing	99	0	-	kill	to	You MASSACRE Townguard! // You *** DEVASTATE *** Townguard!
+1792868069	cmd	Trentlin	50	13201	solace.are	fighting	100	0	fight	kick		Your kick misses Townguard.
+1792868072	cmd	Trentlin	50	13201	solace.are	fighting	100	0	fight	kick		Your kick hits Townguard.
+1792868074	cmd	Trentlin	50	13201	solace.are	standing	100	0	-	kick		You aren't fighting anyone.
+1792868076	cmd	Trentlin	50	4207	dresden_halloween.are	standing	99	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792868077	cmd	Trentlin	50	4202	dresden_halloween.are	standing	99	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792868077	cmd	Trentlin	50	4201	dresden_halloween.are	standing	99	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792868079	cmd	Trentlin	50	2427	dresden_halloween.are	standing	99	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792868080	cmd	Trentlin	50	2404	dresden_halloween.are	standing	99	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792868080	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792868081	cmd	Trentlin	50	2410	dresden_halloween.are	standing	99	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792868081	cmd	Trentlin	50	2411	dresden_halloween.are	standing	99	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792868081	cmd	Trentlin	50	2411	dresden_halloween.are	standing	99	0	-	up		You are too exhausted.
+1792868082	cmd	Trentlin	50	2411	dresden_halloween.are	standing	99	0	-	up		You are too exhausted.
+1792868084	cmd	Trentlin	50	2411	dresden_halloween.are	standing	99	0	-	group		Trentlin's group: // [50 W] Trentlin          917/ 919 hp 1412/1460 mana    0/ 419 mv 112503 xp
+1792868085	cmd	Trentlin	50	2411	dresden_halloween.are	standing	99	0	-	sleep		You go to sleep.
+1792868086	cmd	Trentlin	50	2411	dresden_halloween.are	sleeping	99	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    a pirate's ring
+1792868098	cmd	Trentlin	50	2411	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin          917/ 919 hp 1412/1460 mana    0/ 419 mv 112503 xp
+1792868099	cmd	Trentlin	50	2411	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin          917/ 919 hp 1412/1460 mana    0/ 419 mv 112503 xp
+1792868105	cmd	Trentlin	50	2411	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin          917/ 919 hp 1412/1460 mana    0/ 419 mv 112503 xp
+1792868106	cmd	Trentlin	50	2411	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin          917/ 919 hp 1412/1460 mana    0/ 419 mv 112503 xp
+1792868108	cmd	Trentlin	50	2411	dresden_halloween.are	sleeping	99	0	-	group		Trentlin's group: // [50 W] Trentlin          917/ 919 hp 1412/1460 mana    0/ 419 mv 112503 xp
+1792868238	cmd	Trentlin	50	2411	dresden_halloween.are	standing	99	0	-	wake		You are already standing.
+1792868239	cmd	Trentlin	50	2414	dresden_halloween.are	standing	99	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792868239	cmd	Trentlin	50	2414	dresden_halloween.are	standing	99	0	-	up		You are too exhausted.
+1792868239	cmd	Trentlin	50	2414	dresden_halloween.are	standing	99	0	-	up		You are too exhausted.
+1792868243	cmd	Trentlin	50	9364	galaxy.are	standing	99	0	-	recall		Something is very wrong! // At the Entrance of the Great Dipper //   Now you are in the innermost part of the galaxy.  What you are walking on now
+1792868243	cmd	Trentlin	50	9364	galaxy.are	standing	99	0	-	west		You are too exhausted.
+1792868245	cmd	Trentlin	50	4207	dresden_halloween.are	standing	99	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792868247	cmd	Trentlin	50	4207	dresden_halloween.are	standing	99	0	-	sleep		You go to sleep.

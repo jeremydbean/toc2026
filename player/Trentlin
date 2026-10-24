@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792867887
+LogO 1792868232
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -17,19 +17,19 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 50
-Plyd 60958
+Plyd 61303
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
 StashMax 75
 HyruleSecrets 67108864
 Scro 22
-Room 2401
-HMV  914 919 1424 1460 121 419
-NewGold 16
+Room 2411
+HMV  917 919 1406 1460 4 419
+NewGold 20
 NewPlat 2094
-NewCopp 70
-NewSilv 41
+NewCopp 82
+NewSilv 49
 BankCP 2254728583
 IntTime 1792782012
 IntTotal 9728583
@@ -38,7 +38,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 559
+AchKills 563
 AchQuests 59
 AchDeaths 6
 AchExplore 127
@@ -118,7 +118,7 @@ Achv visit-high-tower 1792621034
 Achv visit-ultima 1792621074
 Achv visit-korzath-fortress 1792287816
 Achv visit-ice-keep 1792455929
-LastOut  1792867887
+LastOut  1792868232
 Rested 0 0
 Daily 4 20748 3 1 20748
 SesLogin 1792860289
@@ -132,7 +132,7 @@ SesQuest 2
 QuestPnts 3216
 QuestStrk 9
 CasinoLost 4
-QuestNext 3
+QuestNext 30
 Exp  112503
 Act  204
 AfBy 8389120
@@ -163,7 +163,7 @@ Color 16 6
 Pos  8
 Prac 2
 Save  -8
-Alig  -864
+Alig  -889
 Hit   36
 Dam   53
 ACs -81 -87 -84 14
@@ -175,7 +175,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 840 1301 394
-Cond 0 20 32
+Cond 0 15 27
 Sk 100 'axe'
 Sk 89 'dagger'
 Sk 25 'flail'
@@ -195,7 +195,7 @@ Sk 81 'kick'
 Sk 92 'parry'
 Sk 75 'rescue'
 Sk 90 'second attack'
-Sk 80 'third attack'
+Sk 81 'third attack'
 Sk 75 'despair'
 Sk 77 'fast healing'
 Sk 75 'door bash'
@@ -206,8 +206,8 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'change sex'  51 108   1   6          0          0
-AffD 'plague'   0  52  -5   1    8388608          0
+AffD 'change sex'  51 103   1   6          0          0
+AffD 'plague'   0  47  -5   1    8388608          0
 End
 
 #O
@@ -235,7 +235,7 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 128
+Time 123
 Cost 0
 Cond 100
 Repd 0
@@ -245,7 +245,7 @@ End
 Vnum 45
 Nest 1
 Wear -1
-Time 482
+Time 477
 Cost 0
 Cond 100
 Repd 0
