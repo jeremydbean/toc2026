@@ -10163,3 +10163,5 @@
 1792858597	cmd	Alaric	54	4203	dresden_halloween.are	standing	40	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
 1792858598	cmd	Alaric	54	4210	dresden_halloween.are	standing	40	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
 1792858599	cmd	Alaric	54	4210	dresden_halloween.are	standing	40	0	-	sleep		You go to sleep.
+1792860063	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792860063	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	worth		You have 1585 platinum, 131 gold, 80 silver, 225 copper // and 165888 experience (21412 exp to level).
