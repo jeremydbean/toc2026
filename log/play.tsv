@@ -12988,3 +12988,102 @@
 1792884898	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
 1792884898	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
 1792884899	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792884901	cmd	Alaric	54	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792884901	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	run	n	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1792884902	cmd	Alaric	54	29004	korzath1.are	resting	100	0	-	wake		You stand up.
+1792884903	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	bs	gu	Your backstab === OBLITERATES === Guardian Knight! [-148] // Your backstab ^^^ DESTROYS ^^^ Guardian Knight! [-101] // Your backstab ^^^ DESTROYS ^^^ Guardian Knight! [-90]
+1792884918	cmd	Alaric	54	29004	korzath1.are	fighting	99	0	fight	inventory		You are carrying: // (16) (Glowing) a bag of candy corn //      (Glowing) (Humming) a bone mace
+1792884923	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792884925	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	inventory		You are carrying: // (16) (Glowing) a bag of candy corn //      (Glowing) (Humming) a bone mace
+1792884931	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	get	key cor	You get a diamond key from corpse of Guardian Knight.
+1792884932	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884933	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884934	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884934	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884935	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884935	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884936	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884936	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884937	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884937	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884938	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884938	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	group		Alaric's group: // [54 T] Alaric           6978/6990 hp 10931/10998 mana 4887/4908 mv 166214 xp
+1792884939	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884940	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884940	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884941	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884941	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884942	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884942	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884943	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884943	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884944	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884944	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884945	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884946	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884947	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884947	cmd	Alaric	54	29004	korzath1.are	standing	99	1	-	tk	bone	You concentrate and A large leg bone flies to your hand.
+1792884952	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	group		Alaric's group: // [54 T] Alaric           6978/6990 hp 10801/10998 mana 4887/4908 mv 166214 xp
+1792884952	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884953	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884953	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884953	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884954	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884954	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884955	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884955	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884956	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884956	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884957	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884957	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884957	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884958	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884958	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884959	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884960	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884961	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884962	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	group		Alaric's group: // [54 T] Alaric           6978/6990 hp 10692/10998 mana 4887/4908 mv 166214 xp
+1792884963	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884964	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884964	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884965	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884965	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884965	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884966	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884966	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884966	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884967	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884967	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884967	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884967	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	tk	bone	You lost your concentration.
+1792884969	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	wake		You are already standing.
+1792884969	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	look		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1792884971	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	unlock	north	There is a flash of light as you unlock the door.
+1792884971	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	open		Ok.
+1792884972	cmd	Alaric	54	29201	korzath2.are	standing	99	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1792884972	cmd	Alaric	54	29202	korzath2.are	standing	99	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1792884972	cmd	Alaric	54	29202	korzath2.are	standing	99	0	-	north		The door has been Wizard Locked. You can not pass
+1792884972	cmd	Alaric	54	29203	korzath2.are	standing	99	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1792884973	cmd	Alaric	54	29204	korzath2.are	standing	99	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1792884975	cmd	Alaric	54	29205	korzath2.are	standing	99	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1792884975	cmd	Alaric	54	29206	korzath2.are	standing	99	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1792884975	cmd	Alaric	54	29207	korzath2.are	standing	99	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1792884976	cmd	Alaric	54	29207	korzath2.are	standing	99	0	-	scan		a killer clown                     -to the North. // a killer clown                     -to the North. // a killer clown                     -to the North.
+1792884978	cmd	Alaric	54	29208	korzath2.are	standing	99	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1792884979	cmd	Alaric	54	29208	korzath2.are	standing	99	0	-	wear	exc	You do not have that item.
+1792884981	cmd	Alaric	54	29208	korzath2.are	standing	99	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792884983	cmd	Alaric	54	29208	korzath2.are	standing	99	0	-	inventory		You are carrying: //      A large leg bone //      a diamond key
+1792884992	cmd	Alaric	54	29208	korzath2.are	standing	99	0	-	secondary	mace	You stop using Excalibur. // You wield a bone mace as your second weapon.
+1792884997	cmd	Alaric	54	29208	korzath2.are	standing	99	0	-	look		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1792885000	cmd	Alaric	54	29207	korzath2.are	standing	99	0	-	east		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1792885001	cmd	Alaric	54	29206	korzath2.are	standing	99	0	-	north		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1792885001	cmd	Alaric	54	29205	korzath2.are	standing	99	0	-	west		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1792885002	cmd	Alaric	54	29204	korzath2.are	standing	99	0	-	north		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1792885004	cmd	Alaric	54	29204	korzath2.are	standing	99	0	-	bs	cl	Your backstab ^^^ DESTROYS ^^^ a killer clown! [-94] // Your backstab >>> ANNIHILATES <<< a killer clown! [-219] // Your backstab *** DEVASTATES *** a killer clown! [-75]
+1792885069	cmd	Alaric	54	29204	korzath2.are	standing	98	0	-	look		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1792885070	cmd	Alaric	54	29205	korzath2.are	standing	98	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1792885073	cmd	Alaric	54	29205	korzath2.are	standing	98	0	-	bs	cl	Your backstab <<< ERADICATES >>> a killer clown! [-155] // Your backstab === OBLITERATES === a killer clown! [-141] // Your backstab >>> ANNIHILATES <<< a killer clown! [-212]
+1792885163	cmd	Alaric	54	29205	korzath2.are	fighting	88	0	fight	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    235 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792885181	cmd	Alaric	54	29205	korzath2.are	fighting	85	0	fight	look		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1792885184	refused	Alaric	54	29205	korzath2.are	fighting	85	0	fight	bs	cl	No way!  You are still fighting!
+1792885189	refused	Alaric	54	29205	korzath2.are	fighting	85	0	fight	bs	cl	No way!  You are still fighting!
