@@ -9958,3 +9958,11 @@
 1792855786	cmd	Alaric	54	16028	pirate.are	standing	86	0	-	scan		The swashbuckler                   -to the North. // The midshipman                     -to the North. // The swashbuckler                   -to the East.
 1792855788	cmd	Alaric	54	16033	pirate.are	standing	86	0	-	north		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
 1792855789	cmd	Alaric	54	16033	pirate.are	standing	86	0	-	bs	SW	Your backstab === OBLITERATES === The swashbuckler! [-135] // Your backstab >>> ANNIHILATES <<< The swashbuckler! [-222]
+1792855843	cmd	Alaric	54	16028	pirate.are	standing	75	0	-	south		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792855844	cmd	Alaric	54	16028	pirate.are	standing	75	0	-	up		Alas, you cannot go that way.
+1792855845	cmd	Alaric	54	16033	pirate.are	standing	75	0	-	north		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792855846	cmd	Alaric	54	16033	pirate.are	standing	75	0	-	scan		The midshipman                     -to the far North. // The drunk pirate                   -to the East. // The pirate                         -to the South.
+1792855847	cmd	Alaric	54	16078	pirate.are	standing	75	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792855848	cmd	Alaric	54	16078	pirate.are	standing	75	0	-	scan		The swashbuckler                   -to the East. // The Lookout                        -far above you. // The midshipman                     -right below you.
+1792855850	cmd	Alaric	54	16079	pirate.are	standing	75	0	-	east		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling
+1792855851	cmd	Alaric	54	16079	pirate.are	standing	75	0	-	bs	sw	Your backstab <<< ERADICATES >>> The swashbuckler! [-198] // Your backstab does UNSPEAKABLE things to The swashbuckler! [-260]
