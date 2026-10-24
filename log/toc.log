@@ -170265,3 +170265,78 @@ Sat Oct 24 16:41:02 2026 :: Log Alaric [2]: arrived (Limbo) from 4210
 Sat Oct 24 16:41:03 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 2
 Sat Oct 24 16:41:03 2026 :: Log Alaric [4210]: who
 Sat Oct 24 16:41:03 2026 :: Log Alaric [4210]: worth
+Sat Oct 24 16:41:36 2026 :: Sock.sinaddr:  178.156.185.127
+Sat Oct 24 16:41:36 2026 :: EOF encountered on read.
+Sat Oct 24 16:44:44 2026 :: Sock.sinaddr:  24.2.118.125
+Sat Oct 24 16:44:46 2026 :: Loading Trentlin's playerfile
+Sat Oct 24 16:44:48 2026 :: Loading Trentlin's playerfile
+Sat Oct 24 16:44:48 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Sat Oct 24 16:44:49 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 0
+Sat Oct 24 16:44:50 2026 :: Log Trentlin [2401]: who
+Sat Oct 24 16:44:51 2026 :: Log Trentlin [2401]: u
+Sat Oct 24 16:44:51 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sat Oct 24 16:44:52 2026 :: Log Trentlin [2410]: u
+Sat Oct 24 16:44:52 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sat Oct 24 16:44:52 2026 :: Log Trentlin [2411]: u
+Sat Oct 24 16:44:52 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sat Oct 24 16:44:52 2026 :: Log Trentlin [2414]: u
+Sat Oct 24 16:44:52 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sat Oct 24 16:44:52 2026 :: Log Trentlin [2497]: u
+Sat Oct 24 16:44:55 2026 :: Log Trentlin [2497]: aquest request
+Sat Oct 24 16:44:55 2026 :: Log Trentlin [2497]: quest assigned: kill a pixie (mob 20503, level 13) in emerald.are, 26 minutes, ordinary
+Sat Oct 24 16:44:59 2026 :: Log Trentlin [2497]: enter door
+Sat Oct 24 16:44:59 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sat Oct 24 16:45:16 2026 :: Log Trentlin [2401]: r s 6
+Sat Oct 24 16:45:16 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Sat Oct 24 16:45:16 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Sat Oct 24 16:45:16 2026 :: Log Trentlin [2428]: arrived (Main Processional, Toward the Mermaids' Bridge) from 2427
+Sat Oct 24 16:45:16 2026 :: Log Trentlin [2429]: arrived (Bridge of the Mermaids.) from 2428
+Sat Oct 24 16:45:16 2026 :: Log Trentlin [2430]: arrived (Main Processional, at the Southern Gates) from 2429
+Sat Oct 24 16:45:16 2026 :: Log Trentlin [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Sat Oct 24 16:45:17 2026 :: Log Trentlin [2431]: open south
+Sat Oct 24 16:45:17 2026 :: Log Trentlin [2431]: r s 3
+Sat Oct 24 16:45:17 2026 :: Log Trentlin [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Sat Oct 24 16:45:17 2026 :: Log Trentlin [3505]: arrived (The Trail to Miden'nir) from 2432
+Sat Oct 24 16:45:17 2026 :: Log Trentlin [3507]: arrived (A Burned Cart) from 3505
+Sat Oct 24 16:45:17 2026 :: Log Trentlin [3507]: w
+Sat Oct 24 16:45:17 2026 :: Log Trentlin [3508]: arrived (On a Small Path) from 3507
+Sat Oct 24 16:45:17 2026 :: Log Trentlin [3508]: s
+Sat Oct 24 16:45:17 2026 :: Log Trentlin [3511]: arrived (The Trail) from 3508
+Sat Oct 24 16:45:18 2026 :: Log Trentlin [3511]: open secret
+Sat Oct 24 16:45:18 2026 :: Log Trentlin [3511]: w
+Sat Oct 24 16:45:18 2026 :: Log Trentlin [20501]: arrived (A Fog-Shrouded Trail) from 3511
+Sat Oct 24 16:45:18 2026 :: Log Trentlin [20501]: u
+Sat Oct 24 16:45:18 2026 :: Log Trentlin [20502]: arrived (The Haunted Pine Forest) from 20501
+Sat Oct 24 16:45:18 2026 :: Log Trentlin [20502]: u
+Sat Oct 24 16:45:18 2026 :: Log Trentlin [20503]: arrived (Near the Summit) from 20502
+Sat Oct 24 16:45:19 2026 :: Log Trentlin [20503]: s
+Sat Oct 24 16:45:19 2026 :: Log Trentlin [20504]: arrived (A Mountain Pass) from 20503
+Sat Oct 24 16:45:19 2026 :: Log Trentlin [20504]: s
+Sat Oct 24 16:45:19 2026 :: Log Trentlin [20505]: arrived (A Mountain Pass) from 20504
+Sat Oct 24 16:45:19 2026 :: Log Trentlin [20505]: w
+Sat Oct 24 16:45:19 2026 :: Log Trentlin [20506]: arrived (A Thickly-Wooded Dell) from 20505
+Sat Oct 24 16:45:25 2026 :: Log Trentlin [20506]: w
+Sat Oct 24 16:45:25 2026 :: Log Trentlin [20509]: arrived (Road to the Vale of Clover) from 20506
+Sat Oct 24 16:45:26 2026 :: Log Trentlin [20509]: e
+Sat Oct 24 16:45:26 2026 :: Log Trentlin [20506]: arrived (A Thickly-Wooded Dell) from 20509
+Sat Oct 24 16:45:27 2026 :: Log Trentlin [20506]: ex
+Sat Oct 24 16:45:34 2026 :: Log Trentlin [20506]: walkto quest
+Sat Oct 24 16:45:34 2026 :: Treasure goblin: vanished from room 4204 (The Gallery of Grinning Skulls, dresden_halloween.are) (too long in one area).
+Sat Oct 24 16:45:54 2026 :: Log Trentlin [20506]: go lol walkto quest is for immortals only
+Sat Oct 24 16:45:56 2026 :: Log Trentlin [20506]: s
+Sat Oct 24 16:45:56 2026 :: Log Trentlin [20507]: arrived (A Signpost in the Enchanted Forests) from 20506
+Sat Oct 24 16:45:58 2026 :: Log Trentlin [20507]: sca
+Sat Oct 24 16:46:00 2026 :: Log Trentlin [20507]: ex
+Sat Oct 24 16:46:01 2026 :: Log Trentlin [20507]: w
+Sat Oct 24 16:46:01 2026 :: Log Trentlin [20508]: arrived (A Fae Crossing) from 20507
+Sat Oct 24 16:46:03 2026 :: Log Trentlin [20508]: e
+Sat Oct 24 16:46:03 2026 :: Log Trentlin [20507]: arrived (A Signpost in the Enchanted Forests) from 20508
+Sat Oct 24 16:46:03 2026 :: Log Trentlin [20507]: e
+Sat Oct 24 16:46:03 2026 :: Log Trentlin [20533]: arrived (A Well-Used Trail Through The Forest) from 20507
+Sat Oct 24 16:46:05 2026 :: Log Trentlin [20533]: w
+Sat Oct 24 16:46:05 2026 :: Log Trentlin [20507]: arrived (A Signpost in the Enchanted Forests) from 20533
+Sat Oct 24 16:46:09 2026 :: Log Trentlin [20507]: s
+Sat Oct 24 16:46:09 2026 :: Log Trentlin [20531]: arrived (The Emerald Forest) from 20507
+Sat Oct 24 16:46:11 2026 :: Log Trentlin [20531]: ex
+Sat Oct 24 16:46:12 2026 :: Log Trentlin [20531]: e
+Sat Oct 24 16:46:12 2026 :: Log Trentlin [20532]: arrived (The Emerald Forest) from 20531
