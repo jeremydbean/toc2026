@@ -8046,3 +8046,244 @@
 1792844018	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	gossip	Grab a Starlight, yet?	You gossip 'Grab a Starlight, yet?'
 1792844019	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	look		Machine Room //   In this part of the machine area workers take and cut the shaped // sheets of metal materials into what looks like the outline of vests,
 1792844021	cmd	Alaric	54	29075	korzath1.are	standing	97	0	-	north		Machine Room //   Workers are assorting the refined metals here into different carts // that are taken away to another part of the fortress.  You realize that
+1792844024	cmd	Alaric	54	29075	korzath1.are	standing	97	0	-	bs	sup	Your backstab === OBLITERATES === a Supervisor! [-124] // Your backstab ^^^ DESTROYS ^^^ a Supervisor! [-120] // Your backstab === OBLITERATES === a Supervisor! [-133]
+1792844026	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	gossip	cant remember how to get past the guards in korzaths	You gossip 'cant remember how to get past the guards in korzaths'
+1792844031	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     15 hours | Sex:    Female | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1792844037	cmd	Alaric	54	29074	korzath1.are	standing	97	0	-	west		Machine Room //   Workers in this room use drill bits to make the proper holes in the // metal sheets.  You see other workers taking cartfulls of finished sheets
+1792844039	cmd	Alaric	54	29074	korzath1.are	standing	97	0	-	kill	sup	A Supervisor dodges your attack. // Your slash mauls a Supervisor. [-24] // A Supervisor parries your attack.
+1792844045	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: //      a long blue wand // ( 2) (Glowing) a bottled fairy
+1792844055	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) a *twinkling* ball of light // <worn on finger>    a pirate's ring
+1792844056	cmd	Alaric	54	29074	korzath1.are	standing	97	0	-	gossip	In the NE sections where the security guards are, I think its just a supervisor. Gonna zip over there	You gossip 'In the NE sections where the security guards are, I think its just a supervisor. Gonna zip over there'
+1792844057	cmd	Alaric	54	29074	korzath1.are	standing	97	0	-	wake		You are already standing.
+1792844057	cmd	Alaric	54	29074	korzath1.are	standing	97	0	-	look		Machine Room //   Workers in this room use drill bits to make the proper holes in the // metal sheets.  You see other workers taking cartfulls of finished sheets
+1792844059	cmd	Alaric	54	29074	korzath1.are	standing	97	0	-	look	i cor	Corpse of a Supervisor contains: //      denim jeans //      (Humming) a water ring
+1792844062	cmd	Trentlin	50	2402	dresden_halloween.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1792844063	cmd	Trentlin	50	2415	dresden_halloween.are	standing	100	0	-	north		Main Processional, Strung with Lanterns //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Orange paper lanterns swing on cords
+1792844064	cmd	Trentlin	50	2496	dresden_halloween.are	standing	100	0	-	north		Main Processional, Where the Candles Burn //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Hundreds of stubby candles line the
+1792844064	cmd	Trentlin	50	2416	dresden_halloween.are	standing	100	0	-	north		Main Processional, Among the Scarecrows //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Scarecrows have been propped along
+1792844065	cmd	Alaric	54	29074	korzath1.are	standing	97	0	-	get	ring cor	You get a water ring from corpse of a Supervisor.
+1792844065	cmd	Trentlin	50	2479	dresden_halloween.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1792844065	cmd	Alaric	54	29075	korzath1.are	standing	97	0	-	east		Machine Room //   Workers are assorting the refined metals here into different carts // that are taken away to another part of the fortress.  You realize that
+1792844065	cmd	Trentlin	50	2482	dresden_halloween.are	standing	100	0	-	south		Nomads Tent. //   You enter a large tent where many nomads are selling goods fashioned from the // desert peoples.
+1792844066	cmd	Trentlin	50	2485	dresden_halloween.are	standing	100	0	-	south		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1792844066	cmd	Alaric	54	29075	korzath1.are	standing	97	0	-	open		It's locked.
+1792844067	cmd	Trentlin	50	2485	dresden_halloween.are	standing	100	0	-	repair	ring	But An assassin's ring is already in perfect condition!
+1792844067	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	south		Weapons Shop. //   This shop has racks with all sorts of weapons on them.  You see bows and the // like on one of the walls and there is a glass case with a small number of
+1792844068	cmd	Alaric	54	29075	korzath1.are	standing	97	0	-	unlock	north	You lack the key.
+1792844070	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	pirate	But a pirate's ring is already in perfect condition!
+1792844071	cmd	Alaric	54	29075	korzath1.are	standing	97	0	-	pick	north	This lock is beyond any pick; it cannot be picked.
+1792844074	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	2.pirate	You aren't carrying or wearing that.
+1792844075	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	south		Machine Room //   In this part of the machine area workers take and cut the shaped // sheets of metal materials into what looks like the outline of vests,
+1792844075	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	scan		a machinery worker                 -to the North.
+1792844076	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	pirate	You wear a pirate's ring on your right finger.
+1792844076	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	south		Alas, you cannot go that way.
+1792844077	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	scan		a machinery worker                 -to the North.
+1792844078	cmd	Alaric	54	29072	korzath1.are	standing	97	0	-	west		Machine Room //   You look around and all you see are machines and men operating them. // You recognize some of the machines as drill bits but, you haven't seen much
+1792844078	cmd	Alaric	54	29071	korzath1.are	standing	97	0	-	west		T-Junction //   The service hallway opens up into a T-Junction here.  To the north there // isn't much sound but, to the east you can hear the sound of machinery.
+1792844079	cmd	Trentlin	50	2485	dresden_halloween.are	standing	100	0	-	north		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1792844079	cmd	Alaric	54	29070	korzath1.are	standing	97	0	-	west		Service Hallway //   You can now hear the distinct sounds of metal against metal as well as // the droning whine and buzz of what sounds like drill bit machinery.  You've
+1792844079	cmd	Trentlin	50	2415	dresden_halloween.are	standing	100	0	-	west		Main Processional, Strung with Lanterns //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Orange paper lanterns swing on cords
+1792844079	cmd	Alaric	54	29067	korzath1.are	standing	97	0	-	west		Service Hallway //   The hallway continues to the east and west.  To the north is a storage // room.  The various noises of clanging metals can be heard to the east.
+1792844080	cmd	Alaric	54	29066	korzath1.are	standing	97	0	-	west		Service Hallway //   The walls of this hallway are covered in sheer metal.  You marvel at // how much armor could be made with the metal used in lining the hall.
+1792844080	cmd	Trentlin	50	2402	dresden_halloween.are	standing	100	0	-	south		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1792844081	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	south		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792844082	cmd	Alaric	54	29066	korzath1.are	standing	97	0	-	bs	head	Your backstab <<< ERADICATES >>> a head of security! [-158] // Your backstab === OBLITERATES === a head of security! [-150] // Your backstab === OBLITERATES === a head of security! [-139]
+1792844083	cmd	Trentlin	50	42	connect.are	standing	100	0	-	run	e 20	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792844084	cmd	Trentlin	50	9795	newthalo.are	standing	100	0	-	run	e 20	Outside the West Gate of New Thalos // [Exits: east west] // Inside the West Gate of New Thalos
+1792844088	cmd	Trentlin	50	9528	newthalo.are	standing	100	0	-	run	w 10	Near the shore // [Exits: north east west] // On a road
+1792844089	cmd	Trentlin	50	9527	newthalo.are	standing	100	0	-	west		East Main Street //   Here on East Main, you smell the odor of freshly slaughtered meat and // hear the pounding of new metal from the armory.  The Square is to
+1792844091	cmd	Trentlin	50	9517	newthalo.are	standing	100	0	-	west		The Eastern Market Square //   You stand in the market of New Thalos, the gem of the desert. The // market is the hub of the city; all trade and commerce of any significance is
+1792844092	cmd	Trentlin	50	9506	newthalo.are	standing	100	0	-	west		The Center of Market Square //   You are standing on the Center of Market Square, the famous square of // New Thalos. A large, peculiar looking statue is standing in the middle
+1792844092	cmd	Trentlin	50	9515	newthalo.are	standing	100	0	-	north		The Northern Market Square //   You stand in one of the most heavily used parts of town. To the north lies // the Palace of New Thalos and the Casbah; east west and south of here the
+1792844093	cmd	Trentlin	50	9518	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This cobblestone road aides your journey through town. Traveling north will // take you by the palace and the Dancing Daemon Inn, and south will put you on
+1792844093	cmd	Alaric	54	29066	korzath1.are	standing	97	0	-	look	i cor	Corpse of a head of security contains: //      a security shield //      (Humming) key card
+1792844093	cmd	Trentlin	50	9519	newthalo.are	standing	100	0	-	north		Sultan's Walk //   This part of the road travels between one of the sturdy walls of the // Palace and the Dancing Daemon. To the east you peer through a small
+1792844093	cmd	Trentlin	50	9520	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The road here between the palace and the Dancing Daemon Inn seems well // worn by the travel of horses, carts, and leather boots. From the west you
+1792844093	cmd	Trentlin	50	9521	newthalo.are	standing	100	0	-	north		Sultan's Walk //   The main road north from the square continues here, surrounded by the walls // of the palace and the Daemon. To the north you see the heavily guarded gate
+1792844094	cmd	Trentlin	50	9522	newthalo.are	standing	100	0	-	north		Inside the Northern Gate of New Thalos //   Two large stone towers rise up to greet you with a massive iron gate // swinging between on ornately crafted hinges and emblazened with the crest of
+1792844094	cmd	Trentlin	50	9667	newthalo.are	standing	100	0	-	north		Outside the Northern Gate of New Thalos //   You stand outside the gate of New Thalos. The city lies to the south, and // wilderness to the north.  The Sands of Sorrow continues to the east
+1792844094	cmd	Trentlin	50	9781	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open expanse of grass extending in all directions. To // the south of you stand the might northern gates of New Thalos. East
+1792844094	cmd	Trentlin	50	9782	newthalo.are	standing	100	0	-	north		On the Plains //   You stand on an open field of grass. The forest to the north is // closer but still a good distance away. To the south a small dirt
+1792844095	cmd	Trentlin	50	9783	newthalo.are	standing	100	0	-	north		Edge of the forest //   You stand at the edge of a huge forest. The line of trees // continues as far as the eye can see to the east and west. A large
+1792844095	cmd	Trentlin	50	64	connect.are	standing	100	0	-	north		Misty Clearing //   As you emerge from the forest, your head  slowly begins to  swim, and you // get  the  distinct  feeling  that you are very close to a highly powerful
+1792844095	cmd	Trentlin	50	29001	korzath1.are	standing	100	0	-	north		Entrance to the Fortress //   You stand before the entrance to Korzath's mighty fortress.  The // fortress is built into the lower side of the mountain here.  The entrance
+1792844095	cmd	Trentlin	50	29002	korzath1.are	standing	100	0	-	north		Inside Korzath's Private Fortress //   The paved path leading to the fortress stops at the entrance to the // hallway that you now stand in.  High above, you can see the stalagmites
+1792844096	cmd	Trentlin	50	29003	korzath1.are	standing	100	0	-	north		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1792844096	cmd	Trentlin	50	29004	korzath1.are	standing	100	0	-	north		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1792844096	cmd	Alaric	54	29066	korzath1.are	standing	97	0	-	get	card cor	You get key card from corpse of a head of security.
+1792844096	cmd	Trentlin	50	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1792844096	cmd	Alaric	54	29067	korzath1.are	standing	97	0	-	east		Service Hallway //   The hallway continues to the east and west.  To the north is a storage // room.  The various noises of clanging metals can be heard to the east.
+1792844096	cmd	Trentlin	50	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1792844096	cmd	Alaric	54	29070	korzath1.are	standing	97	0	-	east		Service Hallway //   You can now hear the distinct sounds of metal against metal as well as // the droning whine and buzz of what sounds like drill bit machinery.  You've
+1792844097	cmd	Alaric	54	29071	korzath1.are	standing	97	0	-	east		T-Junction //   The service hallway opens up into a T-Junction here.  To the north there // isn't much sound but, to the east you can hear the sound of machinery.
+1792844097	cmd	Alaric	54	29072	korzath1.are	standing	97	0	-	east		Machine Room //   You look around and all you see are machines and men operating them. // You recognize some of the machines as drill bits but, you haven't seen much
+1792844097	cmd	Trentlin	50	29201	korzath2.are	standing	100	0	-	south		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1792844097	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	east		Machine Room //   In this part of the machine area workers take and cut the shaped // sheets of metal materials into what looks like the outline of vests,
+1792844098	cmd	Trentlin	50	29004	korzath1.are	standing	100	0	-	south		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1792844098	cmd	Alaric	54	29075	korzath1.are	standing	97	0	-	north		Machine Room //   Workers are assorting the refined metals here into different carts // that are taken away to another part of the fortress.  You realize that
+1792844098	cmd	Alaric	54	29076	korzath1.are	standing	97	0	-	north		Coffee Break Room //   This is a break room for Korzath's workers.  They sit back drinking // coffee and eating doughnuts while on break.  The faint smell of smoke
+1792844099	cmd	Trentlin	50	29003	korzath1.are	standing	100	0	-	south		Grand Foyer //   The Grand Foyer is made up of dark rock walls and three passages // leading deeper into the fortress.  A remarkable crystal statue stands in
+1792844099	cmd	Trentlin	50	29060	korzath1.are	standing	100	0	-	ne		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.
+1792844100	cmd	Trentlin	50	29061	korzath1.are	standing	100	0	-	east		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches
+1792844101	cmd	Trentlin	50	29062	korzath1.are	standing	100	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.
+1792844101	cmd	Trentlin	50	29063	korzath1.are	standing	100	0	-	south		Corridor //   Security guards and the Heads of Security are keeping an eye out for // anyone looking suspicious.  You notice a hole in the west wall and inside
+1792844101	cmd	Trentlin	50	29065	korzath1.are	standing	100	0	-	south		Service Hallway //   The service hallway leads east towards the main work centers of the // fortress.  You wonder what all the noises are that are coming from that
+1792844101	cmd	Alaric	54	29077	korzath1.are	standing	97	0	-	north		Coffee Break Room //   More workers sit at the tables taking their breaks.  The workers // supervisor ensures each worker takes the proper amount of break time.
+1792844102	cmd	Trentlin	50	29066	korzath1.are	standing	100	0	-	east		Service Hallway //   The walls of this hallway are covered in sheer metal.  You marvel at // how much armor could be made with the metal used in lining the hall.
+1792844102	cmd	Trentlin	50	29067	korzath1.are	standing	100	0	-	east		Service Hallway //   The hallway continues to the east and west.  To the north is a storage // room.  The various noises of clanging metals can be heard to the east.
+1792844103	cmd	Trentlin	50	29070	korzath1.are	standing	100	0	-	east		Service Hallway //   You can now hear the distinct sounds of metal against metal as well as // the droning whine and buzz of what sounds like drill bit machinery.  You've
+1792844103	cmd	Alaric	54	29078	korzath1.are	standing	97	0	-	east		Coffee Break Room //   In this corner of the break room is a large bulletin where the // supervisors place important information that the workers need to know.
+1792844104	cmd	Trentlin	50	29071	korzath1.are	standing	100	0	-	east		T-Junction //   The service hallway opens up into a T-Junction here.  To the north there // isn't much sound but, to the east you can hear the sound of machinery.
+1792844105	cmd	Alaric	54	29077	korzath1.are	standing	97	0	-	west		Coffee Break Room //   More workers sit at the tables taking their breaks.  The workers // supervisor ensures each worker takes the proper amount of break time.
+1792844105	cmd	Trentlin	50	29080	korzath1.are	standing	100	0	-	north		Hallway //   This hallway stretches north into the mountain.  A small plaque // designates the area ahead of you as the Engineering Department.
+1792844105	cmd	Trentlin	50	29082	korzath1.are	standing	100	0	-	north		Engineering Department //   This is the Engineering Department where engineers work hard to solve // the problems of machinery breakdown and to figure out new ways to make the
+1792844106	cmd	Trentlin	50	29085	korzath1.are	standing	100	0	-	north		Engineering Department //   It is surprising that these engineers would know how to develop the // machinery technology in the first place.  They may know how to prepare
+1792844106	cmd	Trentlin	50	29089	korzath1.are	standing	100	0	-	north		Hallway //   This hallway is dimly lit by the overhanging lights.  They flicker // slightly as you continue along the hall.  The smells of sweat and the feel
+1792844106	cmd	Trentlin	50	29090	korzath1.are	standing	100	0	-	north		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and
+1792844106	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	north		Checkpoint //   Korzath's secret guard protect this checkpoint.  Not many secrets have // been kept from you thus far but the buck stops here as far as Korzath is
+1792844107	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792844107	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792844108	cmd	Alaric	54	29077	korzath1.are	standing	97	0	-	bs	sup	Your backstab <<< ERADICATES >>> a Supervisor! [-165] // Your backstab === OBLITERATES === a Supervisor! [-147] // Your backstab === OBLITERATES === a Supervisor! [-127]
+1792844110	cmd	Trentlin	50	29090	korzath1.are	standing	100	0	-	south		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and
+1792844112	cmd	Trentlin	50	29090	korzath1.are	standing	100	0	-	where		Players near you: // Alaric                       Coffee Break Room
+1792844114	cmd	Trentlin	50	29093	korzath1.are	standing	100	0	-	east		Metalworks //   This is the Metalworks facility of the fortress.  Blacksmiths stand // everywhere working on different projects they have been assigned.  The
+1792844115	cmd	Trentlin	50	29094	korzath1.are	standing	100	0	-	east		Metalworks //   Anvils are grounded into the floor here.  Blacksmiths stand over the // anvils pounding away at their work.  Each blacksmith is working on making
+1792844116	cmd	Trentlin	50	29093	korzath1.are	standing	100	0	-	west		Metalworks //   This is the Metalworks facility of the fortress.  Blacksmiths stand // everywhere working on different projects they have been assigned.  The
+1792844117	cmd	Trentlin	50	29090	korzath1.are	standing	100	0	-	west		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and
+1792844118	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	north		Checkpoint //   Korzath's secret guard protect this checkpoint.  Not many secrets have // been kept from you thus far but the buck stops here as far as Korzath is
+1792844118	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792844133	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	tell		(withheld)
+1792844137	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	where		Players near you: // Alaric                       Coffee Break Room
+1792844139	cmd	Trentlin	50	29090	korzath1.are	standing	100	0	-	south		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and
+1792844140	cmd	Trentlin	50	29089	korzath1.are	standing	100	0	-	south		Hallway //   This hallway is dimly lit by the overhanging lights.  They flicker // slightly as you continue along the hall.  The smells of sweat and the feel
+1792844141	cmd	Trentlin	50	29085	korzath1.are	standing	100	0	-	south		Engineering Department //   It is surprising that these engineers would know how to develop the // machinery technology in the first place.  They may know how to prepare
+1792844142	cmd	Trentlin	50	29086	korzath1.are	standing	100	0	-	east		Engineering Department //   Engineers are hard at work devising new ways to make the equipment // work more efficiently.
+1792844143	cmd	Trentlin	50	29083	korzath1.are	standing	100	0	-	south		Engineering Department //   Engineers are hard at work devising new ways to make the equipment // work more efficiently.  To the east is a doorway to the break room.
+1792844144	cmd	Trentlin	50	29076	korzath1.are	standing	100	0	-	east		Coffee Break Room //   This is a break room for Korzath's workers.  They sit back drinking // coffee and eating doughnuts while on break.  The faint smell of smoke
+1792844146	cmd	Trentlin	50	29076	korzath1.are	standing	100	0	-	kill	su	Your pierce grazes a Supervisor. // A Supervisor parries your attack. // Your pierce *** DEVASTATES *** a Supervisor!
+1792844148	cmd	Alaric	54	29077	korzath1.are	standing	97	0	-	reply		(withheld)
+1792844149	cmd	Trentlin	50	29076	korzath1.are	fighting	100	0	fight	smite		Your smite *** DEMOLISHES *** a Supervisor! // Your smite grazes a Supervisor. // A Supervisor is DEAD!!
+1792844150	cmd	Alaric	54	29077	korzath1.are	standing	97	0	-	look	i cor	A stinking corpse contains: //      denim jeans //      (Humming) a water ring
+1792844152	cmd	Alaric	54	29077	korzath1.are	standing	97	0	-	look		Coffee Break Room //   More workers sit at the tables taking their breaks.  The workers // supervisor ensures each worker takes the proper amount of break time.
+1792844153	cmd	Alaric	54	29076	korzath1.are	standing	97	0	-	south		Coffee Break Room //   This is a break room for Korzath's workers.  They sit back drinking // coffee and eating doughnuts while on break.  The faint smell of smoke
+1792844156	cmd	Alaric	54	29076	korzath1.are	standing	97	0	-	kill	sup	They aren't here.
+1792844157	cmd	Alaric	54	29076	korzath1.are	standing	97	0	-	look	i cor	Corpse of a Supervisor contains: //      (Glowing) a piece of trick-or-treat candy //      denim jeans
+1792844159	cmd	Alaric	54	29075	korzath1.are	standing	97	0	-	south		Machine Room //   Workers are assorting the refined metals here into different carts // that are taken away to another part of the fortress.  You realize that
+1792844160	cmd	Trentlin	50	29076	korzath1.are	standing	100	0	-	look	in co	Corpse of a Supervisor contains: //      (Glowing) a piece of trick-or-treat candy //      denim jeans
+1792844161	cmd	Alaric	54	29075	korzath1.are	standing	97	0	-	open		It's locked.
+1792844163	cmd	Trentlin	50	29079	korzath1.are	standing	100	0	-	east		Coffee Break Room //   This part of the break room is the 'Smoking' area.  Yes, even in // Korzath's fortress there are smoking regulations.
+1792844164	cmd	Trentlin	50	29076	korzath1.are	standing	100	0	-	west		Coffee Break Room //   This is a break room for Korzath's workers.  They sit back drinking // coffee and eating doughnuts while on break.  The faint smell of smoke
+1792844164	cmd	Trentlin	50	29075	korzath1.are	standing	100	0	-	south		Machine Room //   Workers are assorting the refined metals here into different carts // that are taken away to another part of the fortress.  You realize that
+1792844165	cmd	Alaric	54	29075	korzath1.are	standing	97	0	-	unlock	north	You lack the key.
+1792844166	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	south		Machine Room //   In this part of the machine area workers take and cut the shaped // sheets of metal materials into what looks like the outline of vests,
+1792844167	cmd	Alaric	54	29072	korzath1.are	standing	97	0	-	west		Machine Room //   You look around and all you see are machines and men operating them. // You recognize some of the machines as drill bits but, you haven't seen much
+1792844167	cmd	Trentlin	50	29075	korzath1.are	standing	100	0	-	scan		a machinery worker                 -to the South. // a machinery worker                 -to the West.
+1792844168	cmd	Alaric	54	29074	korzath1.are	standing	97	0	-	north		Machine Room //   Workers in this room use drill bits to make the proper holes in the // metal sheets.  You see other workers taking cartfulls of finished sheets
+1792844168	cmd	Trentlin	50	29074	korzath1.are	standing	100	0	-	west		Machine Room //   Workers in this room use drill bits to make the proper holes in the // metal sheets.  You see other workers taking cartfulls of finished sheets
+1792844169	cmd	Alaric	54	29074	korzath1.are	standing	97	0	-	north		Alas, you cannot go that way.
+1792844170	cmd	Alaric	54	29074	korzath1.are	standing	97	0	-	north		Alas, you cannot go that way.
+1792844170	cmd	Trentlin	50	29072	korzath1.are	standing	100	0	-	south		Machine Room //   You look around and all you see are machines and men operating them. // You recognize some of the machines as drill bits but, you haven't seen much
+1792844171	cmd	Alaric	54	29074	korzath1.are	standing	97	0	-	west		Alas, you cannot go that way.
+1792844171	cmd	Trentlin	50	29071	korzath1.are	standing	100	0	-	west		T-Junction //   The service hallway opens up into a T-Junction here.  To the north there // isn't much sound but, to the east you can hear the sound of machinery.
+1792844172	cmd	Trentlin	50	29070	korzath1.are	standing	100	0	-	west		Service Hallway //   You can now hear the distinct sounds of metal against metal as well as // the droning whine and buzz of what sounds like drill bit machinery.  You've
+1792844172	cmd	Alaric	54	29075	korzath1.are	standing	97	0	-	east		Machine Room //   Workers are assorting the refined metals here into different carts // that are taken away to another part of the fortress.  You realize that
+1792844173	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	south		Machine Room //   In this part of the machine area workers take and cut the shaped // sheets of metal materials into what looks like the outline of vests,
+1792844173	cmd	Trentlin	50	29067	korzath1.are	standing	100	0	-	west		Service Hallway //   The hallway continues to the east and west.  To the north is a storage // room.  The various noises of clanging metals can be heard to the east.
+1792844174	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	east		Alas, you cannot go that way.
+1792844174	cmd	Trentlin	50	29068	korzath1.are	standing	100	0	-	north		Storage Room //   Stacks of sheets of metal are stored in this storage room.  Numerous // blacksmiths tools are handing on the walls.  Other tool type devices are
+1792844174	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	east		Alas, you cannot go that way.
+1792844175	cmd	Alaric	54	29075	korzath1.are	standing	97	0	-	north		Machine Room //   Workers are assorting the refined metals here into different carts // that are taken away to another part of the fortress.  You realize that
+1792844176	cmd	Trentlin	50	29069	korzath1.are	standing	100	0	-	east		Storage Room //   Boxes of screws, nails, lugnuts, bolts, and bearings are stacked in // this room.  Most blacksmiths or weaponsmiths only have one tenth of these 
+1792844176	cmd	Trentlin	50	29068	korzath1.are	standing	100	0	-	west		Storage Room //   Stacks of sheets of metal are stored in this storage room.  Numerous // blacksmiths tools are handing on the walls.  Other tool type devices are
+1792844177	cmd	Trentlin	50	29067	korzath1.are	standing	100	0	-	south		Service Hallway //   The hallway continues to the east and west.  To the north is a storage // room.  The various noises of clanging metals can be heard to the east.
+1792844177	cmd	Alaric	54	29076	korzath1.are	standing	97	0	-	north		Coffee Break Room //   This is a break room for Korzath's workers.  They sit back drinking // coffee and eating doughnuts while on break.  The faint smell of smoke
+1792844177	cmd	Trentlin	50	29066	korzath1.are	standing	100	0	-	west		Service Hallway //   The walls of this hallway are covered in sheer metal.  You marvel at // how much armor could be made with the metal used in lining the hall.
+1792844177	cmd	Trentlin	50	29065	korzath1.are	standing	100	0	-	west		Service Hallway //   The service hallway leads east towards the main work centers of the // fortress.  You wonder what all the noises are that are coming from that
+1792844178	cmd	Trentlin	50	29066	korzath1.are	standing	100	0	-	east		Service Hallway //   The walls of this hallway are covered in sheer metal.  You marvel at // how much armor could be made with the metal used in lining the hall.
+1792844180	cmd	Trentlin	50	29066	korzath1.are	standing	100	0	-	kill	hea	Your pierce decimates a head of security! // A head of security dodges your attack. // Your pierce MUTILATES a head of security!
+1792844180	cmd	Alaric	54	29076	korzath1.are	standing	97	0	-	open		It's locked.
+1792844181	cmd	Alaric	54	29076	korzath1.are	standing	97	0	-	open		It's locked.
+1792844181	cmd	Alaric	54	29076	korzath1.are	standing	97	0	-	exits		Obvious exits: // North - Coffee Break Room // East  - Coffee Break Room
+1792844183	cmd	Alaric	54	29076	korzath1.are	standing	97	0	-	unlock	west	You lack the key.
+1792844183	cmd	Trentlin	50	29066	korzath1.are	fighting	100	0	fight	smite		Your smite maims a head of security! // Your smite MANGLES a head of security! // Your smite devastates a head of security!
+1792844184	cmd	Alaric	54	29076	korzath1.are	standing	97	0	-	look		Coffee Break Room //   This is a break room for Korzath's workers.  They sit back drinking // coffee and eating doughnuts while on break.  The faint smell of smoke
+1792844185	cmd	Alaric	54	29079	korzath1.are	standing	97	0	-	east		Coffee Break Room //   This part of the break room is the 'Smoking' area.  Yes, even in // Korzath's fortress there are smoking regulations.
+1792844186	cmd	Alaric	54	29078	korzath1.are	standing	97	0	-	north		Coffee Break Room //   In this corner of the break room is a large bulletin where the // supervisors place important information that the workers need to know.
+1792844189	cmd	Alaric	54	29078	korzath1.are	standing	97	0	-	look	board	You do not see that here.
+1792844190	cmd	Alaric	54	29077	korzath1.are	standing	97	0	-	west		Coffee Break Room //   More workers sit at the tables taking their breaks.  The workers // supervisor ensures each worker takes the proper amount of break time.
+1792844192	cmd	Trentlin	50	29066	korzath1.are	standing	100	0	-	look	in cor	Corpse of a head of security contains: //      a security shield //      (Humming) key card
+1792844192	cmd	Alaric	54	29077	korzath1.are	standing	97	0	-	west		Alas, you cannot go that way.
+1792844193	cmd	Alaric	54	29076	korzath1.are	standing	97	0	-	south		Coffee Break Room //   This is a break room for Korzath's workers.  They sit back drinking // coffee and eating doughnuts while on break.  The faint smell of smoke
+1792844194	cmd	Alaric	54	29075	korzath1.are	standing	97	0	-	south		Machine Room //   Workers are assorting the refined metals here into different carts // that are taken away to another part of the fortress.  You realize that
+1792844195	cmd	Alaric	54	29073	korzath1.are	standing	97	0	-	south		Machine Room //   In this part of the machine area workers take and cut the shaped // sheets of metal materials into what looks like the outline of vests,
+1792844195	cmd	Alaric	54	29072	korzath1.are	standing	97	0	-	west		Machine Room //   You look around and all you see are machines and men operating them. // You recognize some of the machines as drill bits but, you haven't seen much
+1792844195	cmd	Trentlin	50	29066	korzath1.are	standing	100	0	-	get	card co	You get key card from corpse of a head of security.
+1792844195	cmd	Alaric	54	29071	korzath1.are	standing	97	0	-	west		T-Junction //   The service hallway opens up into a T-Junction here.  To the north there // isn't much sound but, to the east you can hear the sound of machinery.
+1792844196	cmd	Trentlin	50	29067	korzath1.are	standing	100	0	-	east		Service Hallway //   The hallway continues to the east and west.  To the north is a storage // room.  The various noises of clanging metals can be heard to the east.
+1792844196	cmd	Alaric	54	29080	korzath1.are	standing	97	0	-	north		Hallway //   This hallway stretches north into the mountain.  A small plaque // designates the area ahead of you as the Engineering Department.
+1792844197	cmd	Alaric	54	29082	korzath1.are	standing	97	0	-	north		Engineering Department //   This is the Engineering Department where engineers work hard to solve // the problems of machinery breakdown and to figure out new ways to make the
+1792844197	cmd	Trentlin	50	29070	korzath1.are	standing	100	0	-	east		Service Hallway //   You can now hear the distinct sounds of metal against metal as well as // the droning whine and buzz of what sounds like drill bit machinery.  You've
+1792844198	cmd	Trentlin	50	29071	korzath1.are	standing	100	0	-	east		T-Junction //   The service hallway opens up into a T-Junction here.  To the north there // isn't much sound but, to the east you can hear the sound of machinery.
+1792844198	cmd	Alaric	54	29083	korzath1.are	standing	97	0	-	east		Engineering Department //   Engineers are hard at work devising new ways to make the equipment // work more efficiently.  To the east is a doorway to the break room.
+1792844199	cmd	Alaric	54	29083	korzath1.are	standing	97	0	-	exits		Obvious exits: // North - Engineering Department // East  - Closed door
+1792844199	cmd	Trentlin	50	29080	korzath1.are	standing	100	0	-	north		Hallway //   This hallway stretches north into the mountain.  A small plaque // designates the area ahead of you as the Engineering Department.
+1792844199	cmd	Trentlin	50	29082	korzath1.are	standing	100	0	-	north		Engineering Department //   This is the Engineering Department where engineers work hard to solve // the problems of machinery breakdown and to figure out new ways to make the
+1792844200	cmd	Trentlin	50	29085	korzath1.are	standing	100	0	-	north		Engineering Department //   It is surprising that these engineers would know how to develop the // machinery technology in the first place.  They may know how to prepare
+1792844200	cmd	Trentlin	50	29089	korzath1.are	standing	100	0	-	north		Hallway //   This hallway is dimly lit by the overhanging lights.  They flicker // slightly as you continue along the hall.  The smells of sweat and the feel
+1792844200	cmd	Trentlin	50	29090	korzath1.are	standing	100	0	-	north		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and
+1792844200	cmd	Alaric	54	29086	korzath1.are	standing	97	0	-	north		Engineering Department //   Engineers are hard at work devising new ways to make the equipment // work more efficiently.
+1792844201	cmd	Alaric	54	29086	korzath1.are	standing	97	0	-	exits		Obvious exits: // South - Engineering Department // West  - Engineering Department
+1792844202	cmd	Alaric	54	29085	korzath1.are	standing	97	0	-	west		Engineering Department //   It is surprising that these engineers would know how to develop the // machinery technology in the first place.  They may know how to prepare
+1792844202	cmd	Trentlin	50	29090	korzath1.are	standing	100	0	-	unlock	north	There is no door to the north, just open passage.
+1792844202	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	north		Checkpoint //   Korzath's secret guard protect this checkpoint.  Not many secrets have // been kept from you thus far but the buck stops here as far as Korzath is
+1792844202	cmd	Alaric	54	29085	korzath1.are	standing	97	0	-	exits		Obvious exits: // North - Hallway // East  - Engineering Department
+1792844203	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792844203	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792844203	cmd	Alaric	54	29089	korzath1.are	standing	97	0	-	north		Hallway //   This hallway is dimly lit by the overhanging lights.  They flicker // slightly as you continue along the hall.  The smells of sweat and the feel
+1792844204	cmd	Alaric	54	29089	korzath1.are	standing	97	0	-	exits		Obvious exits: // North - Intersection // South - Engineering Department
+1792844205	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	unlock	noirth	I see no noirth here.
+1792844205	cmd	Alaric	54	29090	korzath1.are	standing	97	0	-	north		Intersection //   You stand in a 4 way intersection.  To the north looks like a checkpoint // of sorts.  To the west is a closed passage.  To the east is a closed door and
+1792844206	cmd	Alaric	54	29090	korzath1.are	standing	97	0	-	exits		Obvious exits: // North - Checkpoint // East  - Closed door
+1792844208	cmd	Alaric	54	29103	korzath1.are	standing	97	0	-	north		Checkpoint //   Korzath's secret guard protect this checkpoint.  Not many secrets have // been kept from you thus far but the buck stops here as far as Korzath is
+1792844208	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1792844209	cmd	Alaric	54	29103	korzath1.are	standing	97	0	-	exits		Obvious exits: // North - Closed door // South - Intersection
+1792844211	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	say	yep	You say 'yep'
+1792844213	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	open	north	Ok.
+1792844214	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	scan		a secret guard                     -to the North. // a secret guard                     -to the North.
+1792844215	cmd	Alaric	54	29103	korzath1.are	standing	97	0	-	(social)		You nod.
+1792844218	cmd	Alaric	54	29103	korzath1.are	standing	97	0	-	follow	tr	You now follow Trentlin.
+1792844222	cmd	Trentlin	50	29103	korzath1.are	standing	100	0	-	group	ala	Alaric joins your group.
+1792844223	cmd	Trentlin	50	29104	korzath1.are	standing	100	0	-	north		Entrance to Project Starlight //   Well, now you've done it.  You've broken past the Starlight guards and // now stand in the entrance to Project Starlight itself.  More guards rush
+1792844224	cmd	Alaric	54	29104	korzath1.are	standing	97	0	-	group		Trentlin's group: // [50 W] Trentlin         5544/5544 hp 9114/9114 mana 2674/2754 mv 112503 xp // [54 T] Alaric           6926/7095 hp 10823/10823 mana 4849/4858 mv 164402 xp
+1792844224	cmd	Trentlin	50	29104	korzath1.are	standing	100	0	-	scan		a Hobbit mage                      -to the North. // an Elf mage                        -to the North. // a Human mage                       -to the North.
+1792844227	cmd	Trentlin	50	29104	korzath1.are	standing	100	0	-	follow	ala	You now follow Alaric.
+1792844228	cmd	Alaric	54	29104	korzath1.are	standing	97	0	-	look	gu	The Secret Guard only allow authorized personnel into the Project Starlight // laboratory. // A secret guard is in excellent condition.
+1792844231	cmd	Alaric	54	29104	korzath1.are	standing	97	0	-	look		Entrance to Project Starlight //   Well, now you've done it.  You've broken past the Starlight guards and // now stand in the entrance to Project Starlight itself.  More guards rush
+1792844231	cmd	Alaric	54	29104	korzath1.are	standing	97	0	-	exits		Obvious exits: // North - Project Starlight // East  - Guard Post
+1792844233	cmd	Alaric	54	29104	korzath1.are	standing	97	0	-	scan		a Hobbit mage                      -to the North. // an Elf mage                        -to the North. // a Human mage                       -to the North.
+1792844234	cmd	Trentlin	50	29104	korzath1.are	standing	100	0	-	say	ill follow you not super familiar	You say 'ill follow you not super familiar'
+1792844237	cmd	Trentlin	50	29104	korzath1.are	standing	100	0	-	look	g	The Secret Guard only allow authorized personnel into the Project Starlight // laboratory. // A secret guard is in excellent condition.
+1792844241	cmd	Alaric	54	29104	korzath1.are	standing	97	0	-	say	Just room of mages north	You say 'Just room of mages north'
+1792844245	cmd	Alaric	54	29107	korzath1.are	standing	97	0	-	north		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1792844245	cmd	Alaric	54	29107	korzath1.are	standing	97	0	-	bs	mage	Your backstab misses a Hobbit mage. [-0] // Your backstab ^^^ DESTROYS ^^^ a Hobbit mage! [-93] // Your backstab ^^^ DESTROYS ^^^ a Hobbit mage! [-90]
+1792844248	cmd	Trentlin	50	29107	korzath1.are	fighting	99	0	fight	smite		Your smite misses a Hobbit mage.
+1792844254	cmd	Trentlin	50	29107	korzath1.are	fighting	99	0	fight	smite		Your smite misses a Hobbit mage.
+1792844260	cmd	Trentlin	50	29107	korzath1.are	fighting	98	0	fight	smite		Your smite DISEMBOWELS a Hobbit mage! // Your smite devastates a Hobbit mage! // Your smite *** DEMOLISHES *** a Hobbit mage!
+1792844261	refused	Alaric	54	29107	korzath1.are	fighting	97	0	fight	bs	mage	No way!  You are still fighting!
+1792844265	refused	Alaric	54	29107	korzath1.are	fighting	96	0	fight	bs	mage	No way!  You are still fighting!
+1792844266	cmd	Trentlin	50	29107	korzath1.are	fighting	98	0	fight	smite		Your smite misses an Elf mage.
+1792844271	refused	Alaric	54	29107	korzath1.are	fighting	96	0	fight	bs	mage	No way!  You are still fighting!
+1792844274	cmd	Trentlin	50	29107	korzath1.are	fighting	97	0	fight	smite		Your smite misses an Elf mage.
+1792844276	refused	Alaric	54	29107	korzath1.are	fighting	96	0	fight	bs	mage	No way!  You are still fighting!
+1792844279	cmd	Alaric	54	29107	korzath1.are	fighting	96	0	fight	torment		You lost your concentration.
+1792844280	cmd	Trentlin	50	29107	korzath1.are	fighting	97	0	fight	smite		Your smite hits an Elf mage. // Your smite *** DEMOLISHES *** an Elf mage! // Your smite maims an Elf mage!
+1792844281	cmd	Alaric	54	29107	korzath1.are	fighting	96	0	fight	torment		A mad mage convulses in pain. // Your pain injures a mad mage. [-16]
+1792844285	cmd	Trentlin	50	29107	korzath1.are	fighting	97	0	fight	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     15 hours | Sex:    Female | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1792844287	cmd	Alaric	54	29107	korzath1.are	fighting	96	0	fight	look	tr	You see nothing special about her. // Trentlin has a few bruises. // Trentlin is using:
+1792844288	cmd	Trentlin	50	29107	korzath1.are	fighting	97	0	fight	smite		Your smite MASSACRES an Elf mage! // Your smite grazes an Elf mage. // Your smite mauls an Elf mage.
+1792844294	cmd	Alaric	54	29107	korzath1.are	fighting	96	0	fight	torment		A mad mage convulses in pain. // Your pain *** DEVASTATES *** a mad mage! [-65]
+1792844305	cmd	Alaric	54	29107	korzath1.are	standing	96	0	-	look	i cor	A stinking corpse contains: //      (Magical) Mind Mace //      (Magical) an oiled cloak
+1792844310	cmd	Alaric	54	29107	korzath1.are	fighting	96	0	fight	torment		A Human mage convulses in pain. // Your pain MUTILATES a Human mage! [-39]
+1792844312	cmd	Trentlin	50	29107	korzath1.are	fighting	96	0	fight	say	im still too evil for a lot of that stuff you gave me a few days ago	You say 'im still too evil for a lot of that stuff you gave me a few days ago'
+1792844313	cmd	Trentlin	50	29107	korzath1.are	fighting	96	0	fight	smite		Your smite *** DEVASTATES *** a Human mage! // Your smite MUTILATES a Human mage! // Your smite devastates a Human mage!
+1792844322	cmd	Trentlin	50	29107	korzath1.are	fighting	95	0	fight	smite		Your smite misses a dwarf mage.

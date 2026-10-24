@@ -165931,3 +165931,507 @@ Sat Oct 24 12:13:38 2026 :: Log Alaric [29073]: gos Grab a Starlight, yet?
 Sat Oct 24 12:13:39 2026 :: Log Alaric [29073]: l
 Sat Oct 24 12:13:41 2026 :: Log Alaric [29073]: n
 Sat Oct 24 12:13:41 2026 :: Log Alaric [29075]: arrived (Machine Room) from 29073
+Sat Oct 24 12:13:44 2026 :: Log Alaric [29075]: bs sup
+Sat Oct 24 12:13:46 2026 :: Log Trentlin [2401]: go cant remember how to get past the guards in korzaths
+Sat Oct 24 12:13:51 2026 :: Log Trentlin [2401]: sco
+Sat Oct 24 12:13:57 2026 :: Log Alaric [29075]: w
+Sat Oct 24 12:13:57 2026 :: Log Alaric [29074]: arrived (Machine Room) from 29075
+Sat Oct 24 12:13:59 2026 :: Log Alaric [29074]: kill sup
+Sat Oct 24 12:14:05 2026 :: Log Trentlin [2401]: i
+Sat Oct 24 12:14:07 2026 :: Log Alaric [29074]: killed a Supervisor
+Sat Oct 24 12:14:07 2026 :: Log Alaric [29074]: coin +5 platinum
+Sat Oct 24 12:14:07 2026 :: Log Alaric [29074]: coin +23 silver
+Sat Oct 24 12:14:07 2026 :: Log Alaric [29074]: coin +31 copper
+Sat Oct 24 12:14:07 2026 :: Log Alaric [29074]: coin +13 gold
+Sat Oct 24 12:14:12 2026 :: Black market: the dealer vanished from room 13249 (a House., solace.are) (wandering).
+Sat Oct 24 12:14:15 2026 :: Log Trentlin [2401]: eq
+Sat Oct 24 12:14:16 2026 :: Log Alaric [29074]: gos In the NE sections where the security guards are, I think its just a supervisor. Gonna zip over there
+Sat Oct 24 12:14:17 2026 :: Log Alaric [29074]: wake
+Sat Oct 24 12:14:17 2026 :: Log Alaric [29074]: l
+Sat Oct 24 12:14:19 2026 :: Log Alaric [29074]: l i cor
+Sat Oct 24 12:14:22 2026 :: Log Trentlin [2401]: n
+Sat Oct 24 12:14:22 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sat Oct 24 12:14:23 2026 :: Log Trentlin [2402]: n
+Sat Oct 24 12:14:23 2026 :: Log Trentlin [2415]: arrived (Main Processional, Strung with Lanterns) from 2402
+Sat Oct 24 12:14:24 2026 :: Log Trentlin [2415]: n
+Sat Oct 24 12:14:24 2026 :: Log Trentlin [2496]: arrived (Main Processional, Where the Candles Burn) from 2415
+Sat Oct 24 12:14:24 2026 :: Log Trentlin [2496]: n
+Sat Oct 24 12:14:24 2026 :: Log Trentlin [2416]: arrived (Main Processional, Among the Scarecrows) from 2496
+Sat Oct 24 12:14:25 2026 :: Log Alaric [29074]: get ring cor
+Sat Oct 24 12:14:25 2026 :: Log Trentlin [2416]: e
+Sat Oct 24 12:14:25 2026 :: Log Trentlin [2479]: arrived (Market Plaza.) from 2416
+Sat Oct 24 12:14:25 2026 :: Log Alaric [29074]: e
+Sat Oct 24 12:14:25 2026 :: Log Alaric [29075]: arrived (Machine Room) from 29074
+Sat Oct 24 12:14:25 2026 :: Log Trentlin [2479]: s
+Sat Oct 24 12:14:25 2026 :: Log Trentlin [2482]: arrived (Nomads Tent.) from 2479
+Sat Oct 24 12:14:26 2026 :: Log Trentlin [2482]: s
+Sat Oct 24 12:14:26 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2482
+Sat Oct 24 12:14:26 2026 :: Log Alaric [29075]: on
+Sat Oct 24 12:14:27 2026 :: Log Trentlin [2485]: repair ring
+Sat Oct 24 12:14:27 2026 :: Log Trentlin [2485]: s
+Sat Oct 24 12:14:27 2026 :: Log Trentlin [2494]: arrived (Weapons Shop.) from 2485
+Sat Oct 24 12:14:28 2026 :: Log Alaric [29075]: unl north
+Sat Oct 24 12:14:30 2026 :: Log Trentlin [2494]: repair pirate
+Sat Oct 24 12:14:31 2026 :: Log Alaric [29075]: pick north
+Sat Oct 24 12:14:34 2026 :: Log Trentlin [2494]: repair 2.pirate
+Sat Oct 24 12:14:35 2026 :: Log Alaric [29075]: s
+Sat Oct 24 12:14:35 2026 :: Log Alaric [29073]: arrived (Machine Room) from 29075
+Sat Oct 24 12:14:35 2026 :: Log Alaric [29073]: scan
+Sat Oct 24 12:14:36 2026 :: Log Trentlin [2494]: wear pirate
+Sat Oct 24 12:14:36 2026 :: Log Alaric [29073]: s
+Sat Oct 24 12:14:37 2026 :: Log Alaric [29073]: scan
+Sat Oct 24 12:14:38 2026 :: Log Alaric [29073]: w
+Sat Oct 24 12:14:38 2026 :: Log Alaric [29072]: arrived (Machine Room) from 29073
+Sat Oct 24 12:14:38 2026 :: Log Alaric [29072]: w
+Sat Oct 24 12:14:38 2026 :: Log Alaric [29071]: arrived (T-Junction) from 29072
+Sat Oct 24 12:14:39 2026 :: Log Trentlin [2494]: n
+Sat Oct 24 12:14:39 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2494
+Sat Oct 24 12:14:39 2026 :: Log Alaric [29071]: w
+Sat Oct 24 12:14:39 2026 :: Log Alaric [29070]: arrived (Service Hallway) from 29071
+Sat Oct 24 12:14:39 2026 :: Log Trentlin [2485]: w
+Sat Oct 24 12:14:39 2026 :: Log Trentlin [2415]: arrived (Main Processional, Strung with Lanterns) from 2485
+Sat Oct 24 12:14:39 2026 :: Log Alaric [29070]: w
+Sat Oct 24 12:14:39 2026 :: Log Alaric [29067]: arrived (Service Hallway) from 29070
+Sat Oct 24 12:14:40 2026 :: Log Alaric [29067]: w
+Sat Oct 24 12:14:40 2026 :: Log Alaric [29066]: arrived (Service Hallway) from 29067
+Sat Oct 24 12:14:40 2026 :: Log Trentlin [2415]: s
+Sat Oct 24 12:14:40 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2415
+Sat Oct 24 12:14:41 2026 :: Log Trentlin [2402]: s
+Sat Oct 24 12:14:41 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2402
+Sat Oct 24 12:14:42 2026 :: Log Alaric [29066]: bs head
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [2401]: r e 20
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [3525]: arrived (Along the Eastern Road) from 3502
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [3526]: arrived (Along the Eastern Road) from 3525
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [3527]: arrived (The Checkpoint) from 3526
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [3528]: arrived (Along the Eastern Road) from 3527
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [3529]: arrived (Along the Eastern Road) from 3528
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [3530]: arrived (Near the Sands of Sorrow) from 3529
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [3531]: arrived (Near the Sands of Sorrow) from 3530
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Sat Oct 24 12:14:43 2026 :: Log Trentlin [42]: arrived (On the Outskirts of New Thalos) from 3532
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [42]: r e 20
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9524]: arrived (West Main Street) from 9523
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9525]: arrived (West Main Street) from 9524
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9526]: arrived (West Main Street) from 9525
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9509]: arrived (The Western Market Square) from 9526
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9506]: arrived (The Center of Market Square) from 9509
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9517]: arrived (The Eastern Market Square) from 9506
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9527]: arrived (East Main Street) from 9517
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9528]: arrived (East Main Street) from 9527
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9529]: arrived (East Main Street) from 9528
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9530]: arrived (East Main Street) from 9529
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9530
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9668]: arrived (Outside the Eastern Gate of New Thalos) from 9531
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9790]: arrived (On a road) from 9668
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9791]: arrived (On a road) from 9790
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9792]: arrived (On a road) from 9791
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9793]: arrived (On a road) from 9792
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9794]: arrived (Near the shore) from 9793
+Sat Oct 24 12:14:44 2026 :: Log Trentlin [9795]: arrived (On a dock) from 9794
+Sat Oct 24 12:14:46 2026 :: Log Alaric [29066]: killed a head of security
+Sat Oct 24 12:14:46 2026 :: Log Alaric [29066]: coin +1 platinum
+Sat Oct 24 12:14:46 2026 :: Log Alaric [29066]: coin +8 silver
+Sat Oct 24 12:14:46 2026 :: Log Alaric [29066]: coin +12 copper
+Sat Oct 24 12:14:46 2026 :: Log Alaric [29066]: coin +5 gold
+Sat Oct 24 12:14:48 2026 :: Log Trentlin [9795]: r w 10
+Sat Oct 24 12:14:48 2026 :: Log Trentlin [9794]: arrived (Near the shore) from 9795
+Sat Oct 24 12:14:48 2026 :: Log Trentlin [9793]: arrived (On a road) from 9794
+Sat Oct 24 12:14:48 2026 :: Log Trentlin [9792]: arrived (On a road) from 9793
+Sat Oct 24 12:14:48 2026 :: Log Trentlin [9791]: arrived (On a road) from 9792
+Sat Oct 24 12:14:48 2026 :: Log Trentlin [9790]: arrived (On a road) from 9791
+Sat Oct 24 12:14:48 2026 :: Log Trentlin [9668]: arrived (Outside the Eastern Gate of New Thalos) from 9790
+Sat Oct 24 12:14:48 2026 :: Log Trentlin [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9668
+Sat Oct 24 12:14:48 2026 :: Log Trentlin [9530]: arrived (East Main Street) from 9531
+Sat Oct 24 12:14:48 2026 :: Log Trentlin [9529]: arrived (East Main Street) from 9530
+Sat Oct 24 12:14:48 2026 :: Log Trentlin [9528]: arrived (East Main Street) from 9529
+Sat Oct 24 12:14:49 2026 :: Log Trentlin [9528]: w
+Sat Oct 24 12:14:49 2026 :: Log Trentlin [9527]: arrived (East Main Street) from 9528
+Sat Oct 24 12:14:51 2026 :: Log Trentlin [9527]: w
+Sat Oct 24 12:14:51 2026 :: Log Trentlin [9517]: arrived (The Eastern Market Square) from 9527
+Sat Oct 24 12:14:52 2026 :: Log Trentlin [9517]: w
+Sat Oct 24 12:14:52 2026 :: Log Trentlin [9506]: arrived (The Center of Market Square) from 9517
+Sat Oct 24 12:14:52 2026 :: Log Trentlin [9506]: n
+Sat Oct 24 12:14:52 2026 :: Log Trentlin [9515]: arrived (The Northern Market Square) from 9506
+Sat Oct 24 12:14:53 2026 :: Log Trentlin [9515]: n
+Sat Oct 24 12:14:53 2026 :: Log Trentlin [9518]: arrived (Sultan's Walk) from 9515
+Sat Oct 24 12:14:53 2026 :: Log Alaric [29066]: l i cor
+Sat Oct 24 12:14:53 2026 :: Log Trentlin [9518]: n
+Sat Oct 24 12:14:53 2026 :: Log Trentlin [9519]: arrived (Sultan's Walk) from 9518
+Sat Oct 24 12:14:53 2026 :: Log Trentlin [9519]: n
+Sat Oct 24 12:14:53 2026 :: Log Trentlin [9520]: arrived (Sultan's Walk) from 9519
+Sat Oct 24 12:14:53 2026 :: Log Trentlin [9520]: n
+Sat Oct 24 12:14:53 2026 :: Log Trentlin [9521]: arrived (Sultan's Walk) from 9520
+Sat Oct 24 12:14:54 2026 :: Log Trentlin [9521]: n
+Sat Oct 24 12:14:54 2026 :: Log Trentlin [9522]: arrived (Inside the Northern Gate of New Thalos) from 9521
+Sat Oct 24 12:14:54 2026 :: Log Trentlin [9522]: n
+Sat Oct 24 12:14:54 2026 :: Log Trentlin [9667]: arrived (Outside the Northern Gate of New Thalos) from 9522
+Sat Oct 24 12:14:54 2026 :: Log Trentlin [9667]: n
+Sat Oct 24 12:14:54 2026 :: Log Trentlin [9781]: arrived (On the Plains) from 9667
+Sat Oct 24 12:14:54 2026 :: Log Trentlin [9781]: n
+Sat Oct 24 12:14:54 2026 :: Log Trentlin [9782]: arrived (On the Plains) from 9781
+Sat Oct 24 12:14:55 2026 :: Log Trentlin [9782]: n
+Sat Oct 24 12:14:55 2026 :: Log Trentlin [9783]: arrived (Edge of the forest) from 9782
+Sat Oct 24 12:14:55 2026 :: Log Trentlin [9783]: n
+Sat Oct 24 12:14:55 2026 :: Log Trentlin [64]: arrived (Misty Clearing) from 9783
+Sat Oct 24 12:14:55 2026 :: Log Trentlin [64]: n
+Sat Oct 24 12:14:55 2026 :: Log Trentlin [29001]: arrived (Entrance to the Fortress) from 64
+Sat Oct 24 12:14:55 2026 :: Log Trentlin [29001]: n
+Sat Oct 24 12:14:55 2026 :: Log Trentlin [29002]: arrived (Inside Korzath's Private Fortress) from 29001
+Sat Oct 24 12:14:56 2026 :: Log Trentlin [29002]: n
+Sat Oct 24 12:14:56 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29002
+Sat Oct 24 12:14:56 2026 :: Log Trentlin [29003]: n
+Sat Oct 24 12:14:56 2026 :: Log Trentlin [29004]: arrived (Center Tunnelway) from 29003
+Sat Oct 24 12:14:56 2026 :: Log Alaric [29066]: get card cor
+Sat Oct 24 12:14:56 2026 :: Log Trentlin [29004]: n
+Sat Oct 24 12:14:56 2026 :: Log Trentlin [29201]: arrived (Heroes Hall) from 29004
+Sat Oct 24 12:14:56 2026 :: Log Alaric [29066]: e
+Sat Oct 24 12:14:56 2026 :: Log Alaric [29067]: arrived (Service Hallway) from 29066
+Sat Oct 24 12:14:56 2026 :: Log Trentlin [29201]: n
+Sat Oct 24 12:14:56 2026 :: Log Trentlin [29202]: arrived (Hall of Past Heroes) from 29201
+Sat Oct 24 12:14:56 2026 :: Log Alaric [29067]: e
+Sat Oct 24 12:14:56 2026 :: Log Alaric [29070]: arrived (Service Hallway) from 29067
+Sat Oct 24 12:14:57 2026 :: Log Alaric [29070]: e
+Sat Oct 24 12:14:57 2026 :: Log Alaric [29071]: arrived (T-Junction) from 29070
+Sat Oct 24 12:14:57 2026 :: Log Alaric [29071]: e
+Sat Oct 24 12:14:57 2026 :: Log Alaric [29072]: arrived (Machine Room) from 29071
+Sat Oct 24 12:14:57 2026 :: Log Trentlin [29202]: s
+Sat Oct 24 12:14:57 2026 :: Log Trentlin [29201]: arrived (Heroes Hall) from 29202
+Sat Oct 24 12:14:57 2026 :: Log Alaric [29072]: e
+Sat Oct 24 12:14:57 2026 :: Log Alaric [29073]: arrived (Machine Room) from 29072
+Sat Oct 24 12:14:58 2026 :: Log Trentlin [29201]: s
+Sat Oct 24 12:14:58 2026 :: Log Trentlin [29004]: arrived (Center Tunnelway) from 29201
+Sat Oct 24 12:14:58 2026 :: Log Alaric [29073]: n
+Sat Oct 24 12:14:58 2026 :: Log Alaric [29075]: arrived (Machine Room) from 29073
+Sat Oct 24 12:14:58 2026 :: Log Alaric [29075]: n
+Sat Oct 24 12:14:58 2026 :: Log Alaric [29076]: arrived (Coffee Break Room) from 29075
+Sat Oct 24 12:14:59 2026 :: Log Trentlin [29004]: s
+Sat Oct 24 12:14:59 2026 :: Log Trentlin [29003]: arrived (Grand Foyer) from 29004
+Sat Oct 24 12:14:59 2026 :: Log Trentlin [29003]: ne
+Sat Oct 24 12:14:59 2026 :: Log Trentlin [29060]: arrived (Corridor) from 29003
+Sat Oct 24 12:15:00 2026 :: Log Trentlin [29060]: e
+Sat Oct 24 12:15:00 2026 :: Log Trentlin [29061]: arrived (Corridor) from 29060
+Sat Oct 24 12:15:01 2026 :: Log Trentlin [29061]: s
+Sat Oct 24 12:15:01 2026 :: Log Trentlin [29062]: arrived (Corridor) from 29061
+Sat Oct 24 12:15:01 2026 :: Log Trentlin [29062]: s
+Sat Oct 24 12:15:01 2026 :: Log Trentlin [29063]: arrived (Corridor) from 29062
+Sat Oct 24 12:15:01 2026 :: Log Trentlin [29063]: s
+Sat Oct 24 12:15:01 2026 :: Log Trentlin [29065]: arrived (Service Hallway) from 29063
+Sat Oct 24 12:15:01 2026 :: Log Alaric [29076]: n
+Sat Oct 24 12:15:01 2026 :: Log Alaric [29077]: arrived (Coffee Break Room) from 29076
+Sat Oct 24 12:15:02 2026 :: Log Trentlin [29065]: e
+Sat Oct 24 12:15:02 2026 :: Log Trentlin [29066]: arrived (Service Hallway) from 29065
+Sat Oct 24 12:15:02 2026 :: Log Trentlin [29066]: e
+Sat Oct 24 12:15:02 2026 :: Log Trentlin [29067]: arrived (Service Hallway) from 29066
+Sat Oct 24 12:15:03 2026 :: Log Trentlin [29067]: e
+Sat Oct 24 12:15:03 2026 :: Log Trentlin [29070]: arrived (Service Hallway) from 29067
+Sat Oct 24 12:15:03 2026 :: Log Alaric [29077]: e
+Sat Oct 24 12:15:03 2026 :: Log Alaric [29078]: arrived (Coffee Break Room) from 29077
+Sat Oct 24 12:15:04 2026 :: Log Trentlin [29070]: e
+Sat Oct 24 12:15:04 2026 :: Log Trentlin [29071]: arrived (T-Junction) from 29070
+Sat Oct 24 12:15:05 2026 :: Log Alaric [29078]: w
+Sat Oct 24 12:15:05 2026 :: Log Alaric [29077]: arrived (Coffee Break Room) from 29078
+Sat Oct 24 12:15:05 2026 :: Log Trentlin [29071]: n
+Sat Oct 24 12:15:05 2026 :: Log Trentlin [29080]: arrived (Hallway) from 29071
+Sat Oct 24 12:15:05 2026 :: Log Trentlin [29080]: n
+Sat Oct 24 12:15:05 2026 :: Log Trentlin [29082]: arrived (Engineering Department) from 29080
+Sat Oct 24 12:15:06 2026 :: Log Trentlin [29082]: n
+Sat Oct 24 12:15:06 2026 :: Log Trentlin [29085]: arrived (Engineering Department) from 29082
+Sat Oct 24 12:15:06 2026 :: Log Trentlin [29085]: n
+Sat Oct 24 12:15:06 2026 :: Log Trentlin [29089]: arrived (Hallway) from 29085
+Sat Oct 24 12:15:06 2026 :: Log Trentlin [29089]: n
+Sat Oct 24 12:15:06 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29089
+Sat Oct 24 12:15:06 2026 :: Log Trentlin [29090]: n
+Sat Oct 24 12:15:06 2026 :: Log Trentlin [29103]: arrived (Checkpoint) from 29090
+Sat Oct 24 12:15:07 2026 :: Log Trentlin [29103]: n
+Sat Oct 24 12:15:07 2026 :: Log Trentlin [29103]: n
+Sat Oct 24 12:15:08 2026 :: Log Alaric [29077]: bs sup
+Sat Oct 24 12:15:10 2026 :: Log Trentlin [29103]: s
+Sat Oct 24 12:15:10 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29103
+Sat Oct 24 12:15:12 2026 :: Log Trentlin [29090]: where
+Sat Oct 24 12:15:14 2026 :: Log Trentlin [29090]: e
+Sat Oct 24 12:15:14 2026 :: Log Trentlin [29093]: arrived (Metalworks) from 29090
+Sat Oct 24 12:15:15 2026 :: Log Trentlin [29093]: e
+Sat Oct 24 12:15:15 2026 :: Log Trentlin [29094]: arrived (Metalworks) from 29093
+Sat Oct 24 12:15:16 2026 :: Log Trentlin [29094]: w
+Sat Oct 24 12:15:16 2026 :: Log Trentlin [29093]: arrived (Metalworks) from 29094
+Sat Oct 24 12:15:17 2026 :: Log Trentlin [29093]: w
+Sat Oct 24 12:15:17 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29093
+Sat Oct 24 12:15:18 2026 :: Log Trentlin [29090]: n
+Sat Oct 24 12:15:18 2026 :: Log Trentlin [29103]: arrived (Checkpoint) from 29090
+Sat Oct 24 12:15:18 2026 :: Log Trentlin [29103]: n
+Sat Oct 24 12:15:33 2026 :: Log Trentlin [29103]: tell (arguments withheld)
+Sat Oct 24 12:15:37 2026 :: Log Trentlin [29103]: where
+Sat Oct 24 12:15:39 2026 :: Log Trentlin [29103]: s
+Sat Oct 24 12:15:39 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29103
+Sat Oct 24 12:15:40 2026 :: Log Trentlin [29090]: s
+Sat Oct 24 12:15:40 2026 :: Log Trentlin [29089]: arrived (Hallway) from 29090
+Sat Oct 24 12:15:41 2026 :: Log Trentlin [29089]: s
+Sat Oct 24 12:15:41 2026 :: Log Trentlin [29085]: arrived (Engineering Department) from 29089
+Sat Oct 24 12:15:42 2026 :: Log Trentlin [29085]: e
+Sat Oct 24 12:15:42 2026 :: Log Trentlin [29086]: arrived (Engineering Department) from 29085
+Sat Oct 24 12:15:43 2026 :: Log Trentlin [29086]: s
+Sat Oct 24 12:15:43 2026 :: Log Trentlin [29083]: arrived (Engineering Department) from 29086
+Sat Oct 24 12:15:43 2026 :: Log Alaric [29077]: killed a Supervisor
+Sat Oct 24 12:15:43 2026 :: Log Alaric [29077]: coin +5 platinum
+Sat Oct 24 12:15:43 2026 :: Log Alaric [29077]: coin +23 silver
+Sat Oct 24 12:15:43 2026 :: Log Alaric [29077]: coin +31 copper
+Sat Oct 24 12:15:43 2026 :: Log Alaric [29077]: coin +13 gold
+Sat Oct 24 12:15:44 2026 :: Log Trentlin [29083]: e
+Sat Oct 24 12:15:44 2026 :: Log Trentlin [29076]: arrived (Coffee Break Room) from 29083
+Sat Oct 24 12:15:46 2026 :: Log Trentlin [29076]: k su
+Sat Oct 24 12:15:48 2026 :: Log Alaric [29077]: reply Trying to verify now. Heads of Security do have a security card
+Sat Oct 24 12:15:49 2026 :: Log Trentlin [29076]: smite
+Sat Oct 24 12:15:49 2026 :: Log Trentlin [29076]: killed a Supervisor
+Sat Oct 24 12:15:49 2026 :: Log Trentlin [29076]: coin +5 platinum
+Sat Oct 24 12:15:49 2026 :: Log Trentlin [29076]: coin +23 silver
+Sat Oct 24 12:15:49 2026 :: Log Trentlin [29076]: coin +31 copper
+Sat Oct 24 12:15:49 2026 :: Log Trentlin [29076]: coin +13 gold
+Sat Oct 24 12:15:50 2026 :: Log Alaric [29077]: l i cor
+Sat Oct 24 12:15:52 2026 :: Log Alaric [29077]: l
+Sat Oct 24 12:15:53 2026 :: Log Alaric [29077]: s
+Sat Oct 24 12:15:53 2026 :: Log Alaric [29076]: arrived (Coffee Break Room) from 29077
+Sat Oct 24 12:15:56 2026 :: Log Alaric [29076]: kill sup
+Sat Oct 24 12:15:57 2026 :: Log Alaric [29076]: l i cor
+Sat Oct 24 12:15:59 2026 :: Log Alaric [29076]: s
+Sat Oct 24 12:15:59 2026 :: Log Alaric [29075]: arrived (Machine Room) from 29076
+Sat Oct 24 12:16:00 2026 :: Log Trentlin [29076]: l in co
+Sat Oct 24 12:16:01 2026 :: Log Alaric [29075]: on
+Sat Oct 24 12:16:03 2026 :: Log Trentlin [29076]: e
+Sat Oct 24 12:16:03 2026 :: Log Trentlin [29079]: arrived (Coffee Break Room) from 29076
+Sat Oct 24 12:16:04 2026 :: Log Trentlin [29079]: w
+Sat Oct 24 12:16:04 2026 :: Log Trentlin [29076]: arrived (Coffee Break Room) from 29079
+Sat Oct 24 12:16:04 2026 :: Log Trentlin [29076]: s
+Sat Oct 24 12:16:04 2026 :: Log Trentlin [29075]: arrived (Machine Room) from 29076
+Sat Oct 24 12:16:05 2026 :: Log Alaric [29075]: unl north
+Sat Oct 24 12:16:06 2026 :: Log Alaric [29075]: s
+Sat Oct 24 12:16:06 2026 :: Log Alaric [29073]: arrived (Machine Room) from 29075
+Sat Oct 24 12:16:07 2026 :: Log Alaric [29073]: w
+Sat Oct 24 12:16:07 2026 :: Log Alaric [29072]: arrived (Machine Room) from 29073
+Sat Oct 24 12:16:07 2026 :: Log Trentlin [29075]: sca
+Sat Oct 24 12:16:08 2026 :: Log Alaric [29072]: n
+Sat Oct 24 12:16:08 2026 :: Log Alaric [29074]: arrived (Machine Room) from 29072
+Sat Oct 24 12:16:08 2026 :: Log Trentlin [29075]: w
+Sat Oct 24 12:16:08 2026 :: Log Trentlin [29074]: arrived (Machine Room) from 29075
+Sat Oct 24 12:16:09 2026 :: Log Alaric [29074]: n
+Sat Oct 24 12:16:10 2026 :: Log Alaric [29074]: n
+Sat Oct 24 12:16:10 2026 :: Log Trentlin [29074]: s
+Sat Oct 24 12:16:10 2026 :: Log Trentlin [29072]: arrived (Machine Room) from 29074
+Sat Oct 24 12:16:11 2026 :: Log Alaric [29074]: w
+Sat Oct 24 12:16:11 2026 :: Log Trentlin [29072]: w
+Sat Oct 24 12:16:11 2026 :: Log Trentlin [29071]: arrived (T-Junction) from 29072
+Sat Oct 24 12:16:12 2026 :: Log Trentlin [29071]: w
+Sat Oct 24 12:16:12 2026 :: Log Trentlin [29070]: arrived (Service Hallway) from 29071
+Sat Oct 24 12:16:12 2026 :: Log Alaric [29074]: e
+Sat Oct 24 12:16:12 2026 :: Log Alaric [29075]: arrived (Machine Room) from 29074
+Sat Oct 24 12:16:13 2026 :: Log Alaric [29075]: s
+Sat Oct 24 12:16:13 2026 :: Log Alaric [29073]: arrived (Machine Room) from 29075
+Sat Oct 24 12:16:13 2026 :: Log Trentlin [29070]: w
+Sat Oct 24 12:16:13 2026 :: Log Trentlin [29067]: arrived (Service Hallway) from 29070
+Sat Oct 24 12:16:14 2026 :: Log Alaric [29073]: e
+Sat Oct 24 12:16:14 2026 :: Log Trentlin [29067]: n
+Sat Oct 24 12:16:14 2026 :: Log Trentlin [29068]: arrived (Storage Room) from 29067
+Sat Oct 24 12:16:14 2026 :: Log Alaric [29073]: e
+Sat Oct 24 12:16:15 2026 :: Log Alaric [29073]: n
+Sat Oct 24 12:16:15 2026 :: Log Alaric [29075]: arrived (Machine Room) from 29073
+Sat Oct 24 12:16:16 2026 :: Log Trentlin [29068]: e
+Sat Oct 24 12:16:16 2026 :: Log Trentlin [29069]: arrived (Storage Room) from 29068
+Sat Oct 24 12:16:16 2026 :: Log Trentlin [29069]: w
+Sat Oct 24 12:16:16 2026 :: Log Trentlin [29068]: arrived (Storage Room) from 29069
+Sat Oct 24 12:16:17 2026 :: Log Trentlin [29068]: s
+Sat Oct 24 12:16:17 2026 :: Log Trentlin [29067]: arrived (Service Hallway) from 29068
+Sat Oct 24 12:16:17 2026 :: Log Alaric [29075]: n
+Sat Oct 24 12:16:17 2026 :: Log Alaric [29076]: arrived (Coffee Break Room) from 29075
+Sat Oct 24 12:16:17 2026 :: Log Trentlin [29067]: w
+Sat Oct 24 12:16:17 2026 :: Log Trentlin [29066]: arrived (Service Hallway) from 29067
+Sat Oct 24 12:16:17 2026 :: Log Trentlin [29066]: w
+Sat Oct 24 12:16:17 2026 :: Log Trentlin [29065]: arrived (Service Hallway) from 29066
+Sat Oct 24 12:16:18 2026 :: Log Trentlin [29065]: e
+Sat Oct 24 12:16:18 2026 :: Log Trentlin [29066]: arrived (Service Hallway) from 29065
+Sat Oct 24 12:16:20 2026 :: Log Trentlin [29066]: k hea
+Sat Oct 24 12:16:20 2026 :: Log Alaric [29076]: os
+Sat Oct 24 12:16:21 2026 :: Log Alaric [29076]: ow
+Sat Oct 24 12:16:21 2026 :: Log Alaric [29076]: ex
+Sat Oct 24 12:16:23 2026 :: Log Alaric [29076]: unl west
+Sat Oct 24 12:16:23 2026 :: Log Trentlin [29066]: smite
+Sat Oct 24 12:16:24 2026 :: Log Alaric [29076]: l
+Sat Oct 24 12:16:25 2026 :: Log Alaric [29076]: e
+Sat Oct 24 12:16:25 2026 :: Log Alaric [29079]: arrived (Coffee Break Room) from 29076
+Sat Oct 24 12:16:26 2026 :: Log Alaric [29079]: n
+Sat Oct 24 12:16:26 2026 :: Log Alaric [29078]: arrived (Coffee Break Room) from 29079
+Sat Oct 24 12:16:29 2026 :: Log Alaric [29078]: look board
+Sat Oct 24 12:16:30 2026 :: Log Alaric [29078]: w
+Sat Oct 24 12:16:30 2026 :: Log Alaric [29077]: arrived (Coffee Break Room) from 29078
+Sat Oct 24 12:16:31 2026 :: Log Trentlin [29066]: killed a head of security
+Sat Oct 24 12:16:31 2026 :: Log Trentlin [29066]: coin +1 platinum
+Sat Oct 24 12:16:31 2026 :: Log Trentlin [29066]: coin +8 silver
+Sat Oct 24 12:16:31 2026 :: Log Trentlin [29066]: coin +12 copper
+Sat Oct 24 12:16:31 2026 :: Log Trentlin [29066]: coin +5 gold
+Sat Oct 24 12:16:32 2026 :: Log Trentlin [29066]: l in cor
+Sat Oct 24 12:16:32 2026 :: Log Alaric [29077]: w
+Sat Oct 24 12:16:33 2026 :: Log Alaric [29077]: s
+Sat Oct 24 12:16:33 2026 :: Log Alaric [29076]: arrived (Coffee Break Room) from 29077
+Sat Oct 24 12:16:34 2026 :: Log Alaric [29076]: s
+Sat Oct 24 12:16:34 2026 :: Log Alaric [29075]: arrived (Machine Room) from 29076
+Sat Oct 24 12:16:35 2026 :: Log Alaric [29075]: s
+Sat Oct 24 12:16:35 2026 :: Log Alaric [29073]: arrived (Machine Room) from 29075
+Sat Oct 24 12:16:35 2026 :: Log Alaric [29073]: w
+Sat Oct 24 12:16:35 2026 :: Log Alaric [29072]: arrived (Machine Room) from 29073
+Sat Oct 24 12:16:35 2026 :: Log Trentlin [29066]: get card co
+Sat Oct 24 12:16:35 2026 :: Log Alaric [29072]: w
+Sat Oct 24 12:16:35 2026 :: Log Alaric [29071]: arrived (T-Junction) from 29072
+Sat Oct 24 12:16:36 2026 :: Log Trentlin [29066]: e
+Sat Oct 24 12:16:36 2026 :: Log Trentlin [29067]: arrived (Service Hallway) from 29066
+Sat Oct 24 12:16:36 2026 :: Log Alaric [29071]: n
+Sat Oct 24 12:16:36 2026 :: Log Alaric [29080]: arrived (Hallway) from 29071
+Sat Oct 24 12:16:37 2026 :: Log Alaric [29080]: n
+Sat Oct 24 12:16:37 2026 :: Log Alaric [29082]: arrived (Engineering Department) from 29080
+Sat Oct 24 12:16:37 2026 :: Log Trentlin [29067]: e
+Sat Oct 24 12:16:37 2026 :: Log Trentlin [29070]: arrived (Service Hallway) from 29067
+Sat Oct 24 12:16:38 2026 :: Log Trentlin [29070]: e
+Sat Oct 24 12:16:38 2026 :: Log Trentlin [29071]: arrived (T-Junction) from 29070
+Sat Oct 24 12:16:38 2026 :: Log Alaric [29082]: e
+Sat Oct 24 12:16:38 2026 :: Log Alaric [29083]: arrived (Engineering Department) from 29082
+Sat Oct 24 12:16:39 2026 :: Log Alaric [29083]: ex
+Sat Oct 24 12:16:39 2026 :: Log Trentlin [29071]: n
+Sat Oct 24 12:16:39 2026 :: Log Trentlin [29080]: arrived (Hallway) from 29071
+Sat Oct 24 12:16:39 2026 :: Log Trentlin [29080]: n
+Sat Oct 24 12:16:39 2026 :: Log Trentlin [29082]: arrived (Engineering Department) from 29080
+Sat Oct 24 12:16:40 2026 :: Log Trentlin [29082]: n
+Sat Oct 24 12:16:40 2026 :: Log Trentlin [29085]: arrived (Engineering Department) from 29082
+Sat Oct 24 12:16:40 2026 :: Log Trentlin [29085]: n
+Sat Oct 24 12:16:40 2026 :: Log Trentlin [29089]: arrived (Hallway) from 29085
+Sat Oct 24 12:16:40 2026 :: Log Trentlin [29089]: n
+Sat Oct 24 12:16:40 2026 :: Log Trentlin [29090]: arrived (Intersection) from 29089
+Sat Oct 24 12:16:40 2026 :: Log Alaric [29083]: n
+Sat Oct 24 12:16:40 2026 :: Log Alaric [29086]: arrived (Engineering Department) from 29083
+Sat Oct 24 12:16:41 2026 :: Log Alaric [29086]: ex
+Sat Oct 24 12:16:42 2026 :: Log Alaric [29086]: w
+Sat Oct 24 12:16:42 2026 :: Log Alaric [29085]: arrived (Engineering Department) from 29086
+Sat Oct 24 12:16:42 2026 :: Log Trentlin [29090]: unlock north
+Sat Oct 24 12:16:42 2026 :: Log Trentlin [29090]: n
+Sat Oct 24 12:16:42 2026 :: Log Trentlin [29103]: arrived (Checkpoint) from 29090
+Sat Oct 24 12:16:42 2026 :: Log Alaric [29085]: ex
+Sat Oct 24 12:16:43 2026 :: Log Trentlin [29103]: n
+Sat Oct 24 12:16:43 2026 :: Log Trentlin [29103]: n
+Sat Oct 24 12:16:43 2026 :: Log Alaric [29085]: n
+Sat Oct 24 12:16:43 2026 :: Log Alaric [29089]: arrived (Hallway) from 29085
+Sat Oct 24 12:16:44 2026 :: Log Alaric [29089]: ex
+Sat Oct 24 12:16:45 2026 :: Log Trentlin [29103]: unlock noirth
+Sat Oct 24 12:16:45 2026 :: Log Alaric [29089]: n
+Sat Oct 24 12:16:45 2026 :: Log Alaric [29090]: arrived (Intersection) from 29089
+Sat Oct 24 12:16:46 2026 :: Log Alaric [29090]: ex
+Sat Oct 24 12:16:48 2026 :: Log Alaric [29090]: n
+Sat Oct 24 12:16:48 2026 :: Log Alaric [29103]: arrived (Checkpoint) from 29090
+Sat Oct 24 12:16:48 2026 :: Log Trentlin [29103]: unlock north
+Sat Oct 24 12:16:49 2026 :: Log Alaric [29103]: ex
+Sat Oct 24 12:16:51 2026 :: Log Trentlin [29103]: say yep
+Sat Oct 24 12:16:53 2026 :: Log Trentlin [29103]: open north
+Sat Oct 24 12:16:54 2026 :: Log Trentlin [29103]: sca
+Sat Oct 24 12:16:55 2026 :: Log Alaric [29103]: (social) nod
+Sat Oct 24 12:16:58 2026 :: Log Alaric [29103]: fol tr
+Sat Oct 24 12:17:02 2026 :: Log Trentlin [29103]: group ala
+Sat Oct 24 12:17:03 2026 :: Log Trentlin [29103]: n
+Sat Oct 24 12:17:03 2026 :: Log Trentlin [29104]: arrived (Entrance to Project Starlight) from 29103
+Sat Oct 24 12:17:03 2026 :: Log Alaric [29104]: arrived (Entrance to Project Starlight) from 29103
+Sat Oct 24 12:17:04 2026 :: Log Alaric [29104]: gr
+Sat Oct 24 12:17:04 2026 :: Log Trentlin [29104]: sca
+Sat Oct 24 12:17:07 2026 :: Log Trentlin [29104]: fol ala
+Sat Oct 24 12:17:08 2026 :: Log Alaric [29104]: look gu
+Sat Oct 24 12:17:11 2026 :: Log Alaric [29104]: l
+Sat Oct 24 12:17:11 2026 :: Log Alaric [29104]: ex
+Sat Oct 24 12:17:13 2026 :: Log Alaric [29104]: scan
+Sat Oct 24 12:17:14 2026 :: Log Trentlin [29104]: say ill follow you not super familiar
+Sat Oct 24 12:17:17 2026 :: Log Trentlin [29104]: l g
+Sat Oct 24 12:17:21 2026 :: Log Alaric [29104]: say Just room of mages north
+Sat Oct 24 12:17:25 2026 :: Log Alaric [29104]: n
+Sat Oct 24 12:17:25 2026 :: Log Alaric [29107]: arrived (Project Starlight) from 29104
+Sat Oct 24 12:17:25 2026 :: Log Trentlin [29107]: arrived (Project Starlight) from 29104
+Sat Oct 24 12:17:25 2026 :: Log Alaric [29107]: bs mage
+Sat Oct 24 12:17:26 2026 :: Sock.sinaddr:  178.156.187.238
+Sat Oct 24 12:17:27 2026 :: EOF encountered on read.
+Sat Oct 24 12:17:28 2026 :: Log Trentlin [29107]: smite
+Sat Oct 24 12:17:34 2026 :: Log Trentlin [29107]: smite
+Sat Oct 24 12:17:40 2026 :: Log Trentlin [29107]: smite
+Sat Oct 24 12:17:41 2026 :: Log Alaric [29107]: bs mage
+Sat Oct 24 12:17:44 2026 :: Log Alaric [29107]: killed a Hobbit mage
+Sat Oct 24 12:17:44 2026 :: Log Alaric [29107]: coin +5 platinum
+Sat Oct 24 12:17:44 2026 :: Log Alaric [29107]: coin -2 platinum
+Sat Oct 24 12:17:44 2026 :: Log Trentlin [29107]: coin +2 platinum
+Sat Oct 24 12:17:44 2026 :: Log Alaric [29107]: coin +25 silver
+Sat Oct 24 12:17:44 2026 :: Log Alaric [29107]: coin -12 silver
+Sat Oct 24 12:17:44 2026 :: Log Trentlin [29107]: coin +12 silver
+Sat Oct 24 12:17:44 2026 :: Log Alaric [29107]: coin +34 copper
+Sat Oct 24 12:17:44 2026 :: Log Alaric [29107]: coin -17 copper
+Sat Oct 24 12:17:44 2026 :: Log Trentlin [29107]: coin +17 copper
+Sat Oct 24 12:17:44 2026 :: Log Alaric [29107]: coin +14 gold
+Sat Oct 24 12:17:44 2026 :: Log Alaric [29107]: gold -7
+Sat Oct 24 12:17:44 2026 :: Log Trentlin [29107]: gold +7
+Sat Oct 24 12:17:45 2026 :: Log Alaric [29107]: bs mage
+Sat Oct 24 12:17:46 2026 :: Log Trentlin [29107]: smite
+Sat Oct 24 12:17:51 2026 :: Log Alaric [29107]: bs mage
+Sat Oct 24 12:17:54 2026 :: Log Trentlin [29107]: smite
+Sat Oct 24 12:17:56 2026 :: Log Alaric [29107]: bs mage
+Sat Oct 24 12:17:59 2026 :: Log Alaric [29107]: torm
+Sat Oct 24 12:18:00 2026 :: Log Trentlin [29107]: smite
+Sat Oct 24 12:18:01 2026 :: Log Alaric [29107]: torm
+Sat Oct 24 12:18:05 2026 :: Log Trentlin [29107]: sco
+Sat Oct 24 12:18:07 2026 :: Log Alaric [29107]: look tr
+Sat Oct 24 12:18:08 2026 :: Log Trentlin [29107]: smite
+Sat Oct 24 12:18:14 2026 :: Log Alaric [29107]: tor
+Sat Oct 24 12:18:23 2026 :: Log Trentlin [29107]: killed an Elf mage
+Sat Oct 24 12:18:23 2026 :: Log Trentlin [29107]: coin +5 platinum
+Sat Oct 24 12:18:23 2026 :: Log Trentlin [29107]: coin -2 platinum
+Sat Oct 24 12:18:23 2026 :: Log Alaric [29107]: coin +2 platinum
+Sat Oct 24 12:18:23 2026 :: Log Trentlin [29107]: coin +25 silver
+Sat Oct 24 12:18:23 2026 :: Log Trentlin [29107]: coin -12 silver
+Sat Oct 24 12:18:23 2026 :: Log Alaric [29107]: coin +12 silver
+Sat Oct 24 12:18:23 2026 :: Log Trentlin [29107]: coin +34 copper
+Sat Oct 24 12:18:23 2026 :: Log Trentlin [29107]: coin -17 copper
+Sat Oct 24 12:18:23 2026 :: Log Alaric [29107]: coin +17 copper
+Sat Oct 24 12:18:23 2026 :: Log Trentlin [29107]: coin +14 gold
+Sat Oct 24 12:18:23 2026 :: Log Trentlin [29107]: gold -7
+Sat Oct 24 12:18:23 2026 :: Log Alaric [29107]: gold +7
+Sat Oct 24 12:18:23 2026 :: Log Alaric [29107]: killed a mad mage
+Sat Oct 24 12:18:23 2026 :: Log Alaric [29107]: coin +5 platinum
+Sat Oct 24 12:18:23 2026 :: Log Alaric [29107]: coin -2 platinum
+Sat Oct 24 12:18:23 2026 :: Log Trentlin [29107]: coin +2 platinum
+Sat Oct 24 12:18:23 2026 :: Log Alaric [29107]: coin +25 silver
+Sat Oct 24 12:18:23 2026 :: Log Alaric [29107]: coin -12 silver
+Sat Oct 24 12:18:23 2026 :: Log Trentlin [29107]: coin +12 silver
+Sat Oct 24 12:18:23 2026 :: Log Alaric [29107]: coin +34 copper
+Sat Oct 24 12:18:23 2026 :: Log Alaric [29107]: coin -17 copper
+Sat Oct 24 12:18:23 2026 :: Log Trentlin [29107]: coin +17 copper
+Sat Oct 24 12:18:23 2026 :: Log Alaric [29107]: coin +14 gold
+Sat Oct 24 12:18:23 2026 :: Log Alaric [29107]: gold -7
+Sat Oct 24 12:18:23 2026 :: Log Trentlin [29107]: gold +7
+Sat Oct 24 12:18:25 2026 :: Log Alaric [29107]: l i cor
+Sat Oct 24 12:18:30 2026 :: Log Alaric [29107]: torm
+Sat Oct 24 12:18:32 2026 :: Log Trentlin [29107]: say im still too evil for a lot of that stuff you gave me a few days ago
+Sat Oct 24 12:18:33 2026 :: Log Trentlin [29107]: smite
+Sat Oct 24 12:18:38 2026 :: Log Trentlin [29107]: killed a Human mage
+Sat Oct 24 12:18:38 2026 :: Log Trentlin [29107]: coin +5 platinum
+Sat Oct 24 12:18:38 2026 :: Log Trentlin [29107]: coin -2 platinum
+Sat Oct 24 12:18:38 2026 :: Log Alaric [29107]: coin +2 platinum
+Sat Oct 24 12:18:38 2026 :: Log Trentlin [29107]: coin +25 silver
+Sat Oct 24 12:18:38 2026 :: Log Trentlin [29107]: coin -12 silver
+Sat Oct 24 12:18:38 2026 :: Log Alaric [29107]: coin +12 silver
+Sat Oct 24 12:18:38 2026 :: Log Trentlin [29107]: coin +34 copper
+Sat Oct 24 12:18:38 2026 :: Log Trentlin [29107]: coin -17 copper
+Sat Oct 24 12:18:38 2026 :: Log Alaric [29107]: coin +17 copper
+Sat Oct 24 12:18:38 2026 :: Log Trentlin [29107]: coin +14 gold
+Sat Oct 24 12:18:38 2026 :: Log Trentlin [29107]: gold -7
+Sat Oct 24 12:18:38 2026 :: Log Alaric [29107]: gold +7
+Sat Oct 24 12:18:42 2026 :: Log Trentlin [29107]: smite
