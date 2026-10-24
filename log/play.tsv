@@ -9743,3 +9743,65 @@
 1792850364	cmd	Trentlin	50	2414	dresden_halloween.are	standing	92	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
 1792850364	cmd	Trentlin	50	2497	dresden_halloween.are	standing	92	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1792850366	cmd	Trentlin	50	2497	dresden_halloween.are	standing	92	15	-	aquest	complete	You inform Questor Thews you have completed her quest. // You hand The Amulet of Soulcrusher to Questor Thews. // Questor Thews says 'Splendid - you've returned victorious!'
+1792850373	cmd	Trentlin	50	2497	dresden_halloween.are	standing	92	13	-	aquest	gamble yes	The dice BETRAY you! Your 48 quest points are lost.
+1792850375	cmd	Trentlin	50	2401	dresden_halloween.are	standing	92	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792850376	cmd	Trentlin	50	2401	dresden_halloween.are	standing	92	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     16 hours | Sex:    Female | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1792850378	cmd	Trentlin	50	2401	dresden_halloween.are	standing	92	0	-	sacrifice	helm	The Gods give you 100 copper coins for your sacrifice.
+1792850385	session	Trentlin	50	2401	dresden_halloween.are	quit	448s	+0 levels	+0 exp	+255284230 copper	5 kills	0 deaths	2 quests	305 commands	0 refused	coin: loot 4p 13g 27s 35c, quests 310p 96g 23s, spent 59p 80g 6s 2c
+1792850542	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1792850542	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1792850543	cmd	Alaric	54	4203	dresden_halloween.are	standing	100	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1792850543	cmd	Alaric	54	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792850544	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	west		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792850544	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792850547	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792850547	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792850548	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792850551	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	bs	wa	Your backstab does UNSPEAKABLE things to a warlock of dresden! [-274] // A warlock of dresden is DEAD!! // You receive 0 experience points.
+1792850559	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	look	i cor	Corpse of a warlock of dresden contains: //      Nothing.
+1792850564	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792850565	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	open		It's already open.
+1792850569	cmd	Alaric	54	9531	newthalo.are	standing	100	0	-	run	e 27	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792850571	cmd	Alaric	54	9531	newthalo.are	resting	100	0	-	open		Ok.
+1792850572	cmd	Alaric	54	9531	newthalo.are	resting	100	0	-	wake		You stand up.
+1792850572	cmd	Alaric	54	9531	newthalo.are	standing	100	0	-	look		Inside the Eastern Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazened with the crest of New Thalos, swings easily on
+1792850574	cmd	Alaric	54	9668	newthalo.are	standing	100	0	-	east		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.
+1792850574	cmd	Alaric	54	9790	newthalo.are	standing	100	0	-	east		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews
+1792850575	cmd	Alaric	54	9791	newthalo.are	standing	100	0	-	east		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road
+1792850575	cmd	Alaric	54	9792	newthalo.are	standing	100	0	-	east		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the
+1792850575	cmd	Alaric	54	9793	newthalo.are	standing	100	0	-	east		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel
+1792850576	cmd	Alaric	54	9794	newthalo.are	standing	100	0	-	east		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline
+1792850577	cmd	Alaric	54	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792850577	cmd	Alaric	54	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a
+1792850578	cmd	Alaric	54	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792850578	cmd	Alaric	54	16001	pirate.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792850581	cmd	Alaric	54	16001	pirate.are	standing	100	0	-	bs	sa	Your backstab >>> ANNIHILATES <<< The sailor! [-234] // Your backstab <<< ERADICATES >>> The sailor! [-186]
+1792850594	cmd	Alaric	54	16002	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792850594	cmd	Alaric	54	16003	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792850595	cmd	Alaric	54	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1792850596	cmd	Alaric	54	16084	pirate.are	standing	100	0	-	west		Seashells Galore //   This remote shop located by the seashore sells trinkets made from everything // immaginable.  The walls are stacked with shelves and shelves of multi-colored
+1792850598	cmd	Alaric	54	16084	pirate.are	standing	100	0	-	buy	guano	You buy guano.
+1792850599	cmd	Alaric	54	16084	pirate.are	standing	100	0	-	buy	guano	You buy guano.
+1792850599	cmd	Alaric	54	16084	pirate.are	standing	100	0	-	buy	guano	You buy guano.
+1792850599	cmd	Alaric	54	16084	pirate.are	standing	100	0	-	buy	guano	You buy guano.
+1792850599	cmd	Alaric	54	16084	pirate.are	standing	100	0	-	buy	guano	You buy guano.
+1792850600	cmd	Alaric	54	16084	pirate.are	standing	100	0	-	buy	guano	You buy guano.
+1792850600	cmd	Alaric	54	16084	pirate.are	standing	100	0	-	buy	guano	You buy guano.
+1792850600	cmd	Alaric	54	16084	pirate.are	standing	100	0	-	buy	guano	You buy guano.
+1792850600	cmd	Alaric	54	16084	pirate.are	standing	100	0	-	buy	guano	You buy guano.
+1792850601	cmd	Alaric	54	16084	pirate.are	standing	100	0	-	buy	guano	You buy guano.
+1792850601	cmd	Alaric	54	16084	pirate.are	standing	100	0	-	buy	guano	You buy guano.
+1792850601	cmd	Alaric	54	16084	pirate.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    227 hours | Sex:    Female | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792850602	cmd	Alaric	54	16084	pirate.are	standing	100	0	-	eat	guano	You eat guano. // Your skin turns to stone. // Your feet rise off the ground.
+1792850603	cmd	Alaric	54	16084	pirate.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    227 hours | Sex:    Female | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792850604	cmd	Alaric	54	16004	pirate.are	standing	100	0	-	east		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1792850604	cmd	Alaric	54	16005	pirate.are	standing	100	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like
+1792850607	cmd	Alaric	54	16021	pirate.are	standing	100	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792850609	cmd	Alaric	54	16021	pirate.are	standing	100	0	-	bs	sw	Your backstab <<< ERADICATES >>> The swashbuckler! [-191] // Your backstab >>> ANNIHILATES <<< The swashbuckler! [-236]
+1792850644	cmd	Alaric	54	16021	pirate.are	standing	85	0	-	scan		The pirate                         -to the far North. // The sailor                         -to the East. // The sailor                         -to the South.
+1792850646	cmd	Alaric	54	16022	pirate.are	standing	85	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792850647	cmd	Alaric	54	16022	pirate.are	standing	85	0	-	scan		The midshipman                     -to the West.
+1792850648	cmd	Alaric	54	16023	pirate.are	standing	85	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792850649	cmd	Alaric	54	16023	pirate.are	standing	85	0	-	scan		The pirate                         -to the North. // The midshipman                     -to the far North. // The pirate                         -to the far East.
+1792850650	cmd	Alaric	54	16018	pirate.are	standing	85	0	-	south		Main Deck of the Royal Eagle //   You are aboard the Royal Eagle - the flag ship of the Krondorian fleet.  She // seems to have been out to sea many times on many voyages.  Crewmen are
+1792850653	cmd	Alaric	54	16018	pirate.are	standing	85	0	-	bs	sw	Your backstab misses The swashbuckler. [-0]

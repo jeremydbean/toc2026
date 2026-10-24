@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792850366
+LogO 1792850385
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -17,18 +17,18 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 50
-Plyd 59860
+Plyd 59879
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
 StashMax 75
 HyruleSecrets 67108864
 Scro 22
-Room 2497
+Room 2401
 HMV  5103 5539 8960 8960 1163 2389
 NewGold 75
 NewPlat 1619
-NewCopp 5
+NewCopp 105
 NewSilv 32
 BankCP 2254728583
 IntTime 1792782012
@@ -118,22 +118,21 @@ Achv visit-high-tower 1792621034
 Achv visit-ultima 1792621074
 Achv visit-korzath-fortress 1792287816
 Achv visit-ice-keep 1792455929
-LastOut  1792850366
+LastOut  1792850385
 Rested 0 0
 Daily 4 20748 3 1 20748
-SesLogin 1792843787
-SesDur   2552
+SesLogin 1792849937
+SesDur   448
 SesExpG  0
 SesLvlG  0
-SesKill  20
+SesKill  5
 SesPK    0
 SesDead  0
-SesQuest 4
+SesQuest 2
 QuestPnts 2834
 QuestStrk 6
-QuestGmbl 48
 CasinoLost 4
-QuestNext 5
+QuestNext 4
 Exp  112503
 Act  204
 AfBy 3678908
