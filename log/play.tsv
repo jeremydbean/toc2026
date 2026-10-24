@@ -11347,3 +11347,5 @@
 1792870363	cmd	Alaric	54	4210	dresden_halloween.are	standing	71	0	-	sleep		You go to sleep.
 1792871822	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
 1792871822	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	worth		You have 263 platinum, 106 gold, 66 silver, 126 copper // and 166214 experience (21086 exp to level).
+1792873405	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792873405	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	worth		You have 263 platinum, 106 gold, 66 silver, 126 copper // and 166214 experience (21086 exp to level).
