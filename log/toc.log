@@ -170249,3 +170249,6 @@ Sat Oct 24 16:16:37 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) fro
 Sat Oct 24 16:16:38 2026 :: Log Alaric [4203]: n
 Sat Oct 24 16:16:38 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
 Sat Oct 24 16:16:39 2026 :: Log Alaric [4210]: sleep
+Sat Oct 24 16:21:18 2026 :: Sock.sinaddr:  5.161.194.92
+Sat Oct 24 16:21:19 2026 :: EOF encountered on read.
+Sat Oct 24 16:25:25 2026 :: Treasure goblin: vanished from room 7810 (The Valley of the Elves, valley.are) (too long in one area).
