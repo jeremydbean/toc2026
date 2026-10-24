@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792848041
+LogO 1792848315
 Vers 4
 Prom ~
 Ignoring ~
@@ -17,7 +17,7 @@ ChangesSeen 20261023g:1 20261023f:1 20261023e:1 20261023d:1 20261023c:1 20261023
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 54
-Plyd 818146
+Plyd 818420
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
@@ -118,7 +118,7 @@ Achv visit-oz 1791127353
 Achv visit-high-tower 1791329329
 Achv visit-ultima 1791329350
 Achv visit-korzath-fortress 1790899622
-LastOut  1792848041
+LastOut  1792848315
 Rested 27713 0
 Daily 0 0 0 0 0
 SesLogin 1792800776
@@ -225,8 +225,8 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
-AffD 'change sex'   0  69   1   6          0          0
-AffD 'blindness'  31   6  -4  18          1          0
+AffD 'change sex'   0  64   1   6          0          0
+AffD 'blindness'  30   1  -4  18          1          0
 End
 
 #O

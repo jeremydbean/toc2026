@@ -9130,3 +9130,5 @@
 1792846827	cmd	Alaric	54	10000	glitter.are	resting	100	0	-	group		Alaric's group: // [54 T] Alaric           1165/1165 hp 1833/1833 mana  818/ 818 mv 165530 xp
 1792846828	cmd	Alaric	54	10000	glitter.are	resting	100	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    226 hours | Sex:    Female | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
 1792846830	cmd	Alaric	54	10000	glitter.are	resting	100	0	-	affect		You are affected by: // Spell: 'change sex' modifies sex by 1 for 90 hours. // Spell: 'blindness' modifies hit roll by -4 for 27 hours.
+1792848267	cmd	Alaric	54	10000	glitter.are	resting	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792848267	cmd	Alaric	54	10000	glitter.are	resting	100	0	-	worth		You have 1242 platinum, 29 gold, 37 silver, 97 copper // and 165530 experience (21770 exp to level).

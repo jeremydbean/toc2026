@@ -168033,3 +168033,10 @@ Sat Oct 24 13:18:28 2026 :: EOF encountered on read.
 Sat Oct 24 13:23:34 2026 :: Sock.sinaddr:  5.161.73.160
 Sat Oct 24 13:23:34 2026 :: EOF encountered on read.
 Sat Oct 24 13:24:01 2026 :: Treasure goblin: vanished from room 1377 (A hallway, htower.are) (too long in one area).
+Sat Oct 24 13:24:27 2026 :: Log Alaric [2]: arrived (Limbo) from 10000
+Sat Oct 24 13:24:27 2026 :: Log Alaric [10000]: arrived (Before the crystal bridge.) from 2
+Sat Oct 24 13:24:27 2026 :: Log Alaric [10000]: who
+Sat Oct 24 13:24:27 2026 :: Log Alaric [10000]: worth
+Sat Oct 24 13:27:05 2026 :: Log Alaric [10000]: affects off: blindness
+Sat Oct 24 13:28:38 2026 :: Sock.sinaddr:  3.212.128.62
+Sat Oct 24 13:28:38 2026 :: EOF encountered on read.
