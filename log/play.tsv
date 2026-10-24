@@ -11583,3 +11583,204 @@
 1792875070	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1792875070	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	17	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Streak of 10 in a row! A +70% bonus has been added!'
 1792875070	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 23 quest points.
+1792875845	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792875846	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792875848	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	12	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Alaric.' // Questor Thews tells you 'the slithering snake has been declared an outlaw!'
+1792875850	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792875851	cmd	Alaric	54	2402	dresden_halloween.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1792875851	cmd	Alaric	54	2415	dresden_halloween.are	standing	100	0	-	north		Main Processional, Strung with Lanterns //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Orange paper lanterns swing on cords
+1792875851	cmd	Alaric	54	2485	dresden_halloween.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1792875851	cmd	Alaric	54	2486	dresden_halloween.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1792875852	cmd	Alaric	54	2487	dresden_halloween.are	standing	100	0	-	east		Market Plaza, the Hallows Fair //   The Market Plaza has given itself over to the fair. Booths and tents crowd // the flagstones under strings of orange and black bunting, selling toffee
+1792875852	cmd	Alaric	54	2509	dresden_halloween.are	standing	100	0	-	east		Dark Alley. //   When you enter the alleyway you are submerged in darkness until your eyes // adjust to the faint light that penetrates from behind and up above.  As you
+1792875852	cmd	Alaric	54	2508	dresden_halloween.are	standing	100	0	-	north		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway
+1792875852	cmd	Alaric	54	2507	dresden_halloween.are	standing	100	0	-	east		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway
+1792875853	cmd	Alaric	54	2505	dresden_halloween.are	standing	100	0	-	north		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway
+1792875853	cmd	Alaric	54	2506	dresden_halloween.are	standing	100	0	-	north		Dead End. //   As you proceed this way down the alley you suddenly come to a dead end! // Scanning your surroundings you see the buildings on all the sides rise at
+1792875853	cmd	Alaric	54	2506	dresden_halloween.are	standing	100	0	-	open	down	Ok.
+1792875853	cmd	Alaric	54	7030	sewer.are	standing	100	0	-	down		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 
+1792875875	cmd	Alaric	54	7030	sewer.are	standing	100	0	-	aquest	info	.-[ Quest Status ]--------------------------------------------. // | Type  : Kill Quest // | Target: Slay the slithering snake
+1792875879	cmd	Alaric	54	7030	sewer.are	standing	100	0	-	scan		the great sewer rat                -to the South. // the trick-or-treater               -right above you. // the shambling janitor              -right above you.
+1792875881	cmd	Alaric	54	7030	sewer.are	standing	100	0	-	look		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 
+1792875884	cmd	Alaric	54	7036	sewer.are	standing	100	0	-	east		The pit //   You stand in a section of a pipe that leads to a dead end. In the floor // there's a pit leading down. There are bars set in the side of the pit wall
+1792875884	cmd	Alaric	54	7036	sewer.are	standing	100	0	-	scan		the maggot                         -right below you.
+1792875886	cmd	Alaric	54	7030	sewer.are	standing	100	0	-	west		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 
+1792875886	cmd	Alaric	54	7029	sewer.are	standing	100	0	-	north		The Triple Junction //   You stand in the middle of a huge junction of concrete sewer pipes. The  // pipes lead into three different directions : east, south and west.
+1792875887	cmd	Alaric	54	7029	sewer.are	standing	100	0	-	scan		the great sewer rat                -to the far South.
+1792875888	cmd	Alaric	54	7021	sewer.are	standing	100	0	-	west		A quiet pipe junction //   This is the kind of place to rest, though the smell could be a LOT better // than this. The sewer goes east, north and west from here.
+1792875889	cmd	Alaric	54	7021	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875889	cmd	Alaric	54	7011	sewer.are	standing	100	0	-	north		The muddy sewer pipe //   You have entered a kind of tube intersection that leads south, west and east. // Your legs are covered in mud up to the knees. REAL yucky! 
+1792875890	cmd	Alaric	54	7011	sewer.are	standing	100	0	-	scan		the small spider                   -to the far East. // the small spider                   -to the far East.
+1792875890	cmd	Alaric	54	7024	sewer.are	standing	100	0	-	east		The sewer //   You are standing in mud up to your ankles. This is an intersection with  // sewer pipes leading east, south and west.
+1792875891	cmd	Alaric	54	7024	sewer.are	standing	100	0	-	scan		the small spider                   -to the East. // the small spider                   -to the East. // the small spider                   -to the far East.
+1792875891	cmd	Alaric	54	7037	sewer.are	standing	100	0	-	east		The round room //   As you enter the room it starts rotating - at first slowly, later faster // and faster - You get totally confused as to where up and down is, but you are
+1792875892	refused	Alaric	54	7037	sewer.are	standing	100	0	-	(unknown)		Huh?
+1792875893	cmd	Alaric	54	7037	sewer.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792875893	cmd	Alaric	54	7037	sewer.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792875894	cmd	Alaric	54	7037	sewer.are	standing	100	0	-	scan		the small spider                   -to the East.
+1792875895	cmd	Alaric	54	7050	sewer.are	standing	100	0	-	east		The small room //   The only thing in this room of interest is a chair, and that's tight to the  // rock floor. A doorway leads south and another leads east into darkness.
+1792875896	cmd	Alaric	54	7051	sewer.are	standing	100	0	-	south		The Sewer pipe //   You are in what reminds you of a foul sewer, as if you liked being here!  // You can see two exits leading either north or south.
+1792875896	cmd	Alaric	54	7052	sewer.are	standing	100	0	-	south		The Grand Sewer //   You are in a Grand Sewer Pipe. This stretches toward the south. It's large  // indeed! A doorway leads to the east from here.
+1792875897	cmd	Alaric	54	7053	sewer.are	standing	100	0	-	south		The South end of the Grand Pipe //   You stand in water to your knees. A doorway leads west from here. The Pipe // stretches north.
+1792875898	cmd	Alaric	54	7047	sewer.are	standing	100	0	-	west		The Pool in the Sewer //   You stand in water to your waist.  To the north is the entrance to this room. // A single door leads east.
+1792875899	cmd	Alaric	54	7047	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875900	cmd	Alaric	54	7046	sewer.are	standing	100	0	-	north		The Sewer room //   This is a Room with walls that glitters like gold though not quite like it. // This is strange as it looks as if the glitter lights the whole room. It
+1792875901	cmd	Alaric	54	7045	sewer.are	standing	100	0	-	north		The Sewer Room //   You are standing in a large room with chairs set in the walls. You have the // feeling of being watched. To the south there's an entry to a larger room.
+1792875901	cmd	Alaric	54	7045	sewer.are	standing	100	0	-	scan		the small spider                   -to the West. // the small bat                      -to the far West.
+1792875902	cmd	Alaric	54	7038	sewer.are	standing	100	0	-	west		The three way junction //   You are standing in a junction of pipes that lead west, east and south. // [Exits: east south west]
+1792875902	cmd	Alaric	54	7038	sewer.are	standing	100	0	-	scan		the small spider                   -to the South. // the small spider                   -to the South. // the small spider                   -to the South.
+1792875903	cmd	Alaric	54	7039	sewer.are	standing	100	0	-	south		The Sewer Store Room //   You stand in a small room lit by a single torch set in the wall. The only  // way out of here is to the north.
+1792875904	cmd	Alaric	54	7039	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875904	cmd	Alaric	54	7038	sewer.are	standing	100	0	-	north		The three way junction //   You are standing in a junction of pipes that lead west, east and south. // [Exits: east south west]
+1792875905	cmd	Alaric	54	7025	sewer.are	standing	100	0	-	west		Another intersection //   You have never seen anything so BORING...This is an intersection with pipes // leading north, south and east.
+1792875906	cmd	Alaric	54	7025	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875908	cmd	Alaric	54	7025	sewer.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792875909	cmd	Alaric	54	7025	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875909	cmd	Alaric	54	7024	sewer.are	standing	100	0	-	north		The sewer //   You are standing in mud up to your ankles. This is an intersection with  // sewer pipes leading east, south and west.
+1792875910	cmd	Alaric	54	7024	sewer.are	standing	100	0	-	scan		the small spider                   -to the East. // the small spider                   -to the East. // the small spider                   -to the far East.
+1792875911	cmd	Alaric	54	7011	sewer.are	standing	100	0	-	west		The muddy sewer pipe //   You have entered a kind of tube intersection that leads south, west and east. // Your legs are covered in mud up to the knees. REAL yucky! 
+1792875912	cmd	Alaric	54	7011	sewer.are	standing	100	0	-	scan		the small spider                   -to the far East. // the small spider                   -to the far East.
+1792875912	cmd	Alaric	54	7005	sewer.are	standing	100	0	-	west		The muddy sewer //   You are standing in the middle of a bend of the sewer pipe. It is very // dark around here and the mud is sticking to your legs, not very pleasant.
+1792875913	cmd	Alaric	54	7005	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875914	cmd	Alaric	54	7006	sewer.are	standing	100	0	-	south		The muddy sewer //   You are standing in something that reminds you very much of porridge, this // has the advantage that it's not hot, it's rather cold actually. The pipe 
+1792875914	cmd	Alaric	54	7006	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875915	cmd	Alaric	54	7012	sewer.are	standing	100	0	-	east		The bend in the Muddy sewer //   This is not your idea of a holiday. You stand in mud up to your knees. // It's absolutely inconceivable how all this mud could have been placed
+1792875915	cmd	Alaric	54	7012	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875916	cmd	Alaric	54	7013	sewer.are	standing	100	0	-	south		A MUDDY intersection //   You wouldn't want to know the true feeling of standing in this mud up to  // your hips. >BWAADR<. All that fills your mind right now is the dream of 
+1792875917	refused	Alaric	54	7013	sewer.are	standing	100	0	-	(unknown)		Huh?
+1792875917	cmd	Alaric	54	7013	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875918	cmd	Alaric	54	7026	sewer.are	standing	100	0	-	east		A junction //   This one seems interesting, a big difference from all the other junctions. // It seems cleaner than the rest of them. Weird. Something that looks like 
+1792875919	cmd	Alaric	54	7026	sewer.are	standing	100	0	-	scan		the small spider                   -to the North. // the small bat                      -to the North.
+1792875920	cmd	Alaric	54	7028	sewer.are	standing	100	0	-	south		The sewer junction //   You stand in a junction of sewer pipes leading north, east and west. // [Exits: north east west]
+1792875921	cmd	Alaric	54	7028	sewer.are	standing	100	0	-	scan		the small spider                   -to the far North. // the small bat                      -to the far North.
+1792875921	cmd	Alaric	54	7034	sewer.are	standing	100	0	-	east		A bend in the sewer pipe //   You can look in two directions where the pipe leads : south and west. // [Exits: south west]
+1792875922	cmd	Alaric	54	7034	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875923	cmd	Alaric	54	7035	sewer.are	standing	100	0	-	south		The sewer pipe bend //   You can look in two different directions where the pipe goes : west and  // north.
+1792875923	cmd	Alaric	54	7035	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875926	cmd	Alaric	54	7035	sewer.are	standing	100	0	-	aquest	inf	.-[ Quest Status ]--------------------------------------------. // | Type  : Kill Quest // | Target: Slay the slithering snake
+1792875928	cmd	Alaric	54	7035	sewer.are	standing	100	2	-	track	slithering	No-one around by that name: slithering.
+1792875931	cmd	Alaric	54	7035	sewer.are	standing	100	0	-	track	snak	You can't sense a trail to it from here.
+1792875935	cmd	Alaric	54	7035	sewer.are	standing	100	0	-	track	snake	You can't sense a trail to it from here.
+1792875936	cmd	Alaric	54	7035	sewer.are	standing	100	0	-	wake		You are already standing.
+1792875937	cmd	Alaric	54	7035	sewer.are	standing	100	0	-	look		The sewer pipe bend //   You can look in two different directions where the pipe goes : west and  // north.
+1792875938	cmd	Alaric	54	7034	sewer.are	standing	100	0	-	north		A bend in the sewer pipe //   You can look in two directions where the pipe leads : south and west. // [Exits: south west]
+1792875938	cmd	Alaric	54	7034	sewer.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792875939	cmd	Alaric	54	7028	sewer.are	standing	100	1	-	west		The sewer junction //   You stand in a junction of sewer pipes leading north, east and west. // [Exits: north east west]
+1792875940	cmd	Alaric	54	7026	sewer.are	standing	100	0	-	north		A junction //   This one seems interesting, a big difference from all the other junctions. // It seems cleaner than the rest of them. Weird. Something that looks like 
+1792875941	cmd	Alaric	54	7026	sewer.are	standing	100	0	-	scan		the small spider                   -to the North. // the small bat                      -to the North.
+1792875942	cmd	Alaric	54	7026	sewer.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792875942	cmd	Alaric	54	7026	sewer.are	standing	100	0	-	scan		the small spider                   -to the North. // the small bat                      -to the North.
+1792875943	cmd	Alaric	54	7025	sewer.are	standing	100	0	-	north		Another intersection //   You have never seen anything so BORING...This is an intersection with pipes // leading north, south and east.
+1792875943	cmd	Alaric	54	7025	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875944	cmd	Alaric	54	7038	sewer.are	standing	100	0	-	east		The three way junction //   You are standing in a junction of pipes that lead west, east and south. // [Exits: east south west]
+1792875945	cmd	Alaric	54	7038	sewer.are	standing	100	0	-	scan		the small spider                   -to the South. // the small spider                   -to the South. // the small spider                   -to the South.
+1792875946	cmd	Alaric	54	7045	sewer.are	standing	100	0	-	east		The Sewer Room //   You are standing in a large room with chairs set in the walls. You have the // feeling of being watched. To the south there's an entry to a larger room.
+1792875947	cmd	Alaric	54	7045	sewer.are	standing	100	0	-	scan		the small spider                   -to the far West. // the small bat                      -to the far West.
+1792875948	cmd	Alaric	54	7046	sewer.are	standing	100	0	-	south		The Sewer room //   This is a Room with walls that glitters like gold though not quite like it. // This is strange as it looks as if the glitter lights the whole room. It
+1792875949	cmd	Alaric	54	7047	sewer.are	standing	100	0	-	south		The Pool in the Sewer //   You stand in water to your waist.  To the north is the entrance to this room. // A single door leads east.
+1792875951	cmd	Alaric	54	7047	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875951	cmd	Alaric	54	7046	sewer.are	standing	100	0	-	north		The Sewer room //   This is a Room with walls that glitters like gold though not quite like it. // This is strange as it looks as if the glitter lights the whole room. It
+1792875952	cmd	Alaric	54	7046	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875953	cmd	Alaric	54	7045	sewer.are	standing	100	0	-	north		The Sewer Room //   You are standing in a large room with chairs set in the walls. You have the // feeling of being watched. To the south there's an entry to a larger room.
+1792875954	cmd	Alaric	54	7045	sewer.are	standing	100	0	-	scan		the small spider                   -to the far West. // the small bat                      -to the far West.
+1792875956	cmd	Alaric	54	7038	sewer.are	standing	100	0	-	west		The three way junction //   You are standing in a junction of pipes that lead west, east and south. // [Exits: east south west]
+1792875957	cmd	Alaric	54	7039	sewer.are	standing	100	0	-	south		The Sewer Store Room //   You stand in a small room lit by a single torch set in the wall. The only  // way out of here is to the north.
+1792875957	cmd	Alaric	54	7039	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875958	cmd	Alaric	54	7038	sewer.are	standing	100	0	-	north		The three way junction //   You are standing in a junction of pipes that lead west, east and south. // [Exits: east south west]
+1792875959	cmd	Alaric	54	7025	sewer.are	standing	100	0	-	west		Another intersection //   You have never seen anything so BORING...This is an intersection with pipes // leading north, south and east.
+1792875959	cmd	Alaric	54	7025	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792875963	cmd	Alaric	54	7038	sewer.are	standing	100	0	-	east		The three way junction //   You are standing in a junction of pipes that lead west, east and south. // [Exits: east south west]
+1792875963	cmd	Alaric	54	7038	sewer.are	standing	100	0	-	scan		the small spider                   -to the South. // the small spider                   -to the South. // the small spider                   -to the South.
+1792875965	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792875965	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792875966	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	heal	ref	The cackling witch-healer utters the words 'candusima'. // You feel fully refreshed! (7 castings, 70 gold.)
+1792875969	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	1	-	heal	ref	The cackling witch-healer says 'Your legs are as fresh as I can make them.'
+1792875969	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792875970	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792875970	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792875984	cmd	Alaric	54	2416	dresden_halloween.are	standing	100	0	-	run	n 4	Northern Oak Tree Square. // [Exits: north east south west] // Main Processional, Strung with Lanterns
+1792875984	cmd	Alaric	54	2481	dresden_halloween.are	standing	100	0	-	run	e 3	Market Plaza. // [Exits: north east south west] // Market Plaza.
+1792875985	cmd	Alaric	54	2514	dresden_halloween.are	standing	100	0	-	north		Dark Alley. //   When you enter the alleyway you are submerged in darkness until your eyes // adjust to the faint light that penetrates from behind and up above.  As you
+1792875985	cmd	Alaric	54	2505	dresden_halloween.are	standing	100	0	-	east		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway
+1792875985	cmd	Alaric	54	2506	dresden_halloween.are	standing	100	0	-	north		Dead End. //   As you proceed this way down the alley you suddenly come to a dead end! // Scanning your surroundings you see the buildings on all the sides rise at
+1792875985	cmd	Alaric	54	2506	dresden_halloween.are	standing	100	0	-	open	down	Ok.
+1792875986	cmd	Alaric	54	7030	sewer.are	standing	100	0	-	down		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 
+1792875988	cmd	Alaric	54	7030	sewer.are	standing	100	0	-	exits		Obvious exits: // North - The Triple Junction // East  - The pit
+1792875990	cmd	Alaric	54	7031	sewer.are	standing	100	0	-	south		A triple junction //   You stand in a junction with pipes leading west, north and east. // [Exits: north east west]
+1792875992	cmd	Alaric	54	7031	sewer.are	standing	100	0	-	scan		the great sewer rat                -to the far East.
+1792875993	cmd	Alaric	54	7044	sewer.are	standing	100	0	-	east		The junction going three ways //   You are in a passageway in the pipes of the sewer system leading north, east // and west.
+1792875993	cmd	Alaric	54	7044	sewer.are	standing	100	0	-	scan		the small bat                      -to the far North. // the great sewer rat                -to the East. // the great sewer rat                -to the West.
+1792875994	cmd	Alaric	54	7049	sewer.are	standing	100	0	-	east		The junction //   You stand in a junction leading north, west and east. // [Exits: north east west]
+1792875995	cmd	Alaric	54	7049	sewer.are	standing	100	0	-	scan		the great sewer rat                -to the far West.
+1792875996	cmd	Alaric	54	7060	sewer.are	standing	100	0	-	east		The dark passageway //   You can't see anything but the ground where you put your feet. The // passageway seems to continue west and north. To the east there's water
+1792875997	cmd	Alaric	54	7060	sewer.are	standing	100	0	-	scan		the great sewer rat                -to the West.
+1792875999	cmd	Alaric	54	7068	sewer.are	standing	100	0	-	east		The Watery sewer bend //   You can't see anything but the water you're in up to your hips. The sewer // seems to bend and lead west and north.
+1792876000	cmd	Alaric	54	7068	sewer.are	standing	100	0	-	scan		the great sewer rat                -to the far West.
+1792876001	cmd	Alaric	54	7067	sewer.are	standing	100	0	-	north		The Watery sewer //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead south and north.
+1792876002	cmd	Alaric	54	7067	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792876002	cmd	Alaric	54	7066	sewer.are	standing	100	0	-	north		The Watery sewer junction //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead into a junction that goes north, south and east.
+1792876003	cmd	Alaric	54	7066	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792876004	cmd	Alaric	54	7065	sewer.are	standing	100	0	-	north		The Watery sewer //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead south and north.
+1792876006	cmd	Alaric	54	7065	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792876006	cmd	Alaric	54	7064	sewer.are	standing	100	0	-	north		The Watery Sewer Junction //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead into a junction going south, north and east.
+1792876008	cmd	Alaric	54	7069	sewer.are	standing	100	0	-	east		A ledge by the dark pool //   You can't see much here but the echo tells you that there's quite a drop // down. You can just make out a huge dark pool out there in the darkness, 
+1792876008	cmd	Alaric	54	7069	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792876009	cmd	Alaric	54	7064	sewer.are	standing	100	0	-	west		The Watery Sewer Junction //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead into a junction going south, north and east.
+1792876010	cmd	Alaric	54	7064	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792876010	cmd	Alaric	54	7064	sewer.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792876011	cmd	Alaric	54	7063	sewer.are	standing	100	0	-	north		The Watery sewer //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead south and north.
+1792876011	cmd	Alaric	54	7063	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792876012	cmd	Alaric	54	7062	sewer.are	standing	100	0	-	north		The Watery sewer //   You can't see anything but the water you're in up to your hips. The sewer // seems to lead south and north.
+1792876013	cmd	Alaric	54	7062	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792876013	cmd	Alaric	54	7061	sewer.are	standing	100	0	-	north		The Watery Sewer Bend //   You can't see anything but the water you're in up to your hips. The sewer // seems to bend and lead south and west.
+1792876014	cmd	Alaric	54	7061	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792876014	cmd	Alaric	54	7055	sewer.are	standing	100	0	-	west		The Edge of The Water Sewer //   You stand in a room where half of the floor is covered in water. The water // leads east and a doorway leads west.
+1792876015	cmd	Alaric	54	7055	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792876016	cmd	Alaric	54	7050	sewer.are	standing	100	0	-	west		The small room //   The only thing in this room of interest is a chair, and that's tight to the  // rock floor. A doorway leads south and another leads east into darkness.
+1792876017	cmd	Alaric	54	7051	sewer.are	standing	100	0	-	south		The Sewer pipe //   You are in what reminds you of a foul sewer, as if you liked being here!  // You can see two exits leading either north or south.
+1792876018	cmd	Alaric	54	7051	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792876019	cmd	Alaric	54	7052	sewer.are	standing	100	0	-	south		The Grand Sewer //   You are in a Grand Sewer Pipe. This stretches toward the south. It's large  // indeed! A doorway leads to the east from here.
+1792876019	cmd	Alaric	54	7052	sewer.are	standing	100	0	-	scan		the small spider                   -to the North.
+1792876021	cmd	Alaric	54	7053	sewer.are	standing	100	0	-	south		The South end of the Grand Pipe //   You stand in water to your knees. A doorway leads west from here. The Pipe // stretches north.
+1792876022	cmd	Alaric	54	7047	sewer.are	standing	100	0	-	west		The Pool in the Sewer //   You stand in water to your waist.  To the north is the entrance to this room. // A single door leads east.
+1792876023	cmd	Alaric	54	7047	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792876023	cmd	Alaric	54	7046	sewer.are	standing	100	0	-	north		The Sewer room //   This is a Room with walls that glitters like gold though not quite like it. // This is strange as it looks as if the glitter lights the whole room. It
+1792876024	cmd	Alaric	54	7046	sewer.are	standing	100	0	-	scan		You don't see anything near you.
+1792876024	cmd	Alaric	54	7045	sewer.are	standing	100	0	-	north		The Sewer Room //   You are standing in a large room with chairs set in the walls. You have the // feeling of being watched. To the south there's an entry to a larger room.
+1792876025	cmd	Alaric	54	7045	sewer.are	standing	100	0	-	scan		the small spider                   -to the far West. // the small bat                      -to the far West.
+1792876025	cmd	Alaric	54	7038	sewer.are	standing	100	0	-	west		The three way junction //   You are standing in a junction of pipes that lead west, east and south. // [Exits: east south west]
+1792876026	cmd	Alaric	54	7038	sewer.are	standing	100	0	-	scan		the small spider                   -to the South. // the small spider                   -to the South. // the small spider                   -to the South.
+1792876026	cmd	Alaric	54	7039	sewer.are	standing	100	0	-	south		The Sewer Store Room //   You stand in a small room lit by a single torch set in the wall. The only  // way out of here is to the north.
+1792876028	cmd	Alaric	54	7038	sewer.are	standing	100	0	-	north		The three way junction //   You are standing in a junction of pipes that lead west, east and south. // [Exits: east south west]
+1792876029	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792876029	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792876030	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	heal	ref	The cackling witch-healer utters the words 'candusima'. // You feel fully refreshed! (8 castings, 80 gold.)
+1792876033	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792876033	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792876034	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792876034	cmd	Alaric	54	2416	dresden_halloween.are	standing	100	0	-	run	n 4	Northern Oak Tree Square. // [Exits: north east south west] // Main Processional, Strung with Lanterns
+1792876034	cmd	Alaric	54	2481	dresden_halloween.are	standing	100	0	-	run	e 3	Market Plaza. // [Exits: north east south west] // Market Plaza.
+1792876034	cmd	Alaric	54	2514	dresden_halloween.are	standing	100	0	-	north		Dark Alley. //   When you enter the alleyway you are submerged in darkness until your eyes // adjust to the faint light that penetrates from behind and up above.  As you
+1792876035	cmd	Alaric	54	2505	dresden_halloween.are	standing	100	0	-	east		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway
+1792876035	cmd	Alaric	54	2506	dresden_halloween.are	standing	100	0	-	north		Dead End. //   As you proceed this way down the alley you suddenly come to a dead end! // Scanning your surroundings you see the buildings on all the sides rise at
+1792876035	cmd	Alaric	54	2506	dresden_halloween.are	standing	100	0	-	open	down	It's already open.
+1792876035	cmd	Alaric	54	7030	sewer.are	standing	100	0	-	down		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 
+1792876047	cmd	Alaric	54	7036	sewer.are	standing	100	0	-	east		The pit //   You stand in a section of a pipe that leads to a dead end. In the floor // there's a pit leading down. There are bars set in the side of the pit wall
+1792876048	cmd	Alaric	54	7122	sewer.are	standing	100	0	-	down		Under the pit //   You stand in a completely dark cavern leading west. The wall looks weird here. // [Exits: west]
+1792876049	cmd	Alaric	54	7122	sewer.are	standing	100	0	-	scan		the maggot                         -to the West. // the maggot                         -to the West. // the slithering snake               -to the far West.
+1792876050	cmd	Alaric	54	7112	sewer.are	standing	100	0	-	west		An odd intersection //   You stand in a rather odd intersection of pipes. The pipes actually don't // resemble pipes anymore. They look more like a real stone tunnel, or a
+1792876052	cmd	Alaric	54	7104	sewer.are	standing	100	0	-	west		A junction in the sewer pipes //   You stand in the middle of what looks like a triple junction of pipes // going east, west and north.
+1792876053	cmd	Alaric	54	7104	sewer.are	standing	100	12	-	kill	sn	Your slash ^^^ DESTROYS ^^^ the slithering snake! [-104] // The slithering snake is DEAD!! // You have almost finished your QUEST!
+1792876057	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792876057	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1792876057	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1792876058	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 3	The Hall of Whispers // [Exits: north east south west] // Entrance to the Haunted Temple
+1792876058	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792876058	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792876058	cmd	Alaric	54	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792876059	cmd	Alaric	54	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792876059	cmd	Alaric	54	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792876059	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792876059	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792876060	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	17	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'
+1792876060	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 63 quest points.
