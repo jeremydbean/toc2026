@@ -12800,3 +12800,117 @@
 1792883387	cmd	Trentlin	50	5375	mirror.are	standing	100	0	-	up		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
 1792883388	cmd	Trentlin	50	5375	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - A clearing in the woods
 1792883390	cmd	Trentlin	50	5378	mirror.are	standing	100	0	-	north		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883391	cmd	Trentlin	50	5378	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - The Void
+1792883392	cmd	Trentlin	50	5375	mirror.are	standing	100	0	-	east		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883393	cmd	Trentlin	50	5375	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - A clearing in the woods
+1792883394	cmd	Trentlin	50	5376	mirror.are	standing	100	0	-	south		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883395	cmd	Trentlin	50	5376	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - The Void
+1792883396	cmd	Trentlin	50	5377	mirror.are	standing	100	0	-	east		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883396	cmd	Trentlin	50	5377	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - The Void
+1792883397	cmd	Trentlin	50	5377	mirror.are	standing	100	0	-	east		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883397	cmd	Trentlin	50	5377	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - The Void
+1792883399	cmd	Trentlin	50	5376	mirror.are	standing	100	0	-	north		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883401	cmd	Trentlin	50	5376	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - The Void
+1792883402	cmd	Trentlin	50	5375	mirror.are	standing	100	0	-	down		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883402	cmd	Trentlin	50	5375	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - A clearing in the woods
+1792883403	cmd	Trentlin	50	5376	mirror.are	standing	100	0	-	down		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883404	cmd	Trentlin	50	5376	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - The Void
+1792883405	cmd	Trentlin	50	5375	mirror.are	standing	100	0	-	down		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883405	cmd	Trentlin	50	5375	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - A clearing in the woods
+1792883408	cmd	Trentlin	50	5378	mirror.are	standing	100	0	-	north		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883410	cmd	Trentlin	50	5378	mirror.are	standing	100	0	-	exits		Obvious exits: // North - The Void // East  - The Void
+1792883412	cmd	Trentlin	50	8903	grove.are	standing	100	0	-	west		A clearing in the woods //   You are standing in a clearing in the light woods. Somehow, this place // seems powerfully DIFFERENT from the rest of the forest, as if something is
+1792883412	cmd	Trentlin	50	8903	grove.are	standing	100	0	-	exits		Obvious exits: // North - The Void // South - The holy grove
+1792883414	cmd	Trentlin	50	8906	grove.are	standing	100	0	-	south		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // can feel a strange sensation of joy and calm seeping through You, as if great
+1792883415	cmd	Trentlin	50	8909	grove.are	standing	100	0	-	south		The croquet lawn //   You are standing on a immaculately manicured green lawn, the kind you only // get after 200 years of meticulous work. There is a winding stone path leading
+1792883417	cmd	Trentlin	50	8910	grove.are	standing	100	0	-	south		The foyer //   You are standing in the foyer of Dragon's mansion. The wide double door to // the croquet lawn is to the north, flanked by large windows. The walls are
+1792883419	cmd	Trentlin	50	8910	grove.are	standing	100	0	-	open	north	Ok.
+1792883419	cmd	Trentlin	50	8909	grove.are	standing	100	0	-	north		The croquet lawn //   You are standing on a immaculately manicured green lawn, the kind you only // get after 200 years of meticulous work. There is a winding stone path leading
+1792883422	cmd	Trentlin	50	8906	grove.are	standing	100	0	-	north		The holy grove //   You are standing amidst the ancient oaks and poplars in the holy grove. You // can feel a strange sensation of joy and calm seeping through You, as if great
+1792883422	cmd	Trentlin	50	8903	grove.are	standing	100	0	-	north		A clearing in the woods //   You are standing in a clearing in the light woods. Somehow, this place // seems powerfully DIFFERENT from the rest of the forest, as if something is
+1792883423	cmd	Trentlin	50	5378	mirror.are	standing	100	0	-	north		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883423	cmd	Trentlin	50	5377	mirror.are	standing	100	0	-	north		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883424	cmd	Trentlin	50	5376	mirror.are	standing	100	0	-	north		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883424	cmd	Trentlin	50	5376	mirror.are	standing	100	0	-	north		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883425	cmd	Trentlin	50	5376	mirror.are	standing	100	0	-	north		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883425	cmd	Trentlin	50	5376	mirror.are	standing	100	0	-	north		The Void //   You are standing in the middle of something you cannot explain.  You see // stars yet you cannot see what you are standing on.  You are not standing
+1792883426	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792883427	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792883429	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792883430	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792883430	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792883431	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792883431	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792883431	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792883431	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792883432	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792883432	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792883432	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792883462	cmd	Trentlin	50	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792883462	cmd	Trentlin	50	2426	dresden_halloween.are	standing	100	0	-	open	east	It's already open.
+1792883463	cmd	Trentlin	50	3502	midennir_halloween.are	standing	100	0	-	run	e 3	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792883463	cmd	Trentlin	50	5258	oldthalo.are	standing	100	0	-	run	s	The dwarf forest // [Exits: north south southeast] // The dwarf forest
+1792883463	cmd	Trentlin	50	5258	oldthalo.are	resting	100	0	-	stand		You stand up.
+1792883463	cmd	Trentlin	50	5203	oldthalo.are	standing	100	0	-	run	w 6	A trail at the end of the dwarf forest // [Exits: east west] // A trail at the end of the dwarf forest
+1792883464	cmd	Trentlin	50	5209	oldthalo.are	standing	100	0	-	run	n	A Garden Path // [Exits: north south west] // A Side Street
+1792883464	cmd	Trentlin	50	5209	oldthalo.are	resting	100	0	-	stand		You stand up.
+1792883464	cmd	Trentlin	50	5224	oldthalo.are	standing	100	0	-	run	w	A back alley // [Exits: east west] // Under the watchtower
+1792883464	cmd	Trentlin	50	5224	oldthalo.are	resting	100	0	-	stand		You stand up.
+1792883465	cmd	Trentlin	50	5246	oldthalo.are	standing	100	0	-	up		The north-west watchtower //   You stand atop one of the city watchtowers. The view is magnificent // from here and you can see all the way to the western mountains. No wonder
+1792883465	cmd	Trentlin	50	26	connect.are	standing	100	0	-	up		Tower Foyer //   You have reached a small but dusty room at the top of the northwestern watch // tower in oldthalos. The rooms only adornments are a large mirror hanging on
+1792883465	cmd	Trentlin	50	27	connect.are	standing	100	0	-	enter	mirror	You enter A Mirror // Your stomach flip flops. Everything goes black for a moment. // Tower Foyer
+1792883465	cmd	Trentlin	50	5324	mirror.are	standing	100	0	-	run	d	The north-west watchtower // [Exits: down] // Under the watchtower
+1792883466	cmd	Trentlin	50	5324	mirror.are	resting	100	0	-	stand		You stand up.
+1792883466	cmd	Trentlin	50	5309	mirror.are	standing	100	0	-	run	e 2	A back alley // [Exits: east west] // A Side Street
+1792883466	cmd	Trentlin	50	5310	mirror.are	standing	100	0	-	south		A Side Street //   You are in the common section of the city. More buildings made of // clay and stone be dazzles you. Most of these homes are designed so
+1792883466	cmd	Trentlin	50	5311	mirror.are	standing	100	0	-	south		A Side Street //   This small side street leads away from the garden path to the south. // Around you stand large numbers of commoners' houses.  Many citizens
+1792883467	cmd	Trentlin	50	5338	mirror.are	standing	100	0	-	run	e	A Public Library // [Exits: east west up] // The Library Addition
+1792883468	cmd	Trentlin	50	5338	mirror.are	resting	100	0	-	stand		You stand up.
+1792883469	cmd	Trentlin	50	5338	mirror.are	standing	100	0	-	exits		Obvious exits: // West  - A Public Library
+1792883469	cmd	Trentlin	50	5338	mirror.are	standing	100	0	-	look		The Library Addition //   There are more shelves and tables here.  Vials of strange potions line a // section of the wall, and books and other items of power line another.  The exit
+1792883473	cmd	Trentlin	50	5337	mirror.are	standing	100	0	-	west		A Public Library //   This seems to be the tallest structure in the city.  Rows and rows of books // line the 20 foot tall bookcases, and a quiet serenity can be felt by all here.
+1792883474	cmd	Trentlin	50	5337	mirror.are	standing	100	0	-	exits		Obvious exits: // East  - The Library Addition // West  - A Side Street
+1792883478	cmd	Trentlin	50	5311	mirror.are	standing	100	0	-	west		A Side Street //   This small side street leads away from the garden path to the south. // Around you stand large numbers of commoners' houses.  Many citizens
+1792883479	cmd	Trentlin	50	5311	mirror.are	standing	100	0	-	exits		Obvious exits: // North - A Side Street // East  - A Public Library
+1792883482	cmd	Trentlin	50	5327	mirror.are	standing	100	0	-	west		A stone dwelling //   This small house is the dwelling of a humble citizen of Thalos. // A few rafters stand with thatched straw blowing with the wind gusts
+1792883484	cmd	Trentlin	50	5311	mirror.are	standing	100	0	-	east		A Side Street //   This small side street leads away from the garden path to the south. // Around you stand large numbers of commoners' houses.  Many citizens
+1792883484	cmd	Trentlin	50	5304	mirror.are	standing	100	0	-	south		A Garden Path //   A circular path surrounds a magnificent domed temple in the center // of the city. Flowers grow on the sides of the path and the lush trees are
+1792883485	cmd	Trentlin	50	5303	mirror.are	standing	100	0	-	south		A Garden Path //   A circular path surrounds a magnificent domed temple in the center // of the city. Flowers grow on the sides of the path and the lush trees are 
+1792883485	cmd	Trentlin	50	5302	mirror.are	standing	100	0	-	east		Main Street //   This is a magnificent street, immaculate all over.  The streets are filled // with people rushing from building to building and a balmy zephyr blows by you.
+1792883485	cmd	Trentlin	50	5301	mirror.are	standing	100	0	-	east		Main Street //   This is a magnificent street, immaculate all over. The streets are filled // with people rushing from building to building and a balmy zephyr blows by
+1792883485	cmd	Trentlin	50	5300	mirror.are	standing	100	0	-	east		The Grand Gate of Thalos //   You stand in the archway of a gigantic stone archway. The two // steel gates look indestructible, yet they are elaborate in engravings.  You can
+1792883486	cmd	Trentlin	50	5356	mirror.are	standing	100	0	-	east		A trail at the end of the dwarf forest //   The trail ends here, with tall, leafy, green trees all around you. // To the west, you can see a huge beautiful and radiant city.  Something
+1792883486	cmd	Trentlin	50	5300	mirror.are	standing	100	0	-	west		The Grand Gate of Thalos //   You stand in the archway of a gigantic stone archway. The two // steel gates look indestructible, yet they are elaborate in engravings.  You can
+1792883486	cmd	Trentlin	50	5356	mirror.are	standing	100	0	-	east		A trail at the end of the dwarf forest //   The trail ends here, with tall, leafy, green trees all around you. // To the west, you can see a huge beautiful and radiant city.  Something
+1792883486	cmd	Trentlin	50	5356	mirror.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792883488	cmd	Trentlin	50	5300	mirror.are	standing	100	0	-	west		The Grand Gate of Thalos //   You stand in the archway of a gigantic stone archway. The two // steel gates look indestructible, yet they are elaborate in engravings.  You can
+1792883490	cmd	Trentlin	50	5300	mirror.are	standing	100	0	-	kill	city	You *** DEVASTATE *** an imperial cityguard! // The Headless Horseman's Reaper shears through an imperial cityguard with terrible force! // You ^^^ DESTROY ^^^ an imperial cityguard!
+1792883493	cmd	Trentlin	50	5300	mirror.are	fighting	100	11	fight	smite		Your smite misses an imperial cityguard. // Your smite MANGLES an imperial cityguard! // Your smite *** DEVASTATES *** an imperial cityguard!
+1792883501	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792883502	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792883502	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792883502	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792883503	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792883503	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792883504	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792883504	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792883504	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792883505	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792883505	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792883507	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	16	-	aquest	complete	You inform Questor Thews you have completed her quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'You answered the emergency in time - the realm will not forget this!'
+1792883511	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	5	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 646 quest points! **
+1792883516	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	points	Quest Points: 4394
+1792883528	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	aquest	list	You ask Questor Thews for a list of quest items. // .-[ Quest Shop ]-----------------------------------------------. // |  Item                               Cost
+1792883531	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792883532	cmd	Trentlin	50	4205	dresden_halloween.are	standing	100	0	-	south		The Hall of Guttering Candles //   A thousand candles stand on every ledge and flagstone of this domed hall, // and a draught from nowhere keeps making them gutter all at once, so that the
+1792883533	cmd	Trentlin	50	4206	dresden_halloween.are	standing	100	0	-	east		The Hall of Hollow Footsteps //   The dome overhead has been draped black so this hall feels twice as high and // far emptier than it is. Every step you take comes back a half-beat late and
+1792883533	cmd	Trentlin	50	4206	dresden_halloween.are	standing	100	0	-	drink		You are no longer thirsty.
+1792883534	cmd	Trentlin	50	4206	dresden_halloween.are	standing	100	0	-	drink		You are no longer thirsty.
+1792883534	cmd	Trentlin	50	4206	dresden_halloween.are	standing	100	0	-	drink		You are no longer thirsty.
+1792883534	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	north		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792883535	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	west		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792883535	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792883535	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792883537	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	refresh	Hermie turns to you with a wink. // Hermie rests a hand on your shoulder, and the ache goes out of you.
+1792883540	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	affect		You are affected by: // Skill: 'titanic' modifies experience by 50 for 7 hours. // Skill: 'titanic' modifies moves by 2095 for 7 hours.
+1792883543	session	Trentlin	50	4208	dresden_halloween.are	quit	279s	+0 levels	+0 exp	+676005000 copper	2 kills	0 deaths	1 quests	161 commands	0 refused	coin: quests 676p 50s
