@@ -10716,3 +10716,5 @@
 1792861172	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	south		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
 1792861173	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	where	hermie	You didn't find any hermie.
 1792861176	session	Trentlin	50	2401	dresden_halloween.are	quit	887s	+0 levels	+0 exp	+313282128 copper	5 kills	0 deaths	2 quests	468 commands	0 refused	coin: loot 33p 87g 60s 28c, quests 283p 92g 21s, spent 4p 51g 60s
+1792861287	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792861288	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	inventory		You are carrying: // (14) guano //      (Glowing) a pumpkin-lantern charm
