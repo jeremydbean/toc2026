@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792871552
+LogO 1792871822
 Vers 4
 Prom ~
 Ignoring ~
@@ -17,7 +17,7 @@ ChangesSeen 20261023m:1 20261023l:1 20261023k:1 20261023i:1 20261023g:2 20261023
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 54
-Plyd 841657
+Plyd 841927
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
@@ -118,7 +118,7 @@ Achv visit-oz 1791127353
 Achv visit-high-tower 1791329329
 Achv visit-ultima 1791329350
 Achv visit-korzath-fortress 1790899622
-LastOut  1792871552
+LastOut  1792871822
 Rested 27375 0
 Daily 0 0 0 0 0
 SesLogin 1792800776
