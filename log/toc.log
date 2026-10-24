@@ -163854,3 +163854,7 @@ Sat Oct 24 00:31:28 2026 :: EOF encountered on read.
 Sat Oct 24 00:35:07 2026 :: Treasure goblin: vanished from room 5214 (A side street, oldthalo.are) (too long in one area).
 Sat Oct 24 00:36:32 2026 :: Sock.sinaddr:  3.212.128.62
 Sat Oct 24 00:36:32 2026 :: EOF encountered on read.
+Sat Oct 24 00:39:20 2026 :: Log Alaric [29210]: help paragon
+Sat Oct 24 00:40:35 2026 :: Log Alaric [29210]: bug After restoring a player to an earlier state, it is possible their hp is set to a negative value. This negative value does not change through normal "ticks" of time, leaving the player in a permanently unplayable state.
+Sat Oct 24 00:41:38 2026 :: Sock.sinaddr:  3.149.57.90
+Sat Oct 24 00:41:38 2026 :: EOF encountered on read.

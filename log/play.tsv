@@ -7217,3 +7217,6 @@
 1792801008	refused	Alaric	54	29210	korzath2.are	dead	-2	0	-	practice		Lie still; you are DEAD.
 1792801012	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
 1792801193	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    224 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792802360	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	help	paragon	No help on that word.  Did you mean: DRAGON?
+1792802435	report	Alaric	54	29210	korzath2.are	bug	After restoring a player to an earlier state, it is possible their hp is set to a negative value. This negative value does not change through normal "ticks" of time, leaving the player in a permanent	-28/1155 hp	help paragon | sc | who | prac | i | bug After restoring a player to an earlier state, it is possible their hp is set to a negative 
+1792802435	cmd	Alaric	54	29210	korzath2.are	dead	-2	1	-	bug	After restoring a player to an earlier state, it is possible their hp is set to a negative value. This negative value d	Bug logged.

@@ -1,0 +1,1 @@
+[29210] Alaric: After restoring a player to an earlier state, it is possible their hp is set to a negative value. This negative value does not change through normal "ticks" of time, leaving the player in a permanently unplayable state.
