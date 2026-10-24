@@ -7212,3 +7212,8 @@
 1792800802	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
 1792800817	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    224 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
 1792800997	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    224 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792801004	refused	Alaric	54	29210	korzath2.are	dead	-2	0	-	wake		Lie still; you are DEAD.
+1792801005	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	inventory		You are carrying: //      (Humming) Excalibur // ( 3) (Glowing) a piece of trick-or-treat candy
+1792801008	refused	Alaric	54	29210	korzath2.are	dead	-2	0	-	practice		Lie still; you are DEAD.
+1792801012	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792801193	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    224 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
