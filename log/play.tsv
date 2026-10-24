@@ -9132,3 +9132,16 @@
 1792846830	cmd	Alaric	54	10000	glitter.are	resting	100	0	-	affect		You are affected by: // Spell: 'change sex' modifies sex by 1 for 90 hours. // Spell: 'blindness' modifies hit roll by -4 for 27 hours.
 1792848267	cmd	Alaric	54	10000	glitter.are	resting	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
 1792848267	cmd	Alaric	54	10000	glitter.are	resting	100	0	-	worth		You have 1242 platinum, 29 gold, 37 silver, 97 copper // and 165530 experience (21770 exp to level).
+1792848727	cmd	Alaric	54	10000	glitter.are	resting	100	0	-	affect		You are affected by: // Spell: 'change sex' modifies sex by 1 for 57 hours.
+1792848728	cmd	Alaric	54	10000	glitter.are	resting	100	0	-	wake		You stand up.
+1792848728	cmd	Alaric	54	10000	glitter.are	standing	100	0	-	look		Before the crystal bridge. //   Just when you want to cross the bridge, a large way-sign catches your // attention. You admit that you are curious about what it says ... so why not
+1792848729	cmd	Alaric	54	10000	glitter.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792848730	cmd	Alaric	54	10000	glitter.are	standing	100	0	-	affect		You are affected by: // Spell: 'change sex' modifies sex by 1 for 57 hours.
+1792848732	cmd	Alaric	54	23	connect.are	standing	100	0	-	enter	po	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Great Portal
+1792848735	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792848736	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792848739	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792848742	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	where	herm	You didn't find any herm.
+1792848743	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792848743	cmd	Alaric	54	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792848744	cmd	Alaric	54	4202	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring

@@ -168040,3 +168040,24 @@ Sat Oct 24 13:24:27 2026 :: Log Alaric [10000]: worth
 Sat Oct 24 13:27:05 2026 :: Log Alaric [10000]: affects off: blindness
 Sat Oct 24 13:28:38 2026 :: Sock.sinaddr:  3.212.128.62
 Sat Oct 24 13:28:38 2026 :: EOF encountered on read.
+Sat Oct 24 13:32:07 2026 :: Log Alaric [10000]: af
+Sat Oct 24 13:32:08 2026 :: Log Alaric [10000]: wake
+Sat Oct 24 13:32:08 2026 :: Log Alaric [10000]: l
+Sat Oct 24 13:32:09 2026 :: Log Alaric [10000]: recal
+Sat Oct 24 13:32:10 2026 :: Log Alaric [10000]: af
+Sat Oct 24 13:32:12 2026 :: Log Alaric [10000]: en po
+Sat Oct 24 13:32:12 2026 :: Log Alaric [23]: arrived (The Great Portal) from 10000
+Sat Oct 24 13:32:15 2026 :: Log Alaric [23]: recal
+Sat Oct 24 13:32:15 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 23
+Sat Oct 24 13:32:16 2026 :: Log Alaric [4207]: w
+Sat Oct 24 13:32:16 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sat Oct 24 13:32:19 2026 :: Log Alaric [4208]: who
+Sat Oct 24 13:32:22 2026 :: Log Alaric [4208]: where herm
+Sat Oct 24 13:32:23 2026 :: Log Alaric [4208]: e
+Sat Oct 24 13:32:23 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sat Oct 24 13:32:23 2026 :: Log Alaric [4207]: e
+Sat Oct 24 13:32:23 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 24 13:32:24 2026 :: Log Alaric [4202]: eq
+Sat Oct 24 13:33:42 2026 :: Sock.sinaddr:  178.156.189.113
+Sat Oct 24 13:33:42 2026 :: EOF encountered on read.
+Sat Oct 24 13:34:06 2026 :: Treasure goblin: vanished from room 28031 (A Raised Dais, pyramid.are) (too long in one area).
