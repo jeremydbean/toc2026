@@ -8464,3 +8464,72 @@
 1792844608	cmd	Trentlin	50	10170	glitter.are	fighting	96	0	fight	look	g	He urges you to reconsider and go away .... he doesn't want to hurt you. // The royal guard has some nasty wounds. // The royal guard is using:
 1792844610	cmd	Trentlin	50	10170	glitter.are	fighting	96	0	fight	smite		Your smite misses the royal guard. // Your smite wounds the royal guard. // Your smite misses the royal guard.
 1792844615	cmd	Alaric	54	10170	glitter.are	fighting	98	0	fight	dirt		Your kicked dirt misses the royal guard. [-0]
+1792844625	cmd	Trentlin	50	10170	glitter.are	fighting	93	0	fight	smite		Your smite MASSACRES the royal guard! // Your smite decimates the royal guard! // Your smite *** DEVASTATES *** the royal guard!
+1792844631	cmd	Alaric	54	10170	glitter.are	fighting	98	0	fight	group		Trentlin's group: // [50 W] Trentlin         5197/5544 hp 9094/9094 mana 2667/2714 mv 112503 xp // [54 T] Alaric           7016/7095 hp 10823/10823 mana 4841/4858 mv 164402 xp
+1792844634	cmd	Trentlin	50	10170	glitter.are	fighting	93	0	fight	smite		Your smite *** DEVASTATES *** the royal guard! // Your smite devastates the royal guard! // Your smite *** DEMOLISHES *** the royal guard!
+1792844636	cmd	Alaric	54	10170	glitter.are	fighting	98	0	fight	dirt		The royal guard is blinded by the dirt in his eyes! // Your kicked dirt scratches the royal guard. [-1]
+1792844647	cmd	Trentlin	50	10170	glitter.are	fighting	92	0	fight	smite		Your smite devastates the royal guard! // Your smite devastates the royal guard! // Your smite *** DEVASTATES *** the royal guard!
+1792844647	cmd	Alaric	54	10170	glitter.are	fighting	98	0	fight	dirt	2.gu	The royal guard is blinded by the dirt in his eyes! // Your kicked dirt scratches the royal guard. [-1]
+1792844658	cmd	Trentlin	50	10170	glitter.are	standing	91	0	-	smite		Smite whom?
+1792844661	cmd	Alaric	54	10171	glitter.are	standing	98	0	-	north		the Royal Chambers. //   As you walk through the chambers strange words force their way into your mind: // ... O fortuna, velut luna, statu variabilis, semper crecis, aut decrescis ...
+1792844663	cmd	Alaric	54	10172	glitter.are	standing	98	0	-	north		the Royal Chambers. //   Once again words of the same strange source fill you mind: // ... In fortune solio sederam elatus ... nunc a sumo corrui ...
+1792844664	cmd	Alaric	54	10172	glitter.are	standing	98	0	-	open		Ok.
+1792844665	cmd	Alaric	54	10172	glitter.are	standing	98	0	-	scan		the Blood Royal                    -to the East. // Princess Semele                    -to the East.
+1792844666	cmd	Trentlin	50	10172	glitter.are	standing	91	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     16 hours | Sex:    Female | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1792844667	cmd	Alaric	54	10172	glitter.are	standing	98	0	-	stealth		You blend into the shadows.
+1792844670	cmd	Trentlin	50	10172	glitter.are	standing	91	0	-	look		the Royal Chambers. //   Once again words of the same strange source fill you mind: // ... In fortune solio sederam elatus ... nunc a sumo corrui ...
+1792844672	cmd	Trentlin	50	10172	glitter.are	standing	91	0	-	scan		the Blood Royal                    -to the East. // Princess Semele                    -to the East.
+1792844678	cmd	Trentlin	50	10172	glitter.are	standing	91	0	-	look		the Royal Chambers. //   Once again words of the same strange source fill you mind: // ... In fortune solio sederam elatus ... nunc a sumo corrui ...
+1792844679	cmd	Alaric	54	10173	glitter.are	standing	98	0	-	east		Princess Semele's Royal bedroom. //   You see Princess Semele lying in the bed. A few nurses are tending // to her. Some pages are removing an old set of blankets. Others are bringing
+1792844679	cmd	Alaric	54	10173	glitter.are	standing	98	0	-	bs	sem	Your backstab DISEMBOWELS Princess Semele! [-42] // You are no longer stealthful. // Your backstab hits Princess Semele. [-10]
+1792844682	cmd	Trentlin	50	10173	glitter.are	fighting	91	0	fight	consider	sem	Death will thank you for your gift. // Princess Semele would beat you like a red headed step child!
+1792844683	cmd	Trentlin	50	10173	glitter.are	fighting	91	0	fight	look	sem	You can see that she's just been through labour. Her newborn child, Dion, has // been brought to safety by some of the guardians. Her defiant look halts you. // You are baffled by such a regal person. You can do nothing, but kneel before
+1792844684	cmd	Trentlin	50	10173	glitter.are	fighting	91	0	fight	smite		Your smite DISEMBOWELS Princess Semele! // Your smite *** DEVASTATES *** Princess Semele! // Your smite MANGLES Princess Semele!
+1792844687	cmd	Alaric	54	10173	glitter.are	fighting	98	0	fight	look	sem	You can see that she's just been through labour. Her newborn child, Dion, has // been brought to safety by some of the guardians. Her defiant look halts you. // You are baffled by such a regal person. You can do nothing, but kneel before
+1792844692	cmd	Trentlin	50	10173	glitter.are	fighting	91	0	fight	smite		Your smite maims Princess Semele! // You have become better at spear! // Your smite *** DEVASTATES *** Princess Semele!
+1792844701	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	smite		Your smite misses Princess Semele.
+1792844709	cmd	Alaric	54	10173	glitter.are	fighting	96	0	fight	dirt		Your kicked dirt misses Princess Semele. [-0]
+1792844715	cmd	Trentlin	50	10173	glitter.are	fighting	92	1	fight	smite		Your smite *** DEVASTATES *** Princess Semele! // Your smite hits Princess Semele. // Your smite scratches Princess Semele.
+1792844721	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	smite		Your smite misses Princess Semele.
+1792844727	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	rescue	alar	You fail the rescue.
+1792844731	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	rescue	alar	You fail the rescue.
+1792844732	cmd	Alaric	54	10173	glitter.are	fighting	89	0	fight	eat	guano	You eat guano. // Your skin turns to stone. // Your feet rise off the ground.
+1792844734	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	rescue	alar	You fail the rescue.
+1792844739	cmd	Alaric	54	10173	glitter.are	fighting	87	0	fight	dirt		Princess Semele is blinded by the dirt in her eyes! // Your kicked dirt scratches Princess Semele. [-1]
+1792844744	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	say	i never practiced rescue :(	You say 'i never practiced rescue :('
+1792844746	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	smite		Your smite grazes Princess Semele. // Your smite misses Princess Semele. // Your smite DISMEMBERS Princess Semele!
+1792844752	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	smite		Your smite misses Princess Semele.
+1792844761	cmd	Alaric	54	10173	glitter.are	fighting	82	0	fight	say	Should be alright. Buffs dropped, still have titanic and empower for a bit at least	You say 'Should be alright. Buffs dropped, still have titanic and empower for a bit at least'
+1792844761	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	smite		Your smite misses Princess Semele.
+1792844774	cmd	Alaric	54	10173	glitter.are	fighting	79	0	fight	eat	guano	You eat guano. // Your skin turns to stone. // Your feet rise off the ground.
+1792844775	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	smite		Your smite misses Princess Semele.
+1792844779	cmd	Alaric	54	10173	glitter.are	fighting	78	0	fight	nosummon		You are no longer immune to summon.
+1792844780	cmd	Alaric	54	10173	glitter.are	fighting	78	0	fight	nosummon		You are now immune to summoning.
+1792844785	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	bash		Your bash misses Princess Semele. // You fall flat on your face!
+1792844785	cmd	Alaric	54	10173	glitter.are	fighting	76	0	fight	dirt		Your kicked dirt misses Princess Semele. [-0]
+1792844794	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	bash		Your bash misses Princess Semele. // You fall flat on your face!
+1792844799	cmd	Alaric	54	10173	glitter.are	fighting	73	0	fight	bash		Your bash misses Princess Semele. [-0] // You fall flat on your face!
+1792844803	cmd	Trentlin	50	10173	glitter.are	fighting	93	0	fight	smite		Your smite misses Princess Semele.
+1792844814	cmd	Trentlin	50	10173	glitter.are	fighting	93	0	fight	smite		Your smite wounds Princess Semele. // Your smite *** DEMOLISHES *** Princess Semele! // Your smite *** DEVASTATES *** Princess Semele!
+1792844822	cmd	Trentlin	50	10173	glitter.are	fighting	93	0	fight	smite		Your smite devastates Princess Semele! // Your smite injures Princess Semele. // Your smite *** DEVASTATES *** Princess Semele!
+1792844830	cmd	Trentlin	50	10173	glitter.are	fighting	93	0	fight	smite		Your smite DISEMBOWELS Princess Semele! // Your smite MASSACRES Princess Semele! // Your smite *** DEVASTATES *** Princess Semele!
+1792844831	cmd	Alaric	54	10173	glitter.are	fighting	68	0	fight	bash		Your bash misses Princess Semele. [-0] // You fall flat on your face!
+1792844839	cmd	Trentlin	50	10173	glitter.are	fighting	93	0	fight	smite		Your smite misses Princess Semele.
+1792844843	cmd	Alaric	54	10173	glitter.are	fighting	64	0	fight	affect		You are affected by: // Spell: 'blindness' modifies hit roll by -4 for 62 hours. // Spell: 'fly' for 18 hours.
+1792844844	cmd	Trentlin	50	10173	glitter.are	fighting	93	0	fight	smite		Your smite MANGLES Princess Semele! // Your smite MUTILATES Princess Semele! // Your smite DISEMBOWELS Princess Semele!
+1792844850	cmd	Trentlin	50	10173	glitter.are	fighting	93	0	fight	smite		Your smite *** DEVASTATES *** Princess Semele! // Your smite MUTILATES Princess Semele! // Your smite DISMEMBERS Princess Semele!
+1792844854	cmd	Alaric	54	10173	glitter.are	fighting	62	0	fight	say	Shit, blinded :)	You say 'Shit, blinded :)'
+1792844856	cmd	Trentlin	50	10173	glitter.are	fighting	93	0	fight	smite		Your smite mauls Princess Semele. // Your smite MASSACRES Princess Semele! // Your smite hits Princess Semele.
+1792844868	cmd	Trentlin	50	10173	glitter.are	fighting	93	0	fight	smite		Your smite *** DEVASTATES *** Princess Semele! // Your smite *** DEVASTATES *** Princess Semele! // Princess Semele is DEAD!!
+1792844877	cmd	Alaric	54	10173	glitter.are	fighting	58	0	fight	dirt		Your kicked dirt misses someone. [-0]
+1792844879	cmd	Trentlin	50	10173	glitter.are	fighting	93	0	fight	smite		Your smite devastates the Blood Royal! // Your smite *** DEVASTATES *** the Blood Royal! // Your smite MASSACRES the Blood Royal!
+1792844885	cmd	Trentlin	50	10173	glitter.are	fighting	93	0	fight	look	blood	She is clad in indigo blue velvet robes and on her breast glitters a precious // starjewel, carved into an eight-pointed star ... she's armed and don't under- // estimate her mental powers ... don't forget she has pledged her life to the
+1792844888	cmd	Trentlin	50	10173	glitter.are	fighting	93	0	fight	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    a pirate's ring
+1792844891	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	smite		Your smite maims the Blood Royal! // Your smite *** DEVASTATES *** the Blood Royal! // Your smite *** DEVASTATES *** the Blood Royal!
+1792844892	cmd	Alaric	54	10173	glitter.are	fighting	56	0	fight	group		someone's group: // [50 W] Someone          5141/5544 hp 9094/9094 mana 2714/2714 mv 112503 xp // [54 T] Alaric           4027/7095 hp 10823/10823 mana 2639/4858 mv 164759 xp
+1792844896	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	look	in cor	Corpse of Princess Semele contains: //      (Glowing) a piece of trick-or-treat candy //      (Magical) (Glowing) the Crystalline Diadem of Perception
+1792844901	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	get	all cor	You get a piece of trick-or-treat candy from corpse of Princess Semele. // You get the Crystalline Diadem of Perception from corpse of Princess Semele. // You get the Crystalline Robe of Shielding from corpse of Princess Semele.
+1792844904	cmd	Trentlin	50	10173	glitter.are	fighting	93	0	fight	eat	cand	You eat a piece of trick-or-treat candy.
+1792844905	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	smite		Your smite wounds the Blood Royal. // Your smite mauls the Blood Royal. // Your smite *** DEVASTATES *** the Blood Royal!
+1792844911	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	smite		Your smite *** DEVASTATES *** the Blood Royal! // Your smite MANGLES the Blood Royal! // Your smite hits the Blood Royal.
+1792844919	cmd	Trentlin	50	10173	glitter.are	fighting	92	0	fight	smite		Your smite MUTILATES the Blood Royal! // Your smite mauls the Blood Royal. // Your smite injures the Blood Royal.
