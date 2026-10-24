@@ -171560,3 +171560,6 @@ Sat Oct 24 18:10:35 2026 :: Log Alaric [4208]: who
 Sat Oct 24 18:10:35 2026 :: Log Alaric [4208]: worth
 Sat Oct 24 18:11:30 2026 :: Log Alaric [4208]: wake
 Sat Oct 24 18:11:30 2026 :: Log Alaric [4208]: l
+Sat Oct 24 18:12:58 2026 :: Sock.sinaddr:  34.198.201.66
+Sat Oct 24 18:12:58 2026 :: EOF encountered on read.
+Sat Oct 24 18:16:33 2026 :: Sock.sinaddr:  99.62.115.159
