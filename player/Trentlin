@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792806112
+LogO 1792806273
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -17,15 +17,15 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 50
-Plyd 56429
+Plyd 56590
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
 StashMax 75
 HyruleSecrets 67108864
 Scro 22
-Room 24114
-HMV  5544 5544 9114 9114 2741 2754
+Room 7006
+HMV  5544 5544 9114 9114 2744 2754
 NewGold 230
 NewPlat 394
 NewCopp 541
@@ -116,7 +116,7 @@ Achv visit-high-tower 1792621034
 Achv visit-ultima 1792621074
 Achv visit-korzath-fortress 1792287816
 Achv visit-ice-keep 1792455929
-LastOut  1792806112
+LastOut  1792806273
 Rested 0 0
 Daily 4 20748 3 1 20748
 SesLogin 1792781853
@@ -130,9 +130,10 @@ SesQuest 1
 QuestPnts 2760
 QuestStrk 36
 CasinoLost 4
+QuestNext 30
 Exp  112503
 Act  204
-AfBy 3678908
+AfBy 3678910
 AfBy2 4106
 Comm 24576
 Mounted 0
@@ -174,7 +175,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 830 1301 394
-Cond 0 17 37
+Cond 0 14 34
 Sk 100 'axe'
 Sk 89 'dagger'
 Sk 25 'flail'
@@ -205,6 +206,7 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
+AffD 'invis'  46  27   0   0          2          0
 AffD 'giant strength'   0  27  15   1          0          0
 AffD 'divine protection'   0  27   0   0          0       4096
 AffD 'fire shield'   0  27   0   0          0          8
@@ -214,15 +216,15 @@ AffD 'fly'   0  27   0   0     524288          0
 AffD 'haste'   0  27   4   2    2097152          0
 AffD 'sanctuary'   0  27   0   0        128          0
 AffD 'giant strength'   0  27  15   1          0          0
-AffD 'divine protection'  13  27   0   0          0       4096
+AffD 'divine protection'  12  27   0   0          0       4096
 AffD 'fire shield'   0  27   0   0          0          8
-AffD 'protection evil'  12  27   0   0       8192          0
+AffD 'protection evil'  11  27   0   0       8192          0
 AffD 'pass door'  12  27   0   0    1048576          0
 AffD 'fly'   8  27   0   0     524288          0
 AffD 'haste'   4  27   4   2    2097152          0
-AffD 'sanctuary'   8  27   0   0        128          0
+AffD 'sanctuary'   7  27   0   0        128          0
 AffD 'bless'   0  27  -4  24          0          0
-AffD 'bless'   4  27   4  18          0          0
+AffD 'bless'   3  27   4  18          0          0
 AffD 'armor'   0  27 -20  17          0          0
 AffD 'shield'   0  27 -20  17          0          0
 AffD 'stone skin'   0  27 -40  17          0          0
@@ -284,7 +286,7 @@ AffD 'protection evil'   0  27   0   0       8192          0
 AffD 'fire shield'   0  27   0   0          0          8
 AffD 'divine protection'   0  27   0   0          0       4096
 AffD 'giant strength'   0  27  15   1          0          0
-AffD 'empower'   0   7   0   0          0          0
+AffD 'empower'   0   4   0   0          0          0
 AffD 'sanctuary'   0  27   0   0        128          0
 AffD 'haste'   0  27   4   2    2097152          0
 AffD 'fly'   0  27   0   0     524288          0
@@ -293,18 +295,18 @@ AffD 'protection evil'   0  27   0   0       8192          0
 AffD 'fire shield'   0  27   0   0          0          8
 AffD 'divine protection'   0  27   0   0          0       4096
 AffD 'giant strength'   0  27  15   1          0          0
-AffD 'empower'   0   7  15   3          0          0
-AffD 'empower'   0   7  15   4          0          0
-AffD 'empower'  37   7  11   2          0          0
-AffD 'empower'   0   7  15   5          0          0
-AffD 'empower'   0   7  20  18          0          0
-AffD 'empower'   0   7  20  19          0          0
-AffD 'empower'   0   7 -100  17          0          0
-AffD 'titanic'   0   7 4620  13          0          0
-AffD 'titanic'   0   7 7595  12          0          0
-AffD 'titanic'   0   7 2295  14          0          0
-AffD 'titanic'   0   7  50  16          0          0
-AffD 'change sex'   0  61   1   6          0          0
+AffD 'empower'   0   4  15   3          0          0
+AffD 'empower'   0   4  15   4          0          0
+AffD 'empower'  37   4  11   2          0          0
+AffD 'empower'   0   4  15   5          0          0
+AffD 'empower'   0   4  20  18          0          0
+AffD 'empower'   0   4  20  19          0          0
+AffD 'empower'   0   4 -100  17          0          0
+AffD 'titanic'   0   4 4620  13          0          0
+AffD 'titanic'   0   4 7595  12          0          0
+AffD 'titanic'   0   4 2295  14          0          0
+AffD 'titanic'   0   4  50  16          0          0
+AffD 'change sex'   0  58   1   6          0          0
 End
 
 #O
@@ -332,7 +334,17 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 205
+Time 203
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 45
+Nest 1
+Wear -1
+Time 557
 Cost 0
 Cond 100
 Repd 0
@@ -356,7 +368,7 @@ Lev  14
 Cost 100000
 Cond 93
 Repd 0
-Val  0 0 9474 0 0
+Val  0 0 9471 0 0
 End
 
 #O
@@ -463,10 +475,8 @@ End
 #O
 Vnum 16006
 Nest 0
-ExtF 134217728
 Wear -1
 Lev  43
-Time 1
 Cost 22600000
 Cond 100
 Repd 0
@@ -912,16 +922,6 @@ Cost 1000000
 Cond 100
 Repd 0
 Spell 3 'sanctuary'
-End
-
-#O
-Vnum 45
-Nest 0
-Wear -1
-Time 559
-Cost 0
-Cond 100
-Repd 0
 End
 
 #STASH
