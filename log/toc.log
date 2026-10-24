@@ -163899,3 +163899,12 @@ Sat Oct 24 01:24:25 2026 :: Sock.sinaddr:  99.62.115.159
 Sat Oct 24 01:24:35 2026 :: EOF encountered on read.
 Sat Oct 24 01:24:35 2026 :: Closing link to Alaric.
 Sat Oct 24 01:25:30 2026 :: Treasure goblin: vanished from room 13498 (Blackened Hall, hell.are) (too long in one area).
+Sat Oct 24 01:27:18 2026 :: Sock.sinaddr:  5.161.215.244
+Sat Oct 24 01:27:18 2026 :: EOF encountered on read.
+Sat Oct 24 01:29:33 2026 :: Sock.sinaddr:  208.126.22.104
+Sat Oct 24 01:29:35 2026 :: Loading Alaric's playerfile
+Sat Oct 24 01:29:36 2026 :: Alaric@208.126.22.104 reconnected.
+Sat Oct 24 01:29:39 2026 :: Log Alaric [29210]: who
+Sat Oct 24 01:29:46 2026 :: Log Alaric [29210]: replay
+Sat Oct 24 01:29:49 2026 :: EOF encountered on read.
+Sat Oct 24 01:29:49 2026 :: Closing link to Alaric.
