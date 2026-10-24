@@ -9971,3 +9971,24 @@
 1792857030	cmd	Alaric	54	16079	pirate.are	standing	63	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
 1792857034	cmd	Alaric	54	16079	pirate.are	standing	63	0	-	worth		You have 1576 platinum, 104 gold, 27 silver, 78 copper // and 165684 experience (21616 exp to level).
 1792857037	cmd	Alaric	54	16079	pirate.are	standing	65	0	-	bs	sw	Your backstab >>> ANNIHILATES <<< The swashbuckler! [-248] // Your backstab >>> ANNIHILATES <<< The swashbuckler! [-202]
+1792857102	cmd	Alaric	54	16079	pirate.are	standing	50	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792857102	cmd	Alaric	54	16079	pirate.are	standing	50	0	-	inventory		You are carrying: // (16) guano //      (Humming) a water ring
+1792857105	cmd	Alaric	54	16079	pirate.are	standing	50	0	-	drop	ring	You drop a water ring.
+1792857107	cmd	Alaric	54	16079	pirate.are	standing	50	0	-	sacrifice	ring	The Gods give you 76 copper coins for your sacrifice.
+1792857108	cmd	Alaric	54	16079	pirate.are	standing	50	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792857111	cmd	Alaric	54	16079	pirate.are	standing	50	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    229 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792857114	cmd	Alaric	54	16079	pirate.are	standing	50	0	-	secondary	exc	You stop using a bone mace. // You wield Excalibur as your second weapon.
+1792857115	cmd	Alaric	54	16079	pirate.are	standing	50	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    229 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792857116	cmd	Alaric	54	16079	pirate.are	standing	50	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792857123	cmd	Alaric	54	16079	pirate.are	standing	50	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792857124	cmd	Alaric	54	16079	pirate.are	standing	50	0	-	practice		mindbar              6%  mind leech           1%  telekinesis          6%   // torment             76%  axe                  7%  dagger             100%   // flail                5%  mace                88%  polearm              3%  
+1792857130	cmd	Alaric	54	16079	pirate.are	standing	50	0	-	wear	mace	You stop using (Flaming) the Crystalline Sword of Justice. // You wield a bone mace. // You feel quite confident with a bone mace.
+1792857131	cmd	Alaric	54	16079	pirate.are	standing	51	0	-	look		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling
+1792857133	cmd	Alaric	54	16079	pirate.are	standing	51	0	-	bs	mid	Your backstab === OBLITERATES === The midshipman! [-139] // Your backstab >>> ANNIHILATES <<< The midshipman! [-202]
+1792857152	cmd	Alaric	54	4207	dresden_halloween.are	standing	51	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792857152	cmd	Alaric	54	4208	dresden_halloween.are	standing	51	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792857154	cmd	Alaric	54	4207	dresden_halloween.are	standing	51	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792857154	cmd	Alaric	54	4202	dresden_halloween.are	standing	51	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792857155	cmd	Alaric	54	4203	dresden_halloween.are	standing	51	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1792857155	cmd	Alaric	54	4210	dresden_halloween.are	standing	51	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1792857156	cmd	Alaric	54	4210	dresden_halloween.are	standing	51	0	-	sleep		You go to sleep.
