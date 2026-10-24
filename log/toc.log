@@ -170100,3 +170100,8 @@ Sat Oct 24 16:05:19 2026 :: Log Alaric [4202]: n
 Sat Oct 24 16:05:19 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4202
 Sat Oct 24 16:05:19 2026 :: Log Alaric [4203]: n
 Sat Oct 24 16:05:19 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
+Sat Oct 24 16:06:05 2026 :: Sock.sinaddr:  178.156.189.249
+Sat Oct 24 16:06:05 2026 :: EOF encountered on read.
+Sat Oct 24 16:09:22 2026 :: Log Alaric [4210]: who
+Sat Oct 24 16:10:15 2026 :: Sock.sinaddr:  23.31.96.97
+Sat Oct 24 16:10:15 2026 :: EOF encountered on read.
