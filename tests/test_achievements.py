@@ -178,7 +178,9 @@ class AchievementSystemTests(unittest.TestCase):
         # One call in each of the two ways a quest is completed: an
         # ordinary quest and a daily (2026-10-20), never two in one.
         self.assertEqual(quest.count("achievement_record_quest(ch)"), 2)
-        for completion in ("static void complete_automatic_quest(", "static void complete_daily_quest("):
+        # The ordinary quest's work is in its _body; the wrapper only adds
+        # the after-quest snapshot (2026-10-23).
+        for completion in ("static void complete_automatic_quest_body(", "static void complete_daily_quest("):
             fn = quest[quest.index(completion):]
             fn = fn[:fn.index("\n}\n")]
             self.assertEqual(fn.count("achievement_record_quest(ch)"), 1, completion)

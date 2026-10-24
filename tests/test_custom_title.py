@@ -45,7 +45,9 @@ class TitleSourceTests(unittest.TestCase):
 
     def test_advance_level_only_moves_a_class_title(self) -> None:
         update = (ROOT / "src" / "update.c").read_text(encoding="latin-1")
-        body = update[update.index("void advance_level("):]
+        # advance_level is a wrapper that adds the level snapshot; the
+        # work, titles included, is in advance_level_body (2026-10-23).
+        body = update[update.index("static void advance_level_body("):]
         body = body[:body.index("\n}\n")]
         self.assertIn("set_class_title( ch, false )", body)
         self.assertNotIn("title_table", body)
