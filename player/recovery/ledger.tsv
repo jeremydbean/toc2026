@@ -13,3 +13,4 @@
 13	1792849189	snapshot	committed	P6adc9d850001b1ba	Alaric	-	quest	-	Alaric.20261024_133949.quest fnv b68c4c8b 21414 bytes	faaa03c3
 14	1792850019	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261024_135339.quest fnv 0350155d 18700 bytes	2eb7c7da
 15	1792850366	snapshot	committed	P6adca00b00079e30	Trentlin	-	quest	-	Trentlin.20261024_135926.quest fnv 5c0c0b4f 18724 bytes	400a59b2
+16	1792854528	uid	assign	P6adcca000010930a	Eclipse	-	player	-	first seen since the ledger began	d9041bab

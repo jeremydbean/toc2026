@@ -9831,3 +9831,6 @@
 1792852639	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	worth		You have 1414 platinum, 13 gold, 21 silver, 66 copper // and 165600 experience (21700 exp to level).
 1792854078	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
 1792854078	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	worth		You have 1414 platinum, 13 gold, 21 silver, 66 copper // and 165600 experience (21700 exp to level).
+1792854533	cmd	Eclipse	70	9988	valhalla.are	standing	100	0	-	who		[70 Night   IMP   ] Eclipse is waiting to hear back on issues from you // [54 Dwarf   Kngt  ] Alaric. // Players found: 2
+1792854546	cmd	Eclipse	70	9988	valhalla.are	standing	100	0	-	gwhere		Mortals around the game: // Alaric         Rm [ 4210]  Rm Name: The Sickroom of the Restless            
+1792854586	session	Eclipse	70	9988	valhalla.are	quit	58s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	3 commands	0 refused	coin: none
