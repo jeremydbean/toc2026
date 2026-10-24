@@ -175412,3 +175412,93 @@ Sat Oct 24 23:02:48 2026 :: Log Trentlin [2497]: aquest gamble yes
 Sat Oct 24 23:02:52 2026 :: Log Trentlin [2497]: quit
 Sat Oct 24 23:02:52 2026 :: Trentlin has quit.
 Sat Oct 24 23:02:52 2026 :: [QUIT] Player rejoined the real world.
+Sat Oct 24 23:07:34 2026 :: Sock.sinaddr:  5.161.177.47
+Sat Oct 24 23:07:34 2026 :: EOF encountered on read.
+Sat Oct 24 23:07:41 2026 :: Sock.sinaddr:  24.2.118.125
+Sat Oct 24 23:07:42 2026 :: Loading Trentlin's playerfile
+Sat Oct 24 23:07:44 2026 :: Loading Trentlin's playerfile
+Sat Oct 24 23:07:44 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Sat Oct 24 23:07:44 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Sat Oct 24 23:08:55 2026 :: Log Trentlin [2497]: gr
+Sat Oct 24 23:08:58 2026 :: Log Trentlin [2497]: aquest request
+Sat Oct 24 23:08:58 2026 :: Log Trentlin [2497]: quest assigned: kill an imperial cityguard (mob 5303, level 17) in mirror.are, 5 minutes, emergency
+Sat Oct 24 23:09:07 2026 :: Log Trentlin [2497]: enter door
+Sat Oct 24 23:09:07 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sat Oct 24 23:09:09 2026 :: Log Trentlin [2401]: east
+Sat Oct 24 23:09:09 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Oct 24 23:09:09 2026 :: Log Trentlin [2403]: east
+Sat Oct 24 23:09:09 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Sat Oct 24 23:09:10 2026 :: Log Trentlin [2420]: east
+Sat Oct 24 23:09:10 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Sat Oct 24 23:09:10 2026 :: Log Trentlin [2421]: east
+Sat Oct 24 23:09:10 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Sat Oct 24 23:09:10 2026 :: Log Trentlin [2422]: east
+Sat Oct 24 23:09:10 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Sat Oct 24 23:09:10 2026 :: Log Trentlin [2423]: east
+Sat Oct 24 23:09:10 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Sat Oct 24 23:09:11 2026 :: Log Trentlin [2424]: east
+Sat Oct 24 23:09:11 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Oct 24 23:09:11 2026 :: Log Trentlin [2425]: east
+Sat Oct 24 23:09:11 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Oct 24 23:09:11 2026 :: Log Trentlin [2426]: open east
+Sat Oct 24 23:09:11 2026 :: Log Trentlin [2426]: east
+Sat Oct 24 23:09:11 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Oct 24 23:09:13 2026 :: Log Trentlin [2440]: north
+Sat Oct 24 23:09:13 2026 :: Log Trentlin [3908]: arrived (East trail around Dresden) from 2440
+Sat Oct 24 23:09:13 2026 :: Log Trentlin [3908]: north
+Sat Oct 24 23:09:13 2026 :: Log Trentlin [3907]: arrived (East trail around Dresden) from 3908
+Sat Oct 24 23:09:13 2026 :: Log Trentlin [3907]: north
+Sat Oct 24 23:09:13 2026 :: Log Trentlin [3906]: arrived (Northeast corner of dusty trail.) from 3907
+Sat Oct 24 23:09:13 2026 :: Log Trentlin [3906]: east
+Sat Oct 24 23:09:13 2026 :: Log Trentlin [56]: arrived (Peaceful Path) from 3906
+Sat Oct 24 23:09:14 2026 :: Log Trentlin [56]: east
+Sat Oct 24 23:09:14 2026 :: Log Trentlin [8950]: arrived (At the edge of the grove) from 56
+Sat Oct 24 23:09:14 2026 :: Log Trentlin [8950]: east
+Sat Oct 24 23:09:14 2026 :: Log Trentlin [8951]: arrived (Inside the grove) from 8950
+Sat Oct 24 23:09:14 2026 :: Log Trentlin [8951]: east
+Sat Oct 24 23:09:14 2026 :: Log Trentlin [8904]: arrived (The holy grove) from 8951
+Sat Oct 24 23:09:14 2026 :: Log Trentlin [8904]: east
+Sat Oct 24 23:09:14 2026 :: Log Trentlin [8905]: arrived (The sacred glade) from 8904
+Sat Oct 24 23:09:15 2026 :: Log Trentlin [8905]: east
+Sat Oct 24 23:09:15 2026 :: Log Trentlin [8906]: arrived (The holy grove) from 8905
+Sat Oct 24 23:09:15 2026 :: Log Trentlin [8906]: north
+Sat Oct 24 23:09:15 2026 :: Log Trentlin [8903]: arrived (A clearing in the woods) from 8906
+Sat Oct 24 23:09:15 2026 :: Log Trentlin [8903]: north
+Sat Oct 24 23:09:15 2026 :: Log Trentlin [5378]: arrived (The Void) from 8903
+Sat Oct 24 23:09:25 2026 :: Log Trentlin [5378]: ex
+Sat Oct 24 23:09:27 2026 :: Log Trentlin [5378]: w
+Sat Oct 24 23:09:27 2026 :: Log Trentlin [8903]: arrived (A clearing in the woods) from 5378
+Sat Oct 24 23:09:28 2026 :: Log Trentlin [8903]: ex
+Sat Oct 24 23:09:30 2026 :: Log Trentlin [8903]: w
+Sat Oct 24 23:09:30 2026 :: Log Trentlin [8902]: arrived (The holy grove) from 8903
+Sat Oct 24 23:09:30 2026 :: Log Trentlin [8902]: ex
+Sat Oct 24 23:09:32 2026 :: Log Trentlin [8902]: e
+Sat Oct 24 23:09:32 2026 :: Log Trentlin [8903]: arrived (A clearing in the woods) from 8902
+Sat Oct 24 23:09:34 2026 :: Log Trentlin [8903]: north
+Sat Oct 24 23:09:34 2026 :: Log Trentlin [5378]: arrived (The Void) from 8903
+Sat Oct 24 23:09:35 2026 :: Log Trentlin [5378]: ex
+Sat Oct 24 23:09:38 2026 :: Log Trentlin [5378]: n
+Sat Oct 24 23:09:38 2026 :: Log Trentlin [5377]: arrived (The Void) from 5378
+Sat Oct 24 23:09:39 2026 :: Log Trentlin [5377]: ex
+Sat Oct 24 23:09:40 2026 :: Log Trentlin [5377]: e
+Sat Oct 24 23:09:40 2026 :: Log Trentlin [5377]: arrived (The Void) from 5377
+Sat Oct 24 23:09:40 2026 :: Log Trentlin [5377]: ex
+Sat Oct 24 23:09:41 2026 :: Log Trentlin [5377]: n
+Sat Oct 24 23:09:41 2026 :: Log Trentlin [5376]: arrived (The Void) from 5377
+Sat Oct 24 23:09:42 2026 :: Log Trentlin [5376]: ex
+Sat Oct 24 23:09:42 2026 :: Log Trentlin [5376]: n
+Sat Oct 24 23:09:42 2026 :: Log Trentlin [5376]: arrived (The Void) from 5376
+Sat Oct 24 23:09:43 2026 :: Log Trentlin [5376]: ex
+Sat Oct 24 23:09:44 2026 :: Log Trentlin [5376]: u
+Sat Oct 24 23:09:44 2026 :: Log Trentlin [5377]: arrived (The Void) from 5376
+Sat Oct 24 23:09:45 2026 :: Log Trentlin [5377]: ex
+Sat Oct 24 23:09:46 2026 :: Log Trentlin [5377]: u
+Sat Oct 24 23:09:46 2026 :: Log Trentlin [5378]: arrived (The Void) from 5377
+Sat Oct 24 23:09:46 2026 :: Log Trentlin [5378]: ex
+Sat Oct 24 23:09:47 2026 :: Log Trentlin [5378]: u
+Sat Oct 24 23:09:47 2026 :: Log Trentlin [5375]: arrived (The Void) from 5378
+Sat Oct 24 23:09:48 2026 :: Log Trentlin [5375]: ex
+Sat Oct 24 23:09:49 2026 :: Sock.sinaddr:  23.31.96.97
+Sat Oct 24 23:09:50 2026 :: EOF encountered on read.
+Sat Oct 24 23:09:50 2026 :: Log Trentlin [5375]: n
+Sat Oct 24 23:09:50 2026 :: Log Trentlin [5378]: arrived (The Void) from 5375
