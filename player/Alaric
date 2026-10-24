@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792845991
+LogO 1792846256
 Vers 4
 Prom ~
 Ignoring ~
@@ -17,14 +17,14 @@ ChangesSeen 20261023g:1 20261023f:1 20261023e:1 20261023d:1 20261023c:1 20261023
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 54
-Plyd 816096
+Plyd 816361
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
 StashMax 150
 Scro 22
 Room 10000
-HMV  1165 1165 1701 1833 818 818
+HMV  1165 1165 1811 1833 818 818
 NewGold 29
 NewPlat 1242
 NewCopp 97
@@ -118,7 +118,7 @@ Achv visit-oz 1791127353
 Achv visit-high-tower 1791329329
 Achv visit-ultima 1791329350
 Achv visit-korzath-fortress 1790899622
-LastOut  1792845991
+LastOut  1792846256
 Rested 27713 0
 Daily 0 0 0 0 0
 SesLogin 1792800776
@@ -138,7 +138,6 @@ CasinoLost 304
 Exp  165530
 Act  4261068
 AfBy 513
-AfBy2 4170
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -169,8 +168,8 @@ Trai 36
 Save  3
 Alig  950
 Hit   56
-Dam   88
-ACs -294 -269 -317 -58
+Dam   74
+ACs -259 -234 -282 -23
 Attr 20 13 13 18 19
 AMod 12 -2 2 3 0
 Pass Al3w9zuAlwpyY~
@@ -226,16 +225,8 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
-AffD 'stealth'   0   2   0   0          0         64
-AffD 'change sex'   0 104   1   6          0          0
-AffD 'blindness'  38  41  -4  18          1          0
-AffD 'divine protection'   0   3   0   0          0       4096
-AffD 'fire shield'   0   3   0   0          0          8
-AffD 'shroud'   0   3 -35  17          0          0
-AffD 'power gloves'   0   3  14  19          0          0
-AffD 'detect good'   0   3   0   0          0          2
-AffD 'divine protection'   0   3   0   0          0       4096
-AffD 'fire shield'   0   3   0   0          0          8
+AffD 'change sex'   0  99   1   6          0          0
+AffD 'blindness'  37  36  -4  18          1          0
 End
 
 #O

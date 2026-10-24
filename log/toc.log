@@ -167873,3 +167873,142 @@ Sat Oct 24 12:48:52 2026 :: Log Trentlin [2401]: kick
 Sat Oct 24 12:48:55 2026 :: Log Trentlin [2401]: kick
 Sat Oct 24 12:48:58 2026 :: Log Trentlin [2401]: smite
 Sat Oct 24 12:48:58 2026 :: Trentlin's weapon was broken by a smite.
+Sat Oct 24 12:49:04 2026 :: Log Trentlin [2401]: wear lan
+Sat Oct 24 12:49:04 2026 :: Log Alaric [10000]: affects off: stealth
+Sat Oct 24 12:49:05 2026 :: Log Trentlin [2401]: smite
+Sat Oct 24 12:49:11 2026 :: Log Trentlin [2401]: smite
+Sat Oct 24 12:49:19 2026 :: Log Trentlin [2401]: get lan
+Sat Oct 24 12:49:20 2026 :: Log Trentlin [2401]: wear lan
+Sat Oct 24 12:49:21 2026 :: Log Trentlin [2401]: smite
+Sat Oct 24 12:49:27 2026 :: Log Trentlin [2401]: smite
+Sat Oct 24 12:49:34 2026 :: Log Trentlin [2401]: smite
+Sat Oct 24 12:49:41 2026 :: Log Trentlin [2401]: smite
+Sat Oct 24 12:49:47 2026 :: Log Trentlin [2401]: smite
+Sat Oct 24 12:49:53 2026 :: Log Trentlin [2401]: smite
+Sat Oct 24 12:49:59 2026 :: Log Alaric [10000]: affects off: divine protection, fire shield, shroud, power gloves, detect good, divine protection, fire shield
+Sat Oct 24 12:50:02 2026 :: Log Trentlin [2401]: smite
+Sat Oct 24 12:50:11 2026 :: Log Trentlin [2401]: smite
+Sat Oct 24 12:50:17 2026 :: Log Trentlin [2401]: smite
+Sat Oct 24 12:50:24 2026 :: Log Trentlin [2401]: smite
+Sat Oct 24 12:50:28 2026 :: Log Trentlin [2401]: killed the Headless Horseman
+Sat Oct 24 12:50:28 2026 :: Log Trentlin [2401]: coin +27 platinum
+Sat Oct 24 12:50:28 2026 :: Log Trentlin [2401]: coin +128 silver
+Sat Oct 24 12:50:28 2026 :: Log Trentlin [2401]: coin +172 copper
+Sat Oct 24 12:50:28 2026 :: Log Trentlin [2401]: coin +72 gold
+Sat Oct 24 12:50:33 2026 :: Log Trentlin [2401]: l in cor
+Sat Oct 24 12:50:40 2026 :: Log Trentlin [2401]: get reaper cor
+Sat Oct 24 12:50:43 2026 :: Log Trentlin [2401]: comp rea
+Sat Oct 24 12:50:55 2026 :: Log Trentlin [2401]: wear rea
+Sat Oct 24 12:50:58 2026 :: Log Trentlin [2401]: get all cor
+Sat Oct 24 12:51:00 2026 :: Log Trentlin [2401]: compare helm
+Sat Oct 24 12:51:03 2026 :: Log Trentlin [2401]: drop helm
+Sat Oct 24 12:51:05 2026 :: Log Trentlin [2401]: i
+Sat Oct 24 12:51:05 2026 :: Log Trentlin [2401]: i
+Sat Oct 24 12:51:06 2026 :: Log Trentlin [2401]: i
+Sat Oct 24 12:51:06 2026 :: Log Trentlin [2401]: i
+Sat Oct 24 12:51:08 2026 :: Log Trentlin [2401]: aquest request
+Sat Oct 24 12:51:09 2026 :: Log Trentlin [2401]: u
+Sat Oct 24 12:51:09 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sat Oct 24 12:51:09 2026 :: Log Trentlin [2410]: u
+Sat Oct 24 12:51:09 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sat Oct 24 12:51:10 2026 :: Log Trentlin [2411]: u
+Sat Oct 24 12:51:10 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sat Oct 24 12:51:10 2026 :: Log Trentlin [2414]: u
+Sat Oct 24 12:51:10 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sat Oct 24 12:51:10 2026 :: Log Trentlin [2497]: u
+Sat Oct 24 12:51:13 2026 :: Log Trentlin [2497]: aquest request
+Sat Oct 24 12:51:13 2026 :: Log Trentlin [2497]: quest assigned: kill Townguard (mob 13215, level 15) in solace.are, 13 minutes, ordinary
+Sat Oct 24 12:51:17 2026 :: Log Trentlin [2497]: enter door
+Sat Oct 24 12:51:17 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sat Oct 24 12:51:27 2026 :: Log Trentlin [2401]: r w 7
+Sat Oct 24 12:51:27 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Sat Oct 24 12:51:27 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Sat Oct 24 12:51:27 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Sat Oct 24 12:51:27 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Sat Oct 24 12:51:27 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Sat Oct 24 12:51:27 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Sat Oct 24 12:51:27 2026 :: Log Trentlin [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sat Oct 24 12:51:28 2026 :: Log Trentlin [2438]: open west
+Sat Oct 24 12:51:28 2026 :: Log Trentlin [2438]: r w 4
+Sat Oct 24 12:51:28 2026 :: Log Trentlin [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sat Oct 24 12:51:28 2026 :: Log Trentlin [6000]: arrived (The edge of the forest) from 2439
+Sat Oct 24 12:51:28 2026 :: Log Trentlin [6001]: arrived (A trail through the light forest) from 6000
+Sat Oct 24 12:51:28 2026 :: Log Trentlin [6002]: arrived (A trail through the light forest) from 6001
+Sat Oct 24 12:51:28 2026 :: Log Trentlin [6002]: s
+Sat Oct 24 12:51:28 2026 :: Log Trentlin [6011]: arrived (A small path through the light forest) from 6002
+Sat Oct 24 12:51:28 2026 :: Log Trentlin [6011]: s
+Sat Oct 24 12:51:28 2026 :: Log Trentlin [6008]: arrived (The forest clearing) from 6011
+Sat Oct 24 12:51:29 2026 :: Log Trentlin [6008]: e
+Sat Oct 24 12:51:29 2026 :: Log Trentlin [6009]: arrived (Outside a small cabin in the forest) from 6008
+Sat Oct 24 12:51:29 2026 :: Log Trentlin [6009]: s
+Sat Oct 24 12:51:29 2026 :: Log Trentlin [6014]: arrived (An intersection in the dense forest) from 6009
+Sat Oct 24 12:51:29 2026 :: Log Trentlin [6014]: e
+Sat Oct 24 12:51:29 2026 :: Log Trentlin [6015]: arrived (A small path in the dense forest) from 6014
+Sat Oct 24 12:51:29 2026 :: Log Trentlin [6015]: s
+Sat Oct 24 12:51:29 2026 :: Log Trentlin [6016]: arrived (A small path in the dense forest) from 6015
+Sat Oct 24 12:51:30 2026 :: Log Trentlin [6016]: s
+Sat Oct 24 12:51:30 2026 :: Log Trentlin [6017]: arrived (A small path in the dense forest) from 6016
+Sat Oct 24 12:51:30 2026 :: Log Trentlin [6017]: w
+Sat Oct 24 12:51:30 2026 :: Log Trentlin [6018]: arrived (An intersection in the light forest) from 6017
+Sat Oct 24 12:51:30 2026 :: Log Trentlin [6018]: s
+Sat Oct 24 12:51:30 2026 :: Log Trentlin [51]: arrived (The top of the cliff.) from 6018
+Sat Oct 24 12:51:30 2026 :: Log Trentlin [51]: d
+Sat Oct 24 12:51:30 2026 :: Log Trentlin [13001]: arrived (Rock Outcropping) from 51
+Sat Oct 24 12:51:31 2026 :: Log Trentlin [13001]: d
+Sat Oct 24 12:51:31 2026 :: Log Trentlin [13002]: arrived (Small Grove) from 13001
+Sat Oct 24 12:51:31 2026 :: Log Trentlin [13002]: w
+Sat Oct 24 12:51:31 2026 :: Log Trentlin [13003]: arrived (Entrance to the Town of Solace) from 13002
+Sat Oct 24 12:51:31 2026 :: Log Trentlin [13003]: n
+Sat Oct 24 12:51:31 2026 :: Log Trentlin [13201]: arrived (Gateway to Solace) from 13003
+Sat Oct 24 12:51:33 2026 :: Log Trentlin [13201]: k to
+Sat Oct 24 12:51:33 2026 :: Log Trentlin [13201]: alignment -889 -> -914 (Fiend)
+Sat Oct 24 12:51:33 2026 :: Log Trentlin [13201]: killed Townguard
+Sat Oct 24 12:51:33 2026 :: Log Trentlin [13201]: coin +2 silver
+Sat Oct 24 12:51:33 2026 :: Log Trentlin [13201]: coin +3 copper
+Sat Oct 24 12:51:33 2026 :: Log Trentlin [13201]: coin +1 gold
+Sat Oct 24 12:51:37 2026 :: Log Trentlin [13201]: recal
+Sat Oct 24 12:51:37 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 13201
+Sat Oct 24 12:51:38 2026 :: Log Trentlin [4207]: w
+Sat Oct 24 12:51:38 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sat Oct 24 12:51:38 2026 :: Log Alaric [10000]: gos Nice. He can drop some good loot
+Sat Oct 24 12:51:39 2026 :: Log Trentlin [4208]: heal all
+Sat Oct 24 12:51:43 2026 :: Log Trentlin [4208]: e
+Sat Oct 24 12:51:43 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4208
+Sat Oct 24 12:51:43 2026 :: Log Trentlin [4207]: e
+Sat Oct 24 12:51:43 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 24 12:51:43 2026 :: Log Trentlin [4202]: e
+Sat Oct 24 12:51:43 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sat Oct 24 12:51:44 2026 :: Log Trentlin [4201]: e
+Sat Oct 24 12:51:44 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sat Oct 24 12:51:44 2026 :: Log Trentlin [2427]: e
+Sat Oct 24 12:51:44 2026 :: Log Trentlin [2427]: e
+Sat Oct 24 12:51:45 2026 :: Log Trentlin [2427]: n
+Sat Oct 24 12:51:45 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 24 12:51:45 2026 :: Log Trentlin [2404]: n
+Sat Oct 24 12:51:45 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sat Oct 24 12:51:45 2026 :: Log Trentlin [2401]: u
+Sat Oct 24 12:51:45 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sat Oct 24 12:51:46 2026 :: Log Trentlin [2410]: u
+Sat Oct 24 12:51:46 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sat Oct 24 12:51:46 2026 :: Log Trentlin [2411]: u
+Sat Oct 24 12:51:46 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sat Oct 24 12:51:46 2026 :: Log Trentlin [2414]: u
+Sat Oct 24 12:51:46 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sat Oct 24 12:51:48 2026 :: Log Trentlin [2497]: aquest complete
+Sat Oct 24 12:51:48 2026 :: Log Trentlin [2497]: copper +121680900
+Sat Oct 24 12:51:48 2026 :: Log Trentlin [2497]: quest complete: 121p 68g 9s, 15 quest points (streak bonus 30%)
+Sat Oct 24 12:51:48 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261024_125148.quest (PRESTORE Trentlin to see it).
+Sat Oct 24 12:51:53 2026 :: Log Trentlin [2497]: aquest gamble yes
+Sat Oct 24 12:51:55 2026 :: Log Trentlin [2497]: enter door
+Sat Oct 24 12:51:55 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sat Oct 24 12:52:00 2026 :: Log Trentlin [2401]: go yeah got his reapier
+Sat Oct 24 12:52:02 2026 :: Log Trentlin [2401]: l rea
+Sat Oct 24 12:52:08 2026 :: Log Trentlin [2401]: go helm was kind of meh
+Sat Oct 24 12:52:14 2026 :: Log Trentlin [2401]: go alright, taking off, thanks again!
+Sat Oct 24 12:52:19 2026 :: Log Trentlin [2401]: quit
+Sat Oct 24 12:52:19 2026 :: Trentlin has quit.
+Sat Oct 24 12:52:19 2026 :: [QUIT] Player rejoined the real world.
+Sat Oct 24 12:52:23 2026 :: Log Alaric [10000]: af
+Sat Oct 24 12:53:01 2026 :: Sock.sinaddr:  3.12.251.153
+Sat Oct 24 12:53:01 2026 :: EOF encountered on read.
+Sat Oct 24 12:53:47 2026 :: Treasure goblin: vanished from room 18022 (A snow covered trail, icekeep.are) (too long in one area).
