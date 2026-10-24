@@ -1,0 +1,384 @@
+#PLAYER
+Name Trentlin~
+Id   18408
+LogO 1792241640
+Vers 4
+Prom < %h/%H hp %v/%V mv %E>%c~
+Ignoring ~
+Race dwarf~
+Sex  0
+Cla  3
+Gui  3
+Psionic  0
+PsiGrant 0
+PsiSpec ~
+PsiKnown ~
+ChangesSeen ~
+Cast none
+Levl 10
+Plyd 9876
+ListRemorts ~
+NumRemorts 0
+Note 1544841593
+Scro 22
+Room 28120
+HMV  -44 139 269 269 34 154
+NewGold 88
+NewPlat 11
+NewCopp 106
+NewSilv 30
+BankCP 0
+IntTime 1792177212
+IntTotal 0
+Dcount 0
+SavedOnce 1
+Corpses	0
+PkRec 0
+PkGiv 0
+AchKills 93
+AchQuests 6
+AchDeaths 1
+AchExplore 0
+AchMaps 0
+AchCompass 0
+AchTriforce 0
+Achv level-5 1791055385
+Achv level-10 1792240482
+Achv first-kill 1791054159
+Achv first-quest 1791057078
+Achv five-quest-streak 1792183900
+Achv quest-gamble-win 1791057092
+Achv visit-mud-school 1791053973
+Achv visit-casino 1791056149
+Achv visit-smurf 1791055506
+Achv visit-haon-dor 1792025839
+Achv visit-gangland 1791056925
+Achv visit-moria 1792240539
+Achv visit-thalos 1791414546
+Achv visit-shire 1791414577
+Achv first-death 1791414685
+Achv carry-one-platinum 1791054979
+Achv four-denominations 1791055231
+Achv carry-ten-platinum 1792115503
+Achv visit-froboz 1791055958
+Achv visit-azeroth 1792241612
+Achv visit-glitter-palace 1791414563
+Achv visit-new-thalos 1791415830
+LastOut  1792240096
+SesLogin 1792239880
+SesDur   216
+SesExpG  690
+SesLvlG  0
+SesKill  3
+SesPK    0
+SesDead  0
+SesQuest 0
+QuestPnts 422
+QuestStrk 6
+QuestNext 8
+Exp  23292
+Act  65740
+AfBy 512
+Comm 24576
+Mounted 0
+On_Quest 0
+Quest_Pause 0
+Pk_State 0
+Jw_Timer 0
+ColFlag 1
+Color 0 0
+Color 1 8
+Color 2 5
+Color 3 14
+Color 4 11
+Color 5 3
+Color 6 2
+Color 7 4
+Color 8 5
+Color 9 14
+Color 10 4
+Color 11 0
+Color 12 12
+Color 13 7
+Color 14 11
+Color 15 6
+Color 16 6
+Pos  0
+Trai 1
+Save  -4
+Alig  -122
+Hit   11
+Dam   8
+ACs 59 54 54 99
+Attr 14 16 16 12 19
+AMod 0 10 11 0 7
+Pass TrjPUdRVdu8MY~
+Titl  the Combatant~
+Pnts 0
+TSex 1
+LLev 0
+HMVP 139 269 154
+Cond 0 10 5
+Sk 1 'armor'
+Sk 1 'burning hands'
+Sk 1 'chill touch'
+Sk 1 'detect invis'
+Sk 1 'faerie fire'
+Sk 1 'fly'
+Sk 1 'giant strength'
+Sk 1 'identify'
+Sk 1 'lightning bolt'
+Sk 1 'magic missile'
+Sk 1 'refresh'
+Sk 1 'shield'
+Sk 75 'axe'
+Sk 82 'dagger'
+Sk 25 'flail'
+Sk 25 'mace'
+Sk 35 'polearm'
+Sk 75 'shield block'
+Sk 30 'spear'
+Sk 85 'sword'
+Sk 30 'whip'
+Sk 76 'bash'
+Sk 1 'disarm'
+Sk 1 'heroic grip'
+Sk 78 'kick'
+Sk 76 'parry'
+Sk 1 'rescue'
+Sk 75 'second attack'
+Sk 1 'scrolls'
+Sk 1 'wands'
+Sk 62 'recall'
+Gr 'rom basics'
+Gr 'mage basics'
+Gr 'warrior basics'
+Gr 'mage default'
+Gr 'warrior default'
+Gr 'warrior guild'
+AffD 'bless'  47  54  -7  24          0          0
+AffD 'bless'  51  54   7  18          0          0
+AffD 'change sex'  51  14  -1   6          0          0
+End
+
+#O
+Vnum 3716
+Nest 0
+Wear 0
+Cost 0
+Cond 99
+Repd 0
+Val  0 0 36 0 0
+End
+
+#O
+Vnum 3704
+Nest 0
+Wear 11
+Cost 0
+Cond 94
+Repd 0
+End
+
+#O
+Vnum 3702
+Nest 0
+Wear 16
+Cost 0
+Cond 94
+Repd 0
+End
+
+#O
+Vnum 3708
+Nest 0
+Wear 8
+Cost 0
+Cond 96
+Repd 0
+End
+
+#O
+Vnum 3705
+Nest 0
+Wear 4
+Cost 0
+Cond 95
+Repd 0
+End
+
+#O
+Vnum 3705
+Nest 0
+Wear 3
+Cost 0
+Cond 93
+Repd 0
+End
+
+#O
+Vnum 4444
+Nest 0
+Wear -1
+Lev  40
+Cost 23000000
+Cond 100
+Repd 0
+Affect -1 40 -1 1 20 0 0
+End
+
+#O
+Vnum 2803
+Nest 0
+Wear 2
+Lev  7
+Cost 36000
+Cond 100
+Repd 0
+Affect -1 7 -1 4 22 0 0
+End
+
+#O
+Vnum 3709
+Nest 0
+Wear 9
+Cost 0
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 3715
+Nest 0
+Wear 17
+Cost 0
+Cond 96
+Repd 0
+End
+
+#O
+Vnum 103
+Nest 0
+Wear -1
+Lev  2
+Cost 20
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 101
+Nest 0
+Wear 6
+Lev  2
+Cost 500
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 3052
+Nest 0
+Wear 15
+Lev  5
+Cost 5100
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3052
+Nest 0
+Wear 14
+Lev  5
+Cost 5100
+Cond 100
+Repd 0
+Affect -1 5 -1 -3 5 0 0
+End
+
+#O
+Vnum 12001
+Nest 0
+Wear -1
+Lev  5
+Cost 2000000
+Cond 100
+Repd 0
+Val  0 4 3 0 0
+Affect -1 5 -1 4 20 0 0
+End
+
+#O
+Vnum 2803
+Nest 0
+Wear 1
+Lev  7
+Cost 36000
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 3074
+Nest 0
+Wear 7
+Lev  5
+Cost 1500000
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 3505
+Nest 0
+Wear -1
+Lev  6
+Cost 82000
+Cond 99
+Repd 0
+Affect -1 6 -1 1 24 0 0
+End
+
+#O
+Vnum 3077
+Nest 0
+Wear 10
+Lev  5
+Cost 1500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 58
+Nest 0
+Wear -1
+Time 183
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 2102
+Nest 0
+Wear 5
+Lev  4
+Cost 240
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 8713
+Nest 0
+Wear 13
+Lev  9
+Cost 270000
+Cond 100
+Repd 0
+Val  4 4 5 0 0
+End
+
+#END
