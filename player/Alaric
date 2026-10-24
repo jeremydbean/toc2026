@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792856481
+LogO 1792857036
 Vers 4
 Prom ~
 Ignoring ~
@@ -17,14 +17,14 @@ ChangesSeen 20261023g:1 20261023f:1 20261023e:1 20261023d:1 20261023c:1 20261023
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 54
-Plyd 826586
+Plyd 827141
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
 StashMax 150
 Scro 22
 Room 16079
-HMV  548 1155 1833 1833 810 810
+HMV  758 1155 1833 1833 810 810
 NewGold 104
 NewPlat 1576
 NewCopp 78
@@ -118,7 +118,7 @@ Achv visit-oz 1791127353
 Achv visit-high-tower 1791329329
 Achv visit-ultima 1791329350
 Achv visit-korzath-fortress 1790899622
-LastOut  1792856481
+LastOut  1792857036
 Rested 27626 0
 Daily 0 0 0 0 0
 SesLogin 1792800776
@@ -137,7 +137,7 @@ CasinoWon  51
 CasinoLost 304
 Exp  165684
 Act  4261068
-AfBy 524800
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -169,7 +169,7 @@ Save  3
 Alig  1000
 Hit   60
 Dam   74
-ACs -304 -279 -327 -68
+ACs -264 -239 -287 -28
 Attr 20 13 13 18 19
 AMod 11 -2 1 5 0
 Pass Al3w9zuAlwpyY~
@@ -225,8 +225,6 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
-AffD 'fly'   0   6   0   0     524288          0
-AffD 'stone skin'   0   3 -40  17          0          0
 End
 
 #O
