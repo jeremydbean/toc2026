@@ -7851,3 +7851,25 @@
 1792843398	cmd	Alaric	54	29209	korzath2.are	standing	98	0	-	look		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
 1792843399	cmd	Alaric	54	29210	korzath2.are	standing	98	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
 1792843401	cmd	Alaric	54	29210	korzath2.are	standing	98	0	-	bs	mad	Your backstab misses a deranged madman. [-0] // Your backstab >>> ANNIHILATES <<< a deranged madman! [-235] // Your backstab MANGLES a deranged madman! [-53]
+1792843454	cmd	Alaric	54	29210	korzath2.are	standing	95	0	-	scan		a killer clown                     -to the South. // an Animated Skeleton               -to the West. // an Animated Skeleton               -to the West.
+1792843458	cmd	Alaric	54	29211	korzath2.are	standing	95	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1792843459	cmd	Alaric	54	29211	korzath2.are	standing	95	0	-	bs	sk	Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-312] // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-531] // Your backstab misses an Animated Skeleton. [-0]
+1792843473	cmd	Alaric	54	29211	korzath2.are	standing	94	0	-	bs	sk	Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-374] // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-402] // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-298]
+1792843483	cmd	Alaric	54	29211	korzath2.are	standing	94	0	-	scan		a deranged madman                  -to the North. // a deranged madman                  -to the North. // a Shadowman                        -to the far North.
+1792843488	cmd	Alaric	54	29212	korzath2.are	standing	94	0	-	north		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1792843490	cmd	Alaric	54	29212	korzath2.are	standing	94	0	-	bs	mad	You have become better at backstab! // Your backstab mauls a deranged madman. [-22] // Your backstab <<< ERADICATES >>> a deranged madman! [-195]
+1792843532	cmd	Alaric	54	29212	korzath2.are	fighting	90	0	fight	inventory		You are carrying: //      a diamond key //      (Magical) (Glowing) a pumpkin-lantern charm
+1792843537	cmd	Alaric	54	29212	korzath2.are	fighting	90	0	fight	compare	charm	A) a pumpkin-lantern charm (level 0) // B) the Crystalline Royal Cloak (level 50), worn // Slot: neck.  Your damage comes from weapons.
+1792843539	cmd	Alaric	54	29212	korzath2.are	fighting	90	0	fight	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792843549	cmd	Alaric	54	29212	korzath2.are	fighting	89	0	fight	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    226 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792843551	cmd	Alaric	54	29212	korzath2.are	fighting	89	0	fight	wake		You are already fighting!
+1792843552	cmd	Alaric	54	29212	korzath2.are	fighting	89	0	fight	look		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1792843560	cmd	Alaric	54	29212	korzath2.are	fighting	88	0	fight	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792843614	cmd	Alaric	54	29212	korzath2.are	fighting	85	0	fight	scan		a Shadowman                        -to the North. // a Shadowman                        -to the North. // an insane lieutenant               -to the North.
+1792843622	cmd	Alaric	54	29212	korzath2.are	standing	85	0	-	stealth		You fail to enter stealth.
+1792843623	cmd	Alaric	54	29212	korzath2.are	standing	85	0	-	stealth		You blend into the shadows.
+1792843625	cmd	Alaric	54	29218	korzath2.are	standing	85	0	-	north		Twist in the Maze //   The path to the north ends here.  The hallway breaks to the east and // to the west.
+1792843628	cmd	Alaric	54	29218	korzath2.are	standing	85	0	-	bs	shadow	Your backstab does UNSPEAKABLE things to a Shadowman! [-356] // You are no longer stealthful. // Your backstab does UNSPEAKABLE things to a Shadowman! [-462]
+1792843660	cmd	Alaric	54	29218	korzath2.are	fighting	80	0	fight	worth		You have 1091 platinum, 636 gold, 1039 silver, 1646 copper // and 162494 experience (24806 exp to level).
+1792843664	cmd	Alaric	54	29218	korzath2.are	fighting	79	0	fight	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    226 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792843682	cmd	Alaric	54	29218	korzath2.are	fighting	78	0	fight	dirt		Your kicked dirt misses an insane lieutenant. [-0]
