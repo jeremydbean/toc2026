@@ -8287,3 +8287,180 @@
 1792844312	cmd	Trentlin	50	29107	korzath1.are	fighting	96	0	fight	say	im still too evil for a lot of that stuff you gave me a few days ago	You say 'im still too evil for a lot of that stuff you gave me a few days ago'
 1792844313	cmd	Trentlin	50	29107	korzath1.are	fighting	96	0	fight	smite		Your smite *** DEVASTATES *** a Human mage! // Your smite MUTILATES a Human mage! // Your smite devastates a Human mage!
 1792844322	cmd	Trentlin	50	29107	korzath1.are	fighting	95	0	fight	smite		Your smite misses a dwarf mage.
+1792844327	cmd	Trentlin	50	29107	korzath1.are	fighting	93	0	fight	smite		Your smite devastates a dwarf mage! // A dwarf mage's Flaming Aura hits you. // Your smite *** DEVASTATES *** a dwarf mage!
+1792844331	cmd	Alaric	54	29107	korzath1.are	standing	92	0	-	say	Soon as you Hero, you should switch back quick enough	You say 'Soon as you Hero, you should switch back quick enough'
+1792844333	cmd	Alaric	54	29107	korzath1.are	standing	92	0	-	wake		You are already standing.
+1792844333	cmd	Alaric	54	29107	korzath1.are	standing	92	0	-	look		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1792844336	cmd	Alaric	54	29107	korzath1.are	standing	92	0	-	look	i cor	Corpse of a dwarf mage contains: //      (Magical) scorched plate //      (Magical) (Glowing) Starlight
+1792844342	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	look		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1792844343	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	look	in cor	Corpse of a dwarf mage contains: //      (Magical) scorched plate //      (Magical) (Glowing) Starlight
+1792844343	cmd	Alaric	54	29107	korzath1.are	standing	92	0	-	(social)		They aren't here.
+1792844347	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	get	star cor	You get Starlight from corpse of a dwarf mage.
+1792844349	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	compare	star	A) Starlight (level 45) // B) a *twinkling* ball of light (level 14), worn // Slot: light.  Your damage comes from weapons.
+1792844350	cmd	Alaric	54	29107	korzath1.are	standing	92	0	-	look	tr	You see nothing special about her. // Trentlin has a few bruises. // Trentlin is using:
+1792844353	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	wear	star	You stop using a *twinkling* ball of light. // You light Starlight and hold it.
+1792844358	cmd	Trentlin	50	29107	korzath1.are	standing	91	9	-	stash	put ball	You put a *twinkling* ball of light away for safe keeping.
+1792844362	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	look	in co	Corpse of a dwarf mage contains: //      (Magical) scorched plate //      concoction list
+1792844365	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	look	in 2.co	Corpse of a Human mage contains: //      (Invis) (Magical) a robe of invisibility //      herbs list
+1792844374	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	get	infin 2.co	You get infinity cloak from corpse of a Human mage.
+1792844376	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	compare	inf	A) infinity cloak (level 44) -- can't use: made for another race // B) a twin-headed mantle (level 27), worn // Slot: about body.  Your damage comes from weapons.
+1792844380	cmd	Alaric	54	29107	korzath1.are	standing	93	0	-	say	Should actually be able to do GP easily enough with these buffs	You say 'Should actually be able to do GP easily enough with these buffs'
+1792844382	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	drop	infi	You drop infinity cloak.
+1792844392	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	say	yeah can do most places with them ive found so far	You say 'yeah can do most places with them ive found so far'
+1792844393	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	look		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1792844395	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	look	in co	Corpse of a dwarf mage contains: //      (Magical) scorched plate //      concoction list
+1792844398	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	look	in 3.co	A rotting corpse contains: //      (Magical) Mind Mace //      (Magical) an oiled cloak
+1792844405	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	get	all 3.co	You get Mind Mace from a rotting corpse. // You get an oiled cloak from a rotting corpse.
+1792844406	cmd	Alaric	54	29107	korzath1.are	standing	93	0	-	say	Cloaks and weapons up there	You say 'Cloaks and weapons up there'
+1792844407	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	compare	mace	A) Mind Mace (level 43) // B) the Gohma eye-lance (level 40), worn // Slot: wield.  Your damage comes from weapons.
+1792844426	cmd	Alaric	54	29107	korzath1.are	standing	93	0	-	group		Trentlin's group: // [50 W] Trentlin         5056/5544 hp 9094/9094 mana 2714/2714 mv 112503 xp // [54 T] Alaric           6600/7095 hp 10771/10823 mana 4858/4858 mv 164402 xp
+1792844427	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	drop	mace	You drop Mind Mace.
+1792844429	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	compare	cloa	A) an oiled cloak (level 43) // B) a twin-headed mantle (level 27), worn // Slot: about body.  Your damage comes from weapons.
+1792844432	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	drop	cloa	You drop an oiled cloak.
+1792844433	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	look		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1792844436	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	look	in 3.co	A rotting corpse contains: //      Nothing.
+1792844437	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	look	in 4.c	A stinking corpse contains: //      (Invis) (Magical) a robe of invisibility //      herbs list
+1792844441	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	look	in 5.c	A very rotted corpse contains: //      Nothing.
+1792844442	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	scan		a secret guard                     -to the South. // a secret guard                     -to the South.
+1792844445	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	look		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1792844446	cmd	Trentlin	50	29110	korzath1.are	standing	91	0	-	north		Project Starlight //   The thing that produces the brilliant white light is a massive ceiling // high portal.  The end of the hallway is made up of glittering black rock
+1792844447	cmd	Trentlin	50	29110	korzath1.are	standing	91	0	-	scan		You don't see anything near you.
+1792844449	cmd	Alaric	54	29110	korzath1.are	standing	93	0	-	say	Wanna zip up there? I have the text file ready	You say 'Wanna zip up there? I have the text file ready'
+1792844452	cmd	Alaric	54	29110	korzath1.are	standing	93	0	-	look	i po	Looking into The Starlight Portal reveals: // Grassy Plain //   You stand on a grassy plain.  A cool breeze blows making the long
+1792844454	cmd	Trentlin	50	29110	korzath1.are	standing	91	0	-	say	sure	You say 'sure'
+1792844456	cmd	Alaric	54	4207	dresden_halloween.are	standing	93	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792844457	cmd	Trentlin	50	29118	korzath1.are	standing	91	0	-	enter	por	You enter The Starlight Portal // Your stomach flip flops. Everything goes black for a moment. // Grassy Plain
+1792844459	cmd	Trentlin	50	4207	dresden_halloween.are	standing	91	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792844459	cmd	Alaric	54	4208	dresden_halloween.are	standing	93	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792844461	cmd	Alaric	54	4208	dresden_halloween.are	standing	93	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792844462	cmd	Trentlin	50	4208	dresden_halloween.are	standing	91	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792844465	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: //      (Humming) key card //      a long blue wand
+1792844467	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // Trentlin arrives in a cloud of dust from the west.
+1792844468	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792844468	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792844469	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Trentlin arrives in a cloud of dust from the west.
+1792844470	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792844471	cmd	Alaric	54	2440	dresden_halloween.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792844471	cmd	Alaric	54	3503	midennir_halloween.are	standing	100	0	-	east		City Entrance //   You stand on the outskirts of Dresden.  A line of carved pumpkins marks // the city boundary, their flames burning in no wind.  To the east lies the
+1792844471	cmd	Alaric	54	3502	midennir_halloween.are	standing	100	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  A crow sits at the center of the
+1792844472	cmd	Alaric	54	3501	midennir_halloween.are	standing	100	0	-	north		The Lane //   You stroll along a lane that in daylight would be pleasant and shaded. // Tonight the branches form grasping arches overhead, and the spaces between
+1792844472	cmd	Alaric	54	3500	midennir_halloween.are	standing	100	0	-	north		The Plains //   You are standing on the plains. This is a vast desolate place where the // wind can howl undisturbed since nothing but you bars its way.  Tonight the
+1792844472	cmd	Alaric	54	3500	midennir_halloween.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792844473	cmd	Alaric	54	21	connect.are	standing	100	0	-	nw		A twisting path //   A small twisting path leads off of the northeastern plains. Way to the // southwest you can make out the high walls of the city of dresden, and from
+1792844473	cmd	Alaric	54	21	connect.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792844474	cmd	Alaric	54	22	connect.are	standing	100	0	-	west		Before the great circle //   You stand here before a monument, that stands out of time and space.  // Impossibly large stones make up what looks like a ritual or meeting 
+1792844474	cmd	Alaric	54	23	connect.are	standing	100	0	-	south		The Great Portal //   Here stands one of the last of the great portals. These magical gateways were // placed here in this land, by the elder race. Each was supposed to lead to
+1792844475	cmd	Alaric	54	23	connect.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792844476	cmd	Alaric	54	10000	glitter.are	standing	100	0	-	enter	po	You enter A Great Portal // Your stomach flip flops. Everything goes black for a moment. // Before the crystal bridge.
+1792844477	cmd	Trentlin	50	10000	glitter.are	standing	100	0	-	enter	por	You enter A Great Portal // Your stomach flip flops. Everything goes black for a moment. // Before the crystal bridge.
+1792844486	cmd	Trentlin	50	10000	glitter.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    a pirate's ring
+1792844492	cmd	Alaric	54	10001	glitter.are	standing	100	0	-	north		A crystal bridge. //   You are walking on a crystal bridge. In the far the Glittering Palace // towers above you ... you also seem to hear some noises now.
+1792844492	cmd	Alaric	54	10002	glitter.are	standing	100	0	-	north		Royal Island. //   You step off the bridge and clearly hear sounds of a raging battle ... // OHHH MY GOD .... THE PALACE IS UNDER ATTACK !!! ....
+1792844493	cmd	Alaric	54	10002	glitter.are	standing	100	0	-	open	north	Ok.
+1792844493	cmd	Alaric	54	10003	glitter.are	standing	100	0	-	north		The Glitter Palace's Grand Gate. //   Once proud palace guards lie on the ground ... nothing much remains of // them but a bloody pulp, Jeeezzz you sure you wanna get caught up in the middle
+1792844493	cmd	Alaric	54	10003	glitter.are	standing	100	0	-	open	north	Ok.
+1792844493	cmd	Alaric	54	10027	glitter.are	standing	100	0	-	run	n 7	A large hall. // [Exits: north south] // Trentlin arrives in a cloud of dust from the south.
+1792844494	cmd	Alaric	54	10028	glitter.are	standing	100	0	-	up		The royal stairway. //   The royal stairway leads up to the second floor and down to the second. // [Exits: up down]
+1792844494	cmd	Alaric	54	10029	glitter.are	standing	100	0	-	up		A grand hallway. //   The Palace Guards that defended the staircase lie dead at your feet. // [Exits: north down]
+1792844494	cmd	Alaric	54	10053	glitter.are	standing	100	0	-	run	n 4	A grand hallway. // [Exits: north south] // Trentlin arrives in a cloud of dust from the south.
+1792844494	cmd	Alaric	54	10053	glitter.are	standing	100	0	-	open	north	Ok.
+1792844495	cmd	Alaric	54	10062	glitter.are	standing	100	0	-	run	n 3	Throne Room. // [Exits: north east south west] // Trentlin arrives in a cloud of dust from the south.
+1792844495	cmd	Alaric	54	10062	glitter.are	standing	100	0	-	open	trapdoor	You open a secret door.
+1792844495	cmd	Alaric	54	10067	glitter.are	standing	100	0	-	up		Above the throne. //   You climbed on the throne, opened the trapdoor and managed to squeeze // your way up into this alcove here ... You see another trapdoor above you, and
+1792844495	cmd	Alaric	54	10067	glitter.are	standing	100	0	-	open	up	Ok.
+1792844496	cmd	Alaric	54	10068	glitter.are	standing	100	0	-	up		A dark hallway. //   You've now reached the third floor. Fires have been doused to (hopefully) // slow down the rebel forces' progress, since darkness is great at concealing
+1792844496	cmd	Alaric	54	10068	glitter.are	standing	100	0	-	open	hidden	You open a secret door.
+1792844496	cmd	Alaric	54	10069	glitter.are	standing	100	0	-	north		A dark hallway. //   Fires have been doused to slow down the rebel forces' progress ... thank // God you brought torches of your own with you !! You can vaguely make out the
+1792844496	cmd	Alaric	54	10069	glitter.are	standing	100	0	-	open	secret	You open a secret door.
+1792844497	cmd	Alaric	54	10070	glitter.are	standing	100	0	-	west		West end in the dark hallway. //   It's as dark as night in here. You can see but a few feet before you ... // You think you see a door to the west. The hall continues south.
+1792844497	cmd	Alaric	54	10074	glitter.are	standing	100	0	-	south		A dark hallway. //   It's as dark as night in here. You see a door to the west. The hall // continues south.
+1792844497	cmd	Alaric	54	10075	glitter.are	standing	100	0	-	south		Dark end of the hall. //   It's really dark in here ... there's a door to the west. The east wall // is cloaked in darkness.
+1792844497	cmd	Alaric	54	10075	glitter.are	standing	100	0	-	open	hidden	You open a secret door.
+1792844498	cmd	Alaric	54	10076	glitter.are	standing	100	0	-	east		A dark hallway. //   Still the same darkness, but you can see a way east. // [Exits: east west]
+1792844498	cmd	Alaric	54	10077	glitter.are	standing	100	0	-	east		A dark hallway. //   This is the darkest part of the hall yet and the only exit seems to // be the way by which you came here.
+1792844498	cmd	Alaric	54	10078	glitter.are	standing	100	0	-	east		A dark room. //   The darkness seems less now ... you see a door to the south and east. // [Exits: (east) (south) west]
+1792844498	cmd	Alaric	54	10078	glitter.are	standing	100	0	-	open	south	Ok.
+1792844499	cmd	Alaric	54	10080	glitter.are	standing	100	0	-	south		A dark hallway. //   Ahhh .... you can see some light seeping through the ceiling here, but // it isn't much and you sadly decide the only exit is the way you came?
+1792844499	cmd	Alaric	54	10080	glitter.are	standing	100	0	-	open	trapdoor	You open a secret door.
+1792844499	cmd	Alaric	54	10087	glitter.are	standing	100	0	-	up		A sloping passage. //   You opened the hidden trapdoor and managed to crawl your way up here. // A small burning torch is fastened to the wall ... guess they forgot to douse
+1792844499	cmd	Alaric	54	10088	glitter.are	standing	100	0	-	up		A dimly lit room. //   Ahh you've reached the fourth floor ... the light is getting less again. // You clearly see a door to the west.
+1792844500	cmd	Alaric	54	10088	glitter.are	standing	100	0	-	open	west	Ok.
+1792844500	cmd	Alaric	54	10089	glitter.are	standing	100	0	-	west		A dimly lit hallway. //   It's almost dark again, but you can see a door to the east and an // opening to the west.
+1792844500	cmd	Alaric	54	10090	glitter.are	standing	100	0	-	west		A dimly lit hallway. //   You're enveloped in darkness again ... you think you see an opening // to the west and east.
+1792844500	cmd	Alaric	54	10091	glitter.are	standing	100	0	-	west		Dark end in the hallway. //   The darkness begins to get oppressive ... // still you see a way east and south.
+1792844501	cmd	Alaric	54	10092	glitter.are	standing	100	0	-	south		A dimly lit hallway. //   Pfff, at last you see a teeny tiny bit of light seeping through a crack // in the west wall. To the south you notice a beautifully decorated tapestry
+1792844501	cmd	Alaric	54	10093	glitter.are	standing	100	0	-	east		A dimly lit hallway. //   The darkness is growing more dense again ... still you are able to see // an opening east and west. On the south wall hangs another tapestry.
+1792844501	cmd	Alaric	54	10093	glitter.are	standing	100	0	-	open	tapestry	You open a secret door.
+1792844501	cmd	Alaric	54	10095	glitter.are	standing	100	0	-	south		A brightly lit room. //   Ahh, the tapestry skillfully hid a secret room. A burning torch is left // here, giving you enough light to see a concealed trapdoor in the ceiling. The
+1792844502	cmd	Alaric	54	10095	glitter.are	standing	100	0	-	open	tile	You open a secret door.
+1792844502	cmd	Alaric	54	10097	glitter.are	standing	100	0	-	down		A brightly lit room. //   You climbed down through the floor back to the third level of the Glitter // Palace... to the west you see a door.
+1792844502	cmd	Alaric	54	10097	glitter.are	standing	100	0	-	open	west	Ok.
+1792844502	cmd	Alaric	54	10098	glitter.are	standing	100	0	-	west		A brightly lit corridor. //   You admire the glittering white marble floor and dark grey marble walls. // [Exits: east west]
+1792844503	cmd	Alaric	54	10099	glitter.are	standing	100	0	-	west		A brightly lit corridor. //   You admire the glittering white marble floor and dark grey marble walls. // Streaks of metallic glitter run through them.
+1792844503	cmd	Alaric	54	10100	glitter.are	standing	100	0	-	west		A bend in the brightly lit corridor. //   You are in awe of this majestic hallway. The corridor continues to the // north and east.
+1792844503	cmd	Alaric	54	10101	glitter.are	standing	100	0	-	north		A brightly lit corridor. //   You admire the glittering white marble floor and dark grey marble walls. // The corridor continues to the north and south.
+1792844503	cmd	Alaric	54	10102	glitter.are	standing	100	0	-	north		North end of the brightly lit corridor. //   To the north you see a huge, ornate adamant door. // [Exits: (north) south]
+1792844504	cmd	Alaric	54	10102	glitter.are	standing	100	0	-	open	north	Ok.
+1792844504	cmd	Alaric	54	10103	glitter.are	standing	100	0	-	north		spiral staircase. //   To the south is an ornate adamant door. A spiral staircase winds // its way up.
+1792844504	cmd	Alaric	54	10104	glitter.are	standing	100	0	-	up		Upstairs. //   Pffttt, at last you reached the top of the spiral staircase. You are back // on the fourth floor of the Glitter Palace. To the south you see another ornate
+1792844504	cmd	Alaric	54	10104	glitter.are	standing	100	0	-	open	south	Ok.
+1792844505	cmd	Alaric	54	10109	glitter.are	standing	100	0	-	run	s 4	A small hallway. // [Exits: north south] // Trentlin arrives in a cloud of dust from the north.
+1792844505	cmd	Alaric	54	10109	glitter.are	standing	100	0	-	open	east	Ok.
+1792844505	cmd	Alaric	54	10111	glitter.are	standing	100	0	-	east		A small alcove. //   Ack !! the door slams shut behind you and you don't have the key .... // luckily you can see a door to the south. A large tapestry hangs on the east
+1792844505	cmd	Alaric	54	10111	glitter.are	standing	100	0	-	open	tapestry	You open a secret door.
+1792844506	cmd	Alaric	54	10125	glitter.are	standing	100	0	-	run	e 6	A narrow hallway. // [Exits: east west] // Trentlin arrives in a cloud of dust from the west.
+1792844506	refused	Alaric	54	10125	glitter.are	standing	100	0	-	(unknown)		Huh?
+1792844506	cmd	Alaric	54	10125	glitter.are	standing	100	0	-	open	mirror	You open a secret door.
+1792844506	cmd	Alaric	54	10127	glitter.are	standing	100	0	-	north		A cul-de-sac. //   You are standing in a cul-de-sac. On the north and east wall hang some // tapestries, on the south wall hangs a strange mirror with the image of a
+1792844507	cmd	Alaric	54	10127	glitter.are	standing	100	0	-	open	floor	You open a secret door.
+1792844507	cmd	Alaric	54	10129	glitter.are	standing	100	0	-	down		Beginning of a forgotten hallway. //   You are back on the third floor, and found a secret hallway forgotten // about a long time ago ... it's heavy to breathe here ... damp air fills your
+1792844507	cmd	Alaric	54	10130	glitter.are	standing	100	0	-	north		An intersection in the forgotten hallway. //   You proceed along the hallway, while tearing apart nasty spider webs. // [Exits: north east south]
+1792844507	cmd	Alaric	54	10135	glitter.are	standing	100	0	-	north		A bend in the forgotten hallway. //   The forgotten hallway turns west here ... As if the many spider webs and // their inhabitants aren't worse enough, the walls begin to get slimy. You take
+1792844508	cmd	Alaric	54	10136	glitter.are	standing	100	0	-	west		A forgotten hallway. //   You see the faint outlines of a middle-aged man ... when he sees you, // (does he really ??? it rather seems he looks straight through you) you faintly
+1792844511	cmd	Alaric	54	10136	glitter.are	standing	100	0	-	bs	pla	Your backstab MANGLES the ghost of Platus! [-53] // Your backstab *** DEVASTATES *** the ghost of Platus! [-78] // Your backstab misses the ghost of Platus. [-0]
+1792844517	cmd	Alaric	54	10136	glitter.are	fighting	99	0	fight	look	pla	You realize it's the same man/thing you saw before ... he's not surprised to // see you, you wonder if anything can ever surprise him anymore, he doesn't // even take notice of you ... drat you wonder what his name was again ??
+1792844518	cmd	Trentlin	50	10136	glitter.are	fighting	100	0	fight	smite		Your smite MUTILATES the ghost of Platus! // Your smite MUTILATES the ghost of Platus! // Your smite DISEMBOWELS the ghost of Platus!
+1792844526	cmd	Trentlin	50	10136	glitter.are	fighting	100	0	fight	smite		Your smite misses the ghost of Platus.
+1792844529	cmd	Alaric	54	10136	glitter.are	fighting	99	0	fight	dirt		The ghost of Platus is blinded by the dirt in his eyes! // Your kicked dirt scratches the ghost of Platus. [-1]
+1792844532	cmd	Trentlin	50	10136	glitter.are	fighting	100	0	fight	smite		Your smite *** DEVASTATES *** the ghost of Platus! // Your smite decimates the ghost of Platus! // Your smite scratches the ghost of Platus.
+1792844538	cmd	Trentlin	50	10136	glitter.are	fighting	99	0	fight	smite		Your smite devastates the ghost of Platus! // Your smite decimates the ghost of Platus! // Your smite DISMEMBERS the ghost of Platus!
+1792844544	cmd	Trentlin	50	10136	glitter.are	fighting	99	0	fight	smite		Your smite MASSACRES the ghost of Platus! // Your smite MANGLES the ghost of Platus! // Your smite MASSACRES the ghost of Platus!
+1792844550	cmd	Trentlin	50	10136	glitter.are	standing	99	0	-	look	ghost	You concentrate even more ... but you can't see anything in this room ... // if there ever was anything here ... it is surely gone now.
+1792844551	cmd	Trentlin	50	10136	glitter.are	standing	99	0	-	look	in co	Corpse of the ghost of Platus contains: //      (Magical) (Glowing) (Translucent) some Indigo blue velvet robes //      (Magical) (Translucent) A Precious Starjewel
+1792844551	cmd	Alaric	54	10136	glitter.are	standing	98	0	-	say	Damn, smite doing work. I stopped using it when I broke a weapon almost instantly. Didn't have a backup	You say 'Damn, smite doing work. I stopped using it when I broke a weapon almost instantly. Didn't have a backup'
+1792844553	cmd	Alaric	54	10136	glitter.are	standing	98	0	-	look	i cor	Corpse of the ghost of Platus contains: //      (Magical) (Glowing) (Translucent) some Indigo blue velvet robes //      (Magical) (Translucent) A Precious Starjewel
+1792844555	cmd	Alaric	54	10136	glitter.are	standing	98	0	-	get	key cor	You get a translucent key from corpse of the ghost of Platus.
+1792844557	cmd	Alaric	54	10137	glitter.are	standing	98	0	-	west		A forgotten hallway. //   The spider webs are replaced by murky water dripping from the ceiling. // You are not quite sure which you hate more ...
+1792844557	cmd	Alaric	54	10138	glitter.are	standing	98	0	-	west		A forgotten hallway. //   Little bugs begin to crawl around your feet ... spider webs have // returned ... slimy walls ... God, you want to get out of here !!!
+1792844558	cmd	Alaric	54	10139	glitter.are	standing	98	0	-	west		A forgotten hallway. //   Suddenly you feel a wind brushing against your cheek ... and then it's // gone. You wonder where it came from. A thorough search tells you nothing
+1792844559	cmd	Alaric	54	10140	glitter.are	standing	98	0	-	west		A forgotten hallway. //   The hall continues west and east. To the north a you see a bashed door. // With a powerful bash you throw the door from its hinges and clear the 
+1792844560	cmd	Alaric	54	10143	glitter.are	standing	98	0	-	north		An abandoned room. //   You are standing in what used to be a bedroom. Now the spiders and the // bugs dwell here. To the west you see a closet-door.
+1792844561	cmd	Alaric	54	10145	glitter.are	standing	98	0	-	east		An abandoned bedroom. //   Some rotted pieces of wood lie here. Your best guess is that they // belonged to the bedroom's furniture once. To the north you see a statue. It's
+1792844563	cmd	Alaric	54	10145	glitter.are	standing	98	0	-	pick	statue	*Click*
+1792844569	cmd	Alaric	54	10145	glitter.are	standing	98	0	-	open	statue	You open a secret door.
+1792844570	cmd	Alaric	54	10146	glitter.are	standing	98	0	-	north		A secret room. //   You are in the secret room behind the statue. You are struck by the fact // that absolutely no bug or spider managed to crawl its way in here. You wonder
+1792844572	cmd	Trentlin	50	10146	glitter.are	standing	99	0	-	say	yeah i have a handful of weapons lol	You say 'yeah i have a handful of weapons lol'
+1792844572	cmd	Trentlin	50	10146	glitter.are	standing	99	0	-	inventory		You are carrying: //      (Humming) key card //      a long blue wand
+1792844573	cmd	Alaric	54	10146	glitter.are	standing	98	0	-	open	trapdoor	You open a secret door.
+1792844574	cmd	Alaric	54	10147	glitter.are	standing	98	0	-	up		A staircase. //   The trapdoor brought you to a staircase, and so you decide to climb // your way up and see where it ends.
+1792844575	cmd	Trentlin	50	10147	glitter.are	standing	99	0	-	eat	pot	You eat a big pot pie. // You are no longer hungry.
+1792844575	cmd	Alaric	54	10148	glitter.are	standing	98	0	-	up		A staircase. //   You finally reached the end of the staircase ... hufff..puff... it was // about time too !! You stop a moment to catch your breath and then open the
+1792844578	cmd	Alaric	54	10148	glitter.are	standing	98	0	-	open		Ok.
+1792844579	cmd	Alaric	54	10149	glitter.are	standing	98	0	-	north		A closet. //   You carefully slide the hatch back in his place. All there is to see // now, is a wooden wall of a closet. You have finally reached the fifth floor,
+1792844580	cmd	Trentlin	50	10149	glitter.are	standing	99	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    a pirate's ring
+1792844581	cmd	Alaric	54	10149	glitter.are	standing	98	0	-	open		Ok.
+1792844582	cmd	Alaric	54	10150	glitter.are	standing	98	0	-	west		A bedroom. //   You are a in one of the luxurious Royal guest rooms. The room is filled // with antiques, beautifully decorated furniture and to the west you see a huge
+1792844582	cmd	Trentlin	50	10150	glitter.are	standing	99	0	-	inventory		You are carrying: //      (Humming) key card //      a long blue wand
+1792844583	cmd	Alaric	54	10150	glitter.are	standing	98	0	-	open		Ok.
+1792844583	cmd	Alaric	54	10151	glitter.are	standing	98	0	-	north		The Royal hallway. //   You are walking through the Royal hallway. You are in awe of the many // decorations, antiques, paintings and tapestries. To the east and south you
+1792844584	cmd	Alaric	54	10170	glitter.are	standing	98	0	-	north		Before the Royal chambers. //   The Royal hallway ends here. Armed guards, wearing the royal crest, stand // at the silver-steel gates, guarding the entrance to the royal chambers. The
+1792844587	cmd	Alaric	54	10170	glitter.are	standing	98	0	-	open		Ok.
+1792844587	cmd	Trentlin	50	10170	glitter.are	fighting	99	0	fight	smite		Your smite maims the royal guard! // Your smite maims the royal guard! // Your smite *** DEMOLISHES *** the royal guard!
+1792844587	cmd	Alaric	54	10171	glitter.are	standing	98	0	-	north		the Royal Chambers. //   As you walk through the chambers strange words force their way into your mind: // ... O fortuna, velut luna, statu variabilis, semper crecis, aut decrescis ...
+1792844588	cmd	Alaric	54	10170	glitter.are	standing	98	0	-	south		Before the Royal chambers. //   The Royal hallway ends here. Armed guards, wearing the royal crest, stand // at the silver-steel gates, guarding the entrance to the royal chambers. The
+1792844590	cmd	Alaric	54	10170	glitter.are	standing	98	0	-	bs	gu	Your backstab === OBLITERATES === the royal guard! [-145] // Your backstab === OBLITERATES === the royal guard! [-149] // Your backstab === OBLITERATES === the royal guard! [-122]
+1792844593	cmd	Trentlin	50	10170	glitter.are	fighting	98	0	fight	smite		Your smite decimates the royal guard! // Your smite injures the royal guard. // Your smite hits the royal guard.
+1792844605	cmd	Alaric	54	10170	glitter.are	fighting	98	0	fight	look	gu	He urges you to reconsider and go away .... he doesn't want to hurt you. // The royal guard has some nasty wounds. // The royal guard is using:
+1792844608	cmd	Trentlin	50	10170	glitter.are	fighting	96	0	fight	look	g	He urges you to reconsider and go away .... he doesn't want to hurt you. // The royal guard has some nasty wounds. // The royal guard is using:
+1792844610	cmd	Trentlin	50	10170	glitter.are	fighting	96	0	fight	smite		Your smite misses the royal guard. // Your smite wounds the royal guard. // Your smite misses the royal guard.
+1792844615	cmd	Alaric	54	10170	glitter.are	fighting	98	0	fight	dirt		Your kicked dirt misses the royal guard. [-0]
