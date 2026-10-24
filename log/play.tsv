@@ -7755,3 +7755,4 @@
 1792806550	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
 1792806551	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1792806560	session	Trentlin	50	2497	dresden_halloween.are	quit	867s	+0 levels	+0 exp	+226911393 copper	7 kills	0 deaths	1 quests	517 commands	6 refused	coin: loot 64p 67g 1s 93c, quests 162p 24g 12s
+1792806957	session	Alaric	54	29210	korzath2.are	quit	6181s	+0 levels	+0 exp	+8445348 copper	0 kills	0 deaths	0 quests	33 commands	8 refused	coin: none
