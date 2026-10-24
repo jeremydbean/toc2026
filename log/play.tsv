@@ -9127,3 +9127,6 @@
 1792846334	cmd	Trentlin	50	2401	dresden_halloween.are	standing	90	0	-	gossip	alright, taking off, thanks again!	You gossip 'alright, taking off, thanks again!'
 1792846339	session	Trentlin	50	2401	dresden_halloween.are	quit	2552s	+0 levels	+0 exp	+968125931 copper	20 kills	0 deaths	4 quests	817 commands	2 refused	coin: loot 236p 7g 52s 71c, quests 811p 20g 60s, other 1p 22g, spent 80p 37g 53s 40c
 1792846343	cmd	Alaric	54	10000	glitter.are	resting	100	0	-	affect		You are affected by: // Spell: 'change sex' modifies sex by 1 for 98 hours. // Spell: 'blindness' modifies hit roll by -4 for 35 hours.
+1792846827	cmd	Alaric	54	10000	glitter.are	resting	100	0	-	group		Alaric's group: // [54 T] Alaric           1165/1165 hp 1833/1833 mana  818/ 818 mv 165530 xp
+1792846828	cmd	Alaric	54	10000	glitter.are	resting	100	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    226 hours | Sex:    Female | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792846830	cmd	Alaric	54	10000	glitter.are	resting	100	0	-	affect		You are affected by: // Spell: 'change sex' modifies sex by 1 for 90 hours. // Spell: 'blindness' modifies hit roll by -4 for 27 hours.
