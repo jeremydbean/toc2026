@@ -2768,13 +2768,22 @@ CHAR_DATA *get_char_room( CHAR_DATA *ch, char *argument )
 	return ch;
     if ( ch->in_room == NULL )
 	return NULL;
+    /* Everybody else before yourself. The room's list holds the looker
+       too, in arrival order, so a word that also starts your own name
+       could pick you over the troll beside you: Trentlin's "kill tr"
+       answered "You must MURDER a player." and "consider tr" told him
+       he was no pkiller (play journal, 2026-10-24). You are the last
+       match, found when nobody else answers to the word -- and "self"
+       still means you. */
     for ( rch = ch->in_room->people; rch != NULL; rch = rch->next_in_room )
     {
-	if ( !can_see( ch, rch ) || !is_name( arg, rch->name ) )
+	if ( rch == ch || !can_see( ch, rch ) || !is_name( arg, rch->name ) )
 	    continue;
 	if ( ++count == number )
 	    return rch;
     }
+    if ( ch->in_room != NULL && is_name( arg, ch->name ) && ++count == number )
+	return ch;
 
     return NULL;
 }

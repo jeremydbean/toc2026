@@ -3097,9 +3097,16 @@ void do_consider( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if (is_safe(ch,victim))
+    /* Sizing a mobile up is not an attack: only one nobody may fight is
+       not rated. It used to ask is_safe, which says its own piece first,
+       so a CONSIDER in the Temple answered "Not in the temple my dear."
+       and then "Don't even think about it." (play journal, 2026-10-24).
+       A player is still is_safe's to answer, and it says why. */
+    if ( IS_NPC(victim) ? is_protected_npc( victim )
+                        : ( victim != ch && is_safe( ch, victim ) ) )
     {
-	send_to_char("Don't even think about it.\n\r",ch);
+	if ( IS_NPC(victim) )
+	    send_to_char("Don't even think about it.\n\r",ch);
 	return;
     }
 

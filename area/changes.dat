@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261024d 2026-10-24
+A word that starts your own name now finds the monster first: KILL TR
+among trolls attacks a troll instead of telling you to MURDER a player.
+SELF still means you. CONSIDER also works in the Temple now.
+
 @ 20261024a 2026-10-24
 GROUP names everyone in your group, even one you cannot see: a member
 hidden by stealth or invisibility no longer shows as "Someone".

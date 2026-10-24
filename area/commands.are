@@ -2661,7 +2661,7 @@ meant to take a group.  CONSIDER tells you how a foe measures up.
 See also: WALKTO, AREAS, ALIGNMENT, CONSIDER, 'RESTED'
 ~
 
-0 AREAS~
+0 AREAS WORLD CITIES~
 Syntax: areas
 
 AREAS shows you a list of areas in the game.  Area names are shown with
