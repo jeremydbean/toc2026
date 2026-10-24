@@ -9359,3 +9359,85 @@
 1792849159	cmd	Alaric	54	1314	htower.are	standing	100	0	-	aquest	info	.-[ Quest Status ]--------------------------------------------. // | Type  : Kill Quest // | Target: Slay a pair of disembodied hands
 1792849161	cmd	Alaric	54	1313	htower.are	standing	100	0	-	south		Inside the High Tower of Sorcerery //   You are inside the high tower of sorcery. The sight is truly amazing. // >From here, it is obvious that somehow, the tower is much larger on the
 1792849162	cmd	Alaric	54	1313	htower.are	standing	100	0	-	scan		a mage                             -to the North. // a mage                             -to the North. // a mage                             -to the East.
+1792849164	cmd	Alaric	54	1313	htower.are	standing	100	2	-	track	hands	You find a trail east from here for a pair of disembodied hands, a long way off.
+1792849164	cmd	Alaric	54	1313	htower.are	standing	100	2	-	track	hands	You find a trail east from here for a pair of disembodied hands, a long way off.
+1792849165	cmd	Alaric	54	1313	htower.are	standing	100	2	-	track	hands	Too many tracks cross here; you cannot pick out a pair of disembodied hands's.
+1792849166	cmd	Alaric	54	1313	htower.are	standing	100	2	-	track	hands	You find a trail east from here for a pair of disembodied hands, a long way off.
+1792849166	cmd	Alaric	54	1313	htower.are	standing	100	2	-	track	hands	You find a trail east from here for a pair of disembodied hands, a long way off.
+1792849166	cmd	Alaric	54	1315	htower.are	standing	100	0	-	east		The Hallway //   You are in a long hallway, it seems rather unremarkable. //   The hallway continues east and back west.
+1792849168	cmd	Alaric	54	1330	htower.are	standing	100	0	-	east		The hallway //   You are in a long hallway leading east and west. The walls emit a faint // magical glow which provides enough light to see by.
+1792849169	cmd	Alaric	54	1330	htower.are	standing	100	0	-	scan		a mage                             -to the West. // a mage                             -to the far West.
+1792849170	cmd	Alaric	54	1330	htower.are	standing	100	0	-	open		Ok.
+1792849171	cmd	Alaric	54	1330	htower.are	standing	100	0	-	open		Ok.
+1792849171	cmd	Alaric	54	1330	htower.are	standing	100	0	-	scan		a broom                            -to the South. // a broom                            -to the South. // a mage                             -to the West.
+1792849174	cmd	Alaric	54	1330	htower.are	standing	100	2	-	track	hands	You find a trail east from here for a pair of disembodied hands, a long way off.
+1792849174	cmd	Alaric	54	1330	htower.are	standing	100	2	-	track	hands	You find a trail east from here for a pair of disembodied hands, a long way off.
+1792849174	cmd	Alaric	54	1330	htower.are	standing	100	2	-	track	hands	You find a trail east from here for a pair of disembodied hands, a long way off.
+1792849175	cmd	Alaric	54	1330	htower.are	standing	100	2	-	track	hands	You find a trail east from here for a pair of disembodied hands, a long way off.
+1792849175	cmd	Alaric	54	1331	htower.are	standing	100	0	-	east		A bend in the hallway //   You are at a bend in the hallway. The walls emit a faint magical glow // which provides enough light to see by.
+1792849177	cmd	Alaric	54	1331	htower.are	standing	100	0	-	open		Ok.
+1792849178	cmd	Alaric	54	1331	htower.are	standing	100	0	-	open		Ok.
+1792849179	cmd	Alaric	54	1331	htower.are	standing	100	0	-	scan		a pair of disembodied hands          -to the South. // a pair of disembodied hands          -to the South. // a pair of disembodied hands          -to the South.
+1792849180	cmd	Alaric	54	1335	htower.are	standing	100	0	-	south		Guardians chamber //   You are in the chamber of the tower guardians. It is rather sparsely // furnished, but then again the odd occupants don't look to need furniture.
+1792849181	cmd	Alaric	54	1335	htower.are	standing	100	10	-	kill	ha	Your slash ^^^ DESTROYS ^^^ a pair of disembodied hands! [-117] // Your slash ^^^ DESTROYS ^^^ a pair of disembodied hands! [-116] // A pair of disembodied hands is DEAD!!
+1792849186	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792849186	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1792849186	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1792849187	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1792849187	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 3	The Hall of Whispers // [Exits: north east south west] // Entrance to the Haunted Temple
+1792849187	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792849187	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792849188	cmd	Alaric	54	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792849188	cmd	Alaric	54	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792849188	cmd	Alaric	54	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792849188	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792849189	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792849189	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	14	-	aquest	co	You inform Questor Thews you have completed her quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'Streak of 7 in a row! A +55% bonus has been added!'
+1792849190	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 17 quest points.
+1792849192	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792849207	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	kill	sk	Your slash *** DEVASTATES *** a skeleton! [-70] // Your slash misses a skeleton. [-0]
+1792849214	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	look	i cor	Corpse of a skeleton contains: //      Nothing.
+1792849220	cmd	Alaric	54	1607	wyvern.are	standing	100	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you
+1792849221	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792849282	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792849282	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792849283	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792849295	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792849296	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792849296	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792849296	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792849300	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792849300	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792849301	cmd	Alaric	54	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792849303	cmd	Alaric	54	9522	newthalo.are	standing	100	0	-	run	n 6	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1792849304	cmd	Alaric	54	9522	newthalo.are	standing	100	0	-	open		Ok.
+1792849305	cmd	Alaric	54	29003	korzath1.are	standing	100	0	-	run	n 8	Outside the Northern Gate of New Thalos // [Exits: north south] // On the Plains
+1792849306	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	north		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1792849309	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	unlock	north	You lack the key.
+1792849311	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	bs	gu	Your backstab misses Guardian Knight. [-0]
+1792849331	cmd	Alaric	54	29004	korzath1.are	fighting	98	0	fight	dirt		Your kicked dirt misses Guardian Knight. [-0]
+1792849342	cmd	Alaric	54	29004	korzath1.are	fighting	89	0	fight	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792849343	cmd	Alaric	54	29004	korzath1.are	fighting	89	0	fight	dirt		Guardian Knight is blinded by the dirt in his eyes! // Your kicked dirt scratches Guardian Knight. [-1]
+1792849353	cmd	Alaric	54	29004	korzath1.are	standing	88	0	-	get	key cor	You get a diamond key from corpse of Guardian Knight.
+1792849353	cmd	Alaric	54	29004	korzath1.are	standing	88	0	-	unlock	north	There is a flash of light as you unlock the door.
+1792849354	cmd	Alaric	54	29004	korzath1.are	standing	88	0	-	open		Ok.
+1792849355	cmd	Alaric	54	29201	korzath2.are	standing	88	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1792849355	cmd	Alaric	54	29202	korzath2.are	standing	88	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1792849356	cmd	Alaric	54	29203	korzath2.are	standing	88	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1792849357	cmd	Alaric	54	29204	korzath2.are	standing	88	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1792849358	cmd	Alaric	54	29204	korzath2.are	standing	88	0	-	west		Alas, you cannot go that way.
+1792849359	cmd	Alaric	54	29205	korzath2.are	standing	88	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1792849365	cmd	Alaric	54	29205	korzath2.are	standing	90	0	-	bs	cl	Your backstab misses a killer clown. [-0] // Your backstab misses a killer clown. [-0]
+1792849397	cmd	Alaric	54	29205	korzath2.are	fighting	62	0	fight	inventory		You are carrying: //      a diamond key //      (Humming) a water ring
+1792849401	cmd	Alaric	54	29205	korzath2.are	fighting	62	0	fight	secondary	mace	You stop using Excalibur. // You wield a bone mace as your second weapon.
+1792849418	cmd	Alaric	54	29205	korzath2.are	fighting	48	0	fight	dirt		Your kicked dirt misses a killer clown. [-0]
+1792849440	cmd	Alaric	54	29205	korzath2.are	fighting	25	0	fight	inventory		You are carrying: //      a diamond key //      (Humming) a water ring
+1792849443	cmd	Alaric	54	29206	korzath2.are	fighting	15	0	fight	flee		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1792849444	cmd	Alaric	54	4207	dresden_halloween.are	standing	15	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792849446	cmd	Alaric	54	4208	dresden_halloween.are	standing	15	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792849447	cmd	Alaric	54	4207	dresden_halloween.are	standing	15	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792849447	cmd	Alaric	54	4202	dresden_halloween.are	standing	15	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792849447	cmd	Alaric	54	4203	dresden_halloween.are	standing	15	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1792849448	cmd	Alaric	54	4210	dresden_halloween.are	standing	15	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1792849449	cmd	Alaric	54	4210	dresden_halloween.are	standing	15	0	-	sleep		You go to sleep.
+1792849450	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	15	0	-	help	fast	The fast healing skill improves wound healing rates, whether walking, resting, // or sleeping. It represents knowledge of healing herbs or just general // toughness and stamina.  Fast healing is checked every tick, and it is
