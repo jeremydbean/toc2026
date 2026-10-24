@@ -8629,3 +8629,163 @@
 1792845218	cmd	Trentlin	50	10176	glitter.are	fighting	67	0	fight	smite		Your smite DISMEMBERS Crown Prince Augustus Starfire! // Your smite DISMEMBERS Crown Prince Augustus Starfire! // Your smite *** DEVASTATES *** Crown Prince Augustus Starfire!
 1792845218	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	torment		You lost your concentration.
 1792845219	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	torment		Someone convulses in pain. // Your pain devastates someone! [-29]
+1792845225	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	torment		Someone convulses in pain. // Your pain grazes someone. [-7]
+1792845229	cmd	Trentlin	50	10176	glitter.are	fighting	66	0	fight	smite		Your smite MANGLES Crown Prince Augustus Starfire! // Your smite DISMEMBERS Crown Prince Augustus Starfire! // Your smite MUTILATES Crown Prince Augustus Starfire!
+1792845231	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	torment		Someone convulses in pain. // Your pain MUTILATES someone! [-38]
+1792845235	cmd	Trentlin	50	10176	glitter.are	fighting	65	0	fight	inventory		You are carrying: // ( 2) (Magical) (Shining) A Precious Starjewel //      (Magical) (Glowing) (Damaged) the Gohma eye-lance
+1792845240	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792845241	cmd	Trentlin	50	10176	glitter.are	fighting	64	0	fight	wear	gla	You wield the Gleeok twin-fang glaive. // You are skilled with the Gleeok twin-fang glaive.
+1792845241	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	torment		Someone convulses in pain. // Your pain decimates someone! [-25]
+1792845244	cmd	Trentlin	50	10176	glitter.are	fighting	64	0	fight	smite		Your smite injures Crown Prince Augustus Starfire. // Your smite wounds Crown Prince Augustus Starfire. // Your smite decimates Crown Prince Augustus Starfire!
+1792845247	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	torment		You lost your concentration.
+1792845252	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	torment		You lost your concentration.
+1792845256	cmd	Trentlin	50	10176	glitter.are	fighting	62	0	fight	smite		Your smite decimates Crown Prince Augustus Starfire! // Your smite devastates Crown Prince Augustus Starfire! // Your smite grazes Crown Prince Augustus Starfire.
+1792845264	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	torment		Someone convulses in pain. // Your pain injures someone. [-16]
+1792845265	cmd	Trentlin	50	10176	glitter.are	fighting	61	0	fight	wear	tin	You stop using the Gleeok twin-fang glaive. // You wield A Tin Axe. // A Tin Axe feels like a part of you!
+1792845268	cmd	Trentlin	50	10176	glitter.are	fighting	61	0	fight	smite		Your smite scratches Crown Prince Augustus Starfire. // A Tin Axe bites deep into Crown Prince Augustus Starfire! // Your smite devastates Crown Prince Augustus Starfire!
+1792845275	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792845275	cmd	Trentlin	50	10176	glitter.are	fighting	61	0	fight	smite		Your smite misses Crown Prince Augustus Starfire.
+1792845276	cmd	Alaric	54	10176	glitter.are	fighting	89	0	fight	torment		Someone convulses in pain. // Your pain DISEMBOWELS someone! [-44]
+1792845282	cmd	Trentlin	50	10176	glitter.are	fighting	60	0	fight	smite		Your smite MASSACRES Crown Prince Augustus Starfire! // Your smite wounds Crown Prince Augustus Starfire. // Your smite *** DEVASTATES *** Crown Prince Augustus Starfire!
+1792845285	cmd	Alaric	54	10176	glitter.are	fighting	90	0	fight	torment		Someone convulses in pain. // Your pain wounds someone. [-20]
+1792845292	cmd	Trentlin	50	10176	glitter.are	fighting	59	0	fight	smite		Your smite grazes Crown Prince Augustus Starfire. // Your smite MANGLES Crown Prince Augustus Starfire! // Your smite mauls Crown Prince Augustus Starfire.
+1792845292	cmd	Alaric	54	10176	glitter.are	fighting	90	0	fight	torment		Someone convulses in pain. // Your pain MUTILATES someone! [-38]
+1792845297	cmd	Trentlin	50	10176	glitter.are	fighting	58	0	fight	get	a	You get A Tin Axe.
+1792845298	cmd	Trentlin	50	10176	glitter.are	fighting	58	0	fight	wear	a	You wield A Tin Axe. // A Tin Axe feels like a part of you!
+1792845299	cmd	Trentlin	50	10176	glitter.are	fighting	58	0	fight	smite		Your smite misses Crown Prince Augustus Starfire.
+1792845304	cmd	Alaric	54	10176	glitter.are	fighting	90	0	fight	torment		Someone convulses in pain. // Your pain injures someone. [-13]
+1792845306	cmd	Trentlin	50	10176	glitter.are	fighting	57	0	fight	smite		Your smite misses Crown Prince Augustus Starfire.
+1792845306	cmd	Alaric	54	10176	glitter.are	fighting	90	0	fight	equipment		You are using: // <used as light>     something. // <worn on finger>    something.
+1792845309	cmd	Alaric	54	10176	glitter.are	fighting	90	0	fight	torment		You lost your concentration.
+1792845311	cmd	Alaric	54	10176	glitter.are	fighting	90	0	fight	torment		Someone convulses in pain. // Your pain decimates someone! [-25]
+1792845316	cmd	Alaric	54	10176	glitter.are	fighting	90	0	fight	torment		Someone convulses in pain. // Your pain injures someone. [-13]
+1792845317	cmd	Trentlin	50	10176	glitter.are	fighting	58	0	fight	smite		Your smite misses Crown Prince Augustus Starfire.
+1792845319	cmd	Alaric	54	10176	glitter.are	fighting	91	0	fight	torment		Someone convulses in pain. // Your pain hits someone. [-10]
+1792845323	cmd	Trentlin	50	10176	glitter.are	fighting	56	0	fight	smite		Your smite misses Crown Prince Augustus Starfire.
+1792845324	cmd	Alaric	54	10176	glitter.are	fighting	91	0	fight	group		someone's group: // [50 W] Someone          3137/5544 hp 9060/9060 mana 2714/2714 mv 112503 xp // [54 T] Alaric           1062/1165 hp 1581/1833 mana  818/ 818 mv 165260 xp
+1792845325	cmd	Alaric	54	10176	glitter.are	fighting	91	0	fight	torment		Someone convulses in pain. // Your pain DISEMBOWELS someone! [-41]
+1792845331	cmd	Alaric	54	10176	glitter.are	fighting	91	0	fight	torment		You lost your concentration.
+1792845333	cmd	Trentlin	50	10176	glitter.are	fighting	55	0	fight	smite		Your smite misses Crown Prince Augustus Starfire.
+1792845334	cmd	Alaric	54	10176	glitter.are	fighting	91	0	fight	torment		Someone convulses in pain. // Your pain grazes someone. [-7]
+1792845337	cmd	Alaric	54	10176	glitter.are	fighting	91	0	fight	torment		Someone convulses in pain. // Your pain DISMEMBERS someone! [-47]
+1792845340	cmd	Trentlin	50	10176	glitter.are	fighting	54	0	fight	smite		Your smite DISMEMBERS Crown Prince Augustus Starfire! // A Tin Axe bites deep into Crown Prince Augustus Starfire! // Your smite ^^^ DESTROYS ^^^ Crown Prince Augustus Starfire!
+1792845343	cmd	Alaric	54	10176	glitter.are	fighting	91	0	fight	torment		You lost your concentration.
+1792845346	cmd	Alaric	54	10176	glitter.are	fighting	91	0	fight	torment		Someone convulses in pain. // Your pain injures someone. [-13]
+1792845349	cmd	Trentlin	50	10176	glitter.are	fighting	53	0	fight	smite		Your smite *** DEVASTATES *** Crown Prince Augustus Starfire! // A Tin Axe bites deep into Crown Prince Augustus Starfire! // Your smite *** DEVASTATES *** Crown Prince Augustus Starfire!
+1792845350	cmd	Alaric	54	10176	glitter.are	fighting	91	0	fight	torment		You lost your concentration.
+1792845353	cmd	Alaric	54	10176	glitter.are	fighting	91	0	fight	group		someone's group: // [50 W] Someone          2965/5544 hp 9060/9060 mana 2714/2714 mv 112503 xp // [54 T] Alaric           1062/1165 hp 1481/1833 mana  818/ 818 mv 165260 xp
+1792845354	cmd	Alaric	54	10176	glitter.are	fighting	91	0	fight	torment		Someone convulses in pain. // Your pain grazes someone. [-7] // You have become better at torment!
+1792845360	cmd	Trentlin	50	10176	glitter.are	standing	53	0	-	get	all cor	You get the Crystalline Sceptre of Commanding from corpse of Crown Prince Augustus Starfire. // You get (Flaming) the Crystalline Sword of Justice from corpse of Crown Prince Augustus Starfire. // You get the Crystalline Robe of Shielding 
+1792845364	cmd	Alaric	54	10176	glitter.are	standing	91	0	-	say	Phew	You say 'Phew'
+1792845365	cmd	Alaric	54	10176	glitter.are	standing	91	0	-	look		You can't see a thing!
+1792845367	cmd	Trentlin	50	10176	glitter.are	standing	53	0	-	say	alright just gotta get not evil	You say 'alright just gotta get not evil'
+1792845368	cmd	Trentlin	50	10176	glitter.are	standing	53	0	-	group		Trentlin's group: // [50 W] Trentlin         2974/5544 hp 9060/9060 mana 2714/2714 mv 112503 xp // [54 T] Alaric           1062/1165 hp 1461/1833 mana  818/ 818 mv 165530 xp
+1792845369	cmd	Trentlin	50	10176	glitter.are	standing	53	0	-	look		Prince Augustus' bedroom. //   The ancient words can't be stopped and resound in your mind: // ... nimis exalatus rex sedet in veritce - caveat ruinam ! ...
+1792845371	cmd	Trentlin	50	10176	glitter.are	standing	53	0	-	scan		You don't see anything near you.
+1792845374	cmd	Alaric	54	10176	glitter.are	standing	91	0	-	say	Loot him?	You say 'Loot him?'
+1792845378	cmd	Trentlin	50	10176	glitter.are	standing	53	0	-	look	in co	A stinking corpse contains: //      Nothing.
+1792845380	cmd	Trentlin	50	10176	glitter.are	standing	53	0	-	say	yeah got it	You say 'yeah got it'
+1792845381	cmd	Alaric	54	10177	glitter.are	standing	92	0	-	east		You can't see a thing! // Someone has arrived from the west.
+1792845384	cmd	Alaric	54	10177	glitter.are	standing	92	0	-	open	king	You open a secret door.
+1792845385	cmd	Alaric	54	10178	glitter.are	standing	92	1	-	north		You can't see a thing! // Someone has arrived from the south.
+1792845388	cmd	Alaric	54	10178	glitter.are	standing	92	0	-	down		Alas, you cannot go that way.
+1792845391	cmd	Alaric	54	10178	glitter.are	standing	92	0	-	exits		You can't see a thing!
+1792845391	cmd	Trentlin	50	10178	glitter.are	standing	53	0	-	scan		You don't see anything near you.
+1792845395	cmd	Alaric	54	10178	glitter.are	standing	92	0	-	look		You can't see a thing!
+1792845397	cmd	Trentlin	50	10178	glitter.are	standing	53	0	-	inventory		You are carrying: //      (Magical) (Glowing) the Crystalline Crown of Perception // ( 2) (Magical) (Glowing) the Crystalline Royal Cloak
+1792845404	cmd	Trentlin	50	10178	glitter.are	standing	53	0	-	compare	rob	A) the Crystalline Robe of Shielding (level 50) -- can't use: made for another side // B) a twin-dragon hauberk (level 27), worn // Slot: body.  Your damage comes from weapons.
+1792845408	cmd	Alaric	54	10178	glitter.are	standing	92	0	-	say	Is there a direction? Or something to enter?	You say 'Is there a direction? Or something to enter?'
+1792845409	cmd	Alaric	54	10178	glitter.are	standing	92	0	-	down		Alas, you cannot go that way.
+1792845413	cmd	Trentlin	50	10178	glitter.are	standing	53	0	-	exits		Obvious exits: // East  - Closed elevator // South - Prince Augustus' bedroom.
+1792845416	cmd	Trentlin	50	10178	glitter.are	standing	53	0	-	open	east	Ok.
+1792845418	cmd	Trentlin	50	10179	glitter.are	standing	53	0	-	east		In the elevator. //    Y //    o
+1792845421	cmd	Trentlin	50	10179	glitter.are	standing	53	0	-	open	south	Ok.
+1792845421	cmd	Trentlin	50	10179	glitter.are	standing	53	0	-	scan		You don't see anything near you.
+1792845422	cmd	Trentlin	50	10180	glitter.are	standing	53	0	-	south		Outside the palace. //   You walk out the elevator and the doors slam shut behind you. The // elevator is automatically disabled to prevent any pursuers from following you.
+1792845423	cmd	Alaric	54	10180	glitter.are	standing	92	0	-	(social)		You nod.
+1792845424	cmd	Trentlin	50	10003	glitter.are	standing	53	0	-	west		The Glitter Palace's Grand Gate. //   Once proud palace guards lie on the ground ... nothing much remains of // them but a bloody pulp, Jeeezzz you sure you wanna get caught up in the middle
+1792845428	cmd	Trentlin	50	10003	glitter.are	standing	53	0	-	say	outside now	You say 'outside now'
+1792845431	cmd	Alaric	54	10003	glitter.are	standing	92	0	-	recall		The Gods have forsaken you.
+1792845433	cmd	Trentlin	50	10002	glitter.are	standing	53	0	-	south		Royal Island. //   You step off the bridge and clearly hear sounds of a raging battle ... // OHHH MY GOD .... THE PALACE IS UNDER ATTACK !!! ....
+1792845434	cmd	Trentlin	50	10001	glitter.are	standing	53	0	-	south		A crystal bridge. //   You are walking on a crystal bridge. In the far the Glittering Palace // towers above you ... you also seem to hear some noises now.
+1792845434	cmd	Trentlin	50	10000	glitter.are	standing	53	0	-	south		Before the crystal bridge. //   Just when you want to cross the bridge, a large way-sign catches your // attention. You admit that you are curious about what it says ... so why not
+1792845435	cmd	Trentlin	50	10000	glitter.are	standing	53	0	-	look		Before the crystal bridge. //   Just when you want to cross the bridge, a large way-sign catches your // attention. You admit that you are curious about what it says ... so why not
+1792845436	cmd	Alaric	54	10003	glitter.are	standing	92	0	-	open		Ok.
+1792845436	cmd	Alaric	54	10002	glitter.are	standing	92	1	-	south		You can't see a thing!
+1792845437	cmd	Alaric	54	10001	glitter.are	standing	92	0	-	south		You can't see a thing!
+1792845438	cmd	Alaric	54	10000	glitter.are	standing	92	0	-	south		You can't see a thing!
+1792845438	cmd	Trentlin	50	10000	glitter.are	standing	53	0	-	where		Players near you: // Alaric                       Before the crystal bridge.
+1792845438	cmd	Alaric	54	10000	glitter.are	standing	92	0	-	south		Alas, you cannot go that way.
+1792845441	cmd	Trentlin	50	10000	glitter.are	standing	53	0	-	recall		The Gods have forsaken you.
+1792845441	cmd	Alaric	54	10000	glitter.are	standing	92	0	-	recall		The Gods have forsaken you.
+1792845443	cmd	Alaric	54	10000	glitter.are	standing	92	0	-	look		You can't see a thing!
+1792845444	cmd	Alaric	54	10000	glitter.are	standing	92	0	-	enter	po	You can not enter the po.
+1792845445	cmd	Alaric	54	10000	glitter.are	standing	92	0	-	look		You can't see a thing!
+1792845446	cmd	Trentlin	50	10000	glitter.are	standing	53	0	-	say	have to enter portal	You say 'have to enter portal'
+1792845448	cmd	Trentlin	50	23	connect.are	standing	54	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Great Portal
+1792845449	cmd	Alaric	54	10000	glitter.are	standing	94	0	-	(social)		You fall down laughing.
+1792845449	cmd	Trentlin	50	4207	dresden_halloween.are	standing	54	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792845450	cmd	Trentlin	50	4208	dresden_halloween.are	standing	54	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792845451	cmd	Trentlin	50	4208	dresden_halloween.are	standing	54	0	-	west		Alas, you cannot go that way.
+1792845452	cmd	Trentlin	50	4208	dresden_halloween.are	standing	54	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792845453	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: //      (Magical) (Glowing) the Crystalline Crown of Perception // ( 2) (Magical) (Glowing) the Crystalline Royal Cloak
+1792845460	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	drop	cloa	You can't let go of it.
+1792845463	cmd	Alaric	54	10000	glitter.are	standing	94	0	-	gossip	Heh, guess it's a good time to afk and grab breakfast :)	You gossip 'Heh, guess it's a good time to afk and grab breakfast :)'
+1792845464	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	Hermie turns to you with a wink. // Your the Crystalline Royal Cloak glows blue.
+1792845465	cmd	Alaric	54	10000	glitter.are	standing	94	0	-	affect		You are affected by: // Spell: 'change sex' modifies sex by 1 for 114 hours. // Spell: 'detect hidden' for 3 hours.
+1792845467	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	Hermie turns to you with a wink. // Your the Crystalline Robe of Shielding glows blue.
+1792845467	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	Hermie turns to you with a wink. // Your (Flaming) the Crystalline Sword of Justice glows blue.
+1792845467	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	Hermie turns to you with a wink. // Your (Flaming) A Light Saber glows blue.
+1792845468	cmd	Alaric	54	10000	glitter.are	standing	94	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    226 hours | Sex:    Female | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792845469	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	Hermie turns to you with a wink. // Your (Flaming) the Crystalline Dagger of Wonders glows blue.
+1792845469	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	Hermie turns to you with a wink. // Your the Crystalline Sceptre of Commanding glows blue.
+1792845470	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	Hermie turns to you with a wink. // Your the Crystalline Royal Cloak glows blue.
+1792845470	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	Hermie turns to you with a wink. // Your the Crystalline Robe of Shielding glows blue.
+1792845471	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	Hermie turns to you with a wink. // Your the Crystalline Diadem of Perception glows blue.
+1792845471	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	uncurse	Hermie turns to you with a wink. // Hermie says 'I see no curse on you or on anything you carry.'
+1792845473	cmd	Alaric	54	10000	glitter.are	standing	94	0	-	affect		You are affected by: // Spell: 'change sex' modifies sex by 1 for 114 hours. // Spell: 'detect hidden' for 3 hours.
+1792845474	cmd	Alaric	54	10000	glitter.are	standing	94	0	-	stealth		You blend into the shadows.
+1792845475	cmd	Alaric	54	10000	glitter.are	standing	94	0	-	affect		You are affected by: // Skill: 'stealth' for 12 hours. // Spell: 'change sex' modifies sex by 1 for 114 hours.
+1792845478	cmd	Alaric	54	10000	glitter.are	standing	94	0	-	rest		You rest.
+1792845479	cmd	Alaric	54	10000	glitter.are	resting	94	0	-	group		someone's group: // [50 W] Someone          5544/5544 hp 9060/9060 mana 2714/2714 mv 112503 xp // [54 T] Alaric           1104/1165 hp 1481/1833 mana  409/ 818 mv 165530 xp
+1792845485	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	gossip	yeah im gonna do a quest and bail. thanks!	You gossip 'yeah im gonna do a quest and bail. thanks!'
+1792845486	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: //      (Magical) (Glowing) the Crystalline Crown of Perception // ( 2) (Magical) (Glowing) the Crystalline Royal Cloak
+1792845489	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	drop	cloa	You drop the Crystalline Royal Cloak.
+1792845490	cmd	Alaric	54	10000	glitter.are	resting	94	0	-	gossip	Np	You gossip 'Np'
+1792845490	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	drop	robe	You drop the Crystalline Robe of Shielding.
+1792845492	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	sacrifice	cloa	The Gods give you 100 copper coins for your sacrifice.
+1792845493	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	sacrifice	sh	You can't find it.
+1792845494	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: //      (Magical) (Glowing) the Crystalline Crown of Perception //      (Magical) (Flaming) the Crystalline Sword of Justice
+1792845497	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792845499	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	sacrifice	robe	The Gods give you 100 copper coins for your sacrifice.
+1792845500	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: //      (Magical) (Glowing) the Crystalline Crown of Perception //      (Magical) (Flaming) the Crystalline Sword of Justice
+1792845509	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792845509	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792845509	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792845509	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792845510	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792845510	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792845510	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792845510	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792845511	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792845511	cmd	Trentlin	50	2402	dresden_halloween.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1792845512	cmd	Trentlin	50	2415	dresden_halloween.are	standing	100	0	-	north		Main Processional, Strung with Lanterns //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Orange paper lanterns swing on cords
+1792845513	cmd	Trentlin	50	2485	dresden_halloween.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1792845513	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	south		Weapons Shop. //   This shop has racks with all sorts of weapons on them.  You see bows and the // like on one of the walls and there is a glass case with a small number of
+1792845513	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792845514	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	lan	The hooded headsman repairs your the Gohma eye-lance. // It cost you 2p 46g 91s 62c to repair the Gohma eye-lance.  It's been repaired 3 times now.
+1792845515	cmd	Trentlin	50	2485	dresden_halloween.are	standing	100	0	-	north		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1792845515	cmd	Trentlin	50	2415	dresden_halloween.are	standing	100	0	-	west		Main Processional, Strung with Lanterns //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Orange paper lanterns swing on cords
+1792845516	cmd	Trentlin	50	2402	dresden_halloween.are	standing	100	0	-	south		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1792845516	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	south		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792845518	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	wear	fla	You do not have that item.
+1792845520	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	wear	fla	You do not have that item.
+1792845521	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	wear	gla	You stop using A Tin Axe. // You wield the Gleeok twin-fang glaive. // You are skilled with the Gleeok twin-fang glaive.
+1792845523	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: //      (Magical) (Glowing) the Crystalline Crown of Perception //      (Magical) (Flaming) the Crystalline Sword of Justice
+1792845524	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    a pirate's ring
+1792845527	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	look		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792845528	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792845528	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792845529	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792845529	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792845531	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	14	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Trentlin. I have just the task for you.' // Questor Thews tells you 'the ogre threatens the peace of the realm!'

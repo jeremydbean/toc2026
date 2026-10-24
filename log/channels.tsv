@@ -596,3 +596,16 @@
 1792845032	say	Alaric	Either way
 1792845036	say	Alaric	Sometimes they jump
 1792845049	say	Alaric	Sometimes they jump anyways
+1792845364	say	Alaric	Phew
+1792845367	say	Trentlin	alright just gotta get not evil
+1792845374	say	Alaric	Loot him?
+1792845380	say	Trentlin	yeah got it
+1792845408	say	Alaric	Is there a direction? Or something to enter?
+1792845428	say	Trentlin	outside now
+1792845446	say	Trentlin	have to enter portal
+1792845463	gossip	Alaric	Heh, guess it's a good time to afk and grab breakfast :)
+1792845485	gossip	Trentlin	yeah im gonna do a quest and bail. thanks!
+1792845490	gossip	Alaric	Np
+1792845531	say	Questor Thews	Your timing is perfect, Trentlin. I have just the task for you.
+1792845531	say	Questor Thews	You have 14 minutes to complete this quest.
+1792845531	say	Questor Thews	May the gods guide your blade!
