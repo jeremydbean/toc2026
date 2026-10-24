@@ -174689,3 +174689,115 @@ Sat Oct 24 22:44:16 2026 :: EOF encountered on read.
 Sat Oct 24 22:44:17 2026 :: Sock.sinaddr:  91.92.41.174
 Sat Oct 24 22:44:17 2026 :: EOF encountered on read.
 Sat Oct 24 22:44:17 2026 :: EOF encountered on read.
+Sat Oct 24 22:45:05 2026 :: Sock.sinaddr:  24.2.118.125
+Sat Oct 24 22:46:32 2026 :: Loading Trentlin's playerfile
+Sat Oct 24 22:46:34 2026 :: Loading Trentlin's playerfile
+Sat Oct 24 22:46:34 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Sat Oct 24 22:46:35 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 0
+Sat Oct 24 22:46:37 2026 :: Log Trentlin [2401]: u
+Sat Oct 24 22:46:37 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sat Oct 24 22:46:37 2026 :: Log Trentlin [2410]: u
+Sat Oct 24 22:46:37 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sat Oct 24 22:46:38 2026 :: Log Trentlin [2411]: u
+Sat Oct 24 22:46:38 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sat Oct 24 22:46:38 2026 :: Log Trentlin [2414]: u
+Sat Oct 24 22:46:38 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sat Oct 24 22:46:41 2026 :: Log Trentlin [2497]: aquest request
+Sat Oct 24 22:46:41 2026 :: Log Trentlin [2497]: quest assigned: kill the citizen (mob 618, level 5) in ofcol.are, 11 minutes, ordinary
+Sat Oct 24 22:46:43 2026 :: Log Trentlin [2497]: enter door
+Sat Oct 24 22:46:43 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sat Oct 24 22:46:52 2026 :: Log Trentlin [2401]: west
+Sat Oct 24 22:46:52 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Sat Oct 24 22:46:52 2026 :: Log Trentlin [2405]: west
+Sat Oct 24 22:46:52 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Sat Oct 24 22:46:53 2026 :: Log Trentlin [2433]: west
+Sat Oct 24 22:46:53 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Sat Oct 24 22:46:53 2026 :: Log Trentlin [2434]: west
+Sat Oct 24 22:46:53 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Sat Oct 24 22:46:53 2026 :: Log Trentlin [2435]: west
+Sat Oct 24 22:46:53 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Sat Oct 24 22:46:53 2026 :: Log Trentlin [2436]: west
+Sat Oct 24 22:46:53 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Sat Oct 24 22:46:54 2026 :: Log Trentlin [2437]: west
+Sat Oct 24 22:46:54 2026 :: Log Trentlin [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sat Oct 24 22:46:54 2026 :: Log Trentlin [2438]: open west
+Sat Oct 24 22:46:54 2026 :: Log Trentlin [2438]: west
+Sat Oct 24 22:46:54 2026 :: Log Trentlin [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sat Oct 24 22:47:00 2026 :: Log Trentlin [2439]: north
+Sat Oct 24 22:47:00 2026 :: Log Trentlin [3900]: arrived (West trail around Dresden) from 2439
+Sat Oct 24 22:47:00 2026 :: Log Trentlin [3900]: north
+Sat Oct 24 22:47:00 2026 :: Log Trentlin [3901]: arrived (West trail around Dresden) from 3900
+Sat Oct 24 22:47:00 2026 :: Log Trentlin [3901]: north
+Sat Oct 24 22:47:00 2026 :: Log Trentlin [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Sat Oct 24 22:47:00 2026 :: Log Trentlin [3902]: east
+Sat Oct 24 22:47:00 2026 :: Log Trentlin [3903]: arrived (Dusty trail along north wall.) from 3902
+Sat Oct 24 22:47:01 2026 :: Log Trentlin [3903]: east
+Sat Oct 24 22:47:01 2026 :: Log Trentlin [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Sat Oct 24 22:47:01 2026 :: Log Trentlin [3904]: north
+Sat Oct 24 22:47:01 2026 :: Log Trentlin [300]: arrived (Path in the plains) from 3904
+Sat Oct 24 22:47:01 2026 :: Log Trentlin [300]: north
+Sat Oct 24 22:47:01 2026 :: Log Trentlin [315]: arrived (Gallow hill) from 300
+Sat Oct 24 22:47:01 2026 :: Log Trentlin [315]: north
+Sat Oct 24 22:47:01 2026 :: Log Trentlin [320]: arrived (Grassy plains) from 315
+Sat Oct 24 22:47:02 2026 :: Log Trentlin [320]: east
+Sat Oct 24 22:47:02 2026 :: Log Trentlin [305]: arrived (Path in the plains) from 320
+Sat Oct 24 22:47:02 2026 :: Log Trentlin [305]: north
+Sat Oct 24 22:47:02 2026 :: Log Trentlin [306]: arrived (Path in the foothills) from 305
+Sat Oct 24 22:47:02 2026 :: Log Trentlin [306]: north
+Sat Oct 24 22:47:02 2026 :: Log Trentlin [326]: arrived (The pool in the foothills) from 306
+Sat Oct 24 22:47:03 2026 :: Log Trentlin [326]: east
+Sat Oct 24 22:47:03 2026 :: Log Trentlin [309]: arrived (Path in the foothills) from 326
+Sat Oct 24 22:47:03 2026 :: Log Trentlin [309]: east
+Sat Oct 24 22:47:03 2026 :: Log Trentlin [310]: arrived (Path in the foothills) from 309
+Sat Oct 24 22:47:04 2026 :: Log Trentlin [310]: north
+Sat Oct 24 22:47:04 2026 :: Log Trentlin [327]: arrived (The foothills) from 310
+Sat Oct 24 22:47:04 2026 :: Log Trentlin [327]: east
+Sat Oct 24 22:47:04 2026 :: Log Trentlin [313]: arrived (Road to Ofcol) from 327
+Sat Oct 24 22:47:04 2026 :: Log Trentlin [313]: north
+Sat Oct 24 22:47:04 2026 :: Log Trentlin [314]: arrived (Road to Ofcol) from 313
+Sat Oct 24 22:47:04 2026 :: Log Trentlin [314]: north
+Sat Oct 24 22:47:04 2026 :: Log Trentlin [52]: arrived (Outside Ofcol) from 314
+Sat Oct 24 22:47:05 2026 :: Log Trentlin [52]: north
+Sat Oct 24 22:47:05 2026 :: Log Trentlin [5550]: arrived (Village street) from 52
+Sat Oct 24 22:47:07 2026 :: Log Trentlin [5550]: ex
+Sat Oct 24 22:47:09 2026 :: Log Trentlin [5550]: n
+Sat Oct 24 22:47:09 2026 :: Log Trentlin [5551]: arrived (Village street) from 5550
+Sat Oct 24 22:47:10 2026 :: Log Trentlin [5551]: ex
+Sat Oct 24 22:47:11 2026 :: Log Trentlin [5551]: n
+Sat Oct 24 22:47:11 2026 :: Log Trentlin [5552]: arrived (Village square) from 5551
+Sat Oct 24 22:47:13 2026 :: Log Trentlin [5552]: k cit
+Sat Oct 24 22:47:13 2026 :: Log Trentlin [5552]: alignment -889 -> -914 (Fiend)
+Sat Oct 24 22:47:13 2026 :: Log Trentlin [5552]: killed the citizen
+Sat Oct 24 22:47:13 2026 :: Log Trentlin [5552]: coin +6 silver
+Sat Oct 24 22:47:13 2026 :: Log Trentlin [5552]: coin +14 copper
+Sat Oct 24 22:47:16 2026 :: Sock.sinaddr:  178.156.185.231
+Sat Oct 24 22:47:16 2026 :: EOF encountered on read.
+Sat Oct 24 22:47:17 2026 :: Log Trentlin [5552]: reca
+Sat Oct 24 22:47:17 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 5552
+Sat Oct 24 22:47:18 2026 :: Log Trentlin [4207]: e
+Sat Oct 24 22:47:18 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 24 22:47:18 2026 :: Log Trentlin [4202]: e
+Sat Oct 24 22:47:18 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sat Oct 24 22:47:19 2026 :: Log Trentlin [4201]: e
+Sat Oct 24 22:47:19 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sat Oct 24 22:47:19 2026 :: Log Trentlin [2427]: e
+Sat Oct 24 22:47:19 2026 :: Log Trentlin [2427]: n
+Sat Oct 24 22:47:19 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 24 22:47:19 2026 :: Log Trentlin [2404]: n
+Sat Oct 24 22:47:19 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sat Oct 24 22:47:20 2026 :: Log Trentlin [2401]: u
+Sat Oct 24 22:47:20 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sat Oct 24 22:47:20 2026 :: Log Trentlin [2410]: u
+Sat Oct 24 22:47:20 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sat Oct 24 22:47:20 2026 :: Log Trentlin [2411]: u
+Sat Oct 24 22:47:20 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sat Oct 24 22:47:20 2026 :: Log Trentlin [2414]: u
+Sat Oct 24 22:47:20 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sat Oct 24 22:47:22 2026 :: Log Trentlin [2497]: aquest complete
+Sat Oct 24 22:47:22 2026 :: Log Trentlin [2497]: copper +94640700
+Sat Oct 24 22:47:22 2026 :: Log Trentlin [2497]: quest complete: 94p 64g 7s, 18 quest points (streak bonus 80%)
+Sat Oct 24 22:47:22 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261024_224722.quest (PRESTORE Trentlin to see it).
+Sat Oct 24 22:47:26 2026 :: Log Trentlin [2497]: aquest gamble yes
+Sat Oct 24 22:50:55 2026 :: Treasure goblin: vanished from room 6009 (Outside a small cabin in the forest, haon.are) (too long in one area).
+Sat Oct 24 22:52:21 2026 :: Sock.sinaddr:  3.212.128.62
+Sat Oct 24 22:52:21 2026 :: EOF encountered on read.
