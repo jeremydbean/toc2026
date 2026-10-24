@@ -172714,3 +172714,165 @@ Sat Oct 24 20:35:09 2026 :: Sock.sinaddr:  178.156.184.20
 Sat Oct 24 20:35:09 2026 :: EOF encountered on read.
 Sat Oct 24 20:40:14 2026 :: Sock.sinaddr:  5.161.61.238
 Sat Oct 24 20:40:15 2026 :: EOF encountered on read.
+Sat Oct 24 20:45:17 2026 :: Sock.sinaddr:  5.161.177.47
+Sat Oct 24 20:45:18 2026 :: EOF encountered on read.
+Sat Oct 24 20:46:54 2026 :: Log Alaric [4210]: wake
+Sat Oct 24 20:46:55 2026 :: Log Alaric [4210]: l
+Sat Oct 24 20:46:56 2026 :: Log Alaric [4210]: s
+Sat Oct 24 20:46:56 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4210
+Sat Oct 24 20:46:56 2026 :: Log Alaric [4203]: s
+Sat Oct 24 20:46:56 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4203
+Sat Oct 24 20:46:57 2026 :: Log Alaric [4202]: w
+Sat Oct 24 20:46:57 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4202
+Sat Oct 24 20:46:57 2026 :: Log Alaric [4207]: w
+Sat Oct 24 20:46:57 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sat Oct 24 20:46:58 2026 :: Log Alaric [4208]: r e 4
+Sat Oct 24 20:46:58 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sat Oct 24 20:46:58 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 24 20:46:58 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sat Oct 24 20:46:58 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sat Oct 24 20:46:59 2026 :: Log Alaric [2427]: n
+Sat Oct 24 20:46:59 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 24 20:46:59 2026 :: Log Alaric [2404]: n
+Sat Oct 24 20:46:59 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sat Oct 24 20:47:00 2026 :: Log Alaric [2401]: u
+Sat Oct 24 20:47:00 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sat Oct 24 20:47:00 2026 :: Log Alaric [2410]: u
+Sat Oct 24 20:47:00 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Sat Oct 24 20:47:00 2026 :: Log Alaric [2411]: u
+Sat Oct 24 20:47:00 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Sat Oct 24 20:47:00 2026 :: Log Alaric [2414]: u
+Sat Oct 24 20:47:00 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sat Oct 24 20:47:01 2026 :: Log Alaric [2497]: u
+Sat Oct 24 20:47:01 2026 :: Log Alaric [2497]: aq re
+Sat Oct 24 20:47:01 2026 :: Log Alaric [2497]: quest assigned: kill the green crystal spider (mob 11010, level 8) in ancala.are, 12 minutes, ordinary
+Sat Oct 24 20:47:05 2026 :: Log Alaric [2497]: enter door
+Sat Oct 24 20:47:05 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sat Oct 24 20:47:05 2026 :: Log Alaric [2401]: west
+Sat Oct 24 20:47:05 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sat Oct 24 20:47:06 2026 :: Log Alaric [2405]: west
+Sat Oct 24 20:47:06 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sat Oct 24 20:47:06 2026 :: Log Alaric [2433]: west
+Sat Oct 24 20:47:06 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sat Oct 24 20:47:06 2026 :: Log Alaric [2434]: west
+Sat Oct 24 20:47:06 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sat Oct 24 20:47:06 2026 :: Log Alaric [2435]: west
+Sat Oct 24 20:47:06 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sat Oct 24 20:47:07 2026 :: Log Alaric [2436]: west
+Sat Oct 24 20:47:07 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sat Oct 24 20:47:07 2026 :: Log Alaric [2437]: west
+Sat Oct 24 20:47:07 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sat Oct 24 20:47:07 2026 :: Log Alaric [2438]: open west
+Sat Oct 24 20:47:07 2026 :: Log Alaric [2438]: west
+Sat Oct 24 20:47:07 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sat Oct 24 20:47:09 2026 :: Log Alaric [2439]: west
+Sat Oct 24 20:47:09 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sat Oct 24 20:47:09 2026 :: Log Alaric [6000]: west
+Sat Oct 24 20:47:09 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sat Oct 24 20:47:09 2026 :: Log Alaric [6001]: west
+Sat Oct 24 20:47:09 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sat Oct 24 20:47:09 2026 :: Log Alaric [6002]: west
+Sat Oct 24 20:47:09 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Sat Oct 24 20:47:10 2026 :: Log Alaric [6003]: west
+Sat Oct 24 20:47:10 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Sat Oct 24 20:47:10 2026 :: Log Alaric [6004]: west
+Sat Oct 24 20:47:10 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Sat Oct 24 20:47:10 2026 :: Log Alaric [6100]: west
+Sat Oct 24 20:47:10 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Sat Oct 24 20:47:10 2026 :: Log Alaric [6101]: south
+Sat Oct 24 20:47:10 2026 :: Log Alaric [6104]: arrived (A small path in the deep, dark forest) from 6101
+Sat Oct 24 20:47:11 2026 :: Log Alaric [6104]: south
+Sat Oct 24 20:47:11 2026 :: Log Alaric [6105]: arrived (A small path in the deep, dark forest) from 6104
+Sat Oct 24 20:47:11 2026 :: Log Alaric [6105]: west
+Sat Oct 24 20:47:11 2026 :: Log Alaric [6106]: arrived (A junction in the deep, dark forest) from 6105
+Sat Oct 24 20:47:11 2026 :: Log Alaric [6106]: south
+Sat Oct 24 20:47:11 2026 :: Log Alaric [6117]: arrived (A junction in the deep, dark forest) from 6106
+Sat Oct 24 20:47:11 2026 :: Log Alaric [6117]: east
+Sat Oct 24 20:47:11 2026 :: Log Alaric [6118]: arrived (A small path in the deep, dark forest) from 6117
+Sat Oct 24 20:47:12 2026 :: Log Alaric [6118]: south
+Sat Oct 24 20:47:12 2026 :: Log Alaric [6119]: arrived (A small path in the deep, dark forest) from 6118
+Sat Oct 24 20:47:12 2026 :: Log Alaric [6119]: south
+Sat Oct 24 20:47:12 2026 :: Log Alaric [6120]: arrived (On the river bank in the deep, dark forest) from 6119
+Sat Oct 24 20:47:12 2026 :: Log Alaric [6120]: west
+Sat Oct 24 20:47:12 2026 :: Log Alaric [6121]: arrived (A dead end path on the river bank in the deep, dark forest) from 6120
+Sat Oct 24 20:47:12 2026 :: Log Alaric [6121]: west
+Sat Oct 24 20:47:12 2026 :: Log Alaric [-]: arrived (-) from 6121
+Sat Oct 24 20:47:13 2026 :: Log Alaric [-]: west
+Sat Oct 24 20:47:13 2026 :: Log Alaric [11057]: arrived (Muddy Riverbank) from -
+Sat Oct 24 20:47:19 2026 :: Log Alaric [11057]: recal
+Sat Oct 24 20:47:19 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 11057
+Sat Oct 24 20:47:22 2026 :: Log Alaric [4207]: w
+Sat Oct 24 20:47:22 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sat Oct 24 20:47:23 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 24 20:47:23 2026 :: Log Alaric [4208]: gold -70
+Sat Oct 24 20:47:26 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 24 20:47:27 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 24 20:47:27 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 24 20:47:27 2026 :: Log Alaric [4208]: r e 4
+Sat Oct 24 20:47:27 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sat Oct 24 20:47:27 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 24 20:47:27 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sat Oct 24 20:47:27 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sat Oct 24 20:47:27 2026 :: Log Alaric [2427]: n
+Sat Oct 24 20:47:27 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 24 20:47:28 2026 :: Log Alaric [2404]: n
+Sat Oct 24 20:47:28 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sat Oct 24 20:47:54 2026 :: Log Alaric [2401]: list
+Sat Oct 24 20:48:02 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:02 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:02 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:03 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:03 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:03 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:04 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:04 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:04 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:04 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:04 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:04 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:04 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:04 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:04 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:04 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:04 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:04 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:05 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:05 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:05 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:05 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:05 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:05 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:05 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:05 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:05 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:05 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:05 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:05 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:06 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:06 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:06 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:06 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:06 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:06 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:06 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:06 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:06 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:06 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:06 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:06 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:07 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:07 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:07 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:07 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:07 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:07 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:07 2026 :: Log Alaric [2401]: buy candy
+Sat Oct 24 20:48:07 2026 :: Log Alaric [2401]: copper -300000
+Sat Oct 24 20:48:07 2026 :: Log Alaric [2401]: bought a bag of candy corn (vnum 29932) for 300000 copper from Madame Hexley the Hallows End merchant
+Sat Oct 24 20:48:08 2026 :: Log Alaric [2401]: i
+Sat Oct 24 20:48:10 2026 :: Log Alaric [2401]: l i bag
+Sat Oct 24 20:48:14 2026 :: Log Alaric [2401]: sc
+Sat Oct 24 20:48:16 2026 :: Log Alaric [2401]: eat bag
+Sat Oct 24 20:48:17 2026 :: Log Alaric [2401]: sc
+Sat Oct 24 20:48:20 2026 :: Log Alaric [2401]: af
+Sat Oct 24 20:48:21 2026 :: Log Alaric [2401]: i

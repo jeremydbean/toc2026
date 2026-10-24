@@ -11349,3 +11349,79 @@
 1792871822	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	worth		You have 263 platinum, 106 gold, 66 silver, 126 copper // and 166214 experience (21086 exp to level).
 1792873405	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
 1792873405	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	worth		You have 263 platinum, 106 gold, 66 silver, 126 copper // and 166214 experience (21086 exp to level).
+1792874814	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1792874815	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1792874816	cmd	Alaric	54	4203	dresden_halloween.are	standing	100	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1792874816	cmd	Alaric	54	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792874817	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	west		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792874817	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792874818	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792874819	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792874819	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792874820	cmd	Alaric	54	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792874820	cmd	Alaric	54	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792874820	cmd	Alaric	54	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792874820	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792874821	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792874821	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	15	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'A bounty has been posted on the green crystal spider.'
+1792874825	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792874825	cmd	Alaric	54	2405	dresden_halloween.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1792874826	cmd	Alaric	54	2433	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1792874826	cmd	Alaric	54	2434	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792874826	cmd	Alaric	54	2435	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792874826	cmd	Alaric	54	2436	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792874827	cmd	Alaric	54	2437	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792874827	cmd	Alaric	54	2438	dresden_halloween.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1792874827	cmd	Alaric	54	2438	dresden_halloween.are	standing	100	0	-	open	west	Ok.
+1792874827	cmd	Alaric	54	2439	dresden_halloween.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792874829	cmd	Alaric	54	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through
+1792874829	cmd	Alaric	54	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.
+1792874829	cmd	Alaric	54	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads
+1792874829	cmd	Alaric	54	6003	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.
+1792874830	cmd	Alaric	54	6004	haon.are	standing	100	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains
+1792874830	cmd	Alaric	54	6100	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in
+1792874830	cmd	Alaric	54	6101	haon.are	standing	100	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,
+1792874830	cmd	Alaric	54	6104	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues
+1792874831	cmd	Alaric	54	6105	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.
+1792874831	cmd	Alaric	54	6106	haon.are	standing	100	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.
+1792874831	cmd	Alaric	54	6117	haon.are	standing	100	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.
+1792874831	cmd	Alaric	54	6118	haon.are	standing	100	0	-	east		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. Ancient, grey // trees loom everywhere.  The path continues south and west.
+1792874832	cmd	Alaric	54	6119	haon.are	standing	100	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Huge, // ancient trees are on all sides.  The path continues north and south.
+1792874832	cmd	Alaric	54	6120	haon.are	standing	100	0	-	south		On the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  To the south // a fast river is flowing westwards through the forest. Ancient grey trees loom
+1792874832	cmd	Alaric	54	6121	haon.are	standing	100	0	-	west		A dead end path on the river bank in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest. The ancient // trees stand so close that the path disappears between the dusty roots. To
+1792874832	cmd	Alaric	54	-	-	standing	100	0	-	west		Eerie Clearing //   You are in a small, eerie clearing.. It is virtually silent.. No sounds of // small animals, birds or any creatures that you would normally expect to find
+1792874833	cmd	Alaric	54	11057	ancala.are	standing	100	0	-	west		Muddy Riverbank //   You are on the south bank of a rushing river.  An old, mossy and // huge stone slab hangs over the riverbank, allowing you to cross
+1792874839	cmd	Alaric	54	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792874842	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792874843	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	heal	ref	The cackling witch-healer utters the words 'candusima'. // You feel fully refreshed! (7 castings, 70 gold.)
+1792874846	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	heal	ref	The cackling witch-healer says 'Your legs are as fresh as I can make them.'
+1792874847	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	heal	ref	The cackling witch-healer says 'Your legs are as fresh as I can make them.'
+1792874847	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	heal	ref	The cackling witch-healer says 'Your legs are as fresh as I can make them.'
+1792874847	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792874847	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792874848	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792874874	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	list		[Lv Price] Item // [ 0        30g] a bag of candy corn. // [ 0     1p 20g] a grinning jack-o-lantern mask.
+1792874882	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874883	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874884	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874884	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874884	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874884	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874885	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874885	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874885	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874885	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874886	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874886	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874886	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874886	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874887	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874887	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874887	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	buy	candy	You buy a bag of candy corn.
+1792874888	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (17) (Glowing) a bag of candy corn //      (Glowing) (Humming) a bone mace
+1792874890	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	look	i bag	That is not a container.
+1792874894	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    234 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792874896	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	eat	bag	You eat a bag of candy corn.
+1792874897	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    234 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792874900	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	affect		You are not affected by any spells.
+1792874901	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (16) (Glowing) a bag of candy corn //      (Glowing) (Humming) a bone mace
