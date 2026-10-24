@@ -174231,3 +174231,21 @@ Sat Oct 24 21:37:38 2026 :: Log Alaric [2497]: quit
 Sat Oct 24 21:37:38 2026 :: Alaric has quit.
 Sat Oct 24 21:37:38 2026 :: [QUIT] Player rejoined the real world.
 Sat Oct 24 21:38:02 2026 :: Treasure goblin: vanished from room 1380 (A hallway, htower.are) (too long in one area).
+Sat Oct 24 21:40:06 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sat Oct 24 21:40:10 2026 :: Log WebAdmin: fsave
+Sat Oct 24 21:40:16 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sat Oct 24 21:40:19 2026 :: Received signal 15; saving players and shutting down.
+Sat Oct 24 21:40:19 2026 :: Normal termination of game.
+Sat Oct 24 21:40:20 2026 ::  INIT OK 
+Sat Oct 24 21:40:20 2026 :: walkto_load: 157 destinations.
+Sat Oct 24 21:40:20 2026 :: changes_load: 155 entries.
+Sat Oct 24 21:40:20 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Sat Oct 24 21:40:20 2026 :: Recovery ledger: 29 records (0 from before the check), 0 requests, 4 players.
+Sat Oct 24 21:40:20 2026 :: ROM is ready to rock on port 9000.
+Sat Oct 24 21:40:20 2026 :: Treasure goblin: appeared.
+Sat Oct 24 21:40:20 2026 :: Automated backup complete.
+Sat Oct 24 21:40:20 2026 :: Daily backup complete.
+Sat Oct 24 21:41:07 2026 :: Sock.sinaddr:  178.156.181.172
+Sat Oct 24 21:41:07 2026 :: EOF encountered on read.
+Sat Oct 24 21:43:59 2026 :: Sock.sinaddr:  198.235.24.17
+Sat Oct 24 21:43:59 2026 :: EOF encountered on read.
