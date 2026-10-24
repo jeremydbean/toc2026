@@ -170220,3 +170220,32 @@ Sat Oct 24 16:15:23 2026 :: Log Alaric [16081]: scan
 Sat Oct 24 16:15:25 2026 :: Log Alaric [16081]: w
 Sat Oct 24 16:15:25 2026 :: Log Alaric [16080]: arrived (Out on the Mast) from 16081
 Sat Oct 24 16:15:26 2026 :: Log Alaric [16080]: bs sw
+Sat Oct 24 16:16:13 2026 :: Log Alaric [16080]: i
+Sat Oct 24 16:16:14 2026 :: Sock.sinaddr:  52.87.72.16
+Sat Oct 24 16:16:15 2026 :: EOF encountered on read.
+Sat Oct 24 16:16:16 2026 :: Log Alaric [16080]: af
+Sat Oct 24 16:16:22 2026 :: Log Alaric [16080]: sc
+Sat Oct 24 16:16:24 2026 :: Log Alaric [16080]: eat candy
+Sat Oct 24 16:16:24 2026 :: Log Alaric [16080]: eat candy
+Sat Oct 24 16:16:24 2026 :: Log Alaric [16080]: eat candy
+Sat Oct 24 16:16:25 2026 :: Log Alaric [16080]: sc
+Sat Oct 24 16:16:27 2026 :: Log Alaric [16080]: af
+Sat Oct 24 16:16:29 2026 :: Log Alaric [16080]: i
+Sat Oct 24 16:16:32 2026 :: Log Alaric [16080]: killed The swashbuckler
+Sat Oct 24 16:16:32 2026 :: Log Alaric [16080]: coin +1 platinum
+Sat Oct 24 16:16:32 2026 :: Log Alaric [16080]: coin +6 silver
+Sat Oct 24 16:16:32 2026 :: Log Alaric [16080]: coin +8 copper
+Sat Oct 24 16:16:32 2026 :: Log Alaric [16080]: coin +3 gold
+Sat Oct 24 16:16:35 2026 :: Log Alaric [16080]: recal
+Sat Oct 24 16:16:35 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 16080
+Sat Oct 24 16:16:36 2026 :: Log Alaric [4207]: w
+Sat Oct 24 16:16:36 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sat Oct 24 16:16:37 2026 :: Log Alaric [4208]: e
+Sat Oct 24 16:16:37 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sat Oct 24 16:16:37 2026 :: Log Alaric [4207]: e
+Sat Oct 24 16:16:37 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 24 16:16:37 2026 :: Log Alaric [4202]: n
+Sat Oct 24 16:16:37 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4202
+Sat Oct 24 16:16:38 2026 :: Log Alaric [4203]: n
+Sat Oct 24 16:16:38 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
+Sat Oct 24 16:16:39 2026 :: Log Alaric [4210]: sleep

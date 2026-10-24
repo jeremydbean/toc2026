@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792858453
+LogO 1792858762
 Vers 4
 Prom ~
 Ignoring ~
@@ -17,18 +17,18 @@ ChangesSeen 20261023g:1 20261023f:1 20261023e:1 20261023d:1 20261023c:1 20261023
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 54
-Plyd 828558
+Plyd 828867
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
 StashMax 150
 Scro 22
-Room 16078
-HMV  1165 1165 1833 1833 597 810
-NewGold 125
-NewPlat 1583
-NewCopp 209
-NewSilv 68
+Room 4210
+HMV  879 1165 1833 1833 573 810
+NewGold 131
+NewPlat 1585
+NewCopp 225
+NewSilv 80
 BankCP 3386584573
 IntTime 1792803484
 IntTotal 144584573
@@ -37,7 +37,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 2852
+AchKills 2854
 AchQuests 281
 AchDeaths 9
 AchExplore 5
@@ -118,8 +118,8 @@ Achv visit-oz 1791127353
 Achv visit-high-tower 1791329329
 Achv visit-ultima 1791329350
 Achv visit-korzath-fortress 1790899622
-LastOut  1792858453
-Rested 27566 0
+LastOut  1792858762
+Rested 27538 0
 Daily 0 0 0 0 0
 SesLogin 1792800776
 SesDur   6181
@@ -135,7 +135,7 @@ QuestPnts 1096
 QuestStrk 8
 CasinoWon  51
 CasinoLost 304
-Exp  165816
+Exp  165888
 Act  4261068
 AfBy 524800
 Comm 24576
@@ -162,7 +162,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
+Pos  4
 Prac 77
 Trai 36
 Save  3
@@ -199,7 +199,7 @@ Sk 76 'torment'
 Sk 7 'axe'
 Sk 100 'dagger'
 Sk 5 'flail'
-Sk 90 'mace'
+Sk 92 'mace'
 Sk 3 'polearm'
 Sk 5 'spear'
 Sk 100 'sword'
@@ -225,8 +225,8 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
-AffD 'fly'  45  18   0   0     524288          0
-AffD 'stone skin'  41  15 -40  17          0          0
+AffD 'fly'  43  13   0   0     524288          0
+AffD 'stone skin'  40  10 -40  17          0          0
 End
 
 #O
@@ -643,33 +643,6 @@ Cost 50000000
 Cond 100
 Repd 0
 Affect -1 53 -1 5 17 0 0
-End
-
-#O
-Vnum 29900
-Nest 0
-Wear -1
-Cost 10000
-Cond 75
-Repd 0
-End
-
-#O
-Vnum 29900
-Nest 0
-Wear -1
-Cost 10000
-Cond 75
-Repd 0
-End
-
-#O
-Vnum 29900
-Nest 0
-Wear -1
-Cost 10000
-Cond 75
-Repd 0
 End
 
 #O
