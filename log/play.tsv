@@ -10360,3 +10360,173 @@
 1792860675	cmd	Trentlin	50	5661	tarin.are	standing	94	0	-	north		Walking on the narrow trail through the forest //   Entering this part of the big scary forest, you notice that this // trail seems to be struggling against the forest to keep its path. The
 1792860677	cmd	Trentlin	50	5670	tarin.are	standing	94	0	-	north		Behind the tree //   You stand behind the enormous tree, the sun lights up this place in // a wonderful green color. Deer, rabbits and other inhabitants of this
 1792860681	cmd	Trentlin	50	5670	tarin.are	standing	94	0	-	look	s	You see nothing special about him. // Trentlin has a few bruises. // Trentlin is using:
+1792860684	cmd	Trentlin	50	5670	tarin.are	standing	94	0	-	look	sp	You see a strange looking creature half dog half human, its eyes looks // at you as though it was going to ask you a question. // The sphinx is in excellent condition.
+1792860686	cmd	Trentlin	50	5670	tarin.are	standing	94	0	-	consider	sp	Death will thank you for your gift. // As far as you're concerned, the sphinx is a wimp.
+1792860688	cmd	Trentlin	50	5670	tarin.are	standing	94	0	-	look		Behind the tree //   You stand behind the enormous tree, the sun lights up this place in // a wonderful green color. Deer, rabbits and other inhabitants of this
+1792860693	cmd	Trentlin	50	5670	tarin.are	standing	94	0	-	kill	sp	The sphinx dodges your attack. // The sphinx dodges your attack. // You maul the sphinx.
+1792860698	cmd	Trentlin	50	5670	tarin.are	fighting	92	0	fight	smite		Your smite *** DEMOLISHES *** the sphinx! // Your smite devastates the sphinx! // Your smite wounds the sphinx.
+1792860707	cmd	Trentlin	50	5670	tarin.are	fighting	87	0	fight	smite		Your smite MUTILATES the sphinx! // Your smite wounds the sphinx. // Your smite decimates the sphinx!
+1792860719	cmd	Trentlin	50	5670	tarin.are	fighting	80	0	fight	smite		Your smite MANGLES the sphinx! // The Headless Horseman's Reaper shears through the sphinx with terrible force! // Your smite mauls the sphinx.
+1792860724	cmd	Trentlin	50	5670	tarin.are	fighting	78	0	fight	smite		Your smite misses the sphinx.
+1792860732	cmd	Trentlin	50	5670	tarin.are	fighting	73	0	fight	smite		Your smite misses the sphinx.
+1792860738	cmd	Trentlin	50	5670	tarin.are	fighting	71	0	fight	smite		Your smite *** DEVASTATES *** the sphinx! // Your smite maims the sphinx! // Your smite DISMEMBERS the sphinx!
+1792860749	cmd	Trentlin	50	5670	tarin.are	fighting	68	0	fight	smite		Your smite grazes the sphinx. // Your smite maims the sphinx! // Your smite *** DEVASTATES *** the sphinx!
+1792860758	cmd	Trentlin	50	5670	tarin.are	fighting	66	0	fight	smite		Your smite *** DEVASTATES *** the sphinx! // Your smite hits the sphinx. // Your smite scratches the sphinx.
+1792860771	cmd	Trentlin	50	5670	tarin.are	fighting	60	0	fight	smite		Your smite MASSACRES the sphinx! // Your smite devastates the sphinx! // Your smite MASSACRES the sphinx!
+1792860777	cmd	Trentlin	50	5670	tarin.are	fighting	56	0	fight	smite		Your smite DISEMBOWELS the sphinx! // Your smite *** DEVASTATES *** the sphinx! // Your smite MASSACRES the sphinx!
+1792860783	cmd	Trentlin	50	5670	tarin.are	fighting	55	0	fight	smite		Your smite DISEMBOWELS the sphinx! // Your smite *** DEVASTATES *** the sphinx! // Your smite MANGLES the sphinx!
+1792860795	cmd	Trentlin	50	5670	tarin.are	standing	55	0	-	look		Behind the tree //   You stand behind the enormous tree, the sun lights up this place in // a wonderful green color. Deer, rabbits and other inhabitants of this
+1792860795	cmd	Trentlin	50	5670	tarin.are	standing	55	0	-	look	in cor	A stinking corpse contains: //      Nothing.
+1792860797	cmd	Trentlin	50	5670	tarin.are	standing	55	0	-	sacrifice	cor	The Gods give you 120 copper coins for your sacrifice.
+1792860797	cmd	Trentlin	50	5670	tarin.are	standing	55	0	-	exits		Obvious exits: // South - Closed knot // Up    - Crown of the trees
+1792860800	cmd	Trentlin	50	5671	tarin.are	standing	55	0	-	up		Crown of the trees //   You stand on a platform build perfectly into the crown of these // trees. All around you there are leaves all colored in the most be-
+1792860801	cmd	Trentlin	50	5671	tarin.are	standing	55	0	-	scan		the black griffen                  -to the North.
+1792860804	cmd	Trentlin	50	5680	tarin.are	standing	55	0	-	north		Crown of the trees //   You stand at a junction. The platform leads both west and east, but // also to the south you can see a narrow path leading in between a couple
+1792860806	cmd	Trentlin	50	5680	tarin.are	standing	55	0	-	consider	gr	You can kill the black griffen naked and weaponless. // As far as you're concerned, the black griffen is a wimp.
+1792860807	cmd	Trentlin	50	5680	tarin.are	standing	55	0	-	look	gr	You see a dark dog like creature with a huge pair of wings on its back, // its red eyes glares evilly at you. // The black griffen is in excellent condition.
+1792860808	cmd	Trentlin	50	5680	tarin.are	standing	55	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     16 hours | Sex:    Female | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1792860810	cmd	Trentlin	50	5680	tarin.are	standing	55	0	-	kill	gr	You MUTILATE the black griffen! // You maim the black griffen! // You *** DEMOLISH *** the black griffen!
+1792860813	cmd	Trentlin	50	5680	tarin.are	fighting	55	0	fight	smite		Your smite misses the black griffen.
+1792860814	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	gossip	walk quest	You gossip 'walk quest'
+1792860817	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1792860817	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1792860819	cmd	Trentlin	50	5680	tarin.are	fighting	55	0	fight	smite		Your smite === OBLITERATES === the black griffen! // Your smite ^^^ DESTROYS ^^^ the black griffen! // Your smite *** DEVASTATES *** the black griffen!
+1792860825	cmd	Trentlin	50	5680	tarin.are	fighting	55	0	fight	gossip	gotcha, try that one next	You gossip 'gotcha, try that one next'
+1792860826	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	gossip	Seem to be different commands	You gossip 'Seem to be different commands'
+1792860828	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792860828	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    230 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792860830	cmd	Trentlin	50	5680	tarin.are	standing	55	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     16 hours | Sex:    Female | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1792860830	cmd	Trentlin	50	5680	tarin.are	standing	55	0	-	scan		the black griffen                  -to the East.
+1792860832	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    230 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792860833	cmd	Trentlin	50	5680	tarin.are	standing	55	0	-	look		Crown of the trees //   You stand at a junction. The platform leads both west and east, but // also to the south you can see a narrow path leading in between a couple
+1792860834	cmd	Trentlin	50	5679	tarin.are	standing	55	0	-	east		Crown of the trees //   You arrive at this rotten place on the platform. Nothing special can // be seen anywhere and most people would move on.
+1792860835	cmd	Trentlin	50	5678	tarin.are	standing	55	0	-	south		Crown of the trees //   You stand on the platform above the forest floor. Nothing special // can be seen anywhere.
+1792860836	cmd	Trentlin	50	5684	tarin.are	standing	55	0	-	east		Crown of the trees //   You arrive at this horrifying place on the platform. Blood and // skeletons of both humans and animals are scattered all around you.
+1792860839	cmd	Trentlin	50	5684	tarin.are	standing	55	0	-	consider	tr	You are not a pkiller, type pkill to turn on. // Don't even think about it.
+1792860839	cmd	Trentlin	50	5684	tarin.are	standing	55	0	-	look	tr	You see nothing special about her. // Trentlin has some nasty wounds. // Trentlin is using:
+1792860840	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	walkto	quest	WALKTO QUEST is for immortals.  The quest master told you the area and the room; AQUEST INFO repeats it, and WALKTO <area> takes you to the area.
+1792860841	cmd	Trentlin	50	5684	tarin.are	standing	55	0	-	consider	tree	You can kill A huge ancient tree naked and weaponless. // As far as you're concerned, A huge ancient tree is a wimp.
+1792860842	cmd	Trentlin	50	5684	tarin.are	standing	55	0	-	look	tree	You see a large tree, that doesn't move a bit when you approach it. It's // arms and legs are leg giant branches from the biggest tree you have ever // seen. Battlescars are everywhere on this trees body.
+1792860843	cmd	Trentlin	50	5684	tarin.are	standing	55	0	-	kill	tree	You DISMEMBER A huge ancient tree! // A huge ancient tree dodges your attack. // You ^^^ DESTROY ^^^ A huge ancient tree!
+1792860846	cmd	Trentlin	50	5684	tarin.are	fighting	55	0	fight	smite		Your smite misses A huge ancient tree.
+1792860847	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    230 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792860852	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792860852	cmd	Alaric	54	4210	dresden_halloween.are	standing	100	0	-	look		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1792860854	cmd	Alaric	54	4203	dresden_halloween.are	standing	100	0	-	south		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1792860854	cmd	Alaric	54	4202	dresden_halloween.are	standing	100	0	-	south		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792860854	cmd	Alaric	54	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792860855	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792860855	cmd	Trentlin	50	5684	tarin.are	fighting	56	0	fight	smite		Your smite misses A huge ancient tree.
+1792860855	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792860855	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792860856	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // [54 Dwarf   Kngt  ] Alaric. // Players found: 2
+1792860858	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (15) guano //      (Glowing) a pumpkin-lantern charm
+1792860861	cmd	Trentlin	50	5684	tarin.are	standing	56	0	-	smite		Smite whom?
+1792860862	cmd	Trentlin	50	5684	tarin.are	standing	56	0	-	scan		the king of trees                  -to the North.
+1792860863	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	affect		You are not affected by any spells.
+1792860863	cmd	Trentlin	50	5685	tarin.are	standing	56	0	-	north		High tree //   You walk into a large burned out tree. Horrifying sounds echo all // around you and most people would flee in terror just listening to the
+1792860864	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	where	herm	You didn't find any herm.
+1792860864	cmd	Trentlin	50	5685	tarin.are	standing	56	0	-	consider	k	Death will thank you for your gift. // As far as you're concerned, the king of trees is a wimp.
+1792860865	cmd	Trentlin	50	5685	tarin.are	standing	56	0	-	look	k	You see a "thing" with leaf's and branches almost in the shape of a human // being, a pair of white eyes have been placed on something looking just like // a human head.
+1792860866	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792860866	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792860869	cmd	Alaric	54	9531	newthalo.are	standing	100	0	-	run	e 25	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792860869	cmd	Trentlin	50	5685	tarin.are	standing	56	0	-	kill	ki	The king of trees parries your attack. // The king of trees dodges your attack. // The king of trees parries your attack.
+1792860871	cmd	Alaric	54	9531	newthalo.are	standing	100	0	-	open		Ok.
+1792860871	cmd	Alaric	54	9668	newthalo.are	standing	100	0	-	east		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.
+1792860871	cmd	Alaric	54	9790	newthalo.are	standing	100	0	-	east		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews
+1792860872	cmd	Alaric	54	9791	newthalo.are	standing	100	0	-	east		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road
+1792860872	cmd	Trentlin	50	5685	tarin.are	fighting	54	0	fight	smite		Your smite misses the king of trees.
+1792860872	cmd	Alaric	54	9792	newthalo.are	standing	100	0	-	east		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the
+1792860873	cmd	Alaric	54	9793	newthalo.are	standing	100	0	-	east		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel
+1792860873	cmd	Alaric	54	9794	newthalo.are	standing	100	0	-	east		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline
+1792860874	cmd	Alaric	54	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792860874	cmd	Alaric	54	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a
+1792860875	cmd	Alaric	54	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792860876	cmd	Alaric	54	16002	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792860876	cmd	Alaric	54	16003	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792860877	cmd	Alaric	54	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1792860878	cmd	Alaric	54	16005	pirate.are	standing	100	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like
+1792860879	cmd	Alaric	54	16021	pirate.are	standing	100	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792860880	cmd	Alaric	54	16021	pirate.are	standing	100	0	-	scan		The pirate                         -to the far North. // The pirate                         -to the South. // The bucaneer                       -right below you.
+1792860880	cmd	Trentlin	50	5685	tarin.are	fighting	53	0	fight	smite		Your smite misses the king of trees. // Your smite maims the king of trees! // Your smite maims the king of trees!
+1792860881	cmd	Alaric	54	16022	pirate.are	standing	100	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792860882	cmd	Alaric	54	16022	pirate.are	standing	100	0	-	scan		The sailor                         -to the West.
+1792860882	cmd	Alaric	54	16023	pirate.are	standing	100	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792860883	cmd	Alaric	54	16023	pirate.are	standing	100	0	-	scan		The drunk pirate                   -to the North. // The pirate                         -to the North. // The pirate                         -to the South.
+1792860884	cmd	Alaric	54	16028	pirate.are	standing	100	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792860885	cmd	Alaric	54	16028	pirate.are	standing	100	0	-	scan		The pirate                         -to the far South. // The sailor                         -to the far South. // The midshipman                     -to the far South.
+1792860886	cmd	Alaric	54	16033	pirate.are	standing	100	0	-	north		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792860886	cmd	Alaric	54	16033	pirate.are	standing	100	0	-	scan		The drunk pirate                   -to the South. // The pirate                         -to the South. // The pirate                         -to the far West.
+1792860887	cmd	Alaric	54	16078	pirate.are	standing	100	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792860888	cmd	Alaric	54	16078	pirate.are	standing	100	0	-	scan		The swashbuckler                   -to the East. // The Lookout                        -far above you.
+1792860890	cmd	Alaric	54	16079	pirate.are	standing	100	1	-	east		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling
+1792860890	cmd	Trentlin	50	5685	tarin.are	fighting	52	0	fight	smite		Your smite scratches the king of trees. // Your smite *** DEVASTATES *** the king of trees! // Your smite DISMEMBERS the king of trees!
+1792860891	cmd	Alaric	54	16079	pirate.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792860893	cmd	Alaric	54	16079	pirate.are	standing	100	0	-	bs	sw	Your backstab <<< ERADICATES >>> The swashbuckler! [-187] // Your backstab === OBLITERATES === The swashbuckler! [-121]
+1792860896	cmd	Trentlin	50	5685	tarin.are	fighting	49	0	fight	flee		PANIC! You couldn't escape!
+1792860896	cmd	Trentlin	50	5685	tarin.are	fighting	49	0	fight	flee		The king of trees is overcome with a feeling of despair and flees the battle. // The king of trees leaves south. // The king of trees has fled!
+1792860896	cmd	Trentlin	50	5684	tarin.are	fighting	49	0	fight	flee		Crown of the trees //   You arrive at this horrifying place on the platform. Blood and // skeletons of both humans and animals are scattered all around you.
+1792860897	cmd	Trentlin	50	5684	tarin.are	standing	49	0	-	flee		You aren't fighting anyone.
+1792860897	cmd	Trentlin	50	5684	tarin.are	standing	49	0	-	flee		You aren't fighting anyone.
+1792860897	cmd	Trentlin	50	5684	tarin.are	standing	49	0	-	flee		You aren't fighting anyone.
+1792860897	cmd	Trentlin	50	5684	tarin.are	standing	49	0	-	flee		You aren't fighting anyone.
+1792860898	cmd	Trentlin	50	4207	dresden_halloween.are	standing	49	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792860900	cmd	Trentlin	50	4208	dresden_halloween.are	standing	49	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792860901	cmd	Trentlin	50	4208	dresden_halloween.are	standing	49	0	-	heal	all	The cackling witch-healer says 'Type 'heal' for a list of spells.'
+1792860905	cmd	Trentlin	50	4208	dresden_halloween.are	standing	49	0	-	where	hermie	You didn't find any hermie.
+1792860907	cmd	Trentlin	50	4208	dresden_halloween.are	standing	49	0	-	affect		You are affected by: // Spell: 'plague' modifies strength by -5 for 60 hours. // Spell: 'change sex' modifies sex by 1 for 116 hours.
+1792860912	cmd	Trentlin	50	4208	dresden_halloween.are	standing	49	0	-	heal	poison	The cackling witch-healer utters the words 'judicandus sausabru'.
+1792860918	cmd	Trentlin	50	4208	dresden_halloween.are	standing	49	0	-	heal	plague	The cackling witch-healer utters the words 'judicandus sausabru'.
+1792860920	cmd	Alaric	54	16079	pirate.are	fighting	90	0	fight	eat	gu	You eat guano. // Your skin turns to stone. // Your feet rise off the ground.
+1792860938	cmd	Alaric	54	16079	pirate.are	standing	90	0	-	look		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling
+1792860940	cmd	Alaric	54	16078	pirate.are	standing	90	0	-	west		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792860940	cmd	Alaric	54	16078	pirate.are	standing	90	0	-	scan		The Lookout                        -far above you.
+1792860941	cmd	Alaric	54	16081	pirate.are	standing	90	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792860941	cmd	Alaric	54	16081	pirate.are	standing	90	0	-	scan		The bucaneer                       -to the East. // The swashbuckler                   -to the West. // The Lookout                        -right above you.
+1792860942	cmd	Trentlin	50	4208	dresden_halloween.are	standing	49	0	-	heal	plague	The cackling witch-healer utters the words 'judicandus sausabru'.
+1792860944	cmd	Alaric	54	16080	pirate.are	standing	90	0	-	west		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling
+1792860944	cmd	Alaric	54	16080	pirate.are	standing	90	0	-	bs	sw	Your backstab <<< ERADICATES >>> The swashbuckler! [-178] // Your backstab <<< ERADICATES >>> The swashbuckler! [-193]
+1792860945	cmd	Trentlin	50	4208	dresden_halloween.are	standing	49	0	-	heal	plague	The cackling witch-healer utters the words 'judicandus sausabru'.
+1792860949	cmd	Trentlin	50	4208	dresden_halloween.are	standing	49	0	-	attribute		Str: 22(26)  Int: 16(20)  Wis: 18(22)  Dex: 16(20)  Con: 19(23)
+1792860953	cmd	Trentlin	50	4208	dresden_halloween.are	standing	99	0	-	heal	plague	The cackling witch-healer utters the words 'judicandus sausabru'.
+1792860964	cmd	Trentlin	50	4208	dresden_halloween.are	standing	99	0	-	attribute		Str: 22(19)  Int: 16(20)  Wis: 18(14)  Dex: 16(17)  Con: 19(15)
+1792860966	cmd	Trentlin	50	4207	dresden_halloween.are	standing	99	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792860967	cmd	Trentlin	50	4202	dresden_halloween.are	standing	99	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792860967	cmd	Trentlin	50	4201	dresden_halloween.are	standing	99	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792860967	cmd	Trentlin	50	2427	dresden_halloween.are	standing	99	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792860968	cmd	Trentlin	50	2404	dresden_halloween.are	standing	99	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792860968	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792860969	cmd	Trentlin	50	2410	dresden_halloween.are	standing	99	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792860969	cmd	Trentlin	50	2411	dresden_halloween.are	standing	99	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792860969	cmd	Trentlin	50	2414	dresden_halloween.are	standing	99	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792860969	cmd	Trentlin	50	2497	dresden_halloween.are	standing	99	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792860970	cmd	Trentlin	50	2497	dresden_halloween.are	standing	99	0	-	up		Alas, you cannot go that way.
+1792860972	cmd	Trentlin	50	2497	dresden_halloween.are	standing	99	17	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Trentlin!' // Questor Thews tells you 'A prized artifact - The Amulet of Soulcrusher - has gone missing!'
+1792860974	cmd	Trentlin	50	2401	dresden_halloween.are	standing	99	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792860974	cmd	Alaric	54	16080	pirate.are	standing	85	0	-	look		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling
+1792860975	cmd	Alaric	54	16081	pirate.are	standing	85	0	-	east		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792860976	cmd	Alaric	54	16078	pirate.are	standing	85	0	-	down		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792860977	cmd	Trentlin	50	2405	dresden_halloween.are	standing	99	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1792860977	cmd	Trentlin	50	2433	dresden_halloween.are	standing	99	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1792860977	cmd	Trentlin	50	2434	dresden_halloween.are	standing	99	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792860978	cmd	Trentlin	50	2435	dresden_halloween.are	standing	99	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792860978	cmd	Trentlin	50	2436	dresden_halloween.are	standing	99	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792860978	cmd	Trentlin	50	2437	dresden_halloween.are	standing	99	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792860978	cmd	Trentlin	50	2438	dresden_halloween.are	standing	99	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1792860979	cmd	Trentlin	50	2439	dresden_halloween.are	standing	99	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792860979	cmd	Trentlin	50	6000	haon.are	standing	99	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through
+1792860979	cmd	Alaric	54	16033	pirate.are	standing	85	0	-	down		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792860979	cmd	Trentlin	50	6001	haon.are	standing	99	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.
+1792860979	cmd	Trentlin	50	6002	haon.are	standing	99	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads
+1792860980	cmd	Trentlin	50	6003	haon.are	standing	99	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.
+1792860980	cmd	Trentlin	50	6004	haon.are	standing	99	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains
+1792860980	cmd	Trentlin	50	6100	haon.are	standing	99	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in
+1792860980	cmd	Trentlin	50	6101	haon.are	standing	99	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,
+1792860981	cmd	Trentlin	50	6104	haon.are	standing	99	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues
+1792860981	cmd	Trentlin	50	6105	haon.are	standing	99	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.
+1792860981	cmd	Trentlin	50	6106	haon.are	standing	99	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.
+1792860981	cmd	Trentlin	50	6117	haon.are	standing	99	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.
+1792860982	cmd	Trentlin	50	6116	haon.are	standing	99	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.
+1792860982	cmd	Trentlin	50	6115	haon.are	standing	99	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues
+1792860982	cmd	Trentlin	50	6114	haon.are	standing	99	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead north, east and west.
