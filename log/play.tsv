@@ -9441,3 +9441,5 @@
 1792849448	cmd	Alaric	54	4210	dresden_halloween.are	standing	15	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
 1792849449	cmd	Alaric	54	4210	dresden_halloween.are	standing	15	0	-	sleep		You go to sleep.
 1792849450	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	15	0	-	help	fast	The fast healing skill improves wound healing rates, whether walking, resting, // or sleeping. It represents knowledge of healing herbs or just general // toughness and stamina.  Fast healing is checked every tick, and it is
+1792849476	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	15	0	-	gainlist		Abilities for a level 54 thief of the thief guild: 25 learned, 18 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X haggle (3 trains):
+1792849502	cmd	Alaric	54	4210	dresden_halloween.are	sleeping	15	0	-	help	listen	LISTEN // Syntax: listen // LISTEN receives a brief ambient sound description of your current room:
