@@ -176060,3 +176060,88 @@ Sat Oct 24 23:39:47 2026 :: Log Alaric [29205]: coin +23 silver
 Sat Oct 24 23:39:47 2026 :: Log Alaric [29205]: coin +31 copper
 Sat Oct 24 23:39:47 2026 :: Log Alaric [29205]: coin +13 gold
 Sat Oct 24 23:39:49 2026 :: Log Alaric [29205]: bs cl
+Sat Oct 24 23:40:29 2026 :: Log Alaric [29205]: killed a killer clown
+Sat Oct 24 23:40:29 2026 :: Log Alaric [29205]: coin +5 platinum
+Sat Oct 24 23:40:29 2026 :: Log Alaric [29205]: coin +23 silver
+Sat Oct 24 23:40:29 2026 :: Log Alaric [29205]: coin +31 copper
+Sat Oct 24 23:40:29 2026 :: Log Alaric [29205]: coin +13 gold
+Sat Oct 24 23:40:35 2026 :: Log Alaric [29205]: e
+Sat Oct 24 23:40:35 2026 :: Log Alaric [29206]: arrived (Twist in the Maze) from 29205
+Sat Oct 24 23:40:36 2026 :: Log Alaric [29206]: s
+Sat Oct 24 23:40:36 2026 :: Log Alaric [29207]: arrived (Twist in the Maze) from 29206
+Sat Oct 24 23:40:37 2026 :: Log Alaric [29207]: w
+Sat Oct 24 23:40:37 2026 :: Log Alaric [29208]: arrived (Twist the Maze) from 29207
+Sat Oct 24 23:40:39 2026 :: Log Alaric [29208]: scan
+Sat Oct 24 23:40:42 2026 :: Log Alaric [29208]: bs cl
+Sat Oct 24 23:41:14 2026 :: Log Alaric [29208]: killed a killer clown
+Sat Oct 24 23:41:14 2026 :: Log Alaric [29208]: coin +5 platinum
+Sat Oct 24 23:41:14 2026 :: Log Alaric [29208]: coin +23 silver
+Sat Oct 24 23:41:14 2026 :: Log Alaric [29208]: coin +31 copper
+Sat Oct 24 23:41:14 2026 :: Log Alaric [29208]: coin +13 gold
+Sat Oct 24 23:41:18 2026 :: Treasure goblin: vanished from room 28125 (SPLAT!, azeroth.are) (too long in one area).
+Sat Oct 24 23:41:31 2026 :: Log Alaric [29208]: i
+Sat Oct 24 23:41:34 2026 :: Log Alaric [29208]: drop bone
+Sat Oct 24 23:41:36 2026 :: Log Alaric [29208]: sac bone
+Sat Oct 24 23:41:53 2026 :: Log Alaric [29208]: eq
+Sat Oct 24 23:41:56 2026 :: Log Alaric [29208]: killed a killer clown
+Sat Oct 24 23:41:56 2026 :: Log Alaric [29208]: coin +5 platinum
+Sat Oct 24 23:41:56 2026 :: Log Alaric [29208]: coin +23 silver
+Sat Oct 24 23:41:56 2026 :: Log Alaric [29208]: coin +31 copper
+Sat Oct 24 23:41:56 2026 :: Log Alaric [29208]: coin +13 gold
+Sat Oct 24 23:41:58 2026 :: Log Alaric [29208]: wear exc
+Sat Oct 24 23:41:59 2026 :: Log Alaric [29208]: scan
+Sat Oct 24 23:42:02 2026 :: Log Alaric [29208]: w
+Sat Oct 24 23:42:02 2026 :: Log Alaric [29209]: arrived (Twist in the Maze) from 29208
+Sat Oct 24 23:42:04 2026 :: Log Alaric [29209]: scan
+Sat Oct 24 23:42:07 2026 :: Log Alaric [29209]: n
+Sat Oct 24 23:42:07 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 29209
+Sat Oct 24 23:42:08 2026 :: Log Alaric [29210]: bs sk
+Sat Oct 24 23:42:11 2026 :: Log Alaric [29210]: killed an Animated Skeleton
+Sat Oct 24 23:42:11 2026 :: Log Alaric [29210]: coin +4 platinum
+Sat Oct 24 23:42:11 2026 :: Log Alaric [29210]: coin +20 silver
+Sat Oct 24 23:42:11 2026 :: Log Alaric [29210]: coin +27 copper
+Sat Oct 24 23:42:11 2026 :: Log Alaric [29210]: coin +11 gold
+Sat Oct 24 23:42:15 2026 :: Log Alaric [29210]: n
+Sat Oct 24 23:42:15 2026 :: Log Alaric [29210]: bs sk
+Sat Oct 24 23:42:17 2026 :: Log Alaric [29210]: killed an Animated Skeleton
+Sat Oct 24 23:42:17 2026 :: Log Alaric [29210]: coin +4 platinum
+Sat Oct 24 23:42:17 2026 :: Log Alaric [29210]: coin +20 silver
+Sat Oct 24 23:42:17 2026 :: Log Alaric [29210]: coin +27 copper
+Sat Oct 24 23:42:17 2026 :: Log Alaric [29210]: coin +11 gold
+Sat Oct 24 23:42:30 2026 :: Log Alaric [29210]: l
+Sat Oct 24 23:42:31 2026 :: Log Alaric [29210]: bs mad
+Sat Oct 24 23:43:04 2026 :: Sock.sinaddr:  52.15.147.27
+Sat Oct 24 23:43:04 2026 :: EOF encountered on read.
+Sat Oct 24 23:43:08 2026 :: Log Alaric [29210]: killed a deranged madman
+Sat Oct 24 23:43:08 2026 :: Log Alaric [29210]: coin +5 platinum
+Sat Oct 24 23:43:08 2026 :: Log Alaric [29210]: coin +23 silver
+Sat Oct 24 23:43:08 2026 :: Log Alaric [29210]: coin +31 copper
+Sat Oct 24 23:43:08 2026 :: Log Alaric [29210]: coin +13 gold
+Sat Oct 24 23:43:11 2026 :: Log Alaric [29210]: scan
+Sat Oct 24 23:43:13 2026 :: Log Alaric [29210]: w
+Sat Oct 24 23:43:13 2026 :: Log Alaric [29211]: arrived (Twist in the Maze) from 29210
+Sat Oct 24 23:43:14 2026 :: Log Alaric [29211]: bs sk
+Sat Oct 24 23:43:28 2026 :: Log Alaric [29211]: l
+Sat Oct 24 23:43:31 2026 :: Log Alaric [29211]: bs mad
+Sat Oct 24 23:44:02 2026 :: Log Alaric [29211]: killed a deranged madman
+Sat Oct 24 23:44:02 2026 :: Log Alaric [29211]: coin +5 platinum
+Sat Oct 24 23:44:02 2026 :: Log Alaric [29211]: coin +23 silver
+Sat Oct 24 23:44:02 2026 :: Log Alaric [29211]: coin +31 copper
+Sat Oct 24 23:44:02 2026 :: Log Alaric [29211]: coin +13 gold
+Sat Oct 24 23:44:07 2026 :: Log Alaric [29211]: l
+Sat Oct 24 23:44:09 2026 :: Log Alaric [29211]: scan
+Sat Oct 24 23:44:15 2026 :: Log Alaric [29211]: n
+Sat Oct 24 23:44:15 2026 :: Log Alaric [29212]: arrived (Twist in the Maze) from 29211
+Sat Oct 24 23:44:15 2026 :: Log Alaric [29212]: kill sk
+Sat Oct 24 23:44:17 2026 :: Log Alaric [29212]: killed an Animated Skeleton
+Sat Oct 24 23:44:17 2026 :: Log Alaric [29212]: coin +4 platinum
+Sat Oct 24 23:44:17 2026 :: Log Alaric [29212]: coin +20 silver
+Sat Oct 24 23:44:17 2026 :: Log Alaric [29212]: coin +27 copper
+Sat Oct 24 23:44:17 2026 :: Log Alaric [29212]: coin +11 gold
+Sat Oct 24 23:44:22 2026 :: Log Alaric [29212]: bs mad
+Sat Oct 24 23:45:02 2026 :: Log Alaric [29212]: killed a deranged madman
+Sat Oct 24 23:45:02 2026 :: Log Alaric [29212]: coin +5 platinum
+Sat Oct 24 23:45:02 2026 :: Log Alaric [29212]: coin +23 silver
+Sat Oct 24 23:45:02 2026 :: Log Alaric [29212]: coin +31 copper
+Sat Oct 24 23:45:02 2026 :: Log Alaric [29212]: coin +13 gold
+Sat Oct 24 23:45:05 2026 :: Log Alaric [29212]: l
