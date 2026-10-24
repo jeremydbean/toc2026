@@ -11784,3 +11784,6 @@
 1792876059	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
 1792876060	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	17	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'
 1792876060	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 63 quest points.
+1792876217	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    235 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792876218	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792876219	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    235 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
