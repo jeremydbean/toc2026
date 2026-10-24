@@ -10831,3 +10831,7 @@
 1792864033	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
 1792864034	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
 1792864035	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792865435	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792865435	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	worth		You have 1591 platinum, 149 gold, 116 silver, 273 copper // and 166060 experience (21240 exp to level).
+1792865490	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792865490	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
