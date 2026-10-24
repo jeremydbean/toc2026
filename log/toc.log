@@ -168823,3 +168823,376 @@ Sat Oct 24 13:54:23 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Squar
 Sat Oct 24 13:54:24 2026 :: Log Trentlin [2403]: w
 Sat Oct 24 13:54:24 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2403
 Sat Oct 24 13:54:27 2026 :: Log Trentlin [2401]: l se
+Sat Oct 24 13:54:32 2026 :: Log Trentlin [2401]: l
+Sat Oct 24 13:54:33 2026 :: Log Trentlin [2401]: l rea
+Sat Oct 24 13:54:40 2026 :: Log Trentlin [2401]: w
+Sat Oct 24 13:54:40 2026 :: Log Trentlin [2405]: arrived (Western Oak Tree Square.) from 2401
+Sat Oct 24 13:54:40 2026 :: Log Trentlin [2405]: w
+Sat Oct 24 13:54:40 2026 :: Log Trentlin [2433]: arrived (Temple Boulevard.) from 2405
+Sat Oct 24 13:54:40 2026 :: Log Trentlin [2433]: w
+Sat Oct 24 13:54:40 2026 :: Log Trentlin [2434]: arrived (Temple Boulevard.) from 2433
+Sat Oct 24 13:54:41 2026 :: Log Trentlin [2434]: w
+Sat Oct 24 13:54:41 2026 :: Log Trentlin [2435]: arrived (Temple Boulevard.) from 2434
+Sat Oct 24 13:54:41 2026 :: Log Trentlin [2435]: w
+Sat Oct 24 13:54:41 2026 :: Log Trentlin [2436]: arrived (Temple Boulevard.) from 2435
+Sat Oct 24 13:54:41 2026 :: Log Trentlin [2436]: w
+Sat Oct 24 13:54:41 2026 :: Log Trentlin [2437]: arrived (Temple Boulevard.) from 2436
+Sat Oct 24 13:54:41 2026 :: Log Trentlin [2437]: w
+Sat Oct 24 13:54:41 2026 :: Log Trentlin [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sat Oct 24 13:54:42 2026 :: Log Trentlin [2438]: w
+Sat Oct 24 13:54:42 2026 :: Log Trentlin [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sat Oct 24 13:54:42 2026 :: Log Trentlin [2439]: w
+Sat Oct 24 13:54:42 2026 :: Log Trentlin [6000]: arrived (The edge of the forest) from 2439
+Sat Oct 24 13:54:43 2026 :: Log Trentlin [6000]: w
+Sat Oct 24 13:54:43 2026 :: Log Trentlin [6001]: arrived (A trail through the light forest) from 6000
+Sat Oct 24 13:54:43 2026 :: Log Trentlin [6001]: w
+Sat Oct 24 13:54:43 2026 :: Log Trentlin [6002]: arrived (A trail through the light forest) from 6001
+Sat Oct 24 13:54:43 2026 :: Log Trentlin [6002]: w
+Sat Oct 24 13:54:43 2026 :: Log Trentlin [6003]: arrived (A trail through the dense forest) from 6002
+Sat Oct 24 13:54:44 2026 :: Log Trentlin [6003]: n
+Sat Oct 24 13:54:44 2026 :: Log Trentlin [24101]: arrived (Before the Forest Murkmire) from 6003
+Sat Oct 24 13:54:44 2026 :: Log Trentlin [24101]: n
+Sat Oct 24 13:54:44 2026 :: Log Trentlin [24102]: arrived (On a Road in the Forest Murkmire) from 24101
+Sat Oct 24 13:54:47 2026 :: Log Trentlin [24102]: s
+Sat Oct 24 13:54:47 2026 :: Log Trentlin [24101]: arrived (Before the Forest Murkmire) from 24102
+Sat Oct 24 13:54:47 2026 :: Log Trentlin [24101]: s
+Sat Oct 24 13:54:47 2026 :: Log Trentlin [6003]: arrived (A trail through the dense forest) from 24101
+Sat Oct 24 13:54:48 2026 :: Log Trentlin [6003]: e
+Sat Oct 24 13:54:48 2026 :: Log Trentlin [6002]: arrived (A trail through the light forest) from 6003
+Sat Oct 24 13:54:49 2026 :: Log Trentlin [6002]: e
+Sat Oct 24 13:54:49 2026 :: Log Trentlin [6001]: arrived (A trail through the light forest) from 6002
+Sat Oct 24 13:54:49 2026 :: Log Trentlin [6001]: n
+Sat Oct 24 13:54:50 2026 :: Log Trentlin [6001]: e
+Sat Oct 24 13:54:50 2026 :: Log Trentlin [6000]: arrived (The edge of the forest) from 6001
+Sat Oct 24 13:54:51 2026 :: Log Trentlin [6000]: n
+Sat Oct 24 13:54:51 2026 :: Log Trentlin [6000]: e
+Sat Oct 24 13:54:51 2026 :: Log Trentlin [2439]: arrived (Outside the Western Gates of Dresden.) from 6000
+Sat Oct 24 13:54:52 2026 :: Log Trentlin [2439]: n
+Sat Oct 24 13:54:52 2026 :: Log Trentlin [3900]: arrived (West trail around Dresden) from 2439
+Sat Oct 24 13:54:52 2026 :: Log Trentlin [3900]: n
+Sat Oct 24 13:54:52 2026 :: Log Trentlin [3901]: arrived (West trail around Dresden) from 3900
+Sat Oct 24 13:54:53 2026 :: Log Trentlin [3901]: n
+Sat Oct 24 13:54:53 2026 :: Log Trentlin [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Sat Oct 24 13:54:53 2026 :: Log Trentlin [3902]: e
+Sat Oct 24 13:54:53 2026 :: Log Trentlin [3903]: arrived (Dusty trail along north wall.) from 3902
+Sat Oct 24 13:54:54 2026 :: Log Trentlin [3903]: e
+Sat Oct 24 13:54:54 2026 :: Log Trentlin [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Sat Oct 24 13:54:55 2026 :: Log Trentlin [3904]: n
+Sat Oct 24 13:54:55 2026 :: Log Trentlin [300]: arrived (Path in the plains) from 3904
+Sat Oct 24 13:54:55 2026 :: Log Trentlin [300]: n
+Sat Oct 24 13:54:55 2026 :: Log Trentlin [315]: arrived (Gallow hill) from 300
+Sat Oct 24 13:54:56 2026 :: Log Trentlin [315]: n
+Sat Oct 24 13:54:56 2026 :: Log Trentlin [320]: arrived (Grassy plains) from 315
+Sat Oct 24 13:54:57 2026 :: Log Trentlin [320]: s
+Sat Oct 24 13:54:57 2026 :: Log Trentlin [315]: arrived (Gallow hill) from 320
+Sat Oct 24 13:54:58 2026 :: Log Trentlin [315]: u
+Sat Oct 24 13:54:58 2026 :: Log Trentlin [61]: arrived (Before the Rainbow) from 315
+Sat Oct 24 13:54:58 2026 :: Log Trentlin [61]: u
+Sat Oct 24 13:54:58 2026 :: Log Trentlin [7500]: arrived (The Bottom of the Rainbow) from 61
+Sat Oct 24 13:55:03 2026 :: Log Trentlin [7500]: d
+Sat Oct 24 13:55:03 2026 :: Log Trentlin [61]: arrived (Before the Rainbow) from 7500
+Sat Oct 24 13:55:03 2026 :: Log Trentlin [61]: d
+Sat Oct 24 13:55:03 2026 :: Log Trentlin [315]: arrived (Gallow hill) from 61
+Sat Oct 24 13:55:05 2026 :: Log Trentlin [315]: n
+Sat Oct 24 13:55:05 2026 :: Log Trentlin [320]: arrived (Grassy plains) from 315
+Sat Oct 24 13:55:06 2026 :: Log Trentlin [320]: s
+Sat Oct 24 13:55:06 2026 :: Log Trentlin [315]: arrived (Gallow hill) from 320
+Sat Oct 24 13:55:07 2026 :: Log Trentlin [315]: l sign
+Sat Oct 24 13:55:16 2026 :: Log Trentlin [315]: n
+Sat Oct 24 13:55:16 2026 :: Log Trentlin [320]: arrived (Grassy plains) from 315
+Sat Oct 24 13:55:17 2026 :: Log Trentlin [320]: n
+Sat Oct 24 13:55:17 2026 :: Log Trentlin [322]: arrived (Grassy foothills) from 320
+Sat Oct 24 13:55:17 2026 :: Log Trentlin [322]: n
+Sat Oct 24 13:55:17 2026 :: Log Trentlin [324]: arrived (The steep foothills) from 322
+Sat Oct 24 13:55:18 2026 :: Log Trentlin [324]: n
+Sat Oct 24 13:55:18 2026 :: Log Trentlin [45]: arrived (Base of Mount Ulmo) from 324
+Sat Oct 24 13:55:19 2026 :: Log Trentlin [45]: n
+Sat Oct 24 13:55:19 2026 :: Log Trentlin [1000]: arrived (A mountain path) from 45
+Sat Oct 24 13:55:20 2026 :: Log Trentlin [1000]: n
+Sat Oct 24 13:55:20 2026 :: Log Trentlin [1001]: arrived (A mountain path) from 1000
+Sat Oct 24 13:55:20 2026 :: Log Trentlin [1001]: n
+Sat Oct 24 13:55:22 2026 :: Log Trentlin [1001]: u
+Sat Oct 24 13:55:22 2026 :: Log Trentlin [1002]: arrived (A mountain path) from 1001
+Sat Oct 24 13:55:22 2026 :: Log Trentlin [1002]: u
+Sat Oct 24 13:55:23 2026 :: Log Trentlin [1002]: n
+Sat Oct 24 13:55:23 2026 :: Log Trentlin [1003]: arrived (Mt. Ulmo Pass) from 1002
+Sat Oct 24 13:55:24 2026 :: Log Trentlin [1003]: s
+Sat Oct 24 13:55:24 2026 :: Log Trentlin [1002]: arrived (A mountain path) from 1003
+Sat Oct 24 13:55:25 2026 :: Log Trentlin [1002]: l sign
+Sat Oct 24 13:55:26 2026 :: Log Trentlin [1002]: n
+Sat Oct 24 13:55:26 2026 :: Log Trentlin [1003]: arrived (Mt. Ulmo Pass) from 1002
+Sat Oct 24 13:55:27 2026 :: Log Trentlin [1003]: d
+Sat Oct 24 13:55:27 2026 :: Log Trentlin [1004]: arrived (A sloping path down the hill) from 1003
+Sat Oct 24 13:55:28 2026 :: Log Trentlin [1004]: n
+Sat Oct 24 13:55:28 2026 :: Log Trentlin [1005]: arrived (A sloping path down the hill) from 1004
+Sat Oct 24 13:55:28 2026 :: Log Trentlin [1005]: n
+Sat Oct 24 13:55:28 2026 :: Log Trentlin [1006]: arrived (The Upper Argo) from 1005
+Sat Oct 24 13:55:29 2026 :: Log Trentlin [1006]: n
+Sat Oct 24 13:55:29 2026 :: Log Trentlin [1007]: arrived (A clearing) from 1006
+Sat Oct 24 13:55:29 2026 :: Log Trentlin [1007]: n
+Sat Oct 24 13:55:29 2026 :: Log Trentlin [1015]: arrived (A clearing) from 1007
+Sat Oct 24 13:55:30 2026 :: Log Trentlin [1015]: e
+Sat Oct 24 13:55:31 2026 :: Log Trentlin [1015]: n
+Sat Oct 24 13:55:31 2026 :: Log Trentlin [1020]: arrived (A clearing) from 1015
+Sat Oct 24 13:55:31 2026 :: Log Trentlin [1020]: e
+Sat Oct 24 13:55:31 2026 :: Log Trentlin [1021]: arrived (A bushy clearing) from 1020
+Sat Oct 24 13:55:32 2026 :: Log Trentlin [1021]: e
+Sat Oct 24 13:55:32 2026 :: Log Trentlin [1022]: arrived (A bushy clearing) from 1021
+Sat Oct 24 13:55:32 2026 :: Log Trentlin [1022]: e
+Sat Oct 24 13:55:32 2026 :: Log Trentlin [1023]: arrived (A bushy clearing) from 1022
+Sat Oct 24 13:55:35 2026 :: Log Trentlin [1023]: w
+Sat Oct 24 13:55:35 2026 :: Log Trentlin [1022]: arrived (A bushy clearing) from 1023
+Sat Oct 24 13:55:36 2026 :: Log Trentlin [1022]: k tro
+Sat Oct 24 13:55:39 2026 :: Log Trentlin [1022]: smite
+Sat Oct 24 13:55:52 2026 :: Log Trentlin [1022]: smite
+Sat Oct 24 13:55:58 2026 :: Log Trentlin [1022]: smite
+Sat Oct 24 13:56:04 2026 :: Log Trentlin [1022]: smite
+Sat Oct 24 13:56:04 2026 :: Log Trentlin [1022]: killed a Whitish Troll
+Sat Oct 24 13:56:04 2026 :: Log Trentlin [1022]: coin +1 platinum
+Sat Oct 24 13:56:04 2026 :: Log Trentlin [1022]: coin +7 silver
+Sat Oct 24 13:56:04 2026 :: Log Trentlin [1022]: coin +10 copper
+Sat Oct 24 13:56:04 2026 :: Log Trentlin [1022]: coin +4 gold
+Sat Oct 24 13:56:11 2026 :: Log Trentlin [1022]: k tr
+Sat Oct 24 13:56:11 2026 :: Log Trentlin [1022]: smite
+Sat Oct 24 13:56:12 2026 :: Log Alaric [4210]: affects off: fly
+Sat Oct 24 13:56:17 2026 :: Log Trentlin [1022]: smite
+Sat Oct 24 13:56:22 2026 :: Log Trentlin [1022]: smite
+Sat Oct 24 13:56:28 2026 :: Log Trentlin [1022]: smite
+Sat Oct 24 13:56:32 2026 :: Log Trentlin [1022]: killed a Black Troll
+Sat Oct 24 13:56:32 2026 :: Log Trentlin [1022]: coin +1 platinum
+Sat Oct 24 13:56:32 2026 :: Log Trentlin [1022]: coin +5 silver
+Sat Oct 24 13:56:32 2026 :: Log Trentlin [1022]: coin +6 copper
+Sat Oct 24 13:56:32 2026 :: Log Trentlin [1022]: coin +2 gold
+Sat Oct 24 13:56:34 2026 :: Log Trentlin [1022]: bash
+Sat Oct 24 13:56:34 2026 :: Log Trentlin [1022]: l
+Sat Oct 24 13:56:36 2026 :: Log Trentlin [1022]: sco
+Sat Oct 24 13:56:38 2026 :: Log Trentlin [1022]: e
+Sat Oct 24 13:56:38 2026 :: Log Trentlin [1023]: arrived (A bushy clearing) from 1022
+Sat Oct 24 13:56:39 2026 :: Log Trentlin [1023]: e
+Sat Oct 24 13:56:39 2026 :: Log Trentlin [1023]: n
+Sat Oct 24 13:56:39 2026 :: Log Trentlin [1024]: arrived (A bushy clearing) from 1023
+Sat Oct 24 13:56:40 2026 :: Log Trentlin [1024]: n
+Sat Oct 24 13:56:40 2026 :: Log Trentlin [1034]: arrived (A bushy clearing) from 1024
+Sat Oct 24 13:56:42 2026 :: Log Trentlin [1034]: k tr
+Sat Oct 24 13:56:44 2026 :: Log Trentlin [1034]: k tro
+Sat Oct 24 13:56:47 2026 :: Log Trentlin [1034]: smite
+Sat Oct 24 13:56:53 2026 :: Log Trentlin [1034]: smite
+Sat Oct 24 13:57:02 2026 :: Log Trentlin [1034]: killed a Whitish Troll
+Sat Oct 24 13:57:02 2026 :: Log Trentlin [1034]: coin +1 platinum
+Sat Oct 24 13:57:02 2026 :: Log Trentlin [1034]: coin +7 silver
+Sat Oct 24 13:57:02 2026 :: Log Trentlin [1034]: coin +10 copper
+Sat Oct 24 13:57:02 2026 :: Log Trentlin [1034]: coin +4 gold
+Sat Oct 24 13:57:03 2026 :: Log Trentlin [1034]: w
+Sat Oct 24 13:57:03 2026 :: Log Trentlin [1033]: arrived (A bushy clearing) from 1034
+Sat Oct 24 13:57:05 2026 :: Log Trentlin [1033]: sco
+Sat Oct 24 13:57:08 2026 :: Log Trentlin [1033]: l
+Sat Oct 24 13:57:10 2026 :: Log Trentlin [1033]: k tro
+Sat Oct 24 13:57:13 2026 :: Log Trentlin [1033]: smite
+Sat Oct 24 13:57:13 2026 :: Trentlin's weapon was broken by a smite.
+Sat Oct 24 13:57:18 2026 :: Log Trentlin [1033]: wear ax
+Sat Oct 24 13:57:19 2026 :: Log Trentlin [1033]: smite
+Sat Oct 24 13:57:20 2026 :: Log Trentlin [1033]: killed a Black Troll
+Sat Oct 24 13:57:20 2026 :: Log Trentlin [1033]: coin +1 platinum
+Sat Oct 24 13:57:20 2026 :: Log Trentlin [1033]: coin +5 silver
+Sat Oct 24 13:57:20 2026 :: Log Trentlin [1033]: coin +6 copper
+Sat Oct 24 13:57:20 2026 :: Log Trentlin [1033]: coin +2 gold
+Sat Oct 24 13:57:25 2026 :: Log Trentlin [1033]: w
+Sat Oct 24 13:57:25 2026 :: Log Trentlin [1032]: arrived (A bushy clearing) from 1033
+Sat Oct 24 13:57:27 2026 :: Log Trentlin [1032]: sca
+Sat Oct 24 13:57:28 2026 :: Log Trentlin [1032]: w
+Sat Oct 24 13:57:28 2026 :: Log Trentlin [1031]: arrived (A clearing) from 1032
+Sat Oct 24 13:57:28 2026 :: Log Trentlin [1031]: w
+Sat Oct 24 13:57:28 2026 :: Log Trentlin [1030]: arrived (A bushy clearing) from 1031
+Sat Oct 24 13:57:32 2026 :: Log Trentlin [1030]: get blue bush
+Sat Oct 24 13:57:34 2026 :: Log Trentlin [1030]: get blue
+Sat Oct 24 13:57:38 2026 :: Log Trentlin [1030]: eat ber
+Sat Oct 24 13:57:40 2026 :: Log Trentlin [1030]: w
+Sat Oct 24 13:57:40 2026 :: Log Trentlin [1029]: arrived (A bushy clearing) from 1030
+Sat Oct 24 13:57:42 2026 :: Log Trentlin [1029]: sca
+Sat Oct 24 13:57:43 2026 :: Log Trentlin [1029]: n
+Sat Oct 24 13:57:43 2026 :: Log Trentlin [1039]: arrived (A bushy clearing) from 1029
+Sat Oct 24 13:57:44 2026 :: Log Trentlin [1039]: n
+Sat Oct 24 13:57:44 2026 :: Log Trentlin [1040]: arrived (A bushy clearing) from 1039
+Sat Oct 24 13:57:46 2026 :: Log Trentlin [1040]: e
+Sat Oct 24 13:57:46 2026 :: Log Trentlin [1041]: arrived (A bushy clearing) from 1040
+Sat Oct 24 13:57:47 2026 :: Log Trentlin [1041]: n
+Sat Oct 24 13:57:47 2026 :: Log Trentlin [1049]: arrived (A bushy clearing) from 1041
+Sat Oct 24 13:57:48 2026 :: Log Trentlin [1049]: n
+Sat Oct 24 13:57:48 2026 :: Log Trentlin [1049]: e
+Sat Oct 24 13:57:48 2026 :: Log Trentlin [1048]: arrived (A clearing) from 1049
+Sat Oct 24 13:57:49 2026 :: Log Trentlin [1048]: n
+Sat Oct 24 13:57:49 2026 :: Log Trentlin [1050]: arrived (A clearing) from 1048
+Sat Oct 24 13:57:52 2026 :: Log Trentlin [1050]: open north
+Sat Oct 24 13:57:54 2026 :: Log Trentlin [1050]: open secret
+Sat Oct 24 13:57:55 2026 :: Log Trentlin [1050]: reca
+Sat Oct 24 13:57:57 2026 :: Log Trentlin [1050]: reca
+Sat Oct 24 13:57:57 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 1050
+Sat Oct 24 13:57:57 2026 :: Log Trentlin [4207]: w
+Sat Oct 24 13:57:57 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sat Oct 24 13:57:59 2026 :: Log Trentlin [4208]: heal all
+Sat Oct 24 13:58:00 2026 :: Log Trentlin [4208]: heal refre
+Sat Oct 24 13:58:00 2026 :: Log Trentlin [4208]: gold -370
+Sat Oct 24 13:58:04 2026 :: Log Trentlin [4208]: e
+Sat Oct 24 13:58:04 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4208
+Sat Oct 24 13:58:04 2026 :: Log Trentlin [4207]: e
+Sat Oct 24 13:58:04 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 24 13:58:04 2026 :: Log Trentlin [4202]: e
+Sat Oct 24 13:58:04 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sat Oct 24 13:58:05 2026 :: Log Trentlin [4201]: e
+Sat Oct 24 13:58:05 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sat Oct 24 13:58:06 2026 :: Log Trentlin [2427]: n
+Sat Oct 24 13:58:06 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 24 13:58:06 2026 :: Log Trentlin [2404]: n
+Sat Oct 24 13:58:06 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sat Oct 24 13:58:08 2026 :: Log Trentlin [2401]: n
+Sat Oct 24 13:58:08 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sat Oct 24 13:58:08 2026 :: Log Trentlin [2402]: n
+Sat Oct 24 13:58:08 2026 :: Log Trentlin [2415]: arrived (Main Processional, Strung with Lanterns) from 2402
+Sat Oct 24 13:58:09 2026 :: Log Trentlin [2415]: e
+Sat Oct 24 13:58:09 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2415
+Sat Oct 24 13:58:10 2026 :: Log Trentlin [2485]: s
+Sat Oct 24 13:58:10 2026 :: Log Trentlin [2494]: arrived (Weapons Shop.) from 2485
+Sat Oct 24 13:58:10 2026 :: Log Trentlin [2494]: s
+Sat Oct 24 13:58:12 2026 :: Log Trentlin [2494]: repair reap
+Sat Oct 24 13:58:12 2026 :: Log Trentlin [2494]: copper -56100602
+Sat Oct 24 13:58:16 2026 :: Log Trentlin [2494]: wear reap
+Sat Oct 24 13:58:17 2026 :: Log Trentlin [2494]: wo
+Sat Oct 24 13:58:18 2026 :: Log Trentlin [2494]: n
+Sat Oct 24 13:58:18 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2494
+Sat Oct 24 13:58:18 2026 :: Log Trentlin [2485]: w
+Sat Oct 24 13:58:18 2026 :: Log Trentlin [2415]: arrived (Main Processional, Strung with Lanterns) from 2485
+Sat Oct 24 13:58:19 2026 :: Log Trentlin [2415]: s
+Sat Oct 24 13:58:19 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2415
+Sat Oct 24 13:58:19 2026 :: Log Trentlin [2402]: s
+Sat Oct 24 13:58:19 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2402
+Sat Oct 24 13:58:20 2026 :: Log Trentlin [2401]: u
+Sat Oct 24 13:58:20 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sat Oct 24 13:58:21 2026 :: Log Trentlin [2410]: u
+Sat Oct 24 13:58:21 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sat Oct 24 13:58:21 2026 :: Log Trentlin [2411]: u
+Sat Oct 24 13:58:21 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sat Oct 24 13:58:21 2026 :: Log Trentlin [2414]: u
+Sat Oct 24 13:58:21 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sat Oct 24 13:58:21 2026 :: Log Trentlin [2497]: u
+Sat Oct 24 13:58:25 2026 :: Log Trentlin [2497]: aquest request
+Sat Oct 24 13:58:25 2026 :: Log Trentlin [2497]: quest assigned: recover The Amulet of Soulcrusher (obj 25039) in valley.are, 27 minutes, ordinary
+Sat Oct 24 13:58:28 2026 :: Log Trentlin [2497]: enter door
+Sat Oct 24 13:58:28 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sat Oct 24 13:58:40 2026 :: Log Trentlin [2401]: r e 8
+Sat Oct 24 13:58:40 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Oct 24 13:58:40 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Sat Oct 24 13:58:40 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Sat Oct 24 13:58:40 2026 :: Log Trentlin [2422]: arrived (Battle Road) from 2421
+Sat Oct 24 13:58:40 2026 :: Log Trentlin [2423]: arrived (Battle Road) from 2422
+Sat Oct 24 13:58:40 2026 :: Log Trentlin [2424]: arrived (Battle Road) from 2423
+Sat Oct 24 13:58:40 2026 :: Log Trentlin [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sat Oct 24 13:58:40 2026 :: Log Trentlin [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [2426]: open east
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [2426]: r e 5
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [3503]: arrived (City Entrance) from 2440
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [3502]: arrived (The Cross Roads) from 3503
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [3525]: arrived (Along the Eastern Road) from 3502
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [3526]: arrived (Along the Eastern Road) from 3525
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [3526]: r n 5
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [38]: arrived (Well Kept Path) from 3526
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [1100]: arrived (A well kept path) from 38
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [1101]: arrived (A well kept path) from 1100
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [1102]: arrived (A well kept path) from 1101
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [1103]: arrived (Entrance to the Shire) from 1102
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [1103]: r w 6
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [1118]: arrived (Bywater Road) from 1103
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [1120]: arrived (Bywater Road) from 1118
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [1122]: arrived (Bywater Road) from 1120
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [1126]: arrived (Took Hill) from 1122
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [1128]: arrived (A grassy field) from 1126
+Sat Oct 24 13:58:41 2026 :: Log Trentlin [1130]: arrived (Western end of grassy field) from 1128
+Sat Oct 24 13:58:42 2026 :: Log Trentlin [1130]: r n 4
+Sat Oct 24 13:58:42 2026 :: Log Trentlin [1127]: arrived (Northern end of grassy field) from 1130
+Sat Oct 24 13:58:42 2026 :: Log Trentlin [7800]: arrived (A Path through the Fields) from 1127
+Sat Oct 24 13:58:42 2026 :: Log Trentlin [7801]: arrived (Along the Path) from 7800
+Sat Oct 24 13:58:42 2026 :: Log Trentlin [7804]: arrived (The Overlook) from 7801
+Sat Oct 24 13:58:42 2026 :: Log Trentlin [7804]: d
+Sat Oct 24 13:58:42 2026 :: Log Trentlin [7805]: arrived (The Entrance to the Valley of the Elves) from 7804
+Sat Oct 24 13:58:43 2026 :: Log Trentlin [7805]: ex
+Sat Oct 24 13:58:45 2026 :: Log Trentlin [7805]: e
+Sat Oct 24 13:58:45 2026 :: Log Trentlin [7807]: arrived (The Edge of the Valley) from 7805
+Sat Oct 24 13:58:45 2026 :: Log Trentlin [7807]: ex
+Sat Oct 24 13:58:46 2026 :: Log Trentlin [7807]: n
+Sat Oct 24 13:58:46 2026 :: Log Trentlin [7811]: arrived (The Valley of the Elves) from 7807
+Sat Oct 24 13:58:47 2026 :: Log Trentlin [7811]: ex
+Sat Oct 24 13:58:48 2026 :: Log Trentlin [7811]: n
+Sat Oct 24 13:58:48 2026 :: Log Trentlin [7816]: arrived (The Valley of the Elves) from 7811
+Sat Oct 24 13:58:49 2026 :: Log Trentlin [7816]: ex
+Sat Oct 24 13:58:50 2026 :: Log Trentlin [7816]: n
+Sat Oct 24 13:58:50 2026 :: Log Trentlin [7821]: arrived (The Valley of the Elves) from 7816
+Sat Oct 24 13:58:50 2026 :: Log Trentlin [7821]: ex
+Sat Oct 24 13:58:52 2026 :: Log Trentlin [7821]: n
+Sat Oct 24 13:58:52 2026 :: Log Trentlin [7825]: arrived (The Edge of the Valley) from 7821
+Sat Oct 24 13:58:53 2026 :: Log Trentlin [7825]: w
+Sat Oct 24 13:58:53 2026 :: Log Trentlin [7824]: arrived (The Edge of the Valley) from 7825
+Sat Oct 24 13:58:54 2026 :: Log Trentlin [7824]: ex
+Sat Oct 24 13:58:55 2026 :: Log Trentlin [7824]: n
+Sat Oct 24 13:58:55 2026 :: Log Trentlin [7826]: arrived (A Trail Leading from the Valley) from 7824
+Sat Oct 24 13:58:56 2026 :: Log Trentlin [7826]: n
+Sat Oct 24 13:58:56 2026 :: Log Trentlin [7827]: arrived (Along the Trail) from 7826
+Sat Oct 24 13:58:58 2026 :: Log Trentlin [7827]: ex
+Sat Oct 24 13:59:01 2026 :: Log Trentlin [7827]: e
+Sat Oct 24 13:59:01 2026 :: Log Trentlin [7828]: arrived (A Bend in the Trail) from 7827
+Sat Oct 24 13:59:02 2026 :: Log Trentlin [7828]: ex
+Sat Oct 24 13:59:03 2026 :: Log Trentlin [7828]: n
+Sat Oct 24 13:59:03 2026 :: Log Trentlin [7829]: arrived (A Smaller Valley) from 7828
+Sat Oct 24 13:59:04 2026 :: Log Trentlin [7829]: n
+Sat Oct 24 13:59:04 2026 :: Log Trentlin [7834]: arrived (The Elf Home) from 7829
+Sat Oct 24 13:59:06 2026 :: Log Trentlin [7834]: e
+Sat Oct 24 13:59:06 2026 :: Log Trentlin [7835]: arrived (The Kitchen) from 7834
+Sat Oct 24 13:59:06 2026 :: Sock.sinaddr:  178.156.185.127
+Sat Oct 24 13:59:06 2026 :: Log Trentlin [7835]: w
+Sat Oct 24 13:59:06 2026 :: Log Trentlin [7834]: arrived (The Elf Home) from 7835
+Sat Oct 24 13:59:07 2026 :: EOF encountered on read.
+Sat Oct 24 13:59:07 2026 :: Log Trentlin [7834]: n
+Sat Oct 24 13:59:07 2026 :: Log Trentlin [7838]: arrived (The Living Room) from 7834
+Sat Oct 24 13:59:08 2026 :: Log Trentlin [7838]: s
+Sat Oct 24 13:59:08 2026 :: Log Trentlin [7834]: arrived (The Elf Home) from 7838
+Sat Oct 24 13:59:08 2026 :: Log Trentlin [7834]: s
+Sat Oct 24 13:59:08 2026 :: Log Trentlin [7829]: arrived (A Smaller Valley) from 7834
+Sat Oct 24 13:59:09 2026 :: Log Trentlin [7829]: e
+Sat Oct 24 13:59:09 2026 :: Log Trentlin [7831]: arrived (A Trail in the Valley) from 7829
+Sat Oct 24 13:59:10 2026 :: Log Trentlin [7831]: e
+Sat Oct 24 13:59:10 2026 :: Log Trentlin [7833]: arrived (A Trail in the Valley) from 7831
+Sat Oct 24 13:59:12 2026 :: Log Trentlin [7833]: n
+Sat Oct 24 13:59:12 2026 :: Log Trentlin [7836]: arrived (A Trail in the Valley) from 7833
+Sat Oct 24 13:59:13 2026 :: Log Trentlin [7836]: n
+Sat Oct 24 13:59:13 2026 :: Log Trentlin [7840]: arrived (A Trail in the Valley) from 7836
+Sat Oct 24 13:59:13 2026 :: Log Trentlin [7840]: n
+Sat Oct 24 13:59:13 2026 :: Log Trentlin [7844]: arrived (A Trail in the Valley) from 7840
+Sat Oct 24 13:59:15 2026 :: Log Trentlin [7844]: w
+Sat Oct 24 13:59:15 2026 :: Log Trentlin [7843]: arrived (A Trail in the Valley) from 7844
+Sat Oct 24 13:59:15 2026 :: Log Trentlin [7843]: w
+Sat Oct 24 13:59:15 2026 :: Log Trentlin [7842]: arrived (A Trail in the Valley) from 7843
+Sat Oct 24 13:59:17 2026 :: Log Trentlin [7842]: get all
+Sat Oct 24 13:59:18 2026 :: Log Trentlin [7842]: l amu
+Sat Oct 24 13:59:20 2026 :: Log Trentlin [7842]: recall
+Sat Oct 24 13:59:20 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 7842
+Sat Oct 24 13:59:21 2026 :: Log Trentlin [4207]: e
+Sat Oct 24 13:59:21 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 24 13:59:22 2026 :: Log Trentlin [4202]: e
+Sat Oct 24 13:59:22 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sat Oct 24 13:59:22 2026 :: Log Trentlin [4201]: e
+Sat Oct 24 13:59:22 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sat Oct 24 13:59:23 2026 :: Log Trentlin [2427]: n
+Sat Oct 24 13:59:23 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 24 13:59:23 2026 :: Log Trentlin [2404]: n
+Sat Oct 24 13:59:23 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sat Oct 24 13:59:23 2026 :: Log Trentlin [2401]: u
+Sat Oct 24 13:59:23 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sat Oct 24 13:59:24 2026 :: Log Trentlin [2410]: u
+Sat Oct 24 13:59:24 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sat Oct 24 13:59:24 2026 :: Log Trentlin [2411]: u
+Sat Oct 24 13:59:24 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sat Oct 24 13:59:24 2026 :: Log Trentlin [2414]: u
+Sat Oct 24 13:59:24 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sat Oct 24 13:59:26 2026 :: Log Trentlin [2497]: aquest complete
+Sat Oct 24 13:59:26 2026 :: Log Trentlin [2497]: copper +162241200
+Sat Oct 24 13:59:26 2026 :: Log Trentlin [2497]: quest complete: 162p 24g 12s, 48 quest points (streak bonus 50%)
+Sat Oct 24 13:59:26 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261024_135926.quest (PRESTORE Trentlin to see it).
