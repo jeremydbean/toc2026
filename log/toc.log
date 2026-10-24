@@ -169473,3 +169473,83 @@ Sat Oct 24 15:15:14 2026 :: EOF encountered on read.
 Sat Oct 24 15:15:14 2026 :: Sock.sinaddr:  193.8.186.31
 Sat Oct 24 15:15:18 2026 :: Sock.sinaddr:  178.156.187.238
 Sat Oct 24 15:15:18 2026 :: EOF encountered on read.
+Sat Oct 24 15:20:22 2026 :: Sock.sinaddr:  5.161.215.244
+Sat Oct 24 15:20:23 2026 :: EOF encountered on read.
+Sat Oct 24 15:24:25 2026 :: Log Alaric [4210]: wake
+Sat Oct 24 15:24:25 2026 :: Log Alaric [4210]: af
+Sat Oct 24 15:24:26 2026 :: Log Alaric [4210]: s
+Sat Oct 24 15:24:26 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4210
+Sat Oct 24 15:24:26 2026 :: Log Alaric [4203]: s
+Sat Oct 24 15:24:26 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4203
+Sat Oct 24 15:24:26 2026 :: Log Alaric [4202]: w
+Sat Oct 24 15:24:26 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4202
+Sat Oct 24 15:24:26 2026 :: Log Alaric [4207]: w
+Sat Oct 24 15:24:26 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sat Oct 24 15:24:39 2026 :: Log Alaric [4208]: r e 4
+Sat Oct 24 15:24:39 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sat Oct 24 15:24:39 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 24 15:24:39 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sat Oct 24 15:24:39 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sat Oct 24 15:24:39 2026 :: Log Alaric [2427]: n
+Sat Oct 24 15:24:39 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 24 15:24:40 2026 :: Log Alaric [2404]: n
+Sat Oct 24 15:24:40 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sat Oct 24 15:24:41 2026 :: Log Alaric [2401]: who
+Sat Oct 24 15:24:43 2026 :: Log Alaric [2401]: prac
+Sat Oct 24 15:24:44 2026 :: Log Alaric [2401]: u
+Sat Oct 24 15:24:44 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sat Oct 24 15:24:45 2026 :: Log Alaric [2410]: u
+Sat Oct 24 15:24:45 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Sat Oct 24 15:24:45 2026 :: Log Alaric [2411]: u
+Sat Oct 24 15:24:45 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Sat Oct 24 15:24:45 2026 :: Log Alaric [2414]: u
+Sat Oct 24 15:24:45 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sat Oct 24 15:24:45 2026 :: Log Alaric [2497]: u
+Sat Oct 24 15:24:46 2026 :: Log Alaric [2497]: sc
+Sat Oct 24 15:24:47 2026 :: Log Alaric [2497]: aq re
+Sat Oct 24 15:24:47 2026 :: Log Alaric [2497]: quest assigned: recover The Crown of Eclipse (obj 25040) in ratslair.are, 24 minutes, ordinary
+Sat Oct 24 15:24:49 2026 :: Log Alaric [2497]: enter door
+Sat Oct 24 15:24:49 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sat Oct 24 15:24:49 2026 :: Log Alaric [2401]: east
+Sat Oct 24 15:24:49 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sat Oct 24 15:24:50 2026 :: Log Alaric [2403]: east
+Sat Oct 24 15:24:50 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sat Oct 24 15:24:50 2026 :: Log Alaric [2420]: east
+Sat Oct 24 15:24:50 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sat Oct 24 15:24:50 2026 :: Log Alaric [2421]: south
+Sat Oct 24 15:24:50 2026 :: Log Alaric [2441]: arrived (River Road.) from 2421
+Sat Oct 24 15:24:50 2026 :: Log Alaric [2441]: east
+Sat Oct 24 15:24:50 2026 :: Log Alaric [2442]: arrived (River Road.) from 2441
+Sat Oct 24 15:24:51 2026 :: Log Alaric [2442]: south
+Sat Oct 24 15:24:51 2026 :: Log Alaric [2443]: arrived (River Road.) from 2442
+Sat Oct 24 15:24:51 2026 :: Log Alaric [2443]: east
+Sat Oct 24 15:24:51 2026 :: Log Alaric [2444]: arrived (River Road.) from 2443
+Sat Oct 24 15:24:51 2026 :: Log Alaric [2444]: east
+Sat Oct 24 15:24:51 2026 :: Log Alaric [2445]: arrived (End of River Road.) from 2444
+Sat Oct 24 15:24:51 2026 :: Log Alaric [2445]: south
+Sat Oct 24 15:24:51 2026 :: Log Alaric [2446]: arrived (Docks of Dresden.) from 2445
+Sat Oct 24 15:24:52 2026 :: Log Alaric [2446]: west
+Sat Oct 24 15:24:52 2026 :: Log Alaric [2450]: arrived (Jerry's Boatshop.) from 2446
+Sat Oct 24 15:24:52 2026 :: Log Alaric [2450]: open down
+Sat Oct 24 15:24:52 2026 :: Log Alaric [2450]: down
+Sat Oct 24 15:24:52 2026 :: Log Alaric [53]: arrived (Rickety Stairway) from 2450
+Sat Oct 24 15:24:53 2026 :: Log Alaric [53]: down
+Sat Oct 24 15:24:53 2026 :: Log Alaric [3801]: arrived (Below a Dark Stairway) from 53
+Sat Oct 24 15:24:57 2026 :: Treasure goblin: vanished from room 10159 (The Royal hallway., glitter.are) (too long in one area).
+Sat Oct 24 15:25:01 2026 :: Log Alaric [3801]: recal
+Sat Oct 24 15:25:01 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 3801
+Sat Oct 24 15:25:04 2026 :: Log Alaric [4207]: w
+Sat Oct 24 15:25:04 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sat Oct 24 15:25:05 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 24 15:25:05 2026 :: Log Alaric [4208]: gold -80
+Sat Oct 24 15:25:08 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 24 15:25:08 2026 :: Log Alaric [4208]: heal ref
+Sat Oct 24 15:25:08 2026 :: Log Alaric [4208]: r e 4
+Sat Oct 24 15:25:08 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sat Oct 24 15:25:08 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sat Oct 24 15:25:08 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sat Oct 24 15:25:08 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sat Oct 24 15:25:09 2026 :: Log Alaric [2427]: n
+Sat Oct 24 15:25:09 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sat Oct 24 15:25:09 2026 :: Log Alaric [2404]: n
+Sat Oct 24 15:25:09 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
