@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792722764
+LogO 1792800984
 Vers 4
 Prom ~
 Ignoring ~
@@ -17,7 +17,7 @@ ChangesSeen 20261022g:1 20261022f:1 20261022e:1 20261022d:1 20261022c:1 20261022
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 54
-Plyd 807063
+Plyd 807272
 ListRemorts 3  3  5 ~
 NumRemorts 2
 Note 1790386686
@@ -118,7 +118,7 @@ Achv visit-oz 1791127353
 Achv visit-high-tower 1791329329
 Achv visit-ultima 1791329350
 Achv visit-korzath-fortress 1790899622
-LastOut  1792722764
+LastOut  1792800984
 Rested 30023 0
 Daily 0 0 0 0 0
 SesLogin 1792630812
@@ -275,9 +275,9 @@ Lev  22
 Cost 55660000
 Cond 61
 Repd 0
-Affect -1 22 -1 3 24 0 0
-Affect -1 22 -1 1 1 0 0
 Affect -1 22 -1 -1 4 0 0
+Affect -1 22 -1 1 1 0 0
+Affect -1 22 -1 3 24 0 0
 End
 
 #O
@@ -830,8 +830,8 @@ Lev  51
 Cost 50000000
 Cond 99
 Repd 0
-Affect -1 51 -1 20 14 0 0
 Affect -1 51 -1 4 23 0 0
+Affect -1 51 -1 20 14 0 0
 End
 
 #O
@@ -885,9 +885,9 @@ Lev  29
 Cost 30000000
 Cond 100
 Repd 0
-Affect -1 29 -1 -4 1 0 0
-Affect -1 29 -1 -1 1 0 0
 Affect -1 29 -1 -4 2 0 0
+Affect -1 29 -1 -1 1 0 0
+Affect -1 29 -1 -4 1 0 0
 End
 
 #O
@@ -899,8 +899,8 @@ Lev  52
 Cost 50000000
 Cond 100
 Repd 0
-Affect -1 52 -1 2 24 0 0
 Affect -1 52 -1 5 17 0 0
+Affect -1 52 -1 2 24 0 0
 End
 
 #O
@@ -972,8 +972,8 @@ Lev  52
 Cost 23680000
 Cond 100
 Repd 0
-Affect -1 52 -1 2 24 0 0
 Affect -1 52 -1 3 22 0 0
+Affect -1 52 -1 2 24 0 0
 End
 
 #O
@@ -984,9 +984,9 @@ Lev  23
 Cost 13000000
 Cond 100
 Repd 0
-Affect -1 23 -1 31 14 0 0
-Affect -1 23 -1 -4 1 0 0
 Affect -1 23 -1 -9 12 0 0
+Affect -1 23 -1 -4 1 0 0
+Affect -1 23 -1 31 14 0 0
 End
 
 #O
@@ -1207,8 +1207,8 @@ Lev  53
 Cost 15000000
 Cond 99
 Repd 0
-Affect -1 53 -1 -1 2 0 0
 Affect -1 53 -1 1 4 0 0
+Affect -1 53 -1 -1 2 0 0
 End
 
 #O
@@ -1293,8 +1293,8 @@ Lev  41
 Cost 14980000
 Cond 100
 Repd 0
-Affect -1 41 -1 -2 4 0 0
 Affect -1 41 -1 -2 1 0 0
+Affect -1 41 -1 -2 4 0 0
 End
 
 #O
@@ -1316,8 +1316,8 @@ Lev  23
 Cost 13000000
 Cond 88
 Repd 0
-Affect -1 23 -1 1 17 0 0
 Affect -1 23 -1 -5 12 0 0
+Affect -1 23 -1 1 17 0 0
 End
 
 #O
@@ -1437,8 +1437,8 @@ Cost 23000000
 Cond 98
 Repd 0
 Affect -1 32 -1 -4 4 0 0
-Affect -1 32 -1 3 22 0 0
 Affect -1 32 -1 2 24 0 0
+Affect -1 32 -1 3 22 0 0
 Affect -1 32 -1 -4 4 0 0
 End
 
@@ -1518,9 +1518,9 @@ Lev  49
 Cost 40000000
 Cond 100
 Repd 0
-Affect -1 49 -1 -1 13 0 0
-Affect -1 49 -1 -1 12 0 0
 Affect -1 49 -1 3 24 0 0
+Affect -1 49 -1 -1 12 0 0
+Affect -1 49 -1 -1 13 0 0
 End
 
 #O
@@ -1571,8 +1571,8 @@ Lev  31
 Cost 20000000
 Cond 98
 Repd 0
-Affect -1 31 -1 -2 22 0 0
 Affect -1 31 -1 1 17 0 0
+Affect -1 31 -1 -2 22 0 0
 End
 
 #O

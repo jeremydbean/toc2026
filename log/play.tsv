@@ -7202,3 +7202,13 @@
 1792796286	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
 1792796290	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	note		(withheld)
 1792797634	session	Killuminati	70	2405	dresden_halloween.are	linkdead	1349s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	2 commands	0 refused	coin: none
+1792800778	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792800780	refused	Alaric	54	29210	korzath2.are	dead	-2	0	-	look		Lie still; you are DEAD.
+1792800782	refused	Alaric	54	29210	korzath2.are	dead	-2	0	-	wake		Lie still; you are DEAD.
+1792800783	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	inventory		You are carrying: //      (Humming) Excalibur // ( 3) (Glowing) a piece of trick-or-treat candy
+1792800785	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	equipment		You are using: // <used as light>     (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792800786	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	inventory		You are carrying: //      (Humming) Excalibur // ( 3) (Glowing) a piece of trick-or-treat candy
+1792800788	refused	Alaric	54	29210	korzath2.are	dead	-2	0	-	group		Lie still; you are DEAD.
+1792800802	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1792800817	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    224 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792800997	cmd	Alaric	54	29210	korzath2.are	dead	-2	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    224 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |

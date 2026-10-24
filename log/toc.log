@@ -163815,3 +163815,21 @@ Sat Oct 24 00:10:00 2026 :: Sock.sinaddr:  23.31.96.97
 Sat Oct 24 00:10:00 2026 :: EOF encountered on read.
 Sat Oct 24 00:11:08 2026 :: Sock.sinaddr:  54.167.223.174
 Sat Oct 24 00:11:08 2026 :: EOF encountered on read.
+Sat Oct 24 00:12:41 2026 :: Sock.sinaddr:  208.126.22.104
+Sat Oct 24 00:12:54 2026 :: Loading Alaric's playerfile
+Sat Oct 24 00:12:55 2026 :: Loading Alaric's playerfile
+Sat Oct 24 00:12:55 2026 :: Alaric@208.126.22.104 has connected.
+Sat Oct 24 00:12:56 2026 :: Log Alaric [29210]: arrived (Twist in the Maze) from 0
+Sat Oct 24 00:12:58 2026 :: Log Alaric [29210]: who
+Sat Oct 24 00:13:00 2026 :: Log Alaric [29210]: l
+Sat Oct 24 00:13:02 2026 :: Log Alaric [29210]: wake
+Sat Oct 24 00:13:03 2026 :: Log Alaric [29210]: i
+Sat Oct 24 00:13:05 2026 :: Log Alaric [29210]: eq
+Sat Oct 24 00:13:06 2026 :: Log Alaric [29210]: i
+Sat Oct 24 00:13:08 2026 :: Log Alaric [29210]: gr
+Sat Oct 24 00:13:22 2026 :: Log Alaric [29210]: who
+Sat Oct 24 00:13:37 2026 :: Log Alaric [29210]: sc
+Sat Oct 24 00:14:57 2026 :: Treasure goblin: vanished from room 1007 (A clearing, uargo.are) (too long in one area).
+Sat Oct 24 00:16:13 2026 :: Sock.sinaddr:  54.167.223.174
+Sat Oct 24 00:16:14 2026 :: EOF encountered on read.
+Sat Oct 24 00:16:37 2026 :: Log Alaric [29210]: sc
