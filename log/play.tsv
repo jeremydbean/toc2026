@@ -21566,3 +21566,44 @@
 1792967045	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 15 quest points.
 1792967048	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1792967051	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	sleep		You go to sleep.
+1792967535	cmd	Alaric	50	2497	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1792967536	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	17	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Alaric!' // Questor Thews tells you 'The criminal known as mage has escaped from prison!'
+1792967546	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792967546	cmd	Alaric	50	2405	dresden_halloween.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1792967546	cmd	Alaric	50	2433	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1792967546	cmd	Alaric	50	2434	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792967547	cmd	Alaric	50	2435	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792967547	cmd	Alaric	50	2436	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792967547	cmd	Alaric	50	2437	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792967547	cmd	Alaric	50	2438	dresden_halloween.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1792967548	cmd	Alaric	50	2438	dresden_halloween.are	standing	100	0	-	open	west	Ok.
+1792967548	cmd	Alaric	50	2439	dresden_halloween.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792967553	cmd	Alaric	50	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through
+1792967553	cmd	Alaric	50	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.
+1792967554	cmd	Alaric	50	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads
+1792967554	cmd	Alaric	50	6011	haon.are	standing	100	0	-	south		A small path through the light forest //   You are on a small path leading through the forest.  The trees are tall and // slender.  Paths lead north and south.
+1792967554	cmd	Alaric	50	6008	haon.are	standing	100	0	-	south		The forest clearing //   You are in a clearing in the forest.  Lots of fresh stumps of varying sizes // protrude from the ground and heavy logs are stacked neatly in a big pile
+1792967554	cmd	Alaric	50	6009	haon.are	standing	100	0	-	east		Outside a small cabin in the forest //   You are outside a small cabin built entirely from heavy logs.  There is a // wooden door to the north and small paths lead west and south through the
+1792967555	cmd	Alaric	50	6014	haon.are	standing	100	0	-	south		An intersection in the dense forest //   You are on a small path leading through the dense forest. The forest // gradually lightens to the north.  Paths lead north, east and west.
+1792967555	cmd	Alaric	50	6015	haon.are	standing	100	0	-	east		A small path in the dense forest //   You are on a small path leading through the dense forest.  The crowns of // the old trees leave the forest in a surreal twilight illumination.
+1792967555	cmd	Alaric	50	6016	haon.are	standing	100	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  The crowns of the // old trees leave the forest in an unreal twilight illumination.  To the west
+1792967555	cmd	Alaric	50	6017	haon.are	standing	100	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  The forest // seems to become lighter to the west. The path continues north and west.
+1792967556	cmd	Alaric	50	6018	haon.are	standing	100	0	-	west		An intersection in the light forest //   You are on a small path leading through the forest.  A path leads north // to a small field and other paths lead east and west into the dense forest.
+1792967556	cmd	Alaric	50	51	connect.are	standing	100	0	-	south		The top of the cliff. //   You are standing on the ledge of a huge cliff on the side of a valley // with a beautiful lake and tiny village nestled in it.  It looks so
+1792967556	cmd	Alaric	50	13001	lakes.are	standing	100	0	-	down		Rock Outcropping //   >From this rock outcropping the valley below seems peaceful, untouched. // Dense forests of pine carpet the mountainsides, broken only by thick aspen
+1792967556	cmd	Alaric	50	13002	lakes.are	standing	100	0	-	down		Small Grove //   Suddenly, soft music begins. Its source is slim, beautiful girl. Lyre in // hand, she sits gracefully as she plays; nearby, a large plainsman raises
+1792967557	cmd	Alaric	50	13003	lakes.are	standing	100	0	-	west		Entrance to the Town of Solace //   A warm autumn breeze rustles the great vallenwood trees of Solace. The // road that wanders through the trees blazes in the bright colors of autumn.
+1792967557	cmd	Alaric	50	13201	solace.are	standing	100	0	-	north		Gateway to Solace //   This is the gateway to the town of Solace. It keeps the monsters out and // the people in. This is a quiet farming town on the shores of Crystalmir
+1792967560	cmd	Alaric	50	13201	solace.are	standing	100	0	-	scan		You don't see anything near you.
+1792967561	cmd	Alaric	50	13202	solace.are	standing	100	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.
+1792967563	cmd	Alaric	50	13202	solace.are	standing	100	0	-	exits		Obvious exits: // North - Main Road // East  - Closed door
+1792967564	cmd	Alaric	50	13202	solace.are	standing	100	0	-	scan		old lady                           -to the North. // field rat                          -to the South. // Townguard                          -to the South.
+1792967565	cmd	Alaric	50	13202	solace.are	standing	100	0	-	open		Ok.
+1792967565	cmd	Alaric	50	13202	solace.are	standing	100	0	-	scan		old lady                           -to the North. // field rat                          -to the East. // ghost of waiter                    -to the East.
+1792967566	cmd	Alaric	50	13203	solace.are	standing	100	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.
+1792967568	cmd	Alaric	50	13203	solace.are	standing	100	0	-	scan		Townguard                          -to the North. // Cookie's Helper                    -to the West.
+1792967568	cmd	Alaric	50	13204	solace.are	standing	100	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.
+1792967569	cmd	Alaric	50	13204	solace.are	standing	100	0	-	scan		field rat                          -to the North. // Townguard                          -to the North. // Townguard                          -to the North.
+1792967572	cmd	Alaric	50	13204	solace.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792967573	cmd	Alaric	50	13205	solace.are	standing	100	0	-	north		Intersection at Main Road. //   Here there is an intersection at the main road. // You see to the east and west, smaller houses and some more shops.
+1792967575	cmd	Alaric	50	13205	solace.are	standing	100	0	-	where	crim	You didn't find any crim.
