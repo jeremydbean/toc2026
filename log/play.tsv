@@ -17220,3 +17220,145 @@
 1792930627	cmd	Trentlin	50	30527	hyrule.are	standing	100	0	-	south		Level 7: Demon's Gate //   Damp stone steps come down from the drained pond above into a vestibule of // green-black brick carved with a horned, grinning face. Water still beads on
 1792930628	cmd	Trentlin	50	30250	hyrule.are	standing	100	0	-	up		The Still Pond //   A ring of tall dark trees closes in around a round, perfectly still pond, // its surface black and glassy, and no fairy has ever danced over it. Smooth
 1792930629	cmd	Trentlin	50	30250	hyrule.are	standing	100	0	-	recall		Your prayer goes up and comes back unanswered.
+1792930631	cmd	Trentlin	50	30250	hyrule.are	standing	100	0	-	recall		The gods are listening to somebody else just now.
+1792930632	cmd	Trentlin	50	30250	hyrule.are	standing	100	0	-	recall		You stumble over the words of your prayer, and nothing happens.
+1792930634	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792930635	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792930635	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792930635	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792930635	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792930636	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792930636	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792930636	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792930636	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792930637	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792930637	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792930637	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792930639	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	20	-	aquest	request	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Trentlin.' // Questor Thews tells you 'Raiders stole The Amulet of Soulcrusher from the realm!'
+1792930642	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792930653	cmd	Trentlin	50	2431	dresden_halloween.are	standing	100	0	-	run	s 6	Southern Oak Tree Square. // [Exits: north east south west] // Main Processional, Below the Temple Steps
+1792930653	cmd	Trentlin	50	2431	dresden_halloween.are	standing	100	0	-	open	south	Ok.
+1792930654	cmd	Trentlin	50	3521	midennir_halloween.are	standing	100	0	-	run	s	Outside the Southern Gates of Dresden. // [Exits: north south] // The Trail to Miden'nir
+1792930654	cmd	Trentlin	50	3521	midennir_halloween.are	resting	100	0	-	wake		You stand up.
+1792930654	cmd	Trentlin	50	3522	midennir_halloween.are	standing	100	0	-	run	w	Deep in the Forest of Miden'nir // [Exits: north east south] // You slam into a wall!.
+1792930654	cmd	Trentlin	50	3522	midennir_halloween.are	resting	100	0	-	wake		You stand up.
+1792930655	cmd	Trentlin	50	28161	azeroth.are	standing	100	0	-	south		Watch Your Step! //   Don't you hate it when that happens?  You just walked through some // bushes and slid down the side of a cliff. I don't think you'll be going
+1792930655	cmd	Trentlin	50	28101	azeroth.are	standing	100	0	-	enter	portal	You enter The Dark Portal // Your stomach flip flops. Everything goes black for a moment. // Entrance to Azeroth
+1792930656	cmd	Trentlin	50	28102	azeroth.are	standing	100	0	-	south		Outside the Barracks //   Before you lay hundreds of tents filled with training Orcish warriors. // The exits are north toward the portal and south into the barracks. There
+1792930656	cmd	Trentlin	50	28103	azeroth.are	standing	100	0	-	south		Inside the Barracks //   You are surrounded by several large buildings and a sea of tents holding // the Orcish army. You see what appears to be some new recruits being
+1792930656	cmd	Trentlin	50	28107	azeroth.are	standing	100	0	-	south		Before the Main Gate //   There are two huge guard towers that appear to touch the sky on both // sides of you. There is also a giant iron gate that rests before you.
+1792930657	cmd	Trentlin	50	28120	azeroth.are	standing	100	0	-	south		Outside the gates of Black Rock Spire //   This giant gate looks like it's impenetrable from the outside. There are // several human skulls and ruined weapons lying around out here. There
+1792930657	cmd	Trentlin	50	28121	azeroth.are	standing	100	0	-	south		Beginning of the swamp //   As you walk farther into this vast swamp the water rises up to your // ankles, making it very wet and very annoying. It appears that you are on
+1792930658	cmd	Trentlin	50	28122	azeroth.are	standing	100	0	-	south		More Swamp //   From here you can see some kind of fortress to the north. You think you // see a faint path to the east. You can also go west at this point.
+1792930659	cmd	Trentlin	50	28124	azeroth.are	standing	100	0	-	west		More Swamp //   You are walking through what you estimate to be the middle of the swamp // now. There are exits to the east and west.
+1792930659	cmd	Trentlin	50	28131	azeroth.are	standing	100	0	-	west		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1792930660	cmd	Trentlin	50	28132	azeroth.are	standing	100	0	-	west		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1792930660	cmd	Trentlin	50	28133	azeroth.are	standing	100	0	-	west		The End of The Swamp //   You are starting to notice the water level slowly get lower and lower. // It would seem that you are exiting the swamp. Now you are surrounded by
+1792930661	cmd	Trentlin	50	28134	azeroth.are	standing	100	0	-	west		In the Forest //   This place is so much better than the swamp. The trees here are huge, // some must be big enough live inside of! The same boring path goes west.
+1792930662	cmd	Trentlin	50	28135	azeroth.are	standing	100	0	-	west		The Middle of the Forest //   You are now in what you think is the middle of the forest. But now you // don't feel like you're alone anymore. It feels like something is
+1792930662	cmd	Trentlin	50	28136	azeroth.are	standing	100	0	-	west		The End of the Forest //   You can now see that there is a giant field ahead with an army in it. // Maybe they can tell you where this path goes. You can go east or west.
+1792930663	cmd	Trentlin	50	28137	azeroth.are	standing	100	0	-	west		The Battle Field //   When you get close enough to the army you realize it wasn't just one // army, it was two different armies! The armies belonged to the Orcish
+1792930666	cmd	Trentlin	50	28137	azeroth.are	standing	100	0	-	exits		Obvious exits: // North - The Battle Field // East  - The End of the Forest
+1792930667	cmd	Trentlin	50	28140	azeroth.are	standing	100	0	-	west		The Battle Field //   You are in the middle of a huge battle! The exits are in all directions. // [Exits: north east south west]
+1792930667	cmd	Trentlin	50	28140	azeroth.are	standing	100	0	-	exits		Obvious exits: // North - The Battle Field // East  - The Battle Field
+1792930669	cmd	Trentlin	50	28147	azeroth.are	standing	100	0	-	west		The Battle Field //   You are in the middle of a battle! The exits are north, south, and east. // [Exits: north east south]
+1792930669	cmd	Trentlin	50	28147	azeroth.are	standing	100	0	-	exits		Obvious exits: // North - The Battle Field // East  - The Battle Field
+1792930670	cmd	Trentlin	50	28145	azeroth.are	standing	100	0	-	south		The Battle Field //   You're in a giant battle! Exits are north, south, and east. // [Exits: north east south]
+1792930672	cmd	Trentlin	50	28145	azeroth.are	standing	100	0	-	exits		Obvious exits: // North - The Battle Field // East  - The Battle Field
+1792930673	cmd	Trentlin	50	28146	azeroth.are	standing	100	0	-	south		The Battle Field //   You are trying to get out of this battle around you! Exits are north and // east.
+1792930673	cmd	Trentlin	50	28146	azeroth.are	standing	100	0	-	exits		Obvious exits: // North - The Battle Field // East  - The Battle Field
+1792930675	cmd	Trentlin	50	28143	azeroth.are	standing	100	0	-	east		The Battle Field //   You are running through a battle! Exits are north, east, and west. // [Exits: north east west]
+1792930676	cmd	Trentlin	50	28143	azeroth.are	standing	100	0	-	exits		Obvious exits: // North - The Battle Field // East  - The Battle Field
+1792930677	cmd	Trentlin	50	28142	azeroth.are	standing	100	0	-	east		The Battle Field //   You are running through a battle! The Exits are north and west. // [Exits: north west]
+1792930677	cmd	Trentlin	50	28142	azeroth.are	standing	100	0	-	exits		Obvious exits: // North - The Battle Field // West  - The Battle Field
+1792930679	cmd	Trentlin	50	28139	azeroth.are	standing	100	0	-	north		The Battle Field //   You are standing in the middle of a battle! The exits are north, south, // west.
+1792930679	cmd	Trentlin	50	28137	azeroth.are	standing	100	0	-	north		The Battle Field //   When you get close enough to the army you realize it wasn't just one // army, it was two different armies! The armies belonged to the Orcish
+1792930679	cmd	Trentlin	50	28138	azeroth.are	standing	100	0	-	north		The Battle Field //   You are in the middle of a battle! The exits are north, south, and west. // [Exits: north south west]
+1792930679	cmd	Trentlin	50	28141	azeroth.are	standing	100	0	-	north		The Battle Field //   You are witnessing a battle take place! The exits are south and west. // [Exits: south west]
+1792930681	cmd	Trentlin	50	28150	azeroth.are	standing	100	0	-	west		The Battle Field //   You are walking through a battle! There are exits to the east, south, // and west.
+1792930682	cmd	Trentlin	50	28151	azeroth.are	standing	100	0	-	west		The Battle Field //   You are standing on the edge of a battle! Exits go east, south, and west // over the river.
+1792930683	cmd	Trentlin	50	28152	azeroth.are	standing	100	0	-	west		The River //   You are now going over a deep river, the humans first line of defense // against the Horde. To the west you can see a city.
+1792930685	cmd	Trentlin	50	28153	azeroth.are	standing	100	0	-	west		The Front Lines //   There is a long trench that stretches is along the river with hundreds // of wooden spears stuck into the ground to act as a barrier. There are
+1792930685	cmd	Trentlin	50	28153	azeroth.are	fighting	99	0	fight	exits		Obvious exits: // East  - The River // West  - Before the Front Gate
+1792930687	cmd	Trentlin	50	28153	azeroth.are	fighting	99	0	fight	flee		A Paladin is overcome with a feeling of despair and flees the battle. // A Paladin walks off to the west. // A Paladin has fled!
+1792930687	cmd	Trentlin	50	28153	azeroth.are	standing	99	0	-	flee		You aren't fighting anyone.
+1792930689	cmd	Trentlin	50	28153	azeroth.are	standing	99	0	-	get	all	You get The Amulet of Soulcrusher.
+1792930690	cmd	Trentlin	50	28153	azeroth.are	fighting	98	0	fight	recall		The Gods have forsaken you.
+1792930691	cmd	Trentlin	50	28153	azeroth.are	fighting	98	0	fight	flee		A Paladin is overcome with a feeling of despair and flees the battle. // A Paladin walks off to the west. // A Paladin has fled!
+1792930691	cmd	Trentlin	50	28153	azeroth.are	standing	98	0	-	flee		You aren't fighting anyone.
+1792930691	cmd	Trentlin	50	28153	azeroth.are	standing	98	0	-	flee		You aren't fighting anyone.
+1792930692	cmd	Trentlin	50	28152	azeroth.are	standing	98	0	-	east		The River //   You are now going over a deep river, the humans first line of defense // against the Horde. To the west you can see a city.
+1792930692	cmd	Trentlin	50	28151	azeroth.are	standing	98	0	-	east		The Battle Field //   You are standing on the edge of a battle! Exits go east, south, and west // over the river.
+1792930692	cmd	Trentlin	50	28150	azeroth.are	standing	98	0	-	east		The Battle Field //   You are walking through a battle! There are exits to the east, south, // and west.
+1792930693	cmd	Trentlin	50	28141	azeroth.are	standing	98	0	-	east		The Battle Field //   You are witnessing a battle take place! The exits are south and west. // [Exits: south west]
+1792930694	cmd	Trentlin	50	28138	azeroth.are	standing	98	0	-	south		The Battle Field //   You are in the middle of a battle! The exits are north, south, and west. // [Exits: north south west]
+1792930695	cmd	Trentlin	50	28137	azeroth.are	standing	98	0	-	south		The Battle Field //   When you get close enough to the army you realize it wasn't just one // army, it was two different armies! The armies belonged to the Orcish
+1792930695	cmd	Trentlin	50	28136	azeroth.are	standing	98	0	-	east		The End of the Forest //   You can now see that there is a giant field ahead with an army in it. // Maybe they can tell you where this path goes. You can go east or west.
+1792930696	cmd	Trentlin	50	28135	azeroth.are	standing	98	0	-	east		The Middle of the Forest //   You are now in what you think is the middle of the forest. But now you // don't feel like you're alone anymore. It feels like something is
+1792930697	cmd	Trentlin	50	28135	azeroth.are	standing	98	0	-	eat	pot	You eat a big pot pie. // You are no longer hungry.
+1792930698	cmd	Trentlin	50	28134	azeroth.are	standing	98	0	-	east		In the Forest //   This place is so much better than the swamp. The trees here are huge, // some must be big enough live inside of! The same boring path goes west.
+1792930699	cmd	Trentlin	50	28133	azeroth.are	standing	98	0	-	east		The End of The Swamp //   You are starting to notice the water level slowly get lower and lower. // It would seem that you are exiting the swamp. Now you are surrounded by
+1792930699	cmd	Trentlin	50	28132	azeroth.are	standing	98	0	-	east		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1792930700	cmd	Trentlin	50	28131	azeroth.are	standing	98	0	-	east		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1792930701	cmd	Trentlin	50	28124	azeroth.are	standing	98	0	-	east		More Swamp //   You are walking through what you estimate to be the middle of the swamp // now. There are exits to the east and west.
+1792930702	cmd	Trentlin	50	28122	azeroth.are	standing	98	0	-	east		More Swamp //   From here you can see some kind of fortress to the north. You think you // see a faint path to the east. You can also go west at this point.
+1792930703	cmd	Trentlin	50	28121	azeroth.are	standing	98	0	-	north		Beginning of the swamp //   As you walk farther into this vast swamp the water rises up to your // ankles, making it very wet and very annoying. It appears that you are on
+1792930703	refused	Trentlin	50	28121	azeroth.are	fighting	98	0	fight	north		No way!  You are still fighting!
+1792930703	refused	Trentlin	50	28121	azeroth.are	fighting	98	0	fight	north		No way!  You are still fighting!
+1792930703	refused	Trentlin	50	28121	azeroth.are	fighting	98	0	fight	north		No way!  You are still fighting!
+1792930704	refused	Trentlin	50	28121	azeroth.are	fighting	98	0	fight	north		No way!  You are still fighting!
+1792930704	refused	Trentlin	50	28121	azeroth.are	fighting	98	0	fight	north		No way!  You are still fighting!
+1792930704	refused	Trentlin	50	28121	azeroth.are	fighting	98	0	fight	north		No way!  You are still fighting!
+1792930710	cmd	Trentlin	50	28121	azeroth.are	fighting	98	0	fight	smite		Your smite misses An Ogre Mage.
+1792930716	cmd	Trentlin	50	28121	azeroth.are	fighting	97	0	fight	smite		Your smite misses An Ogre Mage.
+1792930722	cmd	Trentlin	50	28121	azeroth.are	fighting	97	0	fight	smite		Your smite ^^^ DESTROYS ^^^ An Ogre Mage! // Your smite grazes An Ogre Mage. // Your smite ^^^ DESTROYS ^^^ An Ogre Mage!
+1792930728	cmd	Trentlin	50	28121	azeroth.are	fighting	97	0	fight	smite		Your smite MASSACRES An Ogre Mage! // Your smite maims An Ogre Mage! // Your smite ^^^ DESTROYS ^^^ An Ogre Mage!
+1792930734	cmd	Trentlin	50	28121	azeroth.are	fighting	97	0	fight	smite		Your smite misses An Ogre Mage.
+1792930740	cmd	Trentlin	50	28121	azeroth.are	fighting	100	0	fight	smite		Your smite *** DEVASTATES *** An Ogre Mage! // Your smite devastates An Ogre Mage!
+1792930746	cmd	Trentlin	50	28121	azeroth.are	fighting	91	0	fight	smite		Your smite misses An Ogre Mage.
+1792930754	cmd	Trentlin	50	28121	azeroth.are	fighting	82	0	fight	smite		The Headless Horseman's Reaper shears through An Ogre Mage with terrible force! // Your smite *** DEVASTATES *** An Ogre Mage! // Your smite *** DEVASTATES *** An Ogre Mage!
+1792930764	cmd	Trentlin	50	28121	azeroth.are	standing	82	0	-	look	in cor	Corpse of An Ogre Mage contains: //      Nothing.
+1792930765	cmd	Trentlin	50	28121	azeroth.are	standing	82	0	-	look		Beginning of the swamp //   As you walk farther into this vast swamp the water rises up to your // ankles, making it very wet and very annoying. It appears that you are on
+1792930766	cmd	Trentlin	50	28120	azeroth.are	standing	82	0	-	north		Outside the gates of Black Rock Spire //   This giant gate looks like it's impenetrable from the outside. There are // several human skulls and ruined weapons lying around out here. There
+1792930766	cmd	Trentlin	50	28120	azeroth.are	standing	82	0	-	north		The door is closed.
+1792930766	cmd	Trentlin	50	28120	azeroth.are	standing	82	0	-	north		The door is closed.
+1792930766	cmd	Trentlin	50	28120	azeroth.are	standing	82	0	-	north		The door is closed.
+1792930767	cmd	Trentlin	50	28120	azeroth.are	standing	82	0	-	north		The door is closed.
+1792930767	cmd	Trentlin	50	28120	azeroth.are	standing	82	0	-	north		The door is closed.
+1792930768	cmd	Trentlin	50	28120	azeroth.are	standing	82	0	-	open	north	Ok.
+1792930769	cmd	Trentlin	50	28107	azeroth.are	standing	82	0	-	north		Before the Main Gate //   There are two huge guard towers that appear to touch the sky on both // sides of you. There is also a giant iron gate that rests before you.
+1792930769	cmd	Trentlin	50	28103	azeroth.are	standing	82	0	-	north		Inside the Barracks //   You are surrounded by several large buildings and a sea of tents holding // the Orcish army. You see what appears to be some new recruits being
+1792930769	cmd	Trentlin	50	28102	azeroth.are	standing	82	0	-	north		Outside the Barracks //   Before you lay hundreds of tents filled with training Orcish warriors. // The exits are north toward the portal and south into the barracks. There
+1792930770	cmd	Trentlin	50	28101	azeroth.are	standing	82	0	-	north		Entrance to Azeroth //   You are surrounded by several massive stones while behind you is the // dark portal. The Orcs used this portal to gain entrance to Azeroth. Now
+1792930770	cmd	Trentlin	50	28101	azeroth.are	standing	82	0	-	north		Alas, you cannot go that way.
+1792930771	cmd	Trentlin	50	28161	azeroth.are	standing	82	0	-	enter	por	You enter The Dark Portal // Your stomach flip flops. Everything goes black for a moment. // Watch Your Step!
+1792930773	cmd	Trentlin	50	28161	azeroth.are	standing	82	0	-	recall		You stumble over the words of your prayer, and nothing happens.
+1792930775	cmd	Trentlin	50	4207	dresden_halloween.are	standing	82	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792930776	cmd	Trentlin	50	4208	dresden_halloween.are	standing	82	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792930777	cmd	Trentlin	50	4208	dresden_halloween.are	standing	82	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are clothed in mystical armor. // You feel righteous.
+1792930778	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792930778	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792930778	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792930778	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792930779	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792930779	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792930780	cmd	Trentlin	50	2402	dresden_halloween.are	standing	100	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1792930781	cmd	Trentlin	50	2415	dresden_halloween.are	standing	100	0	-	north		Main Processional, Strung with Lanterns //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Orange paper lanterns swing on cords
+1792930781	cmd	Trentlin	50	2485	dresden_halloween.are	standing	100	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1792930781	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	south		Weapons Shop. //   This shop has racks with all sorts of weapons on them.  You see bows and the // like on one of the walls and there is a glass case with a small number of
+1792930782	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792930785	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	repair	reap	                    ACHIEVEMENT EARNED // Good as New I  +5 points // Pay to have a damaged item repaired.
+1792930787	cmd	Trentlin	50	2494	dresden_halloween.are	standing	100	0	-	wear	reap	You wield the Headless Horseman's Reaper. // The Headless Horseman's Reaper feels like a part of you!
+1792930789	cmd	Trentlin	50	2485	dresden_halloween.are	standing	100	0	-	north		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1792930790	cmd	Trentlin	50	2415	dresden_halloween.are	standing	100	0	-	west		Main Processional, Strung with Lanterns //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Orange paper lanterns swing on cords
+1792930792	cmd	Trentlin	50	2402	dresden_halloween.are	standing	100	0	-	south		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1792930792	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	south		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792930793	cmd	Trentlin	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792930794	cmd	Trentlin	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792930794	cmd	Trentlin	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792930794	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792930794	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792930796	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	20	-	aquest	complete	You inform Questor Thews you have completed her quest. // You hand The Amulet of Soulcrusher to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'
+1792930799	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	5	-	aquest	gamble yes	** Fortune SMILES upon you! You WIN 76 quest points! **
+1792930800	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792930802	session	Trentlin	50	2401	dresden_halloween.are	quit	1960s	+0 levels	+0 exp	+159707351 copper	11 kills	0 deaths	2 quests	818 commands	12 refused	coin: loot 4p 22g 60s 53c, quests 256p 88g 19s, spent 101p 40g 6s 2c
