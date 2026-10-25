@@ -190380,3 +190380,97 @@ Sun Oct 25 18:29:14 2026 :: Log Alaric [2497]: score
 Sun Oct 25 18:30:02 2026 :: Treasure goblin: vanished from room 6614 (Mini-Maze, daycare.are) (too long in one area).
 Sun Oct 25 18:30:41 2026 :: Sock.sinaddr:  5.161.73.160
 Sun Oct 25 18:30:41 2026 :: EOF encountered on read.
+Sun Oct 25 18:32:57 2026 :: Log Alaric [2497]: who
+Sun Oct 25 18:32:59 2026 :: Log Alaric [2497]: score
+Sun Oct 25 18:33:13 2026 :: Log Alaric [2497]: eq
+Sun Oct 25 18:33:28 2026 :: Log Alaric [2497]: i
+Sun Oct 25 18:33:30 2026 :: Log Alaric [2497]: eq
+Sun Oct 25 18:33:40 2026 :: Log Alaric [2497]: sc
+Sun Oct 25 18:33:47 2026 :: Log Alaric [2497]: wake
+Sun Oct 25 18:33:47 2026 :: Log Alaric [2497]: l
+Sun Oct 25 18:33:48 2026 :: Log Alaric [2497]: i
+Sun Oct 25 18:34:22 2026 :: Log Alaric [2497]: affects off: levitate
+Sun Oct 25 18:35:06 2026 :: Log Alaric [2497]: aq re
+Sun Oct 25 18:35:06 2026 :: Log Alaric [2497]: quest assigned: recover The Journal of Trinidad (obj 25038) in ofcol.are, 26 minutes, ordinary
+Sun Oct 25 18:35:10 2026 :: Log Alaric [2497]: wake
+Sun Oct 25 18:35:15 2026 :: Log Alaric [2497]: enter door
+Sun Oct 25 18:35:15 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 18:35:15 2026 :: Log Alaric [2401]: west
+Sun Oct 25 18:35:15 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Oct 25 18:35:15 2026 :: Log Alaric [2405]: west
+Sun Oct 25 18:35:15 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Oct 25 18:35:16 2026 :: Log Alaric [2433]: west
+Sun Oct 25 18:35:16 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Oct 25 18:35:16 2026 :: Log Alaric [2434]: west
+Sun Oct 25 18:35:16 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Oct 25 18:35:16 2026 :: Log Alaric [2435]: west
+Sun Oct 25 18:35:16 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Oct 25 18:35:16 2026 :: Log Alaric [2436]: west
+Sun Oct 25 18:35:16 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Oct 25 18:35:17 2026 :: Log Alaric [2437]: west
+Sun Oct 25 18:35:17 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Oct 25 18:35:17 2026 :: Log Alaric [2438]: open west
+Sun Oct 25 18:35:17 2026 :: Log Alaric [2438]: west
+Sun Oct 25 18:35:17 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Oct 25 18:35:19 2026 :: Log Alaric [2439]: north
+Sun Oct 25 18:35:19 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Sun Oct 25 18:35:19 2026 :: Log Alaric [3900]: north
+Sun Oct 25 18:35:19 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Sun Oct 25 18:35:19 2026 :: Log Alaric [3901]: north
+Sun Oct 25 18:35:19 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Sun Oct 25 18:35:19 2026 :: Log Alaric [3902]: east
+Sun Oct 25 18:35:19 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Sun Oct 25 18:35:20 2026 :: Log Alaric [3903]: east
+Sun Oct 25 18:35:20 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Sun Oct 25 18:35:20 2026 :: Log Alaric [3904]: north
+Sun Oct 25 18:35:20 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Sun Oct 25 18:35:20 2026 :: Log Alaric [300]: north
+Sun Oct 25 18:35:20 2026 :: Log Alaric [315]: arrived (Gallow hill) from 300
+Sun Oct 25 18:35:20 2026 :: Log Alaric [315]: north
+Sun Oct 25 18:35:20 2026 :: Log Alaric [320]: arrived (Grassy plains) from 315
+Sun Oct 25 18:35:21 2026 :: Log Alaric [320]: east
+Sun Oct 25 18:35:21 2026 :: Log Alaric [305]: arrived (Path in the plains) from 320
+Sun Oct 25 18:35:21 2026 :: Log Alaric [305]: north
+Sun Oct 25 18:35:21 2026 :: Log Alaric [306]: arrived (Path in the foothills) from 305
+Sun Oct 25 18:35:21 2026 :: Log Alaric [306]: north
+Sun Oct 25 18:35:21 2026 :: Log Alaric [326]: arrived (The pool in the foothills) from 306
+Sun Oct 25 18:35:21 2026 :: Log Alaric [326]: east
+Sun Oct 25 18:35:21 2026 :: Log Alaric [309]: arrived (Path in the foothills) from 326
+Sun Oct 25 18:35:22 2026 :: Log Alaric [309]: east
+Sun Oct 25 18:35:22 2026 :: Log Alaric [310]: arrived (Path in the foothills) from 309
+Sun Oct 25 18:35:22 2026 :: Log Alaric [310]: north
+Sun Oct 25 18:35:22 2026 :: Log Alaric [327]: arrived (The foothills) from 310
+Sun Oct 25 18:35:22 2026 :: Log Alaric [327]: east
+Sun Oct 25 18:35:22 2026 :: Log Alaric [313]: arrived (Road to Ofcol) from 327
+Sun Oct 25 18:35:22 2026 :: Log Alaric [313]: north
+Sun Oct 25 18:35:22 2026 :: Log Alaric [314]: arrived (Road to Ofcol) from 313
+Sun Oct 25 18:35:23 2026 :: Log Alaric [314]: north
+Sun Oct 25 18:35:23 2026 :: Log Alaric [52]: arrived (Outside Ofcol) from 314
+Sun Oct 25 18:35:23 2026 :: Log Alaric [52]: north
+Sun Oct 25 18:35:23 2026 :: Log Alaric [5550]: arrived (Village street) from 52
+Sun Oct 25 18:35:46 2026 :: Sock.sinaddr:  3.12.251.153
+Sun Oct 25 18:35:47 2026 :: EOF encountered on read.
+Sun Oct 25 18:35:48 2026 :: Log Alaric [5550]: n
+Sun Oct 25 18:35:48 2026 :: Log Alaric [5551]: arrived (Village street) from 5550
+Sun Oct 25 18:35:50 2026 :: Log Alaric [5551]: n
+Sun Oct 25 18:35:50 2026 :: Log Alaric [5552]: arrived (Village square) from 5551
+Sun Oct 25 18:35:51 2026 :: Log Alaric [5552]: ex
+Sun Oct 25 18:35:52 2026 :: Log Alaric [5552]: n
+Sun Oct 25 18:35:52 2026 :: Log Alaric [5556]: arrived (The Local Inn) from 5552
+Sun Oct 25 18:35:54 2026 :: Log Alaric [5556]: s
+Sun Oct 25 18:35:54 2026 :: Log Alaric [5552]: arrived (Village square) from 5556
+Sun Oct 25 18:35:55 2026 :: Log Alaric [5552]: s
+Sun Oct 25 18:35:55 2026 :: Log Alaric [5551]: arrived (Village street) from 5552
+Sun Oct 25 18:35:57 2026 :: Log Alaric [5551]: e
+Sun Oct 25 18:35:57 2026 :: Log Alaric [5553]: arrived (The small alley) from 5551
+Sun Oct 25 18:35:58 2026 :: Log Alaric [5553]: ex
+Sun Oct 25 18:36:00 2026 :: Log Alaric [5553]: e
+Sun Oct 25 18:36:00 2026 :: Log Alaric [601]: arrived (The Big Intersection) from 5553
+Sun Oct 25 18:36:06 2026 :: Log Alaric [601]: e
+Sun Oct 25 18:36:06 2026 :: Log Alaric [666]: arrived (Raff Way) from 601
+Sun Oct 25 18:36:06 2026 :: Log Alaric [666]: e
+Sun Oct 25 18:36:06 2026 :: Log Alaric [667]: arrived (Raff Way) from 666
+Sun Oct 25 18:36:07 2026 :: Log Alaric [667]: e
+Sun Oct 25 18:36:07 2026 :: Log Alaric [699]: arrived (Outside the Entrance to the Golden Citadel) from 667
+Sun Oct 25 18:36:08 2026 :: Log Alaric [699]: e
+Sun Oct 25 18:36:08 2026 :: Log Alaric [698]: arrived (Inside the Entrance to the Golden Citadel) from 699
