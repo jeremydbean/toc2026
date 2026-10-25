@@ -13644,3 +13644,59 @@
 1792888064	cmd	Alaric	55	29206	korzath2.are	standing	94	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
 1792888066	cmd	Alaric	55	29206	korzath2.are	standing	94	0	-	bs	cl	Your backstab ^^^ DESTROYS ^^^ a killer clown! [-81] // Your backstab <<< ERADICATES >>> a killer clown! [-196] // Your backstab <<< ERADICATES >>> a killer clown! [-186]
 1792888153	cmd	Alaric	55	29206	korzath2.are	fighting	75	0	fight	look		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1792888255	cmd	Alaric	55	29206	korzath2.are	fighting	68	0	fight	look		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1792888264	cmd	Alaric	55	29206	korzath2.are	standing	68	0	-	scan		a killer clown                     -to the South. // a killer clown                     -to the South. // a killer clown                     -to the South.
+1792888266	cmd	Alaric	55	29207	korzath2.are	standing	68	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1792888267	cmd	Alaric	55	29207	korzath2.are	standing	68	0	-	scan		a deranged madman                  -to the West. // a killer clown                     -to the West. // a Shadowman                        -to the far West.
+1792888271	cmd	Alaric	55	29208	korzath2.are	standing	68	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1792888272	cmd	Alaric	55	29208	korzath2.are	standing	68	0	-	bs	mad	Your backstab ^^^ DESTROYS ^^^ a deranged madman! [-100] // Your backstab >>> ANNIHILATES <<< a deranged madman! [-201] // Your backstab === OBLITERATES === a deranged madman! [-143]
+1792888278	cmd	Alaric	55	29208	korzath2.are	fighting	67	0	fight	wear	exc	You stop using (Flaming) the Crystalline Sword of Justice. // You wield Excalibur. // Excalibur feels like a part of you!
+1792888312	cmd	Alaric	55	29208	korzath2.are	standing	66	0	-	scan		a killer clown                     -to the East. // a killer clown                     -to the East. // a killer clown                     -to the East.
+1792888315	cmd	Alaric	55	29209	korzath2.are	standing	66	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1792888316	cmd	Alaric	55	29209	korzath2.are	standing	66	0	-	scan		a Shadowman                        -to the North. // an Animated Skeleton               -to the North. // a deranged madman                  -to the North.
+1792888318	cmd	Alaric	55	29209	korzath2.are	standing	66	0	-	stealth		You fail to enter stealth.
+1792888319	cmd	Alaric	55	29209	korzath2.are	standing	66	0	-	stealth		You blend into the shadows.
+1792888322	cmd	Alaric	55	29210	korzath2.are	standing	66	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1792888324	cmd	Alaric	55	29210	korzath2.are	standing	66	0	-	bs	shad	Your backstab does UNSPEAKABLE things to a Shadowman! [-374] // You are no longer stealthful. // Your backstab does UNSPEAKABLE things to a Shadowman! [-391]
+1792888341	cmd	Alaric	55	29210	korzath2.are	fighting	63	0	fight	look	i cor	Corpse of a Shadowman contains: //      (Red Aura) (Glowing) (Humming) Darkblade
+1792888343	cmd	Alaric	55	29210	korzath2.are	fighting	63	0	fight	get	just	I see no just here.
+1792888344	cmd	Alaric	55	29210	korzath2.are	fighting	63	0	fight	wear	just	You wield (Flaming) the Crystalline Sword of Justice. // (Flaming) the Crystalline Sword of Justice feels like a part of you!
+1792888356	cmd	Alaric	55	29210	korzath2.are	standing	63	0	-	look	i cor	Corpse of an Animated Skeleton contains: //      (Magical) a rib bone belt //      (Glowing) (Humming) a bone mace
+1792888361	cmd	Alaric	55	29210	korzath2.are	standing	63	0	-	get	mace cor	You get a bone mace from corpse of an Animated Skeleton.
+1792888362	cmd	Alaric	55	29210	korzath2.are	standing	63	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792888365	cmd	Alaric	55	29210	korzath2.are	standing	63	0	-	wear	dip	You stop using the Crystalline Sceptre of Commanding. // You hold a mud school diploma in your hands.
+1792888365	cmd	Alaric	55	29210	korzath2.are	standing	63	0	-	look		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1792888366	cmd	Alaric	55	29210	korzath2.are	standing	63	0	-	bs	mad	Your backstab misses a deranged madman. [-0]
+1792888414	cmd	Alaric	55	29210	korzath2.are	fighting	59	0	fight	look		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1792888417	cmd	Alaric	55	29210	korzath2.are	standing	59	0	-	scan		an Animated Skeleton               -to the West. // an Animated Skeleton               -to the West. // a deranged madman                  -to the West.
+1792888419	cmd	Alaric	55	29210	korzath2.are	standing	59	0	-	stealth		You blend into the shadows.
+1792888422	cmd	Alaric	55	29211	korzath2.are	standing	59	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1792888423	cmd	Alaric	55	29211	korzath2.are	standing	59	0	-	bs	sk	Your backstab >>> ANNIHILATES <<< an Animated Skeleton! [-205] // You are no longer stealthful. // Your backstab misses an Animated Skeleton. [-0]
+1792888442	cmd	Alaric	55	29211	korzath2.are	standing	59	0	-	bs	sk	Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-279] // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-336] // Your backstab >>> ANNIHILATES <<< an Animated Skeleton! [-230]
+1792888458	cmd	Alaric	55	29211	korzath2.are	standing	57	0	-	scan		an Animated Skeleton               -to the North. // a deranged madman                  -to the North. // a deranged madman                  -to the North.
+1792888460	cmd	Alaric	55	29212	korzath2.are	standing	57	0	-	north		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1792888461	cmd	Alaric	55	29212	korzath2.are	standing	57	0	-	kill	sk	An Animated Skeleton dodges your attack. // An Animated Skeleton dodges your attack. // Your slash DISEMBOWELS an Animated Skeleton! [-41]
+1792888469	cmd	Alaric	56	4207	dresden_halloween.are	standing	57	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792888472	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792888481	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	inventory		You are carrying: //      (Glowing) (Humming) a bone mace // (16) (Glowing) a bag of candy corn
+1792888487	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	stash	put mace	You can't let go of it.
+1792888490	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	5	-	stash	put scep	You put the Crystalline Sceptre of Commanding away for safe keeping.
+1792888493	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	remove	all	You stop using (Flaming) the Crystalline Sword of Justice. // You stop using a bone mace. // You stop using battle boots.
+1792888499	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	inventory		You are carrying: // ( 2) (Glowing) (Humming) a bone mace //      (Magical) (Flaming) the Crystalline Sword of Justice
+1792888505	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	6	-	stash	put just	You put (Flaming) the Crystalline Sword of Justice away for safe keeping.
+1792888507	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	6	-	stash	put brac	You put an elven bracelet away for safe keeping.
+1792888507	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	4	-	stash	put brac	You put an elven bracelet away for safe keeping.
+1792888507	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	stash	put brac	You are not carrying that.
+1792888510	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	5	-	stash	put starlight	You put Starlight away for safe keeping.
+1792888510	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	stash	put starlight	You are not carrying that.
+1792888511	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	stash	put starlight	You are not carrying that.
+1792888515	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	5	-	stash	put piw	You put a commoner's piwafwi away for safe keeping.
+1792888517	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	7	-	stash	put dip	You put a mud school diploma away for safe keeping.
+1792888520	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	6	-	stash	put plat	You put Divine Breast Plate away for safe keeping.
+1792888520	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	5	-	stash	put plat	You put some platinum arm bands away for safe keeping.
+1792888521	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	stash	put plat	You are not carrying that.
+1792888523	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	10	-	stash	put rib	You put a rib bone belt away for safe keeping.
+1792888523	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	inventory		You are carrying: // ( 2) (Glowing) (Humming) a bone mace // (16) (Glowing) a bag of candy corn
+1792888526	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	7	-	stash	put cloak	You put the Crystalline Royal Cloak away for safe keeping.
+1792888527	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	4	-	stash	put cloak	You put the Crystalline Royal Cloak away for safe keeping.
+1792888527	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	stash	put cloak	You are not carrying that.
