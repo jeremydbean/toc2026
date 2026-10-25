@@ -282,11 +282,13 @@ that claims no runtime change while the fingerprint moved is promoted to
 full. Pushes to branches no longer run at all: a branch is validated by
 its pull request, main by its push.
 
-**A full CI run (`.github/workflows/validate.yml`) took 11.4 to 14
-minutes** from push to verdict on the split pipeline (Validate runs
-40210613754, 40229059412 and 40231173630, 2026-10-25). The single job it
-replaced took 67 minutes at the median of the sixty runs before it, for
-89 runner-minutes. The jobs, all on free `ubuntu-24.04` runners (pinned,
+**A full CI run (`.github/workflows/validate.yml`) takes about ten
+minutes** from push to verdict: 9.7 minutes and 87 runner-minutes on the
+first run of the planned pipeline (Validate run 40241317306, 2026-10-25),
+its eight shards finishing within sixteen seconds of each other (476-492
+s). The split pipeline before it took 11.4 to 14 minutes and 95 to 117
+runner-minutes (runs 40210613754, 40229059412, 40231173630); the single
+job before that, 67 minutes at the median, for 89 runner-minutes. The jobs, all on free `ubuntu-24.04` runners (pinned,
 like production: `ubuntu-latest` moves to 26) and as parallel as GitHub
 allows:
 
