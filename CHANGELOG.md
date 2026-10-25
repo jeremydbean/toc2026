@@ -8,6 +8,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Deploy markers count only on a line of their own** (owner,
+  2026-10-25). `toc-auto-deploy` read `[deploy now]` and `[deploy with
+  players]` anywhere in a commit message, so the redesign's own commit
+  body, which named both in a sentence, was taken as an order and the
+  game was restarted under a player it was holding for. `has_marker`
+  now matches a whole line, blanks aside; a mention in prose orders
+  nothing. `tests/test_auto_deploy.py`.
 - **CI in fifteen minutes, and a deploy gate that fails closed**
   (2026-10-25). Validate is split into a quick check, both builds, eight
   duration-balanced test shards, a serial job and three sanitizer shards,

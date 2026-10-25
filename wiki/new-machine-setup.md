@@ -49,7 +49,7 @@ cd toc2026
 git fetch && git rebase origin/main && git push origin HEAD:main
 ```
 
-CI takes about fifteen minutes. For an urgent fix, put `[deploy now]` in the message
+CI takes about fifteen minutes. For an urgent fix, put `[deploy now]` on a line of its own in the message
 of the commit that changes the code to skip the CI wait (it does not cover
 code pushed after it) -- `toc-deploy` still refuses anything that does
 not build or whose world does not load.

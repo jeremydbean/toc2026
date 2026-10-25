@@ -106,7 +106,7 @@ the untested tip of `main`.
 `main` every ten minutes and deploys new code once CI's `deploy-gate`
 job has passed for it on a push to `main` (CI takes about fifteen
 minutes), pinned to that commit and rolling the code -- never player
-state -- back if the game does not come back healthy; `[deploy now]` in the message of the commit
+state -- back if the game does not come back healthy; `[deploy now]` on a line of its own in the message of the commit
 carrying the code skips the CI wait for that code (not for code pushed
 after it). It never restarts the game while anybody is playing, or while the game
 cannot say who is: the status reads `holding <sha>: N player(s) online`
@@ -114,7 +114,7 @@ cannot say who is: the status reads `holding <sha>: N player(s) online`
 minutes until the game is empty (owner, 2026-10-20). A game that is not
 running at all is deployed. A deploy
 by hand is the override; from a session that can only push, so is
-`[deploy with players]` in any waiting commit (owner, 2026-10-24), which
+`[deploy with players]` on a line of its own in any waiting commit (owner, 2026-10-24), which
 still waits for CI, gives players a minute's warning and then the usual
 announce and save. Docs, tests and state-sync commits never
 trigger it. What it

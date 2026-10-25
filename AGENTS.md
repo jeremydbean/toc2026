@@ -1798,7 +1798,7 @@ healthy. Docs, tests and state-sync commits never trigger it, and a
 commit that failed to deploy is not retried until something newer lands.
 So a session that can only push -- a cloud session -- still ships: push,
 and the game updates up to ten minutes after CI goes green (CI takes
-about fifteen minutes), once nobody is playing. Put `[deploy now]` in the message of the commit that
+about fifteen minutes), once nobody is playing. Put `[deploy now]` on a line of its own in the message of the commit that
 changes the code to skip the CI wait for an urgent fix -- it covers that
 commit's code and state-only commits on top of it, never later code
 (audit, 2026-10-21); `toc-deploy` still refuses anything that does not
@@ -1884,7 +1884,7 @@ the end of a healthy deploy, so the first deploy after this rule landed
 had to be timed by hand against the synced login journal.
 `toc-deploy` run by hand is the override, and it still warns and saves
 everyone first. **A cloud session's override is `[deploy with players]`**
-in any commit waiting to ship -- only when the owner asks to ship with
+on a line of its own in any commit waiting to ship -- only when the owner asks to ship with
 people on (owner, 2026-10-24: "ship now, just send the announcement
 before reboot"). It lifts the hold and nothing else: CI still has to
 pass (that is `[deploy now]`'s, for its own commit), players get a
@@ -1892,6 +1892,15 @@ minute's warning through the queue, then `toc-deploy`'s announce, save
 and announce. A commit pushed only to carry the marker works. Like any
 change to the script, it works from the deploy after the one that
 installs it.
+
+**A marker counts only on a line of its own** (`has_marker` in
+`toc-auto-deploy`; blanks around it allowed). Anywhere in the message, a
+sentence that merely named one was an order: on 2026-10-25 a commit body
+saying "[deploy now] and [deploy with players] keep their meanings" was
+read as both, and the game was restarted under a player it was holding
+for. Never write either marker on a line of its own unless you mean it,
+and when you only mean to name one in prose, keep it inside a sentence --
+or in backticks, as here.
 
 *Superseded for automatic deploys by the rule above; still how a deploy
 by hand behaves.* **Deploy whenever the change is ready, connected

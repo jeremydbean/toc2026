@@ -183,7 +183,7 @@ class AutoDeployDecisionTests(unittest.TestCase):
         self.assertEqual([], self.deploys())
 
     def test_deploy_now_skips_the_ci_wait(self) -> None:
-        code = self.commit("hotfix [deploy now]", {"src/game.c": "int e;\n"})
+        code = self.commit("hotfix\n\n[deploy now]", {"src/game.c": "int e;\n"})
         self.assertIn("[deploy now]", self.run_script(fake_ci=""))
         self.assertEqual([f"{code} 1"], self.deploys())
 
@@ -191,7 +191,7 @@ class AutoDeployDecisionTests(unittest.TestCase):
         """Owner, 2026-10-20: do not reboot while players are on. The
         held commit is not marked attempted, so the first empty tick
         ships it; a game that does not answer has nobody to protect."""
-        code = self.commit("fix [deploy now]", {"src/game.c": "int h;\n"})
+        code = self.commit("fix\n\n[deploy now]", {"src/game.c": "int h;\n"})
         status = self.run_script(players="3")
         self.assertIn("holding", status)
         self.assertIn("3 player(s) online", status)
@@ -201,7 +201,7 @@ class AutoDeployDecisionTests(unittest.TestCase):
         self.assertEqual([], self.deploys())
         self.assertIn("deployed", self.run_script(players="0"))
         self.assertEqual([f"{code} 1"], self.deploys())
-        newer = self.commit("again [deploy now]", {"src/game.c": "int i;\n"})
+        newer = self.commit("again\n\n[deploy now]", {"src/game.c": "int i;\n"})
         self.assertIn("deployed", self.run_script(players="down"))
         self.assertEqual([f"{code} 1", f"{newer} 1"], self.deploys(),
                          "a game that is not running has nobody to protect")
@@ -211,14 +211,14 @@ class AutoDeployDecisionTests(unittest.TestCase):
         hung, half started -- may have players in it. It holds the deploy
         like a count above zero; only [deploy with players], with its
         warning, ships past it."""
-        code = self.commit("fix [deploy now]", {"src/game.c": "int u;\n"})
+        code = self.commit("fix\n\n[deploy now]", {"src/game.c": "int u;\n"})
         for answer in ("unknown", "", "garbage", "-1"):
             status = self.run_script(players=answer)
             self.assertIn("holding", status, answer)
             self.assertIn("did not say who is online", status, answer)
         self.assertEqual([], self.deploys())
         self.assertFalse((self.state / "attempted").exists())
-        self.commit("ship it [deploy with players]", {"README.md": "go\n"})
+        self.commit("ship it\n\n[deploy with players]", {"README.md": "go\n"})
         status = self.run_script(players="unknown")
         self.assertIn("[deploy with players], the game did not say who is online", status)
         self.assertEqual(1, len(self.deploys()))
@@ -239,7 +239,7 @@ class AutoDeployDecisionTests(unittest.TestCase):
 
         # Docs-only, so the code commit is still the one shipped and the
         # one CI must cover.
-        tip = self.commit("ship it [deploy with players]", {"README.md": "now\n"})
+        tip = self.commit("ship it\n\n[deploy with players]", {"README.md": "now\n"})
         status = self.run_script(green, players="2")
         self.assertIn("deployed", status)
         self.assertIn("[deploy with players], 2 player(s) online", status)
@@ -248,7 +248,7 @@ class AutoDeployDecisionTests(unittest.TestCase):
                       queue.read_text())
 
     def test_deploy_with_players_does_not_skip_ci(self) -> None:
-        self.commit("fix [deploy with players]", {"src/game.c": "int q;\n"})
+        self.commit("fix\n\n[deploy with players]", {"src/game.c": "int q;\n"})
         status = self.run_script(fake_ci="", players="1")
         self.assertIn("waiting for CI", status)
         self.assertEqual([], self.deploys())
@@ -281,12 +281,12 @@ class AutoDeployDecisionTests(unittest.TestCase):
     def test_an_old_deploy_now_does_not_pass_newer_code(self) -> None:
         """Audit 2026-10-21: [deploy now] anywhere in live..target passed
         a later, unchecked commit too."""
-        self.commit("hotfix [deploy now]", {"src/game.c": "int l;\n"})
+        self.commit("hotfix\n\n[deploy now]", {"src/game.c": "int l;\n"})
         newer = self.commit("more code", {"src/game.c": "int m;\n"})
         status = self.run_script(self.ci(newer, "completed", "failure"))
         self.assertEqual([], self.deploys(), status)
         # A state sync on top of an override still ships under it.
-        override = self.commit("hotfix again [deploy now]", {"src/game.c": "int n;\n"})
+        override = self.commit("hotfix again\n\n[deploy now]", {"src/game.c": "int n;\n"})
         sync = self.commit("State sync [skip ci]", {"player/Zed": "y\n"})
         self.assertIn("[deploy now] on", self.run_script(fake_ci=""))
         self.assertEqual([f"{sync} 1"], self.deploys())
@@ -300,6 +300,26 @@ class AutoDeployDecisionTests(unittest.TestCase):
         status = self.run_script(self.ci(good, "completed", "success"))
         self.assertIn("no CI run after it", status)
         self.assertEqual([], self.deploys())
+
+    def test_a_marker_counts_only_on_a_line_of_its_own(self) -> None:
+        """2026-10-25: a commit body saying "[deploy now] and [deploy with
+        players] keep their meanings" was read as both orders, and the
+        game was restarted under a player it was holding for. A marker
+        mentioned in a sentence orders nothing; on its own line (blanks
+        around it allowed) it still does."""
+        self.commit("fix", {"src/game.c": "int z1;\n"})
+        self.commit("docs: [deploy now] and [deploy with players] keep their meanings",
+                    {"src/game.c": "int z2;\n"})
+        status = self.run_script(fake_ci="", players="1")
+        self.assertIn("waiting for CI", status, "a mention is not [deploy now]")
+        green = self.ci(git(self.work, "rev-parse", "HEAD"), "completed", "success")
+        status = self.run_script(green, players="1")
+        self.assertIn("holding", status, "a mention is not [deploy with players]")
+        self.assertEqual([], self.deploys())
+        tip = self.commit("ship it\n\n   [deploy with players]  \n", {"README.md": "x\n"})
+        status = self.run_script(green, players="1")
+        self.assertIn("[deploy with players], 1 player(s) online", status)
+        self.assertEqual([f"{tip} 1"], self.deploys())
 
     def test_a_green_run_without_a_passing_gate_job_ships_nothing(self) -> None:
         """deploy-gate is the verdict. A run whose gate failed, was

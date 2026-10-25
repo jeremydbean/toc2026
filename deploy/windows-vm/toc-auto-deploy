@@ -43,6 +43,13 @@
 # unattended deploy that does not come back healthy puts the old code
 # back by itself.
 #
+# Both markers count only on a line of their own in the commit message
+# (has_marker). Anywhere in the text, a sentence that merely mentioned
+# one was an order: the commit that brought this redesign said "[deploy
+# now] and [deploy with players] keep their meanings" in its body, and on
+# 2026-10-25 the game was restarted under a player it had been holding
+# for. A [deploy now] in prose could as easily have skipped CI.
+#
 # What it decided last is in $CURRENT/log/auto-deploy.status, and the
 # state sync carries log/ to GitHub, so a session that cannot reach the
 # host can still read what is live and why.
@@ -97,6 +104,12 @@ players_online() {
         ''|*[!0-9]*) echo unknown ;;
         *) echo "$answer" ;;
     esac
+}
+
+# Whether any commit message read from stdin carries MARKER as a line of
+# its own, surrounding blanks aside.
+has_marker() {
+    sed 's/^[[:space:]]*//; s/[[:space:]]*$//' | grep -qxF "$1"
 }
 
 status() {
@@ -163,7 +176,7 @@ if [ "$(cat "$STATE_DIR/attempted" 2>/dev/null || true)" = "$effective" ]; then
     exit 0
 fi
 
-if git -C "$BUILD" log -1 --format=%B "$effective" | grep -qF '[deploy now]'; then
+if git -C "$BUILD" log -1 --format=%B "$effective" | has_marker '[deploy now]'; then
     why="[deploy now] on $effective_short"
 else
     # The run that vouches for $effective is the newest Validate run on a
@@ -284,7 +297,7 @@ case "$players" in
             who="$players player(s) online"
         fi
         if ! git -C "$BUILD" log --format=%B "$live..$target" |
-                grep -qF '[deploy with players]'; then
+                has_marker '[deploy with players]'; then
             status "holding $short ($why): $who; deploying when the game is empty"
             exit 0
         fi
