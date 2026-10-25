@@ -16769,3 +16769,128 @@
 1792929108	cmd	Trentlin	50	931	olympus.are	standing	100	0	-	east		Guest Quarters //   You have entered a room reserved for visitors to this castle.  You are // amazed as you recognize the occupant - Ra, the Egyptian Sun God.  He must be
 1792929108	cmd	Trentlin	50	931	olympus.are	standing	100	0	-	east		Alas, you cannot go that way.
 1792929111	cmd	Trentlin	50	931	olympus.are	standing	100	0	-	consider	r	Ra the Sun God is far above your level. // Ra the Sun God has about twice your hit points. // Blow for blow, you would need about 34 rounds to bring Ra the Sun God down; he would need about 75 rounds for you.
+1792929123	refused	Trentlin	50	931	olympus.are	standing	100	0	-	(unknown)		Huh?
+1792929124	cmd	Trentlin	50	931	olympus.are	standing	100	0	-	look		Guest Quarters //   You have entered a room reserved for visitors to this castle.  You are // amazed as you recognize the occupant - Ra, the Egyptian Sun God.  He must be
+1792929125	cmd	Trentlin	50	931	olympus.are	standing	100	0	-	kill	ra	You MUTILATE Ra the Sun God! // Ra the Sun God parries your attack. // Ra the Sun God dodges your attack.
+1792929129	cmd	Trentlin	50	931	olympus.are	fighting	100	0	fight	smite		Your smite injures Ra the Sun God. // Your smite MASSACRES Ra the Sun God! // Your smite DISEMBOWELS Ra the Sun God!
+1792929136	cmd	Trentlin	50	931	olympus.are	fighting	95	0	fight	smite		Your smite misses Ra the Sun God.
+1792929150	cmd	Trentlin	50	931	olympus.are	fighting	87	0	fight	flee		Ra the Sun God is overcome with a feeling of despair and flees the battle. // Ra the Sun God walks off to the west. // Ra the Sun God has fled!
+1792929150	cmd	Trentlin	50	931	olympus.are	standing	87	0	-	flee		You aren't fighting anyone.
+1792929152	cmd	Trentlin	50	2323	mahntor.are	standing	87	0	-	recall		Something is very wrong! // The edge of the sea //   You walk along the water's edge. The vastness of the ocean is staggering as
+1792929153	cmd	Trentlin	50	20113	prison.are	standing	87	0	-	recall		Something is very wrong! //                     ACHIEVEMENT EARNED // Off the Beaten Path I  +10 points
+1792929160	cmd	Trentlin	50	20113	prison.are	standing	87	0	-	recall		You stumble over the words of your prayer, and nothing happens.
+1792929162	cmd	Trentlin	50	4207	dresden_halloween.are	standing	87	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792929163	cmd	Trentlin	50	4208	dresden_halloween.are	standing	87	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792929163	cmd	Trentlin	50	4208	dresden_halloween.are	standing	87	0	-	west		Alas, you cannot go that way.
+1792929165	cmd	Trentlin	50	4208	dresden_halloween.are	standing	87	0	-	heal	heal	Hermie turns to you with a wink. // Hermie rests a hand on your shoulder, and the ache goes out of you.
+1792929167	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792929167	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792929167	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792929168	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	west		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792929168	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	west		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792929168	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792929168	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792929170	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	refresh	Hermie turns to you with a wink. // Hermie rests a hand on your shoulder, and the ache goes out of you.
+1792929170	cmd	Trentlin	50	4208	dresden_halloween.are	standing	100	0	-	heal	refresh	Hermie turns to you with a wink. // Hermie looks you over.  'Nothing wanting there.'
+1792929172	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792929172	cmd	Trentlin	50	4202	dresden_halloween.are	standing	100	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792929173	cmd	Trentlin	50	4201	dresden_halloween.are	standing	100	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792929174	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792929175	cmd	Trentlin	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792929175	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792929194	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	eat	pot	You eat a big pot pie. // You are no longer hungry.
+1792929197	cmd	Trentlin	50	2427	dresden_halloween.are	standing	100	0	-	run	s 2	Southern Oak Tree Square. // [Exits: north east south west] // Main Processional, Below the Temple Steps
+1792929197	cmd	Trentlin	50	4207	dresden_halloween.are	standing	100	0	-	run	w 3	Entrance to the Haunted Temple // [Exits: north east west] // The Hall of Whispers
+1792929197	cmd	Trentlin	50	3795	school.are	standing	100	0	-	run	u 3	Entrance to Mud School // [Exits: north east (south) west up down] // Newbie Train Station
+1792929197	cmd	Trentlin	50	15000	campus.are	standing	100	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance
+1792929198	cmd	Trentlin	50	15004	campus.are	standing	100	0	-	run	e 4	Campus Crescent // [Exits: east west] // Campus Crescent
+1792929198	cmd	Trentlin	50	15013	campus.are	standing	100	0	-	run	n 4	University Avenue // [Exits: north east south west] // University Avenue
+1792929198	cmd	Trentlin	50	15068	campus.are	standing	100	0	-	run	e 2	The Back Hall // [Exits: north east south west] // The Games Room
+1792929198	cmd	Trentlin	50	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering Hyrule arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins
+1792929200	cmd	Trentlin	50	30250	hyrule.are	standing	100	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Still Pond
+1792929205	cmd	Trentlin	50	30250	hyrule.are	standing	100	0	-	look		The Still Pond //   A ring of tall dark trees closes in around a round, perfectly still pond, // its surface black and glassy, and no fairy has ever danced over it. Smooth
+1792929211	cmd	Trentlin	50	30234	hyrule.are	standing	100	0	-	south		Lost Woods Crossing //   The forest closes in on all sides, every trunk looking much like the next, // and paths wander off in all four directions. Owls call in the shadows, and
+1792929213	cmd	Trentlin	50	30250	hyrule.are	standing	100	1	-	north		The Still Pond //   A ring of tall dark trees closes in around a round, perfectly still pond, // its surface black and glassy, and no fairy has ever danced over it. Smooth
+1792929229	cmd	Trentlin	50	30250	hyrule.are	standing	100	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. //                     ACHIEVEMENT EARNED // Play It Again  +15 points
+1792929231	cmd	Trentlin	50	30250	hyrule.are	standing	100	0	-	look		The Still Pond //   A ring of tall dark trees closes in around a round, perfectly still pond, // its surface black and glassy, and no fairy has ever danced over it. Smooth
+1792929232	cmd	Trentlin	50	30527	hyrule.are	standing	100	0	-	down		Level 7: Demon's Gate //   Damp stone steps come down from the drained pond above into a vestibule of // green-black brick carved with a horned, grinning face. Water still beads on
+1792929233	cmd	Trentlin	50	30527	hyrule.are	standing	100	0	-	scan		a blue goriya                      -to the North. // a red moblin                       -right above you.
+1792929235	cmd	Trentlin	50	30528	hyrule.are	standing	100	0	-	east		Level 7: Dripping Antechamber //   A bare square chamber whose blue-green flagstones are slick with seep from // the pond overhead. The only sound is a slow, patient dripping that echoes
+1792929236	cmd	Trentlin	50	30531	hyrule.are	standing	100	0	-	north		Level 7: Guano-Streaked Crossing //   White streaks of guano stain the walls of this chamber from ceiling to // floor, and the air is sour with it. The shadowed rafters overhead are
+1792929238	cmd	Trentlin	50	30531	hyrule.are	standing	100	0	-	look	compa	You do not see that here.
+1792929240	cmd	Trentlin	50	30532	hyrule.are	standing	100	0	-	east		Level 7: Shuttered Gallery //   Two rows of squat stone blocks march down the middle of this long gallery, // leaving narrow lanes between them. Boomerang notches are chipped into the
+1792929241	cmd	Trentlin	50	30533	hyrule.are	standing	100	0	-	east		Level 7: Urchin's Hollow //   Coarse sand has drifted across the floor of this chamber, and great round // depressions are pressed into it as though a vast spiked ball had rolled
+1792929242	cmd	Trentlin	50	30534	hyrule.are	standing	100	0	-	east		Level 7: Bone-Strewn Alcove //   The far eastern end of the dungeon gathers into a cramped alcove littered // with skulls, ribs and rusted sword hilts. Some of the bones look disturbed,
+1792929244	cmd	Trentlin	50	30533	hyrule.are	standing	100	0	-	west		Level 7: Urchin's Hollow //   Coarse sand has drifted across the floor of this chamber, and great round // depressions are pressed into it as though a vast spiked ball had rolled
+1792929245	cmd	Trentlin	50	30532	hyrule.are	standing	100	0	-	west		Level 7: Shuttered Gallery //   Two rows of squat stone blocks march down the middle of this long gallery, // leaving narrow lanes between them. Boomerang notches are chipped into the
+1792929246	cmd	Trentlin	50	30532	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792929248	cmd	Trentlin	50	30532	hyrule.are	standing	100	0	-	kill	g	You === OBLITERATE === a blue goriya! // You *** DEMOLISH *** a blue goriya! // You ^^^ DESTROY ^^^ a blue goriya!
+1792929251	cmd	Trentlin	50	30532	hyrule.are	fighting	100	0	fight	smite		Your smite <<< ERADICATES >>> a blue goriya! // Your smite <<< ERADICATES >>> a blue goriya! // Your smite <<< ERADICATES >>> a blue goriya!
+1792929258	cmd	Trentlin	50	30532	hyrule.are	fighting	99	0	fight	smite		Your smite <<< ERADICATES >>> a blue goriya! // Your smite <<< ERADICATES >>> a blue goriya! // Your smite ^^^ DESTROYS ^^^ a blue goriya!
+1792929264	cmd	Trentlin	50	30532	hyrule.are	fighting	98	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a blue goriya! // A blue goriya is DEAD!! // You receive 36 experience points.
+1792929272	cmd	Trentlin	50	30538	hyrule.are	standing	98	0	-	north		The shutter opens now that the chamber is clear. // Level 7: Hall of the Horned Mask //   A great horned mask is worked into the back wall of this bare room, its
+1792929278	cmd	Trentlin	50	30538	hyrule.are	standing	99	0	-	list		You can't do that here.
+1792929280	cmd	Trentlin	50	30538	hyrule.are	standing	99	0	-	look		Level 7: Hall of the Horned Mask //   A great horned mask is worked into the back wall of this bare room, its // features worn soft with age and its long nose running down toward the
+1792929282	cmd	Trentlin	50	30538	hyrule.are	standing	99	0	-	scan		You don't see anything near you.
+1792929283	cmd	Trentlin	50	30538	hyrule.are	standing	99	0	-	look	man	His nose is the largest thing about him, long and hooked and red at the // tip, and he taps it often. These halls, he says, were cut by someone with a // sense of humour: walk them with a map in your head and they make a face,
+1792929292	cmd	Trentlin	50	30538	hyrule.are	standing	99	0	-	consider	man	Don't even think about it.
+1792929304	cmd	Trentlin	50	30532	hyrule.are	standing	99	0	-	south		Level 7: Shuttered Gallery //   Two rows of squat stone blocks march down the middle of this long gallery, // leaving narrow lanes between them. Boomerang notches are chipped into the
+1792929305	cmd	Trentlin	50	30531	hyrule.are	standing	99	0	-	west		Level 7: Guano-Streaked Crossing //   White streaks of guano stain the walls of this chamber from ceiling to // floor, and the air is sour with it. The shadowed rafters overhead are
+1792929307	cmd	Trentlin	50	30530	hyrule.are	standing	99	0	-	west		Level 7: Moat Crossroads //   A channel of black water rings a raised island of flagstones at the heart // of this room, its surface still and cold, and boomerang splinters float on
+1792929310	cmd	Trentlin	50	30531	hyrule.are	standing	99	0	-	east		Level 7: Guano-Streaked Crossing //   White streaks of guano stain the walls of this chamber from ceiling to // floor, and the air is sour with it. The shadowed rafters overhead are
+1792929310	cmd	Trentlin	50	30531	hyrule.are	standing	99	0	-	north		Alas, you cannot go that way.
+1792929311	cmd	Trentlin	50	30532	hyrule.are	standing	99	0	-	east		Level 7: Shuttered Gallery //   Two rows of squat stone blocks march down the middle of this long gallery, // leaving narrow lanes between them. Boomerang notches are chipped into the
+1792929311	cmd	Trentlin	50	30538	hyrule.are	standing	99	0	-	north		Level 7: Hall of the Horned Mask //   A great horned mask is worked into the back wall of this bare room, its // features worn soft with age and its long nose running down toward the
+1792929312	cmd	Trentlin	50	30532	hyrule.are	standing	99	0	-	south		Level 7: Shuttered Gallery //   Two rows of squat stone blocks march down the middle of this long gallery, // leaving narrow lanes between them. Boomerang notches are chipped into the
+1792929314	cmd	Trentlin	50	30531	hyrule.are	standing	99	0	-	west		Level 7: Guano-Streaked Crossing //   White streaks of guano stain the walls of this chamber from ceiling to // floor, and the air is sour with it. The shadowed rafters overhead are
+1792929315	cmd	Trentlin	50	30528	hyrule.are	standing	99	0	-	south		Level 7: Dripping Antechamber //   A bare square chamber whose blue-green flagstones are slick with seep from // the pond overhead. The only sound is a slow, patient dripping that echoes
+1792929316	cmd	Trentlin	50	30527	hyrule.are	standing	99	0	-	west		Level 7: Demon's Gate //   Damp stone steps come down from the drained pond above into a vestibule of // green-black brick carved with a horned, grinning face. Water still beads on
+1792929318	cmd	Trentlin	50	30530	hyrule.are	standing	99	0	-	north		Level 7: Moat Crossroads //   A channel of black water rings a raised island of flagstones at the heart // of this room, its surface still and cold, and boomerang splinters float on
+1792929319	cmd	Trentlin	50	30531	hyrule.are	standing	99	0	-	east		Level 7: Guano-Streaked Crossing //   White streaks of guano stain the walls of this chamber from ceiling to // floor, and the air is sour with it. The shadowed rafters overhead are
+1792929320	cmd	Trentlin	50	30532	hyrule.are	standing	99	0	-	east		Level 7: Shuttered Gallery //   Two rows of squat stone blocks march down the middle of this long gallery, // leaving narrow lanes between them. Boomerang notches are chipped into the
+1792929321	cmd	Trentlin	50	30533	hyrule.are	standing	99	0	-	east		Level 7: Urchin's Hollow //   Coarse sand has drifted across the floor of this chamber, and great round // depressions are pressed into it as though a vast spiked ball had rolled
+1792929323	cmd	Trentlin	50	30534	hyrule.are	standing	99	0	-	east		Level 7: Bone-Strewn Alcove //   The far eastern end of the dungeon gathers into a cramped alcove littered // with skulls, ribs and rusted sword hilts. Some of the bones look disturbed,
+1792929324	cmd	Trentlin	50	30533	hyrule.are	standing	99	0	-	west		Level 7: Urchin's Hollow //   Coarse sand has drifted across the floor of this chamber, and great round // depressions are pressed into it as though a vast spiked ball had rolled
+1792929325	cmd	Trentlin	50	30533	hyrule.are	standing	99	0	-	north		Alas, you cannot go that way.
+1792929326	cmd	Trentlin	50	30532	hyrule.are	standing	99	0	-	west		Level 7: Shuttered Gallery //   Two rows of squat stone blocks march down the middle of this long gallery, // leaving narrow lanes between them. Boomerang notches are chipped into the
+1792929327	cmd	Trentlin	50	30531	hyrule.are	standing	99	0	-	west		Level 7: Guano-Streaked Crossing //   White streaks of guano stain the walls of this chamber from ceiling to // floor, and the air is sour with it. The shadowed rafters overhead are
+1792929327	cmd	Trentlin	50	30528	hyrule.are	standing	99	0	-	south		Level 7: Dripping Antechamber //   A bare square chamber whose blue-green flagstones are slick with seep from // the pond overhead. The only sound is a slow, patient dripping that echoes
+1792929329	cmd	Trentlin	50	30527	hyrule.are	standing	99	0	-	west		Level 7: Demon's Gate //   Damp stone steps come down from the drained pond above into a vestibule of // green-black brick carved with a horned, grinning face. Water still beads on
+1792929330	cmd	Trentlin	50	30530	hyrule.are	standing	99	0	-	north		Level 7: Moat Crossroads //   A channel of black water rings a raised island of flagstones at the heart // of this room, its surface still and cold, and boomerang splinters float on
+1792929337	cmd	Trentlin	50	30530	hyrule.are	standing	99	0	-	bomb	north	                    ACHIEVEMENT EARNED // Blast Through  +10 points // Bomb open a cracked wall in Hyrule.
+1792929340	cmd	Trentlin	50	30536	hyrule.are	standing	99	0	-	north		Level 7: Boomerang Hall //   A square hall of green brick whose walls are gouged with curved nicks where // thrown blades have struck and spun back to red and blue hands. A worn track
+1792929342	cmd	Trentlin	50	30536	hyrule.are	standing	99	0	-	east		The shutter is sealed fast, and will not open while enemies remain here.
+1792929347	cmd	Trentlin	50	30536	hyrule.are	standing	99	0	-	shove	go south	A blue goriya resists your efforts to move it.
+1792929348	cmd	Trentlin	50	30536	hyrule.are	standing	99	0	-	shove	go south	A blue goriya resists your efforts to move it. // You learn from your mistakes, and your shove skill improves.
+1792929349	cmd	Trentlin	50	30536	hyrule.are	standing	99	0	-	shove	go south	A blue goriya resists your efforts to move it.
+1792929350	cmd	Trentlin	50	30536	hyrule.are	standing	99	0	-	shove	go south	A blue goriya resists your efforts to move it.
+1792929351	cmd	Trentlin	50	30536	hyrule.are	standing	99	0	-	shove	go south	A blue goriya resists your efforts to move it.
+1792929351	cmd	Trentlin	50	30536	hyrule.are	standing	99	0	-	shove	go south	A blue goriya resists your efforts to move it.
+1792929352	cmd	Trentlin	50	30536	hyrule.are	standing	99	0	-	shove	go south	You shove a blue goriya out of the room!
+1792929353	cmd	Trentlin	50	30536	hyrule.are	standing	99	0	-	shove	go south	A red goriya resists your efforts to move it.
+1792929354	cmd	Trentlin	50	30536	hyrule.are	standing	99	0	-	shove	go south	You shove a red goriya out of the room!
+1792929355	cmd	Trentlin	50	30537	hyrule.are	standing	99	0	-	east		The shutter opens now that the chamber is clear. // Level 7: Hall of Bones //   Raised blocks stand in a checkerboard across this wide chamber, and every
+1792929359	cmd	Trentlin	50	30537	hyrule.are	standing	99	0	-	get	com	You get the Demon dungeon compass.
+1792929360	cmd	Trentlin	50	30537	hyrule.are	standing	99	0	-	look	com	The needle swings west. // The Triforce chest lies 15 rooms away, behind the guardian's chamber, which is 14 rooms away.
+1792929362	cmd	Trentlin	50	30536	hyrule.are	standing	99	0	-	west		Level 7: Boomerang Hall //   A square hall of green brick whose walls are gouged with curved nicks where // thrown blades have struck and spun back to red and blue hands. A worn track
+1792929364	cmd	Trentlin	50	30540	hyrule.are	standing	99	0	-	north		Level 7: Hall of Lingering Chill //   An unnatural chill pools near the floor of this chamber, and the torchless // walls glimmer with a faint, shifting light where a flaming skull bounces
+1792929364	cmd	Trentlin	50	30540	hyrule.are	standing	99	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792929368	cmd	Trentlin	50	30540	hyrule.are	standing	99	0	-	shove	go south	A blue goriya resists your efforts to move it.
+1792929369	cmd	Trentlin	50	30540	hyrule.are	standing	99	0	-	shove	go south	A blue goriya resists your efforts to move it.
+1792929370	cmd	Trentlin	50	30540	hyrule.are	standing	99	0	-	shove	go south	A blue goriya resists your efforts to move it.
+1792929370	cmd	Trentlin	50	30540	hyrule.are	standing	99	0	-	shove	go south	A blue goriya resists your efforts to move it.
+1792929370	cmd	Trentlin	50	30540	hyrule.are	standing	99	0	-	shove	go south	You shove a blue goriya out of the room!
+1792929371	cmd	Trentlin	50	30540	hyrule.are	standing	99	0	-	shove	go south	They aren't here.
+1792929374	cmd	Trentlin	50	30540	hyrule.are	standing	99	0	-	shove	bub south	You shove a bubble out of the room!
+1792929374	cmd	Trentlin	50	30540	hyrule.are	standing	99	0	-	shove	bub south	They aren't here.
+1792929374	cmd	Trentlin	50	30540	hyrule.are	standing	99	0	-	shove	bub south	They aren't here.
+1792929375	cmd	Trentlin	50	30542	hyrule.are	standing	99	0	-	north		The shutter opens now that the chamber is clear. // Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle
+1792929378	cmd	Trentlin	50	30541	hyrule.are	standing	99	0	-	west		The shutter opens now that the chamber is clear. // Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly
+1792929379	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	north		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1792929387	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	look	comp	The needle points north -- at the bare wall, as though the way lay through the stone. // The Triforce chest lies 10 rooms away, behind the guardian's chamber, which is 9 rooms away.
+1792929391	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	bomb	north	You find no cracked surface to bomb there.
+1792929403	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	look	gor	Damp from the Demon's moats, this veteran goriya has grey fur creeping // along its muzzle and red plate dented by decades of fights. Its boomerang // is iron-shod and scored with tally marks. It lopes the halls of the
+1792929411	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	inventory		You are carrying: //      (Magical) the Demon dungeon compass // ( 3) a big pot pie
+1792929418	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	look	pot	A big pot pie has been left here. // The a big pot pie is in perfect condition.
+1792929421	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	drop	pot	You drop a big pot pie.
+1792929422	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	look		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
