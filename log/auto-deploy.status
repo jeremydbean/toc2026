@@ -1,1 +1,1 @@
-2026-10-25T07:02:41Z waiting for CI on 04da05df (in_progress) before deploying e32d3cf3
+2026-10-25T07:12:43Z not deploying 0766798e: CI on 04da05df says failure; push a fix
