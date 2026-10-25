@@ -16894,3 +16894,18 @@
 1792929418	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	look	pot	A big pot pie has been left here. // The a big pot pie is in perfect condition.
 1792929421	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	drop	pot	You drop a big pot pie.
 1792929422	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	look		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1792929434	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	get	pot	You get a big pot pie.
+1792929437	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	give	pot gor	You give a big pot pie to a red goriya.
+1792929439	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	look		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1792929587	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	south		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1792929594	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	east		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1792929600	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	bomb	east	You have no bombs. The arrow shops sell four for 20 gold.
+1792929602	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	west		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1792929603	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	kill	g	You === OBLITERATE === a blue goriya! // The Headless Horseman's Reaper shears through a blue goriya with terrible force! // You <<< ERADICATE >>> a blue goriya!
+1792929607	cmd	Trentlin	50	30541	hyrule.are	fighting	100	0	fight	smite		Your smite misses a blue goriya.
+1792929613	cmd	Trentlin	50	30541	hyrule.are	fighting	100	0	fight	smite		Your smite === OBLITERATES === a blue goriya! // Your smite ^^^ DESTROYS ^^^ a blue goriya! // Your smite *** DEVASTATES *** a blue goriya!
+1792929621	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	east		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1792929622	cmd	Trentlin	50	30542	hyrule.are	standing	100	1	-	bomb	east	You set a bomb beside a cracked east wall and dive aside. The blast opens a passage!
+1792929623	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	east		Level 7: Hidden Cistern //   Behind a broken wall lies a small forgotten cistern, its floor sunk a step // lower than the rest of the dungeon and slick with standing water. Moss
+1792929625	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	get	key	You get a small key.
+1792929637	refused	Trentlin	50	30543	hyrule.are	standing	100	0	-	(unknown)		Huh? Did you mean ZAP?

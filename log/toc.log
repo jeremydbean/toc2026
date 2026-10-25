@@ -184445,3 +184445,30 @@ Sun Oct 25 11:56:51 2026 :: Log Trentlin [30544]: i
 Sun Oct 25 11:56:58 2026 :: Log Trentlin [30544]: l pot
 Sun Oct 25 11:57:01 2026 :: Log Trentlin [30544]: drop pot
 Sun Oct 25 11:57:02 2026 :: Log Trentlin [30544]: l
+Sun Oct 25 11:57:14 2026 :: Log Trentlin [30544]: get pot
+Sun Oct 25 11:57:17 2026 :: Log Trentlin [30544]: give pot gor
+Sun Oct 25 11:57:17 2026 :: Log Trentlin [30544]: gave a big pot pie (vnum 3009) to a red goriya
+Sun Oct 25 11:57:19 2026 :: Log Trentlin [30544]: l
+Sun Oct 25 11:59:29 2026 :: Sock.sinaddr:  178.156.189.249
+Sun Oct 25 11:59:29 2026 :: EOF encountered on read.
+Sun Oct 25 11:59:47 2026 :: Log Trentlin [30544]: s
+Sun Oct 25 11:59:47 2026 :: Log Trentlin [30541]: arrived (Level 7: Western Moat) from 30544
+Sun Oct 25 11:59:54 2026 :: Log Trentlin [30541]: e
+Sun Oct 25 11:59:54 2026 :: Log Trentlin [30542]: arrived (Level 7: Island Chamber) from 30541
+Sun Oct 25 12:00:00 2026 :: Log Trentlin [30542]: bomb east
+Sun Oct 25 12:00:02 2026 :: Log Trentlin [30542]: w
+Sun Oct 25 12:00:02 2026 :: Log Trentlin [30541]: arrived (Level 7: Western Moat) from 30542
+Sun Oct 25 12:00:03 2026 :: Log Trentlin [30541]: k g
+Sun Oct 25 12:00:07 2026 :: Log Trentlin [30541]: smite
+Sun Oct 25 12:00:13 2026 :: Log Trentlin [30541]: smite
+Sun Oct 25 12:00:15 2026 :: Log Trentlin [30541]: killed a blue goriya
+Sun Oct 25 12:00:15 2026 :: Log Trentlin [30541]: coin +46 silver
+Sun Oct 25 12:00:15 2026 :: Log Trentlin [30541]: coin +340 copper
+Sun Oct 25 12:00:15 2026 :: Log Trentlin [30541]: coin +36 gold
+Sun Oct 25 12:00:21 2026 :: Log Trentlin [30541]: e
+Sun Oct 25 12:00:21 2026 :: Log Trentlin [30542]: arrived (Level 7: Island Chamber) from 30541
+Sun Oct 25 12:00:22 2026 :: Log Trentlin [30542]: bomb east
+Sun Oct 25 12:00:23 2026 :: Log Trentlin [30542]: e
+Sun Oct 25 12:00:23 2026 :: Log Trentlin [30543]: arrived (Level 7: Hidden Cistern) from 30542
+Sun Oct 25 12:00:25 2026 :: Log Trentlin [30543]: get key
+Sun Oct 25 12:00:37 2026 :: Log Trentlin [30543]: (refused) tap nose
