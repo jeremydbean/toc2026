@@ -16535,3 +16535,12 @@
 1792926956	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // Players found: 1
 1792926970	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	achievements		========================= ACHIEVEMENTS ========================= // Points: 1335 / 11596     Earned: 85 / 378 // Marks to spend: 1335 (see REDEEM)
 1792926981	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	achievements	combat	==================== Combat ACHIEVEMENTS ==================== // [Earned 2026-10-03] First Blood  5 points //       Defeat your first mobile.
+1792927014	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	help	achievements	ACHIEVEMENT ACHIEVEMENTS // Syntax: achievements // Syntax: achievements <category>
+1792927018	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	achievements		========================= ACHIEVEMENTS ========================= // Points: 1335 / 11596     Earned: 85 / 378 // Marks to spend: 1335 (see REDEEM)
+1792927032	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	achievements	crafting	==================== Crafting ACHIEVEMENTS ==================== // [  0%] Steep Learning Curve  10 points //       Successfully brew an herbal tea. (0/1)
+1792927051	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	help	redeejm	No help on that word.  Did you mean: REDEEM?
+1792927053	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	help	redeem	REDEEM MARKS // Syntax: redeem // Syntax: redeem recall
+1792927087	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // ( 4) a big pot pie //      (Magical) (Glowing) the Gohma eye-lance
+1792927088	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    a pirate's ring
+1792927098	cmd	Trentlin	50	2401	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    a pirate's ring
+1792927101	session	Trentlin	50	2401	dresden_halloween.are	quit	343s	+0 levels	+0 exp	+108160800 copper	1 kills	0 deaths	1 quests	73 commands	0 refused	coin: quests 108p 16g 8s
