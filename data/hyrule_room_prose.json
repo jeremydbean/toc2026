@@ -1097,7 +1097,25 @@
     },
     "L7:C5": {
       "name": "Hidden Cistern",
-      "description": "Behind a broken wall lies a small forgotten cistern, its floor sunk a step lower than the rest of the dungeon and slick with standing water. Moss grows thick in the corners, and the air is close and still. This is the tip of the demon's nose, and the only way out is the ragged gap in the west wall."
+      "description": "Behind a broken wall lies a small forgotten cistern, its floor sunk a step lower than the rest of the dungeon and slick with standing water. Moss grows thick in the corners, and the air is close and still. This is the tip of the demon's nose, and the only way out is the ragged gap in the west wall.",
+      "extras": [
+        {
+          "keywords": "cistern water floor",
+          "text": "Black water stands an inch deep over the sunken floor, still as glass until your boots stir it. It is old rainwater, not fit to drink, and nothing lies beneath it. Whatever the cistern held, it held in plain sight."
+        },
+        {
+          "keywords": "nose tip demon demon's",
+          "text": "Walk these halls with a map in your head and they make a horned, grinning face, and this cistern is the very end of its long nose. You are standing in the secret the hook-nosed old man hinted at: the room itself and whatever was left lying in it. There is nothing more to find here."
+        },
+        {
+          "keywords": "moss corners",
+          "text": "Thick green moss carpets the corners, damp and cold to the touch. It hides nothing but more moss."
+        },
+        {
+          "keywords": "gap wall west broken",
+          "text": "The ragged gap in the west wall is the way you came in, blasted through by a bomb. It is the only way out."
+        }
+      ]
     },
     "L7:A6": {
       "name": "Hall of Grumbling",

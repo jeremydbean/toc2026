@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261025l 2026-10-25
+SHOVE takes a direction the way moving does: SHOVE GUARD SO works, not
+only S or SOUTH. A stone skin pill or potion now says it never takes on a
+monk or a necromancer, instead of "Spell failed." And Level 7's Hidden
+Cistern answers LOOK CISTERN, NOSE, TIP and MOSS.
+
 @ 20261025k 2026-10-25
 SHOVE no longer moves Hyrule's enemies and guardians: a dungeon's shutters
 open for foes beaten, not foes pushed into the next room. Each shove also

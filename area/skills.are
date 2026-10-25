@@ -1248,31 +1248,6 @@ Trainer: Quickfingers (?/T), Tia (T/?), mud school adept (practice only,
 See also: PEEK, DETECT HIDDEN
 ~
 
--1 SHOVE~
-Syntax: shove <character> <direction>
-
-This skill is mainly used to separate one monster from a whole pack of
-monsters, enabling you to attack a single mob rather than all of them at
-once. Factors that affect your success are: Strength, Level, Size, Skill,
-and position of the victim.  Shoving something around is rather annoying,
-and on occasion, the victim will attack.  The chance is greater if the
-victim is of higher level than the shover.
-
-Each attempt takes a moment, as any skill does.  Aggressive monsters, and
-Hyrule's enemies and guardians, cannot be shoved: a dungeon's shutters open
-for foes beaten, not foes pushed into the next room.
-
-The minimum level to use this skill depends on your primary class and is:
-
-Mage:16  Cleric:15  Thief:13  Warrior:10  Monk:11  Necromancer:16
-
-Number of trains required is 1 for W/* and Monk and 2 for all others.
-
-Trainer: Rakar (any), Jazair (any)
-
-See also: BASH, TRIP, KICK
-~
-
 -1 SMITE~
 This skill is gainable only by full warriors (W/W). Gaining this skill
 gives the user the ability to smite your opponent with your weapon.

@@ -8,6 +8,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Three frictions from the 2026-10-25 logs.** Stone skin refused a monk
+  or necromancer with "Spell failed.", and Alaric, newly a monk, ate eight
+  guano pills against it; it now says why. SHOVE took only `s`/`south`
+  and the like, where moving takes any start of the name (`shove goriya
+  so` was refused). Level 7's Hidden Cistern named a cistern, a nose and
+  moss and answered LOOK on none of them, so Trentlin went on hunting a
+  secret he had already found; the Hyrule generator now writes a room's
+  `extras` from `data/hyrule_room_prose.json`. HELP SHOVE had two topics
+  and the stale one won; they are merged. `tests/live_mud.py`'s WORTH
+  barrier now recognises staff's shorter WORTH line, so `sync` works for
+  an immortal fixture. `tests/test_log_frictions_oct25.py`.
 - **Deploy markers count only on a line of their own** (owner,
   2026-10-25). `toc-auto-deploy` read `[deploy now]` and `[deploy with
   players]` anywhere in a commit message, so the redesign's own commit

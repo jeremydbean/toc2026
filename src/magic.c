@@ -4492,9 +4492,11 @@ void spell_stone_skin( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     AFFECT_DATA af;
 
+    /* A refusal, not a miss: Alaric, newly a monk, ate eight guano pills
+       in a row against "Spell failed." (2026-10-25). */
     if( ch->class == CLASS_MONK || ch->class == CLASS_NECRO)
     {
-      send_to_char("Spell failed.\n\r",ch);
+      send_to_char("Stone skin never takes on a monk or a necromancer.\n\r",ch);
       return;
     }
 

@@ -3958,17 +3958,26 @@ do_shove( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-	    if ( !str_cmp( arg1, "n" ) || !str_cmp( arg1, "north" ) ) door = 0;
-    else if ( !str_cmp( arg1, "e" ) || !str_cmp( arg1, "east"  ) ) door = 1;
-    else if ( !str_cmp( arg1, "s" ) || !str_cmp( arg1, "south" ) ) door = 2;
-    else if ( !str_cmp( arg1, "w" ) || !str_cmp( arg1, "west"  ) ) door = 3;
-    else if ( !str_cmp( arg1, "u" ) || !str_cmp( arg1, "up"    ) ) door = 4;
-    else if ( !str_cmp( arg1, "d" ) || !str_cmp( arg1, "down"  ) ) door = 5;
-    else if ( !str_cmp( arg1, "ne" ) || !str_cmp( arg1, "northeast"  ) ) door = 6;
-    else if ( !str_cmp( arg1, "nw" ) || !str_cmp( arg1, "northwest"  ) ) door = 7;
-    else if ( !str_cmp( arg1, "se" ) || !str_cmp( arg1, "southeast"  ) ) door = 8;
-    else if ( !str_cmp( arg1, "sw" ) || !str_cmp( arg1, "southwest"  ) ) door = 9;
+	    if ( !str_cmp( arg1, "n" ) ) door = 0;
+    else if ( !str_cmp( arg1, "e" ) ) door = 1;
+    else if ( !str_cmp( arg1, "s" ) ) door = 2;
+    else if ( !str_cmp( arg1, "w" ) ) door = 3;
+    else if ( !str_cmp( arg1, "u" ) ) door = 4;
+    else if ( !str_cmp( arg1, "d" ) ) door = 5;
+    else if ( !str_cmp( arg1, "ne" ) ) door = 6;
+    else if ( !str_cmp( arg1, "nw" ) ) door = 7;
+    else if ( !str_cmp( arg1, "se" ) ) door = 8;
+    else if ( !str_cmp( arg1, "sw" ) ) door = 9;
     else
+    {
+      /* Any start of a direction's name, as the movement commands take:
+         "shove goriya so" was refused (Trentlin, 2026-10-25). The plain
+         directions come first in dir_name, so "no" is north. */
+      for ( door = 0; door <= DIR_SOUTHWEST; door++ )
+        if ( !str_prefix( arg1, dir_name[door] ) )
+          break;
+    }
+    if ( door < 0 || door > DIR_SOUTHWEST )
     {
 	 send_to_char("That isn't a valid Direction!\n\r",ch);
 	 return;

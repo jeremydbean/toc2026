@@ -1623,6 +1623,7 @@ class RoomSpec:
     puzzles: list[int] = field(default_factory=list)
     entities: dict[str, int] = field(default_factory=dict)
     boss_level: int | None = None
+    extras: list[tuple[str, str]] = field(default_factory=list)
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -2516,6 +2517,12 @@ class Prose:
     def description(self, group: str, key: str) -> str:
         return wrap_description(self.entry(group, key)["description"])
 
+    def extras(self, group: str, key: str) -> list[tuple[str, str]]:
+        """A room's LOOK details: what its description names, so LOOK CISTERN
+        answers in the room that calls itself a cistern."""
+        return [(extra["keywords"], wrap_description(extra["text"]))
+                for extra in self.entry(group, key).get("extras", [])]
+
 
 def add_two_way_exit(
     rooms: dict[int, RoomSpec],
@@ -2548,6 +2555,7 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
             room["vnum"], prose.name("overworld", coordinate),
             prose.description("overworld", coordinate), "N", world_sector(room),
             entities={str(vnum): count for vnum, count in world_spawns(room, bands).items()},
+            extras=prose.extras("overworld", coordinate),
         )
         for direction, exit_data in room["exits"].items():
             gate = exit_data["gate"]
@@ -2567,6 +2575,7 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
                 objects=list(room["items"]),
                 entities={str(vnum): count for vnum, count in dungeon_spawns(level, room).items()},
                 boss_level=level if room["role"] == "boss" else None,
+                extras=prose.extras("dungeons", key),
             )
             for direction, exit_data in room["exits"].items():
                 door_type = exit_data["type"]
@@ -2586,6 +2595,7 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
                 cellar["vnum"], f"Level {level}: {prose.name('dungeons', key)}",
                 prose.description("dungeons", key),
                 "ADN", 11, dungeon=True, objects=[cellar["item_vnum"]],
+                extras=prose.extras("dungeons", key),
             )
             add_two_way_exit(
                 rooms, cellar["source_vnum"], "down", cellar["vnum"],
@@ -2637,6 +2647,7 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
             vnum, prose.name(group, prose_key), prose.description(group, prose_key),
             "ADN", 11, objects=objects,
             entities={str(npc_vnum(key)): 1 for key in people},
+            extras=prose.extras(group, prose_key),
         )
         return rooms[vnum]
 
@@ -2846,6 +2857,8 @@ def render_room(room: RoomSpec) -> str:
             f"{exit_spec.keyword}~" if exit_spec.keyword else "~",
             f"{exit_spec.locks} {exit_spec.key_vnum} {exit_spec.destination}",
         ])
+    for keywords, text in room.extras:
+        lines.extend(["E", f"{keywords}~", text, "~"])
     lines.append("S")
     return "\n".join(lines)
 

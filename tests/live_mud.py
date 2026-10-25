@@ -125,7 +125,10 @@ SANITIZER_REPORT_RE = re.compile(
 # it after a command: the game runs one connection's commands in order, so
 # once this line has arrived, so has everything the command said -- lag
 # and all -- without guessing a window.
-BARRIER_RE = re.compile(r"You have -?\d+ platinum, -?\d+ gold, -?\d+ silver, -?\d+ copper\s+and")
+# WORTH's first line: a mortal's goes on to experience, staff's ends at
+# "silver and N copper." -- both are the barrier.
+BARRIER_RE = re.compile(
+    r"You have -?\d+ platinum, -?\d+ gold, -?\d+ silver(?:, -?\d+ copper\s+and| and -?\d+ copper\.)")
 
 
 def _die_with_parent() -> None:
