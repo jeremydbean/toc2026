@@ -14948,3 +14948,65 @@
 1792891538	cmd	Alaric	31	16028	pirate.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The swashbuckler. [-16] // Your fists of fury maims The swashbuckler! [-33]
 1792891544	cmd	Alaric	31	16028	pirate.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The swashbuckler! [-30] // Your fists of fury hits The swashbuckler. [-12]
 1792891549	cmd	Alaric	31	16028	pirate.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The swashbuckler! [-30] // Your fists of fury devastates The swashbuckler! [-32]
+1792891590	cmd	Alaric	31	16028	pirate.are	fighting	73	0	fight	look		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792891590	cmd	Alaric	31	16028	pirate.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The swashbuckler. [-14] // Your fists of fury decimates The swashbuckler! [-26]
+1792891598	cmd	Alaric	31	16028	pirate.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The swashbuckler. [-4] // Your fists of fury injures The swashbuckler. [-14]
+1792891604	cmd	Alaric	31	16028	pirate.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The swashbuckler! [-32] // Your fists of fury grazes The swashbuckler. [-6]
+1792891610	cmd	Alaric	31	16028	pirate.are	fighting	73	1	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The swashbuckler. [-12] // Your fists of fury injures The swashbuckler. [-15]
+1792891616	cmd	Alaric	31	16028	pirate.are	fighting	72	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS The swashbuckler! [-44] // Your fists of fury DISMEMBERS The swashbuckler! [-46]
+1792891622	cmd	Alaric	31	16028	pirate.are	fighting	72	0	fight	who		[31 Dwarf   Monk  ] Alaric. // Players found: 1
+1792891622	cmd	Alaric	31	16028	pirate.are	fighting	72	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The swashbuckler. [-6] // Your fists of fury maims The swashbuckler! [-36]
+1792891628	cmd	Alaric	32	16028	pirate.are	fighting	71	21	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES The swashbuckler! [-54] // Your fists of fury maims The swashbuckler! [-36]
+1792891637	cmd	Alaric	32	16028	pirate.are	standing	71	0	-	scan		You don't see anything near you.
+1792891639	cmd	Alaric	32	16033	pirate.are	standing	71	0	-	north		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792891640	cmd	Alaric	32	16033	pirate.are	standing	71	0	-	scan		The drunk pirate                   -to the East. // The bucaneer                       -right above you. // The swashbuckler                   -right above you.
+1792891644	cmd	Alaric	32	16078	pirate.are	standing	71	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792891645	cmd	Alaric	32	16078	pirate.are	standing	71	0	-	kill	bu	Your punch *** DEVASTATES *** The bucaneer! [-61] // The bucaneer dodges your attack. // The bucaneer parries your attack.
+1792891648	cmd	Alaric	32	16078	pirate.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The bucaneer. [-1] // Your fists of fury injures The bucaneer. [-15]
+1792891653	cmd	Alaric	32	16078	pirate.are	fighting	69	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The bucaneer. [-23] // Your fists of fury scratches The bucaneer. [-4]
+1792891659	cmd	Alaric	32	16078	pirate.are	fighting	69	0	fight	steel		You cannot do this during battle.
+1792891660	cmd	Alaric	32	16078	pirate.are	fighting	69	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The bucaneer. [-5] // Your fists of fury grazes The bucaneer. [-6]
+1792891666	cmd	Alaric	32	16078	pirate.are	fighting	68	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The bucaneer. [-6] // Your fists of fury wounds The bucaneer. [-17]
+1792891671	cmd	Alaric	32	16078	pirate.are	fighting	68	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The bucaneer! [-29] // Your fists of fury hits The bucaneer. [-10]
+1792891677	cmd	Alaric	32	16078	pirate.are	fighting	68	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The bucaneer. [-13] // Your fists of fury mauls The bucaneer. [-22]
+1792891683	cmd	Alaric	32	16078	pirate.are	fighting	68	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The bucaneer. [-4] // Your fists of fury grazes The bucaneer. [-7]
+1792891689	cmd	Alaric	32	16078	pirate.are	fighting	66	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The bucaneer. [-4] // Your fists of fury hits The bucaneer. [-11]
+1792891694	cmd	Alaric	32	16078	pirate.are	fighting	64	0	fight	who		[32 Dwarf   Monk  ] Alaric. // Players found: 1
+1792891695	cmd	Alaric	33	16078	pirate.are	fighting	64	21	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The bucaneer. [-2] // Your fists of fury injures The bucaneer. [-13]
+1792891703	cmd	Alaric	33	16078	pirate.are	standing	64	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1792891707	cmd	Alaric	33	16078	pirate.are	standing	64	0	-	iron		Your skin hardens.
+1792891716	cmd	Alaric	33	16078	pirate.are	standing	64	0	-	kill	sw	The swashbuckler parries your attack. // The swashbuckler blocks your attack with his shield. // The swashbuckler dodges your attack.
+1792891718	cmd	Alaric	33	16078	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The swashbuckler. [-13] // Your fists of fury grazes The swashbuckler. [-6]
+1792891724	cmd	Alaric	33	16078	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The swashbuckler. [-8] // Your fists of fury decimates The swashbuckler! [-26]
+1792891730	cmd	Alaric	33	16078	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The swashbuckler. [-2] // Your fists of fury maims The swashbuckler! [-35]
+1792891736	cmd	Alaric	33	16078	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES The swashbuckler! [-52] // Your fists of fury DISMEMBERS The swashbuckler! [-48]
+1792891741	cmd	Alaric	33	16078	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The swashbuckler. [-17] // Your fists of fury decimates The swashbuckler! [-25]
+1792891747	cmd	Alaric	33	16078	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The swashbuckler. [-8] // Your fists of fury DISMEMBERS The swashbuckler! [-48]
+1792891753	cmd	Alaric	33	16078	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES The swashbuckler! [-51] // You have become better at fists of fury!
+1792891761	cmd	Alaric	33	16078	pirate.are	standing	64	0	-	scan		The swashbuckler                   -to the East.
+1792891763	cmd	Alaric	33	16079	pirate.are	standing	64	0	-	east		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling
+1792891764	cmd	Alaric	33	16079	pirate.are	standing	64	0	-	kill	sw	The swashbuckler parries your attack. // Your punch ^^^ DESTROYS ^^^ The swashbuckler! [-102] // The swashbuckler parries your attack.
+1792891767	cmd	Alaric	33	16079	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The swashbuckler! [-25] // Your fists of fury mauls The swashbuckler. [-23]
+1792891772	cmd	Alaric	33	16079	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The swashbuckler. [-9] // Your fists of fury DISEMBOWELS The swashbuckler! [-43]
+1792891778	cmd	Alaric	33	16079	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The swashbuckler. [-20] // Your fists of fury devastates The swashbuckler! [-30]
+1792891784	cmd	Alaric	33	16079	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The swashbuckler. [-19] // Your fists of fury grazes The swashbuckler. [-7]
+1792891790	cmd	Alaric	33	16079	pirate.are	fighting	64	0	fight	score		| Name:         Alaric | Level:      33 | Class:        Monk | // | Played:    237 hours | Sex:      Male | Guild:        Monk | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792891790	cmd	Alaric	33	16079	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The swashbuckler. [-2] // Your fists of fury wounds The swashbuckler. [-17]
+1792891798	cmd	Alaric	33	16078	pirate.are	standing	64	0	-	west		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792891799	cmd	Alaric	33	16081	pirate.are	standing	64	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792891799	cmd	Alaric	33	16081	pirate.are	standing	64	0	-	scan		The swashbuckler                   -to the West. // The Lookout                        -right above you.
+1792891800	cmd	Alaric	33	16080	pirate.are	standing	64	0	-	west		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling
+1792891802	cmd	Alaric	33	16080	pirate.are	standing	64	0	-	kill	sw	The swashbuckler dodges your attack. // The swashbuckler dodges your attack. // Your punch === OBLITERATES === The swashbuckler! [-134]
+1792891805	cmd	Alaric	33	16080	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The swashbuckler. [-18] // Your fists of fury DISMEMBERS The swashbuckler! [-47]
+1792891810	cmd	Alaric	33	16080	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The swashbuckler. [-11] // Your fists of fury maims The swashbuckler! [-36]
+1792891816	cmd	Alaric	33	16080	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The swashbuckler. [-12] // Your fists of fury decimates The swashbuckler! [-27]
+1792891822	cmd	Alaric	33	16080	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The swashbuckler. [-11] // Your fists of fury hits The swashbuckler. [-10]
+1792891828	cmd	Alaric	33	16080	pirate.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES The swashbuckler! [-40] // Your fists of fury devastates The swashbuckler! [-29]
+1792891833	cmd	Alaric	34	16080	pirate.are	fighting	64	27	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The swashbuckler! [-27] // Your fists of fury MUTILATES The swashbuckler! [-40]
+1792891842	cmd	Alaric	34	4207	dresden_halloween.are	standing	64	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792891842	cmd	Alaric	34	4207	dresden_halloween.are	standing	64	0	-	group		Alaric's group: // [34 Monk ] Alaric           3793/5896 hp 5998/9231 mana 1839/5169 mv 78820 xp
+1792891844	cmd	Alaric	34	4208	dresden_halloween.are	standing	64	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792891846	cmd	Alaric	34	4208	dresden_halloween.are	standing	64	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792891849	cmd	Alaric	34	4208	dresden_halloween.are	standing	100	0	-	stash		Your stash holds 93 of 150 things. //     1) (Magical) (Glowing) the Titanic Horns of Capricon //     2) an enchanted leather bracer
+1792891856	cmd	Alaric	34	4208	dresden_halloween.are	standing	100	7	-	stash	get cap	You take the Titanic Horns of Capricon out of your stash.
+1792891860	cmd	Alaric	34	4208	dresden_halloween.are	standing	100	0	-	wear	cap	You stop using gauntlets of ogre power. // You wear the Titanic Horns of Capricon on your hands.
