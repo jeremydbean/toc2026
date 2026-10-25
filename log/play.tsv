@@ -19843,3 +19843,83 @@
 1792953978	cmd	Alaric	50	2431	dresden_halloween.are	standing	100	0	-	south		Inside the Southern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
 1792953978	cmd	Alaric	50	2431	dresden_halloween.are	standing	100	0	-	open	south	Ok.
 1792953978	cmd	Alaric	50	2432	dresden_halloween.are	standing	100	0	-	south		Outside the Southern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792953982	cmd	Alaric	50	3505	midennir_halloween.are	standing	100	0	-	south		The Trail to Miden'nir //   You are in a dark forest.  The trees press close on either side, their // branches interlocked far above in a canopy broken only by drifting will-o-wisps.
+1792953982	cmd	Alaric	50	3507	midennir_halloween.are	standing	100	0	-	south		A Burned Cart //   There is a smoldering cart here with arrows sticking in it.   // You can tell that it hasn't been too long since this cart was burned
+1792953983	cmd	Alaric	50	3510	midennir_halloween.are	standing	100	0	-	south		A Crossroads //   Here footworn paths meet leading north, south and east. The trees seem to // be closing in on you at this point, and you can barely see the sky
+1792953983	cmd	Alaric	50	3516	midennir_halloween.are	standing	100	0	-	south		Muddy Ground //   The ground is quite muddy here and puddles are all around. Your boots // make a disgusting SQUISH as you walk here. You can go in any of the
+1792953983	cmd	Alaric	50	3519	midennir_halloween.are	standing	100	0	-	south		The Dark Path //   You are hemmed in by trees on either side of you.  The path // continues north and south, and while it is much too thick to explore west,
+1792953983	cmd	Alaric	50	3521	midennir_halloween.are	standing	100	0	-	south		Carnage //   Here, you see a gruesome sight. Blood is everywhere... on the trees and // soaked into the ground. Two carcasses lie in front of you, seeming to look
+1792953984	cmd	Alaric	50	3522	midennir_halloween.are	standing	100	0	-	west		Deep in the Forest of Miden'nir //   There is a sickening stench here. It smells of blood and death. // To the north, you catch glimpses of daylight. To the east, you
+1792953984	cmd	Alaric	50	28161	azeroth.are	standing	100	0	-	south		Watch Your Step! //   Don't you hate it when that happens?  You just walked through some // bushes and slid down the side of a cliff. I don't think you'll be going
+1792953987	cmd	Alaric	50	28101	azeroth.are	standing	100	0	-	enter	po	You enter The Dark Portal // Your stomach flip flops. Everything goes black for a moment. // Entrance to Azeroth
+1792953994	cmd	Alaric	50	28102	azeroth.are	standing	100	0	-	south		Outside the Barracks //   Before you lay hundreds of tents filled with training Orcish warriors. // The exits are north toward the portal and south into the barracks. There
+1792953994	cmd	Alaric	50	28103	azeroth.are	standing	100	0	-	south		Inside the Barracks //   You are surrounded by several large buildings and a sea of tents holding // the Orcish army. You see what appears to be some new recruits being
+1792953995	cmd	Alaric	50	28107	azeroth.are	standing	100	0	-	south		Before the Main Gate //   There are two huge guard towers that appear to touch the sky on both // sides of you. There is also a giant iron gate that rests before you.
+1792953995	cmd	Alaric	50	28107	azeroth.are	standing	100	0	-	south		The door is closed.
+1792953996	cmd	Alaric	50	28107	azeroth.are	standing	100	0	-	south		The door is closed.
+1792953997	cmd	Alaric	50	28107	azeroth.are	standing	100	0	-	open		Ok.
+1792953998	cmd	Alaric	50	28120	azeroth.are	standing	100	0	-	south		Outside the gates of Black Rock Spire //   This giant gate looks like it's impenetrable from the outside. There are // several human skulls and ruined weapons lying around out here. There
+1792953998	cmd	Alaric	50	28121	azeroth.are	standing	100	0	-	south		Beginning of the swamp //   As you walk farther into this vast swamp the water rises up to your // ankles, making it very wet and very annoying. It appears that you are on
+1792953999	refused	Alaric	50	28121	azeroth.are	fighting	93	0	fight	south		No way!  You are still fighting!
+1792954002	cmd	Alaric	50	28121	azeroth.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures An Ogre Mage. [-14] // Your fists of fury devastates An Ogre Mage! [-29]
+1792954008	cmd	Alaric	50	28121	azeroth.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates An Ogre Mage! [-27] // Your fists of fury wounds An Ogre Mage. [-17]
+1792954013	cmd	Alaric	50	28121	azeroth.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits An Ogre Mage. [-11] // Your fists of fury wounds An Ogre Mage. [-17]
+1792954019	cmd	Alaric	50	28121	azeroth.are	fighting	77	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS An Ogre Mage! [-45] // Your fists of fury mauls An Ogre Mage. [-24]
+1792954025	cmd	Alaric	50	28121	azeroth.are	fighting	77	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures An Ogre Mage. [-15] // Your fists of fury DISMEMBERS An Ogre Mage! [-47]
+1792954031	cmd	Alaric	50	28121	azeroth.are	fighting	68	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds An Ogre Mage. [-20] // Your fists of fury scratches An Ogre Mage. [-2]
+1792954036	cmd	Alaric	50	28121	azeroth.are	fighting	61	0	fight	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1792954037	cmd	Alaric	50	28121	azeroth.are	fighting	61	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits An Ogre Mage. [-9] // Your fists of fury MUTILATES An Ogre Mage! [-37]
+1792954042	cmd	Alaric	50	28121	azeroth.are	fighting	61	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures An Ogre Mage. [-14] // Your fists of fury maims An Ogre Mage! [-34]
+1792954048	cmd	Alaric	50	28121	azeroth.are	fighting	57	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls An Ogre Mage. [-21] // Your fists of fury decimates An Ogre Mage! [-26]
+1792954054	cmd	Alaric	50	28121	azeroth.are	standing	57	0	-	fists		Who do you want to attack?
+1792954054	cmd	Alaric	50	28121	azeroth.are	standing	57	0	-	fists		Who do you want to attack?
+1792954055	cmd	Alaric	50	28121	azeroth.are	standing	57	0	-	fists		Who do you want to attack?
+1792954055	cmd	Alaric	50	28121	azeroth.are	standing	57	0	-	look	i cor	Corpse of An Ogre Mage contains: //      Nothing.
+1792954055	cmd	Alaric	50	28121	azeroth.are	standing	57	0	-	levitate		You slowly rise up off the ground.
+1792954057	cmd	Alaric	50	28121	azeroth.are	standing	57	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1792954061	cmd	Alaric	50	28121	azeroth.are	standing	57	0	-	iron		Your skin hardens.
+1792954068	cmd	Alaric	50	28122	azeroth.are	standing	57	3	-	south		More Swamp //   From here you can see some kind of fortress to the north. You think you // see a faint path to the east. You can also go west at this point.
+1792954071	cmd	Alaric	50	28124	azeroth.are	standing	59	0	-	west		More Swamp //   You are walking through what you estimate to be the middle of the swamp // now. There are exits to the east and west.
+1792954072	cmd	Alaric	50	28131	azeroth.are	standing	59	0	-	west		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1792954072	cmd	Alaric	50	28132	azeroth.are	standing	59	0	-	west		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1792954072	cmd	Alaric	50	28133	azeroth.are	standing	59	0	-	west		The End of The Swamp //   You are starting to notice the water level slowly get lower and lower. // It would seem that you are exiting the swamp. Now you are surrounded by
+1792954073	cmd	Alaric	50	28134	azeroth.are	standing	59	0	-	west		In the Forest //   This place is so much better than the swamp. The trees here are huge, // some must be big enough live inside of! The same boring path goes west.
+1792954073	cmd	Alaric	50	28135	azeroth.are	standing	59	0	-	west		The Middle of the Forest //   You are now in what you think is the middle of the forest. But now you // don't feel like you're alone anymore. It feels like something is
+1792954074	cmd	Alaric	50	28136	azeroth.are	standing	59	0	-	west		The End of the Forest //   You can now see that there is a giant field ahead with an army in it. // Maybe they can tell you where this path goes. You can go east or west.
+1792954107	cmd	Alaric	50	28135	azeroth.are	standing	59	0	-	east		The Middle of the Forest //   You are now in what you think is the middle of the forest. But now you // don't feel like you're alone anymore. It feels like something is
+1792954108	cmd	Alaric	50	28134	azeroth.are	standing	59	0	-	east		In the Forest //   This place is so much better than the swamp. The trees here are huge, // some must be big enough live inside of! The same boring path goes west.
+1792954108	cmd	Alaric	50	28133	azeroth.are	standing	59	0	-	east		The End of The Swamp //   You are starting to notice the water level slowly get lower and lower. // It would seem that you are exiting the swamp. Now you are surrounded by
+1792954108	cmd	Alaric	50	28132	azeroth.are	standing	59	0	-	east		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1792954108	cmd	Alaric	50	28131	azeroth.are	standing	59	0	-	east		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1792954109	cmd	Alaric	50	28124	azeroth.are	standing	59	0	-	east		More Swamp //   You are walking through what you estimate to be the middle of the swamp // now. There are exits to the east and west.
+1792954109	cmd	Alaric	50	28122	azeroth.are	standing	59	0	-	east		More Swamp //   From here you can see some kind of fortress to the north. You think you // see a faint path to the east. You can also go west at this point.
+1792954109	cmd	Alaric	50	28121	azeroth.are	standing	59	0	-	north		Beginning of the swamp //   As you walk farther into this vast swamp the water rises up to your // ankles, making it very wet and very annoying. It appears that you are on
+1792954109	cmd	Alaric	50	28120	azeroth.are	standing	59	0	-	north		Outside the gates of Black Rock Spire //   This giant gate looks like it's impenetrable from the outside. There are // several human skulls and ruined weapons lying around out here. There
+1792954110	cmd	Alaric	50	28107	azeroth.are	standing	59	0	-	north		Before the Main Gate //   There are two huge guard towers that appear to touch the sky on both // sides of you. There is also a giant iron gate that rests before you.
+1792954110	cmd	Alaric	50	28103	azeroth.are	standing	59	0	-	north		Inside the Barracks //   You are surrounded by several large buildings and a sea of tents holding // the Orcish army. You see what appears to be some new recruits being
+1792954110	cmd	Alaric	50	28108	azeroth.are	standing	59	0	-	west		Inside a Building //   Here, new Orcish recruits are being trained in the arts of war. There is // a weapons rack on the wall and a miniature obstacle course in the center
+1792954110	cmd	Alaric	50	28110	azeroth.are	standing	59	0	-	north		The Cafeteria //   A cook spoons out watery gruel and raw pig flesh for the ravenous Orcish // soldiers. There are several large tables in this room with many hungry
+1792954111	cmd	Alaric	50	28111	azeroth.are	standing	59	0	-	west		The Kitchen //   The kitchen is a mess, looks like they never clean up in here. There are // pig entrails everywhere. Watch out, the floors are very slippery. There
+1792954113	cmd	Alaric	50	28111	azeroth.are	standing	59	0	-	get	all	You get The Journal of Trinidad.
+1792954114	cmd	Alaric	50	28111	azeroth.are	standing	59	0	-	recall		The Gods have forsaken you.
+1792954116	cmd	Alaric	50	28110	azeroth.are	standing	59	0	-	east		The Cafeteria //   A cook spoons out watery gruel and raw pig flesh for the ravenous Orcish // soldiers. There are several large tables in this room with many hungry
+1792954118	cmd	Alaric	50	28108	azeroth.are	standing	59	0	-	south		Inside a Building //   Here, new Orcish recruits are being trained in the arts of war. There is // a weapons rack on the wall and a miniature obstacle course in the center
+1792954124	cmd	Alaric	50	28110	azeroth.are	fighting	53	0	fight	flee		The Cafeteria //   A cook spoons out watery gruel and raw pig flesh for the ravenous Orcish // soldiers. There are several large tables in this room with many hungry
+1792954125	cmd	Alaric	50	28108	azeroth.are	standing	53	0	-	south		Inside a Building //   Here, new Orcish recruits are being trained in the arts of war. There is // a weapons rack on the wall and a miniature obstacle course in the center
+1792954126	cmd	Alaric	50	28103	azeroth.are	standing	53	0	-	east		Inside the Barracks //   You are surrounded by several large buildings and a sea of tents holding // the Orcish army. You see what appears to be some new recruits being
+1792954126	cmd	Alaric	50	28107	azeroth.are	standing	53	0	-	south		Before the Main Gate //   There are two huge guard towers that appear to touch the sky on both // sides of you. There is also a giant iron gate that rests before you.
+1792954127	cmd	Alaric	50	28112	azeroth.are	standing	53	0	-	east		Under the Great Tower //   There is a long climb before you to the top. This tower appears to have // several levels to it, more room for guards. You can go up in the immense
+1792954129	cmd	Alaric	50	28114	azeroth.are	standing	53	0	-	up		Going Up the Tower //   The exits are up to the top and back down to the ground. // [Exits: up down]
+1792954132	cmd	Alaric	50	28114	azeroth.are	standing	56	0	-	recall		The Gods have forsaken you.
+1792954133	cmd	Alaric	50	28112	azeroth.are	standing	56	0	-	down		Under the Great Tower //   There is a long climb before you to the top. This tower appears to have // several levels to it, more room for guards. You can go up in the immense
+1792954134	cmd	Alaric	50	28107	azeroth.are	standing	56	0	-	west		Before the Main Gate //   There are two huge guard towers that appear to touch the sky on both // sides of you. There is also a giant iron gate that rests before you.
+1792954134	cmd	Alaric	50	28103	azeroth.are	standing	56	0	-	north		Inside the Barracks //   You are surrounded by several large buildings and a sea of tents holding // the Orcish army. You see what appears to be some new recruits being
+1792954135	cmd	Alaric	50	28102	azeroth.are	standing	56	0	-	north		Outside the Barracks //   Before you lay hundreds of tents filled with training Orcish warriors. // The exits are north toward the portal and south into the barracks. There
+1792954135	cmd	Alaric	50	28101	azeroth.are	standing	56	0	-	north		Entrance to Azeroth //   You are surrounded by several massive stones while behind you is the // dark portal. The Orcs used this portal to gain entrance to Azeroth. Now
+1792954135	cmd	Alaric	50	28101	azeroth.are	standing	56	0	-	north		Alas, you cannot go that way.
+1792954136	cmd	Alaric	50	28161	azeroth.are	standing	56	0	-	enter	po	You enter The Dark Portal // Your stomach flip flops. Everything goes black for a moment. // Watch Your Step!
+1792954137	cmd	Alaric	50	2497	dresden_halloween.are	standing	56	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792954139	cmd	Alaric	50	2497	dresden_halloween.are	standing	56	19	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Journal of Trinidad to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'
+1792954142	cmd	Alaric	50	2497	dresden_halloween.are	standing	56	4	-	aquest	ga no	Wise choice. You safely collect 13 quest points.
+1792954148	cmd	Alaric	50	2497	dresden_halloween.are	standing	56	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    244 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792954210	cmd	Alaric	50	2497	dresden_halloween.are	standing	59	0	-	inventory		You are carrying: // (16) (Glowing) a bag of candy corn //      (Glowing) a pumpkin-lantern charm
