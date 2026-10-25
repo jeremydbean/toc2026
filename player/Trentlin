@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1792927101
+LogO 1792928995
 Vers 4
 Prom < %h/%H hp %m/%M mana %v/%V mv>%c~
 Ignoring ~
@@ -17,19 +17,19 @@ ChangesSeen ~
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 50
-Plyd 63232
+Plyd 63385
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
 StashMax 75
 HyruleSecrets 67108864
 Scro 22
-Room 2401
-HMV  5514 5514 8760 8760 1321 2514
-NewGold 92
-NewPlat 3890
+Room 2497
+HMV  5514 5514 8760 8760 1211 2514
+NewGold 50
+NewPlat 3968
 NewCopp 96
-NewSilv 84
+NewSilv 93
 BankCP 2260365404
 IntTime 1792868412
 IntTotal 15365404
@@ -39,7 +39,7 @@ Corpses	0
 PkRec 0
 PkGiv 0
 AchKills 568
-AchQuests 65
+AchQuests 66
 AchDeaths 6
 AchExplore 127
 AchMaps 1
@@ -130,10 +130,10 @@ Achv crystalline-robe 1792926758
 Achv crystalline-cloak 1792926758
 Achv crystalline-crown 1792926758
 Achv crystalline-set 1792926758
-AchSet quest-areas 1639689130 ~
-AchSet areas 840101374 1255184829 1436405335 1639689130 ~
-AchSet rooms 40 2401 2404-2405 2410-2411 2414 2427 2433-2439 2497 4201-4202 4207-4208 6000-6002 14000 14015 14018-14023 ~
-LastOut  1792927101
+AchSet quest-areas 1388553224 1639689130 ~
+AchSet areas 714490472 840101374 1255184829 1388553224 1436405335 1639689130 1882159043 ~
+AchSet rooms 40 51 2401 2404-2405 2410-2411 2414 2427 2433-2439 2497 4201-4202 4207-4208 6000-6003 6008-6009 6011 6014-6018 13001-13003 13201-13227 13242-13252 13254-13257 14000 14015 14018-14023 24101-24104 24119 24122 24125-24126 ~
+LastOut  1792928995
 Rested 0 0
 Daily 4 20748 3 1 20748
 SesLogin 1792926758
@@ -144,13 +144,13 @@ SesKill  1
 SesPK    0
 SesDead  0
 SesQuest 1
-QuestPnts 4394
-QuestStrk 15
+QuestPnts 4454
+QuestStrk 16
 CasinoLost 4
-QuestNext 3
+QuestNext 5
 Exp  112503
-Act  204
-AfBy 3678908
+Act  206
+AfBy 3678910
 AfBy2 4106
 Comm 24576
 Mounted 0
@@ -184,14 +184,14 @@ Hit   75
 Dam   112
 ACs -186 -192 -189 -91
 Attr 22 16 18 16 19
-AMod 21 19 11 20 11
+AMod 36 19 11 24 11
 Pass TrjPUdRVdu8MY~
 Titl  the Master Warrior~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 840 1301 394
-Cond 0 5 41
+Cond 0 3 39
 Sk 100 'axe'
 Sk 89 'dagger'
 Sk 25 'flail'
@@ -222,50 +222,59 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'change sex'  45  68   1   6          0          0
-AffD 'armor'   0  21 -20  17          0          0
-AffD 'bless'   0  21   8  18          0          0
-AffD 'bless'   0  21  -8  24          0          0
-AffD 'shield'   0  21 -20  17          0          0
-AffD 'stone skin'   0  21 -40  17          0          0
-AffD 'sanctuary'   0  21   0   0        128          0
-AffD 'haste'   0  21   4   2    2097152          0
-AffD 'fly'   0  21   0   0     524288          0
-AffD 'pass door'   0  21   0   0    1048576          0
-AffD 'protection evil'   0  21   0   0       8192          0
-AffD 'fire shield'   0  21   0   0          0          8
-AffD 'divine protection'   0  21   0   0          0       4096
-AffD 'giant strength'   0  21   4   1          0          0
-AffD 'frenzy'   0  21  11  18          0          0
-AffD 'frenzy'   0  21  11  19          0          0
-AffD 'frenzy'   0  21 110  17          0          0
-AffD 'detect invis'   0  21   0   0          8          0
-AffD 'detect hidden'   0  21   0   0         32          0
-AffD 'detect magic'   0  21   0   0         16          0
-AffD 'detect good'   0  21   0   0          0          2
-AffD 'detect evil'   0  21   0   0          4          0
-AffD 'power gloves'   0  21  28  19          0          0
-AffD 'shroud'   0  21 -35  17          0          0
-AffD 'empower'   0   0   0   0          0          0
-AffD 'sanctuary'   0  21   0   0        128          0
-AffD 'haste'   0  21   4   2    2097152          0
-AffD 'fly'   0  21   0   0     524288          0
-AffD 'pass door'   0  21   0   0    1048576          0
-AffD 'protection evil'   0  21   0   0       8192          0
-AffD 'fire shield'   0  21   0   0          0          8
-AffD 'divine protection'   0  21   0   0          0       4096
-AffD 'giant strength'   0  21  15   1          0          0
-AffD 'empower'   0   0  15   3          0          0
-AffD 'empower'   0   0  15   4          0          0
-AffD 'empower'   0   0  11   2          0          0
-AffD 'empower'   0   0  15   5          0          0
-AffD 'empower'   0   0  20  18          0          0
-AffD 'empower'   0   0  20  19          0          0
-AffD 'empower'   0   0 -100  17          0          0
-AffD 'titanic'   0   0 4595  13          0          0
-AffD 'titanic'   0   0 7300  12          0          0
-AffD 'titanic'   0   0 2095  14          0          0
-AffD 'titanic'   0   0  50  16          0          0
+AffD 'titanic'   0  29  50  16          0          0
+AffD 'titanic'   0  29 2095  14          0          0
+AffD 'titanic'   0  29 7300  12          0          0
+AffD 'titanic'   0  29 4595  13          0          0
+AffD 'empower'   0  29 -100  17          0          0
+AffD 'empower'   0  29  20  19          0          0
+AffD 'empower'   0  29  20  18          0          0
+AffD 'empower'   0  29  15   5          0          0
+AffD 'empower'   0  29  11   2          0          0
+AffD 'empower'   0  29  15   4          0          0
+AffD 'empower'   0  29  15   3          0          0
+AffD 'giant strength'   0  29  15   1          0          0
+AffD 'divine protection'   0  29   0   0          0       4096
+AffD 'fire shield'   0  29   0   0          0          8
+AffD 'protection evil'   0  29   0   0       8192          0
+AffD 'pass door'   0  29   0   0    1048576          0
+AffD 'fly'   0  29   0   0     524288          0
+AffD 'haste'   0  29   4   2    2097152          0
+AffD 'sanctuary'   0  29   0   0        128          0
+AffD 'empower'   0  29   0   0          0          0
+AffD 'invis'   0  29   0   0          2          0
+AffD 'giant strength'   0  29  15   1          0          0
+AffD 'divine protection'   0  29   0   0          0       4096
+AffD 'fire shield'   0  29   0   0          0          8
+AffD 'protection evil'   0  29   0   0       8192          0
+AffD 'pass door'   0  29   0   0    1048576          0
+AffD 'fly'   0  29   0   0     524288          0
+AffD 'haste'   0  29   4   2    2097152          0
+AffD 'sanctuary'   0  29   0   0        128          0
+AffD 'shroud'   0  29 -35  17          0          0
+AffD 'power gloves'   0  29  28  19          0          0
+AffD 'detect evil'   0  29   0   0          4          0
+AffD 'detect good'   0  29   0   0          0          2
+AffD 'detect magic'   0  29   0   0         16          0
+AffD 'detect hidden'   0  29   0   0         32          0
+AffD 'detect invis'   0  29   0   0          8          0
+AffD 'frenzy'   0  29 110  17          0          0
+AffD 'frenzy'   0  29  11  19          0          0
+AffD 'frenzy'   0  29  11  18          0          0
+AffD 'giant strength'   0  29   4   1          0          0
+AffD 'divine protection'   0  29   0   0          0       4096
+AffD 'fire shield'   0  29   0   0          0          8
+AffD 'protection evil'   0  29   0   0       8192          0
+AffD 'pass door'   0  29   0   0    1048576          0
+AffD 'fly'   0  29   0   0     524288          0
+AffD 'haste'   0  29   4   2    2097152          0
+AffD 'sanctuary'   0  29   0   0        128          0
+AffD 'stone skin'   0  29 -40  17          0          0
+AffD 'shield'   0  29 -20  17          0          0
+AffD 'bless'   0  29  -8  24          0          0
+AffD 'bless'   0  29   8  18          0          0
+AffD 'armor'   0  29 -20  17          0          0
+AffD 'change sex'  45  66   1   6          0          0
 End
 
 #O
@@ -293,7 +302,7 @@ End
 Vnum 73
 Nest 1
 Wear -1
-Time 87
+Time 85
 Cost 0
 Cond 100
 Repd 0
@@ -303,7 +312,7 @@ End
 Vnum 45
 Nest 1
 Wear -1
-Time 441
+Time 439
 Cost 0
 Cond 100
 Repd 0
@@ -489,8 +498,8 @@ Lev  51
 Cost 24360000
 Cond 100
 Repd 0
-Affect -1 51 -1 -1 17 0 0
 Affect -1 51 -1 -1 4 0 0
+Affect -1 51 -1 -1 17 0 0
 End
 
 #O
@@ -678,10 +687,10 @@ Lev  33
 Cost 54450000
 Cond 99
 Repd 0
-Affect -1 33 -1 -4 22 0 0
+Affect -1 33 -1 23 14 0 0
+Affect -1 33 -1 23 14 0 0
 Affect -1 33 -1 1 18 0 0
-Affect -1 33 -1 23 14 0 0
-Affect -1 33 -1 23 14 0 0
+Affect -1 33 -1 -4 22 0 0
 End
 
 #O
@@ -1013,6 +1022,26 @@ Cond 100
 Repd 0
 End
 
+#PET
+Vnum 13253
+Name Battle falcon~
+Desc The battle falcon looks like a strong, fearless fighter. This giant breed has
+been trained especially for combat.
+A neck tag says 'I belong to Trentlin'.
+~
+Sex  0
+HMV  384 384 133 133 91 100
+NewCopp 240
+NewSilv 70
+NewGold 27
+Act  257
+AfBy 786944
+Comm 7340032
+Pos  8
+ACs  -26 -26 -26 -26
+Attr 16 16 16 18 16
+AMod 0 0 0 0 0
+End
 #STASH
 #O
 Vnum 29015
