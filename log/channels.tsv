@@ -545,3 +545,11 @@
 1792962743	say	Questor Thews	Ah, a brave soul! Well met, Alaric.
 1792962743	say	Questor Thews	You have 25 minutes to complete this quest.
 1792962743	say	Questor Thews	The realm is counting on you!
+1792962984	say	Questor Thews	Welcome, Trentlin. The realm needs someone of your skill.
+1792962984	say	Questor Thews	You have 29 minutes to complete this quest.
+1792962984	say	Questor Thews	The realm is counting on you!
+1792963010	say	Questor Thews	Very well, Alaric. Your quest obligation is lifted.
+1792963010	say	Questor Thews	You had a streak of 4 in a row - all gone now!
+1792963010	say	Questor Thews	May your next quest go better!
+1792963046	gossip	Alaric	Yo
+1792963048	gossip	Trentlin	hey

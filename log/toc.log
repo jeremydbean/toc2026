@@ -191112,3 +191112,441 @@ Sun Oct 25 21:12:37 2026 :: Log Alaric [70]: south
 Sun Oct 25 21:12:37 2026 :: Log Alaric [3601]: arrived (Entrance to the Dark Forest.) from 70
 Sun Oct 25 21:12:43 2026 :: Log Alaric [3601]: s
 Sun Oct 25 21:12:43 2026 :: Log Alaric [3602]: arrived (Entering the forest) from 3601
+Sun Oct 25 21:13:08 2026 :: Sock.sinaddr:  178.156.185.127
+Sun Oct 25 21:13:08 2026 :: EOF encountered on read.
+Sun Oct 25 21:13:21 2026 :: Log Alaric [3602]: where will
+Sun Oct 25 21:13:24 2026 :: Log Alaric [3602]: w
+Sun Oct 25 21:13:24 2026 :: Log Alaric [-]: arrived (-) from 3602
+Sun Oct 25 21:13:25 2026 :: Log Alaric [-]: scan
+Sun Oct 25 21:13:27 2026 :: Log Alaric [-]: s
+Sun Oct 25 21:13:27 2026 :: Log Alaric [3613]: arrived (Turn in the path) from -
+Sun Oct 25 21:13:28 2026 :: Log Alaric [3613]: w
+Sun Oct 25 21:13:28 2026 :: Log Alaric [3614]: arrived (An intersection) from 3613
+Sun Oct 25 21:13:29 2026 :: Log Alaric [3614]: n
+Sun Oct 25 21:13:29 2026 :: Log Alaric [3616]: arrived (Beginning of the swamp) from 3614
+Sun Oct 25 21:13:30 2026 :: Log Alaric [3616]: scan
+Sun Oct 25 21:13:31 2026 :: Log Alaric [3616]: w
+Sun Oct 25 21:13:31 2026 :: Log Alaric [3617]: arrived (Wandering through the swamp) from 3616
+Sun Oct 25 21:13:32 2026 :: Log Alaric [3617]: scan
+Sun Oct 25 21:13:33 2026 :: Log Alaric [3617]: n
+Sun Oct 25 21:13:33 2026 :: Log Alaric [3624]: arrived (Mired in the sand) from 3617
+Sun Oct 25 21:13:33 2026 :: Log Alaric [3624]: scan
+Sun Oct 25 21:13:34 2026 :: Log Alaric [3624]: s
+Sun Oct 25 21:13:40 2026 :: Log Alaric [3624]: n
+Sun Oct 25 21:13:42 2026 :: Log Alaric [3624]: open secret
+Sun Oct 25 21:13:43 2026 :: Log Alaric [3624]: open north
+Sun Oct 25 21:13:55 2026 :: Log Alaric [3624]: jump north
+Sun Oct 25 21:13:57 2026 :: Log Alaric [3624]: recal
+Sun Oct 25 21:13:57 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 3624
+Sun Oct 25 21:13:59 2026 :: Log Alaric [2497]: en do
+Sun Oct 25 21:13:59 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 21:14:01 2026 :: Log Alaric [2401]: jump rock
+Sun Oct 25 21:14:01 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Sun Oct 25 21:14:01 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 1607
+Sun Oct 25 21:14:02 2026 :: Log Alaric [4208]: heal ref
+Sun Oct 25 21:14:02 2026 :: Spellup: Hermie gave Alaric refresh (full) (30 ticks) in room 4208.
+Sun Oct 25 21:14:06 2026 :: Log Alaric [4208]: r e 4
+Sun Oct 25 21:14:06 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Oct 25 21:14:06 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sun Oct 25 21:14:06 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sun Oct 25 21:14:06 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sun Oct 25 21:14:06 2026 :: Log Alaric [2427]: n
+Sun Oct 25 21:14:06 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 25 21:14:06 2026 :: Log Alaric [2404]: n
+Sun Oct 25 21:14:06 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sun Oct 25 21:14:08 2026 :: Log Alaric [2401]: west
+Sun Oct 25 21:14:08 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Oct 25 21:14:08 2026 :: Log Alaric [2405]: west
+Sun Oct 25 21:14:08 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Oct 25 21:14:08 2026 :: Log Alaric [2433]: west
+Sun Oct 25 21:14:08 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Oct 25 21:14:09 2026 :: Log Alaric [2434]: west
+Sun Oct 25 21:14:09 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Oct 25 21:14:09 2026 :: Log Alaric [2435]: west
+Sun Oct 25 21:14:09 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Oct 25 21:14:09 2026 :: Log Alaric [2436]: west
+Sun Oct 25 21:14:09 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Oct 25 21:14:09 2026 :: Log Alaric [2437]: west
+Sun Oct 25 21:14:09 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Oct 25 21:14:10 2026 :: Log Alaric [2438]: open west
+Sun Oct 25 21:14:10 2026 :: Log Alaric [2438]: west
+Sun Oct 25 21:14:10 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Oct 25 21:14:22 2026 :: Log Alaric [2439]: west
+Sun Oct 25 21:14:22 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sun Oct 25 21:14:22 2026 :: Log Alaric [6000]: west
+Sun Oct 25 21:14:22 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sun Oct 25 21:14:22 2026 :: Log Alaric [6001]: west
+Sun Oct 25 21:14:22 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sun Oct 25 21:14:22 2026 :: Log Alaric [6002]: west
+Sun Oct 25 21:14:22 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Sun Oct 25 21:14:23 2026 :: Log Alaric [6003]: west
+Sun Oct 25 21:14:23 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Sun Oct 25 21:14:23 2026 :: Log Alaric [6004]: west
+Sun Oct 25 21:14:23 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Sun Oct 25 21:14:23 2026 :: Log Alaric [6100]: west
+Sun Oct 25 21:14:23 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Sun Oct 25 21:14:23 2026 :: Log Alaric [6101]: west
+Sun Oct 25 21:14:23 2026 :: Log Alaric [6102]: arrived (A narrow trail through the deep, dark forest) from 6101
+Sun Oct 25 21:14:24 2026 :: Log Alaric [6102]: west
+Sun Oct 25 21:14:24 2026 :: Log Alaric [6103]: arrived (A narrow trail through the deep, dark forest) from 6102
+Sun Oct 25 21:14:24 2026 :: Log Alaric [6103]: north
+Sun Oct 25 21:14:24 2026 :: Log Alaric [6150]: arrived (The narrow trail.) from 6103
+Sun Oct 25 21:14:24 2026 :: Log Alaric [6150]: north
+Sun Oct 25 21:14:24 2026 :: Log Alaric [6151]: arrived (The narrow trail.) from 6150
+Sun Oct 25 21:14:24 2026 :: Log Alaric [6151]: west
+Sun Oct 25 21:14:24 2026 :: Log Alaric [63]: arrived (Forest Junction) from 6151
+Sun Oct 25 21:14:25 2026 :: Log Alaric [63]: west
+Sun Oct 25 21:14:25 2026 :: Log Alaric [5622]: arrived (A bend in the dark forest) from 63
+Sun Oct 25 21:14:25 2026 :: Log Alaric [5622]: south
+Sun Oct 25 21:14:25 2026 :: Log Alaric [5689]: arrived (In the deeper forest) from 5622
+Sun Oct 25 21:14:25 2026 :: Log Alaric [5689]: south
+Sun Oct 25 21:14:25 2026 :: Log Alaric [70]: arrived (Darkened Path) from 5689
+Sun Oct 25 21:14:25 2026 :: Log Alaric [70]: south
+Sun Oct 25 21:14:25 2026 :: Log Alaric [3601]: arrived (Entrance to the Dark Forest.) from 70
+Sun Oct 25 21:14:27 2026 :: Log Alaric [3601]: s
+Sun Oct 25 21:14:27 2026 :: Log Alaric [3602]: arrived (Entering the forest) from 3601
+Sun Oct 25 21:14:28 2026 :: Log Alaric [3602]: e
+Sun Oct 25 21:14:28 2026 :: Log Alaric [3603]: arrived (Eastern path through the forest) from 3602
+Sun Oct 25 21:14:29 2026 :: Log Alaric [3603]: e
+Sun Oct 25 21:14:29 2026 :: Log Alaric [3604]: arrived (The eastern path) from 3603
+Sun Oct 25 21:14:29 2026 :: Log Alaric [3604]: scan
+Sun Oct 25 21:14:30 2026 :: Log Alaric [3604]: e
+Sun Oct 25 21:14:30 2026 :: Log Alaric [3605]: arrived (A clearing in the forest) from 3604
+Sun Oct 25 21:14:31 2026 :: Log Alaric [3605]: scan
+Sun Oct 25 21:14:31 2026 :: Log Alaric [3605]: s
+Sun Oct 25 21:14:31 2026 :: Log Alaric [3606]: arrived (A faint path) from 3605
+Sun Oct 25 21:14:32 2026 :: Log Alaric [3606]: e
+Sun Oct 25 21:14:32 2026 :: Log Alaric [3607]: arrived (Following the faint path) from 3606
+Sun Oct 25 21:14:33 2026 :: Log Alaric [3607]: scan
+Sun Oct 25 21:14:34 2026 :: Log Alaric [3607]: n
+Sun Oct 25 21:14:34 2026 :: Log Alaric [3608]: arrived (Following the faint path) from 3607
+Sun Oct 25 21:14:35 2026 :: Log Alaric [3608]: n
+Sun Oct 25 21:14:35 2026 :: Log Alaric [3609]: arrived (Encounter in the forest) from 3608
+Sun Oct 25 21:14:35 2026 :: Log Alaric [3609]: scan
+Sun Oct 25 21:14:38 2026 :: Log Alaric [3609]: e
+Sun Oct 25 21:14:38 2026 :: Log Alaric [3610]: arrived (The gnoll camp) from 3609
+Sun Oct 25 21:14:38 2026 :: Log Alaric [3610]: scan
+Sun Oct 25 21:14:39 2026 :: Log Alaric [3610]: w
+Sun Oct 25 21:14:39 2026 :: Log Alaric [3609]: arrived (Encounter in the forest) from 3610
+Sun Oct 25 21:14:39 2026 :: Log Alaric [3609]: s
+Sun Oct 25 21:14:39 2026 :: Log Alaric [3608]: arrived (Following the faint path) from 3609
+Sun Oct 25 21:14:39 2026 :: Log Alaric [3608]: s
+Sun Oct 25 21:14:39 2026 :: Log Alaric [3607]: arrived (Following the faint path) from 3608
+Sun Oct 25 21:14:40 2026 :: Log Alaric [3607]: w
+Sun Oct 25 21:14:40 2026 :: Log Alaric [3606]: arrived (A faint path) from 3607
+Sun Oct 25 21:14:40 2026 :: Log Alaric [3606]: n
+Sun Oct 25 21:14:40 2026 :: Log Alaric [3605]: arrived (A clearing in the forest) from 3606
+Sun Oct 25 21:14:41 2026 :: Log Alaric [3605]: w
+Sun Oct 25 21:14:41 2026 :: Log Alaric [3604]: arrived (The eastern path) from 3605
+Sun Oct 25 21:14:41 2026 :: Log Alaric [3604]: w
+Sun Oct 25 21:14:41 2026 :: Log Alaric [3603]: arrived (Eastern path through the forest) from 3604
+Sun Oct 25 21:14:41 2026 :: Log Alaric [3603]: w
+Sun Oct 25 21:14:41 2026 :: Log Alaric [3602]: arrived (Entering the forest) from 3603
+Sun Oct 25 21:14:41 2026 :: Log Alaric [3602]: w
+Sun Oct 25 21:14:41 2026 :: Log Alaric [3612]: arrived (Western path through the forest) from 3602
+Sun Oct 25 21:14:43 2026 :: Log Alaric [3612]: s
+Sun Oct 25 21:14:43 2026 :: Log Alaric [-]: arrived (-) from 3612
+Sun Oct 25 21:14:46 2026 :: Log Alaric [-]: look ve
+Sun Oct 25 21:14:46 2026 :: Log Alaric [-]: list
+Sun Oct 25 21:14:56 2026 :: Log Alaric [-]: buy clover
+Sun Oct 25 21:14:56 2026 :: Log Alaric [-]: copper -150000
+Sun Oct 25 21:14:56 2026 :: Log Alaric [-]: bought lucky clover (vnum 9943) for 150000 copper from Vesh the Smuggler
+Sun Oct 25 21:14:56 2026 :: Black market: Alaric bought lucky clover (9943) for 15g.
+Sun Oct 25 21:15:03 2026 :: Log Alaric [-]: comp clover
+Sun Oct 25 21:15:11 2026 :: Log Alaric [-]: stash clover
+Sun Oct 25 21:15:11 2026 :: Log Alaric [-]: l
+Sun Oct 25 21:15:13 2026 :: Log Alaric [-]: list
+Sun Oct 25 21:15:21 2026 :: Log Alaric [-]: w
+Sun Oct 25 21:15:21 2026 :: Log Alaric [3614]: arrived (An intersection) from -
+Sun Oct 25 21:15:22 2026 :: Log Alaric [3614]: s
+Sun Oct 25 21:15:22 2026 :: Log Alaric [3615]: arrived (The mushroom covered path) from 3614
+Sun Oct 25 21:15:23 2026 :: Log Alaric [3615]: scan
+Sun Oct 25 21:15:23 2026 :: Black market: the dealer vanished from room 3613 (Turn in the path, dkforest.are) (his buyer left).
+Sun Oct 25 21:15:25 2026 :: Log Alaric [3615]: s
+Sun Oct 25 21:15:25 2026 :: Log Alaric [3628]: arrived (Intersection on the mushroom path) from 3615
+Sun Oct 25 21:15:26 2026 :: Log Alaric [3628]: scan
+Sun Oct 25 21:15:27 2026 :: Log Alaric [3628]: e
+Sun Oct 25 21:15:27 2026 :: Log Alaric [3629]: arrived (In the mushrooms) from 3628
+Sun Oct 25 21:15:28 2026 :: Log Alaric [3629]: scan
+Sun Oct 25 21:15:29 2026 :: Log Alaric [3629]: e
+Sun Oct 25 21:15:29 2026 :: Log Alaric [3638]: arrived (In the mushroom forest) from 3629
+Sun Oct 25 21:15:30 2026 :: Log Alaric [3638]: scan
+Sun Oct 25 21:15:31 2026 :: Log Alaric [3638]: n
+Sun Oct 25 21:15:31 2026 :: Log Alaric [3639]: arrived (Lost in the Mushrooms) from 3638
+Sun Oct 25 21:15:32 2026 :: Log Alaric [3639]: scan
+Sun Oct 25 21:15:33 2026 :: Log Alaric [3639]: e
+Sun Oct 25 21:15:33 2026 :: Log Alaric [3640]: arrived (In the fungus) from 3639
+Sun Oct 25 21:15:33 2026 :: Log Alaric [3640]: scan
+Sun Oct 25 21:15:34 2026 :: Log Alaric [3640]: s
+Sun Oct 25 21:15:34 2026 :: Log Alaric [3641]: arrived (End of the mushrooms) from 3640
+Sun Oct 25 21:15:35 2026 :: Log Alaric [3641]: scan
+Sun Oct 25 21:15:36 2026 :: Log Alaric [3641]: e
+Sun Oct 25 21:15:36 2026 :: Log Alaric [3642]: arrived (Clearing before the tower) from 3641
+Sun Oct 25 21:15:37 2026 :: Log Alaric [3642]: scan
+Sun Oct 25 21:15:37 2026 :: Log Alaric [3642]: os
+Sun Oct 25 21:15:38 2026 :: Log Alaric [3642]: scan
+Sun Oct 25 21:15:39 2026 :: Log Alaric [3642]: ex
+Sun Oct 25 21:15:41 2026 :: Log Alaric [3642]: s
+Sun Oct 25 21:15:41 2026 :: Log Alaric [3643]: arrived (Base of the tower) from 3642
+Sun Oct 25 21:15:42 2026 :: Log Alaric [3643]: scan
+Sun Oct 25 21:15:48 2026 :: Log Alaric [3643]: n
+Sun Oct 25 21:15:48 2026 :: Log Alaric [3642]: arrived (Clearing before the tower) from 3643
+Sun Oct 25 21:15:49 2026 :: Log Alaric [3642]: scan
+Sun Oct 25 21:15:50 2026 :: Log Alaric [3642]: w
+Sun Oct 25 21:15:50 2026 :: Log Alaric [3641]: arrived (End of the mushrooms) from 3642
+Sun Oct 25 21:15:51 2026 :: Log Alaric [3641]: scan
+Sun Oct 25 21:15:52 2026 :: Log Alaric [3641]: n
+Sun Oct 25 21:15:52 2026 :: Log Alaric [3640]: arrived (In the fungus) from 3641
+Sun Oct 25 21:15:54 2026 :: Log Alaric [3640]: s
+Sun Oct 25 21:15:54 2026 :: Log Alaric [3641]: arrived (End of the mushrooms) from 3640
+Sun Oct 25 21:15:54 2026 :: Log Alaric [3641]: e
+Sun Oct 25 21:15:54 2026 :: Log Alaric [3642]: arrived (Clearing before the tower) from 3641
+Sun Oct 25 21:15:56 2026 :: Log Alaric [3642]: s
+Sun Oct 25 21:15:56 2026 :: Log Alaric [3643]: arrived (Base of the tower) from 3642
+Sun Oct 25 21:15:57 2026 :: Log Alaric [3643]: ex
+Sun Oct 25 21:15:59 2026 :: Log Alaric [3643]: d
+Sun Oct 25 21:16:01 2026 :: Log Alaric [3643]: levi
+Sun Oct 25 21:16:03 2026 :: Log Alaric [3643]: d
+Sun Oct 25 21:16:03 2026 :: Log Alaric [3649]: arrived (Below the tower) from 3643
+Sun Oct 25 21:16:05 2026 :: Log Alaric [3649]: scan
+Sun Oct 25 21:16:06 2026 :: Log Alaric [3649]: w
+Sun Oct 25 21:16:06 2026 :: Log Alaric [3636]: arrived (A dust filled study) from 3649
+Sun Oct 25 21:16:07 2026 :: Log Alaric [3636]: scan
+Sun Oct 25 21:16:08 2026 :: Log Alaric [3636]: e
+Sun Oct 25 21:16:08 2026 :: Log Alaric [3649]: arrived (Below the tower) from 3636
+Sun Oct 25 21:16:08 2026 :: Log Alaric [3649]: e
+Sun Oct 25 21:16:08 2026 :: Log Alaric [3648]: arrived (An ornate laboratory) from 3649
+Sun Oct 25 21:16:09 2026 :: Log Alaric [3648]: scan
+Sun Oct 25 21:16:12 2026 :: Log Alaric [3648]: fi
+Sun Oct 25 21:16:17 2026 :: Sock.sinaddr:  24.2.118.125
+Sun Oct 25 21:16:18 2026 :: Log Alaric [3648]: fi
+Sun Oct 25 21:16:18 2026 :: Loading Trentlin's playerfile
+Sun Oct 25 21:16:20 2026 :: Loading Trentlin's playerfile
+Sun Oct 25 21:16:20 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Sun Oct 25 21:16:20 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Sun Oct 25 21:16:24 2026 :: Log Alaric [3648]: flee
+Sun Oct 25 21:16:24 2026 :: Log Trentlin [2497]: aquest request
+Sun Oct 25 21:16:24 2026 :: Log Trentlin [2497]: quest assigned: recover The Sceptre of Gravestone (obj 25041) in draconia.are, 29 minutes, ordinary
+Sun Oct 25 21:16:25 2026 :: Log Alaric [3648]: flee
+Sun Oct 25 21:16:25 2026 :: Log Alaric [3649]: arrived (Below the tower) from 3648
+Sun Oct 25 21:16:27 2026 :: Log Alaric [3649]: u
+Sun Oct 25 21:16:27 2026 :: Log Alaric [3643]: arrived (Base of the tower) from 3649
+Sun Oct 25 21:16:28 2026 :: Log Trentlin [2497]: enter door
+Sun Oct 25 21:16:28 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 21:16:30 2026 :: Log Alaric [3643]: n
+Sun Oct 25 21:16:30 2026 :: Log Alaric [3642]: arrived (Clearing before the tower) from 3643
+Sun Oct 25 21:16:31 2026 :: Log Trentlin [2401]: east
+Sun Oct 25 21:16:31 2026 :: Log Trentlin [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Oct 25 21:16:31 2026 :: Log Trentlin [2403]: east
+Sun Oct 25 21:16:31 2026 :: Log Trentlin [2420]: arrived (Battle Road) from 2403
+Sun Oct 25 21:16:31 2026 :: Log Trentlin [2420]: east
+Sun Oct 25 21:16:31 2026 :: Log Trentlin [2421]: arrived (Battle Road) from 2420
+Sun Oct 25 21:16:31 2026 :: Log Alaric [3642]: w
+Sun Oct 25 21:16:31 2026 :: Log Alaric [3641]: arrived (End of the mushrooms) from 3642
+Sun Oct 25 21:16:31 2026 :: Log Trentlin [2421]: south
+Sun Oct 25 21:16:31 2026 :: Log Trentlin [2441]: arrived (River Road.) from 2421
+Sun Oct 25 21:16:32 2026 :: Log Trentlin [2441]: east
+Sun Oct 25 21:16:32 2026 :: Log Trentlin [2442]: arrived (River Road.) from 2441
+Sun Oct 25 21:16:32 2026 :: Log Alaric [3641]: n
+Sun Oct 25 21:16:32 2026 :: Log Alaric [3640]: arrived (In the fungus) from 3641
+Sun Oct 25 21:16:32 2026 :: Log Trentlin [2442]: south
+Sun Oct 25 21:16:32 2026 :: Log Trentlin [2443]: arrived (River Road.) from 2442
+Sun Oct 25 21:16:32 2026 :: Log Alaric [3640]: w
+Sun Oct 25 21:16:32 2026 :: Log Alaric [3639]: arrived (Lost in the Mushrooms) from 3640
+Sun Oct 25 21:16:32 2026 :: Log Trentlin [2443]: east
+Sun Oct 25 21:16:32 2026 :: Log Trentlin [2444]: arrived (River Road.) from 2443
+Sun Oct 25 21:16:32 2026 :: Log Alaric [3639]: s
+Sun Oct 25 21:16:32 2026 :: Log Alaric [3638]: arrived (In the mushroom forest) from 3639
+Sun Oct 25 21:16:32 2026 :: Log Trentlin [2444]: east
+Sun Oct 25 21:16:32 2026 :: Log Trentlin [2445]: arrived (End of River Road.) from 2444
+Sun Oct 25 21:16:33 2026 :: Log Trentlin [2445]: south
+Sun Oct 25 21:16:33 2026 :: Log Trentlin [2446]: arrived (Docks of Dresden.) from 2445
+Sun Oct 25 21:16:33 2026 :: Log Alaric [3638]: w
+Sun Oct 25 21:16:33 2026 :: Log Alaric [3629]: arrived (In the mushrooms) from 3638
+Sun Oct 25 21:16:33 2026 :: Log Trentlin [2446]: east
+Sun Oct 25 21:16:33 2026 :: Log Trentlin [2447]: arrived (Docks of Dresden.) from 2446
+Sun Oct 25 21:16:33 2026 :: Log Trentlin [2447]: south
+Sun Oct 25 21:16:33 2026 :: Log Trentlin [2449]: arrived (Second Pier.) from 2447
+Sun Oct 25 21:16:33 2026 :: Log Trentlin [2449]: south
+Sun Oct 25 21:16:33 2026 :: Log Trentlin [2517]: arrived (River of Wonders.) from 2449
+Sun Oct 25 21:16:34 2026 :: Log Trentlin [2517]: east
+Sun Oct 25 21:16:34 2026 :: Log Trentlin [2516]: arrived (Tunnel on the River of Wonders.) from 2517
+Sun Oct 25 21:16:34 2026 :: Log Trentlin [2516]: east
+Sun Oct 25 21:16:34 2026 :: Log Trentlin [2515]: arrived (Tunnel on the River of Wonders.) from 2516
+Sun Oct 25 21:16:34 2026 :: Log Alaric [3629]: scan
+Sun Oct 25 21:16:34 2026 :: Log Trentlin [2515]: east
+Sun Oct 25 21:16:34 2026 :: Log Trentlin [5000]: arrived (A long tunnel) from 2515
+Sun Oct 25 21:16:34 2026 :: Log Trentlin [5000]: east
+Sun Oct 25 21:16:34 2026 :: Log Trentlin [5001]: arrived (A long, branched tunnel) from 5000
+Sun Oct 25 21:16:35 2026 :: Log Trentlin [5001]: east
+Sun Oct 25 21:16:35 2026 :: Log Trentlin [5002]: arrived (A long tunnel) from 5001
+Sun Oct 25 21:16:35 2026 :: Log Trentlin [5002]: north
+Sun Oct 25 21:16:35 2026 :: Log Trentlin [5008]: arrived (Cave-in) from 5002
+Sun Oct 25 21:16:35 2026 :: Log Trentlin [5008]: down
+Sun Oct 25 21:16:35 2026 :: Log Trentlin [5009]: arrived (At the foot of the rubble) from 5008
+Sun Oct 25 21:16:35 2026 :: Log Trentlin [5009]: north
+Sun Oct 25 21:16:35 2026 :: Log Trentlin [5010]: arrived (Cave entrance) from 5009
+Sun Oct 25 21:16:36 2026 :: Log Trentlin [5010]: down
+Sun Oct 25 21:16:36 2026 :: Log Trentlin [5011]: arrived (Giant cave) from 5010
+Sun Oct 25 21:16:36 2026 :: Log Trentlin [5011]: down
+Sun Oct 25 21:16:36 2026 :: Log Trentlin [25139]: arrived (The refuse pit.) from 5011
+Sun Oct 25 21:16:36 2026 :: Log Trentlin [25139]: east
+Sun Oct 25 21:16:36 2026 :: Log Trentlin [25138]: arrived (The bend in the corridor.) from 25139
+Sun Oct 25 21:16:36 2026 :: Log Alaric [3629]: w
+Sun Oct 25 21:16:36 2026 :: Log Alaric [3628]: arrived (Intersection on the mushroom path) from 3629
+Sun Oct 25 21:16:36 2026 :: Log Trentlin [25138]: north
+Sun Oct 25 21:16:36 2026 :: Log Trentlin [25137]: arrived (The straight run.) from 25138
+Sun Oct 25 21:16:37 2026 :: Log Trentlin [25137]: north
+Sun Oct 25 21:16:37 2026 :: Log Trentlin [25136]: arrived (The bend in the corridor.) from 25137
+Sun Oct 25 21:16:37 2026 :: Log Trentlin [25136]: west
+Sun Oct 25 21:16:37 2026 :: Log Trentlin [25135]: arrived (The corridor past the pool.) from 25136
+Sun Oct 25 21:16:37 2026 :: Log Trentlin [25135]: west
+Sun Oct 25 21:16:37 2026 :: Log Trentlin [25133]: arrived (The edge of the pool.) from 25135
+Sun Oct 25 21:16:37 2026 :: Log Trentlin [25133]: north
+Sun Oct 25 21:16:37 2026 :: Log Trentlin [25132]: arrived (The corridor.) from 25133
+Sun Oct 25 21:16:37 2026 :: Log Alaric [3628]: ex
+Sun Oct 25 21:16:38 2026 :: Log Trentlin [25132]: west
+Sun Oct 25 21:16:38 2026 :: Log Trentlin [25131]: arrived (The corridor.) from 25132
+Sun Oct 25 21:16:38 2026 :: Log Trentlin [25131]: north
+Sun Oct 25 21:16:38 2026 :: Log Trentlin [25130]: arrived (Into the wind.) from 25131
+Sun Oct 25 21:16:38 2026 :: Log Trentlin [25130]: west
+Sun Oct 25 21:16:38 2026 :: Log Trentlin [25129]: arrived (Beneath the windy hole.) from 25130
+Sun Oct 25 21:16:38 2026 :: Log Alaric [3628]: scan
+Sun Oct 25 21:16:38 2026 :: Log Trentlin [25129]: up
+Sun Oct 25 21:16:38 2026 :: Log Trentlin [-]: arrived (-) from 25129
+Sun Oct 25 21:16:39 2026 :: Log Trentlin [-]: south
+Sun Oct 25 21:16:39 2026 :: Log Trentlin [25123]: arrived (Past the hole in the ground.
+) from -
+Sun Oct 25 21:16:39 2026 :: Log Trentlin [25123]: south
+Sun Oct 25 21:16:39 2026 :: Log Trentlin [25124]: arrived (A curve in the passage.) from 25123
+Sun Oct 25 21:16:39 2026 :: Log Trentlin [25124]: west
+Sun Oct 25 21:16:39 2026 :: Log Trentlin [25125]: arrived (Light in the tunnel.) from 25124
+Sun Oct 25 21:16:39 2026 :: Log Alaric [3628]: w
+Sun Oct 25 21:16:39 2026 :: Log Alaric [3633]: arrived (East cliff over the stream) from 3628
+Sun Oct 25 21:16:39 2026 :: Log Trentlin [25125]: south
+Sun Oct 25 21:16:39 2026 :: Log Trentlin [25126]: arrived (At the top of a shaft.) from 25125
+Sun Oct 25 21:16:40 2026 :: Log Trentlin [25126]: down
+Sun Oct 25 21:16:40 2026 :: Log Trentlin [25140]: arrived (Down the shaft.) from 25126
+Sun Oct 25 21:16:40 2026 :: Log Trentlin [25140]: down
+Sun Oct 25 21:16:40 2026 :: Log Trentlin [25141]: arrived (The bottom of the shaft.) from 25140
+Sun Oct 25 21:16:40 2026 :: Log Alaric [3633]: scan
+Sun Oct 25 21:16:40 2026 :: Log Trentlin [25141]: south
+Sun Oct 25 21:16:40 2026 :: Log Trentlin [25142]: arrived (The guard post.) from 25141
+Sun Oct 25 21:16:40 2026 :: Log Trentlin [25142]: south
+Sun Oct 25 21:16:40 2026 :: Log Trentlin [25143]: arrived (The intersection.) from 25142
+Sun Oct 25 21:16:41 2026 :: Log Trentlin [25143]: up
+Sun Oct 25 21:16:41 2026 :: Log Trentlin [25186]: arrived (The shaft upwards.) from 25143
+Sun Oct 25 21:16:41 2026 :: Log Trentlin [25186]: up
+Sun Oct 25 21:16:41 2026 :: Log Trentlin [2235]: arrived (A cave opening) from 25186
+Sun Oct 25 21:16:42 2026 :: Log Alaric [3633]: ex
+Sun Oct 25 21:16:43 2026 :: Log Trentlin [2235]: ex
+Sun Oct 25 21:16:44 2026 :: Log Alaric [3633]: w
+Sun Oct 25 21:16:44 2026 :: Log Alaric [3634]: arrived (Bottom of the cliff) from 3633
+Sun Oct 25 21:16:45 2026 :: Log Alaric [3634]: scan
+Sun Oct 25 21:16:46 2026 :: Log Alaric [3634]: w
+Sun Oct 25 21:16:46 2026 :: Log Alaric [3635]: arrived (Exploring the stream) from 3634
+Sun Oct 25 21:16:47 2026 :: Log Trentlin [2235]: n
+Sun Oct 25 21:16:47 2026 :: Log Trentlin [2220]: arrived (The Lair) from 2235
+Sun Oct 25 21:16:47 2026 :: Log Alaric [3635]: scan
+Sun Oct 25 21:16:48 2026 :: Log Alaric [3635]: recal
+Sun Oct 25 21:16:48 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 3635
+Sun Oct 25 21:16:50 2026 :: Log Trentlin [2220]: s
+Sun Oct 25 21:16:50 2026 :: Log Trentlin [2235]: arrived (A cave opening) from 2220
+Sun Oct 25 21:16:50 2026 :: Log Alaric [2497]: aq abort
+Sun Oct 25 21:16:52 2026 :: Log Alaric [2497]: score
+Sun Oct 25 21:16:52 2026 :: Log Alaric [2497]: i
+Sun Oct 25 21:16:53 2026 :: Log Alaric [2497]: eq
+Sun Oct 25 21:16:54 2026 :: Log Trentlin [2235]: s
+Sun Oct 25 21:16:54 2026 :: Log Trentlin [2234]: arrived (Tunnel) from 2235
+Sun Oct 25 21:16:55 2026 :: Log Trentlin [2234]: e
+Sun Oct 25 21:16:55 2026 :: Log Trentlin [2236]: arrived (The End of the tunnel) from 2234
+Sun Oct 25 21:16:59 2026 :: Black market: the dealer vanished from room 25121 (The hole downward., underdrk.are) (wandering).
+Sun Oct 25 21:17:00 2026 :: Log Alaric [2497]: comp clover
+Sun Oct 25 21:17:01 2026 :: Log Trentlin [2236]: ex
+Sun Oct 25 21:17:04 2026 :: Log Trentlin [2236]: west
+Sun Oct 25 21:17:04 2026 :: Log Trentlin [2234]: arrived (Tunnel) from 2236
+Sun Oct 25 21:17:04 2026 :: Log Trentlin [2234]: north
+Sun Oct 25 21:17:04 2026 :: Log Trentlin [2235]: arrived (A cave opening) from 2234
+Sun Oct 25 21:17:06 2026 :: Log Trentlin [2235]: s
+Sun Oct 25 21:17:06 2026 :: Log Trentlin [2234]: arrived (Tunnel) from 2235
+Sun Oct 25 21:17:15 2026 :: Log Trentlin [2234]: w
+Sun Oct 25 21:17:15 2026 :: Log Trentlin [2233]: arrived (Wine cellar) from 2234
+Sun Oct 25 21:17:17 2026 :: Log Trentlin [2233]: u
+Sun Oct 25 21:17:17 2026 :: Log Trentlin [2232]: arrived (Stairwell) from 2233
+Sun Oct 25 21:17:18 2026 :: Log Trentlin [2232]: e
+Sun Oct 25 21:17:18 2026 :: Log Trentlin [2222]: arrived (The Crypt Ends) from 2232
+Sun Oct 25 21:17:19 2026 :: Log Alaric [2497]: stash put clover
+Sun Oct 25 21:17:19 2026 :: Log Alaric [2497]: stashed lucky clover (vnum 9943)
+Sun Oct 25 21:17:20 2026 :: Log Alaric [2497]: eq
+Sun Oct 25 21:17:21 2026 :: Log Trentlin [2222]: e
+Sun Oct 25 21:17:21 2026 :: Log Trentlin [2219]: arrived (Crypt) from 2222
+Sun Oct 25 21:17:23 2026 :: Log Trentlin [2219]: e
+Sun Oct 25 21:17:23 2026 :: Log Trentlin [2218]: arrived (Entrance to the Crypt) from 2219
+Sun Oct 25 21:17:25 2026 :: Log Trentlin [2218]: e
+Sun Oct 25 21:17:25 2026 :: Log Trentlin [2209]: arrived (The Treasure Room) from 2218
+Sun Oct 25 21:17:26 2026 :: Log Alaric [2497]: gos Yo
+Sun Oct 25 21:17:27 2026 :: Log Trentlin [2209]: n
+Sun Oct 25 21:17:27 2026 :: Log Trentlin [2208]: arrived (Guardian's Room) from 2209
+Sun Oct 25 21:17:27 2026 :: Log Alaric [2497]: who
+Sun Oct 25 21:17:28 2026 :: Log Trentlin [2208]: go hey
+Sun Oct 25 21:17:28 2026 :: Log Alaric [2497]: wake
+Sun Oct 25 21:17:29 2026 :: Log Trentlin [2208]: u
+Sun Oct 25 21:17:29 2026 :: Log Trentlin [2206]: arrived (Storage Room) from 2208
+Sun Oct 25 21:17:29 2026 :: Log Alaric [2497]: score
+Sun Oct 25 21:17:32 2026 :: Log Trentlin [2206]: e
+Sun Oct 25 21:17:32 2026 :: Log Trentlin [2204]: arrived (Hallway) from 2206
+Sun Oct 25 21:17:33 2026 :: Log Trentlin [2204]: ex
+Sun Oct 25 21:17:35 2026 :: Log Trentlin [2204]: e
+Sun Oct 25 21:17:35 2026 :: Log Trentlin [2205]: arrived (Nursery) from 2204
+Sun Oct 25 21:17:35 2026 :: Log Trentlin [2205]: e
+Sun Oct 25 21:17:35 2026 :: Log Trentlin [2223]: arrived (Entrance to the Great Hall) from 2205
+Sun Oct 25 21:17:36 2026 :: Log Trentlin [2223]: e
+Sun Oct 25 21:17:36 2026 :: Log Trentlin [2224]: arrived (The Great Hall) from 2223
+Sun Oct 25 21:17:37 2026 :: Log Trentlin [2224]: ex
+Sun Oct 25 21:17:38 2026 :: Log Trentlin [2224]: w
+Sun Oct 25 21:17:38 2026 :: Log Trentlin [2223]: arrived (Entrance to the Great Hall) from 2224
+Sun Oct 25 21:17:39 2026 :: Log Trentlin [2223]: n
+Sun Oct 25 21:17:39 2026 :: Log Trentlin [2223]: e
+Sun Oct 25 21:17:39 2026 :: Log Trentlin [2224]: arrived (The Great Hall) from 2223
+Sun Oct 25 21:17:40 2026 :: Log Trentlin [2224]: e
+Sun Oct 25 21:17:40 2026 :: Log Trentlin [2229]: arrived (The Great Hall Ends.) from 2224
+Sun Oct 25 21:17:40 2026 :: Log Trentlin [2229]: ex
+Sun Oct 25 21:17:41 2026 :: Log Trentlin [2229]: e
+Sun Oct 25 21:17:41 2026 :: Log Trentlin [2230]: arrived (THE Lair) from 2229
+Sun Oct 25 21:17:42 2026 :: Log Trentlin [2230]: w
+Sun Oct 25 21:17:42 2026 :: Log Trentlin [2229]: arrived (The Great Hall Ends.) from 2230
+Sun Oct 25 21:17:43 2026 :: Log Trentlin [2229]: n
+Sun Oct 25 21:17:43 2026 :: Log Trentlin [2229]: w
+Sun Oct 25 21:17:43 2026 :: Log Trentlin [2224]: arrived (The Great Hall) from 2229
+Sun Oct 25 21:17:43 2026 :: Log Trentlin [2224]: n
+Sun Oct 25 21:17:43 2026 :: Log Trentlin [2225]: arrived (A Narrow Passageway) from 2224
+Sun Oct 25 21:17:44 2026 :: Log Trentlin [2225]: n
+Sun Oct 25 21:17:44 2026 :: Log Trentlin [2226]: arrived (Lair) from 2225
+Sun Oct 25 21:17:45 2026 :: Log Trentlin [2226]: d
+Sun Oct 25 21:17:45 2026 :: Log Trentlin [2227]: arrived (Underground Tunnel) from 2226
+Sun Oct 25 21:17:47 2026 :: Log Trentlin [2227]: n
+Sun Oct 25 21:17:47 2026 :: Log Trentlin [2228]: arrived (Underground Tunnel) from 2227
+Sun Oct 25 21:17:48 2026 :: Log Trentlin [2228]: s
+Sun Oct 25 21:17:48 2026 :: Log Trentlin [2227]: arrived (Underground Tunnel) from 2228
+Sun Oct 25 21:17:48 2026 :: Log Trentlin [2227]: u
+Sun Oct 25 21:17:48 2026 :: Log Trentlin [2226]: arrived (Lair) from 2227
+Sun Oct 25 21:17:49 2026 :: Log Trentlin [2226]: s
+Sun Oct 25 21:17:49 2026 :: Log Trentlin [2225]: arrived (A Narrow Passageway) from 2226
+Sun Oct 25 21:17:49 2026 :: Log Trentlin [2225]: s
+Sun Oct 25 21:17:49 2026 :: Log Trentlin [2224]: arrived (The Great Hall) from 2225
+Sun Oct 25 21:17:50 2026 :: Log Trentlin [2224]: w
+Sun Oct 25 21:17:50 2026 :: Log Trentlin [2223]: arrived (Entrance to the Great Hall) from 2224
+Sun Oct 25 21:17:50 2026 :: Log Alaric [2497]: l
+Sun Oct 25 21:17:51 2026 :: Log Trentlin [2223]: w
+Sun Oct 25 21:17:51 2026 :: Log Trentlin [2205]: arrived (Nursery) from 2223
+Sun Oct 25 21:17:51 2026 :: Log Trentlin [2205]: n
+Sun Oct 25 21:17:52 2026 :: Log Alaric [2497]: en do
+Sun Oct 25 21:17:52 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 21:17:52 2026 :: Log Trentlin [2205]: w
+Sun Oct 25 21:17:52 2026 :: Log Trentlin [2204]: arrived (Hallway) from 2205
+Sun Oct 25 21:17:52 2026 :: Log Trentlin [2204]: n
+Sun Oct 25 21:17:52 2026 :: Log Trentlin [2207]: arrived (End of the Hallway) from 2204
+Sun Oct 25 21:17:54 2026 :: Log Trentlin [2207]: u
+Sun Oct 25 21:17:54 2026 :: Log Trentlin [2210]: arrived (The Second Floor) from 2207
+Sun Oct 25 21:17:55 2026 :: Log Alaric [2401]: where
+Sun Oct 25 21:17:55 2026 :: Black market: the dealer vanished from room 24008 (Hall of the Faerie Queen, faerie.are) (wandering).
