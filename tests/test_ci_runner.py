@@ -128,6 +128,15 @@ class ShardPlanTests(unittest.TestCase):
         self.assertLess(max(loads) - min(loads), max(durations.values()),
                         "balanced to within one module")
 
+    def test_tiny_modules_are_spread_not_piled(self) -> None:
+        """Forty modules measured at 0 s once all landed on one shard."""
+        runner = load(RUNNER, "toc_run_tests")
+        modules = [f"test_big{n}" for n in range(8)] + [f"test_tiny{n:02d}" for n in range(40)]
+        durations = {m: 600.0 for m in modules[:8]}
+        durations.update({m: 0.0 for m in modules[8:]})
+        sizes = [len(shard) for shard in runner.plan_shards(modules, 8, durations)]
+        self.assertLessEqual(max(sizes) - min(sizes), 1, sizes)
+
     def test_the_real_inventory_plans_cleanly(self) -> None:
         out = subprocess.run([sys.executable, str(RUNNER), "--plan", "8"], cwd=ROOT,
                              capture_output=True, text=True, timeout=60)
@@ -183,6 +192,7 @@ class RunnerTests(FixtureMixin, unittest.TestCase):
         record = json.loads(results.read_text())
         self.assertTrue(record["cancelled"])
         self.assertEqual("cancelled", record["modules"]["test_hang"]["status"])
+        self.assertIn("STOP  test_hang", out, "a cancelled module is not reported as failed")
         deadline = time.monotonic() + 10
         while alive(pid) and time.monotonic() < deadline:
             time.sleep(0.2)

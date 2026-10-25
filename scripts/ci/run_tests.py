@@ -60,12 +60,18 @@ def load_durations(path: Path) -> dict[str, float]:
         return {}
 
 
+# Every module pays for its own interpreter and imports, however few tests
+# it holds; a measured 0 (a sub-second module rounded down) would otherwise
+# make the planner pile all the small ones onto one shard.
+MIN_MODULE_COST = 2.0
+
+
 def estimate(durations: dict[str, float]):
     known = sorted(durations.values())
     default = known[len(known) // 2] if known else 30.0
 
     def cost(module: str) -> float:
-        return durations.get(module, default)
+        return max(MIN_MODULE_COST, durations.get(module, default))
     return cost
 
 
@@ -128,7 +134,7 @@ class Runner:
                 pass
             return
 
-    def finish(self, module: str, timed_out: bool = False) -> None:
+    def finish(self, module: str, timed_out: bool = False, cancelled: bool = False) -> None:
         proc, started, log = self.running.pop(module)
         elapsed = time.monotonic() - started
         record_path = self.work / f"{module}.json"
@@ -137,7 +143,10 @@ class Runner:
         except (OSError, ValueError):
             record = {"module": module, "status": "error", "tests": [],
                       "error": "no result record (crashed or killed)"}
-        if timed_out:
+        if cancelled:
+            record["status"] = "cancelled"
+            record["error"] = "stopped: the run was cancelled"
+        elif timed_out:
             record["status"] = "timeout"
             record["error"] = f"killed after {self.args.module_timeout:.0f}s"
         elif proc.returncode != 0 and record.get("status") == "pass":
@@ -149,7 +158,7 @@ class Runner:
         if record["status"] != "pass":
             record["log_tail"] = tail
         self.results[module] = record
-        mark = {"pass": "ok  ", "timeout": "TIME"}.get(record["status"], "FAIL")
+        mark = {"pass": "ok  ", "timeout": "TIME", "cancelled": "STOP"}.get(record["status"], "FAIL")
         skipped = record.get("counts", {}).get("skip", 0)
         extra = f", {skipped} skipped" if skipped else ""
         print(f"  {mark}  {module} ({elapsed:.0f}s{extra})", flush=True)
@@ -182,8 +191,7 @@ class Runner:
               flush=True)
         for module, (proc, _started, _log) in list(self.running.items()):
             self.kill_group(proc, grace=5.0)
-            self.finish(module)
-            self.results[module]["status"] = "cancelled"
+            self.finish(module, cancelled=True)
 
     # -- the whole run ------------------------------------------------------
     def run(self) -> int:

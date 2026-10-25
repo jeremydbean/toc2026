@@ -448,19 +448,34 @@ class MaxloadReaderTests(unittest.TestCase):
 # Finding 5 and 6 on a real full disk, where the machine allows a mount
 # ---------------------------------------------------------------------------
 
-def _can_mount_tmpfs() -> str | None:
-    """Why a private tmpfs cannot be mounted here, or None if it can."""
+# How to get a private mount namespace here, best first: as root; as an
+# unprivileged user through a user namespace (unshare -r); or through
+# passwordless sudo, which GitHub's runners have and which is the only one
+# that works there -- they are not root, and Ubuntu 24.04 restricts
+# unprivileged user namespaces. In CI this test must run, not skip: the
+# deploy gate fails an unexplained skip.
+_MOUNT_PREFIXES = (["unshare", "-m"], ["unshare", "-rm"], ["sudo", "-n", "unshare", "-m"])
+
+
+def _mount_prefix() -> tuple[list[str] | None, str | None]:
+    """A command prefix that runs `sh -c` in a private mount namespace able
+    to mount a tmpfs, or None and why there is none."""
     if shutil.which("unshare") is None:
-        return "unshare is not installed"
+        return None, "unshare is not installed"
+    errors = []
     with tempfile.TemporaryDirectory(prefix="toc-mnt-probe-") as mnt:
-        probe = subprocess.run(
-            ["unshare", "-m", "sh", "-c",
-             f'mount -t tmpfs -o size=1m tmpfs "{mnt}"'],
-            capture_output=True, text=True, timeout=30)
-    if probe.returncode != 0:
-        return ("cannot mount a private tmpfs (needs root and unshare -m): "
-                + (probe.stderr.strip() or "exit %d" % probe.returncode))
-    return None
+        for prefix in _MOUNT_PREFIXES:
+            if shutil.which(prefix[0]) is None:
+                continue
+            probe = subprocess.run(
+                prefix + ["sh", "-c", f'mount -t tmpfs -o size=1m tmpfs "{mnt}"'],
+                capture_output=True, text=True, timeout=30)
+            if probe.returncode == 0:
+                return prefix, None
+            errors.append(f"{' '.join(prefix)}: "
+                          + (probe.stderr.strip() or "exit %d" % probe.returncode))
+    return None, ("cannot mount a private tmpfs (needs root, user namespaces or "
+                  "passwordless sudo): " + "; ".join(errors))
 
 
 def _disk_full_child(out_path: str) -> None:
@@ -500,21 +515,25 @@ def _disk_full_child(out_path: str) -> None:
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class DiskFullTests(unittest.TestCase):
     def test_a_full_disk_leaves_every_old_file_in_place(self) -> None:
-        reason = _can_mount_tmpfs()
-        if reason is not None:
+        prefix, reason = _mount_prefix()
+        if prefix is None:
             self.skipTest(reason)
         with tempfile.TemporaryDirectory(prefix="toc-diskfull-") as work:
             mnt = Path(work) / "mnt"
             mnt.mkdir()
             out = Path(work) / "result.json"
-            env = dict(os.environ)
-            env["PYTHONPATH"] = str(Path(__file__).resolve().parent) + (
-                os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
+            pythonpath = str(Path(__file__).resolve().parent) + (
+                os.pathsep + os.environ["PYTHONPATH"] if os.environ.get("PYTHONPATH") else "")
+            # The environment goes inside the script: sudo starts with a
+            # clean one.
+            server = os.environ.get("TOC_SERVER_BINARY", "")
             script = (f'mount -t tmpfs -o size=64m tmpfs "{mnt}" && '
-                      f'TMPDIR="{mnt}" exec "{sys.executable}" '
+                      f'cd "{ROOT}" && PYTHONPATH="{pythonpath}" TMPDIR="{mnt}" '
+                      + (f'TOC_SERVER_BINARY="{server}" ' if server else "")
+                      + f'exec "{sys.executable}" '
                       f'"{Path(__file__).resolve()}" --disk-full-child "{out}"')
-            child = subprocess.run(["unshare", "-m", "sh", "-c", script],
-                                   capture_output=True, text=True, env=env,
+            child = subprocess.run(prefix + ["sh", "-c", script],
+                                   capture_output=True, text=True,
                                    cwd=str(ROOT), timeout=600)
             self.assertEqual(child.returncode, 0,
                              (child.stdout + child.stderr)[-3000:])
