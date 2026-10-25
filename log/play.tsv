@@ -21654,3 +21654,55 @@
 1792968931	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	21	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Crown of Eclipse to Questor Thews. // Questor Thews says 'Splendid - you've returned victorious!'
 1792968933	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 22 quest points.
 1792969010	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    247 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792969366	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	16	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Alaric.' // Questor Thews tells you 'Raiders stole The Amulet of Soulcrusher from the realm!'
+1792969375	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792969375	cmd	Alaric	50	2405	dresden_halloween.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1792969375	cmd	Alaric	50	2433	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1792969376	cmd	Alaric	50	2434	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792969376	cmd	Alaric	50	2435	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792969376	cmd	Alaric	50	2436	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792969376	cmd	Alaric	50	2437	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792969377	cmd	Alaric	50	2438	dresden_halloween.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1792969377	cmd	Alaric	50	2438	dresden_halloween.are	standing	100	0	-	open	west	Ok.
+1792969377	cmd	Alaric	50	2439	dresden_halloween.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792969384	cmd	Alaric	50	3900	dresden_halloween.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the
+1792969384	cmd	Alaric	50	3901	dresden_halloween.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the
+1792969384	cmd	Alaric	50	3902	dresden_halloween.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.
+1792969385	cmd	Alaric	50	3903	dresden_halloween.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.
+1792969385	cmd	Alaric	50	3904	dresden_halloween.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north
+1792969385	cmd	Alaric	50	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study
+1792969385	cmd	Alaric	50	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.
+1792969386	cmd	Alaric	50	61	connect.are	standing	100	0	-	up		Before the Rainbow //   Above you spans the most beautiful rainbow you have ever seen. Below // you spans the great plains of the north.
+1792969386	cmd	Alaric	50	7500	astral.are	standing	100	0	-	up		The Bottom of the Rainbow //   You are standing before a shimmering rainbow arching high up into the // sky.  You feel somehow separated from the natural world, even though the
+1792969389	cmd	Alaric	50	7500	astral.are	standing	100	0	-	exits		Obvious exits: // Up    - On the Rainbow // Down  - Before the Rainbow
+1792969390	cmd	Alaric	50	7501	astral.are	standing	100	0	-	up		On the Rainbow //   You are standing on the rainbow, surrounded by many beams of multicolored // light.  Through the bottom of the rainbow you can barely make out the Temple
+1792969392	cmd	Alaric	50	7501	astral.are	standing	100	0	-	exits		Obvious exits: // Up    - On the Rainbow // Down  - The Bottom of the Rainbow
+1792969393	cmd	Alaric	50	7502	astral.are	standing	100	0	-	up		On the Rainbow //   You are standing on the rainbow, surrounded by many beams of multicolored // light.  Through the bottom of the rainbow you see the City of Midgaard and the 
+1792969393	cmd	Alaric	50	7502	astral.are	standing	100	0	-	exits		Obvious exits: // Up    - On the Rainbow // Down  - On the Rainbow
+1792969395	cmd	Alaric	50	7503	astral.are	standing	100	0	-	up		On the Rainbow //   You are standing on the rainbow, surrounded by many beams of multicolored // light.  The rainbow extends above and below you as far as you can see.
+1792969396	cmd	Alaric	50	7503	astral.are	standing	100	0	-	exits		Obvious exits: // Up    - On the Rainbow // Down  - On the Rainbow
+1792969397	cmd	Alaric	50	7504	astral.are	standing	100	0	-	up		On the Rainbow //   You are nearing the end of the rainbow.  The beams of multicolored // light have begun to merge and solidify.  All around you, you see glowing
+1792969397	cmd	Alaric	50	7504	astral.are	standing	100	0	-	exits		Obvious exits: // Up    - The Glowing Bridge at the Rainbow's End // Down  - On the Rainbow
+1792969402	cmd	Alaric	50	7505	astral.are	standing	100	0	-	up		The Glowing Bridge at the Rainbow's End //   After a long climb you have reached the end of the rainbow.  The brilliant // colors have twisted and merged into a beautiful glowing bridge that leads
+1792969403	cmd	Alaric	50	7505	astral.are	standing	100	0	-	exits		Obvious exits: // North - The Astral Gate // Down  - On the Rainbow
+1792969404	cmd	Alaric	50	7506	astral.are	standing	100	0	-	north		The Astral Gate //   Here the bridge ends before a massive, pearly-colored gate beyond which // you can see a field of blackness filled with silvery snake-like tendrils,
+1792969406	cmd	Alaric	50	7506	astral.are	standing	100	0	-	open		Ok.
+1792969407	cmd	Alaric	50	7506	astral.are	standing	100	0	-	exits		Obvious exits: // North - Into the Astral Plane // South - The Glowing Bridge at the Rainbow's End
+1792969408	cmd	Alaric	50	7507	astral.are	standing	100	0	-	north		Into the Astral Plane //   You step through the gate, and into another reality... //    You find yourself floating in a field of blackness, filled with tiny
+1792969409	cmd	Alaric	50	7507	astral.are	standing	100	0	-	exits		Obvious exits: // North - Exploring the Astral Plane // East  - Exploring the Astral Plane
+1792969413	cmd	Alaric	50	7509	astral.are	standing	100	0	-	east		Exploring the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils
+1792969413	cmd	Alaric	50	7509	astral.are	standing	100	0	-	exits		Obvious exits: // North - Exploring the Astral Plane // East  - Exploring the Astral Plane
+1792969418	cmd	Alaric	50	7511	astral.are	standing	100	0	-	east		Exploring the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils
+1792969419	cmd	Alaric	50	7511	astral.are	standing	100	0	-	exits		Obvious exits: // North - Exploring the Astral Plane // East  - Roaming the Astral Plane
+1792969422	cmd	Alaric	50	7512	astral.are	standing	100	0	-	north		Exploring the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils
+1792969424	cmd	Alaric	50	7512	astral.are	standing	100	0	-	exits		Obvious exits: // North - Roaming the Astral Plane // South - Exploring the Astral Plane
+1792969426	cmd	Alaric	50	7515	astral.are	standing	100	0	-	up		Roaming the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils
+1792969428	cmd	Alaric	50	7515	astral.are	standing	100	0	-	exits		Obvious exits: // North - Exploring the Astral Plane // East  - Wandering the Astral Plane
+1792969430	cmd	Alaric	50	7520	astral.are	standing	100	0	-	west		Wandering the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils
+1792969431	cmd	Alaric	50	7520	astral.are	standing	100	0	-	exits		Obvious exits: // North - Roaming the Astral Plane // East  - Roaming the Astral Plane
+1792969433	cmd	Alaric	50	7535	astral.are	standing	100	0	-	west		Lost in the Astral Plane //   You find yourself in a field of blackness, filled with tiny tendrils // of silvery light and insubstantial shining motes of dust.  The weightlessness
+1792969433	cmd	Alaric	50	7535	astral.are	standing	100	0	-	exits		Obvious exits: // North - Wandering the Astral Plane // East  - Traversing the Astral Plane
+1792969437	cmd	Alaric	50	7523	astral.are	standing	100	0	-	south		Travelling the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils
+1792969438	cmd	Alaric	50	7523	astral.are	standing	100	0	-	exits		Obvious exits: // North - Walking the Silvery Strand // East  - Travelling the Astral Plane
+1792969440	cmd	Alaric	50	7526	astral.are	standing	100	0	-	east		Travelling the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils
+1792969442	cmd	Alaric	50	7526	astral.are	standing	100	0	-	exits		Obvious exits: // North - Travelling the Astral Plane // East  - Lost in the Astral Plane

@@ -194063,3 +194063,94 @@ Sun Oct 25 22:55:31 2026 :: Log Alaric [2497]: quest complete: 81p 12g 6s, 22 qu
 Sun Oct 25 22:55:31 2026 :: Snapshot of Alaric taken before quest: Alaric.20261025_225531.quest (PRESTORE Alaric to see it).
 Sun Oct 25 22:55:33 2026 :: Log Alaric [2497]: aq ga no
 Sun Oct 25 22:56:50 2026 :: Log Alaric [2497]: sc
+Sun Oct 25 22:59:39 2026 :: Sock.sinaddr:  178.156.189.249
+Sun Oct 25 22:59:39 2026 :: EOF encountered on read.
+Sun Oct 25 23:00:06 2026 :: Treasure goblin: vanished from room 9416 (Primary Assembly Line, mobfact.are) (too long in one area).
+Sun Oct 25 23:02:46 2026 :: Log Alaric [2497]: aq re
+Sun Oct 25 23:02:46 2026 :: Log Alaric [2497]: quest assigned: recover The Amulet of Soulcrusher (obj 25039) in astral.are, 10 minutes, ordinary
+Sun Oct 25 23:02:55 2026 :: Log Alaric [2497]: enter door
+Sun Oct 25 23:02:55 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 23:02:55 2026 :: Log Alaric [2401]: west
+Sun Oct 25 23:02:55 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Oct 25 23:02:55 2026 :: Log Alaric [2405]: west
+Sun Oct 25 23:02:55 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Oct 25 23:02:56 2026 :: Log Alaric [2433]: west
+Sun Oct 25 23:02:56 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Oct 25 23:02:56 2026 :: Log Alaric [2434]: west
+Sun Oct 25 23:02:56 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Oct 25 23:02:56 2026 :: Log Alaric [2435]: west
+Sun Oct 25 23:02:56 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Oct 25 23:02:56 2026 :: Log Alaric [2436]: west
+Sun Oct 25 23:02:56 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Oct 25 23:02:57 2026 :: Log Alaric [2437]: west
+Sun Oct 25 23:02:57 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Oct 25 23:02:57 2026 :: Log Alaric [2438]: open west
+Sun Oct 25 23:02:57 2026 :: Log Alaric [2438]: west
+Sun Oct 25 23:02:57 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Oct 25 23:03:04 2026 :: Log Alaric [2439]: north
+Sun Oct 25 23:03:04 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Sun Oct 25 23:03:04 2026 :: Log Alaric [3900]: north
+Sun Oct 25 23:03:04 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Sun Oct 25 23:03:04 2026 :: Log Alaric [3901]: north
+Sun Oct 25 23:03:04 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Sun Oct 25 23:03:05 2026 :: Log Alaric [3902]: east
+Sun Oct 25 23:03:05 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Sun Oct 25 23:03:05 2026 :: Log Alaric [3903]: east
+Sun Oct 25 23:03:05 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Sun Oct 25 23:03:05 2026 :: Log Alaric [3904]: north
+Sun Oct 25 23:03:05 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Sun Oct 25 23:03:05 2026 :: Log Alaric [300]: north
+Sun Oct 25 23:03:05 2026 :: Log Alaric [315]: arrived (Gallow hill) from 300
+Sun Oct 25 23:03:06 2026 :: Log Alaric [315]: up
+Sun Oct 25 23:03:06 2026 :: Log Alaric [61]: arrived (Before the Rainbow) from 315
+Sun Oct 25 23:03:06 2026 :: Log Alaric [61]: up
+Sun Oct 25 23:03:06 2026 :: Log Alaric [7500]: arrived (The Bottom of the Rainbow) from 61
+Sun Oct 25 23:03:09 2026 :: Log Alaric [7500]: ex
+Sun Oct 25 23:03:10 2026 :: Log Alaric [7500]: u
+Sun Oct 25 23:03:10 2026 :: Log Alaric [7501]: arrived (On the Rainbow) from 7500
+Sun Oct 25 23:03:12 2026 :: Log Alaric [7501]: ex
+Sun Oct 25 23:03:13 2026 :: Log Alaric [7501]: u
+Sun Oct 25 23:03:13 2026 :: Log Alaric [7502]: arrived (On the Rainbow) from 7501
+Sun Oct 25 23:03:13 2026 :: Log Alaric [7502]: ex
+Sun Oct 25 23:03:15 2026 :: Log Alaric [7502]: u
+Sun Oct 25 23:03:15 2026 :: Log Alaric [7503]: arrived (On the Rainbow) from 7502
+Sun Oct 25 23:03:16 2026 :: Log Alaric [7503]: ex
+Sun Oct 25 23:03:17 2026 :: Log Alaric [7503]: u
+Sun Oct 25 23:03:17 2026 :: Log Alaric [7504]: arrived (On the Rainbow) from 7503
+Sun Oct 25 23:03:17 2026 :: Log Alaric [7504]: ex
+Sun Oct 25 23:03:22 2026 :: Log Alaric [7504]: u
+Sun Oct 25 23:03:22 2026 :: Log Alaric [7505]: arrived (The Glowing Bridge at the Rainbow's End) from 7504
+Sun Oct 25 23:03:23 2026 :: Log Alaric [7505]: ex
+Sun Oct 25 23:03:24 2026 :: Log Alaric [7505]: n
+Sun Oct 25 23:03:24 2026 :: Log Alaric [7506]: arrived (The Astral Gate) from 7505
+Sun Oct 25 23:03:26 2026 :: Log Alaric [7506]: on
+Sun Oct 25 23:03:27 2026 :: Log Alaric [7506]: ex
+Sun Oct 25 23:03:28 2026 :: Log Alaric [7506]: n
+Sun Oct 25 23:03:28 2026 :: Log Alaric [7507]: arrived (Into the Astral Plane) from 7506
+Sun Oct 25 23:03:29 2026 :: Log Alaric [7507]: ex
+Sun Oct 25 23:03:33 2026 :: Log Alaric [7507]: e
+Sun Oct 25 23:03:33 2026 :: Log Alaric [7509]: arrived (Exploring the Astral Plane) from 7507
+Sun Oct 25 23:03:33 2026 :: Log Alaric [7509]: ex
+Sun Oct 25 23:03:38 2026 :: Log Alaric [7509]: e
+Sun Oct 25 23:03:38 2026 :: Log Alaric [7511]: arrived (Exploring the Astral Plane) from 7509
+Sun Oct 25 23:03:39 2026 :: Log Alaric [7511]: ex
+Sun Oct 25 23:03:42 2026 :: Log Alaric [7511]: n
+Sun Oct 25 23:03:42 2026 :: Log Alaric [7512]: arrived (Exploring the Astral Plane) from 7511
+Sun Oct 25 23:03:44 2026 :: Log Alaric [7512]: ex
+Sun Oct 25 23:03:46 2026 :: Log Alaric [7512]: u
+Sun Oct 25 23:03:46 2026 :: Log Alaric [7515]: arrived (Roaming the Astral Plane) from 7512
+Sun Oct 25 23:03:48 2026 :: Log Alaric [7515]: ex
+Sun Oct 25 23:03:50 2026 :: Log Alaric [7515]: w
+Sun Oct 25 23:03:50 2026 :: Log Alaric [7520]: arrived (Wandering the Astral Plane) from 7515
+Sun Oct 25 23:03:51 2026 :: Log Alaric [7520]: ex
+Sun Oct 25 23:03:53 2026 :: Log Alaric [7520]: w
+Sun Oct 25 23:03:53 2026 :: Log Alaric [7535]: arrived (Lost in the Astral Plane) from 7520
+Sun Oct 25 23:03:53 2026 :: Sock.sinaddr:  45.153.34.68
+Sun Oct 25 23:03:53 2026 :: Log Alaric [7535]: ex
+Sun Oct 25 23:03:56 2026 :: EOF encountered on read.
+Sun Oct 25 23:03:57 2026 :: Log Alaric [7535]: s
+Sun Oct 25 23:03:57 2026 :: Log Alaric [7523]: arrived (Travelling the Astral Plane) from 7535
+Sun Oct 25 23:03:58 2026 :: Log Alaric [7523]: ex
+Sun Oct 25 23:04:00 2026 :: Log Alaric [7523]: e
+Sun Oct 25 23:04:00 2026 :: Log Alaric [7526]: arrived (Travelling the Astral Plane) from 7523
+Sun Oct 25 23:04:02 2026 :: Log Alaric [7526]: ex
