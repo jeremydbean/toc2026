@@ -21865,3 +21865,5 @@
 1792970573	cmd	Alaric	50	2497	dresden_halloween.are	standing	99	0	-	drop	shield	You drop a sub issue shield. // A sub issue shield burst into flames as it hits the ground.
 1792970575	cmd	Alaric	50	2497	dresden_halloween.are	standing	99	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1792970577	cmd	Alaric	50	2497	dresden_halloween.are	standing	99	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    247 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792970718	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    a pirate's ring
+1792970722	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
