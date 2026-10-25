@@ -184472,3 +184472,154 @@ Sun Oct 25 12:00:23 2026 :: Log Trentlin [30542]: e
 Sun Oct 25 12:00:23 2026 :: Log Trentlin [30543]: arrived (Level 7: Hidden Cistern) from 30542
 Sun Oct 25 12:00:25 2026 :: Log Trentlin [30543]: get key
 Sun Oct 25 12:00:37 2026 :: Log Trentlin [30543]: (refused) tap nose
+Sun Oct 25 12:02:39 2026 :: Log Trentlin [30543]: w
+Sun Oct 25 12:02:39 2026 :: Log Trentlin [30542]: arrived (Level 7: Island Chamber) from 30543
+Sun Oct 25 12:02:42 2026 :: Log Trentlin [30542]: w
+Sun Oct 25 12:02:42 2026 :: Log Trentlin [30541]: arrived (Level 7: Western Moat) from 30542
+Sun Oct 25 12:02:45 2026 :: Log Trentlin [30541]: n
+Sun Oct 25 12:02:45 2026 :: Log Trentlin [30544]: arrived (Level 7: Hall of Grumbling) from 30541
+Sun Oct 25 12:02:57 2026 :: Log Trentlin [30544]: give guardian pot
+Sun Oct 25 12:03:00 2026 :: Log Trentlin [30544]: give guardian pie
+Sun Oct 25 12:03:02 2026 :: Log Trentlin [30544]: k go
+Sun Oct 25 12:03:05 2026 :: Log Trentlin [30544]: smite
+Sun Oct 25 12:03:11 2026 :: Log Trentlin [30544]: smite
+Sun Oct 25 12:03:15 2026 :: Log Trentlin [30544]: killed a red goriya
+Sun Oct 25 12:03:15 2026 :: Log Trentlin [30544]: coin +238 silver
+Sun Oct 25 12:03:15 2026 :: Log Trentlin [30544]: coin +104 copper
+Sun Oct 25 12:03:15 2026 :: Log Trentlin [30544]: coin +17 gold
+Sun Oct 25 12:03:20 2026 :: Log Trentlin [30544]: get pot cor
+Sun Oct 25 12:03:22 2026 :: Log Trentlin [30544]: l in co
+Sun Oct 25 12:03:25 2026 :: Log Trentlin [30544]: get hear co
+Sun Oct 25 12:03:28 2026 :: Log Trentlin [30544]: quaff hea
+Sun Oct 25 12:03:29 2026 :: Log Trentlin [30544]: l
+Sun Oct 25 12:03:31 2026 :: Log Trentlin [30544]: sac cor
+Sun Oct 25 12:03:31 2026 :: Log Trentlin [30544]: coin +84 copper
+Sun Oct 25 12:03:32 2026 :: Log Trentlin [30544]: l
+Sun Oct 25 12:03:36 2026 :: Log Trentlin [30544]: drop pot
+Sun Oct 25 12:03:37 2026 :: Log Trentlin [30544]: s
+Sun Oct 25 12:03:37 2026 :: Log Trentlin [30541]: arrived (Level 7: Western Moat) from 30544
+Sun Oct 25 12:03:39 2026 :: Log Trentlin [30541]: n
+Sun Oct 25 12:03:39 2026 :: Log Trentlin [30544]: arrived (Level 7: Hall of Grumbling) from 30541
+Sun Oct 25 12:03:39 2026 :: Log Trentlin [30544]: n
+Sun Oct 25 12:03:41 2026 :: Log Trentlin [30544]: s
+Sun Oct 25 12:03:41 2026 :: Log Trentlin [30541]: arrived (Level 7: Western Moat) from 30544
+Sun Oct 25 12:03:47 2026 :: Log Trentlin [30541]: e
+Sun Oct 25 12:03:47 2026 :: Log Trentlin [30542]: arrived (Level 7: Island Chamber) from 30541
+Sun Oct 25 12:03:50 2026 :: Log Trentlin [30542]: s
+Sun Oct 25 12:03:50 2026 :: Log Trentlin [30540]: arrived (Level 7: Hall of Lingering Chill) from 30542
+Sun Oct 25 12:03:55 2026 :: Log Trentlin [30540]: s
+Sun Oct 25 12:03:55 2026 :: Log Trentlin [30536]: arrived (Level 7: Boomerang Hall) from 30540
+Sun Oct 25 12:03:57 2026 :: Log Trentlin [30536]: w
+Sun Oct 25 12:03:57 2026 :: Log Trentlin [30535]: arrived (Level 7: Dodongo Den) from 30536
+Sun Oct 25 12:04:01 2026 :: Log Trentlin [30535]: n
+Sun Oct 25 12:04:01 2026 :: Log Trentlin [30539]: arrived (Level 7: Demon's Powder Store) from 30535
+Sun Oct 25 12:04:03 2026 :: Log Trentlin [30539]: list
+Sun Oct 25 12:04:08 2026 :: Log Trentlin [30539]: s
+Sun Oct 25 12:04:08 2026 :: Log Trentlin [30535]: arrived (Level 7: Dodongo Den) from 30539
+Sun Oct 25 12:04:09 2026 :: Log Trentlin [30535]: w
+Sun Oct 25 12:04:11 2026 :: Log Trentlin [30535]: s
+Sun Oct 25 12:04:11 2026 :: Log Trentlin [30529]: arrived (Level 7: Blade Trap Corridor) from 30535
+Sun Oct 25 12:04:19 2026 :: Log Trentlin [30529]: bomb east
+Sun Oct 25 12:04:21 2026 :: Log Trentlin [30529]: n
+Sun Oct 25 12:04:21 2026 :: Log Trentlin [30535]: arrived (Level 7: Dodongo Den) from 30529
+Sun Oct 25 12:04:22 2026 :: Log Trentlin [30535]: e
+Sun Oct 25 12:04:22 2026 :: Log Trentlin [30536]: arrived (Level 7: Boomerang Hall) from 30535
+Sun Oct 25 12:04:24 2026 :: Log Trentlin [30536]: k gor
+Sun Oct 25 12:04:27 2026 :: Log Trentlin [30536]: (refused) smote
+Sun Oct 25 12:04:28 2026 :: Log Trentlin [30536]: smite
+Sun Oct 25 12:04:34 2026 :: Log Trentlin [30536]: smite
+Sun Oct 25 12:04:34 2026 :: Sock.sinaddr:  3.20.63.178
+Sun Oct 25 12:04:34 2026 :: EOF encountered on read.
+Sun Oct 25 12:04:39 2026 :: Log Trentlin [30536]: killed a blue goriya
+Sun Oct 25 12:04:39 2026 :: Log Trentlin [30536]: coin +60 gold
+Sun Oct 25 12:04:39 2026 :: Log Trentlin [30536]: coin +46 silver
+Sun Oct 25 12:04:39 2026 :: Log Trentlin [30536]: coin +340 copper
+Sun Oct 25 12:04:39 2026 :: Log Trentlin [30536]: coin +36 gold
+Sun Oct 25 12:04:39 2026 :: Log Trentlin [30536]: smite
+Sun Oct 25 12:04:40 2026 :: Log Trentlin [30536]: w
+Sun Oct 25 12:04:40 2026 :: Log Trentlin [30535]: arrived (Level 7: Dodongo Den) from 30536
+Sun Oct 25 12:04:42 2026 :: Log Trentlin [30535]: w
+Sun Oct 25 12:04:42 2026 :: Log Trentlin [30535]: s
+Sun Oct 25 12:04:42 2026 :: Log Trentlin [30529]: arrived (Level 7: Blade Trap Corridor) from 30535
+Sun Oct 25 12:04:44 2026 :: Log Trentlin [30529]: bomb east
+Sun Oct 25 12:04:45 2026 :: Log Trentlin [30529]: e
+Sun Oct 25 12:04:45 2026 :: Log Trentlin [30530]: arrived (Level 7: Moat Crossroads) from 30529
+Sun Oct 25 12:04:49 2026 :: Log Trentlin [30530]: sca
+Sun Oct 25 12:04:50 2026 :: Log Trentlin [30530]: e
+Sun Oct 25 12:04:50 2026 :: Log Trentlin [30531]: arrived (Level 7: Guano-Streaked Crossing) from 30530
+Sun Oct 25 12:04:54 2026 :: Log Trentlin [30531]: w
+Sun Oct 25 12:04:54 2026 :: Log Trentlin [30530]: arrived (Level 7: Moat Crossroads) from 30531
+Sun Oct 25 12:04:57 2026 :: Log Trentlin [30530]: k blue
+Sun Oct 25 12:04:59 2026 :: Log Trentlin [30530]: smite
+Sun Oct 25 12:05:05 2026 :: Log Trentlin [30530]: smite
+Sun Oct 25 12:05:11 2026 :: Log Trentlin [30530]: smite
+Sun Oct 25 12:05:12 2026 :: Log Trentlin [30530]: killed a blue goriya
+Sun Oct 25 12:05:12 2026 :: Log Trentlin [30530]: coin +46 silver
+Sun Oct 25 12:05:12 2026 :: Log Trentlin [30530]: coin +340 copper
+Sun Oct 25 12:05:12 2026 :: Log Trentlin [30530]: coin +36 gold
+Sun Oct 25 12:05:19 2026 :: Log Trentlin [30530]: k blue
+Sun Oct 25 12:05:22 2026 :: Log Trentlin [30530]: smite
+Sun Oct 25 12:05:28 2026 :: Log Trentlin [30530]: smite
+Sun Oct 25 12:05:33 2026 :: Log Trentlin [30530]: killed a blue goriya
+Sun Oct 25 12:05:33 2026 :: Log Trentlin [30530]: coin +46 silver
+Sun Oct 25 12:05:33 2026 :: Log Trentlin [30530]: coin +340 copper
+Sun Oct 25 12:05:33 2026 :: Log Trentlin [30530]: coin +36 gold
+Sun Oct 25 12:05:35 2026 :: Log Trentlin [30530]: e
+Sun Oct 25 12:05:35 2026 :: Log Trentlin [30531]: arrived (Level 7: Guano-Streaked Crossing) from 30530
+Sun Oct 25 12:05:38 2026 :: Log Trentlin [30531]: bomb north
+Sun Oct 25 12:05:39 2026 :: Log Trentlin [30531]: n
+Sun Oct 25 12:05:39 2026 :: Log Trentlin [30537]: arrived (Level 7: Hall of Bones) from 30531
+Sun Oct 25 12:05:44 2026 :: Log Trentlin [30537]: w
+Sun Oct 25 12:05:44 2026 :: Log Trentlin [30536]: arrived (Level 7: Boomerang Hall) from 30537
+Sun Oct 25 12:05:48 2026 :: Log Trentlin [30536]: e
+Sun Oct 25 12:05:48 2026 :: Log Trentlin [30537]: arrived (Level 7: Hall of Bones) from 30536
+Sun Oct 25 12:05:49 2026 :: Treasure goblin: vanished from room 13038 (Northfields, lakes.are) (too long in one area).
+Sun Oct 25 12:05:52 2026 :: Log Trentlin [30537]: s
+Sun Oct 25 12:05:52 2026 :: Log Trentlin [30531]: arrived (Level 7: Guano-Streaked Crossing) from 30537
+Sun Oct 25 12:05:54 2026 :: Log Trentlin [30531]: e
+Sun Oct 25 12:05:54 2026 :: Log Trentlin [30532]: arrived (Level 7: Shuttered Gallery) from 30531
+Sun Oct 25 12:05:56 2026 :: Log Trentlin [30532]: n
+Sun Oct 25 12:05:56 2026 :: Log Trentlin [30538]: arrived (Level 7: Hall of the Horned Mask) from 30532
+Sun Oct 25 12:06:00 2026 :: Log Trentlin [30538]: s
+Sun Oct 25 12:06:00 2026 :: Log Trentlin [30532]: arrived (Level 7: Shuttered Gallery) from 30538
+Sun Oct 25 12:06:01 2026 :: Log Trentlin [30532]: e
+Sun Oct 25 12:06:01 2026 :: Log Trentlin [30533]: arrived (Level 7: Urchin's Hollow) from 30532
+Sun Oct 25 12:06:08 2026 :: Log Trentlin [30533]: e
+Sun Oct 25 12:06:08 2026 :: Log Trentlin [30534]: arrived (Level 7: Bone-Strewn Alcove) from 30533
+Sun Oct 25 12:06:15 2026 :: Log Trentlin [30534]: w
+Sun Oct 25 12:06:15 2026 :: Log Trentlin [30533]: arrived (Level 7: Urchin's Hollow) from 30534
+Sun Oct 25 12:06:16 2026 :: Log Trentlin [30533]: w
+Sun Oct 25 12:06:16 2026 :: Log Trentlin [30532]: arrived (Level 7: Shuttered Gallery) from 30533
+Sun Oct 25 12:06:17 2026 :: Log Trentlin [30532]: w
+Sun Oct 25 12:06:17 2026 :: Log Trentlin [30531]: arrived (Level 7: Guano-Streaked Crossing) from 30532
+Sun Oct 25 12:06:18 2026 :: Log Trentlin [30531]: s
+Sun Oct 25 12:06:18 2026 :: Log Trentlin [30528]: arrived (Level 7: Dripping Antechamber) from 30531
+Sun Oct 25 12:06:21 2026 :: Log Trentlin [30528]: w
+Sun Oct 25 12:06:21 2026 :: Log Trentlin [30527]: arrived (Level 7: Demon's Gate) from 30528
+Sun Oct 25 12:06:24 2026 :: Log Trentlin [30527]: n
+Sun Oct 25 12:06:24 2026 :: Log Trentlin [30530]: arrived (Level 7: Moat Crossroads) from 30527
+Sun Oct 25 12:06:30 2026 :: Log Trentlin [30530]: get hear
+Sun Oct 25 12:06:31 2026 :: Log Trentlin [30530]: n
+Sun Oct 25 12:06:31 2026 :: Log Trentlin [30536]: arrived (Level 7: Boomerang Hall) from 30530
+Sun Oct 25 12:06:31 2026 :: Log Trentlin [30536]: n
+Sun Oct 25 12:06:31 2026 :: Log Trentlin [30540]: arrived (Level 7: Hall of Lingering Chill) from 30536
+Sun Oct 25 12:06:33 2026 :: Log Trentlin [30540]: n
+Sun Oct 25 12:06:37 2026 :: Log Trentlin [30540]: shove gor so
+Sun Oct 25 12:06:39 2026 :: Log Trentlin [30540]: shove gor south
+Sun Oct 25 12:06:40 2026 :: Log Trentlin [30540]: shove gor south
+Sun Oct 25 12:06:41 2026 :: Log Trentlin [30540]: shove gor south
+Sun Oct 25 12:06:41 2026 :: Log Trentlin [30540]: shove gor south
+Sun Oct 25 12:06:42 2026 :: Log Trentlin [30540]: n
+Sun Oct 25 12:06:42 2026 :: Log Trentlin [30542]: arrived (Level 7: Island Chamber) from 30540
+Sun Oct 25 12:06:47 2026 :: Log Trentlin [30542]: e
+Sun Oct 25 12:06:47 2026 :: Log Trentlin [30543]: arrived (Level 7: Hidden Cistern) from 30542
+Sun Oct 25 12:06:50 2026 :: Log Trentlin [30543]: open secret
+Sun Oct 25 12:06:53 2026 :: Log Trentlin [30543]: open nose
+Sun Oct 25 12:06:59 2026 :: Log Trentlin [30543]: open cistern
+Sun Oct 25 12:07:00 2026 :: Log Trentlin [30543]: l cistern
+Sun Oct 25 12:07:04 2026 :: Log Trentlin [30543]: w
+Sun Oct 25 12:07:04 2026 :: Log Trentlin [30542]: arrived (Level 7: Island Chamber) from 30543
+Sun Oct 25 12:07:04 2026 :: Log Trentlin [30542]: w
+Sun Oct 25 12:07:04 2026 :: Log Trentlin [30541]: arrived (Level 7: Western Moat) from 30542
+Sun Oct 25 12:07:05 2026 :: Log Trentlin [30541]: n
+Sun Oct 25 12:07:05 2026 :: Log Trentlin [30544]: arrived (Level 7: Hall of Grumbling) from 30541
