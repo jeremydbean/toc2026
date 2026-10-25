@@ -20006,3 +20006,5 @@
 1792956434	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	4	-	aquest	gamble yes	The dice BETRAY you! Your 71 quest points are lost.
 1792956435	cmd	Trentlin	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     18 hours | Sex:    Female | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
 1792956436	session	Trentlin	50	2497	dresden_halloween.are	quit	59s	+0 levels	+0 exp	+135201000 copper	1 kills	0 deaths	1 quests	59 commands	1 refused	coin: loot 2c, quests 135p 20g 10s
+1792957369	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1792957369	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	worth		You have 1735 platinum, 58 gold, 82 silver, 67 copper // and 115062 experience (2238 exp to level).
