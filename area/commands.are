@@ -658,18 +658,6 @@ item, but WIELD is faster.
 See also: SECONDARY, WIELD, DISARM
 ~
 
-0 TELEKINESIS TK~
-Syntax: telekinesis <target>
-Syntax: tk <target>
-
-TELEKINESIS (TK) attempts to move or lift a distant target using pure
-mental force.  It can retrieve objects in adjacent rooms, push enemies
-back, or interact with distant levers and switches.  Requires psionic
-training and sufficient mana.  Difficulty scales with the weight and
-distance of the target.
-
-See also: CLAIRVOYANCE, PROJECT, PSIONICS
-~
 
 0 CLAIRVOYANCE~
 Syntax: clairvoyance

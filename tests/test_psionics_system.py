@@ -135,7 +135,8 @@ class PsionicsSystemTests(unittest.TestCase):
         self.assertIn("psionic_remote_room_blocked", telekinesis)
         self.assertIn("!can_loot(ch, obj)", telekinesis)
         self.assertIn("OBJ_VNUM_QUEST_TOKEN_FIRST", telekinesis)
-        self.assertIn("check_improve(ch,gsn_telekinesis,found,4)", telekinesis)
+        self.assertIn("check_improve( ch, gsn_telekinesis, true, 4 )", telekinesis)
+        self.assertIn("check_improve( ch, gsn_telekinesis, false, 4 )", telekinesis)
 
     def test_telekinesis_is_not_capped_at_half_skill(self) -> None:
         """TK used chance/2, capping it at 50% success even at 100% skill.
@@ -167,12 +168,31 @@ class PsionicsSystemTests(unittest.TestCase):
             "full TK cost is charged before the object is found",
         )
 
-        # A fruitless search costs effort, not the whole casting cost. Slice
-        # only the !found arm, stopping at the else that handles success.
+        # A search that finds nothing is a refusal: it costs nothing and
+        # rolls nothing (Alaric, 2026-10-23: a rotted corpse answered "You
+        # lost your concentration." like a missed roll). A missed roll on a
+        # real target costs the effort, not the whole casting.
         start = telekinesis.index("if ( !found )")
-        not_found = telekinesis[start:telekinesis.index("else", start)]
-        self.assertIn("ch->mana -= (dice(1,5) + 3)", not_found)
-        self.assertNotIn("ch->mana -= 50", not_found)
+        not_found = telekinesis[start:telekinesis.index("return;", start)]
+        self.assertNotIn("ch->mana -=", not_found)
+        self.assertNotIn("number_percent", not_found)
+        self.assertLess(telekinesis.index("FOR_EACH_OBJECT"),
+                        telekinesis.index("number_percent() > chance"),
+                        "TK rolls before it looks")
+        self.assertLess(telekinesis.index("if ( !found )"),
+                        telekinesis.index("number_percent() > chance"))
+        miss = telekinesis[telekinesis.index("number_percent() > chance"):]
+        miss = miss[:miss.index("return;")]
+        self.assertIn("ch->mana -= (dice(1,5) + 3)", miss)
+        self.assertNotIn("ch->mana -= 50", miss)
+
+    def test_telekinesis_says_when_a_match_is_nolocate(self) -> None:
+        telekinesis = strip_comments(
+            function_body(self.magic2, "void do_telekinesis", "void do_confuse")
+        )
+        self.assertIn("unreachable = true", telekinesis)
+        self.assertIn("TK cannot", telekinesis)
+        self.assertIn("no $T lying anywhere it can reach", telekinesis)
 
     def test_telekinesis_reports_an_uncarryable_match_distinctly(self) -> None:
         telekinesis = function_body(self.magic2, "void do_telekinesis", "void do_confuse")
@@ -273,7 +293,7 @@ class PsionicsSystemTests(unittest.TestCase):
         self.assertLessEqual(high, 50)
 
     def test_confuse_help_matches_the_implemented_ward_rules(self) -> None:
-        entry = function_body(self.command_help, "0 CONFUSE~", "0 CRANE~")
+        entry = function_body(self.command_help, "0 CONFUSE~", "0 DIRT DIRT-KICK~")
 
         self.assertIn("immune to mental damage can never be", entry)
         self.assertIn("mentally resistant", entry)

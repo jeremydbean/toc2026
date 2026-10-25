@@ -226,13 +226,18 @@ Telekinesis allows the user to translocate a visible, takeable ground item
 from elsewhere in the world.  It respects carry limits, ownership, quest-item
 binding, and protected or no-teleport rooms.  Money, treasure, hidden
 containers, carried items, and NOLOCATE items cannot be retrieved this way.
+It takes the first item by that name it finds, which need not be yours.
 
-Your skill governs whether you hold concentration, so a fully practiced
-telekinesis rarely slips.  You must have the full mana to attempt it, but
-you are only charged the full cost when an item actually reaches your hand;
-a search that finds nothing costs only the effort.  If a matching item is
-found but you cannot carry it, you are told so instead of being left to
-guess.
+It looks before it reaches.  If nothing by that name lies anywhere it can
+reach, or the only match is an item telekinesis can never fetch, you are
+told so and it costs nothing.  Otherwise your skill decides whether you
+hold concentration: a miss costs a little mana, a success the full 50.
+Like every psionic power it starts at 1% until practised; practise it
+with Salir.
+
+A corpse can be fetched whole, gear and all, even when the gear inside it
+is NOLOCATE.  Once a corpse rots, NOLOCATE gear that fell out of it has to
+be fetched on foot.
 
 Minimum level: 21
 

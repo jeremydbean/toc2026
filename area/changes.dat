@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261025d 2026-10-25
+TELEKINESIS looks before it reaches. When nothing by that name lies
+anywhere it can reach -- a corpse that has rotted away, say -- or the only
+match is gear TK can never fetch, it tells you so and costs nothing,
+instead of "You lost your concentration." HELP TK says what it can and
+cannot fetch, and that it starts at 1% until practised with Salir.
+
 @ 20261025a 2026-10-25
 WALKTO QUEST walks anyone on a quest to the entrance of the area the
 quest master named; finding the quarry there is still yours. It used to

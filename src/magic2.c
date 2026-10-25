@@ -1283,6 +1283,7 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
     OBJ_DATA *obj;
     bool found = false;
     bool too_heavy = false;
+    bool unreachable = false;   /* a match TK never moves (no-locate) */
     int chance;
     LIST_ITERATOR iter;
 
@@ -1317,104 +1318,110 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
     }
 
     /*
+     * Look before rolling (Alaric, 2026-10-23). The roll used to come
+     * first, so a corpse that had rotted away, or gear TK may never
+     * fetch, answered "You lost your concentration." exactly as a missed
+     * roll does: he spent forty tries on a cloak that was not there to
+     * be had. A refusal is not a miss -- it says why and costs nothing.
+     */
+    FOR_EACH_OBJECT( iter, obj )
+    {
+        if ( !is_full_name( arg, obj->name )
+        ||   obj->carried_by != NULL
+        ||   obj->in_obj != NULL
+        ||   obj->in_room == NULL
+        ||   !can_see_obj( ch, obj ) )
+            continue;
+
+        /* Named and lying somewhere, but of a kind TK never moves. */
+        if ( IS_OBJ_STAT(obj, ITEM_NOLOCATE)
+        ||   IS_SET(obj->extra_flags2, ITEM2_NO_TPORT) )
+        {
+            unreachable = true;
+            continue;
+        }
+
+        if ( obj->item_type == ITEM_TREASURE
+        ||   obj->item_type == ITEM_MONEY
+        ||   !CAN_WEAR(obj, ITEM_TAKE)
+        ||   obj->level > ch->level
+        ||   psionic_remote_room_blocked(ch, obj->in_room, true, true)
+        ||   !can_loot(ch, obj)
+        ||   (obj->pIndexData != NULL
+          &&  obj->pIndexData->vnum >= OBJ_VNUM_QUEST_TOKEN_FIRST
+          &&  obj->pIndexData->vnum <= OBJ_VNUM_QUEST_TOKEN_LAST
+          &&  obj->value[4] != 0
+          &&  (!IS_IMMORTAL(ch)
+           &&  (ch->pcdata == NULL
+            ||  obj->value[4] != ch->pcdata->id + 1
+            ||  obj->owner == NULL
+            ||  str_cmp(obj->owner, ch->name)))) )
+            continue;
+
+        /*
+         * The object is eligible; the only thing left is whether it can be
+         * carried. Checked after the match, not before, so a match that is
+         * merely too heavy can be reported as such. Keep searching in case
+         * another copy exists that does fit.
+         *
+         * item weight and item count fixes - Rico 9/9/98
+         */
+        if ( obj->item_type != ITEM_CORPSE_PC )
+        {
+            if ( ch->carry_number + get_obj_number( obj ) > can_carry_n( ch )
+            ||   query_carry_weight(ch) + get_obj_weight( obj ) > can_carry_w( ch ) )
+            {
+                too_heavy = true;
+                continue;
+            }
+        }
+
+        found = true;
+        break;
+    }
+
+    if ( !found )
+    {
+        if ( too_heavy )
+            act( "You find the $T, but you cannot carry it.", ch,
+                NULL, arg, TO_CHAR );
+        else if ( unreachable )
+            act( "Your mind slides off the $T: that is a thing TK cannot "
+                 "fetch.  You will have to go and get it.", ch, NULL, arg, TO_CHAR );
+        else
+            act( "Your mind finds no $T lying anywhere it can reach.",
+                ch, NULL, arg, TO_CHAR );
+        return;
+    }
+
+    /*
      * The concentration roll used to be chance/2, which capped Telekinesis at
      * a 50% success rate even at 100% skill -- no other psionic power halves
      * its own skill, and mastery could never make this one reliable. Use the
-     * learned percentage like every other power.
+     * learned percentage like every other power. A miss costs the effort,
+     * not the full casting.
      */
     if ( number_percent() > chance && !IS_IMMORTAL(ch) )
     {
-        send_to_char( "You lost your concentration.\n\r", ch );
+        send_to_char( "You reach for it and lose your concentration.\n\r", ch );
         ch->mana -= (dice(1,5) + 3);
         check_improve( ch, gsn_telekinesis, false, 4 );
         return;
     }
 
-        FOR_EACH_OBJECT( iter, obj )
-        {
-	   if ( !is_full_name( arg, obj->name )
-		|| obj->item_type == ITEM_TREASURE
-		|| obj->item_type == ITEM_MONEY
-		|| IS_OBJ_STAT(obj, ITEM_NOLOCATE)
-		|| IS_SET(obj->extra_flags2, ITEM2_NO_TPORT)
-		|| !can_see_obj(ch,obj)
-		|| !CAN_WEAR(obj, ITEM_TAKE)
-                || obj->level > ch->level
-                || obj->carried_by != NULL
-                || obj->in_obj != NULL
-                || obj->in_room == NULL
-                || psionic_remote_room_blocked(ch, obj->in_room, true, true)
-                || !can_loot(ch, obj)
-                || (obj->pIndexData != NULL
-                 && obj->pIndexData->vnum >= OBJ_VNUM_QUEST_TOKEN_FIRST
-                 && obj->pIndexData->vnum <= OBJ_VNUM_QUEST_TOKEN_LAST
-                 && obj->value[4] != 0
-                 && (!IS_IMMORTAL(ch)
-                  && (ch->pcdata == NULL
-                   || obj->value[4] != ch->pcdata->id + 1
-                   || obj->owner == NULL
-                   || str_cmp(obj->owner, ch->name)))) )
-		   continue;
+    snprintf( buf, sizeof buf, "%s has TK'd %s from room %d", ch->name,
+              obj->name, obj->in_room->vnum );
+    wizinfo( buf, LEVEL_IMMORTAL );
+    obj_from_room( obj );
+    obj_to_char( obj, ch );
 
-      /*
-       * The object is eligible; the only thing left is whether it can be
-       * carried. Checked after the match, not before, so a match that is
-       * merely too heavy can be reported as such instead of being folded
-       * into "you couldn't find it". Keep searching in case another copy
-       * exists that does fit.
-       *
-       * item weight and item count fixes - Rico 9/9/98
-       */
-      if (obj->item_type != ITEM_CORPSE_PC)
-       {
-    if ( ch->carry_number + get_obj_number( obj ) > can_carry_n( ch ) )
-    {
-        too_heavy = true;
-        continue;
-    }
-
-    if ( query_carry_weight(ch) + get_obj_weight( obj ) > can_carry_w( ch ) )
-    {
-        too_heavy = true;
-        continue;
-    }
-       }
-
-           found = true;
-           snprintf(buf, sizeof buf,"%s has TK'd %s from room %d",ch->name,
-                    obj->name,obj->in_room->vnum);
-           wizinfo(buf, LEVEL_IMMORTAL);
-           obj_from_room( obj );
-           obj_to_char( obj, ch );
-	   break;
-	 }
-
-    if ( !found )
-    {
-        /*
-         * Nothing was retrieved, so charge only the effort, not the full
-         * casting cost. Losing 50 mana to a mistyped name made the power
-         * needlessly punishing to use at range.
-         */
-        ch->mana -= (dice(1,5) + 3);
-
-        if ( too_heavy )
-            act("You find the $T, but you cannot carry it.", ch,
-                NULL, arg, TO_CHAR);
-        else
-            act("Either you couldn't find the $T, or you aren't able to TK it.",ch,
-                NULL, arg, TO_CHAR);
-    }
-    else
-	 {
-	 ch->mana -= 50;
-	 act("You concentrate and $T flies to your hand.",ch, NULL,
-		obj->short_descr, TO_CHAR);
-	 act("$n bows $s head and $T flies to $s hand.",ch, NULL,
-		obj->short_descr, TO_ROOM);
-	 }
-    check_improve(ch,gsn_telekinesis,found,4);
-    WAIT_STATE(ch,skill_table[gsn_telekinesis].beats);
+    ch->mana -= 50;
+    act( "You concentrate and $T flies to your hand.", ch, NULL,
+        obj->short_descr, TO_CHAR );
+    act( "$n bows $s head and $T flies to $s hand.", ch, NULL,
+        obj->short_descr, TO_ROOM );
+    check_improve( ch, gsn_telekinesis, true, 4 );
+    WAIT_STATE( ch, skill_table[gsn_telekinesis].beats );
     return;
 }
 
