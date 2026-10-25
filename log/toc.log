@@ -190943,3 +190943,111 @@ Sun Oct 25 20:55:59 2026 :: EOF encountered on read.
 Sun Oct 25 20:57:52 2026 :: Sock.sinaddr:  178.156.189.249
 Sun Oct 25 20:57:53 2026 :: EOF encountered on read.
 Sun Oct 25 20:59:10 2026 :: Treasure goblin: vanished from room 5255 (A back alley, oldthalo.are) (too long in one area).
+Sun Oct 25 21:02:58 2026 :: Sock.sinaddr:  3.149.57.90
+Sun Oct 25 21:02:58 2026 :: EOF encountered on read.
+Sun Oct 25 21:03:01 2026 :: Sock.sinaddr:  208.126.22.104
+Sun Oct 25 21:03:03 2026 :: Loading Alaric's playerfile
+Sun Oct 25 21:03:06 2026 :: Loading Alaric's playerfile
+Sun Oct 25 21:03:06 2026 :: Alaric@208.126.22.104 has connected.
+Sun Oct 25 21:03:06 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Sun Oct 25 21:03:09 2026 :: Log Alaric [2497]: who
+Sun Oct 25 21:03:11 2026 :: Log Alaric [2497]: changes
+Sun Oct 25 21:04:03 2026 :: Log Alaric [2497]: (refused) c\
+Sun Oct 25 21:04:04 2026 :: Log Alaric [2497]: wake
+Sun Oct 25 21:04:04 2026 :: Log Alaric [2497]: l
+Sun Oct 25 21:04:09 2026 :: Log Alaric [2497]: where her
+Sun Oct 25 21:04:14 2026 :: Log Alaric [2497]: aq re
+Sun Oct 25 21:04:14 2026 :: Log Alaric [2497]: quest assigned: kill the sultan's guard (mob 9561, level 10) in newthalo.are, 8 minutes, rush
+Sun Oct 25 21:04:19 2026 :: Log Alaric [2497]: enter door
+Sun Oct 25 21:04:19 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 21:04:19 2026 :: Log Alaric [2401]: east
+Sun Oct 25 21:04:19 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Oct 25 21:04:19 2026 :: Log Alaric [2403]: east
+Sun Oct 25 21:04:19 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sun Oct 25 21:04:19 2026 :: Log Alaric [2420]: east
+Sun Oct 25 21:04:19 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sun Oct 25 21:04:20 2026 :: Log Alaric [2421]: east
+Sun Oct 25 21:04:20 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sun Oct 25 21:04:20 2026 :: Log Alaric [2422]: east
+Sun Oct 25 21:04:20 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sun Oct 25 21:04:20 2026 :: Log Alaric [2423]: east
+Sun Oct 25 21:04:20 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sun Oct 25 21:04:20 2026 :: Log Alaric [2424]: east
+Sun Oct 25 21:04:20 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sun Oct 25 21:04:21 2026 :: Log Alaric [2425]: east
+Sun Oct 25 21:04:21 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sun Oct 25 21:04:21 2026 :: Log Alaric [2426]: open east
+Sun Oct 25 21:04:21 2026 :: Log Alaric [2426]: east
+Sun Oct 25 21:04:21 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sun Oct 25 21:04:28 2026 :: Log Alaric [2440]: e
+Sun Oct 25 21:04:28 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sun Oct 25 21:04:34 2026 :: Log Alaric [3503]: w
+Sun Oct 25 21:04:34 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 3503
+Sun Oct 25 21:04:39 2026 :: Log Alaric [2440]: east
+Sun Oct 25 21:04:39 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sun Oct 25 21:04:39 2026 :: Log Alaric [3503]: east
+Sun Oct 25 21:04:39 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sun Oct 25 21:04:40 2026 :: Log Alaric [3502]: east
+Sun Oct 25 21:04:40 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Sun Oct 25 21:04:40 2026 :: Log Alaric [3525]: east
+Sun Oct 25 21:04:40 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Sun Oct 25 21:04:40 2026 :: Log Alaric [3526]: east
+Sun Oct 25 21:04:40 2026 :: Log Alaric [3527]: arrived (The Checkpoint) from 3526
+Sun Oct 25 21:04:40 2026 :: Log Alaric [3527]: east
+Sun Oct 25 21:04:40 2026 :: Log Alaric [3528]: arrived (Along the Eastern Road) from 3527
+Sun Oct 25 21:04:41 2026 :: Log Alaric [3528]: east
+Sun Oct 25 21:04:41 2026 :: Log Alaric [3529]: arrived (Along the Eastern Road) from 3528
+Sun Oct 25 21:04:41 2026 :: Log Alaric [3529]: east
+Sun Oct 25 21:04:41 2026 :: Log Alaric [3530]: arrived (Near the Sands of Sorrow) from 3529
+Sun Oct 25 21:04:41 2026 :: Log Alaric [3530]: east
+Sun Oct 25 21:04:41 2026 :: Log Alaric [3531]: arrived (Near the Sands of Sorrow) from 3530
+Sun Oct 25 21:04:41 2026 :: Log Alaric [3531]: east
+Sun Oct 25 21:04:41 2026 :: Log Alaric [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Sun Oct 25 21:04:42 2026 :: Log Alaric [3532]: east
+Sun Oct 25 21:04:42 2026 :: Log Alaric [42]: arrived (On the Outskirts of New Thalos) from 3532
+Sun Oct 25 21:04:42 2026 :: Log Alaric [42]: east
+Sun Oct 25 21:04:42 2026 :: Log Alaric [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Sun Oct 25 21:04:50 2026 :: Log Alaric [9669]: scan
+Sun Oct 25 21:04:51 2026 :: Log Alaric [9669]: e
+Sun Oct 25 21:04:51 2026 :: Log Alaric [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sun Oct 25 21:04:55 2026 :: Log Alaric [9523]: e
+Sun Oct 25 21:04:55 2026 :: Log Alaric [9524]: arrived (West Main Street) from 9523
+Sun Oct 25 21:05:00 2026 :: Log Alaric [9524]: e
+Sun Oct 25 21:05:00 2026 :: Log Alaric [9525]: arrived (West Main Street) from 9524
+Sun Oct 25 21:05:00 2026 :: Log Alaric [9525]: e
+Sun Oct 25 21:05:00 2026 :: Log Alaric [9526]: arrived (West Main Street) from 9525
+Sun Oct 25 21:05:01 2026 :: Log Alaric [9526]: e
+Sun Oct 25 21:05:01 2026 :: Log Alaric [9509]: arrived (The Western Market Square) from 9526
+Sun Oct 25 21:05:02 2026 :: Log Alaric [9509]: e
+Sun Oct 25 21:05:02 2026 :: Log Alaric [9506]: arrived (The Center of Market Square) from 9509
+Sun Oct 25 21:05:04 2026 :: Log Alaric [9506]: s
+Sun Oct 25 21:05:04 2026 :: Log Alaric [9505]: arrived (The Southern Market Square) from 9506
+Sun Oct 25 21:05:04 2026 :: Log Alaric [9505]: s
+Sun Oct 25 21:05:04 2026 :: Log Alaric [9504]: arrived (The Medina) from 9505
+Sun Oct 25 21:05:05 2026 :: Log Alaric [9504]: s
+Sun Oct 25 21:05:05 2026 :: Log Alaric [9503]: arrived (The Medina) from 9504
+Sun Oct 25 21:05:05 2026 :: Log Alaric [9503]: s
+Sun Oct 25 21:05:05 2026 :: Log Alaric [9510]: arrived (The Common Square) from 9503
+Sun Oct 25 21:05:06 2026 :: Log Alaric [9510]: s
+Sun Oct 25 21:05:06 2026 :: Log Alaric [9512]: arrived (The Southern Bridge) from 9510
+Sun Oct 25 21:05:08 2026 :: Log Alaric [9512]: kill gu
+Sun Oct 25 21:05:08 2026 :: Log Alaric [9512]: killed the sultan's guard
+Sun Oct 25 21:05:08 2026 :: Log Alaric [9512]: coin +2 silver
+Sun Oct 25 21:05:08 2026 :: Log Alaric [9512]: coin +3 copper
+Sun Oct 25 21:05:08 2026 :: Log Alaric [9512]: coin +1 gold
+Sun Oct 25 21:05:12 2026 :: Log Alaric [9512]: recal
+Sun Oct 25 21:05:12 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 9512
+Sun Oct 25 21:05:12 2026 :: Log Alaric [2497]: recal
+Sun Oct 25 21:05:13 2026 :: Log Alaric [2497]: recal
+Sun Oct 25 21:05:13 2026 :: Log Alaric [2497]: recal
+Sun Oct 25 21:05:13 2026 :: Log Alaric [2497]: aq co
+Sun Oct 25 21:05:13 2026 :: Log Alaric [2497]: copper +189281400
+Sun Oct 25 21:05:13 2026 :: Log Alaric [2497]: quest complete: 189p 28g 14s, 83 quest points, rush (streak bonus 30%)
+Sun Oct 25 21:05:13 2026 :: Snapshot of Alaric taken before quest: Alaric.20261025_210513.quest (PRESTORE Alaric to see it).
+Sun Oct 25 21:05:13 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct 25 21:05:22 2026 :: Log Alaric [2497]: who
+Sun Oct 25 21:05:24 2026 :: Log Alaric [2497]: score
+Sun Oct 25 21:05:51 2026 :: Sock.sinaddr:  89.126.208.245
+Sun Oct 25 21:05:58 2026 :: EOF encountered on read.
+Sun Oct 25 21:05:59 2026 :: Sock.sinaddr:  89.126.208.245
+Sun Oct 25 21:06:06 2026 :: EOF encountered on read.
