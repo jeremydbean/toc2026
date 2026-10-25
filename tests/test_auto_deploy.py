@@ -397,6 +397,16 @@ class PlayersProbeLiveTests(unittest.TestCase):
 
 
 class GameProbeTests(unittest.TestCase):
+    def test_the_auto_deployer_finds_the_probe_before_it_is_installed(self) -> None:
+        """The deploy that brings toc-auto-deploy is made by the toc-deploy
+        before it, which does not install the probe; a missing probe reads
+        "unknown" and would hold every later deploy. The build tree's copy
+        stands in."""
+        script = SCRIPT.read_text()
+        self.assertIn('elif [ -x /usr/local/sbin/toc-game-probe ]; then', script)
+        self.assertIn('PLAYERS_PROBE="$BUILD/deploy/windows-vm/toc-game-probe"', script)
+        self.assertLess(script.index('PLAYERS_PROBE="$BUILD/deploy'), script.index("players_online() {"))
+
     def test_a_silent_listener_is_unknown_not_zero(self) -> None:
         import socket
         with socket.socket() as server:

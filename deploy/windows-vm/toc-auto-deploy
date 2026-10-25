@@ -59,8 +59,19 @@ STATUS="$CURRENT/log/auto-deploy.status"
 GAME_HOST="${MUD_HOST:-127.0.0.1}"
 GAME_PORT="${MUD_PORT:-9000}"
 # A command printing the number of players online, "down" or "unknown"
-# (see toc-game-probe). Tests point it at a fake.
-PLAYERS_PROBE="${TOC_PLAYERS_PROBE:-/usr/local/sbin/toc-game-probe}"
+# (see toc-game-probe). Tests point it at a fake. The installed copy is
+# preferred; the build tree's -- the live commit's, as toc-deploy left
+# it -- stands in until one is installed. The first deploy to bring this
+# script is made by the toc-deploy before it, whose install list does not
+# name the probe: without the fallback every later count read "unknown"
+# and held every deploy for good.
+if [ -n "${TOC_PLAYERS_PROBE:-}" ]; then
+    PLAYERS_PROBE="$TOC_PLAYERS_PROBE"
+elif [ -x /usr/local/sbin/toc-game-probe ]; then
+    PLAYERS_PROBE=/usr/local/sbin/toc-game-probe
+else
+    PLAYERS_PROBE="$BUILD/deploy/windows-vm/toc-game-probe"
+fi
 # The job whose success, and nothing else, means CI vouches for a commit.
 # validate.yml names it; change the two together.
 GATE_JOB="${TOC_GATE_JOB:-deploy-gate}"
