@@ -15625,3 +15625,98 @@
 1792893978	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	wear	div	You must be level 51 to use this object.
 1792893981	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	wear	full	You stop using some Black velvet robes. // You wear Knights of the Silver Hand Full Plate on your body.
 1792893985	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	4	-	stash	put robe	You put some Black velvet robes away for safe keeping.
+1792893988	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	10	-	stash	put div	You put Divine Breast Plate away for safe keeping.
+1792893991	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	stash		Your stash holds 92 of 150 things. //     1) (Glowing) Divine Breast Plate //     2) (Magical) some Black velvet robes
+1792894001	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	12	-	stash	get brac	You take an onyx bracelet out of your stash.
+1792894007	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	6	-	stash	put brac	You put an onyx bracelet away for safe keeping.
+1792894011	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	5	-	stash	get brav	You take Gauntlets of Bravery out of your stash.
+1792894012	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	stash		Your stash holds 91 of 150 things. //     1) (Magical) an onyx bracelet //     2) (Glowing) Divine Breast Plate
+1792894021	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	5	-	stash	get pirate	You take a pirate's ring out of your stash.
+1792894022	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	4	-	stash	get pirate	You take a pirate's ring out of your stash.
+1792894023	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Magical) an opal ring
+1792894025	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	remove	opal	You stop using an opal ring.
+1792894025	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	remove	opal	You stop using an opal ring.
+1792894027	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	wear	pirate	You wear a pirate's ring on your left finger.
+1792894027	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	wear	pirate	You wear a pirate's ring on your right finger.
+1792894029	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	4	-	stash	put opal	You put an opal ring away for safe keeping.
+1792894030	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	4	-	stash	put opal	You put an opal ring away for safe keeping.
+1792894038	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	stash	get round	There is nothing like that in your stash.
+1792894043	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	5	-	stash	get shield	You take newbie shield out of your stash.
+1792894043	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	4	-	stash	get shield	You take a serving tray out of your stash.
+1792894044	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	4	-	stash	get shield	You take a serving tray out of your stash.
+1792894045	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	4	-	stash	get shield	You take The Shield of the Round Table. out of your stash.
+1792894050	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	4	-	stash	put tray	You put a serving tray away for safe keeping.
+1792894050	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	4	-	stash	put tray	You put a serving tray away for safe keeping.
+1792894053	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	stash	put new	You are not carrying that.
+1792894055	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: //      (Humming) The Shield of the Round Table. //      newbie shield
+1792894058	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	wear	shield	You must be level 47 to use this object.
+1792894060	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	wear	brav	You must be level 46 to use this object.
+1792894061	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792894062	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792894065	cmd	Alaric	45	4208	dresden_halloween.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1792894069	cmd	Alaric	45	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792894070	cmd	Alaric	45	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792894070	cmd	Alaric	45	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792894070	cmd	Alaric	45	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792894070	cmd	Alaric	45	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792894071	cmd	Alaric	45	9531	newthalo.are	standing	100	0	-	run	e 25	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792894071	cmd	Alaric	45	9531	newthalo.are	standing	100	0	-	open		Ok.
+1792894071	cmd	Alaric	45	9794	newthalo.are	standing	100	0	-	run	e 6	Outside the Eastern Gate of New Thalos // [Exits: east south west] // On a road
+1792894073	cmd	Alaric	45	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792894073	cmd	Alaric	45	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a
+1792894073	cmd	Alaric	45	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792894076	cmd	Alaric	45	16001	pirate.are	standing	100	0	-	kill	sa	Your punch === OBLITERATES === The sailor! [-128] // Your punch ^^^ DESTROYS ^^^ The sailor! [-114] // Your punch <<< ERADICATES >>> The sailor! [-177]
+1792894081	cmd	Alaric	45	16002	pirate.are	standing	99	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792894082	cmd	Alaric	45	16003	pirate.are	standing	99	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792894082	cmd	Alaric	45	16004	pirate.are	standing	99	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1792894084	cmd	Alaric	45	16005	pirate.are	standing	99	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like
+1792894086	cmd	Alaric	45	16005	pirate.are	standing	99	0	-	kill	bu	Your punch decimates The bucaneer! [-25] // Your punch MUTILATES The bucaneer! [-38] // Your punch *** DEVASTATES *** The bucaneer! [-68]
+1792894089	cmd	Alaric	45	16005	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The bucaneer. [-19] // Your fists of fury injures The bucaneer. [-13]
+1792894095	cmd	Alaric	45	16005	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The bucaneer. [-11] // Your fists of fury wounds The bucaneer. [-20]
+1792894101	cmd	Alaric	45	16005	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The bucaneer. [-21] // Your fists of fury mauls The bucaneer. [-23]
+1792894106	cmd	Alaric	45	16005	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The bucaneer. [-24] // Your fists of fury injures The bucaneer. [-13]
+1792894112	cmd	Alaric	45	16005	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The bucaneer! [-28] // Your fists of fury wounds The bucaneer. [-20]
+1792894118	cmd	Alaric	45	16005	pirate.are	standing	99	0	-	fists		Who do you want to attack?
+1792894118	cmd	Alaric	45	16021	pirate.are	standing	99	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792894121	cmd	Alaric	45	16021	pirate.are	standing	99	0	-	kill	sw	The swashbuckler parries your attack. // The swashbuckler blocks your attack with his shield. // The swashbuckler parries your attack.
+1792894123	cmd	Alaric	45	16021	pirate.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The swashbuckler. [-24] // Your fists of fury maims The swashbuckler! [-36]
+1792894129	cmd	Alaric	45	16021	pirate.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** The swashbuckler! [-61] // Your fists of fury DISMEMBERS The swashbuckler! [-46]
+1792894135	cmd	Alaric	45	16021	pirate.are	fighting	97	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The swashbuckler. [-15] // Your fists of fury maims The swashbuckler! [-36]
+1792894141	cmd	Alaric	45	16021	pirate.are	standing	97	0	-	fists		Who do you want to attack?
+1792894141	cmd	Alaric	45	16021	pirate.are	standing	97	0	-	fists		Who do you want to attack?
+1792894141	cmd	Alaric	45	16021	pirate.are	standing	97	0	-	fists		Who do you want to attack?
+1792894142	cmd	Alaric	45	16021	pirate.are	standing	97	0	-	scan		The sailor                         -to the East. // The pirate                         -to the South.
+1792894143	cmd	Alaric	45	16016	pirate.are	standing	97	1	-	south		Main Deck of the Royal Eagle - Port //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792894144	cmd	Alaric	45	16016	pirate.are	standing	97	0	-	kill	pi	The pirate parries your attack. // The pirate parries your attack. // The pirate dodges your attack.
+1792894147	cmd	Alaric	45	16016	pirate.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS The pirate! [-48] // Your fists of fury injures The pirate. [-15]
+1792894153	cmd	Alaric	45	16016	pirate.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS The pirate! [-44] // Your fists of fury maims The pirate! [-36]
+1792894159	cmd	Alaric	45	16016	pirate.are	standing	95	0	-	fists		Who do you want to attack?
+1792894159	cmd	Alaric	45	16017	pirate.are	standing	95	0	-	east		Main Deck of the Royal Eagle //   You are aboard the Royal Eagle - the flag ship of the Krondorian fleet.  She // seems to have been out to sea many times on many voyages.  Crewmen are
+1792894160	cmd	Alaric	45	16017	pirate.are	standing	95	0	-	kill	pi	The pirate parries your attack. // The pirate parries your attack. // The pirate parries your attack.
+1792894164	cmd	Alaric	45	16016	pirate.are	standing	95	0	-	west		Main Deck of the Royal Eagle - Port //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792894165	cmd	Alaric	45	16011	pirate.are	standing	95	0	-	up		Aft Deck - Port Side //   You are standing on the aft deck of the ship.  The ship sways back and // forth slowly, causing you to feel seasick.  Pirates walk around up here
+1792894166	cmd	Alaric	45	16006	pirate.are	standing	95	0	-	south		Southwest Corner of Aft Deck //   You are standing on the aft deck of the ship.  From here, you could see // all the people ashore selling their fresh catch.  The ship rocks slowly
+1792894168	cmd	Alaric	45	16006	pirate.are	standing	95	0	-	kill	pi	The angry pirate parries your attack. // Your punch *** DEVASTATES *** The angry pirate! [-78] // Your punch *** DEVASTATES *** The angry pirate! [-67]
+1792894171	cmd	Alaric	45	16006	pirate.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The angry pirate. [-5] // Your fists of fury injures The angry pirate. [-14]
+1792894177	cmd	Alaric	45	16006	pirate.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The angry pirate. [-5] // Your fists of fury wounds The angry pirate. [-17]
+1792894183	cmd	Alaric	45	16006	pirate.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The angry pirate! [-25] // Your fists of fury mauls The angry pirate. [-22]
+1792894188	cmd	Alaric	45	16006	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The angry pirate. [-5] // Your fists of fury grazes The angry pirate. [-5]
+1792894194	cmd	Alaric	45	16006	pirate.are	standing	94	0	-	fists		Who do you want to attack?
+1792894194	cmd	Alaric	45	16007	pirate.are	standing	94	0	-	east		Aft Deck South //   You are standing on the aft deck of the ship.  From here, you could see // all the people ashore selling their fresh catch.  The ship rocks slowly
+1792894196	cmd	Alaric	45	16012	pirate.are	standing	94	0	-	north		Aft Deck //   You are standing on the aft deck of the ship.  The ship sways back and // forth slowly, causing you to feel seasick.  Pirates walk around up here
+1792894197	cmd	Alaric	45	16012	pirate.are	standing	94	0	-	kill	pi	The angry pirate dodges your attack. // Your punch devastates The angry pirate! [-32] // The angry pirate dodges your attack.
+1792894201	cmd	Alaric	45	16012	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The angry pirate. [-23] // Your fists of fury wounds The angry pirate. [-18]
+1792894207	cmd	Alaric	45	16012	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS The angry pirate! [-42] // Your fists of fury hits The angry pirate. [-11]
+1792894212	cmd	Alaric	45	16012	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The angry pirate. [-15] // Your fists of fury maims The angry pirate! [-33]
+1792894218	cmd	Alaric	45	16012	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The angry pirate. [-10] // Your fists of fury wounds The angry pirate. [-19]
+1792894224	cmd	Alaric	45	16012	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The angry pirate! [-32] // Your fists of fury hits The angry pirate. [-10]
+1792894230	cmd	Alaric	45	16012	pirate.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The angry pirate! [-29] // Your fists of fury injures The angry pirate. [-14]
+1792894235	cmd	Alaric	45	16012	pirate.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The angry pirate. [-12] // Your fists of fury hits The angry pirate. [-12]
+1792894241	cmd	Alaric	45	16012	pirate.are	standing	93	0	-	fists		Who do you want to attack?
+1792894241	cmd	Alaric	45	16013	pirate.are	standing	93	0	-	east		Center Aft Deck //   You are standing on the aft deck of the ship.  This happens to be the // place from which the captain shouts orders to his crew to get the ship
+1792894243	cmd	Alaric	45	16013	pirate.are	standing	93	0	-	kill	buc	Your punch wounds The bucaneer. [-17] // Your punch scratches The bucaneer. [-2] // The bucaneer dodges your attack.
+1792894246	cmd	Alaric	45	16013	pirate.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The bucaneer. [-8] // Your fists of fury wounds The bucaneer. [-18]
+1792894252	cmd	Alaric	45	16013	pirate.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The bucaneer! [-29] // Your fists of fury grazes The bucaneer. [-7]
+1792894258	cmd	Alaric	45	16013	pirate.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The bucaneer. [-4] // Your fists of fury injures The bucaneer. [-16]
+1792894263	cmd	Alaric	45	16013	pirate.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims The bucaneer! [-33] // Your fists of fury grazes The bucaneer. [-7]
+1792894269	cmd	Alaric	45	16013	pirate.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The bucaneer. [-1] // The bucaneer is DEAD!!

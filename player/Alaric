@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792893985
+LogO 1792894050
 Vers 4
 Prom ~
 Ignoring ~
@@ -17,14 +17,14 @@ ChangesSeen 20261023m:1 20261023l:1 20261023k:1 20261023i:1 20261023g:2 20261023
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 45
-Plyd 857126
+Plyd 857191
 ListRemorts 3  3  5  2  2 ~
 NumRemorts 3
 Note 1790386686
 StashMax 150
 Scro 22
 Room 4208
-HMV  7169 7161 12506 12558 5768 5763
+HMV  7161 7161 12518 12558 5763 5763
 NewGold 1499
 NewPlat 1938
 NewCopp 5451
@@ -120,7 +120,7 @@ Achv visit-oz 1791127353
 Achv visit-high-tower 1791329329
 Achv visit-ultima 1791329350
 Achv visit-korzath-fortress 1790899622
-LastOut  1792893985
+LastOut  1792894050
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1792889534
@@ -168,11 +168,11 @@ Color 16 6
 Pos  8
 Prac 208
 Trai 46
-Save  -10
+Save  -13
 Alig  934
-Hit   66
-Dam   98
-ACs -165 -175 -129 -44
+Hit   70
+Dam   100
+ACs -179 -191 -141 -44
 Attr 20 13 13 16 21
 AMod 54 25 25 33 27
 Pass Al3w9zuAlwpyY~
@@ -229,65 +229,65 @@ Sk 100 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'invis'  42  29   0   0          2          0
-AffD 'titanic'   0   8  50  16          0          0
-AffD 'titanic'   0   8 4795  14          0          0
-AffD 'titanic'  29   8 10215  12          0          0
-AffD 'titanic'  21   8 5895  13          0          0
-AffD 'empower'  18   8 -100  17          0          0
-AffD 'empower'  17   8  20  19          0          0
-AffD 'empower'  17   8  20  18          0          0
-AffD 'empower'  17   8  15   5          0          0
-AffD 'empower'  16   8  11   2          0          0
-AffD 'empower'  21   8  15   4          0          0
-AffD 'empower'  16   8  15   3          0          0
-AffD 'giant strength'  36  29  15   1          0          0
-AffD 'divine protection'  32  29   0   0          0       4096
-AffD 'fire shield'  27  29   0   0          0          8
-AffD 'protection evil'  25  29   0   0       8192          0
-AffD 'pass door'  34  29   0   0    1048576          0
-AffD 'fly'  41  29   0   0     524288          0
-AffD 'haste'  37  29   4   2    2097152          0
-AffD 'sanctuary'  38  29   0   0        128          0
-AffD 'empower'  38   8   0   0          0          0
-AffD 'giant strength'   0  29  15   1          0          0
-AffD 'divine protection'   0  29   0   0          0       4096
-AffD 'fire shield'   0  29   0   0          0          8
-AffD 'protection evil'   0  29   0   0       8192          0
-AffD 'pass door'   0  29   0   0    1048576          0
-AffD 'fly'   0  29   0   0     524288          0
-AffD 'haste'   0  29   4   2    2097152          0
-AffD 'sanctuary'   0  29   0   0        128          0
-AffD 'shroud'   0  29 -35  17          0          0
-AffD 'power gloves'   0  29  28  19          0          0
-AffD 'detect evil'   0  29   0   0          4          0
-AffD 'detect good'   0  29   0   0          0          2
-AffD 'detect magic'   0  29   0   0         16          0
-AffD 'detect hidden'   0  29   0   0         32          0
-AffD 'detect invis'   0  29   0   0          8          0
-AffD 'frenzy'   0  29 110  17          0          0
-AffD 'frenzy'   0  29  11  19          0          0
-AffD 'frenzy'   0  29  11  18          0          0
-AffD 'giant strength'   0  29   4   1          0          0
-AffD 'divine protection'   0  29   0   0          0       4096
-AffD 'fire shield'   0  29   0   0          0          8
-AffD 'protection evil'   0  29   0   0       8192          0
-AffD 'pass door'   0  29   0   0    1048576          0
-AffD 'fly'   0  29   0   0     524288          0
-AffD 'haste'   0  29   4   2    2097152          0
-AffD 'sanctuary'  18  29   0   0        128          0
-AffD 'shield'  16  29 -20  17          0          0
-AffD 'bless'  10  29  -8  24          0          0
-AffD 'bless'  41  29   8  18          0          0
-AffD 'armor'  41  29 -20  17          0          0
-AffD 'sanctuary'   0  29   0   0        128          0
-AffD 'haste'   0  29   4   2    2097152          0
-AffD 'fly'   0  29   0   0     524288          0
-AffD 'pass door'   0  29   0   0    1048576          0
-AffD 'protection evil'   0  29   0   0       8192          0
-AffD 'fire shield'   0  29   0   0          0          8
-AffD 'divine protection'   0  29   0   0          0       4096
-AffD 'giant strength'   0  29  15   1          0          0
+AffD 'invis'  42  28   0   0          2          0
+AffD 'titanic'   0   7  50  16          0          0
+AffD 'titanic'   0   7 4795  14          0          0
+AffD 'titanic'  28   7 10215  12          0          0
+AffD 'titanic'  21   7 5895  13          0          0
+AffD 'empower'  18   7 -100  17          0          0
+AffD 'empower'  17   7  20  19          0          0
+AffD 'empower'  17   7  20  18          0          0
+AffD 'empower'  17   7  15   5          0          0
+AffD 'empower'  16   7  11   2          0          0
+AffD 'empower'  20   7  15   4          0          0
+AffD 'empower'  16   7  15   3          0          0
+AffD 'giant strength'  36  28  15   1          0          0
+AffD 'divine protection'  32  28   0   0          0       4096
+AffD 'fire shield'  26  28   0   0          0          8
+AffD 'protection evil'  25  28   0   0       8192          0
+AffD 'pass door'  34  28   0   0    1048576          0
+AffD 'fly'  41  28   0   0     524288          0
+AffD 'haste'  36  28   4   2    2097152          0
+AffD 'sanctuary'  38  28   0   0        128          0
+AffD 'empower'  38   7   0   0          0          0
+AffD 'giant strength'   0  28  15   1          0          0
+AffD 'divine protection'   0  28   0   0          0       4096
+AffD 'fire shield'   0  28   0   0          0          8
+AffD 'protection evil'   0  28   0   0       8192          0
+AffD 'pass door'   0  28   0   0    1048576          0
+AffD 'fly'   0  28   0   0     524288          0
+AffD 'haste'   0  28   4   2    2097152          0
+AffD 'sanctuary'   0  28   0   0        128          0
+AffD 'shroud'   0  28 -35  17          0          0
+AffD 'power gloves'   0  28  28  19          0          0
+AffD 'detect evil'   0  28   0   0          4          0
+AffD 'detect good'   0  28   0   0          0          2
+AffD 'detect magic'   0  28   0   0         16          0
+AffD 'detect hidden'   0  28   0   0         32          0
+AffD 'detect invis'   0  28   0   0          8          0
+AffD 'frenzy'   0  28 110  17          0          0
+AffD 'frenzy'   0  28  11  19          0          0
+AffD 'frenzy'   0  28  11  18          0          0
+AffD 'giant strength'   0  28   4   1          0          0
+AffD 'divine protection'   0  28   0   0          0       4096
+AffD 'fire shield'   0  28   0   0          0          8
+AffD 'protection evil'   0  28   0   0       8192          0
+AffD 'pass door'   0  28   0   0    1048576          0
+AffD 'fly'   0  28   0   0     524288          0
+AffD 'haste'   0  28   4   2    2097152          0
+AffD 'sanctuary'  18  28   0   0        128          0
+AffD 'shield'  16  28 -20  17          0          0
+AffD 'bless'  10  28  -8  24          0          0
+AffD 'bless'  41  28   8  18          0          0
+AffD 'armor'  41  28 -20  17          0          0
+AffD 'sanctuary'   0  28   0   0        128          0
+AffD 'haste'   0  28   4   2    2097152          0
+AffD 'fly'   0  28   0   0     524288          0
+AffD 'pass door'   0  28   0   0    1048576          0
+AffD 'protection evil'   0  28   0   0       8192          0
+AffD 'fire shield'   0  28   0   0          0          8
+AffD 'divine protection'   0  28   0   0          0       4096
+AffD 'giant strength'   0  28  15   1          0          0
 End
 
 #O
@@ -703,27 +703,6 @@ Repd 0
 End
 
 #O
-Vnum 2803
-Nest 0
-Wear 2
-Lev  7
-Cost 36000
-Cond 76
-Repd 0
-Affect -1 7 -1 3 23 0 0
-End
-
-#O
-Vnum 2803
-Nest 0
-Wear 1
-Lev  7
-Cost 36000
-Cond 46
-Repd 0
-End
-
-#O
 Vnum 25106
 Nest 0
 Wear 12
@@ -849,17 +828,6 @@ Repd 0
 End
 
 #O
-Vnum 28114
-Nest 0
-ExtF 19713
-Wear -1
-Lev  51
-Cost 5000000
-Cond 100
-Repd 0
-End
-
-#O
 Vnum 28129
 Nest 0
 ExtF 3328
@@ -869,6 +837,58 @@ Cost 5000000
 Cond 100
 Repd 0
 Affect -1 45 -1 -8 13 0 0
+End
+
+#O
+Vnum 725
+Nest 0
+Wear -1
+Lev  46
+Cost 9500000
+Cond 93
+Repd 0
+Affect -1 46 -1 -13 12 0 0
+End
+
+#O
+Vnum 16006
+Nest 0
+Wear 2
+Lev  43
+Cost 22600000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 16006
+Nest 0
+Wear 1
+Lev  43
+Cost 22600000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3737
+Nest 0
+Wear -1
+Lev  1
+Cost 100000
+Cond 97
+Repd 0
+Val  2 3 3 0 0
+End
+
+#O
+Vnum 703
+Nest 0
+Wear -1
+Lev  47
+Cost 20000000
+Cond 98
+Repd 4
 End
 
 #STASH
@@ -924,16 +944,6 @@ Lev  1
 Cost 200000
 Cond 100
 Repd 0
-End
-
-#O
-Vnum 703
-Nest 0
-Wear -1
-Lev  47
-Cost 20000000
-Cond 98
-Repd 4
 End
 
 #O
@@ -1159,16 +1169,6 @@ Affect -1 23 -1 -3 3 0 0
 End
 
 #O
-Vnum 29012
-Nest 0
-Wear -1
-Lev  9
-Cost 49000
-Cond 83
-Repd 0
-End
-
-#O
 Vnum 29924
 Nest 0
 Wear -1
@@ -1311,27 +1311,6 @@ Affect -1 23 -1 1 17 0 0
 End
 
 #O
-Vnum 29012
-Nest 0
-Wear -1
-Lev  9
-Cost 49000
-Cond 95
-Repd 1
-End
-
-#O
-Vnum 3737
-Nest 0
-Wear -1
-Lev  1
-Cost 100000
-Cond 97
-Repd 0
-Val  2 3 3 0 0
-End
-
-#O
 Vnum 29013
 Nest 0
 Wear -1
@@ -1404,26 +1383,6 @@ Nest 0
 Wear -1
 Lev  48
 Cost 9500000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 16006
-Nest 0
-Wear -1
-Lev  43
-Cost 22600000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 16006
-Nest 0
-Wear -1
-Lev  43
-Cost 22600000
 Cond 100
 Repd 0
 End
@@ -1816,17 +1775,6 @@ Affect -1 53 -1 3 17 0 0
 End
 
 #O
-Vnum 725
-Nest 0
-Wear -1
-Lev  46
-Cost 9500000
-Cond 93
-Repd 0
-Affect -1 46 -1 -13 12 0 0
-End
-
-#O
 Vnum 4618
 Nest 0
 Wear -1
@@ -2144,18 +2092,6 @@ Val  6 5 6 0 0
 End
 
 #O
-Vnum 1388
-Nest 0
-Wear -1
-Lev  19
-Cost 85000000
-Cond 99
-Repd 0
-Val  6 5 5 0 0
-Affect -1 19 -1 -1 21 0 0
-End
-
-#O
 Vnum 10022
 Nest 0
 Wear -1
@@ -2188,6 +2124,70 @@ Cost 22000000
 Cond 92
 Repd 0
 Affect -1 32 -1 -15 14 0 0
+End
+
+#O
+Vnum 28114
+Nest 0
+ExtF 19713
+Wear -1
+Lev  51
+Cost 5000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 1388
+Nest 0
+Wear -1
+Lev  19
+Cost 85000000
+Cond 99
+Repd 0
+Val  6 5 5 0 0
+Affect -1 19 -1 -1 21 0 0
+End
+
+#O
+Vnum 2803
+Nest 0
+Wear -1
+Lev  7
+Cost 36000
+Cond 46
+Repd 0
+End
+
+#O
+Vnum 2803
+Nest 0
+Wear -1
+Lev  7
+Cost 36000
+Cond 76
+Repd 0
+Affect -1 7 -1 3 23 0 0
+End
+
+#O
+Vnum 29012
+Nest 0
+Wear -1
+Lev  9
+Cost 49000
+Cond 83
+Repd 0
+End
+
+#O
+Vnum 29012
+Nest 0
+Wear -1
+Lev  9
+Cost 49000
+Cond 95
+Repd 1
 End
 
 #END
