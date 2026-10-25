@@ -185441,3 +185441,14 @@ Sun Oct 25 12:55:22 2026 :: EOF encountered on read.
 Sun Oct 25 12:56:12 2026 :: Treasure goblin: vanished from room 29124 (Land of The Giants, korzath1.are) (too long in one area).
 Sun Oct 25 13:00:27 2026 :: Sock.sinaddr:  52.87.72.16
 Sun Oct 25 13:00:27 2026 :: EOF encountered on read.
+Sun Oct 25 13:05:31 2026 :: Sock.sinaddr:  5.161.177.47
+Sun Oct 25 13:05:32 2026 :: EOF encountered on read.
+Sun Oct 25 13:06:17 2026 :: Treasure goblin: vanished from room 7732 (A Small Tent, ultima.are) (too long in one area).
+Sun Oct 25 13:06:24 2026 :: Sock.sinaddr:  208.126.22.104
+Sun Oct 25 13:06:26 2026 :: Loading Alaric's playerfile
+Sun Oct 25 13:06:27 2026 :: Loading Alaric's playerfile
+Sun Oct 25 13:06:27 2026 :: Alaric@208.126.22.104 has connected.
+Sun Oct 25 13:06:29 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 0
+Sun Oct 25 13:06:44 2026 :: Log Alaric [4208]: changes
+Sun Oct 25 13:06:58 2026 :: Log Alaric [4208]: affects off: empower, empower, titanic; max hp 7758 -> 1338; max mana 14382 -> 2532; max moves 5948 -> 1063; hp 7135 -> 1338
+Sun Oct 25 13:07:39 2026 :: Log Alaric [4208]: affects off: steel fist
