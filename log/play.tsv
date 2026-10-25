@@ -18541,3 +18541,96 @@
 1792938769	cmd	Alaric	50	15000	campus.are	standing	100	0	-	enter	po	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance
 1792938771	cmd	Alaric	50	15001	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
 1792938772	cmd	Alaric	50	15002	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1792938839	cmd	Alaric	50	15003	campus.are	standing	100	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1792938839	cmd	Alaric	50	15004	campus.are	standing	100	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst
+1792938839	cmd	Alaric	50	15010	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1792938839	cmd	Alaric	50	15011	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1792938840	cmd	Alaric	50	15012	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.
+1792938840	cmd	Alaric	50	15013	campus.are	standing	100	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There
+1792938840	cmd	Alaric	50	15024	campus.are	standing	100	0	-	north		The Ghetto //   The area you see ahead of you is low cost student housing, which is // quite run down, almost into the ground in fact.  You can see many
+1792938840	cmd	Alaric	50	15150	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  There is a house to the // east.  South of you, you can see the end of the ghetto.
+1792938841	cmd	Alaric	50	15149	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  There are houses on either // side of the road.
+1792938841	cmd	Alaric	50	15148	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  To the east, you can see // the A & Z Supermarket.
+1792938841	cmd	Alaric	50	15147	campus.are	standing	100	0	-	north		The Ghetto //   This part of the ghetto seems to have survived.  To the west, you can see, // behind the rubble, the vague outlines of a house.
+1792938841	cmd	Alaric	50	15141	campus.are	standing	100	0	-	north		The Ghetto Intersection //   This intersection is the joining point of what's left of University // Avenue and Earl Road which heads off to the east.
+1792938842	cmd	Alaric	50	15155	campus.are	standing	100	0	-	west		Boss House //   Papers and calculators litter the room, making an otherwise neat house, // messy.
+1792938842	cmd	Alaric	50	15156	campus.are	standing	100	0	-	south		Frec House //   This house reminds you of your room, only worse.  It seems to be a // post-holocaust version of it.
+1792938845	cmd	Alaric	50	15156	campus.are	standing	100	0	-	exits		Obvious exits: // North - Boss House
+1792938849	cmd	Alaric	50	15155	campus.are	standing	100	0	-	north		Boss House //   Papers and calculators litter the room, making an otherwise neat house, // messy.
+1792938863	cmd	Alaric	50	15141	campus.are	standing	100	0	-	east		The Ghetto Intersection //   This intersection is the joining point of what's left of University // Avenue and Earl Road which heads off to the east.
+1792938863	cmd	Alaric	50	15140	campus.are	standing	100	0	-	north		The Ghetto //   The road would normally run north-south, but the way north is blocked // by a small obstacle... An overturned policemobile.  There is a house
+1792938864	cmd	Alaric	50	15139	campus.are	standing	100	0	-	west		Ghetto House //   It looks like a hellhole... // It's a mess.
+1792938864	cmd	Alaric	50	15139	campus.are	standing	100	0	-	open	north	Ok.
+1792938864	cmd	Alaric	50	15138	campus.are	standing	100	0	-	north		Frec House //   You feel a little apprehensive as you enter this house... // It's a mess.
+1792938867	cmd	Alaric	50	15138	campus.are	standing	100	0	-	get	all	You get The Sceptre of Gravestone.
+1792938871	cmd	Alaric	50	15139	campus.are	standing	100	0	-	south		Ghetto House //   It looks like a hellhole... // It's a mess.
+1792938872	cmd	Alaric	50	15140	campus.are	standing	100	0	-	east		The Ghetto //   The road would normally run north-south, but the way north is blocked // by a small obstacle... An overturned policemobile.  There is a house
+1792938872	cmd	Alaric	50	15141	campus.are	standing	100	0	-	south		The Ghetto Intersection //   This intersection is the joining point of what's left of University // Avenue and Earl Road which heads off to the east.
+1792938872	cmd	Alaric	50	15147	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  To the west, you can see, // behind the rubble, the vague outlines of a house.
+1792938872	cmd	Alaric	50	15148	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  To the east, you can see // the A & Z Supermarket.
+1792938873	cmd	Alaric	50	15149	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  There are houses on either // side of the road.
+1792938873	cmd	Alaric	50	15150	campus.are	standing	100	0	-	south		The Ghetto //   This part of the ghetto seems to have survived.  There is a house to the // east.  South of you, you can see the end of the ghetto.
+1792938873	cmd	Alaric	50	15024	campus.are	standing	100	0	-	south		The Ghetto //   The area you see ahead of you is low cost student housing, which is // quite run down, almost into the ground in fact.  You can see many
+1792938873	cmd	Alaric	50	15013	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  To the north you can see several menacing figures.  There
+1792938874	cmd	Alaric	50	15012	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  A road branches off to the east.
+1792938874	cmd	Alaric	50	15011	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1792938874	cmd	Alaric	50	15010	campus.are	standing	100	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1792938874	cmd	Alaric	50	15004	campus.are	standing	100	0	-	south		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst
+1792938875	cmd	Alaric	50	15003	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1792938878	cmd	Alaric	50	15002	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1792938879	cmd	Alaric	50	15001	campus.are	standing	100	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1792938880	cmd	Alaric	50	15001	campus.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792938881	cmd	Alaric	50	15000	campus.are	standing	100	0	-	west		The Eastern Campus Entrance //   This gateway is made of limestone, and covered in ivy.  Beyond the // entrance, the university stretches as far as the eye can see.  A sign
+1792938882	cmd	Alaric	50	3795	school.are	standing	100	0	-	enter	po	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // Strange Blending of Time
+1792938883	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792938885	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	20	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Sceptre of Gravestone to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'
+1792938886	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 22 quest points.
+1792938889	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (16) (Glowing) a bag of candy corn // ( 9) guano
+1792938891	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    240 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792938892	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	steel		Your hands can't get any harder.
+1792938926	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1792938970	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    240 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792938977	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	affect		You are affected by: // Skill: 'steel fist' modifies damage roll by 14 for 4 hours. // Spell: 'titanic' modifies experience by 50 for 26 hours.
+1792938983	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792938983	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792938985	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792938987	cmd	Alaric	50	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792938988	cmd	Alaric	50	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792938989	cmd	Alaric	50	9531	newthalo.are	standing	100	0	-	run	e 25	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792938989	cmd	Alaric	50	9531	newthalo.are	standing	100	0	-	open		Ok.
+1792938990	cmd	Alaric	50	9794	newthalo.are	standing	100	0	-	run	e 6	Outside the Eastern Gate of New Thalos // [Exits: east south west] // On a road
+1792938991	cmd	Alaric	50	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792938991	cmd	Alaric	50	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a
+1792938991	cmd	Alaric	50	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792938992	cmd	Alaric	50	16002	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792938993	cmd	Alaric	50	16003	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792938994	cmd	Alaric	50	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1792938995	cmd	Alaric	50	16005	pirate.are	standing	100	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like
+1792938997	cmd	Alaric	50	16005	pirate.are	standing	100	0	-	kill	bu	The bucaneer dodges your attack. // The bucaneer dodges your attack. // The bucaneer dodges your attack.
+1792939000	cmd	Alaric	50	16005	pirate.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The bucaneer. [-21] // Your fists of fury mauls The bucaneer. [-21]
+1792939005	cmd	Alaric	50	16005	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The bucaneer. [-6] // Your fists of fury wounds The bucaneer. [-19]
+1792939011	cmd	Alaric	50	16005	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The bucaneer. [-13] // Your fists of fury injures The bucaneer. [-15]
+1792939068	cmd	Alaric	50	16021	pirate.are	standing	99	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792939069	cmd	Alaric	50	16022	pirate.are	standing	99	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792939069	cmd	Alaric	50	16023	pirate.are	standing	99	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792939071	cmd	Alaric	50	16028	pirate.are	standing	99	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792939072	cmd	Alaric	50	16033	pirate.are	standing	99	0	-	north		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792939074	cmd	Alaric	50	16033	pirate.are	standing	99	0	-	kill	sw	Your punch ^^^ DESTROYS ^^^ The swashbuckler! [-118] // The swashbuckler dodges your attack. // Your punch >>> ANNIHILATES <<< The swashbuckler! [-215]
+1792939077	cmd	Alaric	50	16033	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** The swashbuckler! [-70] // Your fists of fury devastates The swashbuckler! [-29]
+1792939082	cmd	Alaric	50	16033	pirate.are	standing	99	0	-	fists		Who do you want to attack?
+1792939084	cmd	Alaric	50	16078	pirate.are	standing	99	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792939085	cmd	Alaric	50	16078	pirate.are	standing	99	0	-	scan		The swashbuckler                   -to the East.
+1792939086	cmd	Alaric	50	16079	pirate.are	standing	99	0	-	east		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling
+1792939088	cmd	Alaric	50	16079	pirate.are	standing	99	0	-	kill	sw	Your punch === OBLITERATES === The swashbuckler! [-140] // Your punch misses The swashbuckler. [-0] // Your punch >>> ANNIHILATES <<< The swashbuckler! [-223]
+1792939090	cmd	Alaric	50	16079	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** The swashbuckler! [-63] // Your fists of fury MUTILATES The swashbuckler! [-39]
+1792939096	cmd	Alaric	50	16079	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS The swashbuckler! [-43] // Your fists of fury *** DEVASTATES *** The swashbuckler! [-74]
+1792939103	cmd	Alaric	50	16078	pirate.are	standing	99	0	-	west		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792939103	cmd	Alaric	50	16081	pirate.are	standing	99	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792939103	cmd	Alaric	50	16081	pirate.are	standing	99	0	-	scan		The swashbuckler                   -to the West. // The Lookout                        -right above you.
+1792939104	cmd	Alaric	50	16081	pirate.are	standing	99	0	-	scan		The swashbuckler                   -to the West. // The Lookout                        -right above you.
+1792939105	cmd	Alaric	50	16080	pirate.are	standing	99	0	-	west		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling
+1792939106	cmd	Alaric	50	16080	pirate.are	standing	99	0	-	kill	sw	The swashbuckler blocks your attack with his shield. // The swashbuckler dodges your attack. // Your punch >>> ANNIHILATES <<< The swashbuckler! [-222]
+1792939109	cmd	Alaric	50	16080	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ The swashbuckler! [-84] // Your fists of fury mauls The swashbuckler. [-22]
+1792939115	cmd	Alaric	50	16080	pirate.are	standing	99	0	-	fists		Who do you want to attack?
+1792939117	cmd	Alaric	50	2497	dresden_halloween.are	standing	99	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792939120	cmd	Alaric	50	2497	dresden_halloween.are	standing	99	10	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'A bounty has been posted on It.'
