@@ -1698,6 +1698,9 @@ void char_from_room( CHAR_DATA *ch )
        dragged. After the null check, because breaking it speaks to the
        room. */
     ch->last_room_vnum = ch->in_room->vnum;
+    /* The Blue Candle flares once a room; a new room, a new flame. */
+    if ( !IS_NPC(ch) && ch->pcdata != NULL )
+	ch->pcdata->hyrule_candle_room = 0;
 
     shadowmeld_break( ch, "You step out of the shadows." );
     oracle_on_char_from_room( ch );

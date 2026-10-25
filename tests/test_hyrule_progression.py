@@ -1615,7 +1615,9 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertIn("dt == gsn_archery", finishing_source)
         self.assertNotIn("type_hit", finishing_source)
         self.assertIn("other attacks can wound", fight_source)
-        self.assertIn("!bypass_hyrule_ganon && is_hyrule_ganon(victim)", fight_source)
+        # Every instant kill is one hard blow to him (raw_kill_internal);
+        # staff SLAY and a death damage() already judged pass the bypass.
+        self.assertIn("!bypass_hyrule_ganon && hyrule_instant_kill_resisted( ch, victim )", fight_source)
         self.assertIn("raw_kill_internal( ch, victim, true )", fight_source)
         self.assertIn("hyrule_silver_arrow_ganon_skill 100", fight_source)
         self.assertIn("skill = umax(skill, hyrule_silver_arrow_ganon_skill)", fight_source)

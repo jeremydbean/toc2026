@@ -3299,13 +3299,11 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if (chance > 50)
     {
-    if ( IS_NPC(victim) && victim->pIndexData != NULL
-    &&   victim->pIndexData->vnum == 30225 )
+    if ( hyrule_defies_instant_death( victim ) )
     {
-      act("Farslayer tears through $n, but ancient darkness binds $m to life!",
+      /* Ganon and Gohma take it as one hard blow (raw_kill says how). */
+      act("Farslayer tears through $n, but $e does not fall!",
 	  victim,NULL,NULL,TO_ROOM);
-      act("Farslayer tears through you, but ancient darkness binds you to life!",
-	  victim,NULL,NULL,TO_CHAR);
       if ( !IS_NPC(ch) )
       {
 	SET_BIT(ch->act, PLR_WANTED);
@@ -5211,10 +5209,9 @@ void spell_death_ray( int sn, int level, CHAR_DATA *ch, void *vo )
 	 ch,NULL,NULL,TO_VICT);
     act("A sickly ray of green light flys from $n's hand and strikes $N!",
 	 ch,NULL,victim,TO_ROOM);
-    if ( IS_NPC(victim) && victim->pIndexData != NULL
-    &&   victim->pIndexData->vnum == 30225 )
+    if ( hyrule_defies_instant_death( victim ) )
     {
-        act("$n staggers in the green light, but the ancient darkness refuses to let $m die!",
+        act("$n staggers in the green light, but does not fall!",
             victim,NULL,NULL,TO_ROOM);
         raw_kill(ch,victim);
         return;

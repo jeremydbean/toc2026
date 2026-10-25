@@ -7152,10 +7152,17 @@ static void casino_record_total( CHAR_DATA *ch, bool winnings, long amount )
  * or 50, one loses 10, and the third loses 10 or 40, laid out at random.
  * Its expectation is nothing either way -- (35 - 10 - 25) / 3 -- and a
  * game wins at most 50 and loses at most 40, so there is nothing to farm.
+ * That holds only if every loss is paid in full, so a game wants the
+ * worst sign's 40 gold in the purse, where the NES asked for 10: it made
+ * you leave the screen between games, and this replays in place, so a
+ * loss capped at a purse kept near 10 gold paid up to five gold a game
+ * (audit, 2026-10-25).
  * It is not the casino and does not count toward the casino's
  * achievements, whose totals are gross and would reward sheer volume. Each
  * game costs a round of lag.
  */
+#define HYRULE_GAMBLE_STAKE 40
+
 void do_gamble( CHAR_DATA *ch, char *argument )
 {
     static const char *const sides[3] = { "left", "middle", "right" };
@@ -7190,12 +7197,12 @@ void do_gamble( CHAR_DATA *ch, char *argument )
     {
         send_to_char( "\"Let's play money making game.\" Three coin signs lie face down:\n\r"
                       "GAMBLE LEFT, GAMBLE MIDDLE or GAMBLE RIGHT. One wins 20 or 50 gold,\n\r"
-                      "one loses 10, and one loses 10 or 40. You need 10 gold to play.\n\r", ch );
+                      "one loses 10, and one loses 10 or 40. You need 40 gold to play.\n\r", ch );
         return;
     }
-    if ( !has_enough_gold( ch, 10 ) )
+    if ( !has_enough_gold( ch, HYRULE_GAMBLE_STAKE ) )
     {
-        send_to_char( "You need 10 gold to play.\n\r", ch );
+        send_to_char( "You need 40 gold to play: the worst sign takes 40.\n\r", ch );
         return;
     }
 
@@ -7219,11 +7226,9 @@ void do_gamble( CHAR_DATA *ch, char *argument )
     }
     else
     {
-        long loss = UMIN( query_gold(ch), (long) -value );
-
-        if ( loss > 0 )
-            add_money( ch, -loss );
-        snprintf( buf, sizeof(buf), "You lose %ld gold.\n\r", loss );
+        /* Paid in full: the purse held the worst sign's 40 above. */
+        add_money( ch, value );
+        snprintf( buf, sizeof(buf), "You lose %d gold.\n\r", -value );
     }
     send_to_char( buf, ch );
     act( "$n turns one of the old man's coin signs.", ch, NULL, NULL, TO_ROOM );

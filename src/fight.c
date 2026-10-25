@@ -100,6 +100,13 @@ bool    check_shield_block      args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 /* Set by one_hit for a vampiric weapon's swing and taken by the next
    damage() call, which drinks from what that blow really takes. */
 static bool vampiric_blow;
+/* Set by a caller for the one blow that follows: a blow whose size the
+   NES fixes -- an arrow that bursts a pols voice, a boomerang that kills a
+   keese or a gel, the bomb a Dodongo swallows for half its health.
+   damage() takes it at entry, and no armour roll, sanctuary or resistance
+   shaves the blow below what it was asked to be. Passing "hit + 10" alone
+   killed a level 31 pols voice one shot in six. */
+bool hyrule_exact_blow;
 
 static void raw_kill_internal   args( ( CHAR_DATA *ch, CHAR_DATA *victim,
                                         bool bypass_hyrule_ganon ) );
@@ -367,6 +374,52 @@ static void reform_hyrule_ganon( CHAR_DATA *ch, CHAR_DATA *victim )
     }
 }
 
+/*
+ * An instant kill -- a fatality, Farslay, a death ray -- is one hard blow
+ * to Ganon or Gohma, never their death: a tenth of their health, as the
+ * Silver Arrow's floor is. Ganon brought to one hit point by it is
+ * stunned as any blow leaves him, and still wants the Silver Arrow; Gohma
+ * still wants an arrow at her eye. Farslay read from anywhere in the world
+ * used to stun Ganon outright at full health, and a thief's backstab
+ * fatality killed Gohma with no arrow at all. Staff SLAY is the override
+ * (raw_kill_internal's bypass), and a death damage() has already judged
+ * by these same rules arrives with the bypass too.
+ */
+bool hyrule_defies_instant_death( CHAR_DATA *victim )
+{
+    return victim != NULL && IS_NPC(victim) && victim->pIndexData != NULL
+        && ( is_hyrule_ganon(victim)
+          || victim->pIndexData->vnum == HYRULE_GOHMA_VNUM );
+}
+
+static bool hyrule_instant_kill_resisted( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    int share;
+
+    if ( !hyrule_defies_instant_death(victim) )
+        return false;
+
+    share = UMAX( 1, victim->max_hit / HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR );
+    if ( is_hyrule_ganon(victim) )
+    {
+        if ( !is_stunned_hyrule_ganon(victim) )
+            victim->hit = UMAX( 1, victim->hit - share );
+        if ( victim->hit <= 1 )
+            reform_hyrule_ganon( ch, victim );
+        else
+            act( "$n reels from the blow, but the darkness binds $m to life!",
+                 victim, NULL, NULL, TO_ROOM );
+        return true;
+    }
+
+    victim->hit = UMAX( 1, victim->hit - share );
+    if ( victim->position <= POS_STUNNED )
+        victim->position = victim->fighting != NULL ? POS_FIGHTING : POS_STANDING;
+    act( "$n reels, and $s armored eye snaps shut: only an arrow can finish $m.",
+         victim, NULL, NULL, TO_ROOM );
+    return true;
+}
+
 static int hyrule_dungeon_entrance( int room_vnum )
 {
     static const int first_rooms[] =
@@ -403,15 +456,28 @@ static void apply_hyrule_contact_effect( CHAR_DATA *ch, CHAR_DATA *victim )
         return;
 
     attacker_vnum = hyrule_enemy_kind( ch->pIndexData->vnum );
+    /* A like like eats the Magical Shield and nothing else, as on the NES
+       (UpdateLikeLike, Z_04.asm ~6886, clears InvMagicShield). It used to
+       dissolve whatever shield was worn -- a guardian's, the Mirror Shield,
+       a rare piece from outside Hyrule -- with no way back. The Magical
+       Shield is a shop's, sold again for 90 to 160 gold. */
     if ( ( attacker_vnum == HYRULE_LIKE_LIKE_VNUM
         || attacker_vnum == HYRULE_BLUE_LIKE_LIKE_VNUM )
     &&   number_percent() <= 8
-    &&   ( equipment = get_eq_char(victim, WEAR_SHIELD) ) != NULL
-    &&   equipment->item_type == ITEM_ARMOR )
+    &&   ( equipment = get_eq_char(victim, WEAR_SHIELD) ) != NULL )
     {
-        act( "$n engulfs $p and dissolves it!", ch, equipment, victim, TO_ROOM );
-        act( "$n engulfs and dissolves your $p!", ch, equipment, victim, TO_VICT );
-        extract_obj( equipment );
+        if ( equipment->pIndexData != NULL
+        &&   IS_HYRULE_MAGICAL_SHIELD(equipment->pIndexData->vnum) )
+        {
+            act( "$n engulfs $p and dissolves it!", ch, equipment, victim, TO_NOTVICT );
+            act( "$n engulfs and dissolves your $p!", ch, equipment, victim, TO_VICT );
+            extract_obj( equipment );
+        }
+        else
+        {
+            act( "$n's maw closes on $p, then lets it go: it is not what a "
+                 "like like eats.", ch, equipment, victim, TO_VICT );
+        }
         return;
     }
 
@@ -429,6 +495,13 @@ static void apply_hyrule_contact_effect( CHAR_DATA *ch, CHAR_DATA *victim )
             return;
         }
 
+        /* A weapon that cannot be taken off stays where it is. */
+        if ( IS_OBJ_STAT( equipment, ITEM_NOREMOVE ) )
+        {
+            act( "$n's touch numbs your hands, but $p will not leave them.",
+                 ch, equipment, victim, TO_VICT );
+            return;
+        }
         unequip_char( victim, equipment );
         act( "$n's touch numbs your hands, knocking $p out of use!",
              ch, equipment, victim, TO_VICT );
@@ -1418,8 +1491,10 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     LIST_ITERATOR iter;
     /* This blow's, taken at once so it can never carry to another. */
     bool vampiric = vampiric_blow;
+    int exact = hyrule_exact_blow ? dam : 0;
 
     vampiric_blow = false;
+    hyrule_exact_blow = false;
 
     if ( victim->position == POS_DEAD )
 	return false;
@@ -1667,6 +1742,8 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
             / HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR));
 
     dam = apply_hyrule_relic_damage_reduction( victim, dam, dam_type );
+    if ( exact > 0 && !immune && ch != victim )
+        dam = UMAX( dam, exact );
 
     /* Staff invulnerability, absorbing. Borrowing the immunity the game
        already has a voice for -- "$N is unaffected by your slash!" --
@@ -1687,6 +1764,11 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
        hitter in thirteen blows and the gentlest in eighteen. */
     if ( dam > 0 && is_treasure_goblin( victim ) )
 	dam = treasure_goblin_blow( victim, dam );
+
+    /* A patra's ring of eyes and an unshrunk digdogger take a landed blow
+       on something else, and hyrule.c says what. */
+    if ( dam > 0 && victim != ch && hyrule_blow_turned_aside( ch, victim ) )
+	return false;
 
     dam_message( ch, victim, dam, dt, immune );
 
@@ -1739,13 +1821,18 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     }
     if ( IS_NPC(victim) && victim->pIndexData != NULL )
     {
+        /* Only an arrow at the open eye finishes her (Gohma_HandleWeapon-
+           Collision, Z_04.asm:8466): SHOOT with the bow or the Silver Arrow
+           wielded. Asking only what was wielded let a sword round, a spell
+           or a bomb finish her for anyone holding a bow. */
         if ( victim->hit < 1
         &&   victim->pIndexData->vnum == HYRULE_GOHMA_VNUM
-        &&   !wields_object_vnum(ch, HYRULE_BOW_VNUM)
-        &&   !wields_object_vnum(ch, OBJ_VNUM_HYRULE_SILVER_ARROW) )
+        &&   !( dt == gsn_archery
+             && ( wields_object_vnum(ch, HYRULE_BOW_VNUM)
+               || wields_object_vnum(ch, OBJ_VNUM_HYRULE_SILVER_ARROW) ) ) )
         {
             victim->hit = 1;
-            act( "$N's armored eye closes; only an arrow can finish the blow.",
+            act( "$N's armored eye closes; only an arrow can finish the blow.  Wield the bow and SHOOT $M.",
                  ch, NULL, victim, TO_CHAR );
             act( "$N's armored eye closes against $n's finishing blow.",
                  ch, NULL, victim, TO_ROOM );
@@ -2020,7 +2107,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 
 	  if(IS_NPC(victim) && IS_SET(victim->off_flags,OFF_SUMMONER) )
 	  {
-	    raw_kill_internal( ch, victim, is_hyrule_ganon(victim) );
+	    raw_kill_internal( ch, victim, true );
 
             FOR_EACH_CHARACTER( iter, vch )
             {
@@ -2045,7 +2132,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	    }
 	  }
 	  else
-	    raw_kill_internal( ch, victim, is_hyrule_ganon(victim) );
+	    raw_kill_internal( ch, victim, true );
 
 	  if ( victim_was_npc )
 	    handle_automatic_corpse_commands( ch );
@@ -2136,6 +2223,14 @@ bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim )
     if ( is_hyrule_bystander(victim) )
     {
 	act("$N is no enemy of yours.",ch,NULL,victim,TO_CHAR);
+	return true;
+    }
+
+    /* A bubble or a blade trap: nothing harms it on the NES, so a fight
+       with it would never end. Said before anything is spent. */
+    if ( hyrule_enemy_is_invincible(victim) )
+    {
+	act("Nothing harms $N. Go round it.",ch,NULL,victim,TO_CHAR);
 	return true;
     }
 
@@ -3250,11 +3345,8 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
     OBJ_DATA *obj;
     OBJ_DATA *obj_next;
 
-    if ( !bypass_hyrule_ganon && is_hyrule_ganon(victim) )
-    {
-        reform_hyrule_ganon( ch, victim );
+    if ( !bypass_hyrule_ganon && hyrule_instant_kill_resisted( ch, victim ) )
         return;
-    }
 
     /* The black market dealer never dies, and the treasure goblin is only
        ever worn down: an instant kill is a hard blow to him (goblin.c,
@@ -4987,8 +5079,9 @@ void do_backstab( CHAR_DATA *ch, char *argument )
     if ( is_unfindable_mob( victim ) )
         chance = 0;
 
-    /* The divinely warded never suffer a fatality. */
-    if ( is_divinely_warded( victim ) )
+    /* The divinely warded never suffer a fatality, and Ganon and Gohma
+       only fall to their arrows: the backstab lands as a backstab. */
+    if ( is_divinely_warded( victim ) || hyrule_defies_instant_death( victim ) )
         chance = 0;
 
     if ((chance >= number_percent()) && chance !=0)
@@ -5711,11 +5804,8 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
   CHAR_DATA *vch;
   LIST_ITERATOR iter;
 
-    if ( is_hyrule_ganon(victim) )
-    {
-        reform_hyrule_ganon( ch, victim );
+    if ( hyrule_instant_kill_resisted( ch, victim ) )
         return;
-    }
 
     /* The Oracle, Herbie and Killuminati cannot be finished. */
     if ( is_divinely_warded( victim ) )

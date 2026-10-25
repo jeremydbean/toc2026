@@ -436,7 +436,8 @@ static bool hyrule_foe( CHAR_DATA *victim )
     int vnum;
 
     if ( !IS_NPC(victim) || victim->pIndexData == NULL
-    ||   IS_AFFECTED(victim, AFF_CHARM) || is_hyrule_bystander( victim ) )
+    ||   IS_AFFECTED(victim, AFF_CHARM) || is_hyrule_bystander( victim )
+    ||   hyrule_enemy_is_invincible( victim ) )
         return false;
     vnum = victim->pIndexData->vnum;
     return ( vnum >= 30200 && vnum <= 30799 )

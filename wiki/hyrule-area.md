@@ -809,7 +809,7 @@ field, `HyruleSecrets` (`pcdata->hyrule_secrets`, under `case 'H'` in
 | --- | --- | --- |
 | 14 "It's a secret to everybody" caves | A moblin gives 10, 30 or 100 gold | The moblin pays as you walk in, once per character for each cave. No coin pile lies on the floor, so nothing refills at a reset. |
 | 9 door repairs | "Pay me for the door repair charge": 20 gold | Unchanged: charged on entry, once per character for each cave (the hidden receipt). |
-| 5 money-making games | Pick one of three coin signs | NES odds: one sign wins 20 or 50, one loses 10, one loses 10 or 40, at random; you need 10 gold. Its expectation is nothing either way, the stake is bounded at 50, and it no longer counts toward the casino achievements, so neither the coin nor the achievements can be farmed. `GAMBLE LEFT|MIDDLE|RIGHT`, and each game costs a round of lag. |
+| 5 money-making games | Pick one of three coin signs | NES odds: one sign wins 20 or 50, one loses 10, one loses 10 or 40, at random; you need 40 gold (the NES asked 10, but sent you off the screen between games -- a loss capped at a small purse made the game pay). Its expectation is nothing either way, the stake is bounded at 50, and it no longer counts toward the casino achievements, so neither the coin nor the achievements can be farmed. `GAMBLE LEFT|MIDDLE|RIGHT`, and each game costs a round of lag. |
 | 7 potion shops | The old woman wants the Letter | Unchanged: she sells only to someone carrying the Letter. |
 | 4 "Take any one you want" (`H5`, `L8`, `M3`, `P3`) | A Heart Container or a red potion | Take one and the other is refused, once per character for each cave. These were plain heart caves. |
 | Heart Container on the `P6` dock | Lying on the dock, by stepladder | Taken once per character. |
@@ -864,10 +864,10 @@ as `open <keyword>`, so a published route stays honest.
 | Wooden, White, Magical Sword | Weapons; the White and Magical need hearts |
 | Boomerang, Magical Boomerang | Wielded weapons; `SHOOT <enemy>` throws it: light damage and the enemy is stunned out of the fight for a moment; a keese or gel dies outright. The Magical one hits harder. |
 | Bow + Arrows | `SHOOT <enemy>` in the room, with the bow wielded and the quiver carried: bow damage plus your damroll, a gold coin a shot, no Archery skill needed. An arrow kills a pols voice outright and finishes Gohma. |
-| Bombs | `BOMB` a cracked wall (uses one), or `BOMB <enemy>` for fire damage (uses one); Dodongo swallows one for half its health. Four to a purchase; the bag holds 8, 12 or 16. |
-| Blue and Red Candle | Light; `BURN` a bush; `BURN <enemy>` for fire damage (the Red Candle burns hotter) |
+| Bombs | `BOMB` a cracked wall (uses one), or `BOMB <enemy>` for fire damage (uses one); every Dodongo -- Level 2's guardian and those of Levels 5 and 7 -- swallows one for exactly half its health, so two kill it. Four to a purchase; the bag holds 8, 12 or 16. |
+| Blue and Red Candle | Light; `BURN` a bush; `BURN <enemy>` for fire damage. The Blue Candle flares once a room, as on the NES (leaving the room renews it); the Red Candle burns hotter and as often as you like |
 | Bait | `FEED` the hungry Goriya (used up), or `FEED BAIT` to set it down: the room's enemies stop fighting and turn to it for a while (kept; never a guardian) |
-| Recorder | Drains Level 7's lake, shrinks Digdogger (a third of its health), and on the overworld its whirlwind carries you to a dungeon's screen: any whose Triforce piece you carry, and the one you are working on (`hyrule_next_level`). `PLAY RECORDER` goes to the next of those in turn -- the one being worked on first from a screen that is no dungeon's -- and `PLAY RECORDER <level>` straight to one. `BLOW` is the same command. A puzzle that wants the tune always gets it, a level or not |
+| Recorder | Drains Level 7's lake, shrinks every digdogger in the room to a third of its health, once each (Level 7's cannot be hurt at all until it has), and on the overworld its whirlwind carries you to a dungeon's screen: any whose Triforce piece you carry, and the one you are working on (`hyrule_next_level`). `PLAY RECORDER` goes to the next of those in turn -- the one being worked on first from a screen that is no dungeon's -- and `PLAY RECORDER <level>` straight to one. `BLOW` is the same command. A puzzle that wants the tune always gets it, a level or not |
 | Magical Rod | A wand of acid blast; with the Magic Book carried its blast bursts into flame as well |
 | Magic Book | Held armour; the Rod's fire |
 | Letter | The potion shops sell only to its carrier |
@@ -1012,7 +1012,7 @@ Warp stones require the Power Bracelet. Their route permutations are:
 | `play recorder` | The Recorder itself | Level 7's lake, Digdogger, the whirlwind |
 | `feed <guardian>`, `feed bait` | Enemy bait | Hungry Goriya; calming a room |
 | `push <target>` | Context dependent | Blocks, Armos, the gravestone, warp stones |
-| `gamble left\|middle\|right` | 10 gold in a money game | First Quest gambling caves |
+| `gamble left\|middle\|right` | 40 gold in a money game | First Quest gambling caves |
 | `shoot <enemy>` | The bow and a quiver (a gold coin a shot), or a boomerang | Pols voice, Gohma, stunning |
 | `give <n> gold <old woman>` | 10/30/50 or 5/10/20 gold | The two "pay me and I'll talk" caves |
 | `buy bag` | 100 gold | The Level 5 and Level 7 bomb bags |
@@ -1046,7 +1046,22 @@ Runtime rules add the behaviors the area format cannot express alone:
   finishing shot always lands, requires no Archery skill, and does not consume
   the Arrow. `Look ganon` repeats that instruction. Immortal `slay` remains an
   administrative override.
-- Like Likes can swallow equipped shields; Bubbles can disarm weapons.
+- Like Likes swallow the Magical Shield and nothing else (UpdateLikeLike);
+  any other shield they spit out. Bubbles can disarm weapons, but never one
+  that cannot be taken off.
+- Bubbles and blade traps cannot be harmed: a blow passes through and the
+  fight ends. They never hold a shutter shut.
+- A patra's great eye cannot be touched while its ring of eight eyes
+  orbits it: each landed blow cuts one down, and the ring lashes less hard
+  for every eye gone (Z_04.asm:10044).
+- Manhandla's heads decide its volley: as many fireballs as heads, half
+  again harder for each head lost, and the last head twice a round.
+- An instant kill -- Farslay, a death ray, a fatality -- is one hard blow
+  (a tenth of the health) to Ganon and Gohma, never their death. Gohma
+  dies only to an arrow (SHOOT with the bow), Ganon only to the Silver
+  Arrow; staff SLAY is the override.
+- An arrow at a pols voice and a boomerang at a keese or a gel kill
+  outright, every time: the armour roll no longer saves one in six.
 - Wallmasters can return a player to that dungeon's entrance.
 - Raft and Stepladder crossings verify the corresponding item. The overworld
   has two: the raft from Lake Hylia's Eastern Dock (`P5`) to the Lonely Isle,

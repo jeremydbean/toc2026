@@ -261,5 +261,92 @@ class HyruleNesTests(unittest.TestCase):
                       "a reset would reseal an opened way with nothing to open it by")
 
 
+FIGHT_C = (ROOT / "src" / "fight.c").read_text(encoding="latin-1")
+SPECIAL_C = (ROOT / "src" / "special.c").read_text(encoding="latin-1")
+MAGIC2_C = (ROOT / "src" / "magic2.c").read_text(encoding="latin-1")
+
+
+def c_function(source: str, signature: str) -> str:
+    start = source.index(signature)
+    body = source.index("\n{", start)
+    depth, i = 0, body + 1
+    while True:
+        if source[i] == "{":
+            depth += 1
+        elif source[i] == "}":
+            depth -= 1
+            if depth == 0:
+                return source[start:i + 1]
+        i += 1
+
+
+class HyruleMechanicsSourceTests(unittest.TestCase):
+    """The 2026-10-25 mechanics audit's findings that are random or need a
+    world-ending spell to play: held to the source instead.
+    tests/test_hyrule_mechanics_live.py plays the rest."""
+
+    def test_a_like_like_eats_only_the_magical_shield(self) -> None:
+        """UpdateLikeLike (Z_04.asm ~6886) clears InvMagicShield and nothing
+        else. It dissolved any worn shield, the Mirror Shield and rare
+        pieces from outside Hyrule included."""
+        effect = c_function(FIGHT_C, "static void apply_hyrule_contact_effect(")
+        like_like = effect.split("HYRULE_LIKE_LIKE_VNUM", 1)[1].split("HYRULE_BUBBLE_VNUM", 1)[0]
+        guard = like_like.index("IS_HYRULE_MAGICAL_SHIELD")
+        self.assertLess(guard, like_like.index("extract_obj"))
+        self.assertNotIn("item_type == ITEM_ARMOR", like_like)
+
+    def test_instant_kills_are_one_hard_blow_to_ganon_and_gohma(self) -> None:
+        """Farslay from anywhere stunned Ganon at full health, and a backstab
+        fatality killed Gohma with no arrow: raw_kill_internal guarded Ganon
+        only by collapsing him, and Gohma not at all."""
+        raw = c_function(FIGHT_C, "static void raw_kill_internal(")
+        self.assertIn("hyrule_instant_kill_resisted", raw.split("black_market_cheats_death")[0])
+        resisted = c_function(FIGHT_C, "static bool hyrule_instant_kill_resisted(")
+        self.assertIn("HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR", resisted)
+        self.assertIn("HYRULE_GOHMA_VNUM", c_function(FIGHT_C, "bool hyrule_defies_instant_death("))
+        self.assertIn("hyrule_instant_kill_resisted", c_function(FIGHT_C, "void fatality("))
+        self.assertIn("hyrule_defies_instant_death", c_function(FIGHT_C, "void do_backstab("))
+        self.assertEqual(2, MAGIC2_C.count("hyrule_defies_instant_death( victim )"))
+        # A death damage() has judged arrives with the bypass: damage()
+        # already holds Gohma to an arrow and Ganon to the Silver Arrow.
+        self.assertNotIn("raw_kill_internal( ch, victim, is_hyrule_ganon(victim) )", FIGHT_C)
+
+    def test_gohma_is_finished_by_an_arrow_not_by_holding_a_bow(self) -> None:
+        damage = c_function(FIGHT_C, "bool damage( CHAR_DATA *ch")
+        gohma = damage.split("HYRULE_GOHMA_VNUM", 1)[1][:400]
+        self.assertIn("dt == gsn_archery", gohma)
+
+    def test_a_stunned_ganon_cannot_be_healed_out_of_the_stun(self) -> None:
+        """A heal lifted him above one hit point with the stun's mark kept:
+        neither shootable nor regenerating, for good."""
+        ganon = c_function(SPECIAL_C, "bool spec_ganon(")
+        self.assertIn("IS_AFFECTED2(mob, AFF2_NO_RECOVER) && mob->hit > 1", ganon)
+
+    def test_manhandlas_heads_change_the_fight(self) -> None:
+        """The heads left decide how many blows and how hard
+        (UpdateManhandla, Z_04.asm:7832); it used to throw four whatever
+        the message said."""
+        guardian = SPECIAL_C.split("mob->pIndexData->vnum == 30305", 1)[1][:1200]
+        self.assertIn("count = heads == 1 ? 2 : heads;", guardian)
+        self.assertIn("( 6 - heads )", guardian)
+
+    def test_a_money_cave_pays_before_it_is_claimed(self) -> None:
+        enter = c_function(HYRULE_C, "void hyrule_enter_room(")
+        self.assertLess(enter.index("gain_copper"), enter.index("secret_set"))
+        self.assertNotIn("add_money", enter)
+
+    def test_a_bubble_does_not_take_a_weapon_that_cannot_come_off(self) -> None:
+        effect = c_function(FIGHT_C, "static void apply_hyrule_contact_effect(")
+        bubble = effect.split("HYRULE_BUBBLE_VNUM", 1)[1]
+        self.assertLess(bubble.index("ITEM_NOREMOVE"), bubble.index("unequip_char"))
+
+    def test_bubbles_and_blade_traps_hold_no_shutter(self) -> None:
+        """Clearing a room never asks for them on the NES; nothing harms
+        them, so a shutter they held would never open."""
+        act_move = (ROOT / "src" / "act_move.c").read_text(encoding="latin-1")
+        self.assertIn("hyrule_enemy_is_invincible( victim )",
+                      c_function(act_move, "static bool hyrule_foe("))
+
+
 if __name__ == "__main__":
     unittest.main()

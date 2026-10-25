@@ -574,6 +574,16 @@ bool spec_ganon( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     if ( cmd != NULL || mob->in_room == NULL )
 	return false;
 
+    /* Stunned at one hit point he stays there: a heal or cure cast on him
+       lifted him above it with the stun's mark still on him, so he could
+       be neither shot nor wounded back down -- and never regenerated. */
+    if ( IS_AFFECTED2(mob, AFF2_NO_RECOVER) && mob->hit > 1 )
+    {
+	mob->hit = 1;
+	stop_fighting( mob, true );
+	mob->position = POS_STUNNED;
+    }
+
     if ( mob->fighting == NULL || mob->position != POS_FIGHTING )
     {
 	if ( mob->position > POS_STUNNED
@@ -710,8 +720,16 @@ bool spec_hyrule_guardian( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 
     if ( mob->pIndexData->vnum == 30305 )
     {
-	/* Manhandla: a head falls with each quarter of its health. */
+	/* Manhandla: a head falls with each quarter of its health, and each
+	   one lost speeds up the rest (UpdateManhandla, Z_04.asm:7832): the
+	   heads left spit that many times, each harder -- half again for
+	   every head gone -- and the last one whirls twice as often. It
+	   used to say how many heads were left and spit four times anyway. */
 	int heads = URANGE( 1, ( 4 * mob->hit + mob->max_hit - 1 ) / UMAX( 1, mob->max_hit ), 4 );
+
+	count = heads == 1 ? 2 : heads;
+	dam_min = dam_min * ( 6 - heads ) / 2;
+	dam_max = UMAX( dam_min, dam_max * ( 6 - heads ) / 2 );
 
 	snprintf( buf, sizeof(buf),
 		  heads == 1 ? "Manhandla's last head whirls about the chamber, spitting fire!"
@@ -750,7 +768,10 @@ bool spec_hyrule_guardian( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 /*
  * A patra: a great eye at the heart of a ring of smaller ones that orbit
  * it and lash at everything near. Each pulse in a fight, the ring strikes
- * every player fighting it for half its level to its level.
+ * every player fighting it, up to its level, less for every eye cut down.
+ * The great eye cannot be touched until the ring is broken: each landed
+ * blow cuts down an eye instead (hyrule_blow_turned_aside, as the NES's
+ * Patra cannot be hurt while children remain, Z_04.asm:10044).
  */
 /*
  * A fountain fairy of Hyrule: as on the NES, the pond restores whoever
@@ -772,6 +793,7 @@ bool spec_hyrule_patra( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     CHAR_DATA *rch;
     CHAR_DATA *rch_next;
     int sn;
+    int eyes;
     bool struck = false;
 
     UNUSED_PARAM(ch);
@@ -780,6 +802,11 @@ bool spec_hyrule_patra( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     if ( cmd != NULL || mob->in_room == NULL
     ||   mob->fighting == NULL || mob->position != POS_FIGHTING
     ||   ( sn = skill_lookup( "magic missile" ) ) < 0 )
+	return false;
+
+    /* The ring lashes as hard as the eyes left in it: a broken ring
+       leaves the great eye to fight alone (hyrule_patra_eyes_left). */
+    if ( ( eyes = hyrule_patra_eyes_left( mob ) ) <= 0 )
 	return false;
 
     for ( rch = mob->in_room->people; rch != NULL; rch = rch_next )
@@ -791,7 +818,9 @@ bool spec_hyrule_patra( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	    act( "The ring of eyes orbiting $n tightens and lashes outward!",
 		 mob, NULL, NULL, TO_ROOM );
 	struck = true;
-	damage( mob, rch, number_range( UMAX( 1, mob->level / 2 ), UMAX( 1, mob->level ) ),
+	damage( mob, rch,
+		number_range( UMAX( 1, mob->level * eyes / ( 2 * HYRULE_PATRA_EYES ) ),
+			      UMAX( 1, mob->level * eyes / HYRULE_PATRA_EYES ) ),
 		sn, DAM_ENERGY );
 	if ( mob->in_room == NULL || mob->position != POS_FIGHTING )
 	    break;

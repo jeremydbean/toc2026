@@ -2309,8 +2309,8 @@ A 0 0 {AFF_SANCTUARY_FLAG}""",
             22000,
             """E
 mirror shield hyrule light~
-The shield's flawless face turns sorcery and elemental force back toward the
-dark. While worn, it reduces nonphysical damage by 15 percent. This protection
+The shield's flawless face blunts sorcery and elemental force alike. While
+worn, it reduces nonphysical damage by 15 percent. This protection
 combines with the Blue and Red Rings' wards.
 ~
 A

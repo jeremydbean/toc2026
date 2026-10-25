@@ -8,6 +8,23 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Hyrule's enemy and boss rules match the NES** (2026-10-25, the
+  mechanics audit). A like like dissolved any worn shield; it eats only the
+  Magical Shield now. Farslay, a death ray or a fatality stunned Ganon from
+  anywhere at full health or killed Gohma outright; each is one hard blow
+  (`hyrule_instant_kill_resisted`). Gohma died to any blow from somebody
+  holding the bow; only SHOOT finishes her. One-shot kills went through the
+  armour roll and failed up to nine times in ten (`hyrule_exact_blow`).
+  Only the Level 2 Dodongo swallowed bombs. The Recorder shrank a
+  digdogger again whenever it healed, never Level 5's guardian, and cost no
+  lag. Manhandla's heads were only a message. A stunned Ganon healed above
+  one hit point stuck. Patra's ring is a phase now, bubbles and blade traps
+  cannot be harmed and hold no shutter, the Blue Candle flares once a
+  room, a bubble takes no NOREMOVE weapon, a money cave pays before it is
+  claimed, and the money game wants 40 gold so a loss is always paid in
+  full. `tests/test_hyrule_mechanics_live.py` and the source checks in
+  `tests/test_hyrule_nes.py`.
+
 - **Hyrule's mazes and crossings match the NES First Quest** (2026-10-25).
   Read from the disassembly (`CheckMazes`, `LadderRoomsOW`, the docks in
   `SetupTileObjectOW`): the Lost Woods moved from `E2` to `B2` and the Lost

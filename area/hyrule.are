@@ -51,9 +51,9 @@ Dodongo, a huge triceratops-like beast, stomps toward you.
 ~
 An enormous, stocky dinosaur with a thick, armoured hide and a mouth
 wide enough to swallow a man. Dodongo lumbers back and forth across
-its lair, too tough for any sword. Yet it dislikes smoke: it will
-swallow a bomb set in its path, and the blast inside shakes it to its
-core, and the smoke of a bomb stuns it long enough for a blade to
+its lair, its hide turning all but the hardest blows. Yet it dislikes
+smoke: it will swallow a bomb set in its path, and the blast inside
+takes half of it at once, and the smoke of a bomb stuns it long enough for a blade to
 bite. Guardian of the Moon, it leaves a heart container behind.
 ~
 lizard~
@@ -509,9 +509,9 @@ Soot has settled into every wrinkle of his face, and he coughs whenever the
 fires beside him gutter. He has lived too long beside smoke to love it, and
 he swears the horned beast called Dodongo shares his opinion. Feed the
 creature something that smokes and bursts, he hints, patting an empty pouch
-at his hip, and it will do to itself what no blade could ever manage. He
-seems to find the thought funny, and laughs until the coughing takes him
-again.
+at his hip, and the blast will take half of it at once -- two, and it is
+done. He seems to find the thought funny, and laughs until the coughing
+takes him again.
 ~
 human~
 ABMV 0 0 S
@@ -622,10 +622,11 @@ An old man with an eyepatch taps the patch over his eye and rasps, "Aim at the e
 ~
 A leather patch covers his left eye, and he taps it whenever he wants to be
 listened to. The great crab Gohma took the eye, he says, or he took hers;
-he can never quite remember which. Her shell turns any blade, but the eye
-in the middle of it opens now and then, and only an arrow loosed true at
-that moment will finish her. He mimes drawing a bow, sighting carefully
-along it with his one good eye, and looks pleased with the shot.
+he can never quite remember which. Blades and spells will wear her down,
+but her shell turns aside every killing stroke; only an arrow loosed true
+at the eye in the middle of it will finish her. He mimes drawing a bow,
+sighting carefully along it with his one good eye, and looks pleased with
+the shot.
 ~
 human~
 ABMV 0 0 S
@@ -1829,11 +1830,11 @@ a shifty gambler~
 A shifty gambler shuffles three signs about and whispers, "Let's play money making game."
 ~
 His eyes never rest, and neither do his hands, which shuffle three painted
-signs about the floor while he talks. You need 10 gold in your purse to
-play. GAMBLE LEFT, MIDDLE or RIGHT and he turns them over: one sign wins
-you 20 or 50, one loses you 10, and the third loses you 10 or 40. He swears
-the game is honest. He also swears he has never once lost, and both cannot
-be true.
+signs about the floor while he talks. You need 40 gold in your purse to
+play, enough to cover the worst sign. GAMBLE LEFT, MIDDLE or RIGHT and he
+turns them over: one sign wins you 20 or 50, one loses you 10, and the
+third loses you 10 or 40. He swears the game is honest. He also swears he
+has never once lost, and both cannot be true.
 ~
 human~
 ABMV 0 0 S
@@ -1849,7 +1850,7 @@ A dapper gambler adjusts his cuffs and purrs, "Let's play money making game."
 ~
 He is the best-dressed creature in Hyrule, by his own account, in a
 waistcoat embroidered with dice. His game is simple and elegant, he says:
-carry at least 10 gold, then GAMBLE LEFT, MIDDLE or RIGHT. Behind one sign
+carry at least 40 gold, then GAMBLE LEFT, MIDDLE or RIGHT. Behind one sign
 waits a win of 20 or 50, behind another a loss of 10, and behind the last a
 loss of 10 or 40. He shuffles with a flourish, pays out with a bow, and
 collects with a smile.
@@ -1868,7 +1869,7 @@ A coin-flipping gambler flips a gold coin in the air and calls, "Let's play mone
 ~
 He flips a gold coin as he talks, catching it without looking, and never
 once drops it. He likes the odds of his game, he says, though he admits
-they like him more. You must hold 10 gold to sit down. GAMBLE LEFT, MIDDLE
+they like him more. You must hold 40 gold to sit down. GAMBLE LEFT, MIDDLE
 or RIGHT: one of the three signs pays 20 or 50, one costs you 10, and one
 costs you 10 or 40. He has been sitting by the start of the road for years,
 waiting for fresh faces with full purses.
@@ -1886,7 +1887,7 @@ a weary gambler~
 A weary gambler rubs his tired eyes and offers, "Let's play money making game."
 ~
 Dark rings sit under his eyes and he slumps over his three signs like a man
-who has played all night and lost. He has, often. His game wants 10 gold in
+who has played all night and lost. He has, often. His game wants 40 gold in
 your purse before you can play. GAMBLE LEFT, MIDDLE or RIGHT, and one sign
 wins you 20 or 50, one loses you 10, and the third loses 10 or 40. He tells
 you the odds plainly, with the honesty of the very tired, and advises you
@@ -1905,7 +1906,7 @@ a cheerful gambler~
 A cheerful gambler claps his hands and chirps, "Let's play money making game."
 ~
 Win or lose, he is delighted, and he claps his hands at every turn of a
-sign. His game wants a purse of at least 10 gold. GAMBLE LEFT, MIDDLE or
+sign. His game wants a purse of at least 40 gold. GAMBLE LEFT, MIDDLE or
 RIGHT: one sign pays 20 or 50, another takes 10, and the last takes 10 or
 40. He cheers just as loudly when you lose as when you win, which some
 players find charming and others find suspicious. He keeps a tally of his
@@ -7456,8 +7457,8 @@ silver~
 56 12 220000000 P
 E
 mirror shield hyrule light~
-The shield's flawless face turns sorcery and elemental force back toward the
-dark. While worn, it reduces nonphysical damage by 15 percent. This protection
+The shield's flawless face blunts sorcery and elemental force alike. While
+worn, it reduces nonphysical damage by 15 percent. This protection
 combines with the Blue and Red Rings' wards.
 ~
 A

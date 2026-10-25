@@ -1485,6 +1485,10 @@ const char *default_prompt_text args( ( void ) );
 #define HYRULE_KIND_POLS_VOICE     30308
 #define HYRULE_KIND_DIGDOGGER      30309
 #define HYRULE_DODONGO_VNUM        30218
+#define HYRULE_KIND_PATRA          30318
+#define HYRULE_KIND_BUBBLE         30304
+#define HYRULE_KIND_BLADE_TRAP     30337
+#define HYRULE_PATRA_EYES          8
 
 /* A dungeon's map and compass: ITEM_MAP with this in value[0] and the
    dungeon's level in value[4] (hyrule.c draws and points them). */
@@ -2175,6 +2179,9 @@ struct  char_data
     bool                questrush;      /* current quest is a rush contract */
     bool                questemergency; /* current quest is an emergency */
     bool                questdaily;     /* current quest is a daily (quest.c) */
+    /* A Hyrule mobile's fight state (hyrule.c): the eyes cut from a
+       patra's ring, whether a digdogger has been shrunk. Not saved. */
+    sh_int              hyrule_state;
 };
 
 /* Hate data */
@@ -2306,6 +2313,9 @@ struct  pc_data
     unsigned long       hyrule_secrets;
     /* Hyrule enemies killed in a row without a wound; not saved. */
     int                 hyrule_streak;
+    /* The room the Blue Candle last flamed in; it flares once a room, and
+       leaving clears it (char_from_room). Not saved. */
+    int                 hyrule_candle_room;
     int                 trail[TRAIL_LEN];
     sh_int              trail_head;
     sh_int              exp_bonus;       /* cumulative % bonus to exp gains (e.g. 50 = +50%) */
@@ -3411,6 +3421,7 @@ void    violence_update ( void );
 void    multi_hit       ( CHAR_DATA *ch, CHAR_DATA *victim, int dt );
 void    one_hit         ( CHAR_DATA *ch, CHAR_DATA *victim, int dt );
 void    raw_kill        ( CHAR_DATA *ch, CHAR_DATA *victim );
+bool    hyrule_defies_instant_death ( CHAR_DATA *victim );
 bool    damage          ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int class );
 void    update_pos      ( CHAR_DATA *victim );
 void    stop_fighting   ( CHAR_DATA *ch, bool fBoth );
@@ -3490,6 +3501,7 @@ bool    append_area_to_list ( const char *list, const char *entry,
                               char *why, size_t why_size );
 bool    is_loopback_ip  ( uint32_t ip );
 extern bool dns_lookup_enabled;
+extern bool hyrule_exact_blow;
 int     get_curr_stat   ( CHAR_DATA *ch, int stat );
 int     get_max_train   ( CHAR_DATA *ch, int stat );
 int     can_carry_n     ( CHAR_DATA *ch );
@@ -3581,6 +3593,9 @@ bool    hyrule_bought          ( CHAR_DATA *ch, OBJ_DATA *obj );
 bool    hyrule_bomb_creature   ( CHAR_DATA *ch, CHAR_DATA *victim );
 bool    hyrule_shoot           ( CHAR_DATA *ch, OBJ_DATA *weapon, char *argument );
 void    hyrule_burn_creature   ( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *candle );
+bool    hyrule_blow_turned_aside ( CHAR_DATA *ch, CHAR_DATA *victim );
+int     hyrule_patra_eyes_left ( CHAR_DATA *mob );
+bool    hyrule_enemy_is_invincible ( CHAR_DATA *victim );
 bool    hyrule_set_bait        ( CHAR_DATA *ch, OBJ_DATA *bait );
 bool    hyrule_play_recorder   ( CHAR_DATA *ch, const char *argument );
 int     hyrule_next_level      ( CHAR_DATA *ch );

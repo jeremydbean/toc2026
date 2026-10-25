@@ -3456,13 +3456,15 @@ See also: HYRULE ITEMS, HYRULE SECRETS, PUSH, SHOOT, LOOK
 Syntax: gamble left|middle|right
 
 GAMBLE plays the old man's money-making game in one of Hyrule's five
-gambling caves, as the NES played it.  You need 10 gold.  Three coin
+gambling caves, as the NES played it.  You need 40 gold.  Three coin
 signs lie face down: one wins 20 or 50 gold, one loses 10, and one loses
 10 or 40, laid out at random.  Pick one and all three are turned.
 
 Over many games it pays nothing either way, a game wins at most 50 and
-loses at most 40, and each costs a round of lag.  It is not the casino and
-does not count toward the casino's achievements.
+loses at most 40, and each costs a round of lag.  The NES asked for 10
+coins, but it sent you out of the cave between games; here you play on,
+so you need the worst sign's 40 and every loss is paid in full.  It is
+not the casino and does not count toward the casino's achievements.
 
 See also: HYRULE SECRETS, BET, SLOTS
 ~
@@ -3520,12 +3522,15 @@ What Hyrule's tools do:
   Bombs           BOMB a cracked wall, or an enemy.  Each uses one.
   Bow + arrows    Wield the bow, carry a quiver: SHOOT an enemy in the room.
                   Each arrow costs a gold coin; no Archery needed.  An arrow
-                  kills a pols voice outright and finishes Gohma.
+                  kills a pols voice outright, and only an arrow finishes
+                  Gohma.
   Boomerangs      Wield one and SHOOT: it stuns an enemy out of the fight
                   until struck again, and kills a keese or a gel outright.
-  Candles         A light; BURN a bush or an enemy.
+  Candles         A light; BURN a bush or an enemy.  The Blue Candle
+                  flares once a room; the Red burns hotter, at will.
   Bait            FEED a hungry Goriya, or FEED BAIT to calm a room.
-  Recorder        PLAY it.  See BOMB.
+  Recorder        PLAY it.  It shrinks every digdogger in the room, once;
+                  Level 7's cannot be hurt until it has.  See BOMB.
   Magical Rod     ZAP it; it never runs dry.  With the Magic Book carried,
                   its blast bursts into flame as well.
   Potions         The red 2nd Potion heals twice and turns blue; the blue

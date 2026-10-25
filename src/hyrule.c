@@ -662,8 +662,14 @@ void hyrule_enter_room( CHAR_DATA *ch )
             send_to_char( "The moblin shrugs and spreads empty paws: you have had your share.\n\r", ch );
             return;
         }
+        /* Paid first and claimed only once paid: a purse that cannot hold
+           the coin keeps the claim for another visit. */
+        if ( !gain_copper( ch, (long) hyrule_money_caves[i].rupees * COPPER_PER_GOLD ) )
+        {
+            send_to_char( "The moblin holds out the gold, but your purse can hold no more.\n\r", ch );
+            return;
+        }
         secret_set( ch, (int) i );
-        add_money( ch, hyrule_money_caves[i].rupees );
         snprintf( buf, sizeof(buf),
                   "The moblin grins, presses %d gold into your hand and taps his snout.\n\r",
                   hyrule_money_caves[i].rupees );
@@ -1063,6 +1069,15 @@ bool hyrule_bought( CHAR_DATA *ch, OBJ_DATA *obj )
     return false;
 }
 
+static bool hyrule_kind_is( const CHAR_DATA *victim, int kind );
+
+static bool hyrule_is_dodongo( const CHAR_DATA *victim )
+{
+    return victim != NULL && IS_NPC(victim) && victim->pIndexData != NULL
+        && ( victim->pIndexData->vnum == HYRULE_DODONGO_VNUM
+          || hyrule_kind_is( victim, HYRULE_DODONGO_VNUM ) );
+}
+
 /* BOMB at a creature: fire, one bomb used, a round of lag. Dodongo
    swallows it whole and loses half his health, as on the NES. */
 bool hyrule_bomb_creature( CHAR_DATA *ch, CHAR_DATA *victim )
@@ -1084,14 +1099,17 @@ bool hyrule_bomb_creature( CHAR_DATA *ch, CHAR_DATA *victim )
         return true;
     }
     WAIT_STATE( ch, PULSE_VIOLENCE );
-    if ( IS_NPC(victim) && victim->pIndexData != NULL
-    &&   victim->pIndexData->vnum == HYRULE_DODONGO_VNUM )
+    /* Every Dodongo, the Level 2 guardian and the ones that roam Levels 5
+       and 7 alike (UpdateDodongo, Z_04.asm:5945: each counts the bombs it
+       eats). The blast is exactly half its health, so two kill it. */
+    if ( hyrule_is_dodongo( victim ) )
     {
         act( "You roll a bomb beneath $N. It swallows it -- and the blast tears through its hide!",
              ch, NULL, victim, TO_CHAR );
         act( "$n rolls a bomb beneath $N, which swallows it. The explosion fills the chamber!",
              ch, NULL, victim, TO_ROOM );
         achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_DODONGO_BOMB, true );
+        hyrule_exact_blow = true;
         damage( ch, victim, UMAX( 1, victim->max_hit / 2 ), TYPE_UNDEFINED, DAM_FIRE );
         return true;
     }
@@ -1117,6 +1135,91 @@ static bool hyrule_kind_is( const CHAR_DATA *victim, int kind )
     vnum = victim->pIndexData->vnum;
     return vnum >= HYRULE_TIER_FIRST_VNUM && vnum <= HYRULE_TIER_LAST_VNUM
         && HYRULE_KIND_FROM_TIER( vnum ) == kind;
+}
+
+#define HYRULE_DIGDOGGER_SHRUNK 1
+/* Which digdoggers no blade can hurt until the Recorder shrinks them: the
+   ones in Level 7, where the Recorder already has to come first (it drains
+   the lake in front of the dungeon). */
+#define HYRULE_DIGDOGGER_NEEDS_RECORDER(v) \
+    ( (v)->pIndexData->vnum != HYRULE_KIND_DIGDOGGER )
+
+/* A digdogger: Level 5's guardian (its catalog record is the kind) and the
+   ones that roll through Level 7. */
+static bool hyrule_is_digdogger( const CHAR_DATA *victim )
+{
+    return victim != NULL && IS_NPC(victim) && victim->pIndexData != NULL
+        && ( victim->pIndexData->vnum == HYRULE_KIND_DIGDOGGER
+          || hyrule_kind_is( victim, HYRULE_KIND_DIGDOGGER ) );
+}
+
+/* Bubbles and blade traps: nothing harms them on the NES, and clearing a
+   room never asks for them (a shutter opens with them still about). */
+bool hyrule_enemy_is_invincible( CHAR_DATA *victim )
+{
+    return hyrule_kind_is( victim, HYRULE_KIND_BUBBLE )
+        || hyrule_kind_is( victim, HYRULE_KIND_BLADE_TRAP );
+}
+
+int hyrule_patra_eyes_left( CHAR_DATA *mob )
+{
+    if ( !hyrule_kind_is( mob, HYRULE_KIND_PATRA ) )
+        return 0;
+    return UMAX( 0, HYRULE_PATRA_EYES - mob->hyrule_state );
+}
+
+/*
+ * damage()'s question, before a landed blow comes off: does something
+ * turn it aside? A bubble or a blade trap cannot be harmed at all, and the
+ * fight with it is over at once. A patra's great eye cannot be reached while its ring of
+ * eyes orbits it -- each landed blow cuts one down instead (the NES Patra
+ * cannot be hurt while children remain, Z_04.asm:10044) -- and a digdogger
+ * the Recorder has not shrunk is far too big to hurt (Z_04.asm:5166). Each
+ * says so, so nobody keeps swinging without knowing why.
+ */
+bool hyrule_blow_turned_aside( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    char buf[MAX_STRING_LENGTH];
+    int left;
+
+    if ( ch == NULL || victim == NULL || ch == victim )
+        return false;
+
+    if ( hyrule_enemy_is_invincible( victim ) )
+    {
+        act( "Your blow passes through $N without effect: nothing harms it. Go round it.",
+             ch, NULL, victim, TO_CHAR );
+        act( "$n's blow passes through $N without effect.", ch, NULL, victim, TO_NOTVICT );
+        stop_fighting( victim, true );
+        return true;
+    }
+
+    if ( hyrule_patra_eyes_left( victim ) > 0 )
+    {
+        victim->hyrule_state++;
+        left = hyrule_patra_eyes_left( victim );
+        if ( left > 0 )
+            snprintf( buf, sizeof(buf),
+                      "Your blow cuts down one of the eyes orbiting $N -- %d left. The great "
+                      "eye is out of reach until the ring is broken.", left );
+        else
+            snprintf( buf, sizeof(buf),
+                      "Your blow cuts down the last orbiting eye: $N is open to attack!" );
+        act( buf, ch, NULL, victim, TO_CHAR );
+        act( "$n cuts down one of the eyes orbiting $N.", ch, NULL, victim, TO_NOTVICT );
+        return true;
+    }
+
+    if ( hyrule_is_digdogger( victim ) && HYRULE_DIGDOGGER_NEEDS_RECORDER( victim )
+    &&   victim->hyrule_state != HYRULE_DIGDOGGER_SHRUNK )
+    {
+        act( "Your blow bounces off $N's great rolling bulk: it is far too big to hurt. "
+             "Something must make it smaller -- a tune, the old men say.",
+             ch, NULL, victim, TO_CHAR );
+        act( "$n's blow bounces off $N's great rolling bulk.", ch, NULL, victim, TO_NOTVICT );
+        return true;
+    }
+    return false;
 }
 
 static bool is_hyrule_enemy( const CHAR_DATA *victim )
@@ -1238,6 +1341,7 @@ bool hyrule_shoot( CHAR_DATA *ch, OBJ_DATA *weapon, char *argument )
                  ch, NULL, victim, TO_CHAR );
             act( "$N shrieks at the arrow's whistle and bursts like a bubble!",
                  ch, NULL, victim, TO_NOTVICT );
+            hyrule_exact_blow = true;
             damage( ch, victim, victim->hit + 10, gsn_archery, DAM_PIERCE );
             /* Gone means the arrow killed it; the pointer is not read. */
             if ( !still_here( ch, victim ) )
@@ -1258,6 +1362,7 @@ bool hyrule_shoot( CHAR_DATA *ch, OBJ_DATA *weapon, char *argument )
     act( "$n hurls $p at you!", ch, weapon, victim, TO_VICT );
     if ( hyrule_kind_is( victim, HYRULE_KIND_KEESE ) || hyrule_kind_is( victim, HYRULE_KIND_GEL ) )
     {
+        hyrule_exact_blow = true;
         damage( ch, victim, victim->hit + 10, TYPE_UNDEFINED, DAM_BASH );
         return true;
     }
@@ -1291,6 +1396,17 @@ void hyrule_burn_creature( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *candle )
 
     if ( victim == ch || is_safe( ch, victim ) )
         return;
+    /* The Blue Candle flares once a room, as on the NES; the Red Candle
+       as often as you like. Said before anything is spent. */
+    if ( !red && !IS_NPC(ch) && ch->pcdata != NULL
+    &&   ch->pcdata->hyrule_candle_room == ch->in_room->vnum )
+    {
+        send_to_char( "The Blue Candle has flared once in this room already; it will flare\n\r"
+                      "again in the next. (The Red Candle burns as often as you like.)\n\r", ch );
+        return;
+    }
+    if ( !red && !IS_NPC(ch) && ch->pcdata != NULL )
+        ch->pcdata->hyrule_candle_room = ch->in_room->vnum;
     check_killer( ch, victim );
     WAIT_STATE( ch, PULSE_VIOLENCE );
     act( "You thrust $p at $N and a tongue of flame leaps from it!", ch, candle, victim, TO_CHAR );
@@ -1398,16 +1514,21 @@ bool hyrule_play_recorder( CHAR_DATA *ch, const char *argument )
 
     for ( victim = ch->in_room->people; victim != NULL; victim = victim->next_in_room )
     {
-        if ( !hyrule_kind_is( victim, HYRULE_KIND_DIGDOGGER )
-        ||   victim->hit <= victim->max_hit / 3 )
+        if ( !hyrule_is_digdogger( victim )
+        ||   victim->hyrule_state == HYRULE_DIGDOGGER_SHRUNK )
             continue;
-        victim->hit = UMAX( 1, victim->max_hit / 3 );
-        act( "$n shudders at the melody and shrinks to a third of its size!",
+        /* Once for each digdogger (L_Digdogger_AfterFlute, Z_04.asm:5166:
+           the flute splits it for good). It used to shrink again whenever
+           one had healed back above a third. */
+        victim->hyrule_state = HYRULE_DIGDOGGER_SHRUNK;
+        victim->hit = UMIN( victim->hit, UMAX( 1, victim->max_hit / 3 ) );
+        act( "$n shudders at the melody and shrinks to a third of its size -- now a blade can bite!",
              victim, NULL, NULL, TO_ROOM );
         shrank = true;
     }
     if ( shrank )
     {
+        WAIT_STATE( ch, PULSE_VIOLENCE );
         achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_DIGDOGGER_RECORDER, true );
         return true;
     }
