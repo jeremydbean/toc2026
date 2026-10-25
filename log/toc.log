@@ -184623,3 +184623,220 @@ Sun Oct 25 12:07:04 2026 :: Log Trentlin [30542]: w
 Sun Oct 25 12:07:04 2026 :: Log Trentlin [30541]: arrived (Level 7: Western Moat) from 30542
 Sun Oct 25 12:07:05 2026 :: Log Trentlin [30541]: n
 Sun Oct 25 12:07:05 2026 :: Log Trentlin [30544]: arrived (Level 7: Hall of Grumbling) from 30541
+Sun Oct 25 12:07:08 2026 :: Log Trentlin [30544]: get pot
+Sun Oct 25 12:07:22 2026 :: Log Trentlin [30544]: open south
+Sun Oct 25 12:07:23 2026 :: Log Trentlin [30544]: s
+Sun Oct 25 12:07:23 2026 :: Log Trentlin [30541]: arrived (Level 7: Western Moat) from 30544
+Sun Oct 25 12:07:27 2026 :: Log Trentlin [30541]: sca
+Sun Oct 25 12:07:30 2026 :: Log Trentlin [30541]: shove gor east
+Sun Oct 25 12:07:30 2026 :: Log Trentlin [30541]: shove gor east
+Sun Oct 25 12:07:32 2026 :: Log Trentlin [30541]: l
+Sun Oct 25 12:07:35 2026 :: Log Trentlin [30541]: open north
+Sun Oct 25 12:07:36 2026 :: Log Trentlin [30541]: n
+Sun Oct 25 12:07:36 2026 :: Log Trentlin [30544]: arrived (Level 7: Hall of Grumbling) from 30541
+Sun Oct 25 12:07:37 2026 :: Log Trentlin [30544]: s
+Sun Oct 25 12:07:37 2026 :: Log Trentlin [30541]: arrived (Level 7: Western Moat) from 30544
+Sun Oct 25 12:07:40 2026 :: Log Trentlin [30541]: unlock north
+Sun Oct 25 12:07:41 2026 :: Log Trentlin [30541]: open north
+Sun Oct 25 12:07:42 2026 :: Log Trentlin [30541]: n
+Sun Oct 25 12:07:42 2026 :: Log Trentlin [30544]: arrived (Level 7: Hall of Grumbling) from 30541
+Sun Oct 25 12:07:43 2026 :: Log Trentlin [30544]: s
+Sun Oct 25 12:07:43 2026 :: Log Trentlin [30541]: arrived (Level 7: Western Moat) from 30544
+Sun Oct 25 12:07:44 2026 :: Log Trentlin [30541]: sca
+Sun Oct 25 12:07:45 2026 :: Log Trentlin [30541]: n
+Sun Oct 25 12:07:45 2026 :: Log Trentlin [30544]: arrived (Level 7: Hall of Grumbling) from 30541
+Sun Oct 25 12:07:47 2026 :: Log Trentlin [30544]: (refused) bait
+Sun Oct 25 12:08:21 2026 :: Log Trentlin [30544]: where hungry
+Sun Oct 25 12:08:26 2026 :: Log Trentlin [30544]: s
+Sun Oct 25 12:08:26 2026 :: Log Trentlin [30541]: arrived (Level 7: Western Moat) from 30544
+Sun Oct 25 12:08:28 2026 :: Log Trentlin [30541]: w
+Sun Oct 25 12:08:29 2026 :: Log Trentlin [30541]: s
+Sun Oct 25 12:08:32 2026 :: Log Trentlin [30541]: reca
+Sun Oct 25 12:08:33 2026 :: Log Trentlin [30541]: reca
+Sun Oct 25 12:08:33 2026 :: Log Trentlin [30541]: e
+Sun Oct 25 12:08:33 2026 :: Log Trentlin [30542]: arrived (Level 7: Island Chamber) from 30541
+Sun Oct 25 12:08:34 2026 :: Log Trentlin [30542]: s
+Sun Oct 25 12:08:34 2026 :: Log Trentlin [30540]: arrived (Level 7: Hall of Lingering Chill) from 30542
+Sun Oct 25 12:08:34 2026 :: Log Trentlin [30540]: s
+Sun Oct 25 12:08:34 2026 :: Log Trentlin [30536]: arrived (Level 7: Boomerang Hall) from 30540
+Sun Oct 25 12:08:36 2026 :: Log Trentlin [30536]: s
+Sun Oct 25 12:08:36 2026 :: Log Trentlin [30530]: arrived (Level 7: Moat Crossroads) from 30536
+Sun Oct 25 12:08:37 2026 :: Log Trentlin [30530]: s
+Sun Oct 25 12:08:37 2026 :: Log Trentlin [30527]: arrived (Level 7: Demon's Gate) from 30530
+Sun Oct 25 12:08:38 2026 :: Log Trentlin [30527]: s
+Sun Oct 25 12:08:39 2026 :: Log Trentlin [30527]: u
+Sun Oct 25 12:08:39 2026 :: Log Trentlin [30250]: arrived (The Still Pond) from 30527
+Sun Oct 25 12:08:40 2026 :: Log Trentlin [30250]: s
+Sun Oct 25 12:08:40 2026 :: Log Trentlin [30234]: arrived (Lost Woods Crossing) from 30250
+Sun Oct 25 12:08:42 2026 :: Log Trentlin [30234]: ex
+Sun Oct 25 12:08:44 2026 :: Log Trentlin [30234]: sca
+Sun Oct 25 12:08:45 2026 :: Log Trentlin [30234]: w
+Sun Oct 25 12:08:45 2026 :: Log Trentlin [30233]: arrived (Deepwood Corner) from 30234
+Sun Oct 25 12:08:46 2026 :: Log Trentlin [30233]: sca
+Sun Oct 25 12:08:47 2026 :: Log Trentlin [30233]: s
+Sun Oct 25 12:08:47 2026 :: Log Trentlin [30217]: arrived (The Tangled Woods) from 30233
+Sun Oct 25 12:08:47 2026 :: Log Trentlin [30217]: sca
+Sun Oct 25 12:08:48 2026 :: Log Trentlin [30217]: e
+Sun Oct 25 12:08:48 2026 :: Log Trentlin [30218]: arrived (Old Forest Clearing) from 30217
+Sun Oct 25 12:08:49 2026 :: Log Trentlin [30218]: s
+Sun Oct 25 12:08:49 2026 :: Log Trentlin [30203]: arrived (Southern Woods) from 30218
+Sun Oct 25 12:08:50 2026 :: Log Trentlin [30203]: e
+Sun Oct 25 12:08:50 2026 :: Log Trentlin [30204]: arrived (Path to the Manji) from 30203
+Sun Oct 25 12:08:51 2026 :: Log Trentlin [30204]: ex
+Sun Oct 25 12:08:52 2026 :: Log Trentlin [30204]: e
+Sun Oct 25 12:08:52 2026 :: Log Trentlin [30205]: arrived (Grove of the Manji) from 30204
+Sun Oct 25 12:08:53 2026 :: Log Trentlin [30205]: w
+Sun Oct 25 12:08:53 2026 :: Log Trentlin [30204]: arrived (Path to the Manji) from 30205
+Sun Oct 25 12:08:53 2026 :: Log Trentlin [30204]: w
+Sun Oct 25 12:08:53 2026 :: Log Trentlin [30203]: arrived (Southern Woods) from 30204
+Sun Oct 25 12:08:53 2026 :: Log Trentlin [30203]: w
+Sun Oct 25 12:08:53 2026 :: Log Trentlin [30202]: arrived (Woodland Rock Face) from 30203
+Sun Oct 25 12:08:54 2026 :: Log Trentlin [30202]: ex
+Sun Oct 25 12:08:56 2026 :: Log Trentlin [30202]: e
+Sun Oct 25 12:08:56 2026 :: Log Trentlin [30203]: arrived (Southern Woods) from 30202
+Sun Oct 25 12:08:57 2026 :: Log Trentlin [30203]: e
+Sun Oct 25 12:08:57 2026 :: Log Trentlin [30204]: arrived (Path to the Manji) from 30203
+Sun Oct 25 12:08:57 2026 :: Log Trentlin [30204]: e
+Sun Oct 25 12:08:57 2026 :: Log Trentlin [30205]: arrived (Grove of the Manji) from 30204
+Sun Oct 25 12:08:58 2026 :: Log Trentlin [30205]: w
+Sun Oct 25 12:08:58 2026 :: Log Trentlin [30204]: arrived (Path to the Manji) from 30205
+Sun Oct 25 12:08:58 2026 :: Log Trentlin [30204]: w
+Sun Oct 25 12:08:58 2026 :: Log Trentlin [30203]: arrived (Southern Woods) from 30204
+Sun Oct 25 12:08:58 2026 :: Log Trentlin [30203]: w
+Sun Oct 25 12:08:58 2026 :: Log Trentlin [30202]: arrived (Woodland Rock Face) from 30203
+Sun Oct 25 12:08:59 2026 :: Log Trentlin [30202]: w
+Sun Oct 25 12:08:59 2026 :: Log Trentlin [30201]: arrived (Southwest Meadow) from 30202
+Sun Oct 25 12:09:00 2026 :: Log Trentlin [30201]: ex
+Sun Oct 25 12:09:01 2026 :: Log Trentlin [30201]: d
+Sun Oct 25 12:09:01 2026 :: Log Trentlin [30330]: arrived (The Whispering Hearth) from 30201
+Sun Oct 25 12:09:02 2026 :: Log Trentlin [30330]: list
+Sun Oct 25 12:09:07 2026 :: Log Trentlin [30330]: give gold woman
+Sun Oct 25 12:09:11 2026 :: Log Trentlin [30330]: give 20 gold woman
+Sun Oct 25 12:09:17 2026 :: Log Trentlin [30330]: give 50 gold woman
+Sun Oct 25 12:09:17 2026 :: Log Trentlin [30330]: coin -50 gold
+Sun Oct 25 12:09:25 2026 :: Log Trentlin [30330]: give 30 gold woman
+Sun Oct 25 12:09:25 2026 :: Log Trentlin [30330]: coin -30 gold
+Sun Oct 25 12:09:36 2026 :: Log Trentlin [30330]: l
+Sun Oct 25 12:09:37 2026 :: Log Trentlin [30330]: i
+Sun Oct 25 12:09:38 2026 :: Log Trentlin [30330]: u
+Sun Oct 25 12:09:38 2026 :: Log Trentlin [30201]: arrived (Southwest Meadow) from 30330
+Sun Oct 25 12:09:39 2026 :: Sock.sinaddr:  3.12.251.153
+Sun Oct 25 12:09:40 2026 :: EOF encountered on read.
+Sun Oct 25 12:09:40 2026 :: Log Trentlin [30201]: e
+Sun Oct 25 12:09:40 2026 :: Log Trentlin [30202]: arrived (Woodland Rock Face) from 30201
+Sun Oct 25 12:09:48 2026 :: Log Trentlin [30202]: k mob
+Sun Oct 25 12:09:51 2026 :: Log Trentlin [30202]: smite
+Sun Oct 25 12:09:54 2026 :: Log Trentlin [30202]: killed a blue moblin
+Sun Oct 25 12:09:54 2026 :: Log Trentlin [30202]: coin +11 silver
+Sun Oct 25 12:09:54 2026 :: Log Trentlin [30202]: coin +150 copper
+Sun Oct 25 12:09:54 2026 :: Log Trentlin [30202]: coin +41 gold
+Sun Oct 25 12:09:59 2026 :: Sock.sinaddr:  23.31.96.97
+Sun Oct 25 12:09:59 2026 :: EOF encountered on read.
+Sun Oct 25 12:10:00 2026 :: Log Trentlin [30202]: bomb south
+Sun Oct 25 12:10:00 2026 :: Log Trentlin [30202]: s
+Sun Oct 25 12:10:02 2026 :: Log Trentlin [30202]: l
+Sun Oct 25 12:10:08 2026 :: Log Trentlin [30202]: sca
+Sun Oct 25 12:10:08 2026 :: Log Trentlin [30202]: ex
+Sun Oct 25 12:10:10 2026 :: Log Trentlin [30202]: n
+Sun Oct 25 12:10:10 2026 :: Log Trentlin [30217]: arrived (The Tangled Woods) from 30202
+Sun Oct 25 12:10:10 2026 :: Log Trentlin [30217]: w
+Sun Oct 25 12:10:10 2026 :: Log Trentlin [30216]: arrived (Western Meadow Edge) from 30217
+Sun Oct 25 12:10:12 2026 :: Log Trentlin [30216]: n
+Sun Oct 25 12:10:12 2026 :: Log Trentlin [30232]: arrived (Western Crags) from 30216
+Sun Oct 25 12:10:13 2026 :: Log Trentlin [30232]: n
+Sun Oct 25 12:10:13 2026 :: Log Trentlin [30248]: arrived (The Graveyard's Southern Fence) from 30232
+Sun Oct 25 12:10:15 2026 :: Log Trentlin [30248]: ex
+Sun Oct 25 12:10:16 2026 :: Log Trentlin [30248]: e
+Sun Oct 25 12:10:16 2026 :: Log Trentlin [30249]: arrived (Hollow of Headstones) from 30248
+Sun Oct 25 12:10:17 2026 :: Log Trentlin [30249]: ex
+Sun Oct 25 12:10:17 2026 :: Log Trentlin [30249]: n
+Sun Oct 25 12:10:17 2026 :: Log Trentlin [30265]: arrived (The Graveyard Gate) from 30249
+Sun Oct 25 12:10:19 2026 :: Log Trentlin [30265]: e
+Sun Oct 25 12:10:19 2026 :: Log Trentlin [30266]: arrived (Ghost Hill) from 30265
+Sun Oct 25 12:10:20 2026 :: Log Trentlin [30266]: e
+Sun Oct 25 12:10:20 2026 :: Log Trentlin [30267]: arrived (The Cracked Bluff) from 30266
+Sun Oct 25 12:10:20 2026 :: Log Trentlin [30267]: e
+Sun Oct 25 12:10:21 2026 :: Log Trentlin [30267]: n
+Sun Oct 25 12:10:21 2026 :: Log Trentlin [30283]: arrived (The Western Warp Stone) from 30267
+Sun Oct 25 12:10:21 2026 :: Log Trentlin [30283]: n
+Sun Oct 25 12:10:22 2026 :: Log Trentlin [30283]: e
+Sun Oct 25 12:10:22 2026 :: Log Trentlin [30284]: arrived (The Armos Gallery) from 30283
+Sun Oct 25 12:10:23 2026 :: Log Trentlin [30284]: e
+Sun Oct 25 12:10:23 2026 :: Log Trentlin [30285]: arrived (The Bomb Merchant's Cave) from 30284
+Sun Oct 25 12:10:24 2026 :: Log Trentlin [30285]: ex
+Sun Oct 25 12:10:25 2026 :: Log Trentlin [30285]: d
+Sun Oct 25 12:10:25 2026 :: Log Trentlin [30681]: arrived (Fuse and Fletching) from 30285
+Sun Oct 25 12:10:26 2026 :: Log Trentlin [30681]: list
+Sun Oct 25 12:10:30 2026 :: Log Trentlin [30681]: buy bombs
+Sun Oct 25 12:10:30 2026 :: Log Trentlin [30681]: copper -200000
+Sun Oct 25 12:10:30 2026 :: Log Trentlin [30681]: bought four bombs (vnum 30695) for 200000 copper from a sour-faced merchant
+Sun Oct 25 12:10:30 2026 :: Log Trentlin [30681]: buy bombs
+Sun Oct 25 12:10:30 2026 :: Log Trentlin [30681]: copper -200000
+Sun Oct 25 12:10:30 2026 :: Log Trentlin [30681]: bought four bombs (vnum 30695) for 200000 copper from a sour-faced merchant
+Sun Oct 25 12:10:31 2026 :: Log Trentlin [30681]: buy bombs
+Sun Oct 25 12:10:34 2026 :: Log Trentlin [30681]: u
+Sun Oct 25 12:10:34 2026 :: Log Trentlin [30285]: arrived (The Bomb Merchant's Cave) from 30681
+Sun Oct 25 12:10:35 2026 :: Log Trentlin [30285]: e
+Sun Oct 25 12:10:36 2026 :: Log Trentlin [30285]: n
+Sun Oct 25 12:10:36 2026 :: Log Trentlin [30301]: arrived (Highland Overlook) from 30285
+Sun Oct 25 12:10:37 2026 :: Log Trentlin [30301]: n
+Sun Oct 25 12:10:37 2026 :: Log Trentlin [30301]: w
+Sun Oct 25 12:10:37 2026 :: Log Trentlin [30300]: arrived (The Crumbling Scarp) from 30301
+Sun Oct 25 12:10:38 2026 :: Log Trentlin [30300]: w
+Sun Oct 25 12:10:38 2026 :: Log Trentlin [30299]: arrived (Broken Stone Terrace) from 30300
+Sun Oct 25 12:10:40 2026 :: Log Trentlin [30299]: n
+Sun Oct 25 12:10:40 2026 :: Log Trentlin [30315]: arrived (Rockfall Crest) from 30299
+Sun Oct 25 12:10:41 2026 :: Log Trentlin [30315]: w
+Sun Oct 25 12:10:41 2026 :: Log Trentlin [30314]: arrived (The High Boulder Pass) from 30315
+Sun Oct 25 12:10:42 2026 :: Log Trentlin [30314]: w
+Sun Oct 25 12:10:42 2026 :: Log Trentlin [30313]: arrived (Lynel Ridge) from 30314
+Sun Oct 25 12:10:43 2026 :: Log Trentlin [30313]: w
+Sun Oct 25 12:10:43 2026 :: Log Trentlin [30312]: arrived (Death Mountain's Western Summit) from 30313
+Sun Oct 25 12:10:44 2026 :: Log Trentlin [30312]: s
+Sun Oct 25 12:10:44 2026 :: Log Trentlin [30296]: arrived (The Western Gorge) from 30312
+Sun Oct 25 12:10:45 2026 :: Log Trentlin [30296]: e
+Sun Oct 25 12:10:45 2026 :: Log Trentlin [30297]: arrived (The Windswept Shelf) from 30296
+Sun Oct 25 12:10:47 2026 :: Log Trentlin [30297]: n
+Sun Oct 25 12:10:47 2026 :: Log Trentlin [30313]: arrived (Lynel Ridge) from 30297
+Sun Oct 25 12:10:48 2026 :: Log Trentlin [30313]: e
+Sun Oct 25 12:10:48 2026 :: Log Trentlin [30314]: arrived (The High Boulder Pass) from 30313
+Sun Oct 25 12:10:51 2026 :: Log Trentlin [30314]: play recorder
+Sun Oct 25 12:10:51 2026 :: Log Trentlin [30250]: arrived (The Still Pond) from 30314
+Sun Oct 25 12:10:55 2026 :: Log Trentlin [30250]: d
+Sun Oct 25 12:10:55 2026 :: Log Trentlin [30527]: arrived (Level 7: Demon's Gate) from 30250
+Sun Oct 25 12:10:58 2026 :: Log Trentlin [30527]: n
+Sun Oct 25 12:10:58 2026 :: Log Trentlin [30530]: arrived (Level 7: Moat Crossroads) from 30527
+Sun Oct 25 12:11:00 2026 :: Log Trentlin [30530]: w
+Sun Oct 25 12:11:00 2026 :: Log Trentlin [30529]: arrived (Level 7: Blade Trap Corridor) from 30530
+Sun Oct 25 12:11:02 2026 :: Log Trentlin [30529]: s
+Sun Oct 25 12:11:02 2026 :: Log Trentlin [30526]: arrived (Level 7: Hall of Shed Skins) from 30529
+Sun Oct 25 12:11:05 2026 :: Log Trentlin [30526]: get key
+Sun Oct 25 12:11:09 2026 :: Log Trentlin [30526]: k ro
+Sun Oct 25 12:11:12 2026 :: Log Trentlin [30526]: smite
+Sun Oct 25 12:11:12 2026 :: Log Trentlin [30526]: killed a rope
+Sun Oct 25 12:11:12 2026 :: Log Trentlin [30526]: coin +243 silver
+Sun Oct 25 12:11:12 2026 :: Log Trentlin [30526]: coin +92 copper
+Sun Oct 25 12:11:12 2026 :: Log Trentlin [30526]: coin +14 gold
+Sun Oct 25 12:11:20 2026 :: Log Trentlin [30526]: l in cr
+Sun Oct 25 12:11:21 2026 :: Log Trentlin [30526]: l in co
+Sun Oct 25 12:11:21 2026 :: Log Trentlin [30526]: sac co
+Sun Oct 25 12:11:21 2026 :: Log Trentlin [30526]: coin +84 copper
+Sun Oct 25 12:11:22 2026 :: Log Trentlin [30526]: l
+Sun Oct 25 12:11:32 2026 :: Log Trentlin [30526]: n
+Sun Oct 25 12:11:32 2026 :: Log Trentlin [30529]: arrived (Level 7: Blade Trap Corridor) from 30526
+Sun Oct 25 12:11:34 2026 :: Log Trentlin [30529]: aff
+Sun Oct 25 12:11:40 2026 :: Log Trentlin [30529]: l
+Sun Oct 25 12:11:46 2026 :: Log Trentlin [30529]: k kee
+Sun Oct 25 12:11:49 2026 :: Log Trentlin [30529]: smite
+Sun Oct 25 12:11:49 2026 :: Log Trentlin [30529]: killed a keese
+Sun Oct 25 12:11:49 2026 :: Log Trentlin [30529]: coin +231 silver
+Sun Oct 25 12:11:49 2026 :: Log Trentlin [30529]: coin +420 copper
+Sun Oct 25 12:11:49 2026 :: Log Trentlin [30529]: coin +9 gold
+Sun Oct 25 12:11:56 2026 :: Log Trentlin [30529]: l in cor
+Sun Oct 25 12:11:57 2026 :: Log Trentlin [30529]: smite
+Sun Oct 25 12:12:03 2026 :: Log Trentlin [30529]: smite
+Sun Oct 25 12:12:03 2026 :: Log Trentlin [30529]: killed a blade trap
+Sun Oct 25 12:12:03 2026 :: Log Trentlin [30529]: coin +78 silver
+Sun Oct 25 12:12:03 2026 :: Log Trentlin [30529]: coin +218 copper
+Sun Oct 25 12:12:03 2026 :: Log Trentlin [30529]: coin +91 gold
+Sun Oct 25 12:12:10 2026 :: Log Trentlin [30529]: l in cir

@@ -16996,3 +16996,130 @@
 1792930024	cmd	Trentlin	50	30542	hyrule.are	standing	99	0	-	west		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
 1792930024	cmd	Trentlin	50	30541	hyrule.are	standing	99	0	-	west		The shutter opens now that the chamber is clear. // Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly
 1792930025	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	north		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1792930028	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	get	pot	You get a big pot pie.
+1792930042	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	open	south	It's locked.
+1792930043	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	south		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1792930047	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	scan		You don't see anything near you.
+1792930050	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	shove	gor east	You shove a blue goriya out of the room!
+1792930050	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	shove	gor east	You shove a red goriya out of the room!
+1792930052	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	look		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1792930055	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	open	north	It's locked.
+1792930056	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	north		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1792930057	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	south		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1792930060	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	unlock	north	*Click* // The small key vanishes into the dungeon lock.
+1792930061	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	open	north	Ok.
+1792930062	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	north		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1792930063	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	south		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1792930064	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	scan		a red goriya                       -to the East. // a blue goriya                      -to the East.
+1792930065	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	north		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1792930067	refused	Trentlin	50	30544	hyrule.are	standing	100	0	-	(unknown)		Huh?
+1792930101	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	where	hungry	You didn't find any hungry.
+1792930106	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	south		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1792930108	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792930109	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792930112	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792930113	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792930113	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	east		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1792930114	cmd	Trentlin	50	30540	hyrule.are	standing	100	0	-	south		Level 7: Hall of Lingering Chill //   An unnatural chill pools near the floor of this chamber, and the torchless // walls glimmer with a faint, shifting light where a flaming skull bounces
+1792930114	cmd	Trentlin	50	30536	hyrule.are	standing	100	0	-	south		Level 7: Boomerang Hall //   A square hall of green brick whose walls are gouged with curved nicks where // thrown blades have struck and spun back to red and blue hands. A worn track
+1792930116	cmd	Trentlin	50	30530	hyrule.are	standing	100	0	-	south		Level 7: Moat Crossroads //   A channel of black water rings a raised island of flagstones at the heart // of this room, its surface still and cold, and boomerang splinters float on
+1792930117	cmd	Trentlin	50	30527	hyrule.are	standing	100	0	-	south		Level 7: Demon's Gate //   Damp stone steps come down from the drained pond above into a vestibule of // green-black brick carved with a horned, grinning face. Water still beads on
+1792930118	cmd	Trentlin	50	30527	hyrule.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792930119	cmd	Trentlin	50	30250	hyrule.are	standing	100	0	-	up		The Still Pond //   A ring of tall dark trees closes in around a round, perfectly still pond, // its surface black and glassy, and no fairy has ever danced over it. Smooth
+1792930120	cmd	Trentlin	50	30234	hyrule.are	standing	100	0	-	south		Lost Woods Crossing //   The forest closes in on all sides, every trunk looking much like the next, // and paths wander off in all four directions. Owls call in the shadows, and
+1792930122	cmd	Trentlin	50	30234	hyrule.are	standing	100	0	-	exits		Obvious exits: // North - The Still Pond // East  - The Fairy Path
+1792930124	cmd	Trentlin	50	30234	hyrule.are	standing	100	0	-	scan		a red moblin                       -to the North. // a blue moblin                      -to the East. // a red moblin                       -to the East.
+1792930125	cmd	Trentlin	50	30233	hyrule.are	standing	100	0	-	west		Deepwood Corner //   Old trees grow so close here that their canopy blots out the sky, leaving // the forest floor in green gloom. Paths of trampled earth wind east and
+1792930126	cmd	Trentlin	50	30233	hyrule.are	standing	100	0	-	scan		a blue moblin                      -to the East. // a red moblin                       -to the East. // a blue moblin                      -to the South.
+1792930127	cmd	Trentlin	50	30217	hyrule.are	standing	100	0	-	south		The Tangled Woods //   Dense trees crowd close on every side, their branches knotted overhead into // a dim green roof. Paths wind away in all four directions between the
+1792930127	cmd	Trentlin	50	30217	hyrule.are	standing	100	0	-	scan		a blue moblin                      -to the North. // a blue moblin                      -to the North. // a blue moblin                      -to the East.
+1792930128	cmd	Trentlin	50	30218	hyrule.are	standing	100	0	-	east		Old Forest Clearing //   A hushed clearing opens among ancient oaks, their bark gnarled and split // with age and their roots heaving up the soil. Fallen leaves lie ankle deep
+1792930129	cmd	Trentlin	50	30203	hyrule.are	standing	100	1	-	south		Southern Woods //   Old trees stand in rows along the southern edge of the land, set as evenly // as an orchard, their crowns meeting overhead in a leafy roof. The leaf
+1792930130	cmd	Trentlin	50	30204	hyrule.are	standing	100	0	-	east		Path to the Manji //   A narrow trail winds east through the southern forest toward a ring of // trees that grow in a pattern too regular to be natural, set like spokes
+1792930131	cmd	Trentlin	50	30204	hyrule.are	standing	100	0	-	exits		Obvious exits: // North - Bramble Wood // East  - Grove of the Manji
+1792930132	cmd	Trentlin	50	30205	hyrule.are	standing	100	0	-	east		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the
+1792930133	cmd	Trentlin	50	30204	hyrule.are	standing	100	0	-	west		Path to the Manji //   A narrow trail winds east through the southern forest toward a ring of // trees that grow in a pattern too regular to be natural, set like spokes
+1792930133	cmd	Trentlin	50	30203	hyrule.are	standing	100	0	-	west		Southern Woods //   Old trees stand in rows along the southern edge of the land, set as evenly // as an orchard, their crowns meeting overhead in a leafy roof. The leaf
+1792930133	cmd	Trentlin	50	30202	hyrule.are	standing	100	0	-	west		Woodland Rock Face //   Trees crowd against the wall of brown rock that marks the southern edge of // the land, their roots wedged into every crack. Crude stone-headed arrows
+1792930134	cmd	Trentlin	50	30202	hyrule.are	standing	100	0	-	exits		Obvious exits: // North - The Tangled Woods // East  - Southern Woods
+1792930136	cmd	Trentlin	50	30203	hyrule.are	standing	100	0	-	east		Southern Woods //   Old trees stand in rows along the southern edge of the land, set as evenly // as an orchard, their crowns meeting overhead in a leafy roof. The leaf
+1792930137	cmd	Trentlin	50	30204	hyrule.are	standing	100	0	-	east		Path to the Manji //   A narrow trail winds east through the southern forest toward a ring of // trees that grow in a pattern too regular to be natural, set like spokes
+1792930137	cmd	Trentlin	50	30205	hyrule.are	standing	100	0	-	east		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the
+1792930138	cmd	Trentlin	50	30204	hyrule.are	standing	100	0	-	west		Path to the Manji //   A narrow trail winds east through the southern forest toward a ring of // trees that grow in a pattern too regular to be natural, set like spokes
+1792930138	cmd	Trentlin	50	30203	hyrule.are	standing	100	0	-	west		Southern Woods //   Old trees stand in rows along the southern edge of the land, set as evenly // as an orchard, their crowns meeting overhead in a leafy roof. The leaf
+1792930138	cmd	Trentlin	50	30202	hyrule.are	standing	100	0	-	west		Woodland Rock Face //   Trees crowd against the wall of brown rock that marks the southern edge of // the land, their roots wedged into every crack. Crude stone-headed arrows
+1792930139	cmd	Trentlin	50	30201	hyrule.are	standing	100	0	-	west		Southwest Meadow //   A wide meadow of tall grass and yellow flowers fills the far southwest // corner of the land, hemmed in by brown rock to the south and west. Some
+1792930140	cmd	Trentlin	50	30201	hyrule.are	standing	100	0	-	exits		Obvious exits: // East  - Woodland Rock Face // Down  - The Whispering Hearth
+1792930141	cmd	Trentlin	50	30330	hyrule.are	standing	100	0	-	down		The Whispering Hearth //   This little cave at the back of the meadow is swept tidy, and a woven mat // lies before the far wall where a visitor is meant to stand and pay. Flower
+1792930142	cmd	Trentlin	50	30330	hyrule.are	standing	100	0	-	list		You can't do that here.
+1792930147	cmd	Trentlin	50	30330	hyrule.are	standing	100	0	-	give	gold woman	You do not have that item.
+1792930151	cmd	Trentlin	50	30330	hyrule.are	standing	100	0	-	give	20 gold woman	A sharp-eyed old woman pushes the coins back at you. "Pay me and I'll talk." // She will take 10, 30 or 50 gold.
+1792930157	cmd	Trentlin	50	30330	hyrule.are	standing	100	0	-	give	50 gold woman	You pay a sharp-eyed old woman. // "Boy, you're rich!" And that is all she says.
+1792930165	cmd	Trentlin	50	30330	hyrule.are	standing	100	0	-	give	30 gold woman	You pay a sharp-eyed old woman. // "Go north, west, south, west to the forest of maze." //                     ACHIEVEMENT EARNED
+1792930176	cmd	Trentlin	50	30330	hyrule.are	standing	100	0	-	look		The Whispering Hearth //   This little cave at the back of the meadow is swept tidy, and a woven mat // lies before the far wall where a visitor is meant to stand and pay. Flower
+1792930177	cmd	Trentlin	50	30330	hyrule.are	standing	100	0	-	inventory		You are carrying: // ( 3) a big pot pie //      the heart of a blue goriya
+1792930178	cmd	Trentlin	50	30201	hyrule.are	standing	100	0	-	up		Southwest Meadow //   A wide meadow of tall grass and yellow flowers fills the far southwest // corner of the land, hemmed in by brown rock to the south and west. Some
+1792930180	cmd	Trentlin	50	30202	hyrule.are	standing	100	0	-	east		Woodland Rock Face //   Trees crowd against the wall of brown rock that marks the southern edge of // the land, their roots wedged into every crack. Crude stone-headed arrows
+1792930188	cmd	Trentlin	50	30202	hyrule.are	standing	100	0	-	kill	mob	You === OBLITERATE === a blue moblin! // You ^^^ DESTROY ^^^ a blue moblin! // You === OBLITERATE === a blue moblin!
+1792930191	cmd	Trentlin	50	30202	hyrule.are	fighting	100	0	fight	smite		Your smite === OBLITERATES === a blue moblin! // Your smite === OBLITERATES === a blue moblin! // Your smite <<< ERADICATES >>> a blue moblin!
+1792930200	cmd	Trentlin	50	30202	hyrule.are	standing	100	0	-	bomb	south	You find no cracked surface to bomb there.
+1792930200	cmd	Trentlin	50	30202	hyrule.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792930202	cmd	Trentlin	50	30202	hyrule.are	standing	100	0	-	look		Woodland Rock Face //   Trees crowd against the wall of brown rock that marks the southern edge of // the land, their roots wedged into every crack. Crude stone-headed arrows
+1792930208	cmd	Trentlin	50	30202	hyrule.are	standing	100	0	-	scan		a blue moblin                      -to the North. // a blue moblin                      -to the North. // a blue moblin                      -to the East.
+1792930208	cmd	Trentlin	50	30202	hyrule.are	standing	100	0	-	exits		Obvious exits: // North - The Tangled Woods // East  - Southern Woods
+1792930210	cmd	Trentlin	50	30217	hyrule.are	standing	100	0	-	north		The Tangled Woods //   Dense trees crowd close on every side, their branches knotted overhead into // a dim green roof. Paths wind away in all four directions between the
+1792930210	cmd	Trentlin	50	30216	hyrule.are	standing	100	0	-	west		Western Meadow Edge //   Open meadow runs right up to the western edge of the land, where the grass // stops at a sheer brown bluff. A spinning flower rises and falls on the
+1792930212	cmd	Trentlin	50	30232	hyrule.are	standing	100	0	-	north		Western Crags //   Brown boulders and jagged rock spurs crowd the western edge of the world, // and deep claw marks score the stone beside blackened streaks where
+1792930213	cmd	Trentlin	50	30248	hyrule.are	standing	100	0	-	north		The Graveyard's Southern Fence //   Weathered headstones lean in crooked rows behind a low, crumbling wall, // their names long since rubbed away by wind and rain. The grass grows thin
+1792930215	cmd	Trentlin	50	30248	hyrule.are	standing	100	0	-	exits		Obvious exits: // North - The Graveyard, Lower Rows // East  - Hollow of Headstones
+1792930216	cmd	Trentlin	50	30249	hyrule.are	standing	100	0	-	east		Hollow of Headstones //   A sunken hollow of cracked gravestones sits under a sky that never quite // seems to brighten. Crows' feathers and old wilted flowers litter the bare
+1792930217	cmd	Trentlin	50	30249	hyrule.are	standing	100	0	-	exits		Obvious exits: // North - The Graveyard Gate // West  - The Graveyard's Southern Fence
+1792930217	cmd	Trentlin	50	30265	hyrule.are	standing	100	0	-	north		The Graveyard Gate //   Here the graves thin out toward the edge of the burial ground, where a gap // in the boundary lets travellers pass. The headstones nearest the gate lean
+1792930219	cmd	Trentlin	50	30266	hyrule.are	standing	100	0	-	east		Ghost Hill //   A low grassy hill overlooks the graveyard to the west, its slopes dotted // with wildflowers and scarred by heavy hoofprints and black scorch marks
+1792930220	cmd	Trentlin	50	30267	hyrule.are	standing	100	0	-	east		The Cracked Bluff //   A tall bluff of brown rock stands at the edge of the highlands, its face // stained by old water. Near its base the stone is cracked and flaking, and a
+1792930220	cmd	Trentlin	50	30267	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792930221	cmd	Trentlin	50	30283	hyrule.are	standing	100	0	-	north		The Western Warp Stone //   A lonely boulder sits in a ring of trampled grass, heavier and squarer than // the stones around it, far too heavy to move without a bracelet of great
+1792930221	cmd	Trentlin	50	30283	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792930222	cmd	Trentlin	50	30284	hyrule.are	standing	100	0	-	east		The Armos Gallery //   A row of carved stone soldiers stands at attention across the highland, // each holding a spear, their blank eyes fixed on the horizon. They look
+1792930223	cmd	Trentlin	50	30285	hyrule.are	standing	100	0	-	east		The Bomb Merchant's Cave //   Flowers carpet this open field, some of them spinning on their stalks, and // a cave mouth yawns in a low rock face at its western side. A smell of black
+1792930224	cmd	Trentlin	50	30285	hyrule.are	standing	100	0	-	exits		Obvious exits: // North - Highland Overlook // South - The Quiet Glade
+1792930225	cmd	Trentlin	50	30681	hyrule.are	standing	100	0	-	down		Fuse and Fletching //   Petals from the spinning flowers outside have blown into this cave and // caught among a litter of spent fuses and stray feathers. Two fires burn
+1792930226	cmd	Trentlin	50	30681	hyrule.are	standing	100	0	-	list		[Lv Price] Item // [ 8        80g] a quiver of arrows. // [ 1        20g] four bombs.
+1792930230	cmd	Trentlin	50	30681	hyrule.are	standing	100	0	-	buy	bombs	You buy four bombs.
+1792930230	cmd	Trentlin	50	30681	hyrule.are	standing	100	0	-	buy	bombs	You buy four bombs.
+1792930231	cmd	Trentlin	50	30681	hyrule.are	standing	100	0	-	buy	bombs	Your bomb bag will not take four more: it holds 12, and you carry 9.
+1792930234	cmd	Trentlin	50	30285	hyrule.are	standing	100	0	-	up		The Bomb Merchant's Cave //   Flowers carpet this open field, some of them spinning on their stalks, and // a cave mouth yawns in a low rock face at its western side. A smell of black
+1792930235	cmd	Trentlin	50	30285	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792930236	cmd	Trentlin	50	30301	hyrule.are	standing	100	0	-	north		Highland Overlook //   The mountain pauses here in a high meadow of thin grass and wildflowers, // ringed by brown boulders. From its edge the whole of the western highlands
+1792930237	cmd	Trentlin	50	30301	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792930237	cmd	Trentlin	50	30300	hyrule.are	standing	100	0	-	west		The Crumbling Scarp //   The scarp here is old and tired, its brown face slumping into heaps of // rubble. One stretch looks ready to give way altogether, its cracks deep
+1792930238	cmd	Trentlin	50	30299	hyrule.are	standing	100	0	-	west		Broken Stone Terrace //   Terraces of broken stone step down the mountainside like a ruined stair. // Lynel tracks, deep and wide, scar the dust between them, and scorch marks
+1792930240	cmd	Trentlin	50	30315	hyrule.are	standing	100	0	-	north		Rockfall Crest //   Loose scree pours down from the peaks above, and every so often a fresh // stone comes bounding across the crest with a hollow clatter. The ground is
+1792930241	cmd	Trentlin	50	30314	hyrule.are	standing	100	0	-	west		The High Boulder Pass //   Rounded boulders the size of huts crowd this pass, leaving a crooked lane // of bare earth between them. The air is thin and cold, and every sound
+1792930242	cmd	Trentlin	50	30313	hyrule.are	standing	100	0	-	west		Lynel Ridge //   A high ridge of rust-brown rock runs east and west, its ground churned by // heavy hooves and dotted with scorched patches where something spat fire.
+1792930243	cmd	Trentlin	50	30312	hyrule.are	standing	100	0	-	west		Death Mountain's Western Summit //   The world ends here in a wall of brown boulders, stacked shoulder to // shoulder against a pale, empty sky. Thin wind whistles through the gaps and
+1792930244	cmd	Trentlin	50	30296	hyrule.are	standing	100	0	-	south		The Western Gorge //   Steep brown walls box in this gorge at the western edge of the mountains, // and the wind funnels through with a low howl. Hoofprints and scorch marks
+1792930245	cmd	Trentlin	50	30297	hyrule.are	standing	100	0	-	east		The Windswept Shelf //   A flat shelf of rock juts out from the mountainside, scoured clean by // constant wind. A few tough flowers grow in the lee of the boulders, their
+1792930247	cmd	Trentlin	50	30313	hyrule.are	standing	100	0	-	north		Lynel Ridge //   A high ridge of rust-brown rock runs east and west, its ground churned by // heavy hooves and dotted with scorched patches where something spat fire.
+1792930248	cmd	Trentlin	50	30314	hyrule.are	standing	100	0	-	east		The High Boulder Pass //   Rounded boulders the size of huts crowd this pass, leaving a crooked lane // of bare earth between them. The air is thin and cold, and every sound
+1792930251	cmd	Trentlin	50	30250	hyrule.are	standing	100	0	-	play	recorder	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Still Pond
+1792930255	cmd	Trentlin	50	30527	hyrule.are	standing	100	0	-	down		Level 7: Demon's Gate //   Damp stone steps come down from the drained pond above into a vestibule of // green-black brick carved with a horned, grinning face. Water still beads on
+1792930258	cmd	Trentlin	50	30530	hyrule.are	standing	100	0	-	north		Level 7: Moat Crossroads //   A channel of black water rings a raised island of flagstones at the heart // of this room, its surface still and cold, and boomerang splinters float on
+1792930260	cmd	Trentlin	50	30529	hyrule.are	standing	100	0	-	west		Level 7: Blade Trap Corridor //   Deep grooves are worn into the floor between the corners, where blocks of // spiked iron sit in shallow recesses, polished bright by endless sliding at
+1792930262	cmd	Trentlin	50	30526	hyrule.are	standing	100	0	-	south		Level 7: Hall of Shed Skins //   Pale, papery snakeskins lie curled in the corners of this low chamber, and // thin sinuous tracks wind through the grit, snapping into straight furrows
+1792930265	cmd	Trentlin	50	30526	hyrule.are	standing	100	0	-	get	key	You get a small key.
+1792930269	cmd	Trentlin	50	30526	hyrule.are	standing	100	0	-	kill	ro	A rope parries your attack. // A rope parries your attack. // You ^^^ DESTROY ^^^ a rope!
+1792930272	cmd	Trentlin	50	30526	hyrule.are	fighting	99	0	fight	smite		Your smite === OBLITERATES === a rope! // Your smite ^^^ DESTROYS ^^^ a rope! // Your smite ^^^ DESTROYS ^^^ a rope!
+1792930280	cmd	Trentlin	50	30526	hyrule.are	standing	99	0	-	look	in cr	That is not a container.
+1792930281	cmd	Trentlin	50	30526	hyrule.are	standing	99	0	-	look	in co	Corpse of a rope contains: //      Nothing.
+1792930281	cmd	Trentlin	50	30526	hyrule.are	standing	99	0	-	sacrifice	co	The Gods give you 84 copper coins for your sacrifice.
+1792930282	cmd	Trentlin	50	30526	hyrule.are	standing	99	0	-	look		Level 7: Hall of Shed Skins //   Pale, papery snakeskins lie curled in the corners of this low chamber, and // thin sinuous tracks wind through the grit, snapping into straight furrows
+1792930292	cmd	Trentlin	50	30529	hyrule.are	standing	99	0	-	north		Level 7: Blade Trap Corridor //   Deep grooves are worn into the floor between the corners, where blocks of // spiked iron sit in shallow recesses, polished bright by endless sliding at
+1792930294	cmd	Trentlin	50	30529	hyrule.are	standing	99	0	-	affect		You are affected by: // Spell: 'titanic' modifies experience by 50 for 8 hours. // Spell: 'titanic' modifies moves by 2095 for 8 hours.
+1792930300	cmd	Trentlin	50	30529	hyrule.are	standing	99	0	-	look		Level 7: Blade Trap Corridor //   Deep grooves are worn into the floor between the corners, where blocks of // spiked iron sit in shallow recesses, polished bright by endless sliding at
+1792930306	cmd	Trentlin	50	30529	hyrule.are	standing	99	0	-	kill	kee	The Headless Horseman's Reaper shears through a keese with terrible force! // You <<< ERADICATE >>> a keese! // You ^^^ DESTROY ^^^ a keese!
+1792930309	cmd	Trentlin	50	30529	hyrule.are	fighting	99	0	fight	smite		Your smite === OBLITERATES === a keese! // Your smite <<< ERADICATES >>> a keese! // A keese is DEAD!!
+1792930316	cmd	Trentlin	50	30529	hyrule.are	fighting	99	0	fight	look	in cor	Corpse of a keese contains: //      (Glowing) a recovery heart
+1792930317	cmd	Trentlin	50	30529	hyrule.are	fighting	99	0	fight	smite		Your smite <<< ERADICATES >>> a blade trap! // Your smite ^^^ DESTROYS ^^^ a blade trap! // Your smite === OBLITERATES === a blade trap!
+1792930323	cmd	Trentlin	50	30529	hyrule.are	fighting	99	0	fight	smite		Your smite === OBLITERATES === a blade trap! // Your smite ^^^ DESTROYS ^^^ a blade trap! // Your smite <<< ERADICATES >>> a blade trap!
+1792930330	cmd	Trentlin	50	30529	hyrule.are	standing	99	0	-	look	in cir	You do not see that here.
