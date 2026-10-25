@@ -13632,3 +13632,15 @@
 1792887890	cmd	Alaric	55	29204	korzath2.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
 1792887893	cmd	Alaric	55	29204	korzath2.are	standing	100	0	-	wear	just	You stop using Excalibur. // You wield (Flaming) the Crystalline Sword of Justice. // (Flaming) the Crystalline Sword of Justice feels like a part of you!
 1792887895	cmd	Alaric	55	29204	korzath2.are	standing	100	0	-	bs	cl	Your backstab ^^^ DESTROYS ^^^ a killer clown! [-107] // Your backstab >>> ANNIHILATES <<< a killer clown! [-218] // Your backstab ^^^ DESTROYS ^^^ a killer clown! [-108]
+1792887936	cmd	Alaric	55	29204	korzath2.are	fighting	97	0	fight	get	exc	I see no exc here.
+1792887942	cmd	Alaric	55	29204	korzath2.are	fighting	96	0	fight	worth		You have 1722 platinum, 370 gold, 708 silver, 964 copper // and 207917 experience (9383 exp to level).
+1792887944	cmd	Alaric	55	29204	korzath2.are	fighting	96	0	fight	look		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1792888053	cmd	Alaric	55	29205	korzath2.are	standing	94	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1792888055	cmd	Alaric	55	29205	korzath2.are	standing	94	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792888058	cmd	Alaric	55	29206	korzath2.are	standing	94	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1792888058	cmd	Alaric	55	29207	korzath2.are	standing	94	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1792888060	cmd	Alaric	55	29207	korzath2.are	standing	94	0	-	scan		a killer clown                     -to the North. // a killer clown                     -to the North. // a killer clown                     -to the North.
+1792888062	cmd	Alaric	55	29206	korzath2.are	standing	94	0	-	north		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1792888064	cmd	Alaric	55	29206	korzath2.are	standing	94	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792888066	cmd	Alaric	55	29206	korzath2.are	standing	94	0	-	bs	cl	Your backstab ^^^ DESTROYS ^^^ a killer clown! [-81] // Your backstab <<< ERADICATES >>> a killer clown! [-196] // Your backstab <<< ERADICATES >>> a killer clown! [-186]
+1792888153	cmd	Alaric	55	29206	korzath2.are	fighting	75	0	fight	look		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
