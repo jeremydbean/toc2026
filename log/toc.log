@@ -187352,3 +187352,148 @@ Sun Oct 25 14:13:13 2026 :: Log Alaric [16081]: kill bu
 Sun Oct 25 14:13:16 2026 :: Log Alaric [16081]: fi
 Sun Oct 25 14:13:21 2026 :: Log Alaric [16081]: fi
 Sun Oct 25 14:13:27 2026 :: Log Alaric [16081]: fi
+Sun Oct 25 14:13:32 2026 :: Log Alaric [16081]: killed The bucaneer
+Sun Oct 25 14:13:32 2026 :: Log Alaric [16081]: coin +4 platinum
+Sun Oct 25 14:13:32 2026 :: Log Alaric [16081]: coin +19 silver
+Sun Oct 25 14:13:32 2026 :: Log Alaric [16081]: coin +25 copper
+Sun Oct 25 14:13:32 2026 :: Log Alaric [16081]: coin +10 gold
+Sun Oct 25 14:13:33 2026 :: Log Alaric [16081]: fi
+Sun Oct 25 14:13:34 2026 :: Log Alaric [16081]: u
+Sun Oct 25 14:13:34 2026 :: Log Alaric [16083]: arrived (Crow's Nest) from 16081
+Sun Oct 25 14:13:35 2026 :: Log Alaric [16083]: kill sw
+Sun Oct 25 14:13:38 2026 :: Log Alaric [16083]: fi
+Sun Oct 25 14:13:41 2026 :: Log Alaric [16083]: killed The swashbuckler
+Sun Oct 25 14:13:41 2026 :: Log Alaric [16083]: coin +1 platinum
+Sun Oct 25 14:13:41 2026 :: Log Alaric [16083]: coin +6 silver
+Sun Oct 25 14:13:41 2026 :: Log Alaric [16083]: coin +8 copper
+Sun Oct 25 14:13:41 2026 :: Log Alaric [16083]: coin +3 gold
+Sun Oct 25 14:13:46 2026 :: Log Alaric [16083]: recal
+Sun Oct 25 14:13:46 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 16083
+Sun Oct 25 14:13:49 2026 :: Log Alaric [2497]: aq re
+Sun Oct 25 14:13:49 2026 :: Log Alaric [2497]: quest assigned: recover The Crown of Eclipse (obj 25040) in mid_ruin.are, 7 minutes, rush
+Sun Oct 25 14:13:52 2026 :: Log Alaric [2497]: enter door
+Sun Oct 25 14:13:52 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 14:13:52 2026 :: Log Alaric [2401]: west
+Sun Oct 25 14:13:52 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Oct 25 14:13:53 2026 :: Log Alaric [2405]: west
+Sun Oct 25 14:13:53 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Oct 25 14:13:53 2026 :: Log Alaric [2433]: west
+Sun Oct 25 14:13:53 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Oct 25 14:13:53 2026 :: Log Alaric [2434]: west
+Sun Oct 25 14:13:53 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Oct 25 14:13:53 2026 :: Log Alaric [2435]: west
+Sun Oct 25 14:13:53 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Oct 25 14:13:54 2026 :: Log Alaric [2436]: west
+Sun Oct 25 14:13:54 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Oct 25 14:13:54 2026 :: Log Alaric [2437]: west
+Sun Oct 25 14:13:54 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Oct 25 14:13:54 2026 :: Log Alaric [2438]: open west
+Sun Oct 25 14:13:54 2026 :: Log Alaric [2438]: west
+Sun Oct 25 14:13:54 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Oct 25 14:13:56 2026 :: Log Alaric [2439]: west
+Sun Oct 25 14:13:56 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sun Oct 25 14:13:56 2026 :: Log Alaric [6000]: west
+Sun Oct 25 14:13:56 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sun Oct 25 14:13:56 2026 :: Log Alaric [6001]: west
+Sun Oct 25 14:13:56 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sun Oct 25 14:13:56 2026 :: Log Alaric [6002]: west
+Sun Oct 25 14:13:56 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Sun Oct 25 14:13:57 2026 :: Log Alaric [6003]: west
+Sun Oct 25 14:13:57 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Sun Oct 25 14:13:57 2026 :: Log Alaric [6004]: west
+Sun Oct 25 14:13:57 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Sun Oct 25 14:13:57 2026 :: Log Alaric [6100]: west
+Sun Oct 25 14:13:57 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Sun Oct 25 14:13:57 2026 :: Log Alaric [6101]: south
+Sun Oct 25 14:13:57 2026 :: Log Alaric [6104]: arrived (A small path in the deep, dark forest) from 6101
+Sun Oct 25 14:13:58 2026 :: Log Alaric [6104]: south
+Sun Oct 25 14:13:58 2026 :: Log Alaric [6105]: arrived (A small path in the deep, dark forest) from 6104
+Sun Oct 25 14:13:58 2026 :: Log Alaric [6105]: west
+Sun Oct 25 14:13:58 2026 :: Log Alaric [6106]: arrived (A junction in the deep, dark forest) from 6105
+Sun Oct 25 14:13:58 2026 :: Log Alaric [6106]: south
+Sun Oct 25 14:13:58 2026 :: Log Alaric [6117]: arrived (A junction in the deep, dark forest) from 6106
+Sun Oct 25 14:13:58 2026 :: Log Alaric [6117]: west
+Sun Oct 25 14:13:58 2026 :: Log Alaric [6116]: arrived (A small path in the deep, dark forest) from 6117
+Sun Oct 25 14:13:59 2026 :: Log Alaric [6116]: south
+Sun Oct 25 14:13:59 2026 :: Log Alaric [6115]: arrived (A small path in the deep, dark forest) from 6116
+Sun Oct 25 14:13:59 2026 :: Log Alaric [6115]: west
+Sun Oct 25 14:13:59 2026 :: Log Alaric [6114]: arrived (A junction in the deep, dark forest) from 6115
+Sun Oct 25 14:13:59 2026 :: Log Alaric [6114]: west
+Sun Oct 25 14:13:59 2026 :: Log Alaric [6122]: arrived (A small path in the deep, dark forest) from 6114
+Sun Oct 25 14:13:59 2026 :: Log Alaric [6122]: south
+Sun Oct 25 14:13:59 2026 :: Log Alaric [6123]: arrived (A junction on the river bank in the deep, dark forest) from 6122
+Sun Oct 25 14:14:00 2026 :: Log Alaric [6123]: south
+Sun Oct 25 14:14:00 2026 :: Log Alaric [9774]: arrived (On the Dark River) from 6123
+Sun Oct 25 14:14:00 2026 :: Log Alaric [9774]: west
+Sun Oct 25 14:14:00 2026 :: Log Alaric [9775]: arrived (On the Dark River) from 9774
+Sun Oct 25 14:14:00 2026 :: Log Alaric [9775]: west
+Sun Oct 25 14:14:00 2026 :: Log Alaric [5979]: arrived (On the River) from 9775
+Sun Oct 25 14:14:05 2026 :: Log Alaric [5979]: l
+Sun Oct 25 14:16:40 2026 :: Sock.sinaddr:  5.161.215.244
+Sun Oct 25 14:16:40 2026 :: EOF encountered on read.
+Sun Oct 25 14:16:50 2026 :: Treasure goblin: vanished from room 18216 (Town Square, gelidia.are) (too long in one area).
+Sun Oct 25 14:16:51 2026 :: Log Alaric [5979]: affects off: steel fist
+Sun Oct 25 14:17:07 2026 :: Log Alaric [5979]: west
+Sun Oct 25 14:17:07 2026 :: Log Alaric [5978]: arrived (On the River) from 5979
+Sun Oct 25 14:17:07 2026 :: Log Alaric [5978]: west
+Sun Oct 25 14:17:07 2026 :: Log Alaric [5977]: arrived (On the River) from 5978
+Sun Oct 25 14:17:07 2026 :: Log Alaric [5977]: north
+Sun Oct 25 14:17:07 2026 :: Log Alaric [5749]: arrived (Levee) from 5977
+Sun Oct 25 14:17:08 2026 :: Log Alaric [5749]: north
+Sun Oct 25 14:17:08 2026 :: Log Alaric [5745]: arrived (Alley at Levee) from 5749
+Sun Oct 25 14:17:08 2026 :: Log Alaric [5745]: west
+Sun Oct 25 14:17:08 2026 :: Log Alaric [5726]: arrived (The Dark Alley) from 5745
+Sun Oct 25 14:17:08 2026 :: Log Alaric [5726]: west
+Sun Oct 25 14:17:08 2026 :: Log Alaric [5725]: arrived (The Common Square) from 5726
+Sun Oct 25 14:17:08 2026 :: Log Alaric [5725]: north
+Sun Oct 25 14:17:08 2026 :: Log Alaric [5714]: arrived (Old Market Square) from 5725
+Sun Oct 25 14:17:09 2026 :: Log Alaric [5714]: north
+Sun Oct 25 14:17:09 2026 :: Log Alaric [5705]: arrived (The Old Temple Square) from 5714
+Sun Oct 25 14:17:09 2026 :: Log Alaric [5705]: west
+Sun Oct 25 14:17:09 2026 :: Log Alaric [5704]: arrived (Entrance to the Old Cleric's Guild) from 5705
+Sun Oct 25 14:17:09 2026 :: Log Alaric [5704]: north
+Sun Oct 25 14:17:09 2026 :: Log Alaric [5703]: arrived (Ruined Cleric's Bar) from 5704
+Sun Oct 25 14:17:12 2026 :: Log Alaric [5703]: w
+Sun Oct 25 14:17:12 2026 :: Log Alaric [5702]: arrived (Destroyed Inner Sanctum) from 5703
+Sun Oct 25 14:17:13 2026 :: Log Alaric [5702]: d
+Sun Oct 25 14:17:13 2026 :: Log Alaric [5736]: arrived (Blackness.) from 5702
+Sun Oct 25 14:17:27 2026 :: Log Alaric [5736]: l
+Sun Oct 25 14:17:28 2026 :: Log Alaric [5736]: recal
+Sun Oct 25 14:17:28 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 5736
+Sun Oct 25 14:17:29 2026 :: Log Alaric [2497]: w
+Sun Oct 25 14:17:31 2026 :: Log Alaric [2497]: en do
+Sun Oct 25 14:17:31 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 14:17:35 2026 :: Log Alaric [2401]: walkto quest
+Sun Oct 25 14:17:35 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Oct 25 14:17:36 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Oct 25 14:17:36 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Oct 25 14:17:37 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Oct 25 14:17:38 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Oct 25 14:17:39 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Oct 25 14:17:39 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Oct 25 14:17:40 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Oct 25 14:17:41 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sun Oct 25 14:17:42 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sun Oct 25 14:17:42 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sun Oct 25 14:17:43 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Sun Oct 25 14:17:44 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Sun Oct 25 14:17:45 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Sun Oct 25 14:17:45 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Sun Oct 25 14:17:46 2026 :: Log Alaric [6104]: arrived (A small path in the deep, dark forest) from 6101
+Sun Oct 25 14:17:47 2026 :: Log Alaric [6105]: arrived (A small path in the deep, dark forest) from 6104
+Sun Oct 25 14:17:48 2026 :: Log Alaric [6106]: arrived (A junction in the deep, dark forest) from 6105
+Sun Oct 25 14:17:48 2026 :: Log Alaric [6117]: arrived (A junction in the deep, dark forest) from 6106
+Sun Oct 25 14:17:49 2026 :: Log Alaric [6116]: arrived (A small path in the deep, dark forest) from 6117
+Sun Oct 25 14:17:50 2026 :: Log Alaric [6115]: arrived (A small path in the deep, dark forest) from 6116
+Sun Oct 25 14:17:51 2026 :: Log Alaric [6114]: arrived (A junction in the deep, dark forest) from 6115
+Sun Oct 25 14:17:51 2026 :: Log Alaric [6122]: arrived (A small path in the deep, dark forest) from 6114
+Sun Oct 25 14:17:52 2026 :: Log Alaric [6123]: arrived (A junction on the river bank in the deep, dark forest) from 6122
+Sun Oct 25 14:17:53 2026 :: Log Alaric [9774]: arrived (On the Dark River) from 6123
+Sun Oct 25 14:17:54 2026 :: Log Alaric [9775]: arrived (On the Dark River) from 9774
+Sun Oct 25 14:17:54 2026 :: Log Alaric [5979]: arrived (On the River) from 9775
+Sun Oct 25 14:17:58 2026 :: Log Alaric [5979]: e
+Sun Oct 25 14:17:58 2026 :: Log Alaric [9775]: arrived (On the Dark River) from 5979
+Sun Oct 25 14:17:59 2026 :: Log Alaric [9775]: e
+Sun Oct 25 14:17:59 2026 :: Log Alaric [9774]: arrived (On the Dark River) from 9775
+Sun Oct 25 14:18:00 2026 :: Log Alaric [9774]: n
+Sun Oct 25 14:18:00 2026 :: Log Alaric [6123]: arrived (A junction on the river bank in the deep, dark forest) from 9774
