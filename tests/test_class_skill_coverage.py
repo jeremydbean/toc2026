@@ -180,6 +180,16 @@ class ClassSkillCoverageLiveTests(unittest.TestCase):
             # A mage under armor cannot raise a globe over it.
             self.make(mud, "Zglobe", Cla=0, Gui=0, Levl=40, Room=4207,
                       HMV="500 500 2000 2000 500 500", HMVP="500 2000 500")
+            # Rakar is not sentinel (AGJKTV): he wanders Dresden, and when
+            # he had wandered out of 2405 the GAIN found nobody -- CI,
+            # 2026-10-25. Staff bring him back first.
+            self.make(mud, "Zgainstaff", Levl=70, Room=2405)
+            with mud.connect(timeout=120) as staff:
+                login(staff, "Zgainstaff", PW)
+                staff.send("transfer rakar")
+                staff.drain(1.5)
+                staff.send("quit")
+                self.assertTrue(staff.wait_closed())
             for name, command in (("Zarcane", "gain arcane studies"),
                                   ("Zdespair", "gain despair")):
                 with mud.connect(timeout=120) as client:
