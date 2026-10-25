@@ -193960,3 +193960,33 @@ Sun Oct 25 22:32:52 2026 :: Log Alaric [13204]: e
 Sun Oct 25 22:32:53 2026 :: Log Alaric [13204]: n
 Sun Oct 25 22:32:53 2026 :: Log Alaric [13205]: arrived (Intersection at Main Road.) from 13204
 Sun Oct 25 22:32:55 2026 :: Log Alaric [13205]: where crim
+Sun Oct 25 22:34:03 2026 :: Log Alaric [13205]: north
+Sun Oct 25 22:34:03 2026 :: Log Alaric [13228]: arrived (Main Road) from 13205
+Sun Oct 25 22:34:03 2026 :: Log Alaric [13228]: north
+Sun Oct 25 22:34:03 2026 :: Log Alaric [13229]: arrived (End of the Main Road) from 13228
+Sun Oct 25 22:34:04 2026 :: Log Alaric [13229]: north
+Sun Oct 25 22:34:04 2026 :: Log Alaric [13272]: arrived (Cobblestone Path) from 13229
+Sun Oct 25 22:34:04 2026 :: Log Alaric [13272]: north
+Sun Oct 25 22:34:04 2026 :: Log Alaric [13282]: arrived (Outside the Inn of the Last Home.) from 13272
+Sun Oct 25 22:34:04 2026 :: Log Alaric [13282]: open west
+Sun Oct 25 22:34:04 2026 :: Log Alaric [13282]: west
+Sun Oct 25 22:34:04 2026 :: Log Alaric [13281]: arrived (Inn of the Last Home.) from 13282
+Sun Oct 25 22:34:08 2026 :: Log Alaric [13281]: kill mage
+Sun Oct 25 22:34:08 2026 :: Log Alaric [13281]: killed mage
+Sun Oct 25 22:34:08 2026 :: Log Alaric [13281]: coin +2 silver
+Sun Oct 25 22:34:08 2026 :: Log Alaric [13281]: coin +3 copper
+Sun Oct 25 22:34:08 2026 :: Log Alaric [13281]: coin +1 gold
+Sun Oct 25 22:34:13 2026 :: Log Alaric [13281]: recal
+Sun Oct 25 22:34:13 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 13281
+Sun Oct 25 22:34:13 2026 :: Log Alaric [2497]: recal
+Sun Oct 25 22:34:13 2026 :: Log Alaric [2497]: recal
+Sun Oct 25 22:34:13 2026 :: Log Alaric [2497]: aq co
+Sun Oct 25 22:34:13 2026 :: Log Alaric [2497]: copper +473203500
+Sun Oct 25 22:34:13 2026 :: Log Alaric [2497]: quest complete: 473p 20g 35s, 139 quest points, emergency (streak bonus 55%)
+Sun Oct 25 22:34:13 2026 :: Snapshot of Alaric taken before quest: Alaric.20261025_223413.quest (PRESTORE Alaric to see it).
+Sun Oct 25 22:34:16 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct 25 22:34:19 2026 :: Sock.sinaddr:  3.20.63.178
+Sun Oct 25 22:34:19 2026 :: EOF encountered on read.
+Sun Oct 25 22:34:38 2026 :: Log Alaric [2497]: sc
+Sun Oct 25 22:34:40 2026 :: Log Alaric [2497]: who
+Sun Oct 25 22:34:41 2026 :: Log Alaric [2497]: sc

@@ -21607,3 +21607,18 @@
 1792967572	cmd	Alaric	50	13204	solace.are	standing	100	0	-	east		Alas, you cannot go that way.
 1792967573	cmd	Alaric	50	13205	solace.are	standing	100	0	-	north		Intersection at Main Road. //   Here there is an intersection at the main road. // You see to the east and west, smaller houses and some more shops.
 1792967575	cmd	Alaric	50	13205	solace.are	standing	100	0	-	where	crim	You didn't find any crim.
+1792967643	cmd	Alaric	50	13228	solace.are	standing	100	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.
+1792967643	cmd	Alaric	50	13229	solace.are	standing	100	0	-	north		End of the Main Road //   The main road of Solace stops here. Other smaller roadways lead off // in various directions.
+1792967644	cmd	Alaric	50	13272	solace.are	standing	100	0	-	north		Cobblestone Path //   You are walking on a cobblestone path. It leads to a large building to the // north.
+1792967644	cmd	Alaric	50	13282	solace.are	standing	100	0	-	north		Outside the Inn of the Last Home. //   The Inn of the Last Home rests within the trunk of a huge vallenwood tree. // Warm laughter tumbles from the inn. The worn steps wind around the heavy
+1792967644	cmd	Alaric	50	13282	solace.are	standing	100	0	-	open	west	Ok.
+1792967644	cmd	Alaric	50	13281	solace.are	standing	100	0	-	west		Inn of the Last Home. //   The Inn of the Last Home never changes. The polished wooden bar curves // around several living branches. An old man weaves stories in the corner and
+1792967648	cmd	Alaric	50	13281	solace.are	standing	100	14	-	kill	mage	Your punch <<< ERADICATES >>> mage! [-159] // Your punch misses mage. [-0] // Your punch <<< ERADICATES >>> mage! [-184]
+1792967653	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792967653	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
+1792967653	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
+1792967653	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	16	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'You answered the emergency in time - the realm will not forget this!'
+1792967656	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 139 quest points.
+1792967678	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    247 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792967680	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1792967681	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    247 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
