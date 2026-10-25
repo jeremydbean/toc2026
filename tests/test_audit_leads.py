@@ -359,6 +359,12 @@ class HeatMetalTests(unittest.TestCase):
             with mud.connect(timeout=120) as caster, mud.connect(timeout=120) as god:
                 login(caster, "Zheater", PW)
                 login(god, "Zheatgod", PW)
+                # The guard wanders. One walked north the moment it was
+                # loaded and every cast after said "They aren't here" (CI,
+                # 2026-10-25): sentinel on the prototype, so both copies
+                # loaded below stand still.
+                said = run(god, f"set mob {guard} act +sentinel")
+                self.assertNotIn("Syntax", said, said)
                 run(god, f"load mob {guard}")
                 for vnum, keyword in ((3704, "shield"), (3705, "cloak"), (3706, "helmet"),
                                       (3703, "vest"), (3702, "sword")) * 3:
