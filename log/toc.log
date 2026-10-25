@@ -190667,3 +190667,50 @@ Sun Oct 25 18:50:10 2026 :: Log Alaric [2497]: i
 Sun Oct 25 18:50:12 2026 :: Treasure goblin: vanished from room 18053 (A small passageway, icekeep.are) (too long in one area).
 Sun Oct 25 18:50:58 2026 :: Sock.sinaddr:  3.212.128.62
 Sun Oct 25 18:50:59 2026 :: EOF encountered on read.
+Sun Oct 25 18:52:55 2026 :: Log Alaric [2497]: affects off: levitate
+Sun Oct 25 18:53:37 2026 :: Log Alaric [2497]: aq re
+Sun Oct 25 18:53:37 2026 :: Log Alaric [2497]: quest assigned: recover The Amulet of Soulcrusher (obj 25039) in froboz.are, 21 minutes, ordinary
+Sun Oct 25 18:53:45 2026 :: Log Alaric [2497]: enter door
+Sun Oct 25 18:53:45 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 18:53:45 2026 :: Log Alaric [2401]: south
+Sun Oct 25 18:53:45 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Sun Oct 25 18:53:45 2026 :: Log Alaric [2404]: south
+Sun Oct 25 18:53:45 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Sun Oct 25 18:53:45 2026 :: Log Alaric [2427]: west
+Sun Oct 25 18:53:45 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 2427
+Sun Oct 25 18:53:46 2026 :: Log Alaric [4201]: west
+Sun Oct 25 18:53:46 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4201
+Sun Oct 25 18:53:46 2026 :: Log Alaric [4202]: west
+Sun Oct 25 18:53:46 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4202
+Sun Oct 25 18:53:46 2026 :: Log Alaric [4207]: up
+Sun Oct 25 18:53:46 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 4207
+Sun Oct 25 18:53:46 2026 :: Log Alaric [3700]: east
+Sun Oct 25 18:53:46 2026 :: Log Alaric [3783]: arrived (A Gigantic Clown Head) from 3700
+Sun Oct 25 18:53:47 2026 :: Log Alaric [3783]: enter mouth
+Sun Oct 25 18:53:47 2026 :: Log Alaric [12000]: arrived (A Littered Road) from 3783
+Sun Oct 25 18:53:54 2026 :: Log Alaric [12000]: n
+Sun Oct 25 18:53:54 2026 :: Log Alaric [12001]: arrived (A Littered Road) from 12000
+Sun Oct 25 18:53:56 2026 :: Log Alaric [12001]: ex
+Sun Oct 25 18:53:59 2026 :: Log Alaric [12001]: w
+Sun Oct 25 18:53:59 2026 :: Log Alaric [12002]: arrived (Parking Lot) from 12001
+Sun Oct 25 18:54:01 2026 :: Log Alaric [12002]: w
+Sun Oct 25 18:54:01 2026 :: Log Alaric [12004]: arrived (Parking Lot) from 12002
+Sun Oct 25 18:54:03 2026 :: Log Alaric [12004]: s
+Sun Oct 25 18:54:03 2026 :: Log Alaric [12005]: arrived (Parking Lot) from 12004
+Sun Oct 25 18:54:04 2026 :: Log Alaric [12005]: e
+Sun Oct 25 18:54:04 2026 :: Log Alaric [12003]: arrived (Parking Lot) from 12005
+Sun Oct 25 18:54:08 2026 :: Log Alaric [12003]: get cre
+Sun Oct 25 18:54:11 2026 :: Log Alaric [12003]: get soul
+Sun Oct 25 18:54:13 2026 :: Log Alaric [12003]: get amu
+Sun Oct 25 18:54:14 2026 :: Log Alaric [12003]: recal
+Sun Oct 25 18:54:14 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 12003
+Sun Oct 25 18:54:16 2026 :: Log Alaric [2497]: aq co
+Sun Oct 25 18:54:16 2026 :: Log Alaric [2497]: copper +148721100
+Sun Oct 25 18:54:16 2026 :: Log Alaric [2497]: quest complete: 148p 72g 11s, 36 quest points (streak bonus 20%)
+Sun Oct 25 18:54:16 2026 :: Snapshot of Alaric taken before quest: Alaric.20261025_185416.quest (PRESTORE Alaric to see it).
+Sun Oct 25 18:54:17 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct 25 18:54:18 2026 :: Log Alaric [2497]: sc
+Sun Oct 25 18:54:20 2026 :: Log Alaric [2497]: who
+Sun Oct 25 18:56:03 2026 :: Sock.sinaddr:  3.212.128.62
+Sun Oct 25 18:56:03 2026 :: EOF encountered on read.
+Sun Oct 25 18:56:17 2026 :: Log Alaric [2497]: affects off: steel fist
