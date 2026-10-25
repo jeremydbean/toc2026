@@ -194315,3 +194315,104 @@ Sun Oct 25 23:09:50 2026 :: EOF encountered on read.
 Sun Oct 25 23:10:10 2026 :: Treasure goblin: vanished from room 15035 (Dunning Hall Lobby, campus.are) (too long in one area).
 Sun Oct 25 23:10:22 2026 :: Sock.sinaddr:  23.31.96.97
 Sun Oct 25 23:10:22 2026 :: EOF encountered on read.
+Sun Oct 25 23:14:54 2026 :: Sock.sinaddr:  5.161.61.238
+Sun Oct 25 23:14:54 2026 :: EOF encountered on read.
+Sun Oct 25 23:16:35 2026 :: Log Alaric [2497]: affects off: mindbar
+Sun Oct 25 23:20:00 2026 :: Sock.sinaddr:  5.161.117.52
+Sun Oct 25 23:20:00 2026 :: EOF encountered on read.
+Sun Oct 25 23:20:15 2026 :: Treasure goblin: vanished from room 18089 (Inside the white tower, icekeep.are) (too long in one area).
+Sun Oct 25 23:20:45 2026 :: Log Alaric [2497]: wake
+Sun Oct 25 23:20:47 2026 :: Log Alaric [2497]: mindbar
+Sun Oct 25 23:20:49 2026 :: Log Alaric [2497]: mindbar
+Sun Oct 25 23:20:49 2026 :: Log Alaric [2497]: mindbar
+Sun Oct 25 23:21:06 2026 :: Log Alaric [2497]: (refused) wakeaq re
+Sun Oct 25 23:21:06 2026 :: Log Alaric [2497]: aq re
+Sun Oct 25 23:21:06 2026 :: Log Alaric [2497]: quest assigned: kill the Devil Lieutenant (mob 20591, level 40) in emerald.are, 8 minutes, rush
+Sun Oct 25 23:21:15 2026 :: Log Alaric [2497]: en do
+Sun Oct 25 23:21:15 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 23:21:17 2026 :: Log Alaric [2401]: jump rock
+Sun Oct 25 23:21:17 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Sun Oct 25 23:21:17 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 1607
+Sun Oct 25 23:21:19 2026 :: Log Alaric [4208]: heal all
+Sun Oct 25 23:21:19 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Sun Oct 25 23:21:20 2026 :: Log Alaric [4208]: r e 4
+Sun Oct 25 23:21:20 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Oct 25 23:21:20 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sun Oct 25 23:21:20 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sun Oct 25 23:21:20 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sun Oct 25 23:21:21 2026 :: Log Alaric [2427]: n
+Sun Oct 25 23:21:21 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 25 23:21:21 2026 :: Log Alaric [2404]: n
+Sun Oct 25 23:21:21 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sun Oct 25 23:21:39 2026 :: Log Alaric [2401]: r s 6
+Sun Oct 25 23:21:39 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Sun Oct 25 23:21:39 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Sun Oct 25 23:21:39 2026 :: Log Alaric [2428]: arrived (Main Processional, Toward the Mermaids' Bridge) from 2427
+Sun Oct 25 23:21:39 2026 :: Log Alaric [2429]: arrived (Bridge of the Mermaids.) from 2428
+Sun Oct 25 23:21:39 2026 :: Log Alaric [2430]: arrived (Main Processional, at the Southern Gates) from 2429
+Sun Oct 25 23:21:39 2026 :: Log Alaric [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Sun Oct 25 23:21:39 2026 :: Log Alaric [2431]: open south
+Sun Oct 25 23:21:39 2026 :: Log Alaric [2431]: r s 3
+Sun Oct 25 23:21:39 2026 :: Log Alaric [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Sun Oct 25 23:21:39 2026 :: Log Alaric [3505]: arrived (The Trail to Miden'nir) from 2432
+Sun Oct 25 23:21:39 2026 :: Log Alaric [3507]: arrived (A Burned Cart) from 3505
+Sun Oct 25 23:21:40 2026 :: Log Alaric [3507]: w
+Sun Oct 25 23:21:40 2026 :: Log Alaric [3508]: arrived (On a Small Path) from 3507
+Sun Oct 25 23:21:40 2026 :: Log Alaric [3508]: s
+Sun Oct 25 23:21:40 2026 :: Log Alaric [3511]: arrived (The Trail) from 3508
+Sun Oct 25 23:21:40 2026 :: Log Alaric [3511]: open secret
+Sun Oct 25 23:21:40 2026 :: Log Alaric [3511]: w
+Sun Oct 25 23:21:40 2026 :: Log Alaric [20501]: arrived (A Fog-Shrouded Trail) from 3511
+Sun Oct 25 23:21:41 2026 :: Log Alaric [20501]: u
+Sun Oct 25 23:21:41 2026 :: Log Alaric [20502]: arrived (The Haunted Pine Forest) from 20501
+Sun Oct 25 23:21:41 2026 :: Log Alaric [20502]: u
+Sun Oct 25 23:21:41 2026 :: Log Alaric [20503]: arrived (Near the Summit) from 20502
+Sun Oct 25 23:21:41 2026 :: Log Alaric [20503]: s
+Sun Oct 25 23:21:41 2026 :: Log Alaric [20504]: arrived (A Mountain Pass) from 20503
+Sun Oct 25 23:21:41 2026 :: Log Alaric [20504]: s
+Sun Oct 25 23:21:41 2026 :: Log Alaric [20505]: arrived (A Mountain Pass) from 20504
+Sun Oct 25 23:21:42 2026 :: Log Alaric [20505]: w
+Sun Oct 25 23:21:42 2026 :: Log Alaric [20506]: arrived (A Thickly-Wooded Dell) from 20505
+Sun Oct 25 23:22:04 2026 :: Log Alaric [20506]: south
+Sun Oct 25 23:22:04 2026 :: Log Alaric [20507]: arrived (A Signpost in the Enchanted Forests) from 20506
+Sun Oct 25 23:22:04 2026 :: Log Alaric [20507]: west
+Sun Oct 25 23:22:04 2026 :: Log Alaric [20508]: arrived (A Fae Crossing) from 20507
+Sun Oct 25 23:22:04 2026 :: Log Alaric [20508]: south
+Sun Oct 25 23:22:04 2026 :: Log Alaric [20530]: arrived (Under Dark Woods) from 20508
+Sun Oct 25 23:22:05 2026 :: Log Alaric [20530]: west
+Sun Oct 25 23:22:05 2026 :: Log Alaric [20529]: arrived (The Entrance of the Witch Wood) from 20530
+Sun Oct 25 23:22:05 2026 :: Log Alaric [20529]: north
+Sun Oct 25 23:22:05 2026 :: Log Alaric [20517]: arrived (The Witch Wood) from 20529
+Sun Oct 25 23:22:05 2026 :: Log Alaric [20517]: north
+Sun Oct 25 23:22:05 2026 :: Log Alaric [20518]: arrived (The Witch Wood) from 20517
+Sun Oct 25 23:22:05 2026 :: Log Alaric [20518]: west
+Sun Oct 25 23:22:05 2026 :: Log Alaric [20519]: arrived (The Altar of Sacrifice) from 20518
+Sun Oct 25 23:22:06 2026 :: Log Alaric [20519]: north
+Sun Oct 25 23:22:06 2026 :: Log Alaric [20520]: arrived (The Witch Wood) from 20519
+Sun Oct 25 23:22:06 2026 :: Log Alaric [20520]: west
+Sun Oct 25 23:22:06 2026 :: Log Alaric [20522]: arrived (The Witch Wood) from 20520
+Sun Oct 25 23:22:06 2026 :: Log Alaric [20522]: north
+Sun Oct 25 23:22:06 2026 :: Log Alaric [20523]: arrived (The Wall of Shadows) from 20522
+Sun Oct 25 23:22:09 2026 :: Log Alaric [20523]: con li
+Sun Oct 25 23:22:11 2026 :: Log Alaric [20523]: kill li
+Sun Oct 25 23:22:14 2026 :: Log Alaric [20523]: fi
+Sun Oct 25 23:22:19 2026 :: Log Alaric [20523]: fi
+Sun Oct 25 23:22:25 2026 :: Log Alaric [20523]: fi
+Sun Oct 25 23:22:31 2026 :: Log Alaric [20523]: fi
+Sun Oct 25 23:22:37 2026 :: Log Alaric [20523]: fi
+Sun Oct 25 23:22:37 2026 :: Log Alaric [20523]: killed the Devil Lieutenant
+Sun Oct 25 23:22:37 2026 :: Log Alaric [20523]: coin +1 copper
+Sun Oct 25 23:22:43 2026 :: Log Alaric [20523]: fi
+Sun Oct 25 23:22:43 2026 :: Log Alaric [20523]: recal
+Sun Oct 25 23:22:43 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 20523
+Sun Oct 25 23:22:43 2026 :: Log Alaric [2497]: recal
+Sun Oct 25 23:22:43 2026 :: Log Alaric [2497]: aq co
+Sun Oct 25 23:22:43 2026 :: Log Alaric [2497]: copper +297442200
+Sun Oct 25 23:22:43 2026 :: Log Alaric [2497]: quest complete: 297p 44g 22s, 46 quest points, rush (streak bonus 0%)
+Sun Oct 25 23:22:43 2026 :: Snapshot of Alaric taken before quest: Alaric.20261025_232243.quest (PRESTORE Alaric to see it).
+Sun Oct 25 23:22:46 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct 25 23:22:48 2026 :: Log Alaric [2497]: i
+Sun Oct 25 23:22:50 2026 :: Log Alaric [2497]: score
+Sun Oct 25 23:22:53 2026 :: Log Alaric [2497]: drop shield
+Sun Oct 25 23:22:55 2026 :: Log Alaric [2497]: l
+Sun Oct 25 23:22:57 2026 :: Log Alaric [2497]: sc
