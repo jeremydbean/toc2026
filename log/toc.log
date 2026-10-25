@@ -190729,3 +190729,52 @@ Sun Oct 25 19:16:22 2026 :: EOF encountered on read.
 Sun Oct 25 19:20:26 2026 :: Treasure goblin: vanished from room 13209 (Corner of East Gullen and Ketra Road., solace.are) (too long in one area).
 Sun Oct 25 19:21:27 2026 :: Sock.sinaddr:  3.12.251.153
 Sun Oct 25 19:21:27 2026 :: EOF encountered on read.
+Sun Oct 25 19:26:13 2026 :: Sock.sinaddr:  24.2.118.125
+Sun Oct 25 19:26:15 2026 :: Loading Trentlin's playerfile
+Sun Oct 25 19:26:17 2026 :: Loading Trentlin's playerfile
+Sun Oct 25 19:26:17 2026 :: Trentlin@c-24-2-118-125.hsd1.pa.comcast.net has connected.
+Sun Oct 25 19:26:17 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Sun Oct 25 19:26:18 2026 :: Log Trentlin [2497]: l
+Sun Oct 25 19:26:22 2026 :: Log Trentlin [2497]: aquest request
+Sun Oct 25 19:26:22 2026 :: Log Trentlin [2497]: quest assigned: kill a fat worm (mob 2806, level 3) in trollden.are, 11 minutes, ordinary
+Sun Oct 25 19:26:26 2026 :: Log Trentlin [2497]: enter door
+Sun Oct 25 19:26:26 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 19:26:28 2026 :: Log Trentlin [2401]: south
+Sun Oct 25 19:26:28 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Sun Oct 25 19:26:28 2026 :: Log Trentlin [2404]: south
+Sun Oct 25 19:26:28 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Sun Oct 25 19:26:28 2026 :: Log Trentlin [2427]: south
+Sun Oct 25 19:26:28 2026 :: Log Trentlin [2428]: arrived (Main Processional, Toward the Mermaids' Bridge) from 2427
+Sun Oct 25 19:26:28 2026 :: Log Trentlin [2428]: south
+Sun Oct 25 19:26:28 2026 :: Log Trentlin [2429]: arrived (Bridge of the Mermaids.) from 2428
+Sun Oct 25 19:26:29 2026 :: Log Trentlin [2429]: south
+Sun Oct 25 19:26:29 2026 :: Log Trentlin [2430]: arrived (Main Processional, at the Southern Gates) from 2429
+Sun Oct 25 19:26:29 2026 :: Log Trentlin [2430]: south
+Sun Oct 25 19:26:29 2026 :: Log Trentlin [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Sun Oct 25 19:26:29 2026 :: Log Trentlin [2431]: open south
+Sun Oct 25 19:26:30 2026 :: Log Trentlin [2431]: south
+Sun Oct 25 19:26:30 2026 :: Log Trentlin [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Sun Oct 25 19:26:32 2026 :: Sock.sinaddr:  5.161.113.195
+Sun Oct 25 19:26:32 2026 :: EOF encountered on read.
+Sun Oct 25 19:26:34 2026 :: Log Trentlin [2432]: (refused) qalk quest
+Sun Oct 25 19:26:38 2026 :: Log Trentlin [2432]: south
+Sun Oct 25 19:26:38 2026 :: Log Trentlin [3505]: arrived (The Trail to Miden'nir) from 2432
+Sun Oct 25 19:26:38 2026 :: Log Trentlin [3505]: south
+Sun Oct 25 19:26:38 2026 :: Log Trentlin [3507]: arrived (A Burned Cart) from 3505
+Sun Oct 25 19:26:38 2026 :: Log Trentlin [3507]: south
+Sun Oct 25 19:26:38 2026 :: Log Trentlin [3510]: arrived (A Crossroads) from 3507
+Sun Oct 25 19:26:38 2026 :: Log Trentlin [3510]: south
+Sun Oct 25 19:26:38 2026 :: Log Trentlin [3516]: arrived (Muddy Ground) from 3510
+Sun Oct 25 19:26:39 2026 :: Log Trentlin [3516]: down
+Sun Oct 25 19:26:39 2026 :: Log Trentlin [19]: arrived (Soggy Cave) from 3516
+Sun Oct 25 19:26:39 2026 :: Log Trentlin [19]: south
+Sun Oct 25 19:26:39 2026 :: Log Trentlin [2801]: arrived (Wastedump) from 19
+Sun Oct 25 19:26:42 2026 :: Log Trentlin [2801]: n
+Sun Oct 25 19:26:42 2026 :: Log Trentlin [19]: arrived (Soggy Cave) from 2801
+Sun Oct 25 19:26:43 2026 :: Log Trentlin [19]: s
+Sun Oct 25 19:26:43 2026 :: Log Trentlin [2801]: arrived (Wastedump) from 19
+Sun Oct 25 19:26:43 2026 :: Log Trentlin [2801]: s
+Sun Oct 25 19:26:43 2026 :: Log Trentlin [2803]: arrived (Troll's Living Room) from 2801
+Sun Oct 25 19:26:47 2026 :: Log Trentlin [2803]: k wor
+Sun Oct 25 19:26:47 2026 :: Log Trentlin [2803]: killed a fat worm
+Sun Oct 25 19:26:47 2026 :: Log Trentlin [2803]: coin +2 copper
