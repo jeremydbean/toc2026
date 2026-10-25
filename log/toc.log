@@ -189646,3 +189646,15 @@ Sun Oct 25 17:25:18 2026 :: Log Alaric [25217]: northeast
 Sun Oct 25 17:25:18 2026 :: Log Alaric [25218]: arrived (The road along the wall.) from 25217
 Sun Oct 25 17:25:19 2026 :: Log Alaric [25218]: northeast
 Sun Oct 25 17:25:19 2026 :: Log Alaric [25219]: arrived (The road around the city.) from 25218
+Sun Oct 25 17:25:24 2026 :: Log Alaric [25219]: get all
+Sun Oct 25 17:25:25 2026 :: Log Alaric [25219]: recal
+Sun Oct 25 17:25:25 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 25219
+Sun Oct 25 17:25:26 2026 :: Log Alaric [2497]: aq co
+Sun Oct 25 17:25:26 2026 :: Log Alaric [2497]: copper +81120600
+Sun Oct 25 17:25:26 2026 :: Log Alaric [2497]: quest complete: 81p 12g 6s, 59 quest points (streak bonus 65%)
+Sun Oct 25 17:25:26 2026 :: Snapshot of Alaric taken before quest: Alaric.20261025_172526.quest (PRESTORE Alaric to see it).
+Sun Oct 25 17:25:27 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct 25 17:25:28 2026 :: Log Alaric [2497]: score
+Sun Oct 25 17:29:34 2026 :: Treasure goblin: vanished from room 1707 (Trail in Dark Oak Forest, wyvern.are) (too long in one area).
+Sun Oct 25 17:29:41 2026 :: Sock.sinaddr:  5.161.194.92
+Sun Oct 25 17:29:41 2026 :: EOF encountered on read.

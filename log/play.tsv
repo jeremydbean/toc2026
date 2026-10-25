@@ -19417,3 +19417,8 @@
 1792949028	cmd	Alaric	50	25217	mushroom.are	standing	100	0	-	north		The Southern Gate of Nethril. //   Merchant traffic here is busy as servants from several of the ruling houses // of Nethril look at the wares the merchants are selling.  A duegar smiles as
 1792949118	cmd	Alaric	50	25218	mushroom.are	standing	100	0	-	northeast		The road along the wall. //   A huge bucket is sitting on the ledge here.  It's used for keeping the // caravans passing through a water supply.  Hooked to a huge chain and wench
 1792949119	cmd	Alaric	50	25219	mushroom.are	standing	100	0	-	northeast		The road around the city. //   Two duergar are here fighting as children play and take items from both // of their wagons.  They wrecked into each other.  The guards on the ledge
+1792949124	cmd	Alaric	50	25219	mushroom.are	standing	100	0	-	get	all	You get The Sceptre of Gravestone.
+1792949125	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792949126	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	33	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Sceptre of Gravestone to Questor Thews. // Questor Thews says 'Well done! I knew you were right for the job.'
+1792949127	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	6	-	aquest	ga no	Wise choice. You safely collect 59 quest points.
+1792949128	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    243 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
