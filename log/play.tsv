@@ -13446,3 +13446,74 @@
 1792886710	cmd	Alaric	54	4201	dresden_halloween.are	standing	74	0	-	up		Alas, you cannot go that way.
 1792886710	cmd	Alaric	54	4201	dresden_halloween.are	standing	74	0	-	aquest	co	You can't do that here.
 1792886710	cmd	Alaric	54	4201	dresden_halloween.are	standing	74	0	-	aquest	ga no	You have no pending double-or-nothing offer.
+1792886713	cmd	Alaric	54	4201	dresden_halloween.are	standing	74	0	-	eat	guano	You eat guano. // Your skin is already as hard as a rock. // You are already airborne.
+1792886713	cmd	Alaric	54	4201	dresden_halloween.are	standing	74	0	-	eat	guano	You eat guano. // Your skin is already as hard as a rock. // You are already airborne.
+1792886714	cmd	Alaric	54	4201	dresden_halloween.are	standing	74	0	-	look		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792886715	cmd	Alaric	54	2433	dresden_halloween.are	standing	74	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1792886716	cmd	Alaric	54	2433	dresden_halloween.are	standing	74	0	-	north		Alas, you cannot go that way.
+1792886717	cmd	Alaric	54	2405	dresden_halloween.are	standing	74	0	-	east		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1792886718	cmd	Alaric	54	2401	dresden_halloween.are	standing	74	0	-	east		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792886719	cmd	Alaric	54	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792886719	cmd	Alaric	54	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792886719	cmd	Alaric	54	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792886720	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792886720	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792886720	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792886721	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	17	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'Streak of 16 in a row! A +100% bonus has been added!'
+1792886722	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 26 quest points.
+1792886723	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792886724	cmd	Alaric	54	1607	wyvern.are	standing	100	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you
+1792886744	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: //      (Magical) (Flaming) the Crystalline Sword of Justice //      a diamond key
+1792886748	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792886749	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792886749	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792886749	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792886750	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792886751	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792886752	cmd	Alaric	54	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792886752	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	run	n	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1792886753	cmd	Alaric	54	29004	korzath1.are	resting	100	0	-	wake		You stand up.
+1792886754	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1792886754	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	open		Ok.
+1792886754	cmd	Alaric	54	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1792886754	cmd	Alaric	54	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1792886755	cmd	Alaric	54	29202	korzath2.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1792886755	cmd	Alaric	54	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1792886756	cmd	Alaric	54	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1792886759	cmd	Alaric	54	29205	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1792886759	cmd	Alaric	54	29206	korzath2.are	standing	100	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1792886760	cmd	Alaric	54	29207	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1792886761	cmd	Alaric	54	29207	korzath2.are	standing	100	0	-	scan		a killer clown                     -to the North. // a killer clown                     -to the North. // a killer clown                     -to the North.
+1792886763	cmd	Alaric	54	29208	korzath2.are	standing	100	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1792886764	cmd	Alaric	54	29208	korzath2.are	standing	100	0	-	bs	mad	Your backstab DISEMBOWELS a deranged madman! [-44] // Your backstab <<< ERADICATES >>> a deranged madman! [-190] // Your backstab === OBLITERATES === a deranged madman! [-143]
+1792886802	cmd	Alaric	54	29208	korzath2.are	standing	98	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    236 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792886803	cmd	Alaric	54	29208	korzath2.are	standing	98	0	-	wear	dip	You stop using the Crystalline Sceptre of Commanding. // You hold a mud school diploma in your hands.
+1792886804	cmd	Alaric	54	29208	korzath2.are	standing	97	0	-	score		| Name:         Alaric | Level:      54 | Class:       Thief | // | Played:    236 hours | Sex:      Male | Guild:       Thief | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792886805	cmd	Alaric	54	29208	korzath2.are	standing	97	0	-	wake		You are already standing.
+1792886805	cmd	Alaric	54	29208	korzath2.are	standing	97	0	-	look		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1792886807	cmd	Alaric	54	29208	korzath2.are	standing	97	0	-	scan		a killer clown                     -to the East. // a killer clown                     -to the East. // a killer clown                     -to the East.
+1792886810	cmd	Alaric	54	29209	korzath2.are	standing	97	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1792886811	cmd	Alaric	54	29209	korzath2.are	standing	97	0	-	bs	sk	Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-451] // Your backstab misses an Animated Skeleton. [-0] // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-430]
+1792886823	cmd	Alaric	54	29209	korzath2.are	standing	97	0	-	scan		an Animated Skeleton               -to the North. // a deranged madman                  -to the North. // an Animated Skeleton               -to the North.
+1792886844	cmd	Alaric	54	29209	korzath2.are	standing	97	0	-	stealth		You fail to enter stealth.
+1792886846	cmd	Alaric	54	29209	korzath2.are	standing	97	0	-	stealth		You blend into the shadows.
+1792886847	cmd	Alaric	54	29210	korzath2.are	standing	97	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1792886848	cmd	Alaric	54	29210	korzath2.are	standing	97	0	-	kill	sk	Your divine power <<< ERADICATES >>> an Animated Skeleton! [-187] // You are no longer stealthful. // An Animated Skeleton parries your attack.
+1792886854	cmd	Alaric	54	29210	korzath2.are	standing	97	1	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792886856	cmd	Alaric	54	29210	korzath2.are	standing	97	0	-	bs	sk	Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-461] // Excalibur shears through an Animated Skeleton with terrible force! // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-719]
+1792886867	cmd	Alaric	54	29210	korzath2.are	standing	97	0	-	bs	mad	Your backstab ^^^ DESTROYS ^^^ a deranged madman! [-109] // Your backstab <<< ERADICATES >>> a deranged madman! [-196] // Your backstab ^^^ DESTROYS ^^^ a deranged madman! [-92]
+1792886877	cmd	Alaric	54	29210	korzath2.are	fighting	97	0	fight	look		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1792886897	cmd	Alaric	54	29210	korzath2.are	fighting	96	0	fight	scan		an Animated Skeleton               -to the West. // an Animated Skeleton               -to the West.
+1792886915	cmd	Alaric	54	29211	korzath2.are	standing	95	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1792886916	cmd	Alaric	54	29211	korzath2.are	standing	95	0	-	kill	sk	An Animated Skeleton dodges your attack. // An Animated Skeleton parries your attack. // Your divine power >>> ANNIHILATES <<< an Animated Skeleton! [-238]
+1792886924	cmd	Alaric	54	29211	korzath2.are	standing	95	0	-	bs	sk	Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-340] // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-426] // Your backstab misses an Animated Skeleton. [-0]
+1792886938	cmd	Alaric	54	29211	korzath2.are	fighting	95	0	fight	look		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1792886946	cmd	Alaric	55	29211	korzath2.are	standing	94	0	-	wear	scep	You stop using a mud school diploma. // You hold the Crystalline Sceptre of Commanding in your hands.
+1792886947	cmd	Alaric	55	29211	korzath2.are	standing	95	0	-	look		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1792886949	cmd	Alaric	55	29211	korzath2.are	standing	95	0	-	scan		an Animated Skeleton               -to the North. // a Shadowman                        -to the North. // a deranged madman                  -to the North.
+1792886951	cmd	Alaric	55	29211	korzath2.are	standing	95	0	-	stealth		You blend into the shadows.
+1792886954	cmd	Alaric	55	29212	korzath2.are	standing	95	0	-	north		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1792886955	cmd	Alaric	55	29212	korzath2.are	standing	95	0	-	bs	shad	Your backstab does UNSPEAKABLE things to a Shadowman! [-437] // You are no longer stealthful. // Your backstab does UNSPEAKABLE things to a Shadowman! [-504]
+1792886969	cmd	Alaric	55	29212	korzath2.are	standing	94	0	-	look		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1792886970	cmd	Alaric	55	29212	korzath2.are	standing	94	0	-	kill	sk	An Animated Skeleton dodges your attack. // Your divine power does UNSPEAKABLE things to an Animated Skeleton! [-272] // An Animated Skeleton is DEAD!!
+1792886978	cmd	Alaric	55	29212	korzath2.are	standing	94	0	-	bs	mad	Your backstab <<< ERADICATES >>> a deranged madman! [-180] // Your backstab maims a deranged madman! [-36] // Your backstab ^^^ DESTROYS ^^^ a deranged madman! [-91]
