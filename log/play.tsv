@@ -19270,3 +19270,60 @@
 1792945632	cmd	Alaric	50	16011	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The angry pirate! [-28] // Your fists of fury wounds The angry pirate. [-18]
 1792945638	cmd	Alaric	50	16011	pirate.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The angry pirate. [-3] // Your fists of fury injures The angry pirate. [-15]
 1792945648	cmd	Alaric	50	16011	pirate.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The angry pirate. [-19] // Your fists of fury hits The angry pirate. [-9]
+1792945880	cmd	Alaric	50	2497	dresden_halloween.are	standing	98	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792945883	cmd	Alaric	50	2497	dresden_halloween.are	standing	98	17	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'the rebel has been declared an outlaw!'
+1792945888	cmd	Alaric	50	2497	dresden_halloween.are	standing	98	0	-	wake		You are already standing.
+1792945888	cmd	Alaric	50	2497	dresden_halloween.are	standing	98	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792945889	cmd	Alaric	50	2401	dresden_halloween.are	standing	98	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792945890	cmd	Alaric	50	2426	dresden_halloween.are	standing	98	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792945891	cmd	Alaric	50	2426	dresden_halloween.are	standing	98	0	-	open		Ok.
+1792945891	cmd	Alaric	50	2440	dresden_halloween.are	standing	98	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792945891	cmd	Alaric	50	3503	midennir_halloween.are	standing	98	0	-	east		City Entrance //   You stand on the outskirts of Dresden.  A line of carved pumpkins marks // the city boundary, their flames burning in no wind.  To the east lies the
+1792945892	cmd	Alaric	50	3502	midennir_halloween.are	standing	98	0	-	east		The Cross Roads //   Here, the great eastern road intersects with an older road between the mines // of Moria and the ruined city of Thalos.  A crow sits at the center of the
+1792945892	cmd	Alaric	50	3501	midennir_halloween.are	standing	98	0	-	north		The Lane //   You stroll along a lane that in daylight would be pleasant and shaded. // Tonight the branches form grasping arches overhead, and the spaces between
+1792945892	cmd	Alaric	50	3500	midennir_halloween.are	standing	98	0	-	north		The Plains //   You are standing on the plains. This is a vast desolate place where the // wind can howl undisturbed since nothing but you bars its way.  Tonight the
+1792945892	cmd	Alaric	50	3500	midennir_halloween.are	standing	98	0	-	north		Alas, you cannot go that way.
+1792945893	cmd	Alaric	50	21	connect.are	standing	98	0	-	nw		A twisting path //   A small twisting path leads off of the northeastern plains. Way to the // southwest you can make out the high walls of the city of dresden, and from
+1792945893	cmd	Alaric	50	22	connect.are	standing	98	0	-	west		Before the great circle //   You stand here before a monument, that stands out of time and space.  // Impossibly large stones make up what looks like a ritual or meeting 
+1792945893	cmd	Alaric	50	23	connect.are	standing	98	0	-	south		The Great Portal //   Here stands one of the last of the great portals. These magical gateways were // placed here in this land, by the elder race. Each was supposed to lead to
+1792945895	cmd	Alaric	50	10000	glitter.are	standing	98	0	-	enter	po	You enter A Great Portal // Your stomach flip flops. Everything goes black for a moment. // Before the crystal bridge.
+1792945896	cmd	Alaric	50	10001	glitter.are	standing	98	0	-	north		A crystal bridge. //   You are walking on a crystal bridge. In the far the Glittering Palace // towers above you ... you also seem to hear some noises now.
+1792945896	cmd	Alaric	50	10002	glitter.are	standing	98	0	-	north		Royal Island. //   You step off the bridge and clearly hear sounds of a raging battle ... // OHHH MY GOD .... THE PALACE IS UNDER ATTACK !!! ....
+1792945896	cmd	Alaric	50	10003	glitter.are	standing	98	0	-	north		                    ACHIEVEMENT EARNED // Every Nook and Cranny I  +10 points // Walk into 500 different rooms of the world.
+1792945897	cmd	Alaric	50	10003	glitter.are	standing	98	0	-	open		Ok.
+1792945898	cmd	Alaric	50	10004	glitter.are	standing	98	0	-	north		A large hall. //   The hall is really big. You notice its splendidly decorated too ... hmm, // those gold embroidered rugs would really liven up your place.
+1792945899	cmd	Alaric	50	10006	glitter.are	standing	98	0	-	north		A large hall. //   Wow, this reception hall is really big and luxuriously decorated too !! // You can't help but wonder how much those antique chinese vases must have
+1792945900	cmd	Alaric	50	10007	glitter.are	standing	98	0	-	north		A large hall. //   The hall is as nicely decorated as before ... still your attention is // now drawn towards the maimed bodies, strewn on the floor. Some of them were
+1792945901	cmd	Alaric	50	10008	glitter.are	standing	98	0	-	north		A high domed intersection. //   You are in awe of the craftsmanship of the masons that build this dome ... // hallways extend to all directions.
+1792945902	cmd	Alaric	50	10025	glitter.are	standing	98	0	-	north		The northern wing. //   Once beautiful vases and mirrors lie now shattered on the ground. // [Exits: north south]
+1792945903	cmd	Alaric	50	10026	glitter.are	standing	98	0	-	north		The northern wing. //   The hall is empty. To the far north you can hear sounds of an on-going // battle.
+1792945904	cmd	Alaric	50	10027	glitter.are	standing	98	0	-	north		The northern wing. //   A large stairway leads up to the second floor. // [Exits: south up]
+1792945905	cmd	Alaric	50	10027	glitter.are	standing	98	0	-	north		Alas, you cannot go that way.
+1792945905	cmd	Alaric	50	10028	glitter.are	standing	98	0	-	up		The royal stairway. //   The royal stairway leads up to the second floor and down to the second. // [Exits: up down]
+1792945907	cmd	Alaric	50	10029	glitter.are	standing	98	0	-	up		A grand hallway. //   The Palace Guards that defended the staircase lie dead at your feet. // [Exits: north down]
+1792945908	cmd	Alaric	50	10030	glitter.are	standing	98	0	-	north		A grand hallway. //   The hall continues to the north. A creepy feeling comes over you ... // it's as if someone is watching you ...
+1792945908	cmd	Alaric	50	10031	glitter.are	standing	98	0	-	north		An intersection. //   You get the awkward feeling again that somebody is looking at you ... // jeeeeez man !!!, pull yourself together, you're seeing ghosts.
+1792945910	cmd	Alaric	50	10052	glitter.are	standing	98	0	-	north		A grand hallway. //   The hall continues to the north. A creepy feeling comes over you ... // it's as if someone is watching you ...
+1792945911	cmd	Alaric	50	10053	glitter.are	standing	98	0	-	north		A grand hallway. //   There are two large gilted doors to the north, a gold-framed sign hangs // near them on the wall.
+1792945913	cmd	Alaric	50	10053	glitter.are	standing	98	6	-	kill	re	Your punch <<< ERADICATES >>> the rebel! [-173] // Your punch === OBLITERATES === the rebel! [-127] // The rebel is DEAD!!
+1792945917	cmd	Alaric	50	10052	glitter.are	standing	98	0	-	south		A grand hallway. //   The hall continues to the north. A creepy feeling comes over you ... // it's as if someone is watching you ...
+1792945918	cmd	Alaric	50	10031	glitter.are	standing	98	0	-	south		An intersection. //   You get the awkward feeling again that somebody is looking at you ... // jeeeeez man !!!, pull yourself together, you're seeing ghosts.
+1792945918	cmd	Alaric	50	10030	glitter.are	standing	98	0	-	south		A grand hallway. //   The hall continues to the north. A creepy feeling comes over you ... // it's as if someone is watching you ...
+1792945918	cmd	Alaric	50	10029	glitter.are	standing	98	0	-	south		A grand hallway. //   The Palace Guards that defended the staircase lie dead at your feet. // [Exits: north down]
+1792945918	cmd	Alaric	50	10029	glitter.are	standing	98	0	-	south		Alas, you cannot go that way.
+1792945919	cmd	Alaric	50	10029	glitter.are	standing	98	0	-	south		Alas, you cannot go that way.
+1792945919	cmd	Alaric	50	10029	glitter.are	standing	98	0	-	south		Alas, you cannot go that way.
+1792945919	cmd	Alaric	50	10028	glitter.are	standing	98	0	-	down		The royal stairway. //   The royal stairway leads up to the second floor and down to the second. // [Exits: up down]
+1792945920	cmd	Alaric	50	10027	glitter.are	standing	98	0	-	down		The northern wing. //   A large stairway leads up to the second floor. // [Exits: south up]
+1792945920	cmd	Alaric	50	10027	glitter.are	standing	98	0	-	down		Alas, you cannot go that way.
+1792945920	cmd	Alaric	50	10027	glitter.are	standing	98	0	-	down		Alas, you cannot go that way.
+1792945920	cmd	Alaric	50	10000	glitter.are	standing	98	0	-	run	s	The northern wing. // [Exits: north south] // The northern wing.
+1792945921	refused	Alaric	50	10000	glitter.are	resting	98	0	-	(unknown)		Huh? Did you mean TAKE or WAKE?
+1792945921	cmd	Alaric	50	10000	glitter.are	resting	98	0	-	wake		You stand up.
+1792945921	cmd	Alaric	50	10000	glitter.are	standing	98	0	-	enter	dpo	You do not see that here.
+1792945922	cmd	Alaric	50	10000	glitter.are	standing	98	0	-	look		Before the crystal bridge. //   Just when you want to cross the bridge, a large way-sign catches your // attention. You admit that you are curious about what it says ... so why not
+1792945924	cmd	Alaric	50	23	connect.are	standing	98	0	-	enter	po	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Great Portal
+1792945925	cmd	Alaric	50	2497	dresden_halloween.are	standing	98	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792945926	cmd	Alaric	50	2497	dresden_halloween.are	standing	98	17	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'
+1792945927	cmd	Alaric	50	2497	dresden_halloween.are	standing	98	4	-	aquest	ga no	Wise choice. You safely collect 118 quest points.
+1792945930	cmd	Alaric	50	2497	dresden_halloween.are	standing	98	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    242 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
