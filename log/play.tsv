@@ -14067,3 +14067,135 @@
 1792889130	cmd	Alaric	13	13220	solace.are	standing	98	0	-	west		Southwest Guardpost and Watchtower. //   This is the Southwest guardpost and guardpost of Solace. // It is used as a watch station and coffee break area for the town guards.
 1792889131	cmd	Alaric	13	13220	solace.are	standing	98	0	-	kill	to	Your punch *** DEVASTATES *** Townguard! [-69] // Your punch *** DEVASTATES *** Townguard! [-63] // Townguard dodges your attack.
 1792889137	cmd	Alaric	14	13220	solace.are	standing	97	0	-	kill	to	Townguard dodges your attack. // Townguard parries your attack. // Your punch *** DEVASTATES *** Townguard! [-68]
+1792889140	cmd	Alaric	14	13220	solace.are	standing	97	0	-	wear	bre	You stop using a sub issue vest. // You wear a Roman-style breastplate on your body.
+1792889144	cmd	Alaric	14	13220	solace.are	standing	97	0	-	drop	sub	You drop a sub issue vest. // A sub issue vest burst into flames as it hits the ground.
+1792889145	cmd	Alaric	14	13220	solace.are	standing	97	0	-	kill	to	They aren't here.
+1792889148	cmd	Alaric	14	13261	solace.are	standing	97	0	-	up		Inside Southwest Watchtower. //   You are inside the Southwest Watchtower. // >From up here you can see above the trees and most of the valley.
+1792889148	cmd	Alaric	14	13261	solace.are	standing	97	0	-	kill	to	Your punch *** DEVASTATES *** Townguard! [-66] // Your punch MASSACRES Townguard! [-49] // Townguard dodges your attack.
+1792889151	cmd	Alaric	14	13261	solace.are	fighting	97	0	fight	kill	to	You do the best you can!
+1792889156	cmd	Alaric	14	13220	solace.are	standing	97	0	-	down		Southwest Guardpost and Watchtower. //   This is the Southwest guardpost and guardpost of Solace. // It is used as a watch station and coffee break area for the town guards.
+1792889157	cmd	Alaric	14	13221	solace.are	standing	97	0	-	north		Harvest Road. //   You are walking down Harvest Road. // It is quiet and peaceful here. The smell of baked goods and other foods
+1792889157	cmd	Alaric	14	13222	solace.are	standing	97	0	-	north		Harvest Road. //   You are walking down Harvest Road. // It is quiet and peaceful here. The smell of baked goods and other foods
+1792889158	cmd	Alaric	14	13223	solace.are	standing	97	0	-	north		Harvest Road. //   You are walking down Harvest Road. // It is quiet and peaceful here. The smell of baked goods and other foods
+1792889159	cmd	Alaric	14	13224	solace.are	standing	97	0	-	north		Corner of West Gullen Way and Harvest Road. //   This is the corner of West Gullen and Harvest road. // To the south you can smell baked goods and other food.
+1792889162	cmd	Alaric	14	13224	solace.are	standing	97	0	-	kill	to	Your punch MANGLES Townguard! [-56] // Townguard parries your attack. // Townguard dodges your attack.
+1792889166	cmd	Alaric	14	13224	solace.are	standing	97	0	-	kill	to	Your punch DISMEMBERS Townguard! [-46] // Your punch MANGLES Townguard! [-55] // Your punch MASSACRES Townguard! [-52]
+1792889169	cmd	Alaric	15	13224	solace.are	standing	97	16	-	kill	to	Your punch *** DEVASTATES *** Townguard! [-62] // Your punch *** DEVASTATES *** Townguard! [-76] // Your punch MANGLES Townguard! [-55]
+1792889172	cmd	Alaric	15	13224	solace.are	standing	97	0	-	kill	to	Your punch *** DEVASTATES *** Townguard! [-69] // Your punch misses Townguard. [-0] // Your punch *** DEVASTATES *** Townguard! [-71]
+1792889175	cmd	Alaric	15	13224	solace.are	fighting	97	0	fight	kill	to	You do the best you can!
+1792889178	cmd	Alaric	15	13224	solace.are	standing	97	0	-	kill	to	They aren't here.
+1792889183	cmd	Alaric	15	13224	solace.are	standing	97	0	-	skills		Level  1: dagger              20%      hand to hand        75%       //           recall             100%       // Level  3: kick                 1%      
+1792889192	refused	Alaric	15	13224	solace.are	standing	97	0	-	(unknown)		Huh?
+1792889194	cmd	Alaric	15	4207	dresden_halloween.are	standing	97	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792889197	cmd	Alaric	15	4202	dresden_halloween.are	standing	97	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792889197	cmd	Alaric	15	4201	dresden_halloween.are	standing	97	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792889197	cmd	Alaric	15	2427	dresden_halloween.are	standing	97	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792889198	cmd	Alaric	15	2404	dresden_halloween.are	standing	97	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792889198	cmd	Alaric	15	2401	dresden_halloween.are	standing	97	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792889198	cmd	Alaric	15	2405	dresden_halloween.are	standing	97	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1792889199	cmd	Alaric	15	2433	dresden_halloween.are	standing	97	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1792889199	cmd	Alaric	15	2434	dresden_halloween.are	standing	97	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792889199	cmd	Alaric	15	2435	dresden_halloween.are	standing	97	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792889201	cmd	Alaric	15	2495	dresden_halloween.are	standing	97	0	-	south		The Jeweller's Shop //   You are in a small, beautifully furnished room.  The warm light emanating // from the small oil lamps on the walls is reflected in the hard, polished
+1792889202	cmd	Alaric	15	2435	dresden_halloween.are	standing	97	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792889202	cmd	Alaric	15	2436	dresden_halloween.are	standing	97	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792889203	cmd	Alaric	15	800	club.are	standing	97	0	-	south		                    ACHIEVEMENT EARNED // Members Only  +5 points // Step into the Temple Boulevard Social Club.
+1792889204	cmd	Alaric	15	2436	dresden_halloween.are	standing	97	0	-	north		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792889205	cmd	Alaric	15	2437	dresden_halloween.are	standing	97	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792889206	cmd	Alaric	15	4800	dresden_halloween.are	standing	97	0	-	south		Another Dimension //   You have somehow left the City of Dresden, and entered another dimension. // To the north you can still make out the streets of Dresden thru the mist,
+1792889207	cmd	Alaric	15	4801	dresden_halloween.are	standing	97	0	-	south		The passage way //   A long narrow path leads upwards in a small secluded valley. Large but gentle // breezes ruffle the plethora of raiment that you wear, and a playful mist
+1792889207	cmd	Alaric	15	4802	dresden_halloween.are	standing	97	0	-	south		The narrow entrance //   You have reached the entrance of a narrow box canyon. Standing beside you is // an odd weather worn stone statue, that seems oddly out of place in the
+1792889207	cmd	Alaric	15	4803	dresden_halloween.are	standing	97	0	-	south		The Palm of the Creator //   A large stone hand rises out of the earth and points skyward...the only place // you find to stand in the room is at the center of the giant stone effigy.
+1792889207	cmd	Alaric	15	4803	dresden_halloween.are	standing	97	0	-	south		Alas, you cannot go that way.
+1792889215	cmd	Alaric	15	4807	dresden_halloween.are	standing	97	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered
+1792889216	cmd	Alaric	15	4807	dresden_halloween.are	standing	97	0	-	practice		levitate             1%  meditation          75%  second attack       75%   // bash                 1%   // You have 128 practice sessions left.
+1792889220	cmd	Alaric	15	4807	dresden_halloween.are	standing	97	0	-	practice	levitate	You practice levitate.
+1792889220	cmd	Alaric	15	4807	dresden_halloween.are	standing	97	0	-	practice	levitate	You practice levitate.
+1792889221	cmd	Alaric	15	4807	dresden_halloween.are	standing	97	0	-	practice	levitate	You practice levitate.
+1792889221	cmd	Alaric	15	4807	dresden_halloween.are	standing	97	0	-	practice	levitate	You are now learned at levitate.
+1792889221	cmd	Alaric	15	4807	dresden_halloween.are	standing	97	0	-	practice	levitate	You are already learned at levitate.
+1792889221	cmd	Alaric	15	4807	dresden_halloween.are	standing	97	0	-	practice	levitate	You are already learned at levitate.
+1792889222	cmd	Alaric	15	4807	dresden_halloween.are	standing	97	0	-	practice	levitate	You are already learned at levitate.
+1792889228	cmd	Alaric	15	4804	dresden_halloween.are	standing	97	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass
+1792889228	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near
+1792889229	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice		nerve damage         1%  hand to hand        75%  kick                 1%   // dodge               75%  parry               75%  trip                 1%   // enhanced damage      1%  
+1792889231	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	ner	You practice nerve damage.
+1792889232	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	ner	You practice nerve damage.
+1792889232	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	ner	You practice nerve damage.
+1792889232	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	ner	You practice nerve damage.
+1792889233	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	ner	You are now learned at nerve damage.
+1792889233	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	ner	You are already learned at nerve damage.
+1792889233	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	ner	You are already learned at nerve damage.
+1792889233	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	ner	You are already learned at nerve damage.
+1792889234	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	ner	You are already learned at nerve damage.
+1792889236	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	enhanced	You practice enhanced damage.
+1792889237	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	enhanced	You practice enhanced damage.
+1792889237	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	enhanced	You practice enhanced damage.
+1792889237	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	enhanced	You practice enhanced damage.
+1792889237	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	enhanced	You practice enhanced damage.
+1792889238	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	enhanced	You practice enhanced damage.
+1792889238	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	enhanced	You practice enhanced damage.
+1792889238	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	enhanced	You practice enhanced damage.
+1792889238	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	practice	enhanced	You are now learned at enhanced damage.
+1792889239	cmd	Alaric	15	4806	dresden_halloween.are	standing	97	0	-	look		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near
+1792889240	cmd	Alaric	15	4804	dresden_halloween.are	standing	97	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass
+1792889242	cmd	Alaric	15	4805	dresden_halloween.are	standing	97	0	-	north		The Masters Place //   Here resides the Master of all the monks, it is he that monks seek for // guidance. Lighted joss sticks fill the room with the sweet perfume of lotus
+1792889243	cmd	Alaric	15	4805	dresden_halloween.are	standing	97	0	-	practice		axe                  8%  dagger              20%  flail                6%   // mace                80%  spear                7%  sword                3%   // whip                15%  bash                 1%  dodge               75%  
+1792889244	cmd	Alaric	15	4805	dresden_halloween.are	standing	97	0	-	gain		You can't do that here.
+1792889245	cmd	Alaric	15	4804	dresden_halloween.are	standing	97	0	-	south		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass
+1792889247	cmd	Alaric	15	4809	dresden_halloween.are	standing	97	0	-	nw		Back to the beginning //   As you enter this room a sharp tingling enters your limbs as you begin // to move...the valley drops away from your feet and a white sheet falls in
+1792889265	cmd	Alaric	15	4207	dresden_halloween.are	standing	97	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792889266	cmd	Alaric	15	4208	dresden_halloween.are	standing	97	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792889268	cmd	Alaric	15	4208	dresden_halloween.are	standing	97	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792889269	cmd	Alaric	15	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792889270	cmd	Alaric	15	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792889270	cmd	Alaric	15	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792889272	cmd	Alaric	15	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792889272	cmd	Alaric	15	2426	dresden_halloween.are	standing	100	0	-	open	east	Ok.
+1792889273	cmd	Alaric	15	3502	midennir_halloween.are	standing	100	0	-	run	e 3	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792889273	cmd	Alaric	15	5258	oldthalo.are	standing	100	0	-	run	s 4	The dwarf forest // [Exits: north south southeast] // The dwarf forest
+1792889273	cmd	Alaric	15	5262	oldthalo.are	standing	100	0	-	east		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads east and west.  It looks
+1792889273	cmd	Alaric	15	5263	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns south
+1792889274	cmd	Alaric	15	5264	oldthalo.are	standing	100	0	-	south		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns east
+1792889274	cmd	Alaric	15	5265	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads
+1792889274	cmd	Alaric	15	5266	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads
+1792889274	cmd	Alaric	15	5267	oldthalo.are	standing	100	0	-	down		A valley in the dark dwarf forest //   You are in a valley in the dark dwarf forest.  Short black grass grows // around you.  There is a small fox hole in a mound of dirt to the west, and
+1792889275	cmd	Alaric	15	5267	oldthalo.are	standing	100	0	-	open	hole	You open a secret door.
+1792889275	cmd	Alaric	15	5268	oldthalo.are	standing	100	0	-	west		A small ugly cave //   You see a small cave.  Skeletons of many types of creatures litter the area. // Obviously, no fox lives here!  The oppression makes you want to leave and
+1792889275	cmd	Alaric	15	5269	oldthalo.are	standing	100	0	-	south		A small ugly cave //   You are in a small ugly cave.  More skeletons lie around.  It is obvious // that the owner doesn't want you here.  The exit north is still visible.
+1792889275	cmd	Alaric	15	5270	oldthalo.are	standing	100	0	-	down		Down the path into a dead end //   You are down the path.  There is no obvious exit in this place, exit the // one back up north.  All around you, you see skeletons.
+1792889276	cmd	Alaric	15	5270	oldthalo.are	standing	100	0	-	open	secret	You open a secret door.
+1792889276	cmd	Alaric	15	5100	drow1.are	standing	100	0	-	down		City Entrance //   You are at the entrance to a small underground city. A great adamantite // gate lies open to the west allowing entrance into the city.
+1792889276	cmd	Alaric	15	5101	drow1.are	standing	100	0	-	west		City street //   You walk along a highly ornate street going north-south. A large gate // lies to the east while a building lies to the west.
+1792889290	cmd	Alaric	15	5101	drow1.are	fighting	99	0	fight	nerve		You jab The weapons master with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds The weapons master. [-19] // The weapons master is DEAD!!
+1792889296	cmd	Alaric	15	5123	drow1.are	standing	99	0	-	north		City street //   You walk along a highly ornate city street leading west and south. To the // north is a relatively small house.
+1792889298	cmd	Alaric	15	25203	mushroom.are	standing	99	0	-	run	w 18	City street // [Exits: north east south west] // City street
+1792889300	cmd	Alaric	15	25259	mushroom.are	standing	99	0	-	south		The pathway south. //   This path has several torches on it lighting up the whole area.  The dust // in the path looks well worn.  Several sweet smelling mushrooms fill the
+1792889300	cmd	Alaric	15	25260	mushroom.are	standing	99	0	-	south		Before the bridge. //   A bridge spans out over the river below and enters a heavily overgrown // area on the otherside.  From here you can make out the small lights of
+1792889300	cmd	Alaric	15	25261	mushroom.are	standing	99	0	-	south		On the bridge. //   This bridge has been carved out of stone.  Exquisite carvings are on every // part of it and no carving is repeated twice.  The railing along the bridge
+1792889300	cmd	Alaric	15	25262	mushroom.are	standing	99	0	-	south		The southern end of the bridge. //   The light from the torches are quickly swallowed by the undergrowth that is // so ambundant here.  Mushrooms of all colors and sizes have grown to such
+1792889301	cmd	Alaric	15	25263	mushroom.are	standing	99	0	-	sw		The strangled path. //   The path here is overgrown and quiet.  This is one part of the grove that // no towers are around and the only part you have seen so far that makes
+1792889301	cmd	Alaric	15	25264	mushroom.are	standing	99	0	-	sw		The strangled path. //   Light seems to be coming from a clearing in the west along with several // shadows of dancing figures.  You can also hear music with a fast rhythm
+1792889302	cmd	Alaric	15	25265	mushroom.are	standing	99	0	-	west		The bonfire. //   Several naked drow women are dancing around a bonfire here singing in their // language.  You become lost in their dance as they twirl and jump.  A tall
+1792889304	cmd	Alaric	15	25265	mushroom.are	standing	99	0	-	kill	dr	Your punch *** DEMOLISHES *** a drow female! [-60] // A drow female dodges your attack. // Your punch MANGLES a drow female! [-54]
+1792889314	cmd	Alaric	15	25265	mushroom.are	standing	99	0	-	kill	dr	A drow female dodges your attack. // Your punch DISEMBOWELS a drow female! [-44] // Your punch *** DEVASTATES *** a drow female! [-70]
+1792889321	cmd	Alaric	16	25265	mushroom.are	standing	98	0	-	kill	dr	Your punch *** DEVASTATES *** a drow female! [-62] // A drow female parries your attack. // A drow female parries your attack.
+1792889327	cmd	Alaric	16	25265	mushroom.are	fighting	98	0	fight	kill	dr	You do the best you can!
+1792889331	cmd	Alaric	16	25265	mushroom.are	standing	98	0	-	kill	dr	Your punch DISEMBOWELS a drow female! [-43] // Your punch DISEMBOWELS a drow female! [-42] // Your punch ^^^ DESTROYS ^^^ a drow female! [-84]
+1792889335	cmd	Alaric	16	25265	mushroom.are	standing	98	0	-	kill	dr	Your punch *** DEVASTATES *** a drow female! [-77] // Your punch ^^^ DESTROYS ^^^ a drow female! [-82] // A drow female parries your attack.
+1792889338	cmd	Alaric	16	25265	mushroom.are	standing	98	0	-	kill	dr	A drow female parries your attack. // Your punch DISMEMBERS a drow female! [-45] // Your punch MASSACRES a drow female! [-52]
+1792889344	cmd	Alaric	17	25265	mushroom.are	standing	98	0	-	kill	dr	Your punch DISMEMBERS a drow female! [-48] // Your punch *** DEVASTATES *** a drow female! [-73] // A drow female dodges your attack.
+1792889350	cmd	Alaric	17	25265	mushroom.are	fighting	97	0	fight	kill	dr	You do the best you can!
+1792889354	cmd	Alaric	17	25265	mushroom.are	standing	97	0	-	kill	dr	A drow female parries your attack. // A drow female dodges your attack. // A drow female parries your attack.
+1792889365	cmd	Alaric	17	25265	mushroom.are	standing	97	0	-	kill	dr	Your punch maims a drow female! [-33] // Your punch MASSACRES a drow female! [-52] // Your punch DISEMBOWELS a drow female! [-42]
+1792889370	cmd	Alaric	17	25265	mushroom.are	fighting	97	0	fight	kill	dr	You do the best you can!
+1792889374	cmd	Alaric	17	25265	mushroom.are	standing	97	0	-	kill	dr	A drow female dodges your attack. // Your punch *** DEVASTATES *** a drow female! [-66] // Your punch DISMEMBERS a drow female! [-47]
+1792889380	cmd	Alaric	17	25265	mushroom.are	fighting	97	0	fight	kill	dr	You do the best you can!
+1792889383	cmd	Alaric	17	25265	mushroom.are	standing	97	0	-	kill	dr	A drow female parries your attack. // Your punch *** DEVASTATES *** a drow female! [-68] // A drow female parries your attack.
+1792889393	cmd	Alaric	18	25265	mushroom.are	standing	97	0	-	kill	dr	A drow female dodges your attack. // A drow female dodges your attack. // A drow female parries your attack.
+1792889402	cmd	Alaric	18	25265	mushroom.are	standing	97	0	-	kill	dr	Your punch ^^^ DESTROYS ^^^ a drow female! [-88] // Your punch ^^^ DESTROYS ^^^ a drow female! [-82] // A drow female dodges your attack.
+1792889407	cmd	Alaric	18	25265	mushroom.are	standing	97	0	-	kill	dr	They aren't here.
+1792889409	cmd	Alaric	18	4207	dresden_halloween.are	standing	97	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792889411	cmd	Alaric	18	4208	dresden_halloween.are	standing	97	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792889412	cmd	Alaric	18	4208	dresden_halloween.are	standing	97	0	-	stash		Your stash holds 99 of 150 things. //     1) (Glowing) (Humming) a bone mace //     2) battle gloves
+1792889435	cmd	Alaric	18	4208	dresden_halloween.are	standing	97	4	-	stash	get quick	You take a quick sheathe out of your stash.
