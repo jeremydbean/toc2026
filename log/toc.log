@@ -186580,3 +186580,103 @@ Sun Oct 25 13:50:06 2026 :: Sock.sinaddr:  185.93.89.79
 Sun Oct 25 13:50:06 2026 :: EOF encountered on read.
 Sun Oct 25 13:51:16 2026 :: Sock.sinaddr:  5.161.215.244
 Sun Oct 25 13:51:16 2026 :: EOF encountered on read.
+Sun Oct 25 13:56:21 2026 :: Sock.sinaddr:  52.87.72.16
+Sun Oct 25 13:56:21 2026 :: EOF encountered on read.
+Sun Oct 25 13:56:40 2026 :: Treasure goblin: vanished from room 611 (The End of Impy Way, ofcol.are) (too long in one area).
+Sun Oct 25 13:57:19 2026 :: Log Alaric [7050]: fi
+Sun Oct 25 13:57:19 2026 :: Log Alaric [7050]: killed the small spider
+Sun Oct 25 13:57:19 2026 :: Log Alaric [7050]: coin +2 copper
+Sun Oct 25 13:57:27 2026 :: Log Alaric [7050]: recal
+Sun Oct 25 13:57:27 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 7050
+Sun Oct 25 13:57:27 2026 :: Log Alaric [2497]: recal
+Sun Oct 25 13:57:27 2026 :: Log Alaric [2497]: aq re
+Sun Oct 25 13:57:27 2026 :: Log Alaric [2497]: quest assigned: kill tired adventurer (mob 13242, level 13) in solace.are, 12 minutes, ordinary
+Sun Oct 25 13:57:31 2026 :: Log Alaric [2497]: enter door
+Sun Oct 25 13:57:31 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 13:57:31 2026 :: Log Alaric [2401]: west
+Sun Oct 25 13:57:31 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Oct 25 13:57:31 2026 :: Log Alaric [2405]: west
+Sun Oct 25 13:57:31 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Oct 25 13:57:31 2026 :: Log Alaric [2433]: west
+Sun Oct 25 13:57:31 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Oct 25 13:57:32 2026 :: Log Alaric [2434]: west
+Sun Oct 25 13:57:32 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Oct 25 13:57:32 2026 :: Log Alaric [2435]: west
+Sun Oct 25 13:57:32 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Oct 25 13:57:32 2026 :: Log Alaric [2436]: west
+Sun Oct 25 13:57:32 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Oct 25 13:57:32 2026 :: Log Alaric [2437]: west
+Sun Oct 25 13:57:32 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Oct 25 13:57:33 2026 :: Log Alaric [2438]: open west
+Sun Oct 25 13:57:33 2026 :: Log Alaric [2438]: west
+Sun Oct 25 13:57:33 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Oct 25 13:57:37 2026 :: Log Alaric [2439]: west
+Sun Oct 25 13:57:37 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sun Oct 25 13:57:37 2026 :: Log Alaric [6000]: west
+Sun Oct 25 13:57:37 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sun Oct 25 13:57:37 2026 :: Log Alaric [6001]: west
+Sun Oct 25 13:57:37 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sun Oct 25 13:57:37 2026 :: Log Alaric [6002]: south
+Sun Oct 25 13:57:37 2026 :: Log Alaric [6011]: arrived (A small path through the light forest) from 6002
+Sun Oct 25 13:57:38 2026 :: Log Alaric [6011]: south
+Sun Oct 25 13:57:38 2026 :: Log Alaric [6008]: arrived (The forest clearing) from 6011
+Sun Oct 25 13:57:38 2026 :: Log Alaric [6008]: east
+Sun Oct 25 13:57:38 2026 :: Log Alaric [6009]: arrived (Outside a small cabin in the forest) from 6008
+Sun Oct 25 13:57:38 2026 :: Log Alaric [6009]: south
+Sun Oct 25 13:57:38 2026 :: Log Alaric [6014]: arrived (An intersection in the dense forest) from 6009
+Sun Oct 25 13:57:38 2026 :: Log Alaric [6014]: east
+Sun Oct 25 13:57:38 2026 :: Log Alaric [6015]: arrived (A small path in the dense forest) from 6014
+Sun Oct 25 13:57:39 2026 :: Log Alaric [6015]: south
+Sun Oct 25 13:57:39 2026 :: Log Alaric [6016]: arrived (A small path in the dense forest) from 6015
+Sun Oct 25 13:57:39 2026 :: Log Alaric [6016]: south
+Sun Oct 25 13:57:39 2026 :: Log Alaric [6017]: arrived (A small path in the dense forest) from 6016
+Sun Oct 25 13:57:39 2026 :: Log Alaric [6017]: west
+Sun Oct 25 13:57:39 2026 :: Log Alaric [6018]: arrived (An intersection in the light forest) from 6017
+Sun Oct 25 13:57:39 2026 :: Log Alaric [6018]: south
+Sun Oct 25 13:57:39 2026 :: Log Alaric [51]: arrived (The top of the cliff.) from 6018
+Sun Oct 25 13:57:40 2026 :: Log Alaric [51]: down
+Sun Oct 25 13:57:40 2026 :: Log Alaric [13001]: arrived (Rock Outcropping) from 51
+Sun Oct 25 13:57:40 2026 :: Log Alaric [13001]: down
+Sun Oct 25 13:57:40 2026 :: Log Alaric [13002]: arrived (Small Grove) from 13001
+Sun Oct 25 13:57:40 2026 :: Log Alaric [13002]: west
+Sun Oct 25 13:57:40 2026 :: Log Alaric [13003]: arrived (Entrance to the Town of Solace) from 13002
+Sun Oct 25 13:57:40 2026 :: Log Alaric [13003]: north
+Sun Oct 25 13:57:40 2026 :: Log Alaric [13201]: arrived (Gateway to Solace) from 13003
+Sun Oct 25 13:57:46 2026 :: Log Alaric [13201]: w
+Sun Oct 25 13:57:46 2026 :: Log Alaric [13217]: arrived (Small Alleyway.) from 13201
+Sun Oct 25 13:57:46 2026 :: Log Alaric [13217]: w
+Sun Oct 25 13:57:46 2026 :: Log Alaric [13218]: arrived (Small Alleyway.) from 13217
+Sun Oct 25 13:57:47 2026 :: Log Alaric [13218]: w
+Sun Oct 25 13:57:47 2026 :: Log Alaric [13219]: arrived (Small Alleyway.) from 13218
+Sun Oct 25 13:57:47 2026 :: Log Alaric [13219]: w
+Sun Oct 25 13:57:47 2026 :: Log Alaric [13220]: arrived (Southwest Guardpost and Watchtower.) from 13219
+Sun Oct 25 13:57:48 2026 :: Log Alaric [13220]: w
+Sun Oct 25 13:57:49 2026 :: Log Alaric [13220]: n
+Sun Oct 25 13:57:49 2026 :: Log Alaric [13221]: arrived (Harvest Road.) from 13220
+Sun Oct 25 13:57:50 2026 :: Log Alaric [13221]: n
+Sun Oct 25 13:57:50 2026 :: Log Alaric [13222]: arrived (Harvest Road.) from 13221
+Sun Oct 25 13:57:50 2026 :: Log Alaric [13222]: n
+Sun Oct 25 13:57:50 2026 :: Log Alaric [13223]: arrived (Harvest Road.) from 13222
+Sun Oct 25 13:57:51 2026 :: Log Alaric [13223]: n
+Sun Oct 25 13:57:51 2026 :: Log Alaric [13224]: arrived (Corner of West Gullen Way and Harvest Road.) from 13223
+Sun Oct 25 13:57:53 2026 :: Log Alaric [13224]: e
+Sun Oct 25 13:57:53 2026 :: Log Alaric [13225]: arrived (West Gullen Way) from 13224
+Sun Oct 25 13:57:53 2026 :: Log Alaric [13225]: e
+Sun Oct 25 13:57:53 2026 :: Log Alaric [13226]: arrived (West Gullen Way) from 13225
+Sun Oct 25 13:57:55 2026 :: Log Alaric [13226]: kill ad
+Sun Oct 25 13:57:55 2026 :: Log Alaric [13226]: killed tired adventurer
+Sun Oct 25 13:57:55 2026 :: Log Alaric [13226]: coin +2 silver
+Sun Oct 25 13:57:55 2026 :: Log Alaric [13226]: coin +3 copper
+Sun Oct 25 13:57:55 2026 :: Log Alaric [13226]: coin +1 gold
+Sun Oct 25 13:57:59 2026 :: Log Alaric [13226]: recal
+Sun Oct 25 13:57:59 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 13226
+Sun Oct 25 13:58:00 2026 :: Log Alaric [2497]: recal
+Sun Oct 25 13:58:00 2026 :: Log Alaric [2497]: recal
+Sun Oct 25 13:58:00 2026 :: Log Alaric [2497]: aq co
+Sun Oct 25 13:58:00 2026 :: Log Alaric [2497]: copper +94640700
+Sun Oct 25 13:58:00 2026 :: Log Alaric [2497]: quest complete: 94p 64g 7s, 40 quest points (streak bonus 10%)
+Sun Oct 25 13:58:00 2026 :: Snapshot of Alaric taken before quest: Alaric.20261025_135800.quest (PRESTORE Alaric to see it).
+Sun Oct 25 13:58:00 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct 25 13:58:03 2026 :: Log Alaric [2497]: who
+Sun Oct 25 13:58:04 2026 :: Log Alaric [2497]: note list
+Sun Oct 25 13:58:09 2026 :: Log Alaric [2497]: changes
