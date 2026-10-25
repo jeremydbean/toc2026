@@ -190247,3 +190247,12 @@ Sun Oct 25 18:00:44 2026 :: Sock.sinaddr:  208.126.22.104
 Sun Oct 25 18:00:47 2026 :: Loading Alaric's playerfile
 Sun Oct 25 18:00:49 2026 :: Loading Alaric's playerfile
 Sun Oct 25 18:00:49 2026 :: Alaric@208.126.22.104 has connected.
+Sun Oct 25 18:00:50 2026 :: Log Alaric [9526]: arrived (West Main Street) from 0
+Sun Oct 25 18:01:01 2026 :: Log Alaric [9526]: time
+Sun Oct 25 18:01:21 2026 :: Log Alaric [9526]: recal
+Sun Oct 25 18:01:21 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 9526
+Sun Oct 25 18:01:24 2026 :: Log Alaric [2497]: sc
+Sun Oct 25 18:01:27 2026 :: Log Alaric [2497]: sleep
+Sun Oct 25 18:05:14 2026 :: Sock.sinaddr:  3.212.128.62
+Sun Oct 25 18:05:14 2026 :: EOF encountered on read.
+Sun Oct 25 18:05:43 2026 :: Log Alaric [2497]: affects off: levitate

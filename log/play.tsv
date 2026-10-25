@@ -19696,3 +19696,7 @@
 1792951239	cmd	Alaric	50	9525	newthalo.are	standing	100	0	-	east		West Main Street //   A foreman stands stand here watching over two construction workers // fixing a pothole. The road here branches off north and south into
 1792951239	cmd	Alaric	50	9526	newthalo.are	standing	100	0	-	east		West Main Street //   You are strolling on the street between the bank and general store. // To the west you hear a roadcrew at work and to the East, the sounds of
 1792951240	session	Alaric	50	9526	newthalo.are	quit	17651s	+0 levels	+0 exp	+2239411530 copper	47 kills	0 deaths	17 quests	2247 commands	9 refused	coin: loot 79p 9g 32s 65c, quests 2163p 21g 60s, spent 2p 89g 77s 35c
+1792951261	cmd	Alaric	50	9526	newthalo.are	standing	100	0	-	time		It is 8 o'clock pm, Day of Freedom, 32nd the Month of the Sun. // TOC started up at Sun Oct 25 11:25:30 2026 // The system time is Sun Oct 25 18:01:01 2026
+1792951281	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792951284	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    243 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792951287	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	sleep		You go to sleep.
