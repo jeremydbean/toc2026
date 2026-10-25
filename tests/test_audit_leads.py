@@ -365,15 +365,22 @@ class HeatMetalTests(unittest.TestCase):
                     run(god, f"load obj {vnum}", 0.3)
                     run(god, f"set obj {keyword} extra +M", 0.3)
                     run(god, f"give {keyword} guard", 0.3)
-                landed = both = 0
+                # Counted over the whole run, one burst per prompt: each
+                # cast waits out the last one's lag (drain burns none of it
+                # outside a fight), and under the sanitizer build the reply
+                # came after a per-cast window -- "twenty casts never heated
+                # a cursed piece" in CI on 2026-10-25, with every reply
+                # landing in the drain between casts.
+                mark = len(caster.transcript)
                 for _ in range(20):
-                    out = run(caster, "cast 'heat metal' guard", 1.5)
-                    hit = "Your heat metal" in out
-                    landed += hit
-                    both += hit and "no effect" in out
+                    run(caster, "cast 'heat metal' guard", 1.5)
                     run(god, "peace", 0.4)
                     run(god, "restore guard", 0.4)
                     caster.drain(2.0)          # the cast's lag
+                caster.drain(4.0)              # the last reply
+                bursts = re.split(r"<-?\d+hp [^>]*>", caster.transcript[mark:])
+                landed = sum("Your heat metal" in b for b in bursts)
+                both = sum("Your heat metal" in b and "no effect" in b for b in bursts)
                 run(god, "purge guard", 0.4)
                 run(god, f"load mob {guard}")
                 # Nothing to heat: the true no-op. A save says "resists"
