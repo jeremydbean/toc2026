@@ -191051,3 +191051,64 @@ Sun Oct 25 21:05:51 2026 :: Sock.sinaddr:  89.126.208.245
 Sun Oct 25 21:05:58 2026 :: EOF encountered on read.
 Sun Oct 25 21:05:59 2026 :: Sock.sinaddr:  89.126.208.245
 Sun Oct 25 21:06:06 2026 :: EOF encountered on read.
+Sun Oct 25 21:08:03 2026 :: Sock.sinaddr:  3.12.251.153
+Sun Oct 25 21:08:03 2026 :: EOF encountered on read.
+Sun Oct 25 21:09:14 2026 :: Treasure goblin: vanished from room 5323 (A back alley, mirror.are) (too long in one area).
+Sun Oct 25 21:09:34 2026 :: Black market: the dealer appeared with 5 items (stock 1792962574), for 31 minutes.
+Sun Oct 25 21:10:01 2026 :: Sock.sinaddr:  23.31.96.97
+Sun Oct 25 21:10:01 2026 :: EOF encountered on read.
+Sun Oct 25 21:12:23 2026 :: Log Alaric [2497]: aq re
+Sun Oct 25 21:12:23 2026 :: Log Alaric [2497]: quest assigned: kill A will'o'wisp (mob 3617, level 12) in dkforest.are, 25 minutes, ordinary
+Sun Oct 25 21:12:29 2026 :: Log Alaric [2497]: enter door
+Sun Oct 25 21:12:29 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 21:12:29 2026 :: Log Alaric [2401]: west
+Sun Oct 25 21:12:29 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Oct 25 21:12:30 2026 :: Log Alaric [2405]: west
+Sun Oct 25 21:12:30 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Oct 25 21:12:30 2026 :: Log Alaric [2433]: west
+Sun Oct 25 21:12:30 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Oct 25 21:12:30 2026 :: Log Alaric [2434]: west
+Sun Oct 25 21:12:30 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Oct 25 21:12:30 2026 :: Log Alaric [2435]: west
+Sun Oct 25 21:12:30 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Oct 25 21:12:31 2026 :: Log Alaric [2436]: west
+Sun Oct 25 21:12:31 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Oct 25 21:12:31 2026 :: Log Alaric [2437]: west
+Sun Oct 25 21:12:31 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Oct 25 21:12:31 2026 :: Log Alaric [2438]: open west
+Sun Oct 25 21:12:31 2026 :: Log Alaric [2438]: west
+Sun Oct 25 21:12:31 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Oct 25 21:12:33 2026 :: Log Alaric [2439]: west
+Sun Oct 25 21:12:33 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sun Oct 25 21:12:33 2026 :: Log Alaric [6000]: west
+Sun Oct 25 21:12:33 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sun Oct 25 21:12:34 2026 :: Log Alaric [6001]: west
+Sun Oct 25 21:12:34 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sun Oct 25 21:12:34 2026 :: Log Alaric [6002]: west
+Sun Oct 25 21:12:34 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Sun Oct 25 21:12:34 2026 :: Log Alaric [6003]: west
+Sun Oct 25 21:12:34 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Sun Oct 25 21:12:34 2026 :: Log Alaric [6004]: west
+Sun Oct 25 21:12:34 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Sun Oct 25 21:12:35 2026 :: Log Alaric [6100]: west
+Sun Oct 25 21:12:35 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Sun Oct 25 21:12:35 2026 :: Log Alaric [6101]: west
+Sun Oct 25 21:12:35 2026 :: Log Alaric [6102]: arrived (A narrow trail through the deep, dark forest) from 6101
+Sun Oct 25 21:12:35 2026 :: Log Alaric [6102]: west
+Sun Oct 25 21:12:35 2026 :: Log Alaric [6103]: arrived (A narrow trail through the deep, dark forest) from 6102
+Sun Oct 25 21:12:35 2026 :: Log Alaric [6103]: north
+Sun Oct 25 21:12:35 2026 :: Log Alaric [6150]: arrived (The narrow trail.) from 6103
+Sun Oct 25 21:12:36 2026 :: Log Alaric [6150]: north
+Sun Oct 25 21:12:36 2026 :: Log Alaric [6151]: arrived (The narrow trail.) from 6150
+Sun Oct 25 21:12:36 2026 :: Log Alaric [6151]: west
+Sun Oct 25 21:12:36 2026 :: Log Alaric [63]: arrived (Forest Junction) from 6151
+Sun Oct 25 21:12:36 2026 :: Log Alaric [63]: west
+Sun Oct 25 21:12:36 2026 :: Log Alaric [5622]: arrived (A bend in the dark forest) from 63
+Sun Oct 25 21:12:36 2026 :: Log Alaric [5622]: south
+Sun Oct 25 21:12:36 2026 :: Log Alaric [5689]: arrived (In the deeper forest) from 5622
+Sun Oct 25 21:12:37 2026 :: Log Alaric [5689]: south
+Sun Oct 25 21:12:37 2026 :: Log Alaric [70]: arrived (Darkened Path) from 5689
+Sun Oct 25 21:12:37 2026 :: Log Alaric [70]: south
+Sun Oct 25 21:12:37 2026 :: Log Alaric [3601]: arrived (Entrance to the Dark Forest.) from 70
+Sun Oct 25 21:12:43 2026 :: Log Alaric [3601]: s
+Sun Oct 25 21:12:43 2026 :: Log Alaric [3602]: arrived (Entering the forest) from 3601
