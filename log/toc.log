@@ -186278,3 +186278,46 @@ Sun Oct 25 13:21:16 2026 :: Log Alaric [7051]: arrived (The Sewer pipe) from 705
 Sun Oct 25 13:21:16 2026 :: Log Alaric [7051]: n
 Sun Oct 25 13:21:16 2026 :: Log Alaric [7050]: arrived (The small room) from 7051
 Sun Oct 25 13:21:18 2026 :: Log Alaric [7050]: kill sp
+Sun Oct 25 13:25:52 2026 :: Sock.sinaddr:  178.156.184.20
+Sun Oct 25 13:25:52 2026 :: EOF encountered on read.
+Sun Oct 25 13:26:09 2026 :: Log Alaric [7050]: l
+Sun Oct 25 13:26:11 2026 :: Log Alaric [7050]: ex
+Sun Oct 25 13:26:17 2026 :: Log Alaric [7050]: fi
+Sun Oct 25 13:26:17 2026 :: Log Alaric [7050]: killed the small spider
+Sun Oct 25 13:26:17 2026 :: Log Alaric [7050]: coin +2 copper
+Sun Oct 25 13:26:26 2026 :: Log Alaric [7050]: recal
+Sun Oct 25 13:26:26 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 7050
+Sun Oct 25 13:26:26 2026 :: Treasure goblin: vanished from room 1613 (The tower, wyvern.are) (too long in one area).
+Sun Oct 25 13:27:52 2026 :: Log Alaric [2497]: aq re
+Sun Oct 25 13:27:52 2026 :: Log Alaric [2497]: quest assigned: recover The Heart of Tifarah (obj 25042) in valley.are, 30 minutes, ordinary
+Sun Oct 25 13:27:55 2026 :: Log Alaric [2497]: enter door
+Sun Oct 25 13:27:55 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 13:27:55 2026 :: Log Alaric [2401]: east
+Sun Oct 25 13:27:55 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Oct 25 13:27:56 2026 :: Log Alaric [2403]: east
+Sun Oct 25 13:27:56 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sun Oct 25 13:27:56 2026 :: Log Alaric [2420]: east
+Sun Oct 25 13:27:56 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sun Oct 25 13:27:56 2026 :: Log Alaric [2421]: east
+Sun Oct 25 13:27:56 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sun Oct 25 13:27:56 2026 :: Log Alaric [2422]: east
+Sun Oct 25 13:27:56 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sun Oct 25 13:27:57 2026 :: Log Alaric [2423]: east
+Sun Oct 25 13:27:57 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sun Oct 25 13:27:57 2026 :: Log Alaric [2424]: east
+Sun Oct 25 13:27:57 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sun Oct 25 13:27:57 2026 :: Log Alaric [2425]: east
+Sun Oct 25 13:27:57 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sun Oct 25 13:27:57 2026 :: Log Alaric [2426]: open east
+Sun Oct 25 13:27:58 2026 :: Log Alaric [2426]: east
+Sun Oct 25 13:27:58 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sun Oct 25 13:27:59 2026 :: Log Alaric [2440]: east
+Sun Oct 25 13:27:59 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sun Oct 25 13:27:59 2026 :: Log Alaric [3503]: east
+Sun Oct 25 13:27:59 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sun Oct 25 13:28:00 2026 :: Log Alaric [3502]: east
+Sun Oct 25 13:28:00 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Sun Oct 25 13:28:00 2026 :: Log Alaric [3525]: east
+Sun Oct 25 13:28:00 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Sun Oct 25 13:28:00 2026 :: Log Alaric [3526]: north
+Sun Oct 25 13:28:00 2026 :: Log Alaric [38]: arrived (Well Kept Path) from 3526
