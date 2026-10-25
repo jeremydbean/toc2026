@@ -190778,3 +190778,81 @@ Sun Oct 25 19:26:43 2026 :: Log Trentlin [2803]: arrived (Troll's Living Room) f
 Sun Oct 25 19:26:47 2026 :: Log Trentlin [2803]: k wor
 Sun Oct 25 19:26:47 2026 :: Log Trentlin [2803]: killed a fat worm
 Sun Oct 25 19:26:47 2026 :: Log Trentlin [2803]: coin +2 copper
+Sun Oct 25 19:26:53 2026 :: Log Trentlin [2803]: north
+Sun Oct 25 19:26:53 2026 :: Log Trentlin [2801]: arrived (Wastedump) from 2803
+Sun Oct 25 19:26:54 2026 :: Log Trentlin [2801]: north
+Sun Oct 25 19:26:54 2026 :: Log Trentlin [19]: arrived (Soggy Cave) from 2801
+Sun Oct 25 19:26:54 2026 :: Log Trentlin [19]: up
+Sun Oct 25 19:26:54 2026 :: Log Trentlin [3516]: arrived (Muddy Ground) from 19
+Sun Oct 25 19:26:54 2026 :: Log Trentlin [3516]: north
+Sun Oct 25 19:26:54 2026 :: Log Trentlin [3510]: arrived (A Crossroads) from 3516
+Sun Oct 25 19:26:54 2026 :: Log Trentlin [3510]: north
+Sun Oct 25 19:26:54 2026 :: Log Trentlin [3507]: arrived (A Burned Cart) from 3510
+Sun Oct 25 19:26:55 2026 :: Log Trentlin [3507]: north
+Sun Oct 25 19:26:55 2026 :: Log Trentlin [3505]: arrived (The Trail to Miden'nir) from 3507
+Sun Oct 25 19:26:55 2026 :: Log Trentlin [3505]: north
+Sun Oct 25 19:26:55 2026 :: Log Trentlin [2432]: arrived (Outside the Southern Gates of Dresden.) from 3505
+Sun Oct 25 19:26:55 2026 :: Log Trentlin [2432]: north
+Sun Oct 25 19:26:55 2026 :: Log Trentlin [2431]: arrived (Inside the Southern Gates of Dresden.) from 2432
+Sun Oct 25 19:26:55 2026 :: Log Trentlin [2431]: north
+Sun Oct 25 19:26:55 2026 :: Log Trentlin [2430]: arrived (Main Processional, at the Southern Gates) from 2431
+Sun Oct 25 19:26:56 2026 :: Log Trentlin [2430]: north
+Sun Oct 25 19:26:56 2026 :: Log Trentlin [2429]: arrived (Bridge of the Mermaids.) from 2430
+Sun Oct 25 19:26:56 2026 :: Log Trentlin [2429]: north
+Sun Oct 25 19:26:56 2026 :: Log Trentlin [2428]: arrived (Main Processional, Toward the Mermaids' Bridge) from 2429
+Sun Oct 25 19:26:56 2026 :: Log Trentlin [2428]: north
+Sun Oct 25 19:26:56 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 2428
+Sun Oct 25 19:26:56 2026 :: Log Trentlin [2427]: north
+Sun Oct 25 19:26:56 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 25 19:26:57 2026 :: Log Trentlin [2404]: north
+Sun Oct 25 19:26:57 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sun Oct 25 19:26:57 2026 :: Log Trentlin [2401]: north
+Sun Oct 25 19:26:57 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sun Oct 25 19:26:57 2026 :: Log Trentlin [2402]: north
+Sun Oct 25 19:26:57 2026 :: Log Trentlin [2415]: arrived (Main Processional, Strung with Lanterns) from 2402
+Sun Oct 25 19:26:57 2026 :: Log Trentlin [2415]: north
+Sun Oct 25 19:26:57 2026 :: Log Trentlin [2496]: arrived (Main Processional, Where the Candles Burn) from 2415
+Sun Oct 25 19:26:58 2026 :: Log Trentlin [2496]: north
+Sun Oct 25 19:26:58 2026 :: Log Trentlin [2416]: arrived (Main Processional, Among the Scarecrows) from 2496
+Sun Oct 25 19:26:58 2026 :: Log Trentlin [2416]: west
+Sun Oct 25 19:26:58 2026 :: Log Trentlin [2478]: arrived (Fireball Lane.) from 2416
+Sun Oct 25 19:26:58 2026 :: Log Trentlin [2478]: west
+Sun Oct 25 19:26:58 2026 :: Log Trentlin [2476]: arrived (Fireball Lane.) from 2478
+Sun Oct 25 19:26:58 2026 :: Log Trentlin [2476]: north
+Sun Oct 25 19:26:58 2026 :: Log Trentlin [2477]: arrived (Maliki's Wands and Things.) from 2476
+Sun Oct 25 19:27:00 2026 :: Log Trentlin [2477]: s
+Sun Oct 25 19:27:00 2026 :: Log Trentlin [2476]: arrived (Fireball Lane.) from 2477
+Sun Oct 25 19:27:01 2026 :: Log Trentlin [2476]: e
+Sun Oct 25 19:27:01 2026 :: Log Trentlin [2478]: arrived (Fireball Lane.) from 2476
+Sun Oct 25 19:27:02 2026 :: Log Trentlin [2478]: e
+Sun Oct 25 19:27:02 2026 :: Log Trentlin [2416]: arrived (Main Processional, Among the Scarecrows) from 2478
+Sun Oct 25 19:27:02 2026 :: Log Trentlin [2416]: s
+Sun Oct 25 19:27:02 2026 :: Log Trentlin [2496]: arrived (Main Processional, Where the Candles Burn) from 2416
+Sun Oct 25 19:27:02 2026 :: Log Trentlin [2496]: s
+Sun Oct 25 19:27:02 2026 :: Log Trentlin [2415]: arrived (Main Processional, Strung with Lanterns) from 2496
+Sun Oct 25 19:27:03 2026 :: Automated backup complete.
+Sun Oct 25 19:27:03 2026 :: Log Trentlin [2415]: s
+Sun Oct 25 19:27:03 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2415
+Sun Oct 25 19:27:05 2026 :: Log Trentlin [2402]: s
+Sun Oct 25 19:27:05 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2402
+Sun Oct 25 19:27:05 2026 :: Log Trentlin [2401]: u
+Sun Oct 25 19:27:05 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sun Oct 25 19:27:06 2026 :: Log Trentlin [2410]: u
+Sun Oct 25 19:27:06 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Sun Oct 25 19:27:06 2026 :: Log Trentlin [2411]: u
+Sun Oct 25 19:27:06 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Sun Oct 25 19:27:08 2026 :: Log Trentlin [2414]: aquest complete
+Sun Oct 25 19:27:08 2026 :: Log Trentlin [2414]: u
+Sun Oct 25 19:27:08 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sun Oct 25 19:27:10 2026 :: Log Trentlin [2497]: aquest complete
+Sun Oct 25 19:27:10 2026 :: Log Trentlin [2497]: copper +135201000
+Sun Oct 25 19:27:10 2026 :: Log Trentlin [2497]: quest complete: 135p 20g 10s, 71 quest points (streak bonus 109%)
+Sun Oct 25 19:27:10 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261025_192710.quest (PRESTORE Trentlin to see it).
+Sun Oct 25 19:27:14 2026 :: Log Trentlin [2497]: aquest gamble yes
+Sun Oct 25 19:27:15 2026 :: Log Trentlin [2497]: sco
+Sun Oct 25 19:27:16 2026 :: Log Trentlin [2497]: quit
+Sun Oct 25 19:27:16 2026 :: Trentlin has quit.
+Sun Oct 25 19:27:16 2026 :: [QUIT] Player rejoined the real world.
+Sun Oct 25 19:30:30 2026 :: Treasure goblin: vanished from room 13460 (Fire Pits of Hades, hell.are) (too long in one area).
+Sun Oct 25 19:31:37 2026 :: Sock.sinaddr:  5.161.113.195
+Sun Oct 25 19:31:38 2026 :: EOF encountered on read.
