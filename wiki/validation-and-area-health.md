@@ -263,14 +263,28 @@ Use it after deploys, reloads, and backup-related changes.
 
 ## CI
 
-`.github/workflows/validate.yml` runs on pushes and pull requests. It:
+`.github/workflows/validate.yml` runs on pushes to `main`, on pull
+requests, every night, and by hand (Actions -> Validate -> Run workflow).
+A `plan` job decides what a change needs (`scripts/ci/classify.py`):
+documentation runs the cheap checks and any test that holds a document to
+the code; the browser client, the dashboard and test modules run their own
+tests; anything touching C, the world, the test harness, CI or deploy
+policy runs everything -- the cheap `quick` checks, both builds, eight
+duration-balanced test shards, the serial job and the sanitizer shards. It
+compares the change with the last commit on `main` whose `deploy-gate`
+passed, so a documentation commit on top of failing code still runs that
+code's full suite. The nightly run and a manual "full" run always run
+everything.
 
-- installs `build-essential`, `gcc`, `make`, and `libcrypt-dev`
-- sets up Python 3.12
-- installs `webadmin/requirements.txt` and `scripts/requirements.txt`
-- runs `bash scripts/validate.sh`
+`deploy-gate` is the verdict, and the one job the live host's auto
+deployer reads: the plan must be the one this commit deserves, every job
+it needed must have succeeded, and every module it selected must have run
+once and passed. A full run takes about ten minutes; a documentation
+commit about one. AGENTS.md ("Validation") has the details.
 
-Keep CI green by keeping local `bash scripts/validate.sh` green before pushing.
+Keep CI green by running the relevant modules locally before pushing
+(`scripts/test-parallel.sh <module>`), and `bash scripts/validate.sh quick`
+for the cheap checks.
 
 ## Troubleshooting
 

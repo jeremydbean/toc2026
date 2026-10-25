@@ -345,7 +345,9 @@ def main() -> int:
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as fh:
             write_summary(fh, problems, stats, runs, needs)
-    if args.durations_out:
+    # Only a full run measures every module; a partial one's file would
+    # wipe the rest if somebody refreshed tests/ci_durations.json from it.
+    if args.durations_out and (plan is None or plan.get("scope") == "full"):
         durations = {m: round(r.get("wall", 0), 1) for m, r in sorted(stats["records"].items())
                      if r.get("status") == "pass"}
         args.durations_out.write_text(json.dumps(
