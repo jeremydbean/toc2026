@@ -1424,6 +1424,10 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     if ( victim->position == POS_DEAD )
 	return false;
 
+    /* The dragon remembers whether the one it carried off fought it. */
+    if ( is_disaster_dragon( victim ) )
+	disaster_dragon_struck( ch, victim );
+
     /* The treasure goblin is worn down by blows, never by his own poison
        or plague: only a chase kills him (goblin.c). */
     if ( ch == victim && is_treasure_goblin( victim ) )
@@ -3967,6 +3971,10 @@ void disarm( CHAR_DATA *ch, CHAR_DATA *victim )
     act( "$n\x02\x0C disarms\x02\x01 $N!",  ch, NULL, victim, TO_NOTVICT );
 
     obj_from_char( obj );
+    /* Empty Hands: a monster's weapon really left its hand. */
+    if ( IS_NPC(victim) && !IS_NPC(ch) && !is_training_dummy( victim )
+    &&   !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+	achievement_count( ch, ACH_CTR_DISARMS, 1 );
     if ( IS_OBJ_STAT(obj,ITEM_NODROP) || IS_OBJ_STAT(obj,ITEM_INVENTORY) )
 	obj_to_char( obj, victim );
     else
@@ -5173,6 +5181,9 @@ void do_rescue( CHAR_DATA *ch, char *argument )
     act( "$n rescues you!", ch, NULL, victim, TO_VICT    );
     act( "$n rescues $N!",  ch, NULL, victim, TO_NOTVICT );
     check_improve(ch,gsn_rescue,true,1);
+    /* Not Today: a groupmate pulled out from under a real monster. */
+    if ( IS_NPC(fch) && !is_training_dummy( fch ) && !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+	achievement_count( ch, ACH_CTR_RESCUES, 1 );
 
     stop_fighting( fch, false );
     stop_fighting( victim, false );

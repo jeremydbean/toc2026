@@ -2719,820 +2719,466 @@ void spell_vampiric_touch( int sn, int level, CHAR_DATA *ch, void *vo )
 
 }
 
+/*
+ * BREW, CONCOCT and SCRIBE (2026-10-25: rebuilt around one recipe table).
+ *
+ * They were three long if-chains, one block per recipe, and every
+ * product's name and spells were written out by hand in each. They are
+ * one table now, read by one matcher, and they share their rules:
+ *
+ *  - Every refusal comes before the roll and costs nothing: a missing or
+ *    wrong ingredient, a combination that makes nothing, an herb no brew
+ *    is known for (it used to be consumed for a tea with no spells).
+ *  - Each attempt that reaches the roll pays the skill's lag first, so
+ *    potions cannot be made as fast as the line can be typed mid-fight.
+ *  - The product is made at the crafter's level and is that level: a
+ *    level 3 cannot quaff a level 51 heal potion somebody handed down.
+ *  - Staff are told of a remove-align or Farslay scroll only when one is
+ *    really made, not on every attempt.
+ *  - A missed roll teaches something, for all three.
+ *
+ * A recipe's identity, for A Varied Recipe Book, is its method and its
+ * signature spell: the one that tells it from the rest.
+ */
+
+#define CRAFT_BREW      1
+#define CRAFT_CONCOCT   2
+#define CRAFT_SCRIBE    3
+
+#define CRAFT_HALF_LEVEL    (A)   /* foxglove: cast at 1 + level/2 */
+#define CRAFT_RISKY         (B)   /* belladonna: one in four goes bad */
+#define CRAFT_TELL_STAFF    (C)   /* staff hear when one is made */
+#define CRAFT_FARSLAY       (D)   /* the black scroll's own achievement */
+
+#define OBJ_VNUM_CRAFTED_TEA     74
+#define OBJ_VNUM_CRAFTED_POTION  75
+#define OBJ_VNUM_CRAFTED_SCROLL  90
+
+typedef struct craft_recipe
+{
+    int          method;
+    int          parts[3];       /* ingredient vnums; 0 for none */
+    const char * spells[3];      /* NULL for none */
+    const char * colour;         /* names the product */
+    const char * signature;      /* the spell that identifies it */
+    long         flags;
+} CRAFT_RECIPE;
+
+static const CRAFT_RECIPE craft_recipes[] =
+{
+    /* BREW: one herb, a container of tea. */
+    { CRAFT_BREW, { 34, 0, 0 }, { "cure light", "refresh", NULL }, "blue", "refresh", 0 },
+    { CRAFT_BREW, { 35, 0, 0 }, { "cure light", "cure blindness", NULL }, "white", "cure blindness", 0 },
+    { CRAFT_BREW, { 36, 0, 0 }, { "cure light", "cure light", NULL }, "pink", "cure light", CRAFT_RISKY },
+    { CRAFT_BREW, { 37, 0, 0 }, { "cure light", "infravision", NULL }, "bloodstone", "infravision", 0 },
+    { CRAFT_BREW, { 38, 0, 0 }, { "cure light", "haste", NULL }, "ruby", "haste", CRAFT_HALF_LEVEL },
+    { CRAFT_BREW, { 39, 0, 0 }, { "cure light", NULL, NULL }, "plain", "cure light", 0 },
+    /* Clove's second spell was detect poison, which wants an object: a
+       quaffed tea has none, so it answered "You can't do that." */
+    { CRAFT_BREW, { 40, 0, 0 }, { "cure light", "detect invis", NULL }, "off-white", "detect invis", 0 },
+    { CRAFT_BREW, { 41, 0, 0 }, { "cure serious", "cure disease", "cure nightmare" }, "diamond", "cure nightmare", 0 },
+    { CRAFT_BREW, { 42, 0, 0 }, { "cure critical", "cure nightmare", NULL }, "sapphire", "cure critical", 0 },
+    { CRAFT_BREW, { 43, 0, 0 }, { "cure serious", NULL, NULL }, "green", "cure serious", 0 },
+    { CRAFT_BREW, { 44, 0, 0 }, { "cure light", "protection evil", NULL }, "golden", "protection evil", 0 },
+    { CRAFT_BREW, { 45, 0, 0 }, { "cure light", "cure serious", NULL }, "silver", "cure serious", 0 },
+    { CRAFT_BREW, { 46, 0, 0 }, { "cure light", "cure critical", "cure critical" }, "onyx", "cure critical", 0 },
+    { CRAFT_BREW, { 47, 0, 0 }, { "cure serious", "cure disease", NULL }, "lavender", "cure disease", 0 },
+    { CRAFT_BREW, { 48, 0, 0 }, { "cure light", "giant strength", NULL }, "purple", "giant strength", 0 },
+    { CRAFT_BREW, { 49, 0, 0 }, { "cure light", "calm", NULL }, "hazel", "calm", 0 },
+    { CRAFT_BREW, { 50, 0, 0 }, { "cure light", NULL, NULL }, "pale green", "cure light", 0 },
+    { CRAFT_BREW, { 51, 0, 0 }, { "cure critical", "heal", NULL }, "sky blue", "heal", 0 },
+    { CRAFT_BREW, { 52, 0, 0 }, { "cure light", "cure poison", NULL }, "sea green", "cure poison", 0 },
+    { CRAFT_BREW, { 53, 0, 0 }, { "cure light", "refresh", "restore mana" }, "rainbow", "restore mana", 0 },
+
+    /* CONCOCT: two components, a potion. */
+    { CRAFT_CONCOCT, { 60, 64, 0 }, { "fire shield", NULL, NULL }, "flaming red", "fire shield", 0 },
+    { CRAFT_CONCOCT, { 63, 66, 0 }, { "cancellation", "heal", "restore mana" }, "colorless", "cancellation", 0 },
+    { CRAFT_CONCOCT, { 61, 73, 0 }, { "restore mana", "restore mana", "restore mana" }, "pinkish", "restore mana", 0 },
+    { CRAFT_CONCOCT, { 55, 59, 0 }, { "sanctuary", "heal", NULL }, "white", "sanctuary", 0 },
+    { CRAFT_CONCOCT, { 62, 56, 0 }, { "heal", "pass door", NULL }, "clear", "pass door", 0 },
+    { CRAFT_CONCOCT, { 54, 69, 0 }, { "heal", "heal", NULL }, "yellowish", "heal", 0 },
+    { CRAFT_CONCOCT, { 67, 65, 0 }, { "heal", "heal", "sanctuary" }, "pale", "sanctuary", 0 },
+    { CRAFT_CONCOCT, { 70, 71, 0 }, { "cure critical", "heal", "sanctuary" }, "blue", "cure critical", 0 },
+    { CRAFT_CONCOCT, { 55, 68, 0 }, { "heal", "heal", "heal" }, "bright white", "heal", 0 },
+    { CRAFT_CONCOCT, { 58, 72, 0 }, { "mass healing", "mass sanctuary", "power gloves" }, "softly glowing", "mass sanctuary", 0 },
+    /* 2026-10-25: the four components nothing used, and the buffs no
+       recipe made. */
+    { CRAFT_CONCOCT, { 57, 59, 0 }, { "heal", "refresh", NULL }, "mottled green", "refresh", 0 },
+    { CRAFT_CONCOCT, { 85, 65, 0 }, { "stone skin", "armor", "shield" }, "granite grey", "stone skin", 0 },
+    { CRAFT_CONCOCT, { 86, 54, 0 }, { "invis", "pass door", NULL }, "translucent", "invis", 0 },
+    { CRAFT_CONCOCT, { 82, 61, 0 }, { "cure poison", "cure disease", "cure blindness" }, "murky violet", "cure poison", 0 },
+    { CRAFT_CONCOCT, { 63, 70, 0 }, { "fly", "haste", NULL }, "feathered gold", "haste", 0 },
+    { CRAFT_CONCOCT, { 67, 58, 0 }, { "detect invis", "detect hidden", "detect magic" }, "many-eyed", "detect hidden", 0 },
+    { CRAFT_CONCOCT, { 56, 72, 0 }, { "frenzy", "giant strength", NULL }, "blood red", "frenzy", 0 },
+    { CRAFT_CONCOCT, { 62, 69, 0 }, { "frost shield", "cure critical", NULL }, "icy blue", "frost shield", 0 },
+
+    /* SCRIBE: three components, a scroll. */
+    { CRAFT_SCRIBE, { 80, 84, 76 }, { "remove align", NULL, NULL }, "blank", "remove align", CRAFT_TELL_STAFF },
+    { CRAFT_SCRIBE, { 83, 88, 77 }, { "fire shield", "sanctuary", "restore mana" }, "reddish-white", "fire shield", 0 },
+    { CRAFT_SCRIBE, { 78, 81, 79 }, { "power gloves", "sanctuary", "heal" }, "blinding white", "power gloves", 0 },
+    { CRAFT_SCRIBE, { 84, 78, 87 }, { "restore mana", "mass sanctuary", "restore mana" }, "yellow", "mass sanctuary", 0 },
+    { CRAFT_SCRIBE, { 77, 76, 88 }, { "vengence", NULL, NULL }, "deadly black", "vengence", CRAFT_TELL_STAFF | CRAFT_FARSLAY },
+    { CRAFT_SCRIBE, { 80, 81, 79 }, { "word of recall", "refresh", NULL }, "sky-blue", "word of recall", 0 },
+    { CRAFT_SCRIBE, { 85, 86, 87 }, { "stone skin", "shield", "major globe" }, "ironbound", "major globe", 0 },
+    { CRAFT_SCRIBE, { 82, 83, 76 }, { "remove curse", "cure poison", "cure disease" }, "ashen", "remove curse", 0 },
+    { CRAFT_SCRIBE, { 57, 78, 88 }, { "aid", "bless", "armor" }, "hallowed", "aid", 0 },
+    { CRAFT_SCRIBE, { 84, 77, 81 }, { "invis", "pass door", "fly" }, "shimmering", "fly", 0 },
+
+    { 0, { 0, 0, 0 }, { NULL, NULL, NULL }, NULL, NULL, 0 }
+};
+
+/* The exact skill a recipe names. skill_lookup matches a prefix, which
+   read "protection" as whichever protection came first. */
+static int craft_spell( const char *name )
+{
+    int sn;
+
+    if ( name == NULL )
+        return 0;
+    for ( sn = 1; sn < MAX_SKILL && skill_table[sn].name != NULL; sn++ )
+        if ( !str_cmp( name, skill_table[sn].name ) )
+            return sn;
+    return skill_lookup( name ) > 0 ? skill_lookup( name ) : 0;
+}
+
+/* The recipe these ingredients make, in any order, or NULL. */
+static const CRAFT_RECIPE *craft_find( int method, OBJ_DATA **parts, int count )
+{
+    int i;
+
+    for ( i = 0; craft_recipes[i].method != 0; i++ )
+    {
+        const CRAFT_RECIPE *recipe = &craft_recipes[i];
+        bool used[3] = { false, false, false };
+        int need = 0;
+        int p;
+        bool match = true;
+
+        if ( recipe->method != method )
+            continue;
+        for ( p = 0; p < 3 && recipe->parts[p] != 0; p++ )
+            need++;
+        if ( need != count )
+            continue;
+        for ( p = 0; p < need && match; p++ )
+        {
+            int q;
+            bool found = false;
+
+            for ( q = 0; q < count && !found; q++ )
+            {
+                if ( !used[q] && parts[q] != NULL && parts[q]->pIndexData != NULL
+                &&   parts[q]->pIndexData->vnum == recipe->parts[p] )
+                {
+                    used[q] = true;
+                    found = true;
+                }
+            }
+            match = found;
+        }
+        if ( match )
+            return recipe;
+    }
+    return NULL;
+}
+
+/* The product, named and charged, at the crafter's level. */
+static OBJ_DATA *craft_product( CHAR_DATA *ch, const CRAFT_RECIPE *recipe, bool spoiled )
+{
+    static const char *const bad_spells[3] = { "sleep", "poison", "blindness" };
+    OBJ_INDEX_DATA *proto;
+    OBJ_DATA *obj;
+    const char *const *spells = spoiled ? bad_spells : recipe->spells;
+    const char *colour = spoiled ? "reddish-black" : recipe->colour;
+    const char *noun;
+    char buf[MAX_STRING_LENGTH];
+    int vnum;
+    int i;
+
+    switch ( recipe->method )
+    {
+        case CRAFT_BREW:    vnum = OBJ_VNUM_CRAFTED_TEA;    noun = "tea";    break;
+        case CRAFT_CONCOCT: vnum = OBJ_VNUM_CRAFTED_POTION; noun = "potion"; break;
+        default:            vnum = OBJ_VNUM_CRAFTED_SCROLL; noun = "scroll"; break;
+    }
+    if ( ( proto = get_obj_index( vnum ) ) == NULL )
+        return NULL;
+
+    obj = create_object( proto, ch->level );
+    obj->level = ch->level;
+    /* Worth a little, as a brewed thing is: not the four platinum the
+       prototype asks, for a tea made from a weed. */
+    obj->cost = UMAX( 1, ch->level ) * 20L;
+    obj->value[0] = IS_SET( recipe->flags, CRAFT_HALF_LEVEL ) && !spoiled
+        ? 1 + ch->level / 2 : ch->level;
+    obj->value[1] = obj->value[2] = obj->value[3] = 0;
+    for ( i = 0; i < 3; i++ )
+        if ( spells[i] != NULL )
+            obj->value[i + 1] = craft_spell( spells[i] );
+
+    snprintf( buf, sizeof(buf), "%s %s %s%s",
+              strchr( "aeiou", LOWER( colour[0] ) ) != NULL ? "an" : "a", colour,
+              recipe->method == CRAFT_BREW ? "container of " : "", noun );
+    free_string( obj->short_descr );
+    obj->short_descr = str_dup( buf );
+    snprintf( buf, sizeof(buf), "%s %s", colour, noun );
+    free_string( obj->name );
+    obj->name = str_dup( buf );
+    return obj;
+}
+
+/* A product made: the achievements, what staff are told, and the save. */
+static void craft_succeeded( CHAR_DATA *ch, const CRAFT_RECIPE *recipe, OBJ_DATA *product )
+{
+    char buf[MAX_STRING_LENGTH];
+    achievement_counter counter = recipe->method == CRAFT_BREW ? ACH_CTR_BREWS
+        : recipe->method == CRAFT_CONCOCT ? ACH_CTR_CONCOCTIONS : ACH_CTR_SCROLLS;
+    achievement_event_type event = recipe->method == CRAFT_BREW ? ACHIEVEMENT_EVENT_BREW
+        : recipe->method == CRAFT_CONCOCT ? ACHIEVEMENT_EVENT_CONCOCT
+        : ACHIEVEMENT_EVENT_SCRIBE;
+    int signature = craft_spell( recipe->signature );
+
+    obj_to_char( product, ch );
+    if ( IS_SET( recipe->flags, CRAFT_TELL_STAFF ) )
+    {
+        snprintf( buf, sizeof(buf), "%s has scribed %s.", ch->name, product->short_descr );
+        log_string( buf );
+        wizinfo( buf, LEVEL_IMMORTAL );
+    }
+    achievement_record_event( ch, event, true );
+    if ( IS_SET( recipe->flags, CRAFT_FARSLAY ) )
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_FARSLAY_SCROLL, true );
+    if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    {
+        achievement_count( ch, counter, 1 );
+        if ( signature > 0 )
+            achievement_note( ch, ACH_SET_RECIPES, (long) recipe->method * 100000L + signature );
+    }
+}
+
+/* What the three commands share before the roll: a player, the skill,
+   and ingredients carried, each a different object of the right type. */
+static bool craft_gather( CHAR_DATA *ch, int sn, char *argument, int count,
+                          int item_type, OBJ_DATA **parts )
+{
+    char arg[MAX_INPUT_LENGTH];
+    int i;
+    int j;
+
+    if ( IS_NPC(ch) || ( IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ) )
+        return false;
+    if ( get_skill( ch, sn ) < 2 )
+    {
+        send_to_char( "Do what?\n\r", ch );
+        return false;
+    }
+    for ( i = 0; i < count; i++ )
+    {
+        argument = one_argument( argument, arg );
+        if ( arg[0] == '\0' )
+        {
+            send_to_char( count == 1 ? "What do you want to brew?\n\r"
+                          : "What ingredients do you want to combine?\n\r", ch );
+            return false;
+        }
+        if ( ( parts[i] = get_obj_carry( ch, arg ) ) == NULL )
+        {
+            act( "You are not carrying any $T.", ch, NULL, arg, TO_CHAR );
+            return false;
+        }
+        for ( j = 0; j < i; j++ )
+        {
+            if ( parts[j] == parts[i] )
+            {
+                send_to_char( "Those are one and the same thing.  Name a second "
+                              "one as 2.<name>.\n\r", ch );
+                return false;
+            }
+        }
+        if ( parts[i]->item_type != item_type )
+        {
+            act( item_type == ITEM_HERB ? "$p is not a brewable herb."
+                 : "$p is not a spell ingredient.", ch, parts[i], NULL, TO_CHAR );
+            return false;
+        }
+    }
+    return true;
+}
+
 void do_brew( CHAR_DATA *ch, char *argument )
 {
-   OBJ_DATA *pObj;
-   OBJ_DATA *tea = NULL;
-   int chance;
-   char arg[MAX_INPUT_LENGTH];
-    char buf[MAX_STRING_LENGTH];
+    OBJ_DATA *parts[1];
+    const CRAFT_RECIPE *recipe;
+    OBJ_DATA *tea;
+    bool spoiled;
 
-   if(IS_NPC(ch) || (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
-      return;
+    if ( !craft_gather( ch, gsn_brew, argument, 1, ITEM_HERB, parts ) )
+        return;
+    if ( ( recipe = craft_find( CRAFT_BREW, parts, 1 ) ) == NULL )
+    {
+        act( "You know no brew that uses $p.", ch, parts[0], NULL, TO_CHAR );
+        return;
+    }
 
-   argument = one_argument (argument, arg);
+    WAIT_STATE( ch, skill_table[gsn_brew].beats );
+    send_to_char( "You set about making your herbal brew.\n\r", ch );
+    act( "$n lights a small fire and places a pot of water on it to boil.",
+         ch, NULL, NULL, TO_ROOM );
+    act( "The water begins to boil, so $n adds some herbs to it.", ch,
+         NULL, NULL, TO_ROOM );
+    act( "As the brew cools down, $n spoons out a small amount.", ch,
+         NULL, NULL, TO_ROOM );
 
-   if(( chance = get_skill(ch,gsn_brew)) < 2)
-   {
-     send_to_char("Do what?\n\r",ch);
-     return;
-   }
+    if ( number_percent() > get_skill( ch, gsn_brew ) )
+    {
+        send_to_char( "It doesn't taste right. You failed.\n\r", ch );
+        act( "$n spits it out. Apparently the herbs didn't mix correctly.", ch,
+             NULL, NULL, TO_ROOM );
+        extract_obj( parts[0] );
+        check_improve( ch, gsn_brew, false, 3 );
+        save_char_obj( ch );
+        return;
+    }
 
-   if( arg[0] == '\0')
-   {
-     send_to_char( "What do you want to brew?\n\r", ch );
-     return;
-   }
-
-   if ( ( pObj = get_obj_carry( ch, arg ) ) == NULL )
-   {
-     send_to_char( "You are not carrying that.\n\r", ch );
-     return;
-   }
-
-   if( pObj->item_type != ITEM_HERB)
-   {
-     send_to_char("That's not a brewable herb.\n\r",ch);
-     return;
-   }
-
-   send_to_char("You set about to make your herbal brew.\n\r",ch);
-   act("$n lights a small fire and places a pot of water on it to boil.",
-	ch,NULL,NULL,TO_ROOM);
-   act("The water begins to boil, so $n adds some herbs to it.",ch,
-	NULL,NULL,TO_ROOM);
-   act("As the brew cools down, $n spoons out a small amount.",ch,
-	NULL,NULL,TO_ROOM);
-
-   if( number_percent () > chance  )
-   {
-      send_to_char("It doesn't taste right. You failed.\n\r",ch);
-      act("$n spits it out. Apparently the herbs didn't mix correctly.",ch,
-	NULL,NULL,TO_ROOM);
-      extract_obj( pObj );
-      check_improve(ch,gsn_brew,false,3);
-      save_char_obj(ch);
-      return;
-   }
-
-   tea = create_object(get_obj_index(74), ch->level);
-
-   switch( pObj->pIndexData->vnum )
-   {
-     case 34:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure light");
-	      tea->value[2] = skill_lookup("refresh");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a blue container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"blue tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 35:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure light");
-	      tea->value[2] = skill_lookup("cure blindness");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a white container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"white tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 36:
-	      tea->value[0] = ch->level;
-	      if(number_percent () < 25)
-	      {
-		send_to_char("Hmmm. It seems to have brewed correctly, but"
-			     " the taste is slightly off.\n\r",ch);
-		tea->value[1] = skill_lookup("sleep");
-		tea->value[2] = skill_lookup("poison");
-		tea->value[3] = skill_lookup("blindness");
-		free_string( tea->short_descr );
-		snprintf(buf, sizeof buf,"a redish-black container of tea");
-		tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"redish-black tea");
-	      tea->name = str_dup( buf );
-	      }
-	      else
-	      {
-		tea->value[1] = skill_lookup("cure light");
-		tea->value[2] = skill_lookup("cure light");
-		free_string( tea->short_descr );
-		snprintf(buf, sizeof buf,"a pink container of tea");
-		tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"pink tea");
-	      tea->name = str_dup( buf );
-	      }
-     break;
-     case 37:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure light");
-	      tea->value[2] = skill_lookup("infravision");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a bloodstone container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"bloodstone tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 38:
-	      tea->value[0] = 1 + ch->level/2;
-	      tea->value[1] = skill_lookup("cure light");
-	      tea->value[2] = skill_lookup("haste");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a ruby container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"ruby tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 39:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure light");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a plain container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"plain tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 40:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure light");
-	      tea->value[2] = skill_lookup("detect poison");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"an off-white container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"off-white tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 41:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure serious");
-	      tea->value[2] = skill_lookup("cure disease");
-	      tea->value[3] = skill_lookup("cure nightmare");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a diamond container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"diamond tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 42:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure critical");
-	      tea->value[2] = skill_lookup("cure nightmare");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a sapphire container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"sapphire tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 43:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure serious");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a green container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"green tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 44:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure light");
-	      tea->value[2] = skill_lookup("protection");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a golden container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"golden tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 45:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure light");
-	      tea->value[2] = skill_lookup("cure serious");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a silver container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"silver tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 46:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure light");
-	      tea->value[2] = skill_lookup("cure critical");
-	      tea->value[3] = skill_lookup("cure critical");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a onyx container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"onyx tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 47:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure serious");
-	      tea->value[2] = skill_lookup("cure disease");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a lavender colored container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"lavender tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 48:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure light");
-	      tea->value[2] = skill_lookup("giant strength");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a purple colored container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"purple tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 49:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure light");
-	      tea->value[2] = skill_lookup("calm");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a hazel colored container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"hazel tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 50:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure light");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a pale green container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"pale green tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 51:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure critical");
-	      tea->value[2] = skill_lookup("heal");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a sky blue container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"sky blue tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 52:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure light");
-	      tea->value[2] = skill_lookup("cure poison");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a sea green container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"sea green tea");
-	      tea->name = str_dup( buf );
-     break;
-     case 53:
-	      tea->value[0] = ch->level;
-	      tea->value[1] = skill_lookup("cure light");
-	      tea->value[2] = skill_lookup("refresh");
-	      tea->value[3] = skill_lookup("restore mana");
-	      free_string( tea->short_descr );
-	      snprintf(buf, sizeof buf,"a rainbow colored container of tea");
-	      tea->short_descr = str_dup( buf );
-	      free_string( tea->name );
-	      snprintf(buf, sizeof buf,"rainbow tea");
-	      tea->name = str_dup( buf );
-     break;
-
-   }
-   act("$n says, 'Tastes good,' and smiles.",ch,NULL,NULL,TO_ROOM);
-   act("$n then pours the brewed liquid into a container.",ch,
-	NULL,NULL,TO_ROOM);
-   send_to_char("The herbs have brewed, and you pour the liquid into a container.\n\r",ch);
-   check_improve(ch,gsn_brew,true,5);
-   extract_obj( pObj );
-   obj_to_char(tea, ch);
-   achievement_record_event(ch, ACHIEVEMENT_EVENT_BREW, true);
-   save_char_obj(ch);
-   return;
-
-}
-
-static int crafting_component_vnum( const OBJ_DATA *obj )
-{
-   return obj != NULL && obj->pIndexData != NULL
-        ? obj->pIndexData->vnum : -1;
-}
-
-static bool crafting_pair_matches( const OBJ_DATA *one, const OBJ_DATA *two,
-                                   int first_vnum, int second_vnum )
-{
-   int one_vnum = crafting_component_vnum( one );
-   int two_vnum = crafting_component_vnum( two );
-
-   return ( one_vnum == first_vnum && two_vnum == second_vnum )
-       || ( one_vnum == second_vnum && two_vnum == first_vnum );
-}
-
-static bool crafting_trio_matches( const OBJ_DATA *one, const OBJ_DATA *two,
-                                   const OBJ_DATA *three, int first_vnum,
-                                   int second_vnum, int third_vnum )
-{
-   int one_vnum = crafting_component_vnum( one );
-   int two_vnum = crafting_component_vnum( two );
-   int three_vnum = crafting_component_vnum( three );
-
-   return ( one_vnum == first_vnum || two_vnum == first_vnum
-         || three_vnum == first_vnum )
-       && ( one_vnum == second_vnum || two_vnum == second_vnum
-         || three_vnum == second_vnum )
-       && ( one_vnum == third_vnum || two_vnum == third_vnum
-         || three_vnum == third_vnum );
+    spoiled = IS_SET( recipe->flags, CRAFT_RISKY ) && number_percent() <= 25;
+    if ( ( tea = craft_product( ch, recipe, spoiled ) ) == NULL )
+    {
+        send_to_char( "You have nothing to pour it into.\n\r", ch );
+        return;
+    }
+    if ( spoiled )
+        send_to_char( "Hmmm. It seems to have brewed correctly, but the taste "
+                      "is slightly off.\n\r", ch );
+    act( "$n says, 'Tastes good,' and smiles.", ch, NULL, NULL, TO_ROOM );
+    act( "$n then pours the brewed liquid into a container.", ch,
+         NULL, NULL, TO_ROOM );
+    send_to_char( "The herbs have brewed, and you pour the liquid into a container.\n\r", ch );
+    check_improve( ch, gsn_brew, true, 5 );
+    extract_obj( parts[0] );
+    craft_succeeded( ch, recipe, tea );
+    save_char_obj( ch );
 }
 
 void do_concoct( CHAR_DATA *ch, char *argument )
 {
-   OBJ_DATA *pObj_one, *pObj_two;
-   OBJ_DATA *potion = NULL;
-   int chance;
-   int slot_one = 0;
-   int slot_two = 0;
-   int slot_three = 0;
-   char arg[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char buf[MAX_STRING_LENGTH];
-   bool found = false;
+    OBJ_DATA *parts[2];
+    const CRAFT_RECIPE *recipe;
+    OBJ_DATA *potion;
+    char buf[MAX_STRING_LENGTH];
+    int chance;
 
-   if(IS_NPC(ch) || (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
-      return;
+    if ( !craft_gather( ch, gsn_concoct, argument, 2, ITEM_SPELL_COMPONENT, parts ) )
+        return;
+    if ( ( recipe = craft_find( CRAFT_CONCOCT, parts, 2 ) ) == NULL )
+    {
+        send_to_char( "Combining those ingredients won't do anything.\n\r", ch );
+        return;
+    }
 
-   argument = one_argument (argument, arg);
-   argument = one_argument (argument, arg2);
+    chance = get_skill( ch, gsn_concoct );
+    /* The lag comes first: a failure burns the brewer, and a command that
+       deals damage pays for it before the blow (test_damage_lag.py). */
+    WAIT_STATE( ch, skill_table[gsn_concoct].beats );
+    send_to_char( "You pull out your equipment and begin to concoct a potion.\n\r", ch );
+    act( "$n lights a small fire and places a cauldron of water on it to boil.",
+         ch, NULL, NULL, TO_ROOM );
+    act( "As the water begins to bubble and boil, $n then adds", ch,
+         NULL, NULL, TO_ROOM );
+    snprintf( buf, sizeof buf, "%s and %s to the mixture.", parts[0]->short_descr,
+              parts[1]->short_descr );
+    act( buf, ch, NULL, NULL, TO_ROOM );
+    act( "$n then says a few arcane words over it as the contents begin to "
+         "froth and smoke.", ch, NULL, NULL, TO_ROOM );
 
-   if(( chance = get_skill(ch,gsn_concoct)) < 2)
-   {
-     send_to_char("Do what?\n\r",ch);
-     return;
-   }
+    if ( number_percent() > chance / 2 + 45 )
+    {
+        ROOM_INDEX_DATA *brewed_in = ch->in_room;
 
-   if( arg[0] == '\0' || arg2[0] == '\0')
-   {
-     send_to_char( "What ingredients to you want to combine?\n\r", ch );
-     return;
-   }
+        send_to_char( "Uh oh. Something isn't right.\n\r", ch );
+        act( "The cauldron explodes its noxious contents all over $n!", ch,
+             NULL, NULL, TO_ROOM );
+        check_improve( ch, gsn_concoct, false, 5 );
+        /* Hurting yourself always reports a landed blow, so this read
+           "killed" every time and the ingredients survived every
+           explosion: a failed brew cost nothing (2026-10-04). */
+        damage( ch, ch, dice( 2, 10 ), gsn_concoct, DAM_FIRE );
+        if ( !gone_after_blow( ch, brewed_in ) )
+        {
+            extract_obj( parts[0] );
+            extract_obj( parts[1] );
+            save_char_obj( ch );
+        }
+        /* if ch was killed, make_corpse already moved them to the corpse */
+        return;
+    }
 
-   if ( ( pObj_one = get_obj_carry( ch, arg ) ) == NULL )
-   {
-     send_to_char( "You are not carrying that.\n\r", ch );
-     return;
-   }
-
-   if ( ( pObj_two = get_obj_carry( ch, arg2 ) ) == NULL )
-   {
-     send_to_char( "You are not carrying that.\n\r", ch );
-     return;
-   }
-
-   if( pObj_one == pObj_two)
-   {
-     send_to_char("You can't use two of the same components.\n\r",ch);
-     return;
-   }
-
-   if( pObj_one->item_type != ITEM_SPELL_COMPONENT
-   ||  pObj_two->item_type != ITEM_SPELL_COMPONENT)
-   {
-     send_to_char("That's not a spell ingredient.\n\r",ch);
-     return;
-   }
-
-
-   if(crafting_pair_matches(pObj_one, pObj_two, 60, 64))
-   {
-     potion = create_object(get_obj_index(75), ch->level);
-     slot_one = skill_lookup("fire shield");
-     free_string( potion->short_descr );
-     snprintf(buf, sizeof buf,"a flaming red potion");
-     potion->short_descr = str_dup( buf );
-     free_string( potion->name );
-     snprintf(buf, sizeof buf,"flaming red potion");
-     potion->name = str_dup( buf );
-     found = true;
-   }
-
-   if(crafting_pair_matches(pObj_one, pObj_two, 63, 66))
-   {
-     potion = create_object(get_obj_index(75), ch->level);
-     slot_one = skill_lookup("cancellation");
-     slot_two = skill_lookup("heal");
-     slot_three = skill_lookup("restore mana");
-     free_string( potion->short_descr );
-     snprintf(buf, sizeof buf,"a colorless potion");
-     potion->short_descr = str_dup( buf );
-     free_string( potion->name );
-     snprintf(buf, sizeof buf,"colorless potion");
-     potion->name = str_dup( buf );
-     found = true;
-   }
-
-   if(crafting_pair_matches(pObj_one, pObj_two, 61, 73))
-   {
-     potion = create_object(get_obj_index(75), ch->level);
-     slot_one = skill_lookup("restore mana");
-     slot_two = skill_lookup("restore mana");
-     slot_three = skill_lookup("restore mana");
-     free_string( potion->short_descr );
-     snprintf(buf, sizeof buf,"a pinkish potion ");
-     potion->short_descr = str_dup( buf );
-     free_string( potion->name );
-     snprintf(buf, sizeof buf,"pinkish potion");
-     potion->name = str_dup( buf );
-     found = true;
-   }
-
-   if(crafting_pair_matches(pObj_one, pObj_two, 55, 59))
-   {
-     potion = create_object(get_obj_index(75), ch->level);
-     slot_one = skill_lookup("sanctuary");
-     slot_two = skill_lookup("heal");
-     free_string( potion->short_descr );
-     snprintf(buf, sizeof buf,"a white potion");
-     potion->short_descr = str_dup( buf );
-     free_string( potion->name );
-     snprintf(buf, sizeof buf,"white potion");
-     potion->name = str_dup( buf );
-     found = true;
-   }
-
-   if(crafting_pair_matches(pObj_one, pObj_two, 62, 56))
-   {
-     potion = create_object(get_obj_index(75), ch->level);
-     slot_one = skill_lookup("heal");
-     slot_two = skill_lookup("pass door");
-     free_string( potion->short_descr );
-     snprintf(buf, sizeof buf,"a clear potion");
-     potion->short_descr = str_dup( buf );
-     free_string( potion->name );
-     snprintf(buf, sizeof buf,"clear potion");
-     potion->name = str_dup( buf );
-     found = true;
-   }
-
-   if(crafting_pair_matches(pObj_one, pObj_two, 54, 69))
-   {
-     potion = create_object(get_obj_index(75), ch->level);
-     slot_one = skill_lookup("heal");
-     slot_two = skill_lookup("heal");
-     free_string( potion->short_descr );
-     snprintf(buf, sizeof buf,"a yellowish potion");
-     potion->short_descr = str_dup( buf );
-     free_string( potion->name );
-     snprintf(buf, sizeof buf,"yellowish potion");
-     potion->name = str_dup( buf );
-     found = true;
-   }
-
-   if(crafting_pair_matches(pObj_one, pObj_two, 67, 65))
-   {
-     potion = create_object(get_obj_index(75), ch->level);
-     slot_one = skill_lookup("heal");
-     slot_two = skill_lookup("heal");
-     slot_three = skill_lookup("sanctuary");
-     free_string( potion->short_descr );
-     snprintf(buf, sizeof buf,"a pale potion");
-     potion->short_descr = str_dup( buf );
-     free_string( potion->name );
-     snprintf(buf, sizeof buf,"pale potion");
-     potion->name = str_dup( buf );
-     found = true;
-   }
-
-   if(crafting_pair_matches(pObj_one, pObj_two, 70, 71))
-   {
-     potion = create_object(get_obj_index(75), ch->level);
-     slot_one = skill_lookup("cure critical");
-     slot_two = skill_lookup("heal");
-     slot_three = skill_lookup("sanctuary");
-     free_string( potion->short_descr );
-     snprintf(buf, sizeof buf,"a blue potion");
-     potion->short_descr = str_dup( buf );
-     free_string( potion->name );
-     snprintf(buf, sizeof buf,"blue potion");
-     potion->name = str_dup( buf );
-     found = true;
-   }
-
-   if(crafting_pair_matches(pObj_one, pObj_two, 55, 68))
-   {
-     potion = create_object(get_obj_index(75), ch->level);
-     slot_one = skill_lookup("heal");
-     slot_two = skill_lookup("heal");
-     slot_three = skill_lookup("heal");
-     free_string( potion->short_descr );
-     snprintf(buf, sizeof buf,"a bright white potion");
-     potion->short_descr = str_dup( buf );
-     free_string( potion->name );
-     snprintf(buf, sizeof buf,"bright white potion");
-     potion->name = str_dup( buf );
-     found = true;
-   }
-
-   if(crafting_pair_matches(pObj_one, pObj_two, 58, 72))
-   {
-     potion = create_object(get_obj_index(75), ch->level);
-     slot_one = skill_lookup("mass heal");
-     slot_two = skill_lookup("mass sanctuary");
-     slot_three = skill_lookup("power gloves");
-     free_string( potion->short_descr );
-     snprintf(buf, sizeof buf,"a softly glowing potion");
-     potion->short_descr = str_dup( buf );
-     free_string( potion->name );
-     snprintf(buf, sizeof buf,"softly glowing potion");
-     potion->name = str_dup( buf );
-     found = true;
-   }
-
-   if(found)
-   {
-     send_to_char("You pull out your equipment and begin to concoct a potion.\n\r",ch);
-     act("$n lights a small fire and places a cauldron of water on it to boil.",
-	  ch,NULL,NULL,TO_ROOM);
-     act("As the water begins to bubble and boil, $n then adds",ch,
-	  NULL,NULL,TO_ROOM);
-     snprintf(buf, sizeof buf,"%s and %s to the mixture.",pObj_one->short_descr,
-	    pObj_two->short_descr);
-     act(buf,ch,NULL,NULL,TO_ROOM);
-     act("$n then says a few arcane words over it as the contents begin to",ch,
-	  NULL,NULL,TO_ROOM);
-
-     act("froth and smoke.",ch,
-	  NULL,NULL,TO_ROOM);
-
-
-     if( number_percent () > chance / 2 + 45 )
-     {
-       send_to_char("Uh oh. Something isn't right.\n\r",ch);
-       act("The cauldron explodes it's noxious contents all over $n!",ch,
-	NULL,NULL,TO_ROOM);
-       extract_obj( potion );
-       potion = NULL;
-       {
-           ROOM_INDEX_DATA *brewed_in = ch->in_room;
-
-           /* Hurting yourself always reports a landed blow, so this read
-              "killed" every time and the ingredients survived every
-              explosion: a failed brew cost nothing (2026-10-04). */
-           damage( ch, ch, dice(2,10), gsn_concoct, DAM_FIRE );
-           if ( !gone_after_blow( ch, brewed_in ) )
-           {
-               /* ch survived; extract the spent ingredients */
-               extract_obj( pObj_one );
-               extract_obj( pObj_two );
-               save_char_obj(ch);
-           }
-       }
-       /* if ch was killed, make_corpse already moved objects to corpse */
-       return;
-     }
-
-     check_improve(ch,gsn_concoct,true,5);
-     potion->value[0] = ch->level;
-     potion->value[1] = slot_one;
-     if(slot_two > 0)
-	potion->value[2] = slot_two;
-     if(slot_three > 0)
-	potion->value[3] = slot_three;
-     obj_to_char(potion,ch);
-     achievement_record_event(ch, ACHIEVEMENT_EVENT_CONCOCT, true);
-   }
-   else
-   {
-     send_to_char("Combining those ingredients won't do anything.\n\r",ch);
-     return;
-   }
-
-   extract_obj( pObj_one );
-   extract_obj( pObj_two );
-   save_char_obj(ch);
-   return;
+    if ( ( potion = craft_product( ch, recipe, false ) ) == NULL )
+    {
+        send_to_char( "You have no flask to pour it into.\n\r", ch );
+        return;
+    }
+    check_improve( ch, gsn_concoct, true, 5 );
+    extract_obj( parts[0] );
+    extract_obj( parts[1] );
+    act( "The mixture settles, and you pour off $p.", ch, potion, NULL, TO_CHAR );
+    craft_succeeded( ch, recipe, potion );
+    save_char_obj( ch );
 }
 
 void do_scribe( CHAR_DATA *ch, char *argument )
 {
-   OBJ_DATA *pObj_one, *pObj_two, *pObj_three;
-   OBJ_DATA *scroll = NULL;
-   int chance;
-   int spell_one = 0;
-   int spell_two = 0;
-   int spell_three = 0;
-   char arg[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char arg3[MAX_INPUT_LENGTH];
-   char buf[MAX_STRING_LENGTH];
-   bool found = false;
-   bool farslay_scroll = false;
+    OBJ_DATA *parts[3];
+    const CRAFT_RECIPE *recipe;
+    OBJ_DATA *scroll;
+    int chance;
 
-   if(IS_NPC(ch) || (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
-      return;
+    if ( !craft_gather( ch, gsn_scribe, argument, 3, ITEM_SPELL_COMPONENT, parts ) )
+        return;
+    if ( ( recipe = craft_find( CRAFT_SCRIBE, parts, 3 ) ) == NULL )
+    {
+        send_to_char( "Combining those ingredients won't make a usable ink.\n\r", ch );
+        return;
+    }
 
-   argument = one_argument (argument, arg);
-   argument = one_argument (argument, arg2);
-   argument = one_argument (argument, arg3);
+    chance = get_skill( ch, gsn_scribe );
+    WAIT_STATE( ch, skill_table[gsn_scribe].beats );
+    send_to_char( "You pull out your equipment and start work on the ink.\n\r", ch );
+    act( "$n pulls out $p and pours it into a bowl.", ch, parts[0], NULL, TO_ROOM );
+    act( "Stirring it, $e adds a pinch of $p.", ch, parts[1], NULL, TO_ROOM );
+    act( "$e then mumbles some strange syllables and the mixture begins to smoke.",
+         ch, NULL, NULL, TO_ROOM );
+    act( "Ever so carefully, $n then adds $p to the bowl.", ch, parts[2], NULL, TO_ROOM );
+    act( "A brief flash of light follows the addition of the final ingredient.", ch,
+         NULL, NULL, TO_ROOM );
 
-   if(( chance = get_skill(ch,gsn_scribe)) < 2)
-   {
-     send_to_char("Do what?\n\r",ch);
-     return;
-   }
+    if ( number_percent() > chance / 2 + 45 )
+    {
+        send_to_char( "You measured out the wrong amount of liquids.\n\r", ch );
+        act( "$n throws the mix on the ground, cussing about random chance!", ch,
+             NULL, NULL, TO_ROOM );
+        extract_obj( parts[0] );
+        extract_obj( parts[1] );
+        extract_obj( parts[2] );
+        check_improve( ch, gsn_scribe, false, 5 );
+        save_char_obj( ch );
+        return;
+    }
 
-   if( arg[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0')
-   {
-     send_to_char( "What ingredients to you want to combine?\n\r", ch );
-     return;
-   }
-
-   if ( ( pObj_one = get_obj_carry( ch, arg ) ) == NULL )
-   {
-     send_to_char( "You are not carrying that.\n\r", ch );
-     return;
-   }
-
-   if ( ( pObj_two = get_obj_carry( ch, arg2 ) ) == NULL )
-   {
-     send_to_char( "You are not carrying that.\n\r", ch );
-     return;
-   }
-
-   if ( ( pObj_three = get_obj_carry( ch, arg3 ) ) == NULL )
-   {
-     send_to_char( "You are not carrying that.\n\r", ch );
-     return;
-   }
-
-   if( pObj_one == pObj_two || pObj_one == pObj_three
-    || pObj_two == pObj_three)
-   {
-     send_to_char("You can't use two of the same components.\n\r",ch);
-     return;
-   }
-
-   if( pObj_one->item_type != ITEM_SPELL_COMPONENT
-   ||  pObj_two->item_type != ITEM_SPELL_COMPONENT
-   ||  pObj_three->item_type != ITEM_SPELL_COMPONENT)
-   {
-     send_to_char("That's not a spell ingredient.\n\r",ch);
-     return;
-   }
-
-
-   if(crafting_trio_matches(pObj_one, pObj_two, pObj_three, 80, 84, 76))
-   {
-     scroll = create_object(get_obj_index(90), ch->level);
-     spell_one = skill_lookup("remove align");
-     free_string( scroll->short_descr );
-     snprintf(buf, sizeof buf,"a blank scroll");
-     scroll->short_descr = str_dup( buf );
-     free_string( scroll->name );
-     snprintf(buf, sizeof buf,"blank scroll");
-     scroll->name = str_dup( buf );
-     found = true;
-     snprintf(buf, sizeof buf,"A remove align scroll may have been created by %s",ch->name);
-     log_string(buf);
-     wizinfo(buf,LEVEL_IMMORTAL);
-   }
-
-   if(crafting_trio_matches(pObj_one, pObj_two, pObj_three, 83, 88, 77))
-   {
-     scroll = create_object(get_obj_index(90), ch->level);
-     spell_one = skill_lookup("fire shield");
-     spell_two = skill_lookup("sanctuary");
-     spell_three = skill_lookup("restore mana");
-     free_string( scroll->short_descr );
-     snprintf(buf, sizeof buf,"a redish-white scroll");
-     scroll->short_descr = str_dup( buf );
-     free_string( scroll->name );
-     snprintf(buf, sizeof buf,"redish-white scroll");
-     scroll->name = str_dup( buf );
-     found = true;
-   }
-
-   if(crafting_trio_matches(pObj_one, pObj_two, pObj_three, 78, 81, 79))
-   {
-     scroll = create_object(get_obj_index(90), ch->level);
-     spell_one = skill_lookup("power gloves");
-     spell_two = skill_lookup("sanctuary");
-     spell_three = skill_lookup("heal");
-     free_string( scroll->short_descr );
-     snprintf(buf, sizeof buf,"a blinding white scroll");
-     scroll->short_descr = str_dup( buf );
-     free_string( scroll->name );
-     snprintf(buf, sizeof buf,"blinding white scroll");
-     scroll->name = str_dup( buf );
-     found = true;
-   }
-
-   if(crafting_trio_matches(pObj_one, pObj_two, pObj_three, 84, 78, 87))
-   {
-     scroll = create_object(get_obj_index(90), ch->level);
-     spell_one = skill_lookup("restore mana");
-     spell_two = skill_lookup("mass sanctuary");
-     spell_three = skill_lookup("restore mana");
-     free_string( scroll->short_descr );
-     snprintf(buf, sizeof buf,"a yellow scroll");
-     scroll->short_descr = str_dup( buf );
-     free_string( scroll->name );
-     snprintf(buf, sizeof buf,"yellow scroll");
-     scroll->name = str_dup( buf );
-     found = true;
-   }
-
-
-      if(crafting_trio_matches(pObj_one, pObj_two, pObj_three, 77, 76, 88))
-      {
-        scroll = create_object(get_obj_index(90), ch->level);
-        spell_one = skill_lookup("vengence");
-        free_string( scroll->short_descr );
-        snprintf(buf, sizeof buf,"a deadly black scroll");
-        scroll->short_descr = str_dup( buf );
-        free_string( scroll->name );
-        snprintf(buf, sizeof buf,"deadly black scroll");
-        scroll->name = str_dup( buf );
-        found = true;
-        farslay_scroll = true;
-        snprintf(buf, sizeof buf,"Vengence may soon fall upon you from %s!", ch->name);
-        log_string(buf);
-        wizinfo(buf,LEVEL_IMMORTAL);
-      }
-
-
-   if(found)
-   {
-     send_to_char("You pull out your equipment and start work on the ink.\n\r",ch);
-     act("$n pulls out $p and pours it into a bowl.",
-	  ch,pObj_one,NULL,TO_ROOM);
-     act("Stirring it, $e adds a pinch of $p.",ch,
-	  pObj_two,NULL,TO_ROOM);
-     act("$e then mumbles some strange syllables and the mixture begins to smoke.",ch,
-	  NULL,NULL,TO_ROOM);
-     act("Ever so carefully, $n then carefully adds $p to the bowl.",ch,
-	  pObj_three,NULL,TO_ROOM);
-     act("A brief flash of light follows the addition of the final ingredient.",ch,
-	  NULL,NULL,TO_ROOM);
-
-
-     if( number_percent () > chance / 2 + 45 )
-     {
-       send_to_char("You measured out the wrong amount of liquids.\n\r",ch);
-       act("$n throws the mix on the ground, cussing about random chance!",ch,
-	NULL,NULL,TO_ROOM);
-       extract_obj( scroll );
-       scroll = NULL;
-       extract_obj( pObj_one );
-       extract_obj( pObj_two );
-       extract_obj( pObj_three);
-       save_char_obj(ch);
-       return;
-     }
-     send_to_char("Success!!! The ink will work!\n\r",ch);
-     send_to_char("You get out your quill and begin writting the spells with the ink.\n\r",ch);
-     act("Smiling gleefully, $n pulls out a sheet of vellum and writes out the spells.",ch,
-	  NULL,NULL,TO_ROOM);
-     check_improve(ch,gsn_scribe,true,5);
-     scroll->value[0] = ch->level;
-     scroll->value[1] = spell_one;
-     if(spell_two > 0)
-       scroll->value[2] = spell_two;
-     if(spell_three > 0)
-       scroll->value[3] = spell_three;
-     obj_to_char(scroll,ch);
-     achievement_record_event(ch, ACHIEVEMENT_EVENT_SCRIBE, true);
-     if (farslay_scroll)
-       achievement_record_event(ch, ACHIEVEMENT_EVENT_FARSLAY_SCROLL, true);
-   }
-   else
-   {
-     send_to_char("Combining those ingredients won't make a useable ink.\n\r",ch);
-     return;
-   }
-
-   extract_obj( pObj_one );
-   extract_obj( pObj_two );
-   extract_obj( pObj_three );
-   save_char_obj(ch);
-   return;
+    if ( ( scroll = craft_product( ch, recipe, false ) ) == NULL )
+    {
+        send_to_char( "You have no vellum to write on.\n\r", ch );
+        return;
+    }
+    send_to_char( "Success!!! The ink will work!\n\r", ch );
+    send_to_char( "You get out your quill and begin writing the spells with the ink.\n\r", ch );
+    act( "Smiling gleefully, $n pulls out a sheet of vellum and writes out the spells.",
+         ch, NULL, NULL, TO_ROOM );
+    check_improve( ch, gsn_scribe, true, 5 );
+    extract_obj( parts[0] );
+    extract_obj( parts[1] );
+    extract_obj( parts[2] );
+    craft_succeeded( ch, recipe, scroll );
+    save_char_obj( ch );
 }
 
 void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
@@ -4246,6 +3892,7 @@ void spell_create_skeleton( int sn, int level, CHAR_DATA *ch, void *vo )
         send_to_char("Nothing answers you.\n\r",ch);
         return;
     }
+    achievement_record_event( ch, ACHIEVEMENT_EVENT_RAISE_SKELETON, true );
 
     if ( corpse != NULL )
     {
@@ -4288,6 +3935,7 @@ void spell_create_wraith( int sn, int level, CHAR_DATA *ch, void *vo )
         send_to_char("Nothing answers you.\n\r",ch);
         return;
     }
+    achievement_record_event( ch, ACHIEVEMENT_EVENT_RAISE_WRAITH, true );
 
     if ( corpse != NULL )
     {
@@ -4330,6 +3978,7 @@ void spell_create_vampire( int sn, int level, CHAR_DATA *ch, void *vo )
         send_to_char("Nothing answers you.\n\r",ch);
         return;
     }
+    achievement_record_event( ch, ACHIEVEMENT_EVENT_RAISE_VAMPIRE, true );
 
     if ( corpse != NULL )
     {

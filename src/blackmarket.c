@@ -1137,6 +1137,10 @@ void black_market_record( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *obj )
     if ( ch->pcdata->black_market_stock != bm_stock_id
     ||   ch->pcdata->black_market_bought == NULL )
     {
+        /* Under the Counter: the first purchase from a new stock is a
+           new visit. Counted before the save below writes it down. */
+        if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+            achievement_count( ch, ACH_CTR_VESH_VISITS, 1 );
         free_string( ch->pcdata->black_market_bought );
         ch->pcdata->black_market_bought = str_dup( "" );
         ch->pcdata->black_market_stock = bm_stock_id;
@@ -1146,6 +1150,15 @@ void black_market_record( CHAR_DATA *ch, CHAR_DATA *keeper, OBJ_DATA *obj )
               obj->pIndexData->vnum );
     free_string( ch->pcdata->black_market_bought );
     ch->pcdata->black_market_bought = str_dup( buf );
+    if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    {
+        /* Unusual Inventory counts kinds of item, and Sold Out wants the
+           whole of a full stock -- a smaller one does not qualify. */
+        achievement_note( ch, ACH_SET_VESH_ITEMS, obj->pIndexData->vnum );
+        if ( bm_stock_count( keeper ) >= BM_STOCK_MAX
+        &&   bm_bought_everything( ch, keeper ) )
+            achievement_record_event( ch, ACHIEVEMENT_EVENT_VESH_SOLD_OUT, true );
+    }
     /* Written at once: a crash between the purchase and the next save
        must not hand the allowance back. */
     save_char_obj( ch );

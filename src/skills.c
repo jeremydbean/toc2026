@@ -866,6 +866,11 @@ void check_improve( CHAR_DATA *ch, int sn, bool success, int multiplier )
     if ( dummy_blocks_improve( ch ) )
 	return;
 
+    /* A psionic power that worked counts toward Four Corners of the Mind
+       even at 100%, where nothing below is reached. */
+    if ( success && ch->pcdata->learned[sn] > 0 )
+	achievement_record_psionic( ch, sn );
+
     if (ch->level < skill_table[sn].skill_level[ch->class]
     ||  skill_table[sn].rating[ch->class] == 0
     ||  ch->pcdata->learned[sn] == 0
@@ -894,6 +899,8 @@ void check_improve( CHAR_DATA *ch, int sn, bool success, int multiplier )
 	    send_to_char(buf,ch);
 	    ch->pcdata->learned[sn]++;
 	    gain_exp(ch,2 * skill_table[sn].rating[ch->class]);
+	    if ( ch->pcdata->learned[sn] >= 100 )
+		achievement_check_state( ch, true );
 	}
     }
 
@@ -909,6 +916,8 @@ void check_improve( CHAR_DATA *ch, int sn, bool success, int multiplier )
 	    ch->pcdata->learned[sn] += number_range(1,3);
 	    ch->pcdata->learned[sn] = UMIN(ch->pcdata->learned[sn],100);
 	    gain_exp(ch,2 * skill_table[sn].rating[ch->class]);
+	    if ( ch->pcdata->learned[sn] >= 100 )
+		achievement_check_state( ch, true );
 	}
     }
 }

@@ -1754,11 +1754,17 @@ Syntax: concoct <component> <component>
 
 BREW turns one carried herb into an herbal tea. CONCOCT combines two carried
 spell components into a potion when they form a valid recipe. Component order
-does not matter. Failed work on a valid recipe consumes its ingredients;
-unknown combinations are left untouched. Both commands require the matching
-crafting skill.
+does not matter. An herb with no known brew, or components that make nothing,
+are refused and left untouched. A real attempt takes a few seconds of work;
+failing it consumes the ingredients, and a botched potion burns you. A
+belladonna tea now and then brews into something you would not want to drink.
 
-See also: SCRIBE, QUAFF
+What you make is made at your level, and nobody below that level can drink
+it. Herbs and components turn up on the ground around the world and wither
+after about twelve hours. Every successful brew counts toward the crafting
+achievements, and every different recipe toward A Varied Recipe Book.
+
+See also: SCRIBE, QUAFF, ACHIEVEMENTS
 ~
 
 0 SCRIBE~
@@ -1766,11 +1772,14 @@ Syntax: scribe <component> <component> <component>
 
 SCRIBE combines three carried spell components into a single-use magical
 scroll when they form a valid recipe. Component order does not matter, and
-you do not need a separate blank scroll or quill. Failed work on a valid
-recipe consumes its ingredients; unknown combinations are left untouched.
-The resulting scroll is cast at your current level.
+you do not need a separate blank scroll or quill. Components that make no ink
+are refused and left untouched; a real attempt takes a few seconds, and
+failing it consumes them. You must be awake to scribe.
 
-See also: BREW, RECITE
+The scroll is cast at your level and needs that level to read. A scroll whose
+spell works on an object asks for one: RECITE <scroll> <object>.
+
+See also: BREW, RECITE, ACHIEVEMENTS
 ~
 
 0 SHOOT~
@@ -3631,10 +3640,40 @@ the achievement system first records them because older player files did not
 retain those totals. Listed boss credit is shared with grouped players who are
 present in the boss room.
 
+Long views come in parts that fit the pager: ACHIEVEMENTS ALL 2 is the second
+part of the catalog, and any view or search takes a part number the same way.
+A hidden achievement is found by no search until you have earned it.
+
+Every achievement point is also a mark to spend: REDEEM shows how many you
+hold and what they buy. Spending marks never lowers your points.
+
 Achievement progress and earned dates are saved with your character. Use
 SCORE for a compact points total.
 
-See also: SCORE, QUEST, GROUP, HYRULE
+See also: SCORE, QUEST, GROUP, HYRULE, REDEEM
+~
+
+0 REDEEM MARKS~
+Syntax: redeem
+Syntax: redeem recall
+Syntax: redeem trophy <achievement>
+Syntax: redeem stash
+Syntax: redeem restring <weapon> <new name>
+
+Every achievement point you earn is also a mark. REDEEM spends marks on
+things that change how your character looks or save you time -- never on
+stats, coin, trains or the power of your gear. Spending marks never lowers
+your achievement points.
+
+  RECALL     10 marks   move your recall point again now, without waiting
+  TROPHY     25 marks   a keepsake trophy naming an achievement you earned
+  STASH      40 marks   25 more stash slots, up to the usual 500
+  RESTRING  100 marks   a new name for a weapon you carry
+
+A new weapon name runs from 4 to 45 plain characters, takes no colour, and
+must keep one of the weapon's old keywords so you can still GET and WIELD it.
+
+See also: ACHIEVEMENTS, STASH, RECALL
 ~
 
 0 COMMANDS~

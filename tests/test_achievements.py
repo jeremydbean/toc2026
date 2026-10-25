@@ -18,8 +18,8 @@ ENTRY_RE = re.compile(
     r'(?P<points>\d+),\s*'
     r'(?P<hidden>true|false),\s*'
     r'(?P<requirement>ACH_REQ_[A-Z_]+),\s*'
-    r'(?P<target>\d+L?|ACHIEVEMENT_EVENT_[A-Z_]+),\s*'
-    r'(?P<auxiliary>\d+)\s*\},?\s*$',
+    r'(?P<target>\d+L?|ACHIEVEMENT_EVENT_[A-Z_]+(?: \+ \d+)?),\s*'
+    r'(?P<auxiliary>-?\d+|ACH_[A-Z0-9_]+)\s*\},?\s*$',
     re.MULTILINE,
 )
 
@@ -39,14 +39,18 @@ class AchievementSystemTests(unittest.TestCase):
         )
 
     def test_catalog_has_stable_unique_keys_and_fits_reserved_capacity(self) -> None:
-        catalog_lines = re.findall(r'^[ \t]*\{[ \t]*"', self.source, re.MULTILINE)
+        table = self.source[self.source.index("achievement_table[] ="):]
+        table = table[:table.index("\n};\n")]
+        catalog_lines = re.findall(r'^[ \t]*\{[ \t]*"', table, re.MULTILINE)
         self.assertEqual(len(self.entries), len(catalog_lines))
         # A tripwire, not a limit: it should move only when somebody
         # meant to move it. 127 until 2026-09-28, when exploration went
         # from 3 to 22 and combat from 9 to 15; 196 from 2026-10-01 with
         # Top of the Board, for the training yard's benchmark record;
-        # 203 from 2026-10-20 with six daily-quest feats and Well Rested.
-        self.assertEqual(len(self.entries), 203)
+        # 203 from 2026-10-20 with six daily-quest feats and Well Rested;
+        # 378 from 2026-10-25 with the expansion's 175
+        # (tests/test_achievement_expansion.py holds those).
+        self.assertEqual(len(self.entries), 378)
 
         keys = [entry["key"] for entry in self.entries]
         self.assertEqual(len(keys), len(set(keys)))
@@ -78,10 +82,11 @@ class AchievementSystemTests(unittest.TestCase):
         self.assertIn("achievement_progress", self.source)
         self.assertIn("achievement_format_date", self.source)
         # Another tripwire. 16 until 2026-09-29, when the bank, purse
-        # and casino ladders each gained rungs above their old top.
+        # and casino ladders each gained rungs above their old top; 37
+        # from 2026-10-25 with Vesh, the stash and repairs.
         self.assertEqual(
             sum(entry["category"] == "ACH_CAT_ECONOMY" for entry in self.entries),
-            23,
+            37,
         )
 
     def test_summary_is_compact_and_paged_colors_are_converted(self) -> None:
@@ -117,12 +122,22 @@ class AchievementSystemTests(unittest.TestCase):
             if entry["requirement"] == "ACH_REQ_BOSS"
             and entry["category"] == "ACH_CAT_ENCOUNTERS"
         ]
-        self.assertEqual(len(entries), 17)
+        # 17 until 2026-10-25, when five reset bosses and the two holiday
+        # bosses joined. The holiday bosses have no reset: season.c sets
+        # them down in the Oak Tree Square (EVENT_BOSS_SPAWN_ROOM).
+        self.assertEqual(len(entries), 24)
+        seasonal = {29910, 29911}
 
         for entry in entries:
             with self.subTest(key=entry["key"]):
                 mob = self.area_parser.mobiles[int(entry["target"])]
-                self.assertIn(int(entry["auxiliary"]), mob.spawn_rooms)
+                room = int(entry["auxiliary"])
+                if mob.vnum in seasonal:
+                    self.assertEqual(room, 2401)
+                    continue
+                # A negative room is "anywhere in this room's area": the
+                # Prince is WIMPY and may die where he fled to.
+                self.assertIn(abs(room), mob.spawn_rooms)
                 self.assertGreaterEqual(mob.level, 57)
 
     def test_rare_collection_items_exist(self) -> None:
@@ -132,7 +147,8 @@ class AchievementSystemTests(unittest.TestCase):
             if entry["requirement"] == "ACH_REQ_OBJECT"
             and entry["category"] == "ACH_CAT_COLLECTION"
         ]
-        self.assertEqual(len(entries), 17)
+        # 17 until 2026-10-25; the old metas still count those 17 alone.
+        self.assertEqual(len(entries), 33)
         for entry in entries:
             with self.subTest(key=entry["key"]):
                 self.assertIn(int(entry["target"]), self.area_parser.objects)
@@ -228,7 +244,7 @@ class AchievementSystemTests(unittest.TestCase):
         ):
             with self.subTest(event=event):
                 self.assertIn(event, magic2)
-        self.assertIn('spell_one = skill_lookup("vengence")', magic2)
+        self.assertIn('{ "vengence", NULL, NULL }, "deadly black"', magic2)
         self.assertNotIn('skill_lookup("csst")', magic2)
         self.assertIn("achievement_check_state(ch, true)", update)
         self.assertIn("ACHIEVEMENT_EVENT_DEATH_TRAP", update)

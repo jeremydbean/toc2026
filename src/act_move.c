@@ -2056,6 +2056,10 @@ void do_open( CHAR_DATA *ch, char *argument )
 	REMOVE_BIT(obj->value[1], CONT_CLOSED);
 	send_to_char( "Ok.\n\r", ch );
 	act( "$n opens $p.", ch, obj, NULL, TO_ROOM );
+	/* A dungeon's treasure chest, opened by one who beat its guardian. */
+	if ( obj->pIndexData != NULL
+	&&   obj->pIndexData->vnum >= 30640 && obj->pIndexData->vnum <= 30648 )
+	    achievement_record_hyrule_chest( ch, obj->pIndexData->vnum - 30640 );
 	return;
     }
 

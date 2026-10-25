@@ -1648,6 +1648,7 @@ void spell_cure_blindness( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if (check_dispel(level,victim,gsn_blindness))
     {
+        achievement_record_cure( ch, victim );
 	send_to_char( "Your vision returns!\n\r", victim );
 	act("$n is no longer blinded.",victim,NULL,NULL,TO_ROOM);
     }
@@ -1671,7 +1672,12 @@ void spell_cure_critical( int sn, int level, CHAR_DATA *ch, void *vo )
     heal /=3;
     }
 
-    victim->hit = (int)(UMIN( victim->hit + heal, victim->max_hit ));
+    {
+	int before = victim->hit;
+
+	victim->hit = (int)(UMIN( victim->hit + heal, victim->max_hit ));
+	achievement_record_heal( ch, victim, before );
+    }
     update_pos( victim );
     send_to_char( "You feel better!\n\r", victim );
     if ( ch != victim )
@@ -1696,6 +1702,7 @@ void spell_cure_disease( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if (check_dispel(level,victim,gsn_plague))
     {
+        achievement_record_cure( ch, victim );
 	send_to_char("Your sores vanish.\n\r",victim);
 	act("$n looks relieved as $s sores vanish.",victim,NULL,NULL,TO_ROOM);
     }
@@ -1715,7 +1722,12 @@ void spell_cure_light( int sn, int level, CHAR_DATA *ch, void *vo )
     int heal;
 
     heal = dice(1, 8) + level / 3;
-    victim->hit = (int)(UMIN( victim->hit + heal, victim->max_hit ));
+    {
+	int before = victim->hit;
+
+	victim->hit = (int)(UMIN( victim->hit + heal, victim->max_hit ));
+	achievement_record_heal( ch, victim, before );
+    }
     update_pos( victim );
     send_to_char( "You feel better!\n\r", victim );
     if ( ch != victim )
@@ -1741,6 +1753,7 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if (check_dispel(level,victim,gsn_poison))
     {
+        achievement_record_cure( ch, victim );
         send_to_char("A warm feeling runs through your body.\n\r",victim);
 	act("$n looks much better.",victim,NULL,NULL,TO_ROOM);
     }
@@ -1762,7 +1775,12 @@ void spell_cure_serious( int sn, int level, CHAR_DATA *ch, void *vo )
     heal /=5;
     }
 
-    victim->hit = (int)(UMIN( victim->hit + heal, victim->max_hit ));
+    {
+	int before = victim->hit;
+
+	victim->hit = (int)(UMIN( victim->hit + heal, victim->max_hit ));
+	achievement_record_heal( ch, victim, before );
+    }
     update_pos( victim );
     send_to_char( "You feel better!\n\r", victim );
     if ( ch != victim )
@@ -3290,7 +3308,12 @@ void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
     heal /=3;
     }
 
-    victim->hit = (int)(UMIN( victim->hit + heal, victim->max_hit ));
+    {
+	int before = victim->hit;
+
+	victim->hit = (int)(UMIN( victim->hit + heal, victim->max_hit ));
+	achievement_record_heal( ch, victim, before );
+    }
     update_pos( victim );
     send_to_char( "A warm feeling fills your body.\n\r", victim );
     if ( ch != victim )

@@ -67,6 +67,9 @@ static int gob_hp = 0;
 static bool gob_chased = false;
 /* Flights from blows since he appeared. */
 static int gob_flights = 0;
+/* Flights in this chase alone: since he last escaped by portal, drifted
+   or was born. The Chase Is On wants twelve of these. */
+static int gob_chase_flights = 0;
 /* The last blow, and the portal he is opening (0 when none). */
 static time_t gob_last_hit = 0;
 static time_t gob_portal_at = 0;
@@ -222,6 +225,7 @@ static void gob_teleport( CHAR_DATA *gob, AREA_DATA *avoid, const char *why )
     {
         gob_chased = false;
         gob_portal_at = 0;
+        gob_chase_flights = 0;
         gob_next_drift = current_time + number_range( GOBLIN_DRIFT_MIN, GOBLIN_DRIFT_MAX );
     }
     if ( to == NULL || to == gob->in_room )
@@ -263,6 +267,7 @@ bool treasure_goblin_spawn( ROOM_INDEX_DATA *room )
          treasure_goblin, NULL, NULL, TO_ROOM );
     gob_hp = treasure_goblin->max_hit;
     gob_flights = 0;
+    gob_chase_flights = 0;
     gob_chased = false;
     gob_area = NULL;                /* a new goblin starts a fresh clock */
     gob_portal_at = 0;
@@ -424,6 +429,9 @@ void treasure_goblin_struck( CHAR_DATA *ch, CHAR_DATA *gob )
             gob_portal_at = 0;
             act( "The half-open portal collapses as $n yelps in pain!",
                  gob, NULL, NULL, TO_ROOM );
+            /* Portal Denied: a player's own blow, not a pet's. */
+            if ( ch != NULL && !IS_NPC(ch) && !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+                achievement_record_event( ch, ACHIEVEMENT_EVENT_GOBLIN_PORTAL_DENIED, true );
         }
     }
 
@@ -454,7 +462,10 @@ void treasure_goblin_struck( CHAR_DATA *ch, CHAR_DATA *gob )
     if ( gob->in_room == was_in )
         gob_teleport( gob, NULL, "nowhere to run" );
     if ( gob == treasure_goblin && gob->in_room != was_in )
+    {
         gob_flights++;
+        gob_chase_flights++;
+    }
 }
 
 /*
@@ -541,6 +552,17 @@ void treasure_goblin_slain( CHAR_DATA *ch, CHAR_DATA *gob )
               where, gob == treasure_goblin ? gob_flights : 0, price );
     log_string( line );
     wizinfo( line, LEVEL_IMMORTAL );
+
+    /* Follow the Money and The Chase Is On, for whoever was in at the
+       kill -- the real goblin only, and never a staff slay (the helpers
+       skip immortals). */
+    if ( gob == treasure_goblin && who != NULL && gob->in_room != NULL )
+    {
+        achievement_party_count( who, gob->in_room, ACH_CTR_GOBLIN_KILLS );
+        if ( gob_chase_flights >= 12 )
+            achievement_party_event( who, gob->in_room,
+                                     ACHIEVEMENT_EVENT_GOBLIN_LONG_CHASE );
+    }
 }
 
 /* Every mobile pulse, from update_handler. */

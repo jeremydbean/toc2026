@@ -3509,7 +3509,7 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
 	"herbal brewing",
 	{ 62, 62, 62, 62, 12, 62 },      { 8, 8, 8, 8, 3, 8},
 	spell_null,             TAR_IGNORE,             POS_RESTING,
-	&gsn_brew,              SLOT( 0),       0,      0,
+	&gsn_brew,              SLOT( 0),       0,      12,
 	"",                     "!Herbal Brewing!"
     },
 
@@ -3578,8 +3578,8 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
 	"concoct",
 	{ 17, 17, 62, 62, 62, 19 },      { 4, 4, 8, 8, 8, 5},
 	spell_null,             TAR_IGNORE,             POS_SLEEPING,
-	&gsn_concoct,              SLOT( 0),       0,      0,
-	"",                     "!Concoct!"
+	&gsn_concoct,              SLOT( 0),       0,      12,
+	"botched brew",         "!Concoct!"
     },
 
     {

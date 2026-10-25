@@ -362,6 +362,18 @@ static void quest_refusal_text( CHAR_DATA *ch, bool daily, char *buf, size_t siz
     }
 }
 
+/* Work Takes Me Places: the area the quest master named, from the room
+   the target stood in at assignment (questroom is never cleared). */
+static void quest_note_area( CHAR_DATA *ch )
+{
+    ROOM_INDEX_DATA *room;
+
+    if ( IS_NPC(ch) || IS_TRUSTED( ch, LEVEL_IMMORTAL ) || ch->questroom <= 0
+    ||   ( room = get_room_index( ch->questroom ) ) == NULL )
+        return;
+    achievement_note( ch, ACH_SET_QUEST_AREAS, achievement_area_id( room->area ) );
+}
+
 static void complete_daily_quest( CHAR_DATA *ch, CHAR_DATA *questman,
                                   int kills_min, int kills_max )
 {
@@ -373,6 +385,9 @@ static void complete_daily_quest( CHAR_DATA *ch, CHAR_DATA *questman,
 
     int streak_bonus = 0;
     bool paid;
+    /* A hunt ends with the quarry dead (questmob -1); a recovery with the
+       thing in hand. A Complete Assignment wants one of each. */
+    int kind = ch->questobj > 0 ? 2 : 1;
 
     quest_daily_rollover(ch);
     if ( ch->pcdata->daily_done < 100 )
@@ -405,8 +420,14 @@ static void complete_daily_quest( CHAR_DATA *ch, CHAR_DATA *questman,
     ch->questdaily = false;
     if ( ch->pcdata->session_quests < INT_MAX )
         ch->pcdata->session_quests++;
+    quest_note_area( ch );
     achievement_record_quest(ch);
     achievement_record_event(ch, ACHIEVEMENT_EVENT_DAILY_QUEST, true);
+    if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    {
+        achievement_count( ch, ACH_CTR_DAILY_QUESTS, 1 );
+        achievement_note( ch, ACH_SET_DAILY_KINDS, kind );
+    }
     if ( ch->pcdata->daily_done == DAILY_QUESTS_PER_DAY )
     {
         achievement_record_event(ch, ACHIEVEMENT_EVENT_DAILY_SET, true);
@@ -734,11 +755,19 @@ static void complete_automatic_quest_body( CHAR_DATA *ch, CHAR_DATA *questman,
     if ( ch->queststreak < SHRT_MAX )
         ch->queststreak++;
 
+    quest_note_area( ch );
     achievement_record_quest(ch);
     if ( completed_rush )
         achievement_record_event(ch, ACHIEVEMENT_EVENT_QUEST_RUSH, true);
     if ( completed_emergency )
         achievement_record_event(ch, ACHIEVEMENT_EVENT_QUEST_EMERGENCY, true);
+    if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    {
+        if ( completed_rush )
+            achievement_count( ch, ACH_CTR_RUSH_QUESTS, 1 );
+        if ( completed_emergency )
+            achievement_count( ch, ACH_CTR_EMERGENCY_QUESTS, 1 );
+    }
     if ( completed_last_minute )
         achievement_record_event(ch, ACHIEVEMENT_EVENT_QUEST_LAST_MINUTE, true);
 

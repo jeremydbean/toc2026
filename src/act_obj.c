@@ -835,6 +835,7 @@ void do_stash( CHAR_DATA *ch, char *argument )
                 send_to_char( "Nothing you are carrying can go in.\n\r", ch );
                 return;
             }
+            achievement_record_event( ch, ACHIEVEMENT_EVENT_STASH_DEPOSIT, true );
 
             snprintf( buf, sizeof(buf),
                 "You put %d thing%s away%s.\n\r", put, put == 1 ? "" : "s",
@@ -897,6 +898,7 @@ void do_stash( CHAR_DATA *ch, char *argument )
             obj->pIndexData->vnum );
         obj_from_char( obj );
         stash_receive( ch, obj );
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_STASH_DEPOSIT, true );
 
         /* At once. A stash written only at quit is a duplication bug
            waiting for a crash. */
@@ -952,6 +954,7 @@ void do_stash( CHAR_DATA *ch, char *argument )
             obj->short_descr, obj->pIndexData->vnum );
         act( "You take $p out of your stash.", ch, obj, NULL, TO_CHAR );
         act( "$n takes $p out of their stash.", ch, obj, NULL, TO_ROOM );
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_STASH_WITHDRAW, true );
 
         save_char_obj( ch );
         return;
@@ -1323,6 +1326,8 @@ void do_stash( CHAR_DATA *ch, char *argument )
         }
         send_to_char( buf, ch );
         act( "$n pays for more room at the altar.", ch, NULL, NULL, TO_ROOM );
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_STASH_EXPAND, true );
+        achievement_check_state( ch, true );
 
         save_char_obj( ch );
         return;
@@ -3209,6 +3214,13 @@ void do_eat( CHAR_DATA *ch, char *argument )
 	send_to_char("You are awarded 1 train.\n\r",ch);
 	ch->train = (sh_int)(ch->train + 1);
 	save_reward = true;
+	/* Seasoned Appetite, and A Slice of Progress for Valhalla's cake. */
+	if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+	{
+	    achievement_count( ch, ACH_CTR_TRAINING_FOODS, 1 );
+	    if ( obj->pIndexData != NULL && obj->pIndexData->vnum == 9955 )
+		achievement_record_event( ch, ACHIEVEMENT_EVENT_WEDDING_CAKE, true );
+	}
 	break;
     }
 
@@ -4164,6 +4176,27 @@ void do_recite( CHAR_DATA *ch, char *argument )
 	{
 	    send_to_char( "You can't find it.\n\r", ch );
 	    return;
+	}
+    }
+
+    /* A scroll whose spell works on an object -- the remove-align scroll
+       SCRIBE makes -- read at nobody, or at a person, used to say "You
+       can't do that." and crumble anyway. Ask for the object first. */
+    if ( obj == NULL )
+    {
+	int slot;
+
+	for ( slot = 1; slot <= 3; slot++ )
+	{
+	    int sn = (int) scroll->value[slot];
+
+	    if ( sn > 0 && sn < MAX_SKILL && skill_table[sn].name != NULL
+	    &&   skill_table[sn].target == TAR_OBJ_INV )
+	    {
+		act( "$p works on an object: RECITE it at something you carry.",
+		     ch, scroll, NULL, TO_CHAR );
+		return;
+	    }
 	}
     }
 
@@ -5604,6 +5637,8 @@ void do_burn( CHAR_DATA *ch, char *argument )
              ch, target, NULL, TO_CHAR );
         act( "$n burns away $p, revealing a hidden passage!",
              ch, target, NULL, TO_ROOM );
+        if ( IS_HYRULE_ROOM_VNUM( ch->in_room->vnum ) )
+            achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_BURN_BUSH, true );
         extract_obj( target );
     }
 }
@@ -5653,6 +5688,8 @@ void do_bomb( CHAR_DATA *ch, char *argument )
 
     if ( trigger_puzzle_manipulation( ch, target ) )
     {
+        if ( IS_HYRULE_ROOM_VNUM( ch->in_room->vnum ) )
+            achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_BOMB_WALL, true );
         act( "You set a bomb beside $p and dive aside. The blast opens a passage!",
              ch, target, NULL, TO_CHAR );
         act( "$n bombs $p, and the blast opens a passage!",
@@ -5872,7 +5909,11 @@ void do_play( CHAR_DATA *ch, char *argument )
     }
 
     if ( trigger_puzzle_manipulation( ch, target ) )
+    {
+        if ( IS_HYRULE_ROOM_VNUM( ch->in_room->vnum ) )
+            achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_DRAIN_LAKE, true );
         extract_obj( target );
+    }
 }
 
 void do_feed( CHAR_DATA *ch, char *argument )
@@ -5894,7 +5935,8 @@ void do_feed( CHAR_DATA *ch, char *argument )
            enemies turn to it (hyrule.c). The bait is kept. */
         if ( bait != NULL && is_name( argument, "bait" ) )
         {
-            hyrule_set_bait( ch, bait );
+            if ( hyrule_set_bait( ch, bait ) )
+                achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_BAIT_CALM, true );
             return;
         }
         send_to_char( "Nobody here seems interested in your provisions.\n\r", ch );
@@ -5909,6 +5951,8 @@ void do_feed( CHAR_DATA *ch, char *argument )
 
     if ( trigger_puzzle_manipulation( ch, target ) )
     {
+        if ( IS_HYRULE_ROOM_VNUM( ch->in_room->vnum ) )
+            achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_FEED_GORIYA, true );
         act( "You offer $p. The hungry guardian devours it and steps aside.",
              ch, bait, NULL, TO_CHAR );
         act( "$n feeds the hungry guardian, who steps aside.",
@@ -6289,6 +6333,11 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
        ch, NULL, NULL, TO_CHAR );
      act( "You hear a strange noise off in the distance.",
        ch, NULL, NULL, TO_ROOM );
+     /* Hyrule's push puzzles: a block over the stairs, a sleeping Armos. */
+     if ( obj->pIndexData != NULL && obj->pIndexData->vnum == 30513 )
+       achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_PUSH_BLOCK, true );
+     else if ( obj->pIndexData != NULL && obj->pIndexData->vnum == 30514 )
+       achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_MOVE_ARMOS, true );
    }
    else
      send_to_char("Nothing seems to happen.\n\r",ch);
@@ -6526,7 +6575,10 @@ static void repair_mend( CHAR_DATA *ch, CHAR_DATA *rpr, OBJ_DATA *obj, long cost
        owner's rule.  The old "breaks it on the 25th repair" path, which
        extracted the object outright, is gone. */
     {
-	spend_copper( ch, cost );
+	/* Good as New: a paid repair of something that needed it (both
+	   callers ask repair_needed first). */
+	if ( spend_copper( ch, cost ) && cost > 0 && !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+	    achievement_count( ch, ACH_CTR_REPAIRS, 1 );
         obj->condition = 100;
 
         /* check_shield_block, heat metal and acid breath file armour

@@ -156,8 +156,83 @@ typedef enum
     ACHIEVEMENT_EVENT_DAILY_STREAK_MONTH,
     ACHIEVEMENT_EVENT_DAILY_STREAK_HUNDRED,
     ACHIEVEMENT_EVENT_DAILY_TRAIN,
-    ACHIEVEMENT_EVENT_WELL_RESTED
+    ACHIEVEMENT_EVENT_WELL_RESTED,
+    /* 2026-10-25 expansion. Appended: the table stores these numbers. */
+    ACHIEVEMENT_EVENT_GOBLIN_PORTAL_DENIED,
+    ACHIEVEMENT_EVENT_GOBLIN_LONG_CHASE,
+    ACHIEVEMENT_EVENT_DRAGON_PASSENGER,
+    ACHIEVEMENT_EVENT_DRAGON_DISCRETION,
+    ACHIEVEMENT_EVENT_VESH_SOLD_OUT,
+    ACHIEVEMENT_EVENT_RAISE_SKELETON,
+    ACHIEVEMENT_EVENT_RAISE_WRAITH,
+    ACHIEVEMENT_EVENT_RAISE_VAMPIRE,
+    ACHIEVEMENT_EVENT_WEDDING_CAKE,
+    ACHIEVEMENT_EVENT_STASH_DEPOSIT,
+    ACHIEVEMENT_EVENT_STASH_WITHDRAW,
+    ACHIEVEMENT_EVENT_STASH_EXPAND,
+    ACHIEVEMENT_EVENT_WINGS_OF_MERCY,
+    ACHIEVEMENT_EVENT_DISASTER_FIRST,       /* + disaster type, see below */
+    ACHIEVEMENT_EVENT_DISASTER_LAST = ACHIEVEMENT_EVENT_DISASTER_FIRST + 15,
+    ACHIEVEMENT_EVENT_HYRULE_BOMB_WALL,
+    ACHIEVEMENT_EVENT_HYRULE_BURN_BUSH,
+    ACHIEVEMENT_EVENT_HYRULE_PUSH_BLOCK,
+    ACHIEVEMENT_EVENT_HYRULE_MOVE_ARMOS,
+    ACHIEVEMENT_EVENT_HYRULE_DRAIN_LAKE,
+    ACHIEVEMENT_EVENT_HYRULE_FEED_GORIYA,
+    ACHIEVEMENT_EVENT_HYRULE_WHITE_SWORD,
+    ACHIEVEMENT_EVENT_HYRULE_MAGICAL_SWORD,
+    ACHIEVEMENT_EVENT_HYRULE_HINT,
+    ACHIEVEMENT_EVENT_HYRULE_POLS_ARROW,
+    ACHIEVEMENT_EVENT_HYRULE_BOOMERANG_STUN,
+    ACHIEVEMENT_EVENT_HYRULE_DIGDOGGER_RECORDER,
+    ACHIEVEMENT_EVENT_HYRULE_DODONGO_BOMB,
+    ACHIEVEMENT_EVENT_HYRULE_ROD_FIRE,
+    ACHIEVEMENT_EVENT_HYRULE_BAIT_CALM,
+    ACHIEVEMENT_EVENT_HYRULE_TENTH_BOMB,
+    ACHIEVEMENT_EVENT_HYRULE_CHEST_FIRST,    /* + dungeon 0..8 */
+    ACHIEVEMENT_EVENT_HYRULE_CHEST_LAST = ACHIEVEMENT_EVENT_HYRULE_CHEST_FIRST + 8,
+    ACHIEVEMENT_EVENT_HYRULE_BAND_FIRST,     /* + dungeon 0..8 */
+    ACHIEVEMENT_EVENT_HYRULE_BAND_LAST = ACHIEVEMENT_EVENT_HYRULE_BAND_FIRST + 8,
+    ACHIEVEMENT_EVENT_PSI_ALL_DISCIPLINES
 } achievement_event_type;
+
+/* Counted achievements (achievements.c). Saved by name as
+   "AchCount <name> <value>", so order here is free to change. */
+typedef enum
+{
+    ACH_CTR_GOBLIN_KILLS = 0,
+    ACH_CTR_DRAGON_KILLS,
+    ACH_CTR_VESH_VISITS,
+    ACH_CTR_RESCUES,
+    ACH_CTR_DISARMS,
+    ACH_CTR_HEALS,
+    ACH_CTR_CURES,
+    ACH_CTR_NARROW_WINS,
+    ACH_CTR_SERVANT_KILLS,
+    ACH_CTR_BREWS,
+    ACH_CTR_CONCOCTIONS,
+    ACH_CTR_SCROLLS,
+    ACH_CTR_TRAINING_FOODS,
+    ACH_CTR_RUSH_QUESTS,
+    ACH_CTR_EMERGENCY_QUESTS,
+    ACH_CTR_DAILY_QUESTS,
+    ACH_CTR_REPAIRS,
+    ACH_CTR_COUNT
+} achievement_counter;
+
+/* Distinct things seen (achievements.c). Saved by name as
+   "AchSet <name> <id or a-b> ... ~". */
+typedef enum
+{
+    ACH_SET_VESH_ITEMS = 0,     /* object prototype vnums bought from Vesh */
+    ACH_SET_RECIPES,            /* method * 100000 + skill number */
+    ACH_SET_QUEST_AREAS,        /* area identity of quest objectives */
+    ACH_SET_AREAS,              /* area identity of public areas entered */
+    ACH_SET_ROOMS,              /* public room vnums entered */
+    ACH_SET_DAILY_KINDS,        /* daily objective kinds finished */
+    ACH_SET_PSI_DISCIPLINES,    /* psionic disciplines used successfully */
+    ACH_SET_COUNT
+} achievement_set;
 
 typedef void (*script_event_callback)( script_event_type type, void *payload, void *context );
 
@@ -253,7 +328,7 @@ typedef struct script_loop_prepoll_payload
 #define QUEST_EMERGENCY_MINUTES     5
 #define QUEST_EMERGENCY_MULTIPLIER  5
 
-#define MAX_ACHIEVEMENTS        256
+#define MAX_ACHIEVEMENTS        512
 #define MAX_LEVEL               70
 /* Ranks above the top level (owner, 2026-10-22). Nobody's level passes
    MAX_LEVEL; these are trusts. TRUST 71 may be given, by the creator
@@ -2201,6 +2276,24 @@ struct  pc_data
     unsigned long       achievement_hyrule_maps;
     unsigned long       achievement_hyrule_compasses;
     unsigned long       achievement_triforce_shards;
+    /* The 2026-10-25 expansion: counters and distinct-identity sets,
+       saved by name (AchCount, AchSet) and kept across remorts. The
+       sets are heap arrays, sorted, freed with the character. */
+    long                achievement_counter[ACH_CTR_COUNT];
+    long *              achievement_set[ACH_SET_COUNT];
+    int                 achievement_set_len[ACH_SET_COUNT];
+    int                 achievement_set_cap[ACH_SET_COUNT];
+    /* Marks spent at REDEEM; marks held are points less this. Saved as
+       AchSpent (with a perk word kept for later, now always 0). It rolls
+       back with a PRESTORE together with the earned set and whatever the
+       marks bought, so the two cannot disagree. */
+    long                achievement_marks_spent;
+    long                achievement_perks;
+    /* The disaster that last struck this character, and where, so its end
+       can tell who lived through it (disaster.c). Not saved. */
+    AREA_DATA *         disaster_area;
+    int                 disaster_kind;
+    long                disaster_deaths;    /* deaths when it struck */
     /* Hyrule's once-per-character secrets: money caves, Heart Containers,
        take-any choices, bigger bomb bags (hyrule.c). Saved as
        HyruleSecrets under case 'H'. */
@@ -2513,6 +2606,7 @@ struct  area_data
     bool                empty;
     sh_int              disaster_type;
     bool                disaster_warned;    /* struck once; see disaster.c */
+    bool                disaster_by_staff;  /* started by DISASTER: earns nothing */
 };
 
 /* Room type. */
@@ -3117,6 +3211,27 @@ void    achievement_load_earned ( CHAR_DATA *ch, const char *key, time_t earned 
 int     achievement_earned_count ( const CHAR_DATA *ch );
 int     achievement_catalog_count ( void );
 int     achievement_points ( const CHAR_DATA *ch );
+void    achievement_count ( CHAR_DATA *ch, achievement_counter counter,
+                            long amount );
+bool    achievement_note ( CHAR_DATA *ch, achievement_set set, long id );
+bool    achievement_set_has ( const CHAR_DATA *ch, achievement_set set, long id );
+void    achievement_record_room_visit ( CHAR_DATA *ch, ROOM_INDEX_DATA *room );
+void    achievement_party_count ( CHAR_DATA *killer, ROOM_INDEX_DATA *room,
+                                  achievement_counter counter );
+void    achievement_party_event ( CHAR_DATA *killer, ROOM_INDEX_DATA *room,
+                                  achievement_event_type event );
+void    achievement_record_heal ( CHAR_DATA *ch, CHAR_DATA *victim, int before );
+void    achievement_record_cure ( CHAR_DATA *ch, CHAR_DATA *victim );
+void    achievement_record_psionic ( CHAR_DATA *ch, int sn );
+void    achievement_record_hyrule_chest ( CHAR_DATA *ch, int dungeon );
+void    disaster_dragon_struck ( CHAR_DATA *ch, CHAR_DATA *victim );
+void    achievement_load_count ( CHAR_DATA *ch, const char *name, long value );
+void    achievement_load_set ( CHAR_DATA *ch, FILE *fp );
+void    achievement_load_spent ( CHAR_DATA *ch, FILE *fp );
+void    achievement_free ( CHAR_DATA *ch );
+long    achievement_marks ( const CHAR_DATA *ch );
+long    achievement_area_id ( const AREA_DATA *area );
+void    do_redeem ( CHAR_DATA *ch, char *argument );
 
 /* quest.c */
 void    quest_record_kill ( CHAR_DATA *killer, CHAR_DATA *victim );

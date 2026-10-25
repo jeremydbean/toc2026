@@ -188,11 +188,16 @@ Current October 2026 Python baseline:
 
 ```text
 102 listed area entries
-2,494 mobiles
-3,721 objects
+2,496 mobiles
+3,722 objects
 7,787 rooms
-0 critical, 12 warning, 1,635 information findings
+0 critical, 12 warning, 1,638 information findings
 ```
+
+The achievement trophy REDEEM hands out (object 95 in `limbo.are`,
+2026-10-25) added one object and one `object-has-no-source` finding: only
+REDEEM makes it. The mobile count and two information findings had moved
+before that without this baseline following; recount, do not copy.
 
 Objects and information findings both rose by exactly 53 on 2026-10-04,
 when every Hyrule guardian gained a drop for each armour slot its first five
@@ -861,6 +866,58 @@ python3 check_exits.py
 python3 check_resets.py
 python3 scripts/area_lint.py --fail-on critical --limit 100
 ```
+
+## Achievements
+
+`src/achievements.c`; the player guide is `wiki/achievements.md`, whose
+catalog table `tests/test_achievement_expansion.py` holds to the source.
+378 entries since the 2026-10-25 expansion (owner: about 175 new ones).
+Rules the code depends on:
+
+- **The table is append-only.** Earned achievements are saved by key
+  (`Achv <key> <time>`) and indexed by position at runtime, so never move,
+  rename or reuse a row; add at the end. `MAX_ACHIEVEMENTS` is 512 and
+  `achievement_table_must_fit` fails the build past it.
+- **A meta counts an explicit list** (`cohort_*` and `achievement_cohorts`).
+  The five `_v1` lists are the original metas frozen as they stood on
+  2026-10-24 -- Boss Hunter, Conqueror of Chaos, the relic metas, Artisan of
+  Chaos, Death Becomes You, Hero of Hyrule -- and must never change, or
+  adding a boss would quietly change what "every listed boss" asks. A new
+  meta gets a new list; a visible meta never names a hidden member in its
+  description (search would find it).
+- **New state is saved by name**: `AchCount <name> <n>`, `AchSet <name> <id
+  or a-b> ... ~`, `AchSpent <spent> 0`, all under case 'A' of `fread_char`.
+  Add a counter to `achievement_counter` and its name to
+  `achievement_counter_names` together; the same for sets. An unknown name
+  is read and dropped. Sets are heap arrays freed by `achievement_free`
+  from `free_char`. Counters start at zero: nothing is backfilled that the
+  save cannot prove.
+- **Award at the success, never at the command**, and staff earn none of
+  the new feats: `ACH_STAFF` is `IS_TRUSTED(ch, LEVEL_IMMORTAL)`. Party
+  awards (`achievement_party_count`/`_event`) reach the credited player and
+  their group in the room, mortals only.
+- **A boss row with a negative auxiliary** matches a death anywhere in that
+  room's area (Prince Starfire is WIMPY).
+- **List views are cut into parts** of `ACHIEVEMENT_PART_BYTES` raw bytes so
+  a part, colour converted, fits the pager's 32,000-byte block; a hidden
+  achievement not yet earned matches no search.
+- **Marks** are points less `achievement_marks_spent`; REDEEM sells only
+  cosmetic and convenience perks (owner, 2026-10-25), and its spend rolls
+  back with the earned set in a PRESTORE.
+
+## Crafting
+
+BREW, CONCOCT and SCRIBE share one table, `craft_recipes` in `magic2.c`,
+matched by `craft_find` in any order. Every refusal (missing or wrong
+ingredient, a combination that makes nothing, an herb with no brew) comes
+before the roll and costs nothing; a real attempt pays the skill's beats
+(12) first; the product is the crafter's level. A recipe's identity for
+the recipe-book achievements is its method plus its `signature` spell,
+which must be one of its spells and have a real `spell_fun`
+(`tests/test_achievement_expansion.py`). `count_components` counts only
+`ITEM_SPELL_COMPONENT`: objects 74 and 75 (the crafted tea and potion) sit
+in the component vnum range, and counting them once stopped components
+spawning anywhere.
 
 ## The Seasonal Areas Are Generated
 

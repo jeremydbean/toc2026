@@ -8,6 +8,36 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Achievement expansion** (owner, 2026-10-25; `wiki/achievements.md`).
+  175 new achievements, 378 in all: treasure goblins, the Great Black
+  Dragon and Vesh; seven more verified bosses and three regional metas;
+  rescues, disarms, heals, cures, narrow wins, servant kills and the three
+  raised undead; abilities and weapons at 100%, the psionic disciplines,
+  crafting tiers and a recipe book, training cakes; rush, emergency and
+  daily tiers, quest areas, explored areas and rooms, landmark metas;
+  Hyrule's tool feats, secrets, bomb bags, swords, nine treasure chests and
+  nine Fair Fights; holiday wares, clovers, Valhalla's blades and the
+  crystalline set; the stash, repairs, Herbie and seven disasters.
+  `MAX_ACHIEVEMENTS` is 512. The original metas count frozen lists. New
+  state saves by name (`AchCount`, `AchSet`); counters start at zero.
+  Long views come in parts the pager holds; hidden ones match no search.
+  `tests/test_achievement_expansion.py`.
+- **Achievement marks and REDEEM.** Marks are points less marks spent
+  (`AchSpent`): a recall-cooldown waiver, a keepsake trophy (object 95 in
+  `limbo.are`), stash slots and a weapon restring. Cosmetic and
+  convenience only; points never go down.
+- **BREW, CONCOCT and SCRIBE rebuilt around one recipe table**
+  (`craft_recipes` in `magic2.c`). Refusals come before the roll and cost
+  nothing (an unknown herb was consumed for an empty tea); each attempt
+  pays three seconds of lag; products are the crafter's level and priced
+  modestly; clove tea's broken detect poison is detect invis; staff hear of
+  a remove-align or Farslay scroll only when one is made; missed rolls
+  teach. Eight new potions and five new scrolls use the four components
+  nothing used. Teas and potions no longer count against the component
+  ceiling, which had stopped components spawning; components avoid the
+  sky, deep water, arenas and Hyrule; SCRIBE needs you awake; RECITE asks
+  for an object before an object spell's scroll is spent.
+
 - **Player backups and restores** (owner, 2026-10-23: nearly impossible to
   lose a player; `wiki/player-backups.md`). Milestone snapshots before every
   death, remort, deletion and staff change and after every level and quest;

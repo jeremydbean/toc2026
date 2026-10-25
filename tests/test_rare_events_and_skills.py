@@ -73,26 +73,34 @@ class RareEventAndSkillTests(unittest.TestCase):
         self.assertNotIn("IS_SET(mob->act2, AFF2_FLAMING", self.special)
 
     def test_crafting_recipes_are_order_independent(self) -> None:
+        """One table, one matcher (2026-10-25): an ingredient in any slot
+        matches a recipe part not already used."""
+        matcher = function_body(self.magic2, "static const CRAFT_RECIPE *craft_find(",
+                                "static OBJ_DATA *craft_product(")
+        self.assertIn("!used[q]", matcher)
+        self.assertIn("parts[q]->pIndexData->vnum == recipe->parts[p]", matcher)
         concoct = function_body(self.magic2, "void do_concoct", "void do_scribe")
         scribe = function_body(self.magic2, "void do_scribe", "void spell_vengence")
-
-        self.assertEqual(concoct.count("crafting_pair_matches("), 10)
-        self.assertEqual(scribe.count("crafting_trio_matches("), 5)
+        self.assertIn("craft_find( CRAFT_CONCOCT, parts, 2 )", concoct)
+        self.assertIn("craft_find( CRAFT_SCRIBE, parts, 3 )", scribe)
         self.assertNotIn("pObj_one->pIndexData->vnum ==", concoct)
         self.assertNotIn("pObj_one->pIndexData->vnum ==", scribe)
 
     def test_failed_crafting_has_no_orphan_output_or_component_trap(self) -> None:
+        """The product is made only after the roll, so a failure has none
+        to throw away; a combination that makes nothing consumes nothing."""
         concoct = function_body(self.magic2, "void do_concoct", "void do_scribe")
         scribe = function_body(self.magic2, "void do_scribe", "void spell_vengence")
 
-        self.assertIn("extract_obj( potion )", concoct)
-        self.assertIn("extract_obj( scroll )", scribe)
+        for body, name in ((concoct, "potion"), (scribe, "scroll")):
+            self.assertLess(body.index("number_percent() > chance / 2 + 45"),
+                            body.index("%s = craft_product(" % name))
         self.assertRegex(
             scribe,
-            r"won't make a useable ink\.\\n\\r\",ch\);\s*return;",
+            r"won't make a usable ink\.\\n\\r\", ch \);\s*return;",
         )
-        self.assertGreaterEqual(concoct.count("save_char_obj(ch)"), 2)
-        self.assertGreaterEqual(scribe.count("save_char_obj(ch)"), 2)
+        self.assertGreaterEqual(concoct.count("save_char_obj( ch )"), 2)
+        self.assertGreaterEqual(scribe.count("save_char_obj( ch )"), 2)
 
     def test_event_loot_is_autolootable_and_never_empty(self) -> None:
         corpse = function_body(self.fight, "void make_corpse", "void death_cry")

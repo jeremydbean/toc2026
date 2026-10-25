@@ -3046,6 +3046,9 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
      snprintf(buf, sizeof(buf),"%s has been touched by an angel.",most_hurt->name);
      wizinfo(buf,65);
      herbie_visit( mob, most_hurt );
+     /* Wings of Mercy: only this natural visit, never staff's HERBIE. */
+     if ( most_hurt->in_room != NULL && !IS_NPC(most_hurt) )
+         achievement_record_event( most_hurt, ACHIEVEMENT_EVENT_WINGS_OF_MERCY, true );
   }
   else
     return false;

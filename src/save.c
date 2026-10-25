@@ -3219,6 +3219,28 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "Arrive",	ch->pcdata->arrive,	fread_string( fp ) );
 	    KEY( "Ariv",	ch->pcdata->arrive,	fread_string( fp ) );
 
+	    if ( !str_cmp( word, "AchCount" ) )
+	    {
+		char counter_name[MAX_INPUT_LENGTH];
+
+		toc_strlcpy( counter_name, fread_word( fp ), sizeof(counter_name) );
+		achievement_load_count( ch, counter_name, fread_long( fp ) );
+		fMatch = true;
+		break;
+	    }
+	    if ( !str_cmp( word, "AchSet" ) )
+	    {
+		achievement_load_set( ch, fp );
+		fMatch = true;
+		break;
+	    }
+	    if ( !str_cmp( word, "AchSpent" ) )
+	    {
+		achievement_load_spent( ch, fp );
+		fMatch = true;
+		break;
+	    }
+
 	    if ( !str_cmp( word, "Achv" ) )
 	    {
 		char *achievement_key = fread_word( fp );

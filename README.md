@@ -60,10 +60,12 @@ documentation.
   campaign with all nine First Quest dungeons.
 - Advanced in-game `compare` analysis that models a player's complete loadout,
   class, guild, level, skills, spells, and selected gameplay focus.
-- A permanent 203-achievement progression system with points, earned dates,
+- A permanent 378-achievement progression system with points, earned dates,
   hidden discoveries, live progress, retroactive milestones, group boss credit,
   world bosses, rare relics, crafting, banking and casino feats, unusual deaths,
-  and complete Hyrule dungeon, map, compass, shard, and boss tracking.
+  treasure goblins, the black dragon, Vesh, disasters, exploration, teamwork,
+  complete Hyrule dungeon, map, compass, shard, boss, secret and chest
+  tracking, and achievement marks spent at REDEEM on cosmetic perks.
 - A FastAPI dashboard for world browsing, area health, maps, player inspection,
   logs, backups, server commands, protected read-only host telemetry with live
   CPU, memory, swap, network, disk, and temperature monitoring, and a

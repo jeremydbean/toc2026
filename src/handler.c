@@ -1790,6 +1790,10 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 	++ch->in_room->area->nplayer;
 	achievement_record_room(ch, pRoomIndex->vnum,
 	    ch->desc != NULL && ch->desc->connected == CON_PLAYING);
+	/* Exploration counts a room only when someone playing walks in: a
+	   copy loaded offline, or a login still at its prompts, has not. */
+	if ( ch->desc != NULL && ch->desc->connected == CON_PLAYING )
+	    achievement_record_room_visit( ch, pRoomIndex );
     }
 
     if ( ( obj = get_eq_char( ch, WEAR_LIGHT ) ) != NULL

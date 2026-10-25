@@ -829,6 +829,11 @@ bool hyrule_claim( CHAR_DATA *ch, OBJ_DATA *obj )
     obj_to_char( copy, ch );
     act( "You take $p.", ch, copy, NULL, TO_CHAR );
     act( "$n takes $p.", ch, copy, NULL, TO_ROOM );
+    /* The swords are given for hearts, which the checks above counted. */
+    if ( copy->pIndexData->vnum == 30251 )
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_WHITE_SWORD, true );
+    else if ( copy->pIndexData->vnum == 30649 )
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_MAGICAL_SWORD, true );
 
     if ( claim->choice_bit >= 0 )
     {
@@ -1086,6 +1091,7 @@ bool hyrule_bomb_creature( CHAR_DATA *ch, CHAR_DATA *victim )
              ch, NULL, victim, TO_CHAR );
         act( "$n rolls a bomb beneath $N, which swallows it. The explosion fills the chamber!",
              ch, NULL, victim, TO_ROOM );
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_DODONGO_BOMB, true );
         damage( ch, victim, UMAX( 1, victim->max_hit / 2 ), TYPE_UNDEFINED, DAM_FIRE );
         return true;
     }
@@ -1233,6 +1239,9 @@ bool hyrule_shoot( CHAR_DATA *ch, OBJ_DATA *weapon, char *argument )
             act( "$N shrieks at the arrow's whistle and bursts like a bubble!",
                  ch, NULL, victim, TO_NOTVICT );
             damage( ch, victim, victim->hit + 10, gsn_archery, DAM_PIERCE );
+            /* Gone means the arrow killed it; the pointer is not read. */
+            if ( !still_here( ch, victim ) )
+                achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_POLS_ARROW, true );
             return true;
         }
         dam = dice( weapon->value[1], weapon->value[2] ) + GET_DAMROLL(ch) + ch->level / 2;
@@ -1263,6 +1272,7 @@ bool hyrule_shoot( CHAR_DATA *ch, OBJ_DATA *weapon, char *argument )
         calm_stun( victim );
         act( "$N reels, stunned, and forgets the fight.", ch, NULL, victim, TO_CHAR );
         act( "$N reels, stunned, and forgets the fight.", ch, NULL, victim, TO_NOTVICT );
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_BOOMERANG_STUN, true );
     }
     return true;
 }
@@ -1397,7 +1407,10 @@ bool hyrule_play_recorder( CHAR_DATA *ch, const char *argument )
         shrank = true;
     }
     if ( shrank )
+    {
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_DIGDOGGER_RECORDER, true );
         return true;
+    }
 
     if ( ch->in_room->vnum < HYRULE_OVERWORLD_FIRST
     ||   ch->in_room->vnum > HYRULE_OVERWORLD_LAST )
@@ -1674,6 +1687,7 @@ void hyrule_after_zap( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *wand )
          ch, NULL, victim, TO_CHAR );
     act( "A burst of flame from $n's rod engulfs $N!", ch, NULL, victim, TO_NOTVICT );
     act( "A burst of flame from $n's rod engulfs you!", ch, NULL, victim, TO_VICT );
+    achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_ROD_FIRE, true );
     damage( ch, victim, dice( 4, 10 ) + ch->level, TYPE_UNDEFINED, DAM_FIRE );
 }
 
@@ -1725,6 +1739,9 @@ bool hyrule_paid_to_talk( CHAR_DATA *ch, CHAR_DATA *victim, int amount )
     act( "You pay $N.", ch, NULL, victim, TO_CHAR );
     act( "$n pays $N.", ch, NULL, victim, TO_ROOM );
     act( answer, ch, NULL, victim, TO_CHAR );
+    /* Only the right sum buys words worth having. */
+    if ( !str_prefix( "\"Go ", answer ) )
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_HINT, true );
     return true;
 }
 
@@ -1880,7 +1897,10 @@ void hyrule_note_kill( CHAR_DATA *ch, CHAR_DATA *victim )
         return;
     ch->pcdata->hyrule_streak = 0;
     if ( give_one_bomb( ch ) )
+    {
         send_to_char( "Ten foes in a row without a scratch: the tenth leaves you a bomb.\n\r", ch );
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_TENTH_BOMB, true );
+    }
 }
 
 void hyrule_note_wound( CHAR_DATA *victim )

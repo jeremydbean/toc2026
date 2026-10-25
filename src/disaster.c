@@ -93,6 +93,12 @@ static CHAR_DATA *dragon = NULL;        /* the one dragon in the world */
 static CHAR_DATA *dragon_prey = NULL;   /* who it carried off */
 static time_t dragon_leaves = 0;        /* when it takes off unfought */
 static int dragon_prey_level = 0;       /* sizes the hoard, even if they quit */
+/* For the dragon achievements: whether its prey ever struck it, the prey's
+   death count when taken (a death since means it did not get away), and
+   whether staff set it on somebody -- a demonstration earns nothing. */
+static bool dragon_prey_struck = false;
+static long dragon_prey_deaths = 0;
+static bool dragon_by_staff = false;
 
 
 /* The disaster type a word names, or 0. */
@@ -382,6 +388,18 @@ bool is_disaster_dragon( const CHAR_DATA *ch )
     return ch != NULL && ch == dragon;
 }
 
+/* From damage(): any blow, landed or missed, the prey aims at the dragon
+   that took it (or that the prey's pet aims). */
+void disaster_dragon_struck( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    if ( ch == NULL || victim == NULL || victim != dragon || dragon_prey == NULL )
+        return;
+    if ( IS_NPC(ch) && ch->master != NULL )
+        ch = ch->master;
+    if ( ch == dragon_prey )
+        dragon_prey_struck = true;
+}
+
 void disaster_dragon_forget( CHAR_DATA *ch )
 {
     if ( ch == NULL )
@@ -560,6 +578,9 @@ static bool dragon_snatch( AREA_DATA *area, CHAR_DATA *named, CHAR_DATA *staff )
     dragon_prey = prey;
     dragon_prey_level = prey->level;
     dragon_leaves = current_time + dragon_wait();
+    dragon_prey_struck = false;
+    dragon_prey_deaths = prey->pcdata != NULL ? prey->pcdata->achievement_deaths : 0;
+    dragon_by_staff = staff != NULL || ( area != NULL && area->disaster_by_staff );
     act( "$n folds its wings and regards you, smoke curling from its nostrils.",
          dragon, NULL, prey, TO_VICT );
     snprintf( buf, sizeof(buf),
@@ -599,6 +620,14 @@ static void dragon_update( void )
         dragon_leaves = UMIN( dragon_leaves, current_time + DRAGON_PREY_GONE );
     if ( current_time < dragon_leaves )
         return;
+
+    /* Discretion Is an Option: the prey walked away, alive, never having
+       raised a hand to it. */
+    if ( dragon_prey != NULL && !dragon_by_staff && !dragon_prey_struck
+      && dragon_prey->pcdata != NULL
+      && dragon_prey->pcdata->achievement_deaths == dragon_prey_deaths
+      && dragon_prey->in_room != dragon->in_room && dragon_prey->hit > 0 )
+        achievement_record_event( dragon_prey, ACHIEVEMENT_EVENT_DRAGON_DISCRETION, true );
 
     act( "$n spreads its vast wings, laughs at you all, and takes to the sky.",
          dragon, NULL, NULL, TO_ROOM );
@@ -659,6 +688,18 @@ void disaster_dragon_slain( CHAR_DATA *ch, CHAR_DATA *drake )
               rare != NULL ? " and " : "", rare != NULL ? rare : "" );
     log_string( buf );
     wizinfo( buf, LEVEL_IMMORTAL );
+
+    /* Dragon Trouble for everyone in at the kill; You Picked the Wrong
+       Passenger for the one it carried off, if they struck it and are
+       there for its end. A staff demonstration earns nothing. */
+    if ( drake == dragon && !dragon_by_staff && who != NULL && drake->in_room != NULL )
+    {
+        achievement_party_count( who, drake->in_room, ACH_CTR_DRAGON_KILLS );
+        if ( dragon_prey != NULL && dragon_prey_struck
+          && dragon_prey->in_room == drake->in_room && !IS_TRUSTED( dragon_prey, LEVEL_IMMORTAL )
+          && ( dragon_prey == who || is_same_group( dragon_prey, who ) ) )
+            achievement_record_event( dragon_prey, ACHIEVEMENT_EVENT_DRAGON_PASSENGER, true );
+    }
 }
 
 
@@ -687,6 +728,7 @@ static void disaster_begin( AREA_DATA *area, int type )
 
     area->disaster_type = (sh_int)type;
     area->disaster_warned = false;
+    area->disaster_by_staff = false;
     disaster_tell_area( area, disaster_warning[type] );
     snprintf( buf, sizeof(buf), "%s has been struck by %s.",
               area_shown_name( area->name ), disaster_name[type] );
@@ -701,11 +743,37 @@ static void disaster_end( AREA_DATA *area, bool quietly )
     char buf[MAX_STRING_LENGTH];
     int type = area->disaster_type;
 
+    bool by_staff = area->disaster_by_staff;
+    DESCRIPTOR_DATA *d;
+
     area->disaster_type = 0;
     area->disaster_warned = false;
+    area->disaster_by_staff = false;
     if ( quietly || type <= 0 || type >= DISASTER_COUNT )
         return;
     disaster_tell_area( area, disaster_ending[type] );
+
+    /* Everyone it struck who is still here, alive, at its end lived
+       through it. The dragon is not one of these. */
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+        CHAR_DATA *vch = d->character;
+
+        if ( d->connected != CON_PLAYING || vch == NULL || IS_NPC(vch)
+          || vch->pcdata == NULL || vch->pcdata->disaster_area != area
+          || vch->pcdata->disaster_kind != type )
+            continue;
+        vch->pcdata->disaster_area = NULL;
+        vch->pcdata->disaster_kind = 0;
+        /* Alive at the end, with no death since it struck: a flood or a
+           tornado that carried somebody out of the area still counts. */
+        if ( by_staff || type == DISASTER_DRAGON || vch->hit <= 0
+          || vch->position <= POS_STUNNED
+          || vch->pcdata->achievement_deaths != vch->pcdata->disaster_deaths )
+            continue;
+        achievement_record_event( vch,
+            (achievement_event_type)( ACHIEVEMENT_EVENT_DISASTER_FIRST + type ), true );
+    }
     snprintf( buf, sizeof(buf), "%s is no longer a disaster area.",
               area_shown_name( area->name ) );
     wizinfo( buf, LEVEL_IMMORTAL );
@@ -788,6 +856,14 @@ void disaster_update( void )
             if ( vch->in_room == NULL || vch->in_room->area != pArea
               || disaster_spares( vch ) )
                 continue;
+            if ( !IS_NPC(vch) && vch->pcdata != NULL )
+            {
+                if ( vch->pcdata->disaster_area != pArea
+                  || vch->pcdata->disaster_kind != type )
+                    vch->pcdata->disaster_deaths = vch->pcdata->achievement_deaths;
+                vch->pcdata->disaster_area = pArea;
+                vch->pcdata->disaster_kind = type;
+            }
             disaster_strike_char( vch, type );
         }
         if ( type == DISASTER_FIRE || type == DISASTER_TIDAL )
@@ -889,6 +965,7 @@ void do_disaster( CHAR_DATA *ch, char *argument )
         return;
     }
     disaster_begin( pArea, type );
+    pArea->disaster_by_staff = true;
     snprintf( buf, sizeof(buf), "%s strikes next cycle. DISASTER STOP ends it.\n\r",
               capitalize( disaster_name[type] ) );
     send_to_char( buf, ch );

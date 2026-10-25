@@ -463,8 +463,8 @@ This skill allows the user to make a magic potion, if a matching set of
 ingredients can be discovered.  It may take a lot of trial and error,
 and different combinations create different potions.
 
-Only pure magic users who join the mage guild or are necromancers may
-concoct potions.  The minimum level to concoct is:
+Mages, clerics and necromancers may concoct potions.  A botched mixture
+explodes and burns you.  The minimum level to concoct is:
 
 Mage:17  Cleric:17  Necromancer:19
 
@@ -1220,10 +1220,10 @@ The scribing of scrolls is very difficult to do, because finding the
 correct ingredients and getting them to mix for a usable ink to write
 with is so hard.  The rewards of discovery can be quite shocking though.
 
-Only full mages above level 20 may use this skill.
+Mages may scribe from level 20, clerics from 25 and necromancers from 30.
 
-Number of trains: 4
-Trainer: Drixt (M/M)
+Number of trains: 4 for mages and clerics, 8 for necromancers
+Trainers: Drixt (M/M), Dawn, Spirit (Necro)
 
 See also: BREW, CONCOCT, LORE
 ~

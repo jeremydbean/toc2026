@@ -44,7 +44,6 @@ EXEMPT = {
     "do_mindleech": "returns only when the leech killed the victim",
 
     # Damage that lands on the person who typed the command.
-    "do_concoct": "hurts the brewer, not a target -- nothing to spam",
 
     # Deliberate balance, confirmed 2026-09: a monk fights with no
     # weapon, and the consolation damage on a missed nerve strike is

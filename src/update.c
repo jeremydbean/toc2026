@@ -3150,11 +3150,39 @@ void count_components( int *herbs, int *comps )
     if ((pObjIndex = get_obj_index(vnum)) != NULL)
       *herbs += pObjIndex->count;
   }
+  /* Components only: 74 and 75 sit in this range and are what BREW and
+     CONCOCT make, so twenty-five teas and potions anywhere in the world
+     once stopped every component from spawning again. */
   for (vnum = 54; vnum <= 88; vnum++)
   {
-    if ((pObjIndex = get_obj_index(vnum)) != NULL)
+    if ((pObjIndex = get_obj_index(vnum)) != NULL
+    &&  pObjIndex->item_type == ITEM_SPELL_COMPONENT)
       *comps += pObjIndex->count;
   }
+}
+
+/* Somewhere a plant or a component can lie and be found: not in the
+   sky, at the bottom of deep water, in an arena, or in Hyrule, whose
+   dungeons are no place to forage. */
+static bool component_room_ok( ROOM_INDEX_DATA *room )
+{
+  return room != NULL
+      && room->sector_type != SECT_AIR
+      && room->sector_type != SECT_WATER_NOSWIM
+      && room->sector_type != SECT_UNDER_WATER
+      && !IS_SET(room->room_flags, ROOM_ARENA)
+      && !IS_HYRULE_ROOM_VNUM(room->vnum);
+}
+
+static ROOM_INDEX_DATA *component_scatter_room( AREA_DATA *area )
+{
+  ROOM_INDEX_DATA *room;
+  int tries;
+
+  for ( tries = 0; tries < 8; tries++ )
+    if ( component_room_ok( room = random_scatter_room( area ) ) )
+      return room;
+  return NULL;
 }
 
 void component_update( void )
@@ -3192,7 +3220,7 @@ void component_update( void )
         if (herb_count >= HERB_CEILING)
           break;
 
-        component_room = random_scatter_room( component_area->area );
+        component_room = component_scatter_room( component_area->area );
 
         if (component_room == NULL)  /* Skip if we couldn't find a room */
           continue;
@@ -3231,7 +3259,7 @@ void component_update( void )
       if (spell_comp_count >= COMPONENT_CEILING)
         break;
 
-      component_room = random_scatter_room( component_area->area );
+      component_room = component_scatter_room( component_area->area );
 
       if (component_room == NULL)
         continue;
