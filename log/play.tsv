@@ -14199,3 +14199,67 @@
 1792889411	cmd	Alaric	18	4208	dresden_halloween.are	standing	97	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
 1792889412	cmd	Alaric	18	4208	dresden_halloween.are	standing	97	0	-	stash		Your stash holds 99 of 150 things. //     1) (Glowing) (Humming) a bone mace //     2) battle gloves
 1792889435	cmd	Alaric	18	4208	dresden_halloween.are	standing	97	4	-	stash	get quick	You take a quick sheathe out of your stash.
+1792889439	cmd	Alaric	18	4208	dresden_halloween.are	standing	97	10	-	stash	get on	You take an onyx bracelet out of your stash.
+1792889439	cmd	Alaric	18	4208	dresden_halloween.are	standing	97	8	-	stash	get on	You take an onyx bracelet out of your stash.
+1792889443	cmd	Alaric	18	4208	dresden_halloween.are	standing	97	0	-	wear	brac	You stop using an enchanted leather bracer. // You wear an onyx bracelet around your left wrist.
+1792889444	cmd	Alaric	18	4208	dresden_halloween.are	standing	97	0	-	remove	ench	You stop using an enchanted leather bracer.
+1792889446	cmd	Alaric	18	4208	dresden_halloween.are	standing	97	0	-	wear	on	You must be level 19 to use this object.
+1792889453	cmd	Alaric	18	4208	dresden_halloween.are	standing	97	0	-	wear	quick	You wear a quick sheathe about your waist.
+1792889462	cmd	Alaric	18	4208	dresden_halloween.are	standing	97	0	-	stash		Your stash holds 96 of 150 things. //     1) (Glowing) (Humming) a bone mace //     2) battle gloves
+1792889478	cmd	Alaric	18	4208	dresden_halloween.are	standing	97	0	-	wear	piw	You wear a commoner's piwafwi about your body.
+1792889483	cmd	Alaric	18	2427	dresden_halloween.are	standing	97	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792889483	cmd	Alaric	18	2404	dresden_halloween.are	standing	97	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792889484	cmd	Alaric	18	2401	dresden_halloween.are	standing	97	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792889484	cmd	Alaric	18	2426	dresden_halloween.are	standing	97	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792889485	cmd	Alaric	18	2426	dresden_halloween.are	standing	97	0	-	open		Ok.
+1792889486	cmd	Alaric	18	9506	newthalo.are	standing	97	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792889488	cmd	Alaric	18	9522	newthalo.are	standing	97	0	-	run	n 6	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1792889489	cmd	Alaric	18	9522	newthalo.are	standing	97	0	-	open		Ok.
+1792889490	cmd	Alaric	18	29003	korzath1.are	standing	97	0	-	run	n 8	Outside the Northern Gate of New Thalos // [Exits: north south] // On the Plains
+1792889491	cmd	Alaric	18	29060	korzath1.are	standing	97	0	-	ne		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.
+1792889493	cmd	Alaric	18	29060	korzath1.are	standing	97	0	-	kill	ch	Your punch *** DEVASTATES *** Security Chief! [-77] // Security Chief parries your attack. // Security Chief parries your attack.
+1792889518	cmd	Alaric	18	29060	korzath1.are	standing	97	0	-	get	key cor	You get a crystal key from corpse of Security Chief.
+1792889520	cmd	Alaric	18	29060	korzath1.are	standing	97	0	-	unlock	east	*Click*
+1792889520	cmd	Alaric	18	29060	korzath1.are	standing	97	0	-	open		Ok.
+1792889521	cmd	Alaric	18	29061	korzath1.are	standing	97	0	-	east		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches
+1792889522	cmd	Alaric	18	29061	korzath1.are	standing	97	0	-	close	west	Ok.
+1792889523	cmd	Alaric	18	29061	korzath1.are	standing	97	0	-	skills		Level  1: dagger              20%      hand to hand        77%       //           recall             100%       // Level  3: kick                 1%      
+1792889528	session	Alaric	18	29061	korzath1.are	quit	4717s	-36 levels	-123225 exp	+804947433 copper	130 kills	0 deaths	2 quests	1310 commands	5 refused	coin: loot 469p 10g 81s 49c, quests 335p 83g 92s 84c
+1792889537	cmd	Alaric	18	29061	korzath1.are	standing	97	0	-	skills		Level  1: dagger              20%      hand to hand        77%       //           recall             100%       // Level  3: kick                 1%      
+1792889543	cmd	Alaric	18	29061	korzath1.are	standing	97	0	-	kill	gu	A security guard parries your attack. // A security guard dodges your attack. // A security guard dodges your attack.
+1792889573	cmd	Alaric	18	29062	korzath1.are	standing	96	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.
+1792889575	cmd	Alaric	18	29062	korzath1.are	standing	96	0	-	kill	gu	A security guard parries your attack. // Your punch MUTILATES a security guard! [-38] // A security guard dodges your attack.
+1792889580	cmd	Alaric	18	29062	korzath1.are	fighting	96	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a security guard. [-10]
+1792889586	cmd	Alaric	18	29062	korzath1.are	fighting	95	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a security guard. [-24]
+1792889589	cmd	Alaric	18	29062	korzath1.are	fighting	95	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds a security guard. [-18]
+1792889592	cmd	Alaric	18	29062	korzath1.are	standing	95	0	-	nerve		Who do you want to attack?
+1792889593	cmd	Alaric	18	29062	korzath1.are	standing	95	0	-	kill	gu	Your punch decimates a security guard! [-28] // A security guard parries your attack. // A security guard dodges your attack.
+1792889595	cmd	Alaric	18	29062	korzath1.are	fighting	95	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches a security guard. [-1]
+1792889597	cmd	Alaric	18	29062	korzath1.are	fighting	95	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a security guard. [-7]
+1792889599	cmd	Alaric	18	29062	korzath1.are	fighting	95	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates a security guard! [-26]
+1792889607	cmd	Alaric	18	29062	korzath1.are	fighting	95	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates a security guard! [-32]
+1792889612	cmd	Alaric	18	29062	korzath1.are	fighting	94	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a security guard. [-11]
+1792889619	refused	Alaric	19	29062	korzath1.are	standing	94	0	-	(unknown)		Huh?
+1792889619	cmd	Alaric	19	29062	korzath1.are	standing	94	0	-	wear	on	You wear an onyx bracelet around your right wrist.
+1792889621	cmd	Alaric	19	29063	korzath1.are	standing	94	0	-	south		Corridor //   Security guards and the Heads of Security are keeping an eye out for // anyone looking suspicious.  You notice a hole in the west wall and inside
+1792889622	cmd	Alaric	19	29063	korzath1.are	standing	94	0	-	kill	gu	A security guard parries your attack. // A security guard parries your attack. // Your punch *** DEVASTATES *** a security guard! [-61]
+1792889628	cmd	Alaric	19	29063	korzath1.are	standing	94	0	-	kill	gu	Your punch ^^^ DESTROYS ^^^ a security guard! [-92] // A security guard parries your attack. // A security guard parries your attack.
+1792889630	cmd	Alaric	19	29063	korzath1.are	fighting	94	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a security guard. [-9]
+1792889633	cmd	Alaric	19	29063	korzath1.are	fighting	94	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a security guard. [-7]
+1792889636	cmd	Alaric	19	29063	korzath1.are	fighting	93	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a security guard. [-22]
+1792889646	cmd	Alaric	19	29065	korzath1.are	standing	93	0	-	south		Service Hallway //   The service hallway leads east towards the main work centers of the // fortress.  You wonder what all the noises are that are coming from that
+1792889650	cmd	Alaric	19	29065	korzath1.are	standing	93	0	-	kill	head	Your punch decimates a head of security! [-26] // Your punch DISEMBOWELS a head of security! [-44] // Your punch maims a head of security! [-36]
+1792889653	cmd	Alaric	19	29065	korzath1.are	fighting	93	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-11]
+1792889656	cmd	Alaric	19	29065	korzath1.are	fighting	93	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-11]
+1792889659	cmd	Alaric	19	29065	korzath1.are	fighting	93	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a head of security. [-5]
+1792889662	cmd	Alaric	19	29065	korzath1.are	fighting	92	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a head of security. [-4]
+1792889665	cmd	Alaric	19	29065	korzath1.are	fighting	92	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-9]
+1792889667	cmd	Alaric	19	29065	korzath1.are	fighting	92	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-9]
+1792889670	cmd	Alaric	19	29065	korzath1.are	fighting	92	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-10]
+1792889719	cmd	Alaric	19	29065	korzath1.are	fighting	88	0	fight	look		Service Hallway //   The service hallway leads east towards the main work centers of the // fortress.  You wonder what all the noises are that are coming from that
+1792889720	cmd	Alaric	19	29065	korzath1.are	fighting	88	0	fight	who		[19 Dwarf   Monk  ] Alaric. // Players found: 1
+1792889721	cmd	Alaric	19	29065	korzath1.are	fighting	88	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-9]
+1792889726	cmd	Alaric	19	29065	korzath1.are	fighting	88	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds a head of security. [-19]
+1792889736	cmd	Alaric	19	29065	korzath1.are	fighting	88	0	fight	who		[19 Dwarf   Monk  ] Alaric. // Players found: 1
+1792889737	cmd	Alaric	19	29065	korzath1.are	fighting	88	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-10]
+1792889740	cmd	Alaric	19	29065	korzath1.are	fighting	88	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-10]
