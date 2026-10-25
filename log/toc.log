@@ -188144,3 +188144,223 @@ Sun Oct 25 14:42:01 2026 :: Log Alaric [2497]: iron
 Sun Oct 25 14:42:04 2026 :: Sock.sinaddr:  178.156.187.238
 Sun Oct 25 14:42:04 2026 :: EOF encountered on read.
 Sun Oct 25 14:42:09 2026 :: Log Alaric [2497]: sc
+Sun Oct 25 14:44:07 2026 :: Log Alaric [2497]: affects off: iron skin
+Sun Oct 25 14:44:07 2026 :: Treasure goblin: vanished from room 9357 (Path of the Draco, galaxy.are) (too long in one area).
+Sun Oct 25 14:44:23 2026 :: Log Alaric [2497]: iron
+Sun Oct 25 14:45:05 2026 :: Log Alaric [2497]: i
+Sun Oct 25 14:45:07 2026 :: Log Alaric [2497]: sc
+Sun Oct 25 14:45:13 2026 :: Log Alaric [2497]: l
+Sun Oct 25 14:45:14 2026 :: Log Alaric [2497]: en do
+Sun Oct 25 14:45:14 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 14:45:15 2026 :: Log Alaric [2401]: n
+Sun Oct 25 14:45:15 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sun Oct 25 14:45:15 2026 :: Log Alaric [2402]: n
+Sun Oct 25 14:45:15 2026 :: Log Alaric [2415]: arrived (Main Processional, Strung with Lanterns) from 2402
+Sun Oct 25 14:45:16 2026 :: Log Alaric [2415]: e
+Sun Oct 25 14:45:16 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Sun Oct 25 14:45:16 2026 :: Log Alaric [2485]: n
+Sun Oct 25 14:45:16 2026 :: Log Alaric [2482]: arrived (Nomads Tent.) from 2485
+Sun Oct 25 14:45:17 2026 :: Log Alaric [2482]: e
+Sun Oct 25 14:45:17 2026 :: Log Alaric [2483]: arrived (Fountain of Market Plaza.) from 2482
+Sun Oct 25 14:45:17 2026 :: Log Alaric [2483]: e
+Sun Oct 25 14:45:17 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 2483
+Sun Oct 25 14:45:17 2026 :: Log Alaric [2484]: e
+Sun Oct 25 14:45:17 2026 :: Log Alaric [4]: arrived (The First National Bank of Dresden.) from 2484
+Sun Oct 25 14:45:18 2026 :: Log Alaric [4]: e
+Sun Oct 25 14:45:18 2026 :: Log Alaric [4]: e
+Sun Oct 25 14:45:19 2026 :: Log Alaric [4]: sc
+Sun Oct 25 14:45:24 2026 :: Log Alaric [4]: deposit 3000 platinum
+Sun Oct 25 14:45:25 2026 :: Log Alaric [4]: w
+Sun Oct 25 14:45:25 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 4
+Sun Oct 25 14:45:26 2026 :: Log Alaric [2484]: s
+Sun Oct 25 14:45:26 2026 :: Log Alaric [2487]: arrived (Market Plaza, the Hallows Fair) from 2484
+Sun Oct 25 14:45:26 2026 :: Log Alaric [2487]: w
+Sun Oct 25 14:45:26 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2487
+Sun Oct 25 14:45:26 2026 :: Log Alaric [2486]: w
+Sun Oct 25 14:45:26 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2486
+Sun Oct 25 14:45:26 2026 :: Log Alaric [2485]: w
+Sun Oct 25 14:45:26 2026 :: Log Alaric [2415]: arrived (Main Processional, Strung with Lanterns) from 2485
+Sun Oct 25 14:45:27 2026 :: Log Alaric [2415]: s
+Sun Oct 25 14:45:27 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2415
+Sun Oct 25 14:45:29 2026 :: Log Alaric [2402]: list
+Sun Oct 25 14:45:30 2026 :: Log Alaric [2402]: gain
+Sun Oct 25 14:45:33 2026 :: Log Alaric [2402]: s
+Sun Oct 25 14:45:33 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2402
+Sun Oct 25 14:45:39 2026 :: Log Alaric [2401]: open pump
+Sun Oct 25 14:45:41 2026 :: Log Alaric [2401]: killed a possessed flame
+Sun Oct 25 14:45:41 2026 :: Log Alaric [2401]: coin +2 silver
+Sun Oct 25 14:45:41 2026 :: Log Alaric [2401]: coin +2 copper
+Sun Oct 25 14:45:46 2026 :: Log Alaric [2401]: score
+Sun Oct 25 14:45:49 2026 :: Log Alaric [2401]: prac
+Sun Oct 25 14:46:02 2026 :: Log Alaric [2401]: help ego
+Sun Oct 25 14:46:34 2026 :: Log Alaric [2401]: help crane dance
+Sun Oct 25 14:46:52 2026 :: Log Alaric [2401]: coin -5 copper
+Sun Oct 25 14:46:54 2026 :: Log Alaric [2401]: score
+Sun Oct 25 14:46:55 2026 :: Log Alaric [2401]: i
+Sun Oct 25 14:46:58 2026 :: Log Alaric [2401]: aq re
+Sun Oct 25 14:46:59 2026 :: Log Alaric [2401]: l
+Sun Oct 25 14:46:59 2026 :: Log Alaric [2401]: u
+Sun Oct 25 14:46:59 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sun Oct 25 14:47:00 2026 :: Log Alaric [2410]: u
+Sun Oct 25 14:47:00 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Sun Oct 25 14:47:00 2026 :: Log Alaric [2411]: u
+Sun Oct 25 14:47:00 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Sun Oct 25 14:47:00 2026 :: Log Alaric [2414]: u
+Sun Oct 25 14:47:00 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sun Oct 25 14:47:00 2026 :: Log Alaric [2497]: u
+Sun Oct 25 14:47:01 2026 :: Log Alaric [2497]: aq re
+Sun Oct 25 14:47:01 2026 :: Log Alaric [2497]: quest assigned: kill some mist (mob 2005, level 10) in catacomb.are, 25 minutes, ordinary
+Sun Oct 25 14:47:08 2026 :: Log Alaric [2497]: enter door
+Sun Oct 25 14:47:08 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 14:47:08 2026 :: Log Alaric [2401]: north
+Sun Oct 25 14:47:08 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sun Oct 25 14:47:08 2026 :: Log Alaric [2402]: north
+Sun Oct 25 14:47:08 2026 :: Log Alaric [2415]: arrived (Main Processional, Strung with Lanterns) from 2402
+Sun Oct 25 14:47:09 2026 :: Log Alaric [2415]: east
+Sun Oct 25 14:47:09 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Sun Oct 25 14:47:09 2026 :: Log Alaric [2485]: east
+Sun Oct 25 14:47:09 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2485
+Sun Oct 25 14:47:09 2026 :: Sock.sinaddr:  178.156.185.127
+Sun Oct 25 14:47:09 2026 :: Log Alaric [2486]: east
+Sun Oct 25 14:47:09 2026 :: Log Alaric [2487]: arrived (Market Plaza, the Hallows Fair) from 2486
+Sun Oct 25 14:47:09 2026 :: EOF encountered on read.
+Sun Oct 25 14:47:09 2026 :: Log Alaric [2487]: north
+Sun Oct 25 14:47:09 2026 :: Log Alaric [2484]: arrived (Market Plaza.) from 2487
+Sun Oct 25 14:47:10 2026 :: Log Alaric [2484]: north
+Sun Oct 25 14:47:10 2026 :: Log Alaric [2481]: arrived (Market Plaza.) from 2484
+Sun Oct 25 14:47:10 2026 :: Log Alaric [2481]: north
+Sun Oct 25 14:47:10 2026 :: Log Alaric [2514]: arrived (Dark Alley.) from 2481
+Sun Oct 25 14:47:10 2026 :: Log Alaric [2514]: east
+Sun Oct 25 14:47:10 2026 :: Log Alaric [2505]: arrived (Dark Alley.) from 2514
+Sun Oct 25 14:47:10 2026 :: Log Alaric [2505]: north
+Sun Oct 25 14:47:10 2026 :: Log Alaric [2506]: arrived (Dead End.) from 2505
+Sun Oct 25 14:47:11 2026 :: Log Alaric [2506]: open down
+Sun Oct 25 14:47:11 2026 :: Log Alaric [2506]: down
+Sun Oct 25 14:47:11 2026 :: Log Alaric [7030]: arrived (The Quadruple Junction Under the Garbage) from 2506
+Sun Oct 25 14:47:12 2026 :: Log Alaric [7030]: west
+Sun Oct 25 14:47:12 2026 :: Log Alaric [7022]: arrived (The odd room with smooth walls) from 7030
+Sun Oct 25 14:47:12 2026 :: Log Alaric [7022]: down
+Sun Oct 25 14:47:12 2026 :: Log Alaric [7112]: arrived (An odd intersection) from 7022
+Sun Oct 25 14:47:13 2026 :: Log Alaric [7112]: north
+Sun Oct 25 14:47:13 2026 :: Log Alaric [7111]: arrived (The southwestern corner of the ledge) from 7112
+Sun Oct 25 14:47:13 2026 :: Log Alaric [7111]: east
+Sun Oct 25 14:47:13 2026 :: Log Alaric [7115]: arrived (The Broad ledge) from 7111
+Sun Oct 25 14:47:13 2026 :: Log Alaric [7115]: south
+Sun Oct 25 14:47:13 2026 :: Log Alaric [7129]: arrived (The sewer line.) from 7115
+Sun Oct 25 14:47:13 2026 :: Log Alaric [7129]: down
+Sun Oct 25 14:47:13 2026 :: Log Alaric [7221]: arrived (The sewer drain.) from 7129
+Sun Oct 25 14:47:14 2026 :: Log Alaric [7221]: west
+Sun Oct 25 14:47:14 2026 :: Log Alaric [7220]: arrived (A boring drain.) from 7221
+Sun Oct 25 14:47:14 2026 :: Log Alaric [7220]: north
+Sun Oct 25 14:47:14 2026 :: Log Alaric [7219]: arrived (A dry sewer drain.) from 7220
+Sun Oct 25 14:47:14 2026 :: Log Alaric [7219]: east
+Sun Oct 25 14:47:14 2026 :: Log Alaric [7217]: arrived (The half-dry drain.) from 7219
+Sun Oct 25 14:47:14 2026 :: Log Alaric [7217]: north
+Sun Oct 25 14:47:14 2026 :: Log Alaric [7216]: arrived (Under water in the sewer.) from 7217
+Sun Oct 25 14:47:15 2026 :: Log Alaric [7216]: north
+Sun Oct 25 14:47:15 2026 :: Log Alaric [7215]: arrived (The half-wet drain.) from 7216
+Sun Oct 25 14:47:15 2026 :: Log Alaric [7215]: north
+Sun Oct 25 14:47:15 2026 :: Log Alaric [7210]: arrived (The four-way junction.) from 7215
+Sun Oct 25 14:47:15 2026 :: Log Alaric [7210]: west
+Sun Oct 25 14:47:15 2026 :: Log Alaric [7209]: arrived (The crawlway.) from 7210
+Sun Oct 25 14:47:15 2026 :: Log Alaric [7209]: west
+Sun Oct 25 14:47:15 2026 :: Log Alaric [7208]: arrived (The lair entrance.) from 7209
+Sun Oct 25 14:47:16 2026 :: Log Alaric [7208]: open north
+Sun Oct 25 14:47:16 2026 :: Log Alaric [7208]: north
+Sun Oct 25 14:47:16 2026 :: Log Alaric [7204]: arrived (The Lair) from 7208
+Sun Oct 25 14:47:19 2026 :: Log Alaric [7204]: north
+Sun Oct 25 14:47:19 2026 :: Log Alaric [7203]: arrived (The Lair) from 7204
+Sun Oct 25 14:47:19 2026 :: Log Alaric [7203]: north
+Sun Oct 25 14:47:19 2026 :: Log Alaric [7202]: arrived (The Lair) from 7203
+Sun Oct 25 14:47:20 2026 :: Log Alaric [7202]: open north
+Sun Oct 25 14:47:20 2026 :: Log Alaric [7202]: north
+Sun Oct 25 14:47:20 2026 :: Log Alaric [7201]: arrived (The inner Lair) from 7202
+Sun Oct 25 14:47:21 2026 :: Log Alaric [7201]: affects off: iron skin
+Sun Oct 25 14:47:22 2026 :: Log Alaric [7201]: down
+Sun Oct 25 14:47:22 2026 :: Log Alaric [25171]: arrived (The climb up.) from 7201
+Sun Oct 25 14:47:22 2026 :: Log Alaric [25171]: down
+Sun Oct 25 14:47:22 2026 :: Log Alaric [25170]: arrived (The end of the sloping passage.) from 25171
+Sun Oct 25 14:47:23 2026 :: Log Alaric [25170]: east
+Sun Oct 25 14:47:23 2026 :: Log Alaric [25169]: arrived (The slope steepens.) from 25170
+Sun Oct 25 14:47:23 2026 :: Log Alaric [25169]: east
+Sun Oct 25 14:47:23 2026 :: Log Alaric [25168]: arrived (The slope upwards.) from 25169
+Sun Oct 25 14:47:23 2026 :: Log Alaric [25168]: east
+Sun Oct 25 14:47:23 2026 :: Log Alaric [25167]: arrived (The dark passage.) from 25168
+Sun Oct 25 14:47:23 2026 :: Log Alaric [25167]: east
+Sun Oct 25 14:47:23 2026 :: Log Alaric [25166]: arrived (The Intersection.) from 25167
+Sun Oct 25 14:47:24 2026 :: Log Alaric [25166]: south
+Sun Oct 25 14:47:24 2026 :: Log Alaric [25172]: arrived (The passageway.) from 25166
+Sun Oct 25 14:47:24 2026 :: Log Alaric [25172]: south
+Sun Oct 25 14:47:24 2026 :: Log Alaric [25173]: arrived (At the bottom of the waterfall.) from 25172
+Sun Oct 25 14:47:24 2026 :: Log Alaric [25173]: up
+Sun Oct 25 14:47:24 2026 :: Log Alaric [25174]: arrived (A path upwards.) from 25173
+Sun Oct 25 14:47:24 2026 :: Log Alaric [25174]: up
+Sun Oct 25 14:47:24 2026 :: Log Alaric [25175]: arrived (The hole upwards.) from 25174
+Sun Oct 25 14:47:25 2026 :: Log Alaric [25175]: up
+Sun Oct 25 14:47:25 2026 :: Log Alaric [2043]: arrived (Waterfall of mist) from 25175
+Sun Oct 25 14:47:26 2026 :: Log Alaric [2043]: kill mi
+Sun Oct 25 14:47:26 2026 :: Log Alaric [2043]: killed some mist
+Sun Oct 25 14:47:26 2026 :: Log Alaric [2043]: coin +1 platinum
+Sun Oct 25 14:47:26 2026 :: Log Alaric [2043]: coin +5 silver
+Sun Oct 25 14:47:26 2026 :: Log Alaric [2043]: coin +6 copper
+Sun Oct 25 14:47:26 2026 :: Log Alaric [2043]: coin +2 gold
+Sun Oct 25 14:47:31 2026 :: Log Alaric [2043]: recal
+Sun Oct 25 14:47:31 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2043
+Sun Oct 25 14:47:31 2026 :: Log Alaric [2497]: recal
+Sun Oct 25 14:47:31 2026 :: Log Alaric [2497]: recal
+Sun Oct 25 14:47:31 2026 :: Log Alaric [2497]: recal
+Sun Oct 25 14:47:32 2026 :: Log Alaric [2497]: aq co
+Sun Oct 25 14:47:32 2026 :: Log Alaric [2497]: copper +135201000
+Sun Oct 25 14:47:32 2026 :: Log Alaric [2497]: quest complete: 135p 20g 10s, 48 quest points (streak bonus 30%)
+Sun Oct 25 14:47:32 2026 :: Snapshot of Alaric taken before quest: Alaric.20261025_144732.quest (PRESTORE Alaric to see it).
+Sun Oct 25 14:47:32 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct 25 14:47:35 2026 :: Log Alaric [2497]: en do
+Sun Oct 25 14:47:35 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 14:47:37 2026 :: Log Alaric [2401]: jump rock
+Sun Oct 25 14:47:37 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Sun Oct 25 14:47:37 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 1607
+Sun Oct 25 14:47:40 2026 :: Log Alaric [4208]: heal all
+Sun Oct 25 14:47:40 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Sun Oct 25 14:47:44 2026 :: Log Alaric [4208]: r e 4
+Sun Oct 25 14:47:44 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Oct 25 14:47:44 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sun Oct 25 14:47:44 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sun Oct 25 14:47:44 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sun Oct 25 14:47:45 2026 :: Log Alaric [2427]: n
+Sun Oct 25 14:47:45 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 25 14:47:45 2026 :: Log Alaric [2404]: n
+Sun Oct 25 14:47:45 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sun Oct 25 14:48:02 2026 :: Log Alaric [2401]: l
+Sun Oct 25 14:48:04 2026 :: Log Alaric [2401]: crane
+Sun Oct 25 14:48:05 2026 :: Log Alaric [2401]: killed a warlock of dresden
+Sun Oct 25 14:48:05 2026 :: Log Alaric [2401]: coin +1 platinum
+Sun Oct 25 14:48:05 2026 :: Log Alaric [2401]: coin +7 silver
+Sun Oct 25 14:48:05 2026 :: Log Alaric [2401]: coin +15 copper
+Sun Oct 25 14:48:05 2026 :: Log Alaric [2401]: coin +4 gold
+Sun Oct 25 14:48:15 2026 :: Log Alaric [2401]: kill wa
+Sun Oct 25 14:48:15 2026 :: Log Alaric [2401]: killed a warlock of dresden
+Sun Oct 25 14:48:15 2026 :: Log Alaric [2401]: coin +1 platinum
+Sun Oct 25 14:48:15 2026 :: Log Alaric [2401]: coin +7 silver
+Sun Oct 25 14:48:15 2026 :: Log Alaric [2401]: coin +10 copper
+Sun Oct 25 14:48:15 2026 :: Log Alaric [2401]: coin +4 gold
+Sun Oct 25 14:48:19 2026 :: Log Alaric [2401]: kill wa
+Sun Oct 25 14:48:22 2026 :: Log Alaric [2401]: l
+Sun Oct 25 14:48:24 2026 :: Log Alaric [2401]: kill tr
+Sun Oct 25 14:48:24 2026 :: Log Alaric [2401]: killed the trick-or-treater
+Sun Oct 25 14:48:24 2026 :: Log Alaric [2401]: coin +1 copper
+Sun Oct 25 14:48:29 2026 :: Log Alaric [2401]: affects off: steel fist
+Sun Oct 25 14:48:37 2026 :: Log Alaric [2401]: jump rock
+Sun Oct 25 14:48:37 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Sun Oct 25 14:48:38 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 1607
+Sun Oct 25 14:48:40 2026 :: Log Alaric [4208]: heal refresh
+Sun Oct 25 14:48:40 2026 :: Spellup: Hermie gave Alaric refresh (full) (30 ticks) in room 4208.
+Sun Oct 25 14:48:43 2026 :: Log Alaric [4208]: r e 4
+Sun Oct 25 14:48:43 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Oct 25 14:48:43 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sun Oct 25 14:48:43 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sun Oct 25 14:48:43 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sun Oct 25 14:48:43 2026 :: Log Alaric [2427]: n
+Sun Oct 25 14:48:43 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 25 14:48:44 2026 :: Log Alaric [2404]: n
+Sun Oct 25 14:48:44 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sun Oct 25 14:48:47 2026 :: Log Alaric [2401]: i
