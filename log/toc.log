@@ -193798,3 +193798,91 @@ Sun Oct 25 22:23:35 2026 :: Log Trentlin [30250]: reca
 Sun Oct 25 22:23:35 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 30250
 Sun Oct 25 22:23:35 2026 :: Log Alaric [2497]: aq re
 Sun Oct 25 22:23:35 2026 :: Log Alaric [2497]: quest assigned: kill the froshie (mob 15021, level 10) in campus.are, 12 minutes, ordinary
+Sun Oct 25 22:23:36 2026 :: Log Trentlin [4207]: e
+Sun Oct 25 22:23:36 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Sun Oct 25 22:23:36 2026 :: Log Trentlin [4202]: e
+Sun Oct 25 22:23:36 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sun Oct 25 22:23:36 2026 :: Log Trentlin [4201]: e
+Sun Oct 25 22:23:36 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sun Oct 25 22:23:37 2026 :: Log Trentlin [2427]: n
+Sun Oct 25 22:23:37 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 25 22:23:37 2026 :: Log Trentlin [2404]: n
+Sun Oct 25 22:23:37 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sun Oct 25 22:23:37 2026 :: Log Trentlin [2401]: n
+Sun Oct 25 22:23:37 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sun Oct 25 22:23:37 2026 :: Log Trentlin [2402]: n
+Sun Oct 25 22:23:37 2026 :: Log Trentlin [2415]: arrived (Main Processional, Strung with Lanterns) from 2402
+Sun Oct 25 22:23:38 2026 :: Log Trentlin [2415]: e
+Sun Oct 25 22:23:38 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2415
+Sun Oct 25 22:23:38 2026 :: Log Trentlin [2485]: s
+Sun Oct 25 22:23:38 2026 :: Log Trentlin [2494]: arrived (Weapons Shop.) from 2485
+Sun Oct 25 22:23:39 2026 :: Log Trentlin [2494]: (refused) repaur rea
+Sun Oct 25 22:23:41 2026 :: Log Trentlin [2494]: repair rea
+Sun Oct 25 22:23:41 2026 :: Log Trentlin [2494]: copper -56100602
+Sun Oct 25 22:23:42 2026 :: Log Trentlin [2494]: wear rea
+Sun Oct 25 22:23:43 2026 :: Log Alaric [2497]: enter door
+Sun Oct 25 22:23:43 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 22:23:43 2026 :: Log Trentlin [2494]: w
+Sun Oct 25 22:23:43 2026 :: Log Alaric [2401]: south
+Sun Oct 25 22:23:43 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Sun Oct 25 22:23:43 2026 :: Log Alaric [2404]: south
+Sun Oct 25 22:23:43 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Sun Oct 25 22:23:44 2026 :: Log Alaric [2427]: west
+Sun Oct 25 22:23:44 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 2427
+Sun Oct 25 22:23:44 2026 :: Log Alaric [4201]: west
+Sun Oct 25 22:23:44 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4201
+Sun Oct 25 22:23:44 2026 :: Log Alaric [4202]: west
+Sun Oct 25 22:23:44 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4202
+Sun Oct 25 22:23:44 2026 :: Log Alaric [4207]: up
+Sun Oct 25 22:23:44 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 4207
+Sun Oct 25 22:23:45 2026 :: Log Alaric [3700]: up
+Sun Oct 25 22:23:45 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3700
+Sun Oct 25 22:23:45 2026 :: Log Alaric [3772]: up
+Sun Oct 25 22:23:45 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 3772
+Sun Oct 25 22:23:45 2026 :: Log Trentlin [2494]: n
+Sun Oct 25 22:23:45 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2494
+Sun Oct 25 22:23:45 2026 :: Log Alaric [3795]: enter portal
+Sun Oct 25 22:23:45 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 3795
+Sun Oct 25 22:23:45 2026 :: Log Trentlin [2485]: w
+Sun Oct 25 22:23:45 2026 :: Log Trentlin [2415]: arrived (Main Processional, Strung with Lanterns) from 2485
+Sun Oct 25 22:23:46 2026 :: Log Trentlin [2415]: s
+Sun Oct 25 22:23:46 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2415
+Sun Oct 25 22:23:46 2026 :: Log Trentlin [2402]: s
+Sun Oct 25 22:23:46 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2402
+Sun Oct 25 22:23:47 2026 :: Log Trentlin [2401]: quit
+Sun Oct 25 22:23:47 2026 :: Trentlin has quit.
+Sun Oct 25 22:23:47 2026 :: [QUIT] Player rejoined the real world.
+Sun Oct 25 22:23:47 2026 :: Log Alaric [15000]: e
+Sun Oct 25 22:23:47 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15000
+Sun Oct 25 22:23:47 2026 :: Log Alaric [15001]: e
+Sun Oct 25 22:23:47 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15001
+Sun Oct 25 22:23:50 2026 :: Log Alaric [15002]: scan
+Sun Oct 25 22:23:51 2026 :: Log Alaric [15002]: e
+Sun Oct 25 22:23:51 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15002
+Sun Oct 25 22:23:52 2026 :: Log Alaric [15003]: scan
+Sun Oct 25 22:23:53 2026 :: Log Alaric [15003]: s
+Sun Oct 25 22:23:53 2026 :: Log Alaric [15027]: arrived (Mary Rotte Cafeteria Entrance) from 15003
+Sun Oct 25 22:23:55 2026 :: Log Alaric [15027]: kill fr
+Sun Oct 25 22:23:55 2026 :: Log Alaric [15027]: killed the froshie
+Sun Oct 25 22:23:59 2026 :: Log Alaric [15027]: n
+Sun Oct 25 22:23:59 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15027
+Sun Oct 25 22:23:59 2026 :: Log Alaric [15003]: w
+Sun Oct 25 22:23:59 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15003
+Sun Oct 25 22:24:00 2026 :: Log Alaric [15002]: w
+Sun Oct 25 22:24:00 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15002
+Sun Oct 25 22:24:00 2026 :: Log Alaric [15001]: w
+Sun Oct 25 22:24:00 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 15001
+Sun Oct 25 22:24:01 2026 :: Log Alaric [15000]: en po
+Sun Oct 25 22:24:01 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 15000
+Sun Oct 25 22:24:02 2026 :: Log Alaric [3795]: recal
+Sun Oct 25 22:24:02 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 3795
+Sun Oct 25 22:24:03 2026 :: Log Alaric [2497]: aq co
+Sun Oct 25 22:24:03 2026 :: Log Alaric [2497]: copper +162241200
+Sun Oct 25 22:24:03 2026 :: Log Alaric [2497]: quest complete: 162p 24g 12s, 15 quest points (streak bonus 50%)
+Sun Oct 25 22:24:03 2026 :: Snapshot of Alaric taken before quest: Alaric.20261025_222403.quest (PRESTORE Alaric to see it).
+Sun Oct 25 22:24:05 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct 25 22:24:08 2026 :: Log Alaric [2497]: l
+Sun Oct 25 22:24:09 2026 :: Sock.sinaddr:  52.15.147.27
+Sun Oct 25 22:24:09 2026 :: EOF encountered on read.
+Sun Oct 25 22:24:11 2026 :: Log Alaric [2497]: sleep
+Sun Oct 25 22:28:13 2026 :: Log Alaric [2497]: affects off: titanic, empower, empower; max hp 8418 -> 1403; max mana 14694 -> 2449; max moves 6078 -> 1013; hp 8418 -> 1403
