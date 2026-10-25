@@ -83,6 +83,7 @@ class VampiricLandingTests(unittest.TestCase):
                 immune_after = alignment(hero)
 
                 # A worker with hit points to lose: landed blows move it.
+                run(god, f"set mob {GUARD} act +sentinel")   # it wanders off otherwise
                 run(god, f"load mob {GUARD}")
                 run(hero, "kill guard", 1.0)
                 hero.drain(9.0)               # three rounds: hurt, not killed

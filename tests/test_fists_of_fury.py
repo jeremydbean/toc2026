@@ -62,6 +62,7 @@ class FistsLiveTests(unittest.TestCase):
                 run(staff, "scroll 0")
                 run(monk, "scroll 0")
                 run(monk, "remove all", 1.2)
+                run(staff, "set mob %d act +sentinel" % GUARD)   # it wanders off otherwise
                 run(staff, "load mob %d" % GUARD, 1.2)
                 run(staff, "set char guard hp 30000", 1.0)
                 run(staff, "restore guard", 1.0)

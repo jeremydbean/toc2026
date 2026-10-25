@@ -460,6 +460,11 @@ Live-test gotchas that look like product bugs and are not:
   2026-10-23 -- "You are too stunned to do that." -- which is what
   started the rework below. A low-level fixture at a few hit points with
   no fight is the sign.
+- **A mobile a test loads may walk away.** The Korzath security guard
+  (29012) five tests fight wanders, and on a busy runner it left the room
+  between LOAD and the first KILL or CAST often enough to fail three
+  different modules in one afternoon (2026-10-25: "They aren't here").
+  `set mob <vnum> act +sentinel` before the LOAD keeps every copy still.
 - **The test servers append to tracked runtime logs.** A module run from
   the repository root leaves `log/webadmin-events.tsv` and `log/toc.log`
   modified, and `git rebase` then refuses with "unstaged changes". Check

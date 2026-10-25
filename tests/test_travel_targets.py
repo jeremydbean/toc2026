@@ -65,8 +65,12 @@ class LiveTests(unittest.TestCase):
                     c.send(f"cast 'earth travel' {target}")
                     c.drain(4)
                     results[target] = first_line_after(c.transcript[mark:])
+                # Teardown, not the test: a target's room can hold something
+                # that attacks the arrival, and QUIT is refused mid-fight
+                # (CI, 2026-10-25: "False is not true" from this line). The
+                # server is stopped with the world either way.
                 c.send("quit")
-                self.assertTrue(c.wait_closed())
+                c.wait_closed(5)
             # The High Tower's level 1 kitten, not Sammy the level 45 one.
             self.assertIn("hallway", results["kitten"].lower(), results)
             # Cepheus is level 26 and summon-immune: reachable now.

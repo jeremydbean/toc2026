@@ -50,6 +50,10 @@ class WimpyWhileIdleTests(unittest.TestCase):
                 login(god, "Zwimpgod", PW)
                 run(hero, "scroll 0")
                 self.assertIn("150", run(hero, "wimpy 150"))
+                # The guard wanders: one walked south before the KILL and
+                # the test waited 90 s on nothing (CI, 2026-10-25).
+                said = run(god, f"set mob {GUARD} act +sentinel")
+                self.assertNotIn("Syntax", said, said)
                 run(god, f"load mob {GUARD}")
                 run(god, f"transfer zcoward {HALLS}", 1.0)
                 run(god, f"goto {TEMPLE}", 0.6)      # out of the guard's way

@@ -163,6 +163,7 @@ class CreatorRankTests(unittest.TestCase):
 
                 # R5: switched, he is not named by WHO or SOCKETS.
                 run(creator, "wizinvis 72")
+                run(creator, "set mob 29012 act +sentinel")   # it wanders off otherwise
                 run(creator, "load mob 29012")
                 self.assertIn("Possessed by you", run(creator, "switch guard"))
                 self.assertNotIn("Killuminati", run(impl, "who"))
@@ -193,6 +194,7 @@ class CreatorRankTests(unittest.TestCase):
                 run(creator, "wizinvis")                 # visible, so he can be aimed at
                 self.assertIn("redirecting the strike back", run(impl, "slay killuminati", 2.0))
                 run(creator, "goto 4202")                # the Temple refuses a fight
+                run(creator, "set mob 29012 act +sentinel")   # it wanders off otherwise
                 run(creator, "load mob 29012")
                 run(creator, "set char killuminati hp 1")
                 mark = len(creator.transcript)
