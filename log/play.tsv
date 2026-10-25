@@ -15096,3 +15096,68 @@
 1792892166	cmd	Alaric	35	16019	pirate.are	standing	89	0	-	east		Main Deck of the Royal Eagle //   You are aboard the Royal Eagle - the flag ship of the Krondorian fleet.  She // seems to have been out to sea many times on many voyages.  Crewmen are
 1792892167	cmd	Alaric	35	16020	pirate.are	standing	89	0	-	east		Main Deck of the Royal Eagle - Starboard //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
 1792892170	cmd	Alaric	35	16020	pirate.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The angry pirate. [-2] // Your fists of fury hits The angry pirate. [-9]
+1792892176	cmd	Alaric	35	16020	pirate.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The angry pirate. [-1] // Your fists of fury grazes The angry pirate. [-7]
+1792892182	cmd	Alaric	35	16020	pirate.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The angry pirate. [-22] // Your fists of fury grazes The angry pirate. [-8]
+1792892187	cmd	Alaric	35	16020	pirate.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The angry pirate. [-20] // Your fists of fury decimates The angry pirate! [-25]
+1792892193	cmd	Alaric	35	16020	pirate.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The angry pirate. [-6] // Your fists of fury injures The angry pirate. [-14]
+1792892199	cmd	Alaric	35	16020	pirate.are	fighting	85	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The angry pirate. [-1] // Your fists of fury hits The angry pirate. [-9]
+1792892205	cmd	Alaric	35	16020	pirate.are	fighting	84	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The angry pirate. [-15] // Your fists of fury grazes The angry pirate. [-5]
+1792892210	cmd	Alaric	35	16020	pirate.are	fighting	83	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The angry pirate. [-8] // Your fists of fury mauls The angry pirate. [-24]
+1792892216	cmd	Alaric	36	16020	pirate.are	standing	83	0	-	fists		Who do you want to attack?
+1792892240	cmd	Alaric	36	16025	pirate.are	standing	83	0	-	north		Main Deck - Starboard //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892242	cmd	Alaric	36	16025	pirate.are	standing	83	0	-	kill	pi	They aren't here.
+1792892244	cmd	Alaric	36	16024	pirate.are	standing	83	0	-	west		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892244	cmd	Alaric	36	16023	pirate.are	standing	83	0	-	west		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892245	cmd	Alaric	36	16022	pirate.are	standing	83	0	-	west		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892246	cmd	Alaric	36	16022	pirate.are	standing	83	0	-	kill	sa	Your punch ^^^ DESTROYS ^^^ The sailor! [-89] // Your punch misses The sailor. [-0] // The sailor parries your attack.
+1792892249	cmd	Alaric	36	16022	pirate.are	fighting	83	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The sailor. [-19] // Your fists of fury *** DEVASTATES *** The sailor! [-63]
+1792892255	cmd	Alaric	36	16022	pirate.are	fighting	83	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The sailor! [-26] // The sailor walks off to the north.
+1792892261	cmd	Alaric	36	16022	pirate.are	standing	83	0	-	fists		Who do you want to attack?
+1792892264	cmd	Alaric	36	16021	pirate.are	standing	83	0	-	west		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792892265	cmd	Alaric	36	16026	pirate.are	standing	83	0	-	north		Main Deck - Port //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892267	cmd	Alaric	36	16026	pirate.are	standing	83	0	-	kill	mi	The midshipman parries your attack. // The midshipman parries your attack. // Your punch === OBLITERATES === The midshipman! [-122]
+1792892269	cmd	Alaric	36	16026	pirate.are	fighting	82	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims The midshipman! [-36] // Your fists of fury scratches The midshipman. [-3]
+1792892275	cmd	Alaric	36	16026	pirate.are	standing	82	0	-	fists		Who do you want to attack?
+1792892283	cmd	Alaric	36	16027	pirate.are	standing	82	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892285	cmd	Alaric	36	16027	pirate.are	standing	82	0	-	kill	sa	Your punch ^^^ DESTROYS ^^^ The sailor! [-117] // The sailor is DEAD!! // You receive 207 experience points.
+1792892289	cmd	Alaric	36	16028	pirate.are	standing	82	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892290	cmd	Alaric	36	16029	pirate.are	standing	82	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892292	cmd	Alaric	36	16029	pirate.are	standing	82	0	-	kill	mi	The midshipman parries your attack. // Your punch ^^^ DESTROYS ^^^ The midshipman! [-118] // Your punch === OBLITERATES === The midshipman! [-134]
+1792892295	cmd	Alaric	36	16029	pirate.are	fighting	82	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The midshipman! [-29] // Your fists of fury DISMEMBERS The midshipman! [-48]
+1792892320	cmd	Alaric	36	16030	pirate.are	standing	82	0	-	east		Main Deck - Starboard //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892322	cmd	Alaric	36	16030	pirate.are	standing	82	0	-	kill	pi	The pirate parries your attack. // The pirate dodges your attack. // Your punch mauls The pirate. [-22]
+1792892324	cmd	Alaric	36	16030	pirate.are	fighting	82	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES The pirate! [-38] // Your fists of fury maims The pirate! [-33]
+1792892330	cmd	Alaric	36	16030	pirate.are	fighting	81	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS The pirate! [-47] // Your fists of fury mauls The pirate. [-24]
+1792892340	cmd	Alaric	36	16030	pirate.are	fighting	80	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The pirate! [-31] // Your fists of fury mauls The pirate. [-24]
+1792892346	cmd	Alaric	36	16030	pirate.are	standing	80	0	-	fists		Who do you want to attack?
+1792892346	cmd	Alaric	36	16025	pirate.are	standing	80	0	-	south		Main Deck - Starboard //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892347	cmd	Alaric	36	16025	pirate.are	standing	80	0	-	kill	pi	Your punch === OBLITERATES === The pirate! [-128] // Your punch *** DEVASTATES *** The pirate! [-67] // The pirate walks off to the west.
+1792892351	cmd	Alaric	36	16024	pirate.are	standing	80	0	-	west		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892351	cmd	Alaric	36	16024	pirate.are	standing	80	0	-	kill	pi	The pirate dodges your attack. // The pirate parries your attack. // Your punch *** DEVASTATES *** The pirate! [-78]
+1792892355	cmd	Alaric	36	16029	pirate.are	standing	80	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892355	cmd	Alaric	36	16034	pirate.are	standing	80	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892357	cmd	Alaric	36	16034	pirate.are	fighting	80	0	fight	kill	pi	You do the best you can!
+1792892358	cmd	Alaric	36	16034	pirate.are	fighting	80	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims The drunk pirate! [-34] // Your fists of fury wounds The drunk pirate. [-17]
+1792892364	cmd	Alaric	36	16034	pirate.are	fighting	80	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS The drunk pirate! [-48] // Your fists of fury MUTILATES The drunk pirate! [-37]
+1792892369	cmd	Alaric	36	16034	pirate.are	fighting	80	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** The drunk pirate! [-58] // Your fists of fury MANGLES The drunk pirate! [-54]
+1792892376	cmd	Alaric	36	16034	pirate.are	standing	80	0	-	fists		Who do you want to attack?
+1792892376	cmd	Alaric	36	16035	pirate.are	standing	80	0	-	east		Main Deck - Starboard //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892377	cmd	Alaric	36	16034	pirate.are	standing	80	0	-	west		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892377	cmd	Alaric	36	16033	pirate.are	standing	80	0	-	west		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892379	cmd	Alaric	36	16033	pirate.are	standing	80	0	-	kick		You aren't fighting anyone.
+1792892380	cmd	Alaric	36	16033	pirate.are	standing	80	0	-	kick		You aren't fighting anyone.
+1792892380	cmd	Alaric	36	16033	pirate.are	standing	80	0	-	kick		You aren't fighting anyone.
+1792892382	cmd	Alaric	36	16038	pirate.are	standing	80	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892385	cmd	Alaric	36	16038	pirate.are	fighting	80	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS The drunk pirate! [-43] // Your fists of fury devastates The drunk pirate! [-29]
+1792892391	cmd	Alaric	37	16038	pirate.are	fighting	79	22	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES The drunk pirate! [-52] // Your fists of fury wounds The drunk pirate. [-19]
+1792892399	cmd	Alaric	37	16038	pirate.are	standing	79	0	-	kill	sw	Your punch ^^^ DESTROYS ^^^ The swashbuckler! [-104] // The swashbuckler dodges your attack. // The swashbuckler blocks your attack with his shield.
+1792892402	cmd	Alaric	37	16038	pirate.are	fighting	79	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims The swashbuckler! [-33] // Your fists of fury wounds The swashbuckler. [-20]
+1792892408	cmd	Alaric	37	16038	pirate.are	fighting	79	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims The swashbuckler! [-35] // Your fists of fury maims The swashbuckler! [-33]
+1792892414	cmd	Alaric	37	16038	pirate.are	fighting	78	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES The swashbuckler! [-37] // Your fists of fury injures The swashbuckler. [-16]
+1792892420	cmd	Alaric	37	16038	pirate.are	fighting	77	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS The swashbuckler! [-44] // Your fists of fury DISEMBOWELS The swashbuckler! [-43]
+1792892438	cmd	Alaric	37	16038	pirate.are	fighting	75	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The swashbuckler. [-2] // Your fists of fury hits The swashbuckler. [-10]
+1792892444	cmd	Alaric	37	16038	pirate.are	fighting	74	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The swashbuckler. [-3] // Your fists of fury MUTILATES The swashbuckler! [-39]
+1792892453	cmd	Alaric	37	16037	pirate.are	standing	74	0	-	west		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792892455	cmd	Alaric	37	16037	pirate.are	standing	74	0	-	kill	pi	Your punch *** DEVASTATES *** The pirate! [-67] // Your punch ^^^ DESTROYS ^^^ The pirate! [-86] // The pirate parries your attack.
+1792892457	cmd	Alaric	37	16037	pirate.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES The pirate! [-39] // Your fists of fury MUTILATES The pirate! [-40]
+1792892469	cmd	Alaric	37	16037	pirate.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The pirate. [-14] // Your fists of fury scratches The pirate. [-4]
