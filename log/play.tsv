@@ -14723,3 +14723,64 @@
 1792890948	cmd	Alaric	27	16036	pirate.are	fighting	76	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates The pirate! [-31]
 1792890952	cmd	Alaric	27	16036	pirate.are	fighting	75	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates The pirate! [-25]
 1792890956	cmd	Alaric	27	16036	pirate.are	fighting	75	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The pirate. [-3]
+1792890963	cmd	Alaric	27	16036	pirate.are	fighting	73	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates The pirate! [-25] // The pirate walks off to the south.
+1792890969	cmd	Alaric	27	16036	pirate.are	fighting	73	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The pirate. [-3]
+1792890971	cmd	Alaric	27	16036	pirate.are	fighting	73	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES The pirate! [-40]
+1792890975	cmd	Alaric	27	16036	pirate.are	fighting	72	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates The pirate! [-29]
+1792890979	cmd	Alaric	27	16036	pirate.are	fighting	72	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch hits The pirate. [-11]
+1792890982	cmd	Alaric	27	16036	pirate.are	fighting	71	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes The pirate. [-8]
+1792890987	cmd	Alaric	27	16036	pirate.are	fighting	71	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches The pirate. [-3]
+1792890989	cmd	Alaric	27	16036	pirate.are	fighting	70	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch maims The pirate! [-36]
+1792890992	cmd	Alaric	27	16036	pirate.are	fighting	70	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches The pirate. [-1]
+1792890995	cmd	Alaric	27	16036	pirate.are	fighting	69	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch hits The pirate. [-12]
+1792890998	cmd	Alaric	27	16036	pirate.are	fighting	69	0	fight	nerve		You missed the nerve. // Your nerve pinch hits The pirate. [-10]
+1792890998	cmd	Alaric	27	16036	pirate.are	fighting	69	0	fight	who		[27 Dwarf   Monk  ] Alaric. // Players found: 1
+1792890999	cmd	Alaric	27	16036	pirate.are	fighting	68	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES The pirate! [-40]
+1792891010	cmd	Alaric	27	16036	pirate.are	fighting	67	0	fight	who		[27 Dwarf   Monk  ] Alaric. // Players found: 1
+1792891010	cmd	Alaric	27	16036	pirate.are	fighting	67	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch maims The pirate! [-35]
+1792891014	cmd	Alaric	27	16031	pirate.are	standing	67	0	-	south		Main Deck - Port //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792891015	cmd	Alaric	27	16031	pirate.are	standing	67	0	-	kill	pi	Your punch ^^^ DESTROYS ^^^ The pirate! [-93] // The pirate dodges your attack. // You have become better at hand to hand!
+1792891018	cmd	Alaric	28	16031	pirate.are	standing	67	0	-	kill	pi	The pirate dodges your attack. // Your punch ^^^ DESTROYS ^^^ The pirate! [-89] // Your punch MASSACRES The pirate! [-50]
+1792891023	cmd	Alaric	28	16031	pirate.are	standing	67	0	-	scan		The midshipman                     -to the North. // The midshipman                     -to the South.
+1792891025	cmd	Alaric	28	16036	pirate.are	standing	67	0	-	north		Main Deck - Port //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792891026	cmd	Alaric	28	16036	pirate.are	standing	67	0	-	kill	mi	Your punch MUTILATES The midshipman! [-38] // The midshipman dodges your attack. // The midshipman parries your attack.
+1792891029	cmd	Alaric	28	16036	pirate.are	fighting	67	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The midshipman. [-1]
+1792891029	cmd	Alaric	28	16036	pirate.are	fighting	67	0	fight	nerve		You jab The midshipman with wedged fingers, paralyzing a nerve. // Your nerve pinch DISEMBOWELS The midshipman! [-42]
+1792891032	cmd	Alaric	28	16036	pirate.are	fighting	66	0	fight	nerve		You jab The midshipman with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The midshipman. [-16]
+1792891042	cmd	Alaric	28	16036	pirate.are	fighting	65	0	fight	nerve		You jab The midshipman with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates The midshipman! [-31]
+1792891044	cmd	Alaric	29	16036	pirate.are	standing	65	0	-	nerve		Who do you want to attack?
+1792891049	cmd	Alaric	29	16036	pirate.are	standing	65	0	-	scan		You don't see anything near you.
+1792891050	cmd	Alaric	29	16041	pirate.are	standing	65	0	-	north		Main Deck - Port //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792891051	cmd	Alaric	29	16041	pirate.are	standing	65	0	-	scan		The pirate                         -to the South.
+1792891053	cmd	Alaric	29	16036	pirate.are	standing	65	0	-	south		Main Deck - Port //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792891054	cmd	Alaric	29	16036	pirate.are	standing	65	0	-	kill	pi	The pirate parries your attack. // The pirate parries your attack. // Your punch decimates The pirate! [-26]
+1792891062	cmd	Alaric	29	16036	pirate.are	fighting	62	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch hits The pirate. [-12]
+1792891065	cmd	Alaric	29	16036	pirate.are	fighting	62	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The pirate. [-2]
+1792891068	cmd	Alaric	29	16036	pirate.are	fighting	62	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The pirate. [-2]
+1792891071	cmd	Alaric	29	16036	pirate.are	fighting	62	0	fight	alias		(withheld)
+1792891075	cmd	Alaric	29	16036	pirate.are	fighting	62	0	fight	alias		(withheld)
+1792891081	cmd	Alaric	29	16036	pirate.are	fighting	60	0	fight	alias		(withheld)
+1792891083	cmd	Alaric	29	16036	pirate.are	fighting	60	0	fight	alias		(withheld)
+1792891090	cmd	Alaric	29	16036	pirate.are	fighting	60	0	fight	alias		(withheld)
+1792891092	cmd	Alaric	29	16036	pirate.are	fighting	59	0	fight	alias		(withheld)
+1792891093	cmd	Alaric	29	16036	pirate.are	fighting	59	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates The pirate! [-30]
+1792891096	cmd	Alaric	29	16036	pirate.are	fighting	58	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls The pirate. [-22]
+1792891099	cmd	Alaric	29	16036	pirate.are	fighting	58	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates The pirate! [-31]
+1792891102	cmd	Alaric	29	16036	pirate.are	fighting	57	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The pirate. [-4]
+1792891105	cmd	Alaric	29	16036	pirate.are	fighting	57	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch DISMEMBERS The pirate! [-46]
+1792891110	cmd	Alaric	29	16036	pirate.are	standing	57	0	-	scan		You don't see anything near you.
+1792891111	cmd	Alaric	29	16037	pirate.are	standing	57	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792891112	cmd	Alaric	29	16037	pirate.are	standing	57	0	-	scan		The pirate                         -to the East.
+1792891114	cmd	Alaric	29	16038	pirate.are	standing	57	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792891115	cmd	Alaric	29	16038	pirate.are	standing	57	0	-	kill	pi	The pirate parries your attack. // The pirate parries your attack. // The pirate parries your attack.
+1792891118	cmd	Alaric	29	16038	pirate.are	fighting	57	0	fight	nerve		You missed the nerve. // Your nerve pinch hits The pirate. [-9]
+1792891118	cmd	Alaric	29	16038	pirate.are	fighting	57	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes The pirate. [-6]
+1792891118	cmd	Alaric	29	16038	pirate.are	fighting	57	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds The pirate. [-17]
+1792891121	cmd	Alaric	29	16038	pirate.are	fighting	56	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The pirate. [-16]
+1792891124	cmd	Alaric	29	16038	pirate.are	fighting	56	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates The pirate! [-27]
+1792891126	cmd	Alaric	29	16038	pirate.are	fighting	56	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES The pirate! [-37]
+1792891129	cmd	Alaric	29	16038	pirate.are	fighting	55	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The pirate. [-2]
+1792891129	cmd	Alaric	29	16038	pirate.are	fighting	55	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds The pirate. [-17]
+1792891132	cmd	Alaric	29	16038	pirate.are	fighting	55	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch DISEMBOWELS The pirate! [-41]
+1792891135	cmd	Alaric	29	16038	pirate.are	fighting	55	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes The pirate. [-5]
+1792891138	cmd	Alaric	29	16038	pirate.are	fighting	55	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch maims The pirate! [-33]
