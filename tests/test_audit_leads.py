@@ -387,16 +387,23 @@ class HeatMetalTests(unittest.TestCase):
                 bursts = re.split(r"<-?\d+hp [^>]*>", caster.transcript[mark:])
                 landed = sum("Your heat metal" in b for b in bursts)
                 both = sum("Your heat metal" in b and "no effect" in b for b in bursts)
+                # Everything the caster queued above has run before the
+                # second guard exists. Under the sanitizer build the last
+                # of the twenty casts was still waiting out lag, landed on
+                # the new guard and started a fight, and the no-op cast's
+                # reply then queued behind it past a fixed window (CI,
+                # 2026-10-25). sync() waits for the game's own answer.
+                caster.sync("look", 60)
+                run(god, "peace", 0.4)
                 run(god, "purge guard", 0.4)
                 run(god, f"load mob {guard}")
                 # Nothing to heat: the true no-op. A save says "resists"
-                # instead, so cast until one is not resisted.
+                # instead, so cast until one is not resisted. Each cast is
+                # read up to the game's answer to the WORTH sent after it,
+                # however long its lag holds it.
                 for _ in range(6):
-                    # Four seconds: a round of the last cast's lag can
-                    # still be owed, and the reply waits it out.
-                    nothing = run(caster, "cast 'heat metal' guard", 4.0)
+                    nothing = caster.sync("cast 'heat metal' guard", 60)
                     run(god, "peace", 0.4)
-                    caster.drain(2.0)
                     if "resists" not in nothing:
                         break
                 for client in (caster, god):
