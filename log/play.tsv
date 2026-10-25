@@ -13517,3 +13517,8 @@
 1792886969	cmd	Alaric	55	29212	korzath2.are	standing	94	0	-	look		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
 1792886970	cmd	Alaric	55	29212	korzath2.are	standing	94	0	-	kill	sk	An Animated Skeleton dodges your attack. // Your divine power does UNSPEAKABLE things to an Animated Skeleton! [-272] // An Animated Skeleton is DEAD!!
 1792886978	cmd	Alaric	55	29212	korzath2.are	standing	94	0	-	bs	mad	Your backstab <<< ERADICATES >>> a deranged madman! [-180] // Your backstab maims a deranged madman! [-36] // Your backstab ^^^ DESTROYS ^^^ a deranged madman! [-91]
+1792887058	cmd	Alaric	55	29212	korzath2.are	fighting	86	0	fight	look		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1792887170	cmd	Alaric	55	29212	korzath2.are	standing	86	0	-	look		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1792887172	cmd	Alaric	55	29212	korzath2.are	standing	86	0	-	scan		an insane lieutenant               -to the North. // a deranged madman                  -to the West. // a deranged madman                  -to the West.
+1792887175	cmd	Alaric	55	29214	korzath2.are	standing	86	0	-	west		Twist in the Maze //   A closed door is to the south.  A rank raw smell emanates from that //  direction.
+1792887177	cmd	Alaric	55	29214	korzath2.are	standing	86	0	-	bs	mad	Your backstab *** DEVASTATES *** a deranged madman! [-67] // Your backstab *** DEVASTATES *** a deranged madman! [-69] // Your backstab ^^^ DESTROYS ^^^ a deranged madman! [-108]

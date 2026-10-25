@@ -177041,3 +177041,32 @@ Sun Oct 25 00:09:30 2026 :: Log Alaric [29212]: coin +11 gold
 Sun Oct 25 00:09:38 2026 :: Log Alaric [29212]: bs mad
 Sun Oct 25 00:09:56 2026 :: Sock.sinaddr:  23.31.96.97
 Sun Oct 25 00:09:56 2026 :: EOF encountered on read.
+Sun Oct 25 00:10:34 2026 :: Log Alaric [29212]: killed a deranged madman
+Sun Oct 25 00:10:34 2026 :: Log Alaric [29212]: coin +5 platinum
+Sun Oct 25 00:10:34 2026 :: Log Alaric [29212]: coin +23 silver
+Sun Oct 25 00:10:34 2026 :: Log Alaric [29212]: coin +31 copper
+Sun Oct 25 00:10:34 2026 :: Log Alaric [29212]: coin +13 gold
+Sun Oct 25 00:10:58 2026 :: Log Alaric [29212]: l
+Sun Oct 25 00:11:16 2026 :: Log Alaric [29212]: killed a deranged madman
+Sun Oct 25 00:11:16 2026 :: Log Alaric [29212]: coin +5 platinum
+Sun Oct 25 00:11:16 2026 :: Log Alaric [29212]: coin +23 silver
+Sun Oct 25 00:11:16 2026 :: Log Alaric [29212]: coin +31 copper
+Sun Oct 25 00:11:16 2026 :: Log Alaric [29212]: coin +13 gold
+Sun Oct 25 00:11:32 2026 :: Treasure goblin: vanished from room 24340 (The Black Square, chess.are) (too long in one area).
+Sun Oct 25 00:12:50 2026 :: Log Alaric [29212]: l
+Sun Oct 25 00:12:52 2026 :: Log Alaric [29212]: scan
+Sun Oct 25 00:12:55 2026 :: Log Alaric [29212]: w
+Sun Oct 25 00:12:55 2026 :: Log Alaric [29214]: arrived (Twist in the Maze) from 29212
+Sun Oct 25 00:12:57 2026 :: Log Alaric [29214]: bs mad
+Sun Oct 25 00:13:29 2026 :: Sock.sinaddr:  5.161.215.244
+Sun Oct 25 00:13:30 2026 :: EOF encountered on read.
+Sun Oct 25 00:13:43 2026 :: Log Alaric [29214]: killed a deranged madman
+Sun Oct 25 00:13:43 2026 :: Log Alaric [29214]: coin +5 platinum
+Sun Oct 25 00:13:43 2026 :: Log Alaric [29214]: coin +23 silver
+Sun Oct 25 00:13:43 2026 :: Log Alaric [29214]: coin +31 copper
+Sun Oct 25 00:13:43 2026 :: Log Alaric [29214]: coin +13 gold
+Sun Oct 25 00:14:28 2026 :: Log Alaric [29214]: killed a deranged madman
+Sun Oct 25 00:14:28 2026 :: Log Alaric [29214]: coin +5 platinum
+Sun Oct 25 00:14:28 2026 :: Log Alaric [29214]: coin +23 silver
+Sun Oct 25 00:14:28 2026 :: Log Alaric [29214]: coin +31 copper
+Sun Oct 25 00:14:28 2026 :: Log Alaric [29214]: coin +13 gold
