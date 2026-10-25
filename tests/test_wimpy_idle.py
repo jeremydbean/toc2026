@@ -52,11 +52,18 @@ class WimpyWhileIdleTests(unittest.TestCase):
                 self.assertIn("150", run(hero, "wimpy 150"))
                 # The guard wanders: one walked south before the KILL and
                 # the test waited 90 s on nothing (CI, 2026-10-25).
-                said = run(god, f"set mob {GUARD} act +sentinel")
+                said = god.sync(f"set mob {GUARD} act +sentinel")
                 self.assertNotIn("Syntax", said, said)
-                run(god, f"load mob {GUARD}")
-                run(god, f"transfer zcoward {HALLS}", 1.0)
-                run(god, f"goto {TEMPLE}", 0.6)      # out of the guard's way
+                # Every staff step is synced, and the hero has to see the
+                # guard before typing KILL: on a loaded runner the hero
+                # arrived to a room with no guard in it and KILL said
+                # "They aren't here." (CI, 2026-10-25).
+                god.sync(f"goto {HALLS}")
+                god.sync(f"transfer zcoward {HALLS}")
+                god.sync(f"load mob {GUARD}")
+                seen = hero.sync("look")
+                self.assertIn("security guard", seen.lower(), seen)
+                god.sync(f"goto {TEMPLE}")      # out of the guard's way
                 hero.buffer = ""
                 run(hero, "kill guard", 0.5)
                 # Nothing more is typed. Listen for wimpy's flee, or death.

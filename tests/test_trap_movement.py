@@ -75,26 +75,31 @@ class TrapMovementLiveTests(unittest.TestCase):
                 # took it for the trap's. So each try stands the walker up,
                 # reads off anything already said, and counts only a death
                 # that came with this departure's gas.
+                # Every step is synced (MudClient.sync): a fixed window on a
+                # loaded runner closed before a slow WEST had answered, the
+                # death landed after it, and the control below read a dead
+                # walker as one the trap had let through (CI, 2026-10-25).
                 for _ in range(40):
-                    run(trapper, "restore ztrapper", 0.3)
-                    run(trapper, "cast 'stinking cloud'", 0.8)
-                    run(trapper, "restore zwalker", 0.4)
-                    run(trapper, "force zwalker stand", 0.4)
-                    run(trapper, "transfer zwalker %d" % HALLS, 0.6)
-                    walker.drain(0.5)
-                    said = run(walker, "west", 2.0)
+                    trapper.sync("restore ztrapper")
+                    cast = trapper.sync("cast 'stinking cloud'")
+                    self.assertTrue("noxious fumes" in cast or "Nothing seems" in cast, cast)
+                    trapper.sync("restore zwalker")
+                    trapper.sync("force zwalker stand")
+                    trapper.sync("transfer zwalker %d" % HALLS)
+                    walker.sync("look")
+                    said = walker.sync("west", timeout=60)
                     if "KILLED" in said and "Poison gas!" in said:
                         break
                     if "KILLED" in said:
                         continue   # the poison's tick, not the departure
                     # The control: a trap that does not kill lets the move
                     # finish.
-                    self.assertRegex(run(trapper, "stat char zwalker", 1.4),
-                                     r"Room: %d\b" % TEMPLE)
+                    self.assertRegex(trapper.sync("stat char zwalker"),
+                                     r"Room: %d\b" % TEMPLE, said)
                 else:
                     self.fail("the cloud never killed the walker")
 
-                stat = run(trapper, "stat char zwalker", 1.4)
+                stat = trapper.sync("stat char zwalker")
                 self.assertRegex(stat, r"Room: %d\b" % DEATH_ROOM, stat)
 
 
@@ -175,11 +180,15 @@ class MountedTrapTests(unittest.TestCase):
                 else:
                     self.fail("the rider never got on the horse")
 
-                run(maker, "set skill zgasmaker 'stinking cloud' 100")
-                run(maker, "set char zgasmaker mana 30000")
-                run(maker, f"goto {gassed}")
-                run(maker, "cast 'stinking cloud'", 1.0)
-                run(maker, f"goto {start}")
+                # Synced, and the cloud confirmed: on a loaded runner the
+                # walker once went east into a room with no cloud in it and
+                # waited out the whole expect (CI, 2026-10-25).
+                maker.sync("set skill zgasmaker 'stinking cloud' 100")
+                maker.sync("set char zgasmaker mana 30000")
+                maker.sync(f"goto {gassed}")
+                cast = maker.sync("cast 'stinking cloud'", timeout=60)
+                self.assertIn("noxious fumes", cast, cast)
+                maker.sync(f"goto {start}")
 
                 walked_in = move_through_gas(walker, "east")
                 # RIDE and the bucks before it lag the rider; the move waits
