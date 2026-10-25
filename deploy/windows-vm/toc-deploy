@@ -9,6 +9,7 @@
 #
 #   sudo toc-deploy            # fetch, build, check, install, restart
 #   sudo toc-deploy --dry-run  # everything except stopping the game
+#   sudo toc-deploy --rollback # the code from the newest snapshot, back
 #
 # State is never taken from git by this script. player/, gods/, log/
 # and the area runtime files belong to the running game; toc-restore
@@ -50,20 +51,105 @@ EXIT_UNHEALTHY=12          # new code not healthy, left for a person
 EXIT_RESTARTED=13          # stopped, nothing installed, old code back and healthy
 EXIT_RESTART_UNHEALTHY=14  # stopped, nothing installed, and not healthy again
 
+# The probe toc-auto-deploy asks too (deploy/windows-vm/toc-game-probe),
+# from the tree being deployed.
+GAME_PROBE="${TOC_GAME_PROBE:-$BUILD/deploy/windows-vm/toc-game-probe}"
+
+# Healthy is the dashboard answering and the game itself answering. The
+# dashboard's "merc":true is only a TCP connect, and the game binds its
+# port before it loads the world (init_socket, then boot_db), so that
+# alone passed for a game still booting -- or hung while it did. A count
+# of players over MSSP comes from the running game loop; "unknown" or
+# "down" is not healthy.
 healthy() {
     curl --fail --silent --max-time 3 http://127.0.0.1:9001/api/health |
-        grep -q '"merc":true'
+        grep -q '"merc":true' || return 1
+    case "$("$GAME_PROBE" 127.0.0.1 "${MUD_PORT:-9000}" 2>/dev/null)" in
+        ''|*[!0-9]*) return 1 ;;
+    esac
+    return 0
 }
 
-# The old code and area files back, and the game restarted on them.
+# Every .txt under area/ the running game writes. area/*.txt is excluded
+# from the copy wholesale, because help and social text files live there
+# too and are code; sync_code copies those back by name, and this is the
+# list of what must NOT come back -- getting it wrong took the game down
+# on 2026-09-29: the loop originally skipped only the four report files,
+# so it copied shutdown.txt out of git into the live tree, and
+# ExecCondition=test ! -e .../area/shutdown.txt then stopped toc-game
+# from starting at all. Every runtime .txt belongs to the running game
+# and none of them may be restored from a checkout or a snapshot.
+runtime_txt="shutdown.txt ban.txt bugs.txt ideas.txt typos.txt notes.txt
+             maxload.txt wizlist.txt offense.txt relics.txt not.txt
+             pkilldata.txt dpsboard.txt"
+
+# Copy the code in one tree over another, and nothing the running game
+# owns: sync_code SRC DST [rsync options]. It is the install (build tree
+# over the live one), the snapshot taken before the stop (live tree into
+# a rollback directory) and the rollback (snapshot over the live tree),
+# so all three agree on what code is. rsync's --delete never removes an
+# excluded path from the destination, so a rollback takes back new code
+# files and leaves every player, corpse, note, log and builder's area as
+# it is -- the tar archive it replaces held all of area/, runtime files
+# included, and extracting it rewound them.
+#
+# custom.are is excluded here and seeded by the install rather than
+# skipped: it is tracked and area.lst loads it, so the game will not boot
+# without it -- leaving it out altogether is how it went missing on
+# 2026-09-29.
+sync_code() {
+    src=$1
+    dst=$2
+    shift 2
+    rsync -a --delete "$@" \
+      --exclude '.git/' --exclude '/.snapshot-ok' \
+      --exclude 'player/' --exclude 'gods/' --exclude 'heroes/' \
+      --exclude 'backups/' --exclude 'corpse/' --exclude 'log/' --exclude 'notes/' \
+      --exclude 'area/shutdown' --exclude 'area/webadmin.queue' \
+      --exclude 'area/oracle.ask' --exclude 'area/oracle.answer' \
+      --exclude 'area/oracle.query' --exclude 'area/oracle.queryresult' \
+      --exclude 'area/*.txt' \
+      --exclude 'area/pkilldata' --exclude 'area/wizlist' --exclude 'area/maxload' \
+      --exclude 'area/offense' --exclude 'area/relics' --exclude 'area/not' \
+      --exclude 'area/ban' \
+      --exclude 'area/*.are.*.bak' --exclude 'area/*.are.*.tmp' \
+      --exclude 'area/*.txt.tmp' \
+      --exclude 'area/bugs.txt.*' --exclude 'area/typos.txt.*' \
+      --exclude 'area/ideas.txt.*' \
+      --exclude 'area/built/' --exclude 'area/custom.are' \
+      "$src/" "$dst/" || return
+    # The three report globs are REPORTS CLEAR's archives
+    # (bugs.txt.<stamp>): it renames rather than deletes because they are
+    # the only record of what players said, and before they were listed
+    # --delete removed them on the next deploy -- all five archives made
+    # on 2026-10-01 went that way.
+    for f in "$src"/area/*.txt; do
+        [ -f "$f" ] || continue
+        b=$(basename "$f")
+        skip=0
+        for r in $runtime_txt; do
+            [ "$b" = "$r" ] && { skip=1; break; }
+        done
+        [ "$skip" = 1 ] && continue
+        cp "$f" "$dst/area/$b" || return
+    done
+}
+
+# The code that was running back, and the game restarted on it. Only the
+# code: the snapshot was taken with sync_code's excludes and goes back
+# with them, so whatever players did between the snapshot and now --
+# saves, corpses, notes, a builder's RSAVE -- stays. Ordinary rollback
+# never restores player state; that is PRESTORE's, and toc-restore's in a
+# disaster.
 rollback() {
     restored=0
     systemctl stop toc-web toc-game || true
-    if tar xzf "$ARCHIVE" -C "$CURRENT"; then
+    if [ -f "$SNAP/.snapshot-ok" ] && sync_code "$SNAP" "$CURRENT"; then
         restored=1
     else
-        echo "   COULD NOT RESTORE $ARCHIVE -- starting what is there" >&2
+        echo "   COULD NOT RESTORE $SNAP -- starting what is there" >&2
     fi
+    rm -f "$CURRENT/area/shutdown.txt" "$CURRENT/area/shutdown"
     chown -R toc:toc "$CURRENT" || true
     systemctl start toc-game || true
     sleep 8
@@ -79,9 +165,8 @@ rollback() {
 
 # The code that was running, started again on the files it ran from.
 # For a stop that failed part way -- systemd may have stopped the web
-# service and not the game, or the reverse -- and for an archive that
-# could not be made: nothing was installed and there is no archive to
-# roll back from, so starting both is the whole of the recovery, and the
+# service and not the game, or the reverse: nothing was installed, so
+# starting both is the whole of the recovery, and the
 # exit status says whether it worked (review, 2026-10-21: a failed stop
 # used to end the script under set -e with whatever it had stopped left
 # down, reported as "failed before the game was touched").
@@ -104,7 +189,7 @@ restart_unchanged() {
 # health check. Whatever stops the install now rolls it back, by hand or
 # not: there is no running game to leave alone.
 # disrupted: a stop has been asked for, so the services may be down.
-# installing: the archive exists and files may have changed.
+# installing: the snapshot exists and files may have changed.
 disrupted=0
 installing=0
 install_failed() {
@@ -139,6 +224,23 @@ trap 'exit 143' TERM
 if [ -z "${TOC_DEPLOY_LOCKED:-}" ]; then
     exec 9>"${TOC_DEPLOY_LOCK:-/run/toc-deploy.lock}"
     flock 9
+fi
+
+# Put the code back from a snapshot, by hand, after a deploy that was not
+# rolled back (exit 12). The snapshot named, or the newest complete one.
+if [ "${1:-}" = "--rollback" ]; then
+    SNAP="${TOC_ROLLBACK_SNAPSHOT:-}"
+    if [ -z "$SNAP" ]; then
+        SNAP=$(ls -d "${TOC_ROLLBACK_DIR:-/srv/toc}"/rollback-code-*/.snapshot-ok 2>/dev/null |
+            tail -1 || true)
+        SNAP=${SNAP%/.snapshot-ok}
+    fi
+    if [ -z "$SNAP" ] || [ ! -f "$SNAP/.snapshot-ok" ]; then
+        echo "   no complete code snapshot to roll back to (${SNAP:-none found})" >&2
+        exit 1
+    fi
+    say "rolling the code back to $SNAP"
+    rollback
 fi
 
 say "fetching"
@@ -215,46 +317,43 @@ else
     sleep 6
 fi
 
-say "installing"
+# Nothing is copied without a way back, and the way back is made while
+# the game still runs, so the stop is as short as the copy itself. The
+# snapshot is a copy of the live code tree (sync_code's view of it); its
+# marker is written last, so a snapshot cut short is never rolled back
+# to. Unchanged files are hard links into the previous snapshot. A
+# snapshot that cannot be made stops the deploy with the game untouched.
+say "snapshotting the running code"
+ROLLBACK_DIR="${TOC_ROLLBACK_DIR:-/srv/toc}"
 stamp=$(date +%Y%m%d-%H%M%S)
-ARCHIVE="${TOC_ROLLBACK_DIR:-/srv/toc}/rollback-code-$stamp.tgz"
+SNAP="$ROLLBACK_DIR/rollback-code-$stamp"
+prev=$(ls -d "$ROLLBACK_DIR"/rollback-code-*/.snapshot-ok 2>/dev/null | tail -1 || true)
+prev=${prev%/.snapshot-ok}
+# Two before this one are kept; older ones go.
+ls -d "$ROLLBACK_DIR"/rollback-code-*/ 2>/dev/null | sed 's:/$::' | sort | head -n -2 |
+    while read -r old; do
+        [ "$old" = "$SNAP" ] || rm -rf "$old"
+    done
+rm -rf "$SNAP"
+if ! mkdir -p "$SNAP" ||
+   ! sync_code "$CURRENT" "$SNAP" ${prev:+"--link-dest=$prev"} ||
+   ! touch "$SNAP/.snapshot-ok"; then
+    echo "   COULD NOT SNAPSHOT THE RUNNING CODE -- nothing touched; the game is still running" >&2
+    rm -rf "$SNAP"
+    exit 1
+fi
+echo "   $SNAP"
+
+say "installing"
 disrupted=1
 if ! systemctl stop toc-web toc-game; then
     echo "   COULD NOT STOP THE GAME CLEANLY -- nothing installed, restarting it" >&2
     disrupted=0
     restart_unchanged
 fi
-# Nothing is copied without a way back: the archive must be made and must
-# read back whole, or the game restarts on the code it was running.
-if ! tar czf "$ARCHIVE" -C "$CURRENT" merc src area webadmin ||
-   ! tar tzf "$ARCHIVE" >/dev/null; then
-    echo "   COULD NOT ARCHIVE THE RUNNING CODE -- nothing installed, restarting it" >&2
-    disrupted=0
-    restart_unchanged
-fi
 installing=1
 
-# Everything except what the running game owns. custom.are is excluded
-# here and seeded below rather than skipped: it is tracked and area.lst
-# loads it, so the game will not boot without it -- leaving it out
-# altogether is how it went missing on 2026-09-29.
-rsync -a --delete \
-  --exclude '.git/' \
-  --exclude 'player/' --exclude 'gods/' --exclude 'heroes/' \
-  --exclude 'backups/' --exclude 'corpse/' --exclude 'log/' --exclude 'notes/' \
-  --exclude 'area/shutdown' --exclude 'area/webadmin.queue' \
-  --exclude 'area/oracle.ask' --exclude 'area/oracle.answer' \
-  --exclude 'area/oracle.query' --exclude 'area/oracle.queryresult' \
-  --exclude 'area/*.txt' \
-  --exclude 'area/pkilldata' --exclude 'area/wizlist' --exclude 'area/maxload' \
-  --exclude 'area/offense' --exclude 'area/relics' --exclude 'area/not' \
-  --exclude 'area/ban' \
-  --exclude 'area/*.are.*.bak' --exclude 'area/*.are.*.tmp' \
-  --exclude 'area/*.txt.tmp' \
-  --exclude 'area/bugs.txt.*' --exclude 'area/typos.txt.*' \
-  --exclude 'area/ideas.txt.*' \
-  --exclude 'area/built/' --exclude 'area/custom.are' \
-  "$BUILD/" "$CURRENT/"
+sync_code "$BUILD" "$CURRENT"
 # custom.are is where RSAVE puts the workshop rooms builders make in game
 # (BUILDER_AREA_FILE), and the state sync carries it host to git. The
 # live copy is the newest; git's is up to one sync behind, more for a
@@ -273,35 +372,6 @@ if [ -d "$BUILD/area/built" ]; then
     mkdir -p "$CURRENT/area/built"
     rsync -a --ignore-existing "$BUILD/area/built/" "$CURRENT/area/built/"
 fi
-# Those three are REPORTS CLEAR's archives (bugs.txt.<stamp>): it renames
-# rather than deletes because they are the only record of what players
-# said, and before they were listed here --delete removed them on the
-# next deploy -- all five archives made on 2026-10-01 went that way.
-
-# area/*.txt is excluded wholesale above, but help and social text
-# files live there too and are code, so they have to come back.
-#
-# The list of what must NOT come back is the important half, and
-# getting it wrong took the game down on 2026-09-29: this loop
-# originally skipped only the four report files, so it copied
-# shutdown.txt out of git into the live tree, and
-# ExecCondition=test ! -e .../area/shutdown.txt then stopped
-# toc-game from starting at all. Every runtime .txt belongs to the
-# running game and none of them may be restored from a checkout.
-runtime_txt="shutdown.txt ban.txt bugs.txt ideas.txt typos.txt notes.txt
-             maxload.txt wizlist.txt offense.txt relics.txt not.txt
-             pkilldata.txt dpsboard.txt"
-for f in "$BUILD"/area/*.txt; do
-    [ -f "$f" ] || continue
-    b=$(basename "$f")
-    skip=0
-    for r in $runtime_txt; do
-        [ "$b" = "$r" ] && { skip=1; break; }
-    done
-    [ "$skip" = 1 ] && continue
-    cp "$f" "$CURRENT/area/$b"
-done
-
 # Belt and braces: whatever happened above, the game must not find a
 # shutdown marker it did not write itself.
 rm -f "$CURRENT/area/shutdown.txt" "$CURRENT/area/shutdown"
@@ -317,8 +387,10 @@ installing=0
 disrupted=0
 printf '   game=%s web=%s\n' "$(systemctl is-active toc-game)" "$(systemctl is-active toc-web)"
 
+# The game binds its port before it loads the world, and only answers
+# MSSP once the loop runs, so give the boot a minute and a half.
 n=0
-while [ $n -lt 15 ]; do
+while [ $n -lt 30 ]; do
     if healthy; then
         say "healthy at $after"
         printf '   characters on disk: %s\n' "$(ls "$CURRENT/player" | wc -l)"
@@ -339,7 +411,7 @@ while [ $n -lt 15 ]; do
         # cannot replace a working one; install(1) writes a new file, so
         # the copy running now is not touched.
         for s in toc-deploy toc-state-sync toc-state-sync-check toc-game-recovery \
-                 toc-auto-deploy; do
+                 toc-auto-deploy toc-game-probe; do
             if [ -f "$BUILD/deploy/windows-vm/$s" ] &&
                ! cmp -s "$BUILD/deploy/windows-vm/$s" "/usr/local/sbin/$s"; then
                 install -m 0755 "$BUILD/deploy/windows-vm/$s" "/usr/local/sbin/$s" &&
@@ -382,8 +454,8 @@ while [ $n -lt 15 ]; do
 done
 
 # Unattended (toc-auto-deploy sets this), there is nobody to read the
-# rollback line, so do it: the old code and area files go back and the
-# game restarts on them. The world was validated before anything was
+# rollback line, so do it: the old code goes back -- the code only, never
+# player state -- and the game restarts on it. The world was validated before anything was
 # stopped, so this is a game that built and loaded and then would not
 # come up -- rare, and exactly what nobody should find hours later.
 if [ "${TOC_DEPLOY_ROLLBACK:-0}" = 1 ]; then
@@ -391,6 +463,6 @@ if [ "${TOC_DEPLOY_ROLLBACK:-0}" = 1 ]; then
     rollback
 fi
 
-echo "   DID NOT COME BACK HEALTHY. Roll back with:" >&2
-echo "   tar xzf $ARCHIVE -C $CURRENT && systemctl restart toc-game toc-web" >&2
+echo "   DID NOT COME BACK HEALTHY. Roll the code back (and only the code) with:" >&2
+echo "   TOC_ROLLBACK_SNAPSHOT=$SNAP $0 --rollback" >&2
 exit $EXIT_UNHEALTHY

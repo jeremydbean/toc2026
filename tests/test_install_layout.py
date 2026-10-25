@@ -37,7 +37,7 @@ def area_excludes_from_deploy() -> set[str]:
     """toc-deploy's excludes that concern area/, written as the sync
     script writes them (anchored at the area root)."""
     text = (ROOT / "deploy" / "windows-vm" / "toc-deploy").read_text()
-    block = text[text.index('rsync -a --delete'):text.index('"$BUILD/" "$CURRENT/"')]
+    block = text[text.index('rsync -a --delete'):text.index('"$src/" "$dst/"')]
     return {"/" + p[len("area/"):] for p in re.findall(r"--exclude '([^']+)'", block)
             if p.startswith("area/")}
 

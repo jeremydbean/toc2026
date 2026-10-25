@@ -39,6 +39,9 @@ setup() {
     # actually run, while still carrying a greppable identity.
     printf '#!/bin/bash\n# OLD-BINARY\nexit 0\n' > "$WORK/live/merc"
     chmod +x "$WORK/live/merc"
+    # What toc-deploy recorded as live: the only commit a rebuild may use.
+    mkdir -p "$WORK/live/log"
+    echo "1abe0c0de 2026-10-25T00:00:00Z" > "$WORK/live/log/deployed-commit"
 
     # Stubs. Behaviour is driven by files the test writes into $WORK.
     cat > "$WORK/bin/systemctl" <<'STUB'
@@ -69,7 +72,8 @@ for a in "$@"; do
     clone) mkdir -p "$TOC_BUILD_ROOT/area"; touch "$TOC_BUILD_ROOT/.git"; echo clone >> "$WORK/calls"; exit 0 ;;
     fetch) echo fetch >> "$WORK/calls"; exit 0 ;;
     rev-parse) echo "newcommit"; exit 0 ;;
-    reset|clean) exit 0 ;;
+    reset) echo "reset $*" >> "$WORK/calls"; exit 0 ;;
+    clean) exit 0 ;;
   esac
 done
 exit 0
@@ -150,6 +154,18 @@ rc=$(run_recovery)
 check "rebuild recovers the game" "$rc" "0"
 check "rebuild installed the new binary" "$(binary_id)" "NEW-BINARY"
 check "previous binary was archived" "$(ls "$WORK/backups" 2>/dev/null | grep -c merc-rollback | head -1)" "1"
+check "rebuild is of the live commit, never the tip of main" \
+    "$(grep -c 'reset --hard 1abe0c0de' "$WORK/calls")" "1"
+check "rebuild never checks out origin/main" "$(grep -c 'origin/' "$WORK/calls")" "0"
+teardown
+
+# 3b. With no record of what is live there is nothing tested to build.
+setup
+rm "$WORK/live/log/deployed-commit"
+rc=$(run_recovery)
+check "no live record: no rebuild" "$(count_calls make)" "0"
+check "no live record: reported as needing a human" "$rc" "1"
+check "no live record: the old binary stays" "$(binary_id)" "OLD-BINARY"
 teardown
 
 # 4. Build itself fails: keep the working binary, change nothing.

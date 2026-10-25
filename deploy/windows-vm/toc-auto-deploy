@@ -13,20 +13,30 @@
 #     written by toc-deploy when a deploy comes back healthy);
 #   * the difference touches code -- docs, tests and the state sync's own
 #     commits never restart the game;
-#   * CI's Validate run for the newest commit it ran on is a success,
-#     read from GitHub's public API. A commit whose message carries
-#     [deploy now] skips that wait; toc-deploy still refuses one that
-#     will not build or whose world will not load;
+#   * CI vouches for that exact code: the newest Validate run on a push to
+#     main, for that commit or one built on it, finished with its
+#     deploy-gate job succeeding. deploy-gate is the workflow's own
+#     verdict -- every job passed, every test module ran exactly once,
+#     nothing skipped unexplained -- so a run that is missing, queued,
+#     running, cancelled, failed, or has no deploy-gate job at all (an
+#     older workflow, a renamed job) ships nothing. Read from GitHub's
+#     public API; if that cannot be reached, nothing ships either. A
+#     commit whose message carries [deploy now] skips that wait for its
+#     own code only; toc-deploy still refuses one that will not build or
+#     whose world will not load;
 #   * this exact commit has not already been tried and failed, so a bad
 #     push restarts the game once, not every ten minutes;
 #   * nobody is playing (owner, 2026-10-20: do not reboot while players
 #     are on). The game's own count of playing descriptors is read over
-#     MSSP; while it is above zero the commit is held, not tried, and the
-#     next tick looks again. A game that does not answer has nobody to
-#     protect and is deployed. A deploy by hand (toc-deploy) is the
-#     override, and still warns and saves everyone first; so is
-#     [deploy with players] in a waiting commit, for a session that can
-#     only push (a minute's warning, then the same announce and save).
+#     MSSP (toc-game-probe); while it is above zero the commit is held,
+#     not tried, and the next tick looks again. A count nobody can read
+#     -- a hung game, a half-started one -- is not zero, and holds the
+#     commit the same way; only a game that is not running at all
+#     (connection refused) has nobody to protect and is deployed. A
+#     deploy by hand (toc-deploy) is the override, and still warns and
+#     saves everyone first; so is [deploy with players] in a waiting
+#     commit, for a session that can only push (a minute's warning, then
+#     the same announce and save).
 #
 # Then it runs toc-deploy pinned to that commit, so code pushed while it
 # was waiting for CI cannot ride along unchecked, with rollback on: an
@@ -48,9 +58,12 @@ MARKER="$CURRENT/log/deployed-commit"
 STATUS="$CURRENT/log/auto-deploy.status"
 GAME_HOST="${MUD_HOST:-127.0.0.1}"
 GAME_PORT="${MUD_PORT:-9000}"
-# A command printing the number of players online, or "unknown". The
-# default asks the game itself; tests point it at a fake.
-PLAYERS_PROBE="${TOC_PLAYERS_PROBE:-}"
+# A command printing the number of players online, "down" or "unknown"
+# (see toc-game-probe). Tests point it at a fake.
+PLAYERS_PROBE="${TOC_PLAYERS_PROBE:-/usr/local/sbin/toc-game-probe}"
+# The job whose success, and nothing else, means CI vouches for a commit.
+# validate.yml names it; change the two together.
+GATE_JOB="${TOC_GATE_JOB:-deploy-gate}"
 
 mkdir -p "$STATE_DIR"
 
@@ -63,46 +76,16 @@ export GIT_CONFIG_COUNT=1
 export GIT_CONFIG_KEY_0=safe.directory
 export GIT_CONFIG_VALUE_0="$BUILD"
 
-# How many descriptors the game has in CON_PLAYING, by its own count
-# over MSSP (the same ask webadmin's probe_game makes), or "unknown".
+# How many descriptors the game has in CON_PLAYING, "down" when nothing
+# listens, or "unknown". Anything else the probe says -- or a probe that
+# is missing or fails -- is "unknown".
 players_online() {
-    if [ -n "$PLAYERS_PROBE" ]; then
-        "$PLAYERS_PROBE" 2>/dev/null || echo unknown
-        return
-    fi
-    python3 - "$GAME_HOST" "$GAME_PORT" <<'PY' 2>/dev/null || echo unknown
-import socket, sys, time
-host, port = sys.argv[1], int(sys.argv[2])
-IAC, SB, SE, DO, MSSP = 255, 250, 240, 253, 70
-try:
-    with socket.create_connection((host, port), timeout=3) as s:
-        s.sendall(bytes([IAC, DO, MSSP]))
-        s.settimeout(3)
-        buf, deadline = b"", time.monotonic() + 3
-        marker, end = bytes([IAC, SB, MSSP]), bytes([IAC, SE])
-        while time.monotonic() < deadline and len(buf) < 65536:
-            chunk = s.recv(4096)
-            if not chunk:
-                break
-            buf += chunk
-            a = buf.find(marker)
-            if a < 0:
-                continue
-            b = buf.find(end, a + 3)
-            if b < 0:
-                continue
-            body = buf[a + 3:b]
-            # MSSP: VAR(1) name VAL(2) value, repeated.
-            for part in body.split(b"\x01")[1:]:
-                name, _, val = part.partition(b"\x02")
-                if name == b"PLAYERS" and val.strip().lstrip(b"-").isdigit():
-                    print(max(0, int(val.strip())))
-                    sys.exit(0)
-            break
-except OSError:
-    pass
-print("unknown")
-PY
+    answer=$("$PLAYERS_PROBE" "$GAME_HOST" "$GAME_PORT" 2>/dev/null) || answer=unknown
+    case "$answer" in
+        down) echo down ;;
+        ''|*[!0-9]*) echo unknown ;;
+        *) echo "$answer" ;;
+    esac
 }
 
 status() {
@@ -172,34 +155,91 @@ fi
 if git -C "$BUILD" log -1 --format=%B "$effective" | grep -qF '[deploy now]'; then
     why="[deploy now] on $effective_short"
 else
-    # The newest commit CI runs for. State syncs carry [skip ci], and a
-    # commit pushed on top of another cancels the older run, so this is
-    # the one whose verdict covers everything before it -- provided the
-    # code being shipped is before it.
-    ci=$(git -C "$BUILD" log -1 --format=%H --invert-grep --fixed-strings \
-        --grep='[skip ci]' "$live..$target")
-    if [ -z "$ci" ] || ! git -C "$BUILD" merge-base --is-ancestor "$effective" "$ci"; then
+    # The run that vouches for $effective is the newest Validate run on a
+    # push to main for $effective or a commit built on it: a later push
+    # cancels the run before it (cancel-in-progress), and its verdict
+    # covers everything under it. State syncs carry [skip ci] and start
+    # no run, so they are passed over; so is a push that touched only
+    # paths validate.yml ignores, simply because GitHub has no run for it.
+    # A run for an older commit never counts, however green: it did not
+    # test this code.
+    candidates=$( { git -C "$BUILD" rev-list --ancestry-path "$effective..$target";
+                    echo "$effective"; } |
+        while read -r sha; do
+            git -C "$BUILD" log -1 --format=%B "$sha" | grep -qF '[skip ci]' || echo "$sha"
+        done)
+    if [ -z "$candidates" ]; then
         status "code in $effective_short has no CI run after it (marked [skip ci]?); not deploying $short"
         exit 0
     fi
-    ci_short=$(git -C "$BUILD" rev-parse --short "$ci")
-    verdict=$(curl -fsS --max-time 20 \
-        "https://api.github.com/repos/$REPO/actions/runs?head_sha=$ci&per_page=20" |
-        python3 -c '
-import json, sys
-runs = [r for r in json.load(sys.stdin).get("workflow_runs", [])
-        if r.get("name") == "Validate" and r.get("event") == "push"]
-if not runs:
-    print("none")
+    runs=$(curl -fsS --max-time 20 \
+        "https://api.github.com/repos/$REPO/actions/workflows/validate.yml/runs?branch=main&event=push&per_page=100" \
+        2>/dev/null) || runs=""
+    # Prints "<sha> <run id> <state>", state being the conclusion of a
+    # finished run or the status of one still going; "none" when no
+    # candidate has a run, "unreachable" when the answer is not JSON.
+    run=$(printf '%s' "$runs" | CANDIDATES="$candidates" python3 -c '
+import json, os, sys
+try:
+    data = json.load(sys.stdin)
+except ValueError:
+    print("- - unreachable"); sys.exit(0)
+order = os.environ["CANDIDATES"].split()
+best = {}
+for r in data.get("workflow_runs", []):
+    if r.get("event") != "push" or r.get("head_branch") != "main":
+        continue
+    if r.get("name") != "Validate" or r.get("head_sha") not in order:
+        continue
+    seen = best.get(r["head_sha"])
+    if seen is None or (r.get("created_at", ""), r.get("run_attempt", 1)) > \
+            (seen.get("created_at", ""), seen.get("run_attempt", 1)):
+        best[r["head_sha"]] = r
+for sha in order:
+    r = best.get(sha)
+    if r:
+        state = r.get("conclusion") if r.get("status") == "completed" else r.get("status")
+        print(sha, r.get("id"), state or "unknown"); break
 else:
-    r = max(runs, key=lambda r: r.get("created_at", ""))
-    print(r["conclusion"] if r["status"] == "completed" else r["status"])
-' 2>/dev/null) || verdict=unreachable
+    print("- - none")
+' 2>/dev/null) || run="- - unreachable"
+    set -- $run
+    ci=$1 run_id=$2 verdict=$3
+    ci_short=$( [ "$ci" = - ] && echo "$effective_short" || git -C "$BUILD" rev-parse --short "$ci")
     case "$verdict" in
         success)
-            why="CI passed on $ci_short" ;;
+            # Green is not enough: the gate job must say so. An older
+            # workflow has none, and none fails closed.
+            gate=$(curl -fsS --max-time 20 \
+                "https://api.github.com/repos/$REPO/actions/runs/$run_id/jobs?filter=latest&per_page=100" \
+                2>/dev/null | GATE_JOB="$GATE_JOB" python3 -c '
+import json, os, sys
+try:
+    jobs = json.load(sys.stdin).get("jobs", [])
+except ValueError:
+    print("unreachable"); sys.exit(0)
+named = [j for j in jobs if j.get("name") == os.environ["GATE_JOB"]]
+if not named:
+    print("missing")
+else:
+    j = named[-1]
+    print(j.get("conclusion") if j.get("status") == "completed" else j.get("status") or "unknown")
+' 2>/dev/null) || gate=unreachable
+            case "$gate" in
+                success)
+                    why="CI's $GATE_JOB passed on $ci_short" ;;
+                unreachable|"")
+                    status "waiting: cannot read CI's $GATE_JOB on $ci_short; not deploying $short"
+                    exit 0 ;;
+                *)
+                    status "not deploying $short: CI on $ci_short passed but its $GATE_JOB job is $gate"
+                    exit 0 ;;
+            esac ;;
         none|queued|in_progress|waiting|pending|requested|unreachable)
             status "waiting for CI on $ci_short ($verdict) before deploying $short"
+            exit 0 ;;
+        cancelled)
+            status "waiting: CI on $ci_short was cancelled; a newer run or a re-run decides $short"
             exit 0 ;;
         *)
             status "not deploying $short: CI on $ci_short says $verdict; push a fix"
@@ -208,7 +248,7 @@ else:
 fi
 
 # Nobody loses a session to an automatic restart: hold the commit while
-# anybody is playing, and look again next tick. Not recorded as attempted,
+# anybody is playing -- or while nobody can tell -- and look again next tick. Not recorded as attempted,
 # so it is tried the moment the game is empty.
 #
 # [deploy with players] in any commit waiting to ship lifts the hold
@@ -221,14 +261,23 @@ fi
 # announce before the stop.
 players=$(players_online)
 case "$players" in
-    0|unknown) ;;
+    0) ;;
+    down)
+        # Nothing is listening, so nobody is connected: the new code is
+        # as good a thing to start as the old.
+        why="$why; the game was not running" ;;
     *)
+        if [ "$players" = unknown ]; then
+            who="the game did not say who is online"
+        else
+            who="$players player(s) online"
+        fi
         if ! git -C "$BUILD" log --format=%B "$live..$target" |
                 grep -qF '[deploy with players]'; then
-            status "holding $short ($why): $players player(s) online; deploying when the game is empty"
+            status "holding $short ($why): $who; deploying when the game is empty"
             exit 0
         fi
-        why="$why; [deploy with players], $players online"
+        why="$why; [deploy with players], $who"
         queue="$CURRENT/area/webadmin.queue"
         if [ -f "$queue" ]; then
             python3 -c 'import fcntl, sys
@@ -238,7 +287,7 @@ with open(sys.argv[1], "a", encoding="ascii") as f:
                 "announce|The game restarts for an update in one minute. Finish your fight; everyone is saved first." \
                 2>/dev/null || true
         fi
-        status "warning $players player(s): deploying $short in ${TOC_PLAYERS_WARN_SECONDS:-60}s ($why)"
+        status "warning players ($who): deploying $short in ${TOC_PLAYERS_WARN_SECONDS:-60}s ($why)"
         sleep "${TOC_PLAYERS_WARN_SECONDS:-60}" ;;
 esac
 

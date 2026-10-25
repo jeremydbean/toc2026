@@ -116,8 +116,16 @@ class DeploySignalTests(unittest.TestCase):
         for d in (build / "area", current / "area", current / "log", current / "player"):
             d.mkdir(parents=True)
         stubs = dict(deploy_failures.STUBS)
-        stubs[signalling] = (f'echo "{signalling} $*" >> "$STUB_LOG"; '
-                             f'kill -{signum} $PPID; exit 0')
+        if signalling == "rsync":
+            # The install's copy, not the snapshot taken before the stop.
+            stubs["rsync"] = ('case "$*" in'
+                              ' *" $BUILD/ "*) echo "rsync install" >> "$STUB_LOG";'
+                              f' kill -{signum} $PPID;;'
+                              ' *rollback-code*" $CURRENT/") echo "rsync restore" >> "$STUB_LOG";;'
+                              ' *) echo "rsync other" >> "$STUB_LOG";; esac; exit 0')
+        else:
+            stubs[signalling] = (f'echo "{signalling} $*" >> "$STUB_LOG"; '
+                                 f'kill -{signum} $PPID; exit 0')
         write_stubs(bin_dir, stubs)
         merc = build / "merc"
         merc.write_text("#!/bin/sh\necho 'world check'\nexit 0\n")
@@ -127,7 +135,8 @@ class DeploySignalTests(unittest.TestCase):
         env = dict(os.environ, PATH=f"{bin_dir}:{os.environ['PATH']}",
                    BUILD=str(build), CURRENT=str(current), STUB_LOG=str(log),
                    TOC_DEPLOY_LOCKED="1", TOC_ROLLBACK_DIR=str(tmp),
-                   TOC_DEPLOY_ROLLBACK="1", STUB_HEALTHY="1")
+                   TOC_DEPLOY_ROLLBACK="1", STUB_HEALTHY="1",
+                   TOC_GAME_PROBE=str(bin_dir / "toc-game-probe"))
         # A background job of a non-interactive shell starts with SIGINT
         # ignored -- test-parallel.sh runs every module that way -- and
         # POSIX forbids trapping a signal ignored on entry, so the deploy's
@@ -146,8 +155,8 @@ class DeploySignalTests(unittest.TestCase):
                 rc, output, calls = self.deploy("rsync", int(signum))
                 self.assertEqual(rc, 10, f"rolled back and healthy:\n{output}\n{calls}")
                 self.assertIn(f"INSTALL FAILED (status {status})", output)
-                rsync = calls.index("rsync")
-                self.assertIn("tar xzf", calls[rsync:], "the old code goes back")
+                rsync = calls.index("rsync install")
+                self.assertIn("rsync restore", calls[rsync:], "the old code goes back")
                 self.assertIn("systemctl start toc-game", calls[rsync:])
                 self.assertIn("systemctl start toc-web", calls[rsync:])
 

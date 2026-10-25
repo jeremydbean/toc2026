@@ -11,8 +11,13 @@
 # transient and rebuilding is not free:
 #
 #   1. clear the failure and start the service again
-#   2. if that keeps failing, fetch origin/main, build and validate it in a
-#      throwaway tree, and only install a binary that actually passed
+#   2. if that keeps failing, rebuild the commit that is live (the one
+#      toc-deploy recorded in log/deployed-commit) in the build tree,
+#      validate it, and only install a binary that actually passed. Never
+#      the tip of main: that may be code CI has not passed, and recovering
+#      a down game is not a reason to ship it (redesign, 2026-10-25). A
+#      newer, tested commit reaches a down game through toc-auto-deploy,
+#      which deploys when nothing is listening.
 #   3. if the freshly built binary also fails, roll the old one back
 #
 # Player data is never touched. Only the compiled binary is ever replaced,
@@ -163,19 +168,27 @@ if [ "${free_mb:-0}" -lt "$MIN_FREE_MB" ]; then
     exit 1
 fi
 
-log "restarts are not working; fetching $REPO_BRANCH and rebuilding."
+live_ref=$(cut -d' ' -f1 "$LIVE_ROOT/log/deployed-commit" 2>/dev/null || true)
+case "$live_ref" in
+    ''|*[!0-9a-f]*)
+        log "no record of the live commit in $LIVE_ROOT/log/deployed-commit;"
+        log "not building anything CI has not passed. This needs a human."
+        exit 1 ;;
+esac
+log "restarts are not working; rebuilding the live commit $live_ref."
 echo "$(now)" > "$LAST_REBUILD_FILE"
 
 if [ -d "$BUILD_ROOT/.git" ]; then
     timeout 300 git -C "$BUILD_ROOT" fetch --prune origin "$REPO_BRANCH" \
         || { log "fetch failed; keeping the current binary."; exit 1; }
-    git -C "$BUILD_ROOT" reset --hard "origin/$REPO_BRANCH" >/dev/null
-    git -C "$BUILD_ROOT" clean -fdx >/dev/null
 else
     rm -rf "$BUILD_ROOT"
     timeout 300 git clone --branch "$REPO_BRANCH" "$REPO_URL" "$BUILD_ROOT" \
         || { log "clone failed; keeping the current binary."; exit 1; }
 fi
+git -C "$BUILD_ROOT" reset --hard "$live_ref" >/dev/null \
+    || { log "cannot check out $live_ref; keeping the current binary."; exit 1; }
+git -C "$BUILD_ROOT" clean -fdx >/dev/null
 
 new_commit="$(git -C "$BUILD_ROOT" rev-parse --short HEAD)"
 old_commit="$(cat "$DEPLOYED_COMMIT_FILE" 2>/dev/null || echo unknown)"

@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "deploy" / "windows-vm" / "toc-auto-deploy"
 DEPLOY = ROOT / "deploy" / "windows-vm" / "toc-deploy"
 RESTORE = ROOT / "deploy" / "toc-restore"
+PROBE = ROOT / "deploy" / "windows-vm" / "toc-game-probe"
 
 NEEDS = ("sh", "git", "flock", "python3")
 MISSING = [tool for tool in NEEDS if shutil.which(tool) is None]
@@ -59,13 +60,20 @@ class AutoDeployDecisionTests(unittest.TestCase):
         self.live = self.commit("first", {"src/game.c": "int a;\n", "README.md": "hi\n"})
         subprocess.run(["git", "clone", "-q", str(self.origin), str(self.build)], check=True,
                        capture_output=True)
-        # A fake GitHub API: prints whatever CI verdict the test sets.
+        # A fake GitHub API: the runs list is whatever the test sets, and
+        # a run's jobs are FAKE_JOBS -- by default a deploy-gate that
+        # passed. The URLs it was asked for are kept, to check which.
+        self.urls = self.tmp / "curl-urls"
         (self.bin / "curl").write_text(
-            "#!/bin/sh\n[ -n \"$FAKE_CI\" ] || exit 7\nprintf '%s' \"$FAKE_CI\"\n")
+            "#!/bin/sh\nfor a; do url=$a; done\necho \"$url\" >> " + str(self.urls) + "\n"
+            "case \"$url\" in\n"
+            "  */jobs*) [ -n \"$FAKE_JOBS\" ] || exit 7; printf '%s' \"$FAKE_JOBS\" ;;\n"
+            "  *) [ -n \"$FAKE_CI\" ] || exit 7; printf '%s' \"$FAKE_CI\" ;;\n"
+            "esac\n")
         (self.bin / "logger").write_text("#!/bin/sh\nexit 0\n")
         # A fake player count: what the game would answer over MSSP.
         (self.bin / "players").write_text(
-            "#!/bin/sh\nprintf '%s\\n' \"${FAKE_PLAYERS:-0}\"\n")
+            "#!/bin/sh\nprintf '%s\\n' \"${FAKE_PLAYERS-0}\"\n")
         # A fake toc-deploy: records the commit it was pinned to.
         self.calls = self.tmp / "deploy-calls"
         (self.bin / "toc-deploy").write_text(
@@ -91,20 +99,35 @@ class AutoDeployDecisionTests(unittest.TestCase):
     def mark_live(self, sha: str) -> None:
         (self.current / "log" / "deployed-commit").write_text(f"{sha} 2026-10-05T00:00:00Z\n")
 
-    def ci(self, sha: str, status: str, conclusion: str | None = None) -> str:
-        return json.dumps({"workflow_runs": [{
-            "name": "Validate", "event": "push", "head_sha": sha,
-            "status": status, "conclusion": conclusion,
-            "created_at": "2026-10-05T00:00:00Z"}]})
+    @staticmethod
+    def wf_run(sha: str, status: str, conclusion: str | None = None, *, run_id: int = 1,
+            event: str = "push", branch: str = "main",
+            created: str = "2026-10-05T00:00:00Z") -> dict:
+        return {"id": run_id, "name": "Validate", "event": event, "head_branch": branch,
+                "head_sha": sha, "status": status, "conclusion": conclusion,
+                "created_at": created, "run_attempt": 1}
+
+    def ci(self, sha: str, status: str, conclusion: str | None = None, **kw) -> str:
+        return json.dumps({"workflow_runs": [self.wf_run(sha, status, conclusion, **kw)]})
+
+    @staticmethod
+    def jobs(gate: str | None = "success", gate_status: str = "completed",
+             present: bool = True) -> str:
+        jobs = [{"name": "build", "status": "completed", "conclusion": "success"},
+                {"name": "tests (1)", "status": "completed", "conclusion": "success"}]
+        if present:
+            jobs.append({"name": "deploy-gate", "status": gate_status, "conclusion": gate})
+        return json.dumps({"jobs": jobs})
 
     def run_script(self, fake_ci: str = "", deploy_fails: bool = False,
-                   players: str = "0") -> str:
+                   players: str = "0", fake_jobs: str | None = None) -> str:
         env = dict(os.environ,
                    PATH=f"{self.bin}{os.pathsep}{os.environ['PATH']}",
                    BUILD=str(self.build), CURRENT=str(self.current),
                    STATE_DIR=str(self.state), TOC_DEPLOY_LOCK=str(self.tmp / "lock"),
                    TOC_DEPLOY_BIN=str(self.bin / "toc-deploy"),
                    FAKE_CI=fake_ci, FAKE_DEPLOY_FAILS="1" if deploy_fails else "",
+                   FAKE_JOBS=self.jobs() if fake_jobs is None else fake_jobs,
                    TOC_PLAYERS_PROBE=str(self.bin / "players"), FAKE_PLAYERS=players,
                    TOC_PLAYERS_WARN_SECONDS="0")
         subprocess.run(["sh", str(SCRIPT)], env=env, capture_output=True, text=True)
@@ -179,8 +202,27 @@ class AutoDeployDecisionTests(unittest.TestCase):
         self.assertIn("deployed", self.run_script(players="0"))
         self.assertEqual([f"{code} 1"], self.deploys())
         newer = self.commit("again [deploy now]", {"src/game.c": "int i;\n"})
-        self.assertIn("deployed", self.run_script(players="unknown"))
-        self.assertEqual([f"{code} 1", f"{newer} 1"], self.deploys())
+        self.assertIn("deployed", self.run_script(players="down"))
+        self.assertEqual([f"{code} 1", f"{newer} 1"], self.deploys(),
+                         "a game that is not running has nobody to protect")
+
+    def test_an_unknown_player_count_is_not_zero(self) -> None:
+        """A game that accepts a connection and does not say who is on --
+        hung, half started -- may have players in it. It holds the deploy
+        like a count above zero; only [deploy with players], with its
+        warning, ships past it."""
+        code = self.commit("fix [deploy now]", {"src/game.c": "int u;\n"})
+        for answer in ("unknown", "", "garbage", "-1"):
+            status = self.run_script(players=answer)
+            self.assertIn("holding", status, answer)
+            self.assertIn("did not say who is online", status, answer)
+        self.assertEqual([], self.deploys())
+        self.assertFalse((self.state / "attempted").exists())
+        self.commit("ship it [deploy with players]", {"README.md": "go\n"})
+        status = self.run_script(players="unknown")
+        self.assertIn("[deploy with players], the game did not say who is online", status)
+        self.assertEqual(1, len(self.deploys()))
+        self.assertNotEqual(code, self.deploys()[0].split()[0], "the tip ships")
 
     def test_deploy_with_players_ships_past_them_with_a_warning(self) -> None:
         """Owner, 2026-10-24: "ship now, just send the announcement before
@@ -200,7 +242,7 @@ class AutoDeployDecisionTests(unittest.TestCase):
         tip = self.commit("ship it [deploy with players]", {"README.md": "now\n"})
         status = self.run_script(green, players="2")
         self.assertIn("deployed", status)
-        self.assertIn("[deploy with players], 2 online", status)
+        self.assertIn("[deploy with players], 2 player(s) online", status)
         self.assertEqual([f"{tip} 1"], self.deploys())
         self.assertIn("announce|The game restarts for an update in one minute",
                       queue.read_text())
@@ -259,6 +301,74 @@ class AutoDeployDecisionTests(unittest.TestCase):
         self.assertIn("no CI run after it", status)
         self.assertEqual([], self.deploys())
 
+    def test_a_green_run_without_a_passing_gate_job_ships_nothing(self) -> None:
+        """deploy-gate is the verdict. A run whose gate failed, was
+        skipped or is still going -- or a run with no gate job at all, as
+        an older workflow or a renamed job would leave -- ships nothing,
+        and is not marked attempted: it is not a failed deploy."""
+        code = self.commit("fix", {"src/game.c": "int v;\n"})
+        green = self.ci(code, "completed", "success")
+        for jobs, word in ((self.jobs("failure"), "failure"), (self.jobs("skipped"), "skipped"),
+                           (self.jobs("cancelled"), "cancelled"),
+                           (self.jobs(None, "in_progress"), "in_progress"),
+                           (self.jobs(present=False), "missing")):
+            status = self.run_script(green, fake_jobs=jobs)
+            self.assertIn(f"deploy-gate job is {word}", status)
+        status = self.run_script(green, fake_jobs="not json")
+        self.assertIn("cannot read CI's deploy-gate", status)
+        status = self.run_script(green, fake_jobs="")
+        self.assertIn("cannot read CI's deploy-gate", status)
+        self.assertEqual([], self.deploys())
+        self.assertFalse((self.state / "attempted").exists())
+        self.assertIn("deployed", self.run_script(green))
+        urls = self.urls.read_text()
+        self.assertIn("/actions/runs/1/jobs", urls, "the gate is read from the run that decided")
+        self.assertIn("workflows/validate.yml/runs?branch=main&event=push", urls)
+
+    def test_only_a_push_to_main_for_this_code_counts(self) -> None:
+        """A pull request's run, a run on another branch, and a run for an
+        older commit are all green and none of them tested what main is
+        about to ship."""
+        old = self.live
+        code = self.commit("fix", {"src/game.c": "int w;\n"})
+        for run in (self.wf_run(code, "completed", "success", event="pull_request"),
+                    self.wf_run(code, "completed", "success", branch="feature"),
+                    self.wf_run(old, "completed", "success")):
+            status = self.run_script(json.dumps({"workflow_runs": [run]}))
+            self.assertIn("waiting for CI", status)
+            self.assertIn("(none)", status)
+        self.assertEqual([], self.deploys())
+
+    def test_the_newest_run_on_or_above_the_code_decides(self) -> None:
+        """Code and a test-only commit pushed together get one run, on the
+        tip: that run tested the code and decides it. And when a later
+        push supersedes an earlier run, the later verdict wins -- a stale
+        green under it does not."""
+        code = self.commit("fix", {"src/game.c": "int x;\n"})
+        tests = self.commit("its test", {"tests/test_x.py": "pass\n"})
+        runs = {"workflow_runs": [
+            self.wf_run(code, "completed", "success", run_id=1, created="2026-10-05T00:00:00Z"),
+            self.wf_run(tests, "completed", "failure", run_id=2, created="2026-10-05T00:01:00Z")]}
+        self.assertIn("CI on", self.run_script(json.dumps(runs)))
+        self.assertEqual([], self.deploys(), "the newer red run covers the code")
+        runs["workflow_runs"][1]["conclusion"] = "cancelled"
+        self.assertIn("was cancelled", self.run_script(json.dumps(runs)))
+        self.assertEqual([], self.deploys(), "a cancelled run is never a pass")
+        self.assertFalse((self.state / "attempted").exists())
+        runs["workflow_runs"].append(
+            self.wf_run(tests, "completed", "success", run_id=3, created="2026-10-05T00:02:00Z"))
+        self.assertIn("deployed", self.run_script(json.dumps(runs)))
+        self.assertEqual([f"{tests} 1"], self.deploys())
+        self.assertIn("/actions/runs/3/jobs", self.urls.read_text())
+
+    def test_a_run_under_a_newer_unrun_commit_still_counts(self) -> None:
+        """A docs-only push starts no run (paths-ignore); the code under
+        it keeps its own verdict."""
+        code = self.commit("fix", {"src/game.c": "int y;\n"})
+        tip = self.commit("note", {"README.md": "docs\n"})
+        self.assertIn("deployed", self.run_script(self.ci(code, "completed", "success")))
+        self.assertEqual([f"{tip} 1"], self.deploys())
+
 
 try:
     from live_mud import LiveMud, skip_reason
@@ -270,22 +380,40 @@ except ImportError as exc:  # pragma: no cover
 @unittest.skipIf(LIVE_SKIP is not None, LIVE_SKIP or "")
 class PlayersProbeLiveTests(unittest.TestCase):
     def test_the_mssp_probe_counts_who_is_playing(self) -> None:
-        """The script's own probe, run against a real server: one player
-        in CON_PLAYING reads as 1, a port nobody listens on as unknown."""
-        script = SCRIPT.read_text()
-        start = script.index("\n", script.index("<<'PY'")) + 1
-        probe = script[start:script.index("\nPY\n")]
+        """The probe both deploy scripts use, against a real server: one
+        player in CON_PLAYING reads as 1, a port nobody listens on as
+        down, and a listener that never answers MSSP as unknown."""
         with LiveMud() as mud:
             with mud.connect(timeout=120) as client:
                 from live_mud import create_character
                 create_character(client, "Zcounted", "Zcount1pass")
                 client.drain(1.0)
-                out = subprocess.run(["python3", "-", "127.0.0.1", str(mud.port)],
-                                     input=probe, capture_output=True, text=True, timeout=30)
+                out = subprocess.run(["python3", str(PROBE), "127.0.0.1", str(mud.port)],
+                                     capture_output=True, text=True, timeout=30)
                 self.assertEqual("1", out.stdout.strip(), out.stderr)
-        out = subprocess.run(["python3", "-", "127.0.0.1", "1"], input=probe,
+        out = subprocess.run(["python3", str(PROBE), "127.0.0.1", "1"],
                              capture_output=True, text=True, timeout=30)
+        self.assertEqual("down", out.stdout.strip())
+
+
+class GameProbeTests(unittest.TestCase):
+    def test_a_silent_listener_is_unknown_not_zero(self) -> None:
+        import socket
+        with socket.socket() as server:
+            server.bind(("127.0.0.1", 0))
+            server.listen(1)
+            port = server.getsockname()[1]
+            out = subprocess.run(["python3", str(PROBE), "127.0.0.1", str(port)],
+                                 capture_output=True, text=True, timeout=30)
         self.assertEqual("unknown", out.stdout.strip())
+
+    def test_both_deploy_scripts_use_it(self) -> None:
+        self.assertIn("/usr/local/sbin/toc-game-probe", SCRIPT.read_text())
+        deploy = DEPLOY.read_text()
+        self.assertIn("toc-game-probe", deploy)
+        self.assertIn("toc-game-probe", deploy.split("for s in toc-deploy", 1)[1].split("do", 1)[0],
+                      "toc-deploy installs the probe with the scripts that use it")
+        self.assertNotIn("<<'PY'", SCRIPT.read_text(), "one probe, not a copy")
 
 
 class AutoDeploySourceTests(unittest.TestCase):
@@ -330,7 +458,7 @@ class AutoDeploySourceTests(unittest.TestCase):
         self.assertLess(script.index("GIT_CONFIG_VALUE_0"), script.index("git -C"))
 
     def test_the_script_is_lf(self) -> None:
-        for path in (SCRIPT, DEPLOY, RESTORE):
+        for path in (SCRIPT, DEPLOY, RESTORE, PROBE):
             self.assertNotIn(b"\r", path.read_bytes(), path.name)
 
 

@@ -141,7 +141,8 @@ for u in toc-game.service toc-web.service \
          toc-auto-deploy.service toc-auto-deploy.timer; do
     [ -f "$BUILD/deploy/windows-vm/$u" ] && install -m 0644 "$BUILD/deploy/windows-vm/$u" /etc/systemd/system/
 done
-for s in toc-deploy toc-state-sync toc-state-sync-check toc-game-recovery toc-auto-deploy; do
+for s in toc-deploy toc-state-sync toc-state-sync-check toc-game-recovery toc-auto-deploy \
+         toc-game-probe; do
     [ -f "$BUILD/deploy/windows-vm/$s" ] && install -m 0755 "$BUILD/deploy/windows-vm/$s" /usr/local/sbin/
 done
 

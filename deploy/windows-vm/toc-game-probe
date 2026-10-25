@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+"""Ask the running game how many people are playing.
+
+    toc-game-probe [host] [port]
+
+Prints exactly one word:
+
+    <n>      the game answered MSSP with its count of descriptors in
+             CON_PLAYING -- the game loop is running and is answering
+             new connections;
+    down     nothing is listening (connection refused): there is no game,
+             so nobody is in it;
+    unknown  something accepted the connection but no count came back in
+             time -- a hung game loop, a half-started server, a network
+             fault. Nobody can say who is connected.
+
+It is the one probe both deploy scripts use: toc-auto-deploy reads it to
+decide whether a deploy would interrupt anybody, and toc-deploy reads it
+to decide whether a game it just started is healthy. "unknown" is never
+zero -- it holds an automatic deploy and fails a health check.
+
+The question is the one webadmin's probe_game asks (IAC DO MSSP). It
+exits 0 whatever it prints; the word is the answer.
+"""
+import socket
+import sys
+import time
+
+IAC, SB, SE, DO, MSSP = 255, 250, 240, 253, 70
+
+
+def probe(host: str, port: int, wait: float = 3.0) -> str:
+    try:
+        sock = socket.create_connection((host, port), timeout=wait)
+    except ConnectionRefusedError:
+        return "down"
+    except OSError:
+        return "unknown"
+    with sock:
+        try:
+            sock.sendall(bytes([IAC, DO, MSSP]))
+            sock.settimeout(wait)
+            buf, deadline = b"", time.monotonic() + wait
+            marker, end = bytes([IAC, SB, MSSP]), bytes([IAC, SE])
+            while time.monotonic() < deadline and len(buf) < 65536:
+                chunk = sock.recv(4096)
+                if not chunk:
+                    break
+                buf += chunk
+                a = buf.find(marker)
+                if a < 0:
+                    continue
+                b = buf.find(end, a + 3)
+                if b < 0:
+                    continue
+                # MSSP: VAR(1) name VAL(2) value, repeated.
+                for part in buf[a + 3:b].split(b"\x01")[1:]:
+                    name, _, val = part.partition(b"\x02")
+                    val = val.strip()
+                    if name == b"PLAYERS" and val.lstrip(b"-").isdigit():
+                        return str(max(0, int(val)))
+                break
+        except OSError:
+            pass
+    return "unknown"
+
+
+if __name__ == "__main__":
+    host = sys.argv[1] if len(sys.argv) > 1 else "127.0.0.1"
+    try:
+        port = int(sys.argv[2]) if len(sys.argv) > 2 else 9000
+    except ValueError:
+        print("unknown")
+        sys.exit(0)
+    print(probe(host, port))
