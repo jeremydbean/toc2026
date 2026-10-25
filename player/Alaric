@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1792888803
+LogO 1792889133
 Vers 4
 Prom ~
 Ignoring ~
@@ -16,19 +16,19 @@ PsiKnown torment,telekinesis,mindbar,mind leech,ego whip,project,psionic armor,c
 ChangesSeen 20261023m:1 20261023l:1 20261023k:1 20261023i:1 20261023g:2 20261023f:2 20261023e:2 20261023d:2 20261023c:2 20261023a:2 20261022g:3 20261022f:3 20261022e:3 20261022d:3 20261022c:3 20261022a:3 20261021l:3 20261021k:3 20261021j:3 20261021i:3 20261021h:3 20261021g:3 20261021f:3 20261021e:3 20261021d:3 20261021c:3 20261021b:3 20261020l:3 20261020k:3 20261020j:3 20261020i:3 20261020h:3 20261020g:3 20261020f:3 20261020e:3 20261020d:3 20261020c:3 20261020b:3 20261020a:3 20261019b:3 20261019a:3 20261017a:3 20261013a:3 20261010a:3 20261008b:3 20261008a:3 20261005d:3 20261005c:3 20261005a:3 20261005b:3 20261004t:3 20261004s:3 20261004a:3 20261004b:3 20261004c:3 20261004d:3 20261004e:3 20261004f:3 20261004g:3 20261004h:3 20261004i:3 20261004j:3 20261004k:3 20261004l:3 20261004m:3 20261004n:3 20261004o:3 20261004p:3 20261004q:3 20261004r:3 20261003a:3 20261003b:3 20261003c:3 20261003d:3 20261003e:3 20261003f:3 20261003g:3 20261003h:3 20261003i:3 20261003j:3 20261003k:3 20261003l:3 20261003m:3 20261002a:3 20261002b:3 20261002c:3 20261001a:3 20261001b:3 20261001c:3 20261001d:3 20261001e:3 20261001f:3 20261001g:3 20261001h:3 20261001i:3 20261001j:3 20261001k:3 20261001l:3 20261001m:3 20261001n:3 20261001o:3 20261001p:3 20261001q:3 20261001r:3 20261001s:3 20261001t:3 20261001u:3 20261001v:3 20261001w:3 20261001x:3 20261001y:3 20261001z:3 20260925a:3 20260925b:3 20260925c:3 20260925d:3 20260925e:3 20260925f:3 20260925g:3 20260925h:3 20260925i:3 20260925j:3 20260925k:3 20260925l:3 20260925m:3 20260925n:3 20260925o:3 20260925p:3 20260925q:3 20260925r:3 20260925s:3 20260925t:3 20260925u:3 20260925v:3 20260925w:3 20260925x:3 20260925y:3 20260925z:3 20260924a:3 20260924b:3 20260924c:3 20260924d:3 20260924e:3~
 Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
-Levl 9
-Plyd 851956
+Levl 14
+Plyd 852286
 ListRemorts 3  3  5  2  2 ~
 NumRemorts 3
 Note 1790386686
 StashMax 150
 Scro 22
-Room 4208
-HMV  3592 3701 3602 3837 880 3654
-NewGold 528
+Room 13220
+HMV  3691 3779 3850 4038 1806 3699
+NewGold 546
 NewPlat 1780
-NewCopp 1346
-NewSilv 990
+NewCopp 1428
+NewSilv 1026
 BankCP 4886584573
 IntTime 1792803484
 IntTotal 144584573
@@ -37,7 +37,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 2960
+AchKills 2978
 AchQuests 289
 AchDeaths 9
 AchExplore 5
@@ -119,7 +119,7 @@ Achv visit-oz 1791127353
 Achv visit-high-tower 1791329329
 Achv visit-ultima 1791329350
 Achv visit-korzath-fortress 1790899622
-LastOut  1792888803
+LastOut  1792889133
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1792843141
@@ -136,7 +136,7 @@ QuestPnts 1485
 QuestStrk 16
 CasinoWon  51
 CasinoLost 304
-Exp  21548
+Exp  32676
 Act  4261068
 AfBy 3678908
 AfBy2 4106
@@ -165,13 +165,13 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 128
-Trai 41
-Save  -6
-Alig  972
-Hit   41
-Dam   63
-ACs 18 14 12 30
+Prac 124
+Trai 20
+Save  3
+Alig  839
+Hit   45
+Dam   67
+ACs 7 2 2 30
 Attr 20 13 13 16 21
 AMod 19 25 25 19 25
 Pass Al3w9zuAlwpyY~
@@ -180,7 +180,7 @@ TitleSet 1
 Pnts 7620
 TSex 1
 LLev 0
-HMVP 701 837 654
+HMVP 779 1038 699
 Cond 0 -1 -1
 Alias k kick~
 Alias sm smite~
@@ -211,58 +211,66 @@ Sk 7 'spear'
 Sk 3 'sword'
 Sk 15 'whip'
 Sk 1 'bash'
-Sk 1 'dodge'
+Sk 75 'dodge'
+Sk 1 'enhanced damage'
 Sk 75 'hand to hand'
 Sk 1 'kick'
+Sk 75 'parry'
 Sk 1 'trip'
+Sk 75 'second attack'
+Sk 1 'fists of fury'
+Sk 1 'iron skin'
+Sk 1 'levitate'
 Sk 1 'nerve damage'
-Sk 1 'meditation'
+Sk 1 'steel fist'
+Sk 1 'fast healing'
+Sk 75 'meditation'
 Sk 100 'recall'
 Gr 'rom basics'
 Gr 'monk basics'
 Gr 'monk default'
-AffD 'titanic'   0  29  50  16          0          0
-AffD 'titanic'   0  29 3000  14          0          0
-AffD 'titanic'   0  29 3000  12          0          0
-AffD 'titanic'   0  29 3000  13          0          0
-AffD 'empower'   0  29 -100  17          0          0
-AffD 'empower'   0  29  20  19          0          0
-AffD 'empower'   0  29  20  18          0          0
-AffD 'empower'   0  29  15   5          0          0
-AffD 'empower'   0  29  11   2          0          0
-AffD 'empower'   0  29  15   4          0          0
-AffD 'empower'   0  29  15   3          0          0
-AffD 'giant strength'   0  29  15   1          0          0
-AffD 'divine protection'   0  29   0   0          0       4096
-AffD 'fire shield'   0  29   0   0          0          8
-AffD 'protection evil'   0  29   0   0       8192          0
-AffD 'pass door'   0  29   0   0    1048576          0
-AffD 'fly'   0  29   0   0     524288          0
-AffD 'haste'   0  29   4   2    2097152          0
-AffD 'sanctuary'   0  29   0   0        128          0
-AffD 'empower'   0  29   0   0          0          0
-AffD 'shroud'   0  29 -35  17          0          0
-AffD 'power gloves'   0  29  28  19          0          0
-AffD 'detect evil'   0  29   0   0          4          0
-AffD 'detect good'   0  29   0   0          0          2
-AffD 'detect magic'   0  29   0   0         16          0
-AffD 'detect hidden'   0  29   0   0         32          0
-AffD 'detect invis'   0  29   0   0          8          0
-AffD 'frenzy'   0  29 110  17          0          0
-AffD 'frenzy'   0  29  11  19          0          0
-AffD 'frenzy'   0  29  11  18          0          0
-AffD 'giant strength'   0  29   4   1          0          0
-AffD 'divine protection'   0  29   0   0          0       4096
-AffD 'fire shield'   0  29   0   0          0          8
-AffD 'protection evil'   0  29   0   0       8192          0
-AffD 'pass door'   0  29   0   0    1048576          0
-AffD 'fly'   0  29   0   0     524288          0
-AffD 'haste'   0  29   4   2    2097152          0
-AffD 'sanctuary'  33  29   0   0        128          0
-AffD 'shield'  25  29 -20  17          0          0
-AffD 'bless'  28  29  -8  24          0          0
-AffD 'bless'  51  29   8  18          0          0
-AffD 'armor'  51  29 -20  17          0          0
+AffD 'titanic'   0  23  50  16          0          0
+AffD 'titanic'   0  23 3000  14          0          0
+AffD 'titanic'   0  23 3000  12          0          0
+AffD 'titanic'   0  23 3000  13          0          0
+AffD 'empower'   0  23 -100  17          0          0
+AffD 'empower'   0  23  20  19          0          0
+AffD 'empower'   0  23  20  18          0          0
+AffD 'empower'   0  23  15   5          0          0
+AffD 'empower'   0  23  11   2          0          0
+AffD 'empower'   0  23  15   4          0          0
+AffD 'empower'   0  23  15   3          0          0
+AffD 'giant strength'   0  26  15   1          0          0
+AffD 'divine protection'   0  26   0   0          0       4096
+AffD 'fire shield'   0  26   0   0          0          8
+AffD 'protection evil'   0  26   0   0       8192          0
+AffD 'pass door'   0  26   0   0    1048576          0
+AffD 'fly'   0  26   0   0     524288          0
+AffD 'haste'   0  26   4   2    2097152          0
+AffD 'sanctuary'   0  26   0   0        128          0
+AffD 'empower'   0  23   0   0          0          0
+AffD 'shroud'   0  26 -35  17          0          0
+AffD 'power gloves'   0  26  28  19          0          0
+AffD 'detect evil'   0  26   0   0          4          0
+AffD 'detect good'   0  26   0   0          0          2
+AffD 'detect magic'   0  26   0   0         16          0
+AffD 'detect hidden'   0  26   0   0         32          0
+AffD 'detect invis'   0  26   0   0          8          0
+AffD 'frenzy'   0  26 110  17          0          0
+AffD 'frenzy'   0  26  11  19          0          0
+AffD 'frenzy'   0  26  11  18          0          0
+AffD 'giant strength'   0  26   4   1          0          0
+AffD 'divine protection'   0  26   0   0          0       4096
+AffD 'fire shield'   0  26   0   0          0          8
+AffD 'protection evil'   0  26   0   0       8192          0
+AffD 'pass door'   0  26   0   0    1048576          0
+AffD 'fly'   0  26   0   0     524288          0
+AffD 'haste'   0  26   4   2    2097152          0
+AffD 'sanctuary'  32  26   0   0        128          0
+AffD 'shield'  25  26 -20  17          0          0
+AffD 'bless'  26  26  -8  24          0          0
+AffD 'bless'  50  26   8  18          0          0
+AffD 'armor'  49  26 -20  17          0          0
 End
 
 #O
@@ -284,7 +292,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 197 0 0
+Val  0 0 191 0 0
 End
 
 #O
@@ -748,6 +756,41 @@ Repd 0
 Val  6 7 5 0 0
 End
 
+#O
+Vnum 10022
+Nest 0
+Wear 4
+Lev  11
+Cost 2800000
+Cond 94
+Repd 0
+Val  6 6 5 0 0
+Affect -1 11 -1 5 22 0 0
+End
+
+#O
+Vnum 10022
+Nest 0
+Wear 3
+Lev  11
+Cost 2800000
+Cond 82
+Repd 0
+Val  5 6 5 0 0
+Affect -1 11 -1 4 21 0 0
+End
+
+#O
+Vnum 10027
+Nest 0
+Wear -1
+Lev  14
+Cost 2100000
+Cond 95
+Repd 0
+Val  4 6 6 0 0
+End
+
 #STASH
 #O
 Vnum 9213
@@ -991,17 +1034,6 @@ Affect -1 23 -1 31 14 0 0
 End
 
 #O
-Vnum 10027
-Nest 0
-Wear -1
-Lev  14
-Cost 2100000
-Cond 100
-Repd 0
-Val  5 5 4 0 0
-End
-
-#O
 Vnum 29926
 Nest 0
 Wear -1
@@ -1190,17 +1222,6 @@ Lev  23
 Cost 100000000
 Cond 100
 Repd 0
-End
-
-#O
-Vnum 10027
-Nest 0
-Wear -1
-Lev  14
-Cost 2100000
-Cond 95
-Repd 0
-Val  4 6 6 0 0
 End
 
 #O
@@ -1411,30 +1432,6 @@ Cost 22000000
 Cond 92
 Repd 0
 Affect -1 32 -1 -15 14 0 0
-End
-
-#O
-Vnum 10022
-Nest 0
-Wear -1
-Lev  11
-Cost 2800000
-Cond 82
-Repd 0
-Val  5 6 5 0 0
-Affect -1 11 -1 4 21 0 0
-End
-
-#O
-Vnum 10022
-Nest 0
-Wear -1
-Lev  11
-Cost 2800000
-Cond 94
-Repd 0
-Val  6 6 5 0 0
-Affect -1 11 -1 5 22 0 0
 End
 
 #O
