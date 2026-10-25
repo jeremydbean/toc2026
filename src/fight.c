@@ -6580,6 +6580,7 @@ void do_fists_of_fury( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim = NULL;
     OBJ_DATA     *obj;
     int chance, hit;
+    bool struck = false;
 
     one_argument(argument,arg);
 
@@ -6678,7 +6679,11 @@ void do_fists_of_fury( CHAR_DATA *ch, char *argument )
 
     for(hit = number_bits(2) + 2 + (ch->level >= 35) + (ch->level >= 45); hit > 0; hit--)
     {
-      if ( ch->fighting != victim )
+      /* The first blow is what starts a fight, so this asks only after
+         one has landed: asked before it, FISTS <victim> out of a fight
+         stopped at once -- the fury line, the mana and moves gone, and
+         no blow at all (Alaric, 48 times on 2026-10-25). */
+      if ( struck && ch->fighting != victim )
           break;  /* victim fled or fight state changed; stop iterating */
       if( number_percent( ) > chance )
       {
@@ -6697,6 +6702,7 @@ void do_fists_of_fury( CHAR_DATA *ch, char *argument )
 	  /* damage() is true for any blow that lands, not only a kill. */
 	  damage( ch, victim, number_range(ch->level,ch->level*2),
 		gsn_fists_of_fury, hit );
+	  struck = true;
 	  if ( gone_after_blow( victim, struck_in )
 	  ||   gone_after_blow( ch, struck_in ) )
 	  {

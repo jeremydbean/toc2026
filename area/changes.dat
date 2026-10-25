@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261025j 2026-10-25
+FISTS OF FURY at a named foe now starts the fight and strikes. Out of a
+fight it used to cost the mana and moves and land nothing; only plain
+FISTS in a fight already going worked.
+
 @ 20261025h 2026-10-25
 Members of the cleric guild, of any class, can learn RESURRECTION (Qualo
 the healer trains it). Cast over a fallen player's corpse, it asks them:

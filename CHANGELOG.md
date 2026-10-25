@@ -8,6 +8,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **FISTS OF FURY opens a fight** (logs, 2026-10-25). Its blow loop stopped
+  when the monk was not fighting the victim, and asked before the first
+  blow -- which is what starts the fight -- so `fists <victim>` out of a
+  fight charged 30 mana and 15 moves and struck nothing (Alaric, 48
+  times). It asks only after a blow has landed now.
+  `tests/test_fists_of_fury.py`.
 - **Resurrection** (owner, 2026-10-25; `src/resurrect.c`). A cleric guild
   spell, any class (45/40/50/50), granted with the guild group and trained
   by Qualo the healer. Cast on a player's corpse it offers the owner a
