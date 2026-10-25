@@ -428,25 +428,28 @@ static void charge_hyrule_door_repair( CHAR_DATA *ch )
         send_to_char( "The old man marks the repair charge paid, though you have no gold coins.\n\r", ch );
 }
 
+/* One of Hyrule's enemies or guardians: not its people and not anybody's
+   pet. Nothing in Hyrule is aggressive (owner, 2026-10-04), so the
+   aggressive bit this used to read no longer tells an enemy apart. */
+static bool hyrule_foe( CHAR_DATA *victim )
+{
+    int vnum;
+
+    if ( !IS_NPC(victim) || victim->pIndexData == NULL
+    ||   IS_AFFECTED(victim, AFF_CHARM) || is_hyrule_bystander( victim ) )
+        return false;
+    vnum = victim->pIndexData->vnum;
+    return ( vnum >= 30200 && vnum <= 30799 )
+        || ( vnum >= HYRULE_TIER_FIRST_VNUM && vnum <= HYRULE_TIER_LAST_VNUM );
+}
+
 static bool hyrule_room_has_guardian( ROOM_INDEX_DATA *room )
 {
     CHAR_DATA *victim;
 
-    /* Hyrule's enemies and guardians, not its people and not anybody's
-       pet. Nothing in Hyrule is aggressive (owner, 2026-10-04), so the
-       aggressive bit this used to read no longer tells an enemy apart. */
     for ( victim = room->people; victim != NULL; victim = victim->next_in_room )
-    {
-        int vnum;
-
-        if ( !IS_NPC(victim) || victim->pIndexData == NULL
-        ||   IS_AFFECTED(victim, AFF_CHARM) || is_hyrule_bystander( victim ) )
-            continue;
-        vnum = victim->pIndexData->vnum;
-        if ( ( vnum >= 30200 && vnum <= 30799 )
-        ||   ( vnum >= HYRULE_TIER_FIRST_VNUM && vnum <= HYRULE_TIER_LAST_VNUM ) )
+        if ( hyrule_foe( victim ) )
             return true;
-    }
     return false;
 }
 
@@ -3935,6 +3938,17 @@ do_shove( CHAR_DATA *ch, char *argument )
       return;
     }
 
+    /* Hyrule's foes are beaten, not pushed aside. Until 2026-10 every one
+       was aggressive and the test above refused them; once they were
+       calmed, a shove out of a shuttered room opened its shutter with
+       nothing fought (Trentlin, Level 7, 2026-10-25). */
+    if ( hyrule_foe( victim ) )
+    {
+      act( "$N stands its ground. Hyrule's foes have to be beaten, not pushed aside.",
+           ch, NULL, victim, TO_CHAR );
+      return;
+    }
+
     if(victim->position <= POS_RESTING)
 	  chance -= 25;
 
@@ -4085,6 +4099,11 @@ do_shove( CHAR_DATA *ch, char *argument )
 
     if(IS_IMMORTAL(ch))
 	 chance = 100;
+
+    /* The skill's own beats, on every real attempt: with no lag at all a
+       miss was retried as fast as it could be typed, so any shove came
+       good in a second or two. Refusals above cost nothing. */
+    WAIT_STATE( ch, skill_table[gsn_shove].beats );
 
 	if(number_percent () < chance)
 	{

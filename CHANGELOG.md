@@ -8,6 +8,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **SHOVE leaves Hyrule's foes alone, and costs its beats** (logs,
+  2026-10-25). SHOVE refused aggressive monsters, which covered every Hyrule
+  enemy until they were calmed in October; after that a shove out of a
+  shuttered dungeon room opened its shutter with nothing fought (Trentlin,
+  Level 7). `hyrule_foe()` in `act_move.c` is now the one test, shared by
+  the shutters and SHOVE, and SHOVE refuses before any roll. It also had
+  no lag, so a miss was simply typed again; a real attempt now pays
+  `skill_table[gsn_shove].beats`. `tests/test_shove_hyrule.py`.
 - **FISTS OF FURY opens a fight** (logs, 2026-10-25). Its blow loop stopped
   when the monk was not fighting the victim, and asked before the first
   blow -- which is what starts the fight -- so `fists <victim>` out of a

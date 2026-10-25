@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261025k 2026-10-25
+SHOVE no longer moves Hyrule's enemies and guardians: a dungeon's shutters
+open for foes beaten, not foes pushed into the next room. Each shove also
+takes a moment now, like any other skill. See HELP SHOVE.
+
 @ 20261025j 2026-10-25
 FISTS OF FURY at a named foe now starts the fight and strikes. Out of a
 fight it used to cost the mana and moves and land nothing; only plain
