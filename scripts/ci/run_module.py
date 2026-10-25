@@ -26,7 +26,8 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-TESTS = ROOT / "tests"
+# TOC_TESTS_DIR lets tests/test_ci_runner.py point the runner at fixtures.
+TESTS = Path(os.environ.get("TOC_TESTS_DIR") or ROOT / "tests")
 
 
 class RecordingResult(unittest.TextTestResult):

@@ -12,9 +12,11 @@ Stdlib only, so this runs anywhere the built binary runs.
 
 from __future__ import annotations
 
+import ctypes
 import os
 import re
 import shutil
+import signal
 import socket
 import zlib
 import subprocess
@@ -107,6 +109,53 @@ def free_port() -> int:
     with socket.socket() as probe:
         probe.bind(("127.0.0.1", 0))
         return probe.getsockname()[1]
+
+
+# What an AddressSanitizer, LeakSanitizer or UBSan report looks like in the
+# server's output. halt_on_error stops the server, but a report written at
+# shutdown -- after the last assertion, in LiveMud.__exit__ -- used to go
+# unread: the test had already passed. Every LiveMud now reads its server's
+# output when it stops and fails the test on one of these.
+SANITIZER_REPORT_RE = re.compile(
+    r"ERROR: (?:AddressSanitizer|LeakSanitizer|MemorySanitizer|ThreadSanitizer)"
+    r"|SUMMARY: (?:AddressSanitizer|UndefinedBehaviorSanitizer)"
+    r"|runtime error: ")
+
+# The reply to WORTH, which every position may type. MudClient.sync sends
+# it after a command: the game runs one connection's commands in order, so
+# once this line has arrived, so has everything the command said -- lag
+# and all -- without guessing a window.
+BARRIER_RE = re.compile(r"You have -?\d+ platinum, -?\d+ gold, -?\d+ silver, -?\d+ copper\s+and")
+
+
+def _die_with_parent() -> None:
+    """Ask Linux to SIGKILL a server whose test process dies.
+
+    A cancelled CI job or a killed module takes its Python process down
+    with SIGKILL, which runs no __exit__; without this its servers kept
+    their ports and burned CPU for the rest of the job.
+    """
+    try:
+        libc = ctypes.CDLL(None, use_errno=True)
+        PR_SET_PDEATHSIG = 1
+        libc.prctl(PR_SET_PDEATHSIG, signal.SIGKILL)
+    except (OSError, AttributeError):
+        pass
+
+
+def _artifact_dir() -> Path | None:
+    """Where this test may leave evidence, if the runner asked for it.
+
+    scripts/ci/run_tests.py sets TOC_TEST_ARTIFACTS per module and
+    run_module.py sets TOC_CURRENT_TEST per test. Only the throwaway world
+    is ever written there: server output, synthetic transcripts and the
+    test world's own log/ -- never real player files.
+    """
+    base = os.environ.get("TOC_TEST_ARTIFACTS")
+    if not base:
+        return None
+    test = re.sub(r"[^A-Za-z0-9_.-]+", "_", os.environ.get("TOC_CURRENT_TEST", "unknown"))
+    return Path(base) / test[-150:]
 
 
 class MudClient:
@@ -319,17 +368,52 @@ class MudClient:
                 break
         return self.transcript[mark:]
 
+    def sync(self, line: str, timeout: float | None = None) -> str:
+        """Send a command and return exactly its reply, however late.
+
+        A fixed drain window is a guess: it is too short when the command
+        waits out the last one's lag, or the server is slow (the sanitizer
+        build), and the reply then lands in the next command's window. Here
+        WORTH follows the command and its reply marks the end: the game
+        answers one connection's commands in order, so everything between
+        the two is this command's. Output that is not a reply -- a tick,
+        a wandering mobile -- can still arrive in between; assert on what
+        the command says, not on the absence of everything else. Do not
+        sync WORTH itself.
+        """
+        deadline = time.monotonic() + (timeout or self.timeout)
+        mark = len(self.transcript)
+        self.send(line)
+        self.send("worth")
+        while time.monotonic() < deadline:
+            found = BARRIER_RE.search(self.transcript, mark)
+            if found:
+                self.buffer = self.transcript[found.end():]
+                return self.transcript[mark:found.start()]
+            if not self._pump():
+                break
+        raise AssertionError(
+            f"no reply to {line!r} within {timeout or self.timeout:.0f}s; "
+            f"last output: {' '.join(self.transcript[mark:].split())[-200:]!r}.\n"
+            f"{self.server_state()}\n--- transcript ---\n{self.transcript[-4000:]}")
+
 
 class LiveMud:
     """Boot a real server against a throwaway data tree."""
 
-    def __init__(self, extra_env: dict[str, str] | None = None):
+    def __init__(self, extra_env: dict[str, str] | None = None,
+                 expect_crash: bool = False):
         self.extra_env = extra_env or {}
         self.port = free_port()
         self.tmp: tempfile.TemporaryDirectory | None = None
         self.proc: subprocess.Popen | None = None
         self.root: Path | None = None
         self._output_path: Path | None = None
+        self._clients: list[MudClient] = []
+        # A test that crashes the server on purpose (test_playlog's SIGSEGV)
+        # says so; anything else that leaves a sanitizer report fails.
+        self.expect_crash = expect_crash
+        self._outputs: list[Path] = []
 
     @property
     def player_dir(self) -> Path:
@@ -400,6 +484,8 @@ class LiveMud:
         # would block the server in write() mid-test -- a hang that would
         # look like a slow reply.
         self._output_path = self.root / "server-output.log"
+        if self._output_path not in self._outputs:
+            self._outputs.append(self._output_path)
         output = open(self._output_path, "ab")
         try:
             self.proc = subprocess.Popen(
@@ -408,6 +494,7 @@ class LiveMud:
                 stdout=output,
                 stderr=subprocess.STDOUT,
                 env=env,
+                preexec_fn=_die_with_parent if sys.platform.startswith("linux") else None,
             )
         finally:
             output.close()
@@ -464,12 +551,58 @@ class LiveMud:
         client = MudClient(self.port, timeout=timeout)
         # So a timeout can report whether the server died or stalled.
         client.server_proc = self.proc
+        self._clients.append(client)
         return client
 
-    def __exit__(self, *exc) -> None:
-        self._stop()
-        if self.tmp is not None:
-            self.tmp.cleanup()
+    def sanitizer_report(self) -> str | None:
+        """The first sanitizer report the server wrote, with some context."""
+        for path in self._outputs:
+            try:
+                text = path.read_bytes().decode("latin-1", "replace")
+            except OSError:
+                continue
+            found = SANITIZER_REPORT_RE.search(text)
+            if found:
+                start = text.rfind("\n", 0, max(0, found.start() - 2000)) + 1
+                return text[start:found.start() + 6000]
+        return None
+
+    def _save_artifacts(self) -> None:
+        dest = _artifact_dir()
+        if dest is None or self.root is None:
+            return
+        try:
+            dest = dest / f"port-{self.port}"
+            dest.mkdir(parents=True, exist_ok=True)
+            if self._output_path is not None and self._output_path.exists():
+                data = self._output_path.read_bytes()
+                (dest / "server-output.log").write_bytes(data[-400_000:])
+            for n, client in enumerate(self._clients, 1):
+                (dest / f"client-{n}.txt").write_text(client.transcript[-200_000:],
+                                                      encoding="latin-1", errors="replace")
+            log_dir = self.root / "log"
+            if log_dir.is_dir():
+                for item in log_dir.iterdir():
+                    if item.is_file() and item.stat().st_size < 2_000_000:
+                        shutil.copy2(item, dest / f"log-{item.name}")
+        except OSError:
+            pass
+
+    def __exit__(self, exc_type, exc, tb) -> None:
+        report = None
+        try:
+            self._stop()
+            report = None if self.expect_crash else self.sanitizer_report()
+            self._save_artifacts()
+        finally:
+            if self.tmp is not None:
+                self.tmp.cleanup()
+        if report is not None:
+            message = "the server wrote a sanitizer report:\n" + report
+            if exc_type is None:
+                raise AssertionError(message)
+            # The test failed already; keep its error and add the report.
+            print(message, file=sys.stderr)
 
 
 # Prompt -> reply table for character creation. Driven by matching whatever

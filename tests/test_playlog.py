@@ -282,7 +282,8 @@ class PlaylogLiveTests(unittest.TestCase):
     @unittest.skipIf(os.environ.get("TOC_SERVER_BINARY"),
                      "a sanitizer build reports crashes itself")
     def test_a_crash_leaves_the_last_commands(self) -> None:
-        with LiveMud() as mud:
+        # The crash is the point: no sanitizer-report failure for it.
+        with LiveMud(expect_crash=True) as mud:
             with mud.connect(timeout=120) as client:
                 create_character(client, "Zcrash", PASSWORD)
                 client.drain(1.0)
