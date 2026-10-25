@@ -16383,3 +16383,91 @@
 1792896096	cmd	Alaric	49	16015	pirate.are	standing	96	0	-	north		Aft Deck - Starboard Side //   You are standing on the aft deck of the ship.  The ship sways back and // forth slowly, causing you to feel seasick.  Pirates walk around up here
 1792896098	cmd	Alaric	49	16015	pirate.are	standing	96	0	-	kill	pi	Your punch *** DEVASTATES *** The angry pirate! [-72] // Your punch *** DEMOLISHES *** The angry pirate! [-60] // The angry pirate dodges your attack.
 1792896101	cmd	Alaric	49	16015	pirate.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS The angry pirate! [-45] // Your fists of fury mauls The angry pirate. [-23]
+1792896110	cmd	Alaric	49	16015	pirate.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS The angry pirate! [-43] // Your fists of fury mauls The angry pirate. [-23]
+1792896115	cmd	Alaric	49	16015	pirate.are	standing	96	0	-	fists		Who do you want to attack?
+1792896118	cmd	Alaric	49	16020	pirate.are	standing	96	0	-	down		Main Deck of the Royal Eagle - Starboard //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792896119	cmd	Alaric	49	16019	pirate.are	standing	96	0	-	west		Main Deck of the Royal Eagle //   You are aboard the Royal Eagle - the flag ship of the Krondorian fleet.  She // seems to have been out to sea many times on many voyages.  Crewmen are
+1792896120	cmd	Alaric	49	16018	pirate.are	standing	96	0	-	west		Main Deck of the Royal Eagle //   You are aboard the Royal Eagle - the flag ship of the Krondorian fleet.  She // seems to have been out to sea many times on many voyages.  Crewmen are
+1792896120	cmd	Alaric	49	16018	pirate.are	standing	96	0	-	scan		You don't see anything near you.
+1792896122	cmd	Alaric	49	16018	pirate.are	standing	96	0	-	kill	sw	Your punch === OBLITERATES === The swashbuckler! [-140] // Your punch <<< ERADICATES >>> The swashbuckler! [-197] // The swashbuckler parries your attack.
+1792896124	cmd	Alaric	49	16018	pirate.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The swashbuckler! [-26] // Your fists of fury injures The swashbuckler. [-13]
+1792896130	cmd	Alaric	49	16018	pirate.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES The swashbuckler! [-38] // Your fists of fury hits The swashbuckler. [-11]
+1792896136	cmd	Alaric	49	16018	pirate.are	standing	96	0	-	fists		Who do you want to attack?
+1792896141	cmd	Alaric	49	16023	pirate.are	standing	96	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792896142	cmd	Alaric	49	16023	pirate.are	standing	96	0	-	scan		The angry pirate                   -to the East.
+1792896143	cmd	Alaric	49	16028	pirate.are	standing	96	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792896144	cmd	Alaric	49	16028	pirate.are	standing	96	0	-	scan		The midshipman                     -to the North. // The swashbuckler                   -to the North. // The sailor                         -to the East.
+1792896145	cmd	Alaric	49	16033	pirate.are	standing	96	0	-	north		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792896146	cmd	Alaric	49	16033	pirate.are	standing	96	0	-	kill	sw	The swashbuckler parries your attack. // The swashbuckler dodges your attack. // The swashbuckler parries your attack.
+1792896149	cmd	Alaric	49	16033	pirate.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** The swashbuckler! [-66] // Your fists of fury scratches The swashbuckler. [-1]
+1792896155	cmd	Alaric	49	16033	pirate.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES The swashbuckler! [-50] // Your fists of fury grazes The swashbuckler. [-5]
+1792896161	cmd	Alaric	49	16033	pirate.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES The swashbuckler! [-49] // Your fists of fury grazes The swashbuckler. [-5]
+1792896166	cmd	Alaric	49	16033	pirate.are	standing	94	0	-	fists		Who do you want to attack?
+1792896169	cmd	Alaric	49	16078	pirate.are	standing	94	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792896170	cmd	Alaric	49	16078	pirate.are	standing	94	0	-	scan		The swashbuckler                   -to the East. // The midshipman                     -right below you.
+1792896171	cmd	Alaric	49	16079	pirate.are	standing	94	0	-	east		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling
+1792896172	cmd	Alaric	49	16079	pirate.are	standing	94	0	-	kill	sw	The swashbuckler dodges your attack. // The swashbuckler blocks your attack with his shield. // Your punch <<< ERADICATES >>> The swashbuckler! [-169]
+1792896175	cmd	Alaric	49	16079	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims The swashbuckler! [-35] // Your fists of fury *** DEVASTATES *** The swashbuckler! [-63]
+1792896181	cmd	Alaric	49	16079	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The swashbuckler. [-6] // Your fists of fury grazes The swashbuckler. [-6]
+1792896188	cmd	Alaric	49	16079	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The swashbuckler! [-27] // Your fists of fury DISEMBOWELS The swashbuckler! [-43]
+1792896197	cmd	Alaric	49	16078	pirate.are	standing	94	0	-	west		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792896197	cmd	Alaric	49	16081	pirate.are	standing	94	0	-	up		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792896198	cmd	Alaric	49	16081	pirate.are	standing	94	0	-	scan		The swashbuckler                   -to the West. // The Lookout                        -right above you.
+1792896199	cmd	Alaric	49	16080	pirate.are	standing	94	0	-	west		Out on the Mast //   You are hanging out on the mast of the Royal Eagle.  Literally!  The // only way to climb around the mast is by using all the ropes dangling
+1792896200	cmd	Alaric	49	16080	pirate.are	standing	94	0	-	crane		You flow into action, striking at all your opponents. // Your crane dance ^^^ DESTROYS ^^^ The swashbuckler! [-104]
+1792896206	cmd	Alaric	49	16080	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The swashbuckler. [-15] // Your fists of fury wounds The swashbuckler. [-19]
+1792896212	cmd	Alaric	49	16080	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The swashbuckler. [-17] // Your fists of fury scratches The swashbuckler. [-1]
+1792896218	cmd	Alaric	49	16080	pirate.are	standing	94	0	-	fists		Who do you want to attack?
+1792896218	cmd	Alaric	49	16081	pirate.are	standing	94	0	-	east		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792896218	cmd	Alaric	49	16078	pirate.are	standing	94	0	-	down		The Mast //   You are climbing the mast of the Royal Eagle.  It is very windy up // here so hang on tight!  You see all the little men scrambling around
+1792896218	cmd	Alaric	49	16033	pirate.are	standing	94	0	-	down		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792896219	cmd	Alaric	49	16033	pirate.are	standing	94	0	-	scan		The pirate                         -to the North. // The drunk pirate                   -to the East.
+1792896220	cmd	Alaric	49	16038	pirate.are	standing	94	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792896221	cmd	Alaric	49	16038	pirate.are	standing	94	0	-	kill	pi	The pirate dodges your attack. // The pirate parries your attack. // Your punch ^^^ DESTROYS ^^^ The pirate! [-99]
+1792896225	cmd	Alaric	49	16038	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS The pirate! [-41] // Your fists of fury scratches The pirate. [-1]
+1792896234	cmd	Alaric	49	16033	pirate.are	standing	94	0	-	south		Base of the Mast //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792896234	cmd	Alaric	49	16033	pirate.are	standing	94	0	-	kill	pi	The pirate dodges your attack. // The pirate parries your attack. // The pirate parries your attack.
+1792896238	cmd	Alaric	49	16038	pirate.are	standing	94	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792896238	cmd	Alaric	49	16038	pirate.are	standing	94	0	-	scan		The midshipman                     -to the South.
+1792896240	cmd	Alaric	49	16043	pirate.are	standing	94	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792896240	cmd	Alaric	49	16043	pirate.are	standing	94	0	-	scan		The pirate                         -to the North. // The midshipman                     -to the North.
+1792896242	cmd	Alaric	49	16047	pirate.are	standing	94	0	-	north		Bow of the Royal Eagle //   You are aboard the Royal Eagle, the flagship of the Krondorian fleet.  She // is preparing to set sale at next high tide.  The crew is swabbing the deck
+1792896243	cmd	Alaric	49	16047	pirate.are	standing	94	0	-	kill	pi	Your punch === OBLITERATES === The pirate! [-141] // The pirate dodges your attack. // Your punch ^^^ DESTROYS ^^^ The pirate! [-86]
+1792896246	cmd	Alaric	49	16047	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS The pirate! [-42] // Your fists of fury mauls The pirate. [-24]
+1792896251	cmd	Alaric	49	16047	pirate.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES The pirate! [-55] // Your fists of fury mauls The pirate. [-21]
+1792896257	cmd	Alaric	49	16047	pirate.are	standing	93	0	-	fists		Who do you want to attack?
+1792896258	cmd	Alaric	49	16047	pirate.are	standing	93	0	-	scan		The midshipman                     -to the North. // The swashbuckler                   -to the North. // The midshipman                     -to the West.
+1792896260	cmd	Alaric	49	16050	pirate.are	standing	93	0	-	north		Bow of the Royal Eagle //   You are aboard the Royal Eagle, the flagship of the Krondorian fleet.  She // is preparing to set sale at next high tide.  The crew is swabbing the deck
+1792896261	cmd	Alaric	49	16050	pirate.are	standing	93	0	-	kill	sw	The swashbuckler parries your attack. // The swashbuckler parries your attack. // The swashbuckler dodges your attack.
+1792896264	cmd	Alaric	49	16050	pirate.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The swashbuckler! [-31] // Your fists of fury DISMEMBERS The swashbuckler! [-46]
+1792896271	cmd	Alaric	49	16050	pirate.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The swashbuckler! [-32] // Your fists of fury MANGLES The swashbuckler! [-55]
+1792896280	cmd	Alaric	49	16050	pirate.are	standing	93	0	-	scan		The pirate                         -to the North. // The pirate                         -to the North. // The midshipman                     -to the North.
+1792896281	cmd	Alaric	49	16052	pirate.are	standing	93	0	-	north		Tip of the Royal Eagle //   You are aboard the Royal Eagle which is ready to set sail soon.  You are // standing at the tip of the ship.  From here you could look forward and
+1792896282	cmd	Alaric	49	16052	pirate.are	standing	93	0	-	kill	pi	The pirate dodges your attack. // Your punch === OBLITERATES === The pirate! [-131] // The pirate dodges your attack.
+1792896285	cmd	Alaric	49	16052	pirate.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The pirate. [-22] // Your fists of fury scratches The pirate. [-2]
+1792896291	cmd	Alaric	49	16052	pirate.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** The pirate! [-67] // Your fists of fury *** DEVASTATES *** The pirate! [-65]
+1792896297	cmd	Alaric	49	16052	pirate.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** The pirate! [-80] // Your fists of fury grazes The pirate. [-6]
+1792896303	cmd	Alaric	49	16052	pirate.are	standing	91	0	-	fists		Who do you want to attack?
+1792896306	cmd	Alaric	49	16052	pirate.are	standing	91	0	-	kill	pi	They aren't here.
+1792896307	cmd	Alaric	49	16050	pirate.are	standing	91	0	-	south		Bow of the Royal Eagle //   You are aboard the Royal Eagle, the flagship of the Krondorian fleet.  She // is preparing to set sale at next high tide.  The crew is swabbing the deck
+1792896308	cmd	Alaric	50	16050	pirate.are	standing	91	23	-	kill	pi	The pirate parries your attack. // Your punch >>> ANNIHILATES <<< The pirate! [-206] // Your punch === OBLITERATES === The pirate! [-129]
+1792896318	cmd	Alaric	50	16050	pirate.are	standing	91	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    a pirate's ring
+1792896326	cmd	Alaric	50	4207	dresden_halloween.are	standing	91	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792896328	cmd	Alaric	50	2427	dresden_halloween.are	standing	91	0	-	run	e 3	The Hall of Whispers // [Exits: north east south west] // Entrance to the Haunted Temple
+1792896329	cmd	Alaric	50	2404	dresden_halloween.are	standing	91	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792896329	cmd	Alaric	50	2401	dresden_halloween.are	standing	91	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792896329	cmd	Alaric	50	2410	dresden_halloween.are	standing	91	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792896330	cmd	Alaric	50	2411	dresden_halloween.are	standing	91	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792896330	cmd	Alaric	50	2414	dresden_halloween.are	standing	91	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792896330	cmd	Alaric	50	2497	dresden_halloween.are	standing	91	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792896330	cmd	Alaric	50	2497	dresden_halloween.are	standing	91	0	-	up		Alas, you cannot go that way.
+1792896331	cmd	Alaric	50	2497	dresden_halloween.are	standing	91	0	-	up		Alas, you cannot go that way.
+1792896332	cmd	Alaric	50	2497	dresden_halloween.are	standing	91	0	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'You've earned a rest, Alaric. Return in 8 minutes.'
+1792896337	cmd	Alaric	50	2497	dresden_halloween.are	standing	91	0	-	wake		You are already standing.
+1792896337	cmd	Alaric	50	2497	dresden_halloween.are	standing	91	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    238 hours | Sex:      Male | Guild:        Monk | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792896338	cmd	Alaric	50	2497	dresden_halloween.are	standing	91	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792896341	cmd	Alaric	50	2401	dresden_halloween.are	standing	91	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792896350	cmd	Alaric	50	1607	wyvern.are	standing	91	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you
+1792896353	cmd	Alaric	50	4208	dresden_halloween.are	standing	91	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    238 hours | Sex:      Male | Guild:        Monk | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792896355	cmd	Alaric	50	4208	dresden_halloween.are	standing	91	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1792896365	session	Alaric	50	4208	dresden_halloween.are	quit	4984s	+20 levels	+45921 exp	+277403464 copper	142 kills	0 deaths	1 quests	1572 commands	1 refused	coin: loot 232p 40g 38s 24c, quests 44p 99g 96s 40c
