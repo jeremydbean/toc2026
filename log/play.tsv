@@ -19521,3 +19521,72 @@
 1792950031	cmd	Alaric	50	29353	voyage.are	standing	100	0	-	scan		a tentacle                         -to the Northeast.
 1792950032	cmd	Alaric	50	29353	voyage.are	standing	100	0	-	exits		Obvious exits: // North - Across the Sea // South - Across the Sea
 1792950038	cmd	Alaric	50	29353	voyage.are	standing	100	0	-	where	pass	You didn't find any pass.
+1792950039	cmd	Alaric	50	29353	voyage.are	standing	100	0	-	quaff	true	You quaff a potion of true sight. // You can already see invisible. // You can already sense magical auras.
+1792950041	cmd	Alaric	50	29353	voyage.are	standing	100	0	-	where	pass	You didn't find any pass.
+1792950044	cmd	Alaric	50	29353	voyage.are	standing	100	0	-	exits		Obvious exits: // North - Across the Sea // South - Across the Sea
+1792950047	cmd	Alaric	50	29354	voyage.are	standing	100	0	-	ne		Across the Sea //   The ship continues across the sea... //      As the ship moves deeper out to sea you notice the clouds above the sea
+1792950049	cmd	Alaric	50	29354	voyage.are	standing	100	0	-	scan		a passenger                        -to the Southeast.
+1792950051	cmd	Alaric	50	29355	voyage.are	standing	100	0	-	se		Across the Sea //   The ship continues across the sea... //      The wind continues to pick up causing the waters to become less 
+1792950052	cmd	Alaric	50	29355	voyage.are	standing	100	17	-	kill	pa	Your punch === OBLITERATES === a passenger! [-150] // Your punch >>> ANNIHILATES <<< a passenger! [-235] // A passenger is DEAD!!
+1792950056	cmd	Alaric	50	29355	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792950058	cmd	Alaric	50	29378	voyage.are	standing	100	0	-	nw		Across the Sea //   The ship heads back towards the port... //      Sunlight begins to break through the dark clouds above you.  As you
+1792950059	cmd	Alaric	50	29380	voyage.are	standing	100	0	-	west		Across the Sea //   WHOOPS! //      Looks like you turned the ship into the harsh wind blowing over the
+1792950061	cmd	Alaric	50	29380	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792950062	cmd	Alaric	50	29380	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792950062	cmd	Alaric	50	29380	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792950062	cmd	Alaric	50	29380	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792950062	cmd	Alaric	50	29380	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792950063	cmd	Alaric	50	29380	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792950063	cmd	Alaric	50	29380	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792950066	cmd	Alaric	50	29350	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792950068	cmd	Alaric	50	41	connect.are	standing	100	0	-	west		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792950068	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792950071	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	18	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Streak of 11 in a row! A +75% bonus has been added!'
+1792950075	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 26 quest points.
+1792950076	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    243 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792950077	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1792950077	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (16) (Glowing) a bag of candy corn //      (Magical) (Glowing) a pumpkin-lantern charm
+1792950079	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    243 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792950107	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (16) (Glowing) a bag of candy corn //      (Magical) (Glowing) a pumpkin-lantern charm
+1792950111	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1792950138	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (16) (Glowing) a bag of candy corn //      (Magical) (Glowing) a pumpkin-lantern charm
+1792950138	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	group		Alaric's group: // [50 Monk ] Alaric           8418/8418 hp 14694/14694 mana  896/6078 mv 115062 xp
+1792950140	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    243 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792950143	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    243 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792950147	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    a pirate's ring
+1792950148	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792950149	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792950156	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	gainlist		Abilities for a level 50 monk of the monk guild: 25 learned, 9 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):
+1792950175	refused	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	(unknown)		Huh?
+1792950178	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	help	levi	LEVITATE // Syntax: levitate // Toggle psionic levitation.  While levitating you float just above the
+1792950197	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792950197	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792950199	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792950200	cmd	Alaric	50	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792950200	cmd	Alaric	50	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792950203	cmd	Alaric	50	9531	newthalo.are	standing	100	0	-	run	e 25	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792950204	cmd	Alaric	50	9531	newthalo.are	standing	100	0	-	open		Ok.
+1792950204	cmd	Alaric	50	9794	newthalo.are	standing	100	0	-	run	e 6	Outside the Eastern Gate of New Thalos // [Exits: east south west] // On a road
+1792950205	cmd	Alaric	50	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792950205	cmd	Alaric	50	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a
+1792950205	cmd	Alaric	50	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792950206	cmd	Alaric	50	16002	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792950206	cmd	Alaric	50	16003	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792950206	cmd	Alaric	50	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1792950206	cmd	Alaric	50	16005	pirate.are	standing	100	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like
+1792950208	cmd	Alaric	50	16005	pirate.are	standing	100	0	-	kill	bu	Your punch *** DEVASTATES *** The bucaneer! [-74] // Your punch ^^^ DESTROYS ^^^ The bucaneer! [-93] // The bucaneer dodges your attack.
+1792950211	cmd	Alaric	50	16005	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES The bucaneer! [-40] // Your fists of fury devastates The bucaneer! [-29]
+1792950217	cmd	Alaric	50	16005	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The bucaneer. [-11] // Your fists of fury maims The bucaneer! [-34]
+1792950222	cmd	Alaric	50	16005	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The bucaneer. [-17] // Your fists of fury wounds The bucaneer. [-17]
+1792950228	cmd	Alaric	50	16005	pirate.are	standing	99	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1792950229	cmd	Alaric	50	16005	pirate.are	standing	99	0	-	fists		Who do you want to attack?
+1792950229	cmd	Alaric	50	16005	pirate.are	standing	99	0	-	fists		Who do you want to attack?
+1792950229	cmd	Alaric	50	16005	pirate.are	standing	99	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1792950234	cmd	Alaric	50	16021	pirate.are	standing	99	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792950235	cmd	Alaric	50	16016	pirate.are	standing	99	0	-	south		Main Deck of the Royal Eagle - Port //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792950236	cmd	Alaric	50	16011	pirate.are	standing	99	0	-	up		Aft Deck - Port Side //   You are standing on the aft deck of the ship.  The ship sways back and // forth slowly, causing you to feel seasick.  Pirates walk around up here
+1792950239	cmd	Alaric	50	16006	pirate.are	standing	99	0	-	south		Southwest Corner of Aft Deck //   You are standing on the aft deck of the ship.  From here, you could see // all the people ashore selling their fresh catch.  The ship rocks slowly
+1792950241	cmd	Alaric	50	16006	pirate.are	standing	99	0	-	kill	pi	Your punch *** DEVASTATES *** The angry pirate! [-65] // Your punch MASSACRES The angry pirate! [-51] // Your punch DISEMBOWELS The angry pirate! [-41]
+1792950244	cmd	Alaric	50	16006	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The angry pirate. [-10] // Your fists of fury injures The angry pirate. [-14]
+1792950249	cmd	Alaric	50	16006	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims The angry pirate! [-33] // Your fists of fury hits The angry pirate. [-11]
+1792950255	cmd	Alaric	50	16006	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The angry pirate. [-14] // Your fists of fury maims The angry pirate! [-36]
