@@ -48,12 +48,17 @@ MANIFEST = json.loads((ROOT / "data" / "hyrule_first_quest.json").read_text(enco
 DUNGEONS = {d["level"]: d for d in MANIFEST["dungeons"]}
 
 
-def run(client, command: str, settle: float = 1.2) -> str:
-    client.drain(0.3)
-    mark = len(client.transcript)
-    client.send(command)
-    client.drain(settle)
-    return client.transcript[mark:]
+def run(client, command: str, settle: float | None = None) -> str:
+    """The command's whole reply, however long its lag holds it.
+
+    This used to send and then sleep a fixed window (1.2 to 7 seconds a
+    step, the longest after a whirlwind's lag), which made the module ten
+    minutes long and still guessed: a reply that came after the window
+    landed in the next step's. MudClient.sync waits for the game's answer
+    to the barrier typed after it instead. Every character here can type
+    WORTH -- nobody in this walk is ever hurt -- and nothing in it proves
+    something happens with nothing typed. `settle` is ignored."""
+    return client.sync(command, timeout=120)
 
 
 def one_line(text: str) -> str:
@@ -203,26 +208,19 @@ class HyruleWalkthroughTests(unittest.TestCase):
                         # and no other. (At the pond its tune is the pond's:
                         # the Level 7 step below drains it with PLAY RECORDER.)
                         #
-                        # A ride leaves PULSE_VIOLENCE (3 s) of lag, and lag
-                        # counts down only while a command is waiting (comm.c),
-                        # so draining beforehand burns none of it: the next
-                        # command sits out the whole 3 s first. Its window
-                        # has to hold the lag and the reply. A 3 s window
-                        # here failed CI twice running on 2026-10-06, the
-                        # reply landing just after the window closed.
-                        after_ride = 7.0
-                        back = run(hero, "blow recorder 1", 4.0)
+                        # A ride leaves PULSE_VIOLENCE (3 s) of lag, which
+                        # the next command waits out: run() reads each reply
+                        # up to the barrier after it, so the lag is paid
+                        # inside the reply it belongs to (a fixed 3 s window
+                        # here failed CI twice on 2026-10-06).
+                        back = run(hero, "blow recorder 1")
                         self.assertIn(self.name_of(ho.DUNGEONS[1]["screen"]), back, back)
-                        refused = run(hero, "play recorder 8", after_ride)
+                        refused = run(hero, "play recorder 8")
                         self.assertIn("knows the way", refused, refused)
-                        onward = run(hero, "play recorder", 4.0)
+                        onward = run(hero, "play recorder")
                         self.assertIn(self.name_of(ho.DUNGEONS[2]["screen"]), onward, onward)
-                        flown = run(hero, "play recorder 7", after_ride)
+                        flown = run(hero, "play recorder 7")
                         self.assertIn(self.name_of(ho.DUNGEONS[7]["screen"]), flown, flown)
-                        # Pay the last ride's lag with a command whose reply
-                        # nothing reads, so the pond's tune below is not the
-                        # one that waits for it.
-                        run(hero, "look", after_ride)
                         here = ho.DUNGEONS[7]["screen"]
 
                 made = run(hero, "combine triforce", 2.0)

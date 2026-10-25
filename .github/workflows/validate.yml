@@ -1,34 +1,45 @@
 name: Validate
 
-# One workflow, split so that each kind of failure shows up as early as it
-# can and the slow part runs in parallel:
+# One workflow, split so each kind of failure shows up as early as it can
+# and the slow part runs in parallel:
 #
-#   quick           source and generated-asset checks, no compiler   ~1 min
+#   plan            which tests this change needs (scripts/ci/classify.py)
+#                   against the last commit CI vouched for         ~20 s
+#   quick           source and generated-asset checks, no compiler  ~1 min
 #   build           GNU89 Make build (strict warnings) + strict C17
 #                   CMake build; the world loads; recovery and list
-#                   iterator checks; the Make binary is handed on    ~3 min
+#                   iterator checks; the Make binary is handed on    ~1.5 min
 #   build-sanitize  ASan/UBSan CMake build; the world loads and the
-#                   server idles under the sanitizers                ~5 min
-#   tests           every test module, in duration-balanced shards,
+#                   server idles under the sanitizers                ~2 min
+#   tests           the planned modules, in duration-balanced shards,
 #                   each against the one binary `build` made
-#   tests-serial    timing-sensitive modules, alone on a runner,
-#                   beside the shards rather than after them
+#   tests-serial    timing-sensitive modules, alone on a runner
 #   sanitize-tests  live sessions against the sanitizer binary
-#   deploy-gate     the verdict: every job succeeded, every module ran
-#                   exactly once and passed, no unexplained skip
+#   deploy-gate     the verdict, always evaluated: the plan is the one
+#                   this commit deserves, every job it needed succeeded,
+#                   every module it selected ran exactly once and passed,
+#                   no unexplained skip
+#
+# A change runs what its paths need (scripts/ci/classify.py has the
+# policy): documentation alone runs the cheap checks and any test that
+# holds a document to the code; the browser client its browser and web
+# tests; the dashboard its own; anything touching C, the world, the
+# harness, CI or deploy policy -- or anything the policy cannot name --
+# runs everything. The comparison is with the last commit on main whose
+# deploy-gate passed, never just this push's parent, so a docs commit on
+# top of failing code runs that code's full suite.
 #
 # toc-auto-deploy (deploy/windows-vm/) ships a commit only when the job
-# named deploy-gate succeeded on a push to main for that exact commit.
-# Rename it and the deployer stops deploying -- which is the safe way to
-# fail -- until the two are changed together.
+# named deploy-gate succeeded on a push to main for that commit or one
+# built on it. Rename it and the deployer stops deploying -- which is the
+# safe way to fail -- until the two are changed together.
 
 on:
   push:
-    # The live host commits player state here every five minutes. Each of
-    # those used to start a full validate, which takes an hour and a half
-    # and tells us nothing: no code changed. Ignore the paths the state
-    # sync owns. A commit that touches code as well still runs, because
-    # paths-ignore only skips when *every* changed path matches.
+    # Only main: a branch's commits are validated by its pull request, not
+    # twice. The paths the live host's state sync owns never start a run:
+    # paths-ignore skips a push only when every changed path matches.
+    branches: [main]
     paths-ignore:
       - 'player/**'
       - 'gods/**'
@@ -52,16 +63,30 @@ on:
       - 'area/dpsboard.txt'
       - 'area/built/**'
   pull_request:
+  # A full regression whatever changed: every night, and by hand.
+  schedule:
+    - cron: '23 8 * * *'
+  workflow_dispatch:
+    inputs:
+      full:
+        description: Run every module, whatever changed
+        type: boolean
+        default: true
+      diagnostic:
+        description: Run the tests even if the cheap checks fail (the gate still fails)
+        type: boolean
+        default: false
 
-# A push while a run is going makes that run pointless: it is
-# validating code that has already been replaced. Three commits in ten
-# minutes used to mean three ninety-minute runs and one useful answer.
+# A push while a run is going makes that run pointless: it validates code
+# already replaced. Changes cancel changes; the nightly and manual runs
+# have a group of their own and are never cancelled by a push.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ (github.event_name == 'push' || github.event_name == 'pull_request') && 'change' || github.event_name }}
+  cancel-in-progress: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
+  actions: read          # the plan and the gate read past runs' verdicts
 
 env:
   # Played against the ASan/UBSan binary: combat in the training yard, the
@@ -75,16 +100,65 @@ env:
     test_building_mobs_objs test_building_wizard test_building_rooms_shops
     test_black_market test_treasure_goblin test_rested_and_dailies test_audit_leads
   # Modules that measure against the wall clock and need a machine to
-  # themselves: test_live_gameplay's login throttle.
-  SERIAL_MODULES: test_live_gameplay
-  # The number of normal test shards. The matrix below lists 1..SHARDS
-  # and must be changed with it.
+  # themselves: the login throttle.
+  SERIAL_MODULES: test_login_throttle
+  # The most normal test shards a run uses; a partial plan uses fewer.
   SHARDS: 8
+  SANITIZE_SHARDS: 3
   PYTHONUNBUFFERED: "1"
+  # A full run asked for: the nightly regression, or a manual run with
+  # "full" ticked.
+  FORCE_FULL: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.full) }}
 
 jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      scope: ${{ steps.plan.outputs.scope }}
+      class: ${{ steps.plan.outputs.class }}
+      build: ${{ steps.plan.outputs.build }}
+      tests: ${{ steps.plan.outputs.tests }}
+      serial: ${{ steps.plan.outputs.serial }}
+      sanitize: ${{ steps.plan.outputs.sanitize }}
+      shards: ${{ steps.plan.outputs.shards }}
+      shard_count: ${{ steps.plan.outputs.shard_count }}
+      sanitize_shards: ${{ steps.plan.outputs.sanitize_shards }}
+      sanitize_shard_count: ${{ steps.plan.outputs.sanitize_shard_count }}
+    steps:
+      # The whole history without file contents: enough to diff two trees
+      # and to ask whether the trusted base is an ancestor.
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: blob:none
+
+      - name: Decide what this change needs
+        id: plan
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p ci-plan
+          extra=()
+          if [ "$FORCE_FULL" = true ]; then
+            extra=(--full --full-reason "a ${{ github.event_name }} run is always full")
+          fi
+          python3 scripts/ci/classify.py --head "$GITHUB_SHA" "${extra[@]}" \
+            --serial "$SERIAL_MODULES" --sanitize "$SANITIZE_MODULES" \
+            --shards "$SHARDS" --sanitize-shards "$SANITIZE_SHARDS" \
+            --out ci-plan/plan.json | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Keep the plan
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-plan
+          path: ci-plan/plan.json
+          retention-days: 14
+          if-no-files-found: error
+
   quick:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - name: Check out repository
@@ -113,16 +187,16 @@ jobs:
           python3 scripts/ci/run_tests.py --plan "$SHARDS" --serial "$SERIAL_MODULES"
 
   build:
-    runs-on: ubuntu-latest
+    needs: plan
+    if: needs.plan.outputs.build == 'true'
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
       - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential gcc make cmake libcrypt-dev zlib1g-dev ccache
+        run: scripts/ci/install_deps.sh build-essential cmake libcrypt-dev zlib1g-dev ccache
 
       - name: Cache compiled objects
         uses: actions/cache@v4
@@ -157,16 +231,16 @@ jobs:
           if-no-files-found: error
 
   build-sanitize:
-    runs-on: ubuntu-latest
+    needs: plan
+    if: needs.plan.outputs.sanitize == 'true'
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
       - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential gcc make cmake libcrypt-dev zlib1g-dev ccache
+        run: scripts/ci/install_deps.sh build-essential cmake libcrypt-dev zlib1g-dev ccache
 
       - name: Cache compiled objects
         uses: actions/cache@v4
@@ -208,25 +282,46 @@ jobs:
           retention-days: 3
           if-no-files-found: error
 
+  # The expensive matrix waits for the cheap checks: a failed preflight
+  # stops it (unless a manual run asks for a diagnostic full run, which
+  # the gate still fails). A build the plan did not need may be skipped.
   tests:
-    needs: build
-    runs-on: ubuntu-latest
+    needs: [plan, quick, build]
+    if: >-
+      always() && needs.plan.result == 'success' && needs.plan.outputs.tests == 'true'
+      && (needs.quick.result == 'success' || (github.event_name == 'workflow_dispatch' && inputs.diagnostic && needs.quick.result != 'cancelled'))
+      && (needs.build.result == 'success' || (needs.build.result == 'skipped' && needs.plan.outputs.build != 'true'))
+    runs-on: ubuntu-24.04
     timeout-minutes: 35
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4, 5, 6, 7, 8]
+        shard: ${{ fromJSON(needs.plan.outputs.shards) }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Install test dependencies
+      - name: Fetch the plan
+        uses: actions/download-artifact@v4
+        with:
+          name: ci-plan
+          path: ci-plan
+
+      - name: Which modules this shard runs
+        id: shard
         run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc libcrypt-dev zlib1g-dev lua5.4 gdb
-          # lua5.4 is what makes the Mudlet package's Lua actually compile
-          # here; without it that test skips and ships unparsed script.
-          sudo ln -sf "$(command -v lua5.4)" /usr/local/bin/lua
+          python3 scripts/ci/run_tests.py --plan-file ci-plan/plan.json \
+            --shard "${{ matrix.shard }}/${{ needs.plan.outputs.shard_count }}" \
+            --serial "$SERIAL_MODULES" --serial-mode exclude --list-plan > shard-modules.txt
+          echo "modules: $(wc -l < shard-modules.txt)"
+          # lua compiles the Mudlet package's script; only its module needs it.
+          if grep -qx test_mudlet_assets shard-modules.txt; then
+            echo "lua=lua5.4" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install test dependencies
+        # gdb gives a stalled server's backtrace (tests/live_mud.py).
+        run: scripts/ci/install_deps.sh gcc libcrypt-dev zlib1g-dev gdb ${{ steps.shard.outputs.lua }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -241,20 +336,23 @@ jobs:
         run: python -m pip install -r webadmin/requirements.txt -r scripts/requirements.txt
 
       - name: Fetch the tested binary
+        if: needs.plan.outputs.build == 'true'
         uses: actions/download-artifact@v4
         with:
           name: toc-binary
 
       - name: Require the binary
+        if: needs.plan.outputs.build == 'true'
         run: |
           chmod +x merc
           test -x merc || { echo "::error::no server binary: every live test would skip"; exit 1; }
 
-      - name: Run shard ${{ matrix.shard }} of ${{ env.SHARDS }}
+      - name: Run shard ${{ matrix.shard }} of ${{ needs.plan.outputs.shard_count }}
         run: |
-          python3 scripts/ci/run_tests.py --shard "${{ matrix.shard }}/$SHARDS" \
+          python3 scripts/ci/run_tests.py --plan-file ci-plan/plan.json \
+            --shard "${{ matrix.shard }}/${{ needs.plan.outputs.shard_count }}" \
             --serial "$SERIAL_MODULES" --serial-mode exclude --jobs 4 \
-            --kind normal --label "tests ${{ matrix.shard }}/$SHARDS" \
+            --kind normal --label "tests ${{ matrix.shard }}/${{ needs.plan.outputs.shard_count }}" \
             --results "ci-results/normal-${{ matrix.shard }}.json" \
             --artifacts ci-artifacts --step-summary
 
@@ -280,17 +378,25 @@ jobs:
           if-no-files-found: ignore
 
   tests-serial:
-    needs: build
-    runs-on: ubuntu-latest
+    needs: [plan, quick, build]
+    if: >-
+      always() && needs.plan.result == 'success' && needs.plan.outputs.serial == 'true'
+      && (needs.quick.result == 'success' || (github.event_name == 'workflow_dispatch' && inputs.diagnostic && needs.quick.result != 'cancelled'))
+      && needs.build.result == 'success'
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Fetch the plan
+        uses: actions/download-artifact@v4
+        with:
+          name: ci-plan
+          path: ci-plan
+
       - name: Install test dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc libcrypt-dev zlib1g-dev gdb
+        run: scripts/ci/install_deps.sh gcc libcrypt-dev zlib1g-dev gdb
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -314,7 +420,8 @@ jobs:
 
       - name: Run the timing-sensitive modules alone
         run: |
-          python3 scripts/ci/run_tests.py --serial "$SERIAL_MODULES" --serial-mode only \
+          python3 scripts/ci/run_tests.py --plan-file ci-plan/plan.json \
+            --serial "$SERIAL_MODULES" --serial-mode only \
             --jobs 1 --kind serial --label "tests (serial)" \
             --results ci-results/serial.json --artifacts ci-artifacts --step-summary
 
@@ -337,21 +444,29 @@ jobs:
           if-no-files-found: ignore
 
   sanitize-tests:
-    needs: build-sanitize
-    runs-on: ubuntu-latest
+    needs: [plan, quick, build-sanitize]
+    if: >-
+      always() && needs.plan.result == 'success' && needs.plan.outputs.sanitize == 'true'
+      && (needs.quick.result == 'success' || (github.event_name == 'workflow_dispatch' && inputs.diagnostic && needs.quick.result != 'cancelled'))
+      && needs.build-sanitize.result == 'success'
+    runs-on: ubuntu-24.04
     timeout-minutes: 40
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3]
+        shard: ${{ fromJSON(needs.plan.outputs.sanitize_shards) }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Fetch the plan
+        uses: actions/download-artifact@v4
+        with:
+          name: ci-plan
+          path: ci-plan
+
       - name: Install test dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc libcrypt-dev zlib1g-dev gdb
+        run: scripts/ci/install_deps.sh gcc libcrypt-dev zlib1g-dev gdb
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -369,14 +484,16 @@ jobs:
 
       # Two at a time: the sanitizer build is several times slower, and
       # four of them on a four-core runner miss the tests' reply windows.
-      - name: Play real sessions under sanitizers (shard ${{ matrix.shard }} of 3)
+      - name: Play real sessions under sanitizers (shard ${{ matrix.shard }} of ${{ needs.plan.outputs.sanitize_shard_count }})
         env:
           ASAN_OPTIONS: detect_leaks=0:halt_on_error=1
           UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
           TOC_SERVER_BINARY: bin/rom
         run: |
-          python3 scripts/ci/run_tests.py $SANITIZE_MODULES --shard "${{ matrix.shard }}/3" \
-            --serial "" --jobs 2 --kind sanitize --label "sanitizer ${{ matrix.shard }}/3" \
+          python3 scripts/ci/run_tests.py --plan-file ci-plan/plan.json \
+            --shard "${{ matrix.shard }}/${{ needs.plan.outputs.sanitize_shard_count }}" \
+            --serial "" --jobs 2 --kind sanitize \
+            --label "sanitizer ${{ matrix.shard }}/${{ needs.plan.outputs.sanitize_shard_count }}" \
             --results "ci-results/sanitize-${{ matrix.shard }}.json" \
             --artifacts ci-artifacts --step-summary
 
@@ -399,22 +516,31 @@ jobs:
           if-no-files-found: ignore
 
   # The single result toc-auto-deploy reads. It runs whatever happened
-  # above (always()), and fails unless every job it needs succeeded and
-  # the results prove every module ran exactly once, passed, and skipped
-  # nothing CI was meant to provide.
+  # above (always()) and fails unless the plan is the one this commit
+  # deserves (recomputed here from its trusted base), every job the plan
+  # needed succeeded, and the results -- each naming this commit -- prove
+  # every module the plan selected ran exactly once, passed, and skipped
+  # nothing CI was meant to provide. A skipped job is accepted only when
+  # the plan did not ask for it; GitHub calls a skipped job a success, so
+  # the job results alone would prove nothing.
   deploy-gate:
-    needs: [quick, build, build-sanitize, tests, tests-serial, sanitize-tests]
+    needs: [plan, quick, build, build-sanitize, tests, tests-serial, sanitize-tests]
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          fetch-depth: 0
+          filter: blob:none
+
+      - name: Fetch the plan
+        uses: actions/download-artifact@v4
+        continue-on-error: true      # no plan is the gate's to report, not a crash
+        with:
+          name: ci-plan
+          path: ci-plan
 
       - name: Collect every job's results
         uses: actions/download-artifact@v4
@@ -425,8 +551,10 @@ jobs:
       - name: Decide
         env:
           NEEDS: ${{ toJSON(needs) }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           python3 scripts/ci/gate.py --results ci-results --needs "$NEEDS" \
+            --plan ci-plan/plan.json --sha "$GITHUB_SHA" \
             --serial "$SERIAL_MODULES" --sanitize "$SANITIZE_MODULES" \
             --durations-out ci-durations.json
 

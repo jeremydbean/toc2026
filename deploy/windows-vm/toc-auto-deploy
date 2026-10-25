@@ -24,6 +24,15 @@
 #     commit whose message carries [deploy now] skips that wait for its
 #     own code only; toc-deploy still refuses one that will not build or
 #     whose world will not load;
+#     Since 2026-10-25 a run may test less than everything: CI plans what
+#     a change needs (scripts/ci/classify.py), and a documentation commit
+#     runs the cheap checks. That cannot vouch for code it did not test,
+#     because the plan diffs from the last commit CI vouched for, not from
+#     its parent: a docs commit on top of code that failed carries that
+#     code's full suite, and a run that passes either ran everything since
+#     the last vouched-for commit or changed nothing deployable since it.
+#     deploy-gate recomputes the plan and refuses one that does not match,
+#     so its success means the same thing it always did;
 #   * this exact commit has not already been tried and failed, so a bad
 #     push restarts the game once, not every ten minutes;
 #   * nobody is playing (owner, 2026-10-20: do not reboot while players

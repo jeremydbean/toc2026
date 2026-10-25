@@ -35,12 +35,14 @@ PASSWORD = "Zcreator1"
 TEMPLE = 4207
 
 
-def run(client, command: str, settle: float = 1.5) -> str:
-    client.drain(0.3)
-    mark = len(client.transcript)
-    client.send(command)
-    client.drain(settle)
-    return client.transcript[mark:]
+def run(client, command: str, settle: float | None = None) -> str:
+    """The command's whole reply, read up to the barrier typed after it
+    (MudClient.sync) instead of a fixed window; `settle` is ignored. The
+    windows made this the suite's slowest module (seven and a half
+    minutes). What other clients were sent is still read with drain():
+    a notice that must not reach them is an absence, and an absence needs
+    a window."""
+    return client.sync(command, timeout=120)
 
 
 def make(mud: LiveMud, name: str) -> None:

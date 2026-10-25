@@ -137,12 +137,14 @@ SANITIZER_REPORT_RE = re.compile(
 # copper." -- both are the barrier. WORTH needs POS_SLEEPING or better: a
 # character mortally wounded, incapacitated or stunned is told "You are
 # hurt far too bad for that." and the barrier never comes (a stinking cloud
-# left a walker at -7 hit points, 2026-10-25); use barrier="time" there.
+# left a walker at -7 hit points, 2026-10-25). TIME, below, is the default.
 BARRIER_RE = re.compile(
     r"You have -?\d+ platinum, -?\d+ gold, -?\d+ silver(?:, -?\d+ copper\s+and| and -?\d+ copper\.)")
 # TIME's answer, for a barrier any position may type (TIME is POS_DEAD):
 # its system-time line, and the moon line that follows when one is up.
 TIME_BARRIER_RE = re.compile(
+    r"It is \d+ o'clock [ap]m, Day of [^\n]*\n\r?"
+    r"TOC started up at [^\n]*\n\r?"
     r"The system time is [^\n]*\n\r?"
     r"(?:(?:A New Moon is in the sky|A Crescent Moon is in the sky|A Full Moon is up)\.\n?\r?)?")
 BARRIERS = {"worth": BARRIER_RE, "time": TIME_BARRIER_RE}
@@ -388,15 +390,18 @@ class MudClient:
                 break
         return self.transcript[mark:]
 
-    def sync(self, line: str, timeout: float | None = None, barrier: str = "worth") -> str:
+    def sync(self, line: str, timeout: float | None = None, barrier: str = "time") -> str:
         """Send a command and return exactly its reply, however late.
 
         A fixed drain window is a guess: it is too short when the command
         waits out the last one's lag, or the server is slow (the sanitizer
         build), and the reply then lands in the next command's window. Here
-        WORTH follows the command and its reply marks the end: the game
+        a barrier command follows it and its answer marks the end: the game
         answers one connection's commands in order, so everything between
-        the two is this command's. Output that is not a reply -- a tick,
+        the two is this command's. The barrier is TIME by default -- any
+        position may type it, a switched immortal included, and no test
+        reads it -- or WORTH (barrier="worth"), which the sleeping and worse
+        may not type and an NPC answers in other words. Output that is not a reply -- a tick,
         a wandering mobile -- can still arrive in between; assert on what
         the command says, not on the absence of everything else. Do not
         sync the barrier command itself.
@@ -405,20 +410,36 @@ class MudClient:
         so it counts down lag like any other and is logged. Never sync a
         command whose test proves something happens with nothing typed
         after it (WIMPY firing on its own after KILL); listen with expect().
-        barrier="time" works in every position, WORTH only from sleeping up.
         """
         pattern = BARRIERS[barrier]
         deadline = time.monotonic() + (timeout or self.timeout)
-        mark = len(self.transcript)
-        self.send(line)
+        # A barrier before the command as well as after: whatever the game
+        # sent before it began on this line -- a notice that somebody left,
+        # a tick -- is answered first and left out. Reading from wherever
+        # the transcript happened to end counted a "has left the game" that
+        # was already on its way as part of the next WHO (2026-10-25).
+        start = len(self.transcript)
         self.send(barrier)
+        mark = None
         while time.monotonic() < deadline:
-            found = pattern.search(self.transcript, mark)
+            found = pattern.search(self.transcript, start)
             if found:
-                self.buffer = self.transcript[found.end():]
-                return self.transcript[mark:found.start()]
+                mark = found.end()
+                break
             if not self._pump():
                 break
+        if mark is not None:
+            self.send(line)
+            self.send(barrier)
+            while time.monotonic() < deadline:
+                found = pattern.search(self.transcript, mark)
+                if found:
+                    self.buffer = self.transcript[found.end():]
+                    return self.transcript[mark:found.start()]
+                if not self._pump():
+                    break
+        else:
+            mark = start
         raise AssertionError(
             f"no reply to {line!r} within {timeout or self.timeout:.0f}s; "
             f"last output: {' '.join(self.transcript[mark:].split())[-200:]!r}.\n"

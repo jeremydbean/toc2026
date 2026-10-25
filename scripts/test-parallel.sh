@@ -10,7 +10,7 @@
 # people already type. Every module runs in a session of its own under a
 # timeout (TOC_MODULE_TIMEOUT, default 1200 s), a Ctrl-C kills the game
 # servers it started, timing-sensitive modules (SERIAL, default
-# test_live_gameplay) run alone after the rest, and the failures are
+# test_login_throttle) run alone after the rest, and the failures are
 # reprinted together at the end with their tracebacks.
 #
 # From the repository root, always: modules reach for src/, area/ and

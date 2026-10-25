@@ -23,7 +23,7 @@ skip reason. That buys three things the old shell loop could not:
   The CI report job reads these to prove nothing went missing, and
   tests/ci_durations.json, refreshed from them, balances the shards.
 
-Timing-sensitive modules (SERIAL, default test_live_gameplay: a login
+Timing-sensitive modules (SERIAL, default test_login_throttle: a login
 throttle measured against the wall clock) run on their own. Locally that
 is after everything else; CI gives them a job of their own instead of a
 tail, with --serial-mode only / exclude.
@@ -46,7 +46,7 @@ ROOT = Path(__file__).resolve().parents[2]
 TESTS = Path(os.environ.get("TOC_TESTS_DIR") or ROOT / "tests")
 RUN_MODULE = Path(__file__).resolve().parent / "run_module.py"
 DURATIONS = TESTS / "ci_durations.json"
-DEFAULT_SERIAL = "test_live_gameplay"
+DEFAULT_SERIAL = "test_login_throttle"
 
 
 def all_modules() -> list[str]:
@@ -162,6 +162,8 @@ class Runner:
         skipped = record.get("counts", {}).get("skip", 0)
         extra = f", {skipped} skipped" if skipped else ""
         print(f"  {mark}  {module} ({elapsed:.0f}s{extra})", flush=True)
+        if record["status"] not in ("pass", "cancelled"):
+            announce_failure(module, record, self.args.label)
         # Artifacts of a passing module are noise; keep what a failure left.
         if record["status"] == "pass" and self.artifacts:
             shutil.rmtree(self.artifacts / "modules" / module, ignore_errors=True)
@@ -209,6 +211,10 @@ class Runner:
         wall = time.monotonic() - start
         busy = sum(r.get("wall", 0.0) for r in self.results.values())
         summary = {
+            # Which commit and run these results are for: the gate refuses
+            # any that name another (scripts/ci/gate.py).
+            "sha": os.environ.get("GITHUB_SHA"),
+            "run_id": os.environ.get("GITHUB_RUN_ID"),
             "label": self.args.label,
             "kind": self.args.kind,
             "shard": self.args.shard,
@@ -231,6 +237,28 @@ class Runner:
         if self.stopping:
             return 130
         return 1 if failed else 0
+
+
+def announce_failure(module: str, record: dict, label: str) -> None:
+    """Say a module failed the moment it does, not when the shard ends: a
+    GitHub annotation (it shows on the run page while the job still runs)
+    naming the module, the first failing test and its message, and where
+    the failure's artifacts will be. Off GitHub, a plain line."""
+    first = next(((t["id"], f["message"]) for t in record.get("tests", [])
+                  for f in t.get("failures", [])), None)
+    test_id, message = first if first else (module, record.get("error") or record["status"])
+    message = " ".join(str(message).split())[:600]
+    where = ""
+    if os.environ.get("GITHUB_RUN_ID"):
+        where = (f" -- artifacts: {os.environ.get('GITHUB_SERVER_URL', 'https://github.com')}/"
+                 f"{os.environ.get('GITHUB_REPOSITORY', '')}/actions/runs/"
+                 f"{os.environ['GITHUB_RUN_ID']} (failures-* for {label or 'this job'})")
+    if os.environ.get("GITHUB_ACTIONS"):
+        title = f"{module} {record['status']}".replace(":", " ").replace(",", " ")
+        text = f"{test_id}: {message}{where}".replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+        print(f"::error title={title}::{text}", flush=True)
+    else:
+        print(f"     {test_id}: {message}", flush=True)
 
 
 def report(summary: dict, out) -> None:
@@ -318,6 +346,9 @@ def main() -> int:
                         help="normal, serial or sanitize: how the CI report counts this run")
     parser.add_argument("--step-summary", action="store_true",
                         help="append a markdown summary to $GITHUB_STEP_SUMMARY")
+    parser.add_argument("--plan-file", type=Path,
+                        help="run the modules a scripts/ci/classify.py plan selects "
+                             "(its sanitize_modules with --kind sanitize)")
     args = parser.parse_args()
 
     serial_set = set(args.serial.split())
@@ -333,7 +364,12 @@ def main() -> int:
         print(f"serial: {' '.join(sorted(serial_set))}")
         return 0
 
-    modules = args.modules or all_modules()
+    if args.plan_file:
+        plan = json.loads(args.plan_file.read_text())
+        key = "sanitize_modules" if args.kind == "sanitize" else "modules"
+        modules = list(plan.get(key) or [])
+    else:
+        modules = args.modules or all_modules()
     missing = [m for m in modules if not (TESTS / f"{m}.py").is_file()]
     if missing:
         print("no such module: " + ", ".join(f"tests/{m}.py" for m in missing))

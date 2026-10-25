@@ -8,6 +8,26 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **CI runs what a change needs, and still vouches for nothing it did not
+  test** (2026-10-25). `scripts/ci/classify.py` sorts the changed paths
+  -- state, documentation, the browser client, the dashboard, test modules,
+  everything else -- against the last commit on main whose deploy-gate
+  passed, never the push's parent, so a docs commit on top of failing code
+  runs that code's full suite. A deployable-tree fingerprint promotes any
+  "no runtime change" class that moved it. deploy-gate recomputes the plan
+  from its base and refuses one that differs, a job the plan needed that
+  did not succeed, a selected module with no result, or results for
+  another commit. Branches are validated by their pull request, main by its
+  push; a nightly and a manual run are full; the matrix waits for the cheap
+  checks. Failures are annotated as they happen, jobs install only the
+  packages they lack, and the gate reports coverage, wall time and
+  runner-minutes. `tests/test_ci_classify.py`.
+- **Faster, steadier live tests.** `MudClient.sync` brackets a command
+  with TIME barriers (any position may type TIME), so a reply is exactly
+  the command's; the Hyrule walkthrough fell from ten minutes to under
+  four and the creator-rank module from seven and a half to five and a
+  half. The login-throttle tests left `test_live_gameplay` for
+  `test_login_throttle`, the only module that now needs a runner alone.
 - **Three frictions from the 2026-10-25 logs.** Stone skin refused a monk
   or necromancer with "Spell failed.", and Alaric, newly a monk, ate eight
   guano pills against it; it now says why. SHOVE took only `s`/`south`

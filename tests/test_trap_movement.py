@@ -127,9 +127,9 @@ class TrapMovementLiveTests(unittest.TestCase):
                     trapper.sync("force zwalker stand")
                     trapper.must(f"transfer zwalker {GAS_HALL}", "Ok.")
                     self.assertEqual(room_of(trapper, "zwalker"), GAS_HALL)
-                    # TIME, not WORTH, as the barrier: a walker the gas
-                    # leaves mortally wounded may not type WORTH.
-                    said = walker.sync("west", timeout=60, barrier="time")
+                    # TIME is the barrier: a walker the gas leaves mortally
+                    # wounded may not type WORTH, which used to be.
+                    said = walker.sync("west", timeout=60)
                     outcome = departure_outcome(said)
                     outcomes.append(outcome)
                     self.assertNotEqual(outcome, "walked-dead",
@@ -246,8 +246,12 @@ class MountedTrapTests(unittest.TestCase):
 
                 walked_in = through_cloud(walker, "east", "west", "The East Paddock")
                 # RIDE and the bucks before it lag the rider; sync waits that out.
+                seen_from = len(walker.transcript)
                 rode_in = through_cloud(rider, "east", "west", "The East Paddock")
-                seen = walker.sync("look")       # the walker is already there
+                # The walker, already there, saw the rider arrive: the LOOK
+                # pulls in everything sent before it; read across the ride.
+                walker.sync("look")
+                seen = walker.transcript[seen_from:]
                 rode_out = through_cloud(rider, "west", "east", "The West Paddock")
 
                 for name in ("zgaswalker", "zgasrider"):

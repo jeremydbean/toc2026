@@ -2,7 +2,7 @@
 """The one verdict CI gives a commit: is it ready to deploy?
 
     python3 scripts/ci/gate.py --results DIR --needs "$NEEDS_JSON" \
-        --sanitize "test_a test_b" --serial "test_live_gameplay"
+        --sanitize "test_a test_b" --serial "test_login_throttle"
 
 The Validate workflow's last job runs this after every other job, however
 they ended, and it passes only if all of these hold:
@@ -62,14 +62,65 @@ def allowed(rules: list[dict], module: str, test_id: str, reason: str) -> bool:
     return False
 
 
+# Which workflow jobs each of a plan's "jobs" switches stands for. A job
+# the plan did not ask for may be skipped; one it asked for must succeed;
+# plan and quick always run.
+PLAN_JOBS = {
+    "build": ("build",),
+    "tests": ("tests",),
+    "serial": ("tests-serial",),
+    "sanitize": ("build-sanitize", "sanitize-tests"),
+}
+
+
+def required_jobs(plan: dict | None) -> set[str] | None:
+    """The jobs a plan needs, or None for "every job" (no plan: full)."""
+    if plan is None:
+        return None
+    needed = set()
+    for switch, jobs in PLAN_JOBS.items():
+        if plan.get("jobs", {}).get(switch):
+            needed.update(jobs)
+    return needed
+
+
 def evaluate(runs: list[dict], needs: dict, expected: list[str], serial: list[str],
-             sanitize: list[str], rules: list[dict]) -> tuple[list[str], dict]:
+             sanitize: list[str], rules: list[dict], plan: dict | None = None,
+             sha: str | None = None) -> tuple[list[str], dict]:
+    """With a plan, expected/serial/sanitize come from it: the modules it
+    selected must each run once and pass; a job it did not ask for may be
+    skipped. Without one, everything is required, as before plans."""
     problems: list[str] = []
+    inventory = list(expected)
+    required = required_jobs(plan)
+    if plan is not None:
+        if plan.get("scope") == "full":
+            expected = inventory
+        else:
+            expected = list(plan.get("modules") or [])
+            for module in sorted(set(expected) - set(inventory)):
+                problems.append(f"plan selected `{module}`, which is not in tests/")
+        serial = [m for m in plan.get("serial_modules") or [] if m in expected]
+        sanitize = list(plan.get("sanitize_modules") or [])
 
     for job, info in sorted(needs.items()):
         result = (info or {}).get("result")
-        if result != "success":
-            problems.append(f"job `{job}` ended `{result}`")
+        if job in ("plan", "quick") or required is None or job in required:
+            if result != "success":
+                problems.append(f"job `{job}` ended `{result}`")
+        elif result not in ("skipped", "success"):
+            problems.append(f"job `{job}` ended `{result}` (not required by the plan, "
+                            "but it ran and did not pass)")
+    if required is not None:
+        for job in sorted(required - set(needs)):
+            problems.append(f"the plan needs job `{job}`, which this workflow does not have")
+
+    for run in runs:
+        if sha and run.get("sha") and run["sha"] != sha:
+            problems.append(f"results `{run['_file']}` are for commit {run['sha'][:8]}, "
+                            f"not {sha[:8]}")
+        elif sha and not run.get("sha"):
+            problems.append(f"results `{run['_file']}` do not say which commit they tested")
 
     seen: dict[str, list[str]] = {}
     sanitized: dict[str, list[str]] = {}
@@ -96,8 +147,10 @@ def evaluate(runs: list[dict], needs: dict, expected: list[str], serial: list[st
             problems.append(f"module `{module}` never ran (lost from the sharding?)")
         elif len(seen[module]) > 1:
             problems.append(f"module `{module}` ran {len(seen[module])} times: {seen[module]}")
-    for module in sorted(set(seen) - set(expected)):
+    for module in sorted(set(seen) - set(inventory)):
         problems.append(f"module `{module}` ran but is not in tests/")
+    for module in sorted(set(seen) - set(expected) - (set(seen) - set(inventory))):
+        problems.append(f"module `{module}` ran but the plan did not select it")
     for module in sanitize:
         if module not in sanitized:
             problems.append(f"sanitizer module `{module}` never ran")
@@ -113,7 +166,9 @@ def evaluate(runs: list[dict], needs: dict, expected: list[str], serial: list[st
         for test in record.get("tests", []):
             totals[test["outcome"]] = totals.get(test["outcome"], 0) + 1
     stats = {"modules": len(seen), "sanitized": len(sanitized), "tests": totals,
-             "records": records}
+             "records": records, "omitted": len(inventory) - len(expected),
+             "scope": (plan or {}).get("scope", "full"), "class": (plan or {}).get("class", "full"),
+             "omitted_reason": (plan or {}).get("omitted_reason", "")}
     return problems, stats
 
 
@@ -124,6 +179,17 @@ def write_summary(out, problems: list[str], stats: dict, runs: list[dict], needs
     print(f"{stats['modules']} modules, {sum(t.values())} tests: "
           + ", ".join(f"{n} {k}" for k, n in sorted(t.items()))
           + f"; {stats['sanitized']} modules under sanitizers.\n", file=out)
+    scope = stats.get("scope", "full")
+    if scope == "full":
+        print("Coverage: **full** -- every module.\n", file=out)
+    else:
+        print(f"Coverage: **{scope}** ({stats.get('class')}): {stats.get('omitted', 0)} "
+              f"module(s) omitted by policy -- {stats.get('omitted_reason', '')}.\n", file=out)
+    timing = stats.get("timing")
+    if timing:
+        print(f"Wall time so far {timing['wall_min']:.1f} min; "
+              f"{timing['runner_min']:.1f} runner-minutes over {timing['jobs']} job(s); "
+              f"run attempt {timing['attempt']}.\n", file=out)
     if problems:
         print("| Problem |\n| --- |", file=out)
         for p in problems[:200]:
@@ -144,14 +210,96 @@ def write_summary(out, problems: list[str], stats: dict, runs: list[dict], needs
     print("\n</details>", file=out)
 
 
+def load_classifier():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "toc_classify", Path(__file__).resolve().parent / "classify.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def verify_plan(plan: dict | None, sha: str | None, serial: list[str], sanitize: list[str],
+                trusted, recompute) -> list[str]:
+    """Whether the plan the jobs ran is the plan this commit deserves.
+
+    A full plan cannot cover too little. A partial one must be for this
+    commit, stand on a trusted base (trusted(base, head) -> (ok, why)),
+    and be exactly what classifying again from that base gives
+    (recompute(base, head) -> plan): an artifact edited, a base made up,
+    or a policy that changed under the run all fail here."""
+    if plan is None:
+        return ["no plan was found: a run without one proves nothing about coverage"]
+    problems = []
+    if sha and plan.get("head") != sha:
+        problems.append(f"the plan is for {str(plan.get('head'))[:8]}, not {sha[:8]}")
+    if plan.get("scope") == "full":
+        return problems
+    base = plan.get("base")
+    if not base:
+        return problems + ["a partial plan without a base"]
+    ok, why = trusted(base, plan.get("head"))
+    if not ok:
+        problems.append(f"the plan's base {base[:8]} is not trusted: {why}")
+        return problems
+    again = recompute(base, plan.get("head"))
+    for key in ("scope", "class", "modules", "jobs", "serial_modules", "sanitize_modules"):
+        if again.get(key) != plan.get(key):
+            problems.append(f"the plan's `{key}` does not match classifying {base[:8]}.."
+                            f"{str(plan.get('head'))[:8]} again: {plan.get(key)!r} != "
+                            f"{again.get(key)!r}")
+    return problems
+
+
+def run_timing(repo: str, run_id: str | None, token: str | None) -> dict | None:
+    """Wall time since the run began and runner-minutes its jobs used so far
+    (the gate's own still running), from GitHub's jobs list. None off CI or
+    when GitHub does not answer: this is a report, never a verdict."""
+    if not (repo and run_id):
+        return None
+    try:
+        import datetime
+        import urllib.request
+        headers = {"Accept": "application/vnd.github+json"}
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+
+        def get(url):
+            with urllib.request.urlopen(urllib.request.Request(url, headers=headers),
+                                        timeout=20) as response:
+                return json.load(response)
+        run = get(f"https://api.github.com/repos/{repo}/actions/runs/{run_id}")
+        jobs = get(f"https://api.github.com/repos/{repo}/actions/runs/{run_id}/jobs"
+                   "?filter=latest&per_page=100").get("jobs", [])
+
+        def when(text):
+            return datetime.datetime.fromisoformat(text.replace("Z", "+00:00")) if text else None
+        now = datetime.datetime.now(datetime.timezone.utc)
+        busy = 0.0
+        for job in jobs:
+            started, done = when(job.get("started_at")), when(job.get("completed_at"))
+            if started:
+                busy += ((done or now) - started).total_seconds()
+        began = when(run.get("run_started_at") or run.get("created_at"))
+        return {"wall_min": (now - began).total_seconds() / 60 if began else 0.0,
+                "runner_min": busy / 60, "jobs": len(jobs),
+                "attempt": run.get("run_attempt", 1)}
+    except Exception:  # noqa: BLE001 -- a report, not a verdict
+        return None
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--results", type=Path, required=True)
     parser.add_argument("--needs", default="{}", help="toJSON(needs) from the workflow")
-    parser.add_argument("--serial", default="test_live_gameplay")
+    parser.add_argument("--serial", default="test_login_throttle")
     parser.add_argument("--sanitize", default="", help="space-separated sanitizer modules")
     parser.add_argument("--allowed-skips", type=Path, default=TESTS / "ci_allowed_skips.json")
     parser.add_argument("--durations-out", type=Path)
+    parser.add_argument("--plan", type=Path,
+                        help="the run's plan (scripts/ci/classify.py); required in CI")
+    parser.add_argument("--sha", default=os.environ.get("GITHUB_SHA"))
+    parser.add_argument("--repo", default=os.environ.get("GITHUB_REPOSITORY", ""))
     args = parser.parse_args()
 
     runs = load_runs(args.results)
@@ -161,9 +309,36 @@ def main() -> int:
         rules = json.loads(args.allowed_skips.read_text())["allowed"]
     except (OSError, ValueError, KeyError):
         rules = []
+    plan = None
+    plan_problems: list[str] = []
+    if args.plan is not None:
+        try:
+            plan = json.loads(args.plan.read_text())
+        except (OSError, ValueError) as exc:
+            plan_problems.append(f"the plan could not be read: {exc}")
+        classify = load_classifier()
+        token = os.environ.get("GITHUB_TOKEN")
+
+        def trusted(base, head):
+            return classify.verify_trusted_base(args.repo, base, head, token)
+
+        def recompute(base, head):
+            return classify.plan_for(
+                classify.changed_paths(base, head), head=head, base=base,
+                serial=args.serial.split(), sanitize=args.sanitize.split(),
+                base_fingerprint=classify.fingerprint(base),
+                head_fingerprint=classify.fingerprint(head))
+        if plan is not None:
+            plan_problems += verify_plan(plan, args.sha, args.serial.split(),
+                                         args.sanitize.split(), trusted, recompute)
     problems, stats = evaluate(runs, needs, expected, args.serial.split(),
-                               args.sanitize.split(), rules)
-    if not runs:
+                               args.sanitize.split(), rules, plan=plan,
+                               sha=args.sha if args.plan is not None else None)
+    problems = plan_problems + problems
+    stats["timing"] = run_timing(args.repo, os.environ.get("GITHUB_RUN_ID"),
+                                 os.environ.get("GITHUB_TOKEN"))
+    wanted = expected if plan is None or plan.get("scope") == "full" else plan.get("modules")
+    if not runs and wanted:
         problems.insert(0, "no test results were found at all")
 
     write_summary(sys.stdout, problems, stats, runs, needs)

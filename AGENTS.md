@@ -249,27 +249,55 @@ manual gameplay checks.
 want it run routinely.** 216 modules, 1,553 tests (2026-10-25); around 110
 modules boot a real server that parses every area file (the generated
 Hyrule alone is 447 rooms and 1,519 resets), and `tests/live_mud.py`'s
-`drain(n)` sleeps its whole window. The slowest single module,
-`test_hyrule_walkthrough`, takes ten minutes on a GitHub runner, which is
-the floor on any CI run. `tests/ci_durations.json` holds every module's
-measured time.
+`drain(n)` sleeps its whole window. No single module is the floor any
+more: `test_hyrule_walkthrough` took ten minutes in fixed windows and
+takes under four synced (2026-10-25); the slowest now run five to seven.
+`tests/ci_durations.json` holds every module's measured time.
 
-**CI (`.github/workflows/validate.yml`) takes about 14 minutes** from push
-to verdict, measured on the first run of the split pipeline (Validate run
-40210613754, 2026-10-25: 14.4 minutes, 117 runner-minutes). The single
-job it replaced took 67 minutes at the median of the sixty runs before it
-(69 to 70 minutes for both a pass and a fail on 2026-10-25) for 89
-runner-minutes: a quarter of the wait for about a third more runner time,
-which a public repository does not pay for. The jobs, all on free
-`ubuntu-latest` runners and as parallel as GitHub allows:
+**CI runs what a change needs, and the policy is `scripts/ci/classify.py`**
+(2026-10-25). The `plan` job sorts every changed path: state the game
+writes (nothing to run), documentation (the cheap checks, plus any test
+that holds a document to the code -- the achievements catalog, the install
+guides; the five wiki pages the Oracle reads are dashboard content), the
+browser client's static files (its browser and web tests), the dashboard's
+Python (the modules that use it), test modules alone (those modules), and
+everything else -- C, headers, area and generator data, scripts, the
+harness (`tests/live_mud.py`, `tests/fixtures/`, `scripts/ci/`), CI and
+deploy policy, dependencies, and any path the policy does not name -- the
+full suite with the sanitizer and serial jobs. No base, an unreadable
+diff, the nightly run and a manual run with "full" ticked are full.
+`tests/test_ci_classify.py` plays the policy.
+
+**The comparison is with the last commit CI vouched for, never the push's
+parent.** `toc-auto-deploy` ships a code commit on a passing run of any
+commit built on it, so a docs commit pushed on failing code must not pass
+on a docs-sized check. The plan diffs from the newest commit on main, an
+ancestor of this one, whose push run's `deploy-gate` passed -- which puts
+the failing code in this run's diff, and its full suite in this run. That
+is an induction: a commit passed either by running everything or by
+changing nothing at run time since one that did. The plan also records a
+fingerprint of the deployable tree (the paths `toc-auto-deploy` calls
+code; the two exclude lists are held together by a test), and a class
+that claims no runtime change while the fingerprint moved is promoted to
+full. Pushes to branches no longer run at all: a branch is validated by
+its pull request, main by its push.
+
+**A full CI run (`.github/workflows/validate.yml`) took 11.4 to 14
+minutes** from push to verdict on the split pipeline (Validate runs
+40210613754, 40229059412 and 40231173630, 2026-10-25). The single job it
+replaced took 67 minutes at the median of the sixty runs before it, for
+89 runner-minutes. The jobs, all on free `ubuntu-24.04` runners (pinned,
+like production: `ubuntu-latest` moves to 26) and as parallel as GitHub
+allows:
 
 | job | what | time |
 | --- | --- | --- |
-| `quick` | `validate.sh quick`: py_compile, the Mudlet map and seasonal areas `--check`, the area validators, whitespace | 12 s |
+| `plan` | `classify.py`: what this change needs, against the trusted base | 20 s |
+| `quick` | `validate.sh quick`: py_compile, the Mudlet map and seasonal areas `--check`, the area validators, whitespace. Every test job waits for it: a failed preflight launches no matrix (a manual "diagnostic" run overrides that, and the gate still fails) | 12 s |
 | `build` | `validate.sh build`: GNU89 Make with strict warnings, world load, recovery scenarios, list iterator, smoke; then strict C17 CMake and its world load. Hands `merc` on. | 1 min |
 | `build-sanitize` | ASan/UBSan CMake build, world load and a 45 s idle under them. Hands `bin/rom` on. | 1.5 min |
-| `tests` (x8) | every module but the serial ones, in duration-balanced shards, four at a time, against `build`'s binary | 6-13 min |
-| `tests-serial` | `test_live_gameplay`, alone, beside the shards | 6.5 min |
+| `tests` (x8 at most) | the planned modules but the serial ones, in duration-balanced shards (a partial plan uses as few as fit it), four at a time, against `build`'s binary | 6-8 min |
+| `tests-serial` | `test_login_throttle`, alone, beside the shards | 1 min |
 | `sanitize-tests` (x3) | `SANITIZE_MODULES` against the sanitizer binary, two at a time | 7 min |
 | `deploy-gate` | the verdict (below) | 10 s |
 
@@ -280,11 +308,16 @@ a table of modules, times, skips and failures.
 
 **`deploy-gate` is the only thing that says a commit is good, and
 `toc-auto-deploy` reads that job by name.** It runs whatever the jobs
-before it did (`if: always()`) and passes only when every one of them
-succeeded, every `tests/test_*.py` ran exactly once (in one shard or the
-serial job -- a module lost from the sharding or run twice is named), each
-sanitizer module ran once, every module passed, and no test skipped for a
-reason `tests/ci_allowed_skips.json` does not explain. A skip in CI
+before it did (`if: always()`) and passes only when the plan is the one
+this commit deserves -- for this commit, standing on a trusted base, and
+exactly what classifying again from that base gives (`verify_plan`) --
+every job the plan needed succeeded (a job it did not need may be
+skipped; GitHub calls a skipped job a success, so job results alone
+prove nothing), every module the plan selected ran exactly once (in one
+shard or the serial job -- a module lost or run twice is named) in
+results that name this commit, each planned sanitizer module ran once,
+every module passed, and no test skipped for a reason
+`tests/ci_allowed_skips.json` does not explain. A skip in CI
 usually means something CI was meant to provide is missing -- the binary,
 Node, Lua, fastapi -- so a skip fails the gate unless a rule there names
 the module, the test and the reason and says why. Its first run failed on
@@ -328,10 +361,12 @@ Running from inside `tests/` -- which is the obvious way to write it --
 fails eleven modules with import and file-not-found errors that look
 like product bugs and are not.
 
-**`test_live_gameplay` runs on its own.** Its login-throttle tests
-measure against the wall clock, so a dozen servers competing for the
-same cores make them miss a window and time out waiting for "wrong
-password". `SERIAL_MODULES` in the workflow (`--serial` to the runner)
+**`test_login_throttle` runs on its own.** Its tests measure against the
+wall clock, so a dozen servers competing for the same cores make them miss
+a window and time out waiting for "wrong password". They were part of
+`test_live_gameplay`, which held the whole six-and-a-half-minute module to
+a runner of its own for one minute of timing; the rest of it runs in the
+shards now. `SERIAL_MODULES` in the workflow (`--serial` to the runner)
 names the modules that get a machine to themselves -- in CI their own
 job, beside the shards rather than after them; locally a tail after the
 rest. Add to it only for a real timing dependency, not to quiet a flake
@@ -343,13 +378,19 @@ was tried in 2026-09: `test_recall_point` then failed with an `affect`
 reply that arrived as an empty string, because output comes in bursts
 with gaps in them and a drain that stops at the first gap returns before
 the reply. When a test needs to know a command has been answered, use
-**`MudClient.sync(line)`**: it sends the line and then WORTH, and returns
-what came before WORTH's answer. The game answers a descriptor's
-commands in order, so everything the line produced before its prompt is
-in hand, however long it took, with a deadline instead of a guess.
-Output that arrives later on its own -- a tick, a wandering mobile, the
-result of lag counting down -- is not covered; assert on what the
-command says.
+**`MudClient.sync(line)`**: it types a barrier (TIME), the line, and the
+barrier again, and returns what came between the two answers. The game
+answers a descriptor's commands in order, so everything the line
+produced is in hand, however long its lag held it, and nothing sent
+before it began is counted as its reply. TIME, not WORTH: any position
+may type it (WORTH is refused to the mortally wounded) and a switched
+immortal gets the same answer. The barrier is typed input, so it counts
+down lag and is logged; never sync a command whose test proves something
+happens with nothing typed after it -- WIMPY's flee after KILL is listened
+for with `expect()`. `MudClient.must(line, *expected)` is sync that fails
+unless the reply says what the command was for. Output that arrives
+later on its own -- a tick, a wandering mobile, the result of lag
+counting down -- is not covered; assert on what the command says.
 
 **A test that cannot run here skips; a test that had bad luck must not.**
 Five tests used to skip themselves when the world was unlucky (no quest
@@ -368,9 +409,24 @@ the one test that crashes a server on purpose.
 CI's other conveniences:
 
 - **Superseded runs are cancelled** (`concurrency` with
-  `cancel-in-progress`, per ref, so a branch run never cancels main's).
-  Push a docs-only follow-up with `[skip ci]` if the run in flight is the
-  one you want to finish.
+  `cancel-in-progress`, per ref; the nightly and manual runs have a group
+  of their own). A docs commit that cancels a code run in flight does not
+  lose it: the docs commit's plan diffs from the last vouched-for commit,
+  so it runs that code's full suite itself. Do not reach for `[skip ci]`
+  to save a run -- the classifier is what makes a docs commit cheap; the
+  state sync's `[skip ci]` is its own belt to `paths-ignore`.
+- **A full regression runs every night** (`schedule`) and by hand
+  (Actions -> Validate -> Run workflow, "full"); "diagnostic" runs the
+  tests even when the cheap checks failed, and the gate still fails it.
+- **Failures are announced as they happen**: the runner writes a GitHub
+  annotation the moment a module fails -- the module, the first failing
+  test and its message, and where its artifacts will be -- not only when
+  the shard ends.
+- **A job installs only what it is missing** (`scripts/ci/install_deps.sh`):
+  a package the image carries costs nothing, a missing one is installed
+  from the image's lists and only then are they refreshed, and the time
+  goes to the step summary. `lua` is installed only on the shard that
+  runs `test_mudlet_assets`. One shard once spent 292 s in `apt-get`.
 - **ccache**, because `validate.sh` opens with `make clean` on
   purpose -- stale objects have bitten this codebase before -- and the
   cache is what stops that costing a full rebuild every time. The
