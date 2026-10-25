@@ -5,6 +5,21 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261025a 2026-10-25
+WALKTO QUEST walks anyone on a quest to the entrance of the area the
+quest master named; finding the quarry there is still yours. It used to
+answer that it was for immortals.
+
+@ 20261025b 2026-10-25
+Hermie lifts every curse at once when you say UNCURSE, instead of one
+item each time you ask. "Your the cloak glows blue" reads properly now.
+
+@ 20261025c 2026-10-25
+HELP CRANE, FISTS, IRON, STEEL and ROLL described fighting stances that
+do not exist. They now show the monk skills those commands really are
+(crane dance, fists of fury, iron skin, steel fist) and the dice roller.
+HELP PARAGON and the other alignment tiers find HELP ALIGNMENT.
+
 @ 20261024e 2026-10-24
 CONSIDER sizes up the fight itself now: how your level and hit points
 compare, about how many rounds each of you would need to bring the

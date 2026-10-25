@@ -757,7 +757,7 @@ def write_route_help(routes):
         "        walkto guilds           the guild halls and the guild clerk",
         "        walkto trainers         every guildmaster and trainer",
         "        walkto areas            every area, in columns",
-        "        walkto quest            (immortals) to where the quest master sent you",
+        "        walkto quest            to the area your quest is in (staff: to its room)",
         "        walkto stop             stop walking",
         "",
         "WALKTO finds the way from the room you are standing in and walks",

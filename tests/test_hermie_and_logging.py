@@ -151,6 +151,16 @@ class HermieTests(unittest.TestCase):
             self.assertNotIn("I see no curse", opened, opened)
             self.assertTrue("glows blue" in opened or "holds fast" in opened, opened)
 
+            # Several cursed things go in one ask (Trentlin asked ten
+            # times running, 2026-10-24), and the line reads properly.
+            for _ in range(3):
+                run(client, "load obj 3701", 1.0)
+                run(client, "set obj dagger extra +H", 1.0)
+            many = run(client, "heal uncurse", 2.5)
+            self.assertNotIn("Your the", many, many)
+            self.assertGreaterEqual(many.count("glows blue"), 3, many)
+            self.assertIn("I see no curse", run(client, "heal uncurse", 2.0))
+
     def test_she_no_longer_listens_to_the_room(self) -> None:
         """Speech was how she worked and is not how she works now."""
         mud = self.staffed()

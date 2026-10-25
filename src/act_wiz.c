@@ -12363,6 +12363,7 @@ DECLARE_SPELL_FUN( spell_null );
 #define SPELLUP_EMPOWER     1
 #define SPELLUP_TITANIC     2
 #define SPELLUP_RESTORE     3   /* fill a pool rather than cast at it */
+#define SPELLUP_UNCURSE_MAX 30  /* remove curse castings for one ask   */
 
 /* Which pool SPELLUP_RESTORE fills. */
 #define SPELLUP_POOL_HIT    1
@@ -12620,6 +12621,19 @@ static bool spellup_grant( CHAR_DATA *mob, CHAR_DATA *victim,
      * caster so the spell's own messages and refusals reach them rather
      * than vanishing into a mob with no descriptor. */
     ( *skill_table[sn].spell_fun )( sn, mob->level, victim, (void *) victim );
+
+    /* The spell frees one item a casting, and she is free, so Trentlin
+       (2026-10-24) asked ten times running to clear nine cursed pieces.
+       She keeps casting while there is work, as the restores fill a
+       pool outright; bounded, since a curse can keep saving. */
+    if ( !str_cmp( skill_table[sn].name, "remove curse" ) )
+    {
+        int casts = 1;
+
+        while ( casts++ < SPELLUP_UNCURSE_MAX && remove_curse_has_work( victim ) )
+            ( *skill_table[sn].spell_fun )( sn, mob->level, victim, (void *) victim );
+    }
+
     spellup_pin_duration( victim, sn );
     return TRUE;
 }

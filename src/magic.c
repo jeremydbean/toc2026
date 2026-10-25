@@ -4219,8 +4219,8 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
                 found = true;
                 REMOVE_BIT(obj->extra_flags,ITEM_NODROP);
                 REMOVE_BIT(obj->extra_flags,ITEM_NOREMOVE);
-                act("Your $p glows blue.",victim,obj,NULL,TO_CHAR);
-                act("$n's $p glows blue.",victim,obj,NULL,TO_ROOM);
+                act("$p glows blue.",victim,obj,NULL,TO_CHAR);
+                act("$p glows blue.",victim,obj,NULL,TO_ROOM);
 	    }
          }
     }

@@ -471,7 +471,7 @@ Trainer:  Flame (M/M), Tempora (C/C), Marilith (Necro)
 See also: BREW, SCRIBE, LORE
 ~
 
-0 'CRANE DANCE'~
+0 'CRANE DANCE' CRANE~
 Syntax: crane
 
 The adept martial artist has many specialized movements in his repertoire
@@ -657,8 +657,8 @@ Trainer: Mizry (T/T)
 See also: BACKSTAB, DESTRUCTION
 ~
 
-0 'FISTS OF FURY'~
-Syntax: fist <victim>
+0 'FISTS OF FURY' FISTS~
+Syntax: fists <victim>
 
 Fists of Fury is a more aggressive version of Blinding Fists, focused on
 using strengthened blows as well as increased speed.  It requires the
@@ -693,7 +693,7 @@ Trainer: Breark (W/W, T/W), Silent Master (monk), mud school adept (practice
 See also: DUAL WIELD, SECOND ATTACK, BASH
 ~
 
-0 'IRON SKIN'~
+0 'IRON SKIN' IRON~
 Syntax: iron
 
 Through a lifetime of meditation and study, monks possess the unique
@@ -865,7 +865,7 @@ Trainer: Mizry (T/T)
 See also: HIDE SNEAK, BACKSTAB
 ~
 
-0 'STEEL FIST'~
+0 'STEEL FIST' STEEL STEELFIST~
 Syntax: steel
 
 By altering their body's chemistry, monks have the option of increasing the

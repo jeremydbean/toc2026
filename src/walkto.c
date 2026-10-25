@@ -1335,6 +1335,25 @@ static void walkto_show_areas( CHAR_DATA *ch )
  * The command.
  * ------------------------------------------------------------------- */
 
+/* The published entrance of the area a room is in, or -1. */
+static int walkto_area_dest( AREA_DATA *area )
+{
+    ROOM_INDEX_DATA *entry;
+    int i;
+
+    if ( area == NULL )
+        return -1;
+    for ( i = 0; i < walkto_count; i++ )
+    {
+        if ( str_cmp( walkto_dests[i].kind, "area" ) )
+            continue;
+        if ( ( entry = get_room_index( walkto_dests[i].vnum ) ) != NULL
+        &&   entry->area == area )
+            return i;
+    }
+    return -1;
+}
+
 void do_walkto( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
@@ -1420,16 +1439,12 @@ void do_walkto( CHAR_DATA *ch, char *argument )
     else if ( !str_cmp( argument, "quest" ) )
     {
         /* Where the quest master said the target was. A mobile may have
-           wandered on since; this walks to the room it was named in.
-           Immortals only (owner, 2026-10-20): finding the quarry from
-           the quest master's directions is the quest. */
-        if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
-        {
-            send_to_char( "WALKTO QUEST is for immortals.  The quest master told "
-                          "you the area and the room; AQUEST INFO repeats it, and "
-                          "WALKTO <area> takes you to the area.\n\r", ch );
-            return;
-        }
+           wandered on since; this walks staff to the room it was named
+           in. A mortal is walked to the area's entrance and no further
+           (owner, 2026-10-20: finding the quarry from the quest
+           master's directions is the quest). It used to refuse mortals
+           outright, and "WALKTO QUEST is for immortals" read to Trentlin
+           (2026-10-24) as though the area walk was staff-only too. */
         found = -1;
         also = 0;
         if ( !IS_SET(ch->act, PLR_QUESTOR) || ch->questroom <= 0
@@ -1441,6 +1456,27 @@ void do_walkto( CHAR_DATA *ch, char *argument )
         }
         name = target->name;
         who = "";
+        if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+        {
+            if ( ch->in_room != NULL && ch->in_room->area == target->area )
+            {
+                send_to_char( "You are already in the area your quest lies in; "
+                              "the quarry is yours to find.\n\r", ch );
+                return;
+            }
+            if ( ( found = walkto_area_dest( target->area ) ) < 0
+            ||   ( target = get_room_index( walkto_dests[found].vnum ) ) == NULL )
+            {
+                send_to_char( "Your quest lies somewhere WALKTO has no road into.  "
+                              "AQUEST INFO repeats the quest master's "
+                              "directions.\n\r", ch );
+                return;
+            }
+            name = walkto_dests[found].name;
+            who = walkto_dests[found].who;
+            send_to_char( "You will be walked to the area's entrance; the "
+                          "quarry is yours to find.\n\r", ch );
+        }
     }
     else if ( ( found = walkto_find( argument, &also, others ) ) < 0 )
     {

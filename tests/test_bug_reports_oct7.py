@@ -1,8 +1,10 @@
 """Alaric's bug reports of 2026-10-07 (area/bugs.txt).
 
 - "walk quest" said there was no destination called quest. WALKTO QUEST
-  now walks to the room the quest master named -- for immortals only
-  since 2026-10-20 (owner: finding the quarry is the quest).
+  now walks staff to the room the quest master named, and since
+  2026-10-25 walks a mortal to the area's entrance and no further
+  (owner, 2026-10-20: finding the quarry is the quest). It refused
+  mortals outright before, which Trentlin read as staff-only.
 - A quest sent him to a Storage Room in the Valley of the Elves that no
   way he could walk reached. The quest master now chooses only targets
   this character could walk to by WALKTO's own rules
@@ -69,7 +71,15 @@ class LiveTests(unittest.TestCase):
                 self.assertNotIn("Huh?", out, out)
                 self.assertRegex(out, r"(?i)affected", out)
 
-                self.assertIn("is for immortals", run(player, "walk quest"))
+                self.assertIn("not on a quest", run(player, "walk quest"))
+                asked = run(player, "aquest request", 2.5)
+                if "no suitable quests" not in asked:
+                    walked = run(player, "walk quest", 2.0)
+                    self.assertNotIn("is for immortals", walked, walked)
+                    self.assertTrue(re.search(r"area's entrance|already in the area|"
+                                              r"no road into", walked), walked)
+                    run(player, "walkto stop")
+                    run(player, "aquest abort", 1.5)
 
                 # Mud School's kit: what a new player types for it works,
                 # and HELP finds it by those words (watched log, 2026-10-06).

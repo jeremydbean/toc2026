@@ -2001,28 +2001,7 @@ throw the intrusion off.  A normal mind cannot resist it at all.
 See also: BLINDING, NIGHTMARE, TORMENT
 ~
 
-0 CRANE~
-Syntax: crane
 
-Toggle the crane fighting stance.  CRANE adopts a balanced, evasive style
-that improves your dodge and parry while sacrificing some raw damage output.
-Suitable for characters who prefer to outlast their foes rather than
-overwhelm them quickly.  Requires the crane skill.  Entering combat at full
-speed or running out of movement breaks the stance.
-
-See also: FISTS, IRON, ROLL, KICK
-~
-
-0 FISTS~
-Syntax: fists
-
-Toggle the iron-fist fighting stance.  FISTS adopts an aggressive,
-forward-pressing style with emphasis on raw hand-to-hand damage.  You deal
-more damage unarmed but take more hits in return.  Best used when you intend
-to end the fight quickly.  Requires the fists skill.
-
-See also: CRANE, BERSERK, KICK
-~
 
 0 DIRT DIRT-KICK~
 Syntax: dirt <victim>
@@ -2363,7 +2342,7 @@ players and most mobs.  Moving, attacking, or casting a spell breaks
 hiding immediately.  The chance to hide successfully depends on your
 HIDE skill, and HIDE tells you whether it worked.
 
-See also: SNEAK, STEALTH, STEEL, BACKSTAB
+See also: SNEAK, STEALTH, BACKSTAB
 ~
 
 0 SNEAK~
@@ -2387,20 +2366,9 @@ overall, including by mobs that might see through ordinary hiding.
 It requires a higher skill investment than SNEAK or HIDE alone and
 drains movement steadily while active.
 
-See also: HIDE, SNEAK, STEEL
+See also: HIDE, SNEAK
 ~
 
-0 STEEL~
-Syntax: steel
-
-Toggle the STEEL stealth stance.  An advanced self-concealment technique
-that renders you nearly invisible to passive detection by other players
-and mobs.  STEEL is distinct from HIDE in that it persists through slow
-movement and requires significantly higher skill to maintain.  It cancels
-if you attack, cast, or are struck.
-
-See also: HIDE, SNEAK, STEALTH
-~
 
 0 LEVITATE~
 Syntax: levitate
@@ -2441,30 +2409,16 @@ player counts as a hostile action.
 See also: BASH, TRIP, DRAG
 ~
 
-0 ROLL~
-Syntax: roll
+0 ROLL DICE~
+Syntax: roll <number>d<sides>
 
-Toggle the ROLL defensive stance.  While in this stance you improve
-your chance to dodge incoming melee attacks by moving with the blows
-rather than taking them head-on.  The stance lowers your own offensive
-accuracy slightly and requires the ROLL skill.  It disengages if you
-are stunned, knocked prone, or run out of movement.
+Rolls dice where everyone in the room can see the result, for settling a
+bet or sharing out loot: ROLL 2D6, ROLL 1D100.  From 1 to 20 dice of 2 to
+1000 sides.
 
-See also: IRON, BERSERK, CRANE
+See also: SAY, EMOTE
 ~
 
-0 IRON~
-Syntax: iron
-
-Toggle the IRON defensive stance.  Brace yourself to absorb incoming
-hits rather than avoid them.  IRON increases effective armor and
-reduces damage from each blow at the cost of slower attack speed.
-Particularly useful when tanking multiple enemies or absorbing burst
-damage.  Requires the IRON skill; cancels if you move or are knocked
-down.
-
-See also: ROLL, BASH, CRANE
-~
 
 0 MINDBAR~
 Syntax: mindbar
@@ -7109,7 +7063,7 @@ send a NOTE to immortal.
 See also: WANTED, NOTE
 ~
 
-0 ALIGNMENT ALIGN GOOD EVIL NEUTRAL DEVOTE~
+0 ALIGNMENT ALIGN GOOD EVIL NEUTRAL DEVOTE PARAGON VIRTUOUS RUTHLESS VILE FIEND~
 Syntax: alignment
         devote light | dark | balance     (at the Temple)
         devote preview [light | dark | balance]
