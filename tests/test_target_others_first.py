@@ -77,7 +77,10 @@ class TargetLiveTests(unittest.TestCase):
                 said = run(client, "consider zo", 1.6)
                 self.assertIn("zombie", said.lower(), said)
                 # One verdict from one model (CONSIDER rework, 2026-10-24).
-                self.assertIn("blow for blow", said.lower(), said)
+                # The estimate reads "Blow for blow, ..." or, when the foe
+                # can barely hurt you, "$N could barely scratch you; ...":
+                # both say how long you would need.
+                self.assertIn("to bring", said.lower(), said)
                 verdicts = ("You should win easily.", "You should win.",
                             "You should win, but not by much.",
                             "It could go either way.", "You would probably lose.",
