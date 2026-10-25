@@ -187497,3 +187497,140 @@ Sun Oct 25 14:17:59 2026 :: Log Alaric [9775]: e
 Sun Oct 25 14:17:59 2026 :: Log Alaric [9774]: arrived (On the Dark River) from 9775
 Sun Oct 25 14:18:00 2026 :: Log Alaric [9774]: n
 Sun Oct 25 14:18:00 2026 :: Log Alaric [6123]: arrived (A junction on the river bank in the deep, dark forest) from 9774
+Sun Oct 25 14:18:49 2026 :: Log Alaric [6123]: s
+Sun Oct 25 14:18:49 2026 :: Log Alaric [9774]: arrived (On the Dark River) from 6123
+Sun Oct 25 14:18:51 2026 :: Log Alaric [9774]: w
+Sun Oct 25 14:18:51 2026 :: Log Alaric [9775]: arrived (On the Dark River) from 9774
+Sun Oct 25 14:18:52 2026 :: Log Alaric [9775]: w
+Sun Oct 25 14:18:52 2026 :: Log Alaric [5979]: arrived (On the River) from 9775
+Sun Oct 25 14:18:54 2026 :: Log Alaric [5979]: w
+Sun Oct 25 14:18:54 2026 :: Log Alaric [5978]: arrived (On the River) from 5979
+Sun Oct 25 14:19:00 2026 :: Log Alaric [5978]: west
+Sun Oct 25 14:19:00 2026 :: Log Alaric [5977]: arrived (On the River) from 5978
+Sun Oct 25 14:19:00 2026 :: Log Alaric [5977]: north
+Sun Oct 25 14:19:00 2026 :: Log Alaric [5749]: arrived (Levee) from 5977
+Sun Oct 25 14:19:00 2026 :: Log Alaric [5749]: north
+Sun Oct 25 14:19:00 2026 :: Log Alaric [5745]: arrived (Alley at Levee) from 5749
+Sun Oct 25 14:19:00 2026 :: Log Alaric [5745]: east
+Sun Oct 25 14:19:00 2026 :: Log Alaric [5746]: arrived (Eastern end of Alley) from 5745
+Sun Oct 25 14:19:01 2026 :: Log Alaric [5746]: east
+Sun Oct 25 14:19:01 2026 :: Log Alaric [5951]: arrived (Wall Road) from 5746
+Sun Oct 25 14:19:01 2026 :: Log Alaric [5951]: north
+Sun Oct 25 14:19:01 2026 :: Log Alaric [5950]: arrived (Wall Road) from 5951
+Sun Oct 25 14:19:01 2026 :: Log Alaric [5950]: north
+Sun Oct 25 14:19:01 2026 :: Log Alaric [5741]: arrived (Inside the East Gate of Midgaard) from 5950
+Sun Oct 25 14:19:01 2026 :: Log Alaric [5741]: north
+Sun Oct 25 14:19:01 2026 :: Log Alaric [5967]: arrived (Wall Road) from 5741
+Sun Oct 25 14:19:02 2026 :: Log Alaric [5967]: north
+Sun Oct 25 14:19:02 2026 :: Log Alaric [5966]: arrived (Wall Road) from 5967
+Sun Oct 25 14:19:02 2026 :: Log Alaric [5966]: north
+Sun Oct 25 14:19:02 2026 :: Log Alaric [5965]: arrived (Wall Road) from 5966
+Sun Oct 25 14:19:02 2026 :: Log Alaric [5965]: north
+Sun Oct 25 14:19:02 2026 :: Log Alaric [5964]: arrived (The Northeast Corner) from 5965
+Sun Oct 25 14:19:02 2026 :: Log Alaric [5964]: west
+Sun Oct 25 14:19:02 2026 :: Log Alaric [5963]: arrived (Wall Road) from 5964
+Sun Oct 25 14:19:03 2026 :: Log Alaric [5963]: west
+Sun Oct 25 14:19:03 2026 :: Log Alaric [5962]: arrived (Inside the Open North Gate of Midgaard) from 5963
+Sun Oct 25 14:19:03 2026 :: Log Alaric [5962]: north
+Sun Oct 25 14:19:03 2026 :: Log Alaric [5968]: arrived (Outside the North Gate of Midgaard) from 5962
+Sun Oct 25 14:19:03 2026 :: Log Alaric [5968]: north
+Sun Oct 25 14:19:03 2026 :: Log Alaric [5766]: arrived (Clearing in the forest) from 5968
+Sun Oct 25 14:19:03 2026 :: Log Alaric [5766]: east
+Sun Oct 25 14:19:03 2026 :: Log Alaric [5765]: arrived (Twisting trail through the forest) from 5766
+Sun Oct 25 14:19:04 2026 :: Log Alaric [5765]: north
+Sun Oct 25 14:19:04 2026 :: Log Alaric [5764]: arrived (Twisting trail through the forest) from 5765
+Sun Oct 25 14:19:04 2026 :: Log Alaric [5764]: east
+Sun Oct 25 14:19:04 2026 :: Log Alaric [5763]: arrived (Twisting trail through the forest) from 5764
+Sun Oct 25 14:19:04 2026 :: Log Alaric [5763]: north
+Sun Oct 25 14:19:04 2026 :: Log Alaric [5762]: arrived (Twisting trail through the forest) from 5763
+Sun Oct 25 14:19:07 2026 :: Log Alaric [5762]: n
+Sun Oct 25 14:19:07 2026 :: Log Alaric [3515]: arrived (Light Forest) from 5762
+Sun Oct 25 14:19:15 2026 :: Log Alaric [3515]: s
+Sun Oct 25 14:19:15 2026 :: Log Alaric [3518]: arrived (The Fading Trail) from 3515
+Sun Oct 25 14:19:15 2026 :: Log Alaric [3518]: s
+Sun Oct 25 14:19:15 2026 :: Log Alaric [3522]: arrived (Deep in the Forest of Miden'nir) from 3518
+Sun Oct 25 14:19:15 2026 :: Log Alaric [3522]: s
+Sun Oct 25 14:19:15 2026 :: Log Alaric [28161]: arrived (Watch Your Step!) from 3522
+Sun Oct 25 14:19:19 2026 :: Log Alaric [28161]: recal
+Sun Oct 25 14:19:19 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 28161
+Sun Oct 25 14:19:23 2026 :: Log Alaric [2497]: aq abort
+Sun Oct 25 14:19:24 2026 :: Log Alaric [2497]: score
+Sun Oct 25 14:19:24 2026 :: Log Alaric [2497]: i
+Sun Oct 25 14:19:35 2026 :: Log Alaric [2497]: wake
+Sun Oct 25 14:19:36 2026 :: Log Alaric [2497]: l
+Sun Oct 25 14:19:37 2026 :: Log Alaric [2497]: en do
+Sun Oct 25 14:19:37 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 14:19:38 2026 :: Log Alaric [2401]: n
+Sun Oct 25 14:19:38 2026 :: Log Alaric [2402]: arrived (Northern Oak Tree Square.) from 2401
+Sun Oct 25 14:19:38 2026 :: Log Alaric [2402]: n
+Sun Oct 25 14:19:38 2026 :: Log Alaric [2415]: arrived (Main Processional, Strung with Lanterns) from 2402
+Sun Oct 25 14:19:38 2026 :: Log Alaric [2415]: r e 4
+Sun Oct 25 14:19:38 2026 :: Log Alaric [2485]: arrived (Market Plaza.) from 2415
+Sun Oct 25 14:19:38 2026 :: Log Alaric [2486]: arrived (Market Plaza.) from 2485
+Sun Oct 25 14:19:38 2026 :: Log Alaric [2487]: arrived (Market Plaza, the Hallows Fair) from 2486
+Sun Oct 25 14:19:38 2026 :: Log Alaric [2509]: arrived (Dark Alley.) from 2487
+Sun Oct 25 14:19:38 2026 :: Log Alaric [2509]: n
+Sun Oct 25 14:19:38 2026 :: Log Alaric [2508]: arrived (Dark Alley.) from 2509
+Sun Oct 25 14:19:39 2026 :: Log Alaric [2508]: e
+Sun Oct 25 14:19:39 2026 :: Log Alaric [2507]: arrived (Dark Alley.) from 2508
+Sun Oct 25 14:19:39 2026 :: Log Alaric [2507]: n
+Sun Oct 25 14:19:39 2026 :: Log Alaric [2505]: arrived (Dark Alley.) from 2507
+Sun Oct 25 14:19:39 2026 :: Log Alaric [2505]: n
+Sun Oct 25 14:19:39 2026 :: Log Alaric [2506]: arrived (Dead End.) from 2505
+Sun Oct 25 14:19:39 2026 :: Log Alaric [2506]: open down
+Sun Oct 25 14:19:40 2026 :: Log Alaric [2506]: d
+Sun Oct 25 14:19:40 2026 :: Log Alaric [7030]: arrived (The Quadruple Junction Under the Garbage) from 2506
+Sun Oct 25 14:19:40 2026 :: Log Alaric [7030]: w
+Sun Oct 25 14:19:40 2026 :: Log Alaric [7022]: arrived (The odd room with smooth walls) from 7030
+Sun Oct 25 14:19:40 2026 :: Log Alaric [7022]: d
+Sun Oct 25 14:19:40 2026 :: Log Alaric [7112]: arrived (An odd intersection) from 7022
+Sun Oct 25 14:19:40 2026 :: Log Alaric [7112]: r n 6
+Sun Oct 25 14:19:40 2026 :: Log Alaric [7111]: arrived (The southwestern corner of the ledge) from 7112
+Sun Oct 25 14:19:40 2026 :: Log Alaric [7110]: arrived (The narrow ledge) from 7111
+Sun Oct 25 14:19:40 2026 :: Log Alaric [7109]: arrived (The narrow ledge) from 7110
+Sun Oct 25 14:19:40 2026 :: Log Alaric [7108]: arrived (The narrow ledge) from 7109
+Sun Oct 25 14:19:40 2026 :: Log Alaric [7107]: arrived (The narrow ledge) from 7108
+Sun Oct 25 14:19:40 2026 :: Log Alaric [7106]: arrived (The northwestern corner of the ledge) from 7107
+Sun Oct 25 14:19:41 2026 :: Log Alaric [7106]: e
+Sun Oct 25 14:19:41 2026 :: Log Alaric [7113]: arrived (The narrow ledge going east to west) from 7106
+Sun Oct 25 14:19:41 2026 :: Log Alaric [7113]: (refused) *
+Sun Oct 25 14:19:41 2026 :: Log Alaric [7113]: e
+Sun Oct 25 14:19:41 2026 :: Log Alaric [7116]: arrived (The northeastern corner of the ledge) from 7113
+Sun Oct 25 14:19:41 2026 :: Log Alaric [7116]: s
+Sun Oct 25 14:19:41 2026 :: Log Alaric [7117]: arrived (The narrow eastern ledge) from 7116
+Sun Oct 25 14:19:42 2026 :: Log Alaric [7117]: s
+Sun Oct 25 14:19:42 2026 :: Log Alaric [7118]: arrived (The narrow eastern ledge) from 7117
+Sun Oct 25 14:19:42 2026 :: Log Alaric [7118]: s
+Sun Oct 25 14:19:42 2026 :: Log Alaric [7119]: arrived (The narrow eastern ledge) from 7118
+Sun Oct 25 14:19:42 2026 :: Log Alaric [7119]: s
+Sun Oct 25 14:19:42 2026 :: Log Alaric [7120]: arrived (The narrow eastern ledge) from 7119
+Sun Oct 25 14:19:42 2026 :: Log Alaric [7120]: e
+Sun Oct 25 14:19:42 2026 :: Log Alaric [7123]: arrived (Under The Shaft) from 7120
+Sun Oct 25 14:19:43 2026 :: Log Alaric [7123]: u
+Sun Oct 25 14:19:43 2026 :: Log Alaric [7041]: arrived (The Shaft) from 7123
+Sun Oct 25 14:19:43 2026 :: Log Alaric [7041]: s
+Sun Oct 25 14:19:43 2026 :: Log Alaric [7043]: arrived (The Sewer Entrance) from 7041
+Sun Oct 25 14:19:43 2026 :: Log Alaric [7043]: s
+Sun Oct 25 14:19:43 2026 :: Log Alaric [7044]: arrived (The junction going three ways) from 7043
+Sun Oct 25 14:19:43 2026 :: Log Alaric [7044]: e
+Sun Oct 25 14:19:43 2026 :: Log Alaric [7049]: arrived (The junction) from 7044
+Sun Oct 25 14:19:44 2026 :: Log Alaric [7049]: e
+Sun Oct 25 14:19:44 2026 :: Log Alaric [7060]: arrived (The dark passageway) from 7049
+Sun Oct 25 14:19:44 2026 :: Log Alaric [7060]: run n
+Sun Oct 25 14:19:44 2026 :: Log Alaric [7059]: arrived (The dark passageway) from 7060
+Sun Oct 25 14:19:44 2026 :: Log Alaric [7058]: arrived (The dark passageway) from 7059
+Sun Oct 25 14:19:44 2026 :: Log Alaric [7057]: arrived (The dark passageway) from 7058
+Sun Oct 25 14:19:44 2026 :: Log Alaric [7056]: arrived (The Dark hallway) from 7057
+Sun Oct 25 14:19:44 2026 :: Log Alaric [7056]: stand
+Sun Oct 25 14:19:44 2026 :: Log Alaric [7056]: w
+Sun Oct 25 14:19:44 2026 :: Log Alaric [7052]: arrived (The Grand Sewer) from 7056
+Sun Oct 25 14:19:45 2026 :: Log Alaric [7052]: n
+Sun Oct 25 14:19:45 2026 :: Log Alaric [7051]: arrived (The Sewer pipe) from 7052
+Sun Oct 25 14:19:45 2026 :: Log Alaric [7051]: n
+Sun Oct 25 14:19:45 2026 :: Log Alaric [7050]: arrived (The small room) from 7051
+Sun Oct 25 14:19:45 2026 :: Log Alaric [7050]: steel
+Sun Oct 25 14:19:50 2026 :: Log Alaric [7050]: af
+Sun Oct 25 14:19:50 2026 :: Log Alaric [7050]: kill sp
+Sun Oct 25 14:21:45 2026 :: Sock.sinaddr:  52.22.236.30
+Sun Oct 25 14:21:45 2026 :: EOF encountered on read.
+Sun Oct 25 14:22:00 2026 :: Log Alaric [7050]: help classes
