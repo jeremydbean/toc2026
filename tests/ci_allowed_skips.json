@@ -1,0 +1,11 @@
+{
+ "about": "Skips the deploy gate accepts in CI (scripts/ci/gate.py). Every other skip fails the gate: in CI a skip usually means something the run was meant to have -- the server binary, Node, Lua, fastapi, PowerShell -- was missing, and the run tested less than it says. Each rule names the module, a test glob and a substring of the skip reason, and says why the skip is right there.",
+ "allowed": [
+  {
+   "module": "test_playlog",
+   "test": "*test_a_crash_leaves_the_last_commands",
+   "reason_contains": "a sanitizer build reports crashes itself",
+   "why": "Under ASan the crash handler is not installed (ASan's report is worth more); the same test runs in the normal shards against the Make binary."
+  }
+ ]
+}

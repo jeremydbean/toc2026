@@ -2,6 +2,19 @@
 set -uo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# What to run. With no argument, everything, as a person would before a
+# push. CI runs the same checks split across jobs so that a cheap failure
+# shows in a minute instead of after the suite:
+#   quick   source and generated-asset checks, no compiler (CI: quick)
+#   build   the strict GNU89 build and the checks that need its binary (CI: build)
+#   all     both, then the whole test suite (the default)
+mode="${1:-all}"
+case "$mode" in
+  all|quick|build) ;;
+  *) printf 'usage: %s [all|quick|build]\n' "$0" >&2; exit 2 ;;
+esac
+want() { [ "$mode" = all ] || [ "$mode" = "$1" ]; }
 strict_warnings="-Wall -Wextra -Wshadow -Wsign-compare -Wformat-overflow=2 -Wunused-parameter -Wstrict-prototypes -Wold-style-definition -Wmissing-prototypes -Wcast-qual"
 python_bin="${PYTHON:-python3}"
 run_smoke="${RUN_SMOKE:-0}"
@@ -46,6 +59,7 @@ cd "$repo_root"
 #
 # The build is the one step that stops everything: nothing after it can
 # run without a binary.
+if want build; then
 step "C clean build, strict warnings"
 make clean || exit 1
 make "WARNFLAGS=$strict_warnings" || { printf '\n!! FAILED: C build\n'; exit 1; }
@@ -85,7 +99,9 @@ if [ "$run_smoke" = "1" ]; then
   smoke() { (cd area && timeout 25s ../merc "$smoke_port") || test "$?" -eq 124; }
   check "C startup smoke on port $smoke_port" "run the game by hand" smoke
 fi
+fi  # want build
 
+if want quick; then
 check "Python syntax" \
   "fix the file py_compile names" \
   "$python_bin" -m py_compile \
@@ -102,7 +118,10 @@ check "Python syntax" \
     scripts/build_hyrule_area.py \
     scripts/build_seasonal_areas.py \
     scripts/build_mudlet_package.py \
-    scripts/test_mudlet_handshake.py
+    scripts/test_mudlet_handshake.py \
+    scripts/ci/run_module.py \
+    scripts/ci/run_tests.py \
+    scripts/ci/gate.py
 
 # Generated from the rooms: any change to a room's name, exits or sector
 # makes it stale, and it is committed so a fresh clone has a map.
@@ -130,14 +149,18 @@ area_checks() {
 check "Area data checks" \
   "run the failing check_*.py / area_lint.py on its own" \
   area_checks
+fi  # want quick
 
 # Across every core rather than one at a time: most of these modules
 # boot a real server and then spend their time waiting for it, so the
 # cores are idle either way. See scripts/test-parallel.sh, which also
-# keeps the timing-sensitive modules out of the crowd.
+# keeps the timing-sensitive modules out of the crowd. CI runs the same
+# runner in duration-balanced shards instead (.github/workflows/validate.yml).
+if [ "$mode" = all ]; then
 check "Unit tests" \
   "scripts/test-parallel.sh <module>   (the failures are reprinted above)" \
   env PYTHON="$python_bin" bash scripts/test-parallel.sh
+fi
 
 # Not log/. The game writes it, this script made it write to it two
 # steps ago by running --check-area, and merc's own banner ends in a
@@ -167,9 +190,11 @@ whitespace_check() {
   return "$status"
 }
 
+if want quick; then
 check "Git whitespace check" \
   "remove the trailing whitespace git diff --check names" \
   whitespace_check
+fi
 
 if [ "${#failures[@]}" -eq 0 ]; then
   printf '\nValidation complete.\n'
