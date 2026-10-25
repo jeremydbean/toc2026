@@ -261,7 +261,9 @@ def report(summary: dict, out) -> None:
             for failure in test.get("failures", []):
                 sub = f" {failure['subtest']}" if failure.get("subtest") else ""
                 print(f"{failure['kind'].upper()}: {test['id']}{sub}", file=out)
-                print(f"  {failure['message'][:300]}", file=out)
+                # Long enough for a transcript an assertion quotes: cut at 300,
+                # the reply that explained a failure was lost (2026-10-25).
+                print(f"  {failure['message'][:3000]}", file=out)
         if not any(t.get("failures") for t in record.get("tests", [])):
             print(record.get("log_tail", "")[-1500:], file=out)
     print(f"\n{len(failed)} module(s) failed. Rerun one, from the repository root, with\n"

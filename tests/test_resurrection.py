@@ -152,7 +152,15 @@ class LiveTests(unittest.TestCase):
                 self.assertIn("Before the Altar", rose)
                 self.assertIn("dagger", run(fallen, "inventory", 1.2))
                 # One hit point as they rise; the Temple heals fast after.
-                self.assertIn("<1hp", rose, rose)
+                # ACCEPT sets it, but the game loop runs input, then the
+                # tick, then the prompt: a regeneration tick landing on that
+                # one pulse shows 1 plus a tick's gain (CI, 2026-10-25). A
+                # level 20 gains well under a hundred a tick with every
+                # bonus; a full heal would show 300.
+                first = re.search(r"<(\d+)hp", rose[rose.index("edge of life"):])
+                self.assertIsNotNone(first, rose)
+                self.assertGreaterEqual(int(first.group(1)), 1, rose)
+                self.assertLessEqual(int(first.group(1)), 1 + 100, rose)
                 self.assertIn("answers your call", run(cleric, "look", 1.4))
                 self.assertNotIn("corpse", run(cleric, "look", 1.4))
 
