@@ -194001,3 +194001,65 @@ Sun Oct 25 22:49:30 2026 :: EOF encountered on read.
 Sun Oct 25 22:50:01 2026 :: Treasure goblin: vanished from room 18119 (A small field, icekeep.are) (too long in one area).
 Sun Oct 25 22:50:31 2026 :: Sock.sinaddr:  103.234.53.147
 Sun Oct 25 22:51:15 2026 :: Sock.sinaddr:  80.66.83.43
+Sun Oct 25 22:54:25 2026 :: Log Alaric [2497]: wake
+Sun Oct 25 22:54:26 2026 :: Log Alaric [2497]: l
+Sun Oct 25 22:54:27 2026 :: Log Alaric [2497]: aq re
+Sun Oct 25 22:54:27 2026 :: Log Alaric [2497]: quest assigned: recover The Crown of Eclipse (obj 25040) in oldthalo.are, 20 minutes, ordinary
+Sun Oct 25 22:54:33 2026 :: Log Alaric [2497]: enter door
+Sun Oct 25 22:54:33 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 22:54:34 2026 :: Log Alaric [2401]: east
+Sun Oct 25 22:54:34 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Oct 25 22:54:34 2026 :: Log Alaric [2403]: east
+Sun Oct 25 22:54:34 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sun Oct 25 22:54:34 2026 :: Log Alaric [2420]: east
+Sun Oct 25 22:54:34 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sun Oct 25 22:54:34 2026 :: Sock.sinaddr:  52.87.72.16
+Sun Oct 25 22:54:34 2026 :: Log Alaric [2421]: east
+Sun Oct 25 22:54:34 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sun Oct 25 22:54:35 2026 :: EOF encountered on read.
+Sun Oct 25 22:54:35 2026 :: Log Alaric [2422]: east
+Sun Oct 25 22:54:35 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sun Oct 25 22:54:35 2026 :: Log Alaric [2423]: east
+Sun Oct 25 22:54:35 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sun Oct 25 22:54:35 2026 :: Log Alaric [2424]: east
+Sun Oct 25 22:54:35 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sun Oct 25 22:54:35 2026 :: Log Alaric [2425]: east
+Sun Oct 25 22:54:35 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sun Oct 25 22:54:36 2026 :: Log Alaric [2426]: open east
+Sun Oct 25 22:54:36 2026 :: Log Alaric [2426]: east
+Sun Oct 25 22:54:36 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sun Oct 25 22:54:40 2026 :: Log Alaric [2440]: east
+Sun Oct 25 22:54:40 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sun Oct 25 22:54:40 2026 :: Log Alaric [3503]: east
+Sun Oct 25 22:54:40 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sun Oct 25 22:54:40 2026 :: Log Alaric [3502]: south
+Sun Oct 25 22:54:40 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 3502
+Sun Oct 25 22:55:22 2026 :: Log Alaric [5261]: south
+Sun Oct 25 22:55:22 2026 :: Log Alaric [5260]: arrived (The dwarf forest) from 5261
+Sun Oct 25 22:55:22 2026 :: Log Alaric [5260]: south
+Sun Oct 25 22:55:22 2026 :: Log Alaric [5259]: arrived (The dwarf forest) from 5260
+Sun Oct 25 22:55:23 2026 :: Log Alaric [5259]: south
+Sun Oct 25 22:55:23 2026 :: Log Alaric [5258]: arrived (The dwarf forest) from 5259
+Sun Oct 25 22:55:23 2026 :: Log Alaric [5258]: west
+Sun Oct 25 22:55:23 2026 :: Log Alaric [5257]: arrived (A trail at the end of the dwarf forest) from 5258
+Sun Oct 25 22:55:23 2026 :: Log Alaric [5257]: west
+Sun Oct 25 22:55:23 2026 :: Log Alaric [5256]: arrived (A trail at the end of the dwarf forest) from 5257
+Sun Oct 25 22:55:23 2026 :: Log Alaric [5256]: west
+Sun Oct 25 22:55:23 2026 :: Log Alaric [5200]: arrived (The Grand Gate of Thalos) from 5256
+Sun Oct 25 22:55:24 2026 :: Log Alaric [5200]: west
+Sun Oct 25 22:55:24 2026 :: Log Alaric [5201]: arrived (Main Street) from 5200
+Sun Oct 25 22:55:24 2026 :: Log Alaric [5201]: west
+Sun Oct 25 22:55:24 2026 :: Log Alaric [5202]: arrived (Main Street) from 5201
+Sun Oct 25 22:55:24 2026 :: Log Alaric [5202]: west
+Sun Oct 25 22:55:24 2026 :: Log Alaric [5203]: arrived (A Garden Path) from 5202
+Sun Oct 25 22:55:24 2026 :: Log Alaric [5203]: west
+Sun Oct 25 22:55:24 2026 :: Log Alaric [5250]: arrived (The Temple of Thalos) from 5203
+Sun Oct 25 22:55:28 2026 :: Log Alaric [5250]: get all
+Sun Oct 25 22:55:30 2026 :: Log Alaric [5250]: recal
+Sun Oct 25 22:55:30 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 5250
+Sun Oct 25 22:55:31 2026 :: Log Alaric [2497]: aq co
+Sun Oct 25 22:55:31 2026 :: Log Alaric [2497]: copper +81120600
+Sun Oct 25 22:55:31 2026 :: Log Alaric [2497]: quest complete: 81p 12g 6s, 22 quest points (streak bonus 60%)
+Sun Oct 25 22:55:31 2026 :: Snapshot of Alaric taken before quest: Alaric.20261025_225531.quest (PRESTORE Alaric to see it).
+Sun Oct 25 22:55:33 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct 25 22:56:50 2026 :: Log Alaric [2497]: sc
