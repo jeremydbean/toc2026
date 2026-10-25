@@ -14371,3 +14371,130 @@
 1792890038	cmd	Alaric	21	29061	korzath1.are	standing	98	0	-	kill	gu	Your punch *** DEVASTATES *** a security guard! [-72] // Your punch *** DEVASTATES *** a security guard! [-67] // A security guard parries your attack.
 1792890041	cmd	Alaric	21	29061	korzath1.are	fighting	97	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a security guard. [-6]
 1792890049	cmd	Alaric	21	29061	korzath1.are	fighting	97	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a security guard. [-12]
+1792890053	cmd	Alaric	21	29062	korzath1.are	standing	97	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.
+1792890055	cmd	Alaric	21	29062	korzath1.are	standing	97	0	-	kill	gu	Your punch ^^^ DESTROYS ^^^ a security guard! [-96] // A security guard dodges your attack. // A security guard parries your attack.
+1792890066	cmd	Alaric	21	29061	korzath1.are	standing	97	0	-	north		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches
+1792890067	cmd	Alaric	22	29061	korzath1.are	standing	97	26	-	kill	gu	A security guard parries your attack. // Your punch MASSACRES a security guard! [-49] // A security guard is DEAD!!
+1792890072	cmd	Alaric	22	4207	dresden_halloween.are	standing	96	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792890072	cmd	Alaric	22	4207	dresden_halloween.are	standing	96	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1792890073	cmd	Alaric	22	4207	dresden_halloween.are	standing	96	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1792890073	cmd	Alaric	22	4207	dresden_halloween.are	standing	96	0	-	recall		You are already standing at your recall point, Before the Shrouded Altar.
+1792890073	cmd	Alaric	22	4208	dresden_halloween.are	standing	96	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792890073	cmd	Alaric	22	4208	dresden_halloween.are	standing	96	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792890077	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	4	-	stash	get platinum	You take some platinum arm bands out of your stash.
+1792890077	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	4	-	stash	get platinum	You take some platinum leg bands out of your stash.
+1792890077	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	4	-	stash	get platinum	You take some platinum arm bands out of your stash.
+1792890077	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	4	-	stash	get platinum	You take some platinum leg bands out of your stash.
+1792890078	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	4	-	stash	get platinum	You take some platinum arm bands out of your stash.
+1792890079	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	stash	get platinum	There is nothing like that in your stash.
+1792890079	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	stash	get platinum	There is nothing like that in your stash.
+1792890079	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	stash	get platinum	There is nothing like that in your stash.
+1792890079	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	stash	get platinum	There is nothing like that in your stash.
+1792890080	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	stash	get platinum	There is nothing like that in your stash.
+1792890080	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	stash	get platinum	There is nothing like that in your stash.
+1792890080	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // ( 3) some platinum arm bands // ( 2) some platinum leg bands
+1792890082	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	wear	arm	You wear some platinum arm bands on your arms.
+1792890084	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	wear	leg	You wear some platinum leg bands on your legs.
+1792890087	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	6	-	stash	put plat	You put some platinum arm bands away for safe keeping.
+1792890087	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	5	-	stash	put plat	You put some platinum leg bands away for safe keeping.
+1792890088	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	5	-	stash	put plat	You put some platinum arm bands away for safe keeping.
+1792890088	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	stash	put plat	You are not carrying that.
+1792890088	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	stash	put plat	You are not carrying that.
+1792890088	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	stash	put plat	You are not carrying that.
+1792890092	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	5	-	stash	put ench	You put an enchanted leather bracer away for safe keeping.
+1792890092	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	4	-	stash	put ench	You put an enchanted leather bracer away for safe keeping.
+1792890093	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	stash	put ench	You are not carrying that.
+1792890093	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) a war banner // <worn on finger>    (Magical) an opal ring
+1792890097	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792890098	cmd	Alaric	22	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792890100	cmd	Alaric	22	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792890100	cmd	Alaric	22	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792890101	cmd	Alaric	22	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792890102	cmd	Alaric	22	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792890103	cmd	Alaric	22	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792890104	cmd	Alaric	22	9531	newthalo.are	standing	100	0	-	run	e 25	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792890105	cmd	Alaric	22	9531	newthalo.are	standing	100	0	-	open		Ok.
+1792890106	cmd	Alaric	22	9794	newthalo.are	standing	100	0	-	run	e 6	Outside the Eastern Gate of New Thalos // [Exits: east south west] // On a road
+1792890107	cmd	Alaric	22	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792890107	cmd	Alaric	22	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a
+1792890108	cmd	Alaric	22	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792890109	cmd	Alaric	22	16001	pirate.are	standing	100	0	-	kill	sail	The sailor dodges your attack. // Your punch ^^^ DESTROYS ^^^ The sailor! [-85] // The sailor parries your attack.
+1792890114	cmd	Alaric	22	16001	pirate.are	fighting	99	0	fight	skills		Level  1: dagger              20%      hand to hand        80%       //           recall             100%       // Level  3: kick                 1%      
+1792890114	cmd	Alaric	22	16001	pirate.are	fighting	99	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The sailor. [-15]
+1792890117	cmd	Alaric	22	16001	pirate.are	fighting	99	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes The sailor. [-7]
+1792890120	cmd	Alaric	22	16001	pirate.are	fighting	98	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The sailor. [-1]
+1792890121	cmd	Alaric	22	16001	pirate.are	fighting	98	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch hits The sailor. [-10]
+1792890125	cmd	Alaric	22	16001	pirate.are	fighting	98	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches The sailor. [-3]
+1792890129	cmd	Alaric	22	16001	pirate.are	fighting	98	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches The sailor. [-2]
+1792890132	cmd	Alaric	22	16001	pirate.are	fighting	97	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch hits The sailor. [-12]
+1792890135	cmd	Alaric	22	16001	pirate.are	fighting	97	0	fight	nerve		You missed the nerve. // Your nerve pinch hits The sailor. [-10]
+1792890135	cmd	Alaric	22	16001	pirate.are	fighting	97	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls The sailor. [-21]
+1792890138	cmd	Alaric	22	16001	pirate.are	fighting	96	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates The sailor! [-30] // The sailor walks off to the north.
+1792890146	cmd	Alaric	22	16002	pirate.are	standing	96	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792890146	cmd	Alaric	22	16002	pirate.are	standing	96	0	-	kill	sa	Your punch decimates The sailor! [-25] // The sailor parries your attack. // The sailor parries your attack.
+1792890149	cmd	Alaric	22	16002	pirate.are	fighting	96	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The sailor. [-16] // The sailor is DEAD!!
+1792890156	cmd	Alaric	22	16003	pirate.are	standing	96	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792890158	cmd	Alaric	22	16003	pirate.are	standing	96	0	-	kill	sa	The sailor dodges your attack. // The sailor dodges your attack. // The sailor dodges your attack.
+1792890161	cmd	Alaric	22	16003	pirate.are	fighting	95	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds The sailor. [-18]
+1792890164	cmd	Alaric	22	16003	pirate.are	fighting	95	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes The sailor. [-5]
+1792890167	cmd	Alaric	22	16003	pirate.are	fighting	94	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The sailor. [-16]
+1792890171	cmd	Alaric	22	16003	pirate.are	fighting	94	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes The sailor. [-7]
+1792890180	cmd	Alaric	22	16003	pirate.are	fighting	93	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes The sailor. [-6]
+1792890183	cmd	Alaric	22	16003	pirate.are	fighting	93	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The sailor. [-2]
+1792890183	cmd	Alaric	22	16003	pirate.are	fighting	93	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes The sailor. [-6]
+1792890196	cmd	Alaric	22	16003	pirate.are	standing	92	0	-	look		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792890197	cmd	Alaric	22	16003	pirate.are	standing	92	0	-	scan		The sailor                         -to the North. // The drunk pirate                   -to the North.
+1792890201	cmd	Alaric	22	16004	pirate.are	standing	92	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1792890202	cmd	Alaric	22	16004	pirate.are	standing	92	0	-	kill	dr	The drunk pirate parries your attack. // The drunk pirate parries your attack. // The drunk pirate dodges your attack.
+1792890204	cmd	Alaric	22	16004	pirate.are	fighting	92	0	fight	nerve		You jab The drunk pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes The drunk pirate. [-6]
+1792890207	cmd	Alaric	22	16004	pirate.are	fighting	92	0	fight	nerve		You jab The drunk pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds The drunk pirate. [-17]
+1792890210	cmd	Alaric	22	16004	pirate.are	fighting	92	0	fight	nerve		You jab The drunk pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The drunk pirate. [-16]
+1792890213	cmd	Alaric	22	16004	pirate.are	fighting	91	0	fight	nerve		You jab The drunk pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The drunk pirate. [-15]
+1792890216	cmd	Alaric	22	16004	pirate.are	fighting	90	0	fight	nerve		You jab The drunk pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls The drunk pirate. [-23]
+1792890227	cmd	Alaric	22	16004	pirate.are	fighting	89	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes The drunk pirate. [-8]
+1792890228	cmd	Alaric	22	16004	pirate.are	fighting	89	0	fight	who		[22 Dwarf   Monk  ] Alaric. // Players found: 1
+1792890230	cmd	Alaric	22	16004	pirate.are	fighting	88	0	fight	nerve		You jab The drunk pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls The drunk pirate. [-22]
+1792890232	cmd	Alaric	22	16004	pirate.are	fighting	88	0	fight	nerve		You jab The drunk pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches The drunk pirate. [-2]
+1792890240	cmd	Alaric	23	16004	pirate.are	fighting	87	28	fight	nerve		You missed the nerve. // Your nerve pinch scratches The drunk pirate. [-1] // The drunk pirate is DEAD!!
+1792890243	cmd	Alaric	23	4207	dresden_halloween.are	standing	86	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792890243	cmd	Alaric	23	4208	dresden_halloween.are	standing	86	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792890247	cmd	Alaric	23	4208	dresden_halloween.are	standing	86	7	-	stash	get ogre	You take gauntlets of ogre power out of your stash.
+1792890248	cmd	Alaric	23	4208	dresden_halloween.are	standing	86	0	-	wear	og	You wear gauntlets of ogre power on your hands.
+1792890256	cmd	Alaric	23	4208	dresden_halloween.are	standing	86	0	-	skills		Level  1: dagger              20%      hand to hand        80%       //           recall             100%       // Level  3: kick                 1%      
+1792890266	cmd	Alaric	23	2427	dresden_halloween.are	standing	86	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792890267	cmd	Alaric	23	2404	dresden_halloween.are	standing	86	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792890267	cmd	Alaric	23	2401	dresden_halloween.are	standing	86	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792890272	cmd	Alaric	23	2426	dresden_halloween.are	standing	86	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792890273	cmd	Alaric	23	2426	dresden_halloween.are	standing	86	0	-	open		It's already open.
+1792890275	cmd	Alaric	23	9531	newthalo.are	standing	86	0	-	run	e 25	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792890276	cmd	Alaric	23	9531	newthalo.are	standing	86	0	-	order		Order whom to do what?
+1792890278	cmd	Alaric	23	9531	newthalo.are	standing	86	0	-	open		Ok.
+1792890278	cmd	Alaric	23	9794	newthalo.are	standing	86	0	-	run	e 6	Outside the Eastern Gate of New Thalos // [Exits: east south west] // On a road
+1792890279	cmd	Alaric	23	41	connect.are	standing	86	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792890279	cmd	Alaric	23	16000	pirate.are	standing	86	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a
+1792890280	cmd	Alaric	23	16001	pirate.are	standing	86	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792890281	cmd	Alaric	23	16002	pirate.are	standing	86	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792890281	cmd	Alaric	23	16003	pirate.are	standing	86	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792890282	cmd	Alaric	23	16004	pirate.are	standing	86	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1792890283	cmd	Alaric	23	16004	pirate.are	standing	86	0	-	scan		The swashbuckler                   -to the East. // The bucaneer                       -to the East. // She                                -to the West.
+1792890284	cmd	Alaric	23	16004	pirate.are	standing	86	0	-	kill	sa	Your punch *** DEVASTATES *** The sailor! [-80] // Your punch *** DEMOLISHES *** The sailor! [-59] // The sailor parries your attack.
+1792890288	cmd	Alaric	23	16004	pirate.are	fighting	86	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The sailor. [-3]
+1792890290	cmd	Alaric	23	16004	pirate.are	fighting	86	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls The sailor. [-23]
+1792890293	cmd	Alaric	23	16004	pirate.are	fighting	85	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The sailor. [-4]
+1792890294	cmd	Alaric	23	16004	pirate.are	fighting	85	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The sailor. [-16]
+1792890300	cmd	Alaric	23	16004	pirate.are	fighting	84	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes The sailor. [-7]
+1792890306	cmd	Alaric	23	16004	pirate.are	fighting	83	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The sailor. [-1]
+1792890314	cmd	Alaric	23	16004	pirate.are	standing	83	0	-	nerve		Who do you want to attack?
+1792890318	cmd	Alaric	23	16004	pirate.are	standing	83	0	-	look		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1792890320	cmd	Alaric	23	16004	pirate.are	standing	83	0	-	scan		The swashbuckler                   -to the East. // The bucaneer                       -to the East. // She                                -to the West.
+1792890324	cmd	Alaric	23	16005	pirate.are	standing	83	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like
+1792890325	cmd	Alaric	23	16005	pirate.are	standing	83	0	-	kill	sw	The swashbuckler dodges your attack. // The swashbuckler parries your attack. // The swashbuckler parries your attack.
+1792890329	cmd	Alaric	23	16005	pirate.are	fighting	83	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates The swashbuckler! [-29]
+1792890332	cmd	Alaric	23	16005	pirate.are	fighting	82	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates The swashbuckler! [-26]
+1792890335	cmd	Alaric	23	16005	pirate.are	fighting	81	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The swashbuckler. [-4]
+1792890336	cmd	Alaric	23	16005	pirate.are	fighting	81	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The swashbuckler. [-2]
+1792890341	cmd	Alaric	23	16005	pirate.are	fighting	80	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches The swashbuckler. [-4]
+1792890344	cmd	Alaric	23	16005	pirate.are	fighting	80	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes The swashbuckler. [-5]
+1792890344	cmd	Alaric	23	16005	pirate.are	fighting	80	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The swashbuckler. [-13]
+1792890347	cmd	Alaric	23	16005	pirate.are	fighting	80	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls The swashbuckler. [-23]
+1792890349	cmd	Alaric	23	16005	pirate.are	fighting	80	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates The swashbuckler! [-28]
