@@ -241,6 +241,16 @@ class RecallPointTests(unittest.TestCase):
         typo must not be the thing that stops it."""
         with LiveMud() as mud:
             self.character(mud, "Ztypo", Levl=40, Room=OAK_NORTH)
+            # The point is the word, not the roll: a new character prays at
+            # 50%, and eight misses running failed CI on 2026-10-25. At 100
+            # only the one-in-twenty-five "something is very wrong" detour
+            # and a roll of 100 stay, and the loop below covers those.
+            path = mud.player_dir / "Ztypo"
+            text = path.read_text(encoding="latin-1")
+            text, n = re.subn(r"^Sk \d+ 'recall'$", "Sk 100 'recall'", text, flags=re.M)
+            if n == 0:
+                text = text.replace("\nEnd\n", "\nSk 100 'recall'\nEnd\n", 1)
+            path.write_text(text, encoding="latin-1")
 
             with mud.connect(timeout=120) as client:
                 login(client, "Ztypo", PASSWORD)

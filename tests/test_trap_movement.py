@@ -116,6 +116,23 @@ def gas(text: str) -> int:
     return text.count("Poison gas!") + text.count("noxious fumes that fill the air")
 
 
+def gas_on_arrival(text: str) -> int:
+    """The cloud's fires that belong to the move itself: everything up to
+    the prompt that follows the first one. The double fire this guards
+    against came before and after the look, in one burst with one prompt.
+    A stinking cloud also goes off on everybody in the room each tick
+    (char_update), and a tick that landed in the two seconds after an
+    arrival counted twice in CI on 2026-10-25; it comes with a prompt of
+    its own."""
+    first = min((i for i in (text.find("Poison gas!"),
+                             text.find("noxious fumes that fill the air")) if i >= 0),
+                default=-1)
+    if first < 0:
+        return 0
+    prompt = re.search(r"<-?\d+hp", text[first:])
+    return gas(text[: first + prompt.start()] if prompt else text)
+
+
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class MountedTrapTests(unittest.TestCase):
     def test_a_rider_sets_off_the_arrival_trap_once_as_a_walker_does(self) -> None:
@@ -177,10 +194,10 @@ class MountedTrapTests(unittest.TestCase):
                     client.send("quit")
                     client.wait_closed()
 
-        self.assertEqual(gas(walked_in), 1, walked_in)
+        self.assertEqual(gas_on_arrival(walked_in), 1, walked_in)
         self.assertIn("rides in", seen, "the rider walked rather than rode:\n" + seen)
-        self.assertEqual(gas(rode_in), 1, rode_in)
-        self.assertEqual(gas(rode_out), 1, rode_out)
+        self.assertEqual(gas_on_arrival(rode_in), 1, rode_in)
+        self.assertEqual(gas_on_arrival(rode_out), 1, rode_out)
 
 
 if __name__ == "__main__":
