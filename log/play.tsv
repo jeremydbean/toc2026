@@ -18936,3 +18936,233 @@
 1792940638	cmd	Alaric	50	4010	moria.are	standing	100	0	-	north		The cave //   You are in a large cave. The ceiling is lost somewhere above the reach of // your light. The floor, however, is highly illuminated, your light flickering
 1792940639	cmd	Alaric	50	4010	moria.are	standing	100	0	-	scan		You don't see anything near you.
 1792940640	cmd	Alaric	50	4011	moria.are	standing	100	0	-	north		The tunnel //   You squeeze your way through a small, narrow tunnel. The sharp-edged rocks // protruding from the walls threaten to scratch and cut you. 
+1792940640	cmd	Alaric	50	4011	moria.are	standing	100	0	-	scan		You don't see anything near you.
+1792940642	cmd	Alaric	50	4014	moria.are	standing	100	0	-	north		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in
+1792940643	cmd	Alaric	50	4014	moria.are	standing	100	0	-	scan		the orc                            -to the East. // the african pit adder              -to the East. // the kobold                         -to the West.
+1792940648	cmd	Eclipse	70	9988	valhalla.are	standing	100	0	-	note		(withheld)
+1792940664	cmd	Alaric	50	4018	moria.are	standing	100	0	-	north		The cave //   You are in the south end of a cave, to the south you see a tunnel. You // notice a large pile of bones in the corner.
+1792940664	cmd	Alaric	50	4025	moria.are	standing	100	0	-	north		The cave //   You are in the north end of a cave.  To the east you see many tunnels. // [Exits: east south]
+1792940664	cmd	Alaric	50	4026	moria.are	standing	100	0	-	east		The many tunnels //   You are at the intersection of many tunnels. // [Exits: north east south west]
+1792940664	cmd	Alaric	50	4028	moria.are	standing	100	0	-	north		The smelly tunnel //   You are in a north-south leading tunnel, you see a small light // to the north. You notice a strange smell from the north..
+1792940665	cmd	Alaric	50	4030	moria.are	standing	100	0	-	north		The light cave //   You are in a light cave, through a hole large above you, you see  // the sky. A small tunnel to the south is the only way out.
+1792940668	cmd	Alaric	50	4028	moria.are	standing	100	0	-	south		The smelly tunnel //   You are in a north-south leading tunnel, you see a small light // to the north. You notice a strange smell from the north..
+1792940669	cmd	Alaric	50	4028	moria.are	standing	100	0	-	scan		the giant pygmy rattlesnake          -to the North.
+1792940670	cmd	Alaric	50	4026	moria.are	standing	100	3	-	south		The many tunnels //   You are at the intersection of many tunnels. // [Exits: north east south west]
+1792940671	cmd	Alaric	50	4026	moria.are	standing	100	0	-	scan		the orc                            -to the North. // the orc                            -to the North. // the kobold                         -to the East.
+1792940672	cmd	Alaric	50	4027	moria.are	standing	100	0	-	east		The tunnel //   You are in a north-south leading tunnel, you also notice a tunnel to // the west. From the north you sense the fresh air!
+1792940673	cmd	Alaric	50	4027	moria.are	standing	100	0	-	scan		the centipede                      -to the South.
+1792940674	cmd	Alaric	50	4020	moria.are	standing	100	0	-	south		The hole //   You are by a hole in the floor, you can leave down, or north. // [Exits: north down]
+1792940675	cmd	Alaric	50	4020	moria.are	standing	100	0	-	scan		the kobold                         -to the North. // the kobold                         -to the North. // the large hobgoblin                -right below you.
+1792940677	cmd	Alaric	50	4064	moria.are	standing	100	0	-	down		The tunnel //   You are at the eastern end of a tunnel. // [Exits: west up]
+1792940678	cmd	Alaric	50	4064	moria.are	standing	100	0	-	scan		the centipede                      -right above you.
+1792940680	cmd	Alaric	50	4063	moria.are	standing	100	0	-	west		The maze //   You are in a maze of small damp tunnels. // [Exits: north east]
+1792940681	cmd	Alaric	50	4063	moria.are	standing	100	0	-	scan		the snake                          -to the North. // the large hobgoblin                -to the East.
+1792940682	cmd	Alaric	50	4058	moria.are	standing	100	0	-	north		The maze //   You are in a maze of small damp tunnels. // [Exits: south west]
+1792940683	cmd	Alaric	50	4058	moria.are	standing	100	0	-	scan		the orc                            -to the West.
+1792940684	cmd	Alaric	50	4057	moria.are	standing	100	0	-	west		The maze //   You are in a maze of small damp tunnels. // [Exits: east south]
+1792940686	cmd	Alaric	50	4058	moria.are	standing	100	0	-	east		The maze //   You are in a maze of small damp tunnels. // [Exits: south west]
+1792940687	cmd	Alaric	50	4063	moria.are	standing	100	0	-	south		The maze //   You are in a maze of small damp tunnels. // [Exits: north east]
+1792940688	cmd	Alaric	50	4064	moria.are	standing	100	0	-	east		The tunnel //   You are at the eastern end of a tunnel. // [Exits: west up]
+1792940688	cmd	Alaric	50	4020	moria.are	standing	100	0	-	up		The hole //   You are by a hole in the floor, you can leave down, or north. // [Exits: north down]
+1792940690	cmd	Alaric	50	4027	moria.are	standing	100	0	-	north		The tunnel //   You are in a north-south leading tunnel, you also notice a tunnel to // the west. From the north you sense the fresh air!
+1792940691	cmd	Alaric	50	4026	moria.are	standing	100	0	-	west		The many tunnels //   You are at the intersection of many tunnels. // [Exits: north east south west]
+1792940692	cmd	Alaric	50	4025	moria.are	standing	100	0	-	west		The cave //   You are in the north end of a cave.  To the east you see many tunnels. // [Exits: east south]
+1792940693	cmd	Alaric	50	4018	moria.are	standing	100	0	-	south		The cave //   You are in the south end of a cave, to the south you see a tunnel. You // notice a large pile of bones in the corner.
+1792940693	cmd	Alaric	50	4018	moria.are	standing	100	0	-	scan		the african pit adder              -to the North.
+1792940694	cmd	Alaric	50	4014	moria.are	standing	100	0	-	south		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in
+1792940695	cmd	Alaric	50	4013	moria.are	standing	100	0	-	west		The tunnel //   This tunnel, leading east-west, seems seldom used.  A thick layer of dust // covers the floor, making the air stuffy and dry. 
+1792940696	cmd	Alaric	50	4012	moria.are	standing	100	0	-	west		The tunnel //   You are in a part of the tunnel that looks uncannily like the rest except // that it goes in an east-north direction. To the north the tunnel widens into
+1792940696	cmd	Alaric	50	4012	moria.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792940697	session	Eclipse	70	9988	valhalla.are	linkdead	69s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	2 commands	0 refused	coin: none
+1792940697	cmd	Alaric	50	4012	moria.are	standing	100	0	-	scan		the kobold                         -to the East. // the kobold                         -to the East.
+1792940698	cmd	Alaric	50	4016	moria.are	standing	100	0	-	north		The large cave //   You are in a large cave, the cave continues east and west, to the south // you notice a small tunnel.
+1792940699	cmd	Alaric	50	4016	moria.are	standing	100	0	-	scan		the centipede                      -to the East. // the centipede                      -to the West.
+1792940700	cmd	Alaric	50	4023	moria.are	standing	100	0	-	west		The large cave //   You are in the western part of the large cave, to the south you see // a damp tunnel.
+1792940700	cmd	Alaric	50	4023	moria.are	standing	100	0	-	scan		the large orc                      -to the South.
+1792940701	cmd	Alaric	50	4022	moria.are	standing	100	0	-	south		The damp tunnel //   You are in a damp tunnel.  Your clothes feel wet.  The tunnel continues // to the north; to the west you see a hole in the floor; and to the east
+1792940702	cmd	Alaric	50	4022	moria.are	standing	100	0	-	scan		the centipede                      -to the North. // the kobold                         -to the West. // the kobold                         -to the West.
+1792940703	cmd	Alaric	50	4022	moria.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792940704	cmd	Alaric	50	4021	moria.are	standing	100	0	-	west		The hole //   A hole in the floor leads down here. // [Exits: east down]
+1792940705	cmd	Alaric	50	4021	moria.are	standing	100	0	-	scan		the large orc                      -to the East.
+1792940706	cmd	Alaric	50	4115	moria.are	standing	100	0	-	down		The dark passage. //   You are in a dark passage, that leads east. In the ceiling you notice // a small hole, just big enough to pass through.
+1792940707	cmd	Alaric	50	4115	moria.are	standing	100	0	-	scan		the Mage                           -to the East. // the kobold                         -right above you. // the kobold                         -right above you.
+1792940707	cmd	Alaric	50	4114	moria.are	standing	100	0	-	east		The golden cave //   You are in a giant cave, all the walls are shining with a soft golden // light. The cave continues to the north, to the west you see a dark 
+1792940708	cmd	Alaric	50	4114	moria.are	standing	100	0	-	scan		You don't see anything near you.
+1792940709	cmd	Alaric	50	4109	moria.are	standing	100	0	-	north		The golden cave //   You are in a giant cave, all the walls are shining with a soft golden // light. The cave continues to the south, east and north.
+1792940709	cmd	Alaric	50	4109	moria.are	standing	100	0	-	scan		a centipede                        -to the East. // the Mage                           -to the South.
+1792940710	cmd	Alaric	50	4106	moria.are	standing	100	0	-	north		The golden cave //   You are in a giant cave, all the walls are shining with a soft golden // light. The cave continues to the south and east, to the north is a narrow
+1792940711	cmd	Alaric	50	4106	moria.are	standing	100	0	-	scan		the guardian snake                 -to the North.
+1792940712	cmd	Alaric	50	4105	moria.are	standing	100	0	-	east		The golden cave //   You are in a giant cave, all the walls are shining with a soft golden // light. The cave continues to the south and west.
+1792940713	cmd	Alaric	50	4105	moria.are	standing	100	0	-	scan		a centipede                        -to the South.
+1792940713	session	Eclipse	70	9988	valhalla.are	quit	85s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	3 commands	0 refused	coin: none
+1792940714	cmd	Alaric	50	4106	moria.are	standing	100	0	-	west		The golden cave //   You are in a giant cave, all the walls are shining with a soft golden // light. The cave continues to the south and east, to the north is a narrow
+1792940714	cmd	Alaric	50	4103	moria.are	standing	100	0	-	north		The long tunnel //   You are in a long east-west leading tunnel. The tunnel is quite // narrow at this point. You notice a small hole leading south.
+1792940715	cmd	Alaric	50	4103	moria.are	standing	100	0	-	scan		You don't see anything near you.
+1792940716	cmd	Alaric	50	4104	moria.are	standing	100	0	-	west		The long tunnel //   You are in a long east-west leading tunnel. The tunnel starts sloping // down towards the west.
+1792940717	cmd	Alaric	50	4104	moria.are	standing	100	0	-	scan		the guardian snake                 -to the East.
+1792940717	cmd	Alaric	50	4152	moria.are	standing	100	0	-	west		The tunnel //   You suddenly feel that the tunnel leads down. // [Exits: east south]
+1792940718	cmd	Alaric	50	4152	moria.are	standing	100	0	-	scan		You don't see anything near you.
+1792940719	cmd	Alaric	50	4153	moria.are	standing	100	0	-	south		The large tunnel //   You are in a large tunnel leading from the south to the east. The // air is damp in the area.
+1792940719	cmd	Alaric	50	4157	moria.are	standing	100	0	-	south		The wet tunnel //   You are in a wet, north-south leading tunnel, the floor is // partly covered by water.
+1792940721	cmd	Alaric	50	4161	moria.are	standing	100	0	-	south		The wet tunnel //   You are in a north-south leading tunnel.  The floor is fully // covered by water.
+1792940722	cmd	Alaric	50	4165	moria.are	standing	100	0	-	south		In the water //   You are standing in water, the tunnel continues both to the // north and south.
+1792940723	cmd	Alaric	50	4169	moria.are	standing	100	0	-	south		In the water //   You are standing in the water, exits leads both north and east. // [Exits: north east]
+1792940723	cmd	Alaric	50	4169	moria.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792940724	cmd	Alaric	50	4170	moria.are	standing	100	0	-	east		In the water //   You are standing in the water, it continues east and west. // [Exits: north east west]
+1792940725	cmd	Alaric	50	4172	moria.are	standing	100	0	-	east		At the sand bar //   You are on a little sand bar in the water. // [Exits: west]
+1792940726	cmd	Alaric	50	4172	moria.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792940726	cmd	Alaric	50	4170	moria.are	standing	100	0	-	west		In the water //   You are standing in the water, it continues east and west. // [Exits: north east west]
+1792940727	cmd	Alaric	50	4166	moria.are	standing	100	0	-	north		The wet maze //   You are in a part of the maze where the floor is fully covered // by water. The maze continues to the north, east and south.
+1792940728	cmd	Alaric	50	4167	moria.are	standing	100	0	-	east		The wet maze //   You are in a small maze, the floor is covered by water, the // maze continues east, west and south.
+1792940729	cmd	Alaric	50	4168	moria.are	standing	100	0	-	east		The end of the tunnel //   The tunnel suddenly stops here, only exit is to the west. // The air is damp here.
+1792940730	cmd	Alaric	50	4164	moria.are	standing	100	0	-	north		The entrance to the small maze //   You are in a north-south leading tunnel, and the air is damp. // To the west you see a small maze.
+1792940732	cmd	Alaric	50	4164	moria.are	standing	100	0	-	scan		the small troll                    -to the South.
+1792940733	cmd	Alaric	50	4160	moria.are	standing	100	0	-	north		In the tunnel at the inscription //   You are in a north-south leading tunnel, the air is damp. On // the wall there is an inscription.
+1792940734	cmd	Alaric	50	4160	moria.are	standing	100	0	-	scan		the orc                            -to the South. // the black bat                      -to the South. // the white bat                      -to the South.
+1792940734	cmd	Alaric	50	4156	moria.are	standing	100	0	-	north		The long tunnel //   You are standing in a long north-south tunnel. // [Exits: north south]
+1792940735	cmd	Alaric	50	4156	moria.are	standing	100	0	-	scan		the troll                          -to the North.
+1792940735	cmd	Alaric	50	4151	moria.are	standing	100	0	-	north		The small passage //   You are in a small passage, to the north you see a hole, and to // the south you see a large tunnel. The air is damp in this area.
+1792940736	cmd	Alaric	50	4151	moria.are	standing	100	0	-	scan		the green bat                      -to the West. // the blue bat                       -to the West.
+1792940737	cmd	Alaric	50	4150	moria.are	standing	100	0	-	north		The dark hole //   You are standing at a hole, a small passage leads south. You see // some inscriptions on the wall, most of 'em the usual stuff, like:
+1792940738	cmd	Alaric	50	4150	moria.are	standing	100	0	-	scan		the troll                          -to the South.
+1792940739	cmd	Alaric	50	4151	moria.are	standing	100	0	-	south		The small passage //   You are in a small passage, to the north you see a hole, and to // the south you see a large tunnel. The air is damp in this area.
+1792940739	cmd	Alaric	50	4156	moria.are	standing	100	0	-	south		The long tunnel //   You are standing in a long north-south tunnel. // [Exits: north south]
+1792940741	cmd	Alaric	50	4160	moria.are	standing	100	0	-	south		In the tunnel at the inscription //   You are in a north-south leading tunnel, the air is damp. On // the wall there is an inscription.
+1792940747	cmd	Alaric	50	4156	moria.are	standing	100	0	-	north		The long tunnel //   You are standing in a long north-south tunnel. // [Exits: north south]
+1792940747	cmd	Alaric	50	4151	moria.are	standing	100	0	-	north		The small passage //   You are in a small passage, to the north you see a hole, and to // the south you see a large tunnel. The air is damp in this area.
+1792940748	cmd	Alaric	50	4155	moria.are	standing	100	0	-	west		The large tunnel //   You are in a large tunnel, the tunnel leads west, and to the east // you notice a long tunnel. The air is damp in this area.
+1792940748	cmd	Alaric	50	4154	moria.are	standing	100	0	-	west		The large tunnel //   You are in a large east-west leading tunnel, the air is damp and // the floor is wet.
+1792940748	cmd	Alaric	50	4153	moria.are	standing	100	0	-	west		The large tunnel //   You are in a large tunnel leading from the south to the east. The // air is damp in the area.
+1792940748	cmd	Alaric	50	4152	moria.are	standing	100	0	-	north		The tunnel //   You suddenly feel that the tunnel leads down. // [Exits: east south]
+1792940749	cmd	Alaric	50	4104	moria.are	standing	100	0	-	east		The long tunnel //   You are in a long east-west leading tunnel. The tunnel starts sloping // down towards the west.
+1792940749	cmd	Alaric	50	4103	moria.are	standing	100	0	-	east		The long tunnel //   You are in a long east-west leading tunnel. The tunnel is quite // narrow at this point. You notice a small hole leading south.
+1792940749	cmd	Alaric	50	4106	moria.are	standing	100	0	-	south		The golden cave //   You are in a giant cave, all the walls are shining with a soft golden // light. The cave continues to the south and east, to the north is a narrow
+1792940749	cmd	Alaric	50	4109	moria.are	standing	100	0	-	south		The golden cave //   You are in a giant cave, all the walls are shining with a soft golden // light. The cave continues to the south, east and north.
+1792940750	cmd	Alaric	50	4114	moria.are	standing	100	0	-	south		The golden cave //   You are in a giant cave, all the walls are shining with a soft golden // light. The cave continues to the north, to the west you see a dark 
+1792940750	cmd	Alaric	50	4115	moria.are	standing	100	0	-	west		The dark passage. //   You are in a dark passage, that leads east. In the ceiling you notice // a small hole, just big enough to pass through.
+1792940751	cmd	Alaric	50	4021	moria.are	standing	100	0	-	up		The hole //   A hole in the floor leads down here. // [Exits: east down]
+1792940752	cmd	Alaric	50	4022	moria.are	standing	100	0	-	east		The damp tunnel //   You are in a damp tunnel.  Your clothes feel wet.  The tunnel continues // to the north; to the west you see a hole in the floor; and to the east
+1792940753	cmd	Alaric	50	4024	moria.are	standing	100	0	-	east		The damp tunnel //   You are in a corner of a damp tunnel.  You can go west or south. // [Exits: south west]
+1792940775	cmd	Alaric	50	4022	moria.are	standing	100	0	-	west		The damp tunnel //   You are in a damp tunnel.  Your clothes feel wet.  The tunnel continues // to the north; to the west you see a hole in the floor; and to the east
+1792940775	cmd	Alaric	50	4023	moria.are	standing	100	0	-	north		The large cave //   You are in the western part of the large cave, to the south you see // a damp tunnel.
+1792940775	cmd	Alaric	50	4016	moria.are	standing	100	0	-	east		The large cave //   You are in a large cave, the cave continues east and west, to the south // you notice a small tunnel.
+1792940776	cmd	Alaric	50	4012	moria.are	standing	100	0	-	south		The tunnel //   You are in a part of the tunnel that looks uncannily like the rest except // that it goes in an east-north direction. To the north the tunnel widens into
+1792940776	cmd	Alaric	50	4013	moria.are	standing	100	0	-	east		The tunnel //   This tunnel, leading east-west, seems seldom used.  A thick layer of dust // covers the floor, making the air stuffy and dry. 
+1792940776	cmd	Alaric	50	4014	moria.are	standing	100	0	-	east		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in
+1792940776	cmd	Alaric	50	4018	moria.are	standing	100	0	-	north		The cave //   You are in the south end of a cave, to the south you see a tunnel. You // notice a large pile of bones in the corner.
+1792940777	cmd	Alaric	50	4025	moria.are	standing	100	0	-	north		The cave //   You are in the north end of a cave.  To the east you see many tunnels. // [Exits: east south]
+1792940777	cmd	Alaric	50	4026	moria.are	standing	100	0	-	east		The many tunnels //   You are at the intersection of many tunnels. // [Exits: north east south west]
+1792940777	cmd	Alaric	50	4027	moria.are	standing	100	2	-	east		The tunnel //   You are in a north-south leading tunnel, you also notice a tunnel to // the west. From the north you sense the fresh air!
+1792940777	cmd	Alaric	50	4029	moria.are	standing	100	0	-	north		The cave //   You are in a cave that is filled with fresh air, you sense the // wind blowing from the north. To the south you see a small tunnel
+1792940779	cmd	Alaric	50	4029	moria.are	standing	100	0	-	scan		the kobold                         -to the South. // the kobold                         -to the South.
+1792940780	cmd	Alaric	50	4029	moria.are	standing	100	0	-	where	hob	the large hobgoblin          The large cave
+1792940798	cmd	Alaric	50	4031	moria.are	standing	100	0	-	north		The valley //   You are in a small valley, surrounded by hills and a mountain to  // the south and to the north. In the southern mountain there is a cave.
+1792940798	cmd	Alaric	50	4032	moria.are	standing	100	0	-	north		The valley //   You are on a winding path that leads through the valley on the // other side of the mountain.  The path continues north.
+1792940799	cmd	Alaric	50	4033	moria.are	standing	100	0	-	north		Intersection in the valley //   The small path you are following splits here.  The path continues // north and south or you can follow a trail east into the mountains.
+1792940799	cmd	Alaric	50	4037	moria.are	standing	100	0	-	east		The foothills path //   Exits are east and west. // [Exits: east west]
+1792940799	cmd	Alaric	50	4038	moria.are	standing	100	0	-	east		Base of the mountain //   Exits are east and west. // [Exits: east west]
+1792940799	cmd	Alaric	50	4039	moria.are	standing	100	0	-	east		A trail up the mountain //   Exits are east and west. // [Exits: east west]
+1792940801	cmd	Alaric	50	4040	moria.are	standing	100	0	-	east		The mountain top. //   Exits are north, east, and west. // [Exits: north east west down]
+1792940802	cmd	Alaric	50	4040	moria.are	standing	100	0	-	exits		Obvious exits: // North - The lion's den // East  - A sudden downdraft catches you!
+1792940804	cmd	Alaric	50	4173	moria.are	standing	100	0	-	down		High up on a ledge. //   You are on a small ledge high up in the mountains.  Looking back up the // way you came you realize that a climb back up would be impossible.  The
+1792940806	cmd	Alaric	50	4173	moria.are	standing	100	0	-	exits		Obvious exits: // East  - A sudden downdraft catches you!
+1792940807	cmd	Alaric	50	4174	moria.are	standing	100	3	-	east		A sudden downdraft catches you! //   As you step off the edge thinking you could fly easily here a sudden  // downdraft catches you and pushes you down into the canyon!  You quickly
+1792940810	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792940813	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792940815	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	jump	prock	I see no prock here.
+1792940818	cmd	Alaric	50	1607	wyvern.are	standing	100	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you
+1792940820	cmd	Alaric	50	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792940822	cmd	Alaric	50	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792940822	cmd	Alaric	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792940822	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792940824	cmd	Alaric	50	2404	dresden_halloween.are	standing	100	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792940824	cmd	Alaric	50	2427	dresden_halloween.are	standing	100	0	-	south		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792940824	cmd	Alaric	50	2428	dresden_halloween.are	standing	100	0	-	south		Main Processional, Toward the Mermaids' Bridge //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Children run past you in sheets and
+1792940825	cmd	Alaric	50	2429	dresden_halloween.are	standing	100	0	-	south		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the
+1792940825	cmd	Alaric	50	2430	dresden_halloween.are	standing	100	0	-	south		Main Processional, at the Southern Gates //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Just to the north is the Bridge of
+1792940825	cmd	Alaric	50	2431	dresden_halloween.are	standing	100	0	-	south		Inside the Southern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1792940825	cmd	Alaric	50	2431	dresden_halloween.are	standing	100	0	-	open	south	Ok.
+1792940826	cmd	Alaric	50	2432	dresden_halloween.are	standing	100	0	-	south		Outside the Southern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792940828	cmd	Alaric	50	3505	midennir_halloween.are	standing	100	0	-	south		The Trail to Miden'nir //   You are in a dark forest.  The trees press close on either side, their // branches interlocked far above in a canopy broken only by drifting will-o-wisps.
+1792940828	cmd	Alaric	50	3506	midennir_halloween.are	standing	100	0	-	east		The Miden'nir //   You are in a dark forest. To the east, mountains block passage. From // here, only the lighter forest to the west or south offer a way to travel.
+1792940829	cmd	Alaric	50	3550	midennir_halloween.are	standing	100	0	-	east		At The Foot of The Dark Hills //   You find yourself at the foot of a range of dark hills that streach off to // the north. In the distance you can just make out the tops of mist covered
+1792940829	cmd	Alaric	50	18	connect.are	standing	100	0	-	north		Entering the hills //   Small hills begin to form here in the northwestern corner of the great forest // of middenir. From here if you look you can see great mountains towering 
+1792940829	cmd	Alaric	50	4000	moria.are	standing	100	0	-	north		The hills //   You are on a small bewildered path winding its way between the hills in // lack of better things to do. To the south you have a splendid view over the
+1792940831	cmd	Alaric	50	4001	moria.are	standing	100	0	-	north		The hills //   You are surrounded by dark and sinister hills. Although they seemed fairly // small from a distance you now get the feeling that they're closing in on you,
+1792940831	cmd	Alaric	50	4002	moria.are	standing	100	0	-	north		End of the path //   At this point the path has had enough. With a terrified shudder it cowers // to the ground, only staying here because you're standing on it. with a slight
+1792940832	cmd	Alaric	50	4002	moria.are	standing	100	0	-	scan		You don't see anything near you.
+1792940836	cmd	Alaric	50	4010	moria.are	standing	100	0	-	north		The cave //   You are in a large cave. The ceiling is lost somewhere above the reach of // your light. The floor, however, is highly illuminated, your light flickering
+1792940837	cmd	Alaric	50	4010	moria.are	standing	100	0	-	scan		You don't see anything near you.
+1792940838	cmd	Alaric	50	4010	moria.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792940839	cmd	Alaric	50	4011	moria.are	standing	100	0	-	north		The tunnel //   You squeeze your way through a small, narrow tunnel. The sharp-edged rocks // protruding from the walls threaten to scratch and cut you. 
+1792940840	cmd	Alaric	50	4014	moria.are	standing	100	0	-	north		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in
+1792940841	cmd	Alaric	50	4015	moria.are	standing	100	0	-	east		The tunnel //   You are in a corner tunnel leading west and north. // [Exits: north west]
+1792940843	cmd	Alaric	50	4015	moria.are	standing	100	0	-	scan		You don't see anything near you.
+1792940843	cmd	Alaric	50	4019	moria.are	standing	100	0	-	north		The tunnel //   You are in a north-south leading tunnel. // [Exits: north south]
+1792940844	cmd	Alaric	50	4026	moria.are	standing	100	0	-	north		The many tunnels //   You are at the intersection of many tunnels. // [Exits: north east south west]
+1792940845	cmd	Alaric	50	4027	moria.are	standing	100	0	-	east		The tunnel //   You are in a north-south leading tunnel, you also notice a tunnel to // the west. From the north you sense the fresh air!
+1792940846	cmd	Alaric	50	4027	moria.are	standing	100	0	-	scan		the centipede                      -to the South.
+1792940847	cmd	Alaric	50	4029	moria.are	standing	100	0	-	north		The cave //   You are in a cave that is filled with fresh air, you sense the // wind blowing from the north. To the south you see a small tunnel
+1792940848	cmd	Alaric	50	4029	moria.are	standing	100	0	-	scan		the kobold                         -to the South. // the kobold                         -to the South.
+1792940848	cmd	Alaric	50	4031	moria.are	standing	100	0	-	north		The valley //   You are in a small valley, surrounded by hills and a mountain to  // the south and to the north. In the southern mountain there is a cave.
+1792940849	cmd	Alaric	50	4031	moria.are	standing	100	0	-	scan		You don't see anything near you.
+1792940850	cmd	Alaric	50	4032	moria.are	standing	100	0	-	north		The valley //   You are on a winding path that leads through the valley on the // other side of the mountain.  The path continues north.
+1792940850	cmd	Alaric	50	4032	moria.are	standing	100	0	-	scan		You don't see anything near you.
+1792940851	cmd	Alaric	50	4033	moria.are	standing	100	0	-	north		Intersection in the valley //   The small path you are following splits here.  The path continues // north and south or you can follow a trail east into the mountains.
+1792940851	cmd	Alaric	50	4033	moria.are	standing	100	0	-	scan		the mountain lion                  -to the North.
+1792940852	cmd	Alaric	50	4037	moria.are	standing	100	0	-	east		The foothills path //   Exits are east and west. // [Exits: east west]
+1792940853	cmd	Alaric	50	4037	moria.are	standing	100	0	-	scan		You don't see anything near you.
+1792940854	cmd	Alaric	50	4038	moria.are	standing	100	0	-	east		Base of the mountain //   Exits are east and west. // [Exits: east west]
+1792940856	cmd	Alaric	50	4037	moria.are	standing	100	0	-	west		The foothills path //   Exits are east and west. // [Exits: east west]
+1792940856	cmd	Alaric	50	4033	moria.are	standing	100	0	-	west		Intersection in the valley //   The small path you are following splits here.  The path continues // north and south or you can follow a trail east into the mountains.
+1792940857	cmd	Alaric	50	4032	moria.are	standing	100	0	-	south		The valley //   You are on a winding path that leads through the valley on the // other side of the mountain.  The path continues north.
+1792940858	cmd	Alaric	50	4031	moria.are	standing	100	0	-	south		The valley //   You are in a small valley, surrounded by hills and a mountain to  // the south and to the north. In the southern mountain there is a cave.
+1792940858	cmd	Alaric	50	4029	moria.are	standing	100	0	-	south		The cave //   You are in a cave that is filled with fresh air, you sense the // wind blowing from the north. To the south you see a small tunnel
+1792940858	cmd	Alaric	50	4029	moria.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792940859	cmd	Alaric	50	4027	moria.are	standing	100	0	-	south		The tunnel //   You are in a north-south leading tunnel, you also notice a tunnel to // the west. From the north you sense the fresh air!
+1792940860	cmd	Alaric	50	4026	moria.are	standing	100	0	-	west		The many tunnels //   You are at the intersection of many tunnels. // [Exits: north east south west]
+1792940861	cmd	Alaric	50	4028	moria.are	standing	100	0	-	north		The smelly tunnel //   You are in a north-south leading tunnel, you see a small light // to the north. You notice a strange smell from the north..
+1792940862	cmd	Alaric	50	4028	moria.are	standing	100	0	-	scan		the giant pygmy rattlesnake          -to the North.
+1792940863	cmd	Alaric	50	4030	moria.are	standing	100	0	-	north		The light cave //   You are in a light cave, through a hole large above you, you see  // the sky. A small tunnel to the south is the only way out.
+1792940870	cmd	Alaric	50	4030	moria.are	standing	100	0	-	open	light	I see no light here.
+1792940873	cmd	Alaric	50	4030	moria.are	standing	100	0	-	open	hole	I see no hole here.
+1792940875	cmd	Alaric	50	4030	moria.are	standing	100	0	-	enter	hole	You do not see that here.
+1792940875	cmd	Alaric	50	4028	moria.are	standing	100	0	-	south		The smelly tunnel //   You are in a north-south leading tunnel, you see a small light // to the north. You notice a strange smell from the north..
+1792940876	cmd	Alaric	50	4026	moria.are	standing	100	0	-	south		The many tunnels //   You are at the intersection of many tunnels. // [Exits: north east south west]
+1792940877	cmd	Alaric	50	4025	moria.are	standing	100	0	-	west		The cave //   You are in the north end of a cave.  To the east you see many tunnels. // [Exits: east south]
+1792940878	cmd	Alaric	50	4025	moria.are	standing	100	0	-	scan		You don't see anything near you.
+1792940878	cmd	Alaric	50	4018	moria.are	standing	100	0	-	south		The cave //   You are in the south end of a cave, to the south you see a tunnel. You // notice a large pile of bones in the corner.
+1792940879	cmd	Alaric	50	4018	moria.are	standing	100	0	-	scan		the african pit adder              -to the North.
+1792940879	cmd	Alaric	50	4014	moria.are	standing	100	0	-	south		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in
+1792940880	cmd	Alaric	50	4014	moria.are	standing	100	0	-	scan		the orc                            -to the East. // the african pit adder              -to the East. // the kobold                         -to the West.
+1792940881	cmd	Alaric	50	4013	moria.are	standing	100	0	-	west		The tunnel //   This tunnel, leading east-west, seems seldom used.  A thick layer of dust // covers the floor, making the air stuffy and dry. 
+1792940882	cmd	Alaric	50	4013	moria.are	standing	100	0	-	scan		the kobold                         -to the West.
+1792940883	cmd	Alaric	50	4012	moria.are	standing	100	0	-	west		The tunnel //   You are in a part of the tunnel that looks uncannily like the rest except // that it goes in an east-north direction. To the north the tunnel widens into
+1792940883	cmd	Alaric	50	4012	moria.are	standing	100	0	-	scan		the kobold                         -to the East.
+1792940884	cmd	Alaric	50	4016	moria.are	standing	100	0	-	north		The large cave //   You are in a large cave, the cave continues east and west, to the south // you notice a small tunnel.
+1792940885	cmd	Alaric	50	4016	moria.are	standing	100	0	-	scan		the centipede                      -to the East. // the kobold                         -to the South. // the centipede                      -to the West.
+1792940887	cmd	Alaric	50	4016	moria.are	standing	100	0	-	where	hob	the large hobgoblin          The large cave
+1792940888	cmd	Alaric	50	4016	moria.are	standing	100	0	-	look		The large cave //   You are in a large cave, the cave continues east and west, to the south // you notice a small tunnel.
+1792940889	cmd	Alaric	50	4012	moria.are	standing	100	0	-	south		The tunnel //   You are in a part of the tunnel that looks uncannily like the rest except // that it goes in an east-north direction. To the north the tunnel widens into
+1792940890	cmd	Alaric	50	4012	moria.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792940891	cmd	Alaric	50	4013	moria.are	standing	100	0	-	east		The tunnel //   This tunnel, leading east-west, seems seldom used.  A thick layer of dust // covers the floor, making the air stuffy and dry. 
+1792940891	cmd	Alaric	50	4014	moria.are	standing	100	0	-	east		The tunnel //   You are walking in a narrow tunnel. The walls are only roughly shaped, // sharp rocks protruding everywhere, even from the floor making you stumble in
+1792940892	cmd	Alaric	50	4015	moria.are	standing	100	0	-	east		The tunnel //   You are in a corner tunnel leading west and north. // [Exits: north west]
+1792940893	cmd	Alaric	50	4019	moria.are	standing	100	0	-	north		The tunnel //   You are in a north-south leading tunnel. // [Exits: north south]
+1792940894	cmd	Alaric	50	4026	moria.are	standing	100	0	-	north		The many tunnels //   You are at the intersection of many tunnels. // [Exits: north east south west]
+1792940895	cmd	Alaric	50	4027	moria.are	standing	100	0	-	east		The tunnel //   You are in a north-south leading tunnel, you also notice a tunnel to // the west. From the north you sense the fresh air!
+1792940895	cmd	Alaric	50	4020	moria.are	standing	100	0	-	south		The hole //   You are by a hole in the floor, you can leave down, or north. // [Exits: north down]
+1792940897	cmd	Alaric	50	4064	moria.are	standing	100	0	-	down		The tunnel //   You are at the eastern end of a tunnel. // [Exits: west up]
+1792940898	cmd	Alaric	50	4063	moria.are	standing	100	0	-	west		The maze //   You are in a maze of small damp tunnels. // [Exits: north east]
+1792940898	cmd	Alaric	50	4058	moria.are	standing	100	0	-	north		The maze //   You are in a maze of small damp tunnels. // [Exits: south west]
+1792940900	cmd	Alaric	50	4057	moria.are	standing	100	0	-	west		The maze //   You are in a maze of small damp tunnels. // [Exits: east south]
+1792940901	cmd	Alaric	50	4062	moria.are	standing	100	0	-	south		The maze //   You are in a maze of small damp tunnels. // [Exits: north east]
+1792940902	cmd	Alaric	50	4065	moria.are	standing	100	0	-	east		The maze //   You are in a maze of small damp tunnels. // [Exits: east west]
+1792940905	cmd	Alaric	50	4065	moria.are	standing	100	10	-	kill	hob	Your punch >>> ANNIHILATES <<< the hobgoblin! [-218] // The hobgoblin is DEAD!! // You have almost finished your QUEST!
+1792940909	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792940909	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
+1792940910	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
+1792940910	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	17	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Streak of 6 in a row! A +50% bonus has been added!'
+1792940910	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 60 quest points.
+1792940915	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    240 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792940916	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1

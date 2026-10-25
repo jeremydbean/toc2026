@@ -188566,3 +188566,408 @@ Sun Oct 25 15:03:58 2026 :: Log Alaric [4010]: arrived (The cave) from 4002
 Sun Oct 25 15:03:59 2026 :: Log Alaric [4010]: scan
 Sun Oct 25 15:04:00 2026 :: Log Alaric [4010]: n
 Sun Oct 25 15:04:00 2026 :: Log Alaric [4011]: arrived (The tunnel) from 4010
+Sun Oct 25 15:04:00 2026 :: Log Alaric [4011]: scan
+Sun Oct 25 15:04:02 2026 :: Log Alaric [4011]: n
+Sun Oct 25 15:04:02 2026 :: Log Alaric [4014]: arrived (The tunnel) from 4011
+Sun Oct 25 15:04:03 2026 :: Log Alaric [4014]: scan
+Sun Oct 25 15:04:08 2026 :: Log Eclipse [9988]: note (arguments withheld)
+Sun Oct 25 15:04:17 2026 :: Treasure goblin: vanished from room 1359 (The training room, htower.are) (too long in one area).
+Sun Oct 25 15:04:24 2026 :: Log Alaric [4014]: north
+Sun Oct 25 15:04:24 2026 :: Log Alaric [4018]: arrived (The cave) from 4014
+Sun Oct 25 15:04:24 2026 :: Log Alaric [4018]: north
+Sun Oct 25 15:04:24 2026 :: Log Alaric [4025]: arrived (The cave) from 4018
+Sun Oct 25 15:04:24 2026 :: Log Alaric [4025]: east
+Sun Oct 25 15:04:24 2026 :: Log Alaric [4026]: arrived (The many tunnels) from 4025
+Sun Oct 25 15:04:24 2026 :: Log Alaric [4026]: north
+Sun Oct 25 15:04:24 2026 :: Log Alaric [4028]: arrived (The smelly tunnel) from 4026
+Sun Oct 25 15:04:25 2026 :: Log Alaric [4028]: north
+Sun Oct 25 15:04:25 2026 :: Log Alaric [4030]: arrived (The light cave) from 4028
+Sun Oct 25 15:04:28 2026 :: Log Alaric [4030]: s
+Sun Oct 25 15:04:28 2026 :: Log Alaric [4028]: arrived (The smelly tunnel) from 4030
+Sun Oct 25 15:04:29 2026 :: Log Alaric [4028]: scan
+Sun Oct 25 15:04:30 2026 :: Log Alaric [4028]: s
+Sun Oct 25 15:04:30 2026 :: Log Alaric [4026]: arrived (The many tunnels) from 4028
+Sun Oct 25 15:04:31 2026 :: Log Alaric [4026]: scan
+Sun Oct 25 15:04:32 2026 :: Log Alaric [4026]: e
+Sun Oct 25 15:04:32 2026 :: Log Alaric [4027]: arrived (The tunnel) from 4026
+Sun Oct 25 15:04:33 2026 :: Log Alaric [4027]: scan
+Sun Oct 25 15:04:34 2026 :: Log Alaric [4027]: s
+Sun Oct 25 15:04:34 2026 :: Log Alaric [4020]: arrived (The hole) from 4027
+Sun Oct 25 15:04:35 2026 :: Log Alaric [4020]: scan
+Sun Oct 25 15:04:37 2026 :: Log Alaric [4020]: d
+Sun Oct 25 15:04:37 2026 :: Log Alaric [4064]: arrived (The tunnel) from 4020
+Sun Oct 25 15:04:38 2026 :: Log Alaric [4064]: scan
+Sun Oct 25 15:04:40 2026 :: Log Alaric [4064]: w
+Sun Oct 25 15:04:40 2026 :: Log Alaric [4063]: arrived (The maze) from 4064
+Sun Oct 25 15:04:41 2026 :: Log Alaric [4063]: scan
+Sun Oct 25 15:04:42 2026 :: Log Alaric [4063]: n
+Sun Oct 25 15:04:42 2026 :: Log Alaric [4058]: arrived (The maze) from 4063
+Sun Oct 25 15:04:43 2026 :: Log Alaric [4058]: scan
+Sun Oct 25 15:04:44 2026 :: Log Alaric [4058]: w
+Sun Oct 25 15:04:44 2026 :: Log Alaric [4057]: arrived (The maze) from 4058
+Sun Oct 25 15:04:46 2026 :: Log Alaric [4057]: e
+Sun Oct 25 15:04:46 2026 :: Log Alaric [4058]: arrived (The maze) from 4057
+Sun Oct 25 15:04:47 2026 :: Log Alaric [4058]: s
+Sun Oct 25 15:04:47 2026 :: Log Alaric [4063]: arrived (The maze) from 4058
+Sun Oct 25 15:04:48 2026 :: Log Alaric [4063]: e
+Sun Oct 25 15:04:48 2026 :: Log Alaric [4064]: arrived (The tunnel) from 4063
+Sun Oct 25 15:04:48 2026 :: Log Alaric [4064]: u
+Sun Oct 25 15:04:48 2026 :: Log Alaric [4020]: arrived (The hole) from 4064
+Sun Oct 25 15:04:50 2026 :: Log Alaric [4020]: n
+Sun Oct 25 15:04:50 2026 :: Log Alaric [4027]: arrived (The tunnel) from 4020
+Sun Oct 25 15:04:51 2026 :: Log Alaric [4027]: w
+Sun Oct 25 15:04:51 2026 :: Log Alaric [4026]: arrived (The many tunnels) from 4027
+Sun Oct 25 15:04:52 2026 :: Log Alaric [4026]: w
+Sun Oct 25 15:04:52 2026 :: Log Alaric [4025]: arrived (The cave) from 4026
+Sun Oct 25 15:04:53 2026 :: Log Alaric [4025]: s
+Sun Oct 25 15:04:53 2026 :: Log Alaric [4018]: arrived (The cave) from 4025
+Sun Oct 25 15:04:53 2026 :: Log Alaric [4018]: scan
+Sun Oct 25 15:04:54 2026 :: Log Alaric [4018]: s
+Sun Oct 25 15:04:54 2026 :: Log Alaric [4014]: arrived (The tunnel) from 4018
+Sun Oct 25 15:04:55 2026 :: Log Alaric [4014]: w
+Sun Oct 25 15:04:55 2026 :: Log Alaric [4013]: arrived (The tunnel) from 4014
+Sun Oct 25 15:04:56 2026 :: Log Alaric [4013]: w
+Sun Oct 25 15:04:56 2026 :: Log Alaric [4012]: arrived (The tunnel) from 4013
+Sun Oct 25 15:04:56 2026 :: Log Alaric [4012]: w
+Sun Oct 25 15:04:57 2026 :: EOF encountered on read.
+Sun Oct 25 15:04:57 2026 :: Closing link to Eclipse.
+Sun Oct 25 15:04:57 2026 :: Log Alaric [4012]: scan
+Sun Oct 25 15:04:58 2026 :: Log Alaric [4012]: n
+Sun Oct 25 15:04:58 2026 :: Log Alaric [4016]: arrived (The large cave) from 4012
+Sun Oct 25 15:04:59 2026 :: Log Alaric [4016]: scan
+Sun Oct 25 15:05:00 2026 :: Log Alaric [4016]: w
+Sun Oct 25 15:05:00 2026 :: Log Alaric [4023]: arrived (The large cave) from 4016
+Sun Oct 25 15:05:00 2026 :: Log Alaric [4023]: scan
+Sun Oct 25 15:05:01 2026 :: Log Alaric [4023]: s
+Sun Oct 25 15:05:01 2026 :: Log Alaric [4022]: arrived (The damp tunnel) from 4023
+Sun Oct 25 15:05:02 2026 :: Log Alaric [4022]: scan
+Sun Oct 25 15:05:03 2026 :: Log Alaric [4022]: s
+Sun Oct 25 15:05:04 2026 :: Log Alaric [4022]: w
+Sun Oct 25 15:05:04 2026 :: Log Alaric [4021]: arrived (The hole) from 4022
+Sun Oct 25 15:05:05 2026 :: Log Alaric [4021]: scan
+Sun Oct 25 15:05:06 2026 :: Log Alaric [4021]: d
+Sun Oct 25 15:05:06 2026 :: Log Alaric [4115]: arrived (The dark passage.) from 4021
+Sun Oct 25 15:05:07 2026 :: Log Alaric [4115]: scan
+Sun Oct 25 15:05:07 2026 :: Loading Eclipse's playerfile
+Sun Oct 25 15:05:07 2026 :: Log Alaric [4115]: e
+Sun Oct 25 15:05:07 2026 :: Log Alaric [4114]: arrived (The golden cave) from 4115
+Sun Oct 25 15:05:08 2026 :: Log Alaric [4114]: scan
+Sun Oct 25 15:05:09 2026 :: Log Alaric [4114]: n
+Sun Oct 25 15:05:09 2026 :: Log Alaric [4109]: arrived (The golden cave) from 4114
+Sun Oct 25 15:05:09 2026 :: Log Alaric [4109]: scan
+Sun Oct 25 15:05:10 2026 :: Eclipse@97.202.254.41 reconnected.
+Sun Oct 25 15:05:10 2026 :: Log Alaric [4109]: n
+Sun Oct 25 15:05:10 2026 :: Log Alaric [4106]: arrived (The golden cave) from 4109
+Sun Oct 25 15:05:11 2026 :: Log Alaric [4106]: scan
+Sun Oct 25 15:05:12 2026 :: Log Alaric [4106]: e
+Sun Oct 25 15:05:12 2026 :: Log Alaric [4105]: arrived (The golden cave) from 4106
+Sun Oct 25 15:05:13 2026 :: Log Alaric [4105]: scan
+Sun Oct 25 15:05:13 2026 :: Log Eclipse [9988]: quit
+Sun Oct 25 15:05:13 2026 :: Eclipse has quit.
+Sun Oct 25 15:05:13 2026 :: [QUIT] Player rejoined the real world.
+Sun Oct 25 15:05:14 2026 :: Log Alaric [4105]: w
+Sun Oct 25 15:05:14 2026 :: Log Alaric [4106]: arrived (The golden cave) from 4105
+Sun Oct 25 15:05:14 2026 :: Log Alaric [4106]: n
+Sun Oct 25 15:05:14 2026 :: Log Alaric [4103]: arrived (The long tunnel) from 4106
+Sun Oct 25 15:05:15 2026 :: Log Alaric [4103]: scan
+Sun Oct 25 15:05:16 2026 :: Log Alaric [4103]: w
+Sun Oct 25 15:05:16 2026 :: Log Alaric [4104]: arrived (The long tunnel) from 4103
+Sun Oct 25 15:05:17 2026 :: Log Alaric [4104]: scan
+Sun Oct 25 15:05:17 2026 :: Log Alaric [4104]: w
+Sun Oct 25 15:05:17 2026 :: Log Alaric [4152]: arrived (The tunnel) from 4104
+Sun Oct 25 15:05:18 2026 :: Log Alaric [4152]: scan
+Sun Oct 25 15:05:19 2026 :: Log Alaric [4152]: s
+Sun Oct 25 15:05:19 2026 :: Log Alaric [4153]: arrived (The large tunnel) from 4152
+Sun Oct 25 15:05:19 2026 :: Log Alaric [4153]: s
+Sun Oct 25 15:05:19 2026 :: Log Alaric [4157]: arrived (The wet tunnel) from 4153
+Sun Oct 25 15:05:21 2026 :: Log Alaric [4157]: s
+Sun Oct 25 15:05:21 2026 :: Log Alaric [4161]: arrived (The wet tunnel) from 4157
+Sun Oct 25 15:05:22 2026 :: Log Alaric [4161]: s
+Sun Oct 25 15:05:22 2026 :: Log Alaric [4165]: arrived (In the water) from 4161
+Sun Oct 25 15:05:23 2026 :: Log Alaric [4165]: s
+Sun Oct 25 15:05:23 2026 :: Log Alaric [4169]: arrived (In the water) from 4165
+Sun Oct 25 15:05:23 2026 :: Log Alaric [4169]: s
+Sun Oct 25 15:05:24 2026 :: Log Alaric [4169]: e
+Sun Oct 25 15:05:24 2026 :: Log Alaric [4170]: arrived (In the water) from 4169
+Sun Oct 25 15:05:25 2026 :: Log Alaric [4170]: e
+Sun Oct 25 15:05:25 2026 :: Log Alaric [4172]: arrived (At the sand bar) from 4170
+Sun Oct 25 15:05:26 2026 :: Log Alaric [4172]: e
+Sun Oct 25 15:05:26 2026 :: Log Alaric [4172]: w
+Sun Oct 25 15:05:26 2026 :: Log Alaric [4170]: arrived (In the water) from 4172
+Sun Oct 25 15:05:27 2026 :: Log Alaric [4170]: n
+Sun Oct 25 15:05:27 2026 :: Log Alaric [4166]: arrived (The wet maze) from 4170
+Sun Oct 25 15:05:28 2026 :: Log Alaric [4166]: e
+Sun Oct 25 15:05:28 2026 :: Log Alaric [4167]: arrived (The wet maze) from 4166
+Sun Oct 25 15:05:29 2026 :: Log Alaric [4167]: e
+Sun Oct 25 15:05:29 2026 :: Log Alaric [4168]: arrived (The end of the tunnel) from 4167
+Sun Oct 25 15:05:30 2026 :: Log Alaric [4168]: n
+Sun Oct 25 15:05:30 2026 :: Log Alaric [4164]: arrived (The entrance to the small maze) from 4168
+Sun Oct 25 15:05:32 2026 :: Log Alaric [4164]: scan
+Sun Oct 25 15:05:33 2026 :: Log Alaric [4164]: n
+Sun Oct 25 15:05:33 2026 :: Log Alaric [4160]: arrived (In the tunnel at the inscription) from 4164
+Sun Oct 25 15:05:34 2026 :: Log Alaric [4160]: scan
+Sun Oct 25 15:05:34 2026 :: Log Alaric [4160]: n
+Sun Oct 25 15:05:34 2026 :: Log Alaric [4156]: arrived (The long tunnel) from 4160
+Sun Oct 25 15:05:35 2026 :: Log Alaric [4156]: scan
+Sun Oct 25 15:05:35 2026 :: Log Alaric [4156]: n
+Sun Oct 25 15:05:35 2026 :: Log Alaric [4151]: arrived (The small passage) from 4156
+Sun Oct 25 15:05:36 2026 :: Log Alaric [4151]: scan
+Sun Oct 25 15:05:37 2026 :: Log Alaric [4151]: n
+Sun Oct 25 15:05:37 2026 :: Log Alaric [4150]: arrived (The dark hole) from 4151
+Sun Oct 25 15:05:38 2026 :: Log Alaric [4150]: scan
+Sun Oct 25 15:05:39 2026 :: Log Alaric [4150]: s
+Sun Oct 25 15:05:39 2026 :: Log Alaric [4151]: arrived (The small passage) from 4150
+Sun Oct 25 15:05:39 2026 :: Log Alaric [4151]: s
+Sun Oct 25 15:05:39 2026 :: Log Alaric [4156]: arrived (The long tunnel) from 4151
+Sun Oct 25 15:05:41 2026 :: Log Alaric [4156]: s
+Sun Oct 25 15:05:41 2026 :: Log Alaric [4160]: arrived (In the tunnel at the inscription) from 4156
+Sun Oct 25 15:05:47 2026 :: Log Alaric [4160]: north
+Sun Oct 25 15:05:47 2026 :: Log Alaric [4156]: arrived (The long tunnel) from 4160
+Sun Oct 25 15:05:47 2026 :: Log Alaric [4156]: north
+Sun Oct 25 15:05:47 2026 :: Log Alaric [4151]: arrived (The small passage) from 4156
+Sun Oct 25 15:05:48 2026 :: Log Alaric [4151]: west
+Sun Oct 25 15:05:48 2026 :: Log Alaric [4155]: arrived (The large tunnel) from 4151
+Sun Oct 25 15:05:48 2026 :: Log Alaric [4155]: west
+Sun Oct 25 15:05:48 2026 :: Log Alaric [4154]: arrived (The large tunnel) from 4155
+Sun Oct 25 15:05:48 2026 :: Log Alaric [4154]: west
+Sun Oct 25 15:05:48 2026 :: Log Alaric [4153]: arrived (The large tunnel) from 4154
+Sun Oct 25 15:05:48 2026 :: Log Alaric [4153]: north
+Sun Oct 25 15:05:48 2026 :: Log Alaric [4152]: arrived (The tunnel) from 4153
+Sun Oct 25 15:05:49 2026 :: Log Alaric [4152]: east
+Sun Oct 25 15:05:49 2026 :: Log Alaric [4104]: arrived (The long tunnel) from 4152
+Sun Oct 25 15:05:49 2026 :: Log Alaric [4104]: east
+Sun Oct 25 15:05:49 2026 :: Log Alaric [4103]: arrived (The long tunnel) from 4104
+Sun Oct 25 15:05:49 2026 :: Log Alaric [4103]: south
+Sun Oct 25 15:05:49 2026 :: Log Alaric [4106]: arrived (The golden cave) from 4103
+Sun Oct 25 15:05:49 2026 :: Log Alaric [4106]: south
+Sun Oct 25 15:05:49 2026 :: Log Alaric [4109]: arrived (The golden cave) from 4106
+Sun Oct 25 15:05:50 2026 :: Log Alaric [4109]: south
+Sun Oct 25 15:05:50 2026 :: Log Alaric [4114]: arrived (The golden cave) from 4109
+Sun Oct 25 15:05:50 2026 :: Log Alaric [4114]: west
+Sun Oct 25 15:05:50 2026 :: Log Alaric [4115]: arrived (The dark passage.) from 4114
+Sun Oct 25 15:05:51 2026 :: Log Alaric [4115]: u
+Sun Oct 25 15:05:51 2026 :: Log Alaric [4021]: arrived (The hole) from 4115
+Sun Oct 25 15:05:52 2026 :: Log Alaric [4021]: e
+Sun Oct 25 15:05:52 2026 :: Log Alaric [4022]: arrived (The damp tunnel) from 4021
+Sun Oct 25 15:05:53 2026 :: Log Alaric [4022]: e
+Sun Oct 25 15:05:53 2026 :: Log Alaric [4024]: arrived (The damp tunnel) from 4022
+Sun Oct 25 15:06:15 2026 :: Log Alaric [4024]: west
+Sun Oct 25 15:06:15 2026 :: Log Alaric [4022]: arrived (The damp tunnel) from 4024
+Sun Oct 25 15:06:15 2026 :: Log Alaric [4022]: north
+Sun Oct 25 15:06:15 2026 :: Log Alaric [4023]: arrived (The large cave) from 4022
+Sun Oct 25 15:06:15 2026 :: Log Alaric [4023]: east
+Sun Oct 25 15:06:15 2026 :: Log Alaric [4016]: arrived (The large cave) from 4023
+Sun Oct 25 15:06:16 2026 :: Log Alaric [4016]: south
+Sun Oct 25 15:06:16 2026 :: Log Alaric [4012]: arrived (The tunnel) from 4016
+Sun Oct 25 15:06:16 2026 :: Log Alaric [4012]: east
+Sun Oct 25 15:06:16 2026 :: Log Alaric [4013]: arrived (The tunnel) from 4012
+Sun Oct 25 15:06:16 2026 :: Log Alaric [4013]: east
+Sun Oct 25 15:06:16 2026 :: Log Alaric [4014]: arrived (The tunnel) from 4013
+Sun Oct 25 15:06:16 2026 :: Log Alaric [4014]: north
+Sun Oct 25 15:06:16 2026 :: Log Alaric [4018]: arrived (The cave) from 4014
+Sun Oct 25 15:06:17 2026 :: Log Alaric [4018]: north
+Sun Oct 25 15:06:17 2026 :: Log Alaric [4025]: arrived (The cave) from 4018
+Sun Oct 25 15:06:17 2026 :: Log Alaric [4025]: east
+Sun Oct 25 15:06:17 2026 :: Log Alaric [4026]: arrived (The many tunnels) from 4025
+Sun Oct 25 15:06:17 2026 :: Log Alaric [4026]: east
+Sun Oct 25 15:06:17 2026 :: Log Alaric [4027]: arrived (The tunnel) from 4026
+Sun Oct 25 15:06:17 2026 :: Log Alaric [4027]: north
+Sun Oct 25 15:06:17 2026 :: Log Alaric [4029]: arrived (The cave) from 4027
+Sun Oct 25 15:06:19 2026 :: Log Alaric [4029]: scan
+Sun Oct 25 15:06:20 2026 :: Log Alaric [4029]: where hob
+Sun Oct 25 15:06:38 2026 :: Log Alaric [4029]: north
+Sun Oct 25 15:06:38 2026 :: Log Alaric [4031]: arrived (The valley) from 4029
+Sun Oct 25 15:06:38 2026 :: Log Alaric [4031]: north
+Sun Oct 25 15:06:38 2026 :: Log Alaric [4032]: arrived (The valley) from 4031
+Sun Oct 25 15:06:39 2026 :: Log Alaric [4032]: north
+Sun Oct 25 15:06:39 2026 :: Log Alaric [4033]: arrived (Intersection in the valley) from 4032
+Sun Oct 25 15:06:39 2026 :: Log Alaric [4033]: east
+Sun Oct 25 15:06:39 2026 :: Log Alaric [4037]: arrived (The foothills path) from 4033
+Sun Oct 25 15:06:39 2026 :: Log Alaric [4037]: east
+Sun Oct 25 15:06:39 2026 :: Log Alaric [4038]: arrived (Base of the mountain) from 4037
+Sun Oct 25 15:06:39 2026 :: Log Alaric [4038]: east
+Sun Oct 25 15:06:39 2026 :: Log Alaric [4039]: arrived (A trail up the mountain) from 4038
+Sun Oct 25 15:06:41 2026 :: Log Alaric [4039]: e
+Sun Oct 25 15:06:41 2026 :: Log Alaric [4040]: arrived (The mountain top.) from 4039
+Sun Oct 25 15:06:42 2026 :: Log Alaric [4040]: ex
+Sun Oct 25 15:06:44 2026 :: Log Alaric [4040]: d
+Sun Oct 25 15:06:44 2026 :: Log Alaric [4173]: arrived (High up on a ledge.) from 4040
+Sun Oct 25 15:06:46 2026 :: Log Alaric [4173]: ex
+Sun Oct 25 15:06:47 2026 :: Log Alaric [4173]: e
+Sun Oct 25 15:06:47 2026 :: Log Alaric [4174]: arrived (A sudden downdraft catches you!) from 4173
+Sun Oct 25 15:06:50 2026 :: Log Alaric [4174]: recal
+Sun Oct 25 15:06:50 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 4174
+Sun Oct 25 15:06:53 2026 :: Log Alaric [2497]: en do
+Sun Oct 25 15:06:53 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 15:06:55 2026 :: Log Alaric [2401]: jum prock
+Sun Oct 25 15:06:58 2026 :: Log Alaric [2401]: jump rock
+Sun Oct 25 15:06:58 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Sun Oct 25 15:06:58 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 1607
+Sun Oct 25 15:07:00 2026 :: Log Alaric [4208]: heal all
+Sun Oct 25 15:07:00 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Sun Oct 25 15:07:02 2026 :: Log Alaric [4208]: r e 4
+Sun Oct 25 15:07:02 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Oct 25 15:07:02 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sun Oct 25 15:07:02 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sun Oct 25 15:07:02 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sun Oct 25 15:07:02 2026 :: Log Alaric [2427]: n
+Sun Oct 25 15:07:02 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 25 15:07:02 2026 :: Log Alaric [2404]: n
+Sun Oct 25 15:07:02 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sun Oct 25 15:07:04 2026 :: Log Alaric [2401]: south
+Sun Oct 25 15:07:04 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Sun Oct 25 15:07:04 2026 :: Log Alaric [2404]: south
+Sun Oct 25 15:07:04 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Sun Oct 25 15:07:04 2026 :: Log Alaric [2427]: south
+Sun Oct 25 15:07:04 2026 :: Log Alaric [2428]: arrived (Main Processional, Toward the Mermaids' Bridge) from 2427
+Sun Oct 25 15:07:05 2026 :: Log Alaric [2428]: south
+Sun Oct 25 15:07:05 2026 :: Log Alaric [2429]: arrived (Bridge of the Mermaids.) from 2428
+Sun Oct 25 15:07:05 2026 :: Log Alaric [2429]: south
+Sun Oct 25 15:07:05 2026 :: Log Alaric [2430]: arrived (Main Processional, at the Southern Gates) from 2429
+Sun Oct 25 15:07:05 2026 :: Log Alaric [2430]: south
+Sun Oct 25 15:07:05 2026 :: Log Alaric [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Sun Oct 25 15:07:05 2026 :: Log Alaric [2431]: open south
+Sun Oct 25 15:07:06 2026 :: Log Alaric [2431]: south
+Sun Oct 25 15:07:06 2026 :: Log Alaric [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Sun Oct 25 15:07:08 2026 :: Log Alaric [2432]: south
+Sun Oct 25 15:07:08 2026 :: Log Alaric [3505]: arrived (The Trail to Miden'nir) from 2432
+Sun Oct 25 15:07:08 2026 :: Log Alaric [3505]: east
+Sun Oct 25 15:07:08 2026 :: Log Alaric [3506]: arrived (The Miden'nir) from 3505
+Sun Oct 25 15:07:09 2026 :: Log Alaric [3506]: east
+Sun Oct 25 15:07:09 2026 :: Log Alaric [3550]: arrived (At The Foot of The Dark Hills) from 3506
+Sun Oct 25 15:07:09 2026 :: Log Alaric [3550]: north
+Sun Oct 25 15:07:09 2026 :: Log Alaric [18]: arrived (Entering the hills) from 3550
+Sun Oct 25 15:07:09 2026 :: Log Alaric [18]: north
+Sun Oct 25 15:07:09 2026 :: Log Alaric [4000]: arrived (The hills) from 18
+Sun Oct 25 15:07:11 2026 :: Log Alaric [4000]: n
+Sun Oct 25 15:07:11 2026 :: Log Alaric [4001]: arrived (The hills) from 4000
+Sun Oct 25 15:07:11 2026 :: Log Alaric [4001]: n
+Sun Oct 25 15:07:11 2026 :: Log Alaric [4002]: arrived (End of the path) from 4001
+Sun Oct 25 15:07:12 2026 :: Log Alaric [4002]: scan
+Sun Oct 25 15:07:14 2026 :: Sock.sinaddr:  99.62.115.159
+Sun Oct 25 15:07:16 2026 :: Log Alaric [4002]: n
+Sun Oct 25 15:07:16 2026 :: Log Alaric [4010]: arrived (The cave) from 4002
+Sun Oct 25 15:07:17 2026 :: Log Alaric [4010]: scan
+Sun Oct 25 15:07:18 2026 :: Log Alaric [4010]: e
+Sun Oct 25 15:07:19 2026 :: Log Alaric [4010]: n
+Sun Oct 25 15:07:19 2026 :: Log Alaric [4011]: arrived (The tunnel) from 4010
+Sun Oct 25 15:07:20 2026 :: Log Alaric [4011]: n
+Sun Oct 25 15:07:20 2026 :: Log Alaric [4014]: arrived (The tunnel) from 4011
+Sun Oct 25 15:07:21 2026 :: Log Alaric [4014]: e
+Sun Oct 25 15:07:21 2026 :: Log Alaric [4015]: arrived (The tunnel) from 4014
+Sun Oct 25 15:07:23 2026 :: Log Alaric [4015]: scan
+Sun Oct 25 15:07:23 2026 :: Log Alaric [4015]: n
+Sun Oct 25 15:07:23 2026 :: Log Alaric [4019]: arrived (The tunnel) from 4015
+Sun Oct 25 15:07:24 2026 :: Log Alaric [4019]: n
+Sun Oct 25 15:07:24 2026 :: Log Alaric [4026]: arrived (The many tunnels) from 4019
+Sun Oct 25 15:07:25 2026 :: Log Alaric [4026]: e
+Sun Oct 25 15:07:25 2026 :: Log Alaric [4027]: arrived (The tunnel) from 4026
+Sun Oct 25 15:07:26 2026 :: Log Alaric [4027]: scan
+Sun Oct 25 15:07:27 2026 :: Log Alaric [4027]: n
+Sun Oct 25 15:07:27 2026 :: Log Alaric [4029]: arrived (The cave) from 4027
+Sun Oct 25 15:07:28 2026 :: Log Alaric [4029]: scan
+Sun Oct 25 15:07:28 2026 :: Sock.sinaddr:  3.12.251.153
+Sun Oct 25 15:07:28 2026 :: EOF encountered on read.
+Sun Oct 25 15:07:28 2026 :: Log Alaric [4029]: n
+Sun Oct 25 15:07:28 2026 :: Log Alaric [4031]: arrived (The valley) from 4029
+Sun Oct 25 15:07:29 2026 :: Log Alaric [4031]: scan
+Sun Oct 25 15:07:30 2026 :: Log Alaric [4031]: n
+Sun Oct 25 15:07:30 2026 :: Log Alaric [4032]: arrived (The valley) from 4031
+Sun Oct 25 15:07:30 2026 :: Log Alaric [4032]: scan
+Sun Oct 25 15:07:31 2026 :: Log Alaric [4032]: n
+Sun Oct 25 15:07:31 2026 :: Log Alaric [4033]: arrived (Intersection in the valley) from 4032
+Sun Oct 25 15:07:31 2026 :: Log Alaric [4033]: scan
+Sun Oct 25 15:07:32 2026 :: Log Alaric [4033]: e
+Sun Oct 25 15:07:32 2026 :: Log Alaric [4037]: arrived (The foothills path) from 4033
+Sun Oct 25 15:07:33 2026 :: Log Alaric [4037]: scan
+Sun Oct 25 15:07:34 2026 :: Log Alaric [4037]: e
+Sun Oct 25 15:07:34 2026 :: Log Alaric [4038]: arrived (Base of the mountain) from 4037
+Sun Oct 25 15:07:36 2026 :: Log Alaric [4038]: w
+Sun Oct 25 15:07:36 2026 :: Log Alaric [4037]: arrived (The foothills path) from 4038
+Sun Oct 25 15:07:36 2026 :: Log Alaric [4037]: w
+Sun Oct 25 15:07:36 2026 :: Log Alaric [4033]: arrived (Intersection in the valley) from 4037
+Sun Oct 25 15:07:37 2026 :: Log Alaric [4033]: s
+Sun Oct 25 15:07:37 2026 :: Log Alaric [4032]: arrived (The valley) from 4033
+Sun Oct 25 15:07:38 2026 :: Log Alaric [4032]: s
+Sun Oct 25 15:07:38 2026 :: Log Alaric [4031]: arrived (The valley) from 4032
+Sun Oct 25 15:07:38 2026 :: Log Alaric [4031]: s
+Sun Oct 25 15:07:38 2026 :: Log Alaric [4029]: arrived (The cave) from 4031
+Sun Oct 25 15:07:38 2026 :: Log Alaric [4029]: w
+Sun Oct 25 15:07:39 2026 :: Log Alaric [4029]: s
+Sun Oct 25 15:07:39 2026 :: Log Alaric [4027]: arrived (The tunnel) from 4029
+Sun Oct 25 15:07:40 2026 :: Log Alaric [4027]: w
+Sun Oct 25 15:07:40 2026 :: Log Alaric [4026]: arrived (The many tunnels) from 4027
+Sun Oct 25 15:07:41 2026 :: Log Alaric [4026]: n
+Sun Oct 25 15:07:41 2026 :: Log Alaric [4028]: arrived (The smelly tunnel) from 4026
+Sun Oct 25 15:07:42 2026 :: Log Alaric [4028]: scan
+Sun Oct 25 15:07:43 2026 :: Log Alaric [4028]: n
+Sun Oct 25 15:07:43 2026 :: Log Alaric [4030]: arrived (The light cave) from 4028
+Sun Oct 25 15:07:50 2026 :: Log Alaric [4030]: open light
+Sun Oct 25 15:07:53 2026 :: Log Alaric [4030]: open hole
+Sun Oct 25 15:07:55 2026 :: Log Alaric [4030]: enter hole
+Sun Oct 25 15:07:55 2026 :: Log Alaric [4030]: s
+Sun Oct 25 15:07:55 2026 :: Log Alaric [4028]: arrived (The smelly tunnel) from 4030
+Sun Oct 25 15:07:56 2026 :: Log Alaric [4028]: s
+Sun Oct 25 15:07:56 2026 :: Log Alaric [4026]: arrived (The many tunnels) from 4028
+Sun Oct 25 15:07:57 2026 :: Log Alaric [4026]: w
+Sun Oct 25 15:07:57 2026 :: Log Alaric [4025]: arrived (The cave) from 4026
+Sun Oct 25 15:07:58 2026 :: Log Alaric [4025]: scan
+Sun Oct 25 15:07:58 2026 :: Log Alaric [4025]: s
+Sun Oct 25 15:07:58 2026 :: Log Alaric [4018]: arrived (The cave) from 4025
+Sun Oct 25 15:07:59 2026 :: Log Alaric [4018]: scan
+Sun Oct 25 15:07:59 2026 :: Log Alaric [4018]: s
+Sun Oct 25 15:07:59 2026 :: Log Alaric [4014]: arrived (The tunnel) from 4018
+Sun Oct 25 15:08:00 2026 :: Log Alaric [4014]: scan
+Sun Oct 25 15:08:01 2026 :: Log Alaric [4014]: w
+Sun Oct 25 15:08:01 2026 :: Log Alaric [4013]: arrived (The tunnel) from 4014
+Sun Oct 25 15:08:02 2026 :: Log Alaric [4013]: scan
+Sun Oct 25 15:08:03 2026 :: Log Alaric [4013]: w
+Sun Oct 25 15:08:03 2026 :: Log Alaric [4012]: arrived (The tunnel) from 4013
+Sun Oct 25 15:08:03 2026 :: Log Alaric [4012]: scan
+Sun Oct 25 15:08:04 2026 :: Log Alaric [4012]: n
+Sun Oct 25 15:08:04 2026 :: Log Alaric [4016]: arrived (The large cave) from 4012
+Sun Oct 25 15:08:05 2026 :: Log Alaric [4016]: scan
+Sun Oct 25 15:08:07 2026 :: Log Alaric [4016]: where hob
+Sun Oct 25 15:08:08 2026 :: Log Alaric [4016]: l
+Sun Oct 25 15:08:09 2026 :: Log Alaric [4016]: s
+Sun Oct 25 15:08:09 2026 :: Log Alaric [4012]: arrived (The tunnel) from 4016
+Sun Oct 25 15:08:10 2026 :: Log Alaric [4012]: w
+Sun Oct 25 15:08:11 2026 :: Log Alaric [4012]: e
+Sun Oct 25 15:08:11 2026 :: Log Alaric [4013]: arrived (The tunnel) from 4012
+Sun Oct 25 15:08:11 2026 :: Log Alaric [4013]: e
+Sun Oct 25 15:08:11 2026 :: Log Alaric [4014]: arrived (The tunnel) from 4013
+Sun Oct 25 15:08:12 2026 :: Log Alaric [4014]: e
+Sun Oct 25 15:08:12 2026 :: Log Alaric [4015]: arrived (The tunnel) from 4014
+Sun Oct 25 15:08:13 2026 :: Log Alaric [4015]: n
+Sun Oct 25 15:08:13 2026 :: Log Alaric [4019]: arrived (The tunnel) from 4015
+Sun Oct 25 15:08:14 2026 :: Log Alaric [4019]: n
+Sun Oct 25 15:08:14 2026 :: Log Alaric [4026]: arrived (The many tunnels) from 4019
+Sun Oct 25 15:08:15 2026 :: Log Alaric [4026]: e
+Sun Oct 25 15:08:15 2026 :: Log Alaric [4027]: arrived (The tunnel) from 4026
+Sun Oct 25 15:08:15 2026 :: Log Alaric [4027]: s
+Sun Oct 25 15:08:15 2026 :: Log Alaric [4020]: arrived (The hole) from 4027
+Sun Oct 25 15:08:17 2026 :: Log Alaric [4020]: d
+Sun Oct 25 15:08:17 2026 :: Log Alaric [4064]: arrived (The tunnel) from 4020
+Sun Oct 25 15:08:18 2026 :: Log Alaric [4064]: w
+Sun Oct 25 15:08:18 2026 :: Log Alaric [4063]: arrived (The maze) from 4064
+Sun Oct 25 15:08:18 2026 :: Log Alaric [4063]: n
+Sun Oct 25 15:08:18 2026 :: Log Alaric [4058]: arrived (The maze) from 4063
+Sun Oct 25 15:08:20 2026 :: Log Alaric [4058]: w
+Sun Oct 25 15:08:20 2026 :: Log Alaric [4057]: arrived (The maze) from 4058
+Sun Oct 25 15:08:21 2026 :: Log Alaric [4057]: s
+Sun Oct 25 15:08:21 2026 :: Log Alaric [4062]: arrived (The maze) from 4057
+Sun Oct 25 15:08:22 2026 :: Log Alaric [4062]: e
+Sun Oct 25 15:08:22 2026 :: Log Alaric [4065]: arrived (The maze) from 4062
+Sun Oct 25 15:08:25 2026 :: Log Alaric [4065]: kill hob
+Sun Oct 25 15:08:25 2026 :: Log Alaric [4065]: killed the hobgoblin
+Sun Oct 25 15:08:29 2026 :: Log Alaric [4065]: recal
+Sun Oct 25 15:08:29 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 4065
+Sun Oct 25 15:08:29 2026 :: Log Alaric [2497]: recal
+Sun Oct 25 15:08:30 2026 :: Log Alaric [2497]: recal
+Sun Oct 25 15:08:30 2026 :: Log Alaric [2497]: aq co
+Sun Oct 25 15:08:30 2026 :: Log Alaric [2497]: copper +135201000
+Sun Oct 25 15:08:30 2026 :: Log Alaric [2497]: quest complete: 135p 20g 10s, 60 quest points (streak bonus 50%)
+Sun Oct 25 15:08:30 2026 :: Snapshot of Alaric taken before quest: Alaric.20261025_150830.quest (PRESTORE Alaric to see it).
+Sun Oct 25 15:08:30 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct 25 15:08:35 2026 :: Log Alaric [2497]: sc
+Sun Oct 25 15:08:36 2026 :: Log Alaric [2497]: who
