@@ -13231,3 +13231,33 @@
 1792886095	cmd	Alaric	54	29209	korzath2.are	standing	96	1	-	wear	exc	You stop using (Flaming) the Crystalline Sword of Justice. // You wield Excalibur. // Excalibur feels like a part of you!
 1792886097	cmd	Alaric	54	29210	korzath2.are	standing	95	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
 1792886097	cmd	Alaric	54	29210	korzath2.are	standing	95	0	-	bs	sk	Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-427] // Excalibur shears through an Animated Skeleton with terrible force! // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-927]
+1792886110	cmd	Alaric	54	29210	korzath2.are	standing	95	0	-	bs	sk	Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-468] // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-495] // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-402]
+1792886121	cmd	Alaric	54	29210	korzath2.are	standing	95	0	-	look		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1792886123	cmd	Alaric	54	29210	korzath2.are	standing	95	0	-	scan		an Animated Skeleton               -to the West.
+1792886124	cmd	Alaric	54	29211	korzath2.are	standing	95	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1792886125	cmd	Alaric	54	29211	korzath2.are	standing	95	0	-	bs	sk	Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-369] // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-308] // Your backstab does UNSPEAKABLE things to an Animated Skeleton! [-313]
+1792886143	cmd	Alaric	54	29211	korzath2.are	standing	95	0	-	scan		an Animated Skeleton               -to the North. // a deranged madman                  -to the North. // a deranged madman                  -to the North.
+1792886147	cmd	Alaric	54	29212	korzath2.are	standing	95	0	-	north		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1792886148	cmd	Alaric	54	29212	korzath2.are	standing	95	0	-	kill	sk	Your divine power >>> ANNIHILATES <<< an Animated Skeleton! [-221] // An Animated Skeleton is DEAD!! // You receive 256 experience points (128 of them rested).
+1792886155	cmd	Alaric	54	29212	korzath2.are	standing	95	0	-	bs	mad	Your backstab *** DEVASTATES *** a deranged madman! [-74] // Your backstab ^^^ DESTROYS ^^^ a deranged madman! [-81] // Your backstab <<< ERADICATES >>> a deranged madman! [-175]
+1792886187	cmd	Alaric	54	29212	korzath2.are	standing	92	0	-	bs	mad	Your backstab >>> ANNIHILATES <<< a deranged madman! [-211] // Your backstab ^^^ DESTROYS ^^^ a deranged madman! [-94] // Your backstab >>> ANNIHILATES <<< a deranged madman! [-228]
+1792886272	cmd	Alaric	54	29212	korzath2.are	standing	89	0	-	look		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1792886275	cmd	Alaric	54	29212	korzath2.are	standing	89	0	-	scan		an insane lieutenant               -to the North. // a Shadowman                        -to the West. // a deranged madman                  -to the West.
+1792886277	cmd	Alaric	54	29212	korzath2.are	standing	89	0	-	stealth		You fail to enter stealth.
+1792886278	cmd	Alaric	54	29212	korzath2.are	standing	89	0	-	stealth		You fail to enter stealth.
+1792886278	cmd	Alaric	54	29212	korzath2.are	standing	89	0	-	stealth		You fail to enter stealth.
+1792886279	cmd	Alaric	54	29212	korzath2.are	standing	89	0	-	stealth		You blend into the shadows.
+1792886281	cmd	Alaric	54	29214	korzath2.are	standing	89	0	-	west		Twist in the Maze //   A closed door is to the south.  A rank raw smell emanates from that //  direction.
+1792886282	cmd	Alaric	54	29214	korzath2.are	standing	89	0	-	bs	shad	Your backstab does UNSPEAKABLE things to a Shadowman! [-471] // You are no longer stealthful. // Your backstab does UNSPEAKABLE things to a Shadowman! [-443]
+1792886290	cmd	Alaric	54	29214	korzath2.are	standing	89	0	-	bs	mad	Your backstab ^^^ DESTROYS ^^^ a deranged madman! [-109] // Your backstab >>> ANNIHILATES <<< a deranged madman! [-203] // Your backstab <<< ERADICATES >>> a deranged madman! [-180]
+1792886328	cmd	Alaric	54	29214	korzath2.are	standing	87	0	-	scan		You don't see anything near you.
+1792886329	cmd	Alaric	54	29214	korzath2.are	standing	87	0	-	look		Twist in the Maze //   A closed door is to the south.  A rank raw smell emanates from that //  direction.
+1792886331	cmd	Alaric	54	29214	korzath2.are	standing	87	0	-	open		Ok.
+1792886331	cmd	Alaric	54	29214	korzath2.are	standing	87	0	-	scan		a deranged madman                  -to the South.
+1792886332	cmd	Alaric	54	29215	korzath2.are	standing	87	0	-	south		Dead End //   This is yet another dead end in the maze. // [Exits: north]
+1792886333	cmd	Alaric	54	29215	korzath2.are	standing	87	0	-	bs	mad	Your backstab === OBLITERATES === a deranged madman! [-124] // Your backstab *** DEMOLISHES *** a deranged madman! [-60] // Your backstab >>> ANNIHILATES <<< a deranged madman! [-202]
+1792886378	cmd	Alaric	54	29214	korzath2.are	standing	85	0	-	north		Twist in the Maze //   A closed door is to the south.  A rank raw smell emanates from that //  direction.
+1792886378	cmd	Alaric	54	29212	korzath2.are	standing	85	0	-	east		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1792886378	cmd	Alaric	54	29212	korzath2.are	standing	85	0	-	scan		an insane lieutenant               -to the North.
+1792886384	cmd	Alaric	54	29218	korzath2.are	standing	85	0	-	north		Twist in the Maze //   The path to the north ends here.  The hallway breaks to the east and // to the west.
+1792886384	cmd	Alaric	54	29218	korzath2.are	standing	85	0	-	bs	li	Your backstab <<< ERADICATES >>> an insane lieutenant! [-155] // Your backstab <<< ERADICATES >>> an insane lieutenant! [-180] // Your backstab ^^^ DESTROYS ^^^ an insane lieutenant! [-117]
