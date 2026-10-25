@@ -183747,3 +183747,19 @@ Sun Oct 25 11:18:21 2026 :: Trentlin has quit.
 Sun Oct 25 11:18:21 2026 :: [QUIT] Player rejoined the real world.
 Sun Oct 25 11:18:51 2026 :: Sock.sinaddr:  5.161.177.47
 Sun Oct 25 11:18:51 2026 :: EOF encountered on read.
+Sun Oct 25 11:23:55 2026 :: Sock.sinaddr:  5.161.117.52
+Sun Oct 25 11:23:56 2026 :: EOF encountered on read.
+Sun Oct 25 11:25:15 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sun Oct 25 11:25:19 2026 :: Log WebAdmin: fsave
+Sun Oct 25 11:25:25 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sun Oct 25 11:25:28 2026 :: Received signal 15; saving players and shutting down.
+Sun Oct 25 11:25:28 2026 :: Normal termination of game.
+Sun Oct 25 11:25:30 2026 ::  INIT OK 
+Sun Oct 25 11:25:30 2026 :: walkto_load: 157 destinations.
+Sun Oct 25 11:25:30 2026 :: changes_load: 165 entries.
+Sun Oct 25 11:25:30 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Sun Oct 25 11:25:30 2026 :: Recovery ledger: 87 records (0 from before the check), 0 requests, 4 players.
+Sun Oct 25 11:25:30 2026 :: ROM is ready to rock on port 9000.
+Sun Oct 25 11:25:30 2026 :: Treasure goblin: appeared.
+Sun Oct 25 11:25:30 2026 :: Automated backup complete.
+Sun Oct 25 11:25:30 2026 :: Daily backup complete.
