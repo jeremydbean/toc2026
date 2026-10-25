@@ -192530,3 +192530,412 @@ Sun Oct 25 22:08:21 2026 :: Log Trentlin [15038]: east
 Sun Oct 25 22:08:21 2026 :: Log Trentlin [15068]: arrived (The Games Room) from 15038
 Sun Oct 25 22:08:21 2026 :: Log Trentlin [15068]: enter cabinet
 Sun Oct 25 22:08:21 2026 :: Log Trentlin [30200]: arrived (The First Quest Begins) from 15068
+Sun Oct 25 22:08:28 2026 :: Log Alaric [2401]: who
+Sun Oct 25 22:08:29 2026 :: Log Alaric [2401]: score
+Sun Oct 25 22:08:31 2026 :: Log Trentlin [30200]: n
+Sun Oct 25 22:08:31 2026 :: Log Trentlin [30223]: arrived (Rock Wall Above the Start) from 30200
+Sun Oct 25 22:08:31 2026 :: Log Alaric [2401]: score
+Sun Oct 25 22:08:33 2026 :: Log Trentlin [30223]: w
+Sun Oct 25 22:08:33 2026 :: Log Trentlin [30222]: arrived (Candle Shop Knoll) from 30223
+Sun Oct 25 22:08:34 2026 :: Log Trentlin [30222]: d
+Sun Oct 25 22:08:34 2026 :: Log Trentlin [30682]: arrived (The Waxlight Shop) from 30222
+Sun Oct 25 22:08:35 2026 :: Log Trentlin [30682]: list
+Sun Oct 25 22:08:35 2026 :: Log Alaric [2401]: gos Getting close to Hero?
+Sun Oct 25 22:08:37 2026 :: Log Trentlin [30682]: u
+Sun Oct 25 22:08:37 2026 :: Log Trentlin [30222]: arrived (Candle Shop Knoll) from 30682
+Sun Oct 25 22:08:40 2026 :: Log Trentlin [30222]: aquest points
+Sun Oct 25 22:08:44 2026 :: Log Trentlin [30222]: go 4800
+Sun Oct 25 22:08:56 2026 :: Sock.sinaddr:  18.116.205.62
+Sun Oct 25 22:08:57 2026 :: EOF encountered on read.
+Sun Oct 25 22:08:58 2026 :: Log Alaric [2401]: gos Nice
+Sun Oct 25 22:08:59 2026 :: Log Trentlin [30222]: go i got 600 the other day on a rush quest gamble
+Sun Oct 25 22:09:06 2026 :: Log Alaric [2401]: score
+Sun Oct 25 22:09:15 2026 :: Log Alaric [2401]: gos The completion bonuses stack up nicely.
+Sun Oct 25 22:09:19 2026 :: Log Trentlin [30222]: l
+Sun Oct 25 22:09:21 2026 :: Log Trentlin [30222]: w
+Sun Oct 25 22:09:21 2026 :: Log Trentlin [30221]: arrived (Forest Stream) from 30222
+Sun Oct 25 22:09:22 2026 :: Log Trentlin [30221]: w
+Sun Oct 25 22:09:22 2026 :: Log Trentlin [30220]: arrived (The Lost Woods) from 30221
+Sun Oct 25 22:09:29 2026 :: Log Alaric [2401]: gos I've gotten my streak really high, but inevitably something eludes me
+Sun Oct 25 22:09:30 2026 :: Log Trentlin [30220]: n
+Sun Oct 25 22:09:30 2026 :: Log Trentlin [30750]: arrived (The Lost Woods) from 30220
+Sun Oct 25 22:09:30 2026 :: Log Trentlin [30750]: w
+Sun Oct 25 22:09:30 2026 :: Log Trentlin [30751]: arrived (The Lost Woods) from 30750
+Sun Oct 25 22:09:30 2026 :: Log Trentlin [30751]: s
+Sun Oct 25 22:09:30 2026 :: Log Trentlin [30752]: arrived (The Lost Woods) from 30751
+Sun Oct 25 22:09:30 2026 :: Log Alaric [2401]: score
+Sun Oct 25 22:09:31 2026 :: Log Trentlin [30752]: w
+Sun Oct 25 22:09:31 2026 :: Log Trentlin [30219]: arrived (Bramble Wood) from 30752
+Sun Oct 25 22:09:34 2026 :: Log Trentlin [30219]: e
+Sun Oct 25 22:09:34 2026 :: Log Trentlin [30220]: arrived (The Lost Woods) from 30219
+Sun Oct 25 22:09:35 2026 :: Log Alaric [2401]: ach quest
+Sun Oct 25 22:09:39 2026 :: Log Trentlin [30220]: n
+Sun Oct 25 22:09:39 2026 :: Log Trentlin [30750]: arrived (The Lost Woods) from 30220
+Sun Oct 25 22:09:39 2026 :: Log Trentlin [30750]: w
+Sun Oct 25 22:09:39 2026 :: Log Trentlin [30751]: arrived (The Lost Woods) from 30750
+Sun Oct 25 22:09:40 2026 :: Log Trentlin [30751]: s
+Sun Oct 25 22:09:40 2026 :: Log Trentlin [30752]: arrived (The Lost Woods) from 30751
+Sun Oct 25 22:09:40 2026 :: Log Trentlin [30752]: w
+Sun Oct 25 22:09:40 2026 :: Log Trentlin [30219]: arrived (Bramble Wood) from 30752
+Sun Oct 25 22:09:42 2026 :: Log Trentlin [30219]: ex
+Sun Oct 25 22:09:42 2026 :: Treasure goblin: vanished from room 17261 (In a secret gangway, highland.are) (too long in one area).
+Sun Oct 25 22:09:45 2026 :: Log Trentlin [30219]: w
+Sun Oct 25 22:09:45 2026 :: Log Trentlin [30218]: arrived (Old Forest Clearing) from 30219
+Sun Oct 25 22:09:46 2026 :: Log Trentlin [30218]: ex
+Sun Oct 25 22:09:48 2026 :: Log Trentlin [30218]: sca
+Sun Oct 25 22:09:48 2026 :: Log Trentlin [30218]: s
+Sun Oct 25 22:09:48 2026 :: Log Trentlin [30203]: arrived (Southern Woods) from 30218
+Sun Oct 25 22:09:49 2026 :: Log Trentlin [30203]: e
+Sun Oct 25 22:09:49 2026 :: Log Trentlin [30204]: arrived (Path to the Manji) from 30203
+Sun Oct 25 22:09:50 2026 :: Log Trentlin [30204]: e
+Sun Oct 25 22:09:50 2026 :: Log Trentlin [30205]: arrived (Grove of the Manji) from 30204
+Sun Oct 25 22:09:52 2026 :: Log Trentlin [30205]: d
+Sun Oct 25 22:09:52 2026 :: Log Trentlin [30437]: arrived (Level 3: Manji Gate) from 30205
+Sun Oct 25 22:09:53 2026 :: Log Trentlin [30437]: w
+Sun Oct 25 22:09:53 2026 :: Log Trentlin [30436]: arrived (Level 3: Ooze Chamber) from 30437
+Sun Oct 25 22:09:55 2026 :: Log Trentlin [30436]: get key
+Sun Oct 25 22:09:58 2026 :: Log Trentlin [30436]: play recorder 6
+Sun Oct 25 22:10:00 2026 :: Log Trentlin [30436]: l
+Sun Oct 25 22:10:01 2026 :: Log Trentlin [30436]: e
+Sun Oct 25 22:10:01 2026 :: Log Trentlin [30437]: arrived (Level 3: Manji Gate) from 30436
+Sun Oct 25 22:10:02 2026 :: Log Trentlin [30437]: u
+Sun Oct 25 22:10:02 2026 :: Log Trentlin [30205]: arrived (Grove of the Manji) from 30437
+Sun Oct 25 22:10:03 2026 :: Log Trentlin [30205]: w
+Sun Oct 25 22:10:03 2026 :: Log Trentlin [30204]: arrived (Path to the Manji) from 30205
+Sun Oct 25 22:10:05 2026 :: Log Trentlin [30204]: play recorder 6
+Sun Oct 25 22:10:05 2026 :: Log Trentlin [30282]: arrived (The Dragon's Gate) from 30204
+Sun Oct 25 22:10:07 2026 :: Sock.sinaddr:  23.31.96.97
+Sun Oct 25 22:10:07 2026 :: EOF encountered on read.
+Sun Oct 25 22:10:08 2026 :: Log Alaric [2401]: help daily
+Sun Oct 25 22:10:11 2026 :: Log Trentlin [30282]: d
+Sun Oct 25 22:10:11 2026 :: Log Trentlin [30501]: arrived (Level 6: Dragon's Gate) from 30282
+Sun Oct 25 22:10:12 2026 :: Log Trentlin [30501]: w
+Sun Oct 25 22:10:12 2026 :: Log Trentlin [30500]: arrived (Level 6: Scorched Antechamber) from 30501
+Sun Oct 25 22:10:12 2026 :: Log Alaric [2401]: help quest
+Sun Oct 25 22:10:14 2026 :: Log Trentlin [30500]: n
+Sun Oct 25 22:10:14 2026 :: Log Trentlin [30503]: arrived (Level 6: Slime Cistern) from 30500
+Sun Oct 25 22:10:17 2026 :: Log Trentlin [30503]: get com
+Sun Oct 25 22:10:18 2026 :: Log Trentlin [30503]: l com
+Sun Oct 25 22:10:20 2026 :: Log Trentlin [30503]: n
+Sun Oct 25 22:10:20 2026 :: Log Trentlin [30505]: arrived (Level 6: Smoky Roost) from 30503
+Sun Oct 25 22:10:20 2026 :: Log Trentlin [30505]: n
+Sun Oct 25 22:10:20 2026 :: Log Trentlin [30505]: n
+Sun Oct 25 22:10:24 2026 :: Log Trentlin [30505]: shove kee south
+Sun Oct 25 22:10:25 2026 :: Log Trentlin [30505]: shove kee south
+Sun Oct 25 22:10:26 2026 :: Log Trentlin [30505]: shove kee south
+Sun Oct 25 22:10:26 2026 :: Log Trentlin [30505]: shove kee south
+Sun Oct 25 22:10:26 2026 :: Log Trentlin [30505]: shove kee south
+Sun Oct 25 22:10:30 2026 :: Log Trentlin [30505]: k kee
+Sun Oct 25 22:10:32 2026 :: Log Trentlin [30505]: killed a keese
+Sun Oct 25 22:10:32 2026 :: Log Trentlin [30505]: coin +4 silver
+Sun Oct 25 22:10:32 2026 :: Log Trentlin [30505]: coin +373 copper
+Sun Oct 25 22:10:32 2026 :: Log Trentlin [30505]: coin +69 gold
+Sun Oct 25 22:10:35 2026 :: Log Trentlin [30505]: n
+Sun Oct 25 22:10:35 2026 :: Log Trentlin [30506]: arrived (Level 6: Crossed Grooves of the Dragon) from 30505
+Sun Oct 25 22:10:36 2026 :: Log Trentlin [30506]: n
+Sun Oct 25 22:10:39 2026 :: Log Trentlin [30506]: shove trap south
+Sun Oct 25 22:10:40 2026 :: Log Trentlin [30506]: k trap
+Sun Oct 25 22:10:46 2026 :: Log Trentlin [30506]: smite
+Sun Oct 25 22:10:46 2026 :: Log Trentlin [30506]: killed a blade trap
+Sun Oct 25 22:10:46 2026 :: Log Trentlin [30506]: coin +186 silver
+Sun Oct 25 22:10:46 2026 :: Log Trentlin [30506]: coin +274 copper
+Sun Oct 25 22:10:46 2026 :: Log Trentlin [30506]: coin +106 gold
+Sun Oct 25 22:10:53 2026 :: Log Alaric [2401]: gos Didn't notice theres a "daily" option now for quests
+Sun Oct 25 22:10:53 2026 :: Log Trentlin [30506]: n
+Sun Oct 25 22:10:53 2026 :: Log Trentlin [30507]: arrived (Level 6: Flickering Hall) from 30506
+Sun Oct 25 22:10:54 2026 :: Log Alaric [2401]: wake
+Sun Oct 25 22:10:55 2026 :: Log Alaric [2401]: l
+Sun Oct 25 22:10:56 2026 :: Log Alaric [2401]: u
+Sun Oct 25 22:10:56 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sun Oct 25 22:10:56 2026 :: Log Alaric [2410]: u
+Sun Oct 25 22:10:56 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Sun Oct 25 22:10:56 2026 :: Log Alaric [2411]: u
+Sun Oct 25 22:10:56 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Sun Oct 25 22:10:57 2026 :: Log Alaric [2414]: u
+Sun Oct 25 22:10:57 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sun Oct 25 22:10:57 2026 :: Log Trentlin [30507]: n
+Sun Oct 25 22:10:57 2026 :: Log Alaric [2497]: u
+Sun Oct 25 22:10:57 2026 :: Log Alaric [2497]: aq
+Sun Oct 25 22:11:03 2026 :: Log Alaric [2497]: aq daily
+Sun Oct 25 22:11:14 2026 :: Log Trentlin [30507]: go yeah i did them the other day but havent since
+Sun Oct 25 22:11:17 2026 :: Log Trentlin [30507]: k b
+Sun Oct 25 22:11:17 2026 :: Log Trentlin [30507]: killed a bubble
+Sun Oct 25 22:11:17 2026 :: Log Trentlin [30507]: coin +38 silver
+Sun Oct 25 22:11:17 2026 :: Log Trentlin [30507]: coin +36 copper
+Sun Oct 25 22:11:17 2026 :: Log Trentlin [30507]: coin +8 gold
+Sun Oct 25 22:11:20 2026 :: Log Trentlin [30507]: smite
+Sun Oct 25 22:11:21 2026 :: Log Trentlin [30507]: k wi
+Sun Oct 25 22:11:23 2026 :: Log Trentlin [30507]: smite
+Sun Oct 25 22:11:23 2026 :: Log Trentlin [30507]: killed a blue wizzrobe
+Sun Oct 25 22:11:23 2026 :: Log Trentlin [30507]: coin +103 silver
+Sun Oct 25 22:11:23 2026 :: Log Trentlin [30507]: coin +68 copper
+Sun Oct 25 22:11:23 2026 :: Log Trentlin [30507]: coin +18 gold
+Sun Oct 25 22:11:27 2026 :: Log Alaric [2497]: aq daily request
+Sun Oct 25 22:11:27 2026 :: Log Alaric [2497]: quest assigned: kill the sheep (mob 7604, level 3) in ultima.are, 30 minutes, daily
+Sun Oct 25 22:11:31 2026 :: Log Trentlin [30507]: n
+Sun Oct 25 22:11:31 2026 :: Log Trentlin [30511]: arrived (Level 6: Statue Gallery) from 30507
+Sun Oct 25 22:11:32 2026 :: Log Trentlin [30511]: n
+Sun Oct 25 22:11:33 2026 :: Log Trentlin [30511]: k w
+Sun Oct 25 22:11:34 2026 :: Log Alaric [2497]: enter door
+Sun Oct 25 22:11:34 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 22:11:35 2026 :: Log Alaric [2401]: west
+Sun Oct 25 22:11:35 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Oct 25 22:11:35 2026 :: Log Alaric [2405]: west
+Sun Oct 25 22:11:35 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Oct 25 22:11:35 2026 :: Log Alaric [2433]: west
+Sun Oct 25 22:11:35 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Oct 25 22:11:35 2026 :: Log Alaric [2434]: west
+Sun Oct 25 22:11:35 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Oct 25 22:11:36 2026 :: Log Alaric [2435]: west
+Sun Oct 25 22:11:36 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Oct 25 22:11:36 2026 :: Log Trentlin [30511]: smite
+Sun Oct 25 22:11:36 2026 :: Log Alaric [2436]: west
+Sun Oct 25 22:11:36 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Oct 25 22:11:36 2026 :: Log Alaric [2437]: west
+Sun Oct 25 22:11:36 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Oct 25 22:11:36 2026 :: Log Alaric [2438]: open west
+Sun Oct 25 22:11:37 2026 :: Log Alaric [2438]: west
+Sun Oct 25 22:11:37 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Oct 25 22:11:38 2026 :: Log Alaric [2439]: west
+Sun Oct 25 22:11:38 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sun Oct 25 22:11:38 2026 :: Log Trentlin [30511]: killed a red wizzrobe
+Sun Oct 25 22:11:38 2026 :: Log Trentlin [30511]: coin +153 silver
+Sun Oct 25 22:11:38 2026 :: Log Trentlin [30511]: coin +328 copper
+Sun Oct 25 22:11:38 2026 :: Log Trentlin [30511]: coin +103 gold
+Sun Oct 25 22:11:39 2026 :: Log Alaric [6000]: west
+Sun Oct 25 22:11:39 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sun Oct 25 22:11:39 2026 :: Log Alaric [6001]: west
+Sun Oct 25 22:11:39 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sun Oct 25 22:11:39 2026 :: Log Alaric [6002]: west
+Sun Oct 25 22:11:39 2026 :: Log Alaric [6003]: arrived (A trail through the dense forest) from 6002
+Sun Oct 25 22:11:39 2026 :: Log Alaric [6003]: west
+Sun Oct 25 22:11:39 2026 :: Log Alaric [6004]: arrived (A trail through the dense forest) from 6003
+Sun Oct 25 22:11:40 2026 :: Log Alaric [6004]: west
+Sun Oct 25 22:11:40 2026 :: Log Alaric [6100]: arrived (A narrow trail through the deep, dark forest) from 6004
+Sun Oct 25 22:11:40 2026 :: Log Alaric [6100]: west
+Sun Oct 25 22:11:40 2026 :: Log Alaric [6101]: arrived (A narrow trail through the deep, dark forest) from 6100
+Sun Oct 25 22:11:40 2026 :: Log Alaric [6101]: south
+Sun Oct 25 22:11:40 2026 :: Log Alaric [6104]: arrived (A small path in the deep, dark forest) from 6101
+Sun Oct 25 22:11:40 2026 :: Log Alaric [6104]: south
+Sun Oct 25 22:11:40 2026 :: Log Alaric [6105]: arrived (A small path in the deep, dark forest) from 6104
+Sun Oct 25 22:11:41 2026 :: Log Alaric [6105]: west
+Sun Oct 25 22:11:41 2026 :: Log Alaric [6106]: arrived (A junction in the deep, dark forest) from 6105
+Sun Oct 25 22:11:41 2026 :: Log Alaric [6106]: south
+Sun Oct 25 22:11:41 2026 :: Log Alaric [6117]: arrived (A junction in the deep, dark forest) from 6106
+Sun Oct 25 22:11:41 2026 :: Log Alaric [6117]: west
+Sun Oct 25 22:11:41 2026 :: Log Alaric [6116]: arrived (A small path in the deep, dark forest) from 6117
+Sun Oct 25 22:11:41 2026 :: Log Alaric [6116]: south
+Sun Oct 25 22:11:41 2026 :: Log Alaric [6115]: arrived (A small path in the deep, dark forest) from 6116
+Sun Oct 25 22:11:42 2026 :: Log Trentlin [30511]: smite
+Sun Oct 25 22:11:42 2026 :: Log Alaric [6115]: west
+Sun Oct 25 22:11:42 2026 :: Log Alaric [6114]: arrived (A junction in the deep, dark forest) from 6115
+Sun Oct 25 22:11:42 2026 :: Log Trentlin [30511]: k w
+Sun Oct 25 22:11:42 2026 :: Log Alaric [6114]: west
+Sun Oct 25 22:11:42 2026 :: Log Alaric [6122]: arrived (A small path in the deep, dark forest) from 6114
+Sun Oct 25 22:11:42 2026 :: Log Alaric [6122]: south
+Sun Oct 25 22:11:42 2026 :: Log Alaric [6123]: arrived (A junction on the river bank in the deep, dark forest) from 6122
+Sun Oct 25 22:11:42 2026 :: Log Alaric [6123]: south
+Sun Oct 25 22:11:42 2026 :: Log Alaric [9774]: arrived (On the Dark River) from 6123
+Sun Oct 25 22:11:43 2026 :: Log Alaric [9774]: west
+Sun Oct 25 22:11:43 2026 :: Log Alaric [9775]: arrived (On the Dark River) from 9774
+Sun Oct 25 22:11:43 2026 :: Log Alaric [9775]: southwest
+Sun Oct 25 22:11:43 2026 :: Log Alaric [15]: arrived (Bend in River) from 9775
+Sun Oct 25 22:11:43 2026 :: Log Alaric [15]: west
+Sun Oct 25 22:11:43 2026 :: Log Alaric [16]: arrived (Misty River) from 15
+Sun Oct 25 22:11:43 2026 :: Log Alaric [16]: north
+Sun Oct 25 22:11:43 2026 :: Log Alaric [1300]: arrived (Entrance to the Shadow Grove) from 16
+Sun Oct 25 22:11:44 2026 :: Log Alaric [1300]: north
+Sun Oct 25 22:11:44 2026 :: Log Alaric [1308]: arrived (The Shadow Grove) from 1300
+Sun Oct 25 22:11:44 2026 :: Log Alaric [1308]: north
+Sun Oct 25 22:11:44 2026 :: Log Alaric [1307]: arrived (The Shadow Grove) from 1308
+Sun Oct 25 22:11:45 2026 :: Log Trentlin [30511]: smite
+Sun Oct 25 22:11:46 2026 :: Log Alaric [1307]: ex
+Sun Oct 25 22:11:47 2026 :: Log Alaric [1307]: n
+Sun Oct 25 22:11:47 2026 :: Log Alaric [1304]: arrived (The Shadow Grove) from 1307
+Sun Oct 25 22:11:47 2026 :: Log Alaric [1304]: ex
+Sun Oct 25 22:11:47 2026 :: Log Trentlin [30511]: killed a blue wizzrobe
+Sun Oct 25 22:11:47 2026 :: Log Trentlin [30511]: coin +103 silver
+Sun Oct 25 22:11:47 2026 :: Log Trentlin [30511]: coin +68 copper
+Sun Oct 25 22:11:47 2026 :: Log Trentlin [30511]: coin +18 gold
+Sun Oct 25 22:11:49 2026 :: Log Alaric [1304]: n
+Sun Oct 25 22:11:49 2026 :: Log Alaric [1307]: arrived (The Shadow Grove) from 1304
+Sun Oct 25 22:11:50 2026 :: Log Alaric [1307]: ex
+Sun Oct 25 22:11:51 2026 :: Log Alaric [1307]: w
+Sun Oct 25 22:11:51 2026 :: Log Alaric [1309]: arrived (The Shadow Grove) from 1307
+Sun Oct 25 22:11:51 2026 :: Log Trentlin [30511]: n
+Sun Oct 25 22:11:51 2026 :: Log Trentlin [30515]: arrived (Level 6: Hushed Red Vault) from 30511
+Sun Oct 25 22:11:51 2026 :: Log Alaric [1309]: ex
+Sun Oct 25 22:11:52 2026 :: Log Trentlin [30515]: e
+Sun Oct 25 22:11:52 2026 :: Log Trentlin [30516]: arrived (Level 6: Hall of Many Doors) from 30515
+Sun Oct 25 22:11:52 2026 :: Log Alaric [1309]: n
+Sun Oct 25 22:11:52 2026 :: Log Alaric [1303]: arrived (The Shadow Grove) from 1309
+Sun Oct 25 22:11:53 2026 :: Log Alaric [1303]: ex
+Sun Oct 25 22:11:54 2026 :: Log Alaric [1303]: n
+Sun Oct 25 22:11:54 2026 :: Log Alaric [1306]: arrived (The Shadow Grove) from 1303
+Sun Oct 25 22:11:54 2026 :: Log Alaric [1306]: ex
+Sun Oct 25 22:11:55 2026 :: Log Trentlin [30516]: l in ches
+Sun Oct 25 22:11:57 2026 :: Log Alaric [1306]: e
+Sun Oct 25 22:11:57 2026 :: Log Alaric [1305]: arrived (The Shadow Grove) from 1306
+Sun Oct 25 22:11:57 2026 :: Log Alaric [1305]: ex
+Sun Oct 25 22:11:58 2026 :: Log Alaric [1305]: w
+Sun Oct 25 22:11:58 2026 :: Log Alaric [1304]: arrived (The Shadow Grove) from 1305
+Sun Oct 25 22:11:59 2026 :: Log Alaric [1304]: ex
+Sun Oct 25 22:11:59 2026 :: Log Alaric [1304]: s
+Sun Oct 25 22:11:59 2026 :: Log Alaric [1301]: arrived (The Shadow Grove) from 1304
+Sun Oct 25 22:12:00 2026 :: Log Alaric [1301]: ex
+Sun Oct 25 22:12:01 2026 :: Log Alaric [1301]: w
+Sun Oct 25 22:12:01 2026 :: Log Alaric [1303]: arrived (The Shadow Grove) from 1301
+Sun Oct 25 22:12:01 2026 :: Log Trentlin [30516]: get map
+Sun Oct 25 22:12:01 2026 :: Log Alaric [1303]: ex
+Sun Oct 25 22:12:02 2026 :: Log Alaric [1303]: n
+Sun Oct 25 22:12:02 2026 :: Log Alaric [1306]: arrived (The Shadow Grove) from 1303
+Sun Oct 25 22:12:03 2026 :: Log Alaric [1306]: ex
+Sun Oct 25 22:12:04 2026 :: Log Trentlin [30516]: l maop
+Sun Oct 25 22:12:04 2026 :: Log Alaric [1306]: e
+Sun Oct 25 22:12:04 2026 :: Log Alaric [1305]: arrived (The Shadow Grove) from 1306
+Sun Oct 25 22:12:05 2026 :: Log Alaric [1305]: ex
+Sun Oct 25 22:12:05 2026 :: Log Alaric [1305]: s
+Sun Oct 25 22:12:05 2026 :: Log Alaric [1308]: arrived (The Shadow Grove) from 1305
+Sun Oct 25 22:12:06 2026 :: Log Alaric [1308]: ex
+Sun Oct 25 22:12:07 2026 :: Log Trentlin [30516]: drop map
+Sun Oct 25 22:12:07 2026 :: Log Alaric [1308]: e
+Sun Oct 25 22:12:07 2026 :: Log Alaric [1305]: arrived (The Shadow Grove) from 1308
+Sun Oct 25 22:12:08 2026 :: Log Alaric [1305]: ex
+Sun Oct 25 22:12:10 2026 :: Log Alaric [1305]: e
+Sun Oct 25 22:12:10 2026 :: Log Alaric [1306]: arrived (The Shadow Grove) from 1305
+Sun Oct 25 22:12:10 2026 :: Log Alaric [1306]: ex
+Sun Oct 25 22:12:11 2026 :: Log Trentlin [30516]: e
+Sun Oct 25 22:12:11 2026 :: Log Trentlin [30517]: arrived (Level 6: Ember Hall) from 30516
+Sun Oct 25 22:12:12 2026 :: Log Alaric [1306]: w
+Sun Oct 25 22:12:12 2026 :: Log Alaric [1309]: arrived (The Shadow Grove) from 1306
+Sun Oct 25 22:12:12 2026 :: Log Alaric [1309]: ex
+Sun Oct 25 22:12:12 2026 :: Log Trentlin [30517]: n
+Sun Oct 25 22:12:13 2026 :: Log Alaric [1309]: n
+Sun Oct 25 22:12:13 2026 :: Log Alaric [1303]: arrived (The Shadow Grove) from 1309
+Sun Oct 25 22:12:13 2026 :: Log Alaric [1303]: ex
+Sun Oct 25 22:12:14 2026 :: Log Trentlin [30517]: k w
+Sun Oct 25 22:12:15 2026 :: Log Alaric [1303]: n
+Sun Oct 25 22:12:15 2026 :: Log Alaric [1306]: arrived (The Shadow Grove) from 1303
+Sun Oct 25 22:12:15 2026 :: Log Alaric [1306]: ex
+Sun Oct 25 22:12:16 2026 :: Log Alaric [1306]: w
+Sun Oct 25 22:12:16 2026 :: Log Alaric [1309]: arrived (The Shadow Grove) from 1306
+Sun Oct 25 22:12:16 2026 :: Log Trentlin [30517]: smite
+Sun Oct 25 22:12:17 2026 :: Log Alaric [1309]: w
+Sun Oct 25 22:12:17 2026 :: Log Alaric [1307]: arrived (The Shadow Grove) from 1309
+Sun Oct 25 22:12:17 2026 :: Log Alaric [1307]: ex
+Sun Oct 25 22:12:17 2026 :: Log Trentlin [30517]: killed a red wizzrobe
+Sun Oct 25 22:12:17 2026 :: Log Trentlin [30517]: coin +153 silver
+Sun Oct 25 22:12:17 2026 :: Log Trentlin [30517]: coin +328 copper
+Sun Oct 25 22:12:17 2026 :: Log Trentlin [30517]: coin +103 gold
+Sun Oct 25 22:12:18 2026 :: Log Alaric [1307]: n
+Sun Oct 25 22:12:18 2026 :: Log Alaric [1304]: arrived (The Shadow Grove) from 1307
+Sun Oct 25 22:12:19 2026 :: Log Alaric [1304]: ex
+Sun Oct 25 22:12:20 2026 :: Log Alaric [1304]: s
+Sun Oct 25 22:12:20 2026 :: Log Alaric [1301]: arrived (The Shadow Grove) from 1304
+Sun Oct 25 22:12:21 2026 :: Log Alaric [1301]: ex
+Sun Oct 25 22:12:22 2026 :: Log Alaric [1301]: s
+Sun Oct 25 22:12:22 2026 :: Log Alaric [1307]: arrived (The Shadow Grove) from 1301
+Sun Oct 25 22:12:22 2026 :: Log Alaric [1307]: ex
+Sun Oct 25 22:12:23 2026 :: Log Trentlin [30517]: l com
+Sun Oct 25 22:12:24 2026 :: Log Alaric [1307]: s
+Sun Oct 25 22:12:24 2026 :: Log Alaric [1308]: arrived (The Shadow Grove) from 1307
+Sun Oct 25 22:12:25 2026 :: Log Trentlin [30517]: w
+Sun Oct 25 22:12:25 2026 :: Log Trentlin [30516]: arrived (Level 6: Hall of Many Doors) from 30517
+Sun Oct 25 22:12:25 2026 :: Log Alaric [1308]: ex
+Sun Oct 25 22:12:25 2026 :: Log Trentlin [30516]: n
+Sun Oct 25 22:12:25 2026 :: Log Trentlin [30521]: arrived (Level 6: Room of the Loose Block) from 30516
+Sun Oct 25 22:12:26 2026 :: Log Alaric [1308]: e
+Sun Oct 25 22:12:26 2026 :: Log Alaric [1305]: arrived (The Shadow Grove) from 1308
+Sun Oct 25 22:12:27 2026 :: Log Alaric [1305]: ex
+Sun Oct 25 22:12:28 2026 :: Log Alaric [1305]: e
+Sun Oct 25 22:12:28 2026 :: Log Alaric [1306]: arrived (The Shadow Grove) from 1305
+Sun Oct 25 22:12:28 2026 :: Log Alaric [1306]: (refused) x
+Sun Oct 25 22:12:29 2026 :: Log Trentlin [30521]: l map
+Sun Oct 25 22:12:30 2026 :: Log Alaric [1306]: ex
+Sun Oct 25 22:12:31 2026 :: Log Alaric [1306]: w
+Sun Oct 25 22:12:31 2026 :: Log Alaric [1309]: arrived (The Shadow Grove) from 1306
+Sun Oct 25 22:12:31 2026 :: Log Trentlin [30521]: l com
+Sun Oct 25 22:12:31 2026 :: Log Alaric [1309]: ex
+Sun Oct 25 22:12:32 2026 :: Log Alaric [1309]: n
+Sun Oct 25 22:12:32 2026 :: Log Alaric [1303]: arrived (The Shadow Grove) from 1309
+Sun Oct 25 22:12:33 2026 :: Log Trentlin [30521]: s
+Sun Oct 25 22:12:33 2026 :: Log Trentlin [30516]: arrived (Level 6: Hall of Many Doors) from 30521
+Sun Oct 25 22:12:33 2026 :: Log Alaric [1303]: ex
+Sun Oct 25 22:12:34 2026 :: Log Trentlin [30516]: l co
+Sun Oct 25 22:12:34 2026 :: Log Alaric [1303]: n
+Sun Oct 25 22:12:34 2026 :: Log Alaric [1306]: arrived (The Shadow Grove) from 1303
+Sun Oct 25 22:12:35 2026 :: Log Alaric [1306]: ex
+Sun Oct 25 22:12:35 2026 :: Log Trentlin [30516]: s
+Sun Oct 25 22:12:35 2026 :: Log Trentlin [30512]: arrived (Level 6: Ash Chamber) from 30516
+Sun Oct 25 22:12:36 2026 :: Log Trentlin [30512]: l co
+Sun Oct 25 22:12:36 2026 :: Log Alaric [1306]: w
+Sun Oct 25 22:12:36 2026 :: Log Alaric [1309]: arrived (The Shadow Grove) from 1306
+Sun Oct 25 22:12:36 2026 :: Log Trentlin [30512]: s
+Sun Oct 25 22:12:37 2026 :: Log Alaric [1309]: ex
+Sun Oct 25 22:12:37 2026 :: Log Alaric [1309]: s
+Sun Oct 25 22:12:37 2026 :: Log Alaric [1308]: arrived (The Shadow Grove) from 1309
+Sun Oct 25 22:12:38 2026 :: Log Alaric [1308]: ex
+Sun Oct 25 22:12:38 2026 :: Log Trentlin [30512]: k w
+Sun Oct 25 22:12:41 2026 :: Log Trentlin [30512]: smite
+Sun Oct 25 22:12:41 2026 :: Log Alaric [1308]: w
+Sun Oct 25 22:12:41 2026 :: Log Alaric [1300]: arrived (Entrance to the Shadow Grove) from 1308
+Sun Oct 25 22:12:41 2026 :: Log Alaric [1300]: ex
+Sun Oct 25 22:12:43 2026 :: Log Alaric [1300]: n
+Sun Oct 25 22:12:43 2026 :: Log Alaric [1308]: arrived (The Shadow Grove) from 1300
+Sun Oct 25 22:12:43 2026 :: Log Alaric [1308]: w
+Sun Oct 25 22:12:43 2026 :: Log Alaric [1300]: arrived (Entrance to the Shadow Grove) from 1308
+Sun Oct 25 22:12:44 2026 :: Log Alaric [1300]: ex
+Sun Oct 25 22:12:44 2026 :: Log Trentlin [30512]: killed a red wizzrobe
+Sun Oct 25 22:12:44 2026 :: Log Trentlin [30512]: coin +153 silver
+Sun Oct 25 22:12:44 2026 :: Log Trentlin [30512]: coin +328 copper
+Sun Oct 25 22:12:44 2026 :: Log Trentlin [30512]: coin +103 gold
+Sun Oct 25 22:12:45 2026 :: Log Alaric [1300]: n
+Sun Oct 25 22:12:45 2026 :: Log Alaric [1308]: arrived (The Shadow Grove) from 1300
+Sun Oct 25 22:12:46 2026 :: Log Alaric [1308]: ex
+Sun Oct 25 22:12:47 2026 :: Log Trentlin [30512]: k w
+Sun Oct 25 22:12:47 2026 :: Log Alaric [1308]: n
+Sun Oct 25 22:12:47 2026 :: Log Alaric [1307]: arrived (The Shadow Grove) from 1308
+Sun Oct 25 22:12:49 2026 :: Log Alaric [1307]: east
+Sun Oct 25 22:12:49 2026 :: Log Alaric [1301]: arrived (The Shadow Grove) from 1307
+Sun Oct 25 22:12:49 2026 :: Log Alaric [1301]: east
+Sun Oct 25 22:12:49 2026 :: Log Alaric [1302]: arrived (The Shadow Grove) from 1301
+Sun Oct 25 22:12:50 2026 :: Log Alaric [1302]: south
+Sun Oct 25 22:12:50 2026 :: Log Alaric [1305]: arrived (The Shadow Grove) from 1302
+Sun Oct 25 22:12:51 2026 :: Log Trentlin [30512]: smite
+Sun Oct 25 22:12:51 2026 :: Log Trentlin [30512]: killed a blue wizzrobe
+Sun Oct 25 22:12:51 2026 :: Log Trentlin [30512]: coin +103 silver
+Sun Oct 25 22:12:51 2026 :: Log Trentlin [30512]: coin +68 copper
+Sun Oct 25 22:12:51 2026 :: Log Trentlin [30512]: coin +18 gold
+Sun Oct 25 22:12:51 2026 :: Log Alaric [1305]: north
+Sun Oct 25 22:12:51 2026 :: Log Alaric [1302]: arrived (The Shadow Grove) from 1305
+Sun Oct 25 22:12:51 2026 :: Log Alaric [1302]: north
+Sun Oct 25 22:12:51 2026 :: Log Alaric [1311]: arrived (A small clearing) from 1302
+Sun Oct 25 22:12:52 2026 :: Log Alaric [1311]: enter red
+Sun Oct 25 22:12:52 2026 :: Log Alaric [7600]: arrived (Entrance to Ultima) from 1311
+Sun Oct 25 22:12:58 2026 :: Log Trentlin [30512]: s
+Sun Oct 25 22:12:58 2026 :: Log Trentlin [30508]: arrived (Level 6: Taloned Corner) from 30512
+Sun Oct 25 22:12:58 2026 :: Log Alaric [7600]: ex
+Sun Oct 25 22:13:00 2026 :: Log Trentlin [30508]: e
+Sun Oct 25 22:13:01 2026 :: Log Alaric [7600]: s
+Sun Oct 25 22:13:01 2026 :: Log Alaric [7601]: arrived (New Magincia Road) from 7600
+Sun Oct 25 22:13:02 2026 :: Log Trentlin [30508]: k v
+Sun Oct 25 22:13:03 2026 :: Log Alaric [7601]: kill sh
+Sun Oct 25 22:13:03 2026 :: Log Alaric [7601]: killed the sheep
+Sun Oct 25 22:13:03 2026 :: Log Alaric [7601]: coin +6 copper
+Sun Oct 25 22:13:05 2026 :: Log Trentlin [30508]: smite
+Sun Oct 25 22:13:08 2026 :: Log Alaric [7601]: recal
+Sun Oct 25 22:13:08 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 7601
+Sun Oct 25 22:13:08 2026 :: Log Alaric [2497]: aq co
+Sun Oct 25 22:13:08 2026 :: Log Alaric [2497]: copper +148721100
+Sun Oct 25 22:13:08 2026 :: Log Alaric [2497]: daily quest complete: 148p 72g 11s, 1 daily points (1 today)
+Sun Oct 25 22:13:08 2026 :: Snapshot of Alaric taken before quest: Alaric.20261025_221308.quest (PRESTORE Alaric to see it).
+Sun Oct 25 22:13:10 2026 :: Log Trentlin [30508]: smite
+Sun Oct 25 22:13:13 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct 25 22:13:20 2026 :: Log Trentlin [30508]: killed a vire
+Sun Oct 25 22:13:20 2026 :: Log Trentlin [30508]: coin +40 gold
+Sun Oct 25 22:13:20 2026 :: Log Trentlin [30508]: coin +13 silver
+Sun Oct 25 22:13:20 2026 :: Log Trentlin [30508]: coin +309 copper
+Sun Oct 25 22:13:20 2026 :: Log Trentlin [30508]: coin +44 gold
+Sun Oct 25 22:13:21 2026 :: Log Trentlin [30508]: l in cor
+Sun Oct 25 22:13:22 2026 :: Log Trentlin [30508]: e
+Sun Oct 25 22:13:22 2026 :: Log Trentlin [30509]: arrived (Level 6: Sorcerer's Stair) from 30508

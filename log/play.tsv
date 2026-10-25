@@ -20800,3 +20800,240 @@
 1792966101	cmd	Trentlin	50	15038	campus.are	standing	100	0	-	east		The Back Hall //   This is the back hall of the Student Centre.  You can see a Post Office // to the north, and a games room to the east.  The Central Annex is located
 1792966101	cmd	Trentlin	50	15068	campus.are	standing	100	0	-	east		The Games Room //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays // the Addams Family Pinball Game, while a lone cabinet against the far wall
 1792966101	cmd	Trentlin	50	30200	hyrule.are	standing	100	0	-	enter	cabinet	You enter a flickering Hyrule arcade cabinet // Your stomach flip flops. Everything goes black for a moment. // The First Quest Begins
+1792966108	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // [50 Dwarf   Monk  ] Alaric. // Players found: 2
+1792966109	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    246 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792966111	cmd	Trentlin	50	30223	hyrule.are	standing	100	0	-	north		Rock Wall Above the Start //   A wall of brown rock rises along the north side of a grassy field, its face // scarred and cracked. One section looks weaker than the rest, a hollow knock
+1792966111	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    246 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792966113	cmd	Trentlin	50	30222	hyrule.are	standing	100	0	-	west		Candle Shop Knoll //   A grassy knoll rises above the surrounding fields, crowned by a weathered // outcrop of brown rock. A cave mouth in its side flickers with a soft yellow
+1792966114	cmd	Trentlin	50	30682	hyrule.are	standing	100	0	-	down		The Waxlight Shop //   Drips of old wax have built up on every ledge of this cave into pale, lumpy // spires, and the warm smell of tallow is thick enough to taste. Two fires
+1792966115	cmd	Trentlin	50	30682	hyrule.are	standing	100	0	-	list		[Lv Price] Item // [ 5        60g] a Blue Candle. // [ 1         1p] a small key.
+1792966115	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	gossip	Getting close to Hero?	You gossip 'Getting close to Hero?'
+1792966117	cmd	Trentlin	50	30222	hyrule.are	standing	100	0	-	up		Candle Shop Knoll //   A grassy knoll rises above the surrounding fields, crowned by a weathered // outcrop of brown rock. A cave mouth in its side flickers with a soft yellow
+1792966120	cmd	Trentlin	50	30222	hyrule.are	standing	100	0	-	aquest	points	Quest Points: 4830
+1792966124	cmd	Trentlin	50	30222	hyrule.are	standing	100	0	-	gossip	4800	You gossip '4800'
+1792966138	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	gossip	Nice	You gossip 'Nice'
+1792966139	cmd	Trentlin	50	30222	hyrule.are	standing	100	0	-	gossip	i got 600 the other day on a rush quest gamble	You gossip 'i got 600 the other day on a rush quest gamble'
+1792966146	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    246 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792966155	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	gossip	The completion bonuses stack up nicely.	You gossip 'The completion bonuses stack up nicely.'
+1792966159	cmd	Trentlin	50	30222	hyrule.are	standing	100	0	-	look		Candle Shop Knoll //   A grassy knoll rises above the surrounding fields, crowned by a weathered // outcrop of brown rock. A cave mouth in its side flickers with a soft yellow
+1792966161	cmd	Trentlin	50	30221	hyrule.are	standing	100	0	-	west		Forest Stream //   A narrow stream threads through the trees, chattering over pebbles and // pooling in quiet, fern-hung basins. Mossy stepping stones make for an easy
+1792966162	cmd	Trentlin	50	30220	hyrule.are	standing	100	0	-	west		The Lost Woods //   Every trunk here looks like every other, and the paths twist so strangely // that a traveller can walk out one side of the grove and find the same trees
+1792966169	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	gossip	I've gotten my streak really high, but inevitably something eludes me	You gossip 'I've gotten my streak really high, but inevitably something eludes me'
+1792966170	cmd	Trentlin	50	30750	hyrule.are	standing	100	0	-	north		The Lost Woods //   Every trunk here looks like every other, and the paths twist so strangely // that a traveller can walk out one side of the grove and find the same trees
+1792966170	cmd	Trentlin	50	30751	hyrule.are	standing	100	0	-	west		The Lost Woods //   Every trunk here looks like every other, and the paths twist so strangely // that a traveller can walk out one side of the grove and find the same trees
+1792966170	cmd	Trentlin	50	30752	hyrule.are	standing	100	0	-	south		The Lost Woods //   Every trunk here looks like every other, and the paths twist so strangely // that a traveller can walk out one side of the grove and find the same trees
+1792966170	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    246 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792966171	cmd	Trentlin	50	30219	hyrule.are	standing	100	0	-	west		Bramble Wood //   Thorny brambles crowd between the trunks, snagging cloth and skin alike, // and the trail weaves a careful line through them. A bush beside the path
+1792966174	cmd	Trentlin	50	30220	hyrule.are	standing	100	0	-	east		The Lost Woods //   Every trunk here looks like every other, and the paths twist so strangely // that a traveller can walk out one side of the grove and find the same trees
+1792966175	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	achievements	quest	==================== Quests ACHIEVEMENTS ==================== // [Earned 2026-09-21] Answering the Call  5 points //       Complete your first quest.
+1792966179	cmd	Trentlin	50	30750	hyrule.are	standing	100	0	-	north		The Lost Woods //   Every trunk here looks like every other, and the paths twist so strangely // that a traveller can walk out one side of the grove and find the same trees
+1792966179	cmd	Trentlin	50	30751	hyrule.are	standing	100	0	-	west		The Lost Woods //   Every trunk here looks like every other, and the paths twist so strangely // that a traveller can walk out one side of the grove and find the same trees
+1792966180	cmd	Trentlin	50	30752	hyrule.are	standing	100	0	-	south		The Lost Woods //   Every trunk here looks like every other, and the paths twist so strangely // that a traveller can walk out one side of the grove and find the same trees
+1792966180	cmd	Trentlin	50	30219	hyrule.are	standing	100	0	-	west		Bramble Wood //   Thorny brambles crowd between the trunks, snagging cloth and skin alike, // and the trail weaves a careful line through them. A bush beside the path
+1792966182	cmd	Trentlin	50	30219	hyrule.are	standing	100	0	-	exits		Obvious exits: // North - The Fairy Path // East  - The Lost Woods
+1792966185	cmd	Trentlin	50	30218	hyrule.are	standing	100	0	-	west		Old Forest Clearing //   A hushed clearing opens among ancient oaks, their bark gnarled and split // with age and their roots heaving up the soil. Fallen leaves lie ankle deep
+1792966186	cmd	Trentlin	50	30218	hyrule.are	standing	100	0	-	exits		Obvious exits: // North - Lost Woods Crossing // East  - Bramble Wood
+1792966188	cmd	Trentlin	50	30218	hyrule.are	standing	100	0	-	scan		a blue moblin                      -to the North. // a red moblin                       -to the North. // a blue moblin                      -to the East.
+1792966188	cmd	Trentlin	50	30203	hyrule.are	standing	100	0	-	south		Southern Woods //   Old trees stand in rows along the southern edge of the land, set as evenly // as an orchard, their crowns meeting overhead in a leafy roof. The leaf
+1792966189	cmd	Trentlin	50	30204	hyrule.are	standing	100	0	-	east		Path to the Manji //   A narrow trail winds east through the southern forest toward a ring of // trees that grow in a pattern too regular to be natural, set like spokes
+1792966190	cmd	Trentlin	50	30205	hyrule.are	standing	100	0	-	east		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the
+1792966192	cmd	Trentlin	50	30437	hyrule.are	standing	100	0	-	down		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own
+1792966193	cmd	Trentlin	50	30436	hyrule.are	standing	100	0	-	west		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the
+1792966195	cmd	Trentlin	50	30436	hyrule.are	standing	100	0	-	get	key	You get a small key.
+1792966198	cmd	Trentlin	50	30436	hyrule.are	standing	100	0	-	play	recorder 6	You play the Recorder, and an ancient melody fills the room. // Down here the tune finds no wind to call. Play it under the open sky.
+1792966200	cmd	Trentlin	50	30436	hyrule.are	standing	100	0	-	look		Level 3: Ooze Chamber //   Thick, glistening puddles of slime spread across this square chamber, and // the stone is stained a sickly green where they have dried. Some of the
+1792966201	cmd	Trentlin	50	30437	hyrule.are	standing	100	0	-	east		Level 3: Manji Gate //   Green-tinged stone closes around this entrance hall, its walls carved with // angular hooked patterns that turn in on themselves like the dungeon's own
+1792966202	cmd	Trentlin	50	30205	hyrule.are	standing	100	0	-	up		Grove of the Manji //   A ring of tall trees encloses a hushed clearing, and at its center a squat // stone entrance is carved with a turning four-armed cross, the sign of the
+1792966203	cmd	Trentlin	50	30204	hyrule.are	standing	100	0	-	west		Path to the Manji //   A narrow trail winds east through the southern forest toward a ring of // trees that grow in a pattern too regular to be natural, set like spokes
+1792966205	cmd	Trentlin	50	30282	hyrule.are	standing	100	0	-	play	recorder 6	You play the Recorder, and an ancient melody fills the room. // A whirlwind spins down out of a clear sky and snatches you up! // The Dragon's Gate
+1792966208	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	help	daily	No help on that word.
+1792966211	cmd	Trentlin	50	30501	hyrule.are	standing	100	0	-	down		Level 6: Dragon's Gate //   Dragon statues of dark red stone flank the entry hall of this labyrinth, // their jaws carved wide as if to breathe fire. Heat radiates from the walls
+1792966212	cmd	Trentlin	50	30500	hyrule.are	standing	100	0	-	west		Level 6: Scorched Antechamber //   Black scorch marks splash the walls of this chamber in starbursts, as if // bolts of magic struck them from every side at once, and the dust shows the
+1792966212	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	help	quest	AQUEST QUEST QUESTING QUESTPOINT QUESTPOINTS QUESTOR THEWS // Syntax: aquest <info|points|time|gamble>          anywhere // Syntax: aquest <request|complete|list|buy|abort>  at a questmaster
+1792966214	cmd	Trentlin	50	30503	hyrule.are	standing	100	0	-	north		Level 6: Slime Cistern //   Puddles of green slime pool in the low places of this sunken floor, and // trails of it streak the walls up to knee height, where large blobs have
+1792966217	cmd	Trentlin	50	30503	hyrule.are	standing	100	0	-	get	com	You get the Dragon dungeon compass.
+1792966218	cmd	Trentlin	50	30503	hyrule.are	standing	100	0	-	look	com	The needle swings north. // The Triforce chest lies 12 rooms away, behind the guardian's chamber, which is 11 rooms away.
+1792966220	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	north		Level 6: Smoky Roost //   A tall, narrow chamber whose ceiling vanishes into soot-black shadow, alive // with the rustle of leathery wings that dart down and flutter up again.
+1792966220	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792966220	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792966224	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	shove	kee south	A keese stands its ground. Hyrule's foes have to be beaten, not pushed aside.
+1792966225	cmd	Trentlin	50	30505	hyrule.are	standing	100	1	-	shove	kee south	A keese stands its ground. Hyrule's foes have to be beaten, not pushed aside.
+1792966226	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	shove	kee south	A keese stands its ground. Hyrule's foes have to be beaten, not pushed aside.
+1792966226	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	shove	kee south	A keese stands its ground. Hyrule's foes have to be beaten, not pushed aside.
+1792966226	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	shove	kee south	A keese stands its ground. Hyrule's foes have to be beaten, not pushed aside.
+1792966230	cmd	Trentlin	50	30505	hyrule.are	standing	100	0	-	kill	kee	The Headless Horseman's Reaper shears through a keese with terrible force! // A keese parries your attack. // You === OBLITERATE === a keese!
+1792966235	cmd	Trentlin	50	30506	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear. // Level 6: Crossed Grooves of the Dragon //   Grooves cut deep into the floor run from the corners toward the middle of
+1792966236	cmd	Trentlin	50	30506	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792966239	cmd	Trentlin	50	30506	hyrule.are	standing	100	0	-	shove	trap south	A blade trap stands its ground. Hyrule's foes have to be beaten, not pushed aside.
+1792966240	cmd	Trentlin	50	30506	hyrule.are	standing	100	0	-	kill	trap	You ^^^ DESTROY ^^^ a blade trap! // You ^^^ DESTROY ^^^ a blade trap! // You ^^^ DESTROY ^^^ a blade trap!
+1792966246	cmd	Trentlin	50	30506	hyrule.are	fighting	100	0	fight	smite		Your smite === OBLITERATES === a blade trap! // Your smite <<< ERADICATES >>> a blade trap! // A blade trap is DEAD!!
+1792966253	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	gossip	Didn't notice theres a "daily" option now for quests	You gossip 'Didn't notice theres a "daily" option now for quests'
+1792966253	cmd	Trentlin	50	30507	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear. // Level 6: Flickering Hall //   The air here crackles with stray sparks, and patches of the walls are
+1792966254	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	wake		You are already standing.
+1792966255	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	look		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792966256	cmd	Alaric	50	2410	dresden_halloween.are	standing	96	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792966256	cmd	Alaric	50	2411	dresden_halloween.are	standing	96	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792966256	cmd	Alaric	50	2414	dresden_halloween.are	standing	96	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792966257	cmd	Alaric	50	2497	dresden_halloween.are	standing	96	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792966257	cmd	Trentlin	50	30507	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792966257	cmd	Alaric	50	2497	dresden_halloween.are	standing	96	0	-	up		Alas, you cannot go that way.
+1792966257	cmd	Alaric	50	2497	dresden_halloween.are	standing	96	0	-	aquest		.-[ AQUEST Commands ]-----------------------------------------. // |  INFO      View quest status or summary // |  POINTS    Check your quest point balance
+1792966263	cmd	Alaric	50	2497	dresden_halloween.are	standing	96	0	-	aquest	daily	.-[ Daily Quests ]-------------------------------------------. // | Done today:   0 of 3   (a new day at 00:00 UTC, in 1h 48m) // | Next daily:   ready now, at a questmaster
+1792966274	cmd	Trentlin	50	30507	hyrule.are	standing	100	0	-	gossip	yeah i did them the other day but havent since	You gossip 'yeah i did them the other day but havent since'
+1792966277	cmd	Trentlin	50	30507	hyrule.are	standing	100	0	-	kill	b	You <<< ERADICATE >>> a bubble! // You >>> ANNIHILATE <<< a bubble! // You miss a bubble.
+1792966280	cmd	Trentlin	50	30507	hyrule.are	standing	100	0	-	smite		Smite whom?
+1792966281	cmd	Trentlin	50	30507	hyrule.are	standing	100	0	-	kill	wi	A blue wizzrobe parries your attack. // A blue wizzrobe dodges your attack. // You ^^^ DESTROY ^^^ a blue wizzrobe!
+1792966283	cmd	Trentlin	50	30507	hyrule.are	fighting	99	0	fight	smite		Your smite === OBLITERATES === a blue wizzrobe! // Your smite <<< ERADICATES >>> a blue wizzrobe! // Your smite <<< ERADICATES >>> a blue wizzrobe!
+1792966287	cmd	Alaric	50	2497	dresden_halloween.are	standing	96	16	-	aquest	daily request	You ask Questor Thews for the day's work. // Questor Thews tells you 'the sheep threatens the peace of the realm!' // Questor Thews tells you 'Deal with them before 14 more innocents suffer!'
+1792966291	cmd	Trentlin	50	30511	hyrule.are	standing	99	0	-	north		The shutter opens now that the chamber is clear. // Level 6: Statue Gallery //   A line of dragon statues stands along the west wall, their stone faces
+1792966292	cmd	Trentlin	50	30511	hyrule.are	standing	99	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792966293	cmd	Trentlin	50	30511	hyrule.are	standing	99	0	-	kill	w	You === OBLITERATE === a red wizzrobe! // You ^^^ DESTROY ^^^ a red wizzrobe! // A red wizzrobe parries your attack.
+1792966294	cmd	Alaric	50	2401	dresden_halloween.are	standing	96	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792966295	cmd	Alaric	50	2405	dresden_halloween.are	standing	96	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1792966295	cmd	Alaric	50	2433	dresden_halloween.are	standing	96	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1792966295	cmd	Alaric	50	2434	dresden_halloween.are	standing	96	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792966295	cmd	Alaric	50	2435	dresden_halloween.are	standing	96	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792966296	cmd	Alaric	50	2436	dresden_halloween.are	standing	96	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792966296	cmd	Trentlin	50	30511	hyrule.are	fighting	100	0	fight	smite		Your smite misses a red wizzrobe.
+1792966296	cmd	Alaric	50	2437	dresden_halloween.are	standing	96	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792966296	cmd	Alaric	50	2438	dresden_halloween.are	standing	96	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1792966296	cmd	Alaric	50	2438	dresden_halloween.are	standing	96	0	-	open	west	Ok.
+1792966297	cmd	Alaric	50	2439	dresden_halloween.are	standing	96	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792966298	cmd	Alaric	50	6000	haon.are	standing	96	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through
+1792966299	cmd	Alaric	50	6001	haon.are	standing	96	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.
+1792966299	cmd	Alaric	50	6002	haon.are	standing	96	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads
+1792966299	cmd	Alaric	50	6003	haon.are	standing	96	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // east, the forest gradually seems to become lighter.
+1792966299	cmd	Alaric	50	6004	haon.are	standing	96	0	-	west		A trail through the dense forest //   You are on a trail leading east and west through the dense forest.  To the // west, the trees are so huge and their crowns so dense that forest remains
+1792966300	cmd	Alaric	50	6100	haon.are	standing	96	0	-	west		A narrow trail through the deep, dark forest //   You are on a narrow trail winding its way between the enormous, grey trunks. // The crowns of the trees must be very dense, as they leave the forest floor in
+1792966300	cmd	Alaric	50	6101	haon.are	standing	96	0	-	west		A narrow trail through the deep, dark forest //   You are on a dusty trail winding its way east-west between huge, ancient // trees whose grey trunks remind you of ancient pillars in an enormous,
+1792966300	cmd	Alaric	50	6104	haon.are	standing	96	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel // as if the ancient trees observe you in watchful silence. The path continues
+1792966300	cmd	Alaric	50	6105	haon.are	standing	96	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Ancient grey // trees loom all around you.  The path continues north and west.
+1792966301	cmd	Alaric	50	6106	haon.are	standing	96	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead east, south and west.
+1792966301	cmd	Alaric	50	6117	haon.are	standing	96	0	-	south		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all sides.  Paths lead north, east and west.
+1792966301	cmd	Alaric	50	6116	haon.are	standing	96	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously on all sides.  The path continues east and south.
+1792966301	cmd	Alaric	50	6115	haon.are	standing	96	0	-	south		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  You feel as // if the ancient trees observe you in watchful silence.  The path continues
+1792966302	cmd	Trentlin	50	30511	hyrule.are	standing	100	0	-	smite		Smite whom?
+1792966302	cmd	Alaric	50	6114	haon.are	standing	96	0	-	west		A junction in the deep, dark forest //   You are by a junction where three paths meet.  Ancient grey trees tower above // you on all sides.  Paths lead north, east and west.
+1792966302	cmd	Trentlin	50	30511	hyrule.are	standing	100	0	-	kill	w	A blue wizzrobe parries your attack. // A blue wizzrobe parries your attack. // The Headless Horseman's Reaper shears through a blue wizzrobe with terrible force!
+1792966302	cmd	Alaric	50	6122	haon.are	standing	96	0	-	west		A small path in the deep, dark forest //   You are on a narrow path leading through the deep, dark forest.  Giant, grey // trees loom ominously all around.  The path continues east and south.
+1792966302	cmd	Alaric	50	6123	haon.are	standing	96	0	-	south		A junction on the river bank in the deep, dark forest //   You are by a junction where three paths meet.  Ancient, grey trees seem to // observe you silently you from all around.  To the south a dark river flows
+1792966302	cmd	Alaric	50	9774	newthalo.are	standing	96	0	-	south		On the Dark River //   The river continues east and west meandering through the woods. You // hear the sounds of wood being chopped far off in the distance.
+1792966303	cmd	Alaric	50	9775	newthalo.are	standing	96	0	-	west		On the Dark River //   The river continues east meandering through the woods. // [Exits: east west southwest]
+1792966303	cmd	Alaric	50	15	connect.are	standing	96	0	-	southwest		Bend in River //   After making a gentle bend, the river becomes dark and sinister. Overhanging // branches block out the sun and an eerie mist floats above the surface of the
+1792966303	cmd	Alaric	50	16	connect.are	standing	96	0	-	west		Misty River //   The mist becomes thicker making it almost impossible to view the surrounding // area. You think you catch a glimpse of a shadowy grove on the northern bank
+1792966303	cmd	Alaric	50	1300	htower.are	standing	96	0	-	north		Entrance to the Shadow Grove //   Before you, the grove of shadows lies. Giant grey trees are all that // can be seen through the thick shadows. A great sense of both power and
+1792966304	cmd	Alaric	50	1308	htower.are	standing	96	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966304	cmd	Alaric	50	1307	htower.are	standing	96	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966305	cmd	Trentlin	50	30511	hyrule.are	fighting	100	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a blue wizzrobe! // Your smite <<< ERADICATES >>> a blue wizzrobe! // Your smite <<< ERADICATES >>> a blue wizzrobe!
+1792966306	cmd	Alaric	50	1307	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966307	cmd	Alaric	50	1304	htower.are	standing	96	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966307	cmd	Alaric	50	1304	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Tower Gates
+1792966309	cmd	Alaric	50	1307	htower.are	standing	96	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966310	cmd	Alaric	50	1307	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966311	cmd	Alaric	50	1309	htower.are	standing	96	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966311	cmd	Trentlin	50	30515	hyrule.are	standing	100	0	-	north		The shutter opens now that the chamber is clear. // Level 6: Hushed Red Vault //   Bare red stone and a ring of squat blocks are all this chamber holds, and
+1792966311	cmd	Alaric	50	1309	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966312	cmd	Trentlin	50	30516	hyrule.are	standing	100	0	-	east		The shutter opens now that the chamber is clear. // Level 6: Hall of Many Doors //   Four doorways meet in this crowded hall: locked doors to the north and
+1792966312	cmd	Alaric	50	1303	htower.are	standing	96	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem the glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966313	cmd	Alaric	50	1303	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966314	cmd	Alaric	50	1306	htower.are	standing	96	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966314	cmd	Alaric	50	1306	htower.are	standing	96	0	-	exits		Obvious exits: // North - Inside a Tavern // East  - The Shadow Grove
+1792966315	cmd	Trentlin	50	30516	hyrule.are	standing	100	0	-	look	in ches	The Dragon's equipment chest contains: //      (Magical) a pair of water-crossing greaves //      (Magical) a pair of Vire-wing boots
+1792966317	cmd	Alaric	50	1305	htower.are	standing	96	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966317	cmd	Alaric	50	1305	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966318	cmd	Alaric	50	1304	htower.are	standing	96	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966319	cmd	Alaric	50	1304	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Tower Gates
+1792966319	cmd	Alaric	50	1301	htower.are	standing	96	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966320	cmd	Alaric	50	1301	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966321	cmd	Alaric	50	1303	htower.are	standing	96	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem the glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966321	cmd	Trentlin	50	30516	hyrule.are	standing	100	0	-	get	map	You get the Dragon dungeon map.
+1792966321	cmd	Alaric	50	1303	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966322	cmd	Alaric	50	1306	htower.are	standing	96	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966323	cmd	Alaric	50	1306	htower.are	standing	96	0	-	exits		Obvious exits: // North - Inside a Tavern // East  - The Shadow Grove
+1792966324	cmd	Trentlin	50	30516	hyrule.are	standing	100	0	-	look	maop	You do not see that here.
+1792966324	cmd	Alaric	50	1305	htower.are	standing	96	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966325	cmd	Alaric	50	1305	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966325	cmd	Alaric	50	1308	htower.are	standing	96	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966326	cmd	Alaric	50	1308	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966327	cmd	Trentlin	50	30516	hyrule.are	standing	100	0	-	drop	map	You drop the Dragon dungeon map.
+1792966327	cmd	Alaric	50	1305	htower.are	standing	96	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966328	cmd	Alaric	50	1305	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966330	cmd	Alaric	50	1306	htower.are	standing	96	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966330	cmd	Alaric	50	1306	htower.are	standing	96	0	-	exits		Obvious exits: // North - Inside a Tavern // East  - The Shadow Grove
+1792966331	cmd	Trentlin	50	30517	hyrule.are	standing	100	0	-	east		Level 6: Ember Hall //   Glowing embers lie scattered in the cracks of this hall as though fire had // rained from nowhere, flung by sorcerers who vanish and reappear between one
+1792966332	cmd	Alaric	50	1309	htower.are	standing	96	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966332	cmd	Alaric	50	1309	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966332	cmd	Trentlin	50	30517	hyrule.are	standing	100	0	-	north		The shutter is sealed fast, and will not open while enemies remain here.
+1792966333	cmd	Alaric	50	1303	htower.are	standing	96	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem the glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966333	cmd	Alaric	50	1303	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966334	cmd	Trentlin	50	30517	hyrule.are	standing	100	0	-	kill	w	You MASSACRE a red wizzrobe! // You *** DEVASTATE *** a red wizzrobe! // A red wizzrobe parries your attack.
+1792966335	cmd	Alaric	50	1306	htower.are	standing	96	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966335	cmd	Alaric	50	1306	htower.are	standing	96	0	-	exits		Obvious exits: // North - Inside a Tavern // East  - The Shadow Grove
+1792966336	cmd	Alaric	50	1309	htower.are	standing	96	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966336	cmd	Trentlin	50	30517	hyrule.are	fighting	100	0	fight	smite		Your smite <<< ERADICATES >>> a red wizzrobe! // Your smite === OBLITERATES === a red wizzrobe! // Your smite <<< ERADICATES >>> a red wizzrobe!
+1792966337	cmd	Alaric	50	1307	htower.are	standing	96	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966337	cmd	Alaric	50	1307	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966338	cmd	Alaric	50	1304	htower.are	standing	96	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966339	cmd	Alaric	50	1304	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Tower Gates
+1792966340	cmd	Alaric	50	1301	htower.are	standing	96	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966341	cmd	Alaric	50	1301	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966342	cmd	Alaric	50	1307	htower.are	standing	96	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966342	cmd	Alaric	50	1307	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966343	cmd	Trentlin	50	30517	hyrule.are	standing	100	0	-	look	com	The needle swings west. // The Triforce chest lies 9 rooms away, behind the guardian's chamber, which is 8 rooms away.
+1792966344	cmd	Alaric	50	1308	htower.are	standing	96	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966345	cmd	Trentlin	50	30516	hyrule.are	standing	100	0	-	west		Level 6: Hall of Many Doors //   Four doorways meet in this crowded hall: locked doors to the north and // south, a shutter to the west and an open way east. The floor is smeared
+1792966345	cmd	Alaric	50	1308	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966345	cmd	Trentlin	50	30521	hyrule.are	standing	100	0	-	north		Level 6: Room of the Loose Block //   Faint glyphs circle the floor of this northern chamber, and one of its // blocks sits slightly askew, its base scraped bare of soot where it has been
+1792966346	cmd	Alaric	50	1305	htower.are	standing	96	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966347	cmd	Alaric	50	1305	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966348	cmd	Alaric	50	1306	htower.are	standing	96	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966348	refused	Alaric	50	1306	htower.are	standing	96	0	-	(unknown)		Huh?
+1792966349	cmd	Trentlin	50	30521	hyrule.are	standing	100	0	-	look	map	You do not see that here.
+1792966350	cmd	Alaric	50	1306	htower.are	standing	96	0	-	exits		Obvious exits: // North - Inside a Tavern // East  - The Shadow Grove
+1792966351	cmd	Alaric	50	1309	htower.are	standing	96	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966351	cmd	Trentlin	50	30521	hyrule.are	standing	100	0	-	look	com	The needle swings south. // The Triforce chest lies 9 rooms away, behind the guardian's chamber, which is 8 rooms away.
+1792966351	cmd	Alaric	50	1309	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966352	cmd	Alaric	50	1303	htower.are	standing	96	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem the glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966353	cmd	Trentlin	50	30516	hyrule.are	standing	100	0	-	south		Level 6: Hall of Many Doors //   Four doorways meet in this crowded hall: locked doors to the north and // south, a shutter to the west and an open way east. The floor is smeared
+1792966353	cmd	Alaric	50	1303	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966354	cmd	Trentlin	50	30516	hyrule.are	standing	100	0	-	look	co	The needle swings south. // The Triforce chest lies 8 rooms away, behind the guardian's chamber, which is 7 rooms away.
+1792966354	cmd	Alaric	50	1306	htower.are	standing	96	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966355	cmd	Alaric	50	1306	htower.are	standing	96	0	-	exits		Obvious exits: // North - Inside a Tavern // East  - The Shadow Grove
+1792966355	cmd	Trentlin	50	30512	hyrule.are	standing	100	0	-	south		Level 6: Ash Chamber //   A drift of fine grey ash covers the floor, swirled into patterns by // draughts that seem to come from nowhere and by robes that sweep through the
+1792966356	cmd	Trentlin	50	30512	hyrule.are	standing	100	0	-	look	co	The needle swings south. // The Triforce chest lies 7 rooms away, behind the guardian's chamber, which is 6 rooms away.
+1792966356	cmd	Alaric	50	1309	htower.are	standing	96	0	-	west		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966356	cmd	Trentlin	50	30512	hyrule.are	standing	100	0	-	south		The shutter is sealed fast, and will not open while enemies remain here.
+1792966357	cmd	Alaric	50	1309	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966357	cmd	Alaric	50	1308	htower.are	standing	96	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966358	cmd	Alaric	50	1308	htower.are	standing	96	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966358	cmd	Trentlin	50	30512	hyrule.are	standing	100	0	-	kill	w	A red wizzrobe parries your attack. // You === OBLITERATE === a red wizzrobe! // You miss a red wizzrobe.
+1792966361	cmd	Trentlin	50	30512	hyrule.are	fighting	100	0	fight	smite		Your smite === OBLITERATES === a red wizzrobe! // Your smite === OBLITERATES === a red wizzrobe! // Your smite <<< ERADICATES >>> a red wizzrobe!
+1792966361	cmd	Alaric	50	1300	htower.are	standing	97	0	-	west		Entrance to the Shadow Grove //   Before you, the grove of shadows lies. Giant grey trees are all that // can be seen through the thick shadows. A great sense of both power and
+1792966361	cmd	Alaric	50	1300	htower.are	standing	97	0	-	exits		Obvious exits: // North - The Shadow Grove // South - Misty River
+1792966363	cmd	Alaric	50	1308	htower.are	standing	97	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966363	cmd	Alaric	50	1300	htower.are	standing	97	0	-	west		Entrance to the Shadow Grove //   Before you, the grove of shadows lies. Giant grey trees are all that // can be seen through the thick shadows. A great sense of both power and
+1792966364	cmd	Alaric	50	1300	htower.are	standing	97	0	-	exits		Obvious exits: // North - The Shadow Grove // South - Misty River
+1792966365	cmd	Alaric	50	1308	htower.are	standing	97	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966366	cmd	Alaric	50	1308	htower.are	standing	97	0	-	exits		Obvious exits: // North - The Shadow Grove // East  - The Shadow Grove
+1792966367	cmd	Trentlin	50	30512	hyrule.are	standing	100	0	-	kill	w	A blue wizzrobe dodges your attack. // You === OBLITERATE === a blue wizzrobe! // You ^^^ DESTROY ^^^ a blue wizzrobe!
+1792966367	cmd	Alaric	50	1307	htower.are	standing	97	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966369	cmd	Alaric	50	1301	htower.are	standing	97	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966369	cmd	Alaric	50	1302	htower.are	standing	97	0	-	east		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966370	cmd	Alaric	50	1305	htower.are	standing	97	0	-	south		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966371	cmd	Trentlin	50	30512	hyrule.are	fighting	99	0	fight	smite		Your smite <<< ERADICATES >>> a blue wizzrobe! // A blue wizzrobe is DEAD!! // You receive 0 experience points.
+1792966371	cmd	Alaric	50	1302	htower.are	standing	97	0	-	north		The Shadow Grove //   You are inside the shadow grove. Giant trees seem to glare at you // from all sides. The shadowy mist obscures most of your vision. Strange
+1792966371	cmd	Alaric	50	1311	htower.are	standing	97	0	-	north		A small clearing //   You are in a small clearing in the shadow grove. There is charred grass // underfoot, and the signs of fire here and there. It is almost as if the
+1792966372	cmd	Alaric	50	7600	ultima.are	standing	97	0	-	enter	red	You enter a red moongate // Your stomach flip flops. Everything goes black for a moment. // Entrance to Ultima
+1792966378	cmd	Trentlin	50	30508	hyrule.are	standing	99	0	-	south		The shutter opens now that the chamber is clear. // Level 6: Taloned Corner //   Deep talon gouges mark the tops of the blocks set around this corner
+1792966378	cmd	Alaric	50	7600	ultima.are	standing	97	0	-	exits		Obvious exits: // South - New Magincia Road
+1792966380	cmd	Trentlin	50	30508	hyrule.are	standing	99	0	-	east		The shutter is sealed fast, and will not open while enemies remain here.
+1792966381	cmd	Alaric	50	7601	ultima.are	standing	97	0	-	south		New Magincia Road //   This is the main road of New Magincia.  To the south the dirt // path continues to the south and a huge gate to the north.
+1792966382	cmd	Trentlin	50	30508	hyrule.are	standing	99	0	-	kill	v	You ^^^ DESTROY ^^^ a vire! // A vire parries your attack. // You ^^^ DESTROY ^^^ a vire!
+1792966383	cmd	Alaric	50	7601	ultima.are	standing	97	7	-	kill	sh	Your punch >>> ANNIHILATES <<< the sheep! [-202] // The sheep is DEAD!! // You have almost finished your QUEST!
+1792966385	cmd	Trentlin	50	30508	hyrule.are	fighting	99	0	fight	smite		Your smite misses a vire.
+1792966388	cmd	Alaric	50	2497	dresden_halloween.are	standing	97	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792966388	cmd	Alaric	50	2497	dresden_halloween.are	standing	97	15	-	aquest	co	You inform Questor Thews you have completed his quest. //                     ACHIEVEMENT EARNED // Daily Bread  +5 points
+1792966390	cmd	Trentlin	50	30508	hyrule.are	fighting	99	0	fight	smite		Your smite misses a vire.
+1792966393	cmd	Alaric	50	2497	dresden_halloween.are	standing	97	0	-	aquest	ga no	You have no pending double-or-nothing offer.
+1792966401	cmd	Trentlin	50	30508	hyrule.are	standing	100	0	-	look	in cor	Corpse of a vire contains: //      Nothing.
+1792966402	cmd	Trentlin	50	30509	hyrule.are	standing	100	0	-	east		The shutter opens now that the chamber is clear. // Level 6: Sorcerer's Stair //   A spiral of scorch marks curls across the floor of this chamber toward its
