@@ -14498,3 +14498,137 @@
 1792890344	cmd	Alaric	23	16005	pirate.are	fighting	80	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The swashbuckler. [-13]
 1792890347	cmd	Alaric	23	16005	pirate.are	fighting	80	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls The swashbuckler. [-23]
 1792890349	cmd	Alaric	23	16005	pirate.are	fighting	80	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates The swashbuckler! [-28]
+1792890352	cmd	Alaric	23	16005	pirate.are	fighting	79	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The swashbuckler. [-3]
+1792890352	cmd	Alaric	23	16005	pirate.are	fighting	79	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes The swashbuckler. [-6]
+1792890355	cmd	Alaric	23	16005	pirate.are	fighting	78	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds The swashbuckler. [-17]
+1792890358	cmd	Alaric	23	16005	pirate.are	fighting	77	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes The swashbuckler. [-5]
+1792890358	cmd	Alaric	23	16005	pirate.are	fighting	77	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches The swashbuckler. [-3]
+1792890399	cmd	Alaric	23	16005	pirate.are	fighting	68	0	fight	who		[23 Dwarf   Monk  ] Alaric. // Players found: 1
+1792890399	cmd	Alaric	23	16005	pirate.are	fighting	68	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes The swashbuckler. [-6]
+1792890401	cmd	Alaric	23	16005	pirate.are	fighting	68	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The swashbuckler. [-15]
+1792890403	cmd	Alaric	23	16005	pirate.are	fighting	68	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches The swashbuckler. [-1]
+1792890406	cmd	Alaric	23	16005	pirate.are	fighting	67	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes The swashbuckler. [-7]
+1792890409	cmd	Alaric	23	16005	pirate.are	fighting	66	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates The swashbuckler! [-25]
+1792890415	cmd	Alaric	23	16005	pirate.are	fighting	63	0	fight	who		[23 Dwarf   Monk  ] Alaric. // Players found: 1
+1792890416	cmd	Alaric	23	16005	pirate.are	fighting	62	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes The swashbuckler. [-5]
+1792890419	cmd	Alaric	23	16005	pirate.are	fighting	61	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds The swashbuckler. [-19]
+1792890422	cmd	Alaric	23	16005	pirate.are	fighting	61	0	fight	nerve		You missed the nerve. // Your nerve pinch hits The swashbuckler. [-10]
+1792890426	cmd	Alaric	23	16005	pirate.are	fighting	60	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The swashbuckler. [-1]
+1792890428	cmd	Alaric	23	16005	pirate.are	fighting	59	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates The swashbuckler! [-27]
+1792890432	cmd	Alaric	23	16005	pirate.are	fighting	58	0	fight	who		[23 Dwarf   Monk  ] Alaric. // Players found: 1
+1792890432	cmd	Alaric	23	16005	pirate.are	fighting	58	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds The swashbuckler. [-19]
+1792890435	cmd	Alaric	23	16005	pirate.are	fighting	57	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes The swashbuckler. [-7]
+1792890436	cmd	Alaric	23	16005	pirate.are	fighting	57	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The swashbuckler. [-3]
+1792890437	cmd	Alaric	23	16005	pirate.are	fighting	57	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates The swashbuckler! [-27]
+1792890440	cmd	Alaric	23	16005	pirate.are	fighting	56	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The swashbuckler. [-13]
+1792890443	cmd	Alaric	23	16005	pirate.are	fighting	54	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes The swashbuckler. [-6]
+1792890445	cmd	Alaric	23	16005	pirate.are	fighting	54	0	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates The swashbuckler! [-26]
+1792890448	cmd	Alaric	24	16005	pirate.are	fighting	53	24	fight	nerve		You jab The swashbuckler with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The swashbuckler. [-16] // The swashbuckler is DEAD!!
+1792890452	cmd	Alaric	24	16005	pirate.are	standing	53	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) a war banner // <worn on finger>    (Magical) an opal ring
+1792890455	cmd	Alaric	24	16005	pirate.are	standing	53	0	-	inventory		You are carrying: //      a crystal key // (16) (Glowing) a bag of candy corn
+1792890457	cmd	Alaric	24	4207	dresden_halloween.are	standing	53	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792890459	cmd	Alaric	24	4208	dresden_halloween.are	standing	53	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792890461	cmd	Alaric	24	4208	dresden_halloween.are	standing	53	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792890462	cmd	Alaric	24	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792890462	cmd	Alaric	24	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792890463	cmd	Alaric	24	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792890463	cmd	Alaric	24	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792890464	cmd	Alaric	24	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792890465	cmd	Alaric	24	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792890467	cmd	Alaric	24	9522	newthalo.are	standing	100	0	-	run	n 6	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1792890468	cmd	Alaric	24	9522	newthalo.are	standing	100	0	-	open		Ok.
+1792890469	cmd	Alaric	24	29003	korzath1.are	standing	100	0	-	run	n 8	Outside the Northern Gate of New Thalos // [Exits: north south] // On the Plains
+1792890470	cmd	Alaric	24	29060	korzath1.are	standing	100	0	-	ne		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.
+1792890471	cmd	Alaric	24	29060	korzath1.are	standing	100	0	-	kill	ch	Security Chief dodges your attack. // Security Chief parries your attack. // Security Chief parries your attack.
+1792890475	cmd	Alaric	24	29060	korzath1.are	fighting	100	0	fight	unlock	east	You can't do that, your fighting!
+1792890481	cmd	Alaric	24	29060	korzath1.are	standing	99	0	-	unlock	east	*Click*
+1792890481	cmd	Alaric	24	29060	korzath1.are	standing	99	0	-	open		Ok.
+1792890482	cmd	Alaric	24	29061	korzath1.are	standing	99	0	-	east		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches
+1792890484	cmd	Alaric	24	29061	korzath1.are	standing	99	0	-	close	west	Ok.
+1792890485	cmd	Alaric	24	29061	korzath1.are	standing	99	0	-	kill	gu	Your punch ^^^ DESTROYS ^^^ a security guard! [-103] // A security guard dodges your attack. // Your punch ^^^ DESTROYS ^^^ a security guard! [-84]
+1792890493	cmd	Alaric	24	29061	korzath1.are	fighting	99	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds a security guard. [-20]
+1792890500	cmd	Alaric	24	29061	korzath1.are	standing	99	0	-	nerve		Who do you want to attack?
+1792890500	cmd	Alaric	24	29061	korzath1.are	standing	99	0	-	kill	gu	A security guard parries your attack. // Your punch *** DEVASTATES *** a security guard! [-80] // A security guard parries your attack.
+1792890503	cmd	Alaric	24	29061	korzath1.are	fighting	99	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a security guard. [-10]
+1792890505	cmd	Alaric	24	29061	korzath1.are	fighting	99	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES a security guard! [-39]
+1792890511	cmd	Alaric	24	29062	korzath1.are	standing	99	0	-	south		Corridor //   Security guards line this corridor wanting to check the identifications // of everyone who comes and goes.
+1792890512	cmd	Alaric	24	29062	korzath1.are	standing	99	0	-	kill	gu	Your punch ^^^ DESTROYS ^^^ a security guard! [-113] // Your punch DISEMBOWELS a security guard! [-43] // A security guard dodges your attack.
+1792890515	cmd	Alaric	24	29062	korzath1.are	fighting	99	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates a security guard! [-32]
+1792890518	cmd	Alaric	24	29062	korzath1.are	fighting	99	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes a security guard. [-7] // A security guard walks off to the south.
+1792890520	cmd	Alaric	24	29063	korzath1.are	standing	99	0	-	south		Corridor //   Security guards and the Heads of Security are keeping an eye out for // anyone looking suspicious.  You notice a hole in the west wall and inside
+1792890521	cmd	Alaric	24	29063	korzath1.are	standing	99	0	-	kill	gu	A security guard dodges your attack. // A security guard parries your attack. // A security guard parries your attack.
+1792890529	cmd	Alaric	24	29063	korzath1.are	standing	99	0	-	kill	he	Your punch decimates a head of security! [-26] // A head of security parries your attack. // A head of security parries your attack.
+1792890532	cmd	Alaric	24	29063	korzath1.are	fighting	99	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes a head of security. [-5]
+1792890533	cmd	Alaric	24	29063	korzath1.are	fighting	99	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-10]
+1792890536	cmd	Alaric	24	29063	korzath1.are	fighting	99	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a head of security. [-14]
+1792890539	cmd	Alaric	24	29063	korzath1.are	fighting	99	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls a head of security. [-21]
+1792890542	cmd	Alaric	24	29063	korzath1.are	fighting	99	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches a head of security. [-3]
+1792890542	cmd	Alaric	24	29063	korzath1.are	fighting	99	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches a head of security. [-4]
+1792890542	cmd	Alaric	24	29063	korzath1.are	fighting	99	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds a head of security. [-17]
+1792890545	cmd	Alaric	24	29063	korzath1.are	fighting	98	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches a head of security. [-4]
+1792890545	cmd	Alaric	24	29063	korzath1.are	fighting	98	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a head of security. [-13]
+1792890548	cmd	Alaric	24	29063	korzath1.are	fighting	98	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches a head of security. [-2]
+1792890579	cmd	Alaric	25	4207	dresden_halloween.are	standing	98	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792890580	cmd	Alaric	25	4202	dresden_halloween.are	standing	98	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792890580	cmd	Alaric	25	4201	dresden_halloween.are	standing	98	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792890581	cmd	Alaric	25	2427	dresden_halloween.are	standing	98	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792890581	cmd	Alaric	25	2404	dresden_halloween.are	standing	98	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792890582	cmd	Alaric	25	2401	dresden_halloween.are	standing	98	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792890582	cmd	Alaric	25	2405	dresden_halloween.are	standing	98	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1792890582	cmd	Alaric	25	2433	dresden_halloween.are	standing	98	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1792890583	cmd	Alaric	25	2434	dresden_halloween.are	standing	98	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792890583	cmd	Alaric	25	2435	dresden_halloween.are	standing	98	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792890583	cmd	Alaric	25	2436	dresden_halloween.are	standing	98	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792890584	cmd	Alaric	25	2437	dresden_halloween.are	standing	98	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792890584	cmd	Alaric	25	2438	dresden_halloween.are	standing	98	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1792890585	cmd	Alaric	25	2437	dresden_halloween.are	standing	98	0	-	east		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792890585	cmd	Alaric	25	4800	dresden_halloween.are	standing	98	0	-	south		Another Dimension //   You have somehow left the City of Dresden, and entered another dimension. // To the north you can still make out the streets of Dresden thru the mist,
+1792890585	cmd	Alaric	25	4801	dresden_halloween.are	standing	98	0	-	south		The passage way //   A long narrow path leads upwards in a small secluded valley. Large but gentle // breezes ruffle the plethora of raiment that you wear, and a playful mist
+1792890586	cmd	Alaric	25	4802	dresden_halloween.are	standing	98	0	-	south		The narrow entrance //   You have reached the entrance of a narrow box canyon. Standing beside you is // an odd weather worn stone statue, that seems oddly out of place in the
+1792890586	cmd	Alaric	25	4803	dresden_halloween.are	standing	98	0	-	south		The Palm of the Creator //   A large stone hand rises out of the earth and points skyward...the only place // you find to stand in the room is at the center of the giant stone effigy.
+1792890586	cmd	Alaric	25	4803	dresden_halloween.are	standing	98	0	-	south		Alas, you cannot go that way.
+1792890594	cmd	Alaric	25	4807	dresden_halloween.are	standing	98	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered
+1792890596	cmd	Alaric	25	4807	dresden_halloween.are	standing	98	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost  // blinding fists     3     crane dance        5     herbal brewing     3     
+1792890602	cmd	Alaric	25	4807	dresden_halloween.are	standing	98	0	-	gain	crane	The Master of Movement trains you in the art of crane dance.
+1792890603	cmd	Alaric	25	4807	dresden_halloween.are	standing	98	0	-	practice		iron skin            1%  levitate            75%  meditation          75%   // second attack       75%  bash                 1%   // You have 151 practice sessions left.
+1792890606	cmd	Alaric	25	4807	dresden_halloween.are	standing	98	0	-	practice	iron	You practice iron skin.
+1792890607	cmd	Alaric	25	4807	dresden_halloween.are	standing	98	0	-	practice	iron	You practice iron skin.
+1792890607	cmd	Alaric	25	4807	dresden_halloween.are	standing	98	0	-	practice	iron	You practice iron skin.
+1792890607	cmd	Alaric	25	4807	dresden_halloween.are	standing	98	0	-	practice	iron	You are now learned at iron skin.
+1792890608	cmd	Alaric	25	4807	dresden_halloween.are	standing	98	0	-	practice	iron	You are already learned at iron skin.
+1792890608	cmd	Alaric	25	4807	dresden_halloween.are	standing	98	0	-	practice	iron	You are already learned at iron skin.
+1792890608	cmd	Alaric	25	4807	dresden_halloween.are	standing	98	0	-	practice	iron	You are already learned at iron skin.
+1792890608	cmd	Alaric	25	4807	dresden_halloween.are	standing	98	0	-	practice	iron	You are already learned at iron skin.
+1792890609	cmd	Alaric	25	4807	dresden_halloween.are	standing	98	0	-	practice	iron	You are already learned at iron skin.
+1792890609	cmd	Alaric	25	4807	dresden_halloween.are	standing	98	0	-	practice	iron	You are already learned at iron skin.
+1792890609	cmd	Alaric	25	4804	dresden_halloween.are	standing	98	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass
+1792890609	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	east		A Small Clearing //   You enter a small wooded clearing, it does not have many features besides the // huge trees that line either side. But you do notice a small man sitting near
+1792890610	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice		nerve damage        75%  steel fist           1%  fast healing         1%   // hand to hand        82%  kick                 1%  dodge               76%   // parry               75%  trip                 1%  enhanced damage     78%  
+1792890613	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	steel	You practice steel fist.
+1792890614	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	steel	You practice steel fist.
+1792890614	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	steel	You practice steel fist.
+1792890615	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	steel	You practice steel fist.
+1792890615	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	steel	You are now learned at steel fist.
+1792890615	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	steel	You are already learned at steel fist.
+1792890615	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	steel	You are already learned at steel fist.
+1792890616	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	steel	You are already learned at steel fist.
+1792890616	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	steel	You are already learned at steel fist.
+1792890617	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	fast	You practice fast healing.
+1792890618	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	fast	You practice fast healing.
+1792890618	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	fast	You practice fast healing.
+1792890619	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	fast	You practice fast healing.
+1792890619	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	fast	You practice fast healing.
+1792890619	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	fast	You practice fast healing.
+1792890619	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	fast	You are now learned at fast healing.
+1792890620	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	fast	You are already learned at fast healing.
+1792890620	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice	fast	You are already learned at fast healing.
+1792890620	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	practice		nerve damage        75%  steel fist          75%  fast healing        75%   // hand to hand        82%  kick                 1%  dodge               76%   // parry               75%  trip                 1%  enhanced damage     78%  
+1792890622	cmd	Alaric	25	4806	dresden_halloween.are	standing	98	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1792890631	cmd	Alaric	25	4804	dresden_halloween.are	standing	98	0	-	west		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass
+1792890631	cmd	Alaric	25	4809	dresden_halloween.are	standing	98	0	-	nw		Back to the beginning //   As you enter this room a sharp tingling enters your limbs as you begin // to move...the valley drops away from your feet and a white sheet falls in
+1792890635	cmd	Alaric	25	4207	dresden_halloween.are	standing	98	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792890637	cmd	Alaric	25	4208	dresden_halloween.are	standing	98	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792890639	cmd	Alaric	25	4208	dresden_halloween.are	standing	98	0	-	look	i pit	The donation pit contains: //      Nothing.
+1792890643	cmd	Alaric	25	4208	dresden_halloween.are	standing	98	11	-	stash	get hor	You take the Titanic Horns of Capricon out of your stash.
+1792890648	cmd	Alaric	25	4208	dresden_halloween.are	standing	100	5	-	stash	get hor	You take horseshoes out of your stash.
+1792890650	cmd	Alaric	25	4208	dresden_halloween.are	standing	100	0	-	wear	hor	You wear horseshoes on your feet.
