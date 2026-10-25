@@ -460,11 +460,34 @@ Live-test gotchas that look like product bugs and are not:
   2026-10-23 -- "You are too stunned to do that." -- which is what
   started the rework below. A low-level fixture at a few hit points with
   no fight is the sign.
-- **A mobile a test loads may walk away.** The Korzath security guard
-  (29012) five tests fight wanders, and on a busy runner it left the room
-  between LOAD and the first KILL or CAST often enough to fail three
-  different modules in one afternoon (2026-10-25: "They aren't here").
-  `set mob <vnum> act +sentinel` before the LOAD keeps every copy still.
+- **A mobile a test loads may walk away -- use the fixture world.** The
+  Korzath security guard (29012) six tests fought is WIMPY and STAY_AREA,
+  and on a busy runner it left the room between LOAD and the first KILL
+  or CAST often enough to fail three modules in one afternoon
+  (2026-10-25: "They aren't here"). `set mob 29012 act +sentinel` was the
+  advice here, and it never worked: SET MOB refuses every prototype that
+  came with the game, and the tests checked only that the reply lacked
+  "Syntax". `LiveMud(fixtures=True)` loads `tests/fixtures/area/ztestfix.are`
+  into the test world (rooms 32700-32705 joined to nothing, a sentinel
+  sparring guard, mob 32700) and `place_sparring_guard()` loads it and
+  proves with STAT that it stands where it was put.
+  `tests/test_fixture_hygiene.py` fails on the old habit.
+- **Confirm a setup command by what it says, not by a missing error.**
+  `MudClient.must(command, *expected)` syncs and fails unless the reply
+  names one of `expected`; `room_of()` reads a character's room from
+  STAT. `set char <x> hp N` sets the *maximum*: RESTORE brings them to it.
+- **`sync` cannot follow a character who cannot type WORTH.** WORTH needs
+  POS_SLEEPING; a character a trap leaves mortally wounded is answered
+  "You are hurt far too bad for that." and the barrier never comes. Pass
+  `barrier="time"` (TIME is POS_DEAD). And never sync after a command
+  whose test proves something happens with nothing typed after it --
+  WIMPY's flee after KILL is listened for with `expect()`.
+- **A stinking cloud lasts one to three ticks** (`raf->timer = dice(1,3)`)
+  and can blow away a moment after it is raised; a test proves it stood
+  through a move by finding it still there afterwards (`stat room`), and
+  counts only the gas inside the move's own burst of output, prompt to
+  prompt, since the cloud also gasses its room every tick in the same
+  words (`tests/test_trap_movement.py`).
 - **The test servers append to tracked runtime logs.** A module run from
   the repository root leaves `log/webadmin-events.tsv` and `log/toc.log`
   modified, and `git rebase` then refuses with "unstaged changes". Check

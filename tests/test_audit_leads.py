@@ -8,7 +8,8 @@ import os
 import re
 import unittest
 
-from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
+from live_mud import (LiveMud, SPARRING_FLOOR, create_character, login, patch_player_file,
+                      place_sparring_guard, skip_reason)
 
 SKIP = skip_reason()
 PW = "Zlead1pass"
@@ -343,67 +344,53 @@ class HeatMetalTests(unittest.TestCase):
         level 0 armour and weapons, so every effect is one of those
         branches; a cast whose blow lands must never also say no effect,
         and a victim with nothing to heat still gets the true no-op."""
-        guard = 29012                     # a Korzath security guard, level 27
-        with LiveMud() as mud:
+        # The fixture world's sparring guard: level 27 like the Korzath
+        # guard this used, but a sentinel. The Korzath guard wanders, and
+        # SET MOB cannot make a shipped mobile stand still -- the "+sentinel"
+        # this test used was refused, and a guard that walked north made
+        # every cast say "They aren't here" (CI, 2026-10-25).
+        with LiveMud(fixtures=True) as mud:
             # The victim is a mobile: one player may not cast at another
             # outside the PK rules (is_safe_spell). Staff curse its kit
             # with SET OBJ EXTRA +M (ITEM_NOREMOVE) and hand it over.
-            make(mud, "Zheater", Levl=50, Cla=0, Room=4202,   # a mage: heat metal at 17
+            make(mud, "Zheater", Levl=50, Cla=0, Room=SPARRING_FLOOR,   # a mage
                  HMV="9000 9000 30000 30000 500 500", HMVP="9000 30000 500")
             caster_file = mud.player_dir / "Zheater"
             text = caster_file.read_text(encoding="latin-1")
             end = text.index("\nEnd\n")
             caster_file.write_text(text[:end] + "\nSk 100 'heat metal'" + text[end:],
                                    encoding="latin-1")
-            make(mud, "Zheatgod", Levl=70, Room=4202)
+            make(mud, "Zheatgod", Levl=70, Room=SPARRING_FLOOR)
             with mud.connect(timeout=120) as caster, mud.connect(timeout=120) as god:
                 login(caster, "Zheater", PW)
                 login(god, "Zheatgod", PW)
-                # The guard wanders. One walked north the moment it was
-                # loaded and every cast after said "They aren't here" (CI,
-                # 2026-10-25): sentinel on the prototype, so both copies
-                # loaded below stand still.
-                said = run(god, f"set mob {guard} act +sentinel")
-                self.assertNotIn("Syntax", said, said)
-                run(god, f"load mob {guard}")
+                caster.sync("scroll 0")
+                place_sparring_guard(god, "zheatgod", SPARRING_FLOOR)
                 for vnum, keyword in ((3704, "shield"), (3705, "cloak"), (3706, "helmet"),
                                       (3703, "vest"), (3702, "sword")) * 3:
-                    run(god, f"load obj {vnum}", 0.3)
-                    run(god, f"set obj {keyword} extra +M", 0.3)
-                    run(god, f"give {keyword} guard", 0.3)
-                # Counted over the whole run, one burst per prompt: each
-                # cast waits out the last one's lag (drain burns none of it
-                # outside a fight), and under the sanitizer build the reply
-                # came after a per-cast window -- "twenty casts never heated
-                # a cursed piece" in CI on 2026-10-25, with every reply
-                # landing in the drain between casts.
-                mark = len(caster.transcript)
+                    god.must(f"load obj {vnum}", "You create")
+                    god.must(f"set obj {keyword} extra +M", "Extra flags on")
+                    god.must(f"give {keyword} guard", "You give")
+                # Each cast is read up to the game's own answer to the
+                # barrier after it, lag and all; a burned wearer's cast
+                # must never also say "no effect".
+                landed = both = 0
                 for _ in range(20):
-                    run(caster, "cast 'heat metal' guard", 1.5)
-                    run(god, "peace", 0.4)
-                    run(god, "restore guard", 0.4)
-                    caster.drain(2.0)          # the cast's lag
-                caster.drain(4.0)              # the last reply
-                bursts = re.split(r"<-?\d+hp [^>]*>", caster.transcript[mark:])
-                landed = sum("Your heat metal" in b for b in bursts)
-                both = sum("Your heat metal" in b and "no effect" in b for b in bursts)
-                # Everything the caster queued above has run before the
-                # second guard exists. Under the sanitizer build the last
-                # of the twenty casts was still waiting out lag, landed on
-                # the new guard and started a fight, and the no-op cast's
-                # reply then queued behind it past a fixed window (CI,
-                # 2026-10-25). sync() waits for the game's own answer.
-                caster.sync("look", 60)
-                run(god, "peace", 0.4)
-                run(god, "purge guard", 0.4)
-                run(god, f"load mob {guard}")
+                    said = caster.sync("cast 'heat metal' guard", 60)
+                    self.assertNotIn("aren't here", said, said)
+                    landed += "Your heat metal" in said
+                    both += "Your heat metal" in said and "no effect" in said
+                    god.sync("peace")
+                    god.must("restore guard", "restored")
+                god.sync("peace")
+                god.sync("purge guard")
+                self.assertNotIn("sparring guard", god.sync("look"))
+                place_sparring_guard(god, "zheatgod", SPARRING_FLOOR)
                 # Nothing to heat: the true no-op. A save says "resists"
-                # instead, so cast until one is not resisted. Each cast is
-                # read up to the game's answer to the WORTH sent after it,
-                # however long its lag holds it.
+                # instead, so cast until one is not resisted.
                 for _ in range(6):
                     nothing = caster.sync("cast 'heat metal' guard", 60)
-                    run(god, "peace", 0.4)
+                    god.sync("peace")
                     if "resists" not in nothing:
                         break
                 for client in (caster, god):

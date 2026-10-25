@@ -15,13 +15,13 @@ from __future__ import annotations
 import re
 import unittest
 
-from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
+from live_mud import (LiveMud, SPARRING_FLOOR, create_character, login, patch_player_file,
+                      place_sparring_guard, skip_reason)
 
 SKIP = skip_reason()
 PW = "Zvampire1"
 HALLS = 4202            # not safe
 YARD = 2419             # the training yard: the dummy absorbs every blow
-GUARD = 29012           # a Korzath security guard, 600 hit points: hit, not killed
 VAMPIRIC = 4            # WEAPON_VAMPIRIC, bit C, in value[4]
 
 
@@ -46,7 +46,7 @@ def alignment(client) -> int:
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class VampiricLandingTests(unittest.TestCase):
     def test_only_a_landed_blow_feeds_the_wielder(self) -> None:
-        with LiveMud() as mud:
+        with LiveMud(fixtures=True) as mud:
             for name, level in (("Zvampwield", 30), ("Zvampgod", 70)):
                 with mud.connect(timeout=120) as client:
                     create_character(client, name, PW)
@@ -83,11 +83,17 @@ class VampiricLandingTests(unittest.TestCase):
                 immune_after = alignment(hero)
 
                 # A worker with hit points to lose: landed blows move it.
-                run(god, f"set mob {GUARD} act +sentinel")   # it wanders off otherwise
-                run(god, f"load mob {GUARD}")
+                # The fixture world's guard, which stays to be hit: the
+                # Korzath guard wandered, and SET MOB cannot pin a shipped
+                # mobile in place.
+                place_sparring_guard(god, "zvampgod", SPARRING_FLOOR)
+                god.must(f"transfer zvampwield {SPARRING_FLOOR}", "Ok.")
+                self.assertIn("sparring guard", hero.sync("look"))
+                mark = len(hero.transcript)
                 run(hero, "kill guard", 1.0)
                 hero.drain(9.0)               # three rounds: hurt, not killed
-                run(god, "purge guard", 0.6)  # ends the fight outright
+                self.assertIn("sparring guard", hero.transcript[mark:])
+                god.sync("purge guard")       # ends the fight outright
                 landed_after = alignment(hero)
                 for client in (hero, god):
                     client.send("quit")

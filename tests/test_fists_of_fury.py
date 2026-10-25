@@ -12,13 +12,12 @@ from __future__ import annotations
 import unittest
 from pathlib import Path
 
-from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
+from live_mud import (LiveMud, SPARRING_FLOOR, create_character, login, patch_player_file,
+                      place_sparring_guard, skip_reason)
 
 ROOT = Path(__file__).resolve().parents[1]
 SKIP = skip_reason()
 PW = "Zfistpass1"
-ROOM = 4202          # outside the Temple, which refuses a fight
-GUARD = 29012
 
 
 def run(client, command: str, settle: float = 1.4) -> str:
@@ -40,15 +39,15 @@ class FistsSourceTests(unittest.TestCase):
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class FistsLiveTests(unittest.TestCase):
     def test_fists_at_a_named_victim_strikes(self) -> None:
-        with LiveMud() as mud:
+        with LiveMud(fixtures=True) as mud:
             for name in ("Zfiststaff", "Zfistmonk"):
                 with mud.connect(timeout=120) as client:
                     create_character(client, name, PW)
                     client.drain(1.0)
                     client.send("quit")
                     self.assertTrue(client.wait_closed())
-            patch_player_file(mud, "Zfiststaff", Levl=70, Room=ROOM)
-            patch_player_file(mud, "Zfistmonk", Levl=30, Cla=4, Room=ROOM,
+            patch_player_file(mud, "Zfiststaff", Levl=70, Room=SPARRING_FLOOR)
+            patch_player_file(mud, "Zfistmonk", Levl=30, Cla=4, Room=SPARRING_FLOOR,
                               HMV="3000 3000 500 500 500 500", HMVP="3000 500 500")
             path = mud.player_dir / "Zfistmonk"
             text = path.read_text(encoding="latin-1")
@@ -62,16 +61,18 @@ class FistsLiveTests(unittest.TestCase):
                 run(staff, "scroll 0")
                 run(monk, "scroll 0")
                 run(monk, "remove all", 1.2)
-                run(staff, "set mob %d act +sentinel" % GUARD)   # it wanders off otherwise
-                run(staff, "load mob %d" % GUARD, 1.2)
-                run(staff, "set char guard hp 30000", 1.0)
-                run(staff, "restore guard", 1.0)
+                # The fixture world's guard stays put; SET MOB cannot pin
+                # the shipped Korzath guard, which is what this tried.
+                place_sparring_guard(staff, "zfiststaff", SPARRING_FLOOR)
+                staff.sync("set char guard hp 30000")
+                staff.must("restore guard", "restored")
+                self.assertIn("sparring guard", monk.sync("look"))
 
-                out = run(monk, "fists guard", 2.5)
+                out = monk.sync("fists guard", timeout=60)
                 self.assertIn("all consuming fury", out, out)
                 self.assertIn("Your fists of fury", out, out)
 
-                run(staff, "slay guard", 1.2)
+                staff.sync("slay guard")
                 monk.send("quit")
                 self.assertTrue(monk.wait_closed())
 

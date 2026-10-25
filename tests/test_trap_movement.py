@@ -13,14 +13,15 @@ import pathlib
 import re
 import unittest
 
-from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
+from live_mud import (EAST_PADDOCK, GAS_HALL, LiveMud, WEST_PADDOCK, create_character, login,
+                      patch_player_file, room_of, skip_reason)
 
 SKIP = skip_reason()
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PASSWORD = "Ztrap1pass"
-HALLS = 4202            # Halls of Healing: not safe, west to the Temple
 TEMPLE = 4207
-DEATH_ROOM = 4216
+DEATH_ROOM = 4216       # where a slain player is put; its only exit is down
+GAS_EXIT_NAME = "Beyond The Gas Hall"   # the fixture room west of GAS_HALL
 
 
 def run(client, command: str, settle: float = 1.2) -> str:
@@ -43,10 +44,52 @@ class TrapMovementSourceTests(unittest.TestCase):
             self.assertIn("gone_after_blow(", after, after)
 
 
+def departure_outcome(said: str) -> str:
+    """What one WEST out of the gas hall did, read from the order of what
+    it said. The stinking cloud also goes off on everybody in its room each
+    tick, and its poison ticks too, with the same words -- so which death
+    belongs to the move is a matter of order, not of text:
+
+    * "arrived": the move finished (anything after the arrival, a poison
+      tick's death included, happened in the far room);
+    * "killed-leaving": gas, then KILLED, and no arrival -- the departure
+      trap killed the walker, and the move must have ended there;
+    * "walked-dead": KILLED and then the arrival -- the dead walked on
+      through the exit, which is the bug this module exists for;
+    * "before-move": a tick killed the walker in the hall before WEST ran,
+      and WEST was then typed in the death room (resting, no west exit);
+      that attempt tested nothing and is discarded, not counted;
+    * "felled": the gas left the walker mortally wounded, incapacitated or
+      stunned, short of dead, and the move stopped in the hall -- no death
+      to test, so discarded as well;
+    * "unclear": anything else."""
+    arrival = said.find(GAS_EXIT_NAME)
+    killed = said.find("You have been KILLED")
+    gassed = said.find("Poison gas!")
+    if killed < 0:
+        if arrival >= 0:
+            return "arrived"
+        felled = ("mortally wounded", "incapacitated", "You are stunned")
+        if 0 <= gassed and any(text in said[gassed:] for text in felled):
+            return "felled"
+        return "unclear"
+    if arrival >= 0:
+        return "arrived" if arrival < killed else "walked-dead"
+    # A walker revived in the death room rests there, and its only exit is
+    # down, so a WEST typed after a death from a tick is refused one way
+    # or the other.
+    if any(text in said[killed:] for text in ("Alas, you cannot go that way",
+                                               "You feel too relaxed")):
+        return "before-move"
+    return "killed-leaving" if 0 <= gassed < killed else "unclear"
+
+
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class TrapMovementLiveTests(unittest.TestCase):
     def test_a_lethal_departure_trap_ends_the_move(self) -> None:
-        with LiveMud() as mud:
+        # The fixture world's gas hall: joined to nothing, so no wanderer,
+        # player or second cloud can be in it.
+        with LiveMud(fixtures=True) as mud:
             for name in ("Zwalker", "Ztrapper"):
                 with mud.connect(timeout=120) as client:
                     create_character(client, name, PASSWORD)
@@ -54,65 +97,53 @@ class TrapMovementLiveTests(unittest.TestCase):
                     client.send("quit")
                     self.assertTrue(client.wait_closed())
             patch_player_file(mud, "Zwalker", Levl=10, Room=TEMPLE)
-            patch_player_file(mud, "Ztrapper", Levl=70, Room=HALLS)
+            patch_player_file(mud, "Ztrapper", Levl=70, Room=GAS_HALL)
 
             with mud.connect(timeout=120) as walker, mud.connect(timeout=120) as trapper:
                 login(walker, "Zwalker", PASSWORD)
                 login(trapper, "Ztrapper", PASSWORD)
-                run(walker, "scroll 0")
-                run(trapper, "set skill ztrapper 'stinking cloud' 100")
-                run(trapper, "set char ztrapper mana 30000")
-                run(trapper, "set char zwalker hp 1")
+                walker.sync("scroll 0")
+                trapper.must("set skill ztrapper 'stinking cloud' 100", "skill is now 100")
+                trapper.sync("set char ztrapper mana 30000")
+                trapper.sync("set char zwalker hp 1")
+                # SET CHAR HP sets the maximum; each RESTORE below brings
+                # the walker to it.
+                self.assertRegex(trapper.must("stat char zwalker", "Hp:"), r"Hp: -?\d+/1\b")
 
                 # The cloud's 2d8 kills a player on 1 hit point about one
                 # time in four (dead is -11); a survivor simply arrives,
-                # which is correct, so walk out until one does not.
-                #
-                # A survivor is also poisoned, and a poison tick can kill
-                # them in the Temple between tries -- CI, 2026-10-21: that
-                # death's "KILLED" was read with the next try's WEST, the
-                # dead walker was still resting in the Halls, and the test
-                # took it for the trap's. So each try stands the walker up,
-                # reads off anything already said, and counts only a death
-                # that came with this departure's gas.
-                # Every step is synced (MudClient.sync): a fixed window on a
-                # loaded runner closed before a slow WEST had answered, the
-                # death landed after it, and the control below read a dead
-                # walker as one the trap had let through (CI, 2026-10-25).
+                # which is correct. Every step is synced and confirmed: the
+                # cloud is there, the walker stands restored in the hall,
+                # and only then is WEST typed.
+                outcomes = []
                 for _ in range(40):
                     trapper.sync("restore ztrapper")
-                    cast = trapper.sync("cast 'stinking cloud'")
+                    cast = trapper.sync("cast 'stinking cloud'", timeout=60)
+                    # The first cast raises the cloud; later ones find it
+                    # standing ("Nothing seems to happen" means the room
+                    # already has its affect).
                     self.assertTrue("noxious fumes" in cast or "Nothing seems" in cast, cast)
-                    trapper.sync("restore zwalker")
+                    trapper.must("restore zwalker", "restored")
                     trapper.sync("force zwalker stand")
-                    trapper.sync("transfer zwalker %d" % HALLS)
-                    walker.sync("look")
-                    said = walker.sync("west", timeout=60)
-                    if "KILLED" in said and "Poison gas!" in said:
+                    trapper.must(f"transfer zwalker {GAS_HALL}", "Ok.")
+                    self.assertEqual(room_of(trapper, "zwalker"), GAS_HALL)
+                    # TIME, not WORTH, as the barrier: a walker the gas
+                    # leaves mortally wounded may not type WORTH.
+                    said = walker.sync("west", timeout=60, barrier="time")
+                    outcome = departure_outcome(said)
+                    outcomes.append(outcome)
+                    self.assertNotEqual(outcome, "walked-dead",
+                                        "the dead walked through the exit:\n" + said)
+                    self.assertNotEqual(outcome, "unclear", said)
+                    if outcome == "killed-leaving":
                         break
-                    if "KILLED" in said:
-                        continue   # the poison's tick, not the departure
-                    # The control: a trap that does not kill lets the move
-                    # finish.
-                    self.assertRegex(trapper.sync("stat char zwalker"),
-                                     r"Room: %d\b" % TEMPLE, said)
                 else:
-                    self.fail("the cloud never killed the walker")
+                    self.fail(f"the cloud never killed the walker on the way out: {outcomes}")
 
-                stat = trapper.sync("stat char zwalker")
-                self.assertRegex(stat, r"Room: %d\b" % DEATH_ROOM, stat)
+                self.assertEqual(room_of(trapper, "zwalker"), DEATH_ROOM, said)
 
 
-def move_through_gas(client, direction: str) -> str:
-    """Move, wait for the cloud to go off -- however long a loaded runner
-    takes, lag included -- then a little longer for a second time."""
-    client.drain(0.5)
-    client.buffer = ""
-    mark = len(client.transcript)
-    client.send(direction)
-    client.expect("Poison gas!", "noxious fumes", timeout=30)
-    client.drain(2.0)
-    return client.transcript[mark:]
+PROMPT_RE = re.compile(r"<-?\d+hp")
 
 
 def gas(text: str) -> int:
@@ -121,21 +152,21 @@ def gas(text: str) -> int:
     return text.count("Poison gas!") + text.count("noxious fumes that fill the air")
 
 
-def gas_on_arrival(text: str) -> int:
-    """The cloud's fires that belong to the move itself: everything up to
-    the prompt that follows the first one. The double fire this guards
-    against came before and after the look, in one burst with one prompt.
-    A stinking cloud also goes off on everybody in the room each tick
-    (char_update), and a tick that landed in the two seconds after an
-    arrival counted twice in CI on 2026-10-25; it comes with a prompt of
-    its own."""
-    first = min((i for i in (text.find("Poison gas!"),
-                             text.find("noxious fumes that fill the air")) if i >= 0),
-                default=-1)
-    if first < 0:
-        return 0
-    prompt = re.search(r"<-?\d+hp", text[first:])
-    return gas(text[: first + prompt.start()] if prompt else text)
+def gas_in_move(text: str, arrival: str) -> int | None:
+    """The cloud's fires that belong to the move itself: the burst of output
+    from the prompt before the arrival's room name to the prompt after it.
+    A stinking cloud also goes off on everybody in its room each tick
+    (char_update), with the same words; a tick's fire comes with a prompt
+    of its own, before or after, so it is never counted (CI, 2026-10-25:
+    a tick in the two seconds after an arrival counted twice). None when
+    the move did not arrive."""
+    at = text.find(arrival)
+    if at < 0:
+        return None
+    before = list(PROMPT_RE.finditer(text, 0, at))
+    start = before[-1].end() if before else 0
+    after = PROMPT_RE.search(text, at)
+    return gas(text[start:after.start() if after else len(text)])
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
@@ -147,10 +178,10 @@ class MountedTrapTests(unittest.TestCase):
         A walker and a rider each go east into a stinking cloud, and the
         rider back out through it."""
         horse, saddle = 740, 27      # a riding horse (ACT_MOUNTABLE); a saddle
-        # Outdoors (no mount goes indoors) and not safe: Hyrule's Southwest
-        # Meadow, east into the next screen, where nothing is aggressive.
-        start, gassed = 30201, 30202
-        with LiveMud() as mud:
+        # Outdoors (no mount goes indoors) and not safe: the fixture world's
+        # paddocks, joined to nothing, so nothing wanders in.
+        start, gassed = WEST_PADDOCK, EAST_PADDOCK
+        with LiveMud(fixtures=True) as mud:
             for name in ("Zgaswalker", "Zgasrider", "Zgasmaker"):
                 with mud.connect(timeout=120) as client:
                     create_character(client, name, PASSWORD)
@@ -169,44 +200,66 @@ class MountedTrapTests(unittest.TestCase):
                 login(rider, "Zgasrider", PASSWORD)
                 login(maker, "Zgasmaker", PASSWORD)
                 for client in (walker, rider):
-                    run(client, "scroll 0")
-                run(maker, f"load obj {saddle}")
-                run(maker, "give saddle zgasrider")
-                run(maker, f"load mob {horse}")
+                    client.sync("scroll 0")
+                maker.must(f"load obj {saddle}", "You create")
+                maker.must("give saddle zgasrider", "You give")
+                maker.must(f"load mob {horse}", "You create")
                 # Ride is capped at 90%: a buck costs hit points, not the try.
                 for _ in range(10):
-                    if "You mount your steed" in run(rider, "ride horse", 1.2):
+                    mounted = rider.sync("ride horse", timeout=60)
+                    if "You mount your steed" in mounted:
                         break
+                    # A buck is the only other answer worth another try.
+                    self.assertNotIn("aren't here", mounted, mounted)
+                    self.assertNotIn("dismount your current", mounted, mounted)
                 else:
                     self.fail("the rider never got on the horse")
 
-                # Synced, and the cloud confirmed: on a loaded runner the
-                # walker once went east into a room with no cloud in it and
-                # waited out the whole expect (CI, 2026-10-25).
-                maker.sync("set skill zgasmaker 'stinking cloud' 100")
+                maker.must("set skill zgasmaker 'stinking cloud' 100", "skill is now 100")
                 maker.sync("set char zgasmaker mana 30000")
-                maker.sync(f"goto {gassed}")
-                cast = maker.sync("cast 'stinking cloud'", timeout=60)
-                self.assertIn("noxious fumes", cast, cast)
-                maker.sync(f"goto {start}")
 
-                walked_in = move_through_gas(walker, "east")
-                # RIDE and the bucks before it lag the rider; the move waits
-                # that out, and move_through_gas waits for it.
-                rode_in = move_through_gas(rider, "east")
-                seen = run(walker, "", 1.0)        # the walker is already there
-                rode_out = move_through_gas(rider, "west")
+                def cloud_stands() -> bool:
+                    return "Affected by: stinking cloud" in maker.must(
+                        f"stat room {gassed}", "Vnum:")
 
-                for client in (walker, rider):
-                    run(maker, f"restore {'zgaswalker' if client is walker else 'zgasrider'}", 0.4)
+                def through_cloud(client, direction: str, back: str, arrival: str) -> str:
+                    """One move through the cloud, with the cloud proven to
+                    stand for the whole of it. It lasts one to three ticks
+                    (spell_stinking_cloud's timer), so one raised just
+                    before a move can blow away under it -- the CI failure
+                    where a walker went east into clear air. A cloud still
+                    standing after the move stood during it (nothing raises
+                    one in between); one gone afterwards makes the try say
+                    nothing, so the mover goes back and tries again under a
+                    fresh cloud."""
+                    for _ in range(6):
+                        if not cloud_stands():
+                            maker.sync(f"goto {gassed}")
+                            self.assertIn("noxious fumes",
+                                          maker.sync("cast 'stinking cloud'", timeout=60))
+                            maker.sync(f"goto {start}")
+                        said = client.sync(direction, timeout=60)
+                        if cloud_stands():
+                            return said
+                        client.sync(back, timeout=60)
+                    self.fail(f"no cloud stood through a {direction} move in six tries")
+
+                walked_in = through_cloud(walker, "east", "west", "The East Paddock")
+                # RIDE and the bucks before it lag the rider; sync waits that out.
+                rode_in = through_cloud(rider, "east", "west", "The East Paddock")
+                seen = walker.sync("look")       # the walker is already there
+                rode_out = through_cloud(rider, "west", "east", "The West Paddock")
+
+                for name in ("zgaswalker", "zgasrider"):
+                    maker.sync(f"restore {name}")
                 for client in (walker, rider, maker):
                     client.send("quit")
                     client.wait_closed()
 
-        self.assertEqual(gas_on_arrival(walked_in), 1, walked_in)
+        self.assertEqual(gas_in_move(walked_in, "The East Paddock"), 1, walked_in)
         self.assertIn("rides in", seen, "the rider walked rather than rode:\n" + seen)
-        self.assertEqual(gas_on_arrival(rode_in), 1, rode_in)
-        self.assertEqual(gas_on_arrival(rode_out), 1, rode_out)
+        self.assertEqual(gas_in_move(rode_in, "The East Paddock"), 1, rode_in)
+        self.assertEqual(gas_in_move(rode_out, "The West Paddock"), 1, rode_out)
 
 
 if __name__ == "__main__":

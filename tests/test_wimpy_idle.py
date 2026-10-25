@@ -8,20 +8,21 @@ round of lag, so it never did: a level 34 warrior with wimpy 143 went
 for a fighting player with nothing typed (fight_lag_update, owner's
 choice), as stock ROM did.
 
-A mortal is set up in the Temple, sets WIMPY, is transferred to a security
-guard, types KILL and nothing else; the test only listens.
+A mortal is set up in the Temple, sets WIMPY, is transferred to the test
+world's sparring guard, types KILL and nothing else; the test only listens
+-- no WORTH, no sync, nothing typed after KILL, because typed input is
+exactly what this test proves wimpy no longer needs.
 """
 from __future__ import annotations
 
 import unittest
 
-from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
+from live_mud import (LiveMud, SPARRING_FLOOR, create_character, login, patch_player_file,
+                      place_sparring_guard, room_of, skip_reason)
 
 SKIP = skip_reason()
 PW = "Zwimpy1pass"
 TEMPLE = 4207
-HALLS = 4202            # not safe
-GUARD = 29012           # a Korzath security guard: hits hard enough to matter
 
 
 def run(client, command: str, settle: float = 1.2) -> str:
@@ -35,7 +36,7 @@ def run(client, command: str, settle: float = 1.2) -> str:
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class WimpyWhileIdleTests(unittest.TestCase):
     def test_wimpy_fires_with_nothing_typed_after_kill(self) -> None:
-        with LiveMud() as mud:
+        with LiveMud(fixtures=True) as mud:
             for name, level in (("Zcoward", 20), ("Zwimpgod", 70)):
                 with mud.connect(timeout=120) as client:
                     create_character(client, name, PW)
@@ -44,33 +45,29 @@ class WimpyWhileIdleTests(unittest.TestCase):
             # Enough hit points to take a few rounds, wimpy well above zero.
             patch_player_file(mud, "Zcoward", Levl=20, Room=TEMPLE,
                               HMV="400 400 500 500 500 500", HMVP="400 500 500")
-            patch_player_file(mud, "Zwimpgod", Levl=70, Room=HALLS)
+            patch_player_file(mud, "Zwimpgod", Levl=70, Room=TEMPLE)
             with mud.connect(timeout=120) as hero, mud.connect(timeout=120) as god:
                 login(hero, "Zcoward", PW)
                 login(god, "Zwimpgod", PW)
                 run(hero, "scroll 0")
                 self.assertIn("150", run(hero, "wimpy 150"))
-                # The guard wanders: one walked south before the KILL and
-                # the test waited 90 s on nothing (CI, 2026-10-25).
-                said = god.sync(f"set mob {GUARD} act +sentinel")
-                self.assertNotIn("Syntax", said, said)
-                # Every staff step is synced, and the hero has to see the
-                # guard before typing KILL: on a loaded runner the hero
-                # arrived to a room with no guard in it and KILL said
-                # "They aren't here." (CI, 2026-10-25).
-                god.sync(f"goto {HALLS}")
-                god.sync(f"transfer zcoward {HALLS}")
-                god.sync(f"load mob {GUARD}")
-                seen = hero.sync("look")
-                self.assertIn("security guard", seen.lower(), seen)
+                # The fixture guard stands still and never flees; the
+                # Korzath guard this used wandered off (it is WIMPY and
+                # STAY_AREA, and SET MOB cannot change a shipped mobile).
+                place_sparring_guard(god, "zwimpgod", SPARRING_FLOOR)
+                god.must(f"transfer zcoward {SPARRING_FLOOR}", "Ok.")
                 god.sync(f"goto {TEMPLE}")      # out of the guard's way
+                self.assertEqual(room_of(god, "zwimpgod"), TEMPLE)
+                self.assertEqual(room_of(god, "zcoward"), SPARRING_FLOOR)
+                seen = hero.sync("look")       # before KILL: nothing after it
+                self.assertIn("sparring guard", seen, seen)
                 hero.buffer = ""
                 run(hero, "kill guard", 0.5)
                 # Nothing more is typed. Listen for wimpy's flee, or death.
                 outcome = hero.expect("You flee from combat", "PANIC! You couldn't escape",
                                       "You have been KILLED", timeout=90)
-                run(god, f"goto {HALLS}", 0.6)
-                run(god, "peace", 0.6)
+                god.sync(f"goto {SPARRING_FLOOR}")
+                god.sync("peace")
                 for client in (hero, god):
                     client.send("quit")
                     client.wait_closed()

@@ -27,6 +27,15 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+FIXTURE_AREA = ROOT / "tests" / "fixtures" / "area" / "ztestfix.are"
+# The fixture area's vnums (LiveMud(fixtures=True)).
+SPARRING_GUARD = 32700        # mob: sentinel, never flees or starts a fight
+SPARRING_FLOOR = 32700        # room: north to the gallery
+SPARRING_GALLERY = 32701
+GAS_HALL = 32702              # room: west to GAS_HALL_EXIT
+GAS_HALL_EXIT = 32703
+WEST_PADDOCK = 32704          # outdoors: east to EAST_PADDOCK
+EAST_PADDOCK = 32705
 
 # Telnet control bytes and the options the server implements.
 IAC, DONT, DO, WONT, WILL, SB, SE = 255, 254, 253, 252, 251, 250, 240
@@ -121,14 +130,22 @@ SANITIZER_REPORT_RE = re.compile(
     r"|SUMMARY: (?:AddressSanitizer|UndefinedBehaviorSanitizer)"
     r"|runtime error: ")
 
-# The reply to WORTH, which every position may type. MudClient.sync sends
-# it after a command: the game runs one connection's commands in order, so
-# once this line has arrived, so has everything the command said -- lag
-# and all -- without guessing a window.
-# WORTH's first line: a mortal's goes on to experience, staff's ends at
-# "silver and N copper." -- both are the barrier.
+# The reply to WORTH. MudClient.sync sends it after a command: the game
+# runs one connection's commands in order, so once this line has arrived,
+# so has everything the command said -- lag and all -- without guessing a
+# window. A mortal's goes on to experience, staff's ends at "silver and N
+# copper." -- both are the barrier. WORTH needs POS_SLEEPING or better: a
+# character mortally wounded, incapacitated or stunned is told "You are
+# hurt far too bad for that." and the barrier never comes (a stinking cloud
+# left a walker at -7 hit points, 2026-10-25); use barrier="time" there.
 BARRIER_RE = re.compile(
     r"You have -?\d+ platinum, -?\d+ gold, -?\d+ silver(?:, -?\d+ copper\s+and| and -?\d+ copper\.)")
+# TIME's answer, for a barrier any position may type (TIME is POS_DEAD):
+# its system-time line, and the moon line that follows when one is up.
+TIME_BARRIER_RE = re.compile(
+    r"The system time is [^\n]*\n\r?"
+    r"(?:(?:A New Moon is in the sky|A Crescent Moon is in the sky|A Full Moon is up)\.\n?\r?)?")
+BARRIERS = {"worth": BARRIER_RE, "time": TIME_BARRIER_RE}
 
 
 def _die_with_parent() -> None:
@@ -371,7 +388,7 @@ class MudClient:
                 break
         return self.transcript[mark:]
 
-    def sync(self, line: str, timeout: float | None = None) -> str:
+    def sync(self, line: str, timeout: float | None = None, barrier: str = "worth") -> str:
         """Send a command and return exactly its reply, however late.
 
         A fixed drain window is a guess: it is too short when the command
@@ -382,14 +399,21 @@ class MudClient:
         the two is this command's. Output that is not a reply -- a tick,
         a wandering mobile -- can still arrive in between; assert on what
         the command says, not on the absence of everything else. Do not
-        sync WORTH itself.
+        sync the barrier command itself.
+
+        The barrier is typed input: it is a command the character sends,
+        so it counts down lag like any other and is logged. Never sync a
+        command whose test proves something happens with nothing typed
+        after it (WIMPY firing on its own after KILL); listen with expect().
+        barrier="time" works in every position, WORTH only from sleeping up.
         """
+        pattern = BARRIERS[barrier]
         deadline = time.monotonic() + (timeout or self.timeout)
         mark = len(self.transcript)
         self.send(line)
-        self.send("worth")
+        self.send(barrier)
         while time.monotonic() < deadline:
-            found = BARRIER_RE.search(self.transcript, mark)
+            found = pattern.search(self.transcript, mark)
             if found:
                 self.buffer = self.transcript[found.end():]
                 return self.transcript[mark:found.start()]
@@ -400,13 +424,35 @@ class MudClient:
             f"last output: {' '.join(self.transcript[mark:].split())[-200:]!r}.\n"
             f"{self.server_state()}\n--- transcript ---\n{self.transcript[-4000:]}")
 
+    def must(self, line: str, *expected: str, timeout: float | None = None) -> str:
+        """sync(line), and fail unless the reply says one of `expected`.
+
+        A setup command is confirmed by what it says it did, never by the
+        absence of an error: SET MOB on a shipped prototype answers "came
+        with the game" -- no "Syntax" in it -- and a test that asserted
+        only that took a refusal for a sentinel guard (2026-10-25)."""
+        reply = self.sync(line, timeout)
+        if not any(text in reply for text in expected):
+            raise AssertionError(
+                f"{line!r} did not answer any of {expected!r}; it said: "
+                f"{' '.join(reply.split())[:800]!r}")
+        return reply
+
 
 class LiveMud:
     """Boot a real server against a throwaway data tree."""
 
     def __init__(self, extra_env: dict[str, str] | None = None,
-                 expect_crash: bool = False):
+                 expect_crash: bool = False, fixtures: bool = False):
         self.extra_env = extra_env or {}
+        # fixtures=True loads tests/fixtures/area/ztestfix.are into this
+        # world as a built area: rooms 32700-32705 joined to nothing, and
+        # the sparring guard (mob 32700), a sentinel that never flees or
+        # starts a fight. A shipped mobile is no fixture: SET MOB refuses
+        # every prototype that came with the game, so a test that made the
+        # Korzath guard "sentinel" that way was quietly refused and the
+        # guard wandered off anyway (CI, 2026-10-25).
+        self.fixtures = fixtures
         self.port = free_port()
         self.tmp: tempfile.TemporaryDirectory | None = None
         self.proc: subprocess.Popen | None = None
@@ -448,6 +494,15 @@ class LiveMud:
                 "dpsboard.txt", "dpsboard.txt.tmp"))
         for name in ("player", "gods", "heroes", "corpse", "backups", "log"):
             (self.root / name).mkdir()
+        if self.fixtures:
+            built = self.root / "area" / "built"
+            built.mkdir(exist_ok=True)
+            shutil.copy2(FIXTURE_AREA, built / FIXTURE_AREA.name)
+            listing = built / "built.lst"
+            lines = [line for line in (listing.read_text().split() if listing.exists() else [])
+                     if line != "$"]
+            lines.append(f"built/{FIXTURE_AREA.name}")
+            listing.write_text("\n".join(lines + ["$"]) + "\n")
         (self.root / "player" / "versions").mkdir()
 
         self._launch()
@@ -807,3 +862,25 @@ def carried_copper(client: MudClient) -> int:
 
 def banked_copper(client: MudClient) -> int:
     return read_coins(client, "balance", "current balance is")
+
+
+def room_of(staff: MudClient, name: str) -> int:
+    """The room a character stands in, by STAT -- the server's word,
+    not a guess from a transcript."""
+    reply = staff.must(f"stat char {name}", "Room:")
+    match = re.search(r"Room: (-?\d+)", reply)
+    assert match, reply
+    return int(match.group(1))
+
+
+def place_sparring_guard(staff: MudClient, staff_name: str, room: int) -> None:
+    """Load the fixture world's sparring guard into `room` and prove it:
+    the staff character is there, the guard is made, and STAT says it is
+    a sentinel standing in that room. Needs LiveMud(fixtures=True)."""
+    staff.sync(f"goto {room}")
+    here = room_of(staff, staff_name)
+    assert here == room, f"{staff_name} is in {here}, not {room}"
+    staff.must(f"load mob {SPARRING_GUARD}", "You create a sparring guard")
+    stat = staff.must("stat mob sparring", "Vnum: %d" % SPARRING_GUARD)
+    assert re.search(r"Room: %d\b" % room, stat), stat
+    assert re.search(r"Act 1:.*\bsentinel\b", stat), stat

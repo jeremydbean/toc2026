@@ -1,0 +1,95 @@
+#AREA   { ALL } Tests   Test Fixtures~
+
+#MOBILES
+#32700
+sparring guard fixture~
+a sparring guard~
+A sparring guard stands here, feet planted, waiting for a bout.
+~
+A test fixture: the Korzath security guard's numbers (level 27, five dice
+of four and seven a blow) on a mobile that never moves, never flees and
+never starts a fight.  It exists only in test worlds (tests/live_mud.py,
+LiveMud(fixtures=True)).
+~
+human~
+AB 0 0 S
+27 3 27d20+325 25d27+160 5d4+7 17
+-8 -8 -8 -8
+0 0 0 0
+8 8 1 0
+0 0 M 0
+
+#0
+
+#ROOMS
+#32700
+The Sparring Floor~
+A bare test room with nothing in it but a sanded floor.  North is the
+gallery, the only way out.
+~
+0 D 0
+D0
+The gallery.
+~
+~
+0 -1 32701
+S
+#32701
+The Sparring Gallery~
+A bare test room beside the sparring floor, to the south.
+~
+0 D 0
+D2
+The sparring floor.
+~
+~
+0 -1 32700
+S
+#32702
+The Gas Hall~
+A bare test room, not safe, for traps.  West is the gas hall's exit.
+~
+0 D 0
+D3
+The exit.
+~
+~
+0 -1 32703
+S
+#32703
+Beyond The Gas Hall~
+A bare test room east of the gas hall.
+~
+0 D 0
+D1
+The gas hall.
+~
+~
+0 -1 32702
+S
+#32704
+The West Paddock~
+An open paddock under the sky, for riders.  East is the east paddock.
+~
+0 0 2
+D1
+The east paddock.
+~
+~
+0 -1 32705
+S
+#32705
+The East Paddock~
+An open paddock under the sky.  West is the west paddock.
+~
+0 0 2
+D3
+The west paddock.
+~
+~
+0 -1 32704
+S
+
+#0
+
+#$

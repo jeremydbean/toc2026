@@ -21,10 +21,12 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from live_mud import (  # noqa: E402
+    SPARRING_FLOOR,
     LiveMud,
     create_character,
     login,
     patch_player_file,
+    place_sparring_guard,
     skip_reason,
 )
 
@@ -127,7 +129,7 @@ class CreatorRankTests(unittest.TestCase):
         DENY and PARDON DENY beside the creator-only DENY, the TRUST notice
         naming a hidden target, LOAD refusing the creator a portal, and a
         switched creator named by WHO and SOCKETS."""
-        with LiveMud() as mud:
+        with LiveMud(fixtures=True) as mud:
             for name in ("Killuminati", "Zimpl", "Zmisery", "Zother"):
                 make(mud, name)
             with mud.connect(timeout=120) as creator, \
@@ -163,9 +165,10 @@ class CreatorRankTests(unittest.TestCase):
 
                 # R5: switched, he is not named by WHO or SOCKETS.
                 run(creator, "wizinvis 72")
-                run(creator, "set mob 29012 act +sentinel")   # it wanders off otherwise
-                run(creator, "load mob 29012")
-                self.assertIn("Possessed by you", run(creator, "switch guard"))
+                # The fixture guard stands still; SET MOB cannot make the
+                # shipped Korzath guard a sentinel, which is what this did.
+                place_sparring_guard(creator, "killuminati", SPARRING_FLOOR)
+                self.assertIn("Possessed by you", creator.sync("switch guard"))
                 self.assertNotIn("Killuminati", run(impl, "who"))
                 self.assertNotIn("Killuminati", run(impl, "sockets"))
                 self.assertNotIn("Killuminati", run(impl, "sockets killuminati"))
@@ -181,7 +184,7 @@ class CreatorRankTests(unittest.TestCase):
         """The protections follow the creator (owner, 2026-10-22): a SLAY
         aimed at him strikes down whoever threw it, and a mobile's blows
         hold him at one hit point -- no death, no kill recorded."""
-        with LiveMud() as mud:
+        with LiveMud(fixtures=True) as mud:
             for name in ("Killuminati", "Zimpl"):
                 make(mud, name)
             # Level 20: combat keeps any level 70 at one hit point on its
@@ -193,15 +196,17 @@ class CreatorRankTests(unittest.TestCase):
                 login(impl, "Zimpl", PASSWORD)
                 run(creator, "wizinvis")                 # visible, so he can be aimed at
                 self.assertIn("redirecting the strike back", run(impl, "slay killuminati", 2.0))
-                run(creator, "goto 4202")                # the Temple refuses a fight
-                run(creator, "set mob 29012 act +sentinel")   # it wanders off otherwise
-                run(creator, "load mob 29012")
-                run(creator, "set char killuminati hp 1")
+                # The fixture world's floor, not the Temple (which refuses
+                # a fight), with a guard that stays to fight.
+                place_sparring_guard(creator, "killuminati", SPARRING_FLOOR)
+                creator.sync("set char killuminati hp 1")     # the maximum ...
+                creator.must("restore killuminati", "restored")   # ... and the current
+                self.assertRegex(creator.must("stat char killuminati", "Hp:"), r"Hp: 1/1\b")
                 mark = len(creator.transcript)
                 run(creator, "kill guard", 0.5)
                 creator.drain(20.0)                      # several rounds at one hit point
                 fight = creator.transcript[mark:]
-                self.assertIn("security guard", fight)
+                self.assertIn("sparring guard", fight)
                 self.assertNotIn("You have been KILLED", fight)
                 run(creator, "peace", 1.0)
                 run(creator, "purge guard", 1.0)

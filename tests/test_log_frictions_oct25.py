@@ -17,14 +17,14 @@ import json
 import unittest
 from pathlib import Path
 
-from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
+from live_mud import (LiveMud, SPARRING_FLOOR, create_character, login, patch_player_file,
+                      place_sparring_guard, skip_reason)
 
 ROOT = Path(__file__).resolve().parents[1]
 SKIP = skip_reason()
 PW = "Zfrictpass1"
 CISTERN = 30543
 GUANO = 16046   # a pill of stone skin and fly, pirate.are
-GUARD = 29012   # not aggressive, so SHOVE gets as far as the direction
 
 
 class SourceTests(unittest.TestCase):
@@ -46,7 +46,7 @@ class SourceTests(unittest.TestCase):
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class LiveTests(unittest.TestCase):
     def test_pill_shove_and_cistern(self) -> None:
-        with LiveMud() as mud:
+        with LiveMud(fixtures=True) as mud:
             with mud.connect(timeout=120) as client:
                 create_character(client, "Zfriction", PW)
                 client.drain(1.0)
@@ -63,10 +63,10 @@ class LiveTests(unittest.TestCase):
                 self.assertIn("never takes on a monk", ate, ate)
                 self.assertNotIn("Spell failed", ate, ate)
 
-                client.sync("set skill self shove 100")
-                client.sync(f"set mob {GUARD} act +sentinel")
-                loaded = client.sync(f"load mob {GUARD}")
-                self.assertIn("security guard", loaded, loaded)
+                client.must("set skill self shove 100", "skill is now 100")
+                # The fixture world's guard: not aggressive, so SHOVE gets
+                # as far as the direction, and it stays where it is put.
+                place_sparring_guard(client, "zfriction", SPARRING_FLOOR)
                 bad = client.sync("shove guard sideways")
                 self.assertIn("valid Direction", bad, bad)
                 shoved = client.sync("shove guard so")
