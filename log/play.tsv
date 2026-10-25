@@ -14632,3 +14632,94 @@
 1792890643	cmd	Alaric	25	4208	dresden_halloween.are	standing	98	11	-	stash	get hor	You take the Titanic Horns of Capricon out of your stash.
 1792890648	cmd	Alaric	25	4208	dresden_halloween.are	standing	100	5	-	stash	get hor	You take horseshoes out of your stash.
 1792890650	cmd	Alaric	25	4208	dresden_halloween.are	standing	100	0	-	wear	hor	You wear horseshoes on your feet.
+1792890653	cmd	Alaric	25	4208	dresden_halloween.are	standing	100	9	-	stash	put horn	You put the Titanic Horns of Capricon away for safe keeping.
+1792890657	cmd	Alaric	25	4208	dresden_halloween.are	standing	100	5	-	stash	get great	You take a great war helmet out of your stash.
+1792890659	cmd	Alaric	25	4208	dresden_halloween.are	standing	100	0	-	wear	gre	You wear a great war helmet on your head.
+1792890663	cmd	Alaric	25	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792890665	cmd	Alaric	25	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792890666	cmd	Alaric	25	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792890666	cmd	Alaric	25	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792890668	cmd	Alaric	25	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792890669	cmd	Alaric	25	2426	dresden_halloween.are	standing	100	0	-	open		It's already open.
+1792890671	cmd	Alaric	25	9531	newthalo.are	standing	100	0	-	run	e 25	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792890673	cmd	Alaric	25	9531	newthalo.are	standing	100	0	-	open		Ok.
+1792890674	cmd	Alaric	25	9794	newthalo.are	standing	100	0	-	run	e 6	Outside the Eastern Gate of New Thalos // [Exits: east south west] // On a road
+1792890675	cmd	Alaric	25	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792890675	cmd	Alaric	25	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a
+1792890676	cmd	Alaric	25	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792890678	cmd	Alaric	25	16001	pirate.are	standing	100	0	-	kill	sa	The sailor dodges your attack. // The sailor parries your attack. // The sailor parries your attack.
+1792890704	cmd	Alaric	25	16001	pirate.are	fighting	98	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The sailor. [-15]
+1792890707	cmd	Alaric	25	16001	pirate.are	fighting	98	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates The sailor! [-28]
+1792890711	cmd	Alaric	25	16002	pirate.are	standing	98	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792890712	cmd	Alaric	25	16003	pirate.are	standing	98	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792890715	cmd	Alaric	25	16003	pirate.are	standing	98	0	-	skills		Level  1: dagger              20%      hand to hand        83%       //           recall             100%       // Level  3: kick                 1%      
+1792890721	cmd	Alaric	25	16003	pirate.are	standing	98	0	-	kill	sa	Your punch ^^^ DESTROYS ^^^ The sailor! [-94] // The sailor parries your attack. // Your punch *** DEVASTATES *** The sailor! [-67]
+1792890723	cmd	Alaric	25	16003	pirate.are	fighting	97	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates The sailor! [-25]
+1792890726	cmd	Alaric	25	16003	pirate.are	fighting	97	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The sailor. [-1]
+1792890726	cmd	Alaric	25	16003	pirate.are	fighting	97	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes The sailor. [-6]
+1792890733	cmd	Alaric	25	16003	pirate.are	fighting	97	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes The sailor. [-8]
+1792890734	cmd	Alaric	25	16003	pirate.are	fighting	97	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls The sailor. [-24]
+1792890737	cmd	Alaric	25	16003	pirate.are	fighting	97	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes The sailor. [-8]
+1792890740	cmd	Alaric	25	16003	pirate.are	fighting	97	0	fight	scan		The sailor                         -to the North. // The drunk pirate                   -to the North.
+1792890745	cmd	Alaric	25	16004	pirate.are	standing	97	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1792890745	cmd	Alaric	25	16004	pirate.are	standing	97	0	-	kill	dr	The drunk pirate parries your attack. // Your punch *** DEVASTATES *** The drunk pirate! [-69] // The drunk pirate dodges your attack.
+1792890748	cmd	Alaric	25	16004	pirate.are	fighting	96	0	fight	nerve		You jab The drunk pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES The drunk pirate! [-40]
+1792890751	cmd	Alaric	25	16004	pirate.are	fighting	96	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The drunk pirate. [-2]
+1792890751	cmd	Alaric	25	16004	pirate.are	fighting	96	0	fight	nerve		You jab The drunk pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES The drunk pirate! [-40]
+1792890756	cmd	Alaric	25	16004	pirate.are	fighting	96	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes The drunk pirate. [-6]
+1792890759	cmd	Alaric	25	16004	pirate.are	fighting	95	0	fight	nerve		You jab The drunk pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates The drunk pirate! [-28]
+1792890764	cmd	Alaric	25	16004	pirate.are	fighting	95	0	fight	nerve		You jab The drunk pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch MANGLES The drunk pirate! [-55]
+1792890774	cmd	Alaric	26	16004	pirate.are	standing	94	0	-	kill	sa	The sailor parries your attack. // Your punch *** DEVASTATES *** The sailor! [-80] // The sailor parries your attack.
+1792890777	cmd	Alaric	26	16004	pirate.are	fighting	94	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch maims The sailor! [-34]
+1792890780	cmd	Alaric	26	16004	pirate.are	fighting	94	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch MASSACRES The sailor! [-50]
+1792890783	cmd	Alaric	26	16004	pirate.are	fighting	93	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch hits The sailor. [-9]
+1792890786	cmd	Alaric	26	16004	pirate.are	fighting	93	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes The sailor. [-8]
+1792890794	cmd	Alaric	26	16004	pirate.are	standing	93	0	-	scan		The bucaneer                       -to the East. // She                                -to the West.
+1792890796	cmd	Alaric	26	16005	pirate.are	standing	93	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like
+1792890797	cmd	Alaric	26	16005	pirate.are	standing	93	0	-	scan		You don't see anything near you.
+1792890798	cmd	Alaric	26	16021	pirate.are	standing	93	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792890798	cmd	Alaric	26	16021	pirate.are	standing	93	0	-	scan		The sailor                         -to the East. // The bucaneer                       -right below you.
+1792890800	cmd	Alaric	26	16022	pirate.are	standing	93	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792890801	cmd	Alaric	26	16022	pirate.are	standing	93	0	-	kill	sa	The sailor dodges your attack. // Your punch *** DEVASTATES *** The sailor! [-74] // Your punch ^^^ DESTROYS ^^^ The sailor! [-96]
+1792890803	cmd	Alaric	26	16022	pirate.are	fighting	92	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls The sailor. [-22]
+1792890806	cmd	Alaric	26	16022	pirate.are	fighting	92	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch hits The sailor. [-12]
+1792890809	cmd	Alaric	26	16022	pirate.are	fighting	92	0	fight	nerve		You jab The sailor with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls The sailor. [-21]
+1792890823	cmd	Alaric	26	16022	pirate.are	standing	91	0	-	scan		The pirate                         -to the North.
+1792890825	cmd	Alaric	26	16027	pirate.are	standing	91	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792890826	cmd	Alaric	26	16027	pirate.are	standing	91	0	-	kill	pi	The pirate parries your attack. // The pirate dodges your attack. // The pirate parries your attack.
+1792890831	cmd	Alaric	26	16027	pirate.are	fighting	90	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The pirate. [-3]
+1792890833	cmd	Alaric	26	16027	pirate.are	fighting	90	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The pirate. [-16]
+1792890836	cmd	Alaric	26	16027	pirate.are	fighting	89	0	fight	nerve		You missed the nerve. // Your nerve pinch hits The pirate. [-9]
+1792890840	cmd	Alaric	26	16027	pirate.are	fighting	88	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The pirate. [-14]
+1792890844	cmd	Alaric	26	16027	pirate.are	fighting	88	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds The pirate. [-20]
+1792890847	cmd	Alaric	26	16027	pirate.are	fighting	88	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch hits The pirate. [-12]
+1792890853	cmd	Alaric	26	16027	pirate.are	fighting	87	0	fight	iron		You cannot do this in the heat of battle.
+1792890855	cmd	Alaric	26	16027	pirate.are	fighting	86	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates The pirate! [-32] // The pirate walks off to the north.
+1792890860	cmd	Alaric	26	16032	pirate.are	standing	86	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792890860	cmd	Alaric	26	16032	pirate.are	standing	86	0	-	kill	pi	The pirate dodges your attack. // Your punch wounds The pirate. [-19] // The pirate dodges your attack.
+1792890866	cmd	Alaric	26	16032	pirate.are	fighting	86	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch MASSACRES The pirate! [-52]
+1792890869	cmd	Alaric	27	16032	pirate.are	fighting	86	19	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch DISEMBOWELS The pirate! [-43] // The pirate is DEAD!!
+1792890872	cmd	Alaric	27	16032	pirate.are	fighting	85	0	fight	nerve		You jab The drunk pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch maims The drunk pirate! [-34]
+1792890874	cmd	Alaric	27	16032	pirate.are	fighting	85	0	fight	nerve		You jab The drunk pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch MUTILATES The drunk pirate! [-40]
+1792890882	cmd	Alaric	27	16032	pirate.are	fighting	84	0	fight	who		[27 Dwarf   Monk  ] Alaric. // Players found: 1
+1792890883	cmd	Alaric	27	16032	pirate.are	fighting	84	0	fight	nerve		You jab The drunk pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch DISMEMBERS The drunk pirate! [-47]
+1792890887	cmd	Alaric	27	16032	pirate.are	standing	84	0	-	scan		The midshipman                     -to the West.
+1792890889	cmd	Alaric	27	16031	pirate.are	standing	84	0	-	west		Main Deck - Port //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792890890	cmd	Alaric	27	16031	pirate.are	standing	84	0	-	kill	mi	The midshipman dodges your attack. // Your punch === OBLITERATES === The midshipman! [-124] // The midshipman dodges your attack.
+1792890893	cmd	Alaric	27	16031	pirate.are	fighting	84	0	fight	nerve		You jab The midshipman with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates The midshipman! [-27]
+1792890904	cmd	Alaric	27	16032	pirate.are	standing	84	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792890905	cmd	Alaric	27	16032	pirate.are	standing	84	0	-	kill	mi	The midshipman parries your attack. // Your punch ^^^ DESTROYS ^^^ The midshipman! [-119] // The midshipman is DEAD!!
+1792890910	cmd	Alaric	27	16032	pirate.are	standing	84	0	-	scan		You don't see anything near you.
+1792890911	cmd	Alaric	27	16037	pirate.are	standing	84	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792890912	cmd	Alaric	27	16037	pirate.are	standing	84	0	-	scan		The pirate                         -to the West. // The pirate                         -to the West. // The midshipman                     -to the West.
+1792890914	cmd	Alaric	27	16036	pirate.are	standing	84	0	-	west		Main Deck - Port //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792890915	cmd	Alaric	27	16036	pirate.are	standing	84	0	-	kill	pi	The pirate dodges your attack. // The pirate parries your attack. // Your punch DISMEMBERS The pirate! [-47]
+1792890921	cmd	Alaric	27	16036	pirate.are	fighting	82	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch mauls The pirate. [-24]
+1792890930	cmd	Alaric	27	16036	pirate.are	fighting	81	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch maims The pirate! [-36]
+1792890932	cmd	Alaric	27	16036	pirate.are	fighting	80	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes The pirate. [-5]
+1792890937	cmd	Alaric	27	16036	pirate.are	fighting	79	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch injures The pirate. [-16]
+1792890941	cmd	Alaric	27	16036	pirate.are	fighting	79	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds The pirate. [-20]
+1792890945	cmd	Alaric	27	16036	pirate.are	fighting	77	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch hits The pirate. [-10]
+1792890948	cmd	Alaric	27	16036	pirate.are	fighting	76	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch devastates The pirate! [-31]
+1792890952	cmd	Alaric	27	16036	pirate.are	fighting	75	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch decimates The pirate! [-25]
+1792890956	cmd	Alaric	27	16036	pirate.are	fighting	75	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches The pirate. [-3]
