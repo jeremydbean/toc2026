@@ -14784,3 +14784,167 @@
 1792891132	cmd	Alaric	29	16038	pirate.are	fighting	55	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch DISEMBOWELS The pirate! [-41]
 1792891135	cmd	Alaric	29	16038	pirate.are	fighting	55	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes The pirate. [-5]
 1792891138	cmd	Alaric	29	16038	pirate.are	fighting	55	0	fight	nerve		You jab The pirate with wedged fingers, paralyzing a nerve. // Your nerve pinch maims The pirate! [-33]
+1792891266	cmd	Alaric	29	16039	pirate.are	standing	54	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792891268	cmd	Alaric	29	16039	pirate.are	standing	54	0	-	kill	pi	The pirate dodges your attack. // Your punch decimates The pirate! [-28] // The pirate walks off to the east.
+1792891272	cmd	Alaric	29	16040	pirate.are	standing	54	0	-	east		Main Deck - Starboard //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792891272	cmd	Alaric	29	16040	pirate.are	standing	54	0	-	kill	pi	The pirate parries your attack. // The pirate dodges your attack. // Your punch misses The pirate. [-0]
+1792891278	cmd	Alaric	30	4207	dresden_halloween.are	standing	54	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792891279	cmd	Alaric	30	4202	dresden_halloween.are	standing	54	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1792891280	cmd	Alaric	30	4201	dresden_halloween.are	standing	54	0	-	east		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1792891280	cmd	Alaric	30	2427	dresden_halloween.are	standing	54	0	-	east		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792891280	cmd	Alaric	30	2404	dresden_halloween.are	standing	54	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792891281	cmd	Alaric	30	2401	dresden_halloween.are	standing	54	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792891281	cmd	Alaric	30	2402	dresden_halloween.are	standing	54	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1792891281	cmd	Alaric	30	2406	dresden_halloween.are	standing	54	0	-	west		Northwestern Oak Tree Square. //   This is the northwestern corner of Oak Tree Square. // [Exits: east south]
+1792891281	cmd	Alaric	30	2406	dresden_halloween.are	standing	54	0	-	west		Alas, you cannot go that way.
+1792891282	cmd	Alaric	30	2406	dresden_halloween.are	standing	54	0	-	west		Alas, you cannot go that way.
+1792891282	cmd	Alaric	30	2406	dresden_halloween.are	standing	54	0	-	west		Alas, you cannot go that way.
+1792891283	cmd	Alaric	30	2405	dresden_halloween.are	standing	54	0	-	south		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1792891283	cmd	Alaric	30	2433	dresden_halloween.are	standing	54	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1792891284	cmd	Alaric	30	2434	dresden_halloween.are	standing	54	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792891284	cmd	Alaric	30	2435	dresden_halloween.are	standing	54	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792891285	cmd	Alaric	30	2436	dresden_halloween.are	standing	54	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792891285	cmd	Alaric	30	2437	dresden_halloween.are	standing	54	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792891286	cmd	Alaric	30	4800	dresden_halloween.are	standing	54	0	-	south		Another Dimension //   You have somehow left the City of Dresden, and entered another dimension. // To the north you can still make out the streets of Dresden thru the mist,
+1792891287	cmd	Alaric	30	4801	dresden_halloween.are	standing	54	0	-	south		The passage way //   A long narrow path leads upwards in a small secluded valley. Large but gentle // breezes ruffle the plethora of raiment that you wear, and a playful mist
+1792891287	cmd	Alaric	30	4802	dresden_halloween.are	standing	54	0	-	south		The narrow entrance //   You have reached the entrance of a narrow box canyon. Standing beside you is // an odd weather worn stone statue, that seems oddly out of place in the
+1792891287	cmd	Alaric	30	4803	dresden_halloween.are	standing	54	0	-	south		The Palm of the Creator //   A large stone hand rises out of the earth and points skyward...the only place // you find to stand in the room is at the center of the giant stone effigy.
+1792891287	cmd	Alaric	30	4803	dresden_halloween.are	standing	54	0	-	south		Alas, you cannot go that way.
+1792891288	cmd	Alaric	30	4803	dresden_halloween.are	standing	54	0	-	south		Alas, you cannot go that way.
+1792891290	cmd	Alaric	30	4803	dresden_halloween.are	standing	54	0	-	skills		Level  1: dagger              20%      hand to hand        87%       //           recall             100%       // Level  3: kick                 1%      
+1792891294	cmd	Alaric	30	4803	dresden_halloween.are	standing	54	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1792891299	cmd	Alaric	30	4807	dresden_halloween.are	standing	54	0	-	west		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered
+1792891299	cmd	Alaric	30	4807	dresden_halloween.are	standing	54	0	-	practice		fists of fury        1%  iron skin           75%  levitate            75%   // meditation          75%  second attack       75%  bash                 1%   // You have 155 practice sessions left.
+1792891302	cmd	Alaric	30	4807	dresden_halloween.are	standing	54	0	-	practice	fist	You practice fists of fury.
+1792891302	cmd	Alaric	30	4807	dresden_halloween.are	standing	54	0	-	practice	fist	You practice fists of fury.
+1792891302	cmd	Alaric	30	4807	dresden_halloween.are	standing	54	0	-	practice	fist	You practice fists of fury.
+1792891303	cmd	Alaric	30	4807	dresden_halloween.are	standing	54	0	-	practice	fist	You practice fists of fury.
+1792891303	cmd	Alaric	30	4807	dresden_halloween.are	standing	54	0	-	practice	fist	You practice fists of fury.
+1792891303	cmd	Alaric	30	4807	dresden_halloween.are	standing	54	0	-	practice	fist	You practice fists of fury.
+1792891303	cmd	Alaric	30	4807	dresden_halloween.are	standing	54	0	-	practice	fist	You are now learned at fists of fury.
+1792891305	cmd	Alaric	30	4807	dresden_halloween.are	standing	54	0	-	fists		Who do you want to attack?
+1792891307	cmd	Alaric	30	4807	dresden_halloween.are	standing	54	0	-	fill		Fill what?
+1792891312	cmd	Alaric	30	4807	dresden_halloween.are	standing	54	0	-	alias		(withheld)
+1792891316	cmd	Alaric	30	4807	dresden_halloween.are	standing	54	0	-	skills		Level  1: dagger              20%      hand to hand        87%       //           recall             100%       // Level  3: kick                 1%      
+1792891320	cmd	Alaric	30	4807	dresden_halloween.are	standing	54	0	-	wake		You are already standing.
+1792891321	cmd	Alaric	30	4807	dresden_halloween.are	standing	54	0	-	look		The Training room //   The sounds of strenuous exercise come from a man at the center of this // room. Target dummies line the area, some with broken parts others shattered
+1792891321	cmd	Alaric	30	4804	dresden_halloween.are	standing	54	0	-	east		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass
+1792891323	cmd	Alaric	30	4207	dresden_halloween.are	standing	54	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792891323	cmd	Alaric	30	4208	dresden_halloween.are	standing	54	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792891325	cmd	Alaric	30	4208	dresden_halloween.are	standing	54	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792891326	cmd	Alaric	30	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792891326	cmd	Alaric	30	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792891327	cmd	Alaric	30	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792891327	cmd	Alaric	30	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792891328	cmd	Alaric	30	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792891329	cmd	Alaric	30	9531	newthalo.are	standing	100	0	-	run	e 25	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792891329	cmd	Alaric	30	9531	newthalo.are	standing	100	0	-	open		Ok.
+1792891330	cmd	Alaric	30	9794	newthalo.are	standing	100	0	-	run	e 6	Outside the Eastern Gate of New Thalos // [Exits: east south west] // On a road
+1792891331	cmd	Alaric	30	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792891331	cmd	Alaric	30	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a
+1792891331	cmd	Alaric	30	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792891332	cmd	Alaric	30	16002	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792891333	cmd	Alaric	30	16003	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792891333	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1792891338	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891341	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891342	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891342	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891343	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891343	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891343	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891343	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891344	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891344	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891344	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891344	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891345	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891345	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891345	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891345	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891346	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891346	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891346	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891346	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891347	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891347	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891347	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891349	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	practice		clairvoyance         1%  ego whip             1%  mindbar              1%   // mind leech           1%  project              1%  psionic armor        1%   // telekinesis          1%  torment              1%  axe                  8%  
+1792891355	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	alias		(withheld)
+1792891360	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	help	fists	FISTS // Syntax: fists // Toggle the iron-fist fighting stance.  FISTS adopts an aggressive,
+1792891363	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists		Who do you want to attack?
+1792891366	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891367	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891367	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891368	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891368	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891368	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891368	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891369	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891369	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891369	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891369	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891370	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891370	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891370	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891370	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891371	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891371	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891371	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891371	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891372	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891372	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891372	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891372	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891373	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891373	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	fists	buc	You attack in an all consuming fury!
+1792891373	session	Alaric	30	16004	pirate.are	quit	1839s	+12 levels	+26152 exp	+62227152 copper	47 kills	0 deaths	0 quests	674 commands	1 refused	coin: loot 50p 1g 6s 91c
+1792891383	cmd	Alaric	30	16004	pirate.are	standing	100	0	-	kill	buc	Your punch *** DEVASTATES *** The bucaneer! [-66] // The bucaneer dodges your attack. // The bucaneer dodges your attack.
+1792891386	cmd	Alaric	30	16004	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The bucaneer. [-14] // Your fists of fury scratches The bucaneer. [-4]
+1792891392	cmd	Alaric	30	16004	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The bucaneer. [-18] // Your fists of fury injures The bucaneer. [-14]
+1792891398	cmd	Alaric	30	16004	pirate.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The bucaneer. [-12] // Your fists of fury scratches The bucaneer. [-2]
+1792891404	cmd	Alaric	30	16004	pirate.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The bucaneer. [-22] // Your fists of fury devastates The bucaneer! [-29]
+1792891409	cmd	Alaric	30	16004	pirate.are	fighting	97	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The bucaneer. [-7] // Your fists of fury hits The bucaneer. [-11]
+1792891415	cmd	Alaric	30	16004	pirate.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The bucaneer. [-19] // Your fists of fury injures The bucaneer. [-14]
+1792891421	cmd	Alaric	30	16004	pirate.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The bucaneer. [-3] // Your fists of fury scratches The bucaneer. [-4]
+1792891427	cmd	Alaric	30	16004	pirate.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The bucaneer. [-18] // Your fists of fury injures The bucaneer. [-16]
+1792891432	cmd	Alaric	30	16004	pirate.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The bucaneer. [-16] // The bucaneer is DEAD!!
+1792891438	cmd	Alaric	30	16004	pirate.are	standing	95	0	-	fists		Who do you want to attack?
+1792891439	cmd	Alaric	30	16004	pirate.are	standing	95	0	-	fists		Who do you want to attack?
+1792891439	cmd	Alaric	30	16004	pirate.are	standing	95	0	-	fists		Who do you want to attack?
+1792891439	cmd	Alaric	30	16004	pirate.are	standing	95	0	-	fists		Who do you want to attack?
+1792891439	cmd	Alaric	30	16004	pirate.are	standing	95	0	-	fists		Who do you want to attack?
+1792891440	cmd	Alaric	30	16004	pirate.are	standing	95	0	-	fists		Who do you want to attack?
+1792891440	cmd	Alaric	30	16004	pirate.are	standing	95	0	-	fists		Who do you want to attack?
+1792891440	cmd	Alaric	30	16004	pirate.are	standing	95	0	-	fists		Who do you want to attack?
+1792891440	cmd	Alaric	30	16004	pirate.are	standing	95	0	-	fists		Who do you want to attack?
+1792891441	cmd	Alaric	30	16004	pirate.are	standing	95	0	-	fists		Who do you want to attack?
+1792891441	cmd	Alaric	30	16004	pirate.are	standing	95	0	-	fists		Who do you want to attack?
+1792891441	cmd	Alaric	30	16004	pirate.are	standing	95	0	-	fists		Who do you want to attack?
+1792891441	cmd	Alaric	30	16004	pirate.are	standing	95	0	-	fists		Who do you want to attack?
+1792891442	cmd	Alaric	30	16004	pirate.are	standing	95	0	-	fists		Who do you want to attack?
+1792891468	cmd	Alaric	30	16004	pirate.are	standing	95	0	-	look		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1792891470	cmd	Alaric	30	16005	pirate.are	standing	95	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like
+1792891471	cmd	Alaric	30	16021	pirate.are	standing	95	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792891473	cmd	Alaric	30	16021	pirate.are	standing	95	0	-	scan		The midshipman                     -to the North. // The drunk pirate                   -to the East. // The sailor                         -to the South.
+1792891475	cmd	Alaric	30	16022	pirate.are	standing	95	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792891476	cmd	Alaric	30	16022	pirate.are	standing	95	0	-	kill	pi	Your punch <<< ERADICATES >>> The drunk pirate! [-155] // You have become better at hand to hand! // The drunk pirate dodges your attack.
+1792891479	cmd	Alaric	30	16022	pirate.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The drunk pirate. [-17] // Your fists of fury decimates The drunk pirate! [-27]
+1792891484	cmd	Alaric	30	16022	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The drunk pirate! [-31] // Your fists of fury grazes The drunk pirate. [-6]
+1792891490	cmd	Alaric	30	16022	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims The drunk pirate! [-35] // Your fists of fury hits The drunk pirate. [-9]
+1792891498	cmd	Alaric	30	16022	pirate.are	standing	94	0	-	scan		The drunk pirate                   -to the North.
+1792891501	cmd	Alaric	30	16027	pirate.are	standing	94	0	-	north		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792891502	cmd	Alaric	30	16027	pirate.are	fighting	94	0	fight	kill	pi	You do the best you can!
+1792891503	cmd	Alaric	30	16027	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The drunk pirate! [-29] // Your fists of fury MUTILATES The drunk pirate! [-39]
+1792891509	cmd	Alaric	30	16027	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The drunk pirate. [-2] // Your fists of fury decimates The drunk pirate! [-28]
+1792891514	cmd	Alaric	30	16027	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The drunk pirate. [-14] // Your fists of fury injures The drunk pirate. [-14]
+1792891520	cmd	Alaric	31	16027	pirate.are	standing	93	0	-	fists		Who do you want to attack?
+1792891520	cmd	Alaric	31	16027	pirate.are	standing	93	0	-	fists		Who do you want to attack?
+1792891521	cmd	Alaric	31	16027	pirate.are	standing	93	0	-	scan		The swashbuckler                   -to the East. // The swashbuckler                   -to the East. // The midshipman                     -to the West.
+1792891523	cmd	Alaric	31	16028	pirate.are	standing	93	0	-	east		Main Deck //   You are aboard the Royal Eagle.  She is preparing to take off on the next // high tide.  The crew is busy disguising her for a pirate's raid planned on
+1792891524	cmd	Alaric	31	16028	pirate.are	standing	93	0	-	kill	sw	The swashbuckler parries your attack. // The swashbuckler dodges your attack. // The swashbuckler blocks your attack with his shield.
+1792891526	cmd	Alaric	31	16028	pirate.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES The swashbuckler! [-40] // Your fists of fury wounds The swashbuckler. [-20]
+1792891532	cmd	Alaric	31	16028	pirate.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The swashbuckler. [-21] // Your fists of fury MUTILATES The swashbuckler! [-38]
+1792891538	cmd	Alaric	31	16028	pirate.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The swashbuckler. [-16] // Your fists of fury maims The swashbuckler! [-33]
+1792891544	cmd	Alaric	31	16028	pirate.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The swashbuckler! [-30] // Your fists of fury hits The swashbuckler. [-12]
+1792891549	cmd	Alaric	31	16028	pirate.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The swashbuckler! [-30] // Your fists of fury devastates The swashbuckler! [-32]
