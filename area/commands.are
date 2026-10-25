@@ -1839,14 +1839,15 @@ The Levels column is the character levels each dungeon is built for.
 
 Where they are, from The First Quest Begins where the cabinet sets you down:
   1  north up the I column to the River Landing, stepping stones west
-  2  east to Moblin Hollow, north, west to the Eastern Dock, ferry north
-  3  west through the Lost Woods and Bramble Wood, south, then east
+  2  east to Moblin Hollow, north, west to the Eastern Dock, then north
+  3  west through the woods to the Bramble Wood, south, then east
   4  Shore Below the Snake, plank bridge north, ENTER RAFT
-  5  north-east past Below the Lost Hills, two stepladder crossings north
-  6  far north-west: raft north to the graveyard, Ghost Hill, ladder north
+  5  north-east: the Lost Hills, west of Lone Armos Ridge -- north 4 times
+  6  far north-west, past the Lost Woods (north, west, south, west), the
+     graveyard and Ghost Hill
   7  the Still Pond in the west: PLAY RECORDER to drain it
   8  the Lion's Thicket in the east: BURN BUSH
-  9  Spectacle Rock: Lost Hills north five times, then BOMB CRACKED
+  9  Spectacle Rock: up the Mountain Stair, west twice, BOMB CRACKED
 Each entrance is DOWN from its screen.
 
 Nothing in Hyrule attacks first, and its creatures are a fair fight for
@@ -3536,7 +3537,9 @@ What Hyrule's tools do:
   Magical Shield  Takes a tenth off fire and magic (not with the Mirror
                   Shield, which does more).
   Power Bracelet  Strength while worn, and it moves the warp stones.
-  Raft, stepladder  The crossings, from the docks and the gaps.
+  Raft            ENTER RAFT to the Isle of the Snake, and the crossing
+                  from Lake Hylia's Eastern Dock to the Lonely Isle.
+  Stepladder      The coast's Heart Container ledge, and Level 5's moat.
 
 Each guardian also leaves two pieces of a five-piece drop table, each a
 little better than anything else a character of its band can find.

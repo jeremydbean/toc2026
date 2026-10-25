@@ -2492,8 +2492,11 @@ def world_sector(room: dict[str, Any]) -> int:
 # a template that listed the room's occupants, which is what this replaced.
 # --------------------------------------------------------------------------
 
-LOST_WOODS = "E2"
-LOST_HILLS = "H7"
+# The two mazes, where the NES keeps them (CheckMazes, Z_01.asm:4828-4890):
+# the Lost Woods is room $61 (guide B7) and the Lost Hills room $1B (guide
+# L2). They stood at E2 and H7 until 2026-10-25.
+LOST_WOODS = "B2"
+LOST_HILLS = "L7"
 DESCRIPTION_WIDTH = 75
 
 
@@ -2743,42 +2746,38 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
 
     # The maze rooms read exactly like the screen they repeat. A counter in
     # the name ("[2/3]") told the player the answer the maze is asking for.
-    # Lost Woods: north, west, south, west. East always escapes the maze.
-    lost_woods = world_vnums[LOST_WOODS]
-    lost_woods_east = rooms[lost_woods].exits.get("east")
-    lost_woods_west = rooms[lost_woods].exits.get("west")
-    for vnum in range(30750, 30753):
-        rooms[vnum] = RoomSpec(
-            vnum, rooms[lost_woods].name, rooms[lost_woods].description,
-            "N", rooms[lost_woods].sector,
-        )
-        if lost_woods_east:
-            rooms[vnum].exits["east"] = lost_woods_east
-    rooms[lost_woods].exits["north"] = ExitSpec(30750)
-    rooms[30750].exits["west"] = ExitSpec(30751)
-    rooms[30751].exits["south"] = ExitSpec(30752)
-    if lost_woods_west:
-        rooms[30752].exits["west"] = lost_woods_west
-    for vnum in (lost_woods, 30750, 30751, 30752):
-        for direction in ("north", "west", "south"):
-            rooms[vnum].exits.setdefault(direction, ExitSpec(lost_woods))
+    # Each copy is one step of the NES's MazeStep: the right direction moves
+    # to the next copy, and from the last copy out of the maze; the escape
+    # direction always leaves; anything else resets to the first screen.
+    # Entering from any side starts at the first screen, as the NES checks
+    # only on the way out.
+    def build_maze(base: int, copies: range, sequence: tuple[str, ...],
+                   escape: str) -> None:
+        exits = dict(rooms[base].exits)
+        steps = [base, *copies]
+        if len(steps) != len(sequence):
+            raise ValueError(f"maze at {base} has {len(steps)} screens for "
+                             f"{len(sequence)} steps")
+        for vnum in copies:
+            rooms[vnum] = RoomSpec(vnum, rooms[base].name, rooms[base].description,
+                                   "N", rooms[base].sector,
+                                   extras=list(rooms[base].extras))
+        for index, vnum in enumerate(steps):
+            room = rooms[vnum]
+            room.exits = {}
+            for direction in ("north", "east", "south", "west"):
+                room.exits[direction] = ExitSpec(base)
+            if escape in exits:
+                room.exits[escape] = exits[escape]
+            last = index == len(steps) - 1
+            room.exits[sequence[index]] = exits[sequence[index]] if last else ExitSpec(steps[index + 1])
 
-    # Lost Hills requires five consecutive northward screen crossings.
-    lost_hills = world_vnums[LOST_HILLS]
-    north_destination = rooms[lost_hills].exits["north"].destination
-    previous = lost_hills
-    for vnum in range(30753, 30757):
-        rooms[vnum] = RoomSpec(
-            vnum, rooms[lost_hills].name, rooms[lost_hills].description,
-            "N", rooms[lost_hills].sector,
-        )
-        rooms[previous].exits["north"] = ExitSpec(vnum)
-        previous = vnum
-    rooms[previous].exits["north"] = ExitSpec(north_destination)
-    for vnum in range(30753, 30757):
-        for direction in ("east", "south", "west"):
-            if direction in rooms[lost_hills].exits:
-                rooms[vnum].exits[direction] = rooms[lost_hills].exits[direction]
+    # Lost Woods: north, west, south, west (ForestMazeDirs). East escapes.
+    build_maze(world_vnums[LOST_WOODS], range(30750, 30753),
+               ("north", "west", "south", "west"), "east")
+    # Lost Hills: north four times (MountainMazeDirs). West escapes.
+    build_maze(world_vnums[LOST_HILLS], range(30753, 30756),
+               ("north", "north", "north", "north"), "west")
 
     # The Hungry Goriya and Ganon use their canonical gates.
     level_seven = manifest["dungeons"][6]

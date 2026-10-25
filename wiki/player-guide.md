@@ -218,8 +218,9 @@ being pulled to safety while link-dead, also go to the Temple.
 Some areas disable recall and provide their own exit path. In Hyrule that is
 the nine dungeons: inside a `Level N` dungeon, recall will not take you out,
 and you leave the way you came. The Hyrule overworld, its sword caves, shops,
-repair rooms, money games, warp halls and the Lost Woods all allow recall, and
-recalling is the intended way out of the Lost Woods loop. Do not enter a
+repair rooms, money games, warp halls and both mazes allow recall. The Lost
+Woods let you out east and the Lost Hills west, as on the NES; any other
+wrong turn walks you back to the start of the maze. Do not enter a
 dangerous one-way area assuming `recall` will always rescue you.
 
 ## Combat
@@ -596,7 +597,7 @@ the host's local policy before opting in or attacking another player.
 
 ## Hyrule: First Quest
 
-Hyrule is a generated 447-room campaign modeled after the first quest of the
+Hyrule is a generated 446-room campaign modeled after the first quest of the
 original Legend of Zelda. It contains a 128-room overworld, nine dungeons and
 cellars, level-scaled progression, canonical bosses and enemies, hidden
 interactions, dungeon maps and compasses, boss keys, the Triforce route, and

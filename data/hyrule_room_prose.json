@@ -78,8 +78,8 @@
       "description": "Open meadow runs right up to the western edge of the land, where the grass stops at a sheer brown bluff. A spinning flower rises and falls on the wind, and deep, heavy hoofprints cut through the blossoms beside scorched patches of grass, the trail of something large, four-legged and fire-breathing that patrols here. Paths lead north toward the rocks and east into the woods."
     },
     "B2": {
-      "name": "The Tangled Woods",
-      "description": "Dense trees crowd close on every side, their branches knotted overhead into a dim green roof. Paths wind away in all four directions between the trunks, and the only sounds are rustling leaves and the creak of old wood. Snapped spear-shafts and blue-dyed scraps of hide lie half-buried in the leaf litter, dropped by whatever hunts these woods in pairs."
+      "name": "The Lost Woods",
+      "description": "Every trunk here looks like every other, and the paths twist so strangely that a traveller can walk out one side of the grove and find the same trees waiting. Branches knot overhead into a dim green roof, and snapped spear-shafts and blue-dyed scraps of hide lie half-buried in the leaf litter, dropped by whatever hunts these woods in pairs. Paths wind away in all four directions, though only the trail east looks well trodden."
     },
     "C2": {
       "name": "Old Forest Clearing",
@@ -90,8 +90,8 @@
       "description": "Thorny brambles crowd between the trunks, snagging cloth and skin alike, and the trail weaves a careful line through them. A bush beside the path has dried out completely, its leaves brittle and grey, and the ground behind it rings faintly hollow underfoot. Spat stones and spear shafts lie together in the thorns. Paths break away through the brambles in all four directions."
     },
     "E2": {
-      "name": "The Lost Woods",
-      "description": "Every trunk here looks like every other, and the paths twist so strangely that a traveller can walk out one side of the grove and find the same trees waiting. Someone has cut a line into the bark of the oldest oak: NORTH, WEST, SOUTH, WEST. A cave mouth above the trail breathes a bitter smell of simmering herbs, and near the path a lone dead bush stands brittle enough to catch from a single spark."
+      "name": "The Herb-Gatherers' Wood",
+      "description": "Tall trees stand well apart here, and a worn trail winds between them to the north, east and west. A cave mouth above the trail breathes a bitter smell of simmering herbs, and near the path a lone dead bush stands brittle enough to catch from a single spark."
     },
     "F2": {
       "name": "Forest Stream",
@@ -139,7 +139,7 @@
     },
     "A3": {
       "name": "Western Crags",
-      "description": "Brown boulders and jagged rock spurs crowd the western edge of the world, and deep claw marks score the stone beside blackened streaks where something spat fire. Scattered bones bleach in the sun. To the north a channel of dark water cuts off the way, wide enough that only a raft could cross it, while a rough path winds south between the rocks."
+      "description": "Brown boulders and jagged rock spurs crowd the western edge of the world, and deep claw marks score the stone beside blackened streaks where something spat fire. Scattered bones bleach in the sun. To the north the rocks give way in rough steps toward a graveyard, while a rough path winds south between the rocks."
     },
     "B3": {
       "name": "Deepwood Corner",
@@ -203,7 +203,7 @@
     },
     "A4": {
       "name": "The Graveyard's Southern Fence",
-      "description": "Weathered headstones lean in crooked rows behind a low, crumbling wall, their names long since rubbed away by wind and rain. The grass grows thin and grey, a cold mist clings to the ground, and now and then a pale shape drifts across the stones and is gone. To the south the land drops to dark water and a small stone landing for a raft, and open country runs on to the east and north."
+      "description": "Weathered headstones lean in crooked rows behind a low, crumbling wall, their names long since rubbed away by wind and rain. The grass grows thin and grey, a cold mist clings to the ground, and now and then a pale shape drifts across the stones and is gone. To the south rough stone steps lead down among the crags, and open country runs on to the east and north."
     },
     "B4": {
       "name": "Hollow of Headstones",
@@ -275,11 +275,11 @@
     },
     "C5": {
       "name": "Ghost Hill",
-      "description": "A low grassy hill overlooks the graveyard to the west, its slopes dotted with wildflowers and scarred by heavy hoofprints and black scorch marks where something breathes fire. A flower head spins up from the grass now and then and whirls away. The air is warmer than among the graves. A crevice to the north needs a ladder to cross, and the way continues east and west."
+      "description": "A low grassy hill overlooks the graveyard to the west, its slopes dotted with wildflowers and scarred by heavy hoofprints and black scorch marks where something breathes fire. A flower head spins up from the grass now and then and whirls away. The air is warmer than among the graves. Stone steps climb north up the hill, and the way continues east and west."
     },
     "D5": {
       "name": "The Cracked Bluff",
-      "description": "A tall bluff of brown rock stands at the edge of the highlands, its face stained by old water. Near its base the stone is cracked and flaking, and a faint herbal scent of boiled roots drifts out of the gaps, as if a medicine woman kept shop behind a wall that a bomb could open. A narrow crevice to the north wants a ladder, and the land opens to the west."
+      "description": "A tall bluff of brown rock stands at the edge of the highlands, its face stained by old water. Near its base the stone is cracked and flaking, and a faint herbal scent of boiled roots drifts out of the gaps, as if a medicine woman kept shop behind a wall that a bomb could open. Rough stone steps lead north, and the land opens to the west."
     },
     "E5": {
       "name": "The Silent Sentinels",
@@ -287,7 +287,7 @@
     },
     "F5": {
       "name": "The Quiet Glade",
-      "description": "Tall trees ring a peaceful glade of soft grass, and the light falls in gentle patches through their leaves. Birdsong drifts from the branches, and no tracks but a deer's cross the turf. A narrow gully leads north toward the higher country, too deep to climb without a ladder, and the glade opens to the east."
+      "description": "Tall trees ring a peaceful glade of soft grass, and the light falls in gentle patches through their leaves. Birdsong drifts from the branches, and no tracks but a deer's cross the turf. A narrow gully cut into rough steps leads north toward the higher country, and the glade opens to the east."
     },
     "G5": {
       "name": "The Sheltered Hollow",
@@ -339,15 +339,15 @@
     },
     "C6": {
       "name": "The Dragon's Gate",
-      "description": "Bare highland rock surrounds a dark entrance carved into a low outcrop, its mouth framed by stone shaped like the head and coiled body of a dragon. Hot, stale air breathes out of it. Deep hoofprints and blackened scorch marks from something that spits fire cover the ground, and a narrow crevice to the south is the only way out, crossed with a ladder."
+      "description": "Bare highland rock surrounds a dark entrance carved into a low outcrop, its mouth framed by stone shaped like the head and coiled body of a dragon. Hot, stale air breathes out of it. Deep hoofprints and blackened scorch marks from something that spits fire cover the ground, and a flight of stone steps to the south is the only way out."
     },
     "D6": {
       "name": "The Western Warp Stone",
-      "description": "A lonely boulder sits in a ring of trampled grass, heavier and squarer than the stones around it, far too heavy to move without a bracelet of great strength. The earth at its base is scraped, as if a stair beneath had been uncovered and covered again. Deep hoofprints circle the place, and a narrow crevice drops away to the south. The way east lies open."
+      "description": "A lonely boulder sits in a ring of trampled grass, heavier and squarer than the stones around it, far too heavy to move without a bracelet of great strength. The earth at its base is scraped, as if a stair beneath had been uncovered and covered again. Deep hoofprints circle the place, and rough stone steps drop away to the south. The way east lies open."
     },
     "E6": {
       "name": "The Armos Gallery",
-      "description": "A row of carved stone soldiers stands at attention across the highland, each holding a spear, their blank eyes fixed on the horizon. They look patient and very old. One of them, the second from the end, stands slightly off true from the others, and the ground beneath it rings hollow, as though it guards some small treasure. A crevice to the north leads toward the mountain."
+      "description": "A row of carved stone soldiers stands at attention across the highland, each holding a spear, their blank eyes fixed on the horizon. They look patient and very old. One of them, the second from the end, stands slightly off true from the others, and the ground beneath it rings hollow, as though it guards some small treasure. Stone steps to the north lead toward the mountain."
     },
     "F6": {
       "name": "The Bomb Merchant's Cave",
@@ -374,16 +374,16 @@
       "description": "A long strip of dunes runs between the green fields and the mountains, the sand rippled into fine waves by the wind. Spiral burrow marks appear and fade across it, the dust in them faintly blue. The way leads east, west and south, and the brown peaks of Death Mountain loom to the north, smoking at their crowns."
     },
     "L6": {
-      "name": "Below the Lost Hills",
-      "description": "Sand and scrub mingle at the foot of the rolling hills to the north, where a narrow crevice climbs toward them that only a ladder will bridge. The ground is soft and pocked with burrow holes, and a flower spins lazily overhead. Paths lead off in every direction, and the hills above seem to shift whenever you look away."
+      "name": "Sands Below the Hills",
+      "description": "Sand and scrub mingle at the foot of the rolling hills to the north, but a wall of brown rock rises between them with no way up. The ground is soft and pocked with burrow holes, and a flower spins lazily overhead. Paths lead off east, west and south, and the hills above seem to shift whenever you look away."
     },
     "M6": {
       "name": "Lake Hylia, North Cliffs",
-      "description": "Brown cliffs rise from the northern edge of Lake Hylia, and the blue water glints below. The rock is dented by paired springing marks, and one part of the cliff face is split with deep cracks, firelight flickering behind them beside a slower red pulse, as though a bomb would open a room where a heart and a potion wait and only one may be taken. A crevice leads north; the shore runs east and west."
+      "description": "Brown cliffs rise from the northern edge of Lake Hylia, and the blue water glints below. The rock is dented by paired springing marks, and one part of the cliff face is split with deep cracks, firelight flickering behind them beside a slower red pulse, as though a bomb would open a room where a heart and a potion wait and only one may be taken. Stone steps lead north; the shore runs east and west."
     },
     "N6": {
       "name": "Lake Hylia, North Shore",
-      "description": "Green grass runs down to the lake's northern shore, where small waves lap at a strip of pebbles. Spat stones lie scattered on the turf. A low rock face at the back of the shore is cracked through in one place, and coins seem to chink behind it whenever the wind gusts. A narrow crevice leads north into the mountains, and paths run east, west and south."
+      "description": "Green grass runs down to the lake's northern shore, where small waves lap at a strip of pebbles. Spat stones lie scattered on the turf. A low rock face at the back of the shore is cracked through in one place, and coins seem to chink behind it whenever the wind gusts. A flight of stone steps leads north into the mountains, and paths run east, west and south."
     },
     "O6": {
       "name": "Lake Hylia, Northeast Shore",
@@ -395,19 +395,19 @@
     },
     "A7": {
       "name": "The Western Gorge",
-      "description": "Steep brown walls box in this gorge at the western edge of the mountains, and the wind funnels through with a low howl. Hoofprints and scorch marks cross and recross the floor. In one wall a crack spreads like a spider's web, and behind it the clack of a game being played seems to echo, as if a bomb would let a gambler in. Northward a deep crevice splits the rock; the way east is open."
+      "description": "Steep brown walls box in this gorge at the western edge of the mountains, and the wind funnels through with a low howl. Hoofprints and scorch marks cross and recross the floor. In one wall a crack spreads like a spider's web, and behind it the clack of a game being played seems to echo, as if a bomb would let a gambler in. Northward rough stone steps climb the rock; the way east is open."
     },
     "B7": {
       "name": "The Windswept Shelf",
-      "description": "A flat shelf of rock juts out from the mountainside, scoured clean by constant wind. A few tough flowers grow in the lee of the boulders, their petals torn ragged, and one of them spins as though it would fly. Deep hoofprints lead to the edge and back. A crevice runs along the northern side, and the only easy way off the shelf leads west."
+      "description": "A flat shelf of rock juts out from the mountainside, scoured clean by constant wind. A few tough flowers grow in the lee of the boulders, their petals torn ragged, and one of them spins as though it would fly. Deep hoofprints lead to the edge and back. Rough steps climb the northern side, and the way west is open."
     },
     "C7": {
       "name": "The Shieldmaker's Bluff",
-      "description": "A blunt bluff of brown stone rises from the slope, its face streaked with mineral stains and scorched by fiery breath. Low down, a section of it is cracked and loose, and the faint ring of a hammer on metal seems to come from somewhere inside, where shields are sold to those willing to blast their way in. The trail leads east, and a crevice opens in the rock to the north."
+      "description": "A blunt bluff of brown stone rises from the slope, its face streaked with mineral stains and scorched by fiery breath. Low down, a section of it is cracked and loose, and the faint ring of a hammer on metal seems to come from somewhere inside, where shields are sold to those willing to blast their way in. The trail leads east, and stone steps climb the rock to the north."
     },
     "D7": {
       "name": "Broken Stone Terrace",
-      "description": "Terraces of broken stone step down the mountainside like a ruined stair. Lynel tracks, deep and wide, scar the dust between them, and scorch marks show where they spat fire at shadows. At the back of one terrace the cliff is fissured and weak, as if hiding a hollow full of someone's coin. A crevice to the north separates this place from the heights; ways lead east and west."
+      "description": "Terraces of broken stone step down the mountainside like a ruined stair. Lynel tracks, deep and wide, scar the dust between them, and scorch marks show where they spat fire at shadows. At the back of one terrace the cliff is fissured and weak, as if hiding a hollow full of someone's coin. Stone steps to the north climb toward the heights; ways lead east and west."
     },
     "E7": {
       "name": "The Crumbling Scarp",
@@ -422,8 +422,8 @@
       "description": "A gully runs east and west beneath an unstable cliff, and every few moments a rock tumbles from above and bounds across it, bouncing high before it shatters. Gravel crunches underfoot. One section of the gully wall is split with fresh cracks, and a faint clink, like coins being counted for a wager, seems to echo behind it."
     },
     "H7": {
-      "name": "The Lost Hills",
-      "description": "Brown hills rise and fall here, each fold of ground so like the last that the eye loses its place among them. The trail climbs north toward the high peaks between banks of loose scree, and paths wander off east and west along the slope. On a flat stone by the trail someone has scratched: GO UP, UP, THE MOUNTAIN AHEAD. Loose rocks bound down from above now and then."
+      "name": "The Mountain Stair",
+      "description": "Brown hills rise steeply here toward the high peaks, and a flight of rough stone steps, worn into the slope by countless feet, climbs north between banks of loose scree. Paths wander off east and west along the slope and south toward the green country. Loose rocks bound down from above now and then."
     },
     "I7": {
       "name": "The Boulder Run",
@@ -435,15 +435,15 @@
     },
     "K7": {
       "name": "The Springing Hills",
-      "description": "Rolling brown hills begin here, each one shaped so much like the last that the eye loses its place among them, the ground dented with paired springing marks. The river from the falls to the north tumbles over a rock face in a white curtain, and behind its spray a dark opening leads down into the cliff. A crevice divides the hills from the high country to the north, and paths run east and west."
+      "description": "Rolling brown hills begin here, each one shaped so much like the last that the eye loses its place among them, the ground dented with paired springing marks. The river from the falls to the north tumbles over a rock face in a white curtain, and behind its spray a dark opening leads down into the cliff. Stone steps climb from the hills to the high country to the north, and paths run east and west."
     },
     "L7": {
-      "name": "Hills Below the Basin",
-      "description": "Brown hills rise and fall in every direction here, scored by narrow crevices that cut the ground to the north and south and can only be crossed by ladder. The wind moans through the gaps between them like distant laughter, and loose stones skitter down the slopes at every gust. Paths wind east and west along the ridgelines."
+      "name": "The Lost Hills",
+      "description": "Brown hills rise and fall in every direction here, each fold of ground so like the last that the eye loses its place among them. The wind moans through the gaps between them like distant laughter, and loose stones skitter down the slopes at every gust. Paths wind away along the ridgelines, though only the way west, back toward the roar of the falls, ever seems to lead anywhere new."
     },
     "M7": {
       "name": "Lone Armos Ridge",
-      "description": "A single weathered stone soldier stands guard on this narrow ridge, its carved face worn smooth by the wind and its spear chipped at the point. Brown rock falls away on both sides. The ground around the statue is scuffed, as if it sometimes steps off its post, and warm air rises from a seam under its base, as though pushing it aside would uncover a stair. Gaps open north and south, and paths run east and west."
+      "description": "A single weathered stone soldier stands guard on this narrow ridge, its carved face worn smooth by the wind and its spear chipped at the point. Brown rock falls away on both sides. The ground around the statue is scuffed, as if it sometimes steps off its post, and warm air rises from a seam under its base, as though pushing it aside would uncover a stair. Stone steps lead north and south, and paths run east and west."
     },
     "N7": {
       "name": "The Heavy Boulder",
@@ -451,27 +451,27 @@
     },
     "O7": {
       "name": "The Scarred Cliffs",
-      "description": "These cliffs are pocked and gouged, and one patch in particular is laced with cracks so deep that light seems to show between them, as though a bomb would open a room someone else would want paid for. Paired springing marks dent the dusty ground. The way runs east and west along the base of the rock, and a crevice opens to the north."
+      "description": "These cliffs are pocked and gouged, and one patch in particular is laced with cracks so deep that light seems to show between them, as though a bomb would open a room someone else would want paid for. Paired springing marks dent the dusty ground. The way runs east and west along the base of the rock, and stone steps climb to the north."
     },
     "P7": {
       "name": "The Eastern Cliffs",
-      "description": "The mountains drop sharply to the east here, and a broad shelf of rock catches the morning sun. A cave mouth opens in the cliff, and from its shadow comes the rattle of something being shaken, then laughter and a voice inviting all comers to play the money-making game. Wildflowers grow along the shelf, some of them spinning, and a crevice splits the rock to the north."
+      "description": "The mountains drop sharply to the east here, and a broad shelf of rock catches the morning sun. A cave mouth opens in the cliff, and from its shadow comes the rattle of something being shaken, then laughter and a voice inviting all comers to play the money-making game. Wildflowers grow along the shelf, some of them spinning, and at the north end of the shelf a cleft in the rock, easy to take for a solid wall, lets a traveller squeeze through."
     },
     "A8": {
       "name": "Death Mountain's Western Summit",
-      "description": "The world ends here in a wall of brown boulders, stacked shoulder to shoulder against a pale, empty sky. Thin wind whistles through the gaps and carries nothing but grit and the distant clatter of falling rock. To the south a narrow crevice splits the stone, too wide to step across and too deep to see the bottom of without a ladder to bridge it. The way east follows the summit."
+      "description": "The world ends here in a wall of brown boulders, stacked shoulder to shoulder against a pale, empty sky. Thin wind whistles through the gaps and carries nothing but grit and the distant clatter of falling rock. To the south a narrow stair winds down through the stone. The way east follows the summit."
     },
     "B8": {
       "name": "Lynel Ridge",
-      "description": "A high ridge of rust-brown rock runs east and west, its ground churned by heavy hooves and dotted with scorched patches where something spat fire. One stretch of the cliff face is webbed with fine cracks, as though the stone behind it were hollow and lived in, and whoever lives there will want the door paid for. A deep crevice bars the way south."
+      "description": "A high ridge of rust-brown rock runs east and west, its ground churned by heavy hooves and dotted with scorched patches where something spat fire. One stretch of the cliff face is webbed with fine cracks, as though the stone behind it were hollow and lived in, and whoever lives there will want the door paid for. Rough stone steps lead down to the south."
     },
     "C8": {
       "name": "The High Boulder Pass",
-      "description": "Rounded boulders the size of huts crowd this pass, leaving a crooked lane of bare earth between them. The air is thin and cold, and every sound bounces back twice from the cliffs. Hoofprints the width of a shield and singed lichen mark the trail, and a sheer-sided crevice opens in the rock to the south. The pass runs east and west."
+      "description": "Rounded boulders the size of huts crowd this pass, leaving a crooked lane of bare earth between them. The air is thin and cold, and every sound bounces back twice from the cliffs. Hoofprints the width of a shield and singed lichen mark the trail, and a stair of rough stone drops away to the south. The pass runs east and west."
     },
     "D8": {
       "name": "Rockfall Crest",
-      "description": "Loose scree pours down from the peaks above, and every so often a fresh stone comes bounding across the crest with a hollow clatter. The ground is pocked with craters from earlier falls. In the northern cliff one patch of rock looks oddly brittle, flaking at a touch, as if a single bomb would open it, and a narrow crevice cuts the slope to the south. The crest runs west."
+      "description": "Loose scree pours down from the peaks above, and every so often a fresh stone comes bounding across the crest with a hollow clatter. The ground is pocked with craters from earlier falls. In the northern cliff one patch of rock looks oddly brittle, flaking at a touch, as if a single bomb would open it, and rough steps cut down the slope to the south. The crest runs west."
     },
     "E8": {
       "name": "The Medicine Woman's Ledge",
@@ -487,7 +487,7 @@
     },
     "H8": {
       "name": "The Summit Road",
-      "description": "A worn path threads east and west along the mountain's crown, hemmed in by tumbled boulders and scorched by fiery breath. One face of the cliff shows a dark crack running from top to bottom, as if a single bomb might open it on a room someone would charge for. To the south the trail stops at a narrow crevice with the mountain trail visible beyond."
+      "description": "A worn path threads east and west along the mountain's crown, hemmed in by tumbled boulders and scorched by fiery breath. One face of the cliff shows a dark crack running from top to bottom, as if a single bomb might open it on a room someone would charge for. To the south a flight of stone steps drops back down the mountain."
     },
     "I8": {
       "name": "Avalanche Slope",
@@ -499,27 +499,27 @@
     },
     "K8": {
       "name": "The White Sword Falls",
-      "description": "A river spills over the lip of the mountain and drops in a roaring white curtain, filling the air with cold spray and rainbows. At the very top of the climb a cave mouth opens in the rock beside the falls, half hidden by mist, and the stone around it is worn smooth by those who came to prove their strength. Ripples in the pool below suggest something finned moves beneath. A crevice lies south."
+      "description": "A river spills over the lip of the mountain and drops in a roaring white curtain, filling the air with cold spray and rainbows. At the very top of the climb a cave mouth opens in the rock beside the falls, half hidden by mist, and the stone around it is worn smooth by those who came to prove their strength. Ripples in the pool below suggest something finned moves beneath. A stone stair leads down to the south."
     },
     "L8": {
       "name": "The Lizard's Gate",
-      "description": "Beyond the confusing folds of the Lost Hills the ground levels into a hidden basin of reddish sand. At its heart a squat entrance is cut into the stone, framed in a carved shape like a crouching lizard, its doorway black and cool. Dry wind hisses through the sand where something red bores up and dives again, and a crevice bars the way back south."
+      "description": "Beyond the confusing folds of the Lost Hills to the south the ground levels into a hidden basin of reddish sand. At its heart a squat entrance is cut into the stone, framed in a carved shape like a crouching lizard, its doorway black and cool. Dry wind hisses through the sand where something red bores up and dives again, and a stone stair leads back down to the south."
     },
     "M8": {
       "name": "The Candle Merchant's Hollow",
-      "description": "A dip among the high boulders shelters a cave mouth from the worst of the wind. A whiff of tallow and lamp smoke hangs at the entrance, where candles and other goods are sold, and the dust before it is scuffed by many feet. Small craters show where something springs and lands, springs and lands, all across the hollow. Ways lead east, and a crevice lies south."
+      "description": "A dip among the high boulders shelters a cave mouth from the worst of the wind. A whiff of tallow and lamp smoke hangs at the entrance, where candles and other goods are sold, and the dust before it is scuffed by many feet. Small craters show where something springs and lands, springs and lands, all across the hollow. Ways lead east, and stone steps lead down to the south."
     },
     "N8": {
       "name": "Tektite Heights",
-      "description": "The rock here is pitted with shallow dents, as though something heavy had been bouncing across it on long legs for years. Brown cliffs rise to the north, and one section of them is cracked and crumbling, with a faint draught whispering out of the seams and a smell of bitter medicine on it. A narrow crevice divides the heights from the land to the south, and the way west is open."
+      "description": "The rock here is pitted with shallow dents, as though something heavy had been bouncing across it on long legs for years. Brown cliffs rise to the north, and one section of them is cracked and crumbling, with a faint draught whispering out of the seams and a smell of bitter medicine on it. Stone steps lead down from the heights to the land to the south, and the way west is open."
     },
     "O8": {
       "name": "Ledge of the Letter Cave",
-      "description": "A lonely ledge looks out over the eastern slopes, with a cave mouth gaping in the cliff behind it. Inside, a warm glow flickers, as though a pair of fires were kept burning against the cold. Someone has chalked beside the entrance: SHOW THIS TO THE OLD WOMAN. The wind is softer here, and a crevice falls away to the south."
+      "description": "A lonely ledge looks out over the eastern slopes, with a cave mouth gaping in the cliff behind it. Inside, a warm glow flickers, as though a pair of fires were kept burning against the cold. Someone has chalked beside the entrance: SHOW THIS TO THE OLD WOMAN. The wind is softer here, and a stone stair falls away to the south."
     },
     "P8": {
       "name": "The Northeast Crag",
-      "description": "The far corner of the mountains ends in a sheer brown crag above the eastern wilds, the eastmost point of Hyrule's high country. A dark cave opens in its base, small and easily overlooked, and over the entrance someone has scrawled: IT'S A SECRET TO EVERYBODY. Stubborn shrubs grow in the cracks, and a deep crevice to the south falls away into shadow."
+      "description": "The far corner of the mountains ends in a sheer brown crag above the eastern wilds, the eastmost point of Hyrule's high country. A dark cave opens in its base, small and easily overlooked, and over the entrance someone has scrawled: IT'S A SECRET TO EVERYBODY. Stubborn shrubs grow in the cracks, and a narrow cleft to the south leads back down to the shelf below."
     }
   },
   "dungeons": {
@@ -1701,7 +1701,7 @@
     },
     "potion_shop:E7": {
       "name": "Simmering Herb Cellar",
-      "description": "Mist from the Lost Woods creeps down the steps and mingles with the steam of simmering herbs, so that the cave seems full of a sour green fog. A pair of fires heat a broad copper pan, and the walls are crowded with jars of powdered bark. Painted on a slate are two prices, 40 for a blue Life Potion and 68 for a red 2nd Potion, served only to one bearing the princess's letter. Steps lead up into the woods."
+      "description": "Mist from the woods creeps down the steps and mingles with the steam of simmering herbs, so that the cave seems full of a sour green fog. A pair of fires heat a broad copper pan, and the walls are crowded with jars of powdered bark. Painted on a slate are two prices, 40 for a blue Life Potion and 68 for a red 2nd Potion, served only to one bearing the princess's letter. Steps lead up into the woods."
     },
     "potion_shop:H3": {
       "name": "Dispensary at the Mountain's Foot",

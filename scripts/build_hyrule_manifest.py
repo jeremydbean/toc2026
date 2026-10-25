@@ -31,7 +31,35 @@ PASSABLE_VERTICAL = {
 }
 RAFT_HORIZONTAL = {(41, 41)}
 RAFT_VERTICAL = {(43, 43), (44, 44), (43, 3)}
-LADDER_VERTICAL = {(15, 15), (15, 1), (15, 9)}
+# The (15, x) pairs are Death Mountain's blue-barred stone stairs, which the
+# NES walks on foot. They used to be read as stepladder crossings, which put
+# 38 ladder gates on the mountain; the NES deploys the stepladder on six
+# screens only (LadderRoomsOW, Z_07.asm:3175: guide H2, I2, J2, H3, P5, P6)
+# and the First Quest needs it for one thing on the overworld, the coast
+# Heart Container, which build_hyrule_area.py places behind its own crossing.
+
+# Edges the tile pairs read wrongly, in manifest coordinates (north, south).
+# None removes the edge; a gate name replaces the one read.
+EDGE_OVERRIDES = {
+    # Guide A5/A6: walkable stairs. The NES has a dock in two rooms only,
+    # $3F (guide P4) and $55 (guide F6) -- SetupTileObjectOW, Z_05.asm:1844.
+    ("A4", "A3"): "open",
+    # Guide L2/L3: L2 is the Lost Hills, and leaving it south loops back
+    # into it (CheckMazes, Z_01.asm:4874); the screen below shows rock.
+    ("L7", "L6"): None,
+}
+
+
+def apply_edge_overrides(vertical: dict[tuple[str, str], str]) -> dict[tuple[str, str], str]:
+    result = dict(vertical)
+    for edge, gate in EDGE_OVERRIDES.items():
+        if edge not in result:
+            raise ValueError(f"edge override {edge} names no edge")
+        if gate is None:
+            del result[edge]
+        else:
+            result[edge] = gate
+    return result
 
 # NESMaps marks every bombable dungeon wall in the labeled map with the same
 # 16x16 bomb sprite on both adjoining room images. The extracted cell images
@@ -460,12 +488,10 @@ def build_overworld(reference: Path, entities: dict[str, Any]) -> list[dict[str,
     vertical = edge_lookup(
         load_json(reference / "overworld-vertical-edge-pairs.json"),
         PASSABLE_VERTICAL,
-        {
-            **{pair: "raft" for pair in RAFT_VERTICAL},
-            **{pair: "stepladder" for pair in LADDER_VERTICAL},
-        },
+        {pair: "raft" for pair in RAFT_VERTICAL},
         "north", "south",
     )
+    vertical = apply_edge_overrides(vertical)
     all_coordinates = [f"{chr(ord('A') + column)}{row}" for row in range(1, 9) for column in range(16)]
     ordered_coordinates = ["H1", *[coordinate for coordinate in all_coordinates if coordinate != "H1"]]
     vnums = {coordinate: 30200 + index for index, coordinate in enumerate(ordered_coordinates)}

@@ -110,23 +110,28 @@ without taking a wound leaves one too.
 Where the entrances are, from The First Quest Begins:
  L1 Eagle's Gate: north to the River Landing, stepping stones west, DOWN.
  L2 Moon Gate: east through the meadows to Moblin Hollow, north to the Wooded
-   Crossroads, west to the Eastern Dock, the ferry north, DOWN.
+   Crossroads, west to the Eastern Dock, north, DOWN.
  L3 Grove of the Manji: west through the woods (Candle Shop Knoll, Forest
-   Stream, Lost Woods, Bramble Wood), south to the Path to the Manji, east, DOWN.
+   Stream, Herb-Gatherers' Wood, Bramble Wood), south to the Path to the Manji,
+   east, DOWN.
  L4 Isle of the Snake: Forest Stream north to the Shore Below the Snake, plank
    bridge north, ENTER RAFT (needs the raft).
- L5 Lizard's Gate: River Landing north, east across the sands to Below the
-   Lost Hills, north twice over stepladder crossings, DOWN.
- L6 Dragon's Gate: west to the Western Meadow Edge, north by raft to the
-   graveyard, east to Ghost Hill, north by stepladder, DOWN.
+ L5 Lizard's Gate: Southern Sands north to the Sands Below the Hills, east,
+   north to Lone Armos Ridge, west into the Lost Hills, then NORTH FOUR TIMES
+   (west always leads out; any other way turns you round), DOWN.
+ L6 Dragon's Gate: west from the Old Forest Clearing into the Lost Woods,
+   then NORTH, WEST, SOUTH, WEST (east always leads out) to the Western Meadow
+   Edge; north twice to the graveyard, east, north, east to Ghost Hill,
+   north, DOWN.
  L7 The Still Pond: Shore Below the Snake west to the Lost Woods Crossing,
    north; PLAY RECORDER to drain the pond, DOWN.
  L8 Lion's Thicket: east along the river from Bush Row; BURN BUSH, DOWN.
  L9 Spectacle Rock: River Landing north, west to the Foot of Death Mountain,
-   north FIVE times through the Lost Hills, west twice; BOMB CRACKED with all
-   eight pieces held, DOWN.
-Crossings: a "raft crossing" exit needs the raft carried; a "stepladder
-crossing" the stepladder. Sealed ways open only by their act: BOMB CRACKED
+   north twice up the Mountain Stair, west twice; BOMB CRACKED with all eight
+   pieces held, DOWN.
+Crossings: a "raft crossing" exit needs the raft carried (Lake Hylia's
+Eastern Dock to the Lonely Isle); ENTER RAFT on the Shore Below the Snake
+needs it too; the coast's Heart Container ledge needs the stepladder. Sealed ways open only by their act: BOMB CRACKED
 (a bomb, used up), BURN BUSH (a lit Blue or Red Candle in the light slot),
 PUSH an Armos, block or grave, PUSH STONE at a warp hall (Power Bracelet),
 PLAY RECORDER, FEED the hungry Goriya bait. Shutters open when the room's

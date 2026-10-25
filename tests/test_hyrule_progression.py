@@ -1017,7 +1017,7 @@ class HyruleProgressionTests(unittest.TestCase):
 
     def test_rooms_describe_the_place_and_fit_a_terminal(self) -> None:
         """The old prose was one template that listed who was in the room."""
-        lost_maze = set(range(30750, 30757))
+        lost_maze = set(range(30750, 30756))
         problems = []
         seen: dict[str, int] = {}
         for vnum, room in sorted(self.hyrule_rooms.items()):

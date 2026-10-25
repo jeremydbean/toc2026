@@ -38830,16 +38830,16 @@
    <exit direction="west" target="30214" />
   </room>
   <room id="30216" area="45" title="Western Meadow Edge" environment="6">
-   <coord x="-8" y="1" z="0" />
+   <coord x="-9" y="1" z="0" />
    <exit direction="north" target="30232" />
    <exit direction="east" target="30217" />
   </room>
-  <room id="30217" area="45" title="The Tangled Woods" environment="4">
-   <coord x="-7" y="1" z="0" />
-   <exit direction="north" target="30233" />
+  <room id="30217" area="45" title="The Lost Woods" environment="4">
+   <coord x="-6" y="1" z="0" />
+   <exit direction="north" target="30750" />
    <exit direction="east" target="30218" />
-   <exit direction="south" target="30202" />
-   <exit direction="west" target="30216" />
+   <exit direction="south" target="30217" />
+   <exit direction="west" target="30217" />
   </room>
   <room id="30218" area="45" title="Old Forest Clearing" environment="4">
    <coord x="-5" y="1" z="0" />
@@ -38857,11 +38857,10 @@
    <exit direction="west" target="30218" />
    <exit direction="down" target="30702" />
   </room>
-  <room id="30220" area="45" title="The Lost Woods" environment="4">
+  <room id="30220" area="45" title="The Herb-Gatherers' Wood" environment="3">
    <coord x="-3" y="1" z="0" />
-   <exit direction="north" target="30750" />
+   <exit direction="north" target="30236" />
    <exit direction="east" target="30221" />
-   <exit direction="south" target="30220" />
    <exit direction="west" target="30219" />
    <exit direction="up" target="30694" />
    <exit direction="down" target="30659" />
@@ -38946,20 +38945,20 @@
    <exit direction="south" target="30216" />
   </room>
   <room id="30233" area="45" title="Deepwood Corner" environment="4">
-   <coord x="-8" y="2" z="0" />
+   <coord x="-6" y="2" z="0" />
    <exit direction="east" target="30234" />
    <exit direction="south" target="30217" />
    <exit direction="down" target="30660" />
   </room>
   <room id="30234" area="45" title="Lost Woods Crossing" environment="4">
-   <coord x="-7" y="2" z="0" />
+   <coord x="-5" y="2" z="0" />
    <exit direction="north" target="30250" />
    <exit direction="east" target="30235" />
    <exit direction="south" target="30218" />
    <exit direction="west" target="30233" />
   </room>
   <room id="30235" area="45" title="The Fairy Path" environment="4">
-   <coord x="-5" y="2" z="0" />
+   <coord x="-4" y="2" z="0" />
    <exit direction="north" target="30251" />
    <exit direction="east" target="30236" />
    <exit direction="south" target="30219" />
@@ -39054,11 +39053,11 @@
    <exit direction="west" target="30248" />
   </room>
   <room id="30250" area="45" title="The Still Pond" environment="4">
-   <coord x="-7" y="3" z="0" />
+   <coord x="-5" y="3" z="0" />
    <exit direction="south" target="30234" />
   </room>
   <room id="30251" area="45" title="Fairy Pond of the Woods" environment="3">
-   <coord x="-5" y="3" z="0" />
+   <coord x="-4" y="3" z="0" />
    <exit direction="south" target="30235" />
   </room>
   <room id="30252" area="45" title="Riverside Cave" environment="3">
@@ -39148,7 +39147,7 @@
    <exit direction="west" target="30264" />
   </room>
   <room id="30266" area="45" title="Ghost Hill" environment="6">
-   <coord x="-7" y="4" z="0" />
+   <coord x="-5" y="4" z="0" />
    <exit direction="north" target="30282" />
    <exit direction="east" target="30267" />
    <exit direction="west" target="30265" />
@@ -39233,7 +39232,7 @@
    <exit direction="down" target="30652" />
   </room>
   <room id="30282" area="45" title="The Dragon's Gate" environment="6">
-   <coord x="-7" y="5" z="0" />
+   <coord x="-5" y="5" z="0" />
    <exit direction="south" target="30266" />
   </room>
   <room id="30283" area="45" title="The Western Warp Stone" environment="6">
@@ -39287,9 +39286,8 @@
    <exit direction="south" target="30274" />
    <exit direction="west" target="30289" />
   </room>
-  <room id="30291" area="45" title="Below the Lost Hills" environment="11">
+  <room id="30291" area="45" title="Sands Below the Hills" environment="11">
    <coord x="4" y="5" z="0" />
-   <exit direction="north" target="30307" />
    <exit direction="east" target="30292" />
    <exit direction="south" target="30275" />
    <exit direction="west" target="30290" />
@@ -39361,9 +39359,9 @@
    <exit direction="west" target="30301" />
    <exit direction="down" target="30711" />
   </room>
-  <room id="30303" area="45" title="The Lost Hills" environment="6">
+  <room id="30303" area="45" title="The Mountain Stair" environment="6">
    <coord x="0" y="6" z="0" />
-   <exit direction="north" target="30753" />
+   <exit direction="north" target="30319" />
    <exit direction="east" target="30304" />
    <exit direction="south" target="30287" />
    <exit direction="west" target="30302" />
@@ -39385,11 +39383,11 @@
    <exit direction="west" target="30305" />
    <exit direction="down" target="30331" />
   </room>
-  <room id="30307" area="45" title="Hills Below the Basin" environment="6">
+  <room id="30307" area="45" title="The Lost Hills" environment="6">
    <coord x="4" y="6" z="0" />
-   <exit direction="north" target="30323" />
-   <exit direction="east" target="30308" />
-   <exit direction="south" target="30291" />
+   <exit direction="north" target="30753" />
+   <exit direction="east" target="30307" />
+   <exit direction="south" target="30307" />
    <exit direction="west" target="30306" />
   </room>
   <room id="30308" area="45" title="Lone Armos Ridge" environment="6">
@@ -39446,34 +39444,34 @@
    <exit direction="down" target="30701" />
   </room>
   <room id="30316" area="45" title="The Medicine Woman's Ledge" environment="6">
-   <coord x="-3" y="11" z="0" />
+   <coord x="-3" y="7" z="0" />
    <exit direction="east" target="30317" />
    <exit direction="down" target="30693" />
   </room>
   <room id="30317" area="45" title="Spectacle Rock" environment="6">
-   <coord x="-2" y="11" z="0" />
+   <coord x="-2" y="7" z="0" />
    <exit direction="east" target="30318" />
    <exit direction="west" target="30316" />
   </room>
   <room id="30318" area="45" title="East of Spectacle Rock" environment="6">
-   <coord x="-1" y="11" z="0" />
+   <coord x="-1" y="7" z="0" />
    <exit direction="east" target="30319" />
    <exit direction="west" target="30317" />
   </room>
   <room id="30319" area="45" title="The Summit Road" environment="6">
-   <coord x="0" y="11" z="0" />
+   <coord x="0" y="7" z="0" />
    <exit direction="east" target="30320" />
    <exit direction="south" target="30303" />
    <exit direction="west" target="30318" />
    <exit direction="down" target="30704" />
   </room>
   <room id="30320" area="45" title="Avalanche Slope" environment="6">
-   <coord x="1" y="11" z="0" />
+   <coord x="1" y="7" z="0" />
    <exit direction="east" target="30321" />
    <exit direction="west" target="30319" />
   </room>
   <room id="30321" area="45" title="Death Mountain's Dead End" environment="6">
-   <coord x="2" y="11" z="0" />
+   <coord x="2" y="7" z="0" />
    <exit direction="west" target="30320" />
   </room>
   <room id="30322" area="45" title="The White Sword Falls" environment="6">
@@ -39482,7 +39480,7 @@
    <exit direction="down" target="30651" />
   </room>
   <room id="30323" area="45" title="The Lizard's Gate" environment="6">
-   <coord x="4" y="7" z="0" />
+   <coord x="4" y="10" z="0" />
    <exit direction="south" target="30307" />
   </room>
   <room id="30324" area="45" title="The Candle Merchant's Hollow" environment="6">
@@ -39564,7 +39562,7 @@
    <exit direction="up" target="30220" />
   </room>
   <room id="30660" area="45" title="The Root Burrow" environment="12">
-   <coord x="-8" y="2" z="-1" />
+   <coord x="-6" y="2" z="-1" />
    <exit direction="up" target="30233" />
   </room>
   <room id="30661" area="45" title="Den Behind the Woodland Rock" environment="12">
@@ -39676,7 +39674,7 @@
    <exit direction="up" target="30267" />
   </room>
   <room id="30693" area="45" title="The Herbwife's Cave" environment="12">
-   <coord x="-3" y="11" z="-1" />
+   <coord x="-3" y="7" z="-1" />
    <exit direction="up" target="30316" />
   </room>
   <room id="30694" area="45" title="Simmering Herb Cellar" environment="12">
@@ -39716,7 +39714,7 @@
    <exit direction="up" target="30300" />
   </room>
   <room id="30704" area="45" title="The Summit Repair Room" environment="12">
-   <coord x="0" y="11" z="-1" />
+   <coord x="0" y="7" z="-1" />
    <exit direction="up" target="30319" />
   </room>
   <room id="30705" area="45" title="Under the Hedge Doorframe" environment="12">
@@ -39772,53 +39770,46 @@
    <exit direction="up" target="30309" />
   </room>
   <room id="30750" area="45" title="The Lost Woods" environment="4">
-   <coord x="-4" y="2" z="0" />
-   <exit direction="north" target="30220" />
-   <exit direction="east" target="30221" />
-   <exit direction="south" target="30220" />
+   <coord x="-7" y="2" z="0" />
+   <exit direction="north" target="30217" />
+   <exit direction="east" target="30218" />
+   <exit direction="south" target="30217" />
    <exit direction="west" target="30751" />
   </room>
   <room id="30751" area="45" title="The Lost Woods" environment="4">
-   <coord x="-6" y="2" z="0" />
-   <exit direction="north" target="30220" />
-   <exit direction="east" target="30221" />
+   <coord x="-8" y="2" z="0" />
+   <exit direction="north" target="30217" />
+   <exit direction="east" target="30218" />
    <exit direction="south" target="30752" />
-   <exit direction="west" target="30220" />
+   <exit direction="west" target="30217" />
   </room>
   <room id="30752" area="45" title="The Lost Woods" environment="4">
-   <coord x="-6" y="1" z="0" />
-   <exit direction="north" target="30220" />
-   <exit direction="east" target="30221" />
-   <exit direction="south" target="30220" />
-   <exit direction="west" target="30219" />
+   <coord x="-8" y="1" z="0" />
+   <exit direction="north" target="30217" />
+   <exit direction="east" target="30218" />
+   <exit direction="south" target="30217" />
+   <exit direction="west" target="30216" />
   </room>
   <room id="30753" area="45" title="The Lost Hills" environment="6">
-   <coord x="0" y="7" z="0" />
+   <coord x="4" y="7" z="0" />
    <exit direction="north" target="30754" />
-   <exit direction="east" target="30304" />
-   <exit direction="south" target="30287" />
-   <exit direction="west" target="30302" />
+   <exit direction="east" target="30307" />
+   <exit direction="south" target="30307" />
+   <exit direction="west" target="30306" />
   </room>
   <room id="30754" area="45" title="The Lost Hills" environment="6">
-   <coord x="0" y="8" z="0" />
+   <coord x="4" y="8" z="0" />
    <exit direction="north" target="30755" />
-   <exit direction="east" target="30304" />
-   <exit direction="south" target="30287" />
-   <exit direction="west" target="30302" />
+   <exit direction="east" target="30307" />
+   <exit direction="south" target="30307" />
+   <exit direction="west" target="30306" />
   </room>
   <room id="30755" area="45" title="The Lost Hills" environment="6">
-   <coord x="0" y="9" z="0" />
-   <exit direction="north" target="30756" />
-   <exit direction="east" target="30304" />
-   <exit direction="south" target="30287" />
-   <exit direction="west" target="30302" />
-  </room>
-  <room id="30756" area="45" title="The Lost Hills" environment="6">
-   <coord x="0" y="10" z="0" />
-   <exit direction="north" target="30319" />
-   <exit direction="east" target="30304" />
-   <exit direction="south" target="30287" />
-   <exit direction="west" target="30302" />
+   <coord x="4" y="9" z="0" />
+   <exit direction="north" target="30323" />
+   <exit direction="east" target="30307" />
+   <exit direction="south" target="30307" />
+   <exit direction="west" target="30306" />
   </room>
  </rooms>
  <environments>

@@ -190,7 +190,7 @@ Current October 2026 Python baseline:
 102 listed area entries
 2,496 mobiles
 3,722 objects
-7,787 rooms
+7,786 rooms
 0 critical, 12 warning, 1,638 information findings
 ```
 
@@ -248,7 +248,7 @@ manual gameplay checks.
 **The full suite is about 250 module-minutes, and the maintainer does not
 want it run routinely.** 216 modules, 1,553 tests (2026-10-25); around 110
 modules boot a real server that parses every area file (the generated
-Hyrule alone is 447 rooms and 1,519 resets), and `tests/live_mud.py`'s
+Hyrule alone is 446 rooms and 1,519 resets), and `tests/live_mud.py`'s
 `drain(n)` sleeps its whole window. No single module is the floor any
 more: `test_hyrule_walkthrough` took ten minutes in fixed windows and
 takes under four synced (2026-10-25); the slowest now run five to seven.

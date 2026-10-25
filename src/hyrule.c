@@ -1521,26 +1521,28 @@ static const char *const hyrule_owl_hints[10] =
     "Level 2, the Moon Gate, lies to the east across the water. From the "
     "Crossroads South of the Lake go east through the meadows to Moblin "
     "Hollow, north to the Wooded Crossroads, west to the Eastern Dock, and "
-    "the ferry there takes you north to it.",
+    "north from the dock to it.",
     /* 3 */
     "Level 3, the Grove of the Manji, is in the south-west. From the Rock "
     "Wall Above the Start go west past the Candle Shop Knoll, the Forest "
-    "Stream, the Lost Woods and the Bramble Wood, then south to the Path to "
+    "Stream, the Herb-Gatherers' Wood and the Bramble Wood, then south to the Path to "
     "the Manji and east into the grove.",
     /* 4 */
     "Level 4 is on the Isle of the Snake in Lake Hylia. From the Forest "
     "Stream go north to the Shore Below the Snake and over the plank bridge, "
     "and ENTER RAFT: Level 3's raft carries you in.",
     /* 5 */
-    "Level 5, the Lizard's Gate, is in the north-east. From the River "
-    "Landing go north to the Withered Thicket, east across the sands to "
-    "Below the Lost Hills, then north twice: Level 4's stepladder bridges "
-    "the gaps.",
+    "Level 5, the Lizard's Gate, is in the north-east, beyond the Lost "
+    "Hills. From the Southern Sands go north through the Shaded Grove to the "
+    "Sands Below the Hills, east to the North Cliffs, north to Lone Armos "
+    "Ridge and west into the Lost Hills -- then north four times. Going "
+    "west always leads out; any other way, the hills turn you round.",
     /* 6 */
-    "Level 6, the Dragon's Gate, is in the far north-west. Go west through "
-    "the woods to the Western Meadow Edge, north on Level 3's raft past the "
-    "Western Crags into the graveyard, east to Ghost Hill, and bridge the "
-    "gap north with the stepladder.",
+    "Level 6, the Dragon's Gate, is in the far north-west. Go west from the "
+    "Old Forest Clearing into the Lost Woods and walk north, west, south, "
+    "west to come out at the Western Meadow Edge; then north twice into the "
+    "graveyard, east to the Hollow of Headstones, north to the Graveyard "
+    "Gate, east to Ghost Hill, and north up the steps.",
     /* 7 */
     "Level 7 lies beneath the Still Pond in the west. From the Shore Below "
     "the Snake go west past the Forest River Ford and the Fairy Path to the "
@@ -1552,9 +1554,8 @@ static const char *const hyrule_owl_hints[10] =
     /* 9 */
     "Level 9 is beneath Spectacle Rock on Death Mountain. From the River "
     "Landing go north to the Withered Thicket, west to the Foot of Death "
-    "Mountain, then north through the Lost Hills -- keep going north, five "
-    "times -- to the Summit Road, and west twice. BOMB the rock with all "
-    "eight pieces in hand."
+    "Mountain, north up the Mountain Stair to the Summit Road, and west "
+    "twice. BOMB the rock with all eight pieces in hand."
 };
 
 /* Send text word-wrapped at 76 columns, each line indented by indent. */

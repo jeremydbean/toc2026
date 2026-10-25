@@ -8,6 +8,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Hyrule's mazes and crossings match the NES First Quest** (2026-10-25).
+  Read from the disassembly (`CheckMazes`, `LadderRoomsOW`, the docks in
+  `SetupTileObjectOW`): the Lost Woods moved from `E2` to `B2` and the Lost
+  Hills from `H7` to `L7`, the hills ask four norths, not five, and each
+  maze lets out only its escape side (east for the woods, west for the
+  hills), resetting on any other wrong turn. The 38 stepladder crossings on
+  Death Mountain's stairs, the raft crossing at `A3`/`A4` and the `L6`/`L7`
+  edge are gone (`EDGE_OVERRIDES` in the manifest builder). The owl, the
+  Oracle, HELP HYRULE and the room prose follow; maze room 30756 is no
+  longer needed. `tests/test_hyrule_nes.py` walks both mazes.
+
 - **CI runs what a change needs, and still vouches for nothing it did not
   test** (2026-10-25). `scripts/ci/classify.py` sorts the changed paths
   -- state, documentation, the browser client, the dashboard, test modules,

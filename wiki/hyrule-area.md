@@ -16,7 +16,7 @@ the useful Hyrule mobile and object catalog.
 | Recall | Blocked only inside the nine dungeons (`30400-30645`) |
 | Level range | `1-59` |
 | Canonical geometry | 128 overworld screens plus 246 dungeon rooms and cellars |
-| Generated area size | 447 rooms and 1,519 reset records |
+| Generated area size | 446 rooms and 1,519 reset records |
 
 There is no walking exit from the main world into Hyrule. Players arrive by
 entering the arcade cabinet, matching the intended "teleported into Zelda"
@@ -1048,7 +1048,32 @@ Runtime rules add the behaviors the area format cannot express alone:
   administrative override.
 - Like Likes can swallow equipped shields; Bubbles can disarm weapons.
 - Wallmasters can return a player to that dungeon's entrance.
-- Raft and Stepladder crossings verify the corresponding item.
+- Raft and Stepladder crossings verify the corresponding item. The overworld
+  has two: the raft from Lake Hylia's Eastern Dock (`P5`) to the Lonely Isle,
+  and the stepladder onto the coast's Heart Container ledge (`P3`). Death
+  Mountain's blue-barred stairs were read as 38 stepladder crossings until
+  2026-10-25, and `A3`/`A4` as a raft crossing; the NES walks all of them
+  (`LadderRoomsOW`, Z_07.asm:3175; docks only in rooms $3F and $55).
+  `EDGE_OVERRIDES` in `scripts/build_hyrule_manifest.py` carries the
+  corrections, and also removes `L6`/`L7`, which the NES does not join.
+
+### The Mazes
+
+Both stand where the NES keeps them (`CheckMazes`, Z_01.asm:4828-4890) since
+2026-10-25; they were at `E2` and `H7` before.
+
+| Maze | Screen | Way through | Always leaves | Anything else |
+| --- | --- | --- | --- | --- |
+| Lost Woods | `B2` (guide B7, room $61) | north, west, south, west, out to `A2` | east, to `C2` | back to the first screen |
+| Lost Hills | `L7` (guide L2, room $1B) | north four times, out to `L8` (Level 5) | west, to `K7` | back to the first screen |
+
+Each step is a copy of the screen (`30750-30752`, `30753-30755`), named and
+described exactly as the screen is, and entering from any side starts at the
+first, because the NES checks the maze only on the way out. The old woman at
+`A8` sells the woods' answer for 30 gold and the one behind the `K7`
+waterfall the hills' for 20. `test_the_mazes_stand_where_the_nes_keeps_them`
+in `tests/test_hyrule_nes.py` walks both. The secret return tree stays at
+`E2` (guide E7), now an ordinary wood beside its potion shop.
 - Warp stones verify the Power Bracelet.
 
 ## Regeneration

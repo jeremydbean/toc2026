@@ -1017,7 +1017,7 @@
         "exits": {
           "north": {
             "to": "A4",
-            "gate": "raft",
+            "gate": "open",
             "to_vnum": 30248
           },
           "south": {
@@ -1498,7 +1498,7 @@
           },
           "south": {
             "to": "A3",
-            "gate": "raft",
+            "gate": "open",
             "to_vnum": 30232
           }
         },
@@ -2011,7 +2011,7 @@
           },
           "north": {
             "to": "C6",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30282
           },
           "west": {
@@ -2033,7 +2033,7 @@
         "exits": {
           "north": {
             "to": "D6",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30283
           },
           "west": {
@@ -2090,7 +2090,7 @@
           },
           "north": {
             "to": "F6",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30285
           }
         },
@@ -2395,7 +2395,7 @@
         "exits": {
           "south": {
             "to": "C5",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30266
           }
         },
@@ -2422,7 +2422,7 @@
           },
           "south": {
             "to": "D5",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30267
           }
         },
@@ -2467,7 +2467,7 @@
           },
           "north": {
             "to": "E7",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30300
           },
           "west": {
@@ -2496,12 +2496,12 @@
         "exits": {
           "north": {
             "to": "F7",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30301
           },
           "south": {
             "to": "F5",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30269
           },
           "west": {
@@ -2676,11 +2676,6 @@
             "gate": "open",
             "to_vnum": 30292
           },
-          "north": {
-            "to": "L7",
-            "gate": "stepladder",
-            "to_vnum": 30307
-          },
           "south": {
             "to": "L5",
             "gate": "open",
@@ -2710,7 +2705,7 @@
           },
           "north": {
             "to": "M7",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30308
           },
           "west": {
@@ -2743,7 +2738,7 @@
           },
           "north": {
             "to": "N7",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30309
           },
           "south": {
@@ -2826,7 +2821,7 @@
           },
           "north": {
             "to": "A8",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30312
           }
         },
@@ -2849,7 +2844,7 @@
         "exits": {
           "north": {
             "to": "B8",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30313
           },
           "west": {
@@ -2876,7 +2871,7 @@
           },
           "north": {
             "to": "C8",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30314
           }
         },
@@ -2905,7 +2900,7 @@
           },
           "north": {
             "to": "D8",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30315
           },
           "west": {
@@ -2940,7 +2935,7 @@
           },
           "south": {
             "to": "E6",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30284
           },
           "west": {
@@ -2974,7 +2969,7 @@
           },
           "south": {
             "to": "F6",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30285
           },
           "west": {
@@ -3029,7 +3024,7 @@
           },
           "north": {
             "to": "H8",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30319
           },
           "south": {
@@ -3102,7 +3097,7 @@
           },
           "north": {
             "to": "K8",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30322
           },
           "west": {
@@ -3135,13 +3130,8 @@
           },
           "north": {
             "to": "L8",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30323
-          },
-          "south": {
-            "to": "L6",
-            "gate": "stepladder",
-            "to_vnum": 30291
           },
           "west": {
             "to": "K7",
@@ -3164,12 +3154,12 @@
           },
           "north": {
             "to": "M8",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30324
           },
           "south": {
             "to": "M6",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30292
           },
           "west": {
@@ -3203,12 +3193,12 @@
           },
           "north": {
             "to": "N8",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30325
           },
           "south": {
             "to": "N6",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30293
           },
           "west": {
@@ -3258,7 +3248,7 @@
           },
           "north": {
             "to": "O8",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30326
           },
           "west": {
@@ -3287,7 +3277,7 @@
         "exits": {
           "north": {
             "to": "P8",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30327
           },
           "west": {
@@ -3319,7 +3309,7 @@
           },
           "south": {
             "to": "A7",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30296
           }
         },
@@ -3338,7 +3328,7 @@
           },
           "south": {
             "to": "B7",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30297
           },
           "west": {
@@ -3372,7 +3362,7 @@
           },
           "south": {
             "to": "C7",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30298
           },
           "west": {
@@ -3393,7 +3383,7 @@
         "exits": {
           "south": {
             "to": "D7",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30299
           },
           "west": {
@@ -3501,7 +3491,7 @@
           },
           "south": {
             "to": "H7",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30303
           },
           "west": {
@@ -3565,7 +3555,7 @@
         "exits": {
           "south": {
             "to": "K7",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30306
           }
         },
@@ -3589,7 +3579,7 @@
         "exits": {
           "south": {
             "to": "L7",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30307
           }
         },
@@ -3616,7 +3606,7 @@
           },
           "south": {
             "to": "M7",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30308
           }
         },
@@ -3639,7 +3629,7 @@
         "exits": {
           "south": {
             "to": "N7",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30309
           },
           "west": {
@@ -3668,7 +3658,7 @@
         "exits": {
           "south": {
             "to": "O7",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30310
           }
         },
@@ -3689,7 +3679,7 @@
         "exits": {
           "south": {
             "to": "P7",
-            "gate": "stepladder",
+            "gate": "open",
             "to_vnum": 30311
           }
         },

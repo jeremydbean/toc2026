@@ -5,6 +5,14 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261025m 2026-10-25
+Hyrule's mazes are where the old game keeps them. The Lost Woods are in the
+far west, between the Old Forest Clearing and the Western Meadow Edge:
+north, west, south, west to get through, and east always gets you out. The
+Lost Hills guard the Lizard's Gate: north four times, not five, and west
+always gets you out. Death Mountain's stone stairs no longer ask for the
+stepladder, and the Western Crags no longer ask for the raft.
+
 @ 20261025l 2026-10-25
 SHOVE takes a direction the way moving does: SHOVE GUARD SO works, not
 only S or SOUTH. A stone skin pill or potion now says it never takes on a

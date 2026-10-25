@@ -47,6 +47,61 @@ class HyruleNesTests(unittest.TestCase):
         cls.resets = cls.parser.resets["hyrule.are"]
         cls.world = {room["coordinate"]: room for room in MANIFEST["overworld"]["rooms"]}
 
+    # ------------------------------------------------- mazes and crossings
+    def walk(self, start: int, directions: str) -> int:
+        """Where a run of moves (n/e/s/w letters) ends, through the area's
+        own exits."""
+        names = {"n": 0, "e": 1, "s": 2, "w": 3}
+        here = start
+        for letter in directions:
+            exits = {exit.direction: exit.to_room for exit in self.parser.rooms[here].exits}
+            self.assertIn(names[letter], exits, f"no {letter} exit from {here}")
+            here = exits[names[letter]]
+        return here
+
+    def test_the_mazes_stand_where_the_nes_keeps_them(self) -> None:
+        """CheckMazes (Z_01.asm:4828-4890): the Lost Woods is room $61 (guide
+        B7, ours B2): north, west, south, west, and east always leaves. The
+        Lost Hills is room $1B (guide L2, ours L7): north four times, and
+        west always leaves. Any other way turns you round. Until 2026-10-25
+        they stood at E2 and H7, and the hills asked five norths."""
+        woods, hills = self.world["B2"]["vnum"], self.world["L7"]["vnum"]
+        self.assertEqual(self.world["A2"]["vnum"], self.walk(woods, "nwsw"))
+        self.assertEqual(self.world["L8"]["vnum"], self.walk(hills, "nnnn"))
+        self.assertEqual(self.world["C2"]["vnum"], self.walk(woods, "e"))
+        self.assertEqual(self.world["C2"]["vnum"], self.walk(woods, "nwse"))
+        self.assertEqual(self.world["K7"]["vnum"], self.walk(hills, "nnnw"))
+        self.assertEqual(woods, self.walk(woods, "w"))
+        self.assertEqual(woods, self.walk(woods, "s"))
+        self.assertEqual(woods, self.walk(woods, "nn"))
+        self.assertEqual(woods, self.walk(woods, "nwn"))
+        self.assertEqual(woods, self.walk(woods, "nwss"))
+        self.assertEqual(hills, self.walk(hills, "e"))
+        self.assertEqual(hills, self.walk(hills, "nns"))
+        self.assertEqual(hills, self.walk(hills, "nnne"))
+        # A wrong turn starts the count again, so the full answer still works.
+        self.assertEqual(self.world["L8"]["vnum"], self.walk(hills, "nnsnnnn"))
+        self.assertEqual(self.world["A2"]["vnum"], self.walk(woods, "nwnnwsw"))
+        # The old screens are ordinary ground now.
+        self.assertEqual(self.world["H8"]["vnum"], self.walk(self.world["H7"]["vnum"], "n"))
+        self.assertEqual(self.world["D2"]["vnum"], self.walk(self.world["E2"]["vnum"], "w"))
+
+    def test_the_overworld_asks_for_no_tool_the_nes_does_not(self) -> None:
+        """The NES deploys the stepladder on six screens (LadderRoomsOW,
+        Z_07.asm:3175) and needs it on the overworld only for the coast's
+        Heart Container; it docks a raft in two rooms ($3F and $55). The
+        blue-barred stairs of Death Mountain were read as 38 stepladder
+        crossings and guide A5/A6 as a raft crossing."""
+        gated = sorted((room["coordinate"], direction, exit["gate"])
+                       for room in MANIFEST["overworld"]["rooms"]
+                       for direction, exit in room["exits"].items()
+                       if exit["gate"] != "open")
+        self.assertEqual([("P5", "north", "raft"), ("P6", "south", "raft")], gated)
+        keywords = {exit.keyword for room in self.parser.rooms.values()
+                    if room.area_file == "hyrule.are" for exit in room.exits}
+        self.assertNotIn("stepladder crossing", keywords)
+        self.assertNotIn("L6", {exit["to"] for exit in self.world["L7"]["exits"].values()})
+
     # ---------------------------------------------------------- Plan 1
     def test_no_two_rooms_read_alike(self) -> None:
         """Every room's name is its own, every cave included. The only
@@ -54,7 +109,7 @@ class HyruleNesTests(unittest.TestCase):
         puzzle."""
         rooms = [room for room in self.parser.rooms.values() if room.area_file == "hyrule.are"]
         names = Counter(room.name for room in rooms)
-        mazes = {PROSE["overworld"]["E2"]["name"], PROSE["overworld"]["H7"]["name"]}
+        mazes = {PROSE["overworld"]["B2"]["name"], PROSE["overworld"]["L7"]["name"]}
         self.assertEqual({}, {n: c for n, c in names.items() if c > 1 and n not in mazes})
         texts = Counter(room.description for room in rooms)
         repeated = [room.vnum for room in rooms
