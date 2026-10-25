@@ -17123,3 +17123,100 @@
 1792930317	cmd	Trentlin	50	30529	hyrule.are	fighting	99	0	fight	smite		Your smite <<< ERADICATES >>> a blade trap! // Your smite ^^^ DESTROYS ^^^ a blade trap! // Your smite === OBLITERATES === a blade trap!
 1792930323	cmd	Trentlin	50	30529	hyrule.are	fighting	99	0	fight	smite		Your smite === OBLITERATES === a blade trap! // Your smite ^^^ DESTROYS ^^^ a blade trap! // Your smite <<< ERADICATES >>> a blade trap!
 1792930330	cmd	Trentlin	50	30529	hyrule.are	standing	99	0	-	look	in cir	You do not see that here.
+1792930330	cmd	Trentlin	50	30535	hyrule.are	standing	99	0	-	north		Level 7: Dodongo Den //   Huge three-toed prints are pressed into the soot that coats this chamber, // and the walls are scorched black in broad arcs where swallowed bombs went
+1792930334	cmd	Trentlin	50	30539	hyrule.are	standing	99	0	-	north		Level 7: Demon's Powder Store //   Small and square, this room feels strangely safe after the halls below, and // the smell of black powder lingers in its corners. Low braziers crackle on
+1792930338	cmd	Trentlin	50	30535	hyrule.are	standing	99	0	-	south		Level 7: Dodongo Den //   Huge three-toed prints are pressed into the soot that coats this chamber, // and the walls are scorched black in broad arcs where swallowed bombs went
+1792930342	cmd	Trentlin	50	30535	hyrule.are	standing	99	0	-	west		Alas, you cannot go that way.
+1792930346	cmd	Trentlin	50	30536	hyrule.are	standing	99	0	-	east		Level 7: Boomerang Hall //   A square hall of green brick whose walls are gouged with curved nicks where // thrown blades have struck and spun back to red and blue hands. A worn track
+1792930350	cmd	Trentlin	50	30540	hyrule.are	standing	99	0	-	north		Level 7: Hall of Lingering Chill //   An unnatural chill pools near the floor of this chamber, and the torchless // walls glimmer with a faint, shifting light where a flaming skull bounces
+1792930351	cmd	Trentlin	50	30540	hyrule.are	standing	99	0	-	scan		a red goriya                       -to the North. // a blue goriya                      -to the North. // a blue goriya                      -to the South.
+1792930353	cmd	Trentlin	50	30542	hyrule.are	standing	99	0	-	north		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1792930354	cmd	Trentlin	50	30541	hyrule.are	standing	99	0	-	west		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1792930355	cmd	Trentlin	50	30541	hyrule.are	standing	99	0	-	scan		a red goriya                       -to the East. // a blue goriya                      -to the East.
+1792930356	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	north		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1792930357	cmd	Trentlin	50	30544	hyrule.are	standing	99	0	-	north		Alas, you cannot go that way.
+1792930432	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	look	stones	You do not see that here.
+1792930434	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	read	stones	You do not see that here.
+1792930436	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	(social)		You grumble distractedly to yourself
+1792930443	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	south		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1792930443	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	east		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1792930449	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	look	compa	The needle swings west. // The Triforce chest lies 12 rooms away, behind the guardian's chamber, which is 11 rooms away.
+1792930450	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	west		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1792930451	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	look	comp	The needle swings north. // The Triforce chest lies 11 rooms away, behind the guardian's chamber, which is 10 rooms away.
+1792930454	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	north		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1792930456	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	look	comp	The needle points north -- at the bare wall, as though the way lay through the stone. // The Triforce chest lies 10 rooms away, behind the guardian's chamber, which is 9 rooms away.
+1792930462	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	bomb	north	You find no cracked surface to bomb there.
+1792930468	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	inventory		You are carrying: // ( 6) a small key //      10 bombs
+1792930478	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	open	north	I see no door north here.
+1792930480	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	open	secret	I see no secret here.
+1792930481	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	south		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1792930481	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	east		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1792930483	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	east		Level 7: Hidden Cistern //   Behind a broken wall lies a small forgotten cistern, its floor sunk a step // lower than the rest of the dungeon and slick with standing water. Moss
+1792930493	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	west		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1792930494	cmd	Trentlin	50	30540	hyrule.are	standing	100	0	-	south		Level 7: Hall of Lingering Chill //   An unnatural chill pools near the floor of this chamber, and the torchless // walls glimmer with a faint, shifting light where a flaming skull bounces
+1792930494	cmd	Trentlin	50	30536	hyrule.are	standing	100	0	-	south		Level 7: Boomerang Hall //   A square hall of green brick whose walls are gouged with curved nicks where // thrown blades have struck and spun back to red and blue hands. A worn track
+1792930495	cmd	Trentlin	50	30536	hyrule.are	standing	100	0	-	east		The shutter is sealed fast, and will not open while enemies remain here.
+1792930498	cmd	Trentlin	50	30530	hyrule.are	standing	100	0	-	south		Level 7: Moat Crossroads //   A channel of black water rings a raised island of flagstones at the heart // of this room, its surface still and cold, and boomerang splinters float on
+1792930499	cmd	Trentlin	50	30531	hyrule.are	standing	100	0	-	east		Level 7: Guano-Streaked Crossing //   White streaks of guano stain the walls of this chamber from ceiling to // floor, and the air is sour with it. The shadowed rafters overhead are
+1792930500	cmd	Trentlin	50	30537	hyrule.are	standing	100	0	-	north		Level 7: Hall of Bones //   Raised blocks stand in a checkerboard across this wide chamber, and every // lane between them is choked with bones, shields and helmets green with age,
+1792930501	cmd	Trentlin	50	30537	hyrule.are	standing	100	0	-	west		The shutter is sealed fast, and will not open while enemies remain here.
+1792930503	cmd	Trentlin	50	30531	hyrule.are	standing	100	0	-	south		Level 7: Guano-Streaked Crossing //   White streaks of guano stain the walls of this chamber from ceiling to // floor, and the air is sour with it. The shadowed rafters overhead are
+1792930506	cmd	Trentlin	50	30532	hyrule.are	standing	100	0	-	east		Level 7: Shuttered Gallery //   Two rows of squat stone blocks march down the middle of this long gallery, // leaving narrow lanes between them. Boomerang notches are chipped into the
+1792930507	cmd	Trentlin	50	30538	hyrule.are	standing	100	0	-	north		Level 7: Hall of the Horned Mask //   A great horned mask is worked into the back wall of this bare room, its // features worn soft with age and its long nose running down toward the
+1792930511	cmd	Trentlin	50	30538	hyrule.are	standing	100	0	-	look	man	His nose is the largest thing about him, long and hooked and red at the // tip, and he taps it often. These halls, he says, were cut by someone with a // sense of humour: walk them with a map in your head and they make a face,
+1792930522	cmd	Trentlin	50	30538	hyrule.are	standing	100	0	-	give	man 30 gold	You do not have that item.
+1792930524	cmd	Trentlin	50	30538	hyrule.are	standing	100	0	-	worth		You have 3970 platinum, 147 gold, 645 silver, 848 copper // and 112503 experience (2247 exp to level).
+1792930528	cmd	Trentlin	50	30538	hyrule.are	standing	100	0	-	give	man 10 gold	You do not have that item.
+1792930531	cmd	Trentlin	50	30538	hyrule.are	standing	100	0	-	give	man 10 gold coins	You do not have that item.
+1792930546	cmd	Trentlin	50	30538	hyrule.are	standing	100	0	-	look		Level 7: Hall of the Horned Mask //   A great horned mask is worked into the back wall of this bare room, its // features worn soft with age and its long nose running down toward the
+1792930547	cmd	Trentlin	50	30532	hyrule.are	standing	100	0	-	south		Level 7: Shuttered Gallery //   Two rows of squat stone blocks march down the middle of this long gallery, // leaving narrow lanes between them. Boomerang notches are chipped into the
+1792930547	cmd	Trentlin	50	30531	hyrule.are	standing	100	0	-	west		Level 7: Guano-Streaked Crossing //   White streaks of guano stain the walls of this chamber from ceiling to // floor, and the air is sour with it. The shadowed rafters overhead are
+1792930547	cmd	Trentlin	50	30530	hyrule.are	standing	100	0	-	west		Level 7: Moat Crossroads //   A channel of black water rings a raised island of flagstones at the heart // of this room, its surface still and cold, and boomerang splinters float on
+1792930548	cmd	Trentlin	50	30536	hyrule.are	standing	100	0	-	north		Level 7: Boomerang Hall //   A square hall of green brick whose walls are gouged with curved nicks where // thrown blades have struck and spun back to red and blue hands. A worn track
+1792930549	cmd	Trentlin	50	30540	hyrule.are	standing	100	0	-	north		Level 7: Hall of Lingering Chill //   An unnatural chill pools near the floor of this chamber, and the torchless // walls glimmer with a faint, shifting light where a flaming skull bounces
+1792930549	cmd	Trentlin	50	30540	hyrule.are	standing	100	0	-	east		Alas, you cannot go that way.
+1792930550	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	north		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1792930550	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	east		Level 7: Hidden Cistern //   Behind a broken wall lies a small forgotten cistern, its floor sunk a step // lower than the rest of the dungeon and slick with standing water. Moss
+1792930553	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	look	tip	You do not see that here.
+1792930555	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	look	nose	You do not see that here.
+1792930557	refused	Trentlin	50	30543	hyrule.are	standing	100	0	-	(unknown)		Huh? Did you mean ZAP?
+1792930559	refused	Trentlin	50	30543	hyrule.are	standing	100	0	-	(unknown)		Huh? Did you mean ZAP?
+1792930562	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	zap	nose	You can zap only with a wand.
+1792930566	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	open	nose	I see no nose here.
+1792930569	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	look	nose	You do not see that here.
+1792930571	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	look	tip	You do not see that here.
+1792930578	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	down		Alas, you cannot go that way.
+1792930580	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	open	down	I see no door down here.
+1792930584	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	open	path	I see no path here.
+1792930586	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	drop	pie	You drop a big pot pie.
+1792930587	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	look		Level 7: Hidden Cistern //   Behind a broken wall lies a small forgotten cistern, its floor sunk a step // lower than the rest of the dungeon and slick with standing water. Moss
+1792930591	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // Players found: 1
+1792930593	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	get	pie	You get a big pot pie.
+1792930594	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	west		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1792930599	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	shove	gor east	A red goriya resists your efforts to move it.
+1792930600	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	shove	gor east	A red goriya resists your efforts to move it.
+1792930600	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	shove	gor east	A red goriya resists your efforts to move it.
+1792930601	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	shove	gor east	A red goriya resists your efforts to move it.
+1792930601	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	shove	gor east	A red goriya resists your efforts to move it.
+1792930601	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	shove	gor east	A red goriya resists your efforts to move it.
+1792930601	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	shove	gor east	You shove a red goriya out of the room!
+1792930602	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	shove	gor east	A blue goriya resists your efforts to move it.
+1792930603	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	scan		a red goriya                       -to the East.
+1792930604	cmd	Trentlin	50	30543	hyrule.are	standing	100	0	-	east		Level 7: Hidden Cistern //   Behind a broken wall lies a small forgotten cistern, its floor sunk a step // lower than the rest of the dungeon and slick with standing water. Moss
+1792930607	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	west		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1792930608	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792930611	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	west		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1792930614	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	north		Level 7: Hall of Grumbling //   Gnawed bones and an empty clay bowl lie before the north doorway, and a // deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is
+1792930615	cmd	Trentlin	50	30544	hyrule.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792930616	cmd	Trentlin	50	30541	hyrule.are	standing	100	0	-	south		Level 7: Western Moat //   A broad moat cuts across this chamber, its dark water lapping softly // against a narrow causeway of stone that bends toward the far doors, a
+1792930617	cmd	Trentlin	50	30542	hyrule.are	standing	100	0	-	east		Level 7: Island Chamber //   A ring of still water surrounds a square island of flagstones in the middle // of this room, and the reflections of the walls ripple whenever a drop falls
+1792930617	cmd	Trentlin	50	30540	hyrule.are	standing	100	0	-	south		Level 7: Hall of Lingering Chill //   An unnatural chill pools near the floor of this chamber, and the torchless // walls glimmer with a faint, shifting light where a flaming skull bounces
+1792930618	cmd	Trentlin	50	30540	hyrule.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792930621	cmd	Trentlin	50	30536	hyrule.are	standing	100	0	-	south		Level 7: Boomerang Hall //   A square hall of green brick whose walls are gouged with curved nicks where // thrown blades have struck and spun back to red and blue hands. A worn track
+1792930622	cmd	Trentlin	50	30535	hyrule.are	standing	100	0	-	west		Level 7: Dodongo Den //   Huge three-toed prints are pressed into the soot that coats this chamber, // and the walls are scorched black in broad arcs where swallowed bombs went
+1792930625	cmd	Trentlin	50	30535	hyrule.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792930626	cmd	Trentlin	50	30536	hyrule.are	standing	100	0	-	east		Level 7: Boomerang Hall //   A square hall of green brick whose walls are gouged with curved nicks where // thrown blades have struck and spun back to red and blue hands. A worn track
+1792930626	cmd	Trentlin	50	30530	hyrule.are	standing	100	0	-	south		Level 7: Moat Crossroads //   A channel of black water rings a raised island of flagstones at the heart // of this room, its surface still and cold, and boomerang splinters float on
+1792930627	cmd	Trentlin	50	30527	hyrule.are	standing	100	0	-	south		Level 7: Demon's Gate //   Damp stone steps come down from the drained pond above into a vestibule of // green-black brick carved with a horned, grinning face. Water still beads on
+1792930628	cmd	Trentlin	50	30250	hyrule.are	standing	100	0	-	up		The Still Pond //   A ring of tall dark trees closes in around a round, perfectly still pond, // its surface black and glassy, and no fairy has ever danced over it. Smooth
+1792930629	cmd	Trentlin	50	30250	hyrule.are	standing	100	0	-	recall		Your prayer goes up and comes back unanswered.
