@@ -18045,3 +18045,84 @@
 1792936683	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
 1792936684	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	note		(withheld)
 1792936689	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	changes		What is new, newest first: // 2026-10-25 //   FISTS OF FURY at a named foe now starts the fight and strikes. Out of a
+1792936736	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792936736	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792936737	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	affect		You are not affected by any spells.
+1792936740	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792936741	cmd	Alaric	50	1607	wyvern.are	standing	100	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you
+1792936747	cmd	Alaric	50	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are clothed in mystical armor. // You feel righteous.
+1792936749	cmd	Alaric	50	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792936749	cmd	Alaric	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792936750	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792936753	cmd	Alaric	50	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792936754	cmd	Alaric	50	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792936756	cmd	Alaric	50	9531	newthalo.are	standing	100	0	-	run	e 25	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792936757	cmd	Alaric	50	9531	newthalo.are	standing	100	0	-	open		Ok.
+1792936758	cmd	Alaric	50	9794	newthalo.are	standing	100	0	-	run	e 6	Outside the Eastern Gate of New Thalos // [Exits: east south west] // On a road
+1792936758	cmd	Alaric	50	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792936759	cmd	Alaric	50	16000	pirate.are	standing	100	0	-	north		Beginning of the Pier //   You stand at the beginning of a pier where ships come in and out.  The smells // of fish being loaded on and off the ships here are overwhelming.  There is a
+1792936759	cmd	Alaric	50	16001	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792936759	cmd	Alaric	50	16002	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792936759	cmd	Alaric	50	16003	pirate.are	standing	100	0	-	north		Along the Pier //   You are walking along the pier leading to the plank of the Royal Eagle.  The // pier runs north and south from here.
+1792936760	cmd	Alaric	50	16004	pirate.are	standing	100	0	-	north		A Turn at the Pier //   You are walking along the pier.  There is a turn to the east here.  You may // go east onto the plank or south to leave.
+1792936761	cmd	Alaric	50	16005	pirate.are	standing	100	0	-	east		Plankway to the Royal Eagle //   You are on the walkway to the Royal Eagle.  Men are bustling about running // errands for the Admiral Amos and his Highness.  These men looked like
+1792936763	cmd	Alaric	50	16005	pirate.are	standing	100	0	-	kill	bu	Your punch DISMEMBERS The bucaneer! [-47] // The bucaneer parries your attack. // The bucaneer parries your attack.
+1792936765	cmd	Alaric	50	16005	pirate.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS The bucaneer! [-44] // Your fists of fury injures The bucaneer. [-16]
+1792936771	cmd	Alaric	50	16005	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The bucaneer. [-3] // Your fists of fury decimates The bucaneer! [-25]
+1792936777	cmd	Alaric	50	16005	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS The bucaneer! [-43] // Your fists of fury grazes The bucaneer. [-7]
+1792936783	cmd	Alaric	50	16005	pirate.are	standing	99	0	-	fists		Who do you want to attack?
+1792936783	cmd	Alaric	50	16005	pirate.are	standing	99	0	-	fists		Who do you want to attack?
+1792936785	cmd	Alaric	50	16021	pirate.are	standing	99	0	-	up		Entrance to the Royal Eagle - Main Deck //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792936785	cmd	Alaric	50	16016	pirate.are	standing	99	0	-	south		Main Deck of the Royal Eagle - Port //   You are aboard the Royal Eagle - the flagship of the Krondorian fleet.  She // has been out to sea many times on many voyages, some of which are not
+1792936787	cmd	Alaric	50	16011	pirate.are	standing	99	0	-	up		Aft Deck - Port Side //   You are standing on the aft deck of the ship.  The ship sways back and // forth slowly, causing you to feel seasick.  Pirates walk around up here
+1792936787	cmd	Alaric	50	16012	pirate.are	standing	99	0	-	east		Aft Deck //   You are standing on the aft deck of the ship.  The ship sways back and // forth slowly, causing you to feel seasick.  Pirates walk around up here
+1792936788	cmd	Alaric	50	16013	pirate.are	standing	99	0	-	east		Center Aft Deck //   You are standing on the aft deck of the ship.  This happens to be the // place from which the captain shouts orders to his crew to get the ship
+1792936790	cmd	Alaric	50	16013	pirate.are	standing	99	0	-	kill	buc	Your punch injures The bucaneer. [-15] // The bucaneer dodges your attack. // The bucaneer parries your attack.
+1792936793	cmd	Alaric	50	16013	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The bucaneer. [-13] // Your fists of fury wounds The bucaneer. [-19]
+1792936799	cmd	Alaric	50	16013	pirate.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The bucaneer. [-22] // Your fists of fury decimates The bucaneer! [-26]
+1792936804	cmd	Alaric	50	16013	pirate.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits The bucaneer. [-11] // Your fists of fury hits The bucaneer. [-10]
+1792936810	cmd	Alaric	50	16013	pirate.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The bucaneer. [-3] // Your fists of fury injures The bucaneer. [-13]
+1792936834	cmd	Alaric	50	16013	pirate.are	standing	98	0	-	crane		You flow into action, striking at all your opponents. // Your attack was clumsy grasshopper. Go practice some more.
+1792936844	cmd	Alaric	50	16013	pirate.are	standing	98	0	-	crane		You flow into action, striking at all your opponents. // Your attack was clumsy grasshopper. Go practice some more.
+1792936860	cmd	Alaric	50	16013	pirate.are	standing	98	0	-	crane		You flow into action, striking at all your opponents. // Your attack was clumsy grasshopper. Go practice some more.
+1792936870	cmd	Alaric	50	16013	pirate.are	standing	98	0	-	kill	amo	Your punch injures The Captain. [-15] // The Captain parries your attack. // The Captain parries your attack.
+1792936873	cmd	Alaric	50	16013	pirate.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The Captain. [-1] // Your fists of fury wounds The Captain. [-18]
+1792936879	cmd	Alaric	50	16012	pirate.are	fighting	98	0	fight	flee		Aft Deck //   You are standing on the aft deck of the ship.  The ship sways back and // forth slowly, causing you to feel seasick.  Pirates walk around up here
+1792936880	cmd	Alaric	50	16012	pirate.are	standing	98	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1792936888	cmd	Alaric	50	16013	pirate.are	standing	98	0	-	east		Center Aft Deck //   You are standing on the aft deck of the ship.  This happens to be the // place from which the captain shouts orders to his crew to get the ship
+1792936888	cmd	Alaric	50	16013	pirate.are	standing	98	0	-	kill	am	Your punch hits The Captain. [-11] // The Captain dodges your attack. // The Captain parries your attack.
+1792936891	cmd	Alaric	50	16013	pirate.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds The Captain. [-18] // Your fists of fury decimates The Captain! [-28]
+1792936897	cmd	Alaric	50	16013	pirate.are	fighting	97	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The Captain. [-13] // Your fists of fury injures The Captain. [-16]
+1792936902	cmd	Alaric	50	16013	pirate.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The Captain. [-5] // Your fists of fury decimates The Captain! [-26]
+1792936908	cmd	Alaric	50	16013	pirate.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The Captain! [-28] // Your fists of fury injures The Captain. [-14]
+1792936914	cmd	Alaric	50	16013	pirate.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS The Captain! [-43] // Your fists of fury mauls The Captain. [-24]
+1792936920	cmd	Alaric	50	16013	pirate.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The Captain. [-22] // You have become better at fists of fury!
+1792936925	cmd	Alaric	50	16013	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The Captain. [-2] // Your fists of fury maims The Captain! [-33]
+1792936931	cmd	Alaric	50	16013	pirate.are	fighting	94	0	fight	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1792936931	cmd	Alaric	50	16013	pirate.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The Captain. [-22] // Your fists of fury decimates The Captain! [-26]
+1792936937	cmd	Alaric	50	16013	pirate.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures The Captain. [-14] // Your fists of fury mauls The Captain. [-23]
+1792936943	cmd	Alaric	50	16013	pirate.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes The Captain. [-6] // Your fists of fury hits The Captain. [-10]
+1792936949	cmd	Alaric	50	16013	pirate.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The Captain! [-28] // Your fists of fury mauls The Captain. [-22]
+1792936954	cmd	Alaric	50	16013	pirate.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates The Captain! [-29] // Your fists of fury wounds The Captain. [-18]
+1792936960	cmd	Alaric	50	16013	pirate.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls The Captain. [-22] // Your fists of fury DISEMBOWELS The Captain! [-43]
+1792936966	cmd	Alaric	50	16013	pirate.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The Captain. [-3] // Your fists of fury wounds The Captain. [-17]
+1792936972	cmd	Alaric	50	16013	pirate.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates The Captain! [-27] // Your fists of fury maims The Captain! [-34]
+1792936977	cmd	Alaric	50	16013	pirate.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches The Captain. [-1] // Your fists of fury hits The Captain. [-11]
+1792936983	cmd	Alaric	50	2497	dresden_halloween.are	fighting	85	0	fight	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792936983	cmd	Alaric	50	2497	dresden_halloween.are	standing	85	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
+1792936984	cmd	Alaric	50	2497	dresden_halloween.are	standing	85	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
+1792936984	cmd	Alaric	50	2497	dresden_halloween.are	standing	85	11	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Alaric. I have just the task for you.' // Questor Thews tells you 'Raiders stole The Sceptre of Gravestone from the realm!'
+1792936992	cmd	Alaric	50	2401	dresden_halloween.are	standing	85	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792936992	cmd	Alaric	50	2404	dresden_halloween.are	standing	85	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792936993	cmd	Alaric	50	2427	dresden_halloween.are	standing	85	0	-	south		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792936993	cmd	Alaric	50	2428	dresden_halloween.are	standing	85	0	-	south		Main Processional, Toward the Mermaids' Bridge //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Children run past you in sheets and
+1792936993	cmd	Alaric	50	2429	dresden_halloween.are	standing	85	0	-	south		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the
+1792936993	cmd	Alaric	50	2430	dresden_halloween.are	standing	85	0	-	south		Main Processional, at the Southern Gates //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Just to the north is the Bridge of
+1792936994	cmd	Alaric	50	2431	dresden_halloween.are	standing	85	0	-	south		Inside the Southern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1792936994	cmd	Alaric	50	2431	dresden_halloween.are	standing	85	0	-	open	south	Ok.
+1792936994	cmd	Alaric	50	2432	dresden_halloween.are	standing	85	0	-	south		Outside the Southern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792936996	cmd	Alaric	50	3505	midennir_halloween.are	standing	85	0	-	south		The Trail to Miden'nir //   You are in a dark forest.  The trees press close on either side, their // branches interlocked far above in a canopy broken only by drifting will-o-wisps.
+1792936996	cmd	Alaric	50	3506	midennir_halloween.are	standing	85	0	-	east		The Miden'nir //   You are in a dark forest. To the east, mountains block passage. From // here, only the lighter forest to the west or south offer a way to travel.
+1792936996	cmd	Alaric	50	3550	midennir_halloween.are	standing	85	0	-	east		At The Foot of The Dark Hills //   You find yourself at the foot of a range of dark hills that streach off to // the north. In the distance you can just make out the tops of mist covered
+1792936997	cmd	Alaric	50	18	connect.are	standing	85	0	-	north		Entering the hills //   Small hills begin to form here in the northwestern corner of the great forest // of middenir. From here if you look you can see great mountains towering 
+1792936997	cmd	Alaric	50	4000	moria.are	standing	85	0	-	north		                    ACHIEVEMENT EARNED // Into the Hills  +10 points // Reach the hills above Moria.
