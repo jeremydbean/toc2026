@@ -189003,3 +189003,440 @@ Sun Oct 25 15:44:35 2026 :: Treasure goblin: vanished from room 1359 (The traini
 Sun Oct 25 15:47:24 2026 :: Black market: the dealer vanished from room 9357 (Path of the Draco, galaxy.are) (wandering).
 Sun Oct 25 15:48:06 2026 :: Sock.sinaddr:  5.161.75.7
 Sun Oct 25 15:48:06 2026 :: EOF encountered on read.
+Sun Oct 25 15:51:21 2026 :: EOF encountered on read.
+Sun Oct 25 15:53:11 2026 :: Sock.sinaddr:  5.161.75.7
+Sun Oct 25 15:53:11 2026 :: EOF encountered on read.
+Sun Oct 25 15:54:40 2026 :: Treasure goblin: vanished from room 25031 (The Grand Hall, mountain.are) (too long in one area).
+Sun Oct 25 15:54:48 2026 :: Black market: the dealer vanished from room 17275 (In the west side of the foyer, highland.are) (wandering).
+Sun Oct 25 15:55:44 2026 :: Black market: the dealer vanished from room 18134 (A trail through the wilderness, icekeep.are) (wandering).
+Sun Oct 25 15:58:16 2026 :: Sock.sinaddr:  178.156.187.238
+Sun Oct 25 15:58:17 2026 :: EOF encountered on read.
+Sun Oct 25 15:59:34 2026 :: Log Alaric [2]: arrived (Limbo) from 2497
+Sun Oct 25 15:59:34 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2
+Sun Oct 25 15:59:34 2026 :: Log Alaric [2497]: who
+Sun Oct 25 15:59:35 2026 :: Log Alaric [2497]: worth
+Sun Oct 25 16:00:48 2026 :: Black market: the dealer left the world from room 110 (Smurfy Road, smurf.are).
+Sun Oct 25 16:03:22 2026 :: Sock.sinaddr:  54.167.223.174
+Sun Oct 25 16:03:22 2026 :: EOF encountered on read.
+Sun Oct 25 16:04:45 2026 :: Treasure goblin: vanished from room 13430 (Skeleton Factory, hell.are) (too long in one area).
+Sun Oct 25 16:08:14 2026 :: Sock.sinaddr:  99.62.115.159
+Sun Oct 25 16:08:28 2026 :: Sock.sinaddr:  18.116.205.62
+Sun Oct 25 16:08:28 2026 :: EOF encountered on read.
+Sun Oct 25 16:10:00 2026 :: Sock.sinaddr:  23.31.96.97
+Sun Oct 25 16:10:01 2026 :: EOF encountered on read.
+Sun Oct 25 16:13:33 2026 :: Sock.sinaddr:  3.12.251.153
+Sun Oct 25 16:13:34 2026 :: EOF encountered on read.
+Sun Oct 25 16:14:49 2026 :: Treasure goblin: vanished from room 5658 (Old trail through the forest, tarin.are) (too long in one area).
+Sun Oct 25 16:18:37 2026 :: Sock.sinaddr:  5.161.177.47
+Sun Oct 25 16:18:37 2026 :: EOF encountered on read.
+Sun Oct 25 16:23:41 2026 :: Sock.sinaddr:  5.161.75.7
+Sun Oct 25 16:23:42 2026 :: EOF encountered on read.
+Sun Oct 25 16:24:12 2026 :: Log Alaric [2497]: aq re
+Sun Oct 25 16:24:12 2026 :: Log Alaric [2497]: quest assigned: recover The Journal of Trinidad (obj 25038) in mirror.are, 16 minutes, ordinary
+Sun Oct 25 16:24:16 2026 :: Log Alaric [2497]: enter door
+Sun Oct 25 16:24:16 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 16:24:16 2026 :: Log Alaric [2401]: east
+Sun Oct 25 16:24:16 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Oct 25 16:24:16 2026 :: Log Alaric [2403]: east
+Sun Oct 25 16:24:16 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sun Oct 25 16:24:16 2026 :: Log Alaric [2420]: east
+Sun Oct 25 16:24:16 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sun Oct 25 16:24:17 2026 :: Log Alaric [2421]: east
+Sun Oct 25 16:24:17 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sun Oct 25 16:24:17 2026 :: Log Alaric [2422]: east
+Sun Oct 25 16:24:17 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sun Oct 25 16:24:17 2026 :: Log Alaric [2423]: east
+Sun Oct 25 16:24:17 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sun Oct 25 16:24:17 2026 :: Log Alaric [2424]: east
+Sun Oct 25 16:24:17 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sun Oct 25 16:24:18 2026 :: Log Alaric [2425]: east
+Sun Oct 25 16:24:18 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sun Oct 25 16:24:18 2026 :: Log Alaric [2426]: open east
+Sun Oct 25 16:24:18 2026 :: Log Alaric [2426]: east
+Sun Oct 25 16:24:18 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sun Oct 25 16:24:25 2026 :: Log Alaric [2440]: north
+Sun Oct 25 16:24:25 2026 :: Log Alaric [3908]: arrived (East trail around Dresden) from 2440
+Sun Oct 25 16:24:26 2026 :: Log Alaric [3908]: north
+Sun Oct 25 16:24:26 2026 :: Log Alaric [3907]: arrived (East trail around Dresden) from 3908
+Sun Oct 25 16:24:26 2026 :: Log Alaric [3907]: north
+Sun Oct 25 16:24:26 2026 :: Log Alaric [3906]: arrived (Northeast corner of dusty trail.) from 3907
+Sun Oct 25 16:24:26 2026 :: Log Alaric [3906]: east
+Sun Oct 25 16:24:26 2026 :: Log Alaric [56]: arrived (Peaceful Path) from 3906
+Sun Oct 25 16:24:26 2026 :: Log Alaric [56]: east
+Sun Oct 25 16:24:26 2026 :: Log Alaric [8950]: arrived (At the edge of the grove) from 56
+Sun Oct 25 16:24:27 2026 :: Log Alaric [8950]: east
+Sun Oct 25 16:24:27 2026 :: Log Alaric [8951]: arrived (Inside the grove) from 8950
+Sun Oct 25 16:24:27 2026 :: Log Alaric [8951]: east
+Sun Oct 25 16:24:27 2026 :: Log Alaric [8904]: arrived (The holy grove) from 8951
+Sun Oct 25 16:24:27 2026 :: Log Alaric [8904]: east
+Sun Oct 25 16:24:27 2026 :: Log Alaric [8905]: arrived (The sacred glade) from 8904
+Sun Oct 25 16:24:27 2026 :: Log Alaric [8905]: north
+Sun Oct 25 16:24:27 2026 :: Log Alaric [8902]: arrived (The holy grove) from 8905
+Sun Oct 25 16:24:28 2026 :: Log Alaric [8902]: east
+Sun Oct 25 16:24:28 2026 :: Log Alaric [8903]: arrived (A clearing in the woods) from 8902
+Sun Oct 25 16:24:28 2026 :: Log Alaric [8903]: north
+Sun Oct 25 16:24:28 2026 :: Log Alaric [5378]: arrived (The Void) from 8903
+Sun Oct 25 16:24:32 2026 :: Log Alaric [5378]: w
+Sun Oct 25 16:24:32 2026 :: Log Alaric [5375]: arrived (The Void) from 5378
+Sun Oct 25 16:24:33 2026 :: Log Alaric [5375]: s
+Sun Oct 25 16:24:33 2026 :: Log Alaric [5368]: arrived (A clearing in the woods) from 5375
+Sun Oct 25 16:24:33 2026 :: Log Alaric [5368]: w
+Sun Oct 25 16:24:33 2026 :: Log Alaric [5367]: arrived (The holy grove) from 5368
+Sun Oct 25 16:24:34 2026 :: Log Alaric [5367]: l
+Sun Oct 25 16:24:38 2026 :: Log Alaric [5367]: w
+Sun Oct 25 16:24:38 2026 :: Log Alaric [5366]: arrived (The holy grove) from 5367
+Sun Oct 25 16:24:39 2026 :: Log Alaric [5366]: s
+Sun Oct 25 16:24:39 2026 :: Log Alaric [5369]: arrived (The holy grove) from 5366
+Sun Oct 25 16:24:40 2026 :: Log Alaric [5369]: w
+Sun Oct 25 16:24:40 2026 :: Log Alaric [5362]: arrived (The Cross Roads) from 5369
+Sun Oct 25 16:24:41 2026 :: Log Alaric [5362]: w
+Sun Oct 25 16:24:41 2026 :: Log Alaric [5364]: arrived (City Entrance) from 5362
+Sun Oct 25 16:24:42 2026 :: Log Alaric [5364]: w
+Sun Oct 25 16:24:42 2026 :: Log Alaric [5385]: arrived (Outside the East Gate of Midgaard) from 5364
+Sun Oct 25 16:24:42 2026 :: Log Alaric [5385]: w
+Sun Oct 25 16:24:42 2026 :: Log Alaric [5384]: arrived (Inside the East Gate of Midgaard) from 5385
+Sun Oct 25 16:24:44 2026 :: Log Alaric [5384]: s
+Sun Oct 25 16:24:44 2026 :: Log Alaric [5384]: w
+Sun Oct 25 16:24:44 2026 :: Log Alaric [5383]: arrived (The Main Street) from 5384
+Sun Oct 25 16:24:45 2026 :: Log Alaric [5383]: w
+Sun Oct 25 16:24:45 2026 :: Log Alaric [5382]: arrived (The Main Street) from 5383
+Sun Oct 25 16:24:47 2026 :: Log Alaric [5382]: w
+Sun Oct 25 16:24:47 2026 :: Log Alaric [5381]: arrived (Market Square) from 5382
+Sun Oct 25 16:24:51 2026 :: Log Alaric [5381]: n
+Sun Oct 25 16:24:51 2026 :: Log Alaric [5380]: arrived (The Temple Square) from 5381
+Sun Oct 25 16:24:53 2026 :: Log Alaric [5380]: ex
+Sun Oct 25 16:24:54 2026 :: Log Alaric [5380]: s
+Sun Oct 25 16:24:54 2026 :: Log Alaric [5381]: arrived (Market Square) from 5380
+Sun Oct 25 16:24:54 2026 :: Treasure goblin: vanished from room 9122 (Large, sturdy ledge., dylan.are) (too long in one area).
+Sun Oct 25 16:24:54 2026 :: Log Alaric [5381]: e
+Sun Oct 25 16:24:54 2026 :: Log Alaric [5382]: arrived (The Main Street) from 5381
+Sun Oct 25 16:24:55 2026 :: Log Alaric [5382]: e
+Sun Oct 25 16:24:55 2026 :: Log Alaric [5383]: arrived (The Main Street) from 5382
+Sun Oct 25 16:24:56 2026 :: Log Alaric [5383]: e
+Sun Oct 25 16:24:56 2026 :: Log Alaric [5384]: arrived (Inside the East Gate of Midgaard) from 5383
+Sun Oct 25 16:24:59 2026 :: Log Alaric [5384]: e
+Sun Oct 25 16:24:59 2026 :: Log Alaric [5385]: arrived (Outside the East Gate of Midgaard) from 5384
+Sun Oct 25 16:25:00 2026 :: Log Alaric [5385]: e
+Sun Oct 25 16:25:00 2026 :: Log Alaric [5364]: arrived (City Entrance) from 5385
+Sun Oct 25 16:25:00 2026 :: Log Alaric [5364]: e
+Sun Oct 25 16:25:00 2026 :: Log Alaric [5362]: arrived (The Cross Roads) from 5364
+Sun Oct 25 16:25:01 2026 :: Log Alaric [5362]: s
+Sun Oct 25 16:25:01 2026 :: Log Alaric [5361]: arrived (The dwarf forest) from 5362
+Sun Oct 25 16:25:01 2026 :: Log Alaric [5361]: s
+Sun Oct 25 16:25:01 2026 :: Log Alaric [5360]: arrived (The dwarf forest) from 5361
+Sun Oct 25 16:25:02 2026 :: Log Alaric [5360]: s
+Sun Oct 25 16:25:02 2026 :: Log Alaric [5359]: arrived (The dwarf forest) from 5360
+Sun Oct 25 16:25:02 2026 :: Log Alaric [5359]: s
+Sun Oct 25 16:25:02 2026 :: Log Alaric [5358]: arrived (The dwarf forest) from 5359
+Sun Oct 25 16:25:03 2026 :: Log Alaric [5358]: s
+Sun Oct 25 16:25:04 2026 :: Log Alaric [5358]: w
+Sun Oct 25 16:25:04 2026 :: Log Alaric [5357]: arrived (A trail at the end of the dwarf forest) from 5358
+Sun Oct 25 16:25:05 2026 :: Log Alaric [5357]: w
+Sun Oct 25 16:25:05 2026 :: Log Alaric [5356]: arrived (A trail at the end of the dwarf forest) from 5357
+Sun Oct 25 16:25:06 2026 :: Log Alaric [5356]: w
+Sun Oct 25 16:25:06 2026 :: Log Alaric [5300]: arrived (The Grand Gate of Thalos) from 5356
+Sun Oct 25 16:25:08 2026 :: Log Alaric [5300]: w
+Sun Oct 25 16:25:08 2026 :: Log Alaric [5301]: arrived (Main Street) from 5300
+Sun Oct 25 16:25:11 2026 :: Log Alaric [5301]: w
+Sun Oct 25 16:25:11 2026 :: Log Alaric [5302]: arrived (Main Street) from 5301
+Sun Oct 25 16:25:12 2026 :: Log Alaric [5302]: w
+Sun Oct 25 16:25:12 2026 :: Log Alaric [5303]: arrived (A Garden Path) from 5302
+Sun Oct 25 16:25:13 2026 :: Log Alaric [5303]: e
+Sun Oct 25 16:25:13 2026 :: Log Alaric [5302]: arrived (Main Street) from 5303
+Sun Oct 25 16:25:14 2026 :: Log Alaric [5302]: get all
+Sun Oct 25 16:25:14 2026 :: Log Alaric [5302]: recal
+Sun Oct 25 16:25:14 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 5302
+Sun Oct 25 16:25:16 2026 :: Log Alaric [2497]: aq co
+Sun Oct 25 16:25:16 2026 :: Log Alaric [2497]: copper +121680900
+Sun Oct 25 16:25:16 2026 :: Log Alaric [2497]: quest complete: 121p 68g 9s, 35 quest points (streak bonus 55%)
+Sun Oct 25 16:25:16 2026 :: Snapshot of Alaric taken before quest: Alaric.20261025_162516.quest (PRESTORE Alaric to see it).
+Sun Oct 25 16:25:17 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct 25 16:25:18 2026 :: Log Alaric [2497]: who
+Sun Oct 25 16:25:19 2026 :: Log Alaric [2497]: score
+Sun Oct 25 16:25:20 2026 :: Log Alaric [2497]: i
+Sun Oct 25 16:25:21 2026 :: Log Alaric [2497]: i
+Sun Oct 25 16:25:23 2026 :: Log Alaric [2497]: score
+Sun Oct 25 16:25:25 2026 :: Log Alaric [2497]: who
+Sun Oct 25 16:25:29 2026 :: Log Alaric [2497]: wake
+Sun Oct 25 16:25:29 2026 :: Log Alaric [2497]: l
+Sun Oct 25 16:25:30 2026 :: Log Alaric [2497]: en do
+Sun Oct 25 16:25:30 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 16:25:31 2026 :: Log Alaric [2401]: jump rock
+Sun Oct 25 16:25:31 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Sun Oct 25 16:25:31 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 1607
+Sun Oct 25 16:25:34 2026 :: Log Alaric [4208]: heal all
+Sun Oct 25 16:25:34 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Sun Oct 25 16:25:36 2026 :: Log Alaric [4208]: r e 4
+Sun Oct 25 16:25:36 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Oct 25 16:25:36 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sun Oct 25 16:25:36 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sun Oct 25 16:25:36 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sun Oct 25 16:25:36 2026 :: Log Alaric [2427]: n
+Sun Oct 25 16:25:36 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 25 16:25:37 2026 :: Log Alaric [2404]: n
+Sun Oct 25 16:25:37 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sun Oct 25 16:25:38 2026 :: Log Alaric [2401]: r e 8
+Sun Oct 25 16:25:38 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Oct 25 16:25:38 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sun Oct 25 16:25:38 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sun Oct 25 16:25:38 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sun Oct 25 16:25:38 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sun Oct 25 16:25:38 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sun Oct 25 16:25:38 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sun Oct 25 16:25:38 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sun Oct 25 16:25:38 2026 :: Log Alaric [2426]: oe
+Sun Oct 25 16:25:40 2026 :: Log Alaric [2426]: r e 25
+Sun Oct 25 16:25:40 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sun Oct 25 16:25:40 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sun Oct 25 16:25:40 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sun Oct 25 16:25:40 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Sun Oct 25 16:25:40 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Sun Oct 25 16:25:40 2026 :: Log Alaric [3527]: arrived (The Checkpoint) from 3526
+Sun Oct 25 16:25:40 2026 :: Log Alaric [3528]: arrived (Along the Eastern Road) from 3527
+Sun Oct 25 16:25:40 2026 :: Log Alaric [3529]: arrived (Along the Eastern Road) from 3528
+Sun Oct 25 16:25:40 2026 :: Log Alaric [3530]: arrived (Near the Sands of Sorrow) from 3529
+Sun Oct 25 16:25:40 2026 :: Log Alaric [3531]: arrived (Near the Sands of Sorrow) from 3530
+Sun Oct 25 16:25:40 2026 :: Log Alaric [3532]: arrived (On the Outskirts of New Thalos) from 3531
+Sun Oct 25 16:25:40 2026 :: Log Alaric [42]: arrived (On the Outskirts of New Thalos) from 3532
+Sun Oct 25 16:25:40 2026 :: Log Alaric [9669]: arrived (Outside the West Gate of New Thalos) from 42
+Sun Oct 25 16:25:40 2026 :: Log Alaric [9523]: arrived (Inside the West Gate of New Thalos) from 9669
+Sun Oct 25 16:25:40 2026 :: Log Alaric [9524]: arrived (West Main Street) from 9523
+Sun Oct 25 16:25:40 2026 :: Log Alaric [9525]: arrived (West Main Street) from 9524
+Sun Oct 25 16:25:40 2026 :: Log Alaric [9526]: arrived (West Main Street) from 9525
+Sun Oct 25 16:25:40 2026 :: Log Alaric [9509]: arrived (The Western Market Square) from 9526
+Sun Oct 25 16:25:40 2026 :: Log Alaric [9506]: arrived (The Center of Market Square) from 9509
+Sun Oct 25 16:25:40 2026 :: Log Alaric [9517]: arrived (The Eastern Market Square) from 9506
+Sun Oct 25 16:25:40 2026 :: Log Alaric [9527]: arrived (East Main Street) from 9517
+Sun Oct 25 16:25:40 2026 :: Log Alaric [9528]: arrived (East Main Street) from 9527
+Sun Oct 25 16:25:40 2026 :: Log Alaric [9529]: arrived (East Main Street) from 9528
+Sun Oct 25 16:25:40 2026 :: Log Alaric [9530]: arrived (East Main Street) from 9529
+Sun Oct 25 16:25:40 2026 :: Log Alaric [9531]: arrived (Inside the Eastern Gate of New Thalos) from 9530
+Sun Oct 25 16:25:40 2026 :: Log Alaric [9531]: oe
+Sun Oct 25 16:25:41 2026 :: Log Alaric [9531]: r e 6
+Sun Oct 25 16:25:41 2026 :: Log Alaric [9668]: arrived (Outside the Eastern Gate of New Thalos) from 9531
+Sun Oct 25 16:25:41 2026 :: Log Alaric [9790]: arrived (On a road) from 9668
+Sun Oct 25 16:25:41 2026 :: Log Alaric [9791]: arrived (On a road) from 9790
+Sun Oct 25 16:25:41 2026 :: Log Alaric [9792]: arrived (On a road) from 9791
+Sun Oct 25 16:25:41 2026 :: Log Alaric [9793]: arrived (On a road) from 9792
+Sun Oct 25 16:25:41 2026 :: Log Alaric [9794]: arrived (Near the shore) from 9793
+Sun Oct 25 16:25:42 2026 :: Log Alaric [9794]: n
+Sun Oct 25 16:25:42 2026 :: Log Alaric [41]: arrived (The new pier) from 9794
+Sun Oct 25 16:25:42 2026 :: Log Alaric [41]: n
+Sun Oct 25 16:25:42 2026 :: Log Alaric [16000]: arrived (Beginning of the Pier) from 41
+Sun Oct 25 16:25:42 2026 :: Log Alaric [16000]: n
+Sun Oct 25 16:25:42 2026 :: Log Alaric [16001]: arrived (Along the Pier) from 16000
+Sun Oct 25 16:25:43 2026 :: Log Alaric [16001]: n
+Sun Oct 25 16:25:43 2026 :: Log Alaric [16002]: arrived (Along the Pier) from 16001
+Sun Oct 25 16:25:43 2026 :: Log Alaric [16002]: n
+Sun Oct 25 16:25:43 2026 :: Log Alaric [16003]: arrived (Along the Pier) from 16002
+Sun Oct 25 16:25:43 2026 :: Log Alaric [16003]: n
+Sun Oct 25 16:25:43 2026 :: Log Alaric [16004]: arrived (A Turn at the Pier) from 16003
+Sun Oct 25 16:25:44 2026 :: Log Alaric [16004]: e
+Sun Oct 25 16:25:44 2026 :: Log Alaric [16005]: arrived (Plankway to the Royal Eagle) from 16004
+Sun Oct 25 16:25:46 2026 :: Log Alaric [16005]: kill bu
+Sun Oct 25 16:25:49 2026 :: Log Alaric [16005]: fi
+Sun Oct 25 16:25:55 2026 :: Log Alaric [16005]: fi
+Sun Oct 25 16:26:11 2026 :: Log Alaric [16005]: killed The bucaneer
+Sun Oct 25 16:26:11 2026 :: Log Alaric [16005]: coin +4 platinum
+Sun Oct 25 16:26:11 2026 :: Log Alaric [16005]: coin +19 silver
+Sun Oct 25 16:26:11 2026 :: Log Alaric [16005]: coin +25 copper
+Sun Oct 25 16:26:11 2026 :: Log Alaric [16005]: coin +10 gold
+Sun Oct 25 16:26:49 2026 :: Log Alaric [16005]: l
+Sun Oct 25 16:26:51 2026 :: Log Alaric [16005]: u
+Sun Oct 25 16:26:51 2026 :: Log Alaric [16021]: arrived (Entrance to the Royal Eagle - Main Deck) from 16005
+Sun Oct 25 16:26:52 2026 :: Log Alaric [16021]: s
+Sun Oct 25 16:26:52 2026 :: Log Alaric [16016]: arrived (Main Deck of the Royal Eagle - Port) from 16021
+Sun Oct 25 16:26:55 2026 :: Log Alaric [16016]: kill pi
+Sun Oct 25 16:26:57 2026 :: Log Alaric [16016]: u
+Sun Oct 25 16:26:57 2026 :: Log Alaric [16011]: arrived (Aft Deck - Port Side) from 16016
+Sun Oct 25 16:26:58 2026 :: Log Alaric [16011]: kill pi
+Sun Oct 25 16:27:01 2026 :: Log Alaric [16011]: fi
+Sun Oct 25 16:27:07 2026 :: Log Alaric [16011]: fi
+Sun Oct 25 16:27:12 2026 :: Log Alaric [16011]: fi
+Sun Oct 25 16:27:18 2026 :: Log Alaric [16011]: fi
+Sun Oct 25 16:27:28 2026 :: Log Alaric [16011]: fi
+Sun Oct 25 16:27:28 2026 :: Log Alaric [16011]: killed The angry pirate
+Sun Oct 25 16:27:28 2026 :: Log Alaric [16011]: coin +1 platinum
+Sun Oct 25 16:27:28 2026 :: Log Alaric [16011]: coin +5 silver
+Sun Oct 25 16:27:28 2026 :: Log Alaric [16011]: coin +6 copper
+Sun Oct 25 16:27:28 2026 :: Log Alaric [16011]: coin +2 gold
+Sun Oct 25 16:28:46 2026 :: Sock.sinaddr:  3.212.128.62
+Sun Oct 25 16:28:46 2026 :: EOF encountered on read.
+Sun Oct 25 16:29:03 2026 :: Sock.sinaddr:  99.62.115.159
+Sun Oct 25 16:31:20 2026 :: Log Alaric [16011]: recal
+Sun Oct 25 16:31:20 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 16011
+Sun Oct 25 16:31:23 2026 :: Log Alaric [2497]: aq re
+Sun Oct 25 16:31:23 2026 :: Log Alaric [2497]: quest assigned: kill the rebel (mob 10032, level 16) in glitter.are, 5 minutes, rush
+Sun Oct 25 16:31:28 2026 :: Log Alaric [2497]: wake
+Sun Oct 25 16:31:28 2026 :: Log Alaric [2497]: l
+Sun Oct 25 16:31:29 2026 :: Log Alaric [2497]: en do
+Sun Oct 25 16:31:29 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 16:31:30 2026 :: Log Alaric [2401]: r e 8
+Sun Oct 25 16:31:30 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Oct 25 16:31:30 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sun Oct 25 16:31:30 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sun Oct 25 16:31:30 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sun Oct 25 16:31:30 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sun Oct 25 16:31:30 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sun Oct 25 16:31:30 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sun Oct 25 16:31:30 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sun Oct 25 16:31:31 2026 :: Log Alaric [2426]: oe
+Sun Oct 25 16:31:31 2026 :: Log Alaric [2426]: e
+Sun Oct 25 16:31:31 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sun Oct 25 16:31:31 2026 :: Log Alaric [2440]: e
+Sun Oct 25 16:31:31 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sun Oct 25 16:31:32 2026 :: Log Alaric [3503]: e
+Sun Oct 25 16:31:32 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sun Oct 25 16:31:32 2026 :: Log Alaric [3502]: n
+Sun Oct 25 16:31:32 2026 :: Log Alaric [3501]: arrived (The Lane) from 3502
+Sun Oct 25 16:31:32 2026 :: Log Alaric [3501]: n
+Sun Oct 25 16:31:32 2026 :: Log Alaric [3500]: arrived (The Plains) from 3501
+Sun Oct 25 16:31:32 2026 :: Log Alaric [3500]: n
+Sun Oct 25 16:31:33 2026 :: Log Alaric [3500]: nw
+Sun Oct 25 16:31:33 2026 :: Log Alaric [21]: arrived (A twisting path) from 3500
+Sun Oct 25 16:31:33 2026 :: Log Alaric [21]: w
+Sun Oct 25 16:31:33 2026 :: Log Alaric [22]: arrived (Before the great circle) from 21
+Sun Oct 25 16:31:33 2026 :: Log Alaric [22]: s
+Sun Oct 25 16:31:33 2026 :: Log Alaric [23]: arrived (The Great Portal) from 22
+Sun Oct 25 16:31:35 2026 :: Log Alaric [23]: en po
+Sun Oct 25 16:31:35 2026 :: Log Alaric [10000]: arrived (Before the crystal bridge.) from 23
+Sun Oct 25 16:31:36 2026 :: Log Alaric [10000]: n
+Sun Oct 25 16:31:36 2026 :: Log Alaric [10001]: arrived (A crystal bridge.) from 10000
+Sun Oct 25 16:31:36 2026 :: Log Alaric [10001]: n
+Sun Oct 25 16:31:36 2026 :: Log Alaric [10002]: arrived (Royal Island.) from 10001
+Sun Oct 25 16:31:36 2026 :: Log Alaric [10002]: n
+Sun Oct 25 16:31:36 2026 :: Log Alaric [10003]: arrived (The Glitter Palace's Grand Gate.) from 10002
+Sun Oct 25 16:31:37 2026 :: Log Alaric [10003]: on
+Sun Oct 25 16:31:38 2026 :: Log Alaric [10003]: no
+Sun Oct 25 16:31:38 2026 :: Log Alaric [10004]: arrived (A large hall.) from 10003
+Sun Oct 25 16:31:39 2026 :: Log Alaric [10004]: n
+Sun Oct 25 16:31:39 2026 :: Log Alaric [10006]: arrived (A large hall.) from 10004
+Sun Oct 25 16:31:40 2026 :: Log Alaric [10006]: n
+Sun Oct 25 16:31:40 2026 :: Log Alaric [10007]: arrived (A large hall.) from 10006
+Sun Oct 25 16:31:41 2026 :: Log Alaric [10007]: n
+Sun Oct 25 16:31:41 2026 :: Log Alaric [10008]: arrived (A high domed intersection.) from 10007
+Sun Oct 25 16:31:42 2026 :: Log Alaric [10008]: n
+Sun Oct 25 16:31:42 2026 :: Log Alaric [10025]: arrived (The northern wing.) from 10008
+Sun Oct 25 16:31:43 2026 :: Log Alaric [10025]: n
+Sun Oct 25 16:31:43 2026 :: Log Alaric [10026]: arrived (The northern wing.) from 10025
+Sun Oct 25 16:31:44 2026 :: Log Alaric [10026]: n
+Sun Oct 25 16:31:44 2026 :: Log Alaric [10027]: arrived (The northern wing.) from 10026
+Sun Oct 25 16:31:45 2026 :: Log Alaric [10027]: n
+Sun Oct 25 16:31:45 2026 :: Log Alaric [10027]: u
+Sun Oct 25 16:31:45 2026 :: Log Alaric [10028]: arrived (The royal stairway.) from 10027
+Sun Oct 25 16:31:47 2026 :: Log Alaric [10028]: u
+Sun Oct 25 16:31:47 2026 :: Log Alaric [10029]: arrived (A grand hallway.) from 10028
+Sun Oct 25 16:31:48 2026 :: Log Alaric [10029]: n
+Sun Oct 25 16:31:48 2026 :: Log Alaric [10030]: arrived (A grand hallway.) from 10029
+Sun Oct 25 16:31:48 2026 :: Log Alaric [10030]: n
+Sun Oct 25 16:31:48 2026 :: Log Alaric [10031]: arrived (An intersection.) from 10030
+Sun Oct 25 16:31:50 2026 :: Log Alaric [10031]: n
+Sun Oct 25 16:31:50 2026 :: Log Alaric [10052]: arrived (A grand hallway.) from 10031
+Sun Oct 25 16:31:51 2026 :: Log Alaric [10052]: n
+Sun Oct 25 16:31:51 2026 :: Log Alaric [10053]: arrived (A grand hallway.) from 10052
+Sun Oct 25 16:31:53 2026 :: Log Alaric [10053]: kill re
+Sun Oct 25 16:31:53 2026 :: Log Alaric [10053]: killed the rebel
+Sun Oct 25 16:31:53 2026 :: Log Alaric [10053]: coin +2 platinum
+Sun Oct 25 16:31:53 2026 :: Log Alaric [10053]: coin +11 silver
+Sun Oct 25 16:31:53 2026 :: Log Alaric [10053]: coin +15 copper
+Sun Oct 25 16:31:53 2026 :: Log Alaric [10053]: coin +6 gold
+Sun Oct 25 16:31:57 2026 :: Log Alaric [10053]: s
+Sun Oct 25 16:31:57 2026 :: Log Alaric [10052]: arrived (A grand hallway.) from 10053
+Sun Oct 25 16:31:58 2026 :: Log Alaric [10052]: s
+Sun Oct 25 16:31:58 2026 :: Log Alaric [10031]: arrived (An intersection.) from 10052
+Sun Oct 25 16:31:58 2026 :: Log Alaric [10031]: s
+Sun Oct 25 16:31:58 2026 :: Log Alaric [10030]: arrived (A grand hallway.) from 10031
+Sun Oct 25 16:31:58 2026 :: Log Alaric [10030]: s
+Sun Oct 25 16:31:58 2026 :: Log Alaric [10029]: arrived (A grand hallway.) from 10030
+Sun Oct 25 16:31:58 2026 :: Log Alaric [10029]: s
+Sun Oct 25 16:31:59 2026 :: Log Alaric [10029]: s
+Sun Oct 25 16:31:59 2026 :: Log Alaric [10029]: s
+Sun Oct 25 16:31:59 2026 :: Log Alaric [10029]: d
+Sun Oct 25 16:31:59 2026 :: Log Alaric [10028]: arrived (The royal stairway.) from 10029
+Sun Oct 25 16:32:00 2026 :: Log Alaric [10028]: d
+Sun Oct 25 16:32:00 2026 :: Log Alaric [10027]: arrived (The northern wing.) from 10028
+Sun Oct 25 16:32:00 2026 :: Log Alaric [10027]: d
+Sun Oct 25 16:32:00 2026 :: Log Alaric [10027]: d
+Sun Oct 25 16:32:00 2026 :: Log Alaric [10027]: r s
+Sun Oct 25 16:32:00 2026 :: Log Alaric [10026]: arrived (The northern wing.) from 10027
+Sun Oct 25 16:32:00 2026 :: Log Alaric [10025]: arrived (The northern wing.) from 10026
+Sun Oct 25 16:32:00 2026 :: Log Alaric [10008]: arrived (A high domed intersection.) from 10025
+Sun Oct 25 16:32:00 2026 :: Log Alaric [10007]: arrived (A large hall.) from 10008
+Sun Oct 25 16:32:00 2026 :: Log Alaric [10006]: arrived (A large hall.) from 10007
+Sun Oct 25 16:32:00 2026 :: Log Alaric [10004]: arrived (A large hall.) from 10006
+Sun Oct 25 16:32:00 2026 :: Log Alaric [10003]: arrived (The Glitter Palace's Grand Gate.) from 10004
+Sun Oct 25 16:32:00 2026 :: Log Alaric [10002]: arrived (Royal Island.) from 10003
+Sun Oct 25 16:32:00 2026 :: Log Alaric [10001]: arrived (A crystal bridge.) from 10002
+Sun Oct 25 16:32:00 2026 :: Log Alaric [10000]: arrived (Before the crystal bridge.) from 10001
+Sun Oct 25 16:32:01 2026 :: Log Alaric [10000]: (refused) qake
+Sun Oct 25 16:32:01 2026 :: Log Alaric [10000]: wake
+Sun Oct 25 16:32:01 2026 :: Log Alaric [10000]: en dpo
+Sun Oct 25 16:32:02 2026 :: Log Alaric [10000]: l
+Sun Oct 25 16:32:04 2026 :: Log Alaric [10000]: en po
+Sun Oct 25 16:32:04 2026 :: Log Alaric [23]: arrived (The Great Portal) from 10000
+Sun Oct 25 16:32:05 2026 :: Log Alaric [23]: recal
+Sun Oct 25 16:32:05 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 23
+Sun Oct 25 16:32:06 2026 :: Log Alaric [2497]: aq co
+Sun Oct 25 16:32:06 2026 :: Log Alaric [2497]: copper +297442200
+Sun Oct 25 16:32:06 2026 :: Log Alaric [2497]: quest complete: 297p 44g 22s, 118 quest points, rush (streak bonus 60%)
+Sun Oct 25 16:32:06 2026 :: Snapshot of Alaric taken before quest: Alaric.20261025_163206.quest (PRESTORE Alaric to see it).
+Sun Oct 25 16:32:07 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct 25 16:32:10 2026 :: Log Alaric [2497]: score
+Sun Oct 25 16:33:51 2026 :: Sock.sinaddr:  18.116.205.62
+Sun Oct 25 16:33:51 2026 :: EOF encountered on read.
+Sun Oct 25 16:38:54 2026 :: Sock.sinaddr:  52.15.147.27
+Sun Oct 25 16:38:54 2026 :: EOF encountered on read.
+Sun Oct 25 16:39:11 2026 :: Treasure goblin: vanished from room 25172 (The passageway., underdrk.are) (too long in one area).
+Sun Oct 25 16:43:59 2026 :: Sock.sinaddr:  5.161.194.92
+Sun Oct 25 16:44:00 2026 :: EOF encountered on read.
+Sun Oct 25 16:44:05 2026 :: Sock.sinaddr:  195.178.110.204
+Sun Oct 25 16:49:04 2026 :: Sock.sinaddr:  178.156.189.113
+Sun Oct 25 16:49:04 2026 :: EOF encountered on read.
+Sun Oct 25 16:49:16 2026 :: Treasure goblin: vanished from room 18055 (A small hallway, icekeep.are) (too long in one area).
+Sun Oct 25 16:54:09 2026 :: Sock.sinaddr:  52.87.72.16
+Sun Oct 25 16:54:09 2026 :: EOF encountered on read.
+Sun Oct 25 16:55:09 2026 :: Sock.sinaddr:  156.225.1.110
+Sun Oct 25 16:55:09 2026 :: EOF encountered on read.
+Sun Oct 25 16:55:10 2026 :: Sock.sinaddr:  156.225.1.110
+Sun Oct 25 16:55:11 2026 :: EOF encountered on read.
+Sun Oct 25 16:55:13 2026 :: Sock.sinaddr:  156.225.1.110
+Sun Oct 25 16:55:14 2026 :: EOF encountered on read.
+Sun Oct 25 16:55:14 2026 :: Sock.sinaddr:  156.225.1.110
+Sun Oct 25 16:55:14 2026 :: EOF encountered on read.
+Sun Oct 25 16:55:14 2026 :: Sock.sinaddr:  156.225.1.110
+Sun Oct 25 16:55:15 2026 :: EOF encountered on read.
+Sun Oct 25 16:55:15 2026 :: Sock.sinaddr:  156.225.1.110
+Sun Oct 25 16:55:25 2026 :: EOF encountered on read.
+Sun Oct 25 16:55:25 2026 :: Sock.sinaddr:  156.225.1.110
+Sun Oct 25 16:55:26 2026 :: EOF encountered on read.
+Sun Oct 25 16:55:26 2026 :: Sock.sinaddr:  156.225.1.110
+Sun Oct 25 16:55:26 2026 :: EOF encountered on read.
+Sun Oct 25 16:55:26 2026 :: Sock.sinaddr:  156.225.1.110
+Sun Oct 25 16:55:27 2026 :: EOF encountered on read.
+Sun Oct 25 16:55:27 2026 :: Sock.sinaddr:  156.225.1.110
+Sun Oct 25 16:55:37 2026 :: EOF encountered on read.
+Sun Oct 25 16:55:37 2026 :: Sock.sinaddr:  156.225.1.110
+Sun Oct 25 16:55:37 2026 :: EOF encountered on read.
+Sun Oct 25 16:55:37 2026 :: Sock.sinaddr:  156.225.1.110
+Sun Oct 25 16:55:38 2026 :: EOF encountered on read.
+Sun Oct 25 16:55:38 2026 :: Sock.sinaddr:  156.225.1.110
+Sun Oct 25 16:55:48 2026 :: EOF encountered on read.
+Sun Oct 25 16:55:48 2026 :: Sock.sinaddr:  156.225.1.110
+Sun Oct 25 16:55:49 2026 :: Sock.sinaddr:  156.225.1.110
+Sun Oct 25 16:55:50 2026 :: EOF encountered on read.
+Sun Oct 25 16:56:57 2026 :: Log Alaric [2497]: affects off: titanic, empower, giant strength, divine protection, fire shield, protection evil, pass door, fly, haste, sanctuary, empower, shroud, power gloves, detect evil, detect good, detect magic, detect hidden, detect invis, frenzy, giant strength, divine protection, fire shield, protection evil, pass door, fly, haste, sanctuary, shield, bless, armor; max hp 8418 -> 1403; max mana 14694 -> 2449; max moves 6078 -> 1013; hp 8418 -> 1403
+Sun Oct 25 16:59:14 2026 :: Sock.sinaddr:  178.156.189.113
+Sun Oct 25 16:59:14 2026 :: EOF encountered on read.
+Sun Oct 25 16:59:20 2026 :: Treasure goblin: vanished from room 16054 (Below Deck, pirate.are) (too long in one area).
+Sun Oct 25 17:04:17 2026 :: Sock.sinaddr:  5.161.75.7
+Sun Oct 25 17:04:17 2026 :: EOF encountered on read.
+Sun Oct 25 17:09:22 2026 :: Sock.sinaddr:  3.12.251.153
+Sun Oct 25 17:09:22 2026 :: EOF encountered on read.
+Sun Oct 25 17:09:25 2026 :: Treasure goblin: vanished from room 2324 (The Blood Sea Portal, mahntor.are) (too long in one area).
+Sun Oct 25 17:10:13 2026 :: Sock.sinaddr:  23.31.96.97
+Sun Oct 25 17:10:13 2026 :: EOF encountered on read.
+Sun Oct 25 17:14:26 2026 :: Sock.sinaddr:  5.161.61.238
+Sun Oct 25 17:14:27 2026 :: EOF encountered on read.
+Sun Oct 25 17:14:58 2026 :: Disaster: the black dragon in dresden_halloween.are.
+Sun Oct 25 17:15:05 2026 :: Log Alaric [2513]: arrived (Dead End.) from 2497
+Sun Oct 25 17:15:05 2026 :: Black dragon: snatched Alaric (level 50) from dresden_halloween.are; the dragon is level 52.
