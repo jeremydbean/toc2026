@@ -187734,3 +187734,31 @@ Sun Oct 25 14:27:16 2026 :: Snapshot of Alaric taken before quest: Alaric.202610
 Sun Oct 25 14:27:17 2026 :: Log Alaric [2497]: aq ga no
 Sun Oct 25 14:27:18 2026 :: Log Alaric [2497]: sc
 Sun Oct 25 14:27:19 2026 :: Log Alaric [2497]: who
+Sun Oct 25 14:31:41 2026 :: Log Alaric [2497]: affects off: titanic, empower, empower; max hp 8178 -> 1363; max mana 14694 -> 2449; max moves 6378 -> 1063; hp 8178 -> 1363
+Sun Oct 25 14:31:56 2026 :: Sock.sinaddr:  178.156.184.20
+Sun Oct 25 14:31:57 2026 :: EOF encountered on read.
+Sun Oct 25 14:32:26 2026 :: Log Alaric [2497]: wake
+Sun Oct 25 14:32:27 2026 :: Log Alaric [2497]: l
+Sun Oct 25 14:32:29 2026 :: Log Alaric [2497]: aq re
+Sun Oct 25 14:32:29 2026 :: Log Alaric [2497]: quest assigned: recover The Sceptre of Gravestone (obj 25041) in campus.are, 24 minutes, ordinary
+Sun Oct 25 14:32:38 2026 :: Log Alaric [2497]: en do
+Sun Oct 25 14:32:38 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 14:32:40 2026 :: Log Alaric [2401]: jump rock
+Sun Oct 25 14:32:40 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Sun Oct 25 14:32:41 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 1607
+Sun Oct 25 14:32:43 2026 :: Log Alaric [4208]: heal all
+Sun Oct 25 14:32:43 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Sun Oct 25 14:32:44 2026 :: Log Alaric [4208]: e
+Sun Oct 25 14:32:44 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Oct 25 14:32:45 2026 :: Log Alaric [4207]: u
+Sun Oct 25 14:32:45 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 4207
+Sun Oct 25 14:32:45 2026 :: Log Alaric [3700]: u
+Sun Oct 25 14:32:45 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3700
+Sun Oct 25 14:32:47 2026 :: Log Alaric [3772]: u
+Sun Oct 25 14:32:47 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 3772
+Sun Oct 25 14:32:49 2026 :: Log Alaric [3795]: en po
+Sun Oct 25 14:32:49 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 3795
+Sun Oct 25 14:32:51 2026 :: Log Alaric [15000]: e
+Sun Oct 25 14:32:51 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15000
+Sun Oct 25 14:32:52 2026 :: Log Alaric [15001]: e
+Sun Oct 25 14:32:52 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15001
