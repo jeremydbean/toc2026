@@ -21706,3 +21706,111 @@
 1792969438	cmd	Alaric	50	7523	astral.are	standing	100	0	-	exits		Obvious exits: // North - Walking the Silvery Strand // East  - Travelling the Astral Plane
 1792969440	cmd	Alaric	50	7526	astral.are	standing	100	0	-	east		Travelling the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils
 1792969442	cmd	Alaric	50	7526	astral.are	standing	100	0	-	exits		Obvious exits: // North - Travelling the Astral Plane // East  - Lost in the Astral Plane
+1792969444	cmd	Alaric	50	7531	astral.are	standing	100	0	-	west		Traversing the Astral Plane //   You find yourself deep within in a dark field filled with tiny tendrils // of silvery light and insubstantial shining motes of dust.  The weightlessness
+1792969445	cmd	Alaric	50	7531	astral.are	standing	100	0	-	exits		Obvious exits: // North - Lost in the Astral Plane // East  - Travelling the Astral Plane
+1792969448	cmd	Alaric	50	7546	astral.are	standing	100	0	-	west		Deep Within the Astral Plane //   You have travelled deep inside the astral field.  Here the fabric of the // field has become twisted and warped due to the proximity of another plane of
+1792969448	cmd	Alaric	50	7546	astral.are	standing	100	0	-	exits		Obvious exits: // North - Lost in the Astral Plane // South - Deep Within the Astral Plane
+1792969452	cmd	Alaric	50	7545	astral.are	standing	100	0	-	south		Deep Within the Astral Plane //   You have travelled deep inside the astral field.  Here the fabric of the // field has become twisted and warped due to the proximity of another plane of
+1792969452	cmd	Alaric	50	7545	astral.are	standing	100	0	-	exits		Obvious exits: // North - Deep Within the Astral Plane // East  - Traversing the Astral Plane
+1792969454	cmd	Alaric	50	7580	astral.are	standing	100	0	-	west		Before the temple //   You stand before a non-descript temple. Rising up from the center is a // three story high windowless tower.There is a wooden door to the west
+1792969456	cmd	Alaric	50	7581	astral.are	standing	100	0	-	west		In the temple //   You stand inside a strange temple. Mist covers the floor and exits lead off // in all the cardinal directions.
+1792969457	cmd	Alaric	50	7581	astral.are	standing	100	0	-	exits		Obvious exits: // North - A hallway // East  - Before the temple
+1792969459	cmd	Alaric	50	7582	astral.are	standing	100	0	-	north		A hallway //   The floor here is coverd in mist. Exits lead west and south, and a door // is to the north.
+1792969461	cmd	Alaric	50	7582	astral.are	standing	100	0	-	open		Ok.
+1792969461	cmd	Alaric	50	7582	astral.are	standing	100	0	-	exits		Obvious exits: // North - A meditation chamber // South - In the temple
+1792969465	cmd	Alaric	50	7587	astral.are	standing	100	0	-	west		A hallway //   This is a hallway leading off to the East and West.  A strange mist covers // the floor, and a door is to the north.
+1792969466	cmd	Alaric	50	7587	astral.are	standing	100	0	-	exits		Obvious exits: // North - Closed door // East  - A hallway
+1792969466	cmd	Alaric	50	7587	astral.are	standing	100	0	-	open		Ok.
+1792969467	cmd	Alaric	50	7587	astral.are	standing	100	0	-	exits		Obvious exits: // North - A meditation chamber // East  - A hallway
+1792969469	cmd	Alaric	50	7592	astral.are	standing	100	0	-	west		A corner of the temple //   This is the northwest corner of the temple.  A door is too the north, and // exits lead to the south and east.
+1792969469	cmd	Alaric	50	7592	astral.are	standing	100	0	-	exits		Obvious exits: // North - Closed door // East  - A hallway
+1792969470	cmd	Alaric	50	7592	astral.are	standing	100	0	-	open		Ok.
+1792969471	cmd	Alaric	50	7592	astral.are	standing	100	0	-	exits		Obvious exits: // North - A meditation chamber // East  - A hallway
+1792969472	cmd	Alaric	50	7594	astral.are	standing	100	0	-	north		A meditation chamber //   Pillows are scatter about on the floor, and a picture hangs on the wall. // The only exit is to the south
+1792969473	cmd	Alaric	50	7592	astral.are	standing	100	3	-	south		A corner of the temple //   This is the northwest corner of the temple.  A door is too the north, and // exits lead to the south and east.
+1792969474	cmd	Alaric	50	7591	astral.are	standing	100	0	-	south		A hallway //   Exits lead off to all the cardinal directions, exept to the West, where there // is a door.  There is a sign on the door.
+1792969475	cmd	Alaric	50	7591	astral.are	standing	100	0	-	exits		Obvious exits: // North - A corner of the temple // East  - A hallway
+1792969476	cmd	Alaric	50	7591	astral.are	standing	100	0	-	open		Ok.
+1792969476	cmd	Alaric	50	7591	astral.are	standing	100	0	-	exits		Obvious exits: // North - A corner of the temple // East  - A hallway
+1792969477	cmd	Alaric	50	7593	astral.are	standing	100	0	-	south		A corner of the temple //   This is the southwest corner of the temple. Exits lead north and east, // and a door lies to the south.
+1792969479	cmd	Alaric	50	7593	astral.are	standing	100	0	-	open		Ok.
+1792969480	cmd	Alaric	50	7593	astral.are	standing	100	0	-	exits		Obvious exits: // North - A hallway // East  - A hallway
+1792969481	cmd	Alaric	50	7588	astral.are	standing	100	0	-	east		A hallway //   This is a hallway running East and West. To the south is a door. // [Exits: east (south) west]
+1792969482	cmd	Alaric	50	7588	astral.are	standing	100	0	-	open		Ok.
+1792969483	cmd	Alaric	50	7588	astral.are	standing	100	0	-	exits		Obvious exits: // East  - A hallway // South - A meditation chamber
+1792969484	cmd	Alaric	50	7583	astral.are	standing	100	0	-	east		A hallway //   A strange mist covers the floor here. Exits lead off to the north and west, // and a door is to the south.
+1792969485	cmd	Alaric	50	7583	astral.are	standing	100	0	-	open		Ok.
+1792969486	cmd	Alaric	50	7583	astral.are	standing	100	0	-	exits		Obvious exits: // North - In the temple // South - A meditation chamber
+1792969486	cmd	Alaric	50	7588	astral.are	standing	100	0	-	west		A hallway //   This is a hallway running East and West. To the south is a door. // [Exits: east south west]
+1792969488	cmd	Alaric	50	7593	astral.are	standing	100	0	-	west		A corner of the temple //   This is the southwest corner of the temple. Exits lead north and east, // and a door lies to the south.
+1792969489	cmd	Alaric	50	7591	astral.are	standing	100	0	-	north		A hallway //   Exits lead off to all the cardinal directions, exept to the West, where there // is a door.  There is a sign on the door.
+1792969489	cmd	Alaric	50	7586	astral.are	standing	100	0	-	east		A hallway //   This is an East/West hallway. There is a staircase leading up to a door // that glows green.
+1792969493	cmd	Alaric	50	7586	astral.are	standing	100	0	-	open	up	Ok.
+1792969494	cmd	Alaric	50	7597	astral.are	standing	100	0	-	up		On a spiral staircase //   This is a staircase leading up to the top of the temple tower.  You can // continue up or down.
+1792969496	cmd	Alaric	50	7598	astral.are	standing	100	0	-	up		At the door //   Before you is the door to the master of the temple.  A door stands in your // path to him, glowing blue.
+1792969498	cmd	Alaric	50	7598	astral.are	standing	100	0	-	open	up	Ok.
+1792969499	cmd	Alaric	50	7599	astral.are	standing	100	0	-	up		Study of the Sage //   This chamber is devoid of all things material.  Floating above you is the // master of the temple, Salir.  He looks down on you as you enter and says,
+1792969504	cmd	Alaric	50	7599	astral.are	standing	100	0	-	gain		group              cost  group              cost  group              cost  // skill              cost  skill              cost  skill              cost 
+1792969506	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice		clairvoyance         1%  ego whip             1%  mindbar              1%   // project              1%  psionic armor        1%  telekinesis          1%   // torment              1%  mind leech           1%  
+1792969514	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	tele	You practice telekinesis.
+1792969515	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice		clairvoyance         1%  ego whip             1%  mindbar              1%   // project              1%  psionic armor        1%  telekinesis         10%   // torment              1%  mind leech           1%  
+1792969520	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	tele	You practice telekinesis.
+1792969520	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	tele	You practice telekinesis.
+1792969520	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	tele	You practice telekinesis.
+1792969521	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	tele	You practice telekinesis.
+1792969521	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	tele	You practice telekinesis.
+1792969521	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	tele	You practice telekinesis.
+1792969522	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	tele	You practice telekinesis.
+1792969523	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice		clairvoyance         1%  ego whip             1%  mindbar              1%   // project              1%  psionic armor        1%  telekinesis         73%   // torment              1%  mind leech           1%  
+1792969531	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	mindbar	You practice mindbar.
+1792969531	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	mindbar	You practice mindbar.
+1792969531	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	mindbar	You practice mindbar.
+1792969532	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	mindbar	You practice mindbar.
+1792969532	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	mindbar	You practice mindbar.
+1792969532	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice		clairvoyance         1%  ego whip             1%  mindbar             46%   // project              1%  psionic armor        1%  telekinesis         73%   // torment              1%  mind leech           1%  
+1792969535	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	mindbar	You practice mindbar.
+1792969535	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	mindbar	You practice mindbar.
+1792969535	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice	mindbar	You practice mindbar.
+1792969537	cmd	Alaric	50	7599	astral.are	standing	100	0	-	practice		clairvoyance         1%  ego whip             1%  mindbar             73%   // project              1%  psionic armor        1%  telekinesis         73%   // torment              1%  mind leech           1%  
+1792969539	cmd	Alaric	50	7599	astral.are	standing	100	0	-	mindblast		Do what?
+1792969541	cmd	Alaric	50	7599	astral.are	standing	100	0	-	mindbar		A mental fortress protects your mind.
+1792969548	cmd	Alaric	50	7599	astral.are	standing	100	0	-	wake		You are already standing.
+1792969548	cmd	Alaric	50	7599	astral.are	standing	100	0	-	look		Study of the Sage //   This chamber is devoid of all things material.  Floating above you is the // master of the temple, Salir.  He looks down on you as you enter and says,
+1792969554	cmd	Alaric	50	7598	astral.are	standing	100	0	-	down		At the door //   Before you is the door to the master of the temple.  A door stands in your // path to him, glowing blue.
+1792969554	cmd	Alaric	50	7597	astral.are	standing	100	0	-	down		On a spiral staircase //   This is a staircase leading up to the top of the temple tower.  You can // continue up or down.
+1792969555	cmd	Alaric	50	7586	astral.are	standing	100	0	-	down		A hallway //   This is an East/West hallway. There is a staircase leading up to a door // that glows green.
+1792969555	cmd	Alaric	50	7581	astral.are	standing	100	0	-	east		In the temple //   You stand inside a strange temple. Mist covers the floor and exits lead off // in all the cardinal directions.
+1792969555	cmd	Alaric	50	7580	astral.are	standing	100	0	-	east		Before the temple //   You stand before a non-descript temple. Rising up from the center is a // three story high windowless tower.There is a wooden door to the west
+1792969555	cmd	Alaric	50	7545	astral.are	standing	100	0	-	east		Deep Within the Astral Plane //   You have travelled deep inside the astral field.  Here the fabric of the // field has become twisted and warped due to the proximity of another plane of
+1792969556	cmd	Alaric	50	7528	astral.are	standing	100	0	-	down		Traversing the Astral Plane //   You find yourself deep within in a dark field filled with tiny tendrils // of silvery light and insubstantial shining motes of dust.  The weightlessness
+1792969556	cmd	Alaric	50	7547	astral.are	standing	100	0	-	east		Deep Within the Astral Plane //   You have travelled deep inside the astral field.  Here the fabric of the // field has become twisted and warped due to the proximity of another plane of
+1792969559	cmd	Alaric	50	7547	astral.are	standing	100	0	-	exits		Obvious exits: // North - Lost in the Astral Plane // East  - Deep Within the Astral Plane
+1792969560	cmd	Alaric	50	7548	astral.are	standing	100	0	-	down		Deep Within the Astral Plane //   You have travelled deep inside the astral field.  Here the fabric of the // field has become twisted and warped due to the proximity of another plane of
+1792969561	cmd	Alaric	50	7548	astral.are	standing	100	0	-	exits		Obvious exits: // North - Lost in the Astral Plane // East  - Traversing the Astral Plane
+1792969563	cmd	Alaric	50	7535	astral.are	standing	100	0	-	north		Lost in the Astral Plane //   You find yourself in a field of blackness, filled with tiny tendrils // of silvery light and insubstantial shining motes of dust.  The weightlessness
+1792969564	cmd	Alaric	50	7535	astral.are	standing	100	0	-	exits		Obvious exits: // North - Wandering the Astral Plane // East  - Traversing the Astral Plane
+1792969568	cmd	Alaric	50	7520	astral.are	standing	100	0	-	north		Wandering the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils
+1792969569	cmd	Alaric	50	7520	astral.are	standing	100	0	-	exits		Obvious exits: // North - Roaming the Astral Plane // East  - Roaming the Astral Plane
+1792969570	cmd	Alaric	50	7513	astral.are	standing	100	0	-	north		Roaming the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils
+1792969571	cmd	Alaric	50	7513	astral.are	standing	100	0	-	exits		Obvious exits: // North - Roaming the Astral Plane // East  - Roaming the Astral Plane
+1792969573	cmd	Alaric	50	7508	astral.are	standing	100	0	-	west		Exploring the Astral Plane //   You find yourself floating in a field of blackness, filled with tiny // tendrils
+1792969573	cmd	Alaric	50	7508	astral.are	standing	100	0	-	exits		Obvious exits: // North - Exploring the Astral Plane // East  - Roaming the Astral Plane
+1792969577	cmd	Alaric	50	7507	astral.are	standing	100	0	-	west		Into the Astral Plane //   You step through the gate, and into another reality... //    You find yourself floating in a field of blackness, filled with tiny
+1792969578	cmd	Alaric	50	7507	astral.are	standing	100	0	-	exits		Obvious exits: // North - Exploring the Astral Plane // East  - Exploring the Astral Plane
+1792969580	cmd	Alaric	50	7506	astral.are	standing	100	0	-	south		The Astral Gate //   Here the bridge ends before a massive, pearly-colored gate beyond which // you can see a field of blackness filled with silvery snake-like tendrils,
+1792969583	cmd	Alaric	50	7505	astral.are	standing	100	0	-	south		The Glowing Bridge at the Rainbow's End //   After a long climb you have reached the end of the rainbow.  The brilliant // colors have twisted and merged into a beautiful glowing bridge that leads
+1792969584	cmd	Alaric	50	7505	astral.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792969585	cmd	Alaric	50	7504	astral.are	standing	100	0	-	down		On the Rainbow //   You are nearing the end of the rainbow.  The beams of multicolored // light have begun to merge and solidify.  All around you, you see glowing
+1792969585	cmd	Alaric	50	7503	astral.are	standing	100	0	-	down		On the Rainbow //   You are standing on the rainbow, surrounded by many beams of multicolored // light.  The rainbow extends above and below you as far as you can see.
+1792969586	cmd	Alaric	50	7502	astral.are	standing	100	0	-	down		On the Rainbow //   You are standing on the rainbow, surrounded by many beams of multicolored // light.  Through the bottom of the rainbow you see the City of Midgaard and the 
+1792969586	cmd	Alaric	50	7501	astral.are	standing	100	0	-	down		On the Rainbow //   You are standing on the rainbow, surrounded by many beams of multicolored // light.  Through the bottom of the rainbow you can barely make out the Temple
+1792969587	cmd	Alaric	50	7500	astral.are	standing	100	0	-	down		The Bottom of the Rainbow //   You are standing before a shimmering rainbow arching high up into the // sky.  You feel somehow separated from the natural world, even though the
+1792969587	cmd	Alaric	50	61	connect.are	standing	100	0	-	down		Before the Rainbow //   Above you spans the most beautiful rainbow you have ever seen. Below // you spans the great plains of the north.
+1792969588	cmd	Alaric	50	315	plains.are	standing	100	0	-	down		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.
+1792969588	cmd	Alaric	50	315	plains.are	standing	100	0	-	down		Alas, you cannot go that way.
+1792969589	cmd	Alaric	50	315	plains.are	standing	100	0	-	exits		Obvious exits: // North - Grassy plains // East  - Path in the plains
+1792969596	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792969599	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	aquest	aborth	.-[ AQUEST Commands ]-----------------------------------------. // |  INFO      View quest status or summary // |  POINTS    Check your quest point balance
+1792969601	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	11	-	aquest	abort	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'You had a streak of 8 in a row - all gone now!'
+1792969603	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792969603	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.

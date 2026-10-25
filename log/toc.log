@@ -194154,3 +194154,159 @@ Sun Oct 25 23:03:58 2026 :: Log Alaric [7523]: ex
 Sun Oct 25 23:04:00 2026 :: Log Alaric [7523]: e
 Sun Oct 25 23:04:00 2026 :: Log Alaric [7526]: arrived (Travelling the Astral Plane) from 7523
 Sun Oct 25 23:04:02 2026 :: Log Alaric [7526]: ex
+Sun Oct 25 23:04:04 2026 :: Log Alaric [7526]: w
+Sun Oct 25 23:04:04 2026 :: Log Alaric [7531]: arrived (Traversing the Astral Plane) from 7526
+Sun Oct 25 23:04:05 2026 :: Log Alaric [7531]: ex
+Sun Oct 25 23:04:08 2026 :: Log Alaric [7531]: w
+Sun Oct 25 23:04:08 2026 :: Log Alaric [7546]: arrived (Deep Within the Astral Plane) from 7531
+Sun Oct 25 23:04:08 2026 :: Log Alaric [7546]: ex
+Sun Oct 25 23:04:12 2026 :: Log Alaric [7546]: s
+Sun Oct 25 23:04:12 2026 :: Log Alaric [7545]: arrived (Deep Within the Astral Plane) from 7546
+Sun Oct 25 23:04:12 2026 :: Log Alaric [7545]: ex
+Sun Oct 25 23:04:14 2026 :: Log Alaric [7545]: w
+Sun Oct 25 23:04:14 2026 :: Log Alaric [7580]: arrived (Before the temple) from 7545
+Sun Oct 25 23:04:16 2026 :: Log Alaric [7580]: w
+Sun Oct 25 23:04:16 2026 :: Log Alaric [7581]: arrived (In the temple) from 7580
+Sun Oct 25 23:04:17 2026 :: Log Alaric [7581]: ex
+Sun Oct 25 23:04:19 2026 :: Log Alaric [7581]: n
+Sun Oct 25 23:04:19 2026 :: Log Alaric [7582]: arrived (A hallway) from 7581
+Sun Oct 25 23:04:21 2026 :: Log Alaric [7582]: on
+Sun Oct 25 23:04:21 2026 :: Log Alaric [7582]: ex
+Sun Oct 25 23:04:25 2026 :: Log Alaric [7582]: w
+Sun Oct 25 23:04:25 2026 :: Log Alaric [7587]: arrived (A hallway) from 7582
+Sun Oct 25 23:04:26 2026 :: Log Alaric [7587]: ex
+Sun Oct 25 23:04:26 2026 :: Log Alaric [7587]: on
+Sun Oct 25 23:04:27 2026 :: Log Alaric [7587]: ex
+Sun Oct 25 23:04:29 2026 :: Log Alaric [7587]: w
+Sun Oct 25 23:04:29 2026 :: Log Alaric [7592]: arrived (A corner of the temple) from 7587
+Sun Oct 25 23:04:29 2026 :: Log Alaric [7592]: ex
+Sun Oct 25 23:04:30 2026 :: Log Alaric [7592]: on
+Sun Oct 25 23:04:31 2026 :: Log Alaric [7592]: ex
+Sun Oct 25 23:04:32 2026 :: Log Alaric [7592]: n
+Sun Oct 25 23:04:32 2026 :: Log Alaric [7594]: arrived (A meditation chamber) from 7592
+Sun Oct 25 23:04:33 2026 :: Log Alaric [7594]: s
+Sun Oct 25 23:04:33 2026 :: Log Alaric [7592]: arrived (A corner of the temple) from 7594
+Sun Oct 25 23:04:34 2026 :: Log Alaric [7592]: s
+Sun Oct 25 23:04:34 2026 :: Log Alaric [7591]: arrived (A hallway) from 7592
+Sun Oct 25 23:04:35 2026 :: Log Alaric [7591]: ex
+Sun Oct 25 23:04:36 2026 :: Log Alaric [7591]: ow
+Sun Oct 25 23:04:36 2026 :: Log Alaric [7591]: ex
+Sun Oct 25 23:04:37 2026 :: Log Alaric [7591]: s
+Sun Oct 25 23:04:37 2026 :: Log Alaric [7593]: arrived (A corner of the temple) from 7591
+Sun Oct 25 23:04:39 2026 :: Log Alaric [7593]: os
+Sun Oct 25 23:04:40 2026 :: Log Alaric [7593]: ex
+Sun Oct 25 23:04:41 2026 :: Log Alaric [7593]: e
+Sun Oct 25 23:04:41 2026 :: Log Alaric [7588]: arrived (A hallway) from 7593
+Sun Oct 25 23:04:42 2026 :: Log Alaric [7588]: os
+Sun Oct 25 23:04:43 2026 :: Log Alaric [7588]: ex
+Sun Oct 25 23:04:44 2026 :: Log Alaric [7588]: e
+Sun Oct 25 23:04:44 2026 :: Log Alaric [7583]: arrived (A hallway) from 7588
+Sun Oct 25 23:04:45 2026 :: Sock.sinaddr:  178.156.185.231
+Sun Oct 25 23:04:45 2026 :: Log Alaric [7583]: os
+Sun Oct 25 23:04:45 2026 :: EOF encountered on read.
+Sun Oct 25 23:04:46 2026 :: Log Alaric [7583]: ex
+Sun Oct 25 23:04:46 2026 :: Log Alaric [7583]: w
+Sun Oct 25 23:04:46 2026 :: Log Alaric [7588]: arrived (A hallway) from 7583
+Sun Oct 25 23:04:48 2026 :: Log Alaric [7588]: w
+Sun Oct 25 23:04:48 2026 :: Log Alaric [7593]: arrived (A corner of the temple) from 7588
+Sun Oct 25 23:04:49 2026 :: Log Alaric [7593]: n
+Sun Oct 25 23:04:49 2026 :: Log Alaric [7591]: arrived (A hallway) from 7593
+Sun Oct 25 23:04:49 2026 :: Log Alaric [7591]: e
+Sun Oct 25 23:04:49 2026 :: Log Alaric [7586]: arrived (A hallway) from 7591
+Sun Oct 25 23:04:53 2026 :: Log Alaric [7586]: open up
+Sun Oct 25 23:04:54 2026 :: Log Alaric [7586]: u
+Sun Oct 25 23:04:54 2026 :: Log Alaric [7597]: arrived (On a spiral staircase) from 7586
+Sun Oct 25 23:04:56 2026 :: Log Alaric [7597]: u
+Sun Oct 25 23:04:56 2026 :: Log Alaric [7598]: arrived (At the door) from 7597
+Sun Oct 25 23:04:58 2026 :: Log Alaric [7598]: open up
+Sun Oct 25 23:04:59 2026 :: Log Alaric [7598]: u
+Sun Oct 25 23:04:59 2026 :: Log Alaric [7599]: arrived (Study of the Sage) from 7598
+Sun Oct 25 23:05:04 2026 :: Log Alaric [7599]: gain
+Sun Oct 25 23:05:06 2026 :: Log Alaric [7599]: prac
+Sun Oct 25 23:05:14 2026 :: Log Alaric [7599]: prac tele
+Sun Oct 25 23:05:15 2026 :: Log Alaric [7599]: prac
+Sun Oct 25 23:05:20 2026 :: Log Alaric [7599]: prac tele
+Sun Oct 25 23:05:20 2026 :: Log Alaric [7599]: prac tele
+Sun Oct 25 23:05:20 2026 :: Log Alaric [7599]: prac tele
+Sun Oct 25 23:05:21 2026 :: Log Alaric [7599]: prac tele
+Sun Oct 25 23:05:21 2026 :: Log Alaric [7599]: prac tele
+Sun Oct 25 23:05:21 2026 :: Log Alaric [7599]: prac tele
+Sun Oct 25 23:05:22 2026 :: Log Alaric [7599]: prac tele
+Sun Oct 25 23:05:23 2026 :: Log Alaric [7599]: prac
+Sun Oct 25 23:05:31 2026 :: Log Alaric [7599]: prac mindbar
+Sun Oct 25 23:05:31 2026 :: Log Alaric [7599]: prac mindbar
+Sun Oct 25 23:05:31 2026 :: Log Alaric [7599]: prac mindbar
+Sun Oct 25 23:05:32 2026 :: Log Alaric [7599]: prac mindbar
+Sun Oct 25 23:05:32 2026 :: Log Alaric [7599]: prac mindbar
+Sun Oct 25 23:05:32 2026 :: Log Alaric [7599]: prac
+Sun Oct 25 23:05:35 2026 :: Log Alaric [7599]: prac mindbar
+Sun Oct 25 23:05:35 2026 :: Log Alaric [7599]: prac mindbar
+Sun Oct 25 23:05:35 2026 :: Log Alaric [7599]: prac mindbar
+Sun Oct 25 23:05:37 2026 :: Log Alaric [7599]: prac
+Sun Oct 25 23:05:39 2026 :: Log Alaric [7599]: mindb
+Sun Oct 25 23:05:41 2026 :: Log Alaric [7599]: mindbar
+Sun Oct 25 23:05:48 2026 :: Log Alaric [7599]: wake
+Sun Oct 25 23:05:48 2026 :: Log Alaric [7599]: l
+Sun Oct 25 23:05:54 2026 :: Log Alaric [7599]: down
+Sun Oct 25 23:05:54 2026 :: Log Alaric [7598]: arrived (At the door) from 7599
+Sun Oct 25 23:05:54 2026 :: Log Alaric [7598]: down
+Sun Oct 25 23:05:54 2026 :: Log Alaric [7597]: arrived (On a spiral staircase) from 7598
+Sun Oct 25 23:05:55 2026 :: Log Alaric [7597]: down
+Sun Oct 25 23:05:55 2026 :: Log Alaric [7586]: arrived (A hallway) from 7597
+Sun Oct 25 23:05:55 2026 :: Log Alaric [7586]: east
+Sun Oct 25 23:05:55 2026 :: Log Alaric [7581]: arrived (In the temple) from 7586
+Sun Oct 25 23:05:55 2026 :: Log Alaric [7581]: east
+Sun Oct 25 23:05:55 2026 :: Log Alaric [7580]: arrived (Before the temple) from 7581
+Sun Oct 25 23:05:55 2026 :: Log Alaric [7580]: east
+Sun Oct 25 23:05:55 2026 :: Log Alaric [7545]: arrived (Deep Within the Astral Plane) from 7580
+Sun Oct 25 23:05:56 2026 :: Log Alaric [7545]: down
+Sun Oct 25 23:05:56 2026 :: Log Alaric [7528]: arrived (Traversing the Astral Plane) from 7545
+Sun Oct 25 23:05:56 2026 :: Log Alaric [7528]: east
+Sun Oct 25 23:05:56 2026 :: Log Alaric [7547]: arrived (Deep Within the Astral Plane) from 7528
+Sun Oct 25 23:05:59 2026 :: Log Alaric [7547]: ex
+Sun Oct 25 23:06:00 2026 :: Log Alaric [7547]: d
+Sun Oct 25 23:06:00 2026 :: Log Alaric [7548]: arrived (Deep Within the Astral Plane) from 7547
+Sun Oct 25 23:06:01 2026 :: Log Alaric [7548]: ex
+Sun Oct 25 23:06:03 2026 :: Log Alaric [7548]: n
+Sun Oct 25 23:06:03 2026 :: Log Alaric [7535]: arrived (Lost in the Astral Plane) from 7548
+Sun Oct 25 23:06:04 2026 :: Log Alaric [7535]: ex
+Sun Oct 25 23:06:08 2026 :: Log Alaric [7535]: n
+Sun Oct 25 23:06:08 2026 :: Log Alaric [7520]: arrived (Wandering the Astral Plane) from 7535
+Sun Oct 25 23:06:09 2026 :: Log Alaric [7520]: ex
+Sun Oct 25 23:06:10 2026 :: Log Alaric [7520]: n
+Sun Oct 25 23:06:10 2026 :: Log Alaric [7513]: arrived (Roaming the Astral Plane) from 7520
+Sun Oct 25 23:06:11 2026 :: Log Alaric [7513]: ex
+Sun Oct 25 23:06:11 2026 :: Sock.sinaddr:  99.62.115.159
+Sun Oct 25 23:06:13 2026 :: Log Alaric [7513]: w
+Sun Oct 25 23:06:13 2026 :: Log Alaric [7508]: arrived (Exploring the Astral Plane) from 7513
+Sun Oct 25 23:06:13 2026 :: Log Alaric [7508]: ex
+Sun Oct 25 23:06:17 2026 :: Log Alaric [7508]: w
+Sun Oct 25 23:06:17 2026 :: Log Alaric [7507]: arrived (Into the Astral Plane) from 7508
+Sun Oct 25 23:06:18 2026 :: Log Alaric [7507]: ex
+Sun Oct 25 23:06:20 2026 :: Log Alaric [7507]: s
+Sun Oct 25 23:06:20 2026 :: Log Alaric [7506]: arrived (The Astral Gate) from 7507
+Sun Oct 25 23:06:23 2026 :: Log Alaric [7506]: s
+Sun Oct 25 23:06:23 2026 :: Log Alaric [7505]: arrived (The Glowing Bridge at the Rainbow's End) from 7506
+Sun Oct 25 23:06:24 2026 :: Log Alaric [7505]: s
+Sun Oct 25 23:06:25 2026 :: Log Alaric [7505]: d
+Sun Oct 25 23:06:25 2026 :: Log Alaric [7504]: arrived (On the Rainbow) from 7505
+Sun Oct 25 23:06:25 2026 :: Log Alaric [7504]: d
+Sun Oct 25 23:06:25 2026 :: Log Alaric [7503]: arrived (On the Rainbow) from 7504
+Sun Oct 25 23:06:26 2026 :: Log Alaric [7503]: d
+Sun Oct 25 23:06:26 2026 :: Log Alaric [7502]: arrived (On the Rainbow) from 7503
+Sun Oct 25 23:06:26 2026 :: Log Alaric [7502]: d
+Sun Oct 25 23:06:26 2026 :: Log Alaric [7501]: arrived (On the Rainbow) from 7502
+Sun Oct 25 23:06:27 2026 :: Log Alaric [7501]: d
+Sun Oct 25 23:06:27 2026 :: Log Alaric [7500]: arrived (The Bottom of the Rainbow) from 7501
+Sun Oct 25 23:06:27 2026 :: Log Alaric [7500]: d
+Sun Oct 25 23:06:27 2026 :: Log Alaric [61]: arrived (Before the Rainbow) from 7500
+Sun Oct 25 23:06:28 2026 :: Log Alaric [61]: d
+Sun Oct 25 23:06:28 2026 :: Log Alaric [315]: arrived (Gallow hill) from 61
+Sun Oct 25 23:06:28 2026 :: Log Alaric [315]: d
+Sun Oct 25 23:06:29 2026 :: Log Alaric [315]: ex
+Sun Oct 25 23:06:36 2026 :: Log Alaric [315]: recal
+Sun Oct 25 23:06:36 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 315
+Sun Oct 25 23:06:39 2026 :: Log Alaric [2497]: aq aborth
+Sun Oct 25 23:06:41 2026 :: Log Alaric [2497]: aq abort
+Sun Oct 25 23:06:43 2026 :: Log Alaric [2497]: wake
+Sun Oct 25 23:06:43 2026 :: Log Alaric [2497]: l
