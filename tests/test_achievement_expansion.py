@@ -104,24 +104,26 @@ def obj(vnum: int, level: int = 1) -> str:
     return "#O\nVnum %d\nNest 0\nWear -1\nLev %d\nCond 100\nEnd\n\n" % (vnum, level)
 
 
-def kill_at_one_hit_point(staff, hero, boss_room: int) -> bool:
+def kill_at_one_hit_point(staff, hero, boss_room: int) -> tuple[bool, str]:
     """The hero kills Aquamentus at one hit point. Before every swing the
     staff character steps in, sets whichever guardian stands first in the
     room -- the one the hero's KILL picks -- to one hit point and steps out
     again: staff in the room spoil a Fair Fight, and a reset can put a
     second, unhurt guardian in front of the first (CI, 2026-10-25, where
     the hero was still fighting at QUIT)."""
+    seen = []
     for _ in range(5):
-        run(staff, "goto %d" % boss_room, 1.0)
-        run(staff, "set char aquamentus hp 1", 1.0)
-        run(staff, "restore aquamentus", 1.0)
+        seen.append("STAFF: " + run(staff, "goto %d" % boss_room, 1.0)[-600:])
+        seen.append("STAFF: " + run(staff, "set char aquamentus hp 1", 1.0))
+        seen.append("STAFF: " + run(staff, "restore aquamentus", 1.0))
         run(staff, "goto %d" % TEMPLE, 1.0)
         out = run(hero, "kill aquamentus", 4.0)
+        seen.append("HERO: " + out[-800:])
         if "is DEAD" in out:
-            return True
+            return True, ""
         if "They aren't here" in out:
-            return "is DEAD" in hero.transcript
-    return False
+            return "is DEAD" in hero.transcript, "\n".join(seen)
+    return False, "\n".join(seen)
 
 
 class CatalogTests(unittest.TestCase):
@@ -459,8 +461,8 @@ class LiveTests(unittest.TestCase):
                 run(staff, "scroll 0")
                 run(hero, "scroll 0")
                 # The guardian's own reset has him here already.
-                fell = kill_at_one_hit_point(staff, hero, boss_room)
-                self.assertTrue(fell, "Zfairhero never killed the guardian")
+                fell, seen = kill_at_one_hit_point(staff, hero, boss_room)
+                self.assertTrue(fell, "Zfairhero never killed the guardian:\n" + seen)
                 hero.send("quit")
                 self.assertTrue(hero.wait_closed())
                 text = (mud.player_dir / "Zfairhero").read_text(encoding="latin-1")
@@ -477,10 +479,12 @@ class LiveTests(unittest.TestCase):
                 login(big, "Zbighero", PW)
                 login(hero, "Zfairtwo", PW)
                 run(staff, "goto %d" % boss_room, 1.2)
-                if "Aquamentus" not in run(staff, "look", 1.2):
-                    run(staff, "load mob 30222", 1.2)
-                fell = kill_at_one_hit_point(staff, hero, boss_room)
-                self.assertTrue(fell, "Zfairtwo never killed the guardian")
+                # Always a fresh one. Asking LOOK for his name found the
+                # first one's entrails and loaded nothing, and SET then
+                # reached a guardian somewhere else (2026-10-25).
+                run(staff, "load mob 30222", 1.2)
+                fell, seen = kill_at_one_hit_point(staff, hero, boss_room)
+                self.assertTrue(fell, "Zfairtwo never killed the guardian:\n" + seen)
                 hero.send("quit")
                 self.assertTrue(hero.wait_closed())
             text = (mud.player_dir / "Zfairtwo").read_text(encoding="latin-1")
