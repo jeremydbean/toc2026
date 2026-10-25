@@ -14263,3 +14263,111 @@
 1792889736	cmd	Alaric	19	29065	korzath1.are	fighting	88	0	fight	who		[19 Dwarf   Monk  ] Alaric. // Players found: 1
 1792889737	cmd	Alaric	19	29065	korzath1.are	fighting	88	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-10]
 1792889740	cmd	Alaric	19	29065	korzath1.are	fighting	88	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-10]
+1792889742	cmd	Alaric	19	29065	korzath1.are	fighting	88	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches a head of security. [-1]
+1792889754	cmd	Alaric	19	29065	korzath1.are	fighting	87	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a head of security. [-2]
+1792889757	cmd	Alaric	19	29065	korzath1.are	fighting	87	0	fight	who		[19 Dwarf   Monk  ] Alaric. // Players found: 1
+1792889758	cmd	Alaric	19	29065	korzath1.are	fighting	87	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch wounds a head of security. [-20]
+1792889761	cmd	Alaric	19	29065	korzath1.are	fighting	87	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a head of security. [-2]
+1792889767	cmd	Alaric	19	29065	korzath1.are	fighting	86	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a head of security. [-4]
+1792889774	cmd	Alaric	19	29065	korzath1.are	fighting	86	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a head of security. [-8]
+1792889777	cmd	Alaric	19	29065	korzath1.are	fighting	86	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-12]
+1792889780	cmd	Alaric	19	29065	korzath1.are	fighting	86	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a head of security. [-7]
+1792889790	cmd	Alaric	20	29066	korzath1.are	standing	86	0	-	east		Service Hallway //   The walls of this hallway are covered in sheer metal.  You marvel at // how much armor could be made with the metal used in lining the hall.
+1792889795	cmd	Alaric	20	29066	korzath1.are	standing	86	0	-	kill	he	A head of security parries your attack. // Your punch devastates a head of security! [-29] // Your punch DISEMBOWELS a head of security! [-44]
+1792889799	cmd	Alaric	20	29066	korzath1.are	fighting	86	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-9]
+1792889802	cmd	Alaric	20	29066	korzath1.are	fighting	86	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a head of security. [-13]
+1792889804	cmd	Alaric	20	29066	korzath1.are	fighting	86	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches a head of security. [-4]
+1792889805	cmd	Alaric	20	29066	korzath1.are	fighting	86	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a head of security. [-2]
+1792889814	cmd	Alaric	20	29066	korzath1.are	fighting	85	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a head of security. [-3]
+1792889816	cmd	Alaric	20	29066	korzath1.are	fighting	85	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a head of security. [-4]
+1792889819	cmd	Alaric	20	29066	korzath1.are	fighting	85	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches a head of security. [-2]
+1792889824	cmd	Alaric	20	29066	korzath1.are	fighting	84	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a head of security. [-4]
+1792889828	cmd	Alaric	20	29066	korzath1.are	fighting	84	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a head of security. [-1]
+1792889832	cmd	Alaric	20	29066	korzath1.are	fighting	84	0	fight	nerve		You missed the nerve. // Your nerve pinch grazes a head of security. [-6]
+1792889834	cmd	Alaric	20	29066	korzath1.are	fighting	84	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-10]
+1792889838	cmd	Alaric	20	29066	korzath1.are	fighting	84	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-12]
+1792889841	cmd	Alaric	20	29066	korzath1.are	fighting	84	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch injures a head of security. [-15]
+1792889843	cmd	Alaric	20	29066	korzath1.are	fighting	84	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-12]
+1792889847	cmd	Alaric	20	29066	korzath1.are	fighting	84	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch scratches a head of security. [-4]
+1792889850	cmd	Alaric	20	29066	korzath1.are	fighting	84	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-10]
+1792889853	cmd	Alaric	20	29066	korzath1.are	fighting	84	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a head of security. [-9]
+1792889858	cmd	Alaric	20	29066	korzath1.are	fighting	83	0	fight	nerve		You missed the nerve. // Your nerve pinch scratches a head of security. [-1]
+1792889861	cmd	Alaric	20	29066	korzath1.are	fighting	83	0	fight	nerve		You jab a head of security with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a head of security. [-5]
+1792889869	cmd	Alaric	20	4207	dresden_halloween.are	standing	83	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792889871	cmd	Alaric	20	4208	dresden_halloween.are	standing	83	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792889873	cmd	Alaric	20	4208	dresden_halloween.are	standing	83	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792889874	cmd	Alaric	20	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792889874	cmd	Alaric	20	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792889875	cmd	Alaric	20	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792889876	cmd	Alaric	20	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792889876	cmd	Alaric	20	2426	dresden_halloween.are	standing	100	0	-	open	east	Ok.
+1792889876	cmd	Alaric	20	3502	midennir_halloween.are	standing	100	0	-	run	e 3	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792889876	cmd	Alaric	20	5258	oldthalo.are	standing	100	0	-	run	s 4	The dwarf forest // [Exits: north south southeast] // The dwarf forest
+1792889877	cmd	Alaric	20	5262	oldthalo.are	standing	100	0	-	east		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads east and west.  It looks
+1792889877	cmd	Alaric	20	5263	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns south
+1792889877	cmd	Alaric	20	5264	oldthalo.are	standing	100	0	-	south		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns east
+1792889877	cmd	Alaric	20	5265	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads
+1792889878	cmd	Alaric	20	5266	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads
+1792889878	cmd	Alaric	20	5267	oldthalo.are	standing	100	0	-	down		A valley in the dark dwarf forest //   You are in a valley in the dark dwarf forest.  Short black grass grows // around you.  There is a small fox hole in a mound of dirt to the west, and
+1792889878	cmd	Alaric	20	5267	oldthalo.are	standing	100	0	-	open	hole	You open a secret door.
+1792889878	cmd	Alaric	20	5268	oldthalo.are	standing	100	0	-	west		A small ugly cave //   You see a small cave.  Skeletons of many types of creatures litter the area. // Obviously, no fox lives here!  The oppression makes you want to leave and
+1792889879	cmd	Alaric	20	5269	oldthalo.are	standing	100	0	-	south		A small ugly cave //   You are in a small ugly cave.  More skeletons lie around.  It is obvious // that the owner doesn't want you here.  The exit north is still visible.
+1792889879	cmd	Alaric	20	5270	oldthalo.are	standing	100	0	-	down		Down the path into a dead end //   You are down the path.  There is no obvious exit in this place, exit the // one back up north.  All around you, you see skeletons.
+1792889879	cmd	Alaric	20	5270	oldthalo.are	standing	100	0	-	open	secret	You open a secret door.
+1792889879	cmd	Alaric	20	5100	drow1.are	standing	100	0	-	down		City Entrance //   You are at the entrance to a small underground city. A great adamantite // gate lies open to the west allowing entrance into the city.
+1792889880	cmd	Alaric	20	5101	drow1.are	standing	100	0	-	west		City street //   You walk along a highly ornate street going north-south. A large gate // lies to the east while a building lies to the west.
+1792889881	cmd	Alaric	20	5123	drow1.are	standing	100	0	-	north		City street //   You walk along a highly ornate city street leading west and south. To the // north is a relatively small house.
+1792889883	cmd	Alaric	20	25202	mushroom.are	standing	100	0	-	run	w 17	City street // [Exits: north east south west] // City street
+1792889884	cmd	Alaric	20	25203	mushroom.are	standing	100	0	-	west		The road through the grove. //   The city is getting closer, but still looks as if it's miles away.  There // is traffic along the road consisting of many of the underground races and
+1792889885	cmd	Alaric	20	25259	mushroom.are	standing	100	0	-	south		The pathway south. //   This path has several torches on it lighting up the whole area.  The dust // in the path looks well worn.  Several sweet smelling mushrooms fill the
+1792889885	cmd	Alaric	20	25260	mushroom.are	standing	100	0	-	south		Before the bridge. //   A bridge spans out over the river below and enters a heavily overgrown // area on the otherside.  From here you can make out the small lights of
+1792889885	cmd	Alaric	20	25261	mushroom.are	standing	100	0	-	south		On the bridge. //   This bridge has been carved out of stone.  Exquisite carvings are on every // part of it and no carving is repeated twice.  The railing along the bridge
+1792889885	cmd	Alaric	20	25262	mushroom.are	standing	100	0	-	south		The southern end of the bridge. //   The light from the torches are quickly swallowed by the undergrowth that is // so ambundant here.  Mushrooms of all colors and sizes have grown to such
+1792889886	cmd	Alaric	20	25262	mushroom.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792889886	cmd	Alaric	20	25262	mushroom.are	standing	100	0	-	south		Alas, you cannot go that way.
+1792889886	cmd	Alaric	20	25263	mushroom.are	standing	100	0	-	sw		The strangled path. //   The path here is overgrown and quiet.  This is one part of the grove that // no towers are around and the only part you have seen so far that makes
+1792889886	cmd	Alaric	20	25264	mushroom.are	standing	100	0	-	sw		The strangled path. //   Light seems to be coming from a clearing in the west along with several // shadows of dancing figures.  You can also hear music with a fast rhythm
+1792889887	cmd	Alaric	20	25265	mushroom.are	standing	100	0	-	west		The bonfire. //   Several naked drow women are dancing around a bonfire here singing in their // language.  You become lost in their dance as they twirl and jump.  A tall
+1792889888	cmd	Alaric	20	25265	mushroom.are	standing	100	0	-	kill	dr	A drow female parries your attack. // Your punch *** DEVASTATES *** a drow female! [-65] // Your punch ^^^ DESTROYS ^^^ a drow female! [-90]
+1792889891	cmd	Alaric	20	25265	mushroom.are	fighting	99	0	fight	skills		Level  1: dagger              20%      hand to hand        79%       //           recall             100%       // Level  3: kick                 1%      
+1792889901	cmd	Alaric	20	25265	mushroom.are	standing	99	0	-	kill	drow	A drow female parries your attack. // A drow female dodges your attack. // Your punch *** DEVASTATES *** a drow female! [-75]
+1792889906	cmd	Alaric	20	25265	mushroom.are	standing	99	0	-	kill	drow	Your punch ^^^ DESTROYS ^^^ a drow female! [-97] // Your punch *** DEVASTATES *** a drow female! [-80] // A drow female dodges your attack.
+1792889910	cmd	Alaric	20	25265	mushroom.are	fighting	99	0	fight	kill	drow	You do the best you can!
+1792889912	cmd	Alaric	20	25265	mushroom.are	standing	99	0	-	kill	drow	Your punch *** DEVASTATES *** a drow female! [-70] // Your punch MANGLES a drow female! [-53] // Your punch ^^^ DESTROYS ^^^ a drow female! [-86]
+1792889918	cmd	Alaric	20	25265	mushroom.are	standing	99	0	-	kill	drow	Your punch ^^^ DESTROYS ^^^ a drow female! [-90] // Your punch MANGLES a drow female! [-54] // A drow female dodges your attack.
+1792889924	cmd	Alaric	20	25265	mushroom.are	standing	99	0	-	kill	drow	Your punch *** DEVASTATES *** a drow female! [-68] // A drow female parries your attack. // Your punch *** DEMOLISHES *** a drow female! [-57]
+1792889929	cmd	Alaric	20	25265	mushroom.are	fighting	99	0	fight	kill	drow	You do the best you can!
+1792889930	cmd	Alaric	20	25265	mushroom.are	standing	99	0	-	kill	drow	Your punch ^^^ DESTROYS ^^^ a drow female! [-87] // Your punch *** DEVASTATES *** a drow female! [-72] // Your punch *** DEVASTATES *** a drow female! [-65]
+1792889933	cmd	Alaric	20	25265	mushroom.are	standing	99	0	-	kill	drow	Your punch *** DEVASTATES *** a drow female! [-73] // A drow female parries your attack. // Your punch *** DEVASTATES *** a drow female! [-71]
+1792889936	cmd	Alaric	20	25265	mushroom.are	fighting	99	0	fight	kill	drow	You do the best you can!
+1792889940	cmd	Alaric	21	25265	mushroom.are	standing	99	0	-	kill	drow	Your punch *** DEVASTATES *** a drow female! [-76] // A drow female dodges your attack. // Your punch ^^^ DESTROYS ^^^ a drow female! [-101]
+1792889947	cmd	Alaric	21	25265	mushroom.are	standing	99	0	-	kill	drow	A drow female parries your attack. // Your punch ^^^ DESTROYS ^^^ a drow female! [-90] // Your punch ^^^ DESTROYS ^^^ a drow female! [-83]
+1792889953	cmd	Alaric	21	25265	mushroom.are	standing	99	0	-	look		The bonfire. //   Several naked drow women are dancing around a bonfire here singing in their // language.  You become lost in their dance as they twirl and jump.  A tall
+1792889953	cmd	Alaric	21	25265	mushroom.are	standing	99	0	-	kill	drow	A drow female dodges your attack. // Your punch ^^^ DESTROYS ^^^ a drow female! [-86] // A drow female parries your attack.
+1792889956	cmd	Alaric	21	25265	mushroom.are	fighting	99	0	fight	kill	drow	You do the best you can!
+1792889959	cmd	Alaric	21	25265	mushroom.are	fighting	99	0	fight	kill	drow	You do the best you can!
+1792889962	cmd	Alaric	21	25265	mushroom.are	standing	99	0	-	kill	drow	A drow female parries your attack. // A drow female dodges your attack. // A drow female parries your attack.
+1792889969	cmd	Alaric	21	25265	mushroom.are	standing	99	0	-	kill	drow	Your punch *** DEVASTATES *** a drow female! [-71] // Your punch MASSACRES a drow female! [-52] // A drow female dodges your attack.
+1792889976	cmd	Alaric	21	25265	mushroom.are	standing	99	0	-	kill	drow	They aren't here.
+1792889978	cmd	Alaric	21	4207	dresden_halloween.are	standing	99	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792889981	cmd	Alaric	21	2427	dresden_halloween.are	standing	99	0	-	run	e 3	The Hall of Whispers // [Exits: north east south west] // Entrance to the Haunted Temple
+1792889981	cmd	Alaric	21	2404	dresden_halloween.are	standing	99	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792889982	cmd	Alaric	21	2401	dresden_halloween.are	standing	99	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792889983	cmd	Alaric	21	2426	dresden_halloween.are	standing	99	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792889984	cmd	Alaric	21	2426	dresden_halloween.are	standing	99	0	-	open		It's already open.
+1792889985	cmd	Alaric	21	9506	newthalo.are	standing	99	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792889987	cmd	Alaric	21	9522	newthalo.are	standing	99	0	-	run	n 6	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1792889988	cmd	Alaric	21	9522	newthalo.are	standing	99	0	-	open		Ok.
+1792889989	cmd	Alaric	21	29003	korzath1.are	standing	99	0	-	run	n 8	Outside the Northern Gate of New Thalos // [Exits: north south] // On the Plains
+1792889990	cmd	Alaric	21	29060	korzath1.are	standing	99	0	-	ne		Corridor //   At the end of this stank corridor is a large steel door in the // eastern wall.
+1792889991	cmd	Alaric	21	29060	korzath1.are	standing	99	0	-	kill	ch	Your punch DISMEMBERS Security Chief! [-47] // Security Chief dodges your attack. // Security Chief dodges your attack.
+1792890008	cmd	Alaric	21	29060	korzath1.are	standing	98	0	-	get	key cor	You get a crystal key from a stinking corpse.
+1792890008	cmd	Alaric	21	29060	korzath1.are	standing	98	0	-	unlock	east	*Click*
+1792890008	cmd	Alaric	21	29060	korzath1.are	standing	98	0	-	open		Ok.
+1792890009	cmd	Alaric	21	29061	korzath1.are	standing	98	0	-	east		Corridor //   The small corridor leads south.  You notice that the lights that // illuminate the corridor come from tubes over your head instead of torches
+1792890009	cmd	Alaric	21	29061	korzath1.are	standing	98	0	-	close	west	Ok.
+1792890011	cmd	Alaric	21	29061	korzath1.are	standing	98	0	-	worth		You have 1790 platinum, 1085 gold, 1941 silver, 4380 copper // and 49545 experience (1055 exp to level).
+1792890012	cmd	Alaric	21	29061	korzath1.are	standing	98	0	-	kill	gu	A security guard dodges your attack. // A security guard parries your attack. // A security guard dodges your attack.
+1792890038	cmd	Alaric	21	29061	korzath1.are	standing	98	0	-	kill	gu	Your punch *** DEVASTATES *** a security guard! [-72] // Your punch *** DEVASTATES *** a security guard! [-67] // A security guard parries your attack.
+1792890041	cmd	Alaric	21	29061	korzath1.are	fighting	97	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch grazes a security guard. [-6]
+1792890049	cmd	Alaric	21	29061	korzath1.are	fighting	97	0	fight	nerve		You jab a security guard with wedged fingers, paralyzing a nerve. // Your nerve pinch hits a security guard. [-12]
