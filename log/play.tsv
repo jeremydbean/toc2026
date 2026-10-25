@@ -18634,3 +18634,100 @@
 1792939115	cmd	Alaric	50	16080	pirate.are	standing	99	0	-	fists		Who do you want to attack?
 1792939117	cmd	Alaric	50	2497	dresden_halloween.are	standing	99	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1792939120	cmd	Alaric	50	2497	dresden_halloween.are	standing	99	10	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'A bounty has been posted on It.'
+1792939133	cmd	Alaric	50	2401	dresden_halloween.are	standing	99	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792939133	cmd	Alaric	50	2402	dresden_halloween.are	standing	99	0	-	north		Northern Oak Tree Square. //   This is the northern exit from Oak Tree Square.  Here you can get back on the // Main Processional heading towards the palace to the north.
+1792939133	cmd	Alaric	50	2415	dresden_halloween.are	standing	99	0	-	north		Main Processional, Strung with Lanterns //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Orange paper lanterns swing on cords
+1792939134	cmd	Alaric	50	2485	dresden_halloween.are	standing	99	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1792939134	cmd	Alaric	50	2486	dresden_halloween.are	standing	99	0	-	east		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1792939134	cmd	Alaric	50	2487	dresden_halloween.are	standing	99	0	-	east		Market Plaza, the Hallows Fair //   The Market Plaza has given itself over to the fair. Booths and tents crowd // the flagstones under strings of orange and black bunting, selling toffee
+1792939134	cmd	Alaric	50	2484	dresden_halloween.are	standing	99	0	-	north		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1792939135	cmd	Alaric	50	2481	dresden_halloween.are	standing	99	0	-	north		Market Plaza. //   The Market Plaza is alive with activity.  There are booths and tents all over // the plaza.  You see people going in and out of the open doorways of all the
+1792939135	cmd	Alaric	50	2514	dresden_halloween.are	standing	99	0	-	north		Dark Alley. //   When you enter the alleyway you are submerged in darkness until your eyes // adjust to the faint light that penetrates from behind and up above.  As you
+1792939135	cmd	Alaric	50	2505	dresden_halloween.are	standing	99	0	-	east		Dark Alley. //   Looking around the dark alleyway you see the locked back doors of some of the // buildings nearby.  The faint light that penetrates this far down the alleyway
+1792939135	cmd	Alaric	50	2506	dresden_halloween.are	standing	99	0	-	north		Dead End. //   As you proceed this way down the alley you suddenly come to a dead end! // Scanning your surroundings you see the buildings on all the sides rise at
+1792939136	cmd	Alaric	50	2506	dresden_halloween.are	standing	99	0	-	open	down	Ok.
+1792939136	cmd	Alaric	50	7030	sewer.are	standing	99	0	-	down		The Quadruple Junction Under the Garbage //   You are standing in something that reminds you of an entry to an ant hive. // There are enormous concrete pipes leading north, south, east and west. 
+1792939137	cmd	Alaric	50	7022	sewer.are	standing	99	0	-	west		The odd room with smooth walls //   As you enter you hear a loud click from one of the walls ... and you fall // and fall and fall ...
+1792939137	cmd	Alaric	50	7112	sewer.are	standing	99	0	-	down		An odd intersection //   You stand in a rather odd intersection of pipes. The pipes actually don't // resemble pipes anymore. They look more like a real stone tunnel, or a
+1792939138	cmd	Alaric	50	7111	sewer.are	standing	99	0	-	north		The southwestern corner of the ledge //   This seems like a ledge that is a little broader than the one just to the  // north of here. The ledge seems to lead around some sort of Abyss of total 
+1792939138	cmd	Alaric	50	7115	sewer.are	standing	99	0	-	east		The Broad ledge //   You are standing on a ledge that seems quite a lot larger than the rest  // of the ledges. This one leads to the west and the east, plus it has an exit
+1792939138	cmd	Alaric	50	7129	sewer.are	standing	99	0	-	south		The sewer line. //   You are in a narrow part of the sewer. Down the sewer continues and to the // north is the ledge.
+1792939138	cmd	Alaric	50	7221	sewer.are	standing	99	0	-	down		The sewer drain. //   You are in a sewer drain, there is nothing special inhere, except for a  // loud echo.
+1792939139	cmd	Alaric	50	7220	sewer.are	standing	99	0	-	west		A boring drain. //   You are in yet another sewer drain. // [Exits: north east]
+1792939139	cmd	Alaric	50	7219	sewer.are	standing	99	0	-	north		A dry sewer drain. //   You are in a dry but dirty sewer drain. The drain continues east and south. // [Exits: east south]
+1792939139	cmd	Alaric	50	7217	sewer.are	standing	99	0	-	east		The half-dry drain. //   You are in a half-dry sewer drain. To the north the drain runs a little bit // downwards into some water to the east you can see a small hole. To the west
+1792939139	cmd	Alaric	50	7216	sewer.are	standing	99	0	-	north		Under water in the sewer. //   You swim in some dirty water and is holding you breath. You'll better  // continue before you drown. It is a good thing that you can hold your light
+1792939140	cmd	Alaric	50	7215	sewer.are	standing	99	0	-	north		The half-wet drain. //   You are in a sewer drain where the floor is covered with water. To the north // it looks more dry, south however the drain runs down into some water.
+1792939140	cmd	Alaric	50	7210	sewer.are	standing	99	0	-	north		The four-way junction. //   You are in a sewer junction. To the north is a small hole, to the west is a // narrow crawlway and to the east and south the sewer continues.
+1792939140	cmd	Alaric	50	7209	sewer.are	standing	99	0	-	west		The crawlway. //   You are in a narrow crawlway.  You don't notice anything interesting here. // [Exits: east west]
+1792939140	cmd	Alaric	50	7208	sewer.are	standing	99	0	-	west		The lair entrance. //   You are in a dry part of the sewer. To the north is a wooden door, you  // can see some slime at the lower part of the door. You also see some skulls
+1792939141	cmd	Alaric	50	7208	sewer.are	standing	99	0	-	open	north	Ok.
+1792939141	cmd	Alaric	50	7204	sewer.are	standing	99	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.
+1792939144	cmd	Alaric	50	7204	sewer.are	standing	99	0	-	aquest	info	.-[ Quest Status ]--------------------------------------------. // | Type  : Kill Quest // | Target: Slay It
+1792939165	cmd	Alaric	50	7204	sewer.are	standing	99	0	-	where	it	You didn't find any it.
+1792939166	cmd	Alaric	50	7204	sewer.are	standing	99	0	-	wake		You are already standing.
+1792939166	cmd	Alaric	50	7204	sewer.are	standing	99	0	-	look		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.
+1792939168	cmd	Alaric	50	7207	sewer.are	standing	99	0	-	east		The lair. //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.
+1792939169	cmd	Alaric	50	7207	sewer.are	standing	99	0	-	scan		the junior mindflayer              -to the West.
+1792939170	cmd	Alaric	50	7206	sewer.are	standing	99	0	-	north		The lair. //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.
+1792939171	cmd	Alaric	50	7203	sewer.are	standing	99	0	-	west		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce.
+1792939171	cmd	Alaric	50	7202	sewer.are	standing	99	0	-	north		The Lair //   On the floor you see a lot of human decay, like bones and skulls. You also // see a lot of slime. On the wall is a torch sitting in its sconce. To the north 
+1792939171	cmd	Alaric	50	7202	sewer.are	standing	99	0	-	open	north	Ok.
+1792939171	cmd	Alaric	50	7201	sewer.are	standing	99	0	-	north		The inner Lair //   You are in a octagonal room with smooth purple stone walls.  The floor is  // made from black stone.  In the western wall you see a large black stone door.
+1792939190	cmd	Alaric	50	25171	underdrk.are	standing	99	0	-	down		                    ACHIEVEMENT EARNED // Off the Beaten Path II  +25 points // Set foot in 25 different areas of the world.
+1792939190	cmd	Alaric	50	25170	underdrk.are	standing	99	0	-	down		The end of the sloping passage. //   The passage ends here and makes a straight vertical climb upwards into onyx // darkness.  You can also go to the down the slope to the east.
+1792939190	cmd	Alaric	50	25169	underdrk.are	standing	99	0	-	east		The slope steepens. //   The slope starts to steepen here into a sharper angle. The roaring of the // waterfall now is so far in the distance that dripping water drowns out the
+1792939191	cmd	Alaric	50	25168	underdrk.are	standing	99	0	-	east		The slope upwards. //   The passageway starts to slope upwards here.  The roaring of the waterfall is // more distant now and you can no longer feel the moisture on your face that
+1792939191	cmd	Alaric	50	25167	underdrk.are	standing	99	0	-	east		The dark passage. //   It's dark here.  You feel moisture on your face and you can hear a roaring of // a waterfall in the distance.  The passage continues to the east and the west.
+1792939191	cmd	Alaric	50	25166	underdrk.are	standing	99	0	-	east		The Intersection. //   The dark corridor turns west here and also continues to the south.  The roar // of the waterfall comes from the south and no sounds at all come from the
+1792939191	cmd	Alaric	50	25172	underdrk.are	standing	99	0	-	south		The passageway. //   The roaring of the waterfall here is almost deafening.  The moisture is making // your armor and clothes damp.  The walls are dripping wet and there is mud on
+1792939192	cmd	Alaric	50	25173	underdrk.are	standing	99	0	-	south		At the bottom of the waterfall. //   You walk into a huge cavern with water falling out of a hole in the ceiling. // Glowing moss is thriving on the moisture so abundant in this cavern.  There
+1792939192	cmd	Alaric	50	25174	underdrk.are	standing	99	0	-	up		A path upwards. //   You climb a path that runs up the side of the waterfall.  Ahead of you is a // rock wall that has several good rocks that could be used for climbing.  The
+1792939192	cmd	Alaric	50	25175	underdrk.are	standing	99	0	-	up		The hole upwards. //   The rocks did make good handholds.  You find yourself above the cavern and // right underneath the hole that the waterfall originates from.  It seems to
+1792939192	cmd	Alaric	50	2043	catacomb.are	standing	99	0	-	up		Waterfall of mist //   River of hot mist pour down in a cascade from a hole in the cavern.  It // falls like water down from the heights like a waterfall and creates
+1792939197	cmd	Alaric	50	2043	catacomb.are	standing	99	0	-	where	it	You didn't find any it.
+1792939199	cmd	Alaric	50	25175	underdrk.are	standing	99	0	-	down		The hole upwards. //   The rocks did make good handholds.  You find yourself above the cavern and // right underneath the hole that the waterfall originates from.  It seems to
+1792939201	cmd	Alaric	50	25175	underdrk.are	standing	99	0	-	where	it	You didn't find any it.
+1792939202	cmd	Alaric	50	2043	catacomb.are	standing	99	0	-	up		Waterfall of mist //   River of hot mist pour down in a cascade from a hole in the cavern.  It // falls like water down from the heights like a waterfall and creates
+1792939202	cmd	Alaric	50	2043	catacomb.are	standing	99	0	-	up		Alas, you cannot go that way.
+1792939204	cmd	Alaric	50	2042	catacomb.are	standing	99	0	-	west		Mist cavern //   A warm wind blows in from the east.  The air is still stifling hot in // here despite the breeze.  The mist seems thick enough to be alive. . .
+1792939205	cmd	Alaric	50	2042	catacomb.are	standing	99	0	-	scan		some mist                          -to the North. // It                                 -to the North. // some mist                          -to the East.
+1792939207	cmd	Alaric	50	2033	catacomb.are	standing	99	0	-	north		Misty passageway //   Warm mist swirl about you making you feel threatened as well as // protected at the same time.  The swirling mist makes it tough to tell
+1792939208	cmd	Alaric	50	2033	catacomb.are	standing	99	0	-	kill	it	They aren't here.
+1792939210	cmd	Alaric	50	2042	catacomb.are	standing	99	0	-	south		Mist cavern //   A warm wind blows in from the east.  The air is still stifling hot in // here despite the breeze.  The mist seems thick enough to be alive. . .
+1792939211	cmd	Alaric	50	2042	catacomb.are	standing	99	0	-	scan		some mist                          -to the North. // It                                 -to the North. // some mist                          -to the East.
+1792939212	cmd	Alaric	50	2033	catacomb.are	standing	99	0	-	north		Misty passageway //   Warm mist swirl about you making you feel threatened as well as // protected at the same time.  The swirling mist makes it tough to tell
+1792939214	cmd	Alaric	50	2033	catacomb.are	standing	99	0	-	crane		You do not have the stamina.
+1792939218	cmd	Alaric	50	2033	catacomb.are	standing	99	0	-	kill	cl	They aren't here.
+1792939222	cmd	Alaric	50	2033	catacomb.are	standing	99	2	-	kill	mi	Your punch ^^^ DESTROYS ^^^ some mist! [-96] // Your punch ^^^ DESTROYS ^^^ some mist! [-105] // Some mist is DEAD!!
+1792939226	cmd	Alaric	50	2033	catacomb.are	standing	99	0	-	look		Misty passageway //   Warm mist swirl about you making you feel threatened as well as // protected at the same time.  The swirling mist makes it tough to tell
+1792939229	cmd	Alaric	50	2033	catacomb.are	standing	99	0	-	kill	pen	They aren't here.
+1792939231	cmd	Alaric	50	2042	catacomb.are	standing	99	0	-	south		Mist cavern //   A warm wind blows in from the east.  The air is still stifling hot in // here despite the breeze.  The mist seems thick enough to be alive. . .
+1792939231	cmd	Alaric	50	2042	catacomb.are	standing	99	0	-	scan		It                                 -to the North. // some mist                          -to the East. // some mist                          -to the East.
+1792939233	cmd	Alaric	50	2033	catacomb.are	standing	99	0	-	north		Misty passageway //   Warm mist swirl about you making you feel threatened as well as // protected at the same time.  The swirling mist makes it tough to tell
+1792939282	cmd	Alaric	50	2033	catacomb.are	standing	99	0	-	kill	It	They aren't here.
+1792939283	cmd	Alaric	50	2033	catacomb.are	standing	99	0	-	look		Misty passageway //   Warm mist swirl about you making you feel threatened as well as // protected at the same time.  The swirling mist makes it tough to tell
+1792939285	cmd	Alaric	50	2033	catacomb.are	standing	100	0	-	crane		You do not have the stamina.
+1792939287	cmd	Alaric	50	2033	catacomb.are	standing	100	0	-	group		Alaric's group: // [50 Monk ] Alaric           8178/8178 hp 14539/14694 mana 1592/6378 mv 115062 xp
+1792939291	cmd	Alaric	50	2033	catacomb.are	standing	100	0	-	eat	guano	You eat guano. // Spell failed. // You are already airborne.
+1792939291	cmd	Alaric	50	2033	catacomb.are	standing	100	0	-	eat	guano	You eat guano. // Spell failed. // You are already airborne.
+1792939292	cmd	Alaric	50	2033	catacomb.are	standing	100	0	-	eat	guano	You eat guano. // Spell failed. // You are already airborne.
+1792939292	cmd	Alaric	50	2033	catacomb.are	standing	100	0	-	eat	guano	You eat guano. // Spell failed. // You are already airborne.
+1792939292	cmd	Alaric	50	2033	catacomb.are	standing	100	0	-	eat	guano	You eat guano. // Spell failed. // You are already airborne.
+1792939293	cmd	Alaric	50	2033	catacomb.are	standing	100	0	-	eat	guano	You eat guano. // Spell failed. // You are already airborne.
+1792939293	cmd	Alaric	50	2033	catacomb.are	standing	100	0	-	eat	guano	You eat guano. // Spell failed. // You are already airborne.
+1792939293	cmd	Alaric	50	2033	catacomb.are	standing	100	0	-	eat	guano	You eat guano. // Spell failed. // You are already airborne.
+1792939293	cmd	Alaric	50	2033	catacomb.are	standing	100	0	-	eat	guano	You eat guano. // Spell failed. // You are already airborne.
+1792939294	cmd	Alaric	50	2033	catacomb.are	standing	100	0	-	eat	guano	You do not have that item.
+1792939294	cmd	Alaric	50	2033	catacomb.are	standing	100	0	-	eat	guano	You do not have that item.
+1792939294	cmd	Alaric	50	2033	catacomb.are	standing	100	0	-	crane		You flow into action, striking at all your opponents. // It is unaffected by your crane dance!
+1792939301	cmd	Alaric	50	2033	catacomb.are	fighting	100	6	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS It! [-47] // Your fists of fury *** DEMOLISHES *** It! [-59]
+1792939309	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792939309	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
+1792939309	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
+1792939309	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	16	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'Streak of 3 in a row! A +20% bonus has been added!'
+1792939312	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 12 quest points.
+1792939314	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792939316	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1792939321	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	iron		Your skin hardens.
+1792939329	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    240 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
