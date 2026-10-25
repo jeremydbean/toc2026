@@ -181735,3 +181735,167 @@ Sun Oct 25 02:11:09 2026 :: Log Alaric [16013]: coin +4 platinum
 Sun Oct 25 02:11:09 2026 :: Log Alaric [16013]: coin +19 silver
 Sun Oct 25 02:11:09 2026 :: Log Alaric [16013]: coin +25 copper
 Sun Oct 25 02:11:09 2026 :: Log Alaric [16013]: coin +10 gold
+Sun Oct 25 02:11:44 2026 :: Log Alaric [16013]: s
+Sun Oct 25 02:11:44 2026 :: Log Alaric [16008]: arrived (Aft Deck South) from 16013
+Sun Oct 25 02:11:45 2026 :: Log Alaric [16008]: e
+Sun Oct 25 02:11:45 2026 :: Log Alaric [16009]: arrived (Aft Deck South) from 16008
+Sun Oct 25 02:11:47 2026 :: Log Alaric [16009]: n
+Sun Oct 25 02:11:47 2026 :: Log Alaric [16014]: arrived (Aft Deck) from 16009
+Sun Oct 25 02:11:47 2026 :: Log Alaric [16014]: e
+Sun Oct 25 02:11:47 2026 :: Log Alaric [16015]: arrived (Aft Deck - Starboard Side) from 16014
+Sun Oct 25 02:11:49 2026 :: Log Alaric [16015]: kill pi
+Sun Oct 25 02:11:52 2026 :: Log Alaric [16015]: fi
+Sun Oct 25 02:11:58 2026 :: Log Alaric [16015]: fi
+Sun Oct 25 02:12:04 2026 :: Log Alaric [16015]: fi
+Sun Oct 25 02:12:10 2026 :: Log Alaric [16015]: fi
+Sun Oct 25 02:12:15 2026 :: Log Alaric [16015]: who
+Sun Oct 25 02:12:16 2026 :: Log Alaric [16015]: fi
+Sun Oct 25 02:12:21 2026 :: Log Alaric [16015]: fi
+Sun Oct 25 02:12:24 2026 :: Log Alaric [16015]: killed The angry pirate
+Sun Oct 25 02:12:24 2026 :: Log Alaric [16015]: coin +1 platinum
+Sun Oct 25 02:12:24 2026 :: Log Alaric [16015]: coin +5 silver
+Sun Oct 25 02:12:24 2026 :: Log Alaric [16015]: coin +6 copper
+Sun Oct 25 02:12:24 2026 :: Log Alaric [16015]: coin +2 gold
+Sun Oct 25 02:12:28 2026 :: Log Alaric [16015]: s
+Sun Oct 25 02:12:28 2026 :: Log Alaric [16010]: arrived (Southeast Corner of Aft Deck) from 16015
+Sun Oct 25 02:12:30 2026 :: Log Alaric [16010]: kill pi
+Sun Oct 25 02:12:35 2026 :: Log Alaric [16010]: fi
+Sun Oct 25 02:12:40 2026 :: Log Alaric [16010]: fi
+Sun Oct 25 02:12:46 2026 :: Log Alaric [16010]: fi
+Sun Oct 25 02:12:48 2026 :: Treasure goblin: vanished from room 29021 (End of the Barracks, korzath1.are) (too long in one area).
+Sun Oct 25 02:12:52 2026 :: Log Alaric [16010]: fi
+Sun Oct 25 02:12:58 2026 :: Log Alaric [16010]: fi
+Sun Oct 25 02:13:04 2026 :: Log Alaric [16010]: fi
+Sun Oct 25 02:13:04 2026 :: Log Alaric [16010]: killed The angry pirate
+Sun Oct 25 02:13:04 2026 :: Log Alaric [16010]: coin +1 platinum
+Sun Oct 25 02:13:04 2026 :: Log Alaric [16010]: coin +5 silver
+Sun Oct 25 02:13:04 2026 :: Log Alaric [16010]: coin +6 copper
+Sun Oct 25 02:13:04 2026 :: Log Alaric [16010]: coin +2 gold
+Sun Oct 25 02:13:12 2026 :: Log Alaric [16010]: who
+Sun Oct 25 02:13:12 2026 :: Log Alaric [16010]: fi
+Sun Oct 25 02:13:18 2026 :: Log Alaric [16010]: fi
+Sun Oct 25 02:13:23 2026 :: Log Alaric [16010]: fi
+Sun Oct 25 02:13:27 2026 :: Log Alaric [16010]: killed The angry pirate
+Sun Oct 25 02:13:27 2026 :: Log Alaric [16010]: coin +1 platinum
+Sun Oct 25 02:13:27 2026 :: Log Alaric [16010]: coin +5 silver
+Sun Oct 25 02:13:27 2026 :: Log Alaric [16010]: coin +6 copper
+Sun Oct 25 02:13:27 2026 :: Log Alaric [16010]: coin +2 gold
+Sun Oct 25 02:13:29 2026 :: Log Alaric [16010]: fi
+Sun Oct 25 02:13:29 2026 :: Log Alaric [16010]: fi
+Sun Oct 25 02:13:30 2026 :: Log Alaric [16010]: n
+Sun Oct 25 02:13:30 2026 :: Log Alaric [16015]: arrived (Aft Deck - Starboard Side) from 16010
+Sun Oct 25 02:13:31 2026 :: Log Alaric [16015]: d
+Sun Oct 25 02:13:31 2026 :: Log Alaric [16020]: arrived (Main Deck of the Royal Eagle - Starboard) from 16015
+Sun Oct 25 02:13:32 2026 :: Log Alaric [16020]: w
+Sun Oct 25 02:13:32 2026 :: Log Alaric [16019]: arrived (Main Deck of the Royal Eagle) from 16020
+Sun Oct 25 02:13:32 2026 :: Log Alaric [16019]: w
+Sun Oct 25 02:13:32 2026 :: Log Alaric [16018]: arrived (Main Deck of the Royal Eagle) from 16019
+Sun Oct 25 02:13:35 2026 :: Log Alaric [16018]: kill sw
+Sun Oct 25 02:13:38 2026 :: Log Alaric [16018]: prac
+Sun Oct 25 02:13:39 2026 :: Log Alaric [16018]: fi
+Sun Oct 25 02:13:45 2026 :: Log Alaric [16018]: fi
+Sun Oct 25 02:13:48 2026 :: Log Alaric [16018]: level 45 -> 46 (earned)
+Sun Oct 25 02:13:48 2026 :: Alaric has achieved level 46!
+Sun Oct 25 02:13:48 2026 :: Snapshot of Alaric taken before level: Alaric.20261025_021348.level (PRESTORE Alaric to see it).
+Sun Oct 25 02:13:48 2026 :: Log Alaric [16018]: killed The swashbuckler
+Sun Oct 25 02:13:48 2026 :: Log Alaric [16018]: coin +1 platinum
+Sun Oct 25 02:13:48 2026 :: Log Alaric [16018]: coin +6 silver
+Sun Oct 25 02:13:48 2026 :: Log Alaric [16018]: coin +8 copper
+Sun Oct 25 02:13:48 2026 :: Log Alaric [16018]: coin +3 gold
+Sun Oct 25 02:13:51 2026 :: Log Alaric [16018]: fi
+Sun Oct 25 02:13:53 2026 :: Log Alaric [16018]: sc
+Sun Oct 25 02:13:55 2026 :: Log Alaric [16018]: wear brav
+Sun Oct 25 02:13:57 2026 :: Log Alaric [16018]: sc
+Sun Oct 25 02:14:04 2026 :: Log Alaric [16018]: stash put capr
+Sun Oct 25 02:14:04 2026 :: Log Alaric [16018]: stashed the Titanic Horns of Capricon (vnum 9317)
+Sun Oct 25 02:14:05 2026 :: Log Alaric [16018]: i
+Sun Oct 25 02:14:08 2026 :: Log Alaric [16018]: wear shield
+Sun Oct 25 02:14:10 2026 :: Log Alaric [16018]: scan
+Sun Oct 25 02:14:12 2026 :: Log Alaric [16018]: w
+Sun Oct 25 02:14:12 2026 :: Log Alaric [16017]: arrived (Main Deck of the Royal Eagle) from 16018
+Sun Oct 25 02:14:13 2026 :: Log Alaric [16017]: kill pi
+Sun Oct 25 02:14:15 2026 :: Log Alaric [16017]: fi
+Sun Oct 25 02:14:16 2026 :: Log Alaric [16017]: affects off: steel fist
+Sun Oct 25 02:14:21 2026 :: Log Alaric [16017]: fi
+Sun Oct 25 02:14:27 2026 :: Log Alaric [16017]: fi
+Sun Oct 25 02:14:27 2026 :: Log Alaric [16017]: killed The pirate
+Sun Oct 25 02:14:27 2026 :: Log Alaric [16017]: coin +2 platinum
+Sun Oct 25 02:14:27 2026 :: Log Alaric [16017]: coin +12 silver
+Sun Oct 25 02:14:27 2026 :: Log Alaric [16017]: coin +17 copper
+Sun Oct 25 02:14:27 2026 :: Log Alaric [16017]: coin +7 gold
+Sun Oct 25 02:14:35 2026 :: Log Alaric [16017]: steel
+Sun Oct 25 02:14:39 2026 :: Log Alaric [16017]: e
+Sun Oct 25 02:14:39 2026 :: Log Alaric [16018]: arrived (Main Deck of the Royal Eagle) from 16017
+Sun Oct 25 02:14:39 2026 :: Log Alaric [16018]: n
+Sun Oct 25 02:14:39 2026 :: Log Alaric [16023]: arrived (Main Deck) from 16018
+Sun Oct 25 02:14:39 2026 :: Log Alaric [16023]: scan
+Sun Oct 25 02:14:41 2026 :: Log Alaric [16023]: n
+Sun Oct 25 02:14:41 2026 :: Log Alaric [16028]: arrived (Main Deck) from 16023
+Sun Oct 25 02:14:42 2026 :: Log Alaric [16028]: kill sw
+Sun Oct 25 02:14:45 2026 :: Log Alaric [16028]: fi
+Sun Oct 25 02:14:51 2026 :: Log Alaric [16028]: fi
+Sun Oct 25 02:14:51 2026 :: Log Alaric [16028]: killed The swashbuckler
+Sun Oct 25 02:14:51 2026 :: Log Alaric [16028]: coin +1 platinum
+Sun Oct 25 02:14:51 2026 :: Log Alaric [16028]: coin +6 silver
+Sun Oct 25 02:14:51 2026 :: Log Alaric [16028]: coin +8 copper
+Sun Oct 25 02:14:51 2026 :: Log Alaric [16028]: coin +3 gold
+Sun Oct 25 02:15:00 2026 :: Log Alaric [16028]: scan
+Sun Oct 25 02:15:02 2026 :: Log Alaric [16028]: u
+Sun Oct 25 02:15:05 2026 :: Log Alaric [16028]: n
+Sun Oct 25 02:15:05 2026 :: Log Alaric [16033]: arrived (Base of the Mast) from 16028
+Sun Oct 25 02:15:05 2026 :: Log Alaric [16033]: scan
+Sun Oct 25 02:15:07 2026 :: Log Alaric [16033]: u
+Sun Oct 25 02:15:07 2026 :: Log Alaric [16078]: arrived (The Mast) from 16033
+Sun Oct 25 02:15:08 2026 :: Log Alaric [16078]: scan
+Sun Oct 25 02:15:09 2026 :: Log Alaric [16078]: e
+Sun Oct 25 02:15:09 2026 :: Log Alaric [16079]: arrived (Out on the Mast) from 16078
+Sun Oct 25 02:15:10 2026 :: Log Alaric [16079]: kill sw
+Sun Oct 25 02:15:13 2026 :: Log Alaric [16079]: fi
+Sun Oct 25 02:15:18 2026 :: Sock.sinaddr:  18.116.205.62
+Sun Oct 25 02:15:18 2026 :: EOF encountered on read.
+Sun Oct 25 02:15:21 2026 :: Log Alaric [16079]: fi
+Sun Oct 25 02:15:26 2026 :: Log Alaric [16079]: fi
+Sun Oct 25 02:15:32 2026 :: Log Alaric [16079]: fi
+Sun Oct 25 02:15:38 2026 :: Log Alaric [16079]: fi
+Sun Oct 25 02:15:38 2026 :: Log Alaric [16079]: killed The swashbuckler
+Sun Oct 25 02:15:38 2026 :: Log Alaric [16079]: coin +1 platinum
+Sun Oct 25 02:15:38 2026 :: Log Alaric [16079]: coin +6 silver
+Sun Oct 25 02:15:38 2026 :: Log Alaric [16079]: coin +8 copper
+Sun Oct 25 02:15:38 2026 :: Log Alaric [16079]: coin +3 gold
+Sun Oct 25 02:15:45 2026 :: Log Alaric [16079]: w
+Sun Oct 25 02:15:45 2026 :: Log Alaric [16078]: arrived (The Mast) from 16079
+Sun Oct 25 02:15:45 2026 :: Log Alaric [16078]: u
+Sun Oct 25 02:15:45 2026 :: Log Alaric [16081]: arrived (The Mast) from 16078
+Sun Oct 25 02:15:45 2026 :: Log Alaric [16081]: scan
+Sun Oct 25 02:15:48 2026 :: Log Alaric [16081]: w
+Sun Oct 25 02:15:48 2026 :: Log Alaric [16080]: arrived (Out on the Mast) from 16081
+Sun Oct 25 02:15:49 2026 :: Log Alaric [16080]: kill sw
+Sun Oct 25 02:15:51 2026 :: Log Alaric [16080]: fi
+Sun Oct 25 02:15:57 2026 :: Log Alaric [16080]: fi
+Sun Oct 25 02:16:00 2026 :: Log Alaric [16080]: killed The swashbuckler
+Sun Oct 25 02:16:00 2026 :: Log Alaric [16080]: coin +1 platinum
+Sun Oct 25 02:16:00 2026 :: Log Alaric [16080]: coin +6 silver
+Sun Oct 25 02:16:00 2026 :: Log Alaric [16080]: coin +8 copper
+Sun Oct 25 02:16:00 2026 :: Log Alaric [16080]: coin +3 gold
+Sun Oct 25 02:16:00 2026 :: Log Alaric [16080]: affects off: titanic, empower, empower; max hp 7179 -> 1284; max mana 12585 -> 2370; max moves 5772 -> 977; hp 5940 -> 1284
+Sun Oct 25 02:16:03 2026 :: Log Alaric [16080]: fi
+Sun Oct 25 02:16:04 2026 :: Log Alaric [16080]: e
+Sun Oct 25 02:16:04 2026 :: Log Alaric [16081]: arrived (The Mast) from 16080
+Sun Oct 25 02:16:04 2026 :: Log Alaric [16081]: recal
+Sun Oct 25 02:16:04 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 16081
+Sun Oct 25 02:16:05 2026 :: Log Alaric [4207]: w
+Sun Oct 25 02:16:05 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sun Oct 25 02:16:08 2026 :: Log Alaric [4208]: heal all
+Sun Oct 25 02:16:08 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Sun Oct 25 02:16:14 2026 :: Log Alaric [4208]: r e 4
+Sun Oct 25 02:16:14 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Oct 25 02:16:14 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sun Oct 25 02:16:14 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sun Oct 25 02:16:14 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sun Oct 25 02:16:15 2026 :: Log Alaric [2427]: n
+Sun Oct 25 02:16:15 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 25 02:16:18 2026 :: Log Alaric [2404]: n
+Sun Oct 25 02:16:18 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sun Oct 25 02:16:21 2026 :: Log Alaric [2401]: sc
+Sun Oct 25 02:16:30 2026 :: Log Alaric [2401]: wake
+Sun Oct 25 02:16:30 2026 :: Log Alaric [2401]: l
