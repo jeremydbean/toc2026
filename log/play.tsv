@@ -13700,3 +13700,185 @@
 1792888526	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	7	-	stash	put cloak	You put the Crystalline Royal Cloak away for safe keeping.
 1792888527	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	4	-	stash	put cloak	You put the Crystalline Royal Cloak away for safe keeping.
 1792888527	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	stash	put cloak	You are not carrying that.
+1792888533	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	9	-	stash	put ring	You put An assassin's ring away for safe keeping.
+1792888534	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	5	-	stash	put ring	You put An assassin's ring away for safe keeping.
+1792888534	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	inventory		You are carrying: // ( 2) (Glowing) (Humming) a bone mace // (16) (Glowing) a bag of candy corn
+1792888539	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	7	-	stash	put batt	You put battle boots away for safe keeping.
+1792888540	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	5	-	stash	put batt	You put battle helmet away for safe keeping.
+1792888543	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	5	-	stash	put cord	You put some corduroys away for safe keeping.
+1792888544	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	inventory		You are carrying: // ( 2) (Glowing) (Humming) a bone mace // (16) (Glowing) a bag of candy corn
+1792888552	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	5	-	stash	put bat	You put battle gloves away for safe keeping.
+1792888553	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	stash	put bat	You are not carrying that.
+1792888553	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	stash	put bat	You are not carrying that.
+1792888554	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	inventory		You are carrying: // ( 2) (Glowing) (Humming) a bone mace // (16) (Glowing) a bag of candy corn
+1792888559	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	drop	all	You drop a bag of candy corn. // You drop a bag of candy corn. // You drop a bag of candy corn.
+1792888562	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	get	mace	You get a bone mace.
+1792888564	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	6	-	stash	put mace	You put a bone mace away for safe keeping.
+1792888565	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	stash	put mace	You can't let go of it.
+1792888568	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	inventory		You are carrying: //      (Glowing) (Humming) a bone mace // (10) (Magical) a potion of true sight
+1792888570	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	drop	all	You drop a potion of true sight. // You drop a potion of true sight. // You drop a potion of true sight.
+1792888570	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	equipment		You are using: // Nothing.
+1792888572	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	get	tru	You get a potion of true sight.
+1792888574	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	quaff	tr	You quaff a potion of true sight. // You can already see invisible. // You can already sense magical auras.
+1792888574	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	equipment		You are using: // Nothing.
+1792888575	cmd	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792888596	refused	Alaric	56	4208	dresden_halloween.are	standing	57	0	-	(unknown)		Huh?
+1792888597	cmd	Alaric	56	4208	dresden_halloween.are	standing	58	0	-	remort		(withheld)
+1792888608	cmd	Alaric	3	4207	dresden_halloween.are	standing	58	172	-	remort		(withheld)
+1792888610	cmd	Alaric	3	4207	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792888610	cmd	Alaric	3	4207	dresden_halloween.are	standing	100	0	-	look		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792888612	cmd	Alaric	3	4208	dresden_halloween.are	standing	100	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792888615	cmd	Alaric	3	4208	dresden_halloween.are	standing	100	5	-	stash	get dip	You take a mud school diploma out of your stash.
+1792888617	cmd	Alaric	3	4208	dresden_halloween.are	standing	100	0	-	wear	dip	You hold a mud school diploma in your hands.
+1792888618	cmd	Alaric	3	4208	dresden_halloween.are	standing	100	0	-	get	all	You get glowing moss. // You get a potion of flying. // You get guano.
+1792888621	cmd	Alaric	3	4208	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (16) (Glowing) a bag of candy corn // ( 9) guano
+1792888623	cmd	Alaric	3	4208	dresden_halloween.are	standing	100	0	-	practice		dagger              20%  hand to hand        40%  kick                 1%   // recall             100%   // You have 106 practice sessions left.
+1792888625	cmd	Alaric	3	4208	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792888626	cmd	Alaric	3	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792888627	cmd	Alaric	3	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,
+1792888628	cmd	Alaric	3	3757	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the
+1792888628	cmd	Alaric	3	3759	school.are	standing	100	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with
+1792888628	cmd	Alaric	3	3759	school.are	standing	100	0	-	practice		recall             100%  dagger              20%  hand to hand        40%   // kick                 1%   // You have 106 practice sessions left.
+1792888631	cmd	Alaric	3	3759	school.are	standing	100	0	-	practice	hand	You practice hand to hand.
+1792888632	cmd	Alaric	3	3759	school.are	standing	100	0	-	practice	hand	You are now learned at hand to hand.
+1792888632	cmd	Alaric	3	3759	school.are	standing	100	0	-	practice	hand	You are already learned at hand to hand.
+1792888634	cmd	Alaric	3	3757	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the
+1792888634	cmd	Alaric	3	3758	school.are	standing	100	0	-	west		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 
+1792888634	cmd	Alaric	3	3758	school.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792888635	cmd	Alaric	3	3758	school.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792888635	cmd	Alaric	3	3758	school.are	standing	100	0	-	train		You have 52 training sessions. // You can train: str int wis dex con hp mana.
+1792888638	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	dex	Your dexterity increases!
+1792888639	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	dex	Your dexterity increases!
+1792888639	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	dex	Your dexterity increases!
+1792888640	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	dex	Your dexterity is already at maximum.
+1792888640	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	dex	Your dexterity is already at maximum.
+1792888640	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	dex	Your dexterity is already at maximum.
+1792888640	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	dex	Your dexterity is already at maximum.
+1792888641	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	dex	Your dexterity is already at maximum.
+1792888641	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	dex	Your dexterity is already at maximum.
+1792888641	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	dex	Your dexterity is already at maximum.
+1792888643	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	str	Your strength increases!
+1792888643	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	str	Your strength increases!
+1792888643	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	str	Your strength increases!
+1792888644	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	str	Your strength increases!
+1792888644	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	str	Your strength increases!
+1792888644	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	str	Your strength increases!
+1792888644	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	str	Your strength increases!
+1792888645	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	str	Your strength is already at maximum.
+1792888646	cmd	Alaric	3	3758	school.are	standing	100	0	-	train		You have 42 training sessions. // You can train: int wis con hp mana.
+1792888649	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1792888650	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1792888650	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1792888650	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1792888651	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1792888651	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1792888651	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1792888651	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	con	Your constitution increases!
+1792888652	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	con	Your constitution is already at maximum.
+1792888652	cmd	Alaric	3	3758	school.are	standing	100	0	-	train	con	Your constitution is already at maximum.
+1792888653	cmd	Alaric	3	3758	school.are	standing	100	0	-	practice		dagger              20%  hand to hand        75%  kick                 1%   // recall             100%   // You have 104 practice sessions left.
+1792888655	cmd	Alaric	3	3758	school.are	standing	100	0	-	skills		Level  1: dagger              20%      hand to hand        75%       //           recall             100%       // Level  3: kick                 1%      
+1792888658	cmd	Alaric	3	3758	school.are	standing	100	0	-	wake		You are already standing.
+1792888659	cmd	Alaric	3	3758	school.are	standing	100	0	-	look		Eclipse's Training Room //   You are in Eclipse's Training Room.  Around you are all sorts of physical // and mental training tools.  The whole room is filled with magic, holiness, 
+1792888660	cmd	Alaric	3	3757	school.are	standing	100	0	-	east		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the
+1792888664	cmd	Alaric	3	3701	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1792888664	cmd	Alaric	3	3701	school.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792888665	cmd	Alaric	3	3702	school.are	standing	100	0	-	west		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1792888665	cmd	Alaric	3	3703	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1792888666	cmd	Alaric	3	3709	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1792888666	cmd	Alaric	3	3711	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1792888667	cmd	Alaric	3	3712	school.are	standing	100	0	-	down		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.
+1792888667	cmd	Alaric	3	3714	school.are	standing	100	0	-	west		A Cage //   You are in a cage.  Blood and gore are everywhere.  The keepers must be lax // in the upkeep here!  There is a sign on the wall.  The only exit is east.
+1792888669	cmd	Alaric	3	3714	school.are	standing	100	0	-	kill	li	Your punch misses the lizard man. [-0] // Your punch misses the lizard man. [-0]
+1792888677	cmd	Alaric	3	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792888677	cmd	Alaric	3	4208	dresden_halloween.are	standing	100	1	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792888680	cmd	Alaric	3	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are clothed in mystical armor. // You feel righteous.
+1792888681	cmd	Alaric	3	4207	dresden_halloween.are	standing	100	0	-	east		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792888682	cmd	Alaric	3	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,
+1792888683	cmd	Alaric	3	3757	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the
+1792888683	cmd	Alaric	3	3701	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1792888684	cmd	Alaric	3	3702	school.are	standing	100	0	-	west		The Center Room //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1792888684	cmd	Alaric	3	3703	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1792888685	cmd	Alaric	3	3709	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1792888685	cmd	Alaric	3	3711	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.  Of course, there is a
+1792888687	cmd	Alaric	3	3712	school.are	standing	100	0	-	down		The Cage Room //   You are in the cage room.  All around are 4 cages.  Light fluoresces off the // ceiling in soft white tones.  Of course, there is a big sign on the wall.
+1792888689	cmd	Alaric	3	3717	school.are	standing	100	0	-	down		A Room in Mud School //   You are in a square white room.  The walls are all blank, with no windows. // Light fluoresces off the ceiling in soft white tones.   There is a collapsed
+1792888690	cmd	Alaric	3	3784	school.are	standing	100	0	-	north		The Hallway //   This is a common school hallway with the UGLY tile floor that most school // administrations seem to love so much.  The lockers on either side of the
+1792888691	cmd	Alaric	3	3786	school.are	standing	100	0	-	west		A Classroom //   The students in this classroom are all busy taking notes at the rate of // thousands of lines a second.  They're not even beginning to catch up with
+1792888692	cmd	Alaric	4	3786	school.are	standing	100	21	-	kill	st	Your punch devastates the student! [-30] // The student is DEAD!! // You receive 1314 experience points (657 of them rested).
+1792888696	cmd	Alaric	4	3786	school.are	standing	99	0	-	kill	st	Your punch *** DEMOLISHES *** the student! [-57] // The student is DEAD!! // You receive 610 experience points (305 of them rested).
+1792888703	cmd	Alaric	5	3786	school.are	standing	99	18	-	kill	te	Your punch DISMEMBERS the hyperactive teacher! [-47] // Your punch DISMEMBERS the hyperactive teacher! [-48] // The hyperactive teacher is DEAD!!
+1792888714	cmd	Alaric	5	4207	dresden_halloween.are	standing	99	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792888715	cmd	Alaric	5	4207	dresden_halloween.are	standing	99	0	-	score		| Name:         Alaric | Level:       5 | Class:        Monk | // | Played:    236 hours | Sex:      Male | Guild:        Monk | // | Age:        28 years | Race:    Dwarf | Castle:       None |
+1792888716	cmd	Alaric	5	4207	dresden_halloween.are	standing	99	0	-	wake		You are already standing.
+1792888717	cmd	Alaric	5	4207	dresden_halloween.are	standing	99	0	-	look		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792888718	cmd	Alaric	5	2427	dresden_halloween.are	standing	99	0	-	run	e 3	The Hall of Whispers // [Exits: north east south west] // Entrance to the Haunted Temple
+1792888718	cmd	Alaric	5	2404	dresden_halloween.are	standing	99	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792888718	cmd	Alaric	5	2401	dresden_halloween.are	standing	99	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792888719	cmd	Alaric	5	2410	dresden_halloween.are	standing	99	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792888719	cmd	Alaric	5	2411	dresden_halloween.are	standing	99	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792888720	cmd	Alaric	5	2414	dresden_halloween.are	standing	99	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792888720	cmd	Alaric	5	2414	dresden_halloween.are	standing	99	0	-	north		Alas, you cannot go that way.
+1792888722	cmd	Alaric	5	2497	dresden_halloween.are	standing	99	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792888724	cmd	Alaric	5	2401	dresden_halloween.are	standing	99	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792888725	cmd	Alaric	5	2410	dresden_halloween.are	standing	99	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792888725	cmd	Alaric	5	2411	dresden_halloween.are	standing	99	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792888726	cmd	Alaric	5	2413	dresden_halloween.are	standing	99	0	-	north		Outside a treehouse. //   As you push past the small branches you come upon a small treehouse nestled in // among two very big branches.  It looks as if the surrounding limbs have grown
+1792888728	cmd	Alaric	5	2413	dresden_halloween.are	standing	99	0	-	open		Ok.
+1792888728	cmd	Alaric	5	2498	dresden_halloween.are	standing	99	0	-	north		Inside the treehouse. //   As you enter through the curtain of leaves you see the cozy interior of the // treehouse.  Although it looked small from the outside it seems to have a roomy
+1792888730	cmd	Alaric	5	2498	dresden_halloween.are	standing	99	0	-	join	monk	Melancholy in widow's weeds tells you 'We only accept people who have never been in a guild before.'
+1792888733	cmd	Alaric	5	2413	dresden_halloween.are	standing	99	1	-	south		Outside a treehouse. //   As you push past the small branches you come upon a small treehouse nestled in // among two very big branches.  It looks as if the surrounding limbs have grown
+1792888734	cmd	Alaric	5	2413	dresden_halloween.are	standing	99	0	-	down		Alas, you cannot go that way.
+1792888734	cmd	Alaric	5	2413	dresden_halloween.are	standing	99	0	-	down		Alas, you cannot go that way.
+1792888734	cmd	Alaric	5	2411	dresden_halloween.are	standing	99	0	-	south		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792888735	cmd	Alaric	5	2410	dresden_halloween.are	standing	99	0	-	down		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792888736	cmd	Alaric	5	2401	dresden_halloween.are	standing	99	0	-	down		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792888739	cmd	Alaric	5	4649	dresden_halloween.are	standing	99	0	-	down		Entrance to the Hall of Hero's. //   As you reach the end of the staircase you walk into a large chamber. // You notice that the room is several times the size of the tree itself
+1792888740	cmd	Alaric	5	2401	dresden_halloween.are	standing	99	0	-	up		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792888743	cmd	Alaric	5	2405	dresden_halloween.are	standing	99	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1792888743	cmd	Alaric	5	2433	dresden_halloween.are	standing	99	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1792888743	cmd	Alaric	5	2434	dresden_halloween.are	standing	99	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792888743	cmd	Alaric	5	2435	dresden_halloween.are	standing	99	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792888744	cmd	Alaric	5	2436	dresden_halloween.are	standing	99	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792888744	cmd	Alaric	5	2437	dresden_halloween.are	standing	99	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1792888744	cmd	Alaric	5	2438	dresden_halloween.are	standing	99	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1792888744	cmd	Alaric	5	2438	dresden_halloween.are	standing	99	0	-	open	west	Ok.
+1792888745	cmd	Alaric	5	2439	dresden_halloween.are	standing	99	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792888748	cmd	Alaric	5	6000	haon.are	standing	99	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through
+1792888748	cmd	Alaric	5	6001	haon.are	standing	99	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.
+1792888748	cmd	Alaric	5	6002	haon.are	standing	99	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads
+1792888748	cmd	Alaric	5	6011	haon.are	standing	99	0	-	south		A small path through the light forest //   You are on a small path leading through the forest.  The trees are tall and // slender.  Paths lead north and south.
+1792888749	cmd	Alaric	5	6008	haon.are	standing	99	0	-	south		The forest clearing //   You are in a clearing in the forest.  Lots of fresh stumps of varying sizes // protrude from the ground and heavy logs are stacked neatly in a big pile
+1792888749	cmd	Alaric	5	6009	haon.are	standing	99	0	-	east		Outside a small cabin in the forest //   You are outside a small cabin built entirely from heavy logs.  There is a // wooden door to the north and small paths lead west and south through the
+1792888749	cmd	Alaric	5	6014	haon.are	standing	99	0	-	south		An intersection in the dense forest //   You are on a small path leading through the dense forest. The forest // gradually lightens to the north.  Paths lead north, east and west.
+1792888749	cmd	Alaric	5	6015	haon.are	standing	99	0	-	east		A small path in the dense forest //   You are on a small path leading through the dense forest.  The crowns of // the old trees leave the forest in a surreal twilight illumination.
+1792888750	cmd	Alaric	5	6016	haon.are	standing	99	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  The crowns of the // old trees leave the forest in an unreal twilight illumination.  To the west
+1792888750	cmd	Alaric	5	6017	haon.are	standing	99	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  The forest // seems to become lighter to the west. The path continues north and west.
+1792888750	cmd	Alaric	5	6018	haon.are	standing	99	0	-	west		An intersection in the light forest //   You are on a small path leading through the forest.  A path leads north // to a small field and other paths lead east and west into the dense forest.
+1792888750	cmd	Alaric	5	51	connect.are	standing	99	0	-	south		The top of the cliff. //   You are standing on the ledge of a huge cliff on the side of a valley // with a beautiful lake and tiny village nestled in it.  It looks so
+1792888751	cmd	Alaric	5	13001	lakes.are	standing	99	0	-	down		Rock Outcropping //   >From this rock outcropping the valley below seems peaceful, untouched. // Dense forests of pine carpet the mountainsides, broken only by thick aspen
+1792888751	cmd	Alaric	5	13002	lakes.are	standing	99	0	-	down		Small Grove //   Suddenly, soft music begins. Its source is slim, beautiful girl. Lyre in // hand, she sits gracefully as she plays; nearby, a large plainsman raises
+1792888751	cmd	Alaric	5	13003	lakes.are	standing	99	0	-	west		Entrance to the Town of Solace //   A warm autumn breeze rustles the great vallenwood trees of Solace. The // road that wanders through the trees blazes in the bright colors of autumn.
+1792888751	cmd	Alaric	5	13201	solace.are	standing	99	0	-	north		Gateway to Solace //   This is the gateway to the town of Solace. It keeps the monsters out and // the people in. This is a quiet farming town on the shores of Crystalmir
+1792888753	cmd	Alaric	5	13201	solace.are	standing	99	0	-	kill	to	Your punch maims Townguard! [-33] // Townguard dodges your attack. // Townguard dodges your attack.
+1792888762	cmd	Alaric	7	13201	solace.are	standing	98	0	-	kill	to	Your punch DISMEMBERS Townguard! [-45] // Your punch maims Townguard! [-36] // Townguard dodges your attack.
+1792888770	cmd	Alaric	8	13201	solace.are	standing	97	0	-	kill	to	Townguard dodges your attack. // Townguard dodges your attack. // Townguard parries your attack.
+1792888780	cmd	Alaric	8	13201	solace.are	standing	97	0	-	kill	to	Your punch *** DEVASTATES *** Townguard! [-61] // Your punch devastates Townguard! [-30] // Your punch devastates Townguard! [-31]
+1792888787	cmd	Alaric	9	4207	dresden_halloween.are	standing	97	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1792888788	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792888790	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	5	-	stash	get opal	You take an opal ring out of your stash.
+1792888791	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	4	-	stash	get opal	You take an opal ring out of your stash.
+1792888792	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	0	-	wear	opal	You wear an opal ring on your left finger.
+1792888793	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	0	-	wear	opal	You wear an opal ring on your right finger.
+1792888796	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	4	-	stash	get ench	You take an enchanted leather bracer out of your stash.
+1792888797	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	5	-	stash	get ench	You take an enchanted leather bracer out of your stash.
+1792888798	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	0	-	wear	bracer	You wear an enchanted leather bracer around your left wrist.
+1792888799	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	0	-	wear	bracer	You wear an enchanted leather bracer around your right wrist.
+1792888799	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) a war banner // <worn on finger>    (Magical) an opal ring
+1792888803	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	5	-	stash	get piw	You take a commoner's piwafwi out of your stash.
+1792888803	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	0	-	wear	piw	You must be level 17 to use this object.
+1792888807	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	0	-	wake		You are already standing.
+1792888807	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1792888812	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	0	-	gainlist		Abilities for a level 9 monk of the monk guild: 16 learned, 18 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):
+1792888820	anomaly	Alaric	9	4208	dresden_halloween.are	experience jump	8973 experience in one tick, 2300 a level
+1792888821	cmd	Alaric	9	4208	dresden_halloween.are	standing	97	0	-	walkto	master of movement	You set off for Master of Movement (Palm of the Creator), about 21 rooms away. // WALKTO STOP, or any other command, stops you.

@@ -177492,3 +177492,345 @@ Sun Oct 25 00:35:26 2026 :: Log Alaric [4208]: stashed the Crystalline Royal Clo
 Sun Oct 25 00:35:27 2026 :: Log Alaric [4208]: stash put cloak
 Sun Oct 25 00:35:27 2026 :: Log Alaric [4208]: stashed the Crystalline Royal Cloak (vnum 10004)
 Sun Oct 25 00:35:27 2026 :: Log Alaric [4208]: stash put cloak
+Sun Oct 25 00:35:33 2026 :: Log Alaric [4208]: stash put ring
+Sun Oct 25 00:35:33 2026 :: Log Alaric [4208]: stashed An assassin's ring (vnum 16033)
+Sun Oct 25 00:35:34 2026 :: Log Alaric [4208]: stash put ring
+Sun Oct 25 00:35:34 2026 :: Log Alaric [4208]: stashed An assassin's ring (vnum 16033)
+Sun Oct 25 00:35:34 2026 :: Log Alaric [4208]: i
+Sun Oct 25 00:35:39 2026 :: Log Alaric [4208]: stash put batt
+Sun Oct 25 00:35:39 2026 :: Log Alaric [4208]: stashed battle boots (vnum 29236)
+Sun Oct 25 00:35:40 2026 :: Log Alaric [4208]: stash put batt
+Sun Oct 25 00:35:40 2026 :: Log Alaric [4208]: stashed battle helmet (vnum 29215)
+Sun Oct 25 00:35:43 2026 :: Log Alaric [4208]: stash put cord
+Sun Oct 25 00:35:43 2026 :: Log Alaric [4208]: stashed some corduroys (vnum 29227)
+Sun Oct 25 00:35:44 2026 :: Log Alaric [4208]: i
+Sun Oct 25 00:35:52 2026 :: Log Alaric [4208]: stash put bat
+Sun Oct 25 00:35:52 2026 :: Log Alaric [4208]: stashed battle gloves (vnum 29235)
+Sun Oct 25 00:35:53 2026 :: Log Alaric [4208]: stash put bat
+Sun Oct 25 00:35:53 2026 :: Log Alaric [4208]: stash put bat
+Sun Oct 25 00:35:54 2026 :: Log Alaric [4208]: i
+Sun Oct 25 00:35:59 2026 :: Log Alaric [4208]: drop all
+Sun Oct 25 00:36:02 2026 :: Log Alaric [4208]: get mace
+Sun Oct 25 00:36:04 2026 :: Log Alaric [4208]: stash put mace
+Sun Oct 25 00:36:04 2026 :: Log Alaric [4208]: stashed a bone mace (vnum 29207)
+Sun Oct 25 00:36:05 2026 :: Log Alaric [4208]: stash put mace
+Sun Oct 25 00:36:08 2026 :: Log Alaric [4208]: i
+Sun Oct 25 00:36:10 2026 :: Log Alaric [4208]: drop all
+Sun Oct 25 00:36:10 2026 :: Log Alaric [4208]: eq
+Sun Oct 25 00:36:12 2026 :: Log Alaric [4208]: get tru
+Sun Oct 25 00:36:14 2026 :: Log Alaric [4208]: quaff tr
+Sun Oct 25 00:36:14 2026 :: Log Alaric [4208]: eq
+Sun Oct 25 00:36:15 2026 :: Log Alaric [4208]: l
+Sun Oct 25 00:36:36 2026 :: Log Alaric [4208]: (refused) remortremort
+Sun Oct 25 00:36:37 2026 :: Log Alaric [4208]: remort (arguments withheld)
+Sun Oct 25 00:36:48 2026 :: Log Alaric [4208]: remort (arguments withheld)
+Sun Oct 25 00:36:48 2026 :: Snapshot of Alaric taken before remort: Alaric.20261025_003648.remort (PRESTORE Alaric to see it).
+Sun Oct 25 00:36:48 2026 :: Log Alaric [4208]: remort 3: level 56 thief/dwarf/thief -> monk/dwarf/none
+Sun Oct 25 00:36:48 2026 :: Automated backup complete.
+Sun Oct 25 00:36:48 2026 :: Psi Alaric [4208]: grant forced, no roll taken (remorts 3, pending no)
+Sun Oct 25 00:36:48 2026 :: Psi Alaric [4208]: restored torment (Assault set) at 1% from an earlier life
+Sun Oct 25 00:36:48 2026 :: Psi Alaric [4208]: restored telekinesis (Astral set) at 1% from an earlier life
+Sun Oct 25 00:36:48 2026 :: Psi Alaric [4208]: restored mindbar (Defense set) at 1% from an earlier life
+Sun Oct 25 00:36:48 2026 :: Psi Alaric [4208]: restored mind leech (Control set) at 1% from an earlier life
+Sun Oct 25 00:36:48 2026 :: Psi Alaric [4208]: Assault set: holds 1 of 4, target 2 for remort 3, 3 candidates
+Sun Oct 25 00:36:48 2026 :: Psi Alaric [4208]: granted ego whip (Assault set) -- drew 1 of 3 unheld
+Sun Oct 25 00:36:48 2026 :: Psi Alaric [4208]: Astral set: holds 1 of 4, target 2 for remort 3, 3 candidates
+Sun Oct 25 00:36:48 2026 :: Psi Alaric [4208]: granted project (Astral set) -- drew 3 of 3 unheld
+Sun Oct 25 00:36:48 2026 :: Psi Alaric [4208]: Defense set: holds 1 of 4, target 2 for remort 3, 3 candidates
+Sun Oct 25 00:36:48 2026 :: Psi Alaric [4208]: granted psionic armor (Defense set) -- drew 1 of 3 unheld
+Sun Oct 25 00:36:48 2026 :: Psi Alaric [4208]: Control set: holds 1 of 5, target 2 for remort 3, 4 candidates
+Sun Oct 25 00:36:48 2026 :: Psi Alaric [4208]: granted clairvoyance (Control set) -- drew 1 of 4 unheld
+Sun Oct 25 00:36:48 2026 :: Psi Alaric [4208]: grant complete, 8 powers now held
+Sun Oct 25 00:36:48 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Oct 25 00:36:50 2026 :: Log Alaric [4207]: wake
+Sun Oct 25 00:36:50 2026 :: Log Alaric [4207]: l
+Sun Oct 25 00:36:52 2026 :: Log Alaric [4207]: w
+Sun Oct 25 00:36:52 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sun Oct 25 00:36:55 2026 :: Log Alaric [4208]: stash get dip
+Sun Oct 25 00:36:55 2026 :: Log Alaric [4208]: withdrew a mud school diploma (vnum 3715) from the stash
+Sun Oct 25 00:36:57 2026 :: Log Alaric [4208]: wear dip
+Sun Oct 25 00:36:58 2026 :: Log Alaric [4208]: get all
+Sun Oct 25 00:37:01 2026 :: Log Alaric [4208]: i
+Sun Oct 25 00:37:03 2026 :: Log Alaric [4208]: prac
+Sun Oct 25 00:37:05 2026 :: Log Alaric [4208]: wake
+Sun Oct 25 00:37:06 2026 :: Log Alaric [4208]: e
+Sun Oct 25 00:37:06 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Oct 25 00:37:07 2026 :: Log Alaric [4207]: u
+Sun Oct 25 00:37:07 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 4207
+Sun Oct 25 00:37:08 2026 :: Log Alaric [3700]: n
+Sun Oct 25 00:37:08 2026 :: Log Alaric [3757]: arrived (A Room in Mud School) from 3700
+Sun Oct 25 00:37:08 2026 :: Log Alaric [3757]: e
+Sun Oct 25 00:37:08 2026 :: Log Alaric [3759]: arrived (Soulcrusher's Guild Room) from 3757
+Sun Oct 25 00:37:08 2026 :: Log Alaric [3759]: prac
+Sun Oct 25 00:37:11 2026 :: Log Alaric [3759]: prac hand
+Sun Oct 25 00:37:12 2026 :: Log Alaric [3759]: prac hand
+Sun Oct 25 00:37:12 2026 :: Log Alaric [3759]: prac hand
+Sun Oct 25 00:37:14 2026 :: Log Alaric [3759]: w
+Sun Oct 25 00:37:14 2026 :: Log Alaric [3757]: arrived (A Room in Mud School) from 3759
+Sun Oct 25 00:37:14 2026 :: Log Alaric [3757]: w
+Sun Oct 25 00:37:14 2026 :: Log Alaric [3758]: arrived (Eclipse's Training Room) from 3757
+Sun Oct 25 00:37:14 2026 :: Log Alaric [3758]: w
+Sun Oct 25 00:37:15 2026 :: Log Alaric [3758]: w
+Sun Oct 25 00:37:15 2026 :: Log Alaric [3758]: train
+Sun Oct 25 00:37:18 2026 :: Log Alaric [3758]: train dex
+Sun Oct 25 00:37:19 2026 :: Log Alaric [3758]: train dex
+Sun Oct 25 00:37:19 2026 :: Log Alaric [3758]: train dex
+Sun Oct 25 00:37:20 2026 :: Log Alaric [3758]: train dex
+Sun Oct 25 00:37:20 2026 :: Log Alaric [3758]: train dex
+Sun Oct 25 00:37:20 2026 :: Log Alaric [3758]: train dex
+Sun Oct 25 00:37:20 2026 :: Log Alaric [3758]: train dex
+Sun Oct 25 00:37:21 2026 :: Log Alaric [3758]: train dex
+Sun Oct 25 00:37:21 2026 :: Log Alaric [3758]: train dex
+Sun Oct 25 00:37:21 2026 :: Log Alaric [3758]: train dex
+Sun Oct 25 00:37:23 2026 :: Log Alaric [3758]: train str
+Sun Oct 25 00:37:23 2026 :: Log Alaric [3758]: train str
+Sun Oct 25 00:37:23 2026 :: Log Alaric [3758]: train str
+Sun Oct 25 00:37:24 2026 :: Log Alaric [3758]: train str
+Sun Oct 25 00:37:24 2026 :: Log Alaric [3758]: train str
+Sun Oct 25 00:37:24 2026 :: Log Alaric [3758]: train str
+Sun Oct 25 00:37:24 2026 :: Log Alaric [3758]: train str
+Sun Oct 25 00:37:25 2026 :: Log Alaric [3758]: train str
+Sun Oct 25 00:37:26 2026 :: Log Alaric [3758]: train
+Sun Oct 25 00:37:29 2026 :: Log Alaric [3758]: train con
+Sun Oct 25 00:37:30 2026 :: Log Alaric [3758]: train con
+Sun Oct 25 00:37:30 2026 :: Log Alaric [3758]: train con
+Sun Oct 25 00:37:30 2026 :: Log Alaric [3758]: train con
+Sun Oct 25 00:37:31 2026 :: Log Alaric [3758]: train con
+Sun Oct 25 00:37:31 2026 :: Log Alaric [3758]: train con
+Sun Oct 25 00:37:31 2026 :: Log Alaric [3758]: train con
+Sun Oct 25 00:37:31 2026 :: Log Alaric [3758]: train con
+Sun Oct 25 00:37:32 2026 :: Log Alaric [3758]: train con
+Sun Oct 25 00:37:32 2026 :: Log Alaric [3758]: train con
+Sun Oct 25 00:37:33 2026 :: Log Alaric [3758]: prac
+Sun Oct 25 00:37:35 2026 :: Log Alaric [3758]: skil
+Sun Oct 25 00:37:38 2026 :: Log Alaric [3758]: wake
+Sun Oct 25 00:37:39 2026 :: Log Alaric [3758]: l
+Sun Oct 25 00:37:40 2026 :: Log Alaric [3758]: e
+Sun Oct 25 00:37:40 2026 :: Log Alaric [3757]: arrived (A Room in Mud School) from 3758
+Sun Oct 25 00:37:44 2026 :: Log Alaric [3757]: n
+Sun Oct 25 00:37:44 2026 :: Log Alaric [3701]: arrived (A Room in Mud School) from 3757
+Sun Oct 25 00:37:44 2026 :: Log Alaric [3701]: n
+Sun Oct 25 00:37:45 2026 :: Log Alaric [3701]: w
+Sun Oct 25 00:37:45 2026 :: Log Alaric [3702]: arrived (The Center Room) from 3701
+Sun Oct 25 00:37:45 2026 :: Log Alaric [3702]: n
+Sun Oct 25 00:37:45 2026 :: Log Alaric [3703]: arrived (A Room in Mud School) from 3702
+Sun Oct 25 00:37:46 2026 :: Log Alaric [3703]: n
+Sun Oct 25 00:37:46 2026 :: Log Alaric [3709]: arrived (A Room in Mud School) from 3703
+Sun Oct 25 00:37:46 2026 :: Log Alaric [3709]: w
+Sun Oct 25 00:37:46 2026 :: Log Alaric [3711]: arrived (A Room in Mud School) from 3709
+Sun Oct 25 00:37:47 2026 :: Log Alaric [3711]: d
+Sun Oct 25 00:37:47 2026 :: Log Alaric [3712]: arrived (The Cage Room) from 3711
+Sun Oct 25 00:37:47 2026 :: Log Alaric [3712]: w
+Sun Oct 25 00:37:47 2026 :: Log Alaric [3714]: arrived (A Cage) from 3712
+Sun Oct 25 00:37:49 2026 :: Log Alaric [3714]: kill li
+Sun Oct 25 00:37:54 2026 :: Log Alaric [3714]: killed the lizard man
+Sun Oct 25 00:37:57 2026 :: Log Alaric [3714]: recal
+Sun Oct 25 00:37:57 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 3714
+Sun Oct 25 00:37:57 2026 :: Log Alaric [4207]: w
+Sun Oct 25 00:37:57 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sun Oct 25 00:38:00 2026 :: Log Alaric [4208]: heal all
+Sun Oct 25 00:38:00 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Sun Oct 25 00:38:01 2026 :: Log Alaric [4208]: e
+Sun Oct 25 00:38:01 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Oct 25 00:38:02 2026 :: Log Alaric [4207]: u
+Sun Oct 25 00:38:02 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 4207
+Sun Oct 25 00:38:03 2026 :: Log Alaric [3700]: n
+Sun Oct 25 00:38:03 2026 :: Log Alaric [3757]: arrived (A Room in Mud School) from 3700
+Sun Oct 25 00:38:03 2026 :: Log Alaric [3757]: n
+Sun Oct 25 00:38:03 2026 :: Log Alaric [3701]: arrived (A Room in Mud School) from 3757
+Sun Oct 25 00:38:04 2026 :: Log Alaric [3701]: w
+Sun Oct 25 00:38:04 2026 :: Log Alaric [3702]: arrived (The Center Room) from 3701
+Sun Oct 25 00:38:04 2026 :: Log Alaric [3702]: n
+Sun Oct 25 00:38:04 2026 :: Log Alaric [3703]: arrived (A Room in Mud School) from 3702
+Sun Oct 25 00:38:05 2026 :: Log Alaric [3703]: n
+Sun Oct 25 00:38:05 2026 :: Log Alaric [3709]: arrived (A Room in Mud School) from 3703
+Sun Oct 25 00:38:05 2026 :: Log Alaric [3709]: w
+Sun Oct 25 00:38:05 2026 :: Log Alaric [3711]: arrived (A Room in Mud School) from 3709
+Sun Oct 25 00:38:07 2026 :: Log Alaric [3711]: d
+Sun Oct 25 00:38:07 2026 :: Log Alaric [3712]: arrived (The Cage Room) from 3711
+Sun Oct 25 00:38:09 2026 :: Log Alaric [3712]: d
+Sun Oct 25 00:38:09 2026 :: Log Alaric [3717]: arrived (A Room in Mud School) from 3712
+Sun Oct 25 00:38:10 2026 :: Log Alaric [3717]: n
+Sun Oct 25 00:38:10 2026 :: Log Alaric [3784]: arrived (The Hallway) from 3717
+Sun Oct 25 00:38:11 2026 :: Log Alaric [3784]: w
+Sun Oct 25 00:38:11 2026 :: Log Alaric [3786]: arrived (A Classroom) from 3784
+Sun Oct 25 00:38:12 2026 :: Log Alaric [3786]: kill st
+Sun Oct 25 00:38:12 2026 :: Log Alaric [3786]: level 3 -> 4 (earned)
+Sun Oct 25 00:38:12 2026 :: Alaric has achieved level 4!
+Sun Oct 25 00:38:12 2026 :: Snapshot of Alaric taken before level: Alaric.20261025_003812.level (PRESTORE Alaric to see it).
+Sun Oct 25 00:38:12 2026 :: Log Alaric [3786]: killed the student
+Sun Oct 25 00:38:16 2026 :: Log Alaric [3786]: kill st
+Sun Oct 25 00:38:16 2026 :: Log Alaric [3786]: killed the student
+Sun Oct 25 00:38:23 2026 :: Log Alaric [3786]: kill te
+Sun Oct 25 00:38:23 2026 :: Log Alaric [3786]: level 4 -> 5 (earned)
+Sun Oct 25 00:38:23 2026 :: Alaric has achieved level 5!
+Sun Oct 25 00:38:23 2026 :: Snapshot of Alaric taken before level: Alaric.20261025_003823.level (PRESTORE Alaric to see it).
+Sun Oct 25 00:38:23 2026 :: Log Alaric [3786]: killed the hyperactive teacher
+Sun Oct 25 00:38:34 2026 :: Log Alaric [3786]: recal
+Sun Oct 25 00:38:34 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 3786
+Sun Oct 25 00:38:35 2026 :: Log Alaric [4207]: sc
+Sun Oct 25 00:38:36 2026 :: Log Alaric [4207]: wake
+Sun Oct 25 00:38:37 2026 :: Log Alaric [4207]: l
+Sun Oct 25 00:38:38 2026 :: Log Alaric [4207]: r e 3
+Sun Oct 25 00:38:38 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sun Oct 25 00:38:38 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sun Oct 25 00:38:38 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Sun Oct 25 00:38:38 2026 :: Log Alaric [2427]: n
+Sun Oct 25 00:38:38 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Sun Oct 25 00:38:38 2026 :: Log Alaric [2404]: n
+Sun Oct 25 00:38:38 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Sun Oct 25 00:38:39 2026 :: Log Alaric [2401]: u
+Sun Oct 25 00:38:39 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sun Oct 25 00:38:39 2026 :: Log Alaric [2410]: u
+Sun Oct 25 00:38:39 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Sun Oct 25 00:38:40 2026 :: Log Alaric [2411]: u
+Sun Oct 25 00:38:40 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Sun Oct 25 00:38:40 2026 :: Log Alaric [2414]: n
+Sun Oct 25 00:38:42 2026 :: Log Alaric [2414]: u
+Sun Oct 25 00:38:42 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Sun Oct 25 00:38:44 2026 :: Log Alaric [2497]: en do
+Sun Oct 25 00:38:44 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 00:38:45 2026 :: Log Alaric [2401]: u
+Sun Oct 25 00:38:45 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Sun Oct 25 00:38:45 2026 :: Log Alaric [2410]: u
+Sun Oct 25 00:38:45 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Sun Oct 25 00:38:46 2026 :: Log Alaric [2411]: n
+Sun Oct 25 00:38:46 2026 :: Log Alaric [2413]: arrived (Outside a treehouse.) from 2411
+Sun Oct 25 00:38:48 2026 :: Log Alaric [2413]: on
+Sun Oct 25 00:38:48 2026 :: Log Alaric [2413]: n
+Sun Oct 25 00:38:48 2026 :: Log Alaric [2498]: arrived (Inside the treehouse.) from 2413
+Sun Oct 25 00:38:50 2026 :: Log Alaric [2498]: join monk
+Sun Oct 25 00:38:53 2026 :: Log Alaric [2498]: s
+Sun Oct 25 00:38:53 2026 :: Log Alaric [2413]: arrived (Outside a treehouse.) from 2498
+Sun Oct 25 00:38:53 2026 :: Sock.sinaddr:  54.87.112.51
+Sun Oct 25 00:38:54 2026 :: EOF encountered on read.
+Sun Oct 25 00:38:54 2026 :: Log Alaric [2413]: d
+Sun Oct 25 00:38:54 2026 :: Log Alaric [2413]: d
+Sun Oct 25 00:38:54 2026 :: Log Alaric [2413]: s
+Sun Oct 25 00:38:54 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2413
+Sun Oct 25 00:38:55 2026 :: Log Alaric [2411]: d
+Sun Oct 25 00:38:55 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2411
+Sun Oct 25 00:38:56 2026 :: Log Alaric [2410]: d
+Sun Oct 25 00:38:56 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2410
+Sun Oct 25 00:38:59 2026 :: Log Alaric [2401]: d
+Sun Oct 25 00:38:59 2026 :: Log Alaric [4649]: arrived (Entrance to the Hall of Hero's.) from 2401
+Sun Oct 25 00:39:00 2026 :: Log Alaric [4649]: u
+Sun Oct 25 00:39:00 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 4649
+Sun Oct 25 00:39:03 2026 :: Log Alaric [2401]: west
+Sun Oct 25 00:39:03 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Sun Oct 25 00:39:03 2026 :: Log Alaric [2405]: west
+Sun Oct 25 00:39:03 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Sun Oct 25 00:39:03 2026 :: Log Alaric [2433]: west
+Sun Oct 25 00:39:03 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Oct 25 00:39:03 2026 :: Log Alaric [2434]: west
+Sun Oct 25 00:39:03 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Oct 25 00:39:04 2026 :: Log Alaric [2435]: west
+Sun Oct 25 00:39:04 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Oct 25 00:39:04 2026 :: Log Alaric [2436]: west
+Sun Oct 25 00:39:04 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Oct 25 00:39:04 2026 :: Log Alaric [2437]: west
+Sun Oct 25 00:39:04 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Sun Oct 25 00:39:04 2026 :: Log Alaric [2438]: open west
+Sun Oct 25 00:39:05 2026 :: Log Alaric [2438]: west
+Sun Oct 25 00:39:05 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Sun Oct 25 00:39:08 2026 :: Log Alaric [2439]: west
+Sun Oct 25 00:39:08 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Sun Oct 25 00:39:08 2026 :: Log Alaric [6000]: west
+Sun Oct 25 00:39:08 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Sun Oct 25 00:39:08 2026 :: Log Alaric [6001]: west
+Sun Oct 25 00:39:08 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Sun Oct 25 00:39:08 2026 :: Log Alaric [6002]: south
+Sun Oct 25 00:39:08 2026 :: Log Alaric [6011]: arrived (A small path through the light forest) from 6002
+Sun Oct 25 00:39:09 2026 :: Log Alaric [6011]: south
+Sun Oct 25 00:39:09 2026 :: Log Alaric [6008]: arrived (The forest clearing) from 6011
+Sun Oct 25 00:39:09 2026 :: Log Alaric [6008]: east
+Sun Oct 25 00:39:09 2026 :: Log Alaric [6009]: arrived (Outside a small cabin in the forest) from 6008
+Sun Oct 25 00:39:09 2026 :: Log Alaric [6009]: south
+Sun Oct 25 00:39:09 2026 :: Log Alaric [6014]: arrived (An intersection in the dense forest) from 6009
+Sun Oct 25 00:39:09 2026 :: Log Alaric [6014]: east
+Sun Oct 25 00:39:09 2026 :: Log Alaric [6015]: arrived (A small path in the dense forest) from 6014
+Sun Oct 25 00:39:10 2026 :: Log Alaric [6015]: south
+Sun Oct 25 00:39:10 2026 :: Log Alaric [6016]: arrived (A small path in the dense forest) from 6015
+Sun Oct 25 00:39:10 2026 :: Log Alaric [6016]: south
+Sun Oct 25 00:39:10 2026 :: Log Alaric [6017]: arrived (A small path in the dense forest) from 6016
+Sun Oct 25 00:39:10 2026 :: Log Alaric [6017]: west
+Sun Oct 25 00:39:10 2026 :: Log Alaric [6018]: arrived (An intersection in the light forest) from 6017
+Sun Oct 25 00:39:10 2026 :: Log Alaric [6018]: south
+Sun Oct 25 00:39:10 2026 :: Log Alaric [51]: arrived (The top of the cliff.) from 6018
+Sun Oct 25 00:39:11 2026 :: Log Alaric [51]: down
+Sun Oct 25 00:39:11 2026 :: Log Alaric [13001]: arrived (Rock Outcropping) from 51
+Sun Oct 25 00:39:11 2026 :: Log Alaric [13001]: down
+Sun Oct 25 00:39:11 2026 :: Log Alaric [13002]: arrived (Small Grove) from 13001
+Sun Oct 25 00:39:11 2026 :: Log Alaric [13002]: west
+Sun Oct 25 00:39:11 2026 :: Log Alaric [13003]: arrived (Entrance to the Town of Solace) from 13002
+Sun Oct 25 00:39:11 2026 :: Log Alaric [13003]: north
+Sun Oct 25 00:39:11 2026 :: Log Alaric [13201]: arrived (Gateway to Solace) from 13003
+Sun Oct 25 00:39:13 2026 :: Log Alaric [13201]: kill to
+Sun Oct 25 00:39:21 2026 :: Log Alaric [13201]: level 5 -> 6 (earned)
+Sun Oct 25 00:39:21 2026 :: Alaric has achieved level 6!
+Sun Oct 25 00:39:21 2026 :: Snapshot of Alaric taken before level: Alaric.20261025_003921.level (PRESTORE Alaric to see it).
+Sun Oct 25 00:39:21 2026 :: Log Alaric [13201]: level 6 -> 7 (earned)
+Sun Oct 25 00:39:21 2026 :: Alaric has achieved level 7!
+Sun Oct 25 00:39:21 2026 :: Snapshot of Alaric taken before level: Alaric.20261025_003921_02.level (PRESTORE Alaric to see it).
+Sun Oct 25 00:39:21 2026 :: Log Alaric [13201]: killed Townguard
+Sun Oct 25 00:39:21 2026 :: Log Alaric [13201]: coin +2 silver
+Sun Oct 25 00:39:21 2026 :: Log Alaric [13201]: coin +3 copper
+Sun Oct 25 00:39:21 2026 :: Log Alaric [13201]: coin +1 gold
+Sun Oct 25 00:39:22 2026 :: Log Alaric [13201]: kill to
+Sun Oct 25 00:39:30 2026 :: Log Alaric [13201]: level 7 -> 8 (earned)
+Sun Oct 25 00:39:30 2026 :: Alaric has achieved level 8!
+Sun Oct 25 00:39:30 2026 :: Snapshot of Alaric taken before level: Alaric.20261025_003930.level (PRESTORE Alaric to see it).
+Sun Oct 25 00:39:30 2026 :: Log Alaric [13201]: killed Townguard
+Sun Oct 25 00:39:30 2026 :: Log Alaric [13201]: coin +2 silver
+Sun Oct 25 00:39:30 2026 :: Log Alaric [13201]: coin +3 copper
+Sun Oct 25 00:39:30 2026 :: Log Alaric [13201]: coin +1 gold
+Sun Oct 25 00:39:30 2026 :: Log Alaric [13201]: kill to
+Sun Oct 25 00:39:39 2026 :: Log Alaric [13201]: killed Townguard
+Sun Oct 25 00:39:39 2026 :: Log Alaric [13201]: coin +2 silver
+Sun Oct 25 00:39:39 2026 :: Log Alaric [13201]: coin +3 copper
+Sun Oct 25 00:39:39 2026 :: Log Alaric [13201]: coin +1 gold
+Sun Oct 25 00:39:40 2026 :: Log Alaric [13201]: kill to
+Sun Oct 25 00:39:45 2026 :: Log Alaric [13201]: level 8 -> 9 (earned)
+Sun Oct 25 00:39:45 2026 :: Alaric has achieved level 9!
+Sun Oct 25 00:39:45 2026 :: Snapshot of Alaric taken before level: Alaric.20261025_003945.level (PRESTORE Alaric to see it).
+Sun Oct 25 00:39:45 2026 :: Log Alaric [13201]: killed Townguard
+Sun Oct 25 00:39:45 2026 :: Log Alaric [13201]: coin +2 silver
+Sun Oct 25 00:39:45 2026 :: Log Alaric [13201]: coin +3 copper
+Sun Oct 25 00:39:45 2026 :: Log Alaric [13201]: coin +1 gold
+Sun Oct 25 00:39:47 2026 :: Log Alaric [13201]: recal
+Sun Oct 25 00:39:47 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 13201
+Sun Oct 25 00:39:48 2026 :: Log Alaric [4207]: w
+Sun Oct 25 00:39:48 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Sun Oct 25 00:39:50 2026 :: Log Alaric [4208]: stash get opal
+Sun Oct 25 00:39:50 2026 :: Log Alaric [4208]: withdrew an opal ring (vnum 2803) from the stash
+Sun Oct 25 00:39:51 2026 :: Log Alaric [4208]: stash get opal
+Sun Oct 25 00:39:51 2026 :: Log Alaric [4208]: withdrew an opal ring (vnum 2803) from the stash
+Sun Oct 25 00:39:52 2026 :: Log Alaric [4208]: wear opal
+Sun Oct 25 00:39:53 2026 :: Log Alaric [4208]: wear opal
+Sun Oct 25 00:39:56 2026 :: Log Alaric [4208]: stash get ench
+Sun Oct 25 00:39:56 2026 :: Log Alaric [4208]: withdrew an enchanted leather bracer (vnum 3504) from the stash
+Sun Oct 25 00:39:57 2026 :: Log Alaric [4208]: stash get ench
+Sun Oct 25 00:39:57 2026 :: Log Alaric [4208]: withdrew an enchanted leather bracer (vnum 3504) from the stash
+Sun Oct 25 00:39:58 2026 :: Log Alaric [4208]: wear bracer
+Sun Oct 25 00:39:59 2026 :: Log Alaric [4208]: wear bracer
+Sun Oct 25 00:39:59 2026 :: Log Alaric [4208]: eq
+Sun Oct 25 00:40:03 2026 :: Log Alaric [4208]: stash get piw
+Sun Oct 25 00:40:03 2026 :: Log Alaric [4208]: withdrew a commoner's piwafwi (vnum 25106) from the stash
+Sun Oct 25 00:40:03 2026 :: Log Alaric [4208]: wear piw
+Sun Oct 25 00:40:07 2026 :: Log Alaric [4208]: wake
+Sun Oct 25 00:40:07 2026 :: Log Alaric [4208]: l
+Sun Oct 25 00:40:12 2026 :: Log Alaric [4208]: gainlist
+Sun Oct 25 00:40:20 2026 :: ANOMALY: Alaric: experience jump (8973 experience in one tick, 2300 a level)
+Sun Oct 25 00:40:21 2026 :: Log Alaric [4208]: walkto master of movement
+Sun Oct 25 00:40:21 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Sun Oct 25 00:40:22 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Sun Oct 25 00:40:23 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Sun Oct 25 00:40:24 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 4201
+Sun Oct 25 00:40:24 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Sun Oct 25 00:40:25 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Sun Oct 25 00:40:26 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Sun Oct 25 00:40:27 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Sun Oct 25 00:40:27 2026 :: Log Alaric [4800]: arrived (Another Dimension) from 2437
+Sun Oct 25 00:40:28 2026 :: Log Alaric [4801]: arrived (The passage way) from 4800
+Sun Oct 25 00:40:29 2026 :: Log Alaric [4802]: arrived (The narrow entrance) from 4801
+Sun Oct 25 00:40:30 2026 :: Log Alaric [4803]: arrived (The Palm of the Creator) from 4802
