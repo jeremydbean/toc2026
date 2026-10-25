@@ -19700,3 +19700,68 @@
 1792951281	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1792951284	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    243 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
 1792951287	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	sleep		You go to sleep.
+1792952864	cmd	Alaric	50	2497	dresden_halloween.are	sleeping	100	17	-	aquest	re	
+1792952866	cmd	Alaric	50	2497	dresden_halloween.are	sleeping	100	0	-	wake		You wake and stand up.
+1792952866	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792952868	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'You're already on a quest, Alaric! Finish it first.'
+1792952875	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792952877	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	levitate		You slowly rise up off the ground.
+1792952879	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792952883	cmd	Alaric	50	2403	dresden_halloween.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.
+1792952884	cmd	Alaric	50	2420	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.
+1792952884	cmd	Alaric	50	2421	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a
+1792952884	cmd	Alaric	50	2441	dresden_halloween.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792952884	cmd	Alaric	50	2442	dresden_halloween.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792952885	cmd	Alaric	50	2443	dresden_halloween.are	standing	100	0	-	south		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792952885	cmd	Alaric	50	2444	dresden_halloween.are	standing	100	0	-	east		River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792952885	cmd	Alaric	50	2445	dresden_halloween.are	standing	100	0	-	east		End of River Road. //   River Road is a shabbily made cobblestone road with many missing stones // and is quite uneven.  It follows the course of the river to the docks.
+1792952885	cmd	Alaric	50	2446	dresden_halloween.are	standing	100	0	-	south		Docks of Dresden. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not
+1792952886	cmd	Alaric	50	2448	dresden_halloween.are	standing	100	0	-	south		First Pier. //   There are 2 piers for boats here.  Both are capable of holding a number of // small boats.  From the looks of the boats already moored here, they do not
+1792952886	cmd	Alaric	50	2518	dresden_halloween.are	standing	100	0	-	south		River of Wonders. //   The river moves at a slow but steady pace to the west.  It meanders through // the southern portion of Dresden and never widens past 50 yards even at the
+1792952886	cmd	Alaric	50	2517	dresden_halloween.are	standing	100	0	-	east		River of Wonders. //   The river moves at a slow but steady pace to the west.  It meanders through // the southern portion of Dresden and never widens past 50 yards even at the
+1792952886	cmd	Alaric	50	2516	dresden_halloween.are	standing	100	0	-	east		Tunnel on the River of Wonders. //   Rowing against the current you slowly enter a long dark tunnel that takes you // under the east walls of Dresden.  You can hear the sounds of your paddling
+1792952887	cmd	Alaric	50	2515	dresden_halloween.are	standing	100	0	-	east		Tunnel on the River of Wonders. //   Rowing against the current you slowly enter a long dark tunnel that takes you // under the east walls of Dresden.  You can hear the sounds of your paddling
+1792952887	cmd	Alaric	50	5000	eastern.are	standing	100	0	-	east		                    ACHIEVEMENT EARNED // A Long Tunnel  +15 points // Reach the long tunnel into the Sands of Sorrow.
+1792952887	cmd	Alaric	50	5001	eastern.are	standing	100	0	-	east		A long, branched tunnel //   The tunnel continues east and it also branches to the southeast. // [Exits: east west southeast]
+1792952887	cmd	Alaric	50	5002	eastern.are	standing	100	0	-	east		A long tunnel //   The tunnel branches off north. // [Exits: north east west]
+1792952888	cmd	Alaric	50	5003	eastern.are	standing	100	0	-	east		A long tunnel //   The tunnel branches off south. // [Exits: east south west]
+1792952888	cmd	Alaric	50	5004	eastern.are	standing	100	0	-	east		A long tunnel //   The tunnel branches off to the south. // [Exits: east south west]
+1792952888	cmd	Alaric	50	5005	eastern.are	standing	100	0	-	east		An underground lake //   You are floating on a jet-black underground lake fed by dripping // water and lime from above. The tunnel continues to the east and the river
+1792952888	cmd	Alaric	50	5006	eastern.are	standing	100	0	-	east		A long narrow tunnel //   The tunnel rises sharply to the east. // [Exits: east west]
+1792952889	cmd	Alaric	50	5007	eastern.are	standing	100	0	-	east		A wide tunnel //   The tunnel continues east and west. To the east the tunnel dives // down into a bright light.
+1792952889	cmd	Alaric	50	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792952889	cmd	Alaric	50	5028	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792952889	cmd	Alaric	50	5027	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792952892	cmd	Alaric	50	5027	eastern.are	standing	100	0	-	exits		Obvious exits: // North - A wide tunnel // East  - The Sands of Sorrow
+1792952894	cmd	Alaric	50	5024	eastern.are	standing	100	0	-	west		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792952894	cmd	Alaric	50	5024	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792952895	cmd	Alaric	50	5030	eastern.are	standing	100	0	-	north		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792952895	cmd	Alaric	50	5030	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792952896	cmd	Alaric	50	5032	eastern.are	standing	100	0	-	east		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792952897	cmd	Alaric	50	5032	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - The Sands of Sorrow
+1792952898	cmd	Alaric	50	5029	eastern.are	standing	100	0	-	south		The Sands of Sorrow //   A vast desert stretches for miles, the sand constantly shifting around you. // You feel lost.
+1792952898	cmd	Alaric	50	5029	eastern.are	standing	100	0	-	exits		Obvious exits: // North - The Sands of Sorrow // East  - Strange Glowing Sand
+1792952900	cmd	Alaric	50	5062	eastern.are	standing	100	0	-	east		Strange Glowing Sand //   A vast desert stretches for miles, the sand constantly shifting around // you.  But this patch of desert looks different...the sand glows.  LOOK! To
+1792952901	cmd	Alaric	50	5062	eastern.are	standing	100	0	-	exits		Obvious exits: // South - Sand // West  - The Sands of Sorrow
+1792952906	cmd	Alaric	50	54	connect.are	standing	100	0	-	south		Sand //   As you wander around aimlessly in the desert, you begin to appreciate the // beauty of sand... But then you come to your senses.
+1792952907	cmd	Alaric	50	54	connect.are	standing	100	0	-	exits		Obvious exits: // North - Strange Glowing Sand // South - The Great Eastern Desert
+1792952909	cmd	Alaric	50	28000	pyramid.are	standing	100	0	-	south		                    ACHIEVEMENT EARNED // The Great Eastern Desert  +20 points // Cross into the Great Eastern Desert.
+1792952910	cmd	Alaric	50	28000	pyramid.are	standing	100	0	-	exits		Obvious exits: // North - Sand // East  - At the Base of the Pyramid
+1792952922	cmd	Alaric	50	28001	pyramid.are	standing	100	0	-	east		At the Base of the Pyramid //   The mighty pyramid towers above you out of the hot desert sands, made from // huge blocks of stone that have been coated over with a rough sandy plaster-like
+1792952924	cmd	Alaric	50	28002	pyramid.are	standing	100	0	-	up		Climbing the Great Pyramid //   Hot air rises off the sides of the pyramid, and the wind chokes you with a // flurry of sand and dust.  So far you have made it halfway up the side.  The
+1792952925	cmd	Alaric	50	28002	pyramid.are	standing	100	0	-	exits		Obvious exits: // North - Climbing the Great Pyramid // South - Climbing the Great Pyramid
+1792952930	cmd	Alaric	50	28003	pyramid.are	standing	100	0	-	north		Climbing the Great Pyramid //   Hot air rises off the sides of the pyramid, and the wind chokes you with a // flurry of sand and dust.  The walls of the pyramid are quite steep, and you
+1792952931	cmd	Alaric	50	28003	pyramid.are	standing	100	0	-	exits		Obvious exits: // East  - Climbing the Great Pyramid // West  - Climbing the Great Pyramid
+1792952933	cmd	Alaric	50	28003	pyramid.are	standing	100	0	-	north		Alas, you cannot go that way.
+1792952933	cmd	Alaric	50	28003	pyramid.are	standing	100	0	-	exits		Obvious exits: // East  - Climbing the Great Pyramid // West  - Climbing the Great Pyramid
+1792952934	cmd	Alaric	50	28005	pyramid.are	standing	100	0	-	east		Climbing the Great Pyramid //   Here on the eastern side of the pyramid there is a little more shelter // from the heat and wind.  The stone side is not nearly so slippery smooth
+1792952934	cmd	Alaric	50	28005	pyramid.are	standing	100	0	-	exits		Obvious exits: // North - Climbing the Great Pyramid // South - Climbing the Great Pyramid
+1792952936	cmd	Alaric	50	28006	pyramid.are	standing	100	2	-	up		The Apex of the Great Pyramid //   Bathed in sweat, you have managed to reach the summit of the great pyramid. // The four sides of the pyramid slope sharply down into the hot sands in all four
+1792952938	cmd	Alaric	50	28006	pyramid.are	standing	100	0	-	exits		Obvious exits: // North - Climbing the Great Pyramid // East  - Climbing the Great Pyramid
+1792952941	cmd	Alaric	50	28007	pyramid.are	standing	100	0	-	south		Climbing the Great Pyramid //   Here the elements have carved away at the sides of the pyramid quite a // bit.  You aren't so sure of your footing anymore...
+1792952942	cmd	Alaric	50	28007	pyramid.are	standing	100	0	-	exits		Obvious exits: // None.
+1792952943	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792952946	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	10	-	aquest	abort	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Alaric. Your quest obligation is lifted.' // Questor Thews says 'May your next quest go better!'
+1792952947	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    244 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792952952	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1792952954	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    244 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
