@@ -13522,3 +13522,37 @@
 1792887172	cmd	Alaric	55	29212	korzath2.are	standing	86	0	-	scan		an insane lieutenant               -to the North. // a deranged madman                  -to the West. // a deranged madman                  -to the West.
 1792887175	cmd	Alaric	55	29214	korzath2.are	standing	86	0	-	west		Twist in the Maze //   A closed door is to the south.  A rank raw smell emanates from that //  direction.
 1792887177	cmd	Alaric	55	29214	korzath2.are	standing	86	0	-	bs	mad	Your backstab *** DEVASTATES *** a deranged madman! [-67] // Your backstab *** DEVASTATES *** a deranged madman! [-69] // Your backstab ^^^ DESTROYS ^^^ a deranged madman! [-108]
+1792887322	cmd	Alaric	55	29214	korzath2.are	standing	76	0	-	look		Twist in the Maze //   A closed door is to the south.  A rank raw smell emanates from that //  direction.
+1792887326	cmd	Alaric	55	29214	korzath2.are	standing	76	0	-	scan		You don't see anything near you.
+1792887326	cmd	Alaric	55	29214	korzath2.are	standing	76	0	-	open		Ok.
+1792887327	cmd	Alaric	55	29214	korzath2.are	standing	76	0	-	scan		a deranged madman                  -to the South.
+1792887328	cmd	Alaric	55	29215	korzath2.are	standing	76	0	-	south		Dead End //   This is yet another dead end in the maze. // [Exits: north]
+1792887329	cmd	Alaric	55	29215	korzath2.are	standing	76	0	-	bs	mad	Your backstab >>> ANNIHILATES <<< a deranged madman! [-204] // Your backstab <<< ERADICATES >>> a deranged madman! [-156] // Your backstab ^^^ DESTROYS ^^^ a deranged madman! [-94]
+1792887392	cmd	Alaric	55	29215	korzath2.are	standing	75	0	-	look		Dead End //   This is yet another dead end in the maze. // [Exits: north]
+1792887393	cmd	Alaric	55	29214	korzath2.are	standing	75	0	-	north		Twist in the Maze //   A closed door is to the south.  A rank raw smell emanates from that //  direction.
+1792887394	cmd	Alaric	55	29212	korzath2.are	standing	75	0	-	east		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1792887394	cmd	Alaric	55	29212	korzath2.are	standing	75	0	-	scan		You don't see anything near you.
+1792887395	cmd	Alaric	55	29212	korzath2.are	standing	75	0	-	open		Ok.
+1792887396	cmd	Alaric	55	29212	korzath2.are	standing	75	0	-	scan		a deranged madman                  -to the East. // a deranged madman                  -to the East. // a deranged madman                  -to the East.
+1792887398	cmd	Alaric	55	29213	korzath2.are	standing	75	0	-	east		Dead End //   This room is frigidly cold and is also a dead end in this maze. // [Exits: west]
+1792887399	cmd	Alaric	55	29213	korzath2.are	standing	75	0	-	bs	mad	Your backstab misses a deranged madman. [-0]
+1792887535	cmd	Alaric	55	29213	korzath2.are	fighting	56	0	fight	look		Dead End //   This room is frigidly cold and is also a dead end in this maze. // [Exits: west]
+1792887538	cmd	Alaric	55	29213	korzath2.are	fighting	56	0	fight	look	i cor	Corpse of a deranged madman contains: //      Nothing.
+1792887551	cmd	Alaric	55	29212	korzath2.are	standing	56	0	-	west		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1792887551	cmd	Alaric	55	29212	korzath2.are	standing	56	0	-	scan		You don't see anything near you.
+1792887552	cmd	Alaric	55	29218	korzath2.are	standing	56	0	-	north		Twist in the Maze //   The path to the north ends here.  The hallway breaks to the east and // to the west.
+1792887553	cmd	Alaric	55	29218	korzath2.are	standing	56	0	-	scan		a Shadowman                        -to the East. // an insane lieutenant               -to the far East. // an insane lieutenant               -to the far East.
+1792887555	cmd	Alaric	55	29218	korzath2.are	standing	56	0	-	stealth		You fail to enter stealth.
+1792887556	cmd	Alaric	55	29218	korzath2.are	standing	56	0	-	stealth		You blend into the shadows.
+1792887557	cmd	Alaric	55	29219	korzath2.are	standing	56	0	-	east		Twist in the Maze //   The maze continues east or west.  The stone walls carry the echoes // of groaning sounds made by the trapped souls of this maze.  You'll
+1792887559	cmd	Alaric	55	29219	korzath2.are	standing	56	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1792887561	cmd	Alaric	55	29219	korzath2.are	standing	56	0	-	bs	shad	Your backstab does UNSPEAKABLE things to a Shadowman! [-334] // You are no longer stealthful. // Your backstab does UNSPEAKABLE things to a Shadowman! [-308]
+1792887570	cmd	Alaric	55	29218	korzath2.are	standing	55	0	-	west		Twist in the Maze //   The path to the north ends here.  The hallway breaks to the east and // to the west.
+1792887570	cmd	Alaric	55	29218	korzath2.are	standing	55	0	-	scan		an insane lieutenant               -to the far East. // an insane lieutenant               -to the far East. // an animated vampire                -to the West.
+1792887572	cmd	Alaric	55	29218	korzath2.are	standing	55	0	-	stealth		You fail to enter stealth.
+1792887573	cmd	Alaric	55	29218	korzath2.are	standing	55	0	-	stealth		You blend into the shadows.
+1792887575	cmd	Alaric	55	29216	korzath2.are	standing	55	0	-	west		Twist in the Maze //   To the west is another closed door.  A strange humming sound comes // from behind the door.
+1792887576	cmd	Alaric	55	29216	korzath2.are	standing	55	0	-	bs	vam	Your backstab does UNSPEAKABLE things to an animated vampire! [-435] // You are no longer stealthful. // Excalibur shears through an animated vampire with terrible force!
+1792887585	refused	Alaric	55	29216	korzath2.are	fighting	54	0	fight	bs	li	No way!  You are still fighting!
+1792887619	cmd	Alaric	55	29218	korzath2.are	standing	52	0	-	east		Twist in the Maze //   The path to the north ends here.  The hallway breaks to the east and // to the west.
+1792887620	cmd	Alaric	55	29218	korzath2.are	standing	52	0	-	scan		an insane lieutenant               -to the far East. // an insane lieutenant               -to the far East.
