@@ -18,6 +18,7 @@ What has to stay true:
 from __future__ import annotations
 
 import re
+import time
 import unittest
 from pathlib import Path
 
@@ -105,19 +106,35 @@ def obj(vnum: int, level: int = 1) -> str:
 
 
 def kill_at_one_hit_point(staff, hero, boss_room: int) -> tuple[bool, str]:
-    """The hero kills Aquamentus at one hit point. Before every swing the
-    staff character steps in, sets whichever guardian stands first in the
-    room -- the one the hero's KILL picks -- to one hit point and steps out
-    again: staff in the room spoil a Fair Fight, and a reset can put a
-    second, unhurt guardian in front of the first (CI, 2026-10-25, where
-    the hero was still fighting at QUIT)."""
+    """The hero kills Aquamentus at one hit point.
+
+    Staff in the room at the kill spoil a Fair Fight, so the staff
+    character never stands there while the hero fights: it waits in the
+    Temple and reaches in with AT, which moves it in, runs the command and
+    moves it back inside one game step -- no combat round can fall in
+    between. SET there finds whichever guardian stands first in the room,
+    the one the hero's KILL picks; a reset can put a second, unhurt one in
+    front of the first (CI, 2026-10-25), hence the attempts.
+
+    Until 2026-10-25 the staff character walked in, set the hit points and
+    walked out before each swing, with a four-second window per swing. A
+    hero who missed was still fighting when staff walked back in, the
+    killing blow landed with staff present, and the Fair Fight was
+    rightly spoiled -- the test's own doing, twice in CI."""
     seen = []
+    seen.append("STAFF: " + run(staff, "goto %d" % TEMPLE, 1.0)[-300:])
     for _ in range(5):
-        seen.append("STAFF: " + run(staff, "goto %d" % boss_room, 1.0)[-600:])
-        seen.append("STAFF: " + run(staff, "set char aquamentus hp 1", 1.0))
-        seen.append("STAFF: " + run(staff, "restore aquamentus", 1.0))
-        run(staff, "goto %d" % TEMPLE, 1.0)
-        out = run(hero, "kill aquamentus", 4.0)
+        seen.append("STAFF: " + run(staff, "at %d set char aquamentus hp 1" % boss_room, 1.0))
+        seen.append("STAFF: " + run(staff, "at %d restore aquamentus" % boss_room, 1.0))
+        mark = len(hero.transcript)
+        hero.send("kill aquamentus")
+        deadline = time.monotonic() + 20
+        while time.monotonic() < deadline:
+            hero.drain(1.0)
+            out = hero.transcript[mark:]
+            if "is DEAD" in out or "They aren't here" in out:
+                break
+        out = hero.transcript[mark:]
         seen.append("HERO: " + out[-800:])
         if "is DEAD" in out:
             return True, ""
