@@ -138,8 +138,10 @@ class CarryWeightTests(unittest.TestCase):
                 return int(match.group(2)) if match else None
 
             low_max, high_max = weight(low), weight(high)
-            if low_max is None or high_max is None:
-                self.skipTest("score does not report a carry maximum")
+            # SCORE always prints the line; not finding it is a failure
+            # (of SCORE or of this parse), never a reason to skip.
+            self.assertIsNotNone(low_max, low)
+            self.assertIsNotNone(high_max, high)
 
             # A level 1 with the bonus already beats the unboosted formula,
             # and levelling only adds to it.

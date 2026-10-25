@@ -66,9 +66,14 @@ class SafeRoomSpellLiveTests(unittest.TestCase):
                     witch.drain(0.5)
                     run(warden, "load mob %d" % WORKER)
                     said = ""
-                    for _ in range(8):         # a save is a miss, not a refusal
+                    # A save is a miss, not a refusal: try again. Landing is
+                    # read from the caster's own screen ("looks very ill"),
+                    # not from STAT afterwards -- a poisoned level 2 worker
+                    # fights back and a level 50 kills it inside the drain
+                    # window, which left nothing to STAT and failed CI.
+                    for _ in range(8):
                         said += run(witch, "cast poison worker", 3.5)
-                        if "I don't think so" in said or poisoned():
+                        if "I don't think so" in said or "looks very ill" in said:
                             break
                     return said
 
@@ -88,7 +93,7 @@ class SafeRoomSpellLiveTests(unittest.TestCase):
                 run(warden, "set room %d flags -safe" % FIELD)
                 said = try_poison(FIELD)
                 self.assertNotIn("I don't think so", said)
-                self.assertTrue(poisoned(), said)
+                self.assertIn("looks very ill", said)
 
 
 if __name__ == "__main__":

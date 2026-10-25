@@ -72,14 +72,18 @@ class LiveTests(unittest.TestCase):
                 self.assertRegex(out, r"(?i)affected", out)
 
                 self.assertIn("not on a quest", run(player, "walk quest"))
+                # A level 20's pool is every live mobile from level 3 to 20
+                # it could walk to -- hundreds in a fresh world -- so "no
+                # suitable quests" is a failure here, not bad luck. It was
+                # a silent pass-through before, and a skip below.
                 asked = run(player, "aquest request", 2.5)
-                if "no suitable quests" not in asked:
-                    walked = run(player, "walk quest", 2.0)
-                    self.assertNotIn("is for immortals", walked, walked)
-                    self.assertTrue(re.search(r"area's entrance|already in the area|"
-                                              r"no road into", walked), walked)
-                    run(player, "walkto stop")
-                    run(player, "aquest abort", 1.5)
+                self.assertNotIn("no suitable quests", asked)
+                walked = run(player, "walk quest", 2.0)
+                self.assertNotIn("is for immortals", walked, walked)
+                self.assertTrue(re.search(r"area's entrance|already in the area|"
+                                          r"no road into", walked), walked)
+                run(player, "walkto stop")
+                run(player, "aquest abort", 1.5)
 
                 # Mud School's kit: what a new player types for it works,
                 # and HELP finds it by those words (watched log, 2026-10-06).
@@ -96,8 +100,7 @@ class LiveTests(unittest.TestCase):
                 self.assertIn("not on a quest", run(player, "walk quest"))
                 asked = run(player, "aquest request", 2.5)
                 self.assertRegex(asked, r"(?i)quest", asked)
-                if "no suitable quests" in asked:
-                    self.skipTest("no quest target in the world just now")
+                self.assertNotIn("no suitable quests", asked)
 
                 walked = run(player, "walk quest", 2.0)
                 self.assertTrue(re.search(r"You set off for|You are already at", walked),

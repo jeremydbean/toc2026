@@ -224,8 +224,9 @@ class MultiAliasLiveTests(unittest.TestCase):
             for path in (mud.root / "log").glob("*"):
                 if path.is_file():
                     text += path.read_text(encoding="latin-1", errors="replace")
-            if not text:
-                self.skipTest("this harness does not capture the game log")
+            # The game writes log/toc.log in every test world; nothing
+            # there would be a failure to log, not a reason to skip.
+            self.assertTrue(text, "the game wrote no log")
 
             self.assertIn("arguments withheld", text)
             for secret in ("Zsecretone", "Zsecrettwo", "Zsecretthr", "Zsecretfou"):

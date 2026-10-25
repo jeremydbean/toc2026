@@ -200,8 +200,7 @@ class WatchedPlayerLogTests(unittest.TestCase):
         for path in log:
             if path.is_file():
                 text += path.read_text(encoding="latin-1", errors="replace")
-        if not text:
-            self.skipTest("this harness does not capture the game log")
+        self.assertTrue(text, "the game wrote no log")
 
         self.assertIn("Log Killuminati", text)
         # Movement is recorded rather than blanked.

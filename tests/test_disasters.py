@@ -134,7 +134,12 @@ class DisasterLiveTests(unittest.TestCase):
     def test_the_dragon_carries_you_off_waits_and_leaves(self) -> None:
         with LiveMud(extra_env={"TOC_DRAGON_WAIT": "12"}) as mud:
             make(mud, "Zkeeper", Levl=70, Room=TEMPLE)
-            make(mud, "Zprey", Levl=20, Room=SQUARE,
+            # The dragon lands outdoors, and at game night an outdoor room
+            # is dark: LOOK lists nothing and LOOK IN finds no corpse.
+            # Infravision for the prey and holy light for the keeper make
+            # the test indifferent to the hour (it failed CI on 2026-10-24
+            # with "You do not see that here").
+            make(mud, "Zprey", Levl=20, Room=SQUARE, AfBy=512,
                  HMV="300 300 100 100 100 100", HMVP="300 100 100")
             make(mud, "Ztiny", Levl=5, Room=SQUARE)
             with mud.connect(timeout=120) as imm, mud.connect(timeout=120) as prey, \
@@ -142,6 +147,7 @@ class DisasterLiveTests(unittest.TestCase):
                 for client, name in ((imm, "Zkeeper"), (prey, "Zprey"), (tiny, "Ztiny")):
                     login(client, name, PW)
                     run(client, "scroll 0", 0.5)
+                self.assertIn("Holy light mode on", run(imm, "holylight", 1.0))
                 # Below level 10, or indoors, it cannot take you.
                 self.assertIn("cannot reach them", run(imm, "disaster dragon ztiny", 1.0))
                 self.assertIn("cannot reach them", run(imm, "disaster dragon zkeeper", 1.0))

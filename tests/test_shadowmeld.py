@@ -173,11 +173,13 @@ class ShadowmeldTests(unittest.TestCase):
         with mud.connect(timeout=120) as client:
             login(client, "Zshadow", PASSWORD)
             self.arm(client)
-            run(client, "goto 3700", 1.8)
-            run(client, "kill guard", 2.2)
+            # The training dummy cannot die and always fights back, so the
+            # fight is still on when the meld is asked for. A city guard
+            # could die in the first round to a level 57, and the test
+            # used to skip itself when nothing was left fighting.
+            run(client, "goto 2419", 1.8)
+            self.assertIn("dummy", run(client, "kill dummy", 2.2).lower())
             said = run(client, "shadowmeld", 1.8)
-            if "middle of a fight" not in said:
-                self.skipTest("nothing here fought back")
             self.assertIn("middle of a fight", said, said)
 
 
