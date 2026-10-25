@@ -73,32 +73,46 @@ or another provider (see "The machine is gone").
 ## Deploying a code change
 
 ```bash
-sudo /usr/local/sbin/toc-deploy            # fetch, build, check, install, restart
-sudo /usr/local/sbin/toc-deploy --dry-run  # build and validate only
+sudo /usr/local/sbin/toc-deploy             # fetch, build, check, install, restart
+sudo /usr/local/sbin/toc-deploy --dry-run   # build and validate only
+sudo /usr/local/sbin/toc-deploy --rollback  # the code from the newest snapshot, back
 ```
 
-It archives the running code to `/srv/toc/rollback-code-<stamp>.tgz`
-first and prints the rollback command if the game does not come back
-healthy. A world that fails `--check-area` stops it before anything is
-touched, and a step that fails after the game was stopped (an rsync out
-of disk) rolls the archive back and restarts the game, by hand or not.
-A stop that fails part way, or an archive that cannot be made, installs
-nothing and starts both services again on the code they were running.
-Its exit status says how far it got -- 10 rolled back and healthy, 11
-rolled back but not healthy, 12 new code not healthy and left alone, 13
-nothing installed and the old code healthy again, 14 nothing installed
-and not healthy, anything else stopped before the game was touched -- and the
-auto-deployer's status line says the same. It never takes player state
-from git.
+Before it stops the game it copies the running code -- code only, with
+the same exclusions the install uses -- to
+`/srv/toc/rollback-code-<stamp>/` (the two before it are kept), and a
+deploy that cannot make that copy stops with the game still running. A
+world that fails `--check-area` stops it before anything is touched. A
+step that fails after the game was stopped (an rsync out of disk), or a
+game that does not come back healthy, puts that code back and restarts
+the game -- automatically when the timer deployed it. **A rollback never
+touches state**: players, corpses, notes, bans, max-load counts,
+`custom.are` and `area/built/` stay as the game left them. Healthy means
+the dashboard answers *and* the game itself answers MSSP with a player
+count, which it only does once the world has loaded. A stop that fails
+part way installs nothing and starts both services again on the code
+they were running. Its exit status says how far it got -- 10 rolled back
+and healthy, 11 rolled back but not healthy, 12 new code not healthy and
+left alone (`--rollback` then), 13 nothing installed and the old code
+healthy again, 14 nothing installed and not healthy, anything else
+stopped before the game was touched -- and the auto-deployer's status
+line says the same. It never takes player state from git.
+
+`toc-game-recovery`, which restarts a game systemd has given up on,
+rebuilds only the commit that is live when restarts do not work -- never
+the untested tip of `main`.
 
 **Usually you do not need to run it.** `toc-auto-deploy.timer` checks
-`main` every ten minutes and deploys new code once CI's Validate run for
-it passes, pinned to that commit and rolling itself back if the game
-does not come back healthy; `[deploy now]` in the message of the commit
+`main` every ten minutes and deploys new code once CI's `deploy-gate`
+job has passed for it on a push to `main` (CI takes about fifteen
+minutes), pinned to that commit and rolling the code -- never player
+state -- back if the game does not come back healthy; `[deploy now]` in the message of the commit
 carrying the code skips the CI wait for that code (not for code pushed
-after it). It never restarts the game while anybody is playing: the
-status reads `holding <sha>: N player(s) online` and it looks again
-every ten minutes until the game is empty (owner, 2026-10-20). A deploy
+after it). It never restarts the game while anybody is playing, or while the game
+cannot say who is: the status reads `holding <sha>: N player(s) online`
+(or `the game did not say who is online`) and it looks again every ten
+minutes until the game is empty (owner, 2026-10-20). A game that is not
+running at all is deployed. A deploy
 by hand is the override; from a session that can only push, so is
 `[deploy with players]` in any waiting commit (owner, 2026-10-24), which
 still waits for CI, gives players a minute's warning and then the usual

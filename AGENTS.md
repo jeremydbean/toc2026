@@ -245,33 +245,80 @@ Run tests proportional to risk. Movement, combat, extraction, persistence,
 world loading, command authorization, and queue changes need the full suite plus
 manual gameplay checks.
 
-**The full suite takes about 35 minutes, and the maintainer does not want it
-run routinely.** Around 109 of its tests each boot a real server that parses
-every area file (the generated Hyrule alone is 447 rooms and 1,519 resets),
-and `tests/live_mud.py`'s `drain(n)` sleeps its whole window rather than
-returning when output arrives -- roughly eight minutes of the total is
-waiting for replies that already landed. `tests/test_bank_interest.py` waits
-on a randomised 40-80 second game tick.
+**The full suite is about 250 module-minutes, and the maintainer does not
+want it run routinely.** 216 modules, 1,553 tests (2026-10-25); around 110
+modules boot a real server that parses every area file (the generated
+Hyrule alone is 447 rooms and 1,519 resets), and `tests/live_mud.py`'s
+`drain(n)` sleeps its whole window. The slowest single module,
+`test_hyrule_walkthrough`, takes ten minutes on a GitHub runner, which is
+the floor on any CI run. `tests/ci_durations.json` holds every module's
+measured time.
 
-That 35 minutes is a local figure. The same suite on a GitHub runner
-takes **51 to 61 minutes** -- ten consecutive runs measured, successes
-and failures alike -- so a `validate` job still going at fifty minutes
-is on schedule rather than hung. Check the job's step list before
-concluding anything is stuck.
+**CI (`.github/workflows/validate.yml`) takes about 14 minutes** from push
+to verdict, measured on the first run of the split pipeline (Validate run
+40210613754, 2026-10-25: 14.4 minutes, 117 runner-minutes). The single
+job it replaced took 67 minutes at the median of the sixty runs before it
+(69 to 70 minutes for both a pass and a fail on 2026-10-25) for 89
+runner-minutes: a quarter of the wait for about a third more runner time,
+which a public repository does not pay for. The jobs, all on free
+`ubuntu-latest` runners and as parallel as GitHub allows:
 
-`scripts/test-parallel.sh` runs the modules across every core instead of
-one at a time, which takes the same suite from about 87 minutes to about
-eight. Nothing in the fixtures needed changing to allow it: every
-`LiveMud` already picks a free port and its own throwaway copy of
-`area/`, so the modules were simply never run at the same time. It
-reprints the failures together at the end rather than leaving them buried
-in the interleaving, and exits non-zero if any module failed.
+| job | what | time |
+| --- | --- | --- |
+| `quick` | `validate.sh quick`: py_compile, the Mudlet map and seasonal areas `--check`, the area validators, whitespace | 12 s |
+| `build` | `validate.sh build`: GNU89 Make with strict warnings, world load, recovery scenarios, list iterator, smoke; then strict C17 CMake and its world load. Hands `merc` on. | 1 min |
+| `build-sanitize` | ASan/UBSan CMake build, world load and a 45 s idle under them. Hands `bin/rom` on. | 1.5 min |
+| `tests` (x8) | every module but the serial ones, in duration-balanced shards, four at a time, against `build`'s binary | 6-13 min |
+| `tests-serial` | `test_live_gameplay`, alone, beside the shards | 6.5 min |
+| `sanitize-tests` (x3) | `SANITIZE_MODULES` against the sanitizer binary, two at a time | 7 min |
+| `deploy-gate` | the verdict (below) | 10 s |
+
+A shard still going at fifteen minutes is late; at the job's own
+`timeout-minutes` it is cancelled, which fails the gate. Read the job's
+step summary before concluding anything: each shard and the gate publish
+a table of modules, times, skips and failures.
+
+**`deploy-gate` is the only thing that says a commit is good, and
+`toc-auto-deploy` reads that job by name.** It runs whatever the jobs
+before it did (`if: always()`) and passes only when every one of them
+succeeded, every `tests/test_*.py` ran exactly once (in one shard or the
+serial job -- a module lost from the sharding or run twice is named), each
+sanitizer module ran once, every module passed, and no test skipped for a
+reason `tests/ci_allowed_skips.json` does not explain. A skip in CI
+usually means something CI was meant to provide is missing -- the binary,
+Node, Lua, fastapi -- so a skip fails the gate unless a rule there names
+the module, the test and the reason and says why. Its first run failed on
+exactly two: a test that skipped itself when a guard died too soon (fixed
+to fight the training dummy) and the disk-full test, which needs a
+private tmpfs and now gets one through the runner's passwordless sudo.
+Rename the job and the deployer stops deploying until both change.
+
+**The runner is `scripts/ci/run_tests.py`; `scripts/test-parallel.sh` is
+a wrapper for it.** Each module runs in its own process group under
+`scripts/ci/run_module.py`, which writes a record of every test (outcome,
+time, skip reason, full traceback, subtests by name); a module with no
+tests is an error. A module past `--module-timeout` (20 minutes) is
+killed with its whole group, servers included, and so is everything when
+the runner gets SIGINT or SIGTERM (a cancelled job), which reports
+`cancelled`, never a pass. Test servers also die with their test process
+(`PR_SET_PDEATHSIG`). `--artifacts` keeps, for each failed module, its
+log, the server's output, the clients' transcripts and the test world's
+own `log/` -- synthetic fixtures only, never a real player file.
 
 ```bash
-scripts/test-parallel.sh                  # everything
-scripts/test-parallel.sh test_stash       # just these
-JOBS=4 scripts/test-parallel.sh           # gentler on the machine
+scripts/test-parallel.sh                      # everything, every core
+scripts/test-parallel.sh test_stash           # just these
+JOBS=4 scripts/test-parallel.sh               # gentler on the machine
+python3 scripts/ci/run_tests.py --plan 8      # how CI would shard it
+python3 scripts/ci/run_tests.py --shard 3/8 --serial-mode exclude --list-plan
 ```
+
+The shards are planned longest first onto the least loaded, from
+`tests/ci_durations.json`, deterministically, so each shard job computes
+the same plan and none can drift from another. Refresh that file from the
+`ci-durations` artifact the gate uploads when the shards drift apart; a
+module it does not know is costed at the median, and every module at
+least two seconds.
 
 **It runs from the repository root, and that is load bearing.** A third
 of the modules reach for `src/`, `area/` or `import webadmin` relative to
@@ -281,36 +328,56 @@ Running from inside `tests/` -- which is the obvious way to write it --
 fails eleven modules with import and file-not-found errors that look
 like product bugs and are not.
 
-**`test_live_gameplay` runs on its own, after the rest.** Its
-login-throttle tests measure against the wall clock, so a dozen
-servers competing for the same cores make them miss a window and time
-out waiting for "wrong password". `SERIAL` in the runner names the
-modules that get the machine to themselves; add to it only for a real
-timing dependency, not to quiet a flake with a cause.
+**`test_live_gameplay` runs on its own.** Its login-throttle tests
+measure against the wall clock, so a dozen servers competing for the
+same cores make them miss a window and time out waiting for "wrong
+password". `SERIAL_MODULES` in the workflow (`--serial` to the runner)
+names the modules that get a machine to themselves -- in CI their own
+job, beside the shards rather than after them; locally a tail after the
+rest. Add to it only for a real timing dependency, not to quiet a flake
+with a cause.
 
 **`LiveMud.drain(seconds)` sleeps its whole window on purpose.** Making
 it return early when the game goes quiet is the obvious speedup and it
 was tried in 2026-09: `test_recall_point` then failed with an `affect`
 reply that arrived as an empty string, because output comes in bursts
 with gaps in them and a drain that stops at the first gap returns before
-the reply. The parallel runner gets the same time back without touching
-the helper, so leave it alone.
+the reply. When a test needs to know a command has been answered, use
+**`MudClient.sync(line)`**: it sends the line and then WORTH, and returns
+what came before WORTH's answer. The game answers a descriptor's
+commands in order, so everything the line produced before its prompt is
+in hand, however long it took, with a deadline instead of a guess.
+Output that arrives later on its own -- a tick, a wandering mobile, the
+result of lag counting down -- is not covered; assert on what the
+command says.
 
-CI runs the same script, so it gets the same speedup, plus three
-things that only matter there:
+**A test that cannot run here skips; a test that had bad luck must not.**
+Five tests used to skip themselves when the world was unlucky (no quest
+target, nothing fought back) or on a harness condition that never
+happens; in CI each was a pass that tested nothing. Make the luck
+deterministic (the training dummy cannot die; give a fixture
+infravision rather than hope it is daytime) or assert. The gate fails
+the skip either way.
+
+**A sanitizer report fails the test whose server wrote it**, teardown
+included: `LiveMud.__exit__` reads the server's output after stopping
+it, and raises if an ASan/UBSan/LSan report is there (or prints it
+beside a test that already failed). `LiveMud(expect_crash=True)` is for
+the one test that crashes a server on purpose.
+
+CI's other conveniences:
 
 - **Superseded runs are cancelled** (`concurrency` with
-  `cancel-in-progress`). Three commits in ten minutes used to mean
-  three full runs and one useful answer.
+  `cancel-in-progress`, per ref, so a branch run never cancels main's).
+  Push a docs-only follow-up with `[skip ci]` if the run in flight is the
+  one you want to finish.
 - **ccache**, because `validate.sh` opens with `make clean` on
   purpose -- stale objects have bitten this codebase before -- and the
   cache is what stops that costing a full rebuild every time. The
   Makefile's `CC` is `?=` so the workflow can point it at ccache;
   making it `:=` again silently disables this.
-- **One C build, not two.** It used to build with the default warning
-  flags and then again with the strict set. The strict set is the
-  default plus more and neither uses `-Werror`, so the second build
-  only ever printed warnings -- which one build prints just as well.
+- **Each binary is built once per run** and handed to the jobs that test
+  it as an artifact, so every shard tests the same `merc`.
 
 Default to: build both trees, run the one relevant test module, ship. Write
 the regression test and let CI run everything. Reach for the full suite only
@@ -1719,21 +1786,23 @@ no copy of the key at all; and the host's admin token never leaves
 
 **A push to `main` is a deploy** (owner, 2026-10-05). `toc-auto-deploy`
 runs on the host every ten minutes: when `main` carries code that is not
-live and CI's Validate run for it has passed, it runs `toc-deploy` pinned
+live and CI's `deploy-gate` job passed on a push to `main` for it (see
+CI above; nothing else counts), it runs `toc-deploy` pinned
 to that commit, with automatic rollback if the game does not come back
 healthy. Docs, tests and state-sync commits never trigger it, and a
 commit that failed to deploy is not retried until something newer lands.
 So a session that can only push -- a cloud session -- still ships: push,
-and the game updates about ten minutes after CI goes green (CI takes
-about an hour). Put `[deploy now]` in the message of the commit that
+and the game updates up to ten minutes after CI goes green (CI takes
+about fifteen minutes), once nobody is playing. Put `[deploy now]` in the message of the commit that
 changes the code to skip the CI wait for an urgent fix -- it covers that
 commit's code and state-only commits on top of it, never later code
 (audit, 2026-10-21); `toc-deploy` still refuses anything that does not
 build or whose world does not load. Every auto-deploy decision is about
 the newest commit that changed deployable content: the failed-attempt
-record, the override and the CI run (which must be on that commit or a
-descendant, so a `[skip ci]` code commit is never covered by an older
-green run). A desktop session may still run
+record, the override and the CI run -- the newest Validate run on a push
+to `main` for that commit or a descendant, so a `[skip ci]` code commit
+is never covered by an older green run, and a cancelled, failed or
+missing run, or one with no passing `deploy-gate`, ships nothing. A desktop session may still run
 `toc-deploy` by hand for an immediate deploy; the two share a lock.
 
 **Nothing pasted into a cloud session's chat gets it onto the host**

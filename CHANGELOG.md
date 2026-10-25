@@ -8,6 +8,22 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **CI in fifteen minutes, and a deploy gate that fails closed**
+  (2026-10-25). Validate is split into a quick check, both builds, eight
+  duration-balanced test shards, a serial job and three sanitizer shards,
+  all at once; its first run took 14.4 minutes against a 67-minute
+  median. A final `deploy-gate` job passes only if every job succeeded,
+  every module ran exactly once and passed, and nothing skipped without a
+  written reason (`tests/ci_allowed_skips.json`); `toc-auto-deploy` ships
+  only on that job, for that exact code. An unreadable player count now
+  holds a deploy instead of counting as zero; rollback restores code from
+  a snapshot taken before the stop and never rewinds players, notes, bans
+  or builders' areas; health needs the game itself to answer; recovery
+  rebuilds the live commit, never untested `main`. Two flaky fixtures
+  (the dragon at game night, a poisoned worker that died before STAT)
+  and five tests that skipped on bad luck are fixed. `scripts/ci/`,
+  `tests/test_ci_runner.py`, `tests/test_auto_deploy.py`,
+  `tests/test_deploy_failures.py`, `tests/test_deploy_install.py`.
 - **SHOVE leaves Hyrule's foes alone, and costs its beats** (logs,
   2026-10-25). SHOVE refused aggressive monsters, which covered every Hyrule
   enemy until they were calmed in October; after that a shove out of a
