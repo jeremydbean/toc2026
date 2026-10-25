@@ -1778,9 +1778,10 @@ for a day because one was copied.
 On the host: `/srv/toc/build` is the git checkout `toc-deploy` resets
 and builds, `/srv/toc/current` the live tree it rsyncs into, units
 `toc-game` and `toc-web`, plus `toc-state-sync`, `toc-state-sync-check`,
-`toc-game-recovery`, `toc-auto-deploy` and `toc-daily-backup`, all in
-`/usr/local/sbin`. `toc-deploy` installs the newer copies of the first
-five, and the auto-deploy units, at the end of every healthy deploy.
+`toc-game-recovery`, `toc-auto-deploy`, `toc-game-probe` and
+`toc-daily-backup`, all in `/usr/local/sbin`. `toc-deploy` installs the
+newer copies of the first six, and the auto-deploy units, at the end of
+every healthy deploy.
 `toc-auto-deploy` keeps its state in `/var/lib/toc-auto-deploy`
 (`attempted`, `last.log`); `journalctl -t toc-auto-deploy` has its
 history.
@@ -1792,13 +1793,19 @@ and how to rebuild on a new machine.
 
 **The automatic deploy waits for an empty game** (owner, 2026-10-20: do
 not reboot while players are on). `toc-auto-deploy` asks the game for
-its count of playing descriptors over MSSP (`players_online`, the same
+its count of playing descriptors over MSSP (`toc-game-probe`, the same
 question webadmin's `probe_game` asks) and holds a commit -- status
 `holding <sha>: N player(s) online` -- until it reads zero, looking
 again every ten minutes; it is not marked attempted, so the first empty
-tick ships it. A game that does not answer has nobody to protect and is
-deployed. `tests/test_auto_deploy.py` plays the gate and runs the probe
-against a live server. The host's copy of the script only updates at
+tick ships it. **A count nobody can read is not zero** (redesign,
+2026-10-25): the probe answers a number, `down` (connection refused --
+no game, so nobody in it, and the deploy goes ahead) or `unknown` (it
+connected and got no count: a hung or half-started game, where players
+may be stuck), and `unknown` holds the commit exactly like a count
+above zero. It used to deploy on `unknown`. Recovering a sick game is
+`toc-game-recovery`'s job, not a reason to push new code through it.
+`tests/test_auto_deploy.py` plays the gate and runs the probe against a
+live server and a silent listener. The host's copy of the script only updates at
 the end of a healthy deploy, so the first deploy after this rule landed
 had to be timed by hand against the synced login journal.
 `toc-deploy` run by hand is the override, and it still warns and saves
@@ -1838,9 +1845,10 @@ git while the VM ran the old copy, and on 2026-10-01 that old
 `toc-deploy` -- which did not list `dpsboard.txt` as runtime state --
 copied git's benchmark board over the live one on every deploy,
 discarding the day's best runs. Now `toc-deploy` installs itself,
-`toc-state-sync`, `toc-state-sync-check` and `toc-game-recovery` from
-the build tree once the game answers healthy, so a change to any of them
-takes effect on the deploy that carries it, from the end of that run.
+`toc-state-sync`, `toc-state-sync-check`, `toc-game-recovery`,
+`toc-auto-deploy` and `toc-game-probe` from the build tree once the game
+answers healthy, so a change to any of them takes effect on the deploy
+that carries it, from the end of that run.
 
 **The webadmin queue runs commands as a stand-in character with no
 player data**, so anything that needs `pcdata` -- `dummy`, for one --
@@ -1860,19 +1868,50 @@ runs the script's own rsync and seeding on synthetic trees.
 **How `toc-deploy` fails** (`tests/test_deploy_failures.py`, stubbed): a
 world that fails `--check-area` stops it before the game is stopped (the
 check was piped into `tail`, and `/bin/sh` has no pipefail -- so was
-`toc-restore`'s); no install begins without a rollback archive that
-reads back whole; and any failure between stopping the game and starting
-it rolls back through an EXIT trap. A stop that fails part way, or an
-archive that cannot be made, installs nothing and has nothing to roll
-back from: both services are started again on the code they were
-running and their health checked (`restart_unchanged`). `disrupted`
-says a stop was asked for and `installing` that the archive exists and
-files may have changed; the trap reads them in that order. Its exit
-status says how far it got -- 10 rolled back and healthy, 11 rolled back
-and still unhealthy, 12 new code unhealthy and left alone, 13 nothing
-installed and the old code healthy again, 14 nothing installed and not
-healthy, anything else stopped before the game was touched -- and
-`toc-auto-deploy`'s status line says the same.
+`toc-restore`'s); the way back is made before the game is stopped,
+and a deploy that cannot make it stops there with the game still
+running; and any failure between stopping the game and starting it
+rolls back through an EXIT trap. A stop that fails part way installs
+nothing: both services are started again on the code they were running
+and their health checked (`restart_unchanged`). `disrupted` says a stop
+was asked for and `installing` that files may have changed; the trap
+reads them in that order. Its exit status says how far it got -- 10
+rolled back and healthy, 11 rolled back and still unhealthy, 12 new code
+unhealthy and left alone, 13 nothing installed and the old code healthy
+again, 14 nothing installed and not healthy, anything else stopped
+before the game was touched -- and `toc-auto-deploy`'s status line says
+the same.
+
+**A rollback puts back code, never state** (redesign, 2026-10-25). The
+way back is `/srv/toc/rollback-code-<stamp>/`, a copy of the live tree
+made by `sync_code` -- the very function, and so the very exclude list,
+the install uses -- with unchanged files hard-linked to the previous
+snapshot and a `.snapshot-ok` marker written last; the two before it
+are kept. Rolling back is `sync_code` from the snapshot over the live
+tree, and rsync's `--delete` never removes an excluded path, so players,
+corpses, notes, bans, max-load counts, `custom.are` and `area/built/`
+stay exactly as the game left them. The tar of `merc src area webadmin`
+it replaced held all of `area/`, runtime files included, so a rollback
+rewound every note, ban and builder's room written since the deploy
+began. `toc-deploy --rollback` restores the newest snapshot by hand
+(`TOC_ROLLBACK_SNAPSHOT` names another) after an exit 12.
+`tests/test_deploy_install.py` runs snapshot, install and rollback on
+real trees and checks every piece of state survives.
+
+**Healthy means the game answered, not that a port opened.** The game
+binds its port before it loads the world (`init_socket`, then
+`boot_db`), and the dashboard's `"merc":true` is only a TCP connect, so
+the old check passed for a game still booting -- or hung while it did.
+`healthy()` now also asks `toc-game-probe` for a count, which only the
+running game loop gives, and waits up to ninety seconds for it.
+
+**Recovery rebuilds what is live, never the tip of main.**
+`toc-game-recovery`'s second stage used to fetch `origin/main`, build it
+and install the binary -- untested code, shipped because the game was
+down. It now rebuilds the commit in `log/deployed-commit`, and with no
+record there builds nothing and says it needs a person. Newer tested
+code reaches a down game through `toc-auto-deploy`, which deploys when
+the probe says `down` (`tests/test_game_recovery.sh`).
 **`toc-game-recovery` takes the deploy lock** (`/run/toc-deploy.lock`,
 non-blocking, after its own) and leaves the game alone while a deploy
 holds it: a deploy stops the game on purpose and builds in the tree
