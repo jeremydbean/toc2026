@@ -183508,3 +183508,20 @@ Sun Oct 25 08:21:02 2026 :: EOF encountered on read.
 Sun Oct 25 08:25:19 2026 :: Treasure goblin: vanished from room 2484 (Market Plaza., dresden_halloween.are) (too long in one area).
 Sun Oct 25 08:26:06 2026 :: Sock.sinaddr:  178.156.189.249
 Sun Oct 25 08:26:06 2026 :: EOF encountered on read.
+Sun Oct 25 08:31:11 2026 :: Sock.sinaddr:  178.156.181.172
+Sun Oct 25 08:31:11 2026 :: EOF encountered on read.
+Sun Oct 25 08:32:38 2026 :: Sock.sinaddr:  184.105.139.67
+Sun Oct 25 08:34:10 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Sun Oct 25 08:34:14 2026 :: Log WebAdmin: fsave
+Sun Oct 25 08:34:20 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Sun Oct 25 08:34:23 2026 :: Received signal 15; saving players and shutting down.
+Sun Oct 25 08:34:23 2026 :: Normal termination of game.
+Sun Oct 25 08:34:25 2026 ::  INIT OK 
+Sun Oct 25 08:34:25 2026 :: walkto_load: 157 destinations.
+Sun Oct 25 08:34:25 2026 :: changes_load: 164 entries.
+Sun Oct 25 08:34:25 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Sun Oct 25 08:34:25 2026 :: Recovery ledger: 86 records (0 from before the check), 0 requests, 4 players.
+Sun Oct 25 08:34:25 2026 :: ROM is ready to rock on port 9000.
+Sun Oct 25 08:34:25 2026 :: Treasure goblin: appeared.
+Sun Oct 25 08:34:25 2026 :: Automated backup complete.
+Sun Oct 25 08:34:25 2026 :: Daily backup complete.
