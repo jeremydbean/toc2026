@@ -194424,3 +194424,74 @@ Sun Oct 25 23:28:14 2026 :: Log Alaric [2497]: affects off: mindbar
 Sun Oct 25 23:30:07 2026 :: Sock.sinaddr:  178.156.185.127
 Sun Oct 25 23:30:08 2026 :: EOF encountered on read.
 Sun Oct 25 23:30:20 2026 :: Treasure goblin: vanished from room 17723 (The Haunted Forest, landoz.are) (too long in one area).
+Sun Oct 25 23:34:55 2026 :: Log Alaric [2497]: aq re
+Sun Oct 25 23:34:55 2026 :: Log Alaric [2497]: quest assigned: recover The Heart of Tifarah (obj 25042) in shire.are, 25 minutes, ordinary
+Sun Oct 25 23:35:07 2026 :: Log Alaric [2497]: enter door
+Sun Oct 25 23:35:07 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Sun Oct 25 23:35:07 2026 :: Log Alaric [2401]: east
+Sun Oct 25 23:35:07 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Sun Oct 25 23:35:07 2026 :: Log Alaric [2403]: east
+Sun Oct 25 23:35:07 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Sun Oct 25 23:35:07 2026 :: Log Alaric [2420]: east
+Sun Oct 25 23:35:07 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Sun Oct 25 23:35:08 2026 :: Log Alaric [2421]: east
+Sun Oct 25 23:35:08 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Sun Oct 25 23:35:08 2026 :: Log Alaric [2422]: east
+Sun Oct 25 23:35:08 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Sun Oct 25 23:35:08 2026 :: Log Alaric [2423]: east
+Sun Oct 25 23:35:08 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Sun Oct 25 23:35:08 2026 :: Log Alaric [2424]: east
+Sun Oct 25 23:35:08 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Sun Oct 25 23:35:09 2026 :: Log Alaric [2425]: east
+Sun Oct 25 23:35:09 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Sun Oct 25 23:35:09 2026 :: Log Alaric [2426]: open east
+Sun Oct 25 23:35:09 2026 :: Log Alaric [2426]: east
+Sun Oct 25 23:35:09 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Sun Oct 25 23:35:11 2026 :: Log Alaric [2440]: east
+Sun Oct 25 23:35:11 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Sun Oct 25 23:35:11 2026 :: Log Alaric [3503]: east
+Sun Oct 25 23:35:11 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Sun Oct 25 23:35:11 2026 :: Log Alaric [3502]: east
+Sun Oct 25 23:35:11 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Sun Oct 25 23:35:11 2026 :: Log Alaric [3525]: east
+Sun Oct 25 23:35:11 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Sun Oct 25 23:35:12 2026 :: Log Alaric [3526]: north
+Sun Oct 25 23:35:12 2026 :: Log Alaric [38]: arrived (Well Kept Path) from 3526
+Sun Oct 25 23:35:12 2026 :: Sock.sinaddr:  5.161.75.7
+Sun Oct 25 23:35:12 2026 :: Log Alaric [38]: north
+Sun Oct 25 23:35:12 2026 :: Log Alaric [1100]: arrived (A well kept path) from 38
+Sun Oct 25 23:35:12 2026 :: EOF encountered on read.
+Sun Oct 25 23:35:35 2026 :: Log Alaric [1100]: north
+Sun Oct 25 23:35:35 2026 :: Log Alaric [1101]: arrived (A well kept path) from 1100
+Sun Oct 25 23:35:36 2026 :: Log Alaric [1101]: north
+Sun Oct 25 23:35:36 2026 :: Log Alaric [1102]: arrived (A well kept path) from 1101
+Sun Oct 25 23:35:36 2026 :: Log Alaric [1102]: north
+Sun Oct 25 23:35:36 2026 :: Log Alaric [1103]: arrived (Entrance to the Shire) from 1102
+Sun Oct 25 23:35:36 2026 :: Log Alaric [1103]: east
+Sun Oct 25 23:35:36 2026 :: Log Alaric [1104]: arrived (Bywater Road) from 1103
+Sun Oct 25 23:35:36 2026 :: Log Alaric [1104]: east
+Sun Oct 25 23:35:36 2026 :: Log Alaric [1106]: arrived (Bywater Road) from 1104
+Sun Oct 25 23:35:37 2026 :: Log Alaric [1106]: east
+Sun Oct 25 23:35:37 2026 :: Log Alaric [1109]: arrived (A bend in the road) from 1106
+Sun Oct 25 23:35:37 2026 :: Log Alaric [1109]: south
+Sun Oct 25 23:35:37 2026 :: Log Alaric [1112]: arrived (Bywater Road) from 1109
+Sun Oct 25 23:35:37 2026 :: Log Alaric [1112]: south
+Sun Oct 25 23:35:37 2026 :: Log Alaric [1113]: arrived (Bywater Road) from 1112
+Sun Oct 25 23:35:37 2026 :: Log Alaric [1113]: south
+Sun Oct 25 23:35:37 2026 :: Log Alaric [1116]: arrived (The Ivy Bush) from 1113
+Sun Oct 25 23:35:39 2026 :: Log Alaric [1116]: get all
+Sun Oct 25 23:35:42 2026 :: Log Alaric [1116]: crane
+Sun Oct 25 23:35:44 2026 :: Log Alaric [1116]: killed a chic urbanite
+Sun Oct 25 23:35:44 2026 :: Log Alaric [1116]: coin +8 copper
+Sun Oct 25 23:35:47 2026 :: Log Alaric [1116]: killed a chic urbanite
+Sun Oct 25 23:35:47 2026 :: Log Alaric [1116]: coin +8 copper
+Sun Oct 25 23:35:48 2026 :: Log Alaric [1116]: recal
+Sun Oct 25 23:35:48 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 1116
+Sun Oct 25 23:35:50 2026 :: Log Alaric [2497]: aq co
+Sun Oct 25 23:35:50 2026 :: Log Alaric [2497]: copper +162241200
+Sun Oct 25 23:35:50 2026 :: Log Alaric [2497]: quest complete: 162p 24g 12s, 11 quest points (streak bonus 10%)
+Sun Oct 25 23:35:50 2026 :: Snapshot of Alaric taken before quest: Alaric.20261025_233550.quest (PRESTORE Alaric to see it).
+Sun Oct 25 23:35:51 2026 :: Log Alaric [2497]: aq ga no
+Sun Oct 25 23:35:53 2026 :: Log Alaric [2497]: score
+Sun Oct 25 23:40:17 2026 :: Sock.sinaddr:  5.161.194.92
+Sun Oct 25 23:40:18 2026 :: EOF encountered on read.
