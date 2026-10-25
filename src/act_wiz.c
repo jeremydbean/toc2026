@@ -12105,6 +12105,102 @@ static const char * const empower_spells[] =
     NULL
 };
 
+/* EMPOWER's effects, without a word said. The staff command, Hermie and
+   a crafted potion or scroll of empower all lay down exactly this. */
+static void empower_apply( CHAR_DATA *victim, int level, int duration )
+{
+    AFFECT_DATA af;
+
+    /* Sentinel affect -- type=gsn_empower, no bitvector, no location.
+     * is_affected(gsn_empower) uses this for toggle detection.        */
+    af.type       = gsn_empower;
+    af.level      = (sh_int)level;
+    af.duration   = (sh_int)duration;
+    af.location   = APPLY_NONE;
+    af.modifier   = 0;
+    af.bitvector  = 0;
+    af.bitvector2 = 0;
+    affect_to_char( victim, &af );
+
+    /* Granted spells -- each uses its real spell type so affect shows by name */
+    af.level    = (sh_int)level;
+    af.duration = (sh_int)duration;
+
+    empower_add_spell( victim, &af, "sanctuary",       APPLY_NONE,    0,  AFF_SANCTUARY,     0 );
+    empower_add_spell( victim, &af, "haste",           APPLY_DEX,     4,  AFF_HASTE,         0 );
+    empower_add_spell( victim, &af, "fly",             APPLY_NONE,    0,  AFF_FLYING,        0 );
+    empower_add_spell( victim, &af, "pass door",       APPLY_NONE,    0,  AFF_PASS_DOOR,     0 );
+    empower_add_spell( victim, &af, "protection evil", APPLY_NONE,    0,  AFF_PROTECT,       0 );
+    empower_add_spell( victim, &af, "fire shield",     APPLY_NONE,    0,  0,                 AFF2_FLAMING_HOT );
+    empower_add_spell( victim, &af, "divine protection",APPLY_NONE,   0,  0,                 AFF2_DIVINE_PROT );
+    empower_add_spell( victim, &af, "giant strength",  APPLY_STR,    15,  0,                 0 );
+
+    /* Stat/combat boosts -- type=gsn_empower so they group cleanly */
+    af.type       = gsn_empower;
+    af.bitvector  = 0;
+    af.bitvector2 = 0;
+
+    af.location = APPLY_INT;     af.modifier = 15;   affect_to_char( victim, &af );
+    af.location = APPLY_WIS;     af.modifier = 15;   affect_to_char( victim, &af );
+    af.location = APPLY_DEX;     af.modifier = 11;   affect_to_char( victim, &af );
+    af.location = APPLY_CON;     af.modifier = 15;   affect_to_char( victim, &af );
+    af.location = APPLY_HITROLL; af.modifier = 20;   affect_to_char( victim, &af );
+    af.location = APPLY_DAMROLL; af.modifier = 20;   affect_to_char( victim, &af );
+    af.location = APPLY_AC;      af.modifier = -100; affect_to_char( victim, &af );
+
+}
+
+/* TITANIC's effects, without a word said: five times each pool, capped
+   so a maximum stays inside a short, and every pool filled. Shared like
+   empower_apply. The boosts given come back through the pointers. */
+static void titanic_apply( CHAR_DATA *victim, int level, int duration,
+                           int *hp_out, int *mana_out, int *move_out )
+{
+    AFFECT_DATA af;
+    int hp_boost, mana_boost, move_boost;
+
+    /* 500% bonus: add 5x current max, but cap so that max + boost stays
+       within sh_int range (32767).  We use 30000 as the safe ceiling so
+       there is still head-room for other modifiers.                      */
+    hp_boost   = UMIN( 30000, (int)victim->max_hit  * 5 );
+    mana_boost = UMIN( 30000, (int)victim->max_mana * 5 );
+    move_boost = UMIN( 30000, (int)victim->max_move * 5 );
+    /* Secondary clamp: total must not exceed 30000 after addition */
+    if ( (int)victim->max_hit  + hp_boost   > 30000 ) hp_boost   = 30000 - (int)victim->max_hit;
+    if ( (int)victim->max_mana + mana_boost > 30000 ) mana_boost = 30000 - (int)victim->max_mana;
+    if ( (int)victim->max_move + move_boost > 30000 ) move_boost = 30000 - (int)victim->max_move;
+    if ( hp_boost   < 0 ) hp_boost   = 0;
+    if ( mana_boost < 0 ) mana_boost = 0;
+    if ( move_boost < 0 ) move_boost = 0;
+
+    af.type     = gsn_titanic;
+    af.level    = (sh_int)level;
+    af.duration = (sh_int)duration;
+    af.bitvector  = 0;
+    af.bitvector2 = 0;
+
+    af.location = APPLY_HIT;  af.modifier = (sh_int)hp_boost;
+    affect_to_char( victim, &af );
+
+    af.location = APPLY_MANA; af.modifier = (sh_int)mana_boost;
+    affect_to_char( victim, &af );
+
+    af.location = APPLY_MOVE; af.modifier = (sh_int)move_boost;
+    affect_to_char( victim, &af );
+
+    af.location = APPLY_EXP;  af.modifier = 50;
+    affect_to_char( victim, &af );
+
+    /* Heal to full immediately */
+    victim->hit  = victim->max_hit;
+    victim->mana = victim->max_mana;
+    victim->move = victim->max_move;
+
+    *hp_out   = hp_boost;
+    *mana_out = mana_boost;
+    *move_out = move_boost;
+}
+
 /* Set while Hermie hands out EMPOWER or TITANIC (spellup_grant), which she
    does as the player on themselves: the staff notice then names her, not
    "Alaric empowered Alaric" as though a mortal had run a staff command. */
@@ -12116,7 +12212,6 @@ void do_empower( CHAR_DATA *ch, char *argument )
     char arg2[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *victim;
-    AFFECT_DATA af;
     int duration;
     int i;
 
@@ -12162,42 +12257,7 @@ void do_empower( CHAR_DATA *ch, char *argument )
         if ( duration < 1 ) duration = 100;
     }
 
-    /* Sentinel affect -- type=gsn_empower, no bitvector, no location.
-     * is_affected(gsn_empower) uses this for toggle detection.        */
-    af.type       = gsn_empower;
-    af.level      = (sh_int)ch->level;
-    af.duration   = (sh_int)duration;
-    af.location   = APPLY_NONE;
-    af.modifier   = 0;
-    af.bitvector  = 0;
-    af.bitvector2 = 0;
-    affect_to_char( victim, &af );
-
-    /* Granted spells -- each uses its real spell type so affect shows by name */
-    af.level    = (sh_int)ch->level;
-    af.duration = (sh_int)duration;
-
-    empower_add_spell( victim, &af, "sanctuary",       APPLY_NONE,    0,  AFF_SANCTUARY,     0 );
-    empower_add_spell( victim, &af, "haste",           APPLY_DEX,     4,  AFF_HASTE,         0 );
-    empower_add_spell( victim, &af, "fly",             APPLY_NONE,    0,  AFF_FLYING,        0 );
-    empower_add_spell( victim, &af, "pass door",       APPLY_NONE,    0,  AFF_PASS_DOOR,     0 );
-    empower_add_spell( victim, &af, "protection evil", APPLY_NONE,    0,  AFF_PROTECT,       0 );
-    empower_add_spell( victim, &af, "fire shield",     APPLY_NONE,    0,  0,                 AFF2_FLAMING_HOT );
-    empower_add_spell( victim, &af, "divine protection",APPLY_NONE,   0,  0,                 AFF2_DIVINE_PROT );
-    empower_add_spell( victim, &af, "giant strength",  APPLY_STR,    15,  0,                 0 );
-
-    /* Stat/combat boosts -- type=gsn_empower so they group cleanly */
-    af.type       = gsn_empower;
-    af.bitvector  = 0;
-    af.bitvector2 = 0;
-
-    af.location = APPLY_INT;     af.modifier = 15;   affect_to_char( victim, &af );
-    af.location = APPLY_WIS;     af.modifier = 15;   affect_to_char( victim, &af );
-    af.location = APPLY_DEX;     af.modifier = 11;   affect_to_char( victim, &af );
-    af.location = APPLY_CON;     af.modifier = 15;   affect_to_char( victim, &af );
-    af.location = APPLY_HITROLL; af.modifier = 20;   affect_to_char( victim, &af );
-    af.location = APPLY_DAMROLL; af.modifier = 20;   affect_to_char( victim, &af );
-    af.location = APPLY_AC;      af.modifier = -100; affect_to_char( victim, &af );
+    empower_apply( victim, ch->level, duration );
 
     act( "$n is surrounded by a blazing divine aura!", victim, NULL, NULL, TO_ROOM );
     send_to_char( "You are filled with divine power -- all buffs applied!\n\r", victim );
@@ -12231,7 +12291,6 @@ void do_titanic( CHAR_DATA *ch, char *argument )
     char arg2[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *victim;
-    AFFECT_DATA af;
     int duration;
     int hp_boost, mana_boost, move_boost;
 
@@ -12273,42 +12332,8 @@ void do_titanic( CHAR_DATA *ch, char *argument )
         if ( duration < 1 ) duration = 100;
     }
 
-    /* 500% bonus: add 5x current max, but cap so that max + boost stays
-       within sh_int range (32767).  We use 30000 as the safe ceiling so
-       there is still head-room for other modifiers.                      */
-    hp_boost   = UMIN( 30000, (int)victim->max_hit  * 5 );
-    mana_boost = UMIN( 30000, (int)victim->max_mana * 5 );
-    move_boost = UMIN( 30000, (int)victim->max_move * 5 );
-    /* Secondary clamp: total must not exceed 30000 after addition */
-    if ( (int)victim->max_hit  + hp_boost   > 30000 ) hp_boost   = 30000 - (int)victim->max_hit;
-    if ( (int)victim->max_mana + mana_boost > 30000 ) mana_boost = 30000 - (int)victim->max_mana;
-    if ( (int)victim->max_move + move_boost > 30000 ) move_boost = 30000 - (int)victim->max_move;
-    if ( hp_boost   < 0 ) hp_boost   = 0;
-    if ( mana_boost < 0 ) mana_boost = 0;
-    if ( move_boost < 0 ) move_boost = 0;
-
-    af.type     = gsn_titanic;
-    af.level    = (sh_int)ch->level;
-    af.duration = (sh_int)duration;
-    af.bitvector  = 0;
-    af.bitvector2 = 0;
-
-    af.location = APPLY_HIT;  af.modifier = (sh_int)hp_boost;
-    affect_to_char( victim, &af );
-
-    af.location = APPLY_MANA; af.modifier = (sh_int)mana_boost;
-    affect_to_char( victim, &af );
-
-    af.location = APPLY_MOVE; af.modifier = (sh_int)move_boost;
-    affect_to_char( victim, &af );
-
-    af.location = APPLY_EXP;  af.modifier = 50;
-    affect_to_char( victim, &af );
-
-    /* Heal to full immediately */
-    victim->hit  = victim->max_hit;
-    victim->mana = victim->max_mana;
-    victim->move = victim->max_move;
+    titanic_apply( victim, ch->level, duration,
+                   &hp_boost, &mana_boost, &move_boost );
 
     {
         char note[MAX_STRING_LENGTH];
@@ -12332,6 +12357,84 @@ void do_titanic( CHAR_DATA *ch, char *argument )
                   victim->name, duration, hp_boost, mana_boost, move_boost );
     send_to_char( buf, ch );
     return;
+}
+
+
+/*
+ * The two bundles as spells, for the potions CONCOCT makes and the scrolls
+ * SCRIBE writes (2026-10-25). No class learns either -- the skill rows sit
+ * at level 72, like the monster wards -- so nobody casts them; they reach
+ * a player only from an object, at the crafter's level. They last half
+ * that level in ticks, never longer than Hermie's free ones, and never
+ * strip what is already there, as the staff commands' toggle would.
+ */
+static int crafted_bundle_duration( int level )
+{
+    return URANGE( 5, level / 2, SPELLUP_DURATION );
+}
+
+void spell_empower( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+    CHAR_DATA *victim = (CHAR_DATA *) vo;
+    char note[MAX_STRING_LENGTH];
+
+    UNUSED_PARAM( sn );
+    if ( victim == NULL )
+        victim = ch;
+    if ( IS_NPC(victim) )
+    {
+        act( "The power slides off $N; it is meant for an adventurer.",
+            ch, NULL, victim, TO_CHAR );
+        return;
+    }
+    if ( is_affected( victim, gsn_empower ) )
+    {
+        if ( victim == ch )
+            send_to_char( "You are already carrying all the power you can hold.\n\r", ch );
+        else
+            act( "$N is already empowered.", ch, NULL, victim, TO_CHAR );
+        return;
+    }
+
+    empower_apply( victim, level, crafted_bundle_duration( level ) );
+    act( "$n is surrounded by a blazing divine aura!", victim, NULL, NULL, TO_ROOM );
+    send_to_char( "You are filled with divine power -- every ward and blessing at once!\n\r", victim );
+    snprintf( note, sizeof(note), "%s empowered %s with a crafted bundle (level %d).",
+        ch->name, victim->name, level );
+    wizinfo( note, LEVEL_IMMORTAL );
+}
+
+void spell_titanic( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+    CHAR_DATA *victim = (CHAR_DATA *) vo;
+    char note[MAX_STRING_LENGTH];
+    int hp_boost, mana_boost, move_boost;
+
+    UNUSED_PARAM( sn );
+    if ( victim == NULL )
+        victim = ch;
+    if ( IS_NPC(victim) )
+    {
+        act( "The power slides off $N; it is meant for an adventurer.",
+            ch, NULL, victim, TO_CHAR );
+        return;
+    }
+    if ( is_affected( victim, gsn_titanic ) )
+    {
+        if ( victim == ch )
+            send_to_char( "You are quite large enough already.\n\r", ch );
+        else
+            act( "$N is titanic already.", ch, NULL, victim, TO_CHAR );
+        return;
+    }
+
+    titanic_apply( victim, level, crafted_bundle_duration( level ),
+                   &hp_boost, &mana_boost, &move_boost );
+    act( "$n grows to titanic proportions!", victim, NULL, NULL, TO_ROOM );
+    send_to_char( "Your body surges with titanic power -- hit points, mana and movement multiplied, and 50% more experience!\n\r", victim );
+    snprintf( note, sizeof(note), "%s made %s titanic with a crafted bundle (level %d).",
+        ch->name, victim->name, level );
+    wizinfo( note, LEVEL_IMMORTAL );
 }
 
 

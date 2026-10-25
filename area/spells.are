@@ -1126,6 +1126,34 @@ raise the dead.
 See also: ANIMATE PARTS, LIFE-UNDEATH, HEALING
 ~
 
+0 RESURRECTION ACCEPT DECLINE~
+Syntax: cast resurrection <corpse>
+        accept
+        decline
+
+Resurrection calls a fallen player's soul back to their body.  Cast it over
+a player's corpse; its owner is asked, wherever they are in the world, and
+nothing happens until they answer.  ACCEPT brings them to the corpse at one
+hit point with everything it held, coins into the purse.  DECLINE, or two
+minutes' silence, lets the call fade, and the caster is told either way.
+
+Only members of the cleric guild may learn it, whatever their class: it
+comes with the guild, and Qualo the healer in the Temple of Breas trains it.
+The minimum level depends on your primary class and is:
+
+Mage:45  Cleric:40  Thief:50  Warrior:50
+
+The dead cannot answer from a jail, from a room they could not RECALL out
+of, or in the middle of a fight, and cannot come back to a body lying where
+they may not go; the call stands meanwhile.  The corpse is used up when they
+rise, and coin the purse cannot take falls to the floor beside it.
+
+RAISE DEAD pulls the dead to the caster without asking; here the choice is
+the fallen player's.
+
+See also: RAISE DEAD, DEATH, HEALING
+~
+
 0 REFRESH~
 Syntax: cast refresh <character>
 

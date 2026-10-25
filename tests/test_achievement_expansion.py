@@ -257,8 +257,8 @@ class CraftingTableTests(unittest.TestCase):
     def test_recipe_counts_and_unique_ingredients(self) -> None:
         kinds = [r[0] for r in self.recipes]
         self.assertEqual(kinds.count("BREW"), 20)
-        self.assertEqual(kinds.count("CONCOCT"), 18)
-        self.assertEqual(kinds.count("SCRIBE"), 10)
+        self.assertEqual(kinds.count("CONCOCT"), 20)
+        self.assertEqual(kinds.count("SCRIBE"), 12)
         seen = set()
         for method, a, b, c, *_ in self.recipes:
             parts = (method, tuple(sorted(int(x) for x in (a, b, c) if x != "0")))

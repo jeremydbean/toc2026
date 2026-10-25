@@ -266,6 +266,8 @@ const	struct	cmd_type	cmd_table	[] =
     /* After ALIAS and every DE- command: prefixes keep finding those. */
     { "alignment",	do_alignment,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "devote",		do_devote,	POS_STANDING,	 0,  LOG_NORMAL, 1 },
+    { "accept",		do_accept,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
+    { "decline",	do_decline,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "withdraw",	do_withdraw,	POS_RESTING,	 0,  LOG_ALWAYS, 1 },
     { "balance",	do_balance,	POS_RESTING,	 0,  LOG_ALWAYS, 1 },
     { "gamble",        do_gamble,      POS_STANDING,    0,  LOG_NORMAL, 1 },

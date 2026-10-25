@@ -78,6 +78,7 @@ set(SRC_FILES
     src/restores.c
     src/alignment.c
     src/playlog.c
+    src/resurrect.c
     src/wizlist.c
 )
 

@@ -5446,7 +5446,8 @@
     "cure disease",
     "cure poison",
     "cure nightmare",
-    "dodge"
+    "dodge",
+    "resurrection"
    ],
    "gains": [
     "curative",

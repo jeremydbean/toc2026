@@ -8,6 +8,21 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Resurrection** (owner, 2026-10-25; `src/resurrect.c`). A cleric guild
+  spell, any class (45/40/50/50), granted with the guild group and trained
+  by Qualo the healer. Cast on a player's corpse it offers the owner a
+  return; ACCEPT moves them to the corpse at 1 hp with its contents (coin
+  to the purse, what the purse refuses spilled) and uses the corpse up,
+  DECLINE or two minutes ends it. The offer is in memory only and the
+  corpse is looked up again before use; leaving a jail or no-recall room,
+  a fight, a death trap and rooms `travel_spell_refuses` are refused.
+  `MAX_SKILL` is 233. `tests/test_resurrection.py`.
+- **Titanic and empower to carry** (owner, 2026-10-25). The two bundles are
+  real spells now (`spell_titanic`, `spell_empower`), at level 72 for every
+  class so only an object casts them; the staff commands, Hermie and the
+  spells share `titanic_apply`/`empower_apply`. Two concoctions and two
+  inks make them, lasting half the maker's level, at most Hermie's 30
+  ticks. SCRIBE names the scroll it made.
 - **Achievement expansion** (owner, 2026-10-25; `wiki/achievements.md`).
   175 new achievements, 378 in all: treasure goblins, the Great Black
   Dragon and Vesh; seven more verified bosses and three regional metas;

@@ -509,6 +509,8 @@ DECLARE_DO_FUN( do_seal         );
 DECLARE_DO_FUN( do_trail        );
 DECLARE_DO_FUN( do_petrify      );
 DECLARE_DO_FUN( do_empower      );
+DECLARE_DO_FUN( do_accept       );
+DECLARE_DO_FUN( do_decline      );
 DECLARE_DO_FUN( do_titanic      );
 DECLARE_DO_FUN( do_spellup      );
 DECLARE_DO_FUN( do_ask          );

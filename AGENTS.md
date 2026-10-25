@@ -919,6 +919,31 @@ which must be one of its spells and have a real `spell_fun`
 in the component vnum range, and counting them once stopped components
 spawning anywhere.
 
+**TITANIC and EMPOWER are object-only spells** (owner, 2026-10-25). Their
+skill rows sit at level 72 for every class -- `set skill all` and casting
+both pass over them -- with real `spell_titanic`/`spell_empower` so a
+crafted potion or scroll can carry them. The staff commands, Hermie and
+the spells all go through `titanic_apply`/`empower_apply` in `act_wiz.c`;
+change an effect there, once. A crafted one lasts half the maker's level,
+never more than `SPELLUP_DURATION`, and refuses rather than toggles off.
+
+## Resurrection
+
+`src/resurrect.c` (owner, 2026-10-25). RESURRECTION is the cleric guild's,
+for any class in it: it sits in the `cleric guild` group, so every member
+holds it from the next login, and `spell_resurrection` refuses anyone not
+in the guild (staff aside). It needs the dead player's consent: the cast
+only stores an offer on them (`resurrect_by`, `resurrect_corpse`,
+`resurrect_until`, memory only), and ACCEPT does the work. The corpse
+pointer is looked for in the object list again before ACCEPT trusts it --
+the corpse can rot, be purged or carried off in the two minutes -- and the
+refusals (`resurrect_refusal`: a fight, jail, a no-recall room left, a
+death trap, `travel_spell_refuses`, privacy) leave the offer standing. The
+corpse is always used up, as RAISE DEAD's is, so it cannot call its owner
+back twice; it ends in the corpse registry as "resurrected by <caster>".
+ACCEPT sits after DEVOTE in the command table, so `ac` stays ACHIEVEMENTS
+and `de` DEPART. Adding it took `MAX_SKILL` to 233: the table was full.
+
 ## The Seasonal Areas Are Generated
 
 `src/season.c` swaps three areas for a holiday copy **at boot**: `dresden`,

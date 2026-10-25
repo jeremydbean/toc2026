@@ -780,7 +780,7 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	35,     CLASS_ANY,   GUILD_CLERIC,
 	{
 	  "cure blindness",  "cure disease",     "cure poison",
-	  "cure nightmare",  "dodge"
+	  "cure nightmare",  "dodge",            "resurrection"
 	},
 	{
 	  "curative", "dodge"
@@ -2764,6 +2764,15 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
     },
 
     {
+	/* The cleric guild's, for any class sworn to it (resurrect.c). */
+	"resurrection",
+	{  45, 40, 50, 50, 72, 72 },     { 2, 1, 2, 2, 0, 0},
+	spell_resurrection,     TAR_IGNORE,       POS_STANDING,
+	NULL,                   SLOT( 0),       100,     24,
+	"",                     "!Resurrection!"
+    },
+
+    {
 	"divine intervention",
 	{ 62, 43, 62, 62, 62, 62 },	{ 2, 1, 2, 2, 2, 2},
 	spell_divine_intervention,	TAR_IGNORE,	POS_FIGHTING,
@@ -3804,19 +3813,20 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
         "smite",             "!SMITE!"
     },
 
-    /* Immortal command tracking skills */
+    /* Immortal command tracking skills, and the crafted bundles' spells:
+       level 72 for every class, so only a potion or scroll casts them. */
     {
         "empower",
-        { -1, -1, -1, -1, -1, -1 },     { 0, 0, 0, 0, 0, 0 },
-        spell_null,             TAR_IGNORE,             POS_DEAD,
+        { 72, 72, 72, 72, 72, 72 },     { 0, 0, 0, 0, 0, 0 },
+        spell_empower,          TAR_CHAR_DEFENSIVE,     POS_STANDING,
         &gsn_empower,           SLOT( 0),       0,      0,
         "",                     "The divine empowerment fades away."
     },
 
     {
         "titanic",
-        { -1, -1, -1, -1, -1, -1 },     { 0, 0, 0, 0, 0, 0 },
-        spell_null,             TAR_IGNORE,             POS_DEAD,
+        { 72, 72, 72, 72, 72, 72 },     { 0, 0, 0, 0, 0, 0 },
+        spell_titanic,          TAR_CHAR_DEFENSIVE,     POS_STANDING,
         &gsn_titanic,           SLOT( 0),       0,      0,
         "",                     "Your titanic stature fades away."
     },
@@ -3942,7 +3952,7 @@ const   struct  group_type      group_table     [MAX_GROUP]     =
 	  "cure light",      "cause light",      "bless",
 	  "refresh",         "armor",            "scrolls",
 	  "staves",          "spiritual hammer", "flamestrike",
-	  "identify",        "cure serious"
+	  "identify",        "cure serious",     "resurrection"
 	}
     },
 

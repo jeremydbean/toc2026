@@ -1764,6 +1764,10 @@ it. Herbs and components turn up on the ground around the world and wither
 after about twelve hours. Every successful brew counts toward the crafting
 achievements, and every different recipe toward A Varied Recipe Book.
 
+The rarest concoctions hold TITANIC or EMPOWER, the two bundles Hermie gives
+free at the Temple, to carry where she is not.  Nobody casts either; they
+last half the maker's level in ticks, never longer than hers.
+
 See also: SCRIBE, QUAFF, ACHIEVEMENTS
 ~
 
@@ -1778,6 +1782,9 @@ failing it consumes them. You must be awake to scribe.
 
 The scroll is cast at your level and needs that level to read. A scroll whose
 spell works on an object asks for one: RECITE <scroll> <object>.
+
+Some inks write TITANIC or EMPOWER, which a scroll can lay on you or on
+another player.
 
 See also: BREW, RECITE, ACHIEVEMENTS
 ~

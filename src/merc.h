@@ -302,7 +302,7 @@ typedef struct script_loop_prepoll_payload
 /* Game parameters. */
 #define WORLD_SIZE              30000
 #define MAX_SOCIALS             512
-#define MAX_SKILL               232
+#define MAX_SKILL               233
 #define TRAIL_LEN               10
 #define MAX_GROUP               58
 #define OBJ_UPDATE_EXTRACT_MAX  4096
@@ -2294,6 +2294,12 @@ struct  pc_data
     AREA_DATA *         disaster_area;
     int                 disaster_kind;
     long                disaster_deaths;    /* deaths when it struck */
+    /* A cleric's RESURRECTION offer to this player: who called, the
+       corpse it named (looked for again before use) and when it fades
+       (resurrect.c). Not saved. */
+    char                resurrect_by[16];
+    OBJ_DATA *          resurrect_corpse;
+    time_t              resurrect_until;
     /* Hyrule's once-per-character secrets: money caves, Heart Containers,
        take-any choices, bigger bomb bags (hyrule.c). Saved as
        HyruleSecrets under case 'H'. */

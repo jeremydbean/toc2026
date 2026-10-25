@@ -2811,6 +2811,9 @@ static const CRAFT_RECIPE craft_recipes[] =
     { CRAFT_CONCOCT, { 67, 58, 0 }, { "detect invis", "detect hidden", "detect magic" }, "many-eyed", "detect hidden", 0 },
     { CRAFT_CONCOCT, { 56, 72, 0 }, { "frenzy", "giant strength", NULL }, "blood red", "frenzy", 0 },
     { CRAFT_CONCOCT, { 62, 69, 0 }, { "frost shield", "cure critical", NULL }, "icy blue", "frost shield", 0 },
+    /* The bundles Hermie gives free, to carry where she is not. */
+    { CRAFT_CONCOCT, { 57, 72, 0 }, { "titanic", NULL, NULL }, "towering bronze", "titanic", 0 },
+    { CRAFT_CONCOCT, { 55, 63, 0 }, { "empower", NULL, NULL }, "radiant gold", "empower", 0 },
 
     /* SCRIBE: three components, a scroll. */
     { CRAFT_SCRIBE, { 80, 84, 76 }, { "remove align", NULL, NULL }, "blank", "remove align", CRAFT_TELL_STAFF },
@@ -2823,6 +2826,8 @@ static const CRAFT_RECIPE craft_recipes[] =
     { CRAFT_SCRIBE, { 82, 83, 76 }, { "remove curse", "cure poison", "cure disease" }, "ashen", "remove curse", 0 },
     { CRAFT_SCRIBE, { 57, 78, 88 }, { "aid", "bless", "armor" }, "hallowed", "aid", 0 },
     { CRAFT_SCRIBE, { 84, 77, 81 }, { "invis", "pass door", "fly" }, "shimmering", "fly", 0 },
+    { CRAFT_SCRIBE, { 85, 76, 88 }, { "titanic", NULL, NULL }, "colossal", "titanic", 0 },
+    { CRAFT_SCRIBE, { 78, 80, 83 }, { "empower", NULL, NULL }, "gilded", "empower", 0 },
 
     { 0, { 0, 0, 0 }, { NULL, NULL, NULL }, NULL, NULL, 0 }
 };
@@ -3173,6 +3178,8 @@ void do_scribe( CHAR_DATA *ch, char *argument )
     send_to_char( "You get out your quill and begin writing the spells with the ink.\n\r", ch );
     act( "Smiling gleefully, $n pulls out a sheet of vellum and writes out the spells.",
          ch, NULL, NULL, TO_ROOM );
+    /* Say what was made, as CONCOCT and BREW do. */
+    act( "You finish $p.", ch, scroll, NULL, TO_CHAR );
     check_improve( ch, gsn_scribe, true, 5 );
     extract_obj( parts[0] );
     extract_obj( parts[1] );

@@ -5,6 +5,17 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261025h 2026-10-25
+Members of the cleric guild, of any class, can learn RESURRECTION (Qualo
+the healer trains it). Cast over a fallen player's corpse, it asks them:
+ACCEPT brings them back to the body at one hit point with everything it
+held, DECLINE lets the call fade. See HELP RESURRECTION.
+
+@ 20261025i 2026-10-25
+TITANIC and EMPOWER, the bundles Hermie gives free, can now be made to
+carry: there is a concoction and an ink for each, waiting to be found.
+SCRIBE also tells you what you wrote.
+
 @ 20261025e 2026-10-25
 175 new achievements, 378 in all. Chase treasure goblins and the black
 dragon, buy from Vesh, rescue and heal your group, master your skills,
