@@ -117,7 +117,16 @@ class ComponentSourceTests(unittest.TestCase):
         body = self.scatterer()
         self.assertNotIn("number_range( 0, 65535 )", body)
         self.assertNotIn("attempts", body)
-        self.assertEqual(body.count("random_scatter_room"), 4)
+        # Two picks of an area, then two of a room inside it. The room picks
+        # go through component_scatter_room (2026-10-25), which still asks
+        # random_scatter_room and only filters what it returns: no sky, deep
+        # water, arena or Hyrule.
+        self.assertEqual(body.count("random_scatter_room( NULL )"), 2)
+        self.assertEqual(body.count("component_scatter_room( component_area->area )"), 2)
+        helper = self.update.split("static ROOM_INDEX_DATA *component_scatter_room", 1)[1]
+        helper = helper.split("\n}", 1)[0]
+        self.assertIn("random_scatter_room( area )", helper)
+        self.assertNotIn("number_range", helper)
         self.assertIn("ROOM_INDEX_DATA *random_scatter_room", self.db)
 
     def test_the_picker_skips_rooms_nothing_should_lie_in(self) -> None:
