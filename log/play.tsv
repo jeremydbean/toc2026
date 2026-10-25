@@ -19486,3 +19486,38 @@
 1792949658	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
 1792949658	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	17	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Streak of 10 in a row! A +70% bonus has been added!'
 1792949658	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 61 quest points.
+1792949971	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	11	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Alaric!' // Questor Thews tells you 'a passenger has been declared an outlaw!'
+1792949976	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792949979	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792949982	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	eat	guano	You do not have that item.
+1792949984	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792949985	cmd	Alaric	50	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792949985	cmd	Alaric	50	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792949986	cmd	Alaric	50	9531	newthalo.are	standing	100	0	-	run	e 25	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792949987	cmd	Alaric	50	9531	newthalo.are	standing	100	0	-	open		Ok.
+1792949988	cmd	Alaric	50	9794	newthalo.are	standing	100	0	-	run	e 6	Outside the Eastern Gate of New Thalos // [Exits: east south west] // On a road
+1792949990	cmd	Alaric	50	9794	newthalo.are	standing	100	0	-	levitate		You are already airborne.
+1792949992	cmd	Alaric	50	9794	newthalo.are	standing	100	0	-	affect		You are affected by: // Spell: 'titanic' modifies experience by 50 for 12 hours. // Spell: 'titanic' modifies moves by 5065 for 12 hours.
+1792949996	cmd	Alaric	50	9795	newthalo.are	standing	100	0	-	east		On a dock //   You stand on a simple wooden dock that acts as an extension of the road // to the west. The dock seems to have been here for quite a long time
+1792950000	cmd	Alaric	50	9789	newthalo.are	standing	100	0	-	east		The Dragon Sea //   You are on the clear blue seas of the Dragon Sea. //  Water extends in all directions as far as the eye
+1792950002	cmd	Alaric	50	9789	newthalo.are	standing	100	0	-	exits		Obvious exits: // South - The Dragon Sea // West  - On a dock
+1792950005	cmd	Alaric	50	9795	newthalo.are	standing	100	0	-	west		On a dock //   You stand on a simple wooden dock that acts as an extension of the road // to the west. The dock seems to have been here for quite a long time
+1792950005	cmd	Alaric	50	9794	newthalo.are	standing	100	0	-	west		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline
+1792950006	cmd	Alaric	50	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792950006	cmd	Alaric	50	29350	voyage.are	standing	100	0	-	east		Dock before the Sea //   The dock in bustling with activity today.  Sailors scurry about tying // lines and setting up planks to the ships for boarding and deboarding. One
+1792950008	cmd	Alaric	50	29350	voyage.are	standing	100	0	-	scan		You don't see anything near you.
+1792950010	cmd	Alaric	50	29350	voyage.are	standing	100	0	-	exits		Obvious exits: // East  - Along the Dock // West  - The new pier
+1792950012	cmd	Alaric	50	29351	voyage.are	standing	100	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you
+1792950014	cmd	Alaric	50	29352	voyage.are	standing	100	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you
+1792950015	cmd	Alaric	50	29352	voyage.are	standing	100	0	-	exits		Obvious exits: // West  - Along the Dock // Northeast - Across the Sea
+1792950016	cmd	Alaric	50	29352	voyage.are	standing	100	0	-	scan		You don't see anything near you.
+1792950018	cmd	Alaric	50	29352	voyage.are	standing	100	0	-	where	pass	You didn't find any pass.
+1792950023	cmd	Alaric	50	29351	voyage.are	standing	100	0	-	west		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you
+1792950023	cmd	Alaric	50	29350	voyage.are	standing	100	0	-	west		Dock before the Sea //   The dock in bustling with activity today.  Sailors scurry about tying // lines and setting up planks to the ships for boarding and deboarding. One
+1792950026	cmd	Alaric	50	29351	voyage.are	standing	100	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you
+1792950027	cmd	Alaric	50	29352	voyage.are	standing	100	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you
+1792950028	cmd	Alaric	50	29353	voyage.are	standing	100	0	-	ne		Across the Sea //   You board the ship and it begins to pull away from port leaving the // still screaming nomad behind.  The Captain approaches you.
+1792950029	cmd	Alaric	50	29353	voyage.are	standing	100	0	-	scan		a tentacle                         -to the Northeast.
+1792950031	cmd	Alaric	50	29353	voyage.are	standing	100	0	-	scan		a tentacle                         -to the Northeast.
+1792950032	cmd	Alaric	50	29353	voyage.are	standing	100	0	-	exits		Obvious exits: // North - Across the Sea // South - Across the Sea
+1792950038	cmd	Alaric	50	29353	voyage.are	standing	100	0	-	where	pass	You didn't find any pass.
