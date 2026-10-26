@@ -22771,3 +22771,5 @@
 1792977867	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	17	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Journal of Trinidad to Questor Thews. // Questor Thews says 'Excellent work! The realm is in your debt!'
 1792977869	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 144 quest points.
 1792977872	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    249 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792977944	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1792977946	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    250 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
