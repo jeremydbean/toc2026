@@ -27580,3 +27580,30 @@
 1793058545	cmd	Alaric	53	4208	dresden_halloween.are	standing	95	0	-	steel		You concentrate, and the molecules in your hands become more dense.
 1793058550	cmd	Alaric	53	4208	dresden_halloween.are	standing	95	0	-	heal	all	The cackling witch-healer says 'Type 'heal' for a list of spells.'
 1793058550	cmd	Alaric	53	2427	dresden_halloween.are	standing	95	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1793058554	cmd	Alaric	53	2427	dresden_halloween.are	standing	95	0	-	where	herm	You didn't find any herm.
+1793058555	cmd	Alaric	53	2427	dresden_halloween.are	standing	95	0	-	wake		You are already standing.
+1793058555	cmd	Alaric	53	2427	dresden_halloween.are	standing	95	0	-	look		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793058556	cmd	Alaric	53	2427	dresden_halloween.are	standing	95	0	-	score		| Name:         Alaric | Level:      53 | Class:        Monk | // | Played:    256 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1793058558	cmd	Alaric	53	2427	dresden_halloween.are	standing	95	0	-	look		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793058559	cmd	Alaric	53	2427	dresden_halloween.are	standing	95	0	-	affect		You are affected by: // Skill: 'steel fist' modifies damage roll by 15 for 6 hours. // Spell: 'giant strength' modifies strength by 15 for 26 hours.
+1793058560	cmd	Alaric	53	2427	dresden_halloween.are	standing	95	0	-	look		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793058562	cmd	Alaric	53	2427	dresden_halloween.are	standing	95	0	-	east		Alas, you cannot go that way.
+1793058562	cmd	Alaric	53	2427	dresden_halloween.are	standing	95	0	-	east		Alas, you cannot go that way.
+1793058564	cmd	Alaric	53	2428	dresden_halloween.are	standing	95	0	-	south		Main Processional, Toward the Mermaids' Bridge //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Children run past you in sheets and
+1793058564	cmd	Alaric	53	2427	dresden_halloween.are	standing	95	0	-	north		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793058565	cmd	Alaric	53	2404	dresden_halloween.are	standing	95	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793058566	cmd	Alaric	53	2401	dresden_halloween.are	standing	95	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793058568	cmd	Alaric	53	2426	dresden_halloween.are	standing	95	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // An elite hobbit vampire tells you,"May peace favor your sword!"
+1793058568	cmd	Alaric	53	2426	dresden_halloween.are	standing	95	0	-	open		Ok.
+1793058569	cmd	Alaric	53	9506	newthalo.are	standing	95	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793058570	cmd	Alaric	53	29004	korzath1.are	standing	95	0	-	run	n	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1793058571	cmd	Alaric	53	29004	korzath1.are	resting	95	0	-	wake		You stand up.
+1793058572	cmd	Alaric	53	29004	korzath1.are	standing	95	0	-	unlock	north	You lack the key.
+1793058573	cmd	Alaric	53	29004	korzath1.are	standing	95	0	-	look		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793058575	cmd	Alaric	53	29004	korzath1.are	standing	95	0	-	kill	gu	Your punch *** DEVASTATES *** Guardian Knight! [-71] // Your punch wounds Guardian Knight. [-18] // Your punch wounds Guardian Knight. [-20]
+1793058583	cmd	Alaric	53	29004	korzath1.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS Guardian Knight! [-41] // Your fists of fury devastates Guardian Knight! [-29]
+1793058589	cmd	Alaric	53	29004	korzath1.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes Guardian Knight. [-6] // Your fists of fury mauls Guardian Knight. [-21]
+1793058600	cmd	Alaric	53	29004	korzath1.are	standing	96	0	-	get	key cor	You get a diamond key from corpse of Guardian Knight.
+1793058600	cmd	Alaric	53	29004	korzath1.are	standing	96	0	-	drop	key	You drop a diamond key.
+1793058601	cmd	Alaric	53	29004	korzath1.are	standing	96	0	-	drop		Drop what?
+1793058611	session	Alaric	53	29004	korzath1.are	quit	16286s	+3 levels	+39880 exp	+1631045242 copper	79 kills	0 deaths	13 quests	1642 commands	9 refused	coin: loot 306p 7g 54s 42c, quests 1324p 96g 98s
