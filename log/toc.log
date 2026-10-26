@@ -196785,3 +196785,113 @@ Mon Oct 26 01:40:24 2026 :: Log Alaric [2368]: north
 Mon Oct 26 01:40:24 2026 :: Log Alaric [2365]: arrived (The city streets of Mahn-Tor) from 2368
 Mon Oct 26 01:40:24 2026 :: Log Alaric [2365]: west
 Mon Oct 26 01:40:24 2026 :: Log Alaric [2364]: arrived (Inside the gates of Mahn-Tor) from 2365
+Mon Oct 26 01:40:26 2026 :: Log Alaric [2364]: get all
+Mon Oct 26 01:40:28 2026 :: Log Trentlin [30544]: drop candy
+Mon Oct 26 01:40:28 2026 :: Log Alaric [2364]: recal
+Mon Oct 26 01:40:28 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2364
+Mon Oct 26 01:40:29 2026 :: Log Trentlin [30544]: l
+Mon Oct 26 01:40:29 2026 :: Log Alaric [2497]: aq co
+Mon Oct 26 01:40:29 2026 :: Log Alaric [2497]: copper +94640700
+Mon Oct 26 01:40:29 2026 :: Log Alaric [2497]: quest complete: 94p 64g 7s, 26 quest points (streak bonus 100%)
+Mon Oct 26 01:40:29 2026 :: Snapshot of Alaric taken before quest: Alaric.20261026_014029.quest (PRESTORE Alaric to see it).
+Mon Oct 26 01:40:30 2026 :: Log Trentlin [30544]: s
+Mon Oct 26 01:40:30 2026 :: Log Trentlin [30541]: arrived (Level 7: Western Moat) from 30544
+Mon Oct 26 01:40:30 2026 :: Log Trentlin [30541]: sca
+Mon Oct 26 01:40:32 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct 26 01:40:32 2026 :: Log Trentlin [30541]: sca
+Mon Oct 26 01:40:33 2026 :: Log Alaric [2497]: score
+Mon Oct 26 01:40:33 2026 :: Log Trentlin [30541]: e
+Mon Oct 26 01:40:33 2026 :: Log Trentlin [30542]: arrived (Level 7: Island Chamber) from 30541
+Mon Oct 26 01:40:34 2026 :: Log Trentlin [30542]: e
+Mon Oct 26 01:40:34 2026 :: Log Trentlin [30543]: arrived (Level 7: Hidden Cistern) from 30542
+Mon Oct 26 01:40:34 2026 :: Log Alaric [2497]: score
+Mon Oct 26 01:40:35 2026 :: Log Alaric [2497]: who
+Mon Oct 26 01:40:37 2026 :: Log Trentlin [30543]: w
+Mon Oct 26 01:40:37 2026 :: Log Trentlin [30542]: arrived (Level 7: Island Chamber) from 30543
+Mon Oct 26 01:40:37 2026 :: Log Trentlin [30542]: w
+Mon Oct 26 01:40:37 2026 :: Log Trentlin [30541]: arrived (Level 7: Western Moat) from 30542
+Mon Oct 26 01:40:38 2026 :: Log Trentlin [30541]: n
+Mon Oct 26 01:40:38 2026 :: Log Trentlin [30544]: arrived (Level 7: Hall of Grumbling) from 30541
+Mon Oct 26 01:40:40 2026 :: Log Trentlin [30544]: get ca
+Mon Oct 26 01:40:41 2026 :: Log Trentlin [30544]: eat ca
+Mon Oct 26 01:40:43 2026 :: Log Trentlin [30544]: l
+Mon Oct 26 01:40:46 2026 :: Log Trentlin [30544]: s
+Mon Oct 26 01:40:46 2026 :: Log Trentlin [30541]: arrived (Level 7: Western Moat) from 30544
+Mon Oct 26 01:40:46 2026 :: Log Alaric [2497]: score
+Mon Oct 26 01:40:46 2026 :: Log Trentlin [30541]: e
+Mon Oct 26 01:40:46 2026 :: Log Trentlin [30542]: arrived (Level 7: Island Chamber) from 30541
+Mon Oct 26 01:40:46 2026 :: Log Trentlin [30542]: e
+Mon Oct 26 01:40:46 2026 :: Log Trentlin [30543]: arrived (Level 7: Hidden Cistern) from 30542
+Mon Oct 26 01:40:47 2026 :: Log Trentlin [30543]: e
+Mon Oct 26 01:40:47 2026 :: Log Trentlin [30543]: (social) grumble
+Mon Oct 26 01:40:51 2026 :: Log Trentlin [30543]: (social) grumble nose
+Mon Oct 26 01:40:53 2026 :: Log Trentlin [30543]: w
+Mon Oct 26 01:40:53 2026 :: Log Trentlin [30542]: arrived (Level 7: Island Chamber) from 30543
+Mon Oct 26 01:40:53 2026 :: Log Alaric [2497]: score
+Mon Oct 26 01:40:54 2026 :: Log Alaric [2497]: i
+Mon Oct 26 01:40:54 2026 :: Log Trentlin [30542]: s
+Mon Oct 26 01:40:54 2026 :: Log Trentlin [30540]: arrived (Level 7: Hall of Lingering Chill) from 30542
+Mon Oct 26 01:40:55 2026 :: Log Trentlin [30540]: w
+Mon Oct 26 01:40:56 2026 :: Sock.sinaddr:  46.151.178.15
+Mon Oct 26 01:40:57 2026 :: Sock.sinaddr:  46.151.178.15
+Mon Oct 26 01:40:57 2026 :: Sock.sinaddr:  46.151.178.15
+Mon Oct 26 01:40:57 2026 :: EOF encountered on read.
+Mon Oct 26 01:40:57 2026 :: Log Trentlin [30540]: s
+Mon Oct 26 01:40:57 2026 :: Log Trentlin [30536]: arrived (Level 7: Boomerang Hall) from 30540
+Mon Oct 26 01:40:57 2026 :: Sock.sinaddr:  46.151.178.15
+Mon Oct 26 01:40:57 2026 :: EOF encountered on read.
+Mon Oct 26 01:40:57 2026 :: Sock.sinaddr:  46.151.178.15
+Mon Oct 26 01:40:57 2026 :: EOF encountered on read.
+Mon Oct 26 01:40:58 2026 :: Sock.sinaddr:  46.151.178.15
+Mon Oct 26 01:40:58 2026 :: EOF encountered on read.
+Mon Oct 26 01:40:58 2026 :: Sock.sinaddr:  46.151.178.15
+Mon Oct 26 01:40:58 2026 :: EOF encountered on read.
+Mon Oct 26 01:40:58 2026 :: Log Trentlin [30536]: w
+Mon Oct 26 01:40:58 2026 :: Log Trentlin [30535]: arrived (Level 7: Dodongo Den) from 30536
+Mon Oct 26 01:40:58 2026 :: Sock.sinaddr:  46.151.178.15
+Mon Oct 26 01:40:58 2026 :: EOF encountered on read.
+Mon Oct 26 01:40:58 2026 :: Sock.sinaddr:  46.151.178.15
+Mon Oct 26 01:40:58 2026 :: EOF encountered on read.
+Mon Oct 26 01:40:59 2026 :: Sock.sinaddr:  46.151.178.15
+Mon Oct 26 01:40:59 2026 :: EOF encountered on read.
+Mon Oct 26 01:40:59 2026 :: Log Alaric [2497]: who
+Mon Oct 26 01:40:59 2026 :: EOF encountered on read.
+Mon Oct 26 01:40:59 2026 :: EOF encountered on read.
+Mon Oct 26 01:40:59 2026 :: Log Trentlin [30535]: n
+Mon Oct 26 01:40:59 2026 :: Log Trentlin [30539]: arrived (Level 7: Demon's Powder Store) from 30535
+Mon Oct 26 01:41:03 2026 :: Log Trentlin [30539]: list
+Mon Oct 26 01:41:06 2026 :: Log Trentlin [30539]: l
+Mon Oct 26 01:41:07 2026 :: Log Trentlin [30539]: s
+Mon Oct 26 01:41:07 2026 :: Log Trentlin [30535]: arrived (Level 7: Dodongo Den) from 30539
+Mon Oct 26 01:41:07 2026 :: Log Trentlin [30535]: s
+Mon Oct 26 01:41:07 2026 :: Log Trentlin [30529]: arrived (Level 7: Blade Trap Corridor) from 30535
+Mon Oct 26 01:41:08 2026 :: Log Trentlin [30529]: s
+Mon Oct 26 01:41:08 2026 :: Log Trentlin [30526]: arrived (Level 7: Hall of Shed Skins) from 30529
+Mon Oct 26 01:41:10 2026 :: Log Trentlin [30526]: get key
+Mon Oct 26 01:41:11 2026 :: Log Trentlin [30526]: n
+Mon Oct 26 01:41:11 2026 :: Log Trentlin [30529]: arrived (Level 7: Blade Trap Corridor) from 30526
+Mon Oct 26 01:41:11 2026 :: Log Trentlin [30529]: e
+Mon Oct 26 01:41:13 2026 :: Log Trentlin [30529]: n
+Mon Oct 26 01:41:13 2026 :: Log Trentlin [30535]: arrived (Level 7: Dodongo Den) from 30529
+Mon Oct 26 01:41:13 2026 :: Log Trentlin [30535]: e
+Mon Oct 26 01:41:13 2026 :: Log Trentlin [30536]: arrived (Level 7: Boomerang Hall) from 30535
+Mon Oct 26 01:41:14 2026 :: Log Trentlin [30536]: s
+Mon Oct 26 01:41:14 2026 :: Log Trentlin [30530]: arrived (Level 7: Moat Crossroads) from 30536
+Mon Oct 26 01:41:15 2026 :: Log Trentlin [30530]: s
+Mon Oct 26 01:41:15 2026 :: Log Trentlin [30527]: arrived (Level 7: Demon's Gate) from 30530
+Mon Oct 26 01:41:17 2026 :: Log Trentlin [30527]: u
+Mon Oct 26 01:41:17 2026 :: Log Trentlin [30250]: arrived (The Still Pond) from 30527
+Mon Oct 26 01:41:17 2026 :: Log Trentlin [30250]: recal
+Mon Oct 26 01:41:19 2026 :: Log Trentlin [30250]: recal
+Mon Oct 26 01:41:21 2026 :: Log Trentlin [30250]: recal
+Mon Oct 26 01:41:21 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 30250
+Mon Oct 26 01:41:22 2026 :: Log Trentlin [4207]: w
+Mon Oct 26 01:41:22 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Mon Oct 26 01:41:22 2026 :: Log Trentlin [4208]: w
+Mon Oct 26 01:41:23 2026 :: Log Trentlin [4208]: quit
+Mon Oct 26 01:41:23 2026 :: Trentlin has quit.
+Mon Oct 26 01:41:23 2026 :: [QUIT] Player rejoined the real world.
+Mon Oct 26 01:41:27 2026 :: Log Alaric [2497]: who
+Mon Oct 26 01:41:45 2026 :: Log Alaric [2497]: l
+Mon Oct 26 01:42:09 2026 :: Sock.sinaddr:  5.161.73.160
+Mon Oct 26 01:42:09 2026 :: EOF encountered on read.
