@@ -5,6 +5,21 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261026n 2026-10-26
+Balance: HEAL now grows with the caster's level -- still 100 at 25, then
+two more a level, 150 at 50 and 168 at 59 (HELP HEALSPELL). A smite no
+longer snaps your weapon outright: now and then it wears it down, and only
+a weapon worn to nothing breaks (HELP SMITE). And a necromancer's servant
+is built from the necromancer's own hit points, not from what a spell
+like TITANIC lends them for a while.
+
+@ 20261026m 2026-10-26
+GAINLIST PREVIEW <class> <guild> shows any class and guild before you
+choose: everything it is given and can GAIN, at the level each opens,
+the trains it costs, its blows a round, and what a guild outside your
+class's own adds and gives up. GAINLIST also stopped listing cause
+serious and cause critical for builds that can never learn them.
+
 @ 20261026k 2026-10-26
 Combat fixes: backstab and smite now hit more surely the better you know
 them (a mastered backstab used to miss more than a half-learned one);

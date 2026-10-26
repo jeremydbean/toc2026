@@ -8,6 +8,29 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The class and guild review** (2026-10-26). An independent review's
+  findings were checked against the source, and each confirmed bug was
+  fixed with a test that fails on the old code. Backstab and smite aimed
+  worse the better they were known (`thac0 -= 10 * (100 - skill)`): now
+  0 to 10, never decreasing. Psionic armor and psychic shield never turned
+  mental hit-point damage, because `damage()` looked them up as
+  "psionic_armor". A passing destruction check could lose the third
+  attack with nothing done. Crane dance's damage fell off cliffs at 1,000
+  and 4,000 hit points. Undead servant limits depended on the order they
+  were raised in; the owner chose a shared budget of 10 (skeleton 2,
+  wraith 5, vampire 10). GAINLIST listed cause serious and cause critical
+  for builds that cannot hold them, because a group member "harm"
+  matched the "harmful" group by prefix. Three balance changes are
+  committed separately: HEAL scales from 100 at level 25 to 168 at 59;
+  smite wears its weapon (15-35 condition) instead of breaking it
+  outright; a servant takes the caster's lasting maximum hit points, not
+  TITANIC's loan. Added: GAINLIST PREVIEW, `tools/class_balance.py` (the
+  tables, all 18 builds), `tools/class_bench.py` (live training-yard
+  benchmarks with synthetic Z fixtures), and the fight ledger on
+  `log/progress.tsv` kill lines. Nerve damage's free failed strike stays
+  free (owner). Mana growth and buffed stats at level gain are explained
+  in AGENTS.md and left as they are, pending a policy decision.
+
 - **A connection that stops reading cannot freeze the game at close**
   (2026-10-26). The listening socket sets `SO_LINGER` for 30 seconds and
   every accepted connection inherited it, so `close()` on a client the
