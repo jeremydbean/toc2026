@@ -3516,6 +3516,13 @@ int staff_notice_level( const CHAR_DATA *ch, int level )
         return UMAX( level, ch->invis_level );
     return level;
 }
+
+/* A notice naming two people goes out at the higher of their levels, so
+   neither is named to staff who could not see them (either may be NULL). */
+int staff_notice_level_pair( const CHAR_DATA *a, const CHAR_DATA *b, int level )
+{
+    return UMAX( staff_notice_level( a, level ), staff_notice_level( b, level ) );
+}
 bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
 {
 /* RT changed so that WIZ_INVIS has levels */

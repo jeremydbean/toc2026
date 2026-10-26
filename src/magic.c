@@ -189,9 +189,14 @@ void say_spell( CHAR_DATA *ch, int sn )
         }
     }
 
+    /* TO_VICT, one listener at a time -- so act() delivers it even from a
+       caster hidden from that listener, as "an immortal". It is the room
+       hearing the caster, not a message aimed at them: anybody wizinvis
+       hides the caster from hears nothing, as TO_ROOM would give them
+       (found with test_notice_visibility, 2026-10-26). */
     for ( rch = ch->in_room->people; rch; rch = rch->next_in_room )
     {
-	     if ( rch != ch )
+	     if ( rch != ch && !wizinvis_hides( ch, rch ) )
 	      act( ch->class==rch->class ? buf : buf2, ch, NULL, rch, TO_VICT );
     }
 

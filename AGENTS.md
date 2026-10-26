@@ -3585,7 +3585,13 @@ wizinvis speaker when nobody below the level heard, and its chat-pane
 loop skips them too; a new per-listener loop that bypasses `act()` --
 as `do_goto`'s bamf loop and the GMCP feeds do -- has to ask the helper
 itself. `tests/test_wizinvis.py` walks, speaks and recalls past a
-mortal both ways.
+mortal both ways. **A staff notice naming somebody goes out at their
+`staff_notice_level`, and one naming two at the higher of the pair's**
+(`staff_notice_level_pair`): resurrection, EMPOWER, TITANIC (staff and
+crafted) and GRANTPSI named a wizinvis participant to every builder until
+2026-10-26. A spell's spoken words reach each listener by `TO_VICT`, so
+`say_spell` skips anyone `wizinvis_hides` the caster from
+(`tests/test_notice_visibility.py`).
 
 ## Staff Invulnerability
 

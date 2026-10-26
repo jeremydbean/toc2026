@@ -292,7 +292,9 @@ void do_accept( CHAR_DATA *ch, char *argument )
     watch_log( ch, "resurrected by %s", caster_name );
     snprintf( note, sizeof(note), "%s raised %s at their corpse (room %d).",
         caster_name, ch->name, to->vnum );
-    wizinfo( note, LEVEL_IMMORTAL );
+    /* Names both: never to staff who could see neither (a caster no
+       longer in the game is no presence to give away). */
+    wizinfo( note, staff_notice_level_pair( ch, caster, LEVEL_IMMORTAL ) );
     do_look( ch, "auto" );
     save_char_obj( ch );
 }

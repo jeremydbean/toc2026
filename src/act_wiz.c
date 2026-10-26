@@ -8728,7 +8728,7 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
         snprintf( note, sizeof(note),
                   "%s granted %s psionics immediately at level %d (%s).",
                   ch->name, victim->name, victim->level, list_buf );
-        wizinfo( note, LEVEL_IMMORTAL );
+        wizinfo( note, staff_notice_level_pair( ch, victim, LEVEL_IMMORTAL ) );
 
         /* An offline victim is a loaded copy. Without both of these
            the grant is thrown away and the copy leaks into the
@@ -8766,7 +8766,7 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
         snprintf( note, sizeof(note), "%s flagged %s for psionics (%s)%s.",
                   ch->name, victim->name, list_buf,
                   offline ? " while offline" : "" );
-        wizinfo( note, LEVEL_IMMORTAL );
+        wizinfo( note, staff_notice_level_pair( ch, victim, LEVEL_IMMORTAL ) );
     }
 
     if ( offline )
@@ -12271,7 +12271,7 @@ void do_empower( CHAR_DATA *ch, char *argument )
             snprintf( note, sizeof(note), "%s empowered %s (%s).",
                 ch->name, victim->name,
                 duration == -1 ? "permanent" : "temporary" );
-        wizinfo( note, LEVEL_IMMORTAL );
+        wizinfo( note, staff_notice_level_pair( ch, victim, LEVEL_IMMORTAL ) );
     }
     if ( duration == -1 )
         snprintf( buf, sizeof(buf), "%s has been permanently empowered.\n\r", victim->name );
@@ -12345,7 +12345,7 @@ void do_titanic( CHAR_DATA *ch, char *argument )
             snprintf( note, sizeof(note), "%s made %s titanic (%s).",
                 ch->name, victim->name,
                 duration == -1 ? "permanent" : "temporary" );
-        wizinfo( note, LEVEL_IMMORTAL );
+        wizinfo( note, staff_notice_level_pair( ch, victim, LEVEL_IMMORTAL ) );
     }
     act( "$n grows to titanic proportions!", victim, NULL, NULL, TO_ROOM );
     send_to_char( "Your body surges with titanic power -- HP, mana, and move multiplied, and you gain 50% bonus experience!\n\r", victim );
@@ -12401,7 +12401,7 @@ void spell_empower( int sn, int level, CHAR_DATA *ch, void *vo )
     send_to_char( "You are filled with divine power -- every ward and blessing at once!\n\r", victim );
     snprintf( note, sizeof(note), "%s empowered %s with a crafted bundle (level %d).",
         ch->name, victim->name, level );
-    wizinfo( note, LEVEL_IMMORTAL );
+    wizinfo( note, staff_notice_level_pair( ch, victim, LEVEL_IMMORTAL ) );
 }
 
 void spell_titanic( int sn, int level, CHAR_DATA *ch, void *vo )
@@ -12434,7 +12434,7 @@ void spell_titanic( int sn, int level, CHAR_DATA *ch, void *vo )
     send_to_char( "Your body surges with titanic power -- hit points, mana and movement multiplied, and 50% more experience!\n\r", victim );
     snprintf( note, sizeof(note), "%s made %s titanic with a crafted bundle (level %d).",
         ch->name, victim->name, level );
-    wizinfo( note, LEVEL_IMMORTAL );
+    wizinfo( note, staff_notice_level_pair( ch, victim, LEVEL_IMMORTAL ) );
 }
 
 

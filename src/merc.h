@@ -3663,6 +3663,8 @@ bool    is_creator      ( CHAR_DATA *ch );
 bool    is_creator_founder ( CHAR_DATA *ch );
 bool    is_creator_in_person ( CHAR_DATA *ch );
 int     staff_notice_level ( const CHAR_DATA *ch, int level );
+int     staff_notice_level_pair ( const CHAR_DATA *a, const CHAR_DATA *b,
+                                  int level );
 bool    online_can_list ( CHAR_DATA *ch, const CHAR_DATA *wch );
 bool    can_see_obj     ( CHAR_DATA *ch, const OBJ_DATA *obj );
 bool    can_see_room    ( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex);
