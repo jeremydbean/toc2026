@@ -3772,7 +3772,9 @@
           "entities": {
             "stalfos": 2
           },
-          "items": [],
+          "items": [
+            30227
+          ],
           "role": "room"
         },
         {
@@ -4017,7 +4019,9 @@
           "entities": {
             "stalfos": 2
           },
-          "items": [],
+          "items": [
+            30227
+          ],
           "role": "room"
         },
         {
@@ -4089,7 +4093,9 @@
           "entities": {
             "red_goriya": 2
           },
-          "items": [],
+          "items": [
+            30227
+          ],
           "role": "room"
         }
       ],
@@ -4396,7 +4402,9 @@
             }
           },
           "entities": {},
-          "items": [],
+          "items": [
+            30227
+          ],
           "role": "room"
         },
         {
@@ -5621,7 +5629,9 @@
           "entities": {
             "gibdo": 2
           },
-          "items": [],
+          "items": [
+            30227
+          ],
           "role": "room"
         },
         {
@@ -5878,7 +5888,9 @@
           "entities": {
             "gibdo": 2
           },
-          "items": [],
+          "items": [
+            30227
+          ],
           "role": "room"
         },
         {
@@ -6850,7 +6862,9 @@
           "entities": {
             "stalfos": 2
           },
-          "items": [],
+          "items": [
+            30227
+          ],
           "role": "room"
         },
         {

@@ -681,6 +681,89 @@ void hyrule_enter_room( CHAR_DATA *ch )
 }
 
 /* --------------------------------------------------------------------
+ * What a cleared room gives. The NES hides some keys, maps, compasses and
+ * the boomerangs until the room's last enemy dies -- trigger 7 in its room
+ * data, or a Stalfos or Gibdo carrying the item -- and these rows are
+ * those rooms (CLEAR_REWARDS in scripts/build_hyrule_area.py, which lays
+ * none of them out; tests/test_hyrule_nes.py holds the two together).
+ * Enemies only come back at a reset, so each clearing after one gives the
+ * item again, unless it is still lying there.
+ * ------------------------------------------------------------------ */
+static const struct
+{
+    int room;
+    int obj;
+} hyrule_clear_rewards[] =
+{
+    { 30416, 30227 },   /* L1 C6 */
+    { 30405, 30227 },   /* L1 C3 */
+    { 30400, 30227 },   /* L1 B1 */
+    { 30412, 30227 },   /* L1 C5 */
+    { 30402, 30227 },   /* L1 D1 */
+    { 30410, 30232 },   /* L1 D4 */
+    { 30426, 30227 },   /* L2 C4 */
+    { 30419, 30227 },   /* L2 C1 */
+    { 30427, 30410 },   /* L2 D4 */
+    { 30447, 30227 },   /* L3 C4 */
+    { 30439, 30227 },   /* L3 C2 */
+    { 30455, 30227 },   /* L4 A1 */
+    { 30491, 30227 },   /* L5 C6 */
+    { 30486, 30227 },   /* L5 D4 */
+    { 30482, 30227 },   /* L5 B3 */
+    { 30477, 30227 },   /* L5 D1 */
+    { 30480, 30227 },   /* L5 C2 */
+    { 30488, 30493 },   /* L5 D5 */
+    { 30514, 30227 },   /* L6 F6 */
+    { 30505, 30227 },   /* L6 A3 */
+    { 30502, 30227 },   /* L6 C1 */
+    { 30516, 30485 },   /* L6 B7 */
+    { 30503, 30494 },   /* L6 A2 */
+    { 30534, 30227 },   /* L7 F2 */
+    { 30537, 30495 },   /* L7 C3 */
+    { 30567, 30227 },   /* L8 D3 */
+    { 30603, 30227 },   /* L9 G3 */
+    { 30604, 30227 },   /* L9 H3 */
+    { 30628, 30488 },   /* L9 H6 */
+    { 30618, 30497 },   /* L9 F5 */
+};
+
+/* Called from raw_kill once a mobile is gone: if it was the last foe in a
+   Hyrule room (bubbles, blade traps and people never count), the room's
+   hidden items appear. */
+void hyrule_room_cleared( ROOM_INDEX_DATA *room )
+{
+    OBJ_INDEX_DATA *index;
+    OBJ_DATA *obj;
+    CHAR_DATA *rch;
+    size_t i;
+    bool here;
+
+    if ( room == NULL || !IS_HYRULE_ROOM_VNUM( room->vnum ) )
+        return;
+    for ( rch = room->people; rch != NULL; rch = rch->next_in_room )
+        if ( hyrule_foe( rch ) )
+            return;
+
+    for ( i = 0; i < sizeof(hyrule_clear_rewards) / sizeof(hyrule_clear_rewards[0]); i++ )
+    {
+        if ( hyrule_clear_rewards[i].room != room->vnum )
+            continue;
+        here = false;
+        for ( obj = room->contents; obj != NULL; obj = obj->next_content )
+            if ( obj->pIndexData != NULL
+            &&   obj->pIndexData->vnum == hyrule_clear_rewards[i].obj )
+                here = true;
+        if ( here || ( index = get_obj_index( hyrule_clear_rewards[i].obj ) ) == NULL )
+            continue;
+        obj = create_object( index, index->level );
+        obj_to_room( obj, room );
+        for ( rch = room->people; rch != NULL; rch = rch->next_in_room )
+            act( "As the last enemy falls, $p appears with a bright chime.",
+                 rch, obj, NULL, TO_CHAR );
+    }
+}
+
+/* --------------------------------------------------------------------
  * Hearts. The NES counts hearts and the MUD has hit points, so a heart is
  * counted the NES way: three to start, one for each guardian of Levels
  * 1-8 you have defeated (their achievements), and one for each Heart

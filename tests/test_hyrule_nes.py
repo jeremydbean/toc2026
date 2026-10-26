@@ -345,7 +345,58 @@ class HyruleMechanicsSourceTests(unittest.TestCase):
         them, so a shutter they held would never open."""
         act_move = (ROOT / "src" / "act_move.c").read_text(encoding="latin-1")
         self.assertIn("hyrule_enemy_is_invincible( victim )",
-                      c_function(act_move, "static bool hyrule_foe("))
+                      c_function(act_move, "bool hyrule_foe("))
+
+
+class HyruleClearRewardTests(unittest.TestCase):
+    """Items the NES hides until a room's enemies die (trigger 7, or a
+    Stalfos or Gibdo carrying it): CLEAR_REWARDS in the generator, and
+    hyrule_clear_rewards in src/hyrule.c, which makes them appear."""
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.parser = AreaParser(ROOT / "area")
+        cls.parser.parse_all()
+        cls.resets = cls.parser.resets["hyrule.are"]
+
+    def test_the_c_table_is_the_generators(self) -> None:
+        from scripts.build_hyrule_area import CLEAR_REWARDS
+        rooms = {(d["level"], r["coordinate"]): r for d in MANIFEST["dungeons"] for r in d["rooms"]}
+        expected = sorted((rooms[key]["vnum"], vnum)
+                          for key, vnums in CLEAR_REWARDS.items() for vnum in vnums)
+        table = c_table("hyrule_clear_rewards")
+        actual = sorted((int(a), int(b)) for a, b in re.findall(r"\{\s*(\d+),\s*(\d+)\s*\}", table))
+        self.assertEqual(expected, actual)
+
+    def test_a_hidden_item_waits_for_the_rooms_enemies(self) -> None:
+        """Each is in the manifest's room, the room has an enemy that
+        counts in ours, and no reset lays it out there."""
+        from scripts.build_hyrule_area import CLEAR_REWARDS
+        uncounted = {"old_man", "bubble", "blade_trap"}
+        rooms = {(d["level"], r["coordinate"]): r for d in MANIFEST["dungeons"] for r in d["rooms"]}
+        for key, vnums in CLEAR_REWARDS.items():
+            room = rooms[key]
+            with self.subTest(room=key):
+                for vnum in vnums:
+                    self.assertIn(vnum, room["items"])
+                    laid = [r for r in self.resets if r.command == "O"
+                            and r.arg1 == vnum and r.arg3 == room["vnum"]]
+                    self.assertEqual([], laid)
+                self.assertTrue(set(room["entities"]) - uncounted, room["entities"])
+
+    def test_patra_has_the_map(self) -> None:
+        """The Level 9 old man's text decodes to "PATRA HAS THE MAP." The
+        map's room holds a patra, and the map appears when it dies."""
+        from scripts.build_hyrule_area import CLEAR_REWARDS
+        level_nine = next(d for d in MANIFEST["dungeons"] if d["level"] == 9)
+        room = next(r for r in level_nine["rooms"] if r["coordinate"] == "H6")
+        self.assertIn("patra", room["entities"])
+        self.assertEqual([30479 + 9], CLEAR_REWARDS[(9, "H6")])
+
+    def test_raw_kill_tells_hyrule_a_room_may_be_clear(self) -> None:
+        raw = c_function(FIGHT_C, "static void raw_kill_internal(")
+        self.assertLess(raw.index("extract_char( victim, true );\n\t  hyrule_room_cleared"),
+                        len(raw))
 
 
 if __name__ == "__main__":

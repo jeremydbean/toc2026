@@ -17,6 +17,7 @@ from scripts.build_hyrule_area import (
     BOSS_VOLLEYS,
     CHESTS,
     CHEST_PRIZES,
+    CLEAR_REWARDS,
     ENTRY_NEEDS,
     GUARDIAN_ALSO,
     GUARDIAN_NEEDS,
@@ -741,7 +742,13 @@ class HyruleProgressionTests(unittest.TestCase):
             else:
                 room = next(r["vnum"] for r in dungeon["rooms"] if r["coordinate"] == where)
             with self.subTest(tool=tool):
-                self.assertEqual(sources[tool], [("O", room)])
+                if where.startswith("cellar:"):
+                    self.assertEqual(sources[tool], [("O", room)])
+                else:
+                    # The goriyas' boomerang appears when they die
+                    # (CLEAR_REWARDS, hyrule_room_cleared): no reset lays it.
+                    self.assertNotIn(tool, sources)
+                    self.assertIn(tool, CLEAR_REWARDS[(level, where)])
                 self.assertNotEqual(self.parser.objects[tool].item_type, "18",
                                     "a tool is saved when you quit")
                 for flag in "NPR":
@@ -1110,13 +1117,18 @@ class HyruleProgressionTests(unittest.TestCase):
             compass_room = next(
                 room for room in dungeon["rooms"] if room["coordinate"] == dungeon["compass_coordinate"]
             )
+            # Lying out, or hidden until the room's enemies die
+            # (CLEAR_REWARDS) -- either way, in its own room.
+            def placed(vnum: int, room: dict) -> bool:
+                return (vnum in self.parser.rooms[room["vnum"]].objects
+                        or vnum in CLEAR_REWARDS.get((level, room["coordinate"]), []))
             with self.subTest(level=level, item="map"):
                 self.assertEqual(map_object.values, ["90", *expected_values])
-                self.assertIn(dungeon["map_vnum"], self.parser.rooms[map_room["vnum"]].objects)
+                self.assertTrue(placed(dungeon["map_vnum"], map_room))
                 self.assertTrue(map_object.extra_descr)
             with self.subTest(level=level, item="compass"):
                 self.assertEqual(compass_object.values, ["91", *expected_values])
-                self.assertIn(dungeon["compass_vnum"], self.parser.rooms[compass_room["vnum"]].objects)
+                self.assertTrue(placed(dungeon["compass_vnum"], compass_room))
 
     def test_major_items_are_in_their_canonical_rooms(self) -> None:
         # Every cellar holds the tool the NES keeps there (the dungeon

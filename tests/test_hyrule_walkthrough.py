@@ -129,6 +129,10 @@ class HyruleWalkthroughTests(unittest.TestCase):
                         if c["source_coordinate"] == where.split(":")[1])
         return next(r["vnum"] for r in dungeon["rooms"] if r["coordinate"] == where)
 
+    def room_foes(self, level: int, where: str) -> dict:
+        room = next(r for r in DUNGEONS[level]["rooms"] if r["coordinate"] == where)
+        return {kind: count for kind, count in room["entities"].items() if kind != "old_man"}
+
     def test_the_whole_chain_in_order(self) -> None:
         gen = self.gen
         items: list = []
@@ -206,6 +210,14 @@ class HyruleWalkthroughTests(unittest.TestCase):
                         if tool_level != level:
                             continue
                         room = self.tool_room(level, where)
+                        if not where.startswith("cellar:"):
+                            # A boomerang appears when the room's goriyas
+                            # die (CLEAR_REWARDS): staff clear the room.
+                            run(god, f"goto {room}", 1.5)
+                            for kind, count in self.room_foes(level, where).items():
+                                for _ in range(count):
+                                    run(god, f"slay {kind.split('_')[-1]}", 1.5)
+                            run(god, "goto 4207", 1.0)
                         run(god, f"transfer {HERO.lower()} {room}", 2.0)
                         obj = self.parser.objects[tool]
                         got = run(hero, f"get {obj.keywords.split()[0]}", 1.5)

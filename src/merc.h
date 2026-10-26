@@ -3596,6 +3596,8 @@ void    hyrule_burn_creature   ( CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *can
 bool    hyrule_blow_turned_aside ( CHAR_DATA *ch, CHAR_DATA *victim );
 int     hyrule_patra_eyes_left ( CHAR_DATA *mob );
 bool    hyrule_enemy_is_invincible ( CHAR_DATA *victim );
+bool    hyrule_foe             ( CHAR_DATA *victim );
+void    hyrule_room_cleared    ( ROOM_INDEX_DATA *room );
 bool    hyrule_set_bait        ( CHAR_DATA *ch, OBJ_DATA *bait );
 bool    hyrule_play_recorder   ( CHAR_DATA *ch, const char *argument );
 int     hyrule_next_level      ( CHAR_DATA *ch );

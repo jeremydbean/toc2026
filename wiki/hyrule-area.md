@@ -1080,6 +1080,22 @@ Runtime rules add the behaviors the area format cannot express alone:
   `EDGE_OVERRIDES` in `scripts/build_hyrule_manifest.py` carries the
   corrections, and also removes `L6`/`L7`, which the NES does not join.
 
+### What A Cleared Room Gives
+
+The NES hides some items until a room's last enemy dies -- trigger 7 in its
+room data, or a Stalfos or Gibdo carrying it (Z_05.asm:8226, Z_07.asm:832).
+`CLEAR_REWARDS` in the generator lists them (30 items in 30 rooms: keys, the
+Level 5-7 and 9 compasses, the Level 6 and 9 maps, both boomerangs); no
+reset lays them out, and `hyrule_room_cleared` in `src/hyrule.c`, called by
+`raw_kill` once a mobile is gone, makes each appear with a chime. Bubbles,
+blade traps and people never count, as on the NES. Enemies come back only
+at a reset, so each clearing after one gives the item again unless it is
+still there. Rooms whose NES enemy is not ours yet (Level 2 `C5`, Level 7
+`C5`, Level 8 `B3` and `D6`) keep their item lying out. The old man's
+"PATRA HAS THE MAP" is true: the Level 9 map appears when Patra dies.
+`EXTRA_KEYS` in the manifest builder restores seven small keys the map
+extraction missed.
+
 ### The Mazes
 
 Both stand where the NES keeps them (`CheckMazes`, Z_01.asm:4828-4890) since

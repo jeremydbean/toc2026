@@ -430,7 +430,7 @@ static void charge_hyrule_door_repair( CHAR_DATA *ch )
 /* One of Hyrule's enemies or guardians: not its people and not anybody's
    pet. Nothing in Hyrule is aggressive (owner, 2026-10-04), so the
    aggressive bit this used to read no longer tells an enemy apart. */
-static bool hyrule_foe( CHAR_DATA *victim )
+bool hyrule_foe( CHAR_DATA *victim )
 {
     int vnum;
 

@@ -2109,6 +2109,35 @@ TOOL_SOURCES = {
     HYRULE_RED_CANDLE: (7, "cellar:C7"),
     HYRULE_MAGICAL_KEY: (8, "cellar:E7"),
 }
+# Items the NES hides until a room's last enemy dies -- trigger 7 in the
+# room data, or a Stalfos or Gibdo carrying it (Z_05.asm:8226, Z_07.asm:832)
+# -- by (level, room): no reset lays them out, and hyrule_clear_rewards in
+# src/hyrule.c makes each appear when the room is cleared. Rooms where the
+# NES's enemy is not ours yet (Level 2's C5, Level 7's C5, Level 8's B3 and
+# D6) keep their item lying out. Bubbles, blade traps and old men never
+# count, as on the NES. tests/test_hyrule_nes.py holds the C table to this.
+HYRULE_SMALL_KEY = 30227
+CLEAR_REWARDS = {
+    (1, "C6"): [HYRULE_SMALL_KEY], (1, "C3"): [HYRULE_SMALL_KEY],
+    (1, "B1"): [HYRULE_SMALL_KEY], (1, "C5"): [HYRULE_SMALL_KEY],
+    (1, "D1"): [HYRULE_SMALL_KEY], (1, "D4"): [HYRULE_BOOMERANG],
+    (2, "C4"): [HYRULE_SMALL_KEY], (2, "C1"): [HYRULE_SMALL_KEY],
+    (2, "D4"): [HYRULE_MAGICAL_BOOMERANG],
+    (3, "C4"): [HYRULE_SMALL_KEY], (3, "C2"): [HYRULE_SMALL_KEY],
+    (4, "A1"): [HYRULE_SMALL_KEY],
+    (5, "C6"): [HYRULE_SMALL_KEY], (5, "D4"): [HYRULE_SMALL_KEY],
+    (5, "B3"): [HYRULE_SMALL_KEY], (5, "D1"): [HYRULE_SMALL_KEY],
+    (5, "C2"): [HYRULE_SMALL_KEY], (5, "D5"): [30488 + 5],      # compass
+    (6, "F6"): [HYRULE_SMALL_KEY], (6, "A3"): [HYRULE_SMALL_KEY],
+    (6, "C1"): [HYRULE_SMALL_KEY], (6, "B7"): [30479 + 6],      # map
+    (6, "A2"): [30488 + 6],                                      # compass
+    (7, "F2"): [HYRULE_SMALL_KEY], (7, "C3"): [30488 + 7],      # compass
+    (8, "D3"): [HYRULE_SMALL_KEY],
+    (9, "G3"): [HYRULE_SMALL_KEY], (9, "H3"): [HYRULE_SMALL_KEY],
+    (9, "H6"): [30479 + 9],                                      # Patra has the map
+    (9, "F5"): [30488 + 9],                                      # compass
+}
+
 # What each chest holds: the dungeon's piece, and in Ganon's the Master
 # Sword (MASTER_SWORD_VNUM) as well.
 CHEST_PRIZES = {level: [PIECE_VNUMS[level]] for level in range(1, 10)}
@@ -2594,11 +2623,14 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
         level = dungeon["level"]
         for room in dungeon["rooms"]:
             key = f"L{level}:{room['coordinate']}"
+            objects = list(room["items"])
+            for vnum in CLEAR_REWARDS.get((level, room["coordinate"]), []):
+                objects.remove(vnum)
             spec = RoomSpec(
                 room["vnum"], f"Level {level}: {prose.name('dungeons', key)}",
                 prose.description("dungeons", key),
                 "ADN", 11, dungeon=True,
-                objects=list(room["items"]),
+                objects=objects,
                 entities={str(vnum): count for vnum, count in dungeon_spawns(level, room).items()},
                 boss_level=level if room["role"] == "boss" else None,
                 extras=prose.extras("dungeons", key),

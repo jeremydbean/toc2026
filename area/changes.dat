@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261026a 2026-10-26
+Some of Hyrule's keys, maps and compasses, and both boomerangs, now appear
+only when the last enemy in their room falls, as in the old game -- you
+will hear a chime. Patra has the map. Bubbles and blade traps never need
+to die for it. Seven keys the old game had and ours did not are back.
+
 @ 20261025o 2026-10-25
 Hyrule's tools lie where the old game kept them. The bow is in Level 1's
 cellar, the raft in Level 3's, the stepladder in Level 4's, the Recorder

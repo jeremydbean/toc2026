@@ -138,6 +138,12 @@ DIRECT_DUNGEON_ITEMS: dict[tuple[int, str], int] = {
     (1, "D4"): 30232,
     (2, "D4"): 30410,
 }
+# Small keys the NES has that the map extraction missed: dropped by the
+# room's Stalfos or Gibdo, or appearing when its enemies die (the dungeon
+# inventory, decoded from the cartridge's room data, 2026-10-25).
+EXTRA_KEYS = {
+    (1, "C6"), (1, "C5"), (1, "D1"), (2, "C5"), (5, "C6"), (5, "C2"), (7, "F2"),
+}
 EXTRA_MAJOR_ITEMS = {
     8: [("E7", "Magical Key Cellar", 30416)],
     9: [("A7", "Silver Arrow Cellar", 30218), ("H8", "Red Ring Cellar", 30579)],
@@ -784,6 +790,8 @@ def build_dungeons(reference: Path, entity_data: dict[str, Any], unmatched: list
             detected = map_entities.get(coordinate, {}).get("entities", {})
             if detected.get("key"):
                 items.extend([30227] * detected["key"])
+            if (level, coordinate) in EXTRA_KEYS:
+                items.append(30227)
             if coordinate == MAP_ROOMS[level]:
                 items.append(30479 + level)
             if coordinate == COMPASS_ROOMS[level]:

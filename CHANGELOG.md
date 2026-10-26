@@ -8,6 +8,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Hyrule's room rewards wait for the room to be cleared** (2026-10-26).
+  The NES hides 30 items until a room's last enemy dies (trigger 7, or a
+  Stalfos or Gibdo carrying it); ours laid all of them out, and seven keys
+  were missing. `CLEAR_REWARDS` in the generator and `hyrule_clear_rewards`
+  in `src/hyrule.c` hold them, `raw_kill` calls `hyrule_room_cleared` once
+  a mobile is gone, and bubbles, blade traps and people never count. The
+  Level 9 map appears when Patra dies. `EXTRA_KEYS` in the manifest builder
+  adds the missing keys. `tests/test_hyrule_nes.py` holds the C table to
+  the generator; the mechanics live module kills Level 1's goriyas for the
+  boomerang.
+
 - **Hyrule's tools are where the NES keeps them** (2026-10-25, from the
   cartridge's decoded room data). The bow, raft, stepladder, Recorder, Red
   Candle and Magical Key moved into the cellars under their block stairs,

@@ -49,6 +49,7 @@ BOW, QUIVER, BOOMERANG = 30222, 30543, 30232
 BLUE_CANDLE, RED_CANDLE = 30546, 30414
 BOMBS = 30695
 GAMBLE_ROOM = 30710
+EAGLE_D4 = 30410        # Level 1's goriyas and their boomerang
 
 
 def make(mud: LiveMud, name: str, **fields: object) -> None:
@@ -146,8 +147,13 @@ class HyruleMechanicsLiveTests(unittest.TestCase):
                     god.must("set char zmechhero hitroll 300", "")
                     god.must("set char zmechhero damroll 100", "")
                     load(god, PATRA, "patra", 40)
-                    hero.sync("kill patra", 30)
-                    self.assertIn("eyes orbiting", hero.transcript)
+                    mark = len(hero.transcript)
+                    started = hero.sync("kill patra", 30)
+                    for _ in range(20):
+                        if "eyes orbiting" in hero.transcript[mark:]:
+                            break
+                        hero.drain(1)
+                    self.assertIn("eyes orbiting", hero.transcript[mark:], started)
                     self.assertEqual(40, hit_points(god, "patra")[0])
                     mark = len(hero.transcript)
                     for _ in range(120):
@@ -218,6 +224,35 @@ class HyruleMechanicsLiveTests(unittest.TestCase):
                     for _ in range(3):
                         self.assertIn("tongue of flame", hero.sync("burn keese", 30))
                     god.must("purge keese", "")
+
+    def test_the_boomerang_appears_when_the_goriyas_fall(self) -> None:
+        """Level 1's D4: the NES hides the boomerang until the room's
+        goriyas are dead (trigger 7), and so does ours now
+        (CLEAR_REWARDS, hyrule_room_cleared)."""
+        with LiveMud() as mud:
+            make(mud, "Zgoriyahero", Levl=58, Room=TEMPLE,
+                 HMV="20000 20000 1000 1000 1000 1000", HMVP="20000 1000 1000")
+            make(mud, "Zgoriyagod", Levl=70, Room=TEMPLE)
+            with mud.connect(timeout=120) as hero, mud.connect(timeout=120) as god:
+                login(hero, "Zgoriyahero", PW)
+                login(god, "Zgoriyagod", PW)
+                god.must(f"transfer zgoriyahero {EAGLE_D4}", "")
+                self.assertEqual(EAGLE_D4, room_of(god, "zgoriyahero"))
+                god.must("set char zgoriyahero hitroll 300", "")
+                god.must("set char zgoriyahero damroll 300", "")
+                before = hero.sync("look")
+                self.assertIn("goriya", before.lower(), before)
+                self.assertNotIn("boomerang lies", before.lower(), before)
+                mark = len(hero.transcript)
+                for _ in range(6):
+                    if "a bright chime" in hero.transcript[mark:]:
+                        break
+                    hero.sync("kill goriya", 30)
+                    hero.drain(3)
+                self.assertIn("a bright chime", hero.transcript[mark:])
+                got = hero.sync("get boomerang")
+                self.assertIn("boomerang", got.lower(), got)
+                self.assertNotIn("see no", got.lower(), got)
 
     def test_the_money_game_wants_the_worst_signs_stake(self) -> None:
         with LiveMud() as mud:

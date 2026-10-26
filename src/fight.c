@@ -3489,7 +3489,13 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
 	if (!IS_NPC(ch))
 	    ch->pcdata->session_kills++;
 	achievement_record_kill(ch, victim);
-	extract_char( victim, true );
+	{
+	  /* The last foe of a Hyrule room: its hidden items appear. */
+	  ROOM_INDEX_DATA *death_room = victim->in_room;
+
+	  extract_char( victim, true );
+	  hyrule_room_cleared( death_room );
+	}
 	return;
     }
 

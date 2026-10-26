@@ -191,8 +191,14 @@ Current October 2026 Python baseline:
 2,496 mobiles
 3,722 objects
 7,786 rooms
-0 critical, 12 warning, 1,638 information findings
+0 critical, 12 warning, 1,648 information findings
 ```
+
+Hyrule's cleared-room rewards (2026-10-26) added eight
+`object-has-no-source` findings: both boomerangs, two maps and four
+compasses are made by `hyrule_room_cleared` when a room's enemies die, not
+by a reset (`CLEAR_REWARDS`). Small keys are laid out in other rooms too,
+so they stay sourced. The count read 1,640 before them.
 
 The achievement trophy REDEEM hands out (object 95 in `limbo.are`,
 2026-10-25) added one object and one `object-has-no-source` finding: only
