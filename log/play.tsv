@@ -27258,3 +27258,34 @@
 1793056728	cmd	Alaric	52	29207	korzath2.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a killer clown! [-49] // Your fists of fury ^^^ DESTROYS ^^^ a killer clown! [-93]
 1793056734	cmd	Alaric	52	29207	korzath2.are	fighting	98	1	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a killer clown. [-21] // Your fists of fury decimates a killer clown! [-25]
 1793056740	cmd	Alaric	52	29207	korzath2.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a killer clown! [-105] // Your fists of fury DISEMBOWELS a killer clown! [-43]
+1793056745	cmd	Alaric	52	29207	korzath2.are	fighting	97	0	fight	who		[52 Dwarf   Hero  ] Alaric. // Players found: 1
+1793056746	cmd	Alaric	52	29207	korzath2.are	fighting	97	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a killer clown! [-35] // Your fists of fury DISMEMBERS a killer clown! [-47]
+1793056751	cmd	Alaric	52	29207	korzath2.are	fighting	97	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a killer clown. [-12] // Your fists of fury wounds a killer clown. [-19]
+1793056757	cmd	Alaric	52	29207	korzath2.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a killer clown! [-34] // Your fists of fury MUTILATES a killer clown! [-38]
+1793056763	cmd	Alaric	52	29207	korzath2.are	standing	96	0	-	who		[52 Dwarf   Hero  ] Alaric. // Players found: 1
+1793056763	cmd	Alaric	52	29207	korzath2.are	standing	96	0	-	fists		Who do you want to attack?
+1793056765	cmd	Alaric	52	29207	korzath2.are	standing	96	0	-	look		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793056766	cmd	Alaric	52	29208	korzath2.are	standing	96	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793056769	cmd	Alaric	52	29208	korzath2.are	standing	96	0	-	kill	cl	A killer clown dodges your attack. // A killer clown parries your attack. // A killer clown dodges your attack.
+1793056773	cmd	Alaric	52	29208	korzath2.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a killer clown! [-75] // Your fists of fury scratches a killer clown. [-1]
+1793056778	cmd	Alaric	52	29208	korzath2.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches a killer clown. [-1] // Your fists of fury grazes a killer clown. [-6]
+1793056784	cmd	Alaric	52	29208	korzath2.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a killer clown! [-39] // Your fists of fury ^^^ DESTROYS ^^^ a killer clown! [-119]
+1793056790	cmd	Alaric	52	29208	korzath2.are	fighting	94	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a killer clown! [-35] // Your fists of fury DISMEMBERS a killer clown! [-45]
+1793056796	cmd	Alaric	52	29208	korzath2.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a killer clown. [-21] // Your fists of fury grazes a killer clown. [-7]
+1793056801	cmd	Alaric	52	29208	korzath2.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a killer clown! [-66] // Your fists of fury decimates a killer clown! [-26]
+1793056807	cmd	Alaric	52	29208	korzath2.are	fighting	93	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a killer clown. [-6] // Your fists of fury maims a killer clown! [-33]
+1793056813	cmd	Alaric	52	29208	korzath2.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a killer clown! [-52] // Your fists of fury *** DEVASTATES *** a killer clown! [-78]
+1793056819	cmd	Alaric	52	29208	korzath2.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a killer clown. [-11] // Your fists of fury maims a killer clown! [-36]
+1793056824	cmd	Alaric	52	29208	korzath2.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a killer clown! [-39] // Your fists of fury maims a killer clown! [-35]
+1793056830	cmd	Alaric	52	29208	korzath2.are	standing	91	0	-	fists		Who do you want to attack?
+1793056830	cmd	Alaric	52	29208	korzath2.are	standing	91	0	-	who		[52 Dwarf   Hero  ] Alaric. // Players found: 1
+1793056831	cmd	Alaric	52	29208	korzath2.are	standing	91	0	-	fists		Who do you want to attack?
+1793056831	cmd	Alaric	52	29208	korzath2.are	standing	91	0	-	fists		Who do you want to attack?
+1793056831	cmd	Alaric	52	29208	korzath2.are	standing	91	0	-	fists		Who do you want to attack?
+1793056998	cmd	Alaric	52	29208	korzath2.are	standing	92	0	-	wake		You are already standing.
+1793056999	cmd	Alaric	52	29208	korzath2.are	standing	92	0	-	look		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793057001	cmd	Alaric	52	29208	korzath2.are	standing	92	0	-	kill	mad	A deranged madman dodges your attack. // A deranged madman dodges your attack. // A deranged madman parries your attack.
+1793057004	cmd	Alaric	52	29208	korzath2.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a deranged madman! [-64] // Your fists of fury DISMEMBERS a deranged madman! [-48]
+1793057010	cmd	Alaric	52	29208	korzath2.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS a deranged madman! [-46] // Your fists of fury scratches a deranged madman. [-3]
+1793057015	cmd	Alaric	52	29208	korzath2.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a deranged madman. [-23] // Your fists of fury MUTILATES a deranged madman! [-37]
+1793057021	cmd	Alaric	52	29208	korzath2.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a deranged madman. [-23] // Your fists of fury hits a deranged madman. [-11]
