@@ -133,6 +133,20 @@ class ImmortalSpamTests(unittest.TestCase):
                 client.drain(25.0)
                 self.assertIn("PUT A LID ON IT", client.transcript)
 
+    def test_a_mortal_walking_a_long_corridor_is_not_stopped(self) -> None:
+        """A client's walker sends a long corridor as "east" a step at a
+        time; twenty-six of them forced two players to QUIT mid-quest on
+        2026-10-25. Steps are not counted."""
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zspamwalk", PASSWORD)
+                client.send_raw(b"east\n" * 40)
+                client.drain(15.0)
+                self.assertNotIn("PUT A LID ON IT", client.transcript)
+                # Still in the game: a disconnected client cannot sync.
+                self.assertTrue(client.sync("score").strip(),
+                                "the walker was disconnected")
+
 
 if __name__ == "__main__":
     unittest.main()

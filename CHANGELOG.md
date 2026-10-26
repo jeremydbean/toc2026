@@ -8,6 +8,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Walking a long corridor no longer gets you thrown out** (2026-10-26).
+  The stock repeat guard forces a QUIT on the 25th identical line, and a
+  client's walker sends a corridor a step at a time: Alaric and Trentlin
+  were both thrown out mid-quest on 2026-10-25 walking 26 rooms east to a
+  quest target, losing the quest and the streak (Alaric's BUG report).
+  A bare direction no longer counts toward the repeat (`read_from_buffer`,
+  `door_direction_word` now shared from `act_move.c`); a step is one
+  command a pulse like any other and costs movement. HELP DAILY reaches
+  the AQUEST topic. `tests/test_announce_and_spam.py`.
+
 - **A client that hardly reads cannot hold the game a second per write**
   (2026-10-26). The write-stall limit was per write: a connection that
   never read but whose kernel kept taking a trickle made progress inside

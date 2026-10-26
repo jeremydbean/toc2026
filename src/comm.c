@@ -1894,8 +1894,15 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
      * Not for a line an alias queued: "n;n;n;n" is one thing the player
      * typed, and is bounded by ALIAS_MAX_COMMANDS. The alias itself,
      * typed over and over, is still counted like anything else typed.
+     *
+     * Nor for a step: a long corridor is "east" twenty-five times over,
+     * and a client's walker sends it a step at a time. It forced a QUIT
+     * mid-quest on two players walking to a quest target on 2026-10-25,
+     * costing them the quest and the streak. A step is one command a
+     * pulse like any other, and costs movement, so it floods nothing.
      */
-    if ( !from_alias && ( k > 1 || d->incomm[0] == '!' ) )
+    if ( !from_alias && ( k > 1 || d->incomm[0] == '!' )
+      && door_direction_word( d->incomm ) < 0 )
     {
     	if ( d->incomm[0] != '!' && strcmp( d->incomm, d->inlast ) )
 	{

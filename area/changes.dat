@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261026e 2026-10-26
+Walking a long corridor a step at a time -- a client's walker sending
+"east" thirty times -- no longer trips the spam guard and throws you out
+mid-quest. Any other command typed twenty-five times running still does.
+HELP DAILY now finds the daily quests.
+
 @ 20261026d 2026-10-26
 A bomb Level 2's Dodongo swallows now hurts it: the blast inside takes
 half its health, as the old man says. Its hide is proof against fire, and

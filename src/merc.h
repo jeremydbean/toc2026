@@ -2940,6 +2940,7 @@ void    reapply_innate_affects  ( CHAR_DATA *ch );
 void    release_mount           ( CHAR_DATA *ch );
 ROOM_INDEX_DATA *random_travel_room ( CHAR_DATA *ch, bool allow_safe );
 bool    travel_spell_refuses    ( CHAR_DATA *ch, ROOM_INDEX_DATA *to );
+int     door_direction_word     ( const char *arg );
 bool    hyrule_gate_would_refuse( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
                                   ROOM_INDEX_DATA *to );
 bool    gear_race_allowed       ( CHAR_DATA *ch, OBJ_DATA *obj );

@@ -1875,7 +1875,8 @@ void do_speedwalk( CHAR_DATA *ch, char *argument )
 }
 
 
-static int door_direction_word( const char *arg )
+/* The direction a whole word names, n to sw, or -1. */
+int door_direction_word( const char *arg )
 {
 	 if ( !str_cmp( arg, "n" ) || !str_cmp( arg, "north" ) ) return 0;
     else if ( !str_cmp( arg, "e" ) || !str_cmp( arg, "east"  ) ) return 1;

@@ -2248,7 +2248,7 @@ Requires the TRIP skill; failure makes you lose footing yourself briefly.
 See also: BASH, KICK, NERVE
 ~
 
-0 AQUEST QUEST QUESTING QUESTPOINT QUESTPOINTS QUESTOR THEWS~
+0 AQUEST QUEST QUESTING QUESTPOINT QUESTPOINTS QUESTOR THEWS DAILY DAILIES~
 Syntax: aquest <info|points|time|gamble>          anywhere
 Syntax: aquest <request|complete|list|buy|abort>  at a questmaster
 Syntax: aquest daily [request|buy practice|buy train [n]]
