@@ -202009,3 +202009,148 @@ Mon Oct 26 21:58:22 2026 :: [QUIT] Player rejoined the real world.
 Mon Oct 26 21:59:50 2026 :: Treasure goblin: vanished from room 2119 (Courtyard North, hood.are) (too long in one area).
 Mon Oct 26 22:00:40 2026 :: Sock.sinaddr:  5.161.215.244
 Mon Oct 26 22:00:40 2026 :: EOF encountered on read.
+Mon Oct 26 22:03:44 2026 :: Log Alaric [2497]: wake
+Mon Oct 26 22:03:46 2026 :: Log Alaric [2497]: aq re
+Mon Oct 26 22:03:46 2026 :: Log Alaric [2497]: quest assigned: recover The Heart of Tifarah (obj 25042) in crypt.are, 16 minutes, ordinary
+Mon Oct 26 22:03:50 2026 :: Log Alaric [2497]: en do
+Mon Oct 26 22:03:50 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 22:03:52 2026 :: Log Alaric [2401]: jump rock
+Mon Oct 26 22:03:52 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Mon Oct 26 22:03:53 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 1607
+Mon Oct 26 22:03:54 2026 :: Log Alaric [4208]: heal all
+Mon Oct 26 22:03:54 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Mon Oct 26 22:03:56 2026 :: Log Alaric [4208]: east
+Mon Oct 26 22:03:56 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Mon Oct 26 22:03:56 2026 :: Log Alaric [4207]: east
+Mon Oct 26 22:03:56 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Mon Oct 26 22:03:57 2026 :: Log Alaric [4202]: east
+Mon Oct 26 22:03:57 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Mon Oct 26 22:03:57 2026 :: Log Alaric [4201]: north
+Mon Oct 26 22:03:57 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 4201
+Mon Oct 26 22:03:57 2026 :: Log Alaric [2433]: west
+Mon Oct 26 22:03:57 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Mon Oct 26 22:03:57 2026 :: Log Alaric [2434]: west
+Mon Oct 26 22:03:57 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Mon Oct 26 22:03:58 2026 :: Log Alaric [2435]: west
+Mon Oct 26 22:03:58 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Mon Oct 26 22:03:58 2026 :: Log Alaric [2436]: west
+Mon Oct 26 22:03:58 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Mon Oct 26 22:03:58 2026 :: Log Alaric [2437]: west
+Mon Oct 26 22:03:58 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Mon Oct 26 22:03:58 2026 :: Log Alaric [2438]: open west
+Mon Oct 26 22:03:59 2026 :: Log Alaric [2438]: west
+Mon Oct 26 22:03:59 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Mon Oct 26 22:04:00 2026 :: Log Alaric [2439]: afk
+Mon Oct 26 22:04:01 2026 :: Log Alaric [2439]: north
+Mon Oct 26 22:04:01 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Mon Oct 26 22:04:02 2026 :: Log Alaric [3900]: north
+Mon Oct 26 22:04:02 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Mon Oct 26 22:04:02 2026 :: Log Alaric [3901]: north
+Mon Oct 26 22:04:02 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Mon Oct 26 22:04:02 2026 :: Log Alaric [3902]: east
+Mon Oct 26 22:04:02 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Mon Oct 26 22:04:02 2026 :: Log Alaric [3903]: east
+Mon Oct 26 22:04:02 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Mon Oct 26 22:04:03 2026 :: Log Alaric [3904]: east
+Mon Oct 26 22:04:03 2026 :: Log Alaric [3905]: arrived (Dusty trail along north wall.) from 3904
+Mon Oct 26 22:04:03 2026 :: Log Alaric [3905]: east
+Mon Oct 26 22:04:03 2026 :: Log Alaric [3906]: arrived (Northeast corner of dusty trail.) from 3905
+Mon Oct 26 22:04:03 2026 :: Log Alaric [3906]: east
+Mon Oct 26 22:04:03 2026 :: Log Alaric [56]: arrived (Peaceful Path) from 3906
+Mon Oct 26 22:04:03 2026 :: Log Alaric [56]: east
+Mon Oct 26 22:04:03 2026 :: Log Alaric [8950]: arrived (At the edge of the grove) from 56
+Mon Oct 26 22:04:04 2026 :: Log Alaric [8950]: east
+Mon Oct 26 22:04:04 2026 :: Log Alaric [8951]: arrived (Inside the grove) from 8950
+Mon Oct 26 22:04:04 2026 :: Log Alaric [8951]: east
+Mon Oct 26 22:04:04 2026 :: Log Alaric [8904]: arrived (The holy grove) from 8951
+Mon Oct 26 22:04:04 2026 :: Log Alaric [8904]: east
+Mon Oct 26 22:04:04 2026 :: Log Alaric [8905]: arrived (The sacred glade) from 8904
+Mon Oct 26 22:04:04 2026 :: Log Alaric [8905]: north
+Mon Oct 26 22:04:04 2026 :: Log Alaric [8902]: arrived (The holy grove) from 8905
+Mon Oct 26 22:04:05 2026 :: Log Alaric [8902]: east
+Mon Oct 26 22:04:05 2026 :: Log Alaric [8903]: arrived (A clearing in the woods) from 8902
+Mon Oct 26 22:04:05 2026 :: Log Alaric [8903]: north
+Mon Oct 26 22:04:05 2026 :: Log Alaric [5378]: arrived (The Void) from 8903
+Mon Oct 26 22:04:05 2026 :: Log Alaric [5378]: north
+Mon Oct 26 22:04:05 2026 :: Log Alaric [5377]: arrived (The Void) from 5378
+Mon Oct 26 22:04:09 2026 :: Log Alaric [5377]: east
+Mon Oct 26 22:04:09 2026 :: Log Alaric [5376]: arrived (The Void) from 5377
+Mon Oct 26 22:04:09 2026 :: Log Alaric [5376]: up
+Mon Oct 26 22:04:09 2026 :: Log Alaric [5375]: arrived (The Void) from 5376
+Mon Oct 26 22:04:09 2026 :: Log Alaric [5375]: north
+Mon Oct 26 22:04:09 2026 :: Log Alaric [5368]: arrived (A clearing in the woods) from 5375
+Mon Oct 26 22:04:09 2026 :: Log Alaric [5368]: west
+Mon Oct 26 22:04:09 2026 :: Log Alaric [5367]: arrived (The holy grove) from 5368
+Mon Oct 26 22:04:10 2026 :: Log Alaric [5367]: south
+Mon Oct 26 22:04:10 2026 :: Log Alaric [5370]: arrived (The sacred glade) from 5367
+Mon Oct 26 22:04:10 2026 :: Log Alaric [5370]: west
+Mon Oct 26 22:04:10 2026 :: Log Alaric [5369]: arrived (The holy grove) from 5370
+Mon Oct 26 22:04:10 2026 :: Log Alaric [5369]: west
+Mon Oct 26 22:04:10 2026 :: Log Alaric [5362]: arrived (The Cross Roads) from 5369
+Mon Oct 26 22:04:10 2026 :: Log Alaric [5362]: west
+Mon Oct 26 22:04:10 2026 :: Log Alaric [5364]: arrived (City Entrance) from 5362
+Mon Oct 26 22:04:11 2026 :: Log Alaric [5364]: west
+Mon Oct 26 22:04:11 2026 :: Log Alaric [5385]: arrived (Outside the East Gate of Midgaard) from 5364
+Mon Oct 26 22:04:11 2026 :: Log Alaric [5385]: west
+Mon Oct 26 22:04:11 2026 :: Log Alaric [5384]: arrived (Inside the East Gate of Midgaard) from 5385
+Mon Oct 26 22:04:11 2026 :: Log Alaric [5384]: west
+Mon Oct 26 22:04:11 2026 :: Log Alaric [5383]: arrived (The Main Street) from 5384
+Mon Oct 26 22:04:11 2026 :: Log Alaric [5383]: west
+Mon Oct 26 22:04:11 2026 :: Log Alaric [5382]: arrived (The Main Street) from 5383
+Mon Oct 26 22:04:12 2026 :: Log Alaric [5382]: west
+Mon Oct 26 22:04:12 2026 :: Log Alaric [5381]: arrived (Market Square) from 5382
+Mon Oct 26 22:04:12 2026 :: Log Alaric [5381]: north
+Mon Oct 26 22:04:12 2026 :: Log Alaric [5380]: arrived (The Temple Square) from 5381
+Mon Oct 26 22:04:12 2026 :: Log Alaric [5380]: north
+Mon Oct 26 22:04:12 2026 :: Log Alaric [5379]: arrived (The Temple Of Midgaard) from 5380
+Mon Oct 26 22:04:12 2026 :: Log Alaric [5379]: east
+Mon Oct 26 22:04:12 2026 :: Log Alaric [24256]: arrived (An Old Stone Road) from 5379
+Mon Oct 26 22:04:23 2026 :: Log Alaric [24256]: open north
+Mon Oct 26 22:04:23 2026 :: Log Alaric [24256]: north
+Mon Oct 26 22:04:23 2026 :: Log Alaric [24201]: arrived (The Cathedral Courtyard) from 24256
+Mon Oct 26 22:04:26 2026 :: Log Alaric [24201]: n
+Mon Oct 26 22:04:26 2026 :: Log Alaric [24202]: arrived (The Cathedral Entrance) from 24201
+Mon Oct 26 22:04:27 2026 :: Log Alaric [24202]: e
+Mon Oct 26 22:04:27 2026 :: Log Alaric [24203]: arrived (An Alcove) from 24202
+Mon Oct 26 22:04:29 2026 :: Log Alaric [24203]: e
+Mon Oct 26 22:04:29 2026 :: Log Alaric [24214]: arrived (A Spiral Stairway) from 24203
+Mon Oct 26 22:04:30 2026 :: Log Alaric [24214]: u
+Mon Oct 26 22:04:30 2026 :: Log Alaric [24215]: arrived (A Spiral Stairway) from 24214
+Mon Oct 26 22:04:32 2026 :: Log Alaric [24215]: u
+Mon Oct 26 22:04:32 2026 :: Log Alaric [24216]: arrived (The Bell Tower) from 24215
+Mon Oct 26 22:04:33 2026 :: Log Alaric [24216]: ex
+Mon Oct 26 22:04:34 2026 :: Log Alaric [24216]: w
+Mon Oct 26 22:04:34 2026 :: Log Alaric [24219]: arrived (The Bell Room) from 24216
+Mon Oct 26 22:04:35 2026 :: Log Alaric [24219]: ex
+Mon Oct 26 22:04:35 2026 :: Log Alaric [24219]: w
+Mon Oct 26 22:04:35 2026 :: Log Alaric [24218]: arrived (The Bell Tower) from 24219
+Mon Oct 26 22:04:37 2026 :: Log Alaric [24218]: d
+Mon Oct 26 22:04:37 2026 :: Log Alaric [24217]: arrived (A Spiral Stairway) from 24218
+Mon Oct 26 22:04:40 2026 :: Log Alaric [24217]: ex
+Mon Oct 26 22:04:42 2026 :: Log Alaric [24217]: d
+Mon Oct 26 22:04:42 2026 :: Log Alaric [24213]: arrived (A Spiral Stairway) from 24217
+Mon Oct 26 22:04:43 2026 :: Log Alaric [24213]: ex
+Mon Oct 26 22:04:45 2026 :: Log Alaric [24213]: n
+Mon Oct 26 22:04:45 2026 :: Log Alaric [24213]: w
+Mon Oct 26 22:04:46 2026 :: Log Alaric [24213]: e
+Mon Oct 26 22:04:46 2026 :: Log Alaric [24204]: arrived (An Alcove) from 24213
+Mon Oct 26 22:04:58 2026 :: Log Alaric [24204]: east
+Mon Oct 26 22:04:58 2026 :: Log Alaric [24202]: arrived (The Cathedral Entrance) from 24204
+Mon Oct 26 22:04:58 2026 :: Log Alaric [24202]: north
+Mon Oct 26 22:04:58 2026 :: Log Alaric [24205]: arrived (The Aisle Of Pews) from 24202
+Mon Oct 26 22:04:58 2026 :: Log Alaric [24205]: north
+Mon Oct 26 22:04:58 2026 :: Log Alaric [24206]: arrived (The Worship Hall) from 24205
+Mon Oct 26 22:04:58 2026 :: Log Alaric [24206]: north
+Mon Oct 26 22:04:58 2026 :: Log Alaric [24209]: arrived (The High Pews) from 24206
+Mon Oct 26 22:05:00 2026 :: Log Alaric [24209]: get all
+Mon Oct 26 22:05:01 2026 :: Log Alaric [24209]: recal
+Mon Oct 26 22:05:01 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 24209
+Mon Oct 26 22:05:02 2026 :: Log Alaric [2497]: aq co
+Mon Oct 26 22:05:02 2026 :: Log Alaric [2497]: copper +81120600
+Mon Oct 26 22:05:02 2026 :: Log Alaric [2497]: quest complete: 81p 12g 6s, 74 quest points (streak bonus 133%)
+Mon Oct 26 22:05:02 2026 :: Snapshot of Alaric taken before quest: Alaric.20261026_220502.quest (PRESTORE Alaric to see it).
+Mon Oct 26 22:05:04 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct 26 22:05:04 2026 :: Log Alaric [2497]: score
+Mon Oct 26 22:05:45 2026 :: Sock.sinaddr:  52.15.147.27
+Mon Oct 26 22:05:46 2026 :: EOF encountered on read.
+Mon Oct 26 22:07:43 2026 :: Black market: the dealer appeared with 5 items (stock 1793052463), for 22 minutes.
