@@ -47,10 +47,13 @@ class ProgressLogTests(unittest.TestCase):
             with mud.connect(timeout=120) as hunter, mud.connect(timeout=120) as setter:
                 login(hunter, "Zhunter", PW)
                 login(setter, "Zsetter", PW)
+                setter.must("set char zhunter hitroll 40", "")
                 run(setter, f"load mob {SMURF}")
                 # One hit point: the first blow that lands kills, before a
                 # wimpy smurf can run.
-                run(setter, "set char smurf hp 1")
+                # SET sets the maximum; RESTORE brings it down to it.
+                setter.must("set char smurf hp 1", "")
+                setter.must("restore smurf", "")
                 hunter.buffer = ""
                 run(hunter, "kill smurf", 1.0)
                 hunter.expect("is DEAD", timeout=60)
@@ -58,7 +61,9 @@ class ProgressLogTests(unittest.TestCase):
 
                 run(setter, "advance zhunter 20", 1.5)
                 run(setter, f"load mob {SMURF}")
-                run(setter, "set char smurf hp 1")
+                # SET sets the maximum; RESTORE brings it down to it.
+                setter.must("set char smurf hp 1", "")
+                setter.must("restore smurf", "")
                 hunter.buffer = ""
                 run(hunter, "kill smurf", 1.0)
                 hunter.expect("is DEAD", timeout=60)

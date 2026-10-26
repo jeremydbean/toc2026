@@ -138,6 +138,7 @@ class SlowReaderTests(unittest.TestCase):
             slow.setblocking(False)
             dropped = False
             sent = 0
+            checked = 0
             deadline = time.monotonic() + 150
             try:
                 while time.monotonic() < deadline:
@@ -150,20 +151,28 @@ class SlowReaderTests(unittest.TestCase):
                         dropped = True          # the game let go of us
                         break
                     time.sleep(0.3)
-                    if sent % 10 == 0 and not greeting_arrives(mud.port):
+                    if sent % 10 or sent == checked:
+                        continue
+                    checked = sent
+                    # The game's own saves fsync on the main loop, and a
+                    # shared CI runner's disk can hold one for seconds; the
+                    # bug this guards against froze the game for good.
+                    began = time.monotonic()
+                    if not greeting_arrives(mud.port, timeout=20.0):
                         # CI reprints only this first line: say whether
                         # the server is alive and what it said last.
                         tail = [line.split(" :: ", 1)[-1] for line in
                                 mud.server_output().splitlines() if line.strip()][-4:]
                         self.fail(f"the game stopped answering new connections "
                                   f"after {sent} floods from one client that never "
-                                  f"reads; server exit={mud.proc.poll()}; last: "
+                                  f"reads ({time.monotonic() - began:.1f}s); "
+                                  f"server exit={mud.proc.poll()}; last: "
                                   + " | ".join(tail))
             finally:
                 slow.close()
 
             self.assertTrue(dropped, "the client that never reads was never let go")
-            self.assertTrue(greeting_arrives(mud.port))
+            self.assertTrue(greeting_arrives(mud.port, timeout=20.0))
             self.assertIn("stopped reading", mud.server_output())
 
 
