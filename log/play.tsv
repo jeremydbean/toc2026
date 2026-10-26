@@ -25117,3 +25117,79 @@
 1793051265	cmd	Trentlin	50	29124	korzath1.are	fighting	94	0	fight	smite		Your smite *** DEVASTATES *** a Giant! // Your smite *** DEVASTATES *** a Giant! // Your smite <<< ERADICATES >>> a Giant!
 1793051271	cmd	Trentlin	50	29124	korzath1.are	fighting	94	0	fight	smite		Your smite misses a Giant.
 1793051277	cmd	Trentlin	50	29124	korzath1.are	fighting	94	0	fight	smite		Your smite misses a Giant.
+1793051282	cmd	Trentlin	50	29124	korzath1.are	fighting	94	0	fight	smite		Your smite misses a Giant.
+1793051292	cmd	Trentlin	50	29124	korzath1.are	standing	94	0	-	look	in co	Corpse of a Giant contains: //      (Magical) a giant hand
+1793051293	cmd	Trentlin	50	29124	korzath1.are	standing	94	0	-	sacrifice	co	The Gods give you 90 copper coins for your sacrifice.
+1793051294	cmd	Trentlin	50	29124	korzath1.are	standing	94	0	-	scan		a Giant                            -to the Northeast.
+1793051294	cmd	Trentlin	50	29124	korzath1.are	standing	94	0	-	look		Land of The Giants //   More footprints.  What kind of giants go around marking their // coutryside in footprints?  You can travel northeast or back southwest
+1793051295	cmd	Trentlin	50	29125	korzath1.are	standing	94	0	-	ne		Land of The Giants //   You have come to a dead end in this land of giants because of the // massive black space that represents the rip in the continuum.  You can
+1793051301	cmd	Trentlin	50	29125	korzath1.are	fighting	94	0	fight	smite		Your smite === OBLITERATES === a Giant! // Your smite <<< ERADICATES >>> a Giant! // Your smite === OBLITERATES === a Giant!
+1793051307	cmd	Trentlin	50	29125	korzath1.are	fighting	94	0	fight	smite		Your smite misses a Giant.
+1793051313	cmd	Trentlin	50	29125	korzath1.are	fighting	94	0	fight	look	giant	Tall, very tall. // A Giant is a bloody mess. // A Giant is using:
+1793051316	cmd	Trentlin	50	29125	korzath1.are	fighting	94	0	fight	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     19 hours | Sex:      Male | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1793051318	cmd	Trentlin	50	29125	korzath1.are	fighting	94	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a Giant! // Your smite ^^^ DESTROYS ^^^ a Giant! // A Giant is DEAD!!
+1793051325	cmd	Trentlin	50	29125	korzath1.are	standing	94	0	-	look		Land of The Giants //   You have come to a dead end in this land of giants because of the // massive black space that represents the rip in the continuum.  You can
+1793051326	cmd	Trentlin	50	29124	korzath1.are	standing	94	0	-	sw		Land of The Giants //   More footprints.  What kind of giants go around marking their // coutryside in footprints?  You can travel northeast or back southwest
+1793051326	cmd	Trentlin	50	29123	korzath1.are	standing	94	0	-	sw		Land of The Giants //   In front of you is a vast countryside and....well....one very super  // large colossal gigantic footprint.  Yes, a massive footprint in the ground
+1793051328	cmd	Trentlin	50	29111	korzath1.are	standing	94	0	-	enter	por	You enter The Starlight Portal // Your stomach flip flops. Everything goes black for a moment. // Project Starlight
+1793051330	cmd	Trentlin	50	29108	korzath1.are	standing	94	0	-	south		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1793051333	cmd	Trentlin	50	29111	korzath1.are	fighting	94	0	fight	flee		Project Starlight //   The thing that produces the brilliant white light is a massive ceiling // high portal.  The end of the hallway is made up of glittering black rock
+1793051335	cmd	Trentlin	50	29108	korzath1.are	standing	94	0	-	south		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1793051335	refused	Trentlin	50	29108	korzath1.are	fighting	94	0	fight	se		No way!  You are still fighting!
+1793051337	cmd	Trentlin	50	29108	korzath1.are	fighting	94	0	fight	flee		A Human mage is overcome with a feeling of despair and flees the battle. // A Human mage walks off to the southwest. // A Human mage has fled!
+1793051337	cmd	Trentlin	50	29108	korzath1.are	standing	94	0	-	flee		You aren't fighting anyone.
+1793051338	cmd	Trentlin	50	29111	korzath1.are	fighting	94	0	fight	flee		Project Starlight //   The thing that produces the brilliant white light is a massive ceiling // high portal.  The end of the hallway is made up of glittering black rock
+1793051339	cmd	Trentlin	50	29111	korzath1.are	standing	94	0	-	flee		You aren't fighting anyone.
+1793051341	cmd	Trentlin	50	29108	korzath1.are	standing	94	0	-	south		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1793051341	refused	Trentlin	50	29108	korzath1.are	fighting	94	0	fight	sw		No way!  You are still fighting!
+1793051343	cmd	Trentlin	50	29108	korzath1.are	fighting	94	0	fight	smite		A Tin Axe bites deep into a mad mage! // Your smite scratches a mad mage. // Your smite ^^^ DESTROYS ^^^ a mad mage!
+1793051348	cmd	Trentlin	50	29108	korzath1.are	fighting	94	0	fight	smite		Your smite misses a mad mage.
+1793051354	cmd	Trentlin	50	29108	korzath1.are	fighting	93	0	fight	smite		Your smite MANGLES a mad mage! // Your smite *** DEVASTATES *** a mad mage! // Your smite decimates a mad mage!
+1793051360	cmd	Trentlin	50	29108	korzath1.are	fighting	93	0	fight	wear	rea	You stop using A Tin Axe. // You wield the Headless Horseman's Reaper. // You remove your shield to handle the massive weapon.
+1793051363	cmd	Trentlin	50	29108	korzath1.are	fighting	93	0	fight	smite		Your smite misses a Hobbit mage. // Your smite ^^^ DESTROYS ^^^ a Hobbit mage! // Your smite DISMEMBERS a Hobbit mage!
+1793051372	cmd	Trentlin	50	29108	korzath1.are	fighting	93	0	fight	smite		Your smite === OBLITERATES === a Hobbit mage! // Your smite === OBLITERATES === a Hobbit mage! // Your smite === OBLITERATES === a Hobbit mage!
+1793051381	cmd	Trentlin	50	29108	korzath1.are	fighting	93	0	fight	smite		Your smite misses an Elf mage.
+1793051386	cmd	Trentlin	50	29108	korzath1.are	fighting	93	0	fight	smite		Your smite *** DEVASTATES *** an Elf mage! // Your smite <<< ERADICATES >>> an Elf mage! // Your smite === OBLITERATES === an Elf mage!
+1793051392	cmd	Trentlin	50	29108	korzath1.are	fighting	92	0	fight	smite		Your smite misses a dwarf mage.
+1793051398	cmd	Trentlin	50	29108	korzath1.are	fighting	91	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a dwarf mage! // Your smite <<< ERADICATES >>> a dwarf mage! // Your smite ^^^ DESTROYS ^^^ a dwarf mage!
+1793051404	cmd	Trentlin	50	29108	korzath1.are	fighting	91	0	fight	smite		Your smite misses a dwarf mage.
+1793051411	cmd	Trentlin	50	29108	korzath1.are	standing	91	0	-	look		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1793051412	cmd	Trentlin	50	29108	korzath1.are	standing	91	0	-	look	in dwarf	You do not see that here.
+1793051414	cmd	Trentlin	50	29104	korzath1.are	standing	91	0	-	sw		Entrance to Project Starlight //   Well, now you've done it.  You've broken past the Starlight guards and // now stand in the entrance to Project Starlight itself.  More guards rush
+1793051415	cmd	Trentlin	50	29107	korzath1.are	standing	91	0	-	north		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1793051415	refused	Trentlin	50	29107	korzath1.are	fighting	90	0	fight	north		No way!  You are still fighting!
+1793051417	cmd	Trentlin	50	29107	korzath1.are	fighting	90	0	fight	look		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1793051423	cmd	Trentlin	50	29107	korzath1.are	fighting	89	0	fight	smite		Your smite *** DEVASTATES *** a Hobbit mage! // Your smite ^^^ DESTROYS ^^^ a Hobbit mage! // Your smite === OBLITERATES === a Hobbit mage!
+1793051432	cmd	Trentlin	50	29107	korzath1.are	fighting	88	0	fight	smite		Your smite === OBLITERATES === a Hobbit mage! // Your smite misses a Hobbit mage. // Your smite MANGLES a Hobbit mage!
+1793051438	cmd	Trentlin	50	29107	korzath1.are	fighting	88	0	fight	smite		Your smite misses an Elf mage. // Your smite ^^^ DESTROYS ^^^ an Elf mage! // Your smite misses an Elf mage.
+1793051444	cmd	Trentlin	50	29107	korzath1.are	fighting	87	0	fight	smite		Your smite MUTILATES an Elf mage! // Your smite misses an Elf mage. // Your smite ^^^ DESTROYS ^^^ an Elf mage!
+1793051450	cmd	Trentlin	50	29107	korzath1.are	fighting	87	0	fight	smite		Your smite ^^^ DESTROYS ^^^ an Elf mage! // Your smite ^^^ DESTROYS ^^^ an Elf mage! // The Headless Horseman's Reaper shears through an Elf mage with terrible force!
+1793051459	cmd	Trentlin	50	29107	korzath1.are	fighting	86	0	fight	smite		Your smite misses a Human mage.
+1793051465	cmd	Trentlin	50	29107	korzath1.are	fighting	86	0	fight	look		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1793051471	cmd	Trentlin	50	29107	korzath1.are	fighting	85	0	fight	look	mad	This mage lost his mind from devoting so much of his time and mental power // to the Starlight project. // A mad mage has a few bruises.
+1793051472	cmd	Trentlin	50	29107	korzath1.are	fighting	85	0	fight	smite		Your smite === OBLITERATES === a Human mage! // Your smite DISEMBOWELS a Human mage! // Your smite ^^^ DESTROYS ^^^ a Human mage!
+1793051481	cmd	Trentlin	50	29107	korzath1.are	fighting	85	0	fight	smite		Your smite *** DEMOLISHES *** a dwarf mage! // Your smite ^^^ DESTROYS ^^^ a dwarf mage! // Your smite ^^^ DESTROYS ^^^ a dwarf mage!
+1793051487	cmd	Trentlin	50	29107	korzath1.are	fighting	84	0	fight	smite		Your smite misses a dwarf mage.
+1793051492	cmd	Trentlin	50	29107	korzath1.are	fighting	84	0	fight	smite		Your smite *** DEVASTATES *** a dwarf mage! // Your smite *** DEVASTATES *** a dwarf mage! // Your smite ^^^ DESTROYS ^^^ a dwarf mage!
+1793051500	cmd	Trentlin	50	29107	korzath1.are	fighting	84	0	fight	look		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1793051501	cmd	Trentlin	50	29107	korzath1.are	fighting	84	0	fight	where	korzath	You didn't find any korzath.
+1793051503	cmd	Trentlin	50	29107	korzath1.are	fighting	84	0	fight	smite		Your smite === OBLITERATES === a mad mage! // Your smite === OBLITERATES === a mad mage! // Your smite devastates a mad mage!
+1793051510	cmd	Trentlin	50	29107	korzath1.are	fighting	83	0	fight	smite		Your smite misses a mad mage.
+1793051516	cmd	Trentlin	50	29107	korzath1.are	fighting	84	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a mad mage! // Your smite === OBLITERATES === a mad mage! // A mad mage is DEAD!!
+1793051523	cmd	Trentlin	50	29107	korzath1.are	standing	84	0	-	look		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1793051523	cmd	Trentlin	50	29107	korzath1.are	standing	84	0	-	inventory		You are carrying: //      a vial of thick black syrup //      (Humming) key card
+1793051529	cmd	Trentlin	50	29107	korzath1.are	standing	84	0	-	drop	comp	You drop the Demon dungeon compass.
+1793051534	cmd	Trentlin	50	29107	korzath1.are	standing	84	0	-	drop	wand	You drop a long blue wand.
+1793051537	cmd	Trentlin	50	29110	korzath1.are	standing	84	0	-	north		Project Starlight //   The thing that produces the brilliant white light is a massive ceiling // high portal.  The end of the hallway is made up of glittering black rock
+1793051542	cmd	Trentlin	50	29110	korzath1.are	standing	84	0	-	look	in por	Looking into The Starlight Portal reveals: // Grassy Plain //   You stand on a grassy plain.  A cool breeze blows making the long
+1793051543	cmd	Trentlin	50	29118	korzath1.are	standing	84	0	-	enter	por	You enter The Starlight Portal // Your stomach flip flops. Everything goes black for a moment. // Grassy Plain
+1793051544	cmd	Trentlin	50	29118	korzath1.are	standing	84	0	-	scan		a Robot Mech                       -to the Northeast. // a Robot Mech                       -to the Northwest.
+1793051548	cmd	Trentlin	50	29119	korzath1.are	standing	84	0	-	ne		Grassy Field //   You stand on a grassy plain.  A cool breeze blows making the long // blades of grass on the ground weave back and forth.  In the distance
+1793051549	cmd	Trentlin	50	29119	korzath1.are	standing	84	0	-	look	ro	This is a huge Robot Mech unlike anything you have ever seen or fought // before.  It stands at 5 times your own height and looks like a most // formiddable opponent unless you can locate a vulnerability.
+1793051550	cmd	Trentlin	50	29119	korzath1.are	fighting	84	0	fight	consider	ro	A Robot Mech is well below your level. // A Robot Mech has about a third of your hit points. // Blow for blow, you would need about 3 rounds to bring a Robot Mech down; it would need about 76 rounds for you.
+1793051553	cmd	Trentlin	50	29119	korzath1.are	fighting	84	0	fight	smite		Your smite === OBLITERATES === a Robot Mech! // Your smite ^^^ DESTROYS ^^^ a Robot Mech! // Your smite >>> ANNIHILATES <<< a Robot Mech!
+1793051559	cmd	Trentlin	50	29119	korzath1.are	fighting	84	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a Robot Mech! // Your smite <<< ERADICATES >>> a Robot Mech! // A Robot Mech is DEAD!!
+1793051568	cmd	Trentlin	50	29119	korzath1.are	standing	84	0	-	look	in co	Corpse of a Robot Mech contains: //      (Humming) a chunk of mecharmor
+1793051571	cmd	Trentlin	50	29119	korzath1.are	standing	84	0	-	get	armo co	I see nothing like that in the co.
+1793051574	cmd	Trentlin	50	29119	korzath1.are	standing	84	0	-	get	mech co	You get a chunk of mecharmor from corpse of a Robot Mech.
+1793051575	cmd	Trentlin	50	29119	korzath1.are	standing	84	0	-	compare	mech	A) a chunk of mecharmor (level 45) // B) a twin-dragon hauberk (level 27), worn // Slot: body.  Your damage comes from weapons.
