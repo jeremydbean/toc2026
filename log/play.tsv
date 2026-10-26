@@ -24567,3 +24567,18 @@
 1793047922	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    253 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
 1793047924	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
 1793047926	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (16) (Glowing) a bag of candy corn //      (Glowing) a pumpkin-lantern charm
+1793047971	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793047974	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	affect		You are not affected by any spells.
+1793047975	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793047980	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	iron		Your skin hardens.
+1793047988	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	levitate		You slowly rise up off the ground.
+1793047988	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	practice		clairvoyance         1%  ego whip             1%  mindbar             73%   // mind leech           1%  project              1%  psionic armor        1%   // telekinesis         73%  torment              1%  axe                  8%  
+1793047994	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	mindbar		A mental fortress protects your mind.
+1793048000	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	affect		You are affected by: // Skill: 'mindbar' for 8 hours. // Skill: 'levitate' for 5 hours.
+1793048002	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (16) (Glowing) a bag of candy corn //      (Glowing) a pumpkin-lantern charm
+1793048005	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	levitate		You are already airborne.
+1793048008	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	visible		Ok.
+1793048009	refused	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	(unknown)		Huh?
+1793048011	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	affect		You are affected by: // Skill: 'mindbar' for 8 hours. // Skill: 'levitate' for 5 hours.
+1793048015	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    253 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1793048140	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	afk		You are now in AFK mode.
