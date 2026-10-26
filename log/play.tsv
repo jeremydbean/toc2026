@@ -23265,3 +23265,35 @@
 1792979656	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 72 quest points.
 1792979657	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    250 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
 1792979660	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1792979831	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	aquest	time	Not on a quest. 3 minutes before you may quest again.
+1792979833	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792979833	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792979838	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	changes		What is new, newest first: // 2026-10-25 //   SHOVE no longer moves Hyrule's enemies and guardians: a dungeon's shutters
+1792979859	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	3	-	changes	all	
+1792980001	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	help	fourth	'FOURTH ATTACK' // There is no fourth attack.  Third attack is the last of the extra strikes a // character can train, and haste, dual wield and your weapon's own speed are
+1792980009	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792980010	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	15	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Welcome, Alaric. The realm needs someone of your skill.' // Questor Thews tells you 'Raiders stole The Amulet of Soulcrusher from the realm!'
+1792980017	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792980025	cmd	Alaric	50	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792980026	cmd	Alaric	50	2426	dresden_halloween.are	standing	100	0	-	open	east	Ok.
+1792980026	cmd	Alaric	50	3502	midennir_halloween.are	standing	100	0	-	run	e 3	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792980026	cmd	Alaric	50	5258	oldthalo.are	standing	100	0	-	run	s 4	The dwarf forest // [Exits: north south southeast] // The dwarf forest
+1792980026	cmd	Alaric	50	5262	oldthalo.are	standing	100	0	-	east		The dwarf forest //   You see more stunted trees here.  It looks almost as if this place was // cursed by a god to be short and dry.  The trail leads east and west.  It looks
+1792980027	cmd	Alaric	50	5263	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns south
+1792980027	cmd	Alaric	50	5264	oldthalo.are	standing	100	0	-	south		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail turns east
+1792980027	cmd	Alaric	50	5265	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads
+1792980027	cmd	Alaric	50	5266	oldthalo.are	standing	100	0	-	east		The darker dwarf forest //   You see a more dense foliage in these stunted trees.  The gloom caused // by them is enhanced by a draft coming from all around.  The trail leads
+1792980028	cmd	Alaric	50	5267	oldthalo.are	standing	100	0	-	down		A valley in the dark dwarf forest //   You are in a valley in the dark dwarf forest.  Short black grass grows // around you.  There is a small fox hole in a mound of dirt to the west, and
+1792980028	cmd	Alaric	50	5267	oldthalo.are	standing	100	0	-	open	hole	You open a secret door.
+1792980028	cmd	Alaric	50	5268	oldthalo.are	standing	100	0	-	west		A small ugly cave //   You see a small cave.  Skeletons of many types of creatures litter the area. // Obviously, no fox lives here!  The oppression makes you want to leave and
+1792980028	cmd	Alaric	50	5269	oldthalo.are	standing	100	0	-	south		A small ugly cave //   You are in a small ugly cave.  More skeletons lie around.  It is obvious // that the owner doesn't want you here.  The exit north is still visible.
+1792980029	cmd	Alaric	50	5270	oldthalo.are	standing	100	0	-	down		Down the path into a dead end //   You are down the path.  There is no obvious exit in this place, exit the // one back up north.  All around you, you see skeletons.
+1792980029	cmd	Alaric	50	5270	oldthalo.are	standing	100	0	-	open	secret	You open a secret door.
+1792980029	cmd	Alaric	50	5100	drow1.are	standing	100	0	-	down		City Entrance //   You are at the entrance to a small underground city. A great adamantite // gate lies open to the west allowing entrance into the city.
+1792980029	cmd	Alaric	50	5101	drow1.are	standing	100	0	-	west		City street //   You walk along a highly ornate street going north-south. A large gate // lies to the east while a building lies to the west.
+1792980030	cmd	Alaric	50	5123	drow1.are	standing	100	0	-	north		City street //   You walk along a highly ornate city street leading west and south. To the // north is a relatively small house.
+1792980030	cmd	Alaric	50	25153	underdrk.are	standing	100	0	-	run	w 11	City street // [Exits: north east south west] // City street
+1792980030	cmd	Alaric	50	25152	underdrk.are	standing	100	0	-	north		The passage in between. //   This corridor is dark, but you can see light to the south.  There is no dust // on the ground here.  On a rock by the lighted corridor to the south you can
+1792980030	cmd	Alaric	50	25151	underdrk.are	standing	100	0	-	north		The hole in the wall. //   There is a hole in the wall here and the corridor turns to the south.  There // is also a shaft leading upward.  There is no dust on the floor of the
+1792980031	cmd	Alaric	50	25185	underdrk.are	standing	100	0	-	up		The ledge. //   The shaft leads up to a shaft and you can see light coming from a hole above // you.  You'd almost be relieved if it wasn't for the shapes coming for you
+1792980031	cmd	Alaric	50	2397	mahntor.are	standing	100	0	-	up		The end of the guarded hall //   You are at the end of the hall. Colored doors line the walls to the north. To // your west, you see a brown door. To you east, you see a grey door. The hall

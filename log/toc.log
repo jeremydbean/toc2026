@@ -197180,3 +197180,81 @@ Mon Oct 26 01:54:14 2026 :: Snapshot of Alaric taken before quest: Alaric.202610
 Mon Oct 26 01:54:16 2026 :: Log Alaric [2497]: aq ga no
 Mon Oct 26 01:54:17 2026 :: Log Alaric [2497]: sc
 Mon Oct 26 01:54:20 2026 :: Log Alaric [2497]: steel
+Mon Oct 26 01:57:11 2026 :: Log Alaric [2497]: aq time
+Mon Oct 26 01:57:13 2026 :: Log Alaric [2497]: wake
+Mon Oct 26 01:57:13 2026 :: Log Alaric [2497]: l
+Mon Oct 26 01:57:18 2026 :: Log Alaric [2497]: changes
+Mon Oct 26 01:57:24 2026 :: Sock.sinaddr:  34.198.201.66
+Mon Oct 26 01:57:24 2026 :: EOF encountered on read.
+Mon Oct 26 01:57:39 2026 :: Log Alaric [2497]: changes all
+Mon Oct 26 02:00:01 2026 :: Log Alaric [2497]: help fourth
+Mon Oct 26 02:00:09 2026 :: Log Alaric [2497]: wake
+Mon Oct 26 02:00:10 2026 :: Log Alaric [2497]: aq re
+Mon Oct 26 02:00:10 2026 :: Log Alaric [2497]: quest assigned: recover The Amulet of Soulcrusher (obj 25039) in mahntor.are, 28 minutes, ordinary
+Mon Oct 26 02:00:17 2026 :: Log Alaric [2497]: en do
+Mon Oct 26 02:00:17 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 02:00:25 2026 :: Log Alaric [2401]: r e 8
+Mon Oct 26 02:00:25 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Mon Oct 26 02:00:25 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Mon Oct 26 02:00:25 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Mon Oct 26 02:00:25 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Mon Oct 26 02:00:25 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Mon Oct 26 02:00:25 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Mon Oct 26 02:00:25 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Mon Oct 26 02:00:25 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Mon Oct 26 02:00:26 2026 :: Log Alaric [2426]: open east
+Mon Oct 26 02:00:26 2026 :: Log Alaric [2426]: r e 3
+Mon Oct 26 02:00:26 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Mon Oct 26 02:00:26 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Mon Oct 26 02:00:26 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Mon Oct 26 02:00:26 2026 :: Log Alaric [3502]: r s 4
+Mon Oct 26 02:00:26 2026 :: Log Alaric [5261]: arrived (The dwarf forest) from 3502
+Mon Oct 26 02:00:26 2026 :: Log Alaric [5260]: arrived (The dwarf forest) from 5261
+Mon Oct 26 02:00:26 2026 :: Log Alaric [5259]: arrived (The dwarf forest) from 5260
+Mon Oct 26 02:00:26 2026 :: Log Alaric [5258]: arrived (The dwarf forest) from 5259
+Mon Oct 26 02:00:26 2026 :: Log Alaric [5258]: e
+Mon Oct 26 02:00:26 2026 :: Log Alaric [5262]: arrived (The dwarf forest) from 5258
+Mon Oct 26 02:00:27 2026 :: Log Alaric [5262]: e
+Mon Oct 26 02:00:27 2026 :: Log Alaric [5263]: arrived (The darker dwarf forest) from 5262
+Mon Oct 26 02:00:27 2026 :: Log Alaric [5263]: s
+Mon Oct 26 02:00:27 2026 :: Log Alaric [5264]: arrived (The darker dwarf forest) from 5263
+Mon Oct 26 02:00:27 2026 :: Log Alaric [5264]: e
+Mon Oct 26 02:00:27 2026 :: Log Alaric [5265]: arrived (The darker dwarf forest) from 5264
+Mon Oct 26 02:00:27 2026 :: Log Alaric [5265]: e
+Mon Oct 26 02:00:27 2026 :: Log Alaric [5266]: arrived (The darker dwarf forest) from 5265
+Mon Oct 26 02:00:28 2026 :: Log Alaric [5266]: d
+Mon Oct 26 02:00:28 2026 :: Log Alaric [5267]: arrived (A valley in the dark dwarf forest) from 5266
+Mon Oct 26 02:00:28 2026 :: Log Alaric [5267]: open hole
+Mon Oct 26 02:00:28 2026 :: Log Alaric [5267]: w
+Mon Oct 26 02:00:28 2026 :: Log Alaric [5268]: arrived (A small ugly cave) from 5267
+Mon Oct 26 02:00:28 2026 :: Log Alaric [5268]: s
+Mon Oct 26 02:00:28 2026 :: Log Alaric [5269]: arrived (A small ugly cave) from 5268
+Mon Oct 26 02:00:29 2026 :: Log Alaric [5269]: d
+Mon Oct 26 02:00:29 2026 :: Log Alaric [5270]: arrived (Down the path into a dead end) from 5269
+Mon Oct 26 02:00:29 2026 :: Log Alaric [5270]: open secret
+Mon Oct 26 02:00:29 2026 :: Log Alaric [5270]: d
+Mon Oct 26 02:00:29 2026 :: Log Alaric [5100]: arrived (City Entrance) from 5270
+Mon Oct 26 02:00:29 2026 :: Log Alaric [5100]: w
+Mon Oct 26 02:00:29 2026 :: Log Alaric [5101]: arrived (City street) from 5100
+Mon Oct 26 02:00:30 2026 :: Log Alaric [5101]: n
+Mon Oct 26 02:00:30 2026 :: Log Alaric [5123]: arrived (City street) from 5101
+Mon Oct 26 02:00:30 2026 :: Log Alaric [5123]: r w 11
+Mon Oct 26 02:00:30 2026 :: Log Alaric [5121]: arrived (City street) from 5123
+Mon Oct 26 02:00:30 2026 :: Log Alaric [5117]: arrived (City street) from 5121
+Mon Oct 26 02:00:30 2026 :: Log Alaric [5114]: arrived (City street) from 5117
+Mon Oct 26 02:00:30 2026 :: Log Alaric [25164]: arrived (Before the gates.) from 5114
+Mon Oct 26 02:00:30 2026 :: Log Alaric [25163]: arrived (The Trade Route.) from 25164
+Mon Oct 26 02:00:30 2026 :: Log Alaric [25162]: arrived (The Trade Route.) from 25163
+Mon Oct 26 02:00:30 2026 :: Log Alaric [25161]: arrived (The Trade Route.) from 25162
+Mon Oct 26 02:00:30 2026 :: Log Alaric [25160]: arrived (The Trade Route.) from 25161
+Mon Oct 26 02:00:30 2026 :: Log Alaric [25159]: arrived (The Trade Route.) from 25160
+Mon Oct 26 02:00:30 2026 :: Log Alaric [25158]: arrived (The Trade Route.) from 25159
+Mon Oct 26 02:00:30 2026 :: Log Alaric [25153]: arrived (The Trade Route.) from 25158
+Mon Oct 26 02:00:30 2026 :: Log Alaric [25153]: n
+Mon Oct 26 02:00:30 2026 :: Log Alaric [25152]: arrived (The passage in between.) from 25153
+Mon Oct 26 02:00:30 2026 :: Log Alaric [25152]: n
+Mon Oct 26 02:00:30 2026 :: Log Alaric [25151]: arrived (The hole in the wall.) from 25152
+Mon Oct 26 02:00:31 2026 :: Log Alaric [25151]: u
+Mon Oct 26 02:00:31 2026 :: Log Alaric [25185]: arrived (The ledge.) from 25151
+Mon Oct 26 02:00:31 2026 :: Log Alaric [25185]: u
+Mon Oct 26 02:00:31 2026 :: Log Alaric [2397]: arrived (The end of the guarded hall) from 25185
