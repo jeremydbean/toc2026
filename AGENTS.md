@@ -3955,7 +3955,14 @@ the old code. The rules they leave:
   `d->write_stalled_ms` adds up the waiting across writes until one goes
   out without waiting, and past `WRITE_STALL_BUDGET_MS` (2 s) the client
   is let go (2026-10-26) -- a client whose kernel took a trickle could
-  otherwise cost a second on every write for as long as it typed. Never close a descriptor from inside
+  otherwise cost a second on every write for as long as it typed. **No
+  close blocks it either**: the listening socket's `SO_LINGER` (30 s) is
+  inherited by every accepted connection, so `close()` on one holding
+  unsent output -- exactly the client just dropped for not reading --
+  held the whole game for up to thirty seconds. `new_descriptor` turns
+  linger off on each connection, and `close_socket` resets one dropped
+  for `write_failed` (`test_audit_connections`; found in CI only, by
+  reading the stuck server's syscall: `close`). Never close a descriptor from inside
   `write_to_buffer` -- its callers are still using it.
 - **A login enters with the file as it is now.** CON_GET_NAME's copy is
   only for the password check: `login_reload_character` frees it and

@@ -1388,6 +1388,25 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
     }
 
     /*
+     * A connection must never linger at close. The listening socket sets
+     * SO_LINGER for 30 seconds and accept() hands that to every
+     * connection, so close() on one with output still unsent -- a client
+     * dropped for not reading -- blocked the whole game for up to half a
+     * minute, non-blocking socket or not (found in CI, 2026-10-26: the
+     * game sat in close() after "stopped reading"). Off, close() returns
+     * at once and the kernel finishes a clean close on its own.
+     */
+    {
+        struct linger ld;
+
+        ld.l_onoff  = 0;
+        ld.l_linger = 0;
+        if ( setsockopt( desc, SOL_SOCKET, SO_LINGER,
+                         (char *) &ld, sizeof(ld) ) < 0 )
+            perror( "New_descriptor: SO_LINGER" );
+    }
+
+    /*
      * Keep idle sessions alive through NAT.
      *
      * The game never times a player out for inactivity above LEVEL_IMMORTAL,
@@ -1584,6 +1603,18 @@ void close_socket( DESCRIPTOR_DATA *dclose )
 	    bug( "Close_socket: dclose not found.", 0 );
     }
 
+    /* One dropped for not reading is reset, not closed: its unsent
+       output would otherwise sit in the kernel for a client that is not
+       going to take it. */
+    if ( dclose->write_failed )
+    {
+        struct linger ld;
+
+        ld.l_onoff  = 1;
+        ld.l_linger = 0;
+        setsockopt( dclose->descriptor, SOL_SOCKET, SO_LINGER,
+                    (char *) &ld, sizeof(ld) );
+    }
     close( dclose->descriptor );
     free_string( dclose->host );
     /* The pool keeps the descriptor, not its buffers: new_descriptor

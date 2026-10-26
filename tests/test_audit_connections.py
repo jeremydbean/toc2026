@@ -138,6 +138,19 @@ def wait_at_password(mud: LiveMud, name: str) -> MudClient:
     return client
 
 
+class NoLingerTests(unittest.TestCase):
+    def test_a_connection_never_lingers_at_close(self) -> None:
+        """The listening socket's SO_LINGER (30 s) is inherited by every
+        accepted connection, and close() on one with unsent output -- a
+        client dropped for not reading -- held the whole game for up to
+        half a minute (CI, 2026-10-26). Each connection turns it off."""
+        src = (Path(__file__).resolve().parents[1] / "src" / "comm.c").read_text(
+            encoding="latin-1")
+        accept_at = src.index("accept(control,")
+        after = src[accept_at:accept_at + 2500]
+        self.assertRegex(after, r"ld\.l_onoff\s*=\s*0;[\s\S]*SO_LINGER")
+
+
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class SlowReaderTests(unittest.TestCase):
     def test_a_client_that_stops_reading_does_not_freeze_the_game(self) -> None:

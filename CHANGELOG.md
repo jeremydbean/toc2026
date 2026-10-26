@@ -8,6 +8,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **A connection that stops reading cannot freeze the game at close**
+  (2026-10-26). The listening socket sets `SO_LINGER` for 30 seconds and
+  every accepted connection inherited it, so `close()` on a client the
+  game had just dropped for not reading -- its unsent output still queued
+  -- blocked the single-threaded game for up to half a minute. Each
+  connection now turns linger off, and one dropped for not reading is
+  reset. This was the `test_audit_connections` failure CI showed for a
+  day and nothing here reproduced: the failure line now carries the stuck
+  server's state, syscall, backtrace and crash ring, and the syscall was
+  `close`.
+
 - **Walking a long corridor no longer gets you thrown out** (2026-10-26).
   The stock repeat guard forces a QUIT on the 25th identical line, and a
   client's walker sends a corridor a step at a time: Alaric and Trentlin
@@ -25,7 +36,7 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   next, for as long as it typed. `d->write_stalled_ms` now counts waiting
   across writes until one goes out clean, and past two seconds the client
   is dropped. Hardening found while chasing a `test_audit_connections`
-  failure in CI; it did not cure that failure, whose cause is still open.
+  failure in CI; that failure was the linger on close (above).
 
 - **Level 2's Dodongo takes the bombs it swallows** (2026-10-26). The
   guardian is immune to fire, and the swallowed bomb's blast was rolled as

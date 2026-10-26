@@ -5,6 +5,10 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261026f 2026-10-26
+A player whose connection stalls no longer freezes the game for everyone
+else for up to half a minute when the game lets them go.
+
 @ 20261026e 2026-10-26
 Walking a long corridor a step at a time -- a client's walker sending
 "east" thirty times -- no longer trips the spam guard and throws you out
