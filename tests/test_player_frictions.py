@@ -96,11 +96,18 @@ class FrictionLiveTests(unittest.TestCase):
                 login(client, "Zfriction", PASSWORD)
                 self.run_cmd(client, "scroll 0", 1.0)
 
-                # TRACK at 0%: the trail is lost, and no direction is named.
+                # TRACK at 1%: a missed roll loses the trail and names no
+                # direction. 1% is the lowest the skill goes and still finds
+                # the trail one time in a hundred (CI, 2026-10-26), so look
+                # at the first miss of up to five tries.
                 self.run_cmd(client, "set skill zfriction track 1", 1.2)
-                reply = self.run_cmd(client, "track zquarry", 2.0)
+                miss = re.compile(r"lose|nothing you trust|cannot pick out")
+                for _ in range(5):
+                    reply = self.run_cmd(client, "track zquarry", 2.0)
+                    if miss.search(reply):
+                        break
+                self.assertTrue(miss.search(reply), reply)
                 self.assertNotIn("You find a trail", reply)
-                self.assertTrue(re.search(r"lose|nothing you trust|cannot pick out", reply), reply)
                 # ...and at 100% the way, and how far.
                 self.run_cmd(client, "set skill zfriction track 100", 1.2)
                 reply = self.run_cmd(client, "track zquarry", 2.0)
@@ -110,8 +117,14 @@ class FrictionLiveTests(unittest.TestCase):
                 # HIDE says whether it worked.
                 self.run_cmd(client, "set skill zfriction hide 1", 1.2)
                 self.assertIn("find nowhere that would cover you", self.run_cmd(client, "hide", 1.6))
+                # At 100% HIDE still misses one roll in a hundred
+                # (number_percent() < 100), so look for the first success.
                 self.run_cmd(client, "set skill zfriction hide 100", 1.2)
-                self.assertIn("You slip into the shadows", self.run_cmd(client, "hide", 1.6))
+                for _ in range(5):
+                    reply = self.run_cmd(client, "hide", 1.6)
+                    if "You slip into the shadows" in reply:
+                        break
+                self.assertIn("You slip into the shadows", reply)
                 self.run_cmd(client, "visible", 1.2)
 
                 # The healer's REFRESH fills the pool in one go, priced by the slice.
