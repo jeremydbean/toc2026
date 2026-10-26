@@ -5,6 +5,10 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261026g 2026-10-26
+HELP DEATHTRAP explains death traps: what happens when you step into one,
+how long you have, and what will never carry you into one.
+
 @ 20261026f 2026-10-26
 A player whose connection stalls no longer freezes the game for everyone
 else for up to half a minute when the game lets them go.

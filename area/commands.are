@@ -2248,6 +2248,23 @@ Requires the TRIP skill; failure makes you lose footing yourself briefly.
 See also: BASH, KICK, NERVE
 ~
 
+0 DEATHTRAP DEATHTRAPS 'DEATH TRAP' 'DEATH TRAPS' DT~
+A death trap is a room that kills whoever stays in it: a pit, a spiked
+floor, a fall with no bottom.  There are a handful in the world, and the
+room description is usually the only warning you get.
+
+Step into one and you have about two seconds.  The first moment knocks you
+down and takes half your hit points ("Your fate has been sealed!"); the
+next one kills you.  Get out the way you came at once, if you still can.
+A death there is an ordinary death: your corpse and your gear lie in the
+trap's room, which is why they are so hard to recover.
+
+Teleport and gate never set you down in one, WALKTO never walks into one,
+and a recall point cannot be set in one.  Immortals are not harmed.
+
+See also: DEATH, CORPSE, WALKTO, RECALL
+~
+
 0 AQUEST QUEST QUESTING QUESTPOINT QUESTPOINTS QUESTOR THEWS DAILY DAILIES~
 Syntax: aquest <info|points|time|gamble>          anywhere
 Syntax: aquest <request|complete|list|buy|abort>  at a questmaster
