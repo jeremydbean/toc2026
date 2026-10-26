@@ -41,6 +41,40 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   free (owner). Mana growth and buffed stats at level gain are explained
   in AGENTS.md and left as they are, pending a policy decision.
 
+- **Independent review of main through 68ec283a** (2026-10-26), in six
+  phases, each with a regression that fails on the old code:
+  - *Resurrection is a recoverable transfer.* ACCEPT ended the corpse
+    first and ignored the save. Now the corpse's record is written and
+    held, a pending `resurrect:<id>` receipt goes down, everything moves,
+    the owner's file is saved with a restore mark, and only a durable save
+    sends the record to history and commits the receipt. A failed save
+    puts everything back and the offer stands; a crash between the save
+    and the commit is settled at boot from the owner's file
+    (`tests/test_resurrection_transfer.py`: partial looting, a bag inside,
+    coin, a failed save, a crash after it, a crash before the commit).
+  - *A rollback records the code it put back.* `toc-deploy --rollback`
+    left `log/deployed-commit` naming the removed code. Code trees and
+    snapshots now carry a verified identity (commit plus the merc's
+    sha256), rollback writes it atomically, a legacy snapshot is recorded
+    as `unknown` and makes the auto-deployer and recovery wait for a
+    person, the commit rolled back from is held from the auto-deployer,
+    and recovery will not build one commit's binary into another's tree
+    (`tests/test_deploy_rollback_identity.py`).
+  - *A pending corpse restore's retry saves before it commits*, online as
+    offline; the save fault now has a per-character point
+    (`save-<Name> N`).
+  - *Full PRESTORE can recover a deleted character* from a snapshot that
+    names them, rank-checked from the snapshot, with the retired uid put
+    back unless the name has passed to another character; a file that is
+    there but unreadable is still refused (`tests/test_prestore_deleted.py`).
+  - *Staff earn no expansion achievement by any path*, catch-up included:
+    the gate is in `achievement_unlock` (`tests/test_achievement_staff.py`).
+  - *Notices keep a wizinvis participant hidden*: EMPOWER, TITANIC, their
+    spells, RESURRECTION and GRANTPSI notices go out at the higher of both
+    parties' notice levels, and a wizinvis caster's spell words are no
+    longer shown as "An immortal utters the words"
+    (`tests/test_notice_visibility.py`).
+
 - **A connection that stops reading cannot freeze the game at close**
   (2026-10-26). The listening socket sets `SO_LINGER` for 30 seconds and
   every accepted connection inherited it, so `close()` on a client the

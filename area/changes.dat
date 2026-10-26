@@ -38,6 +38,17 @@ instead of dropping suddenly against tougher foes; and a necromancer's
 servants share one budget (HELP CREATE SKELETON), whatever order they
 are raised in.
 
+@ 20261026j 2026-10-26 staff
+PRESTORE can bring back a deleted character from a snapshot taken
+before the deletion, with the same identity, unless the name has
+passed to someone else since. Notices about a wizinvis immortal now
+stay at their wizinvis level.
+
+@ 20261026i 2026-10-26
+ACCEPTing a resurrection takes what is left in your corpse only once
+your character is safely saved. If the save fails you are told,
+everything stays in the corpse, and you can ACCEPT again.
+
 @ 20261026h 2026-10-26
 The Oracle can now tell you where your own corpse lies and how much is
 still in it, and answers a question about one gear slot (arms, boots, a
