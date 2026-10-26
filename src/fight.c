@@ -1805,6 +1805,8 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     &&   !is_invulnerable( victim ) )
     {
 	victim->hit -= dam;
+	if ( dam > 0 && victim != ch && !IS_NPC(victim) && victim->pcdata != NULL )
+	    victim->pcdata->fight_taken += dam;
 	/* A wound ends a Hyrule kill streak (hyrule_note_kill). */
 	if ( dam > 0 && victim != ch )
 	    hyrule_note_wound( victim );
@@ -2909,6 +2911,9 @@ void set_fighting( CHAR_DATA *ch, CHAR_DATA *victim )
 	ch->pcdata->meter_damage = 0;
 	ch->pcdata->meter_rounds = 0;
 	ch->pcdata->meter_active = true;
+	ch->pcdata->fight_taken = 0;
+	ch->pcdata->fight_hp_start = ch->hit;
+	ch->pcdata->fight_mana_start = ch->mana;
     }
 
     return;

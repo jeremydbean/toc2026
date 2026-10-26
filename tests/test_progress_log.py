@@ -96,13 +96,21 @@ class ProgressLogTests(unittest.TestCase):
         flees = [r for r in rows if r[1] == "flee"]
         self.assertEqual(len(kills), 2, text)
         kill, unpaid = kills
-        self.assertEqual(len(kill), 16, kill)
+        self.assertEqual(len(kill), 22, kill)
         self.assertEqual(kill[2], hunter_id)                  # the Id, not a name
         self.assertEqual((kill[3], kill[8], kill[9]), ("5", str(SMURF), "3"))
         self.assertTrue(kill[10].endswith(".are"), kill)       # an area file, never a room
         self.assertGreaterEqual(int(kill[11]), 0, "encounter length")
         self.assertGreater(int(kill[14]), 0, "accepted experience")
         self.assertEqual(kill[15], "1", "group size")
+        # The fight's ledger (class review, 2026-10-26): guild, buffs worn,
+        # damage dealt and taken, hit points recovered, mana spent --
+        # numbers only.
+        self.assertRegex(kill[16], r"^-?\d+$", "guild")
+        self.assertRegex(kill[17], r"^(-|[TESH]+)$", "buffs")
+        self.assertGreater(int(kill[18]), 0, "damage dealt")
+        for col in kill[19:22]:
+            self.assertRegex(col, r"^-?\d+$", kill)
         # Fifteen levels over the smurf: nothing earned, still recorded.
         self.assertEqual((unpaid[3], unpaid[8]), ("20", str(SMURF)), unpaid)
         self.assertEqual(int(unpaid[14]), 0, unpaid)

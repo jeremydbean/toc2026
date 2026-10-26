@@ -836,12 +836,37 @@ static void progress_write( const char *kind, CHAR_DATA *ch, CHAR_DATA *foe, con
 void progress_kill( CHAR_DATA *gch, CHAR_DATA *victim, int base_xp, int rested_xp,
                     long accepted_xp, int members )
 {
-    char tail[128];
+    char tail[256];
     long encounter = victim != NULL && victim->fight_began_ms > 0
                    ? playlog_now_ms() - victim->fight_began_ms : -1;
 
-    snprintf( tail, sizeof(tail), "%ld\t%d\t%d\t%ld\t%d",
-              encounter, base_xp, rested_xp, accepted_xp, members );
+    char buffs[8];
+    PC_DATA *pc = gch != NULL && !IS_NPC(gch) ? gch->pcdata : NULL;
+    int n = 0;
+
+    /* The fight in aggregate, for balance (class review, 2026-10-26):
+       the guild, the buffs worn (T titanic, E empower, S sanctuary,
+       H haste), and from the fight's ledger the damage dealt and taken,
+       the hit points recovered meanwhile (healing and regeneration:
+       what was taken less what was lost) and the mana spent. Numbers
+       only -- nothing typed, said or named. */
+    if ( pc != NULL )
+    {
+        if ( is_affected( gch, gsn_titanic ) ) buffs[n++] = 'T';
+        if ( is_affected( gch, gsn_empower ) ) buffs[n++] = 'E';
+        if ( IS_AFFECTED( gch, AFF_SANCTUARY ) ) buffs[n++] = 'S';
+        if ( IS_AFFECTED( gch, AFF_HASTE ) ) buffs[n++] = 'H';
+    }
+    if ( n == 0 )
+        buffs[n++] = '-';
+    buffs[n] = '\0';
+    snprintf( tail, sizeof(tail), "%ld\t%d\t%d\t%ld\t%d\t%d\t%s\t%ld\t%ld\t%ld\t%d",
+              encounter, base_xp, rested_xp, accepted_xp, members,
+              pc != NULL ? pc->guild : -1, buffs,
+              pc != NULL ? pc->meter_damage : 0L,
+              pc != NULL ? pc->fight_taken : 0L,
+              pc != NULL ? (long) gch->hit - pc->fight_hp_start + pc->fight_taken : 0L,
+              pc != NULL ? pc->fight_mana_start - gch->mana : 0 );
     progress_write( "kill", gch, victim, tail );
 }
 

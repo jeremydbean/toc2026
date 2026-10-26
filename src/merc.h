@@ -2382,6 +2382,12 @@ struct  pc_data
     long                meter_damage;
     int                 meter_rounds;
     bool                meter_active;
+    /* The rest of the fight's ledger, for log/progress.tsv's kill lines
+       (class review, 2026-10-26): damage taken, and hit points and mana
+       as the fight began. Reset with the meter; memory only. */
+    long                fight_taken;
+    int                 fight_hp_start;
+    int                 fight_mana_start;
     int                 dummy_hits;
     int                 dummy_misses;
     int                 dummy_swings;

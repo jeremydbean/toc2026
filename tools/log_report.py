@@ -432,7 +432,9 @@ def journal_report(args, since, buffs=None) -> None:
 # log/progress.tsv (src/playlog.c): epoch, kind (kill, flee, death), the
 # character's file Id (never a name), level, class, remorts, hp%, mana%,
 # foe vnum, foe level, area file; a kill adds encounter ms, base, rested
-# and accepted xp, and group members. Reported in aggregate only: the
+# and accepted xp, and group members, then (2026-10-26) guild, buffs worn
+# (T E S H or -), damage dealt and taken, hit points recovered and mana
+# spent in the fight. Reported in aggregate only: the
 # ids count independent characters and are never printed.
 def progress_summary(text: str, since: datetime) -> dict:
     by_foe: dict = {}
