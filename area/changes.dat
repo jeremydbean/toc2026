@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261026b 2026-10-26
+Hyrule's White Sword can be wielded from level 10, not 30, so the hero
+with the five hearts its old man asks for can use it when it is given.
+One already held keeps its old level; ask the old man for a new one by
+coming back without it.
+
 @ 20261026a 2026-10-26
 Some of Hyrule's keys, maps and compasses, and both boomerangs, now appear
 only when the last enemy in their room falls, as in the old game -- you

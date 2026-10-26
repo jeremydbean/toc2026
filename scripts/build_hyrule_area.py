@@ -1439,10 +1439,13 @@ ITEM_LEVELS = {
     30411: ItemLevel(16),                             # the raft
     # Level 4, band 20-27.
     30412: ItemLevel(22, armor_values(22)),           # the stepladder
-    # Level 5, band 27-33; the White Sword, Power Bracelet and Letter caves
-    # open from band 5 screens too.
+    # The White Sword wants five hearts, which two guardians or two take-any
+    # caves give a character of level 5 to 14, so it is levelled to be held
+    # then (it was 30, unwieldable when earned). Band 2's top, 3d5 +2/+2.
+    30251: ItemLevel(10, "1 3 5 20 D"),               # White Sword
+    # Level 5, band 27-33; the Power Bracelet and Letter caves open from
+    # band 5 screens too.
     30413: ItemLevel(30, armor_values(30)),           # the Recorder
-    30251: ItemLevel(30, "1 10 5 20 D"),              # White Sword, 10d5 +2/+2
     30276: ItemLevel(30),                             # Power Bracelet
     # Level 6, band 33-40.
     30245: ItemLevel(38, "38 5 5 70 0"),              # the Magical Rod

@@ -269,8 +269,10 @@ found, and its stats are rescaled to that level (`ITEM_LEVELS`,
   59).
 - Caves, cellars, and quest items take the band of the screen or dungeon they
   open from: the Wooden Sword is level 1 (2d4), the small boomerang 4, the
-  short bow 6, the Magical Boomerang 12, the raft 16, the stepladder 22, the
-  White Sword, Power Bracelet, and Recorder 30, the Magical Rod 38, the Red
+  short bow 6, the White Sword 10 (wanted at five hearts, two guardians or
+  two take-any caves in; it was 30 until 2026-10-26, unwieldable when
+  earned), the Magical Boomerang 12, the raft 16, the stepladder 22, the
+  Power Bracelet and Recorder 30, the Magical Rod 38, the Red
   Candle 42, the Magic Book and Magical Key 48, and each Triforce shard the
   bottom of its dungeon's band.
 - A shop item takes the lowest band it is sold in.
@@ -278,8 +280,8 @@ found, and its stats are rescaled to that level (`ITEM_LEVELS`,
   Mountain's band. It used to lie in the B6 graveyard, a band 6 screen, as the
   one item above its band; the grave is still there and holds nothing now.
 - Each guardian's key and chest are at the bottom of its dungeon's band, and
-  the treasures in the chests are all at or below it (the bow, level 6, sits in
-  Level 5's chest; the Recorder, level 30, in Level 6's).
+  each tool sits at or below the band it is found in (the bow, level 6, in
+  Level 1's cellar; the Recorder, level 30, in Level 5's).
 - The Silver Arrow stays at level 54 (`HYRULE_SILVER_ARROW_LEVEL`), inside
   Death Mountain's band; the relics stay at 54-58, and the Red Ring of Hyrule
   (58) lies in Death Mountain's Red Ring Cellar.
@@ -1257,6 +1259,41 @@ dungeon's map, compass and item cellar matched by its offset from the
 entrance, and in Level 9 every landmark the sources place -- map, compass,
 Red Ring stair, Ganon, Zelda and the Silver Arrow stair -- sits at the
 manifest's own coordinates.
+
+### The October 2026 Fidelity Audit
+
+A third pass (2026-10-25/26) checked Hyrule against the game's own data: the
+overworld's tile edges, docks and ladder rooms and the mazes from the
+`zelda1-disassembly` source, and every dungeon room from the cartridge's
+room tables (doors, enemies, items and the condition that shows each),
+cross-checked against TheVGLC's maps. Walkthrough sites refused automated
+readers again; three search summaries agreed with the decoded data. What it
+changed is under Mazes, What A Cleared Room Gives, The Order Of The Dungeons
+and Item Levels above, and in `CHANGELOG.md`.
+
+Adaptations the audit kept, on purpose -- each a MUD stand-in for something
+the NES does with its screen or its clock:
+
+| NES | Here |
+| --- | --- |
+| A clock freezes every enemy on the screen | A clock-flask: a potion of haste |
+| Hearts and a life bar | Hit points; hearts are counted for the swords and caves (`HEARTS`) |
+| Rupees, capped at 255 | Gold, uncapped |
+| The raft ferries you from a dock | `ENTER RAFT` at Level 4's island; a raft crossing from the Eastern Dock |
+| A sword beam, a shield that turns shots | Melee and the game's own defences |
+| Leaving the cave between money games | The game wants the worst sign's 40 gold instead |
+| One-sided shutters | Shutters open from both sides once the room is clear |
+| Up to eight of a kind in a room | At most three (Population) |
+| The tools in the guardians' rooms' order | Each guardian's chamber still asks for one tool found before it (the plan table) -- an owner's decision to keep or replace with the NES's in-fight needs |
+| Second Quest | Not here, and nothing of it is |
+
+What the audit found and did not change yet: enemies missing or wrong in
+some dungeon rooms (Level 3's and 8's darknut rooms filled with zols; a
+Moldorm, Manhandla and Gleeok mini-bosses absent), two missing locked doors
+in Level 4 and one in Level 5, three passages in Level 9 that are walls on
+the NES, and Level 2's boss room with its shutter on the wrong side. The
+room-by-room table is in the audit notes; each is a data change in the
+manifest and the generator.
 
 ## Related Documentation
 
