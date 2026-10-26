@@ -197869,3 +197869,9 @@ Mon Oct 26 02:54:57 2026 :: Treasure goblin: vanished from room 13298 (Hallway, 
 Mon Oct 26 02:55:13 2026 :: Black market: the dealer appeared with 5 items (stock 1792983313), for 30 minutes.
 Mon Oct 26 02:58:22 2026 :: Sock.sinaddr:  178.156.184.20
 Mon Oct 26 02:58:23 2026 :: EOF encountered on read.
+Mon Oct 26 03:02:46 2026 :: Black market: the dealer vanished from room 25058 (Dead End, mountain.are) (wandering).
+Mon Oct 26 03:03:27 2026 :: Sock.sinaddr:  5.161.177.47
+Mon Oct 26 03:03:27 2026 :: EOF encountered on read.
+Mon Oct 26 03:03:50 2026 :: Black market: the dealer vanished from room 1327 (A dark cell, htower.are) (wandering).
+Mon Oct 26 03:05:02 2026 :: Treasure goblin: vanished from room 7051 (The Sewer pipe, sewer.are) (too long in one area).
+Mon Oct 26 03:05:58 2026 :: Black market: the dealer vanished from room 13024 (Road among the Vallenwoods., lakes.are) (wandering).
