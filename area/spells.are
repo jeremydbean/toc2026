@@ -364,6 +364,10 @@ These spells cure damage on the target character.  The higher-level spells
 heal more damage.  Mass healing heals and refreshes all characters in
 the room.
 
+Heal restores 100 hit points when cast at level 25 or below, and two more
+for every level above that: 130 at 40, 150 at 50, 168 at 59.  A caster who
+is not a cleric heals two thirds as much.
+
 For cure light, minimum level depends on your primary class and is:
 Mage:2  Cleric:1  Thief:5  Warrior:3  Monk: N/A   Necromancer:N/A
 

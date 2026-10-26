@@ -3296,11 +3296,13 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
 void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     UNUSED_PARAM(sn);
-    UNUSED_PARAM(level);
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     int heal;
 
-    heal = 100;
+    /* 100 at 25 and below, two more a level above it, stopping at 59:
+       150 at 50, 168 at 59. A flat 100 fell from a third of a level 25's
+       hit points to a sixth of a level 50's (class review, 2026-10-26). */
+    heal = heal_spell_amount( level );
 
     if (ch->class != CLASS_CLERIC)
     {

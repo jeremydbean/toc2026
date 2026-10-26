@@ -71,3 +71,22 @@ int crane_dance_mean( int hp, int level )
         mean = 1;
     return (int) mean;
 }
+
+
+/*
+ * HEAL's hit points at a casting level. It was a flat 100 from the level a
+ * cleric first casts it (23) to the last a mortal reaches, while hit points
+ * roughly double from 25 to 50 and Hermie's TITANIC multiplies them by
+ * six: a third of a level 25's maximum became a sixth of a level 50's
+ * (class review, 2026-10-26). Two more a level above 25, so the spell
+ * keeps a share of a growing pool without matching it: 130 at 40, 150 at
+ * 50, 168 at 59, and never more however high a potion or a mobile casts.
+ */
+int heal_spell_amount( int level )
+{
+    if ( level > HEAL_TOP_LEVEL )
+        level = HEAL_TOP_LEVEL;
+    if ( level <= HEAL_FLAT_TO )
+        return HEAL_BASE;
+    return HEAL_BASE + ( level - HEAL_FLAT_TO ) * HEAL_PER_LEVEL;
+}

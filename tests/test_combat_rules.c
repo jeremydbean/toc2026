@@ -135,6 +135,22 @@ int main( void )
             && UNDEAD_COST_WRAITH + 3 * UNDEAD_COST_SKELETON > UNDEAD_BUDGET,
             "5 skeletons, 2 wraiths, 1 vampire, or a wraith and 2 skeletons" );
 
+    /* HEAL: flat to 25, then two a level, stopping at 59, never falling. */
+    {
+        int level, monotonic = 1;
+
+        for ( level = -5; level < 200; level++ )
+            if ( heal_spell_amount( level + 1 ) < heal_spell_amount( level ) )
+                monotonic = 0;
+        report( "heal_amount",
+                monotonic
+                && heal_spell_amount( 1 ) == 100 && heal_spell_amount( 25 ) == 100
+                && heal_spell_amount( 40 ) == 130 && heal_spell_amount( 50 ) == 150
+                && heal_spell_amount( 59 ) == 168 && heal_spell_amount( 70 ) == 168
+                && heal_spell_amount( 2000000000 ) == 168,
+                "100 to 25, 130 at 40, 150 at 50, 168 from 59" );
+    }
+
     /* Smite's wear reaches 0 in a handful of strains, never in one. */
     report( "smite_wear",
             SMITE_WEAR_MIN > 0 && SMITE_WEAR_MAX < 100

@@ -33,4 +33,13 @@ int crane_dance_mean( int hp, int level );
 #define SMITE_WEAR_MIN 15
 #define SMITE_WEAR_MAX 35
 
+/* HEAL's hit points at a casting level: HEAL_BASE through HEAL_FLAT_TO,
+   HEAL_PER_LEVEL more a level above it, no further than HEAL_TOP_LEVEL.
+   A caster who is not a cleric heals two thirds of it. */
+#define HEAL_BASE       100
+#define HEAL_FLAT_TO    25
+#define HEAL_PER_LEVEL  2
+#define HEAL_TOP_LEVEL  59
+int heal_spell_amount( int level );
+
 #endif
