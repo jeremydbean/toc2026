@@ -14,8 +14,8 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   each quarter second, so every write could wait its full second, and the
   next, for as long as it typed. `d->write_stalled_ms` now counts waiting
   across writes until one goes out clean, and past two seconds the client
-  is dropped. `test_audit_connections` failed on two CI runs in a row once
-  new modules moved it onto a busier shard.
+  is dropped. Hardening found while chasing a `test_audit_connections`
+  failure in CI; it did not cure that failure, whose cause is still open.
 
 - **Level 2's Dodongo takes the bombs it swallows** (2026-10-26). The
   guardian is immune to fire, and the swallowed bomb's blast was rolled as

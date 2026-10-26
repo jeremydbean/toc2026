@@ -150,11 +150,15 @@ class SlowReaderTests(unittest.TestCase):
                         dropped = True          # the game let go of us
                         break
                     time.sleep(0.3)
-                    if sent % 10 == 0:
-                        self.assertTrue(
-                            greeting_arrives(mud.port),
-                            f"the game stopped answering new connections "
-                            f"after {sent} floods from one client that never reads")
+                    if sent % 10 == 0 and not greeting_arrives(mud.port):
+                        # CI reprints only this first line: say whether
+                        # the server is alive and what it said last.
+                        tail = [line.split(" :: ", 1)[-1] for line in
+                                mud.server_output().splitlines() if line.strip()][-4:]
+                        self.fail(f"the game stopped answering new connections "
+                                  f"after {sent} floods from one client that never "
+                                  f"reads; server exit={mud.proc.poll()}; last: "
+                                  + " | ".join(tail))
             finally:
                 slow.close()
 

@@ -2614,9 +2614,7 @@ bool write_to_descriptor( DESCRIPTOR_DATA *d, const char *txt, int length )
  * that never reads but whose kernel takes a trickle -- the send buffer
  * grows by autotuning -- made progress inside every quarter second, so
  * each write could wait its full second and the next write a second
- * more, for as long as it kept typing. CHANGES ALL past 32,000 bytes is
- * two writes, and a slow runner then stopped greeting new connections
- * (test_audit_connections). d->write_stalled_ms counts the waiting across
+ * more, for as long as it kept typing. d->write_stalled_ms counts the waiting across
  * writes and is cleared only by a write that never had to wait; past
  * WRITE_STALL_BUDGET_MS of it the client is let go, so the most anybody
  * else ever waits on one connection is two seconds between its clean
