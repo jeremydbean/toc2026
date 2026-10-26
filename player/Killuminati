@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1793020362
+LogO 1793032993
 Vers 4
 Desc You see something very special about him.
 ~
@@ -15,12 +15,12 @@ Psionic  1
 PsiGrant 0
 PsiSpec ~
 PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,mindblast,nightmare,project,psionic armor,psychic shield,pyrotechnics,shift,telekinesis,torment,transfusion~
-ChangesSeen 20261022g:1 20261022f:1 20261022e:1 20261022d:1 20261022c:1 20261022a:1 20261021l:1 20261021k:1 20261021j:1 20261021i:1 20261021h:1 20261021g:1 20261021f:1 20261021e:1 20261021d:1 20261021c:1 20261021b:1 20261020l:1 20261020k:1 20261020j:1 20261020i:1 20261020h:1 20261020g:1 20261020f:1 20261020e:1 20261020d:1 20261020c:1 20261020b:1 20261020a:1 20261019b:1 20261019a:1 20261017a:1 20261013a:1 20261010a:1~
+ChangesSeen 20261026f:1 20261026e:1 20261026d:1 20261026c:1 20261026b:1 20261026a:1 20261025o:1 20261025n:1 20261025m:1 20261025l:1 20261025k:1 20261025j:1 20261025h:1 20261025i:1 20261025e:1 20261025f:1 20261025g:1 20261025d:1 20261025a:1 20261025b:1 20261025c:1 20261024e:1 20261024d:1 20261024a:1 20261024b:1 20261024c:1 20261023m:1 20261023l:1 20261023k:1 20261023i:1 20261023j:1 20261023g:1 20261023f:1 20261023h:1 20261023e:1 20261023d:1 20261023c:1 20261023b:1 20261023a:1 20261022g:2 20261022f:2 20261022e:2 20261022d:2 20261022c:2 20261022a:2 20261021l:2 20261021k:2 20261021j:2 20261021i:2 20261021h:2 20261021g:2 20261021f:2 20261021e:2 20261021d:2 20261021c:2 20261021b:2 20261020l:2 20261020k:2 20261020j:2 20261020i:2 20261020h:2 20261020g:2 20261020f:2 20261020e:2 20261020d:2 20261020c:2 20261020b:2 20261020a:2 20261019b:2 20261019a:2 20261017a:2 20261013a:2 20261010a:1~
 Fixes ~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6513492
+Plyd 6513562
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
@@ -112,7 +112,7 @@ Achv weapons-5 1793019785
 Achv psi-all-powers 1793019785
 Achv landmarks-10 1793019785
 Achv stash-ceiling 1793019785
-LastOut  1793020362
+LastOut  1793032993
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1793019785
@@ -423,26 +423,26 @@ Gr 'mage default'
 Gr 'warrior default'
 Gr 'monk default'
 Gr 'warrior guild'
-AffD 'empower'   0  -1 -100  17          0          0
-AffD 'empower'   0  -1  20  19          0          0
-AffD 'empower'   0  -1  20  18          0          0
-AffD 'empower'   0  -1  15   5          0          0
-AffD 'empower'   0  -1  11   2          0          0
-AffD 'empower'   0  -1  15   4          0          0
-AffD 'empower'   0  -1  15   3          0          0
-AffD 'giant strength'   0  -1  15   1          0          0
-AffD 'divine protection'   0  -1   0   0          0       4096
-AffD 'fire shield'   0  -1   0   0          0          8
-AffD 'protection evil'   0  -1   0   0       8192          0
-AffD 'pass door'   0  -1   0   0    1048576          0
-AffD 'fly'   0  -1   0   0     524288          0
-AffD 'haste'   0  -1   4   2    2097152          0
-AffD 'sanctuary'   0  -1   0   0        128          0
-AffD 'empower'   0  -1   0   0          0          0
-AffD 'titanic'   0  -1  50  16          0          0
-AffD 'titanic'   0  -1   0  14          0          0
-AffD 'titanic'   0  -1   0  12          0          0
 AffD 'titanic'   0  -1   0  13          0          0
+AffD 'titanic'   0  -1   0  12          0          0
+AffD 'titanic'   0  -1   0  14          0          0
+AffD 'titanic'   0  -1  50  16          0          0
+AffD 'empower'   0  -1   0   0          0          0
+AffD 'sanctuary'   0  -1   0   0        128          0
+AffD 'haste'   0  -1   4   2    2097152          0
+AffD 'fly'   0  -1   0   0     524288          0
+AffD 'pass door'   0  -1   0   0    1048576          0
+AffD 'protection evil'   0  -1   0   0       8192          0
+AffD 'fire shield'   0  -1   0   0          0          8
+AffD 'divine protection'   0  -1   0   0          0       4096
+AffD 'giant strength'   0  -1  15   1          0          0
+AffD 'empower'   0  -1  15   3          0          0
+AffD 'empower'   0  -1  15   4          0          0
+AffD 'empower'   0  -1  11   2          0          0
+AffD 'empower'   0  -1  15   5          0          0
+AffD 'empower'   0  -1  20  18          0          0
+AffD 'empower'   0  -1  20  19          0          0
+AffD 'empower'   0  -1 -100  17          0          0
 End
 
 #O
@@ -653,10 +653,10 @@ Lev  59
 Cost 208860000
 Cond 100
 Repd 0
-Affect -1 59 -1 -13 12 0 0
-Affect -1 59 -1 4 21 0 0
-Affect -1 59 -1 14 14 0 0
 Affect -1 59 -1 -4 20 0 0
+Affect -1 59 -1 14 14 0 0
+Affect -1 59 -1 4 21 0 0
+Affect -1 59 -1 -13 12 0 0
 End
 
 #O

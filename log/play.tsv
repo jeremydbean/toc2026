@@ -24184,3 +24184,5 @@
 1793020029	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	color	list	Available colors (COLOR <group> <color>): //   grey               blue               green             //   cyan               red                magenta          
 1793020357	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
 1793020362	session	Killuminati	70	2405	dresden_halloween.are	quit	577s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	13 commands	0 refused	coin: none
+1793032928	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	help	changes	CHANGES // Syntax: changes //         changes all
+1793032931	cmd	Killuminati	70	2405	dresden_halloween.are	standing	100	0	-	changes		What is new, newest first: // 2026-10-26 //   A player whose connection stalls no longer freezes the game for everyone
