@@ -1284,7 +1284,7 @@ the NES does with its screen or its clock:
 | Leaving the cave between money games | The game wants the worst sign's 40 gold instead |
 | One-sided shutters | Shutters open from both sides once the room is clear |
 | Up to eight of a kind in a room | At most three (Population) |
-| The tools in the guardians' rooms' order | Each guardian's chamber still asks for one tool found before it (the plan table) -- an owner's decision to keep or replace with the NES's in-fight needs |
+| The tools in the guardians' rooms' order | Each guardian's chamber still asks for one tool found before it (the plan table); kept as the campaign's gates (owner, 2026-10-26) |
 | Second Quest | Not here, and nothing of it is |
 
 The audit also corrected 18 rooms' enemies (darknut rooms the map
@@ -1295,7 +1295,9 @@ A8/B8 and A5/B5 and Level 5's C2/D2, Level 9's F4/G4 open, and its C3/D3
 and D2/E2 walls. Still not here: the NES's mini-bosses in ordinary rooms
 -- Moldorms (Levels 2 and 7), Manhandlas and blue Gohmas (Level 8), a
 three-headed Gleeok (Level 6) -- and its rupee hoards; each would be a new
-kind of enemy with prose for its band. Level 2's boss room keeps its
+kind of enemy with prose for its band. They and the hoards stay out, and
+the Blue Ring stays the level 45 shop ring rather than the NES's early
+one (owner, 2026-10-26). Level 2's boss room keeps its
 locked treasure door where the NES has a shutter (the chain above).
 
 ## Related Documentation
