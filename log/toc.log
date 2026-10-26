@@ -197056,3 +197056,127 @@ Mon Oct 26 01:48:14 2026 :: Log Alaric [2497]: aq ga no
 Mon Oct 26 01:48:16 2026 :: Log Alaric [2497]: sc
 Mon Oct 26 01:48:21 2026 :: Log Alaric [2497]: steel
 Mon Oct 26 01:50:23 2026 :: Sock.sinaddr:  99.62.115.159
+Mon Oct 26 01:52:13 2026 :: Treasure goblin: vanished from room 6118 (A small path in the deep, dark forest, haon.are) (too long in one area).
+Mon Oct 26 01:52:18 2026 :: Sock.sinaddr:  5.161.73.160
+Mon Oct 26 01:52:18 2026 :: EOF encountered on read.
+Mon Oct 26 01:53:18 2026 :: Log Alaric [2497]: aq re
+Mon Oct 26 01:53:18 2026 :: Log Alaric [2497]: quest assigned: recover The Crown of Eclipse (obj 25040) in solace.are, 27 minutes, ordinary
+Mon Oct 26 01:53:26 2026 :: Log Alaric [2497]: enter door
+Mon Oct 26 01:53:26 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 01:53:26 2026 :: Log Alaric [2401]: west
+Mon Oct 26 01:53:26 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Mon Oct 26 01:53:27 2026 :: Log Alaric [2405]: west
+Mon Oct 26 01:53:27 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Mon Oct 26 01:53:27 2026 :: Log Alaric [2433]: west
+Mon Oct 26 01:53:27 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Mon Oct 26 01:53:27 2026 :: Log Alaric [2434]: west
+Mon Oct 26 01:53:27 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Mon Oct 26 01:53:27 2026 :: Log Alaric [2435]: west
+Mon Oct 26 01:53:27 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Mon Oct 26 01:53:28 2026 :: Log Alaric [2436]: west
+Mon Oct 26 01:53:28 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Mon Oct 26 01:53:28 2026 :: Log Alaric [2437]: west
+Mon Oct 26 01:53:28 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Mon Oct 26 01:53:28 2026 :: Log Alaric [2438]: open west
+Mon Oct 26 01:53:28 2026 :: Log Alaric [2438]: west
+Mon Oct 26 01:53:28 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Mon Oct 26 01:53:32 2026 :: Log Alaric [2439]: west
+Mon Oct 26 01:53:32 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Mon Oct 26 01:53:32 2026 :: Log Alaric [6000]: west
+Mon Oct 26 01:53:32 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Mon Oct 26 01:53:33 2026 :: Log Alaric [6001]: west
+Mon Oct 26 01:53:33 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Mon Oct 26 01:53:33 2026 :: Log Alaric [6002]: south
+Mon Oct 26 01:53:33 2026 :: Log Alaric [6011]: arrived (A small path through the light forest) from 6002
+Mon Oct 26 01:53:33 2026 :: Log Alaric [6011]: south
+Mon Oct 26 01:53:33 2026 :: Log Alaric [6008]: arrived (The forest clearing) from 6011
+Mon Oct 26 01:53:33 2026 :: Log Alaric [6008]: east
+Mon Oct 26 01:53:33 2026 :: Log Alaric [6009]: arrived (Outside a small cabin in the forest) from 6008
+Mon Oct 26 01:53:34 2026 :: Log Alaric [6009]: south
+Mon Oct 26 01:53:34 2026 :: Log Alaric [6014]: arrived (An intersection in the dense forest) from 6009
+Mon Oct 26 01:53:34 2026 :: Log Alaric [6014]: east
+Mon Oct 26 01:53:34 2026 :: Log Alaric [6015]: arrived (A small path in the dense forest) from 6014
+Mon Oct 26 01:53:34 2026 :: Log Alaric [6015]: south
+Mon Oct 26 01:53:34 2026 :: Log Alaric [6016]: arrived (A small path in the dense forest) from 6015
+Mon Oct 26 01:53:34 2026 :: Log Alaric [6016]: south
+Mon Oct 26 01:53:34 2026 :: Log Alaric [6017]: arrived (A small path in the dense forest) from 6016
+Mon Oct 26 01:53:35 2026 :: Log Alaric [6017]: west
+Mon Oct 26 01:53:35 2026 :: Log Alaric [6018]: arrived (An intersection in the light forest) from 6017
+Mon Oct 26 01:53:35 2026 :: Log Alaric [6018]: south
+Mon Oct 26 01:53:35 2026 :: Log Alaric [51]: arrived (The top of the cliff.) from 6018
+Mon Oct 26 01:53:35 2026 :: Log Alaric [51]: down
+Mon Oct 26 01:53:35 2026 :: Log Alaric [13001]: arrived (Rock Outcropping) from 51
+Mon Oct 26 01:53:35 2026 :: Log Alaric [13001]: down
+Mon Oct 26 01:53:35 2026 :: Log Alaric [13002]: arrived (Small Grove) from 13001
+Mon Oct 26 01:53:36 2026 :: Log Alaric [13002]: west
+Mon Oct 26 01:53:36 2026 :: Log Alaric [13003]: arrived (Entrance to the Town of Solace) from 13002
+Mon Oct 26 01:53:36 2026 :: Log Alaric [13003]: north
+Mon Oct 26 01:53:36 2026 :: Log Alaric [13201]: arrived (Gateway to Solace) from 13003
+Mon Oct 26 01:53:37 2026 :: Log Alaric [13201]: n
+Mon Oct 26 01:53:37 2026 :: Log Alaric [13202]: arrived (Main Road) from 13201
+Mon Oct 26 01:53:38 2026 :: Log Alaric [13202]: n
+Mon Oct 26 01:53:38 2026 :: Log Alaric [13203]: arrived (Main Road) from 13202
+Mon Oct 26 01:53:38 2026 :: Log Alaric [13203]: n
+Mon Oct 26 01:53:38 2026 :: Log Alaric [13204]: arrived (Main Road) from 13203
+Mon Oct 26 01:53:40 2026 :: Log Alaric [13204]: affects off: steel fist
+Mon Oct 26 01:53:40 2026 :: Log Alaric [13204]: n
+Mon Oct 26 01:53:40 2026 :: Log Alaric [13205]: arrived (Intersection at Main Road.) from 13204
+Mon Oct 26 01:53:41 2026 :: Log Alaric [13205]: n
+Mon Oct 26 01:53:41 2026 :: Log Alaric [13228]: arrived (Main Road) from 13205
+Mon Oct 26 01:53:42 2026 :: Log Alaric [13228]: n
+Mon Oct 26 01:53:42 2026 :: Log Alaric [13229]: arrived (End of the Main Road) from 13228
+Mon Oct 26 01:53:42 2026 :: Log Alaric [13229]: n
+Mon Oct 26 01:53:42 2026 :: Log Alaric [13272]: arrived (Cobblestone Path) from 13229
+Mon Oct 26 01:53:43 2026 :: Log Alaric [13272]: n
+Mon Oct 26 01:53:43 2026 :: Log Alaric [13282]: arrived (Outside the Inn of the Last Home.) from 13272
+Mon Oct 26 01:53:44 2026 :: Log Alaric [13282]: on
+Mon Oct 26 01:53:45 2026 :: Log Alaric [13282]: n
+Mon Oct 26 01:53:45 2026 :: Log Alaric [13292]: arrived (Captain's Office.) from 13282
+Mon Oct 26 01:53:46 2026 :: Log Alaric [13292]: on
+Mon Oct 26 01:53:47 2026 :: Log Alaric [13292]: n
+Mon Oct 26 01:53:47 2026 :: Log Alaric [13302]: arrived (Captain's Meeting room.) from 13292
+Mon Oct 26 01:53:48 2026 :: Log Alaric [13302]: on
+Mon Oct 26 01:53:49 2026 :: Log Alaric [13302]: n
+Mon Oct 26 01:53:49 2026 :: Log Alaric [13312]: arrived (Captain's Waiting Room.) from 13302
+Mon Oct 26 01:53:50 2026 :: Log Alaric [13312]: oe
+Mon Oct 26 01:53:50 2026 :: Log Alaric [13312]: e
+Mon Oct 26 01:53:50 2026 :: Log Alaric [13313]: arrived (Administration Hallway) from 13312
+Mon Oct 26 01:53:52 2026 :: Log Alaric [13313]: ex
+Mon Oct 26 01:53:54 2026 :: Log Alaric [13313]: s
+Mon Oct 26 01:53:54 2026 :: Log Alaric [13303]: arrived (Administration Hallway) from 13313
+Mon Oct 26 01:53:54 2026 :: Log Alaric [13303]: ex
+Mon Oct 26 01:53:55 2026 :: Log Alaric [13303]: s
+Mon Oct 26 01:53:55 2026 :: Log Alaric [13293]: arrived (Administration Hallway) from 13303
+Mon Oct 26 01:53:56 2026 :: Log Alaric [13293]: ex
+Mon Oct 26 01:53:56 2026 :: Log Alaric [13293]: e
+Mon Oct 26 01:53:56 2026 :: Log Alaric [13294]: arrived (Administration Hallway) from 13293
+Mon Oct 26 01:53:57 2026 :: Log Alaric [13294]: ex
+Mon Oct 26 01:53:58 2026 :: Log Alaric [13294]: s
+Mon Oct 26 01:53:58 2026 :: Log Alaric [13284]: arrived (Administration Hallway) from 13294
+Mon Oct 26 01:53:58 2026 :: Log Alaric [13284]: ex
+Mon Oct 26 01:53:59 2026 :: Log Alaric [13284]: s
+Mon Oct 26 01:53:59 2026 :: Log Alaric [13274]: arrived (Administration Hallway) from 13284
+Mon Oct 26 01:54:00 2026 :: Log Alaric [13274]: ex
+Mon Oct 26 01:54:01 2026 :: Log Alaric [13274]: w
+Mon Oct 26 01:54:01 2026 :: Log Alaric [13273]: arrived (Sergeant's Reception Room) from 13274
+Mon Oct 26 01:54:03 2026 :: Log Alaric [13273]: on
+Mon Oct 26 01:54:03 2026 :: Log Alaric [13273]: ex
+Mon Oct 26 01:54:04 2026 :: Log Alaric [13273]: e
+Mon Oct 26 01:54:04 2026 :: Log Alaric [13274]: arrived (Administration Hallway) from 13273
+Mon Oct 26 01:54:05 2026 :: Log Alaric [13274]: e
+Mon Oct 26 01:54:05 2026 :: Log Alaric [13275]: arrived (Administration Hallway) from 13274
+Mon Oct 26 01:54:06 2026 :: Log Alaric [13275]: ex
+Mon Oct 26 01:54:07 2026 :: Log Alaric [13275]: on
+Mon Oct 26 01:54:07 2026 :: Log Alaric [13275]: ex
+Mon Oct 26 01:54:08 2026 :: Log Alaric [13275]: n
+Mon Oct 26 01:54:08 2026 :: Log Alaric [13285]: arrived (Guards Room.) from 13275
+Mon Oct 26 01:54:10 2026 :: Log Alaric [13285]: get all
+Mon Oct 26 01:54:12 2026 :: Log Alaric [13285]: recal
+Mon Oct 26 01:54:12 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 13285
+Mon Oct 26 01:54:14 2026 :: Log Alaric [2497]: aq co
+Mon Oct 26 01:54:14 2026 :: Log Alaric [2497]: copper +94640700
+Mon Oct 26 01:54:14 2026 :: Log Alaric [2497]: quest complete: 94p 64g 7s, 72 quest points (streak bonus 106%)
+Mon Oct 26 01:54:14 2026 :: Snapshot of Alaric taken before quest: Alaric.20261026_015414.quest (PRESTORE Alaric to see it).
+Mon Oct 26 01:54:16 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct 26 01:54:17 2026 :: Log Alaric [2497]: sc
+Mon Oct 26 01:54:20 2026 :: Log Alaric [2497]: steel
