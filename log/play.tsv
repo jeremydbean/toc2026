@@ -24222,3 +24222,117 @@
 1793034057	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	lastlog		Recent logins, newest first: // Date/Time            Character      Event      Played     Host // Mon Oct 26 16:42:03  Killuminati    connect    -          99.62.115.159
 1793034078	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
 1793034110	session	Killuminati	70	1	limbo_halloween.are	quit	1186s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	38 commands	1 refused	coin: none
+1793042327	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1793042329	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	18	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Thank you for answering the call, brave Alaric!' // Questor Thews tells you 'A prized artifact - The Heart of Tifarah - has gone missing!'
+1793042332	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1793042333	cmd	Alaric	50	2405	dresden_halloween.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1793042333	cmd	Alaric	50	2433	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1793042333	cmd	Alaric	50	2434	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793042333	cmd	Alaric	50	2435	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793042334	cmd	Alaric	50	2436	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793042334	cmd	Alaric	50	2437	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793042334	cmd	Alaric	50	2438	dresden_halloween.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1793042334	cmd	Alaric	50	2438	dresden_halloween.are	standing	100	0	-	open	west	Ok.
+1793042335	cmd	Alaric	50	2439	dresden_halloween.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1793042336	cmd	Alaric	50	6000	haon.are	standing	100	0	-	west		The edge of the forest //   You are standing at the eastern edge of a big forest.  To the east is the // West Gate of Dresden and to the west is a narrow trail, leading in through
+1793042336	cmd	Alaric	50	6001	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a trail leading through the forest.  To the east is the forest // edge and to the west, the trail leads further into the forest.
+1793042337	cmd	Alaric	50	6002	haon.are	standing	100	0	-	west		A trail through the light forest //   You are on a narrow trail leading east and west through the forest.  To the // west, the forest gradually becomes more dense.  A small forest path leads
+1793042337	cmd	Alaric	50	6011	haon.are	standing	100	0	-	south		A small path through the light forest //   You are on a small path leading through the forest.  The trees are tall and // slender.  Paths lead north and south.
+1793042337	cmd	Alaric	50	6008	haon.are	standing	100	0	-	south		The forest clearing //   You are in a clearing in the forest.  Lots of fresh stumps of varying sizes // protrude from the ground and heavy logs are stacked neatly in a big pile
+1793042337	cmd	Alaric	50	6007	haon.are	standing	100	0	-	west		An intersection in the dense forest //   You are on a small path leading through the dense forest.  The crowns of the // old trees leave the forest in an unreal twilight illumination.  The forest
+1793042338	cmd	Alaric	50	6012	haon.are	standing	100	0	-	south		An intersection in the dense forest //   You are on a small path leading through the dense forest.  The crowns of the // old trees leave the forest floor in an unreal twilight illumination.  Paths
+1793042338	cmd	Alaric	50	6021	haon.are	standing	100	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  To the // west there is a cave entrance.  The path continues north and east.
+1793042338	cmd	Alaric	50	6020	haon.are	standing	100	0	-	east		A small path in the dense forest //   You are on a small path leading through the dense forest.  The crowns of the // old trees leave the forest in an unreal twilight illumination.  The path
+1793042338	cmd	Alaric	50	6019	haon.are	standing	100	0	-	south		A small path in the dense forest //   You are on a small path leading through the dense forest.  The forest seems // to become lighter to the east.  The path continues north and east.
+1793042339	cmd	Alaric	50	6018	haon.are	standing	100	0	-	east		An intersection in the light forest //   You are on a small path leading through the forest.  A path leads north // to a small field and other paths lead east and west into the dense forest.
+1793042339	cmd	Alaric	50	51	connect.are	standing	100	0	-	south		The top of the cliff. //   You are standing on the ledge of a huge cliff on the side of a valley // with a beautiful lake and tiny village nestled in it.  It looks so
+1793042339	cmd	Alaric	50	13001	lakes.are	standing	100	0	-	down		Rock Outcropping //   >From this rock outcropping the valley below seems peaceful, untouched. // Dense forests of pine carpet the mountainsides, broken only by thick aspen
+1793042339	cmd	Alaric	50	13002	lakes.are	standing	100	0	-	down		Small Grove //   Suddenly, soft music begins. Its source is slim, beautiful girl. Lyre in // hand, she sits gracefully as she plays; nearby, a large plainsman raises
+1793042340	cmd	Alaric	50	13003	lakes.are	standing	100	0	-	west		Entrance to the Town of Solace //   A warm autumn breeze rustles the great vallenwood trees of Solace. The // road that wanders through the trees blazes in the bright colors of autumn.
+1793042340	cmd	Alaric	50	13201	solace.are	standing	100	0	-	north		Gateway to Solace //   This is the gateway to the town of Solace. It keeps the monsters out and // the people in. This is a quiet farming town on the shores of Crystalmir
+1793042341	cmd	Alaric	50	13202	solace.are	standing	100	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.
+1793042341	cmd	Alaric	50	13203	solace.are	standing	100	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.
+1793042342	cmd	Alaric	50	13204	solace.are	standing	100	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.
+1793042342	cmd	Alaric	50	13205	solace.are	standing	100	0	-	north		Intersection at Main Road. //   Here there is an intersection at the main road. // You see to the east and west, smaller houses and some more shops.
+1793042342	cmd	Alaric	50	13228	solace.are	standing	100	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.
+1793042342	cmd	Alaric	50	13229	solace.are	standing	100	0	-	north		End of the Main Road //   The main road of Solace stops here. Other smaller roadways lead off // in various directions.
+1793042343	cmd	Alaric	50	13272	solace.are	standing	100	0	-	north		Cobblestone Path //   You are walking on a cobblestone path. It leads to a large building to the // north.
+1793042343	cmd	Alaric	50	13282	solace.are	standing	100	0	-	north		Outside the Inn of the Last Home. //   The Inn of the Last Home rests within the trunk of a huge vallenwood tree. // Warm laughter tumbles from the inn. The worn steps wind around the heavy
+1793042343	cmd	Alaric	50	13282	solace.are	standing	100	0	-	north		The tree is closed.
+1793042343	cmd	Alaric	50	13282	solace.are	standing	100	0	-	north		The tree is closed.
+1793042344	cmd	Alaric	50	13282	solace.are	standing	100	0	-	north		The tree is closed.
+1793042345	cmd	Alaric	50	13282	solace.are	standing	100	0	-	north		The tree is closed.
+1793042347	cmd	Alaric	50	13282	solace.are	standing	100	0	-	open		Ok.
+1793042347	cmd	Alaric	50	13292	solace.are	standing	100	0	-	north		Captain's Office. //   This is the office of the Captain of the Guard. Leather couches // and a solid marble desk sit against the far wall. A weapons
+1793042348	cmd	Alaric	50	13292	solace.are	standing	100	0	-	open		Ok.
+1793042348	cmd	Alaric	50	13302	solace.are	standing	100	0	-	north		Captain's Meeting room. //   You are standing in the meeting room of the Captain of the Guard. This // is where he holds his administrative meetings and other official functions.
+1793042350	cmd	Alaric	50	13302	solace.are	standing	100	0	-	open		Ok.
+1793042350	cmd	Alaric	50	13312	solace.are	standing	100	0	-	north		Captain's Waiting Room. //   This is the Reception area for the Captain of the Guard.  A large portrait // of the Captain is on the north wall.  With the amount of extravagance and
+1793042351	cmd	Alaric	50	13312	solace.are	standing	100	0	-	open		Ok.
+1793042351	cmd	Alaric	50	13313	solace.are	standing	100	0	-	east		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042353	cmd	Alaric	50	13303	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042354	cmd	Alaric	50	13293	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042355	cmd	Alaric	50	13293	solace.are	standing	100	0	-	se		Alas, you cannot go that way.
+1793042355	cmd	Alaric	50	13294	solace.are	standing	100	0	-	east		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042356	cmd	Alaric	50	13284	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042358	cmd	Alaric	50	13274	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042359	cmd	Alaric	50	13273	solace.are	standing	100	0	-	west		Sergeant's Reception Room //   This room is decorated with various swords and other ornamental artifacts // of combat. Pictures of bloody battles adorn the walls. If you have an
+1793042360	cmd	Alaric	50	13273	solace.are	standing	100	0	-	open		Ok.
+1793042361	cmd	Alaric	50	13283	solace.are	standing	100	0	-	north		Sergeant's Office //   This is the office of the Sergeant at Arms. He is in charge of all minor // complaints. His office is richly decorated with ornamental weapons and
+1793042361	cmd	Alaric	50	13273	solace.are	standing	100	0	-	south		Sergeant's Reception Room //   This room is decorated with various swords and other ornamental artifacts // of combat. Pictures of bloody battles adorn the walls. If you have an
+1793042362	cmd	Alaric	50	13274	solace.are	standing	100	0	-	east		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042362	cmd	Alaric	50	13275	solace.are	standing	100	0	-	east		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042364	cmd	Alaric	50	13275	solace.are	standing	100	0	-	open		Ok.
+1793042364	cmd	Alaric	50	13285	solace.are	standing	100	0	-	north		Guards Room. //   There are many barrels and chests of food in here. All of it looks spoiled. // This is where the town guards hang out when not on duty.
+1793042365	cmd	Alaric	50	13275	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042365	cmd	Alaric	50	13276	solace.are	standing	100	0	-	east		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042366	cmd	Alaric	50	13276	solace.are	standing	100	0	-	open		Ok.
+1793042367	cmd	Alaric	50	13276	solace.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793042368	refused	Alaric	50	13276	solace.are	standing	100	0	-	(unknown)		Huh?
+1793042369	cmd	Alaric	50	13270	solace.are	standing	100	0	-	south		Hallway Intersection. //   This is the intersection of four large hallways. Light streams in from the // stainglass skylight above. Large double doors close off each hallway.
+1793042370	cmd	Alaric	50	13270	solace.are	standing	100	0	-	open		Ok.
+1793042371	cmd	Alaric	50	13270	solace.are	standing	100	0	-	open		Ok.
+1793042371	cmd	Alaric	50	13270	solace.are	standing	100	0	-	exits		Obvious exits: // North - Administration Hallway // East  - End of Long Hall
+1793042376	cmd	Alaric	50	13270	solace.are	standing	100	0	-	open		Ok.
+1793042376	cmd	Alaric	50	13264	solace.are	standing	100	0	-	west		Entrance Hall. //   The entrance hall is made entirely of marble and granite. It seems sort of // extravagant for a townguard administration building. The 30 foot high
+1793042378	cmd	Alaric	50	13264	solace.are	standing	100	0	-	open		Ok.
+1793042378	cmd	Alaric	50	13264	solace.are	standing	100	0	-	exits		Obvious exits: // East  - Hallway Intersection. // South - Marble Corridor.
+1793042380	cmd	Alaric	50	13263	solace.are	standing	100	0	-	west		Townguard Administration Building. //   Before you stands the Townguard Administration Building. This is a large // building with various statues and other artwork decorating the building.
+1793042381	cmd	Alaric	50	13263	solace.are	standing	100	0	-	exits		Obvious exits: // East  - Entrance Hall. // West  - Dusty road.
+1793042382	cmd	Alaric	50	13264	solace.are	standing	100	0	-	east		Entrance Hall. //   The entrance hall is made entirely of marble and granite. It seems sort of // extravagant for a townguard administration building. The 30 foot high
+1793042382	cmd	Alaric	50	13270	solace.are	standing	100	0	-	east		Hallway Intersection. //   This is the intersection of four large hallways. Light streams in from the // stainglass skylight above. Large double doors close off each hallway.
+1793042382	cmd	Alaric	50	13271	solace.are	standing	100	0	-	east		End of Long Hall //   This is the end of a long and lavish hallway. exquisite paintings and // statues line the walls. The ceilings are covered with colorful mosaics.
+1793042383	cmd	Alaric	50	13271	solace.are	standing	100	0	-	scan		You don't see anything near you.
+1793042384	cmd	Alaric	50	13277	solace.are	standing	100	0	-	east		Long Hallway //   This hallway is sparse compared to some of the others. It seems to go // on and on. The marble floors are barren of any type of decorations.
+1793042384	cmd	Alaric	50	13277	solace.are	standing	100	0	-	scan		Townguard                          -to the North. // Townguard                          -to the North. // Townguard                          -to the North.
+1793042385	cmd	Alaric	50	13287	solace.are	standing	100	0	-	north		Long Hallway //   This hallway is sparse compared to some of the others. It seems to go // on and on. The marble floors are barren of any type of decorations.
+1793042386	cmd	Alaric	50	13287	solace.are	standing	100	0	-	exits		Obvious exits: // North - Long Hallway // South - Long Hallway
+1793042386	cmd	Alaric	50	13297	solace.are	standing	100	0	-	north		Long Hallway //   This hallway is sparse compared to some of the others. It seems to go // on and on. The marble floors are barren of any type of decorations.
+1793042387	cmd	Alaric	50	13297	solace.are	standing	100	0	-	exits		Obvious exits: // North - Long Hallway // South - Long Hallway
+1793042387	cmd	Alaric	50	13307	solace.are	standing	100	0	-	north		Long Hallway //   This hallway is sparse compared to some of the others.  It seems to go // on and on.  The marble floors are barren of any type of decorations.
+1793042388	cmd	Alaric	50	13307	solace.are	standing	100	0	-	exits		Obvious exits: // North - End of the Long Hall // South - Long Hallway
+1793042388	cmd	Alaric	50	13317	solace.are	standing	100	0	-	north		End of the Long Hall //   This is the end of a long and lavish hallway.  Exquisite paintings and // statues line the walls.  The ceilings are covered with colorful mosaics.
+1793042389	cmd	Alaric	50	13317	solace.are	standing	100	0	-	exits		Obvious exits: // South - Long Hallway // West  - Administration Hallway
+1793042390	cmd	Alaric	50	13316	solace.are	standing	100	0	-	west		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042390	cmd	Alaric	50	13316	solace.are	standing	100	0	-	exits		Obvious exits: // East  - End of the Long Hall // South - Administration Hallway
+1793042391	cmd	Alaric	50	13306	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042392	cmd	Alaric	50	13306	solace.are	standing	100	0	-	exits		Obvious exits: // North - Administration Hallway // South - Administration Hallway
+1793042393	cmd	Alaric	50	13316	solace.are	standing	100	0	-	north		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042393	cmd	Alaric	50	13315	solace.are	standing	100	0	-	west		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042394	cmd	Alaric	50	13315	solace.are	standing	100	0	-	exits		Obvious exits: // East  - Administration Hallway // West  - Administration Hallway
+1793042395	cmd	Alaric	50	13315	solace.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793042396	cmd	Alaric	50	13314	solace.are	standing	100	0	-	west		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042397	cmd	Alaric	50	13314	solace.are	standing	100	0	-	open		Ok.
+1793042397	cmd	Alaric	50	13314	solace.are	standing	100	0	-	exits		Obvious exits: // East  - Administration Hallway // South - Guards Room.
+1793042399	cmd	Alaric	50	13304	solace.are	standing	100	0	-	south		Guards Room. //   There are many barrels and chests of food in here. All of it looks spoiled. // This is where the town guards hang out when not on duty.
+1793042400	cmd	Alaric	50	13314	solace.are	standing	100	0	-	north		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042444	cmd	Alaric	50	13313	solace.are	standing	100	0	-	west		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042444	cmd	Alaric	50	13303	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042444	cmd	Alaric	50	13293	solace.are	standing	100	0	-	south		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042445	cmd	Alaric	50	13294	solace.are	standing	100	0	-	east		Administration Hallway //   The hallway is just as extravagant as all the others in this building. // Gem mosaics cover the walls, and intricate patterns are carved in the
+1793042445	cmd	Alaric	50	13295	solace.are	standing	100	0	-	east		Lieutenant's Reception Area. //   This is the waiting room for meetings with the Lieutenant Commander. // The furniture is made of vallenwood and the walls are covered with
+1793042447	cmd	Alaric	50	13295	solace.are	standing	100	0	-	get	all	You get The Heart of Tifarah.
+1793042448	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793042448	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	22	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Heart of Tifarah to Questor Thews. // Questor Thews says 'Excellent work! The realm is in your debt!'
+1793042450	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 28 quest points.
+1793042452	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    251 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
