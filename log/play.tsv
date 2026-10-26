@@ -22089,3 +22089,13 @@
 1792974198	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    248 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
 1792974213	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
 1792974215	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (16) (Glowing) a bag of candy corn //      (Magical) (Glowing) a pumpkin-lantern charm
+1792974393	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1792974399	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1792974404	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	iron		Your skin hardens.
+1792974457	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792974457	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792974573	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	15	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Alaric.' // Questor Thews tells you 'the Drunk has been declared an outlaw!'
+1792974578	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792974578	cmd	Alaric	50	2405	dresden_halloween.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1792974578	cmd	Alaric	50	2433	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1792974578	cmd	Alaric	50	2434	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
