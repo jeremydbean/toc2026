@@ -198204,3 +198204,50 @@ Mon Oct 26 11:00:34 2026 :: Sock.sinaddr:  5.161.215.244
 Mon Oct 26 11:00:34 2026 :: EOF encountered on read.
 Mon Oct 26 11:05:39 2026 :: Sock.sinaddr:  178.156.184.20
 Mon Oct 26 11:05:39 2026 :: EOF encountered on read.
+Mon Oct 26 11:08:43 2026 :: Sock.sinaddr:  208.126.22.104
+Mon Oct 26 11:08:43 2026 :: Loading Alaric's playerfile
+Mon Oct 26 11:08:45 2026 :: Loading Alaric's playerfile
+Mon Oct 26 11:08:45 2026 :: Alaric@208.126.22.104 has connected.
+Mon Oct 26 11:08:46 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 0
+Mon Oct 26 11:08:48 2026 :: Log Alaric [2497]: who
+Mon Oct 26 11:08:51 2026 :: Log Alaric [2497]: aq re
+Mon Oct 26 11:08:51 2026 :: Log Alaric [2497]: quest assigned: kill the student (mob 15012, level 15) in campus.are, 29 minutes, ordinary
+Mon Oct 26 11:09:00 2026 :: Log Alaric [2497]: enter door
+Mon Oct 26 11:09:00 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 11:09:00 2026 :: Log Alaric [2401]: south
+Mon Oct 26 11:09:00 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Mon Oct 26 11:09:00 2026 :: Log Alaric [2404]: south
+Mon Oct 26 11:09:00 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Mon Oct 26 11:09:00 2026 :: Log Alaric [2427]: west
+Mon Oct 26 11:09:00 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 2427
+Mon Oct 26 11:09:01 2026 :: Log Alaric [4201]: west
+Mon Oct 26 11:09:01 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4201
+Mon Oct 26 11:09:01 2026 :: Log Alaric [4202]: west
+Mon Oct 26 11:09:01 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4202
+Mon Oct 26 11:09:01 2026 :: Log Alaric [4207]: up
+Mon Oct 26 11:09:01 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 4207
+Mon Oct 26 11:09:01 2026 :: Log Alaric [3700]: up
+Mon Oct 26 11:09:01 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3700
+Mon Oct 26 11:09:02 2026 :: Log Alaric [3772]: up
+Mon Oct 26 11:09:02 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 3772
+Mon Oct 26 11:09:02 2026 :: Log Alaric [3795]: enter portal
+Mon Oct 26 11:09:02 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 3795
+Mon Oct 26 11:09:56 2026 :: Sock.sinaddr:  23.31.96.97
+Mon Oct 26 11:09:56 2026 :: EOF encountered on read.
+Mon Oct 26 11:10:03 2026 :: Treasure goblin: vanished from room 20548 (The Forest Road, emerald.are) (too long in one area).
+Mon Oct 26 11:10:18 2026 :: Log Alaric [15000]: east
+Mon Oct 26 11:10:18 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15000
+Mon Oct 26 11:10:18 2026 :: Log Alaric [15001]: east
+Mon Oct 26 11:10:18 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15001
+Mon Oct 26 11:10:19 2026 :: Log Alaric [15002]: east
+Mon Oct 26 11:10:19 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15002
+Mon Oct 26 11:10:19 2026 :: Log Alaric [15003]: south
+Mon Oct 26 11:10:19 2026 :: Log Alaric [15027]: arrived (Mary Rotte Cafeteria Entrance) from 15003
+Mon Oct 26 11:10:19 2026 :: Log Alaric [15027]: south
+Mon Oct 26 11:10:19 2026 :: Log Alaric [15045]: arrived (Dining Hall) from 15027
+Mon Oct 26 11:10:19 2026 :: Log Alaric [15045]: south
+Mon Oct 26 11:10:19 2026 :: Log Alaric [15047]: arrived (Dining Hall) from 15045
+Mon Oct 26 11:10:20 2026 :: Log Alaric [15047]: east
+Mon Oct 26 11:10:20 2026 :: Log Alaric [15048]: arrived (Dining Hall) from 15047
+Mon Oct 26 11:10:44 2026 :: Sock.sinaddr:  5.161.194.92
+Mon Oct 26 11:10:44 2026 :: EOF encountered on read.
