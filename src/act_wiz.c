@@ -11375,6 +11375,50 @@ static void prestore_corpse( CHAR_DATA *ch, const char *capname, const char *id,
     prestore_give( ch, capname, list, count, false, op, "corpse", "corpserestore", source );
 }
 
+/*
+ * Who a snapshot says it is, read from its player block: the name and the
+ * trust it would have (get_trust's rule: creator, else trust capped, else
+ * level). For a character with no file to load -- deleted -- this is all
+ * there is to rank-check against.
+ */
+static bool prestore_snapshot_identity( const char *path, char *name, size_t size,
+                                        int *trust )
+{
+    FILE *fp = fopen( path, "rb" );
+    char line[MAX_STRING_LENGTH];
+    int level = 0, tru = 0;
+    bool creator = false;
+
+    name[0] = '\0';
+    *trust = 0;
+    if ( fp == NULL )
+        return false;
+    while ( fgets( line, sizeof(line), fp ) != NULL )
+    {
+        if ( !strcmp( line, "End\n" ) || !strcmp( line, "End\r\n" ) )
+            break;
+        if ( !strncmp( line, "Name ", 5 ) )
+        {
+            toc_strlcpy( name, line + 5, size );
+            name[strcspn( name, "~\r\n" )] = '\0';
+        }
+        else if ( !strncmp( line, "Levl ", 5 ) )
+            level = atoi( line + 5 );
+        else if ( !strncmp( line, "Tru ", 4 ) )
+            tru = atoi( line + 4 );
+        else if ( !strncmp( line, "Creator ", 8 ) )
+            creator = atoi( line + 8 ) != 0;
+    }
+    fclose( fp );
+    if ( creator || !str_cmp( name, "Killuminati" ) )
+        *trust = LEVEL_CREATOR;
+    else if ( tru != 0 )
+        *trust = UMIN( tru, LEVEL_TRUST_MAX );
+    else
+        *trust = level;
+    return name[0] != '\0';
+}
+
 static void prestore_command( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
@@ -11402,6 +11446,8 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
     int i, n;
     int yr, mo, dy, hr, mn, sc;
     int found_online;
+    bool absent = false;
+    char snap_uid[24] = "";
     char undo_name[MAX_INPUT_LENGTH] = "";
     char op[48];
     int replace_status;
@@ -11720,6 +11766,79 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
         }
 
         /*
+         * A deleted character has no file, and the copy that undoes a
+         * restore is a copy of the file -- so none could be taken and a
+         * deletion could never be undone (review, 2026-10-26). Absence is
+         * a state of its own, but only when proved: stat says ENOENT. Any
+         * other failure, or a file that is there and cannot be read, is
+         * refused exactly as before -- never taken for "deleted".
+         */
+        {
+            struct stat st;
+
+            absent = false;
+            if ( stat( dstpath, &st ) != 0 )
+            {
+                if ( errno != ENOENT )
+                {
+                    snprintf( buf, sizeof(buf), "Nothing was changed: whether %s has a file "
+                              "cannot be told (%s).\n\r", capname, strerror( errno ) );
+                    send_to_char( buf, ch );
+                    return;
+                }
+                absent = true;
+            }
+            else if ( access( dstpath, R_OK ) != 0 )
+            {
+                send_to_char( "Nothing was changed: their file is there but cannot be "
+                              "read, so it could not be kept to undo this.\n\r", ch );
+                return;
+            }
+        }
+        if ( absent )
+        {
+            char snapname[MAX_INPUT_LENGTH];
+            int snaptrust, mine = get_trust( ch );
+            bool logging_in = false;
+            const char *current_uid;
+
+            if ( player_in_game( capname, &logging_in ) != NULL )
+            {
+                send_to_char( "Somebody holds that name in the game now, with no file; "
+                              "nothing was changed.\n\r", ch );
+                return;
+            }
+            if ( !prestore_snapshot_identity( srcpath, snapname, sizeof(snapname), &snaptrust )
+            ||   str_cmp( snapname, capname ) )
+            {
+                send_to_char( "That snapshot is not of a character by that name; nothing "
+                              "was changed.\n\r", ch );
+                return;
+            }
+            /* rank_protects' rule, from what the snapshot says it is. */
+            if ( ( !str_cmp( capname, "Killuminati" ) && !is_creator_founder( ch ) )
+            ||   ( mine >= MAX_LEVEL ? snaptrust > mine : snaptrust >= mine ) )
+            {
+                send_to_char( "You failed.\n\r", ch );
+                return;
+            }
+            /* The same character, or none: the name may have been taken
+               since by somebody else, whose uid then holds it. */
+            recovery_snapshot_uid( versions[n - 1], snap_uid, sizeof(snap_uid) );
+            current_uid = recovery_uid( capname );
+            if ( current_uid[0] != '\0'
+            &&   ( snap_uid[0] == '\0' || strcmp( current_uid, snap_uid ) ) )
+            {
+                snprintf( buf, sizeof(buf), "Nothing was changed: the name %s belongs to "
+                          "%s now, and that snapshot %s.\n\r", capname, current_uid,
+                          snap_uid[0] != '\0' ? "is of another character"
+                                              : "cannot be shown to be the same one" );
+                send_to_char( buf, ch );
+                return;
+            }
+        }
+
+        /*
          * Who they are, whether anyone can see them or not. This asked
          * get_char_world, which goes by sight: a wizinvis or melded target,
          * or one at the password prompt, read as offline, so no rank check
@@ -11728,6 +11847,8 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
          * loaded copy, as the STASH form always was.
          */
         found_online = 0;
+        victim = NULL;
+        if ( !absent )
         {
             bool logging_in = false;
 
@@ -11784,6 +11905,12 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
         /* The copy that undoes this, published, read back and on the disk
            -- or nothing is done. The restore used to go on with "(the copy
            failed)" in its receipt (independent review, 2026-10-23). */
+        if ( absent )
+            /* Nothing to copy: what undoes it is the absence, recorded in
+               the receipt -- delete the file and they are gone again. */
+            toc_strlcpy( undo_name, "no file (it was absent: delete it to undo)",
+                         sizeof(undo_name) );
+        else
         {
             SNAPSHOT_RESULT pre;
 
@@ -11815,6 +11942,11 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
             char line[MAX_STRING_LENGTH];
 
             snprintf( op, sizeof(op), "full:%ld", recovery_sequence() + 1 );
+            if ( fcur == NULL && !absent )
+            {
+                send_to_char( "Nothing was changed: their file could not be read.\n\r", ch );
+                return;
+            }
             if ( fcur != NULL )
             {
                 have_current = true;
@@ -12000,6 +12132,23 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
         else
         {
             toc_strlcpy( datebuf, ts, sizeof(datebuf) );
+        }
+
+        /* A deleted character back: their own uid back with them, or --
+           a snapshot the ledger never recorded -- a new one at their next
+           login, said plainly. */
+        if ( absent )
+        {
+            if ( snap_uid[0] != '\0' )
+            {
+                if ( !recovery_reinstate_uid( capname, snap_uid, "restored after deletion" ) )
+                    send_to_char( "Their uid could not be put back in the ledger; they "
+                                  "are given a new one at their next login.\n\r", ch );
+            }
+            else
+                send_to_char( "The ledger never recorded that snapshot, so which uid it "
+                              "had is unknown: they are given a new one at their next "
+                              "login.\n\r", ch );
         }
 
         /* Restored whole from a snapshot: a corpse left from before it

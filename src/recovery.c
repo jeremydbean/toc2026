@@ -418,6 +418,61 @@ static bool ledger_trim_tail( void )
     return ok;
 }
 
+
+/*
+ * One ledger line into its ten columns, in place. A record ends with its
+ * newline, and one with eleven columns is whole only if its check (the
+ * last) matches; ten columns is a record from before the check.
+ */
+#define LEDGER_ROW_SKIP    0
+#define LEDGER_ROW_OK      1
+#define LEDGER_ROW_LEGACY  2
+#define LEDGER_ROW_BAD     (-1)
+
+static int ledger_split( char *line, char *col[10] )
+{
+    char *p = line;
+    size_t len = strlen( line );
+    int n = 0, tabs = 0, kind = LEDGER_ROW_OK;
+    char *q;
+
+    if ( line[0] == '#' )
+        return LEDGER_ROW_SKIP;
+    if ( len == 0 || line[len - 1] != '\n' )
+        return LEDGER_ROW_BAD;
+    line[len - 1] = '\0';
+    if ( len >= 2 && line[len - 2] == '\r' )
+        line[len - 2] = '\0';
+    for ( q = line; *q != '\0'; q++ )
+        if ( *q == '\t' )
+            tabs++;
+    if ( tabs == 10 )
+    {
+        char *tab = strrchr( line, '\t' );
+        char *end;
+        unsigned long want = strtoul( tab + 1, &end, 16 );
+
+        if ( strlen( tab + 1 ) != 8 || *end != '\0'
+        ||   ledger_check( line, (size_t) ( tab - line ) ) != want )
+            return LEDGER_ROW_BAD;
+        *tab = '\0';
+    }
+    else if ( tabs == 9 )
+        kind = LEDGER_ROW_LEGACY;
+    else
+        return LEDGER_ROW_BAD;
+    while ( n < 10 )
+    {
+        col[n++] = p;
+        if ( ( p = strchr( p, '\t' ) ) == NULL )
+            break;
+        *p++ = '\0';
+    }
+    if ( n != 10 || !isdigit( (unsigned char) col[0][0] ) )
+        return LEDGER_ROW_BAD;
+    return kind;
+}
+
 void recovery_boot( void )
 {
     FILE *fp;
@@ -434,65 +489,18 @@ void recovery_boot( void )
     while ( fgets( line, sizeof(line), fp ) != NULL )
     {
         char *col[10];
-        char *p = line;
-        size_t len = strlen( line );
-        int n = 0;
         long seq;
+        int kind = ledger_split( line, col );
 
-        if ( line[0] == '#' )
+        if ( kind == LEDGER_ROW_SKIP )
             continue;
-        /* A record ends with its newline; one without is not one. */
-        if ( len == 0 || line[len - 1] != '\n' )
+        if ( kind == LEDGER_ROW_BAD )
         {
             bad++;
             continue;
         }
-        line[len - 1] = '\0';
-        if ( len >= 2 && line[len - 2] == '\r' )
-            line[len - 2] = '\0';
-        /* Eleven columns: the last is the check of everything before its
-           tab. Ten: a record from before the check, read as it was. */
-        {
-            int tabs = 0;
-            char *q;
-
-            for ( q = line; *q != '\0'; q++ )
-                if ( *q == '\t' )
-                    tabs++;
-            if ( tabs == 10 )
-            {
-                char *tab = strrchr( line, '\t' );
-                char *end;
-                unsigned long want = strtoul( tab + 1, &end, 16 );
-
-                if ( strlen( tab + 1 ) != 8 || *end != '\0'
-                ||   ledger_check( line, (size_t) ( tab - line ) ) != want )
-                {
-                    bad++;
-                    continue;
-                }
-                *tab = '\0';
-            }
-            else if ( tabs == 9 )
-                legacy++;
-            else
-            {
-                bad++;
-                continue;
-            }
-        }
-        while ( n < 10 )
-        {
-            col[n++] = p;
-            if ( ( p = strchr( p, '\t' ) ) == NULL )
-                break;
-            *p++ = '\0';
-        }
-        if ( n != 10 || !isdigit( (unsigned char) col[0][0] ) )
-        {
-            bad++;
-            continue;
-        }
+        if ( kind == LEDGER_ROW_LEGACY )
+            legacy++;
         lines++;
         seq = atol( col[0] );
         if ( seq <= last_seq )
@@ -736,6 +744,62 @@ void recovery_player_login( CHAR_DATA *ch, bool new_character )
     }
     else if ( recovery_uid( ch->name )[0] == '\0' )
         recovery_assign_uid( ch->name, "first seen since the ledger began" );
+}
+
+/*
+ * Whose a snapshot is: the uid the ledger recorded when that copy was
+ * taken as a milestone (a "snapshot" record whose detail starts with its
+ * name). Empty when the ledger never recorded it -- an ordinary save's
+ * copy, or one from before the ledger -- which is not the same as a
+ * mismatch, and callers say which.
+ */
+bool recovery_snapshot_uid( const char *snapname, char *out, size_t size )
+{
+    FILE *fp;
+    char line[MAX_STRING_LENGTH * 2];
+    size_t namelen;
+
+    if ( size > 0 )
+        out[0] = '\0';
+    if ( snapname == NULL || snapname[0] == '\0'
+    ||   ( fp = fopen( RECOVERY_LEDGER, "r" ) ) == NULL )
+        return false;
+    namelen = strlen( snapname );
+    while ( fgets( line, sizeof(line), fp ) != NULL )
+    {
+        char *col[10];
+        int kind = ledger_split( line, col );
+
+        if ( kind != LEDGER_ROW_OK && kind != LEDGER_ROW_LEGACY )
+            continue;
+        if ( strcmp( col[2], "snapshot" ) || strncmp( col[9], snapname, namelen )
+        ||   col[9][namelen] != ' ' || !strcmp( col[4], "-" ) )
+            continue;
+        toc_strlcpy( out, col[4], size );
+    }
+    fclose( fp );
+    return out[0] != '\0';
+}
+
+/* A deleted character put back by PRESTORE takes back the uid that was
+   retired with them: the same character, not a new one in an old name. */
+bool recovery_reinstate_uid( const char *name, const char *uid, const char *why )
+{
+    char proper[16];
+
+    if ( recovery_uid( name )[0] != '\0' || uid == NULL || uid[0] == '\0' )
+        return false;
+    toc_strlcpy( proper, capitalize( name ), sizeof(proper) );
+    ledger_note_uid( proper, uid, true );
+    if ( !recovery_record( "uid", "assign", proper, "-", "player", "-", why ) )
+    {
+        LEDGER_UID *slot = ledger_uid_slot( proper );
+
+        if ( slot != NULL )
+            slot->uid[0] = '\0';
+        return false;
+    }
+    return true;
 }
 
 /* A deleted character's uid goes with them; their history keeps it. */

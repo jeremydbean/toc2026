@@ -1575,7 +1575,18 @@ rules the code depends on:
   the current file, never the snapshot, `Pass`, `Tru`, `Creator`,
   `Fixes` (with its own mark added), `HyruleSecrets` and `BlackMarket`,
   so a rollback restores play, never an old password, rank, a login
-  fix to run twice or a one-time claim to pay twice.
+  fix to run twice or a one-time claim to pay twice. **A deleted
+  character can be restored** (review, 2026-10-26): with no file there is
+  no copy to undo with, so absence -- proved by `stat`'s ENOENT, never
+  inferred from a failed open -- is recorded in the receipt as the undo
+  state ("no file"). The snapshot must name the character, rank is
+  checked from it (`prestore_snapshot_identity`, get_trust's rule), and
+  the uid the ledger recorded with that snapshot (`recovery_snapshot_uid`)
+  is put back after the commit (`recovery_reinstate_uid`). A name that
+  another uid holds now is refused, as is one whose snapshot the ledger
+  never recorded while somebody holds the name; a file that is there and
+  cannot be copied is refused exactly as before
+  (`tests/test_prestore_deleted.py`).
 - **A player's corpse is written down as it is** (`src/corpses.c`):
   `corpse/live/<id>.corpse` with every object at any depth -- keys and
   blank maps too (`fwrite_obj_everything`) -- at the death and within a

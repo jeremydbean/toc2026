@@ -3089,6 +3089,8 @@ bool    recovery_record       ( const char *event, const char *state,
 int     recovery_request_state ( const char *request );
 long    recovery_sequence     ( void );
 const char *recovery_uid      ( const char *name );
+bool    recovery_snapshot_uid ( const char *snapname, char *out, size_t size );
+bool    recovery_reinstate_uid( const char *name, const char *uid, const char *why );
 void    recovery_player_login ( CHAR_DATA *ch, bool new_character );
 void    recovery_player_retire ( const char *name, const char *why );
 /* corpses.c: a player's corpse outlasts a restart, as it actually is */
