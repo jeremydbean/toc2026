@@ -25020,3 +25020,100 @@
 1793050942	cmd	Trentlin	50	29106	korzath1.are	standing	100	0	-	look	in folder	That is not a container.
 1793050944	cmd	Trentlin	50	29106	korzath1.are	standing	100	0	-	look	folder	You open the folder and read: //                             Project Starlight //                        Funded by Korzath Industries
 1793050955	cmd	Trentlin	50	29106	korzath1.are	standing	100	0	-	look	2page	You flip to the next page: // Project Uses: //   By being able to travel between dimensions we will be able to discover
+1793050975	cmd	Trentlin	50	29106	korzath1.are	standing	100	0	-	look	3page	You turn to the third page: // Project Dangers: //   When opening portals to other dimensions there is a chance that the
+1793050998	cmd	Trentlin	50	29104	korzath1.are	standing	100	0	-	east		Entrance to Project Starlight //   Well, now you've done it.  You've broken past the Starlight guards and // now stand in the entrance to Project Starlight itself.  More guards rush
+1793050999	cmd	Trentlin	50	29104	korzath1.are	standing	100	0	-	scan		a Hobbit mage                      -to the North. // an Elf mage                        -to the North. // a Human mage                       -to the North.
+1793051001	cmd	Trentlin	50	29105	korzath1.are	standing	100	0	-	east		Guard Post //   This is the guard post for the Starlight guards.  An alarm button // has been activated on the wall.
+1793051005	cmd	Trentlin	50	29105	korzath1.are	standing	100	0	-	look	desk	A large metal desk.
+1793051006	cmd	Trentlin	50	29105	korzath1.are	standing	100	0	-	look	in desk	It is closed.
+1793051008	cmd	Trentlin	50	29105	korzath1.are	standing	100	0	-	open	desk	Ok.
+1793051010	cmd	Trentlin	50	29105	korzath1.are	standing	100	0	-	look	in desk	A large metal desk contains: //      a vial of thick black syrup
+1793051014	cmd	Trentlin	50	29105	korzath1.are	standing	100	0	-	get	vial desk	You get a vial of thick black syrup from a large metal desk.
+1793051015	cmd	Trentlin	50	29105	korzath1.are	standing	100	0	-	look		Guard Post //   This is the guard post for the Starlight guards.  An alarm button // has been activated on the wall.
+1793051016	cmd	Trentlin	50	29104	korzath1.are	standing	100	0	-	west		Entrance to Project Starlight //   Well, now you've done it.  You've broken past the Starlight guards and // now stand in the entrance to Project Starlight itself.  More guards rush
+1793051017	cmd	Trentlin	50	29104	korzath1.are	standing	100	0	-	scan		a Hobbit mage                      -to the North. // an Elf mage                        -to the North. // a Human mage                       -to the North.
+1793051019	cmd	Trentlin	50	29109	korzath1.are	standing	100	0	-	nw		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1793051021	cmd	Trentlin	50	29112	korzath1.are	fighting	100	0	fight	flee		Project Starlight //   The thing that produces the brilliant white light is a massive ceiling // high portal.  The end of the hallway is made up of glittering black rock
+1793051024	cmd	Trentlin	50	29112	korzath1.are	standing	100	0	-	look	in portal	Looking into The Starlight Portal reveals: // Ofcol //   As you recover from traveling through the portal you take a moment to
+1793051030	cmd	Trentlin	50	29113	korzath1.are	standing	100	0	-	enter	portal	You enter The Starlight Portal // Your stomach flip flops. Everything goes black for a moment. // Ofcol
+1793051032	cmd	Trentlin	50	29113	korzath1.are	standing	100	1	-	look	diana	This is an Evil Diana of Ofcol that lives in a strange world that is a mirror // to our own. // Evil Diana is in excellent condition.
+1793051033	cmd	Trentlin	50	29113	korzath1.are	standing	100	0	-	consider	diana	Evil Diana is well below your level. // Evil Diana has about a third of your hit points. // Blow for blow, you would need about 5 rounds to bring Evil Diana down; she would need about 81 rounds for you.
+1793051040	cmd	Trentlin	50	29113	korzath1.are	standing	100	0	-	scan		a Troll Beast                      -to the North. // a Troll Beast                      -to the East. // a Troll Beast                      -to the South.
+1793051042	cmd	Trentlin	50	29113	korzath1.are	standing	100	0	-	look		Ofcol //   As you recover from traveling through the portal you take a moment to // look at your surroundings.  You recognize this place right off the bat.
+1793051042	cmd	Trentlin	50	29114	korzath1.are	standing	100	0	-	east		Ofcol //   Swirling black vortices are all around you.  Traveling to other worlds // like this can be hazardous to your health.  The only dircetion you can go
+1793051043	cmd	Trentlin	50	29114	korzath1.are	standing	100	0	-	consider	tro	A Troll Beast is well below your level. // A Troll Beast has a fraction of your hit points. // Blow for blow, you would need about 2 rounds to bring a Troll Beast down; he would need over a hundred rounds for you.
+1793051044	cmd	Trentlin	50	29114	korzath1.are	standing	100	0	-	look	tro	This Troll Beast is no good guy. // A Troll Beast is in excellent condition.
+1793051046	cmd	Trentlin	50	29114	korzath1.are	standing	100	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     19 hours | Sex:      Male | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1793051047	cmd	Trentlin	50	29114	korzath1.are	standing	100	0	-	kill	tro	A Troll Beast dodges your attack. // A Troll Beast parries your attack. // You DISEMBOWEL a Troll Beast!
+1793051054	cmd	Trentlin	50	29114	korzath1.are	fighting	99	0	fight	smite		Your smite *** DEVASTATES *** a Troll Beast! // Your smite ^^^ DESTROYS ^^^ a Troll Beast! // Your smite === OBLITERATES === a Troll Beast!
+1793051060	cmd	Trentlin	50	29114	korzath1.are	standing	100	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     19 hours | Sex:      Male | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1793051063	cmd	Trentlin	50	29114	korzath1.are	standing	100	0	-	kill	tro	They aren't here.
+1793051064	cmd	Trentlin	50	29114	korzath1.are	standing	100	0	-	look		Ofcol //   Swirling black vortices are all around you.  Traveling to other worlds // like this can be hazardous to your health.  The only dircetion you can go
+1793051065	cmd	Trentlin	50	29113	korzath1.are	standing	100	0	-	west		Ofcol //   As you recover from traveling through the portal you take a moment to // look at your surroundings.  You recognize this place right off the bat.
+1793051067	cmd	Trentlin	50	29115	korzath1.are	standing	100	0	-	south		Ofcol //   Swirling black vortices are all around you.  Traveling to other worlds // like this can be hazardous to your health.  The only dircetion you can go
+1793051068	cmd	Trentlin	50	29113	korzath1.are	standing	100	0	-	north		Ofcol //   As you recover from traveling through the portal you take a moment to // look at your surroundings.  You recognize this place right off the bat.
+1793051069	cmd	Trentlin	50	29116	korzath1.are	standing	100	0	-	west		Ofcol //   Swirling black vortices are all around you.  Traveling to other worlds // like this can be hazardous to your health.  The only dircetion you can go
+1793051069	cmd	Trentlin	50	29113	korzath1.are	standing	100	0	-	east		Ofcol //   As you recover from traveling through the portal you take a moment to // look at your surroundings.  You recognize this place right off the bat.
+1793051070	cmd	Trentlin	50	29117	korzath1.are	standing	100	0	-	north		Ofcol //   Swirling black vortices are all around you.  Traveling to other worlds // like this can be hazardous to your health.  The only dircetion you can go
+1793051071	cmd	Trentlin	50	29113	korzath1.are	standing	100	0	-	south		Ofcol //   As you recover from traveling through the portal you take a moment to // look at your surroundings.  You recognize this place right off the bat.
+1793051072	cmd	Trentlin	50	29113	korzath1.are	standing	100	0	-	consider	dia	Evil Diana is well below your level. // Evil Diana has about a third of your hit points. // Blow for blow, you would need about 5 rounds to bring Evil Diana down; she would need about 81 rounds for you.
+1793051076	cmd	Trentlin	50	29113	korzath1.are	standing	100	0	-	kill	dia	You *** DEVASTATE *** Evil Diana! // Evil Diana dodges your attack. // Evil Diana parries your attack.
+1793051079	cmd	Trentlin	50	29113	korzath1.are	fighting	100	0	fight	smite		Your smite misses Evil Diana.
+1793051089	cmd	Trentlin	50	29113	korzath1.are	fighting	99	0	fight	smite		Your smite MASSACRES Evil Diana! // Your smite *** DEVASTATES *** Evil Diana! // Your smite wounds Evil Diana.
+1793051098	cmd	Trentlin	50	29113	korzath1.are	fighting	99	0	fight	kick		Your kick grazes Evil Diana.
+1793051104	cmd	Trentlin	50	29113	korzath1.are	fighting	99	0	fight	kick		Your kick scratches Evil Diana.
+1793051110	cmd	Trentlin	50	29113	korzath1.are	fighting	98	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Evil Diana! // Your smite maims Evil Diana! // Your smite wounds Evil Diana.
+1793051119	cmd	Trentlin	50	29113	korzath1.are	standing	98	0	-	look	in cor	Corpse of Evil Diana contains: //      (Magical) (Dark) platinum plate //      (Magical) (Dark) platinum helmet
+1793051122	cmd	Trentlin	50	29113	korzath1.are	standing	98	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     19 hours | Sex:      Male | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1793051124	cmd	Trentlin	50	29112	korzath1.are	standing	98	0	-	enter	por	You enter The Starlight Portal // Your stomach flip flops. Everything goes black for a moment. // Project Starlight
+1793051126	cmd	Trentlin	50	29109	korzath1.are	standing	98	0	-	south		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1793051127	refused	Trentlin	50	29109	korzath1.are	fighting	98	0	fight	se		No way!  You are still fighting!
+1793051128	cmd	Trentlin	50	29109	korzath1.are	fighting	97	0	fight	flee		An Elf mage is overcome with a feeling of despair and flees the battle. // An Elf mage quietly slips off southeast. // An Elf mage has fled!
+1793051128	cmd	Trentlin	50	29109	korzath1.are	standing	97	0	-	flee		You aren't fighting anyone.
+1793051129	cmd	Trentlin	50	29109	korzath1.are	standing	97	0	-	flee		You aren't fighting anyone.
+1793051130	cmd	Trentlin	50	29109	korzath1.are	standing	97	0	-	look		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1793051131	refused	Trentlin	50	29109	korzath1.are	fighting	97	0	fight	se		No way!  You are still fighting!
+1793051132	cmd	Trentlin	50	29109	korzath1.are	fighting	97	0	fight	flee		A Hobbit mage is overcome with a feeling of despair and flees the battle. // A Hobbit mage smiles and walks off north // A Hobbit mage has fled!
+1793051132	cmd	Trentlin	50	29109	korzath1.are	standing	97	0	-	flee		You aren't fighting anyone.
+1793051133	cmd	Trentlin	50	29104	korzath1.are	standing	97	0	-	se		Entrance to Project Starlight //   Well, now you've done it.  You've broken past the Starlight guards and // now stand in the entrance to Project Starlight itself.  More guards rush
+1793051137	cmd	Trentlin	50	29104	korzath1.are	fighting	97	0	fight	smite		Your smite === OBLITERATES === an Elf mage! // Your smite === OBLITERATES === an Elf mage! // Your smite === OBLITERATES === an Elf mage!
+1793051143	cmd	Trentlin	50	29104	korzath1.are	fighting	96	0	fight	smite		Your smite ^^^ DESTROYS ^^^ an Elf mage! // Your smite decimates an Elf mage! // Your smite ^^^ DESTROYS ^^^ an Elf mage!
+1793051149	cmd	Trentlin	50	29104	korzath1.are	fighting	96	0	fight	smite		Your smite misses an Elf mage.
+1793051154	cmd	Trentlin	50	29104	korzath1.are	fighting	96	0	fight	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     19 hours | Sex:      Male | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1793051157	cmd	Trentlin	50	29104	korzath1.are	standing	96	0	-	look	in cor	Corpse of an Elf mage contains: //      (Magical) staff of strength //      (Magical) a shape shifting cloak
+1793051159	cmd	Trentlin	50	29104	korzath1.are	standing	96	0	-	sacrifice	cor	The Gods give you 88 copper coins for your sacrifice.
+1793051160	cmd	Trentlin	50	29104	korzath1.are	standing	96	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     19 hours | Sex:      Male | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1793051161	cmd	Trentlin	50	29104	korzath1.are	standing	96	0	-	look		Entrance to Project Starlight //   Well, now you've done it.  You've broken past the Starlight guards and // now stand in the entrance to Project Starlight itself.  More guards rush
+1793051163	cmd	Trentlin	50	29104	korzath1.are	standing	96	0	-	scan		a Hobbit mage                      -to the North. // an Elf mage                        -to the North. // a Human mage                       -to the North.
+1793051170	cmd	Trentlin	50	29108	korzath1.are	standing	96	0	-	ne		Project Starlight //   Maybe this wasn't such a good idea.  This room contains nothing except // for many symbols drawn on the floor and walls but, most importantly it
+1793051170	cmd	Trentlin	50	29111	korzath1.are	standing	96	0	-	north		Project Starlight //   The thing that produces the brilliant white light is a massive ceiling // high portal.  The end of the hallway is made up of glittering black rock
+1793051173	cmd	Trentlin	50	29123	korzath1.are	standing	96	0	-	enter	por	You enter The Starlight Portal // Your stomach flip flops. Everything goes black for a moment. // Land of The Giants
+1793051174	cmd	Trentlin	50	29123	korzath1.are	fighting	96	0	fight	consider	gia	A Giant is well below your level. // A Giant has about a third of your hit points. // Blow for blow, you would need about 3 rounds to bring a Giant down; she would need about 95 rounds for you.
+1793051176	cmd	Trentlin	50	29123	korzath1.are	fighting	96	0	fight	smite		A Giant is unaffected by your smite! // A Giant is unaffected by your smite! // A Giant is unaffected by your smite!
+1793051186	cmd	Trentlin	50	29123	korzath1.are	fighting	96	0	fight	kick		Your kick decimates a Giant!
+1793051189	cmd	Trentlin	50	29123	korzath1.are	fighting	96	0	fight	kick		Your kick misses a Giant.
+1793051191	cmd	Trentlin	50	29123	korzath1.are	fighting	95	0	fight	kick		Your kick hits a Giant.
+1793051196	cmd	Trentlin	50	29123	korzath1.are	fighting	95	0	fight	kick		Your kick injures a Giant. // You have become better at kick!
+1793051201	cmd	Trentlin	50	29123	korzath1.are	fighting	95	0	fight	kick		Your kick hits a Giant.
+1793051204	cmd	Trentlin	50	29123	korzath1.are	fighting	94	0	fight	wear	axe	You stop using the Headless Horseman's Reaper. // You wield A Tin Axe. // A Tin Axe feels like a part of you!
+1793051205	cmd	Trentlin	50	29123	korzath1.are	fighting	94	0	fight	smite		Your smite <<< ERADICATES >>> a Giant! // Your smite *** DEVASTATES *** a Giant! // Your smite *** DEVASTATES *** a Giant!
+1793051206	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // [50 Dwarf   Monk  ] [*AFK*] Alaric. // Players found: 2
+1793051206	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	worth		You have 1715 platinum, 1 gold, 61 silver, 97 copper // and 115062 experience (2238 exp to level).
+1793051211	cmd	Trentlin	50	29123	korzath1.are	fighting	95	0	fight	smite		Your smite *** DEVASTATES *** a Giant! // Your smite ^^^ DESTROYS ^^^ a Giant! // Your smite *** DEVASTATES *** a Giant!
+1793051217	cmd	Trentlin	50	29123	korzath1.are	fighting	94	0	fight	smite		Your smite <<< ERADICATES >>> a Giant! // A Giant is DEAD!! // You receive 43 experience points.
+1793051226	cmd	Trentlin	50	29123	korzath1.are	standing	94	0	-	look	in cor	Corpse of a Giant contains: //      (Magical) a giant hand
+1793051227	cmd	Trentlin	50	29123	korzath1.are	standing	94	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     19 hours | Sex:      Male | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1793051229	cmd	Trentlin	50	29123	korzath1.are	standing	94	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    a pirate's ring
+1793051231	cmd	Trentlin	50	29123	korzath1.are	standing	94	0	-	get	hand cor	You get a giant hand from corpse of a Giant.
+1793051233	cmd	Trentlin	50	29123	korzath1.are	standing	94	0	-	compare	hand	A) a giant hand (level 45) // B) nothing -- the slot is empty // Slot: off hand.  Your damage comes from weapons.
+1793051243	cmd	Trentlin	50	29123	korzath1.are	standing	94	0	-	wear	hand	You wear a giant hand as a shield.
+1793051248	cmd	Trentlin	50	29123	korzath1.are	standing	94	0	-	compare	shield	A) a coiled-snake shield (level 27) // B) a giant hand (level 45), worn // Slot: off hand.  Your damage comes from weapons.
+1793051252	cmd	Trentlin	50	29123	korzath1.are	standing	94	0	-	wear	shield	You stop using a giant hand. // You wear a coiled-snake shield as a shield.
+1793051254	cmd	Trentlin	50	29123	korzath1.are	standing	94	0	-	drop	hand	You drop a giant hand.
+1793051255	cmd	Trentlin	50	29123	korzath1.are	standing	94	0	-	look		Land of The Giants //   In front of you is a vast countryside and....well....one very super  // large colossal gigantic footprint.  Yes, a massive footprint in the ground
+1793051256	cmd	Trentlin	50	29123	korzath1.are	standing	94	0	-	scan		a Giant                            -to the Northeast.
+1793051257	cmd	Trentlin	50	29124	korzath1.are	standing	94	0	-	ne		Land of The Giants //   More footprints.  What kind of giants go around marking their // coutryside in footprints?  You can travel northeast or back southwest
+1793051259	cmd	Trentlin	50	29124	korzath1.are	fighting	94	0	fight	smite		Your smite ^^^ DESTROYS ^^^ a Giant! // Your smite ^^^ DESTROYS ^^^ a Giant! // Your smite ^^^ DESTROYS ^^^ a Giant!
+1793051265	cmd	Trentlin	50	29124	korzath1.are	fighting	94	0	fight	smite		Your smite *** DEVASTATES *** a Giant! // Your smite *** DEVASTATES *** a Giant! // Your smite <<< ERADICATES >>> a Giant!
+1793051271	cmd	Trentlin	50	29124	korzath1.are	fighting	94	0	fight	smite		Your smite misses a Giant.
+1793051277	cmd	Trentlin	50	29124	korzath1.are	fighting	94	0	fight	smite		Your smite misses a Giant.

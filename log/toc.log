@@ -201223,3 +201223,146 @@ Mon Oct 26 21:42:19 2026 :: Log Trentlin [29106]: arrived (Guard Post) from 2910
 Mon Oct 26 21:42:22 2026 :: Log Trentlin [29106]: l in folder
 Mon Oct 26 21:42:24 2026 :: Log Trentlin [29106]: l folder
 Mon Oct 26 21:42:35 2026 :: Log Trentlin [29106]: l 2page
+Mon Oct 26 21:42:55 2026 :: Log Trentlin [29106]: l 3page
+Mon Oct 26 21:43:18 2026 :: Log Trentlin [29106]: e
+Mon Oct 26 21:43:18 2026 :: Log Trentlin [29104]: arrived (Entrance to Project Starlight) from 29106
+Mon Oct 26 21:43:19 2026 :: Log Trentlin [29104]: sca
+Mon Oct 26 21:43:21 2026 :: Log Trentlin [29104]: e
+Mon Oct 26 21:43:21 2026 :: Log Trentlin [29105]: arrived (Guard Post) from 29104
+Mon Oct 26 21:43:25 2026 :: Log Trentlin [29105]: l desk
+Mon Oct 26 21:43:26 2026 :: Log Trentlin [29105]: l in desk
+Mon Oct 26 21:43:28 2026 :: Log Trentlin [29105]: open desk
+Mon Oct 26 21:43:30 2026 :: Log Trentlin [29105]: l in desk
+Mon Oct 26 21:43:34 2026 :: Log Trentlin [29105]: get vial desk
+Mon Oct 26 21:43:35 2026 :: Log Trentlin [29105]: l
+Mon Oct 26 21:43:36 2026 :: Log Trentlin [29105]: w
+Mon Oct 26 21:43:36 2026 :: Log Trentlin [29104]: arrived (Entrance to Project Starlight) from 29105
+Mon Oct 26 21:43:37 2026 :: Log Trentlin [29104]: sca
+Mon Oct 26 21:43:39 2026 :: Log Trentlin [29104]: nw
+Mon Oct 26 21:43:39 2026 :: Log Trentlin [29109]: arrived (Project Starlight) from 29104
+Mon Oct 26 21:43:41 2026 :: Log Trentlin [29109]: flee
+Mon Oct 26 21:43:41 2026 :: Log Trentlin [29112]: arrived (Project Starlight) from 29109
+Mon Oct 26 21:43:44 2026 :: Log Trentlin [29112]: l in portal
+Mon Oct 26 21:43:50 2026 :: Log Trentlin [29112]: enter portal
+Mon Oct 26 21:43:50 2026 :: Log Trentlin [29113]: arrived (Ofcol) from 29112
+Mon Oct 26 21:43:52 2026 :: Log Trentlin [29113]: l diana
+Mon Oct 26 21:43:53 2026 :: Log Trentlin [29113]: con diana
+Mon Oct 26 21:44:00 2026 :: Log Trentlin [29113]: sca
+Mon Oct 26 21:44:02 2026 :: Log Trentlin [29113]: l
+Mon Oct 26 21:44:02 2026 :: Log Trentlin [29113]: e
+Mon Oct 26 21:44:02 2026 :: Log Trentlin [29114]: arrived (Ofcol) from 29113
+Mon Oct 26 21:44:03 2026 :: Log Trentlin [29114]: con tro
+Mon Oct 26 21:44:04 2026 :: Log Trentlin [29114]: l tro
+Mon Oct 26 21:44:06 2026 :: Log Trentlin [29114]: sco
+Mon Oct 26 21:44:07 2026 :: Log Trentlin [29114]: k tro
+Mon Oct 26 21:44:14 2026 :: Log Trentlin [29114]: smite
+Mon Oct 26 21:44:18 2026 :: Log Trentlin [29114]: killed a Troll Beast
+Mon Oct 26 21:44:18 2026 :: Log Trentlin [29114]: coin +5 platinum
+Mon Oct 26 21:44:18 2026 :: Log Trentlin [29114]: coin +25 silver
+Mon Oct 26 21:44:18 2026 :: Log Trentlin [29114]: coin +34 copper
+Mon Oct 26 21:44:18 2026 :: Log Trentlin [29114]: coin +14 gold
+Mon Oct 26 21:44:20 2026 :: Log Trentlin [29114]: sco
+Mon Oct 26 21:44:23 2026 :: Log Trentlin [29114]: k tro
+Mon Oct 26 21:44:24 2026 :: Log Trentlin [29114]: l
+Mon Oct 26 21:44:25 2026 :: Log Trentlin [29114]: w
+Mon Oct 26 21:44:25 2026 :: Log Trentlin [29113]: arrived (Ofcol) from 29114
+Mon Oct 26 21:44:27 2026 :: Log Trentlin [29113]: s
+Mon Oct 26 21:44:27 2026 :: Log Trentlin [29115]: arrived (Ofcol) from 29113
+Mon Oct 26 21:44:28 2026 :: Log Trentlin [29115]: n
+Mon Oct 26 21:44:28 2026 :: Log Trentlin [29113]: arrived (Ofcol) from 29115
+Mon Oct 26 21:44:29 2026 :: Log Trentlin [29113]: w
+Mon Oct 26 21:44:29 2026 :: Log Trentlin [29116]: arrived (Ofcol) from 29113
+Mon Oct 26 21:44:29 2026 :: Log Trentlin [29116]: e
+Mon Oct 26 21:44:29 2026 :: Log Trentlin [29113]: arrived (Ofcol) from 29116
+Mon Oct 26 21:44:30 2026 :: Log Trentlin [29113]: n
+Mon Oct 26 21:44:30 2026 :: Log Trentlin [29117]: arrived (Ofcol) from 29113
+Mon Oct 26 21:44:31 2026 :: Log Trentlin [29117]: s
+Mon Oct 26 21:44:31 2026 :: Log Trentlin [29113]: arrived (Ofcol) from 29117
+Mon Oct 26 21:44:32 2026 :: Log Trentlin [29113]: con dia
+Mon Oct 26 21:44:36 2026 :: Log Trentlin [29113]: k dia
+Mon Oct 26 21:44:39 2026 :: Log Trentlin [29113]: smite
+Mon Oct 26 21:44:49 2026 :: Log Trentlin [29113]: smite
+Mon Oct 26 21:44:58 2026 :: Log Trentlin [29113]: kick
+Mon Oct 26 21:45:04 2026 :: Log Trentlin [29113]: kick
+Mon Oct 26 21:45:10 2026 :: Log Trentlin [29113]: smite
+Mon Oct 26 21:45:18 2026 :: Log Trentlin [29113]: killed Evil Diana
+Mon Oct 26 21:45:18 2026 :: Log Trentlin [29113]: coin +5 platinum
+Mon Oct 26 21:45:18 2026 :: Log Trentlin [29113]: coin +25 silver
+Mon Oct 26 21:45:18 2026 :: Log Trentlin [29113]: coin +34 copper
+Mon Oct 26 21:45:18 2026 :: Log Trentlin [29113]: coin +14 gold
+Mon Oct 26 21:45:19 2026 :: Log Trentlin [29113]: l in cor
+Mon Oct 26 21:45:22 2026 :: Log Trentlin [29113]: sco
+Mon Oct 26 21:45:24 2026 :: Log Trentlin [29113]: enter por
+Mon Oct 26 21:45:24 2026 :: Log Trentlin [29112]: arrived (Project Starlight) from 29113
+Mon Oct 26 21:45:26 2026 :: Sock.sinaddr:  5.161.215.244
+Mon Oct 26 21:45:26 2026 :: Log Trentlin [29112]: s
+Mon Oct 26 21:45:26 2026 :: Log Trentlin [29109]: arrived (Project Starlight) from 29112
+Mon Oct 26 21:45:27 2026 :: EOF encountered on read.
+Mon Oct 26 21:45:27 2026 :: Log Trentlin [29109]: se
+Mon Oct 26 21:45:28 2026 :: Log Trentlin [29109]: flee
+Mon Oct 26 21:45:28 2026 :: Log Trentlin [29109]: flee
+Mon Oct 26 21:45:29 2026 :: Log Trentlin [29109]: flee
+Mon Oct 26 21:45:30 2026 :: Log Trentlin [29109]: l
+Mon Oct 26 21:45:31 2026 :: Log Trentlin [29109]: se
+Mon Oct 26 21:45:32 2026 :: Log Trentlin [29109]: flee
+Mon Oct 26 21:45:32 2026 :: Log Trentlin [29109]: flee
+Mon Oct 26 21:45:33 2026 :: Log Trentlin [29109]: se
+Mon Oct 26 21:45:33 2026 :: Log Trentlin [29104]: arrived (Entrance to Project Starlight) from 29109
+Mon Oct 26 21:45:37 2026 :: Log Trentlin [29104]: smite
+Mon Oct 26 21:45:43 2026 :: Log Trentlin [29104]: smite
+Mon Oct 26 21:45:49 2026 :: Log Trentlin [29104]: smite
+Mon Oct 26 21:45:54 2026 :: Log Trentlin [29104]: sco
+Mon Oct 26 21:45:54 2026 :: Log Trentlin [29104]: killed an Elf mage
+Mon Oct 26 21:45:54 2026 :: Log Trentlin [29104]: coin +5 platinum
+Mon Oct 26 21:45:54 2026 :: Log Trentlin [29104]: coin +25 silver
+Mon Oct 26 21:45:54 2026 :: Log Trentlin [29104]: coin +34 copper
+Mon Oct 26 21:45:54 2026 :: Log Trentlin [29104]: coin +14 gold
+Mon Oct 26 21:45:57 2026 :: Log Trentlin [29104]: l in cor
+Mon Oct 26 21:45:59 2026 :: Log Trentlin [29104]: sac cor
+Mon Oct 26 21:45:59 2026 :: Log Trentlin [29104]: coin +88 copper
+Mon Oct 26 21:46:00 2026 :: Log Trentlin [29104]: sco
+Mon Oct 26 21:46:01 2026 :: Log Trentlin [29104]: l
+Mon Oct 26 21:46:03 2026 :: Log Trentlin [29104]: sca
+Mon Oct 26 21:46:10 2026 :: Log Trentlin [29104]: ne
+Mon Oct 26 21:46:10 2026 :: Log Trentlin [29108]: arrived (Project Starlight) from 29104
+Mon Oct 26 21:46:10 2026 :: Log Trentlin [29108]: n
+Mon Oct 26 21:46:10 2026 :: Log Trentlin [29111]: arrived (Project Starlight) from 29108
+Mon Oct 26 21:46:13 2026 :: Log Trentlin [29111]: enter por
+Mon Oct 26 21:46:13 2026 :: Log Trentlin [29123]: arrived (Land of The Giants) from 29111
+Mon Oct 26 21:46:14 2026 :: Log Trentlin [29123]: con gia
+Mon Oct 26 21:46:16 2026 :: Log Trentlin [29123]: smite
+Mon Oct 26 21:46:26 2026 :: Log Trentlin [29123]: kick
+Mon Oct 26 21:46:29 2026 :: Log Trentlin [29123]: kick
+Mon Oct 26 21:46:31 2026 :: Log Trentlin [29123]: kick
+Mon Oct 26 21:46:36 2026 :: Log Trentlin [29123]: kick
+Mon Oct 26 21:46:41 2026 :: Log Trentlin [29123]: kick
+Mon Oct 26 21:46:44 2026 :: Log Trentlin [29123]: wear axe
+Mon Oct 26 21:46:45 2026 :: Log Trentlin [29123]: smite
+Mon Oct 26 21:46:46 2026 :: Log Alaric [2]: arrived (Limbo) from 2497
+Mon Oct 26 21:46:46 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2
+Mon Oct 26 21:46:46 2026 :: Log Alaric [2497]: who
+Mon Oct 26 21:46:46 2026 :: Log Alaric [2497]: worth
+Mon Oct 26 21:46:51 2026 :: Log Trentlin [29123]: smite
+Mon Oct 26 21:46:57 2026 :: Log Trentlin [29123]: smite
+Mon Oct 26 21:46:57 2026 :: Log Trentlin [29123]: killed a Giant
+Mon Oct 26 21:46:57 2026 :: Log Trentlin [29123]: coin +5 platinum
+Mon Oct 26 21:46:57 2026 :: Log Trentlin [29123]: coin +25 silver
+Mon Oct 26 21:46:57 2026 :: Log Trentlin [29123]: coin +34 copper
+Mon Oct 26 21:46:57 2026 :: Log Trentlin [29123]: coin +14 gold
+Mon Oct 26 21:47:06 2026 :: Log Trentlin [29123]: l in cor
+Mon Oct 26 21:47:07 2026 :: Log Trentlin [29123]: sco
+Mon Oct 26 21:47:09 2026 :: Log Trentlin [29123]: eq
+Mon Oct 26 21:47:11 2026 :: Log Trentlin [29123]: get hand cor
+Mon Oct 26 21:47:13 2026 :: Log Trentlin [29123]: comp hand
+Mon Oct 26 21:47:23 2026 :: Log Trentlin [29123]: wear hand
+Mon Oct 26 21:47:28 2026 :: Log Trentlin [29123]: comp shield
+Mon Oct 26 21:47:32 2026 :: Log Trentlin [29123]: wear shield
+Mon Oct 26 21:47:34 2026 :: Log Trentlin [29123]: drop hand
+Mon Oct 26 21:47:35 2026 :: Log Trentlin [29123]: l
+Mon Oct 26 21:47:36 2026 :: Log Trentlin [29123]: sca
+Mon Oct 26 21:47:37 2026 :: Log Trentlin [29123]: ne
+Mon Oct 26 21:47:37 2026 :: Log Trentlin [29124]: arrived (Land of The Giants) from 29123
+Mon Oct 26 21:47:39 2026 :: Log Trentlin [29124]: smite
+Mon Oct 26 21:47:45 2026 :: Log Trentlin [29124]: smite
+Mon Oct 26 21:47:51 2026 :: Log Trentlin [29124]: smite
+Mon Oct 26 21:47:57 2026 :: Log Trentlin [29124]: smite
