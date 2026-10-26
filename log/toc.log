@@ -200112,3 +200112,7 @@ Mon Oct 26 19:53:42 2026 :: EOF encountered on read.
 Mon Oct 26 19:58:45 2026 :: Sock.sinaddr:  3.12.251.153
 Mon Oct 26 19:58:46 2026 :: EOF encountered on read.
 Mon Oct 26 19:58:51 2026 :: Treasure goblin: vanished from room 20135 (A maintenance hallway, prison.are) (too long in one area).
+Mon Oct 26 20:03:51 2026 :: Sock.sinaddr:  52.87.72.16
+Mon Oct 26 20:03:51 2026 :: EOF encountered on read.
+Mon Oct 26 20:03:52 2026 :: EOF encountered on read.
+Mon Oct 26 20:05:58 2026 :: Log Alaric [2497]: affects off: titanic, empower, giant strength, divine protection, fire shield, protection evil, pass door, fly, haste, sanctuary, empower, shroud, power gloves, detect evil, detect good, detect magic, detect hidden, detect invis, frenzy, giant strength, divine protection, fire shield, protection evil, pass door, fly, haste, sanctuary, shield, bless, armor; max hp 8418 -> 1403; max mana 14694 -> 2449; max moves 6078 -> 1013; hp 8418 -> 1403
