@@ -197258,3 +197258,96 @@ Mon Oct 26 02:00:31 2026 :: Log Alaric [25151]: u
 Mon Oct 26 02:00:31 2026 :: Log Alaric [25185]: arrived (The ledge.) from 25151
 Mon Oct 26 02:00:31 2026 :: Log Alaric [25185]: u
 Mon Oct 26 02:00:31 2026 :: Log Alaric [2397]: arrived (The end of the guarded hall) from 25185
+Mon Oct 26 02:00:51 2026 :: Log Alaric [2397]: north
+Mon Oct 26 02:00:51 2026 :: Log Alaric [2392]: arrived (The guarded hall) from 2397
+Mon Oct 26 02:00:51 2026 :: Log Alaric [2392]: north
+Mon Oct 26 02:00:51 2026 :: Log Alaric [2389]: arrived (The guarded hall) from 2392
+Mon Oct 26 02:00:52 2026 :: Log Alaric [2389]: north
+Mon Oct 26 02:00:52 2026 :: Log Alaric [2388]: arrived (The guarded hall) from 2389
+Mon Oct 26 02:00:52 2026 :: Log Alaric [2388]: north
+Mon Oct 26 02:00:52 2026 :: Log Alaric [2387]: arrived (The Guard Post) from 2388
+Mon Oct 26 02:00:52 2026 :: Log Alaric [2387]: north
+Mon Oct 26 02:00:52 2026 :: Log Alaric [2382]: arrived (The Great Hall) from 2387
+Mon Oct 26 02:00:52 2026 :: Log Alaric [2382]: north
+Mon Oct 26 02:00:52 2026 :: Log Alaric [2381]: arrived (The Grand Hall) from 2382
+Mon Oct 26 02:00:53 2026 :: Log Alaric [2381]: west
+Mon Oct 26 02:00:53 2026 :: Log Alaric [2380]: arrived (The Hall) from 2381
+Mon Oct 26 02:00:53 2026 :: Log Alaric [2380]: west
+Mon Oct 26 02:00:53 2026 :: Log Alaric [2379]: arrived (The entryway to the Keep of Mahn-Tor) from 2380
+Mon Oct 26 02:00:53 2026 :: Log Alaric [2379]: open west
+Mon Oct 26 02:00:53 2026 :: Log Alaric [2379]: west
+Mon Oct 26 02:00:53 2026 :: Log Alaric [2377]: arrived (Before the Keep of Mahn-Tor) from 2379
+Mon Oct 26 02:00:54 2026 :: Log Alaric [2377]: west
+Mon Oct 26 02:00:54 2026 :: Log Alaric [2375]: arrived (The road to the Keep of Mahn-Tor) from 2377
+Mon Oct 26 02:00:54 2026 :: Log Alaric [2375]: west
+Mon Oct 26 02:00:54 2026 :: Log Alaric [2368]: arrived (The streets of Mahn-Tor) from 2375
+Mon Oct 26 02:00:54 2026 :: Log Alaric [2368]: north
+Mon Oct 26 02:00:54 2026 :: Log Alaric [2365]: arrived (The city streets of Mahn-Tor) from 2368
+Mon Oct 26 02:00:54 2026 :: Log Alaric [2365]: west
+Mon Oct 26 02:00:54 2026 :: Log Alaric [2364]: arrived (Inside the gates of Mahn-Tor) from 2365
+Mon Oct 26 02:01:00 2026 :: Log Alaric [2364]: ex
+Mon Oct 26 02:01:03 2026 :: Log Alaric [2364]: n
+Mon Oct 26 02:01:03 2026 :: Log Alaric [2362]: arrived (Before the gates of Mahn-Tor) from 2364
+Mon Oct 26 02:01:03 2026 :: Log Alaric [2362]: ex
+Mon Oct 26 02:01:06 2026 :: Log Alaric [2362]: d
+Mon Oct 26 02:01:06 2026 :: Log Alaric [2361]: arrived (On the cliffside) from 2362
+Mon Oct 26 02:01:08 2026 :: Log Alaric [2361]: ex
+Mon Oct 26 02:01:08 2026 :: Log Alaric [2361]: d
+Mon Oct 26 02:01:08 2026 :: Log Alaric [2360]: arrived (The edge of the frigid wastes) from 2361
+Mon Oct 26 02:01:09 2026 :: Log Alaric [2360]: ex
+Mon Oct 26 02:01:10 2026 :: Log Alaric [2360]: n
+Mon Oct 26 02:01:10 2026 :: Log Alaric [2358]: arrived (The frigid wastelands) from 2360
+Mon Oct 26 02:01:11 2026 :: Log Alaric [2358]: ex
+Mon Oct 26 02:01:18 2026 :: Log Alaric [2358]: east
+Mon Oct 26 02:01:18 2026 :: Log Alaric [2352]: arrived (The frigid wastelands) from 2358
+Mon Oct 26 02:01:18 2026 :: Log Alaric [2352]: west
+Mon Oct 26 02:01:18 2026 :: Log Alaric [2357]: arrived (The frigid wastelands) from 2352
+Mon Oct 26 02:01:20 2026 :: Log Alaric [2357]: affects off: steel fist
+Mon Oct 26 02:01:31 2026 :: Log Alaric [2357]: east
+Mon Oct 26 02:01:31 2026 :: Log Alaric [2352]: arrived (The frigid wastelands) from 2357
+Mon Oct 26 02:01:31 2026 :: Log Alaric [2352]: east
+Mon Oct 26 02:01:31 2026 :: Log Alaric [2351]: arrived (The frigid wastelands) from 2352
+Mon Oct 26 02:01:31 2026 :: Log Alaric [2351]: east
+Mon Oct 26 02:01:31 2026 :: Log Alaric [2353]: arrived (The Glacier Temple) from 2351
+Mon Oct 26 02:01:31 2026 :: Log Alaric [2353]: north
+Mon Oct 26 02:01:31 2026 :: Log Alaric [2326]: arrived (Floating in blue light) from 2353
+Mon Oct 26 02:01:32 2026 :: Log Alaric [2326]: north
+Mon Oct 26 02:01:32 2026 :: Log Alaric [2324]: arrived (The Blood Sea Portal) from 2326
+Mon Oct 26 02:01:38 2026 :: Log Alaric [2324]: n
+Mon Oct 26 02:01:38 2026 :: Log Alaric [2321]: arrived (The rocky shoreline) from 2324
+Mon Oct 26 02:01:39 2026 :: Log Alaric [2321]: ex
+Mon Oct 26 02:01:42 2026 :: Log Alaric [2321]: n
+Mon Oct 26 02:01:44 2026 :: Log Alaric [2321]: u
+Mon Oct 26 02:01:44 2026 :: Log Alaric [2318]: arrived (The hills overlooking the shoreline) from 2321
+Mon Oct 26 02:01:47 2026 :: Log Alaric [2318]: ex
+Mon Oct 26 02:01:57 2026 :: Log Alaric [2318]: west
+Mon Oct 26 02:01:57 2026 :: Log Alaric [2317]: arrived (The hills overlooking the shore) from 2318
+Mon Oct 26 02:01:57 2026 :: Log Alaric [2317]: north
+Mon Oct 26 02:01:57 2026 :: Log Alaric [2313]: arrived (In the foothills) from 2317
+Mon Oct 26 02:01:59 2026 :: Log Alaric [2313]: get asll
+Mon Oct 26 02:02:00 2026 :: Log Alaric [2313]: get all
+Mon Oct 26 02:02:01 2026 :: Log Alaric [2313]: recal
+Mon Oct 26 02:02:01 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2313
+Mon Oct 26 02:02:02 2026 :: Log Alaric [2497]: aq co
+Mon Oct 26 02:02:02 2026 :: Log Alaric [2497]: copper +94640700
+Mon Oct 26 02:02:02 2026 :: Log Alaric [2497]: quest complete: 94p 64g 7s, 48 quest points (streak bonus 109%)
+Mon Oct 26 02:02:02 2026 :: Snapshot of Alaric taken before quest: Alaric.20261026_020202.quest (PRESTORE Alaric to see it).
+Mon Oct 26 02:02:04 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct 26 02:02:04 2026 :: Log Alaric [2497]: sc
+Mon Oct 26 02:02:18 2026 :: Treasure goblin: vanished from room 1811 (A Passageway, haven.are) (too long in one area).
+Mon Oct 26 02:02:28 2026 :: Sock.sinaddr:  178.156.185.231
+Mon Oct 26 02:02:29 2026 :: EOF encountered on read.
+Mon Oct 26 02:04:45 2026 :: Log Alaric [2497]: af
+Mon Oct 26 02:04:58 2026 :: Log Alaric [2497]: prac
+Mon Oct 26 02:05:39 2026 :: Log Alaric [2497]: aq re
+Mon Oct 26 02:05:39 2026 :: Log Alaric [2497]: quest assigned: recover The Sceptre of Gravestone (obj 25041) in solace.are, 21 minutes, ordinary
+Mon Oct 26 02:05:44 2026 :: Log Alaric [2497]: enter door
+Mon Oct 26 02:05:44 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 02:05:44 2026 :: Log Alaric [2401]: west
+Mon Oct 26 02:05:44 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Mon Oct 26 02:05:45 2026 :: Log Alaric [2405]: west
+Mon Oct 26 02:05:45 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Mon Oct 26 02:05:45 2026 :: Log Alaric [2433]: west
+Mon Oct 26 02:05:45 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Mon Oct 26 02:05:45 2026 :: Log Alaric [2434]: west
+Mon Oct 26 02:05:45 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
