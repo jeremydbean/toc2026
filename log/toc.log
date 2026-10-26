@@ -199976,3 +199976,129 @@ Mon Oct 26 19:34:07 2026 :: Log Alaric [2497]: who
 Mon Oct 26 19:34:08 2026 :: Log Alaric [2497]: score
 Mon Oct 26 19:34:09 2026 :: Log Alaric [2497]: changes
 Mon Oct 26 19:35:58 2026 :: Log Alaric [2497]: help fatality
+Mon Oct 26 19:36:40 2026 :: Log Alaric [2497]: who
+Mon Oct 26 19:36:42 2026 :: Log Alaric [2497]: wake
+Mon Oct 26 19:36:43 2026 :: Log Alaric [2497]: sc
+Mon Oct 26 19:36:47 2026 :: Log Alaric [2497]: i
+Mon Oct 26 19:36:48 2026 :: Log Alaric [2497]: who
+Mon Oct 26 19:36:56 2026 :: Log Alaric [2497]: wake
+Mon Oct 26 19:36:57 2026 :: Log Alaric [2497]: (refused) dn o
+Mon Oct 26 19:36:58 2026 :: Log Alaric [2497]: en do
+Mon Oct 26 19:36:58 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 19:37:00 2026 :: Log Alaric [2401]: jump rock
+Mon Oct 26 19:37:00 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Mon Oct 26 19:37:00 2026 :: Log Alaric [1607]: l
+Mon Oct 26 19:37:00 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 1607
+Mon Oct 26 19:37:01 2026 :: Log Alaric [4208]: l
+Mon Oct 26 19:37:10 2026 :: Log Alaric [4208]: heal all
+Mon Oct 26 19:37:10 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Mon Oct 26 19:37:11 2026 :: Log Alaric [4208]: r e 4
+Mon Oct 26 19:37:11 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Mon Oct 26 19:37:11 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Mon Oct 26 19:37:11 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Mon Oct 26 19:37:11 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Mon Oct 26 19:37:12 2026 :: Log Alaric [2427]: n
+Mon Oct 26 19:37:12 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Mon Oct 26 19:37:12 2026 :: Log Alaric [2404]: n
+Mon Oct 26 19:37:12 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Mon Oct 26 19:37:13 2026 :: Log Alaric [2401]: u
+Mon Oct 26 19:37:13 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Mon Oct 26 19:37:13 2026 :: Log Alaric [2410]: u
+Mon Oct 26 19:37:13 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Mon Oct 26 19:37:13 2026 :: Log Alaric [2411]: u
+Mon Oct 26 19:37:13 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Mon Oct 26 19:37:14 2026 :: Log Alaric [2414]: u
+Mon Oct 26 19:37:14 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Mon Oct 26 19:37:27 2026 :: Log Alaric [2497]: aq re
+Mon Oct 26 19:37:27 2026 :: Log Alaric [2497]: quest assigned: kill a citizen of Gelidia (mob 18209, level 11) in gelidia.are, 17 minutes, ordinary
+Mon Oct 26 19:37:32 2026 :: Log Alaric [2497]: enter door
+Mon Oct 26 19:37:32 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 19:37:32 2026 :: Log Alaric [2401]: west
+Mon Oct 26 19:37:32 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Mon Oct 26 19:37:33 2026 :: Log Alaric [2405]: west
+Mon Oct 26 19:37:33 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Mon Oct 26 19:37:33 2026 :: Log Alaric [2433]: west
+Mon Oct 26 19:37:33 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Mon Oct 26 19:37:33 2026 :: Log Alaric [2434]: west
+Mon Oct 26 19:37:33 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Mon Oct 26 19:37:33 2026 :: Log Alaric [2435]: west
+Mon Oct 26 19:37:33 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Mon Oct 26 19:37:34 2026 :: Log Alaric [2436]: west
+Mon Oct 26 19:37:34 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Mon Oct 26 19:37:34 2026 :: Log Alaric [2437]: west
+Mon Oct 26 19:37:34 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Mon Oct 26 19:37:34 2026 :: Log Alaric [2438]: west
+Mon Oct 26 19:37:34 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Mon Oct 26 19:37:34 2026 :: Log Alaric [2439]: north
+Mon Oct 26 19:37:34 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Mon Oct 26 19:37:35 2026 :: Log Alaric [3900]: north
+Mon Oct 26 19:37:35 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Mon Oct 26 19:37:35 2026 :: Log Alaric [3901]: north
+Mon Oct 26 19:37:35 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Mon Oct 26 19:37:35 2026 :: Log Alaric [3902]: east
+Mon Oct 26 19:37:35 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Mon Oct 26 19:37:35 2026 :: Log Alaric [3903]: east
+Mon Oct 26 19:37:35 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Mon Oct 26 19:37:36 2026 :: Log Alaric [3904]: north
+Mon Oct 26 19:37:36 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Mon Oct 26 19:37:36 2026 :: Log Alaric [300]: north
+Mon Oct 26 19:37:36 2026 :: Log Alaric [315]: arrived (Gallow hill) from 300
+Mon Oct 26 19:37:36 2026 :: Log Alaric [315]: north
+Mon Oct 26 19:37:36 2026 :: Log Alaric [320]: arrived (Grassy plains) from 315
+Mon Oct 26 19:37:36 2026 :: Log Alaric [320]: north
+Mon Oct 26 19:37:36 2026 :: Log Alaric [322]: arrived (Grassy foothills) from 320
+Mon Oct 26 19:37:37 2026 :: Log Alaric [322]: north
+Mon Oct 26 19:37:37 2026 :: Log Alaric [324]: arrived (The steep foothills) from 322
+Mon Oct 26 19:37:37 2026 :: Log Alaric [324]: north
+Mon Oct 26 19:37:37 2026 :: Log Alaric [45]: arrived (Base of Mount Ulmo) from 324
+Mon Oct 26 19:37:37 2026 :: Log Alaric [45]: north
+Mon Oct 26 19:37:37 2026 :: Log Alaric [1000]: arrived (A mountain path) from 45
+Mon Oct 26 19:37:37 2026 :: Log Alaric [1000]: north
+Mon Oct 26 19:37:37 2026 :: Log Alaric [1001]: arrived (A mountain path) from 1000
+Mon Oct 26 19:37:38 2026 :: Log Alaric [1001]: up
+Mon Oct 26 19:37:38 2026 :: Log Alaric [1002]: arrived (A mountain path) from 1001
+Mon Oct 26 19:37:38 2026 :: Log Alaric [1002]: east
+Mon Oct 26 19:37:38 2026 :: Log Alaric [46]: arrived (Steep and Winding Path) from 1002
+Mon Oct 26 19:37:38 2026 :: Log Alaric [46]: up
+Mon Oct 26 19:37:38 2026 :: Log Alaric [47]: arrived (Chilly Path) from 46
+Mon Oct 26 19:37:38 2026 :: Log Alaric [47]: north
+Mon Oct 26 19:37:38 2026 :: Log Alaric [18224]: arrived (Outside the gates of Gelidia) from 47
+Mon Oct 26 19:37:43 2026 :: Log Alaric [18224]: on
+Mon Oct 26 19:37:43 2026 :: Log Alaric [18224]: scan
+Mon Oct 26 19:37:44 2026 :: Log Alaric [18224]: n
+Mon Oct 26 19:37:44 2026 :: Log Alaric [18223]: arrived (Inside the gates of Gelidia) from 18224
+Mon Oct 26 19:37:45 2026 :: Log Alaric [18223]: scan
+Mon Oct 26 19:37:45 2026 :: Log Alaric [18223]: n
+Mon Oct 26 19:37:45 2026 :: Log Alaric [18222]: arrived (A short road) from 18223
+Mon Oct 26 19:37:50 2026 :: Log Alaric [18222]: kill ci
+Mon Oct 26 19:37:50 2026 :: Log Alaric [18222]: killed a citizen of Gelidia
+Mon Oct 26 19:37:50 2026 :: Log Alaric [18222]: coin +1 platinum
+Mon Oct 26 19:37:50 2026 :: Log Alaric [18222]: coin +5 silver
+Mon Oct 26 19:37:50 2026 :: Log Alaric [18222]: coin +7 copper
+Mon Oct 26 19:37:50 2026 :: Log Alaric [18222]: coin +3 gold
+Mon Oct 26 19:37:55 2026 :: Log Alaric [18222]: scan
+Mon Oct 26 19:37:56 2026 :: Log Alaric [18222]: e
+Mon Oct 26 19:37:56 2026 :: Log Alaric [18221]: arrived (End of a short road) from 18222
+Mon Oct 26 19:37:57 2026 :: Log Alaric [18221]: ne
+Mon Oct 26 19:37:57 2026 :: Log Alaric [18213]: arrived (Town Square) from 18221
+Mon Oct 26 19:37:59 2026 :: Log Alaric [18213]: kill ci
+Mon Oct 26 19:37:59 2026 :: Log Alaric [18213]: killed a citizen of Gelidia
+Mon Oct 26 19:37:59 2026 :: Log Alaric [18213]: coin +1 platinum
+Mon Oct 26 19:37:59 2026 :: Log Alaric [18213]: coin +8 silver
+Mon Oct 26 19:37:59 2026 :: Log Alaric [18213]: coin +11 copper
+Mon Oct 26 19:37:59 2026 :: Log Alaric [18213]: coin +4 gold
+Mon Oct 26 19:38:03 2026 :: Log Alaric [18213]: recal
+Mon Oct 26 19:38:03 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 18213
+Mon Oct 26 19:38:03 2026 :: Log Alaric [2497]: recal
+Mon Oct 26 19:38:03 2026 :: Log Alaric [2497]: recal
+Mon Oct 26 19:38:04 2026 :: Log Alaric [2497]: aq co
+Mon Oct 26 19:38:04 2026 :: Log Alaric [2497]: copper +81120600
+Mon Oct 26 19:38:04 2026 :: Log Alaric [2497]: quest complete: 81p 12g 6s, 31 quest points (streak bonus 127%)
+Mon Oct 26 19:38:04 2026 :: Snapshot of Alaric taken before quest: Alaric.20261026_193804.quest (PRESTORE Alaric to see it).
+Mon Oct 26 19:38:04 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct 26 19:38:06 2026 :: Log Alaric [2497]: score
+Mon Oct 26 19:38:09 2026 :: Log Alaric [2497]: who
+Mon Oct 26 19:38:11 2026 :: Log Alaric [2497]: afk
+Mon Oct 26 19:38:28 2026 :: Sock.sinaddr:  18.116.205.62
+Mon Oct 26 19:38:28 2026 :: EOF encountered on read.
+Mon Oct 26 19:38:41 2026 :: Treasure goblin: vanished from room 16028 (Main Deck, pirate.are) (too long in one area).
