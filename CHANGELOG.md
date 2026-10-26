@@ -8,6 +8,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **A client that hardly reads cannot hold the game a second per write**
+  (2026-10-26). The write-stall limit was per write: a connection that
+  never read but whose kernel kept taking a trickle made progress inside
+  each quarter second, so every write could wait its full second, and the
+  next, for as long as it typed. `d->write_stalled_ms` now counts waiting
+  across writes until one goes out clean, and past two seconds the client
+  is dropped. `test_audit_connections` failed on two CI runs in a row once
+  new modules moved it onto a busier shard.
+
 - **Level 2's Dodongo takes the bombs it swallows** (2026-10-26). The
   guardian is immune to fire, and the swallowed bomb's blast was rolled as
   `DAM_FIRE`, so it did nothing -- the NES's whole Dodongo fight. The blast

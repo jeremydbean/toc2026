@@ -689,6 +689,9 @@ struct  descriptor_data
      * and its character after the call.
      */
     bool                write_failed;
+    /* Milliseconds this connection's writes have waited on a full socket
+       since a write last went out without waiting (comm.c). */
+    long                write_stalled_ms;
     /*
      * The first line has arrived. Only that line may be a PROXY header
      * (proxy_header_accept); every later line is ordinary input, or a

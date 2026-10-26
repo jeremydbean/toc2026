@@ -1439,6 +1439,7 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
     dnew->outbuf = alloc_mem(dnew->outsize);
     dnew->color = true;
     dnew->write_failed = FALSE;
+    dnew->write_stalled_ms = 0;
     dnew->first_line_read = FALSE;
 
     size = sizeof(sock);
@@ -2608,9 +2609,22 @@ bool write_to_descriptor( DESCRIPTOR_DATA *d, const char *txt, int length )
  * take a byte for that long, with its buffers already full, is not
  * reading, and the most the rest of the game ever waits on it is once,
  * for that long, before it is dropped.
+ *
+ * The budget is the connection's, not the write's (2026-10-26): a client
+ * that never reads but whose kernel takes a trickle -- the send buffer
+ * grows by autotuning -- made progress inside every quarter second, so
+ * each write could wait its full second and the next write a second
+ * more, for as long as it kept typing. CHANGES ALL past 32,000 bytes is
+ * two writes, and a slow runner then stopped greeting new connections
+ * (test_audit_connections). d->write_stalled_ms counts the waiting across
+ * writes and is cleared only by a write that never had to wait; past
+ * WRITE_STALL_BUDGET_MS of it the client is let go, so the most anybody
+ * else ever waits on one connection is two seconds between its clean
+ * writes. A reader on a real link takes a burst without waiting at all.
  */
 #define WRITE_STALL_MS          250
 #define WRITE_STALL_MAX_MS      1000
+#define WRITE_STALL_BUDGET_MS   2000
 
 static long write_ms_since( const struct timespec *since )
 {
@@ -2623,19 +2637,23 @@ static long write_ms_since( const struct timespec *since )
 
 /* Wait for room in the socket's send buffer. FALSE: give the client up. */
 static bool write_wait_for_room( int fd, const struct timespec *started,
-                                 const struct timespec *progress )
+                                 const struct timespec *progress,
+                                 long already )
 {
     struct pollfd pfd;
     long stalled = write_ms_since( progress );
     long total   = write_ms_since( started );
     long wait;
 
-    if ( stalled >= WRITE_STALL_MS || total >= WRITE_STALL_MAX_MS )
+    if ( stalled >= WRITE_STALL_MS || total >= WRITE_STALL_MAX_MS
+    ||   total + already >= WRITE_STALL_BUDGET_MS )
         return FALSE;
 
     wait = WRITE_STALL_MS - stalled;
     if ( WRITE_STALL_MAX_MS - total < wait )
         wait = WRITE_STALL_MAX_MS - total;
+    if ( WRITE_STALL_BUDGET_MS - total - already < wait )
+        wait = WRITE_STALL_BUDGET_MS - total - already;
 
     pfd.fd      = fd;
     pfd.events  = POLLOUT;
@@ -2685,7 +2703,8 @@ bool write_raw_to_descriptor( DESCRIPTOR_DATA *d, const char *txt, int length )
                     progress = started;
                     waited   = TRUE;
                 }
-                if ( write_wait_for_room( d->descriptor, &started, &progress ) )
+                if ( write_wait_for_room( d->descriptor, &started, &progress,
+                                          d->write_stalled_ms ) )
                     continue;
 
                 d->write_failed = TRUE;
@@ -2722,6 +2741,10 @@ bool write_raw_to_descriptor( DESCRIPTOR_DATA *d, const char *txt, int length )
             clock_gettime( CLOCK_MONOTONIC, &progress );
     }
 
+    if ( waited )
+        d->write_stalled_ms += write_ms_since( &started );
+    else
+        d->write_stalled_ms = 0;
     return TRUE;
 }
 
