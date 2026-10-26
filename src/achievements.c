@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <errno.h>
 #include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -697,6 +698,23 @@ static const int achievement_set_limits[ACH_SET_COUNT] =
     4096, 4096, 1024, 1024, 16384, 64, 16
 };
 
+/* The largest id each set can honestly hold (review, 2026-10-26: a saved
+   "AchSet rooms 9223372036854775807" overflowed the loader's increment).
+   Vnums are ints and an area's id is a 31-bit hash; a recipe is its
+   method times 100000 plus a skill number; dailies and disciplines are
+   small. Nothing outside these is ever stored, so no id plus one can
+   overflow anywhere. */
+static const long achievement_set_max_id[ACH_SET_COUNT] =
+{
+    INT_MAX,        /* vesh-items: object vnums */
+    999999L,        /* recipes: method * 100000 + skill */
+    INT_MAX,        /* quest-areas: achievement_area_id, 31 bits */
+    INT_MAX,        /* areas */
+    INT_MAX,        /* rooms: room vnums */
+    63L,            /* daily-kinds */
+    15L             /* psi-disciplines */
+};
+
 static int achievement_set_search(const CHAR_DATA *ch, int set, long id,
                                   bool *found)
 {
@@ -740,7 +758,8 @@ static bool achievement_set_insert(CHAR_DATA *ch, int set, long id)
     bool found;
     int at;
 
-    if (id < 0 || pc->achievement_set_len[set] >= achievement_set_limits[set])
+    if (id < 0 || id > achievement_set_max_id[set]
+        || pc->achievement_set_len[set] >= achievement_set_limits[set])
         return false;
     at = pc->achievement_set[set] == NULL ? 0
         : achievement_set_search(ch, set, id, &found);
@@ -1889,7 +1908,10 @@ void achievement_write_char(CHAR_DATA *ch, FILE *fp)
         {
             int run = i;
 
-            while (run + 1 < len && values[run + 1] == values[run] + 1)
+            /* values[run] < LONG_MAX: the next id is only asked for when
+               it exists, so a corrupt set in memory cannot overflow. */
+            while (run + 1 < len && values[run] < LONG_MAX
+                   && values[run + 1] == values[run] + 1)
                 run++;
             if (run > i)
                 fprintf(fp, " %ld-%ld", values[i], values[run]);
@@ -1922,42 +1944,93 @@ void achievement_load_count(CHAR_DATA *ch, const char *name, long value)
     }
 }
 
+/* One number of an AchSet token: digits only -- no sign, no space, no
+   letter -- and no larger than the set's largest id. *end is where the
+   digits stopped. */
+static bool achievement_set_number(const char *text, int set,
+                                   const char **end, long *out)
+{
+    char *stop;
+    long value;
+
+    if (!isdigit((unsigned char)text[0]))
+        return false;
+    errno = 0;
+    value = strtol(text, &stop, 10);
+    if (errno == ERANGE || value < 0
+        || (set >= 0 && value > achievement_set_max_id[set]))
+        return false;
+    *end = stop;
+    *out = value;
+    return true;
+}
+
+/* Parses "<id>" or "<first>-<last>"; false for anything else, which the
+   loader skips rather than guessing at. */
+bool achievement_set_token(const char *word, int set, long *first, long *last)
+{
+    const char *end;
+
+    if (!achievement_set_number(word, set, &end, first))
+        return false;
+    *last = *first;
+    if (*end == '\0')
+        return true;
+    if (*end != '-' || !achievement_set_number(end + 1, set, &end, last)
+        || *end != '\0' || *last < *first)
+        return false;
+    return true;
+}
+
 /* Reads "AchSet <name> <id|a-b> ... ~". An unknown name is read through
-   and dropped, so a file from a newer build still loads. */
+   and dropped, so a file from a newer build still loads. Every token is
+   read to the "~" -- stopping early would leave the rest for fread_char
+   to misread as keys -- but only the first ACH_SET_LOAD_TOKENS are
+   looked at, and no more than twice the set's limit of ids are tried in
+   all, so a hostile file cannot make the load do unbounded work. */
+#define ACH_SET_LOAD_TOKENS 20000
 void achievement_load_set(CHAR_DATA *ch, FILE *fp)
 {
     char name[MAX_INPUT_LENGTH];
     int set = -1;
     int index;
     int tokens = 0;
+    long budget = 0;
 
     toc_strlcpy(name, fread_word(fp), sizeof(name));
     for (index = 0; index < ACH_SET_COUNT; index++)
         if (!str_cmp(name, achievement_set_names[index]))
             set = index;
+    if (set >= 0)
+        budget = 2L * achievement_set_limits[set];
 
     for (;;)
     {
         char *word = fread_word(fp);
-        char *dash;
         long first;
         long last;
+        long id;
 
         if (word == NULL || word[0] == '\0' || !str_cmp(word, "~")
-            || !str_cmp(word, "End") || ++tokens > 20000)
+            || !str_cmp(word, "End"))
             break;
-        first = strtol(word, &dash, 10);
-        last = first;
-        if (*dash == '-')
-            last = strtol(dash + 1, NULL, 10);
-        if (set < 0 || !achievement_is_player(ch) || first < 0 || last < first)
+        if (++tokens > ACH_SET_LOAD_TOKENS || set < 0 || budget <= 0
+            || !achievement_is_player(ch)
+            || !achievement_set_token(word, set, &first, &last))
             continue;
-        if (last - first > achievement_set_limits[set])
-            last = first + achievement_set_limits[set];
-        for (; first <= last; first++)
-            if (!achievement_set_insert(ch, set, first)
+        /* Never steps past last, so last may be the set's largest id. */
+        for (id = first; budget > 0; id++)
+        {
+            budget--;
+            if (!achievement_set_insert(ch, set, id)
                 && ch->pcdata->achievement_set_len[set] >= achievement_set_limits[set])
+            {
+                budget = 0;
                 break;
+            }
+            if (id == last)
+                break;
+        }
     }
 }
 

@@ -3261,6 +3261,7 @@ void    achievement_record_hyrule_chest ( CHAR_DATA *ch, int dungeon );
 void    disaster_dragon_struck ( CHAR_DATA *ch, CHAR_DATA *victim );
 void    achievement_load_count ( CHAR_DATA *ch, const char *name, long value );
 void    achievement_load_set ( CHAR_DATA *ch, FILE *fp );
+bool    achievement_set_token ( const char *word, int set, long *first, long *last );
 void    achievement_load_spent ( CHAR_DATA *ch, FILE *fp );
 void    achievement_free ( CHAR_DATA *ch );
 long    achievement_marks ( const CHAR_DATA *ch );

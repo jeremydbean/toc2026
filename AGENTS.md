@@ -1065,7 +1065,18 @@ Rules the code depends on:
   `achievement_counter_names` together; the same for sets. An unknown name
   is read and dropped. Sets are heap arrays freed by `achievement_free`
   from `free_char`. Counters start at zero: nothing is backfilled that the
-  save cannot prove.
+  save cannot prove. **A set token is read strictly** (review,
+  2026-10-26: `AchSet rooms 9223372036854775807` overflowed the range
+  loop's increment under UBSan): `achievement_set_token` takes digits or
+  digits-digits, no sign or trailing text, no `ERANGE`, nothing past the
+  set's `achievement_set_max_id` (an int for vnums and area ids), and
+  `achievement_set_insert` refuses the same. The range loop stops at its
+  last value instead of stepping past it, one line tries at most twice
+  the set's limit of ids, and every token is read to the `~` -- it used
+  to stop at 20,000 and leave the rest for `fread_char` -- though only
+  the first 20,000 are looked at. The writer asks for the next id only
+  below `LONG_MAX`. `tests/test_achievement_set_load.py`, also in
+  `SANITIZE_MODULES`.
 - **Award at the success, never at the command**, and staff earn none of
   the new feats: `ACH_STAFF` is `IS_TRUSTED(ch, LEVEL_IMMORTAL)`, and
   `achievement_unlock` refuses an expansion row (from `goblin-kills-1`
