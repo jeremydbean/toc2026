@@ -27373,3 +27373,65 @@
 1793057617	cmd	Alaric	53	29212	korzath2.are	standing	65	0	-	fists		Who do you want to attack?
 1793057617	cmd	Alaric	53	29212	korzath2.are	standing	65	0	-	fists		Who do you want to attack?
 1793057617	cmd	Alaric	53	29212	korzath2.are	standing	65	0	-	fists		Who do you want to attack?
+1793057663	cmd	Alaric	53	29212	korzath2.are	standing	65	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1793057665	cmd	Alaric	53	29212	korzath2.are	standing	65	0	-	wake		You are already standing.
+1793057665	cmd	Alaric	53	29212	korzath2.are	standing	65	0	-	look		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1793057668	cmd	Alaric	53	29212	korzath2.are	standing	65	0	-	group		Alaric's group: // [53 Monk ] Alaric           5596/8580 hp 13526/15549 mana 5010/5715 mv 142557 xp
+1793057671	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	0	-	recall		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793057706	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	9	-	stash	get cord	You take some corduroys out of your stash.
+1793057710	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	5	-	stash	get battle	You take battle gloves out of your stash.
+1793057710	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	5	-	stash	get battle	You take battle boots out of your stash.
+1793057712	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	5	-	stash	get battle	You take battle helmet out of your stash.
+1793057715	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
+1793057719	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	7	-	stash	put helm	You put battle helmet away for safe keeping.
+1793057720	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	0	-	score		| Name:         Alaric | Level:      53 | Class:        Monk | // | Played:    256 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1793057721	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	0	-	inventory		You are carrying: //      battle boots //      battle gloves
+1793057725	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	0	-	wear	cord	You stop using a pegleg. // You wear some corduroys on your legs.
+1793057725	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	0	-	score		| Name:         Alaric | Level:      53 | Class:        Monk | // | Played:    256 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1793057730	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	6	-	stash	put peg	You put a pegleg away for safe keeping.
+1793057735	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	0	-	wear	battle	You stop using a pair of mithril boots. // You wear battle boots on your feet.
+1793057735	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	0	-	wear	battle	You stop using Gauntlets of Bravery. // You wear battle gloves on your hands.
+1793057737	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	0	-	score		| Name:         Alaric | Level:      53 | Class:        Monk | // | Played:    256 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1793057742	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	6	-	stash	put mith	You put a pair of mithril boots away for safe keeping.
+1793057744	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	6	-	stash	put brav	You put Gauntlets of Bravery away for safe keeping.
+1793057760	cmd	Alaric	53	4208	dresden_halloween.are	standing	65	0	-	wake		You are already standing.
+1793057761	cmd	Alaric	53	2427	dresden_halloween.are	standing	65	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1793057761	cmd	Alaric	53	2404	dresden_halloween.are	standing	65	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793057762	cmd	Alaric	53	2401	dresden_halloween.are	standing	65	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793057762	cmd	Alaric	53	2426	dresden_halloween.are	standing	65	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793057763	cmd	Alaric	53	2426	dresden_halloween.are	standing	65	0	-	open		Ok.
+1793057764	cmd	Alaric	53	9506	newthalo.are	standing	65	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793057765	cmd	Alaric	53	29004	korzath1.are	standing	65	0	-	run	n	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1793057766	cmd	Alaric	53	29004	korzath1.are	resting	65	0	-	wake		You stand up.
+1793057768	cmd	Alaric	53	29004	korzath1.are	standing	65	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793057768	cmd	Alaric	53	29004	korzath1.are	standing	65	0	-	open		Ok.
+1793057769	cmd	Alaric	53	29201	korzath2.are	standing	65	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793057769	cmd	Alaric	53	29202	korzath2.are	standing	65	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793057769	cmd	Alaric	53	29202	korzath2.are	standing	65	0	-	north		The door has been Wizard Locked. You can not pass
+1793057769	cmd	Alaric	53	29203	korzath2.are	standing	65	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793057770	cmd	Alaric	53	29204	korzath2.are	standing	65	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793057771	cmd	Alaric	53	29204	korzath2.are	standing	65	0	-	west		Alas, you cannot go that way.
+1793057775	cmd	Alaric	53	29204	korzath2.are	standing	65	0	-	kill	cl	Your punch MANGLES a killer clown! [-55] // A killer clown parries your attack. // A killer clown parries your attack.
+1793057778	cmd	Alaric	53	29204	korzath2.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a killer clown! [-50] // Your fists of fury decimates a killer clown! [-28]
+1793057783	cmd	Alaric	53	29204	korzath2.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a killer clown. [-17] // Your fists of fury decimates a killer clown! [-26]
+1793057789	cmd	Alaric	53	29204	korzath2.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a killer clown! [-37] // Your fists of fury DISEMBOWELS a killer clown! [-41]
+1793057795	cmd	Alaric	53	29204	korzath2.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a killer clown! [-32] // Your fists of fury DISEMBOWELS a killer clown! [-44]
+1793057801	cmd	Alaric	53	29204	korzath2.are	standing	64	0	-	fists		Who do you want to attack?
+1793057801	cmd	Alaric	53	29204	korzath2.are	standing	64	0	-	fists		Who do you want to attack?
+1793057801	cmd	Alaric	53	29204	korzath2.are	fighting	64	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a killer clown. [-5] // Your fists of fury *** DEMOLISHES *** a killer clown! [-60]
+1793057807	cmd	Alaric	53	29204	korzath2.are	fighting	63	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a killer clown! [-70] // Your fists of fury injures a killer clown. [-13]
+1793057813	cmd	Alaric	53	29204	korzath2.are	fighting	63	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a killer clown! [-66] // Your fists of fury decimates a killer clown! [-25]
+1793057818	cmd	Alaric	53	29204	korzath2.are	fighting	63	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a killer clown! [-36] // Your fists of fury decimates a killer clown! [-27]
+1793057892	cmd	Alaric	53	29204	korzath2.are	standing	60	0	-	look		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793057894	cmd	Alaric	53	29205	korzath2.are	standing	60	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793057895	cmd	Alaric	53	29205	korzath2.are	standing	60	0	-	kill	cl	A killer clown parries your attack. // Your punch ^^^ DESTROYS ^^^ a killer clown! [-87] // A killer clown dodges your attack.
+1793057897	cmd	Alaric	53	29205	korzath2.are	fighting	60	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a killer clown. [-23] // Your fists of fury MANGLES a killer clown! [-53]
+1793057903	cmd	Alaric	53	29205	korzath2.are	fighting	60	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a killer clown! [-52] // Your fists of fury mauls a killer clown. [-21]
+1793057909	cmd	Alaric	53	29205	korzath2.are	fighting	59	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a killer clown! [-25] // Your fists of fury *** DEMOLISHES *** a killer clown! [-59]
+1793057915	cmd	Alaric	53	29205	korzath2.are	fighting	59	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a killer clown. [-19] // Your fists of fury devastates a killer clown! [-32]
+1793057935	cmd	Alaric	53	29206	korzath2.are	standing	59	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793057937	cmd	Alaric	53	29206	korzath2.are	standing	59	0	-	worth		You have 2853 platinum, 639 gold, 1031 silver, 1352 copper // and 144879 experience (17421 exp to level).
+1793057938	cmd	Alaric	53	29206	korzath2.are	standing	59	0	-	kill	cl	Your punch ^^^ DESTROYS ^^^ a killer clown! [-105] // Your punch DISEMBOWELS a killer clown! [-44] // Your punch ^^^ DESTROYS ^^^ a killer clown! [-116]
+1793057941	cmd	Alaric	53	29206	korzath2.are	fighting	58	0	fight	practice		clairvoyance         1%  ego whip             1%  mindbar             73%   // mind leech           1%  project              1%  psionic armor        1%   // telekinesis         73%  torment              1%  axe                  8%  
+1793057944	cmd	Alaric	53	29206	korzath2.are	fighting	57	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a killer clown! [-67] // Your fists of fury devastates a killer clown! [-29]
+1793057950	cmd	Alaric	53	29206	korzath2.are	fighting	56	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a killer clown! [-34] // Your fists of fury devastates a killer clown! [-32]
