@@ -21,7 +21,10 @@ from __future__ import annotations
 import importlib
 import os
 import re
+import shutil
+import signal
 import socket
+import subprocess
 import sys
 import tempfile
 import time
@@ -89,6 +92,41 @@ def greeting_arrives(port: int, timeout: float = 5.0) -> bool:
             return len(s.recv(4096)) > 0
     except OSError:
         return False
+
+
+def stuck_server_report(mud: LiveMud) -> str:
+    """Where a live server that stopped answering is: its state, the
+    syscall it sits in, a backtrace if gdb is about, and then the game's
+    own crash ring (last commands, update phase), written on SIGABRT.
+    CI's artifacts cannot be fetched from everywhere a failure is read,
+    so the failure line has to carry this itself."""
+    pid = mud.proc.pid
+    parts = []
+    for name in ("stat", "wchan", "syscall"):
+        try:
+            text = Path(f"/proc/{pid}/{name}").read_text().strip()
+        except OSError as exc:
+            text = f"? ({exc.strerror})"
+        if name == "stat":
+            text = "state " + text.rsplit(")", 1)[-1].split()[0]
+        parts.append(f"{name}: {text}")
+    if shutil.which("gdb"):
+        try:
+            bt = subprocess.run(["gdb", "-p", str(pid), "-batch", "-ex", "bt 12"],
+                                capture_output=True, text=True, timeout=60).stdout
+            frames = [" ".join(line.split()[3:6]) if " in " in line else line
+                      for line in bt.splitlines() if line.startswith("#")]
+            parts.append("bt: " + " < ".join(frames))
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            parts.append(f"bt: ? ({exc})")
+    try:
+        os.kill(pid, signal.SIGABRT)
+        mud.proc.wait(timeout=10)
+        crash = (mud.root / "log" / "crash.log").read_text(errors="replace")
+        parts.append("crash ring: " + " / ".join(crash.strip().splitlines()[-12:]))
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        parts.append(f"crash ring: ? ({exc})")
+    return " | ".join(parts)
 
 
 def wait_at_password(mud: LiveMud, name: str) -> MudClient:
@@ -163,11 +201,13 @@ class SlowReaderTests(unittest.TestCase):
                         # the server is alive and what it said last.
                         tail = [line.split(" :: ", 1)[-1] for line in
                                 mud.server_output().splitlines() if line.strip()][-4:]
+                        waited = time.monotonic() - began
                         self.fail(f"the game stopped answering new connections "
                                   f"after {sent} floods from one client that never "
-                                  f"reads ({time.monotonic() - began:.1f}s); "
+                                  f"reads ({waited:.1f}s); "
                                   f"server exit={mud.proc.poll()}; last: "
-                                  + " | ".join(tail))
+                                  + " | ".join(tail) + " || "
+                                  + stuck_server_report(mud))
             finally:
                 slow.close()
 
