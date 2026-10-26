@@ -27344,3 +27344,32 @@
 1793057322	cmd	Alaric	52	29210	korzath2.are	fighting	75	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a deranged madman! [-69] // Your fists of fury MUTILATES a deranged madman! [-38]
 1793057328	cmd	Alaric	52	29210	korzath2.are	fighting	75	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES a deranged madman! [-54] // Your fists of fury scratches a deranged madman. [-3]
 1793057334	cmd	Alaric	52	29210	korzath2.are	standing	75	0	-	fists		Who do you want to attack?
+1793057432	cmd	Alaric	52	29210	korzath2.are	standing	75	0	-	look		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793057433	cmd	Alaric	52	29210	korzath2.are	standing	75	0	-	scan		a killer clown                     -to the South. // an Animated Skeleton               -to the South. // an Animated Skeleton               -to the West.
+1793057436	cmd	Alaric	52	29211	korzath2.are	standing	75	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1793057437	cmd	Alaric	52	29211	korzath2.are	standing	75	0	-	kill	sk	An Animated Skeleton dodges your attack. // An Animated Skeleton parries your attack. // Your punch === OBLITERATES === an Animated Skeleton! [-131]
+1793057440	cmd	Alaric	52	29211	korzath2.are	fighting	74	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits an Animated Skeleton. [-10] // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-66]
+1793057446	cmd	Alaric	52	29211	korzath2.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-75] // Your fists of fury *** DEMOLISHES *** an Animated Skeleton! [-58]
+1793057452	cmd	Alaric	52	29211	korzath2.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims an Animated Skeleton! [-33] // Your fists of fury DISEMBOWELS an Animated Skeleton! [-43]
+1793057465	cmd	Alaric	52	29212	korzath2.are	standing	73	0	-	north		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1793057467	cmd	Alaric	52	29212	korzath2.are	fighting	73	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** a Shadowman! [-57] // Your fists of fury mauls a Shadowman. [-23]
+1793057472	cmd	Alaric	52	29212	korzath2.are	fighting	72	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a Shadowman! [-29] // Your fists of fury wounds a Shadowman. [-18]
+1793057478	cmd	Alaric	52	29212	korzath2.are	fighting	72	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a Shadowman! [-28] // Your fists of fury injures a Shadowman. [-16]
+1793057484	cmd	Alaric	52	29212	korzath2.are	fighting	72	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a Shadowman. [-6] // Your fists of fury hits a Shadowman. [-12]
+1793057490	cmd	Alaric	52	29212	korzath2.are	standing	71	0	-	fists		Who do you want to attack?
+1793057490	cmd	Alaric	52	29212	korzath2.are	standing	71	0	-	fists		Who do you want to attack?
+1793057530	cmd	Alaric	52	29212	korzath2.are	standing	71	0	-	look		Twist in the Maze //   The maze passage opens into a four direction junction here.  You // can travel back the way you came or head north or west.  A closed
+1793057532	cmd	Alaric	52	29212	korzath2.are	standing	71	0	-	kill	ma	A deranged madman dodges your attack. // A deranged madman dodges your attack. // A deranged madman parries your attack.
+1793057535	cmd	Alaric	52	29212	korzath2.are	fighting	71	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a deranged madman! [-37] // Your fists of fury MASSACRES a deranged madman! [-51]
+1793057540	cmd	Alaric	52	29212	korzath2.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a deranged madman! [-51] // Your fists of fury *** DEVASTATES *** a deranged madman! [-68]
+1793057546	cmd	Alaric	52	29212	korzath2.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a deranged madman. [-21] // Your fists of fury DISEMBOWELS a deranged madman! [-41]
+1793057552	cmd	Alaric	52	29212	korzath2.are	fighting	69	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches a deranged madman. [-1] // Your fists of fury wounds a deranged madman. [-20]
+1793057585	refused	Alaric	52	29212	korzath2.are	fighting	67	0	fight	west		No way!  You are still fighting!
+1793057588	cmd	Alaric	52	29212	korzath2.are	fighting	66	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS a deranged madman! [-45] // Your fists of fury DISEMBOWELS a deranged madman! [-44]
+1793057594	cmd	Alaric	52	29212	korzath2.are	fighting	66	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a deranged madman. [-14] // Your fists of fury ^^^ DESTROYS ^^^ a deranged madman! [-94]
+1793057599	cmd	Alaric	52	29212	korzath2.are	fighting	66	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES a deranged madman! [-56] // Your fists of fury MASSACRES a deranged madman! [-49]
+1793057605	cmd	Alaric	52	29212	korzath2.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a deranged madman. [-7] // Your fists of fury mauls a deranged madman. [-24]
+1793057611	cmd	Alaric	52	29212	korzath2.are	fighting	65	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a deranged madman. [-10] // Your fists of fury ^^^ DESTROYS ^^^ a deranged madman! [-114]
+1793057617	cmd	Alaric	53	29212	korzath2.are	standing	65	0	-	fists		Who do you want to attack?
+1793057617	cmd	Alaric	53	29212	korzath2.are	standing	65	0	-	fists		Who do you want to attack?
+1793057617	cmd	Alaric	53	29212	korzath2.are	standing	65	0	-	fists		Who do you want to attack?
