@@ -194502,3 +194502,103 @@ Sun Oct 25 23:50:27 2026 :: EOF encountered on read.
 Sun Oct 25 23:50:36 2026 :: Log Alaric [2497]: affects off: titanic, empower, giant strength, divine protection, fire shield, protection evil, pass door, fly, haste, sanctuary, empower, shroud, power gloves, detect evil, detect good, detect magic, detect hidden, detect invis, frenzy, giant strength, divine protection, fire shield, protection evil, pass door, fly, haste, sanctuary, shield, bless, armor; max hp 8418 -> 1403; max mana 14694 -> 2449; max moves 6078 -> 1013; hp 8418 -> 1403
 Sun Oct 25 23:55:32 2026 :: Sock.sinaddr:  54.87.112.51
 Sun Oct 25 23:55:32 2026 :: EOF encountered on read.
+Mon Oct 26 00:00:02 2026 :: Treasure goblin: vanished from room 63 (Forest Junction, connect.are) (drifting).
+Mon Oct 26 00:00:37 2026 :: Sock.sinaddr:  178.156.185.127
+Mon Oct 26 00:00:37 2026 :: EOF encountered on read.
+Mon Oct 26 00:01:58 2026 :: Log Alaric [2497]: wake
+Mon Oct 26 00:01:58 2026 :: Log Alaric [2497]: l
+Mon Oct 26 00:02:00 2026 :: Log Alaric [2497]: aq re
+Mon Oct 26 00:02:00 2026 :: Log Alaric [2497]: quest assigned: recover The Sceptre of Gravestone (obj 25041) in campus.are, 25 minutes, ordinary
+Mon Oct 26 00:02:06 2026 :: Log Alaric [2497]: enter door
+Mon Oct 26 00:02:06 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 00:02:06 2026 :: Log Alaric [2401]: south
+Mon Oct 26 00:02:06 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Mon Oct 26 00:02:06 2026 :: Log Alaric [2404]: south
+Mon Oct 26 00:02:06 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Mon Oct 26 00:02:07 2026 :: Log Alaric [2427]: west
+Mon Oct 26 00:02:07 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 2427
+Mon Oct 26 00:02:07 2026 :: Log Alaric [4201]: west
+Mon Oct 26 00:02:07 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4201
+Mon Oct 26 00:02:07 2026 :: Log Alaric [4202]: west
+Mon Oct 26 00:02:07 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4202
+Mon Oct 26 00:02:07 2026 :: Log Alaric [4207]: up
+Mon Oct 26 00:02:07 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 4207
+Mon Oct 26 00:02:08 2026 :: Log Alaric [3700]: up
+Mon Oct 26 00:02:08 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3700
+Mon Oct 26 00:02:08 2026 :: Log Alaric [3772]: up
+Mon Oct 26 00:02:08 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 3772
+Mon Oct 26 00:02:08 2026 :: Log Alaric [3795]: enter portal
+Mon Oct 26 00:02:08 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 3795
+Mon Oct 26 00:02:09 2026 :: Log Alaric [15000]: e
+Mon Oct 26 00:02:09 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15000
+Mon Oct 26 00:02:10 2026 :: Log Alaric [15001]: e
+Mon Oct 26 00:02:10 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15001
+Mon Oct 26 00:02:10 2026 :: Log Alaric [15002]: e
+Mon Oct 26 00:02:10 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15002
+Mon Oct 26 00:02:11 2026 :: Log Alaric [15003]: e
+Mon Oct 26 00:02:11 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15003
+Mon Oct 26 00:02:14 2026 :: Log Alaric [15004]: ex
+Mon Oct 26 00:02:15 2026 :: Log Alaric [15004]: n
+Mon Oct 26 00:02:15 2026 :: Log Alaric [15010]: arrived (University Avenue) from 15004
+Mon Oct 26 00:02:15 2026 :: Log Alaric [15010]: ex
+Mon Oct 26 00:02:16 2026 :: Log Alaric [15010]: n
+Mon Oct 26 00:02:16 2026 :: Log Alaric [15011]: arrived (University Avenue) from 15010
+Mon Oct 26 00:02:16 2026 :: Log Alaric [15011]: ex
+Mon Oct 26 00:02:17 2026 :: Log Alaric [15011]: n
+Mon Oct 26 00:02:17 2026 :: Log Alaric [15012]: arrived (University Avenue) from 15011
+Mon Oct 26 00:02:18 2026 :: Log Alaric [15012]: ex
+Mon Oct 26 00:02:18 2026 :: Log Alaric [15012]: n
+Mon Oct 26 00:02:18 2026 :: Log Alaric [15013]: arrived (University Avenue) from 15012
+Mon Oct 26 00:02:19 2026 :: Log Alaric [15013]: ex
+Mon Oct 26 00:02:20 2026 :: Log Alaric [15013]: n
+Mon Oct 26 00:02:20 2026 :: Log Alaric [15024]: arrived (The Ghetto) from 15013
+Mon Oct 26 00:02:21 2026 :: Log Alaric [15024]: n
+Mon Oct 26 00:02:21 2026 :: Log Alaric [15150]: arrived (The Ghetto) from 15024
+Mon Oct 26 00:02:23 2026 :: Log Alaric [15150]: get all
+Mon Oct 26 00:02:24 2026 :: Log Alaric [15150]: s
+Mon Oct 26 00:02:24 2026 :: Log Alaric [15024]: arrived (The Ghetto) from 15150
+Mon Oct 26 00:02:24 2026 :: Log Alaric [15024]: s
+Mon Oct 26 00:02:24 2026 :: Log Alaric [15013]: arrived (University Avenue) from 15024
+Mon Oct 26 00:02:24 2026 :: Log Alaric [15013]: s
+Mon Oct 26 00:02:24 2026 :: Log Alaric [15012]: arrived (University Avenue) from 15013
+Mon Oct 26 00:02:25 2026 :: Log Alaric [15012]: s
+Mon Oct 26 00:02:25 2026 :: Log Alaric [15011]: arrived (University Avenue) from 15012
+Mon Oct 26 00:02:26 2026 :: Log Alaric [15011]: s
+Mon Oct 26 00:02:26 2026 :: Log Alaric [15010]: arrived (University Avenue) from 15011
+Mon Oct 26 00:02:26 2026 :: Log Alaric [15010]: w
+Mon Oct 26 00:02:26 2026 :: Log Alaric [15032]: arrived (Entrance To Ellis Hall) from 15010
+Mon Oct 26 00:02:26 2026 :: Log Alaric [15032]: w
+Mon Oct 26 00:02:26 2026 :: Log Alaric [15074]: arrived (Ellis Hall Lobby) from 15032
+Mon Oct 26 00:02:27 2026 :: Log Alaric [15074]: w
+Mon Oct 26 00:02:27 2026 :: Log Alaric [15077]: arrived (Hallway) from 15074
+Mon Oct 26 00:02:28 2026 :: Log Alaric [15077]: e
+Mon Oct 26 00:02:28 2026 :: Log Alaric [15074]: arrived (Ellis Hall Lobby) from 15077
+Mon Oct 26 00:02:30 2026 :: Log Alaric [15074]: s
+Mon Oct 26 00:02:31 2026 :: Log Alaric [15074]: e
+Mon Oct 26 00:02:31 2026 :: Log Alaric [15032]: arrived (Entrance To Ellis Hall) from 15074
+Mon Oct 26 00:02:32 2026 :: Log Alaric [15032]: s
+Mon Oct 26 00:02:33 2026 :: Log Alaric [15032]: e
+Mon Oct 26 00:02:33 2026 :: Log Alaric [15010]: arrived (University Avenue) from 15032
+Mon Oct 26 00:02:33 2026 :: Log Alaric [15010]: s
+Mon Oct 26 00:02:33 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15010
+Mon Oct 26 00:02:34 2026 :: Log Alaric [15004]: w
+Mon Oct 26 00:02:34 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15004
+Mon Oct 26 00:02:34 2026 :: Log Alaric [15003]: w
+Mon Oct 26 00:02:34 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15003
+Mon Oct 26 00:02:35 2026 :: Log Alaric [15002]: w
+Mon Oct 26 00:02:35 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15002
+Mon Oct 26 00:02:36 2026 :: Log Alaric [15001]: w
+Mon Oct 26 00:02:36 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 15001
+Mon Oct 26 00:02:37 2026 :: Log Alaric [15000]: en po
+Mon Oct 26 00:02:37 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 15000
+Mon Oct 26 00:02:38 2026 :: Log Alaric [3795]: recal
+Mon Oct 26 00:02:38 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 3795
+Mon Oct 26 00:02:39 2026 :: Log Alaric [2497]: aq co
+Mon Oct 26 00:02:39 2026 :: Log Alaric [2497]: copper +81120600
+Mon Oct 26 00:02:39 2026 :: Log Alaric [2497]: quest complete: 81p 12g 6s, 43 quest points (streak bonus 20%)
+Mon Oct 26 00:02:39 2026 :: Snapshot of Alaric taken before quest: Alaric.20261026_000239.quest (PRESTORE Alaric to see it).
+Mon Oct 26 00:02:41 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct 26 00:02:42 2026 :: Log Alaric [2497]: score
+Mon Oct 26 00:02:44 2026 :: Log Alaric [2497]: score
+Mon Oct 26 00:02:45 2026 :: Log Alaric [2497]: i
+Mon Oct 26 00:02:46 2026 :: Log Alaric [2497]: who
