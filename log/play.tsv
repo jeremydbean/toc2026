@@ -23125,3 +23125,74 @@
 1792978883	session	Trentlin	50	4208	dresden_halloween.are	quit	284s	+0 levels	+0 exp	+2285120 copper	3 kills	0 deaths	0 quests	160 commands	0 refused	coin: loot 2p 32g 91s 20c, spent 4g 40s
 1792978887	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
 1792978905	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792979182	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	aquest	time	Not on a quest. Under 1 minute before you may quest again.
+1792979184	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1792979184	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792979189	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792979191	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	jump	prock	I see no prock here.
+1792979194	cmd	Alaric	50	1607	wyvern.are	standing	100	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you
+1792979197	cmd	Alaric	50	4208	dresden_halloween.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1792979202	cmd	Alaric	50	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1792979202	cmd	Alaric	50	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1792979202	cmd	Alaric	50	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792979203	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1792979203	cmd	Alaric	50	2410	dresden_halloween.are	standing	100	0	-	up		Climbing the Oak Tree... //   You feel a little dizzy as you look around and see you are now about 30 feet // above the ground.  You see more branches above you but can only see a little
+1792979203	cmd	Alaric	50	2411	dresden_halloween.are	standing	100	0	-	up		Up in the Oak Tree. //   You must be at the heart of the tree now. The surrounding leaves are blocking // any light from penetrating. You hold tightly to the nearest branch as a breeze
+1792979203	cmd	Alaric	50	2414	dresden_halloween.are	standing	100	0	-	up		Top of the oak tree. //   The branches begin to get smaller and the leaf cover thinner as you climb // higher.  When you look up you are almost blinded by the bright sunlight
+1792979204	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792979204	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	up		Alas, you cannot go that way.
+1792979208	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	12	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Ah, a brave soul! Well met, Alaric.' // Questor Thews tells you 'a tentacle threatens the peace of the realm!'
+1792979218	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792979219	cmd	Alaric	50	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1792979221	cmd	Alaric	50	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1792979222	cmd	Alaric	50	9531	newthalo.are	standing	100	0	-	run	e 25	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1792979222	cmd	Alaric	50	9668	newthalo.are	standing	100	0	-	east		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.
+1792979223	cmd	Alaric	50	9790	newthalo.are	standing	100	0	-	east		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews
+1792979223	cmd	Alaric	50	9791	newthalo.are	standing	100	0	-	east		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road
+1792979223	cmd	Alaric	50	9792	newthalo.are	standing	100	0	-	east		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the
+1792979223	cmd	Alaric	50	9793	newthalo.are	standing	100	0	-	east		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel
+1792979224	cmd	Alaric	50	9794	newthalo.are	standing	100	0	-	east		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline
+1792979224	cmd	Alaric	50	9795	newthalo.are	standing	100	0	-	east		On a dock //   You stand on a simple wooden dock that acts as an extension of the road // to the west. The dock seems to have been here for quite a long time
+1792979225	cmd	Alaric	50	9789	newthalo.are	standing	100	0	-	east		The Dragon Sea //   You are on the clear blue seas of the Dragon Sea. //  Water extends in all directions as far as the eye
+1792979227	cmd	Alaric	50	9789	newthalo.are	standing	100	0	-	exits		Obvious exits: // South - The Dragon Sea // West  - On a dock
+1792979231	cmd	Alaric	50	9795	newthalo.are	standing	100	0	-	west		On a dock //   You stand on a simple wooden dock that acts as an extension of the road // to the west. The dock seems to have been here for quite a long time
+1792979231	cmd	Alaric	50	9794	newthalo.are	standing	100	0	-	west		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline
+1792979231	cmd	Alaric	50	41	connect.are	standing	100	0	-	north		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792979231	cmd	Alaric	50	29350	voyage.are	standing	100	0	-	east		Dock before the Sea //   The dock in bustling with activity today.  Sailors scurry about tying // lines and setting up planks to the ships for boarding and deboarding. One
+1792979233	cmd	Alaric	50	29350	voyage.are	standing	100	0	-	exits		Obvious exits: // East  - Along the Dock // West  - The new pier
+1792979234	cmd	Alaric	50	29350	voyage.are	standing	100	0	-	scan		You don't see anything near you.
+1792979235	cmd	Alaric	50	29351	voyage.are	standing	100	0	-	east		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you
+1792979236	cmd	Alaric	50	29351	voyage.are	standing	100	0	-	scan		You don't see anything near you.
+1792979236	cmd	Alaric	50	29352	voyage.are	standing	100	0	-	east		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you
+1792979237	cmd	Alaric	50	29352	voyage.are	standing	100	0	-	scan		You don't see anything near you.
+1792979238	cmd	Alaric	50	29353	voyage.are	standing	100	0	-	ne		Across the Sea //   You board the ship and it begins to pull away from port leaving the // still screaming nomad behind.  The Captain approaches you.
+1792979238	cmd	Alaric	50	29353	voyage.are	standing	100	0	-	scan		a tentacle                         -to the Northeast.
+1792979240	cmd	Alaric	50	29354	voyage.are	standing	100	0	-	ne		Across the Sea //   The ship continues across the sea... //      As the ship moves deeper out to sea you notice the clouds above the sea
+1792979242	cmd	Alaric	50	29354	voyage.are	standing	100	11	-	kill	te	Your punch does UNSPEAKABLE things to a tentacle! [-357] // A tentacle is DEAD!! // You have almost finished your QUEST!
+1792979247	cmd	Alaric	50	29354	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792979247	cmd	Alaric	50	29354	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792979248	cmd	Alaric	50	29354	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792979248	cmd	Alaric	50	29354	voyage.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792979248	cmd	Alaric	50	29354	voyage.are	standing	100	0	-	aquest	co	You can't do that here.
+1792979251	cmd	Alaric	50	29379	voyage.are	standing	100	0	-	sw		Across the Sea //   LAND HO!!! //      Once again the port alonside New Thalos is in sight.  The sea creatures
+1792979254	cmd	Alaric	50	29379	voyage.are	standing	100	0	-	sw		Alas, you cannot go that way.
+1792979257	cmd	Alaric	50	29379	voyage.are	standing	100	0	-	look		Across the Sea //   LAND HO!!! //      Once again the port alonside New Thalos is in sight.  The sea creatures
+1792979267	cmd	Alaric	50	29379	voyage.are	standing	100	0	-	walkto		WALKTO <place> walks you there from wherever you are standing. // WALKTO STOP, or any other command, stops you on the way. // Places:      Oak Tree Square, Temple of Devota, Temple Altar,
+1792979269	cmd	Alaric	50	29379	voyage.are	standing	100	0	-	walkto	trainer	Guildmasters and trainers, by where they are: // University of Magic -- members of the mage guild: //     Danko the mystic knight, Creole the magician, Chamis the master charmer,
+1792979285	cmd	Alaric	50	29352	voyage.are	standing	100	0	-	northwest		Rope bridge to the ship //   As you board the bridge you hear a yelp from behind you.  You turn in // time to see a drunken nomad of New Thalos rushing towards you.  Before you
+1792979285	cmd	Alaric	50	29351	voyage.are	standing	100	0	-	west		Along the Dock //   To the east is a rope bridge extending up to ship called "Dragonfly." // The sailors on board look too busy with preparations to notice you so you
+1792979286	cmd	Alaric	50	29350	voyage.are	standing	100	0	-	west		Dock before the Sea //   The dock in bustling with activity today.  Sailors scurry about tying // lines and setting up planks to the ships for boarding and deboarding. One
+1792979286	cmd	Alaric	50	41	connect.are	standing	100	0	-	west		The new pier //   The sharp scent of pine reaches your nose filling it with the longing to be // roming back in the forests of the west. You can all smell the smell of 
+1792979286	cmd	Alaric	50	9794	newthalo.are	standing	100	0	-	south		Near the shore //   The road ends here turning into a small dirt path leading down the // beach and onto a dock. To the south you see the coastline
+1792979286	cmd	Alaric	50	9793	newthalo.are	standing	100	0	-	west		On a road //   This is the main land route through the land. Merchants can bring their goods // to the coastline and have them ferried onto ships for export. Travel
+1792979287	cmd	Alaric	50	9792	newthalo.are	standing	100	0	-	west		On a road //   The Dragon Sea can be seen to the east now spreading out to unknown // lands. The road continues east and west. To the south you hear the
+1792979287	cmd	Alaric	50	9791	newthalo.are	standing	100	0	-	west		On a road //   You walk along a well used road with beautiful scenery. To the north // tall pine trees form a wall that goes on for miles. Between the road
+1792979287	cmd	Alaric	50	9790	newthalo.are	standing	100	0	-	west		On a road //   The people of New Thalos take great pride in the services their // city may provide. One of these services is the construction crews
+1792979287	cmd	Alaric	50	9668	newthalo.are	standing	100	0	-	west		Outside the Eastern Gate of New Thalos //   You stand outside the protective walls of the city. The massive iron gate // sits to the west and the unknown awaits you eastward.
+1792979288	cmd	Alaric	50	9531	newthalo.are	standing	100	0	-	west		Inside the Eastern Gate of New Thalos //   Two large stone towers embedded in the wall loom over you. The massive // iron gate, emblazened with the crest of New Thalos, swings easily on
+1792979288	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792979288	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	west		Alas, you cannot go that way.
+1792979291	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	16	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Rush contract fulfilled - your double reward is well earned!'
+1792979294	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	4	-	aquest	ga no	Wise choice. You safely collect 150 quest points.
+1792979296	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    250 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792979301	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	steel		Your hands can't get any harder.
