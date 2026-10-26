@@ -135,5 +135,11 @@ int main( void )
             && UNDEAD_COST_WRAITH + 3 * UNDEAD_COST_SKELETON > UNDEAD_BUDGET,
             "5 skeletons, 2 wraiths, 1 vampire, or a wraith and 2 skeletons" );
 
+    /* Smite's wear reaches 0 in a handful of strains, never in one. */
+    report( "smite_wear",
+            SMITE_WEAR_MIN > 0 && SMITE_WEAR_MAX < 100
+            && SMITE_WEAR_MIN <= SMITE_WEAR_MAX,
+            "a strain takes more than nothing and less than a whole weapon" );
+
     return failures;
 }

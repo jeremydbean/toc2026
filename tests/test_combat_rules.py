@@ -60,7 +60,7 @@ class CombatRulesHarnessTests(unittest.TestCase):
         failed = [line for line in run.stdout.splitlines() if line.startswith("FAIL")]
         self.assertEqual(failed, [], run.stdout)
         self.assertEqual(run.returncode, 0, run.stdout)
-        self.assertGreaterEqual(run.stdout.count("\nok ") + run.stdout.startswith("ok "), 7)
+        self.assertGreaterEqual(run.stdout.count("\nok ") + run.stdout.startswith("ok "), 8)
 
 
 class CombatRulesCallSiteTests(unittest.TestCase):
@@ -112,6 +112,13 @@ class CombatRulesCallSiteTests(unittest.TestCase):
         self.assertNotIn("ch->max_hit * grade", body)
         rule = function_body(self.magic2, "static int lasting_max_hit(")
         self.assertIn("paf->duration >= 0", rule)
+
+    def test_smite_wears_its_weapon_down_before_it_breaks(self) -> None:
+        body = function_body(self.fight, "void do_smite(")
+        self.assertIn("obj->condition -= (sh_int)number_range( SMITE_WEAR_MIN, SMITE_WEAR_MAX );", body)
+        # The break is reached only by a weapon worn to nothing.
+        self.assertRegex(body, r"obj->condition > 0 \)\s*\{[^}]*obj = NULL;")
+        self.assertLess(body.index("SMITE_WEAR_MIN"), body.index("loud CRACK"))
 
 
 if __name__ == "__main__":

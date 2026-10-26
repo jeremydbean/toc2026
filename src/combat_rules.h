@@ -27,4 +27,10 @@ int crane_dance_mean( int hp, int level );
 #define UNDEAD_COST_WRAITH   5
 #define UNDEAD_COST_VAMPIRE  10
 
+/* Smite strains its weapon: on the 3% roll after a smite lands, the
+   weapon loses this much condition, and breaks only at 0 -- about four
+   strains from new. */
+#define SMITE_WEAR_MIN 15
+#define SMITE_WEAR_MAX 35
+
 #endif

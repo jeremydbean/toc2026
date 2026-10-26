@@ -4939,6 +4939,18 @@ void do_smite( CHAR_DATA *ch, char *argument )
 		{
            /* re-fetch weapon -- it may have been disarmed during multi_hit */
            obj = get_eq_char( ch, WEAR_WIELD );
+           /* The strain wears the weapon down; only a weapon worn to
+              nothing breaks, as damage_eq breaks armour. It broke
+              outright on every such roll -- one smite in thirty-three
+              left a warrior unarmed mid-fight (class review,
+              2026-10-26). A full repair is the same coin either way. */
+           if ( obj != NULL )
+               obj->condition -= (sh_int)number_range( SMITE_WEAR_MIN, SMITE_WEAR_MAX );
+           if ( obj != NULL && obj->condition > 0 )
+           {
+               act( "Your $p groans under the blow.", ch, obj, NULL, TO_CHAR );
+               obj = NULL;
+           }
            if ( obj != NULL )
            {
                act("\n\r** Your weapon makes a loud CRACK and is badly damaged!\n\r**",ch,NULL,victim,TO_CHAR);
