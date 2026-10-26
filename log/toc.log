@@ -201969,3 +201969,43 @@ Mon Oct 26 21:58:00 2026 :: Log Trentlin [15000]: w
 Mon Oct 26 21:58:00 2026 :: Log Trentlin [15000]: w
 Mon Oct 26 21:58:01 2026 :: Log Trentlin [15000]: w
 Mon Oct 26 21:58:01 2026 :: Log Trentlin [15000]: w
+Mon Oct 26 21:58:02 2026 :: Log Trentlin [15000]: enter por
+Mon Oct 26 21:58:02 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 15000
+Mon Oct 26 21:58:03 2026 :: Log Trentlin [3795]: reca
+Mon Oct 26 21:58:03 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 3795
+Mon Oct 26 21:58:04 2026 :: Log Trentlin [4207]: w
+Mon Oct 26 21:58:04 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Mon Oct 26 21:58:06 2026 :: Log Trentlin [4208]: heal refresh
+Mon Oct 26 21:58:06 2026 :: Spellup: Hermie gave Trentlin refresh (full) (30 ticks) in room 4208.
+Mon Oct 26 21:58:07 2026 :: Log Trentlin [4208]: e
+Mon Oct 26 21:58:07 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4208
+Mon Oct 26 21:58:07 2026 :: Log Trentlin [4207]: e
+Mon Oct 26 21:58:07 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Mon Oct 26 21:58:07 2026 :: Log Trentlin [4202]: e
+Mon Oct 26 21:58:07 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Mon Oct 26 21:58:07 2026 :: Log Trentlin [4201]: e
+Mon Oct 26 21:58:07 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Mon Oct 26 21:58:08 2026 :: Log Trentlin [2427]: e
+Mon Oct 26 21:58:08 2026 :: Log Trentlin [2427]: n
+Mon Oct 26 21:58:08 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Mon Oct 26 21:58:08 2026 :: Log Trentlin [2404]: n
+Mon Oct 26 21:58:08 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Mon Oct 26 21:58:09 2026 :: Log Trentlin [2401]: u
+Mon Oct 26 21:58:09 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Mon Oct 26 21:58:09 2026 :: Log Trentlin [2410]: u
+Mon Oct 26 21:58:09 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Mon Oct 26 21:58:09 2026 :: Log Trentlin [2411]: u
+Mon Oct 26 21:58:09 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Mon Oct 26 21:58:09 2026 :: Log Trentlin [2414]: u
+Mon Oct 26 21:58:09 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Mon Oct 26 21:58:12 2026 :: Log Trentlin [2497]: aquest complete
+Mon Oct 26 21:58:12 2026 :: Log Trentlin [2497]: copper +162241200
+Mon Oct 26 21:58:12 2026 :: Log Trentlin [2497]: quest complete: 162p 24g 12s, 19 quest points (streak bonus 40%)
+Mon Oct 26 21:58:12 2026 :: Snapshot of Trentlin taken before quest: Trentlin.20261026_215812.quest (PRESTORE Trentlin to see it).
+Mon Oct 26 21:58:18 2026 :: Log Trentlin [2497]: aquest gamble yes
+Mon Oct 26 21:58:22 2026 :: Log Trentlin [2497]: quit
+Mon Oct 26 21:58:22 2026 :: Trentlin has quit.
+Mon Oct 26 21:58:22 2026 :: [QUIT] Player rejoined the real world.
+Mon Oct 26 21:59:50 2026 :: Treasure goblin: vanished from room 2119 (Courtyard North, hood.are) (too long in one area).
+Mon Oct 26 22:00:40 2026 :: Sock.sinaddr:  5.161.215.244
+Mon Oct 26 22:00:40 2026 :: EOF encountered on read.
