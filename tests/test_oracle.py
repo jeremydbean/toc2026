@@ -10,6 +10,7 @@ import importlib
 import json
 import sys
 import tempfile
+import time
 import types
 import unittest
 from pathlib import Path
@@ -433,6 +434,65 @@ class OracleContextTests(unittest.TestCase):
                 "Nobodyhere", "what is the most powerful weapon in the game?")
         self.assertEqual(seen.get("level"), _server._ORACLE_MORTAL_CAP)
         self.assertIn("the Power of the world (lvl 54)", ctx)
+
+    def _ctx_as(self, player, question, profile, rooms=None, best=None):
+        from unittest.mock import patch
+
+        async def fake_best(**kw):
+            return best or {}
+
+        with patch.object(_server, "parse_player_file", lambda name: profile), \
+                patch.object(_server, "get_best_gear", fake_best), \
+                patch.object(_server, "_oracle_live_lookup",
+                             lambda reqs, asker=None: [""] * len(reqs)), \
+                patch.object(_server, "load_directions", lambda: {"routes": []}), \
+                patch.object(_server, "parser", types.SimpleNamespace(
+                    objects={}, mobiles={}, rooms=rooms or {})):
+            return _server._oracle_context(player, question)
+
+    def test_a_death_question_gets_the_askers_own_corpse(self):
+        # 2026-10-23: "I died while afk. Where did I last die at, and is my
+        # equipment still there?" -- she said she could not see it.
+        from unittest.mock import patch
+        tmp = Path(tempfile.mkdtemp())
+        (tmp / "player").mkdir()
+        live = tmp / "corpse" / "live"
+        live.mkdir(parents=True)
+        for cid, owner, room, n in (("a1", "Zcorpse", 29210, 47),
+                                    ("b2", "Zother", 29211, 3)):
+            (live / ("%s.corpse" % cid)).write_text(
+                "#CORPSE\nId %s\nOwner %s\nRoom %d\nDied %d\nObjects %d\n#O\n"
+                % (cid, owner, room, int(time.time()) - 7200, n), encoding="latin-1")
+        rooms = {29210: types.SimpleNamespace(name="A dark crypt", area_file="x.are"),
+                 29211: types.SimpleNamespace(name="Somewhere else", area_file="y.are")}
+        profile = {"class_name": "warrior", "race": "human", "level": 30}
+        with patch.object(_server, "PLAYER_PATH", tmp / "player"):
+            ctx = self._ctx_as("Zcorpse", "I died while afk. Where did I last die, "
+                               "and is my equipment still there?", profile, rooms)
+            self.assertIn("lies in A dark crypt holding 47 objects", ctx)
+            self.assertIn("2 hours ago", ctx)
+            self.assertNotIn("Somewhere else", ctx)       # never another's
+            (live / "a1.corpse").unlink()
+            ctx = self._ctx_as("Zcorpse", "where is my corpse?", profile, rooms)
+            self.assertIn("has no corpse lying anywhere", ctx)
+            ctx = self._ctx_as("Zcorpse", "how do I level faster?", profile, rooms)
+            self.assertNotIn("corpse lying", ctx)
+            self.assertNotIn("own corpse", ctx)
+
+    def test_a_named_slot_is_answered_by_name(self):
+        # 2026-10-13: "upgrades for my arm slot" -- she said to type COMPARE.
+        profile = {"class_name": "warrior", "race": "human", "level": 52}
+        best = {"Arms": [{"name": "bronze arm plates", "level": 51,
+                          "area": "Haze Battleground", "vnum": 1}],
+                "Head": [{"name": "a battle helmet", "level": 51,
+                          "area": "Somewhere", "vnum": 2}]}
+        ctx = self._ctx_as("Zslot", "Tell me some upgrades I could find for my "
+                           "arm slot", profile, best=best)
+        self.assertIn("Asked about the arms slot", ctx)
+        self.assertIn("bronze arm plates (lvl 51)", ctx)
+        self.assertNotIn("Asked about the head slot", ctx)
+        self.assertEqual(_server._oracle_slots_named("my wrists and my armor"),
+                         ["Left Wrist", "Right Wrist"])   # "armor" is no arm
 
     def test_only_the_relevant_docs_are_sent(self):
         # Sending the whole manual cost ~$0.04 a sitting in cache writes.

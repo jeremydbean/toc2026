@@ -656,6 +656,17 @@ blow.  It is not a command but, rather, each backstab carries a small chance
 of causing a fatality.  Only pure thieves (T/T) of level 26 or above
 have the knowledge of anatomy and the dexterity to cause fatality.
 
+The chance, in percent, for each backstab: one for every 20% you know the
+skill (5 at 100%), one more for dexterity above 22 and another above 24,
+and three more against a monster at least ten levels below you.  It is
+halved against a player and doubled against a sleeping victim.  At 100%
+that is 5 to 10 percent, or up to 20 against a sleeping monster.
+
+There is no chance at all against a victim of a higher level than yours,
+and none against a few creatures that cannot be finished that way: the
+training dummy, the treasure goblin, Ganon and Gohma.  A victim already
+below a third of its health cannot be backstabbed in the first place.
+
 Number of trains: 5
 Trainer: Mizry (T/T)
 

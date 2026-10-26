@@ -640,6 +640,118 @@ _ORACLE_WORLD_HINTS = ("in the game", "in the world", "overall", "anywhere",
 # The highest level a mortal reaches (the fifth remort's life).
 _ORACLE_MORTAL_CAP = 59
 
+# A slot named in a question, by the words players use for it, mapped to the
+# gear finder's slot names. Asked "upgrades for my arm slot" on 2026-10-13 she
+# answered "compare upgrades arms" with the answer in her context already: a
+# list of eighteen slots buries the one asked about, as it did for weapons.
+_ORACLE_SLOT_WORDS = {
+    "arm": ("Arms",), "arms": ("Arms",), "sleeves": ("Arms",),
+    "head": ("Head",), "helm": ("Head",), "helmet": ("Head",), "hat": ("Head",),
+    "leg": ("Legs",), "legs": ("Legs",), "leggings": ("Legs",), "pants": ("Legs",),
+    "feet": ("Feet",), "boots": ("Feet",), "boot": ("Feet",), "shoes": ("Feet",),
+    "hands": ("Hands",), "gloves": ("Hands",), "gauntlets": ("Hands",),
+    "body": ("Body",), "chest": ("Body",), "breastplate": ("Body",),
+    "shield": ("Shield",), "cloak": ("About Body",), "cape": ("About Body",),
+    "waist": ("Waist",), "belt": ("Waist",),
+    "wrist": ("Left Wrist", "Right Wrist"), "wrists": ("Left Wrist", "Right Wrist"),
+    "bracer": ("Left Wrist", "Right Wrist"), "bracers": ("Left Wrist", "Right Wrist"),
+    "bracelet": ("Left Wrist", "Right Wrist"),
+    "ring": ("Left Finger", "Right Finger"), "rings": ("Left Finger", "Right Finger"),
+    "finger": ("Left Finger", "Right Finger"),
+    "neck": ("Neck (1st)", "Neck (2nd)"), "amulet": ("Neck (1st)", "Neck (2nd)"),
+    "necklace": ("Neck (1st)", "Neck (2nd)"),
+    "light": ("Light",), "lantern": ("Light",), "torch": ("Light",),
+    "held": ("Held",),
+}
+
+
+def _oracle_slots_named(ql: str) -> List[str]:
+    """The gear finder's slots a question names, in the order named."""
+    out: List[str] = []
+    for word in re.findall(r"[a-z]+", ql):
+        for slot in _ORACLE_SLOT_WORDS.get(word, ()):
+            if slot not in out:
+                out.append(slot)
+    return out
+
+
+# "I died while afk. Where did I last die, and is my equipment still there?"
+# (2026-10-23): she answered that she could not see it, and the corpse
+# registry had it all along.
+_ORACLE_CORPSE_HINTS = ("corpse", "died", "death", "killed",
+                        "my body", "my stuff", "my eq", "my gear", "my equipment")
+
+
+def _corpse_live_dir() -> Path:
+    """The game's corpse registry: ../corpse/live beside player/."""
+    return PLAYER_PATH.parent / "corpse" / "live"
+
+
+def _oracle_corpse_lines(player: str, rooms: Dict[int, Any]) -> List[str]:
+    """The asker's own corpses lying in the world now, from the registry the
+    game writes (src/corpses.c): where, since when, and how much is in each.
+    Only the asker's own -- never anybody else's."""
+    live = _corpse_live_dir()
+    try:
+        files = sorted(live.glob("*.corpse"))
+    except OSError:
+        return []
+    if not live.is_dir():
+        return []
+    found = []
+    for path in files:
+        name = path.name
+        if name.endswith((".ending.corpse", ".stale.corpse")):
+            continue
+        head: Dict[str, str] = {}
+        try:
+            with path.open(encoding="latin-1") as fh:
+                for line in fh:
+                    key, _, value = line.strip().partition(" ")
+                    if key.startswith("#O"):
+                        break
+                    head[key] = value.strip()
+                    if key == "Objects":
+                        break
+        except OSError:
+            continue
+        if head.get("Owner", "").casefold() != (player or "").casefold():
+            continue
+        try:
+            vnum = int(head.get("Room", "0"))
+            died = int(head.get("Died", "0"))
+            count = int(head.get("Objects", "0"))
+        except ValueError:
+            continue
+        found.append((died, vnum, count))
+    if not found:
+        return ["The supplicant has no corpse lying anywhere in the world now: "
+                "any corpse of theirs has been looted, has rotted or was "
+                "returned to them."]
+    lines = []
+    routes: List[Dict[str, Any]] = []
+    try:
+        routes = load_directions().get("routes") or []
+    except Exception:
+        routes = []
+    for died, vnum, count in sorted(found, reverse=True)[:3]:
+        room = rooms.get(vnum)
+        where = getattr(room, "name", None) or "room %d" % vnum
+        area_file = getattr(room, "area_file", "")
+        hours = max(0, int(time.time()) - died) // 3600
+        line = ("The supplicant's own corpse, from a death %s ago, lies in %s "
+                "holding %d object%s." % (
+                    ("%d hour%s" % (hours, "" if hours == 1 else "s")) if hours
+                    else "under an hour", where, count, "" if count == 1 else "s"))
+        route = next((r for r in routes if area_file and getattr(
+            rooms.get(r.get("vnum")), "area_file", None) == area_file), None)
+        if route:
+            line += " Its area, %s, is reached from the Oak Tree Square by: %s" % (
+                route.get("area_display") or route.get("name"),
+                route.get("commands", ""))
+        lines.append(line)
+    return lines
+
 _ORACLE_WHO_HINTS = (
     "online", "who's on", "whos on", "who is on", "anyone on", "anybody on",
     "who is playing", "who's playing", "whos playing", "logged in", "logged on",
@@ -1022,8 +1134,16 @@ def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] 
     except Exception:
         pass
 
+    if prof and (any(h in ql for h in _ORACLE_CORPSE_HINTS)
+                 or re.search(r"\bdie\b", ql)):
+        try:
+            lines += _oracle_corpse_lines(player, rooms)
+        except Exception:
+            pass
+
+    slots_named = _oracle_slots_named(ql)
     if cls in CLASS_WEIGHTS and race in RACE_FLAGS \
-            and any(k in ql for k in _ORACLE_GEAR_HINTS):
+            and (any(k in ql for k in _ORACLE_GEAR_HINTS) or slots_named):
         try:
             best = asyncio.run(get_best_gear(
                 class_name=cls, race_name=race, level=lvl, limit=1))
@@ -1040,6 +1160,17 @@ def _oracle_context(player: str, question: str, state: Optional[Dict[str, Any]] 
         if bis:
             lines.append("Obtainable best-in-slot for this class and level -- "
                          + "; ".join(bis) + ".")
+        # A slot named outright gets its answer outright, as a weapon does.
+        for slot in slots_named[:2]:
+            items = best.get(slot) or []
+            if items:
+                top = items[0]
+                lines.append("Asked about the %s slot: the best this supplicant can "
+                             "get at level %s is %s (lvl %s), %s. Name it in the "
+                             "answer, and where it is." % (
+                                 slot.lower(), lvl, top.get("name", "?"),
+                                 top.get("level", "?"),
+                                 _oracle_gear_where(top, objs, mobs)))
         # A question about a weapon gets the weapon said outright. In a list
         # of eighteen slots she passed it by: asked for "the next best
         # weapon" twice on 2026-10-07, she answered "compare upgrades" and

@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261026h 2026-10-26
+The Oracle can now tell you where your own corpse lies and how much is
+still in it, and answers a question about one gear slot (arms, boots, a
+ring) with the item itself. HELP FATALITY gives the actual odds.
+
 @ 20261026g 2026-10-26
 HELP DEATHTRAP explains death traps: what happens when you step into one,
 how long you have, and what will never carry you into one.
