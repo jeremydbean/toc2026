@@ -202154,3 +202154,72 @@ Mon Oct 26 22:05:04 2026 :: Log Alaric [2497]: score
 Mon Oct 26 22:05:45 2026 :: Sock.sinaddr:  52.15.147.27
 Mon Oct 26 22:05:46 2026 :: EOF encountered on read.
 Mon Oct 26 22:07:43 2026 :: Black market: the dealer appeared with 5 items (stock 1793052463), for 22 minutes.
+Mon Oct 26 22:09:55 2026 :: Treasure goblin: vanished from room 743 (Victory Road, camelot.are) (too long in one area).
+Mon Oct 26 22:10:04 2026 :: Sock.sinaddr:  23.31.96.97
+Mon Oct 26 22:10:05 2026 :: EOF encountered on read.
+Mon Oct 26 22:10:51 2026 :: Sock.sinaddr:  5.161.75.7
+Mon Oct 26 22:10:51 2026 :: EOF encountered on read.
+Mon Oct 26 22:12:51 2026 :: Log Alaric [2497]: aq re
+Mon Oct 26 22:12:51 2026 :: Log Alaric [2497]: quest assigned: kill a dancing sprite (mob 24003, level 12) in faerie.are, 18 minutes, ordinary
+Mon Oct 26 22:12:54 2026 :: Log Alaric [2497]: enter door
+Mon Oct 26 22:12:54 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 22:12:54 2026 :: Log Alaric [2401]: east
+Mon Oct 26 22:12:54 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Mon Oct 26 22:12:54 2026 :: Log Alaric [2403]: east
+Mon Oct 26 22:12:54 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Mon Oct 26 22:12:55 2026 :: Log Alaric [2420]: east
+Mon Oct 26 22:12:55 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Mon Oct 26 22:12:55 2026 :: Log Alaric [2421]: east
+Mon Oct 26 22:12:55 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Mon Oct 26 22:12:55 2026 :: Log Alaric [2422]: east
+Mon Oct 26 22:12:55 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
+Mon Oct 26 22:12:55 2026 :: Log Alaric [2423]: east
+Mon Oct 26 22:12:55 2026 :: Log Alaric [2424]: arrived (Battle Road) from 2423
+Mon Oct 26 22:12:56 2026 :: Log Alaric [2424]: east
+Mon Oct 26 22:12:56 2026 :: Log Alaric [2425]: arrived (Gate to Citadel of War on Battle Road) from 2424
+Mon Oct 26 22:12:56 2026 :: Log Alaric [2425]: east
+Mon Oct 26 22:12:56 2026 :: Log Alaric [2426]: arrived (Inside the Eastern Gates of Dresden.) from 2425
+Mon Oct 26 22:12:56 2026 :: Log Alaric [2426]: open east
+Mon Oct 26 22:12:56 2026 :: Log Alaric [2426]: east
+Mon Oct 26 22:12:56 2026 :: Log Alaric [2440]: arrived (Outside the Eastern Gates of Dresden.) from 2426
+Mon Oct 26 22:12:58 2026 :: Log Alaric [2440]: east
+Mon Oct 26 22:12:58 2026 :: Log Alaric [3503]: arrived (City Entrance) from 2440
+Mon Oct 26 22:12:58 2026 :: Log Alaric [3503]: east
+Mon Oct 26 22:12:58 2026 :: Log Alaric [3502]: arrived (The Cross Roads) from 3503
+Mon Oct 26 22:12:58 2026 :: Log Alaric [3502]: east
+Mon Oct 26 22:12:58 2026 :: Log Alaric [3525]: arrived (Along the Eastern Road) from 3502
+Mon Oct 26 22:12:58 2026 :: Log Alaric [3525]: east
+Mon Oct 26 22:12:58 2026 :: Log Alaric [3526]: arrived (Along the Eastern Road) from 3525
+Mon Oct 26 22:12:59 2026 :: Log Alaric [3526]: south
+Mon Oct 26 22:12:59 2026 :: Log Alaric [55]: arrived (Dusty Path) from 3526
+Mon Oct 26 22:12:59 2026 :: Log Alaric [55]: east
+Mon Oct 26 22:12:59 2026 :: Log Alaric [1501]: arrived (Entrance to Gnome Village) from 55
+Mon Oct 26 22:12:59 2026 :: Log Alaric [1501]: east
+Mon Oct 26 22:12:59 2026 :: Log Alaric [1502]: arrived (A Dusty Path) from 1501
+Mon Oct 26 22:12:59 2026 :: Log Alaric [1502]: east
+Mon Oct 26 22:12:59 2026 :: Log Alaric [1503]: arrived (A Road in the Village) from 1502
+Mon Oct 26 22:13:00 2026 :: Log Alaric [1503]: south
+Mon Oct 26 22:13:00 2026 :: Log Alaric [1507]: arrived (A Road in the Village) from 1503
+Mon Oct 26 22:13:00 2026 :: Log Alaric [1507]: south
+Mon Oct 26 22:13:00 2026 :: Log Alaric [1508]: arrived (A Road in the Village) from 1507
+Mon Oct 26 22:13:00 2026 :: Log Alaric [1508]: south
+Mon Oct 26 22:13:00 2026 :: Log Alaric [1517]: arrived (Path by a Stream) from 1508
+Mon Oct 26 22:13:00 2026 :: Log Alaric [1517]: south
+Mon Oct 26 22:13:00 2026 :: Log Alaric [1520]: arrived (On the Stream) from 1517
+Mon Oct 26 22:13:01 2026 :: Log Alaric [1520]: south
+Mon Oct 26 22:13:01 2026 :: Log Alaric [1522]: arrived (The Field of Mice's Dreams) from 1520
+Mon Oct 26 22:13:01 2026 :: Log Alaric [1522]: south
+Mon Oct 26 22:13:01 2026 :: Log Alaric [24001]: arrived (Forest Clearing) from 1522
+Mon Oct 26 22:13:02 2026 :: Log Alaric [24001]: d
+Mon Oct 26 22:13:02 2026 :: Log Alaric [24002]: arrived (Entrance Hall) from 24001
+Mon Oct 26 22:13:03 2026 :: Log Alaric [24002]: e
+Mon Oct 26 22:13:03 2026 :: Log Alaric [24004]: arrived (Little People's Bar and Grill) from 24002
+Mon Oct 26 22:13:06 2026 :: Log Alaric [24004]: kill sp
+Mon Oct 26 22:13:06 2026 :: Log Alaric [24004]: killed a dancing sprite
+Mon Oct 26 22:13:06 2026 :: Log Alaric [24004]: coin +3 silver
+Mon Oct 26 22:13:06 2026 :: Log Alaric [24004]: coin +5 copper
+Mon Oct 26 22:13:06 2026 :: Log Alaric [24004]: coin +2 gold
+Mon Oct 26 22:13:11 2026 :: Log Alaric [24004]: recal
+Mon Oct 26 22:13:11 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 24004
+Mon Oct 26 22:13:11 2026 :: Log Alaric [2497]: recal
+Mon Oct 26 22:13:11 2026 :: Log Alaric [2497]: recal
