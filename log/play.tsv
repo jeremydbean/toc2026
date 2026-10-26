@@ -24453,3 +24453,7 @@
 1793045454	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	look		The Void // [Room: 1]     [Sector: City]     [Flags: No_Mob Indoors] //   You are floating in nothing.
 1793045455	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // [50 Dwarf   Monk  ] [*AFK*] Alaric. // Players found: 2
 1793045459	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	at	ala look	A sudden wind blows you from the tree! // [Room: 2497]     [Sector: Forest]     [Flags: No_Mob Private] //   You reach out for a nearby branch, but to no avail!  You feel the sensation
+1793045526	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	at	ala look	A sudden wind blows you from the tree! // [Room: 2497]     [Sector: Forest]     [Flags: No_Mob Private] //   You reach out for a nearby branch, but to no avail!  You feel the sensation
+1793045528	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // [50 Dwarf   Monk  ] [*AFK*] Alaric. // Players found: 2
+1793045797	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // [50 Dwarf   Monk  ] [*AFK*] Alaric. // Players found: 2
+1793045802	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	at	ala look	A sudden wind blows you from the tree! // [Room: 2497]     [Sector: Forest]     [Flags: No_Mob Private] //   You reach out for a nearby branch, but to no avail!  You feel the sensation
