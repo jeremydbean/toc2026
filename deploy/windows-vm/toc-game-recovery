@@ -168,13 +168,48 @@ if [ "${free_mb:-0}" -lt "$MIN_FREE_MB" ]; then
     exit 1
 fi
 
-live_ref=$(cut -d' ' -f1 "$LIVE_ROOT/log/deployed-commit" 2>/dev/null || true)
+live_line=$(cat "$LIVE_ROOT/log/deployed-commit" 2>/dev/null || true)
+live_ref=${live_line%% *}
 case "$live_ref" in
+    unknown)
+        # toc-deploy's rollback writes this when the code it put back has
+        # no recorded identity (review, 2026-10-26): there is no commit to
+        # rebuild, and guessing one would mix two commits in one tree.
+        log "the live code is unknown ($live_line);"
+        log "not building anything. This needs a human: toc-deploy by hand."
+        exit 1 ;;
     ''|*[!0-9a-f]*)
         log "no record of the live commit in $LIVE_ROOT/log/deployed-commit;"
         log "not building anything CI has not passed. This needs a human."
         exit 1 ;;
 esac
+# The tree names its own code (.code-revision, written by toc-deploy). A
+# deploy that came back unhealthy and was left for a person (toc-deploy's
+# exit 12) holds new code under the old record; building the recorded
+# commit's binary into it is a mixture of two commits, not a recovery.
+# A tree from before identities were kept has no file and is trusted to
+# the record, as it always was.
+code_ref=$(cut -d' ' -f1 "$LIVE_ROOT/.code-revision" 2>/dev/null || true)
+if [ -n "$code_ref" ]; then
+    case "$code_ref" in
+        "$live_ref"*) ;;
+        *)
+            log "the live tree holds $code_ref but the record says $live_ref;"
+            log "not building one commit's binary into another's tree. This needs"
+            log "a human: toc-deploy --rollback, or a deploy."
+            exit 1 ;;
+    esac
+fi
+# A binary put in place here is the same commit's, so the tree keeps its
+# name; its checksum changes with it, or toc-deploy would read the next
+# snapshot of this tree as unknown.
+note_binary()
+{
+    [ -n "$code_ref" ] || return 0
+    sum=$(sha256sum "$LIVE_ROOT/merc" 2>/dev/null | cut -d' ' -f1)
+    printf '%s %s\n' "$code_ref" "$sum" > "$LIVE_ROOT/.code-revision.tmp" &&
+        mv -f "$LIVE_ROOT/.code-revision.tmp" "$LIVE_ROOT/.code-revision" || true
+}
 log "restarts are not working; rebuilding the live commit $live_ref."
 echo "$(now)" > "$LAST_REBUILD_FILE"
 
@@ -219,6 +254,7 @@ if [ -f "$LIVE_ROOT/merc" ]; then
 fi
 
 install ${own_flags[@]+"${own_flags[@]}"} -m 0755 "$BUILD_ROOT/merc" "$LIVE_ROOT/merc"
+note_binary
 systemctl reset-failed "$SERVICE" 2>/dev/null || true
 systemctl start "$SERVICE" 2>/dev/null || true
 sleep "$START_GRACE"
@@ -234,6 +270,7 @@ fi
 log "$new_commit also fails to run; rolling the previous binary back."
 if [ -f "$rollback" ]; then
     install ${own_flags[@]+"${own_flags[@]}"} -m 0755 "$rollback" "$LIVE_ROOT/merc"
+    note_binary
     systemctl reset-failed "$SERVICE" 2>/dev/null || true
     systemctl start "$SERVICE" 2>/dev/null || true
     sleep "$START_GRACE"

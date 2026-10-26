@@ -98,6 +98,23 @@ healthy again, 14 nothing installed and not healthy, anything else
 stopped before the game was touched -- and the auto-deployer's status
 line says the same. It never takes player state from git.
 
+**A rollback records the code it put back.** The install writes
+`.code-revision` in the live tree (the commit and the sha256 of its
+`merc`), each snapshot carries the same line as `.snapshot-revision`,
+checked against the snapshot's binary, and a rollback writes that commit
+to `log/deployed-commit` (third field `rollback <snapshot>`) and the
+tree's `.code-revision`, each written aside and renamed into place. A
+snapshot from before identities were kept, or a copy that did not
+finish, is recorded as `unknown`: `toc-auto-deploy` then says "the live
+code is unknown" and ships nothing, and `toc-game-recovery` builds
+nothing -- run `toc-deploy` by hand. The commit rolled back from goes
+into `/var/lib/toc-auto-deploy/rolled-back`, and the auto-deployer holds
+it and anything older until newer code lands (remove the line to let it
+ship again). Recovery also refuses to rebuild when the tree's
+`.code-revision` and `log/deployed-commit` disagree -- the state an
+unhealthy deploy left for a person (exit 12) is in -- since that would
+put one commit's binary into another's tree.
+
 `toc-game-recovery`, which restarts a game systemd has given up on,
 rebuilds only the commit that is live when restarts do not work -- never
 the untested tip of `main`.

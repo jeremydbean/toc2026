@@ -103,6 +103,7 @@ sync_code() {
     shift 2
     rsync -a --delete "$@" \
       --exclude '.git/' --exclude '/.snapshot-ok' \
+      --exclude '/.code-revision' --exclude '/.snapshot-revision' \
       --exclude 'player/' --exclude 'gods/' --exclude 'heroes/' \
       --exclude 'backups/' --exclude 'corpse/' --exclude 'log/' --exclude 'notes/' \
       --exclude 'area/shutdown' --exclude 'area/webadmin.queue' \
@@ -135,6 +136,77 @@ sync_code() {
     done
 }
 
+# Which commit the code in a tree is (review, 2026-10-26). A rollback put
+# old code back and left log/deployed-commit naming the code it had just
+# removed, so toc-game-recovery would have rebuilt that code into the old
+# tree and toc-auto-deploy believed it live. Now every step that changes
+# the code says what it put there, in two places at once:
+#
+#   .code-revision      in the live tree: "<commit> <sha256 of merc>",
+#                       written by the install; sync_code never copies it
+#   .snapshot-revision  in a snapshot, the same line, written before its
+#                       .snapshot-ok marker
+#
+# An identity counts only when it is a full commit id and the merc beside
+# it is the binary it was recorded with, so a tree a copy cut short, or a
+# binary replaced since, reads as "unknown" -- as does any snapshot taken
+# before this existed. Unknown is written as unknown, never guessed.
+merc_sum() { sha256sum "$1/merc" 2>/dev/null | cut -d' ' -f1; }
+
+# code_identity TREE FILE: the verified commit, or "unknown".
+code_identity() {
+    line=$(cat "$1/$2" 2>/dev/null || true)
+    rev=${line%% *}
+    sum=${line#"$rev"}
+    sum=${sum# }
+    case "$rev" in ''|*[!0-9a-f]*) echo unknown; return 0 ;; esac
+    if [ ${#rev} -eq 40 ] && [ -n "$sum" ] && [ "$sum" = "$(merc_sum "$1")" ]; then
+        echo "$rev"
+    else
+        echo unknown
+    fi
+}
+
+# put_file PATH TEXT: written whole beside the file, then renamed over it.
+put_file() {
+    tmp="$1.tmp.$$"
+    if printf '%s\n' "$2" > "$tmp" && mv -f "$tmp" "$1"; then
+        return 0
+    fi
+    rm -f "$tmp"
+    return 1
+}
+
+# record_code DIR FILE COMMIT: name the code in a tree (or a snapshot).
+record_code() {
+    case "$3" in
+        *[!0-9a-f]*|'') rm -f "$1/$2"; return 0 ;;
+    esac
+    [ ${#3} -eq 40 ] || { rm -f "$1/$2"; return 0; }
+    put_file "$1/$2" "$3 $(merc_sum "$1")"
+}
+
+# record_deployed COMMIT [WHY]: what is live, for toc-auto-deploy and
+# toc-game-recovery to read. log/ is the game's, so a rollback keeps it.
+record_deployed() {
+    put_file "$CURRENT/log/deployed-commit" \
+        "$1 $(date -u +%Y-%m-%dT%H:%M:%SZ)${2:+ $2}" || return 1
+    chown toc:toc "$CURRENT/log/deployed-commit" "$CURRENT/.code-revision" 2>/dev/null || true
+}
+
+# Code rolled back from is not shipped again by toc-auto-deploy, nor
+# anything older; newer code is. A list, because rolling back twice --
+# off C, then off B -- must not make C new again.
+AUTO_STATE="${TOC_AUTO_DEPLOY_STATE:-/var/lib/toc-auto-deploy}"
+hold_rolled_back() {
+    mkdir -p "$AUTO_STATE" 2>/dev/null || return 0
+    { tail -n 19 "$AUTO_STATE/rolled-back" 2>/dev/null || true; echo "$1"; } \
+        > "$AUTO_STATE/rolled-back.tmp" &&
+        mv -f "$AUTO_STATE/rolled-back.tmp" "$AUTO_STATE/rolled-back" ||
+        rm -f "$AUTO_STATE/rolled-back.tmp"
+    echo "   toc-auto-deploy will not ship $1, or anything older, again" >&2
+}
+
 # The code that was running back, and the game restarted on it. Only the
 # code: the snapshot was taken with sync_code's excludes and goes back
 # with them, so whatever players did between the snapshot and now --
@@ -143,11 +215,32 @@ sync_code() {
 # disaster.
 rollback() {
     restored=0
+    from=$(code_identity "$CURRENT" .code-revision)
     systemctl stop toc-web toc-game || true
     if [ -f "$SNAP/.snapshot-ok" ] && sync_code "$SNAP" "$CURRENT"; then
         restored=1
+        to=$(code_identity "$SNAP" .snapshot-revision)
     else
         echo "   COULD NOT RESTORE $SNAP -- starting what is there" >&2
+        to=unknown
+    fi
+    # What is live now is what was put back, healthy or not: recovery
+    # rebuilds the commit named here, so it must never name the code
+    # just removed. A copy that did not finish leaves a mixture, which is
+    # no commit at all.
+    record_code "$CURRENT" .code-revision "$to" || true
+    if ! record_deployed "$to" "rollback $(basename "$SNAP")"; then
+        echo "   COULD NOT RECORD WHAT IS LIVE in $CURRENT/log/deployed-commit" >&2
+    fi
+    if [ "$to" = unknown ]; then
+        echo "   the code put back has no recorded identity (a snapshot from before" >&2
+        echo "   they were kept, or a copy that did not finish): recorded as unknown," >&2
+        echo "   so toc-auto-deploy and toc-game-recovery wait for a person" >&2
+    else
+        echo "   live code recorded as $to" >&2
+    fi
+    if [ "$from" != unknown ] && [ "$from" != "$to" ]; then
+        hold_rolled_back "$from"
     fi
     rm -f "$CURRENT/area/shutdown.txt" "$CURRENT/area/shutdown"
     chown -R toc:toc "$CURRENT" || true
@@ -335,14 +428,17 @@ ls -d "$ROLLBACK_DIR"/rollback-code-*/ 2>/dev/null | sed 's:/$::' | sort | head 
         [ "$old" = "$SNAP" ] || rm -rf "$old"
     done
 rm -rf "$SNAP"
+# The running code's identity, checked against its binary, goes with it.
+running=$(code_identity "$CURRENT" .code-revision)
 if ! mkdir -p "$SNAP" ||
    ! sync_code "$CURRENT" "$SNAP" ${prev:+"--link-dest=$prev"} ||
+   ! record_code "$SNAP" .snapshot-revision "$running" ||
    ! touch "$SNAP/.snapshot-ok"; then
     echo "   COULD NOT SNAPSHOT THE RUNNING CODE -- nothing touched; the game is still running" >&2
     rm -rf "$SNAP"
     exit 1
 fi
-echo "   $SNAP"
+echo "   $SNAP (code $running)"
 
 say "installing"
 disrupted=1
@@ -354,6 +450,7 @@ fi
 installing=1
 
 sync_code "$BUILD" "$CURRENT"
+record_code "$CURRENT" .code-revision "$(git -C "$BUILD" rev-parse HEAD)"
 # custom.are is where RSAVE puts the workshop rooms builders make in game
 # (BUILDER_AREA_FILE), and the state sync carries it host to git. The
 # live copy is the newest; git's is up to one sync behind, more for a
@@ -398,9 +495,9 @@ while [ $n -lt 30 ]; do
         # What is live, for toc-auto-deploy to compare against and for
         # any session to read: log/ is excluded from the rsync above and
         # carried to GitHub by the state sync.
-        printf '%s %s\n' "$(git -C "$BUILD" rev-parse HEAD)" \
-            "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > "$CURRENT/log/deployed-commit"
-        chown toc:toc "$CURRENT/log/deployed-commit" 2>/dev/null || true
+        # Written beside the file and renamed over it, like a rollback's.
+        record_deployed "$(git -C "$BUILD" rev-parse HEAD)" ||
+            echo "   COULD NOT RECORD WHAT IS LIVE in $CURRENT/log/deployed-commit" >&2
 
         # Keep the host's copies of these scripts in step with the
         # checkout that just came back healthy. Nothing used to install

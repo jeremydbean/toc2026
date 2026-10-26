@@ -2115,6 +2115,27 @@ began. `toc-deploy --rollback` restores the newest snapshot by hand
 `tests/test_deploy_install.py` runs snapshot, install and rollback on
 real trees and checks every piece of state survives.
 
+**A rollback names the code it put back** (review, 2026-10-26: it left
+`log/deployed-commit` naming the code it had removed, so recovery would
+have rebuilt that and the auto-deployer thought it live). The install
+writes `.code-revision` in the live tree -- `<commit> <sha256 of merc>`;
+`sync_code` never copies it or `.snapshot-revision` -- and a snapshot
+records the running tree's identity as `.snapshot-revision` before its
+`.snapshot-ok`, only when it is a full commit id and the merc beside it
+is the binary it was written with (`code_identity`). Rollback writes the
+snapshot's identity to both places (`put_file`: aside, then renamed),
+healthy or not, since recovery rebuilds what the record names; a legacy
+snapshot or a copy that did not finish is recorded as `unknown`, and
+both `toc-auto-deploy` and `toc-game-recovery` then wait for a person.
+The commit rolled back from is appended to the auto-deployer's
+`rolled-back` list (`TOC_AUTO_DEPLOY_STATE`), which holds it and its
+ancestors until newer code lands. `toc-game-recovery` refuses to build
+when the tree's `.code-revision` and the record disagree, and keeps the
+identity's checksum current when it swaps the binary (`note_binary`).
+`toc-restore` writes the identity too. `tests/test_deploy_rollback_identity.py`
+runs three real deploys, rolls back to the newest, an older and a legacy
+snapshot, and asks both scripts what they would do after each.
+
 **Healthy means the game answered, not that a port opened.** The game
 binds its port before it loads the world (`init_socket`, then
 `boot_db`), and the dashboard's `"merc":true` is only a TCP connect, so

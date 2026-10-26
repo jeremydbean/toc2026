@@ -24,11 +24,13 @@ DEPLOY = ROOT / "deploy" / "windows-vm" / "toc-deploy"
 
 
 def code_sync() -> str:
-    """toc-deploy's runtime_txt list and sync_code function, as written."""
+    """toc-deploy's runtime_txt list, sync_code function and the code
+    identity helpers after it (record_code is part of the install), as
+    written."""
     script = DEPLOY.read_text()
     txt = script.index("runtime_txt=")
     fn = script.index("sync_code() {")
-    end = script.index("\n}\n", fn) + len("\n}\n")
+    end = script.index("\n# The code that was running back", fn) + 1
     return script[txt:script.index('"\n', txt) + 2] + script[fn:end]
 
 

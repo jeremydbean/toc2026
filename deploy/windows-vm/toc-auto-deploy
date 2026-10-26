@@ -142,6 +142,13 @@ target=$(git -C "$BUILD" rev-parse origin/main)
 short=$(git -C "$BUILD" rev-parse --short "$target")
 
 live=$(cut -d' ' -f1 "$MARKER" 2>/dev/null || true)
+# A rollback to code nobody can name (a snapshot from before toc-deploy
+# kept identities, or a copy that did not finish) says so rather than
+# guessing; deploying over it is a person's call.
+if [ "$live" = unknown ]; then
+    status "the live code is unknown ($(cut -d' ' -f2- "$MARKER" 2>/dev/null || true)); run toc-deploy by hand"
+    exit 0
+fi
 if [ -z "$live" ] || ! git -C "$BUILD" cat-file -e "$live^{commit}" 2>/dev/null; then
     status "no record of what is live in $MARKER; run toc-deploy once by hand"
     exit 0
@@ -183,6 +190,21 @@ effective_short=$(git -C "$BUILD" rev-parse --short "$effective")
 
 if [ "$(cat "$STATE_DIR/attempted" 2>/dev/null || true)" = "$effective" ]; then
     exit 0
+fi
+
+# Code toc-deploy rolled back from -- by hand, or after a deploy that did
+# not come back -- is not shipped again, nor anything older: only code
+# newer than it (review, 2026-10-26). Without this, a commit deployed by
+# hand and then rolled back by hand was simply reinstalled ten minutes
+# later, since nothing had marked it attempted.
+if [ -f "$STATE_DIR/rolled-back" ]; then
+    while read -r gone; do
+        [ -n "$gone" ] || continue
+        if git -C "$BUILD" merge-base --is-ancestor "$effective" "$gone" 2>/dev/null; then
+            status "holding $effective_short: the code was rolled back from $(git -C "$BUILD" rev-parse --short "$gone"); waiting for newer code"
+            exit 0
+        fi
+    done < "$STATE_DIR/rolled-back"
 fi
 
 if git -C "$BUILD" log -1 --format=%B "$effective" | has_marker '[deploy now]'; then

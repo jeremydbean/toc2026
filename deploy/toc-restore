@@ -183,6 +183,12 @@ systemctl enable --now toc-state-sync.timer toc-state-sync-check.timer toc-game-
 # live commit to compare main against, then let it take over.
 printf '%s %s\n' "$(git -C "$BUILD" rev-parse HEAD)" \
     "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > "$TOC_PREFIX/current/log/deployed-commit" 2>/dev/null || true
+# And the tree's own name for its code, as toc-deploy's install writes it,
+# so the first deploy's snapshot of this tree can be rolled back to by
+# commit rather than as unknown.
+printf '%s %s\n' "$(git -C "$BUILD" rev-parse HEAD)" \
+    "$(sha256sum "$TOC_PREFIX/current/merc" 2>/dev/null | cut -d' ' -f1)" \
+    > "$TOC_PREFIX/current/.code-revision" 2>/dev/null || true
 systemctl enable --now toc-auto-deploy.timer 2>/dev/null || true
 
 cat <<'NOTE'
