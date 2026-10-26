@@ -170,10 +170,12 @@ class RareEventAndSkillTests(unittest.TestCase):
             self.magic2, "void spell_death_ray", "void spell_cause_madness"
         )
 
-        ganon_guard = death_ray.index("victim->pIndexData->vnum == 30225")
+        # The guard moved to hyrule_defies_instant_death (Ganon and Gohma),
+        # and raw_kill makes the ray one hard blow (2026-10-25).
+        ganon_guard = death_ray.index("hyrule_defies_instant_death( victim )")
         death_message = death_ray.index('act("$n screams and dies!"')
         self.assertLess(ganon_guard, death_message)
-        self.assertIn("ancient darkness refuses to let $m die", death_ray)
+        self.assertIn("but does not fall", death_ray)
 
 
 if __name__ == "__main__":

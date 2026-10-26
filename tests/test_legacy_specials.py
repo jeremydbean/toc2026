@@ -62,8 +62,10 @@ class LegacySpecialSystemTests(unittest.TestCase):
         self.assertIn("UMAX(1, ch->pcdata->perm_hit - penalty)", spell)
         self.assertIn("UMAX(3, ch->perm_stat[nuke] - 3)", spell)
         self.assertNotIn("ch->pcdata->perm_hit -=", spell)
-        self.assertIn("victim->pIndexData->vnum == 30225", spell)
-        self.assertIn("ancient darkness binds", spell)
+        # Ganon (and Gohma) take Farslay as one hard blow, not a death:
+        # hyrule_defies_instant_death, then raw_kill's own guard.
+        self.assertIn("hyrule_defies_instant_death( victim )", spell)
+        self.assertIn("but $e does not fall", spell)
 
     def test_farslay_reward_is_really_available_and_help_is_accurate(self) -> None:
         for contract in (
