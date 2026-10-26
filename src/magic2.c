@@ -3833,6 +3833,23 @@ static OBJ_DATA *raisable_corpse( CHAR_DATA *ch, const char *arg )
  *
  * The corpse is consumed only if one was used.
  */
+/* The caster's maximum hit points without what a spell lends them for a
+   while. A servant keeps its hit points for its whole life -- up to five
+   hundred ticks -- so raising one under TITANIC (thirty ticks, six times
+   the caster's maximum) built a servant six times as tough for good
+   (class review, 2026-10-26). Gear, permanent affects and the caster's own
+   growth still count. */
+static int lasting_max_hit( CHAR_DATA *ch )
+{
+    AFFECT_DATA *paf;
+    long hp = ch->max_hit;
+
+    for ( paf = ch->affected; paf != NULL; paf = paf->next )
+        if ( paf->location == APPLY_HIT && paf->duration >= 0 && paf->modifier > 0 )
+            hp -= paf->modifier;
+    return (int)URANGE( 1, hp, ch->max_hit );
+}
+
 static CHAR_DATA *raise_undead( CHAR_DATA *ch, OBJ_DATA *corpse,
                                 int grade, int hp_dice, int timer,
                                 const char *keyword,
@@ -3861,7 +3878,7 @@ static CHAR_DATA *raise_undead( CHAR_DATA *ch, OBJ_DATA *corpse,
     victim->level = (sh_int) URANGE( 1, level, ch->level );
 
     victim->max_hit = (int)( dice( hp_dice, 8 )
-                              + ch->max_hit * grade / 400 );
+                              + lasting_max_hit( ch ) * grade / 400 );
     if ( corpse != NULL )
         victim->max_hit = (int)( victim->max_hit * 3 / 2 );
     victim->hit = victim->max_hit;

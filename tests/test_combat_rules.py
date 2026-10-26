@@ -106,6 +106,13 @@ class CombatRulesCallSiteTests(unittest.TestCase):
             self.assertIn(f"undead_budget_refuses( ch, {cost} )", body)
             self.assertNotIn("undead_servants(", body)
 
+    def test_servants_take_the_casters_lasting_maximum(self) -> None:
+        body = function_body(self.magic2, "static CHAR_DATA *raise_undead(")
+        self.assertIn("lasting_max_hit( ch ) * grade / 400", body)
+        self.assertNotIn("ch->max_hit * grade", body)
+        rule = function_body(self.magic2, "static int lasting_max_hit(")
+        self.assertIn("paf->duration >= 0", rule)
+
 
 if __name__ == "__main__":
     unittest.main()

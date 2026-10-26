@@ -18,6 +18,7 @@ a mortal level 50 necromancer, every raise a real cast:
 """
 from __future__ import annotations
 
+import re
 import unittest
 
 from live_mud import (
@@ -34,6 +35,7 @@ GALLERY = 32701
 TEMPLE = 4207
 NECRO = 5
 REFUSED = "can't control any more undead"
+ANSI = re.compile(r"\x1b\[[0-9;]*m")
 
 
 def make(mud: LiveMud, name: str, **fields) -> None:
@@ -129,6 +131,38 @@ class UndeadBudgetTests(unittest.TestCase):
             with mud.connect(timeout=120) as necro:
                 login(necro, "Zundeadnec", PW)
                 self.assertTrue(raise_one(necro, "vampire"))
+
+    def test_a_lent_maximum_does_not_build_a_servant(self) -> None:
+        """A servant's hit points come from the caster's lasting maximum.
+        TITANIC lends six times it for thirty ticks; a servant lives for
+        hundreds, so one raised under it was six times as tough for good.
+        A skeleton with no corpse has 8d8 + max/10: at a 2000 maximum,
+        264 at most, buffed or not (about 1264 on the old code)."""
+        with LiveMud(fixtures=True) as mud:
+            self.setUpWorld(mud)
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as necro:
+                login(staff, "Zundeadstaff", PW)
+                login(necro, "Zundeadnec", PW)
+                staff.must("set skill zundeadnec 'create skeleton' 100", "")
+
+                def skeleton_max() -> int:
+                    self.assertTrue(raise_one(necro, "skeleton"))
+                    stat = staff.sync("stat mob skeleton", 20)
+                    m = re.search(r"Hp: -?\d+/(\d+)", ANSI.sub("", stat))
+                    self.assertIsNotNone(m, stat)
+                    staff.must("purge skeleton", "")
+                    return int(m.group(1))
+
+                plain = skeleton_max()
+                staff.must("titanic zundeadnec 10", "")
+                self.assertRegex(ANSI.sub("", staff.sync("stat char zundeadnec")),
+                                 r"Hp: \d+/1[0-9]{4}")
+                staff.must("restore zundeadnec", "")
+                lent = skeleton_max()
+                staff.must("titanic zundeadnec", "")
+                for hp in (plain, lent):
+                    self.assertGreaterEqual(hp, 8 + 200)
+                    self.assertLessEqual(hp, 64 + 200)
 
 
 if __name__ == "__main__":
