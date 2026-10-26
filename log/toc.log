@@ -202238,3 +202238,186 @@ Mon Oct 26 22:15:56 2026 :: Sock.sinaddr:  5.161.61.238
 Mon Oct 26 22:15:56 2026 :: EOF encountered on read.
 Mon Oct 26 22:16:51 2026 :: Black market: the dealer vanished from room 8009 (Mahmount Allesh Megway, mega1.are) (wandering).
 Mon Oct 26 22:17:56 2026 :: Black market: the dealer vanished from room 15034 (Corry-Mack Hall, campus.are) (wandering).
+Mon Oct 26 22:19:32 2026 :: Log Alaric [2497]: aq re
+Mon Oct 26 22:19:32 2026 :: Log Alaric [2497]: quest assigned: kill An Elven Archer (mob 28103, level 20) in azeroth.are, 6 minutes, rush
+Mon Oct 26 22:19:38 2026 :: Log Alaric [2497]: en do
+Mon Oct 26 22:19:38 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 22:19:39 2026 :: Log Alaric [2401]: jump rock
+Mon Oct 26 22:19:39 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Mon Oct 26 22:19:40 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 1607
+Mon Oct 26 22:19:41 2026 :: Log Alaric [4208]: heal all
+Mon Oct 26 22:19:41 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Mon Oct 26 22:19:44 2026 :: Log Alaric [4208]: east
+Mon Oct 26 22:19:44 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Mon Oct 26 22:19:44 2026 :: Log Alaric [4207]: east
+Mon Oct 26 22:19:44 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Mon Oct 26 22:19:44 2026 :: Log Alaric [4202]: east
+Mon Oct 26 22:19:44 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Mon Oct 26 22:19:44 2026 :: Log Alaric [4201]: east
+Mon Oct 26 22:19:44 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Mon Oct 26 22:19:45 2026 :: Log Alaric [2427]: south
+Mon Oct 26 22:19:45 2026 :: Log Alaric [2428]: arrived (Main Processional, Toward the Mermaids' Bridge) from 2427
+Mon Oct 26 22:19:45 2026 :: Log Alaric [2428]: south
+Mon Oct 26 22:19:45 2026 :: Log Alaric [2429]: arrived (Bridge of the Mermaids.) from 2428
+Mon Oct 26 22:19:45 2026 :: Log Alaric [2429]: south
+Mon Oct 26 22:19:45 2026 :: Log Alaric [2430]: arrived (Main Processional, at the Southern Gates) from 2429
+Mon Oct 26 22:19:45 2026 :: Log Alaric [2430]: south
+Mon Oct 26 22:19:45 2026 :: Log Alaric [2431]: arrived (Inside the Southern Gates of Dresden.) from 2430
+Mon Oct 26 22:19:46 2026 :: Log Alaric [2431]: open south
+Mon Oct 26 22:19:46 2026 :: Log Alaric [2431]: south
+Mon Oct 26 22:19:46 2026 :: Log Alaric [2432]: arrived (Outside the Southern Gates of Dresden.) from 2431
+Mon Oct 26 22:19:48 2026 :: Log Alaric [2432]: south
+Mon Oct 26 22:19:48 2026 :: Log Alaric [3505]: arrived (The Trail to Miden'nir) from 2432
+Mon Oct 26 22:19:48 2026 :: Log Alaric [3505]: south
+Mon Oct 26 22:19:48 2026 :: Log Alaric [3507]: arrived (A Burned Cart) from 3505
+Mon Oct 26 22:19:48 2026 :: Log Alaric [3507]: south
+Mon Oct 26 22:19:48 2026 :: Log Alaric [3510]: arrived (A Crossroads) from 3507
+Mon Oct 26 22:19:48 2026 :: Log Alaric [3510]: south
+Mon Oct 26 22:19:48 2026 :: Log Alaric [3516]: arrived (Muddy Ground) from 3510
+Mon Oct 26 22:19:49 2026 :: Log Alaric [3516]: south
+Mon Oct 26 22:19:49 2026 :: Log Alaric [3519]: arrived (The Dark Path) from 3516
+Mon Oct 26 22:19:49 2026 :: Log Alaric [3519]: south
+Mon Oct 26 22:19:49 2026 :: Log Alaric [3521]: arrived (Carnage) from 3519
+Mon Oct 26 22:19:49 2026 :: Log Alaric [3521]: west
+Mon Oct 26 22:19:49 2026 :: Log Alaric [3522]: arrived (Deep in the Forest of Miden'nir) from 3521
+Mon Oct 26 22:19:49 2026 :: Log Alaric [3522]: south
+Mon Oct 26 22:19:49 2026 :: Log Alaric [28161]: arrived (Watch Your Step!) from 3522
+Mon Oct 26 22:19:51 2026 :: Log Alaric [28161]: en do
+Mon Oct 26 22:19:55 2026 :: Log Alaric [28161]: en po
+Mon Oct 26 22:19:55 2026 :: Log Alaric [28101]: arrived (Entrance to Azeroth) from 28161
+Mon Oct 26 22:19:58 2026 :: Log Alaric [28101]: r s
+Mon Oct 26 22:19:58 2026 :: Log Alaric [28102]: arrived (Outside the Barracks) from 28101
+Mon Oct 26 22:19:58 2026 :: Log Alaric [28103]: arrived (Inside the Barracks) from 28102
+Mon Oct 26 22:19:58 2026 :: Log Alaric [28107]: arrived (Before the Main Gate) from 28103
+Mon Oct 26 22:19:58 2026 :: Log Alaric [28120]: arrived (Outside the gates of Black Rock Spire) from 28107
+Mon Oct 26 22:19:59 2026 :: Log Alaric [28120]: wake
+Mon Oct 26 22:20:00 2026 :: Treasure goblin: vanished from room 7692 (The Dungeon, ultima.are) (too long in one area).
+Mon Oct 26 22:20:01 2026 :: Log Alaric [28120]: fi
+Mon Oct 26 22:20:07 2026 :: Log Alaric [28120]: fi
+Mon Oct 26 22:20:12 2026 :: Log Alaric [28120]: fi
+Mon Oct 26 22:20:18 2026 :: Log Alaric [28120]: who
+Mon Oct 26 22:20:18 2026 :: Log Alaric [28120]: fi
+Mon Oct 26 22:20:27 2026 :: Log Alaric [28120]: fi
+Mon Oct 26 22:20:32 2026 :: Log Alaric [28120]: fi
+Mon Oct 26 22:20:38 2026 :: Log Alaric [28120]: fi
+Mon Oct 26 22:20:38 2026 :: Log Alaric [28120]: killed An Ogre Mage
+Mon Oct 26 22:20:38 2026 :: Log Alaric [28120]: coin +1 silver
+Mon Oct 26 22:20:38 2026 :: Log Alaric [28120]: coin +1 copper
+Mon Oct 26 22:20:44 2026 :: Log Alaric [28120]: fi
+Mon Oct 26 22:20:44 2026 :: Log Alaric [28120]: s
+Mon Oct 26 22:20:44 2026 :: Log Alaric [28121]: arrived (Beginning of the swamp) from 28120
+Mon Oct 26 22:20:45 2026 :: Log Alaric [28121]: s
+Mon Oct 26 22:20:45 2026 :: Log Alaric [28122]: arrived (More Swamp) from 28121
+Mon Oct 26 22:20:47 2026 :: Log Alaric [28122]: w
+Mon Oct 26 22:20:47 2026 :: Log Alaric [28124]: arrived (More Swamp) from 28122
+Mon Oct 26 22:20:47 2026 :: Log Alaric [28124]: w
+Mon Oct 26 22:20:47 2026 :: Log Alaric [28131]: arrived (The Swamp) from 28124
+Mon Oct 26 22:20:48 2026 :: Log Alaric [28131]: w
+Mon Oct 26 22:20:48 2026 :: Log Alaric [28132]: arrived (The Swamp) from 28131
+Mon Oct 26 22:20:48 2026 :: Log Alaric [28132]: w
+Mon Oct 26 22:20:48 2026 :: Log Alaric [28133]: arrived (The End of The Swamp) from 28132
+Mon Oct 26 22:20:48 2026 :: Log Alaric [28133]: w
+Mon Oct 26 22:20:48 2026 :: Log Alaric [28134]: arrived (In the Forest) from 28133
+Mon Oct 26 22:20:48 2026 :: Log Alaric [28134]: w
+Mon Oct 26 22:20:48 2026 :: Log Alaric [28135]: arrived (The Middle of the Forest) from 28134
+Mon Oct 26 22:20:49 2026 :: Log Alaric [28135]: w
+Mon Oct 26 22:20:49 2026 :: Log Alaric [28136]: arrived (The End of the Forest) from 28135
+Mon Oct 26 22:20:49 2026 :: Log Alaric [28136]: w
+Mon Oct 26 22:20:49 2026 :: Log Alaric [28137]: arrived (The Battle Field) from 28136
+Mon Oct 26 22:20:51 2026 :: Log Alaric [28137]: (refused) sscan
+Mon Oct 26 22:20:52 2026 :: Log Alaric [28137]: n
+Mon Oct 26 22:20:52 2026 :: Log Alaric [28138]: arrived (The Battle Field) from 28137
+Mon Oct 26 22:20:52 2026 :: Log Alaric [28138]: n
+Mon Oct 26 22:20:52 2026 :: Log Alaric [28141]: arrived (The Battle Field) from 28138
+Mon Oct 26 22:20:52 2026 :: Log Alaric [28141]: w
+Mon Oct 26 22:20:52 2026 :: Log Alaric [28150]: arrived (The Battle Field) from 28141
+Mon Oct 26 22:20:53 2026 :: Log Alaric [28150]: w
+Mon Oct 26 22:20:53 2026 :: Log Alaric [28151]: arrived (The Battle Field) from 28150
+Mon Oct 26 22:20:53 2026 :: Log Alaric [28151]: w
+Mon Oct 26 22:20:53 2026 :: Log Alaric [28152]: arrived (The River) from 28151
+Mon Oct 26 22:20:54 2026 :: Log Alaric [28152]: scan
+Mon Oct 26 22:20:56 2026 :: Log Alaric [28152]: w
+Mon Oct 26 22:20:56 2026 :: Log Alaric [28153]: arrived (The Front Lines) from 28152
+Mon Oct 26 22:20:58 2026 :: Log Alaric [28153]: kill arch
+Mon Oct 26 22:20:59 2026 :: Log Alaric [28153]: fi
+Mon Oct 26 22:21:00 2026 :: Sock.sinaddr:  54.87.112.51
+Mon Oct 26 22:21:01 2026 :: EOF encountered on read.
+Mon Oct 26 22:21:05 2026 :: Log Alaric [28153]: fi
+Mon Oct 26 22:21:10 2026 :: Log Alaric [28153]: fi
+Mon Oct 26 22:21:16 2026 :: Log Alaric [28153]: fi
+Mon Oct 26 22:21:21 2026 :: Log Alaric [28153]: affects off: steel fist
+Mon Oct 26 22:21:22 2026 :: Log Alaric [28153]: fi
+Mon Oct 26 22:21:28 2026 :: Log Alaric [28153]: fi
+Mon Oct 26 22:21:28 2026 :: Log Alaric [28153]: killed A Paladin
+Mon Oct 26 22:21:28 2026 :: Log Alaric [28153]: coin +2 silver
+Mon Oct 26 22:21:28 2026 :: Log Alaric [28153]: coin +3 copper
+Mon Oct 26 22:21:28 2026 :: Log Alaric [28153]: coin +1 gold
+Mon Oct 26 22:21:34 2026 :: Log Alaric [28153]: fi
+Mon Oct 26 22:21:40 2026 :: Log Alaric [28153]: fi
+Mon Oct 26 22:21:45 2026 :: Log Alaric [28153]: fi
+Mon Oct 26 22:21:51 2026 :: Log Alaric [28153]: who
+Mon Oct 26 22:21:52 2026 :: Log Alaric [28153]: fi
+Mon Oct 26 22:21:57 2026 :: Log Alaric [28153]: killed A Paladin
+Mon Oct 26 22:21:57 2026 :: Log Alaric [28153]: coin +2 silver
+Mon Oct 26 22:21:57 2026 :: Log Alaric [28153]: coin +3 copper
+Mon Oct 26 22:21:57 2026 :: Log Alaric [28153]: coin +1 gold
+Mon Oct 26 22:21:58 2026 :: Log Alaric [28153]: kill arch
+Mon Oct 26 22:21:58 2026 :: Log Alaric [28153]: killed An Elven Archer
+Mon Oct 26 22:22:01 2026 :: Log Alaric [28153]: kill arch
+Mon Oct 26 22:22:01 2026 :: Log Alaric [28153]: killed An Elven Archer
+Mon Oct 26 22:22:04 2026 :: Log Alaric [28153]: kill arch
+Mon Oct 26 22:22:04 2026 :: Log Alaric [28153]: killed An Elven Archer
+Mon Oct 26 22:22:07 2026 :: Log Alaric [28153]: kill arch
+Mon Oct 26 22:22:07 2026 :: Log Alaric [28153]: killed An Elven Archer
+Mon Oct 26 22:22:10 2026 :: Log Alaric [28153]: kill arch
+Mon Oct 26 22:22:10 2026 :: Log Alaric [28153]: killed An Elven Archer
+Mon Oct 26 22:22:13 2026 :: Log Alaric [28153]: kill arch
+Mon Oct 26 22:22:13 2026 :: Log Alaric [28153]: killed An Elven Archer
+Mon Oct 26 22:22:16 2026 :: Log Alaric [28153]: e
+Mon Oct 26 22:22:16 2026 :: Log Alaric [28152]: arrived (The River) from 28153
+Mon Oct 26 22:22:16 2026 :: Log Alaric [28152]: e
+Mon Oct 26 22:22:16 2026 :: Log Alaric [28151]: arrived (The Battle Field) from 28152
+Mon Oct 26 22:22:17 2026 :: Log Alaric [28151]: e
+Mon Oct 26 22:22:17 2026 :: Log Alaric [28150]: arrived (The Battle Field) from 28151
+Mon Oct 26 22:22:18 2026 :: Log Alaric [28150]: s
+Mon Oct 26 22:22:18 2026 :: Log Alaric [28149]: arrived (The Battle Field) from 28150
+Mon Oct 26 22:22:18 2026 :: Log Alaric [28149]: e
+Mon Oct 26 22:22:18 2026 :: Log Alaric [28138]: arrived (The Battle Field) from 28149
+Mon Oct 26 22:22:19 2026 :: Log Alaric [28138]: e
+Mon Oct 26 22:22:19 2026 :: Log Alaric [28138]: se
+Mon Oct 26 22:22:20 2026 :: Log Alaric [28138]: s
+Mon Oct 26 22:22:20 2026 :: Log Alaric [28137]: arrived (The Battle Field) from 28138
+Mon Oct 26 22:22:20 2026 :: Log Alaric [28137]: e
+Mon Oct 26 22:22:20 2026 :: Log Alaric [28136]: arrived (The End of the Forest) from 28137
+Mon Oct 26 22:22:20 2026 :: Log Alaric [28136]: e
+Mon Oct 26 22:22:20 2026 :: Log Alaric [28135]: arrived (The Middle of the Forest) from 28136
+Mon Oct 26 22:22:21 2026 :: Log Alaric [28135]: e
+Mon Oct 26 22:22:21 2026 :: Log Alaric [28134]: arrived (In the Forest) from 28135
+Mon Oct 26 22:22:21 2026 :: Log Alaric [28134]: e
+Mon Oct 26 22:22:21 2026 :: Log Alaric [28133]: arrived (The End of The Swamp) from 28134
+Mon Oct 26 22:22:21 2026 :: Log Alaric [28133]: e
+Mon Oct 26 22:22:21 2026 :: Log Alaric [28132]: arrived (The Swamp) from 28133
+Mon Oct 26 22:22:21 2026 :: Log Alaric [28132]: e
+Mon Oct 26 22:22:21 2026 :: Log Alaric [28131]: arrived (The Swamp) from 28132
+Mon Oct 26 22:22:22 2026 :: Log Alaric [28131]: e
+Mon Oct 26 22:22:22 2026 :: Log Alaric [28124]: arrived (More Swamp) from 28131
+Mon Oct 26 22:22:22 2026 :: Log Alaric [28124]: e
+Mon Oct 26 22:22:22 2026 :: Log Alaric [28122]: arrived (More Swamp) from 28124
+Mon Oct 26 22:22:23 2026 :: Log Alaric [28122]: r n
+Mon Oct 26 22:22:23 2026 :: Log Alaric [28121]: arrived (Beginning of the swamp) from 28122
+Mon Oct 26 22:22:23 2026 :: Log Alaric [28120]: arrived (Outside the gates of Black Rock Spire) from 28121
+Mon Oct 26 22:22:23 2026 :: Log Alaric [28107]: arrived (Before the Main Gate) from 28120
+Mon Oct 26 22:22:23 2026 :: Log Alaric [28103]: arrived (Inside the Barracks) from 28107
+Mon Oct 26 22:22:23 2026 :: Log Alaric [28102]: arrived (Outside the Barracks) from 28103
+Mon Oct 26 22:22:23 2026 :: Log Alaric [28101]: arrived (Entrance to Azeroth) from 28102
+Mon Oct 26 22:22:24 2026 :: Log Alaric [28101]: wake
+Mon Oct 26 22:22:25 2026 :: Log Alaric [28101]: en po
+Mon Oct 26 22:22:25 2026 :: Log Alaric [28161]: arrived (Watch Your Step!) from 28101
+Mon Oct 26 22:22:26 2026 :: Log Alaric [28161]: recal
+Mon Oct 26 22:22:26 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 28161
+Mon Oct 26 22:22:27 2026 :: Log Alaric [2497]: aq co
+Mon Oct 26 22:22:27 2026 :: Log Alaric [2497]: copper +216321600
+Mon Oct 26 22:22:27 2026 :: Log Alaric [2497]: quest complete: 216p 32g 16s, 124 quest points, rush (streak bonus 139%)
+Mon Oct 26 22:22:27 2026 :: Snapshot of Alaric taken before quest: Alaric.20261026_222227.quest (PRESTORE Alaric to see it).
+Mon Oct 26 22:22:28 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct 26 22:22:29 2026 :: Log Alaric [2497]: score
