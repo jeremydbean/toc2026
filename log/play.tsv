@@ -23613,3 +23613,85 @@
 1793013019	cmd	Alaric	50	15045	campus.are	standing	48	0	-	south		Dining Hall //   The cafeteria dining hall is filled with poor students that are forced // to eat this food to subsist.  You feel pity upon them as you watch them
 1793013019	cmd	Alaric	50	15047	campus.are	standing	48	0	-	south		Dining Hall //   The cafeteria dining hall is filled with poor students that are forced // to eat this food to subsist.  You feel pity upon them as you watch them
 1793013020	cmd	Alaric	50	15048	campus.are	standing	48	0	-	east		Dining Hall //   The cafeteria dining hall is filled with poor students that are forced // to eat this food to subsist.  You feel pity upon them as you watch them
+1793013094	cmd	Alaric	50	15028	campus.are	standing	48	0	-	east		Mary Rotte Cafeteria Entrance //   As you walk through the entrance of the cafeteria, your appetite // suddenly disappears.  In this entrance, you'll normally find long
+1793013094	cmd	Alaric	50	15008	campus.are	standing	48	0	-	east		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  An awful fog drifts in from the west.
+1793013095	cmd	Alaric	50	15004	campus.are	standing	48	0	-	north		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst
+1793013097	cmd	Alaric	50	15004	campus.are	standing	48	0	-	exits		Obvious exits: // North - University Avenue // East  - Campus Crescent
+1793013098	cmd	Alaric	50	15008	campus.are	standing	48	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  An awful fog drifts in from the west.
+1793013099	cmd	Alaric	50	15008	campus.are	standing	48	0	-	exits		Obvious exits: // North - The Crossroads // South - University Avenue
+1793013102	cmd	Alaric	50	15009	campus.are	standing	48	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  But it ends here.  It is // normally filled with students.  There is a dormitory to west.
+1793013102	cmd	Alaric	50	15009	campus.are	standing	48	0	-	exits		Obvious exits: // North - University Avenue // West  - Morris House
+1793013104	cmd	Alaric	50	15008	campus.are	standing	48	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  An awful fog drifts in from the west.
+1793013105	cmd	Alaric	50	15004	campus.are	standing	48	0	-	north		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst
+1793013106	cmd	Alaric	50	15004	campus.are	standing	48	0	-	exits		Obvious exits: // North - University Avenue // East  - Campus Crescent
+1793013107	cmd	Alaric	50	15010	campus.are	standing	48	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1793013107	cmd	Alaric	50	15010	campus.are	standing	48	0	-	exits		Obvious exits: // North - University Avenue // East  - Corry-Mack Building
+1793013109	cmd	Alaric	50	15011	campus.are	standing	48	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1793013109	cmd	Alaric	50	15011	campus.are	standing	48	0	-	exits		Obvious exits: // North - University Avenue // East  - Frosty Annex Entrance Hall
+1793013116	cmd	Alaric	50	15010	campus.are	standing	48	0	-	south		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1793013117	cmd	Alaric	50	15033	campus.are	standing	48	0	-	east		Corry-Mack Building //   The Arts faculty building was obviously the brain child of a maze // enthusiast.  Its twisting halls have absolutely boggled the greatest
+1793013117	cmd	Alaric	50	15174	campus.are	standing	48	0	-	east		A Hallway //   This hallway leads through the building in all cardinal directions. // [Exits: north east south west up]
+1793013119	cmd	Alaric	50	15179	campus.are	standing	48	0	-	east		A Hallway //   This hallway leads through the building in most directions. // [Exits: north east south west]
+1793013120	cmd	Alaric	50	15175	campus.are	standing	48	0	-	west		A Hallway //   This hallway leads through the building in most directions. // [Exits: north south west]
+1793013122	cmd	Alaric	50	15177	campus.are	standing	48	0	-	west		A Hallway //   This hallway leads through the building in most directions. // [Exits: north east south west]
+1793013123	cmd	Alaric	50	15175	campus.are	standing	48	0	-	west		A Hallway //   This hallway leads through the building in most directions. // [Exits: north south west]
+1793013124	cmd	Alaric	50	15177	campus.are	standing	48	0	-	west		A Hallway //   This hallway leads through the building in most directions. // [Exits: north east south west]
+1793013132	cmd	Alaric	50	15176	campus.are	standing	48	0	-	east		A Hallway //   This hallway leads through the building in most directions. // [Exits: north east south west]
+1793013132	cmd	Alaric	50	15174	campus.are	standing	48	0	-	north		A Hallway //   This hallway leads through the building in all cardinal directions. // [Exits: north east south west up]
+1793013133	cmd	Alaric	50	15174	campus.are	standing	48	0	-	exits		Obvious exits: // North - A Hallway // East  - A Hallway
+1793013135	cmd	Alaric	50	15181	campus.are	standing	48	0	-	up		A Classroom //   This room suddenly dispels the monotony of the halls you were just passing // through.
+1793013135	cmd	Alaric	50	15181	campus.are	standing	48	0	-	exits		Obvious exits: // East  - A Hallway // South - A Hallway
+1793013137	cmd	Alaric	50	15181	campus.are	standing	48	0	-	scan		the froshie                        -to the East.
+1793013139	cmd	Alaric	50	15181	campus.are	standing	48	0	-	north		Alas, you cannot go that way.
+1793013139	cmd	Alaric	50	15181	campus.are	standing	48	0	-	scan		the froshie                        -to the East.
+1793013140	cmd	Alaric	50	15181	campus.are	standing	48	0	-	exits		Obvious exits: // East  - A Hallway // South - A Hallway
+1793013141	cmd	Alaric	50	15180	campus.are	standing	48	0	-	west		A Classroom //   This room suddenly dispels the monotony of the halls you were just // passing through.
+1793013142	cmd	Alaric	50	15180	campus.are	standing	48	0	-	exits		Obvious exits: // North - A Hallway // East  - Closed door
+1793013142	cmd	Alaric	50	15180	campus.are	standing	48	0	-	open		Ok.
+1793013143	refused	Alaric	50	15180	campus.are	standing	48	0	-	(unknown)		Huh?
+1793013145	cmd	Alaric	50	15180	campus.are	standing	48	0	-	open		It's already open.
+1793013145	cmd	Alaric	50	15180	campus.are	standing	48	0	-	exits		Obvious exits: // North - A Hallway // East  - Mob Chute A
+1793013146	cmd	Alaric	50	15184	campus.are	standing	48	0	-	east		Mob Chute A //   Oops, you are not supposed to be here.  This is a programmer's tool to // disperse mobs all over campus.  Exits go in all directions.  There is a
+1793013148	cmd	Alaric	50	15184	campus.are	standing	48	0	-	kill	st	Your punch ^^^ DESTROYS ^^^ Steve! [-97] // Your punch *** DEVASTATES *** Steve! [-67] // Your punch ^^^ DESTROYS ^^^ Steve! [-85]
+1793013158	cmd	Alaric	50	15004	campus.are	standing	48	0	-	south		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst
+1793013158	cmd	Alaric	50	15003	campus.are	standing	48	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793013158	cmd	Alaric	50	15002	campus.are	standing	48	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793013159	cmd	Alaric	50	15001	campus.are	standing	48	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793013161	cmd	Alaric	50	15000	campus.are	standing	48	0	-	west		The Eastern Campus Entrance //   This gateway is made of limestone, and covered in ivy.  Beyond the // entrance, the university stretches as far as the eye can see.  A sign
+1793013163	cmd	Alaric	50	3795	school.are	standing	48	0	-	enter	po	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // Strange Blending of Time
+1793013163	cmd	Alaric	50	2497	dresden_halloween.are	standing	48	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793013165	cmd	Alaric	50	2497	dresden_halloween.are	standing	48	0	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'You haven't finished the quest, but there is still time!'
+1793013170	cmd	Alaric	50	2401	dresden_halloween.are	standing	48	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1793013170	cmd	Alaric	50	2404	dresden_halloween.are	standing	48	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793013170	cmd	Alaric	50	2427	dresden_halloween.are	standing	48	0	-	south		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1793013170	cmd	Alaric	50	4201	dresden_halloween.are	standing	48	0	-	west		Entrance to the Haunted Temple //   You are at the top of a broad stone stairway looking up at the entrance to // the Temple of Devota, which for one night a year is not peaceful at all.
+1793013171	cmd	Alaric	50	4202	dresden_halloween.are	standing	48	0	-	west		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793013171	cmd	Alaric	50	4207	dresden_halloween.are	standing	48	0	-	west		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793013171	cmd	Alaric	50	3700	school.are	standing	48	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,
+1793013171	cmd	Alaric	50	3772	school.are	standing	48	0	-	up		Newbie Train Station //   This is the Newbie Train Station.  It is supported by taxing the rich and // is provided as a public service for newbies here at Dresden.  You can relax
+1793013172	cmd	Alaric	50	3795	school.are	standing	48	0	-	up		Strange Blending of Time //   You stand in a room that seems to be some sort of spatial rift in time. You // see old tomes, scripts and ancient quills mixed in with encyclopedias, 2 ring
+1793013172	cmd	Alaric	50	15000	campus.are	standing	48	0	-	enter	portal	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // The Eastern Campus Entrance
+1793013177	cmd	Alaric	50	15001	campus.are	standing	49	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793013177	cmd	Alaric	50	15002	campus.are	standing	49	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793013178	cmd	Alaric	50	15003	campus.are	standing	49	0	-	east		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793013178	cmd	Alaric	50	15004	campus.are	standing	49	0	-	east		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst
+1793013178	cmd	Alaric	50	15010	campus.are	standing	49	0	-	north		University Avenue //   This nicely crafted dirt road runs north-south.  It is normally filled // with students.  Buildings lie on either side of the street.
+1793013178	cmd	Alaric	50	15033	campus.are	standing	49	0	-	east		Corry-Mack Building //   The Arts faculty building was obviously the brain child of a maze // enthusiast.  Its twisting halls have absolutely boggled the greatest
+1793013179	cmd	Alaric	50	15174	campus.are	standing	49	0	-	east		A Hallway //   This hallway leads through the building in all cardinal directions. // [Exits: north east south west up]
+1793013180	cmd	Alaric	50	15181	campus.are	standing	49	0	-	up		A Classroom //   This room suddenly dispels the monotony of the halls you were just passing // through.
+1793013181	cmd	Alaric	50	15181	campus.are	standing	49	0	-	exits		Obvious exits: // East  - A Hallway // South - A Hallway
+1793013183	cmd	Alaric	50	15180	campus.are	standing	49	0	-	west		A Classroom //   This room suddenly dispels the monotony of the halls you were just // passing through.
+1793013184	cmd	Alaric	50	15180	campus.are	standing	49	0	-	exits		Obvious exits: // North - A Hallway // East  - Mob Chute A
+1793013185	cmd	Alaric	50	15184	campus.are	standing	49	0	-	east		Mob Chute A //   Oops, you are not supposed to be here.  This is a programmer's tool to // disperse mobs all over campus.  Exits go in all directions.  There is a
+1793013186	cmd	Alaric	50	15184	campus.are	standing	49	0	-	kill	st	Your punch >>> ANNIHILATES <<< the student! [-227] // The student is DEAD!! // You receive 0 experience points.
+1793013190	cmd	Alaric	50	15184	campus.are	standing	49	11	-	kill	st	Your punch <<< ERADICATES >>> the student! [-180] // Your punch === OBLITERATES === the student! [-148] // The student is DEAD!!
+1793013197	cmd	Alaric	50	15004	campus.are	standing	49	0	-	south		The Crossroads //   Campus Crescent meets University Avenue at this very point... Right // here. (Thus the name Crossroads.)  University runs north-south whilst
+1793013198	cmd	Alaric	50	15003	campus.are	standing	49	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793013198	cmd	Alaric	50	15002	campus.are	standing	49	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793013198	cmd	Alaric	50	15001	campus.are	standing	49	0	-	west		Campus Crescent //   This cobblestone road is not littered in any way, thus displaying the // conscientious behavior of the politically correct students (as they
+1793013200	cmd	Alaric	50	15000	campus.are	standing	49	0	-	west		The Eastern Campus Entrance //   This gateway is made of limestone, and covered in ivy.  Beyond the // entrance, the university stretches as far as the eye can see.  A sign
+1793013201	cmd	Alaric	50	3795	school.are	standing	49	0	-	enter	po	You enter A Portal // Your stomach flip flops. Everything goes black for a moment. // Strange Blending of Time
+1793013202	cmd	Alaric	50	2497	dresden_halloween.are	standing	49	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793013203	cmd	Alaric	50	2497	dresden_halloween.are	standing	49	16	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Streak of 22 in a row! A +118% bonus has been added!'
+1793013205	cmd	Alaric	50	2497	dresden_halloween.are	standing	49	4	-	aquest	ga no	Wise choice. You safely collect 32 quest points.
+1793013206	cmd	Alaric	50	2497	dresden_halloween.are	standing	49	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    250 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |

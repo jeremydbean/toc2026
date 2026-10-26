@@ -198251,3 +198251,149 @@ Mon Oct 26 11:10:20 2026 :: Log Alaric [15047]: east
 Mon Oct 26 11:10:20 2026 :: Log Alaric [15048]: arrived (Dining Hall) from 15047
 Mon Oct 26 11:10:44 2026 :: Sock.sinaddr:  5.161.194.92
 Mon Oct 26 11:10:44 2026 :: EOF encountered on read.
+Mon Oct 26 11:11:34 2026 :: Log Alaric [15048]: east
+Mon Oct 26 11:11:34 2026 :: Log Alaric [15028]: arrived (Mary Rotte Cafeteria Entrance) from 15048
+Mon Oct 26 11:11:34 2026 :: Log Alaric [15028]: east
+Mon Oct 26 11:11:34 2026 :: Log Alaric [15008]: arrived (University Avenue) from 15028
+Mon Oct 26 11:11:35 2026 :: Log Alaric [15008]: north
+Mon Oct 26 11:11:35 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15008
+Mon Oct 26 11:11:37 2026 :: Log Alaric [15004]: ex
+Mon Oct 26 11:11:38 2026 :: Log Alaric [15004]: s
+Mon Oct 26 11:11:38 2026 :: Log Alaric [15008]: arrived (University Avenue) from 15004
+Mon Oct 26 11:11:39 2026 :: Log Alaric [15008]: ex
+Mon Oct 26 11:11:42 2026 :: Log Alaric [15008]: s
+Mon Oct 26 11:11:42 2026 :: Log Alaric [15009]: arrived (University Avenue) from 15008
+Mon Oct 26 11:11:42 2026 :: Log Alaric [15009]: ex
+Mon Oct 26 11:11:44 2026 :: Log Alaric [15009]: n
+Mon Oct 26 11:11:44 2026 :: Log Alaric [15008]: arrived (University Avenue) from 15009
+Mon Oct 26 11:11:45 2026 :: Log Alaric [15008]: n
+Mon Oct 26 11:11:45 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15008
+Mon Oct 26 11:11:46 2026 :: Log Alaric [15004]: ex
+Mon Oct 26 11:11:47 2026 :: Log Alaric [15004]: n
+Mon Oct 26 11:11:47 2026 :: Log Alaric [15010]: arrived (University Avenue) from 15004
+Mon Oct 26 11:11:47 2026 :: Log Alaric [15010]: ex
+Mon Oct 26 11:11:49 2026 :: Log Alaric [15010]: n
+Mon Oct 26 11:11:49 2026 :: Log Alaric [15011]: arrived (University Avenue) from 15010
+Mon Oct 26 11:11:49 2026 :: Log Alaric [15011]: ex
+Mon Oct 26 11:11:56 2026 :: Log Alaric [15011]: s
+Mon Oct 26 11:11:56 2026 :: Log Alaric [15010]: arrived (University Avenue) from 15011
+Mon Oct 26 11:11:57 2026 :: Log Alaric [15010]: e
+Mon Oct 26 11:11:57 2026 :: Log Alaric [15033]: arrived (Corry-Mack Building) from 15010
+Mon Oct 26 11:11:57 2026 :: Log Alaric [15033]: e
+Mon Oct 26 11:11:57 2026 :: Log Alaric [15174]: arrived (A Hallway) from 15033
+Mon Oct 26 11:11:59 2026 :: Log Alaric [15174]: e
+Mon Oct 26 11:11:59 2026 :: Log Alaric [15179]: arrived (A Hallway) from 15174
+Mon Oct 26 11:12:00 2026 :: Log Alaric [15179]: w
+Mon Oct 26 11:12:00 2026 :: Log Alaric [15175]: arrived (A Hallway) from 15179
+Mon Oct 26 11:12:02 2026 :: Log Alaric [15175]: w
+Mon Oct 26 11:12:02 2026 :: Log Alaric [15177]: arrived (A Hallway) from 15175
+Mon Oct 26 11:12:03 2026 :: Log Alaric [15177]: w
+Mon Oct 26 11:12:03 2026 :: Log Alaric [15175]: arrived (A Hallway) from 15177
+Mon Oct 26 11:12:04 2026 :: Log Alaric [15175]: w
+Mon Oct 26 11:12:04 2026 :: Log Alaric [15177]: arrived (A Hallway) from 15175
+Mon Oct 26 11:12:12 2026 :: Log Alaric [15177]: east
+Mon Oct 26 11:12:12 2026 :: Log Alaric [15176]: arrived (A Hallway) from 15177
+Mon Oct 26 11:12:12 2026 :: Log Alaric [15176]: north
+Mon Oct 26 11:12:12 2026 :: Log Alaric [15174]: arrived (A Hallway) from 15176
+Mon Oct 26 11:12:13 2026 :: Log Alaric [15174]: ex
+Mon Oct 26 11:12:15 2026 :: Log Alaric [15174]: u
+Mon Oct 26 11:12:15 2026 :: Log Alaric [15181]: arrived (A Classroom) from 15174
+Mon Oct 26 11:12:15 2026 :: Log Alaric [15181]: ex
+Mon Oct 26 11:12:17 2026 :: Log Alaric [15181]: scan
+Mon Oct 26 11:12:19 2026 :: Log Alaric [15181]: n
+Mon Oct 26 11:12:19 2026 :: Log Alaric [15181]: scan
+Mon Oct 26 11:12:20 2026 :: Log Alaric [15181]: ex
+Mon Oct 26 11:12:21 2026 :: Log Alaric [15181]: w
+Mon Oct 26 11:12:21 2026 :: Log Alaric [15180]: arrived (A Classroom) from 15181
+Mon Oct 26 11:12:22 2026 :: Log Alaric [15180]: ex
+Mon Oct 26 11:12:22 2026 :: Log Alaric [15180]: oe
+Mon Oct 26 11:12:23 2026 :: Log Alaric [15180]: (refused) x
+Mon Oct 26 11:12:25 2026 :: Log Alaric [15180]: oe
+Mon Oct 26 11:12:25 2026 :: Log Alaric [15180]: ex
+Mon Oct 26 11:12:26 2026 :: Log Alaric [15180]: e
+Mon Oct 26 11:12:26 2026 :: Log Alaric [15184]: arrived (Mob Chute A) from 15180
+Mon Oct 26 11:12:28 2026 :: Log Alaric [15184]: kill st
+Mon Oct 26 11:12:28 2026 :: Log Alaric [15184]: killed Steve
+Mon Oct 26 11:12:38 2026 :: Log Alaric [15184]: south
+Mon Oct 26 11:12:38 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15184
+Mon Oct 26 11:12:38 2026 :: Log Alaric [15004]: west
+Mon Oct 26 11:12:38 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15004
+Mon Oct 26 11:12:38 2026 :: Log Alaric [15003]: west
+Mon Oct 26 11:12:38 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15003
+Mon Oct 26 11:12:39 2026 :: Log Alaric [15002]: west
+Mon Oct 26 11:12:39 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15002
+Mon Oct 26 11:12:41 2026 :: Log Alaric [15001]: w
+Mon Oct 26 11:12:41 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 15001
+Mon Oct 26 11:12:43 2026 :: Log Alaric [15000]: en po
+Mon Oct 26 11:12:43 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 15000
+Mon Oct 26 11:12:43 2026 :: Log Alaric [3795]: recal
+Mon Oct 26 11:12:43 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 3795
+Mon Oct 26 11:12:45 2026 :: Log Alaric [2497]: aq co
+Mon Oct 26 11:12:50 2026 :: Log Alaric [2497]: enter door
+Mon Oct 26 11:12:50 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 11:12:50 2026 :: Log Alaric [2401]: south
+Mon Oct 26 11:12:50 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2401
+Mon Oct 26 11:12:50 2026 :: Log Alaric [2404]: south
+Mon Oct 26 11:12:50 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Mon Oct 26 11:12:50 2026 :: Log Alaric [2427]: west
+Mon Oct 26 11:12:50 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 2427
+Mon Oct 26 11:12:51 2026 :: Log Alaric [4201]: west
+Mon Oct 26 11:12:51 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4201
+Mon Oct 26 11:12:51 2026 :: Log Alaric [4202]: west
+Mon Oct 26 11:12:51 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4202
+Mon Oct 26 11:12:51 2026 :: Log Alaric [4207]: up
+Mon Oct 26 11:12:51 2026 :: Log Alaric [3700]: arrived (Entrance to Mud School) from 4207
+Mon Oct 26 11:12:51 2026 :: Log Alaric [3700]: up
+Mon Oct 26 11:12:51 2026 :: Log Alaric [3772]: arrived (Newbie Train Station) from 3700
+Mon Oct 26 11:12:52 2026 :: Log Alaric [3772]: up
+Mon Oct 26 11:12:52 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 3772
+Mon Oct 26 11:12:52 2026 :: Log Alaric [3795]: enter portal
+Mon Oct 26 11:12:52 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 3795
+Mon Oct 26 11:12:57 2026 :: Log Alaric [15000]: east
+Mon Oct 26 11:12:57 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15000
+Mon Oct 26 11:12:57 2026 :: Log Alaric [15001]: east
+Mon Oct 26 11:12:57 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15001
+Mon Oct 26 11:12:58 2026 :: Log Alaric [15002]: east
+Mon Oct 26 11:12:58 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15002
+Mon Oct 26 11:12:58 2026 :: Log Alaric [15003]: east
+Mon Oct 26 11:12:58 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15003
+Mon Oct 26 11:12:58 2026 :: Log Alaric [15004]: north
+Mon Oct 26 11:12:58 2026 :: Log Alaric [15010]: arrived (University Avenue) from 15004
+Mon Oct 26 11:12:58 2026 :: Log Alaric [15010]: east
+Mon Oct 26 11:12:58 2026 :: Log Alaric [15033]: arrived (Corry-Mack Building) from 15010
+Mon Oct 26 11:12:59 2026 :: Log Alaric [15033]: east
+Mon Oct 26 11:12:59 2026 :: Log Alaric [15174]: arrived (A Hallway) from 15033
+Mon Oct 26 11:13:00 2026 :: Log Alaric [15174]: u
+Mon Oct 26 11:13:00 2026 :: Log Alaric [15181]: arrived (A Classroom) from 15174
+Mon Oct 26 11:13:01 2026 :: Log Alaric [15181]: ex
+Mon Oct 26 11:13:03 2026 :: Log Alaric [15181]: w
+Mon Oct 26 11:13:03 2026 :: Log Alaric [15180]: arrived (A Classroom) from 15181
+Mon Oct 26 11:13:04 2026 :: Log Alaric [15180]: ex
+Mon Oct 26 11:13:05 2026 :: Log Alaric [15180]: e
+Mon Oct 26 11:13:05 2026 :: Log Alaric [15184]: arrived (Mob Chute A) from 15180
+Mon Oct 26 11:13:06 2026 :: Log Alaric [15184]: kill st
+Mon Oct 26 11:13:06 2026 :: Log Alaric [15184]: killed the student
+Mon Oct 26 11:13:10 2026 :: Log Alaric [15184]: kill st
+Mon Oct 26 11:13:10 2026 :: Log Alaric [15184]: killed the student
+Mon Oct 26 11:13:17 2026 :: Log Alaric [15184]: south
+Mon Oct 26 11:13:17 2026 :: Log Alaric [15004]: arrived (The Crossroads) from 15184
+Mon Oct 26 11:13:18 2026 :: Log Alaric [15004]: west
+Mon Oct 26 11:13:18 2026 :: Log Alaric [15003]: arrived (Campus Crescent) from 15004
+Mon Oct 26 11:13:18 2026 :: Log Alaric [15003]: west
+Mon Oct 26 11:13:18 2026 :: Log Alaric [15002]: arrived (Campus Crescent) from 15003
+Mon Oct 26 11:13:18 2026 :: Log Alaric [15002]: west
+Mon Oct 26 11:13:18 2026 :: Log Alaric [15001]: arrived (Campus Crescent) from 15002
+Mon Oct 26 11:13:20 2026 :: Log Alaric [15001]: w
+Mon Oct 26 11:13:20 2026 :: Log Alaric [15000]: arrived (The Eastern Campus Entrance) from 15001
+Mon Oct 26 11:13:21 2026 :: Log Alaric [15000]: en po
+Mon Oct 26 11:13:21 2026 :: Log Alaric [3795]: arrived (Strange Blending of Time) from 15000
+Mon Oct 26 11:13:22 2026 :: Log Alaric [3795]: recal
+Mon Oct 26 11:13:22 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 3795
+Mon Oct 26 11:13:23 2026 :: Log Alaric [2497]: aq co
+Mon Oct 26 11:13:23 2026 :: Log Alaric [2497]: copper +54080400
+Mon Oct 26 11:13:23 2026 :: Log Alaric [2497]: quest complete: 54p 8g 4s, 32 quest points (streak bonus 118%)
+Mon Oct 26 11:13:23 2026 :: Snapshot of Alaric taken before quest: Alaric.20261026_111323.quest (PRESTORE Alaric to see it).
+Mon Oct 26 11:13:25 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct 26 11:13:26 2026 :: Log Alaric [2497]: score
+Mon Oct 26 11:15:49 2026 :: Sock.sinaddr:  54.87.112.51
+Mon Oct 26 11:15:49 2026 :: EOF encountered on read.
