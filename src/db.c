@@ -2230,6 +2230,8 @@ void reset_area( AREA_DATA *pArea )
                 SET_BIT(mob->affected_by, AFF_INFRARED);
  
             char_to_room( mob, pRoomIndex );
+            /* A foe back in a Hyrule room owes its clearing reward again. */
+            hyrule_room_populated( pRoomIndex, mob );
             level = URANGE( 0, mob->level - 2, LEVEL_HERO2 - 1 );
             last  = true;
             break;

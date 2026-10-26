@@ -1018,6 +1018,14 @@ before anything else.
   table of `data/hyrule_mob_prose.json` into `HYRULE_NPC_FIRST`-`LAST`;
   `is_hyrule_bystander()` covers the range. Add a person there, not by
   reusing someone else's vnum.
+- **A cleared room's item is given once per reset** (review, 2026-10-26).
+  `raw_kill` reads `hyrule_foe(victim)` before extracting it and passes
+  it to `hyrule_room_cleared`; nothing else dying clears a room, and
+  `hyrule_reward_issued[]` holds each `hyrule_clear_rewards` row given
+  until `reset_area` puts a foe back in its room
+  (`hyrule_room_populated`, from the `M` reset). Before, any mobile's
+  death in a cleared room laid the item again once it had been picked
+  up (`tests/test_hyrule_clear_reward_once.py`).
 - **Tables mirrored in C** -- the money caves' rooms and sums, the claims,
   the guardians for the drop tables, the potion shop rooms -- are held to
   the generator by `tests/test_hyrule_progression.py`,

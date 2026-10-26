@@ -3507,11 +3507,14 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
 	    ch->pcdata->session_kills++;
 	achievement_record_kill(ch, victim);
 	{
-	  /* The last foe of a Hyrule room: its hidden items appear. */
+	  /* The last foe of a Hyrule room: its hidden items appear. Whether
+	     this was a foe is read now; the mobile is gone after extraction,
+	     and any other death must not clear the room again. */
 	  ROOM_INDEX_DATA *death_room = victim->in_room;
+	  bool foe_died = hyrule_foe( victim );
 
 	  extract_char( victim, true );
-	  hyrule_room_cleared( death_room );
+	  hyrule_room_cleared( death_room, foe_died );
 	}
 	return;
     }

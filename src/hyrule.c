@@ -686,8 +686,14 @@ void hyrule_enter_room( CHAR_DATA *ch )
  * data, or a Stalfos or Gibdo carrying the item -- and these rows are
  * those rooms (CLEAR_REWARDS in scripts/build_hyrule_area.py, which lays
  * none of them out; tests/test_hyrule_nes.py holds the two together).
- * Enemies only come back at a reset, so each clearing after one gives the
- * item again, unless it is still lying there.
+ *
+ * A room gives its item once for each time a reset fills it with enemies
+ * (review, 2026-10-26). raw_kill used to ask after every mobile's death
+ * whether any foe was left, so once the item had been picked up, any
+ * other death in the cleared room -- a mobile staff loaded, a pet --
+ * laid another. Now only the death of one of Hyrule's own foes can clear
+ * a room, and hyrule_reward_issued[] remembers the item was given until
+ * reset_area puts a foe back there (hyrule_room_populated).
  * ------------------------------------------------------------------ */
 static const struct
 {
@@ -728,10 +734,33 @@ static const struct
     { 30618, 30497 },   /* L9 F5 */
 };
 
-/* Called from raw_kill once a mobile is gone: if it was the last foe in a
-   Hyrule room (bubbles, blade traps and people never count), the room's
-   hidden items appear. */
-void hyrule_room_cleared( ROOM_INDEX_DATA *room )
+#define HYRULE_CLEAR_REWARD_COUNT \
+    ( sizeof(hyrule_clear_rewards) / sizeof(hyrule_clear_rewards[0]) )
+
+/* Given since the room was last filled by a reset. Memory only: a boot's
+   resets fill every room, which is exactly when the items are owed again. */
+static bool hyrule_reward_issued[HYRULE_CLEAR_REWARD_COUNT];
+
+/* Called by reset_area for each mobile it puts in a room: a foe back in a
+   reward room makes its item owed again. */
+void hyrule_room_populated( ROOM_INDEX_DATA *room, CHAR_DATA *mob )
+{
+    size_t i;
+
+    if ( room == NULL || mob == NULL || !IS_HYRULE_ROOM_VNUM( room->vnum )
+    ||   !hyrule_foe( mob ) )
+        return;
+    for ( i = 0; i < HYRULE_CLEAR_REWARD_COUNT; i++ )
+        if ( hyrule_clear_rewards[i].room == room->vnum )
+            hyrule_reward_issued[i] = false;
+}
+
+/* Called from raw_kill once a mobile is gone. foe_died says whether it was
+   one of Hyrule's foes, read before the mobile was extracted: nothing else
+   dying clears a room. If it was the last foe there (bubbles, blade traps
+   and people never count), the room's hidden items appear, once each until
+   a reset fills the room again. */
+void hyrule_room_cleared( ROOM_INDEX_DATA *room, bool foe_died )
 {
     OBJ_INDEX_DATA *index;
     OBJ_DATA *obj;
@@ -739,21 +768,24 @@ void hyrule_room_cleared( ROOM_INDEX_DATA *room )
     size_t i;
     bool here;
 
-    if ( room == NULL || !IS_HYRULE_ROOM_VNUM( room->vnum ) )
+    if ( !foe_died || room == NULL || !IS_HYRULE_ROOM_VNUM( room->vnum ) )
         return;
     for ( rch = room->people; rch != NULL; rch = rch->next_in_room )
         if ( hyrule_foe( rch ) )
             return;
 
-    for ( i = 0; i < sizeof(hyrule_clear_rewards) / sizeof(hyrule_clear_rewards[0]); i++ )
+    for ( i = 0; i < HYRULE_CLEAR_REWARD_COUNT; i++ )
     {
-        if ( hyrule_clear_rewards[i].room != room->vnum )
+        if ( hyrule_clear_rewards[i].room != room->vnum
+        ||   hyrule_reward_issued[i] )
             continue;
         here = false;
         for ( obj = room->contents; obj != NULL; obj = obj->next_content )
             if ( obj->pIndexData != NULL
             &&   obj->pIndexData->vnum == hyrule_clear_rewards[i].obj )
                 here = true;
+        /* Still lying there from before counts as this clearing's. */
+        hyrule_reward_issued[i] = true;
         if ( here || ( index = get_obj_index( hyrule_clear_rewards[i].obj ) ) == NULL )
             continue;
         obj = create_object( index, index->level );
