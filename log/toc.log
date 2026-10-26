@@ -201521,3 +201521,451 @@ Mon Oct 26 21:52:48 2026 :: Log Trentlin [29119]: l in co
 Mon Oct 26 21:52:51 2026 :: Log Trentlin [29119]: get armo co
 Mon Oct 26 21:52:54 2026 :: Log Trentlin [29119]: get mech co
 Mon Oct 26 21:52:55 2026 :: Log Trentlin [29119]: comp mech
+Mon Oct 26 21:53:04 2026 :: Log Trentlin [29119]: sco
+Mon Oct 26 21:53:06 2026 :: Log Trentlin [29119]: wear mech
+Mon Oct 26 21:53:07 2026 :: Log Trentlin [29119]: sco
+Mon Oct 26 21:53:09 2026 :: Log Trentlin [29119]: i
+Mon Oct 26 21:53:19 2026 :: Log Trentlin [29119]: stash put haub
+Mon Oct 26 21:53:19 2026 :: Log Trentlin [29119]: stashed a twin-dragon hauberk (vnum 30665)
+Mon Oct 26 21:53:20 2026 :: Log Trentlin [29119]: l
+Mon Oct 26 21:53:21 2026 :: Log Trentlin [29119]: sca
+Mon Oct 26 21:53:24 2026 :: Log Trentlin [29119]: nw
+Mon Oct 26 21:53:24 2026 :: Log Trentlin [29120]: arrived (Grassy Knoll) from 29119
+Mon Oct 26 21:53:34 2026 :: Log Trentlin [29120]: smite
+Mon Oct 26 21:53:43 2026 :: Log Trentlin [29120]: smite
+Mon Oct 26 21:53:43 2026 :: Log Trentlin [29120]: killed a Robot Mech
+Mon Oct 26 21:53:43 2026 :: Log Trentlin [29120]: coin +6 platinum
+Mon Oct 26 21:53:43 2026 :: Log Trentlin [29120]: coin +30 silver
+Mon Oct 26 21:53:43 2026 :: Log Trentlin [29120]: coin +41 copper
+Mon Oct 26 21:53:43 2026 :: Log Trentlin [29120]: coin +17 gold
+Mon Oct 26 21:53:43 2026 :: Trentlin's weapon was broken by a smite.
+Mon Oct 26 21:53:51 2026 :: Log Trentlin [29120]: se
+Mon Oct 26 21:53:51 2026 :: Log Trentlin [29119]: arrived (Grassy Field) from 29120
+Mon Oct 26 21:53:51 2026 :: Log Trentlin [29119]: l
+Mon Oct 26 21:53:54 2026 :: Log Trentlin [29119]: sw
+Mon Oct 26 21:53:54 2026 :: Log Trentlin [29118]: arrived (Grassy Plain) from 29119
+Mon Oct 26 21:53:58 2026 :: Log Trentlin [29118]: enter por
+Mon Oct 26 21:53:58 2026 :: Log Trentlin [29110]: arrived (Project Starlight) from 29118
+Mon Oct 26 21:53:59 2026 :: Log Trentlin [29110]: s
+Mon Oct 26 21:53:59 2026 :: Log Trentlin [29107]: arrived (Project Starlight) from 29110
+Mon Oct 26 21:53:59 2026 :: Log Trentlin [29107]: s
+Mon Oct 26 21:53:59 2026 :: Log Trentlin [29104]: arrived (Entrance to Project Starlight) from 29107
+Mon Oct 26 21:53:59 2026 :: Log Trentlin [29104]: s
+Mon Oct 26 21:53:59 2026 :: Log Trentlin [29103]: arrived (Checkpoint) from 29104
+Mon Oct 26 21:54:03 2026 :: Log Trentlin [29103]: reca
+Mon Oct 26 21:54:03 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 29103
+Mon Oct 26 21:54:05 2026 :: Log Trentlin [4207]: w
+Mon Oct 26 21:54:05 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Mon Oct 26 21:54:06 2026 :: Log Trentlin [4208]: heal all
+Mon Oct 26 21:54:06 2026 :: Spellup: Hermie gave Trentlin the full list (30 ticks) in room 4208.
+Mon Oct 26 21:54:07 2026 :: Log Trentlin [4208]: e
+Mon Oct 26 21:54:07 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4208
+Mon Oct 26 21:54:07 2026 :: Log Trentlin [4207]: e
+Mon Oct 26 21:54:07 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4207
+Mon Oct 26 21:54:07 2026 :: Log Trentlin [4202]: e
+Mon Oct 26 21:54:07 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Mon Oct 26 21:54:08 2026 :: Log Trentlin [4201]: e
+Mon Oct 26 21:54:08 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Mon Oct 26 21:54:08 2026 :: Log Trentlin [2427]: e
+Mon Oct 26 21:54:08 2026 :: Log Trentlin [2427]: e
+Mon Oct 26 21:54:08 2026 :: Log Trentlin [2427]: n
+Mon Oct 26 21:54:08 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2427
+Mon Oct 26 21:54:09 2026 :: Log Trentlin [2404]: n
+Mon Oct 26 21:54:09 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Mon Oct 26 21:54:09 2026 :: Log Trentlin [2401]: n
+Mon Oct 26 21:54:09 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2401
+Mon Oct 26 21:54:10 2026 :: Log Trentlin [2402]: n
+Mon Oct 26 21:54:10 2026 :: Log Trentlin [2415]: arrived (Main Processional, Strung with Lanterns) from 2402
+Mon Oct 26 21:54:10 2026 :: Log Trentlin [2415]: e
+Mon Oct 26 21:54:10 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2415
+Mon Oct 26 21:54:11 2026 :: Log Trentlin [2485]: s
+Mon Oct 26 21:54:11 2026 :: Log Trentlin [2494]: arrived (Weapons Shop.) from 2485
+Mon Oct 26 21:54:12 2026 :: Log Trentlin [2494]: repair reap
+Mon Oct 26 21:54:12 2026 :: Log Trentlin [2494]: copper -56100602
+Mon Oct 26 21:54:13 2026 :: Log Trentlin [2494]: wear reap
+Mon Oct 26 21:54:14 2026 :: Log Trentlin [2494]: n
+Mon Oct 26 21:54:14 2026 :: Log Trentlin [2485]: arrived (Market Plaza.) from 2494
+Mon Oct 26 21:54:14 2026 :: Log Trentlin [2485]: w
+Mon Oct 26 21:54:14 2026 :: Log Trentlin [2415]: arrived (Main Processional, Strung with Lanterns) from 2485
+Mon Oct 26 21:54:15 2026 :: Log Trentlin [2415]: s
+Mon Oct 26 21:54:15 2026 :: Log Trentlin [2402]: arrived (Northern Oak Tree Square.) from 2415
+Mon Oct 26 21:54:15 2026 :: Log Trentlin [2402]: s
+Mon Oct 26 21:54:15 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2402
+Mon Oct 26 21:54:16 2026 :: Log Trentlin [2401]: u
+Mon Oct 26 21:54:16 2026 :: Log Trentlin [2410]: arrived (Climbing the Oak Tree...) from 2401
+Mon Oct 26 21:54:16 2026 :: Log Trentlin [2410]: u
+Mon Oct 26 21:54:16 2026 :: Log Trentlin [2411]: arrived (Up in the Oak Tree.) from 2410
+Mon Oct 26 21:54:17 2026 :: Log Trentlin [2411]: u
+Mon Oct 26 21:54:17 2026 :: Log Trentlin [2414]: arrived (Top of the oak tree.) from 2411
+Mon Oct 26 21:54:18 2026 :: Log Trentlin [2414]: aquest reque
+Mon Oct 26 21:54:19 2026 :: Log Trentlin [2414]: u
+Mon Oct 26 21:54:19 2026 :: Log Trentlin [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Mon Oct 26 21:54:20 2026 :: Log Trentlin [2497]: aquest reque
+Mon Oct 26 21:54:20 2026 :: Log Trentlin [2497]: quest assigned: kill the FREC (mob 15022, level 19) in campus.are, 30 minutes, ordinary
+Mon Oct 26 21:54:24 2026 :: Log Trentlin [2497]: enter door
+Mon Oct 26 21:54:24 2026 :: Log Trentlin [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 21:54:26 2026 :: Log Trentlin [2401]: south
+Mon Oct 26 21:54:26 2026 :: Log Trentlin [2404]: arrived (Southern Oak Tree Square.) from 2401
+Mon Oct 26 21:54:26 2026 :: Log Trentlin [2404]: south
+Mon Oct 26 21:54:26 2026 :: Log Trentlin [2427]: arrived (Main Processional, Below the Temple Steps) from 2404
+Mon Oct 26 21:54:26 2026 :: Log Trentlin [2427]: west
+Mon Oct 26 21:54:26 2026 :: Log Trentlin [4201]: arrived (Entrance to the Haunted Temple) from 2427
+Mon Oct 26 21:54:26 2026 :: Log Trentlin [4201]: west
+Mon Oct 26 21:54:26 2026 :: Log Trentlin [4202]: arrived (The Hall of Whispers) from 4201
+Mon Oct 26 21:54:27 2026 :: Log Trentlin [4202]: west
+Mon Oct 26 21:54:27 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4202
+Mon Oct 26 21:54:27 2026 :: Log Trentlin [4207]: up
+Mon Oct 26 21:54:27 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Mon Oct 26 21:54:27 2026 :: Log Trentlin [3700]: up
+Mon Oct 26 21:54:27 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Mon Oct 26 21:54:27 2026 :: Log Trentlin [3772]: up
+Mon Oct 26 21:54:27 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Mon Oct 26 21:54:28 2026 :: Log Trentlin [3795]: enter portal
+Mon Oct 26 21:54:28 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Mon Oct 26 21:54:31 2026 :: Log Trentlin [15000]: e
+Mon Oct 26 21:54:31 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Mon Oct 26 21:54:32 2026 :: Log Trentlin [15001]: e
+Mon Oct 26 21:54:32 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Mon Oct 26 21:54:33 2026 :: Log Trentlin [15002]: ex
+Mon Oct 26 21:54:34 2026 :: Log Trentlin [15002]: n
+Mon Oct 26 21:54:34 2026 :: Log Trentlin [15025]: arrived (Victoria Hall) from 15002
+Mon Oct 26 21:54:36 2026 :: Log Trentlin [15025]: s
+Mon Oct 26 21:54:36 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15025
+Mon Oct 26 21:54:37 2026 :: Log Trentlin [15002]: e
+Mon Oct 26 21:54:37 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Mon Oct 26 21:54:37 2026 :: Log Trentlin [15003]: w
+Mon Oct 26 21:54:37 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15003
+Mon Oct 26 21:54:38 2026 :: Log Trentlin [15002]: s
+Mon Oct 26 21:54:38 2026 :: Log Trentlin [15026]: arrived (Leonard Hall Lobby) from 15002
+Mon Oct 26 21:54:39 2026 :: Log Trentlin [15026]: w
+Mon Oct 26 21:54:39 2026 :: Log Trentlin [15195]: arrived (West Stairwell) from 15026
+Mon Oct 26 21:54:40 2026 :: Log Trentlin [15195]: u
+Mon Oct 26 21:54:40 2026 :: Log Trentlin [15212]: arrived (Hallway Junction) from 15195
+Mon Oct 26 21:54:42 2026 :: Log Trentlin [15212]: s
+Mon Oct 26 21:54:42 2026 :: Log Trentlin [15219]: arrived (Common Room) from 15212
+Mon Oct 26 21:54:44 2026 :: Log Trentlin [15219]: n
+Mon Oct 26 21:54:44 2026 :: Log Trentlin [15212]: arrived (Hallway Junction) from 15219
+Mon Oct 26 21:54:44 2026 :: Log Trentlin [15212]: n
+Mon Oct 26 21:54:44 2026 :: Log Trentlin [15213]: arrived (Hallway) from 15212
+Mon Oct 26 21:54:46 2026 :: Log Trentlin [15213]: w
+Mon Oct 26 21:54:46 2026 :: Log Trentlin [15215]: arrived (Hallway) from 15213
+Mon Oct 26 21:54:48 2026 :: Log Trentlin [15215]: sca
+Mon Oct 26 21:54:50 2026 :: Log Trentlin [15215]: w
+Mon Oct 26 21:54:50 2026 :: Log Trentlin [15217]: arrived (C.S.E.) from 15215
+Mon Oct 26 21:54:50 2026 :: Log Trentlin [15217]: sca
+Mon Oct 26 21:54:51 2026 :: Log Trentlin [15217]: e
+Mon Oct 26 21:54:51 2026 :: Log Trentlin [15215]: arrived (Hallway) from 15217
+Mon Oct 26 21:54:51 2026 :: Log Trentlin [15215]: s
+Mon Oct 26 21:54:51 2026 :: Log Trentlin [15218]: arrived (Lennon's Shrine) from 15215
+Mon Oct 26 21:54:52 2026 :: Log Trentlin [15218]: n
+Mon Oct 26 21:54:52 2026 :: Log Trentlin [15215]: arrived (Hallway) from 15218
+Mon Oct 26 21:54:52 2026 :: Log Trentlin [15215]: n
+Mon Oct 26 21:54:52 2026 :: Log Trentlin [15216]: arrived (Bubble Land) from 15215
+Mon Oct 26 21:54:53 2026 :: Log Trentlin [15216]: s
+Mon Oct 26 21:54:53 2026 :: Log Trentlin [15215]: arrived (Hallway) from 15216
+Mon Oct 26 21:54:54 2026 :: Log Trentlin [15215]: l b
+Mon Oct 26 21:54:55 2026 :: Log Trentlin [15215]: e
+Mon Oct 26 21:54:55 2026 :: Log Trentlin [15213]: arrived (Hallway) from 15215
+Mon Oct 26 21:54:55 2026 :: Log Trentlin [15213]: e
+Mon Oct 26 21:54:56 2026 :: Log Trentlin [15213]: n
+Mon Oct 26 21:54:56 2026 :: Log Trentlin [15214]: arrived (The V.P.'s Room) from 15213
+Mon Oct 26 21:54:57 2026 :: Log Trentlin [15214]: s
+Mon Oct 26 21:54:57 2026 :: Log Trentlin [15213]: arrived (Hallway) from 15214
+Mon Oct 26 21:54:57 2026 :: Log Trentlin [15213]: s
+Mon Oct 26 21:54:57 2026 :: Log Trentlin [15212]: arrived (Hallway Junction) from 15213
+Mon Oct 26 21:54:58 2026 :: Log Trentlin [15212]: d
+Mon Oct 26 21:54:58 2026 :: Log Trentlin [15195]: arrived (West Stairwell) from 15212
+Mon Oct 26 21:54:59 2026 :: Log Trentlin [15195]: e
+Mon Oct 26 21:54:59 2026 :: Log Trentlin [15026]: arrived (Leonard Hall Lobby) from 15195
+Mon Oct 26 21:54:59 2026 :: Log Trentlin [15026]: n
+Mon Oct 26 21:54:59 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15026
+Mon Oct 26 21:55:00 2026 :: Log Trentlin [15002]: s
+Mon Oct 26 21:55:00 2026 :: Log Trentlin [15026]: arrived (Leonard Hall Lobby) from 15002
+Mon Oct 26 21:55:00 2026 :: Log Trentlin [15026]: e
+Mon Oct 26 21:55:00 2026 :: Log Trentlin [15194]: arrived (East Stairwell) from 15026
+Mon Oct 26 21:55:01 2026 :: Log Trentlin [15194]: e
+Mon Oct 26 21:55:02 2026 :: Log Trentlin [15194]: u
+Mon Oct 26 21:55:02 2026 :: Log Trentlin [15196]: arrived (Junction) from 15194
+Mon Oct 26 21:55:03 2026 :: Log Trentlin [15196]: e
+Mon Oct 26 21:55:04 2026 :: Log Trentlin [15196]: s
+Mon Oct 26 21:55:04 2026 :: Log Trentlin [15202]: arrived (Hallway) from 15196
+Mon Oct 26 21:55:05 2026 :: Log Trentlin [15202]: e
+Mon Oct 26 21:55:05 2026 :: Log Trentlin [15206]: arrived (Really Narrow Stairwell, Part I) from 15202
+Mon Oct 26 21:55:07 2026 :: Log Trentlin [15206]: u
+Mon Oct 26 21:55:07 2026 :: Log Trentlin [15207]: arrived (Really Narrow Stairwell, Part II) from 15206
+Mon Oct 26 21:55:08 2026 :: Log Trentlin [15207]: w
+Mon Oct 26 21:55:08 2026 :: Log Trentlin [15208]: arrived (Entry Hall) from 15207
+Mon Oct 26 21:55:09 2026 :: Log Trentlin [15208]: w
+Mon Oct 26 21:55:09 2026 :: Log Trentlin [15209]: arrived (Living Room) from 15208
+Mon Oct 26 21:55:10 2026 :: Log Trentlin [15209]: s
+Mon Oct 26 21:55:10 2026 :: Log Trentlin [15210]: arrived (Bedroom) from 15209
+Mon Oct 26 21:55:11 2026 :: Log Trentlin [15210]: e
+Mon Oct 26 21:55:11 2026 :: Log Trentlin [15211]: arrived (Balcony) from 15210
+Mon Oct 26 21:55:13 2026 :: Log Trentlin [15211]: con mas
+Mon Oct 26 21:55:14 2026 :: Log Trentlin [15211]: l mas
+Mon Oct 26 21:55:18 2026 :: Log Trentlin [15211]: s
+Mon Oct 26 21:55:18 2026 :: Log Trentlin [15204]: arrived (Ledge) from 15211
+Mon Oct 26 21:55:19 2026 :: Log Trentlin [15204]: d
+Mon Oct 26 21:55:19 2026 :: Log Trentlin [15205]: arrived (A Really Bad, Evil, And Nasty Deathtrap) from 15204
+Mon Oct 26 21:55:21 2026 :: Log Trentlin [15205]: u
+Mon Oct 26 21:55:21 2026 :: Log Trentlin [15204]: arrived (Ledge) from 15205
+Mon Oct 26 21:55:22 2026 :: Log Trentlin [15204]: n
+Mon Oct 26 21:55:22 2026 :: Log Trentlin [15211]: arrived (Balcony) from 15204
+Mon Oct 26 21:55:22 2026 :: Log Trentlin [15211]: w
+Mon Oct 26 21:55:22 2026 :: Log Trentlin [15210]: arrived (Bedroom) from 15211
+Mon Oct 26 21:55:23 2026 :: Log Trentlin [15210]: n
+Mon Oct 26 21:55:23 2026 :: Log Trentlin [15209]: arrived (Living Room) from 15210
+Mon Oct 26 21:55:24 2026 :: Log Trentlin [15209]: e
+Mon Oct 26 21:55:24 2026 :: Log Trentlin [15208]: arrived (Entry Hall) from 15209
+Mon Oct 26 21:55:25 2026 :: Log Trentlin [15208]: e
+Mon Oct 26 21:55:25 2026 :: Log Trentlin [15207]: arrived (Really Narrow Stairwell, Part II) from 15208
+Mon Oct 26 21:55:26 2026 :: Log Trentlin [15207]: d
+Mon Oct 26 21:55:26 2026 :: Log Trentlin [15206]: arrived (Really Narrow Stairwell, Part I) from 15207
+Mon Oct 26 21:55:27 2026 :: Log Trentlin [15206]: w
+Mon Oct 26 21:55:27 2026 :: Log Trentlin [15202]: arrived (Hallway) from 15206
+Mon Oct 26 21:55:28 2026 :: Log Trentlin [15202]: n
+Mon Oct 26 21:55:28 2026 :: Log Trentlin [15196]: arrived (Junction) from 15202
+Mon Oct 26 21:55:29 2026 :: Log Trentlin [15196]: n
+Mon Oct 26 21:55:29 2026 :: Log Trentlin [15197]: arrived (Hallway) from 15196
+Mon Oct 26 21:55:30 2026 :: Log Trentlin [15197]: e
+Mon Oct 26 21:55:30 2026 :: Log Trentlin [15199]: arrived (Hallway) from 15197
+Mon Oct 26 21:55:31 2026 :: Log Trentlin [15199]: e
+Mon Oct 26 21:55:31 2026 :: Log Trentlin [15201]: arrived (The Animal Cage) from 15199
+Mon Oct 26 21:55:32 2026 :: Log Trentlin [15201]: w
+Mon Oct 26 21:55:32 2026 :: Log Trentlin [15199]: arrived (Hallway) from 15201
+Mon Oct 26 21:55:33 2026 :: Log Trentlin [15199]: n
+Mon Oct 26 21:55:33 2026 :: Log Trentlin [15200]: arrived (Dorm Room) from 15199
+Mon Oct 26 21:55:34 2026 :: Log Trentlin [15200]: s
+Mon Oct 26 21:55:34 2026 :: Log Trentlin [15199]: arrived (Hallway) from 15200
+Mon Oct 26 21:55:34 2026 :: Log Trentlin [15199]: w
+Mon Oct 26 21:55:34 2026 :: Log Trentlin [15197]: arrived (Hallway) from 15199
+Mon Oct 26 21:55:34 2026 :: Log Trentlin [15197]: n
+Mon Oct 26 21:55:34 2026 :: Log Trentlin [15198]: arrived (Dorm Room) from 15197
+Mon Oct 26 21:55:35 2026 :: Log Trentlin [15198]: s
+Mon Oct 26 21:55:35 2026 :: Log Trentlin [15197]: arrived (Hallway) from 15198
+Mon Oct 26 21:55:35 2026 :: Log Trentlin [15197]: s
+Mon Oct 26 21:55:35 2026 :: Log Trentlin [15196]: arrived (Junction) from 15197
+Mon Oct 26 21:55:36 2026 :: Log Trentlin [15196]: d
+Mon Oct 26 21:55:36 2026 :: Log Trentlin [15194]: arrived (East Stairwell) from 15196
+Mon Oct 26 21:55:36 2026 :: Sock.sinaddr:  5.161.117.52
+Mon Oct 26 21:55:36 2026 :: EOF encountered on read.
+Mon Oct 26 21:55:37 2026 :: Log Trentlin [15194]: w
+Mon Oct 26 21:55:37 2026 :: Log Trentlin [15026]: arrived (Leonard Hall Lobby) from 15194
+Mon Oct 26 21:55:37 2026 :: Log Trentlin [15026]: n
+Mon Oct 26 21:55:37 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15026
+Mon Oct 26 21:55:38 2026 :: Log Trentlin [15002]: e
+Mon Oct 26 21:55:38 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Mon Oct 26 21:55:39 2026 :: Log Trentlin [15003]: e
+Mon Oct 26 21:55:39 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Mon Oct 26 21:55:44 2026 :: Log Trentlin [15004]: s
+Mon Oct 26 21:55:44 2026 :: Log Trentlin [15008]: arrived (University Avenue) from 15004
+Mon Oct 26 21:55:46 2026 :: Log Trentlin [15008]: ex
+Mon Oct 26 21:55:48 2026 :: Log Trentlin [15008]: s
+Mon Oct 26 21:55:48 2026 :: Log Trentlin [15009]: arrived (University Avenue) from 15008
+Mon Oct 26 21:55:50 2026 :: Log Trentlin [15009]: w
+Mon Oct 26 21:55:50 2026 :: Log Trentlin [15029]: arrived (Morris House) from 15009
+Mon Oct 26 21:55:50 2026 :: Log Trentlin [15029]: w
+Mon Oct 26 21:55:50 2026 :: Log Trentlin [15230]: arrived (Hallway) from 15029
+Mon Oct 26 21:55:52 2026 :: Log Trentlin [15230]: w
+Mon Oct 26 21:55:52 2026 :: Log Trentlin [15231]: arrived (Abattoir) from 15230
+Mon Oct 26 21:55:53 2026 :: Log Trentlin [4208]: arrived (The Shrouded Altar of Devota) from 15231
+Mon Oct 26 21:55:54 2026 :: Log Trentlin [4208]: e
+Mon Oct 26 21:55:54 2026 :: Log Trentlin [4207]: arrived (Before the Shrouded Altar) from 4208
+Mon Oct 26 21:55:57 2026 :: Log Trentlin [4207]: eq
+Mon Oct 26 21:56:01 2026 :: Log Trentlin [4207]: up
+Mon Oct 26 21:56:01 2026 :: Log Trentlin [3700]: arrived (Entrance to Mud School) from 4207
+Mon Oct 26 21:56:01 2026 :: Log Trentlin [3700]: up
+Mon Oct 26 21:56:01 2026 :: Log Trentlin [3772]: arrived (Newbie Train Station) from 3700
+Mon Oct 26 21:56:02 2026 :: Log Trentlin [3772]: up
+Mon Oct 26 21:56:02 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 3772
+Mon Oct 26 21:56:02 2026 :: Log Trentlin [3795]: enter portal
+Mon Oct 26 21:56:02 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Mon Oct 26 21:56:05 2026 :: Log Trentlin [15000]: enter por
+Mon Oct 26 21:56:05 2026 :: Log Trentlin [3795]: arrived (Strange Blending of Time) from 15000
+Mon Oct 26 21:56:06 2026 :: Log Trentlin [3795]: enter por
+Mon Oct 26 21:56:06 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 3795
+Mon Oct 26 21:56:07 2026 :: Log Trentlin [15000]: e
+Mon Oct 26 21:56:07 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15000
+Mon Oct 26 21:56:08 2026 :: Log Trentlin [15001]: e
+Mon Oct 26 21:56:08 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15001
+Mon Oct 26 21:56:08 2026 :: Log Trentlin [15002]: e
+Mon Oct 26 21:56:08 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15002
+Mon Oct 26 21:56:09 2026 :: Log Trentlin [15003]: e
+Mon Oct 26 21:56:09 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15003
+Mon Oct 26 21:56:15 2026 :: Log Trentlin [15004]: e
+Mon Oct 26 21:56:15 2026 :: Log Trentlin [15005]: arrived (Campus Crescent) from 15004
+Mon Oct 26 21:56:18 2026 :: Log Trentlin [15005]: ex
+Mon Oct 26 21:56:20 2026 :: Log Trentlin [15005]: e
+Mon Oct 26 21:56:20 2026 :: Log Trentlin [15006]: arrived (Campus Crescent) from 15005
+Mon Oct 26 21:56:21 2026 :: Log Trentlin [15006]: ex
+Mon Oct 26 21:56:24 2026 :: Log Trentlin [15006]: e
+Mon Oct 26 21:56:24 2026 :: Log Trentlin [15007]: arrived (Division Road) from 15006
+Mon Oct 26 21:56:25 2026 :: Log Trentlin [15007]: ex
+Mon Oct 26 21:56:26 2026 :: Log Trentlin [15007]: s
+Mon Oct 26 21:56:26 2026 :: Log Trentlin [15019]: arrived (Division Road) from 15007
+Mon Oct 26 21:56:26 2026 :: Log Trentlin [15019]: ex
+Mon Oct 26 21:56:27 2026 :: Log Trentlin [15019]: s
+Mon Oct 26 21:56:27 2026 :: Log Trentlin [15020]: arrived (Division Road) from 15019
+Mon Oct 26 21:56:27 2026 :: Log Trentlin [15020]: ex
+Mon Oct 26 21:56:31 2026 :: Log Trentlin [15020]: s
+Mon Oct 26 21:56:31 2026 :: Log Trentlin [15021]: arrived (Division Road) from 15020
+Mon Oct 26 21:56:31 2026 :: Log Trentlin [15021]: ex
+Mon Oct 26 21:56:33 2026 :: Log Trentlin [15021]: e
+Mon Oct 26 21:56:33 2026 :: Log Trentlin [15042]: arrived (Wally World Reception Area) from 15021
+Mon Oct 26 21:56:33 2026 :: Log Trentlin [15042]: ex
+Mon Oct 26 21:56:35 2026 :: Log Trentlin [15042]: w
+Mon Oct 26 21:56:35 2026 :: Log Trentlin [15021]: arrived (Division Road) from 15042
+Mon Oct 26 21:56:35 2026 :: Log Trentlin [15021]: n
+Mon Oct 26 21:56:35 2026 :: Log Trentlin [15020]: arrived (Division Road) from 15021
+Mon Oct 26 21:56:35 2026 :: Log Trentlin [15020]: n
+Mon Oct 26 21:56:35 2026 :: Log Trentlin [15019]: arrived (Division Road) from 15020
+Mon Oct 26 21:56:36 2026 :: Log Trentlin [15019]: n
+Mon Oct 26 21:56:36 2026 :: Log Trentlin [15007]: arrived (Division Road) from 15019
+Mon Oct 26 21:56:36 2026 :: Log Trentlin [15007]: n
+Mon Oct 26 21:56:36 2026 :: Log Trentlin [15018]: arrived (Division Road) from 15007
+Mon Oct 26 21:56:37 2026 :: Log Trentlin [15018]: ex
+Mon Oct 26 21:56:38 2026 :: Log Trentlin [15018]: n
+Mon Oct 26 21:56:38 2026 :: Log Trentlin [15017]: arrived (Division Road) from 15018
+Mon Oct 26 21:56:38 2026 :: Log Trentlin [15017]: ex
+Mon Oct 26 21:56:39 2026 :: Log Trentlin [15017]: n
+Mon Oct 26 21:56:39 2026 :: Log Trentlin [15016]: arrived (Division Road) from 15017
+Mon Oct 26 21:56:39 2026 :: Log Trentlin [15016]: ex
+Mon Oct 26 21:56:42 2026 :: Log Trentlin [15016]: w
+Mon Oct 26 21:56:42 2026 :: Log Trentlin [15015]: arrived (Union Street) from 15016
+Mon Oct 26 21:56:43 2026 :: Log Trentlin [15015]: ex
+Mon Oct 26 21:56:46 2026 :: Log Trentlin [15015]: w
+Mon Oct 26 21:56:46 2026 :: Log Trentlin [15014]: arrived (Union Street) from 15015
+Mon Oct 26 21:56:46 2026 :: Log Trentlin [15014]: ex
+Mon Oct 26 21:56:48 2026 :: Log Trentlin [15014]: n
+Mon Oct 26 21:56:48 2026 :: Log Trentlin [15037]: arrived (The Central Annex) from 15014
+Mon Oct 26 21:56:49 2026 :: Log Trentlin [15037]: ex
+Mon Oct 26 21:56:51 2026 :: Log Trentlin [15037]: n
+Mon Oct 26 21:56:51 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15037
+Mon Oct 26 21:56:53 2026 :: Log Trentlin [15038]: n
+Mon Oct 26 21:56:53 2026 :: Log Trentlin [15070]: arrived (The Post Office) from 15038
+Mon Oct 26 21:56:54 2026 :: Log Trentlin [15070]: s
+Mon Oct 26 21:56:54 2026 :: Log Trentlin [15038]: arrived (The Back Hall) from 15070
+Mon Oct 26 21:56:55 2026 :: Log Trentlin [15038]: w
+Mon Oct 26 21:56:55 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15038
+Mon Oct 26 21:56:56 2026 :: Log Trentlin [15013]: ex
+Mon Oct 26 21:56:58 2026 :: Log Trentlin [15013]: n
+Mon Oct 26 21:56:58 2026 :: Log Trentlin [15024]: arrived (The Ghetto) from 15013
+Mon Oct 26 21:56:58 2026 :: Log Trentlin [15024]: n
+Mon Oct 26 21:56:58 2026 :: Log Trentlin [15150]: arrived (The Ghetto) from 15024
+Mon Oct 26 21:56:59 2026 :: Log Trentlin [15150]: ex
+Mon Oct 26 21:57:03 2026 :: Log Trentlin [15150]: n
+Mon Oct 26 21:57:03 2026 :: Log Trentlin [15149]: arrived (The Ghetto) from 15150
+Mon Oct 26 21:57:04 2026 :: Log Trentlin [15149]: ex
+Mon Oct 26 21:57:05 2026 :: Log Trentlin [15149]: e
+Mon Oct 26 21:57:05 2026 :: Log Trentlin [15152]: arrived (Frec House) from 15149
+Mon Oct 26 21:57:10 2026 :: Log Trentlin [15152]: where frec
+Mon Oct 26 21:57:13 2026 :: Log Trentlin [15152]: w
+Mon Oct 26 21:57:13 2026 :: Log Trentlin [15149]: arrived (The Ghetto) from 15152
+Mon Oct 26 21:57:14 2026 :: Log Trentlin [15149]: w
+Mon Oct 26 21:57:14 2026 :: Log Trentlin [15153]: arrived (Boss House) from 15149
+Mon Oct 26 21:57:15 2026 :: Log Trentlin [15153]: e
+Mon Oct 26 21:57:15 2026 :: Log Trentlin [15149]: arrived (The Ghetto) from 15153
+Mon Oct 26 21:57:16 2026 :: Log Trentlin [15149]: n
+Mon Oct 26 21:57:16 2026 :: Log Trentlin [15148]: arrived (The Ghetto) from 15149
+Mon Oct 26 21:57:19 2026 :: Log Trentlin [15148]: e
+Mon Oct 26 21:57:19 2026 :: Log Trentlin [15151]: arrived (The A & Z Supermarket) from 15148
+Mon Oct 26 21:57:21 2026 :: Log Trentlin [15151]: w
+Mon Oct 26 21:57:21 2026 :: Log Trentlin [15148]: arrived (The Ghetto) from 15151
+Mon Oct 26 21:57:21 2026 :: Log Trentlin [15148]: n
+Mon Oct 26 21:57:21 2026 :: Log Trentlin [15147]: arrived (The Ghetto) from 15148
+Mon Oct 26 21:57:23 2026 :: Log Trentlin [15147]: n
+Mon Oct 26 21:57:23 2026 :: Log Trentlin [15141]: arrived (The Ghetto Intersection) from 15147
+Mon Oct 26 21:57:25 2026 :: Log Trentlin [15141]: sca
+Mon Oct 26 21:57:26 2026 :: Log Trentlin [15141]: e
+Mon Oct 26 21:57:26 2026 :: Log Trentlin [15142]: arrived (The Ghetto) from 15141
+Mon Oct 26 21:57:27 2026 :: Log Trentlin [15142]: e
+Mon Oct 26 21:57:27 2026 :: Log Trentlin [15143]: arrived (The Ghetto) from 15142
+Mon Oct 26 21:57:28 2026 :: Log Trentlin [15143]: e
+Mon Oct 26 21:57:28 2026 :: Log Trentlin [15144]: arrived (Gael House) from 15143
+Mon Oct 26 21:57:29 2026 :: Log Trentlin [15144]: ex
+Mon Oct 26 21:57:30 2026 :: Log Trentlin [15144]: w
+Mon Oct 26 21:57:30 2026 :: Log Trentlin [15143]: arrived (The Ghetto) from 15144
+Mon Oct 26 21:57:30 2026 :: Log Trentlin [15143]: ex
+Mon Oct 26 21:57:32 2026 :: Log Trentlin [15143]: s
+Mon Oct 26 21:57:32 2026 :: Log Trentlin [15145]: arrived (Gael House) from 15143
+Mon Oct 26 21:57:33 2026 :: Log Trentlin [15145]: n
+Mon Oct 26 21:57:33 2026 :: Log Trentlin [15143]: arrived (The Ghetto) from 15145
+Mon Oct 26 21:57:33 2026 :: Log Trentlin [15143]: w
+Mon Oct 26 21:57:33 2026 :: Log Trentlin [15142]: arrived (The Ghetto) from 15143
+Mon Oct 26 21:57:34 2026 :: Log Trentlin [15142]: n
+Mon Oct 26 21:57:34 2026 :: Log Trentlin [15146]: arrived (Boss House) from 15142
+Mon Oct 26 21:57:35 2026 :: Log Trentlin [15146]: s
+Mon Oct 26 21:57:35 2026 :: Log Trentlin [15142]: arrived (The Ghetto) from 15146
+Mon Oct 26 21:57:36 2026 :: Log Trentlin [15142]: w
+Mon Oct 26 21:57:36 2026 :: Log Trentlin [15141]: arrived (The Ghetto Intersection) from 15142
+Mon Oct 26 21:57:36 2026 :: Log Trentlin [15141]: n
+Mon Oct 26 21:57:36 2026 :: Log Trentlin [15140]: arrived (The Ghetto) from 15141
+Mon Oct 26 21:57:37 2026 :: Log Trentlin [15140]: w
+Mon Oct 26 21:57:37 2026 :: Log Trentlin [15139]: arrived (Ghetto House) from 15140
+Mon Oct 26 21:57:38 2026 :: Log Trentlin [15139]: n
+Mon Oct 26 21:57:38 2026 :: Log Trentlin [15138]: arrived (Frec House) from 15139
+Mon Oct 26 21:57:40 2026 :: Log Trentlin [15138]: k fr
+Mon Oct 26 21:57:40 2026 :: Log Trentlin [15138]: killed the FREC
+Mon Oct 26 21:57:45 2026 :: Log Trentlin [15138]: reca
+Mon Oct 26 21:57:45 2026 :: Log Trentlin [15138]: reca
+Mon Oct 26 21:57:46 2026 :: Log Trentlin [15138]: s
+Mon Oct 26 21:57:46 2026 :: Log Trentlin [15139]: arrived (Ghetto House) from 15138
+Mon Oct 26 21:57:47 2026 :: Log Trentlin [15139]: e
+Mon Oct 26 21:57:47 2026 :: Log Trentlin [15140]: arrived (The Ghetto) from 15139
+Mon Oct 26 21:57:47 2026 :: Log Trentlin [15140]: s
+Mon Oct 26 21:57:47 2026 :: Log Trentlin [15141]: arrived (The Ghetto Intersection) from 15140
+Mon Oct 26 21:57:47 2026 :: Log Trentlin [15141]: s
+Mon Oct 26 21:57:47 2026 :: Log Trentlin [15147]: arrived (The Ghetto) from 15141
+Mon Oct 26 21:57:48 2026 :: Log Trentlin [15147]: s
+Mon Oct 26 21:57:48 2026 :: Log Trentlin [15148]: arrived (The Ghetto) from 15147
+Mon Oct 26 21:57:48 2026 :: Log Trentlin [15148]: s
+Mon Oct 26 21:57:48 2026 :: Log Trentlin [15149]: arrived (The Ghetto) from 15148
+Mon Oct 26 21:57:48 2026 :: Log Trentlin [15149]: s
+Mon Oct 26 21:57:48 2026 :: Log Trentlin [15150]: arrived (The Ghetto) from 15149
+Mon Oct 26 21:57:48 2026 :: Log Trentlin [15150]: s
+Mon Oct 26 21:57:48 2026 :: Log Trentlin [15024]: arrived (The Ghetto) from 15150
+Mon Oct 26 21:57:49 2026 :: Log Trentlin [15024]: s
+Mon Oct 26 21:57:49 2026 :: Log Trentlin [15013]: arrived (University Avenue) from 15024
+Mon Oct 26 21:57:49 2026 :: Log Trentlin [15013]: s
+Mon Oct 26 21:57:49 2026 :: Log Trentlin [15012]: arrived (University Avenue) from 15013
+Mon Oct 26 21:57:49 2026 :: Log Trentlin [15012]: s
+Mon Oct 26 21:57:49 2026 :: Log Trentlin [15011]: arrived (University Avenue) from 15012
+Mon Oct 26 21:57:49 2026 :: Log Trentlin [15011]: s
+Mon Oct 26 21:57:49 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15011
+Mon Oct 26 21:57:51 2026 :: Log Trentlin [15010]: w
+Mon Oct 26 21:57:51 2026 :: Log Trentlin [15032]: arrived (Entrance To Ellis Hall) from 15010
+Mon Oct 26 21:57:51 2026 :: Log Trentlin [15032]: w
+Mon Oct 26 21:57:51 2026 :: Log Trentlin [15074]: arrived (Ellis Hall Lobby) from 15032
+Mon Oct 26 21:57:51 2026 :: Log Trentlin [15074]: w
+Mon Oct 26 21:57:51 2026 :: Log Trentlin [15077]: arrived (Hallway) from 15074
+Mon Oct 26 21:57:51 2026 :: Log Trentlin [15077]: w
+Mon Oct 26 21:57:51 2026 :: Log Trentlin [15078]: arrived (The Back Exit) from 15077
+Mon Oct 26 21:57:52 2026 :: Log Trentlin [15078]: w
+Mon Oct 26 21:57:52 2026 :: Log Trentlin [15087]: arrived (Back Path) from 15078
+Mon Oct 26 21:57:52 2026 :: Log Trentlin [15087]: w
+Mon Oct 26 21:57:52 2026 :: Log Trentlin [15087]: w
+Mon Oct 26 21:57:53 2026 :: Log Trentlin [15087]: e
+Mon Oct 26 21:57:53 2026 :: Log Trentlin [15078]: arrived (The Back Exit) from 15087
+Mon Oct 26 21:57:53 2026 :: Log Trentlin [15078]: e
+Mon Oct 26 21:57:53 2026 :: Log Trentlin [15077]: arrived (Hallway) from 15078
+Mon Oct 26 21:57:54 2026 :: Log Trentlin [15077]: e
+Mon Oct 26 21:57:54 2026 :: Log Trentlin [15074]: arrived (Ellis Hall Lobby) from 15077
+Mon Oct 26 21:57:55 2026 :: Log Trentlin [15074]: s
+Mon Oct 26 21:57:56 2026 :: Log Trentlin [15074]: e
+Mon Oct 26 21:57:56 2026 :: Log Trentlin [15032]: arrived (Entrance To Ellis Hall) from 15074
+Mon Oct 26 21:57:56 2026 :: Log Trentlin [15032]: e
+Mon Oct 26 21:57:56 2026 :: Log Trentlin [15010]: arrived (University Avenue) from 15032
+Mon Oct 26 21:57:58 2026 :: Log Trentlin [15010]: s
+Mon Oct 26 21:57:58 2026 :: Log Trentlin [15004]: arrived (The Crossroads) from 15010
+Mon Oct 26 21:57:59 2026 :: Log Trentlin [15004]: w
+Mon Oct 26 21:57:59 2026 :: Log Trentlin [15003]: arrived (Campus Crescent) from 15004
+Mon Oct 26 21:57:59 2026 :: Log Trentlin [15003]: w
+Mon Oct 26 21:57:59 2026 :: Log Trentlin [15002]: arrived (Campus Crescent) from 15003
+Mon Oct 26 21:58:00 2026 :: Log Trentlin [15002]: w
+Mon Oct 26 21:58:00 2026 :: Log Trentlin [15001]: arrived (Campus Crescent) from 15002
+Mon Oct 26 21:58:00 2026 :: Log Trentlin [15001]: w
+Mon Oct 26 21:58:00 2026 :: Log Trentlin [15000]: arrived (The Eastern Campus Entrance) from 15001
+Mon Oct 26 21:58:00 2026 :: Log Trentlin [15000]: w
+Mon Oct 26 21:58:00 2026 :: Log Trentlin [15000]: w
+Mon Oct 26 21:58:01 2026 :: Log Trentlin [15000]: w
+Mon Oct 26 21:58:01 2026 :: Log Trentlin [15000]: w
