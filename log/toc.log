@@ -202421,3 +202421,107 @@ Mon Oct 26 22:22:27 2026 :: Log Alaric [2497]: quest complete: 216p 32g 16s, 124
 Mon Oct 26 22:22:27 2026 :: Snapshot of Alaric taken before quest: Alaric.20261026_222227.quest (PRESTORE Alaric to see it).
 Mon Oct 26 22:22:28 2026 :: Log Alaric [2497]: aq ga no
 Mon Oct 26 22:22:29 2026 :: Log Alaric [2497]: score
+Mon Oct 26 22:26:06 2026 :: Sock.sinaddr:  178.156.184.20
+Mon Oct 26 22:26:06 2026 :: EOF encountered on read.
+Mon Oct 26 22:27:10 2026 :: Log Alaric [2497]: aq time
+Mon Oct 26 22:27:11 2026 :: Log Alaric [2497]: wake
+Mon Oct 26 22:27:12 2026 :: Log Alaric [2497]: en do
+Mon Oct 26 22:27:12 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 22:27:13 2026 :: Log Alaric [2401]: jump rock
+Mon Oct 26 22:27:13 2026 :: Log Alaric [1607]: arrived (House of Pancakes) from 2401
+Mon Oct 26 22:27:13 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 1607
+Mon Oct 26 22:27:16 2026 :: Log Alaric [4208]: heal all
+Mon Oct 26 22:27:16 2026 :: Spellup: Hermie gave Alaric the full list (30 ticks) in room 4208.
+Mon Oct 26 22:27:16 2026 :: Black market: the dealer vanished from room 3803 (A Dim Hallway, ratslair.are) (wandering).
+Mon Oct 26 22:27:17 2026 :: Log Alaric [4208]: r e 4
+Mon Oct 26 22:27:17 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Mon Oct 26 22:27:17 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Mon Oct 26 22:27:17 2026 :: Log Alaric [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Mon Oct 26 22:27:17 2026 :: Log Alaric [2427]: arrived (Main Processional, Below the Temple Steps) from 4201
+Mon Oct 26 22:27:18 2026 :: Log Alaric [2427]: n
+Mon Oct 26 22:27:18 2026 :: Log Alaric [2404]: arrived (Southern Oak Tree Square.) from 2427
+Mon Oct 26 22:27:18 2026 :: Log Alaric [2404]: n
+Mon Oct 26 22:27:18 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2404
+Mon Oct 26 22:27:19 2026 :: Log Alaric [2401]: u
+Mon Oct 26 22:27:19 2026 :: Log Alaric [2410]: arrived (Climbing the Oak Tree...) from 2401
+Mon Oct 26 22:27:19 2026 :: Log Alaric [2410]: u
+Mon Oct 26 22:27:19 2026 :: Log Alaric [2411]: arrived (Up in the Oak Tree.) from 2410
+Mon Oct 26 22:27:19 2026 :: Log Alaric [2411]: u
+Mon Oct 26 22:27:19 2026 :: Log Alaric [2414]: arrived (Top of the oak tree.) from 2411
+Mon Oct 26 22:27:19 2026 :: Log Alaric [2414]: u
+Mon Oct 26 22:27:19 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 2414
+Mon Oct 26 22:27:21 2026 :: Log Alaric [2497]: aq re
+Mon Oct 26 22:27:21 2026 :: Log Alaric [2497]: quest assigned: recover The Journal of Trinidad (obj 25038) in canyon.are, 17 minutes, ordinary
+Mon Oct 26 22:27:26 2026 :: Log Alaric [2497]: enter door
+Mon Oct 26 22:27:26 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 22:27:27 2026 :: Log Alaric [2401]: west
+Mon Oct 26 22:27:27 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Mon Oct 26 22:27:27 2026 :: Log Alaric [2405]: west
+Mon Oct 26 22:27:27 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Mon Oct 26 22:27:27 2026 :: Log Alaric [2433]: west
+Mon Oct 26 22:27:27 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Mon Oct 26 22:27:27 2026 :: Log Alaric [2434]: west
+Mon Oct 26 22:27:27 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Mon Oct 26 22:27:28 2026 :: Log Alaric [2435]: west
+Mon Oct 26 22:27:28 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Mon Oct 26 22:27:28 2026 :: Log Alaric [2436]: west
+Mon Oct 26 22:27:28 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Mon Oct 26 22:27:28 2026 :: Log Alaric [2437]: west
+Mon Oct 26 22:27:28 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Mon Oct 26 22:27:28 2026 :: Log Alaric [2438]: open west
+Mon Oct 26 22:27:29 2026 :: Log Alaric [2438]: west
+Mon Oct 26 22:27:29 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Mon Oct 26 22:27:31 2026 :: Log Alaric [2439]: north
+Mon Oct 26 22:27:31 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Mon Oct 26 22:27:32 2026 :: Log Alaric [3900]: north
+Mon Oct 26 22:27:32 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Mon Oct 26 22:27:32 2026 :: Log Alaric [3901]: north
+Mon Oct 26 22:27:32 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Mon Oct 26 22:27:32 2026 :: Log Alaric [3902]: east
+Mon Oct 26 22:27:32 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Mon Oct 26 22:27:32 2026 :: Log Alaric [3903]: east
+Mon Oct 26 22:27:32 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Mon Oct 26 22:27:33 2026 :: Log Alaric [3904]: north
+Mon Oct 26 22:27:33 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Mon Oct 26 22:27:33 2026 :: Log Alaric [300]: north
+Mon Oct 26 22:27:33 2026 :: Log Alaric [315]: arrived (Gallow hill) from 300
+Mon Oct 26 22:27:33 2026 :: Log Alaric [315]: north
+Mon Oct 26 22:27:33 2026 :: Log Alaric [320]: arrived (Grassy plains) from 315
+Mon Oct 26 22:27:33 2026 :: Log Alaric [320]: north
+Mon Oct 26 22:27:33 2026 :: Log Alaric [322]: arrived (Grassy foothills) from 320
+Mon Oct 26 22:27:34 2026 :: Log Alaric [322]: north
+Mon Oct 26 22:27:34 2026 :: Log Alaric [324]: arrived (The steep foothills) from 322
+Mon Oct 26 22:27:34 2026 :: Log Alaric [324]: west
+Mon Oct 26 22:27:34 2026 :: Log Alaric [323]: arrived (The steep foothills) from 324
+Mon Oct 26 22:27:34 2026 :: Log Alaric [323]: west
+Mon Oct 26 22:27:34 2026 :: Log Alaric [24]: arrived (Crossing the Foothills) from 323
+Mon Oct 26 22:27:34 2026 :: Log Alaric [24]: northwest
+Mon Oct 26 22:27:34 2026 :: Log Alaric [25]: arrived (The Switchbacks) from 24
+Mon Oct 26 22:27:35 2026 :: Log Alaric [25]: north
+Mon Oct 26 22:27:35 2026 :: Log Alaric [9201]: arrived (A Mountain Path) from 25
+Mon Oct 26 22:27:36 2026 :: Log Alaric [9201]: u
+Mon Oct 26 22:27:36 2026 :: Log Alaric [9202]: arrived (A Mountain Path) from 9201
+Mon Oct 26 22:27:37 2026 :: Log Alaric [9202]: u
+Mon Oct 26 22:27:37 2026 :: Log Alaric [9203]: arrived (Mountainside Tombs) from 9202
+Mon Oct 26 22:27:37 2026 :: Log Alaric [9203]: u
+Mon Oct 26 22:27:37 2026 :: Log Alaric [9204]: arrived (A Blind Curve on the Mountain Path.) from 9203
+Mon Oct 26 22:27:38 2026 :: Log Alaric [9204]: n
+Mon Oct 26 22:27:40 2026 :: Log Alaric [9204]: u
+Mon Oct 26 22:27:40 2026 :: Log Alaric [9205]: arrived (Vista) from 9204
+Mon Oct 26 22:27:41 2026 :: Log Alaric [9205]: n
+Mon Oct 26 22:27:41 2026 :: Log Alaric [9206]: arrived (The Overlook) from 9205
+Mon Oct 26 22:27:42 2026 :: Log Alaric [9206]: d
+Mon Oct 26 22:27:42 2026 :: Log Alaric [9207]: arrived (Entrance to Elemental Canyon) from 9206
+Mon Oct 26 22:27:43 2026 :: Log Alaric [9207]: s
+Mon Oct 26 22:27:43 2026 :: Log Alaric [9261]: arrived (Lair of the Cyclops) from 9207
+Mon Oct 26 22:27:44 2026 :: Log Alaric [9261]: get all
+Mon Oct 26 22:27:45 2026 :: Log Alaric [9261]: recal
+Mon Oct 26 22:27:45 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 9261
+Mon Oct 26 22:27:47 2026 :: Log Alaric [2497]: aq co
+Mon Oct 26 22:27:47 2026 :: Log Alaric [2497]: copper +108160800
+Mon Oct 26 22:27:47 2026 :: Log Alaric [2497]: quest complete: 108p 16g 8s, 29 quest points (streak bonus 142%)
+Mon Oct 26 22:27:47 2026 :: Snapshot of Alaric taken before quest: Alaric.20261026_222747.quest (PRESTORE Alaric to see it).
+Mon Oct 26 22:27:50 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct 26 22:27:51 2026 :: Log Alaric [2497]: sc
+Mon Oct 26 22:27:53 2026 :: Log Alaric [2497]: who
+Mon Oct 26 22:27:54 2026 :: Log Alaric [2497]: i
