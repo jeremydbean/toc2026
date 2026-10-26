@@ -1296,6 +1296,23 @@ static int achievement_possible_points(void)
     return points;
 }
 
+/*
+ * Is this row one of the 2026-10-25 expansion's, which staff never earn?
+ * The table is append-only and the expansion began at goblin-kills-1, so
+ * every row from there on is new. The hooks each asked ACH_STAFF, but the
+ * login catch-up and the state checks did not, and a builder trusted to
+ * 60 left with Weapons Scholar and Practice Makes Permanent (review,
+ * 2026-10-26). Rows before it keep their old rule.
+ */
+static bool achievement_is_expansion(int index)
+{
+    static int first = -2;
+
+    if (first == -2)
+        first = achievement_index_by_key("goblin-kills-1");
+    return first >= 0 && index >= first;
+}
+
 static bool achievement_unlock(CHAR_DATA *ch, int index, bool announce)
 {
     char buf[MAX_STRING_LENGTH];
@@ -1305,6 +1322,11 @@ static bool achievement_unlock(CHAR_DATA *ch, int index, bool announce)
     if (!achievement_is_player(ch) || index < 0
         || index >= achievement_table_count()
         || ch->pcdata->achievement_earned[index] != 0)
+        return false;
+
+    /* Every award passes here, so the staff rule is kept here, by trust:
+       what a character already earned is never taken away. */
+    if (ACH_STAFF(ch) && achievement_is_expansion(index))
         return false;
 
     earned = current_time > 0 ? current_time : time(NULL);

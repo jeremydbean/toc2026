@@ -1059,7 +1059,11 @@ Rules the code depends on:
   from `free_char`. Counters start at zero: nothing is backfilled that the
   save cannot prove.
 - **Award at the success, never at the command**, and staff earn none of
-  the new feats: `ACH_STAFF` is `IS_TRUSTED(ch, LEVEL_IMMORTAL)`. Party
+  the new feats: `ACH_STAFF` is `IS_TRUSTED(ch, LEVEL_IMMORTAL)`, and
+  `achievement_unlock` refuses an expansion row (from `goblin-kills-1`
+  on) to staff, because the login catch-up and the state checks never
+  asked (review, 2026-10-26; `tests/test_achievement_staff.py`). Rows
+  before the expansion keep their old rule; nothing earned is removed. Party
   awards (`achievement_party_count`/`_event`) reach the credited player and
   their group in the room, mortals only.
 - **A boss row with a negative auxiliary** matches a death anywhere in that

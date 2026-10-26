@@ -509,16 +509,37 @@ class LiveTests(unittest.TestCase):
             self.assertNotIn("Achv hyrule-band-1", text)
 
     def test_a_wimpy_boss_counts_anywhere_in_his_palace(self) -> None:
+        # A mortal lands the kill: staff earn none of the expansion's
+        # achievements (review, 2026-10-26), and this test once had the
+        # staff character slay him and expected the award.
         with LiveMud() as mud:
-            make(mud, "Zstaffpal", Levl=70, Room=10000)
-            with mud.connect(timeout=120) as staff:
+            make(mud, "Zstaffpal", Levl=70, Room=TEMPLE)
+            make(mud, "Zpalhero", Levl=50, Room=10000,
+                 HMV="9000 9000 500 500 500 500", HMVP="9000 500 500")
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as hero:
                 login(staff, "Zstaffpal", PW)
+                login(hero, "Zpalhero", PW)
                 run(staff, "scroll 0")
-                run(staff, "load mob 10000", 1.2)
-                run(staff, "slay augustus", 2.0)
-                staff.send("quit")
-                self.assertTrue(staff.wait_closed())
-            text = (mud.player_dir / "Zstaffpal").read_text(encoding="latin-1")
+                staff.must("set char zpalhero hitroll 200", "")
+                run(staff, "at 10000 load mob 10000", 1.2)
+                fell = False
+                for _ in range(5):
+                    run(staff, "at zpalhero set char augustus hp 1", 1.0)
+                    run(staff, "at zpalhero restore augustus", 1.0)
+                    mark = len(hero.transcript)
+                    hero.send("kill augustus")
+                    for _ in range(20):
+                        hero.drain(1.0)
+                        out = hero.transcript[mark:]
+                        if "is DEAD" in out or "They aren't here" in out:
+                            break
+                    if "is DEAD" in hero.transcript[mark:]:
+                        fell = True
+                        break
+                self.assertTrue(fell, hero.transcript[-1500:])
+                hero.send("quit")
+                self.assertTrue(hero.wait_closed())
+            text = (mud.player_dir / "Zpalhero").read_text(encoding="latin-1")
             self.assertIn("Achv boss-starfire", text)
 
 
