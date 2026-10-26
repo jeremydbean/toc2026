@@ -1,1 +1,2 @@
 [29210] Alaric: After restoring a player to an earlier state, it is possible their hp is set to a negative value. This negative value does not change through normal "ticks" of time, leaving the player in a permanently unplayable state.
+[ 7201] Alaric: Using the walk command to quest, the mud can disconnect you for spamming (PUT A LID ON IT!). This disconnects the player and abandons their current quest, breaking their quest streak and impacting quest point gains. This has happened to myself and another player, Trentlin

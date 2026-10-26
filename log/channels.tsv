@@ -735,3 +735,16 @@
 1792978264	say	Questor Thews	Well done! I knew you were right for the job.
 1792978264	say	Questor Thews	Streak of 15 in a row! A +95% bonus has been added!
 1792978264	say	Questor Thews	Here's your 121p 68g 9s - well earned!
+1792978553	say	Questor Thews	Thank you for answering the call, brave Trentlin!
+1792978553	say	Questor Thews	You have 20 minutes to complete this quest.
+1792978553	say	Questor Thews	May the gods guide your blade!
+1792978599	say	Questor Thews	Thank you for answering the call, brave Alaric!
+1792978599	say	Questor Thews	You have 20 minutes to complete this quest.
+1792978599	say	Questor Thews	May the gods guide your blade!
+1792978613	gossip	Trentlin	awww it disconnected me and i lost the quest / streak
+1792978627	gossip	Alaric	Oh shit. Did you get a spammed message?
+1792978637	gossip	Alaric	I had that happen earlier, "PUT A LID ON IT!!"
+1792978657	gossip	Trentlin	yeah
+1792978747	gossip	Alaric	Damn. I reported it. Stuff gets addressed quickly.
+1792978778	gossip	Alaric	I thought it was a fluke and I'd been spamming other stuff, but evidently the walk command can que up enough stuff to trigger the disconnect
+1792978798	gossip	Trentlin	yeah mustve been it i walk quested
