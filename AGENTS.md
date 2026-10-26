@@ -1526,7 +1526,9 @@ rules the code depends on:
   save or snapshot that is not `DURABLE_OK` (independent review,
   2026-10-23: unconfirmed writes were reported as done). Test faults:
   `TOC_FAULT` (`fsync`, `dirsync`) and `TOC_FAULT_FILE` (one named point,
-  `save 2` for the second save; `ledger`, `crash-before-commit`), read
+  `save 2` for the second save, `save-<Name> 2` for that character's
+  second, which an autosave elsewhere cannot take; `ledger`,
+  `crash-before-commit`), read
   by `recovery_fault()` and set nowhere but `tests/`.
 - **Nobody comes out of a file dead** (`revive_at_load`, end of
   `load_char_obj`): a `death` copy is written below zero hit points,
@@ -1559,7 +1561,13 @@ rules the code depends on:
   leaves an online player's objects in memory, pending. Pending staff
   restores (ids with a colon: `gear:N`, `stash:N`, `corpse:<id>`,
   `full:N`) are settled at login by `recovery_reconcile_login` from the
-  file's mark: committed, or abandoned and free to be done again. Git
+  file's mark: committed, or abandoned and free to be done again. **A
+  retry of a pending restore trusts the mark only from the disk**: an
+  offline copy's mark was just read from the file, but an online
+  player's is in memory, so the retry saves first -- giving nothing
+  again -- and commits only on `DURABLE_OK` and a ledger write that
+  landed (review, 2026-10-26: it committed unsaved, and a crash lost the
+  restore and refused another). Git
   requests (no colon) are restores.c's. A full PRESTORE saves an online
   target, takes a `DURABLE_OK` undo copy, writes the new file aside and
   flushes it, writes pending -- and only then disconnects, renames and

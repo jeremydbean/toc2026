@@ -147,6 +147,63 @@ class CorpseRestoreFailureTests(unittest.TestCase):
         self.assertIn("already given back once", again)
         self.assertEqual(states(rows, f"corpse:{cid}"), ["pending", "abandoned", "pending", "committed"])
 
+    def test_an_online_retry_saves_before_it_commits(self) -> None:
+        # Review, 2026-10-26: the save failed with the player online, the
+        # receipt stayed pending -- and a retry read the restore mark from
+        # the character's memory, committed without saving, and a crash
+        # then lost the gear and refused another restore.
+        with LiveMud(extra_env={"TOC_FAULT_FILE": "../fault.once"}) as mud:
+            make(mud, "Zonstaff", 70)
+            make(mud, "Zondead", 20)
+            cid = kill_and_end_corpse(mud, "Zonstaff", "Zondead")
+            pfile = mud.player_dir / "Zondead"
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as dead:
+                login(staff, "Zonstaff", PW)
+                login(dead, "Zondead", PW)
+                run(staff, "scroll 0", 0.5)
+                # Online, the undo copy is taken by a save of its own: the
+                # second save of Zondead is the one that gives.
+                fault(mud, "save-Zondead 2")
+                failed = run(staff, f"prestore zondead corpse {cid} gear", 2.5)
+                after_failed = pfile.read_text(encoding="latin-1")
+                pending = states(ledger_rows(mud), f"corpse:{cid}")
+                # The retry's own save fails too: still pending, still unsaved.
+                fault(mud, "save-Zondead")
+                retry_failed = run(staff, f"prestore zondead corpse {cid} gear", 2.5)
+                after_retry_failed = pfile.read_text(encoding="latin-1")
+                still = states(ledger_rows(mud), f"corpse:{cid}")
+                # Nothing in the way: saved, then committed -- nothing given twice.
+                retried = run(staff, f"prestore zondead corpse {cid} gear", 2.5)
+                after_retry = pfile.read_text(encoding="latin-1")
+                held = run(dead, "inventory", 1.5)
+            # A crash now cannot lose it: the file has it.
+            mud.restart()
+            with mud.connect(timeout=120) as dead:
+                login(dead, "Zondead", PW)
+                run(dead, "scroll 0", 0.5)
+                inventory = run(dead, "inventory", 1.5)
+                dead.send("quit")
+                dead.wait_closed()
+            with mud.connect(timeout=120) as staff:
+                login(staff, "Zonstaff", PW)
+                again = run(staff, f"prestore zondead corpse {cid} gear", 2.0)
+                staff.send("quit")
+                staff.wait_closed()
+            rows = ledger_rows(mud)
+
+        self.assertIn("could not be saved", failed, failed)
+        self.assertNotIn(f"restore:corpse:{cid}", after_failed)
+        self.assertEqual(pending, ["pending"])
+        self.assertIn("Nothing was given again", retry_failed, retry_failed)
+        self.assertNotIn(f"restore:corpse:{cid}", after_retry_failed)
+        self.assertEqual(still, ["pending"])
+        self.assertIn("saved with it now", retried, retried)
+        self.assertIn(f"restore:corpse:{cid}", after_retry)
+        self.assertEqual(held.count("sub issue sword"), 1, held)
+        self.assertEqual(inventory.count("sub issue sword"), 1, inventory)
+        self.assertEqual(states(rows, f"corpse:{cid}"), ["pending", "committed"])
+        self.assertIn("already given back once", again)
+
     def test_a_crash_between_the_save_and_the_receipt_is_settled_at_login(self) -> None:
         with LiveMud(extra_env={"TOC_FAULT_FILE": "../fault.once"}) as mud:
             make(mud, "Zcrstaff", 70)
@@ -369,12 +426,22 @@ class FailureSourceTests(unittest.TestCase):
     def test_every_restore_goes_through_the_checked_path(self) -> None:
         wiz = (ROOT / "src" / "act_wiz.c").read_text(encoding="latin-1")
         give = wiz[wiz.index("static void prestore_give("):wiz.index("static void prestore_op(")]
-        order = [give.index('player_snapshot_milestone( victim, undo_tag, true )'),
-                 give.index('recovery_record( "request", "pending"'),
-                 give.index("player_fix_record( victim, mark )"),
-                 give.index("save_char_obj( victim )"),
-                 give.index('recovery_record( "request", "committed", capname, op, kind, ch->name, detail )')]
-        self.assertEqual(order, sorted(order))
+        # The giving path, each step found after the one before it (the
+        # pending-retry branch above it saves too, and is checked below).
+        at = 0
+        for step in ('player_snapshot_milestone( victim, undo_tag, true )',
+                     'recovery_record( "request", "pending"',
+                     "player_fix_record( victim, mark )",
+                     "save_char_obj( victim )",
+                     'recovery_record( "request", "committed", capname, op, kind, ch->name, detail )'):
+            at = give.index(step, at)
+        # A pending retry for somebody online saves before it commits
+        # (review, 2026-10-26).
+        retry = give[give.index("player_fix_has( victim, mark )"):
+                     give.index("player_snapshot_milestone( victim, undo_tag, true )")]
+        self.assertLess(retry.index("save_char_obj( victim )"),
+                        retry.index('recovery_record( "request", "committed"'))
+        self.assertIn("status != DURABLE_OK", retry)
         for caller in ("static void prestore_stash(", "static void prestore_gear(",
                        "static void prestore_corpse("):
             body = wiz[wiz.index(caller):]

@@ -11052,15 +11052,46 @@ static void prestore_give( CHAR_DATA *ch, const char *capname, OBJ_DATA *list,
     }
     snprintf( mark, sizeof(mark), "restore:%s", op );
 
-    /* A crash between giving and committing, last time: their file says
-       whether it got there. */
+    /* Given last time and still pending: the mark says the objects were
+       handed over, and only the disk says whether they were kept. An
+       offline copy was just read from the file, so its mark is the file's.
+       An online player's mark is in memory, and a save that failed left it
+       only there (review, 2026-10-26: a retry committed it unsaved, and a
+       crash then lost the restore and refused another). So save first --
+       nothing is given again -- and commit only on a save on the disk and
+       a receipt the ledger took. */
     if ( recovery_request_state( op ) == RECOVERY_PENDING && player_fix_has( victim, mark ) )
     {
-        recovery_record( "request", "committed", capname, op, kind, ch->name,
-                         "already in their file; committed now" );
         snapshot_discard_gear( list );
-        send_to_char( "That was already given: it reached their file before the receipt "
-                      "was finished, which is done now.\n\r", ch );
+        if ( !offline )
+        {
+            save_char_obj( victim );
+            status = save_char_obj_status();
+            if ( status != DURABLE_OK )
+            {
+                snprintf( buf, sizeof(buf), "%s already holds that restore, but their file "
+                          "%s.  Nothing was given again and the receipt stays pending: "
+                          "try again once a save lands.\n\r", capname,
+                          status == DURABLE_FAILED ? "still cannot be saved"
+                                                   : "is not confirmed on the disk" );
+                send_to_char( buf, ch );
+                return;
+            }
+        }
+        if ( !recovery_record( "request", "committed", capname, op, kind, ch->name,
+                               offline ? "already in their file; committed now"
+                                       : "saved on a retry; committed now" ) )
+        {
+            send_to_char( "That was already given and is in their file, but the ledger "
+                          "could not record it: the receipt stays pending.\n\r", ch );
+            if ( offline )
+                extract_char( victim, true );
+            return;
+        }
+        send_to_char( offline ? "That was already given: it reached their file before the "
+                                "receipt was finished, which is done now.\n\r"
+                              : "That was already given; their file is saved with it now, "
+                                "and the receipt is finished.\n\r", ch );
         if ( offline )
             extract_char( victim, true );
         return;
