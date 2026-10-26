@@ -195515,3 +195515,90 @@ Mon Oct 26 00:41:49 2026 :: Snapshot of Alaric taken before quest: Alaric.202610
 Mon Oct 26 00:41:49 2026 :: Log Alaric [2497]: aq ga no
 Mon Oct 26 00:41:51 2026 :: Log Alaric [2497]: steel
 Mon Oct 26 00:44:23 2026 :: Log Alaric [2497]: affects off: titanic, empower, empower; max hp 8418 -> 1403; max mana 14694 -> 2449; max moves 6078 -> 1013; hp 8418 -> 1403
+Mon Oct 26 00:46:19 2026 :: Sock.sinaddr:  5.161.117.52
+Mon Oct 26 00:46:19 2026 :: EOF encountered on read.
+Mon Oct 26 00:46:39 2026 :: Log Alaric [2497]: aq re
+Mon Oct 26 00:46:39 2026 :: Log Alaric [2497]: quest assigned: kill a bard (mob 624, level 13) in ofcol.are, 6 minutes, rush
+Mon Oct 26 00:46:43 2026 :: Log Alaric [2497]: enter door
+Mon Oct 26 00:46:43 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 00:46:43 2026 :: Log Alaric [2401]: west
+Mon Oct 26 00:46:43 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Mon Oct 26 00:46:43 2026 :: Log Alaric [2405]: west
+Mon Oct 26 00:46:43 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Mon Oct 26 00:46:43 2026 :: Log Alaric [2433]: west
+Mon Oct 26 00:46:43 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Mon Oct 26 00:46:44 2026 :: Log Alaric [2434]: west
+Mon Oct 26 00:46:44 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Mon Oct 26 00:46:44 2026 :: Log Alaric [2435]: west
+Mon Oct 26 00:46:44 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Mon Oct 26 00:46:44 2026 :: Log Alaric [2436]: west
+Mon Oct 26 00:46:44 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Mon Oct 26 00:46:44 2026 :: Log Alaric [2437]: west
+Mon Oct 26 00:46:44 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Mon Oct 26 00:46:45 2026 :: Log Alaric [2438]: open west
+Mon Oct 26 00:46:45 2026 :: Log Alaric [2438]: west
+Mon Oct 26 00:46:45 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Mon Oct 26 00:46:46 2026 :: Log Alaric [2439]: north
+Mon Oct 26 00:46:46 2026 :: Log Alaric [3900]: arrived (West trail around Dresden) from 2439
+Mon Oct 26 00:46:46 2026 :: Log Alaric [3900]: north
+Mon Oct 26 00:46:46 2026 :: Log Alaric [3901]: arrived (West trail around Dresden) from 3900
+Mon Oct 26 00:46:47 2026 :: Log Alaric [3901]: north
+Mon Oct 26 00:46:47 2026 :: Log Alaric [3902]: arrived (Northwest corner of dusty trail.) from 3901
+Mon Oct 26 00:46:47 2026 :: Log Alaric [3902]: east
+Mon Oct 26 00:46:47 2026 :: Log Alaric [3903]: arrived (Dusty trail along north wall.) from 3902
+Mon Oct 26 00:46:47 2026 :: Log Alaric [3903]: east
+Mon Oct 26 00:46:47 2026 :: Log Alaric [3904]: arrived (The long dusty trail following the north wall.) from 3903
+Mon Oct 26 00:46:47 2026 :: Log Alaric [3904]: north
+Mon Oct 26 00:46:47 2026 :: Log Alaric [300]: arrived (Path in the plains) from 3904
+Mon Oct 26 00:46:48 2026 :: Log Alaric [300]: north
+Mon Oct 26 00:46:48 2026 :: Log Alaric [315]: arrived (Gallow hill) from 300
+Mon Oct 26 00:46:48 2026 :: Log Alaric [315]: north
+Mon Oct 26 00:46:48 2026 :: Log Alaric [320]: arrived (Grassy plains) from 315
+Mon Oct 26 00:46:48 2026 :: Log Alaric [320]: east
+Mon Oct 26 00:46:48 2026 :: Log Alaric [305]: arrived (Path in the plains) from 320
+Mon Oct 26 00:46:48 2026 :: Log Alaric [305]: north
+Mon Oct 26 00:46:48 2026 :: Log Alaric [306]: arrived (Path in the foothills) from 305
+Mon Oct 26 00:46:49 2026 :: Log Alaric [306]: north
+Mon Oct 26 00:46:49 2026 :: Log Alaric [326]: arrived (The pool in the foothills) from 306
+Mon Oct 26 00:46:49 2026 :: Log Alaric [326]: east
+Mon Oct 26 00:46:49 2026 :: Log Alaric [309]: arrived (Path in the foothills) from 326
+Mon Oct 26 00:46:49 2026 :: Log Alaric [309]: east
+Mon Oct 26 00:46:49 2026 :: Log Alaric [310]: arrived (Path in the foothills) from 309
+Mon Oct 26 00:46:49 2026 :: Log Alaric [310]: north
+Mon Oct 26 00:46:49 2026 :: Log Alaric [327]: arrived (The foothills) from 310
+Mon Oct 26 00:46:50 2026 :: Log Alaric [327]: east
+Mon Oct 26 00:46:50 2026 :: Log Alaric [313]: arrived (Road to Ofcol) from 327
+Mon Oct 26 00:46:50 2026 :: Log Alaric [313]: north
+Mon Oct 26 00:46:50 2026 :: Log Alaric [314]: arrived (Road to Ofcol) from 313
+Mon Oct 26 00:46:50 2026 :: Log Alaric [314]: north
+Mon Oct 26 00:46:50 2026 :: Log Alaric [52]: arrived (Outside Ofcol) from 314
+Mon Oct 26 00:46:50 2026 :: Log Alaric [52]: north
+Mon Oct 26 00:46:50 2026 :: Log Alaric [5550]: arrived (Village street) from 52
+Mon Oct 26 00:47:17 2026 :: Log Alaric [5550]: north
+Mon Oct 26 00:47:17 2026 :: Log Alaric [5551]: arrived (Village street) from 5550
+Mon Oct 26 00:47:18 2026 :: Log Alaric [5551]: east
+Mon Oct 26 00:47:18 2026 :: Log Alaric [5553]: arrived (The small alley) from 5551
+Mon Oct 26 00:47:18 2026 :: Log Alaric [5553]: east
+Mon Oct 26 00:47:18 2026 :: Log Alaric [601]: arrived (The Big Intersection) from 5553
+Mon Oct 26 00:47:18 2026 :: Log Alaric [601]: south
+Mon Oct 26 00:47:18 2026 :: Log Alaric [602]: arrived (Impy Way) from 601
+Mon Oct 26 00:47:18 2026 :: Log Alaric [602]: south
+Mon Oct 26 00:47:18 2026 :: Log Alaric [605]: arrived (Impy Way) from 602
+Mon Oct 26 00:47:19 2026 :: Log Alaric [605]: south
+Mon Oct 26 00:47:19 2026 :: Log Alaric [608]: arrived (Impy Way) from 605
+Mon Oct 26 00:47:19 2026 :: Log Alaric [608]: west
+Mon Oct 26 00:47:19 2026 :: Log Alaric [609]: arrived (Nyles' House of Ale) from 608
+Mon Oct 26 00:47:22 2026 :: Log Alaric [609]: kill ba
+Mon Oct 26 00:47:22 2026 :: Log Alaric [609]: killed a bard
+Mon Oct 26 00:47:22 2026 :: Log Alaric [609]: coin +4 silver
+Mon Oct 26 00:47:22 2026 :: Log Alaric [609]: coin +92 copper
+Mon Oct 26 00:47:22 2026 :: Log Alaric [609]: coin +5 gold
+Mon Oct 26 00:47:26 2026 :: Log Alaric [609]: recal
+Mon Oct 26 00:47:26 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 609
+Mon Oct 26 00:47:26 2026 :: Log Alaric [2497]: recal
+Mon Oct 26 00:47:27 2026 :: Log Alaric [2497]: recal
+Mon Oct 26 00:47:27 2026 :: Log Alaric [2497]: aq co
+Mon Oct 26 00:47:27 2026 :: Log Alaric [2497]: copper +297442200
+Mon Oct 26 00:47:27 2026 :: Log Alaric [2497]: quest complete: 297p 44g 22s, 125 quest points, rush (streak bonus 65%)
+Mon Oct 26 00:47:27 2026 :: Snapshot of Alaric taken before quest: Alaric.20261026_004727.quest (PRESTORE Alaric to see it).
+Mon Oct 26 00:47:27 2026 :: Log Alaric [2497]: aq ga no
