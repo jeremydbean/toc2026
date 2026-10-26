@@ -23445,3 +23445,152 @@
 1792980626	cmd	Alaric	50	28136	azeroth.are	standing	100	0	-	scan		A footman                          -to the West. // A Knight of Azeroth                -to the West. // A Knight of Azeroth                -to the West.
 1792980630	cmd	Alaric	50	28137	azeroth.are	standing	100	0	-	west		The Battle Field //   When you get close enough to the army you realize it wasn't just one // army, it was two different armies! The armies belonged to the Orcish
 1792980631	cmd	Alaric	50	28137	azeroth.are	standing	100	0	-	scan		An Ogre                            -to the North. // An orc grunt                       -to the North. // A footman                          -to the North.
+1792980676	cmd	Alaric	50	28140	azeroth.are	standing	100	0	-	west		The Battle Field //   You are in the middle of a huge battle! The exits are in all directions. // [Exits: north east south west]
+1792980676	cmd	Alaric	50	28147	azeroth.are	standing	100	0	-	west		The Battle Field //   You are in the middle of a battle! The exits are north, south, and east. // [Exits: north east south]
+1792980676	cmd	Alaric	50	28148	azeroth.are	standing	100	0	-	north		The Battle Field //   You are in the middle of a battle field! Exits are north, south, and // east.
+1792980676	cmd	Alaric	50	28151	azeroth.are	standing	100	0	-	north		The Battle Field //   You are standing on the edge of a battle! Exits go east, south, and west // over the river.
+1792980677	cmd	Alaric	50	28152	azeroth.are	standing	100	0	-	west		The River //   You are now going over a deep river, the humans first line of defense // against the Horde. To the west you can see a city.
+1792980677	cmd	Alaric	50	28153	azeroth.are	standing	100	0	-	west		The Front Lines //   There is a long trench that stretches is along the river with hundreds // of wooden spears stuck into the ground to act as a barrier. There are
+1792980677	cmd	Alaric	50	28154	azeroth.are	standing	100	0	-	west		Before the Front Gate //   This fort was obviously thrown together real quickly. You would think it // could easily be taken over, but a second look at it shows it was built
+1792980677	refused	Alaric	50	28154	azeroth.are	fighting	99	0	fight	south		No way!  You are still fighting!
+1792980680	cmd	Alaric	50	28154	azeroth.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures A Paladin. [-13] // A Paladin's Flaming Aura grazes you. [-5]
+1792980686	cmd	Alaric	50	28154	azeroth.are	fighting	95	0	fight	open	south	There is no door to the south, just open passage.
+1792980686	refused	Alaric	50	28154	azeroth.are	fighting	95	0	fight	south		No way!  You are still fighting!
+1792980686	cmd	Alaric	50	28154	azeroth.are	fighting	95	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures A Paladin. [-16] // A Paladin's Flaming Aura grazes you. [-6]
+1792980692	cmd	Alaric	50	28154	azeroth.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls A Paladin. [-22] // A Paladin's Flaming Aura hits you. [-9]
+1792980698	cmd	Alaric	50	28154	azeroth.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes A Paladin. [-5] // A Paladin's Flaming Aura scratches you. [-2]
+1792980704	cmd	Alaric	50	28154	azeroth.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches A Paladin. [-4] // A Paladin's Flaming Aura scratches you. [-2]
+1792980709	cmd	Alaric	50	28154	azeroth.are	fighting	84	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes A Paladin. [-6] // A Paladin's Flaming Aura scratches you. [-2]
+1792980715	cmd	Alaric	50	28154	azeroth.are	fighting	81	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds A Paladin. [-18] // A Paladin's Flaming Aura grazes you. [-7]
+1792980721	cmd	Alaric	50	28154	azeroth.are	fighting	79	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes A Paladin. [-5] // A Paladin's Flaming Aura scratches you. [-2]
+1792980727	cmd	Alaric	50	28154	azeroth.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES A Paladin! [-39] // A Paladin's Flaming Aura injures you. [-16]
+1792980732	cmd	Alaric	50	28154	azeroth.are	fighting	75	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates A Paladin! [-30] // A Paladin's Flaming Aura hits you. [-12]
+1792980738	cmd	Alaric	50	28154	azeroth.are	fighting	72	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS A Paladin! [-46] // A Paladin's Flaming Aura wounds you. [-18]
+1792980744	cmd	Alaric	50	28154	azeroth.are	fighting	70	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates A Paladin! [-25] // A Paladin's Flaming Aura hits you. [-10]
+1792980750	cmd	Alaric	50	28154	azeroth.are	fighting	66	0	fight	look		Before the Front Gate //   This fort was obviously thrown together real quickly. You would think it // could easily be taken over, but a second look at it shows it was built
+1792980750	cmd	Alaric	50	28154	azeroth.are	fighting	66	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates A Paladin! [-28] // A Paladin's Flaming Aura hits you. [-11]
+1792980756	cmd	Alaric	50	28154	azeroth.are	fighting	64	0	fight	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1792980757	cmd	Alaric	50	28154	azeroth.are	fighting	63	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes A Paladin. [-5] // A Paladin's Flaming Aura scratches you. [-2]
+1792980763	cmd	Alaric	50	28154	azeroth.are	fighting	60	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes A Paladin. [-8] // A Paladin's Flaming Aura scratches you. [-3]
+1792980769	cmd	Alaric	50	28154	azeroth.are	fighting	59	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits A Paladin. [-11] // A Paladin's Flaming Aura scratches you. [-4]
+1792980775	cmd	Alaric	50	28154	azeroth.are	standing	58	0	-	fists		Who do you want to attack?
+1792980775	cmd	Alaric	50	28154	azeroth.are	standing	58	0	-	fists		Who do you want to attack?
+1792980776	cmd	Alaric	50	28156	azeroth.are	standing	58	0	-	south		Dirt Trail Around the Fortress //   You are on a trail around the fort with exits leading north and west. // [Exits: north west]
+1792980777	cmd	Alaric	50	28157	azeroth.are	standing	58	0	-	west		Along the Southern Wall //   In the distance you can see a massive castle under heavy construction. // It must be Stormwind Keep. There are exits to the east, south, and
+1792980777	cmd	Alaric	50	28162	azeroth.are	standing	58	0	-	south		A Field //   You are now in a field filled with peasants. There are exits in all // directions.
+1792980780	cmd	Alaric	50	28162	azeroth.are	standing	58	0	-	kill	pe	Your punch does UNSPEAKABLE things to A Poor Peasant! [-265] // A Poor Peasant is DEAD!! // You receive 0 experience points.
+1792980785	cmd	Alaric	50	28157	azeroth.are	standing	58	0	-	north		Along the Southern Wall //   In the distance you can see a massive castle under heavy construction. // It must be Stormwind Keep. There are exits to the east, south, and
+1792980786	cmd	Alaric	50	28156	azeroth.are	standing	58	0	-	east		Dirt Trail Around the Fortress //   You are on a trail around the fort with exits leading north and west. // [Exits: north west]
+1792980786	cmd	Alaric	50	28154	azeroth.are	standing	58	0	-	north		Before the Front Gate //   This fort was obviously thrown together real quickly. You would think it // could easily be taken over, but a second look at it shows it was built
+1792980786	cmd	Alaric	50	28153	azeroth.are	standing	58	0	-	east		The Front Lines //   There is a long trench that stretches is along the river with hundreds // of wooden spears stuck into the ground to act as a barrier. There are
+1792980786	cmd	Alaric	50	28153	azeroth.are	standing	58	0	-	north		Alas, you cannot go that way.
+1792980787	refused	Alaric	50	28153	azeroth.are	fighting	58	0	fight	east		No way!  You are still fighting!
+1792980787	refused	Alaric	50	28153	azeroth.are	fighting	58	0	fight	east		No way!  You are still fighting!
+1792980790	cmd	Alaric	50	28153	azeroth.are	fighting	57	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates A Paladin! [-27] // A Paladin's Flaming Aura hits you. [-11]
+1792980796	cmd	Alaric	50	28153	azeroth.are	fighting	54	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures A Paladin. [-13] // A Paladin's Flaming Aura grazes you. [-5]
+1792980801	cmd	Alaric	50	28153	azeroth.are	fighting	52	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates A Paladin! [-31] // A Paladin's Flaming Aura hits you. [-12]
+1792980807	cmd	Alaric	50	28153	azeroth.are	fighting	51	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS A Paladin! [-43] // A Paladin's Flaming Aura wounds you. [-17]
+1792980813	cmd	Alaric	50	28153	azeroth.are	fighting	50	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES A Paladin! [-40] // A Paladin's Flaming Aura injures you. [-16]
+1792980819	cmd	Alaric	50	28153	azeroth.are	standing	49	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1792980819	cmd	Alaric	50	28153	azeroth.are	standing	49	0	-	fists		Who do you want to attack?
+1792980819	cmd	Alaric	50	28152	azeroth.are	standing	49	0	-	east		The River //   You are now going over a deep river, the humans first line of defense // against the Horde. To the west you can see a city.
+1792980819	cmd	Alaric	50	28151	azeroth.are	standing	49	0	-	east		The Battle Field //   You are standing on the edge of a battle! Exits go east, south, and west // over the river.
+1792980820	cmd	Alaric	50	28150	azeroth.are	standing	49	0	-	east		The Battle Field //   You are walking through a battle! There are exits to the east, south, // and west.
+1792980821	cmd	Alaric	50	28141	azeroth.are	standing	49	0	-	east		The Battle Field //   You are witnessing a battle take place! The exits are south and west. // [Exits: south west]
+1792980821	cmd	Alaric	50	28138	azeroth.are	standing	49	0	-	south		The Battle Field //   You are in the middle of a battle! The exits are north, south, and west. // [Exits: north south west]
+1792980821	cmd	Alaric	50	28137	azeroth.are	standing	49	0	-	south		The Battle Field //   When you get close enough to the army you realize it wasn't just one // army, it was two different armies! The armies belonged to the Orcish
+1792980822	cmd	Alaric	50	28136	azeroth.are	standing	49	0	-	east		The End of the Forest //   You can now see that there is a giant field ahead with an army in it. // Maybe they can tell you where this path goes. You can go east or west.
+1792980822	cmd	Alaric	50	28135	azeroth.are	standing	49	0	-	east		The Middle of the Forest //   You are now in what you think is the middle of the forest. But now you // don't feel like you're alone anymore. It feels like something is
+1792980822	cmd	Alaric	50	28134	azeroth.are	standing	49	0	-	east		In the Forest //   This place is so much better than the swamp. The trees here are huge, // some must be big enough live inside of! The same boring path goes west.
+1792980822	cmd	Alaric	50	28133	azeroth.are	standing	49	0	-	east		The End of The Swamp //   You are starting to notice the water level slowly get lower and lower. // It would seem that you are exiting the swamp. Now you are surrounded by
+1792980823	cmd	Alaric	50	28132	azeroth.are	standing	49	0	-	east		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1792980823	cmd	Alaric	50	28131	azeroth.are	standing	49	0	-	east		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1792980823	cmd	Alaric	50	28124	azeroth.are	standing	49	0	-	east		More Swamp //   You are walking through what you estimate to be the middle of the swamp // now. There are exits to the east and west.
+1792980823	cmd	Alaric	50	28122	azeroth.are	standing	49	0	-	east		More Swamp //   From here you can see some kind of fortress to the north. You think you // see a faint path to the east. You can also go west at this point.
+1792980825	cmd	Alaric	50	28101	azeroth.are	standing	49	0	-	run	n	Beginning of the swamp // [Exits: north south] // Outside the gates of Black Rock Spire
+1792980826	cmd	Alaric	50	28101	azeroth.are	resting	49	0	-	wake		You stand up.
+1792980827	cmd	Alaric	50	28161	azeroth.are	standing	49	0	-	enter	po	You enter The Dark Portal // Your stomach flip flops. Everything goes black for a moment. // Watch Your Step!
+1792980827	cmd	Alaric	50	2497	dresden_halloween.are	standing	49	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792980829	cmd	Alaric	50	2497	dresden_halloween.are	standing	49	0	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'You haven't finished the quest, but there is still time!'
+1792980837	cmd	Alaric	50	2401	dresden_halloween.are	standing	49	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792980837	cmd	Alaric	50	2404	dresden_halloween.are	standing	49	0	-	south		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1792980837	cmd	Alaric	50	2427	dresden_halloween.are	standing	49	0	-	south		Main Processional, Below the Temple Steps //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. To the north the enormous oak fills
+1792980837	cmd	Alaric	50	2428	dresden_halloween.are	standing	49	0	-	south		Main Processional, Toward the Mermaids' Bridge //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Children run past you in sheets and
+1792980838	cmd	Alaric	50	2429	dresden_halloween.are	standing	49	0	-	south		Bridge of the Mermaids. //   Once you reach the center of the bridge you understand how it got its name. // On either side of the bridge there is a statue of a mermaid build into the
+1792980838	cmd	Alaric	50	2430	dresden_halloween.are	standing	49	0	-	south		Main Processional, at the Southern Gates //   You are on a very well made stone road that goes through the center of town, // and tonight it belongs to Hallows End. Just to the north is the Bridge of
+1792980838	cmd	Alaric	50	2431	dresden_halloween.are	standing	49	0	-	south		Inside the Southern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1792980838	cmd	Alaric	50	2431	dresden_halloween.are	standing	49	0	-	open	south	Ok.
+1792980839	cmd	Alaric	50	2432	dresden_halloween.are	standing	49	0	-	south		Outside the Southern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1792980839	cmd	Alaric	50	3505	midennir_halloween.are	standing	49	0	-	south		The Trail to Miden'nir //   You are in a dark forest.  The trees press close on either side, their // branches interlocked far above in a canopy broken only by drifting will-o-wisps.
+1792980840	cmd	Alaric	50	3507	midennir_halloween.are	standing	49	0	-	south		A Burned Cart //   There is a smoldering cart here with arrows sticking in it.   // You can tell that it hasn't been too long since this cart was burned
+1792980840	cmd	Alaric	50	3510	midennir_halloween.are	standing	49	0	-	south		A Crossroads //   Here footworn paths meet leading north, south and east. The trees seem to // be closing in on you at this point, and you can barely see the sky
+1792980840	cmd	Alaric	50	3516	midennir_halloween.are	standing	49	0	-	south		Muddy Ground //   The ground is quite muddy here and puddles are all around. Your boots // make a disgusting SQUISH as you walk here. You can go in any of the
+1792980840	cmd	Alaric	50	3515	midennir_halloween.are	standing	49	0	-	west		Light Forest //   The forest is light here and you can easily pick your way through the  // trail.  To the east, the forest becomes thick and darker. South, the trail
+1792980841	cmd	Alaric	50	3518	midennir_halloween.are	standing	49	0	-	south		The Fading Trail //   The trail becomes nearly unpassable here. You can go north // as the forest is relatively light. To the south, you can see a path.
+1792980841	cmd	Alaric	50	3522	midennir_halloween.are	standing	49	0	-	south		Deep in the Forest of Miden'nir //   There is a sickening stench here. It smells of blood and death. // To the north, you catch glimpses of daylight. To the east, you
+1792980841	cmd	Alaric	50	28161	azeroth.are	standing	49	0	-	south		Watch Your Step! //   Don't you hate it when that happens?  You just walked through some // bushes and slid down the side of a cliff. I don't think you'll be going
+1792980843	cmd	Alaric	50	28101	azeroth.are	standing	49	1	-	enter	po	You enter The Dark Portal // Your stomach flip flops. Everything goes black for a moment. // Entrance to Azeroth
+1792980844	cmd	Alaric	50	28120	azeroth.are	standing	49	0	-	run	s	Outside the Barracks // [Exits: north south up] // Inside the Barracks
+1792980844	cmd	Alaric	50	28120	azeroth.are	fighting	48	0	fight	wake		You are already fighting!
+1792980846	cmd	Alaric	50	28120	azeroth.are	fighting	48	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates An Ogre Mage! [-27] // Your fists of fury scratches An Ogre Mage. [-3]
+1792980852	cmd	Alaric	50	28120	azeroth.are	fighting	48	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls An Ogre Mage. [-21] // Your fists of fury mauls An Ogre Mage. [-22]
+1792980857	cmd	Alaric	50	28120	azeroth.are	fighting	48	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES An Ogre Mage! [-39] // Your fists of fury injures An Ogre Mage. [-14]
+1792980863	cmd	Alaric	50	28120	azeroth.are	fighting	48	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS An Ogre Mage! [-42] // Your fists of fury injures An Ogre Mage. [-15]
+1792980870	cmd	Alaric	50	28120	azeroth.are	fighting	48	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches An Ogre Mage. [-4] // Your fists of fury MUTILATES An Ogre Mage! [-38]
+1792980879	cmd	Alaric	50	28120	azeroth.are	fighting	48	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches An Ogre Mage. [-4] // Your fists of fury injures An Ogre Mage. [-16]
+1792980885	cmd	Alaric	50	28120	azeroth.are	standing	48	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1792980885	cmd	Alaric	50	28121	azeroth.are	standing	48	0	-	south		Beginning of the swamp //   As you walk farther into this vast swamp the water rises up to your // ankles, making it very wet and very annoying. It appears that you are on
+1792980886	cmd	Alaric	50	28122	azeroth.are	standing	48	0	-	south		More Swamp //   From here you can see some kind of fortress to the north. You think you // see a faint path to the east. You can also go west at this point.
+1792980887	cmd	Alaric	50	28124	azeroth.are	standing	48	0	-	west		More Swamp //   You are walking through what you estimate to be the middle of the swamp // now. There are exits to the east and west.
+1792980887	cmd	Alaric	50	28131	azeroth.are	standing	48	0	-	west		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1792980887	cmd	Alaric	50	28132	azeroth.are	standing	48	0	-	west		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1792980887	cmd	Alaric	50	28133	azeroth.are	standing	48	0	-	west		The End of The Swamp //   You are starting to notice the water level slowly get lower and lower. // It would seem that you are exiting the swamp. Now you are surrounded by
+1792980888	cmd	Alaric	50	28134	azeroth.are	standing	48	0	-	west		In the Forest //   This place is so much better than the swamp. The trees here are huge, // some must be big enough live inside of! The same boring path goes west.
+1792980888	cmd	Alaric	50	28135	azeroth.are	standing	48	0	-	west		The Middle of the Forest //   You are now in what you think is the middle of the forest. But now you // don't feel like you're alone anymore. It feels like something is
+1792980888	cmd	Alaric	50	28136	azeroth.are	standing	48	0	-	west		The End of the Forest //   You can now see that there is a giant field ahead with an army in it. // Maybe they can tell you where this path goes. You can go east or west.
+1792980890	cmd	Alaric	50	28137	azeroth.are	standing	48	0	-	west		The Battle Field //   When you get close enough to the army you realize it wasn't just one // army, it was two different armies! The armies belonged to the Orcish
+1792980891	cmd	Alaric	50	28138	azeroth.are	standing	48	0	-	north		The Battle Field //   You are in the middle of a battle! The exits are north, south, and west. // [Exits: north south west]
+1792980891	cmd	Alaric	50	28141	azeroth.are	standing	48	0	-	north		The Battle Field //   You are witnessing a battle take place! The exits are south and west. // [Exits: south west]
+1792980891	cmd	Alaric	50	28150	azeroth.are	standing	48	0	-	west		The Battle Field //   You are walking through a battle! There are exits to the east, south, // and west.
+1792980891	cmd	Alaric	50	28151	azeroth.are	standing	48	0	-	west		The Battle Field //   You are standing on the edge of a battle! Exits go east, south, and west // over the river.
+1792980892	cmd	Alaric	50	28152	azeroth.are	standing	48	0	-	west		The River //   You are now going over a deep river, the humans first line of defense // against the Horde. To the west you can see a city.
+1792980892	cmd	Alaric	50	28153	azeroth.are	standing	48	0	-	west		The Front Lines //   There is a long trench that stretches is along the river with hundreds // of wooden spears stuck into the ground to act as a barrier. There are
+1792980893	cmd	Alaric	50	28154	azeroth.are	standing	48	0	-	west		Before the Front Gate //   This fort was obviously thrown together real quickly. You would think it // could easily be taken over, but a second look at it shows it was built
+1792980893	cmd	Alaric	50	28154	azeroth.are	standing	48	0	-	west		Alas, you cannot go that way.
+1792980893	cmd	Alaric	50	28156	azeroth.are	standing	48	0	-	south		Dirt Trail Around the Fortress //   You are on a trail around the fort with exits leading north and west. // [Exits: north west]
+1792980894	cmd	Alaric	50	28156	azeroth.are	standing	48	0	-	south		Alas, you cannot go that way.
+1792980895	cmd	Alaric	50	28157	azeroth.are	standing	48	0	-	west		Along the Southern Wall //   In the distance you can see a massive castle under heavy construction. // It must be Stormwind Keep. There are exits to the east, south, and
+1792980895	cmd	Alaric	50	28162	azeroth.are	standing	48	0	-	south		A Field //   You are now in a field filled with peasants. There are exits in all // directions.
+1792980895	cmd	Alaric	50	28167	azeroth.are	standing	48	0	-	east		A Field //   You are now in a field filled with peasants. There are exits to the west // and south.
+1792980897	cmd	Alaric	50	28167	azeroth.are	standing	48	0	-	kill	pe	Your punch <<< ERADICATES >>> A Poor Peasant! [-193] // Your punch <<< ERADICATES >>> A Poor Peasant! [-166] // A Poor Peasant is DEAD!!
+1792980902	cmd	Alaric	50	28167	azeroth.are	standing	48	0	-	kill	pe	Your punch <<< ERADICATES >>> A Poor Peasant! [-166] // A Poor Peasant walks off to the south. // A Poor Peasant has fled!
+1792980908	cmd	Alaric	50	28167	azeroth.are	standing	48	7	-	kill	pe	Your punch >>> ANNIHILATES <<< A Poor Peasant! [-227] // A Poor Peasant is DEAD!! // You have almost finished your QUEST!
+1792980913	cmd	Alaric	50	28162	azeroth.are	standing	48	0	-	west		A Field //   You are now in a field filled with peasants. There are exits in all // directions.
+1792980914	cmd	Alaric	50	28157	azeroth.are	standing	48	0	-	north		Along the Southern Wall //   In the distance you can see a massive castle under heavy construction. // It must be Stormwind Keep. There are exits to the east, south, and
+1792980914	cmd	Alaric	50	28156	azeroth.are	standing	48	0	-	east		Dirt Trail Around the Fortress //   You are on a trail around the fort with exits leading north and west. // [Exits: north west]
+1792980914	cmd	Alaric	50	28154	azeroth.are	standing	48	0	-	north		Before the Front Gate //   This fort was obviously thrown together real quickly. You would think it // could easily be taken over, but a second look at it shows it was built
+1792980914	cmd	Alaric	50	28153	azeroth.are	standing	48	0	-	east		The Front Lines //   There is a long trench that stretches is along the river with hundreds // of wooden spears stuck into the ground to act as a barrier. There are
+1792980915	cmd	Alaric	50	28152	azeroth.are	standing	48	0	-	east		The River //   You are now going over a deep river, the humans first line of defense // against the Horde. To the west you can see a city.
+1792980916	cmd	Alaric	50	28151	azeroth.are	standing	48	0	-	east		The Battle Field //   You are standing on the edge of a battle! Exits go east, south, and west // over the river.
+1792980916	cmd	Alaric	50	28150	azeroth.are	standing	48	0	-	east		The Battle Field //   You are walking through a battle! There are exits to the east, south, // and west.
+1792980916	cmd	Alaric	50	28141	azeroth.are	standing	48	0	-	east		The Battle Field //   You are witnessing a battle take place! The exits are south and west. // [Exits: south west]
+1792980916	cmd	Alaric	50	28138	azeroth.are	standing	48	0	-	south		The Battle Field //   You are in the middle of a battle! The exits are north, south, and west. // [Exits: north south west]
+1792980917	cmd	Alaric	50	28137	azeroth.are	standing	48	0	-	south		The Battle Field //   When you get close enough to the army you realize it wasn't just one // army, it was two different armies! The armies belonged to the Orcish
+1792980917	cmd	Alaric	50	28136	azeroth.are	standing	48	0	-	east		The End of the Forest //   You can now see that there is a giant field ahead with an army in it. // Maybe they can tell you where this path goes. You can go east or west.
+1792980917	cmd	Alaric	50	28135	azeroth.are	standing	48	0	-	east		The Middle of the Forest //   You are now in what you think is the middle of the forest. But now you // don't feel like you're alone anymore. It feels like something is
+1792980918	cmd	Alaric	50	28134	azeroth.are	standing	48	0	-	east		In the Forest //   This place is so much better than the swamp. The trees here are huge, // some must be big enough live inside of! The same boring path goes west.
+1792980918	cmd	Alaric	50	28133	azeroth.are	standing	48	0	-	east		The End of The Swamp //   You are starting to notice the water level slowly get lower and lower. // It would seem that you are exiting the swamp. Now you are surrounded by
+1792980918	cmd	Alaric	50	28132	azeroth.are	standing	48	0	-	east		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1792980918	cmd	Alaric	50	28131	azeroth.are	standing	48	0	-	east		The Swamp //   You are still in the swamp, so get used to it. The path continues west. // [Exits: east west]
+1792980919	cmd	Alaric	50	28124	azeroth.are	standing	48	0	-	east		More Swamp //   You are walking through what you estimate to be the middle of the swamp // now. There are exits to the east and west.
+1792980919	cmd	Alaric	50	28122	azeroth.are	standing	48	0	-	east		More Swamp //   From here you can see some kind of fortress to the north. You think you // see a faint path to the east. You can also go west at this point.
+1792980919	cmd	Alaric	50	28123	azeroth.are	standing	48	0	-	east		On the Faint Path //   You are now on a small path heading east toward what appears to be an // abandoned farm. There is another exit to the west.
+1792980920	cmd	Alaric	50	28122	azeroth.are	standing	48	0	-	west		More Swamp //   From here you can see some kind of fortress to the north. You think you // see a faint path to the east. You can also go west at this point.
+1792980921	cmd	Alaric	50	28101	azeroth.are	standing	48	0	-	run	n	Beginning of the swamp // [Exits: north south] // Outside the gates of Black Rock Spire
+1792980922	cmd	Alaric	50	28101	azeroth.are	resting	48	0	-	wake		You stand up.
+1792980923	cmd	Alaric	50	28161	azeroth.are	standing	48	0	-	enter	po	You enter The Dark Portal // Your stomach flip flops. Everything goes black for a moment. // Watch Your Step!
+1792980924	cmd	Alaric	50	2497	dresden_halloween.are	standing	48	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792980925	cmd	Alaric	50	2497	dresden_halloween.are	standing	48	22	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Splendid - you've returned victorious!' // Questor Thews says 'Streak of 21 in a row! A +115% bonus has been added!'
+1792980928	cmd	Alaric	50	2497	dresden_halloween.are	standing	48	5	-	aquest	ga no	Wise choice. You safely collect 81 quest points.
+1792980930	cmd	Alaric	50	2497	dresden_halloween.are	standing	48	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    250 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792980935	session	Alaric	50	2497	dresden_halloween.are	quit	18749s	+0 levels	+0 exp	+5550940314 copper	47 kills	0 deaths	33 quests	2835 commands	10 refused	coin: loot 28p 66g 26s 12c, quests 5070p 3g 75s, dailies 432p 64g 32s, spent 15g
