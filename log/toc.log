@@ -198407,3 +198407,9 @@ Mon Oct 26 11:25:59 2026 :: EOF encountered on read.
 Mon Oct 26 11:30:12 2026 :: Treasure goblin: vanished from room 8761 (Jailer's Room, kerofk.are) (too long in one area).
 Mon Oct 26 11:31:03 2026 :: Sock.sinaddr:  178.156.189.113
 Mon Oct 26 11:31:03 2026 :: EOF encountered on read.
+Mon Oct 26 11:31:56 2026 :: Black market: the dealer appeared with 5 items (stock 1793014316), for 29 minutes.
+Mon Oct 26 11:33:00 2026 :: Black market: the dealer vanished from room 28114 (Going Up the Tower, azeroth.are) (wandering).
+Mon Oct 26 11:35:21 2026 :: Black market: the dealer vanished from room 2054 (Southern gate, catacomb.are) (wandering).
+Mon Oct 26 11:35:21 2026 :: Log Alaric [2497]: affects off: armor, bless, shield, sanctuary, haste, pass door, protection evil, fire shield, divine protection, giant strength, frenzy, detect invis, detect hidden, detect magic, detect good, detect evil, power gloves, shroud, sanctuary, haste, fly, pass door, protection evil, fire shield, divine protection, giant strength, empower, sanctuary, haste, fly, pass door, protection evil, fire shield, divine protection, giant strength, empower, titanic; max hp 8418 -> 1403; max mana 14694 -> 2449; max moves 6078 -> 1013; hp 8418 -> 1403
+Mon Oct 26 11:36:09 2026 :: Sock.sinaddr:  5.161.215.244
+Mon Oct 26 11:36:09 2026 :: EOF encountered on read.
