@@ -3116,6 +3116,9 @@ void    corpse_registry_died          ( CHAR_DATA *ch, OBJ_DATA *corpse,
 void    corpse_note_change            ( OBJ_DATA *container, OBJ_DATA *obj,
                                         bool in );
 void    corpse_registry_touched       ( OBJ_DATA *corpse, const char *why );
+bool    corpse_registry_hold    ( OBJ_DATA *corpse, char *id, size_t size );
+void    corpse_registry_unhold  ( OBJ_DATA *corpse );
+bool    corpse_registry_transferred( OBJ_DATA *corpse, const char *why );
 void    corpse_registry_moved         ( OBJ_DATA *corpse );
 void    corpse_registry_making        ( bool making );
 void    corpse_registry_forget_player ( const char *name );
@@ -3138,6 +3141,8 @@ void    restores_boot                 ( void );
 void    restores_login                ( CHAR_DATA *ch );
 bool    player_fix_has                ( CHAR_DATA *ch, const char *id );
 void    player_fix_record             ( CHAR_DATA *ch, const char *id );
+void    player_fix_forget             ( CHAR_DATA *ch, const char *id );
+int     player_file_fix_has           ( const char *name, const char *id );
 int     snapshot_read_gear     ( CHAR_DATA *ch, const char *path,
                                  char *why, size_t why_size, OBJ_DATA **list );
 void    snapshot_discard_gear  ( OBJ_DATA *list );

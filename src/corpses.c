@@ -51,6 +51,7 @@ typedef struct corpse_track
     CORPSE_RECORD rec;
     OBJ_DATA     *corpse;
     bool          dirty;
+    bool          held;         /* a transfer under way: not written */
 } CORPSE_TRACK;
 
 static CORPSE_TRACK *tracks = NULL;
@@ -503,6 +504,85 @@ bool corpse_registry_has( const char *name )
     return false;
 }
 
+/*
+ * Resurrection gives a corpse's contents to its owner (resurrect.c), and
+ * the gift is only real once the owner's file is on the disk. Until then
+ * the corpse's live record must stay exactly as it was before anything
+ * moved -- it is the only other copy (review, 2026-10-26: ACCEPT ended the
+ * corpse and only then saved, and a failed save with a crash lost both).
+ *
+ * HOLD writes the record now, on the disk, and stops every later write
+ * of it. UNHOLD lets it be written again (the transfer was put back).
+ * TRANSFERRED moves the held record -- exactly what was given -- into the
+ * owner's history as "resurrected" and stops keeping the corpse; it says
+ * false if the record could not be moved out of live/, which the caller
+ * must not then call done: a live record would be laid again at boot.
+ */
+bool corpse_registry_hold( OBJ_DATA *corpse, char *id, size_t size )
+{
+    int i = track_find( corpse );
+
+    if ( size > 0 )
+        id[0] = '\0';
+    if ( i < 0 || !track_write( &tracks[i] ) )
+        return false;
+    tracks[i].held = true;
+    toc_strlcpy( id, tracks[i].rec.id, size );
+    return true;
+}
+
+void corpse_registry_unhold( OBJ_DATA *corpse )
+{
+    int i = track_find( corpse );
+
+    if ( i >= 0 )
+    {
+        tracks[i].held = false;
+        tracks[i].dirty = true;
+    }
+}
+
+/* The held live record into history under `label`, by rename: what is
+   moved is exactly what was on the disk. */
+static bool corpse_live_to_history( const CORPSE_RECORD *rec, const char *label )
+{
+    char from[MAX_STRING_LENGTH], to[MAX_STRING_LENGTH], hdir[MAX_INPUT_LENGTH];
+
+    live_path( rec, from, sizeof(from) );
+    if ( !corpse_dirs( rec->owner, hdir, sizeof(hdir) ) )
+        return false;
+    history_name( hdir, rec->id, label, to, sizeof(to) );
+    if ( rename( from, to ) != 0 )
+        return false;
+    durable_dir_sync( from );
+    return durable_dir_sync( to );
+}
+
+bool corpse_registry_transferred( OBJ_DATA *corpse, const char *why )
+{
+    char buf[MAX_STRING_LENGTH];
+    int i = track_find( corpse );
+    bool moved;
+
+    if ( i < 0 )
+        return false;
+    moved = corpse_live_to_history( &tracks[i].rec, "resurrected" );
+    snprintf( buf, sizeof(buf), "ended (resurrected): %s; everything in it went to its "
+              "owner, whose file was saved first%s", why,
+              moved ? "" : " -- but the record could NOT be moved out of live/" );
+    corpse_log( &tracks[i].rec, buf );
+    recovery_record( "corpse", moved ? "archived" : "archive-failed", tracks[i].rec.owner,
+                     tracks[i].rec.id, "resurrected", playlog_cause(), buf );
+    if ( !moved )
+    {
+        bug( "corpses: a resurrected corpse's record could not leave live/", 0 );
+        tracks[i].held = true;      /* never written again from the empty object */
+        return false;
+    }
+    track_drop( i );
+    return true;
+}
+
 /* Every pulse: what changed, written within a second; the timers every
    ten minutes; a corpse that has ended up carried by somebody, archived. */
 void corpse_registry_update( void )
@@ -531,8 +611,11 @@ void corpse_registry_update( void )
     for ( i = track_count - 1; i >= 0; i-- )
     {
         CHAR_DATA *carrier;
-        ROOM_INDEX_DATA *room = corpse_where( tracks[i].corpse, &carrier );
+        ROOM_INDEX_DATA *room;
 
+        if ( tracks[i].held )
+            continue;
+        room = corpse_where( tracks[i].corpse, &carrier );
         if ( room == NULL )
         {
             char why[MAX_INPUT_LENGTH];
@@ -556,7 +639,7 @@ void corpse_registry_flush_all( void )
     {
         CHAR_DATA *carrier;
 
-        if ( corpse_where( tracks[i].corpse, &carrier ) != NULL )
+        if ( !tracks[i].held && corpse_where( tracks[i].corpse, &carrier ) != NULL )
             track_write( &tracks[i] );
     }
 }
@@ -733,6 +816,48 @@ void corpse_registry_boot( void )
                 continue;
             }
             snprintf( path, sizeof(path), "%s%s", CORPSE_LIVE_DIR, de->d_name );
+
+            /* A resurrection the last run left pending: the owner's file
+               says whether the gift reached it. If it did, the corpse is
+               spent -- into history, never laid again; if it did not,
+               nothing was given and the corpse lies where it was. */
+            if ( corpse_file_header( path, &rec ) >= 0 )
+            {
+                char op[64], mark[80];
+                int has;
+
+                snprintf( op, sizeof(op), "resurrect:%s", rec.id );
+                snprintf( mark, sizeof(mark), "restore:%s", op );
+                if ( recovery_request_state( op ) == RECOVERY_PENDING )
+                {
+                    has = player_file_fix_has( rec.owner, mark );
+                    if ( has == 1 && corpse_live_to_history( &rec, "resurrected" ) )
+                    {
+                        recovery_record( "request", "committed", rec.owner, op, "reconcile",
+                                         "boot", "the owner's file held it; the corpse "
+                                         "went to history at boot" );
+                        corpse_log( &rec, "ended (resurrected): settled at boot -- the "
+                                    "owner's file held everything" );
+                        snprintf( buf, sizeof(buf), "Corpse keeper: %s's corpse %s was "
+                                  "resurrected before the restart; settled.", rec.owner, rec.id );
+                        log_string( buf );
+                        continue;
+                    }
+                    if ( has != 0 )
+                    {
+                        /* Cannot say: never laid in the world twice. */
+                        snprintf( buf, sizeof(buf), "Corpse keeper: %s's corpse %s has a "
+                                  "resurrection pending that cannot be settled now; it is "
+                                  "kept in live/ and not laid in the world.", rec.owner, rec.id );
+                        log_string( buf );
+                        bug( "corpse_registry_boot: a pending resurrection was left unsettled", 0 );
+                        continue;
+                    }
+                    recovery_record( "request", "abandoned", rec.owner, op, "reconcile", "boot",
+                                     "it never reached the owner's file; the corpse lies "
+                                     "where it was" );
+                }
+            }
             if ( corpse_file_read( path, &rec, &list, why, sizeof(why) ) < 0
             ||   ( corpse = corpse_make_object( &rec ) ) == NULL
             ||   ( room = corpse_room( rec.room, note, sizeof(note) ) ) == NULL )

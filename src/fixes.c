@@ -186,6 +186,65 @@ void player_fix_record( CHAR_DATA *ch, const char *id )
         fix_mark( ch, id );
 }
 
+/* A mark taken back: a transfer that did not reach the disk is undone in
+   memory too, and must not leave a mark behind to be saved later. */
+void player_fix_forget( CHAR_DATA *ch, const char *id )
+{
+    char buf[MAX_STRING_LENGTH] = "";
+    char word[MAX_INPUT_LENGTH];
+    const char *p;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || ch->pcdata->fixes_done == NULL )
+        return;
+    for ( p = ch->pcdata->fixes_done; *p != '\0'; )
+    {
+        size_t n = 0;
+
+        while ( *p == ' ' )
+            p++;
+        while ( *p != '\0' && *p != ' ' && n < sizeof(word) - 1 )
+            word[n++] = *p++;
+        word[n] = '\0';
+        while ( *p != '\0' && *p != ' ' )
+            p++;
+        if ( word[0] == '\0' || !strcmp( word, id ) )
+            continue;
+        if ( buf[0] != '\0' )
+            toc_strlcat( buf, " ", sizeof(buf) );
+        toc_strlcat( buf, word, sizeof(buf) );
+    }
+    free_string( ch->pcdata->fixes_done );
+    ch->pcdata->fixes_done = str_dup( buf );
+}
+
+/* Whether a player's FILE holds a mark: its Fixes line, as written. For
+   settling at boot, before anybody is loaded. -1 if the file cannot be
+   read, so a caller can tell "not there" from "cannot say". */
+int player_file_fix_has( const char *name, const char *id )
+{
+    char path[MAX_INPUT_LENGTH];
+    char line[MAX_STRING_LENGTH];
+    FILE *fp;
+    int found = 0;
+
+    snprintf( path, sizeof(path), "%s%s", PLAYER_DIR, capitalize( name ) );
+    if ( ( fp = fopen( path, "r" ) ) == NULL )
+        return -1;
+    while ( fgets( line, sizeof(line), fp ) != NULL )
+    {
+        if ( !strcmp( line, "End\n" ) || !strcmp( line, "End\r\n" ) )
+            break;
+        if ( !strncmp( line, "Fixes ", 6 ) )
+        {
+            line[strcspn( line, "~\r\n" )] = '\0';
+            found = fix_done( line + 6, id ) ? 1 : 0;
+            break;
+        }
+    }
+    fclose( fp );
+    return found;
+}
+
 /*
  * From the nanny, once the character is in their room: every fix not yet
  * applied to them runs (or, for a character just made, is only marked).

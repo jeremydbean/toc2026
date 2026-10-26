@@ -1114,6 +1114,23 @@ back twice; it ends in the corpse registry as "resurrected by <caster>".
 ACCEPT sits after DEVOTE in the command table, so `ac` stays ACHIEVEMENTS
 and `de` DEPART. Adding it took `MAX_SKILL` to 233: the table was full.
 
+**ACCEPT is a transfer that is on the disk or not done** (review,
+2026-10-26: it ended the corpse first and ignored the save). In order:
+`corpse_registry_hold` writes the corpse's record and stops the registry
+rewriting it; a pending `resurrect:<corpse id>` receipt; every object
+(coin piles too) moves to the owner; the mark `restore:<op>` goes in the
+file's `Fixes`; the save. Not `DURABLE_OK`: everything goes back into the
+corpse in reverse, the mark is forgotten (`player_fix_forget`), the hold
+lifted, the receipt abandoned and the offer still stands. On the disk:
+`corpse_registry_transferred` renames the held record into history as
+`resurrected`, the receipt commits, and only then does coin reach the
+purse and the character the Temple. A crash between the save and the
+commit is settled at boot: a pending receipt whose owner's file holds
+the mark (`player_file_fix_has`) sends the record to history instead of
+laying it; without the mark the corpse is laid whole and the receipt
+abandoned; an unreadable file keeps the record and lays nothing.
+`tests/test_resurrection_transfer.py`.
+
 ## The Seasonal Areas Are Generated
 
 `src/season.c` swaps three areas for a holiday copy **at boot**: `dresden`,

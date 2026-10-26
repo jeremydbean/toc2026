@@ -19,10 +19,14 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+#include <unistd.h>
 #include "merc.h"
 #include "interp.h"
 
 #define RESURRECT_OFFER_SECONDS  120
+/* The most top-level objects one ACCEPT carries (a corpse holds a
+   character's kit, not a warehouse). */
+#define MAX_RESURRECT_OBJECTS    512
 
 /* Whose body this is: the owner, or for a corpse left lootable (a WANTED
    player's) the name it was made with -- as the corpse registry reads it. */
@@ -202,15 +206,37 @@ void spell_resurrection( int sn, int level, CHAR_DATA *ch, void *vo )
     log_string( buf );
 }
 
+/*
+ * ACCEPT gives the corpse's contents to its owner as a transfer that is
+ * either done -- on the disk -- or not done at all (review, 2026-10-26: it
+ * ended the corpse first and saved last, ignoring the result, so a failed
+ * save and a crash lost both copies):
+ *
+ *   1. the corpse's record written now and HELD as it is (corpses.c);
+ *   2. a pending receipt, resurrect:<corpse id>, in the ledger;
+ *   3. everything moved to the owner -- coin as coin, for now -- and the
+ *      mark restore:resurrect:<id> in their file;
+ *   4. the owner's save, on the disk;
+ *   5. the held record into history as "resurrected", then the committed
+ *      receipt; only then the purse, the room and the corpse's end.
+ *
+ * A save that fails puts everything back in the corpse, takes the mark
+ * off and lets the corpse be written again: nothing happened, and the
+ * offer stands. A crash between 4 and 5 is settled at boot from the
+ * owner's file (corpse_registry_boot): marked, the corpse goes to history;
+ * not marked, it is laid again with everything in it.
+ */
 void do_accept( CHAR_DATA *ch, char *argument )
 {
     OBJ_DATA *corpse, *obj, *obj_next;
+    OBJ_DATA *moved[MAX_RESURRECT_OBJECTS];
     ROOM_INDEX_DATA *to;
     CHAR_DATA *caster;
     const char *why;
     char caster_name[sizeof(ch->pcdata->resurrect_by)];
     char note[MAX_STRING_LENGTH];
-    int given = 0, kept = 0;
+    char id[32], op[64], mark[80];
+    int given = 0, kept = 0, i, status;
 
     UNUSED_PARAM( argument );
     if ( IS_NPC(ch) || ch->pcdata == NULL || !resurrect_offer_open( ch ) )
@@ -232,9 +258,100 @@ void do_accept( CHAR_DATA *ch, char *argument )
         send_to_char( "\n\r", ch );
         return;
     }
+    for ( obj = corpse->contains; obj != NULL; obj = obj->next_content )
+        given++;
+    if ( given > MAX_RESURRECT_OBJECTS )
+    {
+        send_to_char( "Your body holds more than one call can carry back; let somebody "
+                      "lighten it first.\n\r", ch );
+        return;
+    }
+    given = 0;
 
+    /* 1 and 2: the corpse as it is, on the disk and held; the receipt. */
+    if ( !corpse_registry_hold( corpse, id, sizeof(id) ) )
+    {
+        send_to_char( "The call wavers: your body's record could not be kept safe, so "
+                      "nothing was moved.  Try again in a moment.\n\r", ch );
+        return;
+    }
+    snprintf( op, sizeof(op), "resurrect:%s", id );
+    snprintf( mark, sizeof(mark), "restore:%s", op );
     toc_strlcpy( caster_name, ch->pcdata->resurrect_by, sizeof(caster_name) );
+    snprintf( note, sizeof(note), "corpse %s in room %d, called by %s", id, to->vnum,
+              caster_name );
+    if ( !recovery_record( "request", "pending", ch->name, op, "resurrect", caster_name, note ) )
+    {
+        corpse_registry_unhold( corpse );
+        send_to_char( "The call wavers: it could not be recorded, so nothing was moved.\n\r", ch );
+        return;
+    }
+
+    /* 3: everything to its owner, coin as coin until the gift is kept. */
+    for ( obj = corpse->contains; obj != NULL; obj = obj_next )
+    {
+        obj_next = obj->next_content;
+        obj_from_obj( obj );
+        obj_to_char( obj, ch );
+        moved[given++] = obj;
+    }
+    player_fix_record( ch, mark );
+
+    /* 4: on the disk, or none of it. */
+    save_char_obj( ch );
+    status = save_char_obj_status();
+    if ( status != DURABLE_OK )
+    {
+        /* Back as it lay -- obj_to_obj puts each at the front, so last
+           first -- and the record free to be written again. */
+        for ( i = given - 1; i >= 0; i-- )
+        {
+            obj_from_char( moved[i] );
+            obj_to_obj( moved[i], corpse );
+        }
+        player_fix_forget( ch, mark );
+        corpse_registry_unhold( corpse );
+        recovery_record( "request", "abandoned", ch->name, op, "resurrect", caster_name,
+                         status == DURABLE_FAILED ? "the owner's file could not be saved; "
+                         "everything was put back" : "the save was not confirmed on the "
+                         "disk; everything was put back" );
+        send_to_char( "The call wavers and holds: your return could not be written down, "
+                      "so your body still lies where it was with everything in it.  The "
+                      "call still stands -- ACCEPT again in a moment.\n\r", ch );
+        snprintf( note, sizeof(note), "RESURRECT: %s's ACCEPT was undone: their file could "
+                  "not be saved (corpse %s).", ch->name, id );
+        log_string( note );
+        return;
+    }
+    if ( recovery_fault( "crash-before-commit" ) )
+        _exit( 3 );             /* the test of a crash between the two */
+
+    /* 5: the corpse's record into history, then the receipt. */
+    snprintf( note, sizeof(note), "resurrected by %s", caster_name );
+    if ( !corpse_registry_transferred( corpse, note ) )
+        send_to_char( "Your body's record could not be closed; staff are told, and it "
+                      "will not come back.\n\r", ch );
+    else if ( !recovery_record( "request", "committed", ch->name, op, "resurrect",
+                                caster_name, "their file was saved with everything" ) )
+        bug( "do_accept: a resurrection's receipt could not be committed", 0 );
     resurrect_clear( ch );
+
+    /* Coin into the purse now; what it cannot take falls to the floor. The
+       file already holds it as coin, so a failure here loses nothing. */
+    for ( i = 0; i < given; i++ )
+    {
+        obj = moved[i];
+        if ( obj->item_type != ITEM_MONEY )
+            continue;
+        if ( obj->value[0] > 0 && can_adjust_coin_balance( ch, obj->value[0], obj->value[1] ) )
+        {
+            obj_from_char( obj );
+            adjust_coin_balance( ch, obj->value[0], obj->value[1] );
+            extract_obj( obj );
+        }
+        else
+            kept++;
+    }
 
     act( "$n fades away like a breath on glass.", ch, NULL, NULL, TO_ROOM );
     char_from_room( ch );
@@ -242,44 +359,19 @@ void do_accept( CHAR_DATA *ch, char *argument )
     ch->hit = 1;
     if ( ch->position < POS_STANDING )
         ch->position = POS_STANDING;
-
-    /* Everything the body held comes back with its owner, coin into the
-       purse, the rest as it lay -- weight or no weight, as any restore. */
-    for ( obj = corpse->contains; obj != NULL; obj = obj_next )
+    for ( i = 0; i < given && kept > 0; i++ )
     {
-        obj_next = obj->next_content;
-        if ( obj->item_type == ITEM_MONEY )
+        obj = moved[i];
+        if ( obj->item_type == ITEM_MONEY && obj->carried_by == ch )
         {
-            if ( obj->value[0] <= 0
-            ||   !can_adjust_coin_balance( ch, obj->value[0], obj->value[1] ) )
-            {
-                kept++;
-                continue;
-            }
-            obj_from_obj( obj );
-            adjust_coin_balance( ch, obj->value[0], obj->value[1] );
-            extract_obj( obj );
-            given++;
-            continue;
+            obj_from_char( obj );
+            obj_to_room( obj, to );
+            kept--;
         }
-        obj_from_obj( obj );
-        obj_to_char( obj, ch );
-        given++;
     }
 
     act( "$p stirs, and $n rises from it, pale and gasping.", ch, corpse, NULL, TO_ROOM );
     send_to_char( "You open your eyes in your own body again, at the very edge of life.\n\r", ch );
-
-    /* Always used up, as RAISE DEAD's is: a corpse left holding coin
-       could call its owner back to it again and again. What the purse
-       could not take falls to the floor here. */
-    snprintf( note, sizeof(note), "resurrected by %s", caster_name );
-    if ( kept > 0 && corpse->contains != NULL )
-    {
-        send_to_char( "Some of the coin is more than you can carry; it falls to the ground.\n\r", ch );
-        spill_corpse( corpse );
-    }
-    corpse_registry_touched( corpse, note );
     act( "$p crumbles to dust.", ch, corpse, NULL, TO_CHAR );
     act( "$p crumbles to dust.", ch, corpse, NULL, TO_ROOM );
     extract_obj( corpse );
