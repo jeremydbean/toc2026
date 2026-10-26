@@ -24459,3 +24459,111 @@
 1793045802	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	at	ala look	A sudden wind blows you from the tree! // [Room: 2497]     [Sector: Forest]     [Flags: No_Mob Private] //   You reach out for a nearby branch, but to no avail!  You feel the sensation
 1793046341	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] [*AFK*] Alaric. // Players found: 1
 1793046342	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	worth		You have 1633 platinum, 89 gold, 55 silver, 97 copper // and 115062 experience (2238 exp to level).
+1793047693	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	look		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793047695	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	afk		AFK mode removed.
+1793047696	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	17	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Alaric. I have just the task for you.' // Questor Thews tells you 'Raiders stole The Heart of Tifarah from the realm!'
+1793047701	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1793047701	cmd	Alaric	50	2405	dresden_halloween.are	standing	100	0	-	west		Western Oak Tree Square. //   This is the western side of Oak Tree Square.  To the west you see Temple Blvd // which leads to the western gates of the city.
+1793047701	cmd	Alaric	50	2433	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
+1793047702	cmd	Alaric	50	2434	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793047702	cmd	Alaric	50	2435	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793047702	cmd	Alaric	50	2436	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793047702	cmd	Alaric	50	2437	dresden_halloween.are	standing	100	0	-	west		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square.
+1793047703	cmd	Alaric	50	2438	dresden_halloween.are	standing	100	0	-	west		Inside the Western Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1793047703	cmd	Alaric	50	2438	dresden_halloween.are	standing	100	0	-	open	west	Ok.
+1793047703	cmd	Alaric	50	2439	dresden_halloween.are	standing	100	0	-	west		Outside the Western Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1793047704	cmd	Alaric	50	3900	dresden_halloween.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the
+1793047705	cmd	Alaric	50	3901	dresden_halloween.are	standing	100	0	-	north		West trail around Dresden //   You are on a dusty trail following the outside wall of Dresden. // To the east the wall towers over you and to the west you see the
+1793047705	cmd	Alaric	50	3902	dresden_halloween.are	standing	100	0	-	north		Northwest corner of dusty trail. //   You are standing outside the northwestern corner of the city wall. // The trail leads east following the north wall and south towards the gate.
+1793047705	cmd	Alaric	50	3903	dresden_halloween.are	standing	100	0	-	east		Dusty trail along north wall. //   You are walking on the trail following the outside of Dresden's // northern wall.
+1793047705	cmd	Alaric	50	3904	dresden_halloween.are	standing	100	0	-	east		The long dusty trail following the north wall. //   You are along the northern wall of Dresden.  You can continue along // the trail to the east or west, or head onwards to the plains of the north
+1793047706	cmd	Alaric	50	300	plains.are	standing	100	0	-	north		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you study
+1793047706	cmd	Alaric	50	315	plains.are	standing	100	0	-	north		Gallow hill //   You walk in the grassy plains. On this little hill you can see // a gallows, with rotting human tissue hanging from the robe.
+1793047706	cmd	Alaric	50	320	plains.are	standing	100	0	-	north		Grassy plains //   You walk in some grassy plains. The wind is strong and rough. To the // north you can see the foothills and further on mountain peaks are visible.
+1793047706	cmd	Alaric	50	305	plains.are	standing	100	0	-	east		Path in the plains //   You are walking on a path situated in the rough plains. // You feel the strong winds blow through your hair as you watch the
+1793047707	cmd	Alaric	50	306	plains.are	standing	100	0	-	north		Path in the foothills //   You are on the path leading through the small foothills. // The wind blow through your hair as you study the beautiful
+1793047707	cmd	Alaric	50	326	plains.are	standing	100	0	-	north		The pool in the foothills //   You are standing by a pool in the small foothills. It is clear and cold. // Next to the pool grows an enormous oak tree.  It must stand over a hundred
+1793047707	cmd	Alaric	50	309	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on a path situated in the foothills. // From the west you sense a certain freshness and the path
+1793047707	cmd	Alaric	50	310	plains.are	standing	100	0	-	east		Path in the foothills //   You are walking on a long path in the east-west direction. // The surroundings are green, vegetated foothills.
+1793047708	cmd	Alaric	50	327	plains.are	standing	100	0	-	north		The foothills //   You are walking in some foothills. It is rather hard to move here. // Further to the north you can see the mountains towering over you.
+1793047708	cmd	Alaric	50	313	plains.are	standing	100	0	-	east		Road to Ofcol //   You are walking on a wide road with trail marks on it.  To the north // you see the village of Ofcol and to the south there is the T intersection.
+1793047708	cmd	Alaric	50	314	plains.are	standing	100	0	-	north		Road to Ofcol //   You are walking on a wide road with trail marks on it.  From the north // you hear the villagers of Ofcol go about their daily business. To the south
+1793047708	cmd	Alaric	50	52	connect.are	standing	100	0	-	north		Outside Ofcol //   You are standing outside the village of Ofcol. // The village looks very small, but still a nice and safe place to stay.
+1793047709	cmd	Alaric	50	5550	ofcol.are	standing	100	0	-	north		Village street //   You stand at the small village street in Ofcol. // From here you see small houses and only few people.
+1793047739	cmd	Alaric	50	5551	ofcol.are	standing	100	0	-	north		Village street //   You are standing on the village street of Ofcol. // East from here is a small alley and north you enter the village
+1793047739	cmd	Alaric	50	5553	ofcol.are	standing	100	0	-	east		The small alley //   You are in a small, quiet alley.  From here you see the village street // to the west and a small room lies to the south.
+1793047740	cmd	Alaric	50	601	ofcol.are	standing	100	0	-	east		The Big Intersection //   You are in the big intersection between Raff Way and Impy Way.  Crowds  // of people walk past you as they go on their daily tasks.  Raff Way continues
+1793047740	cmd	Alaric	50	625	ofcol.are	standing	100	0	-	north		Impy Way //   You are on Impy Way.  East and west of you are big houses.  Impy Way // continues north and reaches a big intersection south.  Children are running to
+1793047740	cmd	Alaric	50	632	ofcol.are	standing	100	0	-	north		Impy Way //   You are on Impy Way.  Houses are to the east and west of here.  Impy Way // continues north and south.  There are many people walking along the streets.
+1793047740	cmd	Alaric	50	637	ofcol.are	standing	100	0	-	north		Impy Way //   You are on Impy Way.  Houses are to the east and west of here.  Impy Way // continues south.  To the north is a big intersection.  There are many people
+1793047741	cmd	Alaric	50	637	ofcol.are	standing	100	0	-	open	east	Ok.
+1793047741	cmd	Alaric	50	638	ofcol.are	standing	100	0	-	east		House //   You are in a house.  The living room and kitchen are all bundled into // this room.  There is a bedroom south of here.  The exit is west.
+1793047743	cmd	Alaric	50	638	ofcol.are	standing	100	0	-	exits		Obvious exits: // South - Bedroom // West  - Impy Way
+1793047745	cmd	Alaric	50	637	ofcol.are	standing	100	0	-	west		Impy Way //   You are on Impy Way.  Houses are to the east and west of here.  Impy Way // continues south.  To the north is a big intersection.  There are many people
+1793047746	cmd	Alaric	50	637	ofcol.are	standing	100	0	-	exits		Obvious exits: // North - The Big Intersection // East  - House
+1793047747	cmd	Alaric	50	637	ofcol.are	standing	100	0	-	open		Ok.
+1793047747	cmd	Alaric	50	637	ofcol.are	standing	100	0	-	exits		Obvious exits: // North - The Big Intersection // East  - House
+1793047752	cmd	Alaric	50	632	ofcol.are	standing	100	0	-	south		Impy Way //   You are on Impy Way.  Houses are to the east and west of here.  Impy Way // continues north and south.  There are many people walking along the streets.
+1793047753	cmd	Alaric	50	632	ofcol.are	standing	100	0	-	exits		Obvious exits: // North - Impy Way // East  - Closed door
+1793047755	cmd	Alaric	50	632	ofcol.are	standing	100	0	-	open		Ok.
+1793047755	cmd	Alaric	50	632	ofcol.are	standing	100	0	-	open		Ok.
+1793047756	cmd	Alaric	50	632	ofcol.are	standing	100	0	-	exits		Obvious exits: // North - Impy Way // East  - House
+1793047756	cmd	Alaric	50	625	ofcol.are	standing	100	0	-	south		Impy Way //   You are on Impy Way.  East and west of you are big houses.  Impy Way // continues north and reaches a big intersection south.  Children are running to
+1793047758	cmd	Alaric	50	625	ofcol.are	standing	100	0	-	open		It's locked.
+1793047758	cmd	Alaric	50	625	ofcol.are	standing	100	0	-	worth		You have 1633 platinum, 89 gold, 55 silver, 97 copper // and 115062 experience (2238 exp to level).
+1793047759	cmd	Alaric	50	625	ofcol.are	standing	100	0	-	exits		Obvious exits: // North - Impy Way // East  - Closed door
+1793047760	cmd	Alaric	50	625	ofcol.are	standing	100	0	-	open		It's locked.
+1793047761	cmd	Alaric	50	625	ofcol.are	standing	100	0	-	open		It's locked.
+1793047762	cmd	Alaric	50	601	ofcol.are	standing	100	0	-	south		The Big Intersection //   You are in the big intersection between Raff Way and Impy Way.  Crowds  // of people walk past you as they go on their daily tasks.  Raff Way continues
+1793047764	cmd	Alaric	50	601	ofcol.are	standing	100	0	-	exits		Obvious exits: // North - Impy Way // East  - Raff Way
+1793047765	cmd	Alaric	50	602	ofcol.are	standing	100	0	-	south		Impy Way //   You are on Impy Way.  You can see a leather shop east and a blacksmith // west.  To the north you see a big intersection, and Impy Way continues south.
+1793047765	cmd	Alaric	50	602	ofcol.are	standing	100	0	-	exits		Obvious exits: // North - The Big Intersection // East  - The Leather Shop
+1793047766	cmd	Alaric	50	605	ofcol.are	standing	100	0	-	south		Impy Way //   You are on Impy Way.  To the east is a meat store, and to the west is a // pawn shop.  Impy Way continues north and south.  People are rushing around you
+1793047767	cmd	Alaric	50	605	ofcol.are	standing	100	0	-	exits		Obvious exits: // North - Impy Way // East  - The Meat Store
+1793047768	cmd	Alaric	50	608	ofcol.are	standing	100	0	-	south		Impy Way //   You are on Impy Way.  To the east is Farmer's Market, and to the west is // Nyles' House of Ale.  Impy Way runs north and ends south of here.  You can hear
+1793047768	cmd	Alaric	50	608	ofcol.are	standing	100	0	-	exits		Obvious exits: // North - Impy Way // East  - Farmer's Market
+1793047770	cmd	Alaric	50	611	ofcol.are	standing	100	0	-	south		The End of Impy Way //   You are at the end of Impy and of the city part of Ofcol.  To the east is // a dirt road leading toward the farm animals.  West from here are fields.  Impy
+1793047771	cmd	Alaric	50	611	ofcol.are	standing	100	0	-	exits		Obvious exits: // North - Impy Way // East  - Dirt Road
+1793047827	cmd	Alaric	50	608	ofcol.are	standing	100	0	-	north		Impy Way //   You are on Impy Way.  To the east is Farmer's Market, and to the west is // Nyles' House of Ale.  Impy Way runs north and ends south of here.  You can hear
+1793047828	cmd	Alaric	50	605	ofcol.are	standing	100	0	-	north		Impy Way //   You are on Impy Way.  To the east is a meat store, and to the west is a // pawn shop.  Impy Way continues north and south.  People are rushing around you
+1793047828	cmd	Alaric	50	602	ofcol.are	standing	100	0	-	north		Impy Way //   You are on Impy Way.  You can see a leather shop east and a blacksmith // west.  To the north you see a big intersection, and Impy Way continues south.
+1793047828	cmd	Alaric	50	601	ofcol.are	standing	100	0	-	north		The Big Intersection //   You are in the big intersection between Raff Way and Impy Way.  Crowds  // of people walk past you as they go on their daily tasks.  Raff Way continues
+1793047828	cmd	Alaric	50	625	ofcol.are	standing	100	0	-	north		Impy Way //   You are on Impy Way.  East and west of you are big houses.  Impy Way // continues north and reaches a big intersection south.  Children are running to
+1793047829	cmd	Alaric	50	632	ofcol.are	standing	100	1	-	north		Impy Way //   You are on Impy Way.  Houses are to the east and west of here.  Impy Way // continues north and south.  There are many people walking along the streets.
+1793047829	cmd	Alaric	50	637	ofcol.are	standing	100	0	-	north		Impy Way //   You are on Impy Way.  Houses are to the east and west of here.  Impy Way // continues south.  To the north is a big intersection.  There are many people
+1793047829	cmd	Alaric	50	642	ofcol.are	standing	100	0	-	north		The Big Intersection //   You are on the intersection of Impy Way and Swiftest Way.  To the north of // you is a big house.  Swiftest Way runs east and west, and Impy way continues
+1793047829	cmd	Alaric	50	642	ofcol.are	standing	100	0	-	open	north	It's locked.
+1793047830	cmd	Alaric	50	642	ofcol.are	standing	100	0	-	north		The door is closed.
+1793047832	cmd	Alaric	50	642	ofcol.are	standing	100	0	-	exits		Obvious exits: // North - Closed door // East  - Swiftest Way
+1793047833	cmd	Alaric	50	642	ofcol.are	standing	100	0	-	open	north	It's locked.
+1793047834	cmd	Alaric	50	642	ofcol.are	standing	100	0	-	north		The door is closed.
+1793047835	cmd	Alaric	50	649	ofcol.are	standing	100	0	-	west		Swiftest Way //   You are on Swiftest Way, the commoner's residential area.  Small houses // are north and south of you.  Swiftest Way continues west, and to the east you
+1793047836	cmd	Alaric	50	649	ofcol.are	standing	100	0	-	exits		Obvious exits: // North - Small House // East  - The Big Intersection
+1793047837	cmd	Alaric	50	642	ofcol.are	standing	100	0	-	east		The Big Intersection //   You are on the intersection of Impy Way and Swiftest Way.  To the north of // you is a big house.  Swiftest Way runs east and west, and Impy way continues
+1793047837	cmd	Alaric	50	646	ofcol.are	standing	100	0	-	east		Swiftest Way //   You are on Swiftest Way, the commoner's residential area.  Small houses // are north and south of you.  Swiftest Way continues east, and west is a big
+1793047838	cmd	Alaric	50	646	ofcol.are	standing	100	0	-	exits		Obvious exits: // North - Small House // East  - Swiftest Way
+1793047839	cmd	Alaric	50	642	ofcol.are	standing	100	0	-	west		The Big Intersection //   You are on the intersection of Impy Way and Swiftest Way.  To the north of // you is a big house.  Swiftest Way runs east and west, and Impy way continues
+1793047842	cmd	Alaric	50	637	ofcol.are	standing	100	0	-	south		Impy Way //   You are on Impy Way.  Houses are to the east and west of here.  Impy Way // continues south.  To the north is a big intersection.  There are many people
+1793047843	cmd	Alaric	50	637	ofcol.are	standing	100	0	-	exits		Obvious exits: // North - The Big Intersection // East  - House
+1793047858	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // [50 Dwarf   Monk  ] Alaric. // Players found: 2
+1793047860	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	at	ala look	Impy Way // [Room: 637]     [Sector: City]     [Flags: none] //   You are on Impy Way.  Houses are to the east and west of here.  Impy Way
+1793047866	session	Killuminati	70	1	limbo_halloween.are	quit	2423s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	13 commands	0 refused	coin: none
+1793047868	cmd	Alaric	50	642	ofcol.are	standing	100	0	-	north		The Big Intersection //   You are on the intersection of Impy Way and Swiftest Way.  To the north of // you is a big house.  Swiftest Way runs east and west, and Impy way continues
+1793047868	cmd	Alaric	50	642	ofcol.are	standing	100	0	-	open	north	It's locked.
+1793047869	cmd	Alaric	50	642	ofcol.are	standing	100	0	-	north		The door is closed.
+1793047872	cmd	Alaric	50	642	ofcol.are	standing	100	0	-	open	north	It's locked.
+1793047873	cmd	Alaric	50	642	ofcol.are	standing	100	0	-	north		The door is closed.
+1793047914	cmd	Alaric	50	637	ofcol.are	standing	100	0	-	south		Impy Way //   You are on Impy Way.  Houses are to the east and west of here.  Impy Way // continues south.  To the north is a big intersection.  There are many people
+1793047914	cmd	Alaric	50	632	ofcol.are	standing	100	0	-	south		Impy Way //   You are on Impy Way.  Houses are to the east and west of here.  Impy Way // continues north and south.  There are many people walking along the streets.
+1793047914	cmd	Alaric	50	625	ofcol.are	standing	100	0	-	south		Impy Way //   You are on Impy Way.  East and west of you are big houses.  Impy Way // continues north and reaches a big intersection south.  Children are running to
+1793047914	cmd	Alaric	50	601	ofcol.are	standing	100	0	-	south		The Big Intersection //   You are in the big intersection between Raff Way and Impy Way.  Crowds  // of people walk past you as they go on their daily tasks.  Raff Way continues
+1793047915	cmd	Alaric	50	5553	ofcol.are	standing	100	0	-	west		The small alley //   You are in a small, quiet alley.  From here you see the village street // to the west and a small room lies to the south.
+1793047915	cmd	Alaric	50	5551	ofcol.are	standing	100	0	-	west		Village street //   You are standing on the village street of Ofcol. // East from here is a small alley and north you enter the village
+1793047915	cmd	Alaric	50	5550	ofcol.are	standing	100	0	-	south		Village street //   You stand at the small village street in Ofcol. // From here you see small houses and only few people.
+1793047917	cmd	Alaric	50	5550	ofcol.are	standing	100	0	-	get	all	You get The Heart of Tifarah.
+1793047918	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793047919	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	22	-	aquest	co	You inform Questor Thews you have completed his quest. // You hand The Heart of Tifarah to Questor Thews. // Questor Thews says 'Excellent work! The realm is in your debt!'
+1793047921	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 25 quest points.
+1793047922	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    253 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1793047924	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
+1793047926	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (16) (Glowing) a bag of candy corn //      (Glowing) a pumpkin-lantern charm
