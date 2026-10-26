@@ -46,47 +46,53 @@ typedef struct ability_buy
     int lowest;     /* the lowest level among what it brings that is missing */
 } ABILITY_BUY;
 
-/* do_gain's test: whether this trainer row will deal with this character. */
-static bool gm_serves( const struct guildmaster_type *gm, CHAR_DATA *ch )
+/* do_gain's test: whether this trainer row will deal with a character of
+   this class and guild. */
+static bool gm_serves_build( const struct guildmaster_type *gm, int cls, int guild )
 {
-    if ( gm->class == CLASS_OTHER && ch->class == gm->guild )
+    if ( gm->class == CLASS_OTHER && cls == gm->guild )
         return FALSE;
     if ( gm->class != CLASS_ANY && gm->class != CLASS_OTHER
-    &&   ch->class != gm->class )
+    &&   cls != gm->class )
         return FALSE;
-    if ( gm->guild != GUILD_ANY && ch->pcdata->guild != gm->guild )
+    if ( gm->guild != GUILD_ANY && guild != gm->guild )
         return FALSE;
     return TRUE;
 }
 
-/* Every skill a group gives, one level of nesting deep ("necro default"
-   names "necromancy"), as gn_add hands them out. */
-static void group_skills( int gn, bool *out )
+/* Every skill a group gives, through nested groups ("necro default"
+   names "necromancy"), exactly as gn_add hands them out: group_add reads
+   a member as a skill first and only then as a group. Asking the group
+   first took "harm" for the "harmful" group, both prefix matches, and
+   listed cause serious and cause critical for builds that never get them
+   (class review, 2026-10-26). */
+static void group_skills_depth( int gn, bool *out, int depth )
 {
     int i;
 
     for ( i = 0; i < MAX_IN_GROUP && group_table[gn].spells[i] != NULL; i++ )
     {
-        int inner = group_lookup( group_table[gn].spells[i] );
-        int sn;
+        int sn = skill_lookup( group_table[gn].spells[i] );
+        int inner;
 
-        if ( inner >= 0 && inner != gn )
+        if ( sn >= 0 )
         {
-            int j;
-
-            for ( j = 0; j < MAX_IN_GROUP && group_table[inner].spells[j] != NULL; j++ )
-                if ( ( sn = skill_lookup( group_table[inner].spells[j] ) ) >= 0 )
-                    out[sn] = TRUE;
+            out[sn] = TRUE;
             continue;
         }
-        if ( ( sn = skill_lookup( group_table[gn].spells[i] ) ) >= 0 )
-            out[sn] = TRUE;
+        inner = group_lookup( group_table[gn].spells[i] );
+        if ( inner >= 0 && inner != gn && depth < 4 )
+            group_skills_depth( inner, out, depth + 1 );
     }
 }
 
-/* The cheapest place to GAIN each skill this character's class and guild
-   can buy. */
-static void ability_sources( CHAR_DATA *ch, ABILITY_SOURCE *src )
+static void group_skills( int gn, bool *out )
+{
+    group_skills_depth( gn, out, 0 );
+}
+
+/* The cheapest place to GAIN each skill a class and guild can buy. */
+static void ability_sources_build( int cls, int guild, ABILITY_SOURCE *src )
 {
     int sn, row, i;
 
@@ -101,7 +107,7 @@ static void ability_sources( CHAR_DATA *ch, ABILITY_SOURCE *src )
     {
         const struct guildmaster_type *gm = &guildmaster_table[row];
 
-        if ( !gm_serves( gm, ch ) || get_mob_index( gm->vnum ) == NULL )
+        if ( !gm_serves_build( gm, cls, guild ) || get_mob_index( gm->vnum ) == NULL )
             continue;
 
         for ( i = 0; i < MAX_GAIN && gm->can_gain[i] != NULL; i++ )
@@ -111,7 +117,7 @@ static void ability_sources( CHAR_DATA *ch, ABILITY_SOURCE *src )
             if ( gn > 0 )
             {
                 bool in_group[MAX_SKILL];
-                int cost = group_table[gn].rating[ch->class];
+                int cost = group_table[gn].rating[cls];
 
                 if ( cost <= 0 )
                     continue;
@@ -131,16 +137,22 @@ static void ability_sources( CHAR_DATA *ch, ABILITY_SOURCE *src )
             /* A single skill. GAIN refuses a spell outside a group. */
             if ( ( sn = skill_lookup( gm->can_gain[i] ) ) >= 0
             &&   skill_table[sn].spell_fun == spell_null
-            &&   skill_table[sn].rating[ch->class] > 0
+            &&   skill_table[sn].rating[cls] > 0
             &&   ( src[sn].gm == ABILITY_NONE
-                || skill_table[sn].rating[ch->class] < src[sn].cost ) )
+                || skill_table[sn].rating[cls] < src[sn].cost ) )
             {
                 src[sn].gm = row;
                 src[sn].group = ABILITY_NONE;
-                src[sn].cost = skill_table[sn].rating[ch->class];
+                src[sn].cost = skill_table[sn].rating[cls];
             }
         }
     }
+}
+
+/* The same for this character's own class and guild. */
+static void ability_sources( CHAR_DATA *ch, ABILITY_SOURCE *src )
+{
+    ability_sources_build( ch->class, ch->pcdata->guild, src );
 }
 
 /* Whether this skill belongs in the list at all for this character. */
@@ -471,6 +483,207 @@ void abilities_oracle_summary( CHAR_DATA *ch, char *out, size_t size )
                      size );
 }
 
+/*
+ * GAINLIST PREVIEW <class> <guild>: what any build would learn, level by
+ * level, before anybody commits a life to it (class review, 2026-10-26).
+ * Read from the same tables and GAIN rules as the list above: what the
+ * class and guild are given, and what a trainer serving them sells, at the
+ * level the class's column opens it. Monks and necromancers have their own
+ * paths and take no guild.
+ */
+static int preview_class( const char *arg )
+{
+    int i;
+
+    for ( i = 0; i < MAX_CLASS; i++ )
+        if ( arg[0] != '\0' && !str_prefix( arg, class_table[i].name ) )
+            return i;
+    return -1;
+}
+
+static void preview_given( int cls, int guild, bool *given )
+{
+    const char *groups[4];
+    int i, gn;
+
+    groups[0] = "rom basics";
+    groups[1] = class_table[cls].base_group;
+    groups[2] = class_table[cls].default_group;
+    groups[3] = guild_group_name( guild );
+    memset( given, 0, sizeof(bool) * MAX_SKILL );
+    for ( i = 0; i < 4; i++ )
+        if ( groups[i] != NULL && ( gn = group_lookup( groups[i] ) ) >= 0 )
+            group_skills( gn, given );
+}
+
+/* Whether a build of this class can hold sn at all, and how. */
+static bool preview_holds( int cls, int sn, const bool *given, const ABILITY_SOURCE *src )
+{
+    int level;
+
+    if ( skill_table[sn].name == NULL || is_psionic_sn( sn ) )
+        return FALSE;
+    level = skill_table[sn].skill_level[cls];
+    if ( level < 1 || level >= LEVEL_IMMORTAL )
+        return FALSE;
+    return given[sn] || src[sn].gm != ABILITY_NONE;
+}
+
+static void build_preview( CHAR_DATA *ch, int cls, int guild )
+{
+    static ABILITY_SOURCE src[MAX_SKILL], own_src[MAX_SKILL];
+    static bool given[MAX_SKILL], own_given[MAX_SKILL];
+    static int order[MAX_SKILL];
+    static char out[16384];
+    char buf[MAX_STRING_LENGTH];
+    int seen_gm[MAX_SKILL], seen_key[MAX_SKILL];
+    int sn, i, j, n = 0, bought = 0, trains = 0, nseen = 0, col = 0;
+    static const int marks[4] = { 10, 25, 40, 50 };
+
+    ability_sources_build( cls, guild, src );
+    preview_given( cls, guild, given );
+
+    for ( sn = 0; sn < MAX_SKILL; sn++ )
+    {
+        int key;
+
+        if ( !preview_holds( cls, sn, given, src ) )
+            continue;
+        order[n++] = sn;
+        if ( given[sn] )
+            continue;
+        bought++;
+        /* A group is paid for once, however many of its spells it brings. */
+        key = src[sn].group != ABILITY_NONE ? -1 - src[sn].group : sn;
+        for ( i = 0; i < nseen; i++ )
+            if ( seen_gm[i] == src[sn].gm && seen_key[i] == key )
+                break;
+        if ( i == nseen && nseen < MAX_SKILL )
+        {
+            seen_gm[nseen] = src[sn].gm;
+            seen_key[nseen++] = key;
+            trains += src[sn].cost;
+        }
+    }
+    for ( i = 1; i < n; i++ )
+        for ( j = i; j > 0
+              && skill_table[order[j]].skill_level[cls] < skill_table[order[j - 1]].skill_level[cls];
+              j-- )
+        {
+            int tmp = order[j];
+
+            order[j] = order[j - 1];
+            order[j - 1] = tmp;
+        }
+
+    out[0] = '\0';
+    if ( cls == CLASS_MONK || cls == CLASS_NECRO )
+        snprintf( buf, sizeof(buf), "{0BA %s, level by level:{00\n\r", class_table[cls].name );
+    else
+        snprintf( buf, sizeof(buf), "{0BA %s of the %s guild, level by level:{00\n\r",
+                  class_table[cls].name, get_guildname( guild ) );
+    toc_strlcat( out, buf, sizeof(out) );
+    snprintf( buf, sizeof(buf),
+              "%d abilities: %d given, %d more to GAIN (* below) for %d trains in all.\n\r\n\r",
+              n, n - bought, bought, trains );
+    toc_strlcat( out, buf, sizeof(out) );
+
+    for ( i = 0; i < n; i++ )
+    {
+        sn = order[i];
+        snprintf( buf, sizeof(buf), " %2d %s%-19.19s",
+                  skill_table[sn].skill_level[cls], given[sn] ? " " : "*",
+                  skill_table[sn].name );
+        toc_strlcat( out, buf, sizeof(out) );
+        if ( ++col % 3 == 0 )
+            toc_strlcat( out, "\n\r", sizeof(out) );
+    }
+    if ( col % 3 != 0 )
+        toc_strlcat( out, "\n\r", sizeof(out) );
+
+    /* Blows a round before haste: everyone swings twice (multi_hit),
+       second attack adds one and third attack another. */
+    toc_strlcat( out, "\n\rBlows a round, before haste:", sizeof(out) );
+    for ( i = 0; i < 4; i++ )
+    {
+        int blows = 2;
+
+        if ( preview_holds( cls, gsn_second_attack, given, src )
+        &&   skill_table[gsn_second_attack].skill_level[cls] <= marks[i] )
+            blows++;
+        if ( preview_holds( cls, gsn_third_attack, given, src )
+        &&   skill_table[gsn_third_attack].skill_level[cls] <= marks[i] )
+            blows++;
+        snprintf( buf, sizeof(buf), "  level %d: %d", marks[i], blows );
+        toc_strlcat( out, buf, sizeof(out) );
+    }
+    toc_strlcat( out, "\n\r", sizeof(out) );
+
+    /* What this guild costs or gives against the class's own. */
+    if ( cls < CLASS_MONK && guild != cls )
+    {
+        char gains[MAX_STRING_LENGTH], loses[MAX_STRING_LENGTH];
+        size_t gcol = 0, lcol = 0;
+
+        ability_sources_build( cls, cls, own_src );
+        preview_given( cls, cls, own_given );
+        gains[0] = loses[0] = '\0';
+        for ( sn = 0; sn < MAX_SKILL; sn++ )
+        {
+            bool here = preview_holds( cls, sn, given, src );
+            bool own = preview_holds( cls, sn, own_given, own_src );
+
+            if ( here && !own )
+            {
+                snprintf( buf, sizeof(buf), "%s%s", gcol++ ? ", " : "", skill_table[sn].name );
+                toc_strlcat( gains, buf, sizeof(gains) );
+            }
+            else if ( own && !here )
+            {
+                snprintf( buf, sizeof(buf), "%s%s", lcol++ ? ", " : "", skill_table[sn].name );
+                toc_strlcat( loses, buf, sizeof(loses) );
+            }
+        }
+        snprintf( buf, sizeof(buf), "Against a %s in the %s guild, this adds:",
+                  class_table[cls].name, get_guildname( cls ) );
+        toc_strlcat( out, "\n\r", sizeof(out) );
+        toc_strlcat( out, buf, sizeof(out) );
+        gcol = strlen( buf );
+        ability_wrap( out, sizeof(out), &gcol, gains[0] != '\0' ? gains : "nothing" );
+        toc_strlcat( out, "\n\rand gives up:", sizeof(out) );
+        lcol = 13;
+        ability_wrap( out, sizeof(out), &lcol, loses[0] != '\0' ? loses : "nothing" );
+        toc_strlcat( out, "\n\r", sizeof(out) );
+    }
+    toc_strlcat( out, "\n\rA level is the earliest the class can use it. GAINLIST shows your own.\n\r",
+                 sizeof(out) );
+    page_to_char( out, ch );
+}
+
+static void gainlist_preview( CHAR_DATA *ch, char *argument )
+{
+    char carg[MAX_INPUT_LENGTH], garg[MAX_INPUT_LENGTH];
+    int cls, guild;
+
+    argument = one_argument( argument, carg );
+    one_argument( argument, garg );
+    if ( ( cls = preview_class( carg ) ) < 0 )
+    {
+        send_to_char( "Syntax: gainlist preview <class> <guild>\n\r"
+                      "  class: mage, cleric, thief, warrior, monk or necromancer\n\r"
+                      "  guild: mage, cleric, thief or warrior (monks and necromancers have none)\n\r", ch );
+        return;
+    }
+    if ( cls == CLASS_MONK || cls == CLASS_NECRO )
+        guild = cls;
+    else if ( ( guild = preview_class( garg ) ) < 0 || guild >= CLASS_MONK )
+    {
+        send_to_char( "Which guild? gainlist preview <class> <mage|cleric|thief|warrior>\n\r", ch );
+        return;
+    }
+    build_preview( ch, cls, guild );
+}
+
 /* GAINLIST and ABILITIES: the list above; GAINLIST TRAINERS the old one. */
 void do_gainlist( CHAR_DATA *ch, char *argument )
 {
@@ -480,6 +693,11 @@ void do_gainlist( CHAR_DATA *ch, char *argument )
     if ( arg[0] != '\0' && !str_prefix( arg, "trainers" ) )
     {
         gainlist_by_trainer( ch, "" );
+        return;
+    }
+    if ( arg[0] != '\0' && !str_prefix( arg, "preview" ) )
+    {
+        gainlist_preview( ch, one_argument( argument, arg ) );
         return;
     }
     show_abilities( ch );

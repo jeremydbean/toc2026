@@ -1503,6 +1503,7 @@ See also: PRACTICE, GAINLIST, GAIN, GROUPS
 Syntax: gainlist
 Syntax: abilities
 Syntax: gainlist trainers
+Syntax: gainlist preview <class> <guild>
 
 GAINLIST (or ABILITIES) lists every skill and spell your class and guild
 can learn, and whether you have it:
@@ -1517,6 +1518,14 @@ level each becomes usable at -- what it costs in trains, the trainer who
 sells it, where they are, and what to type after WALKTO to be walked
 there.  The Oracle is given the same list, so you can also ask her what
 you are missing.
+
+GAINLIST PREVIEW shows any other build before you commit a life to it:
+every skill and spell a class in a guild can learn, at the level the class
+can first use it, starred where it has to be GAINed, with the trains the
+whole kit costs, how many blows a round it reaches at levels 10, 25, 40
+and 50, and -- for a class outside its own guild -- what the guild adds
+and what it gives up.  Monks and necromancers have no guild:
+GAINLIST PREVIEW MONK.
 
 GAINLIST TRAINERS shows the older view: each guildmaster your class and
 guild allow you to use, and everything each one sells.  The cost column
