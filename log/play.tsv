@@ -22492,3 +22492,33 @@
 1792976084	cmd	Alaric	50	13036	lakes.are	standing	100	0	-	scan		a large rat                        -to the North. // Farm worker                        -to the East. // The Farmer                         -to the East.
 1792976090	cmd	Alaric	50	13035	lakes.are	standing	100	0	-	north		Northfields //   A sea of grain sweeps across the north flats. Stalks sag with ripened grain, // ready for harvest. But no one is around to harvest the grains or tend the crops.
 1792976091	cmd	Alaric	50	13035	lakes.are	standing	100	13	-	kill	ra	Your punch <<< ERADICATES >>> a large rat! [-196] // A large rat is DEAD!! // You have almost finished your QUEST!
+1792976095	cmd	Alaric	50	13035	lakes.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792976096	cmd	Alaric	50	13035	lakes.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792976096	cmd	Alaric	50	13035	lakes.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792976096	cmd	Alaric	50	13035	lakes.are	standing	100	0	-	aquest	co	You can't do that here.
+1792976102	cmd	Alaric	50	13038	lakes.are	standing	100	0	-	west		Northfields //   A sea of grain sweeps across the north flats. Stalks sag with ripened grain, // ready for harvest. But no one is around to harvest the grains or tend the crops.
+1792976102	cmd	Alaric	50	13032	lakes.are	standing	100	0	-	south		Northfields //   A sea of grain sweeps across the north flats. Stalks sag with ripened grain, // ready for harvest. But no one is around to harvest the grains or tend the crops.
+1792976104	cmd	Alaric	50	13032	lakes.are	standing	100	0	-	recall		The Gods have forsaken you.
+1792976105	cmd	Alaric	50	13032	lakes.are	standing	100	0	-	exits		Obvious exits: // North - Northfields // East  - Northfields
+1792976106	cmd	Alaric	50	13038	lakes.are	standing	100	0	-	south		Northfields //   A sea of grain sweeps across the north flats. Stalks sag with ripened grain, // ready for harvest. But no one is around to harvest the grains or tend the crops.
+1792976107	cmd	Alaric	50	13038	lakes.are	standing	100	0	-	exits		Obvious exits: // North - Northfields // East  - Northfields
+1792976107	cmd	Alaric	50	13035	lakes.are	standing	100	0	-	east		Northfields //   A sea of grain sweeps across the north flats. Stalks sag with ripened grain, // ready for harvest. But no one is around to harvest the grains or tend the crops.
+1792976108	cmd	Alaric	50	13035	lakes.are	standing	100	0	-	exits		Obvious exits: // North - Northfields // South - Northfields
+1792976109	cmd	Alaric	50	13036	lakes.are	standing	100	0	-	south		Northfields //   A sea of grain sweeps across the north flats. Stalks sag with ripened grain, // ready for harvest. But no one is around to harvest the grains or tend the crops.
+1792976109	cmd	Alaric	50	13036	lakes.are	standing	100	0	-	exits		Obvious exits: // North - Northfields // East  - Nearfields
+1792976111	cmd	Alaric	50	13013	lakes.are	standing	100	0	-	east		Nearfields //   Here, farmers and thief workers tread through fields of grain. The thick // wheat falls smoothly before the flickering scythes.
+1792976112	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1792976114	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	23	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Excellent work! The realm is in your debt!' // Questor Thews says 'Streak of 10 in a row! A +70% bonus has been added!'
+1792976115	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 66 quest points.
+1792976119	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    249 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1792976121	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1792976128	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	iron		Your skin hardens.
+1792976691	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	steel		You lost your concentration.
+1792976693	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1792976698	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	14	-	aquest	re	You approach Questor Thews and ask for a quest. // Questor Thews says 'Your timing is perfect, Alaric. I have just the task for you.' // Questor Thews tells you 'A bounty has been posted on The Royal Guard.'
+1792976702	cmd	Alaric	50	2401	dresden_halloween.are	standing	100	0	-	enter	door	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1792976702	cmd	Alaric	50	2403	dresden_halloween.are	standing	100	0	-	east		Eastern Oak Tree Square. //   This is the eastern side of Oak Tree Square.  To the east you see Battle Road // which leads to the Citadel of War and the east gate of Dresden.
+1792976703	cmd	Alaric	50	2420	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.
+1792976703	cmd	Alaric	50	2421	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a
+1792976703	cmd	Alaric	50	2422	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.
+1792976703	cmd	Alaric	50	2423	dresden_halloween.are	standing	100	0	-	east		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a

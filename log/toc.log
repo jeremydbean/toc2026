@@ -195677,3 +195677,57 @@ Mon Oct 26 00:54:50 2026 :: Log Alaric [13036]: n
 Mon Oct 26 00:54:50 2026 :: Log Alaric [13035]: arrived (Northfields) from 13036
 Mon Oct 26 00:54:51 2026 :: Log Alaric [13035]: kill ra
 Mon Oct 26 00:54:51 2026 :: Log Alaric [13035]: killed a large rat
+Mon Oct 26 00:54:55 2026 :: Log Alaric [13035]: recal
+Mon Oct 26 00:54:56 2026 :: Log Alaric [13035]: recal
+Mon Oct 26 00:54:56 2026 :: Log Alaric [13035]: recal
+Mon Oct 26 00:54:56 2026 :: Log Alaric [13035]: aq co
+Mon Oct 26 00:55:02 2026 :: Log Alaric [13035]: west
+Mon Oct 26 00:55:02 2026 :: Log Alaric [13038]: arrived (Northfields) from 13035
+Mon Oct 26 00:55:02 2026 :: Log Alaric [13038]: south
+Mon Oct 26 00:55:02 2026 :: Log Alaric [13032]: arrived (Northfields) from 13038
+Mon Oct 26 00:55:04 2026 :: Log Alaric [13032]: recal
+Mon Oct 26 00:55:05 2026 :: Log Alaric [13032]: ex
+Mon Oct 26 00:55:06 2026 :: Log Alaric [13032]: s
+Mon Oct 26 00:55:06 2026 :: Log Alaric [13038]: arrived (Northfields) from 13032
+Mon Oct 26 00:55:07 2026 :: Log Alaric [13038]: ex
+Mon Oct 26 00:55:07 2026 :: Log Alaric [13038]: e
+Mon Oct 26 00:55:07 2026 :: Log Alaric [13035]: arrived (Northfields) from 13038
+Mon Oct 26 00:55:08 2026 :: Log Alaric [13035]: ex
+Mon Oct 26 00:55:09 2026 :: Log Alaric [13035]: s
+Mon Oct 26 00:55:09 2026 :: Log Alaric [13036]: arrived (Northfields) from 13035
+Mon Oct 26 00:55:09 2026 :: Log Alaric [13036]: ex
+Mon Oct 26 00:55:11 2026 :: Log Alaric [13036]: e
+Mon Oct 26 00:55:11 2026 :: Log Alaric [13013]: arrived (Nearfields) from 13036
+Mon Oct 26 00:55:12 2026 :: Log Alaric [13013]: recal
+Mon Oct 26 00:55:12 2026 :: Log Alaric [2497]: arrived (A sudden wind blows you from the tree!) from 13013
+Mon Oct 26 00:55:14 2026 :: Log Alaric [2497]: aq co
+Mon Oct 26 00:55:14 2026 :: Log Alaric [2497]: copper +162241200
+Mon Oct 26 00:55:14 2026 :: Log Alaric [2497]: quest complete: 162p 24g 12s, 66 quest points (streak bonus 70%)
+Mon Oct 26 00:55:14 2026 :: Snapshot of Alaric taken before quest: Alaric.20261026_005514.quest (PRESTORE Alaric to see it).
+Mon Oct 26 00:55:15 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct 26 00:55:19 2026 :: Log Alaric [2497]: score
+Mon Oct 26 00:55:21 2026 :: Log Alaric [2497]: steel
+Mon Oct 26 00:55:28 2026 :: Log Alaric [2497]: iron
+Mon Oct 26 00:56:27 2026 :: Sock.sinaddr:  5.161.194.92
+Mon Oct 26 00:56:27 2026 :: EOF encountered on read.
+Mon Oct 26 00:56:39 2026 :: Log Alaric [2497]: affects off: iron skin
+Mon Oct 26 01:00:30 2026 :: Treasure goblin: vanished from room 2429 (Bridge of the Mermaids., dresden_halloween.are) (too long in one area).
+Mon Oct 26 01:01:32 2026 :: Sock.sinaddr:  5.161.117.52
+Mon Oct 26 01:01:32 2026 :: EOF encountered on read.
+Mon Oct 26 01:02:59 2026 :: Log Alaric [2497]: affects off: steel fist
+Mon Oct 26 01:04:51 2026 :: Log Alaric [2497]: steel
+Mon Oct 26 01:04:53 2026 :: Log Alaric [2497]: steel
+Mon Oct 26 01:04:58 2026 :: Log Alaric [2497]: aq re
+Mon Oct 26 01:04:58 2026 :: Log Alaric [2497]: quest assigned: kill The Royal Guard (mob 9582, level 31) in newthalo.are, 25 minutes, ordinary
+Mon Oct 26 01:05:02 2026 :: Log Alaric [2497]: enter door
+Mon Oct 26 01:05:02 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 01:05:02 2026 :: Log Alaric [2401]: east
+Mon Oct 26 01:05:02 2026 :: Log Alaric [2403]: arrived (Eastern Oak Tree Square.) from 2401
+Mon Oct 26 01:05:03 2026 :: Log Alaric [2403]: east
+Mon Oct 26 01:05:03 2026 :: Log Alaric [2420]: arrived (Battle Road) from 2403
+Mon Oct 26 01:05:03 2026 :: Log Alaric [2420]: east
+Mon Oct 26 01:05:03 2026 :: Log Alaric [2421]: arrived (Battle Road) from 2420
+Mon Oct 26 01:05:03 2026 :: Log Alaric [2421]: east
+Mon Oct 26 01:05:03 2026 :: Log Alaric [2422]: arrived (Battle Road) from 2421
+Mon Oct 26 01:05:03 2026 :: Log Alaric [2422]: east
+Mon Oct 26 01:05:03 2026 :: Log Alaric [2423]: arrived (Battle Road) from 2422
