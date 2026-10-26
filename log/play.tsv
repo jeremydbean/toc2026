@@ -23695,3 +23695,4 @@
 1793013203	cmd	Alaric	50	2497	dresden_halloween.are	standing	49	16	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Streak of 22 in a row! A +118% bonus has been added!'
 1793013205	cmd	Alaric	50	2497	dresden_halloween.are	standing	49	4	-	aquest	ga no	Wise choice. You safely collect 32 quest points.
 1793013206	cmd	Alaric	50	2497	dresden_halloween.are	standing	49	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    250 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1793013426	session	Alaric	50	2497	dresden_halloween.are	linkdead	500s	+0 levels	+0 exp	+54080400 copper	3 kills	0 deaths	1 quests	101 commands	1 refused	coin: quests 54p 8g 4s
