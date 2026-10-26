@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1793034110
+LogO 1793045473
 Vers 4
 Desc You see something very special about him.
 ~
@@ -20,7 +20,7 @@ Fixes ~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6514679
+Plyd 6514710
 ListRemorts ~
 NumRemorts 0
 Note 1792619733
@@ -32,9 +32,9 @@ NewGold 97
 NewPlat 2503031
 NewCopp 61
 NewSilv 45
-BankCP 16429152333283
-IntTime 1792954258
-IntTotal 1370529731431
+BankCP 16470225214116
+IntTime 1793040658
+IntTotal 1411602612264
 Dcount 0
 SavedOnce 1
 Corpses	0
@@ -112,7 +112,7 @@ Achv weapons-5 1793019785
 Achv psi-all-powers 1793019785
 Achv landmarks-10 1793019785
 Achv stash-ceiling 1793019785
-LastOut  1793034110
+LastOut  1793045473
 Rested 0 0
 Daily 0 0 0 0 0
 SesLogin 1793032924
@@ -423,26 +423,26 @@ Gr 'mage default'
 Gr 'warrior default'
 Gr 'monk default'
 Gr 'warrior guild'
-AffD 'titanic'   0  -1   0  13          0          0
-AffD 'titanic'   0  -1   0  12          0          0
-AffD 'titanic'   0  -1   0  14          0          0
-AffD 'titanic'   0  -1  50  16          0          0
-AffD 'empower'   0  -1   0   0          0          0
-AffD 'sanctuary'   0  -1   0   0        128          0
-AffD 'haste'   0  -1   4   2    2097152          0
-AffD 'fly'   0  -1   0   0     524288          0
-AffD 'pass door'   0  -1   0   0    1048576          0
-AffD 'protection evil'   0  -1   0   0       8192          0
-AffD 'fire shield'   0  -1   0   0          0          8
-AffD 'divine protection'   0  -1   0   0          0       4096
-AffD 'giant strength'   0  -1  15   1          0          0
-AffD 'empower'   0  -1  15   3          0          0
-AffD 'empower'   0  -1  15   4          0          0
-AffD 'empower'   0  -1  11   2          0          0
-AffD 'empower'   0  -1  15   5          0          0
-AffD 'empower'   0  -1  20  18          0          0
-AffD 'empower'   0  -1  20  19          0          0
 AffD 'empower'   0  -1 -100  17          0          0
+AffD 'empower'   0  -1  20  19          0          0
+AffD 'empower'   0  -1  20  18          0          0
+AffD 'empower'   0  -1  15   5          0          0
+AffD 'empower'   0  -1  11   2          0          0
+AffD 'empower'   0  -1  15   4          0          0
+AffD 'empower'   0  -1  15   3          0          0
+AffD 'giant strength'   0  -1  15   1          0          0
+AffD 'divine protection'   0  -1   0   0          0       4096
+AffD 'fire shield'   0  -1   0   0          0          8
+AffD 'protection evil'   0  -1   0   0       8192          0
+AffD 'pass door'   0  -1   0   0    1048576          0
+AffD 'fly'   0  -1   0   0     524288          0
+AffD 'haste'   0  -1   4   2    2097152          0
+AffD 'sanctuary'   0  -1   0   0        128          0
+AffD 'empower'   0  -1   0   0          0          0
+AffD 'titanic'   0  -1  50  16          0          0
+AffD 'titanic'   0  -1   0  14          0          0
+AffD 'titanic'   0  -1   0  12          0          0
+AffD 'titanic'   0  -1   0  13          0          0
 End
 
 #O
@@ -653,10 +653,10 @@ Lev  59
 Cost 208860000
 Cond 100
 Repd 0
-Affect -1 59 -1 -4 20 0 0
-Affect -1 59 -1 14 14 0 0
-Affect -1 59 -1 4 21 0 0
 Affect -1 59 -1 -13 12 0 0
+Affect -1 59 -1 4 21 0 0
+Affect -1 59 -1 14 14 0 0
+Affect -1 59 -1 -4 20 0 0
 End
 
 #O

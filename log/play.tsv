@@ -24447,3 +24447,9 @@
 1793043486	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    252 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
 1793043489	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	who		[50 Dwarf   Monk  ] Alaric. // Players found: 1
 1793043491	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	afk		You are now in AFK mode.
+1793045444	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // [50 Dwarf   Monk  ] [*AFK*] Alaric. // Players found: 2
+1793045447	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	look		The Void // [Room: 1]     [Sector: City]     [Flags: No_Mob Indoors] //   You are floating in nothing.
+1793045452	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	snoop	al	No descriptor to snoop.
+1793045454	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	look		The Void // [Room: 1]     [Sector: City]     [Flags: No_Mob Indoors] //   You are floating in nothing.
+1793045455	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // [50 Dwarf   Monk  ] [*AFK*] Alaric. // Players found: 2
+1793045459	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	at	ala look	A sudden wind blows you from the tree! // [Room: 2497]     [Sector: Forest]     [Flags: No_Mob Private] //   You reach out for a nearby branch, but to no avail!  You feel the sensation
