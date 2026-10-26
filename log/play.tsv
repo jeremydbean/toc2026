@@ -25565,3 +25565,11 @@
 1793052791	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1793052791	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
 1793052791	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
+1793052791	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
+1793052792	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
+1793052792	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	23	-	aquest	co	You inform Questor Thews you have completed his quest. // Questor Thews says 'Well done! I knew you were right for the job.' // Questor Thews says 'Streak of 28 in a row! A +136% bonus has been added!'
+1793052792	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	5	-	aquest	ga no	Wise choice. You safely collect 42 quest points.
+1793052794	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	1	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    254 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1793052860	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793052864	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      50 | Class:        Monk | // | Played:    254 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1793052866	cmd	Alaric	50	2497	dresden_halloween.are	standing	100	0	-	inventory		You are carrying: // (16) (Glowing) a bag of candy corn //      (Magical) (Glowing) a pumpkin-lantern charm
