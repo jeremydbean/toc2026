@@ -929,18 +929,20 @@ void multi_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
     chance = get_skill(ch,gsn_third_attack)/4;
     if ( number_percent( ) < chance )
     {
+      /* A destruction attempt replaces the third blow only when it
+         shatters the victim's weapon. When the check passed and the
+         quarter roll did not, the blow used to be lost outright -- three
+         times in four -- so learning destruction cost a warrior most of
+         their third attacks (review, 2026-10-26). */
+      bool destroyed = false;
+
       if( ( (chance = 1 + ch->pcdata->learned[gsn_destruction]/10
 	    - victim->level/10 ) > 0)
-	 && number_percent () - get_curr_stat(ch,STAT_STR)/5 < chance)
-	 {
-	  if( dice(1,100) < 25 )
-	   if(!destroy(ch,victim) )
-	   {
-	     one_hit( ch, victim, dt );
-	     check_improve(ch,gsn_third_attack,true,6);
-	   }
-	 }
-      else
+	 && number_percent () - get_curr_stat(ch,STAT_STR)/5 < chance
+	 && dice(1,100) < 25 )
+	destroyed = destroy( ch, victim );
+
+      if ( !destroyed )
       {
 	one_hit( ch, victim, dt );
 	check_improve(ch,gsn_third_attack,true,6);
@@ -1249,10 +1251,12 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
     thac0 -= GET_HITROLL(ch) * skill/100;
     thac0 += 5 * (100 - skill) / 100;
 
+    /* A backstab or smite is aimed: the better known, the surer
+       (strike_thac0_bonus; the stock line rewarded knowing it less). */
     if (dt == gsn_backstab)
-	thac0 -= 10 * (100 - get_skill(ch,gsn_backstab));
+	thac0 -= strike_thac0_bonus( get_skill(ch,gsn_backstab) );
     if (dt == gsn_smite)
-        thac0 -= 10 * (100 - get_skill(ch,gsn_smite));
+        thac0 -= strike_thac0_bonus( get_skill(ch,gsn_smite) );
 
     switch(dam_type)
     {
@@ -1646,11 +1650,10 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
    }
    else
    {
-	if( is_affected(victim,skill_lookup("psionic_armor") )
-	 || is_affected(victim,skill_lookup("psychic_shield") ) )
-	  dam -= dam / 4;
-	else if( is_affected(victim,skill_lookup("mindbar") ) )
-	  dam /= 2;
+	/* The same rule the mana and movement drains use, by gsn: the
+	   names "psionic_armor" and "psychic_shield" matched no skill, so
+	   only mindbar ever turned a mental blow (review, 2026-10-26). */
+	dam = psionic_mental_reduce( victim, dam );
    }
 
     immune = false;
@@ -6372,12 +6375,14 @@ void do_crane_dance( CHAR_DATA *ch, char *argument )
 	    if ( IS_AFFECTED2( vch, AFF2_GHOST ) )
 	      continue;
 	    hit = true;
-	    if(vch->hit < 1000)
-	      dam = number_range((int)(vch->hit * .25), (int)(vch->hit * .30));
-	    else if(vch->hit < 4000)
-	      dam = number_range((int)(vch->hit * .10),(int)(vch->hit * .15));
-	    else
-              dam = number_range((int)(vch->hit * .05),(int)(vch->hit * .08));
+	    /* One continuous curve, a tenth either side of its mean
+	       (crane_dance_mean: the old bands fell off cliffs at 1,000
+	       and 4,000 hit points). */
+	    {
+	      int mean = crane_dance_mean( vch->hit, ch->level );
+
+	      dam = number_range( mean - mean / 10, mean + mean / 10 );
+	    }
 
             act( "You are mesmerized by $n's grace, then the strike hits.",ch,NULL,vch, TO_VICT );
             damage( ch, vch, dam, gsn_crane_dance, DAM_BASH );

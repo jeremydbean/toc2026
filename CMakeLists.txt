@@ -32,6 +32,7 @@ set(SRC_FILES
     src/act_obj.c
     src/act_wiz.c
     src/color.c
+    src/combat_rules.c
     src/comm.c
     src/const.c
     src/container.c

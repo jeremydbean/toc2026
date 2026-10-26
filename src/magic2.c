@@ -52,7 +52,12 @@ static bool psionic_defense_active( CHAR_DATA *victim )
         || is_affected( victim, gsn_mindbar );
 }
 
-static int psionic_reduce_mental_drain( CHAR_DATA *victim, int amount )
+/* What psionic armor, psychic shield (a quarter off) or mindbar (half
+   off) leaves of a mental blow or drain. They exclude one another
+   (psionic_defense_active), so at most one applies. damage() asks this
+   for DAM_MENTAL hit points; the drains ask it for mana and movement,
+   which never pass through damage(), so nothing is reduced twice. */
+int psionic_mental_reduce( CHAR_DATA *victim, int amount )
 {
     if ( is_affected( victim, gsn_psionic_armor )
     ||   is_affected( victim, gsn_psychic_shield ) )
@@ -657,7 +662,7 @@ void do_mindleech( CHAR_DATA *ch, char *argument )
     drain = number_range( ch->level * 2, ch->level * 3 );
     if ( resisted )
         drain /= 2;
-    drain = psionic_reduce_mental_drain( victim, drain );
+    drain = psionic_mental_reduce( victim, drain );
     drain = UMIN( drain, victim->mana );
 
     if ( drain > 0 )
@@ -810,7 +815,7 @@ void do_enervate( CHAR_DATA *ch, char *argument )
     move_drain = number_range( ch->level, ch->level * 2 );
     if ( resisted )
         move_drain /= 2;
-    move_drain = psionic_reduce_mental_drain( victim, move_drain );
+    move_drain = psionic_mental_reduce( victim, move_drain );
     move_drain = UMIN( move_drain, victim->move );
     if ( move_drain > 0 )
     {
@@ -3700,25 +3705,65 @@ void spell_force_sword( int sn, int level, CHAR_DATA *ch, void *vo )
  * ------------------------------------------------------------------------
  */
 
-/* How many servants this necromancer already has on their feet. */
-static int undead_servants( CHAR_DATA *ch )
+/* What a servant costs of the budget, by the name raise_undead gave it:
+   every servant is MOB_VNUM_ANIMATE, and only the three create spells
+   make one. */
+static int undead_servant_cost( const CHAR_DATA *servant )
+{
+    if ( !str_cmp( servant->name, "vampire" ) )
+        return UNDEAD_COST_VAMPIRE;
+    if ( !str_cmp( servant->name, "wraith" ) )
+        return UNDEAD_COST_WRAITH;
+    return UNDEAD_COST_SKELETON;
+}
+
+/*
+ * How much of the budget this necromancer's servants already hold.
+ *
+ * It used to be a head count checked against 5, 2 and 1, so what you
+ * could have depended on the order you raised it: a vampire, then a
+ * wraith, then three skeletons all passed, while five skeletons refused
+ * anything more (review, 2026-10-26). One budget of UNDEAD_BUDGET (10),
+ * a skeleton 2, a wraith 5 and a vampire 10, keeps the pure armies --
+ * five skeletons, two wraiths or one vampire -- and prices every mix the
+ * same whichever way round it is raised (owner, 2026-10-26).
+ */
+static int undead_budget_used( CHAR_DATA *ch )
 {
     LIST_ITERATOR iter;
     CHAR_DATA *gch;
-    int count = 0;
+    int used = 0;
 
     FOR_EACH_CHARACTER( iter, gch )
     {
         /* Bound to this necromancer, whoever leads the group: counted by
            is_same_group, a necro following anyone counted none and the
-           cap was gone. */
+           cap was gone. A servant whose charm has lapsed has no master
+           and costs nothing. */
         if ( IS_NPC( gch ) && gch->master == ch
           && gch->pIndexData != NULL
           && gch->pIndexData->vnum == MOB_VNUM_ANIMATE )
-            count++;
+            used += undead_servant_cost( gch );
     }
 
-    return count;
+    return used;
+}
+
+/* True, having said why, when raising one more of `cost` would pass the
+   budget. */
+static bool undead_budget_refuses( CHAR_DATA *ch, int cost )
+{
+    char buf[MAX_STRING_LENGTH];
+    int used = undead_budget_used( ch );
+
+    if ( used + cost <= UNDEAD_BUDGET )
+        return false;
+    snprintf( buf, sizeof(buf),
+              "You can't control any more undead: your servants hold %d of "
+              "the %d your will can bear, and this would take %d.\n\r",
+              used, UNDEAD_BUDGET, cost );
+    send_to_char( buf, ch );
+    return true;
 }
 
 /*
@@ -3876,11 +3921,8 @@ void spell_create_skeleton( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim;
     OBJ_DATA *corpse;
 
-    if ( undead_servants( ch ) >= 5 )
-    {
-        send_to_char("You can't control any more undead.\n\r",ch);
+    if ( undead_budget_refuses( ch, UNDEAD_COST_SKELETON ) )
         return;
-    }
 
     corpse = raisable_corpse( ch, target_name );
 
@@ -3921,11 +3963,8 @@ void spell_create_wraith( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim;
     OBJ_DATA *corpse;
 
-    if ( undead_servants( ch ) >= 2 )
-    {
-        send_to_char("You can't control any more undead.\n\r",ch);
+    if ( undead_budget_refuses( ch, UNDEAD_COST_WRAITH ) )
         return;
-    }
 
     corpse = raisable_corpse( ch, target_name );
 
@@ -3964,11 +4003,8 @@ void spell_create_vampire( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim;
     OBJ_DATA *corpse;
 
-    if ( undead_servants( ch ) >= 1 )
-    {
-        send_to_char("You can't control any more undead.\n\r",ch);
+    if ( undead_budget_refuses( ch, UNDEAD_COST_VAMPIRE ) )
         return;
-    }
 
     corpse = raisable_corpse( ch, target_name );
 

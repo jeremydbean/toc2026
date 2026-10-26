@@ -2544,6 +2544,39 @@ Raised undead (`MOB_VNUM_ANIMATE`) go with it: `dismiss_undead_servants()`
 is called from `die_follower` and from `do_remort`, and `group_gain` pays
 nothing for one whatever its charm says.
 
+## The Class Review's Mechanical Fixes
+
+Found by an independent class/guild review (2026-10-26), each verified
+against the source first and pinned by a test that fails on the old code:
+
+- **Backstab and smite aim better the better they are known.** The stock
+  line `thac0 -= 10 * (100 - skill)` gave anything under about 90% an
+  automatic hit and took the bonus away at 100%. `strike_thac0_bonus()` in
+  `src/combat_rules.c` is 0 to 10, never decreasing.
+- **Crane dance is one curve** (`crane_dance_mean`): 27.5% of a weak foe's
+  health to 600, then `165 * sqrt(hp / 600)`, capped at 25 a level of the
+  dancer. The old bands fell from about 275 to 125 at 1,000 hit points and
+  from 500 to 260 at 4,000, and had no ceiling against a boss.
+- **Psionic armor and psychic shield turn mental hit-point damage.**
+  `damage()` asked `skill_lookup("psionic_armor")`, which names no skill;
+  it now asks `psionic_mental_reduce()` in `magic2.c`, by gsn, as the mana
+  and movement drains always did -- once each, since drains never pass
+  through `damage()` (`tests/test_mental_defence.py`, in the fixture
+  world's arena, room 32706).
+- **A destruction attempt replaces the third attack only when it
+  shatters a weapon.** A passing destruction check without the quarter
+  roll used to lose the blow outright.
+- **Undead servants share a budget of 10** (owner, 2026-10-26): skeleton 2,
+  wraith 5, vampire 10 (`undead_budget_used`, costed by the name
+  `raise_undead` gives each). The head counts of 5, 2 and 1 depended on the
+  order of raising (`tests/test_undead_budget.py`).
+- **Nerve damage's free failed strike stays free** (owner, 2026-10-26,
+  confirming 2026-09): the review proposed lagging it; see below.
+
+`src/combat_rules.c` holds arithmetic with no game state and includes no
+`merc.h`, so `tests/test_combat_rules.c` can check it exhaustively; put a
+new pure formula there rather than in `fight.c`.
+
 ## Damage Costs Lag
 
 **Wherever a command calls `damage()` and then returns, a `WAIT_STATE`

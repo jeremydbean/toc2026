@@ -5,6 +5,16 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261026k 2026-10-26
+Combat fixes: backstab and smite now hit more surely the better you know
+them (a mastered backstab used to miss more than a half-learned one);
+psionic armor and psychic shield now take a quarter off mental damage,
+as they always claimed to; a warrior's destruction no longer costs the
+third attack when it fails; crane dance strikes on one smooth scale
+instead of dropping suddenly against tougher foes; and a necromancer's
+servants share one budget (HELP CREATE SKELETON), whatever order they
+are raised in.
+
 @ 20261026h 2026-10-26
 The Oracle can now tell you where your own corpse lies and how much is
 still in it, and answers a question about one gear slot (arms, boots, a

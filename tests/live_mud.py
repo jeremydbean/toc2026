@@ -36,6 +36,7 @@ GAS_HALL = 32702              # room: west to GAS_HALL_EXIT
 GAS_HALL_EXIT = 32703
 WEST_PADDOCK = 32704          # outdoors: east to EAST_PADDOCK
 EAST_PADDOCK = 32705
+MIND_ARENA = 32706            # an arena, joined to nothing: players may fight
 
 # Telnet control bytes and the options the server implements.
 IAC, DONT, DO, WONT, WILL, SB, SE = 255, 254, 253, 252, 251, 250, 240
@@ -467,7 +468,7 @@ class LiveMud:
                  expect_crash: bool = False, fixtures: bool = False):
         self.extra_env = extra_env or {}
         # fixtures=True loads tests/fixtures/area/ztestfix.are into this
-        # world as a built area: rooms 32700-32705 joined to nothing, and
+        # world as a built area: rooms 32700-32706 joined to nothing, and
         # the sparring guard (mob 32700), a sentinel that never flees or
         # starts a fight. A shipped mobile is no fixture: SET MOB refuses
         # every prototype that came with the game, so a test that made the

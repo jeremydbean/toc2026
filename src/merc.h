@@ -2934,6 +2934,7 @@ void    record_player_kill      ( CHAR_DATA *ch, CHAR_DATA *victim );
 #define TRAVEL_ASTRAL  2   /* astral walk */
 CHAR_DATA *travel_target          ( CHAR_DATA *ch, char *argument, int level,
                                     int mode );
+int     psionic_mental_reduce ( CHAR_DATA *victim, int amount );
 bool    psionic_remote_room_blocked ( CHAR_DATA *ch, ROOM_INDEX_DATA *room,
                                       bool block_safe, bool block_no_recall );
 void    reapply_innate_affects  ( CHAR_DATA *ch );
@@ -3906,3 +3907,6 @@ extern CHAR_DATA *event_vendor_winter;
 #undef  OID
 #undef  RID
 #undef  SF
+
+/* Combat arithmetic with no game state (combat_rules.c). */
+#include "combat_rules.h"
