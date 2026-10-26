@@ -34,39 +34,39 @@ DIRS = ["north", "east", "south", "west", "up", "down",
         "northeast", "northwest", "southeast", "southwest"]
 ROOM_DT_LETTER = "I"
 
-# level: (title, overworld screen, entrance room, guardian, treasure in its
-# chest, what stands at the door). Held to the generator by the test.
+# level: (title, overworld screen, entrance room, guardian, the tools found
+# inside and where, what stands at the door). Held to the generator by the test.
 DUNGEONS: Dict[int, Dict[str, Any]] = {
     1: dict(title="The Eagle", screen=30271, entrance=30401, band="2-8",
-            guardian="Aquamentus", treasure="a small boomerang",
+            guardian="Aquamentus", treasure="a small boomerang (from the goriyas' room) and a short bow (the cellar)",
             door="nothing; the entrance is down from the Eagle's Gate"),
     2: dict(title="The Moon", screen=30276, entrance=30418, band="8-14",
-            guardian="Dodongo", treasure="the Magical Boomerang",
+            guardian="Dodongo", treasure="the Magical Boomerang (from the goriyas' room)",
             door="Level 1's Triforce piece"),
     3: dict(title="The Manji", screen=30205, entrance=30437, band="14-20",
-            guardian="Manhandla", treasure="the dungeon raft",
+            guardian="Manhandla", treasure="the dungeon raft (the cellar)",
             door="Level 2's Triforce piece"),
     4: dict(title="The Snake", screen=30253, entrance=30456, band="20-27",
-            guardian="Gleeok", treasure="the stepladder",
+            guardian="Gleeok", treasure="the stepladder (the cellar)",
             door="Level 3's Triforce piece, and the raft (ENTER RAFT on the island)"),
     5: dict(title="The Lizard", screen=30323, entrance=30476, band="27-33",
-            guardian="Digdogger", treasure="a short bow",
+            guardian="Digdogger", treasure="the Recorder (the cellar)",
             door="Level 4's Triforce piece"),
     6: dict(title="The Dragon", screen=30282, entrance=30501, band="33-40",
-            guardian="Gohma", treasure="the Recorder",
+            guardian="Gohma", treasure="the Magical Rod (the cellar)",
             door="Level 5's Triforce piece"),
     7: dict(title="The Demon", screen=30250, entrance=30527, band="40-46",
-            guardian="an ancient Aquamentus", treasure="the Red Candle",
+            guardian="an ancient Aquamentus", treasure="the Red Candle (the cellar)",
             door="Level 6's Triforce piece, and PLAY RECORDER at the pond to drain it"),
     8: dict(title="The Lion", screen=30229, entrance=30562, band="46-52",
-            guardian="an ashen Gleeok", treasure="the Magical Key",
+            guardian="an ashen Gleeok", treasure="the Magic Book and the Magical Key (the cellars)",
             door="Level 7's Triforce piece, and BURN BUSH with a lit candle"),
     9: dict(title="Death Mountain", screen=30317, entrance=30590, band="53-59",
-            guardian="Ganon", treasure="the Master Sword and the final Triforce piece",
+            guardian="Ganon", treasure="the Silver Arrow and the Red Ring (the cellars); the Master Sword and the final piece in Ganon's chest",
             door="Level 8's Triforce piece, and BOMB CRACKED with all eight pieces held"),
 }
 
-# What each dungeon's guardian chamber asks for: the previous chest's treasure.
+# What each dungeon's guardian chamber asks for: a tool from an earlier dungeon.
 GUARDIAN_NEEDS = {
     2: "a small boomerang (or the Magical Boomerang)", 3: "the Magical Boomerang",
     4: "the dungeon raft", 5: "the stepladder", 6: "a short bow", 7: "the Recorder",
@@ -83,17 +83,20 @@ The nine dungeons go in order, each sized for a band of character levels:
 L1 2-8, L2 8-14, L3 14-20, L4 20-27, L5 27-33, L6 33-40, L7 40-46, L8 46-52,
 L9 (Death Mountain) 53-59. Each one works the same way: its entrance asks for
 the previous dungeon's Triforce piece; inside, the way into the guardian's
-chamber asks for the previous dungeon's treasure; the guardian drops a key
+chamber asks for a tool found in an earlier dungeon; the guardian drops a key
 that opens the locked door behind it and the locked chest there; the chest
-holds this dungeon's piece and its treasure. Both gates ask the character
+holds this dungeon's piece. The tools lie where the NES keeps them: most in a
+cellar down a block stair (PUSH BLOCK, then DOWN), the boomerangs in the room
+of the goriyas who carry them. Both gates ask the character
 walking -- nobody can hold a door for anyone -- and count what you carry in
 hand, worn, or one bag down (not the stash). Pieces cannot be dropped or
 given. Guardians, keys and chests come back at every area reset, so nothing
-is lost for good: lose a treasure and you can redo that dungeon.
-Treasures: L1 a small boomerang, L2 the Magical Boomerang, L3 the dungeon raft,
-L4 the stepladder, L5 a short bow,
-L6 Recorder, L7 Red Candle, L8 Magical Key, L9 the Master Sword and the final
-piece. Guardians: Aquamentus, Dodongo, Manhandla, Gleeok, Digdogger, Gohma,
+is lost for good: lose a tool and you can fetch another.
+Tools: L1 a small boomerang and a short bow (its cellar), L2 the Magical
+Boomerang, L3 the dungeon raft, L4 the stepladder, L5 the Recorder (Digdogger
+cannot be hurt until it is played), L6 the Magical Rod, L7 the Red Candle, L8
+the Magic Book and the Magical Key, L9 the Silver Arrow and the Red Ring; the
+Master Sword and the final piece in Ganon's chest. Guardians: Aquamentus, Dodongo, Manhandla, Gleeok, Digdogger, Gohma,
 an ancient Aquamentus, an ashen Gleeok, Ganon. Guardians are hard: an
 ordinary character at the top of the band loses alone. With Hermie's buffs
 first (she stands at the Temple altar after a reboot: BUFF EMPOWER, BUFF

@@ -1,10 +1,11 @@
 """Hyrule's dungeon chain, played.
 
 Every dungeon: kill the guardian, take its key, unlock the door behind it,
-unlock and open the chest there, and the Triforce piece and the treasure
-are inside. The dungeons go in order -- the next entrance wants the piece,
-the next guardian's chamber wants the treasure -- and the nine pieces
-COMBINE into The Triforce.
+unlock and open the chest there, and the Triforce piece is inside. The
+dungeons go in order -- the next entrance wants the piece, the next
+guardian's chamber a tool found before it (the boomerangs lie with the
+goriyas, the rest in cellars, as on the NES) -- and the nine pieces COMBINE
+into The Triforce.
 
 A level 58 hero does the walking, so nothing in the early dungeons attacks;
 an immortal sets the scene and is the bypass case.
@@ -104,7 +105,7 @@ class DungeonChainTests(unittest.TestCase):
                     x.strip().replace("\n", " ") for x in
                     (f"chest said [{chest}]", f"prize [{prize}]",
                      f"look [{run(hero, 'look', 1.5)}]")))
-                self.assertIn("boomerang", prize.lower(), prize)
+                self.assertNotIn("boomerang", prize.lower(), "the chest holds the piece alone")
 
     def test_the_next_door_wants_the_previous_piece_and_treasure(self) -> None:
         level_two = DUNGEONS[2]
@@ -143,11 +144,11 @@ class DungeonChainTests(unittest.TestCase):
                 run(god, f"transfer zgatehero {approach}", settle=2.0)
                 lever = run(hero, "north", settle=2.0)
                 self.assertIn("boomerang", lever.lower(), lever)
-                self.assertIn("Level 1's treasure chest", lever, lever)
+                self.assertIn("Level 1's goriyas carry one", lever, lever)
 
                 give(god, "zgatehero", 30232, "boomerang")
                 lair = run(hero, "north", settle=2.0)
-                self.assertNotIn("Level 1's treasure chest", lair, lair)
+                self.assertNotIn("goriyas carry", lair, lair)
                 self.assertIn("Lair", lair, lair)
 
     def test_combine_makes_the_triforce_from_nine_pieces(self) -> None:

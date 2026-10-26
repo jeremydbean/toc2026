@@ -12,10 +12,11 @@ real game, so the game's own gates are what judge it:
 * the guardian is slain by staff and the walker set down in its chamber
   (the walk inside each dungeon is held by
   test_every_dungeon_goal_is_reachable_with_keys_found_on_its_floor);
-* take the key, unlock the door and the chest, and take the piece and the
-  treasure;
+* take the key, unlock the door and the chest, and take the piece; staff
+  set the walker down where the dungeon's tools lie (a cellar, or the
+  goriyas' room), and the walker picks them up;
 * leave by the returning light, and the owl names the next dungeon;
-* after Level 6, the Recorder carries the walker to the dungeons won and
+* after Level 5, the Recorder carries the walker to the dungeons won and
   to the next one, and to no other;
 * after Ganon, COMBINE TRIFORCE.
 
@@ -121,6 +122,13 @@ class HyruleWalkthroughTests(unittest.TestCase):
                 return
         self.fail(f"could not reach {goal} ({self.name_of(goal)}):\n" + "".join(log[-4:]))
 
+    def tool_room(self, level: int, where: str) -> int:
+        dungeon = DUNGEONS[level]
+        if where.startswith("cellar:"):
+            return next(c["vnum"] for c in dungeon["cellars"]
+                        if c["source_coordinate"] == where.split(":")[1])
+        return next(r["vnum"] for r in dungeon["rooms"] if r["coordinate"] == where)
+
     def test_the_whole_chain_in_order(self) -> None:
         gen = self.gen
         items: list = []
@@ -182,7 +190,6 @@ class HyruleWalkthroughTests(unittest.TestCase):
                     # game's tick relocking it (tests/test_container_relock.py).
                     prize = run(hero, "get all chest", 2.5)
                     piece = self.parser.objects[gen.PIECE_VNUMS[level]].short_desc
-                    treasure = self.parser.objects[gen.DUNGEON_TREASURE[level]].short_desc
                     # CI reprints only the first line of a failure, so the
                     # chest's own replies lead and the message is one line.
                     self.assertIn(piece.lower(), prize.lower(), one_line(
@@ -190,8 +197,21 @@ class HyruleWalkthroughTests(unittest.TestCase):
                         f"inventory [{run(hero, 'inventory', 1.0)}] "
                         f"look [{run(hero, 'look', 1.0)}] "
                         f"before [{looted + opened + inside}]"))
-                    self.assertIn(treasure.lower(), prize.lower(), prize)
-                    items.append(treasure)
+
+                    # The dungeon's tools, where the NES keeps them: staff
+                    # set the walker down in each tool's room (the way in is
+                    # held by test_every_dungeon_goal_is_reachable_...), and
+                    # back in the treasure room after.
+                    for tool, (tool_level, where) in sorted(gen.TOOL_SOURCES.items()):
+                        if tool_level != level:
+                            continue
+                        room = self.tool_room(level, where)
+                        run(god, f"transfer {HERO.lower()} {room}", 2.0)
+                        obj = self.parser.objects[tool]
+                        got = run(hero, f"get {obj.keywords.split()[0]}", 1.5)
+                        self.assertIn(obj.short_desc.lower(), got.lower(), got)
+                        items.append(obj.short_desc)
+                    run(god, f"transfer {HERO.lower()} {goal}", 2.0)
 
                     if level == 9:
                         break
@@ -203,7 +223,7 @@ class HyruleWalkthroughTests(unittest.TestCase):
                     self.assertIn(f"Level {level + 1}", out, out)
                     here = screen
 
-                    if level == 6:
+                    if level == 5:
                         # The Recorder: any dungeon won, and the next one,
                         # and no other. (At the pond its tune is the pond's:
                         # the Level 7 step below drains it with PLAY RECORDER.)
@@ -219,9 +239,9 @@ class HyruleWalkthroughTests(unittest.TestCase):
                         self.assertIn("knows the way", refused, refused)
                         onward = run(hero, "play recorder")
                         self.assertIn(self.name_of(ho.DUNGEONS[2]["screen"]), onward, onward)
-                        flown = run(hero, "play recorder 7")
-                        self.assertIn(self.name_of(ho.DUNGEONS[7]["screen"]), flown, flown)
-                        here = ho.DUNGEONS[7]["screen"]
+                        flown = run(hero, "play recorder 6")
+                        self.assertIn(self.name_of(ho.DUNGEONS[6]["screen"]), flown, flown)
+                        here = ho.DUNGEONS[6]["screen"]
 
                 made = run(hero, "combine triforce", 2.0)
                 self.assertIn("The Triforce", made, made)

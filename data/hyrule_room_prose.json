@@ -593,7 +593,7 @@
     },
     "L1:cellar:B6": {
       "name": "Undercroft of Brick Ledges",
-      "description": "A narrow ladder drops into a long basement of brick ledges and black gaps, the kind of place one crosses sideways, a ledge at a time. The air smells of turned earth and old candle stubs, and the lowest rung of the ladder is polished bright. Somebody's hoard of gold coins was tucked on a stone shelf at the far end. The ladder climbs back up to the chamber above."
+      "description": "A narrow ladder drops into a long basement of brick ledges and black gaps, the kind of place one crosses sideways, a ledge at a time. The air smells of turned earth and old candle stubs, and the lowest rung of the ladder is polished bright. On a stone shelf at the far end, out of the damp, lies a short bow, its string still taut. The ladder climbs back up to the chamber above."
     },
     "L2:B1": {
       "name": "Crescent Gate",
@@ -741,7 +741,7 @@
     },
     "L3:cellar:A2": {
       "name": "Pitch-Scented Cellar",
-      "description": "Cramped and cool, this brick basement is laid out in narrow ledges over dark gaps, and it smells of wet timber and pitch. Water drips somewhere unseen below, and bat droppings spot the ledges. A stone shelf in the gloom at the far end is where the dungeon's keeper hides his coin, its edge rubbed smooth by a careful hand. The ladder leads back up."
+      "description": "Cramped and cool, this brick basement is laid out in narrow ledges over dark gaps, and it smells of wet timber and pitch. Water drips somewhere unseen below, and bat droppings spot the ledges. At the far end a raft of lashed logs is propped on its end against the wall, its ropes tarred against the water it was built for. The ladder leads back up."
     },
     "L4:A1": {
       "name": "Dripping Roost",
@@ -825,7 +825,7 @@
     },
     "L4:cellar:C5": {
       "name": "Seeping Red-Brick Cellar",
-      "description": "Beneath the sunken block a ladder drops into a cramped basement of red brick. Narrow ledges step across a dark floor where water gurgles in the gaps, and the low ceiling sweats with lake seepage that has left pale tide lines on every course. A little hoard of gold coins has been wedged on a ledge out of the wet. The only way out is back up the ladder."
+      "description": "Beneath the sunken block a ladder drops into a cramped basement of red brick. Narrow ledges step across a dark floor where water gurgles in the gaps, and the low ceiling sweats with lake seepage that has left pale tide lines on every course. A wooden stepladder, its rungs swollen with damp, has been laid on a ledge out of the wet. The only way out is back up the ladder."
     },
     "L5:C1": {
       "name": "Lizard's Gate",
@@ -921,7 +921,7 @@
     },
     "L5:cellar:B8": {
       "name": "Whistling Brick Cellar",
-      "description": "Dry air whistles faintly through this narrow brick basement, a thin note like wind across a reed, from somewhere beneath the scraped block above. Brick ledges step across the dark floor, and a cache of gold coins lies on the last of them, left by someone who meant to come back. The ladder is the only way back up."
+      "description": "Dry air whistles faintly through this narrow brick basement, a thin note like wind across a reed, from somewhere beneath the scraped block above. Brick ledges step across the dark floor, and on the last of them lies the thing that sings: a wooden recorder, its finger holes worn smooth. The ladder is the only way back up."
     },
     "L6:A1": {
       "name": "Scorched Antechamber",
@@ -1179,7 +1179,7 @@
     },
     "L7:cellar:C7": {
       "name": "Waxen Ledge Cellar",
-      "description": "Below the loose block a ladder descends into a narrow basement of rough red brick. A single ledge runs the length of the cellar above a black, bottomless gap, and the air is warm and faintly waxy. Gold coins glint at the far end of the ledge, a hoard nobody came back for. The ladder rises back to the hall above."
+      "description": "Below the loose block a ladder descends into a narrow basement of rough red brick. A single ledge runs the length of the cellar above a black, bottomless gap, and the air is warm and faintly waxy. At the far end of the ledge a red candle stands in a puddle of its own wax, still burning, though nobody has come down here to light it in years. The ladder rises back to the hall above."
     },
     "L8:B1": {
       "name": "Spiced Linen Crypt",
@@ -1287,7 +1287,7 @@
     },
     "L8:cellar:E7": {
       "name": "Cellar of the Doorless Keyhole",
-      "description": "From the shifted block a ladder descends into a cramped brick basement, its far end crossed by a single stone ledge above a black gap. A keyhole is carved on the far wall with no door around it, and beneath it someone has stacked a little hoard of gold coins. The ladder leads back up to the hall above."
+      "description": "From the shifted block a ladder descends into a cramped brick basement, its far end crossed by a single stone ledge above a black gap. A keyhole is carved on the far wall with no door around it, and beneath it lies a key with a lion's head for a bow, the one that fits every lock. The ladder leads back up to the hall above."
     },
     "L9:B1": {
       "name": "Stairwell Antechamber",

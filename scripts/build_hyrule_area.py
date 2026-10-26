@@ -2077,33 +2077,56 @@ def drop_records(manifest: dict[str, Any]) -> list[str]:
 # Every dungeon works the same way. Its guardian carries the dungeon's key;
 # the key opens the locked door into the room behind the guardian and the
 # locked chest standing in it; the chest holds the dungeon's Triforce piece
-# and its treasure. The piece opens the next dungeon's entrance and the
-# treasure gets you past the obstacle before the next guardian -- both
-# checked per character by hyrule_progress_gate in src/act_move.c, which
-# tests/test_hyrule_progression.py holds to the tables here. The plan, and
-# why each pairing is faithful to the NES, is in wiki/hyrule-area.md.
+# (Ganon's, the Master Sword as well). The piece opens the next dungeon's
+# entrance, and a tool found earlier gets you past the obstacle before the
+# next guardian -- both checked per character by hyrule_progress_gate in
+# src/act_move.c, which tests/test_hyrule_progression.py holds to the
+# tables here. The tools lie where the NES keeps them (TOOL_SOURCES; the
+# cellars are scripts/build_hyrule_manifest.py's MAJOR_ITEMS): until
+# 2026-10-25 each lay in the chest of the dungeon before the guardian that
+# wants it, the bow moved to Level 5 and the Recorder to Level 6. The plan
+# is in wiki/hyrule-area.md.
 # --------------------------------------------------------------------------
 
 PIECE_VNUMS = {level: 30399 + level for level in range(1, 10)}     # 30400-30408
 BOSS_KEYS = {**{level: 30629 + level for level in range(1, 9)},     # 30630-30637
              9: GANON_GOLDEN_KEY_VNUM}
 CHESTS = {level: 30639 + level for level in range(1, 10)}          # 30640-30648
-DUNGEON_TREASURE = {
-    1: 30232,   # the boomerang: a Goriya's, in the NES
-    2: 30410,   # the Magical Boomerang
-    3: 30411,   # the raft
-    4: 30412,   # the stepladder
-    5: 30222,   # the bow, moved from Level 1 to arrive just before Gohma
-    6: 30413,   # the Recorder, moved from Level 5 to arrive just before Level 7
-    7: 30414,   # the Red Candle
-    8: 30416,   # the Magical Key
-    9: 30200,   # the Master Sword (MASTER_SWORD_VNUM)
+HYRULE_BOOMERANG, HYRULE_MAGICAL_BOOMERANG = 30232, 30410
+HYRULE_RAFT, HYRULE_STEPLADDER, HYRULE_BOW = 30411, 30412, 30222
+HYRULE_RECORDER, HYRULE_RED_CANDLE, HYRULE_MAGICAL_KEY = 30413, 30414, 30416
+# Where each tool a gate asks for is found: (dungeon, where), as on the NES.
+# The cellar ones are placed by the manifest (MAJOR_ITEMS), the boomerangs
+# by DIRECT_DUNGEON_ITEMS; tests/test_hyrule_progression.py holds this to
+# the area file.
+TOOL_SOURCES = {
+    HYRULE_BOOMERANG: (1, "D4"),
+    HYRULE_BOW: (1, "cellar:B6"),
+    HYRULE_MAGICAL_BOOMERANG: (2, "D4"),
+    HYRULE_RAFT: (3, "cellar:A2"),
+    HYRULE_STEPLADDER: (4, "cellar:C5"),
+    HYRULE_RECORDER: (5, "cellar:B8"),
+    HYRULE_RED_CANDLE: (7, "cellar:C7"),
+    HYRULE_MAGICAL_KEY: (8, "cellar:E7"),
 }
+# What each chest holds: the dungeon's piece, and in Ganon's the Master
+# Sword (MASTER_SWORD_VNUM) as well.
+CHEST_PRIZES = {level: [PIECE_VNUMS[level]] for level in range(1, 10)}
+CHEST_PRIZES[9].append(30200)
 # What each dungeon's two gates ask for: the entrance, the previous piece;
-# the guardian's chamber, the previous treasure (and a substitute, if any).
+# the guardian's chamber, a tool found before it (and a substitute, if any).
 ENTRY_NEEDS = {level: PIECE_VNUMS[level - 1] for level in range(2, 10)}
-GUARDIAN_NEEDS = {level: DUNGEON_TREASURE[level - 1] for level in range(2, 10)}
-GUARDIAN_ALSO = {2: DUNGEON_TREASURE[2]}   # the Magical Boomerang trips a lever too
+GUARDIAN_NEEDS = {
+    2: HYRULE_BOOMERANG,           # Dodongo's lever, across a pit
+    3: HYRULE_MAGICAL_BOOMERANG,   # Manhandla's lever, across a chasm
+    4: HYRULE_RAFT,                # the Gleeok's flooded hall
+    5: HYRULE_STEPLADDER,          # Digdogger's moat
+    6: HYRULE_BOW,                 # Gohma, who only an arrow finishes
+    7: HYRULE_RECORDER,            # the two digdoggers before the Demon's guardian
+    8: HYRULE_RED_CANDLE,          # the Lion's dark hall
+    9: HYRULE_MAGICAL_KEY,         # Ganon's sealed doors
+}
+GUARDIAN_ALSO = {2: HYRULE_MAGICAL_BOOMERANG}   # the Magical Boomerang trips a lever too
 PIECE_ORDINALS = ("first", "second", "third", "fourth", "fifth", "sixth",
                   "seventh", "eighth", "ninth")
 
@@ -2922,8 +2945,8 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
         for gear_vnum in gear_vnums:
             lines.append(f"P 0 {gear_vnum} 0 {chest_vnum}")
     for level in sorted(CHESTS):
-        lines.append(f"P 0 {PIECE_VNUMS[level]} 0 {CHESTS[level]}")
-        lines.append(f"P 0 {DUNGEON_TREASURE[level]} 0 {CHESTS[level]}")
+        for prize in CHEST_PRIZES[level]:
+            lines.append(f"P 0 {prize} 0 {CHESTS[level]}")
     lines.append("O 0 30285 0 15068")
     lines.append("S")
     return "\n".join(lines)

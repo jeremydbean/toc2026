@@ -1819,23 +1819,27 @@ on the overworld but not inside the nine numbered dungeons.
 
 The nine dungeons are done IN ORDER, and every one works the same way:
   - you need the previous dungeon's Triforce piece to enter it;
-  - inside, the way to its guardian needs the previous dungeon's treasure;
+  - inside, the way to its guardian needs a tool found in an earlier one;
   - the guardian drops a key.  UNLOCK the door behind it, then UNLOCK and
-    OPEN the chest there: it holds this dungeon's piece and its treasure.
-Carry what you need in hand, worn or in a bag (not the stash).
+    OPEN the chest there: it holds this dungeon's piece.
+The tools lie where the old game kept them: most in a cellar down a block
+stair (PUSH BLOCK, then DOWN), the boomerangs with the goriyas who carry
+them.  Carry what you need in hand, worn or in a bag (not the stash).
 
 The Levels column is the character levels each dungeon is built for.
 
-  Level  Levels  To enter     Before the guardian   Chest holds
-  1      2-8     --           --                    piece 1, boomerang
-  2      8-14    piece 1      a boomerang           piece 2, Mag. Boomerang
-  3      14-20   piece 2      Mag. Boomerang        piece 3, raft
-  4      20-27   piece 3+raft the raft              piece 4, stepladder
-  5      27-33   piece 4      the stepladder        piece 5, bow
-  6      33-40   piece 5      the bow               piece 6, Recorder
-  7      40-46   piece 6      the Recorder          piece 7, Red Candle
-  8      46-52   piece 7      the Red Candle        piece 8, Magical Key
-  9      53-59   pieces 1-8   the Magical Key       piece 9, Master Sword
+  Level  Levels  To enter     Before the guardian   Tools found inside
+  1      2-8     --           --                    boomerang, bow
+  2      8-14    piece 1      a boomerang           Magical Boomerang
+  3      14-20   piece 2      Mag. Boomerang        raft
+  4      20-27   piece 3+raft the raft              stepladder
+  5      27-33   piece 4      the stepladder        Recorder
+  6      33-40   piece 5      the bow               Magical Rod
+  7      40-46   piece 6      the Recorder          Red Candle
+  8      46-52   piece 7      the Red Candle        Magic Book, Magical Key
+  9      53-59   pieces 1-8   the Magical Key       Silver Arrow, Red Ring
+Ganon's chest holds the final piece and the Master Sword.  Digdogger, Level
+5's guardian, cannot be hurt until the Recorder is played at it.
 
 Where they are, from The First Quest Begins where the cabinet sets you down:
   1  north up the I column to the River Landing, stepping stones west

@@ -257,10 +257,10 @@ Digdogger~
 Digdogger, a giant one-eyed urchin, rolls ponderously about.
 ~
 An enormous, spiny urchin with one great staring eye, bouncing slowly
-about its den while blows glance off its spines. It hates a certain
-kind of sound: in the old tales the recorder's song makes it shrink
-and split into smaller, faster urchins a blade can reach. Here it is
-simply a long, hard fight against a hide like a pincushion. Guardian
+about its den while blows glance off its spines. No blade can hurt it
+while it is whole. It hates a certain kind of sound: PLAY the
+Recorder from this dungeon's cellar and it shrinks and splits into
+smaller, faster urchins a blade can reach -- a long, hard fight still. Guardian
 of the Lizard, it leaves a heart container behind.
 ~
 human~
@@ -13637,8 +13637,9 @@ Level 1: Undercroft of Brick Ledges~
 A narrow ladder drops into a long basement of brick ledges and black gaps,
 the kind of place one crosses sideways, a ledge at a time. The air smells
 of turned earth and old candle stubs, and the lowest rung of the ladder is
-polished bright. Somebody's hoard of gold coins was tucked on a stone shelf
-at the far end. The ladder climbs back up to the chamber above.
+polished bright. On a stone shelf at the far end, out of the damp, lies a
+short bow, its string still taut. The ladder climbs back up to the chamber
+above.
 ~
 0 ADN 11
 D4
@@ -14378,9 +14379,9 @@ S
 Level 3: Pitch-Scented Cellar~
 Cramped and cool, this brick basement is laid out in narrow ledges over
 dark gaps, and it smells of wet timber and pitch. Water drips somewhere
-unseen below, and bat droppings spot the ledges. A stone shelf in the gloom
-at the far end is where the dungeon's keeper hides his coin, its edge
-rubbed smooth by a careful hand. The ladder leads back up.
+unseen below, and bat droppings spot the ledges. At the far end a raft of
+lashed logs is propped on its end against the wall, its ropes tarred
+against the water it was built for. The ladder leads back up.
 ~
 0 ADN 11
 D4
@@ -14771,8 +14772,9 @@ Level 4: Seeping Red-Brick Cellar~
 Beneath the sunken block a ladder drops into a cramped basement of red
 brick. Narrow ledges step across a dark floor where water gurgles in the
 gaps, and the low ceiling sweats with lake seepage that has left pale tide
-lines on every course. A little hoard of gold coins has been wedged on a
-ledge out of the wet. The only way out is back up the ladder.
+lines on every course. A wooden stepladder, its rungs swollen with damp,
+has been laid on a ledge out of the wet. The only way out is back up the
+ladder.
 ~
 0 ADN 11
 D4
@@ -15220,9 +15222,9 @@ S
 Level 5: Whistling Brick Cellar~
 Dry air whistles faintly through this narrow brick basement, a thin note
 like wind across a reed, from somewhere beneath the scraped block above.
-Brick ledges step across the dark floor, and a cache of gold coins lies on
-the last of them, left by someone who meant to come back. The ladder is the
-only way back up.
+Brick ledges step across the dark floor, and on the last of them lies the
+thing that sings: a wooden recorder, its finger holes worn smooth. The
+ladder is the only way back up.
 ~
 0 ADN 11
 D4
@@ -16364,9 +16366,10 @@ S
 Level 7: Waxen Ledge Cellar~
 Below the loose block a ladder descends into a narrow basement of rough red
 brick. A single ledge runs the length of the cellar above a black,
-bottomless gap, and the air is warm and faintly waxy. Gold coins glint at
-the far end of the ledge, a hoard nobody came back for. The ladder rises
-back to the hall above.
+bottomless gap, and the air is warm and faintly waxy. At the far end of the
+ledge a red candle stands in a puddle of its own wax, still burning, though
+nobody has come down here to light it in years. The ladder rises back to
+the hall above.
 ~
 0 ADN 11
 D4
@@ -16859,9 +16862,9 @@ S
 Level 8: Cellar of the Doorless Keyhole~
 From the shifted block a ladder descends into a cramped brick basement, its
 far end crossed by a single stone ledge above a black gap. A keyhole is
-carved on the far wall with no door around it, and beneath it someone has
-stacked a little hoard of gold coins. The ladder leads back up to the hall
-above.
+carved on the far wall with no door around it, and beneath it lies a key
+with a lion's head for a bow, the one that fits every lock. The ladder
+leads back up to the hall above.
 ~
 0 ADN 11
 D4
@@ -19499,6 +19502,7 @@ D 0 30409 1 2
 D 0 30409 2 4
 O 0 30504 0 30409
 M 0 31140 2 30410
+O 0 30232 0 30410
 D 0 30410 2 4
 O 0 30504 0 30410
 D 0 30410 3 2
@@ -19524,7 +19528,7 @@ D 0 30415 5 4
 M 0 31140 2 30416
 D 0 30416 2 2
 D 0 30416 3 2
-O 0 30511 0 30417
+O 0 30222 0 30417
 D 0 30417 4 4
 M 0 32021 6 30419
 O 0 30227 0 30419
@@ -19557,6 +19561,7 @@ M 0 32021 6 30426
 O 0 30227 0 30426
 D 0 30426 2 1
 M 0 32121 1 30427
+O 0 30410 0 30427
 D 0 30427 0 4
 O 0 30502 0 30427
 D 0 30427 2 4
@@ -19657,7 +19662,7 @@ D 0 30452 1 1
 M 0 30348 1 30453
 D 0 30453 2 1
 D 0 30453 3 1
-O 0 30511 0 30454
+O 0 30411 0 30454
 D 0 30454 4 4
 M 0 31113 3 30455
 O 0 30227 0 30455
@@ -19726,7 +19731,7 @@ M 0 32373 1 30473
 O 0 30643 0 30474
 O 0 30533 0 30474
 D 0 30474 2 3
-O 0 30511 0 30475
+O 0 30412 0 30475
 D 0 30475 4 4
 M 0 32084 2 30477
 O 0 30227 0 30477
@@ -19806,7 +19811,7 @@ D 0 30497 1 2
 D 0 30497 5 4
 D 0 30498 2 2
 D 0 30498 3 2
-O 0 30512 0 30499
+O 0 30413 0 30499
 D 0 30499 4 4
 M 0 32105 7 30500
 D 0 30500 1 2
@@ -20029,7 +20034,7 @@ M 0 32016 1 30558
 M 0 32046 3 30558
 D 0 30558 3 4
 O 0 30505 0 30558
-O 0 30512 0 30559
+O 0 30414 0 30559
 D 0 30559 4 4
 M 0 31197 2 30560
 M 0 32047 3 30560
@@ -20126,7 +20131,7 @@ M 0 31137 5 30584
 D 0 30584 2 1
 O 0 30415 0 30585
 D 0 30585 4 4
-O 0 30512 0 30586
+O 0 30416 0 30586
 D 0 30586 4 4
 M 0 32108 19 30588
 D 0 30588 0 2
@@ -20644,21 +20649,13 @@ P 0 30386 0 30520
 P 0 30387 0 30520
 P 0 30388 0 30520
 P 0 30400 0 30640
-P 0 30232 0 30640
 P 0 30401 0 30641
-P 0 30410 0 30641
 P 0 30402 0 30642
-P 0 30411 0 30642
 P 0 30403 0 30643
-P 0 30412 0 30643
 P 0 30404 0 30644
-P 0 30222 0 30644
 P 0 30405 0 30645
-P 0 30413 0 30645
 P 0 30406 0 30646
-P 0 30414 0 30646
 P 0 30407 0 30647
-P 0 30416 0 30647
 P 0 30408 0 30648
 P 0 30200 0 30648
 O 0 30285 0 15068

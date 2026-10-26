@@ -962,14 +962,18 @@ a buffed solo player could not wear her down at all.
 **The dungeons are done in order, and the chain is data in three places
 that must agree.** Each guardian drops its dungeon's key (Ganon's is the
 Golden Key); the key opens the magical door behind it and the locked chest
-there, which holds the dungeon's Triforce piece and its treasure. The next
-dungeon's entrance asks for the piece and its guardian's chamber for the
-treasure, through `hyrule_progress_gate` in `act_move.c`, asked per
-character by `move_char` and `do_enter` -- never a door somebody else can
-hold open. The generator's `DUNGEON_TREASURE`, `ENTRY_NEEDS` and
-`GUARDIAN_NEEDS`, that C table, and the plan table in `wiki/hyrule-area.md`
-must say the same thing; `tests/test_hyrule_progression.py` checks the first
-two against each other and the chests. Pieces are treasure, not keys,
+there, which holds the dungeon's Triforce piece (Ganon's, the Master Sword
+too: `CHEST_PRIZES`). The next dungeon's entrance asks for the piece and its
+guardian's chamber for a tool found in an earlier dungeon, through
+`hyrule_progress_gate` in `act_move.c`, asked per character by `move_char`
+and `do_enter` -- never a door somebody else can hold open. The tools lie
+where the NES keeps them (2026-10-25): the cellars under block stairs
+(`MAJOR_ITEMS` in the manifest builder) and the goriyas' rooms for the
+boomerangs (`DIRECT_DUNGEON_ITEMS`); `TOOL_SOURCES` in the generator names
+each. The generator's `TOOL_SOURCES`, `ENTRY_NEEDS` and `GUARDIAN_NEEDS`,
+that C table, and the plan table in `wiki/hyrule-area.md` must say the same
+thing; `tests/test_hyrule_progression.py` checks them against each other and
+the area file. Pieces are treasure, not keys,
 because `save.c` drops keys at quit; they are NODROP so one character cannot
 carry another through. `reset_area` refills and relocks Hyrule's chests
 even with players about, since Hyrule is one area -- but never one a player

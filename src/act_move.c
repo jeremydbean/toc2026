@@ -119,12 +119,11 @@ static bool is_hyrule_room( ROOM_INDEX_DATA *room )
  *     previous dungeon's Triforce piece (or The Triforce, made whole,
  *     which is all nine);
  *   - its guardian's chamber: coming in from inside the dungeon,
- *     anywhere but the treasure room behind it, needs the previous
- *     dungeon's treasure.
+ *     anywhere but the treasure room behind it, needs a tool found
+ *     before it, where the NES keeps it (TOOL_SOURCES in the generator).
  *
  * Every boss drops its dungeon's key; the key opens the treasure room
- * behind the boss and the chest in it, and the chest holds the piece and
- * the treasure the next dungeon asks for. scripts/build_hyrule_area.py
+ * behind the boss and the chest in it, and the chest holds the piece. scripts/build_hyrule_area.py
  * places all of it and wiki/hyrule-area.md has the plan as a table;
  * tests/test_hyrule_progression.py holds this table to both.
  *
@@ -149,7 +148,7 @@ static const HYRULE_DUNGEON_GATE hyrule_progress_gate[] =
       "Eagle.  Hyrule's dungeons are done in order.\n\r",
       30232, 30410,
       "A lever on the far side of a pit holds Dodongo's door shut. Throw a\n\r"
-      "boomerang to trip it -- the one in Level 1's treasure chest.\n\r" },
+      "boomerang to trip it -- Level 1's goriyas carry one.\n\r" },
     { 3, 30436, 30454, 30437, 30449, 30451,
       30401,
       "A seal shaped like the Triforce bars the way into the Manji. It opens\n\r"
@@ -157,8 +156,8 @@ static const HYRULE_DUNGEON_GATE hyrule_progress_gate[] =
       "Moon.  Hyrule's dungeons are done in order.\n\r",
       30410, 0,
       "A chasm far too wide for a thrown stick lies before Manhandla's door,\n\r"
-      "and its lever is on the far side.  Only the Magical Boomerang from\n\r"
-      "Level 2's treasure chest flies far enough to trip it.\n\r" },
+      "and its lever is on the far side.  Only the Magical Boomerang, which\n\r"
+      "Level 2's goriyas carry, flies far enough to trip it.\n\r" },
     { 4, 30455, 30475, 30456, 30470, 30474,
       30402,
       "A seal shaped like the Triforce bars the way into the Snake. It opens\n\r"
@@ -166,7 +165,7 @@ static const HYRULE_DUNGEON_GATE hyrule_progress_gate[] =
       "Manji.  Hyrule's dungeons are done in order.\n\r",
       30411, 0,
       "Black water floods the hall before the Gleeok's lair.  The water is too\n\r"
-      "deep to cross without the raft from Level 3's treasure chest.\n\r" },
+      "deep to cross without the raft from Level 3's cellar.\n\r" },
     { 5, 30476, 30499, 30476, 30489, 30493,
       30403,
       "A seal shaped like the Triforce bars the way into the Lizard. It opens\n\r"
@@ -174,7 +173,7 @@ static const HYRULE_DUNGEON_GATE hyrule_progress_gate[] =
       "Snake.  Hyrule's dungeons are done in order.\n\r",
       30412, 0,
       "A one-square moat cuts across Digdogger's doorway, too wide to jump.\n\r"
-      "The stepladder from Level 4's treasure chest would bridge it.\n\r" },
+      "The stepladder from Level 4's cellar would bridge it.\n\r" },
     { 6, 30500, 30525, 30501, 30519, 30524,
       30404,
       "A seal shaped like the Triforce bars the way into the Dragon. It opens\n\r"
@@ -182,7 +181,7 @@ static const HYRULE_DUNGEON_GATE hyrule_progress_gate[] =
       "Lizard.  Hyrule's dungeons are done in order.\n\r",
       30222, 0,
       "Gohma's eye is armoured against everything but an arrow, and you have\n\r"
-      "no bow to loose one.  The bow is in Level 5's treasure chest.\n\r" },
+      "no bow to loose one.  The bow is in Level 1's cellar.\n\r" },
     { 7, 30526, 30559, 30527, 30546, 30547,
       30405,
       "A seal shaped like the Triforce bars the way into the Demon. It opens\n\r"
@@ -190,8 +189,8 @@ static const HYRULE_DUNGEON_GATE hyrule_progress_gate[] =
       "Dragon.  Hyrule's dungeons are done in order.\n\r",
       30413, 0,
       "Two Digdoggers roll back and forth across the way to the Demon's\n\r"
-      "guardian, and no blade moves them.  Only the Recorder from Level 6's\n\r"
-      "treasure chest shrinks them.\n\r" },
+      "guardian, and no blade moves them.  Only the Recorder from Level 5's\n\r"
+      "cellar shrinks them.\n\r" },
     { 8, 30560, 30586, 30562, 30574, 30578,
       30406,
       "A seal shaped like the Triforce bars the way into the Lion. It opens\n\r"
@@ -199,7 +198,7 @@ static const HYRULE_DUNGEON_GATE hyrule_progress_gate[] =
       "Demon.  Hyrule's dungeons are done in order.\n\r",
       30414, 0,
       "The way to the Lion's guardian is utterly, unnaturally dark.  You need\n\r"
-      "the Red Candle from Level 7's treasure chest to light it.\n\r" },
+      "the Red Candle from Level 7's cellar to light it.\n\r" },
     { 9, 30587, 30645, 30590, 30607, 30615,
       30407,
       "A seal shaped like the Triforce bars the way into Death Mountain. It\n\r"
@@ -207,7 +206,7 @@ static const HYRULE_DUNGEON_GATE hyrule_progress_gate[] =
       "The Lion.  Hyrule's dungeons are done in order.\n\r",
       30416, 0,
       "The doors before Ganon's lair are sealed with a lock no small key\n\r"
-      "fits.  The Magical Key from Level 8's treasure chest turns it.\n\r" },
+      "fits.  The Magical Key from Level 8's cellar turns it.\n\r" },
 };
 
 /* One dungeon's row of the table, by its level (1-9), or NULL. */

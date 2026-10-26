@@ -16,10 +16,11 @@ from scripts.build_hyrule_area import (
     BOSS_SPECIALS,
     BOSS_VOLLEYS,
     CHESTS,
-    DUNGEON_TREASURE,
+    CHEST_PRIZES,
     ENTRY_NEEDS,
     GUARDIAN_ALSO,
     GUARDIAN_NEEDS,
+    TOOL_SOURCES,
     PIECE_VNUMS,
     DROP_CLOCK_FIRST,
     DROP_FAIRY_FIRST,
@@ -709,8 +710,10 @@ class HyruleProgressionTests(unittest.TestCase):
                 self.assertEqual(int(chest.values[2]), key)
                 self.assertEqual(sources[chest_vnum], [("O", goal.vnum)])
                 self.assertNotIn("A", chest.wear_flags, "nobody carries the chest off")
-                # Its prize: the piece and the treasure, and nowhere else.
-                for prize in (PIECE_VNUMS[level], DUNGEON_TREASURE[level]):
+                # Its prize: the piece (and Ganon's the Master Sword), and
+                # nowhere else.
+                self.assertEqual(CHEST_PRIZES[level][0], PIECE_VNUMS[level])
+                for prize in CHEST_PRIZES[level]:
                     self.assertEqual(sources[prize], [("P", chest_vnum)], prize)
                     for flag in "NPR":
                         self.assertNotIn(flag, self.parser.objects[prize].extra_flags)
@@ -720,15 +723,29 @@ class HyruleProgressionTests(unittest.TestCase):
                 lore = " ".join(" ".join(e["description"].split()) for e in piece.extra_descr)
                 self.assertIn("one of nine", lore)
                 self.assertIn("COMBINE TRIFORCE", lore)
-                self.assertNotEqual(self.parser.objects[DUNGEON_TREASURE[level]].item_type, "18",
-                                    "a treasure is saved when you quit")
+
         # load_resets makes every reset of a lock 5 exit a trapped door, so
         # none of Hyrule's doors may use it.
         trapped = sorted((room.vnum, e.direction) for room in self.hyrule_rooms.values()
                          for e in room.exits if e.locks == 5)
         self.assertEqual([], trapped)
         self.assertEqual(BOSS_KEYS[9], 30243, "Ganon's key is the Golden Key")
-        self.assertEqual(DUNGEON_TREASURE[9], MASTER_SWORD_VNUM)
+        self.assertEqual(CHEST_PRIZES[9], [PIECE_VNUMS[9], MASTER_SWORD_VNUM])
+        # The tools lie where the NES keeps them: a cellar under a block
+        # stair, or the room whose goriyas carry a boomerang -- once each.
+        for tool, (level, where) in TOOL_SOURCES.items():
+            dungeon = self.dungeons[level]
+            if where.startswith("cellar:"):
+                room = next(c["vnum"] for c in dungeon["cellars"]
+                            if c["source_coordinate"] == where.split(":")[1])
+            else:
+                room = next(r["vnum"] for r in dungeon["rooms"] if r["coordinate"] == where)
+            with self.subTest(tool=tool):
+                self.assertEqual(sources[tool], [("O", room)])
+                self.assertNotEqual(self.parser.objects[tool].item_type, "18",
+                                    "a tool is saved when you quit")
+                for flag in "NPR":
+                    self.assertNotIn(flag, self.parser.objects[tool].extra_flags)
         self.assertEqual(PIECE_VNUMS[9], 30408)
 
         db = Path("src/db.c").read_text(encoding="latin-1")
@@ -751,9 +768,9 @@ class HyruleProgressionTests(unittest.TestCase):
         return rows
 
     def test_the_dungeons_form_one_unbroken_chain(self) -> None:
-        """Each dungeon's entrance asks for the previous piece, and its
-        guardian's chamber for the previous treasure -- both of which are
-        in the previous guardian's chest."""
+        """Each dungeon's entrance asks for the previous piece, from the
+        previous guardian's chest, and its guardian's chamber for a tool
+        found in an earlier dungeon."""
         rows = self.gate_rows()
         self.assertEqual(sorted(rows), list(range(1, 10)))
         chest_contents: dict[int, set[int]] = {}
@@ -776,10 +793,11 @@ class HyruleProgressionTests(unittest.TestCase):
                 self.assertEqual(int(boss_also), GUARDIAN_ALSO.get(level, 0))
                 self.assertEqual(entry_text, "STR")
                 self.assertEqual(boss_text, "STR")
-                # Both come out of the previous dungeon's chest.
+                # The piece comes out of the previous dungeon's chest, and
+                # the tool out of a dungeon before this one.
                 previous = chest_contents[CHESTS[level - 1]]
                 self.assertIn(int(entry_need), previous)
-                self.assertIn(int(boss_need), previous)
+                self.assertLess(TOOL_SOURCES[int(boss_need)][0], level)
         move = Path("src/act_move.c").read_text(encoding="latin-1")
         move_char = move.split("void move_char(", 1)[1].split("\n}", 1)[0]
         enter = move.split("void do_enter(", 1)[1].split("\n}", 1)[0]
@@ -1101,12 +1119,14 @@ class HyruleProgressionTests(unittest.TestCase):
                 self.assertIn(dungeon["compass_vnum"], self.parser.rooms[compass_room["vnum"]].objects)
 
     def test_major_items_are_in_their_canonical_rooms(self) -> None:
-        # The dungeon treasures are in the guardians' chests now (see
-        # test_every_dungeon_runs_key_door_chest); the cellars that held
-        # one hold rupees, and the rest keep the NES's loot.
+        # Every cellar holds the tool the NES keeps there (the dungeon
+        # inventory decoded from the cartridge, 2026-10-25): the bow, the
+        # raft, the stepladder, the Recorder, the Magical Rod, the Red
+        # Candle, the Magic Book and the Magical Key, the Silver Arrow and
+        # the Red Ring. Six of them held coins until then.
         expected_cellar_items = {
-            1: {30511}, 3: {30511}, 4: {30511}, 5: {30512},
-            6: {30245}, 7: {30512}, 8: {30415, 30512}, 9: {30218, 30579},
+            1: {30222}, 3: {30411}, 4: {30412}, 5: {30413},
+            6: {30245}, 7: {30414}, 8: {30415, 30416}, 9: {30218, 30579},
         }
         for level, object_vnums in expected_cellar_items.items():
             actual = {cellar["item_vnum"] for cellar in self.dungeons[level]["cellars"]}

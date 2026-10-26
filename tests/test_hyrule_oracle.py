@@ -53,11 +53,13 @@ class HyruleOracleTests(unittest.TestCase):
     def test_treasures_match_the_generator(self) -> None:
         import build_hyrule_area as gen
         objects = _parser().objects
-        names = {level: objects[vnum].short_desc.lower() for level, vnum in gen.DUNGEON_TREASURE.items()}
-        for level in range(1, 9):
-            with self.subTest(level=level):
-                self.assertIn(names[level].removeprefix("the ").removeprefix("a "),
+        for vnum, (level, where) in gen.TOOL_SOURCES.items():
+            name = objects[vnum].short_desc.lower()
+            with self.subTest(level=level, tool=name):
+                self.assertIn(name.removeprefix("the ").removeprefix("a "),
                               ho.DUNGEONS[level]["treasure"].lower())
+                self.assertIn("cellar" if where.startswith("cellar:") else "goriyas",
+                              ho.DUNGEONS[level]["treasure"])
 
     def test_every_entrance_is_reachable_in_order_with_what_came_before(self) -> None:
         """From the entry, each dungeon's screen can be walked to carrying

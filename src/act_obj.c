@@ -5874,7 +5874,7 @@ void do_play( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    /* In Hyrule the tune is the Recorder's own, from Level 6's chest: any
+    /* In Hyrule the tune is the Recorder's own, from Level 5's cellar: any
        whistle with "recorder" in its name will not drain the lake. */
     if ( IS_HYRULE_ROOM_VNUM(ch->in_room->vnum)
     &&   ( instrument->pIndexData == NULL

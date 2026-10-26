@@ -8,6 +8,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Hyrule's tools are where the NES keeps them** (2026-10-25, from the
+  cartridge's decoded room data). The bow, raft, stepladder, Recorder, Red
+  Candle and Magical Key moved into the cellars under their block stairs,
+  six of which held coins, and the boomerangs into the goriyas' `D4` rooms;
+  the guardians' chests hold only their pieces (`CHEST_PRIZES`). The bow
+  had been moved to Level 5 and the Recorder to Level 6; both are back, and
+  Digdogger -- Level 5's guardian -- now cannot be hurt until the Recorder,
+  in its own cellar, shrinks it. The guardian gates ask for the same tools
+  as before (`GUARDIAN_NEEDS`, `TOOL_SOURCES`). Items players hold keep
+  their vnums.
+
 - **Hyrule's enemy and boss rules match the NES** (2026-10-25, the
   mechanics audit). A like like dissolved any worn shield; it eats only the
   Magical Shield now. Farslay, a death ray or a fatality stunned Ganon from

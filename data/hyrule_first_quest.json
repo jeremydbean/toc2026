@@ -3971,7 +3971,9 @@
           "entities": {
             "red_goriya": 2
           },
-          "items": [],
+          "items": [
+            30232
+          ],
           "role": "room"
         },
         {
@@ -4093,11 +4095,11 @@
       ],
       "cellars": [
         {
-          "name": "Rupee Cellar",
+          "name": "Bow Cellar",
           "vnum": 30417,
           "source_coordinate": "B6",
           "source_vnum": 30415,
-          "item_vnum": 30511
+          "item_vnum": 30222
         }
       ],
       "stair_links": []
@@ -4368,7 +4370,9 @@
           "entities": {
             "blue_goriya": 1
           },
-          "items": [],
+          "items": [
+            30410
+          ],
           "role": "room"
         },
         {
@@ -5006,11 +5010,11 @@
       ],
       "cellars": [
         {
-          "name": "Rupee Cellar",
+          "name": "Raft Cellar",
           "vnum": 30454,
           "source_coordinate": "A2",
           "source_vnum": 30438,
-          "item_vnum": 30511
+          "item_vnum": 30411
         }
       ],
       "stair_links": []
@@ -5475,11 +5479,11 @@
       ],
       "cellars": [
         {
-          "name": "Rupee Cellar",
+          "name": "Stepladder Cellar",
           "vnum": 30475,
           "source_coordinate": "C5",
           "source_vnum": 30464,
-          "item_vnum": 30511
+          "item_vnum": 30412
         }
       ],
       "stair_links": []
@@ -6008,11 +6012,11 @@
       ],
       "cellars": [
         {
-          "name": "Rupee Cellar",
+          "name": "Recorder Cellar",
           "vnum": 30499,
           "source_coordinate": "B8",
           "source_vnum": 30497,
-          "item_vnum": 30512
+          "item_vnum": 30413
         }
       ],
       "stair_links": [
@@ -7363,11 +7367,11 @@
       ],
       "cellars": [
         {
-          "name": "Rupee Cellar",
+          "name": "Red Candle Cellar",
           "vnum": 30559,
           "source_coordinate": "C7",
           "source_vnum": 30550,
-          "item_vnum": 30512
+          "item_vnum": 30414
         }
       ],
       "stair_links": [
@@ -7947,11 +7951,11 @@
           "item_vnum": 30415
         },
         {
-          "name": "Rupee Cellar",
+          "name": "Magical Key Cellar",
           "vnum": 30586,
           "source_coordinate": "E7",
           "source_vnum": 30583,
-          "item_vnum": 30512
+          "item_vnum": 30416
         }
       ],
       "stair_links": [

@@ -136,17 +136,25 @@ asked about its master. Every dungeon room is `ROOM_NO_RECALL`, so gate,
 summon, portal, astral walk, teleport, shift and earth travel cannot land
 in one, and `goto` and `transfer` are staff commands.
 
-| Level | To enter | Obstacle before the guardian (needs) | Guardian's chest | Why it is faithful |
+| Level | To enter | Obstacle before the guardian (needs) | Tools inside, where the NES keeps them | Why it is faithful |
 | --- | --- | --- | --- | --- |
-| 1: The Eagle | nothing | none | Piece 1 + the boomerang (`30232`) | The boomerang is the Eagle's: a Goriya drops it in the NES. The bow stays where the NES keeps it, until Level 5 needs it (below). |
-| 2: The Moon | Piece 1 | Dodongo's door is held by a lever across a pit; a thrown boomerang trips it (the boomerang or the Magical Boomerang) | Piece 2 + the Magical Boomerang (`30410`) | The Magical Boomerang is the Moon's treasure. The NES boomerang fetches and strikes what you cannot reach. |
-| 3: The Manji | Piece 2 | Manhandla's lever is across a chasm only the Magical Boomerang reaches | Piece 3 + the raft (`30411`) | The raft is the Manji's treasure, and the Magical Boomerang's whole point in the NES is its range. |
-| 4: The Snake | Piece 3, and the raft to reach the island | Black water floods the hall before the Gleeok: the raft | Piece 4 + the stepladder (`30412`) | NES exactly: the raft carries you to Level 4's island, and the stepladder is the Snake's treasure. |
-| 5: The Lizard | Piece 4 | A one-square moat across Digdogger's doorway: the stepladder | Piece 5 + the bow (`30222`) | NES exactly for the stepladder, which bridges one-square gaps. The bow moves here from Level 1, so it arrives just before the guardian it exists for. |
-| 6: The Dragon | Piece 5 | Gohma's eye is armoured against everything but an arrow: the bow | Piece 6 + the Recorder (`30413`) | NES exactly: a bow and arrow beat Gohma, and Gohma still takes only an arrow's finishing blow. The Recorder moves here from Level 5, one dungeon later, so it is in hand for Level 7, where the NES uses it. |
-| 7: The Demon | Piece 6, and the Recorder's song to drain the lake (as before) | Two Digdoggers block the way to the guardian; the Recorder shrinks them | Piece 7 + the Red Candle (`30414`) | NES exactly: the Recorder drains Level 7's lake and shrinks Digdogger, and the Red Candle is the Demon's treasure. |
-| 8: The Lion | Piece 7, and a candle to burn the bush (as before) | The way to the guardian is utterly dark: the Red Candle | Piece 8 + the Magical Key (`30416`) | NES: the Red Candle lights dark rooms and burns Level 8's bush; the Magical Key is the Lion's treasure. |
-| 9: Death Mountain | Piece 8 (and all eight pieces and a bomb at the door, as before) | The doors before Ganon's lair: the Magical Key | Great chest: piece 9, the final Triforce piece (`30408`, Ganon's Power), + the Master Sword (`30200`) | NES: the Magical Key opens every lock in the last dungeons. The Silver Arrow that finishes Ganon is in Death Mountain's own cellar, where the NES keeps it, before his lair; the Red Ring is in its other cellar. |
+| 1: The Eagle | nothing | none | The boomerang (`30232`), in the goriyas' room `D4`; the bow (`30222`), in the `B6` cellar | NES exactly: a Goriya's boomerang, and the bow under the ring of blocks. |
+| 2: The Moon | Piece 1 | Dodongo's door is held by a lever across a pit; a thrown boomerang trips it (the boomerang or the Magical Boomerang) | The Magical Boomerang (`30410`), in the goriyas' room `D4` | The NES boomerang fetches and strikes what you cannot reach. |
+| 3: The Manji | Piece 2 | Manhandla's lever is across a chasm only the Magical Boomerang reaches | The raft (`30411`), in the `A2` cellar | The Magical Boomerang's whole point in the NES is its range. |
+| 4: The Snake | Piece 3, and the raft to reach the island | Black water floods the hall before the Gleeok: the raft | The stepladder (`30412`), in the `C5` cellar | NES exactly: the raft carries you to Level 4's island. |
+| 5: The Lizard | Piece 4 | A one-square moat across Digdogger's doorway: the stepladder | The Recorder (`30413`), in the `B8` cellar | The stepladder bridges one-square gaps. Digdogger cannot be hurt until the Recorder shrinks it, as on the NES, and the Recorder is in this dungeon's own cellar. |
+| 6: The Dragon | Piece 5 | Gohma's eye is armoured against everything but an arrow: the bow | The Magical Rod (`30245`), in the `B8` cellar | NES exactly: only an arrow finishes Gohma, and the bow came from Level 1. |
+| 7: The Demon | Piece 6, and the Recorder's song to drain the lake | Two Digdoggers block the way to the guardian; the Recorder shrinks them | The Red Candle (`30414`), in the `C7` cellar | NES exactly: the Recorder drains Level 7's lake and shrinks Digdogger. |
+| 8: The Lion | Piece 7, and a candle to burn the bush | The way to the guardian is utterly dark: the Red Candle | The Magic Book (`30415`, `B1` cellar) and the Magical Key (`30416`, `E7` cellar) | NES: the Red Candle lights dark rooms and burns Level 8's bush. |
+| 9: Death Mountain | Piece 8 (and all eight pieces and a bomb at the door) | The doors before Ganon's lair: the Magical Key | The Silver Arrow (`A7` cellar) and the Red Ring (`H8` cellar); the great chest holds piece 9 (`30408`, Ganon's Power) and the Master Sword (`30200`) | NES: the Magical Key opens every lock in the last dungeons, and the Silver Arrow that finishes Ganon is in his own dungeon's cellar. |
+
+Each guardian's chest holds its dungeon's piece and nothing else (Ganon's
+the Master Sword too: `CHEST_PRIZES`). Until 2026-10-25 every tool lay in the
+chest of the dungeon before the guardian that asks for it, with the bow moved
+to Level 5 and the Recorder to Level 6, and six of the cellars above held
+coins; the cellars and the goriyas' rooms hold them now (`MAJOR_ITEMS` and
+`DIRECT_DUNGEON_ITEMS` in the manifest builder, `TOOL_SOURCES` in the area
+generator). The guardian gates still ask for the same tool each did.
 
 **The overworld must not ask for a tool before its dungeon gives it.**
 Until 2026-10-04 Levels 1 and 2 stood behind raft crossings (`H5`-`I5`,

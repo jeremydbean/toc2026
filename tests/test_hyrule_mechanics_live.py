@@ -8,6 +8,7 @@ mechanics audit). Every check here failed on the code before it:
 * a patra's great eye cannot be touched until its ring of eyes is cut;
 * a bubble cannot be harmed at all, and the fight with it ends at once;
 * every Dodongo swallows a bomb for exactly half its health;
+* Digdogger cannot be hurt until the Recorder shrinks it, once;
 * the Blue Candle flares once a room and the Red as often as you like;
 * the money game wants the worst sign's 40 gold, so a loss is paid whole.
 
@@ -41,6 +42,9 @@ BUBBLE = 32048         # band 9
 POLS_VOICE = 32087     # band 8, level 50
 KEESE = 31118          # band 9
 DODONGO = 31184        # Level 5's
+DIGDOGGER = 30309      # Level 5's guardian
+RECORDER = 30413
+LIZARD_CELLAR = 30499  # Level 5's Recorder cellar
 BOW, QUIVER, BOOMERANG = 30222, 30543, 30232
 BLUE_CANDLE, RED_CANDLE = 30546, 30414
 BOMBS = 30695
@@ -136,6 +140,11 @@ class HyruleMechanicsLiveTests(unittest.TestCase):
 
                 with self.subTest("a patra's eye is out of reach until the ring is cut"):
                     hero.must("wield sword", "wield")   # the starting sword
+                    # A hitroll that lands: the ring takes landed blows only,
+                    # and a fair one left a patra parrying for two minutes
+                    # on a busy machine. (reset_char rebuilds a saved one.)
+                    god.must("set char zmechhero hitroll 300", "")
+                    god.must("set char zmechhero damroll 100", "")
                     load(god, PATRA, "patra", 40)
                     hero.sync("kill patra", 30)
                     self.assertIn("eyes orbiting", hero.transcript)
@@ -151,6 +160,31 @@ class HyruleMechanicsLiveTests(unittest.TestCase):
                                     hero.transcript.index("Patra is DEAD")
                                     if "Patra is DEAD" in hero.transcript
                                     else len(hero.transcript))
+
+                with self.subTest("Digdogger cannot be hurt until the Recorder shrinks it"):
+                    # In Hyrule, where the Recorder's tune is answered:
+                    # Level 5's cellar, empty and no safe room.
+                    god.must(f"transfer zmechhero {LIZARD_CELLAR}", "")
+                    god.sync(f"goto {LIZARD_CELLAR}")
+                    load(god, DIGDOGGER, "digdogger", 3000)
+                    mark = len(hero.transcript)
+                    hero.sync("kill digdogger", 30)
+                    hero.drain(3)
+                    self.assertIn("too big to hurt", hero.transcript[mark:])
+                    self.assertEqual((3000, 3000), hit_points(god, "digdogger"))
+                    give(god, "zmechhero", RECORDER, "recorder")
+                    played = hero.sync("play recorder", 30)
+                    self.assertIn("shrinks to a third", played, played)
+                    self.assertLessEqual(hit_points(god, "digdogger")[0], 1000)
+                    mark = len(hero.transcript)
+                    for _ in range(60):
+                        if "Digdogger is DEAD" in hero.transcript[mark:]:
+                            break
+                        hero.drain(1)
+                    self.assertIn("Digdogger is DEAD", hero.transcript[mark:])
+                    self.assertNotIn("shrinks to a third", hero.sync("play recorder", 30))
+                    god.must(f"transfer zmechhero {SPARRING_FLOOR}", "")
+                    god.sync(f"goto {SPARRING_FLOOR}")
 
                 with self.subTest("every Dodongo swallows a bomb for half its health"):
                     load(god, DODONGO, "dodongo", 1000)

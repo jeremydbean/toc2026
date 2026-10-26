@@ -115,22 +115,31 @@ GOALS = {1: "F5", 2: "B8", 3: "E5", 4: "D8", 5: "A7", 6: "E8", 7: "D6", 8: "B6",
 MAP_ROOMS = {1: "C4", 2: "D3", 3: "D4", 4: "B6", 5: "C4", 6: "B7", 7: "A7", 8: "D6", 9: "H6"}
 COMPASS_ROOMS = {1: "D3", 2: "D2", 3: "B3", 4: "C2", 5: "D5", 6: "A2", 7: "C3", 8: "E3", 9: "F5"}
 
+# Each dungeon's tools where the NES keeps them (the dungeon inventory of
+# 2026-10-25, decoded from the cartridge's room data): the bow, the raft,
+# the stepladder, the Recorder, the Red Candle and the Magical Key in the
+# cellars under their block stairs, as the Rod, the Book, the Silver
+# Arrows and the Red Ring always were. Until then six of these cellars held
+# coins, and the tools lay in the guardians' chests -- the bow moved to
+# Level 5 and the Recorder to Level 6. The Triforce pieces stay in the
+# chests (scripts/build_hyrule_area.py, DUNGEON_CHAIN).
 MAJOR_ITEMS = {
-    1: ("B6", "Rupee Cellar", 30511),
-    3: ("A2", "Rupee Cellar", 30511),
-    4: ("C5", "Rupee Cellar", 30511),
-    5: ("B8", "Rupee Cellar", 30512),
+    1: ("B6", "Bow Cellar", 30222),
+    3: ("A2", "Raft Cellar", 30411),
+    4: ("C5", "Stepladder Cellar", 30412),
+    5: ("B8", "Recorder Cellar", 30413),
     6: ("B8", "Magical Rod Cellar", 30245),
-    7: ("C7", "Rupee Cellar", 30512),
+    7: ("C7", "Red Candle Cellar", 30414),
     8: ("B1", "Magic Book Cellar", 30415),
 }
-# The dungeon treasures -- boomerang, raft, stepladder and the rest -- and
-# the Triforce pieces are in each guardian's chest, placed by
-# scripts/build_hyrule_area.py (DUNGEON_CHAIN); the cellars that held a
-# treasure hold rupees instead.
-DIRECT_DUNGEON_ITEMS: dict[tuple[int, str], int] = {}
+# The boomerangs have no cellar: the NES gives each when the goriyas in
+# its D4 room die.
+DIRECT_DUNGEON_ITEMS: dict[tuple[int, str], int] = {
+    (1, "D4"): 30232,
+    (2, "D4"): 30410,
+}
 EXTRA_MAJOR_ITEMS = {
-    8: [("E7", "Rupee Cellar", 30512)],
+    8: [("E7", "Magical Key Cellar", 30416)],
     9: [("A7", "Silver Arrow Cellar", 30218), ("H8", "Red Ring Cellar", 30579)],
 }
 STAIR_PAIRS = {

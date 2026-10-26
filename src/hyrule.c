@@ -1138,11 +1138,6 @@ static bool hyrule_kind_is( const CHAR_DATA *victim, int kind )
 }
 
 #define HYRULE_DIGDOGGER_SHRUNK 1
-/* Which digdoggers no blade can hurt until the Recorder shrinks them: the
-   ones in Level 7, where the Recorder already has to come first (it drains
-   the lake in front of the dungeon). */
-#define HYRULE_DIGDOGGER_NEEDS_RECORDER(v) \
-    ( (v)->pIndexData->vnum != HYRULE_KIND_DIGDOGGER )
 
 /* A digdogger: Level 5's guardian (its catalog record is the kind) and the
    ones that roll through Level 7. */
@@ -1210,7 +1205,9 @@ bool hyrule_blow_turned_aside( CHAR_DATA *ch, CHAR_DATA *victim )
         return true;
     }
 
-    if ( hyrule_is_digdogger( victim ) && HYRULE_DIGDOGGER_NEEDS_RECORDER( victim )
+    /* Every digdogger, Level 5's guardian included, as on the NES; the
+       Recorder lies in Level 5's own cellar, before its guardian. */
+    if ( hyrule_is_digdogger( victim )
     &&   victim->hyrule_state != HYRULE_DIGDOGGER_SHRUNK )
     {
         act( "Your blow bounces off $N's great rolling bulk: it is far too big to hurt. "
