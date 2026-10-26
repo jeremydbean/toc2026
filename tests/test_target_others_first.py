@@ -13,13 +13,13 @@ from __future__ import annotations
 import pathlib
 import unittest
 
-from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
+from live_mud import (LiveMud, SPARRING_FLOOR, create_character, login,
+                      patch_player_file, place_sparring_guard, skip_reason)
 
 SKIP = skip_reason()
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PASSWORD = "Ztarget1pass"
 TEMPLE = 4207
-ZOMBIE_ROOM = 3766  # school.are: mob 3724, "zombie"
 
 
 def run(client, command: str, settle: float = 1.6) -> str:
@@ -56,26 +56,29 @@ class TargetSourceTests(unittest.TestCase):
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class TargetLiveTests(unittest.TestCase):
     def test_a_prefix_of_your_name_finds_the_monster(self) -> None:
-        with LiveMud() as mud:
+        # The fixture world's sparring guard never moves: the school's
+        # zombie this used to stand beside wanders, and on a busy CI
+        # runner it had left the room before the LOOK (2026-10-26).
+        with LiveMud(fixtures=True) as mud:
             with mud.connect(timeout=120) as client:
-                create_character(client, "Zorbo", PASSWORD)
+                create_character(client, "Sparo", PASSWORD)
                 client.drain(1.0)
                 client.send("quit")
                 self.assertTrue(client.wait_closed())
-            # Immortal, so the school's monsters leave it be.
-            patch_player_file(mud, "Zorbo", Levl=70, Room=TEMPLE)
+            # Immortal, so nothing fights it and it may GOTO and LOAD.
+            patch_player_file(mud, "Sparo", Levl=70, Room=TEMPLE)
 
             with mud.connect(timeout=120) as client:
-                login(client, "Zorbo", PASSWORD)
+                login(client, "Sparo", PASSWORD)
                 run(client, "scroll 0", 1.0)
 
                 temple = run(client, "consider watcher", 1.6)
                 self.assertNotIn("Not in the temple", temple, temple)
 
-                run(client, "goto %d" % ZOMBIE_ROOM, 1.6)
-                self.assertIn("zombie", run(client, "look", 1.4).lower())
-                said = run(client, "consider zo", 1.6)
-                self.assertIn("zombie", said.lower(), said)
+                place_sparring_guard(client, "Sparo", SPARRING_FLOOR)
+                # "sp" starts the looker's own name and the guard's.
+                said = client.sync("consider sp")
+                self.assertIn("sparring guard", said.lower(), said)
                 # One verdict from one model (CONSIDER rework, 2026-10-24).
                 # The estimate reads "Blow for blow, ..." or, when the foe
                 # can barely hurt you, "$N could barely scratch you; ...":
