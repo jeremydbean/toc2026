@@ -4641,8 +4641,7 @@
             }
           },
           "entities": {
-            "red_darknut": 1,
-            "zol": 1
+            "red_darknut": 8
           },
           "items": [],
           "role": "room"
@@ -4751,7 +4750,7 @@
             }
           },
           "entities": {
-            "zol": 2
+            "red_darknut": 3
           },
           "items": [],
           "role": "room"
@@ -4777,7 +4776,7 @@
             }
           },
           "entities": {
-            "zol": 2
+            "red_darknut": 3
           },
           "items": [],
           "role": "room"
@@ -5106,8 +5105,7 @@
             }
           },
           "entities": {
-            "blue_darknut": 1,
-            "vire": 1
+            "vire": 3
           },
           "items": [],
           "role": "room"
@@ -5189,7 +5187,9 @@
               "to_vnum": 30459
             }
           },
-          "entities": {},
+          "entities": {
+            "zol": 5
+          },
           "items": [
             30227
           ],
@@ -5199,6 +5199,11 @@
           "coordinate": "A5",
           "vnum": 30462,
           "exits": {
+            "east": {
+              "to": "B5",
+              "type": "locked",
+              "to_vnum": 30463
+            },
             "north": {
               "to": "A6",
               "type": "locked",
@@ -5230,6 +5235,11 @@
               "to": "B6",
               "type": "locked",
               "to_vnum": 30466
+            },
+            "west": {
+              "to": "A5",
+              "type": "locked",
+              "to_vnum": 30462
             }
           },
           "entities": {
@@ -5383,8 +5393,7 @@
             }
           },
           "entities": {
-            "blue_darknut": 1,
-            "vire": 1
+            "vire": 5
           },
           "items": [],
           "role": "room"
@@ -5414,6 +5423,11 @@
           "coordinate": "A8",
           "vnum": 30471,
           "exits": {
+            "east": {
+              "to": "B8",
+              "type": "locked",
+              "to_vnum": 30472
+            },
             "south": {
               "to": "A7",
               "type": "shutter",
@@ -5439,6 +5453,11 @@
               "to": "B7",
               "type": "bombable",
               "to_vnum": 30468
+            },
+            "west": {
+              "to": "A8",
+              "type": "locked",
+              "to_vnum": 30471
             }
           },
           "entities": {
@@ -5570,7 +5589,7 @@
             }
           },
           "entities": {
-            "zol": 1
+            "blue_darknut": 5
           },
           "items": [],
           "role": "room"
@@ -5607,7 +5626,7 @@
           "exits": {
             "east": {
               "to": "D2",
-              "type": "open",
+              "type": "locked",
               "to_vnum": 30481
             },
             "north": {
@@ -5645,7 +5664,7 @@
             },
             "west": {
               "to": "C2",
-              "type": "open",
+              "type": "locked",
               "to_vnum": 30480
             }
           },
@@ -5811,7 +5830,7 @@
             }
           },
           "entities": {
-            "zol": 1
+            "red_darknut": 3
           },
           "items": [
             30493
@@ -5997,7 +6016,7 @@
             }
           },
           "entities": {
-            "zol": 1
+            "blue_darknut": 6
           },
           "items": [],
           "role": "room"
@@ -7044,7 +7063,9 @@
               "to_vnum": 30541
             }
           },
-          "entities": {},
+          "entities": {
+            "digdogger": 1
+          },
           "items": [],
           "role": "room"
         },
@@ -7526,7 +7547,9 @@
               "to_vnum": 30566
             }
           },
-          "entities": {},
+          "entities": {
+            "red_darknut": 3
+          },
           "items": [
             30227
           ],
@@ -7587,7 +7610,7 @@
             }
           },
           "entities": {
-            "zol": 2
+            "blue_darknut": 5
           },
           "items": [
             30227
@@ -7628,7 +7651,7 @@
             }
           },
           "entities": {
-            "zol": 2
+            "red_darknut": 6
           },
           "items": [
             30227
@@ -7703,8 +7726,10 @@
             }
           },
           "entities": {
-            "bubble": 1,
-            "zol": 1
+            "blue_darknut": 1,
+            "bubble": 2,
+            "gibdo": 3,
+            "red_darknut": 2
           },
           "items": [],
           "role": "room"
@@ -7792,7 +7817,9 @@
               "to_vnum": 30572
             }
           },
-          "entities": {},
+          "entities": {
+            "blue_darknut": 6
+          },
           "items": [],
           "role": "room"
         },
@@ -7933,8 +7960,9 @@
             }
           },
           "entities": {
-            "pols_voice": 1,
-            "zol": 1
+            "blue_darknut": 2,
+            "pols_voice": 2,
+            "red_darknut": 2
           },
           "items": [],
           "role": "room"
@@ -7950,7 +7978,7 @@
             }
           },
           "entities": {
-            "zol": 2
+            "red_darknut": 5
           },
           "items": [],
           "role": "room"
@@ -8120,11 +8148,6 @@
           "coordinate": "D2",
           "vnum": 30593,
           "exits": {
-            "east": {
-              "to": "E2",
-              "type": "open",
-              "to_vnum": 30594
-            },
             "north": {
               "to": "D3",
               "type": "locked",
@@ -8160,11 +8183,6 @@
               "to": "E3",
               "type": "open",
               "to_vnum": 30601
-            },
-            "west": {
-              "to": "D2",
-              "type": "open",
-              "to_vnum": 30593
             }
           },
           "entities": {
@@ -8278,11 +8296,6 @@
           "coordinate": "C3",
           "vnum": 30599,
           "exits": {
-            "east": {
-              "to": "D3",
-              "type": "open",
-              "to_vnum": 30600
-            },
             "north": {
               "to": "C4",
               "type": "shutter",
@@ -8308,11 +8321,6 @@
               "to": "D2",
               "type": "locked",
               "to_vnum": 30593
-            },
-            "west": {
-              "to": "C3",
-              "type": "open",
-              "to_vnum": 30599
             }
           },
           "entities": {
@@ -8539,7 +8547,7 @@
           "exits": {
             "east": {
               "to": "G4",
-              "type": "locked",
+              "type": "open",
               "to_vnum": 30611
             },
             "south": {
@@ -8573,7 +8581,7 @@
             },
             "west": {
               "to": "F4",
-              "type": "locked",
+              "type": "open",
               "to_vnum": 30610
             }
           },
@@ -9256,7 +9264,11 @@
               "to_vnum": 30639
             }
           },
-          "entities": {},
+          "entities": {
+            "blade_trap": 1,
+            "blue_wizzrobe": 2,
+            "red_wizzrobe": 2
+          },
           "items": [],
           "role": "room"
         },

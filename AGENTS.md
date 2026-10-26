@@ -188,13 +188,16 @@ Current October 2026 Python baseline:
 
 ```text
 102 listed area entries
-2,496 mobiles
+2,498 mobiles
 3,722 objects
 7,786 rooms
 0 critical, 12 warning, 1,648 information findings
 ```
 
-Hyrule's cleared-room rewards (2026-10-26) added eight
+The October 2026 fidelity audit's enemy corrections added generated
+Hyrule enemies for kinds new to their band (darknuts in Levels 5 and 8, zols
+in Level 4); the mobile count was 2,496 before them and the Hyrule maze copy
+30756 went with the maze fix. Hyrule's cleared-room rewards (2026-10-26) added eight
 `object-has-no-source` findings: both boomerangs, two maps and four
 compasses are made by `hyrule_room_cleared` when a room's enemies die, not
 by a reset (`CLEAR_REWARDS`). Small keys are laid out in other rooms too,

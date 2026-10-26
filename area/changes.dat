@@ -5,11 +5,16 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261026c 2026-10-26
+Some of Hyrule's dungeon rooms are as the old game built them: darknuts
+where zols stood, three key doors that were missing, one that was locked
+and should not be, and two passages in Death Mountain that were always
+walls.
+
 @ 20261026b 2026-10-26
 Hyrule's White Sword can be wielded from level 10, not 30, so the hero
 with the five hearts its old man asks for can use it when it is given.
-One already held keeps its old level; ask the old man for a new one by
-coming back without it.
+One already held keeps the level it was made at.
 
 @ 20261026a 2026-10-26
 Some of Hyrule's keys, maps and compasses, and both boomerangs, now appear

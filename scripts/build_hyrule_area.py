@@ -2116,8 +2116,8 @@ TOOL_SOURCES = {
 # room data, or a Stalfos or Gibdo carrying it (Z_05.asm:8226, Z_07.asm:832)
 # -- by (level, room): no reset lays them out, and hyrule_clear_rewards in
 # src/hyrule.c makes each appear when the room is cleared. Rooms where the
-# NES's enemy is not ours yet (Level 2's C5, Level 7's C5, Level 8's B3 and
-# D6) keep their item lying out. Bubbles, blade traps and old men never
+# NES's enemy is not ours yet (Level 2's C5, Level 7's C5 and Level 8's D6:
+# a Moldorm, a Moldorm and a Manhandla) keep their item lying out. Bubbles, blade traps and old men never
 # count, as on the NES. tests/test_hyrule_nes.py holds the C table to this.
 HYRULE_SMALL_KEY = 30227
 CLEAR_REWARDS = {
@@ -2135,7 +2135,7 @@ CLEAR_REWARDS = {
     (6, "C1"): [HYRULE_SMALL_KEY], (6, "B7"): [30479 + 6],      # map
     (6, "A2"): [30488 + 6],                                      # compass
     (7, "F2"): [HYRULE_SMALL_KEY], (7, "C3"): [30488 + 7],      # compass
-    (8, "D3"): [HYRULE_SMALL_KEY],
+    (8, "B3"): [HYRULE_SMALL_KEY], (8, "D3"): [HYRULE_SMALL_KEY],
     (9, "G3"): [HYRULE_SMALL_KEY], (9, "H3"): [HYRULE_SMALL_KEY],
     (9, "H6"): [30479 + 9],                                      # Patra has the map
     (9, "F5"): [30488 + 9],                                      # compass

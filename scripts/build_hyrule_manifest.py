@@ -163,6 +163,26 @@ STAIR_PAIRS = {
 # where overlapping animation frames cannot be separated reliably by image
 # matching. Level 9 is also cross-checked against the complete First Quest route.
 ROOM_ENTITY_OVERRIDES = {
+    # Rooms whose enemies the extraction got wrong, from the cartridge's
+    # room data (2026-10-25). The generator thins each to three.
+    (3, "C3"): {"red_darknut": 3},
+    (3, "D3"): {"red_darknut": 3},
+    (3, "A2"): {"red_darknut": 8},
+    (4, "C7"): {"vire": 5},
+    (4, "A4"): {"zol": 5},
+    (4, "B2"): {"vire": 3},
+    (5, "B8"): {"blue_darknut": 6},
+    (5, "D5"): {"red_darknut": 3},
+    (5, "A2"): {"blue_darknut": 5},
+    (7, "B5"): {"digdogger": 1},
+    (8, "D8"): {"red_darknut": 5},
+    (8, "E7"): {"pols_voice": 2, "blue_darknut": 2, "red_darknut": 2},
+    (8, "D5"): {"blue_darknut": 6},
+    (8, "A4"): {"red_darknut": 6},
+    (8, "D4"): {"bubble": 2, "blue_darknut": 1, "red_darknut": 2, "gibdo": 3},
+    (8, "B3"): {"red_darknut": 3},
+    (8, "D3"): {"blue_darknut": 5},
+    (9, "E8"): {"blade_trap": 1, "blue_wizzrobe": 2, "red_wizzrobe": 2},
     (9, "G2"): {"old_man": 1},
     (9, "G3"): {"bubble": 2, "zol": 2, "like_like": 2},
     (9, "F3"): {"red_lanmola": 2},
@@ -707,6 +727,34 @@ def has_bomb_marker(reference: Path, level: int, coordinate: str, direction: str
     return changed_pixels >= BOMB_MARKER_MIN_PIXELS
 
 
+# Doors the map extraction read wrongly, checked against the cartridge's
+# room data (the dungeon inventory, 2026-10-25): (level, room, direction)
+# -> kind, or None for a wall. Applied to both sides.
+DOOR_OVERRIDES = {
+    (4, "A8", "east"): "locked",    # A8/B8, a key door on the NES
+    (4, "A5", "east"): "locked",    # A5/B5
+    (5, "C2", "east"): "locked",    # C2/D2
+    (9, "F4", "east"): "open",      # F4/G4, open on the NES
+    (9, "C3", "east"): None,        # C3/D3, a wall
+    (9, "D2", "east"): None,        # D2/E2, a wall
+}
+
+
+def apply_door_overrides(level: int, edges: dict[str, dict[str, dict[str, Any]]]) -> None:
+    for (override_level, coordinate, direction), kind in DOOR_OVERRIDES.items():
+        if override_level != level:
+            continue
+        target = neighbor(coordinate, direction)
+        if kind is None:
+            edges[coordinate].pop(direction)
+            edges[target].pop(opposite(direction))
+        elif direction not in edges[coordinate]:
+            add_edge(edges, coordinate, target, direction, kind)
+        else:
+            edges[coordinate][direction]["type"] = kind
+            edges[target][opposite(direction)]["type"] = kind
+
+
 def dungeon_edges(
     level: int,
     patterns: dict[tuple[int, str, str], int],
@@ -739,6 +787,7 @@ def dungeon_edges(
             else:
                 continue
             add_edge(edges, coordinate, target, direction, kind)
+    apply_door_overrides(level, edges)
     return edges
 
 

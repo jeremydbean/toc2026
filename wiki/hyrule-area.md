@@ -1086,14 +1086,14 @@ Runtime rules add the behaviors the area format cannot express alone:
 
 The NES hides some items until a room's last enemy dies -- trigger 7 in its
 room data, or a Stalfos or Gibdo carrying it (Z_05.asm:8226, Z_07.asm:832).
-`CLEAR_REWARDS` in the generator lists them (30 items in 30 rooms: keys, the
+`CLEAR_REWARDS` in the generator lists them (31 items in 31 rooms: keys, the
 Level 5-7 and 9 compasses, the Level 6 and 9 maps, both boomerangs); no
 reset lays them out, and `hyrule_room_cleared` in `src/hyrule.c`, called by
 `raw_kill` once a mobile is gone, makes each appear with a chime. Bubbles,
 blade traps and people never count, as on the NES. Enemies come back only
 at a reset, so each clearing after one gives the item again unless it is
 still there. Rooms whose NES enemy is not ours yet (Level 2 `C5`, Level 7
-`C5`, Level 8 `B3` and `D6`) keep their item lying out. The old man's
+`C5`, Level 8 `D6`) keep their item lying out. The old man's
 "PATRA HAS THE MAP" is true: the Level 9 map appears when Patra dies.
 `EXTRA_KEYS` in the manifest builder restores seven small keys the map
 extraction missed.
@@ -1287,13 +1287,16 @@ the NES does with its screen or its clock:
 | The tools in the guardians' rooms' order | Each guardian's chamber still asks for one tool found before it (the plan table) -- an owner's decision to keep or replace with the NES's in-fight needs |
 | Second Quest | Not here, and nothing of it is |
 
-What the audit found and did not change yet: enemies missing or wrong in
-some dungeon rooms (Level 3's and 8's darknut rooms filled with zols; a
-Moldorm, Manhandla and Gleeok mini-bosses absent), two missing locked doors
-in Level 4 and one in Level 5, three passages in Level 9 that are walls on
-the NES, and Level 2's boss room with its shutter on the wrong side. The
-room-by-room table is in the audit notes; each is a data change in the
-manifest and the generator.
+The audit also corrected 18 rooms' enemies (darknut rooms the map
+extraction had filled with zols, Level 4's vires, Level 7's lone
+Digdogger, Level 9's E8) through `ROOM_ENTITY_OVERRIDES`, and six doors
+through `DOOR_OVERRIDES` in the manifest builder: key doors at Level 4's
+A8/B8 and A5/B5 and Level 5's C2/D2, Level 9's F4/G4 open, and its C3/D3
+and D2/E2 walls. Still not here: the NES's mini-bosses in ordinary rooms
+-- Moldorms (Levels 2 and 7), Manhandlas and blue Gohmas (Level 8), a
+three-headed Gleeok (Level 6) -- and its rupee hoards; each would be a new
+kind of enemy with prose for its band. Level 2's boss room keeps its
+locked treasure door where the NES has a shutter (the chain above).
 
 ## Related Documentation
 

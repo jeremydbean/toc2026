@@ -8,6 +8,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Hyrule's dungeon rooms match the cartridge** (2026-10-26). Eighteen
+  rooms' enemies were wrong -- darknut rooms filled with zols, Level 4's
+  vires, Level 7's lone Digdogger, Level 9's E8 -- and six doors: key doors
+  missing at Level 4's A8/B8 and A5/B5 and Level 5's C2/D2, a lock at Level
+  9's F4/G4 the NES leaves open, and passages at its C3/D3 and D2/E2 where
+  the NES has walls. `ROOM_ENTITY_OVERRIDES` and `DOOR_OVERRIDES` in the
+  manifest builder; Level 8's B3 key now waits for its darknuts.
+
 - **Hyrule's room rewards wait for the room to be cleared** (2026-10-26).
   The NES hides 30 items until a room's last enemy dies (trigger 7, or a
   Stalfos or Gibdo carrying it); ours laid all of them out, and seven keys

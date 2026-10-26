@@ -452,6 +452,10 @@
       "9": {
         "long": "A zol heaves itself up the slimy stair, swollen and dark as a bruise.",
         "description": "Under Death Mountain the zols grow fat on whatever falls into the dark, and this one is the size of a wagon, its jelly clouded black-green and threaded with shreds of old cloth. Volcanic grit gives its skin a rough, crusted rind. It surges forward in great hopping lurches and engulfs anything it reaches. Only the strongest blades burst it outright; a lesser blow splits it into gels that swarm."
+      },
+      "4": {
+        "long": "A zol slumps against the damp wall, its jelly tinged the colour of lake water.",
+        "description": "Lake seepage runs down the Snake's walls and this zol has soaked up so much of it that its green jelly has turned a cloudy blue-grey, with weed and small shells drifting inside. It slides rather than hops across the wet flagstones, leaving a glistening trail. A weak blow splits it into two gels that keep crowding in; a strong cut bursts it in a spray of brackish slime."
       }
     },
     "bubble": {
@@ -590,12 +594,24 @@
       "8": {
         "long": "A scarred red darknut stands guard, its battered shield never lowered.",
         "description": "Countless fights have hammered the red plate of this darknut into a patchwork of dents, rivets and mended seams, and its helm bears a lion stamped crudely on the brow. It no longer patrols blindly; it pivots with the grace of a long-trained soldier, keeping its great shield squarely toward the threat. Blows from the front glance off uselessly. Only a quick step to its flank, or a strike from behind, will find a gap."
+      },
+      "5": {
+        "long": "A red darknut paces its hall, shield raised before a lizard-crested helm.",
+        "description": "A lizard has been scratched into the brow of this darknut's red helm, and the dry air of the Lizard has left its plate dull and powdery. Younger and quicker than the blue knights of these halls, it still fights by the drill it was taught: shield toward the threat, sword low. Blows from the front glance away. Only a step to its flank or a strike from behind finds the gap."
       }
     },
     "blue_darknut": {
       "4": {
         "long": "A blue darknut guards the moat crossing, shield squared to the door.",
         "description": "Water from the Snake's moats has rusted the rivets of this darknut's blue plate, leaving orange streaks down its greaves, but the armour is still sound and the shield on its arm has not a single dent on its face. It marches with a soldier's discipline, pivoting to keep that shield toward any threat, and blows from the front ring off uselessly. Circle to its flank or back, where the plate is thinner, and strike there."
+      },
+      "5": {
+        "long": "A blue darknut stands at attention, sand gritting the joints of its plate.",
+        "description": "Dust from the Lizard's dry halls has worked into every joint of this darknut's blue armour, so it grinds faintly as it turns, but the plate is whole and the shield on its arm is broad enough to hide behind entirely. It keeps that shield toward whoever it faces, and blows from the front ring off it. Step to its flank or behind it, where the plate is thin, and strike there."
+      },
+      "8": {
+        "long": "A towering blue darknut blocks the way, its shield scarred by fire.",
+        "description": "The Lion's braziers have blackened the edges of this darknut's blue plate, and its shield bears the scorch marks of more candles and fireballs than anyone has counted. It is a veteran of the Lion's hardest halls and moves with an unhurried, terrible patience, always squaring its shield to the nearest threat. Nothing from the front gets through; circle it and strike at the back."
       }
     },
     "red_wizzrobe": {

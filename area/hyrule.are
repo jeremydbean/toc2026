@@ -2833,6 +2833,24 @@ AB 0 0 S
 0 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
+#31133
+zol slime~
+a zol~
+A zol slumps against the damp wall, its jelly tinged the colour of lake water.
+~
+Lake seepage runs down the Snake's walls and this zol has soaked up so much
+of it that its green jelly has turned a cloudy blue-grey, with weed and
+small shells drifting inside. It slides rather than hops across the wet
+flagstones, leaving a glistening trail. A weak blow splits it into two gels
+that keep crowding in; a strong cut bursts it in a spray of brackish slime.
+~
+unique~
+AB 0 0 S
+22 11 5d10+476 1d1+0 2d12+20 14
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
 #31134
 zol slime~
 a zol~
@@ -2867,25 +2885,6 @@ it bursts across the walls.
 unique~
 AB 0 0 S
 35 17 8d10+1238 1d1+0 3d17+39 14
-0 0 0 0
-0 0 0 0
-8 8 0 0
-AHMV ABCDEFGHIJK M 0
-#31137
-zol slime~
-a zol~
-A zol bulges across the crossway, its jelly streaked with old gore.
-~
-This vast old zol fills the corridor like a dropped sack of grain, its
-surface wrinkled and leathery, its eyes sunk deep and filmed over. Rust
-from the Lion's iron doors has tinted it a sickly orange-green. It moves
-less often than younger slimes, but when it hops it lands with a wet thud
-that shakes the floor. Anything short of a mighty stroke merely halves it
-into a pair of gels, which then come on twice as fast.
-~
-unique~
-AB 0 0 S
-48 24 12d10+2580 1d1+0 4d23+72 14
 0 0 0 0
 0 0 0 0
 8 8 0 0
@@ -3133,6 +3132,25 @@ the side or from behind.
 human~
 AB 0 0 S
 19 9 4d10+477 1d1+0 2d11+18 3
+0 0 0 0
+K 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#31204
+darknut red knight~
+a red darknut~
+A red darknut paces its hall, shield raised before a lizard-crested helm.
+~
+A lizard has been scratched into the brow of this darknut's red helm, and
+the dry air of the Lizard has left its plate dull and powdery. Younger and
+quicker than the blue knights of these halls, it still fights by the drill
+it was taught: shield toward the threat, sword low. Blows from the front
+glance away. Only a step to its flank or a strike from behind finds the
+gap.
+~
+human~
+AB 0 0 S
+32 16 8d10+1101 1d1+0 3d18+43 3
 0 0 0 0
 K 0 0 0
 8 8 0 0
@@ -3685,21 +3703,40 @@ AB 0 0 S
 0 0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
-#32153
+#32154
 darknut blue knight~
 a blue darknut~
-A blue darknut guards the moat crossing, shield squared to the door.
+A blue darknut stands at attention, sand gritting the joints of its plate.
 ~
-Water from the Snake's moats has rusted the rivets of this darknut's blue
-plate, leaving orange streaks down its greaves, but the armour is still
-sound and the shield on its arm has not a single dent on its face. It
-marches with a soldier's discipline, pivoting to keep that shield toward
-any threat, and blows from the front ring off uselessly. Circle to its
-flank or back, where the plate is thinner, and strike there.
+Dust from the Lizard's dry halls has worked into every joint of this
+darknut's blue armour, so it grinds faintly as it turns, but the plate is
+whole and the shield on its arm is broad enough to hide behind entirely. It
+keeps that shield toward whoever it faces, and blows from the front ring
+off it. Step to its flank or behind it, where the plate is thin, and strike
+there.
 ~
 human~
 AB 0 0 S
-27 13 6d10+1171 1d1+0 2d24+38 3
+33 16 8d10+1390 1d1+0 3d20+49 3
+0 0 0 0
+K 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#32157
+darknut blue knight~
+a blue darknut~
+A towering blue darknut blocks the way, its shield scarred by fire.
+~
+The Lion's braziers have blackened the edges of this darknut's blue plate,
+and its shield bears the scorch marks of more candles and fireballs than
+anyone has counted. It is a veteran of the Lion's hardest halls and moves
+with an unhurried, terrible patience, always squaring its shield to the
+nearest threat. Nothing from the front gets through; circle it and strike
+at the back.
+~
+human~
+AB 0 0 S
+52 26 13d10+5086 1d1+0 4d34+106 3
 0 0 0 0
 K 0 0 0
 8 8 0 0
@@ -14529,6 +14566,10 @@ D0
 ~
 locked dungeon door~
 2 30227 30465
+D1
+~
+locked dungeon door~
+2 30227 30463
 D2
 ~
 ~
@@ -14551,6 +14592,10 @@ D1
 ~
 shutter~
 1 0 30464
+D3
+~
+locked dungeon door~
+2 30227 30462
 S
 #30464
 Level 4: Room of the Sunken Block~
@@ -14712,6 +14757,10 @@ thin sheet of water that runs down the back wall like a curtain. The stone
 between the braziers is worn smooth. The only door, a shutter, lies south.
 ~
 0 ADN 11
+D1
+~
+locked dungeon door~
+2 30227 30472
 D2
 ~
 shutter~
@@ -14733,6 +14782,10 @@ D2
 ~
 cracked south wall~
 4 0 30468
+D3
+~
+locked dungeon door~
+2 30227 30471
 S
 #30473
 Level 4: Gauntlet of Blades~
@@ -14878,8 +14931,8 @@ shutter~
 1 0 30483
 D1
 ~
-~
-0 0 30481
+locked dungeon door~
+2 30227 30481
 D2
 ~
 ~
@@ -14905,8 +14958,8 @@ cracked south wall~
 4 0 30477
 D3
 ~
-~
-0 0 30480
+locked dungeon door~
+2 30227 30480
 S
 #30482
 Level 5: Slime-Glazed Vault~
@@ -17002,10 +17055,6 @@ D0
 ~
 locked dungeon door~
 2 30227 30600
-D1
-~
-~
-0 0 30594
 D2
 ~
 locked dungeon door~
@@ -17036,10 +17085,6 @@ D1
 ~
 ~
 0 0 30595
-D3
-~
-~
-0 0 30593
 S
 #30595
 Level 9: Scorched Vestibule~
@@ -17138,10 +17183,6 @@ D0
 ~
 shutter~
 1 0 30607
-D1
-~
-~
-0 0 30600
 D5
 ~
 ~
@@ -17164,10 +17205,6 @@ D2
 ~
 locked dungeon door~
 2 30227 30593
-D3
-~
-~
-0 0 30599
 S
 #30601
 Level 9: Hall of Twin Pillars~
@@ -17353,8 +17390,8 @@ looks cracked and weak.
 0 ADN 11
 D1
 ~
-locked dungeon door~
-2 30227 30611
+~
+0 0 30611
 D2
 ~
 cracked south wall~
@@ -17379,8 +17416,8 @@ D2
 0 0 30603
 D3
 ~
-locked dungeon door~
-2 30227 30610
+~
+0 0 30610
 S
 #30612
 Level 9: Eastern Wardroom~
@@ -19592,15 +19629,16 @@ G 1 30592 100
 G 1 30631 100
 D 0 30435 2 1
 D 0 30435 3 3
-M 0 31132 6 30436
+M 0 31132 3 30436
 O 0 30227 0 30436
-M 0 31132 6 30438
-M 0 31202 2 30438
+M 0 31202 6 30438
+M 0 31202 6 30438
+M 0 31202 6 30438
 O 0 30513 0 30438
 D 0 30438 0 1
 D 0 30438 5 4
-M 0 31132 6 30439
-M 0 31202 2 30440
+M 0 31132 3 30439
+M 0 31202 6 30440
 D 0 30440 1 2
 D 0 30440 2 1
 M 0 31112 6 30441
@@ -19608,10 +19646,10 @@ M 0 31112 6 30441
 M 0 32372 3 30441
 O 0 30491 0 30441
 D 0 30441 3 2
-M 0 31132 6 30442
+M 0 31202 6 30442
 D 0 30442 1 4
 O 0 30503 0 30442
-M 0 31132 6 30443
+M 0 31202 6 30443
 D 0 30443 1 1
 D 0 30443 3 4
 O 0 30505 0 30443
@@ -19624,7 +19662,7 @@ M 0 32042 2 30445
 O 0 30227 0 30445
 M 0 31112 6 30446
 D 0 30446 1 2
-M 0 31132 6 30447
+M 0 31132 3 30447
 D 0 30447 0 2
 D 0 30447 1 2
 D 0 30447 3 2
@@ -19658,28 +19696,31 @@ D 0 30453 3 1
 O 0 30411 0 30454
 D 0 30454 4 4
 M 0 31113 3 30455
-M 0 32063 7 30457
-M 0 32153 2 30457
+M 0 32063 8 30457
 D 0 30457 1 2
-M 0 32063 7 30458
+M 0 32063 8 30458
 O 0 30492 0 30458
 D 0 30458 3 2
-M 0 32063 7 30459
+M 0 32063 8 30459
 M 0 31113 3 30460
 O 0 30227 0 30460
+M 0 31133 2 30461
+M 0 31133 2 30461
 O 0 30227 0 30461
 M 0 32043 2 30462
-M 0 32063 7 30462
+M 0 32063 8 30462
 D 0 30462 0 2
-M 0 32063 7 30463
+D 0 30462 1 2
+M 0 32063 8 30463
 D 0 30463 0 2
 D 0 30463 1 1
+D 0 30463 3 2
 M 0 31153 1 30464
 M 0 32043 2 30464
 O 0 30513 0 30464
 D 0 30464 3 1
 D 0 30464 5 4
-M 0 32063 7 30465
+M 0 32063 8 30465
 D 0 30465 0 1
 D 0 30465 2 2
 M 0 32003 2 30466
@@ -19701,8 +19742,8 @@ D 0 30468 2 4
 O 0 30504 0 30468
 D 0 30468 3 4
 O 0 30505 0 30468
-M 0 32063 7 30469
-M 0 32153 2 30469
+M 0 32063 8 30469
+M 0 32063 8 30469
 D 0 30469 1 1
 D 0 30469 3 4
 O 0 30505 0 30469
@@ -19714,11 +19755,13 @@ G 1 30633 100
 D 0 30470 0 3
 D 0 30470 3 1
 M 0 30349 1 30471
+D 0 30471 1 2
 D 0 30471 2 1
 M 0 31113 3 30472
 O 0 30227 0 30472
 D 0 30472 2 4
 O 0 30504 0 30472
+D 0 30472 3 2
 M 0 32373 1 30473
 O 0 30643 0 30474
 O 0 30533 0 30474
@@ -19728,7 +19771,8 @@ D 0 30475 4 4
 M 0 32084 2 30477
 D 0 30477 0 4
 O 0 30502 0 30477
-M 0 31134 5 30478
+M 0 32154 4 30478
+M 0 32154 4 30478
 D 0 30478 1 4
 O 0 30503 0 30478
 M 0 31194 6 30479
@@ -19739,26 +19783,28 @@ D 0 30479 3 4
 O 0 30505 0 30479
 M 0 31194 6 30480
 D 0 30480 0 1
+D 0 30480 1 2
 D 0 30480 3 4
 O 0 30505 0 30480
 M 0 30350 1 30481
 D 0 30481 2 4
 O 0 30504 0 30481
-M 0 31134 5 30482
+D 0 30481 3 2
+M 0 31134 2 30482
 D 0 30482 1 1
 D 0 30482 2 1
 M 0 31184 1 30483
 D 0 30483 0 2
 D 0 30483 2 1
 D 0 30483 3 1
-M 0 31134 5 30484
+M 0 31134 2 30484
 O 0 30484 0 30485
 O 0 30449 0 30485
 D 0 30485 2 2
 M 0 31194 6 30486
 M 0 31194 6 30487
 D 0 30487 0 1
-M 0 31134 5 30488
+M 0 31204 1 30488
 M 0 30309 1 30489
 G 1 30374 100
 G 1 30586 100
@@ -19793,7 +19839,8 @@ M 0 30352 1 30496
 G 1 30696 100
 D 0 30496 3 4
 O 0 30505 0 30496
-M 0 31134 5 30497
+M 0 32154 4 30497
+M 0 32154 4 30497
 O 0 30513 0 30497
 D 0 30497 1 2
 D 0 30497 5 4
@@ -19911,7 +19958,7 @@ D 0 30531 0 4
 O 0 30502 0 30531
 M 0 32126 12 30532
 D 0 30532 0 1
-M 0 32096 2 30533
+M 0 32096 3 30533
 M 0 31126 4 30534
 M 0 31186 2 30535
 D 0 30535 0 2
@@ -19938,6 +19985,7 @@ M 0 31146 6 30541
 M 0 32126 12 30541
 D 0 30541 0 2
 D 0 30541 1 1
+M 0 32096 3 30542
 D 0 30542 1 4
 O 0 30503 0 30542
 D 0 30542 2 1
@@ -19991,7 +20039,7 @@ D 0 30551 0 2
 D 0 30551 1 2
 D 0 30551 3 4
 O 0 30505 0 30551
-M 0 32096 2 30552
+M 0 32096 3 30552
 D 0 30552 0 1
 D 0 30552 3 2
 D 0 30553 1 4
@@ -20018,7 +20066,7 @@ D 0 30558 3 4
 O 0 30505 0 30558
 O 0 30414 0 30559
 D 0 30559 4 4
-M 0 31197 2 30560
+M 0 31197 3 30560
 M 0 32047 3 30560
 O 0 30513 0 30560
 D 0 30560 1 1
@@ -20030,12 +20078,13 @@ M 0 32047 3 30563
 O 0 30227 0 30563
 D 0 30564 0 4
 O 0 30502 0 30564
-O 0 30227 0 30565
+M 0 31207 8 30565
 M 0 31117 2 30566
 M 0 32087 7 30566
 O 0 30227 0 30566
 D 0 30566 1 1
-M 0 31137 5 30567
+M 0 32157 6 30567
+M 0 32157 6 30567
 D 0 30567 0 1
 D 0 30567 1 2
 D 0 30567 2 4
@@ -20046,7 +20095,8 @@ M 0 32087 7 30568
 M 0 32087 7 30568
 O 0 30496 0 30568
 D 0 30568 3 2
-M 0 31137 5 30569
+M 0 31207 8 30569
+M 0 31207 8 30569
 O 0 30227 0 30569
 D 0 30569 1 1
 M 0 32087 7 30570
@@ -20056,8 +20106,10 @@ O 0 30502 0 30570
 D 0 30570 3 1
 D 0 30571 0 1
 D 0 30571 1 2
-M 0 31137 5 30572
+M 0 31197 3 30572
+M 0 31207 8 30572
 M 0 32047 3 30572
+M 0 32157 6 30572
 D 0 30572 0 2
 D 0 30572 2 1
 D 0 30572 3 2
@@ -20076,12 +20128,14 @@ D 0 30574 3 4
 O 0 30505 0 30574
 M 0 30358 1 30575
 D 0 30575 2 1
+M 0 32157 6 30576
+M 0 32157 6 30576
 D 0 30576 0 4
 O 0 30502 0 30576
 D 0 30576 1 1
 D 0 30576 2 2
-M 0 31197 2 30577
-M 0 31207 1 30577
+M 0 31197 3 30577
+M 0 31207 8 30577
 D 0 30577 3 1
 O 0 30647 0 30578
 O 0 30537 0 30578
@@ -20103,18 +20157,20 @@ D 0 30582 1 1
 D 0 30582 2 2
 D 0 30582 3 4
 O 0 30505 0 30582
-M 0 31137 5 30583
+M 0 31207 8 30583
 M 0 32087 7 30583
+M 0 32157 6 30583
 O 0 30513 0 30583
 D 0 30583 3 1
 D 0 30583 5 4
-M 0 31137 5 30584
+M 0 31207 8 30584
+M 0 31207 8 30584
 D 0 30584 2 1
 O 0 30415 0 30585
 D 0 30585 4 4
 O 0 30416 0 30586
 D 0 30586 4 4
-M 0 32108 19 30588
+M 0 32108 20 30588
 D 0 30588 0 2
 D 0 30588 1 2
 M 0 31178 2 30589
@@ -20132,9 +20188,9 @@ D 0 30593 0 2
 D 0 30593 2 2
 D 0 30593 3 2
 M 0 31158 15 30594
-M 0 32108 19 30594
-M 0 31218 18 30595
-M 0 32108 19 30595
+M 0 32108 20 30594
+M 0 31218 19 30595
+M 0 32108 20 30595
 D 0 30595 0 4
 O 0 30502 0 30595
 D 0 30595 1 1
@@ -20152,14 +20208,14 @@ D 0 30598 3 1
 M 0 32188 5 30599
 D 0 30599 0 1
 M 0 31158 15 30600
-M 0 31218 18 30600
+M 0 31218 19 30600
 M 0 32048 14 30600
-M 0 32108 19 30600
+M 0 32108 20 30600
 D 0 30600 0 4
 O 0 30502 0 30600
 D 0 30600 2 2
-M 0 31218 18 30601
-M 0 32108 19 30601
+M 0 31218 19 30601
+M 0 32108 20 30601
 D 0 30601 1 4
 O 0 30503 0 30601
 M 0 32178 2 30602
@@ -20177,15 +20233,15 @@ M 0 32048 14 30603
 D 0 30603 2 1
 D 0 30603 3 4
 O 0 30505 0 30603
-M 0 31218 18 30604
-M 0 32108 19 30604
-M 0 31218 18 30605
-M 0 32108 19 30605
+M 0 31218 19 30604
+M 0 32108 20 30604
+M 0 31218 19 30605
+M 0 32108 20 30605
 D 0 30605 0 2
 D 0 30605 2 2
 M 0 31158 15 30606
 M 0 31158 15 30606
-M 0 32378 2 30606
+M 0 32378 3 30606
 D 0 30606 0 1
 D 0 30606 2 1
 M 0 30225 1 30607
@@ -20197,32 +20253,30 @@ D 0 30607 2 1
 M 0 30360 1 30608
 D 0 30608 2 4
 O 0 30504 0 30608
-M 0 32108 19 30609
-M 0 32108 19 30609
+M 0 32108 20 30609
+M 0 32108 20 30609
 M 0 31158 15 30610
-M 0 31218 18 30610
+M 0 31218 19 30610
 M 0 32048 14 30610
-M 0 32108 19 30610
-D 0 30610 1 2
+M 0 32108 20 30610
 D 0 30610 2 4
 O 0 30504 0 30610
-M 0 31218 18 30611
-M 0 31218 18 30611
-D 0 30611 3 2
-M 0 31218 18 30612
+M 0 31218 19 30611
+M 0 31218 19 30611
+M 0 31218 19 30612
 M 0 32048 14 30612
-M 0 32108 19 30612
+M 0 32108 20 30612
 O 0 30227 0 30612
-M 0 31218 18 30613
-M 0 32108 19 30613
-M 0 32378 2 30613
+M 0 31218 19 30613
+M 0 32108 20 30613
+M 0 32378 3 30613
 D 0 30613 1 4
 O 0 30503 0 30613
 D 0 30613 2 2
 M 0 31158 15 30614
-M 0 31218 18 30614
+M 0 31218 19 30614
 M 0 32048 14 30614
-M 0 32108 19 30614
+M 0 32108 20 30614
 D 0 30614 0 1
 D 0 30614 2 1
 D 0 30614 3 4
@@ -20242,8 +20296,8 @@ M 0 31118 8 30617
 M 0 31118 8 30617
 D 0 30617 3 4
 O 0 30505 0 30617
-M 0 31218 18 30618
-M 0 32108 19 30618
+M 0 31218 19 30618
+M 0 32108 20 30618
 D 0 30618 0 4
 O 0 30502 0 30618
 M 0 31118 8 30619
@@ -20258,8 +20312,8 @@ D 0 30620 0 4
 O 0 30502 0 30620
 D 0 30620 3 4
 O 0 30505 0 30620
-M 0 31218 18 30621
-M 0 32108 19 30621
+M 0 31218 19 30621
+M 0 32108 20 30621
 D 0 30621 0 4
 O 0 30502 0 30621
 M 0 32188 5 30622
@@ -20309,9 +20363,9 @@ D 0 30628 2 4
 O 0 30504 0 30628
 D 0 30628 3 4
 O 0 30505 0 30628
-M 0 31218 18 30629
+M 0 31218 19 30629
 M 0 32048 14 30629
-M 0 32108 19 30629
+M 0 32108 20 30629
 O 0 30513 0 30629
 D 0 30629 2 4
 O 0 30504 0 30629
@@ -20329,16 +20383,16 @@ D 0 30632 3 2
 M 0 31158 15 30633
 M 0 31158 15 30633
 D 0 30633 1 2
-M 0 31218 18 30634
+M 0 31218 19 30634
 D 0 30634 2 4
 O 0 30504 0 30634
 D 0 30634 3 2
 M 0 32188 5 30635
 D 0 30635 0 2
 M 0 31158 15 30636
-M 0 31218 18 30636
+M 0 31218 19 30636
 M 0 32048 14 30636
-M 0 32108 19 30636
+M 0 32108 20 30636
 D 0 30636 0 4
 O 0 30502 0 30636
 D 0 30636 2 4
@@ -20356,19 +20410,22 @@ M 0 31158 15 30639
 M 0 32048 14 30639
 D 0 30639 1 4
 O 0 30503 0 30639
+M 0 31218 19 30640
+M 0 32108 20 30640
+M 0 32378 3 30640
 D 0 30640 3 4
 O 0 30505 0 30640
-M 0 31218 18 30641
-M 0 32108 19 30641
+M 0 31218 19 30641
+M 0 32108 20 30641
 D 0 30641 1 4
 O 0 30503 0 30641
 M 0 30362 1 30642
 D 0 30642 2 2
 D 0 30642 3 4
 O 0 30505 0 30642
-M 0 31218 18 30643
+M 0 31218 19 30643
 M 0 32048 14 30643
-M 0 32108 19 30643
+M 0 32108 20 30643
 O 0 30513 0 30643
 D 0 30643 2 4
 O 0 30504 0 30643
