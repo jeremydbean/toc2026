@@ -195602,3 +195602,78 @@ Mon Oct 26 00:47:27 2026 :: Log Alaric [2497]: copper +297442200
 Mon Oct 26 00:47:27 2026 :: Log Alaric [2497]: quest complete: 297p 44g 22s, 125 quest points, rush (streak bonus 65%)
 Mon Oct 26 00:47:27 2026 :: Snapshot of Alaric taken before quest: Alaric.20261026_004727.quest (PRESTORE Alaric to see it).
 Mon Oct 26 00:47:27 2026 :: Log Alaric [2497]: aq ga no
+Mon Oct 26 00:50:19 2026 :: Log Alaric [2497]: affects off: steel fist
+Mon Oct 26 00:50:25 2026 :: Treasure goblin: vanished from room 9507 (The Southeastern Market Square, newthalo.are) (too long in one area).
+Mon Oct 26 00:51:24 2026 :: Sock.sinaddr:  5.161.194.92
+Mon Oct 26 00:51:24 2026 :: EOF encountered on read.
+Mon Oct 26 00:51:28 2026 :: Log Alaric [2497]: score
+Mon Oct 26 00:51:30 2026 :: Log Alaric [2497]: eq
+Mon Oct 26 00:53:36 2026 :: Log Alaric [2497]: aq re
+Mon Oct 26 00:53:36 2026 :: Log Alaric [2497]: quest assigned: kill a large rat (mob 13014, level 5) in lakes.are, 17 minutes, ordinary
+Mon Oct 26 00:53:43 2026 :: Log Alaric [2497]: enter door
+Mon Oct 26 00:53:43 2026 :: Log Alaric [2401]: arrived (Oak Tree Square on Hallows Eve) from 2497
+Mon Oct 26 00:53:44 2026 :: Log Alaric [2401]: west
+Mon Oct 26 00:53:44 2026 :: Log Alaric [2405]: arrived (Western Oak Tree Square.) from 2401
+Mon Oct 26 00:53:44 2026 :: Log Alaric [2405]: west
+Mon Oct 26 00:53:44 2026 :: Log Alaric [2433]: arrived (Temple Boulevard.) from 2405
+Mon Oct 26 00:53:44 2026 :: Log Alaric [2433]: west
+Mon Oct 26 00:53:44 2026 :: Log Alaric [2434]: arrived (Temple Boulevard.) from 2433
+Mon Oct 26 00:53:44 2026 :: Log Alaric [2434]: west
+Mon Oct 26 00:53:44 2026 :: Log Alaric [2435]: arrived (Temple Boulevard.) from 2434
+Mon Oct 26 00:53:45 2026 :: Log Alaric [2435]: west
+Mon Oct 26 00:53:45 2026 :: Log Alaric [2436]: arrived (Temple Boulevard.) from 2435
+Mon Oct 26 00:53:45 2026 :: Log Alaric [2436]: west
+Mon Oct 26 00:53:45 2026 :: Log Alaric [2437]: arrived (Temple Boulevard.) from 2436
+Mon Oct 26 00:53:45 2026 :: Log Alaric [2437]: west
+Mon Oct 26 00:53:45 2026 :: Log Alaric [2438]: arrived (Inside the Western Gates of Dresden.) from 2437
+Mon Oct 26 00:53:45 2026 :: Log Alaric [2438]: open west
+Mon Oct 26 00:53:46 2026 :: Log Alaric [2438]: west
+Mon Oct 26 00:53:46 2026 :: Log Alaric [2439]: arrived (Outside the Western Gates of Dresden.) from 2438
+Mon Oct 26 00:53:48 2026 :: Log Alaric [2439]: west
+Mon Oct 26 00:53:48 2026 :: Log Alaric [6000]: arrived (The edge of the forest) from 2439
+Mon Oct 26 00:53:48 2026 :: Log Alaric [6000]: west
+Mon Oct 26 00:53:48 2026 :: Log Alaric [6001]: arrived (A trail through the light forest) from 6000
+Mon Oct 26 00:53:48 2026 :: Log Alaric [6001]: west
+Mon Oct 26 00:53:48 2026 :: Log Alaric [6002]: arrived (A trail through the light forest) from 6001
+Mon Oct 26 00:53:48 2026 :: Log Alaric [6002]: south
+Mon Oct 26 00:53:48 2026 :: Log Alaric [6011]: arrived (A small path through the light forest) from 6002
+Mon Oct 26 00:53:49 2026 :: Log Alaric [6011]: south
+Mon Oct 26 00:53:49 2026 :: Log Alaric [6008]: arrived (The forest clearing) from 6011
+Mon Oct 26 00:53:49 2026 :: Log Alaric [6008]: east
+Mon Oct 26 00:53:49 2026 :: Log Alaric [6009]: arrived (Outside a small cabin in the forest) from 6008
+Mon Oct 26 00:53:49 2026 :: Log Alaric [6009]: south
+Mon Oct 26 00:53:49 2026 :: Log Alaric [6014]: arrived (An intersection in the dense forest) from 6009
+Mon Oct 26 00:53:49 2026 :: Log Alaric [6014]: east
+Mon Oct 26 00:53:49 2026 :: Log Alaric [6015]: arrived (A small path in the dense forest) from 6014
+Mon Oct 26 00:53:50 2026 :: Log Alaric [6015]: south
+Mon Oct 26 00:53:50 2026 :: Log Alaric [6016]: arrived (A small path in the dense forest) from 6015
+Mon Oct 26 00:53:50 2026 :: Log Alaric [6016]: south
+Mon Oct 26 00:53:50 2026 :: Log Alaric [6017]: arrived (A small path in the dense forest) from 6016
+Mon Oct 26 00:53:50 2026 :: Log Alaric [6017]: west
+Mon Oct 26 00:53:50 2026 :: Log Alaric [6018]: arrived (An intersection in the light forest) from 6017
+Mon Oct 26 00:53:50 2026 :: Log Alaric [6018]: south
+Mon Oct 26 00:53:50 2026 :: Log Alaric [51]: arrived (The top of the cliff.) from 6018
+Mon Oct 26 00:53:51 2026 :: Log Alaric [51]: down
+Mon Oct 26 00:53:51 2026 :: Log Alaric [13001]: arrived (Rock Outcropping) from 51
+Mon Oct 26 00:54:34 2026 :: Log Alaric [13001]: down
+Mon Oct 26 00:54:34 2026 :: Log Alaric [13002]: arrived (Small Grove) from 13001
+Mon Oct 26 00:54:34 2026 :: Log Alaric [13002]: west
+Mon Oct 26 00:54:34 2026 :: Log Alaric [13003]: arrived (Entrance to the Town of Solace) from 13002
+Mon Oct 26 00:54:34 2026 :: Log Alaric [13003]: west
+Mon Oct 26 00:54:34 2026 :: Log Alaric [13004]: arrived (East shore of Crystalmir Lake) from 13003
+Mon Oct 26 00:54:35 2026 :: Log Alaric [13004]: north
+Mon Oct 26 00:54:35 2026 :: Log Alaric [13007]: arrived (Path along lake) from 13004
+Mon Oct 26 00:54:35 2026 :: Log Alaric [13007]: north
+Mon Oct 26 00:54:35 2026 :: Log Alaric [13013]: arrived (Nearfields) from 13007
+Mon Oct 26 00:54:35 2026 :: Log Alaric [13013]: north
+Mon Oct 26 00:54:35 2026 :: Log Alaric [13036]: arrived (Northfields) from 13013
+Mon Oct 26 00:54:35 2026 :: Log Alaric [13036]: east
+Mon Oct 26 00:54:35 2026 :: Log Alaric [13013]: arrived (Nearfields) from 13036
+Mon Oct 26 00:54:42 2026 :: Log Alaric [13013]: scan
+Mon Oct 26 00:54:43 2026 :: Log Alaric [13013]: n
+Mon Oct 26 00:54:43 2026 :: Log Alaric [13036]: arrived (Northfields) from 13013
+Mon Oct 26 00:54:44 2026 :: Log Alaric [13036]: scan
+Mon Oct 26 00:54:50 2026 :: Log Alaric [13036]: n
+Mon Oct 26 00:54:50 2026 :: Log Alaric [13035]: arrived (Northfields) from 13036
+Mon Oct 26 00:54:51 2026 :: Log Alaric [13035]: kill ra
+Mon Oct 26 00:54:51 2026 :: Log Alaric [13035]: killed a large rat
