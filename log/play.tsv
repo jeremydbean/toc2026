@@ -26813,3 +26813,205 @@
 1793055823	cmd	Trentlin	50	702	camelot.are	standing	100	0	-	kill	kn	You scratch the black knight. // You wound the black knight. // The Headless Horseman's Reaper shears through the black knight with terrible force!
 1793055826	cmd	Trentlin	50	702	camelot.are	fighting	100	0	fight	smite		Your smite *** DEVASTATES *** the black knight! // Your smite ^^^ DESTROYS ^^^ the black knight! // Your smite devastates the black knight!
 1793055827	cmd	Alaric	51	29206	korzath2.are	fighting	91	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a killer clown! [-40] // Your fists of fury MASSACRES a killer clown! [-52]
+1793055833	cmd	Alaric	51	29206	korzath2.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a killer clown. [-5] // Your fists of fury wounds a killer clown. [-17]
+1793055835	cmd	Trentlin	50	702	camelot.are	fighting	99	0	fight	smite		Your smite *** DEVASTATES *** the black knight! // Your smite *** DEVASTATES *** the black knight! // Your smite MUTILATES the black knight!
+1793055839	cmd	Alaric	51	29206	korzath2.are	fighting	90	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a killer clown. [-19] // Your fists of fury scratches a killer clown. [-4]
+1793055840	cmd	Trentlin	50	702	camelot.are	fighting	99	0	fight	smite		Your smite scratches the black knight. // Your smite maims the black knight! // The black knight is DEAD!!
+1793055845	cmd	Alaric	51	29206	korzath2.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a killer clown! [-102] // Your fists of fury DISMEMBERS a killer clown! [-48]
+1793055847	cmd	Trentlin	50	702	camelot.are	standing	99	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     19 hours | Sex:      Male | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1793055848	cmd	Trentlin	50	702	camelot.are	standing	99	0	-	look		The Crossroads of Arden //   You stand at the crossroads of two dusty paths. Dappled sunlight lights  // the intersection and you notice horsesign in the dirt. The path continues 
+1793055849	cmd	Trentlin	50	706	camelot.are	standing	99	0	-	east		A Fork in the Dirty Trail //   You are at a fork in the dirty trail in Forest Arden. There is horsesign  // in the dirt, and the trail goes north, east, and west from here.
+1793055850	cmd	Trentlin	50	710	camelot.are	standing	99	0	-	east		Deep Woods //   You are in a deeply wooded section of the forest Arden. Shadows lengthen  // and play in the breeze. The trail continues north, east, and west.
+1793055850	cmd	Alaric	51	29206	korzath2.are	fighting	89	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a killer clown. [-21] // Your fists of fury MANGLES a killer clown! [-55]
+1793055852	cmd	Trentlin	50	712	camelot.are	standing	99	0	-	east		Dark Hollow //   You have entered a dark hollow. The air is heavy, damp and oppressive  // broken only bye the cackling of a crow. To the west is a dusty trail.
+1793055856	cmd	Alaric	51	29206	korzath2.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims a killer clown! [-35] // Your fists of fury mauls a killer clown. [-22]
+1793055856	cmd	Trentlin	50	712	camelot.are	standing	99	0	-	consider	gar	Sir Garlon is far below your level. // Sir Garlon has a fraction of your hit points. // Blow for blow, you would need about 2 rounds to bring Sir Garlon down; he would need over a hundred rounds for you.
+1793055859	cmd	Trentlin	50	712	camelot.are	standing	99	0	-	look	gar	Sir Garlon (the vile villian) is hiding here. He was given his invisibility  // power by the witch of the fens for the furtherment of evil. // Sir Garlon is in excellent condition.
+1793055861	cmd	Trentlin	50	712	camelot.are	standing	99	0	-	kill	gar	You DISMEMBER Sir Garlon! // Sir Garlon parries your attack. // Sir Garlon parries your attack.
+1793055862	cmd	Alaric	51	29206	korzath2.are	standing	88	0	-	fists		Who do you want to attack?
+1793055862	cmd	Alaric	51	29206	korzath2.are	standing	88	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // [51 Dwarf   Hero  ] Alaric. // Players found: 2
+1793055862	cmd	Alaric	51	29206	korzath2.are	standing	88	0	-	fists		Who do you want to attack?
+1793055864	cmd	Trentlin	50	712	camelot.are	fighting	99	0	fight	smite		Your smite *** DEVASTATES *** Sir Garlon! // Your smite misses Sir Garlon. // Your smite misses Sir Garlon.
+1793055865	cmd	Alaric	51	29206	korzath2.are	standing	88	0	-	look		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793055866	cmd	Alaric	51	29207	korzath2.are	standing	88	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793055867	cmd	Alaric	51	29207	korzath2.are	standing	88	0	-	worth		You have 2677 platinum, 175 gold, 205 silver, 238 copper // and 121151 experience (6149 exp to level).
+1793055869	cmd	Alaric	51	29207	korzath2.are	standing	88	0	-	kill	cl	A killer clown parries your attack. // A killer clown parries your attack. // Your punch *** DEVASTATES *** a killer clown! [-80]
+1793055870	cmd	Trentlin	50	712	camelot.are	fighting	100	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Sir Garlon! // Your smite === OBLITERATES === Sir Garlon! // Sir Garlon is DEAD!!
+1793055872	cmd	Alaric	51	29207	korzath2.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a killer clown. [-21] // Your fists of fury MANGLES a killer clown! [-55]
+1793055877	cmd	Trentlin	50	710	camelot.are	standing	100	0	-	west		Deep Woods //   You are in a deeply wooded section of the forest Arden. Shadows lengthen  // and play in the breeze. The trail continues north, east, and west.
+1793055877	cmd	Trentlin	50	711	camelot.are	standing	100	0	-	north		Cursed Glade //   You have entered a glade where all the vegetation is dead. There is no  // sounds of wildlife, and no light reaches here from above. There are bones 
+1793055878	cmd	Trentlin	50	711	camelot.are	standing	100	0	-	north		Alas, you cannot go that way.
+1793055878	cmd	Alaric	51	29207	korzath2.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a killer clown. [-8] // Your fists of fury grazes a killer clown. [-8]
+1793055880	cmd	Trentlin	50	712	camelot.are	standing	100	0	-	up		Dark Hollow //   You have entered a dark hollow. The air is heavy, damp and oppressive  // broken only bye the cackling of a crow. To the west is a dusty trail.
+1793055881	cmd	Trentlin	50	710	camelot.are	standing	100	0	-	west		Deep Woods //   You are in a deeply wooded section of the forest Arden. Shadows lengthen  // and play in the breeze. The trail continues north, east, and west.
+1793055882	cmd	Trentlin	50	711	camelot.are	standing	100	0	-	north		Cursed Glade //   You have entered a glade where all the vegetation is dead. There is no  // sounds of wildlife, and no light reaches here from above. There are bones 
+1793055883	cmd	Alaric	51	29207	korzath2.are	fighting	86	0	fight	fists		You attack in an all consuming fury! // Your fists of fury hits a killer clown. [-9] // Your fists of fury MUTILATES a killer clown! [-40]
+1793055884	cmd	Trentlin	50	712	camelot.are	standing	100	0	-	up		Dark Hollow //   You have entered a dark hollow. The air is heavy, damp and oppressive  // broken only bye the cackling of a crow. To the west is a dusty trail.
+1793055884	cmd	Trentlin	50	710	camelot.are	standing	100	0	-	west		Deep Woods //   You are in a deeply wooded section of the forest Arden. Shadows lengthen  // and play in the breeze. The trail continues north, east, and west.
+1793055885	cmd	Trentlin	50	706	camelot.are	standing	100	0	-	west		A Fork in the Dirty Trail //   You are at a fork in the dirty trail in Forest Arden. There is horsesign  // in the dirt, and the trail goes north, east, and west from here.
+1793055885	cmd	Trentlin	50	709	camelot.are	standing	100	0	-	north		Mists of Arden //   You have steadily travelled downhill into a misty forested area. The tall  // black silhoettes of the towering oaks crowd your limited vision. You squint 
+1793055887	cmd	Trentlin	50	713	camelot.are	standing	100	0	-	north		The Forest Arden //   You have entered a bright and cheerful section of the Forest Arden.  // Squirrels chase one and another around the ancient oaks, and butterfiles 
+1793055888	cmd	Trentlin	50	719	camelot.are	standing	100	0	-	east		The Chasm //   You stand before a deep chasm. You can see the fettered ends of an  // old rope bridge cut and hanging into the chasm. To the west is a 
+1793055889	cmd	Alaric	51	29207	korzath2.are	fighting	84	1	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a killer clown! [-32] // Your fists of fury grazes a killer clown. [-5]
+1793055890	cmd	Trentlin	50	719	camelot.are	standing	100	0	-	east		Alas, you cannot go that way.
+1793055893	cmd	Trentlin	50	719	camelot.are	standing	100	0	-	look	tr	The old troll is guardian to the bridge of sighs. Answer his riddles // and he will grant ye passage. Fail to answer correctly and be cast // down into the chasm below.
+1793055894	cmd	Trentlin	50	719	camelot.are	standing	100	0	-	consider	tr	The nasty, old troll is far below your level. // The nasty, old troll has about a third of your hit points. // Blow for blow, you would need about 3 rounds to bring The nasty, old troll down; he would need about 58 rounds for you.
+1793055895	cmd	Trentlin	50	720	camelot.are	standing	100	0	-	down		Hanging on the Rope Bridge //   You are hanging at the tattered end of a rope bridge. Your grip is  // fairly strong. You can either try to swing east across the chasm to 
+1793055895	cmd	Alaric	51	29207	korzath2.are	fighting	83	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a killer clown! [-31] // Your fists of fury maims a killer clown! [-36]
+1793055896	cmd	Trentlin	50	721	camelot.are	standing	100	0	-	east		Hanging on the Rope Bridge //   You are hanging on the frayed end of the rope bridge. You can either  // attempt to swing to the east side, climb up the bridge, or go down 
+1793055898	cmd	Trentlin	50	722	camelot.are	standing	100	0	-	up		The Chasm //   You stand at the brink of a deep chasm. The rope bridge across it has  // been cut by some vile villian and lies hanging down into the chasm. 
+1793055901	cmd	Alaric	51	29207	korzath2.are	fighting	83	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a killer clown! [-95] // Your fists of fury maims a killer clown! [-35]
+1793055903	cmd	Trentlin	50	725	camelot.are	standing	100	0	-	east		The Green Field Before Camelot //   You stand under the open sky in the emerald green field before Camelot. // Camelot lies on top of a hill overlooking the field. Flags and banners 
+1793055904	cmd	Trentlin	50	725	camelot.are	standing	100	0	-	scan		Perimones (the Red Knight)          -to the West. // The nasty, old troll               -to the West.
+1793055906	cmd	Trentlin	50	726	camelot.are	standing	100	0	-	east		The Western Gate of Camelot //   You stand at the gates to Camelot. You have a commanding view of the emerald  // plane below. White granite walls rise impressively into the air.
+1793055906	cmd	Alaric	51	29207	korzath2.are	fighting	82	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls a killer clown. [-23] // Your fists of fury grazes a killer clown. [-8]
+1793055907	cmd	Trentlin	50	741	camelot.are	standing	100	0	-	east		Victory Road and Knights Way //   You stand on a marbled road inside the great walls of Camelot. Pinnons  // fly from high towers and the buildings gleam of white stone. Victory Road 
+1793055908	cmd	Trentlin	50	742	camelot.are	standing	100	0	-	north		Knights Way before the stables //   You stand on the white marbled road, Knights Way. You smell horses to  // the east. To the west the high walls of camelot rise. Knights way continues 
+1793055909	cmd	Trentlin	50	745	camelot.are	standing	100	0	-	north		Corner of Knight's Way and Squire's Run //   You stand at the corner of Knight's way and Squire's run. An arched  // doorway rises up into a stalwart tower. You can see lettering above the 
+1793055910	cmd	Trentlin	50	750	camelot.are	standing	100	0	-	east		Squire's Run //   You stand on Squire's Run. Squires bustle up and down the road on various  // errands for their lords. You notice a scroll lying on the ground. Squire's
+1793055911	cmd	Trentlin	50	755	camelot.are	standing	100	0	-	east		Squire's Run at the North Gate //   You stand on Squire's run. A steady stream of traffic is coming and going  // to the south, where the squire's barracks is. To the north is the Great 
+1793055912	cmd	Trentlin	50	756	camelot.are	standing	100	0	-	north		The Great Northern Gate of Camelot //   You stand before the great northern gate of Camelot. A dirt road winds  // down the hill upon which Camelot rests into the rolling grass hills of 
+1793055912	cmd	Alaric	51	29207	korzath2.are	fighting	82	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a killer clown! [-29] // Your fists of fury mauls a killer clown. [-21]
+1793055913	cmd	Trentlin	50	782	camelot.are	standing	100	0	-	north		The Rolling Hills //   You have spent the day travelling a road through the rolling hills north of // Camelot. You have gone through several villages. The people you have met 
+1793055914	cmd	Trentlin	50	783	camelot.are	standing	100	0	-	north		The Rolling Hills //   You have spent the day travelling a road through the rolling hills north of // Camelot. You have gone through several villages. The people you have met are 
+1793055915	cmd	Trentlin	50	783	camelot.are	standing	100	0	-	scan		You don't see anything near you.
+1793055916	cmd	Trentlin	50	785	camelot.are	standing	100	0	-	north		The Highlands //   You have spent the day travelling in the highlands, and you are very tired. // You stand at an old Wall that runs east and west through the hills. Not 
+1793055916	cmd	Trentlin	50	785	camelot.are	standing	100	0	-	scan		You don't see anything near you.
+1793055917	cmd	Trentlin	50	787	camelot.are	standing	100	0	-	north		The Scottish Highlands //   You have spent several days wandering in the Scottish highlands. You have  // spied the lassies tending the sheep, and several bands of wandering Scot 
+1793055918	cmd	Alaric	51	29207	korzath2.are	fighting	81	1	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a killer clown. [-5] // A killer clown is DEAD!!
+1793055918	cmd	Trentlin	50	785	camelot.are	standing	100	0	-	south		The Highlands //   You have spent the day travelling in the highlands, and you are very tired. // You stand at an old Wall that runs east and west through the hills. Not 
+1793055919	cmd	Trentlin	50	788	camelot.are	standing	100	0	-	east		An Outpost //   You are in the outpost for the wall. It is a stone keep, with little in the  // way of creature comforts. There are barracks and a main hall. Guards are 
+1793055920	cmd	Trentlin	50	785	camelot.are	standing	100	0	-	west		The Highlands //   You have spent the day travelling in the highlands, and you are very tired. // You stand at an old Wall that runs east and west through the hills. Not 
+1793055921	cmd	Trentlin	50	785	camelot.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793055921	cmd	Trentlin	50	785	camelot.are	standing	100	0	-	south		Alas, you cannot go that way.
+1793055922	cmd	Trentlin	50	783	camelot.are	standing	100	0	-	west		The Rolling Hills //   You have spent the day travelling a road through the rolling hills north of // Camelot. You have gone through several villages. The people you have met are 
+1793055922	cmd	Trentlin	50	782	camelot.are	standing	100	0	-	south		The Rolling Hills //   You have spent the day travelling a road through the rolling hills north of // Camelot. You have gone through several villages. The people you have met 
+1793055923	cmd	Trentlin	50	784	camelot.are	standing	100	0	-	east		The Grassy Plains //   You spend a week travelling through a great grassy plain. You have crossed  // several baronies in your travels. You have encountered knights and pilgrims 
+1793055924	cmd	Trentlin	50	786	camelot.are	standing	100	0	-	east		The Rocky Coast //   You have picked your way through the rocky coast. The weather has been  // foul, which has influenced your mood. The road vanished 2 days ago. Now 
+1793055924	cmd	Alaric	51	29207	korzath2.are	fighting	81	0	fight	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // [51 Dwarf   Hero  ] Alaric. // Players found: 2
+1793055924	cmd	Alaric	51	29207	korzath2.are	fighting	81	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes a killer clown. [-7] // Your fists of fury hits a killer clown. [-11]
+1793055925	cmd	Trentlin	50	784	camelot.are	standing	100	0	-	west		The Grassy Plains //   You spend a week travelling through a great grassy plain. You have crossed  // several baronies in your travels. You have encountered knights and pilgrims 
+1793055925	cmd	Trentlin	50	782	camelot.are	standing	100	0	-	west		The Rolling Hills //   You have spent the day travelling a road through the rolling hills north of // Camelot. You have gone through several villages. The people you have met 
+1793055926	cmd	Trentlin	50	756	camelot.are	standing	100	0	-	south		The Great Northern Gate of Camelot //   You stand before the great northern gate of Camelot. A dirt road winds  // down the hill upon which Camelot rests into the rolling grass hills of 
+1793055926	cmd	Trentlin	50	755	camelot.are	standing	100	0	-	south		Squire's Run at the North Gate //   You stand on Squire's run. A steady stream of traffic is coming and going  // to the south, where the squire's barracks is. To the north is the Great 
+1793055927	cmd	Trentlin	50	762	camelot.are	standing	100	0	-	east		Tourney Yard of Camelot //   You stand in the reknowned tourney yard of Camelot. Here knights challenge  // one and another for a claim to a seat on the round table. You can make out 
+1793055928	cmd	Trentlin	50	768	camelot.are	standing	100	0	-	east		Tourney Yard of Camelot //   You stand in the reknowned tourney yard of Camelot. Here knights challenge  // one and another for a claim to a seat on the round table. You can make out 
+1793055930	cmd	Trentlin	50	768	camelot.are	standing	100	0	-	consider	ga	The Knight Gawaine is well below your level. // The Knight Gawaine has about half your hit points. // Blow for blow, you would need about 11 rounds to bring The Knight Gawaine down; he would need about 94 rounds for you.
+1793055931	cmd	Trentlin	50	768	camelot.are	standing	100	0	-	look	ga	A big, strong knight is standing in front of you. // The Knight Gawaine is in excellent condition. // The Knight Gawaine is using:
+1793055932	cmd	Trentlin	50	765	camelot.are	standing	100	0	-	south		Tourney Yard of Camelot //   You stand in the reknowned tourney yard of Camelot. Here knights challenge  // one and another for a claim to a seat on the round table. You can make out 
+1793055934	cmd	Trentlin	50	759	camelot.are	standing	100	0	-	south		Tourney Yard of Camelot //   You stand in the reknowned tourney yard of Camelot. Here knights challenge  // one and another for a claim to a seat on the round table. You can make out 
+1793055936	cmd	Trentlin	50	759	camelot.are	standing	100	0	-	consider	la	Sir Lancelot du Lake is a little below your level. // Sir Lancelot du Lake has about half your hit points. // Blow for blow, you would need about 12 rounds to bring Sir Lancelot du Lake down; he would need about 89 rounds for you.
+1793055937	cmd	Trentlin	50	759	camelot.are	standing	100	0	-	look	la	Sir Lancelot is mounted upon a white charger and is wearing polished steel  // armor. His visor is up, and his lance raised in salute to you. // Sir Lancelot du Lake is in excellent condition.
+1793055941	cmd	Trentlin	50	759	camelot.are	standing	100	0	-	kill	la	You *** DEVASTATE *** Sir Lancelot du Lake! // The Headless Horseman's Reaper shears through Sir Lancelot du Lake with terrible force! // Sir Lancelot du Lake parries your attack.
+1793055946	cmd	Trentlin	50	759	camelot.are	fighting	100	0	fight	smite		Your smite DISEMBOWELS Sir Lancelot du Lake! // Your smite MANGLES Sir Lancelot du Lake! // Your smite *** DEVASTATES *** Sir Lancelot du Lake!
+1793055952	cmd	Trentlin	50	759	camelot.are	fighting	100	0	fight	smite		Your smite misses Sir Lancelot du Lake.
+1793055954	cmd	Alaric	51	29207	korzath2.are	standing	79	0	-	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // [51 Dwarf   Hero  ] Alaric. // Players found: 2
+1793055956	cmd	Alaric	51	29207	korzath2.are	standing	79	0	-	look		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793055957	cmd	Alaric	51	29208	korzath2.are	standing	79	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793055957	cmd	Trentlin	50	759	camelot.are	fighting	100	0	fight	smite		Your smite misses Sir Lancelot du Lake.
+1793055960	cmd	Alaric	51	29208	korzath2.are	standing	79	0	-	kill	mad	A deranged madman parries your attack. // A deranged madman parries your attack. // A deranged madman dodges your attack.
+1793055962	cmd	Alaric	51	29208	korzath2.are	fighting	78	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches a deranged madman. [-4] // Your fists of fury DISMEMBERS a deranged madman! [-46]
+1793055967	cmd	Trentlin	50	759	camelot.are	fighting	99	0	fight	smite		Your smite scratches Sir Lancelot du Lake. // Your smite ^^^ DESTROYS ^^^ Sir Lancelot du Lake! // Your smite misses Sir Lancelot du Lake.
+1793055968	cmd	Alaric	51	29208	korzath2.are	fighting	78	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MASSACRES a deranged madman! [-49] // Your fists of fury scratches a deranged madman. [-4]
+1793055974	cmd	Alaric	51	29208	korzath2.are	fighting	78	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures a deranged madman. [-14] // Your fists of fury scratches a deranged madman. [-2]
+1793055976	cmd	Trentlin	50	759	camelot.are	fighting	99	0	fight	smite		Your smite misses Sir Lancelot du Lake.
+1793055982	cmd	Trentlin	50	759	camelot.are	fighting	99	0	fight	smite		Your smite injures Sir Lancelot du Lake. // Your smite DISEMBOWELS Sir Lancelot du Lake! // Your smite *** DEVASTATES *** Sir Lancelot du Lake!
+1793055991	cmd	Trentlin	50	759	camelot.are	fighting	98	0	fight	smite		Your smite mauls Sir Lancelot du Lake. // Your smite decimates Sir Lancelot du Lake! // Your smite *** DEMOLISHES *** Sir Lancelot du Lake!
+1793055992	cmd	Alaric	51	29208	korzath2.are	fighting	77	0	fight	who		[50 Dwarf   W/W   ] Trentlin the Master Warrior // [51 Dwarf   Hero  ] Alaric. // Players found: 2
+1793055993	cmd	Alaric	51	29208	korzath2.are	fighting	77	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates a deranged madman! [-29] // Your fists of fury hits a deranged madman. [-9]
+1793055999	cmd	Alaric	51	29208	korzath2.are	fighting	76	1	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES a deranged madman! [-38] // A deranged madman is DEAD!!
+1793056000	cmd	Trentlin	50	759	camelot.are	fighting	97	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Sir Lancelot du Lake! // Your smite ^^^ DESTROYS ^^^ Sir Lancelot du Lake! // Your smite wounds Sir Lancelot du Lake.
+1793056007	cmd	Alaric	51	29208	korzath2.are	standing	76	0	-	steel		You concentrate, and the molecules in your hands become more dense.
+1793056009	cmd	Trentlin	50	759	camelot.are	fighting	96	0	fight	smite		Your smite *** DEVASTATES *** Sir Lancelot du Lake! // Your smite maims Sir Lancelot du Lake! // Your smite injures Sir Lancelot du Lake.
+1793056012	cmd	Alaric	51	2497	dresden_halloween.are	standing	76	0	-	recall		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
+1793056012	cmd	Alaric	51	2497	dresden_halloween.are	standing	76	0	-	recall		You are already standing at your recall point, A sudden wind blows you from the tree!.
+1793056013	cmd	Alaric	51	2497	dresden_halloween.are	standing	76	0	-	west		Alas, you cannot go that way.
+1793056013	cmd	Alaric	51	2497	dresden_halloween.are	standing	76	0	-	heal	all	You can't do that here.
+1793056015	cmd	Trentlin	50	759	camelot.are	fighting	96	0	fight	smite		Your smite misses Sir Lancelot du Lake.
+1793056015	cmd	Alaric	51	2497	dresden_halloween.are	standing	76	0	-	stash	get divine	Your stash is at the altar, and so is its contents.
+1793056019	cmd	Alaric	51	2497	dresden_halloween.are	standing	76	0	-	west		Alas, you cannot go that way.
+1793056021	cmd	Trentlin	50	759	camelot.are	fighting	96	0	fight	smite		Your smite devastates Sir Lancelot du Lake! // Your smite MUTILATES Sir Lancelot du Lake! // Your smite *** DEVASTATES *** Sir Lancelot du Lake!
+1793056021	cmd	Alaric	51	2401	dresden_halloween.are	standing	76	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1793056022	cmd	Alaric	51	1607	wyvern.are	standing	76	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you
+1793056025	cmd	Alaric	51	4208	dresden_halloween.are	standing	76	6	-	recall	set	You fix this place in your mind. Recall will bring you to The Shrouded Altar of Devota.
+1793056026	cmd	Trentlin	50	759	camelot.are	fighting	96	0	fight	smite		Your smite misses Sir Lancelot du Lake.
+1793056026	cmd	Alaric	51	4208	dresden_halloween.are	standing	76	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1793056028	cmd	Alaric	51	4208	dresden_halloween.are	standing	100	0	-	stash	get divine	There is nothing like that in your stash.
+1793056031	cmd	Alaric	51	4208	dresden_halloween.are	standing	100	0	-	score		| Name:         Alaric | Level:      51 | Class:        Monk | // | Played:    255 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1793056032	cmd	Trentlin	50	759	camelot.are	fighting	96	0	fight	smite		Your smite ^^^ DESTROYS ^^^ Sir Lancelot du Lake! // Your smite DISMEMBERS Sir Lancelot du Lake! // Your smite ^^^ DESTROYS ^^^ Sir Lancelot du Lake!
+1793056033	cmd	Alaric	51	4208	dresden_halloween.are	standing	100	0	-	wear	divine	You stop using Knights of the Silver Hand Full Plate. // You wear Divine Breast Plate on your body.
+1793056035	cmd	Alaric	51	4208	dresden_halloween.are	standing	99	0	-	score		| Name:         Alaric | Level:      51 | Class:        Monk | // | Played:    255 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1793056040	cmd	Trentlin	50	759	camelot.are	fighting	96	0	fight	kick		Your kick hits Sir Lancelot du Lake.
+1793056044	cmd	Alaric	51	4208	dresden_halloween.are	standing	99	7	-	stash	put plate	You put Knights of the Silver Hand Full Plate away for safe keeping.
+1793056046	cmd	Trentlin	50	759	camelot.are	standing	96	0	-	look	in co	Corpse of Sir Lancelot du Lake contains: //      (Magical) Gauntlets of Bravery //      The Singing Blade
+1793056046	cmd	Alaric	51	2427	dresden_halloween.are	standing	99	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1793056047	cmd	Alaric	51	2404	dresden_halloween.are	standing	99	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793056047	cmd	Trentlin	50	759	camelot.are	standing	96	0	-	get	gaunt co	You get Gauntlets of Bravery from corpse of Sir Lancelot du Lake.
+1793056047	cmd	Alaric	51	2401	dresden_halloween.are	standing	99	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793056048	cmd	Trentlin	50	759	camelot.are	standing	96	0	-	score		| Name:       Trentlin | Level:      50 | Class:     Warrior | // | Played:     19 hours | Sex:      Male | Guild:     Warrior | // | Age:        17 years | Race:    Dwarf | Castle:       None |
+1793056048	cmd	Alaric	51	2426	dresden_halloween.are	standing	99	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // An elite hobbit vampire tells you,"May peace favor your sword!"
+1793056048	cmd	Alaric	51	2426	dresden_halloween.are	standing	99	0	-	order		Order whom to do what?
+1793056049	cmd	Alaric	51	2440	dresden_halloween.are	standing	100	0	-	east		Outside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead into Dresden City of // Adventure!  They are large iron-bound solid oak gates.  There are two guards
+1793056051	cmd	Alaric	51	2440	dresden_halloween.are	standing	100	0	-	wake		You are already standing.
+1793056051	cmd	Trentlin	50	759	camelot.are	standing	96	0	-	compare	gaunt	A) Gauntlets of Bravery (level 46) -- can't use: made for another side // B) a pair of pincer gauntlets (level 40), worn // Slot: hands.  Your damage comes from weapons.
+1793056051	cmd	Alaric	51	2426	dresden_halloween.are	standing	100	0	-	west		Inside the Eastern Gates of Dresden. //   You are standing before the huge gates that lead to the wild lands of Sembia. // They are large iron-bound solid oak gates.  There are two guards armed with
+1793056052	cmd	Alaric	51	2425	dresden_halloween.are	standing	100	0	-	west		Gate to Citadel of War on Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is the Citadel of War.
+1793056052	cmd	Alaric	51	2424	dresden_halloween.are	standing	100	0	-	west		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north you see the wall of a large citadel.
+1793056052	cmd	Alaric	51	2423	dresden_halloween.are	standing	100	0	-	west		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north is a door with a sign hanging over it depicting a
+1793056052	cmd	Alaric	51	2422	dresden_halloween.are	standing	100	0	-	west		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the north east you see a large citadel.
+1793056053	cmd	Alaric	51	2421	dresden_halloween.are	standing	100	0	-	west		Battle Road //   You are on a very well made stone road that goes from the East Gates to Oak // Tree Square.  To the south you see River Road.  To the northeast you see a
+1793056056	cmd	Alaric	51	2426	dresden_halloween.are	standing	100	0	-	run	e 5	Battle Road // [Exits: east west] // Battle Road
+1793056057	cmd	Alaric	51	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1793056058	cmd	Alaric	51	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793056059	cmd	Alaric	51	29004	korzath1.are	standing	100	0	-	run	n	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1793056060	cmd	Alaric	51	29004	korzath1.are	resting	100	0	-	wake		You stand up.
+1793056061	cmd	Alaric	51	29004	korzath1.are	standing	100	0	-	order		Order whom to do what?
+1793056061	cmd	Trentlin	50	759	camelot.are	standing	96	0	-	drop	gaunt	You drop Gauntlets of Bravery.
+1793056063	cmd	Alaric	51	29004	korzath1.are	standing	100	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793056063	cmd	Alaric	51	29004	korzath1.are	standing	100	0	-	open		Ok.
+1793056063	cmd	Alaric	51	29201	korzath2.are	standing	100	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793056064	cmd	Alaric	51	29202	korzath2.are	standing	100	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793056064	cmd	Alaric	51	29202	korzath2.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1793056064	cmd	Alaric	51	29202	korzath2.are	standing	100	0	-	north		The door has been Wizard Locked. You can not pass
+1793056064	cmd	Alaric	51	29203	korzath2.are	standing	100	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793056065	cmd	Trentlin	50	759	camelot.are	standing	96	0	-	get	bla co	You get The Singing Blade from a stinking corpse.
+1793056065	cmd	Alaric	51	29204	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793056066	cmd	Alaric	51	29204	korzath2.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793056067	cmd	Trentlin	50	759	camelot.are	standing	96	0	-	compare	bla	A) The Singing Blade (level 45) -- can't use: made for another side // B) the Headless Horseman's Reaper (level 50), worn // Slot: wield.  Your damage comes from weapons.
+1793056067	cmd	Alaric	51	29204	korzath2.are	standing	100	0	-	west		Alas, you cannot go that way.
+1793056067	cmd	Alaric	51	29205	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793056067	cmd	Alaric	51	29206	korzath2.are	standing	100	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793056068	cmd	Alaric	51	29207	korzath2.are	standing	100	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793056069	cmd	Alaric	51	29208	korzath2.are	standing	100	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793056070	cmd	Alaric	51	29209	korzath2.are	standing	100	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793056070	cmd	Trentlin	50	759	camelot.are	standing	96	0	-	drop	bla	You drop The Singing Blade.
+1793056071	cmd	Trentlin	50	759	camelot.are	standing	96	0	-	look		Tourney Yard of Camelot //   You stand in the reknowned tourney yard of Camelot. Here knights challenge  // one and another for a claim to a seat on the round table. You can make out 
+1793056072	cmd	Alaric	51	29209	korzath2.are	standing	100	0	-	kill	sk	An Animated Skeleton dodges your attack. // An Animated Skeleton parries your attack. // An Animated Skeleton parries your attack.
+1793056072	cmd	Trentlin	50	770	camelot.are	standing	96	0	-	east		The Court of Camelot //   You stand in the fabled court of Camelot. Here in the sunny courtyard noblemen // and knights walk barefoot in the grass discussing chivalry and wars to come.
+1793056074	cmd	Trentlin	50	770	camelot.are	standing	96	0	-	consider	ar	King Arthur is a little below your level. // King Arthur has about half your hit points. // Blow for blow, you would need about 13 rounds to bring King Arthur down; he would need about 78 rounds for you.
+1793056075	cmd	Alaric	51	29209	korzath2.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MANGLES an Animated Skeleton! [-54] // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-69]
+1793056079	cmd	Trentlin	50	770	camelot.are	standing	96	0	-	look	ar	A big, strong knight is standing in front of you. // The son of Uther Pendragon the conquerer of all Britain, he is now the Lord // of the Realms. At his side is Excalibur the famous sword given to him by
+1793056080	cmd	Alaric	51	29209	korzath2.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEMOLISHES *** an Animated Skeleton! [-58] // Your fists of fury DISMEMBERS an Animated Skeleton! [-46]
+1793056081	cmd	Trentlin	50	770	camelot.are	standing	96	0	-	kill	ar	King Arthur dodges your attack. // You scratch King Arthur. // King Arthur parries your attack.
+1793056086	cmd	Alaric	51	29209	korzath2.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury maims an Animated Skeleton! [-36] // Your fists of fury decimates an Animated Skeleton! [-28]
+1793056090	cmd	Trentlin	50	770	camelot.are	fighting	96	0	fight	smite		Your smite misses King Arthur.
+1793056092	cmd	Alaric	51	29209	korzath2.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury devastates an Animated Skeleton! [-32] // Your fists of fury injures an Animated Skeleton. [-16]
+1793056096	cmd	Trentlin	50	770	camelot.are	fighting	96	0	fight	smite		Your smite ^^^ DESTROYS ^^^ King Arthur! // Your smite MUTILATES King Arthur! // Your smite ^^^ DESTROYS ^^^ King Arthur!
+1793056098	cmd	Alaric	51	29209	korzath2.are	fighting	98	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES an Animated Skeleton! [-37] // Your fists of fury *** DEMOLISHES *** an Animated Skeleton! [-58]
+1793056102	cmd	Trentlin	50	770	camelot.are	fighting	96	0	fight	smite		Your smite ^^^ DESTROYS ^^^ King Arthur! // Your smite scratches King Arthur. // Your smite wounds King Arthur.
+1793056103	cmd	Alaric	51	29209	korzath2.are	fighting	97	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches an Animated Skeleton. [-1] // Your fists of fury injures an Animated Skeleton. [-13]
+1793056108	cmd	Trentlin	50	770	camelot.are	fighting	96	0	fight	wear	a	You wield A Tin Axe. // A Tin Axe feels like a part of you!
+1793056108	cmd	Trentlin	50	770	camelot.are	fighting	96	0	fight	wear	sh	You stop using the Lizard's Heart Container. // You hold the sixth Triforce shard in your hands.
+1793056109	cmd	Alaric	51	29209	korzath2.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes an Animated Skeleton. [-5] // An Animated Skeleton walks off to the north.
+1793056109	cmd	Trentlin	50	770	camelot.are	fighting	97	0	fight	smite		Your smite misses King Arthur.
+1793056115	cmd	Trentlin	50	770	camelot.are	fighting	96	0	fight	wear	liza	You stop using the sixth Triforce shard. // You hold the Lizard's Heart Container in your hands.
+1793056115	cmd	Alaric	51	29209	korzath2.are	standing	96	0	-	fists		Who do you want to attack?
+1793056115	cmd	Alaric	51	29209	korzath2.are	standing	96	0	-	fists		Who do you want to attack?
+1793056116	cmd	Alaric	51	29210	korzath2.are	standing	96	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793056116	cmd	Alaric	51	29210	korzath2.are	standing	96	0	-	kill	sk	An Animated Skeleton parries your attack. // Your punch >>> ANNIHILATES <<< an Animated Skeleton! [-201] // Your punch <<< ERADICATES >>> an Animated Skeleton! [-172]
+1793056117	cmd	Trentlin	50	770	camelot.are	fighting	95	0	fight	wear	shield	You wear a coiled-snake shield as a shield.
+1793056122	cmd	Alaric	51	29210	korzath2.are	standing	97	0	-	kill	mad	Your punch ^^^ DESTROYS ^^^ a deranged madman! [-81] // A deranged madman parries your attack. // Your punch grazes a deranged madman. [-7]
+1793056123	cmd	Trentlin	50	770	camelot.are	fighting	95	0	fight	smite		Your smite decimates King Arthur! // Your smite ^^^ DESTROYS ^^^ King Arthur! // Your smite DISMEMBERS King Arthur!
+1793056124	cmd	Alaric	51	29210	korzath2.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a deranged madman! [-25] // Your fists of fury injures a deranged madman. [-13]
+1793056130	cmd	Trentlin	50	770	camelot.are	fighting	95	0	fight	smite		Your smite misses King Arthur. // Your smite decimates King Arthur! // Your smite DISEMBOWELS King Arthur!
+1793056130	cmd	Alaric	51	29210	korzath2.are	fighting	96	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISEMBOWELS a deranged madman! [-42] // Your fists of fury *** DEVASTATES *** a deranged madman! [-68]
