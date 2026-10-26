@@ -5,6 +5,11 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261026d 2026-10-26
+A bomb Level 2's Dodongo swallows now hurts it: the blast inside takes
+half its health, as the old man says. Its hide is proof against fire, and
+the swallowed bomb was being turned aside by it.
+
 @ 20261026c 2026-10-26
 Some of Hyrule's dungeon rooms are as the old game built them: darknuts
 where zols stood, three key doors that were missing, one that was locked

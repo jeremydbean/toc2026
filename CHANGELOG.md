@@ -8,6 +8,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Level 2's Dodongo takes the bombs it swallows** (2026-10-26). The
+  guardian is immune to fire, and the swallowed bomb's blast was rolled as
+  `DAM_FIRE`, so it did nothing -- the NES's whole Dodongo fight. The blast
+  is inside, past the hide: `DAM_NONE`, half its health. Found by
+  `tests/test_hyrule_campaign_live.py`, which wins Level 1 by the sword and
+  by spells and Level 2 as a group with bombs, with no staff SLAY.
+
 - **Hyrule's dungeon rooms match the cartridge** (2026-10-26). Eighteen
   rooms' enemies were wrong -- darknut rooms filled with zols, Level 4's
   vires, Level 7's lone Digdogger, Level 9's E8 -- and six doors: key doors

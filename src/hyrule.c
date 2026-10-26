@@ -1193,8 +1193,11 @@ bool hyrule_bomb_creature( CHAR_DATA *ch, CHAR_DATA *victim )
         act( "$n rolls a bomb beneath $N, which swallows it. The explosion fills the chamber!",
              ch, NULL, victim, TO_ROOM );
         achievement_record_event( ch, ACHIEVEMENT_EVENT_HYRULE_DODONGO_BOMB, true );
+        /* The blast is inside it, past the hide: no damage type, so its
+           immunity to fire -- the guardian's -- turns none of it aside.
+           Rolled as DAM_FIRE, Level 2's guardian took nothing at all. */
         hyrule_exact_blow = true;
-        damage( ch, victim, UMAX( 1, victim->max_hit / 2 ), TYPE_UNDEFINED, DAM_FIRE );
+        damage( ch, victim, UMAX( 1, victim->max_hit / 2 ), TYPE_UNDEFINED, DAM_NONE );
         return true;
     }
 
