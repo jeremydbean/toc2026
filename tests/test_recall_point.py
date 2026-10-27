@@ -185,50 +185,55 @@ class RecallPointTests(unittest.TestCase):
             self.character(mud, "Zwizard", Levl=70, Room=OAK_SQUARE,
                            HpManaMove="20000 20000 20000 20000 20000 20000")
 
+            # Every step waits for the game's answer (sync), not a fixed
+            # window: in CI (run 40576668294) fifteen curse casts in
+            # 2.5-second windows came back empty on a slow runner, and the
+            # test read that as a curse that never landed.
             with mud.connect(timeout=120) as wizard:
                 login(wizard, "Zwizard", PASSWORD)
-                run(wizard, "set skill self all 100", 2.5)
+                wizard.sync("scroll 0")
+                wizard.sync("set skill self all 100", timeout=60)
 
                 with mud.connect(timeout=120) as victim:
                     login(victim, "Zvictim", PASSWORD)
-                    run(wizard, "set skill Zvictim all 100", 2.5)
+                    victim.sync("scroll 0")
+                    wizard.sync("set skill Zvictim all 100", timeout=60)
 
-                    self.assertIn("Oak Tree Square",
-                                  run(victim, "recall set", 1.6))
+                    self.assertIn("Oak Tree Square", victim.sync("recall set"))
 
                     # Uncursed first: the spell ignores the chosen point.
-                    run(wizard, "trans Zvictim 3700", 2.0)
+                    wizard.sync("trans Zvictim 3700")
                     for _ in range(10):
-                        cast = run(victim, "cast 'word of recall'", 2.5)
+                        cast = victim.sync("cast 'word of recall'", timeout=60)
                         if "Before the Altar" in cast:
                             break
-                        run(wizard, "trans Zvictim 3700", 2.0)
+                        wizard.sync("trans Zvictim 3700")
                     self.assertIn("Before the Altar", cast, cast)
                     self.assertNotIn("Oak Tree Square", cast)
 
                     # The spell just moved the victim to the Temple and
                     # the wizard is still in the square; curse needs them
                     # in the same room.
-                    run(wizard, "trans Zvictim", 2.0)
+                    wizard.sync("trans Zvictim")
                     cast = ""
                     for _ in range(15):
-                        cast += run(wizard, "cast curse Zvictim", 2.5)
-                        if "curse" in run(victim, "affect", 1.6).lower():
+                        cast += wizard.sync("cast curse Zvictim", timeout=60)
+                        if "curse" in victim.sync("affect").lower():
                             break
                     self.assertNotIn("enough mana", cast, cast[-400:])
                     self.assertIn(
-                        "curse", run(victim, "affect", 1.6).lower(),
+                        "curse", victim.sync("affect").lower(),
                         "the curse never landed:\n" + cast[-600:])
 
-                    run(wizard, "trans Zvictim 3700", 2.0)
-                    refused = run(victim, "recall", 2.5)
+                    wizard.sync("trans Zvictim 3700")
+                    refused = victim.sync("recall", timeout=60)
                     self.assertIn("forsaken", refused, refused)
 
                     for _ in range(10):
-                        through = run(victim, "cast 'word of recall'", 2.5)
+                        through = victim.sync("cast 'word of recall'", timeout=60)
                         if "Before the Altar" in through:
                             break
-                        run(wizard, "trans Zvictim 3700", 2.0)
+                        wizard.sync("trans Zvictim 3700")
                     self.assertIn("Before the Altar", through, through)
 
                     victim.send("quit")
