@@ -27722,3 +27722,7 @@
 1793060583	cmd	Alaric	53	4210	dresden_halloween.are	standing	32	0	-	equipment		You are using: // <used as light>     (Magical) (Glowing) Starlight // <worn on finger>    (Humming) An assassin's ring
 1793060594	cmd	Alaric	53	4210	dresden_halloween.are	standing	34	0	-	score		| Name:         Alaric | Level:      53 | Class:        Monk | // | Played:    256 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
 1793060595	cmd	Alaric	53	4210	dresden_halloween.are	standing	34	0	-	sleep		You go to sleep.
+1793060693	cmd	Alaric	53	4210	dresden_halloween.are	sleeping	42	0	-	affect		You are affected by: // Skill: 'steel fist' modifies damage roll by 14 for 4 hours. // Spell: 'armor' modifies armor class by -20 for 16 hours.
+1793060712	cmd	Alaric	53	4210	dresden_halloween.are	sleeping	42	0	-	score		| Name:         Alaric | Level:      53 | Class:        Monk | // | Played:    256 hours | Sex:      Male | Guild:        Monk | // | Age:        29 years | Race:    Dwarf | Castle:       None |
+1793060970	cmd	Alaric	53	4210	dresden_halloween.are	sleeping	76	0	-	wake		You wake and stand up.
+1793060971	cmd	Alaric	53	4210	dresden_halloween.are	standing	76	0	-	steel		You lost your concentration.
