@@ -1389,6 +1389,13 @@ void char_update( void )
     if (save_number >= AUTOSAVE_CYCLE_TICKS)
 	save_number = 0;
 
+    /* TOC_FAULT=autowrite holds off every save the tick makes on its own --
+       the autosave and bank interest's, which saves a new character on its
+       first tick -- for a test that has to know which save wrote a file
+       (recovery_fault; tests only). Not "autosave": TOC_FAULT is matched
+       by substring, and that holds "save", which fails every save. */
+    autosave_held = recovery_fault( "autowrite" );
+
     FOR_EACH_CHARACTER( iter, ch )
     {
         AFFECT_DATA *paf;
@@ -1408,7 +1415,8 @@ void char_update( void )
         /* Bank interest check (once per real day per player) */
         if ( !IS_NPC(ch) )
         {
-            bank_interest( ch );
+            if ( !autosave_held )
+                bank_interest( ch );
             /* The play journal's sanity checks (playlog.c). */
             playlog_tick( ch );
         }
@@ -1997,11 +2005,6 @@ void char_update( void )
      * Autosave and autoquit.
      * Check that these chars still exist.
      */
-    /* TOC_FAULT=autowrite holds every autosave off, for a test that has to
-       know which save wrote a file (recovery_fault; tests only). Not
-       "autosave": TOC_FAULT is matched by substring, and that holds "save",
-       which fails every save. */
-    autosave_held = recovery_fault( "autowrite" );
     FOR_EACH_CHARACTER( iter, ch )
     {
 
