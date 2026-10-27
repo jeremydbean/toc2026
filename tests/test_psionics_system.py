@@ -314,9 +314,9 @@ class PsionicsSystemTests(unittest.TestCase):
         mindleech = function_body(self.magic2, "void do_mindleech", "void do_enervate")
         enervate = function_body(self.magic2, "void do_enervate", "void do_mindblast")
 
-        self.assertIn("psionic_reduce_mental_drain", mindleech)
+        self.assertIn("psionic_mental_reduce", mindleech)
         self.assertIn("psionic_start_combat", mindleech)
-        self.assertIn("psionic_reduce_mental_drain", enervate)
+        self.assertIn("psionic_mental_reduce", enervate)
         self.assertIn("victim_hit_before - victim->hit", enervate)
         self.assertIn("actual_damage / 2", enervate)
 
@@ -327,7 +327,7 @@ class PsionicsSystemTests(unittest.TestCase):
         drain against most mobiles because that curve is driven by the
         target's (usually negative) saving throw rather than by any psionic
         defense. Mental immunity now blocks the drain outright and mental
-        resistance halves it; psionic_reduce_mental_drain() still applies
+        resistance halves it; psionic_mental_reduce() still applies
         Mindbar/Armor/Shield on top.
         """
         for name, end in (

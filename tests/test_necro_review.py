@@ -35,8 +35,10 @@ class NecroReviewTests(unittest.TestCase):
         self.assertIn('is_affected(victim, skill_lookup("shroud"))', globe)
 
     def test_the_servant_cap_holds_in_a_group(self) -> None:
-        """is_same_group climbs one leader; a grouped necro counted none."""
-        servants = code(body(read("src", "magic2.c"), "static int undead_servants("))
+        """is_same_group climbs one leader; a grouped necro counted none.
+        The count is the servant budget's since the class review
+        (2026-10-26): undead_budget_used, by master as before."""
+        servants = code(body(read("src", "magic2.c"), "static int undead_budget_used("))
         self.assertNotIn("is_same_group", servants)
         self.assertIn("gch->master == ch", servants)
 
