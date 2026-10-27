@@ -402,6 +402,14 @@ typedef struct script_loop_prepoll_payload
 #define PSI_AWAKEN_MIN          18
 #define PSI_AWAKEN_MAX          21
 
+/* A staff GRANTPSI waiting to land (pcdata->psionic_grant_pending, saved
+   as PsiGrant). GRANTPSI <name> waits for the awakening check -- the
+   first level gained inside the band -- and GRANTPSI <name> LEVEL for
+   the next level gained, whatever it is (owner, 2026-10-27). */
+#define PSI_GRANT_NONE          0
+#define PSI_GRANT_BAND          1
+#define PSI_GRANT_NEXT_LEVEL    2
+
 #define REMORTS_FOR_LONG_IDLE   3
 #define REMORTS_FOR_BIG_PACK    3
 #define REMORTS_FOR_EXTRA_PSI   3
@@ -2241,7 +2249,7 @@ struct  pc_data
     sh_int              true_sex;
     int                 last_level;
     sh_int              psionic;
-    bool                psionic_grant_pending;
+    sh_int              psionic_grant_pending;  /* PSI_GRANT_* */
     char * psionic_grant_spec;
     char * psionic_known;
     /* The black market: the stock (its id) this character last bought

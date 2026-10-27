@@ -96,7 +96,7 @@ class PsionicTopUpTests(unittest.TestCase):
             patch_player_file(mud, "Zpsiimm", Levl=70, Room=TEMPLE)
             with mud.connect(timeout=120) as staff:
                 login(staff, "Zpsiimm", PW)
-                staff.send("grantpsi Zpsioff")
+                staff.send("grantpsi Zpsioff now")
                 staff.drain(3)
                 staff.send("say still standing")
                 staff.drain(2)
@@ -104,8 +104,8 @@ class PsionicTopUpTests(unittest.TestCase):
                 staff.send("quit")
                 self.assertTrue(staff.wait_closed())
             self.assertIn("still standing", seen)
-            # Above level 21 the grant is paid at once, into the file: two
-            # of each discipline at three remorts.
+            # NOW pays at once, into the file of somebody offline: two of
+            # each discipline at three remorts.
             text = (mud.player_dir / "Zpsioff").read_text(encoding="latin-1")
             known = re.search(r"(?m)^PsiKnown (.*)~", text).group(1).split(",")
             self.assertEqual(len(known), 8, known)

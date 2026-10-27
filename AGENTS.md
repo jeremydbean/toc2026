@@ -2555,7 +2555,7 @@ A second or later remort pays its powers *at the remort*
 (`psionic_remort_grant`, which `do_remort` and `psionic_login` share),
 so `psionic` is 1 before the character is level 4, and a remorted
 character short of their due is topped up at every login. A GRANTPSI
-pays on the next level gained, or at once above 21. The band roll in
+pays where it was asked to (below). The band roll in
 `do_check_psi` is the fallback for a remort-owed character a grant
 somehow left with nothing. The "one in three finish the band with
 nothing" below describes no path a player can reach today; it is kept
@@ -2595,6 +2595,20 @@ with nothing are remort-owed characters only. *Superseded the same
 night:* a pending grant now pays on the very next level gained, at any
 level, before the band is consulted, and GRANTPSI no longer tells the
 player anything.
+
+**GRANTPSI has three forms, and none tells the player anything**
+(owner, 2026-10-27; superseding the above). `pcdata->psionic_grant_pending`
+is a `PSI_GRANT_*` value, saved as `PsiGrant <n>` under **case 'P'**:
+`GRANTPSI <name>` is `PSI_GRANT_BAND` (1) -- certain, at the awakening
+check, the first level gained from 18 to 21; past the band it waits until
+they reach it again after a remort. `GRANTPSI <name> LEVEL` is
+`PSI_GRANT_NEXT_LEVEL` (2) -- the next level gained, any level. `NOW`
+grants at once, online or offline (the loaded copy is saved). Nothing
+lands at a login; only `do_check_psi(ch, "levelup")` pays a flag. A file
+saved before 2026-10-27 with `PsiGrant 1` now waits for the band. The
+player hears of it only through the awakening message, as anybody whose
+mind awakens on its own. `tests/test_dns_and_grantpsi.py` walks a band
+grant through levels 17 and 18 and a LEVEL grant through one level.
 
 Four things were wrong here in 2026-09, all of them from the roll
 living in the wrong place -- open-coded as

@@ -2871,24 +2871,28 @@ See also: BAN, ALLOW, SOCKETS
 ~
 
 70 GRANTPSI~
-Syntax: grantpsi <player> [now] [skill1,skill2,...]
+Syntax: grantpsi <player> [now|level] [skill1,skill2,...]
 
-GRANTPSI is a level 70 tool to guarantee a player receives psionics. Without
-"now" it flags the target for a 100% success at the level-based psionic check
-and optionally locks in a comma-separated list of psionic skills to award when
-the check fires (default behavior rolls normally). Using "now" grants psionics
-immediately, sends the unlock messaging, and applies the chosen skills right
-away. Valid picks include: psionic armor, psychic shield, mindbar, torment,
-ego whip, enervate, mindblast, clairvoyance, astral walk, shift, project,
-telekinesis, transfusion, nightmare, mind leech, pyrotechnics, and confuse.
+GRANTPSI gives a player psionics.  It never tells the player anything:
+they find out when their powers awaken, in the same words as anybody
+whose mind awakens on its own.
+
+  grantpsi <player>          at their awakening check -- the first level
+                             they gain from 18 to 21.  Past the band, it
+                             waits until they reach it again (a remort).
+  grantpsi <player> level    on the next level they gain, whatever it is.
+  grantpsi <player> now      at once.
+
+A comma-separated list of powers after any of these names the ones to
+award; without one the usual sets are used.  Valid picks include:
+psionic armor, psychic shield, mindbar, torment, ego whip, enervate,
+mindblast, clairvoyance, astral walk, shift, project, telekinesis,
+transfusion, nightmare, mind leech, pyrotechnics, and confuse.
+
+The target does not have to be online: the saved character is loaded,
+granted or flagged, and written back.
 
 See also: PSIONICS, ADVANCE
-
-
-The target does not have to be online.  With nobody connected by that
-name the saved character is loaded, flagged, and written back; an
-offline grant is always deferred to their next level check, because
-"now" would apply to a copy that is discarded a moment later.
 ~
 
 67 FSAVE~

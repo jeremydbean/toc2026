@@ -1082,7 +1082,7 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "Cla  %d\n",	ch->class		);
     fprintf( fp, "Gui  %d\n",	ch->pcdata->guild	);
     fprintf( fp, "Psionic  %d\n", ch->pcdata->psionic );
-    fprintf( fp, "PsiGrant %d\n", ch->pcdata->psionic_grant_pending ? 1 : 0 );
+    fprintf( fp, "PsiGrant %d\n", ch->pcdata->psionic_grant_pending );
     fprintf( fp, "PsiSpec %s~\n", ch->pcdata->psionic_grant_spec ? ch->pcdata->psionic_grant_spec : "" );
     fprintf( fp, "PsiKnown %s~\n", ch->pcdata->psionic_known ? ch->pcdata->psionic_known : "" );
     if ( ch->pcdata->black_market_stock != 0 )
@@ -2028,7 +2028,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->confirm_pkill		= false;
     ch->pcdata->guild			= GUILD_NONE;
     ch->pcdata->psionic                 = 0;
-    ch->pcdata->psionic_grant_pending   = false;
+    ch->pcdata->psionic_grant_pending   = PSI_GRANT_NONE;
     ch->pcdata->castle			= 0;
     ch->pcdata->bank			= 0;
     ch->pcdata->bank_interest_time	= 0;

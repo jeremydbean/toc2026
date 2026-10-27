@@ -8592,6 +8592,7 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     char list_buf[MAX_STRING_LENGTH];
     char invalid[MAX_INPUT_LENGTH];
     bool immediate = false;
+    bool next_level = false;
     bool offline = false;
 
     list_buf[0] = '\0';
@@ -8600,7 +8601,7 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
 
     if ( arg[0] == '\0' )
     {
-        send_to_char( "Syntax: grantpsi <player> [now] [skill1,skill2,...]\n\r", ch );
+        send_to_char( "Syntax: grantpsi <player> [now|level] [skill1,skill2,...]\n\r", ch );
         send_to_char( "Separate multiple skill names with commas.\n\r", ch );
         return;
     }
@@ -8647,6 +8648,10 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     {
         immediate = true;
     }
+    else if ( !str_cmp( mode, "level" ) )
+    {
+        next_level = true;
+    }
     else if ( mode[0] != '\0' )
     {
         if ( list_buf[0] != '\0' )
@@ -8656,7 +8661,7 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
         toc_strlcat( list_buf, mode, sizeof(list_buf) );
     }
 
-    if ( !immediate && argument[0] != '\0' )
+    if ( !immediate && !next_level && argument[0] != '\0' )
     {
         if ( list_buf[0] != '\0' )
         {
@@ -8665,7 +8670,7 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
         toc_strlcat( list_buf, argument, sizeof(list_buf) );
     }
 
-    if ( immediate )
+    if ( immediate || next_level )
     {
         toc_strlcpy( list_buf, argument, sizeof(list_buf) );
     }
@@ -8687,36 +8692,21 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     victim->pcdata->psionic_grant_spec = str_dup( list_buf );
 
     /*
-     * Inside the PSI_AWAKEN_MIN..PSI_AWAKEN_MAX band the flag waits
-     * for the roll however the immortal asked for it -- that band is
-     * the design, and a grant that skipped it would be a way around
-     * the one chance everybody else takes.
+     * Three ways to grant (owner, 2026-10-27), and none of them says a
+     * word to the player: they hear of it when the powers awaken, in the
+     * same words as anybody whose mind awakens on its own.
      *
-     * Above the band there is no level check left to wait for, so a
-     * flag would mean never; it lands at once instead, exactly as
-     * though the roll had hit. That is what granting psionics to a
-     * level 50 character is asking for.
+     *   GRANTPSI <name>        at the awakening check: the first level
+     *                          gained inside PSI_AWAKEN_MIN..MAX. Past the
+     *                          band, that is when they reach it again.
+     *   GRANTPSI <name> LEVEL  on the next level gained, whatever it is.
+     *   GRANTPSI <name> NOW    at once, online or not.
      */
-    if ( victim->level > PSI_AWAKEN_MAX )
-    {
-        immediate = true;
-    }
-    else if ( immediate )
-    {
-        /* "Inside the band" was wrong for the commonest case by far:
-           a level 1 is below it, not in it, and will meet it on the
-           way up. Say where the band is rather than where they are. */
-        send_to_char( "Psionics awaken between levels 18 and 21, so this "
-                      "is flagged and lands on the next level they gain "
-                      "rather than now.\n\r", ch );
-        immediate = false;
-    }
-
     if ( immediate )
     {
         char note[MAX_STRING_LENGTH];
 
-        victim->pcdata->psionic_grant_pending = false;
+        victim->pcdata->psionic_grant_pending = PSI_GRANT_NONE;
         if ( grant_psionics( victim, 100, true ) > 0 )
             send_to_char( "Psionics granted immediately.\n\r", ch );
         else
@@ -8726,8 +8716,9 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
             send_to_char( "Nothing new: they already hold every power that "
                           "grant could give. Name powers to add others.\n\r", ch );
         snprintf( note, sizeof(note),
-                  "%s granted %s psionics immediately at level %d (%s).",
-                  ch->name, victim->name, victim->level, list_buf );
+                  "%s granted %s psionics immediately at level %d (%s)%s.",
+                  ch->name, victim->name, victim->level, list_buf,
+                  offline ? " while offline" : "" );
         wizinfo( note, staff_notice_level_pair( ch, victim, LEVEL_IMMORTAL ) );
 
         /* An offline victim is a loaded copy. Without both of these
@@ -8746,26 +8737,35 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
        last_level, which sends the next login through reset_char's full
        rebuild of the permanent stats: two side effects a grant has no
        business having (found reviewing psionics, 2026-10-20). */
-    victim->pcdata->psionic_grant_pending = true;
-    send_to_char( "Grant flag applied. They will receive psionics the next time they gain a "
-                  "level.\n\r", ch );
+    victim->pcdata->psionic_grant_pending = next_level ? PSI_GRANT_NEXT_LEVEL
+                                                       : PSI_GRANT_BAND;
+    if ( next_level )
+        send_to_char( "Grant flag applied. They will receive psionics the next "
+                      "time they gain a level.\n\r", ch );
+    else if ( victim->level < PSI_AWAKEN_MIN )
+        send_to_char( "Grant flag applied. They will receive psionics at their "
+                      "awakening check: the first level they gain from 18 to "
+                      "21.\n\r", ch );
+    else if ( victim->level < PSI_AWAKEN_MAX )
+        send_to_char( "Grant flag applied. They will receive psionics at their "
+                      "awakening check: the next level they gain.\n\r", ch );
+    else
+        send_to_char( "Grant flag applied, but they are past the 18-21 awakening "
+                      "band: it lands when they next reach it, after a remort. "
+                      "GRANTPSI <name> LEVEL gives it on their next level, NOW "
+                      "at once.\n\r", ch );
 
-    /* Worth saying on its own line: an immortal who typed NOW wants to
-       know the character is not there, separately from why the grant
-       was deferred. */
     if ( offline )
         send_to_char( "They are not online, so the flag is saved straight "
                       "to their player file.\n\r", ch );
-    /* The player is told nothing (owner, 2026-10-04): a grant is staff
-       business. They hear about it when the powers awaken, in the same
-       words as anybody whose mind awakens on its own. */
 
     {
         char note[MAX_STRING_LENGTH];
 
-        snprintf( note, sizeof(note), "%s flagged %s for psionics (%s)%s.",
-                  ch->name, victim->name, list_buf,
-                  offline ? " while offline" : "" );
+        snprintf( note, sizeof(note), "%s flagged %s for psionics %s (%s)%s.",
+                  ch->name, victim->name,
+                  next_level ? "on their next level" : "at their awakening check",
+                  list_buf, offline ? " while offline" : "" );
         wizinfo( note, staff_notice_level_pair( ch, victim, LEVEL_IMMORTAL ) );
     }
 

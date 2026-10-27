@@ -8,6 +8,11 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **GRANTPSI: band, LEVEL or NOW** (2026-10-27, owner). A plain grant
+  waits for the awakening check (first level gained in 18-21; after a
+  remort when past it), LEVEL pays on the next level gained, NOW at once
+  even offline. `psionic_grant_pending` holds `PSI_GRANT_*`; nothing lands
+  at login any more, and the player is told nothing.
 - **No Oracle daze after praying in a safe room; one recall miss line
   gone** (2026-10-27, owner). `oracle_come_back` takes the room prayed in
   and skips the daze for a `ROOM_SAFE` one; RECALL's "The gods are

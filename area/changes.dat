@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261027n 2026-10-27 staff
+GRANTPSI <name> now waits for the awakening check (the first level they
+gain from 18 to 21; after a remort if they are past it). GRANTPSI <name>
+LEVEL gives psionics on their next level, NOW at once, online or not.
+None of them tells the player.
+
 @ 20261027m 2026-10-27
 PRAY from a safe room, such as the altar of the Temple, and you come back
 from the Oracle with no daze at all. RECALL that misses no longer says

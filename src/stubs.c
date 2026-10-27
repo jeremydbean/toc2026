@@ -193,7 +193,7 @@ void do_check_psi( CHAR_DATA *ch, char *argument )
         return;
 
     /*
-     * Two ways to be owed psionics: a second remort, or an immortal's
+     * Two ways to be owed psionics: a second remort, or a staff
      * GRANTPSI.  Only the first was ever checked here, so a deferred
      * grant set psionic_grant_pending, saved it as PsiGrant, told the
      * player their mind tingles with unfamiliar potential -- and then
@@ -219,38 +219,36 @@ void do_check_psi( CHAR_DATA *ch, char *argument )
     if ( !owed )
         return;
 
-    /*
-     * A flag set above the band has no future roll to wait for, so it
-     * lands at once -- which is what an immortal granting psionics to
-     * a level 50 character means by it.  This also carries the
-     * characters flagged while nothing was reading the flag at all.
-     */
-    if ( ch->pcdata->psionic_grant_pending && ch->level > PSI_AWAKEN_MAX )
-    {
-        psi_log( ch, "flagged grant honoured at level %d, past the %d-%d "
-                     "awakening band", ch->level, PSI_AWAKEN_MIN,
-                 PSI_AWAKEN_MAX );
-        grant_psionics( ch, 100, true );
-        return;
-    }
-
-    /* A login is not a fresh chance. Only gaining a level is. */
+    /* A login is not a fresh chance. Only gaining a level is -- and a
+       staff grant, too, lands only on a level gained (owner, 2026-10-27):
+       one flagged above the band used to land at the next login. */
     if ( !on_level_gain )
         return;
 
-    /* A staff GRANTPSI is certain, and soon: the next level gained pays
-       it, whatever the level (owner, 2026-10-04). It used to wait on the
-       18-21 band's one-in-four rolls, and Alaric, granted at 17, missed
-       three of them. The band's odds are a remort's owing, not a grant. */
-    if ( ch->pcdata->psionic_grant_pending )
+    /* GRANTPSI <name> LEVEL: certain, on the very next level gained,
+       whatever it is. */
+    if ( ch->pcdata->psionic_grant_pending == PSI_GRANT_NEXT_LEVEL )
     {
-        psi_log( ch, "flagged grant honoured on reaching level %d", ch->level );
+        psi_log( ch, "flagged grant (next level) honoured on reaching level %d",
+                 ch->level );
         grant_psionics( ch, 100, true );
         return;
     }
 
     if ( ch->level < PSI_AWAKEN_MIN || ch->level > PSI_AWAKEN_MAX )
         return;
+
+    /* GRANTPSI <name>: certain, at the awakening check -- the first level
+       gained inside the band. The one-in-four rolls of the band belong to
+       a remort owing psionics, not to a grant (Alaric, granted at 17,
+       missed three of them in 2026-10). */
+    if ( ch->pcdata->psionic_grant_pending == PSI_GRANT_BAND )
+    {
+        psi_log( ch, "flagged grant honoured at the level %d awakening check",
+                 ch->level );
+        grant_psionics( ch, 100, true );
+        return;
+    }
 
     roll = number_range( PSI_AWAKEN_MIN, PSI_AWAKEN_MAX );
 
@@ -691,7 +689,7 @@ int grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
            off a level check, so a pending grant that selects nothing
            would try again on every one of them, forever. */
         psi_log( ch, "nothing could be selected -- grant abandoned" );
-        ch->pcdata->psionic_grant_pending = false;
+        ch->pcdata->psionic_grant_pending = PSI_GRANT_NONE;
         bug( "Grant_psionics: no valid skills were selected.", 0 );
         return 0;
     }
@@ -700,7 +698,7 @@ int grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
              selected == 1 ? "" : "s" );
 
     ch->pcdata->psionic               = 1;
-    ch->pcdata->psionic_grant_pending = false;
+    ch->pcdata->psionic_grant_pending = PSI_GRANT_NONE;
     /* Clear spec so future auto-grants use set logic, not a stale immortal list. */
     free_string( ch->pcdata->psionic_grant_spec );
     ch->pcdata->psionic_grant_spec = str_dup( "" );
@@ -740,7 +738,7 @@ int grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
 int psionic_remort_grant( CHAR_DATA *ch )
 {
     char *spec;
-    bool pending;
+    sh_int pending;
     int added;
 
     if ( IS_NPC(ch) || ch->pcdata == NULL )

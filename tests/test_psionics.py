@@ -102,16 +102,20 @@ class AwakeningBandTests(unittest.TestCase):
         self.assertIn("psionic_grant_pending", self.check)
         self.assertIn('KEY( "PsiGrant"', self.save)
 
-    def test_a_flag_above_the_band_is_honoured_rather_than_stranded(self) -> None:
-        self.assertRegex(
-            self.check,
-            r"psionic_grant_pending\s*&&\s*ch->level\s*>\s*PSI_AWAKEN_MAX")
+    def test_a_grant_lands_only_on_a_level_gained(self) -> None:
+        """Owner, 2026-10-27: no grant lands at a login or at GRANTPSI
+        itself unless NOW asked for it. A flag above the band used to land
+        at the next login, and GRANTPSI above the band at once."""
+        before_gain = self.check.split("if ( !on_level_gain )", 1)[0]
+        self.assertNotIn("grant_psionics", before_gain)
+        self.assertNotRegex(self.grantpsi, r"victim->level\s*>\s*PSI_AWAKEN_MAX\s*\)\s*\{\s*immediate")
 
-    def test_granting_above_the_band_is_immediate_and_inside_it_is_not(self) -> None:
-        self.assertRegex(
-            self.grantpsi,
-            r"victim->level\s*>\s*PSI_AWAKEN_MAX\s*\)\s*\{\s*immediate\s*=\s*true")
-        self.assertIn("immediate = false", self.grantpsi)
+    def test_grantpsi_has_three_modes(self) -> None:
+        for word in ('"now"', '"level"', "PSI_GRANT_NEXT_LEVEL", "PSI_GRANT_BAND"):
+            self.assertIn(word, self.grantpsi, word)
+        for name, value in (("PSI_GRANT_NONE", 0), ("PSI_GRANT_BAND", 1),
+                            ("PSI_GRANT_NEXT_LEVEL", 2)):
+            self.assertRegex(self.merc, r"#define %s\s+%d\b" % (name, value))
 
     def test_the_offline_copy_is_saved_and_extracted_on_every_path(self) -> None:
         """An early return here loses the grant and leaks the character."""
@@ -129,16 +133,20 @@ class AwakeningBandTests(unittest.TestCase):
         for phrase in ("rolled", "hits on", "missed", "AWAKENED"):
             self.assertIn(phrase, self.check, phrase)
 
-    def test_a_staff_grant_lands_on_the_next_level(self) -> None:
-        """Owner, 2026-10-04: a GRANTPSI is 100% at the next level gained.
-        Alaric was granted and missed the band's rolls at 18, 19 and 20.
-        The pending grant pays before the band is even consulted; a
-        remort's owing keeps the plain odds."""
+    def test_a_staff_grant_is_certain_where_it_lands(self) -> None:
+        """A GRANTPSI never rides the band's one-in-four rolls (Alaric,
+        granted at 17, missed three of them): LEVEL pays on the next level
+        gained, a plain grant at the first level gained inside the band.
+        Both pay before the roll a remort's owing takes."""
         level_gain = self.check.split("if ( !on_level_gain )", 1)[1]
-        pending = level_gain.index("if ( ch->pcdata->psionic_grant_pending )")
-        self.assertLess(pending, level_gain.index("roll = number_range("))
-        self.assertIn("grant_psionics( ch, 100, true );",
-                      level_gain[pending:level_gain.index("roll = number_range(")])
+        roll = level_gain.index("roll = number_range(")
+        nxt = level_gain.index("psionic_grant_pending == PSI_GRANT_NEXT_LEVEL")
+        band_test = level_gain.index("ch->level < PSI_AWAKEN_MIN || ch->level > PSI_AWAKEN_MAX")
+        band = level_gain.index("psionic_grant_pending == PSI_GRANT_BAND")
+        self.assertLess(nxt, band_test)
+        self.assertLess(band_test, band)
+        self.assertLess(band, roll)
+        self.assertEqual(level_gain[:roll].count("grant_psionics( ch, 100, true );"), 2)
 
     def test_every_grant_says_which_power_and_why(self) -> None:
         self.assertGreaterEqual(self.grant.count("psi_log("), 6)
@@ -154,7 +162,7 @@ class AwakeningBandTests(unittest.TestCase):
     def test_an_abandoned_grant_clears_its_flag(self) -> None:
         """Otherwise it retries on every level check for ever."""
         tail = self.grant.split("if ( selected == 0 )", 1)[1]
-        self.assertIn("psionic_grant_pending = false", tail[:tail.index("}")])
+        self.assertIn("psionic_grant_pending = PSI_GRANT_NONE", tail[:tail.index("}")])
 
     def test_the_name_list_and_the_sets_are_the_same_seventeen(self) -> None:
         """psionic_sync_known walks one, grant_psionics walks the other."""
