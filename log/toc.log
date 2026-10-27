@@ -209717,3 +209717,65 @@ Tue Oct 27 22:30:21 2026 :: Log Miseri [25265]: coin +27 gold
 Tue Oct 27 22:30:21 2026 :: Log Miseri [25265]: coin +40 copper
 Tue Oct 27 22:32:00 2026 :: Log Miseri [25265]: lo
 Tue Oct 27 22:32:02 2026 :: Log Miseri [25265]: ski
+Tue Oct 27 22:32:14 2026 :: Log Miseri [25265]: help fast healing
+Tue Oct 27 22:32:29 2026 :: Log Miseri [25265]: gainlist
+Tue Oct 27 22:32:49 2026 :: Log Miseri [25265]: /
+Tue Oct 27 22:32:55 2026 :: Log Miseri [25265]: grantpsi self
+Tue Oct 27 22:32:55 2026 :: Snapshot of Miseri taken before grantpsi: Miseri.20261027_223255.grantpsi (PRESTORE Miseri to see it).
+Tue Oct 27 22:33:00 2026 :: Log Miseri [25265]: kill dro
+Tue Oct 27 22:33:10 2026 :: Log Miseri [25265]: killed a drow female
+Tue Oct 27 22:33:10 2026 :: Log Miseri [25265]: coin +57 silver
+Tue Oct 27 22:33:10 2026 :: Log Miseri [25265]: coin +282 copper
+Tue Oct 27 22:33:10 2026 :: Log Miseri [25265]: coin +27 gold
+Tue Oct 27 22:33:10 2026 :: Log Miseri [25265]: coin +40 copper
+Tue Oct 27 22:33:11 2026 :: Log Miseri [25265]: kill dro
+Tue Oct 27 22:33:15 2026 :: Sock.sinaddr:  178.156.181.172
+Tue Oct 27 22:33:15 2026 :: EOF encountered on read.
+Tue Oct 27 22:33:25 2026 :: Log Miseri [25265]: level 12 -> 13 (earned)
+Tue Oct 27 22:33:25 2026 :: Miseri has achieved level 13!
+Tue Oct 27 22:33:25 2026 :: Snapshot of Miseri taken before level: Miseri.20261027_223325.level (PRESTORE Miseri to see it).
+Tue Oct 27 22:33:25 2026 :: Psi Miseri [25265]: flagged grant honoured on reaching level 13
+Tue Oct 27 22:33:25 2026 :: Psi Miseri [25265]: grant forced, no roll taken (remorts 0, pending yes)
+Tue Oct 27 22:33:25 2026 :: Psi Miseri [25265]: Assault set: holds 0 of 4, target 1 for remort 0, 4 candidates
+Tue Oct 27 22:33:25 2026 :: Psi Miseri [25265]: granted mindblast (Assault set) -- drew 4 of 4 unheld
+Tue Oct 27 22:33:25 2026 :: Psi Miseri [25265]: Astral set: holds 0 of 4, target 1 for remort 0, 4 candidates
+Tue Oct 27 22:33:25 2026 :: Psi Miseri [25265]: granted project (Astral set) -- drew 3 of 4 unheld
+Tue Oct 27 22:33:25 2026 :: Psi Miseri [25265]: Defense set: holds 0 of 4, target 1 for remort 0, 4 candidates
+Tue Oct 27 22:33:25 2026 :: Psi Miseri [25265]: granted mindbar (Defense set) -- drew 1 of 4 unheld
+Tue Oct 27 22:33:25 2026 :: Psi Miseri [25265]: Control set: holds 0 of 5, target 1 for remort 0, 5 candidates
+Tue Oct 27 22:33:25 2026 :: Psi Miseri [25265]: granted pyrotechnics (Control set) -- drew 5 of 5 unheld
+Tue Oct 27 22:33:25 2026 :: Psi Miseri [25265]: grant complete, 4 powers now held
+Tue Oct 27 22:33:25 2026 :: Log Miseri [25265]: killed a drow female
+Tue Oct 27 22:33:25 2026 :: Log Miseri [25265]: coin +57 silver
+Tue Oct 27 22:33:25 2026 :: Log Miseri [25265]: coin +282 copper
+Tue Oct 27 22:33:25 2026 :: Log Miseri [25265]: coin +27 gold
+Tue Oct 27 22:33:25 2026 :: Log Miseri [25265]: coin +40 copper
+Tue Oct 27 22:33:32 2026 :: Log Miseri [25265]: ski
+Tue Oct 27 22:35:48 2026 :: Log Miseri [25265]: help levit
+Tue Oct 27 22:36:14 2026 :: Log Miseri [25265]: ski
+Tue Oct 27 22:36:20 2026 :: Log Miseri [25265]: kill dro
+Tue Oct 27 22:36:31 2026 :: Log Miseri [25265]: killed a drow female
+Tue Oct 27 22:36:31 2026 :: Log Miseri [25265]: coin +57 silver
+Tue Oct 27 22:36:31 2026 :: Log Miseri [25265]: coin +282 copper
+Tue Oct 27 22:36:31 2026 :: Log Miseri [25265]: coin +27 gold
+Tue Oct 27 22:36:31 2026 :: Log Miseri [25265]: coin +40 copper
+Tue Oct 27 22:36:32 2026 :: Log Miseri [25265]: kill dro
+Tue Oct 27 22:36:40 2026 :: Log Miseri [25265]: killed a drow female
+Tue Oct 27 22:36:40 2026 :: Log Miseri [25265]: coin +57 silver
+Tue Oct 27 22:36:40 2026 :: Log Miseri [25265]: coin +282 copper
+Tue Oct 27 22:36:40 2026 :: Log Miseri [25265]: coin +27 gold
+Tue Oct 27 22:36:40 2026 :: Log Miseri [25265]: coin +40 copper
+Tue Oct 27 22:36:41 2026 :: Log Miseri [25265]: kill dro
+Tue Oct 27 22:36:52 2026 :: Log Miseri [25265]: level 13 -> 14 (earned)
+Tue Oct 27 22:36:52 2026 :: Miseri has achieved level 14!
+Tue Oct 27 22:36:52 2026 :: Snapshot of Miseri taken before level: Miseri.20261027_223652.level (PRESTORE Miseri to see it).
+Tue Oct 27 22:36:52 2026 :: Log Miseri [25265]: killed a drow female
+Tue Oct 27 22:36:52 2026 :: Log Miseri [25265]: coin +57 silver
+Tue Oct 27 22:36:52 2026 :: Log Miseri [25265]: coin +282 copper
+Tue Oct 27 22:36:52 2026 :: Log Miseri [25265]: coin +27 gold
+Tue Oct 27 22:36:55 2026 :: Log Miseri [25265]: ski
+Tue Oct 27 22:37:04 2026 :: Log Miseri [25265]: set skill self enhanced 75
+Tue Oct 27 22:37:10 2026 :: Log Miseri [25265]: set char self brewing 75
+Tue Oct 27 22:37:10 2026 :: Snapshot of Miseri taken before staffset: Miseri.20261027_223710.staffset (PRESTORE Miseri to see it).
+Tue Oct 27 22:37:17 2026 :: Log Miseri [25265]: set skill self brewing 75
+Tue Oct 27 22:37:20 2026 :: Log Miseri [25265]: set skill self brew 75

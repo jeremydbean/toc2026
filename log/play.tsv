@@ -29013,3 +29013,20 @@
 1793140209	cmd	Miseri	12	25265	mushroom.are	standing	100	0	-	kill	dro	Your punch MANGLES a drow female! // A drow female parries your attack. // A drow female dodges your attack.
 1793140320	cmd	Miseri	12	25265	mushroom.are	standing	100	0	-	look		The bonfire. //   Several naked drow women are dancing around a bonfire here singing in their // language.  You become lost in their dance as they twirl and jump.  A tall
 1793140322	cmd	Miseri	12	25265	mushroom.are	standing	100	0	-	skills		Level  1: dagger              20%      hand to hand        75%       //           recall              50%       // Level  3: kick                75%      
+1793140334	cmd	Miseri	12	25265	mushroom.are	standing	100	0	-	help	fast healing	The fast healing skill improves wound healing rates, whether walking, resting, // or sleeping. It represents knowledge of healing herbs or just general // toughness and stamina.  Fast healing is checked every tick, and it is
+1793140349	cmd	Miseri	12	25265	mushroom.are	standing	100	0	-	gainlist		Abilities for a level 12 monk of the monk guild: 33 learned, 1 not yet. // Not yet learned (X usable now, - at a later level), and what to GAIN: //  X ride (3 trains):
+1793140369	cmd	Miseri	12	25265	mushroom.are	standing	100	0	-	who		[12 Human   Monk  ] Miseri the Novice of Water // Players found: 1
+1793140375	cmd	Miseri	12	25265	mushroom.are	standing	100	15	-	grantpsi	self	Grant flag applied. They will receive psionics the next time they gain a level. // [WIZINFO] Miseri flagged Miseri for psionics ().
+1793140380	cmd	Miseri	12	25265	mushroom.are	standing	100	0	-	kill	dro	A drow female parries your attack. // Your punch MANGLES a drow female! // A drow female dodges your attack.
+1793140391	cmd	Miseri	12	25265	mushroom.are	standing	100	0	-	kill	dro	Your punch devastates a drow female! // Your punch decimates a drow female! // A drow female parries your attack.
+1793140412	cmd	Miseri	13	25265	mushroom.are	standing	96	0	-	skills		Level  1: dagger              20%      hand to hand        76%       //           recall              50%       // Level  3: kick                75%      
+1793140548	cmd	Miseri	13	25265	mushroom.are	standing	100	0	-	help	levit	LEVITATE // Syntax: levitate // A monk's float: you are flying for a tenth of your level in ticks.  It
+1793140574	cmd	Miseri	13	25265	mushroom.are	standing	100	0	-	skills		Level  1: dagger              20%      hand to hand        76%       //           recall              50%       // Level  3: kick                75%      
+1793140580	cmd	Miseri	13	25265	mushroom.are	standing	100	0	-	kill	dro	A drow female dodges your attack. // A drow female parries your attack. // Your punch misses a drow female.
+1793140592	cmd	Miseri	13	25265	mushroom.are	standing	100	0	-	kill	dro	A drow female parries your attack. // Your punch MASSACRES a drow female! // Your punch *** DEVASTATES *** a drow female!
+1793140601	cmd	Miseri	13	25265	mushroom.are	standing	100	0	-	kill	dro	A drow female parries your attack. // Your punch devastates a drow female! // A drow female dodges your attack.
+1793140615	cmd	Miseri	14	25265	mushroom.are	standing	96	0	-	skills		Level  1: dagger              20%      hand to hand        76%       //           recall              50%       // Level  3: kick                75%      
+1793140624	cmd	Miseri	14	25265	mushroom.are	standing	98	0	-	set	skill self enhanced 75	Your enhanced damage skill is now 75.
+1793140630	cmd	Miseri	14	25265	mushroom.are	standing	98	12	-	set	char self brewing 75	Syntax: //   set char <name> <field> <value> //   Field being one of:
+1793140637	cmd	Miseri	14	25265	mushroom.are	standing	98	0	-	set	skill self brewing 75	No such skill or spell.
+1793140640	cmd	Miseri	14	25265	mushroom.are	standing	98	0	-	set	skill self brew 75	No such skill or spell.
