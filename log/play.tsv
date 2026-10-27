@@ -28889,3 +28889,19 @@
 1793139051	cmd	Killuminati	70	15068	campus.are	standing	100	0	-	look		The Games Room // [Room: 15068]     [Sector: Inside]     [Flags: Indoors No_Recall] //   Rows of unplugged arcade games crowd this room. In one corner, a girl plays
 1793139057	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	goto	hermie	The Shrouded Altar of Devota // [Room: 4208]     [Sector: Inside]     [Flags: No_Mob Indoors Safe] //   The altar is still an enormous piece of white marble under its black cloth,
 1793139063	cmd	Killuminati	70	4208	dresden_halloween.are	standing	100	0	-	stat	mob hermie	Name: angel hermie herbie girlfriend spellup // Vnum: 98  Format: new  Race: unique  Sex: female  Room: 4208 // Count: 1  Killed: 0
+1793139347	session	Killuminati	70	4208	dresden_halloween.are	quit	301s	+0 levels	+0 exp	+0 copper	0 kills	0 deaths	0 quests	6 commands	0 refused	coin: none
+1793139362	cmd	Miseri	9	4804	dresden_halloween.are	standing	68	0	-	note		(withheld)
+1793139367	cmd	Miseri	9	4804	dresden_halloween.are	standing	68	0	-	note		(withheld)
+1793139369	cmd	Miseri	9	4804	dresden_halloween.are	standing	68	0	-	look		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass
+1793139379	cmd	Miseri	9	4804	dresden_halloween.are	standing	68	0	-	look		The Quiet Place //   Silent trees surround you as you appear in this room, a gentle breeze stirs // at your feet and you can see that exits lead in most of the compass
+1793139383	cmd	Miseri	9	4804	dresden_halloween.are	standing	68	0	-	wake		You are already standing.
+1793139385	cmd	Miseri	9	4804	dresden_halloween.are	standing	68	0	-	recall		Your prayer goes up and comes back unanswered.
+1793139388	refused	Miseri	9	4804	dresden_halloween.are	standing	68	0	-	(unknown)		Huh?
+1793139388	cmd	Miseri	9	4207	dresden_halloween.are	standing	68	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793139390	cmd	Miseri	9	4208	dresden_halloween.are	standing	68	0	-	west		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793139397	cmd	Miseri	9	4208	dresden_halloween.are	standing	68	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You feel righteous.
+1793139399	cmd	Miseri	9	4208	dresden_halloween.are	standing	100	0	-	affect		You are affected by: // Spell: 'shroud'. // Spell: 'power gloves'.
+1793139402	cmd	Miseri	9	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793139404	cmd	Miseri	9	4208	dresden_halloween.are	standing	100	0	-	restore	self	Miseri restored.
+1793139411	cmd	Miseri	9	8	limbo_halloween.are	standing	100	0	-	pray		You bow your head in prayer.  The world falls away in a curl of incense, and you open your eyes somewhere else. // The Oracle's Sanctum //   Heavy velvet the colour of a bruised plum shuts out every trace of the
+1793139416	cmd	Miseri	9	8	limbo_halloween.are	standing	100	11	-	'	should i level	You say 'where should i level' // The Oracle gazes at you, then closes her eyes, considering your question.
