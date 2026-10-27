@@ -18,7 +18,7 @@ from live_mud import LiveMud, create_character, login, patch_player_file, skip_r
 
 SKIP = skip_reason()
 PW = "Zfriction1"
-ALTAR = 4208            # Hermie stands here for six hours after a boot
+ALTAR = 4208            # staff place Hermie here for the test
 SQUARE = 2401           # the Oak Tree Square: west is open passage
 
 
@@ -33,12 +33,21 @@ def run(client, command: str, settle: float = 1.5) -> str:
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class JournalFrictionTests(unittest.TestCase):
     def test_hermie_answers_an_unknown_word_and_a_doorless_exit_says_so(self) -> None:
-        with LiveMud(extra_env={"TOC_NO_BOOT_HERMIE": None}) as mud:
-            with mud.connect(timeout=120) as client:
-                create_character(client, "Zfriction", PW)
-                client.send("quit")
-                self.assertTrue(client.wait_closed())
+        with LiveMud() as mud:
+            for name in ("Zfriction", "Zplacer"):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PW)
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
             patch_player_file(mud, "Zfriction", Levl=20, Room=ALTAR)
+            patch_player_file(mud, "Zplacer", Levl=70, Room=ALTAR)
+            # Hermie is at the altar only when staff put her there
+            # (owner, 2026-10-27).
+            with mud.connect(timeout=120) as staff:
+                login(staff, "Zplacer", PW)
+                staff.must("spellup", "taking requests")
+                staff.send("quit")
+                self.assertTrue(staff.wait_closed())
             with mud.connect(timeout=120) as client:
                 login(client, "Zfriction", PW)
                 unknown = run(client, "heal fres")

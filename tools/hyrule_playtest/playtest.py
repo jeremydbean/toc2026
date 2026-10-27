@@ -203,7 +203,7 @@ def one_fight(hero, god, vnum, label, keyword, limit=240):
 
 
 results = {"level": LEVEL, "char_level": L, "fights": []}
-with LiveMud(extra_env={"TOC_NO_BOOT_HERMIE": None}) as mud:
+with LiveMud() as mud:
     for name in (HERO, GOD):
         with mud.connect(timeout=120) as c:
             create_character(c, name, PW)
@@ -218,6 +218,8 @@ with LiveMud(extra_env={"TOC_NO_BOOT_HERMIE": None}) as mud:
         for c in (hero, god):
             run(c, "scroll 0")
         run(god, "holylight")
+        # Hermie appears only when staff place her (owner, 2026-10-27): put her at the altar.
+        run(god, "at 4208 spellup", 1.2)
         run(god, f"set skill {HERO.lower()} all 75", 1.0)
         equip(hero, god)
         run(god, f"set char {HERO.lower()} gold 500", 0.8)

@@ -64,21 +64,22 @@ def immortal(mud: LiveMud, name: str) -> None:
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class SpellupMobTests(unittest.TestCase):
-    def test_she_is_at_the_pit_after_every_boot(self) -> None:
-        """Owner, 2026-10-04: six hours at the altar after every reboot.
-        The harness turns this off for the other tests; this one asks."""
-        with LiveMud(extra_env={"TOC_NO_BOOT_HERMIE": None}) as mud:
+    def test_she_waits_for_staff_after_a_boot(self) -> None:
+        """Owner, 2026-10-27: Hermie no longer stands at the altar after a
+        boot; she is there only when staff place her. (2026-10-04 to 10-27
+        she stood there for six hours after every boot.)"""
+        with LiveMud() as mud:
             immortal(mud, "Zbootherm")
             with mud.connect(timeout=120) as client:
                 login(client, "Zbootherm", PASSWORD)
-                run(client, "goto 4208", settle=1.5)
-                here = run(client, "look", settle=1.5)
-                self.assertIn("Hermie", here, here)
-                # Already there: a SPELLUP only extends her.
-                again = run(client, "spellup 30", settle=1.5)
-                self.assertIn("will stay 30 more minutes", again, again)
+                client.sync("scroll 0")
+                client.must("goto 4208", "Altar")
+                self.assertNotIn("Hermie", client.sync("look"))
+                placed = client.sync("spellup")
+                self.assertIn("taking requests", placed, placed)
+                self.assertIn("Hermie", client.sync("look"))
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
-            self.assertIn("placed in room 4208 at boot for 360 minutes", log)
+            self.assertNotIn("at boot for", log)
 
     def test_she_appears_reads_her_menu_and_casts(self) -> None:
         with LiveMud() as mud:

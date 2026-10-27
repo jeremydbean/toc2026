@@ -535,11 +535,6 @@ class LiveMud:
         assert binary is not None, "no server binary; check skip_reason() first"
 
         env = dict(os.environ)
-        # Hermie at the altar for six hours after every boot is the live
-        # game's; several tests count every spellup mobile, so a test world
-        # starts without her. Pass extra_env={"TOC_NO_BOOT_HERMIE": ""} and
-        # pop it to see her (tests/test_spellup_mob.py does).
-        env.setdefault("TOC_NO_BOOT_HERMIE", "1")
         # The calendar must not decide what a test sees: from Oct 18 the
         # game boots the Halloween copies of dresden, limbo and midennir,
         # and from Dec 16 the Christmas ones, which rename rooms the tests

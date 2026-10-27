@@ -400,9 +400,8 @@ def worker(args):
     t = cb.load_tables()
     if binary:
         os.environ["TOC_SERVER_BINARY"] = binary
-    env = {"TOC_NO_BOOT_HERMIE": None}
     done = []
-    with LiveMud(extra_env=env) as mud:
+    with LiveMud() as mud:
         with mud.connect(timeout=120) as staff:
             create_character(staff, "Zbenchstaff", PW)
             staff.send("quit")
@@ -411,6 +410,8 @@ def worker(args):
         with mud.connect(timeout=120) as staff:
             login(staff, "Zbenchstaff", PW)
             staff.sync("scroll 0")
+            # Hermie appears only when staff place her (owner, 2026-10-27): put her at the altar for the hermie mode.
+            staff.sync(f"at {ALTAR} spellup")
             for job in jobs:
                 try:
                     r = run_job(mud, staff, t, job)

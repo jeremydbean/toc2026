@@ -144,7 +144,7 @@ class SeasonBootTests(unittest.TestCase):
     """TOC_SEASON forces a season on; the fixture forces it off."""
 
     def test_hallows_end_boots_whole_and_a_death_has_somewhere_to_go(self) -> None:
-        with LiveMud(extra_env={"TOC_SEASON": "halloween", "TOC_NO_BOOT_HERMIE": None}) as mud:
+        with LiveMud(extra_env={"TOC_SEASON": "halloween"}) as mud:
             for name, level in (("Zghoul", 20), ("Zreaper", 70)):
                 with mud.connect(timeout=120) as client:
                     create_character(client, name, "Zseason1")
@@ -163,6 +163,9 @@ class SeasonBootTests(unittest.TestCase):
                 self.assertIn("knocking", run(keeper, "goto 4209", 2.0))
                 self.assertIn("undertaker", run(keeper, "look coffins", 1.6))
                 self.assertIn("Hermie", run(keeper, "mshow 98", 1.6))
+                # Staff can still put her at the season's altar; she no
+                # longer comes on her own at boot (owner, 2026-10-27).
+                self.assertIn("taking requests", run(keeper, "at 4208 spellup", 1.6))
                 self.assertIn("Oracle", run(keeper, "mshow 97", 1.6))
                 self.assertIn("Quest Master", run(keeper, "mshow 7551", 1.6))
                 # The death room is there, and a death lands in it.
@@ -173,7 +176,7 @@ class SeasonBootTests(unittest.TestCase):
                 self.assertIn("first true death", hero.transcript[mark:])
                 self.assertIn("Death room", run(hero, "look", 2.0))
             booted = mud.server_output()
-            self.assertIn("Hermie placed", booted)
+            self.assertNotIn("at boot for", booted)
             self.assertNotIn("BUG", booted)
 
     def test_winter_veil_boots_whole(self) -> None:

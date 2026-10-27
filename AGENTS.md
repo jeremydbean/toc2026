@@ -2580,11 +2580,12 @@ tops up, at login, a character with two or more remorts holding fewer
 than their due. The long awakening message is for new powers only
 (`added` in `grant_psionics`).
 
-**Hermie stands at the altar for six hours after every boot**
-(`spellup_boot_place`, called from `main` after `boot_db`).
-`TOC_NO_BOOT_HERMIE` skips it, and `tests/live_mud.py` sets it by default
-because several tests count every spellup mobile; pass
-`extra_env={"TOC_NO_BOOT_HERMIE": None}` to see her.
+**Hermie appears only when staff place her** (owner, 2026-10-27). From
+2026-10-04 she stood at the altar for six hours after every boot
+(`spellup_boot_place`); that is gone, with its `TOC_NO_BOOT_HERMIE`
+switch. A test or tool that needs her has a staff fixture type SPELLUP
+(`at 4208 spellup` puts her at the altar), as
+`tests/test_journal_frictions_oct22.py` and `tools/class_bench.py` do.
 
 **A staff GRANTPSI is a promise; a remort's owing is a chance.** The
 dice decide *when* a granted character awakens, but if they miss at 18,

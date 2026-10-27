@@ -8,6 +8,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Hermie is placed by staff only** (2026-10-27, owner). The six hours
+  at the altar after every boot (`spellup_boot_place`, since 2026-10-04)
+  are gone, and so is `TOC_NO_BOOT_HERMIE`; SPELLUP places her as before.
+  HELP BUFF says so; the tests and tools that relied on her place her.
 - **Level 7's hungry Goriya gives hints** (2026-10-27). Trentlin stood in
   the Hall of Grumbling, dropped candy and grumbled, and said a day later he
   was stuck. The room's LOOK details (bowl, bones, grumble, bait), the

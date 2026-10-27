@@ -856,10 +856,9 @@ Syntax: heal
         heal <spell>
         buff <spell>
 
-Hermie is the free healer.  She stands at the altar of the Temple of Devota
-(one west of where RECALL lands) for six hours after every reboot, and the
-immortals place her there, or anywhere, when they choose; WHERE HERMIE finds
-her if she is in your area.  She is not a quest and not random: when she is
+Hermie is the free healer.  She appears only when the immortals place her,
+wherever and for as long as they choose; WHERE HERMIE finds her if she is
+in your area.  She is not a quest and not random: when she is
 about, everything she does is free.
 
 Ask Hermie for a spell.  She works exactly like the healer at the pit -

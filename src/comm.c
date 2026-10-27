@@ -563,7 +563,6 @@ int main( int argc, char **argv )
     control = init_socket( port );
     boot_db( );
     playlog_boot( );        /* the crash recorder, once the world is up */
-    spellup_boot_place( );
     /* The recovery ledger: restore receipts and player identities. */
     recovery_boot( );
     /* Player corpses a restart would have lost, made again (corpses.c). */
