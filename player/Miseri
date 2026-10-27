@@ -1,10 +1,10 @@
 #PLAYER
 Name Miseri~
 Id   10516
-LogO 1790851015
+LogO 1793111500
 Vers 4
 Prom ~
-Ignoring  ~
+Ignoring ~
 Race human~
 Sex  1
 Cla  4
@@ -13,36 +13,43 @@ Psionic  0
 PsiGrant 0
 PsiSpec ~
 PsiKnown ~
+ChangesSeen ~
+Fixes 20261021-mage-groups 20261021-mage-weapons~
 Cast none
 Levl 1
-Plyd 33
+Plyd 180
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 3700
+Room 3744
 HMV  20 20 100 100 100 100
 NewGold 0
 NewPlat 0
-NewCopp 0
+NewCopp 4
 NewSilv 0
 BankCP 0
-IntTime 0
+IntTime 1793111374
 IntTotal 0
 Dcount 0
 SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 0
+AchKills 1
 AchQuests 0
 AchDeaths 0
 AchExplore 0
 AchMaps 0
 AchCompass 0
 AchTriforce 0
+Achv first-kill 1793111472
 Achv visit-mud-school 1790851006
-LastOut  1790851015
+AchSet areas 840101374 1103516333 ~
+AchSet rooms 3700 3744 3757 3759 4207 ~
+LastOut  1793111500
+Rested 0 0
+Daily 0 0 0 0 0
 SesLogin 1790851006
 SesDur   9
 SesExpG  0
@@ -51,7 +58,7 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  0
+Exp  2075
 Act  65788
 Comm 24576
 Mounted 0
@@ -78,12 +85,9 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 5
 Trai 3
 Save  -1
 Alig  0
-Hit   2
-Dam   2
 ACs 95 95 95 99
 Attr 13 13 13 13 13
 AMod 0 0 0 0 0
@@ -93,40 +97,25 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 20 100 100
-Cond 0 48 48
-Sk 1 'armor'
-Sk 1 'burning hands'
-Sk 1 'chill touch'
-Sk 1 'detect invis'
-Sk 1 'faerie fire'
-Sk 1 'fly'
-Sk 1 'giant strength'
-Sk 1 'identify'
-Sk 1 'lightning bolt'
-Sk 1 'magic missile'
-Sk 1 'refresh'
-Sk 1 'shield'
-Sk 10 'axe'
-Sk 80 'dagger'
-Sk 7 'flail'
+Cond 0 45 45
+Alias / who~
+Sk 8 'axe'
+Sk 20 'dagger'
+Sk 6 'flail'
 Sk 80 'mace'
 Sk 3 'polearm'
-Sk 8 'spear'
+Sk 7 'spear'
 Sk 3 'sword'
-Sk 20 'whip'
+Sk 15 'whip'
 Sk 1 'dodge'
-Sk 1 'hand to hand'
+Sk 61 'hand to hand'
 Sk 1 'kick'
 Sk 1 'trip'
 Sk 1 'nerve damage'
 Sk 1 'meditation'
-Sk 1 'scrolls'
-Sk 1 'wands'
 Sk 50 'recall'
 Gr 'rom basics'
-Gr 'mage basics'
 Gr 'monk basics'
-Gr 'mage default'
 Gr 'monk default'
 End
 
@@ -137,6 +126,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
+Val  0 0 197 0 0
 End
 
 #O
@@ -160,7 +150,7 @@ End
 #O
 Vnum 3701
 Nest 0
-Wear 16
+Wear -1
 Cost 0
 Cond 100
 Repd 0

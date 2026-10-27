@@ -208799,3 +208799,74 @@ Tue Oct 27 14:20:50 2026 :: EOF encountered on read.
 Tue Oct 27 14:25:55 2026 :: Sock.sinaddr:  52.87.72.16
 Tue Oct 27 14:25:55 2026 :: EOF encountered on read.
 Tue Oct 27 14:26:34 2026 :: Treasure goblin: vanished from room 17227 (In a secret gangway, highland.are) (too long in one area).
+Tue Oct 27 14:28:59 2026 :: Sock.sinaddr:  99.62.115.159
+Tue Oct 27 14:29:07 2026 :: Loading Miseri's playerfile
+Tue Oct 27 14:29:13 2026 :: Loading Miseri's playerfile
+Tue Oct 27 14:29:13 2026 :: Miseri@99.62.115.159 has connected.
+Tue Oct 27 14:29:13 2026 :: Log Miseri [3700]: arrived (Entrance to Mud School) from 0
+Tue Oct 27 14:29:13 2026 :: Stray mage groups: took Miseri's armor 1%, burning hands 1%, chill touch 1%, detect invis 1%, faerie fire 1%, fly 1%, giant strength 1%, identify 1%, lightning bolt 1%, magic missile 1%, refresh 1%, shield 1%, scrolls 1%, wands 1%; refunded 0 practices.
+Tue Oct 27 14:29:13 2026 :: Login fix 20261021-mage-groups (mage spells from the creation bug) applied to Miseri.
+Tue Oct 27 14:29:13 2026 :: Mage weapon floors: Miseri's dagger 80% to 20%, spear 8% to 7%, axe 10% to 8%, flail 7% to 6%, whip 20% to 15%.
+Tue Oct 27 14:29:13 2026 :: Login fix 20261021-mage-weapons (mage weapon skills from the creation bug) applied to Miseri.
+Tue Oct 27 14:29:14 2026 :: Log Miseri [3700]: /
+Tue Oct 27 14:29:18 2026 :: Log Miseri [3700]: who
+Tue Oct 27 14:29:21 2026 :: Log Miseri [3700]: /
+Tue Oct 27 14:29:27 2026 :: Log Miseri [3700]: recall
+Tue Oct 27 14:29:27 2026 :: Log Miseri [4207]: arrived (Before the Shrouded Altar) from 3700
+Tue Oct 27 14:30:17 2026 :: Log Miseri [4207]: spell
+Tue Oct 27 14:30:19 2026 :: Log Miseri [4207]: ski
+Tue Oct 27 14:30:27 2026 :: Log Miseri [4207]: lo
+Tue Oct 27 14:30:29 2026 :: Log Miseri [4207]: u
+Tue Oct 27 14:30:29 2026 :: Log Miseri [3700]: arrived (Entrance to Mud School) from 4207
+Tue Oct 27 14:30:30 2026 :: Log Miseri [3700]: n
+Tue Oct 27 14:30:30 2026 :: Log Miseri [3757]: arrived (A Room in Mud School) from 3700
+Tue Oct 27 14:30:31 2026 :: Log Miseri [3757]: e
+Tue Oct 27 14:30:31 2026 :: Log Miseri [3759]: arrived (Soulcrusher's Guild Room) from 3757
+Tue Oct 27 14:30:33 2026 :: Log Miseri [3759]: train
+Tue Oct 27 14:30:34 2026 :: Log Miseri [3759]: prac
+Tue Oct 27 14:30:36 2026 :: Log Miseri [3759]: prac hand
+Tue Oct 27 14:30:36 2026 :: Log Miseri [3759]: prac hand
+Tue Oct 27 14:30:37 2026 :: Log Miseri [3759]: prac hand
+Tue Oct 27 14:30:38 2026 :: Log Miseri [3759]: prac hand
+Tue Oct 27 14:30:38 2026 :: Log Miseri [3759]: prac hand
+Tue Oct 27 14:30:39 2026 :: Log Miseri [3759]: prac
+Tue Oct 27 14:30:43 2026 :: Log Miseri [3759]: w
+Tue Oct 27 14:30:43 2026 :: Log Miseri [3757]: arrived (A Room in Mud School) from 3759
+Tue Oct 27 14:30:45 2026 :: Log Miseri [3757]: eq
+Tue Oct 27 14:30:46 2026 :: Log Miseri [3757]: rem da
+Tue Oct 27 14:30:47 2026 :: Log Miseri [3757]: s
+Tue Oct 27 14:30:47 2026 :: Log Miseri [3700]: arrived (Entrance to Mud School) from 3757
+Tue Oct 27 14:30:49 2026 :: Log Miseri [3700]: op south
+Tue Oct 27 14:30:50 2026 :: Log Miseri [3700]: who
+Tue Oct 27 14:30:54 2026 :: Log Miseri [3700]: alias (arguments withheld)
+Tue Oct 27 14:30:55 2026 :: Log Miseri [3700]: /
+Tue Oct 27 14:30:56 2026 :: Log Miseri [3700]: s
+Tue Oct 27 14:30:56 2026 :: Log Miseri [3744]: arrived (North Wall of Arena) from 3700
+Tue Oct 27 14:30:59 2026 :: Log Miseri [3744]: kill ra
+Tue Oct 27 14:31:00 2026 :: Sock.sinaddr:  18.116.205.62
+Tue Oct 27 14:31:01 2026 :: EOF encountered on read.
+Tue Oct 27 14:31:12 2026 :: Log Miseri [3744]: killed the rabbit
+Tue Oct 27 14:31:12 2026 :: Log Miseri [3744]: coin +2 copper
+Tue Oct 27 14:31:12 2026 :: Log Miseri [3744]: coin +2 copper
+Tue Oct 27 14:31:25 2026 :: Log Miseri [3744]: (refused) wizhelp
+Tue Oct 27 14:32:07 2026 :: Log WebAdmin: at miseri trust miser 70
+Tue Oct 27 14:32:07 2026 :: Log WebAdmin: trust miser 70
+Tue Oct 27 14:32:07 2026 :: WebAdmin set Miseri's trust to 70.
+Tue Oct 27 14:32:14 2026 :: Log Miseri [3744]: sc
+Tue Oct 27 14:32:20 2026 :: Log Miseri [3744]: newbie self
+Tue Oct 27 14:32:20 2026 :: Miseri gave a newbie pack to Miseri.
+Tue Oct 27 14:32:26 2026 :: Log Miseri [3744]: get all pack
+Tue Oct 27 14:32:26 2026 :: Log Miseri [3744]: coin +100 platinum
+Tue Oct 27 14:32:27 2026 :: Log Miseri [3744]: wear all
+Tue Oct 27 14:32:29 2026 :: Log Miseri [3744]: inv
+Tue Oct 27 14:32:30 2026 :: Log Miseri [3744]: rem da
+Tue Oct 27 14:32:33 2026 :: Log Miseri [3744]: drop da
+Tue Oct 27 14:32:41 2026 :: Log Miseri [3744]: lo
+Tue Oct 27 14:32:43 2026 :: Log Miseri [3744]: kill bo
+Tue Oct 27 14:32:48 2026 :: Log Miseri [3744]: restore self
+Tue Oct 27 14:32:55 2026 :: Log Miseri [3744]: empower self
+Tue Oct 27 14:32:56 2026 :: Log Miseri [3744]: titan self
+Tue Oct 27 14:32:57 2026 :: Log Miseri [3744]: killed the boar
+Tue Oct 27 14:32:57 2026 :: Log Miseri [3744]: coin +5 copper
+Tue Oct 27 14:32:57 2026 :: Log Miseri [3744]: coin +6 copper
+Tue Oct 27 14:33:00 2026 :: Log Miseri [3744]: restore self

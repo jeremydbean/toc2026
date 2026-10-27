@@ -28669,3 +28669,45 @@
 1793065400	cmd	Trentlin	50	2497	dresden_halloween.are	standing	64	0	-	up		A sudden wind blows you from the tree! //   You reach out for a nearby branch, but to no avail!  You feel the sensation // of free-fall before you blackout.
 1793065401	cmd	Trentlin	50	2497	dresden_halloween.are	standing	64	10	-	aquest	abort	You tell Questor Thews that you are abandoning your quest. // Questor Thews says 'Very well, Trentlin. Your quest obligation is lifted.' // Questor Thews says 'You had a streak of 3 in a row - all gone now!'
 1793065405	session	Trentlin	50	2497	dresden_halloween.are	quit	755s	+0 levels	+0 exp	+466502500 copper	0 kills	0 deaths	4 quests	726 commands	3 refused	coin: quests 135p 20g 10s, dailies 338p 25s, spent 6p 70g 10s
+1793111354	cmd	Miseri	1	3700	school.are	standing	100	0	-	/		The gods are listening to somebody else just now.
+1793111358	cmd	Miseri	1	3700	school.are	standing	100	0	-	who		[ 1 Human   Monk  ] Miseri the Servant of the Way // Players found: 1
+1793111361	cmd	Miseri	1	3700	school.are	standing	100	0	-	/		You stumble over the words of your prayer, and nothing happens.
+1793111367	cmd	Miseri	1	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793111417	cmd	Miseri	1	4207	dresden_halloween.are	standing	100	0	-	spells		You know no spells.
+1793111419	cmd	Miseri	1	4207	dresden_halloween.are	standing	100	0	-	skills		Level  1: dagger              20%      hand to hand         1%       //           recall              50%       // Level  3: kick               n/a      
+1793111427	cmd	Miseri	1	4207	dresden_halloween.are	standing	100	0	-	look		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793111429	cmd	Miseri	1	3700	school.are	standing	100	0	-	up		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,
+1793111430	cmd	Miseri	1	3757	school.are	standing	100	0	-	north		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the
+1793111431	cmd	Miseri	1	3759	school.are	standing	100	0	-	east		Soulcrusher's Guild Room //   You are in a room filled with weapons, books, and many combat dummies, some // cut and stabbed many times, others burnt to a crisp.  The room is filled with
+1793111433	cmd	Miseri	1	3759	school.are	standing	100	0	-	train		You can't do that here.
+1793111434	cmd	Miseri	1	3759	school.are	standing	100	0	-	practice		recall              50%  dagger              20%  hand to hand         1%   // You have 5 practice sessions left.
+1793111436	cmd	Miseri	1	3759	school.are	standing	100	0	-	practice	hand	You practice hand to hand.
+1793111436	cmd	Miseri	1	3759	school.are	standing	100	0	-	practice	hand	You practice hand to hand.
+1793111437	cmd	Miseri	1	3759	school.are	standing	100	0	-	practice	hand	You practice hand to hand.
+1793111438	cmd	Miseri	1	3759	school.are	standing	100	0	-	practice	hand	You practice hand to hand.
+1793111438	cmd	Miseri	1	3759	school.are	standing	100	0	-	practice	hand	You practice hand to hand.
+1793111439	cmd	Miseri	1	3759	school.are	standing	100	0	-	practice		recall              50%  dagger              20%  hand to hand        61%   // You have 0 practice sessions left.
+1793111443	cmd	Miseri	1	3757	school.are	standing	100	0	-	west		A Room in Mud School //   You are in a room in Mud School.  Paintings of the heroic graduates of mud // school adorn the walls. To the west is Eclipse's Training Room, and to the
+1793111445	cmd	Miseri	1	3757	school.are	standing	100	0	-	equipment		You are using: // <used as light>     (Glowing) a war banner // <worn on body>      a sub issue vest
+1793111446	cmd	Miseri	1	3757	school.are	standing	100	0	-	remove	da	You stop using a sub issue dagger.
+1793111447	cmd	Miseri	1	3700	school.are	standing	100	0	-	south		Entrance to Mud School //   This is the entrance to the Merc Mud School.  Go north to go through mud // school.  If you have been here before and want to go directly to the arena,
+1793111449	cmd	Miseri	1	3700	school.are	standing	100	0	-	open	south	Ok.
+1793111450	cmd	Miseri	1	3700	school.are	standing	100	0	-	who		[ 1 Human   Monk  ] Miseri the Servant of the Way // Players found: 1
+1793111454	cmd	Miseri	1	3700	school.are	standing	100	0	-	alias		(withheld)
+1793111455	cmd	Miseri	1	3700	school.are	standing	100	0	-	who		[ 1 Human   Monk  ] Miseri the Servant of the Way // Players found: 1
+1793111456	cmd	Miseri	1	3744	school.are	standing	100	0	-	south		North Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
+1793111459	cmd	Miseri	1	3744	school.are	standing	100	0	-	kill	ra	Your punch misses the rabbit. // Your punch scratches the rabbit.
+1793111485	refused	Miseri	1	3744	school.are	standing	60	0	-	(unknown)		Huh?
+1793111534	cmd	Miseri	1	3744	school.are	standing	100	0	-	score		| Name:         Miseri | Level:       1 | Class:        Monk | // | Played:      0 hours | Sex:      Male | Guild:        None | // | Age:        17 years | Race:    Human | Castle:       None |
+1793111540	cmd	Miseri	1	3744	school.are	standing	100	0	-	newbie	self	Miseri raises a hand, and A *NEWBIE* pack! settles into your arms, full of all the gear you need to get started! // [WIZINFO] Miseri gave a newbie pack to Miseri.
+1793111546	cmd	Miseri	1	3744	school.are	standing	100	1	-	get	all pack	You get 100 platinum coins from A *NEWBIE* pack!. //                     ACHIEVEMENT EARNED // Walking Wallet  +5 points
+1793111547	cmd	Miseri	1	3744	school.are	standing	100	0	-	wear	all	You hold a mud school diploma in your hands. // You wear An etched signet ring on your left finger. // You wear An etched signet ring on your right finger.
+1793111549	cmd	Miseri	1	3744	school.are	standing	66	0	-	inventory		You are carrying: // ( 5) A Red Potion //      (Glowing) a string of red berries
+1793111550	cmd	Miseri	1	3744	school.are	standing	66	0	-	remove	da	You stop using a sub issue dagger.
+1793111553	cmd	Miseri	1	3744	school.are	standing	66	0	-	drop	da	You drop a sub issue dagger. // A sub issue dagger burst into flames as it hits the ground.
+1793111561	cmd	Miseri	1	3744	school.are	standing	66	0	-	look		North Wall of Arena //   You are in the Arena.  Remember, if you wish to get out of this Arena, just // go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
+1793111563	cmd	Miseri	1	3744	school.are	standing	66	0	-	kill	bo	Your punch misses the boar. // Your punch misses the boar.
+1793111568	cmd	Miseri	1	3744	school.are	fighting	90	0	fight	restore	self	Miseri restored.
+1793111575	cmd	Miseri	1	3744	school.are	fighting	86	0	fight	empower	self	You are filled with divine power -- all buffs applied! // [WIZINFO] Miseri empowered Miseri (permanent). // Miseri has been permanently empowered.
+1793111576	cmd	Miseri	1	3744	school.are	fighting	86	0	fight	titanic	self	[WIZINFO] Miseri made Miseri titanic (permanent). // Your body surges with titanic power -- HP, mana, and move multiplied, and you gain 50% bonus experience! // Miseri made titanic permanently (+150 HP, +620 mana, +325 move, +50% exp).
+1793111580	cmd	Miseri	1	3744	school.are	standing	100	0	-	restore	self	Miseri restored.
