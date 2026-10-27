@@ -6890,6 +6890,13 @@ flesh~
 31 UV 0
 14 0 0 1 9
 0 0 0 P
+E
+hungry goriya guardian~
+A thin, red-scaled Goriya squats in the doorway, ribs showing, its
+eyes on your pack. It will not fight and it will not budge; it only
+grumbles. Feed it and it will let you by: bring enemy bait, sold in the
+shops hidden under Hyrule's overworld, and type FEED GORIYA.
+~
 #30509
 cracked floor opening~
 a cracked stone floor~
@@ -7304,10 +7311,12 @@ H 0 0 0 0
 8 3 1000000 P
 E
 bait enemy food~
-Strong-smelling bait. FEED it to the hungry Goriya in the Demon's
-halls, which eats it, or FEED BAIT anywhere else to set it down: the
-enemies in the room forget you and turn to the smell for a while, and you
-pick the bait up again. A guardian is not fooled.
+Strong-smelling bait. The hungry Goriya that blocks the north door of
+the Hall of Grumbling, in Level 7, will let nobody by until it is fed:
+carry this there and type FEED GORIYA, and it eats the bait and steps
+aside. FEED BAIT anywhere else sets it down: the enemies in the room
+forget you and turn to the smell for a while, and you pick the bait up
+again. A guardian is not fooled.
 ~
 #30549
 heart recovery shop~
@@ -7356,10 +7365,12 @@ H 0 0 0 0
 20 3 600000 P
 E
 bait enemy food~
-Strong-smelling bait. FEED it to the hungry Goriya in the Demon's
-halls, which eats it, or FEED BAIT anywhere else to set it down: the
-enemies in the room forget you and turn to the smell for a while, and you
-pick the bait up again. A guardian is not fooled.
+Strong-smelling bait. The hungry Goriya that blocks the north door of
+the Hall of Grumbling, in Level 7, will let nobody by until it is fed:
+carry this there and type FEED GORIYA, and it eats the bait and steps
+aside. FEED BAIT anywhere else sets it down: the enemies in the room
+forget you and turn to the smell for a while, and you pick the bait up
+again. A guardian is not fooled.
 ~
 #30553
 blue life potion medicine shop~
@@ -16155,6 +16166,27 @@ D2
 ~
 locked dungeon door~
 2 30227 30541
+E
+bowl bones clay gnawed~
+The clay bowl is licked clean and the bones are gnawed to splinters.
+Whoever eats here is starving, and an empty bowl is an invitation: bring
+food it will want and FEED the GORIYA. Nothing else will move it.
+~
+E
+grumble scratched frame door doorway~
+GRUMBLE, GRUMBLE... is cut into the frame again and again by claws. The
+hungry Goriya in the doorway will not fight its way aside and cannot be
+opened like a door. Carry enemy bait here and type FEED GORIYA, and it will
+eat and step out of the way.
+~
+E
+bait food~
+Enemy bait is sold in Hyrule's hidden shops. One lies beneath the lone dry
+bush in the Western Reeds of Lake Hylia: BURN the bush with a candle and go
+down. Another lies under the middle Armos of the Silent Sentinels, north of
+the Riverside Cave: PUSH it aside and go down. Buy the bait, bring it here
+and FEED GORIYA.
+~
 S
 #30545
 Level 7: Stairwell of the Demon~

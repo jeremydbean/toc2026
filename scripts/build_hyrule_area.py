@@ -1811,10 +1811,17 @@ SMALL_KEY_LORE = (
     "E\nkey small~\nA small key for Hyrule's dungeon doors. UNLOCK a locked door with it\n"
     "and the lock keeps it. It stays with you when you leave the game.\n~")
 BAIT_LORE = (
-    "E\nbait enemy food~\nStrong-smelling bait. FEED it to the hungry Goriya in the Demon's\n"
-    "halls, which eats it, or FEED BAIT anywhere else to set it down: the\n"
-    "enemies in the room forget you and turn to the smell for a while, and you\n"
-    "pick the bait up again. A guardian is not fooled.\n~")
+    "E\nbait enemy food~\nStrong-smelling bait. The hungry Goriya that blocks the north door of\n"
+    "the Hall of Grumbling, in Level 7, will let nobody by until it is fed:\n"
+    "carry this there and type FEED GORIYA, and it eats the bait and steps\n"
+    "aside. FEED BAIT anywhere else sets it down: the enemies in the room\n"
+    "forget you and turn to the smell for a while, and you pick the bait up\n"
+    "again. A guardian is not fooled.\n~")
+HUNGRY_GORIYA_LORE = (
+    "E\nhungry goriya guardian~\nA thin, red-scaled Goriya squats in the doorway, ribs showing, its\n"
+    "eyes on your pack. It will not fight and it will not budge; it only\n"
+    "grumbles. Feed it and it will let you by: bring enemy bait, sold in the\n"
+    "shops hidden under Hyrule's overworld, and type FEED GORIYA.\n~")
 
 
 def magical_sword_record() -> str:
@@ -2412,7 +2419,8 @@ def new_object_records(manifest: dict[str, Any]) -> str:
     objects.extend([
         object_record(30506, "bush tree burn", "a dry green bush", "A strangely dry bush blocks a hidden opening.", "wood", "31 UV 0", "11 0 5 1 9"),
         object_record(30507, "pool recorder melody", "a still pool", "The water waits for an ancient melody.", "water", "31 UV 0", "13 0 5 1 9"),
-        object_record(30508, "hungry goriya guardian", "a hungry Goriya guardian", "A hungry Goriya refuses to leave the doorway.", "flesh", "31 UV 0", "14 0 0 1 9"),
+        object_record(30508, "hungry goriya guardian", "a hungry Goriya guardian", "A hungry Goriya refuses to leave the doorway.", "flesh", "31 UV 0", "14 0 0 1 9",
+                      extras=HUNGRY_GORIYA_LORE),
         object_record(30509, "cracked floor opening", "a cracked stone floor", "Fine cracks mark a concealed descent.", "stone", "31 UV 0", "12 0 5 1 9"),
         # The money caves pay as you walk in (hyrule.c), so no pile lies on
         # their floors; these two are the dungeon cellars' rupees.

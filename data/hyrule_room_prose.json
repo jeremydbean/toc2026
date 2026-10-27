@@ -1119,7 +1119,21 @@
     },
     "L7:A6": {
       "name": "Hall of Grumbling",
-      "description": "Gnawed bones and an empty clay bowl lie before the north doorway, and a deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is scratched over and over on the door frame in a clumsy, clawed hand. Whoever keeps this passage is plainly starving and will let no one by on an empty stomach; a little bait might help. A heavy shutter seals the north, and a locked door stands south."
+      "description": "Gnawed bones and an empty clay bowl lie before the north doorway, and a deep, hungry grumble rises from the stones. GRUMBLE, GRUMBLE... is scratched over and over on the door frame in a clumsy, clawed hand. Whoever keeps this passage is plainly starving and will let no one by on an empty stomach; a little bait might help. A heavy shutter seals the north, and a locked door stands south.",
+      "extras": [
+        {
+          "keywords": "bowl bones clay gnawed",
+          "text": "The clay bowl is licked clean and the bones are gnawed to splinters. Whoever eats here is starving, and an empty bowl is an invitation: bring food it will want and FEED the GORIYA. Nothing else will move it."
+        },
+        {
+          "keywords": "grumble scratched frame door doorway",
+          "text": "GRUMBLE, GRUMBLE... is cut into the frame again and again by claws. The hungry Goriya in the doorway will not fight its way aside and cannot be opened like a door. Carry enemy bait here and type FEED GORIYA, and it will eat and step out of the way."
+        },
+        {
+          "keywords": "bait food",
+          "text": "Enemy bait is sold in Hyrule's hidden shops. One lies beneath the lone dry bush in the Western Reeds of Lake Hylia: BURN the bush with a candle and go down. Another lies under the middle Armos of the Silent Sentinels, north of the Riverside Cave: PUSH it aside and go down. Buy the bait, bring it here and FEED GORIYA."
+        }
+      ]
     },
     "L7:B6": {
       "name": "Stairwell of the Demon",

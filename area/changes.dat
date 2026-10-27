@@ -5,6 +5,12 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261027i 2026-10-27
+Hyrule, Level 7: the Hall of Grumbling now tells you how to get past its
+hungry Goriya. LOOK at the bowl, the bones, the scratches or the Goriya,
+or LOOK BAIT to learn where enemy bait is sold. Bring bait and type FEED
+GORIYA. The bait itself says the same.
+
 @ 20261027h 2026-10-27
 The help has been checked against the game and corrected: the psionic
 powers, the thief and warrior skills, colour spray, the quest potions,

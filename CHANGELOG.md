@@ -8,6 +8,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Level 7's hungry Goriya gives hints** (2026-10-27). Trentlin stood in
+  the Hall of Grumbling, dropped candy and grumbled, and said a day later he
+  was stuck. The room's LOOK details (bowl, bones, grumble, bait), the
+  Goriya in the doorway, OPEN on the passage and the bait's own description
+  now name FEED GORIYA, and LOOK BAIT there says which hidden shops sell it
+  (`data/hyrule_room_prose.json`, `scripts/build_hyrule_area.py`,
+  `tests/test_hyrule_goriya_hints.py`).
 - **Help audit** (2026-10-27). The help was checked against the code and
   corrected: one page per psionic power and per stealth/combat skill
   (`commands.are` held invented copies that shadowed the skill pages --

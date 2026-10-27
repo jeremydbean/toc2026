@@ -494,7 +494,7 @@ static bool hyrule_seal_refuses( CHAR_DATA *ch, ROOM_INDEX_DATA *room,
     else if ( is_name( "recorder", keyword ) )
         send_to_char( "Water fills the way. Only a certain melody will drain it.\n\r", ch );
     else if ( is_name( "hungry", keyword ) )
-        send_to_char( "A hungry Goriya plants itself in the way. It wants feeding, not opening.\n\r", ch );
+        send_to_char( "A hungry Goriya plants itself in the way. It wants feeding, not opening:\n\rbring enemy bait and FEED GORIYA.\n\r", ch );
     else
         send_to_char( "You find no way to open it with your hands.\n\r", ch );
     return true;
