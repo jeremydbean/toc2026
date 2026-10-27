@@ -3623,6 +3623,16 @@ kick them out immediately). Her supplicant's audience ends through
 `oracle_dismiss(TRUE)`; anyone else goes to `oracle_saved_room()`'s
 answer. Staff are exempt. `tests/test_oracle_sanctum_live.py`.
 
+**Coming back from her is a minute's daze on the clock, never lag**
+(owner, 2026-10-27: it looked like the mud was lagging). It was
+`WAIT_STATE` for a tick, and lag counts down only while a command waits,
+so the first command typed sat unanswered for a minute.
+`pcdata->oracle_daze_until` (memory only) is set by `oracle_come_back`;
+the input loop asks `oracle_dazed()` before running any line and refuses
+all but QUIT and a blank line, saying how many seconds are left;
+`oracle_daze_update()` (every pulse) says when it ends. `TOC_ORACLE_DAZE`
+shortens it for tests.
+
 ## Disasters And The Black Dragon
 
 `src/disaster.c` (owner, 2026-10-23: fix them, rework them, and let the

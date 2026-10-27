@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261027f 2026-10-27
+Coming back from the Oracle no longer looks like the game froze. For a
+minute after an audience your mind needs to recover: every command but
+QUIT is answered at once with how long is left, and you are told when
+your head clears. Before, the first command you typed simply sat there
+for a minute.
+
 @ 20261027e 2026-10-27
 Crafting: BREW, CONCOCT and SCRIBE PREVIEW show for free what the
 ingredients you carry would make, its spells, your chance and what a

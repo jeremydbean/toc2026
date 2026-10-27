@@ -82,5 +82,41 @@ class OracleSanctumLive(unittest.TestCase):
                 self.assertNotIn("The Oracle's Sanctum", out)
 
 
+@unittest.skipIf(_SKIP is not None, _SKIP or "")
+class OracleDazeLive(unittest.TestCase):
+    """The daze after an audience was a tick of lag, and lag counts down
+    only while a command waits: the first thing typed sat unanswered for a
+    minute and the game looked frozen (owner, 2026-10-27). Every command in
+    the daze is answered now, with why and how long; it ends on the clock
+    and says so."""
+
+    def test_a_dazed_command_is_answered_at_once(self):
+        with LiveMud(extra_env={"TOC_ORACLE_DAZE": "6"}) as mud:
+            make(mud, "Zpraydaze")
+            make(mud, "Zprayleave")
+            with mud.connect(timeout=120) as client:
+                login(client, "Zpraydaze", PW)
+                self.assertIn("The Oracle's Sanctum", client.command("pray", 1.5))
+                out = client.command("say done", 1.5)
+                self.assertIn("needs a moment to recover", out)
+                # Answered within a second, not held for the daze.
+                mark = len(client.transcript)
+                client.send("look")
+                client.expect("still reeling", timeout=2)
+                self.assertRegex(client.transcript[mark:], r"\(\d seconds? more\)")
+                self.assertNotIn(TEMPLE_NAME, client.transcript[mark:])
+                # It ends by itself, and says so; then commands work.
+                client.expect("Your head clears", timeout=15)
+                self.assertIn(TEMPLE_NAME, client.command("look", 1.5))
+
+            # QUIT is never refused: leaving the game escapes nothing.
+            with mud.connect(timeout=120) as client:
+                login(client, "Zprayleave", PW)
+                client.command("pray", 1.5)
+                client.command("say done", 1.5)
+                client.send("quit")
+                self.assertTrue(client.wait_closed(timeout=10))
+
+
 if __name__ == "__main__":
     unittest.main()

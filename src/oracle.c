@@ -248,16 +248,79 @@ static void oracle_journal( const char *role, const char *who, int room_vnum,
 }
 
 
-/* Coming back to the world leaves a supplicant dazed for a tick, so the
-   sanctum is never a way to step out of trouble and straight back in. */
-#define ORACLE_RETURN_LAG    PULSE_TICK
+/* Coming back to the world leaves a supplicant dazed for a minute, so the
+   sanctum is never a way to step out of trouble and straight back in.
+   It was a tick of lag, and lag counts down only while a command waits:
+   the first thing typed sat unanswered for a minute and the game looked
+   frozen (owner, 2026-10-27). Now every command in that minute is answered
+   with why and for how long, and the minute runs on the clock.
+   TOC_ORACLE_DAZE (seconds) shortens it for the live tests. */
+#define ORACLE_RETURN_DAZE   60
 
 static void oracle_come_back( CHAR_DATA *ch )
 {
+    const char *env;
+    long seconds = ORACLE_RETURN_DAZE;
+
     if ( ch == NULL )
         return;
-    send_to_char( "You stagger, dazed, as the world rushes back in around you.\n\r", ch );
-    WAIT_STATE( ch, ORACLE_RETURN_LAG );
+    send_to_char( "You stagger, dazed, as the world rushes back in around you.  Your mind "
+                  "needs a moment to recover.\n\r", ch );
+    if ( IS_NPC(ch) || ch->pcdata == NULL || IS_IMMORTAL(ch) )
+        return;
+    if ( ( env = getenv( "TOC_ORACLE_DAZE" ) ) != NULL && atol( env ) > 0 )
+        seconds = UMIN( atol( env ), ORACLE_RETURN_DAZE );
+    ch->pcdata->oracle_daze_until = (long) current_time + seconds;
+}
+
+/*
+ * Asked by the input loop for every line a dazed character sends: true
+ * when it was refused (and the character told why). QUIT still works --
+ * leaving the game is no escape from anything -- and so does an empty
+ * line, which only asks for the prompt.
+ */
+bool oracle_dazed( CHAR_DATA *ch, const char *line )
+{
+    char copy[MAX_INPUT_LENGTH];
+    char word[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    long left;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL
+    ||   ch->pcdata->oracle_daze_until == 0 )
+        return false;
+    left = ch->pcdata->oracle_daze_until - (long) current_time;
+    if ( left <= 0 || IS_IMMORTAL(ch) )
+    {
+        ch->pcdata->oracle_daze_until = 0;
+        return false;
+    }
+    toc_strlcpy( copy, line != NULL ? line : "", sizeof(copy) );
+    one_argument( copy, word );
+    if ( word[0] == '\0' || !str_cmp( word, "quit" ) )
+        return false;
+    snprintf( buf, sizeof(buf), "Your mind is still reeling from the Oracle's presence and "
+              "needs a moment to recover (%ld second%s more).\n\r", left, left == 1 ? "" : "s" );
+    send_to_char( buf, ch );
+    return true;
+}
+
+/* Every pulse: tell a dazed character the moment it passes. */
+void oracle_daze_update( void )
+{
+    DESCRIPTOR_DATA *d;
+
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+        CHAR_DATA *ch = d->original != NULL ? d->original : d->character;
+
+        if ( d->connected != CON_PLAYING || ch == NULL || IS_NPC(ch) || ch->pcdata == NULL
+        ||   ch->pcdata->oracle_daze_until == 0
+        ||   (long) current_time < ch->pcdata->oracle_daze_until )
+            continue;
+        ch->pcdata->oracle_daze_until = 0;
+        send_to_char( "Your head clears, and the world steadies around you.\n\r", ch );
+    }
 }
 
 

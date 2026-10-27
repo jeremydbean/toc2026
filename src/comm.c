@@ -1024,7 +1024,12 @@ void game_loop_unix( int control )
                    alias's own lines were split when it was expanded. */
                 /* A build under way takes the typed line whole -- before
                    the split, since a description may hold a semicolon. */
-                if ( !d->incomm_from_alias && build_wizard_active( ch ) )
+                if ( oracle_dazed( ch, d->incomm ) )
+                {
+                    /* Back from the Oracle: refused and told why, not
+                       held unanswered (oracle.c). */
+                }
+                else if ( !d->incomm_from_alias && build_wizard_active( ch ) )
                 {
                     walkto_interrupt( ch, d->incomm );
                     build_wizard_input( ch, d->incomm );

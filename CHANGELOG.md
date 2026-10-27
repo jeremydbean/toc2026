@@ -8,6 +8,11 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **The Oracle's daze says so** (2026-10-27; owner: it looked like lag).
+  The minute after an audience was a tick of `WAIT_STATE`, which held the
+  first command typed unanswered; every command but QUIT is now refused
+  at once with the seconds left, and the end of it is announced.
+
 - **Crafting review** (2026-10-27). RECITE refused nothing when a scroll
   was read at itself, and remove align's explosion then extracted it twice
   (`recite blank blank`); it now refuses that and an object the reader

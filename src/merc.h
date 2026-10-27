@@ -1045,6 +1045,8 @@ const char *alignment_obj_requirement args( ( OBJ_DATA *obj ) );
 int   alignment_quest_side   args( ( MOB_INDEX_DATA *pMob ) );
 void  alignment_quest_kill   args( ( CHAR_DATA *ch, MOB_INDEX_DATA *pMob ) );
 bool  oracle_refuses_sleep args( ( CHAR_DATA *ch ) );
+bool  oracle_dazed    args( ( CHAR_DATA *ch, const char *line ) );
+void  oracle_daze_update args( ( void ) );
 bool  is_oracle_mob   args( ( CHAR_DATA *ch ) );
 bool  is_killuminati  args( ( CHAR_DATA *ch ) );
 bool  is_divinely_warded args( ( CHAR_DATA *ch ) );
@@ -2335,6 +2337,7 @@ struct  pc_data
 
     /* Last session snapshot (persisted to player file) */
     long                last_logout;          /* when they last left the game */
+    long                oracle_daze_until;    /* back from the Oracle, dazed until (memory only) */
     long                rest_xp;              /* rested bonus experience left (rested.c) */
     bool                rest_eligible;        /* quit somewhere they could rest */
     int                 daily_points;         /* daily quest points, apart from quest points */

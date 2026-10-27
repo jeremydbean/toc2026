@@ -3099,6 +3099,8 @@ void update_handler( void )
     walkto_update( );
     playlog_phase = "fight_lag_update";
     fight_lag_update( );
+    playlog_phase = "oracle_daze_update";
+    oracle_daze_update( );
     /* Player corpses written down within a second of a change. */
     playlog_phase = "corpse_registry_update";
     corpse_registry_update( );
