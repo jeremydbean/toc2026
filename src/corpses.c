@@ -52,7 +52,25 @@ typedef struct corpse_track
     OBJ_DATA     *corpse;
     bool          dirty;
     bool          held;         /* a transfer under way: not written */
+    int           pending;      /* PEND_*: whose receipt is still open */
+    char          op[64];       /* that receipt: death:<id>, resurrect:<id> */
+    bool          record_ok;    /* death: the record is on the disk */
+    time_t        last_try;     /* when it was last pushed toward settling */
 } CORPSE_TRACK;
+
+/*
+ * A corpse whose contents are moving between it and its owner's file is
+ * PENDING: a death (the file still held everything until the owner's
+ * post-death save) or a resurrection (the corpse's things given back).
+ * Its receipt sits in the ledger, the mark restore:<op> goes in the
+ * owner's Fixes, and it settles only from the owner's FILE: a save of
+ * theirs on the disk with the mark commits it; a file without the mark
+ * undoes it. Nothing in between is taken for either.
+ */
+#define PEND_NONE        0
+#define PEND_DEATH       1
+#define PEND_RESURRECT   2
+#define PEND_RETRY_SECS  10
 
 static CORPSE_TRACK *tracks = NULL;
 static int track_count = 0, track_cap = 0;
@@ -109,6 +127,10 @@ static CORPSE_TRACK *track_add( void )
     memset( &tracks[track_count], 0, sizeof(tracks[0]) );
     return &tracks[track_count++];
 }
+
+static OBJ_DATA *corpse_make_object( const CORPSE_RECORD *rec );
+static ROOM_INDEX_DATA *corpse_room( int vnum, char *note, size_t size );
+static void corpse_fill( OBJ_DATA *corpse, OBJ_DATA *list );
 
 static void track_drop( int i )
 {
@@ -239,10 +261,26 @@ static void track_archive( int i, const char *state, const char *why )
     char path[MAX_STRING_LENGTH];
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *carrier;
-    ROOM_INDEX_DATA *room = corpse_where( t->corpse, &carrier );
+    ROOM_INDEX_DATA *room;
     const char *outcome = "archived";
     int left = 0;
     OBJ_DATA *o;
+
+    /* A transfer under way: the record on the disk is the one copy that
+       says what the corpse held before it began, and the object may be
+       empty now (ACCEPT took everything out). Archiving it from the
+       object wrote the emptied corpse into history and removed the held
+       record (review, 2026-10-27). The object goes; the record stays as
+       it was until the transfer settles. */
+    if ( t->held || t->pending != PEND_NONE )
+    {
+        snprintf( buf, sizeof(buf), "the object ended (%s: %s) while a transfer was "
+                  "unsettled; its record is kept as it was", state, why );
+        corpse_log( &t->rec, buf );
+        t->corpse = NULL;
+        return;
+    }
+    room = corpse_where( t->corpse, &carrier );
 
     if ( room != NULL )
         t->rec.room = room->vnum;
@@ -257,7 +295,8 @@ static void track_archive( int i, const char *state, const char *why )
     {
         if ( remove( path ) != 0 && errno != ENOENT )
             bug( "corpses: an ended corpse's live copy could not be removed", 0 );
-        durable_dir_sync( path );
+        else if ( !durable_dir_sync( path ) )
+            bug( "corpses: an ended corpse's removal is not confirmed on the disk", 0 );
     }
     else
     {
@@ -327,14 +366,22 @@ static void corpse_retry_endings( void )
             continue;
         }
         history_name( hdir, rec.id, rec.state[0] != '\0' ? rec.state : "ended", to, sizeof(to) );
-        if ( rename( from, to ) != 0 || !durable_dir_sync( to ) )
+        if ( rename( from, to ) != 0 )
         {
             left++;
             continue;
         }
-        durable_dir_sync( from );
-        recovery_record( "corpse", "archived", rec.owner, rec.id, rec.state, "corpse keeper",
-                         "its end state, kept aside, reached history" );
+        /* Both directories: gone from live/ and arrived in history. */
+        {
+            bool from_ok = durable_dir_sync( from );
+            bool to_ok = durable_dir_sync( to );
+
+            recovery_record( "corpse", from_ok && to_ok ? "archived" : "archive-unconfirmed",
+                             rec.owner, rec.id, rec.state, "corpse keeper",
+                             from_ok && to_ok ? "its end state, kept aside, reached history"
+                             : "its end state was moved to history, but the move is not "
+                               "confirmed on the disk" );
+        }
         snprintf( to, sizeof(to), "Corpse keeper: %s's corpse %s's end state reached history.",
                   rec.owner, rec.id );
         log_string( to );
@@ -374,9 +421,49 @@ void corpse_registry_died( CHAR_DATA *ch, OBJ_DATA *corpse, const char *snapshot
     t->rec.level = ch->level;
     t->rec.owned = corpse->owner != NULL;
 
+    /*
+     * A death is a transfer: everything carried is in the corpse now, and
+     * the owner's file still holds it all until their post-death save
+     * (review, 2026-10-27: that save was commented out, so a crash laid
+     * the corpse at boot beside a file holding the same things). The
+     * receipt first, then the mark in their memory -- every later save of
+     * theirs carries it -- then the record, held: the post-death save in
+     * raw_kill settles it (corpse_registry_death_settle), and a crash at
+     * any point is settled from their file. Without the receipt or the
+     * mark the old way is all there is: the corpse kept as it lies.
+     */
+    snprintf( t->op, sizeof(t->op), "death:%s", t->rec.id );
+    {
+        char mark[96];
+
+        snprintf( mark, sizeof(mark), "restore:%s", t->op );
+        snprintf( buf, sizeof(buf), "corpse %s in room %d", t->rec.id, t->rec.room );
+        if ( !player_fix_can_record( ch, mark ) )
+            bug( "corpse_registry_died: the Fixes list is full; the death is not ledgered", 0 );
+        else if ( !recovery_record( "request", "pending", ch->name, t->op, "death",
+                                    playlog_cause(), buf ) )
+            bug( "corpse_registry_died: the ledger refused the death's receipt", 0 );
+        else if ( !player_fix_record( ch, mark ) )
+        {
+            recovery_record( "request", "abandoned", ch->name, t->op, "death", "-",
+                             "the mark could not be kept; the corpse is kept as it lies" );
+            bug( "corpse_registry_died: the death's mark could not be kept", 0 );
+        }
+        else
+        {
+            t->pending = PEND_DEATH;
+            t->held = true;
+            t->last_try = current_time;
+        }
+        if ( t->pending == PEND_NONE )
+            t->op[0] = '\0';
+    }
+
     /* On the disk before the game goes on: the death is the moment it
        matters most. */
-    if ( !track_write( t ) )
+    if ( track_write( t ) )
+        t->record_ok = true;
+    else
         t->dirty = true;
     track_history( t, "death" );
     {
@@ -524,7 +611,9 @@ bool corpse_registry_hold( OBJ_DATA *corpse, char *id, size_t size )
 
     if ( size > 0 )
         id[0] = '\0';
-    if ( i < 0 || !track_write( &tracks[i] ) )
+    /* One transfer at a time: a death still settling, or another call. */
+    if ( i < 0 || tracks[i].held || tracks[i].pending != PEND_NONE
+    ||   !track_write( &tracks[i] ) )
         return false;
     tracks[i].held = true;
     toc_strlcpy( id, tracks[i].rec.id, size );
@@ -539,48 +628,380 @@ void corpse_registry_unhold( OBJ_DATA *corpse )
     {
         tracks[i].held = false;
         tracks[i].dirty = true;
+        tracks[i].pending = PEND_NONE;
+        tracks[i].op[0] = '\0';
     }
 }
 
 /* The held live record into history under `label`, by rename: what is
-   moved is exactly what was on the disk. */
-static bool corpse_live_to_history( const CORPSE_RECORD *rec, const char *label )
+   moved is exactly what was on the disk. DURABLE_OK only when both
+   directories confirm it -- the name gone from live/ and arrived in
+   history; DURABLE_UNCERTAIN when it was renamed but either is not
+   confirmed (a power cut could leave it where it was), so a caller keeps
+   its receipt open; DURABLE_FAILED when nothing moved. Only the arrival
+   used to be checked (review, 2026-10-27). */
+static int corpse_live_to_history( const CORPSE_RECORD *rec, const char *label )
 {
     char from[MAX_STRING_LENGTH], to[MAX_STRING_LENGTH], hdir[MAX_INPUT_LENGTH];
+    bool from_ok, to_ok;
 
     live_path( rec, from, sizeof(from) );
     if ( !corpse_dirs( rec->owner, hdir, sizeof(hdir) ) )
-        return false;
+        return DURABLE_FAILED;
     history_name( hdir, rec->id, label, to, sizeof(to) );
-    if ( rename( from, to ) != 0 )
-        return false;
-    durable_dir_sync( from );
-    return durable_dir_sync( to );
+    if ( recovery_fault( "corpse-move" ) || rename( from, to ) != 0 )
+        return DURABLE_FAILED;
+    from_ok = durable_dir_sync( from );
+    to_ok = durable_dir_sync( to );
+    return from_ok && to_ok ? DURABLE_OK : DURABLE_UNCERTAIN;
 }
 
-bool corpse_registry_transferred( OBJ_DATA *corpse, const char *why )
+/* ACCEPT: the held corpse's contents are going to their owner under
+   this receipt (resurrect.c). The owner's next save on the disk holding
+   the mark settles it (corpse_registry_owner_saved). */
+void corpse_registry_pending( OBJ_DATA *corpse, const char *op )
 {
-    char buf[MAX_STRING_LENGTH];
     int i = track_find( corpse );
-    bool moved;
+
+    if ( i < 0 )
+        return;
+    tracks[i].pending = PEND_RESURRECT;
+    toc_strlcpy( tracks[i].op, op, sizeof(tracks[i].op) );
+    tracks[i].last_try = current_time;
+}
+
+/* Whether this corpse's transfer is still open. */
+bool corpse_registry_is_pending( OBJ_DATA *corpse )
+{
+    int i = track_find( corpse );
+
+    return i >= 0 && tracks[i].pending != PEND_NONE;
+}
+
+/* Whether `obj` is, or lies inside, a corpse whose death has not reached
+   its owner's file: nothing may come out of it or carry it off, since the
+   file may still hold the same things (get_obj asks). */
+bool corpse_registry_settling( OBJ_DATA *obj )
+{
+    OBJ_DATA *top;
+    int i;
+
+    if ( track_count == 0 )
+        return false;
+    for ( top = obj; top != NULL; top = top->in_obj )
+        if ( ( i = track_find( top ) ) >= 0 && tracks[i].pending == PEND_DEATH )
+            return true;
+    return false;
+}
+
+static int track_find_op( const char *op )
+{
+    int i;
+
+    for ( i = 0; i < track_count; i++ )
+        if ( tracks[i].pending != PEND_NONE && !strcmp( tracks[i].op, op ) )
+            return i;
+    return -1;
+}
+
+static void pend_mark( const CORPSE_TRACK *t, char *mark, size_t size )
+{
+    snprintf( mark, size, "restore:%s", t->op );
+}
+
+/*
+ * The owner's file holds the mark, on the disk: the transfer happened.
+ * A death's corpse becomes an ordinary kept corpse; a resurrection's held
+ * record goes to history and the corpse is spent. `owner` is the
+ * character if one is loaded (whose spent mark is then dropped), or NULL
+ * when the file was read. False if it could not be finished now: the
+ * track stays pending and is tried again.
+ */
+static bool pend_commit( int i, CHAR_DATA *owner, const char *how )
+{
+    CORPSE_TRACK *t = &tracks[i];
+    char mark[96], buf[MAX_STRING_LENGTH], op[64];
+    int status;
+
+    pend_mark( t, mark, sizeof(mark) );
+    toc_strlcpy( op, t->op, sizeof(op) );
+    if ( t->pending == PEND_DEATH )
+    {
+        if ( t->corpse == NULL )
+        {
+            /* The object ended while the death was unsettled (rotted,
+               sacrificed): what it held goes to history now. */
+            if ( corpse_live_to_history( &t->rec, "gone" ) == DURABLE_FAILED )
+                return false;
+        }
+        if ( !recovery_record( "request", "committed", t->rec.owner, op, "death", "-",
+                               how ) )
+            return false;
+        snprintf( buf, sizeof(buf), "the death reached the owner's file (%s)", how );
+        corpse_log( &t->rec, buf );
+        if ( owner != NULL )
+            player_fix_forget( owner, mark );
+        if ( t->corpse == NULL )
+        {
+            track_drop( i );
+            return true;
+        }
+        t->pending = PEND_NONE;
+        t->op[0] = '\0';
+        t->held = false;
+        t->dirty = true;
+        return true;
+    }
+
+    /* A resurrection. */
+    if ( recovery_fault( "crash-before-commit" ) )
+        _exit( 3 );             /* the test of a crash between the two */
+    status = corpse_live_to_history( &t->rec, "resurrected" );
+    if ( status == DURABLE_FAILED )
+    {
+        if ( t->last_try == 0 || current_time - t->last_try >= 60 )
+            bug( "corpses: a resurrected corpse's record could not leave live/; tried again", 0 );
+        t->last_try = current_time;
+        return false;
+    }
+    snprintf( buf, sizeof(buf), "ended (resurrected): everything in it went to its owner, "
+              "whose file holds it (%s)%s", how, status == DURABLE_OK ? ""
+              : " -- the move to history is not confirmed on the disk; the receipt stays "
+                "open and is settled from their file" );
+    corpse_log( &t->rec, buf );
+    recovery_record( "corpse", status == DURABLE_OK ? "archived" : "archive-unconfirmed",
+                     t->rec.owner, t->rec.id, "resurrected", playlog_cause(), buf );
+    {
+        char who[sizeof(t->rec.owner)];
+
+        toc_strlcpy( who, t->rec.owner, sizeof(who) );
+        track_drop( i );
+        if ( status != DURABLE_OK
+        ||   !recovery_record( "request", "committed", who, op, "resurrect", "-", how ) )
+            return true;
+    }
+    if ( owner != NULL )
+        player_fix_forget( owner, mark );
+    return true;
+}
+
+/* Put a resurrected corpse back in the world from its held record: the
+   gift never reached the owner's file. */
+static bool pend_relay( int i )
+{
+    CORPSE_TRACK *t = &tracks[i];
+    char path[MAX_STRING_LENGTH], why[MAX_INPUT_LENGTH], note[MAX_INPUT_LENGTH];
+    OBJ_DATA *list = NULL, *corpse;
+    ROOM_INDEX_DATA *room;
+    CORPSE_RECORD rec;
+
+    live_path( &t->rec, path, sizeof(path) );
+    if ( corpse_file_read( path, &rec, &list, why, sizeof(why) ) < 0
+    ||   ( room = corpse_room( rec.room, note, sizeof(note) ) ) == NULL
+    ||   ( corpse = corpse_make_object( &rec ) ) == NULL )
+    {
+        snapshot_discard_gear( list );
+        return false;
+    }
+    corpse_fill( corpse, list );
+    corpse_registry_rebuilding = true;
+    obj_to_room( corpse, room );
+    corpse_registry_rebuilding = false;
+    t->corpse = corpse;
+    return true;
+}
+
+/*
+ * The owner's file does NOT hold the mark: the transfer never reached it.
+ * After a death, the file still holds everything the corpse holds, so
+ * the corpse is a duplicate: its record goes to history as "undone" and
+ * the object, with what is in it, goes. After a resurrection, the file
+ * lacks the gift, so the corpse comes back as its held record says.
+ */
+static bool pend_undo( int i, const char *how )
+{
+    CORPSE_TRACK *t = &tracks[i];
+    char buf[MAX_STRING_LENGTH], op[64];
+    OBJ_DATA *corpse = t->corpse;
+
+    toc_strlcpy( op, t->op, sizeof(op) );
+    if ( t->pending == PEND_DEATH )
+    {
+        if ( corpse_live_to_history( &t->rec, "undone" ) == DURABLE_FAILED )
+            return false;
+        snprintf( buf, sizeof(buf), "undone: the death never reached their file, which still "
+                  "holds everything (%s)", how );
+        corpse_log( &t->rec, buf );
+        recovery_record( "request", "abandoned", t->rec.owner, op, "death", "-", buf );
+        snprintf( buf, sizeof(buf), "Corpse keeper: %s's corpse %s was undone -- the death "
+                  "never reached their file (%s).", t->rec.owner, t->rec.id, how );
+        log_string( buf );
+        track_drop( i );
+        if ( corpse != NULL )
+            extract_obj( corpse );      /* its twin is in their file */
+        return true;
+    }
+    if ( corpse == NULL && !pend_relay( i ) )
+        return false;
+    t = &tracks[i];
+    snprintf( buf, sizeof(buf), "the resurrection never reached the owner's file; the "
+              "corpse lies again with everything in it (%s)", how );
+    corpse_log( &t->rec, buf );
+    recovery_record( "request", "abandoned", t->rec.owner, op, "resurrect", "-", buf );
+    t->pending = PEND_NONE;
+    t->op[0] = '\0';
+    t->held = false;
+    t->dirty = true;
+    return true;
+}
+
+/* Before a save of `ch`: a death of theirs whose corpse record is not yet
+   on the disk must not have its post-death file written first -- that
+   file would hold neither the things nor a corpse that does. The save is
+   refused and the old file stands. */
+bool corpse_registry_may_save( CHAR_DATA *ch )
+{
+    char mark[96];
+    int i;
+
+    if ( ch == NULL || IS_NPC(ch) || track_count == 0 )
+        return true;
+    for ( i = 0; i < track_count; i++ )
+    {
+        CORPSE_TRACK *t = &tracks[i];
+
+        if ( t->pending != PEND_DEATH || t->record_ok || str_cmp( t->rec.owner, ch->name ) )
+            continue;
+        pend_mark( t, mark, sizeof(mark) );
+        if ( !player_fix_has( ch, mark ) )
+            continue;
+        if ( t->corpse != NULL && track_write( t ) )
+            t->record_ok = true;
+        else
+            return false;
+    }
+    return true;
+}
+
+/* After a save of `ch` that is on the disk: every transfer of theirs
+   whose mark it carried is settled. */
+void corpse_registry_owner_saved( CHAR_DATA *ch )
+{
+    char mark[96];
+    int i;
+
+    if ( ch == NULL || IS_NPC(ch) || track_count == 0 )
+        return;
+    for ( i = track_count - 1; i >= 0; i-- )
+    {
+        if ( i >= track_count || tracks[i].pending == PEND_NONE
+        ||   str_cmp( tracks[i].rec.owner, ch->name ) )
+            continue;
+        if ( tracks[i].pending == PEND_DEATH && !tracks[i].record_ok )
+            continue;
+        pend_mark( &tracks[i], mark, sizeof(mark) );
+        if ( player_fix_has( ch, mark ) )
+            pend_commit( i, ch, "their save reached the disk" );
+    }
+}
+
+/* The end of a death (fight.c): the post-death file, on the disk, with
+   the mark -- which settles the death through the save itself. */
+void corpse_registry_death_settle( CHAR_DATA *ch )
+{
+    int i;
+    bool any = false;
+
+    if ( ch == NULL || IS_NPC(ch) )
+        return;
+    for ( i = 0; i < track_count; i++ )
+        if ( tracks[i].pending == PEND_DEATH && !str_cmp( tracks[i].rec.owner, ch->name ) )
+            any = true;
+    if ( !any )
+        return;
+    /* "death-save-<Name>" fails this save alone, for the tests: the death
+       snapshot's own save comes first and would take "save-<Name>". */
+    {
+        char point[64];
+
+        snprintf( point, sizeof(point), "death-save-%s", ch->name );
+        if ( recovery_fault( point ) )
+        {
+            log_string( "Corpse keeper: a death's save failed (injected by a test)." );
+            return;
+        }
+    }
+    if ( !save_char_obj( ch ) )
+    {
+        char buf[MAX_STRING_LENGTH];
+
+        snprintf( buf, sizeof(buf), "Corpse keeper: %s's death %s; it is settled by their "
+                  "next save on the disk.", ch->name,
+                  save_char_obj_status() == DURABLE_UNCERTAIN
+                  ? "was saved but is not confirmed on the disk" : "could not be saved" );
+        log_string( buf );
+    }
+}
+
+/* At login, from the file just read: a pending transfer of theirs that
+   has a corpse is settled by its mark. False if `op` has none here, for
+   the ledger's own reconciling (recovery.c). */
+bool corpse_registry_reconcile_login( CHAR_DATA *ch, const char *op )
+{
+    char mark[96];
+    int i = track_find_op( op );
 
     if ( i < 0 )
         return false;
-    moved = corpse_live_to_history( &tracks[i].rec, "resurrected" );
-    snprintf( buf, sizeof(buf), "ended (resurrected): %s; everything in it went to its "
-              "owner, whose file was saved first%s", why,
-              moved ? "" : " -- but the record could NOT be moved out of live/" );
-    corpse_log( &tracks[i].rec, buf );
-    recovery_record( "corpse", moved ? "archived" : "archive-failed", tracks[i].rec.owner,
-                     tracks[i].rec.id, "resurrected", playlog_cause(), buf );
-    if ( !moved )
-    {
-        bug( "corpses: a resurrected corpse's record could not leave live/", 0 );
-        tracks[i].held = true;      /* never written again from the empty object */
-        return false;
-    }
-    track_drop( i );
+    pend_mark( &tracks[i], mark, sizeof(mark) );
+    if ( player_fix_has( ch, mark ) )
+        pend_commit( i, ch, "settled at their login" );
+    else
+        pend_undo( i, "settled at their login" );
     return true;
+}
+
+/* Every few seconds: push open transfers toward settling. A death's
+   record not yet on the disk is written; an owner in the game whose
+   memory holds the mark is saved; an owner out of it is settled from
+   their file. */
+static void pend_retry( void )
+{
+    int i;
+
+    for ( i = track_count - 1; i >= 0; i-- )
+    {
+        CORPSE_TRACK *t;
+        CHAR_DATA *owner;
+        bool logging_in = false;
+        char mark[96];
+        int has;
+
+        if ( i >= track_count )
+            continue;
+        t = &tracks[i];
+        if ( t->pending == PEND_NONE || current_time - t->last_try < PEND_RETRY_SECS )
+            continue;
+        t->last_try = current_time;
+        if ( t->pending == PEND_DEATH && !t->record_ok && t->corpse != NULL
+        &&   track_write( t ) )
+            t->record_ok = true;
+        pend_mark( t, mark, sizeof(mark) );
+        if ( ( owner = player_in_game( t->rec.owner, &logging_in ) ) != NULL )
+        {
+            if ( logging_in || IS_NPC(owner) || !player_fix_has( owner, mark ) )
+                continue;
+            if ( t->pending == PEND_DEATH && !t->record_ok )
+                continue;
+            save_char_obj( owner );     /* settles it, through the save */
+            return;                     /* the list may have changed */
+        }
+        has = player_file_fix_has( t->rec.owner, mark );
+        if ( has == 1 && ( t->pending != PEND_DEATH || t->record_ok ) )
+            pend_commit( i, NULL, "read from their file" );
+        else if ( has == 0 )
+            pend_undo( i, "read from their file" );
+    }
 }
 
 /* Every pulse: what changed, written within a second; the timers every
@@ -608,6 +1029,7 @@ void corpse_registry_update( void )
     corpse_last_flush = current_time;
     if ( corpse_pending_endings > 0 && current_time % 60 == 0 )
         corpse_retry_endings();
+    pend_retry();
     for ( i = track_count - 1; i >= 0; i-- )
     {
         CHAR_DATA *carrier;
@@ -823,19 +1245,25 @@ void corpse_registry_boot( void )
                nothing was given and the corpse lies where it was. */
             if ( corpse_file_header( path, &rec ) >= 0 )
             {
-                char op[64], mark[80];
-                int has;
+                char op[64], mark[96];
+                int has, moved;
 
                 snprintf( op, sizeof(op), "resurrect:%s", rec.id );
                 snprintf( mark, sizeof(mark), "restore:%s", op );
                 if ( recovery_request_state( op ) == RECOVERY_PENDING )
                 {
                     has = player_file_fix_has( rec.owner, mark );
-                    if ( has == 1 && corpse_live_to_history( &rec, "resurrected" ) )
+                    moved = has == 1 ? corpse_live_to_history( &rec, "resurrected" )
+                                     : DURABLE_FAILED;
+                    if ( moved != DURABLE_FAILED )
                     {
-                        recovery_record( "request", "committed", rec.owner, op, "reconcile",
-                                         "boot", "the owner's file held it; the corpse "
-                                         "went to history at boot" );
+                        /* Renamed but not confirmed: the receipt stays open,
+                           and the login (or the next boot) settles it from
+                           the same mark. */
+                        if ( moved == DURABLE_OK )
+                            recovery_record( "request", "committed", rec.owner, op,
+                                             "reconcile", "boot", "the owner's file held it; "
+                                             "the corpse went to history at boot" );
                         corpse_log( &rec, "ended (resurrected): settled at boot -- the "
                                     "owner's file held everything" );
                         snprintf( buf, sizeof(buf), "Corpse keeper: %s's corpse %s was "
@@ -856,6 +1284,50 @@ void corpse_registry_boot( void )
                     recovery_record( "request", "abandoned", rec.owner, op, "reconcile", "boot",
                                      "it never reached the owner's file; the corpse lies "
                                      "where it was" );
+                }
+
+                /* A death the last run left pending: marked, the post-death
+                   file is on the disk and the corpse is theirs; not marked,
+                   their file still holds everything, and the corpse --
+                   its twin -- goes to history unlaid. */
+                snprintf( op, sizeof(op), "death:%s", rec.id );
+                snprintf( mark, sizeof(mark), "restore:%s", op );
+                if ( recovery_request_state( op ) == RECOVERY_PENDING )
+                {
+                    has = player_file_fix_has( rec.owner, mark );
+                    if ( has == 1 )
+                        recovery_record( "request", "committed", rec.owner, op, "reconcile",
+                                         "boot", "the owner's file held the death; the "
+                                         "corpse is laid" );
+                    else if ( has == 0 )
+                    {
+                        if ( corpse_live_to_history( &rec, "undone" ) == DURABLE_FAILED )
+                        {
+                            bug( "corpse_registry_boot: an undone death's record could not "
+                                 "leave live/; it is not laid", 0 );
+                            continue;
+                        }
+                        recovery_record( "request", "abandoned", rec.owner, op, "reconcile",
+                                         "boot", "the death never reached their file, which "
+                                         "still holds everything; the corpse is not laid" );
+                        corpse_log( &rec, "undone at boot: the death never reached their "
+                                    "file, which still holds everything" );
+                        snprintf( buf, sizeof(buf), "Corpse keeper: %s's corpse %s was not "
+                                  "laid -- the death never reached their file, which still "
+                                  "holds everything.", rec.owner, rec.id );
+                        log_string( buf );
+                        continue;
+                    }
+                    else
+                    {
+                        snprintf( buf, sizeof(buf), "Corpse keeper: %s's corpse %s has a "
+                                  "death pending that cannot be settled now (their file "
+                                  "cannot be read); it is kept in live/ and not laid.",
+                                  rec.owner, rec.id );
+                        log_string( buf );
+                        bug( "corpse_registry_boot: a pending death was left unsettled", 0 );
+                        continue;
+                    }
                 }
             }
             if ( corpse_file_read( path, &rec, &list, why, sizeof(why) ) < 0
@@ -929,6 +1401,14 @@ void corpse_registry_list( CHAR_DATA *ch, const char *name )
 
         if ( str_cmp( tracks[i].rec.owner, name ) )
             continue;
+        if ( tracks[i].corpse == NULL )
+        {
+            snprintf( buf, sizeof(buf), "  %s  no longer in the world; its transfer (%s) "
+                      "is still being settled\n\r", tracks[i].rec.id, tracks[i].op );
+            toc_strlcat( out, buf, size );
+            shown++;
+            continue;
+        }
         for ( o = tracks[i].corpse->contains; o != NULL; o = o->next_content )
             n++;
         room = corpse_where( tracks[i].corpse, &carrier );

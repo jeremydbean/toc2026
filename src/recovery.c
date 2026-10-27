@@ -669,6 +669,10 @@ void recovery_reconcile_login( CHAR_DATA *ch )
         if ( r->state != RECOVERY_PENDING || strchr( r->id, ':' ) == NULL
         ||   str_cmp( r->player, ch->name ) )
             continue;
+        /* A death or a resurrection with its corpse still kept: settled by
+           the corpse keeper, which also mends the corpse (corpses.c). */
+        if ( corpse_registry_reconcile_login( ch, r->id ) )
+            continue;
         snprintf( mark, sizeof(mark), "restore:%s", r->id );
         if ( player_fix_has( ch, mark ) )
             recovery_record( "request", "committed", ch->name, r->id, "reconcile", "login",

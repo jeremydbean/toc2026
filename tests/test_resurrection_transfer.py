@@ -228,5 +228,102 @@ class ResurrectionTransferTests(unittest.TestCase):
         self.assertIn("was resurrected before the restart; settled", log)
 
 
+    def test_an_unconfirmed_save_stays_pending_and_never_duplicates(self) -> None:
+        """The file is renamed into place but its directory is not
+        confirmed: the gift is in the file, so ACCEPT must not put it back
+        in the corpse and abandon the receipt (review, 2026-10-27: that
+        left it in the file and the corpse, and a crash laid both)."""
+        with LiveMud(extra_env={"TOC_FAULT_FILE": "../fault.once"}) as mud:
+            setup(mud)
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as cleric, \
+                    mud.connect(timeout=120) as fallen:
+                for client, name in ((staff, "Zrtstaff"), (cleric, "Zrtcleric"),
+                                     (fallen, "Zrtfallen")):
+                    login(client, name, PW)
+                    client.sync("scroll 0")
+                kill_loot_and_call(staff, cleric, fallen)
+                fault(mud, "dirsync-Zrtfallen")
+                rose = fallen.sync("accept")
+            crash(mud)
+            live = live_corpses(mud)
+            with mud.connect(timeout=120) as staff:
+                login(staff, "Zrtstaff", PW)
+                here = staff.sync("look")
+            inv, bag, _ = what_they_hold(mud)
+            states = ledger_states(mud)
+
+        self.assertIn("edge of life", rose, rose)
+        self.assertEqual(live, [])
+        self.assertNotIn("corpse of zrtfallen", here.lower())
+        self.assertEqual(inv.count("dagger"), 1, inv)
+        self.assertIn("dagger", bag, bag)
+        self.assertEqual(states, ["pending", "committed"])
+
+    def test_a_record_that_cannot_leave_live_is_kept_whole(self) -> None:
+        """The owner's file is saved, but the corpse's held record will not
+        move into history. The emptied corpse is then extracted -- which
+        used to archive it from the object: an EMPTY corpse in history as
+        "gone" and the held record deleted. Now the record stays exactly as
+        held, and the next save (ACCEPT's own last one) moves it whole."""
+        with LiveMud(extra_env={"TOC_FAULT_FILE": "../fault.once"}) as mud:
+            setup(mud)
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as cleric, \
+                    mud.connect(timeout=120) as fallen:
+                for client, name in ((staff, "Zrtstaff"), (cleric, "Zrtcleric"),
+                                     (fallen, "Zrtfallen")):
+                    login(client, name, PW)
+                    client.sync("scroll 0")
+                kill_loot_and_call(staff, cleric, fallen)
+                fault(mud, "corpse-move")
+                rose = fallen.sync("accept")
+            hdir = mud.root / "corpse" / "history" / "Zrtfallen"
+            gone = [p.read_text(encoding="latin-1") for p in hdir.glob("*.gone*.corpse")]
+            history = resurrected_history(mud)
+            live = live_corpses(mud)
+            states = ledger_states(mud)
+            log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1", errors="replace")
+
+        self.assertIn("edge of life", rose, rose)
+        self.assertIn("could not be closed after the save", log)   # the failure happened
+        self.assertEqual(gone, [], "an emptied corpse was archived from the object")
+        self.assertEqual(live, [])
+        self.assertEqual(history.count("Vnum %d" % DAGGER), 2, history)   # whole
+        self.assertEqual(states, ["pending", "committed"])
+
+    def test_a_long_fixes_list_keeps_every_mark_whole(self) -> None:
+        """A Fixes list past 4096 bytes: the mark was cut off by a fixed
+        buffer and the disk reader split the line, so a crash between the
+        save and the commit laid the corpse again beside the gift."""
+        filler = " ".join("zfill-%04d" % i for i in range(400))       # ~4400 bytes
+        with LiveMud(extra_env={"TOC_FAULT_FILE": "../fault.once"}) as mud:
+            setup(mud)
+            patch_player_file(mud, "Zrtfallen", Fixes=filler + "~")
+            with mud.connect(timeout=120) as staff, mud.connect(timeout=120) as cleric, \
+                    mud.connect(timeout=120) as fallen:
+                for client, name in ((staff, "Zrtstaff"), (cleric, "Zrtcleric"),
+                                     (fallen, "Zrtfallen")):
+                    login(client, name, PW)
+                    client.sync("scroll 0")
+                kill_loot_and_call(staff, cleric, fallen)
+                fault(mud, "crash-before-commit")
+                fallen.send("accept")
+                self.assertTrue(fallen.wait_closed(), "the game should have stopped")
+            mud.proc.wait(timeout=15)
+            mud.restart()
+            live = live_corpses(mud)
+            inv, bag, _ = what_they_hold(mud)
+            states = ledger_states(mud)
+            fixes = re.search(r"^Fixes (.*)~$",
+                              (mud.player_dir / "Zrtfallen").read_text(encoding="latin-1"),
+                              re.M).group(1).split()
+
+        self.assertEqual(live, [])
+        self.assertEqual(inv.count("dagger"), 1, inv)
+        self.assertIn("dagger", bag, bag)
+        self.assertEqual(states, ["pending", "committed"])
+        # Not one migration marker lost on the way.
+        self.assertTrue(set(filler.split()) <= set(fixes))
+
+
 if __name__ == "__main__":
     unittest.main()

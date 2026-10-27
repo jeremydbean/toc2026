@@ -387,6 +387,14 @@ void restores_login( CHAR_DATA *ch )
             restore_note( e, "rejected", why, true );
             continue;
         }
+        /* The mark that will say it landed must fit whole, or a crash
+           after the save would read it as never given. */
+        if ( !player_fix_can_record( ch, mark ) )
+        {
+            snapshot_discard_gear( list );
+            restore_note( e, "retry", "their Fixes list is full; the mark would not fit", true );
+            continue;
+        }
         /* The copy to undo it by, then the pending line: if either fails,
            nothing has been given and it is tried again next login. */
         if ( !player_snapshot_milestone( ch, "gitrestore", true ) )
@@ -414,7 +422,8 @@ void restores_login( CHAR_DATA *ch )
             else
                 stash_receive( ch, obj );
         }
-        player_fix_record( ch, mark );
+        if ( !player_fix_record( ch, mark ) )
+            bug( "restores_login: a mark that fit a moment ago did not", 0 );
         corpse_registry_forget_player( ch->name );
         if ( !save_char_obj( ch ) )
         {

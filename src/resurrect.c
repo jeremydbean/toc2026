@@ -212,19 +212,22 @@ void spell_resurrection( int sn, int level, CHAR_DATA *ch, void *vo )
  * ended the corpse first and saved last, ignoring the result, so a failed
  * save and a crash lost both copies):
  *
- *   1. the corpse's record written now and HELD as it is (corpses.c);
- *   2. a pending receipt, resurrect:<corpse id>, in the ledger;
- *   3. everything moved to the owner -- coin as coin, for now -- and the
- *      mark restore:resurrect:<id> in their file;
- *   4. the owner's save, on the disk;
- *   5. the held record into history as "resurrected", then the committed
- *      receipt; only then the purse, the room and the corpse's end.
+ *   1. the corpse's record written now and HELD as it is (corpses.c), and
+ *      the mark restore:resurrect:<id> proved to fit the owner's Fixes;
+ *   2. a pending receipt, resurrect:<corpse id>, in the ledger, opened on
+ *      the corpse too;
+ *   3. the mark, then everything moved to the owner -- coin as coin;
+ *   4. the owner's save. One on the disk settles the transfer through the
+ *      save itself: the held record into history as "resurrected", then
+ *      the committed receipt (corpse_registry_owner_saved).
  *
- * A save that fails puts everything back in the corpse, takes the mark
- * off and lets the corpse be written again: nothing happened, and the
- * offer stands. A crash between 4 and 5 is settled at boot from the
- * owner's file (corpse_registry_boot): marked, the corpse goes to history;
- * not marked, it is laid again with everything in it.
+ * A save that FAILED left the old file in place: everything goes back in
+ * the corpse, the mark comes off and the offer stands. A save renamed
+ * into place but NOT CONFIRMED on the disk is neither: the file holds the
+ * gift, so it is not taken back (review, 2026-10-27: putting it back and
+ * abandoning the receipt left it in the file and the corpse, and a crash
+ * laid both). It stays pending and is settled by the owner's next save on
+ * the disk, at their login, or at boot -- each from the file's mark.
  */
 void do_accept( CHAR_DATA *ch, char *argument )
 {
@@ -235,7 +238,7 @@ void do_accept( CHAR_DATA *ch, char *argument )
     const char *why;
     char caster_name[sizeof(ch->pcdata->resurrect_by)];
     char note[MAX_STRING_LENGTH];
-    char id[32], op[64], mark[80];
+    char id[32], op[64], mark[96];
     int given = 0, kept = 0, i, status;
 
     UNUSED_PARAM( argument );
@@ -268,15 +271,25 @@ void do_accept( CHAR_DATA *ch, char *argument )
     }
     given = 0;
 
-    /* 1 and 2: the corpse as it is, on the disk and held; the receipt. */
+    /* 1: the corpse as it is, on the disk and held; the mark must fit. */
     if ( !corpse_registry_hold( corpse, id, sizeof(id) ) )
     {
-        send_to_char( "The call wavers: your body's record could not be kept safe, so "
-                      "nothing was moved.  Try again in a moment.\n\r", ch );
+        send_to_char( "The call wavers: your body's record could not be kept safe -- or "
+                      "your death is still being written down -- so nothing was moved.  "
+                      "Try again in a moment.\n\r", ch );
         return;
     }
     snprintf( op, sizeof(op), "resurrect:%s", id );
     snprintf( mark, sizeof(mark), "restore:%s", op );
+    if ( !player_fix_can_record( ch, mark ) )
+    {
+        corpse_registry_unhold( corpse );
+        send_to_char( "The call wavers: the record that would prove your return is full, "
+                      "so nothing was moved.  Staff can see why in the log.\n\r", ch );
+        return;
+    }
+
+    /* 2: the receipt. */
     toc_strlcpy( caster_name, ch->pcdata->resurrect_by, sizeof(caster_name) );
     snprintf( note, sizeof(note), "corpse %s in room %d, called by %s", id, to->vnum,
               caster_name );
@@ -286,8 +299,19 @@ void do_accept( CHAR_DATA *ch, char *argument )
         send_to_char( "The call wavers: it could not be recorded, so nothing was moved.\n\r", ch );
         return;
     }
+    corpse_registry_pending( corpse, op );
 
-    /* 3: everything to its owner, coin as coin until the gift is kept. */
+    /* 3: the mark, then everything to its owner, coin as coin until the
+       gift is kept. */
+    if ( !player_fix_record( ch, mark ) )
+    {
+        corpse_registry_unhold( corpse );
+        recovery_record( "request", "abandoned", ch->name, op, "resurrect", caster_name,
+                         "the mark could not be kept; nothing was moved" );
+        send_to_char( "The call wavers: your return could not be recorded, so nothing was "
+                      "moved.\n\r", ch );
+        return;
+    }
     for ( obj = corpse->contains; obj != NULL; obj = obj_next )
     {
         obj_next = obj->next_content;
@@ -295,7 +319,6 @@ void do_accept( CHAR_DATA *ch, char *argument )
         obj_to_char( obj, ch );
         moved[given++] = obj;
     }
-    player_fix_record( ch, mark );
 
     /* 4: on the disk, or none of it. A test fails this save alone with
        "accept-save": "save-<Name>" can be taken first by the autosave. */
@@ -306,7 +329,7 @@ void do_accept( CHAR_DATA *ch, char *argument )
         save_char_obj( ch );
         status = save_char_obj_status();
     }
-    if ( status != DURABLE_OK )
+    if ( status == DURABLE_FAILED )
     {
         /* Back as it lay -- obj_to_obj puts each at the front, so last
            first -- and the record free to be written again. */
@@ -318,9 +341,7 @@ void do_accept( CHAR_DATA *ch, char *argument )
         player_fix_forget( ch, mark );
         corpse_registry_unhold( corpse );
         recovery_record( "request", "abandoned", ch->name, op, "resurrect", caster_name,
-                         status == DURABLE_FAILED ? "the owner's file could not be saved; "
-                         "everything was put back" : "the save was not confirmed on the "
-                         "disk; everything was put back" );
+                         "the owner's file could not be saved; everything was put back" );
         send_to_char( "The call wavers and holds: your return could not be written down, "
                       "so your body still lies where it was with everything in it.  The "
                       "call still stands -- ACCEPT again in a moment.\n\r", ch );
@@ -329,17 +350,21 @@ void do_accept( CHAR_DATA *ch, char *argument )
         log_string( note );
         return;
     }
-    if ( recovery_fault( "crash-before-commit" ) )
-        _exit( 3 );             /* the test of a crash between the two */
-
-    /* 5: the corpse's record into history, then the receipt. */
-    snprintf( note, sizeof(note), "resurrected by %s", caster_name );
-    if ( !corpse_registry_transferred( corpse, note ) )
-        send_to_char( "Your body's record could not be closed; staff are told, and it "
+    if ( status != DURABLE_OK )
+    {
+        snprintf( note, sizeof(note), "RESURRECT: %s's ACCEPT is in their file but not "
+                  "confirmed on the disk (corpse %s); it stays pending and is settled by "
+                  "their next save, their login or the next boot.", ch->name, id );
+        log_string( note );
+    }
+    else if ( corpse_registry_is_pending( corpse ) )
+    {
+        /* Saved, but the record would not leave live/: the keeper tries
+           again, and never lays it while the receipt is open. */
+        send_to_char( "Your body's record could not be closed yet; it is tried again, and "
                       "will not come back.\n\r", ch );
-    else if ( !recovery_record( "request", "committed", ch->name, op, "resurrect",
-                                caster_name, "their file was saved with everything" ) )
-        bug( "do_accept: a resurrection's receipt could not be committed", 0 );
+        bug( "do_accept: a resurrection's record could not be closed after the save", 0 );
+    }
     resurrect_clear( ch );
 
     /* Coin into the purse now; what it cannot take falls to the floor. The

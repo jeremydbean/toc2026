@@ -11097,6 +11097,17 @@ static void prestore_give( CHAR_DATA *ch, const char *capname, OBJ_DATA *list,
         return;
     }
 
+    /* The mark that will say it landed must fit whole: a cut-off mark
+       reads as "never given" after a crash. */
+    if ( !player_fix_can_record( victim, mark ) )
+    {
+        snapshot_discard_gear( list );
+        send_to_char( "Nothing was given: their Fixes list is full, so the mark that "
+                      "proves a restore landed would not fit.  See the log.\n\r", ch );
+        if ( offline )
+            extract_char( victim, true );
+        return;
+    }
     if ( !player_snapshot_milestone( victim, undo_tag, true ) )
     {
         snapshot_discard_gear( list );
@@ -11127,7 +11138,8 @@ static void prestore_give( CHAR_DATA *ch, const char *capname, OBJ_DATA *list,
         else
             obj_to_char( obj, victim );
     }
-    player_fix_record( victim, mark );
+    if ( !player_fix_record( victim, mark ) )
+        bug( "prestore_give: a mark that fit a moment ago did not", 0 );
     save_char_obj( victim );
     status = save_char_obj_status();
 
@@ -11935,11 +11947,14 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
         {
             static const char *const keep_keys[] =
                 { "Pass ", "Tru ", "Creator ", "Fixes ", "HyruleSecrets ", "BlackMarket ", NULL };
-            char kept[8][MAX_STRING_LENGTH];
+            /* Whole lines, however long: a Fixes list past 4096 bytes was
+               split by fgets, its first piece kept and the rest written
+               after the inserted '~' as garbage keys (review, 2026-10-27). */
+            char *kept[8];
             int nkept = 0, k;
             bool have_current = false, have_fixes = false;
             FILE *fcur = fopen( dstpath, "rb" );
-            char line[MAX_STRING_LENGTH];
+            char *line;
 
             snprintf( op, sizeof(op), "full:%ld", recovery_sequence() + 1 );
             if ( fcur == NULL && !absent )
@@ -11950,10 +11965,13 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
             if ( fcur != NULL )
             {
                 have_current = true;
-                while ( fgets( line, sizeof(line), fcur ) != NULL && nkept < 8 )
+                while ( nkept < 8 && ( line = read_whole_line( fcur ) ) != NULL )
                 {
                     if ( !strcmp( line, "End\n" ) || !strcmp( line, "End\r\n" ) )
+                    {
+                        free( line );
                         break;
+                    }
                     for ( k = 0; keep_keys[k] != NULL; k++ )
                         if ( !strncmp( line, keep_keys[k], strlen( keep_keys[k] ) ) )
                         {
@@ -11961,29 +11979,40 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
                             if ( !strncmp( line, "Fixes ", 6 ) )
                             {
                                 char *tilde = strrchr( line, '~' );
+                                size_t need = strlen( line ) + strlen( op ) + 16;
 
                                 if ( tilde != NULL )
                                     *tilde = '\0';
-                                snprintf( kept[nkept], sizeof(kept[0]), "%s%srestore:%s~\n",
-                                          line, line[6] != '\0' ? " " : "", op );
+                                if ( ( kept[nkept] = malloc( need ) ) != NULL )
+                                    snprintf( kept[nkept], need, "%s%srestore:%s~\n",
+                                              line, line[6] != '\0' ? " " : "", op );
                                 have_fixes = true;
                             }
                             else
-                                toc_strlcpy( kept[nkept], line, sizeof(kept[0]) );
-                            nkept++;
+                                kept[nkept] = strdup( line );
+                            if ( kept[nkept] != NULL )
+                                nkept++;
                             break;
                         }
+                    free( line );
                 }
                 fclose( fcur );
             }
             if ( !have_fixes && nkept < 8 )
-                snprintf( kept[nkept++], sizeof(kept[0]), "Fixes restore:%s~\n", op );
+            {
+                size_t need = strlen( op ) + 24;
+
+                if ( ( kept[nkept] = malloc( need ) ) != NULL )
+                    snprintf( kept[nkept++], need, "Fixes restore:%s~\n", op );
+            }
 
             fsrc = fopen( srcpath, "rb" );
             if ( fsrc == NULL )
             {
                 bug( "do_prestore: cannot open source snapshot", 0 );
                 send_to_char( "Error: cannot read snapshot file; nothing was changed.\n\r", ch );
+                for ( k = 0; k < nkept; k++ )
+                    free( kept[k] );
                 return;
             }
             fdst = fopen( tmppath, "wb" );
@@ -11993,21 +12022,20 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
                 send_to_char( "Error: cannot create temporary restore file; nothing was "
                               "changed.\n\r", ch );
                 fclose( fsrc );
+                for ( k = 0; k < nkept; k++ )
+                    free( kept[k] );
                 return;
             }
 
             copy_failed = false;
             {
-                bool line_start = true;
                 bool in_player = true;
 
-                while ( fgets( line, sizeof(line), fsrc ) != NULL )
+                while ( ( line = read_whole_line( fsrc ) ) != NULL )
                 {
-                    size_t len = strlen( line );
-                    bool whole = line_start, skip = false;
+                    bool skip = false;
 
-                    line_start = len > 0 && line[len - 1] == '\n';
-                    if ( whole && in_player )
+                    if ( in_player )
                     {
                         /* The snapshot's own copies of what is kept go;
                            with no current file, only its creator rank
@@ -12029,15 +12057,15 @@ static void prestore_command( CHAR_DATA *ch, char *argument )
                             }
                         }
                     }
-                    if ( skip )
-                        continue;
-                    if ( fputs( line, fdst ) == EOF )
-                    {
+                    if ( !skip && fputs( line, fdst ) == EOF )
                         copy_failed = true;
+                    free( line );
+                    if ( copy_failed )
                         break;
-                    }
                 }
             }
+            for ( k = 0; k < nkept; k++ )
+                free( kept[k] );
             if ( ferror(fsrc) )
                 copy_failed = true;
             fclose( fsrc );

@@ -8,6 +8,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Deaths and resurrections are ledgered transfers** (2026-10-27). A
+  death opens a `death:<id>` receipt, writes the corpse, saves the player
+  with a mark and commits; boot settles one a crash interrupted from the
+  player's file. ACCEPT keeps an unconfirmed save pending instead of
+  undoing it. Receipt marks are no longer cut at 4,096 bytes: the Fixes
+  list is built and read whole, spent marks are dropped, and a list that
+  cannot take another is refused before anything moves.
+  `tests/test_death_transfer.py`, `tests/test_resurrection_transfer.py`.
+
+
 - **The main classes brought up to the strong ones** (2026-10-27; owner:
   scale up rather than nerf). Warriors and thieves gain weapon mastery
   (`weapon_mastery_percent`: 4% of the weapon's own damage a level in the

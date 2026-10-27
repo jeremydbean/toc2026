@@ -3067,6 +3067,9 @@ bool    player_snapshot_tagged ( const char *name, const char *tag,
 void    snapshot_list_free   ( char **names, int count );
 /* recovery.c: the ledger nothing rolls back (player/recovery/) */
 #define RECOVERY_DIR     "../player/recovery/"
+/* The longest a character's Fixes list may grow (fixes.c): login fix ids
+   and the marks of receipts still open. Spent marks are dropped. */
+#define PLAYER_FIXES_MAX    16000
 #define RECOVERY_NONE       0
 #define RECOVERY_PENDING    1
 #define RECOVERY_COMMITTED  2
@@ -3118,7 +3121,13 @@ void    corpse_note_change            ( OBJ_DATA *container, OBJ_DATA *obj,
 void    corpse_registry_touched       ( OBJ_DATA *corpse, const char *why );
 bool    corpse_registry_hold    ( OBJ_DATA *corpse, char *id, size_t size );
 void    corpse_registry_unhold  ( OBJ_DATA *corpse );
-bool    corpse_registry_transferred( OBJ_DATA *corpse, const char *why );
+void    corpse_registry_pending     ( OBJ_DATA *corpse, const char *op );
+bool    corpse_registry_is_pending  ( OBJ_DATA *corpse );
+bool    corpse_registry_settling    ( OBJ_DATA *obj );
+bool    corpse_registry_may_save    ( CHAR_DATA *ch );
+void    corpse_registry_owner_saved ( CHAR_DATA *ch );
+void    corpse_registry_death_settle( CHAR_DATA *ch );
+bool    corpse_registry_reconcile_login( CHAR_DATA *ch, const char *op );
 void    corpse_registry_moved         ( OBJ_DATA *corpse );
 void    corpse_registry_making        ( bool making );
 void    corpse_registry_forget_player ( const char *name );
@@ -3140,7 +3149,9 @@ int     corpse_file_header ( const char *path, CORPSE_RECORD *rec );
 void    restores_boot                 ( void );
 void    restores_login                ( CHAR_DATA *ch );
 bool    player_fix_has                ( CHAR_DATA *ch, const char *id );
-void    player_fix_record             ( CHAR_DATA *ch, const char *id );
+bool    player_fix_record             ( CHAR_DATA *ch, const char *id );
+bool    player_fix_can_record         ( CHAR_DATA *ch, const char *id );
+char *  read_whole_line               ( FILE *fp );
 void    player_fix_forget             ( CHAR_DATA *ch, const char *id );
 int     player_file_fix_has           ( const char *name, const char *id );
 int     snapshot_read_gear     ( CHAR_DATA *ch, const char *path,

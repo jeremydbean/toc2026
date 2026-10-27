@@ -33,6 +33,7 @@
  * saves the character once afterwards.
  */
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include "merc.h"
@@ -160,17 +161,115 @@ static bool fix_done( const char *done, const char *id )
     return false;
 }
 
-static void fix_mark( CHAR_DATA *ch, const char *id )
+/*
+ * The Fixes list holds two kinds of word: the ids of login fixes, which
+ * are kept for ever, and restore:<receipt> marks, which say a transfer
+ * reached the player's file. A mark matters only while its receipt is
+ * open: once the ledger says committed, the ledger is the record, and the
+ * mark is dropped the next time the list is written. Nothing else is
+ * ever dropped -- not a migration marker, not a mark whose receipt is
+ * pending or unknown to the ledger (a git restore from before it).
+ *
+ * The list was built in a 4096-byte buffer, so a long one lost its tail
+ * -- the newest mark and every word after the cut -- without a word
+ * (review, 2026-10-27). It is built to its real size now, and a mark that
+ * would take it past PLAYER_FIXES_MAX is refused, so a caller can say no
+ * before it moves anything.
+ */
+static bool fix_word_spent( const char *word )
 {
-    char buf[MAX_STRING_LENGTH];
+    return !strncmp( word, "restore:", 8 )
+        && recovery_request_state( word + 8 ) == RECOVERY_COMMITTED;
+}
 
-    toc_strlcpy( buf, ch->pcdata->fixes_done != NULL ? ch->pcdata->fixes_done : "",
-                 sizeof(buf) );
-    if ( buf[0] != '\0' )
-        toc_strlcat( buf, " ", sizeof(buf) );
-    toc_strlcat( buf, id, sizeof(buf) );
+/* The list with every spent mark taken out, `skip` (if any) left out,
+   and `add` (if any) put on the end, freshly allocated; NULL past the
+   limit or out of memory. */
+static char *fix_list_build( const char *done, const char *skip, const char *add )
+{
+    size_t cap = ( done != NULL ? strlen( done ) : 0 ) + ( add != NULL ? strlen( add ) : 0 ) + 2;
+    char *out = malloc( cap );
+    size_t len = 0;
+    const char *p = done != NULL ? done : "";
+
+    if ( out == NULL )
+        return NULL;
+    out[0] = '\0';
+    while ( *p != '\0' )
+    {
+        const char *w;
+        size_t n;
+
+        while ( *p == ' ' )
+            p++;
+        w = p;
+        while ( *p != '\0' && *p != ' ' )
+            p++;
+        n = (size_t)( p - w );
+        if ( n == 0 )
+            continue;
+        {
+            char word[MAX_INPUT_LENGTH];
+
+            if ( n < sizeof(word) )
+            {
+                memcpy( word, w, n );
+                word[n] = '\0';
+                if ( ( skip != NULL && !strcmp( word, skip ) )
+                ||   ( add != NULL && !strcmp( word, add ) )
+                ||   fix_word_spent( word ) )
+                    continue;
+            }
+        }
+        if ( len > 0 )
+            out[len++] = ' ';
+        memcpy( out + len, w, n );
+        len += n;
+        out[len] = '\0';
+    }
+    if ( add != NULL && add[0] != '\0' )
+    {
+        if ( len > 0 )
+            out[len++] = ' ';
+        memcpy( out + len, add, strlen( add ) + 1 );
+        len += strlen( add );
+    }
+    if ( len > PLAYER_FIXES_MAX )
+    {
+        free( out );
+        return NULL;
+    }
+    return out;
+}
+
+static bool fix_list_set( CHAR_DATA *ch, const char *skip, const char *add )
+{
+    char *built;
+
+    if ( add != NULL && ( add[0] == '\0' || strchr( add, ' ' ) != NULL
+                       || strchr( add, '~' ) != NULL || strlen( add ) >= MAX_INPUT_LENGTH ) )
+        return false;
+    if ( ( built = fix_list_build( ch->pcdata->fixes_done, skip, add ) ) == NULL )
+        return false;
     free_string( ch->pcdata->fixes_done );
-    ch->pcdata->fixes_done = str_dup( buf );
+    ch->pcdata->fixes_done = str_dup( built );
+    free( built );
+    return true;
+}
+
+static bool fix_mark( CHAR_DATA *ch, const char *id )
+{
+    if ( !fix_list_set( ch, NULL, id ) )
+    {
+        char buf[MAX_STRING_LENGTH];
+
+        snprintf( buf, sizeof(buf), "Fixes: %s's list could not take %.80s (%d bytes "
+                  "already); nothing was changed.", ch->name, id,
+                  ch->pcdata->fixes_done != NULL ? (int) strlen( ch->pcdata->fixes_done ) : 0 );
+        log_string( buf );
+        return false;
+    }
+    return true;
 }
 
 /* The same record, for other once-per-character work (restores.c). */
@@ -180,41 +279,76 @@ bool player_fix_has( CHAR_DATA *ch, const char *id )
         && fix_done( ch->pcdata->fixes_done, id );
 }
 
-void player_fix_record( CHAR_DATA *ch, const char *id )
+/* Whether a mark would fit, spent marks taken out: asked before a
+   transfer moves anything, so a full list refuses it cleanly. */
+bool player_fix_can_record( CHAR_DATA *ch, const char *id )
 {
-    if ( ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL )
-        fix_mark( ch, id );
+    char *built;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return false;
+    if ( ( built = fix_list_build( ch->pcdata->fixes_done, NULL, id ) ) == NULL )
+        return false;
+    free( built );
+    return true;
+}
+
+/* Puts the mark on; false, and nothing changed, if it cannot be (the
+   list is full) -- callers that keep a receipt on it must check, and
+   player_fix_has() afterwards proves the whole word went in. */
+bool player_fix_record( CHAR_DATA *ch, const char *id )
+{
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return false;
+    return fix_mark( ch, id ) && fix_done( ch->pcdata->fixes_done, id );
 }
 
 /* A mark taken back: a transfer that did not reach the disk is undone in
-   memory too, and must not leave a mark behind to be saved later. */
+   memory too, and must not leave a mark behind to be saved later; or a
+   transfer settled, whose mark the ledger now stands for. */
 void player_fix_forget( CHAR_DATA *ch, const char *id )
 {
-    char buf[MAX_STRING_LENGTH] = "";
-    char word[MAX_INPUT_LENGTH];
-    const char *p;
-
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || ch->pcdata->fixes_done == NULL )
         return;
-    for ( p = ch->pcdata->fixes_done; *p != '\0'; )
-    {
-        size_t n = 0;
+    if ( !fix_list_set( ch, id, NULL ) )
+        bug( "player_fix_forget: out of memory; the mark stays", 0 );
+}
 
-        while ( *p == ' ' )
-            p++;
-        while ( *p != '\0' && *p != ' ' && n < sizeof(word) - 1 )
-            word[n++] = *p++;
-        word[n] = '\0';
-        while ( *p != '\0' && *p != ' ' )
-            p++;
-        if ( word[0] == '\0' || !strcmp( word, id ) )
-            continue;
-        if ( buf[0] != '\0' )
-            toc_strlcat( buf, " ", sizeof(buf) );
-        toc_strlcat( buf, word, sizeof(buf) );
+/*
+ * One whole line from a file, however long, in a buffer the caller frees
+ * (the newline kept); NULL at the end. Readers of player files must not
+ * use a fixed fgets buffer for a line that can be long: the Fixes line
+ * split at 4096 bytes and its mark read as missing.
+ */
+char *read_whole_line( FILE *fp )
+{
+    size_t cap = 256, len = 0;
+    char *buf = malloc( cap );
+
+    if ( buf == NULL )
+        return NULL;
+    while ( fgets( buf + len, (int)( cap - len ), fp ) != NULL )
+    {
+        len += strlen( buf + len );
+        if ( len > 0 && buf[len - 1] == '\n' )
+            return buf;
+        if ( len + 1 >= cap )
+        {
+            char *grown = realloc( buf, cap * 2 );
+
+            if ( grown == NULL )
+            {
+                free( buf );
+                return NULL;
+            }
+            buf = grown;
+            cap *= 2;
+        }
     }
-    free_string( ch->pcdata->fixes_done );
-    ch->pcdata->fixes_done = str_dup( buf );
+    if ( len > 0 && !ferror( fp ) )
+        return buf;
+    free( buf );
+    return NULL;
 }
 
 /* Whether a player's FILE holds a mark: its Fixes line, as written. For
@@ -223,24 +357,43 @@ void player_fix_forget( CHAR_DATA *ch, const char *id )
 int player_file_fix_has( const char *name, const char *id )
 {
     char path[MAX_INPUT_LENGTH];
-    char line[MAX_STRING_LENGTH];
+    char *line;
     FILE *fp;
     int found = 0;
+    bool ended = false;
 
     snprintf( path, sizeof(path), "%s%s", PLAYER_DIR, capitalize( name ) );
     if ( ( fp = fopen( path, "r" ) ) == NULL )
         return -1;
-    while ( fgets( line, sizeof(line), fp ) != NULL )
+    while ( ( line = read_whole_line( fp ) ) != NULL )
     {
+        bool stop = false;
+
         if ( !strcmp( line, "End\n" ) || !strcmp( line, "End\r\n" ) )
-            break;
-        if ( !strncmp( line, "Fixes ", 6 ) )
         {
-            line[strcspn( line, "~\r\n" )] = '\0';
-            found = fix_done( line + 6, id ) ? 1 : 0;
-            break;
+            ended = true;
+            stop = true;
         }
+        else if ( !strncmp( line, "Fixes ", 6 ) )
+        {
+            char *tilde = strchr( line + 6, '~' );
+
+            if ( tilde == NULL )
+                found = -1;             /* a line cut short: cannot say */
+            else
+            {
+                *tilde = '\0';
+                found = fix_done( line + 6, id ) ? 1 : 0;
+            }
+            ended = true;
+            stop = true;
+        }
+        free( line );
+        if ( stop )
+            break;
     }
+    if ( ferror( fp ) || !ended )
+        found = -1;                     /* never reached the line or the End */
     fclose( fp );
     return found;
 }
@@ -267,6 +420,13 @@ void player_fixes_login( CHAR_DATA *ch, bool new_character )
         if ( !player_fixes[i].staff_too && !new_character
         &&   IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
             continue;
+        /* Never run a fix whose id could not then be kept: it would run
+           again at every login. */
+        if ( !player_fix_can_record( ch, player_fixes[i].id ) )
+        {
+            bug( "player_fixes_login: the Fixes list is full; a fix waits", 0 );
+            continue;
+        }
         if ( !new_character && (*player_fixes[i].apply)( ch ) )
         {
             snprintf( buf, sizeof(buf), "Login fix %s (%s) applied to %s.",

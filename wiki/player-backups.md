@@ -137,6 +137,17 @@ which (independent review, 2026-10-23):
   yet in history", restorable as usual -- until it can be moved.
 - A torn ledger record is set aside in `player/recovery/ledger.torn.*`
   and cut off; the records before it stand.
+- A death is a receipt too (2026-10-27): `death:<corpse id>` opens, the
+  corpse's record is written, the player's file is saved with a mark, and
+  the receipt commits. Until it does, nobody can take from the corpse. A
+  crash before the save lands is settled at boot from the file: no mark,
+  the file still holds everything and the corpse is not laid (its record
+  goes to history as `undone`); a mark, the corpse is laid as theirs.
+- RESURRECTION's ACCEPT whose save is not confirmed stays pending and is
+  settled by the next save, boot or login -- never undone on a guess.
+- A receipt's mark never shortens the file's list of fixes: a list that
+  cannot take another refuses the restore, death or ACCEPT before
+  anything moves.
 
 ## How long a loss can be
 
@@ -146,8 +157,13 @@ Measured from the code, not promised:
   save. Saves happen at least every autosave cycle and at every level,
   quest, death, restore and stash change; the file and its rename are
   flushed to the disk before the save counts.
+- **A death:** none -- the corpse and the player's file are a single
+  transfer (above).
 - **A corpse:** up to a second of looting before a crash (changes are
-  written within a second); its timer, up to ten minutes stale.
+  written within a second); its timer, up to ten minutes stale. The
+  looter's own file is saved on its own schedule, so a crash after the
+  corpse's record caught up and before the looter's next save loses what
+  they took (a known window, older than the death receipts).
 - **The host lost:** up to five minutes (the state sync), plus anything
   since the last sync that only the host had. A rebuilt host's PRESTORE
   lists the same hourly, daily and milestone copies the lost one did,

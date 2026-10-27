@@ -1138,17 +1138,42 @@ and `de` DEPART. Adding it took `MAX_SKILL` to 233: the table was full.
 `corpse_registry_hold` writes the corpse's record and stops the registry
 rewriting it; a pending `resurrect:<corpse id>` receipt; every object
 (coin piles too) moves to the owner; the mark `restore:<op>` goes in the
-file's `Fixes`; the save. Not `DURABLE_OK`: everything goes back into the
+file's `Fixes`; the save. `DURABLE_FAILED`: everything goes back into the
 corpse in reverse, the mark is forgotten (`player_fix_forget`), the hold
-lifted, the receipt abandoned and the offer still stands. On the disk:
-`corpse_registry_transferred` renames the held record into history as
-`resurrected`, the receipt commits, and only then does coin reach the
-purse and the character the Temple. A crash between the save and the
-commit is settled at boot: a pending receipt whose owner's file holds
-the mark (`player_file_fix_has`) sends the record to history instead of
-laying it; without the mark the corpse is laid whole and the receipt
-abandoned; an unreadable file keeps the record and lays nothing.
+lifted, the receipt abandoned and the offer still stands.
+`DURABLE_UNCERTAIN` (review, 2026-10-27: it was undone like a failure,
+though the file may already be the new one) leaves the transfer pending
+(`corpse_registry_pending`): the next save of the owner that lands
+settles it (`corpse_registry_owner_saved`, from `save_char_obj`), and so
+does boot or the owner's next login, from the mark in the file. On the
+disk: the held record goes into history as `resurrected` -- and if that
+move fails the record stays whole and held, never a "gone" copy -- the
+receipt commits, and only then does coin reach the purse and the
+character the Temple. A crash between the save and the commit is settled
+at boot: a pending receipt whose owner's file holds the mark
+(`player_file_fix_has`) sends the record to history instead of laying
+it; without the mark the corpse is laid whole and the receipt abandoned;
+an unreadable file keeps the record and lays nothing.
 `tests/test_resurrection_transfer.py`.
+
+**A death is the same kind of transfer** (review, 2026-10-27: the save
+after a death was commented out, so a crash laid the corpse at boot and
+logged the player in with the same things). `corpse_registry_died` opens
+a `death:<corpse id>` receipt, writes the corpse's record, puts the mark
+in the file and holds the track pending; `corpse_registry_death_settle`,
+from `raw_kill_internal`, saves the player. A save that lands commits; a
+save that does not leaves it pending -- nobody may take from the corpse
+meanwhile (`corpse_registry_settling`, asked by GET: "still being laid
+to rest"), and the owner's next save that lands settles it. Boot settles
+a crash from the file: the mark there means the corpse is theirs and is
+laid; no mark means the file still holds everything, so the record goes
+to history as `undone` and nothing is laid; an unreadable file keeps the
+record and lays nothing. **The mark must fit**: `player_fix_can_record`
+is asked before anything moves, the list is read and built whole
+(`read_whole_line`, no fixed buffer), spent `restore:` marks whose
+receipt committed are dropped as it is rebuilt, and past
+`PLAYER_FIXES_MAX` the operation is refused, never cut short
+(`tests/test_death_transfer.py`).
 
 ## The Seasonal Areas Are Generated
 

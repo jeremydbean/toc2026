@@ -3573,7 +3573,10 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
     victim->move        = UMAX( 1, victim->move );
 
     REMOVE_BIT(victim->act, PLR_BOUGHT_PET);
-/*  save_char_obj( victim ); */
+    /* The post-death file, on the disk: it is what settles the death's
+       transfer to the corpse (corpses.c). Until it lands, the corpse may
+       not be looted and a crash undoes the death from the old file. */
+    corpse_registry_death_settle( victim );
 
     /* Not easy to get rid of those pesky flags! */
     if (!IS_NPC(ch) && !IS_NPC(victim))

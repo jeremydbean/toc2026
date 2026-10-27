@@ -861,6 +861,15 @@ bool save_char_obj( CHAR_DATA *ch )
     if ( ch->desc != NULL && ch->desc->original != NULL )
         ch = ch->desc->original;
 
+    /* A death of theirs whose corpse is not yet on the disk: the file as
+       it stands still holds everything, and must until the corpse does
+       (corpses.c). */
+    if ( !corpse_registry_may_save( ch ) )
+    {
+        bug( "save_char_obj: held back -- a death's corpse is not yet on the disk", 0 );
+        return false;
+    }
+
     achievement_check_state(ch,
         ch->desc != NULL && ch->desc->connected == CON_PLAYING);
 
@@ -979,9 +988,14 @@ bool save_char_obj( CHAR_DATA *ch )
         }
         else
         {
+            char dpoint[64];
+
             save_succeeded = true;
-            save_last_status = durable_dir_sync( strsave ) ? DURABLE_OK
-                                                           : DURABLE_UNCERTAIN;
+            /* "dirsync-<Name>": that character's file renamed into place
+               but not confirmed, for the tests of an uncertain save. */
+            snprintf( dpoint, sizeof(dpoint), "dirsync-%s", ch->name );
+            save_last_status = !recovery_fault( dpoint ) && durable_dir_sync( strsave )
+                             ? DURABLE_OK : DURABLE_UNCERTAIN;
 #if defined(unix) && defined(CHGRP_TO)
             if (!apply_chgrp(strsave))
                 bug("save_char_obj: player file chgrp failed.", 0);
@@ -1000,6 +1014,15 @@ bool save_char_obj( CHAR_DATA *ch )
     {
         bug("save_char_obj: could not reopen fpReserve at end", 0);
         perror(NULL_FILE);
+    }
+    /* Transfers whose mark this save carried to the disk are settled
+       (corpses.c): a death, a resurrection. */
+    if ( save_succeeded && save_last_status == DURABLE_OK )
+    {
+        int kept_status = save_last_status;
+
+        corpse_registry_owner_saved( ch );
+        save_last_status = kept_status;
     }
     /* True only for a save on the disk; save_char_obj_status() says when
        the file is in place but the directory did not confirm it. */

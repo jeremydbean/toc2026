@@ -192,6 +192,15 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	return;
     }
 
+    /* A death not yet on its owner's disk: their file may still hold the
+       same things, so nothing leaves the corpse, nor the corpse itself. */
+    if ( corpse_registry_settling( container != NULL ? container : obj ) )
+    {
+	act( "$p is still being laid to rest; try again in a moment.",
+	     ch, container != NULL ? container : obj, NULL, TO_CHAR );
+	return;
+    }
+
     /* A Hyrule cave's gift -- a sword, the Letter, a take-any cave's Heart
        Container -- is given as a copy, once or one at a time (hyrule.c). */
     if ( container == NULL && hyrule_claim( ch, obj ) )
