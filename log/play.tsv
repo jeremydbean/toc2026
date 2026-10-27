@@ -29044,3 +29044,34 @@
 1793140690	cmd	Miseri	14	4210	dresden_halloween.are	standing	99	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
 1793140692	cmd	Miseri	14	4210	dresden_halloween.are	standing	99	0	-	sleep		You go to sleep.
 1793140723	session	Miseri	14	4210	dresden_halloween.are	quit	1363s	+5 levels	+11596 exp	+3036338 copper	18 kills	0 deaths	0 quests	154 commands	2 refused	coin: loot 3p 3g 63s 38c
+1793141585	cmd	Alaric	54	2497	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793141599	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	enter	do	You enter The Rescue Portal // Your stomach flip flops. Everything goes black for a moment. // Oak Tree Square on Hallows Eve
+1793141600	cmd	Alaric	54	1607	wyvern.are	standing	100	0	-	jump	rock	You take a deep breath and jump off the rock. // House of Pancakes //   The moment you enter this room, the ceiling descends and crushes you
+1793141602	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	look		The Shrouded Altar of Devota //   The altar is still an enormous piece of white marble under its black cloth, // and the statue of Devota behind it still looks out over her temple with the
+1793141603	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	who		[54 Dwarf   Kngt  ] Alaric. // Players found: 1
+1793141606	cmd	Alaric	54	4208	dresden_halloween.are	standing	100	0	-	heal	all	Hermie rolls up her sleeves.  'All of it, then.  Hold still.' // You are already protected. // You are already blessed.
+1793141608	cmd	Alaric	54	2427	dresden_halloween.are	standing	100	0	-	run	e 4	Before the Shrouded Altar // [Exits: north east south west up] // The Hall of Whispers
+1793141608	cmd	Alaric	54	2404	dresden_halloween.are	standing	100	0	-	north		Southern Oak Tree Square. //   This is the Southern exit from Oak Tree Square.  It connects to the Main // Processional heading to the Southern Gates of the City.
+1793141608	cmd	Alaric	54	2401	dresden_halloween.are	standing	100	0	-	north		Oak Tree Square on Hallows Eve //   This is the center of the square, dominated by the trunk of the biggest oak // tree you have ever seen: ten feet across and a hundred feet tall. Tonight
+1793141609	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	run	e 8	Eastern Oak Tree Square. // [Exits: north east south west] // Battle Road
+1793141609	cmd	Alaric	54	2426	dresden_halloween.are	standing	100	0	-	open		Ok.
+1793141610	cmd	Alaric	54	9506	newthalo.are	standing	100	0	-	run	e 19	Outside the Eastern Gates of Dresden. // [Exits: north east west] // City Entrance
+1793141611	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	run	n	The Northern Market Square // [Exits: north east south west] // Sultan's Walk
+1793141611	cmd	Alaric	54	29004	korzath1.are	resting	100	0	-	wake		You stand up.
+1793141612	cmd	Alaric	54	29004	korzath1.are	standing	100	0	-	kill	gu	Your punch injures Guardian Knight. [-16] // Guardian Knight dodges your attack. // Your punch ^^^ DESTROYS ^^^ Guardian Knight! [-115]
+1793141615	cmd	Alaric	54	29004	korzath1.are	fighting	100	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds Guardian Knight. [-18] // Your fists of fury mauls Guardian Knight. [-22]
+1793141621	cmd	Alaric	54	29004	korzath1.are	fighting	99	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures Guardian Knight. [-14] // Your fists of fury hits Guardian Knight. [-10]
+1793141637	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	get	key cor	You get a diamond key from corpse of Guardian Knight.
+1793141638	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793141639	cmd	Alaric	54	29004	korzath1.are	standing	99	0	-	open		Ok.
+1793141639	cmd	Alaric	54	29201	korzath2.are	standing	99	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793141640	cmd	Alaric	54	29201	korzath2.are	standing	99	0	-	west		Alas, you cannot go that way.
+1793141641	cmd	Alaric	54	29202	korzath2.are	standing	99	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793141641	cmd	Alaric	54	29203	korzath2.are	standing	99	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793141642	cmd	Alaric	54	29204	korzath2.are	standing	99	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793141644	cmd	Alaric	54	29204	korzath2.are	standing	99	0	-	fists	cl	You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a killer clown! [-102] // Your fists of fury DISEMBOWELS a killer clown! [-44]
+1793141650	cmd	Alaric	54	29204	korzath2.are	fighting	99	0	fight	fists	cl	You attack in an all consuming fury! // Your fists of fury MUTILATES a killer clown! [-37] // Your fists of fury MASSACRES a killer clown! [-50]
+1793141655	cmd	Alaric	54	29204	korzath2.are	fighting	98	0	fight	fists	cl	You attack in an all consuming fury! // Your fists of fury mauls a killer clown. [-23] // Your fists of fury *** DEMOLISHES *** a killer clown! [-59]
+1793141661	cmd	Alaric	54	29204	korzath2.are	fighting	98	0	fight	fists	cl	You attack in an all consuming fury! // Your fists of fury wounds a killer clown. [-20] // Your fists of fury grazes a killer clown. [-7]
+1793141667	cmd	Alaric	54	29204	korzath2.are	fighting	98	0	fight	fists	cl	You attack in an all consuming fury! // Your fists of fury injures a killer clown. [-15] // Your fists of fury *** DEVASTATES *** a killer clown! [-78]
+1793141673	cmd	Alaric	54	29204	korzath2.are	standing	98	0	-	fists	cl	They aren't here.
