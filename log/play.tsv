@@ -29003,3 +29003,13 @@
 1793140023	cmd	Miseri	11	2433	dresden_halloween.are	standing	100	0	-	look		Temple Boulevard. //   You are on a very well made stone road that goes from the West Gates to Oak // Tree Square. To the west are the broad steps that lead up to the temple of
 1793140027	cmd	Miseri	11	25265	mushroom.are	standing	100	1	-	goto	drow	The bonfire. //   Several naked drow women are dancing around a bonfire here singing in their // language.  You become lost in their dance as they twirl and jump.  A tall
 1793140030	cmd	Miseri	11	25265	mushroom.are	standing	100	0	-	kill	dro	A drow female dodges your attack. // Your punch *** DEVASTATES *** a drow female! // Your punch devastates a drow female!
+1793140050	cmd	Miseri	12	25265	mushroom.are	standing	95	0	-	kill	dro	A drow female parries your attack. // A drow female parries your attack. // A drow female dodges your attack.
+1793140059	cmd	Miseri	12	25265	mushroom.are	fighting	95	0	fight	who		[12 Human   Monk  ] Miseri the Novice of Water // Players found: 1
+1793140074	cmd	Miseri	12	25265	mushroom.are	standing	95	0	-	kill	dro	A drow female dodges your attack. // Your punch devastates a drow female! // Your punch MASSACRES a drow female!
+1793140081	cmd	Miseri	12	25265	mushroom.are	fighting	95	0	fight	skills		Level  1: dagger              20%      hand to hand        75%       //           recall              50%       // Level  3: kick                75%      
+1793140082	cmd	Miseri	12	25265	mushroom.are	fighting	95	0	fight	kick		Your kick misses a drow female.
+1793140094	cmd	Miseri	12	25265	mushroom.are	standing	95	0	-	help	herb	BREW CONCOCT 'HERBAL BREWING' // Syntax: brew <herb> // Syntax: concoct <component> <component>
+1793140128	cmd	Miseri	12	25265	mushroom.are	standing	97	0	-	look		The bonfire. //   Several naked drow women are dancing around a bonfire here singing in their // language.  You become lost in their dance as they twirl and jump.  A tall
+1793140209	cmd	Miseri	12	25265	mushroom.are	standing	100	0	-	kill	dro	Your punch MANGLES a drow female! // A drow female parries your attack. // A drow female dodges your attack.
+1793140320	cmd	Miseri	12	25265	mushroom.are	standing	100	0	-	look		The bonfire. //   Several naked drow women are dancing around a bonfire here singing in their // language.  You become lost in their dance as they twirl and jump.  A tall
+1793140322	cmd	Miseri	12	25265	mushroom.are	standing	100	0	-	skills		Level  1: dagger              20%      hand to hand        75%       //           recall              50%       // Level  3: kick                75%      
