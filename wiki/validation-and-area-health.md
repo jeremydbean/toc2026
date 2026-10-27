@@ -111,6 +111,25 @@ Emit full JSON for tooling:
 python scripts/area_lint.py --json > area-health.json
 ```
 
+Audit the help against the game -- every command and learnable skill has a
+page its user can read, no keyword is shared by accident, the class level
+tables match `src/const.c`, and KEYWORDS is current:
+
+```bash
+python3 tools/help_audit.py                   # exit 1 on any finding
+python3 tools/help_audit.py --write-levels    # regenerate the level tables
+python3 tools/help_audit.py --write-keywords  # regenerate HELP KEYWORDS
+```
+
+It reads the help through `webadmin/help_index.py`, the same reader the
+website and the Oracle use, which follows `area.lst` (then
+`built/built.lst`) order and `do_help`'s exact-then-prefix lookup.
+Intended exceptions live in `data/help_coverage.json`, each with a reason;
+a shared keyword is either an alias or a staff/public split, and a split's
+staff page must come first in the load order or staff never see it.
+`tests/test_help_audit.py` runs it, and `tests/test_help_live.py` checks
+the game's own HELP picks the same pages.
+
 Fail on warnings too when doing cleanup work:
 
 ```bash

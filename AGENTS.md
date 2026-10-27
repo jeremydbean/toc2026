@@ -1041,6 +1041,39 @@ python3 check_resets.py
 python3 scripts/area_lint.py --fail-on critical --limit 100
 ```
 
+## Help
+
+`tools/help_audit.py` holds the help to the game (help audit,
+2026-10-27); `tests/test_help_audit.py` runs it and
+`tests/test_help_live.py` checks the game's own HELP picks the same pages.
+
+- **One reader.** `webadmin/help_index.py` reads help as `load_helps` and
+  `do_help` do: `area.lst` then `built/built.lst` order, Latin-1,
+  `fread_string` tokens, a quoted phrase one keyword, exact before prefix,
+  nothing above the reader's trust. The website, the Oracle and the audit
+  all use it; never parse help with a line regex again (the old loader
+  globbed and sorted files, split quoted phrases and skipped wrapped
+  headers, so HELP STONE SKIN worked in game and 404ed on the website).
+- **One page per topic.** `commands.are` loads first, so an exact keyword
+  there shadows any later page: a command page and a skill page for the
+  same word means the second is never read (fifteen psionic and twenty
+  skill pages had invented `commands.are` copies). A commands page that
+  RULES, NEWS or STORY's `do_help(ch, "<name>")` lands on must be the
+  content, not a description of the command.
+- **A shared keyword is listed with a reason** in
+  `data/help_coverage.json`: `alias`, or `staff-first` -- a staff page and
+  a public page sharing a word, the staff page earlier in the load order
+  so staff get it (GOBLIN, FARSLAY, INVIS, TELEPORT, EMPOWER, TITANIC).
+- **Class level tables and KEYWORDS are generated**: `--write-levels`
+  rewrites every `Mage:.. Cleric:..` minimum-level line on a spell or
+  skill page from `skill_table`, `--write-keywords` the KEYWORDS topic.
+  Never hand-edit either.
+- **HELP GROUP <name>** answers a group from `group_table` before any page
+  (`help_group_exact` in `act_info.c`), for a group a command shares a
+  name with (WEATHER).
+- `db.c`'s `help_fold_keyword` folds a header that wraps a line into one
+  line; `help_keyword_exact` matches a quoted keyword whole.
+
 ## Achievements
 
 `src/achievements.c`; the player guide is `wiki/achievements.md`, whose
@@ -1611,8 +1644,8 @@ rules the code depends on:
   `save 2` for the second save, `save-<Name> 2` for that character's
   second, which an autosave of somebody else cannot take -- though one
   of that character can, so ACCEPT's save has its own `accept-save`
-  (CI, 2026-10-27), a death's `death-save-<Name>` and a craft's
-  `craft-save`; `dirsync-<Name>` makes that character's next save
+  (CI, 2026-10-27), a death's `death-save-<Name>`, a craft's
+  `craft-save` and a PRESTORE give's or retry's `prestore-save`; `dirsync-<Name>` makes that character's next save
   unconfirmed, `corpse-move` fails a corpse record's move into history;
   `ledger`, `crash-before-commit`), read
   by `recovery_fault()` and set nowhere but `tests/`.

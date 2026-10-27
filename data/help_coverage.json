@@ -1,0 +1,61 @@
+{
+  "_comment": "Exceptions tools/help_audit.py accepts, each with its reason. A new collision, gate or uncovered command fails the audit until it is fixed or listed here.",
+  "commands_without_help": {},
+  "intended_gates": {
+    "cc": "Castle chat: the command is open to all, but only a castle member can use it, and the topic stays at level 10 as the owner kept it (ALLOWED_GATES in tests/test_help_keywords.py).",
+    "cgos": "The same castle chat channel as CC.",
+    "-": "The same castle chat channel as CC."
+  },
+  "skills_without_player_help": {},
+  "passives_in_group_pages": {},
+  "obtainable_effects": [
+    "divine protection",
+    "remove align",
+    "restore mana",
+    "empower",
+    "titanic",
+    "vengence"
+  ],
+  "shared_keywords": {
+    "angel": {
+      "kind": "staff-first",
+      "why": "The level 65 rank page (ANGEL) for staff of that rank; everyone else gets Herbie the angel."
+    },
+    "herbie": {
+      "kind": "staff-first",
+      "why": "HERBIE is a staff command; mortals get the page about Herbie himself."
+    },
+    "hero": {
+      "kind": "staff-first",
+      "why": "HERO is the heroes' channel from level 51; below that the word means hero levels."
+    },
+    "invis": {
+      "kind": "staff-first",
+      "why": "INVIS is WIZINVIS for staff; mortals get the spell, staff reach it as INVISSPELL."
+    },
+    "teleport": {
+      "kind": "staff-first",
+      "why": "TELEPORT is TRANSFER for staff; mortals get the spell, staff reach it as TELEPORTSPELL."
+    },
+    "empower": {
+      "kind": "staff-first",
+      "why": "The staff command; players get the bundle's effects, staff reach them as EMPOWER SPELL."
+    },
+    "titanic": {
+      "kind": "staff-first",
+      "why": "The staff command; players get the bundle's effects, staff reach them as TITANIC SPELL."
+    },
+    "farslay": {
+      "kind": "staff-first",
+      "why": "The implementors' FARSLAY command; everyone else gets the quest master's scroll (SCROLL OF FARSLAY)."
+    },
+    "goblin": {
+      "kind": "staff-first",
+      "why": "The staff GOBLIN command; everyone else gets the treasure goblin (TREASURE GOBLIN)."
+    },
+    "hermie": {
+      "kind": "alias",
+      "why": "Players ask for BUFF/HERMIE; the staff page is reached by its command, SPELLUP."
+    }
+  }
+}

@@ -2203,29 +2203,27 @@ void do_weather( CHAR_DATA *ch, char *argument )
  */
 static bool help_keyword_exact( const char *argument, const char *keywords )
 {
-    char word[MAX_INPUT_LENGTH];
-    const char *p;
-    size_t length;
+    char list[MAX_STRING_LENGTH];
+    char word[MAX_STRING_LENGTH];
+    char *rest;
 
     if ( argument == NULL || keywords == NULL || argument[0] == '\0' )
         return FALSE;
 
-    p = keywords;
-    while ( *p != '\0' )
+    /* Read as one_argument reads it, so a quoted keyword is one word:
+       HELP STONE SKIN found 'STONE SKIN' only by the prefix pass, after
+       any earlier page that merely began with STONE (help review,
+       2026-10-27). */
+    toc_strlcpy( list, keywords, sizeof(list) );
+    rest = list;
+    for ( ;; )
     {
-        while ( *p == ' ' )
-            p++;
-
-        length = 0;
-        while ( *p != '\0' && *p != ' ' && length + 1 < sizeof(word) )
-            word[length++] = *p++;
-        word[length] = '\0';
-
-        if ( length > 0 && !str_cmp( argument, word ) )
+        rest = one_argument( rest, word );
+        if ( word[0] == '\0' )
+            return FALSE;
+        if ( !str_cmp( argument, word ) )
             return TRUE;
     }
-
-    return FALSE;
 }
 
 
@@ -2344,6 +2342,52 @@ static void help_suggest( CHAR_DATA *ch, const char *asked )
 }
 
 
+/*
+ * A spell group's members and price, from group_table.  HELP answers a
+ * group this way when no page matches, and HELP GROUP <name> asks for it
+ * outright -- the one way to reach a group named like a command or a
+ * topic, such as WEATHER.
+ */
+static void help_show_group( CHAR_DATA *ch, int gn )
+{
+    char line[MAX_STRING_LENGTH];
+    int sn;
+    int col = 0;
+
+    snprintf( line, sizeof(line), "%s is a group of abilities:\n\r",
+	      capitalize( group_table[gn].name ) );
+    send_to_char( line, ch );
+    for ( sn = 0; sn < MAX_IN_GROUP && group_table[gn].spells[sn] != NULL; sn++ )
+    {
+	snprintf( line, sizeof(line), "  %-22s", group_table[gn].spells[sn] );
+	send_to_char( line, ch );
+	if ( ++col % 3 == 0 )
+	    send_to_char( "\n\r", ch );
+    }
+    if ( col % 3 != 0 )
+	send_to_char( "\n\r", ch );
+    if ( !IS_NPC(ch) && group_table[gn].rating[ch->class] > 0 )
+	snprintf( line, sizeof(line),
+		  "It costs you %d train%s.  GAINLIST shows who sells it.\n\r",
+		  group_table[gn].rating[ch->class],
+		  group_table[gn].rating[ch->class] == 1 ? "" : "s" );
+    else
+	toc_strlcpy( line, "Your class does not buy it.\n\r", sizeof(line) );
+    send_to_char( line, ch );
+}
+
+/* The group named exactly, never a prefix: "group weather" must not
+   become some other group that happens to start the same way. */
+static int help_group_exact( const char *name )
+{
+    int gn;
+
+    for ( gn = 0; gn < MAX_GROUP && group_table[gn].name != NULL; gn++ )
+	if ( !str_cmp( name, group_table[gn].name ) )
+	    return gn;
+    return -1;
+}
+
 void do_help( CHAR_DATA *ch, char *argument )
 {
     HELP_DATA *pHelp;
@@ -2361,6 +2405,19 @@ void do_help( CHAR_DATA *ch, char *argument )
         if (argall[0] != '\0')
             toc_strlcat(argall," ", sizeof(argall));
         toc_strlcat(argall,argone, sizeof(argall));
+    }
+
+    /* HELP GROUP <name>: the group itself, before any page that shares
+       its name (WEATHER is a command as well as a group). */
+    if ( !str_prefix( "group ", argall ) )
+    {
+	int gn = help_group_exact( argall + 6 );
+
+	if ( gn >= 0 )
+	{
+	    help_show_group( ch, gn );
+	    return;
+	}
     }
 
     /*
@@ -2411,30 +2468,7 @@ void do_help( CHAR_DATA *ch, char *argument )
 
 	if ( gn >= 0 )
 	{
-	    char line[MAX_STRING_LENGTH];
-	    int sn;
-	    int col = 0;
-
-	    snprintf( line, sizeof(line), "%s is a group of abilities:\n\r",
-		      capitalize( group_table[gn].name ) );
-	    send_to_char( line, ch );
-	    for ( sn = 0; sn < MAX_IN_GROUP && group_table[gn].spells[sn] != NULL; sn++ )
-	    {
-		snprintf( line, sizeof(line), "  %-22s", group_table[gn].spells[sn] );
-		send_to_char( line, ch );
-		if ( ++col % 3 == 0 )
-		    send_to_char( "\n\r", ch );
-	    }
-	    if ( col % 3 != 0 )
-		send_to_char( "\n\r", ch );
-	    if ( !IS_NPC(ch) && group_table[gn].rating[ch->class] > 0 )
-		snprintf( line, sizeof(line),
-			  "It costs you %d train%s.  GAINLIST shows who sells it.\n\r",
-			  group_table[gn].rating[ch->class],
-			  group_table[gn].rating[ch->class] == 1 ? "" : "s" );
-	    else
-		toc_strlcpy( line, "Your class does not buy it.\n\r", sizeof(line) );
-	    send_to_char( line, ch );
+	    help_show_group( ch, gn );
 	    return;
 	}
     }

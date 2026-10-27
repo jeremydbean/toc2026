@@ -132,6 +132,7 @@ try:
     from webadmin.area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS, ROOM_FLAGS
     from webadmin import oracle
     from webadmin import hyrule_oracle
+    from webadmin import help_index
 except ImportError:
     from area_health import build_area_health
     from area_parser import AreaParser, APPLY_LOCATIONS
@@ -140,6 +141,7 @@ except ImportError:
     from area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS, ROOM_FLAGS
     import oracle
     import hyrule_oracle
+    import help_index
 
 # Default paths
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
@@ -2662,66 +2664,30 @@ async def game_client() -> FileResponse:
 # page. This filter is the whole security model, so it runs at parse time.
 HELP_PUBLIC_MAX_LEVEL = 0
 
-_HELP_CACHE: tuple[float, list[Dict[str, Any]]] = (0.0, [])
+_HELP_CACHE: tuple[float, Any] = (0.0, None)
 _HELP_TTL = 60.0
 
 
-def _parse_help_section(text: str) -> list[Dict[str, Any]]:
-    """Entries from one #HELPS block: level, keywords, body."""
-    entries: list[Dict[str, Any]] = []
-    lines = text.splitlines()
-    index = 0
-
-    while index < len(lines):
-        header = lines[index].strip()
-        index += 1
-        if not header:
-            continue
-        if header.startswith("#"):
-            break
-
-        # "<level> <KEYWORDS>~", where a keyword group may be quoted.
-        if not header.endswith("~"):
-            continue
-        header = header[:-1].strip()
-        parts = header.split(None, 1)
-        if len(parts) != 2:
-            continue
-        try:
-            level = int(parts[0])
-        except ValueError:
-            continue
-
-        keywords = parts[1].strip()
-        if keywords == "$":
-            break
-
-        body: list[str] = []
-        while index < len(lines) and lines[index].rstrip() != "~":
-            body.append(lines[index])
-            index += 1
-        index += 1  # step over the closing tilde
-
-        if level > HELP_PUBLIC_MAX_LEVEL:
-            continue
-
-        names = [name.strip("'\"") for name in keywords.split()
-                 if name.strip("'\"")]
-        if not names:
-            continue
-
-        entries.append({
-            "level": level,
-            "keywords": names,
-            "title": names[0].title(),
-            "body": "\n".join(body).strip("\n"),
-        })
-
-    return entries
+def _help_record(entry: "help_index.HelpEntry", ask: str) -> Dict[str, Any]:
+    return {
+        "level": entry.level,
+        "keywords": list(entry.words),
+        "title": entry.title,
+        "ask": ask,
+        "body": entry.text.strip("\n"),
+        "order": entry.order,
+    }
 
 
-def load_player_help() -> list[Dict[str, Any]]:
-    """Every player-visible help entry, cached briefly."""
+def _load_help_entries() -> tuple[list, list[Dict[str, Any]]]:
+    """The game's whole help list, and the public records.
+
+    Read as the game reads it (help_index: area.lst order, Latin-1,
+    fread_string tokens, quoted phrases kept whole), so the website cannot
+    pick a different page than HELP does.  A public record is a page a
+    player can read (level 0 or below) that some keyword still reaches --
+    a page every keyword of which lands on an earlier one first is one the
+    game never shows, and neither does the website."""
     global _HELP_CACHE
 
     cached_at, cached = _HELP_CACHE
@@ -2729,33 +2695,38 @@ def load_player_help() -> list[Dict[str, Any]]:
     if cached and now - cached_at < _HELP_TTL:
         return cached
 
-    entries: list[Dict[str, Any]] = []
-    seen: set[str] = set()
     try:
-        files = sorted(AREA_PATH.glob("*.are"))
+        entries = help_index.load_helps(AREA_PATH)
     except OSError:
-        files = []
-
-    for path in files:
-        try:
-            content = path.read_text(encoding="utf-8", errors="replace")
-        except OSError:
+        entries = []
+    public: list[Dict[str, Any]] = []
+    for entry in entries:
+        if entry.level > HELP_PUBLIC_MAX_LEVEL or not entry.words:
             continue
-        marker = content.find("#HELPS")
-        if marker == -1:
+        ask = help_index.reachable_by(entries, entry, HELP_PUBLIC_MAX_LEVEL)
+        if ask is None:
             continue
-        for entry in _parse_help_section(content[marker + len("#HELPS"):]):
-            # First definition wins, matching how the game resolves a
-            # keyword that more than one file claims.
-            key = entry["keywords"][0].lower()
-            if key in seen:
-                continue
-            seen.add(key)
-            entries.append(entry)
+        public.append(_help_record(entry, ask))
+    _HELP_CACHE = (now, (entries, public))
+    return _HELP_CACHE[1]
 
-    entries.sort(key=lambda item: item["title"].lower())
-    _HELP_CACHE = (now, entries)
-    return entries
+
+def load_player_help() -> list[Dict[str, Any]]:
+    """Every player-visible help entry, in the game's order, cached briefly."""
+    return _load_help_entries()[1]
+
+
+def lookup_player_help(topic: str) -> Optional[Dict[str, Any]]:
+    """What HELP <topic> shows a player: the game's exact-then-prefix
+    lookup over the game's list, never above public level."""
+    entries, public = _load_help_entries()
+    found = help_index.lookup(entries, topic, HELP_PUBLIC_MAX_LEVEL)
+    if found is None:
+        return None
+    for record in public:
+        if record["order"] == found.order:
+            return record
+    return _help_record(found, topic)
 
 
 _DIRECTIONS_PATH = Path(__file__).resolve().parent / "directions.json"
@@ -2794,7 +2765,7 @@ async def directions_index() -> Dict[str, Any]:
 
 
 @app.get("/api/help")
-async def help_index() -> Dict[str, Any]:
+async def help_topics() -> Dict[str, Any]:
     """Player help topics. Deliberately unauthenticated: it is public text."""
     entries = await asyncio.to_thread(load_player_help)
     return {
@@ -2802,11 +2773,12 @@ async def help_index() -> Dict[str, Any]:
             {
                 "title": entry["title"],
                 "keywords": entry["keywords"],
+                "ask": entry["ask"],
                 "summary": next(
                     (line.strip() for line in entry["body"].splitlines()
                      if line.strip()), ""),
             }
-            for entry in entries
+            for entry in sorted(entries, key=lambda item: item["title"].lower())
         ],
         "total": len(entries),
     }
@@ -2814,26 +2786,14 @@ async def help_index() -> Dict[str, Any]:
 
 @app.get("/api/help/{topic}")
 async def help_topic(topic: str) -> Dict[str, Any]:
-    entries = await asyncio.to_thread(load_player_help)
-    wanted = topic.strip().lower()
-
-    for entry in entries:
-        if any(word.lower() == wanted for word in entry["keywords"]):
-            return {
-                "title": entry["title"],
-                "keywords": entry["keywords"],
-                "body": entry["body"],
-            }
-
-    for entry in entries:
-        if any(word.lower().startswith(wanted) for word in entry["keywords"]):
-            return {
-                "title": entry["title"],
-                "keywords": entry["keywords"],
-                "body": entry["body"],
-            }
-
-    raise HTTPException(status_code=404, detail="No help on that topic.")
+    entry = await asyncio.to_thread(lookup_player_help, topic)
+    if entry is None:
+        raise HTTPException(status_code=404, detail="No help on that topic.")
+    return {
+        "title": entry["title"],
+        "keywords": entry["keywords"],
+        "body": entry["body"],
+    }
 
 
 @app.get("/api/health")

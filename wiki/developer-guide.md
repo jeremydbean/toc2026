@@ -324,7 +324,12 @@ when a change crosses C/Python, parser/runtime, persistence, or world boundaries
 5. Consider NPC callers, extracted/killed characters, combat transitions,
    movement traps, charm, switched staff, and invalid/hostile input.
 6. Add or update the matching help entry in the correct Latin-1 `.are` help
-   file, normally `area/commands.are`.
+   file, normally `area/commands.are` (skills in `skills.are`, spells in
+   `spells.are`), then run `python3 tools/help_audit.py`. `commands.are`
+   loads first and an exact keyword there shadows any later page with the
+   same word, so give a topic one page, not a command page and a skill
+   page; a class level table is generated (`--write-levels`), and so is
+   HELP KEYWORDS (`--write-keywords`).
 7. Test exact syntax, abbreviations, no arguments, bad arguments, unavailable
    state, success, and interrupted success.
 

@@ -27,20 +27,17 @@ cannot pray in battle, while your blood is still up, while something hunts
 you, or from a death trap.  The gods may bar a troublemaker from her.
 ~
 
-60 FARSLAY ORACLEADMIN~
+66 ORACLEADMIN 'ORACLE ADMIN'~
+Syntax: oracle
+        oracle dismiss
+        oracle ban <player>
+        oracle allow <player>
 
-Immortal tools for the Oracle and the Farslay rite.
+Staff tools for the Oracle: ORACLE shows her status and recent transcript,
+DISMISS sends her home now, BAN bars a player from praying to her and
+ALLOW lifts the bar.  The Oracle and Herbie cannot be slain by a fatality.
 
-  farslay <player>      a god's Farslayer: 100%, never backfires, reaches
-                        anywhere.  Works on anyone except the divinely
-                        warded, who turn the blade back on the caster.
-  oracle                the Oracle's status and recent transcript
-  oracle dismiss        send the Oracle home now
-  oracle ban <player>   bar a player from praying to the Oracle
-  oracle allow <player> lift that bar
-
-The Oracle and Herbie cannot be fatalitied; the warded cannot be slain and
-turn Farslay back on any caster.
+See also: ORACLE, FARSLAY
 ~
 
 0 SUMMARY~
@@ -523,18 +520,6 @@ does not currently include Mudlet's automatic mapper.
 See also: WEB, MUDLET, MAP, ALIAS
 ~
 
-0 NE NORTHEAST NW NORTHWEST SE SOUTHEAST SW SOUTHWEST~
-Syntax: <direction>
-
-These are shorthand movement commands for the diagonal exits in a room.
-Each direction functions the same way as typing the full diagonal, for
-example "ne" moves northeast and "sw" moves southwest.  If the exit exists
-and is open, you will step through it; otherwise you will be told the way
-is closed or blocked.
-
-See also: NORTH, EXITS, RUN
-~
-
 0 ENTER~
 Syntax: enter
 
@@ -544,18 +529,6 @@ special entry point described in the room.  Look for keywords such as
 "portal", "gate", "boat", or "door" to identify what you can enter.
 
 See also: RIDE, MOUNT, RECALL
-~
-
-0 RIDE MOUNT~
-Syntax: ride <mount>
-Syntax: mount <mount>
-
-RIDE and MOUNT climb onto a mountable creature or vehicle.  Only mobs with
-the MOUNTABLE flag can be ridden.  While mounted you move with your mount
-and benefit from reduced movement costs.  Some areas restrict mounted
-travel.  Use DISMOUNT to climb off.
-
-See also: ENTER, DISMOUNT
 ~
 
 0 CASTLE CASTLES~
@@ -571,15 +544,16 @@ See also: CHANNELS, CGOS, CC
 ~
 
 0 IGNORE~
-Syntax: ignore <name>
-        ignore none
-        ignore list
+Syntax: ignore
 
-Adds or removes players from a personal ignore list.  Characters on your
-ignore list cannot contact you via tells or channels.  The LIST option shows
-who you are currently ignoring; NONE clears the entire list.
+IGNORE is not available on Times of Chaos: the command answers "That
+command is not available."  To stop hearing someone, use what the game
+does have: DEAF stops all tells, QUIET leaves you hearing only SAY and
+EMOTE, and typing a channel's name on its own (GOSSIP, AUCTION ...) turns
+that channel off.  CHANNELS shows which are on.  Harassment breaks the
+RULES; tell the immortals with a NOTE.
 
-See also: TELL, REPLY, AFK
+See also: DEAF, QUIET, CHANNELS, RULES
 ~
 
 0 LISTEN~
@@ -628,49 +602,28 @@ armour shops.  Not every shopkeeper repairs; look for those who say so.
 See also: VALUE, BUY, LIST
 ~
 
-0 SECONDARY~
+0 SECONDARY 'DUAL WIELD' DUAL~
 Syntax: secondary <weapon>
 
-Equips the specified weapon in your off-hand if you have trained the
-SECONDARY weapon skill.  This toggles dual wielding; to return to a single
-weapon, wield your main-hand weapon normally.
+Wields a second weapon in your off hand, the slot a shield would use; a
+shield there comes off.  You need the DUAL WIELD skill and a main weapon
+already wielded, and the second must be a weapon you could wield, light
+enough for your strength.  Neither weapon may be two-handed.  A mortal
+cannot dual wield an enchanted weapon, or one with a hit or damage bonus
+above 5.  REMOVE takes it off again; removing your main weapon leaves it
+where it is.
 
-Dual wielding with low skill imposes accuracy penalties to both weapons.
-As your SECONDARY skill improves, the off-hand penalty diminishes.  Smaller
-or lighter weapons are generally better choices for the off hand.
+Each round the off hand gets one more chance to strike, your dual wield
+skill plus that weapon's skill, divided by five -- at most 40%.  That blow
+skips the to-hit roll; the foe's dodge, parry and block still apply.
 
-See also: WIELD, DISARM, DUAL WIELD
+Usable from level: Thief 17; never Mage, Cleric, Warrior, Monk, Necromancer.
+Trainer: Mizry the assassin.  GAINLIST shows who sells it to your class and
+guild.
+
+See also: WIELD, REMOVE, SECOND ATTACK
 ~
 
-0 DUAL WIELD~
-Dual wielding is the act of fighting with a weapon in each hand
-simultaneously.  To dual wield you must:
-  1. Have the SECONDARY skill (gain it from a trainer).
-  2. WIELD your main weapon normally.
-  3. Use SECONDARY <weapon> to equip the off-hand weapon.
-
-Off-hand accuracy starts lower than the main hand and improves as your
-SECONDARY skill increases.  Lighter weapons work better in the off hand;
-very heavy or two-handed weapons cannot be used this way.
-
-To return to single-weapon combat, WIELD your main weapon again -- this
-replaces the off-hand weapon.  You can also use REMOVE on the off-hand
-item, but WIELD is faster.
-
-See also: SECONDARY, WIELD, DISARM
-~
-
-
-0 CLAIRVOYANCE~
-Syntax: clairvoyance
-
-CLAIRVOYANCE briefly lets you scry your immediate surroundings for
-concealed exits or threats without moving.  You receive a momentary
-mental impression of nearby rooms and any significant dangers within
-them.  Range and clarity improve with your psionic skill level.
-
-See also: TELEKINESIS, DANGER, PROJECT, PSIONICS
-~
 
 0 DANGER~
 Syntax: danger
@@ -681,28 +634,6 @@ a particularly perilous mob, active trap, or other significant hazard.
 Useful for scouting before stepping into an unknown area.
 
 See also: CLAIRVOYANCE, SEARCH, PSIONICS
-~
-
-0 PROJECT~
-Syntax: project <direction>
-
-PROJECT sends your spirit one room at a time in the chosen direction,
-letting you scout ahead while your body remains in place.  You can look
-around the projected location and step further.  Running out of mana or
-losing concentration snaps you back to your body immediately.
-
-See also: ASTRAL WALK, CLAIRVOYANCE, PSIONICS
-~
-
-0 SHIFT~
-Syntax: shift <player>
-
-SHIFT teleports you directly to another player's location if the
-destination and your current room permit travel.  Many safe, private,
-or magically warded rooms block shifting.  The target receives no
-warning of your arrival.
-
-See also: ASTRAL WALK, PROJECT, PSIONICS
 ~
 
 0 SHADOWMELD~
@@ -1068,16 +999,6 @@ Type HELP on any command named in a change for the detail.
 See also: NEWS, MOTD
 ~
 
-0 NEWS~
-Syntax: news
-
-Shows recent news posts from the game staff.  News covers ongoing events,
-story updates, policy announcements, and other information that is relevant
-to all players.  Older entries scroll off as new ones are added.
-
-See also: CHANGES, MOTD
-~
-
 0 HITROLL DAMROLL HR DR 'TO HIT'~
 Hitroll and damroll are the two numbers SCORE shows beside your armour.
 
@@ -1143,6 +1064,32 @@ time he comes back.
 See also: SCAN, LIST, BUY
 ~
 
+65 GOBLIN~
+Syntax: goblin                (where he is, his hit points, the chase)
+        goblin spawn          (a new one at a random room, if none)
+        goblin here           (a new one in your room, replacing any)
+        goblin dismiss        (send him away; another comes soon)
+
+There is always one treasure goblin (mob 29941): a new one appears at a
+random room a minute to three after the last is killed.  He wanders a step
+every half minute or so and drifts to a random room every twenty to forty
+minutes while nobody is after him, and to another area after ten minutes in
+one, never into a room he could not be struck in.  Each landed blow spills
+four to eight kills' worth of coin at the striker's level and sends him out
+a random exit; it takes a thirteenth to an eighteenth of his health by how
+hard it hit, so a kill is 12 to 17 flights.  Nothing holds him: stuns,
+sleep, bash, trip and maze are shaken off at once, and CONFUSE is refused.
+A minute without a blow and he opens a portal and teleports.  His sack holds
+about two hundred kills' worth of coin at the killer's level, half the time
+the best piece in some slot for the killer's level, and a tenth of the time
+a black market rarity.  Appearances come to WIZINFO with the room and to the
+log without it (the log is published); kills to both, with the room and the
+flights.  Staff see him anywhere; mortals only in his room, or one room away
+with SCAN.  BLACKMARKET SUMMON does the same for the black market.
+
+See also: 'TREASURE GOBLIN', BLACKMARKET
+~
+
 0 'TREASURE GOBLIN' GOBLIN~
 There is always a treasure goblin somewhere in the world: a wiry little
 thief bent under a sack of stolen coin.  Nothing finds him from afar --
@@ -1165,32 +1112,6 @@ your level, often a fine piece of gear for your level too, and now and
 then something rarer.  Another goblin turns up somewhere soon after.
 
 See also: SCAN, 'BLACK MARKET'
-~
-
-60 GOBLIN~
-Syntax: goblin                (where he is, his hit points, the chase)
-        goblin spawn          (a new one at a random room, if none)
-        goblin here           (a new one in your room, replacing any)
-        goblin dismiss        (send him away; another comes soon)
-
-There is always one treasure goblin (mob 29941): a new one appears at a
-random room a minute to three after the last is killed.  He wanders a
-step every half minute or so and drifts to a random room every twenty to
-forty minutes while nobody is after him, and to another area after ten
-minutes in one, never into a room he could not be struck in.  Each landed blow spills four to eight kills' worth of
-coin at the striker's level and sends him out a random exit; it takes a
-thirteenth to an eighteenth of his health by how hard it hit, so a kill
-is 12 to 17 flights.  Nothing holds him: stuns, sleep, bash, trip and
-maze are shaken off at once, and CONFUSE is refused.  A minute without a
-blow and he opens a portal and teleports.  His sack holds about two hundred kills' worth of coin at the
-killer's level, half the time the best piece in some slot for the
-killer's level, and a tenth of the time a black market rarity.
-Appearances come to WIZINFO with the room and to the log without it (the
-log is published); kills to both, with the room and the flights.  Staff
-see him anywhere; mortals only in his room, or one room away with SCAN.
-BLACKMARKET SUMMON does the same for the black market.
-
-See also: 'TREASURE GOBLIN', BLACKMARKET
 ~
 
 60 QUESTDIAG GEARDIAG HYRULESTATUS ALIGNCHECK~
@@ -1234,17 +1155,17 @@ Syntax: blackmarket                (where he is, how long, stock, pool)
         blackmarket restock        (lay out a new stock)
         blackmarket dismiss        (send him away)
 
-Vesh, the black market (mob 29940), comes for twenty to forty minutes,
-then is away for three to six hours; his first visit after a boot is ten
-minutes to six hours in.  While he is about he moves every 45-75 seconds,
-one move in eight a vanishing to a random room, and after ten minutes
-in one area he crosses to another.  A mortal with him has
-90 seconds to start buying; the first purchase gives that buyer alone 60
-seconds, and 30 more per purchase, then he vanishes.  He carries five
-items at most from a pool of the three best pieces per slot in every
-five levels from 29, plus rarities at any level.  Appearances and purchases come to WIZINFO
-and the log with the room.  Staff see him anywhere; mortals only in his
-room, or one room away with SCAN.
+Vesh, the black market (mob 29940), comes for twenty to forty minutes, then
+is away for three to six hours; his first visit after a boot is ten minutes
+to six hours in.  While he is about he moves every 45-75 seconds, one move
+in eight a vanishing to a random room, and after ten minutes in one area he
+crosses to another.  A mortal with him has 90 seconds to start buying; the
+first purchase gives that buyer alone 60 seconds, and 30 more per purchase,
+then he vanishes.  He carries five items at most from a pool of the three
+best pieces per slot in every five levels from 29, plus rarities at any
+level.  Appearances and purchases come to WIZINFO and the log with the room.
+Staff see him anywhere; mortals only in his room, or one room away with
+SCAN.
 
 See also: 'BLACK MARKET'
 ~
@@ -1341,40 +1262,6 @@ UNLOCK the door or chest it fits.
 See also: QUAFF, RECITE, ZAP, BRANDISH, EAT, DRINK, WEAR, PLAY, BOMB
 ~
 
-0 RULES~
-Syntax: rules
-
-Displays the official game rules and player conduct policies.  All players
-are expected to read and follow these rules.  Ignorance of the rules is
-not an accepted excuse for violations.  Contact an immortal if you have
-questions about how a rule applies to a specific situation.
-
-See also: WIZLIST, CREDITS
-~
-
-0 STORY~
-Syntax: story
-
-Recounts the background lore and history of the game world.  Reading the
-story gives context for the setting, the major factions, and the events
-that brought the world to its current state.  Useful for new players or
-anyone who wants to understand the roleplaying background.
-
-See also: CHANGES, NEWS
-~
-
-0 LORE~
-Syntax: lore <object>
-
-Researches a carried object and gives approximate weight, value, combat
-properties, magical effects, and spell charges. Higher Lore skill improves
-the chance of recognizing every spell on a multi-spell item. Research may
-cost gold based on item level; skill and character level reduce that fee,
-possibly to zero for simple items.
-
-See also: COMPARE, IDENTIFY, INVENTORY
-~
-
 0 AFK~
 Syntax: afk
 
@@ -1385,19 +1272,6 @@ to clear the flag when you return.  The flag does not persist across
 logins.
 
 See also: TELL, REPLY, WHO
-~
-
-0 DAMAGENUMBERS~
-Syntax: damagenumbers
-
-Toggles numerical combat feedback on or off.  When enabled, the exact
-damage dealt or received is shown in brackets after each hit, for example:
-  Your slash devastates the orc! [-47]
-  The orc claws you! [-12]
-Bystanders in the room always see only the descriptive message regardless
-of their own setting.  The flag is saved across logins.
-
-See also: SCORE, REPORT
 ~
 
 0 CRAWL~
@@ -1426,33 +1300,16 @@ Example: jump pit
 See also: CRAWL, CLIMB, ENTER, LOOK
 ~
 
-0 DELET DELETE~
-Syntax: delet
-Syntax: delete <password>
-
-DELET is a safety guard for character deletion.  First type DELET alone to
-arm the command, then confirm with DELETE <yourpassword>.  Both steps must be
-done in sequence to complete the deletion.
-
-Deletion is permanent.  The character's name becomes available for other
-players and will not be restored by immortals.  All equipment and bank gold
-are permanently lost.
-
-See also: PASSWORD, QUIT, SAVE
-~
-
-0 DAMAGENUMBERS DAMAGE~
+0 DAMAGENUMBERS~
 Syntax: damagenumbers
 
-Toggles the exact damage figure alongside each combat message. With it off
-you see "You slash the goblin hard" and nothing more; with it on you also
-see the number behind that description.
+Toggles the exact damage figure after each blow you deal or take: with it
+on, "You slash the goblin hard [-47]" and "The goblin claws you [-12]".
+Everybody else in the room sees only the words, whatever their own
+setting.  With it on you are also told the small shifts in your alignment
+that a kill or a deed brings.  It is off for new characters and is saved.
 
-Off for new characters. The wording on its own tells you how hard you hit
-relative to your own attacks, so the numbers are for people who want to
-compare weapons and tune gear rather than read a fight.
-
-See also: NEW, AUTOLIST, CONFIG
+See also: DAMAGE, ALIGNMENT, CONFIG
 ~
 
 0 NEW SETTINGS CUSTOMIZE OPTIONS~
@@ -1759,7 +1616,7 @@ You must be inside the Lucky Dragon Casino to use this command.
 See also: CASINO, SLOTS, BET, ROULETTE
 ~
 
-0 BREW CONCOCT~
+0 BREW CONCOCT 'HERBAL BREWING'~
 Syntax: brew <herb>
 Syntax: concoct <component> <component>
 Syntax: brew preview <herb>
@@ -1792,7 +1649,13 @@ The rarest concoctions hold TITANIC or EMPOWER, the two bundles Hermie gives
 free at the Temple, to carry where she is not.  Nobody casts either; they
 last half the maker's level in ticks, never longer than hers.
 
-See also: SCRIBE, QUAFF, ACHIEVEMENTS
+BREW is the herbal brewing skill.  Usable from level: Monk 12; never Mage,
+Cleric, Thief, Warrior, Necromancer.  Trainer: the Master of Movement.
+CONCOCT, likewise.  Usable from level: Mage 17, Cleric 17, Necromancer 19;
+never Thief, Warrior, Monk.  Trainers: Flame the fire mage, Tempora the high
+priestess, Marilith.  GAINLIST shows who sells them to your class and guild.
+
+See also: SCRIBE, QUAFF, LORE, ACHIEVEMENTS
 ~
 
 0 SCRIBE~
@@ -1814,17 +1677,23 @@ skill, which the preview also shows. See BREW for what PREVIEW tells you.
 Some inks write TITANIC or EMPOWER, which a scroll can lay on you or on
 another player.
 
+Usable from level: Mage 20, Cleric 25, Necromancer 30; never Thief, Warrior,
+Monk.  Trainers: Dawn the wand maker, Drixt the golden dragon, the Undead
+Spirit.  GAINLIST shows who sells it to your class and guild.
+
 See also: BREW, RECITE, ACHIEVEMENTS
 ~
 
-0 SHOOT~
+0 SHOOT ARCHERY BOW~
 Syntax: shoot <target>
 
-SHOOT fires a wielded bow at a visible mobile through an open adjacent exit.
-You must know the ARCHERY skill and cannot shoot while already fighting.
-Successful and missed shots can improve ARCHERY.  The current bow system does
-not require or consume a separate ammunition object, and it does not support
-ranged attacks against players.
+SHOOT fires a wielded bow at a mobile in the next room, through an open
+exit you can see; somebody in your own room is out of range.  You need the
+ARCHERY skill and cannot shoot while fighting, and players cannot be shot
+at from another room.  A hit deals 2d4 piercing damage; no arrows are
+needed or used.  It costs three seconds, hit or miss, and both can improve
+ARCHERY.  A wounded mobile may well come through the door after you, and
+one that cannot reach you still makes you pay a few hit points for it.
 
 Hyrule's own bow and boomerangs shoot at an enemy in the same room, and need
 no ARCHERY.  The bow wants a quiver of arrows carried, and each arrow costs
@@ -1837,7 +1706,12 @@ point and flashes bright red.  This finishing shot does not require ARCHERY
 and does not consume the Silver Arrow.  Normal attacks can wound Ganon but
 cannot deliver the final blow.
 
-See also: ARCHERY, WIELD, SCAN
+ARCHERY is also the weapon skill for a bow swung in melee.  Usable from
+level: Mage 35, Cleric 30, Thief 25, Warrior 15, Monk 20; never Necromancer.
+Trainer: Rakar the weaponsmaster.  GAINLIST shows who sells it to your class
+and guild.
+
+See also: WIELD, SCAN, HYRULE ITEMS
 ~
 
 0 HYRULE DUNGEONS 'HYRULE ORDER' 'HYRULE LEVELS'~
@@ -1943,23 +1817,6 @@ but not gods hidden above that.  It counts as every piece at every door.
 See also: HYRULE, SHOOT, COMBINE, COMPARE, EXAMINE
 ~
 
-0 PICK~
-Syntax: pick <direction>
-Syntax: pick <container>
-
-PICK attempts to open a lock on a door or container using lockpicks and
-the PICK LOCK skill.  Success opens the lock without a key.  Difficulty
-depends on the lock's strength and your skill level.  A failed attempt
-may alert nearby mobs.
-
-Some locks cannot be picked at all, and the game says so on the first
-try: "This lock is beyond any pick".  A fumble -- the pick slipping, the
-tumblers dropping back -- is a missed roll on a lock that can open, and
-is worth trying again.
-
-See also: OPEN, LOCK, UNLOCK, STEAL
-~
-
 0 JUNK~
 Syntax: junk <object>
 
@@ -1968,46 +1825,6 @@ it from the game.  Once junked, an item cannot be recovered.  Use JUNK to
 clear inventory space without dropping items on the ground.
 
 See also: SACRIFICE, DROP, DONATE
-~
-
-0 BACKSTAB BS~
-Syntax: backstab <victim>
-Syntax: bs <victim>
-
-Strike an enemy from hiding, delivering a single devastating blow before
-they can react.  The attack requires a piercing weapon and that you are
-hidden when you initiate it.  Damage is multiplied based on your backstab
-skill level; a higher skill means a deeper wound.  You are automatically
-revealed after the strike whether it succeeds or fails.  You cannot
-backstab a target you are already fighting.
-
-See also: HIDE, SNEAK
-~
-
-0 BASH~
-Syntax: bash <victim>
-
-Hurl yourself into an enemy with full body force, knocking them to the
-ground.  A successful bash interrupts your foe's next action and leaves
-them vulnerable to follow-up attacks for a brief moment.  Failure means
-you stumble and lose your own next action instead.  Two-handed and large
-weapons give a better chance to knock the target down; smaller frames are
-easier to topple than giants or quadrupeds.
-
-See also: TRIP, KICK
-~
-
-0 BERSERK~
-Syntax: berserk
-
-Enter a battle frenzy that sharpens your instinct to kill at the cost of
-your defenses.  While berserk, you deal more damage and gain offensive
-bonuses, but your armor class worsens and you cannot use skills that require
-calm or concentration.  The frenzy sustains itself while you are fighting
-and fades shortly after combat ends.  Only warriors with sufficient martial
-training can enter a true berserk.
-
-See also: KICK, BASH
 ~
 
 0 BLINDING~
@@ -2022,52 +1839,7 @@ cured by spells or natural recovery.
 See also: DIRT, CONFUSE, STUNNING
 ~
 
-0 CONFUSE~
-Syntax: confuse <victim>
 
-A psionic assault that muddles the target's thoughts, causing them to act
-erratically.  A confused foe may attack random targets, forget commands,
-or simply stand dazed for the duration.
-
-Holding your concentration is the only limit on a practiced psion.  At
-full skill the intrusion reaches any mind that is not specifically warded
-against mental attack.  A target immune to mental damage can never be
-confused, and a mentally resistant target gets a single bounded chance to
-throw the intrusion off.  A normal mind cannot resist it at all.
-
-See also: BLINDING, NIGHTMARE, TORMENT
-~
-
-
-
-0 DIRT DIRT-KICK~
-Syntax: dirt <victim>
-
-Scoop dirt, sand, or debris from the ground and fling it into an enemy's
-eyes.  On a failed save the target is blinded temporarily, lowering their
-to-hit chance significantly.  The technique costs no mana and relies on
-your DIRT KICK skill; a higher skill means a better chance to land and a
-longer duration.  Only works in outdoor or appropriate terrain rooms.
-
-See also: BLINDING, BASH, TRIP
-~
-
-0 DISARM~
-Syntax: disarm
-
-Attempt to knock your opponent's weapon from their grip during combat.
-A successful disarm sends the weapon flying to the floor, forcing the
-enemy to fight barehanded until they pick it up or draw another.  The
-chance to succeed is influenced by your disarm skill, relative weapon
-sizes, and your opponent's dexterity.  You must be in combat and wielding
-a weapon to attempt it.
-
-Two things stop a disarm outright.  A weapon under BEWITCH WEAPON cannot
-be taken from its owner's hand at all.  A warrior/warrior with HEROIC GRIP
-may hold on to theirs, and once fully practiced always will.
-
-See also: BASH, TRIP, HEROIC GRIP, BEWITCH WEAPON
-~
 
 0 "HEROIC GRIP" HEROICGRIP HEROIC GRIP~
 Syntax: (passive -- there is nothing to type)
@@ -2118,27 +1890,20 @@ practice it.
 See also: DISARM, BEWITCH WEAPON, PRACTICE, PRACTICELIST, GAIN
 ~
 
-0 DISMOUNT~
-Syntax: dismount
-
-Climb down from your current mount, returning to normal movement.  If
-you are thrown from or killed while mounted, dismounting happens
-automatically.  Some rooms or area transitions may also force a dismount
-if mounted travel is not permitted there.
-
-See also: MOUNT, RIDE
-~
-
 0 DOORBASH 'DOOR BASH'~
-Syntax: doorbash <direction>
+Syntax: doorbash <door>
 
-Charge a closed or locked door with brute force, attempting to break it
-open without a key.  Success destroys the door; failure leaves you
-winded for a short period.  The chance to succeed depends on your
-strength, the BASH DOOR skill, and the door's construction.  Magically
-sealed or wizard-locked exits cannot be doorbashed.
+A warrior's shoulder to a closed door: success opens it, and unlocks it,
+on both sides.  It needs no key and works on locks no pick can open, but
+not on a magical lock or one of Hyrule's seals.  You cannot bash in a
+fight.  It costs three seconds; a failure leaves you on the ground,
+resting.
 
-See also: BASH, PICK
+Usable from level: Warrior 10; never Mage, Cleric, Thief, Monk, Necromancer.
+Trainer: Vladamir the veteran, to warriors of the warriors' guild.  GAINLIST
+shows who sells it to your class and guild.
+
+See also: PICK, UNLOCK, BASH
 ~
 
 
@@ -2165,31 +1930,6 @@ functions identically to KILL.  Use with care in populated areas.
 See also: HIT, KILL, PKILL
 ~
 
-0 KICK~
-Syntax: kick <victim>
-
-A quick boot to disrupt an enemy or deal extra damage during combat.
-Kick costs no mana and triggers on its own timer, separate from your
-main weapon attacks.  Damage scales with your KICK skill and your
-strength.  The attack can occasionally knock a smaller or off-balance
-opponent back a step, delaying their next action.
-
-See also: TRIP, NERVE, BASH
-~
-
-0 MINDBLAST MIND BLAST~
-Syntax: mindblast <victim>
-
-Unleash a raw burst of psionic energy at a single target.  The blast
-deals direct mental damage and, on a failed save, leaves the victim
-disoriented: their attacks may miss wildly for a short time.  Mindblast
-draws from your mana pool and scales with your psionic skill level.  It
-can be used freely in or out of combat and does not require line-of-sight
-to a room exit.
-
-See also: CONFUSE, CLAIRVOYANCE, TELEKINESIS
-~
-
 0 NERVE~
 Syntax: nerve <victim>
 
@@ -2202,43 +1942,6 @@ effective and longer-lasting the effect.
 See also: KICK, TRIP, BASH
 ~
 
-0 NIGHTMARE~
-Syntax: nightmare <victim>
-
-Plant a waking nightmare in your target's mind, flooding their perception
-with fear and confusion.  Victims who fail the mental save cower, flee,
-or act irrationally for the duration.  The spell is psionic in nature and
-is resisted by mental fortitude.  It is especially devastating against
-foes with low willpower or those already suffering other mental effects.
-
-See also: CONFUSE, TORMENT, ENERVATE
-~
-
-0 RESCUE~
-Syntax: rescue <ally>
-
-Leap into the fray to defend an ally under attack, drawing that enemy's
-aggression onto yourself.  A successful rescue shifts the attacker's
-focus from your ally to you, giving your companion a moment to recover or
-flee.  The maneuver requires the RESCUE skill and works best when you
-have higher combat stats than the enemy.  You cannot rescue someone if
-you are already engaged with a different opponent.
-
-See also: SHIELD BLOCK, BASH, FLEE
-~
-
-0 SMITE~
-Syntax: smite <victim>
-
-Channel divine or magical wrath through your weapon in a single brutal
-strike.  The smite deals additional holy or elemental damage on top of
-your normal weapon hit, and on a failed save the target is briefly
-stunned or staggered.  Smiting consumes mana and requires that you are
-wielding a weapon attuned to the ability.
-
-See also: STUNNING, BASH, BLINDING
-~
-
 0 STUNNING~
 Syntax: stunning <victim>
 
@@ -2249,31 +1952,6 @@ land and the stun length both improve with your skill level and the
 victim's current condition.
 
 See also: BASH, SMITE, BLINDING
-~
-
-0 TORMENT~
-Syntax: torment <victim>
-
-Inflict sustained psychic or magical pain on a target, causing them to
-writhe in agony.  Tormented victims suffer a damage-over-time effect
-and penalties to concentration, making spellcasting or skill use risky.
-The effect stacks poorly with other pain-inflicting debuffs.  Mental
-and magical resistances reduce both the initial application chance and
-the recurring damage.
-
-See also: NIGHTMARE, ENERVATE, CONFUSE
-~
-
-0 TRIP~
-Syntax: trip <victim>
-
-Hook or sweep a foot to send your opponent stumbling to the ground.  A
-tripped target falls prone, losing their next attack and suffering an
-armor-class penalty until they stand.  Trip works best against bipedal
-targets; quadrupeds and very large creatures are much harder to topple.
-Requires the TRIP skill; failure makes you lose footing yourself briefly.
-
-See also: BASH, KICK, NERVE
 ~
 
 0 DEATHTRAP DEATHTRAPS 'DEATH TRAP' 'DEATH TRAPS' DT~
@@ -2362,94 +2040,6 @@ and to identify top-ranked targets or allies.
 See also: AQUEST, SCORE
 ~
 
-0 SEARCH~
-Syntax: search
-
-Actively examines the current room for concealed doors, hidden exits, or
-lurking traps.  A successful search reveals the object and describes it
-briefly.  Your chance to find something depends on your intelligence,
-the SEARCH skill level, and how well hidden the object is.  Some things
-can only be discovered through careful searching, not normal movement.
-
-See also: TRACK, HIDE, SNEAK
-~
-
-0 TRACK~
-Syntax: track <target>
-
-Attempt to follow the scent trail or footprints left by a character
-across rooms.  If sign is found you will automatically move one step
-in the direction the target went.  Repeat the command to keep following.
-The skill degrades with distance, time, and weather; rain or magic can
-erase a trail entirely.  NPCs with the HUNTER flag track back at you
-automatically.
-
-See also: SEARCH, HUNT
-~
-
-0 HIDE~
-Syntax: hide
-
-Attempt to conceal yourself in the shadows of the current room.  While
-hidden you do not appear on the room's character list to non-sneaking
-players and most mobs.  Moving, attacking, or casting a spell breaks
-hiding immediately.  The chance to hide successfully depends on your
-HIDE skill, and HIDE tells you whether it worked.
-
-See also: SNEAK, STEALTH, BACKSTAB
-~
-
-0 SNEAK~
-Syntax: sneak
-
-Toggle silent movement.  While sneaking, your footsteps do not generate
-entry or exit messages in adjacent rooms, making it harder for players
-and mobs to notice you passing through.  Sneaking costs extra movement
-per step and requires the SNEAK skill.  The toggle turns off if you run
-out of movement or enter combat.
-
-See also: HIDE, STEALTH, STEAL
-~
-
-0 STEALTH~
-Syntax: stealth
-
-Toggle the enhanced stealth mode.  STEALTH combines elements of hiding
-and sneaking into a sustained stance that makes you harder to detect
-overall, including by mobs that might see through ordinary hiding.
-It requires a higher skill investment than SNEAK or HIDE alone and
-drains movement steadily while active.
-
-See also: HIDE, SNEAK
-~
-
-
-0 LEVITATE~
-Syntax: levitate
-
-Toggle psionic levitation.  While levitating you float just above the
-ground, allowing you to pass over certain terrain hazards such as lava
-flows, shallow water crossings, and floor-based traps.  Levitation
-requires psionic training and a small continuous mana drain.  It offers
-no protection against falling damage from great heights.
-
-See also: FLY, PSIONICS, TELEKINESIS
-~
-
-0 STEAL~
-Syntax: steal <object> <victim>
-
-Attempt to take an object from another character's inventory without
-their knowledge.  Success depends on your STEAL skill, the victim's
-dexterity and awareness, and whether you are hidden or sneaking when
-you attempt it.  A failed steal is always noticed by the target and
-nearby bystanders, flagging you as a criminal.  You cannot steal from
-players in safe rooms or during active combat.
-A target more than five levels above you can never be robbed, and you
-are told they are too wary rather than left to try again.
-
-See also: SNEAK, HIDE, PICK
-~
 
 0 SHOVE~
 Syntax: shove <character> <direction>
@@ -2490,122 +2080,38 @@ See also: SAY, EMOTE
 ~
 
 
-0 MINDBAR~
-Syntax: mindbar
-
-Build a powerful, temporary fortress around your own mind.  Mindbar halves
-incoming mental damage.  It does not reduce physical or elemental damage and
-does not make you immune to non-damaging mental effects.  Mindbar cannot be
-combined with Psionic Armor or Psychic Shield.
-
-See also: PSIONIC, PSYCHIC, PSIONICS, TRANSFUSION
-~
-
-0 PSIONIC~
-Syntax: psionic [character]
-
-Create temporary Psionic Armor around yourself or a character in the same
-room.  The armor reduces incoming mental damage by one quarter.  It cannot be
-combined with Mindbar or Psychic Shield.
-
-See also: PSYCHIC, MINDBAR, PSIONICS
-~
-
-0 PSYCHIC~
-Syntax: psychic
-
-Raise a temporary Psychic Shield around every unprotected member of your
-group in the room.  The shield reduces incoming mental damage by one quarter.
-It does not replace an existing Mindbar, Psionic Armor, or Psychic Shield.
-
-See also: PSIONIC, MINDBAR, PSIONICS
-~
-
-0 PSIONICS~
-Psionics are mental disciplines available to characters who have remorted at
-least twice (remort 2+).  Upon qualifying, you receive one randomly selected
-skill from each of four disciplines, for four skills total.  At remort 5
-(final), all 17 psionic skills are granted.
-
-Psionic powers are practiced with Salir the Monk, who hovers in the
-Study of the Sage in the Astral Plane.
-
-PSIONIC DISCIPLINES
-
-  Assault:     ego whip, torment, nightmare, mindblast
-
-  Astral:      astral walk, shift, project, telekinesis (TK)
-
-  Defense:     mindbar, psionic armor, psychic shield, transfusion
-
-  Control:     clairvoyance, confuse, mind leech, enervate, pyrotechnics
-
-PASSIVE BENEFITS
-  Remort 2+: access to psionic skills; immune to hunger and thirst.
-  Remort 4+: recall always succeeds (no skill check).
-  Remort 5:  all 17 psionic skills granted; unlimited carry capacity.
-
-RESOURCE COST
-  Psionic skills draw from your mana pool when used.  Defensive powers last
-  for a limited duration; they are not toggles and do not drain mana per tick.
-
-See also: REMORT, MINDBAR, PSIONIC, PSYCHIC, TELEKINESIS, CLAIRVOYANCE,
-          MINDBLAST, CONFUSE, NIGHTMARE, TORMENT, ENERVATE, TRANSFUSION,
-          ASTRAL WALK, EGO WHIP
-~
-
 0 QUIT QUI~
 Syntax: quit
-Syntax: qui
 
-Save your character and cleanly disconnect from the game.  QUI is a
-shortened alias for QUIT that requires you to type the extra letter to
-prevent accidental disconnection.  Both commands behave identically.
+Saves your character and leaves the game.  You cannot quit in a fight, and
+your things, purse, bank and stash are all kept.  Where you quit matters
+for rest: see RESTED.
 
-You cannot quit while in active combat.  Quitting in a non-safe room
-is allowed but your character will remain visible in the room briefly
-before fully departing.  All inventory, equipment, and bank balance are
-saved automatically when you quit.
+QUIT has to be typed in full.  Shorter words run other commands: Q and QU
+are QUESTION, QUI is QUIET.
 
-See also: SAVE, RECALL, AFK
+See also: SAVE, RESTED, DELETE
 ~
 
-62 IMMORTAL~
-This help topic covers miscellaneous immortal tools.  Type WIZHELP for a
-complete listing of all immortal commands available to your trust level.
-For staff communication see IMMTALK (:) and WIZINFO.  Immortal channels
-and flags are logged; all actions with LOG_ALWAYS are permanently recorded.
+60 BEEP~
+Syntax: beep
+        beep <player>
 
-See also: WIZHELP, PSTAT, WIZCHECK, FINGER
-~
+BEEP <player> sends the named player, wherever they are, a terminal bell and
+the line "<you> beeps you."  It works on any player, not only staff, and is
+refused when they have turned beeps off ("They are not accepting beeps.").
 
-62 BEEP~
-Syntax: beep <immortal>
-
-BEEP sends a ping-style private message to the named immortal regardless of
-whether they have the immortal channel muted.  Use it to get the attention
-of an AFK immortal without broadcasting to the whole staff channel.
+BEEP with no argument turns your own beeps off, or back on.
 
 See also: IMMTALK, WIZINFO
 ~
 
-62 TRANSFUSION~
-Syntax: transfusion <target>
-
-TRANSFUSION is a psionic skill that lets you sacrifice a portion of your
-own hitpoints to restore a target's health.  The amount transferred
-depends on your psionic skill level and constitution.  Cannot be used
-if it would reduce you below a safe minimum HP threshold.
-
-See also: PSIONICS, MINDBAR
-~
-
-0 ALIAS ALIASES~
+0 ALIAS ALIASES UNALIAS~
 Syntax:
 alias <word> <command as a string>     (sets the alias)
 alias delete <alias to delete>         (deletes an alias)
 alias <word>                           (shows an alias)
-unalias <alias to delete>              (same as alias delete)
+unalias <alias>                        (same as alias delete)
 
 e.g.: alias mm cast 'magic missile'
       alias delete mm
@@ -2630,9 +2136,8 @@ A line that sets an alias is the exception: it is taken whole, so
 alias prep wear all;get all corpse stores both commands.
 
 Write \; for a semicolon that belongs inside a command rather than
-between two.  The browser client splits what you type on semicolons
-itself, so there type the alias with \; between its commands:
-      alias ne north\;east
+between two.  The browser client sends what you type whole, as any other
+client does, so an alias is typed the same way there.
 
 An alias cannot run another alias: a command that comes out of an alias
 is run as written, even if it has an alias's name.  If one of its
@@ -3293,7 +2798,7 @@ OBJ place what they make in the room you are standing in.
 See also: BUILDING, ANEW, MSHOW, OSHOW, PLACE
 ~
 
-69 PLACE RESETS UNPLACE~
+68 PLACE RESETS UNPLACE~
 Syntax: place mob <vnum> [<how many>]
         place obj <vnum>
         place obj <vnum> in <container vnum>
@@ -3327,7 +2832,8 @@ Objects on the floor and in containers come back only when a reset finds
 the area empty of players, as they always have; mobiles and doors come
 back whenever the area resets.
 
-RESETS lists what is placed in this room, numbered.  UNPLACE <number>
+RESETS (trust 68) lists what is placed in this room, numbered.  PLACE and
+UNPLACE need trust 69.  UNPLACE <number>
 takes one out -- and with a mobile its items, with a container what is
 in it.  What is in the room now stays until you PURGE it.
 
@@ -3368,7 +2874,7 @@ See also: BAN, ALLOW, SOCKETS
 Syntax: grantpsi <player> [now] [skill1,skill2,...]
 
 GRANTPSI is a level 70 tool to guarantee a player receives psionics. Without
-"now" it flags the target for a 100%% success at the level-based psionic check
+"now" it flags the target for a 100% success at the level-based psionic check
 and optionally locks in a comma-separated list of psionic skills to award when
 the check fires (default behavior rolls normally). Using "now" grants psionics
 immediately, sends the unlock messaging, and applies the chosen skills right
@@ -3388,8 +2894,9 @@ offline grant is always deferred to their next level check, because
 67 FSAVE~
 Syntax: fsave
 
-This command will force all the players to save, but doesn't send them a message
-when you do it.  This command is also invoked on reboots and shutdowns.
+This command will force all the players to save, but doesn't send them a
+message when you do it.  This command is also invoked on reboots and
+shutdowns.
 
 See also: SOCKETS, RESTORECHAR
 
@@ -3475,7 +2982,7 @@ saving throw successfully.
 See also: SPELLGROUP, SPELLS, GAIN
 ~
 
-0 BOMB BURN FEED PLAY~
+0 BOMB BURN FEED PLAY BLOW~
 Syntax: bomb <cracked surface|creature>
         burn <bush|creature>
         feed <guardian>
@@ -3486,11 +2993,16 @@ Syntax: bomb <cracked surface|creature>
 Hyrule's hidden ways open only to the act the NES asked for, with the tool
 in hand; OPEN, PICK, DOORBASH and UNLOCK will not shift them.
 
-BOMB uses up one of your bombs (the arrow shops sell four for 20 gold).
-At a cracked wall or rock it opens the way; at a creature it is a blast of
-fire, and Dodongo swallows one whole and loses half his health.
-BURN needs a lit candle in your light slot: a bush burns away to show what
-it hid, and a creature takes a lick of flame (the Red Candle burns hotter).
+BOMB uses up one of your bombs (the arrow shops sell four for 20 gold),
+carried anywhere in your bags but not in your stash.  At a cracked wall or
+rock it opens the way, and a surface that will not open costs no bomb.  At
+a creature -- anywhere, not only in Hyrule -- it is a blast of fire with
+three seconds of lag, and Dodongo swallows one whole and loses half his
+health.
+BURN needs a lit candle in your light slot, and does not use it up: a bush
+burns away to show what it hid, and a creature takes a lick of flame.  The
+Blue Candle burns a creature once in each room, the Red Candle as often as
+you like and hotter; a gibdo takes double.
 PLAY (or BLOW) needs the Recorder itself: it drains Level 7's lake and
 shrinks a Digdogger to a third of its health -- where a puzzle wants the
 tune, the puzzle always gets it.  Anywhere else on the open land it calls a
@@ -3860,15 +3372,21 @@ This command shows the list of the original Diku Mud implementors.
 See also: DIKU, MERC, ROM
 ~
 
-0 DELETE~
-Syntax: delete <password>
+0 DELETE DELET~
+Syntax: delete
+        delete <password>
 
-Use the delete command to erase unwanted characters, so the name will be
-available for use.  This command must be typed along with your password to
-delete a character, and you cannot be forced to delete. Deletion is permanent.
-You will not be restored for deleting yourself.
+Deletes your character for good.  Type DELETE alone first: it warns you
+and asks for your password.  Then DELETE <password> deletes you and ends
+your session.  A wrong password, or anything typed after DELETE before it
+has asked, cancels.  DELET on its own does nothing but tell you to type the
+whole word.  Nobody can force you to delete.
 
-See also: QUIT, SAVE
+The name becomes free for others.  The game keeps a copy of the character
+as it stood, so staff can bring back a deletion that was a mistake -- ask
+them quickly, before somebody else takes the name.
+
+See also: QUIT, PASSWORD, GODS
 ~
 
 0 DESCRIPTION DESC~
@@ -4509,10 +4027,10 @@ See also: QUIT, SAVE
 ~
 
 0 RECALL /~
-Syntax: RECALL
-        RECALL SET
-        RECALL DEFAULT
-        RECALL WHERE
+Syntax: recall
+        recall set
+        recall default
+        recall where
 
 RECALL prays to the gods for miraculous transportation from where you are
 back to your recall point.  '/' is a synonym for RECALL.
@@ -4534,6 +4052,16 @@ are fighting or while the blood is still up from a fight.  RECALL DEFAULT
 is exempt from all of that: you can send your recall back to the Temple at
 any moment, so a choice you regret can never strand you.
 
+The prayer is a roll on your recall skill, and even at 100% it now and
+then goes unanswered.  Very rarely it lands you somewhere else entirely.
+It halves your movement points (out of a fight, only to level 57).  In a
+fight it costs 25 experience when it works.  From the third remort it
+always works and always goes home.  Your pet comes with you; a mount is
+left behind.
+
+RECALL does not work in rooms the gods have forsaken, from a jail, or
+while you are cursed.
+
 WORD OF RECALL is a different journey, and worth knowing about.  It
 always goes to the Temple whatever you have set, so between the two you
 have two places to reach in a hurry.  It also works while you are cursed,
@@ -4542,15 +4070,7 @@ over somebody else's magic.  A scroll or potion of recall carries the same
 spell and behaves the same way.  The Recall Ring, and being pulled to
 safety while link-dead, also go to the Temple.
 
-If you RECALL during combat, you will lose experience (more than for fleeing),
-and you will have a chance of failing (again, more than for fleeing).  This
-chance is based on your recall skill, although a 100% recall does not
-insure success.
-
-RECALL costs half of your movement points.
-
-RECALL doesn't work in certain god-forsaken rooms.  Characters afflicted by a
-curse may not recall at all.
+Every class holds recall from level 1, at 100%.
 
 See also: WORD OF RECALL, PORTAL, MOVEMENT, CHANGES
 ~
@@ -4850,52 +4370,60 @@ sizes, or to 0 to disable paging.
 See also: BRIEF, COMPACT, PROMPT
 ~
 
-0 SCROLL OF FARSLAY FARSLAY~
-The Scroll of Farslay is purchasable from the quest master for 600 quest
-points (AQUEST BUY FARSLAY).
+70 FARSLAY~
+Syntax: farslay <player>
 
+A god's Farslayer: it never misses, never backfires on the caster and
+reaches anywhere.  It works on anyone except the divinely warded, who turn
+the blade back on whoever casts it.  For the scroll mortals buy, HELP
+SCROLL OF FARSLAY.
+
+See also: SLAY, ORACLEADMIN
+~
+
+0 'SCROLL OF FARSLAY' FARSLAY VENGEANCE VENGENCE~
 Syntax: recite farslay <character>
         recite scroll <character>
 
-The rite seeks one named character anywhere in the world. After a successful
-recitation, Farslayer has an even chance to kill the target or turn back and
-kill the reader. Either outcome leaves a mortal reader stunned at one hit,
-mana, and movement point; permanently reduces maximum hit points, mana, and
-movement; and permanently reduces one attribute. If the target is struck,
-the reader becomes wanted. The scroll is consumed even if recitation fails,
-but a missing target or omitted target does not consume it.
+The Scroll of Farslay is bought from the quest master for 600 quest points
+(AQUEST BUY FARSLAY); a rare scribed scroll carries the same rite, called
+vengeance.  It seeks one named character anywhere in the world.
 
-Farslay cannot finish Ganon; the Silver Arrow is still required.
+It refuses before costing anything when you name yourself, somebody under
+divine protection (the blade turns on you), or a creature nobody may harm.
+Otherwise Farslayer has an even chance to kill the target or turn back and
+kill the reader -- and either way a mortal reader pays: left stunned at one
+hit, mana and movement point; maximum hit points, mana and movement each
+reduced for good, by twice your level or 25, whichever is more; and one
+attribute reduced by 3 for good.  Striking the target makes you WANTED.
 
-See also: AQUEST, RECITE, POTION OF POWER, POTION OF THE GIANT
+The scroll is consumed even if the recitation fails, but naming nobody, or
+somebody it cannot find, does not consume it.  Farslay cannot finish Ganon
+or Gohma; it lands one hard blow on them instead, and Ganon still needs the
+Silver Arrow.
+
+See also: AQUEST, RECITE, WANTED, POTION OF POWER
 ~
 
-0 POTION OF POWER~
-The Potion of Power is purchasable from the quest master for 450 quest
-points (AQUEST BUY EMPOWER or AQUEST BUY POWER).
+0 'POTION OF POWER' 'POWER POTION'~
+The Potion of Power is bought from the quest master for 450 quest points
+(AQUEST BUY POWER, or AQUEST BUY EMPOWER).  It is made at your level, and
+holds three ordinary spells cast at level 60: sanctuary, haste and fly,
+each lasting as those spells do.  It is not EMPOWER, though it names it:
+for the crafted bundle see HELP EMPOWER.
 
-Drinking it grants three powerful protective effects simultaneously:
-  Sanctuary  - envelope the body in a divine shield (halves damage taken).
-  Haste      - greatly increases attack speed and Dexterity.
-  Fly        - lifts the drinker off the ground.
-
-All effects last for the standard spell duration at level 60.
-
-See also: AQUEST, POTION OF THE GIANT, SCROLL OF FARSLAY
+See also: AQUEST, POTION OF THE GIANT, SCROLL OF FARSLAY, EMPOWER
 ~
 
-0 POTION OF THE GIANT~
-The Potion of the Giant is purchasable from the quest master for 450 quest
-points (AQUEST BUY GIANT).
+0 'POTION OF THE GIANT' 'GIANT POTION'~
+The Potion of the Giant is bought from the quest master for 450 quest
+points (AQUEST BUY GIANT).  It is made at your level, and holds three
+ordinary spells cast at level 60: giant strength, stone skin and pass
+door, each lasting as those spells do.  Stone skin never takes on a monk or
+a necromancer, nor on somebody inside a major globe.  It is not TITANIC:
+for the crafted bundle see HELP TITANIC.
 
-Drinking it applies three combat enhancement effects simultaneously:
-  Giant Strength - dramatically boosts Strength and damage output.
-  Stone Skin     - hardens the skin, significantly improving armor class.
-  Pass Door      - allows movement through closed (non-locked) doors.
-
-All effects last for the standard spell duration at level 60.
-
-See also: AQUEST, POTION OF POWER, SCROLL OF FARSLAY
+See also: AQUEST, POTION OF POWER, SCROLL OF FARSLAY, TITANIC
 ~
 
 0 SKILLS SPELLS~
@@ -4935,12 +4463,14 @@ See also: WEATHER, TICK
 0 WEATHER~
 Syntax: weather
 
-Shows the current in-game weather conditions: sky state (clear, cloudy,
-raining, storming, etc.), wind direction, and temperature.  Weather can
-affect movement, some spells, and area events.  Certain seasons also
-change which weather patterns are possible.
+Shows the sky, if you are outdoors: cloudless, cloudy, rainy or lit by
+lightning, and whether a warm or a cold wind blows.  Indoors you cannot see
+it.  The weather decides some spells -- call
+lightning needs bad weather -- and some disasters.
 
-See also: TIME, TICK
+For the weather spell group, HELP GROUP WEATHER or HELP WEATHERSPELLS.
+
+See also: TIME, CONTROL WEATHER, DISASTERS
 ~
 
 0 TITLE~
@@ -5070,7 +4600,7 @@ Syntax: !
 See also: COMMANDS
 ~
 
-0 NORTH SOUTH EAST WEST UP DOWN NORTHEAST NORTHWEST SOUTHEAST SOUTHWEST~
+0 NORTH SOUTH EAST WEST UP DOWN NORTHEAST NORTHWEST SOUTHEAST SOUTHWEST NE NW SE SW DIRECTIONS~
 Syntax: north
 Syntax: south
 Syntax: east
@@ -5334,14 +4864,26 @@ Strung extended descriptions on objects are not kept, however.
 See also: LOAD, VNUM, STRING
 ~
 
-69 ADVANCE~
+66 ADVANCE~
 Syntax: advance <character> <level>
 
-ADVANCE sets a character's level to the specified value.  It is the
-only way to create new immortal characters within the game.  ADVANCE
-may also be used to demote characters.
+ADVANCE sets the level of a player standing in the room with you, from 1 to
+70 and never above your own trust.  Below trust 69 it works only on
+yourself ("You can only advance yourself at your current level.").  It is
+refused on a mobile and on anyone who outranks you.
 
-See also: TRUST, WIZLIST
+Raising a level runs every level gained in between, with its hit points,
+mana and practices, exactly as earning them would.  Lowering it -- or
+setting the level a character already has -- first resets them to level 1
+with 20 hit points, 100 mana and moves and no practices or trains, then
+raises them again to the level asked for: a demotion is not undone by
+advancing them back.  A snapshot is taken before the level changes
+(PRESTORE <player> ... lists it as an advance), which is the way back from
+a mistake.
+
+ADVANCE is how a player is made an immortal in game.
+
+See also: TRUST, PRESTORE, WIZLIST
 ~
 
 72 CREATOR~
@@ -5821,7 +5363,7 @@ permanent. See BUILDING.
 See also: BUILDING, RSAVE, RLINK, STRING, STAT, MSET, OSET, RSET
 ~
 
-64 STRING~
+63 STRING~
 Syntax: string obj <field> <string>
         string mob <field> <string>
 
@@ -5970,10 +5512,11 @@ Syntax: transfer <character>
         transfer <character> <location>
         transfer all         <location>
 
-Transfer transfers the target character, or ALL player characters,
-to your current location (default) or to a specified location. Trans all
-should almost never be used, as 100 players popping into one room can have
-horrible effects on slow links. Teleport is a synonym for transfer.
+Transfer transfers the target character, or ALL player characters, to your
+current location (default) or to a specified location.  Trans all should
+almost never be used, as 100 players popping into one room can have horrible
+effects on slow links.  Teleport is a synonym for transfer.  For the
+TELEPORT spell, HELP TELEPORTSPELL.
 
 See also: GOTO, AT, FORCE
 ~
@@ -6023,18 +5566,23 @@ Useful for delivering event narration or hints without breaking immersion.
 See also: ECHO, GECHO, TELL
 ~
 
-62 GOTO~
-Syntax: goto <location>
+60 GOTO~
+Syntax: goto <room vnum>
+        goto <character or object>
 
-Goto takes you to a location.  The location may be specified as a vnum,
-as the name of a mobile, or as the name of an object.
+GOTO takes you to a room: by its vnum, or to wherever the named character or
+object is.  Use the room's Vnum (STAT ROOM prints both Number and Vnum; only
+Vnum is a room you can go to).  A fight you are in ends when you leave.
 
-You may not Goto a room if it is PRIVATE and has two (or more) characters
-already present, or if it is SOLITARY and has one (or more) characters
-already present. Some other rooms are barred to players below a certain
-god level.
+Staff walk into private and solitary rooms however full they are, except a
+room flagged IMP_ONLY, which needs trust 69.  The room sees your POOFOUT
+leave and POOFIN arrive, or "raises into the sky" if you set none -- unless
+your WIZINVIS level hides you from them.
 
-See also: TRANSFER, AT, STAT
+Careful with a number: GOTO to a vnum where no room exists creates an empty
+room there ("You form order from nothingness.").
+
+See also: TRANSFER, AT, STAT, POOFIN, POOFOUT
 ~
 
 63 EXPLODE~
@@ -6049,7 +5597,7 @@ flag on it that can be used as a quest item.
 See also: PURGE, LOAD, VNUM
 ~
 
-62 HOLYLIGHT~
+60 HOLYLIGHT~
 Syntax: holylight
 
 HOLYLIGHT is a toggle.  When active, you can see virtually everything in
@@ -6065,22 +5613,27 @@ whether other players can see you.
 See also: WIZINVIS, INVIS, DETECT
 ~
 
-62 WIZINVIS~
-Syntax: wizinvis [level]
+60 WIZINVIS~
+Syntax: wizinvis
+        wizinvis <level>
+        wizinvis 0
 
-WIZINVIS sets your visibility level.  Any player whose level is below your
-wizinvis level will be completely unable to see you - you won't appear in
-the room, won't show in WHO, and your actions produce no messages to them.
+WIZINVIS hides you from everybody whose trust is below your wizinvis level.
+They do not see you in the room or on WHO, and what you do in front of them
+produces no message at all (see WIZINVIS LEAVES NO TRACE in the staff
+documentation).  Those at or above your level see you marked (WIZI).
 
-  wizinvis      - sets invisibility to your own level (maximum stealth)
-  wizinvis 70   - total invisibility to everyone except other 70s
-  wizinvis 0    - removes wizinvis; you become fully visible again
-  wizinvis 62   - visible to other immortals but hidden from all mortals
+  wizinvis           toggles: on at your own trust, or off if already on
+  wizinvis <level>   on at that level, from 2 up to your own trust
+  wizinvis 0         off ("You are not wizinvis." if you were not)
 
-Players who CAN see you (at or above your wizi level) see your name flagged
-as (Wizi) in the room and WHO list.
+The level is compared with trust, not with the level in WHO: a builder
+trusted to 63 sees a wizinvis 62.  Trust 71 sees anyone at 71 or below; the
+creator's 72 hides them from everyone, and WIZINVIS 71 lets trust 71 see
+them.  Staff notices that name you (logins, deaths, restores) go out only to
+staff who could see you.
 
-See also: HOLYLIGHT, INVIS, POOFIN, POOFOUT
+See also: HOLYLIGHT, CLOAK, POOFIN, POOFOUT, TRUST
 ~
 
 65 MEMORY~
@@ -6134,8 +5687,9 @@ See also: GOTO, TRANSFER, VNUM
 62 CLOAK~
 Syntax: cloak <level>
 
-Cloak will make you invisible to anyone not in the same room with you.  Anyone
-is higher level than the level you set your cloak at can see you anywhere though.
+Cloak will make you invisible to anyone not in the same room with you.
+Anyone is higher level than the level you set your cloak at can see you
+anywhere though.
 
 See also: WIZHELP, IMMORTAL
 ~
@@ -6144,8 +5698,8 @@ See also: WIZHELP, IMMORTAL
 Syntax: backup
         backup now
 
-This command will perform a backup on all of the pfiles.  Typing backup by itself
-will show when the next scheduled backup will take place.
+This command will perform a backup on all of the pfiles.  Typing backup by
+itself will show when the next scheduled backup will take place.
 
 See also: MEMORY, SOCKETS
 
@@ -6225,9 +5779,9 @@ See also: GWHERE, MWHERE, WHERE, PSTAT
 Syntax: qflag <player>
 
 This command sets a (Quest) flag on players that will keep them from losing
-experience or equipment during quests.  Remember to remove the quest flag from
-the player after the quest is over.  The flag will automatically be removed when
-the player quits otherwise.
+experience or equipment during quests.  Remember to remove the quest flag
+from the player after the quest is over.  The flag will automatically be
+removed when the player quits otherwise.
 
 See also: WIZHELP, IMMORTAL
 
@@ -6342,7 +5896,7 @@ not currently switched into a mobile, RETURN has no effect.
 See also: SWITCH
 ~
 
-62 IMMTALK :~
+60 IMMTALK :~
 Syntax: immtalk <message>
         immtalk
         : <message>
@@ -6357,7 +5911,7 @@ When off, you will neither send nor receive immtalk messages.
 See also: GODTALK (@), HERO (=), WIZINFO, BEEP, CHANNELS
 ~
 
-62 WIZHELP~
+60 WIZHELP~
 Syntax: wizhelp
 
 Wizhelp provides a list of all the immortal commands available to you.
@@ -6376,20 +5930,6 @@ the current components from the world.
 (do 'owhere component' to see the current components in the world.)
 
 See also: LOAD, VNUM
-~
-
-65 EDIT~
-Syntax: edit exit <direction> <field> <value>
-
-EDIT modifies live room exit data without requiring a full area reload.
-The only currently supported field is 'exit', which lets you adjust exit
-flags, door states, or key vnums on the fly for testing or event purposes.
-
-Use STAT ROOM to inspect current exit values before editing.  Changes made
-with EDIT persist only until the next area reset or reboot; they are not
-written to the area file.
-
-See also: STAT, GOTO, REPOP
 ~
 
 62 SHOWHUNT~
@@ -6418,16 +5958,6 @@ relentless hunting mobs after a crash or bug, or to clean up testing.
 See also: SHOWHUNT
 ~
 
-67 RESTORECHAR~
-Syntax: restorechar <player> <date>
-
-Restores a character's pfile as of the specified date.  Date format is,
-for example, Jun.1.  Restorechar is intended for use in restoring characters
-with bad pfiles, not those who have deleted themselves.
-
-See also: RESTORE, PURGE
-~
-
 67 SWEDISH~
 Syntax: swedish <character>
 
@@ -6437,20 +5967,20 @@ before you or they leave.
 See also: WIZHELP
 ~
 
-63 WIZINFO~
+60 WIZINFO~
 Syntax: wizinfo
-Syntax: wizinfo <message>
 
-WIZINFO with no argument toggles whether you receive the stream of automatic
-staff notifications: logins, logouts, link-death events, level-ups, and other
-significant game events flagged with LOG_ALWAYS.  Most immortals keep this
-enabled.
+WIZINFO turns on or off whether you receive the game's automatic staff
+notices: logins and logouts, lost links, deaths, levels, restores and the
+other lines staff are told about.  It only toggles what you receive; it
+does not send anything.  Typing a message after it says "Just type
+'wizinfo' to toggle the channel on or off."
 
-WIZINFO with a message broadcasts that message to all immortals who have
-WIZINFO enabled, similar to an immortal-only announcement channel.  Use it
-to coordinate with staff, warn about reboots, or share important information.
+A notice naming a wizinvis character goes only to staff whose trust lets
+them see that character.  To talk to staff use IMMTALK; to tell everyone,
+ANNOUNCE.
 
-See also: IMMTALK, GODTALK, ANNOUNCE
+See also: IMMTALK, GODTALK, ANNOUNCE, WIZINVIS
 ~
 
 68 WHINE~
@@ -6463,7 +5993,7 @@ command is NOT to be abused!
 See also: WIZHELP, PUNISHED
 ~
 
-68 NONOTE~
+67 NONOTE~
 Syntax: nonote <character>
 
 This command completely removes target character's noting privileges.
@@ -6473,20 +6003,15 @@ consistently abused their note privilege.
 See also: NOTE, WIZHELP
 ~
 
-0 ' SAY~
-Syntax: '<message>
+0 SAY~
 Syntax: say <message>
+        '<message>
 
-The apostrophe (') is a shortcut for the SAY command.  Typing:
-   'Hello everyone!
-is identical to:
-   say Hello everyone!
+Speaks to everyone in your room; only they hear it.  The apostrophe is a
+shortcut: 'Hello is the same as SAY Hello.  Use TELL to speak to one
+person anywhere, GTELL for your group, and the channels for everyone.
 
-SAY speaks aloud to everyone in your current room.  Only people in the same
-room can hear you.  Use TELL for private messages to individuals, or GOSSIP
-for world-wide chat.
-
-See also: TELL, GOSSIP, YELL
+See also: TELL, EMOTE, CHANNELS, HISTORY
 ~
 
 0 ; GTELL~
@@ -6504,62 +6029,6 @@ party.  Note that you must have no space between the semicolon and your
 message.
 
 See also: TELL, GOSSIP, GROUP
-~
-
-0 'ASTRAL WALK' ASTRAL~
-Syntax: astral <target>
-
-ASTRAL WALK is a psionic travel ability that teleports you to another
-character anywhere in the world.  The target must be visible to you and
-not in a protected room (private, safe, immortal-only, etc.).  The spell
-costs 70 mana and requires training in the astral_walk psionic skill.
-
-It can take you out of a no-recall room, but never into one; a jail holds
-you either way.
-
-If successful, you (and your pet if nearby) shimmer and appear next to
-the target.  If you fail your concentration check, you lose a small amount
-of mana without teleporting.  The target receives no warning of your arrival.
-
-See also: PROJECT, SHIFT
-~
-
-0 'EGO WHIP' EGOWHIP~
-Syntax: ego whip <target>
-
-EGO WHIP is a psionic attack that assaults the victim's mind, dealing
-mental damage and potentially reducing one of their primary stats (STR,
-INT, WIS, or DEX) for a period of time.  The stat penalty increases with
-your level.  Costs 20 mana per use.
-
-If the target already has the ego whip debuff, additional uses deal damage
-without adding another stat reduction.  Useful against physically strong
-foes since it bypasses armor entirely.  Requires training in the ego_whip
-psionic skill.
-
-See also: MINDBLAST
-~
-
-0 ENERVATE~
-Syntax: enervate <target>
-
-ENERVATE is a psionic assault that directly tears the target's life force
-and physical stamina away, siphoning them back into the caster.  It belongs
-to the Control psionic discipline alongside clairvoyance, confuse, and mind
-leech.
-
-Mechanics:
-  - Deals mental damage to HP equal to level to level*2.
-  - Drains endurance (move) equal to level to level*2, floored at 0.
-  - Caster absorbs half the HP damage as healing.
-  - Caster absorbs half the endurance drained as restored movement.
-  - Mana cost: 35.
-
-Enervate is particularly punishing against physically active foes since it
-simultaneously degrades their ability to fight, flee, and sustain themselves.
-Requires training in the enervate psionic skill.
-
-See also: MINDLEECH, EGO WHIP, TORMENT
 ~
 
 64 IPORTAL~
@@ -6835,7 +6304,7 @@ runs twice.  A full restore keeps their current password, trust, rank,
 login fixes and one-time claims.  See wiki/player-backups.md.
 ~
 
-65 TRAIL~
+63 TRAIL~
 Syntax: trail <player>
 
 TRAIL shows the last few rooms visited by the specified player, taken from
@@ -6909,7 +6378,7 @@ removes the effect immediately.  The effect is saved across logins.
 See also: FREEZE, STASIS
 ~
 
-62 EMPOWER~
+66 EMPOWER~
 Syntax: empower <player>
         empower <player> <ticks>
         empower <player> perm
@@ -6930,10 +6399,12 @@ strips the effects and acts as a toggle-off regardless of duration given.
 
 All effects use the 'empower' skill type and are removed atomically.
 
+For what a crafted EMPOWER does, HELP EMPOWER SPELL.
+
 See also: TITANIC, RESTORE
 ~
 
-62 TITANIC~
+66 TITANIC~
 Syntax: titanic <player>
         titanic <player> <ticks>
         titanic <player> perm
@@ -6954,6 +6425,8 @@ regardless of arguments.  Health, mana, and move are clamped back to
 new (reduced) max on removal.
 
 Boosts are applied as affects under the 'titanic' skill type.
+
+For what a crafted TITANIC does, HELP TITANIC SPELL.
 
 See also: EMPOWER, RESTORE
 ~
@@ -7015,14 +6488,8 @@ See also: REBOOT, SHUTDOWN, WIZLOCK
 62 INVIS~
 Syntax: invis [level]
 
-INVIS makes you invisible to all players below the specified trust level
-(default: your own level).  INVIS again, or INVIS 0, takes it off; VISIBLE
-strips spells and hiding, not this.
-
-While you are wizinvis, players below the level see nothing of you at all:
-not your arrival, your recall, your SAY or your socials.  A SAY nobody
-below the level heard tells you so.  Speak on a channel, TELL, or drop the
-invis to be heard in a room.
+INVIS is WIZINVIS under another name: see HELP WIZINVIS.  VISIBLE strips
+spells and hiding, not this.  For the INVIS spell, HELP INVISSPELL.
 
 See also: WIZINVIS, HOLYLIGHT
 ~
@@ -7070,12 +6537,21 @@ See also: LOAD
 
 67 NEWCORPSE~
 Syntax: newcorpse <player>
-        newcorpse <player> <corpse_number>
+        newcorpse <player> <1-5>
 
-NEWCORPSE reconstructs a lost corpse for the specified player from their
-saved corpse file.  Useful for restoring items lost to crashes or bugs.
+Legacy corpse rebuilding.  With a player's name it lists the corpse records
+in their old corpse/<Name>.cps file, each marked valid or damaged; with a
+number it builds that corpse in your room from fresh copies of the recorded
+objects at their recorded levels -- enchantments and anything else done to
+them are lost -- never rotting.  The player must be online.
 
-See also: RESTORE
+The game no longer writes those records (deaths are kept another way), so
+it only has anything to work from for characters who died before that
+change.  To put back what a player lost, use the corpse registry and the
+snapshots instead: PRESTORE <player> CORPSE, PRESTORE <player> <stamp> GEAR
+and STASH, and CORPSE GEAR.
+
+See also: PRESTORE, CORPSE
 ~
 
 63 NOCHANNELS~
@@ -7127,12 +6603,23 @@ See also: SET
 ~
 
 66 SLA~
-Syntax: sla <player>
+Syntax: sla
 
-SLA is a silent version of SLAY.  The target is removed with no message
-shown to the room.
+A guard against a typo: SLA does nothing but say "If you want to SLAY,
+spell it out."  Type SLAY in full.
 
 See also: SLAY
+~
+
+69 DIAGNOSTICS~
+Syntax: diagnostics
+
+Prints the server's state at a glance: when it booted; how many areas,
+rooms, mobile and object prototypes it loaded; how many connections,
+characters, objects and active mobiles exist now; and when the next player
+file backup and the next daily backup are due.  It changes nothing.
+
+See also: MEMORY, SOCKETS, UPTIME
 ~
 
 62 WARN~

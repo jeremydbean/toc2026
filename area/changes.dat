@@ -5,6 +5,13 @@
 # staff can use gets ' staff' after the date ('@ <id> <date> staff'):
 # only staff are shown it.
 
+@ 20261027h 2026-10-27
+The help has been checked against the game and corrected: the psionic
+powers, the thief and warrior skills, colour spray, the quest potions,
+Farslay and many more now say what they really do. RULES, NEWS and STORY
+show their pages again, and HELP GROUP <name> lists a spell group even
+where a command shares its name (HELP GROUP WEATHER).
+
 @ 20261027g 2026-10-27
 Monsters that cast flamestrike or lightning bolt hit as hard as they did
 before today's balance change. Only players' spells grow with their

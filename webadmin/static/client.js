@@ -785,7 +785,7 @@
                 text: topic.title,
                 attrs: { type: "button", role: "listitem" },
             });
-            button.addEventListener("click", () => openHelpTopic(topic.keywords[0], topic.title));
+            button.addEventListener("click", () => openHelpTopic(topic.ask || topic.keywords[0], topic.title));
             return button;
         }));
     }

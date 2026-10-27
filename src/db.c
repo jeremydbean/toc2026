@@ -763,6 +763,40 @@ bool area_is_buildable( AREA_DATA *pArea )
 /*
  * Snarf a help section.
  */
+/*
+ * A keyword header that wraps a line is read with the line break in it,
+ * and one_argument ends a word only at a space: "ELECTRIC\n\rCALL" was one
+ * word, so neither ELECTRIC nor CALL LIGHTNING found the page (help review,
+ * 2026-10-27). Fold every run of whitespace to one space. The keyword is
+ * read into string space, so it is replaced, never freed.
+ */
+static void help_fold_keyword( HELP_DATA *pHelp )
+{
+    char buf[MAX_STRING_LENGTH];
+    const char *p;
+    size_t n = 0;
+    bool space = FALSE;
+    bool changed = FALSE;
+
+    for ( p = pHelp->keyword; *p != '\0' && n + 1 < sizeof(buf); p++ )
+    {
+        if ( isspace( (unsigned char) *p ) )
+        {
+            if ( *p != ' ' || space )
+                changed = TRUE;
+            space = TRUE;
+            continue;
+        }
+        if ( space && n > 0 )
+            buf[n++] = ' ';
+        space = FALSE;
+        buf[n++] = *p;
+    }
+    buf[n] = '\0';
+    if ( changed )
+        pHelp->keyword = str_dup( buf );
+}
+
 void load_helps( FILE *fp )
 {
     HELP_DATA *pHelp;
@@ -774,6 +808,7 @@ void load_helps( FILE *fp )
         pHelp->keyword  = fread_string( fp );
         if ( pHelp->keyword[0] == '$' )
             break;
+        help_fold_keyword( pHelp );
         pHelp->text     = fread_string( fp );
  
         if ( !str_cmp( pHelp->keyword, "greeting" ) )

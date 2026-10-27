@@ -8,6 +8,27 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Help audit** (2026-10-27). The help was checked against the code and
+  corrected: one page per psionic power and per stealth/combat skill
+  (`commands.are` held invented copies that shadowed the skill pages --
+  CLAIRVOYANCE "scrying nearby rooms", PROJECT stepped by hand, TRACK
+  moving you along footprints, LEVITATE as a mana drain); RULES, NEWS and
+  STORY show their pages again (a one-line `commands.are` stub answered
+  instead); QUI, SLA, IGNORE (a stub), DELETE, NEWCORPSE, WIZINFO told
+  the truth; EDIT and RESTORECHAR pages removed (disabled); new topics for
+  colour spray, bewitch weapon, enchant item, unalias, blow, say,
+  diagnostics, EMPOWER/TITANIC effects, divine protection, remove align,
+  restore mana and vengeance; FARSLAY apart from the Oracle's tools;
+  every class level table regenerated from `const.c` (97 lines, among
+  them the five maladictions necromancers were told they could not
+  cast). The game folds a help header that wraps a line and matches a
+  quoted keyword exactly; HELP GROUP <name> asks for a group whose name a
+  command shares (WEATHER). The website and the Oracle read the help
+  through `webadmin/help_index.py` in the game's order and Latin-1, so
+  they pick the page HELP picks. `tools/help_audit.py`,
+  `data/help_coverage.json`, `tests/test_help_audit.py`,
+  `tests/test_help_live.py`.
+
 - **Mobiles keep the old flamestrike and lightning bolt** (2026-10-27;
   owner). The level-scaled dice were for player classes; a mobile casts
   8d8 and the old bolt table again (`tests/test_combat_rules.py`).

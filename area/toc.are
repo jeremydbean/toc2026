@@ -1,32 +1,5 @@
 #HELPS
 
--1 WIZLIST~
-Gods (69)        Deities (68)      Demi-Gods (67)	Arch-Angels (66)
----------        ------------      --------------	----------------
-Haze          	 Gravestone        Bremen		Diablerie
-		 Thalia
-
-Angels (65)      Avatars (64)      Immortals (63)	Martyr (62)
------------      ------------      --------------	-----------
-                 - None -          Trouble		- None -
-
-
-
-		       *_   _   _   _   _ *
-	       ^       | `-' `-' `-' `-' `|       ^
-	       |       |   Implementors   |       |
-	       |  (*)  |_   _   _   _   _ |  \^/  |
-	       | _<">_ | `-' `-' `-' `-' `| _(#)_ |
-	      o+o \ / \0     Soulcrusher  0/ \ / (=)
-	       0'\ ^ /\/     Eclipse      \/\ ^ /`0
-		 /_^_\ |     Ungrim       | /_^_\
-		 || || |     Gravestone   | || ||
-		 d|_|b_T     Killuminati  T_d|_|b
-                       *------------------*
-
-See also: GODS, DEMIGODS, IMMORTAL
-~
-
 -1 'NEWBIE INFO' START BEGIN BEGINNER 'GETTING STARTED'~
 Be welcome oh adventurer.  Since you are new to the game, your best course
 of action is to traverse the mud school before journeying on to other realms.
@@ -47,18 +20,6 @@ To change how the game looks and behaves for you -- colour, your prompt,
 damage numbers, automatic looting and the rest -- type: help new
 
 See also: NEW, BEGINNERS, RULES, GREETING
-~
-
-1 IGNORE~
-Syntax: ignore
-        ignore <character name>
-        ignore nobody
-
-Typing ignore by itself will show you a list of the people that you are ignoring.
-Putting someone on your ignore list will prevent them from telling to you.  Typing
-ignore nobody will clear your ignore list.
-
-See also: TELL, CHANNELS
 ~
 
 
@@ -353,7 +314,7 @@ the game in the past, and the above does not entirely apply to them.
 See also: JOBS, IMMORTAL, COMMANDMENTS
 ~
 
-63 IMMORTAL~
+63 'IMMORTAL RANK'~
 Your job is to help new players out.  This does not mean you
 will give out information about where stuff is, or what something does, or
 how to get somewhere. You could however tell them to go check out the newbie
@@ -429,14 +390,6 @@ at the level of an existing item in the game, or the character's level if the
 object is known to be in that level range.
 
 See also: DEMIGODS, GODS, COMMANDMENTS
-~
-
-69 GODS~
-Your job is ... well ... I have no idea what your job is right now.
-To come up with new ideas for the game, or ideas to help speed up game
-performance I guess.
-
-See also: DEITY, WIZLIST, COMMANDMENTS
 ~
 
 62 COMMANDMENTS LAWS 'GOD RULES'~
@@ -658,17 +611,6 @@ smoothly, ToC taxes the wealthiest citizens.  This tax amounts to 50% of
 all gold above 1 million coins, each and every time you log on.
 
 See also: BANK, GUILDS
-~
-
--1 CHANGES~
-CHANGES is a quick pointer to the current update notes.
-
-For the latest gameplay, command, and balance updates, read HELP NEWS.
-NEWS is updated whenever major fixes or features are added.
-
-If you are just logging in, also read HELP MOTD for important announcements.
-
-See also: NEWS, MOTD
 ~
 
 -1 DIKU~
@@ -1074,15 +1016,11 @@ See also: SPELLGROUP, GAIN, DRACONIAN
 ~
 
 -1 ENCHANTMENT~
-This group is restricted to full mages only, and contains the following
-spells:
+The enchantment group is for full mages only, and holds enchant item (level
+16), enchant armor (30) and enchant weapon (40).  It costs 5 trains.
+GAINLIST shows who sells it to you.
 
-Enchant Armor, Enchant Weapon.
-Cost is 5 trains.
-
-Trainer is Danko.
-
-See also: SPELLGROUP, GAIN
+See also: ENCHANT ITEM, ENCHANT ARMOR, ENCHANT WEAPON, SPELLGROUP, GAIN
 ~
 
 -1 ENHANCEMENT~
@@ -1144,17 +1082,12 @@ See also: SPELLGROUP, GAIN, COMBAT
 ~
 
 -1 HEALING~
-This is primarily a cleric group. Full Clerics gain the following spells:
+The healing group is for full clerics, and holds cure critical, heal, mass
+healing and divine intervention, for 4 trains.  Mages, thieves and warriors
+in the clerics' guild buy guild healing instead -- cure critical and heal
+-- also for 4 trains.  GAINLIST shows who sells them to you.
 
-Cure Critical, Heal, Mass Healing
-
-Guild members gain all but Mass Healing.
-
-Cost: 4 trains both for full clerics and guild members
-
-Trainer for C/C is Dominic.  Trainer for ?/C is Grill.
-
-See also: SPELLGROUP, GAIN, CURATIVE
+See also: HEALSPELL, DIVINE INTERVENTION, SPELLGROUP, GAIN, CURATIVE
 ~
 
 -1 LIFE-UNDEATH~
@@ -1264,34 +1197,15 @@ Trainers are: Eriak for C/C
 See also: SPELLGROUP, GAIN
 ~
 
--1 WEATHERSPELLS~
-The weather group is open to all spell casters other than necromancer.
-Spells are as follows:
+-1 WEATHERSPELLS 'WEATHER GROUP' 'WEATHER SPELLS'~
+The weather group holds call lightning, control weather, faerie fire,
+faerie fog and lightning bolt.  Mages and clerics pay 4 trains for it,
+thieves and warriors 6; necromancers and monks cannot buy it.  Through it a
+cleric, thief or warrior can learn lightning bolt, which they cast with
+half a mage's dice.  HELP GROUP WEATHER lists it from the game's own
+table, and GAINLIST shows who sells it to you.
 
-Call Lightning, Control Weather,  Faerie Fire, Faerie Fog,
-Lightning Bolt.
-
-Cost: 4 trains for mage or cleric, 6 trains for warrior or thief.
-
-Minimum levels to use spells depend on your primary class and are:
-
-Mage:14  Cleric:6  Thief:8  Warrior:8
-
-Trainers are Silius for ?/C (including C/C)
-	 and Diemos for ?/M (including M/M)
-
-See also: SPELLGROUP, GAIN, ELEMENTAL
-~
-
-0 DOORBASH~
-Using this skill will allow you to bash open closed and locked doors.
-The minimum level to use this skill is 10.
-
-Number of trains needed: 1
-Trainer: Vladamir (W/W)
-
-See also: BASH, TRIP, SKILLS
-
+See also: ELECTRIC SPELLS, CONTROL WEATHER, SPELLGROUP, GAIN
 ~
 
 0 DAMAGE~
@@ -1439,152 +1353,203 @@ See also: FAST HEALING, MEDITATION, RESTING
 -1 KEYWORDS~
 Helps are available for the following keywords.  If you try to see a
 particular help and are told no help is available, it may be restricted
-to those of a higher level than you.
+to those of a higher level than you.  A spell group with no page of its
+own is answered from the group list: HELP GROUP <name> asks for the group
+even where a command shares its name.  This list is generated from the
+help itself (tools/help_audit.py --write-keywords).
 
-
-!   ,    -     .     /     ;     =
-
-acid blast       acid breath          aggrostab          aid
-alias            aliases              angel              answer
-archery          areas                armor              arrive
-astral walk      attack               auction            auto
-autoassist       autoexit             autogold           autolist
-autoloot         autosac              autosplit          axe
-backstab         bash                 beginners          beguiling
-benedictions     berserk              bless              blinding fists
-blindness        blizzard             bow                brandish
-brew             brief                bug                burning hands
-buy              call lightning       calm               cancellation
-cast             castles              castlechat         cause critical
-cause light      cause serious        cc                 cgos
-chain lightning  changes              channels           charm person
-chill touch      citadel of war       clairvoyance       cleric
-climb            close                cold spells        color
-color spray     combat               combine            commands
-compact          compare              concoct            cone of cold
-confuse          consider             continual light    control weather
-count            crane dance          create food        create skeleton
-create spring    create vampire       create water       create wraith
-creation         credits              curative           cure blindness
-cure critical    cure disease         cure light         cure nightmare
-cure poison      cure serious         curse              dagger
-damage           deaf                 dying              deathshroud
-delete           demonfire            depart             desc
-description      destruction          detect evil        detect good
-detect hidden    detect invis         detect magic       detect poison
-detect traps     detection            diku               dirt
-dirt kicking     disarm               dismount           dispel evil
-dispel good      dispel magic         dodge              donate
-down             draconian            draconian spells   drink
-drop             dual wield           dust devil         dwarf
-dwarves          earth travel         earthquake         east
-eat              ego whip             electric spells    elemental
-elf              elves                embalm             emote
-enchant armor    enchant weapon       enchantment        energy drain
-enhanced damage  enhancement          equipment          evil eye
-examine          exchange             exits              exotic
-experience       faerie fire          faerie fog         fast healing
-fatality         fill                 fire breath        fire spells
-fireball         fireshield           fists of fury      flail
-flamestrike      flee                 flip               fly
-follow           force sword          frenzy             frost breath
-frostshield      gain                 gas breath         gate
-get              geyser               giant strength     give
-gossip           group                groups             gtell
-guilds           haggle               haggling           halfling
-hand to hand     harm                 harmful            haste
-haven            heal                 healing            healspell
-heat metal       help                 herbal brewing     herbie
-hero             hide                 hobbit             hold
-holy word        house of thieves     human              humans
-icicle           idea                 identify           info
-infravision      inventory            invis              iron skin
-join             kick                 kill               know alignment
-level            levitate             life-undeath       light spells
-lightning bolt   lightning breath     list               locate object
-lock             look                 lore               mace
-mage             magic missile        major globe        maladictions
-man              mana convert         mass invis         mass sanctuary
-maze             meditation           merc               meteor swarm
-mindbar          mindblast            monk               moonbeam
-morgue           motd                 mount              move
-murder           music                necromancer        nerve damage
-newbie info      news                 nightmare          nofollow
-nofol            noloot               north              northeast
-northwest        nosummon             note               notes
-open             order                outfit             palm of the creator
-parry            pass door            password           peek
-pick             pick lock            pkill              plague
-poison           polearm              portal             pose
-power gloves     practice             project            prompt
-protection evil  protective           psionic armor      psychic shield
-pull             push                 put                pyrotechnics
-quaff            question             quiet              quit
-race             race help            races              raise dead
-read             recall               recall             recite
-refresh          remove               remove curse       rent
-reply            report               rescue             rest
-restore mana     ride                 riding             rope trick
-rules            run                  sacrifice          sanctuary
-saurian          save                 say                scan
-score            scribe               scroll             scrolls
-search           second attack        sell               shield
-shift            shocking grasp       shout              shove
-shroud           sit                  skeletal hands     skills
-sleep            sleepspell           sleight of hand    slow
-sneak            social               socials            south
-southeast        southwest            spear              spellgroup
-spells           spiritual hammer     split              stand
-staves           steal                stealth            steel fist
-stone skin       story                stunning blow      summary
-summon           sunray               sword              take
-tax              taxes                telekinesis        teleport
-tell             temple of breas      tentacles          thief
-third attack     tick                 time               title
-tk               torment              train              transfusion
-transport        trap the soul        trip               turn
-typo             university of magic  unlock             up
-value            vampiric touch       ventriloquate      visible
-vortex           wake                 wands              warrior
-water burst      water spells         weaken             weapon
-weapons          weaponsmaster        wear               weather
-weatherspells    west                 where              whip
-who              whois                wield              wimpy
-wind spells      wizlist              word of recall     worth
-xp               yell                 zap
-animate parts    shield block         track
-
-See also: HELP, COMMANDS
-~
-
--1 PROMPT~
-Syntax: prompt
-Syntax: prompt all
-Syntax: prompt <%*>
-
-PROMPT with out an argument will turn your prompt on or off.
-
-PROMPT ALL will give you the standard "<hits mana moves>" prompt.
-
-PROMPT <%*> where the %* are the various variables you may set yourself.
-
-        %h :  Display your current hits
-        %H :  Display your maximum hits
-        %m :  Display your current mana
-        %M :  Display your maximum mana
-        %v :  Display your current moves
-        %V :  Display your maximum moves
-        %x :  Display your current experience
-        %X :  Display experience to level
-        %g :  Display your gold held
-        %a :  Display your alignment
-        %R :  Display the vnum you are in (IMMORTAL ONLY)
-        %z :  Display the area name you are in (IMMORTAL ONLY)
-
-Example:  PROMPT <%hhp %mm %vmv>
-        Will set your prompt to "<10hp 100m 100mv>"
-
-See also: SCORE, AFFECTS
+!                  ,                  -                  .
+/                  ;                  =                  abilities
+accept             account            accounts           achievement
+achievements       acid blast         acid breath        adept
+affect             affects            afk                aggrostab
+aid                alias              aliases            align
+alignment          angel              animate parts      aquest
+arcane studies     archery            arealist           areas
+arena              armor              arrive             ask
+astral             astral walk        attack             attribute
+attributes         auto               autoassist         autoexit
+autogold           autolist           autoloot           automap
+automapper         autosac            autosplit          axe
+backstab           balance            bank               bash
+baura              begin              beginner           beginners
+beguiling          benchmark          benedictions       berserk
+bet                bewitch            bewitch weapon     black dragon
+black market       blacksmith         bless              blinding
+blinding fists     blindness          blizzard           block
+bloody aura        blow               blue ring          bomb
+bow                brandish           breas              brew
+brief              browser            browserclient      bs
+buff               bug                burn               burning hands
+butcher            buy                call lightning     calm
+camelot            cancellation       casino             cast
+castle             castlechat         castles            cause critical
+cause light        cause serious      cc                 cgos
+chain lightning    changes            channels           charm person
+chat               chill touch        citadel            citadel of war
+cities             clairvoyance       class              classes
+clerics            clicktowalk        climb              close
+cold spells        color              color spray        colour spray
+combat             combine            commands           compact
+compare            compass            concoct            cone of cold
+confuse            consider           constitution       continual light
+control weather    convert            corpse             corpses
+count              crane              crane dance        crawl
+create food        create skeleton    create spring      create vampire
+create water       create wraith      creation           credits
+curative           cure blindness     cure critical      cure disease
+cure light         cure nightmare     cure poison        cure serious
+curse              customize          dagger             dailies
+daily              damage             damagenumbers      damroll
+danger             danger sense       david              deaf
+dealer             death              death shroud       death trap
+death traps        deathshroud        deathtrap          deathtraps
+decline            delet              delete             demonfire
+depart             deposit            desc               description
+despair            destinations       destruction        detect evil
+detect good        detect hidden      detect invis       detect magic
+detect poison      detect traps       detection          devota
+devote             dex                dexterity          dice
+diku               directions         dirt               dirt kicking
+dirt-kick          disarm             disasters          dismount
+dispel evil        dispel good        dispel magic       divine intervention
+divine protection  dodge              dominion shield    donate
+door bash          door repair        doorbash           down
+dr                 draconian          draconian spells   draga
+dragon             dresden            drink              drop
+dshield            dt                 dual               dual wield
+dummy              dungeon map        dungeons           dust devil
+dwarf              dwarves            dying              earth travel
+earthquake         east               eat                ego whip
+egowhip            electric spells    elemental          elestair
+elf                elves              embalm             emote
+empower            empower spell      enchant armor      enchant item
+enchant weapon     enchantment        energy drain       enervate
+enhanced damage    enhancement        enter              equipment
+evil               evil eye           examine            exchange
+exits              exotic             experience         faerie fire
+faerie fog         farslay            fast healing       fatality
+feed               fiend              fill               fingers
+fire breath        fire shield        fire spells        fireball
+fireshield         fists              fists of fury      flag
+flail              flamestrike        flee               flip
+fly                follow             force sword        fourth attack
+frenzy             frost breath       frost shield       frostshield
+gain               gainlist           gamble             gambling
+ganon              gas breath         gate               get
+getting started    geyser             ghostly presence   giant potion
+giant strength     gioli              give               gmcp
+goblin             god                gods               good
+gossip             greeting           grip               grounds
+group              groups             gtell              guilds
+haggle             haggling           halfling           hand to hand
+harm               harmful            haste              hatchet
+haven              heal               healing            healspell
+hearts             heat metal         help               herbal brewing
+herbie             hermie             hero               hero levels
+heroes             heroic             heroic grip        heroicgrip
+herolevel          herolevels         heroquest          hide
+history            hit                hitroll            hobbit
+hold               holy word          house              house of thieves
+hr                 human              humans             hunting grounds
+hyrule             hyrule items       hyrule levels      hyrule order
+hyrule secrets     icaza              icicle             idea
+identify           ignore             immortal           immortals
+info               infravision        intelligence       interest
+inventory          invis              invisspell         invuln
+invulnerable       iron               iron skin          issue
+jazair             join               jump               junk
+kalak              keepsake           keepsake trophy    keepsakes
+kick               kill               know alignment     leaderboard
+level              leveling           levitate           life-undeath
+light spells       lightning bolt     lightning breath   link
+list               listen             listen at door     locate object
+lock               login              look               lore
+lost mage          lucky              lycanthropy        mace
+mage               magic missile      magic user         magical shield
+major globe        maladiction        maladictions       man
+mana convert       map                mapper             mapping
+market             marks              mass healing       mass invis
+mass sanctuary     master             master sword       maze
+meditation         merc               meteor swarm       mind blast
+mind leech         mindbar            mindblast          mindleech
+mirror             money cave         monk               moonbeam
+morgue             morgue of dresden  motd               mount
+move               mudlet             mudschool          multiclass
+murde              murder             music              ne
+necromancer        nerve              nerve damage       neutral
+neutrality field   new                newbie info        news
+night vision       nightmare          nofol              nofollow
+noloot             north              northeast          northwest
+nosummon           note               notes              nw
+open               options            oracle             order
+outfit             palms              palms of the creatorparagon
+parry              pass door          password           peek
+phase              pick               pick lock          pkill
+pkilling           plague             play               poison
+poker              polearm            portal             pose
+potion of power    potion of the giantpower gloves       power potion
+practice           practicelist       pray               project
+prompt             protection evil    protective         psionic
+psionic armor      psionics           psionist trainer   pstealing
+psychic            psychic shield     pull               push
+put                pyrotechnics       quaff              quest
+questing           question           questor            questpoint
+questpoints        qui                quiet              quit
+race               race help          races              racial trainer
+raise dead         rakar              rakar the weaponsmasterread
+recall             recite             red ring           redeem
+refresh            reissue            relics             remort
+remove             remove align       remove curse       rent
+repair             replay             reply              report
+reports            rescue             rest               rest xp
+rested             rested xp          restore mana       resurrection
+ride               riding             roll               rom
+rope trick         roulette           routelist          routes
+rules              run                ruthless           sacrifice
+salir              sanctuary          saurian            save
+say                scan               school trainer     score
+scribe             scroll             scroll of farslay  scrolls
+se                 search             second attack      secondary
+seer               sell               seraloi            settings
+shadowmeld         shield             shield block       shieldblock
+shift              shock sphere       shocking grasp     shoot
+shout              shove              shroud             silvesti
+sit                skeletal hands     skills             sleep
+sleepspell         sleight of hand    slots              slow
+smite              smuggler           sneak              social
+socials            south              southeast          southwest
+spear              speedwalk          spellgroup         spells
+spiritual hammer   split              staff              stand
+start              stash              stashlink          stats
+staves             steal              stealth            steel
+steel fist         steelfist          stone skin         story
+strength           stunning           stunning blow      sub issue
+subissue           summary            summon             sunray
+sw                 sword              take               take any
+tax                taxes              teachlist          telekinesis
+teleport           teleportspell      tell               temple of breas
+tentacles          thews              thief              third attack
+tia                tick               tifarah            time
+titanic            titanic spell      title              tk
+to hit             tocgui             topten             torment
+track              train              training           traitor
+transfusion        transport          trap the soul      travel
+treasure goblin    triforce           trip               trophy
+turn               typo               unalias            university
+university of magicunlock             up                 use
+valley elf         value              vampiric touch     vengeance
+vengence           ventriloquate      vesh               vile
+virtuous           visible            vortex             wake
+walk               walkto             wands              warrior
+water burst        water spells       weaken             weapon
+weapons            weaponsmaster      wear               weather
+weather group      weather spells     weatherspells      web
+webclient          west               where              where to hunt
+whip               who                whois              wield
+wimpy              wind spells        wisdom             withdraw
+wizlist            word of recall     world              worth
+xp                 yard               yell               zap
 ~
 
 0$~
