@@ -2742,7 +2742,10 @@ levers, all in `combat_rules.c`, each a constant to tune:
   (every mage's) level d`LIGHTNING_BOLT_SIDES` (10) -- a flat 8d8 and a
   table that stopped at 64 before. Another class casting them rolls half
   the dice: a warrior in the mage guild has mastery too, and must not
-  out-hit the warrior in the warriors' guild.
+  out-hit the warrior in the warriors' guild. **A mobile keeps the old spell**
+  (owner, 2026-10-27): `IS_NPC(ch)` casts 8d8 and the old bolt table,
+  because the 99 `spec_cast_cleric` mobiles (median level 22) otherwise
+  flamestruck for about five times their level, past harm's cap.
 - After them every main-class build sat at 174-256 a round at level 50
   (24-round yard fights, self-buffed, equal gear) -- the monk's band.
   The necromancer and M/M's meteors stay above it on purpose. Faster

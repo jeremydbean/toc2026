@@ -136,13 +136,19 @@ class CombatRulesCallSiteTests(unittest.TestCase):
             self.assertIn(need, guard)
 
     def test_the_casters_spells_scale(self) -> None:
+        """Players' flamestrike and lightning bolt grow a die a level; a
+        mobile's keep the old 8d8 and table (owner, 2026-10-27: the
+        scale-up was for player classes -- the 99 spec_cast_cleric mobiles
+        would otherwise have cast about five times their level)."""
         magic = ROOT / "src" / "magic.c"
-        self.assertIn("flamestrike_dice( level, IS_NPC(ch) || ch->class == CLASS_CLERIC )",
-                      function_body(magic, "void spell_flamestrike("))
+        strike = function_body(magic, "void spell_flamestrike(")
+        self.assertIn("flamestrike_dice( level, ch->class == CLASS_CLERIC )", strike)
+        self.assertLess(strike.index("if ( IS_NPC(ch) )"), strike.index("flamestrike_dice("))
+        self.assertIn("dam = dice( 8, 8 );", strike)
         bolt = function_body(magic, "void spell_lightning_bolt(")
-        self.assertIn("lightning_bolt_dice( level, IS_NPC(ch) || ch->class == CLASS_MAGE )", bolt)
-        self.assertNotIn("dam_each", bolt)
-
+        self.assertIn("lightning_bolt_dice( level, ch->class == CLASS_MAGE )", bolt)
+        self.assertLess(bolt.index("if ( IS_NPC(ch) )"), bolt.index("lightning_bolt_dice("))
+        self.assertLess(bolt.index("dam_each"), bolt.index("lightning_bolt_dice("))
 
 if __name__ == "__main__":
     unittest.main()

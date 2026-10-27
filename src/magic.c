@@ -900,7 +900,7 @@ void spell_blindness( int sn, int level, CHAR_DATA *ch, void *vo )
 void spell_burning_hands( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     CHAR_DATA *victim = (CHAR_DATA *) vo;
-    static const int16_t dam_each[] =
+    static const sh_int dam_each[] =
     {
 	 0,
 	 0,  0,  0,  0,	14,	17, 20, 23, 26, 29,
@@ -1456,7 +1456,7 @@ void spell_charm_person( int sn, int level, CHAR_DATA *ch, void *vo )
 void spell_chill_touch( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     CHAR_DATA *victim = (CHAR_DATA *) vo;
-    static const int16_t dam_each[] =
+    static const sh_int dam_each[] =
     {
 	 0,
 	 0,  0,  6,  7,  8,	 9, 12, 13, 13, 13,
@@ -1497,7 +1497,7 @@ void spell_chill_touch( int sn, int level, CHAR_DATA *ch, void *vo )
 void spell_colour_spray( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     CHAR_DATA *victim = (CHAR_DATA *) vo;
-    static const int16_t dam_each[] =
+    static const sh_int dam_each[] =
     {
 	 0,
 	 0,  0,  0,  0,  0,	 0,  0,  0,  0,  0,
@@ -2771,7 +2771,7 @@ void spell_energy_drain( int sn, int level, CHAR_DATA *ch, void *vo )
  */
 int fireball_damage_roll( int level )
 {
-    static const int16_t dam_each[] =
+    static const sh_int dam_each[] =
     {
 	  0,
 	  0,   0,   0,   0,   0,	  0,   0,   0,   0,   0,
@@ -2808,9 +2808,16 @@ void spell_flamestrike( int sn, int level, CHAR_DATA *ch, void *vo )
     int dam;
 
     /* It was a flat 8d8 at every level, a scratch by 50 (class review,
-       2026-10-27): it grows with the cleric now (flamestrike_dice). */
-    dam = dice( flamestrike_dice( level, IS_NPC(ch) || ch->class == CLASS_CLERIC ),
-	        FLAMESTRIKE_SIDES );
+       2026-10-27): it grows with the cleric now (flamestrike_dice). The
+       scale-up was for player classes; a mobile casting it -- the 99 with
+       spec_cast_cleric -- keeps the old 8d8, or a level 50 priest's
+       flamestrike rose from 36 to 250 on average, past harm's cap of 100
+       (review, 2026-10-27: PvE was not what the change was for). */
+    if ( IS_NPC(ch) )
+	dam = dice( 8, 8 );
+    else
+	dam = dice( flamestrike_dice( level, ch->class == CLASS_CLERIC ),
+		    FLAMESTRIKE_SIDES );
     if ( saves_spell( level, victim ) )
 	dam /= 2;
     damage( ch, victim, dam, sn, DAM_FIRE );
@@ -3644,9 +3651,26 @@ void spell_lightning_bolt( int sn, int level, CHAR_DATA *ch, void *vo )
 
     /* Every mage keeps lightning bolt in any guild, and its table stopped
        at 64 by level 50 (class review, 2026-10-27): it grows with the mage
-       now (lightning_bolt_dice), below acid blast's level d12. */
-    dam = dice( lightning_bolt_dice( level, IS_NPC(ch) || ch->class == CLASS_MAGE ),
-	        LIGHTNING_BOLT_SIDES );
+       now (lightning_bolt_dice), below acid blast's level d12. A mobile
+       keeps the old table: the scale-up was for player classes. */
+    if ( IS_NPC(ch) )
+    {
+	static const sh_int dam_each[] =
+	{
+	     0,
+	     0,  0,  0,  0,  0,	 0,  0,  0, 25, 28,
+	    31, 34, 37, 40, 40,	41, 42, 42, 43, 44,
+	    44, 45, 46, 46, 47,	48, 48, 49, 50, 50,
+	    51, 52, 52, 53, 54,	54, 55, 56, 56, 57,
+	    58, 58, 59, 60, 60,	61, 62, 62, 63, 64
+	};
+	int lv = URANGE( 0, level, (int)( sizeof(dam_each) / sizeof(dam_each[0]) ) - 1 );
+
+	dam = number_range( dam_each[lv] / 2, dam_each[lv] * 2 );
+    }
+    else
+	dam = dice( lightning_bolt_dice( level, ch->class == CLASS_MAGE ),
+		    LIGHTNING_BOLT_SIDES );
     if ( saves_spell( level, victim ) )
 	dam /= 2;
     damage( ch, victim, dam, sn, DAM_LIGHTNING );
@@ -3738,7 +3762,7 @@ void spell_locate_object( int sn, int level, CHAR_DATA *ch, void *vo )
 void spell_magic_missile( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     CHAR_DATA *victim = (CHAR_DATA *) vo;
-    static const int16_t dam_each[] =
+    static const sh_int dam_each[] =
     {
 	 0,
 	 4,  5,  5,  6,  6,	 6,  7,  7,  7,  7,
@@ -5176,7 +5200,7 @@ void spell_blizzard( int sn, int level, CHAR_DATA *ch, void *vo )
     UNUSED_PARAM(vo);
     CHAR_DATA *vch;
     LIST_ITERATOR iter;
-    static const int16_t dam_each[] =
+    static const sh_int dam_each[] =
     {
 	  0,
 	  0,   0,   0,   0,   0,	  0,   0,   0,   0,   0,
@@ -5217,7 +5241,7 @@ void spell_blizzard( int sn, int level, CHAR_DATA *ch, void *vo )
 void spell_icicle( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     CHAR_DATA *victim = (CHAR_DATA *) vo;
-    static const int16_t dam_each[] =
+    static const sh_int dam_each[] =
     {
 	  0,
 	  0,   0,   0,   0,   0,	  0,   0,   0,   0,   0,

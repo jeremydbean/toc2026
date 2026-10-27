@@ -8,6 +8,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- **Mobiles keep the old flamestrike and lightning bolt** (2026-10-27;
+  owner). The level-scaled dice were for player classes; a mobile casts
+  8d8 and the old bolt table again (`tests/test_combat_rules.py`).
+
 - **The Oracle's daze says so** (2026-10-27; owner: it looked like lag).
   The minute after an audience was a tick of `WAIT_STATE`, which held the
   first command typed unanswered; every command but QUIT is now refused
