@@ -57,7 +57,11 @@ NEW_OBJECT_VNUMS = (
 # the Red Ring Cellar until the Red Ring of Hyrule (30579) took its place;
 # nothing placed it after that and no saved character held one, so the
 # owner had it removed rather than leave a second red ring in VNUM.
-RETIRED_OBJECT_VNUMS = {30261}
+# 30285, the Hyrule arcade cabinet, is gone too (owner, 2026-10-27): the
+# Games Room already holds campus.are's cabinet (15063), a portal to the
+# same room (30200), so the room showed two. Nobody can carry a cabinet, so
+# no save.c retired_objects row is owed.
+RETIRED_OBJECT_VNUMS = {30261, 30285}
 # 30578, Ganon's Blue Ring of Hyrule, sits inside NEW_OBJECT_VNUMS and is
 # simply no longer written: the shop's ring (30551) took its name.
 
@@ -2993,7 +2997,6 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
     for level in sorted(CHESTS):
         for prize in CHEST_PRIZES[level]:
             lines.append(f"P 0 {prize} 0 {CHESTS[level]}")
-    lines.append("O 0 30285 0 15068")
     lines.append("S")
     return "\n".join(lines)
 

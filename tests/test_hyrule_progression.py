@@ -1698,9 +1698,12 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertNotIn('"{0c}', look_source)
 
     def test_hyrule_has_teleport_only_entry_and_no_walking_world_link(self) -> None:
-        arcade = self.parser.objects[30285]
+        # campus.are's cabinet is the one way in; Hyrule's own (30285), a
+        # second portal to the same room, was retired (owner, 2026-10-27).
+        arcade = self.parser.objects[15063]
         self.assertEqual(arcade.values[1], "30200")
-        self.assertIn(30285, self.parser.rooms[15068].objects)
+        self.assertIn(15063, self.parser.rooms[15068].objects)
+        self.assertNotIn(30285, self.parser.objects)
 
         for room in self.hyrule_rooms.values():
             for exit_data in room.exits:

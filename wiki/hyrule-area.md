@@ -10,7 +10,7 @@ the useful Hyrule mobile and object catalog.
 | --- | --- |
 | Area file | `area/hyrule.are` |
 | Reserved vnums | rooms and objects `30200-30799`; mobiles `30200-30345` and generated enemies `31000-32459` |
-| Entry object | Hyrule arcade cabinet `30285` in Campus room `15068` |
+| Entry object | the arcade cabinet `15063` (`campus.are`) in Campus room `15068`; Hyrule's own `30285`, a second portal to the same room, was retired on 2026-10-27 |
 | Arrival | Overworld screen `H1`, room `30200` |
 | Exit model | Secret return tree, post-Ganon return light, and recall from the overworld |
 | Recall | Blocked only inside the nine dungeons (`30400-30645`) |

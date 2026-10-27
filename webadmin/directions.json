@@ -10,7 +10,7 @@
   "legacy_ok": 71,
   "legacy_drifted": 10,
   "legacy_repaired": 9,
-  "links": 131,
+  "links": 130,
   "trainers": 64,
   "places": 3
  },
@@ -4216,11 +4216,6 @@
   {
    "from": 15068,
    "command": "enter cabinet",
-   "to": 30200
-  },
-  {
-   "from": 15068,
-   "command": "enter hyrule",
    "to": 30200
   },
   {

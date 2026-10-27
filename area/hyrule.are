@@ -5085,19 +5085,6 @@ meat~
 19 UV A
 H 0 0 0 0
 1 1 250000 P
-#30285
-hyrule arcade cabinet game screen portal~
-a flickering Hyrule arcade cabinet~
-A weathered Hyrule arcade cabinet flickers here, its screen opening onto another world.~
-metal~
-30 ABGOV 0
-5 30200 0 0 0
-0 500 0 P
-E
-cabinet screen hyrule~
-The painted cabinet shows a green-clad hero beneath three golden triangles.
-The screen ripples like deep water.
-~
 #30286
 triforce golden triangles~
 The Triforce~
@@ -20727,7 +20714,6 @@ P 0 30406 0 30646
 P 0 30407 0 30647
 P 0 30408 0 30648
 P 0 30200 0 30648
-O 0 30285 0 15068
 S
 
 #SHOPS
