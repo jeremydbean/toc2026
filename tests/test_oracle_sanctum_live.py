@@ -109,6 +109,18 @@ class OracleDazeLive(unittest.TestCase):
                 client.expect("Your head clears", timeout=15)
                 self.assertIn(TEMPLE_NAME, client.command("look", 1.5))
 
+            # Praying from a safe room (the altar, 4208) costs no daze
+            # (owner, 2026-10-27): the next command just works.
+            make(mud, "Zpraysafe")
+            patch_player_file(mud, "Zpraysafe", Room=4208)
+            with mud.connect(timeout=120) as client:
+                login(client, "Zpraysafe", PW)
+                self.assertIn("The Oracle's Sanctum", client.command("pray", 1.5))
+                out = client.command("say done", 1.5)
+                self.assertIn("settles gently", out)
+                self.assertNotIn("dazed", out)
+                self.assertIn("Altar of the Temple", client.sync("look"))
+
             # QUIT is never refused: leaving the game escapes nothing.
             with mud.connect(timeout=120) as client:
                 login(client, "Zprayleave", PW)

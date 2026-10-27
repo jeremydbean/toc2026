@@ -254,16 +254,24 @@ static void oracle_journal( const char *role, const char *who, int room_vnum,
    the first thing typed sat unanswered for a minute and the game looked
    frozen (owner, 2026-10-27). Now every command in that minute is answered
    with why and for how long, and the minute runs on the clock.
-   TOC_ORACLE_DAZE (seconds) shortens it for the live tests. */
+   TOC_ORACLE_DAZE (seconds) shortens it for the live tests.
+   A prayer said in a safe room (ROOM_SAFE) comes back with no daze at all
+   (owner, 2026-10-27): there is no trouble there to step out of, so
+   prayed_from -- the room they prayed in, NULL when unknown -- decides. */
 #define ORACLE_RETURN_DAZE   60
 
-static void oracle_come_back( CHAR_DATA *ch )
+static void oracle_come_back( CHAR_DATA *ch, ROOM_INDEX_DATA *prayed_from )
 {
     const char *env;
     long seconds = ORACLE_RETURN_DAZE;
 
     if ( ch == NULL )
         return;
+    if ( prayed_from != NULL && IS_SET(prayed_from->room_flags, ROOM_SAFE) )
+    {
+        send_to_char( "The world settles gently back around you.\n\r", ch );
+        return;
+    }
     send_to_char( "You stagger, dazed, as the world rushes back in around you.  Your mind "
                   "needs a moment to recover.\n\r", ch );
     if ( IS_NPC(ch) || ch->pcdata == NULL || IS_IMMORTAL(ch) )
@@ -416,7 +424,7 @@ static void oracle_dismiss( bool send_home )
             act( "$n steps out of a thinning curl of incense smoke.",
                 vch, NULL, NULL, TO_ROOM );
             do_look( vch, "auto" );
-            oracle_come_back( vch );
+            oracle_come_back( vch, home );
             break;
         }
     }
@@ -453,7 +461,8 @@ void oracle_on_char_from_room( CHAR_DATA *ch )
     {
         /* Leaving on their own -- down the bead curtain, or summoned away --
            still costs the daze of coming back. */
-        oracle_come_back( ch );
+        oracle_come_back( ch, oracle_origin_vnum > 0
+                              ? get_room_index( oracle_origin_vnum ) : NULL );
         oracle_dismiss( FALSE );
     }
 }
@@ -499,7 +508,7 @@ bool oracle_refuses_sleep( CHAR_DATA *ch )
     char_to_room( ch, home );
     act( "$n steps out of a thinning curl of incense smoke.", ch, NULL, NULL, TO_ROOM );
     do_look( ch, "auto" );
-    oracle_come_back( ch );
+    oracle_come_back( ch, NULL );   /* not her supplicant: prayed nowhere */
     return TRUE;
 }
 

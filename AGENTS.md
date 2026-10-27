@@ -3670,7 +3670,10 @@ so the first command typed sat unanswered for a minute.
 the input loop asks `oracle_dazed()` before running any line and refuses
 all but QUIT and a blank line, saying how many seconds are left;
 `oracle_daze_update()` (every pulse) says when it ends. `TOC_ORACLE_DAZE`
-shortens it for tests.
+shortens it for tests. **A prayer said in a `ROOM_SAFE` room comes back
+with no daze** (owner, 2026-10-27): `oracle_come_back(ch, prayed_from)`
+is given the room prayed in -- the altar (4208) is safe, the Temple floor
+(4207) is not.
 
 ## Disasters And The Black Dragon
 

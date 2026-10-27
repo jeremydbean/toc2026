@@ -2593,10 +2593,10 @@ static void recall_miss_message( CHAR_DATA *ch )
     {
 	"You stumble over the words of your prayer, and nothing happens.",
 	"Your prayer goes up and comes back unanswered.",
-	"The gods are listening to somebody else just now.",
     };
 
-    send_to_char( unheard[number_range( 0, 2 )], ch );
+    send_to_char( unheard[number_range( 0,
+        (int) ( sizeof(unheard) / sizeof(unheard[0]) ) - 1 )], ch );
     send_to_char( "\n\r", ch );
 }
 
