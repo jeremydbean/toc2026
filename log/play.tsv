@@ -27607,3 +27607,63 @@
 1793058600	cmd	Alaric	53	29004	korzath1.are	standing	96	0	-	drop	key	You drop a diamond key.
 1793058601	cmd	Alaric	53	29004	korzath1.are	standing	96	0	-	drop		Drop what?
 1793058611	session	Alaric	53	29004	korzath1.are	quit	16286s	+3 levels	+39880 exp	+1631045242 copper	79 kills	0 deaths	13 quests	1642 commands	9 refused	coin: loot 306p 7g 54s 42c, quests 1324p 96g 98s
+1793060168	cmd	Alaric	53	29004	korzath1.are	standing	96	0	-	wake		You are already standing.
+1793060169	cmd	Alaric	53	29004	korzath1.are	standing	96	0	-	look		Center Tunnelway //   The ceiling in this tunnelway is non existent.  A constant rain  // falls through making puddles on the floor.  In front of you is a massive
+1793060173	cmd	Alaric	53	29004	korzath1.are	standing	97	0	-	get	key	You get a diamond key.
+1793060174	cmd	Alaric	53	29004	korzath1.are	standing	97	0	-	unlock	north	There is a flash of light as you unlock the door.
+1793060175	cmd	Alaric	53	29004	korzath1.are	standing	97	0	-	open		Ok.
+1793060175	cmd	Alaric	53	29201	korzath2.are	standing	97	0	-	north		Heroes Hall //   Gold plated walls line this hall of heroes.  Statues of heroes from // the days of old stand along the passage to the north.  A large crystal
+1793060175	cmd	Alaric	53	29202	korzath2.are	standing	97	0	-	north		Hall of Past Heroes //   The gold plated hall opens to the east and west here.  To the north // stands a tall and powerful looking crystalline door.  A door like that
+1793060175	cmd	Alaric	53	29202	korzath2.are	standing	97	0	-	north		The door has been Wizard Locked. You can not pass
+1793060176	cmd	Alaric	53	29203	korzath2.are	standing	97	0	-	west		Passage to the Maze //   From this room you can see that the maze before you has been constructed // with large stone walls that stretch from the floor to ceiling.  A slight
+1793060177	cmd	Alaric	53	29204	korzath2.are	standing	97	0	-	west		Twist in the Maze //   The maze twists to the south here.  Unholy moans echo from every // direction.  The stone walls carry sound every which way making it
+1793060177	cmd	Alaric	53	29204	korzath2.are	standing	97	0	-	west		Alas, you cannot go that way.
+1793060178	cmd	Alaric	53	29205	korzath2.are	standing	97	0	-	south		Twist in the Maze //   The maze continues on to the east.  You catch a whiff of smells that // churn the acids of your stomach.  Blood?  No.  You've smelled plenty of
+1793060179	cmd	Alaric	53	29206	korzath2.are	standing	97	0	-	east		Twist in the Maze //   The smell becomes stronger here.  Scanning the floor you notice // faint blood stains on the cobblestone.  You smell something fishy...well
+1793060179	cmd	Alaric	53	29207	korzath2.are	standing	97	0	-	south		Twist in the Maze //   The stink of rotted flesh is overwhelming at this point.  Is it // possible to travel deeper into this maze without passing out?
+1793060180	cmd	Alaric	53	29207	korzath2.are	standing	97	0	-	south		Alas, you cannot go that way.
+1793060183	cmd	Alaric	53	29208	korzath2.are	standing	97	0	-	west		Twist the Maze //   The source of the stench is visible now.  Glancing down the hall you // see slow moving creatures that have been brought back to life in one form
+1793060184	cmd	Alaric	53	29208	korzath2.are	standing	97	0	-	iron		Your skin hardens.
+1793060193	cmd	Alaric	53	29209	korzath2.are	standing	97	0	-	west		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793060193	cmd	Alaric	53	29209	korzath2.are	standing	97	0	-	practice		clairvoyance         1%  ego whip             1%  mindbar             73%   // mind leech           1%  project              1%  psionic armor        1%   // telekinesis         73%  torment              1%  axe                  8%  
+1793060196	cmd	Alaric	53	29209	korzath2.are	standing	97	0	-	kill	sk	Your punch decimates an Animated Skeleton! [-26] // Your punch maims an Animated Skeleton! [-35] // An Animated Skeleton dodges your attack.
+1793060198	cmd	Alaric	53	29209	korzath2.are	fighting	92	0	fight	fists		You attack in an all consuming fury! // Your fists of fury mauls an Animated Skeleton. [-24] // Your fists of fury injures an Animated Skeleton. [-15]
+1793060204	cmd	Alaric	53	29209	korzath2.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes an Animated Skeleton. [-6] // Your fists of fury hits an Animated Skeleton. [-10]
+1793060210	cmd	Alaric	53	29209	korzath2.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-65] // Your fists of fury wounds an Animated Skeleton. [-18]
+1793060217	cmd	Alaric	53	29209	korzath2.are	standing	88	0	-	who		[53 Dwarf   Hero  ] Alaric. // Players found: 1
+1793060217	cmd	Alaric	53	29209	korzath2.are	standing	88	0	-	look		Twist in the Maze //   The dark and dreary maze turns north here.  The foul stench of // decay becomes even more prominent.
+1793060218	cmd	Alaric	53	29210	korzath2.are	standing	88	0	-	north		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793060219	cmd	Alaric	53	29210	korzath2.are	standing	88	0	-	kill	sk	An Animated Skeleton parries your attack. // Your punch mauls an Animated Skeleton. [-24] // An Animated Skeleton parries your attack.
+1793060222	cmd	Alaric	53	29210	korzath2.are	fighting	87	0	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** an Animated Skeleton! [-73] // Your fists of fury decimates an Animated Skeleton! [-25]
+1793060231	cmd	Alaric	53	29210	korzath2.are	standing	88	0	-	kill	fi	They aren't here.
+1793060235	cmd	Alaric	53	29210	korzath2.are	standing	88	0	-	look		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793060238	cmd	Alaric	53	29210	korzath2.are	standing	88	0	-	fists	sk	You attack in an all consuming fury! // Your fists of fury MUTILATES an Animated Skeleton! [-38] // Your fists of fury maims an Animated Skeleton! [-36]
+1793060243	cmd	Alaric	53	29210	korzath2.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury injures an Animated Skeleton. [-16] // Your fists of fury grazes an Animated Skeleton. [-7]
+1793060249	cmd	Alaric	53	29210	korzath2.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS an Animated Skeleton! [-47] // Your fists of fury *** DEMOLISHES *** an Animated Skeleton! [-60]
+1793060255	cmd	Alaric	53	29210	korzath2.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ an Animated Skeleton! [-81] // Your fists of fury maims an Animated Skeleton! [-34]
+1793060261	cmd	Alaric	53	29210	korzath2.are	standing	88	0	-	fists		Who do you want to attack?
+1793060261	cmd	Alaric	53	29210	korzath2.are	standing	88	0	-	look		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793060263	cmd	Alaric	53	29210	korzath2.are	standing	88	0	-	fists	cl	You attack in an all consuming fury! // Your fists of fury maims a killer clown! [-33] // Your fists of fury *** DEVASTATES *** a killer clown! [-76]
+1793060269	cmd	Alaric	53	29210	korzath2.are	fighting	88	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a killer clown! [-109] // Your fists of fury MASSACRES a killer clown! [-49]
+1793060274	cmd	Alaric	53	29210	korzath2.are	fighting	84	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a killer clown. [-19] // Your fists of fury DISMEMBERS a killer clown! [-48]
+1793060280	cmd	Alaric	53	29210	korzath2.are	fighting	82	0	fight	fists		You attack in an all consuming fury! // Your fists of fury decimates a killer clown! [-28] // Your fists of fury mauls a killer clown. [-22]
+1793060286	cmd	Alaric	53	29210	korzath2.are	fighting	80	0	fight	fists		You attack in an all consuming fury! // Your fists of fury ^^^ DESTROYS ^^^ a killer clown! [-105] // Your fists of fury hits a killer clown. [-10]
+1793060292	cmd	Alaric	53	29210	korzath2.are	fighting	78	1	fight	fists		You attack in an all consuming fury! // Your fists of fury *** DEVASTATES *** a killer clown! [-63] // A killer clown is DEAD!!
+1793060298	cmd	Alaric	53	29210	korzath2.are	standing	78	0	-	fists		Who do you want to attack?
+1793060298	cmd	Alaric	53	29210	korzath2.are	standing	78	0	-	look		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793060299	cmd	Alaric	53	29210	korzath2.are	standing	78	0	-	scan		an Animated Skeleton               -to the South. // a Shadowman                        -to the West. // a deranged madman                  -to the West.
+1793060306	cmd	Alaric	53	29211	korzath2.are	standing	78	0	-	west		Twist in the Maze //   The dark halls of the maze twist further north.  The creatures // you run into moan with the sadness of life.  Korzath has simply left
+1793060306	cmd	Alaric	53	29211	korzath2.are	standing	78	0	-	fists	shadow	You attack in an all consuming fury! // Your fists of fury MUTILATES a Shadowman! [-40] // Your fists of fury decimates a Shadowman! [-28]
+1793060312	cmd	Alaric	53	29211	korzath2.are	fighting	78	0	fight	fists		You attack in an all consuming fury! // Your fists of fury scratches a Shadowman. [-2] // Your fists of fury scratches a Shadowman. [-1]
+1793060317	cmd	Alaric	53	29211	korzath2.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a Shadowman. [-20] // Your fists of fury MANGLES a Shadowman! [-53]
+1793060323	cmd	Alaric	53	29211	korzath2.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury wounds a Shadowman. [-19] // Your fists of fury DISEMBOWELS a Shadowman! [-43]
+1793060329	cmd	Alaric	53	29211	korzath2.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury MUTILATES an Animated Skeleton! [-40] // Your fists of fury injures an Animated Skeleton. [-14]
+1793060335	cmd	Alaric	53	29211	korzath2.are	fighting	76	0	fight	who		[53 Dwarf   Hero  ] Alaric. // Players found: 1
+1793060335	cmd	Alaric	53	29211	korzath2.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury grazes an Animated Skeleton. [-6] // Your fists of fury maims an Animated Skeleton! [-33]
+1793060341	cmd	Alaric	53	29211	korzath2.are	fighting	76	0	fight	fists		You attack in an all consuming fury! // Your fists of fury DISMEMBERS an Animated Skeleton! [-47] // Your fists of fury MUTILATES an Animated Skeleton! [-38]
+1793060347	cmd	Alaric	53	29211	korzath2.are	standing	76	0	-	fists		Who do you want to attack?
+1793060347	cmd	Alaric	53	29211	korzath2.are	standing	76	0	-	fists		Who do you want to attack?
+1793060347	cmd	Alaric	53	29210	korzath2.are	standing	76	0	-	east		Twist in the Maze //   The halls here just seem to lead you on to rooms that are deeper // in the mountain side that this fortress is built on.  There don't seem
+1793060348	cmd	Alaric	53	29210	korzath2.are	standing	76	0	-	kill	sk	Your punch <<< ERADICATES >>> an Animated Skeleton! [-167] // An Animated Skeleton dodges your attack. // Your punch *** DEVASTATES *** an Animated Skeleton! [-67]
+1793060360	cmd	Alaric	53	29210	korzath2.are	standing	76	0	-	iron		Your skin hardens.
+1793060369	cmd	Alaric	53	29210	korzath2.are	standing	76	0	-	fists	mad	You attack in an all consuming fury! // Your fists of fury MUTILATES a deranged madman! [-37] // Your fists of fury *** DEVASTATES *** a deranged madman! [-62]
