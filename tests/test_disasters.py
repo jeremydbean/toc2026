@@ -182,9 +182,17 @@ class DisasterLiveTests(unittest.TestCase):
                 # Again, and this time it is fought: its hoard lies in the corpse.
                 self.assertIn("Done.", run(imm, "disaster dragon zprey", 1.5))
                 run(imm, "goto zprey", 1.0)
-                slain = run(imm, "slay dragon", 1.5)
+                slain_at = len(imm.transcript)
+                slain = imm.sync("slay dragon")
                 self.assertIn("hoard it carried spills", slain + prey.transcript[-800:])
-                corpse = run(imm, "look in corpse", 1.5)
+                corpse = imm.sync("look in corpse")
+                # A Dresden street may hold a stray dog (spec_fido), which
+                # devours an NPC corpse and drops what it held on the
+                # ground (CI, run 40549604725: "You do not see that here").
+                # The hoard is then on the floor, not gone.
+                if ("devours a corpse" in imm.transcript[slain_at:]
+                        and "do not see that here" in corpse.lower()):
+                    corpse = imm.sync("look")
                 self.assertRegex(corpse.lower(), r"coin|gold|silver|platinum|copper")
             log = (mud.root / "log" / "toc.log").read_text(encoding="latin-1")
         self.assertIn("Black dragon: snatched Zprey (level 20) from dresden.are", log)
