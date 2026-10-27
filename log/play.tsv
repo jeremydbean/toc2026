@@ -28795,3 +28795,5 @@
 1793112147	cmd	Miseri	9	4202	dresden_halloween.are	standing	60	0	-	walkto	palm of the creator	You set off for Palm of the Creator (monk guild), about 10 rooms away. // WALKTO STOP, or any other command, stops you.
 1793112167	cmd	Miseri	9	4804	dresden_halloween.are	standing	63	0	-	walkto	palm of the creator	You set off for Palm of the Creator (monk guild), about 11 rooms away. // WALKTO STOP, or any other command, stops you.
 1793112323	session	Miseri	9	4804	dresden_halloween.are	quit	970s	+8 levels	+19556 exp	+99551204 copper	14 kills	0 deaths	0 quests	126 commands	2 refused	coin: loot 100p 5g 12s 4c, spent 50g
+1793115828	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	who		[70 Elf     IMP   ] [*Valh] (WIZI) Killuminati, the Don. // Players found: 1
+1793115832	cmd	Killuminati	70	1	limbo_halloween.are	standing	100	0	-	wizhelp		142 staff commands available to you: // [65] activity      [66] advance       [65] aligncheck    [68] alist          // [72] allow         [69] anew          [64] announce      [69] asave         
