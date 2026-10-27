@@ -209457,3 +209457,19 @@ Tue Oct 27 21:17:07 2026 :: EOF encountered on read.
 Tue Oct 27 21:20:24 2026 :: Treasure goblin: vanished from room 17724 (The Haunted Forest, landoz.are) (too long in one area).
 Tue Oct 27 21:22:11 2026 :: Sock.sinaddr:  3.133.226.214
 Tue Oct 27 21:22:11 2026 :: EOF encountered on read.
+Tue Oct 27 21:27:15 2026 :: Sock.sinaddr:  5.161.117.52
+Tue Oct 27 21:27:15 2026 :: EOF encountered on read.
+Tue Oct 27 21:29:10 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Tue Oct 27 21:29:14 2026 :: Log WebAdmin: fsave
+Tue Oct 27 21:29:20 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Tue Oct 27 21:29:23 2026 :: Received signal 15; saving players and shutting down.
+Tue Oct 27 21:29:23 2026 :: Normal termination of game.
+Tue Oct 27 21:29:23 2026 ::  INIT OK 
+Tue Oct 27 21:29:23 2026 :: walkto_load: 157 destinations.
+Tue Oct 27 21:29:23 2026 :: changes_load: 194 entries.
+Tue Oct 27 21:29:23 2026 :: Spellup: Hermie placed in room 4208 at boot for 360 minutes.
+Tue Oct 27 21:29:23 2026 :: Recovery ledger: 186 records (0 from before the check), 0 requests, 6 players.
+Tue Oct 27 21:29:23 2026 :: ROM is ready to rock on port 9000.
+Tue Oct 27 21:29:23 2026 :: Treasure goblin: appeared.
+Tue Oct 27 21:29:23 2026 :: Automated backup complete.
+Tue Oct 27 21:29:23 2026 :: Daily backup complete.
