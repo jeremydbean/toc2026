@@ -209542,3 +209542,52 @@ Tue Oct 27 22:16:51 2026 :: Oracle: Miseri prayed from room 4208 (The Shrouded A
 Tue Oct 27 22:16:56 2026 :: Log Miseri [8]: 'where should i level
 Tue Oct 27 22:16:56 2026 :: Log Miseri [8]: asked the Oracle: where should i level
 Tue Oct 27 22:17:02 2026 :: Oracle answered Miseri in room 8: The best spots for level 9 are an imperial cityguard in Kahn Old Thalos (550 xp/kill, ~57k/hr), a student in Strange Campus (450 xp/kill, ~44k/hr), or Townguard in Town Of Solace (450 xp/kill, ~44k/hr); use `walkto` with the route given in `help leveling` or ask for specifics.
+Tue Oct 27 22:17:13 2026 :: Log Miseri [8]: d
+Tue Oct 27 22:17:13 2026 :: Log Miseri [4208]: arrived (The Shrouded Altar of Devota) from 8
+Tue Oct 27 22:18:02 2026 :: Sock.sinaddr:  54.87.112.51
+Tue Oct 27 22:18:02 2026 :: EOF encountered on read.
+Tue Oct 27 22:18:14 2026 :: Log Miseri [4208]: goto 'imperial cityguard'
+Tue Oct 27 22:18:18 2026 :: Log Miseri [4208]: goto imperial
+Tue Oct 27 22:18:18 2026 :: Log Miseri [29313]: arrived (Inner Fortress) from 4208
+Tue Oct 27 22:18:20 2026 :: Log Miseri [29313]: peace
+Tue Oct 27 22:18:24 2026 :: Log Miseri [29313]: goto 1
+Tue Oct 27 22:18:24 2026 :: Log Miseri [1]: arrived (The Void) from 29313
+Tue Oct 27 22:18:28 2026 :: Log Miseri [1]: ]
+Tue Oct 27 22:18:31 2026 :: Log Miseri [1]: ]
+Tue Oct 27 22:18:34 2026 :: Log Miseri [1]: ]
+Tue Oct 27 22:18:38 2026 :: Log Miseri [1]: ]
+Tue Oct 27 22:18:38 2026 :: Log Miseri [4207]: arrived (Before the Shrouded Altar) from 1
+Tue Oct 27 22:19:12 2026 :: Log Miseri [4207]: mwhere imperial
+Tue Oct 27 22:19:21 2026 :: Log Miseri [4207]: goto 5352
+Tue Oct 27 22:19:21 2026 :: Log Miseri [5352]: arrived (Under a watchtower) from 4207
+Tue Oct 27 22:19:24 2026 :: Log Miseri [5352]: kill cit
+Tue Oct 27 22:19:37 2026 :: Log Miseri [5352]: sca
+Tue Oct 27 22:19:41 2026 :: Log Miseri [5352]: ski
+Tue Oct 27 22:19:47 2026 :: Treasure goblin: vanished from room 13216 (Small Alleyway., solace.are) (too long in one area).
+Tue Oct 27 22:19:51 2026 :: Log Miseri [5352]: killed an imperial cityguard
+Tue Oct 27 22:19:51 2026 :: Log Miseri [5352]: coin +34 copper
+Tue Oct 27 22:20:01 2026 :: Log Miseri [5352]: wor
+Tue Oct 27 22:20:04 2026 :: Log Miseri [5352]: sc
+Tue Oct 27 22:20:17 2026 :: Log Miseri [5352]: lo
+Tue Oct 27 22:20:22 2026 :: Log Miseri [5352]: n
+Tue Oct 27 22:20:22 2026 :: Log Miseri [5353]: arrived (A back alley) from 5352
+Tue Oct 27 22:20:23 2026 :: Log Miseri [5353]: sca
+Tue Oct 27 22:20:24 2026 :: Log Miseri [5353]: n
+Tue Oct 27 22:20:24 2026 :: Log Miseri [5355]: arrived (A back alley) from 5353
+Tue Oct 27 22:20:26 2026 :: Log Miseri [5355]: sca
+Tue Oct 27 22:20:26 2026 :: Log Miseri [5355]: n
+Tue Oct 27 22:20:26 2026 :: Log Miseri [5301]: arrived (Main Street) from 5355
+Tue Oct 27 22:20:28 2026 :: Log Miseri [5301]: s
+Tue Oct 27 22:20:28 2026 :: Log Miseri [5355]: arrived (A back alley) from 5301
+Tue Oct 27 22:20:28 2026 :: Log Miseri [5355]: w
+Tue Oct 27 22:20:28 2026 :: Log Miseri [5335]: arrived (A small guard house) from 5355
+Tue Oct 27 22:20:32 2026 :: Log Miseri [5335]: kill cit
+Tue Oct 27 22:21:06 2026 :: Log Miseri [5335]: level 9 -> 10 (earned)
+Tue Oct 27 22:21:06 2026 :: Miseri has achieved level 10!
+Tue Oct 27 22:21:06 2026 :: Snapshot of Miseri taken before level: Miseri.20261027_222106.level (PRESTORE Miseri to see it).
+Tue Oct 27 22:21:06 2026 :: Log Miseri [5335]: killed An imperial cityguard
+Tue Oct 27 22:21:06 2026 :: Log Miseri [5335]: coin +34 copper
+Tue Oct 27 22:21:30 2026 :: Log Miseri [5335]: killed An imperial cityguard
+Tue Oct 27 22:21:30 2026 :: Log Miseri [5335]: coin +34 copper
+Tue Oct 27 22:22:03 2026 :: Log Miseri [5335]: killed An imperial cityguard
+Tue Oct 27 22:22:03 2026 :: Log Miseri [5335]: coin +34 copper

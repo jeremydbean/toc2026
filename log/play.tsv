@@ -28905,3 +28905,28 @@
 1793139404	cmd	Miseri	9	4208	dresden_halloween.are	standing	100	0	-	restore	self	Miseri restored.
 1793139411	cmd	Miseri	9	8	limbo_halloween.are	standing	100	0	-	pray		You bow your head in prayer.  The world falls away in a curl of incense, and you open your eyes somewhere else. // The Oracle's Sanctum //   Heavy velvet the colour of a bruised plum shuts out every trace of the
 1793139416	cmd	Miseri	9	8	limbo_halloween.are	standing	100	11	-	'	should i level	You say 'where should i level' // The Oracle gazes at you, then closes her eyes, considering your question.
+1793139433	cmd	Miseri	9	4208	dresden_halloween.are	standing	100	0	-	down		You stagger, dazed, as the world rushes back in around you.  Your mind needs a moment to recover. // The Oracle closes her eyes and fades from view. // The Shrouded Altar of Devota
+1793139494	cmd	Miseri	9	4208	dresden_halloween.are	standing	100	4	-	goto	'imperial cityguard'	No place like that around.
+1793139498	cmd	Miseri	9	29313	korzath2.are	standing	100	0	-	goto	imperial	Inner Fortress //   Another slanted floor leads northward as well as to the west.  Elite // Imperial Soldiers swarm from the corridor to the north and storm towards
+1793139500	cmd	Miseri	9	29313	korzath2.are	fighting	100	0	fight	peace		All is peaceful.
+1793139504	cmd	Miseri	9	1	limbo_halloween.are	standing	100	0	-	goto	1	The Void //   You are floating in nothing. // [Exits: none]
+1793139508	cmd	Miseri	9	1	limbo_halloween.are	standing	100	0	-	recall		You stumble over the words of your prayer, and nothing happens.
+1793139511	cmd	Miseri	9	1	limbo_halloween.are	standing	100	0	-	recall		You stumble over the words of your prayer, and nothing happens.
+1793139514	cmd	Miseri	9	1	limbo_halloween.are	standing	100	0	-	recall		The gods are listening to somebody else just now.
+1793139518	cmd	Miseri	9	4207	dresden_halloween.are	standing	100	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793139552	cmd	Miseri	9	4207	dresden_halloween.are	standing	100	2	-	mwhere	imperial	[29225] an Elite Imperial Soldier    [29313] Inner Fortress // [29225] an Elite Imperial Soldier    [29312] Inner Fortress // [29225] an Elite Imperial Soldier    [29311] Inner Fortress
+1793139561	cmd	Miseri	9	5352	mirror.are	standing	100	0	-	goto	5352	Under a watchtower //   You stand at the base of a tall watchtower built to protect the city // from invaders.  From the looks of things, its doing a great job.
+1793139564	cmd	Miseri	9	5352	mirror.are	standing	100	0	-	kill	cit	Your punch injures an imperial cityguard. // An imperial cityguard parries your attack. // An imperial cityguard parries your attack.
+1793139577	cmd	Miseri	9	5352	mirror.are	fighting	100	0	fight	scan		the stone golem                    -right above you.
+1793139581	cmd	Miseri	9	5352	mirror.are	fighting	100	0	fight	skills		Level  1: dagger              20%      hand to hand        62%       //           recall              50%       // Level  3: kick                 1%      
+1793139601	cmd	Miseri	9	5352	mirror.are	standing	100	0	-	worth		You have 99 platinum, 55 gold, 10 silver, 238 copper // and 21351 experience (149 exp to level).
+1793139604	cmd	Miseri	9	5352	mirror.are	standing	100	0	-	score		| Name:         Miseri | Level:       9 | Class:        Monk | // | Played:      0 hours | Sex:      Male | Guild:        Monk | // | Age:        17 years | Race:    Human | Castle:       None |
+1793139617	cmd	Miseri	9	5352	mirror.are	standing	100	0	-	look		Under a watchtower //   You stand at the base of a tall watchtower built to protect the city // from invaders.  From the looks of things, its doing a great job.
+1793139622	cmd	Miseri	9	5353	mirror.are	standing	100	0	-	north		A back alley //   A narrow alley leads south to one of the city watchtowers. // [Exits: north south]
+1793139623	cmd	Miseri	9	5353	mirror.are	standing	100	0	-	scan		You don't see anything near you.
+1793139624	cmd	Miseri	9	5355	mirror.are	standing	100	0	-	north		A back alley //   A narrow alley leads north to the main street, and south toward a tall // watchtower.  A building is to the west.
+1793139626	cmd	Miseri	9	5355	mirror.are	standing	100	0	-	scan		An imperial cityguard              -to the West. // An imperial cityguard              -to the West. // An imperial cityguard              -to the West.
+1793139626	cmd	Miseri	9	5301	mirror.are	standing	100	0	-	north		Main Street //   This is a magnificent street, immaculate all over. The streets are filled // with people rushing from building to building and a balmy zephyr blows by
+1793139628	cmd	Miseri	9	5355	mirror.are	standing	100	0	-	south		A back alley //   A narrow alley leads north to the main street, and south toward a tall // watchtower.  A building is to the west.
+1793139628	cmd	Miseri	9	5335	mirror.are	standing	100	0	-	west		A small guard house //   This is the barracks for Thalos' cityguards.  Guards populate this // shack ready, willing, and able to ward off any trouble.  This small
+1793139632	cmd	Miseri	9	5335	mirror.are	standing	100	0	-	kill	cit	Your punch wounds An imperial cityguard. // An imperial cityguard parries your attack. // An imperial cityguard dodges your attack.
