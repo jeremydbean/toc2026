@@ -210604,3 +210604,67 @@ Tue Oct 27 23:22:28 2026 :: Log Alaric [29215]: arrived (Dead End) from 29214
 Tue Oct 27 23:22:29 2026 :: Log Alaric [29215]: fi mad
 Tue Oct 27 23:22:35 2026 :: Log Alaric [29215]: fi
 Tue Oct 27 23:22:41 2026 :: Log Alaric [29215]: fi
+Tue Oct 27 23:22:46 2026 :: Log Alaric [29215]: fi
+Tue Oct 27 23:22:52 2026 :: Log Alaric [29215]: fi
+Tue Oct 27 23:22:52 2026 :: Log Alaric [29215]: killed a deranged madman
+Tue Oct 27 23:22:52 2026 :: Log Alaric [29215]: coin +5 platinum
+Tue Oct 27 23:22:52 2026 :: Log Alaric [29215]: coin +23 silver
+Tue Oct 27 23:22:52 2026 :: Log Alaric [29215]: coin +31 copper
+Tue Oct 27 23:22:52 2026 :: Log Alaric [29215]: coin +13 gold
+Tue Oct 27 23:22:53 2026 :: Log Alaric [29215]: affects off: iron skin
+Tue Oct 27 23:23:04 2026 :: Log Alaric [29215]: steel
+Tue Oct 27 23:23:05 2026 :: Log Alaric [29215]: steel
+Tue Oct 27 23:23:10 2026 :: Log Alaric [29215]: iron
+Tue Oct 27 23:23:11 2026 :: Log Alaric [29215]: iron
+Tue Oct 27 23:23:18 2026 :: Log Alaric [29215]: n
+Tue Oct 27 23:23:18 2026 :: Log Alaric [29214]: arrived (Twist in the Maze) from 29215
+Tue Oct 27 23:23:19 2026 :: Log Alaric [29214]: e
+Tue Oct 27 23:23:19 2026 :: Log Alaric [29212]: arrived (Twist in the Maze) from 29214
+Tue Oct 27 23:23:19 2026 :: Log Alaric [29212]: scan
+Tue Oct 27 23:23:21 2026 :: Log Alaric [29212]: oe
+Tue Oct 27 23:23:22 2026 :: Log Alaric [29212]: scan
+Tue Oct 27 23:23:25 2026 :: Log Alaric [29212]: n
+Tue Oct 27 23:23:25 2026 :: Log Alaric [29218]: arrived (Twist in the Maze) from 29212
+Tue Oct 27 23:23:27 2026 :: Log Alaric [29218]: scan
+Tue Oct 27 23:23:30 2026 :: Log Alaric [29218]: e
+Tue Oct 27 23:23:30 2026 :: Log Alaric [29219]: arrived (Twist in the Maze) from 29218
+Tue Oct 27 23:23:31 2026 :: Log Alaric [29219]: fi shad
+Tue Oct 27 23:23:36 2026 :: Log Alaric [29219]: fi
+Tue Oct 27 23:23:40 2026 :: Log Alaric [29219]: killed a Shadowman
+Tue Oct 27 23:23:40 2026 :: Log Alaric [29219]: coin +6 platinum
+Tue Oct 27 23:23:40 2026 :: Log Alaric [29219]: coin +30 silver
+Tue Oct 27 23:23:40 2026 :: Log Alaric [29219]: coin +41 copper
+Tue Oct 27 23:23:40 2026 :: Log Alaric [29219]: coin +17 gold
+Tue Oct 27 23:23:42 2026 :: Log Alaric [29219]: fi
+Tue Oct 27 23:23:43 2026 :: Log Alaric [29219]: e
+Tue Oct 27 23:23:43 2026 :: Log Alaric [29220]: arrived (Twist in the Maze) from 29219
+Tue Oct 27 23:23:45 2026 :: Log Alaric [29220]: fi li
+Tue Oct 27 23:23:51 2026 :: Log Alaric [29220]: fi
+Tue Oct 27 23:23:57 2026 :: Log Alaric [29220]: fi
+Tue Oct 27 23:24:03 2026 :: Log Alaric [29220]: fi
+Tue Oct 27 23:24:04 2026 :: Sock.sinaddr:  178.156.184.20
+Tue Oct 27 23:24:05 2026 :: EOF encountered on read.
+Tue Oct 27 23:24:08 2026 :: Log Alaric [29220]: who
+Tue Oct 27 23:24:09 2026 :: Log Alaric [29220]: fi
+Tue Oct 27 23:24:13 2026 :: Log Alaric [29220]: killed an insane lieutenant
+Tue Oct 27 23:24:13 2026 :: Log Alaric [29220]: coin +8 platinum
+Tue Oct 27 23:24:13 2026 :: Log Alaric [29220]: coin +38 silver
+Tue Oct 27 23:24:13 2026 :: Log Alaric [29220]: coin +51 copper
+Tue Oct 27 23:24:13 2026 :: Log Alaric [29220]: coin +21 gold
+Tue Oct 27 23:24:16 2026 :: Log Alaric [29220]: recal
+Tue Oct 27 23:24:16 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 29220
+Tue Oct 27 23:24:17 2026 :: Log Alaric [4207]: w
+Tue Oct 27 23:24:17 2026 :: Log Alaric [4208]: arrived (The Shrouded Altar of Devota) from 4207
+Tue Oct 27 23:24:19 2026 :: Log Alaric [4208]: e
+Tue Oct 27 23:24:19 2026 :: Log Alaric [4207]: arrived (Before the Shrouded Altar) from 4208
+Tue Oct 27 23:24:20 2026 :: Log Alaric [4207]: e
+Tue Oct 27 23:24:20 2026 :: Log Alaric [4202]: arrived (The Hall of Whispers) from 4207
+Tue Oct 27 23:24:20 2026 :: Log Alaric [4202]: n
+Tue Oct 27 23:24:20 2026 :: Log Alaric [4203]: arrived (The Hall of Cobwebs) from 4202
+Tue Oct 27 23:24:20 2026 :: Log Alaric [4203]: n
+Tue Oct 27 23:24:20 2026 :: Log Alaric [4210]: arrived (The Sickroom of the Restless) from 4203
+Tue Oct 27 23:24:21 2026 :: Log Alaric [4210]: sleep
+Tue Oct 27 23:24:22 2026 :: Log Alaric [4210]: af
+Tue Oct 27 23:24:24 2026 :: Log Alaric [4210]: score
+Tue Oct 27 23:24:48 2026 :: Log Alaric [4210]: affects off: giant strength, divine protection, fire shield, protection evil, pass door, fly, haste, sanctuary, giant strength, divine protection, fire shield, protection evil, pass door, fly, haste, sanctuary, giant strength, divine protection, fire shield, protection evil, pass door, fly, haste, sanctuary, shroud, power gloves, detect evil, detect good, detect magic, detect hidden, detect invis, frenzy, giant strength, divine protection, fire shield, protection evil, pass door, fly, haste, sanctuary, shield, bless, a; max hp 8538 -> 1423; max mana 16056 -> 2676; max moves 6414 -> 1069; hp 1754 -> 1423
+Tue Oct 27 23:26:04 2026 :: Log Alaric [4210]: affects off: iron skin
