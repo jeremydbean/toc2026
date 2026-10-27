@@ -2607,8 +2607,11 @@ grants at once, online or offline (the loaded copy is saved). Nothing
 lands at a login; only `do_check_psi(ch, "levelup")` pays a flag. A file
 saved before 2026-10-27 with `PsiGrant 1` now waits for the band. The
 player hears of it only through the awakening message, as anybody whose
-mind awakens on its own. `tests/test_dns_and_grantpsi.py` walks a band
-grant through levels 17 and 18 and a LEVEL grant through one level.
+mind awakens on its own. Staff hear the moment any grant lands --
+GRANTPSI, a remort or the band roll -- from `grant_psionics` itself: a
+WIZINFO (at `staff_notice_level`) and a log line naming the powers
+given. `tests/test_dns_and_grantpsi.py` walks a band grant through levels
+17 and 18 and a LEVEL grant through one level.
 
 Four things were wrong here in 2026-09, all of them from the roll
 living in the wrong place -- open-coded as

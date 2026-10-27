@@ -214,15 +214,20 @@ class GrantPsiLandsWhereAskedTests(unittest.TestCase):
                 self.assertIn("PsiGrant 2", saved_file(mud, "Zpsinext"))
 
                 # LEVEL: the next level, outside the band.
-                god.must("advance zpsinext 11", "now level 11")
+                heard = god.must("advance zpsinext 11", "now level 11")
                 nxt.sync("save")
+                # Staff hear the moment it lands, and what was given.
+                self.assertRegex(heard, r"Zpsinext was granted psionics at level 11: [a-z]",
+                                 heard)
                 self.assertRegex(saved_file(mud, "Zpsinext"), r"(?m)^Psionic\s+1$")
 
                 # Plain: 17 is not the check; 18 is.
-                god.must("advance zpsiband 17", "now level 17")
+                heard = god.must("advance zpsiband 17", "now level 17")
+                self.assertNotIn("granted psionics", heard)
                 band.sync("save")
                 self.assertRegex(saved_file(mud, "Zpsiband"), r"(?m)^Psionic\s+0$")
-                god.must("advance zpsiband 18", "now level 18")
+                heard = god.must("advance zpsiband 18", "now level 18")
+                self.assertIn("Zpsiband was granted psionics at level 18:", heard)
                 band.sync("save")
                 saved = saved_file(mud, "Zpsiband")
                 self.assertRegex(saved, r"(?m)^Psionic\s+1$")

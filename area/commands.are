@@ -2890,7 +2890,8 @@ mindblast, clairvoyance, astral walk, shift, project, telekinesis,
 transfusion, nightmare, mind leech, pyrotechnics, and confuse.
 
 The target does not have to be online: the saved character is loaded,
-granted or flagged, and written back.
+granted or flagged, and written back.  When the powers are actually
+given, by this or by a remort, WIZINFO names them.
 
 See also: PSIONICS, ADVANCE
 ~

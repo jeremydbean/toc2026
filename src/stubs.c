@@ -473,6 +473,14 @@ bool psionic_owed_by_remorts( CHAR_DATA *ch )
 }
 
 /* Returns how many powers were newly given (not handed back). */
+/* Add a power's name to the list a grant reports to staff. */
+static void psi_note_granted( char *list, size_t size, sh_int sn )
+{
+    if ( list[0] != '\0' )
+        toc_strlcat( list, ", ", size );
+    toc_strlcat( list, skill_table[(int)sn].name, size );
+}
+
 int grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
 {
     /* 4 thematic psionic skill sets.  A remort awards one power from each
@@ -499,6 +507,7 @@ int grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
     int i, s;
     int selected = 0;
     int added = 0;     /* new powers, not ones handed back */
+    char granted[MAX_STRING_LENGTH];   /* their names, for the staff notice */
     char normalized_spec[MAX_STRING_LENGTH];
     char invalid[MAX_INPUT_LENGTH];
     bool spec_only;
@@ -509,6 +518,8 @@ int grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
 
     if ( IS_NPC(ch) || ch->pcdata == NULL )
         return 0;
+
+    granted[0] = '\0';
 
     if ( force_grant )
     {
@@ -605,6 +616,7 @@ int grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
                 {
                     psionic_learn( ch, sn );
                     added++;
+                    psi_note_granted( granted, sizeof(granted), sn );
                     psi_log( ch, "granted %s (%s set) -- final remort, "
                                  "every power", skill_table[(int)sn].name,
                              psi_set_names[s] );
@@ -627,6 +639,7 @@ int grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
                 {
                     psionic_learn( ch, sn );
                     added++;
+                    psi_note_granted( granted, sizeof(granted), sn );
                     psi_log( ch, "granted %s (%s set) -- named in the "
                                  "immortal spec", skill_table[(int)sn].name,
                              psi_set_names[s] );
@@ -673,6 +686,7 @@ int grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
 
                 psionic_learn( ch, chosen );
                 added++;
+                psi_note_granted( granted, sizeof(granted), chosen );
                 psi_log( ch, "granted %s (%s set) -- drew %d of %d unheld",
                          skill_table[(int)chosen].name, psi_set_names[s],
                          pick + 1, count );
@@ -707,6 +721,19 @@ int grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
        when something new was given -- a grant or a remort that finds the
        character already holding their due hands back what they had, says
        so power by power above, and is not an awakening. */
+    /* Staff hear of it the moment it lands, with what was given: the
+       grant itself, not the GRANTPSI that asked for it (owner,
+       2026-10-27). Logged too, since a wizinfo reaches only those online. */
+    if ( added > 0 )
+    {
+        char note[MAX_STRING_LENGTH];
+
+        snprintf( note, sizeof(note),
+                  "%s was granted psionics at level %d: %s.",
+                  ch->name, ch->level, granted );
+        log_string( note );
+        wizinfo( note, staff_notice_level( ch, LEVEL_IMMORTAL ) );
+    }
     if ( added > 0 )
     send_to_char(
         "\n\r\n\r"
