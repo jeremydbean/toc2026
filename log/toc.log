@@ -209779,3 +209779,36 @@ Tue Oct 27 22:37:10 2026 :: Log Miseri [25265]: set char self brewing 75
 Tue Oct 27 22:37:10 2026 :: Snapshot of Miseri taken before staffset: Miseri.20261027_223710.staffset (PRESTORE Miseri to see it).
 Tue Oct 27 22:37:17 2026 :: Log Miseri [25265]: set skill self brewing 75
 Tue Oct 27 22:37:20 2026 :: Log Miseri [25265]: set skill self brew 75
+Tue Oct 27 22:37:28 2026 :: Log Miseri [25265]: set skill self herbal 75
+Tue Oct 27 22:37:32 2026 :: Log Miseri [25265]: set skill self levit 75
+Tue Oct 27 22:37:34 2026 :: Log Miseri [25265]: levi
+Tue Oct 27 22:37:35 2026 :: Log Miseri [25265]: lo
+Tue Oct 27 22:37:37 2026 :: Log Miseri [25265]: kill dro
+Tue Oct 27 22:37:43 2026 :: Log Miseri [25265]: killed a drow female
+Tue Oct 27 22:37:43 2026 :: Log Miseri [25265]: coin +57 silver
+Tue Oct 27 22:37:43 2026 :: Log Miseri [25265]: coin +282 copper
+Tue Oct 27 22:37:43 2026 :: Log Miseri [25265]: coin +27 gold
+Tue Oct 27 22:37:43 2026 :: Log Miseri [25265]: coin +40 copper
+Tue Oct 27 22:37:46 2026 :: Log Miseri [25265]: kill dro
+Tue Oct 27 22:37:49 2026 :: Log Miseri [25265]: fsave
+Tue Oct 27 22:37:55 2026 :: Log Miseri [25265]: killed a drow female
+Tue Oct 27 22:37:55 2026 :: Log Miseri [25265]: coin +57 silver
+Tue Oct 27 22:37:55 2026 :: Log Miseri [25265]: coin +282 copper
+Tue Oct 27 22:37:55 2026 :: Log Miseri [25265]: coin +27 gold
+Tue Oct 27 22:37:55 2026 :: Log Miseri [25265]: coin +40 copper
+Tue Oct 27 22:38:07 2026 :: Log Miseri [25265]: fsave
+Tue Oct 27 22:38:08 2026 :: Log Miseri [25265]: ]
+Tue Oct 27 22:38:08 2026 :: Log Miseri [4207]: arrived (Before the Shrouded Altar) from 25265
+Tue Oct 27 22:38:09 2026 :: Log Miseri [4207]: e
+Tue Oct 27 22:38:09 2026 :: Log Miseri [4202]: arrived (The Hall of Whispers) from 4207
+Tue Oct 27 22:38:10 2026 :: Log Miseri [4202]: n
+Tue Oct 27 22:38:10 2026 :: Log Miseri [4203]: arrived (The Hall of Cobwebs) from 4202
+Tue Oct 27 22:38:10 2026 :: Log Miseri [4203]: n
+Tue Oct 27 22:38:10 2026 :: Log Miseri [4210]: arrived (The Sickroom of the Restless) from 4203
+Tue Oct 27 22:38:12 2026 :: Log Miseri [4210]: sleep
+Tue Oct 27 22:38:20 2026 :: Sock.sinaddr:  178.156.189.113
+Tue Oct 27 22:38:21 2026 :: EOF encountered on read.
+Tue Oct 27 22:38:43 2026 :: Log Miseri [4210]: quit
+Tue Oct 27 22:38:43 2026 :: Miseri has quit.
+Tue Oct 27 22:38:43 2026 :: [QUIT] Player rejoined the real world.
+Tue Oct 27 22:39:56 2026 :: Treasure goblin: vanished from room 24135 (The Stables of Dunkeldorf, coven.are) (too long in one area).

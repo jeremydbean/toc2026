@@ -29030,3 +29030,17 @@
 1793140630	cmd	Miseri	14	25265	mushroom.are	standing	98	12	-	set	char self brewing 75	Syntax: //   set char <name> <field> <value> //   Field being one of:
 1793140637	cmd	Miseri	14	25265	mushroom.are	standing	98	0	-	set	skill self brewing 75	No such skill or spell.
 1793140640	cmd	Miseri	14	25265	mushroom.are	standing	98	0	-	set	skill self brew 75	No such skill or spell.
+1793140648	cmd	Miseri	14	25265	mushroom.are	standing	98	0	-	set	skill self herbal 75	Your herbal brewing skill is now 75.
+1793140652	cmd	Miseri	14	25265	mushroom.are	standing	98	0	-	set	skill self levit 75	Your levitate skill is now 75.
+1793140654	cmd	Miseri	14	25265	mushroom.are	standing	98	0	-	levitate		You are already airborne.
+1793140655	cmd	Miseri	14	25265	mushroom.are	standing	98	0	-	look		The bonfire. //   Several naked drow women are dancing around a bonfire here singing in their // language.  You become lost in their dance as they twirl and jump.  A tall
+1793140657	cmd	Miseri	14	25265	mushroom.are	standing	98	0	-	kill	dro	Your punch MUTILATES a drow female! // Your punch devastates a drow female! // A drow female parries your attack.
+1793140666	cmd	Miseri	14	25265	mushroom.are	standing	99	0	-	kill	dro	Your punch maims a drow female! // A drow female dodges your attack. // A drow female parries your attack.
+1793140669	cmd	Miseri	14	25265	mushroom.are	fighting	99	4	fight	fsave		Miseri has been saved.
+1793140687	cmd	Miseri	14	25265	mushroom.are	standing	99	7	-	fsave		Miseri has been saved.
+1793140688	cmd	Miseri	14	4207	dresden_halloween.are	standing	99	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793140689	cmd	Miseri	14	4202	dresden_halloween.are	standing	99	0	-	east		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793140690	cmd	Miseri	14	4203	dresden_halloween.are	standing	99	0	-	north		The Hall of Cobwebs //   Cobweb hangs from the dome in sheets so thick the murals above are only // shapes. Most of it is spun sugar and cotton, and some of it, in the dark
+1793140690	cmd	Miseri	14	4210	dresden_halloween.are	standing	99	0	-	north		The Sickroom of the Restless //   The two cots, the wash basin and the towels of the healing room are all // still here, and so are the patients: novices in grey paint and bandages who
+1793140692	cmd	Miseri	14	4210	dresden_halloween.are	standing	99	0	-	sleep		You go to sleep.
+1793140723	session	Miseri	14	4210	dresden_halloween.are	quit	1363s	+5 levels	+11596 exp	+3036338 copper	18 kills	0 deaths	0 quests	154 commands	2 refused	coin: loot 3p 3g 63s 38c
