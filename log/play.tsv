@@ -28883,3 +28883,4 @@
 1793133451	cmd	Killuminati	70	2401	dresden_halloween.are	standing	100	0	-	score		| Name:    Killuminati | Level:      70 | Class:        Monk | // | Played:   1814 hours | Sex:      Male | Guild:     Warrior | // | Age:       107 years | Race:      Elf | Castle:       Valh |
 1793133463	cmd	Killuminati	70	30615	hyrule.are	standing	100	0	-	goto	zelda	Level 9: Princess Zelda's Chamber // [Room: 30615]     [Sector: Underground]     [Flags: Dark Indoors Safe No_Recall] //   Warm light fills this quiet room, cast by two fires burning on either side
 1793133479	cmd	Killuminati	70	15068	campus.are	standing	100	0	-	enter	light	You enter a bright golden light // Your stomach flip flops. Everything goes black for a moment. // The Games Room
+1793134905	session	Killuminati	70	15068	campus.are	linkdead	6268s	+0 levels	+0 exp	+26653797 copper	1 kills	0 deaths	0 quests	78 commands	1 refused	coin: loot 26p 65g 37s 97c
