@@ -1640,7 +1640,9 @@ rules the code depends on:
   checksum. Record nothing, and report nothing done, on the strength of a
   save or snapshot that is not `DURABLE_OK` (independent review,
   2026-10-23: unconfirmed writes were reported as done). Test faults:
-  `TOC_FAULT` (`fsync`, `dirsync`) and `TOC_FAULT_FILE` (one named point,
+  `TOC_FAULT` (`fsync`, `dirsync`, and `autowrite`, which holds every
+  autosave off for a test that must know which save wrote a file --
+  matched by substring, so never a name holding `save`) and `TOC_FAULT_FILE` (one named point,
   `save 2` for the second save, `save-<Name> 2` for that character's
   second, which an autosave of somebody else cannot take -- though one
   of that character can, so ACCEPT's save has its own `accept-save`

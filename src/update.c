@@ -1378,6 +1378,7 @@ void char_update( void )
     OBJ_DATA  *obj = NULL;
     ROOM_INDEX_DATA *in_room = NULL;
     bool found = false;
+    bool autosave_held;
     LIST_ITERATOR iter;
 
     ch_quit	= NULL;
@@ -1996,12 +1997,19 @@ void char_update( void )
      * Autosave and autoquit.
      * Check that these chars still exist.
      */
+    /* TOC_FAULT=autowrite holds every autosave off, for a test that has to
+       know which save wrote a file (recovery_fault; tests only). Not
+       "autosave": TOC_FAULT is matched by substring, and that holds "save",
+       which fails every save. */
+    autosave_held = recovery_fault( "autowrite" );
     FOR_EACH_CHARACTER( iter, ch )
     {
 
         /* Spread over the cycle by descriptor, so a full mud does not
            write every player file in the same tick. */
-        if ( ch->desc != NULL
+        if ( autosave_held )
+            ;
+        else if ( ch->desc != NULL
         &&   !IS_NPC(ch)
         &&   ch->level >= 1
         &&   ch->desc->descriptor % AUTOSAVE_CYCLE_TICKS == save_number )

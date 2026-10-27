@@ -152,7 +152,12 @@ class CorpseRestoreFailureTests(unittest.TestCase):
         # receipt stayed pending -- and a retry read the restore mark from
         # the character's memory, committed without saving, and a crash
         # then lost the gear and refused another restore.
-        with LiveMud(extra_env={"TOC_FAULT_FILE": "../fault.once"}) as mud:
+        # No autosave: an autosave of Zondead landing between the failed
+        # save and the read is the next save that settles the restore, by
+        # design, and wrote the mark the file is checked for (CI, run
+        # 40570170434).
+        with LiveMud(extra_env={"TOC_FAULT_FILE": "../fault.once",
+                                "TOC_FAULT": "autowrite"}) as mud:
             make(mud, "Zonstaff", 70)
             make(mud, "Zondead", 20)
             cid = kill_and_end_corpse(mud, "Zonstaff", "Zondead")
