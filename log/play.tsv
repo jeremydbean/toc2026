@@ -28757,3 +28757,40 @@
 1793111859	cmd	Miseri	4	18214	gelidia.are	standing	90	2	-	mwhere	townguard	[18201] a townguard of Gelidia       [18214] Town Square // [18201] a townguard of Gelidia       [18235] Inside the inn // [18201] a townguard of Gelidia       [18207] On a narrow street
 1793111873	cmd	Miseri	4	13201	solace.are	standing	90	0	-	goto	13201	                    ACHIEVEMENT EARNED // Gateway to Solace  +15 points // Arrive at the gateway to Solace.
 1793111875	cmd	Miseri	4	13201	solace.are	standing	90	0	-	kill	to	Your punch scratches Townguard. // Your punch hits Townguard. // Your punch mauls Townguard.
+1793111915	cmd	Miseri	4	13201	solace.are	fighting	84	0	fight	wizhelp		131 staff commands available to you: // [65] activity      [66] advance       [65] aligncheck    [68] alist          // [69] anew          [64] announce      [69] asave         [68] astat         
+1793111950	cmd	Miseri	7	13201	solace.are	fighting	65	0	fight	wizhelp		131 staff commands available to you: // [65] activity      [66] advance       [65] aligncheck    [68] alist          // [69] anew          [64] announce      [69] asave         [68] astat         
+1793111967	cmd	Miseri	7	13201	solace.are	fighting	62	0	fight	holylight		Holy light mode on.
+1793111991	cmd	Miseri	8	13201	solace.are	fighting	58	0	fight	invuln		Invulnerability on. Blows will land and read normally, and take nothing off you.
+1793112000	cmd	Miseri	8	13201	solace.are	standing	58	0	-	look		Gateway to Solace //   This is the gateway to the town of Solace. It keeps the monsters out and // the people in. This is a quiet farming town on the shores of Crystalmir
+1793112004	cmd	Miseri	8	13201	solace.are	standing	58	0	-	scan		field rat                          -to the East.
+1793112006	cmd	Miseri	8	13202	solace.are	standing	58	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.
+1793112006	cmd	Miseri	8	13203	solace.are	standing	58	0	-	north		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.
+1793112007	cmd	Miseri	8	13203	solace.are	standing	58	0	-	scan		Cookie's Helper                    -to the West.
+1793112007	cmd	Miseri	8	13203	solace.are	standing	58	0	-	east		Alas, you cannot go that way.
+1793112008	cmd	Miseri	8	13245	solace.are	standing	58	0	-	west		Cookie's Cookie Cookery. //   This is the cookie shop of who else...Cookie. She's not in right now // but there are many delicious cookies to munch on if you want to wait till
+1793112009	cmd	Miseri	8	13250	solace.are	standing	58	0	-	west		Cookie's Relaxing Room. //   This is where Cookie comes to unwind. She comes here sometimes to just // munch on cookies and talk to her friends.
+1793112010	cmd	Miseri	8	13250	solace.are	standing	58	0	-	south		Alas, you cannot go that way.
+1793112010	cmd	Miseri	8	13245	solace.are	standing	58	0	-	east		Cookie's Cookie Cookery. //   This is the cookie shop of who else...Cookie. She's not in right now // but there are many delicious cookies to munch on if you want to wait till
+1793112011	cmd	Miseri	8	13203	solace.are	standing	58	0	-	east		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.
+1793112011	cmd	Miseri	8	13203	solace.are	standing	58	0	-	east		Alas, you cannot go that way.
+1793112012	cmd	Miseri	8	13202	solace.are	standing	58	0	-	south		Main Road //   This is the main road in Solace. Down the street you can see various // shops and houses.
+1793112013	cmd	Miseri	8	13201	solace.are	standing	58	0	-	south		Gateway to Solace //   This is the gateway to the town of Solace. It keeps the monsters out and // the people in. This is a quiet farming town on the shores of Crystalmir
+1793112013	cmd	Miseri	8	13003	lakes.are	standing	58	0	-	south		Entrance to the Town of Solace //   A warm autumn breeze rustles the great vallenwood trees of Solace. The // road that wanders through the trees blazes in the bright colors of autumn.
+1793112014	cmd	Miseri	8	13022	lakes.are	standing	58	0	-	south		Road through the forest //   This is a well travelled dirt road. // [Exits: north east south west]
+1793112015	cmd	Miseri	8	13029	lakes.are	standing	58	0	-	east		Among the Vallenwoods //   You are walking among the peaceful vallenwoods. They sway in the // breeze in a dance of autumn.
+1793112020	cmd	Miseri	8	13029	lakes.are	standing	58	0	-	consider	hob	Hobgoblin flunky is a little below your level. // Hobgoblin flunky has about a third of your hit points. // Hobgoblin flunky could barely scratch you; you would need about 2 rounds to bring him down.
+1793112024	cmd	Miseri	8	13029	lakes.are	standing	58	0	-	kill	hob	Your punch hits hobgoblin flunky. // Your punch wounds hobgoblin flunky. // Your punch hits hobgoblin flunky.
+1793112036	cmd	Miseri	9	13029	lakes.are	standing	55	0	-	affect		You are affected by: // Spell: 'titanic'. // Spell: 'titanic'.
+1793112038	cmd	Miseri	9	13029	lakes.are	standing	58	0	-	skills		Level  1: dagger              20%      hand to hand        62%       //           recall              50%       // Level  3: kick                 1%      
+1793112043	refused	Miseri	9	13029	lakes.are	standing	58	0	-	(unknown)		Huh?
+1793112045	cmd	Miseri	9	13029	lakes.are	standing	58	0	-	recall		You stumble over the words of your prayer, and nothing happens.
+1793112049	cmd	Miseri	9	13029	lakes.are	standing	58	0	-	alias		(withheld)
+1793112051	cmd	Miseri	9	13029	lakes.are	standing	58	0	-	recall		Your prayer goes up and comes back unanswered.
+1793112053	cmd	Miseri	9	4207	dresden_halloween.are	standing	58	0	-	recall		Before the Shrouded Altar //   Before you are three steps up to the altar of Devota, Goddess of Peace and // Healing, who tonight is shrouded in black like the rest of her temple. Rows
+1793112057	cmd	Miseri	9	8	limbo_halloween.are	standing	58	0	-	pray		You bow your head in prayer.  The world falls away in a curl of incense, and you open your eyes somewhere else. // The Oracle's Sanctum //   Heavy velvet the colour of a bruised plum shuts out every trace of the
+1793112068	cmd	Miseri	9	8	limbo_halloween.are	standing	58	6	-	'	need directions to the monk guild	You say 'i need directions to the monk guild' // The Oracle gazes at you, then closes her eyes, considering your question.
+1793112077	cmd	Miseri	9	4207	dresden_halloween.are	standing	58	0	-	down		You stagger, dazed, as the world rushes back in around you. // The Oracle closes her eyes and fades from view. // Before the Shrouded Altar
+1793112142	cmd	Miseri	9	4207	dresden_halloween.are	standing	60	0	-	walkto	palm of the creator	You set off for Palm of the Creator (monk guild), about 11 rooms away. // WALKTO STOP, or any other command, stops you.
+1793112142	cmd	Miseri	9	4202	dresden_halloween.are	standing	60	0	-	look		The Hall of Whispers //   You are in a large domed room, and the murals of healers tending the wounded // have been hidden behind yards of grey gauze that stirs in a wind you cannot
+1793112147	cmd	Miseri	9	4202	dresden_halloween.are	standing	60	0	-	walkto	palm of the creator	You set off for Palm of the Creator (monk guild), about 10 rooms away. // WALKTO STOP, or any other command, stops you.
+1793112167	cmd	Miseri	9	4804	dresden_halloween.are	standing	63	0	-	walkto	palm of the creator	You set off for Palm of the Creator (monk guild), about 11 rooms away. // WALKTO STOP, or any other command, stops you.

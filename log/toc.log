@@ -208976,3 +208976,117 @@ Tue Oct 27 14:37:39 2026 :: Log Miseri [18214]: mwhere townguard
 Tue Oct 27 14:37:53 2026 :: Log Miseri [18214]: goto 13201
 Tue Oct 27 14:37:53 2026 :: Log Miseri [13201]: arrived (Gateway to Solace) from 18214
 Tue Oct 27 14:37:55 2026 :: Log Miseri [13201]: kill to
+Tue Oct 27 14:38:35 2026 :: Log Miseri [13201]: wizhelp
+Tue Oct 27 14:38:37 2026 :: Log Miseri [13201]: level 4 -> 5 (earned)
+Tue Oct 27 14:38:37 2026 :: Miseri has achieved level 5!
+Tue Oct 27 14:38:37 2026 :: Snapshot of Miseri taken before level: Miseri.20261027_143837.level (PRESTORE Miseri to see it).
+Tue Oct 27 14:38:37 2026 :: Log Miseri [13201]: level 5 -> 6 (earned)
+Tue Oct 27 14:38:37 2026 :: Log Miseri [13201]: gold -50
+Tue Oct 27 14:38:37 2026 :: Miseri has achieved level 6!
+Tue Oct 27 14:38:37 2026 :: Snapshot of Miseri taken before level: Miseri.20261027_143837_02.level (PRESTORE Miseri to see it).
+Tue Oct 27 14:38:37 2026 :: Log Miseri [13201]: level 6 -> 7 (earned)
+Tue Oct 27 14:38:37 2026 :: Miseri has achieved level 7!
+Tue Oct 27 14:38:37 2026 :: Snapshot of Miseri taken before level: Miseri.20261027_143837_03.level (PRESTORE Miseri to see it).
+Tue Oct 27 14:38:37 2026 :: Log Miseri [13201]: killed Townguard
+Tue Oct 27 14:38:37 2026 :: Log Miseri [13201]: coin +2 silver
+Tue Oct 27 14:38:37 2026 :: Log Miseri [13201]: coin +3 copper
+Tue Oct 27 14:38:37 2026 :: Log Miseri [13201]: coin +1 gold
+Tue Oct 27 14:38:37 2026 :: Log Miseri [13201]: coin +30 copper
+Tue Oct 27 14:39:07 2026 :: Log Miseri [13201]: killed Townguard
+Tue Oct 27 14:39:07 2026 :: Log Miseri [13201]: coin +2 silver
+Tue Oct 27 14:39:07 2026 :: Log Miseri [13201]: coin +3 copper
+Tue Oct 27 14:39:07 2026 :: Log Miseri [13201]: coin +1 gold
+Tue Oct 27 14:39:07 2026 :: Log Miseri [13201]: coin +30 copper
+Tue Oct 27 14:39:10 2026 :: Log Miseri [13201]: wizhelp
+Tue Oct 27 14:39:27 2026 :: Log Miseri [13201]: holyl
+Tue Oct 27 14:39:37 2026 :: Log Miseri [13201]: level 7 -> 8 (earned)
+Tue Oct 27 14:39:37 2026 :: Miseri has achieved level 8!
+Tue Oct 27 14:39:37 2026 :: Snapshot of Miseri taken before level: Miseri.20261027_143937.level (PRESTORE Miseri to see it).
+Tue Oct 27 14:39:37 2026 :: Log Miseri [13201]: killed Townguard
+Tue Oct 27 14:39:37 2026 :: Log Miseri [13201]: coin +2 silver
+Tue Oct 27 14:39:37 2026 :: Log Miseri [13201]: coin +3 copper
+Tue Oct 27 14:39:37 2026 :: Log Miseri [13201]: coin +1 gold
+Tue Oct 27 14:39:37 2026 :: Log Miseri [13201]: coin +30 copper
+Tue Oct 27 14:39:51 2026 :: Log Miseri [13201]: invul
+Tue Oct 27 14:39:55 2026 :: Log Miseri [13201]: killed Townguard
+Tue Oct 27 14:39:55 2026 :: Log Miseri [13201]: coin +2 silver
+Tue Oct 27 14:39:55 2026 :: Log Miseri [13201]: coin +3 copper
+Tue Oct 27 14:39:55 2026 :: Log Miseri [13201]: coin +1 gold
+Tue Oct 27 14:39:55 2026 :: Log Miseri [13201]: coin +30 copper
+Tue Oct 27 14:40:00 2026 :: Log Miseri [13201]: lo
+Tue Oct 27 14:40:04 2026 :: Log Miseri [13201]: sca
+Tue Oct 27 14:40:06 2026 :: Log Miseri [13201]: n
+Tue Oct 27 14:40:06 2026 :: Log Miseri [13202]: arrived (Main Road) from 13201
+Tue Oct 27 14:40:06 2026 :: Log Miseri [13202]: n
+Tue Oct 27 14:40:06 2026 :: Log Miseri [13203]: arrived (Main Road) from 13202
+Tue Oct 27 14:40:07 2026 :: Log Miseri [13203]: sca
+Tue Oct 27 14:40:07 2026 :: Log Miseri [13203]: e
+Tue Oct 27 14:40:08 2026 :: Log Miseri [13203]: w
+Tue Oct 27 14:40:08 2026 :: Log Miseri [13245]: arrived (Cookie's Cookie Cookery.) from 13203
+Tue Oct 27 14:40:09 2026 :: Log Miseri [13245]: w
+Tue Oct 27 14:40:09 2026 :: Log Miseri [13250]: arrived (Cookie's Relaxing Room.) from 13245
+Tue Oct 27 14:40:10 2026 :: Log Miseri [13250]: s
+Tue Oct 27 14:40:10 2026 :: Log Miseri [13250]: e
+Tue Oct 27 14:40:10 2026 :: Log Miseri [13245]: arrived (Cookie's Cookie Cookery.) from 13250
+Tue Oct 27 14:40:11 2026 :: Log Miseri [13245]: e
+Tue Oct 27 14:40:11 2026 :: Log Miseri [13203]: arrived (Main Road) from 13245
+Tue Oct 27 14:40:11 2026 :: Log Miseri [13203]: e
+Tue Oct 27 14:40:12 2026 :: Log Miseri [13203]: s
+Tue Oct 27 14:40:12 2026 :: Log Miseri [13202]: arrived (Main Road) from 13203
+Tue Oct 27 14:40:13 2026 :: Log Miseri [13202]: s
+Tue Oct 27 14:40:13 2026 :: Log Miseri [13201]: arrived (Gateway to Solace) from 13202
+Tue Oct 27 14:40:13 2026 :: Log Miseri [13201]: s
+Tue Oct 27 14:40:13 2026 :: Log Miseri [13003]: arrived (Entrance to the Town of Solace) from 13201
+Tue Oct 27 14:40:14 2026 :: Log Miseri [13003]: s
+Tue Oct 27 14:40:14 2026 :: Log Miseri [13022]: arrived (Road through the forest) from 13003
+Tue Oct 27 14:40:15 2026 :: Log Miseri [13022]: e
+Tue Oct 27 14:40:15 2026 :: Log Miseri [13029]: arrived (Among the Vallenwoods) from 13022
+Tue Oct 27 14:40:20 2026 :: Log Miseri [13029]: con hob
+Tue Oct 27 14:40:24 2026 :: Log Miseri [13029]: kill hob
+Tue Oct 27 14:40:31 2026 :: Log Miseri [13029]: level 8 -> 9 (earned)
+Tue Oct 27 14:40:31 2026 :: Miseri has achieved level 9!
+Tue Oct 27 14:40:31 2026 :: Snapshot of Miseri taken before level: Miseri.20261027_144031.level (PRESTORE Miseri to see it).
+Tue Oct 27 14:40:31 2026 :: Log Miseri [13029]: killed hobgoblin flunky
+Tue Oct 27 14:40:31 2026 :: Log Miseri [13029]: coin +2 silver
+Tue Oct 27 14:40:31 2026 :: Log Miseri [13029]: coin +3 copper
+Tue Oct 27 14:40:31 2026 :: Log Miseri [13029]: coin +1 gold
+Tue Oct 27 14:40:31 2026 :: Log Miseri [13029]: coin +12 copper
+Tue Oct 27 14:40:36 2026 :: Log Miseri [13029]: af
+Tue Oct 27 14:40:38 2026 :: Log Miseri [13029]: ski
+Tue Oct 27 14:40:43 2026 :: Log Miseri [13029]: (refused) ]
+Tue Oct 27 14:40:45 2026 :: Log Miseri [13029]: recall
+Tue Oct 27 14:40:49 2026 :: Log Miseri [13029]: alias (arguments withheld)
+Tue Oct 27 14:40:51 2026 :: Log Miseri [13029]: ]
+Tue Oct 27 14:40:53 2026 :: Log Miseri [13029]: ]
+Tue Oct 27 14:40:53 2026 :: Log Miseri [4207]: arrived (Before the Shrouded Altar) from 13029
+Tue Oct 27 14:40:57 2026 :: Log Miseri [4207]: pray
+Tue Oct 27 14:40:57 2026 :: Log Miseri [8]: arrived (The Oracle's Sanctum) from 4207
+Tue Oct 27 14:40:57 2026 :: Oracle: Miseri prayed from room 4207 (Before the Shrouded Altar) and entered her sanctum.
+Tue Oct 27 14:41:08 2026 :: Log Miseri [8]: 'i need directions to the monk guild
+Tue Oct 27 14:41:08 2026 :: Log Miseri [8]: asked the Oracle: i need directions to the monk guild
+Tue Oct 27 14:41:08 2026 :: Sock.sinaddr:  5.161.113.195
+Tue Oct 27 14:41:08 2026 :: EOF encountered on read.
+Tue Oct 27 14:41:11 2026 :: Oracle answered Miseri in room 8: `walkto palm of the creator`
+Tue Oct 27 14:41:17 2026 :: Log Miseri [8]: d
+Tue Oct 27 14:41:17 2026 :: Log Miseri [4207]: arrived (Before the Shrouded Altar) from 8
+Tue Oct 27 14:42:22 2026 :: Log Miseri [4207]: walkto palm of the creator
+Tue Oct 27 14:42:22 2026 :: Log Miseri [4202]: arrived (The Hall of Whispers) from 4207
+Tue Oct 27 14:42:22 2026 :: Log Miseri [4202]: lo
+Tue Oct 27 14:42:27 2026 :: Log Miseri [4202]: walkto palm of the creator
+Tue Oct 27 14:42:27 2026 :: Log Miseri [4201]: arrived (Entrance to the Haunted Temple) from 4202
+Tue Oct 27 14:42:27 2026 :: Log Miseri [2433]: arrived (Temple Boulevard.) from 4201
+Tue Oct 27 14:42:28 2026 :: Log Miseri [2434]: arrived (Temple Boulevard.) from 2433
+Tue Oct 27 14:42:29 2026 :: Log Miseri [2435]: arrived (Temple Boulevard.) from 2434
+Tue Oct 27 14:42:30 2026 :: Log Miseri [2436]: arrived (Temple Boulevard.) from 2435
+Tue Oct 27 14:42:30 2026 :: Log Miseri [2437]: arrived (Temple Boulevard.) from 2436
+Tue Oct 27 14:42:31 2026 :: Log Miseri [4800]: arrived (Another Dimension) from 2437
+Tue Oct 27 14:42:32 2026 :: Log Miseri [4801]: arrived (The passage way) from 4800
+Tue Oct 27 14:42:33 2026 :: Log Miseri [4802]: arrived (The narrow entrance) from 4801
+Tue Oct 27 14:42:33 2026 :: Log Miseri [4803]: arrived (The Palm of the Creator) from 4802
+Tue Oct 27 14:42:41 2026 :: Log Miseri [4804]: arrived (The Quiet Place) from 4803
+Tue Oct 27 14:42:47 2026 :: Log Miseri [4804]: walkto palm of the creator
+Tue Oct 27 14:42:47 2026 :: Log Miseri [4809]: arrived (Back to the beginning) from 4804
+Tue Oct 27 14:42:54 2026 :: Log Miseri [4801]: arrived (The passage way) from 4809
+Tue Oct 27 14:42:55 2026 :: Log Miseri [4802]: arrived (The narrow entrance) from 4801
+Tue Oct 27 14:42:56 2026 :: Log Miseri [4803]: arrived (The Palm of the Creator) from 4802
+Tue Oct 27 14:43:03 2026 :: Log Miseri [4804]: arrived (The Quiet Place) from 4803
