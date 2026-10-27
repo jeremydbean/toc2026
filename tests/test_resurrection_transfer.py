@@ -131,7 +131,7 @@ class ResurrectionTransferTests(unittest.TestCase):
                 kill_loot_and_call(staff, cleric, fallen)
                 dead_room = room_of(staff, "zrtfallen")
 
-                fault(mud, "save-Zrtfallen")
+                fault(mud, "accept-save")
                 undone = fallen.sync("accept")
                 after_undone = room_of(staff, "zrtfallen")
                 in_corpse = staff.sync("look in corpse")
@@ -175,7 +175,7 @@ class ResurrectionTransferTests(unittest.TestCase):
                     login(client, name, PW)
                     client.sync("scroll 0")
                 kill_loot_and_call(staff, cleric, fallen)
-                fault(mud, "save-Zrtfallen")
+                fault(mud, "accept-save")
                 undone = fallen.sync("accept")
                 staff.sync("time")           # a pulse for the record to be written
                 staff.drain(2.0)

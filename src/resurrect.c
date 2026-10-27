@@ -297,9 +297,15 @@ void do_accept( CHAR_DATA *ch, char *argument )
     }
     player_fix_record( ch, mark );
 
-    /* 4: on the disk, or none of it. */
-    save_char_obj( ch );
-    status = save_char_obj_status();
+    /* 4: on the disk, or none of it. A test fails this save alone with
+       "accept-save": "save-<Name>" can be taken first by the autosave. */
+    if ( recovery_fault( "accept-save" ) )
+        status = DURABLE_FAILED;
+    else
+    {
+        save_char_obj( ch );
+        status = save_char_obj_status();
+    }
     if ( status != DURABLE_OK )
     {
         /* Back as it lay -- obj_to_obj puts each at the front, so last

@@ -1563,8 +1563,9 @@ rules the code depends on:
   2026-10-23: unconfirmed writes were reported as done). Test faults:
   `TOC_FAULT` (`fsync`, `dirsync`) and `TOC_FAULT_FILE` (one named point,
   `save 2` for the second save, `save-<Name> 2` for that character's
-  second, which an autosave elsewhere cannot take; `ledger`,
-  `crash-before-commit`), read
+  second, which an autosave of somebody else cannot take -- though one
+  of that character can, so ACCEPT's save has its own `accept-save`
+  (CI, 2026-10-27); `ledger`, `crash-before-commit`), read
   by `recovery_fault()` and set nowhere but `tests/`.
 - **Nobody comes out of a file dead** (`revive_at_load`, end of
   `load_char_obj`): a `death` copy is written below zero hit points,
